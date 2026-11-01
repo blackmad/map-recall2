@@ -19,6 +19,9 @@
 // far block, generic building chunk install, tile flush, regroup, ground re-base, landmark/chunk model arrive and LOD
 // swap, tree rebuild, basemap tile). A frame's blobs are charged to the steps between the previous capture and this
 // one (or the one before); a frame with blobs and no step is "unexplained" (motion residual, animation).
+// Near installs (P3 gate, --near 150): every own-ground cell, far block, facade chunk and landmark model install is
+// logged with its bounds' distance from the rider; the gate is own-ground cell + facade chunk arrivals within 150 m.
+// HEADED=1 DPR=2 run the real-GPU set-up of #129 (the frame is still analysed at 640x400).
 // Output: the per-source table, per-second series, and with --frames <dir> strips of the largest events (previous,
 // current, residual mask) as PNG.
 import { chromium } from 'playwright';
@@ -212,7 +215,7 @@ onmessage = e => {
 `;
 
 async function run(browser, n) {
-  const context = await browser.newContext({ viewport: { width: 1280, height: 800 }, deviceScaleFactor: 1 });
+  const context = await browser.newContext({ viewport: { width: 1280, height: 800 }, deviceScaleFactor: Number(process.env.DPR || 1) });
   const page = await context.newPage();
   // BUNDLES_DIR=<dir> serves *.bundle.js from a local build; WORLD_DIR=<dir> serves staged world-v1 cells (worker fetches too).
   if (process.env.WORLD_DIR) await context.route(/\/data\/extracts\/amsterdam\/world-v1\/([^?]+)/, route => {
@@ -288,10 +291,41 @@ async function run(browser, n) {
       tileFlush: ev(vm._completeCity, 'flush', 'tile-flush'),
       regroup: ev(tb, 'setFeatures', 'regroup'),
       bases: ev(tb, 'refreshGroundBases', 'buildings-rebase'),
-      landmark: ev(sl, '_add', (scene, spec) => spec.buildingCategory === 'street-survey' || spec.assetKind === 'ordinary-building' ? 'street-chunk-model' : 'landmark-model', (scene, spec) => spec.id),
+      landmark: ev(sl, '_add', spec => spec.buildingCategory === 'street-survey' || spec.assetKind === 'ordinary-building' ? 'street-chunk-model' : 'landmark-model', spec => spec.id),
       landmarkLod: ev(sl, '_swapLevel', 'landmark-lod', (entry, inc, level) => `${entry.spec.id}:${level}`),
       trees: ev(vm._inventoryTrees, 'rebuild', 'trees'),
     };
+    // Installs near the rider (the P3 pop-in gate: zero cells installed within NEAR_M of the rider). Every install
+    // that puts new geometry in the scene is logged with its bounds' distance from the rider at that moment: own-ground
+    // cells and far blocks (cell.rect against the ground's own rider centre, local metres), facade chunks (the lng/lat
+    // box of the chunk's source features) and landmark models (their anchor). `arrive` = new to the view, `swap` = the
+    // same place at another LOD/detail (same picture), `rebuild` = a resident chunk replaced in place.
+    const riderLngLat = () => [l._lastCenterLng + (p.x - l._lastOffsetX) / (111320 * Math.cos(l._lastCenterLat * Math.PI / 180) * ppm), l._lastCenterLat - (p.y - l._lastOffsetY) / (111320 * ppm)];
+    const boxDistM = (box, at) => { const k = 111320 * Math.cos(at[1] * Math.PI / 180); const dx = Math.max(box[0] - at[0], 0, at[0] - box[2]) * k, dy = Math.max(box[1] - at[1], 0, at[1] - box[3]) * 111320; return Math.hypot(dx, dy); };
+    const lngLatBox = features => { const b = [Infinity, Infinity, -Infinity, -Infinity]; const walk = c => { if (typeof c[0] === 'number') { if (c[0] < b[0]) b[0] = c[0]; if (c[1] < b[1]) b[1] = c[1]; if (c[0] > b[2]) b[2] = c[0]; if (c[1] > b[3]) b[3] = c[1]; } else for (const q of c) walk(q); }; for (const f of features || []) if (f?.geometry?.coordinates) walk(f.geometry.coordinates); return b[0] <= b[2] ? b : null; };
+    P.installs = [];
+    const logInstall = (layer, key, kind, distM, policy) => P.installs.push([performance.now(), layer, String(key), kind, distM == null ? null : +distM.toFixed(1), policy, P.on]);
+    const wrap = (obj, key, after) => { if (!obj || typeof obj[key] !== 'function') return false; const o = obj[key]; obj[key] = function (...a) { const ctx = { before: null }; after.pre?.call(this, ctx, ...a); const r = o.apply(this, a); after.post.call(this, ctx, ...a); return r; }; return true; };
+    const groundPolicy = g => `ground ring=${g.opts?.ring ?? '?'} detail=${g.opts?.detail ?? '?'} near=${g.opts?.groundNear ?? '?'}`;
+    hooked.nearGround = wrap(og, 'install', { pre(ctx, cell) { ctx.before = this.resident.get(cell.key)?.group ?? null; }, post(ctx, cell) {
+      const now = this.resident.get(cell.key)?.group ?? null; if (!now || now === ctx.before) return;
+      const c = this.centre, r = cell.rect, d = c ? Math.hypot(Math.max(r[0] - c[0], 0, c[0] - r[2]), Math.max(r[1] - c[1], 0, c[1] - r[3])) : null;
+      logInstall('ground-cell', `${cell.key}/lod${cell.lod}/${cell.detail}`, ctx.before ? 'swap' : 'arrive', d, groundPolicy(this));
+    } });
+    hooked.nearFar = wrap(og, 'installFar', { post(ctx, b) {
+      if (!this.far?.has?.(b.key)) return;
+      const c = this.centre, r = b.rect, d = c ? Math.hypot(Math.max(r[0] - c[0], 0, c[0] - r[2]), Math.max(r[1] - c[1], 0, c[1] - r[3])) : null;
+      logInstall('ground-far', b.key, 'arrive', d, `far radius=${Math.round(this.farRadius ?? 0)} m`);
+    } });
+    hooked.nearChunk = wrap(tb, 'install', { pre(ctx, key) { ctx.before = this.chunks.get(key)?.mesh ?? null; }, post(ctx, key, source) {
+      const now = this.chunks.get(key)?.mesh ?? null; if (!now || now === ctx.before) return;
+      const box = lngLatBox(source), k = String(key);
+      logInstall(k.startsWith('coarse') ? 'buildings-coarse' : k.startsWith('boats') ? 'buildings-boats' : 'buildings-chunk', k, ctx.before ? 'rebuild' : 'arrive', box ? boxDistM(box, riderLngLat()) : null, `three-buildings ${k.split(/[:/]/)[0]}`);
+    } });
+    hooked.nearLandmark = wrap(sl, '_add', { post(ctx, spec, imported, map2, url, level) {
+      const a = spec?.surveyed?.anchor || spec?.footprint?.centre;
+      logInstall(spec?.buildingCategory === 'street-survey' || spec?.assetKind === 'ordinary-building' ? 'street-chunk-model' : 'landmark-model', `${spec?.id}:${level ?? 'full'}`, 'arrive', a ? boxDistM([a[0], a[1], a[0], a[1]], riderLngLat()) : null, 'landmark residency');
+    } });
     if (vm.map) map.on('data', e => { if (P.on && e.dataType === 'source' && e.tile && e.sourceId) P.events.push([performance.now(), 'basemap-tile', e.sourceId]); });
     // Capture after every render.
     const worker = new Worker(URL.createObjectURL(new Blob([workerSrc], { type: 'text/javascript' })));
@@ -345,7 +379,7 @@ async function run(browser, n) {
   await page.waitForFunction(() => window.__pop.dump && window.__pop.results.length >= window.__pop.captures.length - 1, null, { timeout: 600_000, polling: 1000 });
   const raw = await page.evaluate(() => {
     const P = window.__pop;
-    return { events: P.events, results: P.results, captures: P.captures, track: P.track, captureMs: P.captureMs, heapMB: performance.memory ? Math.round(performance.memory.usedJSHeapSize / 1048576) : null,
+    return { installs: P.installs, events: P.events, results: P.results, captures: P.captures, track: P.track, captureMs: P.captureMs, heapMB: performance.memory ? Math.round(performance.memory.usedJSHeapSize / 1048576) : null,
       distancePx: null, og: canalRecallGame.vectorMap._ownGround?.status?.() ?? null,
       // What is resident at the end (memory growth): facade chunks and building tiles held.
       resident: (() => { const vm = canalRecallGame.vectorMap; try { return { three: vm._threeBuildings?.stats?.(), tilesHeld: [...(vm._completeCity?.cache?.heldKeys ?? [])].length }; } catch (e) { return String(e); } })() };
@@ -381,6 +415,7 @@ async function run(browser, n) {
 
 // TURN_DEG_PER_S: a turn is judged by its rate too, so a smooth turn (the own engine's, ~1.3 deg a frame at 60 fps) is
 // skipped like a jerky one (MapLibre's 2+ deg steps): rotation round a tall near landmark is parallax, not pop (#129).
+const NEAR_M = Number(opt('near', '150'));
 const HITCH_MS = 50, TURN_DEG = 2, TURN_DEG_PER_S = 60, TILT_DEG = 1, ZOOM_STEP = 0.02;
 function summarise(r) {
   const { raw } = r;
@@ -416,10 +451,23 @@ function summarise(r) {
     for (const kd of ks) add(kd, res.area / ks.length, ks.length === 1);
     events.push({ i: caps[k][0], atS: +((hi - t0) / 1000).toFixed(2), area: res.area, kinds: ks, blobs: res.blobs });
   }
+  // Installs within NEAR_M of the rider during the measurement (the P3 gate counts own-ground cell and facade chunk
+  // arrivals; swaps, rebuilds, far blocks and landmark models are listed so their owners can be named too).
+  const near = { radiusM: NEAR_M, gate: 0, byLayer: {}, list: [], measured: 0 };
+  for (const [t, layer, key, kind, d, policy, on] of raw.installs || []) {
+    if (!on) continue;
+    near.measured++;
+    const b = near.byLayer[`${layer}/${kind}`] ||= { installs: 0, near: 0, nearestM: null };
+    b.installs++; if (d != null && (b.nearestM == null || d < b.nearestM)) b.nearestM = d;
+    if (d == null || d > NEAR_M) continue;
+    b.near++;
+    if (kind === 'arrive' && (layer === 'ground-cell' || layer.startsWith('buildings-'))) near.gate++;
+    near.list.push({ atS: +((t - t0) / 1000).toFixed(2), layer, key, kind, distM: d, policy });
+  }
   for (const s of Object.values(sources)) { s.area = Math.round(s.area); s.soloArea = Math.round(s.soloArea); s.pxPerS = Math.round(s.area / secs); }
   const frameArea = 1280 * 800;
   return {
-    seconds: +secs.toFixed(1), frames: caps.length, analysed: raw.results.length, hitchFramesSkipped: hitches, hitchFramesPopPx: hitchArea, turnFramesSkipped: turns, turnFramesPopPx: turnArea, captureMsPerFrame: +(raw.captureMs / caps.length).toFixed(2),
+    nearInstalls: near, seconds: +secs.toFixed(1), frames: caps.length, analysed: raw.results.length, hitchFramesSkipped: hitches, hitchFramesPopPx: hitchArea, turnFramesSkipped: turns, turnFramesPopPx: turnArea, captureMsPerFrame: +(raw.captureMs / caps.length).toFixed(2),
     popPxPerS: Math.round(total / secs), popScreensPerMin: +((total / frameArea) / secs * 60).toFixed(3), framesWithPop,
     bigEvents: events.filter(e => e.area >= 1280 * 800 * 0.005).length,
     sources: Object.fromEntries(Object.entries(sources).sort((a, b) => b[1].area - a[1].area)),
@@ -441,6 +489,12 @@ async function strips(dump, dir, tag) {
 const report = s => {
   console.log(`${route} run ${s.run}: ${s.seconds}s pop ${s.popPxPerS} px/s (${s.popScreensPerMin} screens/min), frames with pop ${s.framesWithPop}/${s.frames} (skipped: hitches ${s.hitchFramesSkipped}, turns ${s.turnFramesSkipped}; capture ${s.captureMsPerFrame} ms/frame), big ${s.bigEvents}, heap ${s.heapMB.start}->${s.heapMB.end} MB, net ${(s.net.bytes / 1e6).toFixed(1)} MB/${s.net.requests} req`);
   for (const [k, v] of Object.entries(s.sources)) console.log(`  ${k.padEnd(20)} ${String(v.pxPerS).padStart(7)} px/s  frames ${v.frames} (solo ${v.soloFrames}, ${v.soloArea} px)  events ${v.events}`);
+  const ni = s.nearInstalls;
+  if (ni) {
+    console.log(`  installs within ${ni.radiusM} m of the rider: gate (ground-cell + facade chunk arrivals) ${ni.gate}; all installs measured ${ni.measured}`);
+    for (const [k, v] of Object.entries(ni.byLayer)) console.log(`    ${k.padEnd(28)} installs ${String(v.installs).padStart(4)}  within ${ni.radiusM} m ${String(v.near).padStart(3)}  nearest ${v.nearestM ?? '-'} m`);
+    for (const e of ni.list.slice(0, 20)) console.log(`    @${e.atS}s ${e.layer} ${e.kind} ${e.key} ${e.distM} m (${e.policy})`);
+  }
   if (s.errors.length) console.log('  errors', s.errors);
 };
 // --resummarise <json>: recompute the summaries from a run's saved raw data (filters tuned after the fact).
@@ -451,14 +505,14 @@ if (opt('resummarise', null)) {
   console.log('wrote', out);
   process.exit(0);
 }
-const browser = await chromium.launch({ headless: true, executablePath: '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome', args: ['--use-angle=metal', '--ignore-gpu-blocklist'] });
+const browser = await chromium.launch({ headless: process.env.HEADED !== '1', executablePath: '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome', args: ['--use-angle=metal', '--ignore-gpu-blocklist'] });
 const results = [];
 for (let n = 0; n < runs; n++) {
   const r = await run(browser, n);
   const s = { ...summarise(r), run: n };
   if (framesDir) s.strips = await strips(r.dump, framesDir, `${route}-run${n}`);
   // The raw series, for --resummarise: captures, per-frame results (no masks) and the streaming steps.
-  s.rawRun = { raw: { captures: r.raw.captures, results: r.raw.results, events: r.raw.events, track: r.raw.track, captureMs: r.raw.captureMs, heapMB: r.raw.heapMB, og: r.raw.og }, setup: r.setup, errors: r.errors, heap0: r.heap0, net: r.net };
+  s.rawRun = { raw: { installs: r.raw.installs, captures: r.raw.captures, results: r.raw.results, events: r.raw.events, track: r.raw.track, captureMs: r.raw.captureMs, heapMB: r.raw.heapMB, og: r.raw.og }, setup: r.setup, errors: r.errors, heap0: r.heap0, net: r.net };
   results.push(s);
   report(s);
 }
