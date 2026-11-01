@@ -322,8 +322,13 @@ have been live for a day, and watches the 48 h bar. Pin harness: the shading fli
 camera elevation, fixed in the spec (d80ab4245); trees are pinnable. **User
 asks (2026-11-01):** a first-person riding camera (#171, small opus lane after
 the flip), the cartoon look mode (#161, materials queue), road gaps at bridges
-(#178, opus lane `road-bridge-gaps-20261101` running: measure city-wide, then
-the systemic fix), too-white roofs in Da Costabuurt (#179, materials queue),
+(#178, opus lane `road-bridge-gaps-20261101`: measurement merged 2026-11-01,
+96c951790, HISTORY "Road gaps on bridges measured city-wide"; 1,293 of 2,418
+canal-scale bridge ways show ≥ 5 m² of carriageway gap; fixes approved behind
+`?bridgeGaps=0`: (1) one set of per-side, per-station deck widths for every
+consumer, (2) draw the bridge-level survey polygon on every deck, then (3) way
+decks over land under a survey bridge polygon once 1–2 are pinned; polder water
+levels out of scope), too-white roofs in Da Costabuurt (#179, materials queue),
 bumpy ground at Stationsplein / Centraal forecourt (AHN has no ground over the
 metro box and under the shed; fix = flatten the own ground to road level under
 road and plaza polygons; small lane after the flip). Integrator handoff for

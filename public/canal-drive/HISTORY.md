@@ -1,5 +1,26 @@
 # Canal Recall — what is built
 
+**Road gaps on bridges measured city-wide: three quarters of what shows through is a surveyed bridge-level road polygon the game drops (2026-11-01, #178).**
+Road bridge-gaps lane, hand-back 1 of 3 (96c951790), probe only, no game change.
+`ownGround/bridgeGaps.ts` and `scripts/roads/probe-bridge-gaps.ts` walk all 5,434
+OSM highway bridge ways in the 294 own-ground cells as the game builds them and
+sample every 0.5 m at the centreline and ±0.45/±0.85 of the half-width, recording
+what a camera above sees, why the road is absent and what carries that spot.
+Of 2,418 canal-scale street and cycle bridge ways (80 m or less), 1,293 have
+5 m² or more of carriageway gap; motorway bridges are almost all affected (346
+of 362). The gaps sit on the span, not the approaches, and mostly show land.
+z-fight is negligible (511 samples city-wide). 74 % of the non-road samples lie
+inside a roads-v1 deck-level polygon (h ≥ 1) that `roadSurfaces.ts` drops
+because its interior point is neither inside a measured deck's half-width nor
+over water; the second cause is the deck and the road taking their widths from
+different sources. That is why the fix is systemic rather than per bridge:
+one width source for every consumer, then draw the survey's bridge polygon on
+every deck, both behind `?bridgeGaps=0`. Probe outputs and orthophoto strips
+(De Clercqstraat, Bilderdijkstraat, De Ruijterkade, Kraaienplein…) are in the
+lane worktree under `artifacts/roads/bridge-gaps/before`. Integrator:
+`bridgeGaps.test.ts` joins test:own-ground (227/227); the `bridgeGaps` store
+option is declared but has no effect yet.
+
 **The facade mask uploads as R8 with the accent tint in the colour alpha: the iPhone facade atlas drops from 26.0 to 21.67 MB with the 128 px bays kept (2026-11-01, P4).**
 Materials (f3f6ff157). The mask was an RG8 array (R wall, G accent) beside an
 RGBA colour array whose alpha was always 255 and read by nothing; at upload
