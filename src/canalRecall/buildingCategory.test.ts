@@ -72,3 +72,25 @@ test('regression: Da Costakade 13 is drawn as an ordinary hand model, never a la
   assert.ok(!manualPoiModelIds().includes(id));
   assert.ok(!mergeManualPoiFeatures([]).some(f => (f as {modelId?: string}).modelId === id));
 });
+
+test('street furniture is its own category: drawn and catalogued, never a landmark, POI, card or route candidate (#170)', async () => {
+  const {BUILDING_CATEGORIES, CATEGORY_LABEL, countsAsLandmark} = await import('./buildingCategory.ts');
+  assert.ok((BUILDING_CATEGORIES as readonly string[]).includes('street-furniture'));
+  assert.equal(CATEGORY_LABEL['street-furniture'], 'Street furniture');
+  assert.equal(countsAsLandmark({buildingCategory: 'street-furniture'}), false);
+  assert.throws(() => ordinaryEntryCategory({id: 'x', category: 'street-furniture'}), 'never an ordinary-buildings catalogue entry');
+  const furniture = JSON.parse(fs.readFileSync('public/canal-drive/street-furniture/catalogue.json', 'utf8'));
+  assert.equal(furniture.category, 'street-furniture');
+  assert.ok(furniture.models.length >= 6);
+  const ids = new Set<string>(furniture.models.map((m: {id: string}) => m.id));
+  for (const m of furniture.models) {
+    assert.equal(m.category, 'street-furniture', m.id);
+    assert.ok(fs.existsSync(`public/canal-drive/${m.modelUrl.replace(/^\.\//, '')}`), m.modelUrl);
+    assert.ok(m.triangles > 0 && m.triangles <= 120, `${m.id}: ${m.triangles}`);
+  }
+  // No furniture model is in the game's building draw list, the landmark list or the POI catalogue.
+  for (const m of GAME_BUILDING_MODELS) assert.ok(!ids.has(m.id), m.id);
+  for (const m of SIGNATURE_MODELS) assert.ok(!ids.has(m.id), m.id);
+  for (const id of manualPoiModelIds()) assert.ok(!ids.has(id), id);
+  for (const f of mergeManualPoiFeatures([])) assert.ok(!ids.has(String((f as {modelId?: string}).modelId)), f.id);
+});

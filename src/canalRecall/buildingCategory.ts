@@ -12,13 +12,17 @@
  *                   reusable geometry: block faces (scripts/block-face/faces),
  *                   per-house recipes installed by scripts/building-recipes/
  *                   install.ts, and street chunks. Rendered; never a POI.
+ *   street-furniture — the city's own objects on the street from the open registers (underground-container tops,
+ *                   lamp posts, abris, reclamezuilen, bike hoops: streetFurniture/, lane #170). Instanced in the
+ *                   ride and listed in public/canal-drive/street-furniture/catalogue.json; never a landmark, POI,
+ *                   card, quiz item or route candidate, and never a building in the census headline.
  *
  * The category is recorded in the source data: `category` on every
  * ordinary-buildings-data/catalogue.json entry and chunks.json entry, and on
  * manualCatalogue.json entries that are not landmarks (absent = landmark).
  */
 
-export const BUILDING_CATEGORIES = ['landmark', 'ordinary', 'street-survey'] as const;
+export const BUILDING_CATEGORIES = ['landmark', 'ordinary', 'street-survey', 'street-furniture'] as const;
 export type BuildingCategory = typeof BUILDING_CATEGORIES[number];
 
 export const isBuildingCategory = (value: unknown): value is BuildingCategory =>
@@ -45,4 +49,5 @@ export const CATEGORY_LABEL: Readonly<Record<BuildingCategory, string>> = {
   landmark: 'Landmark',
   ordinary: 'Ordinary building',
   'street-survey': 'Street survey',
+  'street-furniture': 'Street furniture',
 };

@@ -1,0 +1,2765 @@
+{
+  "version": 1,
+  "zoom": 15,
+  "source": "Gemeente Amsterdam huishoudelijkafval (underground containers) and BGT via PDOK (paal, bak, straatmeubilair)",
+  "sourceUrl": "https://api.data.amsterdam.nl/v1/docs/datasets/huishoudelijkafval.html",
+  "sources": {
+    "containers": {
+      "apiUrl": "https://api.data.amsterdam.nl/v1/huishoudelijkafval/container/?_format=json&_pageSize=5000&_fields=id,fractieOmschrijving,geometrie,locatieId,clusterId,typeId,status,verwijderdDp,datumPlaatsing,containerKleur",
+      "typesUrl": "https://api.data.amsterdam.nl/v1/huishoudelijkafval/containertype/?_format=json&_pageSize=5000",
+      "licence": "Openbaar, tenzij anders aangegeven / behoudens uitzonderingen",
+      "owner": "Gemeente Amsterdam, Directie Afval en Grondstoffen"
+    },
+    "bgt": {
+      "apiUrl": "https://api.pdok.nl/lv/bgt/ogc/v1/collections/{paal,bak,straatmeubilair}/items?f=json&limit=1000&bbox=<1 km own-ground cell>",
+      "licence": "CC0 1.0",
+      "owner": "Kadaster / bronhouders, Basisregistratie Grootschalige Topografie"
+    },
+    "streets": {
+      "file": "public/data/extracts/amsterdam/streets-routing.json",
+      "use": "heading/facing/road: the nearest street centreline within 30 m (a prior; the registers carry no orientation)"
+    }
+  },
+  "licence": "Containers: openbaar, tenzij anders aangegeven; BGT: CC0 1.0",
+  "retrievedAt": "2026-11-01T20:10:17.348Z",
+  "cityBox": [
+    4.708732,
+    52.271185,
+    5.105981,
+    52.432882
+  ],
+  "headingMeaning": "heading = kerb axis (compass degrees, 0-180) of the nearest street centreline, or a container cluster's own principal axis; facing = compass bearing from the object to that street. Absent when no street lies within 30 m.",
+  "lampMeaning": "Lamp subtype is a documented prior (src/canalRecall/streetFurniture/extract.ts lampStyle): the classic hooked mast inside stadsdeel Centrum on residential/living/pedestrian/service streets, the straight modern pole elsewhere; lamp height comes from the road class (models.ts LAMP_HEIGHT_BY_ROAD).",
+  "total": 134712,
+  "counts": {
+    "container": {
+      "rest": 8662,
+      "papier": 2666,
+      "glas": 1474,
+      "textiel": 63,
+      "gft": 40,
+      "unknown": 354
+    },
+    "lamp": {
+      "pole": 113661,
+      "lantern": 6311
+    },
+    "ad-column": {
+      "reclamezuil": 241
+    },
+    "abri": {
+      "abri": 1133
+    },
+    "bike-rack": {
+      "fietsenrek": 107
+    }
+  },
+  "rejected": {
+    "container: inactive (status 0, removed or replaced)": 14226,
+    "container: ABOVE_GROUND (not an underground container top)": 1063,
+    "container: planned (status 2)": 873,
+    "container: DUMPSTER (not an underground container top)": 274,
+    "container: SKIP (not an underground container top)": 269,
+    "container: no geometry": 3,
+    "container: COLLECTION_POINT (not an underground container top)": 1226,
+    "paal: an ended BGT registration (an older version)": 26687,
+    "bak: an ended BGT registration (an older version)": 2955,
+    "container (BGT afvalbak): within 5 m of a register container": 168,
+    "straatmeubilair: an ended BGT registration (an older version)": 2451
+  },
+  "skippedTypes": {
+    "paal/verkeersbordpaal": 1669,
+    "paal/portaal": 44,
+    "paal/haltepaal": 15,
+    "paal/null": 195,
+    "paal/drukknoppaal": 24,
+    "paal/verkeersregelinstallatiepaal": 49,
+    "paal/afsluitpaal": 39,
+    "paal/hectometerpaal": 18,
+    "paal/vlaggenmast": 11,
+    "paal/dijkpaal": 1,
+    "bak/afval apart plaats": 10591,
+    "bak/container": 65,
+    "bak/bloembak": 4,
+    "bak/null": 3,
+    "straatmeubilair/speelvoorziening": 216,
+    "straatmeubilair/bank": 248,
+    "straatmeubilair/lichtpunt": 56,
+    "straatmeubilair/kunstobject": 561,
+    "straatmeubilair/null": 21,
+    "straatmeubilair/picknicktafel": 21,
+    "straatmeubilair/bolder": 69,
+    "straatmeubilair/brievenbus": 7,
+    "straatmeubilair/herdenkingsmonument": 89,
+    "straatmeubilair/openbaar toilet": 62,
+    "straatmeubilair/slagboom": 4,
+    "straatmeubilair/fontein": 2,
+    "straatmeubilair/telefooncel": 1
+  },
+  "tiles": [
+    {
+      "key": "15/16812/10759",
+      "url": "tiles/15-16812-10759.json.gz",
+      "count": 3,
+      "bytes": 191
+    },
+    {
+      "key": "15/16813/10759",
+      "url": "tiles/15-16813-10759.json.gz",
+      "count": 15,
+      "bytes": 649
+    },
+    {
+      "key": "15/16814/10759",
+      "url": "tiles/15-16814-10759.json.gz",
+      "count": 9,
+      "bytes": 441
+    },
+    {
+      "key": "15/16814/10761",
+      "url": "tiles/15-16814-10761.json.gz",
+      "count": 8,
+      "bytes": 422
+    },
+    {
+      "key": "15/16814/10762",
+      "url": "tiles/15-16814-10762.json.gz",
+      "count": 10,
+      "bytes": 492
+    },
+    {
+      "key": "15/16814/10763",
+      "url": "tiles/15-16814-10763.json.gz",
+      "count": 28,
+      "bytes": 1075
+    },
+    {
+      "key": "15/16814/10764",
+      "url": "tiles/15-16814-10764.json.gz",
+      "count": 4,
+      "bytes": 252
+    },
+    {
+      "key": "15/16815/10759",
+      "url": "tiles/15-16815-10759.json.gz",
+      "count": 4,
+      "bytes": 274
+    },
+    {
+      "key": "15/16815/10760",
+      "url": "tiles/15-16815-10760.json.gz",
+      "count": 37,
+      "bytes": 1330
+    },
+    {
+      "key": "15/16815/10761",
+      "url": "tiles/15-16815-10761.json.gz",
+      "count": 91,
+      "bytes": 3083
+    },
+    {
+      "key": "15/16815/10762",
+      "url": "tiles/15-16815-10762.json.gz",
+      "count": 110,
+      "bytes": 3727
+    },
+    {
+      "key": "15/16815/10763",
+      "url": "tiles/15-16815-10763.json.gz",
+      "count": 89,
+      "bytes": 3141
+    },
+    {
+      "key": "15/16815/10764",
+      "url": "tiles/15-16815-10764.json.gz",
+      "count": 1,
+      "bytes": 154
+    },
+    {
+      "key": "15/16815/10765",
+      "url": "tiles/15-16815-10765.json.gz",
+      "count": 1,
+      "bytes": 154
+    },
+    {
+      "key": "15/16815/10766",
+      "url": "tiles/15-16815-10766.json.gz",
+      "count": 175,
+      "bytes": 5452
+    },
+    {
+      "key": "15/16815/10767",
+      "url": "tiles/15-16815-10767.json.gz",
+      "count": 140,
+      "bytes": 4312
+    },
+    {
+      "key": "15/16816/10759",
+      "url": "tiles/15-16816-10759.json.gz",
+      "count": 20,
+      "bytes": 431
+    },
+    {
+      "key": "15/16816/10760",
+      "url": "tiles/15-16816-10760.json.gz",
+      "count": 28,
+      "bytes": 1105
+    },
+    {
+      "key": "15/16816/10761",
+      "url": "tiles/15-16816-10761.json.gz",
+      "count": 49,
+      "bytes": 1828
+    },
+    {
+      "key": "15/16816/10762",
+      "url": "tiles/15-16816-10762.json.gz",
+      "count": 53,
+      "bytes": 1912
+    },
+    {
+      "key": "15/16816/10763",
+      "url": "tiles/15-16816-10763.json.gz",
+      "count": 237,
+      "bytes": 7814
+    },
+    {
+      "key": "15/16816/10764",
+      "url": "tiles/15-16816-10764.json.gz",
+      "count": 40,
+      "bytes": 1445
+    },
+    {
+      "key": "15/16816/10765",
+      "url": "tiles/15-16816-10765.json.gz",
+      "count": 9,
+      "bytes": 443
+    },
+    {
+      "key": "15/16816/10766",
+      "url": "tiles/15-16816-10766.json.gz",
+      "count": 241,
+      "bytes": 7718
+    },
+    {
+      "key": "15/16816/10767",
+      "url": "tiles/15-16816-10767.json.gz",
+      "count": 249,
+      "bytes": 7809
+    },
+    {
+      "key": "15/16816/10768",
+      "url": "tiles/15-16816-10768.json.gz",
+      "count": 84,
+      "bytes": 2702
+    },
+    {
+      "key": "15/16816/10769",
+      "url": "tiles/15-16816-10769.json.gz",
+      "count": 10,
+      "bytes": 427
+    },
+    {
+      "key": "15/16816/10770",
+      "url": "tiles/15-16816-10770.json.gz",
+      "count": 29,
+      "bytes": 980
+    },
+    {
+      "key": "15/16816/10771",
+      "url": "tiles/15-16816-10771.json.gz",
+      "count": 47,
+      "bytes": 1568
+    },
+    {
+      "key": "15/16816/10772",
+      "url": "tiles/15-16816-10772.json.gz",
+      "count": 14,
+      "bytes": 592
+    },
+    {
+      "key": "15/16817/10759",
+      "url": "tiles/15-16817-10759.json.gz",
+      "count": 13,
+      "bytes": 342
+    },
+    {
+      "key": "15/16817/10760",
+      "url": "tiles/15-16817-10760.json.gz",
+      "count": 4,
+      "bytes": 306
+    },
+    {
+      "key": "15/16817/10761",
+      "url": "tiles/15-16817-10761.json.gz",
+      "count": 31,
+      "bytes": 1174
+    },
+    {
+      "key": "15/16817/10762",
+      "url": "tiles/15-16817-10762.json.gz",
+      "count": 71,
+      "bytes": 2478
+    },
+    {
+      "key": "15/16817/10763",
+      "url": "tiles/15-16817-10763.json.gz",
+      "count": 175,
+      "bytes": 6014
+    },
+    {
+      "key": "15/16817/10764",
+      "url": "tiles/15-16817-10764.json.gz",
+      "count": 119,
+      "bytes": 3997
+    },
+    {
+      "key": "15/16817/10765",
+      "url": "tiles/15-16817-10765.json.gz",
+      "count": 47,
+      "bytes": 1692
+    },
+    {
+      "key": "15/16817/10766",
+      "url": "tiles/15-16817-10766.json.gz",
+      "count": 62,
+      "bytes": 2235
+    },
+    {
+      "key": "15/16817/10767",
+      "url": "tiles/15-16817-10767.json.gz",
+      "count": 77,
+      "bytes": 2730
+    },
+    {
+      "key": "15/16817/10768",
+      "url": "tiles/15-16817-10768.json.gz",
+      "count": 45,
+      "bytes": 1617
+    },
+    {
+      "key": "15/16817/10769",
+      "url": "tiles/15-16817-10769.json.gz",
+      "count": 16,
+      "bytes": 654
+    },
+    {
+      "key": "15/16817/10770",
+      "url": "tiles/15-16817-10770.json.gz",
+      "count": 59,
+      "bytes": 2040
+    },
+    {
+      "key": "15/16817/10771",
+      "url": "tiles/15-16817-10771.json.gz",
+      "count": 249,
+      "bytes": 7909
+    },
+    {
+      "key": "15/16817/10772",
+      "url": "tiles/15-16817-10772.json.gz",
+      "count": 271,
+      "bytes": 8440
+    },
+    {
+      "key": "15/16818/10759",
+      "url": "tiles/15-16818-10759.json.gz",
+      "count": 164,
+      "bytes": 2272
+    },
+    {
+      "key": "15/16818/10760",
+      "url": "tiles/15-16818-10760.json.gz",
+      "count": 40,
+      "bytes": 694
+    },
+    {
+      "key": "15/16818/10762",
+      "url": "tiles/15-16818-10762.json.gz",
+      "count": 7,
+      "bytes": 394
+    },
+    {
+      "key": "15/16818/10764",
+      "url": "tiles/15-16818-10764.json.gz",
+      "count": 163,
+      "bytes": 5696
+    },
+    {
+      "key": "15/16818/10765",
+      "url": "tiles/15-16818-10765.json.gz",
+      "count": 231,
+      "bytes": 7902
+    },
+    {
+      "key": "15/16818/10766",
+      "url": "tiles/15-16818-10766.json.gz",
+      "count": 48,
+      "bytes": 1793
+    },
+    {
+      "key": "15/16818/10767",
+      "url": "tiles/15-16818-10767.json.gz",
+      "count": 92,
+      "bytes": 3093
+    },
+    {
+      "key": "15/16818/10768",
+      "url": "tiles/15-16818-10768.json.gz",
+      "count": 71,
+      "bytes": 2529
+    },
+    {
+      "key": "15/16818/10769",
+      "url": "tiles/15-16818-10769.json.gz",
+      "count": 36,
+      "bytes": 1310
+    },
+    {
+      "key": "15/16818/10770",
+      "url": "tiles/15-16818-10770.json.gz",
+      "count": 152,
+      "bytes": 5361
+    },
+    {
+      "key": "15/16818/10771",
+      "url": "tiles/15-16818-10771.json.gz",
+      "count": 843,
+      "bytes": 26773
+    },
+    {
+      "key": "15/16818/10772",
+      "url": "tiles/15-16818-10772.json.gz",
+      "count": 563,
+      "bytes": 17199
+    },
+    {
+      "key": "15/16819/10759",
+      "url": "tiles/15-16819-10759.json.gz",
+      "count": 55,
+      "bytes": 981
+    },
+    {
+      "key": "15/16819/10760",
+      "url": "tiles/15-16819-10760.json.gz",
+      "count": 26,
+      "bytes": 520
+    },
+    {
+      "key": "15/16819/10761",
+      "url": "tiles/15-16819-10761.json.gz",
+      "count": 48,
+      "bytes": 1679
+    },
+    {
+      "key": "15/16819/10762",
+      "url": "tiles/15-16819-10762.json.gz",
+      "count": 4,
+      "bytes": 290
+    },
+    {
+      "key": "15/16819/10763",
+      "url": "tiles/15-16819-10763.json.gz",
+      "count": 25,
+      "bytes": 984
+    },
+    {
+      "key": "15/16819/10764",
+      "url": "tiles/15-16819-10764.json.gz",
+      "count": 131,
+      "bytes": 4249
+    },
+    {
+      "key": "15/16819/10765",
+      "url": "tiles/15-16819-10765.json.gz",
+      "count": 269,
+      "bytes": 8670
+    },
+    {
+      "key": "15/16819/10766",
+      "url": "tiles/15-16819-10766.json.gz",
+      "count": 78,
+      "bytes": 2788
+    },
+    {
+      "key": "15/16819/10767",
+      "url": "tiles/15-16819-10767.json.gz",
+      "count": 356,
+      "bytes": 11578
+    },
+    {
+      "key": "15/16819/10768",
+      "url": "tiles/15-16819-10768.json.gz",
+      "count": 77,
+      "bytes": 2708
+    },
+    {
+      "key": "15/16819/10769",
+      "url": "tiles/15-16819-10769.json.gz",
+      "count": 125,
+      "bytes": 4422
+    },
+    {
+      "key": "15/16819/10770",
+      "url": "tiles/15-16819-10770.json.gz",
+      "count": 768,
+      "bytes": 24340
+    },
+    {
+      "key": "15/16819/10771",
+      "url": "tiles/15-16819-10771.json.gz",
+      "count": 805,
+      "bytes": 25057
+    },
+    {
+      "key": "15/16819/10772",
+      "url": "tiles/15-16819-10772.json.gz",
+      "count": 645,
+      "bytes": 20178
+    },
+    {
+      "key": "15/16819/10773",
+      "url": "tiles/15-16819-10773.json.gz",
+      "count": 323,
+      "bytes": 9967
+    },
+    {
+      "key": "15/16819/10774",
+      "url": "tiles/15-16819-10774.json.gz",
+      "count": 43,
+      "bytes": 1444
+    },
+    {
+      "key": "15/16820/10760",
+      "url": "tiles/15-16820-10760.json.gz",
+      "count": 15,
+      "bytes": 646
+    },
+    {
+      "key": "15/16820/10761",
+      "url": "tiles/15-16820-10761.json.gz",
+      "count": 65,
+      "bytes": 2301
+    },
+    {
+      "key": "15/16820/10762",
+      "url": "tiles/15-16820-10762.json.gz",
+      "count": 125,
+      "bytes": 4176
+    },
+    {
+      "key": "15/16820/10763",
+      "url": "tiles/15-16820-10763.json.gz",
+      "count": 98,
+      "bytes": 3203
+    },
+    {
+      "key": "15/16820/10764",
+      "url": "tiles/15-16820-10764.json.gz",
+      "count": 228,
+      "bytes": 7935
+    },
+    {
+      "key": "15/16820/10765",
+      "url": "tiles/15-16820-10765.json.gz",
+      "count": 290,
+      "bytes": 9493
+    },
+    {
+      "key": "15/16820/10766",
+      "url": "tiles/15-16820-10766.json.gz",
+      "count": 267,
+      "bytes": 8750
+    },
+    {
+      "key": "15/16820/10767",
+      "url": "tiles/15-16820-10767.json.gz",
+      "count": 881,
+      "bytes": 28153
+    },
+    {
+      "key": "15/16820/10768",
+      "url": "tiles/15-16820-10768.json.gz",
+      "count": 350,
+      "bytes": 11595
+    },
+    {
+      "key": "15/16820/10769",
+      "url": "tiles/15-16820-10769.json.gz",
+      "count": 494,
+      "bytes": 15417
+    },
+    {
+      "key": "15/16820/10770",
+      "url": "tiles/15-16820-10770.json.gz",
+      "count": 889,
+      "bytes": 27250
+    },
+    {
+      "key": "15/16820/10771",
+      "url": "tiles/15-16820-10771.json.gz",
+      "count": 804,
+      "bytes": 24394
+    },
+    {
+      "key": "15/16820/10772",
+      "url": "tiles/15-16820-10772.json.gz",
+      "count": 623,
+      "bytes": 20419
+    },
+    {
+      "key": "15/16820/10773",
+      "url": "tiles/15-16820-10773.json.gz",
+      "count": 437,
+      "bytes": 14282
+    },
+    {
+      "key": "15/16820/10774",
+      "url": "tiles/15-16820-10774.json.gz",
+      "count": 167,
+      "bytes": 5212
+    },
+    {
+      "key": "15/16820/10775",
+      "url": "tiles/15-16820-10775.json.gz",
+      "count": 19,
+      "bytes": 695
+    },
+    {
+      "key": "15/16821/10760",
+      "url": "tiles/15-16821-10760.json.gz",
+      "count": 4,
+      "bytes": 198
+    },
+    {
+      "key": "15/16821/10761",
+      "url": "tiles/15-16821-10761.json.gz",
+      "count": 41,
+      "bytes": 1540
+    },
+    {
+      "key": "15/16821/10762",
+      "url": "tiles/15-16821-10762.json.gz",
+      "count": 131,
+      "bytes": 4576
+    },
+    {
+      "key": "15/16821/10763",
+      "url": "tiles/15-16821-10763.json.gz",
+      "count": 89,
+      "bytes": 3073
+    },
+    {
+      "key": "15/16821/10764",
+      "url": "tiles/15-16821-10764.json.gz",
+      "count": 113,
+      "bytes": 3997
+    },
+    {
+      "key": "15/16821/10765",
+      "url": "tiles/15-16821-10765.json.gz",
+      "count": 336,
+      "bytes": 11339
+    },
+    {
+      "key": "15/16821/10766",
+      "url": "tiles/15-16821-10766.json.gz",
+      "count": 272,
+      "bytes": 9036
+    },
+    {
+      "key": "15/16821/10767",
+      "url": "tiles/15-16821-10767.json.gz",
+      "count": 885,
+      "bytes": 27708
+    },
+    {
+      "key": "15/16821/10768",
+      "url": "tiles/15-16821-10768.json.gz",
+      "count": 557,
+      "bytes": 17689
+    },
+    {
+      "key": "15/16821/10769",
+      "url": "tiles/15-16821-10769.json.gz",
+      "count": 601,
+      "bytes": 19002
+    },
+    {
+      "key": "15/16821/10770",
+      "url": "tiles/15-16821-10770.json.gz",
+      "count": 603,
+      "bytes": 18966
+    },
+    {
+      "key": "15/16821/10771",
+      "url": "tiles/15-16821-10771.json.gz",
+      "count": 866,
+      "bytes": 27042
+    },
+    {
+      "key": "15/16821/10772",
+      "url": "tiles/15-16821-10772.json.gz",
+      "count": 1174,
+      "bytes": 36827
+    },
+    {
+      "key": "15/16821/10773",
+      "url": "tiles/15-16821-10773.json.gz",
+      "count": 212,
+      "bytes": 7292
+    },
+    {
+      "key": "15/16821/10774",
+      "url": "tiles/15-16821-10774.json.gz",
+      "count": 119,
+      "bytes": 4053
+    },
+    {
+      "key": "15/16821/10775",
+      "url": "tiles/15-16821-10775.json.gz",
+      "count": 17,
+      "bytes": 632
+    },
+    {
+      "key": "15/16821/10776",
+      "url": "tiles/15-16821-10776.json.gz",
+      "count": 2,
+      "bytes": 193
+    },
+    {
+      "key": "15/16822/10760",
+      "url": "tiles/15-16822-10760.json.gz",
+      "count": 8,
+      "bytes": 254
+    },
+    {
+      "key": "15/16822/10761",
+      "url": "tiles/15-16822-10761.json.gz",
+      "count": 25,
+      "bytes": 905
+    },
+    {
+      "key": "15/16822/10762",
+      "url": "tiles/15-16822-10762.json.gz",
+      "count": 2,
+      "bytes": 221
+    },
+    {
+      "key": "15/16822/10764",
+      "url": "tiles/15-16822-10764.json.gz",
+      "count": 14,
+      "bytes": 584
+    },
+    {
+      "key": "15/16822/10765",
+      "url": "tiles/15-16822-10765.json.gz",
+      "count": 181,
+      "bytes": 6232
+    },
+    {
+      "key": "15/16822/10766",
+      "url": "tiles/15-16822-10766.json.gz",
+      "count": 397,
+      "bytes": 12957
+    },
+    {
+      "key": "15/16822/10767",
+      "url": "tiles/15-16822-10767.json.gz",
+      "count": 864,
+      "bytes": 27785
+    },
+    {
+      "key": "15/16822/10768",
+      "url": "tiles/15-16822-10768.json.gz",
+      "count": 518,
+      "bytes": 16927
+    },
+    {
+      "key": "15/16822/10769",
+      "url": "tiles/15-16822-10769.json.gz",
+      "count": 51,
+      "bytes": 1885
+    },
+    {
+      "key": "15/16822/10770",
+      "url": "tiles/15-16822-10770.json.gz",
+      "count": 496,
+      "bytes": 16316
+    },
+    {
+      "key": "15/16822/10771",
+      "url": "tiles/15-16822-10771.json.gz",
+      "count": 724,
+      "bytes": 22840
+    },
+    {
+      "key": "15/16822/10772",
+      "url": "tiles/15-16822-10772.json.gz",
+      "count": 1013,
+      "bytes": 32057
+    },
+    {
+      "key": "15/16822/10773",
+      "url": "tiles/15-16822-10773.json.gz",
+      "count": 212,
+      "bytes": 7429
+    },
+    {
+      "key": "15/16822/10774",
+      "url": "tiles/15-16822-10774.json.gz",
+      "count": 18,
+      "bytes": 827
+    },
+    {
+      "key": "15/16822/10775",
+      "url": "tiles/15-16822-10775.json.gz",
+      "count": 56,
+      "bytes": 1939
+    },
+    {
+      "key": "15/16822/10776",
+      "url": "tiles/15-16822-10776.json.gz",
+      "count": 69,
+      "bytes": 2258
+    },
+    {
+      "key": "15/16823/10760",
+      "url": "tiles/15-16823-10760.json.gz",
+      "count": 42,
+      "bytes": 713
+    },
+    {
+      "key": "15/16823/10761",
+      "url": "tiles/15-16823-10761.json.gz",
+      "count": 144,
+      "bytes": 4035
+    },
+    {
+      "key": "15/16823/10762",
+      "url": "tiles/15-16823-10762.json.gz",
+      "count": 119,
+      "bytes": 4306
+    },
+    {
+      "key": "15/16823/10763",
+      "url": "tiles/15-16823-10763.json.gz",
+      "count": 68,
+      "bytes": 2392
+    },
+    {
+      "key": "15/16823/10764",
+      "url": "tiles/15-16823-10764.json.gz",
+      "count": 31,
+      "bytes": 1168
+    },
+    {
+      "key": "15/16823/10765",
+      "url": "tiles/15-16823-10765.json.gz",
+      "count": 257,
+      "bytes": 8140
+    },
+    {
+      "key": "15/16823/10766",
+      "url": "tiles/15-16823-10766.json.gz",
+      "count": 530,
+      "bytes": 16886
+    },
+    {
+      "key": "15/16823/10767",
+      "url": "tiles/15-16823-10767.json.gz",
+      "count": 967,
+      "bytes": 30040
+    },
+    {
+      "key": "15/16823/10768",
+      "url": "tiles/15-16823-10768.json.gz",
+      "count": 696,
+      "bytes": 22368
+    },
+    {
+      "key": "15/16823/10769",
+      "url": "tiles/15-16823-10769.json.gz",
+      "count": 763,
+      "bytes": 23554
+    },
+    {
+      "key": "15/16823/10770",
+      "url": "tiles/15-16823-10770.json.gz",
+      "count": 1115,
+      "bytes": 35153
+    },
+    {
+      "key": "15/16823/10771",
+      "url": "tiles/15-16823-10771.json.gz",
+      "count": 721,
+      "bytes": 22422
+    },
+    {
+      "key": "15/16823/10772",
+      "url": "tiles/15-16823-10772.json.gz",
+      "count": 616,
+      "bytes": 19990
+    },
+    {
+      "key": "15/16823/10773",
+      "url": "tiles/15-16823-10773.json.gz",
+      "count": 280,
+      "bytes": 9430
+    },
+    {
+      "key": "15/16823/10774",
+      "url": "tiles/15-16823-10774.json.gz",
+      "count": 29,
+      "bytes": 1124
+    },
+    {
+      "key": "15/16824/10760",
+      "url": "tiles/15-16824-10760.json.gz",
+      "count": 14,
+      "bytes": 317
+    },
+    {
+      "key": "15/16824/10761",
+      "url": "tiles/15-16824-10761.json.gz",
+      "count": 38,
+      "bytes": 800
+    },
+    {
+      "key": "15/16824/10762",
+      "url": "tiles/15-16824-10762.json.gz",
+      "count": 4,
+      "bytes": 285
+    },
+    {
+      "key": "15/16824/10763",
+      "url": "tiles/15-16824-10763.json.gz",
+      "count": 222,
+      "bytes": 7631
+    },
+    {
+      "key": "15/16824/10764",
+      "url": "tiles/15-16824-10764.json.gz",
+      "count": 271,
+      "bytes": 9047
+    },
+    {
+      "key": "15/16824/10765",
+      "url": "tiles/15-16824-10765.json.gz",
+      "count": 434,
+      "bytes": 14650
+    },
+    {
+      "key": "15/16824/10766",
+      "url": "tiles/15-16824-10766.json.gz",
+      "count": 550,
+      "bytes": 18238
+    },
+    {
+      "key": "15/16824/10767",
+      "url": "tiles/15-16824-10767.json.gz",
+      "count": 824,
+      "bytes": 25925
+    },
+    {
+      "key": "15/16824/10768",
+      "url": "tiles/15-16824-10768.json.gz",
+      "count": 655,
+      "bytes": 21421
+    },
+    {
+      "key": "15/16824/10769",
+      "url": "tiles/15-16824-10769.json.gz",
+      "count": 828,
+      "bytes": 25240
+    },
+    {
+      "key": "15/16824/10770",
+      "url": "tiles/15-16824-10770.json.gz",
+      "count": 752,
+      "bytes": 23906
+    },
+    {
+      "key": "15/16824/10771",
+      "url": "tiles/15-16824-10771.json.gz",
+      "count": 682,
+      "bytes": 21234
+    },
+    {
+      "key": "15/16824/10772",
+      "url": "tiles/15-16824-10772.json.gz",
+      "count": 623,
+      "bytes": 19877
+    },
+    {
+      "key": "15/16824/10773",
+      "url": "tiles/15-16824-10773.json.gz",
+      "count": 126,
+      "bytes": 4367
+    },
+    {
+      "key": "15/16825/10759",
+      "url": "tiles/15-16825-10759.json.gz",
+      "count": 3,
+      "bytes": 206
+    },
+    {
+      "key": "15/16825/10760",
+      "url": "tiles/15-16825-10760.json.gz",
+      "count": 44,
+      "bytes": 715
+    },
+    {
+      "key": "15/16825/10761",
+      "url": "tiles/15-16825-10761.json.gz",
+      "count": 116,
+      "bytes": 1530
+    },
+    {
+      "key": "15/16825/10762",
+      "url": "tiles/15-16825-10762.json.gz",
+      "count": 32,
+      "bytes": 1270
+    },
+    {
+      "key": "15/16825/10763",
+      "url": "tiles/15-16825-10763.json.gz",
+      "count": 77,
+      "bytes": 2807
+    },
+    {
+      "key": "15/16825/10764",
+      "url": "tiles/15-16825-10764.json.gz",
+      "count": 361,
+      "bytes": 12298
+    },
+    {
+      "key": "15/16825/10765",
+      "url": "tiles/15-16825-10765.json.gz",
+      "count": 487,
+      "bytes": 15886
+    },
+    {
+      "key": "15/16825/10766",
+      "url": "tiles/15-16825-10766.json.gz",
+      "count": 624,
+      "bytes": 20084
+    },
+    {
+      "key": "15/16825/10767",
+      "url": "tiles/15-16825-10767.json.gz",
+      "count": 1044,
+      "bytes": 32875
+    },
+    {
+      "key": "15/16825/10768",
+      "url": "tiles/15-16825-10768.json.gz",
+      "count": 716,
+      "bytes": 22262
+    },
+    {
+      "key": "15/16825/10769",
+      "url": "tiles/15-16825-10769.json.gz",
+      "count": 657,
+      "bytes": 20745
+    },
+    {
+      "key": "15/16825/10770",
+      "url": "tiles/15-16825-10770.json.gz",
+      "count": 711,
+      "bytes": 22577
+    },
+    {
+      "key": "15/16825/10771",
+      "url": "tiles/15-16825-10771.json.gz",
+      "count": 718,
+      "bytes": 22687
+    },
+    {
+      "key": "15/16825/10772",
+      "url": "tiles/15-16825-10772.json.gz",
+      "count": 425,
+      "bytes": 14258
+    },
+    {
+      "key": "15/16825/10773",
+      "url": "tiles/15-16825-10773.json.gz",
+      "count": 391,
+      "bytes": 13149
+    },
+    {
+      "key": "15/16825/10774",
+      "url": "tiles/15-16825-10774.json.gz",
+      "count": 114,
+      "bytes": 3969
+    },
+    {
+      "key": "15/16826/10759",
+      "url": "tiles/15-16826-10759.json.gz",
+      "count": 121,
+      "bytes": 3302
+    },
+    {
+      "key": "15/16826/10760",
+      "url": "tiles/15-16826-10760.json.gz",
+      "count": 92,
+      "bytes": 1829
+    },
+    {
+      "key": "15/16826/10761",
+      "url": "tiles/15-16826-10761.json.gz",
+      "count": 31,
+      "bytes": 708
+    },
+    {
+      "key": "15/16826/10762",
+      "url": "tiles/15-16826-10762.json.gz",
+      "count": 44,
+      "bytes": 1684
+    },
+    {
+      "key": "15/16826/10763",
+      "url": "tiles/15-16826-10763.json.gz",
+      "count": 91,
+      "bytes": 3148
+    },
+    {
+      "key": "15/16826/10764",
+      "url": "tiles/15-16826-10764.json.gz",
+      "count": 53,
+      "bytes": 1977
+    },
+    {
+      "key": "15/16826/10765",
+      "url": "tiles/15-16826-10765.json.gz",
+      "count": 168,
+      "bytes": 5935
+    },
+    {
+      "key": "15/16826/10766",
+      "url": "tiles/15-16826-10766.json.gz",
+      "count": 362,
+      "bytes": 12222
+    },
+    {
+      "key": "15/16826/10767",
+      "url": "tiles/15-16826-10767.json.gz",
+      "count": 654,
+      "bytes": 20620
+    },
+    {
+      "key": "15/16826/10768",
+      "url": "tiles/15-16826-10768.json.gz",
+      "count": 780,
+      "bytes": 24529
+    },
+    {
+      "key": "15/16826/10769",
+      "url": "tiles/15-16826-10769.json.gz",
+      "count": 706,
+      "bytes": 21138
+    },
+    {
+      "key": "15/16826/10770",
+      "url": "tiles/15-16826-10770.json.gz",
+      "count": 523,
+      "bytes": 15965
+    },
+    {
+      "key": "15/16826/10771",
+      "url": "tiles/15-16826-10771.json.gz",
+      "count": 616,
+      "bytes": 20089
+    },
+    {
+      "key": "15/16826/10772",
+      "url": "tiles/15-16826-10772.json.gz",
+      "count": 631,
+      "bytes": 20254
+    },
+    {
+      "key": "15/16826/10773",
+      "url": "tiles/15-16826-10773.json.gz",
+      "count": 377,
+      "bytes": 12565
+    },
+    {
+      "key": "15/16826/10774",
+      "url": "tiles/15-16826-10774.json.gz",
+      "count": 542,
+      "bytes": 17376
+    },
+    {
+      "key": "15/16826/10775",
+      "url": "tiles/15-16826-10775.json.gz",
+      "count": 708,
+      "bytes": 21578
+    },
+    {
+      "key": "15/16826/10776",
+      "url": "tiles/15-16826-10776.json.gz",
+      "count": 25,
+      "bytes": 1017
+    },
+    {
+      "key": "15/16827/10759",
+      "url": "tiles/15-16827-10759.json.gz",
+      "count": 7,
+      "bytes": 408
+    },
+    {
+      "key": "15/16827/10760",
+      "url": "tiles/15-16827-10760.json.gz",
+      "count": 33,
+      "bytes": 1324
+    },
+    {
+      "key": "15/16827/10761",
+      "url": "tiles/15-16827-10761.json.gz",
+      "count": 189,
+      "bytes": 6561
+    },
+    {
+      "key": "15/16827/10762",
+      "url": "tiles/15-16827-10762.json.gz",
+      "count": 311,
+      "bytes": 9937
+    },
+    {
+      "key": "15/16827/10763",
+      "url": "tiles/15-16827-10763.json.gz",
+      "count": 21,
+      "bytes": 906
+    },
+    {
+      "key": "15/16827/10764",
+      "url": "tiles/15-16827-10764.json.gz",
+      "count": 140,
+      "bytes": 4858
+    },
+    {
+      "key": "15/16827/10765",
+      "url": "tiles/15-16827-10765.json.gz",
+      "count": 333,
+      "bytes": 11171
+    },
+    {
+      "key": "15/16827/10766",
+      "url": "tiles/15-16827-10766.json.gz",
+      "count": 618,
+      "bytes": 19891
+    },
+    {
+      "key": "15/16827/10767",
+      "url": "tiles/15-16827-10767.json.gz",
+      "count": 679,
+      "bytes": 22198
+    },
+    {
+      "key": "15/16827/10768",
+      "url": "tiles/15-16827-10768.json.gz",
+      "count": 641,
+      "bytes": 20949
+    },
+    {
+      "key": "15/16827/10769",
+      "url": "tiles/15-16827-10769.json.gz",
+      "count": 660,
+      "bytes": 19728
+    },
+    {
+      "key": "15/16827/10770",
+      "url": "tiles/15-16827-10770.json.gz",
+      "count": 444,
+      "bytes": 14551
+    },
+    {
+      "key": "15/16827/10771",
+      "url": "tiles/15-16827-10771.json.gz",
+      "count": 635,
+      "bytes": 20212
+    },
+    {
+      "key": "15/16827/10772",
+      "url": "tiles/15-16827-10772.json.gz",
+      "count": 728,
+      "bytes": 22744
+    },
+    {
+      "key": "15/16827/10773",
+      "url": "tiles/15-16827-10773.json.gz",
+      "count": 642,
+      "bytes": 21271
+    },
+    {
+      "key": "15/16827/10774",
+      "url": "tiles/15-16827-10774.json.gz",
+      "count": 800,
+      "bytes": 24526
+    },
+    {
+      "key": "15/16827/10775",
+      "url": "tiles/15-16827-10775.json.gz",
+      "count": 782,
+      "bytes": 23915
+    },
+    {
+      "key": "15/16827/10776",
+      "url": "tiles/15-16827-10776.json.gz",
+      "count": 9,
+      "bytes": 465
+    },
+    {
+      "key": "15/16828/10760",
+      "url": "tiles/15-16828-10760.json.gz",
+      "count": 166,
+      "bytes": 5706
+    },
+    {
+      "key": "15/16828/10761",
+      "url": "tiles/15-16828-10761.json.gz",
+      "count": 777,
+      "bytes": 25625
+    },
+    {
+      "key": "15/16828/10762",
+      "url": "tiles/15-16828-10762.json.gz",
+      "count": 691,
+      "bytes": 22282
+    },
+    {
+      "key": "15/16828/10763",
+      "url": "tiles/15-16828-10763.json.gz",
+      "count": 139,
+      "bytes": 4592
+    },
+    {
+      "key": "15/16828/10764",
+      "url": "tiles/15-16828-10764.json.gz",
+      "count": 79,
+      "bytes": 2725
+    },
+    {
+      "key": "15/16828/10765",
+      "url": "tiles/15-16828-10765.json.gz",
+      "count": 475,
+      "bytes": 15296
+    },
+    {
+      "key": "15/16828/10766",
+      "url": "tiles/15-16828-10766.json.gz",
+      "count": 618,
+      "bytes": 20877
+    },
+    {
+      "key": "15/16828/10767",
+      "url": "tiles/15-16828-10767.json.gz",
+      "count": 468,
+      "bytes": 15409
+    },
+    {
+      "key": "15/16828/10768",
+      "url": "tiles/15-16828-10768.json.gz",
+      "count": 483,
+      "bytes": 15579
+    },
+    {
+      "key": "15/16828/10769",
+      "url": "tiles/15-16828-10769.json.gz",
+      "count": 509,
+      "bytes": 17117
+    },
+    {
+      "key": "15/16828/10770",
+      "url": "tiles/15-16828-10770.json.gz",
+      "count": 607,
+      "bytes": 20226
+    },
+    {
+      "key": "15/16828/10771",
+      "url": "tiles/15-16828-10771.json.gz",
+      "count": 524,
+      "bytes": 17053
+    },
+    {
+      "key": "15/16828/10772",
+      "url": "tiles/15-16828-10772.json.gz",
+      "count": 455,
+      "bytes": 14858
+    },
+    {
+      "key": "15/16828/10773",
+      "url": "tiles/15-16828-10773.json.gz",
+      "count": 228,
+      "bytes": 7825
+    },
+    {
+      "key": "15/16828/10774",
+      "url": "tiles/15-16828-10774.json.gz",
+      "count": 808,
+      "bytes": 24765
+    },
+    {
+      "key": "15/16828/10775",
+      "url": "tiles/15-16828-10775.json.gz",
+      "count": 785,
+      "bytes": 24222
+    },
+    {
+      "key": "15/16829/10759",
+      "url": "tiles/15-16829-10759.json.gz",
+      "count": 6,
+      "bytes": 214
+    },
+    {
+      "key": "15/16829/10760",
+      "url": "tiles/15-16829-10760.json.gz",
+      "count": 217,
+      "bytes": 6919
+    },
+    {
+      "key": "15/16829/10761",
+      "url": "tiles/15-16829-10761.json.gz",
+      "count": 638,
+      "bytes": 21610
+    },
+    {
+      "key": "15/16829/10762",
+      "url": "tiles/15-16829-10762.json.gz",
+      "count": 765,
+      "bytes": 24765
+    },
+    {
+      "key": "15/16829/10763",
+      "url": "tiles/15-16829-10763.json.gz",
+      "count": 609,
+      "bytes": 19467
+    },
+    {
+      "key": "15/16829/10764",
+      "url": "tiles/15-16829-10764.json.gz",
+      "count": 146,
+      "bytes": 5012
+    },
+    {
+      "key": "15/16829/10765",
+      "url": "tiles/15-16829-10765.json.gz",
+      "count": 108,
+      "bytes": 3613
+    },
+    {
+      "key": "15/16829/10766",
+      "url": "tiles/15-16829-10766.json.gz",
+      "count": 251,
+      "bytes": 8382
+    },
+    {
+      "key": "15/16829/10767",
+      "url": "tiles/15-16829-10767.json.gz",
+      "count": 537,
+      "bytes": 18224
+    },
+    {
+      "key": "15/16829/10768",
+      "url": "tiles/15-16829-10768.json.gz",
+      "count": 568,
+      "bytes": 19254
+    },
+    {
+      "key": "15/16829/10769",
+      "url": "tiles/15-16829-10769.json.gz",
+      "count": 479,
+      "bytes": 16088
+    },
+    {
+      "key": "15/16829/10770",
+      "url": "tiles/15-16829-10770.json.gz",
+      "count": 449,
+      "bytes": 14932
+    },
+    {
+      "key": "15/16829/10771",
+      "url": "tiles/15-16829-10771.json.gz",
+      "count": 392,
+      "bytes": 12628
+    },
+    {
+      "key": "15/16829/10772",
+      "url": "tiles/15-16829-10772.json.gz",
+      "count": 667,
+      "bytes": 20362
+    },
+    {
+      "key": "15/16829/10773",
+      "url": "tiles/15-16829-10773.json.gz",
+      "count": 605,
+      "bytes": 19315
+    },
+    {
+      "key": "15/16829/10774",
+      "url": "tiles/15-16829-10774.json.gz",
+      "count": 365,
+      "bytes": 12423
+    },
+    {
+      "key": "15/16829/10775",
+      "url": "tiles/15-16829-10775.json.gz",
+      "count": 282,
+      "bytes": 9746
+    },
+    {
+      "key": "15/16829/10776",
+      "url": "tiles/15-16829-10776.json.gz",
+      "count": 1,
+      "bytes": 182
+    },
+    {
+      "key": "15/16830/10759",
+      "url": "tiles/15-16830-10759.json.gz",
+      "count": 1,
+      "bytes": 151
+    },
+    {
+      "key": "15/16830/10760",
+      "url": "tiles/15-16830-10760.json.gz",
+      "count": 22,
+      "bytes": 923
+    },
+    {
+      "key": "15/16830/10761",
+      "url": "tiles/15-16830-10761.json.gz",
+      "count": 403,
+      "bytes": 13509
+    },
+    {
+      "key": "15/16830/10762",
+      "url": "tiles/15-16830-10762.json.gz",
+      "count": 242,
+      "bytes": 8390
+    },
+    {
+      "key": "15/16830/10763",
+      "url": "tiles/15-16830-10763.json.gz",
+      "count": 580,
+      "bytes": 19412
+    },
+    {
+      "key": "15/16830/10764",
+      "url": "tiles/15-16830-10764.json.gz",
+      "count": 532,
+      "bytes": 17642
+    },
+    {
+      "key": "15/16830/10765",
+      "url": "tiles/15-16830-10765.json.gz",
+      "count": 483,
+      "bytes": 16088
+    },
+    {
+      "key": "15/16830/10766",
+      "url": "tiles/15-16830-10766.json.gz",
+      "count": 650,
+      "bytes": 20992
+    },
+    {
+      "key": "15/16830/10767",
+      "url": "tiles/15-16830-10767.json.gz",
+      "count": 252,
+      "bytes": 8775
+    },
+    {
+      "key": "15/16830/10768",
+      "url": "tiles/15-16830-10768.json.gz",
+      "count": 568,
+      "bytes": 19348
+    },
+    {
+      "key": "15/16830/10769",
+      "url": "tiles/15-16830-10769.json.gz",
+      "count": 550,
+      "bytes": 18163
+    },
+    {
+      "key": "15/16830/10770",
+      "url": "tiles/15-16830-10770.json.gz",
+      "count": 668,
+      "bytes": 21956
+    },
+    {
+      "key": "15/16830/10771",
+      "url": "tiles/15-16830-10771.json.gz",
+      "count": 571,
+      "bytes": 18513
+    },
+    {
+      "key": "15/16830/10772",
+      "url": "tiles/15-16830-10772.json.gz",
+      "count": 846,
+      "bytes": 25523
+    },
+    {
+      "key": "15/16830/10773",
+      "url": "tiles/15-16830-10773.json.gz",
+      "count": 487,
+      "bytes": 15971
+    },
+    {
+      "key": "15/16830/10774",
+      "url": "tiles/15-16830-10774.json.gz",
+      "count": 60,
+      "bytes": 2257
+    },
+    {
+      "key": "15/16830/10775",
+      "url": "tiles/15-16830-10775.json.gz",
+      "count": 62,
+      "bytes": 2234
+    },
+    {
+      "key": "15/16830/10776",
+      "url": "tiles/15-16830-10776.json.gz",
+      "count": 8,
+      "bytes": 458
+    },
+    {
+      "key": "15/16831/10760",
+      "url": "tiles/15-16831-10760.json.gz",
+      "count": 6,
+      "bytes": 214
+    },
+    {
+      "key": "15/16831/10761",
+      "url": "tiles/15-16831-10761.json.gz",
+      "count": 40,
+      "bytes": 1268
+    },
+    {
+      "key": "15/16831/10762",
+      "url": "tiles/15-16831-10762.json.gz",
+      "count": 602,
+      "bytes": 19890
+    },
+    {
+      "key": "15/16831/10763",
+      "url": "tiles/15-16831-10763.json.gz",
+      "count": 1020,
+      "bytes": 32767
+    },
+    {
+      "key": "15/16831/10764",
+      "url": "tiles/15-16831-10764.json.gz",
+      "count": 741,
+      "bytes": 24844
+    },
+    {
+      "key": "15/16831/10765",
+      "url": "tiles/15-16831-10765.json.gz",
+      "count": 646,
+      "bytes": 22080
+    },
+    {
+      "key": "15/16831/10766",
+      "url": "tiles/15-16831-10766.json.gz",
+      "count": 798,
+      "bytes": 26585
+    },
+    {
+      "key": "15/16831/10767",
+      "url": "tiles/15-16831-10767.json.gz",
+      "count": 288,
+      "bytes": 9726
+    },
+    {
+      "key": "15/16831/10768",
+      "url": "tiles/15-16831-10768.json.gz",
+      "count": 615,
+      "bytes": 20529
+    },
+    {
+      "key": "15/16831/10769",
+      "url": "tiles/15-16831-10769.json.gz",
+      "count": 343,
+      "bytes": 11352
+    },
+    {
+      "key": "15/16831/10770",
+      "url": "tiles/15-16831-10770.json.gz",
+      "count": 685,
+      "bytes": 22107
+    },
+    {
+      "key": "15/16831/10771",
+      "url": "tiles/15-16831-10771.json.gz",
+      "count": 767,
+      "bytes": 24761
+    },
+    {
+      "key": "15/16831/10772",
+      "url": "tiles/15-16831-10772.json.gz",
+      "count": 678,
+      "bytes": 22654
+    },
+    {
+      "key": "15/16831/10773",
+      "url": "tiles/15-16831-10773.json.gz",
+      "count": 474,
+      "bytes": 15241
+    },
+    {
+      "key": "15/16831/10774",
+      "url": "tiles/15-16831-10774.json.gz",
+      "count": 245,
+      "bytes": 8209
+    },
+    {
+      "key": "15/16831/10775",
+      "url": "tiles/15-16831-10775.json.gz",
+      "count": 50,
+      "bytes": 1711
+    },
+    {
+      "key": "15/16832/10762",
+      "url": "tiles/15-16832-10762.json.gz",
+      "count": 358,
+      "bytes": 11745
+    },
+    {
+      "key": "15/16832/10763",
+      "url": "tiles/15-16832-10763.json.gz",
+      "count": 620,
+      "bytes": 20812
+    },
+    {
+      "key": "15/16832/10764",
+      "url": "tiles/15-16832-10764.json.gz",
+      "count": 660,
+      "bytes": 22062
+    },
+    {
+      "key": "15/16832/10765",
+      "url": "tiles/15-16832-10765.json.gz",
+      "count": 716,
+      "bytes": 23828
+    },
+    {
+      "key": "15/16832/10766",
+      "url": "tiles/15-16832-10766.json.gz",
+      "count": 330,
+      "bytes": 11223
+    },
+    {
+      "key": "15/16832/10767",
+      "url": "tiles/15-16832-10767.json.gz",
+      "count": 298,
+      "bytes": 9341
+    },
+    {
+      "key": "15/16832/10768",
+      "url": "tiles/15-16832-10768.json.gz",
+      "count": 569,
+      "bytes": 18339
+    },
+    {
+      "key": "15/16832/10769",
+      "url": "tiles/15-16832-10769.json.gz",
+      "count": 842,
+      "bytes": 27349
+    },
+    {
+      "key": "15/16832/10770",
+      "url": "tiles/15-16832-10770.json.gz",
+      "count": 902,
+      "bytes": 28950
+    },
+    {
+      "key": "15/16832/10771",
+      "url": "tiles/15-16832-10771.json.gz",
+      "count": 704,
+      "bytes": 22444
+    },
+    {
+      "key": "15/16832/10772",
+      "url": "tiles/15-16832-10772.json.gz",
+      "count": 883,
+      "bytes": 28266
+    },
+    {
+      "key": "15/16832/10773",
+      "url": "tiles/15-16832-10773.json.gz",
+      "count": 369,
+      "bytes": 12455
+    },
+    {
+      "key": "15/16832/10774",
+      "url": "tiles/15-16832-10774.json.gz",
+      "count": 242,
+      "bytes": 7656
+    },
+    {
+      "key": "15/16832/10775",
+      "url": "tiles/15-16832-10775.json.gz",
+      "count": 157,
+      "bytes": 4762
+    },
+    {
+      "key": "15/16832/10776",
+      "url": "tiles/15-16832-10776.json.gz",
+      "count": 65,
+      "bytes": 2042
+    },
+    {
+      "key": "15/16832/10777",
+      "url": "tiles/15-16832-10777.json.gz",
+      "count": 207,
+      "bytes": 6630
+    },
+    {
+      "key": "15/16832/10778",
+      "url": "tiles/15-16832-10778.json.gz",
+      "count": 27,
+      "bytes": 1063
+    },
+    {
+      "key": "15/16833/10762",
+      "url": "tiles/15-16833-10762.json.gz",
+      "count": 110,
+      "bytes": 3654
+    },
+    {
+      "key": "15/16833/10763",
+      "url": "tiles/15-16833-10763.json.gz",
+      "count": 465,
+      "bytes": 15658
+    },
+    {
+      "key": "15/16833/10764",
+      "url": "tiles/15-16833-10764.json.gz",
+      "count": 842,
+      "bytes": 27261
+    },
+    {
+      "key": "15/16833/10765",
+      "url": "tiles/15-16833-10765.json.gz",
+      "count": 641,
+      "bytes": 21499
+    },
+    {
+      "key": "15/16833/10766",
+      "url": "tiles/15-16833-10766.json.gz",
+      "count": 30,
+      "bytes": 1184
+    },
+    {
+      "key": "15/16833/10767",
+      "url": "tiles/15-16833-10767.json.gz",
+      "count": 203,
+      "bytes": 6684
+    },
+    {
+      "key": "15/16833/10768",
+      "url": "tiles/15-16833-10768.json.gz",
+      "count": 650,
+      "bytes": 20599
+    },
+    {
+      "key": "15/16833/10769",
+      "url": "tiles/15-16833-10769.json.gz",
+      "count": 995,
+      "bytes": 30192
+    },
+    {
+      "key": "15/16833/10770",
+      "url": "tiles/15-16833-10770.json.gz",
+      "count": 908,
+      "bytes": 27729
+    },
+    {
+      "key": "15/16833/10771",
+      "url": "tiles/15-16833-10771.json.gz",
+      "count": 855,
+      "bytes": 26445
+    },
+    {
+      "key": "15/16833/10772",
+      "url": "tiles/15-16833-10772.json.gz",
+      "count": 460,
+      "bytes": 14803
+    },
+    {
+      "key": "15/16833/10773",
+      "url": "tiles/15-16833-10773.json.gz",
+      "count": 474,
+      "bytes": 15866
+    },
+    {
+      "key": "15/16833/10774",
+      "url": "tiles/15-16833-10774.json.gz",
+      "count": 20,
+      "bytes": 783
+    },
+    {
+      "key": "15/16833/10775",
+      "url": "tiles/15-16833-10775.json.gz",
+      "count": 145,
+      "bytes": 4924
+    },
+    {
+      "key": "15/16833/10776",
+      "url": "tiles/15-16833-10776.json.gz",
+      "count": 242,
+      "bytes": 8108
+    },
+    {
+      "key": "15/16833/10777",
+      "url": "tiles/15-16833-10777.json.gz",
+      "count": 475,
+      "bytes": 15827
+    },
+    {
+      "key": "15/16833/10778",
+      "url": "tiles/15-16833-10778.json.gz",
+      "count": 342,
+      "bytes": 11364
+    },
+    {
+      "key": "15/16833/10779",
+      "url": "tiles/15-16833-10779.json.gz",
+      "count": 119,
+      "bytes": 4051
+    },
+    {
+      "key": "15/16833/10780",
+      "url": "tiles/15-16833-10780.json.gz",
+      "count": 1,
+      "bytes": 180
+    },
+    {
+      "key": "15/16834/10759",
+      "url": "tiles/15-16834-10759.json.gz",
+      "count": 4,
+      "bytes": 192
+    },
+    {
+      "key": "15/16834/10760",
+      "url": "tiles/15-16834-10760.json.gz",
+      "count": 30,
+      "bytes": 603
+    },
+    {
+      "key": "15/16834/10761",
+      "url": "tiles/15-16834-10761.json.gz",
+      "count": 44,
+      "bytes": 1356
+    },
+    {
+      "key": "15/16834/10762",
+      "url": "tiles/15-16834-10762.json.gz",
+      "count": 3,
+      "bytes": 262
+    },
+    {
+      "key": "15/16834/10763",
+      "url": "tiles/15-16834-10763.json.gz",
+      "count": 59,
+      "bytes": 2125
+    },
+    {
+      "key": "15/16834/10764",
+      "url": "tiles/15-16834-10764.json.gz",
+      "count": 653,
+      "bytes": 21479
+    },
+    {
+      "key": "15/16834/10765",
+      "url": "tiles/15-16834-10765.json.gz",
+      "count": 748,
+      "bytes": 24080
+    },
+    {
+      "key": "15/16834/10766",
+      "url": "tiles/15-16834-10766.json.gz",
+      "count": 255,
+      "bytes": 8787
+    },
+    {
+      "key": "15/16834/10767",
+      "url": "tiles/15-16834-10767.json.gz",
+      "count": 83,
+      "bytes": 2863
+    },
+    {
+      "key": "15/16834/10768",
+      "url": "tiles/15-16834-10768.json.gz",
+      "count": 346,
+      "bytes": 11095
+    },
+    {
+      "key": "15/16834/10769",
+      "url": "tiles/15-16834-10769.json.gz",
+      "count": 639,
+      "bytes": 21164
+    },
+    {
+      "key": "15/16834/10770",
+      "url": "tiles/15-16834-10770.json.gz",
+      "count": 267,
+      "bytes": 8722
+    },
+    {
+      "key": "15/16834/10771",
+      "url": "tiles/15-16834-10771.json.gz",
+      "count": 386,
+      "bytes": 12831
+    },
+    {
+      "key": "15/16834/10772",
+      "url": "tiles/15-16834-10772.json.gz",
+      "count": 405,
+      "bytes": 13207
+    },
+    {
+      "key": "15/16834/10773",
+      "url": "tiles/15-16834-10773.json.gz",
+      "count": 272,
+      "bytes": 8871
+    },
+    {
+      "key": "15/16834/10775",
+      "url": "tiles/15-16834-10775.json.gz",
+      "count": 362,
+      "bytes": 11444
+    },
+    {
+      "key": "15/16834/10776",
+      "url": "tiles/15-16834-10776.json.gz",
+      "count": 638,
+      "bytes": 20463
+    },
+    {
+      "key": "15/16834/10777",
+      "url": "tiles/15-16834-10777.json.gz",
+      "count": 657,
+      "bytes": 21845
+    },
+    {
+      "key": "15/16834/10778",
+      "url": "tiles/15-16834-10778.json.gz",
+      "count": 567,
+      "bytes": 18573
+    },
+    {
+      "key": "15/16834/10779",
+      "url": "tiles/15-16834-10779.json.gz",
+      "count": 495,
+      "bytes": 16149
+    },
+    {
+      "key": "15/16834/10780",
+      "url": "tiles/15-16834-10780.json.gz",
+      "count": 342,
+      "bytes": 11371
+    },
+    {
+      "key": "15/16834/10781",
+      "url": "tiles/15-16834-10781.json.gz",
+      "count": 3,
+      "bytes": 253
+    },
+    {
+      "key": "15/16835/10760",
+      "url": "tiles/15-16835-10760.json.gz",
+      "count": 16,
+      "bytes": 438
+    },
+    {
+      "key": "15/16835/10762",
+      "url": "tiles/15-16835-10762.json.gz",
+      "count": 39,
+      "bytes": 1501
+    },
+    {
+      "key": "15/16835/10763",
+      "url": "tiles/15-16835-10763.json.gz",
+      "count": 46,
+      "bytes": 1786
+    },
+    {
+      "key": "15/16835/10764",
+      "url": "tiles/15-16835-10764.json.gz",
+      "count": 374,
+      "bytes": 12599
+    },
+    {
+      "key": "15/16835/10765",
+      "url": "tiles/15-16835-10765.json.gz",
+      "count": 758,
+      "bytes": 24077
+    },
+    {
+      "key": "15/16835/10766",
+      "url": "tiles/15-16835-10766.json.gz",
+      "count": 270,
+      "bytes": 9418
+    },
+    {
+      "key": "15/16835/10767",
+      "url": "tiles/15-16835-10767.json.gz",
+      "count": 143,
+      "bytes": 5037
+    },
+    {
+      "key": "15/16835/10768",
+      "url": "tiles/15-16835-10768.json.gz",
+      "count": 429,
+      "bytes": 13867
+    },
+    {
+      "key": "15/16835/10769",
+      "url": "tiles/15-16835-10769.json.gz",
+      "count": 171,
+      "bytes": 6111
+    },
+    {
+      "key": "15/16835/10770",
+      "url": "tiles/15-16835-10770.json.gz",
+      "count": 115,
+      "bytes": 4123
+    },
+    {
+      "key": "15/16835/10771",
+      "url": "tiles/15-16835-10771.json.gz",
+      "count": 89,
+      "bytes": 3239
+    },
+    {
+      "key": "15/16835/10772",
+      "url": "tiles/15-16835-10772.json.gz",
+      "count": 71,
+      "bytes": 2518
+    },
+    {
+      "key": "15/16835/10773",
+      "url": "tiles/15-16835-10773.json.gz",
+      "count": 18,
+      "bytes": 660
+    },
+    {
+      "key": "15/16835/10775",
+      "url": "tiles/15-16835-10775.json.gz",
+      "count": 443,
+      "bytes": 14416
+    },
+    {
+      "key": "15/16835/10776",
+      "url": "tiles/15-16835-10776.json.gz",
+      "count": 806,
+      "bytes": 25977
+    },
+    {
+      "key": "15/16835/10777",
+      "url": "tiles/15-16835-10777.json.gz",
+      "count": 634,
+      "bytes": 20615
+    },
+    {
+      "key": "15/16835/10778",
+      "url": "tiles/15-16835-10778.json.gz",
+      "count": 651,
+      "bytes": 21196
+    },
+    {
+      "key": "15/16835/10779",
+      "url": "tiles/15-16835-10779.json.gz",
+      "count": 767,
+      "bytes": 25141
+    },
+    {
+      "key": "15/16835/10780",
+      "url": "tiles/15-16835-10780.json.gz",
+      "count": 397,
+      "bytes": 13239
+    },
+    {
+      "key": "15/16835/10781",
+      "url": "tiles/15-16835-10781.json.gz",
+      "count": 104,
+      "bytes": 3601
+    },
+    {
+      "key": "15/16836/10760",
+      "url": "tiles/15-16836-10760.json.gz",
+      "count": 11,
+      "bytes": 346
+    },
+    {
+      "key": "15/16836/10762",
+      "url": "tiles/15-16836-10762.json.gz",
+      "count": 18,
+      "bytes": 805
+    },
+    {
+      "key": "15/16836/10763",
+      "url": "tiles/15-16836-10763.json.gz",
+      "count": 20,
+      "bytes": 897
+    },
+    {
+      "key": "15/16836/10765",
+      "url": "tiles/15-16836-10765.json.gz",
+      "count": 73,
+      "bytes": 2607
+    },
+    {
+      "key": "15/16836/10766",
+      "url": "tiles/15-16836-10766.json.gz",
+      "count": 165,
+      "bytes": 5710
+    },
+    {
+      "key": "15/16836/10767",
+      "url": "tiles/15-16836-10767.json.gz",
+      "count": 92,
+      "bytes": 3358
+    },
+    {
+      "key": "15/16836/10768",
+      "url": "tiles/15-16836-10768.json.gz",
+      "count": 467,
+      "bytes": 14904
+    },
+    {
+      "key": "15/16836/10769",
+      "url": "tiles/15-16836-10769.json.gz",
+      "count": 67,
+      "bytes": 2378
+    },
+    {
+      "key": "15/16836/10770",
+      "url": "tiles/15-16836-10770.json.gz",
+      "count": 72,
+      "bytes": 2694
+    },
+    {
+      "key": "15/16836/10771",
+      "url": "tiles/15-16836-10771.json.gz",
+      "count": 73,
+      "bytes": 2223
+    },
+    {
+      "key": "15/16836/10775",
+      "url": "tiles/15-16836-10775.json.gz",
+      "count": 607,
+      "bytes": 20134
+    },
+    {
+      "key": "15/16836/10776",
+      "url": "tiles/15-16836-10776.json.gz",
+      "count": 879,
+      "bytes": 27947
+    },
+    {
+      "key": "15/16836/10777",
+      "url": "tiles/15-16836-10777.json.gz",
+      "count": 761,
+      "bytes": 24708
+    },
+    {
+      "key": "15/16836/10778",
+      "url": "tiles/15-16836-10778.json.gz",
+      "count": 462,
+      "bytes": 15555
+    },
+    {
+      "key": "15/16836/10779",
+      "url": "tiles/15-16836-10779.json.gz",
+      "count": 949,
+      "bytes": 31609
+    },
+    {
+      "key": "15/16836/10780",
+      "url": "tiles/15-16836-10780.json.gz",
+      "count": 789,
+      "bytes": 26224
+    },
+    {
+      "key": "15/16836/10781",
+      "url": "tiles/15-16836-10781.json.gz",
+      "count": 10,
+      "bytes": 512
+    },
+    {
+      "key": "15/16836/10782",
+      "url": "tiles/15-16836-10782.json.gz",
+      "count": 11,
+      "bytes": 549
+    },
+    {
+      "key": "15/16837/10766",
+      "url": "tiles/15-16837-10766.json.gz",
+      "count": 34,
+      "bytes": 1301
+    },
+    {
+      "key": "15/16837/10767",
+      "url": "tiles/15-16837-10767.json.gz",
+      "count": 17,
+      "bytes": 754
+    },
+    {
+      "key": "15/16837/10768",
+      "url": "tiles/15-16837-10768.json.gz",
+      "count": 30,
+      "bytes": 1219
+    },
+    {
+      "key": "15/16837/10769",
+      "url": "tiles/15-16837-10769.json.gz",
+      "count": 235,
+      "bytes": 7364
+    },
+    {
+      "key": "15/16837/10770",
+      "url": "tiles/15-16837-10770.json.gz",
+      "count": 338,
+      "bytes": 10886
+    },
+    {
+      "key": "15/16837/10771",
+      "url": "tiles/15-16837-10771.json.gz",
+      "count": 31,
+      "bytes": 1041
+    },
+    {
+      "key": "15/16837/10774",
+      "url": "tiles/15-16837-10774.json.gz",
+      "count": 32,
+      "bytes": 1295
+    },
+    {
+      "key": "15/16837/10775",
+      "url": "tiles/15-16837-10775.json.gz",
+      "count": 573,
+      "bytes": 19056
+    },
+    {
+      "key": "15/16837/10776",
+      "url": "tiles/15-16837-10776.json.gz",
+      "count": 865,
+      "bytes": 28162
+    },
+    {
+      "key": "15/16837/10777",
+      "url": "tiles/15-16837-10777.json.gz",
+      "count": 655,
+      "bytes": 22220
+    },
+    {
+      "key": "15/16837/10778",
+      "url": "tiles/15-16837-10778.json.gz",
+      "count": 262,
+      "bytes": 9180
+    },
+    {
+      "key": "15/16837/10779",
+      "url": "tiles/15-16837-10779.json.gz",
+      "count": 931,
+      "bytes": 30425
+    },
+    {
+      "key": "15/16837/10780",
+      "url": "tiles/15-16837-10780.json.gz",
+      "count": 664,
+      "bytes": 21759
+    },
+    {
+      "key": "15/16838/10759",
+      "url": "tiles/15-16838-10759.json.gz",
+      "count": 68,
+      "bytes": 948
+    },
+    {
+      "key": "15/16838/10760",
+      "url": "tiles/15-16838-10760.json.gz",
+      "count": 77,
+      "bytes": 1238
+    },
+    {
+      "key": "15/16838/10764",
+      "url": "tiles/15-16838-10764.json.gz",
+      "count": 8,
+      "bytes": 444
+    },
+    {
+      "key": "15/16838/10765",
+      "url": "tiles/15-16838-10765.json.gz",
+      "count": 68,
+      "bytes": 2491
+    },
+    {
+      "key": "15/16838/10766",
+      "url": "tiles/15-16838-10766.json.gz",
+      "count": 1,
+      "bytes": 182
+    },
+    {
+      "key": "15/16838/10767",
+      "url": "tiles/15-16838-10767.json.gz",
+      "count": 36,
+      "bytes": 1443
+    },
+    {
+      "key": "15/16838/10769",
+      "url": "tiles/15-16838-10769.json.gz",
+      "count": 27,
+      "bytes": 1050
+    },
+    {
+      "key": "15/16838/10770",
+      "url": "tiles/15-16838-10770.json.gz",
+      "count": 624,
+      "bytes": 19062
+    },
+    {
+      "key": "15/16838/10771",
+      "url": "tiles/15-16838-10771.json.gz",
+      "count": 244,
+      "bytes": 7762
+    },
+    {
+      "key": "15/16838/10775",
+      "url": "tiles/15-16838-10775.json.gz",
+      "count": 7,
+      "bytes": 422
+    },
+    {
+      "key": "15/16838/10776",
+      "url": "tiles/15-16838-10776.json.gz",
+      "count": 280,
+      "bytes": 9401
+    },
+    {
+      "key": "15/16838/10777",
+      "url": "tiles/15-16838-10777.json.gz",
+      "count": 248,
+      "bytes": 8726
+    },
+    {
+      "key": "15/16838/10778",
+      "url": "tiles/15-16838-10778.json.gz",
+      "count": 66,
+      "bytes": 2479
+    },
+    {
+      "key": "15/16838/10779",
+      "url": "tiles/15-16838-10779.json.gz",
+      "count": 837,
+      "bytes": 27042
+    },
+    {
+      "key": "15/16838/10780",
+      "url": "tiles/15-16838-10780.json.gz",
+      "count": 358,
+      "bytes": 11644
+    },
+    {
+      "key": "15/16839/10759",
+      "url": "tiles/15-16839-10759.json.gz",
+      "count": 49,
+      "bytes": 736
+    },
+    {
+      "key": "15/16839/10760",
+      "url": "tiles/15-16839-10760.json.gz",
+      "count": 1,
+      "bytes": 152
+    },
+    {
+      "key": "15/16839/10764",
+      "url": "tiles/15-16839-10764.json.gz",
+      "count": 18,
+      "bytes": 759
+    },
+    {
+      "key": "15/16839/10765",
+      "url": "tiles/15-16839-10765.json.gz",
+      "count": 14,
+      "bytes": 645
+    },
+    {
+      "key": "15/16839/10766",
+      "url": "tiles/15-16839-10766.json.gz",
+      "count": 24,
+      "bytes": 978
+    },
+    {
+      "key": "15/16839/10767",
+      "url": "tiles/15-16839-10767.json.gz",
+      "count": 17,
+      "bytes": 830
+    },
+    {
+      "key": "15/16839/10770",
+      "url": "tiles/15-16839-10770.json.gz",
+      "count": 88,
+      "bytes": 2953
+    },
+    {
+      "key": "15/16839/10771",
+      "url": "tiles/15-16839-10771.json.gz",
+      "count": 620,
+      "bytes": 19023
+    },
+    {
+      "key": "15/16839/10772",
+      "url": "tiles/15-16839-10772.json.gz",
+      "count": 234,
+      "bytes": 7747
+    },
+    {
+      "key": "15/16839/10777",
+      "url": "tiles/15-16839-10777.json.gz",
+      "count": 40,
+      "bytes": 1589
+    },
+    {
+      "key": "15/16839/10778",
+      "url": "tiles/15-16839-10778.json.gz",
+      "count": 42,
+      "bytes": 1601
+    },
+    {
+      "key": "15/16839/10779",
+      "url": "tiles/15-16839-10779.json.gz",
+      "count": 46,
+      "bytes": 1633
+    },
+    {
+      "key": "15/16840/10762",
+      "url": "tiles/15-16840-10762.json.gz",
+      "count": 1,
+      "bytes": 153
+    },
+    {
+      "key": "15/16840/10763",
+      "url": "tiles/15-16840-10763.json.gz",
+      "count": 12,
+      "bytes": 554
+    },
+    {
+      "key": "15/16840/10764",
+      "url": "tiles/15-16840-10764.json.gz",
+      "count": 23,
+      "bytes": 910
+    },
+    {
+      "key": "15/16840/10766",
+      "url": "tiles/15-16840-10766.json.gz",
+      "count": 18,
+      "bytes": 790
+    },
+    {
+      "key": "15/16840/10770",
+      "url": "tiles/15-16840-10770.json.gz",
+      "count": 91,
+      "bytes": 3333
+    },
+    {
+      "key": "15/16840/10771",
+      "url": "tiles/15-16840-10771.json.gz",
+      "count": 334,
+      "bytes": 10726
+    },
+    {
+      "key": "15/16840/10772",
+      "url": "tiles/15-16840-10772.json.gz",
+      "count": 129,
+      "bytes": 4423
+    },
+    {
+      "key": "15/16840/10777",
+      "url": "tiles/15-16840-10777.json.gz",
+      "count": 69,
+      "bytes": 2592
+    },
+    {
+      "key": "15/16840/10778",
+      "url": "tiles/15-16840-10778.json.gz",
+      "count": 300,
+      "bytes": 10351
+    },
+    {
+      "key": "15/16840/10783",
+      "url": "tiles/15-16840-10783.json.gz",
+      "count": 1,
+      "bytes": 180
+    },
+    {
+      "key": "15/16841/10762",
+      "url": "tiles/15-16841-10762.json.gz",
+      "count": 44,
+      "bytes": 1708
+    },
+    {
+      "key": "15/16841/10763",
+      "url": "tiles/15-16841-10763.json.gz",
+      "count": 26,
+      "bytes": 965
+    },
+    {
+      "key": "15/16841/10770",
+      "url": "tiles/15-16841-10770.json.gz",
+      "count": 47,
+      "bytes": 1745
+    },
+    {
+      "key": "15/16841/10771",
+      "url": "tiles/15-16841-10771.json.gz",
+      "count": 64,
+      "bytes": 2205
+    },
+    {
+      "key": "15/16841/10774",
+      "url": "tiles/15-16841-10774.json.gz",
+      "count": 7,
+      "bytes": 338
+    },
+    {
+      "key": "15/16841/10775",
+      "url": "tiles/15-16841-10775.json.gz",
+      "count": 6,
+      "bytes": 358
+    },
+    {
+      "key": "15/16841/10776",
+      "url": "tiles/15-16841-10776.json.gz",
+      "count": 44,
+      "bytes": 1671
+    },
+    {
+      "key": "15/16841/10777",
+      "url": "tiles/15-16841-10777.json.gz",
+      "count": 13,
+      "bytes": 485
+    },
+    {
+      "key": "15/16841/10782",
+      "url": "tiles/15-16841-10782.json.gz",
+      "count": 7,
+      "bytes": 406
+    },
+    {
+      "key": "15/16841/10783",
+      "url": "tiles/15-16841-10783.json.gz",
+      "count": 14,
+      "bytes": 649
+    },
+    {
+      "key": "15/16842/10762",
+      "url": "tiles/15-16842-10762.json.gz",
+      "count": 5,
+      "bytes": 333
+    },
+    {
+      "key": "15/16842/10774",
+      "url": "tiles/15-16842-10774.json.gz",
+      "count": 1,
+      "bytes": 180
+    },
+    {
+      "key": "15/16842/10775",
+      "url": "tiles/15-16842-10775.json.gz",
+      "count": 32,
+      "bytes": 1262
+    },
+    {
+      "key": "15/16842/10776",
+      "url": "tiles/15-16842-10776.json.gz",
+      "count": 106,
+      "bytes": 3607
+    },
+    {
+      "key": "15/16842/10777",
+      "url": "tiles/15-16842-10777.json.gz",
+      "count": 79,
+      "bytes": 2175
+    },
+    {
+      "key": "15/16842/10778",
+      "url": "tiles/15-16842-10778.json.gz",
+      "count": 24,
+      "bytes": 873
+    },
+    {
+      "key": "15/16842/10779",
+      "url": "tiles/15-16842-10779.json.gz",
+      "count": 2,
+      "bytes": 247
+    },
+    {
+      "key": "15/16843/10774",
+      "url": "tiles/15-16843-10774.json.gz",
+      "count": 55,
+      "bytes": 1750
+    },
+    {
+      "key": "15/16843/10775",
+      "url": "tiles/15-16843-10775.json.gz",
+      "count": 94,
+      "bytes": 3192
+    },
+    {
+      "key": "15/16843/10776",
+      "url": "tiles/15-16843-10776.json.gz",
+      "count": 136,
+      "bytes": 4724
+    },
+    {
+      "key": "15/16843/10777",
+      "url": "tiles/15-16843-10777.json.gz",
+      "count": 30,
+      "bytes": 1183
+    },
+    {
+      "key": "15/16843/10778",
+      "url": "tiles/15-16843-10778.json.gz",
+      "count": 8,
+      "bytes": 413
+    },
+    {
+      "key": "15/16843/10779",
+      "url": "tiles/15-16843-10779.json.gz",
+      "count": 8,
+      "bytes": 491
+    },
+    {
+      "key": "15/16844/10774",
+      "url": "tiles/15-16844-10774.json.gz",
+      "count": 203,
+      "bytes": 6153
+    },
+    {
+      "key": "15/16844/10775",
+      "url": "tiles/15-16844-10775.json.gz",
+      "count": 9,
+      "bytes": 487
+    },
+    {
+      "key": "15/16844/10776",
+      "url": "tiles/15-16844-10776.json.gz",
+      "count": 75,
+      "bytes": 2711
+    },
+    {
+      "key": "15/16845/10761",
+      "url": "tiles/15-16845-10761.json.gz",
+      "count": 21,
+      "bytes": 420
+    },
+    {
+      "key": "15/16845/10775",
+      "url": "tiles/15-16845-10775.json.gz",
+      "count": 33,
+      "bytes": 1093
+    }
+  ]
+}
