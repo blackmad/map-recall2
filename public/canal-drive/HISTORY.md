@@ -1,5 +1,74 @@
 # Canal Recall — what is built
 
+**Engine frame owners at 4× named by `?framePhases=1`; label policy spikes gone; groundCrossing and the openings filter paced; frozen frames under own (2026-11-01, #129).**
+L1 hand-back (16). `?framePhases=1` times each phase of the engine frame
+(three render main / overlay / shadow, game frame with its sync sub-phases,
+labels, participant hooks). Per-frame means at 4× on the Jordaan ride barely
+move (three render main 6.6 ms, game frame 3.3 → 3.1, overlay 1.25, labels
+0.25): the 40–150 ms frames are spikes. The 115–150 ms frames were `labels:
+policy and rebuild`, three per ride, each time a street is learned: the
+policy rebuilt the spoiler index from an unchanged list (60–75 ms), now
+reused while the names are equal element-wise (1.1–1.5 ms per change after
+the first; the first build still 70 ms); `rebuild` stays 52–70 ms per change
+(the `isLabelled`/`isPlaceKnown` test over every named street; next: test
+only streets whose state changed, under the same-frame hidden-name rule).
+The game frame's spikes (300+ ms at boot, 35–80 ms riding) are `sync: ground
+update` (own-ground install 40–178 ms), `sync: building detail centre`
+(setFeatures 34–53 ms) and `sync: jumpTo and move listeners` (35–46 ms),
+the next owners to split. `three render main`'s CPU is matrix updates
+(`multiplyMatrices` 3.0 s, `updateMatrixWorld` 2.2 s in the stall window):
+the eye-relative wrapper changes every frame so every static child
+recomputes its world matrix; freezing static meshes' matrices is exact but
+touches every participant, approved as its own item. Rider cover's
+`featuresAt` uses a box grid (same answers, same order, tested; a 680 ms
+stall profile → 0.03 ms/frame). `groundCrossing` tasks ≤ 12 ms at 4× (were
+33–37), the `withOpenings` claimed filter paced (max own-ground continuation
+19–36 ms); still over 16 ms: `new RoadIndex` in planWayDecks (~44 ms), single
+wayDeckCrossing/planCutsSteps steps, openUnderHouseboats at load. Motion at
+4×, interleaved main vs branch, exclusive lock, four pairs: hitches over 50
+ms/min 79→62, 64→53, 88→76, 70→66; stalled time down 0.5–1.6 s; p99 better
+in 3 of 4; the single longest frame unchanged (150–177 ms). Frozen frames
+(`scripts/perf-frozen-frames.mjs`) pins the engine camera under own (noise
+floor 1.04 M → ≤ 14 k px); main vs branch within main-vs-main noise at every
+spot (Dam 16 vs 14 px, Waag 5,377 vs 5,274). render-on-change names who
+asked for a repaint; its iphone "capturing draws nothing" flake is the
+rider's at-rest creep crossing JUMP_TOLERANCE (1e-8°, ~1 mm) during the slow
+capture: the integrator stops the creep at its source in the player physics
+rather than loosening the check. P1 gate table as measured now (own desktop
+/ own iphone / default desktop / default iphone): draws median 368 / 178 /
+773 / 502, programs 23 / 20 / 44 / 37, task ms per frame 3.68 / 2.54 / 3.56
+/ 4.49, heap MB 547 / 404 / 875 / 602, MapLibre workers 0 / 0 / 1 / 3.
+
+**A parked rider is exactly still; world-v1 cells published without the height policy; perf viewport is the user's screen (2026-11-01).**
+Integrator. (1) The steer model's resistance term `sign(v || 0.001)` flipped
+the speed's sign every step at rest, so a parked vehicle crept by
+±resistance·h forever, the eased camera never arrived, and render-on-change
+on iphone flaked ("capturing draws nothing", "the still frame is the frame a
+redraw makes"; L1 traced it to the creep crossing `JUMP_TOLERANCE`). Static
+friction: with no command, a step of resistance that would carry the speed
+through zero stops it (`steerModel.ts`, test 'rest': the legacy car coasts
+~200 s, the bicycle stops in seconds, both end at exactly 0 and hold their
+position); `cameraFollow.ts` and `camera.js` set an eased value to its
+target below 1e-4 px / 1e-7 rad. test:canal-car unchanged. (2) The world vs
+default pixels were the cells' centimetre height policy (materials' owner
+frames, `tests/e2e/world-v1-ab.spec.ts` AB_OWNERS=1 and
+`scripts/world/classify-ab-owners.ts`): 13.2665 → 13.27 m changes a whole
+facade, because the storey/kit derivation has no hysteresis. Cells are now
+compiled `--no-policy` and published (529 of 604 differ; 8.92 → 9.70 MB
+gzip; `--no-policy` cells give 0/0/0/0 px over 30 at four spots and 141 at
+ijburg-edge, an own-ground LOD choice at the far edge the harness pins
+next). The city bytes gate moves 9.5 → 10 MB in `budgets.json`; the road
+lane encodes heights as millimetre integers losslessly to win the bytes
+back. The structural gate compares unrounded values from now on. The hold
+timeout is not the timeout's fault: the hold waited for every chunk of
+every loaded tile out to 1.9 km, built one at a time at 2–3 chunks/s with
+300–500 ms round trips for 10–150 ms of work; materials settles on a ring
+and fixes throughput next. (3) The user asked why the tests draw at twice
+the screen: perf runs used 1800×1100 CSS at DPR 2 (7.9 Mpx) while the
+user's 14-inch MacBook Pro is 1512×982 at DPR 2 (5.9 Mpx), so the fill cost
+was a third over the real screen; `motion-stutter.mjs` defaults to
+1512×982 at DPR 2 now (`_desktopPerfViewport` in budgets.json) and the e2e
+desktop project stays at 1440×900 DPR 1 for layout, not perf.
 **The own engine never races without facades around the rider; world-v1 structural gate in node; the A/B harness is an instrument (2026-11-01, #129).**
 Materials lane (6a29f4724). The deployed build f840fb6 started racing with
 only the station and two blocks drawn (HISTORY "Facades package" named the

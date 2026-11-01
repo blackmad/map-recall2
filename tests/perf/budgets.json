@@ -71,5 +71,9 @@
       "source": "#130 part 2 (pending)",
       "date": "2026-10-31"
     }
+  },
+  "_desktopPerfViewport": {
+    "value": "1512x982 CSS px at DPR 2",
+    "note": "the user's 14-inch MacBook Pro (3024x1964). Perf runs before 2026-11-01 used 1800x1100 at DPR 2 (7.9 Mpx, 33 % more than the screen); motion-stutter.mjs defaults to this size now and lanes pass VIEWPORT/DPR only to test another device."
   }
 }

@@ -277,9 +277,14 @@ no): structural equality of the styled building set at the five spots in
 node (zero tolerance; `scripts/world/check-ab-spots.ts` PASSES, five spots
 identical) plus a pixel check with the player frozen and the shadow camera
 pinned, 0 px over 30, sub-30 speckle counted not chased (harness done:
-default vs default is 0 px at any threshold; world vs default still 229 /
-2,179 / 3,142 / 1,261 / 1,971 px over 30, something downstream of the
-styled set, materials names the owner next). The earlier wording:
+default vs default is 0 px at any threshold; world vs default was the
+centimetre height policy: cells are published `--no-policy` since
+2026-11-01, 0/0/0/0 px at four spots, 141 at ijburg-edge = own-ground LOD
+at the far edge, materials pins the ground LOD per cell in the harness and
+re-runs on the published set; then the flag can default). Noted for a kit
+lane: a 4 mm eaves change flips a storey count, the storey/kit derivation
+needs hysteresis. Road lane: millimetre-integer heights to recover the
+0.78 MB gzip the exact values cost (gate ≤ 10 MB, 9.70 now). The earlier wording:
 `?world=v1` is identical to the default path in the browser (five spots,
 desktop and iPhone: same feature ids and styled features per tile; Node
 `world:verify` 295 tiles / 349,220 buildings / 0 differ). The four-tile
@@ -1398,6 +1403,15 @@ Root `main` was cleaned on 2026-10-09 (see HISTORY). Live work, in order:
   thread; ARTIS is off the camera shim (B6 started). Streaming gate still
   open (HISTORY "Facade chunk tiles planned in the worker"): facade tiles
   are off the main thread (436 → 0 ms at 4×) but the 4× totals did not move;
+  hand-back (16) named the engine frame's owners with `?framePhases=1`
+  (HISTORY "Engine frame owners at 4×"): label policy spikes fixed, rebuild
+  52–70 ms per learned street left (test only changed streets, L1), game
+  frame spikes = own-ground install 40–178 ms / setFeatures detail centre
+  34–53 / move listeners 35–46 (L1 splits), `three render main` CPU is
+  matrix updates from the eye-relative wrapper (frozen matrices for static
+  meshes approved, L1); hitches over 50 ms/min 79→62, 64→53, 88→76, 70→66,
+  longest frame unchanged ~150–177 ms. Perf viewport is now 1512×982 at
+  DPR 2 (the user's screen); earlier tables were at 1800×1100.
   hand-back (13) paced `prepareCell` planning on the page (HISTORY "Ground
   planning paced on the page"): 1× frames over 50 ms 1 → 0, the 4× ground
   continuation 115–171 → 19–22 ms; the 4× worst frames are now the engine
@@ -1442,9 +1456,11 @@ Root `main` was cleaned on 2026-10-09 (see HISTORY). Live work, in order:
   needs the pre-painted atlas (materials); racing never starts without
   facades since the hold fix (HISTORY "The own engine never races without
   facades around the rider": styling hurried behind the loading screen, hold
-  timeout 4 s, `engine-own.spec` checks the first racing frame; one probe
-  run still timed out at 4.4 s with outer chunks installing, materials
-  reports what that frame lacks); boot → submit 0.84–1.03 s vs 0.48–0.57
+  timeout 4 s, `engine-own.spec` checks the first racing frame; the hold
+  still times out at 4.7–4.8 s because it waits for every chunk of every
+  loaded tile out to 1.9 km, built one at a time at 2–3 chunks/s with
+  300–500 ms round trips: materials settles on a ring and fixes build
+  throughput, exactness-pinned); boot → submit 0.84–1.03 s vs 0.48–0.57
   default, owners named (HISTORY "Binary road extract is Amsterdam's
   default"): engine overview build (now in the worker pool, ~250 ms off
   boot → submit, main-thread construction 213–224 → 13–20 ms),

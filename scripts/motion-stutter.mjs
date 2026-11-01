@@ -10,7 +10,7 @@
 // window), aligned to performance.now() with a busy-loop marker, then aggregated over the stalled frames by self
 // function, by category (gc, json, shader, upload, ...) and by owning app function.
 // INIT_JS=<file> adds an init script; DUMP_JS=<expression> stores its value at the end of the run as `dump`.
-// STALL_MS=16 attributes every frame over 16 ms (default 50). DPR=2 sets the desktop device scale, VIEWPORT=1800x1100
+// STALL_MS=16 attributes every frame over 16 ms (default 50). Desktop default is the user's 14-inch MacBook Pro: 1512x982 CSS px at DPR 2 (3024x1964 device px, 2026-11-01); DPR sets the device scale, VIEWPORT=1800x1100
 // the desktop viewport, HEADED=1 runs a visible Chrome window (the real-GPU set-up of #129).
 // BUNDLES_DIR=<dir> serves *.bundle.js from a local build; WORLD_DIR=<dir> serves staged world-v1 cells. PROFILE=0 skips the profiler. KEEP_PROFILE=1 writes the raw
 // profile next to the output.
@@ -396,7 +396,7 @@ async function run(browser, kind, throttle, context) {
 const browser = await chromium.launch({ headless: process.env.HEADED !== '1', executablePath: '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome', args: ['--use-angle=metal', '--ignore-gpu-blocklist'] });
 const results = [];
 for (const throttle of throttles) {
-  const context = await browser.newContext(device === 'iphone' ? { ...devices['iPhone 13'] } : { viewport: { width: Number((process.env.VIEWPORT || '1280x800').split('x')[0]), height: Number((process.env.VIEWPORT || '1280x800').split('x')[1]) }, deviceScaleFactor: Number(process.env.DPR || 1) });
+  const context = await browser.newContext(device === 'iphone' ? { ...devices['iPhone 13'] } : { viewport: { width: Number((process.env.VIEWPORT || '1512x982').split('x')[0]), height: Number((process.env.VIEWPORT || '1512x982').split('x')[1]) }, deviceScaleFactor: Number(process.env.DPR || 1) });
   for (const kind of runKinds) {
     const r = await run(browser, kind, throttle, context);
     results.push(r);

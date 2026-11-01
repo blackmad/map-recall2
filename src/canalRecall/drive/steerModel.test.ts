@@ -75,8 +75,9 @@ test('rest: with no command the speed reaches exactly zero and stays there', () 
     const state = initialSteerState();
     state.speed = 30;
     const idle = input({});
-    for (let i = 0; i < 60 * 30; i++) step(state, idle, 1 / 60, params);
-    assert.equal(state.speed, 0, `${params.steering}: speed is exactly 0 after 30 s of coasting`);
+    // The legacy car coasts for well over a minute (rolling resistance 0.12 px/s², no lift-off braking).
+    for (let i = 0; i < 60 * 200; i++) step(state, idle, 1 / 60, params);
+    assert.equal(state.speed, 0, `${params.steering}: speed is exactly 0 after 200 s of coasting`);
     const x = state.x, y = state.y;
     for (let i = 0; i < 600; i++) step(state, idle, 1 / 60, params);
     assert.equal(state.speed, 0);
