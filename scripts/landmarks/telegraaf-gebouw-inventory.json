@@ -1,0 +1,532 @@
+{
+ "schemaVersion": 1,
+ "id": "telegraaf-gebouw",
+ "pand": "0363100012253832",
+ "brief": "scripts/landmarks/telegraaf-gebouw-brief.md",
+ "signature": [
+  "e-tower",
+  "e-window-groups",
+  "e-glass-blocks",
+  "e-canopy",
+  "a-glass-block-bands",
+  "n-cream-bay",
+  "l-arched-door"
+ ],
+ "walls": [
+  {
+   "tag": "w01-161",
+   "bearing": 161,
+   "lengthM": 40,
+   "centre": [
+    4.8912785,
+    52.3714155
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "items": [],
+   "note": "inferred: no panorama; the 3DBAG shell wall is drawn plain"
+  },
+  {
+   "tag": "w02-71",
+   "bearing": 71,
+   "lengthM": 17.1,
+   "centre": [
+    4.891515,
+    52.3715475
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001530_pano_0004_000116",
+   "capturedAt": "2019-12-20",
+   "checked": true,
+   "items": [
+    {
+     "id": "k-shopfronts",
+     "kind": "other",
+     "where": "Kalverstraat shopfronts at street level: big glazed shop windows between brick/rendered piers, flat fascia over them",
+     "approxSizeM": [
+      17,
+      3.5
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-001530_pano_0004_000116",
+     "how": "telegraaf-gebouw-builder.ts kalverstraat(): glass slab 0.3-3.4 m with a dark fascia band on every Kalverstraat face over 3 m"
+    },
+    {
+     "id": "k-upper-windows",
+     "kind": "window-shape",
+     "where": "upper storeys on the Kalverstraat: large single windows with white frames in brick",
+     "approxSizeM": [
+      1.6,
+      2.2
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-001530_pano_0004_000116",
+     "how": "telegraaf-gebouw-builder.ts kalverstraat(): white-framed windows on a 2.6 m pitch, rows every 3.3 m from 4.6 m to the wall head"
+    },
+    {
+     "id": "k-shop-signs",
+     "kind": "other",
+     "where": "shop signs (Score, Mango, the treble-clef box sign)",
+     "approxSizeM": [
+      2,
+      0.8
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7316010203-001530_pano_0004_000116",
+     "skip": {
+      "reason": "temporary",
+      "note": "tenant signage / building-site hoardings, replaced or removed with each tenant or project"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "w03-342",
+   "bearing": 342,
+   "lengthM": 16.9,
+   "centre": [
+    4.891356,
+    52.371826
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "items": [],
+   "note": "inferred: no panorama; the 3DBAG shell wall is drawn plain"
+  },
+  {
+   "tag": "w04-157",
+   "bearing": 157,
+   "lengthM": 12.2,
+   "centre": [
+    4.8915565,
+    52.3716415
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001530_pano_0004_000111",
+   "capturedAt": "2019-12-20",
+   "checked": true,
+   "items": [
+    {
+     "id": "k-curved-fascia",
+     "kind": "other",
+     "where": "dark grey rendered corner with a curved fascia over the Topman shop window",
+     "approxSizeM": [
+      12,
+      1.4
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-001530_pano_0004_000111",
+     "how": "telegraaf-gebouw-builder.ts kalverstraat(): shop glass + fascia band; the curve is not on the BAG ring"
+    },
+    {
+     "id": "k-topman-sign",
+     "kind": "other",
+     "where": "Topman lettering over the shop",
+     "approxSizeM": [
+      4,
+      0.8
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7316010203-001530_pano_0004_000111",
+     "skip": {
+      "reason": "temporary",
+      "note": "tenant signage / building-site hoardings, replaced or removed with each tenant or project"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "w05-342",
+   "bearing": 342,
+   "lengthM": 9.6,
+   "centre": [
+    4.891016,
+    52.3718005
+   ],
+   "evidence": "photo",
+   "panoId": "b_20250109_1300_Track10_Sphere_00128",
+   "capturedAt": "2025-01-09",
+   "checked": true,
+   "items": [
+    {
+     "id": "t-tower-top",
+     "kind": "tower",
+     "where": "the brick tower at the south end of the front, seen over the roofs from the north: brick shaft to the 3DBAG top 46.8 m, a pale top band and a flagpole",
+     "approxSizeM": [
+      4,
+      46.8
+     ],
+     "plan": "simplified",
+     "seenIn": "b_20250109_1300_Track10_Sphere_00128",
+     "how": "telegraaf-gebouw-builder.ts tower(): 3DBAG shaft + stone cap band and coping + flagpole"
+    },
+    {
+     "id": "n-hoarding",
+     "kind": "other",
+     "where": "Kroonenberg Groep site hoardings in front of the Nieuwezijds Voorburgwal front (2025)",
+     "approxSizeM": [
+      40,
+      2.5
+     ],
+     "plan": "skipped",
+     "seenIn": "b_20250109_1300_Track10_Sphere_00128",
+     "skip": {
+      "reason": "temporary",
+      "note": "tenant signage / building-site hoardings, replaced or removed with each tenant or project"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "w06-341",
+   "bearing": 341,
+   "lengthM": 9.6,
+   "centre": [
+    4.8911535,
+    52.371821
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002033_pano_0000_000799",
+   "capturedAt": "2021-03-08",
+   "checked": true,
+   "items": [],
+   "note": "the 2021 view of the north side shows the neighbours (red-finned glass building, older houses), not this pand's walls"
+  },
+  {
+   "tag": "w07-270",
+   "bearing": 270,
+   "lengthM": 9.1,
+   "centre": [
+    4.8909505,
+    52.371415
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002033_pano_0000_000786",
+   "capturedAt": "2021-03-08",
+   "checked": true,
+   "items": [
+    {
+     "id": "e-tower",
+     "kind": "tower",
+     "where": "brick stair/lift tower rising from behind a low front block at the south end of the main front, plain brick, small stone corbels where it meets the main coping, 3DBAG top 46.8 m",
+     "approxSizeM": [
+      3.7,
+      46.8
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-002033_pano_0000_000786",
+     "how": "telegraaf-gebouw-builder.ts tower(): 3DBAG shaft; two stone corbels at the main coping, a pale stone cap band and coping on top, a flagpole"
+    },
+    {
+     "id": "e-window-groups",
+     "kind": "window-shape",
+     "where": "window groups of three on four upper storeys: each window ~1.4 x 3.5 m, white frames, multi-pane upper part over a two-light lower part; groups 4.2 m wide between 1.2 m brick piers",
+     "approxSizeM": [
+      4.2,
+      3.5
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002033_pano_0000_000786",
+     "how": "telegraaf-gebouw-builder.ts windowGroup(): six groups x four rows, 4.2 m groups between 1.2 m piers"
+    },
+    {
+     "id": "e-glass-blocks",
+     "kind": "window-shape",
+     "where": "tall glass-block panels over the ground storey, one under each window group, 3.4-7.8 m",
+     "approxSizeM": [
+      4.2,
+      4.4
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002033_pano_0000_000786",
+     "how": "telegraaf-gebouw-builder.ts glassBlocks(): pale glass slab with a block grid"
+    },
+    {
+     "id": "e-canopy",
+     "kind": "canopy",
+     "where": "thin dark canopy over the entrance doors at the south end, 3.2 m",
+     "approxSizeM": [
+      11,
+      0.25
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002033_pano_0000_000786",
+     "how": "telegraaf-gebouw-builder.ts mainFront(): dark slab 1.2 m deep over groups five and six at 3.45 m"
+    },
+    {
+     "id": "e-doors",
+     "kind": "other",
+     "where": "entrance doors with dark bronze frames between light stone piers under the canopy",
+     "approxSizeM": [
+      4,
+      3
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002033_pano_0000_000786",
+     "how": "telegraaf-gebouw-builder.ts mainFront(): dark-framed glazing in the two south groups, stone piers 0-3.4 m"
+    },
+    {
+     "id": "e-coping",
+     "kind": "other",
+     "where": "stone coping along the top of the front (28.5 m)",
+     "approxSizeM": [
+      32,
+      0.3
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002033_pano_0000_000786",
+     "how": "telegraaf-gebouw-builder.ts mainFront(): stone slab at 28.2-28.5 m along the 1930 front and the brick bay"
+    },
+    {
+     "id": "l-arched-door",
+     "kind": "window-shape",
+     "where": "low brick block before the tower with stone coping at 4.8 m, stone plinth and a round-arched dark door in a white stone surround",
+     "approxSizeM": [
+      1.5,
+      2.6
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002033_pano_0000_000786",
+     "how": "telegraaf-gebouw-builder.ts lowBlock(): arched surround and door as extruded outlines"
+    },
+    {
+     "id": "l-plaque",
+     "kind": "relief",
+     "where": "small stone plaque on the low block wall",
+     "approxSizeM": [
+      0.4,
+      0.6
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-002033_pano_0000_000786",
+     "how": "telegraaf-gebouw-builder.ts stone plate"
+    },
+    {
+     "id": "a-glass-block-bands",
+     "kind": "window-shape",
+     "where": "stair annex south of the tower with three horizontal glass-block bands wrapping round it (6.0-7.8, 8.4-10.6, 10.8-13.2 m)",
+     "approxSizeM": [
+      2.5,
+      1.8
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002033_pano_0000_000786",
+     "how": "telegraaf-gebouw-builder.ts annex(): glass-block slabs on its faces"
+    },
+    {
+     "id": "n-lettering",
+     "kind": "lettering",
+     "where": "DE TELEGRAAF lettering",
+     "approxSizeM": [
+      10,
+      1.5
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7316010203-002033_pano_0000_000786",
+     "skip": {
+      "reason": "gone",
+      "note": "not on the front in any panorama 2017-2025; the lettering is gone"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "w08-73",
+   "bearing": 73,
+   "lengthM": 8.3,
+   "centre": [
+    4.8916205,
+    52.3716985
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001530_pano_0004_000119",
+   "capturedAt": "2019-12-20",
+   "checked": true,
+   "items": [
+    {
+     "id": "k-dogo-cornice",
+     "kind": "other",
+     "where": "white rendered shopfront with a curved projecting cornice band over the shop (Kalverstraat 34)",
+     "approxSizeM": [
+      8,
+      1
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-001530_pano_0004_000119",
+     "how": "telegraaf-gebouw-builder.ts kalverstraat(): shop glass and fascia; the cornice reads as the fascia band"
+    },
+    {
+     "id": "k-dogo-sign",
+     "kind": "other",
+     "where": "DOGO sign",
+     "approxSizeM": [
+      3,
+      0.8
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7316010203-001530_pano_0004_000119",
+     "skip": {
+      "reason": "temporary",
+      "note": "tenant signage / building-site hoardings, replaced or removed with each tenant or project"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "w09-269",
+   "bearing": 269,
+   "lengthM": 5.3,
+   "centre": [
+    4.89095,
+    52.371763
+   ],
+   "evidence": "photo",
+   "panoId": "b_20250109_1300_Track10_Sphere_00124",
+   "capturedAt": "2025-01-09",
+   "checked": true,
+   "items": [
+    {
+     "id": "n-cream-bay",
+     "kind": "other",
+     "where": "cream stone-clad bay (later addition) with four openings closed by white horizontal slats over dark glass",
+     "approxSizeM": [
+      2.2,
+      25
+     ],
+     "plan": "modelled",
+     "seenIn": "b_20250109_1300_Track10_Sphere_00124",
+     "how": "telegraaf-gebouw-builder.ts creamBay(): cream cladding slab, slatted openings"
+    },
+    {
+     "id": "n-grey-corner",
+     "kind": "other",
+     "where": "grey stone-clad rounded corner at the north end with narrow slit windows on four storeys",
+     "approxSizeM": [
+      3.5,
+      24
+     ],
+     "plan": "simplified",
+     "seenIn": "b_20250109_1300_Track10_Sphere_00124",
+     "how": "telegraaf-gebouw-builder.ts greyCorner(): cladding on the 3DBAG faces, slit windows; the rounding is the 3DBAG chamfer"
+    }
+   ]
+  },
+  {
+   "tag": "w10-270",
+   "bearing": 270,
+   "lengthM": 5.1,
+   "centre": [
+    4.8909495,
+    52.37154
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001055_pano_0000_000539",
+   "capturedAt": "2019-01-15",
+   "checked": true,
+   "items": [
+    {
+     "id": "e-ground-shops",
+     "kind": "window-shape",
+     "where": "ground storey: glazed shopfront under each glass-block panel between light stone piers",
+     "approxSizeM": [
+      4.2,
+      3
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001055_pano_0000_000539",
+     "how": "telegraaf-gebouw-builder.ts mainFront(): glazed ground storey with dark mullions per group, light stone piers between"
+    },
+    {
+     "id": "e-scaffold",
+     "kind": "other",
+     "where": "2019 scaffolding and banner (redevelopment)",
+     "approxSizeM": [
+      30,
+      30
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7316010203-001055_pano_0000_000539",
+     "skip": {
+      "reason": "temporary",
+      "note": "tenant signage / building-site hoardings, replaced or removed with each tenant or project"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "w11-271",
+   "bearing": 271,
+   "lengthM": 4.6,
+   "centre": [
+    4.8909495,
+    52.3717165
+   ],
+   "evidence": "photo",
+   "panoId": "b_20250109_1300_Track10_Sphere_00123",
+   "capturedAt": "2025-01-09",
+   "checked": true,
+   "items": [
+    {
+     "id": "n-single-windows",
+     "kind": "window-shape",
+     "where": "slim dark-brick bay between the cream bay and the main front: one white-framed window per storey (1.0 x 2.1 m, slatted head) and a small square window near the top",
+     "approxSizeM": [
+      1,
+      2.1
+     ],
+     "plan": "modelled",
+     "seenIn": "b_20250109_1300_Track10_Sphere_00123",
+     "how": "telegraaf-gebouw-builder.ts brickBay()"
+    }
+   ]
+  },
+  {
+   "tag": "w12-270",
+   "bearing": 270,
+   "lengthM": 4.2,
+   "centre": [
+    4.89095,
+    52.371488
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-06-30_05-16-46_00817",
+   "capturedAt": "2025-06-30",
+   "checked": true,
+   "items": [
+    {
+     "id": "e-frames",
+     "kind": "window-shape",
+     "where": "white frames: upper part 3 x 3 panes, lower part two lights",
+     "approxSizeM": [
+      1.4,
+      3.5
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-06-30_05-16-46_00817",
+     "how": "telegraaf-gebouw-builder.ts windowGroup(): glass 6 cm proud with white bars (outer frame, frames between the windows, transom, glazing bars above, mullion below)"
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  },
+  {
+   "name": "3DBAG",
+   "url": "https://3dbag.nl/",
+   "licence": "CC BY 4.0"
+  },
+  {
+   "name": "nl.wikipedia Nieuwezijds Voorburgwal",
+   "url": "https://nl.wikipedia.org/wiki/Nieuwezijds_Voorburgwal",
+   "licence": "CC BY-SA 4.0"
+  }
+ ]
+}

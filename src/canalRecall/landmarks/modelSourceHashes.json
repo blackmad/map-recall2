@@ -1,5 +1,5 @@
 {
-  "toolchain": "0c8d8084ea2e81bd818d7ffabb589c38bb62fceb30c05dd303214fafc8572d83",
+  "toolchain": "30d3ed977e088a0509989f136ece761f9912d84d6bcb1599c6984a177b9d2a57",
   "models": {
     "abn-amro-hoofdkantoor": "90ff65a2d9f94e99b2ab33438567f147959a43f017d3d9cf9d2ae68b6dae7cbf",
     "academie-theater-dans": "503b3e8d59937cbf7ac8776eb644c11fd10b567e5ac1113e0caa55c83cb68cde",
@@ -329,6 +329,8 @@
     "straat-museum": "a9615d916674f783ca04bb40469bb0e7fd5df3ea6af96c4d0d1af7c4b447afb0",
     "studiok": "4504b9582713fa073863eca1446e1cd51dcf4f6d6978148c49d62bfb7090cee6",
     "symphony": "a36e9c26b44eff3b9c524d680315f7c5d99424492ba45c3cc663fc60c9d68741",
+    "telefooncentrale-spuistraat": "06fd3f90d91e19372280f5fe484349cdbca837f4469f7c4dedea21b52b4b1c07",
+    "telegraaf-gebouw": "59a13cb8b25dab256bcf5102673a6dbee4105561fa38c3802f88142f520e190b",
     "teun-de-jager": "e228076a236708ef4beba819bd0e922fc03ee64908fe6eb1c55ddf9d93bdf26a",
     "the-movies": "af6b098eb134b53b357d23586aa4dc0451f90136d028157bcb4fa9927143f936",
     "the-rock": "c7f1aa4a2ab845416ce704e8de4c696bccf177a1ed204e290ca40787f770579f",

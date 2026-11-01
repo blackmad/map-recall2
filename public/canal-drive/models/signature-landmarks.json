@@ -66903,6 +66903,682 @@
         "bytes": 98032,
         "triangles": 4405
       }
+    },
+    "telefooncentrale-spuistraat": {
+      "id": "telefooncentrale-spuistraat",
+      "name": "Former telephone exchange (W Amsterdam)",
+      "modelUrl": "./models/telefooncentrale-spuistraat.glb",
+      "suppressOsmIds": [
+        "NL.IMBAG.Pand.0363100012165118",
+        "r14382490",
+        "w1080954279",
+        "w1080954280",
+        "w1080954282",
+        "w1080954283",
+        "w1080954276",
+        "w1080954281",
+        "w1080954284",
+        "w1080954285",
+        "w1080954286",
+        "w1080954287",
+        "w1080954288",
+        "w1080954289",
+        "w1080954290",
+        "w1080954291"
+      ],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.88993483,
+          52.37274948
+        ],
+        "headingDegrees": 0,
+        "lengthMetres": 73.1,
+        "widthMetres": 46.3
+      },
+      "surveyed": {
+        "anchor": [
+          4.88993483,
+          52.37274948
+        ],
+        "northOffsetDegrees": 0,
+        "source": "Vertex average of the BAG 0363100012165118 ring (RD, PDOK BAG WFS); massing is the 3DBAG LoD2.2 shell of that pand (CC BY 4.0) in native east/south metres (scripts/landmarks/telefooncentrale-telegraaf-prepare.ts). Bays, storey and band heights measured on rectified Gemeente Amsterdam panorama crops at ~50 px/m and the municipal monument register text 207033 (scripts/landmarks/telefooncentrale-spuistraat-inventory.json)."
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 0,
+      "heightMetres": 33,
+      "bagYear": 1927,
+      "materialOverrides": {
+        "brick": "#6e5242",
+        "stone": "#a8a89e",
+        "concrete": "#8f8d85",
+        "glass": "#4d6f88",
+        "frame": "#6b7872",
+        "dark": "#2e2c29",
+        "bronze": "#4a3a32",
+        "slate": "#56585e",
+        "gold": "#c9a24a",
+        "canopyGlass": "#5d6e74"
+      },
+      "attribution": {
+        "title": "Former Rijkskantoorgebouw and telephone exchange, Nieuwezijds Voorburgwal 226 / Spuistraat 175 (J. Crouwel, 1924; municipal monument 207033), now W Amsterdam",
+        "author": "Map Recall",
+        "sourceUrl": "https://api.data.amsterdam.nl/v1/monumenten/monumenten/9aec11f0-bda1-4421-895b-a661f2536cf4",
+        "licence": "CC BY 4.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "modifications": "Original texture-free flat-colour geometry on the 3DBAG LoD2.2 shell (CC BY 4.0) and BAG footprint (CC0): brick parapet bands with stone edges, steel-framed landscape windows, the deep third-floor canopy, balconies wrapping the set-back corner bays, granite plinth, steps, entrances, kiosk, rooftop glass box and gold W logos, from rectified Gemeente Amsterdam panoramas (CC BY 4.0) read for proportion only, and the municipal monument register description (CC0). No pixels or meshes imported."
+      },
+      "buildingFootprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.8902561,
+              52.3730179
+            ],
+            [
+              4.8902558,
+              52.3730195
+            ],
+            [
+              4.8902492,
+              52.3730192
+            ],
+            [
+              4.8902423,
+              52.3730649
+            ],
+            [
+              4.8901192,
+              52.3730701
+            ],
+            [
+              4.8901196,
+              52.3730741
+            ],
+            [
+              4.8901013,
+              52.3730749
+            ],
+            [
+              4.8901015,
+              52.3730767
+            ],
+            [
+              4.8899185,
+              52.3730845
+            ],
+            [
+              4.8899183,
+              52.3730827
+            ],
+            [
+              4.8899002,
+              52.3730834
+            ],
+            [
+              4.8898998,
+              52.3730795
+            ],
+            [
+              4.8897758,
+              52.3730847
+            ],
+            [
+              4.8897641,
+              52.3730293
+            ],
+            [
+              4.8897582,
+              52.3730294
+            ],
+            [
+              4.889756,
+              52.373019
+            ],
+            [
+              4.8897525,
+              52.3730191
+            ],
+            [
+              4.8897171,
+              52.3728512
+            ],
+            [
+              4.8897196,
+              52.372851
+            ],
+            [
+              4.8897155,
+              52.3728314
+            ],
+            [
+              4.889713,
+              52.3728316
+            ],
+            [
+              4.8896613,
+              52.3725863
+            ],
+            [
+              4.8896648,
+              52.3725859
+            ],
+            [
+              4.8896625,
+              52.3725752
+            ],
+            [
+              4.8896683,
+              52.3725745
+            ],
+            [
+              4.889657,
+              52.3725211
+            ],
+            [
+              4.8896681,
+              52.3725168
+            ],
+            [
+              4.8896478,
+              52.3724992
+            ],
+            [
+              4.8896496,
+              52.3724968
+            ],
+            [
+              4.889636,
+              52.372485
+            ],
+            [
+              4.889633,
+              52.3724472
+            ],
+            [
+              4.8896851,
+              52.3724272
+            ],
+            [
+              4.8897394,
+              52.3724446
+            ],
+            [
+              4.8897591,
+              52.3724616
+            ],
+            [
+              4.8897619,
+              52.3724604
+            ],
+            [
+              4.8897778,
+              52.3724742
+            ],
+            [
+              4.8897912,
+              52.372469
+            ],
+            [
+              4.8898317,
+              52.3725078
+            ],
+            [
+              4.8898759,
+              52.3724906
+            ],
+            [
+              4.8898833,
+              52.3724978
+            ],
+            [
+              4.8898935,
+              52.3724939
+            ],
+            [
+              4.8902141,
+              52.3725911
+            ],
+            [
+              4.890213,
+              52.3725925
+            ],
+            [
+              4.8902288,
+              52.3725973
+            ],
+            [
+              4.8902255,
+              52.3726014
+            ],
+            [
+              4.890309,
+              52.3726267
+            ],
+            [
+              4.890302,
+              52.3726725
+            ],
+            [
+              4.8903086,
+              52.3726728
+            ],
+            [
+              4.8903084,
+              52.372674
+            ],
+            [
+              4.890307,
+              52.3726837
+            ],
+            [
+              4.8903103,
+              52.3726839
+            ],
+            [
+              4.8902608,
+              52.3730089
+            ],
+            [
+              4.8902575,
+              52.3730087
+            ],
+            [
+              4.8902561,
+              52.3730179
+            ]
+          ]
+        ]
+      },
+      "buildingCategory": "landmark",
+      "bounds": {
+        "min": [
+          -21.682659149169922,
+          -4.7683716530855236e-8,
+          -38.876930236816406
+        ],
+        "max": [
+          27.896514892578125,
+          32.893001556396484,
+          36.640052795410156
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.88993483,
+          52.37274948
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 90,
+        "facadeBearingDegrees": 0,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 75.51698303222656,
+        "heightMetres": 32.8930016040802,
+        "depthMetres": 49.57917404174805,
+        "depthCoverage": 1.0708244933422906
+      },
+      "triangles": 20128,
+      "bytes": 264712,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
+      "lod1": {
+        "sourceHash": "a1d6702c7f4cb824",
+        "buildVersion": 2,
+        "bytes": 82488,
+        "triangles": 3696
+      }
+    },
+    "telegraaf-gebouw": {
+      "id": "telegraaf-gebouw",
+      "name": "Former Telegraaf building",
+      "modelUrl": "./models/telegraaf-gebouw.glb",
+      "suppressOsmIds": [
+        "NL.IMBAG.Pand.0363100012253832",
+        "w266904002"
+      ],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.89107633,
+          52.37161126
+        ],
+        "headingDegrees": 0,
+        "lengthMetres": 63.6,
+        "widthMetres": 47.8
+      },
+      "surveyed": {
+        "anchor": [
+          4.89107633,
+          52.37161126
+        ],
+        "northOffsetDegrees": 0,
+        "source": "Vertex average of the BAG 0363100012253832 ring (RD, PDOK BAG WFS); massing is the 3DBAG LoD2.2 shell of that pand (CC BY 4.0) in native east/south metres (scripts/landmarks/telefooncentrale-telegraaf-prepare.ts). Window groups, storey heights and the tower base measured on rectified Gemeente Amsterdam panorama crops at ~50 px/m (scripts/landmarks/telegraaf-gebouw-inventory.json)."
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 0,
+      "heightMetres": 46,
+      "bagYear": 1930,
+      "materialOverrides": {
+        "brick": "#574a48",
+        "stone": "#a9a194",
+        "glass": "#4d6f88",
+        "frame": "#e8e6df",
+        "dark": "#2e2c29",
+        "bronze": "#3e3430",
+        "slate": "#56585e",
+        "canopyGlass": "#9aa7a4",
+        "concrete": "#c4c6c0",
+        "sandstone": "#e2dccb",
+        "greyBrick": "#8e8c84",
+        "white": "#e4e0d6"
+      },
+      "attribution": {
+        "title": "Former Telegraaf building, Nieuwezijds Voorburgwal 225 (J.F. Staal, 1928-1930)",
+        "author": "Map Recall",
+        "sourceUrl": "https://nl.wikipedia.org/wiki/Nieuwezijds_Voorburgwal",
+        "licence": "CC BY 4.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "modifications": "Original texture-free flat-colour geometry on the 3DBAG LoD2.2 shell (CC BY 4.0) and BAG footprint (CC0): white-framed window groups, glass-block panels, glazed ground storey between stone piers, entrance canopy, tower cap, low block with arched door, stair-annex glass-block bands, the stone-clad northern bays and simplified Kalverstraat shopfronts, from rectified Gemeente Amsterdam panoramas (CC BY 4.0) read for proportion only. No pixels or meshes imported."
+      },
+      "buildingFootprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.8909444,
+              52.3716569
+            ],
+            [
+              4.8909446,
+              52.3716476
+            ],
+            [
+              4.8909462,
+              52.3716476
+            ],
+            [
+              4.8909463,
+              52.3716458
+            ],
+            [
+              4.8909476,
+              52.3716458
+            ],
+            [
+              4.8909483,
+              52.3716109
+            ],
+            [
+              4.890947,
+              52.3716109
+            ],
+            [
+              4.890947,
+              52.3716091
+            ],
+            [
+              4.8909454,
+              52.3716091
+            ],
+            [
+              4.8909456,
+              52.3715997
+            ],
+            [
+              4.8909472,
+              52.3715997
+            ],
+            [
+              4.8909472,
+              52.371598
+            ],
+            [
+              4.8909486,
+              52.371598
+            ],
+            [
+              4.8909493,
+              52.3715631
+            ],
+            [
+              4.890948,
+              52.3715631
+            ],
+            [
+              4.890948,
+              52.3715613
+            ],
+            [
+              4.8909465,
+              52.3715613
+            ],
+            [
+              4.890947,
+              52.3715153
+            ],
+            [
+              4.8909485,
+              52.3715153
+            ],
+            [
+              4.8909486,
+              52.3715049
+            ],
+            [
+              4.8909471,
+              52.3715049
+            ],
+            [
+              4.8909475,
+              52.371467
+            ],
+            [
+              4.8909483,
+              52.371467
+            ],
+            [
+              4.8909483,
+              52.3714619
+            ],
+            [
+              4.8909473,
+              52.3714619
+            ],
+            [
+              4.8909474,
+              52.3714589
+            ],
+            [
+              4.8909484,
+              52.3714589
+            ],
+            [
+              4.8909484,
+              52.3714537
+            ],
+            [
+              4.8909477,
+              52.3714537
+            ],
+            [
+              4.8909477,
+              52.3714519
+            ],
+            [
+              4.890948,
+              52.3714213
+            ],
+            [
+              4.8909486,
+              52.3713725
+            ],
+            [
+              4.8909594,
+              52.3713725
+            ],
+            [
+              4.8909691,
+              52.3713568
+            ],
+            [
+              4.8909754,
+              52.3713582
+            ],
+            [
+              4.8909804,
+              52.3713503
+            ],
+            [
+              4.8909984,
+              52.3713544
+            ],
+            [
+              4.8915538,
+              52.3714727
+            ],
+            [
+              4.8914714,
+              52.3716175
+            ],
+            [
+              4.8916361,
+              52.3716609
+            ],
+            [
+              4.8915996,
+              52.3717324
+            ],
+            [
+              4.8916452,
+              52.3717398
+            ],
+            [
+              4.8916268,
+              52.3717773
+            ],
+            [
+              4.8916122,
+              52.37182
+            ],
+            [
+              4.8914996,
+              52.3717969
+            ],
+            [
+              4.8914714,
+              52.3718483
+            ],
+            [
+              4.8914664,
+              52.3718574
+            ],
+            [
+              4.8914226,
+              52.3718484
+            ],
+            [
+              4.8913838,
+              52.3719193
+            ],
+            [
+              4.8913674,
+              52.3719159
+            ],
+            [
+              4.8913631,
+              52.3719235
+            ],
+            [
+              4.8909466,
+              52.3718372
+            ],
+            [
+              4.8909466,
+              52.3717846
+            ],
+            [
+              4.8909481,
+              52.3717368
+            ],
+            [
+              4.8909472,
+              52.3717355
+            ],
+            [
+              4.8909467,
+              52.3717117
+            ],
+            [
+              4.8909461,
+              52.3717103
+            ],
+            [
+              4.8909459,
+              52.3716939
+            ],
+            [
+              4.8909479,
+              52.3716939
+            ],
+            [
+              4.8909473,
+              52.3716587
+            ],
+            [
+              4.890946,
+              52.3716587
+            ],
+            [
+              4.890946,
+              52.3716569
+            ],
+            [
+              4.8909444,
+              52.3716569
+            ]
+          ]
+        ]
+      },
+      "buildingCategory": "landmark",
+      "bounds": {
+        "min": [
+          -10.151999473571777,
+          -3.814697322468419e-7,
+          -26.177000045776367
+        ],
+        "max": [
+          38.9376335144043,
+          47.11800003051758,
+          29.006999969482422
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.89107633,
+          52.37161126
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 90,
+        "facadeBearingDegrees": 0,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 55.18400001525879,
+        "heightMetres": 47.11800041198731,
+        "depthMetres": 49.089632987976074,
+        "depthCoverage": 1.0269797696229306
+      },
+      "triangles": 12653,
+      "bytes": 174316,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
+      "lod1": {
+        "sourceHash": "ca99fc45b4e0fec0",
+        "buildVersion": 2,
+        "bytes": 59492,
+        "triangles": 2506
+      }
     }
   }
 }

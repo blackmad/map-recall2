@@ -2020,5 +2020,17 @@
   "buildVersion": 2,
   "bytes": 98032,
   "triangles": 4405
+ },
+ "telefooncentrale-spuistraat": {
+  "sourceHash": "a1d6702c7f4cb824",
+  "buildVersion": 2,
+  "bytes": 82488,
+  "triangles": 3696
+ },
+ "telegraaf-gebouw": {
+  "sourceHash": "ca99fc45b4e0fec0",
+  "buildVersion": 2,
+  "bytes": 59492,
+  "triangles": 2506
  }
 }

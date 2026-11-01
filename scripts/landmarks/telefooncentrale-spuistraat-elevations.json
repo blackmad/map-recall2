@@ -1,0 +1,55 @@
+{
+ "id": "telefooncentrale-spuistraat",
+ "source": "Counted 2026-11-01 (lane #183) from the landmark-brief.ts crops of the Gemeente Amsterdam panoramas (CC BY 4.0), before comparing with the model.",
+ "countedBy": "photo",
+ "facades": [
+  {
+   "name": "Nieuwezijds Voorburgwal front",
+   "bearing": 87.5,
+   "photo": "artifacts/landmark-briefs/telefooncentrale-spuistraat/w01-85.alt.jpg",
+   "rows": [
+    9,
+    9,
+    9,
+    9
+   ],
+   "columns": 9,
+   "symmetric": true,
+   "gables": 0,
+   "note": "Nine bays between the set-back corner bays: the glazed shop storey (one opening per bay, the glazing runs from the steps to 5.85 m), two storeys of steel windows and the set-back third floor under the canopy; the blind top storey has none. The shop storey glazing is divided by mullions only, so each bay is one opening. Corner bays outside alongM. heightM stops under the roof box, which the street photo cannot show.",
+   "depthBand": 3,
+   "alongM": [
+    9.5,
+    45.4
+   ],
+   "heightM": [
+    0,
+    24.0
+   ]
+  },
+  {
+   "name": "Paleisstraat front",
+   "bearing": 152.5,
+   "photo": "artifacts/landmark-briefs/telefooncentrale-spuistraat/w03-154.jpg",
+   "rows": [
+    null,
+    6,
+    6,
+    6,
+    6
+   ],
+   "columns": 6,
+   "gables": 0,
+   "note": "Six bays: ground windows (the west one shortened over the side door), first, second and set-back third floor. The plinth row (basement grilles and the side door) is null: bicycles and refuse hide the east end of the plinth. alongM crops to the six-bay main front between the set-back corner bays, as the crop frames it; heightM stops under the roof box, which the street photo cannot show.",
+   "depthBand": 3,
+   "alongM": [
+    18.4,
+    42.7
+   ],
+   "heightM": [
+    0,
+    24.0
+   ]
+  }
+ ]
+}
