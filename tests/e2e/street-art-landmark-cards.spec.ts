@@ -45,7 +45,7 @@ async function notice(page: Page) {
 }
 
 async function canvasBox(page: Page) {
-  return page.evaluate(() => { const r = (window as any).canalRecallGame.vectorMap.map.getCanvas().getBoundingClientRect(); return { x: r.left, y: r.top, w: r.width, h: r.height }; });
+  return page.evaluate(() => { const r = (window as any).canalRecallGame.vectorMap.frameCanvas().getBoundingClientRect(); return { x: r.left, y: r.top, w: r.width, h: r.height }; });
 }
 
 async function resident(page: Page, id: string) {
@@ -59,7 +59,7 @@ async function resident(page: Page, id: string) {
 async function roofPoint(page: Page, id: string) {
   return page.evaluate((id) => {
     const w = window as any, vm = w.canalRecallGame.vectorMap, tb = vm._threeBuildings, T = w.CanalRecallThree.THREE;
-    const canvas = vm.map.getCanvas(), W = canvas.clientWidth, H = canvas.clientHeight;
+    const canvas = vm.frameCanvas(), W = canvas.clientWidth, H = canvas.clientHeight;
     for (const [key, chunk] of tb.chunks) {
       if (key.startsWith('extras:') || !chunk.mesh) continue;
       const f = chunk.source.find((x: any) => String(x.properties.id) === id);

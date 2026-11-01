@@ -47,7 +47,7 @@ for (const mode of ['off', 'on'] as const) {
     const want = mode === 'on' ? [chunk.id] : chunk.replaces;
     await page.waitForFunction(({ want }) => {
       const vm = (window as any).canalRecallGame.vectorMap, l = vm._signatureLandmarks;
-      const c = vm.map.getCenter(); vm.map.jumpTo({ center: [c.lng + 1e-7, c.lat] });
+      const c = vm.camera.center(); (vm.map ?? vm.cameraMap).jumpTo({ center: [c.lng + 1e-7, c.lat] });
       return l && want.every((id: string) => l.shown.has(id));
     }, { want }, { timeout: 150_000, polling: 1000 });
     await parkAt(page, at, ahead(at, bearing, 40));
@@ -86,7 +86,7 @@ for (const mode of ['off', 'on'] as const) {
     await page.waitForTimeout(3000);
     const hover = await page.evaluate(({ pands, chunkId, replaces }) => {
       const vm = (window as any).canalRecallGame.vectorMap, l = vm._signatureLandmarks, THREE = (window as any).CanalRecallThree.THREE;
-      const canvas = vm.map.getCanvas(), w = canvas.clientWidth, h = canvas.clientHeight;
+      const canvas = vm.frameCanvas(), w = canvas.clientWidth, h = canvas.clientHeight;
       const results: any[] = [];
       for (const p of pands) {
         // Facade point of this pand in the chunk frame (mid-frontage, 5 m up), through the entry's own transform.

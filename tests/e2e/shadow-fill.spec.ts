@@ -59,7 +59,7 @@ async function settle(page: Page): Promise<void> {
   await page.evaluate(() => { (window as any).__sfIdle = 0; });
   await page.waitForFunction(() => {
     const w = window as any, vm = w.canalRecallGame.vectorMap, t = vm._threeBuildings, l = vm._signatureLandmarks;
-    const c = vm.map.getCenter(); vm.map.jumpTo({ center: [c.lng + 1e-9, c.lat] });
+    const c = vm.camera.center(); (vm.map ?? vm.cameraMap).jumpTo({ center: [c.lng + 1e-9, c.lat] });
     const idle = !t || (t.ready && !t.pending.length && !t.inflight.size);
     const landmarksIdle = !l || !l._pending || !l._pending.size;
     const key = `${t?.stats?.().buildings ?? 0}|${t?.chunks?.size ?? 0}|${l?.shown?.size ?? 0}`;
@@ -67,7 +67,7 @@ async function settle(page: Page): Promise<void> {
     w.__sfKey = key;
     return w.__sfIdle >= 5;
   }, null, { timeout: 180_000, polling: 1000 });
-  await page.evaluate(() => { const w = window as any; w.canalRecallGame.vectorMap.map.jumpTo(w.__sfCamera); });
+  await page.evaluate(() => { const w = window as any; (w.canalRecallGame.vectorMap.map ?? w.canalRecallGame.vectorMap.cameraMap).jumpTo(w.__sfCamera); });
   await page.waitForTimeout(2500);
 }
 
