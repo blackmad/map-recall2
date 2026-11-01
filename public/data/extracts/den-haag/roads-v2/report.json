@@ -1,0 +1,38 @@
+{
+  "city": "den-haag",
+  "source": "public/data/extracts/den-haag/streets-routing.json",
+  "sourceSha256": "857d17966abd03880ea52254d41c2858a7d1c5ba25043633c3fd05cb9ef93f33",
+  "output": "artifacts/roads/staging/den-haag/streets-routing.bin",
+  "publish": "artifacts/roads/staging/den-haag/streets-routing.bin.gz",
+  "header": {
+    "version": 1,
+    "byteLength": 764952,
+    "featureCount": 17920,
+    "pathCount": 27526,
+    "pointCount": 139104,
+    "stringCount": 3008,
+    "exactCount": 0,
+    "stringsOffset": 88,
+    "stringsLength": 46484,
+    "featuresOffset": 46572,
+    "featuresLength": 718375,
+    "exactOffset": 764952,
+    "exactLength": 0,
+    "sourceSha256": "857d17966abd03880ea52254d41c2858a7d1c5ba25043633c3fd05cb9ef93f33"
+  },
+  "bytes": {
+    "json": {
+      "raw": 5705192,
+      "gzip": 1043379,
+      "brotli": 596322
+    },
+    "binary": {
+      "raw": 764952,
+      "gzip": 559880,
+      "brotli": 447217
+    }
+  },
+  "encodeMs": 37,
+  "nodeDecodeMs": 12,
+  "roundTrip": "JSON.stringify(decoded) === source"
+}
