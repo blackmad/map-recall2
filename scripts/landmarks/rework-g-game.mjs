@@ -15,7 +15,7 @@ await page.locator('#route-card').evaluate(f => f.requestSubmit());
 await page.waitForFunction(() => canalRecallGame.state === 4 && canalRecallGame.camera.introOverview === 0, null, {timeout: 180000});
 let first = true;
 for (const b of bearings.split(',')) {
-  await page.evaluate(a => { const g = canalRecallGame, v = g.vectorMap; v.sync = () => {}; v.map.jumpTo({center: [a.lon, a.lat], zoom: a.zoom, pitch: a.pitch, bearing: a.bearing}); v._completeCity.setSuspended(false); v._completeCity.followCamera(); }, {lon: +lon, lat: +lat, zoom: +zoom, pitch: +pitch, bearing: +b});
+  await page.evaluate(a => { const g = canalRecallGame, v = g.vectorMap; v.sync = () => {}; (v.map ?? v.cameraMap).jumpTo({center: [a.lon, a.lat], zoom: a.zoom, pitch: a.pitch, bearing: a.bearing}); v._completeCity.setSuspended(false); v._completeCity.followCamera(); }, {lon: +lon, lat: +lat, zoom: +zoom, pitch: +pitch, bearing: +b});
   if (first) await page.waitForFunction(id => canalRecallGame.vectorMap._signatureLandmarks.shown.has(id), id, {timeout: 180000});
   first = false;
   await page.waitForTimeout(8500);

@@ -181,7 +181,7 @@ async function gameShots(walls: Wall[], dir: string): Promise<Map<Wall, string>>
     for (const w of walls) {
       const bearing = bearingOf(w), file = path.join(dir, `game-${wallTag(w, walls)}.png`);
       try {
-        await page.evaluate(({c, b}) => (window as any).canalRecallGame.vectorMap.map.jumpTo({center: c, zoom: 19.2, pitch: 70, bearing: b}), {c: rdToLngLat(w.mid), b: (bearing + 180) % 360});
+        await page.evaluate(({c, b}) => ((window as any).canalRecallGame.vectorMap.map ?? (window as any).canalRecallGame.vectorMap.cameraMap).jumpTo({center: c, zoom: 19.2, pitch: 70, bearing: b}), {c: rdToLngLat(w.mid), b: (bearing + 180) % 360});
         await page.waitForFunction(i => (window as any).canalRecallGame.vectorMap._signatureLandmarks.shown.has(i), id, {timeout: 60000});
         await page.waitForTimeout(5000);
         await page.screenshot({path: file});
