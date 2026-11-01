@@ -46,7 +46,7 @@ import { GROUND_LAYERS, PARK_RANK, type BuiltCell, type CellDetail, type GroundL
 import { gpuMeshBytes, isCompact, type GpuMesh } from './compactMesh.js';
 import { groundParticipant, GROUND_ORDER, ndcOf } from './sharedFrameGround.js';
 import { footprintBase } from './placement.js';
-import { cutMesh, disposeTiles } from '../rendererShared/tiledGeometry.js';
+import { cutMesh, disposeTiles, setTileReach } from '../rendererShared/tiledGeometry.js';
 import { cellTileGrid, type CellTile } from './cellTiles.js';
 import { inTouchRing, residentRadius, touchAheadMarginM, touchResidentRadius, viewCornerReachM, viewReachM } from '../engine/worldStreamer.js';
 import { farBlockCells, farBlocksWithin, farRadiusM, FAR_KEEP_M, type BuiltFar } from './farRing.js';
@@ -157,6 +157,23 @@ export function groundNearTilesFlag(): number {
   const asked = Number(g.__canalRecallGroundNearTiles ?? (g.location?.search ? new URLSearchParams(g.location.search).get('groundNearTiles') : NaN));
   if (Number.isInteger(asked) && asked >= 1 && asked <= 8) return asked;
   return NEAR_CELL_TILES;
+}
+
+/**
+ * Small raised detail of the full-detail cell drawn only near the rider (#129): kerbs and bollards ~150 m off are a
+ * pixel or less at ride zoom, yet were a fifth of the ground triangles drawn. Tiles wholly beyond `REACH_M` (+25 m
+ * hysteresis) of the rider are not drawn. `?groundReach=0` (or `window.__canalRecallGroundReach = 0`) turns it off;
+ * `?groundReach=<m>` moves it.
+ */
+export const REACH_LAYERS: ReadonlySet<string> = new Set(['kerb', 'bollard']);
+export const REACH_M = 150;
+export function groundReachFlag(): number {
+  const g = globalThis as { __canalRecallGroundReach?: number | string; location?: { search?: string } };
+  const raw = g.__canalRecallGroundReach ?? (g.location?.search ? new URLSearchParams(g.location.search).get('groundReach') : null);
+  // A query without the key gives null, and Number(null) is 0 (off): only an explicit value counts.
+  const asked = raw === null || raw === undefined || raw === '' ? NaN : Number(raw);
+  if (Number.isFinite(asked) && asked >= 0) return asked;
+  return REACH_M;
 }
 
 function groundTilesFlag(): number {
@@ -318,6 +335,9 @@ export class OwnGround {
   private readonly preparing = new Set<string>();
   private gen = 0;
   private centre: Vec2 | null = null;
+  /** Meshes under the rider's distance limit (REACH_LAYERS of LOD 0 full-detail cells), by cell key. */
+  private readonly reachMeshes = new Map<string, any[]>();
+  private readonly reachM = groundReachFlag();
   private residencyAt: Vec2 | null = null;
   private zoom = 0;
   /** Current resident radius: `opts.radiusM`, grown from the air. */
@@ -494,6 +514,10 @@ export class OwnGround {
     const next = this.installQueue.shift();
     if (next) { this.install(next); if (this.installQueue.length) this.host.repaint(); }
     this.tickFades();
+    if (this.reachMeshes.size) {
+      const c = this.centre, reach = c ? { x: c[0], y: c[1], r: this.reachM, h: 25 } : null;
+      for (const meshes of this.reachMeshes.values()) for (const m of meshes) setTileReach(m, reach);
+    }
     if (visible && (this.overlayDirty || this.overlayRevision !== this.surfaceRevision)) this.rebuildOverlays();
     this.setBasemapHidden(visible && this.coversRider());
     return visible && this.resident.size > 0;
@@ -1072,6 +1096,7 @@ export class OwnGround {
       mesh.castShadow = layer === 'deckBody' || layer === 'hedge' || layer === 'furniture';
       mesh.renderOrder = layer === 'water' || layer === 'quay' ? 0 : layer === 'land' ? 1 : 2;
       this.tile(mesh, cell.tiles ? cell.tiles[layer] ?? null : undefined, cellTileGrid(this.opts.tiles, this.opts.nearTiles, cell.lod, cell.detail));
+      if (this.reachM > 0 && cell.lod === 0 && cell.detail === 'full' && REACH_LAYERS.has(layer)) this.reachMeshes.set(cell.key, [...(this.reachMeshes.get(cell.key) ?? []), mesh]);
       group.add(mesh);
       triangles += p.indices.length / 3;
       bytes += gpuMeshBytes(p as GpuMesh);
@@ -1092,6 +1117,7 @@ export class OwnGround {
     const r = this.resident.get(key);
     if (!r) return;
     this.root.remove(r.group);
+    this.reachMeshes.delete(key);
     this.fading.delete(key);
     for (const f of r.fade?.meshes ?? []) f.clone.dispose();
     r.group.traverse((o: any) => { if (o.isMesh && !o.userData?.tile) o.geometry.dispose(); });
