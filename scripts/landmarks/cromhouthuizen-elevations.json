@@ -1,0 +1,10 @@
+{"id": "cromhouthuizen", "countedBy": "lane #174 (opus) from ref-front.jpg = Gemeente Amsterdam panorama TMX7316010203-001975_pano_0000_000497 (2021-01-22) rectified onto the BAG front plane, cross-checked on _000496 and _000498; not a blind count, 2026-11-01", "facades": [
+ {"name": "canal front, Herengracht 364-370 (the four Vingboons houses)", "bearing": 93, "photo": "artifacts/landmark-lanes/cromhouthuizen/ref-front.jpg",
+  "alongM": [0, 29.0],
+  "openings": ["glass"],
+  "openingsNote": "glazed openings only: the bel-etage and cellar doors are dark panelled leaves (doors, not windows in the rhythm), the souterrain windows are dark behind bars and hidden in every capture; the transom lights over the doors still count",
+  "rows": [12, 12, 12, 12, 2, 2],
+  "rowsNote": "bottom up (the souterrain has no glazed openings in the model and is hidden by bicycles, cars and the stoops in every capture): bel-etage, three openings per house (the doors of 370, 368 and 366 count once each); first floor, three per house; second floor, three per house; shoulder storey, the neck window plus two oeil-de-boeuf per house; the attic window in each neck, at two levels: 370 and 368 at 17.4-18.1 m on the photo, 366 and 364 higher at 18.2-19.4 m",
+  "columns": 12, "symmetric": false, "gables": 4,
+  "gablesNote": "four neck gables, each crowned by a pediment; 362's roof (outside the crop) is not counted"}
+]}

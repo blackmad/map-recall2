@@ -47859,5 +47859,310 @@
     ]
    ]
   }
+ },
+ {
+  "id": "cromhouthuizen",
+  "name": "Cromhouthuizen",
+  "modelUrl": "./models/cromhouthuizen.glb",
+  "suppressOsmIds": [
+   "NL.IMBAG.Pand.0363100012176599",
+   "NL.IMBAG.Pand.0363100012169510",
+   "NL.IMBAG.Pand.0363100012176534"
+  ],
+  "spatialSuppression": false,
+  "footprint": {
+   "centre": [
+    4.8860661,
+    52.3684818
+   ],
+   "headingDegrees": 272.9,
+   "lengthMetres": 37.3,
+   "widthMetres": 32.97
+  },
+  "surveyed": {
+   "anchor": [
+    4.8860661,
+    52.3684818
+   ],
+   "northOffsetDegrees": 0,
+   "source": "Vertex average of the three BAG rings (Herengracht 362-364 0363100012176599, 366-368 0363100012169510, 370 0363100012176534; PDOK BAG WFS, CC0) as the anchor; native east/south metres at 111320 m per degree (cos-latitude in longitude). The builder's front frame runs along the BAG front from the 370/372 corner (bearing 2.9, front facing 92.9); facade heights and openings measured on the Gemeente Amsterdam panorama TMX7316010203-001975_pano_0000_000497 (2021, CC BY 4.0) rectified onto the front plane; massing behind the front from the 3DBAG LoD2.2 roof planes (CC BY 4.0). See cromhouthuizen-footprints.json."
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 0,
+  "heightMetres": 22.6,
+  "bagYear": 1662,
+  "materialOverrides": {
+   "stone": "#c4bca9",
+   "white": "#e8e3d6",
+   "glass": "#2b3238",
+   "frame": "#2f3631",
+   "dark": "#23272a",
+   "slate": "#4d5156",
+   "brick": "#7e5b49",
+   "ochre": "#cdbb95",
+   "bronze": "#2c302e"
+  },
+  "attribution": {
+   "title": "Cromhouthuizen, Herengracht 362-370",
+   "author": "Map Recall",
+   "sourceUrl": "https://nl.wikipedia.org/wiki/Cromhouthuizen",
+   "licence": "CC BY 4.0",
+   "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+   "modifications": "Original texture-free flat-colour geometry on the BAG footprints (CC0) with 3DBAG massing (CC BY 4.0): Philips Vingboons' four sandstone fronts of 1660-62 (Herengracht 364, 366, 368, 370), each with a neck gable, claw pieces, two oeil-de-boeuf windows, a crowning cornice with a triangular pediment and a hoist beam, pedimented bel-etage windows, festoons, relief tablets, stoops with iron railings and wall lanterns, plus the later stucco front of 362 with its balcony; read from Gemeente Amsterdam panoramas (CC BY 4.0) for proportion only. No photo pixels or imported meshes."
+  },
+  "buildingFootprint": {
+   "type": "MultiPolygon",
+   "coordinates": [
+    [
+     [
+      [
+       4.8859318,
+       52.3685784
+      ],
+      [
+       4.8863956,
+       52.3685633
+      ],
+      [
+       4.886405,
+       52.3686788
+      ],
+      [
+       4.8861798,
+       52.3686841
+      ],
+      [
+       4.8861764,
+       52.3686543
+      ],
+      [
+       4.8861671,
+       52.3686455
+      ],
+      [
+       4.8861449,
+       52.3686462
+      ],
+      [
+       4.886025,
+       52.3686499
+      ],
+      [
+       4.8859385,
+       52.3686526
+      ],
+      [
+       4.8859318,
+       52.3685784
+      ]
+     ]
+    ],
+    [
+     [
+      [
+       4.8863915,
+       52.3685131
+      ],
+      [
+       4.886393,
+       52.368531
+      ],
+      [
+       4.8863956,
+       52.3685633
+      ],
+      [
+       4.8859318,
+       52.3685784
+      ],
+      [
+       4.8858479,
+       52.368581
+      ],
+      [
+       4.8858469,
+       52.3685682
+      ],
+      [
+       4.8858652,
+       52.3685677
+      ],
+      [
+       4.8858706,
+       52.3685617
+      ],
+      [
+       4.8858988,
+       52.3685609
+      ],
+      [
+       4.8859052,
+       52.3685664
+      ],
+      [
+       4.8859237,
+       52.3685659
+      ],
+      [
+       4.8859139,
+       52.3684589
+      ],
+      [
+       4.8859032,
+       52.3684587
+      ],
+      [
+       4.8858952,
+       52.3684675
+      ],
+      [
+       4.8858683,
+       52.368469
+      ],
+      [
+       4.8858561,
+       52.3684611
+      ],
+      [
+       4.8858379,
+       52.3684611
+      ],
+      [
+       4.8858365,
+       52.368447
+      ],
+      [
+       4.8858542,
+       52.3684464
+      ],
+      [
+       4.8860977,
+       52.3684409
+      ],
+      [
+       4.886159,
+       52.3684396
+      ],
+      [
+       4.8863852,
+       52.3684352
+      ],
+      [
+       4.8863867,
+       52.3684532
+      ],
+      [
+       4.8863881,
+       52.3684711
+      ],
+      [
+       4.8863895,
+       52.3684879
+      ],
+      [
+       4.8863915,
+       52.3685131
+      ]
+     ]
+    ],
+    [
+     [
+      [
+       4.8863825,
+       52.3684009
+      ],
+      [
+       4.8863839,
+       52.3684188
+      ],
+      [
+       4.8863852,
+       52.3684352
+      ],
+      [
+       4.886159,
+       52.3684396
+      ],
+      [
+       4.8861541,
+       52.3684088
+      ],
+      [
+       4.8860936,
+       52.3684103
+      ],
+      [
+       4.8860977,
+       52.3684409
+      ],
+      [
+       4.8858542,
+       52.3684464
+      ],
+      [
+       4.885853,
+       52.3684394
+      ],
+      [
+       4.8859173,
+       52.3684375
+      ],
+      [
+       4.8859131,
+       52.3683549
+      ],
+      [
+       4.8858465,
+       52.3683566
+      ],
+      [
+       4.8858458,
+       52.3683496
+      ],
+      [
+       4.8858451,
+       52.3683435
+      ],
+      [
+       4.8859116,
+       52.3683412
+      ],
+      [
+       4.8859123,
+       52.368347
+      ],
+      [
+       4.8860618,
+       52.3683424
+      ],
+      [
+       4.8860628,
+       52.3683511
+      ],
+      [
+       4.8860833,
+       52.3683505
+      ],
+      [
+       4.8860879,
+       52.3683911
+      ],
+      [
+       4.886381,
+       52.3683829
+      ],
+      [
+       4.8863825,
+       52.3684009
+      ]
+     ]
+    ]
+   ]
+  },
+  "partyWallBearings": [
+   183,
+   3
+  ],
+  "partyWallNote": "The south side (370) adjoins Herengracht 372-376 (pand 0363100012176533) and the north side (362) Herengracht 360 / Huidenstraat 1 (pand 0363100012176540); both BAG rings share these walls."
  }
 ]
