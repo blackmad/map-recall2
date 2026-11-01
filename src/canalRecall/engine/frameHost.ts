@@ -29,6 +29,13 @@ export interface FrameHostHooks {
   render(alpha: number, nowMs: number): void;
   /** Render this frame even without `triggerRepaint` (e.g. an easing camera). */
   wantsFrame?(): boolean;
+  /**
+   * While something opaque covers the world (the game's loading screen), the least ms between renders, else null.
+   * A covered frame is never seen; under headless SwiftShader each one is a 300-900 ms main-thread task and the
+   * chunk builds and installs the loading screen waits for queued behind them (#129, 2026-11-01). Dirty frames
+   * are kept, so the first uncovered frame draws at once.
+   */
+  coveredFrameMs?(): number | null;
 }
 
 /**
@@ -90,7 +97,8 @@ export class FrameHost {
   readonly contextEvents = { lost: 0, restored: 0 };
   readonly clock: StepClock;
   /** Frames drawn, and the last frame's render time (ms, main thread). */
-  readonly stats = { frames: 0, renderMs: 0, ticks: 0, idleFrames: 0 };
+  readonly stats = { frames: 0, renderMs: 0, ticks: 0, idleFrames: 0, coveredSkips: 0 };
+  private lastRenderAt = -Infinity;
   private readonly hooks: FrameHostHooks;
   private sim: FrameSimulation | null = null;
   private readonly options: FrameHostOptions;
@@ -240,7 +248,10 @@ export class FrameHost {
       // What the frame changed reaches the host as triggerRepaint (the camera's jumpTo, the participants).
       if (this.renderOnChange === false) this.dirty = true;
     }
-    if (this.dirty || this.hooks.wantsFrame?.()) this._render();
+    // Measured from the end of the last render, so a frame slower than the interval still leaves the interval free.
+    const covered = this.hooks.coveredFrameMs?.() ?? null, clock = this.options.now ?? (() => performance.now());
+    if (covered != null && clock() - this.lastRenderAt < covered) { if (this.dirty) this.stats.coveredSkips++; else this.stats.idleFrames++; }
+    else if (this.dirty || this.hooks.wantsFrame?.()) { this._render(); this.lastRenderAt = clock(); }
     else this.stats.idleFrames++;
     this.schedule();
   }

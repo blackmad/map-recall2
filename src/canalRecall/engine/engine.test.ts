@@ -116,6 +116,26 @@ test('FrameHost: fixed ticks, render on demand, context loss and restore, guarde
   host.stop();
 });
 
+test('FrameHost: covered frames are throttled, and the first uncovered frame draws what is dirty', async () => {
+  const { FrameHost } = await import('./frameHost');
+  const canvas: any = { style: {}, width: 0, height: 0, addEventListener() {}, remove() {} };
+  const container: any = { clientWidth: 400, clientHeight: 300, ownerDocument: { createElement: () => canvas }, appendChild() {} };
+  const createRenderer = () => ({ getContext: () => ({ isContextLost: () => false }), clear() {}, setViewport() {}, setRenderTarget() {}, dispose() {} });
+  let frames: Array<(t: number) => void> = [], renders = 0, covered: number | null = 500, now = 0;
+  const host = new FrameHost({}, container, { render: () => { renders++; }, coveredFrameMs: () => covered }, { createRenderer, pixelRatio: 1, now: () => now, requestFrame: cb => { frames.push(cb); return frames.length; }, cancelFrame() {} });
+  host.start();
+  const step = (t: number) => { now = t; const f = frames; frames = []; for (const cb of f) cb(t); };
+  step(1000); assert.equal(renders, 1, 'the first covered frame draws');
+  for (const t of [1016, 1100, 1400]) { host.triggerRepaint(); step(t); }
+  assert.equal(renders, 1, 'covered: no render within 500 ms of the last');
+  assert.equal(host.stats.coveredSkips, 3);
+  step(1500); assert.equal(renders, 2, 'the dirty frame draws once 500 ms have passed');
+  host.triggerRepaint(); step(1510); assert.equal(renders, 2);
+  covered = null; step(1520); assert.equal(renders, 3, 'uncovered: the kept dirty frame draws at once');
+  step(1530); assert.equal(renders, 3, 'and only when dirty');
+  host.stop();
+});
+
 test('isWater over the overview water: Singelgracht at the Da Costagracht mouth (named regression)', async () => {
   const { readFileSync } = await import('node:fs');
   const { gunzipSync } = await import('node:zlib');
