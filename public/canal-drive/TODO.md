@@ -1380,13 +1380,19 @@ Root `main` was cleaned on 2026-10-09 (see HISTORY). Live work, in order:
   Idle rendering (fan) is fixed under own: render-on-change on main, 0
   renders per 5 s at rest; the default engine still renders every idle frame
   until the flip.
-- **Heap gates after the ride-start cuts** (HISTORY "Heap at ride start under
-  `?engine=own&world=v1&roads=bin`"): desktop 493 MB meets ≤ 500; iPhone 359
-  MB against ≤ 160 is the open gap. Next owners: landmark GLB CPU arrays after
-  upload (25–42 MB), then the live data on a phone (ground store 90 MB, road
-  graph 39 MB, streetFronts 25 MB: smaller ring, lazy far-city CSR, fronts per
-  cell), owners table first on #130 (road lane). `engine-own.spec`'s `heapMB`
-  is noise without a GC; `scripts/heap-ride.mjs` is the measure.
+- **Heap gates** (HISTORY "Landmark chunk copies typed"): desktop 462 MB at
+  ride start / 469 at 60 s meets ≤ 500; iPhone 332 MB against ≤ 160 is not
+  reachable by trimming owners (city-wide data as JS objects); the road lane
+  builds, in order, roadIndex CSR + snap-index merge, columnar building tile
+  cache, overview polyline pack, phone ground radii (≈ 235–250 MB expected),
+  the materials lane releases the facade CPU arrays (33.9 MB). The gate stays
+  red with that reason. `engine-own.spec`'s `heapMB` is noise without a GC;
+  `scripts/heap-ride.mjs` is the measure.
+- **Time to ride under own ≈ 3.5 s median, three of six runs within 70 ms of
+  the 4 s gate**: the settle hold waiting on facade chunks is the variance
+  (materials lane: spawn chunks first); boot → submit 0.9 s vs 0.53 default
+  is unprofiled (L1/road lane after). `compileAsync` "isReady of undefined"
+  after context loss, seen once (materials lane).
 - **Weak-GPU low tier cannot meet p95 ≤ 33 ms on SwiftShader** (HISTORY
   "Weak-GPU low tier"): its steady frame is ≈ 290 ms, triangle-bound, and no
   single layer removal gets under 195 ms. Gate stays red as written; deciding

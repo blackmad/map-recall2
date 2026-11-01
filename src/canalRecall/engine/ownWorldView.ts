@@ -309,6 +309,7 @@ export class OwnWorldView {
       this._threeBuildings = new api.ThreeBuildings(this.cameraMap, MERCATOR, 'photo');
       this._threeBuildings.attachToSharedFrame(this._sharedFrame);
       if (this.streetFronts && this._threeBuildings.setStreets) this._threeBuildings.setStreets(this.streetFronts);
+      this.streetFronts = null;
       this._threeBuildings.setVisible(true);
       const city = this._completeCity = new runtime.BuildingTileStreamer(this.cameraMap, 'osm-building-appearance', this.extractPath);
       // No MapLibre source to feed: the streamer answers featuresAt / sampleFeatures itself.
@@ -721,7 +722,14 @@ export class OwnWorldView {
   }
 
   // ---- content the game hands over ----
-  setStreetFronts(ways: unknown): void { this.streetFronts = ways; this._threeBuildings?.setStreets?.(ways); }
+  /**
+   * The buildings layer keeps its own packed street segments; the raw OSM ways are held only until it exists to take
+   * them (24.7 MB on the ride-start heap when kept for the session, #130).
+   */
+  setStreetFronts(ways: unknown): void {
+    if (this._threeBuildings) { this._threeBuildings.setStreets?.(ways); this.streetFronts = null; }
+    else this.streetFronts = ways;
+  }
   setSpoilerNames(names: string[]): void { this.spoilerNames = names || []; }
   _spoils(name: string): boolean { return !!name && this.spoilerNames.includes(name); }
   setMeasuredColoursOnly(on: boolean): void { this.measuredColoursOnly = !!on; this.extras.syncEnabled(); }
