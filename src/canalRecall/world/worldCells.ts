@@ -184,6 +184,8 @@ export class WorldCellClient {
   /** The page's worker pool (engine/workerPool.ts), shared with chunk builds and relief decodes; null: main thread. */
   private pool: WorkerPool | null;
   private unsubscribe: (() => void) | null = null;
+  /** One copy of each property string value received from the workers (see `internStrings`). */
+  private readonly interned: InternTable = new Map();
   private nextId = 1;
   private readonly pending = new Map<number, Pending>();
   /** The one cell queue (engine/worldStreamer.ts): cells the planned tiles need, read ahead in rank order. */
@@ -225,7 +227,14 @@ export class WorldCellClient {
   private receive(reply: WorldReply): void {
     const job = this.pending.get(reply.id);
     if (!job) return;
-    if (reply.kind === 'world-batch') { job.share.ordinals.push(...reply.ordinals); for (const f of reply.raw) job.share.raw.push(f); for (const s of reply.styled) job.share.styled.push(s); return; }
+    if (reply.kind === 'world-batch') {
+      job.share.ordinals.push(...reply.ordinals);
+      // Structured clone gave every string value its own copy; the worker's decoded cells shared one per
+      // string-table entry. Intern them again (#130).
+      for (const f of reply.raw) { internStrings(f.properties, this.interned); job.share.raw.push(f); }
+      for (const s of reply.styled) { if (s) internStrings(s, this.interned); job.share.styled.push(s); }
+      return;
+    }
     this.pending.delete(reply.id);
     if (reply.kind === 'world-error') { job.reject(Error(reply.message)); return; }
     for (const [k, v] of Object.entries(reply.decodeMs)) this.decodeMs.set(k, v);
@@ -313,4 +322,39 @@ export class WorldCellClient {
 
   /** Leave the shared pool (it stays up for the other layers); in-flight replies are then ignored. */
   dispose(): void { this.unsubscribe?.(); this.unsubscribe = null; this.pool = null; }
+}
+
+/** String value → its one shared copy (`internStrings`). */
+export type InternTable = Map<string, string>;
+/** Entries beyond this are not added (a long ride's distinct values stay bounded); known ones still match. */
+export const INTERN_LIMIT = 50_000;
+
+/**
+ * Replace every string value in a property bag (nested arrays and plain objects included) by one shared copy
+ * from `table`. Structured clone (a worker's postMessage) makes a new string per occurrence: 289,000 property
+ * strings, 5.6 M characters, over four z14 tiles on the main thread where the worker's decoded cells held one
+ * per string-table entry. `id` is unique per building and is left alone. Same values, same objects.
+ */
+export function internStrings(bag: Record<string, unknown> | null | undefined, table: InternTable, depth = 0): void {
+  if (!bag || depth > 4) return;
+  const intern = (v: string): string => {
+    const hit = table.get(v);
+    if (hit !== undefined) return hit;
+    if (table.size < INTERN_LIMIT) table.set(v, v);
+    return v;
+  };
+  if (Array.isArray(bag)) {
+    for (let i = 0; i < bag.length; i++) {
+      const v = bag[i];
+      if (typeof v === 'string') bag[i] = intern(v);
+      else if (v && typeof v === 'object') internStrings(v as Record<string, unknown>, table, depth + 1);
+    }
+    return;
+  }
+  for (const k in bag) {
+    if (!Object.prototype.hasOwnProperty.call(bag, k) || (depth === 0 && k === 'id')) continue;
+    const v = bag[k];
+    if (typeof v === 'string') bag[k] = intern(v);
+    else if (v && typeof v === 'object') internStrings(v as Record<string, unknown>, table, depth + 1);
+  }
 }
