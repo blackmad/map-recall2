@@ -12,7 +12,7 @@ const fmt = (n: number) => n.toLocaleString('en');
 const plural = (n: number, one: string, many = `${one}s`) => `${fmt(n)} ${n === 1 ? one : many}`;
 const KIND: Record<string, string> = { neighbourhood: 'Neighbourhood', quarter: 'Quarter' };
 const BUILDING_KIND: Record<BuildingInput['kind'], string> = {
-  landmark: 'Landmark model', 'landmark-kit': 'Hand-built landmark', 'block-face': 'Surveyed street front', building: 'Modelled building',
+  landmark: 'Landmark model', 'landmark-kit': 'Kit-built landmark', 'block-face': 'Surveyed street front', building: 'Modelled building',
 };
 
 function link(href: string | undefined, text: string): string {

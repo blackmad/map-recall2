@@ -149,7 +149,7 @@ export function countStats(): Record<string, Stat> {
 
 /** The strip on the landing page: key, label. Order is the display order. */
 export const STRIP: readonly (readonly [string, string])[] = [
-  ['buildingsModelled', 'buildings modelled by hand'],
+  ['buildingsModelled', 'individually modelled buildings'],
   ['placesToVisit', 'places to ride to'],
   ['factsToDiscover', 'facts to discover'],
   ['streetsAndCanals', 'streets and canals to name'],
