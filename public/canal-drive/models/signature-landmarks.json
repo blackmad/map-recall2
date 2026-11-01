@@ -61927,6 +61927,90 @@
       "triangles": 1740,
       "bytes": 36640,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+    },
+    "kiosk-dumplings-nassauplein": {
+      "id": "kiosk-dumplings-nassauplein",
+      "name": "Dumplings kiosk, Nassauplein",
+      "landmarkId": "osm_food_6426744735",
+      "modelUrl": "./models/kiosk-dumplings-nassauplein.glb",
+      "suppressOsmIds": [
+        "NL.IMBAG.Pand.0363100012243758",
+        "w685669039"
+      ],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.8809795,
+          52.3854477
+        ],
+        "headingDegrees": 135.11,
+        "lengthMetres": 5.017,
+        "widthMetres": 3.064
+      },
+      "surveyed": {
+        "anchor": [
+          4.8809795,
+          52.3854477
+        ],
+        "northOffsetDegrees": 0,
+        "source": "bag-pand: BAG pand 0363100012243758 (2016) outline, vertex average as the anchor; the outline is the roof slab, walls 4.45 x 2.5 m inside it. Bays, screens, awning and tints from Gemeente Amsterdam panoramas recording_2024-09-09_11-28-19_00254, recording_2025-06-17_10-48-55_00795 and 2025_09_29_05_45_16_00793 (CC BY 4.0). See scripts/landmarks/kiosk-dumplings-nassauplein-footprints.json."
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 0,
+      "heightMetres": 3.1,
+      "bagYear": 2016,
+      "assetKind": "building",
+      "materialOverrides": {
+        "copper": "#e0e3df",
+        "glass": "#4c5a5f",
+        "concrete": "#d2d0c7",
+        "dark": "#3f4549",
+        "slate": "#434a4f",
+        "frame": "#c3c8c7",
+        "green": "#6a7a52",
+        "red": "#8a3a36",
+        "stone": "#8a8f8f"
+      },
+      "attribution": {
+        "title": "Dumplings kiosk, Nassauplein 60",
+        "author": "Map Recall",
+        "sourceUrl": "https://www.openstreetmap.org/node/6426744735",
+        "licence": "CC BY 4.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "modifications": "Original low-poly reconstruction from the typed kiosk kit (glass variant): white-framed glazed bays and double door, dark corner posts, two red windscreen leaves, a grey retractable awning, a dark slab with a metal band, a planted roof with grass tufts and a flue. Footprint from BAG (CC0); bays, proportions and tints read from Gemeente Amsterdam panoramas (CC BY 4.0). No photo pixels or imported meshes."
+      },
+      "buildingCategory": "landmark",
+      "bounds": {
+        "min": [
+          -2.9422049522399902,
+          6.705522803684971e-10,
+          -2.912557601928711
+        ],
+        "max": [
+          2.9082047939300537,
+          3.559999942779541,
+          3.3550570011138916
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.8809795,
+          52.3854477
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 90,
+        "facadeBearingDegrees": 135.11,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 6.2676146030426025,
+        "heightMetres": 3.5599999421089885,
+        "depthMetres": 5.850409746170044,
+        "depthCoverage": 1.9094026586716852
+      },
+      "triangles": 992,
+      "bytes": 24924,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
     }
   }
 }

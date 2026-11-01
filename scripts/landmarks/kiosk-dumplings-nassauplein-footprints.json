@@ -1,0 +1,82 @@
+{
+ "id": "kiosk-dumplings-nassauplein",
+ "generatedBy": "node --import tsx scripts/landmarks/kiosk-footprint.ts --id=kiosk-dumplings-nassauplein --pand=0363100012243758 --near=52.3854454,4.880979 --front-near=135",
+ "source": {
+  "kind": "bag-pand",
+  "id": "0363100012243758",
+  "url": "https://api.data.amsterdam.nl/v1/bag/panden/0363100012243758/",
+  "licence": "CC0 (BAG)",
+  "properties": {
+   "id": "NL.IMBAG.Pand.0363100012243758",
+   "tier": 3,
+   "minHeight": 0,
+   "height": 3.26,
+   "roofShape": "flat",
+   "eaves": 3.1,
+   "roof": 1,
+   "year": 2016,
+   "osm": [
+    "w685669039"
+   ]
+  }
+ },
+ "anchor": [
+  4.8809795,
+  52.3854477
+ ],
+ "ringLngLat": [
+  [
+   4.881021,
+   52.385454
+  ],
+  [
+   4.88099,
+   52.385473
+  ],
+  [
+   4.880938,
+   52.385442
+  ],
+  [
+   4.880969,
+   52.385422
+  ],
+  [
+   4.881021,
+   52.385454
+  ]
+ ],
+ "localEastSouthMetres": [
+  [
+   2.82,
+   -0.696
+  ],
+  [
+   0.713,
+   -2.811
+  ],
+  [
+   -2.82,
+   0.64
+  ],
+  [
+   -0.713,
+   2.866
+  ]
+ ],
+ "areaM2": 15.06,
+ "rect": {
+  "centre": [
+   -0.017,
+   0.01
+  ],
+  "widthM": 5.017,
+  "depthM": 3.064,
+  "frontBearing": 135.11
+ },
+ "notes": [
+  "Brief gave 52.3812 N for Nassauplein 60; the OSM shop node 6426744735 and BAG pand 0363100012243758 are at 52.38545 N, 4.88098 E (the square by the Westerpark bridge), 1 m apart. The standplaats the brief named (0363030011957715) is unrelated.",
+  "Same 2016 city kiosk as Dr. Falafel (BAG 0363100012243757): identical 5.0 x 3.06 m roof outline; walls 4.45 x 2.5 m inside it.",
+  "Heights from the 2024 face-on front at 161 px/m (front-crop.png, 2.5x): slab top 3.1 m, screens 1.9 m with a 0.9 m solid lower part."
+ ]
+}

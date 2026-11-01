@@ -2792,5 +2792,19 @@
       52.3689948,
       4.8775567
     ]
+  },
+  {
+    "modelId": "kiosk-dumplings-nassauplein",
+    "landmarkId": "osm_food_6426744735",
+    "name": "Dumplings (Nassauplein)",
+    "funFact": "This 2016 glass kiosk on the Nassauplein, by the bridge into the Westerpark, sells Chinese dumplings and jianbing pancakes; red windscreens stand in front of its glass and grass grows on its roof.",
+    "sourceUrl": "https://www.openstreetmap.org/node/6426744735",
+    "additionalSources": [
+      "https://api.data.amsterdam.nl/v1/bag/panden/0363100012243758/"
+    ],
+    "center": [
+      52.3854454,
+      4.880979
+    ]
   }
 ]
