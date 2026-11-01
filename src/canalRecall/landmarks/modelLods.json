@@ -1936,5 +1936,11 @@
   "buildVersion": 2,
   "bytes": 54100,
   "triangles": 2285
+ },
+ "blauwbrug": {
+  "sourceHash": "5d46d293ff21dc52",
+  "buildVersion": 2,
+  "bytes": 75900,
+  "triangles": 3910
  }
 }

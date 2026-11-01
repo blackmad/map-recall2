@@ -1,0 +1,261 @@
+{
+ "schemaVersion": 1,
+ "id": "blauwbrug",
+ "signature": [
+  "n-339-pylons",
+  "n-339-prow-piers",
+  "n-339-balustrade",
+  "n-339-arch-rings",
+  "n-339-keystones"
+ ],
+ "walls": [
+  {
+   "tag": "n-339",
+   "bearing": 339.1,
+   "lengthM": 48.9,
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000355_pano_0001_001567",
+   "capturedAt": "2017",
+   "note": "North (downstream, IJ side) face from the boat panorama, rectified at 20 px/m (artifacts/bridges/BRU0236/photo-m.jpg); details from the Commons photographs of the same face.",
+   "items": [
+    {
+     "id": "n-339-pylons",
+     "kind": "lamp",
+     "where": "four polished red granite columns per face (two on the pier prows, two on the abutment ends) on stepped stone pedestals, Ionic capital, polychrome imperial crown, a ship form halfway up carrying double lanterns",
+     "approxSizeM": [
+      1.8,
+      7.0
+     ],
+     "plan": "simplified",
+     "how": "builder pylon(): stepped pedestal boxes, lathe shaft (red), lathe capital, lathe gilt crown with orb and cross, ellipsoid rostral boat with two prow beams, two lantern arms with dark-framed ochre lanterns",
+     "seenIn": "commons:Blauwbrug.jpg; commons:Blauwbrug_amsterdam.jpg; TMX7316010203-000355_pano_0001_001567"
+    },
+    {
+     "id": "n-339-prow-piers",
+     "kind": "sculpture",
+     "where": "both piers end in carved stone ship bows: a hull with a gunwale and chain garland, a female figurehead, a bundle of oars, a fish/dolphin under the bow, a volute at the stern, a mooring ring on the cutwater",
+     "approxSizeM": [
+      3.0,
+      3.5
+     ],
+     "plan": "simplified",
+     "how": "builder: pointed cutwater prism, hull prism, gunwale band, figurehead ellipsoid, dolphin ellipsoid, three oar beams, stern volute torus, iron mooring ring torus; the chain garland is folded into the gunwale band",
+     "seenIn": "commons:Blauwbrug_amsterdam.jpg; TMX7316010203-000355_pano_0001_001567"
+    },
+    {
+     "id": "n-339-keystones",
+     "kind": "relief",
+     "where": "a keystone with a sculpted head at the crown of each side arch",
+     "approxSizeM": [
+      0.8,
+      1.0
+     ],
+     "plan": "simplified",
+     "how": "builder: keystone box 22 cm proud with an ellipsoid head",
+     "seenIn": "commons:Blauwbrug.jpg; TMX7316010203-000355_pano_0001_001567"
+    },
+    {
+     "id": "n-339-arch-rings",
+     "kind": "other",
+     "where": "two segmental side arches with a moulded ring",
+     "approxSizeM": [
+      13.3,
+      2.4
+     ],
+     "plan": "modelled",
+     "how": "builder: segmental arc spandrel wall, 45 cm ring 7 cm proud, barrel soffit",
+     "seenIn": "TMX7316010203-000355_pano_0001_001567"
+    },
+    {
+     "id": "n-339-spandrel-openings",
+     "kind": "window-shape",
+     "where": "three round-headed slots and two roundels in each spandrel beside the springings",
+     "approxSizeM": [
+      0.35,
+      1.2
+     ],
+     "plan": "simplified",
+     "how": "builder: dark slot panels with round heads and dark roundels in stone rings, 6-9 cm proud",
+     "seenIn": "commons:Blauwbrug_amsterdam.jpg; TMX7316010203-000355_pano_0001_001567"
+    },
+    {
+     "id": "n-339-balustrade",
+     "kind": "balcony-ironwork",
+     "where": "white limestone vase balustrade on a plinth with dados, broken by the column pedestals",
+     "approxSizeM": [
+      48.0,
+      1.05
+     ],
+     "plan": "modelled",
+     "how": "builder: plinth and handrail swept along the deck profile, dados every <=3.2 m, turned balusters every ~0.33 m",
+     "seenIn": "commons:Blauwbrug.jpg; TMX7316010203-000355_pano_0001_001567"
+    },
+    {
+     "id": "n-339-central-girder",
+     "kind": "relief",
+     "where": "flat central span: girder face with a recessed panel band, Amsterdam shields and garlands",
+     "approxSizeM": [
+      13.7,
+      1.0
+     ],
+     "plan": "simplified",
+     "how": "builder: girder wall following the deck, proud panel band, four red shields with a dark pale; garlands folded into the panel band",
+     "seenIn": "TMX7316010203-000355_pano_0001_001567"
+    },
+    {
+     "id": "n-339-cornice",
+     "kind": "other",
+     "where": "cornice band under the balustrade along the whole face",
+     "approxSizeM": [
+      48.9,
+      0.3
+     ],
+     "plan": "modelled",
+     "how": "builder: band swept along the deck profile, 15 cm proud",
+     "seenIn": "TMX7316010203-000355_pano_0001_001567"
+    },
+    {
+     "id": "n-339-abutment-brick",
+     "kind": "other",
+     "where": "red brick abutments with stone quoins where the side arches spring",
+     "approxSizeM": [
+      1.35,
+      3.5
+     ],
+     "plan": "simplified",
+     "how": "builder: brick block with stacked stone quoins",
+     "seenIn": "commons:Blauwbrug.jpg"
+    }
+   ],
+   "centre": [
+    4.9008813,
+    52.3663569
+   ],
+   "checked": true
+  },
+  {
+   "tag": "s-159",
+   "bearing": 159.1,
+   "lengthM": 48.9,
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000354_pano_0001_001572",
+   "capturedAt": "2017",
+   "note": "South (upstream, Magere Brug side) face from the boat panorama (artifacts/bridges/BRU0236/photo-p.jpg): the same composition as the north face, shields on the central girder clearer here.",
+   "items": [
+    {
+     "id": "s-159-pylons",
+     "kind": "lamp",
+     "where": "four polished red granite columns per face (two on the pier prows, two on the abutment ends) on stepped stone pedestals, Ionic capital, polychrome imperial crown, a ship form halfway up carrying double lanterns",
+     "approxSizeM": [
+      1.8,
+      7.0
+     ],
+     "plan": "simplified",
+     "how": "builder pylon(): stepped pedestal boxes, lathe shaft (red), lathe capital, lathe gilt crown with orb and cross, ellipsoid rostral boat with two prow beams, two lantern arms with dark-framed ochre lanterns",
+     "seenIn": "commons:Blauwbrug.jpg; commons:Blauwbrug_amsterdam.jpg; TMX7316010203-000354_pano_0001_001572"
+    },
+    {
+     "id": "s-159-prow-piers",
+     "kind": "sculpture",
+     "where": "both piers end in carved stone ship bows: a hull with a gunwale and chain garland, a female figurehead, a bundle of oars, a fish/dolphin under the bow, a volute at the stern, a mooring ring on the cutwater",
+     "approxSizeM": [
+      3.0,
+      3.5
+     ],
+     "plan": "simplified",
+     "how": "builder: pointed cutwater prism, hull prism, gunwale band, figurehead ellipsoid, dolphin ellipsoid, three oar beams, stern volute torus, iron mooring ring torus; the chain garland is folded into the gunwale band",
+     "seenIn": "commons:Blauwbrug_amsterdam.jpg; TMX7316010203-000354_pano_0001_001572"
+    },
+    {
+     "id": "s-159-keystones",
+     "kind": "relief",
+     "where": "a keystone with a sculpted head at the crown of each side arch",
+     "approxSizeM": [
+      0.8,
+      1.0
+     ],
+     "plan": "simplified",
+     "how": "builder: keystone box 22 cm proud with an ellipsoid head",
+     "seenIn": "commons:Blauwbrug.jpg; TMX7316010203-000354_pano_0001_001572"
+    },
+    {
+     "id": "s-159-arch-rings",
+     "kind": "other",
+     "where": "two segmental side arches with a moulded ring",
+     "approxSizeM": [
+      13.3,
+      2.4
+     ],
+     "plan": "modelled",
+     "how": "builder: segmental arc spandrel wall, 45 cm ring 7 cm proud, barrel soffit",
+     "seenIn": "TMX7316010203-000354_pano_0001_001572"
+    },
+    {
+     "id": "s-159-spandrel-openings",
+     "kind": "window-shape",
+     "where": "three round-headed slots and two roundels in each spandrel beside the springings",
+     "approxSizeM": [
+      0.35,
+      1.2
+     ],
+     "plan": "simplified",
+     "how": "builder: dark slot panels with round heads and dark roundels in stone rings, 6-9 cm proud",
+     "seenIn": "commons:Blauwbrug_amsterdam.jpg; TMX7316010203-000354_pano_0001_001572"
+    },
+    {
+     "id": "s-159-balustrade",
+     "kind": "balcony-ironwork",
+     "where": "white limestone vase balustrade on a plinth with dados, broken by the column pedestals",
+     "approxSizeM": [
+      48.0,
+      1.05
+     ],
+     "plan": "modelled",
+     "how": "builder: plinth and handrail swept along the deck profile, dados every <=3.2 m, turned balusters every ~0.33 m",
+     "seenIn": "commons:Blauwbrug.jpg; TMX7316010203-000354_pano_0001_001572"
+    },
+    {
+     "id": "s-159-central-girder",
+     "kind": "relief",
+     "where": "flat central span: girder face with a recessed panel band, Amsterdam shields and garlands",
+     "approxSizeM": [
+      13.7,
+      1.0
+     ],
+     "plan": "simplified",
+     "how": "builder: girder wall following the deck, proud panel band, four red shields with a dark pale; garlands folded into the panel band",
+     "seenIn": "TMX7316010203-000354_pano_0001_001572"
+    },
+    {
+     "id": "s-159-cornice",
+     "kind": "other",
+     "where": "cornice band under the balustrade along the whole face",
+     "approxSizeM": [
+      48.9,
+      0.3
+     ],
+     "plan": "modelled",
+     "how": "builder: band swept along the deck profile, 15 cm proud",
+     "seenIn": "TMX7316010203-000354_pano_0001_001572"
+    },
+    {
+     "id": "s-159-abutment-brick",
+     "kind": "other",
+     "where": "red brick abutments with stone quoins where the side arches spring",
+     "approxSizeM": [
+      1.35,
+      3.5
+     ],
+     "plan": "simplified",
+     "how": "builder: brick block with stacked stone quoins",
+     "seenIn": "commons:Blauwbrug.jpg"
+    }
+   ],
+   "centre": [
+    4.9008813,
+    52.3663569
+   ],
+   "checked": true
+  }
+ ]
+}
