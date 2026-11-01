@@ -1,5 +1,35 @@
 # Canal Recall — what is built
 
+**Only the trees on screen are drawn: desktop frame 1.84 M → 1.42 M triangles, iPad 0.94 M → 0.80 M (2026-11-01, P4).**
+Materials lane (8cfc3ceb4). Before, every tree in the padded view box was
+drawn, ~2,000 on desktop, most off screen on a pitched chase view.
+`rendererShared/instanceCull.ts` (typed, tested) keeps each tree mesh's
+full instance list on the CPU and the GPU buffers hold only the instances
+in view plus a 30 m margin, in their original order; the set is re-chosen
+only when a needed tree is missing or the set has grown to twice what is
+needed (then at most once a second): 1–4 uploads over a 40 s ride. A
+shadow-only twin of each mesh still casts, so off-screen trees still shade
+the view; shape, colour and count on screen are unchanged. `?treeCull=0`
+keeps the old behaviour, `?treeCull=twin` keeps the twins without culling
+(diagnostic). Jordaan ride p50: desktop trees 529k → 136k (+51k shadow),
+frame 1.84 M → 1.42 M (p95 3.11 → 2.66 M), draws unchanged 293 / 399; iPad
+trees 183k → 48k (+19k shadow), frame 0.94 M → 0.80 M (p95 1.70 → 1.54 M),
+draws p95 789; in-frame links 0 / 0; uploads ≥ 1 MiB iPad 24, desktop 56.
+Pins (`AB_TREES3D=1` keeps 3D trees in the harness, which had always
+turned them off): where the noise floor was 0, culled vs `?treeCull=0`
+Bloemgracht 48 px, Nassaukade 183, Leidsegracht 3, all single crown
+pixels; vs twin-only Westerkerk 198, Nassaukade 173, noise 0; the
+integrator's look at the Nassaukade strip finds A and B identical. Not a
+clean five-spot pin: with 3D trees on, captures flip between two
+whole-frame shading states (1–3 levels over 1.5–2.6 M px), also with
+shadows off and in a run where only `groundReach` changed, cause unknown
+— the lane's next item, since it blocks every tree pin and might be a
+real, if subtle, flicker. Then open-ended trunks (7-sided cylinders with
+caps, 28 triangles each, 105k of desktop's tree triangles before
+culling; caps sit under the ground or inside the crowns) and the cycle
+overlay (108k). Integrator: `inventory-trees.bundle.js` rebuilt;
+test:engine 123/123; `trianglesIpad` re-recorded p50 0.80 M / p95 1.54 M.
+
 **The city's roads, routing graph and surface index build while the player reads the briefing: time to ride ~3 s on the phone profile after a 5 s read (2026-11-01, P3).**
 Road lane (d15d66991, 512a5782d). `game-route.js` starts the city build 250
 ms after the route catalogue is ready, for the city and mode picked on the
