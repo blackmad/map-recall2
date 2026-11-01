@@ -1,5 +1,25 @@
 # Canal Recall — what is built
 
+**Worktree pruning is part of the integration round (2026-11-01).** The disk
+hit 100 % (7.5 GB free) with 64 worktrees of ~1.2 GB tracked files each plus
+their artifacts; a lane write would have failed next. 45 merged, idle,
+unowned worktrees were removed (56 GB freed) after copying 15,000 review
+sheets into `map-recall2-worktrees/_pruned-sheets/` and WIP-committing dirt
+onto six lane branches (centraal-surround models, type-libraries' 95 Elands
+face folders, transvaalbuurt-types-2's five r1 faces, generic-uplift
+bundles, ferry-stuck, zebra-munt). `scripts/worktrees/triage.sh` was
+rewritten so this can be routine: it judges "merged" against `origin/main`
+(the local `main` ref was stale, so the old script never matched), treats
+untracked artifacts/caches/staging as not dirt, stages sheets itself,
+WIP-commits the rest onto the branch, and skips anything with a live cwd or
+touched within 12 h. `--remove-merged` replaces `--remove-merged-clean` and
+`--archive-dirty` (kept as aliases); `--sweep-sheets [days]` clears the
+sheet archive (12 GB after this round, the user's call). CLAUDE.md now asks
+for a `--remove-merged` run after every push to `main`. Left in place:
+`oudwest-kit-20261029` (one unmerged Kinkerstraat commit plus 12 dirty
+Bilderdijkstraat intents, #98), the live Transvaalbuurt and engine lanes,
+and a locked agent worktree.
+
 **Transvaalbuurt round 4 (2026-11-01, #153–#156): four family lanes at once, 44 pands installed, 57 in the buurt.**
 After round 3 the funnel read 380 of 848 photographed pands vetoed on build
 year alone (two of seven families had a type), so four Opus lanes ran in
