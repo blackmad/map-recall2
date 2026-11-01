@@ -57,10 +57,11 @@ for (const spot of SPOTS) {
 
 // Close: the ride's own renderer with the camera taken over (as allotment-houses-demo.html does): centred on the room,
 // looking at its glass front from the house side, pitch 32 (over the row in between). The rider is road-bound, so it cannot stand in a garden.
-const CLOSE: Array<{ name: string; centre: [number, number]; bearing: number; zoom: number }> = [
-  { name: 'ring-close', centre: [4.889662, 52.378095], bearing: 298, zoom: 20.2 },
-  { name: 'oudzuid-close', centre: [4.867869, 52.353616], bearing: 336, zoom: 20.2 },
-  { name: 'pijp-close', centre: [4.8883448, 52.356625], bearing: 276, zoom: 20.2 },
+const CLOSE: Array<{ name: string; centre: [number, number]; bearing: number; zoom: number; id: string }> = [
+  { name: 'ring-close', centre: [4.889662, 52.378095], bearing: 298, zoom: 20.2, id: 'NL.IMBAG.Pand.0363100012241008' },
+  { name: 'ring-glass', centre: [4.889662, 52.378095], bearing: 118, zoom: 20.2, id: 'NL.IMBAG.Pand.0363100012241008' },
+  { name: 'oudzuid-close', centre: [4.867869, 52.353616], bearing: 336, zoom: 20.2, id: 'NL.IMBAG.Pand.0363100012198818' },
+  { name: 'pijp-close', centre: [4.8883448, 52.356625], bearing: 276, zoom: 20.2, id: 'NL.IMBAG.Pand.0363100012248029' },
 ];
 for (const spot of CLOSE) {
   if (only && !only.includes(spot.name)) continue;
@@ -79,7 +80,11 @@ for (const spot of CLOSE) {
       v._facadesOutOfZoom = false; v._applyFacadeState(); v._syncFacadeZoom(zoom); v._threeBuildings.setDetailCentre(...centre);
       v._completeCity?.setSuspended(false); v._completeCity?.followCamera(); v.map.triggerRepaint();
     }, spot);
-    await page.waitForFunction(() => { const t = (window as any).canalRecallGame.vectorMap._threeBuildings; return t.chunks.size && !t.pending.length && !t.inflight.size && !t.pumping; }, null, { timeout: 120_000 });
+    // The room's own pand must be in a resident near chunk, or the frame shows the placeholder extrusions.
+    await page.waitForFunction(id => { const t = (window as any).canalRecallGame.vectorMap._threeBuildings; return !t.pending.length && !t.inflight.size && !t.pumping && [...t.chunks].some(([key, e]: [string, any]) => key.startsWith('near:') && e.mesh && e.ranges?.has(id)); }, spot.id, { timeout: 150_000 });
+    // MapLibre's plain extrusions (the placeholder under a taken-over camera) sat over the gardens as tall tan
+    // boxes in some frames: hide them so only the three.js meshes are judged. Close frames only.
+    await page.evaluate(() => { const m = (window as any).canalRecallGame.vectorMap.map; for (const l of m.getStyle().layers) if (l.type === 'fill-extrusion') m.setLayoutProperty(l.id, 'visibility', 'none'); m.triggerRepaint(); });
     await page.waitForTimeout(Number(process.env.GR_WAIT ?? 6000));
     mkdirSync(OUT, { recursive: true });
     await page.screenshot({ path: `${OUT}/${spot.name}-${info.project.name}.png` });
