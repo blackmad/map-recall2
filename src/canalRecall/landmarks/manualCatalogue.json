@@ -47859,5 +47859,56 @@
     ]
    ]
   }
+ },
+ {
+  "id": "kiosk-dr-falafel",
+  "name": "Dr. Falafel kiosk",
+  "landmarkId": "osm_food_6428422982",
+  "modelUrl": "./models/kiosk-dr-falafel.glb",
+  "suppressOsmIds": [
+   "NL.IMBAG.Pand.0363100012243757",
+   "w685877394"
+  ],
+  "spatialSuppression": false,
+  "footprint": {
+   "centre": [
+    4.8766915,
+    52.3683325
+   ],
+   "headingDegrees": 285.85,
+   "lengthMetres": 5.035,
+   "widthMetres": 3.055
+  },
+  "surveyed": {
+   "anchor": [
+    4.8766915,
+    52.3683325
+   ],
+   "northOffsetDegrees": 0,
+   "source": "bag-pand: BAG pand 0363100012243757 (2016) outline, vertex average as the anchor; the outline is the roof slab, the glazed walls (4.5 x 2.5 m) stand 0.27 m inside it. Native east/south metres; panel order, heights and lettering from Gemeente Amsterdam panoramas recording_2025-06-30_05-16-46_00533 / _00537 and recording_2025-07-31_10-53-44_00800 (CC BY 4.0). See scripts/landmarks/kiosk-dr-falafel-footprints.json and -inventory.json."
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 0,
+  "heightMetres": 3.1,
+  "bagYear": 2016,
+  "assetKind": "building",
+  "materialOverrides": {
+   "copper": "#e2e5e2",
+   "concrete": "#a3aaab",
+   "slate": "#474d52",
+   "glass": "#4f5d60",
+   "dark": "#2e3236",
+   "gold": "#f2f2ee",
+   "frame": "#b9bdbb",
+   "green": "#6f7f4c"
+  },
+  "attribution": {
+   "title": "Dr. Falafel kiosk, Nassaukade 900",
+   "author": "Map Recall",
+   "sourceUrl": "https://www.openstreetmap.org/node/6428422982",
+   "licence": "CC BY 4.0",
+   "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+   "modifications": "Original low-poly reconstruction from the typed kiosk kit (glass variant): white-framed glazed and grey panels with black corner posts, glazed door, steel bar gate, a dark overhanging roof slab with a metal edge band and a planted roof with grass tufts, and the Dr. Falafel lettering as raised pixel capitals. Footprint from BAG (CC0); proportions, panel order and tints read from Gemeente Amsterdam panoramas (CC BY 4.0). No photo pixels or imported meshes."
+  }
  }
 ]

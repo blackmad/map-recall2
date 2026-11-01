@@ -2763,5 +2763,20 @@
       52.3686724,
       4.8944688
     ]
+  },
+  {
+    "modelId": "kiosk-dr-falafel",
+    "landmarkId": "osm_food_6428422982",
+    "name": "Dr. Falafel",
+    "funFact": "Dr. Falafel sells falafel from a glass kiosk registered in 2016 on the Nassaukade corner at the Kinkerstraat bridge, takeaway only, with its name lettered on the glass.",
+    "sourceUrl": "https://www.openstreetmap.org/node/6428422982",
+    "additionalSources": [
+      "https://api.data.amsterdam.nl/v1/bag/panden/0363100012243757/",
+      "https://www.drfalafel.nl"
+    ],
+    "center": [
+      52.3683327,
+      4.8766878
+    ]
   }
 ]
