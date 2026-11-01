@@ -251,7 +251,11 @@ still fails `labels.spec` "hidden while the loading screen covers the map"
 equivalents for `_completeCityHasBuildings`, `.cr-map-labels`, the style reads
 and the C-group assertions (L1); the lane's next round runs the other 44
 specs under own, the rest on iphone and the four perf scripts for real.
-Pre-existing default red to own: `street-survey-retire` "shots: default" (35
+Materials hand-back merged 2026-11-01 (HISTORY "World-v1 is pixel-identical"):
+0 px at the five A/B spots on the published cells, so the `?world=v1`
+default flip is unblocked (integrator, next round, with iphone + desktop smoke
+and a What's New note); open on that lane: the first-load render difference
+(harness only), pre-painted atlas, noise/shaders off boot. Pre-existing default red to own: `street-survey-retire` "shots: default" (35
 entries, expected none) and the flaky `city-startup-lod` "mobile city shells
 remain". **Integrator
 next:** `CanalRecallUi.stepSteer`

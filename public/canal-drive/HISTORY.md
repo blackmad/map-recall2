@@ -1,5 +1,37 @@
 # Canal Recall — what is built
 
+**World-v1 is pixel-identical to the live path at the five A/B spots; the settle hold waits on what the first frame shows; the covered world renders once a second (2026-11-01, P2/P4).**
+Materials lane hand-back (52957eae9), merged with L1 (16)'s `framePhases`
+`rendered` flag combined in `frameHost.ts`. The `?world=v1` structural gate
+(`check-ab-spots.ts`) now reads the cell policy from `index.json` and
+compares against the unrounded runtime path: the published `--no-policy`
+cells match at all five spots and the old centimetre-height cells fail it,
+as they should. The pixel A/B with the owner classifier on those cells is
+0 px differing at every threshold at all five spots, ijburg-edge included
+(the harness re-plans the own ground at the held pose and waits for the
+builds and fade-ins; one cell's detail level had depended on the path to
+the spot), and world vs default equals default vs default2. Harness-only
+residue: the first page load of a run renders ~1 K px of edge and seam
+differences (353 px over 30 at Westerkerk) against every later load,
+camera, lift, styled features, chunk sets, worker/inline builds and install
+order all ruled out; the harness now makes a throwaway first load
+(`AB_NO_WARMUP=1` skips it). The settle hold (`settle.ts`) waits for the
+detail block, the kits and the coarse/houseboat chunks whose z14 tile comes
+within `SETTLE_FACADE_RING_M` = 800 m of the rider (the chase camera's view
+reach at hand-off, 776 m, rounded up), 4 s timeout unchanged. The 300–500 ms
+build round trips were not the pool: headless Chromium renders WebGL in
+software and each world frame drawn behind the loading screen cost 300–900
+ms of main thread, so replies and installs queued behind frames nobody
+saw. The frame host now renders the covered world at most once a second
+while the game is loading (`coveredFrameMs`, `COVERED_FRAME_MS` = 1000;
+`stats.coveredSkips`). Exclusive runs at 1512×982 @2x under `?engine=own`:
+headless settle 4529–5069 ms and timed out every run before, 1710 / 2684 /
+3736 ms and never timed out after, submit→racing 6.8–7.5 s → 4.0–5.7 s;
+headed Chrome 1460–1959 → 1483–1533 ms. Atlas extract unchanged, opt-in.
+Integrator: `build:canal-engine` + `build:canal-three-buildings`,
+`test:engine` 102/102, `test:world-format` 33/33, tsc clean; no world-v1
+recompile (no code-hash file changed). Next decision: `?world=v1` default.
+
 **Specs and scripts read the engine-neutral camera; the MapLibre oracles that remain are listed (2026-11-01, P0/P5).**
 Oracle-migration-2 lane (haiku, c392e578e; brief
 `docs/handoffs/lane-oracle-migration-2-20261031.md`). Across ~124 files under
