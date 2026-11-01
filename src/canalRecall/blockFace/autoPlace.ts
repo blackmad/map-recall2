@@ -343,15 +343,24 @@ export function scoreType(t: MatchableType, ev: PandEvidence): TypeScore {
 /**
  * OSM street furniture matched to a frontage: a bench or a litter bin on the pavement is not a business in the pand.
  * De la Reijstraat 28B (2026-11-01, #154): an `amenity=bench` 5.6 m out made the house `services` and gave it a shop
- * front, which a type with a ground-storey oriel cannot carry.
+ * front, which a type with a ground-storey oriel cannot carry. #157 added the rest of the pavement set: a public bookcase
+ * (Hasebroekstraat 28 drew a bar front: `amenity=pub` was matched as a prefix of `amenity=public_bookcase`; the use
+ * patterns are anchored now), a fountain, a give box, a bicycle repair stand.
  */
-export const STREET_FURNITURE = /^amenity=(bench|waste_basket|waste_disposal|recycling|bicycle_parking|motorcycle_parking|parking|parking_entrance|post_box|vending_machine|drinking_water|telephone|clock|charging_station|bicycle_rental|shelter|toilets|grit_bin|letter_box)$/;
+export const STREET_FURNITURE = /^amenity=(bench|waste_basket|waste_disposal|recycling|bicycle_parking|motorcycle_parking|parking|parking_entrance|parking_space|post_box|vending_machine|drinking_water|telephone|clock|charging_station|bicycle_rental|bicycle_repair_station|shelter|toilets|grit_bin|letter_box|public_bookcase|give_box|fountain)$/;
+/**
+ * The OSM category of a business node or way matched to a pand (scripts/block-face/auto-place.ts evidence): the first
+ * of shop, amenity, craft, office and healthcare.
+ */
+export function osmCategory(tags: Record<string, string | undefined>): string | undefined {
+  return tags.shop ? `shop=${tags.shop}` : tags.amenity ? `amenity=${tags.amenity}` : tags.craft ? `craft=${tags.craft}` : tags.office ? `office=${tags.office}` : tags.healthcare ? `healthcare=${tags.healthcare}` : undefined;
+}
 /** Ground use of a pand from BAG and OSM (no photo reading: the agreement says so). */
 export function groundUse(ev: PandEvidence, photoDate: string): GroundFloorUse {
   const osm = ev.osm.filter(o => !o.category || !STREET_FURNITURE.test(o.category));
   const biz = osm.find(o => o.category && !/^office=/.test(o.category)) ?? osm[0];
   const bagTrade = ev.groundUses.some(u => /winkel|bijeenkomst|horeca/.test(u));
-  const use: GroundFloorUse['use'] = biz?.category ? (/^amenity=(restaurant|fast_food)/.test(biz.category) ? 'restaurant' : /^amenity=cafe/.test(biz.category) ? 'cafe' : /^amenity=(bar|pub)/.test(biz.category) ? 'bar' : /^shop=/.test(biz.category) ? 'shop' : /^office=/.test(biz.category) ? 'office' : 'services')
+  const use: GroundFloorUse['use'] = biz?.category ? (/^amenity=(restaurant|fast_food)$/.test(biz.category) ? 'restaurant' : /^amenity=cafe$/.test(biz.category) ? 'cafe' : /^amenity=(bar|pub)$/.test(biz.category) ? 'bar' : /^shop=/.test(biz.category) ? 'shop' : /^office=/.test(biz.category) ? 'office' : 'services')
     : bagTrade ? 'shop' : ev.groundUses.some(u => /kantoor/.test(u)) ? 'office' : 'residential';
   return {use, ...(biz?.name ? {name: biz.name} : {}), ...(biz?.category ? {category: biz.category} : {}), ...(biz ? {osm: {type: biz.type, id: biz.id, ...(biz.name ? {name: biz.name} : {})}} : {}),
     bag: ev.groundUses, photoDate, agreement: biz ? 'osm-only' : 'bag-only', note: 'auto-place: BAG gebruiksdoel and OSM, not read off the photo'};

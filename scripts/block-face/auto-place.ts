@@ -18,7 +18,7 @@ import fs from 'node:fs/promises';
 import {existsSync, readFileSync} from 'node:fs';
 import path from 'node:path';
 import sharp from 'sharp';
-import {AUTO_PLACE, FRONT_EAVES, frontEavesFor, decidePand, ribbonRowHolds, fillPairs, medianGain, rowCoherence, rowExposure, trimGains, placementGate, scoreType, placedRuns, lonePandReason, runIntent, assignRunIds, frozenRuns, installedRunIds, type Decision, type ExistingRun, type Held, type MatchableType, type PandEvidence, type Placed} from '../../src/canalRecall/blockFace/autoPlace.ts';
+import {AUTO_PLACE, FRONT_EAVES, frontEavesFor, decidePand, ribbonRowHolds, fillPairs, medianGain, rowCoherence, rowExposure, trimGains, placementGate, scoreType, placedRuns, lonePandReason, runIntent, assignRunIds, frozenRuns, installedRunIds, osmCategory, type Decision, type ExistingRun, type Held, type MatchableType, type PandEvidence, type Placed} from '../../src/canalRecall/blockFace/autoPlace.ts';
 import {classifyPixel, measureStripPalette} from '../../src/canalRecall/blockFace/stripPalette.ts';
 import {measureSkyline} from '../../src/canalRecall/blockFace/stripSkyline.ts';
 import {measureSkyBound} from '../../src/canalRecall/blockFace/stripSkyBound.ts';
@@ -154,7 +154,7 @@ async function faceEvidence(faceId: string) {
     const f0 = facts.fronts[0], eavesM = f0.eavesM >= 6 ? f0.eavesM : facts.heights.dak70pM;
     const ev: PandEvidence = {pandId: id, address: u?.addresses?.[0] ?? `pand ${id.slice(-6)}`, builtYear: facts.heights.builtYear, widthM: r2(f0.widthM), eavesM: r2(eavesM), roofMaxM: r2(facts.heights.roofMaxM), storeys3dbag: facts.heights.storeys,
       groundUses: [...new Set<string>((u?.groundUnits ?? []).map((g: any) => g.use))],
-      osm: (u?.osm ?? []).map((b: any) => ({type: b.type, id: b.id, name: b.tags.name, category: b.tags.shop ? `shop=${b.tags.shop}` : b.tags.amenity ? `amenity=${b.tags.amenity}` : b.tags.craft ? `craft=${b.tags.craft}` : b.tags.office ? `office=${b.tags.office}` : b.tags.healthcare ? `healthcare=${b.tags.healthcare}` : undefined})),
+      osm: (u?.osm ?? []).map((b: any) => ({type: b.type, id: b.id, name: b.tags.name, category: osmCategory(b.tags)})),
       // The bay of the discovered BAG front (bay-outline.ts / intake --bay-outline=auto keep it in facts-bay-outline.json).
       bagBay: frontBump((existsSync(path.join(dir, 'pands', id, 'facts-bay-outline.json')) ? await readJson(path.join(dir, 'pands', id, 'facts-bay-outline.json')) as BuildingFacts : facts).fronts[0])};
     if (span) {

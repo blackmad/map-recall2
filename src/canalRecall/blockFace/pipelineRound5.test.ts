@@ -82,3 +82,27 @@ test('fix 3: the row median of the tree-free walls is brick, where the tree-cove
   const none = clean.find(c => !c.masked.some(Boolean));
   if (none) assert.equal(none.clean.wall, none.naive.wall);
 });
+
+// --- fix 4: OSM street furniture is no business ---
+import {groundUse, osmCategory, STREET_FURNITURE, type PandEvidence} from './autoPlace.ts';
+
+test('fix 4: pavement furniture never makes a shopfront (Hasebroekstraat 28, Vaalrivierstraat, Retiefstraat 61-63, Govert Flinckstraat 195)', () => {
+  const ev = (osm: {category?: string; name?: string}[], groundUses: string[] = ['woonfunctie']) =>
+    ({pandId: 'p', address: 'a', groundUses, osm: osm.map((o, i) => ({type: 'node', id: i + 1, ...o}))}) as unknown as PandEvidence;
+  // Hasebroekstraat 28: amenity=public_bookcase was read as a bar (`amenity=pub` matched as a prefix).
+  assert.equal(groundUse(ev([{category: 'amenity=public_bookcase'}], ['industriefunctie']), '2022-01-04').use, 'residential');
+  for (const tag of ['waste_disposal', 'bicycle_parking', 'public_bookcase', 'bench', 'waste_basket', 'post_box', 'vending_machine', 'charging_station', 'bicycle_rental', 'parking', 'recycling', 'telephone', 'clock', 'drinking_water', 'fountain']) {
+    assert.ok(STREET_FURNITURE.test(`amenity=${tag}`), tag);
+    assert.equal(groundUse(ev([{category: `amenity=${tag}`}]), '2020-04-29').use, 'residential', tag);
+  }
+  // BAG still decides when the furniture is dropped (Eerste Jacob van Campenstraat 8: winkelfunctie).
+  assert.equal(groundUse(ev([{category: 'amenity=bicycle_parking'}], ['winkelfunctie']), '2022-03-21').use, 'shop');
+  // Real businesses are unchanged, the use patterns now match whole values.
+  assert.equal(groundUse(ev([{category: 'amenity=pub', name: 'Café'}]), 'd').use, 'bar');
+  assert.equal(groundUse(ev([{category: 'amenity=bar'}]), 'd').use, 'bar');
+  assert.equal(groundUse(ev([{category: 'amenity=cafe'}]), 'd').use, 'cafe');
+  assert.equal(groundUse(ev([{category: 'amenity=fast_food'}]), 'd').use, 'restaurant');
+  assert.equal(groundUse(ev([{category: 'amenity=public_building'}]), 'd').use, 'services');
+  assert.equal(osmCategory({amenity: 'public_bookcase', name: undefined}), 'amenity=public_bookcase');
+  assert.equal(osmCategory({shop: 'bakery', amenity: 'cafe'}), 'shop=bakery');
+});
