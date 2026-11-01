@@ -3,6 +3,7 @@ import { openRoute } from './helpers';
 import { renderSpecs } from '../../scripts/look/measured-swatches';
 import { sunlitMeasuredWall } from '../../src/canalRecall/look/sunny';
 import { PILOTS, loadWallPage, measurePilot } from '../../scripts/look/measured-walls';
+import { OWN } from './worldCam';
 
 // The Building look setting switches looks live without a reload (Photo by default;
 // the retired MapLibre pattern layer survives as `?buildings3d=off`), and a
@@ -10,6 +11,7 @@ import { PILOTS, loadWallPage, measurePilot } from '../../scripts/look/measured-
 
 
 test('building look switches live between the three.js looks and the retired pattern layer', async ({ page }) => {
+  test.skip(OWN, 'MapLibre style assertion: deleted with the default path at P5');
   test.setTimeout(240_000);
   await openRoute(page, { travelMode: 'car', viewMode: 'chase', abortHeavyTiles: true, enterRacing: false });
   await page.waitForFunction(() => (window as any).canalRecallGame.vectorMap._facadesActive?.() === true, null, { timeout: 90_000 });

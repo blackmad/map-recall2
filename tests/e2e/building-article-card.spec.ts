@@ -46,7 +46,7 @@ async function resident(page: Page, id: string) {
 async function roofPoint(page: Page, id: string) {
   return page.evaluate((id) => {
     const w = window as any, vm = w.canalRecallGame.vectorMap, tb = vm._threeBuildings, T = w.CanalRecallThree.THREE;
-    const canvas = vm.map.getCanvas(), W = canvas.clientWidth, H = canvas.clientHeight;
+    const canvas = vm.frameCanvas(), W = canvas.clientWidth, H = canvas.clientHeight;
     for (const [key, chunk] of tb.chunks) {
       if (key.startsWith('extras:') || !chunk.mesh) continue;
       const f = chunk.source.find((x: any) => String(x.properties.id) === id);
@@ -65,7 +65,7 @@ async function roofPoint(page: Page, id: string) {
 async function clickBuilding(page: Page, id: string) {
   const point = await roofPoint(page, id);
   expect(point, `${id} projects on screen`).not.toBeNull();
-  const box = await page.evaluate(() => { const r = (window as any).canalRecallGame.vectorMap.map.getCanvas().getBoundingClientRect(); return { x: r.left, y: r.top }; });
+  const box = await page.evaluate(() => { const r = (window as any).canalRecallGame.vectorMap.frameCanvas().getBoundingClientRect(); return { x: r.left, y: r.top }; });
   await page.mouse.click(box.x + point!.x, box.y + point!.y);
   await expect.poll(() => page.evaluate(() => {
     const n = (window as any).canalRecallGame._landmarkNotice;
