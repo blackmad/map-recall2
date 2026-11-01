@@ -334,6 +334,7 @@ import {buildLensbomen} from './lensbomen-builder';
 import {buildAbnAmroHoofdkantoor} from './abn-amro-hoofdkantoor-builder';
 import {buildWolkenkrabber} from './wolkenkrabber-builder';
 import {buildCromhouthuizen} from './cromhouthuizen-builder';
+import {buildWaldorfAstoriaHerengracht} from './waldorf-astoria-herengracht-builder';
 import {applyInstalledFigures} from './installed-figures';
 import {computeSourceHashes,ALWAYS_REBUILD,type SourceHashes} from './manual-source-hash';
 import {setSink} from './nearbar-kit';
@@ -874,6 +875,7 @@ for(const spec of MANUAL_LANDMARKS.filter(model => !selectedIds.length || select
     else if(id==='abn-amro-hoofdkantoor')buildAbnAmroHoofdkantoor(w,d,helpers);
     else if(id==='wolkenkrabber')buildWolkenkrabber(w,d,helpers);
     else if(id==='cromhouthuizen')buildCromhouthuizen(w,d,helpers);
+    else if(id==='waldorf-astoria-herengracht')buildWaldorfAstoriaHerengracht(w,d,helpers);
     else buildCulturalLandmark(id,w,d,helpers);
   }
   }catch(e){

@@ -62105,6 +62105,439 @@
         "bytes": 65408,
         "triangles": 3130
       }
+    },
+    "waldorf-astoria-herengracht": {
+      "id": "waldorf-astoria-herengracht",
+      "name": "Waldorf Astoria Amsterdam",
+      "modelUrl": "./models/waldorf-astoria-herengracht.glb",
+      "suppressOsmIds": [
+        "NL.IMBAG.Pand.0363100012171090",
+        "NL.IMBAG.Pand.0363100012178774",
+        "NL.IMBAG.Pand.0363100012253806"
+      ],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.8970971,
+          52.3647182
+        ],
+        "headingDegrees": 162.7,
+        "lengthMetres": 28.4,
+        "widthMetres": 91.36
+      },
+      "surveyed": {
+        "anchor": [
+          4.8970971,
+          52.3647182
+        ],
+        "northOffsetDegrees": 0,
+        "source": "Vertex average of the three BAG rings (Herengracht 556 0363100012171090, 546-554 0363100012178774, 542-544 0363100012253806; PDOK BAG WFS, CC0) as the anchor; native east/south metres at 111320 m per degree (cos-latitude in longitude). The builder front frame runs along the BAG front from the 556/558 party line (bearing 252.7, front facing 342.7); facade heights and openings measured on Gemeente Amsterdam panorama TMX7316010203-001975_pano_0000_000032 (CC BY 4.0) rectified onto the front plane; roof heights from 3DBAG (CC BY 4.0). See waldorf-astoria-herengracht-footprints.json."
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 0,
+      "heightMetres": 21.6,
+      "bagYear": 1900,
+      "materialOverrides": {
+        "stone": "#e6e0d1",
+        "white": "#eeebe3",
+        "glass": "#2b3238",
+        "frame": "#2c302e",
+        "dark": "#2a2422",
+        "slate": "#45484d",
+        "brick": "#6e4a3e",
+        "bronze": "#262a28",
+        "red": "#9c2f2a",
+        "green": "#3d6b4a",
+        "pink": "#4a2530"
+      },
+      "attribution": {
+        "title": "Waldorf Astoria Amsterdam, Herengracht 542-556",
+        "author": "Map Recall",
+        "sourceUrl": "https://nl.wikipedia.org/wiki/Waldorf_Astoria_Amsterdam",
+        "licence": "CC BY 4.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "modifications": "Original texture-free flat-colour geometry on the BAG footprints (CC0) with 3DBAG roof heights (CC BY 4.0): six canal houses joined as the hotel (556 brick with a stone door portal and double stoop; the white stucco Louis XIV front with festoons, a balcony, balustrade, sculpture group and urn; the seven-bay brick double house with two neck dormers; 548 with its white frontispiece, round-headed door, balcony, hotel flag, balustrade and crested cartouche; 546 with segment-headed windows, an oculus over the door and a balustraded stoop; 542-544 under a hipped roof with dormers and chimneys); read from Gemeente Amsterdam panoramas (CC BY 4.0) for proportion only. No photo pixels or imported meshes."
+      },
+      "buildingFootprint": {
+        "type": "MultiPolygon",
+        "coordinates": [
+          [
+            [
+              [
+                4.8977574,
+                52.3647774
+              ],
+              [
+                4.8977425,
+                52.3648055
+              ],
+              [
+                4.8976935,
+                52.3648978
+              ],
+              [
+                4.897645,
+                52.3648885
+              ],
+              [
+                4.8976084,
+                52.3648815
+              ],
+              [
+                4.8976028,
+                52.3648924
+              ],
+              [
+                4.8975602,
+                52.3648842
+              ],
+              [
+                4.8975657,
+                52.3648734
+              ],
+              [
+                4.8975293,
+                52.3648665
+              ],
+              [
+                4.8974807,
+                52.3648571
+              ],
+              [
+                4.8975521,
+                52.3647193
+              ],
+              [
+                4.8976033,
+                52.3646174
+              ],
+              [
+                4.8978188,
+                52.3646579
+              ],
+              [
+                4.8978144,
+                52.3646665
+              ],
+              [
+                4.897779,
+                52.3647353
+              ],
+              [
+                4.8977723,
+                52.3647485
+              ],
+              [
+                4.8977574,
+                52.3647774
+              ]
+            ]
+          ],
+          [
+            [
+              [
+                4.8966176,
+                52.3646926
+              ],
+              [
+                4.896741,
+                52.3644514
+              ],
+              [
+                4.8969507,
+                52.3644925
+              ],
+              [
+                4.8969522,
+                52.3644897
+              ],
+              [
+                4.8971593,
+                52.3645302
+              ],
+              [
+                4.8974542,
+                52.3645878
+              ],
+              [
+                4.8974176,
+                52.3646621
+              ],
+              [
+                4.8973688,
+                52.3646524
+              ],
+              [
+                4.8973538,
+                52.364679
+              ],
+              [
+                4.8975521,
+                52.3647193
+              ],
+              [
+                4.8974807,
+                52.3648571
+              ],
+              [
+                4.8974354,
+                52.3648483
+              ],
+              [
+                4.8974013,
+                52.3648416
+              ],
+              [
+                4.8973955,
+                52.3648528
+              ],
+              [
+                4.8973889,
+                52.3648515
+              ],
+              [
+                4.8973549,
+                52.3648451
+              ],
+              [
+                4.8973474,
+                52.3648436
+              ],
+              [
+                4.8973533,
+                52.3648322
+              ],
+              [
+                4.8973193,
+                52.3648256
+              ],
+              [
+                4.8972812,
+                52.3648181
+              ],
+              [
+                4.8972742,
+                52.3648166
+              ],
+              [
+                4.8972429,
+                52.3648106
+              ],
+              [
+                4.8972426,
+                52.3648111
+              ],
+              [
+                4.89717,
+                52.3647975
+              ],
+              [
+                4.8971436,
+                52.3647926
+              ],
+              [
+                4.8971331,
+                52.3647906
+              ],
+              [
+                4.8971067,
+                52.3647857
+              ],
+              [
+                4.8970343,
+                52.3647722
+              ],
+              [
+                4.8970273,
+                52.3647709
+              ],
+              [
+                4.8969895,
+                52.3647637
+              ],
+              [
+                4.8969521,
+                52.3647565
+              ],
+              [
+                4.8969464,
+                52.3647677
+              ],
+              [
+                4.8969419,
+                52.3647668
+              ],
+              [
+                4.8969085,
+                52.3647604
+              ],
+              [
+                4.8969035,
+                52.3647594
+              ],
+              [
+                4.8969092,
+                52.3647483
+              ],
+              [
+                4.8968719,
+                52.3647412
+              ],
+              [
+                4.8968331,
+                52.3647338
+              ],
+              [
+                4.8968256,
+                52.3647324
+              ],
+              [
+                4.8968152,
+                52.3647306
+              ],
+              [
+                4.8967838,
+                52.3647245
+              ],
+              [
+                4.896743,
+                52.3647167
+              ],
+              [
+                4.8967376,
+                52.3647272
+              ],
+              [
+                4.8966954,
+                52.3647192
+              ],
+              [
+                4.8967008,
+                52.3647086
+              ],
+              [
+                4.89666,
+                52.3647008
+              ],
+              [
+                4.8966283,
+                52.3646947
+              ],
+              [
+                4.8966176,
+                52.3646926
+              ]
+            ]
+          ],
+          [
+            [
+              [
+                4.8964106,
+                52.3646541
+              ],
+              [
+                4.8964566,
+                52.3645619
+              ],
+              [
+                4.8965218,
+                52.3645735
+              ],
+              [
+                4.8965273,
+                52.3645615
+              ],
+              [
+                4.8965019,
+                52.3645567
+              ],
+              [
+                4.8964959,
+                52.3645473
+              ],
+              [
+                4.896523,
+                52.3644964
+              ],
+              [
+                4.8964924,
+                52.36449
+              ],
+              [
+                4.8965314,
+                52.364411
+              ],
+              [
+                4.8965625,
+                52.364417
+              ],
+              [
+                4.896741,
+                52.3644514
+              ],
+              [
+                4.8966176,
+                52.3646926
+              ],
+              [
+                4.896531,
+                52.3646765
+              ],
+              [
+                4.8964962,
+                52.36467
+              ],
+              [
+                4.8964106,
+                52.3646541
+              ]
+            ]
+          ]
+        ]
+      },
+      "partyWallBearings": [
+        73,
+        253
+      ],
+      "partyWallNote": "The east side (556) adjoins Herengracht 558 and the west side (542) Herengracht 540 (pand 0363100012171082, also hotel floor space, not modelled); both BAG rings share these walls.",
+      "buildingCategory": "landmark",
+      "bounds": {
+        "min": [
+          -46.804893493652344,
+          -0.009999997913837433,
+          -20.43548583984375
+        ],
+        "max": [
+          49.05204772949219,
+          21.7450008392334,
+          34.20335388183594
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.8970971,
+          52.3647182
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 90,
+        "facadeBearingDegrees": 162.70000000000005,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 95.85694122314453,
+        "heightMetres": 21.755000837147236,
+        "depthMetres": 54.63883972167969,
+        "depthCoverage": 0.5980608550971945
+      },
+      "triangles": 27898,
+      "bytes": 331252,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
+      "lod1": {
+        "sourceHash": "761e8a608fc3a710",
+        "buildVersion": 2,
+        "bytes": 86320,
+        "triangles": 4325
+      }
     }
   }
 }

@@ -1,0 +1,512 @@
+{
+ "schemaVersion": 1,
+ "id": "waldorf-astoria-herengracht",
+ "pand": "0363100012178774",
+ "brief": "scripts/landmarks/waldorf-astoria-herengracht-brief.md",
+ "signature": [
+  "frontispiece-548",
+  "crest-548",
+  "palace-554",
+  "sculpture-554",
+  "balustrade-548",
+  "dormers-550-552",
+  "door-548",
+  "flag-548"
+ ],
+ "walls": [
+  {
+   "tag": "w01-163",
+   "bearing": 163,
+   "lengthM": 35.9,
+   "centre": [
+    4.897206,
+    52.364541
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "items": [],
+   "note": "Rear or party wall on the hotel courtyards and gardens: no panorama or open photograph. Massing only from BAG and 3DBAG, no openings invented."
+  },
+  {
+   "tag": "w02-343",
+   "bearing": 343,
+   "lengthM": 20.6,
+   "centre": [
+    4.8971,
+    52.364786
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001975_pano_0000_000032",
+   "capturedAt": "2021-01-22",
+   "checked": true,
+   "items": [
+    {
+     "id": "frontispiece-548",
+     "kind": "other",
+     "where": "548: white stone frontispiece over the middle bay, ground to cornice (53.0-56.7 m along the front), pilaster strips either side",
+     "approxSizeM": [
+      3.7,
+      14.7
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001975_pano_0000_000032",
+     "how": "stone slab with two proud pilaster strips"
+    },
+    {
+     "id": "door-548",
+     "kind": "window-shape",
+     "where": "548: the hotel entrance, panelled door under a round-headed fanlight in a stone surround, on a stoop with iron railings (door 1.7-4.6 m, fanlight to 5.9 m)",
+     "approxSizeM": [
+      1.2,
+      4.2
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-001975_pano_0000_000032",
+     "how": "church-kit door() with a round fanlight and stone surround on the frontispiece, a cornice hood; stoop() with iron rails; the radiating fanlight bars are not modelled"
+    },
+    {
+     "id": "crest-548",
+     "kind": "crest",
+     "where": "548: scrolled cartouche over the cornice carrying two coats of arms side by side (top about 20 m)",
+     "approxSizeM": [
+      5.6,
+      3.6
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-001975_pano_0000_000032",
+     "how": "extruded cartouche outline with disc-and-ring side scrolls, two shields in red and green and a crowning lump; the charges of the arms are not drawn"
+    },
+    {
+     "id": "balustrade-548",
+     "kind": "other",
+     "where": "548: attic balustrade over the console cornice (16.6-17.7 m) either side of the cartouche, urns on both corners",
+     "approxSizeM": [
+      14.6,
+      1.2
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001975_pano_0000_000032",
+     "how": "lathe balusters between posts, plinth and rail; lathe urns on pedestals"
+    },
+    {
+     "id": "balcony-548",
+     "kind": "balcony-ironwork",
+     "where": "548: small iron balcony over the door on the frontispiece (6.7 m)",
+     "approxSizeM": [
+      1.9,
+      0.8
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-001975_pano_0000_000032",
+     "how": "stone slab with plain iron posts and rails; the scrolled ironwork pattern is not modelled"
+    },
+    {
+     "id": "flag-548",
+     "kind": "other",
+     "where": "548: the hotel flag on a raked pole from the frontispiece at the first floor",
+     "approxSizeM": [
+      1.2,
+      2.6
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-001975_pano_0000_000032",
+     "how": "one plain dark burgundy flag on a pole at 45 degrees; no logo"
+    },
+    {
+     "id": "lettering-548",
+     "kind": "lettering",
+     "where": "548: house number plate by the door; no hotel name lettering readable on the front",
+     "approxSizeM": [
+      0.3,
+      0.2
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7316010203-001975_pano_0000_000032",
+     "skip": {
+      "reason": "too-small",
+      "note": "a 30 cm number plate is the only lettering on the 2021 front; the hotel name is not on the facade"
+     }
+    },
+    {
+     "id": "lanterns",
+     "kind": "lamp",
+     "where": "wall lanterns either side of the doors of 556, 554 and 548",
+     "approxSizeM": [
+      0.3,
+      0.6
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001975_pano_0000_000032",
+     "how": "bracket, glass box, pyramid cap"
+    },
+    {
+     "id": "palace-554",
+     "kind": "other",
+     "where": "554: white stucco Louis XIV front, five bays, three storeys, modillion cornice (15.0-15.8 m)",
+     "approxSizeM": [
+      14.9,
+      15.8
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001975_pano_0000_000032",
+     "how": "0.3 m stucco skin on the block, white-framed sashes with small panes, cornice with modillions"
+    },
+    {
+     "id": "festoons-554",
+     "kind": "relief",
+     "where": "554: plaster festoons over the bel-etage and first-floor windows and drop ornaments between the middle bays",
+     "approxSizeM": [
+      1.2,
+      0.4
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-001975_pano_0000_000032",
+     "how": "strings of flattened spheres hanging between two rosettes over each window, long drops on the piers; the leaf modelling is not carved"
+    },
+    {
+     "id": "balcony-554",
+     "kind": "balcony-ironwork",
+     "where": "554: small iron balcony over the door at the first floor, on a cornice hood with consoles (7.0 m)",
+     "approxSizeM": [
+      1.9,
+      0.8
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-001975_pano_0000_000032",
+     "how": "stone slab and hood on two consoles, plain iron posts and rail"
+    },
+    {
+     "id": "balustrade-554",
+     "kind": "other",
+     "where": "554: balustrade over the cornice (15.8-17.0 m) either side of a raised middle panel",
+     "approxSizeM": [
+      14.9,
+      1.2
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001975_pano_0000_000032",
+     "how": "lathe balusters between posts; the middle panel with a relief tablet"
+    },
+    {
+     "id": "sculpture-554",
+     "kind": "sculpture",
+     "where": "554: sculpture group on the middle of the attic (figures round a cartouche, top 18.7 m)",
+     "approxSizeM": [
+      3.2,
+      1.6
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-001975_pano_0000_000032",
+     "how": "a group of stretched spheres on the attic panel giving the outline of the reclining figures; no faces or limbs"
+    },
+    {
+     "id": "urn-554",
+     "kind": "sculpture",
+     "where": "554: urn on the east corner of the attic (17.0-18.0 m)",
+     "approxSizeM": [
+      0.6,
+      1.2
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001975_pano_0000_000032",
+     "how": "lathe urn on a pedestal"
+    },
+    {
+     "id": "dormers-550-552",
+     "kind": "other",
+     "where": "550-552: two neck dormers on the cornice line with claws, pediment crowns and hoist beams (16.0-19.2 m)",
+     "approxSizeM": [
+      2.6,
+      3.2
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001975_pano_0000_000032",
+     "how": "neck-gable.ts neckGable() at dormer scale, window, hoist beam, slate cheek roof"
+    },
+    {
+     "id": "cornice-550-552",
+     "kind": "other",
+     "where": "550-552: white cornice on paired consoles (14.0-16.0 m), dark glazing bars in seven bays",
+     "approxSizeM": [
+      17.1,
+      2
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001975_pano_0000_000032",
+     "how": "frieze, crown moulding and paired consoles over every pier"
+    },
+    {
+     "id": "frontispiece-546",
+     "kind": "other",
+     "where": "546: white frontispiece with the door under an oculus (5.3-6.3 m), cornice hood, rectangular windows over it; segment-headed windows in the brick bays",
+     "approxSizeM": [
+      4.2,
+      14.2
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001975_pano_0000_000032",
+     "how": "stone slab with pilaster strips, dark door, ring and glass disc oculus, hood; win() segment heads elsewhere"
+    },
+    {
+     "id": "stoop-546",
+     "kind": "other",
+     "where": "546: stoop with a white stone balustrade",
+     "approxSizeM": [
+      3,
+      1.9
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-001975_pano_0000_000032",
+     "how": "landing and flight with square stone balusters under a raking rail"
+    },
+    {
+     "id": "dormer-546",
+     "kind": "other",
+     "where": "546: white dormer over the frontispiece (15.8-18.2 m)",
+     "approxSizeM": [
+      2.3,
+      2.2
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-001975_pano_0000_000032",
+     "how": "gabled stone dormer box set back in the roof with its window and a slate saddle; the dormer pediment mouldings are not modelled"
+    }
+   ],
+   "note": "The canal front of pand 0363100012178774 (Herengracht 546-554) read on the rectified 2021 panorama _000032 with a metre grid, cross-checked on _000611 and _000617; items for all five fronts of this pand are listed here. House numbers 554 and 550-552 follow the order along the front."
+  },
+  {
+   "tag": "w03-162",
+   "bearing": 162,
+   "lengthM": 15,
+   "centre": [
+    4.8968485,
+    52.364474
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "items": [],
+   "note": "Rear or party wall on the hotel courtyards and gardens: no panorama or open photograph. Massing only from BAG and 3DBAG, no openings invented."
+  },
+  {
+   "tag": "w04-162",
+   "bearing": 162,
+   "lengthM": 14.2,
+   "centre": [
+    4.897456,
+    52.364701
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "items": [],
+   "note": "Rear or party wall on the hotel courtyards and gardens: no panorama or open photograph. Massing only from BAG and 3DBAG, no openings invented."
+  },
+  {
+   "tag": "w05-73",
+   "bearing": 73,
+   "lengthM": 8.6,
+   "centre": [
+    4.8974385,
+    52.364627
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002537_pano_0000_000265",
+   "capturedAt": "2022-04-22",
+   "checked": true,
+   "items": [],
+   "note": "The panorama aimed at this wall shows the neighbouring building or a shopfront in the side street; this wall is enclosed by neighbours. Massing only."
+  },
+  {
+   "tag": "w06-343",
+   "bearing": 343,
+   "lengthM": 7.8,
+   "centre": [
+    4.897301,
+    52.3648235
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001975_pano_0000_000617",
+   "capturedAt": "2021-01-22",
+   "checked": true,
+   "items": [],
+   "note": "A short stretch of the same jagged canal front (stoop bumps and setbacks of the BAG ring); its ornaments are listed under w02-343."
+  },
+  {
+   "tag": "w07-343",
+   "bearing": 343,
+   "lengthM": 6,
+   "centre": [
+    4.896662,
+    52.364703
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001975_pano_0000_000612",
+   "capturedAt": "2021-01-22",
+   "checked": true,
+   "items": [],
+   "note": "A short stretch of the same jagged canal front (stoop bumps and setbacks of the BAG ring); its ornaments are listed under w02-343."
+  },
+  {
+   "tag": "w08-343",
+   "bearing": 343,
+   "lengthM": 6,
+   "centre": [
+    4.89687,
+    52.364742
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001975_pano_0000_000034",
+   "capturedAt": "2021-01-22",
+   "checked": true,
+   "items": [],
+   "note": "A short stretch of the same jagged canal front (stoop bumps and setbacks of the BAG ring); its ornaments are listed under w02-343."
+  },
+  {
+   "tag": "w09-343",
+   "bearing": 343,
+   "lengthM": 5.6,
+   "centre": [
+    4.8974435,
+    52.3648515
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001975_pano_0000_000618",
+   "capturedAt": "2021-01-22",
+   "checked": true,
+   "items": [],
+   "note": "A short stretch of the same jagged canal front (stoop bumps and setbacks of the BAG ring); its ornaments are listed under w02-343."
+  },
+  {
+   "tag": "w10-343",
+   "bearing": 343,
+   "lengthM": 5.1,
+   "centre": [
+    4.896782,
+    52.364726
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001975_pano_0000_000613",
+   "capturedAt": "2021-01-22",
+   "checked": true,
+   "items": [],
+   "note": "A short stretch of the same jagged canal front (stoop bumps and setbacks of the BAG ring); its ornaments are listed under w02-343."
+  },
+  {
+   "tag": "p1090-w02-343",
+   "bearing": 343,
+   "lengthM": 15.2,
+   "centre": [
+    4.8975871,
+    52.3648775
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001975_pano_0000_000028",
+   "capturedAt": "2021-01-22",
+   "checked": true,
+   "note": "Herengracht 556 (pand 0363100012171090): read on the rectified _000032 and _000028 panoramas.",
+   "items": [
+    {
+     "id": "portal-556",
+     "kind": "window-shape",
+     "where": "556: stone door portal with pilasters, entablature and a fanlight over the door, a carved frame round the window over it (to 10.4 m)",
+     "approxSizeM": [
+      3.3,
+      7.2
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001975_pano_0000_000032",
+     "how": "stone surround slab, entablature, dark door, transom light, frame strips and a carved lump over the first-floor window"
+    },
+    {
+     "id": "stoop-556",
+     "kind": "other",
+     "where": "556: double stoop with iron railings",
+     "approxSizeM": [
+      3,
+      2.5
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001975_pano_0000_000032",
+     "how": "landing, flights to both sides, iron posts and rails"
+    },
+    {
+     "id": "cornice-556",
+     "kind": "other",
+     "where": "556: cornice on consoles (13.0-14.0 m), a gabled dormer and chimney",
+     "approxSizeM": [
+      15.2,
+      1
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001975_pano_0000_000032",
+     "how": "frieze, crown moulding, paired consoles; gabled dormer box with slate roof"
+    }
+   ]
+  },
+  {
+   "tag": "p3806-w02-343",
+   "bearing": 343,
+   "lengthM": 14.8,
+   "centre": [
+    4.8964932,
+    52.3646695
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001975_pano_0000_000611",
+   "capturedAt": "2021-01-22",
+   "checked": true,
+   "note": "Herengracht 542-544 (pand 0363100012253806, gemeentelijk monument): plain brick over a raised basement, read on _000032 and _000611. The brief named a balcony on 542; no balcony shows on this front in 2021 or 2017.",
+   "items": [
+    {
+     "id": "roof-542-544",
+     "kind": "other",
+     "where": "542-544: hipped slate roof with two dormers and two chimneys (eaves 16.0 m)",
+     "approxSizeM": [
+      14.8,
+      5.3
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001975_pano_0000_000032",
+     "how": "hipped roof planes, two gabled dormers, chimneys from 3DBAG heights"
+    },
+    {
+     "id": "balcony-542",
+     "kind": "balcony-ironwork",
+     "where": "542: the balcony named in the lane brief",
+     "approxSizeM": [
+      1,
+      1
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7316010203-001975_pano_0000_000032",
+     "skip": {
+      "reason": "not-visible",
+      "note": "no balcony on the 542-544 canal front in the 2021 panoramas _000032/_000611 nor the 2017 view _000731"
+     }
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  },
+  {
+   "name": "BAG WFS (PDOK)",
+   "url": "https://service.pdok.nl/lv/bag/wfs/v2_0",
+   "licence": "CC0"
+  },
+  {
+   "name": "3DBAG",
+   "url": "https://3dbag.nl",
+   "licence": "CC BY 4.0"
+  }
+ ]
+}

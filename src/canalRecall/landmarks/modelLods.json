@@ -1942,5 +1942,11 @@
   "buildVersion": 2,
   "bytes": 65408,
   "triangles": 3130
+ },
+ "waldorf-astoria-herengracht": {
+  "sourceHash": "761e8a608fc3a710",
+  "buildVersion": 2,
+  "bytes": 86320,
+  "triangles": 4325
  }
 }
