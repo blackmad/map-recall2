@@ -60,9 +60,9 @@
       "date": "2026-10-10"
     },
     "worldCellsCityMB": {
-      "value": 9.5,
+      "value": 10,
       "unit": "MB gzip, all building cells in public/data/extracts/amsterdam/world-v1 (sum of cells/*.bin gzipped)",
-      "source": "integrator decision 2026-11-01 (user: use your judgement): every lossless cut is spent (v5 8.92 MB), the lossy ones (decimetre heights, collinear removal) change facades, and no ride downloads the city; worldRideDownloadMB is the binding gate; 9.5 leaves headroom for new STYL fields. History: v3 10.4 MB, the 4 MB figure was a density estimate without styles",
+      "source": "integrator decision 2026-11-01 (user: use your judgement): every lossless cut is spent (v5 8.92 MB), the lossy ones (decimetre heights, collinear removal) change facades, and no ride downloads the city; worldRideDownloadMB is the binding gate; restated again the same day to 10: the cells are published WITHOUT the centimetre height policy (9.70 MB) because the policy changed facades against the default path (a 4 mm eaves change flips a storey count); a lossless millimetre-integer height encoding is the road lane's item to win the bytes back. History: v3 10.4 MB, the 4 MB figure was a density estimate without styles",
       "date": "2026-11-01"
     },
     "worldRideDownloadMB": {
