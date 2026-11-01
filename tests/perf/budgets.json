@@ -76,8 +76,8 @@
     "value": "1512x982 CSS px at DPR 2",
     "note": "the user's 14-inch MacBook Pro (3024x1964). Perf runs before 2026-11-01 used 1800x1100 at DPR 2 (7.9 Mpx, 33 % more than the screen); motion-stutter.mjs defaults to this size now and lanes pass VIEWPORT/DPR only to test another device."
   },
-  "_draftP4Counters": {
-    "note": "DRAFT for the integrator to accept: the P4 counters gate on the seeded Jordaan ride (rails, ~2 km in the 40 s window) under ?engine=own, measured after a 10 s warm-up. `measured` is this lane's run; values are not gates until accepted.",
+  "p4Counters": {
+    "note": "P4 counters gate (accepted by the integrator 2026-11-01 from the materials lane's draft): `target` is the gate, `measured` the baseline of that run; a lane that moves a measured value re-records it here with its SHA. Red at acceptance: shaderCompilesAfterWarmup (landmark precompiles off the frame, acceptable until the deck precompile moves to the loading screen), uploadsOver1MBAfterWarmup (facade chunk geometry and own-ground cells must be split or uploaded in pieces), drawsAt60Pitch p95 and iPad triangles (facade LOD, merged roof caps and bike parts).",
     "source": "materials lane 2026-11-01, #129: GL_COUNTERS=1 HEADED=1 DPR=2 node scripts/motion-stutter.mjs --qs '?engine=own' --start lm-extract_landmarks_433737872 --dest lm-extract_landmarks_1632187034 --via lm-extract_landmarks_1632187034 --warmup 10 --measure 40 (desktop 1512x982@2, --device ipad 1180x734@2 touch), M4 Pro headed Metal, tier high",
     "date": "2026-11-01",
     "entries": {
