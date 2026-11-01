@@ -1,0 +1,122 @@
+{
+ "schemaVersion": 1,
+ "kind": "block-face",
+ "id": "transvaal-3-47-r1",
+ "street": "Transvaalstraat",
+ "sources": [
+  {
+   "id": "strip-2023-01-02",
+   "kind": "street-panorama",
+   "capturedAt": "2023-01-02",
+   "image": "staging/block-face/transvaal-3-47-r1/strip.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "authoring": {
+  "author": "auto-place (blockFace/autoPlace.ts)",
+  "passes": 1,
+  "note": "auto-placed from the transvaalbuurt library (buurt Transvaalbuurt-Oost); scores and holds in scripts/block-face/faces/transvaal-3-47/auto-place.json"
+ },
+ "types": [
+  "transvaal-1911-five-storey-tall",
+  "transvaal-1911-five-storey"
+ ],
+ "houses": [
+  {
+   "pandId": "0363100012093192",
+   "slug": "transvaal-093192",
+   "address": "Transvaalstraat 39",
+   "type": {
+    "type": "transvaal-1911-five-storey",
+    "measuredPalette": {
+     "brick": "#63524b",
+     "evidence": "strip 2023-01-02 span 3530-3773: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "crown": "flat-dormer",
+    "mirror": true,
+    "paletteOverrides": {
+     "brick": "#393736"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2023-01-02",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "bays": "window, balcony door, window at 5.5-6.3 m; two axes at 5 m; four at 6.4-7.6 m (window, balcony door, two windows: Pretoriusstraat 72-120 and 71-95); three wide axes on the 8.5 m double fronts, four at 10.8 m",
+    "identicalBays": "near: the centre balcony door is a little narrower",
+    "windowsPerStorey": "ground: door + windows | 1-3: window + balcony door + window",
+    "symmetry": "near symmetric; the door side alternates along the row",
+    "groundFloor": "house door on an outer axis, windows or a shop",
+    "signage": "shops on Pretoriusstraat and Transvaalstraat corners",
+    "roofline": "a light simple cornice; a pointed gable, a brick wall dormer or a white dormer over it",
+    "photoRows": [
+     3,
+     3,
+     3,
+     3
+    ],
+    "photoGroundRows": 1,
+    "citation": "auto-place: transvaal-1911-five-storey scored 0.86 on eaves 1, storeys 1, stucco 1, columns 0.4; strip 2023-01-02 span 3530-3773"
+   }
+  },
+  {
+   "pandId": "0363100012146296",
+   "slug": "transvaal-146296",
+   "address": "Transvaalstraat 41",
+   "type": {
+    "type": "transvaal-1911-five-storey-tall",
+    "measuredPalette": {
+     "brick": "#6d5b56",
+     "evidence": "strip 2023-01-02 span 3773-4012: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "crown": "flat-dormer",
+    "paletteOverrides": {
+     "brick": "#433936"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2023-01-02",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "bays": "window, balcony door, window at 5.5-6.3 m; two axes at 5 m; four at 6.4-7.6 m (window, balcony door, two windows: Pretoriusstraat 72-120 and 71-95); three wide axes on the 8.5 m double fronts, four at 10.8 m",
+    "identicalBays": "near: the centre balcony door is a little narrower",
+    "windowsPerStorey": "ground: door + windows | 1-3: window + balcony door + window",
+    "symmetry": "near symmetric; the door side alternates along the row",
+    "groundFloor": "house door on an outer axis, windows or a shop",
+    "signage": "shops on Pretoriusstraat and Transvaalstraat corners",
+    "roofline": "a light simple cornice; a pointed gable, a brick wall dormer or a white dormer over it",
+    "photoRows": [
+     3,
+     3,
+     3,
+     3
+    ],
+    "photoGroundRows": 1,
+    "citation": "auto-place: transvaal-1911-five-storey-tall scored 1 on eaves 1, storeys 1, stucco 1; strip 2023-01-02 span 3773-4012"
+   }
+  }
+ ],
+ "continuity": {
+  "streetLevel": "shared",
+  "corniceGroups": [],
+  "identical": [],
+  "partyClip": true,
+  "roof": {
+   "source": "recipe",
+   "pitchDeg": 30,
+   "evidence": "auto-place: low attic behind the cornice; the strips show sky over the cornices of the type rows"
+  }
+ }
+}

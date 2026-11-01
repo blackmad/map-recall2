@@ -85,6 +85,166 @@
    "type": "transvaal-1911-five-storey-tall",
    "crown": "point-gable",
    "reason": "pretorius-72-120-r1 sheet 2023-01-02: a pointed brick gable over most of the front like 90B; the skyline's 1.5 m rise drew a white dormer the strip does not show"
+  },
+  {
+   "pandId": "0363100012093192",
+   "type": "transvaal-1911-five-storey",
+   "crown": "flat-dormer",
+   "reason": "transvaal-3-47 strip 2023-01-02 (#156): Transvaalstraat 39 carries one tall flat-topped white timber dormer, foot about 15.0 m, cap 17.0-17.2 m, about 1.9 m wide; the skyline is read through bare branches"
+  },
+  {
+   "pandId": "0363100012093192",
+   "type": "transvaal-1911-five-storey-tall",
+   "crown": "flat-dormer",
+   "reason": "transvaal-3-47 strip 2023-01-02 (#156): Transvaalstraat 39 carries one tall flat-topped white timber dormer, foot about 15.0 m, cap 17.0-17.2 m, about 1.9 m wide; the skyline is read through bare branches"
+  },
+  {
+   "pandId": "0363100012146296",
+   "type": "transvaal-1911-five-storey",
+   "crown": "flat-dormer",
+   "reason": "transvaal-3-47 strip 2023-01-02 (#156): Transvaalstraat 41 carries one tall flat-topped white timber dormer, foot about 15.0 m, cap 17.0-17.2 m, about 1.9 m wide; the skyline is read through bare branches"
+  },
+  {
+   "pandId": "0363100012146296",
+   "type": "transvaal-1911-five-storey-tall",
+   "crown": "flat-dormer",
+   "reason": "transvaal-3-47 strip 2023-01-02 (#156): Transvaalstraat 41 carries one tall flat-topped white timber dormer, foot about 15.0 m, cap 17.0-17.2 m, about 1.9 m wide; the skyline is read through bare branches"
+  },
+  {
+   "pandId": "0363100012096110",
+   "type": "transvaal-1911-five-storey",
+   "crown": "flat-dormer",
+   "reason": "transvaal-3-47 strip 2023-01-02 (#156): Transvaalstraat 43B carries one tall flat-topped white timber dormer, foot about 15.0 m, cap 17.0-17.2 m, about 1.9 m wide; the skyline is read through bare branches"
+  },
+  {
+   "pandId": "0363100012096110",
+   "type": "transvaal-1911-five-storey-tall",
+   "crown": "flat-dormer",
+   "reason": "transvaal-3-47 strip 2023-01-02 (#156): Transvaalstraat 43B carries one tall flat-topped white timber dormer, foot about 15.0 m, cap 17.0-17.2 m, about 1.9 m wide; the skyline is read through bare branches"
+  },
+  {
+   "pandId": "0363100012140329",
+   "type": "transvaal-1911-five-storey",
+   "crown": "flat-dormer",
+   "reason": "transvaal-3-47 strip 2023-01-02 (#156): Transvaalstraat 45A carries one tall flat-topped white timber dormer, foot about 15.0 m, cap 17.0-17.2 m, about 1.9 m wide; the skyline is read through bare branches"
+  },
+  {
+   "pandId": "0363100012140329",
+   "type": "transvaal-1911-five-storey-tall",
+   "crown": "flat-dormer",
+   "reason": "transvaal-3-47 strip 2023-01-02 (#156): Transvaalstraat 45A carries one tall flat-topped white timber dormer, foot about 15.0 m, cap 17.0-17.2 m, about 1.9 m wide; the skyline is read through bare branches"
+  },
+  {
+   "pandId": "0363100012140529",
+   "type": "transvaal-1911-five-storey",
+   "crown": "shared-gable",
+   "pair": "left",
+   "reason": "transvaal-42-48 strip 2023-01-02 (#156): one shouldered brick gable centred on the 44|42 party wall, plumb to 14.7 m, apex 17.6 m on the party line; Transvaalstraat 44 is its left half"
+  },
+  {
+   "pandId": "0363100012140529",
+   "type": "transvaal-1911-five-storey-tall",
+   "crown": "shared-gable",
+   "pair": "left",
+   "reason": "transvaal-42-48 strip 2023-01-02 (#156): one shouldered brick gable centred on the 44|42 party wall, plumb to 14.7 m, apex 17.6 m on the party line; Transvaalstraat 44 is its left half"
+  },
+  {
+   "pandId": "0363100012071217",
+   "type": "transvaal-1911-five-storey",
+   "crown": "shared-gable",
+   "pair": "right",
+   "reason": "transvaal-42-48 strip 2023-01-02 (#156): one shouldered brick gable centred on the 44|42 party wall, plumb to 14.7 m, apex 17.6 m on the party line; Transvaalstraat 42 is its right half"
+  },
+  {
+   "pandId": "0363100012071217",
+   "type": "transvaal-1911-five-storey-tall",
+   "crown": "shared-gable",
+   "pair": "right",
+   "reason": "transvaal-42-48 strip 2023-01-02 (#156): one shouldered brick gable centred on the 44|42 party wall, plumb to 14.7 m, apex 17.6 m on the party line; Transvaalstraat 42 is its right half"
+  },
+  {
+   "pandId": "0363100012154435",
+   "type": "transvaal-1911-five-storey",
+   "crown": "wall-dormer",
+   "reason": "retief-45-75-r4 sheet 2023-01-02 (lone pand, #156): a brick wall dormer with one light over the centre axis and a white flat cap, the same as 69C; the skyline reads branches"
+  },
+  {
+   "pandId": "0363100012154435",
+   "type": "transvaal-1911-five-storey-tall",
+   "crown": "wall-dormer",
+   "reason": "retief-45-75-r4 sheet 2023-01-02 (lone pand, #156): a brick wall dormer with one light over the centre axis and a white flat cap, the same as 69C; the skyline reads branches"
+  },
+  {
+   "pandId": "0363100012144201",
+   "type": "transvaal-1911-five-storey",
+   "crown": "wall-dormer",
+   "reason": "retief-45-75-r5 sheet 2023-01-02 (lone pand, #156): a brick wall dormer with one light over the centre axis and a white flat cap, the same as 69C and 57"
+  },
+  {
+   "pandId": "0363100012144201",
+   "type": "transvaal-1911-five-storey-tall",
+   "crown": "wall-dormer",
+   "reason": "retief-45-75-r5 sheet 2023-01-02 (lone pand, #156): a brick wall dormer with one light over the centre axis and a white flat cap, the same as 69C and 57"
+  },
+  {
+   "pandId": "0363100012119806",
+   "type": "transvaal-1911-five-storey",
+   "crown": "wall-dormer",
+   "reason": "ingogo-1-13-r1 sheet 2020-04 (lone pand, #156): a brick wall dormer with one light over the centre axis rising over the cornice, flat cap"
+  },
+  {
+   "pandId": "0363100012119806",
+   "type": "transvaal-1911-five-storey-tall",
+   "crown": "wall-dormer",
+   "reason": "ingogo-1-13-r1 sheet 2020-04 (lone pand, #156): a brick wall dormer with one light over the centre axis rising over the cornice, flat cap"
+  },
+  {
+   "pandId": "0363100012167293",
+   "type": "transvaal-1911-five-storey",
+   "crown": "wall-dormer",
+   "reason": "pretorius-1-33-r1 sheet 2023-01-02 (lone pand, #156): a brick wall dormer with one light over the centre axis, stepped shoulders and a flat cap"
+  },
+  {
+   "pandId": "0363100012167293",
+   "type": "transvaal-1911-five-storey-tall",
+   "crown": "wall-dormer",
+   "reason": "pretorius-1-33-r1 sheet 2023-01-02 (lone pand, #156): a brick wall dormer with one light over the centre axis, stepped shoulders and a flat cap"
+  },
+  {
+   "pandId": "0363100012073473",
+   "type": "transvaal-1911-five-storey",
+   "crown": "none",
+   "reason": "paardekraal-1-15-r1 sheet 2023-01-02 (lone pand, #156): a flat cornice; the box over it is a later glazed roof room set back from the front, not a dormer (the kit cannot draw it)"
+  },
+  {
+   "pandId": "0363100012073473",
+   "type": "transvaal-1911-five-storey-tall",
+   "crown": "none",
+   "reason": "paardekraal-1-15-r1 sheet 2023-01-02 (lone pand, #156): a flat cornice; the box over it is a later glazed roof room set back from the front, not a dormer (the kit cannot draw it)"
+  },
+  {
+   "pandId": "0363100012074312",
+   "type": "transvaal-1911-five-storey",
+   "crown": "wall-dormer",
+   "reason": "retief-45-75 strip 2023-01-02 (Retiefstraat 65A, #156): a brick wall dormer with one light over the centre axis and a white flat cap, like 69C"
+  },
+  {
+   "pandId": "0363100012074312",
+   "type": "transvaal-1911-five-storey-tall",
+   "crown": "wall-dormer",
+   "reason": "retief-45-75 strip 2023-01-02 (Retiefstraat 65A, #156): a brick wall dormer with one light over the centre axis and a white flat cap, like 69C"
+  },
+  {
+   "pandId": "0363100012120175",
+   "type": "transvaal-1911-five-storey",
+   "crown": "point-gable",
+   "reason": "retief-45-75 strip 2023-01-02 (Retiefstraat 67B, #156): a steep pointed brick gable over the whole front with small kneelers and attic lights"
+  },
+  {
+   "pandId": "0363100012120175",
+   "type": "transvaal-1911-five-storey-tall",
+   "crown": "point-gable",
+   "reason": "retief-45-75 strip 2023-01-02 (Retiefstraat 67B, #156): a steep pointed brick gable over the whole front with small kneelers and attic lights"
   }
  ]
 }

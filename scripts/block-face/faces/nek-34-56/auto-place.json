@@ -3,7 +3,7 @@
  "street": "Laing's Nekstraat",
  "library": "transvaalbuurt",
  "stripDate": "2022-01-12",
- "seconds": 2.11,
+ "seconds": 5.14,
  "thresholds": {
   "minScore": 0.7,
   "margin": 0.05,
@@ -578,8 +578,8 @@
     "foliageShare": 0.01
    },
    "status": "held",
-   "stage": "run",
-   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
+   "stage": "review",
+   "reason": "review: a narrow two-axis front under a pointed side gable with a tall chimney stack; the type draws a flat-corniced three-axis front with balconies (lone pand released by the #156 opt-in; nek-34-56-r1 sheet, 2026-11-01)",
    "likeness": null,
    "challengers": {}
   }

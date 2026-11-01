@@ -3,7 +3,7 @@
  "street": "Pretoriusstraat",
  "library": "transvaalbuurt",
  "stripDate": "2023-01-02",
- "seconds": 28.84,
+ "seconds": 34.54,
  "thresholds": {
   "minScore": 0.7,
   "margin": 0.05,
@@ -860,41 +860,10 @@
     "foliageShare": 0
    },
    "status": "held",
-   "stage": "run",
-   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
-   "likeness": {
-    "pandId": "0363100012062960",
-    "ncc": 0.186,
-    "nccRaw": 0.186,
-    "shiftM": [
-     -0.05,
-     0.3
-    ],
-    "usable": 0.99,
-    "abstain": null,
-    "verdict": "FAIL",
-    "reasons": [
-     "glazing storey band off by 0.44 mean 0.37 vs photo 0.78"
-    ],
-    "wall": {
-     "photo": "#3b312d",
-     "model": "#584943",
-     "dL": 0.1
-    },
-    "glazing": {
-     "photo": 0.78,
-     "model": 0.37
-    },
-    "columns": {
-     "photo": null,
-     "model": 4
-    },
-    "iou": 0.445
-   },
-   "challengers": {
-    "transvaal-1911-five-storey-tall": 0.186,
-    "transvaal-1911-five-storey-tall~m": 0.299
-   }
+   "stage": "review",
+   "reason": "review: a brick attic bay over the middle axes with its own lights and cap, rising over the cornice; the kit draws a wall dormer over one axis only (lone pand released by the #156 opt-in; pretorius-72-120-r2 sheet, 2026-11-01)",
+   "likeness": null,
+   "challengers": {}
   },
   {
    "pandId": "0363100012072390",
@@ -974,45 +943,10 @@
     "foliageShare": 0.01
    },
    "status": "held",
-   "stage": "likeness",
-   "reason": "edge NCC 0.127 < 0.15 (photo vs model body; likeness.ts FAIL: glazing storey band off by 0.28; window shape tall vs photo square; wall family unresolved (#38302c is dark and neutral, brick courses not resolved): lightness and hue judged only; columns 4 vs photo 2)",
-   "likeness": {
-    "pandId": "0363100012072390",
-    "ncc": 0.127,
-    "nccRaw": 0.127,
-    "shiftM": [
-     0.15,
-     0.2
-    ],
-    "usable": 0.98,
-    "abstain": null,
-    "verdict": "FAIL",
-    "reasons": [
-     "glazing storey band off by 0.28",
-     "window shape tall vs photo square",
-     "wall family unresolved (#38302c is dark and neutral, brick courses not resolved): lightness and hue judged only",
-     "columns 4 vs photo 2"
-    ],
-    "wall": {
-     "photo": "#38302c",
-     "model": "#554944",
-     "dL": 0.104
-    },
-    "glazing": {
-     "photo": 0.47,
-     "model": 0.37
-    },
-    "columns": {
-     "photo": 2,
-     "model": 4
-    },
-    "iou": 0.448
-   },
-   "challengers": {
-    "transvaal-1911-five-storey-tall~m": 0.127,
-    "transvaal-1911-five-storey-tall": 0.23,
-    "transvaal-1923-portiek": 0.091
-   }
+   "stage": "review",
+   "reason": "review: a brick attic bay over the middle axes with paired lights, like 80 and 76; the type draws a plain cornice (lone pand released by the #156 opt-in; pretorius-72-120-r2 sheet, 2026-11-01)",
+   "likeness": null,
+   "challengers": {}
   },
   {
    "pandId": "0363100012072572",
@@ -1061,47 +995,10 @@
     "foliageShare": 0
    },
    "status": "held",
-   "stage": "run",
-   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
-   "likeness": {
-    "pandId": "0363100012072572",
-    "ncc": 0.267,
-    "nccRaw": 0.267,
-    "shiftM": [
-     -0.05,
-     0.1
-    ],
-    "usable": 0.99,
-    "abstain": null,
-    "verdict": "FAIL",
-    "reasons": [
-     "glazing storey band off by 0.39",
-     "window shape tall vs photo square",
-     "wall family unresolved (#372e2b is dark and neutral, brick courses not resolved): lightness and hue judged only",
-     "columns 4 vs photo 2"
-    ],
-    "wall": {
-     "photo": "#372e2b",
-     "model": "#564843",
-     "dL": 0.108
-    },
-    "glazing": {
-     "photo": 0.28,
-     "model": 0.37
-    },
-    "columns": {
-     "photo": 2,
-     "model": 4
-    },
-    "iou": 0.375
-   },
-   "challengers": {
-    "transvaal-1911-five-storey-tall": 0.267,
-    "transvaal-1911-five-storey-tall~m": 0.304,
-    "transvaal-1911-five-storey": 0.256,
-    "transvaal-1911-five-storey~m": 0.284,
-    "transvaal-1923-portiek": 0.127
-   }
+   "stage": "review",
+   "reason": "review: the twin of 80: a brick attic bay over the middle axes with its own lights and cap; the kit draws a wall dormer over one axis only (lone pand released by the #156 opt-in; pretorius-72-120-r3 sheet, 2026-11-01)",
+   "likeness": null,
+   "challengers": {}
   },
   {
    "pandId": "0363100012064816",
@@ -1161,43 +1058,44 @@
    },
    "status": "held",
    "stage": "likeness",
-   "reason": "edge NCC 0.147 < 0.15 (photo vs model body; likeness.ts FAIL: glazing storey band off by 0.16; columns 3 vs photo 4)",
+   "reason": "edge NCC 0.145 < 0.15 (photo vs model body; likeness.ts FAIL: glazing storey band off by 0.23; columns 3 vs photo 4)",
    "likeness": {
     "pandId": "0363100012064816",
-    "ncc": 0.147,
-    "nccRaw": 0.147,
+    "ncc": 0.145,
+    "nccRaw": 0.145,
     "shiftM": [
      0.2,
-     0.05
+     -0.1
     ],
     "usable": 1,
     "abstain": null,
     "verdict": "FAIL",
     "reasons": [
-     "glazing storey band off by 0.16",
+     "glazing storey band off by 0.23",
      "columns 3 vs photo 4"
     ],
     "wall": {
-     "photo": "#4c3f40",
+     "photo": "#483b3b",
      "model": "#645052",
-     "dL": 0.08
+     "dL": 0.096
     },
     "glazing": {
-     "photo": 0.39,
+     "photo": 0.43,
      "model": 0.36
     },
     "columns": {
      "photo": 4,
      "model": 3
     },
-    "iou": 0.369
+    "iou": 0.344
    },
    "challengers": {
-    "transvaal-1911-five-storey-tall~m": 0.147,
-    "transvaal-1911-five-storey-tall": 0.147,
-    "transvaal-1911-five-storey~m": 0.134,
-    "transvaal-1911-five-storey": 0.134,
-    "transvaal-1923-portiek": 0.067
+    "transvaal-1911-five-storey-tall": 0.145,
+    "transvaal-1911-five-storey-tall~m": 0.145,
+    "transvaal-1911-five-storey": 0.155,
+    "transvaal-1911-five-storey~m": 0.155,
+    "transvaal-1923-portiek-tower": 0.028,
+    "transvaal-1923-portiek": 0.085
    }
   },
   {
@@ -1247,44 +1145,10 @@
     "foliageShare": 0
    },
    "status": "held",
-   "stage": "run",
-   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
-   "likeness": {
-    "pandId": "0363100012137732",
-    "ncc": 0.231,
-    "nccRaw": 0.231,
-    "shiftM": [
-     -0.1,
-     -0.05
-    ],
-    "usable": 0.99,
-    "abstain": null,
-    "verdict": "FAIL",
-    "reasons": [
-     "glazing storey band off by 0.20 mean 0.42 vs photo 0.31"
-    ],
-    "wall": {
-     "photo": "#504143",
-     "model": "#6c595d",
-     "dL": 0.102
-    },
-    "glazing": {
-     "photo": 0.31,
-     "model": 0.42
-    },
-    "columns": {
-     "photo": 3,
-     "model": 3
-    },
-    "iou": 0.393
-   },
-   "challengers": {
-    "transvaal-1911-five-storey-tall": 0.231,
-    "transvaal-1911-five-storey-tall~m": 0.231,
-    "transvaal-1911-five-storey": 0.214,
-    "transvaal-1911-five-storey~m": 0.214,
-    "transvaal-1923-portiek": 0.118
-   }
+   "stage": "review",
+   "reason": "review: a mansard top, two wide double windows and a narrow one per storey, a white garage front on the ground floor; the type draws three axes with balconies (lone pand released by the #156 opt-in; pretorius-72-120-r4 sheet, 2026-11-01)",
+   "likeness": null,
+   "challengers": {}
   }
  ]
 }

@@ -1,0 +1,182 @@
+{
+ "name": "transvaalbuurt-1911b-oost",
+ "generatedAt": "2026-11-01T09:07:24.694Z",
+ "method": "scripts/block-face/batch.ts steps 3-5 by hand (covered or installed faces)",
+ "totals": {
+  "runs": 7,
+  "installed": 6,
+  "installedPands": 8
+ },
+ "rows": [
+  {
+   "face": "transvaal-3-47",
+   "street": "Transvaalstraat",
+   "ride": null,
+   "restriped": null,
+   "stripQuality": {
+    "badShare": 0,
+    "reasons": []
+   },
+   "nccMin": 0.175,
+   "nccMedian": 0.179,
+   "stripOverDrawn": 1.227,
+   "wallFits": 2,
+   "droppedCorners": [],
+   "triangles": 4279,
+   "sheet": "staging/block-face/transvaal-3-47-r1/review/strip-sheet.png",
+   "stripDate": "2023-01-02",
+   "run": "transvaal-3-47-r1",
+   "pands": 2,
+   "mode": "auto-place",
+   "status": "installed",
+   "reasons": [],
+   "seconds": 18.1
+  },
+  {
+   "face": "transvaal-42-48",
+   "street": "Transvaalstraat",
+   "ride": null,
+   "restriped": null,
+   "stripQuality": {
+    "badShare": 0,
+    "reasons": []
+   },
+   "nccMin": 0.182,
+   "nccMedian": 0.187,
+   "stripOverDrawn": 0.853,
+   "wallFits": 0,
+   "droppedCorners": [],
+   "triangles": 4116,
+   "sheet": "staging/block-face/transvaal-42-48-r1/review/strip-sheet.png",
+   "stripDate": "2023-01-02",
+   "run": "transvaal-42-48-r1",
+   "pands": 2,
+   "mode": "auto-place",
+   "status": "installed",
+   "reasons": [],
+   "seconds": 8.8
+  },
+  {
+   "face": "retief-45-75",
+   "street": "Retiefstraat",
+   "ride": null,
+   "restriped": null,
+   "stripQuality": {
+    "badShare": 0,
+    "reasons": []
+   },
+   "nccMin": 0.195,
+   "nccMedian": 0.195,
+   "stripOverDrawn": 1.081,
+   "wallFits": 1,
+   "droppedCorners": [],
+   "triangles": 2052,
+   "sheet": "staging/block-face/retief-45-75-r2/review/strip-sheet.png",
+   "stripDate": "2023-01-02",
+   "run": "retief-45-75-r2",
+   "pands": 1,
+   "mode": "auto-place",
+   "status": "installed",
+   "reasons": [],
+   "seconds": 14.1
+  },
+  {
+   "face": "retief-45-75",
+   "street": "Retiefstraat",
+   "ride": null,
+   "restriped": null,
+   "stripQuality": {
+    "badShare": 0,
+    "reasons": []
+   },
+   "nccMin": 0.212,
+   "nccMedian": 0.212,
+   "stripOverDrawn": 1.018,
+   "wallFits": 2,
+   "droppedCorners": [],
+   "triangles": 2047,
+   "sheet": "staging/block-face/retief-45-75-r3/review/strip-sheet.png",
+   "stripDate": "2023-01-02",
+   "run": "retief-45-75-r3",
+   "pands": 1,
+   "mode": "auto-place",
+   "status": "installed",
+   "reasons": [],
+   "seconds": 16.5
+  },
+  {
+   "face": "pretorius-1-33",
+   "street": "Pretoriusstraat",
+   "ride": null,
+   "restriped": null,
+   "stripQuality": {
+    "badShare": 0,
+    "reasons": []
+   },
+   "nccMin": 0.2,
+   "nccMedian": 0.2,
+   "stripOverDrawn": 0.961,
+   "wallFits": 1,
+   "droppedCorners": [],
+   "triangles": 2005,
+   "sheet": "staging/block-face/pretorius-1-33-r1/review/strip-sheet.png",
+   "stripDate": "2023-01-02",
+   "run": "pretorius-1-33-r1",
+   "pands": 1,
+   "mode": "auto-place",
+   "status": "installed",
+   "reasons": [],
+   "seconds": 6.2
+  },
+  {
+   "face": "ingogo-1-13",
+   "street": "Ingogostraat",
+   "ride": null,
+   "restriped": null,
+   "stripQuality": {
+    "badShare": 0,
+    "reasons": []
+   },
+   "nccMin": 0.164,
+   "nccMedian": 0.164,
+   "stripOverDrawn": 0.932,
+   "wallFits": 0,
+   "droppedCorners": [],
+   "triangles": 1998,
+   "sheet": "staging/block-face/ingogo-1-13-r1/review/strip-sheet.png",
+   "stripDate": "2020-04-29",
+   "run": "ingogo-1-13-r1",
+   "pands": 1,
+   "mode": "auto-place",
+   "status": "failed",
+   "reasons": [
+    "compile-gates: 119806/height-vs-3dbag"
+   ],
+   "seconds": 2.4
+  },
+  {
+   "face": "paardekraal-1-15",
+   "street": "Paardekraalstraat",
+   "ride": null,
+   "restriped": null,
+   "stripQuality": {
+    "badShare": 0,
+    "reasons": []
+   },
+   "nccMin": 0.175,
+   "nccMedian": 0.175,
+   "stripOverDrawn": 0.804,
+   "wallFits": 0,
+   "droppedCorners": [],
+   "triangles": 1860,
+   "sheet": "staging/block-face/paardekraal-1-15-r1/review/strip-sheet.png",
+   "stripDate": "2023-01-02",
+   "run": "paardekraal-1-15-r1",
+   "pands": 1,
+   "mode": "auto-place",
+   "status": "installed",
+   "reasons": [],
+   "seconds": 5.5
+  }
+ ]
+}

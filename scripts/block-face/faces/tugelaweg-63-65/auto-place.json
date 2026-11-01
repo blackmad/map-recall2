@@ -3,7 +3,7 @@
  "street": "Tugelaweg",
  "library": "transvaalbuurt",
  "stripDate": "2020-04-29",
- "seconds": 0.75,
+ "seconds": 1.28,
  "thresholds": {
   "minScore": 0.7,
   "margin": 0.05,
@@ -151,10 +151,40 @@
     "foliageShare": 0
    },
    "status": "held",
-   "stage": "run",
-   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
-   "likeness": null,
-   "challengers": {}
+   "stage": "likeness",
+   "reason": "edge NCC 0.125 < 0.15 (photo vs model body; likeness.ts WARN: mask IoU 0.211 < 0.45)",
+   "likeness": {
+    "pandId": "0363100012103605",
+    "ncc": 0.125,
+    "nccRaw": 0.125,
+    "shiftM": [
+     -0.15,
+     -0.4
+    ],
+    "usable": 0.99,
+    "abstain": null,
+    "verdict": "WARN",
+    "reasons": [
+     "mask IoU 0.211 < 0.45"
+    ],
+    "wall": {
+     "photo": "#775b4f",
+     "model": "#916e60",
+     "dL": 0.084
+    },
+    "glazing": {
+     "photo": 0.22,
+     "model": 0.28
+    },
+    "columns": {
+     "photo": null,
+     "model": 3
+    },
+    "iou": 0.211
+   },
+   "challengers": {
+    "transvaal-1923-portiek": 0.125
+   }
   }
  ]
 }
