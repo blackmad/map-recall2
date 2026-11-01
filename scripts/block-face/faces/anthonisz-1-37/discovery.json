@@ -1,0 +1,1885 @@
+{
+ "street": "Cornelis Anthoniszstraat",
+ "seed": "0363100012161406",
+ "members": [
+  "0363100012161406",
+  "0363100012164703",
+  "0363100012163041",
+  "0363100012065856",
+  "0363100012164466",
+  "0363100012157821",
+  "0363100012157894",
+  "0363100012165484",
+  "0363100012159969",
+  "0363100012163921",
+  "0363100012166868",
+  "0363100012236611",
+  "0363100012153011",
+  "0363100012158184",
+  "0363100012158761",
+  "0363100012164820",
+  "0363100012163957",
+  "0363100012162100"
+ ],
+ "ends": [
+  {
+   "side": "left",
+   "reason": "trimmed at 0363100012161406 (face continues: 101742 115579)"
+  },
+  {
+   "side": "right",
+   "reason": "next fronting pand 0363100012160975 27.2 m on shares no party wall (cross street or gap)"
+  }
+ ],
+ "rejected": [
+  {
+   "pandId": "0363100012062764",
+   "reason": "frontage 113.9 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012063128",
+   "reason": "frontage 174.4 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012064242",
+   "reason": "frontage 175.3 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012064913",
+   "reason": "frontage 61.0 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012065248",
+   "reason": "frontage 94.2 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012070169",
+   "reason": "frontage 184.3 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012070257",
+   "reason": "frontage 137.8 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012070855",
+   "reason": "frontage 41.7 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012071920",
+   "reason": "frontage 95.4 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012071939",
+   "reason": "frontage 166.8 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012072123",
+   "reason": "sightline to Cornelis Anthoniszstraat crosses 0363100012163005"
+  },
+  {
+   "pandId": "0363100012073017",
+   "reason": "frontage 40.9 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012073535",
+   "reason": "frontage 87.3 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012073582",
+   "reason": "frontage 70.1 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012074316",
+   "reason": "frontage 41.3 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012075211",
+   "reason": "frontage 151.7 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012075537",
+   "reason": "frontage 163.3 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012076662",
+   "reason": "frontage 140.8 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012076752",
+   "reason": "frontage 173.0 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012076833",
+   "reason": "frontage 78.7 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012077153",
+   "reason": "frontage 162.3 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012077283",
+   "reason": "frontage 172.0 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012077675",
+   "reason": "frontage 70.0 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012078405",
+   "reason": "frontage 98.7 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012078861",
+   "reason": "frontage 116.5 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012079583",
+   "reason": "frontage 152.5 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012080468",
+   "reason": "frontage 70.2 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012085225",
+   "reason": "frontage 159.8 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012085468",
+   "reason": "frontage 144.4 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012064720",
+   "reason": "frontage 173.4 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012068043",
+   "reason": "frontage 150.3 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012068870",
+   "reason": "frontage 90.2 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012070818",
+   "reason": "frontage 145.7 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012070981",
+   "reason": "frontage 164.9 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012071097",
+   "reason": "frontage 139.4 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012071771",
+   "reason": "frontage 214.3 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012071799",
+   "reason": "frontage 59.3 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012073360",
+   "reason": "frontage 108.8 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012075006",
+   "reason": "frontage 99.9 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012075943",
+   "reason": "frontage 168.6 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012076109",
+   "reason": "frontage 178.7 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012076301",
+   "reason": "no frontage on Cornelis Anthoniszstraat: No footprint edge faces Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012076302",
+   "reason": "no frontage on Cornelis Anthoniszstraat: No footprint edge faces Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012077408",
+   "reason": "frontage 173.4 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012077874",
+   "reason": "frontage 104.2 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012078452",
+   "reason": "frontage 120.6 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012082921",
+   "reason": "frontage 123.4 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012085825",
+   "reason": "sightline to Cornelis Anthoniszstraat crosses 0363100012094362"
+  },
+  {
+   "pandId": "0363100012088998",
+   "reason": "frontage 74.1 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012089113",
+   "reason": "frontage 172.8 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012089324",
+   "reason": "frontage 152.8 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012091903",
+   "reason": "frontage 114.2 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012092773",
+   "reason": "frontage 152.1 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012092787",
+   "reason": "frontage 42.7 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012092897",
+   "reason": "frontage 151.4 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012093896",
+   "reason": "frontage 172.4 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012094362",
+   "reason": "no frontage on Cornelis Anthoniszstraat: No footprint edge faces Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012094636",
+   "reason": "frontage 127.2 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012094774",
+   "reason": "frontage 118.1 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012094867",
+   "reason": "frontage 113.8 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012095133",
+   "reason": "frontage 172.0 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012095170",
+   "reason": "frontage 182.8 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012096292",
+   "reason": "frontage 176.1 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012097854",
+   "reason": "sightline to Cornelis Anthoniszstraat crosses 0363100012160975"
+  },
+  {
+   "pandId": "0363100012098227",
+   "reason": "frontage 151.1 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012099544",
+   "reason": "frontage 53.0 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012099837",
+   "reason": "frontage 107.4 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012099950",
+   "reason": "frontage 41.4 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012100965",
+   "reason": "frontage 150.8 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012101245",
+   "reason": "frontage 175.4 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012102195",
+   "reason": "frontage 31.7 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012102526",
+   "reason": "frontage 69.6 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012103410",
+   "reason": "frontage 39.7 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012103528",
+   "reason": "frontage 43.3 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012104191",
+   "reason": "sightline to Cornelis Anthoniszstraat crosses 0363100012162100"
+  },
+  {
+   "pandId": "0363100012105172",
+   "reason": "frontage 71.9 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012105207",
+   "reason": "frontage 199.5 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012105580",
+   "reason": "frontage 151.5 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012106456",
+   "reason": "frontage 70.1 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012106506",
+   "reason": "frontage 140.6 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012107904",
+   "reason": "frontage 89.3 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012085712",
+   "reason": "frontage 113.0 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012086257",
+   "reason": "frontage 131.6 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012086311",
+   "reason": "frontage 117.8 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012088552",
+   "reason": "frontage 155.9 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012088868",
+   "reason": "frontage 218.0 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012089211",
+   "reason": "frontage 95.8 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012095505",
+   "reason": "frontage 173.8 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012097163",
+   "reason": "frontage 186.1 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012099034",
+   "reason": "frontage 216.3 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012101927",
+   "reason": "frontage 175.9 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012107472",
+   "reason": "frontage 165.1 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012107746",
+   "reason": "frontage 195.1 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012108582",
+   "reason": "frontage 77.8 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012108712",
+   "reason": "frontage 171.9 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012109324",
+   "reason": "frontage 151.8 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012109332",
+   "reason": "frontage 132.2 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012109459",
+   "reason": "frontage 148.2 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012109538",
+   "reason": "frontage 151.4 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012110601",
+   "reason": "frontage 116.0 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012111240",
+   "reason": "frontage 152.7 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012111419",
+   "reason": "frontage 170.7 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012112615",
+   "reason": "frontage 44.9 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012113108",
+   "reason": "frontage 155.2 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012113503",
+   "reason": "frontage 173.4 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012114124",
+   "reason": "frontage 40.0 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012114454",
+   "reason": "frontage 129.6 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012117972",
+   "reason": "frontage 70.3 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012118275",
+   "reason": "frontage 69.6 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012119364",
+   "reason": "frontage 173.5 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012120272",
+   "reason": "frontage 115.8 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012120629",
+   "reason": "frontage 118.8 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012121101",
+   "reason": "frontage 151.7 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012122526",
+   "reason": "frontage 38.4 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012124029",
+   "reason": "frontage 116.8 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012124348",
+   "reason": "frontage 151.7 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012124499",
+   "reason": "frontage 70.2 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012125531",
+   "reason": "frontage 175.0 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012125734",
+   "reason": "frontage 150.9 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012125930",
+   "reason": "frontage 181.6 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012126860",
+   "reason": "frontage 101.4 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012126949",
+   "reason": "frontage 78.4 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012127220",
+   "reason": "frontage 120.3 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012129013",
+   "reason": "frontage 119.0 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012129222",
+   "reason": "frontage 157.2 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012129511",
+   "reason": "frontage 120.1 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012130993",
+   "reason": "frontage 159.4 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012131267",
+   "reason": "frontage 41.6 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012132153",
+   "reason": "frontage 152.2 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012109125",
+   "reason": "frontage 82.7 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012110579",
+   "reason": "frontage 133.2 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012112467",
+   "reason": "frontage 181.9 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012116072",
+   "reason": "frontage 150.5 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012119354",
+   "reason": "no frontage on Cornelis Anthoniszstraat: No footprint edge faces Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012119530",
+   "reason": "frontage 84.6 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012120067",
+   "reason": "frontage 148.9 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012120761",
+   "reason": "frontage 89.5 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012121676",
+   "reason": "frontage 81.8 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012122829",
+   "reason": "frontage 77.1 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012123148",
+   "reason": "frontage 191.5 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012127564",
+   "reason": "frontage 146.9 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012127925",
+   "reason": "frontage 103.8 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012128160",
+   "reason": "frontage 139.8 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012132525",
+   "reason": "frontage 119.6 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012132901",
+   "reason": "frontage 110.0 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012133971",
+   "reason": "no frontage on Cornelis Anthoniszstraat: No footprint edge faces Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012135539",
+   "reason": "frontage 69.9 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012136011",
+   "reason": "frontage 114.6 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012136354",
+   "reason": "frontage 70.4 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012136626",
+   "reason": "frontage 152.4 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012136861",
+   "reason": "frontage 176.4 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012136943",
+   "reason": "frontage 153.5 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012138489",
+   "reason": "frontage 158.3 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012139185",
+   "reason": "frontage 69.6 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012139901",
+   "reason": "frontage 122.1 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012140466",
+   "reason": "frontage 192.4 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012140658",
+   "reason": "frontage 108.8 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012142362",
+   "reason": "frontage 150.7 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012142505",
+   "reason": "frontage 170.3 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012142608",
+   "reason": "frontage 152.0 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012142916",
+   "reason": "no frontage on Cornelis Anthoniszstraat: No footprint edge faces Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012143335",
+   "reason": "frontage 42.7 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012144384",
+   "reason": "frontage 66.5 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012146724",
+   "reason": "frontage 151.9 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012147036",
+   "reason": "frontage 136.9 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012147177",
+   "reason": "frontage 113.9 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012147298",
+   "reason": "frontage 47.7 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012148010",
+   "reason": "frontage 81.2 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012148377",
+   "reason": "frontage 169.2 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012149513",
+   "reason": "frontage 114.1 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012150151",
+   "reason": "frontage 172.6 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012151549",
+   "reason": "frontage 78.5 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012151574",
+   "reason": "frontage 122.8 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012152455",
+   "reason": "frontage 114.6 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012152551",
+   "reason": "frontage 61.7 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012152578",
+   "reason": "frontage 30.1 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012134792",
+   "reason": "frontage 145.6 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012135932",
+   "reason": "frontage 162.2 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012136110",
+   "reason": "frontage 154.3 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012140711",
+   "reason": "frontage 155.1 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012146977",
+   "reason": "frontage 127.5 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012147406",
+   "reason": "frontage 218.6 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012148809",
+   "reason": "frontage 166.8 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012148909",
+   "reason": "frontage 183.7 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012148966",
+   "reason": "frontage 147.8 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012149149",
+   "reason": "frontage 137.0 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012149357",
+   "reason": "frontage 185.2 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012149470",
+   "reason": "frontage 178.3 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012150328",
+   "reason": "frontage 173.9 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012150713",
+   "reason": "frontage 74.7 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012150854",
+   "reason": "frontage 205.3 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012151751",
+   "reason": "frontage 173.8 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012152421",
+   "reason": "frontage 161.8 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012152951",
+   "reason": "frontage 61.5 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012153124",
+   "reason": "frontage 80.3 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012154115",
+   "reason": "no frontage on Cornelis Anthoniszstraat: No footprint edge faces Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012154126",
+   "reason": "frontage 125.9 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012154156",
+   "reason": "frontage 138.5 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012154818",
+   "reason": "frontage 105.0 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012155471",
+   "reason": "no frontage on Cornelis Anthoniszstraat: No footprint edge faces Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012155921",
+   "reason": "frontage 114.5 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012156400",
+   "reason": "frontage 64.6 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012156418",
+   "reason": "frontage 65.6 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012156867",
+   "reason": "frontage 97.8 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012156879",
+   "reason": "frontage 132.6 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012156965",
+   "reason": "frontage 92.4 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012156966",
+   "reason": "frontage 87.5 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012157012",
+   "reason": "frontage 121.4 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012157086",
+   "reason": "frontage 85.7 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012157182",
+   "reason": "frontage 35.8 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012157185",
+   "reason": "frontage 66.9 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012152723",
+   "reason": "no frontage on Cornelis Anthoniszstraat: No footprint edge faces Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012152818",
+   "reason": "frontage 258.0 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012152819",
+   "reason": "frontage 251.1 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012153747",
+   "reason": "frontage 123.7 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012154007",
+   "reason": "frontage 198.9 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012154327",
+   "reason": "no frontage on Cornelis Anthoniszstraat: No footprint edge faces Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012154402",
+   "reason": "frontage 116.7 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012154443",
+   "reason": "frontage 112.8 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012155335",
+   "reason": "no frontage on Cornelis Anthoniszstraat: No footprint edge faces Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012155454",
+   "reason": "frontage 209.6 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012155476",
+   "reason": "no frontage on Cornelis Anthoniszstraat: No footprint edge faces Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012155888",
+   "reason": "frontage 209.5 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012155939",
+   "reason": "frontage 151.9 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012156757",
+   "reason": "frontage 209.9 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012156833",
+   "reason": "frontage 221.8 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012156856",
+   "reason": "frontage 149.7 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012156857",
+   "reason": "frontage 143.4 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012157229",
+   "reason": "frontage 150.4 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012157286",
+   "reason": "frontage 190.8 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012157533",
+   "reason": "frontage 206.2 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012157703",
+   "reason": "no frontage on Cornelis Anthoniszstraat: No footprint edge faces Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012157787",
+   "reason": "frontage 32.9 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012158047",
+   "reason": "frontage 32.4 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012158089",
+   "reason": "frontage 38.9 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012158122",
+   "reason": "frontage 62.1 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012158462",
+   "reason": "no frontage on Cornelis Anthoniszstraat: No footprint edge faces Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012158479",
+   "reason": "frontage 101.7 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012158817",
+   "reason": "frontage 63.9 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012158862",
+   "reason": "frontage 38.7 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012159008",
+   "reason": "sightline to Cornelis Anthoniszstraat crosses 0363100012158280"
+  },
+  {
+   "pandId": "0363100012159048",
+   "reason": "frontage 133.2 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012159055",
+   "reason": "sightline to Cornelis Anthoniszstraat crosses 0363100012160945"
+  },
+  {
+   "pandId": "0363100012159065",
+   "reason": "frontage 103.1 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012159183",
+   "reason": "frontage 61.9 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012159614",
+   "reason": "frontage 59.5 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012159970",
+   "reason": "frontage 32.1 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012160300",
+   "reason": "frontage 82.4 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012160591",
+   "reason": "frontage 37.2 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012160759",
+   "reason": "frontage 38.6 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012160803",
+   "reason": "frontage 135.0 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012157890",
+   "reason": "frontage 117.3 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012158222",
+   "reason": "frontage 176.2 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012158419",
+   "reason": "no frontage on Cornelis Anthoniszstraat: No footprint edge faces Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012158546",
+   "reason": "frontage 230.7 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012158591",
+   "reason": "no frontage on Cornelis Anthoniszstraat: No footprint edge faces Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012158828",
+   "reason": "frontage 233.6 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012159337",
+   "reason": "frontage 175.7 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012159520",
+   "reason": "frontage 175.0 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012160362",
+   "reason": "frontage 114.8 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012160498",
+   "reason": "frontage 234.7 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012160592",
+   "reason": "frontage 105.8 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012160621",
+   "reason": "frontage 151.2 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012160657",
+   "reason": "frontage 206.3 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012160741",
+   "reason": "no frontage on Cornelis Anthoniszstraat: No footprint edge faces Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012160830",
+   "reason": "no frontage on Cornelis Anthoniszstraat: No footprint edge faces Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012160976",
+   "reason": "frontage 196.8 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012161109",
+   "reason": "frontage 228.2 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012161202",
+   "reason": "no frontage on Cornelis Anthoniszstraat: No footprint edge faces Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012161339",
+   "reason": "sightline to Cornelis Anthoniszstraat crosses 0363100012063666"
+  },
+  {
+   "pandId": "0363100012161443",
+   "reason": "frontage 33.3 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012161682",
+   "reason": "frontage 32.7 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012161776",
+   "reason": "frontage 117.6 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012161910",
+   "reason": "frontage 174.8 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012162188",
+   "reason": "frontage 61.3 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012162410",
+   "reason": "no frontage on Cornelis Anthoniszstraat: No footprint edge faces Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012162481",
+   "reason": "frontage 135.6 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012162624",
+   "reason": "frontage 120.4 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012162835",
+   "reason": "frontage 38.7 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012162853",
+   "reason": "frontage 33.1 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012162929",
+   "reason": "frontage 33.8 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012163005",
+   "reason": "sightline to Cornelis Anthoniszstraat crosses 0363100012153540"
+  },
+  {
+   "pandId": "0363100012163221",
+   "reason": "frontage 108.3 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012163307",
+   "reason": "frontage 38.5 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012164000",
+   "reason": "frontage 34.0 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012164388",
+   "reason": "frontage 66.1 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012164412",
+   "reason": "frontage 35.1 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012164462",
+   "reason": "sightline to Cornelis Anthoniszstraat crosses 0363100012158280"
+  },
+  {
+   "pandId": "0363100012164869",
+   "reason": "frontage 65.2 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012161263",
+   "reason": "no frontage on Cornelis Anthoniszstraat: No footprint edge faces Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012161495",
+   "reason": "frontage 228.2 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012161969",
+   "reason": "frontage 168.7 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012162581",
+   "reason": "frontage 129.6 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012162777",
+   "reason": "frontage 206.9 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012163247",
+   "reason": "frontage 181.8 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012163472",
+   "reason": "frontage 216.1 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012164245",
+   "reason": "no frontage on Cornelis Anthoniszstraat: No footprint edge faces Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012164391",
+   "reason": "frontage 115.5 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012164394",
+   "reason": "frontage 245.4 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012165229",
+   "reason": "frontage 32.3 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012165285",
+   "reason": "frontage 31.3 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012165388",
+   "reason": "sightline to Cornelis Anthoniszstraat crosses 0363100012158280"
+  },
+  {
+   "pandId": "0363100012165513",
+   "reason": "frontage 36.0 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012165887",
+   "reason": "frontage 120.0 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012166201",
+   "reason": "frontage 77.7 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012166412",
+   "reason": "frontage 33.5 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012166458",
+   "reason": "frontage 34.8 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012166637",
+   "reason": "sightline to Cornelis Anthoniszstraat crosses 0363100012164048"
+  },
+  {
+   "pandId": "0363100012166699",
+   "reason": "frontage 121.2 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012166941",
+   "reason": "frontage 38.7 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012167342",
+   "reason": "frontage 33.9 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012167452",
+   "reason": "frontage 115.0 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012183575",
+   "reason": "frontage 126.6 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012184171",
+   "reason": "frontage 120.9 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012188743",
+   "reason": "frontage 161.7 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012191335",
+   "reason": "sightline to Cornelis Anthoniszstraat crosses 0363100012090664"
+  },
+  {
+   "pandId": "0363100012192181",
+   "reason": "frontage 109.7 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012192475",
+   "reason": "frontage 115.2 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012194423",
+   "reason": "sightline to Cornelis Anthoniszstraat crosses 0363100012090664"
+  },
+  {
+   "pandId": "0363100012196867",
+   "reason": "frontage 106.5 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012200334",
+   "reason": "frontage 85.4 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012200521",
+   "reason": "frontage 109.6 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012200899",
+   "reason": "sightline to Cornelis Anthoniszstraat crosses 0363100012167012"
+  },
+  {
+   "pandId": "0363100012204927",
+   "reason": "sightline to Cornelis Anthoniszstraat crosses 0363100012152791"
+  },
+  {
+   "pandId": "0363100012205216",
+   "reason": "frontage 106.6 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012205647",
+   "reason": "no frontage on Cornelis Anthoniszstraat: No footprint edge faces Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012165301",
+   "reason": "no frontage on Cornelis Anthoniszstraat: No footprint edge faces Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012165520",
+   "reason": "frontage 224.5 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012165662",
+   "reason": "no frontage on Cornelis Anthoniszstraat: No footprint edge faces Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012166167",
+   "reason": "no frontage on Cornelis Anthoniszstraat: No footprint edge faces Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012166179",
+   "reason": "frontage 175.0 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012166268",
+   "reason": "no frontage on Cornelis Anthoniszstraat: No footprint edge faces Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012166563",
+   "reason": "frontage 150.6 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012166772",
+   "reason": "no frontage on Cornelis Anthoniszstraat: No footprint edge faces Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012167007",
+   "reason": "frontage 184.6 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012167149",
+   "reason": "frontage 129.9 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012167160",
+   "reason": "no frontage on Cornelis Anthoniszstraat: No footprint edge faces Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012167274",
+   "reason": "frontage 168.3 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012191238",
+   "reason": "frontage 208.0 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012200136",
+   "reason": "frontage 134.1 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012203385",
+   "reason": "frontage 154.2 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012207257",
+   "reason": "sightline to Cornelis Anthoniszstraat crosses 0363100012158761"
+  },
+  {
+   "pandId": "0363100012207258",
+   "reason": "frontage 101.9 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012207267",
+   "reason": "frontage 99.3 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012207268",
+   "reason": "frontage 99.3 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012209343",
+   "reason": "sightline to Cornelis Anthoniszstraat crosses 0363100012156835"
+  },
+  {
+   "pandId": "0363100012214153",
+   "reason": "sightline to Cornelis Anthoniszstraat crosses 0363100012095198"
+  },
+  {
+   "pandId": "0363100012216131",
+   "reason": "frontage 78.4 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012219581",
+   "reason": "frontage 106.7 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012221439",
+   "reason": "frontage 89.7 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012227684",
+   "reason": "frontage 132.2 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012233309",
+   "reason": "sightline to Cornelis Anthoniszstraat crosses 0363100012159981"
+  },
+  {
+   "pandId": "0363100012233634",
+   "reason": "frontage 138.6 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012236051",
+   "reason": "no frontage on Cornelis Anthoniszstraat: No footprint edge faces Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012236100",
+   "reason": "frontage 92.7 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012236703",
+   "reason": "no frontage on Cornelis Anthoniszstraat: No footprint edge faces Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012236724",
+   "reason": "frontage 112.2 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012236860",
+   "reason": "frontage 69.5 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012236873",
+   "reason": "frontage 99.1 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012236928",
+   "reason": "frontage 69.7 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012237161",
+   "reason": "frontage 102.9 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012237177",
+   "reason": "frontage 77.9 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012237182",
+   "reason": "frontage 133.0 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012237204",
+   "reason": "frontage 69.8 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012237212",
+   "reason": "frontage 39.5 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012237248",
+   "reason": "frontage 35.6 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012237324",
+   "reason": "frontage 69.8 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012570892",
+   "reason": "frontage 39.7 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012213439",
+   "reason": "no frontage on Cornelis Anthoniszstraat: No footprint edge faces Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012218857",
+   "reason": "frontage 137.1 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012218858",
+   "reason": "frontage 131.6 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012219640",
+   "reason": "frontage 253.0 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012220484",
+   "reason": "frontage 216.6 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012232413",
+   "reason": "no frontage on Cornelis Anthoniszstraat: No footprint edge faces Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012233447",
+   "reason": "frontage 110.8 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012233691",
+   "reason": "frontage 203.7 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012236025",
+   "reason": "no frontage on Cornelis Anthoniszstraat: No footprint edge faces Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012236106",
+   "reason": "frontage 175.4 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012236509",
+   "reason": "no frontage on Cornelis Anthoniszstraat: No footprint edge faces Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012236564",
+   "reason": "frontage 188.2 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012236781",
+   "reason": "frontage 239.5 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012236996",
+   "reason": "frontage 151.4 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012237032",
+   "reason": "frontage 185.5 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012237303",
+   "reason": "frontage 155.3 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012239943",
+   "reason": "frontage 123.9 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100100092059",
+   "reason": "frontage 170.5 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100100092060",
+   "reason": "frontage 159.9 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012237203",
+   "reason": "frontage 164.1 m from Cornelis Anthoniszstraat"
+  },
+  {
+   "pandId": "0363100012063666",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012095198",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012152949",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012153235",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012153540",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012154134",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012156095",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012156630",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012157008",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012158008",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012158280",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012159228",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012160945",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012161461",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012161462",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012161511",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012161772",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012162400",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012163132",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012164048",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012164356",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012164605",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012164691",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012165310",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012166337",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012166353",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012166939",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012167012",
+   "reason": "fronts the other side / another direction"
+  }
+ ],
+ "areaHalfSizeM": 180,
+ "pands": [
+  {
+   "pandId": "0363100012161406",
+   "alongM": 0,
+   "widthM": 5.66,
+   "eavesM": 13.13,
+   "roofMaxM": 13.37,
+   "storeys3dbag": 4,
+   "builtYear": 1899,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012164703",
+   "alongM": 5.66,
+   "widthM": 5.66,
+   "eavesM": 13.27,
+   "roofMaxM": 13.5,
+   "storeys3dbag": 4,
+   "builtYear": 1899,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012163041",
+   "alongM": 11.32,
+   "widthM": 5.66,
+   "eavesM": 13.16,
+   "roofMaxM": 16.45,
+   "storeys3dbag": 5,
+   "builtYear": 1899,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012065856",
+   "alongM": 16.98,
+   "widthM": 5.66,
+   "eavesM": 13.24,
+   "roofMaxM": 13.54,
+   "storeys3dbag": 4,
+   "builtYear": 1899,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012164466",
+   "alongM": 22.64,
+   "widthM": 5.66,
+   "eavesM": 13.63,
+   "roofMaxM": 13.81,
+   "storeys3dbag": 4,
+   "builtYear": 1899,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012157821",
+   "alongM": 28.3,
+   "widthM": 5.66,
+   "eavesM": 13.88,
+   "roofMaxM": 16.35,
+   "storeys3dbag": 5,
+   "builtYear": 1899,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012157894",
+   "alongM": 33.96,
+   "widthM": 5.66,
+   "eavesM": 13.22,
+   "roofMaxM": 13.34,
+   "storeys3dbag": 4,
+   "builtYear": 1899,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012165484",
+   "alongM": 39.62,
+   "widthM": 5.66,
+   "eavesM": 12.99,
+   "roofMaxM": 13.18,
+   "storeys3dbag": 4,
+   "builtYear": 1899,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012159969",
+   "alongM": 45.28,
+   "widthM": 5.66,
+   "eavesM": 13.09,
+   "roofMaxM": 16.05,
+   "storeys3dbag": 5,
+   "builtYear": 1899,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012163921",
+   "alongM": 50.94,
+   "widthM": 5.66,
+   "eavesM": 13,
+   "roofMaxM": 13.08,
+   "storeys3dbag": 4,
+   "builtYear": 1899,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012166868",
+   "alongM": 56.78,
+   "widthM": 5.32,
+   "eavesM": 10.23,
+   "roofMaxM": 16.25,
+   "storeys3dbag": 5,
+   "builtYear": 1899,
+   "uncertainty": [
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  },
+  {
+   "pandId": "0363100012236611",
+   "alongM": 62.75,
+   "widthM": 6.63,
+   "eavesM": 10.5,
+   "roofMaxM": 13.38,
+   "storeys3dbag": 4,
+   "builtYear": 1899,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012153011",
+   "alongM": 68.95,
+   "widthM": 5.76,
+   "eavesM": 13.29,
+   "roofMaxM": 13.46,
+   "storeys3dbag": 4,
+   "builtYear": 1899,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012158184",
+   "alongM": 74.73,
+   "widthM": 5.81,
+   "eavesM": 13.53,
+   "roofMaxM": 18.52,
+   "storeys3dbag": 0,
+   "builtYear": 1899,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012158761",
+   "alongM": 80.57,
+   "widthM": 5.86,
+   "eavesM": 13.39,
+   "roofMaxM": 17,
+   "storeys3dbag": 5,
+   "builtYear": 1899,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012164820",
+   "alongM": 86.19,
+   "widthM": 5.38,
+   "eavesM": 13.36,
+   "roofMaxM": 15.85,
+   "storeys3dbag": 5,
+   "builtYear": 1899,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012163957",
+   "alongM": 91.69,
+   "widthM": 5.61,
+   "eavesM": 13.4,
+   "roofMaxM": 18.14,
+   "storeys3dbag": 5,
+   "builtYear": 1899,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012162100",
+   "alongM": 99.63,
+   "widthM": 10.28,
+   "eavesM": 15.49,
+   "roofMaxM": 15.78,
+   "storeys3dbag": 5,
+   "builtYear": 1905,
+   "uncertainty": []
+  }
+ ]
+}

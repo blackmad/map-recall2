@@ -1,0 +1,498 @@
+{
+ "street": "Hobbemakade",
+ "seed": "0363100012109347",
+ "members": [
+  "0363100012118975",
+  "0363100012126826",
+  "0363100012109347"
+ ],
+ "ends": [
+  {
+   "side": "left",
+   "reason": "trimmed at 0363100012118975 (face continues: 158592)"
+  },
+  {
+   "side": "right",
+   "reason": "next fronting pand 0363100012213294 83.4 m on shares no party wall (cross street or gap)"
+  }
+ ],
+ "rejected": [
+  {
+   "pandId": "0363100012072231",
+   "reason": "frontage 35.9 m from Hobbemakade"
+  },
+  {
+   "pandId": "0363100012073017",
+   "reason": "frontage 49.0 m from Hobbemakade"
+  },
+  {
+   "pandId": "0363100012073535",
+   "reason": "frontage 70.9 m from Hobbemakade"
+  },
+  {
+   "pandId": "0363100012074316",
+   "reason": "frontage 86.5 m from Hobbemakade"
+  },
+  {
+   "pandId": "0363100012076833",
+   "reason": "frontage 97.2 m from Hobbemakade"
+  },
+  {
+   "pandId": "0363100012078405",
+   "reason": "frontage 73.9 m from Hobbemakade"
+  },
+  {
+   "pandId": "0363100012081326",
+   "reason": "sightline to Hobbemakade crosses 0363100012118975"
+  },
+  {
+   "pandId": "0363100012081566",
+   "reason": "frontage 71.9 m from Hobbemakade"
+  },
+  {
+   "pandId": "0363100012083278",
+   "reason": "frontage 67.5 m from Hobbemakade"
+  },
+  {
+   "pandId": "0363100012090664",
+   "reason": "frontage 94.3 m from Hobbemakade"
+  },
+  {
+   "pandId": "0363100012092835",
+   "reason": "sightline to Hobbemakade crosses 0363100012109347"
+  },
+  {
+   "pandId": "0363100012094636",
+   "reason": "frontage 81.1 m from Hobbemakade"
+  },
+  {
+   "pandId": "0363100012099206",
+   "reason": "frontage 50.5 m from Hobbemakade"
+  },
+  {
+   "pandId": "0363100012099950",
+   "reason": "frontage 92.5 m from Hobbemakade"
+  },
+  {
+   "pandId": "0363100012120272",
+   "reason": "frontage 78.1 m from Hobbemakade"
+  },
+  {
+   "pandId": "0363100012125391",
+   "reason": "frontage 49.9 m from Hobbemakade"
+  },
+  {
+   "pandId": "0363100012126949",
+   "reason": "frontage 68.8 m from Hobbemakade"
+  },
+  {
+   "pandId": "0363100012131267",
+   "reason": "frontage 104.7 m from Hobbemakade"
+  },
+  {
+   "pandId": "0363100012132901",
+   "reason": "frontage 76.5 m from Hobbemakade"
+  },
+  {
+   "pandId": "0363100012138609",
+   "reason": "sightline to Hobbemakade crosses 0363100012092835"
+  },
+  {
+   "pandId": "0363100012139901",
+   "reason": "frontage 79.9 m from Hobbemakade"
+  },
+  {
+   "pandId": "0363100012140478",
+   "reason": "frontage 41.5 m from Hobbemakade"
+  },
+  {
+   "pandId": "0363100012143780",
+   "reason": "frontage 45.0 m from Hobbemakade"
+  },
+  {
+   "pandId": "0363100012151549",
+   "reason": "frontage 85.8 m from Hobbemakade"
+  },
+  {
+   "pandId": "0363100012152791",
+   "reason": "frontage 83.8 m from Hobbemakade"
+  },
+  {
+   "pandId": "0363100012152862",
+   "reason": "frontage 49.2 m from Hobbemakade"
+  },
+  {
+   "pandId": "0363100012153235",
+   "reason": "frontage 66.6 m from Hobbemakade"
+  },
+  {
+   "pandId": "0363100012153638",
+   "reason": "frontage 50.6 m from Hobbemakade"
+  },
+  {
+   "pandId": "0363100012153775",
+   "reason": "frontage 63.9 m from Hobbemakade"
+  },
+  {
+   "pandId": "0363100012154134",
+   "reason": "frontage 92.0 m from Hobbemakade"
+  },
+  {
+   "pandId": "0363100012154286",
+   "reason": "frontage 70.7 m from Hobbemakade"
+  },
+  {
+   "pandId": "0363100012154363",
+   "reason": "frontage 63.4 m from Hobbemakade"
+  },
+  {
+   "pandId": "0363100012155484",
+   "reason": "frontage 52.5 m from Hobbemakade"
+  },
+  {
+   "pandId": "0363100012155909",
+   "reason": "frontage 76.3 m from Hobbemakade"
+  },
+  {
+   "pandId": "0363100012156146",
+   "reason": "frontage 66.6 m from Hobbemakade"
+  },
+  {
+   "pandId": "0363100012156265",
+   "reason": "frontage 51.6 m from Hobbemakade"
+  },
+  {
+   "pandId": "0363100012156498",
+   "reason": "frontage 50.6 m from Hobbemakade"
+  },
+  {
+   "pandId": "0363100012156523",
+   "reason": "frontage 41.9 m from Hobbemakade"
+  },
+  {
+   "pandId": "0363100012156630",
+   "reason": "frontage 102.6 m from Hobbemakade"
+  },
+  {
+   "pandId": "0363100012156835",
+   "reason": "frontage 78.6 m from Hobbemakade"
+  },
+  {
+   "pandId": "0363100012157008",
+   "reason": "frontage 70.7 m from Hobbemakade"
+  },
+  {
+   "pandId": "0363100012157211",
+   "reason": "frontage 71.5 m from Hobbemakade"
+  },
+  {
+   "pandId": "0363100012157250",
+   "reason": "sightline to Hobbemakade crosses 0363100012165731"
+  },
+  {
+   "pandId": "0363100012157504",
+   "reason": "frontage 68.0 m from Hobbemakade"
+  },
+  {
+   "pandId": "0363100012157541",
+   "reason": "frontage 61.0 m from Hobbemakade"
+  },
+  {
+   "pandId": "0363100012157745",
+   "reason": "frontage 62.7 m from Hobbemakade"
+  },
+  {
+   "pandId": "0363100012158008",
+   "reason": "frontage 76.9 m from Hobbemakade"
+  },
+  {
+   "pandId": "0363100012158092",
+   "reason": "frontage 35.8 m from Hobbemakade"
+  },
+  {
+   "pandId": "0363100012158324",
+   "reason": "frontage 68.2 m from Hobbemakade"
+  },
+  {
+   "pandId": "0363100012158426",
+   "reason": "frontage 31.4 m from Hobbemakade"
+  },
+  {
+   "pandId": "0363100012158923",
+   "reason": "frontage 51.7 m from Hobbemakade"
+  },
+  {
+   "pandId": "0363100012159040",
+   "reason": "frontage 46.0 m from Hobbemakade"
+  },
+  {
+   "pandId": "0363100012159123",
+   "reason": "frontage 66.1 m from Hobbemakade"
+  },
+  {
+   "pandId": "0363100012159143",
+   "reason": "frontage 49.8 m from Hobbemakade"
+  },
+  {
+   "pandId": "0363100012159442",
+   "reason": "frontage 51.9 m from Hobbemakade"
+  },
+  {
+   "pandId": "0363100012159956",
+   "reason": "frontage 31.2 m from Hobbemakade"
+  },
+  {
+   "pandId": "0363100012159981",
+   "reason": "frontage 89.1 m from Hobbemakade"
+  },
+  {
+   "pandId": "0363100012160163",
+   "reason": "frontage 76.1 m from Hobbemakade"
+  },
+  {
+   "pandId": "0363100012160204",
+   "reason": "frontage 51.6 m from Hobbemakade"
+  },
+  {
+   "pandId": "0363100012160236",
+   "reason": "frontage 50.7 m from Hobbemakade"
+  },
+  {
+   "pandId": "0363100012160709",
+   "reason": "frontage 51.7 m from Hobbemakade"
+  },
+  {
+   "pandId": "0363100012160744",
+   "reason": "frontage 57.7 m from Hobbemakade"
+  },
+  {
+   "pandId": "0363100012161040",
+   "reason": "frontage 47.6 m from Hobbemakade"
+  },
+  {
+   "pandId": "0363100012161177",
+   "reason": "frontage 50.7 m from Hobbemakade"
+  },
+  {
+   "pandId": "0363100012161511",
+   "reason": "frontage 96.2 m from Hobbemakade"
+  },
+  {
+   "pandId": "0363100012161659",
+   "reason": "sightline to Hobbemakade crosses 0363100012158592"
+  },
+  {
+   "pandId": "0363100012161772",
+   "reason": "frontage 81.7 m from Hobbemakade"
+  },
+  {
+   "pandId": "0363100012162525",
+   "reason": "frontage 56.3 m from Hobbemakade"
+  },
+  {
+   "pandId": "0363100012162584",
+   "reason": "frontage 80.1 m from Hobbemakade"
+  },
+  {
+   "pandId": "0363100012162914",
+   "reason": "frontage 51.8 m from Hobbemakade"
+  },
+  {
+   "pandId": "0363100012162939",
+   "reason": "frontage 73.3 m from Hobbemakade"
+  },
+  {
+   "pandId": "0363100012163478",
+   "reason": "frontage 72.2 m from Hobbemakade"
+  },
+  {
+   "pandId": "0363100012163502",
+   "reason": "frontage 49.3 m from Hobbemakade"
+  },
+  {
+   "pandId": "0363100012164419",
+   "reason": "frontage 75.2 m from Hobbemakade"
+  },
+  {
+   "pandId": "0363100012164470",
+   "reason": "frontage 41.2 m from Hobbemakade"
+  },
+  {
+   "pandId": "0363100012164567",
+   "reason": "sightline to Hobbemakade crosses 0363100012158592"
+  },
+  {
+   "pandId": "0363100012164605",
+   "reason": "frontage 86.7 m from Hobbemakade"
+  },
+  {
+   "pandId": "0363100012164692",
+   "reason": "frontage 49.6 m from Hobbemakade"
+  },
+  {
+   "pandId": "0363100012164861",
+   "reason": "frontage 67.8 m from Hobbemakade"
+  },
+  {
+   "pandId": "0363100012164896",
+   "reason": "frontage 51.7 m from Hobbemakade"
+  },
+  {
+   "pandId": "0363100012165238",
+   "reason": "frontage 104.8 m from Hobbemakade"
+  },
+  {
+   "pandId": "0363100012165823",
+   "reason": "frontage 36.9 m from Hobbemakade"
+  },
+  {
+   "pandId": "0363100012165953",
+   "reason": "frontage 56.9 m from Hobbemakade"
+  },
+  {
+   "pandId": "0363100012166079",
+   "reason": "frontage 50.6 m from Hobbemakade"
+  },
+  {
+   "pandId": "0363100012166337",
+   "reason": "frontage 56.1 m from Hobbemakade"
+  },
+  {
+   "pandId": "0363100012166353",
+   "reason": "frontage 61.6 m from Hobbemakade"
+  },
+  {
+   "pandId": "0363100012166440",
+   "reason": "frontage 76.4 m from Hobbemakade"
+  },
+  {
+   "pandId": "0363100012166456",
+   "reason": "sightline to Hobbemakade crosses 0363100012158592"
+  },
+  {
+   "pandId": "0363100012167234",
+   "reason": "frontage 49.5 m from Hobbemakade"
+  },
+  {
+   "pandId": "0363100012184171",
+   "reason": "frontage 101.7 m from Hobbemakade"
+  },
+  {
+   "pandId": "0363100012191288",
+   "reason": "frontage 31.5 m from Hobbemakade"
+  },
+  {
+   "pandId": "0363100012191335",
+   "reason": "frontage 99.1 m from Hobbemakade"
+  },
+  {
+   "pandId": "0363100012192475",
+   "reason": "frontage 100.0 m from Hobbemakade"
+  },
+  {
+   "pandId": "0363100012194423",
+   "reason": "frontage 104.9 m from Hobbemakade"
+  },
+  {
+   "pandId": "0363100012200521",
+   "reason": "frontage 98.3 m from Hobbemakade"
+  },
+  {
+   "pandId": "0363100012201439",
+   "reason": "frontage 70.1 m from Hobbemakade"
+  },
+  {
+   "pandId": "0363100012204927",
+   "reason": "frontage 87.1 m from Hobbemakade"
+  },
+  {
+   "pandId": "0363100012205216",
+   "reason": "frontage 100.0 m from Hobbemakade"
+  },
+  {
+   "pandId": "0363100012207267",
+   "reason": "frontage 98.5 m from Hobbemakade"
+  },
+  {
+   "pandId": "0363100012207268",
+   "reason": "frontage 95.5 m from Hobbemakade"
+  },
+  {
+   "pandId": "0363100012209343",
+   "reason": "frontage 81.2 m from Hobbemakade"
+  },
+  {
+   "pandId": "0363100012216131",
+   "reason": "frontage 67.9 m from Hobbemakade"
+  },
+  {
+   "pandId": "0363100012219581",
+   "reason": "frontage 95.1 m from Hobbemakade"
+  },
+  {
+   "pandId": "0363100012232362",
+   "reason": "frontage 51.7 m from Hobbemakade"
+  },
+  {
+   "pandId": "0363100012233309",
+   "reason": "frontage 93.2 m from Hobbemakade"
+  },
+  {
+   "pandId": "0363100012233634",
+   "reason": "frontage 87.5 m from Hobbemakade"
+  },
+  {
+   "pandId": "0363100012233703",
+   "reason": "frontage 50.0 m from Hobbemakade"
+  },
+  {
+   "pandId": "0363100012236176",
+   "reason": "frontage 50.4 m from Hobbemakade"
+  },
+  {
+   "pandId": "0363100012236873",
+   "reason": "frontage 53.4 m from Hobbemakade"
+  },
+  {
+   "pandId": "0363100012237182",
+   "reason": "frontage 82.6 m from Hobbemakade"
+  },
+  {
+   "pandId": "0363100012571965",
+   "reason": "frontage 51.6 m from Hobbemakade"
+  }
+ ],
+ "areaHalfSizeM": 90,
+ "pands": [
+  {
+   "pandId": "0363100012118975",
+   "alongM": -19.97,
+   "widthM": 5.73,
+   "eavesM": 13.25,
+   "roofMaxM": 17.22,
+   "storeys3dbag": 5,
+   "builtYear": 1901,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012126826",
+   "alongM": -10.72,
+   "widthM": 12.76,
+   "eavesM": 13.36,
+   "roofMaxM": 16.61,
+   "storeys3dbag": 5,
+   "builtYear": 1923,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012109347",
+   "alongM": 0,
+   "widthM": 8.69,
+   "eavesM": 15.84,
+   "roofMaxM": 15.88,
+   "storeys3dbag": 5,
+   "builtYear": 1923,
+   "uncertainty": []
+  }
+ ]
+}

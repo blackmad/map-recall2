@@ -1,0 +1,149 @@
+{
+ "street": "Pieter Baststraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-01T12:54:09.232Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012163221",
+   "addresses": [
+    "Pieter Baststraat 30"
+   ],
+   "groundUnits": [
+    {
+     "address": "Pieter Baststraat 30-H",
+     "use": "kantoorfunctie",
+     "areaM2": 39,
+     "bagId": "0363010000774340"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012159065",
+   "addresses": [
+    "Pieter Baststraat 28"
+   ],
+   "groundUnits": [
+    {
+     "address": "Pieter Baststraat 28-H",
+     "use": "woonfunctie",
+     "areaM2": 66,
+     "bagId": "0363010000774332"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012156867",
+   "addresses": [
+    "Pieter Baststraat 26"
+   ],
+   "groundUnits": [
+    {
+     "address": "Pieter Baststraat 26-H",
+     "use": "woonfunctie",
+     "areaM2": 133,
+     "bagId": "0363010000774325"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012156965",
+   "addresses": [
+    "Pieter Baststraat 24"
+   ],
+   "groundUnits": [
+    {
+     "address": "Pieter Baststraat 24-H",
+     "use": "woonfunctie",
+     "areaM2": 113,
+     "bagId": "0363010000774318"
+    }
+   ],
+   "units": 6,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012156966",
+   "addresses": [
+    "Pieter Baststraat 22"
+   ],
+   "groundUnits": [
+    {
+     "address": "Pieter Baststraat 22-H",
+     "use": "industriefunctie",
+     "areaM2": 50,
+     "bagId": "0363010000774311"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012160300",
+   "addresses": [
+    "Pieter Baststraat 20"
+   ],
+   "groundUnits": [
+    {
+     "address": "Pieter Baststraat 20-H",
+     "use": "woonfunctie",
+     "areaM2": 34,
+     "bagId": "0363010000774302"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012166201",
+   "addresses": [
+    "Pieter Baststraat 18E",
+    "Pieter Baststraat 18A",
+    "Pieter Baststraat 18B",
+    "Pieter Baststraat 18C",
+    "Pieter Baststraat 18D"
+   ],
+   "groundUnits": [
+    {
+     "address": "Pieter Baststraat 18E",
+     "use": "woonfunctie",
+     "areaM2": 53,
+     "bagId": "0363010000774292"
+    },
+    {
+     "address": "Pieter Baststraat 18A",
+     "use": "woonfunctie",
+     "areaM2": 45,
+     "bagId": "0363010000774293"
+    },
+    {
+     "address": "Pieter Baststraat 18B",
+     "use": "woonfunctie",
+     "areaM2": 45,
+     "bagId": "0363010000774294"
+    },
+    {
+     "address": "Pieter Baststraat 18C",
+     "use": "woonfunctie",
+     "areaM2": 45,
+     "bagId": "0363010000774295"
+    },
+    {
+     "address": "Pieter Baststraat 18D",
+     "use": "woonfunctie",
+     "areaM2": 43,
+     "bagId": "0363010001039210"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  }
+ ]
+}
