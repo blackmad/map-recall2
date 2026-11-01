@@ -1,5 +1,40 @@
 # Canal Recall — what is built
 
+**Pop-in measured the way the player sees it: near zero on the seeded ride on both engines, the "unexplained" bucket is Westerkerk parallax; the 35 m phone arrivals are a measurement artefact; landmarks free their vertex arrays after upload (2026-11-01, P3/#130).**
+Road lane (4013065e1 `pop-in.mjs --route seeded`; 69544e547). Screen-space
+pop, desktop, 1× CPU, 60 s, committed bundles: seeded Anne Frank →
+Rijksmuseum 4 px/s MapLibre vs 5 px/s own; Jordaan car 1,544 vs 2,123 px/s,
+but 99.8–99.9 % of those pixels fall in t = 21.1–21.6 s, the ride passing
+the Westerkerk tower close to the camera, whose parallax the detector's
+motion model does not compensate; the owner labels inside that half second
+reshuffle between runs (basemap-tile 250 then 944) and real landmark
+arrivals measure 0 px. A 350 ms dither fade-in for model arrivals changed
+nothing (own 2,028 vs 2,026; parked as a patch). So neither the 150 m
+count nor the px/s detector sees what the user reported; the detector must
+be made depth-aware or exclude near-field parallax before it is a gate,
+and no more pop-in work is spent until the user says what they saw (#168).
+iPhone "24 chunk arrivals at 35 m": the z17 detail block (2×2 tiles of
+~187 m, 110 m lead, 0.12 side margin) installs every tile 0.4–0.9 s after
+it enters, 111–194 m from the camera centre; pop-in measured to the chunk's
+building box, which spills over the tile edge; the 35.9 m one is a side
+flip after a turn; the coarse shell stays drawn until the detailed chunk
+has dissolved in (0 solo frames over 85 events), so the visible cost is
+nil and the block is not widened. Landmark CPU arrays:
+`landmarks/releaseVertexData.ts` empties a placed level's non-position,
+non-interleaved attribute arrays after upload (empty, not null, so
+three's raycast fallback works; position and index stay for the pick
+index, shadow stand-ins and pand lift; shared-mesh masters and
+building-type scenes skipped; `?landmarkRelease=0` off); on context
+restore the freed models are dropped and reloaded — context-restore spec
+under own desktop 2/2, iPhone 2/2, now also asserting the landmark count
+returns (66 → 66, 11 → 11). Heap row landmarks CPU arrays iPhone 11.5 →
+11.2 MB, desktop 35.5 → 34.7: small because 6.3 / 11.1 MB are interleaved
+GLB buffers sharing position (next lever, ~3.8 MB on iPhone, parked) and
+4.6 / 15.3 MB are street-chunk pand geometry. Integrator:
+`signature-landmarks.bundle.js` rebuilt; `test:landmark-release` added to
+`check:canal`. Road lane next: time to ride on the real phone (navigation
+→ racing 5.7 s measured today against the 4 s gate).
+
 **World-v1 cells recompiled (--no-policy) after the fetch ring and the Transvaalbuurt round 5 covers (2026-11-01).**
 Integrator. `buildingTilesBrowser.ts` is in the compiler's hashed code list,
 so the fetch ring (b74955c7c) made the published index stale
