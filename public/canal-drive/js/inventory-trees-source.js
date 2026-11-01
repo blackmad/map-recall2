@@ -6,6 +6,7 @@ import {roseBushInstances,roseBushVertexColours} from '../../../src/canalRecall/
 import roseGardens from './rose-garden-data.js';
 // The view comes from the WorldCamera (engine/worldCameraOf.ts, P5 B6), not the CameraMap shim (#129: ~220 calls/s).
 import {worldCameraOf} from '../../../src/canalRecall/engine/worldCameraOf.ts';
+import {InstanceCull,treeCullFlag} from '../../../src/canalRecall/rendererShared/instanceCull.ts';
 const {THREE} = window.CanalRecallThree;
 const MIN_ZOOM = 15.5;
 const BUDGET = 12;
@@ -47,6 +48,9 @@ export class InventoryTrees {
     this.geometries=new Map();this.materials=new Map();
     // A root in the page's one three.js frame, lit by its rig (no frame: headless checks build instances only).
     this.sharedFrame=options.sharedFrame||null;
+    // `?treeCull=0`: every resident instance drawn and casting, as before. `?treeCull=twin` (diagnostic): the shadow
+    // twins without the culling, to tell the two halves apart in a pixel A/B.
+    this.cullOn=!!this.sharedFrame&&treeCullFlag();this.cullTwinOnly=new URLSearchParams(location.search).get('treeCull')==='twin';this.culls=[];this.clipFromLocal=new THREE.Matrix4();this.cullFrustum=new THREE.Frustum();
     this.scene=new THREE.Group();
     this.origin=maplibregl.MercatorCoordinate.fromLngLat([4.9,52.37],0);
     this.scale=this.origin.meterInMercatorCoordinateUnits();
@@ -54,7 +58,12 @@ export class InventoryTrees {
     this._unregister=this.sharedFrame?.register('trees',{
       root:this.scene,
       mercatorFromLocal:()=>this.transform.elements,
-      beforeRender:ctx=>this.enabled&&this.ready&&ctx.zoom>=MIN_ZOOM&&this.meshes.length>0,
+      beforeRender:ctx=>{
+        const on=this.enabled&&this.ready&&ctx.zoom>=MIN_ZOOM&&this.meshes.length>0;
+        // Only the instances on screen are drawn (rendererShared/instanceCull.ts); the shadow twins keep every one.
+        if(on&&this.culls.length&&!this.cullTwinOnly){this.clipFromLocal.multiplyMatrices(ctx.clipFromWorld,ctx.worldFromMercator).multiply(this.transform);for(const c of this.culls)c.update(this.clipFromLocal,this.cullFrustum);}
+        return on;
+      },
     },{order:options.sharedOrder??30});
     this.move=()=>this.update();map.on('moveend',this.move);
   }
@@ -101,7 +110,8 @@ export class InventoryTrees {
   }
   disposeMeshes() {
     for(const m of this.meshes){this.scene.remove(m);m.dispose?.();}
-    this.meshes=[];this.debugTrees=0;
+    for(const c of this.culls)if(c.shadow){this.scene.remove(c.shadow);c.shadow.dispose?.();}
+    this.meshes=[];this.culls=[];this.debugTrees=0;
   }
   // The start-of-ride flight holds the trees where it will land: its overview
   // is below MIN_ZOOM (nothing draws), and planning each frame of the flight
@@ -212,6 +222,7 @@ export class InventoryTrees {
       m.instanceMatrix.needsUpdate=true;m.instanceColor.needsUpdate=true;m.frustumCulled=false;
       if(this.sharedFrame){m.castShadow=true;m.receiveShadow=true;}
       this.scene.add(m);this.meshes.push(m);
+      if(this.cullOn){const c=new InstanceCull(THREE,m,{castShadow:m.castShadow});if(c.shadow)this.scene.add(c.shadow);this.culls.push(c);}
     }
     this.debugRoses=roses;this.debugRoseTriangles=roses*20;
     this.debugTrees=trees;this.debugAuthoredTrees=authoredTrees;this.debugTiles=this.tiles.size;this.debugArchetypes=[...archetypes];this.debugDraws=this.meshes.length;this.setTheme(this.theme);

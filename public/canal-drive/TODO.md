@@ -266,8 +266,12 @@ overlay 108k, overview 83k). Materials lane takes the owners in size order
 cell is cut 6×6": iPad own ground 298k → 234k, frame p50 1.02 M → 0.95 M, draws
 p95 +7 %; desktop ground 504k → 397k, frame 1.97 M → 1.87 M; step 2 merged
 2026-11-01, `c9f743361`, HISTORY "Kerbs and bollards of the rider's cell draw
-only within 150 m": iPad ground 222k, frame p50 0.94 M vs ≤ 0.70 M, desktop
-1.84 M; trees 183k next, then the cycle overlay 108k); the 150/400 m
+only within 150 m": iPad ground 222k; trees culled to the view 2026-11-01,
+`8cfc3ceb4`, HISTORY "Only the trees on screen are drawn": iPad frame p50
+0.80 M vs ≤ 0.70 M, desktop 1.42 M; next: the whole-frame shading flip the
+pin harness sees with 3D trees on (1–3 levels, cause unknown, may be a real
+subtle flicker), then open-ended trunks (~50k desktop), then the cycle
+overlay 108k); the 150/400 m
 facade LOD is parked (60–100k, 5–8 %, not worth its likeness risk yet). In-frame
 shader links are 0. P5 follow-ups: delete
 `building-tiles/` and `bag-tiles/` after a week of Sentry quiet on the
