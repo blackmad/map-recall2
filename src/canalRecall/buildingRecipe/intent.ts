@@ -469,7 +469,9 @@ export interface FrontIntent {
    * foot on the window heads); default sill + head. Band heights in metres (`bandHeights`, defaults sill 0.14, transom
    * 0.10, head 0.17), measured on the strip.
    */
-  bandHeights?: {sill?: number; transom?: number; head?: number};
+  bandHeights?: {sill?: number; transom?: number; head?: number;
+    /** Metres of brick between the window heads and the foot of the head band (0..1; Danie Theronstraat 1926-28: the white top band 0.5 m over the top-storey heads). Absent = on the heads, byte-identical. */
+    headLift?: number};
   /** `bands: painted`: the centre of the transom band as a share of the window height from the sill (0.3..0.95, default 0.78), measured on the strip (Kinkerstraat 18-4: 0.65). */
   bandTransomAt?: number;
   bandLines?: ('sill' | 'transom' | 'head')[];
@@ -604,7 +606,13 @@ export interface FrontIntent {
    */
   bandPiers?: boolean;
   /** The same house module repeated along this front (rows built together, double fronts). */
-  repeat?: { count: number | 'fit'; mirrorAlternate?: boolean };
+  repeat?: { count: number | 'fit'; mirrorAlternate?: boolean;
+    /**
+     * With `mirrorAlternate`: the alternating row as a whole is mirrored (blockFace mirrorFront of a placed type): module k
+     * is laid mirrored when `count - 1 - k` is even, so the last module is the authored one (Danie Theronstraat 16: the
+     * half-portiek with its stair on the left). With an even count it is the same front. Absent = byte-identical.
+     */
+    mirrored?: boolean };
   /** Per-front palette when one owner has visibly different fronts. */
   palette?: Partial<PaletteIntent>;
   /** Stone ornament of a historic gable or cornice front (De Wallen, 17th/18th c.); see `GableOrnamentIntent`. */
@@ -1595,7 +1603,10 @@ export function validateIntent(input: unknown): CanalHouseIntent {
     }
     if (f.archedStoreys !== undefined) { if (!Array.isArray(f.archedStoreys)) problems.push(`${at}.archedStoreys must be a list`); else f.archedStoreys.forEach(v => count(v, `${at}.archedStoreys`, 0, f.storeys - 1)); }
     if (f.archRings !== undefined) oneOf(f.archRings, ['stone', 'band', 'none'], `${at}.archRings`);
-    if (f.repeat) { if (f.repeat.count !== 'fit') count(f.repeat.count, `${at}.repeat.count`, 1, 20); }
+    if (f.repeat) {
+      if (f.repeat.count !== 'fit') count(f.repeat.count, `${at}.repeat.count`, 1, 20);
+      if (f.repeat.mirrored !== undefined && (typeof f.repeat.mirrored !== 'boolean' || !f.repeat.mirrorAlternate)) problems.push(`${at}.repeat.mirrored: a boolean, with mirrorAlternate`);
+    }
     if (f.share !== undefined && !(f.share > 0 && f.share <= 1)) problems.push(`${at}.share must be in (0,1]`);
     if (f.shopfront) {
       const sf = f.shopfront;
@@ -1764,7 +1775,8 @@ function paintedProblems(f: FrontIntent, at: string, oneOf: (v: unknown, allowed
   if (f.bandHeights !== undefined) {
     const b = f.bandHeights as Record<string, unknown>;
     if (f.bands !== 'painted') p.push(`${at}.bandHeights: only with bands "painted"`);
-    if (!b || typeof b !== 'object' || Object.keys(b).some(k => !['sill', 'transom', 'head'].includes(k)) || Object.values(b).some(v => !frac(v, 0.04, 0.4))) p.push(`${at}.bandHeights: {sill?, transom?, head?} metres, 0.04..0.4`);
+    if (!b || typeof b !== 'object' || Object.keys(b).some(k => !['sill', 'transom', 'head', 'headLift'].includes(k)) || Object.entries(b).some(([k, v]) => k !== 'headLift' && !frac(v, 0.04, 0.4))) p.push(`${at}.bandHeights: {sill?, transom?, head?} metres, 0.04..0.4 (headLift 0..1)`);
+    if (b && typeof b === 'object' && b.headLift !== undefined && !frac(b.headLift, 0, 1)) p.push(`${at}.bandHeights.headLift: 0..1 m`);
   }
   if (f.bandLines !== undefined) {
     const l = f.bandLines;

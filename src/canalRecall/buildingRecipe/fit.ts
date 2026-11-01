@@ -769,7 +769,9 @@ export function fitIntent(intent: CanalHouseIntent, surveyFacts: BuildingFacts):
     // (19th-century rows, double fronts). Layout is fitted once per module width.
     const count = front.repeat ? (front.repeat.count === 'fit' ? Math.max(1, Math.round(width / 6)) : front.repeat.count) : 1;
     const mw = width / count, alternate = !!front.repeat?.mirrorAlternate;
-    const place = (k: number, x: number, w = 0) => k * mw + (alternate && k % 2 ? mw - x - w : x);
+    // `repeat.mirrored`: the alternating row seen in a mirror, so its last module is the authored one.
+    const flipped = (k: number) => alternate && (front.repeat!.mirrored ? (count - 1 - k) % 2 === 0 : k % 2 === 1);
+    const place = (k: number, x: number, w = 0) => k * mw + (flipped(k) ? mw - x - w : x);
     // `frieze`: a tall plain attic frieze under the cornice (18th-c. Keizersgracht fronts, often with oculi): 1.6 m, 0.25 m deep.
     // `entablature` (buildingRecipe/entablature.ts): the measured crown band's height replaces the style's.
     const corniceH = front.entablature && front.cornice !== 'none' ? front.entablature.rise : {none: 0, simple: 0.35, bracketed: 0.55, heavy: 0.8, frieze: 1.6}[front.cornice];
@@ -1324,7 +1326,8 @@ function paintedBands(front: FrontIntent, layout: Layout, openings: CanalhouseOp
     if (lines.includes('sill')) push(`painted-sill-s${s}`, Math.max(b0 + 0.02, sill - hs), Math.min(hs, sill - b0 - 0.02));
     if (lines.includes('transom')) push(`painted-transom-s${s}`, transom - ht / 2, ht);
     // The head band stays under the next storey's sill band.
-    if (lines.includes('head')) push(`painted-head-s${s}`, head, Math.min(hh, b0 + h - head - 0.02));
+    const lift = front.bandHeights?.headLift ?? 0;
+    if (lines.includes('head')) push(`painted-head-s${s}`, head + lift, Math.min(hh, b0 + h - head - lift - 0.02));
     // Two-tone piers (`bandPiers`, De Baarsjes): the window zone between the bands in the band brick, behind the bands.
     if (front.bandPiers) runs.forEach(([a, c], k) => out.push({id: runs.length > 1 ? `band-piers-s${s}-${k}` : `band-piers-s${s}`, leftM: round(Math.max(0, a)), bottomM: round(sill), widthM: Math.floor((Math.min(full, c) - Math.max(0, a)) * 1000) / 1000, heightM: round(head - sill), depthM: DE_BAARSJES.pierDepthM, surface: 'accent'}));
   }
