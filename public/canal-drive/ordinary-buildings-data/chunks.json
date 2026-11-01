@@ -82842,10 +82842,10 @@
    "id": "chunk-face-anthonisz-40-72-r1",
    "category": "street-survey",
    "name": "face-anthonisz-40-72-r1",
-   "modelUrl": "./models/ordinary-buildings/chunks/chunk-face-anthonisz-40-72-r1.glb?asset=6400a26aca52cf68",
-   "sha256": "6400a26aca52cf68866c8c4cdbe715017d5c04fc36bf5cc140392f6e2987cfc3",
-   "bytes": 790532,
-   "triangles": 11733,
+   "modelUrl": "./models/ordinary-buildings/chunks/chunk-face-anthonisz-40-72-r1.glb?asset=a8dc3b3d9b0f3670",
+   "sha256": "a8dc3b3d9b0f3670966caaa09b321ad5c8ec88bc2ae27d97249e972c48830a3e",
+   "bytes": 763228,
+   "triangles": 11332,
    "primitives": 10,
    "instance": {
     "anchor": [
@@ -83022,12 +83022,12 @@
        0.645
       ]
      },
-     "triangles": 2224,
+     "triangles": 2143,
      "ranges": [
       {
        "primitive": 0,
        "firstTriangle": 0,
-       "triangleCount": 60
+       "triangleCount": 39
       },
       {
        "primitive": 1,
@@ -83037,7 +83037,7 @@
       {
        "primitive": 2,
        "firstTriangle": 0,
-       "triangleCount": 388
+       "triangleCount": 328
       },
       {
        "primitive": 3,
@@ -83093,12 +83093,12 @@
        0.645
       ]
      },
-     "triangles": 2182,
+     "triangles": 2103,
      "ranges": [
       {
        "primitive": 0,
-       "firstTriangle": 60,
-       "triangleCount": 92
+       "firstTriangle": 39,
+       "triangleCount": 73
       },
       {
        "primitive": 1,
@@ -83107,8 +83107,8 @@
       },
       {
        "primitive": 2,
-       "firstTriangle": 388,
-       "triangleCount": 388
+       "firstTriangle": 328,
+       "triangleCount": 328
       },
       {
        "primitive": 3,
@@ -83169,12 +83169,12 @@
        0.645
       ]
      },
-     "triangles": 2574,
+     "triangles": 2493,
      "ranges": [
       {
        "primitive": 0,
-       "firstTriangle": 152,
-       "triangleCount": 53
+       "firstTriangle": 112,
+       "triangleCount": 32
       },
       {
        "primitive": 1,
@@ -83183,8 +83183,8 @@
       },
       {
        "primitive": 2,
-       "firstTriangle": 776,
-       "triangleCount": 388
+       "firstTriangle": 656,
+       "triangleCount": 328
       },
       {
        "primitive": 3,
@@ -83245,12 +83245,12 @@
        0.645
       ]
      },
-     "triangles": 2549,
+     "triangles": 2470,
      "ranges": [
       {
        "primitive": 0,
-       "firstTriangle": 205,
-       "triangleCount": 85
+       "firstTriangle": 144,
+       "triangleCount": 66
       },
       {
        "primitive": 1,
@@ -83259,8 +83259,8 @@
       },
       {
        "primitive": 2,
-       "firstTriangle": 1164,
-       "triangleCount": 388
+       "firstTriangle": 984,
+       "triangleCount": 328
       },
       {
        "primitive": 3,
@@ -83321,12 +83321,12 @@
        0.645
       ]
      },
-     "triangles": 2204,
+     "triangles": 2123,
      "ranges": [
       {
        "primitive": 0,
-       "firstTriangle": 290,
-       "triangleCount": 61
+       "firstTriangle": 210,
+       "triangleCount": 40
       },
       {
        "primitive": 1,
@@ -83335,8 +83335,8 @@
       },
       {
        "primitive": 2,
-       "firstTriangle": 1552,
-       "triangleCount": 388
+       "firstTriangle": 1312,
+       "triangleCount": 328
       },
       {
        "primitive": 3,
