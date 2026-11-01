@@ -74,6 +74,8 @@ async function boot(page: Page, viewMode = 'chase'): Promise<string[]> {
   if (process.env.ROADS === '0') await page.addInitScript(() => { (window as any).__canalRecallRoads = false; });
   // BRIDGE_GAPS=0: the bridge decks as before the bridge-gaps fix (gameGround bridgeGapsFlag, issue #178), for its A/B.
   if (process.env.BRIDGE_GAPS === '0') await page.addInitScript(() => { (window as any).__canalRecallBridgeGaps = false; });
+  // DRY_WAY_DECKS=1: bridgeGaps step 3 (off by default).
+  if (process.env.DRY_WAY_DECKS === '1') await page.addInitScript(() => { (window as any).__canalRecallDryWayDecks = true; });
   // BUNDLES_DIR=<dir>: serve *.bundle.js from a local build (as ride-perf.spec.ts), so a lane shoots its source change
   // without touching the published bundles.
   const bundles = process.env.BUNDLES_DIR;

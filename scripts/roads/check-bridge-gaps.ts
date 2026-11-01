@@ -24,17 +24,17 @@ const cached = (store: GroundStore) => {
   const cache = new Map<string, BuiltCell>();
   return async (k: string) => { let c = cache.get(k); if (!c) { c = buildCell(await store.cellInput(k, 0)); cache.set(k, c); } return c; };
 };
-const on = new GroundStore(read, { roads: true }), off = new GroundStore(read, { roads: true, bridgeGaps: false });
-await on.init(); await off.init();
-const cellOn = cached(on), cellOff = cached(off);
+const on = new GroundStore(read, { roads: true }), dryOn = new GroundStore(read, { roads: true, dryWayDecks: true }), off = new GroundStore(read, { roads: true, bridgeGaps: false });
+await on.init(); await dryOn.init(); await off.init();
+const cellOn = cached(on), cellDry = cached(dryOn), cellOff = cached(off);
 let failed = 0;
 const check = (ok: boolean, msg: string) => { console.log(`${ok ? 'ok  ' : 'FAIL'} ${msg}`); if (!ok) failed++; };
 for (const reg of BRIDGE_GAPS) {
   if (only && !only.includes(reg.id)) continue;
   const [x, y] = toLocal(reg.at[0], reg.at[1]), key = on.cellAt(x, y), ids = new Set([reg.way]);
-  const [a] = await probeCell(on, key, cellOn, ids), [b] = await probeCell(off, key, cellOff, ids);
+  const [a] = reg.dry ? await probeCell(dryOn, key, cellDry, ids) : await probeCell(on, key, cellOn, ids), [b] = await probeCell(off, key, cellOff, ids);
   if (!a || !b) { check(false, `${reg.id}: way ${reg.way} not found as a bridge way in cell ${key}`); continue; }
-  check(a.bandGapM2 <= reg.maxGapM2, `${reg.id} (${reg.label}): ${a.bandGapM2} m² of carriageway off the road, centreline ${a.centreGapM} m (≤ ${reg.maxGapM2} m²; shows ${JSON.stringify(a.shows)})`);
+  check(a.bandGapM2 <= reg.maxGapM2, `${reg.id}${reg.dry ? ' [dryWayDecks on]' : ''} (${reg.label}): ${a.bandGapM2} m² of carriageway off the road, centreline ${a.centreGapM} m (≤ ${reg.maxGapM2} m²; shows ${JSON.stringify(a.shows)})`);
   check(b.bandGapM2 >= reg.pinMin, `${reg.id}: without the fix ${b.bandGapM2} m² (≥ ${reg.pinMin}, the pin is live)`);
 }
 console.log(failed ? `${failed} failed` : 'all bridge-gap regressions pass');

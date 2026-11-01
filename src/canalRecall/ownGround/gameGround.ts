@@ -200,6 +200,12 @@ function viewportPx(): [number, number] {
   return g.innerWidth && g.innerHeight ? [g.innerWidth, g.innerHeight] : [1180, 734];
 }
 
+/** bridgeGaps step 3, dry way decks over land (issue #178): off by default; `?dryWayDecks=1` or `window.__canalRecallDryWayDecks = true` turns it on. */
+function dryWayDecksFlag(): boolean {
+  const g = globalThis as { __canalRecallDryWayDecks?: boolean; location?: { search?: string } };
+  if (typeof g.__canalRecallDryWayDecks === 'boolean') return g.__canalRecallDryWayDecks;
+  return /[?&]dryWayDecks=(1|true|on)\b/.test(g.location?.search ?? '');
+}
 /** Road surfaces across bridges without gaps (issue #178): on by default; `?bridgeGaps=0` or `window.__canalRecallBridgeGaps = false` builds the decks as before (the A/B). */
 function bridgeGapsFlag(): boolean {
   const g = globalThis as { __canalRecallBridgeGaps?: boolean; location?: { search?: string } };
@@ -395,7 +401,7 @@ export class OwnGround {
   /** Load the extract indexes (absolute extract root URL) and start the worker. */
   async load(root: string): Promise<void> {
     this.dispose(false);
-    this.store = new GroundStore(httpFetchBytes(root), { parks: this.opts.parks, rails: this.opts.rails, roads: this.opts.roads, reliefTile: this.reliefLoader(root), prepareOnly: true, ...(bridgeGapsFlag() ? {} : { bridgeGaps: false }) });
+    this.store = new GroundStore(httpFetchBytes(root), { parks: this.opts.parks, rails: this.opts.rails, roads: this.opts.roads, reliefTile: this.reliefLoader(root), prepareOnly: true, ...(bridgeGapsFlag() ? {} : { bridgeGaps: false }), ...(dryWayDecksFlag() ? { dryWayDecks: true } : {}) });
     this.ready = false;
     if (!/\/amsterdam\/?$/.test(root)) return;
     await this.store.init();
@@ -404,7 +410,7 @@ export class OwnGround {
       this.worker.onmessage = event => this.onWorker(event.data);
       this.worker.onerror = event => { this.stats.errors.push(`worker: ${event.message}`); };
       // Compact meshes: the same geometry in ~half the bytes (compactMesh.ts).
-      this.worker.postMessage({ type: 'init', root, parks: this.opts.parks, rails: this.opts.rails, roads: this.opts.roads, bridgeGaps: bridgeGapsFlag(), groundLook: this.opts.groundLook, compact: compactFlag(), detail: this.opts.detail, roadLook: roadLookFlag(), tiles: this.opts.tiles, nearTiles: this.opts.nearTiles, tileMin: TILE_MIN_TRIANGLES });
+      this.worker.postMessage({ type: 'init', root, parks: this.opts.parks, rails: this.opts.rails, roads: this.opts.roads, bridgeGaps: bridgeGapsFlag(), dryWayDecks: dryWayDecksFlag(), groundLook: this.opts.groundLook, compact: compactFlag(), detail: this.opts.detail, roadLook: roadLookFlag(), tiles: this.opts.tiles, nearTiles: this.opts.nearTiles, tileMin: TILE_MIN_TRIANGLES });
     } catch (error) {
       this.stats.errors.push(`worker unavailable: ${String(error)}`);
     }

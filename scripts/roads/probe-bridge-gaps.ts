@@ -7,7 +7,7 @@
 // lies on a deck. Per way: centreline gap metres, longest gap, carriageway gap m², coplanar ties, the largest step of
 // the drawn top between neighbouring samples, and the drawn top against the riding surface.
 //
-//   npx tsx scripts/roads/probe-bridge-gaps.ts [--label=before] [--shard=0/4] [--cells=-2_0,-2_-1] [--no-bridge-gaps]
+//   npx tsx scripts/roads/probe-bridge-gaps.ts [--label=before] [--shard=0/4] [--cells=-2_0,-2_-1] [--no-bridge-gaps] [--dry-way-decks]
 //   npx tsx scripts/roads/probe-bridge-gaps.ts --report [--label=before] [--compare=before]
 //
 // Shards write artifacts/roads/bridge-gaps/<label>/shard-<i>.json; --report merges them into <label>/table.csv,
@@ -54,7 +54,7 @@ export interface WayRow extends WayGapSummary {
 
 async function probe(): Promise<void> {
   const label = flag('label') ?? 'before';
-  const store = new GroundStore(read, { roads: true, ...(process.argv.includes('--no-bridge-gaps') ? { bridgeGaps: false } : {}), ...(process.argv.includes('--no-dry-way-decks') ? { dryWayDecks: false } : {}) });
+  const store = new GroundStore(read, { roads: true, ...(process.argv.includes('--no-bridge-gaps') ? { bridgeGaps: false } : {}), ...(process.argv.includes('--dry-way-decks') ? { dryWayDecks: true } : {}) });
   await store.init();
   const [si, sn] = (flag('shard') ?? '0/1').split('/').map(Number);
   const all = flag('cells')?.split(',') ?? [...store.osmCells].sort();
