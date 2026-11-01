@@ -45251,5 +45251,67 @@
     ]
    ]
   }
+ },
+ {
+  "id": "amstelstation",
+  "name": "Amstelstation",
+  "modelUrl": "./models/amstelstation.glb",
+  "suppressOsmIds": [
+   "NL.IMBAG.Pand.0363100012145715",
+   "w1302925049",
+   "w1302924572",
+   "part:NL.IMBAG.Pand.0363100012145715:1",
+   "part:NL.IMBAG.Pand.0363100012145715:2",
+   "part:NL.IMBAG.Pand.0363100012145715:3",
+   "part:NL.IMBAG.Pand.0363100012145715:4",
+   "part:NL.IMBAG.Pand.0363100012145715:5",
+   "part:NL.IMBAG.Pand.0363100012145715:7"
+  ],
+  "spatialSuppression": false,
+  "footprint": {
+   "centre": [
+    4.917984,
+    52.346692
+   ],
+   "headingDegrees": 0,
+   "lengthMetres": 100,
+   "widthMetres": 157
+  },
+  "surveyed": {
+   "anchor": [
+    4.917809,
+    52.3465247
+   ],
+   "northOffsetDegrees": 0,
+   "source": "Vertex average of the BAG 0363100012145715 ring (RD); ticket hall rectangle, eaves and ridge from the 3DBAG LoD2.2 roof planes, wings as the 3DBAG LoD2.2 shell in native east/south metres (scripts/landmarks/amstelstation-prepare.ts). Hall bays, piers, canopies, lettering and podium front read on rectified Gemeente Amsterdam panoramas (scripts/landmarks/amstelstation-inventory.json)."
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 0,
+  "heightMetres": 18.7,
+  "bagYear": 1939,
+  "materialOverrides": {
+   "brick": "#8f7559",
+   "greyBrick": "#c9b98f",
+   "stone": "#a5a399",
+   "sandstone": "#b6b3a7",
+   "white": "#d9d4c4",
+   "glass": "#5f6b68",
+   "frame": "#a6ae81",
+   "slate": "#56585e",
+   "dark": "#34393b",
+   "red": "#6e3e30",
+   "ochre": "#a08a52",
+   "concrete": "#a19d94",
+   "bronze": "#3f3b33",
+   "gold": "#c9a23a"
+  },
+  "attribution": {
+   "title": "Amstelstation (H.G.J. Schelling, 1939)",
+   "author": "Map Recall",
+   "sourceUrl": "https://nl.wikipedia.org/wiki/Station_Amsterdam_Amstel",
+   "licence": "CC BY 4.0",
+   "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+   "modifications": "Original texture-free flat-colour geometry: individually modelled ticket hall (glazed long walls, stone gables, banded brick piers, clock, canopies, lettering) and forecourt podium front from rectified Gemeente Amsterdam panoramas (CC BY 4.0, read for proportion only) and Wikipedia nl:Station Amsterdam Amstel (CC BY-SA 4.0); the wings are the 3DBAG LoD2.2 shell (CC BY 4.0) on the BAG outline (CC0). No pixels or meshes imported."
+  }
  }
 ]
