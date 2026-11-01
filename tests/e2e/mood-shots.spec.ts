@@ -149,7 +149,7 @@ for (const query of QUERIES) for (const view of ['chase', 'cockpit', 'aerial'] a
             const vm = (window as any).canalRecallGame.vectorMap;
             vm._threeBuildings?.setVisible(false); vm.__moodLandmarks = vm._signatureLandmarks?.enabled;
             if (vm._signatureLandmarks) vm._signatureLandmarks.enabled = false;
-            vm.map.triggerRepaint();
+            (vm.map ?? vm.cameraMap).triggerRepaint();
           });
           await page.waitForTimeout(600);
           const bare = await page.screenshot();
@@ -158,7 +158,7 @@ for (const query of QUERIES) for (const view of ['chase', 'cockpit', 'aerial'] a
             vm._threeBuildings?.setVisible(true);
             if (vm._signatureLandmarks) vm._signatureLandmarks.enabled = vm.__moodLandmarks;
             for (const e of Array.from(document.body.querySelectorAll('*'))) (e as HTMLElement).style.visibility = '';
-            vm.map.triggerRepaint();
+            (vm.map ?? vm.cameraMap).triggerRepaint();
           });
           results[`${spot.name}-${side}`] = stats(await raw(shot), await raw(bare));
         }

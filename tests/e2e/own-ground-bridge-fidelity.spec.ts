@@ -115,7 +115,7 @@ async function kitMask(page: Page, file: string): Promise<{ mask: Uint8Array; wi
   const toggle = (show: boolean) => page.evaluate(show => {
     const vm = (window as any).canalRecallGame.vectorMap, ground = vm._ownGround;
     for (const r of ground.resident.values()) r.group.traverse((o: any) => { if (o.isMesh && o.name === 'deckBody') o.visible = show; });
-    vm.map.triggerRepaint();
+    (vm.map ?? vm.cameraMap).triggerRepaint();
   }, show);
   const on = await shot();
   await page.screenshot({ path: file });
