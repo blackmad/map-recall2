@@ -4,6 +4,8 @@ import { EngineCamera, mercatorX, mercatorY, unitsPerMetre } from './cameraMap';
 import { StepClock } from './frameHost';
 import { frameMatrices } from '../rendererShared/frameMath';
 import { engineFlag } from './worldViewApi';
+import { basemapGroundColour, overviewGroundColours } from '../ownGround/basemapPalette';
+import { LANDUSE_CLASSES } from '../ownMap/overviewFormat';
 
 const vp = { width: 1440, height: 900 };
 
@@ -504,4 +506,19 @@ test('overview cover radius: a change inside the 500 ms throttle asks for the fr
     now += 100; radius(); now += 600; radius();
     assert.equal(repaints, 1, 'settled: no more repaints');
   } finally { (performance as any).now = realNow; }
+});
+
+test('the own overview takes the colours MapLibre\'s patched basemap draws under the own ground', () => {
+  const g = overviewGroundColours();
+  const base = (id: string, type: string, src?: string) => basemapGroundColour({ id, type, ...(src ? { 'source-layer': src } : {}) });
+  assert.equal(g.land, base('background', 'background'));
+  assert.equal(g.water, base('water', 'fill', 'water'));
+  assert.equal(g.park, base('park', 'fill', 'park'));
+  assert.equal(g.streetFill, base('road_minor', 'line', 'transportation'));
+  assert.equal(g.streetCasing, g.streetFill, 'one asphalt band, no white casing');
+  assert.equal(g.pathFill, base('road_path_pedestrian', 'line', 'transportation'));
+  assert.equal(g.rail, base('road_major_rail', 'line', 'transportation'));
+  assert.equal(g.landuse.wood, base('landcover_wood', 'fill', 'landcover'));
+  assert.equal(g.landuse.cemetery, base('landuse_cemetery', 'fill', 'landuse'));
+  for (const cls of LANDUSE_CLASSES) assert.ok(g.landuse[cls], `landuse ${cls} has a ground colour`);
 });
