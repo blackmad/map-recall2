@@ -39,9 +39,15 @@ export function grow(b: RingBounds, m: number): RingBounds {
   return { west: b.west - m / M_LNG, south: b.south - m / M_LAT, east: b.east + m / M_LNG, north: b.north + m / M_LAT };
 }
 
-/** The view box the ring is built from: the camera's at ride zoom, else a ride-sized square around `rider`. */
+/**
+ * The view box the ring is built from: the camera's at ride zoom, else a ride-sized square around `rider` while the
+ * camera looks at the rider (the intro overview, centred on it). A camera looking where the rider is not (a free look,
+ * a landmark fly-to, a spec's jumpTo) reads its own view, as before the ring: the stand-in kept every building away
+ * from the rider unread (building-click-perf, #129 round 21).
+ */
 export function rideBox(view: RingBounds, zoom: number, rider: readonly [number, number] | null): RingBounds {
   if (zoom >= RIDE_ZOOM_MIN || !rider) return view;
+  if (rider[0] < view.west || rider[0] > view.east || rider[1] < view.south || rider[1] > view.north) return view;
   return grow({ west: rider[0], south: rider[1], east: rider[0], north: rider[1] }, RIDE_HALF_M);
 }
 
