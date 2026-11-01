@@ -578,7 +578,7 @@ export class OwnWorldView implements WorldViewOracles {
       const text = b[0] === 0x1f && b[1] === 0x8b ? await new Response(new Blob([b as BlobPart]).stream().pipeThrough(new DecompressionStream('gzip'))).text() : new TextDecoder().decode(b);
       // The spoiler screen runs per frame (labelPolicy); ownPoiFeatures only thins here.
       const fc = ownPoiFeatures(JSON.parse(text) as OrientationPoiFile, () => false);
-      this.orientationPois = fc.features.map((f, i) => ({ id: `p${i}`, text: f.properties.name, kind: 'poi' as const, priority: f.properties.rank, lngLat: f.geometry.coordinates as [number, number] }));
+      this.orientationPois = fc.features.map(f => ({ id: `own:${f.properties.name}:${(f.geometry.coordinates as number[])[0].toFixed(5)}`, text: f.properties.name, kind: 'poi' as const, priority: f.properties.rank, lngLat: f.geometry.coordinates as [number, number] }));
       this.pushPois();
     } catch (error) { this.fail('pois', error); }
   }
@@ -757,6 +757,9 @@ export class OwnWorldView implements WorldViewOracles {
     if (!this.ready || !canvasRect) return null;
     const vp = this.host.viewport();
     const x = cssX * vp.width / canvasRect.width, y = cssY * vp.height / canvasRect.height;
+    // A drawn POI label wins the click (vector-map.js inspectBuilding: `_labelOverlay.hitTest` before the surface).
+    const label = this._labels.hitTest(x, y);
+    if (label) return label;
     // Landmark models first; the nearer surface wins (vector-map.js inspectBuilding).
     return this.extras.pick(x, y, vp.width, vp.height, this._threeBuildings?.inspectAtScreen?.(x, y, vp.width, vp.height) ?? null);
   }
@@ -931,7 +934,7 @@ export class OwnWorldView implements WorldViewOracles {
   /** Prominent extract landmarks as POI labels, and the neighbourhood boundaries as lines (vector-map.js setPlaces). */
   setPlaces(landmarks: any[], boundaries: any[]): void {
     this.placePois = (landmarks || []).filter(item => item.center && (item.manualPoi || item.nativeKitPoi || (item.prominenceScore || 0) >= 220))
-      .map(item => ({ id: `l:${item.id}`, text: item.name, aliases: placeAliases(item), kind: 'poi' as const, priority: 5000 + (item.prominenceScore || 0), lngLat: [item.center[1], item.center[0]] as [number, number], minZoom: 15 }));
+      .map(item => ({ id: String(item.id), text: item.name, aliases: placeAliases(item), kind: 'poi' as const, priority: 5000 + (item.prominenceScore || 0), lngLat: [item.center[1], item.center[0]] as [number, number], minZoom: 15 }));
     this.pushPois();
     const lines: LngLatLine[] = [];
     for (const b of (boundaries || []).filter(item => item.kind === 'neighbourhood' && item.geometry)) {
@@ -944,7 +947,7 @@ export class OwnWorldView implements WorldViewOracles {
     const thin = W().CanalRecallOrientationPois?.thinOrientationPois;
     const safe = (pois || []).filter(p => p && p.name && Array.isArray(p.center));
     this.brandedPois = (thin ? thin(safe) : safe)
-      .map((p: any, i: number) => ({ id: `b${i}`, text: p.name, kind: 'poi' as const, priority: 3000 + (p.orientationScore || 0), lngLat: [p.center[1], p.center[0]] as [number, number], minZoom: 16.5 }));
+      .map((p: any) => ({ id: `brand:${p.id}`, text: p.name, kind: 'poi' as const, priority: 3000 + (p.orientationScore || 0), lngLat: [p.center[1], p.center[0]] as [number, number], minZoom: 16.5 }));
     this.pushPois();
   }
 

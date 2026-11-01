@@ -348,4 +348,25 @@ test('Westermarkt: a click on the drawn Westerkerk opens the Westerkerk, not the
   console.log('westermarkt westerkerk', JSON.stringify(r));
   expect(r.drawn, 'the Westerkerk draws in the Westermarkt view').toBeGreaterThan(50);
   expect(r.right, `every Westerkerk pixel answers the Westerkerk ${JSON.stringify(r)}`).toBe(r.drawn);
+
+  // A drawn POI label wins the click on both engines: the "Guy Olivier" label's pixels open that POI, not the
+  // building under it (default 228 at Westermarkt, #129 round 19). The label layer's own hit test finds its pixels.
+  const label = await page.evaluate(() => {
+    const vm = (window as any).canalRecallGame.vectorMap, layer = vm._labels ?? vm._labelOverlay;
+    const canvas = vm.frameCanvas(), W = canvas.clientWidth, H = canvas.clientHeight;
+    let drawn = 0, right = 0;
+    const wrong: string[] = [];
+    for (let y = 60; y < H * 0.85; y += 3) for (let x = 30; x < W - 30; x += 3) {
+      const l = layer.hitTest(x, y);
+      if (!l || l.name !== 'Guy Olivier') continue;
+      drawn++;
+      const hit = vm.inspectBuilding(x, y, { width: W, height: H });
+      if (hit?.poi && hit.name === 'Guy Olivier') right++;
+      else if (wrong.length < 5) wrong.push(`${x},${y}→${hit ? hit.id : 'no hit'}`);
+    }
+    return { drawn, right, wrong };
+  });
+  console.log('westermarkt guy olivier', JSON.stringify(label));
+  expect(label.drawn, 'the "Guy Olivier" label draws in the Westermarkt view').toBeGreaterThan(0);
+  expect(label.right, `every "Guy Olivier" label pixel opens that POI ${JSON.stringify(label)}`).toBe(label.drawn);
 });
