@@ -30,7 +30,7 @@ import type {BuildingFacts} from '../../src/canalRecall/buildingRecipe/facts.ts'
 import {loadMaterialSoup} from '../landmarks/material-soup.ts';
 import {renderModels, closeRenderer} from '../building-recipes/render.ts';
 import {STRIP_LIKENESS, spanLikeness} from '../../src/canalRecall/blockFace/stripLikeness.ts';
-import {applyCrownPins, applyMirrorPins, crownPinProblems, mirrorPinProblems, typePinProblems, typesForFace, typesForPand, type CrownPin, type MirrorPin, type TypePin} from '../../src/canalRecall/blockFace/reviewCrowns.ts';
+import {applyCrownPins, applyMirrorPins, crownPinProblems, holdBrokenPairs, mirrorPinProblems, typePinProblems, typesForFace, typesForPand, type CrownPin, type MirrorPin, type TypePin} from '../../src/canalRecall/blockFace/reviewCrowns.ts';
 import {applyDoorPins, doorPinProblems, type DoorPin} from '../../src/canalRecall/blockFace/reviewDoors.ts';
 import {acceptFloorFor, acceptPinProblems, applyPalettePins, palettePinProblems, type AcceptPin, type PalettePin} from '../../src/canalRecall/blockFace/reviewPalettes.ts';
 import {frontBump} from '../../src/canalRecall/blockFace/bayOutline.ts';
@@ -356,6 +356,7 @@ if (process.argv[1]?.endsWith('block-face/auto-place.ts')) {
     // A run of one stands as a one-house face when its type opts in (match.lonePand: stair blocks of 5 m or more).
     const lone = (p: Placed) => lonePandReason(types.find(t => t.id === p.typeId), evs.find(e => e.pandId === p.pandId)?.widthM);
     for (let pass = 0; pass < 3; pass++) {
+      for (const id of holdBrokenPairs(decisions)) console.log(`${f.id}: ${id.slice(-6)} held, its pair crown's other half is not placed`);
       const {runs, orphans} = placedRuns(decisions, lone);
       for (const o of orphans) { const k = decisions.findIndex(d => d.pandId === o.pandId); decisions[k] = {kind: 'held', ...o}; }
       runFaces = runs.map((run, k) => ({id: runs.length === 1 && run.length === discovery.members.length ? f.id : `${f.id}-r${k + 1}`, ids: run.map(p => p.pandId)}));

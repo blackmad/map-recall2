@@ -30,7 +30,12 @@ import type {WindowBoxIntent} from '../blockBuilding/windowBox.ts';
 import type {GalleryIntent} from '../blockBuilding/gallery.ts';
 import type {SignBoardIntent} from '../blockBuilding/signBoards.ts';
 
-export const GABLES = ['spout', 'neck', 'raised-neck', 'bell', 'step', 'point', 'cornice', 'flat'] as const;
+/**
+ * `shouldered` (Transvaalbuurt 1911-1914: Retiefstraat 71D-73A, Transvaalstraat 42-44): a low broad gable whose sides
+ * rise plumb from the eaves for `shouldered.shoulder` before a shallow rake climbs `rise` to a point (or a flat top
+ * `flatTop` wide). Needs `shouldered`.
+ */
+export const GABLES = ['spout', 'neck', 'raised-neck', 'bell', 'step', 'point', 'cornice', 'flat', 'shouldered'] as const;
 export type GableIntent = typeof GABLES[number];
 /** `frieze`: a tall (1.6 m) plain attic frieze with its cornice, in the cornice colour (18th-c. fronts; oculi in it are not drawn). */
 export const CORNICES = ['none', 'simple', 'bracketed', 'heavy', 'frieze'] as const;
@@ -177,8 +182,16 @@ export type GroundBay = typeof GROUND_BAYS[number];
 /** `flat` (Jan Evertsenstraat 151-160, 1939): a timber dormer 1.8 m high (151: 13.3-15.3 m with its roof edge) at the plain dormer's setback, under a flat roof (no pitched top). */
 /** `arched` (Kinkerstraat 22-24, 1890): a dormer under a round hood, half an ellipse as high as half its width (0.45..1 m), its round front in the dormer body colour (white with `dormerBody: "stone"`). */
 export const DORMER_STYLES = ['plain', 'pediment', 'pointed', 'box', 'flat', 'arched'] as const;
-/** Dormer body materials (`FrontIntent.dormerBody`); absent = the trim slot. */
-export const DORMER_BODIES = ['stone', 'brick'] as const;
+/**
+ * Dormer body materials (`FrontIntent.dormerBody`); absent = the trim slot. `timber` (Transvaalbuurt 1911-1914,
+ * Transvaalstraat 39-45, #156): a white-painted timber dormer (the trim colour) whose window sits in its own front wall, an
+ * apron under it and posts beside it (library `CanalhouseDormer.frontWall`), so the glass stands clear of the roof plane
+ * and the facade top behind which the dormer stands (round 3: the fully glazed front reached 6 cm over the eaves and
+ * failed the GLB audit, opening-outside 2.5 m2).
+ */
+export const DORMER_BODIES = ['stone', 'brick', 'timber'] as const;
+/** `dormerBody: "timber"`: the apron under the window (m) and the post share of the dormer width each side (clamped). */
+export const TIMBER_DORMER = {apronM: 0.35, sideShare: 0.16, sideMinM: 0.12, sideMaxM: 0.35} as const;
 /**
  * Tower caps: a pyramid, a flat slab, or `stepped` (Amsterdam School: two receding brick tiers under a flat slab).
  * `merlons` (Helmersbuurt 1899-1900 wall dormers, Derde Helmersstraat 54-66): a flat brick top with three square brick
@@ -224,6 +237,22 @@ export interface FrontIntent {
   /** Left-to-right share of the discovered frontage when several fronts face one street. */
   share?: number;
   gable: GableIntent;
+  /**
+   * A `shouldered` gable's measured outline in metres: the plumb shoulder over the eaves at each side of the crown span
+   * (`shoulder`, 0.1..3), the rake's rise from the shoulder to the top (`rise`, 0.3..5), and a flat top `flatTop`
+   * wide (absent or 0 = pointed). Retiefstraat 71D-73A strip 2023-01-02: 1.4 / 1.05 m over a 4.2 m span; Transvaalstraat
+   * 42-44: 1.2 / 2.9 m over 7.75 m. The crown top is eaves + shoulder + rise (`crownRise` is not used). Only with
+   * `gable: "shouldered"`; absent elsewhere = byte-identical.
+   */
+  shouldered?: {shoulder: number; rise: number; flatTop?: number};
+  /**
+   * One crown over two pands (a pair module, blockFace/houseType.ts `pair`): this front carries the `left` or `right`
+   * half of a symmetric crown whose centre line is the party wall at the crown span's end (`crownAt.to = 1` for the left
+   * half, `crownAt.from = 0` for the right). Transvaalstraat 42-44: one ornamented gable centred on the party wall. The
+   * outline is the crown drawn twice the span wide and cut at its centre, so the two halves meet at the apex. Only on a
+   * gabled crown with `crownAt`; absent = the whole crown on this front, byte-identical.
+   */
+  crownHalf?: 'left' | 'right';
   /** Crown top shape for neck/bell/cornice crowns. */
   crownCap?: typeof CROWN_CAPS[number];
   /** Cornice crowns: the cap is a narrow centre piece (default) or a wide parapet across the front (1900s Bilderdijkstraat fronts). */
@@ -1588,6 +1617,25 @@ export function validateIntent(input: unknown): CanalHouseIntent {
     if (f.crownAt !== undefined) {
       const c = f.crownAt;
       if (!c || !(c.from >= 0 && c.to <= 1 && c.to - c.from >= 0.2)) problems.push(`${at}.crownAt: {from, to} fractions with 0 <= from < to <= 1 covering at least 0.2`);
+    }
+    if (f.gable === 'shouldered' || f.shouldered !== undefined) {
+      const sh = f.shouldered;
+      if (f.gable !== 'shouldered') problems.push(`${at}.shouldered: only with gable "shouldered" (gable ${f.gable})`);
+      else if (!sh || typeof sh !== 'object') problems.push(`${at}.shouldered: a shouldered gable needs {shoulder, rise}`);
+      else {
+        if (!(sh.shoulder >= 0.1 && sh.shoulder <= 3)) problems.push(`${at}.shouldered.shoulder: 0.1..3 m`);
+        if (!(sh.rise >= 0.3 && sh.rise <= 5)) problems.push(`${at}.shouldered.rise: 0.3..5 m`);
+        if (sh.flatTop !== undefined && !(sh.flatTop >= 0 && sh.flatTop <= 4)) problems.push(`${at}.shouldered.flatTop: 0..4 m`);
+        if (Object.keys(sh).some(k => !['shoulder', 'rise', 'flatTop'].includes(k))) problems.push(`${at}.shouldered: unknown field (shoulder, rise, flatTop)`);
+      }
+      if (f.crownRise !== undefined) problems.push(`${at}.crownRise: a shouldered gable's top is shoulder + rise`);
+    }
+    if (f.crownHalf !== undefined) {
+      if (f.crownHalf !== 'left' && f.crownHalf !== 'right') problems.push(`${at}.crownHalf: left or right`);
+      if (['cornice', 'flat'].includes(f.gable)) problems.push(`${at}.crownHalf: only on a gabled crown (gable ${f.gable})`);
+      if (!f.crownAt) problems.push(`${at}.crownHalf: needs crownAt (the half crown's span, ending on the party wall)`);
+      else if (f.crownHalf === 'left' ? f.crownAt.to !== 1 : f.crownAt.from !== 0) problems.push(`${at}.crownHalf: the ${f.crownHalf} half ends on the ${f.crownHalf === 'left' ? 'right' : 'left'} party wall (crownAt.${f.crownHalf === 'left' ? 'to = 1' : 'from = 0'})`);
+      if (f.crownGroups) problems.push(`${at}.crownHalf: not with crownGroups`);
     }
     if (f.crownBays !== undefined) {
       const grid = f.axisGrid ?? Math.max(...(Array.isArray(f.bays) ? f.bays.slice(f.storeys > 1 ? 1 : 0) : [f.bays])), c = f.crownBays;

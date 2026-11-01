@@ -19,7 +19,7 @@ import {unobservedHouse, type GableType} from '../facade/houseRecord.ts';
 import {measured, type Observation} from '../facade/evidence.ts';
 import type {BuildingFacts, FrontFacts} from './facts.ts';
 import {pointInRing, roofHeightAt} from './facts.ts';
-import {swatch, DIMINISHING_WINDOW_HEIGHTS, DARK_TYMPANUM_K, ORIEL, type CanalHouseIntent, type FrontIntent, type GableIntent, type ShopSign} from './intent.ts';
+import {swatch, DIMINISHING_WINDOW_HEIGHTS, DARK_TYMPANUM_K, ORIEL, TIMBER_DORMER, type CanalHouseIntent, type FrontIntent, type GableIntent, type ShopSign} from './intent.ts';
 import {cleanRoof, type RoofCleanupReport} from './roofCleanup.ts';
 import {gableOrnaments} from './gableOrnament.ts';
 import {entablatureCornice} from './entablature.ts';
@@ -35,7 +35,7 @@ export const ROOF_COLOURS: Record<CanalHouseIntent['roof']['material'], {steep: 
 };
 const GLASS = '#2a3a42';
 
-const GABLE_TYPE: Record<GableIntent, GableType> = {spout: 'tuit', neck: 'hals', 'raised-neck': 'verhoogde-hals', bell: 'klok', step: 'trap', point: 'punt', cornice: 'lijst', flat: 'lijst'};
+const GABLE_TYPE: Record<GableIntent, GableType> = {spout: 'tuit', neck: 'hals', 'raised-neck': 'verhoogde-hals', bell: 'klok', step: 'trap', point: 'punt', cornice: 'lijst', flat: 'lijst', shouldered: 'punt'};
 type WindowBars = Pick<CanalhouseOpening, 'verticalBars' | 'horizontalBars' | 'horizontalBarWidthsM' | 'mullionWidthM' | 'diagonalBars'>;
 /** Canal-belt pane layouts (survey 2026-10-14): thin glazing bars, a heavier meeting rail/transom where the photo shows one. */
 const SASH_RAILS = {horizontalBars: [.25, .5, .75], horizontalBarWidthsM: [.03, .06, .03], mullionWidthM: .03};
@@ -638,11 +638,43 @@ const neckShare = (f: FrontIntent) => f.crownNeckWidth ?? (f.gable === 'bell' ? 
 /** Cap rise of a neck/bell crown `width` wide: measured (`crownCapRatio` of the neck, within 0.4 of the rise) or the stock share of the rise. */
 const capRiseOf = (f: FrontIntent, rise: number, width: number) => f.crownCapRatio !== undefined ? Math.min(f.crownCapRatio * width * neckShare(f), rise * 0.4) : f.gable === 'bell' ? Math.min(0.6, rise * 0.15) : Math.min(0.45, rise * 0.1);
 
+/**
+ * A `shouldered` gable `width` wide (FrontIntent.shouldered): plumb sides `shoulder` over the eaves, then straight rakes
+ * to the top (a point, or a flat top `flatTop` wide). Its top is eaves + shoulder + rise.
+ */
+export function shoulderedProfile(width: number, eaves: number, s: NonNullable<FrontIntent['shouldered']>): CanalhousePoint[] {
+  const sy = eaves + s.shoulder, top = sy + s.rise, tw = Math.min(s.flatTop ?? 0, width * 0.8), mid = width / 2;
+  return [[0, eaves], [0, sy], ...(tw > 0.01 ? [[mid - tw / 2, top], [mid + tw / 2, top]] as CanalhousePoint[] : [[mid, top]] as CanalhousePoint[]), [width, sy], [width, eaves]];
+}
+
+/**
+ * One half of a symmetric crown outline (`FrontIntent.crownHalf`): `full` is the crown drawn over twice the half's span;
+ * the left half keeps x <= centre, the right half x >= centre shifted to start at 0. The cut is interpolated on the
+ * segment that crosses the centre (the apex itself on a pointed crown).
+ */
+export function halfCrown(full: CanalhousePoint[], half: 'left' | 'right'): CanalhousePoint[] {
+  const c = (full[0][0] + full.at(-1)![0]) / 2, out: CanalhousePoint[] = [];
+  const keep = (x: number) => half === 'left' ? x <= c + 1e-9 : x >= c - 1e-9;
+  for (let i = 0; i < full.length; i++) {
+    const p = full[i];
+    if (i > 0) {
+      const q = full[i - 1];
+      if ((q[0] - c) * (p[0] - c) < -1e-12) out.push([c, q[1] + (p[1] - q[1]) * (c - q[0]) / (p[0] - q[0])]);
+    }
+    if (keep(p[0])) out.push(p);
+  }
+  const dedup = out.filter((p, i) => i === 0 || Math.abs(p[0] - out[i - 1][0]) > 1e-9 || Math.abs(p[1] - out[i - 1][1]) > 1e-9);
+  return half === 'left' ? dedup : dedup.map(([x, y]) => [round(x - c, 4), y] as CanalhousePoint);
+}
+
 /** `fill`: the crown stands on a part of the front (`crownAt`/`crownBays`) and fills that part; wide cornice caps by default. */
 function crownProfile(f: FrontIntent, width: number, eaves: number, top: number, fill = false): CanalhousePoint[] | null {
+  // A half crown (`crownHalf`): the crown drawn twice as wide, cut on its centre line (the party wall).
+  if (f.crownHalf) { const full = crownProfile({...f, crownHalf: undefined}, width * 2, eaves, top, fill); return full && halfCrown(full, f.crownHalf); }
   const rise = top - eaves;
   if (f.gable === 'flat' || rise < 0.3) return null;
   switch (f.gable) {
+    case 'shouldered': return f.shouldered ? shoulderedProfile(width, eaves, f.shouldered) : null;
     case 'point': return canalhouseCrownProfile('punt', width, eaves, top, 0, eaves, 0);
     case 'spout': return canalhouseCrownProfile('tuit', width, eaves, top, width * 0.34, top - Math.min(0.7, rise * 0.15), 0);
     case 'step': return canalhouseCrownProfile('trap', width, eaves, top, width * 0.3, eaves, f.crownSteps ?? clamp(Math.round(rise / 1.4), 2, 5));
@@ -781,8 +813,9 @@ export function fitIntent(intent: CanalHouseIntent, surveyFacts: BuildingFacts):
       : front.crownBays ? [layout.bayEdges[front.crownBays.from], layout.bayEdges[front.crownBays.to + 1]] : null;
     const crownW = crownSpan ? crownSpan[1] - crownSpan[0] : mw;
     const upperStoreyM = layout.storeyHeights.at(-1)!;
-    const crownTop = front.crownRise !== undefined ? eaves + front.crownRise * upperStoreyM
-      : gabled ? Math.max(profileTop + 0.3, Math.min(facts.heights.ridgeM + 0.3, eaves + crownW * (front.gable === 'step' ? 1 : 0.9))) : eaves + (front.crownCap && front.crownCap !== 'flat' ? (front.crownCapRise === 'low' ? 0.55 : 1.1) : 0);
+    const crownTop = front.gable === 'shouldered' && front.shouldered ? eaves + front.shouldered.shoulder + front.shouldered.rise
+      : front.crownRise !== undefined ? eaves + front.crownRise * upperStoreyM
+      : gabled ? Math.max(profileTop + 0.3, Math.min(facts.heights.ridgeM + 0.3, eaves + (front.crownHalf ? 2 : 1) * crownW * (front.gable === 'step' ? 1 : 0.9))) : eaves + (front.crownCap && front.crownCap !== 'flat' ? (front.crownCapRise === 'low' ? 0.55 : 1.1) : 0);
     const moduleOpenings = Array.from({length: count}, (_, k) => layout.openings.map(o => ({...o, id: count > 1 ? `${o.id}-m${k}` : o.id, leftM: place(k, o.leftM, o.widthM)}))).flat();
     let lintelBands: NonNullable<CanalhouseElevation['bands']>['value'] = [];
     let fasciaRect: FasciaRect | undefined, signBand: SignBand | undefined;
@@ -909,7 +942,7 @@ export function fitIntent(intent: CanalHouseIntent, surveyFacts: BuildingFacts):
     // Several gables on one front (`crownGroups`): one crown per bay group, eaves line between them.
     const groupCrowns = front.crownGroups ? front.crownGroups.map(c => {
       const span: [number, number] = [layout.bayEdges[c.from], layout.bayEdges[c.to + 1]], w = span[1] - span[0];
-      const top = front.crownRise !== undefined ? eaves + front.crownRise * upperStoreyM : gabled ? Math.max(profileTop + 0.3, Math.min(facts.heights.ridgeM + 0.3, eaves + w * (front.gable === 'step' ? 1 : 0.9))) : crownTop;
+      const top = front.gable === 'shouldered' && front.shouldered ? eaves + front.shouldered.shoulder + front.shouldered.rise : front.crownRise !== undefined ? eaves + front.crownRise * upperStoreyM : gabled ? Math.max(profileTop + 0.3, Math.min(facts.heights.ridgeM + 0.3, eaves + w * (front.gable === 'step' ? 1 : 0.9))) : crownTop;
       return {span, top, profile: crownProfile(front, w, eaves, top, true)?.map(([x, y]) => [x + span[0], y] as CanalhousePoint) ?? null};
     }) : null;
     if (groupCrowns) {
@@ -975,7 +1008,10 @@ export function fitIntent(intent: CanalHouseIntent, surveyFacts: BuildingFacts):
       }
     }
     if (profile) {
-      elevation.crown = seen({profile: profile.map(([x, y]) => [Math.min(width, Math.max(0, mirrored ? width - x : x)), Math.max(eaves, y)] as CanalhousePoint).sort((p, q) => p[0] - q[0]), depthM: 0.18, trimWidthM: front.renderedGable ? 0 : 0.08, surface: 'wall'});
+      // Plumb sides (a shouldered gable, a half crown's party edge) are two vertices at one x: a mirrored outline is read
+      // right to left first so the stable sort keeps each riser's foot before its head.
+      const plumb = front.gable === 'shouldered' || !!front.crownHalf;
+      elevation.crown = seen({profile: (plumb && mirrored ? [...profile].reverse() : profile).map(([x, y]) => [Math.min(width, Math.max(0, mirrored ? width - x : x)), Math.max(eaves, y)] as CanalhousePoint).sort((p, q) => p[0] - q[0]), depthM: 0.18, trimWidthM: front.renderedGable ? 0 : 0.08, surface: 'wall'});
       // `renderedGable.bargeboard`: painted boards inside each raking edge of the crown, in the trim colour (bargeboards.ts);
       // they replace the crown's trim edge boxes (a frame-class box past the gable end is judged an opening outside its wall).
       if (front.renderedGable) { const boards = bargeboardOrnaments(elevation.crown.value.profile, eaves, front.renderedGable.bargeboard, width); if (boards.length) elevation.ornaments = elevation.ornaments ? {...elevation.ornaments, value: [...elevation.ornaments.value, ...boards]} : seen(boards); }
@@ -1026,12 +1062,12 @@ export function fitIntent(intent: CanalHouseIntent, surveyFacts: BuildingFacts):
       const shape = (w: number) => style === 'pediment' ? {roofRiseM: round(clamp(w * 0.32, 0.4, 0.6)), frontOverhangM: 0.12} : style === 'pointed' ? {roofRiseM: round(clamp(w * 0.85, 0.8, 1.4))} : style === 'arched' ? {roofRiseM: round(clamp(w * 0.5, 0.45, 1)), frontOverhangM: 0.12, roofProfile: 'arch' as const} : style === 'box' || style === 'flat' ? {roofRiseM: 0} : {roofRiseM: 0.45};
       // A brick roof box (`box`) is low: 0.75 m over the wall top, its front 5 cm behind the facade (Kinkerstraat 109-161 strip: 0.6-0.8 m).
       const placeOnMansard = mansard ? {setbackM: round(Math.max(0.05, maxOut + 0.03)), heightM: round(clamp(mansard.heightM - 0.25, 1.1, 1.6))} : style === 'box' ? {setbackM: 0.05, heightM: 0.75} : style === 'flat' ? {setbackM: 0.35, heightM: 1.8} : {setbackM: 0.35, heightM: 1.45};
-      elevation.dormers = seen(Array.from({length: k * count}, (_, j) => { const {left, w} = span(j % k), sh = shape(w); return {id: `dormer-${j}`, leftM: round(flipX(place(Math.floor(j / k), left, w), w)), widthM: round(w), bottomM: round(Math.max(eaves, survey.shellTopM) + (front.dormerSize?.sill ?? 0.05)), heightM: front.dormerSize?.rise ?? placeOnMansard.heightM, depthM: 1.3, roofRiseM: sh.roofRiseM, ...('frontOverhangM' in sh ? {frontOverhangM: sh.frontOverhangM} : {}), ...('roofProfile' in sh ? {roofProfile: sh.roofProfile} : {}), setbackM: front.dormerSize?.setback ?? placeOnMansard.setbackM, trimWidthM: 0.07, verticalBars: [.5], wallSurface: style === 'box' || front.dormerBody === 'brick' ? 'wall' as const : front.dormerBody === 'stone' ? 'stone' as const : 'trim' as const, roofSurface: 'roof' as const}; }));
+      elevation.dormers = seen(Array.from({length: k * count}, (_, j) => { const {left, w} = span(j % k), sh = shape(w); return {id: `dormer-${j}`, leftM: round(flipX(place(Math.floor(j / k), left, w), w)), widthM: round(w), bottomM: round(Math.max(eaves, survey.shellTopM) + (front.dormerSize?.sill ?? 0.05)), heightM: front.dormerSize?.rise ?? placeOnMansard.heightM, depthM: 1.3, roofRiseM: sh.roofRiseM, ...('frontOverhangM' in sh ? {frontOverhangM: sh.frontOverhangM} : {}), ...('roofProfile' in sh ? {roofProfile: sh.roofProfile} : {}), setbackM: front.dormerSize?.setback ?? placeOnMansard.setbackM, trimWidthM: 0.07, verticalBars: [.5], ...(front.dormerBody === 'timber' ? {frontWall: {apronM: TIMBER_DORMER.apronM, sideM: round(clamp(w * TIMBER_DORMER.sideShare, TIMBER_DORMER.sideMinM, TIMBER_DORMER.sideMaxM))}} : {}), wallSurface: style === 'box' || front.dormerBody === 'brick' ? 'wall' as const : front.dormerBody === 'stone' || front.dormerBody === 'timber' ? 'stone' as const : 'trim' as const, roofSurface: 'roof' as const}; }));
     }
     // `dormerHoist`: one beam per dormer, over its frame in the pediment, from inside the dormer to `reach` in front of it.
     if (front.dormerHoist && elevation.dormers) {
       const reach = front.dormerHoist.reach ?? 0.8;
-      elevation.hoists = seen(elevation.dormers.value.map(d => ({id: `hoist-${d.id}`, centerM: round(d.leftM + d.widthM / 2), heightM: round(d.bottomM + d.heightM + 0.08), widthM: 0.14, beamHeightM: 0.16, projectionM: round(Math.max(0.05, reach - (d.setbackM ?? 0))), setbackM: round((d.setbackM ?? 0) + 0.3), endRiseM: 0.1, surface: front.dormerBody === 'stone' ? 'stone' as const : 'trim' as const})));
+      elevation.hoists = seen(elevation.dormers.value.map(d => ({id: `hoist-${d.id}`, centerM: round(d.leftM + d.widthM / 2), heightM: round(d.bottomM + d.heightM + 0.08), widthM: 0.14, beamHeightM: 0.16, projectionM: round(Math.max(0.05, reach - (d.setbackM ?? 0))), setbackM: round((d.setbackM ?? 0) + 0.3), endRiseM: 0.1, surface: front.dormerBody === 'stone' || front.dormerBody === 'timber' ? 'stone' as const : 'trim' as const})));
     }
     if (front.hoist) elevation.hoists = seen(Array.from({length: count}, (_, m) => ({id: count > 1 ? `hoist-m${m}` : 'hoist', centerM: flipX(place(m, crownSpan ? (crownSpan[0] + crownSpan[1]) / 2 : mw / 2), 0), heightM: round(gabled ? crownTop - 0.9 : eaves + 0.1), widthM: 0.14, beamHeightM: 0.18, projectionM: 1.1, setbackM: 0.1, surface: 'door' as const})));
     if ((front.basement === 'stoop' || front.basement === 'stoop-and-windows') && layout.doorLeft !== null && layout.groundBase > 0) {

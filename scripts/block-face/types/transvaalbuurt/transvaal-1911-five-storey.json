@@ -159,12 +159,52 @@
    "gable": "cornice",
    "dormers": 1,
    "dormerStyle": "pointed",
-   "dormerBody": "stone",
-   "note": "Transvaalstraat 21-41 (072312 084571 149583 108858): one white timber dormer with a pointed cap over the cornice, 1.2-1.6 m wide, top 16.0-16.7 m"
+   "dormerBody": "timber",
+   "note": "Transvaalstraat 21-41 (072312 084571 149583 108858): one white timber dormer with a pointed cap over the cornice, 1.2-1.6 m wide, top 16.0-16.7 m; dormerBody timber (#156): the window sits in a white timber front with an apron, clear of the roof plane (round 3: the stone body with a fully glazed front failed the GLB audit, opening-outside 2.5 m2)"
   },
   "none": {
    "gable": "cornice",
    "note": "cornice only (the roof behind)"
+  },
+  "shouldered-gable": {
+   "gable": "shouldered",
+   "shouldered": {
+    "shoulder": 1.4,
+    "rise": 1.05
+   },
+   "crownAt": {
+    "from": 0.32,
+    "to": 1
+   },
+   "atticWindows": 3,
+   "note": "Retiefstraat 71D-73A (129491 067013) strip 2023-01-02, gridded at 40 px/m: a low broad brick gable over the two axes away from the door, its sides plumb from the 13.35 m eaves to the shoulder at 14.75 m, then shallow rakes (about 27 degrees) to a point at 15.8 m; span 4.2 m of the 6.0-6.5 m front, the gables of the mirrored pair meet in a valley on the party wall; three attic lights (narrow, wide, narrow) at 13.0-14.3 m; a cornice and tile roof face over the door-side axis"
+  },
+  "shared-gable": {
+   "gable": "shouldered",
+   "shouldered": {
+    "shoulder": 1.2,
+    "rise": 2.9
+   },
+   "crownAt": {
+    "from": 0.38,
+    "to": 1
+   },
+   "crownHalf": "left",
+   "atticWindows": 2,
+   "pair": true,
+   "note": "Transvaalstraat 42-44 (140529 071217) strip 2023-01-02, gridded: ONE brick gable centred on the party wall of the pair (pair module: this variant is the left half, the right half is its mirror), sides plumb from the 13.5 m eaves to 14.7 m, rakes to a point at 17.6 m on the party line; 7.75 m wide over the two inner thirds of both fronts; two three-light attic windows a half at 13.6-14.3 m; a brick meander panel in the gable (not drawn)"
+  },
+  "flat-dormer": {
+   "gable": "cornice",
+   "dormers": 1,
+   "dormerStyle": "flat",
+   "dormerBody": "timber",
+   "dormerSize": {
+    "sill": 0.3,
+    "rise": 1.9,
+    "setback": 0.35
+   },
+   "note": "Transvaalstraat 39-45A (093192 146296 096110 140329) strip 2023-01-02, gridded: one tall white timber dormer per front, flat-topped under a moulded cap (a carved crest on some), about 1.9 m wide, its foot 0.3 m over the 14.7 m cornice top and its cap at 17.0-17.2 m; the two-light window in a white timber front with an apron under it and posts beside it; slightly splayed cheeks (drawn plumb)"
   }
  },
  "grounds": {

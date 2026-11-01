@@ -17,6 +17,12 @@ export interface CrownPin {
   /** The type the pin is for: a pand placed with another type is left alone. */
   type: string;
   crown: string;
+  /**
+   * For a pair crown (`crowns.<name>.pair`: one crown straddling the party wall, Transvaalstraat 42-44): which half of
+   * the pair this pand is. A pand pin only. The left half is drawn as the type, the right half mirrored, and the side
+   * counts as known (--photo-decides does not flip it). Required with a pair crown, invalid without one.
+   */
+  pair?: 'left' | 'right';
   /** What on the strip shows it. */
   reason: string;
 }
@@ -31,6 +37,8 @@ export function crownPinProblems(pins: CrownPin[], types: Pick<HouseTypeIntent, 
     const t = types.find(x => x.id === pin.type);
     if (!t) p.push(`${at}: unknown type ${pin.type}`);
     else if (!t.crowns[pin.crown]) p.push(`${at}: type ${pin.type} has no crown "${pin.crown}" (has ${Object.keys(t.crowns).join(', ')})`);
+    else if (!!(t.crowns[pin.crown] as {pair?: boolean}).pair !== (pin.pair !== undefined)) p.push(`${at}: ${pin.pair ? `crown ${pin.crown} is not a pair crown` : `crown ${pin.crown} straddles a party wall: give pair left or right`}`);
+    if (pin.pair !== undefined && (!['left', 'right'].includes(pin.pair) || !pin.pandId)) p.push(`${at}: pair is left or right, on a pand pin`);
   });
   return p;
 }
@@ -50,9 +58,33 @@ export function applyCrownPins(faceId: string, decisions: Decision[], pins: Crow
     const first = Object.keys(t.crowns)[0];
     if (pin.crown === first) delete d.house.type.crown; else d.house.type.crown = pin.crown;
     d.notes = [...d.notes.filter(n => !/^crown /.test(n)), `crown ${pin.crown}: reviewer pin (${pin.reason})`];
+    // A pair crown: the half and its side are the pin's (the right half is the mirror of the left).
+    if (pin.pair && (t.crowns[pin.crown] as {pair?: boolean}).pair) {
+      d.house.type.pair = pin.pair;
+      if (pin.pair === 'right') d.house.type.mirror = true; else delete d.house.type.mirror;
+      d.notes = [...d.notes.filter(n => !/^door /.test(n)), `door reviewer pin: ${pin.pair} half of a pair crown, ${pin.pair === 'right' ? 'mirrored' : 'as drawn'}`];
+    }
     changed.push(d.pandId);
   }
   return changed;
+}
+
+/**
+ * A pair crown is drawn half on each pand: a half whose partner (the next pand for the left half, the previous for the
+ * right) is not its placed other half is held, as the crown cannot be drawn on one pand (in place; returns the pands held).
+ */
+export function holdBrokenPairs(decisions: Decision[]): string[] {
+  const held: string[] = [];
+  const half = (d: Decision | undefined) => d?.kind === 'placed' ? d.house.type?.pair : undefined;
+  decisions.forEach((d, k) => {
+    const side = half(d);
+    if (!side || d.kind !== 'placed') return;
+    const mate = decisions[side === 'left' ? k + 1 : k - 1];
+    if (half(mate) === (side === 'left' ? 'right' : 'left') && mate?.kind === 'placed' && mate.typeId === d.typeId) return;
+    decisions[k] = {kind: 'held', pandId: d.pandId, address: d.house.address, stage: 'run', reason: `the ${side} half of a pair crown (${d.house.type!.crown}) without its other half placed beside it`};
+    held.push(d.pandId);
+  });
+  return held;
 }
 
 /**
