@@ -129,7 +129,7 @@ export function setTilesDrawn(owner: any, drawn: boolean): void {
   if (!drawn && owner.userData.tilesOnly) drawn = true;
   if (owner.userData.tilesDrawn === drawn) return;
   owner.userData.tilesDrawn = drawn;
-  for (const t of parts) t.visible = drawn;
+  for (const t of parts) t.visible = drawn && !t.userData.beyondReach;
   if (drawn) owner.layers.set(TILE_OWNER_LAYER); else owner.layers.set(0);
 }
 
@@ -189,7 +189,7 @@ export function drawAsSpans(THREE: any, owner: any, tiles: readonly CellTile[], 
   // Serpentine order over the grid cells the tiles came from.
   const order = tiles.map((_, i) => i).sort((a, b) => serpentine(tiles[a].cell, n) - serpentine(tiles[b].cell, n));
   const out = new (index.array.constructor as any)(index.array.length);
-  const spans: { start: number; count: number; center: any; radius: number; radius0: number }[] = [];
+  const spans: { start: number; count: number; center: any; radius: number; radius0: number; beyond?: boolean }[] = [];
   let at = 0;
   for (const i of order) {
     out.set(tiles[i].indices, at);
@@ -210,14 +210,16 @@ export function drawAsSpans(THREE: any, owner: any, tiles: readonly CellTile[], 
     // The frustum in the owner's local frame (clip ← local), so a span's sphere is tested as stored: the same planes
     // as transforming every sphere to world, without the per-span matrix product (a fine span grid is ~1000 spans).
     clip.multiplyMatrices(camera.projectionMatrix, camera.matrixWorldInverse).multiply(owner.matrixWorld);
-    const e = clip.elements, version = owner.userData.spanVersion ?? 0;
+    const e = clip.elements, version = (owner.userData.spanVersion ?? 0) + (owner.userData.reachVersion ?? 0) * 65536;
     let same = memo.version === version;
     for (let i = 0; same && i < 16; i++) same = memo.m[i] === e[i];
     if (!same) {
       memo.m.set(e); memo.version = version;
       frustum.setFromProjectionMatrix(clip);
       let first = -1, last = -1;
+      const reach = owner.userData.tileReach as TileReach | undefined;
       for (let k = 0; k < spans.length; k++) {
+        if (reach && beyondReach(spans[k], spans[k].center, spans[k].radius, reach)) continue;
         sphere.center.copy(spans[k].center); sphere.radius = spans[k].radius;
         if (!frustum.intersectsSphere(sphere)) continue;
         if (first < 0) first = k;
@@ -231,6 +233,46 @@ export function drawAsSpans(THREE: any, owner: any, tiles: readonly CellTile[], 
   };
   // Passes that share this geometry (highlight outline/rim, picking) draw the whole range, not the owner's span.
   owner.onAfterRender = () => { geometry.drawRange.start = 0; geometry.drawRange.count = Infinity; };
+}
+
+/**
+ * A distance limit for one tiled mesh (#129, own ground's small detail): tiles whose sphere lies wholly farther than
+ * `r` metres (x/y, the owner's local frame) from (`x`, `y`) are not drawn. Hysteresis: a tile that went beyond comes
+ * back only once it is within `r` again, and goes only past `r + h`, so a rider at the edge does not flicker it.
+ */
+export type TileReach = { x: number; y: number; r: number; h: number };
+type ReachState = { beyond?: boolean };
+
+function beyondReach(state: ReachState, center: { x: number; y: number }, radius: number, reach: TileReach): boolean {
+  const d = Math.hypot(center.x - reach.x, center.y - reach.y) - radius;
+  state.beyond = state.beyond ? d > reach.r : d > reach.r + reach.h;
+  return state.beyond;
+}
+
+/**
+ * Set (or clear, `null`) `owner`'s distance limit, for both draws: spans skip the tiles beyond it in their range;
+ * tile meshes beyond it are hidden (and stay hidden while the owner draws whole: then the limit does not apply).
+ */
+export function setTileReach(owner: any, reach: TileReach | null): void {
+  if (!owner?.userData) return;
+  if (!reach) {
+    if (!owner.userData.tileReach) return;
+    delete owner.userData.tileReach;
+    for (const sp of owner.userData.spans ?? []) sp.beyond = false;
+    for (const t of owner.userData.tiles ?? []) { t.userData.beyondReach = false; t.userData.beyond = false; t.visible = !!owner.userData.tilesDrawn; }
+    owner.userData.reachVersion = (owner.userData.reachVersion ?? 0) + 1;
+    return;
+  }
+  const was = owner.userData.tileReach as TileReach | undefined;
+  if (was && was.x === reach.x && was.y === reach.y && was.r === reach.r && was.h === reach.h) return;
+  owner.userData.tileReach = { ...reach };
+  owner.userData.reachVersion = (owner.userData.reachVersion ?? 0) + 1;
+  for (const t of owner.userData.tiles ?? []) {
+    const bs = t.geometry.boundingSphere;
+    const beyond = beyondReach(t.userData, bs.center, bs.radius, reach);
+    t.userData.beyondReach = beyond;
+    t.visible = !!owner.userData.tilesDrawn && !beyond;
+  }
 }
 
 /** Position of row-major grid cell `k` along the serpentine (rows alternate direction). */

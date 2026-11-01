@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
 import * as THREE from 'three';
-import { cutMesh, growTileSpheres } from './tiledGeometry';
+import { cutMesh, growTileSpheres, setTileReach, setTilesDrawn } from './tiledGeometry';
 import { overviewTileGrid, OVERVIEW_TILES, OVERVIEW_TILES_BEFORE } from '../engine/overviewLayer';
 
 /** A flat grid of `cells`² unit quads, `size` m wide, at z = 0 (an overview-like layer). */
@@ -87,4 +87,42 @@ test('overview span grid: 32, or the old 8 under ?overviewCull=0', () => {
     g.location = { search: '' }; g.__canalRecallOverviewCull = false;
     assert.equal(overviewTileGrid(), 8);
   } finally { g.location = saved.location; g.__canalRecallOverviewCull = saved.flag; }
+});
+
+test('setTileReach: spans and tiles beyond the reach are not drawn, with hysteresis; null restores them', () => {
+  const camera = new THREE.PerspectiveCamera(60, 1, 1, 50000);
+  camera.position.set(0, 0, 9000); camera.up.set(0, 1, 0); camera.lookAt(0, 0, 0); camera.updateMatrixWorld(true);
+  // Spans (desktop).
+  const spansMesh = new THREE.Mesh(quadGrid(36, 1000), new THREE.MeshBasicMaterial());
+  spansMesh.updateMatrixWorld(true);
+  assert.ok(cutMesh(THREE, spansMesh, 6, 100, { draw: 'spans' }));
+  const g = spansMesh.geometry, range = () => { spansMesh.onBeforeRender({} as any, {} as any, camera, g, spansMesh.material, null as any); return g.drawRange.count; };
+  const all = range();
+  assert.equal(all, g.index!.count, 'top-down over the whole grid: everything');
+  setTileReach(spansMesh, { x: -500, y: -500, r: 50, h: 25 });
+  const near = range();
+  assert.ok(near > 0 && near < all / 4, `a corner reach draws a few spans (${near / 3} of ${all / 3})`);
+  setTileReach(spansMesh, null);
+  assert.equal(range(), all, 'cleared: everything again');
+  // Tiles (touch).
+  const tilesMesh = new THREE.Mesh(quadGrid(36, 1000), new THREE.MeshBasicMaterial());
+  assert.ok(cutMesh(THREE, tilesMesh, 6, 100, { draw: 'tiles' }));
+  setTilesDrawn(tilesMesh, true);
+  const tiles = tilesMesh.userData.tiles as THREE.Mesh[];
+  const shown = () => tiles.filter(t => t.visible).length;
+  assert.equal(shown(), tiles.length);
+  setTileReach(tilesMesh, { x: -500, y: -500, r: 50, h: 25 });
+  const few = shown();
+  assert.ok(few >= 1 && few < tiles.length / 4, `${few} of ${tiles.length}`);
+  // A tile just outside r but inside r + h stays as it was: the one beside the corner, approached from beyond.
+  const t = tiles.find(x => !x.visible)!, bs = t.geometry.boundingSphere!;
+  const at = (d: number) => ({ x: bs.center.x + d + bs.radius, y: bs.center.y, r: 0, h: 25 });
+  setTileReach(tilesMesh, at(10)); assert.equal(t.visible, false, 'beyond and within the hysteresis: stays hidden');
+  setTileReach(tilesMesh, at(-1)); assert.equal(t.visible, true, 'within r: back');
+  setTileReach(tilesMesh, at(10)); assert.equal(t.visible, true, 'within r + h: stays');
+  setTileReach(tilesMesh, at(30)); assert.equal(t.visible, false, 'past r + h: gone');
+  setTilesDrawn(tilesMesh, false); setTilesDrawn(tilesMesh, true);
+  assert.equal(t.visible, false, 'the whole/tiles switch keeps a tile beyond the reach hidden');
+  setTileReach(tilesMesh, null);
+  assert.equal(shown(), tiles.length, 'cleared: every tile');
 });
