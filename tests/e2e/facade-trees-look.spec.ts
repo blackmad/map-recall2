@@ -1,6 +1,7 @@
 import { test, expect, type Page } from '@playwright/test';
 import { mkdirSync } from 'node:fs';
 import { openRoute } from './helpers';
+import { OWN } from './worldCam';
 
 // Visual states for the generic facades + stylised trees experiment
 // (2026-10-01). Opt-in, since they write screenshots rather than assert looks:
@@ -78,6 +79,7 @@ async function parkAt(page: Page, at: readonly number[], face: readonly number[]
 
 for (const look of [{ name: 'old', facades: false, trees: false, three: false as boolean | string }, { name: 'new', facades: true, trees: true, three: false }, { name: 'three', facades: true, trees: true, three: true }, { name: 'storybook', facades: true, trees: true, three: 'storybook' }, { name: 'cartoon', facades: true, trees: true, three: 'cartoon' }, { name: 'photo', facades: true, trees: true, three: 'photo' }, { name: 'untextured', facades: true, trees: true, three: 'untextured' }]) {
   test(`look: ${look.name}`, async ({ page }, testInfo) => {
+    test.skip(OWN, 'MapLibre style assertion: deleted with the default path at P5');
     test.setTimeout(300_000);
     await page.addInitScript(([facades, trees, three]) => {
       (window as any).__canalRecallFacades = facades;
@@ -94,12 +96,12 @@ for (const look of [{ name: 'old', facades: false, trees: false, three: false as
         await page.waitForTimeout(view === 'chase' ? 7000 : 3500);
         await parkAt(page, spot.at, spot.face, view);
         await page.waitForTimeout(800);
-        await page.waitForFunction(() => { const vm = (window as any).canalRecallGame.vectorMap, t = vm._threeBuildings; if (t && t.stats().buildings <= 3000) { const c = vm.map.getCenter(); vm.map.jumpTo({ center: [c.lng + 1e-6, c.lat] }); } return !t || t.stats().buildings > 3000; }, null, { timeout: 75_000, polling: 1000 }).catch(() => {});
+        await page.waitForFunction(() => { const vm = (window as any).canalRecallGame.vectorMap, t = vm._threeBuildings; if (t && t.stats().buildings <= 3000) { const c = vm.camera.center(); (vm.map ?? vm.cameraMap).jumpTo({ center: [c.lng + 1e-6, c.lat] }); } return !t || t.stats().buildings > 3000; }, null, { timeout: 75_000, polling: 1000 }).catch(() => {});
         await page.waitForTimeout(1500);
         if (process.env.LOOK_FREE) {
           // Free camera: stop the game steering the map, then look straight at the target.
           await page.evaluate(({ at, face, zoom, pitch }) => {
-            const vm = (window as any).canalRecallGame.vectorMap, map = vm.map;
+            const vm = (window as any).canalRecallGame.vectorMap, map = vm.map ?? vm.cameraMap;
             vm.sync = () => {}; map.stop();
             const bearing = (Math.atan2((face[0] - at[0]) * Math.cos(face[1] * Math.PI / 180), face[1] - at[1]) * 180) / Math.PI;
             map.jumpTo({ center: face as [number, number], zoom, pitch, bearing });
@@ -112,10 +114,10 @@ for (const look of [{ name: 'old', facades: false, trees: false, three: false as
     }
     const stats = await page.evaluate(() => {
       const vm = (window as any).canalRecallGame.vectorMap;
-      const features = vm.map.querySourceFeatures('osm-building-appearance');
+      const features = (vm.map ?? vm.cameraMap).querySourceFeatures('osm-building-appearance');
       const withFacade = features.filter((f: any) => f.properties.facade).length;
       const withYear = features.filter((f: any) => Number.isFinite(f.properties.constructionYear)).length;
-      return { features: features.length, withFacade, withYear, trees: vm._treeCount ?? null, three: vm._threeBuildings ? vm._threeBuildings.stats() : null, zoom: vm.map.getZoom(), plainBase: JSON.stringify(vm.map.getPaintProperty('osm-colored-buildings', 'fill-extrusion-base')).slice(0, 300), active: vm._facadesActive(), order: vm.map.getLayersOrder().filter((id: string) => /building|three|poi-lab/.test(id)), facadeZoom: vm._facadeTileZoom };
+      return { features: features.length, withFacade, withYear, trees: vm._treeCount ?? null, three: vm._threeBuildings ? vm._threeBuildings.stats() : null, zoom: vm.camera.zoom(), plainBase: JSON.stringify((vm.map ?? vm.cameraMap).getPaintProperty('osm-colored-buildings', 'fill-extrusion-base')).slice(0, 300), active: vm._facadesActive(), order: (vm.map ?? vm.cameraMap).getLayersOrder().filter((id: string) => /building|three|poi-lab/.test(id)), facadeZoom: vm._facadeTileZoom };
     });
     console.log(look.name, testInfo.project.name, JSON.stringify(stats));
     expect(stats.features).toBeGreaterThan(0);

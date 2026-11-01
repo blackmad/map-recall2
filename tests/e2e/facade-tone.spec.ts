@@ -136,7 +136,7 @@ test('facade tone: GLB and procedural pixels at seven spots', async ({ page }, i
         vm.__toneLandmarks ??= vm._signatureLandmarks?.enabled;
         vm._threeBuildings?.setVisible(!(what === 'facades' || what === 'both'));
         if (vm._signatureLandmarks) vm._signatureLandmarks.enabled = what === 'landmarks' || what === 'both' ? false : vm.__toneLandmarks;
-        vm.map.triggerRepaint();
+        (vm.map ?? vm.cameraMap).triggerRepaint();
       }, what);
       await page.waitForTimeout(800);
       return page.screenshot();
@@ -149,11 +149,11 @@ test('facade tone: GLB and procedural pixels at seven spots', async ({ page }, i
       sf.scene.overrideMaterial = new THREE.ShaderMaterial({ side: THREE.DoubleSide,
         vertexShader: 'varying vec3 vW; void main() { vec4 w = modelMatrix * vec4(position, 1.0); vW = w.xyz; gl_Position = projectionMatrix * viewMatrix * w; }',
         fragmentShader: 'varying vec3 vW; void main() { vec3 n = normalize(cross(dFdx(vW), dFdy(vW))); gl_FragColor = abs(n.z) > 0.5 ? vec4(1.0, 0.0, 0.0, 1.0) : vec4(0.0, 1.0, 0.0, 1.0); }' });
-      vm.map.triggerRepaint();
+      (vm.map ?? vm.cameraMap).triggerRepaint();
     });
     await page.waitForTimeout(800);
     const faces = await page.screenshot();
-    await page.evaluate(() => { const vm = (window as any).canalRecallGame.vectorMap; vm._sharedFrame.scene.overrideMaterial = null; vm.map.triggerRepaint(); });
+    await page.evaluate(() => { const vm = (window as any).canalRecallGame.vectorMap; vm._sharedFrame.scene.overrideMaterial = null; (vm.map ?? vm.cameraMap).triggerRepaint(); });
     await page.evaluate(() => { for (const e of Array.from(document.body.querySelectorAll('*'))) (e as HTMLElement).style.visibility = ''; });
     await page.evaluate(() => { const vm = (window as any).canalRecallGame.vectorMap; if (vm.__toneSync) vm.sync = vm.__toneSync; });
     const s = await raw(shot);

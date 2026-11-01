@@ -22,7 +22,7 @@ test('render-governor pixel-ratio steps never put an empty (white) canvas on scr
   test.setTimeout(300_000);
   await openRoute(page, { travelMode: 'car', viewMode: 'chase', abortHeavyTiles: false, enterRacing: false, playerTimeoutMs: 180_000 });
   await page.waitForFunction(() => (window as any).canalRecallGame.state === 4, null, { timeout: 180_000 });
-  expect(await page.evaluate(() => (window as any).canalRecallGame.vectorMap.map.getPixelRatio())).toBe(2);
+  expect(await page.evaluate(() => ((window as any).canalRecallGame.vectorMap.map ?? (window as any).canalRecallGame.vectorMap.cameraMap).getPixelRatio())).toBe(2);
   const cdp = await page.context().newCDPSession(page);
   const frames: Array<{ t: number; luma: number }> = [];
   cdp.on('Page.screencastFrame', (f: any) => {
