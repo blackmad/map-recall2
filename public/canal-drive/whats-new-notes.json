@@ -3,6 +3,27 @@
   "notes": [
     {
       "date": "2026-11-01",
+      "title": "Transvaalbuurt's 1911 rows start to appear",
+      "text": "Four stretches of the 1908–1914 five-storey rows on Retiefstraat 69–73 and Pretoriusstraat 79–87 and 86–90 are now drawn from a measured type instead of the plain city box: dark brick with white frames and stone lintels, a balcony on the centre axis of each upper storey, and a pointed gable or wall dormer where the photo shows one. Two kit fixes made this possible: a saddle roof under a pointed gable no longer overlaps the gable's brick, and a row's crown comes from its type unless the panorama's skyline is really sky (branches over the roofline used to become gables). Ten pands; the rest of the family is held until the kit can draw shared gables, white dormers and the low shouldered gables these streets favour.",
+      "where": [
+        4.91706,
+        52.35392
+      ],
+      "images": [
+        {
+          "src": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/whats-new/2026-11-01-transvaalbuurt-1911-rows.jpg",
+          "alt": "Retiefstraat 69-73 from the street: three five-storey brick fronts with pointed tile gables among the plain city-tier blocks",
+          "caption": "Retiefstraat 69–73 from the street, the first 1911 rows."
+        },
+        {
+          "src": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/whats-new/2026-11-01-transvaalbuurt-retiefstraat-strip.jpg",
+          "alt": "Panorama strip of Retiefstraat 45-75 over the model at the same scale: only 69C-73A are drawn, the rest of the face stays generic",
+          "caption": "The 2023 panorama strip over the model at the same scale: 69C–73A drawn, the rest held."
+        }
+      ]
+    },
+    {
+      "date": "2026-11-01",
       "title": "Clicking an ordinary building no longer freezes the ride",
       "text": "Since building facts started loading on the first click (31 October), a click on a house with a register year but no article asked for its facts again from inside its own refresh, forever, and the page stopped responding. One request per card now; the year card opens and the rest fills in once."
     },
