@@ -61,6 +61,8 @@ export class LabelLayer {
   private occludedTest: ((c: LabelCandidate) => boolean) | null = null;
   /** Between full placements: sightlines per frame, and whether street and water names are re-tested (A/B knobs). */
   readonly between = { budget: OCCLUSION_PER_FRAME, lines: true };
+  /** Copies of street and water names (instanceKeys) found hidden since the last full placement. */
+  private readonly hiddenCopies = new Set<string>();
   /** Next drawn POI winner to re-test between full placements. */
   private occlusionCursor = 0;
   setOcclusion(test: ((c: LabelCandidate) => boolean) | null, frontOf: ((id: string) => Vec2 | null) | null = null, lineTest: ((id: string, anchors: readonly Vec2[]) => boolean) | null = null): void {
@@ -178,31 +180,37 @@ export class LabelLayer {
     // cost a few dozen sightlines, not every candidate in view. Only POI points from the map are tested: the
     // game's own points (priority >= 1e6: the answered street, ferry landings, the destination) and the draped
     // street, water and neighbourhood names are exempt.
-    let occluded = 0;
+    let occluded = 0, occludedCopies = 0;
     if (full && this.occludedTest) {
+      this.hiddenCopies.clear();
       const tested = new Set<string>(), hidden = new Set<string>();
       for (let round = 0; ; round++) {
         let dropped = 0, moved = 0;
+        // A long street or canal is placed several times under one id (repeatDistance): each copy is tested on its own
+        // anchors and a hidden copy is dropped alone; the name is not withdrawn from its other, visible copies.
+        const keys = instanceKeys(this.placed);
+        const hiddenCopies = new Set<PlacedLabel>();
         for (const l of this.placed) {
           const c = original.get(l.id);
-          if (!c || tested.has(c.id) || c.priority >= 1e6) continue;
+          if (!c || c.priority >= 1e6) continue;
           if ((c.kind === 'street' || c.kind === 'water') && l.anchors && this.lineTest) {
-            tested.add(c.id);
-            if (this.lineTest(c.id, l.anchors)) { hidden.add(c.id); dropped++; }
+            if (this.lineTest(keys.get(l)!, l.anchors)) hiddenCopies.add(l);
             continue;
           }
+          if (tested.has(c.id)) continue;
           if (c.kind !== 'poi' || !c.at) continue;
           tested.add(c.id);
           const r = this.testOcclusion(c);
           if (r.hidden) { hidden.add(c.id); dropped++; } else if (r.moved) moved++;
         }
+        if (hiddenCopies.size) { this.placed = this.placed.filter(l => !hiddenCopies.has(l)); occludedCopies += hiddenCopies.size; }
         if (!dropped && !moved) break;
         // Out of rounds: drop the hidden newcomers without filling their places.
         if (round === OCCLUSION_ROUNDS) { this.placed = this.placed.filter(l => !hidden.has(l.id)); break; }
         candidates = candidates.filter(c => !hidden.has(c.id));
         this.placed = placeLabels(shifted(candidates), options);
       }
-      occluded = hidden.size;
+      occluded = hidden.size + occludedCopies;
     } else if (!full && this.occludedTest) {
       // Between full placements the camera still moves (up to 400 ms, or 24 px / 2°): re-test a few of the drawn
       // winners per frame, in turn, and drop one that went behind a building since (the next full pass re-tests it
@@ -214,6 +222,7 @@ export class LabelLayer {
         if (!c || c.priority >= 1e6) return false;
         return (c.kind === 'poi' && !!c.at) || (this.between.lines && (c.kind === 'street' || c.kind === 'water') && !!l.anchors?.length && !!this.lineTest);
       });
+      const keys = instanceKeys(this.placed);
       let spent = 0, k = 0;
       for (; k < due.length && spent < this.between.budget; k++) {
         const l = due[(this.occlusionCursor + k) % due.length], c = original.get(l.id)!;
@@ -223,12 +232,13 @@ export class LabelLayer {
           if (this.testOcclusion(c).hidden) this.winners.delete(l.id);
         } else {
           spent += l.anchors!.length;
-          if (this.lineTest!(c.id, l.anchors!)) this.winners.delete(l.id);
+          const key = keys.get(l)!;
+          if (this.lineTest!(key, l.anchors!)) this.hiddenCopies.add(key); else this.hiddenCopies.delete(key);
         }
       }
       this.occlusionCursor = due.length ? (this.occlusionCursor + k) % due.length : 0;
       this.stats.betweenMs += performance.now() - t0; this.stats.betweenSightlines += spent;
-      if (due.length) this.placed = this.placed.filter(l => this.winners.has(l.id));
+      if (due.length) this.placed = this.placed.filter(l => this.winners.has(l.id) && !this.hiddenCopies.has(keys.get(l)!));
     }
     if (full) {
       const ms = performance.now() - now;
@@ -249,6 +259,16 @@ export type LabelPose = readonly [number, number, number, number, number];
 const OCCLUSION_ROUNDS = 3;
 /** Sightlines spent per frame re-testing drawn winners between full placements (a sightline is ~10-30 us). */
 const OCCLUSION_PER_FRAME = 8;
+
+/**
+ * A key per placed copy of a name: the id, then its order among the copies of that id (`s12@0`, `s12@1`). Line
+ * occlusion keeps its hysteresis per copy under this key.
+ */
+export function instanceKeys(placed: readonly PlacedLabel[]): Map<PlacedLabel, string> {
+  const n = new Map<string, number>(), out = new Map<PlacedLabel, string>();
+  for (const l of placed) { const k = n.get(l.id) ?? 0; n.set(l.id, k + 1); out.set(l, `${l.id}@${k}`); }
+  return out;
+}
 
 export function samePose(a: LabelPose, b: LabelPose): boolean {
   return Math.abs(a[0] - b[0]) < 0.01 && Math.abs(a[1] - b[1]) < 0.01 && Math.abs(a[2] - b[2]) < 1e-4 && Math.abs(a[3] - b[3]) < 0.01 && Math.abs(a[4] - b[4]) < 0.01;
