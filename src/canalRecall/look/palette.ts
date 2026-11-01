@@ -431,6 +431,42 @@ export const GARDEN_ROOM_TONES = {
   lidEpdm: '#3c3e40',
 } as const;
 
+/**
+ * Street furniture (streetFurniture/models.ts, lane #170, 2026-11-01). Sampled from Gemeente Amsterdam panoramas
+ * (2025 360geo missions, CC BY 4.0) with scripts/street-furniture/sample-colour.ts, then neutralised for the rig's
+ * cyan cast (R x1.14, G x0.92, B x0.81, from the container body against NCS 7000 neutral grey). Crops and sheets:
+ * staging/street-furniture/measure-*.jpg.
+ *   - underground container column: NCS 7000 grey #585c5e (sunlit face #535d60 raw), stainless drum #b9bdba,
+ *     galvanised floor plate #9da3a4, insert slot #26292b; fraction lids glass yellow #e2c34e (raw #dbe579),
+ *     paper blue #2f569e (raw #212c3a at dusk), rest grey with the dark chute, GFT green and textile red as priors;
+ *   - canal lantern post: Amsterdam maroon #6e4038 (raw #655751), lantern glass #c9c7b4, roof #4a302b;
+ *   - hooked / modern pole: light grey #bdbfbb (raw #a2c9de), luminaire #d8dad6;
+ *   - abri: anthracite frame #3a3d40, ad panel light box #e8ebe4, bench #6b6e70;
+ *   - reclamezuil: base ring #8f8c76, cornice and roof grey-green #5d6259 (raw #626a65), poster tones per column;
+ *   - bike hoop galvanised #9fa4a3; litter bin grey #6f7476 (abri photo).
+ */
+export const STREET_FURNITURE_TONES = {
+  containerBody: '#585c5e',
+  containerDrum: '#b9bdba',
+  containerPlate: '#9da3a4',
+  containerSlot: '#26292b',
+  fraction: { glas: '#e2c34e', papier: '#2f569e', rest: '#4a4f52', gft: '#4f8a3c', textiel: '#a23a37', brood: '#c08a3e', plastic: '#e07a2e', grof: '#4a4f52', unknown: '#4a4f52' } as Readonly<Record<string, string>>,
+  lanternPost: '#6e4038',
+  lanternGlass: '#c9c7b4',
+  lanternRoof: '#4a302b',
+  pole: '#bdbfbb',
+  luminaire: '#d8dad6',
+  abriFrame: '#3a3d40',
+  abriPanel: '#e8ebe4',
+  abriBench: '#6b6e70',
+  columnBase: '#8f8c76',
+  columnCornice: '#5d6259',
+  posters: ['#d9d3c2', '#3d64a8', '#e3c640', '#c4553f', '#e9e6dc', '#5a8f6a'] as const,
+  hoop: '#9fa4a3',
+  bin: '#6f7476',
+  binLid: '#5d6264',
+} as const;
+
 /** OSM `building:material` → display hue. A material family suggests a hue, never a measured wall colour. */
 export const MATERIAL_WALL_COLOURS: Readonly<Record<string, string>> = { brick: '#9a5846', stone: '#bcb5a6', concrete: '#b9b8b2', plaster: '#ded8cb', stucco: '#ded8cb', wood: '#8c6f55', metal: '#999c9e', glass: '#8d9a9e' };
 export function materialWallDisplayPrior(material: unknown): string | null {
