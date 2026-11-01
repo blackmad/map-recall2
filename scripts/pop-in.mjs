@@ -509,6 +509,7 @@ const browser = await chromium.launch({ headless: process.env.HEADED !== '1', ex
 const results = [];
 for (let n = 0; n < runs; n++) {
   const r = await run(browser, n);
+  if (r.raw.captures.length < 2) { console.log(`run ${n}: ${r.raw.captures.length} frames captured; installs logged ${r.raw.installs?.length ?? 0}; errors`, r.errors.slice(0, 5)); continue; }
   const s = { ...summarise(r), run: n };
   if (framesDir) s.strips = await strips(r.dump, framesDir, `${route}-run${n}`);
   // The raw series, for --resummarise: captures, per-frame results (no masks) and the streaming steps.
