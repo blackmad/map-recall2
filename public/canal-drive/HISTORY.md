@@ -1,5 +1,31 @@
 # Canal Recall — what is built
 
+**Time to ride by phase on the phone profile: the routing graph is the largest phase; its stitch pass reads one grid cell, build 754 → 473 ms (2026-11-01, P3).**
+Road lane (5f0fad294). `scripts/time-to-ride-device.mjs` times submit →
+racing by phase (fetchRoads, buildRoadSegments, loadLandmarks,
+routingGraph, surfaceIndex, planRoute, settle hold) on the emulated iPhone
+13 at 4× CPU, or on the real device through safaridriver (`--target
+safari`). Emulated, own engine, three runs: routingGraph 2.83–2.89 s of
+the ~4.8 s to the 0.92 step; settle hold 1.05–2.10 s, never timing out,
+always waiting on facades and building tiles; submit → racing 6.3 / 7.7 /
+11.9 s (one 4.6 s stall before prepareIntro). The cut: in the
+junction-stitch pass each endpoint reads its own grid cell instead of the
+3×3 block (0.57 M candidates instead of 5.1 M; safe because the span
+padding is at least the stitch radius), survivors kept in the 3×3 scan
+order so the graph is identical (`road-graph-route-identity.ts --compare`:
+identical structure, connectors, 3 full trees, 71 pairs × 4 planners).
+City graph build in node 754 → 473 ms; in emulation the span moved only
+2.85 → ~2.43 s because the build yields every 48 ms and SwiftShader frames
+between slices take the wall time; on a real GPU about 0.3 s is expected,
+unmeasured. The real device could not be timed (safaridriver: locked,
+then "not paired"); today's tier rides read navigation → racing 5.7 s. Two
+levers not taken yet: build the city world during the briefing
+(route-independent; removes ~4–5 s at 4× for anyone who reads the
+briefing, nothing for an immediate submit) and a prebuilt graph binary.
+Integrator decision: lever (a) first with two probes (immediate submit =
+the gate, 5 s briefing dwell = the player case), (b) if the gate is still
+red. `road-graph.bundle.js` rebuilt; `test:road-graph` and lint clean.
+
 **Pop-in measured the way the player sees it: near zero on the seeded ride on both engines, the "unexplained" bucket is Westerkerk parallax; the 35 m phone arrivals are a measurement artefact; landmarks free their vertex arrays after upload (2026-11-01, P3/#130).**
 Road lane (4013065e1 `pop-in.mjs --route seeded`; 69544e547). Screen-space
 pop, desktop, 1× CPU, 60 s, committed bundles: seeded Anne Frank →

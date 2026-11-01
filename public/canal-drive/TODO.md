@@ -435,9 +435,14 @@ Jordaan number is Westerkerk parallax (a detector false positive); the 24
 phone arrivals at 35 m are a measurement artefact with nil visible cost
 (closed). Blocked on the user's answer to #168 (what pops, where, when); then
 the detector becomes depth-aware (road lane, second item) and the owner is
-cut. Road lane now: time to ride on the real phone, navigation → racing 5.7 s
-vs the 4 s gate (per-phase table, largest phase first; #150 landing animation
-excluded). Heap levers from the `_canalSharedFrame` breakdown:
+cut. Road lane now: time to ride (HISTORY "Time to ride by phase on the phone
+profile"): routing graph is the largest phase (2.85 s emulated), stitch pass
+cut merged (5f0fad294, graph identical); next lever (a) build the city world
+during the briefing with two probes (immediate submit = gate ≤ 4 s, 5 s
+briefing dwell = player case), then (b) a prebuilt graph binary if still red;
+real-device timing owed once the phone is unlocked and re-trusted
+(`scripts/time-to-ride-device.mjs --target safari`); #150 landing animation
+excluded. Heap levers from the `_canalSharedFrame` breakdown:
 OverviewLayer keeps the decoded overview data + rebuild closures + prebuilt
 geometry, 45.6 MB (L1, after its flip blockers); facade geometry CPU arrays
 kept after upload 27.1 MB (materials, after ground step 2); landmark CPU

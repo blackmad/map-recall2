@@ -224,6 +224,9 @@ type IndexedSpan = Readonly<{
   segmentIndex: number;
   /** Position in build order, for de-duplicating spans that sit in several grid cells. */
   id: number;
+  /** First grid column and row of the padded span (addSpanToGrid), for the stitch's first-seen order. */
+  gx0: number;
+  gy0: number;
 }>;
 
 /**
@@ -403,18 +406,19 @@ function* roadGraphStages<TMetadata>(
     }
     builderAddLink(builder, a, b, Math.hypot(xs[a] - xs[b], ys[a] - ys[b]), kind, segmentIndex);
   };
-  const addSpanToGrid = (span: IndexedSpan, width: number): void => {
+  const addSpanToGrid = (a: RoadGraphPoint, b: RoadGraphPoint, segmentIndex: number, width: number): void => {
     const pad = width + gridPadding;
-    const gx0 = Math.floor((Math.min(span.a.x, span.b.x) - pad) / gridCellSize);
-    const gx1 = Math.floor((Math.max(span.a.x, span.b.x) + pad) / gridCellSize);
-    const gy0 = Math.floor((Math.min(span.a.y, span.b.y) - pad) / gridCellSize);
-    const gy1 = Math.floor((Math.max(span.a.y, span.b.y) + pad) / gridCellSize);
+    const gx0 = Math.floor((Math.min(a.x, b.x) - pad) / gridCellSize);
+    const gx1 = Math.floor((Math.max(a.x, b.x) + pad) / gridCellSize);
+    const gy0 = Math.floor((Math.min(a.y, b.y) - pad) / gridCellSize);
+    const gy1 = Math.floor((Math.max(a.y, b.y) + pad) / gridCellSize);
+    const span: IndexedSpan = { a, b, segmentIndex, id: spanCount++, gx0, gy0 };
     for (let gx = gx0; gx <= gx1; gx++) {
       for (let gy = gy0; gy <= gy1; gy++) {
         const key = cellKey(gx, gy);
-        const bucket = spanGrid.get(key) ?? [];
-        bucket.push(span);
-        spanGrid.set(key, bucket);
+        const bucket = spanGrid.get(key);
+        if (bucket) bucket.push(span);
+        else spanGrid.set(key, [span]);
       }
     }
   };
@@ -435,7 +439,7 @@ function* roadGraphStages<TMetadata>(
       if (Math.hypot(a.x - xs[from], a.y - ys[from]) > CONNECTOR_MIN || Math.hypot(b.x - xs[to], b.y - ys[to]) > CONNECTOR_MIN) {
         connectors.push({ a: { x: xs[from], y: ys[from] }, b: { x: xs[to], y: ys[to] }, segmentIndex });
       }
-      addSpanToGrid({ a, b, segmentIndex, id: spanCount++ }, segment.width ?? 0);
+      addSpanToGrid(a, b, segmentIndex, segment.width ?? 0);
     }
     if (segmentIndex % 32 === 0) yield;
   }
@@ -465,6 +469,27 @@ function* roadGraphStages<TMetadata>(
   let stamp = 0;
   // Beyond the radius plus a hair on either axis, the projection is too: skip it.
   const reach = junctionStitchRadius + 1e-6;
+  const outOfReach = (endpoint: RoadGraphPoint, span: IndexedSpan): boolean =>
+    endpoint.x < Math.min(span.a.x, span.b.x) - reach || endpoint.x > Math.max(span.a.x, span.b.x) + reach
+    || endpoint.y < Math.min(span.a.y, span.b.y) - reach || endpoint.y > Math.max(span.a.y, span.b.y) + reach;
+  // A span within the stitch radius of an endpoint is padded into the endpoint's own cell (padding >= radius), so
+  // that one bucket holds every span that can stitch: about a ninth of the 3x3 scan's candidates (time to ride,
+  // 2026-11-01: 5.1 M candidates for 0.75 M in reach on the city graph). The survivors are put back in the order
+  // the 3x3 scan meets them (first cell in scan order, then build order), so links, nodes and connectors come out
+  // identical. A padding below the radius (or a radius past a cell) keeps the scan.
+  const ownCell = gridPadding >= junctionStitchRadius && junctionStitchRadius <= gridCellSize;
+  const scanRank = (span: IndexedSpan, gx: number, gy: number): number =>
+    (Math.max(-1, span.gx0 - gx) + 1) * 3 + Math.max(-1, span.gy0 - gy) + 1;
+  const stitchCandidates = (endpoint: RoadGraphPoint, segmentIndex: number): IndexedSpan[] => {
+    if (!ownCell) return spansNear(endpoint);
+    const gx = Math.floor(endpoint.x / gridCellSize), gy = Math.floor(endpoint.y / gridCellSize);
+    const bucket = spanGrid.get(cellKey(gx, gy));
+    if (!bucket) return [];
+    const found: IndexedSpan[] = [];
+    for (const span of bucket) if (span.segmentIndex !== segmentIndex && !outOfReach(endpoint, span)) found.push(span);
+    if (found.length > 1) found.sort((p, q) => (scanRank(p, gx, gy) - scanRank(q, gx, gy)) || (p.id - q.id));
+    return found;
+  };
 
   for (let segmentIndex = 0; segmentIndex < segments.length; segmentIndex++) {
     const segment = segments[segmentIndex];
@@ -473,10 +498,9 @@ function* roadGraphStages<TMetadata>(
     for (const endpoint of endpoints) {
       const from = nodeIndex.get(keyFor(endpoint));
       if (from === undefined) continue;
-      for (const span of spansNear(endpoint)) {
+      for (const span of stitchCandidates(endpoint, segmentIndex)) {
         if (span.segmentIndex === segmentIndex) continue;
-        if (endpoint.x < Math.min(span.a.x, span.b.x) - reach || endpoint.x > Math.max(span.a.x, span.b.x) + reach
-          || endpoint.y < Math.min(span.a.y, span.b.y) - reach || endpoint.y > Math.max(span.a.y, span.b.y) + reach) continue;
+        if (outOfReach(endpoint, span)) continue;
         const projection = closestPointOnSegment(endpoint, span.a, span.b);
         if (projection.distance > junctionStitchRadius) continue;
         // Split the through span at the actual projected junction. Linking the
