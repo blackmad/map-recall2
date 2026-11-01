@@ -3,7 +3,7 @@
  "street": "Paardekraalstraat",
  "library": "transvaalbuurt",
  "stripDate": "2023-01-02",
- "seconds": 15.07,
+ "seconds": 7.84,
  "thresholds": {
   "minScore": 0.7,
   "margin": 0.05,
@@ -17,11 +17,9 @@
   {
    "face": "paardekraal-1-15-r1",
    "pands": [
-    "0363100012073473",
-    "0363100012063275"
+    "0363100012073473"
    ],
-   "passed": false,
-   "triangles": 3995
+   "installed": true
   }
  ],
  "pands": [
@@ -169,20 +167,21 @@
    },
    "status": "held",
    "stage": "likeness",
-   "reason": "edge NCC 0.121 < 0.15 (photo vs model body; likeness.ts FAIL: glazing storey band off by 0.16; columns 3 vs photo 4)",
+   "reason": "edge NCC 0.092 < 0.15 (photo vs model body; likeness.ts FAIL: glazing storey band off by 0.15; window shape square vs photo tall; columns 3 vs photo 4)",
    "likeness": {
     "pandId": "0363100012151513",
-    "ncc": 0.121,
-    "nccRaw": 0.121,
+    "ncc": 0.092,
+    "nccRaw": 0.092,
     "shiftM": [
      -0.35,
-     -0.35
+     -0.4
     ],
-    "usable": 0.95,
+    "usable": 0.94,
     "abstain": null,
     "verdict": "FAIL",
     "reasons": [
-     "glazing storey band off by 0.16",
+     "glazing storey band off by 0.15",
+     "window shape square vs photo tall",
      "columns 3 vs photo 4"
     ],
     "wall": {
@@ -192,17 +191,21 @@
     },
     "glazing": {
      "photo": 0.41,
-     "model": 0.38
+     "model": 0.37
     },
     "columns": {
      "photo": 4,
      "model": 3
     },
-    "iou": 0.407
+    "iou": 0.383
    },
    "challengers": {
-    "transvaal-1911-five-storey-tall": 0.121,
-    "transvaal-1911-five-storey-tall~m": 0.121
+    "transvaal-1911-five-storey-tall": 0.092,
+    "transvaal-1911-five-storey-tall~m": 0.092,
+    "transvaal-1911-five-storey": 0.11,
+    "transvaal-1911-five-storey~m": 0.11,
+    "transvaal-1923-portiek-tower": 0.271,
+    "transvaal-1923-portiek": 0.217
    }
   },
   {
@@ -253,7 +256,7 @@
    },
    "status": "held",
    "stage": "likeness",
-   "reason": "edge NCC 0.011 < 0.15 (photo vs model body; likeness.ts FAIL: glazing storey band off by 0.28 mean 0.36 vs photo 0.47)",
+   "reason": "edge NCC 0.011 < 0.15 (photo vs model body; likeness.ts FAIL: glazing storey band off by 0.27 mean 0.37 vs photo 0.47)",
    "likeness": {
     "pandId": "0363100012136018",
     "ncc": 0.011,
@@ -266,7 +269,7 @@
     "abstain": null,
     "verdict": "FAIL",
     "reasons": [
-     "glazing storey band off by 0.28 mean 0.36 vs photo 0.47"
+     "glazing storey band off by 0.27 mean 0.37 vs photo 0.47"
     ],
     "wall": {
      "photo": "#756258",
@@ -275,13 +278,13 @@
     },
     "glazing": {
      "photo": 0.47,
-     "model": 0.36
+     "model": 0.37
     },
     "columns": {
      "photo": null,
      "model": 4
     },
-    "iou": 0.269
+    "iou": 0.279
    },
    "challengers": {
     "transvaal-1911-five-storey-tall": 0.011,
@@ -506,17 +509,18 @@
      "brick": "#866d61",
      "evidence": "strip 2023-01-02 span 1639-1881: trim-normalised wall (buildingRecipe/measureFacade.ts)"
     },
-    "crown": "dormer"
+    "crown": "none"
    },
    "notes": [
     "near tie with transvaal-1911-five-storey (0.85)",
     "door left",
-    "crown dormer: skyline rise 2.38 m, width 1.65 m, top 0.1 m"
+    "crown none: reviewer pin (paardekraal-1-15-r1 sheet 2023-01-02 (lone pand, #156): a flat cornice; the box over it is a later glazed roof room set back from the front, not a dormer (the kit cannot draw it))",
+    "lone pand: a stair block on its own: transvaal-1911-five-storey-tall opts in to one-house faces from 5 m (frontage 6.04 m)"
    ],
    "likeness": {
     "pandId": "0363100012073473",
-    "ncc": 0.154,
-    "nccRaw": 0.154,
+    "ncc": 0.175,
+    "nccRaw": 0.175,
     "shiftM": [
      -0.15,
      -0.4
@@ -525,31 +529,34 @@
     "abstain": null,
     "verdict": "FAIL",
     "reasons": [
-     "glazing storey band off by 0.37 mean 0.38 vs photo 0.24"
+     "wall dL +0.33",
+     "glazing storey band off by 0.38 mean 0.38 vs photo 0.23",
+     "wall family unresolved (#37312e is dark and neutral, brick courses not resolved): lightness and hue judged only"
     ],
     "wall": {
-     "photo": "#8c6f62",
+     "photo": "#37312e",
      "model": "#9a8073",
-     "dL": 0.061
+     "dL": 0.329
     },
     "glazing": {
-     "photo": 0.24,
+     "photo": 0.23,
      "model": 0.38
     },
     "columns": {
      "photo": 3,
      "model": 3
     },
-    "iou": 0.382
+    "iou": 0.355
    },
    "challengers": {
-    "transvaal-1911-five-storey-tall": 0.154,
-    "transvaal-1911-five-storey-tall~m": 0.154,
-    "transvaal-1911-five-storey": 0.095,
-    "transvaal-1911-five-storey~m": 0.095,
-    "transvaal-1923-portiek-tower": 0.295,
-    "transvaal-1923-portiek": 0.393
-   }
+    "transvaal-1911-five-storey-tall": 0.175,
+    "transvaal-1911-five-storey-tall~m": 0.175,
+    "transvaal-1911-five-storey": 0.104,
+    "transvaal-1911-five-storey~m": 0.104,
+    "transvaal-1923-portiek-tower": 0.301,
+    "transvaal-1923-portiek": 0.396
+   },
+   "installed": "paardekraal-1-15-r1"
   },
   {
    "pandId": "0363100012063275",
@@ -597,64 +604,11 @@
     "voidShare": 0,
     "foliageShare": 0
    },
-   "status": "placed",
-   "type": "transvaal-1911-five-storey-tall",
-   "score": 1,
-   "runnerUp": {
-    "typeId": "transvaal-1911-five-storey",
-    "score": 1
-   },
-   "placement": {
-    "type": "transvaal-1911-five-storey-tall",
-    "measuredPalette": {
-     "brick": "#756054",
-     "evidence": "strip 2023-01-02 span 1881-2234: trim-normalised wall (buildingRecipe/measureFacade.ts)"
-    }
-   },
-   "notes": [
-    "near tie with transvaal-1911-five-storey (1)",
-    "door left",
-    "crown point-gable: skyline rise 2.3 m, width 3.1 m, top 0.57 m"
-   ],
-   "likeness": {
-    "pandId": "0363100012063275",
-    "ncc": 0.244,
-    "nccRaw": 0.244,
-    "shiftM": [
-     0,
-     -0.4
-    ],
-    "usable": 0.99,
-    "abstain": null,
-    "verdict": "FAIL",
-    "reasons": [
-     "glazing storey band off by 0.18 mean 0.36 vs photo 0.48",
-     "window shape square vs photo tall",
-     "columns 3 vs photo 6"
-    ],
-    "wall": {
-     "photo": "#766156",
-     "model": "#8d7465",
-     "dL": 0.075
-    },
-    "glazing": {
-     "photo": 0.48,
-     "model": 0.36
-    },
-    "columns": {
-     "photo": 6,
-     "model": 3
-    },
-    "iou": 0.452
-   },
-   "challengers": {
-    "transvaal-1911-five-storey-tall": 0.244,
-    "transvaal-1911-five-storey-tall~m": 0.244,
-    "transvaal-1911-five-storey": 0.196,
-    "transvaal-1911-five-storey~m": 0.196,
-    "transvaal-1923-portiek-tower": 0.219,
-    "transvaal-1923-portiek": 0.229
-   }
+   "status": "held",
+   "stage": "review",
+   "reason": "review: five narrow axes with the pointed gable over the right three; drawn as three wide axes under a gable over the whole front (paardekraal-1-15-r1 sheet) (round 3 review at gallery size, 2026-11-01)",
+   "likeness": null,
+   "challengers": {}
   }
  ]
 }

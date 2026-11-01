@@ -3,7 +3,7 @@
  "street": "President Steynstraat",
  "library": "transvaalbuurt",
  "stripDate": "2020-04-29",
- "seconds": 0.84,
+ "seconds": 0.83,
  "thresholds": {
   "minScore": 0.7,
   "margin": 0.05,
@@ -13,7 +13,18 @@
   "widthSlackM": 0.4,
   "flatRoofRiseM": 1.5
  },
- "runs": [],
+ "runs": [
+  {
+   "face": "steyn-9-19-r1",
+   "pands": [
+    "0363100012063929",
+    "0363100012073365",
+    "0363100012145744",
+    "0363100012138134"
+   ],
+   "installed": true
+  }
+ ],
  "pands": [
   {
    "pandId": "0363100012063929",
@@ -21,78 +32,19 @@
    "builtYear": 1928,
    "widthM": 6.67,
    "eavesM": 13.1,
-   "storeys3dbag": 5,
-   "bagBay": null,
-   "strip": {
-    "wall": "#785a52",
-    "wallRaw": "#664f4a",
-    "skyline": {
-     "eavesM": 13.8,
-     "eavesRow": 131,
-     "confidence": 1,
-     "crown": {
-      "widthM": 0.8,
-      "riseM": 1.3,
-      "topWidthM": 0.57,
-      "centre": 0.87
-     }
+   "status": "placed",
+   "type": "transvaal-1928-plain-row",
+   "placement": {
+    "type": "transvaal-1928-plain-row",
+    "measuredPalette": {
+     "brick": "#785a52",
+     "evidence": "strip 2020-04-29 span 0-267: trim-normalised wall (buildingRecipe/measureFacade.ts)"
     },
-    "stucco": false,
-    "bands": 5,
-    "columns": 3,
-    "frontClass": "columns",
-    "doorSide": null,
-    "accentSide": null,
-    "accentShare": 0.186,
-    "structure": {
-     "bayWidthM": 0,
-     "bayCentre": null,
-     "balconies": false,
-     "why": "no dark open axis, 0 wide slab(s)",
-     "openAxes": [],
-     "slabs": []
-    },
-    "voidShare": 0,
-    "foliageShare": 0.01
+    "paletteOverrides": {
+     "brick": "#4c3c37"
+    }
    },
-   "status": "held",
-   "stage": "match",
-   "reason": "every type vetoed (best transvaal-1911-five-storey-tall: built 1928, type 1908-1914)",
-   "best": {
-    "type": "transvaal-1911-five-storey-tall",
-    "score": 0,
-    "veto": [
-     "built 1928, type 1908-1914"
-    ],
-    "criteria": [
-     {
-      "key": "eaves",
-      "weight": 2,
-      "score": 1,
-      "note": "3DBAG eaves 13.1 m = 4 storeys of 3.27 m vs the type's 3.55 m"
-     },
-     {
-      "key": "storeys",
-      "weight": 1,
-      "score": 1,
-      "note": "3DBAG bouwlagen 5 vs 5"
-     },
-     {
-      "key": "stucco",
-      "weight": 2,
-      "score": 1,
-      "note": "strip accent share 0.164 (brick)"
-     },
-     {
-      "key": "columns",
-      "weight": 1.5,
-      "score": 0.4,
-      "note": "strip columns 3 vs 4 bays"
-     }
-    ]
-   },
-   "likeness": null,
-   "challengers": {}
+   "installed": "steyn-9-19-r1"
   },
   {
    "pandId": "0363100012073365",
@@ -100,78 +52,20 @@
    "builtYear": 1928,
    "widthM": 6.65,
    "eavesM": 13.17,
-   "storeys3dbag": 5,
-   "bagBay": null,
-   "strip": {
-    "wall": "#755651",
-    "wallRaw": "#664d45",
-    "skyline": {
-     "eavesM": 14,
-     "eavesRow": 123,
-     "confidence": 1,
-     "crown": {
-      "widthM": 1.45,
-      "riseM": 1.9,
-      "topWidthM": 0.4,
-      "centre": 0.88
-     }
+   "status": "placed",
+   "type": "transvaal-1928-plain-row",
+   "placement": {
+    "type": "transvaal-1928-plain-row",
+    "mirror": true,
+    "measuredPalette": {
+     "brick": "#755651",
+     "evidence": "strip 2020-04-29 span 267-533: trim-normalised wall (buildingRecipe/measureFacade.ts)"
     },
-    "stucco": false,
-    "bands": 3,
-    "columns": 3,
-    "frontClass": "columns",
-    "doorSide": "right",
-    "accentSide": null,
-    "accentShare": 0.169,
-    "structure": {
-     "bayWidthM": 0,
-     "bayCentre": null,
-     "balconies": false,
-     "why": "no dark open axis, 0 wide slab(s)",
-     "openAxes": [],
-     "slabs": []
-    },
-    "voidShare": 0,
-    "foliageShare": 0.04
+    "paletteOverrides": {
+     "brick": "#4c3c37"
+    }
    },
-   "status": "held",
-   "stage": "match",
-   "reason": "every type vetoed (best transvaal-1911-five-storey-tall: built 1928, type 1908-1914)",
-   "best": {
-    "type": "transvaal-1911-five-storey-tall",
-    "score": 0,
-    "veto": [
-     "built 1928, type 1908-1914"
-    ],
-    "criteria": [
-     {
-      "key": "eaves",
-      "weight": 2,
-      "score": 1,
-      "note": "3DBAG eaves 13.17 m = 4 storeys of 3.29 m vs the type's 3.55 m"
-     },
-     {
-      "key": "storeys",
-      "weight": 1,
-      "score": 1,
-      "note": "3DBAG bouwlagen 5 vs 5"
-     },
-     {
-      "key": "stucco",
-      "weight": 2,
-      "score": 1,
-      "note": "strip accent share 0.142 (brick)"
-     },
-     {
-      "key": "columns",
-      "weight": 1.5,
-      "score": 0.4,
-      "note": "strip columns 3 vs 4 bays"
-     }
-    ]
-   },
-   "likeness": null,
-   "challengers": {}
+   "installed": "steyn-9-19-r1"
   },
   {
    "pandId": "0363100012145744",
@@ -179,78 +73,19 @@
    "builtYear": 1928,
    "widthM": 6.63,
    "eavesM": 13.18,
-   "storeys3dbag": 5,
-   "bagBay": null,
-   "strip": {
-    "wall": "#775752",
-    "wallRaw": "#614942",
-    "skyline": {
-     "eavesM": 14,
-     "eavesRow": 123,
-     "confidence": 1,
-     "crown": {
-      "widthM": 0.8,
-      "riseM": 2.48,
-      "topWidthM": 0.4,
-      "centre": 0.07
-     }
+   "status": "placed",
+   "type": "transvaal-1928-plain-row",
+   "placement": {
+    "type": "transvaal-1928-plain-row",
+    "measuredPalette": {
+     "brick": "#775752",
+     "evidence": "strip 2020-04-29 span 533-798: trim-normalised wall (buildingRecipe/measureFacade.ts)"
     },
-    "stucco": false,
-    "bands": 0,
-    "columns": 3,
-    "frontClass": "columns",
-    "doorSide": "left",
-    "accentSide": null,
-    "accentShare": 0.063,
-    "structure": {
-     "bayWidthM": 0,
-     "bayCentre": null,
-     "balconies": false,
-     "why": "no dark open axis, 0 wide slab(s)",
-     "openAxes": [],
-     "slabs": []
-    },
-    "voidShare": 0,
-    "foliageShare": 0.01
+    "paletteOverrides": {
+     "brick": "#4c3c37"
+    }
    },
-   "status": "held",
-   "stage": "match",
-   "reason": "every type vetoed (best transvaal-1911-five-storey-tall: built 1928, type 1908-1914)",
-   "best": {
-    "type": "transvaal-1911-five-storey-tall",
-    "score": 0,
-    "veto": [
-     "built 1928, type 1908-1914"
-    ],
-    "criteria": [
-     {
-      "key": "eaves",
-      "weight": 2,
-      "score": 1,
-      "note": "3DBAG eaves 13.18 m = 4 storeys of 3.29 m vs the type's 3.55 m"
-     },
-     {
-      "key": "storeys",
-      "weight": 1,
-      "score": 1,
-      "note": "3DBAG bouwlagen 5 vs 5"
-     },
-     {
-      "key": "stucco",
-      "weight": 2,
-      "score": 1,
-      "note": "strip accent share 0.05 (brick)"
-     },
-     {
-      "key": "columns",
-      "weight": 1.5,
-      "score": 0.4,
-      "note": "strip columns 3 vs 4 bays"
-     }
-    ]
-   },
-   "likeness": null,
-   "challengers": {}
+   "installed": "steyn-9-19-r1"
   },
   {
    "pandId": "0363100012138134",
@@ -258,78 +93,20 @@
    "builtYear": 1928,
    "widthM": 6.25,
    "eavesM": 13.21,
-   "storeys3dbag": 5,
-   "bagBay": null,
-   "strip": {
-    "wall": "#766260",
-    "wallRaw": "#62514c",
-    "skyline": {
-     "eavesM": 14.13,
-     "eavesRow": 118,
-     "confidence": 1,
-     "crown": {
-      "widthM": 0.6,
-      "riseM": 2.15,
-      "topWidthM": 0.15,
-      "centre": 0.05
-     }
+   "status": "placed",
+   "type": "transvaal-1928-plain-row",
+   "placement": {
+    "type": "transvaal-1928-plain-row",
+    "mirror": true,
+    "measuredPalette": {
+     "brick": "#766260",
+     "evidence": "strip 2020-04-29 span 798-1048: trim-normalised wall (buildingRecipe/measureFacade.ts)"
     },
-    "stucco": false,
-    "bands": 0,
-    "columns": 3,
-    "frontClass": "columns",
-    "doorSide": "right",
-    "accentSide": null,
-    "accentShare": 0.058,
-    "structure": {
-     "bayWidthM": 0,
-     "bayCentre": null,
-     "balconies": false,
-     "why": "no dark open axis, 0 wide slab(s)",
-     "openAxes": [],
-     "slabs": []
-    },
-    "voidShare": 0,
-    "foliageShare": 0.01
+    "paletteOverrides": {
+     "brick": "#4c3c37"
+    }
    },
-   "status": "held",
-   "stage": "match",
-   "reason": "every type vetoed (best transvaal-1911-five-storey-tall: built 1928, type 1908-1914)",
-   "best": {
-    "type": "transvaal-1911-five-storey-tall",
-    "score": 0,
-    "veto": [
-     "built 1928, type 1908-1914"
-    ],
-    "criteria": [
-     {
-      "key": "eaves",
-      "weight": 2,
-      "score": 1,
-      "note": "3DBAG eaves 13.21 m = 4 storeys of 3.3 m vs the type's 3.55 m"
-     },
-     {
-      "key": "storeys",
-      "weight": 1,
-      "score": 1,
-      "note": "3DBAG bouwlagen 5 vs 5"
-     },
-     {
-      "key": "stucco",
-      "weight": 2,
-      "score": 1,
-      "note": "strip accent share 0.052 (brick)"
-     },
-     {
-      "key": "columns",
-      "weight": 1.5,
-      "score": 1,
-      "note": "strip columns 3 vs 3 bays"
-     }
-    ]
-   },
-   "likeness": null,
-   "challengers": {}
+   "installed": "steyn-9-19-r1"
   },
   {
    "pandId": "0363100012144655",

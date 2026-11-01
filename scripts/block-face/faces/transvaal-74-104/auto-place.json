@@ -3,7 +3,7 @@
  "street": "Transvaalstraat",
  "library": "transvaalbuurt",
  "stripDate": "2020-04-29",
- "seconds": 6.39,
+ "seconds": 6.95,
  "thresholds": {
   "minScore": 0.7,
   "margin": 0.05,
@@ -1225,42 +1225,10 @@
     "foliageShare": 0.03
    },
    "status": "held",
-   "stage": "run",
-   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
-   "likeness": {
-    "pandId": "0363100012074719",
-    "ncc": 0.242,
-    "nccRaw": 0.242,
-    "shiftM": [
-     -0.1,
-     -0.4
-    ],
-    "usable": 0.91,
-    "abstain": null,
-    "verdict": "FAIL",
-    "reasons": [
-     "glazing storey band off by 0.22"
-    ],
-    "wall": {
-     "photo": "#6c5a54",
-     "model": "#90776b",
-     "dL": 0.116
-    },
-    "glazing": {
-     "photo": 0.46,
-     "model": 0.36
-    },
-    "columns": {
-     "photo": null,
-     "model": 3
-    },
-    "iou": 0.503
-   },
-   "challengers": {
-    "transvaal-1911-five-storey-tall": 0.242,
-    "transvaal-1911-five-storey-tall~m": 0.242,
-    "transvaal-1923-portiek": 0.268
-   }
+   "stage": "review",
+   "reason": "review: a 1920s-looking front with a projecting eaves slab, paired white windows and wide ground-floor windows; the 1911 type draws a brick cornice and a house door (lone pand released by the #156 opt-in; transvaal-74-104-r1 sheet, 2026-11-01)",
+   "likeness": null,
+   "challengers": {}
   },
   {
    "pandId": "0363100012134756",
@@ -1330,11 +1298,11 @@
    },
    "status": "held",
    "stage": "likeness",
-   "reason": "edge NCC 0.021 < 0.15 (photo vs model body; likeness.ts FAIL: window shape tall vs photo square; columns 4 vs photo 2)",
+   "reason": "edge NCC 0.017 < 0.15 (photo vs model body; likeness.ts FAIL: glazing storey band off by 0.19 mean 0.37 vs photo 0.47; columns 4 vs photo 3)",
    "likeness": {
     "pandId": "0363100012134756",
-    "ncc": 0.021,
-    "nccRaw": 0.021,
+    "ncc": 0.017,
+    "nccRaw": 0.017,
     "shiftM": [
      0,
      -0.4
@@ -1343,28 +1311,31 @@
     "abstain": null,
     "verdict": "FAIL",
     "reasons": [
-     "window shape tall vs photo square",
-     "columns 4 vs photo 2"
+     "glazing storey band off by 0.19 mean 0.37 vs photo 0.47",
+     "columns 4 vs photo 3"
     ],
     "wall": {
-     "photo": "#7e6d62",
+     "photo": "#836f66",
      "model": "#877368",
-     "dL": 0.029
+     "dL": 0.012
     },
     "glazing": {
-     "photo": 0.39,
-     "model": 0.43
+     "photo": 0.47,
+     "model": 0.37
     },
     "columns": {
-     "photo": 2,
+     "photo": 3,
      "model": 4
     },
-    "iou": 0.367
+    "iou": 0.335
    },
    "challengers": {
-    "transvaal-1911-five-storey-tall": 0.021,
-    "transvaal-1911-five-storey-tall~m": 0.06,
-    "transvaal-1923-portiek": 0.271
+    "transvaal-1911-five-storey-tall": 0.017,
+    "transvaal-1911-five-storey-tall~m": 0.044,
+    "transvaal-1911-five-storey": -0.023,
+    "transvaal-1911-five-storey~m": 0,
+    "transvaal-1923-portiek-tower": 0.209,
+    "transvaal-1923-portiek": 0.284
    }
   }
  ]

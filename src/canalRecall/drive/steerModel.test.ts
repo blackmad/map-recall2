@@ -5,7 +5,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {
-  advance, bicycleYawLimit, bikeLean, BIKE, BIKE_TRUE_SCALE, initialSteerState, LEGACY_BASE, legacyYawLimit, step,
+  advance, bicycleYawLimit, bikeLean, bikeLeanFromTurn, BIKE_LEAN_MAX, BIKE, BIKE_TRUE_SCALE, initialSteerState, LEGACY_BASE, legacyYawLimit, step,
   STEP_MAX, type SteerInput, type SteerParams, type SteerState,
 } from './steerModel.ts';
 
@@ -69,6 +69,22 @@ for (const [name, params] of [['bike', BIKE], ['boat', { ...LEGACY_BASE, turnRat
   }
 }
 
+// 2026-11-01: a parked vehicle must come to an exact rest, not flip sign around zero every step.
+test('rest: with no command the speed reaches exactly zero and stays there', () => {
+  for (const params of [LEGACY_BASE, BIKE]) {
+    const state = initialSteerState();
+    state.speed = 30;
+    const idle = input({});
+    // The legacy car coasts for well over a minute (rolling resistance 0.12 px/s², no lift-off braking).
+    for (let i = 0; i < 60 * 200; i++) step(state, idle, 1 / 60, params);
+    assert.equal(state.speed, 0, `${params.steering}: speed is exactly 0 after 200 s of coasting`);
+    const x = state.x, y = state.y;
+    for (let i = 0; i < 600; i++) step(state, idle, 1 / 60, params);
+    assert.equal(state.speed, 0);
+    assert.equal(state.x, x); assert.equal(state.y, y);
+  }
+});
+
 test('the 90° corner really turns and the straight really goes', () => {
   const straight = ride(BIKE, 60, 4, scripts.straight.script);
   assert.ok(straight.x > 600 && Math.abs(straight.y) < 1e-6, `straight ends at ${straight.x.toFixed(0)}, ${straight.y.toFixed(2)}`);
@@ -125,4 +141,19 @@ test('lean: none at rest, slop\'s 0.34 rad at full steer and speed', () => {
   assert.equal(bikeLean(1, 0), 0);
   assert.equal(bikeLean(-1, 300), -0.34);
   assert.ok(Math.abs(bikeLean(0.5, 13.5) - 0.085) < 1e-9);
+});
+
+test('lean from the turn: none riding straight, into the turn, proportional, capped', () => {
+  // A held key with the heading locked (a wall, street-follow) is not a turn.
+  assert.equal(bikeLeanFromTurn(120, 0), 0);
+  assert.equal(bikeLeanFromTurn(0, 1.5), 0);
+  // + yaw (clockwise on screen, a right turn) leans right; left leans left.
+  assert.ok(bikeLeanFromTurn(100, 0.3) > 0);
+  assert.ok(bikeLeanFromTurn(100, -0.3) < 0);
+  // Gentle turn ~6°, sharper turns lean more, the cap is slop's 0.34 rad.
+  assert.ok(Math.abs(bikeLeanFromTurn(100, 0.3) - Math.atan(30 / 280)) < 1e-12);
+  assert.ok(bikeLeanFromTurn(100, 0.6) > bikeLeanFromTurn(100, 0.3));
+  assert.equal(bikeLeanFromTurn(100, 1.2), BIKE_LEAN_MAX);
+  assert.equal(bikeLeanFromTurn(150, -3), -BIKE_LEAN_MAX);
+  assert.equal(bikeLeanFromTurn(NaN, 1), 0);
 });

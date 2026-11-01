@@ -3,7 +3,7 @@
  "street": "Linnaeusstraat",
  "library": "transvaalbuurt",
  "stripDate": "2023-01-02",
- "seconds": 5.47,
+ "seconds": 7.16,
  "thresholds": {
   "minScore": 0.7,
   "margin": 0.05,
@@ -13,7 +13,16 @@
   "widthSlackM": 0.4,
   "flatRoofRiseM": 1.5
  },
- "runs": [],
+ "runs": [
+  {
+   "face": "linnaeus-92-102-r1",
+   "pands": [
+    "0363100012150033"
+   ],
+   "passed": false,
+   "triangles": 1894
+  }
+ ],
  "pands": [
   {
    "pandId": "0363100012150033",
@@ -76,44 +85,82 @@
     "voidShare": 0,
     "foliageShare": 0.01
    },
-   "status": "held",
-   "stage": "likeness",
-   "reason": "edge NCC 0.103 < 0.15 (photo vs model body; likeness.ts FAIL: wall family brick vs photo paint; glazing storey band off by 0.69 mean 0.42 vs photo 1.00)",
+   "status": "placed",
+   "type": "transvaal-1911-five-storey-tall",
+   "score": 1,
+   "runnerUp": {
+    "typeId": "transvaal-1911-five-storey",
+    "score": 1
+   },
+   "placement": {
+    "type": "transvaal-1911-five-storey-tall",
+    "overrides": {
+     "bays": 2
+    },
+    "ground": {
+     "shopfront": {
+      "colour": "#434440",
+      "fascia": true,
+      "name": "Cafe Sport",
+      "entrance": "centre",
+      "glazing": "split",
+      "stallriser": "low",
+      "residentialDoor": {
+       "side": "left",
+       "colour": "#2a2a2a"
+      },
+      "evidence": "auto-place: osm-only (bijeenkomstfunctie,woonfunctie, amenity=pub); fascia colour measured on the strip 2023-01-02 span 0-206"
+     }
+    },
+    "measuredPalette": {
+     "brick": "#b0b1ae",
+     "evidence": "strip 2023-01-02 span 0-206: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "crown": "none"
+   },
+   "notes": [
+    "near tie with transvaal-1911-five-storey (1)",
+    "door unread",
+    "crown none: crown from type (skyline not sky-bounded: skyline crown top 22.77 m over the 3DBAG roof max 20.84 m (trees, branches or a building behind))",
+    "lone pand: a stair block on its own: transvaal-1911-five-storey-tall opts in to one-house faces from 5 m (frontage 5.16 m)"
+   ],
    "likeness": {
     "pandId": "0363100012150033",
-    "ncc": 0.103,
-    "nccRaw": 0.103,
+    "ncc": 0.192,
+    "nccRaw": 0.192,
     "shiftM": [
      0.4,
-     -0.2
+     -0.3
     ],
     "usable": 0.97,
     "abstain": null,
     "verdict": "FAIL",
     "reasons": [
-     "wall family brick vs photo paint",
-     "glazing storey band off by 0.69 mean 0.42 vs photo 1.00"
+     "wall dL +0.60",
+     "glazing storey band off by 0.68 mean 0.43 vs photo 1.00",
+     "wall family unresolved (#000000 is dark and neutral, brick courses not resolved): lightness and hue judged only"
     ],
     "wall": {
-     "photo": "#bec5be",
+     "photo": "#000000",
      "model": "#9a9b97",
-     "dL": -0.159
+     "dL": 0.6
     },
     "glazing": {
      "photo": 1,
-     "model": 0.42
+     "model": 0.43
     },
     "columns": {
      "photo": null,
      "model": 2
     },
-    "iou": 0.456
+    "iou": 0.468,
+    "footOffsetM": 1.6
    },
    "challengers": {
-    "transvaal-1911-five-storey-tall": 0.103,
-    "transvaal-1911-five-storey-tall~m": 0.115,
-    "transvaal-1911-five-storey": 0.098,
-    "transvaal-1911-five-storey~m": 0.078
+    "transvaal-1911-five-storey-tall": 0.184,
+    "transvaal-1911-five-storey-tall~m": 0.228,
+    "transvaal-1911-five-storey": 0.146,
+    "transvaal-1911-five-storey~m": 0.185
    }
   },
   {
@@ -209,21 +256,21 @@
    },
    "status": "held",
    "stage": "likeness",
-   "reason": "edge NCC 0.031 < 0.15 (photo vs model body; likeness.ts FAIL: wall dL +0.36; glazing storey band off by 0.66 mean 0.44 vs photo 1.00; wall family unresolved (#000000 is dark and neutral, brick courses not resolved): lightness and hue judged only)",
+   "reason": "edge NCC 0.061 < 0.15 (photo vs model body; likeness.ts FAIL: wall dL +0.36; glazing storey band off by 0.68 mean 0.43 vs photo 1.00; wall family unresolved (#000000 is dark and neutral, brick courses not resolved): lightness and hue judged only)",
    "likeness": {
     "pandId": "0363100012134183",
-    "ncc": 0.031,
-    "nccRaw": 0.031,
+    "ncc": 0.061,
+    "nccRaw": 0.061,
     "shiftM": [
-     0.1,
-     0.4
+     0.4,
+     0.05
     ],
     "usable": 0.99,
     "abstain": null,
     "verdict": "FAIL",
     "reasons": [
      "wall dL +0.36",
-     "glazing storey band off by 0.66 mean 0.44 vs photo 1.00",
+     "glazing storey band off by 0.68 mean 0.43 vs photo 1.00",
      "wall family unresolved (#000000 is dark and neutral, brick courses not resolved): lightness and hue judged only"
     ],
     "wall": {
@@ -233,19 +280,20 @@
     },
     "glazing": {
      "photo": 1,
-     "model": 0.44
+     "model": 0.43
     },
     "columns": {
      "photo": null,
      "model": 3
     },
-    "iou": 0.479
+    "iou": 0.461,
+    "footOffsetM": 1.6
    },
    "challengers": {
-    "transvaal-1911-five-storey-tall": 0.031,
-    "transvaal-1911-five-storey-tall~m": 0.031,
-    "transvaal-1911-five-storey": 0.036,
-    "transvaal-1911-five-storey~m": 0.036
+    "transvaal-1911-five-storey-tall": 0.061,
+    "transvaal-1911-five-storey-tall~m": 0.061,
+    "transvaal-1911-five-storey": 0.052,
+    "transvaal-1911-five-storey~m": 0.052
    }
   },
   {

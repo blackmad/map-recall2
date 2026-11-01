@@ -2,6 +2,7 @@ import { test } from '@playwright/test';
 import { mkdirSync, writeFileSync } from 'node:fs';
 import jpeg from 'jpeg-js';
 import { openRoute } from './helpers';
+import { OWN } from './worldCam';
 
 // White-flash probe (2026-10-25, issue #64): "random white screen flashes" while riding.
 // Opt-in measurement: FLASH_PROBE=1 PW_PORT=4797 npx playwright test white-flash-probe --project=desktop
@@ -24,6 +25,7 @@ const meanLuma = (b64: string): number => {
 };
 
 test('white flash probe', async ({ page }) => {
+  test.skip(OWN, 'MapLibre style assertion: deleted with the default path at P5');
   const rideS = Number(process.env.RIDE_S ?? 180);
   test.setTimeout(300_000 + rideS * 1000);
   const events: Array<{ t: number; what: string }> = [];
@@ -31,7 +33,7 @@ test('white flash probe', async ({ page }) => {
   await openRoute(page, { travelMode: 'car', viewMode: 'chase', abortHeavyTiles: false, enterRacing: false, query: process.env.FLASH_QUERY ?? '', playerTimeoutMs: 180_000 });
   await page.waitForFunction(() => (window as any).canalRecallGame.state === 4, null, { timeout: 180_000 });
   await page.evaluate(() => {
-    const w = window as any, vm = w.canalRecallGame.vectorMap, map = vm.map;
+    const w = window as any, vm = w.canalRecallGame.vectorMap, map = vm.map ?? vm.cameraMap;
     if ((window as any).__flashNoAsks) w.canalRecallGame.maxAsksPerMinute = 0;
     w.__flashEvents = [];
     const log = (what: string) => w.__flashEvents.push({ t: Date.now(), what });
@@ -69,14 +71,14 @@ test('white flash probe', async ({ page }) => {
       // From inside the map's `render` event, where the governor applies its steps (FLASH_FORCE_STEP=render),
       // or from outside the frame (FLASH_FORCE_STEP=1).
       await page.evaluate((inRender) => {
-        const map = (window as any).canalRecallGame.vectorMap.map;
+        const map = (window as any).canalRecallGame.vectorMap.map ?? (window as any).canalRecallGame.vectorMap.cameraMap;
         const step = () => { const r = map.getPixelRatio(); map.setPixelRatio(r > 1.2 ? Math.max(1, Math.round(r * 75) / 100) : 2); };
         if (inRender) map.once('render', step); else step();
       }, process.env.FLASH_FORCE_STEP === 'render');
     }
     // FLASH_LOSE=1: a WebGL context loss and restore every 20 s, for what the restore puts on screen.
     if (process.env.FLASH_LOSE && k % 4 === 3) {
-      await page.evaluate(() => { const w = window as any; w.__lose ??= w.canalRecallGame.vectorMap.map.painter.context.gl.getExtension('WEBGL_lose_context'); w.__lose.loseContext(); });
+      await page.evaluate(() => { const w = window as any; w.__lose ??= (w.canalRecallGame.vectorMap.map ?? w.canalRecallGame.vectorMap.cameraMap).painter.context.gl.getExtension('WEBGL_lose_context'); w.__lose.loseContext(); });
       await page.waitForTimeout(1500);
       await page.evaluate(() => (window as any).__lose.restoreContext());
     }
@@ -86,7 +88,7 @@ test('white flash probe', async ({ page }) => {
   await page.keyboard.up('ArrowUp');
   await cdp.send('Page.stopScreencast');
   const pageEvents = await page.evaluate(() => (window as any).__flashEvents);
-  const status = await page.evaluate(() => { const vm = (window as any).canalRecallGame.vectorMap; const gl = vm.map.painter.context.gl, dbg = gl.getExtension('WEBGL_debug_renderer_info'); return { renderer: dbg ? gl.getParameter(dbg.UNMASKED_RENDERER_WEBGL) : null, pixelRatio: vm.map.getPixelRatio(), steps: vm._renderGovernor?.steps ?? null }; });
+  const status = await page.evaluate(() => { const vm = (window as any).canalRecallGame.vectorMap; const gl = (vm.map ?? vm.cameraMap).painter.context.gl, dbg = gl.getExtension('WEBGL_debug_renderer_info'); return { renderer: dbg ? gl.getParameter(dbg.UNMASKED_RENDERER_WEBGL) : null, pixelRatio: (vm.map ?? vm.cameraMap).getPixelRatio(), steps: vm._renderGovernor?.steps ?? null }; });
   const all = [...events, ...pageEvents].sort((a, b) => a.t - b.t);
   const sorted = frames.map(f => f.luma).sort((a, b) => a - b);
   const median = sorted[Math.floor(sorted.length / 2)] ?? 0;

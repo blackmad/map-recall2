@@ -101,13 +101,13 @@ try {
       vectorMap.sync = () => undefined;
     }
     const view = {center: [origin.lng, origin.lat], zoom: 19.55, bearing: -20, pitch: 65};
-    vectorMap.map.jumpTo(view);
+    (vectorMap.map ?? vectorMap.cameraMap).jumpTo(view);
     vectorMap._clearCameraFromBuildingFootprints(view.center, view);
     // The game loop normally makes this call from sync(); after freezing sync
     // for a deterministic smoke camera, keep the complete-city streamer on
     // that same production camera contract.
     vectorMap._completeCity?.followCamera?.();
-    vectorMap.map.triggerRepaint();
+    (vectorMap.map ?? vectorMap.cameraMap).triggerRepaint();
   }, smokeTarget);
   const status = await page.evaluate(async () => {
     const vectorMap = window.canalRecallGame.vectorMap;

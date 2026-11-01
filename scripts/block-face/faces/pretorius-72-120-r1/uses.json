@@ -1,0 +1,104 @@
+{
+ "street": "Pretoriusstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-31T14:55:04.663Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012149642",
+   "addresses": [
+    "Pretoriusstraat 90B",
+    "Pretoriusstraat 90C",
+    "Pretoriusstraat 90E",
+    "Pretoriusstraat 90A",
+    "Pretoriusstraat 90D"
+   ],
+   "groundUnits": [
+    {
+     "address": "Pretoriusstraat 90B",
+     "use": "woonfunctie",
+     "areaM2": 67,
+     "bagId": "0363010000782737"
+    },
+    {
+     "address": "Pretoriusstraat 90C",
+     "use": "woonfunctie",
+     "areaM2": 67,
+     "bagId": "0363010000782738"
+    },
+    {
+     "address": "Pretoriusstraat 90E",
+     "use": "winkelfunctie",
+     "areaM2": 104,
+     "bagId": "0363010000782740"
+    },
+    {
+     "address": "Pretoriusstraat 90A",
+     "use": "woonfunctie",
+     "areaM2": 66,
+     "bagId": "0363010000782736"
+    },
+    {
+     "address": "Pretoriusstraat 90D",
+     "use": "woonfunctie",
+     "areaM2": 54,
+     "bagId": "0363010000782739"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 393227053,
+     "lngLat": [
+      4.9208338,
+      52.3546057
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "90",
+      "addr:street": "Pretoriusstraat",
+      "check_date": "2026-09-13",
+      "craft": "caterer",
+      "name": "Alle dagen lekker"
+     },
+     "fetchedAt": "2026-10-31T14:55:04.663Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012142310",
+   "addresses": [
+    "Pretoriusstraat 88"
+   ],
+   "groundUnits": [
+    {
+     "address": "Pretoriusstraat 88-H",
+     "use": "winkelfunctie",
+     "areaM2": 178,
+     "bagId": "0363010000782729"
+    },
+    {
+     "address": "Pretoriusstraat 88-H",
+     "use": "winkelfunctie",
+     "areaM2": 116,
+     "bagId": "0363010012096390"
+    }
+   ],
+   "units": 6,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012076819",
+   "addresses": [
+    "Pretoriusstraat 86"
+   ],
+   "groundUnits": [],
+   "units": 3,
+   "osm": []
+  }
+ ]
+}

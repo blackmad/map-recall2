@@ -17,7 +17,7 @@ const MASK = !!process.env.WALLS_MASK;
 async function settle(page: Page): Promise<void> {
   await page.waitForFunction(() => {
     const vm = (window as any).canalRecallGame.vectorMap, t = vm._threeBuildings, l = vm._signatureLandmarks;
-    const c = vm.map.getCenter(); vm.map.jumpTo({ center: [c.lng + 1e-9, c.lat] });
+    const c = vm.camera.center(); (vm.map ?? vm.cameraMap).jumpTo({ center: [c.lng + 1e-9, c.lat] });
     const idle = !t || (t.ready && !t.pending.length && !t.inflight.size);
     const landmarksIdle = !l || !l._pending || !l._pending.size;
     const w = window as any, key = `${t?.stats?.().buildings ?? 0}|${t?.chunks?.size ?? 0}|${l?.shown?.size ?? 0}`;
@@ -25,7 +25,7 @@ async function settle(page: Page): Promise<void> {
     w.__wallsKey = key;
     return w.__wallsIdle >= 5;
   }, null, { timeout: 180_000, polling: 1000 });
-  await page.evaluate(() => { const w = window as any; w.canalRecallGame.vectorMap.map.jumpTo(w.__wallsCamera); });
+  await page.evaluate(() => { const w = window as any; (w.canalRecallGame.vectorMap.map ?? w.canalRecallGame.vectorMap.cameraMap).jumpTo(w.__wallsCamera); });
   await page.waitForTimeout(4000);
 }
 
@@ -41,7 +41,7 @@ test('period walls strip', async ({ page }, info) => {
   const meta: Record<string, unknown> = { query: QUERY };
   for (const place of WALL_PLACES.filter(p => !ONLY.length || ONLY.includes(p.name))) for (const [kind, cam] of Object.entries(CAMERAS(place))) {
     await page.evaluate(({ cam }) => {
-      const g = (window as any).canalRecallGame, vm = g.vectorMap, map = vm.map;
+      const g = (window as any).canalRecallGame, vm = g.vectorMap, map = vm.map ?? vm.cameraMap;
       g._updateCanalQuiz = () => {}; g._updateBridgeQuiz = () => {}; (window as any).__wallsIdle = 0;
       g.player.speed = 0; g.player.vx = 0; g.player.vy = 0;
       vm.sync = () => {}; map.stop(); map.setMaxPitch(85); map.setVerticalFieldOfView(55); map.setPadding({ top: 0, bottom: 0, left: 0, right: 0 });
@@ -50,17 +50,17 @@ test('period walls strip', async ({ page }, info) => {
     }, { cam });
     await settle(page);
     await page.evaluate(() => {
-      const map = (window as any).canalRecallGame.vectorMap.map;
-      for (const layer of map.getStyle().layers) if (layer.type === 'symbol' && map.getLayoutProperty(layer.id, 'visibility') !== 'none') map.setLayoutProperty(layer.id, 'visibility', 'none');
+      const map = (window as any).canalRecallGame.vectorMap.map ?? (window as any).canalRecallGame.vectorMap.cameraMap;
+      if ((window as any).canalRecallGame.vectorMap.map) { for (const layer of map.getStyle().layers) if (layer.type === 'symbol' && map.getLayoutProperty(layer.id, 'visibility') !== 'none') map.setLayoutProperty(layer.id, 'visibility', 'none'); } else (window as any).canalRecallGame.vectorMap.setLabelsVisible(false);
       const canvas = map.getCanvas() as HTMLCanvasElement;
       for (const e of Array.from(document.body.querySelectorAll('*'))) if (e !== canvas && !e.contains(canvas)) (e as HTMLElement).style.visibility = 'hidden';
     });
     await page.waitForTimeout(1200);
-    await page.locator('canvas.maplibregl-canvas').first().screenshot({ path: `${OUT}/${place.name}-${kind}.png` });
+    await page.locator('canvas.maplibregl-canvas, canvas.engine-canvas').first().screenshot({ path: `${OUT}/${place.name}-${kind}.png` });
     if (MASK) {
       await page.evaluate(src => (0, eval)(src), readFileSync('scripts/look/region-mask.js', 'utf8'));
       await page.waitForTimeout(800);
-      await page.locator('canvas.maplibregl-canvas').first().screenshot({ path: `${OUT}/${place.name}-${kind}.mask.png` });
+      await page.locator('canvas.maplibregl-canvas, canvas.engine-canvas').first().screenshot({ path: `${OUT}/${place.name}-${kind}.mask.png` });
       await page.evaluate(() => (window as any).__regionMaskRestore());
       await page.waitForTimeout(600);
     }

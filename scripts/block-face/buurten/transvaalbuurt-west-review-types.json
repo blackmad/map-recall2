@@ -1,0 +1,139 @@
+{
+ "note": "Faces a reviewer restricted to some house types after reading the strip at full size (scripts/block-face/auto-place.ts, blockFace/reviewCrowns.ts typesForFace). Transvaalbuurt 1926-1928 (#155): the two designs of the family share build years, eaves and frontage; the white bands that tell them apart are hidden by street trees on the Danie Theronstraat strips (foliage 0.33-0.84 on 12 of 21 pands), and the 1923 portiek types reach these years within the two-year slack. Mirrors: the 6 m half-portiek pands of Danie Theronstraat alternate their stair side; the strip's door read (under hedges) said the opposite on 29A and 31A.",
+ "reviewed": "2026-11-01",
+ "pins": [
+  {
+   "face": "theron-2-36",
+   "types": [
+    "transvaal-1926-band-row"
+   ],
+   "reason": "Danie Theronstraat 2-36 (2020-04-29 strip, gridded): white sill and head bands round the top storey at 10.25-10.45 and 12.3-12.55 m, window pairs and a mullioned stair window over portiek canopies on storeys 1-2, plain parapet to 13.9 m"
+  },
+  {
+   "face": "theron-9-37",
+   "types": [
+    "transvaal-1926-band-row"
+   ],
+   "reason": "Danie Theronstraat 9-37 (2020-04-29 strip, gridded): the same front as 2-36, the white top bands continuous from 9 to 31"
+  },
+  {
+   "face": "steyn-9-19",
+   "types": [
+    "transvaal-1928-plain-row"
+   ],
+   "reason": "President Steynstraat 9-19 (2020-04-29 strip): three equal white sash windows per storey, no bands above the grey ground lintel band, parapet to 13.7 m"
+  },
+  {
+   "face": "hofmeyr-3-7",
+   "types": [
+    "transvaal-1928-plain-row"
+   ],
+   "reason": "Hofmeyrstraat 7 (2020-04-29 strip): the President Steynstraat front, three sash windows per storey"
+  },
+  {
+   "face": "hofmeyr-24-44",
+   "types": [
+    "transvaal-1928-plain-row"
+   ],
+   "reason": "Hofmeyrstraat 24-40 (2023-01-02 strip): three equal windows per storey, flat top, no bands; the 1923 portiek types reach 1927 within the year slack"
+  },
+  {
+   "face": "transvaalkade-130-132",
+   "types": [
+    "transvaal-1928-plain-row"
+   ],
+   "reason": "Transvaalkade 130-132 (2020-04-29 strip): three sash windows per storey, no bands"
+  },
+  {
+   "face": "afrikanerplein-25-55",
+   "types": [
+    "transvaal-1931-plain-grid-nodoor"
+   ],
+   "pands": [
+    "0363100012125852",
+    "0363100012079290"
+   ],
+   "reason": "Afrikanerplein 35 and 39 (2020-04-29 strip, gridded): one portiek door serves two pands; these have a ground window on the erker axis beside the neighbour's door (#158)"
+  },
+  {
+   "face": "afrikanerplein-25-55",
+   "types": [
+    "transvaal-1931-plain-grid"
+   ],
+   "pands": [
+    "0363100012070168",
+    "0363100012084510",
+    "0363100012143471",
+    "0363100012135325",
+    "0363100012064549",
+    "0363100012086955",
+    "0363100012097742",
+    "0363100012068510"
+   ],
+   "reason": "Afrikanerplein 33, 37, 41, 45, 47, 49, 51 (2020-04-29 strip, gridded): the blue portiek door on the erker axis at a party wall (#158); 43 is the door-less half too, but a street tree hides 51 % of it and auto-place places a pand without its own photo evidence only on a same-type neighbour's, so it takes the door type (one door too many) rather than leave a 3DBAG box in the row"
+  },
+  {
+   "face": "vaalrivier-15-21",
+   "types": [
+    "transvaal-1922-loggia-row"
+   ],
+   "reason": "Vaalrivierstraat 15-19 (2020-04-29 strip, gridded): the Colensostraat loggia front (BAG 1920, where transvaal-1920-three-storey also matches on the facts): half loggias over brick parapets at the party walls of 15/17 and 19/21, blue door pairs under shared canopies (#158)"
+  }
+ ],
+ "mirrors": [
+  {
+   "pandId": "0363100012119062",
+   "type": "transvaal-1926-band-row",
+   "mirror": false,
+   "reason": "Danie Theronstraat 21: the half-portiek's stair window and portiek canopy stand on its right party wall (2020-04-29 strip); 6 m pands alternate along the row, the door read under the hedges is no guide"
+  },
+  {
+   "pandId": "0363100012137971",
+   "type": "transvaal-1926-band-row",
+   "mirror": true,
+   "reason": "Danie Theronstraat 23A: the half-portiek's stair window and portiek canopy stand on its left party wall (2020-04-29 strip); 6 m pands alternate along the row, the door read under the hedges is no guide"
+  },
+  {
+   "pandId": "0363100012140487",
+   "type": "transvaal-1926-band-row",
+   "mirror": false,
+   "reason": "Danie Theronstraat 29A: the half-portiek's stair window and portiek canopy stand on its right party wall (2020-04-29 strip); 6 m pands alternate along the row, the door read under the hedges is no guide"
+  },
+  {
+   "pandId": "0363100012125668",
+   "type": "transvaal-1926-band-row",
+   "mirror": true,
+   "reason": "Danie Theronstraat 31A: the half-portiek's stair window and portiek canopy stand on its left party wall (2020-04-29 strip); 6 m pands alternate along the row, the door read under the hedges is no guide"
+  },
+  {
+   "pandId": "0363100012112858",
+   "type": "transvaal-1926-band-row",
+   "mirror": false,
+   "reason": "Danie Theronstraat 18A: the half-portiek's stair window and portiek canopy stand on its right party wall (2020-04-29 strip); 6 m pands alternate along the row, the door read under the hedges is no guide"
+  },
+  {
+   "pandId": "0363100012089089",
+   "type": "transvaal-1926-band-row",
+   "mirror": true,
+   "reason": "Danie Theronstraat 16A: the half-portiek's stair window and portiek canopy stand on its left party wall (2020-04-29 strip); 6 m pands alternate along the row, the door read under the hedges is no guide"
+  },
+  {
+   "pandId": "0363100012065292",
+   "type": "transvaal-1926-band-row",
+   "mirror": false,
+   "reason": "Danie Theronstraat 14A: the half-portiek's stair window and portiek canopy stand on its right party wall (2020-04-29 strip); 6 m pands alternate along the row, the door read under the hedges is no guide"
+  },
+  {
+   "pandId": "0363100012100541",
+   "type": "transvaal-1926-band-row",
+   "mirror": true,
+   "reason": "Danie Theronstraat 12A: the half-portiek's stair window and portiek canopy stand on its left party wall (2020-04-29 strip); 6 m pands alternate along the row, the door read under the hedges is no guide"
+  },
+  {
+   "pandId": "0363100012102719",
+   "type": "transvaal-1926-band-row",
+   "mirror": false,
+   "reason": "Danie Theronstraat 10A: the half-portiek's stair window and portiek canopy stand on its right party wall (2020-04-29 strip); 6 m pands alternate along the row, the door read under the hedges is no guide"
+  }
+ ]
+}

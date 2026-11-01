@@ -3,7 +3,7 @@
  "street": "Transvaalstraat",
  "library": "transvaalbuurt",
  "stripDate": "2023-01-02",
- "seconds": 8.88,
+ "seconds": 0.73,
  "thresholds": {
   "minScore": 0.7,
   "margin": 0.05,
@@ -17,12 +17,10 @@
   {
    "face": "transvaal-42-48-r1",
    "pands": [
-    "0363100012141451",
     "0363100012140529",
     "0363100012071217"
    ],
-   "passed": false,
-   "triangles": 6427
+   "installed": true
   }
  ],
  "pands": [
@@ -155,63 +153,11 @@
     "voidShare": 0,
     "foliageShare": 0.02
    },
-   "status": "placed",
-   "type": "transvaal-1911-five-storey-tall",
-   "score": 0.77,
-   "runnerUp": {
-    "typeId": "transvaal-1911-five-storey",
-    "score": 0.77
-   },
-   "placement": {
-    "type": "transvaal-1911-five-storey-tall",
-    "overrides": {
-     "bays": 4
-    },
-    "measuredPalette": {
-     "brick": "#907768",
-     "evidence": "strip 2023-01-02 span 259-542: trim-normalised wall (buildingRecipe/measureFacade.ts)"
-    },
-    "crown": "wall-dormer",
-    "mirror": true
-   },
-   "notes": [
-    "near tie with transvaal-1911-five-storey (0.77)",
-    "door unread: mirrored, the opposite of 140529",
-    "crown wall-dormer: skyline rise 1.7 m, width 2.17 m, top 1.6 m"
-   ],
-   "likeness": {
-    "pandId": "0363100012141451",
-    "ncc": 0.262,
-    "nccRaw": 0.262,
-    "shiftM": [
-     0.4,
-     -0.4
-    ],
-    "usable": 0.93,
-    "abstain": null,
-    "verdict": "PASS",
-    "reasons": [],
-    "wall": {
-     "photo": "#8f7566",
-     "model": "#a08a7c",
-     "dL": 0.076
-    },
-    "glazing": {
-     "photo": 0.28,
-     "model": 0.36
-    },
-    "columns": {
-     "photo": 2,
-     "model": 4
-    },
-    "iou": 0.451
-   },
-   "challengers": {
-    "transvaal-1911-five-storey-tall~m": 0.262,
-    "transvaal-1911-five-storey-tall": 0.362,
-    "transvaal-1923-portiek-tower": 0.072,
-    "transvaal-1923-portiek": 0.211
-   }
+   "status": "held",
+   "stage": "review",
+   "reason": "review: another design: a taller narrow front with a stepped side gable, a balcony stack on the left axis and four axes; transvaal-1911-five-storey-tall draws the centre balcony axis under a flat cornice (transvaal-42-48-r1 sheet) (round 3 review at gallery size, 2026-11-01)",
+   "likeness": null,
+   "challengers": {}
   },
   {
    "pandId": "0363100012140529",
@@ -272,48 +218,49 @@
      "brick": "#836e61",
      "evidence": "strip 2023-01-02 span 541-792: trim-normalised wall (buildingRecipe/measureFacade.ts)"
     },
-    "crown": "dormer"
+    "crown": "shared-gable",
+    "pair": "left"
    },
    "notes": [
     "near tie with transvaal-1911-five-storey (1)",
-    "door left",
-    "crown dormer: skyline rise 1.95 m, width 2.3 m, top 0.28 m"
+    "crown shared-gable: reviewer pin (transvaal-42-48 strip 2023-01-02 (#156): one shouldered brick gable centred on the 44|42 party wall, plumb to 14.7 m, apex 17.6 m on the party line; Transvaalstraat 44 is its left half)",
+    "door reviewer pin: left half of a pair crown, as drawn"
    ],
    "likeness": {
     "pandId": "0363100012140529",
-    "ncc": 0.214,
-    "nccRaw": 0.214,
+    "ncc": 0.182,
+    "nccRaw": 0.182,
     "shiftM": [
-     0.35,
-     -0.35
+     0.4,
+     -0.4
     ],
-    "usable": 0.97,
+    "usable": 0.95,
     "abstain": null,
     "verdict": "PASS",
     "reasons": [],
     "wall": {
-     "photo": "#826d60",
+     "photo": "#846f61",
      "model": "#978173",
-     "dL": 0.078
+     "dL": 0.073
     },
     "glazing": {
-     "photo": 0.37,
-     "model": 0.36
+     "photo": 0.36,
+     "model": 0.39
     },
     "columns": {
      "photo": null,
      "model": 3
     },
-    "iou": 0.526
+    "iou": 0.541
    },
    "challengers": {
-    "transvaal-1911-five-storey-tall": 0.214,
-    "transvaal-1911-five-storey-tall~m": 0.214,
+    "transvaal-1911-five-storey-tall": 0.182,
     "transvaal-1911-five-storey": 0.189,
     "transvaal-1911-five-storey~m": 0.189,
-    "transvaal-1923-portiek-tower": 0.237,
-    "transvaal-1923-portiek": 0.263
-   }
+    "transvaal-1923-portiek-tower": 0.213,
+    "transvaal-1923-portiek": 0.246
+   },
+   "installed": "transvaal-42-48-r1"
   },
   {
    "pandId": "0363100012071217",
@@ -368,19 +315,21 @@
      "brick": "#917a69",
      "evidence": "strip 2023-01-02 span 792-1043: trim-normalised wall (buildingRecipe/measureFacade.ts)"
     },
+    "crown": "shared-gable",
+    "pair": "right",
     "mirror": true
    },
    "notes": [
     "near tie with transvaal-1911-five-storey (1)",
-    "door unread: mirrored, the opposite of 140529",
-    "crown point-gable: skyline rise 2.55 m, width 1.95 m, top 0.25 m matches no variant"
+    "crown shared-gable: reviewer pin (transvaal-42-48 strip 2023-01-02 (#156): one shouldered brick gable centred on the 44|42 party wall, plumb to 14.7 m, apex 17.6 m on the party line; Transvaalstraat 42 is its right half)",
+    "door reviewer pin: right half of a pair crown, mirrored"
    ],
    "likeness": {
     "pandId": "0363100012071217",
-    "ncc": 0.192,
-    "nccRaw": 0.192,
+    "ncc": 0.187,
+    "nccRaw": 0.187,
     "shiftM": [
-     -0.1,
+     -0.05,
      -0.15
     ],
     "usable": 0.94,
@@ -388,28 +337,28 @@
     "verdict": "PASS",
     "reasons": [],
     "wall": {
-     "photo": "#8b7565",
+     "photo": "#8c7666",
      "model": "#a18c7d",
-     "dL": 0.09
+     "dL": 0.086
     },
     "glazing": {
-     "photo": 0.33,
-     "model": 0.38
+     "photo": 0.34,
+     "model": 0.39
     },
     "columns": {
      "photo": null,
      "model": 3
     },
-    "iou": 0.54
+    "iou": 0.548
    },
    "challengers": {
-    "transvaal-1911-five-storey-tall~m": 0.192,
-    "transvaal-1911-five-storey-tall": 0.192,
+    "transvaal-1911-five-storey-tall~m": 0.187,
     "transvaal-1911-five-storey~m": 0.194,
     "transvaal-1911-five-storey": 0.194,
-    "transvaal-1923-portiek-tower": 0.263,
-    "transvaal-1923-portiek": 0.259
-   }
+    "transvaal-1923-portiek-tower": 0.258,
+    "transvaal-1923-portiek": 0.267
+   },
+   "installed": "transvaal-42-48-r1"
   }
  ]
 }

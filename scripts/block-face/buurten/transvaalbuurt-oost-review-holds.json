@@ -1,6 +1,6 @@
 {
  "note": "Pands held after reviewing the auto-place strip sheets at full size against the photo (scripts/block-face/auto-place.ts reads this file: a listed pand is held at stage 'review' with its reason, whatever its score and edge NCC). Remove an entry when a type or kit change makes the pand read right, and review the sheet again.",
- "reviewed": "2026-10-31",
+ "reviewed": "2026-11-01",
  "holds": [
   {
    "pandId": "0363100012093743",
@@ -91,6 +91,271 @@
    "pandId": "0363100012069186",
    "address": "Laing's Nekstraat 36",
    "reason": "Laing's Nekstraat 34-56 (BAG 1913-1915) is one long flat-roofed block under a straight cornice with small white roof dormers, wide windows, round-arched doors and a central gabled oriel, no balcony axis; transvaal-1911-five-storey-tall passed edge NCC 0.19-0.31 and the batch installed it, but it draws five pointed gables and iron balconies (strip over model ortho, 2026-10-31; install reverted)"
+  },
+  {
+   "pandId": "0363100012141451",
+   "address": "Transvaalstraat 46",
+   "reason": "another design: a taller narrow front with a stepped side gable, a balcony stack on the left axis and four axes; transvaal-1911-five-storey-tall draws the centre balcony axis under a flat cornice (transvaal-42-48-r1 sheet) (round 3 review at gallery size, 2026-11-01)"
+  },
+  {
+   "pandId": "0363100012140529",
+   "address": "Transvaalstraat 44",
+   "reason": "Transvaalstraat 42-44 share one large ornamented pointed gable (brick meander panel) over both fronts and brick-console balconies; the kit draws a crown per pand, so either a flat cornice or two gables, neither is the strip (transvaal-42-48-r1 sheet) (round 3 review at gallery size, 2026-11-01)"
+  },
+  {
+   "pandId": "0363100012071217",
+   "address": "Transvaalstraat 42",
+   "reason": "Transvaalstraat 42-44 share one large ornamented pointed gable (brick meander panel) over both fronts and brick-console balconies; the kit draws a crown per pand, so either a flat cornice or two gables, neither is the strip (transvaal-42-48-r1 sheet) (round 3 review at gallery size, 2026-11-01)"
+  },
+  {
+   "pandId": "0363100012063216",
+   "address": "Pretoriusstraat 83",
+   "reason": "a tall stepped and crenellated gable over the centre of the front, and the wall drawn +0.17 lighter than the strip; transvaal-1911-five-storey-tall has no stepped crown (pretorius-71-95-r1 sheet) (round 3 review at gallery size, 2026-11-01)"
+  },
+  {
+   "pandId": "0363100012158314",
+   "address": "Pretoriusstraat 13",
+   "reason": "the recipe attic rises 3-5 m over the strip cornice (3DBAG roof max 18-20.8 m reads the rear block), Pretoriusstraat 15 is drawn 1.1 m above its neighbours, a tree hides 15; the strip shows brick wall dormers and the walls read +0.11-0.14 too light (pretorius-1-33-r1 sheet) (round 3 review at gallery size, 2026-11-01)"
+  },
+  {
+   "pandId": "0363100012158418",
+   "address": "Pretoriusstraat 15",
+   "reason": "the recipe attic rises 3-5 m over the strip cornice (3DBAG roof max 18-20.8 m reads the rear block), Pretoriusstraat 15 is drawn 1.1 m above its neighbours, a tree hides 15; the strip shows brick wall dormers and the walls read +0.11-0.14 too light (pretorius-1-33-r1 sheet) (round 3 review at gallery size, 2026-11-01)"
+  },
+  {
+   "pandId": "0363100012162490",
+   "address": "Pretoriusstraat 17",
+   "reason": "the recipe attic rises 3-5 m over the strip cornice (3DBAG roof max 18-20.8 m reads the rear block), Pretoriusstraat 15 is drawn 1.1 m above its neighbours, a tree hides 15; the strip shows brick wall dormers and the walls read +0.11-0.14 too light (pretorius-1-33-r1 sheet) (round 3 review at gallery size, 2026-11-01)"
+  },
+  {
+   "pandId": "0363100012108540",
+   "address": "Majubastraat 7A",
+   "reason": "7A is mostly off the 2020-04-29 strip; 29 is a six-axis front with two wide balcony stacks and two brick wall dormers, drawn with five axes, one balcony axis and one dormer (majuba-1-151-r1 sheet) (round 3 review at gallery size, 2026-11-01)"
+  },
+  {
+   "pandId": "0363100012061648",
+   "address": "Majubastraat 29",
+   "reason": "7A is mostly off the 2020-04-29 strip; 29 is a six-axis front with two wide balcony stacks and two brick wall dormers, drawn with five axes, one balcony axis and one dormer (majuba-1-151-r1 sheet) (round 3 review at gallery size, 2026-11-01)"
+  },
+  {
+   "pandId": "0363100012063275",
+   "address": "Paardekraalstraat 15",
+   "reason": "five narrow axes with the pointed gable over the right three; drawn as three wide axes under a gable over the whole front (paardekraal-1-15-r1 sheet) (round 3 review at gallery size, 2026-11-01)"
+  },
+  {
+   "pandId": "0363100012073473",
+   "address": "Paardekraalstraat 13",
+   "reason": "reads right (white dormer, centre balcony axis, arched door left) but its only placed neighbour, 15, is held: a one-pand run (paardekraal-1-15-r1 sheet) (round 3 review at gallery size, 2026-11-01)"
+  },
+  {
+   "pandId": "0363100012093192",
+   "address": "Transvaalstraat 39",
+   "reason": "the strip shows one white timber dormer over the centre axis; with the dormer crown the run fails the GLB audit (opening-outside: the dormer glass reaches through the roof plane, 2.5 m2 over 3 parts), and without it the skyline of a dormer row is drawn bare (transvaal-3-47-r1 sheet; round 3 review at gallery size, 2026-11-01)"
+  },
+  {
+   "pandId": "0363100012146296",
+   "address": "Transvaalstraat 41",
+   "reason": "the strip shows one white timber dormer over the centre axis; with the dormer crown the run fails the GLB audit (opening-outside: the dormer glass reaches through the roof plane, 2.5 m2 over 3 parts), and without it the skyline of a dormer row is drawn bare (transvaal-3-47-r1 sheet; round 3 review at gallery size, 2026-11-01)"
+  },
+  {
+   "pandId": "0363100012096110",
+   "address": "Transvaalstraat 43B",
+   "reason": "as Transvaalstraat 39-41: the strip shows one white timber dormer over the centre axis, which the kit's dormer crown cannot place on this roof without the glass passing the roof plane (GLB audit opening-outside); drawn bare it misses the row's skyline, and 43B's wall reads +0.1 too light (transvaal-3-47-r1 sheet; round 3 review at gallery size, 2026-11-01)"
+  },
+  {
+   "pandId": "0363100012140329",
+   "address": "Transvaalstraat 45A",
+   "reason": "as Transvaalstraat 39-41: the strip shows one white timber dormer over the centre axis, which the kit's dormer crown cannot place on this roof without the glass passing the roof plane (GLB audit opening-outside); drawn bare it misses the row's skyline, and 43B's wall reads +0.1 too light (transvaal-3-47-r1 sheet; round 3 review at gallery size, 2026-11-01)"
+  },
+  {
+   "pandId": "0363100012070004",
+   "address": "Retiefstraat 212",
+   "reason": "the 8.7 m corner pand's BAG front is not one straight surveyed wall: the run compile fails ('Grouped frontage is not a straight surveyed wall') and takes Retiefstraat 194-262 with it (#154, 2026-11-01)"
+  },
+  {
+   "pandId": "0363100012236825",
+   "address": "Linnaeusstraat 112",
+   "reason": "the front carries a white stone oriel tower up the full height with a pointed cap; the 1911 type draws a plain three-axis brick front with balconies (lone pand released by the #156 opt-in; linnaeus-104-114-r1 sheet, 2026-11-01)"
+  },
+  {
+   "pandId": "0363100012115114",
+   "address": "Maritzstraat 41",
+   "reason": "a hipped red-tile roof with one white dormer over a three-storey front with a small centre stair light; transvaal-1923-portiek draws a slate roof with a raised brick parapet block and a red door (lone pand released by the #156 opt-in; maritz-1-47-r1 sheet, 2026-11-01)"
+  },
+  {
+   "pandId": "0363100012233567",
+   "address": "Laing's Nekstraat 34",
+   "reason": "a narrow two-axis front under a pointed side gable with a tall chimney stack; the type draws a flat-corniced three-axis front with balconies (lone pand released by the #156 opt-in; nek-34-56-r1 sheet, 2026-11-01)"
+  },
+  {
+   "pandId": "0363100012097625",
+   "address": "Paardekraalstraat 16",
+   "reason": "paired windows on four axes with balconies on the left pair; the type draws three single axes with centre balconies (lone pand released by the #156 opt-in; paardekraal-2-16-r1 sheet, 2026-11-01)"
+  },
+  {
+   "pandId": "0363100012145188",
+   "address": "Paardekraalstraat 10",
+   "reason": "a raised fifth storey with its own cornice over the main cornice on the right three axes; the type draws four storeys under one cornice (lone pand released by the #156 opt-in; paardekraal-2-16-r2 sheet, 2026-11-01)"
+  },
+  {
+   "pandId": "0363100012092816",
+   "address": "Pretoriusstraat 60A",
+   "reason": "a white timber oriel over the door axis at the first floor and four window axes; the type draws three axes with no oriel (lone pand released by the #156 opt-in; pretorius-54-68-r1 sheet, 2026-11-01)"
+  },
+  {
+   "pandId": "0363100012124615",
+   "address": "Pretoriusstraat 71",
+   "reason": "two wide double windows per storey with no balconies and a dormer over the cornice; the type draws balconies on the left axis (lone pand released by the #156 opt-in; pretorius-71-95-r4 sheet, 2026-11-01)"
+  },
+  {
+   "pandId": "0363100012062960",
+   "address": "Pretoriusstraat 80",
+   "reason": "a brick attic bay over the middle axes with its own lights and cap, rising over the cornice; the kit draws a wall dormer over one axis only (lone pand released by the #156 opt-in; pretorius-72-120-r2 sheet, 2026-11-01)"
+  },
+  {
+   "pandId": "0363100012072572",
+   "address": "Pretoriusstraat 76",
+   "reason": "the twin of 80: a brick attic bay over the middle axes with its own lights and cap; the kit draws a wall dormer over one axis only (lone pand released by the #156 opt-in; pretorius-72-120-r3 sheet, 2026-11-01)"
+  },
+  {
+   "pandId": "0363100012137732",
+   "address": "Pretoriusstraat 72A",
+   "reason": "a mansard top, two wide double windows and a narrow one per storey, a white garage front on the ground floor; the type draws three axes with balconies (lone pand released by the #156 opt-in; pretorius-72-120-r4 sheet, 2026-11-01)"
+  },
+  {
+   "pandId": "0363100012082879",
+   "address": "Retiefstraat 262",
+   "reason": "a flat-roofed front with wide white-framed windows in two groups; transvaal-1923-portiek draws a slate roof with a raised brick parapet block (lone pand released by the #156 opt-in; retief-194-268-r1 sheet, 2026-11-01)"
+  },
+  {
+   "pandId": "0363100012061780",
+   "address": "Retiefstraat 286",
+   "reason": "a flat-roofed front with a deep projecting eaves slab and wide windows; transvaal-1923-portiek draws a slate roof with a raised parapet block (lone pand released by the #156 opt-in; retief-272-292-r1 sheet, 2026-11-01)"
+  },
+  {
+   "pandId": "0363100012144201",
+   "address": "Retiefstraat 61",
+   "reason": "the ground floor is residential (an arched house door and two windows), but an OSM amenity=public_bookcase node makes auto-place draw a bar shop front; the wall dormer pin is right (lone pand released by the #156 opt-in; retief-45-75-r5 sheet, 2026-11-01)"
+  },
+  {
+   "pandId": "0363100012087381",
+   "address": "Smitstraat 53A",
+   "reason": "the balcony stack runs on the right-hand axis at the face end and the cornice is a corner slab; the type draws centre balconies (lone pand released by the #156 opt-in; smit-27-53-r1 sheet, 2026-11-01)"
+  },
+  {
+   "pandId": "0363100012120105",
+   "address": "Transvaalstraat 130A",
+   "reason": "a flat top with a set-back roof storey; transvaal-1923-portiek-tower draws a brick tower over the centre (lone pand released by the #156 opt-in; transvaal-106-140-r1 sheet, 2026-11-01)"
+  },
+  {
+   "pandId": "0363100012074719",
+   "address": "Transvaalstraat 76A",
+   "reason": "a 1920s-looking front with a projecting eaves slab, paired white windows and wide ground-floor windows; the 1911 type draws a brick cornice and a house door (lone pand released by the #156 opt-in; transvaal-74-104-r1 sheet, 2026-11-01)"
+  },
+  {
+   "pandId": "0363100012092019",
+   "address": "Retiefstraat 63",
+   "reason": "the ground floor is residential (an arched house door and windows), but the OSM amenity=public_bookcase node 10979435695 on the pavement makes auto-place draw a bar shop front; the front otherwise reads as the 1911 type under a pointed gable (retief-45-75 strip 2023-01-02, #156)"
+  },
+  {
+   "pandId": "0363100012072390",
+   "address": "Pretoriusstraat 78",
+   "reason": "a brick attic bay over the middle axes with paired lights, like 80 and 76; the type draws a plain cornice (lone pand released by the #156 opt-in; pretorius-72-120-r2 sheet, 2026-11-01)"
+  },
+  {
+   "pandId": "0363100012119806",
+   "address": "Ingogostraat 9",
+   "reason": "the wall-dormer crown reads right on the strip (ingogo-1-13-r1 sheet, 2026-11-01, #156), but the compiled crown tops out at 18.86 m against a 3DBAG roof max of 15.6 m and fails height-vs-3dbag (limit 18.0 m with dormers); the 3DBAG top or the dormer rise needs measuring before it can stand"
+  },
+  {
+   "pandId": "0363100012105195",
+   "address": "Colensostraat 13",
+   "reason": "design 4 of #158 (1922 recessed-loggia rows): transvaal-1922-loggia-row with the new front loggia kit part draws the recessed first-floor loggia, but every Colensostraat/Vaalrivierstraat pand has a 0.64-0.66 m outward BAG jog (1.9 m wide, at the loggia/door bay) and compile rejects a grouped frontage outset beyond 0.5 m ('Grouped frontage is not a straight surveyed wall'); the columns score (0.67) reads the porch jog as extra bays. Needs a stepped-frontage (porch projection) kit part or a measured outset cap before it can stand (2020-04-29 strip, gridded in staging/block-face/transvaalbuurt/5b)"
+  },
+  {
+   "pandId": "0363100012072680",
+   "address": "Colensostraat 17",
+   "reason": "design 4 of #158 (1922 recessed-loggia rows): transvaal-1922-loggia-row with the new front loggia kit part draws the recessed first-floor loggia, but every Colensostraat/Vaalrivierstraat pand has a 0.64-0.66 m outward BAG jog (1.9 m wide, at the loggia/door bay) and compile rejects a grouped frontage outset beyond 0.5 m ('Grouped frontage is not a straight surveyed wall'); the columns score (0.67) reads the porch jog as extra bays. Needs a stepped-frontage (porch projection) kit part or a measured outset cap before it can stand (2020-04-29 strip, gridded in staging/block-face/transvaalbuurt/5b)"
+  },
+  {
+   "pandId": "0363100012098146",
+   "address": "Colensostraat 21",
+   "reason": "design 4 of #158 (1922 recessed-loggia rows): transvaal-1922-loggia-row with the new front loggia kit part draws the recessed first-floor loggia, but every Colensostraat/Vaalrivierstraat pand has a 0.64-0.66 m outward BAG jog (1.9 m wide, at the loggia/door bay) and compile rejects a grouped frontage outset beyond 0.5 m ('Grouped frontage is not a straight surveyed wall'); the columns score (0.67) reads the porch jog as extra bays. Needs a stepped-frontage (porch projection) kit part or a measured outset cap before it can stand (2020-04-29 strip, gridded in staging/block-face/transvaalbuurt/5b)"
+  },
+  {
+   "pandId": "0363100012117405",
+   "address": "Colensostraat 25",
+   "reason": "design 4 of #158 (1922 recessed-loggia rows): transvaal-1922-loggia-row with the new front loggia kit part draws the recessed first-floor loggia, but every Colensostraat/Vaalrivierstraat pand has a 0.64-0.66 m outward BAG jog (1.9 m wide, at the loggia/door bay) and compile rejects a grouped frontage outset beyond 0.5 m ('Grouped frontage is not a straight surveyed wall'); the columns score (0.67) reads the porch jog as extra bays. Needs a stepped-frontage (porch projection) kit part or a measured outset cap before it can stand (2020-04-29 strip, gridded in staging/block-face/transvaalbuurt/5b)"
+  },
+  {
+   "pandId": "0363100012064734",
+   "address": "Colensostraat 26",
+   "reason": "design 4 of #158 (1922 recessed-loggia rows): transvaal-1922-loggia-row with the new front loggia kit part draws the recessed first-floor loggia, but every Colensostraat/Vaalrivierstraat pand has a 0.64-0.66 m outward BAG jog (1.9 m wide, at the loggia/door bay) and compile rejects a grouped frontage outset beyond 0.5 m ('Grouped frontage is not a straight surveyed wall'); the columns score (0.67) reads the porch jog as extra bays. Needs a stepped-frontage (porch projection) kit part or a measured outset cap before it can stand (2020-04-29 strip, gridded in staging/block-face/transvaalbuurt/5b)"
+  },
+  {
+   "pandId": "0363100012147649",
+   "address": "Colensostraat 22",
+   "reason": "design 4 of #158 (1922 recessed-loggia rows): transvaal-1922-loggia-row with the new front loggia kit part draws the recessed first-floor loggia, but every Colensostraat/Vaalrivierstraat pand has a 0.64-0.66 m outward BAG jog (1.9 m wide, at the loggia/door bay) and compile rejects a grouped frontage outset beyond 0.5 m ('Grouped frontage is not a straight surveyed wall'); the columns score (0.67) reads the porch jog as extra bays. Needs a stepped-frontage (porch projection) kit part or a measured outset cap before it can stand (2020-04-29 strip, gridded in staging/block-face/transvaalbuurt/5b)"
+  },
+  {
+   "pandId": "0363100012127557",
+   "address": "Colensostraat 18",
+   "reason": "design 4 of #158 (1922 recessed-loggia rows): transvaal-1922-loggia-row with the new front loggia kit part draws the recessed first-floor loggia, but every Colensostraat/Vaalrivierstraat pand has a 0.64-0.66 m outward BAG jog (1.9 m wide, at the loggia/door bay) and compile rejects a grouped frontage outset beyond 0.5 m ('Grouped frontage is not a straight surveyed wall'); the columns score (0.67) reads the porch jog as extra bays. Needs a stepped-frontage (porch projection) kit part or a measured outset cap before it can stand (2020-04-29 strip, gridded in staging/block-face/transvaalbuurt/5b)"
+  },
+  {
+   "pandId": "0363100012094468",
+   "address": "Colensostraat 14",
+   "reason": "design 4 of #158 (1922 recessed-loggia rows): transvaal-1922-loggia-row with the new front loggia kit part draws the recessed first-floor loggia, but every Colensostraat/Vaalrivierstraat pand has a 0.64-0.66 m outward BAG jog (1.9 m wide, at the loggia/door bay) and compile rejects a grouped frontage outset beyond 0.5 m ('Grouped frontage is not a straight surveyed wall'); the columns score (0.67) reads the porch jog as extra bays. Needs a stepped-frontage (porch projection) kit part or a measured outset cap before it can stand (2020-04-29 strip, gridded in staging/block-face/transvaalbuurt/5b)"
+  },
+  {
+   "pandId": "0363100012143885",
+   "address": "Transvaalstraat 131A",
+   "reason": "Transvaalstraat 131-143 (BAG 1922) is listed with the loggia rows in #158 but the 2020-04-29 strip shows a different front: a window pair and a small window per storey and no recessed loggia; no type authored this round, left as the 3DBAG box"
+  },
+  {
+   "pandId": "0363100012123734",
+   "address": "Transvaalstraat 133A",
+   "reason": "Transvaalstraat 131-143 (BAG 1922) is listed with the loggia rows in #158 but the 2020-04-29 strip shows a different front: a window pair and a small window per storey and no recessed loggia; no type authored this round, left as the 3DBAG box"
+  },
+  {
+   "pandId": "0363100012103780",
+   "address": "Transvaalstraat 135A",
+   "reason": "Transvaalstraat 131-143 (BAG 1922) is listed with the loggia rows in #158 but the 2020-04-29 strip shows a different front: a window pair and a small window per storey and no recessed loggia; no type authored this round, left as the 3DBAG box"
+  },
+  {
+   "pandId": "0363100012136060",
+   "address": "Transvaalstraat 137A",
+   "reason": "Transvaalstraat 131-143 (BAG 1922) is listed with the loggia rows in #158 but the 2020-04-29 strip shows a different front: a window pair and a small window per storey and no recessed loggia; no type authored this round, left as the 3DBAG box"
+  },
+  {
+   "pandId": "0363100012070736",
+   "address": "Transvaalstraat 139A",
+   "reason": "Transvaalstraat 131-143 (BAG 1922) is listed with the loggia rows in #158 but the 2020-04-29 strip shows a different front: a window pair and a small window per storey and no recessed loggia; no type authored this round, left as the 3DBAG box"
+  },
+  {
+   "pandId": "0363100012142199",
+   "address": "Transvaalstraat 141B",
+   "reason": "Transvaalstraat 131-143 (BAG 1922) is listed with the loggia rows in #158 but the 2020-04-29 strip shows a different front: a window pair and a small window per storey and no recessed loggia; no type authored this round, left as the 3DBAG box"
+  },
+  {
+   "pandId": "0363100012073386",
+   "address": "Transvaalstraat 143",
+   "reason": "Transvaalstraat 131-143 (BAG 1922) is listed with the loggia rows in #158 but the 2020-04-29 strip shows a different front: a window pair and a small window per storey and no recessed loggia; no type authored this round, left as the 3DBAG box"
+  },
+  {
+   "pandId": "0363100012117986",
+   "address": "Schalk Burgerstraat 45",
+   "reason": "Schalk Burgerstraat 45-57: the 10.6 m corner wing (3DBAG eaves 10.4 m), another front than transvaal-1931-diaper-row (#158)"
+  },
+  {
+   "pandId": "0363100012102728",
+   "address": "Schalk Burgerstraat 79",
+   "reason": "Schalk Burgerstraat 79-97: the 19.9 m raised centre over a round-arched gateway with its own window rhythm; the kit has no gateway arch or raised centre bay for it (#158)"
+  },
+  {
+   "pandId": "0363100012122976",
+   "address": "Schalk Burgerstraat 117",
+   "reason": "Schalk Burgerstraat 117-131: the 11.3 m corner with balconies, another front (#158)"
   }
  ]
 }

@@ -99,7 +99,7 @@ async function lookFrom(page: Page, from: [number, number], up: number, to: [num
   await teleport(page, to[0], to[1], (Math.atan2(-me, -mn) * 180 / Math.PI + 360) % 360);
   await settle(page);
   await page.evaluate(({ from, up, to, toUp, onWater }) => {
-    const vm = (window as any).canalRecallGame.vectorMap, map = vm.map, ground = vm._ownGround;
+    const vm = (window as any).canalRecallGame.vectorMap, map = vm.map ?? vm.cameraMap, ground = vm._ownGround;
     vm.__syncOriginal = vm.__syncOriginal || vm.sync;
     vm.sync = () => {};
     map.setMaxPitch?.(85);
@@ -115,7 +115,7 @@ async function kitMask(page: Page, file: string): Promise<{ mask: Uint8Array; wi
   const toggle = (show: boolean) => page.evaluate(show => {
     const vm = (window as any).canalRecallGame.vectorMap, ground = vm._ownGround;
     for (const r of ground.resident.values()) r.group.traverse((o: any) => { if (o.isMesh && o.name === 'deckBody') o.visible = show; });
-    vm.map.triggerRepaint();
+    (vm.map ?? vm.cameraMap).triggerRepaint();
   }, show);
   const on = await shot();
   await page.screenshot({ path: file });
@@ -135,7 +135,7 @@ async function kitMask(page: Page, file: string): Promise<{ mask: Uint8Array; wi
 /** Screen columns of a bridge's deck-span ends (the side view's own bridge, not a neighbour further down the canal). */
 async function spanColumns(page: Page, b: Bridge): Promise<[number, number]> {
   return page.evaluate(({ b }) => {
-    const map = (window as any).canalRecallGame.vectorMap.map, left = map.getContainer().getBoundingClientRect().left;
+    const map = (window as any).canalRecallGame.vectorMap.map ?? (window as any).canalRecallGame.vectorMap.cameraMap, left = map.getContainer().getBoundingClientRect().left;
     const rad = b.bearing * Math.PI / 180, mLng = 111320 * Math.cos(b.lat * Math.PI / 180), h = b.lengthM / 2;
     const xs = [-1, 1].map(s => (window as any).canalRecallGame.vectorMap.camera.project([b.lng + Math.sin(rad) * s * h / mLng, b.lat + Math.cos(rad) * s * h / 111320]).x + left);
     return [Math.round(Math.min(...xs)), Math.round(Math.max(...xs))] as [number, number];

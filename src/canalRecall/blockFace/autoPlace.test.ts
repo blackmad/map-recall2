@@ -329,3 +329,14 @@ test('stair-block frontage (match.frontage): a 7 m and a 14 m stair block of the
   assert.match(frontageVetoes(types[0], pand({widthM: 16.71})).join(), /^frontage 16.71 m/);
   assert.deepEqual(frontageVetoes(types[0], pand()), []);
 });
+
+test('groundUse: street furniture on the pavement is not a business (De la Reijstraat 28B, #154)', () => {
+  const bench = {type: 'node', id: 14232410073, category: 'amenity=bench'}, bin = {type: 'node', id: 14232421343, category: 'amenity=waste_basket'};
+  const u = groundUse(pand({groundUses: ['industriefunctie', 'woonfunctie'], osm: [bench, bin]}), '2023-01-01');
+  assert.equal(u.use, 'residential');
+  assert.equal(u.agreement, 'bag-only');
+  assert.equal(u.osm, undefined);
+  // A real business beside the bench still decides.
+  assert.equal(groundUse(pand({osm: [bench, {type: 'node', id: 1, name: 'Bakker', category: 'shop=bakery'}]}), '2023-01-01').use, 'shop');
+  assert.equal(groundUse(pand({osm: [{type: 'node', id: 2, category: 'amenity=cafe'}]}), '2023-01-01').use, 'cafe');
+});

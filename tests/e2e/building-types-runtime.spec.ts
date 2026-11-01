@@ -109,7 +109,7 @@ test(`building types ${label}`, async ({ page }, info) => {
   await openRoute(page, { travelMode: 'car', abortHeavyTiles: false, enterRacing: false, query: on ? '' : '?buildingTypes=0' });
   await page.waitForFunction(() => (window as any).canalRecallGame.state === 4, null, { timeout: 90_000 }).catch(() => {});
   await page.evaluate((cam) => {
-    const g = (window as any).canalRecallGame, vm = g.vectorMap, map = vm.map;
+    const g = (window as any).canalRecallGame, vm = g.vectorMap, map = vm.map ?? vm.cameraMap;
     for (const k of cam) { map['__' + k] = map[k]; map[k] = () => map; }
     vm._signatureLandmarks.setSuspended?.(false);
   }, CAM);
@@ -119,7 +119,7 @@ test(`building types ${label}`, async ({ page }, info) => {
   for (const [name, cam] of Object.entries(VIEWS)) {
     if (ONLY && !ONLY.includes(name)) continue;
     await page.evaluate((c) => {
-      const map = (window as any).canalRecallGame.vectorMap.map;
+      const map = (window as any).canalRecallGame.vectorMap.map ?? (window as any).canalRecallGame.vectorMap.cameraMap;
       map.__jumpTo.call(map, { center: c.center, zoom: c.zoom, pitch: c.pitch, bearing: c.bearing });
     }, cam);
     const t0 = Date.now();
@@ -133,7 +133,7 @@ test(`building types ${label}`, async ({ page }, info) => {
     await page.screenshot({ path: `artifacts/building-types/${label}-${name}-${info.project.name}.png` });
     await cdp.send('Emulation.setCPUThrottlingRate', { rate: info.project.name === 'iphone' ? 4 : 1 });
     await page.evaluate(() => {
-      const w = window as any, vm = w.canalRecallGame.vectorMap, map = vm.map;
+      const w = window as any, vm = w.canalRecallGame.vectorMap, map = vm.map ?? vm.cameraMap;
       const t: Record<string, number[]> = { frame: [], landmarkRender: [], rendererTri: [], rendererCalls: [], renderCalls: [] };
       w.__perf = t; w.__stopFrames = false;
       // Count the GL draws the landmark layer issues (all landmark and building-type meshes, instanced draws multiplied by

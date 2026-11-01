@@ -40,15 +40,15 @@ const cdp = await page.context().newCDPSession(page);
 const throttle = device === 'touch' ? 4 : 1;
 await cdp.send('Emulation.setCPUThrottlingRate', {rate: throttle});
 await page.evaluate(() => {
-  const w = window, vm = canalRecallGame.vectorMap, map = vm.map;
+  const w = window, vm = canalRecallGame.vectorMap, map = vm.map ?? vm.cameraMap;
   const t = w.__perf = {frame: [], mapRender: [], threeLayers: [], calls: [], redraws0: vm._sharedFrame?.shadowRedraws ?? null};
   const wrap = (obj, key, bucket) => { const o = obj[key].bind(obj); obj[key] = (...a) => { const s = performance.now(); try { return o(...a); } finally { t[bucket].push(performance.now() - s); } }; };
-  wrap(map, '_render', 'mapRender');
+  if (map.painter) wrap(map, '_render', 'mapRender'); // ENGINE=own: no MapLibre render (n/a)
   const own = vm._sharedFrame ? [vm._sharedFrame.mainLayer, vm._sharedFrame.overlayLayer]
     : [vm._threeBuildings?.layer, vm._signatureLandmarks?.layer, vm._inventoryTrees?.layer, vm._artisAnimals?.layer, vm._pyramidalRoofs?.layer, vm._playerBike?.layer, vm._playerFerry?.layer, vm._playerBoat?.layer, vm._playerTransit?.layer];
-  for (const l of own) if (l?.render && map.getLayer(l.id)) wrap(l, 'render', 'threeLayers');
+  for (const l of own) if (l?.render && map.getLayer?.(l.id)) wrap(l, 'render', 'threeLayers');
   // WebGL draw calls per frame (all of MapLibre + ours).
-  const gl = map.painter.context.gl; let calls = 0;
+  const gl = map.painter?.context.gl ?? {}; let calls = 0; // ENGINE=own: no painter, no MapLibre draw counts
   for (const fn of ['drawArrays', 'drawElements', 'drawElementsInstanced', 'drawArraysInstanced', 'drawRangeElements']) { const o = gl[fn]?.bind(gl); if (o) gl[fn] = (...a) => { calls++; return o(...a); }; }
   map.on('render', () => { t.calls.push(calls); calls = 0; });
   if (vm._sharedFrame) {

@@ -3,7 +3,7 @@
  "street": "Joubertstraat",
  "library": "transvaalbuurt",
  "stripDate": "2020-04-29",
- "seconds": 2.81,
+ "seconds": 2.96,
  "thresholds": {
   "minScore": 0.7,
   "margin": 0.05,
@@ -234,8 +234,8 @@
     "foliageShare": 0.01
    },
    "status": "held",
-   "stage": "run",
-   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
+   "stage": "review",
+   "reason": "review: an Amsterdam School flat-roofed front: a vertical ribbed stair shaft over a white concrete door canopy, angled white bay windows and trapezoid attic lights; transvaal-1923-portiek-tower draws a brick tower block over a slate roof with plain punched windows (lone pand released by the #156 opt-in; joubert-3-17-r1 sheet, 2026-11-01)",
    "likeness": null,
    "challengers": {}
   },
@@ -373,25 +373,23 @@
    },
    "status": "held",
    "stage": "match",
-   "reason": "every type vetoed (best transvaal-1911-five-storey-tall: built 1929, type 1908-1914)",
+   "reason": "best transvaal-1926-band-row scores 0.67 < 0.7 (strip columns 5 vs 3 bays)",
    "best": {
-    "type": "transvaal-1911-five-storey-tall",
-    "score": 0,
-    "veto": [
-     "built 1929, type 1908-1914"
-    ],
+    "type": "transvaal-1926-band-row",
+    "score": 0.67,
+    "veto": [],
     "criteria": [
      {
       "key": "eaves",
       "weight": 2,
-      "score": 0.5,
-      "note": "3DBAG eaves 13.05 m = 4 storeys of 3.26 m vs the type's 3.55 m"
+      "score": null,
+      "note": "strip cornice unread (type line 13.9 m; 3DBAG 13.05 m not compared)"
      },
      {
       "key": "storeys",
       "weight": 1,
       "score": 1,
-      "note": "3DBAG bouwlagen 5 vs 5"
+      "note": "3DBAG bouwlagen 5 vs 4/5"
      },
      {
       "key": "stucco",

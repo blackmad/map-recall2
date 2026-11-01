@@ -80,8 +80,8 @@ export async function spotLandmark(page: Page, spot: HighlightSpot): Promise<any
 
 async function quiet(page: Page): Promise<void> {
   await page.evaluate(() => {
-    const map = (window as any).canalRecallGame.vectorMap.map;
-    for (const layer of map.getStyle().layers) if (layer.type === 'symbol' && map.getLayoutProperty(layer.id, 'visibility') !== 'none') map.setLayoutProperty(layer.id, 'visibility', 'none');
+    const map = (window as any).canalRecallGame.vectorMap.map ?? (window as any).canalRecallGame.vectorMap.cameraMap;
+    if ((window as any).canalRecallGame.vectorMap.map) { for (const layer of map.getStyle().layers) if (layer.type === 'symbol' && map.getLayoutProperty(layer.id, 'visibility') !== 'none') map.setLayoutProperty(layer.id, 'visibility', 'none'); } else (window as any).canalRecallGame.vectorMap.setLabelsVisible(false);
     const canvas = map.getCanvas() as HTMLCanvasElement;
     for (const e of Array.from(document.body.querySelectorAll('*'))) if (e !== canvas && !e.contains(canvas)) (e as HTMLElement).style.visibility = 'hidden';
   });
@@ -128,7 +128,7 @@ for (const frame of FRAMES) for (const style of STYLES) {
       await quiet(page);
       await page.waitForTimeout(500);
       const file = `${OUT}/${frame.name}-${style}-${spot.name}-${view}.png`;
-      const png = await page.locator('canvas.maplibregl-canvas').first().screenshot({ path: file });
+      const png = await page.locator('canvas.maplibregl-canvas, canvas.engine-canvas').first().screenshot({ path: file });
       const share = await colourShare(png, ACCENT[base === 'yellow' ? 'yellow' : accent ?? 'coral']);
       records.push({ spot: spot.name, view, file, share, state, landmark: { id: landmark.id, name: landmark.name, lngLat: landmark.lngLat } });
       await page.evaluate(() => {

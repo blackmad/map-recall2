@@ -18,11 +18,11 @@ try {
   ['brasa-overview',[4.9714,52.3077],13.5,0,false],
   ['brasa-mobile',[4.96528,52.30527],18.34,48,true]]) {
   if(mobile)await page.setViewportSize({width:390,height:844});
-  await page.evaluate(({center,zoom,pitch})=>{const v=canalRecallGame.vectorMap;v.map.jumpTo({center,zoom,pitch,bearing:0});v._completeCity?.followCamera();v._parkLandscape.updateViewport();},{center,zoom,pitch});
+  await page.evaluate(({center,zoom,pitch})=>{const v=canalRecallGame.vectorMap;(v.map ?? v.cameraMap).jumpTo({center,zoom,pitch,bearing:0});v._completeCity?.followCamera();v._parkLandscape.updateViewport();},{center,zoom,pitch});
   await page.waitForTimeout(4500);
   const before=await page.evaluate(()=>{const v=canalRecallGame.vectorMap,m=v.map,g=v._parkLandscape;const ids=[...g.tunnelFilters.keys()];for(const [id,r]of g.tunnelFilters)m.setFilter(id,r.original);return {ids,originals:Object.fromEntries([...g.tunnelFilters].map(([id,r])=>[id,r.original]))};});
   assert.equal(before.ids.length,6);await page.waitForTimeout(400);
-  const oldRendered=await page.evaluate(ids=>canalRecallGame.vectorMap.map.queryRenderedFeatures({layers:ids}).length,before.ids);
+  const oldRendered=await page.evaluate(ids=>(canalRecallGame.vectorMap.map ?? canalRecallGame.vectorMap.cameraMap).queryRenderedFeatures({layers:ids}).length,before.ids);
   await page.screenshot({path:`artifacts/parks/${name}-tunnels-before.png`});
   await page.evaluate(()=>{const g=canalRecallGame.vectorMap._parkLandscape;g.tunnelFilters.clear();g.updateTunnelFilters();});
   await page.waitForTimeout(400);
@@ -31,7 +31,7 @@ try {
   assert.ok(before.ids.every(id=>JSON.stringify(after.filters[id])!==JSON.stringify(before.originals[id])));
   await page.screenshot({path:`artifacts/parks/${name}-tunnels-after.png`});
   await page.evaluate(()=>canalRecallGame.vectorMap._parkLandscape.setEnabled(false));
-  assert.deepEqual(await page.evaluate(ids=>Object.fromEntries(ids.map(id=>[id,canalRecallGame.vectorMap.map.getFilter(id)])),before.ids),before.originals);
+  assert.deepEqual(await page.evaluate(ids=>Object.fromEntries(ids.map(id=>[id,(canalRecallGame.vectorMap.map ?? canalRecallGame.vectorMap.cameraMap).getFilter(id)])),before.ids),before.originals);
   await page.evaluate(()=>canalRecallGame.vectorMap._parkLandscape.setEnabled(true));
   report.push({name,oldRendered,newRendered:after.rendered,features:after.features,trees:after.trees,draws:after.draws,tiles:after.tiles});
  }

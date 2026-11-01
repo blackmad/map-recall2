@@ -3,7 +3,7 @@
  "street": "Retiefstraat",
  "library": "transvaalbuurt",
  "stripDate": "2020-04-29",
- "seconds": 1.81,
+ "seconds": 0.62,
  "thresholds": {
   "minScore": 0.7,
   "margin": 0.05,
@@ -51,40 +51,10 @@
     "foliageShare": 0.01
    },
    "status": "held",
-   "stage": "run",
-   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
-   "likeness": {
-    "pandId": "0363100012061780",
-    "ncc": 0.211,
-    "nccRaw": 0.211,
-    "shiftM": [
-     -0.15,
-     0.3
-    ],
-    "usable": 0.98,
-    "abstain": null,
-    "verdict": "WARN",
-    "reasons": [
-     "mask IoU 0.261 < 0.45"
-    ],
-    "wall": {
-     "photo": "#6b514e",
-     "model": "#89675d",
-     "dL": 0.088
-    },
-    "glazing": {
-     "photo": 0.24,
-     "model": 0.24
-    },
-    "columns": {
-     "photo": null,
-     "model": 3
-    },
-    "iou": 0.261
-   },
-   "challengers": {
-    "transvaal-1923-portiek": 0.211
-   }
+   "stage": "review",
+   "reason": "review: a flat-roofed front with a deep projecting eaves slab and wide windows; transvaal-1923-portiek draws a slate roof with a raised parapet block (lone pand released by the #156 opt-in; retief-272-292-r1 sheet, 2026-11-01)",
+   "likeness": null,
+   "challengers": {}
   },
   {
    "pandId": "0363100012072967",
@@ -122,41 +92,10 @@
     "foliageShare": 0
    },
    "status": "held",
-   "stage": "likeness",
-   "reason": "edge NCC 0.095 < 0.15 (photo vs model body; likeness.ts FAIL: wall hue 20 deg; glazing storey band off by 0.33 mean 0.24 vs photo 0.48)",
-   "likeness": {
-    "pandId": "0363100012072967",
-    "ncc": 0.095,
-    "nccRaw": 0.095,
-    "shiftM": [
-     -0.4,
-     0.35
-    ],
-    "usable": 0.98,
-    "abstain": null,
-    "verdict": "FAIL",
-    "reasons": [
-     "wall hue 20 deg",
-     "glazing storey band off by 0.33 mean 0.24 vs photo 0.48"
-    ],
-    "wall": {
-     "photo": "#675252",
-     "model": "#896b5c",
-     "dL": 0.086
-    },
-    "glazing": {
-     "photo": 0.48,
-     "model": 0.24
-    },
-    "columns": {
-     "photo": null,
-     "model": 3
-    },
-    "iou": 0.261
-   },
-   "challengers": {
-    "transvaal-1923-portiek": 0.095
-   }
+   "stage": "run",
+   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
+   "likeness": null,
+   "challengers": {}
   },
   {
    "pandId": "0363100012105196",

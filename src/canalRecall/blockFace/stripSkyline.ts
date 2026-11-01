@@ -63,3 +63,43 @@ export function measureSkyline(a: {rgb: Uint8Array; width: number; height: numbe
   }
   return {eavesM: +eavesM.toFixed(2), eavesRow: Math.round(height - eavesM * ppm), confidence, crown};
 }
+
+/**
+ * What bounds the skyline of one span (2026-11-01, #152; StripEvidence.skyBound): the share of the columns whose top
+ * (as `measureSkyline` finds it) is foliage in its first metre, and the span's inset width the crown is measured on
+ * (stripSkyBound.ts `measureSkyBound`).
+ * The skyline only asks for sky above a column; a tree crown, bare winter branches or a neighbour's mass standing over
+ * the front end the column as well (Retiefstraat 45-75 and Transvaalstraat 3-47 2023-01-02: branches over every front,
+ * skyline eaves 16.6-18.4 m over a 13 m cornice). `skylineBounded` judges a reading with it.
+ */
+export interface SkyBound { leafTopShare: number; spanM: number }
+
+export const SKY_BOUND = {
+  /** A column whose first metre under its top is more than this share foliage ends on a tree. */
+  leafColumn: 0.3,
+  /** More than this share of leafy column tops: the skyline is a tree line. */
+  maxLeafTop: 0.2,
+  /** The skyline (eaves line, or the crown peak) may stand this far over the pand's own 3DBAG roof max, no more: what
+   *  stands higher is a tree, branches or a building behind (Retiefstraat 69C 2023-01-02: skyline 17.7 m, 3DBAG max 15.8). */
+  overRoofM: 0.5,
+  /** A crown touching one end of the span (within this, m) and narrower than half the span is the neighbour's crown or
+   *  the cornice's bend, not this front's (Smitstraat 36A 2020-04-29: 1.0 m over the left party wall, rise 0.8 m). */
+  edgeM: 0.25,
+} as const;
+
+/**
+ * Is a confident skyline reading this front's own outline? It must stand under the pand's 3DBAG roof max (+ overRoofM),
+ * its column tops must not be foliage, and its crown must not be a narrow mass hugging one party wall. Pure.
+ */
+export function skylineBounded(sky: Skyline, bound: SkyBound | undefined, roofMaxM: number): {ok: boolean; why: string} {
+  const top = sky.eavesM + (sky.crown?.riseM ?? 0);
+  if (Number.isFinite(roofMaxM) && roofMaxM > 0 && top > roofMaxM + SKY_BOUND.overRoofM)
+    return {ok: false, why: `skyline ${sky.crown ? 'crown top' : 'eaves'} ${+top.toFixed(2)} m over the 3DBAG roof max ${+roofMaxM.toFixed(2)} m (trees, branches or a building behind)`};
+  if (bound && bound.leafTopShare > SKY_BOUND.maxLeafTop) return {ok: false, why: `${Math.round(bound.leafTopShare * 100)} % of the column tops are foliage`};
+  if (bound && sky.crown && bound.spanM > 0) {
+    const left = sky.crown.centre * bound.spanM - sky.crown.widthM / 2, right = left + sky.crown.widthM;
+    const atLeft = left <= SKY_BOUND.edgeM, atRight = right >= bound.spanM - SKY_BOUND.edgeM;
+    if (atLeft !== atRight && sky.crown.widthM < bound.spanM / 2) return {ok: false, why: `the skyline crown (${sky.crown.widthM} m) hugs the ${atLeft ? 'left' : 'right'} party wall: the neighbour's crown or the cornice's bend`};
+  }
+  return {ok: true, why: 'sky-bounded'};
+}

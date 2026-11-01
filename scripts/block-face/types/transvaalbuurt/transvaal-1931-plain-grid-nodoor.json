@@ -1,0 +1,205 @@
+{
+ "schemaVersion": 1,
+ "kind": "house-type",
+ "id": "transvaal-1931-plain-grid-nodoor",
+ "district": "transvaalbuurt",
+ "description": "The door-less half of the Afrikanerplein 33-51 portiek pairs (transvaal-1931-plain-grid): one portiek door serves two pands, so every other pand has a ground window where its neighbour has the door; the erker over that axis on storeys 1-2 stays. Facts cannot tell the halves apart: the faces' pands are pinned to one or the other in transvaalbuurt-west-review-types.json",
+ "fit": {
+  "widthM": [
+   6.0,
+   7.4
+  ],
+  "storeys": [
+   5
+  ]
+ },
+ "match": {
+  "years": [
+   1930,
+   1931
+  ],
+  "eavesM": [
+   14.0,
+   15.6
+  ],
+  "storeys3dbag": [
+   4,
+   5
+  ],
+  "stucco": false,
+  "frontEavesM": 14.55,
+  "frontage": {
+   "mode": "stair-block",
+   "widthM": [
+    6.0,
+    7.4
+   ],
+   "storeys": [
+    5
+   ],
+   "axisPitchM": [
+    1.6,
+    3.0
+   ]
+  },
+  "lonePand": {
+   "minWidthM": 5
+  },
+  "mirrorForDoor": "right",
+  "crownFromType": "flat-slab",
+  "note": "Pinned per pand (transvaalbuurt-west-review-types.json): the door-less halves of the Afrikanerplein 33-51 portiek pairs. Afrikanerplein 33-51 (BAG 1931, 10 pands of 6.7-6.8 m; 3DBAG eaves 14.9-15.0 m, bouwlagen 4-5) on the 2020-04-29 strip, gridded 1 m: the eaves slab foot 14.1 m, top 14.55 m (frontEavesM; 3DBAG reads 0.35 m higher). 25-27 and 29-31 carry the same grid but are BAG 1989 (a rebuild behind the old front, or an infill in its image): the year vetoes them and they stay with the city tier; 53 (8.5 m) and 55 (9.4 m) are the corner design (a taller ground storey with a cream band at 4.0 m, a ledge at 10.2 m) and stay outside the width range. Axis pitch 1.6-3.0 m: three columns over 6.7 m (2.2 m). Wall: match.measuredWall false, one brick for the row (lesson 10): #53443d, fitted through the city tint (fit-wall-palette fitWallBrick) so the drawn wall #715b4f of #634f45 meets #63524a, the per-channel median of the review's photo walls of the tree-free 35, 41, 45 and 49 (#604f47, #65554c, #66554d, #625148); the per-pand refit read street-tree green on 43 and 47",
+  "measuredWall": false
+ },
+ "body": {
+  "storeys": 5,
+  "bays": 3,
+  "cornice": "none",
+  "windows": "casement-toplight",
+  "storeyHeights": [
+   2.85,
+   2.95,
+   2.95,
+   2.95,
+   2.85
+  ],
+  "windowHeights": [
+   0.61,
+   0.63,
+   0.65,
+   0.64,
+   0.51
+  ],
+  "headLines": [
+   0.8,
+   0.885,
+   0.87,
+   0.86,
+   0.79
+  ],
+  "bayFill": [
+   0.54,
+   0.54,
+   0.54
+  ],
+  "bayWidths": [
+   1,
+   1,
+   1
+  ],
+  "storeyWindowWidths": {
+   "4": 0.7
+  },
+  "windowSurround": "sill",
+  "surroundStoreys": [
+   1,
+   2,
+   3
+  ],
+  "bayWindows": {
+   "bays": {
+    "from": 2,
+    "to": 2
+   },
+   "storeys": [
+    1,
+    2
+   ],
+   "hood": true
+  },
+  "brickStripes": [
+   {
+    "rise": [
+     0.4,
+     2.55
+    ],
+    "pitch": 0.3,
+    "stripe": 0.05
+   },
+   {
+    "rise": [
+     2.6,
+     2.95
+    ],
+    "pitch": 0.3,
+    "stripe": 0.18
+   }
+  ]
+ },
+ "crowns": {
+  "flat-slab": {
+   "gable": "flat",
+   "eavesOverhang": {
+    "projection": 0.5,
+    "fascia": 0.45,
+    "colour": "#a9a399",
+    "soffit": "#7d7a74"
+   },
+   "note": "Afrikanerplein 35 (125852): a thin light grey eaves slab 14.1-14.55 m over the top-storey windows (raw #928b82), V-shaped rainwater heads at the party walls; flat roof"
+  }
+ },
+ "grounds": {
+  "no-door": {
+   "doorBay": null,
+   "note": "Afrikanerplein 35, 39, 43: a ground window on the erker axis beside the neighbour's portiek door (125852: window 35.6-36.5 m, 0.56-2.29 m)"
+  }
+ },
+ "palettes": {
+  "dark-brown": {
+   "brick": "#53443d",
+   "frame": "#e6e2d6",
+   "door": "#2f4f7a",
+   "stone": "#c9c0a8",
+   "band": "#b9ae96",
+   "cornice": "#a9a399"
+  }
+ },
+ "roof": {
+  "material": "bitumen",
+  "source": "front",
+  "form": "flat",
+  "evidence": "Afrikanerplein 33-51 strip 2020-04-29: sky directly over the eaves slab along the row, no roof face; 3DBAG roof max 14.9-15.0 m = eaves"
+ },
+ "rhythm": {
+  "bays": "three equal axes at 2.2 m",
+  "identicalBays": "yes, but the erker axis",
+  "windowsPerStorey": "ground: door + 2 windows | 1-3: 3 windows (the erker on the door axis on 1-2) | 4: 3 narrow windows",
+  "symmetry": "a pair of pands mirrors about the party wall with the doors and erkers",
+  "groundFloor": "portiek door at one party wall, two windows; banded brick",
+  "signage": "none",
+  "roofline": "flat; a thin light eaves slab",
+  "photoRows": [
+   3,
+   3,
+   3,
+   3,
+   3
+  ],
+  "photoGroundRows": 1
+ },
+ "evidence": [
+  {
+   "face": "afrikanerplein-25-55",
+   "pands": [
+    "0363100012125852",
+    "0363100012079290",
+    "0363100012068510"
+   ],
+   "citation": "strip.jpg 2020-04-29 (staging/block-face/transvaalbuurt/5b/afrikanerplein-25-55-28-50-grid.png): 35 (125852) ground window 35.6-36.5 m under its erker against the party wall with 33, whose blue portiek door stands at 33.4-34.4 m; 39 and 43 the same beside 37 and 41"
+  },
+  {
+   "face": "afrikanerplein-25-55",
+   "pands": [
+    "0363100012125852"
+   ],
+   "citation": "raw strip wall #634f45/#625047/#635046 on the piers of 35 and 37 (6.5-9.3 m), #675c52 on 47-49; cream sills/band #655747 raw (#c9c0a8 trim); eaves slab #928b82 raw"
+  }
+ ],
+ "schemaLimits": [
+  "the erkers are shallow canted boxes with blue frames; drawn as square box frames (bayWindows.hood) in the trim colour",
+  "the rainwater heads and downpipes at the party walls are not drawn",
+  "the ground storey's light courses are drawn as thin band-brick stripes (brickStripes)"
+ ],
+ "notes": [
+  "Palette: the type default is the raw strip wall of tree-free piers; every placed pand takes its trim-normalised strip wall (auto-place measuredPalette); one brick per row at review (lesson 10)."
+ ]
+}

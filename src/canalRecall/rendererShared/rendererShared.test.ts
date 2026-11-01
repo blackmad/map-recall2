@@ -349,7 +349,9 @@ test('shared frame: two passes, one renderer, participants placed by their own l
 
   const gl = { drawingBufferWidth: 800, drawingBufferHeight: 600 } as any;
   frame.mainLayer.render(gl, { defaultProjectionData: { mainMatrix: clip } });
-  assert.deepEqual(log, ['reset', 'viewport 800x600', 'render[shadow] facades']);
+  // The first shadow redraw also carries the depth-program primer (shadowPrimer.ts), and only that one.
+  assert.deepEqual(log, ['reset', 'viewport 800x600', 'render[shadow] facades,shadow-depth-primer']);
+  assert.equal(frame.scene.getObjectByName('shadow-depth-primer'), undefined, 'the primer leaves after its pass');
   // The facade wrapper maps local metres to world metres about the eye.
   const wrapper = frame.scene.getObjectByName('shared-frame/facades');
   const atTarget = new THREE.Vector3(0, 0, 0).applyMatrix4(wrapper.matrix);
@@ -484,7 +486,7 @@ test('shared frame: behind a covering card no pass draws and no participant runs
   (frame as any).resumedAt = performance.now();
   assert.equal(frame.warmupDue(), false, 'held just after the card goes, while the first draw compiles');
   assert.equal(runs, 1);
-  assert.deepEqual(log, ['reset', 'reset', 'viewport 800x600', 'render[shadow] ground'], 'the compile resets state, then the pass draws');
+  assert.deepEqual(log, ['reset', 'reset', 'viewport 800x600', 'render[shadow] ground,shadow-depth-primer'], 'the compile resets state, then the pass draws (its first shadow redraw with the depth primer)');
 });
 
 test('shared frame, host driver: no custom layers, drive() draws both passes, a restore adopts the new renderer', () => {
@@ -501,7 +503,7 @@ test('shared frame, host driver: no custom layers, drive() draws both passes, a 
   frame.register('ground', { root: new THREE.Group(), onAttach: () => calls.push('attach'), onContextRestored: () => calls.push('restore') });
   frame.register('bike', { root: new THREE.Group() }, { pass: 'overlay' });
   frame.drive(amsterdamClip().clip);
-  assert.deepEqual(log.filter(l => l.startsWith('render')).map(l => l.replace('[shadow]', '')), ['render ground', 'render bike']);
+  assert.deepEqual(log.filter(l => l.startsWith('render')).map(l => l.replace('[shadow]', '')), ['render ground,shadow-depth-primer', 'render bike']);
   let disposed = 0;
   current.dispose = () => { disposed++; };
   map.fire('webglcontextlost');
@@ -511,6 +513,35 @@ test('shared frame, host driver: no custom layers, drive() draws both passes, a 
   map.fire('webglcontextrestored');
   assert.equal(frame.renderer, current);
   assert.deepEqual(calls, ['attach', 'restore']);
+});
+
+test('shared frame, host driver: one camera read per frame, shared by both passes and every participant (#129)', () => {
+  const map = fakeMap();
+  const reads = { zoom: 0, center: 0, bounds: 0 };
+  map.getZoom = () => { reads.zoom++; return 18; };
+  map.getCenter = () => { reads.center++; return { lng: 4.884, lat: 52.3745 }; };
+  map.getBounds = () => { reads.bounds++; return { getWest: () => 4.88, getEast: () => 4.89, getSouth: () => 52.37, getNorth: () => 52.38 }; };
+  const log: string[] = [];
+  let current: any = null;
+  const frame = new SharedFrame(THREE, map, { host: { renderer: () => current } });
+  const gl = { isContextLost: () => false, drawingBufferWidth: 800, drawingBufferHeight: 600 };
+  current = { ...fakeRenderer(log, frame), getContext: () => gl };
+  frame.attach();
+  const seen: { pass: string; zoom: number; bounds: unknown }[] = [];
+  const reader = { beforeRender: (ctx: any) => { seen.push({ pass: ctx.pass, zoom: ctx.zoom, bounds: ctx.bounds() }); } };
+  frame.register('ground', { root: new THREE.Group(), ...reader });
+  frame.register('trees', { root: new THREE.Group(), ...reader });
+  frame.register('bike', { root: new THREE.Group(), ...reader }, { pass: 'overlay' });
+  frame.drive(amsterdamClip().clip);
+  assert.deepEqual(seen.map(s => s.pass), ['main', 'main', 'overlay']);
+  assert.equal(reads.zoom, 1, 'one zoom read for the frame');
+  assert.equal(reads.bounds, 1, 'one bounds read for the frame');
+  assert.ok(reads.center <= 1, 'at most one centre read (the shadow focus)');
+  assert.ok(seen.every(s => s.zoom === 18 && s.bounds === seen[0].bounds), 'every participant sees the same view');
+  assert.deepEqual(seen[0].bounds, { west: 4.88, east: 4.89, south: 52.37, north: 52.38 });
+  frame.drive(amsterdamClip().clip);
+  assert.equal(reads.zoom, 2, 'the next frame reads the camera again');
+  assert.notEqual(seen[3].bounds, seen[0].bounds);
 });
 
 test('lit facade: every instance shares one program (fixed key, same source; uniforms carry the per-layer state)', () => {

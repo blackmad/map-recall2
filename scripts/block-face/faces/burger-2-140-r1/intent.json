@@ -1,0 +1,72 @@
+{
+ "schemaVersion": 1,
+ "kind": "block-face",
+ "id": "burger-2-140-r1",
+ "street": "Schalk Burgerstraat",
+ "sources": [
+  {
+   "id": "strip-2020-04-30",
+   "kind": "street-panorama",
+   "capturedAt": "2020-04-30",
+   "image": "staging/block-face/burger-2-140-r1/strip.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "authoring": {
+  "author": "auto-place (blockFace/autoPlace.ts)",
+  "passes": 1,
+  "note": "auto-placed from the transvaalbuurt library (buurt Transvaalbuurt-West); scores and holds in scripts/block-face/faces/burger-2-140/auto-place.json"
+ },
+ "types": [
+  "transvaal-1923-portiek-tower"
+ ],
+ "houses": [
+  {
+   "pandId": "0363100012112723",
+   "slug": "burger-112723",
+   "address": "Schalk Burgerstraat 130",
+   "type": {
+    "type": "transvaal-1923-portiek-tower",
+    "measuredPalette": {
+     "brick": "#907060",
+     "evidence": "strip 2020-04-30 span 0-208: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie",
+     "industriefunctie"
+    ],
+    "photoDate": "2020-04-30",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: transvaal-1923-portiek-tower scored 0.8 on eaves 0.5, storeys 1, stucco 1; strip 2020-04-30 span 0-208"
+   }
+  }
+ ],
+ "continuity": {
+  "streetLevel": "shared",
+  "corniceGroups": [],
+  "identical": [],
+  "partyClip": true,
+  "roof": {
+   "source": "recipe",
+   "pitchDeg": 30,
+   "evidence": "auto-place: low attic behind the cornice; the strips show sky over the cornices of the type rows"
+  },
+  "lonePand": {
+   "evidence": "a stair block on its own: transvaal-1923-portiek-tower opts in to one-house faces from 5 m (frontage 5.2 m)"
+  },
+  "measuredEaves": [
+   {
+    "pand": "0363100012112723",
+    "stripRow": 266,
+    "frontRoof": {},
+    "evidence": "auto-place: the transvaal-1923-portiek-tower cornice line 12.1 m (measured on its exemplar strips; this pand's skyline unread); 3DBAG/PDOK eaves 15.2 m"
+   }
+  ]
+ }
+}

@@ -50,7 +50,7 @@ const ahead = ([lng, lat]: number[], bearingDeg: number, metres: number): [numbe
 async function settle(page: Page): Promise<void> {
   await page.waitForFunction(() => {
     const w = window as any, vm = w.canalRecallGame.vectorMap, t = vm._threeBuildings, l = vm._signatureLandmarks, r = vm._tileBuildings;
-    const c = vm.map.getCenter(); vm.map.jumpTo({ center: [c.lng + 1e-9, c.lat] });
+    const c = vm.camera.center(); (vm.map ?? vm.cameraMap).jumpTo({ center: [c.lng + 1e-9, c.lat] });
     const idle = !t || (t.ready && !t.pending.length && !t.inflight.size);
     const landmarksIdle = !l || !l._pending || !l._pending.size;
     const rs = r?.stats?.();
@@ -60,7 +60,7 @@ async function settle(page: Page): Promise<void> {
     w.__ssKey = key;
     return w.__ssIdle >= 5;
   }, null, { timeout: 180_000, polling: 1000 });
-  await page.evaluate(() => { const w = window as any; w.canalRecallGame.vectorMap.map.jumpTo(w.__ssCamera); });
+  await page.evaluate(() => { const w = window as any; (w.canalRecallGame.vectorMap.map ?? w.canalRecallGame.vectorMap.cameraMap).jumpTo(w.__ssCamera); });
   await page.waitForTimeout(3000);
 }
 
@@ -80,7 +80,7 @@ for (const mode of MODES) test(`street-survey shots: ${mode.label}`, async ({ pa
     if (ONLY && !ONLY.includes(view.name)) continue;
     const eye = ahead(view.target, view.bearing, view.distM);
     await page.evaluate(({ eye, view }) => {
-      const g = (window as any).canalRecallGame, vm = g.vectorMap, map = vm.map;
+      const g = (window as any).canalRecallGame, vm = g.vectorMap, map = vm.map ?? vm.cameraMap;
       g._updateCanalQuiz = () => {}; g._updateBridgeQuiz = () => {}; (window as any).__ssIdle = 0;
       g.player.speed = 0; g.player.vx = 0; g.player.vy = 0;
       vm.sync = () => {}; map.stop(); map.setMaxPitch(85); map.setVerticalFieldOfView(50); map.setPadding({ top: 0, bottom: 0, left: 0, right: 0 });
@@ -89,8 +89,8 @@ for (const mode of MODES) test(`street-survey shots: ${mode.label}`, async ({ pa
     }, { eye, view });
     await settle(page);
     await page.evaluate(() => {
-      const map = (window as any).canalRecallGame.vectorMap.map;
-      for (const layer of map.getStyle().layers) if (layer.type === 'symbol' && map.getLayoutProperty(layer.id, 'visibility') !== 'none') map.setLayoutProperty(layer.id, 'visibility', 'none');
+      const map = (window as any).canalRecallGame.vectorMap.map ?? (window as any).canalRecallGame.vectorMap.cameraMap;
+      if ((window as any).canalRecallGame.vectorMap.map) { for (const layer of map.getStyle().layers) if (layer.type === 'symbol' && map.getLayoutProperty(layer.id, 'visibility') !== 'none') map.setLayoutProperty(layer.id, 'visibility', 'none'); } else (window as any).canalRecallGame.vectorMap.setLabelsVisible(false);
       const canvas = map.getCanvas() as HTMLCanvasElement;
       for (const e of Array.from(document.body.querySelectorAll('*'))) if (e !== canvas && !e.contains(canvas)) (e as HTMLElement).style.visibility = 'hidden';
     });
@@ -98,7 +98,7 @@ for (const mode of MODES) test(`street-survey shots: ${mode.label}`, async ({ pa
     const evalSource = process.env.SS_EVAL_FILE ? readFileSync(process.env.SS_EVAL_FILE, 'utf8') : process.env.SS_EVAL;
     if (evalSource) diag[`${view.name}:eval`] = await page.evaluate(evalSource);
     await page.waitForTimeout(1500);
-    await page.locator('canvas.maplibregl-canvas').first().screenshot({ path: join(dir, `${view.name}.png`) });
+    await page.locator('canvas.maplibregl-canvas, canvas.engine-canvas').first().screenshot({ path: join(dir, `${view.name}.png`) });
     diag[view.name] = await page.evaluate(() => {
       const vm = (window as any).canalRecallGame.vectorMap, sl = vm._signatureLandmarks;
       return (sl?._entries ?? []).filter((e: any) => e.spec.assetKind === 'ordinary-building').map((e: any) => {

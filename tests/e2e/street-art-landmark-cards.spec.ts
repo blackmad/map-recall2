@@ -23,14 +23,14 @@ async function boot(page: Page) {
     return vm._completeCityHasBuildings && vm._threeBuildings?.ready && vm._threeBuildings.chunks.size > 3;
   }, null, { timeout: 120_000 });
   await page.evaluate((cam) => {
-    const g = (window as any).canalRecallGame, map = g.vectorMap.map;
+    const g = (window as any).canalRecallGame, map = g.vectorMap.map ?? g.vectorMap.cameraMap;
     for (const k of cam) { map['__' + k] = map[k]; map[k] = () => map; }
   }, CAM);
 }
 
 async function lookAt(page: Page, center: [number, number], zoom = 17.2, pitch = 50, bearing = 0) {
   await page.evaluate(({ center, zoom, pitch, bearing }) => {
-    const g = (window as any).canalRecallGame, map = g.vectorMap.map;
+    const g = (window as any).canalRecallGame, map = g.vectorMap.map ?? g.vectorMap.cameraMap;
     g._clearLandmarkNotice();
     map.__jumpTo.call(map, { center, zoom, pitch, bearing });
   }, { center, zoom, pitch, bearing });
@@ -45,7 +45,7 @@ async function notice(page: Page) {
 }
 
 async function canvasBox(page: Page) {
-  return page.evaluate(() => { const r = (window as any).canalRecallGame.vectorMap.map.getCanvas().getBoundingClientRect(); return { x: r.left, y: r.top, w: r.width, h: r.height }; });
+  return page.evaluate(() => { const r = (window as any).canalRecallGame.vectorMap.frameCanvas().getBoundingClientRect(); return { x: r.left, y: r.top, w: r.width, h: r.height }; });
 }
 
 async function resident(page: Page, id: string) {
@@ -59,7 +59,7 @@ async function resident(page: Page, id: string) {
 async function roofPoint(page: Page, id: string) {
   return page.evaluate((id) => {
     const w = window as any, vm = w.canalRecallGame.vectorMap, tb = vm._threeBuildings, T = w.CanalRecallThree.THREE;
-    const canvas = vm.map.getCanvas(), W = canvas.clientWidth, H = canvas.clientHeight;
+    const canvas = vm.frameCanvas(), W = canvas.clientWidth, H = canvas.clientHeight;
     for (const [key, chunk] of tb.chunks) {
       if (key.startsWith('extras:') || !chunk.mesh) continue;
       const f = chunk.source.find((x: any) => String(x.properties.id) === id);

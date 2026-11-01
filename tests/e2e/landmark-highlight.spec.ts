@@ -1,5 +1,6 @@
 import { test, expect } from '@playwright/test';
 import { openRoute } from './helpers';
+import { OWN } from './worldCam';
 
 // Named regression (user reports 2026-09-28, "why don't I see that museum on
 // my screen highlighted?", Sexmuseum and the Sint Nicolaas basilica). A
@@ -7,6 +8,7 @@ import { openRoute } from './helpers';
 // hidden basemap building, or not at all. It now lights the streamed
 // building(s) resolved at extract time (`scripts/resolve-landmark-buildings.ts`).
 test('drive-by landmark cards light up their building', async ({ page }, testInfo) => {
+  test.skip(OWN, 'MapLibre style assertion: deleted with the default path at P5');
   test.skip(testInfo.project.name !== 'desktop', 'map lookup; one project is enough');
   test.setTimeout(200000);
   await openRoute(page, { travelMode: 'car', viewMode: 'chase', abortHeavyTiles: false });
@@ -42,6 +44,7 @@ test('drive-by landmark cards light up their building', async ({ page }, testInf
 // yellow when no card is onscreen"). A question opening closed the card but
 // left its building yellow; only the fade-out path cleared the highlight.
 test('closing a landmark card any way clears its building', async ({ page }, testInfo) => {
+  test.skip(OWN, 'MapLibre style assertion: deleted with the default path at P5');
   test.skip(testInfo.project.name !== 'desktop', 'map lookup; one project is enough');
   test.setTimeout(200000);
   await openRoute(page, { travelMode: 'car', viewMode: 'chase', abortHeavyTiles: false });
@@ -72,6 +75,7 @@ test('closing a landmark card any way clears its building', async ({ page }, tes
 // extract time (`landmark-buildings.json`): a tree keeps its dot, above the
 // buildings, and a resolved landmark lights exactly its own building.
 test('a tree keeps its dot; a resolved landmark lights its own building', async ({ page }, testInfo) => {
+  test.skip(OWN, 'MapLibre style assertion: deleted with the default path at P5');
   test.skip(testInfo.project.name !== 'desktop', 'map lookup; one project is enough');
   test.setTimeout(200000);
   await openRoute(page, { travelMode: 'car', viewMode: 'chase', abortHeavyTiles: false });
@@ -108,6 +112,7 @@ test('a tree keeps its dot; a resolved landmark lights its own building', async 
 // yellow when the trivia comes up"). The museum is a barge, so no building way
 // joins to it; it now lights the drawn houseboat it is aboard.
 test('the Houseboat Museum lights its houseboat, not a dot', async ({ page }, testInfo) => {
+  test.skip(OWN, 'MapLibre style assertion: deleted with the default path at P5');
   test.skip(testInfo.project.name !== 'desktop', 'map lookup; one project is enough');
   test.setTimeout(200000);
   await openRoute(page, { travelMode: 'car', viewMode: 'chase', abortHeavyTiles: false });

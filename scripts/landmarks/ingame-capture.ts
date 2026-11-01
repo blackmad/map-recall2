@@ -43,7 +43,7 @@ try {
     const page = await br.newPage({viewport, deviceScaleFactor: size === 'phone' ? 2 : 1});
     await ride(page);
     for (const v of views) {
-      await page.evaluate(({c, z, p, b}) => (window as any).canalRecallGame.vectorMap.map.jumpTo({center: c, zoom: z, pitch: p, bearing: b}), {c: anchor, z: zoom, p: pitch, b: v.bearing});
+      await page.evaluate(({c, z, p, b}) => ((window as any).canalRecallGame.vectorMap.map ?? (window as any).canalRecallGame.vectorMap.cameraMap).jumpTo({center: c, zoom: z, pitch: p, bearing: b}), {c: anchor, z: zoom, p: pitch, b: v.bearing});
       await page.waitForFunction(i => (window as any).canalRecallGame.vectorMap._signatureLandmarks.shown.has(i), id, {timeout: 60000});
       await page.waitForTimeout(5000);
       const file = path.join(out, `ingame-${v.name}-${size}.png`);

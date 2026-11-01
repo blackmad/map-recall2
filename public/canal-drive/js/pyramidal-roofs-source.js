@@ -74,7 +74,7 @@ export class PyramidalRoofs {
     this._sharedRoot.name = 'osm-pyramidal-roofs';
     this.sharedFrame?.register('pyramidal-roofs', {
       root: this._sharedRoot,
-      beforeRender: () => this.enabled && this._entries.length > 0,
+      beforeRender: () => { this._warmProgram(); return this.enabled && this._entries.length > 0; },
       revision: () => this._hiddenRevision,
     }, { order: options.sharedOrder ?? 40 });
     map._pyramidalRoofs = this;
@@ -173,6 +173,22 @@ export class PyramidalRoofs {
     this.debugCount = entries.length;
     this.debugRadii = entries.map(entry => entry.mesh.geometry.boundingSphere?.radius ?? null);
     this.map.triggerRepaint();
+  }
+
+  // Every cap shares one program (the material differs only in colour). Each setFeatures disposes the old caps, and
+  // three deletes a program no material uses, so the next batch linked it again inside a frame (P4 counters gate,
+  // #129: an iPad-profile ride linked it 10+ s in). One never-drawn anchor, compiled off the frame through the shared
+  // frame's compileAsync on its first draw, holds the program for the session.
+  _warmProgram() {
+    if (this._programAnchor || typeof this.sharedFrame?.compileAsync !== 'function' || !this.sharedFrame.renderer || this.sharedFrame.coverPaused) return;
+    const geometry = new THREE.BufferGeometry();
+    geometry.setAttribute('position', new THREE.BufferAttribute(new Float32Array(9), 3));
+    geometry.setAttribute('normal', new THREE.BufferAttribute(new Float32Array(9), 3));
+    geometry.setIndex(new THREE.Uint16BufferAttribute([0, 1, 2], 1));
+    const anchor = new THREE.Mesh(geometry, new THREE.MeshStandardMaterial({ side: THREE.DoubleSide, roughness: 0.9, metalness: 0, flatShading: true }));
+    this.sharedFrame.constructor.setShadows(anchor, true, true);
+    this._programAnchor = anchor;
+    this.sharedFrame.compileAsync(anchor);
   }
 
   _disposeEntries() {

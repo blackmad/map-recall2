@@ -1,5 +1,5 @@
 // Load stutter: the first 90 s of a seeded ride from a cold and a warm HTTP cache, with stall attribution.
-//   PORT=4544 node scripts/motion-stutter.mjs <out.json> [--throttle 1,4] [--seconds 90] [--device desktop|iphone] [--runs cold,warm]
+//   PORT=4544 node scripts/motion-stutter.mjs <out.json> [--throttle 1,4] [--seconds 90] [--device desktop|iphone|ipad] [--runs cold,warm]
 //   motion: --start <poi id> --dest <poi id> --warmup 30 --measure 60 (Jordaan: Noorderkerk -> Westermoskee)
 // Route: Anne Frank Huis -> Rijksmuseum, car, chase, seeded Math.random (as ride-perf-fixed-route.mjs). The route is
 // submitted as soon as the start card is ready and, once the intro overview ends, an autopilot steers along the
@@ -9,7 +9,11 @@
 // profile started on a same-origin blank page before navigation (so the ~1.7 s Profiler.start stall is outside the
 // window), aligned to performance.now() with a busy-loop marker, then aggregated over the stalled frames by self
 // function, by category (gc, json, shader, upload, ...) and by owning app function.
-// STALL_MS=16 attributes every frame over 16 ms (default 50). DPR=2 sets the desktop device scale, VIEWPORT=1800x1100
+// INIT_JS=<file> adds an init script; DUMP_JS=<expression> stores its value at the end of the run as `dump`.
+// GL_COUNTERS=1 with --warmup: GL work after the warm-up (compiles, uploads > 1 MiB with owners, draws and triangles per
+// frame and per participant), as `gl`. The P4 counters gate: --qs '?engine=own' --start lm-extract_landmarks_433737872
+// --dest lm-extract_landmarks_1632187034 --via lm-extract_landmarks_1632187034 --warmup 10 --measure 40 (DPR=2 desktop, --device ipad).
+// STALL_MS=16 attributes every frame over 16 ms (default 50). Desktop default is the user's 14-inch MacBook Pro: 1512x982 CSS px at DPR 2 (3024x1964 device px, 2026-11-01); DPR sets the device scale, VIEWPORT=1800x1100
 // the desktop viewport, HEADED=1 runs a visible Chrome window (the real-GPU set-up of #129).
 // BUNDLES_DIR=<dir> serves *.bundle.js from a local build; WORLD_DIR=<dir> serves staged world-v1 cells. PROFILE=0 skips the profiler. KEEP_PROFILE=1 writes the raw
 // profile next to the output.
@@ -43,6 +47,7 @@ const heapRows = process.env.HEAP !== '0';
 // HEAP_OWNERS=1: sampling heap profiler from navigation; live bytes by allocating app frame at ride start (use unminified bundles).
 const heapOwnerRows = process.env.HEAP_OWNERS === '1';
 const stallMs = Number(process.env.STALL_MS || 50);
+const glCounters = process.env.GL_COUNTERS === '1';
 
 const pick = (v, q) => { const s = [...v].sort((a, b) => a - b); return s.length ? s[Math.min(s.length - 1, Math.floor(q * s.length))] : 0; };
 const r1 = v => +v.toFixed(1);
@@ -135,6 +140,12 @@ async function run(browser, kind, throttle, context) {
     const file = path.join(process.env.BUNDLES_DIR, /\/([\w-]+\.bundle\.js)/.exec(route.request().url())[1]);
     return fs.existsSync(file) ? route.fulfill({ path: file, contentType: 'application/javascript' }) : route.continue();
   });
+  // INIT_JS=<file>: an extra init script (e.g. the landmark request log / gate check, #129); DUMP_JS=<expression>: its
+  // value at the end of the run is the result's `dump`.
+  if (process.env.INIT_JS) await page.addInitScript({ path: process.env.INIT_JS });
+  // GL_COUNTERS=1 (P4 counters gate, #129): engine/glCounters.ts on (?engine=own), its window starts at motionStart
+  // (the end of --warmup), and the report lands in the result as `gl`.
+  if (glCounters) await page.addInitScript(() => { window.__canalRecallGlCounters = true; });
   await page.addInitScript(() => {
     let s = 0x5eed1234; Math.random = () => { s = (s * 1664525 + 1013904223) >>> 0; return s / 2 ** 32; };
     if (!/^\/canal-drive\/?(index\.html)?$/.test(location.pathname)) return;
@@ -286,6 +297,7 @@ async function run(browser, kind, throttle, context) {
     if (warmup != null) {
       await page.waitForTimeout(warmup * 1000);
       await mark('motionStart');
+      if (glCounters) await page.evaluate(() => window.__canalPerf?.gl?.markWarm());
       await page.waitForTimeout(measure * 1000);
       await mark('motionEnd');
       deadline = Date.now();
@@ -294,6 +306,11 @@ async function run(browser, kind, throttle, context) {
   } catch (e) { errors.push(`flow stopped after ${reached}: ${e.message.split('\n')[0]}`); }
   await page.waitForTimeout(Math.max(0, deadline - Date.now()));
   const sync1 = profiling ? await sync('sync1') : null;
+  const gl = glCounters ? await page.evaluate(() => {
+    const perf = window.__canalPerf, vm = window.canalRecallGame?.vectorMap;
+    return perf?.gl ? { ...perf.gl.report(), tier: perf.tier ?? null, pitch: vm?.camera?.pitch?.() ?? null, pixelRatio: vm?.host?.getPixelRatio?.() ?? null, programCount: vm?.host?.renderer?.info?.programs?.length ?? null } : null;
+  }).catch(e => ({ error: String(e) })) : undefined;
+  const dump = process.env.DUMP_JS ? await page.evaluate(expr => (0, eval)(expr), process.env.DUMP_JS).catch(e => ({ error: String(e) })) : undefined;
   const raw = await page.evaluate(() => {
     const L = window.__ls; L.stop = true; const g = window.canalRecallGame, vm = g?.vectorMap;
     const og = vm?._ownGround?.status?.(); const mem = performance.memory;
@@ -384,14 +401,16 @@ async function run(browser, kind, throttle, context) {
     phases: { load: phase('sync0', 'racing'), ride: phase('racing') }, motion,
     longTasks: { n: raw.longtask.length, totalMs: Math.round(raw.longtask.reduce((a, b) => a + b.dur, 0)), over100: raw.longtask.filter(l => l.dur > 100).length, longestMs: Math.round(Math.max(0, ...raw.longtask.map(l => l.dur))) },
     loaf: { over50: raw.loaf.filter(l => l.dur > 50).length, renderMsInStalls: Math.round(loafRender), entries: [...entries].sort((a, b) => b[1] - a[1]).slice(0, 25).map(([k, v]) => ({ k, ms: Math.round(v) })) },
-    worst, attribution, alignErrMs, heapMB: raw.heapMB, heapAtStart, heapAtEnd, distanceM: raw.distancePx != null ? Math.round(raw.distancePx / 3) : null, railM: raw.railPx != null ? Math.round(raw.railPx / 3) : null, ownGround: raw.ownGround, lift: raw.lift, world: raw.world,
+    dump, gl, worst, attribution, alignErrMs, heapMB: raw.heapMB, heapAtStart, heapAtEnd, distanceM: raw.distancePx != null ? Math.round(raw.distancePx / 3) : null, railM: raw.railPx != null ? Math.round(raw.railPx / 3) : null, ownGround: raw.ownGround, lift: raw.lift, world: raw.world,
   };
 }
 
 const browser = await chromium.launch({ headless: process.env.HEADED !== '1', executablePath: '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome', args: ['--use-angle=metal', '--ignore-gpu-blocklist'] });
 const results = [];
 for (const throttle of throttles) {
-  const context = await browser.newContext(device === 'iphone' ? { ...devices['iPhone 13'] } : { viewport: { width: Number((process.env.VIEWPORT || '1280x800').split('x')[0]), height: Number((process.env.VIEWPORT || '1280x800').split('x')[1]) }, deviceScaleFactor: Number(process.env.DPR || 1) });
+  // ipad: the iPad profile of scripts/gpu-load-ipad.mjs (iPad Pro 11 landscape, touch: the phone/tablet device defaults).
+  const ipad = { viewport: { width: 1180, height: 734 }, deviceScaleFactor: 2, isMobile: true, hasTouch: true, userAgent: devices['iPad Pro 11'].userAgent };
+  const context = await browser.newContext(device === 'iphone' ? { ...devices['iPhone 13'] } : device === 'ipad' ? ipad : { viewport: { width: Number((process.env.VIEWPORT || '1512x982').split('x')[0]), height: Number((process.env.VIEWPORT || '1512x982').split('x')[1]) }, deviceScaleFactor: Number(process.env.DPR || 1) });
   for (const kind of runKinds) {
     const r = await run(browser, kind, throttle, context);
     results.push(r);

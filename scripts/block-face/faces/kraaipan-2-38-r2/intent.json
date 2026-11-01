@@ -1,0 +1,183 @@
+{
+ "schemaVersion": 1,
+ "kind": "block-face",
+ "id": "kraaipan-2-38-r2",
+ "street": "Kraaipanstraat",
+ "sources": [
+  {
+   "id": "strip-2019-05-16",
+   "kind": "street-panorama",
+   "capturedAt": "2019-05-16",
+   "image": "staging/block-face/kraaipan-2-38-r2/strip.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "authoring": {
+  "author": "auto-place (blockFace/autoPlace.ts)",
+  "passes": 1,
+  "note": "auto-placed from the transvaalbuurt library (buurt Transvaalbuurt-West); scores and holds in scripts/block-face/faces/kraaipan-2-38/auto-place.json"
+ },
+ "types": [
+  "transvaal-1920-three-storey"
+ ],
+ "houses": [
+  {
+   "pandId": "0363100012074901",
+   "slug": "kraaipan-074901",
+   "address": "Kraaipanstraat 16A",
+   "type": {
+    "type": "transvaal-1920-three-storey",
+    "measuredPalette": {
+     "brick": "#765d51",
+     "evidence": "strip 2019-05-16 span 2591-2820: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2019-05-16",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: transvaal-1920-three-storey scored 0.77 on storeys 1, wall 1, stucco 1, columns 0; strip 2019-05-16 span 2591-2820"
+   }
+  },
+  {
+   "pandId": "0363100012149786",
+   "slug": "kraaipan-149786",
+   "address": "Kraaipanstraat 14",
+   "type": {
+    "type": "transvaal-1920-three-storey",
+    "mirror": true,
+    "measuredPalette": {
+     "brick": "#837062",
+     "evidence": "strip 2019-05-16 span 2822-3057: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2019-05-16",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: transvaal-1920-three-storey scored 0.77 on storeys 1, wall 1, stucco 1, columns 0; strip 2019-05-16 span 2822-3057"
+   }
+  },
+  {
+   "pandId": "0363100012101968",
+   "slug": "kraaipan-101968",
+   "address": "Kraaipanstraat 12",
+   "type": {
+    "type": "transvaal-1920-three-storey",
+    "measuredPalette": {
+     "brick": "#675646",
+     "evidence": "strip 2019-05-16 span 3057-3291: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2019-05-16",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: transvaal-1920-three-storey scored 0.86 on storeys 1, wall 1, stucco 1, columns 0.4; strip 2019-05-16 span 3057-3291"
+   }
+  },
+  {
+   "pandId": "0363100012111001",
+   "slug": "kraaipan-111001",
+   "address": "Kraaipanstraat 10A",
+   "type": {
+    "type": "transvaal-1920-three-storey",
+    "mirror": true,
+    "measuredPalette": {
+     "brick": "#7c695d",
+     "evidence": "strip 2019-05-16 span 3291-3525: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2019-05-16",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: transvaal-1920-three-storey scored 0.77 on storeys 1, wall 1, stucco 1, columns 0; strip 2019-05-16 span 3291-3525"
+   }
+  },
+  {
+   "pandId": "0363100012061769",
+   "slug": "kraaipan-061769",
+   "address": "Kraaipanstraat 8",
+   "type": {
+    "type": "transvaal-1920-three-storey",
+    "measuredPalette": {
+     "brick": "#95655c",
+     "evidence": "strip 2019-05-16 span 3525-3755: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2019-05-16",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: transvaal-1920-three-storey scored 0.8 on storeys 1, wall 0.5, stucco 1; strip 2019-05-16 span 3525-3755"
+   }
+  },
+  {
+   "pandId": "0363100012069468",
+   "slug": "kraaipan-069468",
+   "address": "Kraaipanstraat 6A",
+   "type": {
+    "type": "transvaal-1920-three-storey",
+    "measuredPalette": {
+     "brick": "#956156",
+     "evidence": "strip 2019-05-16 span 3755-3987: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "mirror": true
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2019-05-16",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: transvaal-1920-three-storey scored 0.8 on storeys 1, wall 0.5, stucco 1; strip 2019-05-16 span 3755-3987"
+   }
+  }
+ ],
+ "continuity": {
+  "streetLevel": "shared",
+  "corniceGroups": [],
+  "identical": [],
+  "partyClip": true,
+  "roof": {
+   "source": "recipe",
+   "pitchDeg": 30,
+   "evidence": "auto-place: low attic behind the cornice; the strips show sky over the cornices of the type rows"
+  }
+ }
+}

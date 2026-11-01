@@ -1,5 +1,5 @@
 /**
- * Browser/worker client for `world-v1` (behind `?world=v1`). v1 is tile-preserving: the streamer still
+ * Browser/worker client for `world-v1` (the default world since 2026-11-01; `?world=live` is the tile path). v1 is tile-preserving: the streamer still
  * plans z14 tiles exactly as the default path does, and asks this client for a tile's buildings, which it
  * assembles from the cells that hold them (index.json `tileCells`), in the tile's own order (`ordinal`).
  * So the resident set, its order, the chunk groups and their context are the default path's, and the
@@ -20,8 +20,17 @@ export type WorldIndex = { version: 1; format: number; compiler: string; tileCel
 export type WorldFeature = { type: 'Feature'; properties: Props; geometry: Geometry };
 export type WorldTile = { features: WorldFeature[]; styled: Map<WorldFeature, WorldFeature> };
 
+/**
+ * The compiled cells are the default world since 2026-11-01 (P2 gate: the styled building set is structurally
+ * equal and the frame pixel-identical to the live tile path at the five A/B spots). `?world=live` (also `0`,
+ * `off`, `tiles`) asks for the live GeoJSON tile path, the P5 dev fallback; `?world=v1` still spells the default.
+ * A city without published cells falls back to its tiles whatever the flag says (buildingTilesBrowser probeWorld).
+ */
 export function worldV1Enabled(search: string = typeof location !== 'undefined' ? location.search : ''): boolean {
-  try { return new URLSearchParams(search).get('world') === 'v1'; } catch { return false; }
+  try {
+    const asked = new URLSearchParams(search).get('world');
+    return !(asked === 'live' || asked === '0' || asked === 'off' || asked === 'tiles');
+  } catch { return true; }
 }
 
 /** Parse and check index.json; null when it is not a world-v1 index (a host answering with the app page). */

@@ -22,6 +22,7 @@ import { join } from 'node:path';
 import sharp from 'sharp';
 import { openRoute } from './helpers';
 import { DEFAULT_LIGHT_RIG } from '../../src/canalRecall/rendererShared/lightRig';
+import { OWN } from './worldCam';
 
 const OUT = process.env.SUN_OUT || 'artifacts/sun-heading';
 const QUERIES = (process.env.SUN_QUERIES ?? ',?cityLook=1').split(',').map(s => s.trim());
@@ -129,7 +130,7 @@ async function pickBuilding(page: Page, centre: [number, number]): Promise<{ fac
 /** Screen points of a grid over each face (25–75 % along, 30–70 % up), from MapLibre's matrix. */
 async function facePoints(page: Page, faces: Face[]): Promise<{ face: number; pts: [number, number][]; facing: number }[]> {
   return page.evaluate(({ faces }) => {
-    const w = window as any, map = w.canalRecallGame.vectorMap.map, M: number[] = w.__sunProbeMatrix;
+    const w = window as any, map = w.canalRecallGame.vectorMap.map ?? w.canalRecallGame.vectorMap.cameraMap, M: number[] = w.__sunProbeMatrix;
     const canvas = map.getCanvas() as HTMLCanvasElement, rect = canvas.getBoundingClientRect();
     const ml = w.maplibregl;
     const project = (lng: number, lat: number, z: number): [number, number, number] | null => {
@@ -168,7 +169,7 @@ async function facePoints(page: Page, faces: Face[]): Promise<{ face: number; pt
 /** Where the rider, the camera and the bike on screen are right now (diagnostics in sun-heading.json). */
 async function poseNow(page: Page): Promise<any> {
   return page.evaluate(() => {
-    const g = (window as any).canalRecallGame, c = g.camera, b = g.vectorMap._playerBike, map = g.vectorMap.map;
+    const g = (window as any).canalRecallGame, c = g.camera, b = g.vectorMap._playerBike, map = g.vectorMap.map ?? g.vectorMap.cameraMap;
     const at = b?.lngLat ? map.project(b.lngLat) : null;
     const r = (v: number, d = 2) => +Number(v).toFixed(d);
     return { player: { x: r(g.player.x), y: r(g.player.y), angle: r(g.player.angle, 4) },
@@ -182,7 +183,7 @@ const lumaOf = (r: number, g: number, b: number) => 0.2126 * r + 0.7152 * g + 0.
 
 type Grab = { data: Buffer; width: number; height: number; ox: number; oy: number };
 async function grab(page: Page): Promise<Grab> {
-  const rect = await page.evaluate(() => { const r = (window as any).canalRecallGame.vectorMap.map.getCanvas().getBoundingClientRect(); return { x: r.x, y: r.y }; });
+  const rect = await page.evaluate(() => { const r = (window as any).canalRecallGame.vectorMap.frameCanvas().getBoundingClientRect(); return { x: r.x, y: r.y }; });
   const png = await page.screenshot();
   const { data, info } = await sharp(png).removeAlpha().raw().toBuffer({ resolveWithObject: true });
   return { data, width: info.width, height: info.height, ox: rect.x, oy: rect.y };
@@ -218,6 +219,7 @@ function quadPixels(img: Grab, empty: Grab, quad: [number, number][]): number[] 
 for (const query of QUERIES) {
   const label = query ? query.replace(/^\?/, '').replace(/[=&]/g, '-') : 'default';
   test(`sun stays put while the rider turns: ${label}`, async ({ page }, info) => {
+    test.skip(OWN, 'MapLibre style assertion: deleted with the default path at P5');
     test.skip(info.project.name !== 'desktop', 'one viewport is enough');
     test.setTimeout(600_000);
     const dir = join(OUT, label);
@@ -238,9 +240,9 @@ for (const query of QUERIES) {
       const building = await pickBuilding(page, spot.centre);
       // Probe layer: MapLibre's clip-from-Mercator matrix of the last frame.
       await page.evaluate(() => {
-        const map = (window as any).canalRecallGame.vectorMap.map;
+        const map = (window as any).canalRecallGame.vectorMap.map ?? (window as any).canalRecallGame.vectorMap.cameraMap;
         if (!map.getLayer('sun-heading-probe')) map.addLayer({ id: 'sun-heading-probe', type: 'custom', renderingMode: '3d', render(_gl: any, args: any) { (window as any).__sunProbeMatrix = Array.from(args.defaultProjectionData?.mainMatrix ?? args); } });
-        for (const layer of map.getStyle().layers) if (layer.type === 'symbol') map.setLayoutProperty(layer.id, 'visibility', 'none');
+        if ((window as any).canalRecallGame.vectorMap.map) { for (const layer of map.getStyle().layers) if (layer.type === 'symbol') map.setLayoutProperty(layer.id, 'visibility', 'none'); } else (window as any).canalRecallGame.vectorMap.setLabelsVisible(false);
         const t = (window as any).canalRecallGame.vectorMap._inventoryTrees; if (t?.setEnabled) t.setEnabled(false);
       });
       const samples: Sample[] = [];
@@ -254,17 +256,17 @@ for (const query of QUERIES) {
         await teleport(page, { lng, lat, bearing: heading });
         await page.waitForTimeout(3500);
         await settle(page);
-        await page.evaluate(() => { for (const e of Array.from(document.body.querySelectorAll('*'))) { const c = (window as any).canalRecallGame.vectorMap.map.getCanvas(); if (e !== c && !e.contains(c)) (e as HTMLElement).style.visibility = 'hidden'; } });
+        await page.evaluate(() => { for (const e of Array.from(document.body.querySelectorAll('*'))) { const c = (window as any).canalRecallGame.vectorMap.frameCanvas(); if (e !== c && !e.contains(c)) (e as HTMLElement).style.visibility = 'hidden'; } });
         await page.waitForTimeout(800);
         const poseAtImg = await poseNow(page);
         const img = await grab(page);
         await page.screenshot({ path: join(dir, `${spot.name}-h${Math.round(heading)}.png`) });
         const faces = await facePoints(page, building.faces);
         // Keep only points the building layer covers: grab once more with it hidden.
-        await page.evaluate(() => { const vm = (window as any).canalRecallGame.vectorMap; vm._threeBuildings.setVisible(false); vm.map.triggerRepaint(); });
+        await page.evaluate(() => { const vm = (window as any).canalRecallGame.vectorMap; vm._threeBuildings.setVisible(false); (vm.map ?? vm.cameraMap).triggerRepaint(); });
         await page.waitForTimeout(500);
         const empty = await grab(page);
-        await page.evaluate(() => { const vm = (window as any).canalRecallGame.vectorMap; vm._threeBuildings.setVisible(true); vm.map.triggerRepaint(); });
+        await page.evaluate(() => { const vm = (window as any).canalRecallGame.vectorMap; vm._threeBuildings.setVisible(true); (vm.map ?? vm.cameraMap).triggerRepaint(); });
         for (const f of faces) {
           if (f.facing < 0.25) continue;
           const lumas = quadPixels(img, empty, f.pts);

@@ -29,14 +29,14 @@ test('the shared frame pauses behind the briefing, draws when the map shows besi
     else document.querySelector<HTMLElement>('#route-setup .enamel-setup-rail')!.style.width = '60%';
   });
   await expect.poll(() => page.evaluate(frameState), { timeout: 5_000 }).toMatchObject({ paused: false });
-  await page.evaluate(() => (window as any).canalRecallGame.vectorMap.map.triggerRepaint());
+  await page.evaluate(() => ((window as any).canalRecallGame.vectorMap.map ?? (window as any).canalRecallGame.vectorMap.cameraMap).triggerRepaint());
   await expect.poll(async () => (await page.evaluate(frameState)).frames, { timeout: 10_000 }).toBeGreaterThan(0);
   // Back to the full cover: paused again within the re-check interval.
   await page.evaluate(() => {
     const vista = document.querySelector<HTMLElement>('#route-setup .enamel-setup-vista');
     if (vista) vista.style.display = '';
     document.querySelector<HTMLElement>('#route-setup .enamel-setup-rail')!.style.width = '';
-    (window as any).canalRecallGame.vectorMap.map.triggerRepaint();
+    ((window as any).canalRecallGame.vectorMap.map ?? (window as any).canalRecallGame.vectorMap.cameraMap).triggerRepaint();
   });
   await expect.poll(() => page.evaluate(frameState), { timeout: 5_000 }).toMatchObject({ paused: true });
 

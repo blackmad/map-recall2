@@ -119,7 +119,7 @@ export function spanProfile(skyline: (number | null)[], spanPx: [number, number]
 /** Recipe vocabulary for the classifier's types. */
 export const GABLE_TO_INTENT: Record<GableType, GableIntent | null> = {lijstgevel: 'cornice', puntgevel: 'point', tuitgevel: 'spout', trapgevel: 'step', klokgevel: 'bell', halsgevel: 'neck', unknown: null};
 /** Intent gable -> classifier type (raised-neck reads as a neck). */
-export const INTENT_TO_GABLE: Record<GableIntent, GableType> = {spout: 'tuitgevel', neck: 'halsgevel', 'raised-neck': 'halsgevel', bell: 'klokgevel', step: 'trapgevel', point: 'puntgevel', cornice: 'lijstgevel', flat: 'lijstgevel'};
+export const INTENT_TO_GABLE: Record<GableIntent, GableType> = {spout: 'tuitgevel', neck: 'halsgevel', 'raised-neck': 'halsgevel', bell: 'klokgevel', step: 'trapgevel', point: 'puntgevel', cornice: 'lijstgevel', flat: 'lijstgevel', shouldered: 'puntgevel'};
 
 export interface CrownShape {
   eavesUp: number;

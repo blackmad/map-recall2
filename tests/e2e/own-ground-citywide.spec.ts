@@ -103,7 +103,7 @@ test('models and pins on the surface: per-pand chunk bases, canvas pin lift, kit
     const p = og.store.surface.decks.find((d: any) => d.profile.id === 'BRU0166')?.profile;
     if (!p) return null;
     const mid = p.x.length >> 1, [lng, lat] = api.fromLocal(p.x[mid], p.y[mid]);
-    const flat = vm.map.project([lng, lat]), lift = og.screenLift([lng, lat]);
+    const flat = vm.camera.project([lng, lat]), lift = og.screenLift([lng, lat]);
     return { z: og.heightAt([lng, lat]), flatY: flat.y, lift };
   });
   // Kit parts (towers, fronts) get relief bases like any building range: none left waiting at street level.

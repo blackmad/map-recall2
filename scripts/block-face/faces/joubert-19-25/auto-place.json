@@ -3,7 +3,7 @@
  "street": "Joubertstraat",
  "library": "transvaalbuurt",
  "stripDate": "2020-04-29",
- "seconds": 0.59,
+ "seconds": 0.73,
  "thresholds": {
   "minScore": 0.7,
   "margin": 0.05,
@@ -51,35 +51,8 @@
     "foliageShare": 0.74
    },
    "status": "held",
-   "stage": "match",
-   "reason": "every type vetoed (best transvaal-1911-five-storey-tall: built 1929, type 1908-1914)",
-   "best": {
-    "type": "transvaal-1911-five-storey-tall",
-    "score": 0,
-    "veto": [
-     "built 1929, type 1908-1914"
-    ],
-    "criteria": [
-     {
-      "key": "eaves",
-      "weight": 2,
-      "score": 0.5,
-      "note": "3DBAG eaves 12.97 m = 4 storeys of 3.24 m vs the type's 3.55 m"
-     },
-     {
-      "key": "storeys",
-      "weight": 1,
-      "score": 1,
-      "note": "3DBAG bouwlagen 5 vs 5"
-     },
-     {
-      "key": "stucco",
-      "weight": 2,
-      "score": null,
-      "note": "no strip"
-     }
-    ]
-   },
+   "stage": "run",
+   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
    "likeness": null,
    "challengers": {}
   },
@@ -125,25 +98,23 @@
    },
    "status": "held",
    "stage": "match",
-   "reason": "every type vetoed (best transvaal-1911-five-storey-tall: built 1929, type 1908-1914)",
+   "reason": "best transvaal-1926-band-row scores 0.69 < 0.7 (strip cornice 15.22 m vs the type's 13.9 m)",
    "best": {
-    "type": "transvaal-1911-five-storey-tall",
-    "score": 0,
-    "veto": [
-     "built 1929, type 1908-1914"
-    ],
+    "type": "transvaal-1926-band-row",
+    "score": 0.69,
+    "veto": [],
     "criteria": [
      {
       "key": "eaves",
       "weight": 2,
-      "score": 0.5,
-      "note": "3DBAG eaves 13 m = 4 storeys of 3.25 m vs the type's 3.55 m"
+      "score": 0,
+      "note": "strip cornice 15.22 m vs the type's 13.9 m"
      },
      {
       "key": "storeys",
       "weight": 1,
       "score": 1,
-      "note": "3DBAG bouwlagen 5 vs 5"
+      "note": "3DBAG bouwlagen 5 vs 4/5"
      },
      {
       "key": "stucco",
@@ -154,8 +125,8 @@
      {
       "key": "columns",
       "weight": 1.5,
-      "score": 0.4,
-      "note": "strip columns 3 vs 4 bays"
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
      }
     ]
    },
@@ -210,25 +181,23 @@
    },
    "status": "held",
    "stage": "match",
-   "reason": "every type vetoed (best transvaal-1911-five-storey-tall: built 1929, type 1908-1914)",
+   "reason": "best transvaal-1926-band-row scores 0.33 < 0.7 (strip cornice 14.93 m vs the type's 13.9 m)",
    "best": {
-    "type": "transvaal-1911-five-storey-tall",
-    "score": 0,
-    "veto": [
-     "built 1929, type 1908-1914"
-    ],
+    "type": "transvaal-1926-band-row",
+    "score": 0.33,
+    "veto": [],
     "criteria": [
      {
       "key": "eaves",
       "weight": 2,
-      "score": 0.5,
-      "note": "3DBAG eaves 13 m = 4 storeys of 3.25 m vs the type's 3.55 m"
+      "score": 0,
+      "note": "strip cornice 14.93 m vs the type's 13.9 m"
      },
      {
       "key": "storeys",
       "weight": 1,
       "score": 1,
-      "note": "3DBAG bouwlagen 5 vs 5"
+      "note": "3DBAG bouwlagen 5 vs 4/5"
      },
      {
       "key": "stucco",

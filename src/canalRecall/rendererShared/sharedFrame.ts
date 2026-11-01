@@ -25,9 +25,13 @@ import { createLightRig, type LightRig, type LightRigOptions } from './lightRig.
 import { mapLibreSky } from '../look/sunny.js';
 import { LayerRegistry, type FramePass } from './layerRegistry.js';
 import { plainBounds, type LngLatBounds } from '../engine/worldStreamer.js';
+import { worldCameraOf } from '../engine/worldCameraOf.js';
+import { framePhases } from '../engine/framePhases.js';
+import type { LngLat, WorldCamera } from '../engine/worldViewApi.js';
 import { chooseTileDraws } from './tiledGeometry.js';
 import { coverPauseFlag, MapCoverWatch, RESUME_DEFERRED_COMPILE_MS, RESUME_WARMUP_HOLD_MS } from './mapCover.js';
 import { PRECOMPILE_STEP_MS } from './compileBudget.js';
+import { disposeShadowPrimer, shadowPrimer } from './shadowPrimer.js';
 
 export type FrameContext = {
   readonly pass: FramePass;
@@ -37,9 +41,24 @@ export type FrameContext = {
   /** three Matrix4: clip ← world (also the shared camera's projection). Use for picking against matrixWorld. */
   readonly clipFromWorld: any;
   readonly zoom: number;
-  /** View bounds, computed at most once per pass. */
+  /** View bounds, computed at most once per frame (once per pass under the MapLibre driver). */
   bounds(): LngLatBounds;
 };
+
+/**
+ * The camera read once per frame (#129): zoom now, centre and bounds on first use. The host driver takes one for both
+ * passes; the MapLibre driver one per pass. Read through the WorldCamera (worldCameraOf), not the CameraMap shim.
+ */
+type FrameView = { readonly zoom: number; center(): LngLat; bounds(): LngLatBounds };
+
+/** `?frameViewCheck=1`: after every participant, compare the frame's view with a fresh camera read (exactness pin). */
+type FrameViewCheck = { checks: number; misses: number; samples: string[] };
+function frameViewCheckOf(): FrameViewCheck | null {
+  const g = globalThis as { location?: { search?: string }; __canalRecallFrameViewCheck?: FrameViewCheck };
+  if (g.__canalRecallFrameViewCheck) return g.__canalRecallFrameViewCheck;
+  if (!/[?&]frameViewCheck=1\b/.test(g.location?.search ?? '')) return null;
+  return g.__canalRecallFrameViewCheck = { checks: 0, misses: 0, samples: [] };
+}
 
 /**
  * Tiled meshes draw whole when the tiles on screen hold at least this share of their triangles (chooseTileDraws). A
@@ -48,10 +67,21 @@ export type FrameContext = {
  * overrides it.
  */
 export const DESKTOP_TILE_WHOLE_SHARE = 0.6;
-function tileWholeShareFlag(): number {
+/**
+ * An explicit `tileWhole` share, or null when none was asked. A page with any query string but no `tileWhole` reads
+ * `get('tileWhole')` as null, and `Number(null)` is 0: that forced every tiled mesh whole on every page with a query
+ * (`?engine=own` included), so an iPad drew whole facade chunks: 668k facade triangles per frame on the Jordaan ride
+ * against 255k through the tiles (P4 counters gate, 2026-11-01).
+ */
+export function askedTileWhole(raw: number | string | null | undefined): number | null {
+  if (raw === null || raw === undefined || (typeof raw === 'string' && raw.trim() === '')) return null;
+  const asked = Number(raw);
+  return Number.isFinite(asked) && asked >= 0 && asked <= 2 ? asked : null;
+}
+export function tileWholeShareFlag(): number {
   const g = globalThis as { __canalRecallTileWhole?: number | string; matchMedia?: (query: string) => { matches: boolean }; location?: { search?: string } };
-  const asked = Number(g.__canalRecallTileWhole ?? (g.location?.search ? new URLSearchParams(g.location.search).get('tileWhole') : NaN));
-  if (Number.isFinite(asked) && asked >= 0 && asked <= 2) return asked;
+  const asked = askedTileWhole(g.__canalRecallTileWhole ?? (g.location?.search ? new URLSearchParams(g.location.search).get('tileWhole') : null));
+  if (asked !== null) return asked;
   return g.matchMedia?.('(pointer: coarse)')?.matches ? 2 : DESKTOP_TILE_WHOLE_SHARE;
 }
 
@@ -148,6 +178,8 @@ export class SharedFrame {
   private shadowAge = 0;
   /** Frames whose main pass redrew the shadow map (diagnostics / perf). */
   shadowRedraws = 0;
+  /** The depth programs were linked in a shadow redraw (shadowPrimer.ts); `?shadowPrimer=0` skips it. */
+  private shadowPrimed = shadowPrimerOff();
   /** MapLibre's depth range when the shadow map was last drawn (diagnostics; the map itself is drawn at [0, 1]). */
   shadowDepthRange: [number, number] | null = null;
   /**
@@ -299,8 +331,36 @@ export class SharedFrame {
     const renderer = this.renderer;
     if (!renderer) return;
     const gl = renderer.getContext() as WebGL2RenderingContext;
-    this.renderPass('main', gl, clipFromMercator);
-    this.renderPass('overlay', gl, clipFromMercator);
+    // One camera read for both passes: nothing between them moves the camera (`?frameViewCheck=1` verifies it).
+    this.frameView = this.readView();
+    try {
+      this.renderPass('main', gl, clipFromMercator);
+      this.renderPass('overlay', gl, clipFromMercator);
+    } finally { this.frameView = null; }
+  }
+
+  private worldCameraRef: WorldCamera | null = null;
+  private get worldCamera(): WorldCamera { return this.worldCameraRef ??= worldCameraOf(this.map); }
+  /** The frame's camera read, shared by both passes while `drive` runs. */
+  private frameView: FrameView | null = null;
+  private readView(): FrameView {
+    const cam = this.worldCamera;
+    let center: LngLat | null = null, bounds: LngLatBounds | null = null;
+    return {
+      zoom: cam.zoom(),
+      center: () => (center ??= cam.center()),
+      bounds: () => (bounds ??= plainBounds(cam.bounds() as Parameters<typeof plainBounds>[0])),
+    };
+  }
+  private checkView(view: FrameView, where: string): void {
+    const check = frameViewCheckOf();
+    if (!check) return;
+    const cam = this.worldCamera, c = cam.center(), vc = view.center();
+    const b = plainBounds(cam.bounds() as Parameters<typeof plainBounds>[0]), vb = view.bounds();
+    check.checks++;
+    if (cam.zoom() === view.zoom && c.lng === vc.lng && c.lat === vc.lat && b.west === vb.west && b.east === vb.east && b.south === vb.south && b.north === vb.north) return;
+    check.misses++;
+    if (check.samples.length < 20) check.samples.push(`${where}: zoom ${view.zoom}→${cam.zoom()} centre ${vc.lng},${vc.lat}→${c.lng},${c.lat}`);
   }
 
   /** Register a participant. Returns an unregister function. */
@@ -350,14 +410,30 @@ export class SharedFrame {
    */
   compileAsync(object: any, timeoutMs = 2000): Promise<void> {
     const renderer = this.renderer;
-    if (!renderer?.compileAsync || this.coverPaused) return Promise.resolve();
-    let ready: Promise<unknown>;
-    try { ready = renderer.compileAsync(object, this.camera, this.scene); }
+    if (!renderer?.compile || this.coverPaused) return Promise.resolve();
+    // three's own compileAsync polls `properties.get(material).currentProgram.isReady()` every 10 ms until all are
+    // ready, with no way to stop: after a context loss the properties are reset, the program is undefined and the
+    // poll throws in a timer ("Cannot read properties of undefined (reading 'isReady')", #129), and it keeps polling
+    // after our timeout. The same poll here: a missing program counts as ready (its first draw compiles), and it ends
+    // at the timeout.
+    let materials: Set<any>;
+    try { materials = new Set(renderer.compile(object, this.camera, this.scene)); }
     catch (error) { console.warn('Shared frame: could not precompile', error); return Promise.resolve(); }
     finally { renderer.resetState(); }
-    let timer: ReturnType<typeof setTimeout> | undefined;
-    const timeout = new Promise<void>(resolve => { timer = setTimeout(resolve, timeoutMs); });
-    return Promise.race([ready.then(() => undefined, () => undefined), timeout]).finally(() => clearTimeout(timer));
+    const parallel = (() => { try { return renderer.extensions?.get?.('KHR_parallel_shader_compile') != null; } catch { return false; } })();
+    return new Promise<void>(resolve => {
+      const until = Date.now() + timeoutMs;
+      const check = () => {
+        for (const material of materials) {
+          let ready = true;
+          try { ready = renderer.properties?.get?.(material)?.currentProgram?.isReady?.() ?? true; } catch { ready = true; }
+          if (ready) materials.delete(material);
+        }
+        if (!materials.size || Date.now() >= until) { resolve(); return; }
+        setTimeout(check, Math.min(10, Math.max(0, until - Date.now())));
+      };
+      if (parallel) check(); else setTimeout(check, 10);
+    });
   }
 
   /** Set cast/receive on every mesh under `object`. */
@@ -487,6 +563,16 @@ export class SharedFrame {
     return out;
   }
 
+  /** `?framePhases=1`: the shadow map's own render, inside 'three render main', as its own phase. */
+  private shadowPhaseWrapped = false;
+  private wrapShadowPhase(renderer: any, phases: NonNullable<ReturnType<typeof framePhases>>): void {
+    this.shadowPhaseWrapped = true;
+    const sm = renderer?.shadowMap;
+    if (!sm || typeof sm.render !== 'function') return;
+    const own = sm.render;
+    sm.render = function (...args: unknown[]) { const t = performance.now(); try { return own.apply(this, args); } finally { phases.add('three shadow map (inside render main)', performance.now() - t); } };
+  }
+
   private renderPass(pass: FramePass, gl: WebGL2RenderingContext, args: any): void {
     const renderer = this.renderer;
     if (!renderer) return;
@@ -514,20 +600,26 @@ export class SharedFrame {
     this.camera.projectionMatrix.fromArray(fm.clipFromWorld);
     this.camera.projectionMatrixInverse.copy(this.camera.projectionMatrix).invert();
     this.worldFromMercatorM.fromArray(fm.worldFromMercator);
-    let bounds: LngLatBounds | null = null;
+    const phases = framePhases();
+    if (phases && !this.shadowPhaseWrapped) this.wrapShadowPhase(renderer, phases);
+    const view = this.frameView ?? this.readView();
     const ctx: FrameContext = {
       pass, frame: fm, worldFromMercator: this.worldFromMercatorM, clipFromWorld: this.camera.projectionMatrix,
-      zoom: this.map.getZoom(),
-      bounds: () => (bounds ??= plainBounds(this.map.getBounds())),
+      zoom: view.zoom,
+      bounds: view.bounds,
     };
+    this.checkView(view, `${pass} start`);
     const drawn: Handle[] = [];
     const drawnIds: string[] = [];
     for (const entry of this.registry.all()) {
       const handle = entry.participant;
       if (entry.pass !== pass) { handle.wrapper.visible = false; continue; }
       let ok = false;
+      const b0 = phases ? performance.now() : 0;
       try { ok = handle.participant.beforeRender?.(ctx) !== false; }
       catch (error) { console.warn(`Shared frame participant ${entry.id} failed`, error); }
+      if (phases) phases.add(`beforeRender ${entry.id}`, performance.now() - b0);
+      this.checkView(view, `after ${entry.id}`);
       handle.wrapper.visible = ok;
       if (!ok) continue;
       const local = handle.participant.mercatorFromLocal?.(ctx);
@@ -552,6 +644,8 @@ export class SharedFrame {
       // Tiled meshes (tiledGeometry.ts): whole or through their culled tiles, per mesh, from what is on screen.
       const t = chooseTileDraws(this.THREE, this.camera.projectionMatrix, this.tileWholeShare, this.tileScratch ??= { frustum: new this.THREE.Frustum(), sphere: new this.THREE.Sphere(), m: new this.THREE.Matrix4() });
       this.tileDraws = t;
+      if (phases) phases.add('tile draws', performance.now() - t0);
+      const s0 = phases ? performance.now() : 0;
       // castShadow stays constant (toggling it recompiles every lit program);
       // below the shadow zoom, or when switched off, the map is not redrawn and
       // its contribution is zeroed instead.
@@ -560,7 +654,7 @@ export class SharedFrame {
       this.rig.sun.shadow.intensity = shadows ? this.rig.options.shadowIntensity * ramp : 0;
       let redraw = false;
       if (shadows) {
-        const c = this.map.getCenter();
+        const c = view.center();
         const focus = this.absOf(mercatorOfLngLat(c.lng, c.lat, 0));
         const fit = this.rig.follow(focus, ctx.zoom, abs => worldOfMercator(fm, this.mercatorOfAbs(abs)), this.options.shadowSnapM ?? 16);
         // The scene is static and the box moves in coarse steps, so the map is
@@ -575,8 +669,18 @@ export class SharedFrame {
         }
       } else this.shadowKey = '';
       renderer.shadowMap.needsUpdate = redraw;
-      if (!renderLosingContext(renderer, this.scene, this.camera, gl)) return;
+      const r0 = phases ? performance.now() : 0;
+      if (phases) phases.add('shadow fit', r0 - s0);
+      // The first redraw also links every depth-program variant (shadowPrimer.ts): zero-area casters, no pixels.
+      const primer = redraw && !this.shadowPrimed ? shadowPrimer(this.THREE) : null;
+      if (primer) this.scene.add(primer);
+      let ok: boolean;
+      try { ok = renderLosingContext(renderer, this.scene, this.camera, gl); }
+      finally { if (primer) { disposeShadowPrimer(primer); this.shadowPrimed = true; } }
+      if (phases) phases.add('three render main', performance.now() - r0);
+      if (!ok) return;
     } else {
+      const r0 = phases ? performance.now() : 0;
       renderer.shadowMap.needsUpdate = false;
       for (const handle of drawn) {
         const xray = handle.participant.xrayMaterial?.();
@@ -587,7 +691,9 @@ export class SharedFrame {
         finally { this.scene.overrideMaterial = null; }
       }
       for (const handle of drawn) handle.wrapper.visible = true;
-      if (!renderLosingContext(renderer, this.scene, this.camera, gl)) return;
+      const ok = renderLosingContext(renderer, this.scene, this.camera, gl);
+      if (phases) phases.add('three render overlay', performance.now() - r0);
+      if (!ok) return;
     }
     const s = this.stats[pass];
     s.ms = performance.now() - t0; s.calls = renderer.info.render.calls; s.triangles = renderer.info.render.triangles; s.frames++;
@@ -602,6 +708,13 @@ export class SharedFrame {
  * dropped quietly; `webglcontextlost` follows and contextLost() takes over.
  * Any error from a live context still throws. Returns whether it drew.
  */
+/** `?shadowPrimer=0` (or `window.__canalRecallShadowPrimer = false`): no depth-program primer (A/B control). */
+function shadowPrimerOff(): boolean {
+  const g = globalThis as { __canalRecallShadowPrimer?: unknown; location?: { search?: string } };
+  if (g.__canalRecallShadowPrimer === false) return true;
+  try { return new URLSearchParams(g.location?.search ?? '').get('shadowPrimer') === '0'; } catch { return false; }
+}
+
 export function renderLosingContext(renderer: { render(scene: any, camera: any): void }, scene: any, camera: any, gl: WebGL2RenderingContext): boolean {
   try {
     renderer.render(scene, camera);

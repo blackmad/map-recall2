@@ -40,6 +40,12 @@ export type CameraFollowState = {
   pullBack: number;
 };
 
+/** An exponential ease never arrives; below these the eased value is set to its target so a parked
+ *  view is exactly still (render-on-change's at-rest creep, 2026-11-01). 1e-4 px is far under a
+ *  device pixel at any zoom the ride uses. */
+export const SETTLE_PX = 1e-4;
+export const SETTLE_RATIO = 1e-6;
+
 export function initialCameraFollow(): CameraFollowState {
   return { lookahead: 0, ox: 0, oy: 0, pullBack: 0 };
 }
@@ -67,6 +73,7 @@ export function stepCameraFollow(
   const ratio = target.maxSpeed > 0 ? Math.min(1, Math.max(0, Math.abs(target.speed) / target.maxSpeed)) : 0;
   const wantedLookahead = reducedMotion ? 0 : options.lookahead * ratio;
   state.lookahead += (wantedLookahead - state.lookahead) * ease(options.lookaheadRate);
+  if (Math.abs(wantedLookahead - state.lookahead) < SETTLE_PX) state.lookahead = wantedLookahead;
   const lead = fixedLead + state.lookahead;
   const wx = Math.cos(forward) * lead;
   const wy = Math.sin(forward) * lead;
@@ -78,9 +85,12 @@ export function stepCameraFollow(
     const k = ease(options.offsetRate);
     state.ox += (wx - state.ox) * k;
     state.oy += (wy - state.oy) * k;
+    if (Math.abs(wx - state.ox) < SETTLE_PX) state.ox = wx;
+    if (Math.abs(wy - state.oy) < SETTLE_PX) state.oy = wy;
   }
   const wantedPull = reducedMotion ? 0 : options.pullBack * ratio;
   state.pullBack += (wantedPull - state.pullBack) * ease(options.pullBackRate);
+  if (Math.abs(wantedPull - state.pullBack) < SETTLE_RATIO) state.pullBack = wantedPull;
   return { x: target.x + state.ox, y: target.y + state.oy };
 }
 

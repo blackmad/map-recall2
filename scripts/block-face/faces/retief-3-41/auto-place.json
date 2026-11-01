@@ -3,7 +3,7 @@
  "street": "Retiefstraat",
  "library": "transvaalbuurt",
  "stripDate": "2023-01-02",
- "seconds": 30.45,
+ "seconds": 33.47,
  "thresholds": {
   "minScore": 0.7,
   "margin": 0.05,
@@ -13,7 +13,24 @@
   "widthSlackM": 0.4,
   "flatRoofRiseM": 1.5
  },
- "runs": [],
+ "runs": [
+  {
+   "face": "retief-3-41-r1",
+   "pands": [
+    "0363100012103086"
+   ],
+   "passed": true,
+   "triangles": 1940
+  },
+  {
+   "face": "retief-3-41-r2",
+   "pands": [
+    "0363100012085865"
+   ],
+   "passed": true,
+   "triangles": 1933
+  }
+ ],
  "pands": [
   {
    "pandId": "0363100012146706",
@@ -63,20 +80,20 @@
    },
    "status": "held",
    "stage": "likeness",
-   "reason": "edge NCC 0.116 < 0.15 (photo vs model body; likeness.ts FAIL: glazing storey band off by 0.40 mean 0.38 vs photo 0.19)",
+   "reason": "edge NCC 0.096 < 0.15 (photo vs model body; likeness.ts FAIL: glazing storey band off by 0.39 mean 0.36 vs photo 0.19)",
    "likeness": {
     "pandId": "0363100012146706",
-    "ncc": 0.116,
-    "nccRaw": 0.116,
+    "ncc": 0.096,
+    "nccRaw": 0.096,
     "shiftM": [
-     0.3,
-     0.4
+     0.35,
+     0.1
     ],
-    "usable": 0.97,
+    "usable": 0.98,
     "abstain": null,
     "verdict": "FAIL",
     "reasons": [
-     "glazing storey band off by 0.40 mean 0.38 vs photo 0.19"
+     "glazing storey band off by 0.39 mean 0.36 vs photo 0.19"
     ],
     "wall": {
      "photo": "#463a36",
@@ -85,17 +102,18 @@
     },
     "glazing": {
      "photo": 0.19,
-     "model": 0.38
+     "model": 0.36
     },
     "columns": {
      "photo": 3,
      "model": 3
     },
-    "iou": 0.294
+    "iou": 0.261,
+    "footOffsetM": 1.48
    },
    "challengers": {
-    "transvaal-1911-five-storey-tall~m": 0.116,
-    "transvaal-1911-five-storey-tall": 0.11
+    "transvaal-1911-five-storey-tall~m": 0.096,
+    "transvaal-1911-five-storey-tall": 0.095
    }
   },
   {
@@ -146,11 +164,11 @@
    },
    "status": "held",
    "stage": "likeness",
-   "reason": "edge NCC 0.109 < 0.15 (photo vs model body; likeness.ts FAIL: glazing storey band off by 0.36 mean 0.36 vs photo 0.25)",
+   "reason": "edge NCC 0.133 < 0.15 (photo vs model body; likeness.ts FAIL: glazing storey band off by 0.39 mean 0.37 vs photo 0.25)",
    "likeness": {
     "pandId": "0363100012142684",
-    "ncc": 0.109,
-    "nccRaw": 0.109,
+    "ncc": 0.133,
+    "nccRaw": 0.133,
     "shiftM": [
      -0.2,
      -0.4
@@ -159,7 +177,7 @@
     "abstain": null,
     "verdict": "FAIL",
     "reasons": [
-     "glazing storey band off by 0.36 mean 0.36 vs photo 0.25"
+     "glazing storey band off by 0.39 mean 0.37 vs photo 0.25"
     ],
     "wall": {
      "photo": "#443b38",
@@ -168,17 +186,18 @@
     },
     "glazing": {
      "photo": 0.25,
-     "model": 0.36
+     "model": 0.37
     },
     "columns": {
      "photo": 3,
      "model": 3
     },
-    "iou": 0.268
+    "iou": 0.24,
+    "footOffsetM": 1.48
    },
    "challengers": {
-    "transvaal-1911-five-storey-tall": 0.109,
-    "transvaal-1911-five-storey-tall~m": 0.11,
+    "transvaal-1911-five-storey-tall": 0.133,
+    "transvaal-1911-five-storey-tall~m": 0.112,
     "transvaal-1911-five-storey": 0.113,
     "transvaal-1911-five-storey~m": 0.113,
     "transvaal-1923-portiek-tower": 0.166
@@ -240,42 +259,63 @@
     "voidShare": 0,
     "foliageShare": 0
    },
-   "status": "held",
-   "stage": "run",
-   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
+   "status": "placed",
+   "type": "transvaal-1911-five-storey-tall",
+   "score": 1,
+   "runnerUp": {
+    "typeId": "transvaal-1911-five-storey",
+    "score": 1
+   },
+   "placement": {
+    "type": "transvaal-1911-five-storey-tall",
+    "mirror": true,
+    "measuredPalette": {
+     "brick": "#806a64",
+     "evidence": "strip 2023-01-02 span 686-1026: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "crown": "none"
+   },
+   "notes": [
+    "near tie with transvaal-1911-five-storey (1)",
+    "door right: mirrored",
+    "crown none: crown from type (skyline not sky-bounded: skyline crown top 21.6 m over the 3DBAG roof max 19.61 m (trees, branches or a building behind))",
+    "lone pand: a stair block on its own: transvaal-1911-five-storey-tall opts in to one-house faces from 5 m (frontage 8.5 m)"
+   ],
    "likeness": {
     "pandId": "0363100012103086",
-    "ncc": 0.158,
-    "nccRaw": 0.158,
+    "ncc": 0.153,
+    "nccRaw": 0.153,
     "shiftM": [
      0.4,
-     -0.4
+     -0.2
     ],
     "usable": 0.98,
     "abstain": null,
     "verdict": "FAIL",
     "reasons": [
-     "wall dL +0.12",
-     "glazing storey band off by 0.30 mean 0.36 vs photo 0.24"
+     "wall dL +0.13",
+     "glazing storey band off by 0.33 mean 0.37 vs photo 0.25",
+     "window shape tall vs photo square"
     ],
     "wall": {
-     "photo": "#725e59",
+     "photo": "#6f5b57",
      "model": "#947d76",
-     "dL": 0.124
+     "dL": 0.133
     },
     "glazing": {
-     "photo": 0.24,
-     "model": 0.36
+     "photo": 0.25,
+     "model": 0.37
     },
     "columns": {
      "photo": 3,
      "model": 3
     },
-    "iou": 0.316
+    "iou": 0.309,
+    "footOffsetM": 2.08
    },
    "challengers": {
-    "transvaal-1911-five-storey-tall~m": 0.158,
-    "transvaal-1911-five-storey-tall": 0.161,
+    "transvaal-1911-five-storey-tall~m": 0.161,
+    "transvaal-1911-five-storey-tall": 0.147,
     "transvaal-1911-five-storey~m": 0.173,
     "transvaal-1911-five-storey": 0.173,
     "transvaal-1923-portiek-tower": 0.121
@@ -344,20 +384,20 @@
    },
    "status": "held",
    "stage": "likeness",
-   "reason": "edge NCC 0.094 < 0.15 (photo vs model body; likeness.ts FAIL: glazing storey band off by 0.18)",
+   "reason": "edge NCC 0.079 < 0.15 (photo vs model body; likeness.ts FAIL: glazing storey band off by 0.15)",
    "likeness": {
     "pandId": "0363100012149430",
-    "ncc": 0.094,
-    "nccRaw": 0.094,
+    "ncc": 0.079,
+    "nccRaw": 0.079,
     "shiftM": [
      -0.15,
      -0.4
     ],
-    "usable": 0.99,
+    "usable": 0.98,
     "abstain": null,
     "verdict": "FAIL",
     "reasons": [
-     "glazing storey band off by 0.18"
+     "glazing storey band off by 0.15"
     ],
     "wall": {
      "photo": "#6c5f59",
@@ -366,17 +406,18 @@
     },
     "glazing": {
      "photo": 0.39,
-     "model": 0.36
+     "model": 0.37
     },
     "columns": {
      "photo": null,
      "model": 3
     },
-    "iou": 0.318
+    "iou": 0.32,
+    "footOffsetM": 1.48
    },
    "challengers": {
-    "transvaal-1911-five-storey-tall": 0.094,
-    "transvaal-1911-five-storey-tall~m": 0.095,
+    "transvaal-1911-five-storey-tall": 0.079,
+    "transvaal-1911-five-storey-tall~m": 0.07,
     "transvaal-1911-five-storey": 0.092,
     "transvaal-1911-five-storey~m": 0.092,
     "transvaal-1923-portiek-tower": 0.135
@@ -440,11 +481,11 @@
    },
    "status": "held",
    "stage": "likeness",
-   "reason": "edge NCC 0.091 < 0.15 (photo vs model body; likeness.ts FAIL: glazing storey band off by 0.18)",
+   "reason": "edge NCC 0.1 < 0.15 (photo vs model body; likeness.ts FAIL: glazing storey band off by 0.19)",
    "likeness": {
     "pandId": "0363100012123343",
-    "ncc": 0.091,
-    "nccRaw": 0.091,
+    "ncc": 0.1,
+    "nccRaw": 0.1,
     "shiftM": [
      0.4,
      -0.4
@@ -453,7 +494,7 @@
     "abstain": null,
     "verdict": "FAIL",
     "reasons": [
-     "glazing storey band off by 0.18"
+     "glazing storey band off by 0.19"
     ],
     "wall": {
      "photo": "#725e55",
@@ -462,17 +503,18 @@
     },
     "glazing": {
      "photo": 0.3,
-     "model": 0.36
+     "model": 0.37
     },
     "columns": {
      "photo": null,
      "model": 3
     },
-    "iou": 0.389
+    "iou": 0.357,
+    "footOffsetM": 1.48
    },
    "challengers": {
-    "transvaal-1911-five-storey-tall": 0.091,
-    "transvaal-1911-five-storey-tall~m": 0.09
+    "transvaal-1911-five-storey-tall": 0.1,
+    "transvaal-1911-five-storey-tall~m": 0.082
    }
   },
   {
@@ -543,11 +585,11 @@
    },
    "status": "held",
    "stage": "likeness",
-   "reason": "edge NCC 0.099 < 0.15 (photo vs model body; likeness.ts FAIL: glazing storey band off by 0.27 mean 0.36 vs photo 0.54)",
+   "reason": "edge NCC 0.106 < 0.15 (photo vs model body; likeness.ts FAIL: glazing storey band off by 0.24 mean 0.37 vs photo 0.54; window shape tall vs photo square)",
    "likeness": {
     "pandId": "0363100012068730",
-    "ncc": 0.099,
-    "nccRaw": 0.099,
+    "ncc": 0.106,
+    "nccRaw": 0.106,
     "shiftM": [
      -0.2,
      -0.4
@@ -556,7 +598,8 @@
     "abstain": null,
     "verdict": "FAIL",
     "reasons": [
-     "glazing storey band off by 0.27 mean 0.36 vs photo 0.54"
+     "glazing storey band off by 0.24 mean 0.37 vs photo 0.54",
+     "window shape tall vs photo square"
     ],
     "wall": {
      "photo": "#745e57",
@@ -565,17 +608,22 @@
     },
     "glazing": {
      "photo": 0.54,
-     "model": 0.36
+     "model": 0.37
     },
     "columns": {
      "photo": 3,
      "model": 3
     },
-    "iou": 0.345
+    "iou": 0.356,
+    "footOffsetM": 1.48
    },
    "challengers": {
-    "transvaal-1911-five-storey-tall": 0.099,
-    "transvaal-1911-five-storey-tall~m": 0.1
+    "transvaal-1911-five-storey-tall": 0.106,
+    "transvaal-1911-five-storey-tall~m": 0.084,
+    "transvaal-1911-five-storey": 0.095,
+    "transvaal-1911-five-storey~m": 0.095,
+    "transvaal-1923-portiek-tower": 0.183,
+    "transvaal-1923-portiek": 0.174
    }
   },
   {
@@ -626,13 +674,13 @@
    },
    "status": "held",
    "stage": "likeness",
-   "reason": "edge NCC 0.079 < 0.15 (photo vs model body; likeness.ts FAIL: wall dL +0.13; glazing storey band off by 0.37 mean 0.37 vs photo 0.19)",
+   "reason": "edge NCC 0.109 < 0.15 (photo vs model body; likeness.ts FAIL: wall dL +0.13; glazing storey band off by 0.38 mean 0.35 vs photo 0.19)",
    "likeness": {
     "pandId": "0363100012081061",
-    "ncc": 0.079,
-    "nccRaw": 0.079,
+    "ncc": 0.109,
+    "nccRaw": 0.109,
     "shiftM": [
-     0.35,
+     0.3,
      -0.4
     ],
     "usable": 0.98,
@@ -640,7 +688,7 @@
     "verdict": "FAIL",
     "reasons": [
      "wall dL +0.13",
-     "glazing storey band off by 0.37 mean 0.37 vs photo 0.19"
+     "glazing storey band off by 0.38 mean 0.35 vs photo 0.19"
     ],
     "wall": {
      "photo": "#6e5953",
@@ -649,17 +697,18 @@
     },
     "glazing": {
      "photo": 0.19,
-     "model": 0.37
+     "model": 0.35
     },
     "columns": {
      "photo": null,
      "model": 3
     },
-    "iou": 0.26
+    "iou": 0.234,
+    "footOffsetM": 1.48
    },
    "challengers": {
-    "transvaal-1911-five-storey-tall": 0.079,
-    "transvaal-1911-five-storey-tall~m": 0.079
+    "transvaal-1911-five-storey-tall": 0.109,
+    "transvaal-1911-five-storey-tall~m": 0.075
    }
   },
   {
@@ -715,11 +764,11 @@
    },
    "status": "held",
    "stage": "likeness",
-   "reason": "edge NCC 0.064 < 0.15 (photo vs model body; likeness.ts FAIL: glazing storey band off by 0.36 mean 0.36 vs photo 0.21; columns 3 vs photo 2)",
+   "reason": "edge NCC 0.058 < 0.15 (photo vs model body; likeness.ts FAIL: glazing storey band off by 0.39 mean 0.38 vs photo 0.21; window shape tall vs photo square; columns 3 vs photo 2)",
    "likeness": {
     "pandId": "0363100012141977",
-    "ncc": 0.064,
-    "nccRaw": 0.064,
+    "ncc": 0.058,
+    "nccRaw": 0.058,
     "shiftM": [
      -0.2,
      -0.4
@@ -728,7 +777,8 @@
     "abstain": null,
     "verdict": "FAIL",
     "reasons": [
-     "glazing storey band off by 0.36 mean 0.36 vs photo 0.21",
+     "glazing storey band off by 0.39 mean 0.38 vs photo 0.21",
+     "window shape tall vs photo square",
      "columns 3 vs photo 2"
     ],
     "wall": {
@@ -738,17 +788,21 @@
     },
     "glazing": {
      "photo": 0.21,
-     "model": 0.36
+     "model": 0.38
     },
     "columns": {
      "photo": 2,
      "model": 3
     },
-    "iou": 0.236
+    "iou": 0.228,
+    "footOffsetM": 1.48
    },
    "challengers": {
-    "transvaal-1911-five-storey-tall~m": 0.064,
-    "transvaal-1911-five-storey-tall": 0.065
+    "transvaal-1911-five-storey-tall~m": 0.058,
+    "transvaal-1911-five-storey-tall": 0.039,
+    "transvaal-1911-five-storey~m": 0.064,
+    "transvaal-1911-five-storey": 0.064,
+    "transvaal-1923-portiek-tower": 0.165
    }
   },
   {
@@ -813,40 +867,41 @@
     "foliageShare": 0
    },
    "status": "held",
-   "stage": "run",
-   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
+   "stage": "likeness",
+   "reason": "edge NCC 0.12 < 0.15 (photo vs model body; likeness.ts FAIL: glazing storey band off by 0.36 mean 0.37 vs photo 0.62)",
    "likeness": {
     "pandId": "0363100012095538",
-    "ncc": 0.16,
-    "nccRaw": 0.16,
+    "ncc": 0.12,
+    "nccRaw": 0.12,
     "shiftM": [
      0.4,
-     0.3
+     0.4
     ],
     "usable": 0.99,
     "abstain": null,
     "verdict": "FAIL",
     "reasons": [
-     "glazing storey band off by 0.36 mean 0.36 vs photo 0.61"
+     "glazing storey band off by 0.36 mean 0.37 vs photo 0.62"
     ],
     "wall": {
-     "photo": "#534746",
+     "photo": "#544846",
      "model": "#635553",
-     "dL": 0.057
+     "dL": 0.055
     },
     "glazing": {
-     "photo": 0.61,
-     "model": 0.36
+     "photo": 0.62,
+     "model": 0.37
     },
     "columns": {
      "photo": null,
      "model": 3
     },
-    "iou": 0.371
+    "iou": 0.376,
+    "footOffsetM": 1.48
    },
    "challengers": {
-    "transvaal-1911-five-storey-tall~m": 0.16,
-    "transvaal-1911-five-storey-tall": 0.161
+    "transvaal-1911-five-storey-tall~m": 0.12,
+    "transvaal-1911-five-storey-tall": 0.125
    }
   },
   {
@@ -907,11 +962,11 @@
    },
    "status": "held",
    "stage": "likeness",
-   "reason": "edge NCC 0.071 < 0.15 (photo vs model body; likeness.ts FAIL: wall dL +0.15; glazing storey band off by 0.36 mean 0.36 vs photo 0.20)",
+   "reason": "edge NCC 0.077 < 0.15 (photo vs model body; likeness.ts FAIL: wall dL +0.15; glazing storey band off by 0.40 mean 0.37 vs photo 0.20; window shape tall vs photo square)",
    "likeness": {
     "pandId": "0363100012086462",
-    "ncc": 0.071,
-    "nccRaw": 0.071,
+    "ncc": 0.077,
+    "nccRaw": 0.077,
     "shiftM": [
      -0.05,
      -0.4
@@ -921,7 +976,8 @@
     "verdict": "FAIL",
     "reasons": [
      "wall dL +0.15",
-     "glazing storey band off by 0.36 mean 0.36 vs photo 0.20"
+     "glazing storey band off by 0.40 mean 0.37 vs photo 0.20",
+     "window shape tall vs photo square"
     ],
     "wall": {
      "photo": "#4b3f3c",
@@ -930,20 +986,21 @@
     },
     "glazing": {
      "photo": 0.2,
-     "model": 0.36
+     "model": 0.37
     },
     "columns": {
      "photo": 3,
      "model": 3
     },
-    "iou": 0.231
+    "iou": 0.218,
+    "footOffsetM": 1.48
    },
    "challengers": {
-    "transvaal-1911-five-storey-tall": 0.071,
-    "transvaal-1911-five-storey-tall~m": 0.07,
-    "transvaal-1911-five-storey": 0.067,
-    "transvaal-1911-five-storey~m": 0.067,
-    "transvaal-1923-portiek-tower": 0.175
+    "transvaal-1911-five-storey-tall": 0.077,
+    "transvaal-1911-five-storey-tall~m": 0.067,
+    "transvaal-1911-five-storey": 0.102,
+    "transvaal-1911-five-storey~m": 0.102,
+    "transvaal-1923-portiek-tower": 0.199
    }
   },
   {
@@ -999,21 +1056,21 @@
    },
    "status": "held",
    "stage": "likeness",
-   "reason": "edge NCC 0.089 < 0.15 (photo vs model body; likeness.ts FAIL: wall dL +0.14; glazing storey band off by 0.37 mean 0.36 vs photo 0.20; window shape tall vs photo square)",
+   "reason": "edge NCC 0.109 < 0.15 (photo vs model body; likeness.ts FAIL: wall dL +0.14; glazing storey band off by 0.37 mean 0.35 vs photo 0.20; window shape tall vs photo square)",
    "likeness": {
     "pandId": "0363100012135274",
-    "ncc": 0.089,
-    "nccRaw": 0.089,
+    "ncc": 0.109,
+    "nccRaw": 0.109,
     "shiftM": [
      0.4,
      -0.4
     ],
-    "usable": 0.98,
+    "usable": 0.97,
     "abstain": null,
     "verdict": "FAIL",
     "reasons": [
      "wall dL +0.14",
-     "glazing storey band off by 0.37 mean 0.36 vs photo 0.20",
+     "glazing storey band off by 0.37 mean 0.35 vs photo 0.20",
      "window shape tall vs photo square"
     ],
     "wall": {
@@ -1023,20 +1080,21 @@
     },
     "glazing": {
      "photo": 0.2,
-     "model": 0.36
+     "model": 0.35
     },
     "columns": {
      "photo": 3,
      "model": 3
     },
-    "iou": 0.305
+    "iou": 0.274,
+    "footOffsetM": 1.48
    },
    "challengers": {
-    "transvaal-1911-five-storey-tall~m": 0.089,
-    "transvaal-1911-five-storey-tall": 0.087,
-    "transvaal-1911-five-storey~m": 0.091,
-    "transvaal-1911-five-storey": 0.091,
-    "transvaal-1923-portiek-tower": 0.121
+    "transvaal-1911-five-storey-tall~m": 0.109,
+    "transvaal-1911-five-storey-tall": 0.088,
+    "transvaal-1911-five-storey~m": 0.126,
+    "transvaal-1911-five-storey": 0.126,
+    "transvaal-1923-portiek-tower": 0.124
    }
   },
   {
@@ -1095,47 +1153,63 @@
     "voidShare": 0,
     "foliageShare": 0
    },
-   "status": "held",
-   "stage": "likeness",
-   "reason": "edge NCC 0.133 < 0.15 (photo vs model body; likeness.ts FAIL: wall dL +0.23; glazing storey band off by 0.22 mean 0.37 vs photo 0.23; window shape tall vs photo square; columns 3 vs photo 2)",
+   "status": "placed",
+   "type": "transvaal-1911-five-storey-tall",
+   "score": 1,
+   "runnerUp": {
+    "typeId": "transvaal-1911-five-storey",
+    "score": 1
+   },
+   "placement": {
+    "type": "transvaal-1911-five-storey-tall",
+    "measuredPalette": {
+     "brick": "#75665d",
+     "evidence": "strip 2023-01-02 span 3753-4095: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "crown": "none"
+   },
+   "notes": [
+    "near tie with transvaal-1911-five-storey (1)",
+    "door unread: as drawn, the opposite of 135274",
+    "crown none: crown from type (skyline not sky-bounded: skyline crown top 20.81 m over the 3DBAG roof max 17.1 m (trees, branches or a building behind))",
+    "lone pand: a stair block on its own: transvaal-1911-five-storey-tall opts in to one-house faces from 5 m (frontage 8.55 m)"
+   ],
    "likeness": {
     "pandId": "0363100012085865",
-    "ncc": 0.133,
-    "nccRaw": 0.133,
+    "ncc": 0.157,
+    "nccRaw": 0.157,
     "shiftM": [
-     -0.05,
-     -0.4
+     -0.1,
+     -0.3
     ],
-    "usable": 0.98,
+    "usable": 0.99,
     "abstain": null,
     "verdict": "FAIL",
     "reasons": [
-     "wall dL +0.23",
-     "glazing storey band off by 0.22 mean 0.37 vs photo 0.23",
-     "window shape tall vs photo square",
-     "columns 3 vs photo 2"
+     "glazing storey band off by 0.18 mean 0.36 vs photo 0.24"
     ],
     "wall": {
-     "photo": "#473f3d",
+     "photo": "#6a5c53",
      "model": "#8b7a6f",
-     "dL": 0.231
+     "dL": 0.12
     },
     "glazing": {
-     "photo": 0.23,
-     "model": 0.37
+     "photo": 0.24,
+     "model": 0.36
     },
     "columns": {
      "photo": 2,
      "model": 3
     },
-    "iou": 0.276
+    "iou": 0.259,
+    "footOffsetM": 1.6
    },
    "challengers": {
-    "transvaal-1911-five-storey-tall": 0.133,
-    "transvaal-1911-five-storey-tall~m": 0.134,
-    "transvaal-1911-five-storey": 0.127,
-    "transvaal-1911-five-storey~m": 0.127,
-    "transvaal-1923-portiek-tower": 0.163
+    "transvaal-1911-five-storey-tall": 0.152,
+    "transvaal-1911-five-storey-tall~m": 0.165,
+    "transvaal-1911-five-storey": 0.174,
+    "transvaal-1911-five-storey~m": 0.174,
+    "transvaal-1923-portiek-tower": 0.168
    }
   },
   {
@@ -1196,20 +1270,20 @@
    },
    "status": "held",
    "stage": "likeness",
-   "reason": "edge NCC 0.106 < 0.15 (photo vs model body; likeness.ts WARN: mask IoU 0.385 < 0.45)",
+   "reason": "edge NCC 0.142 < 0.15 (photo vs model body; likeness.ts FAIL: glazing  mean 0.38 vs photo 0.27)",
    "likeness": {
     "pandId": "0363100012082397",
-    "ncc": 0.106,
-    "nccRaw": 0.106,
+    "ncc": 0.142,
+    "nccRaw": 0.142,
     "shiftM": [
      0.35,
-     -0.35
+     -0.4
     ],
     "usable": 0.99,
     "abstain": null,
-    "verdict": "WARN",
+    "verdict": "FAIL",
     "reasons": [
-     "mask IoU 0.385 < 0.45"
+     "glazing  mean 0.38 vs photo 0.27"
     ],
     "wall": {
      "photo": "#4f4644",
@@ -1218,20 +1292,21 @@
     },
     "glazing": {
      "photo": 0.27,
-     "model": 0.36
+     "model": 0.38
     },
     "columns": {
      "photo": null,
      "model": 3
     },
-    "iou": 0.385
+    "iou": 0.373,
+    "footOffsetM": 1.48
    },
    "challengers": {
-    "transvaal-1911-five-storey-tall~m": 0.106,
-    "transvaal-1911-five-storey-tall": 0.105,
-    "transvaal-1911-five-storey~m": 0.107,
-    "transvaal-1911-five-storey": 0.107,
-    "transvaal-1923-portiek-tower": 0.157
+    "transvaal-1911-five-storey-tall~m": 0.142,
+    "transvaal-1911-five-storey-tall": 0.137,
+    "transvaal-1911-five-storey~m": 0.126,
+    "transvaal-1911-five-storey": 0.126,
+    "transvaal-1923-portiek-tower": 0.184
    }
   }
  ]

@@ -1,5 +1,6 @@
 import { test, expect } from '@playwright/test';
 import { openRoute } from './helpers';
+import { OWN } from './worldCam';
 
 // Named regression (user report 2026-09-29, "can we move the map POI labels
 // up onto the buildings instead of being on the ground?"). Under a pitched
@@ -8,13 +9,14 @@ import { openRoute } from './helpers';
 // tram stops stay on the street, and so do our landmark dots, which include
 // trees and memorials.
 test('pitched chase lifts landmark and shop labels onto the buildings', async ({ page }, testInfo) => {
+  test.skip(OWN, 'MapLibre style assertion: deleted with the default path at P5');
   test.skip(testInfo.project.name !== 'desktop', 'map styling; one project is enough');
   test.setTimeout(150000);
   await openRoute(page, { travelMode: 'car', viewMode: 'chase', query: '?shopNames=1' });
   await expect.poll(() => page.evaluate(() => (window as any).canalRecallGame.vectorMap.camera.pitch()), { timeout: 30000 }).toBeGreaterThan(20);
   await expect.poll(() => page.evaluate(() => (window as any).canalRecallGame.vectorMap._poiLiftPitch ?? null)).not.toBeNull();
   const result = await page.evaluate(() => {
-    const map = (window as any).canalRecallGame.vectorMap.map;
+    const map = (window as any).canalRecallGame.vectorMap.map ?? (window as any).canalRecallGame.vectorMap.cameraMap;
     const layers = (window as any).CanalRecallOrientationPois.basemapOrientationPoiLayerIds(map.getStyle().layers);
     // Evaluate each translate expression at the live zoom. The style's own
     // evaluated value can lag at the zoom of its last recalculation.
@@ -63,6 +65,7 @@ test('pitched chase lifts landmark and shop labels onto the buildings', async ({
 // the buildings, each height band on its own roofline, outdoor places on the
 // ground, and no label names a quiz-eligible street.
 test('our own POI layer replaces the basemap and sits on each building\'s roofline', async ({ page }, testInfo) => {
+  test.skip(OWN, 'MapLibre style assertion: deleted with the default path at P5');
   test.skip(testInfo.project.name !== 'desktop', 'map styling; one project is enough');
   test.setTimeout(150000);
   await openRoute(page, { travelMode: 'car', viewMode: 'chase', query: '?shopNames=1' });
@@ -70,7 +73,7 @@ test('our own POI layer replaces the basemap and sits on each building\'s roofli
   await expect.poll(() => page.evaluate(() => (window as any).canalRecallGame.vectorMap.camera.pitch()), { timeout: 30000 }).toBeGreaterThan(20);
   await expect.poll(() => page.evaluate(() => (window as any).canalRecallGame.vectorMap._poiLiftPitch ?? null)).not.toBeNull();
   const result = await page.evaluate(() => {
-    const vm = (window as any).canalRecallGame.vectorMap, map = vm.map;
+    const vm = (window as any).canalRecallGame.vectorMap, map = vm.map ?? vm.cameraMap;
     const lib = (window as any).CanalRecallOrientationPois;
     const zoom = (window as any).canalRecallGame.vectorMap.camera.zoom();
     const liftAt = (id: string) => {
@@ -108,9 +111,9 @@ test('our own POI layer replaces the basemap and sits on each building\'s roofli
     const vm = (window as any).canalRecallGame.vectorMap, lib = (window as any).CanalRecallOrientationPois;
     vm.setQuizQuietMap(true);
     const { dots, labels } = lib.ownPoiLayerIds('mid');
-    const state = { dots: !!vm.map.getLayer(dots), labels: vm.map.getLayoutProperty(labels, 'visibility') };
+    const state = { dots: !!(vm.map ?? vm.cameraMap).getLayer(dots), labels: (vm.map ?? vm.cameraMap).getLayoutProperty(labels, 'visibility') };
     vm.setQuizQuietMap(false);
-    return { ...state, after: vm.map.getLayoutProperty(labels, 'visibility') };
+    return { ...state, after: (vm.map ?? vm.cameraMap).getLayoutProperty(labels, 'visibility') };
   });
   expect(quiet).toEqual({ dots: false, labels: 'none', after: 'visible' });
 });
@@ -118,12 +121,13 @@ test('our own POI layer replaces the basemap and sits on each building\'s roofli
 // Named regression (user report 2026-10-30, Zuiderkerk / Sint Antoniesbreestraat: "why two kinds of labels? too
 // distracting"): by default only the place pills draw; shop and café names stay hidden.
 test('shop and café names are hidden by default; place pills are the one label system', async ({ page }, testInfo) => {
+  test.skip(OWN, 'MapLibre style assertion: deleted with the default path at P5');
   test.skip(testInfo.project.name !== 'desktop', 'map styling; one project is enough');
   test.setTimeout(150000);
   await openRoute(page, { travelMode: 'car', viewMode: 'chase' });
   await expect.poll(() => page.evaluate(() => (window as any).canalRecallGame.vectorMap._ownPoisActive ?? null), { timeout: 60000 }).not.toBeNull();
   const shown = await page.evaluate(() => {
-    const map = (window as any).canalRecallGame.vectorMap.map;
+    const map = (window as any).canalRecallGame.vectorMap.map ?? (window as any).canalRecallGame.vectorMap.cameraMap;
     return map.getStyle().layers.filter((l: any) => /^own-poi-labels-/.test(l.id) || l['source-layer'] === 'poi')
       .filter((l: any) => map.getLayoutProperty(l.id, 'visibility') !== 'none').map((l: any) => l.id);
   });

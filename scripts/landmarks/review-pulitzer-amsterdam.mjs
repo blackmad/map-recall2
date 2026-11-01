@@ -23,11 +23,11 @@ try {
  await page.locator('#travel-mode').selectOption('car',{force:true});
  await page.locator('#route-card').evaluate(f=>f.requestSubmit());
  await page.waitForFunction(()=>window.canalRecallGame?.player&&Number.isFinite(window.canalRecallGame.player.x),undefined,{timeout:90000});
- await page.evaluate(()=>{const g=window.canalRecallGame;g.state=4;g.vectorMap.sync=()=>{};g.vectorMap.map.stop();});
+ await page.evaluate(()=>{const g=window.canalRecallGame;g.state=4;g.vectorMap.sync=()=>{};(g.vectorMap.map ?? g.vectorMap.cameraMap).stop();});
  await page.waitForFunction(()=>window.canalRecallGame.vectorMap._completeCityHasBuildings,undefined,{timeout:60000});
  const results=[];
  for(const [name,bearing,zoom,pitch]of [['prinsengracht',90,18.2,58],['keizersgracht',270,18.2,58],['reestraat',0,18.3,60],['courtyard-context',15,17.7,55]]){
-  await page.evaluate(([bearing,zoom,pitch])=>window.canalRecallGame.vectorMap.map.jumpTo({center:[4.8839,52.3727],bearing,zoom,pitch}),[bearing,zoom,pitch]);
+  await page.evaluate(([bearing,zoom,pitch])=>(window.canalRecallGame.vectorMap.map ?? window.canalRecallGame.vectorMap.cameraMap).jumpTo({center:[4.8839,52.3727],bearing,zoom,pitch}),[bearing,zoom,pitch]);
   await page.waitForTimeout(name==='prinsengracht'?8000:3500);
   await page.screenshot({path:`${output}/${name}.png`});
   results.push(await page.evaluate(name=>{

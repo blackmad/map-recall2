@@ -176,6 +176,7 @@ export function paintStoreys(group: T.Group, intent: CanalHouseIntent): number {
     const facade = group.getObjectByName(`elevation/${f.id}`);
     if (!(f.paintedStoreys || f.renderedGable) || !facade) continue;
     let paint: T.Material | null = null, render: T.Material | null = null, board: T.Material | null = null;
+    const panels = new Map<number, T.Material>();
     facade.traverse(o => {
       if (!(o instanceof T.Mesh) || Array.isArray(o.material)) return;
       // `renderedGable`: the crown face (not its edges, cap or wings) in the render colour.
@@ -188,6 +189,14 @@ export function paintStoreys(group: T.Group, intent: CanalHouseIntent): number {
       if (f.renderedGable && /(?:^|\/)ornament\/bargeboard-\d+\/field$/.test(o.name)) {
         if (!board) { const c = (o.material as T.MeshStandardMaterial).clone(); c.color.set(f.palette?.frame ?? intent.palette.frame); c.userData = {...o.material.userData, tintSource: 'measured'}; board = c; }
         o.material = board; painted++;
+        return;
+      }
+      // `paintedStoreys.panels`: each panel facing in its own measured colour.
+      const panel = f.paintedStoreys?.panels ? /(?:^|\/)facadeDetail\/bands\/painted-panel-(\d+)\//.exec(o.name) : null;
+      if (panel) {
+        const k = Number(panel[1]), c = (o.material as T.MeshStandardMaterial).clone();
+        c.color.set(f.paintedStoreys!.panels![k].colour); c.userData = {...o.material.userData, tintSource: 'measured'};
+        o.material = panels.get(k) ?? (panels.set(k, c), c); painted++;
         return;
       }
       if (!f.paintedStoreys || !/(?:^|\/)facadeDetail\/bands\/painted-storey-s\d+\//.test(o.name)) return;

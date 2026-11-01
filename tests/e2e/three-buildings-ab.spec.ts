@@ -74,7 +74,7 @@ for (const variant of VARIANTS) {
         // Aliasing error: a static frame at 1x against the same frame rendered at 3x and
         // downscaled. No camera motion, no tile loads: only what 1x sampling gets wrong.
         const grab = (ratio: number) => page.evaluate(async (ratio) => {
-          const map = (window as any).canalRecallGame.vectorMap.map;
+          const map = (window as any).canalRecallGame.vectorMap.map ?? (window as any).canalRecallGame.vectorMap.cameraMap;
           map.setPixelRatio(ratio);
           await new Promise(r => setTimeout(r, 1500));
           return await new Promise<string>(resolve => {
@@ -84,7 +84,7 @@ for (const variant of VARIANTS) {
         }, ratio);
         const decode = (url: string) => Buffer.from(url.split(',')[1], 'base64');
         const one = decode(await grab(1)), three = decode(await grab(3));
-        await page.evaluate(() => (window as any).canalRecallGame.vectorMap.map.setPixelRatio(1));
+        await page.evaluate(() => ((window as any).canalRecallGame.vectorMap.map ?? (window as any).canalRecallGame.vectorMap.cameraMap).setPixelRatio(1));
         const meta = await sharp(one).metadata(), w = meta.width!, h = meta.height!;
         const region = { left: Math.round(w * 0.25), top: Math.round(h * 0.28), width: Math.round(w * 0.5), height: Math.round(h * 0.42) };
         const a = await sharp(one).extract(region).greyscale().raw().toBuffer();
@@ -97,7 +97,7 @@ for (const variant of VARIANTS) {
     await park(page, SPOTS[0].at, SPOTS[0].face, 'chase');
     await page.waitForTimeout(4000);
     const perf = await page.evaluate(async () => {
-      const w = window as any, map = w.canalRecallGame.vectorMap.map;
+      const w = window as any, map = w.canalRecallGame.vectorMap.map ?? w.canalRecallGame.vectorMap.cameraMap;
       const renders: number[] = [], frames: number[] = [];
       const original = map._render.bind(map);
       map._render = (...a: unknown[]) => { const t = performance.now(); const o = original(...a); renders.push(performance.now() - t); return o; };

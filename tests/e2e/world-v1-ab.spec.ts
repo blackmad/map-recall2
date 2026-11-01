@@ -4,8 +4,9 @@ import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import path from 'node:path';
 import sharp from 'sharp';
 import { openRoute } from './helpers';
+import { AB_SPOTS } from '../../scripts/world/abSpots';
 
-// `?world=v1` against the default tile path at the world-compiler sentinels (lane L3, issue #130).
+// `?world=v1` (the default since 2026-11-01) against the live tile path (`?world=live`) at the world-compiler sentinels (lane L3, issue #130).
 // Opt-in measurement until world-v1 is published:
 //   WORLD_AB=1 [WORLD_DIR=artifacts/world/staging] [BUNDLES_DIR=dir] PW_PORT=4525 \
 //     /tmp/canal-pw.sh npx playwright test world-v1-ab --project=desktop
@@ -23,17 +24,16 @@ import { openRoute } from './helpers';
 // world camera after settle (`sync`/`aimAtWorld` held), sets one pose per spot through the WorldView API
 // (`jumpToLngLat`, as engine-parity.spec replays poses), settles again and reads the world canvas itself
 // (`captureFrame`: no HUD, no car sprite). Run it with AB_NOISE=1 to show the floor before a policy claim.
+// AB_OWNERS=1 (with AB_CAMERA=fixed) also writes per-spot owner frames; scripts/world/classify-ab-owners.ts turns
+// them into diff images classed coverage / chunk / shadow / shading / edge, by pand, roof or wall, and mesh. First
+// result (materials, 2026-11-01): every pixel over 30 at four spots is the cells' centimetre heights (cells compiled
+// --no-policy give 0 px there and identical styled features); the fifth (ijburg-edge, 141 px) is the own ground's
+// LOD at the far edge.
 test.skip(!process.env.WORLD_AB, 'set WORLD_AB=1 to measure');
 
 const OUT = process.env.AB_DIR || 'artifacts/world/ab';
 const WORLD_DIR = path.resolve(process.env.WORLD_DIR || 'artifacts/world/staging');
-const SPOTS = [
-  { name: 'westerkerk', at: [4.8826, 52.3741], face: [4.8843, 52.3746] },
-  { name: 'bloemgracht-80', at: [4.8798, 52.3752], face: [4.8809, 52.3750] },
-  { name: 'nassaukade', at: [4.8722, 52.3712], face: [4.8732, 52.3722] },
-  { name: 'leidsegracht-courtyard', at: [4.8868, 52.3676], face: [4.8884, 52.3686] },
-  { name: 'ijburg-edge', at: [5.0185, 52.3512], face: [5.0203, 52.3521] },
-] as const;
+const SPOTS = AB_SPOTS;
 // AB_SPOTS=westerkerk,nassaukade measures a subset (diagnosis runs).
 const SPOT_FILTER = (process.env.AB_SPOTS ?? '').split(',').filter(Boolean);
 const RUN_SPOTS = SPOT_FILTER.length ? SPOTS.filter(s => SPOT_FILTER.includes(s.name)) : SPOTS;
@@ -46,7 +46,21 @@ const FIXED_ZOOM = 17.5;
 /** Degrees clockwise from north, from the spot to the face it looks at. */
 const bearingOf = (at: readonly number[], face: readonly number[]) =>
   Math.atan2((face[0] - at[0]) * Math.cos(at[1] * Math.PI / 180), face[1] - at[1]) * 180 / Math.PI;
-const VARIANTS = [{ name: 'default', query: withQuery('') }, { name: 'world', query: withQuery('world=v1') }, ...(process.env.AB_NOISE ? [{ name: 'default2', query: withQuery('') }] : [])];
+// The first page load of a run renders a different state from every later one (~1 K px of edges and seams at
+// Westerkerk, 353 over 30; byte-identical within each state; camera, lifts, styled features and chunk sets equal;
+// not worker vs inline builds, not install order; 2026-11-01, cause open). With AB_CAMERA=fixed a throwaway load runs
+// first, so default, world and default2 are all later loads.
+// AB_B_QUERY replaces `world=v1` as the B side (files keep the name `world`), for frozen-frame pins of other flags. The
+// quality-tier pin (#129): on a real GPU the probe must pick `high` and leave nothing behind, so auto equals `?tier=high`
+// to the pixel; `?tier=` skips the probe. Headed (Metal), own engine, governor off so neither side steps:
+//   ENGINE=own WORLD_AB=1 WORLD_AB_STALE=1 AB_CAMERA=fixed AB_DPR=2 AB_SPOTS=westerkerk,nassaukade AB_QUERY=governor=0 \
+//     AB_B_QUERY=tier=high npx playwright test world-v1-ab --project=desktop --headed
+// Since 2026-11-01 the compiled cells are the default world: the world A/B's A side asks `world=live` explicitly, while a
+// pin of another flag leaves both sides on the default world.
+const B_QUERY = (process.env.AB_B_QUERY ?? 'world=v1').replace(/^[?&]/, '');
+const A_QUERY = process.env.AB_B_QUERY ? '' : 'world=live';
+if (Number(process.env.AB_DPR) > 0) test.use({ deviceScaleFactor: Number(process.env.AB_DPR) });
+const VARIANTS = [...(process.env.AB_CAMERA === 'fixed' && !process.env.AB_NO_WARMUP ? [{ name: 'warmup', query: withQuery(A_QUERY) }] : []), { name: 'default', query: withQuery(A_QUERY) }, { name: 'world', query: withQuery(B_QUERY) }, ...(process.env.AB_NOISE ? [{ name: 'default2', query: withQuery(A_QUERY) }] : [])];
 
 async function serve(page: Page) {
   // On the context, so a worker's cell fetches are served too.
@@ -75,20 +89,154 @@ async function park(page: Page, at: readonly number[], face: readonly number[]) 
 }
 
 /** Hold the world camera at one pose per spot (AB_CAMERA=fixed) and return the world canvas as PNG bytes. */
-async function fixedShot(page: Page, at: readonly number[], face: readonly number[]): Promise<Buffer> {
+async function fixedShot(page: Page, at: readonly number[], face: readonly number[], owners?: Record<string, any>): Promise<Buffer> {
   const pose = { center: [at[0], at[1]] as [number, number], zoom: FIXED_ZOOM, bearing: bearingOf(at, face) };
   await page.evaluate((pose) => {
     const vm = (window as any).canalRecallGame.vectorMap;
     vm.__abHeld ??= { sync: vm.sync, aimAtWorld: vm.aimAtWorld };
     vm.sync = () => {}; vm.aimAtWorld = () => {};
+    // The player's vehicle is posed and animated per frame (wheel spin, lean): nearly every > 30 px pixel of default
+    // vs default2 (materials, 2026-11-01). Off every camera layer, so neither the main nor the shadow pass draws it.
+    for (const top of vm._sharedFrame?.scene?.children ?? []) {
+      if (!/(^|\/)player-/.test(`${top.userData?.participant ?? ''} ${top.name ?? ''}`)) continue;
+      top.traverse((o: any) => o.layers?.disableAll?.());
+    }
     vm.jumpToLngLat({ ...pose, pitch: vm.pitchForViewMode('chase') });
   }, pose);
   await settle(page);
   await page.evaluate(() => (window as any).canalRecallGame.vectorMap.camera?.whenIdle?.());
+  // The own ground re-plans its ring only after the centre moves RESIDENCY_STEP_M from where it last planned, so each
+  // cell's LOD is a function of the path that led to the pose (ijburg-edge: one far cell at lod1 in one variant, its
+  // neighbour at lod0 in the other, 141 px over 30, 2026-11-01). Re-plan at the held pose and wait for the builds.
+  await page.evaluate(() => { const g = (window as any).canalRecallGame.vectorMap._ownGround; if (g?.centre && g.ready) { g.residencyAt = null; g.updateResidency(); } });
+  // Builds done and every arrival's dissolve (a per-cell screen-door clone over FADE_MS) finished.
+  await expect.poll(() => page.evaluate(() => { const g = (window as any).canalRecallGame.vectorMap._ownGround; return g ? (g.loadingCells ?? 0) + [...(g.resident?.values?.() ?? [])].filter((r: any) => r.fade).length : 0; }), { timeout: 60_000, intervals: [250] }).toBe(0);
+  // Jump again now the ground is in, so the pose is set over the same ground in every load (the camera's matrices are
+  // recorded with the owner frames: identical in every load measured, 2026-11-01).
+  await page.evaluate((pose) => { const vm = (window as any).canalRecallGame.vectorMap; vm.jumpToLngLat({ ...pose, pitch: vm.pitchForViewMode('chase') }); }, pose);
+  await settle(page);
+  await page.evaluate(() => (window as any).canalRecallGame.vectorMap.camera?.whenIdle?.());
+  // The shadow map is redrawn only when its snapped box or the root-level caster signature changes, and between
+  // redraws it is re-aimed at the moving origin: what it holds depends on when the last redraw happened. Its snap
+  // grid (sharedFrame.ts absOf) is anchored at the first map centre the frame saw, which is wherever the boot
+  // happened to be: a different texel grid each run, so every shadow edge rasterised differently (the remaining
+  // default vs default2 speckle, 2026-11-01). Re-anchor at the held pose and redraw, so the shot is a function of
+  // the scene and the pose, not of the path that led to it.
+  await page.evaluate(() => {
+    const frame = (window as any).canalRecallGame.vectorMap._sharedFrame;
+    if (!frame) return;
+    frame.anchor = null;
+    // Opaque draws ordered by creation-independent keys (depth, then the object's name path and material) instead of
+    // three's material and mesh ids, which follow load order: coplanar ties then resolve the same way in every run.
+    // With the re-anchor: 0 px default vs default2 at all five spots; without the sort the same anchor gave 7 px in
+    // one run and 2,647 px > 30 in the next (2026-11-01). AB_SORT=three keeps three's order.
+    if ((window as any).__abStableSort && frame.renderer?.setOpaqueSort) {
+      // Facade chunk meshes are unnamed and share one origin (equal z): their chunk key goes in the sort key, so two
+      // chunks draw in the same order whatever order they installed in.
+      const chunkOf = new Map<any, string>();
+      for (const [key, e] of (window as any).canalRecallGame.vectorMap._threeBuildings?.chunks ?? []) if (e.mesh) chunkOf.set(e.mesh, key);
+      const keyOf = new WeakMap<object, string>();
+      const k = (o: any, m: any) => { let v = keyOf.get(o); if (v === undefined) { let n = ''; for (let p = o; p; p = p.parent) n = `${chunkOf.get(p) ?? p.name ?? ''}${p.name || chunkOf.has(p) ? '' : p.type}/${n}`; v = `${m.type}:${m.name}|${n}`; keyOf.set(o, v); } return v; };
+      frame.renderer.setOpaqueSort((a: any, b: any) => a.groupOrder - b.groupOrder || a.renderOrder - b.renderOrder || (a.z - b.z) || (k(a.object, a.material) < k(b.object, b.material) ? -1 : k(a.object, a.material) > k(b.object, b.material) ? 1 : 0));
+    }
+    frame.invalidateShadows?.();
+  });
   const url: string = await page.evaluate(() => (window as any).canalRecallGame.vectorMap.captureFrame().then((c: HTMLCanvasElement | null) => c?.toDataURL('image/png') ?? ''));
+  if (owners) owners.camera = await page.evaluate(() => { const f = (window as any).canalRecallGame.vectorMap._sharedFrame; return f ? { clip: Array.from(f.camera.projectionMatrix.elements as number[]), anchor: f.anchor ?? null } : null; });
+  if (owners) Object.assign(owners, await ownerPasses(page));
   await page.evaluate(() => { const vm = (window as any).canalRecallGame.vectorMap; if (vm.__abHeld) { Object.assign(vm, vm.__abHeld); delete vm.__abHeld; } });
   expect(url.startsWith('data:image/png;base64,'), 'world canvas captured').toBe(true);
   return Buffer.from(url.slice(url.indexOf(',') + 1), 'base64');
+}
+
+/**
+ * AB_OWNERS=1: after the colour shot, at the same held pose, three more frames that say who owns each pixel
+ * (scripts/world/classify-ab-owners.ts reads them): `noshadow` (the colour frame with every light's castShadow off),
+ * `pand` (flat codes: a building chunk's pixel is its pand id and wall/roof, anything else its mesh) and `mesh`
+ * (flat codes per mesh: a chunk's pixel is its chunk key). MapLibre's own layers are hidden for the code frames, so
+ * an uncoded pixel is MapLibre ground or an antialiased edge. Codes are 24-bit FNV hashes of the label, the same in
+ * every variant; `codes` maps them back.
+ */
+async function ownerPasses(page: Page): Promise<Record<string, any>> {
+  const grab = () => page.evaluate(() => (window as any).canalRecallGame.vectorMap.captureFrame().then((c: HTMLCanvasElement | null) => c?.toDataURL('image/png') ?? ''));
+  const bytes = (url: string) => Buffer.from(url.slice(url.indexOf(',') + 1), 'base64');
+  await page.evaluate(() => {
+    const lights: any[] = [];
+    (window as any).canalRecallGame.vectorMap._sharedFrame.scene.traverse((o: any) => { if (o.isLight && o.castShadow) { lights.push(o); o.castShadow = false; } });
+    (window as any).__abLights = lights;
+  });
+  const noshadow = bytes(await grab());
+  await page.evaluate(() => { for (const l of (window as any).__abLights) l.castShadow = true; });
+  const codes: Record<number, string> = {}, out: Record<string, Buffer> = { noshadow };
+  for (const pass of ['pand', 'mesh']) {
+    Object.assign(codes, await page.evaluate((pass) => {
+      const vm = (window as any).canalRecallGame.vectorMap, frame = vm._sharedFrame, tb = vm._threeBuildings, map = vm.map;
+      const THREE = frame.THREE ?? (window as any).THREE;
+      const fnv = (s: string) => { let h = 0x811c9dc5; for (let i = 0; i < s.length; i++) { h ^= s.charCodeAt(i); h = Math.imul(h, 0x01000193) >>> 0; } return ((h >>> 8) ^ (h & 0xff)) & 0xffffff || 1; };
+      const codes: Record<number, string> = {};
+      const code = (label: string) => { const c = fnv(label); codes[c] = label; return c; };
+      const rgb = (c: number) => new THREE.Vector3((c >> 16 & 255) / 255, (c >> 8 & 255) / 255, (c & 255) / 255);
+      const roofBase = tb?.look === 'procedural' ? 60 : 191;
+      const vertexShader = `attribute vec3 abWall; attribute vec3 abRoof; attribute float layer; attribute float hidden; varying vec3 vC; varying float vH;
+        uniform vec3 uOwner; uniform float useAttr;
+        #include <common>
+        #include <logdepthbuf_pars_vertex>
+        void main() { vH = useAttr > 0.5 ? hidden : 0.0; vC = useAttr > 0.5 ? (layer >= ${roofBase}.0 - 0.5 && layer < ${roofBase + 4}.0 - 0.5 ? abRoof : abWall) : uOwner;
+          vec4 p = vec4(position, 1.0);
+          #ifdef USE_INSTANCING
+          p = instanceMatrix * p;
+          #endif
+          gl_Position = projectionMatrix * modelViewMatrix * p;
+          #include <logdepthbuf_vertex>
+        }`;
+      const fragmentShader = `varying vec3 vC; varying float vH;
+        #include <logdepthbuf_pars_fragment>
+        void main() { if (vH > 0.5 && vH < 1.5) discard; gl_FragColor = vec4(vC, 1.0);
+          #include <logdepthbuf_fragment>
+        }`;
+      const chunkOf = new Map<any, string>();
+      for (const [key, e] of tb?.chunks ?? []) if (e.mesh) chunkOf.set(e.mesh, key);
+      const swapped: [any, any][] = [], added: [any, string[]][] = [], hiddenObjs: any[] = [];
+      const labelOf = (o: any) => { let n = ''; for (let p = o; p && p !== frame.scene; p = p.parent) n = `${p.name || p.userData?.participant || p.type}/${n}`; return n; };
+      frame.scene.traverse((o: any) => {
+        if (o.isSprite || o.isPoints) { if (o.visible) { o.visible = false; hiddenObjs.push(o); } return; }
+        if (!o.material) return;
+        const key = chunkOf.get(o);
+        const perPand = pass === 'pand' && key !== undefined && o.geometry.getAttribute('hidden');
+        // Depth state copied from the real material (the first, for a multi-material mesh): the detail extras sit on
+        // their walls through polygonOffset, and without it the code frame z-fights where the colour frame does not.
+        const src = Array.isArray(o.material) ? o.material[0] : o.material;
+        const m = new THREE.ShaderMaterial({ vertexShader, fragmentShader, side: src.side ?? THREE.FrontSide,
+          depthTest: src.depthTest, depthWrite: src.depthWrite, polygonOffset: src.polygonOffset, polygonOffsetFactor: src.polygonOffsetFactor, polygonOffsetUnits: src.polygonOffsetUnits,
+          colorWrite: src.colorWrite, visible: src.visible,
+          uniforms: { uOwner: { value: rgb(code(key !== undefined ? `chunk:${key}` : `mesh:${labelOf(o)}`)) }, useAttr: { value: perPand ? 1 : 0 } } });
+        if (perPand) {
+          const n = o.geometry.getAttribute('position').count, wall = new Float32Array(n * 3), roof = new Float32Array(n * 3);
+          for (const [id, r] of tb.chunks.get(key).ranges) {
+            const w = rgb(code(`pand:${id}|wall`)), f = rgb(code(`pand:${id}|roof`));
+            for (let v = r.start; v < r.start + r.count; v++) { wall.set([w.x, w.y, w.z], v * 3); roof.set([f.x, f.y, f.z], v * 3); }
+          }
+          o.geometry.setAttribute('abWall', new THREE.BufferAttribute(wall, 3)); o.geometry.setAttribute('abRoof', new THREE.BufferAttribute(roof, 3));
+          added.push([o.geometry, ['abWall', 'abRoof']]);
+        }
+        swapped.push([o, o.material]);
+        o.material = Array.isArray(o.material) ? o.material.map(() => m) : m;
+      });
+      const layers: [string, string][] = [];
+      for (const l of map?.getStyle?.()?.layers ?? []) if (l.type !== 'custom') { layers.push([l.id, map.getLayoutProperty(l.id, 'visibility') ?? 'visible']); map.setLayoutProperty(l.id, 'visibility', 'none'); }
+      (window as any).__abRestore = () => {
+        for (const [o, m] of swapped) o.material = m;
+        for (const [g, names] of added) for (const n of names) g.deleteAttribute(n);
+        for (const o of hiddenObjs) o.visible = true;
+        for (const [id, v] of layers) map.setLayoutProperty(id, 'visibility', v);
+      };
+      return codes;
+    }, pass));
+    out[pass] = bytes(await grab());
+    await page.evaluate(() => { (window as any).__abRestore(); delete (window as any).__abRestore; });
+  }
+  out.layers = Buffer.from(JSON.stringify(await page.evaluate(() => ((window as any).canalRecallGame.vectorMap.map?.getStyle?.()?.layers ?? []).map((l: any) => [l.id, l.type, l.layout?.visibility ?? 'visible']))));
+  return { ...out, codes };
 }
 
 /** Streamer idle and the three.js layer done building for two consecutive polls. */
@@ -116,9 +264,10 @@ for (const variant of VARIANTS) {
   test(`world ab: ${variant.name}`, async ({ page }) => {
     test.setTimeout(900_000);
     await serve(page);
-    await page.addInitScript(() => { (window as any).__canalRecallTrees3d = false; (window as any).__canalRecallChunkFade = false; });
+    await page.addInitScript((stable) => { (window as any).__canalRecallTrees3d = false; (window as any).__canalRecallChunkFade = false; (window as any).__abStableSort = stable; }, process.env.AB_SORT !== 'three');
     await openRoute(page, { travelMode: 'car', viewMode: 'chase', enterRacing: true, query: variant.query });
     mkdirSync(OUT, { recursive: true });
+    if (variant.name === 'warmup') { await park(page, RUN_SPOTS[0].at, RUN_SPOTS[0].face); await settle(page); return; }
     const spots: Record<string, any> = {};
     for (const spot of RUN_SPOTS) {
       await park(page, spot.at, spot.face);
@@ -128,7 +277,8 @@ for (const variant of VARIANTS) {
       await park(page, spot.at, spot.face);
       await page.waitForTimeout(800);
       const shot = `${OUT}/${spot.name}-${variant.name}.png`;
-      if (FIXED_CAMERA) writeFileSync(shot, await fixedShot(page, spot.at, spot.face));
+      const owners: Record<string, any> | undefined = process.env.AB_OWNERS ? {} : undefined;
+      if (FIXED_CAMERA) writeFileSync(shot, await fixedShot(page, spot.at, spot.face, owners));
       else await page.screenshot({ path: shot });
       spots[spot.name] = await page.evaluate((dumpIds: string[]) => {
         const vm = (window as any).canalRecallGame.vectorMap, city = vm._completeCity;
@@ -141,10 +291,17 @@ for (const variant of VARIANTS) {
           for (const f of styled) if (dumpIds.includes(String(f.properties?.id))) dumped[String(f.properties.id)] = f.properties;
         }
         const t = vm._threeBuildings?.stats?.() ?? {};
-        return { usingWorldCells: !!city.usingWorldCells, publishing: city.isPublishing, status: city.status(), tiles, ids, three: { chunks: t.chunks, buildings: t.buildings, walls: t.walls, quads: t.quads, vertices: t.vertices, triangles: t.triangles },
+        // Per facade chunk: the ground lift applied to each building (ids and metres), to find a load-order dependence.
+        const lifts: Record<string, string | null> = {};
+        for (const [k, e] of vm._threeBuildings?.chunks ?? []) lifts[k] = e.lift ? fnv(JSON.stringify([...e.lift.applied].sort())) + `:${e.lift.pending?.size ?? 0}` : null;
+        return { tier: (window as any).__canalPerf?.tier ?? null, tierProbeMs: (window as any).__canalPerf?.tierProbe?.frameMs ?? null, pixelRatio: vm.host?.getPixelRatio?.() ?? vm.map?.getPixelRatio?.() ?? null, lifts, usingWorldCells: !!city.usingWorldCells, publishing: city.isPublishing, status: city.status(), tiles, ids, three: { chunks: t.chunks, buildings: t.buildings, walls: t.walls, quads: t.quads, vertices: t.vertices, triangles: t.triangles },
           decodeMs: city.world ? Object.fromEntries(city.world.decodeMs) : null, inflateMs: city.world?.inflateMs ? Object.fromEntries(city.world.inflateMs) : null, decodeThread: city.world?.decodeThread ?? null, worldMessages: city.world?.messages ?? null, longestMessageMs: city.world?.longestMessageMs ?? null, dumped };
       }, (process.env.AB_DUMP_IDS ?? '').split(',').filter(Boolean));
       spots[spot.name].shot = shot;
+      if (owners) {
+        for (const pass of ['noshadow', 'pand', 'mesh']) writeFileSync(`${OUT}/${spot.name}-${variant.name}-${pass}.png`, owners[pass]);
+        writeFileSync(`${OUT}/owners-${spot.name}-${variant.name}.json`, JSON.stringify({ codes: owners.codes, camera: owners.camera, layers: JSON.parse(owners.layers.toString()) }));
+      }
       writeFileSync(`${OUT}/ids-${spot.name}-${variant.name}.json`, JSON.stringify(spots[spot.name].ids));
       delete spots[spot.name].ids;
       // AB_DUMP_IDS=id,id: the styled properties of those buildings, to diff what differs.
@@ -153,7 +310,7 @@ for (const variant of VARIANTS) {
     }
     results[variant.name] = spots;
     writeFileSync(`${OUT}/${variant.name}.json`, JSON.stringify(spots, null, 2));
-    if (variant.name === 'world') for (const s of Object.values(spots)) expect(s.usingWorldCells, 'world-v1 index served').toBe(true);
+    if (variant.name === 'world' && /(^|&)world=v1(&|$)/.test(B_QUERY)) for (const s of Object.values(spots)) expect(s.usingWorldCells, 'world-v1 index served').toBe(true);
   });
 }
 
@@ -176,7 +333,7 @@ test('world ab: compare', async () => {
     const px = differ(ia, ib).n, pxOver30 = differ(ia, ib).over30;
     const noise = process.env.AB_NOISE ? differ(ia, await sharp(read('default2')[spot.name].shot).raw().toBuffer({ resolveWithObject: true })) : null;
     const tiles2 = process.env.AB_NOISE ? read('default2')[spot.name].tiles : null;
-    rows[spot.name] = { commonTiles: common.length, tilesOnlyDefault: Object.keys(x.tiles).filter(k => !(k in y.tiles)), tilesOnlyWorld: Object.keys(y.tiles).filter(k => !(k in x.tiles)), tilesWithDifferentFeatures: differing, perTile, threeDefault: x.three, threeWorld: y.three, pixelsDiffering: px, pixelsDifferingOver30: pxOver30, noiseFloor: noise && { pixelsDiffering: noise.n, pixelsDifferingOver30: noise.over30, sameTilesAsDefault: JSON.stringify(Object.keys(tiles2).sort()) === JSON.stringify(Object.keys(x.tiles).sort()), tilesWithDifferentFeatures: Object.keys(x.tiles).filter(k => k in tiles2 && tiles2[k] !== x.tiles[k]) }, pixels: ia.info.width * ia.info.height, decodeMs: y.decodeMs, inflateMs: y.inflateMs, decodeThread: y.decodeThread, worldMessages: y.worldMessages, longestMessageMs: y.longestMessageMs };
+    rows[spot.name] = { tier: [x.tier, y.tier], pixelRatio: [x.pixelRatio, y.pixelRatio], tierProbeMs: x.tierProbeMs, commonTiles: common.length, tilesOnlyDefault: Object.keys(x.tiles).filter(k => !(k in y.tiles)), tilesOnlyWorld: Object.keys(y.tiles).filter(k => !(k in x.tiles)), tilesWithDifferentFeatures: differing, perTile, threeDefault: x.three, threeWorld: y.three, pixelsDiffering: px, pixelsDifferingOver30: pxOver30, noiseFloor: noise && { pixelsDiffering: noise.n, pixelsDifferingOver30: noise.over30, sameTilesAsDefault: JSON.stringify(Object.keys(tiles2).sort()) === JSON.stringify(Object.keys(x.tiles).sort()), tilesWithDifferentFeatures: Object.keys(x.tiles).filter(k => k in tiles2 && tiles2[k] !== x.tiles[k]) }, pixels: ia.info.width * ia.info.height, decodeMs: y.decodeMs, inflateMs: y.inflateMs, decodeThread: y.decodeThread, worldMessages: y.worldMessages, longestMessageMs: y.longestMessageMs };
   }
   writeFileSync(`${OUT}/compare.json`, JSON.stringify(rows, null, 2));
   const brief = (r: any) => ({ ...r, perTile: Object.fromEntries(Object.entries<any>(r.perTile).map(([k, t]) => [k, { ...t, onlyWorld: t.onlyWorld.length, onlyDefault: t.onlyDefault.length, styledDiffer: t.styledDiffer.length }])) });

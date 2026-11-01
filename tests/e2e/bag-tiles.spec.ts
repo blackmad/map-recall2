@@ -47,7 +47,7 @@ async function load(page: Page, query: string): Promise<void> {
 async function settleAt(page: Page, view: View): Promise<void> {
   const eye = ahead(view.target, view.bearing, view.distM);
   await page.evaluate(({ eye, view }) => {
-    const g = (window as any).canalRecallGame, vm = g.vectorMap, map = vm.map;
+    const g = (window as any).canalRecallGame, vm = g.vectorMap, map = vm.map ?? vm.cameraMap;
     g._updateCanalQuiz = () => {}; g._updateBridgeQuiz = () => {};
     g.player.speed = 0; g.player.vx = 0; g.player.vy = 0;
     vm.sync = () => {}; map.stop(); map.setMaxPitch(85); map.setVerticalFieldOfView(50); map.setPadding({ top: 0, bottom: 0, left: 0, right: 0 });
@@ -57,7 +57,7 @@ async function settleAt(page: Page, view: View): Promise<void> {
   }, { eye, view });
   await page.waitForFunction(() => {
     const vm = (window as any).canalRecallGame.vectorMap, t = vm._threeBuildings, l = vm._signatureLandmarks, w = window as any;
-    const c = vm.map.getCenter(); vm.map.jumpTo({ center: [c.lng + 1e-9, c.lat] });
+    const c = vm.camera.center(); (vm.map ?? vm.cameraMap).jumpTo({ center: [c.lng + 1e-9, c.lat] });
     const idle = !t || (t.ready && !t.pending.length && !t.inflight.size);
     const landmarksIdle = !l || !l._pending || !l._pending.size;
     const key = `${t?.stats?.().buildings ?? 0}|${t?.chunks?.size ?? 0}|${l?.shown?.size ?? 0}`;
@@ -65,11 +65,11 @@ async function settleAt(page: Page, view: View): Promise<void> {
     w.__bagKey = key;
     return w.__bagIdle >= 5;
   }, null, { timeout: 180_000, polling: 1000 });
-  await page.evaluate(() => { const w = window as any; w.canalRecallGame.vectorMap.map.jumpTo(w.__bagCamera); });
+  await page.evaluate(() => { const w = window as any; (w.canalRecallGame.vectorMap.map ?? w.canalRecallGame.vectorMap.cameraMap).jumpTo(w.__bagCamera); });
   await page.waitForTimeout(4000);
   await page.evaluate(() => {
-    const map = (window as any).canalRecallGame.vectorMap.map;
-    for (const layer of map.getStyle().layers) if (layer.type === 'symbol' && map.getLayoutProperty(layer.id, 'visibility') !== 'none') map.setLayoutProperty(layer.id, 'visibility', 'none');
+    const map = (window as any).canalRecallGame.vectorMap.map ?? (window as any).canalRecallGame.vectorMap.cameraMap;
+    if ((window as any).canalRecallGame.vectorMap.map) { for (const layer of map.getStyle().layers) if (layer.type === 'symbol' && map.getLayoutProperty(layer.id, 'visibility') !== 'none') map.setLayoutProperty(layer.id, 'visibility', 'none'); } else (window as any).canalRecallGame.vectorMap.setLabelsVisible(false);
     const canvas = map.getCanvas() as HTMLCanvasElement;
     for (const e of Array.from(document.body.querySelectorAll('*'))) if (e !== canvas && !e.contains(canvas)) (e as HTMLElement).style.visibility = 'hidden';
   });
@@ -102,7 +102,7 @@ async function run(page: Page, query: string): Promise<Run> {
     near[view.name] = state.near;
     using = state.using; covers = state.covers;
     state.hidden.forEach(id => hidden.add(id)); state.legacy.forEach(id => legacy.add(id)); state.tileIds.forEach(id => tileIds.add(id));
-    shots[view.name] = await page.locator('canvas.maplibregl-canvas').first().screenshot();
+    shots[view.name] = await page.locator('canvas.maplibregl-canvas, canvas.engine-canvas').first().screenshot();
   }
   return { using, covers, hidden: [...hidden], legacyHidden: [...legacy], tileIds: [...tileIds], shots, near };
 }

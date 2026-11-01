@@ -205,6 +205,11 @@ export function step(state: SteerState, input: SteerInput, h: number, params: St
     return commanded - v * Math.abs(v) * params.drag - (params.rollingResist + input.surfaceDrag) * sign;
   };
   let speed = state.speed + accelAt(state.speed + accelAt(state.speed) * h * 0.5) * h;
+  // At rest the resistance term flips the speed's sign every step (sign(v || 0.001)), so a parked
+  // vehicle crept by ±resistance·h forever and the camera never settled (render-on-change's
+  // "capturing draws nothing" flake, 2026-11-01). Static friction: with no command, a step of
+  // resistance that would carry the speed through zero stops it.
+  if (commanded === 0 && Math.abs(state.speed) <= (params.rollingResist + input.surfaceDrag) * h) speed = 0;
   // Lifting off scrubs speed in proportion to it: exact, not Euler.
   if (params.liftOffBraking > 0 && input.throttle === 0 && input.brake === 0) {
     speed *= Math.exp(-params.liftOffBraking * h);
@@ -264,7 +269,31 @@ export function advance(state: SteerState, input: SteerInput, frameDt: number, p
 }
 
 /** Slop's visual lean for a bicycle, rad (+ leans right): the steer times a
- *  speed ramp to `fullAt` px/s, times 0.34. */
+ *  speed ramp to `fullAt` px/s, times 0.34. Kept for reference; the game
+ *  draws `bikeLeanFromTurn` since 2026-11-01 (a key tap is ±1, so this one
+ *  flopped the bike to the full 0.34 rad the moment a key went down). */
 export function bikeLean(steer: number, speed: number, fullAt = 27): number {
   return clamp(steer, -1, 1) * Math.min(1, Math.abs(speed) / fullAt) * 0.34;
+}
+
+/** The most a drawn bicycle leans, rad (slop-newyork's cyclist). */
+export const BIKE_LEAN_MAX = 0.34;
+/**
+ * Lean scale in px·rad/s²: a bicycle leans by atan(v·ω/g); in game pixels
+ * the "g" that makes a 1 rad/s turn at 100 px/s reach the cap (and a gentle
+ * 0.3 rad/s turn at that speed lean ~6°) is 280.
+ */
+export const BIKE_LEAN_TURN_SCALE = 280;
+
+/**
+ * The lean a bicycle shows for the turn it is actually making, rad, + leans
+ * right. `speed` px/s (sign ignored), `yawRate` rad/s with + = clockwise on
+ * screen = a right turn (car.js `angularVel`, steerModel `yawRate`). Zero
+ * when the bike rides straight however the key is held, proportional to the
+ * turn until the cap. The rider leans INTO the turn: a right turn rolls the
+ * top of the bike to the rider's right.
+ */
+export function bikeLeanFromTurn(speed: number, yawRate: number, scale = BIKE_LEAN_TURN_SCALE, max = BIKE_LEAN_MAX): number {
+  if (!Number.isFinite(speed) || !Number.isFinite(yawRate)) return 0;
+  return clamp(Math.atan((Math.abs(speed) * yawRate) / scale), -max, max);
 }

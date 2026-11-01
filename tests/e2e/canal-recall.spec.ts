@@ -1,5 +1,6 @@
 import { expect, Page, test } from '@playwright/test';
 import { openRoute } from './helpers';
+import { OWN } from './worldCam';
 
 type HarnessGame = {
   state: number;
@@ -81,13 +82,13 @@ test('typed road guard bundle is loaded by Canal Recall', async ({ page }) => {
 test('live MapLibre buildings use the OSM-aware color expression', async ({ page }) => {
   await page.goto('/canal-drive/');
   await expect.poll(() => page.evaluate(() => Boolean(window.canalRecallGame?.vectorMap?.ready))).toBe(true);
-  const paint = await page.evaluate(() => window.canalRecallGame.vectorMap.map
+  const paint = await page.evaluate(() => (window.canalRecallGame.vectorMap.map ?? window.canalRecallGame.vectorMap.cameraMap)
     ?.getPaintProperty('building-3d', 'fill-extrusion-color'));
   expect(Array.isArray(paint)).toBe(true);
   const serialized = JSON.stringify(paint);
   expect(serialized).toContain('colour');
   expect(serialized).toContain('render_height');
-  await expect.poll(() => page.evaluate(() => Boolean(window.canalRecallGame.vectorMap.map
+  await expect.poll(() => page.evaluate(() => Boolean((window.canalRecallGame.vectorMap.map ?? window.canalRecallGame.vectorMap.cameraMap)
     ?.getLayer('osm-colored-building-roofs')))).toBe(true);
   const nemo = await page.evaluate(async () => {
     const collection = await fetch('../data/extracts/amsterdam/buildings-colored.geojson').then(response => response.json());
@@ -97,6 +98,7 @@ test('live MapLibre buildings use the OSM-aware color expression', async ({ page
 });
 
 test('detailed mode owns building depth and selection instead of drawing an OSM slab', async ({ page }) => {
+  test.skip(OWN, 'MapLibre style assertion: deleted with the default path at P5');
   await page.goto('/canal-drive/');
   await expect.poll(() => page.evaluate(() => Boolean(window.canalRecallGame?.vectorMap?.ready))).toBe(true);
   const result = await page.evaluate(() => {
@@ -113,7 +115,7 @@ test('detailed mode owns building depth and selection instead of drawing an OSM 
     };
     let forwarded: unknown = null;
     let overlay: unknown = null;
-    const originalSource = vectorMap.map.getSource('active-landmark');
+    const originalSource = (vectorMap.map ?? vectorMap.cameraMap).getSource('active-landmark');
     const originalSetData = originalSource.setData.bind(originalSource);
     originalSource.setData = data => { overlay = data; originalSetData(data); };
     vectorMap._detailedBuildings = {
@@ -128,9 +130,9 @@ test('detailed mode owns building depth and selection instead of drawing an OSM 
     };
     vectorMap.setActiveLandmark(landmark);
     return {
-      building: vectorMap.map.getLayoutProperty('building-3d', 'visibility'),
-      coloured: vectorMap.map.getLayoutProperty('osm-colored-buildings', 'visibility'),
-      roofs: vectorMap.map.getLayoutProperty('osm-colored-building-roofs', 'visibility'),
+      building: (vectorMap.map ?? vectorMap.cameraMap).getLayoutProperty('building-3d', 'visibility'),
+      coloured: (vectorMap.map ?? vectorMap.cameraMap).getLayoutProperty('osm-colored-buildings', 'visibility'),
+      roofs: (vectorMap.map ?? vectorMap.cameraMap).getLayoutProperty('osm-colored-building-roofs', 'visibility'),
       forwarded: forwarded === landmark,
       overlayFeatures: (overlay as { features?: unknown[] })?.features?.length,
       // The anti-slab guarantee: whatever is drawn must never be an extrusion
@@ -273,7 +275,9 @@ test('anonymous year-only buildings open their own year card, never "Unnamed bui
     game.quizPromptName = '';
     game._utilityOpen = false;
     game._landmarkNotice = { id: 'previous-museum', name: 'Previous museum' };
-    game._buildingFacts = { lookup: () => [1887, -1, 0] };
+    // The store is lazy since 2026-10-31 (cd5be8a55): a card asks `ensureAt`
+    // for its tile first, so the fake answers that too (nothing to fetch).
+    game._buildingFacts = { lookup: () => [1887, -1, 0], article: () => undefined, ensureAt: () => Promise.resolve() };
     let active: unknown = 'previous-museum';
     game.vectorMap.setActiveLandmark = (value: unknown) => { active = value; };
     game.vectorMap.inspectBuilding = () => ({ id: 'anonymous-footprint', name: '', lngLat: [4.9, 52.37] });
@@ -409,10 +413,11 @@ test('the city overview draws the whole city, not a local scrap', async ({ page 
 });
 
 test('an active landmark is always marked on the map', async ({ page }) => {
+  test.skip(OWN, 'MapLibre style assertion: deleted with the default path at P5');
   await openCarRoute(page);
   // The highlight layers are created on basemap load, not on game start.
   await expect.poll(() => page.evaluate(() =>
-    Boolean(window.canalRecallGame.vectorMap.map?.getSource('active-landmark'))
+    Boolean((window.canalRecallGame.vectorMap.map ?? window.canalRecallGame.vectorMap.cameraMap)?.getSource('active-landmark'))
   ), { timeout: 30_000 }).toBe(true);
 
   const marked = await page.evaluate(() => {
@@ -427,7 +432,7 @@ test('an active landmark is always marked on the map', async ({ page }) => {
     // extruded building.
     game.vectorMap._detailedBuildings = { ready: true, setActiveLandmark() {} };
     game.vectorMap.setActiveLandmark(landmark);
-    const source = game.vectorMap.map?.getSource('active-landmark') as
+    const source = (game.vectorMap.map ?? game.vectorMap.cameraMap)?.getSource('active-landmark') as
       { serialize?: () => { data?: { features?: unknown[] } } } | undefined;
     return { skipped: false, features: source?.serialize?.().data?.features?.length ?? -1 };
   });

@@ -48,7 +48,7 @@ test('Rosarium hex beds carry rose bushes', async ({ page }, testInfo) => {
   // Oblique free camera over the beds.
   for (const [name, zoom, pitch, bearing] of [['oblique', 18.4, 55, 200], ['overview', 17.6, 35, 200]] as const) {
     await page.evaluate(({ face, zoom, pitch, bearing }) => {
-      const vm = (window as any).canalRecallGame.vectorMap, map = vm.map;
+      const vm = (window as any).canalRecallGame.vectorMap, map = vm.map ?? vm.cameraMap;
       vm.sync = () => {}; map.stop();
       map.jumpTo({ center: face, zoom, pitch, bearing });
     }, { face: [...FACE], zoom, pitch, bearing });

@@ -4,14 +4,16 @@ import {ViewResidency} from '../../../src/canalRecall/viewResidency.ts';
 import {foliageDisplayHex} from '../../../src/canalRecall/look/palette.ts';
 import {roseBushInstances,roseBushVertexColours} from '../../../src/canalRecall/roseBeds.ts';
 import roseGardens from './rose-garden-data.js';
+// The view comes from the WorldCamera (engine/worldCameraOf.ts, P5 B6), not the CameraMap shim (#129: ~220 calls/s).
+import {worldCameraOf} from '../../../src/canalRecall/engine/worldCameraOf.ts';
 const {THREE} = window.CanalRecallThree;
 const MIN_ZOOM = 15.5;
 const BUDGET = 12;
 // Rose bushes are ~0.7 m wide: draw them only once a bed reads as more than a speck.
 const ROSE_MIN_ZOOM = 16.5;
 // Include crowns whose trunks sit just beyond the viewport (max proxy radius <24m).
-function crownBounds(map) {
-  const bounds=map.getBounds(),lat=(bounds.getNorth()+bounds.getSouth())/2;
+function crownBounds(camera) {
+  const bounds=camera.bounds(),lat=(bounds.getNorth()+bounds.getSouth())/2;
   const dy=24/111320,dx=dy/Math.max(.1,Math.cos(lat*Math.PI/180));
   return {west:bounds.getWest()-dx,east:bounds.getEast()+dx,south:bounds.getSouth()-dy,north:bounds.getNorth()+dy};
 }
@@ -35,7 +37,7 @@ function roseBushMaterial() {
 /** Stream real municipal tree positions; at most seven instanced draws for the visible canopy. */
 export class InventoryTrees {
   constructor(map, maplibregl, onReady = () => {}, options = {}) {
-    this.map=map; this.maplibregl=maplibregl; this.onReady=onReady;
+    this.map=map; this.camera=options.camera||worldCameraOf(map); this.maplibregl=maplibregl; this.onReady=onReady;
     this.enabled=false; this.allotmentCanopyEnabled=true; this.ready=false; this.generation=0;
     this.tiles=new Map(); this.pending=new Map(); this.meshes=[]; this.theme='clean';
     // `moveend` fires every riding frame (jumpTo); rebuild instances only when
@@ -52,7 +54,7 @@ export class InventoryTrees {
     this._unregister=this.sharedFrame?.register('trees',{
       root:this.scene,
       mercatorFromLocal:()=>this.transform.elements,
-      beforeRender:()=>this.enabled&&this.ready&&map.getZoom()>=MIN_ZOOM&&this.meshes.length>0,
+      beforeRender:ctx=>this.enabled&&this.ready&&ctx.zoom>=MIN_ZOOM&&this.meshes.length>0,
     },{order:options.sharedOrder??30});
     this.move=()=>this.update();map.on('moveend',this.move);
   }
@@ -107,8 +109,8 @@ export class InventoryTrees {
   setSuspended(value) {if(this.suspended===!!value)return;this.suspended=!!value;if(!this.suspended)this.update();}
   update() {
     if (!this.enabled || !this.ready || this.suspended) return;
-    if (this.map.getZoom()<MIN_ZOOM) {this.clear();return;}
-    const b=crownBounds(this.map),c=this.map.getCenter();
+    if (this.camera.zoom()<MIN_ZOOM) {this.clear();return;}
+    const b=crownBounds(this.camera),c=this.camera.center();
     const tile=(lng,lat)=>[Math.floor((lng+180)/360*32768),Math.floor((1-Math.asinh(Math.tan(lat*Math.PI/180))/Math.PI)/2*32768)];
     const [x0,y1]=tile(b.west,b.south),[x1,y0]=tile(b.east,b.north),[cx,cy]=tile(c.lng,c.lat);
     const wanted=[];
@@ -120,7 +122,7 @@ export class InventoryTrees {
     if(this.residency.needsRebuild(b,this.buildKey()))this.rebuild();
     this.pump();
   }
-  buildKey() {const z=this.map.getZoom();return `${z>=18}|${z>=ROSE_MIN_ZOOM}|${this.allotmentCanopyEnabled}`;}
+  buildKey() {const z=this.camera.zoom();return `${z>=18}|${z>=ROSE_MIN_ZOOM}|${this.allotmentCanopyEnabled}`;}
   pump() {
     while(this.pending.size<2&&this.queue?.length){const key=this.queue.shift();void this.fetchTile(key);}
   }
@@ -139,7 +141,7 @@ export class InventoryTrees {
   }
   rebuild() {
     this.disposeMeshes();
-    const b=this.residency.built(crownBounds(this.map),this.buildKey()),groups=new Map();let trees=0,authoredTrees=0;
+    const b=this.residency.built(crownBounds(this.camera),this.buildKey()),groups=new Map();let trees=0,authoredTrees=0;
     const archetypes=new Set(), color=new THREE.Color();
     const append=(key,item)=>{if(!groups.has(key))groups.set(key,[]);groups.get(key).push(item);};
     for(const tile of [...this.tiles.values(),...(this.allotmentCanopyEnabled?[allotmentCanopyTrees]:[])])for(const tree of tile){
@@ -169,7 +171,7 @@ export class InventoryTrees {
     }
     // Mapped rose gardens: every visible bush in one instanced draw.
     let roses=0;
-    if(this.map.getZoom()>=ROSE_MIN_ZOOM)for(const garden of roseGardens.gardens)for(const r of roseBushInstances(garden,b)){
+    if(this.camera.zoom()>=ROSE_MIN_ZOOM)for(const garden of roseGardens.gardens)for(const r of roseBushInstances(garden,b)){
       const point=this.maplibregl.MercatorCoordinate.fromLngLat([r.lng,r.lat],0);
       const x=(point.x-this.origin.x)/this.scale,north=-(point.y-this.origin.y)/this.scale;
       const z0=this.groundBase?(this.groundBase([r.lng,r.lat])??0):0;
@@ -180,12 +182,12 @@ export class InventoryTrees {
     const dummy=new THREE.Object3D();
     for(const [key,items] of groups){
       const wood=key==='wood',cone=key.startsWith('cone-'),rose=key.startsWith('rose-');
-      const geometryKey=wood?'wood':cone?'cone':rose?key:this.map.getZoom()>=18?'faceted-detail':'faceted';
+      const geometryKey=wood?'wood':cone?'cone':rose?key:this.camera.zoom()>=18?'faceted-detail':'faceted';
       if(!this.geometries.has(geometryKey))this.geometries.set(geometryKey,
         wood?new THREE.CylinderGeometry(.22,.28,1,7).rotateX(Math.PI/2)
           :cone?new THREE.ConeGeometry(1,2,8).rotateX(Math.PI/2)
           :rose?roseBushGeometry()
-          :new THREE.IcosahedronGeometry(1,this.map.getZoom()>=18?1:0));
+          :new THREE.IcosahedronGeometry(1,this.camera.zoom()>=18?1:0));
       const materialKey=wood?'wood':rose?'rose':'foliage';
       if(!this.materials.has(materialKey))this.materials.set(materialKey,rose?roseBushMaterial():new THREE.MeshStandardMaterial({color:'#ffffff',roughness:.93,flatShading:true}));
       const m=new THREE.InstancedMesh(this.geometries.get(geometryKey),this.materials.get(materialKey),items.length);

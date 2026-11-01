@@ -53,8 +53,14 @@ export function poiLabelVisible(ctx: LabelContext, name: string): boolean {
   if (!name || ctx.quizQuiet) return false;
   if (ctx.spoilerIndex && poiNameSpoils(name, ctx.spoilerIndex)) return false;
   // The asked name is always a spoiler, even if the index has not caught up.
-  if (ctx.hiddenName && poiNameSpoils(name, buildSpoilerIndex([ctx.hiddenName]))) return false;
+  if (ctx.hiddenName && poiNameSpoils(name, hiddenIndex(ctx.hiddenName))) return false;
   return true;
+}
+/** The asked name's own index, one per name, so poiNameSpoils' memo holds across POIs and rebuilds. */
+let hiddenIndexOf: { name: string; index: SpoilerIndex } | null = null;
+function hiddenIndex(name: string): SpoilerIndex {
+  if (hiddenIndexOf?.name !== name) hiddenIndexOf = { name, index: buildSpoilerIndex([name]) };
+  return hiddenIndexOf.index;
 }
 
 export function neighbourhoodLabelVisible(ctx: LabelContext): boolean {
@@ -73,6 +79,8 @@ export function gameLabelContext(game: {
   quizPromptName?: string | null;
   quizCandidateName?: string | null;
   spoilerNames: Iterable<string>;
+  /** A prebuilt index of `spoilerNames` (the caller keeps it while the names are unchanged). */
+  spoilerIndex?: SpoilerIndex;
   quizQuiet: boolean;
   /** Own-map local metres → the game's world units, for the place test. */
   toWorld: (x: number, y: number) => WorldPoint;
@@ -84,7 +92,7 @@ export function gameLabelContext(game: {
       return isPlaceKnown(game.knownPlaces.get(text), w.x, w.y, game.knownRadius);
     },
     hiddenName: game.quizPromptName || game.quizCandidateName || '',
-    spoilerIndex: buildSpoilerIndex(game.spoilerNames),
+    spoilerIndex: game.spoilerIndex ?? buildSpoilerIndex(game.spoilerNames),
     quizQuiet: game.quizQuiet,
   };
 }

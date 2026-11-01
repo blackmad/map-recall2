@@ -1,0 +1,156 @@
+{
+ "schemaVersion": 1,
+ "kind": "house-type",
+ "id": "transvaal-1921-five-storey-flat",
+ "district": "transvaalbuurt",
+ "description": "Transvaalbuurt 1921 plain flat rows (Retiefstraat 194-268, Tugelaweg 50-62): 6.2 m dark brown brick fronts of a ground storey and three upper storeys of flats, every storey the same: a wide white-framed window of two casements under two top lights on the left axis and a narrow one on the right axis (the stair), the red portiek door under it; no balconies, no bays; a deep dark brick frieze over the top windows under a thin pale gutter board on a short overhang at about 13 m, no roof face seen from the street",
+ "fit": {
+  "widthM": [
+   5.7,
+   9.8
+  ],
+  "storeys": [
+   4
+  ]
+ },
+ "match": {
+  "years": [
+   1920,
+   1922
+  ],
+  "eavesM": [
+   12.3,
+   13.4
+  ],
+  "storeys3dbag": [
+   4,
+   5
+  ],
+  "stucco": false,
+  "balconies": false,
+  "baysByWidth": [
+   {
+    "maxWidthM": 99,
+    "bays": 2
+   }
+  ],
+  "mirrorForDoor": "right",
+  "crownFromType": "gutter",
+  "crowns": {
+   "gutter": {
+    "none": true
+   }
+  },
+  "note": "3DBAG eaves 12.4-13.2 m on Retiefstraat 194-268 (strip gutter 13.0-13.2 m, skyline 13.1-13.6 m where read), bouwlagen 4-5, BAG 1921. The front repeats in runs, not in pairs: the wide axis is on the left of Retiefstraat 194-204 and on the right of 246-262 (2020 strip), and the door is rarely read, so the photo decides the side (auto-place --photo-decides tries both). The 8.7-9.4 m corner and gable pands (Retiefstraat 212, 220, 240) draw the same two axes wider; the 1921 oriel rows of Retiefstraat 2-28 and Tugelaweg 19-31 are 17.8-18.3 m stair blocks with two canted brick bays each and fall outside the width"
+ },
+ "body": {
+  "storeys": 4,
+  "bays": 2,
+  "bayWidths": [
+   3.4,
+   2.8
+  ],
+  "bayFill": [
+   0.66,
+   0.36
+  ],
+  "storeyHeights": [
+   3.1,
+   3.1,
+   3.1,
+   3.7
+  ],
+  "windows": "casement-toplight-double",
+  "axisWindows": {
+   "1": "casement-toplight"
+  },
+  "windowHeights": [
+   0.62,
+   0.66,
+   0.66,
+   0.56
+  ],
+  "headLines": [
+   0.84,
+   0.82,
+   0.82,
+   0.62
+  ],
+  "cornice": "none"
+ },
+ "crowns": {
+  "gutter": {
+   "gable": "cornice",
+   "eavesOverhang": {
+    "projection": 0.45,
+    "fascia": 0.2,
+    "colour": "#b9b2a4",
+    "soffit": "#3e322c"
+   },
+   "note": "a thin pale gutter board at 13.0-13.3 m over a dark soffit, 0.45 m out (Retiefstraat 194-204, 2020 strip); the frieze of dark headers under it (11.2-12.6 m, a row of dentils at 11.6 m) is the brick wall"
+  }
+ },
+ "grounds": {
+  "door-right": {
+   "doorBay": 1,
+   "note": "the red portiek door on the narrow right axis"
+  }
+ },
+ "palettes": {
+  "dark-brown": {
+   "brick": "#76594e",
+   "frame": "white-painted",
+   "door": "#8c2a26",
+   "stone": "#b9b2a4",
+   "cornice": "#b9b2a4"
+  }
+ },
+ "roof": {
+  "material": "bitumen",
+  "source": "front",
+  "form": "flat",
+  "evidence": "the 2020 strip of Retiefstraat 194-268 shows sky straight over the gutter board on every pand (skyline 13.1-13.6 m): no roof face is seen from the street; the 3DBAG roof over it (16.8-17.0 m) stands back from the front"
+ },
+ "rhythm": {
+  "bays": "a wide window axis (2.2 m) on the left, a narrow stair axis (0.9 m) on the right",
+  "identicalBays": "no: wide + narrow",
+  "windowsPerStorey": "ground: window + door | 1-3: wide window + narrow window",
+  "symmetry": "the same front repeated in runs; Retiefstraat 246-262 is the mirror of 194-204",
+  "groundFloor": "flats; the portiek door on the narrow axis",
+  "signage": "none",
+  "roofline": "a thin pale gutter board on a short overhang, no roof face",
+  "photoRows": [
+   2,
+   2,
+   2,
+   2
+  ],
+  "photoGroundRows": 1
+ },
+ "evidence": [
+  {
+   "face": "retief-194-268",
+   "pands": [
+    "0363100012070004",
+    "0363100012066390",
+    "0363100012066681",
+    "0363100012063111"
+   ],
+   "citation": "strip.jpg 2020 at 40 px/m: 6.2 m pands; a wide window 2.2-2.3 m across at 0.2-2.9 m from the pand's left, a narrow window 0.9-1.2 m at 4.3-5.9 m; window rows 2.2-4.5, 5.6-7.7, 8.95-10.95 m on the strip (3.35 m pitch; the strip foot cuts the ground storey); gutter board 13.05 m, dark soffit band 12.4-13.0 m, dentil row at 11.6 m; red doors under the narrow axis"
+  },
+  {
+   "face": "retief-194-268",
+   "pands": [
+    "0363100012082879",
+    "0363100012137027",
+    "0363100012096769"
+   ],
+   "citation": "Retiefstraat 246-262 on the same strip: the mirrored front, the wide window 2.25 m at 2.6-4.9 m from the pand's left, the narrow windows at the left party lines"
+  }
+ ],
+ "schemaLimits": [
+  "the dentil course and dark header frieze under the gutter are plain brick",
+  "the narrow side lights beside the wide casements are not drawn"
+ ],
+ "notes": []
+}

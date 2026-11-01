@@ -16,8 +16,10 @@
 // `UNIMPLEMENTED` and answers as a no-op until its step lands (overlays,
 // labels, landmarks, trees: steps 4–5, lane L5).
 
+import { framePhases } from './framePhases';
 import { chooseTier, TIER_SETTINGS, type QualityTier } from '../renderGovernor';
 import { tierProbe } from './tierProbe';
+import { GlCounters, objectLabel } from './glCounters';
 import { SharedFrame } from '../rendererShared/sharedFrame';
 import { mapLibreSky } from '../look/sunny';
 import { FrameHost, type FrameSimulation } from './frameHost';
@@ -27,11 +29,14 @@ import { CameraMap, EngineCamera, unitsPerMetre, mercatorX, mercatorY } from './
 import { GameCameraSolver, lngLatToWorld, worldToLngLat, type GameCamera, type LoaderFrame } from './gameCamera';
 import { clearCamera, clearanceResidents } from './cameraClearance';
 import { RiderCoverTracker } from './riderCover';
-import { fetchOverview, OverviewLayer } from './overviewLayer';
+import { decodeOverviewBytes, fetchOverviewBytes, OverviewLayer, OVERVIEW_TILES, OVERVIEW_TILE_MIN_TRIANGLES } from './overviewLayer';
+import { overviewFromPool } from '../ownMap/overviewPool';
+import { awaitWorkerPool } from './workerPool';
 import type { JumpOptions, ScreenPoint, WorldCamera } from './worldViewApi';
 import { FlatLines, type LngLatLine } from './overlays/flatLines';
 import { LabelLayer, type PointLabel } from './overlays/labelLayer';
 import { gameLabelContext, type LabelContext } from '../ownMap/labelPolicy';
+import { buildSpoilerIndex, type SpoilerIndex } from '../orientationPois';
 import { ownPoiFeatures, type OrientationPoiFile } from '../ownPois';
 import { cameraFrame } from '../ownMap/mapCamera';
 import { fromLocal, toLocal } from '../ownMap/frame';
@@ -45,6 +50,13 @@ declare const CANVAS_W: number;
 declare const CANVAS_H: number;
 
 const W = () => globalThis as any;
+/** GameState.LOADING (game/utilityTuck.ts UTILITY_STATES). */
+const LOADING_STATE = 2;
+/**
+ * Least ms between world renders while the loading screen covers them (FrameHost.coveredFrameMs): the GPU still
+ * uploads and compiles behind it, once a second, and the chunk builds the settle hold waits for get the main thread.
+ */
+export const COVERED_FRAME_MS = 1000;
 const flag = (param: string, global: string, fallback: boolean): boolean => {
   const g = W();
   if (typeof g[global] === 'boolean') return g[global];
@@ -105,6 +117,8 @@ export class OwnWorldView {
   _labelsVisible = false;
 
   _ownGround: any = null;
+  /** `?glCounters=1`: GL work counters (engine/glCounters.ts). */
+  _glCounters: GlCounters | null = null;
   _threeBuildings: any = null;
   _completeCity: any = null;
   /** Landmark models, trees, detailed buildings, pyramidal roofs, ARTIS (cityExtras.ts). */
@@ -182,15 +196,58 @@ export class OwnWorldView {
     const clear = typeof sky?.['sky-color'] === 'string' ? new THREE.Color(sky['sky-color']).getHex() : 0xbfd8ee;
     this.host = new FrameHost(THREE, container, {
       render: () => this.renderFrame(),
+      // The game's loading screen (GameState.LOADING, presentationRuntime.ts) paints over the world opaquely.
+      coveredFrameMs: () => (W().canalRecallGame?.state === LOADING_STATE ? COVERED_FRAME_MS : null),
     }, { antialias, pixelRatio: Math.min(dpr, cap), clearColor: clear, renderOnChange: flag('renderOnChange', '__canalRecallRenderOnChange', true) });
+    // GL work counters (engine/glCounters.ts, the P4 counters gate): opt-in, on window.__canalPerf.gl.
+    if (flag('glCounters', '__canalRecallGlCounters', false)) {
+      // three uploads geometry and links programs lazily inside its draw of an object: name that object as the owner.
+      const renderer = this.host.renderer;
+      let drawing: any = null, drawingMaterial: any = null;
+      const renderBufferDirect = renderer.renderBufferDirect.bind(renderer);
+      renderer.renderBufferDirect = (camera: any, scene: any, geometry: any, material: any, object: any, group: any) => {
+        drawing = object; drawingMaterial = material;
+        try { return renderBufferDirect(camera, scene, geometry, material, object, group); } finally { drawing = null; drawingMaterial = null; }
+      };
+      // Geometry is uploaded earlier, while three projects the scene (WebGLObjects.update), outside any draw. three
+      // registers its dispose listener on a geometry the first time it sees it, just before that upload: the geometry
+      // whose listener came last is the one uploading, and its mesh is found in the scene when an event needs a name.
+      let seen: any = null;
+      const geometryProto = THREE.BufferGeometry.prototype;
+      const addEventListener = geometryProto.addEventListener;
+      geometryProto.addEventListener = function (this: any, type: string, listener: any) {
+        if (type === 'dispose') seen = this;
+        return addEventListener.call(this, type, listener);
+      };
+      const meshOf = (geometry: any) => {
+        let found: any = null;
+        this._sharedFrame?.scene?.traverse?.((o: any) => { if (!found && o.geometry === geometry) found = o; });
+        return found;
+      };
+      const counters = new GlCounters({
+        programNames: () => (renderer.info?.programs ?? []).map((p: any) => `${p.name}#${p.id}`),
+        drawOwner: () => (drawing ? `${objectLabel(drawing).split(':')[0] || 'unnamed'}${drawingMaterial?.isMeshDepthMaterial || drawingMaterial?.isMeshDistanceMaterial ? ' (shadow)' : ''}` : 'outside a draw'),
+        context: () => {
+          if (drawing) return `${objectLabel(drawing)} [${drawingMaterial?.type ?? '?'}]`;
+          const mesh = seen ? meshOf(seen) : null;
+          return mesh ? `${objectLabel(mesh)} (new geometry)` : '';
+        },
+      });
+      counters.install(renderer.getContext());
+      this._glCounters = counters;
+      W().__canalPerf = { ...(W().__canalPerf ?? {}), gl: { markWarm: () => counters.markWarm(), report: () => counters.report() } };
+    }
     // Quality tier (renderGovernor.ts): chosen once from a ~1 s fill probe and what the browser reports; it sets
     // the start and the ceiling of the knobs below, the governor steps inside it. `?tier=low|mid|high` forces one.
     const search = new URLSearchParams(W().location?.search ?? '');
     const asked = search.get('tier');
     const ratio = this.host.getPixelRatio();
-    const probe = asked ? null : tierProbe(THREE, this.host.renderer, { deviceMemory: W().navigator?.deviceMemory, hardwareConcurrency: W().navigator?.hardwareConcurrency, dpr, coarse: coarse() },
+    // The probe runs even when a tier is asked for: a forced tier then boots the same way as the tier it pins (the
+    // probe's few frames shifted which coarse tiles stayed resident, auto vs `?tier=high` on the M4, 2026-11-01), and
+    // specs that force a tier still report what this machine's probe measured.
+    const probe = tierProbe(THREE, this.host.renderer, { deviceMemory: W().navigator?.deviceMemory, hardwareConcurrency: W().navigator?.hardwareConcurrency, dpr, coarse: coarse() },
       { width: Math.max(container.clientWidth, W().innerWidth || 0) * ratio, height: Math.max(container.clientHeight, W().innerHeight || 0) * ratio });
-    const { tier, reasons } = probe ? chooseTier(probe) : chooseTier({ frameMs: null, gpu: '', deviceMemory: null, hardwareConcurrency: null, dpr, coarse: coarse() }, asked);
+    const { tier, reasons } = chooseTier(probe, asked);
     const settings = TIER_SETTINGS[tier];
     const explicitDpr = Number.isFinite(askedDpr) && askedDpr > 0;
     if (!explicitDpr && this.host.getPixelRatio() > settings.dprCap) this.host.setPixelRatio(settings.dprCap);
@@ -290,8 +347,16 @@ export class OwnWorldView {
 
   private async loadOverview(): Promise<void> {
     try {
-      const data = await fetchOverview(this.absoluteExtractRoot());
-      this._overview = new OverviewLayer(data, { center: () => this.camera.center(), zoom: () => this.camera.zoom(), rider: () => this.lastSubject, ground: () => (this._ownGround?.ready && this._ownGround.coversRect ? this._ownGround : null) });
+      // The geometry is built in the worker pool from a copy of the bytes while this thread decodes its own copy for
+      // the water index and the labels (ownMap/overviewPool.ts, #129: 184 ms of boot -> submit); without a pool, or if
+      // the worker fails, it is built here as before.
+      const bytes = await fetchOverviewBytes(this.absoluteExtractRoot());
+      // The facades layer owns the pool's stamped URL and loads in parallel: wait for its decision instead of racing it.
+      const pooled = awaitWorkerPool().then(pool => overviewFromPool(pool, bytes, OVERVIEW_TILES, OVERVIEW_TILE_MIN_TRIANGLES));
+      const data = await decodeOverviewBytes(bytes);
+      const prebuilt = await pooled;
+      this.status.overviewBuilt = prebuilt ? 'pool' : 'main';
+      this._overview = new OverviewLayer(data, { center: () => this.camera.center(), zoom: () => this.camera.zoom(), rider: () => this.lastSubject, ground: () => (this._ownGround?.ready && this._ownGround.coversRect ? this._ownGround : null) }, prebuilt);
       // First in the main pass, under every 3D participant.
       this._sharedFrame.register('engine-overview', this._overview, { order: -100 });
       this.status.overview = { water: data.water.length, parks: data.parks.length, streets: data.streets.length };
@@ -398,8 +463,28 @@ export class OwnWorldView {
 
   // ---- the frame ----
   private renderFrame(): void {
-    this._sharedFrame.drive(this.cameraMap.camera.clipFromMercator());
+    const phases = framePhases(), t0 = phases ? performance.now() : 0;
+    const clip = this.cameraMap.camera.clipFromMercator();
+    if (phases) phases.add('camera matrix', performance.now() - t0);
+    this._sharedFrame.drive(clip);
+    const t1 = phases ? performance.now() : 0;
     this.drawLabels();
+    if (phases) phases.add('labels', performance.now() - t1);
+    this._glCounters?.endFrame();
+  }
+
+  /**
+   * The spoiler index of `names`, rebuilt only when the names change. The policy key also turns over when a street is
+   * learned (names/known sizes); rebuilding the same index then cost 60-75 ms at 4x and emptied poiNameSpoils' memo,
+   * so the label rebuild re-tested every POI (#129 hand-back 16). The index is a pure function of the names: exact.
+   */
+  private spoilerIndexCache: { names: string[]; index: SpoilerIndex } | null = null;
+  private spoilerIndexFor(names: readonly string[]): SpoilerIndex {
+    const c = this.spoilerIndexCache;
+    if (c && c.names.length === names.length && c.names.every((n, i) => n === names[i])) return c.index;
+    const index = buildSpoilerIndex(names);
+    this.spoilerIndexCache = { names: names.slice(), index };
+    return index;
   }
 
   /** The game's spoiler screen (labelPolicy.ts gameLabelContext) from the live game, cached by what it reads. */
@@ -415,7 +500,7 @@ export class OwnWorldView {
       const ctx = gameLabelContext({
         mapLabelNames: names, knownPlaces: known, knownRadius: 600 * 3,
         quizPromptName: g.quizPromptName, quizCandidateName: g.quizCandidateName,
-        spoilerNames: spoilers, quizQuiet: this.quizQuiet,
+        spoilerNames: spoilers, spoilerIndex: this.spoilerIndexFor(spoilers), quizQuiet: this.quizQuiet,
         toWorld: (x, y) => { const [lng, lat] = fromLocal(x, y); return loader && loader._lastCenterLat != null ? lngLatToWorld(lng, lat, loader) : { x: NaN, y: NaN }; },
       });
       // Street and water names on the map only with the labels toggle on (D), as the basemap's were.
@@ -443,11 +528,11 @@ export class OwnWorldView {
       const eye = cam.eye();
       let indexed = false;
       this._labels.setOcclusion(c => {
-        if (!indexed) { indexed = true; this.labelOcclusion.index(city.residentFeatures(), [eye.lng, eye.lat]); }
+        if (!indexed) { indexed = true; this.indexLabelOcclusion(city.residentFeatures(), [eye.lng, eye.lat]); }
         const [lng, lat] = fromLocal(c.at![0], c.at![1]);
         return this.labelOcclusion.occluded(c.id, [lng, lat], eye);
       }, id => { const f = this.labelOcclusion.front.get(id); return f ? toLocal(f[0], f[1]) : null; }, (id, anchors) => {
-        if (!indexed) { indexed = true; this.labelOcclusion.index(city.residentFeatures(), [eye.lng, eye.lat]); }
+        if (!indexed) { indexed = true; this.indexLabelOcclusion(city.residentFeatures(), [eye.lng, eye.lat]); }
         // Any blocked point hides the name (the default engine's street-name rule, labels/streetLabelOcclusion.ts).
         let blocked = false;
         anchors.forEach((a, k) => { if (this.labelOcclusion.occluded(`${id}#${k}`, fromLocal(a[0], a[1]), eye)) blocked = true; });
@@ -455,6 +540,12 @@ export class OwnWorldView {
       });
     } else this._labels.setOcclusion(null);
     this._labels.draw(frame, [x0, y0, x1, y1], zoom, this.host.getPixelRatio(), p => { const [lng, lat] = fromLocal(p[0], p[1]); return cam.project([lng, lat]); }, [lx, ly, zoom, cam.bearing, cam.pitch]);
+  }
+
+  private indexLabelOcclusion(features: Parameters<LabelOcclusion['index']>[0], centre: [number, number]): void {
+    const phases = framePhases(), t0 = phases ? performance.now() : 0;
+    this.labelOcclusion.index(features, centre);
+    if (phases) phases.add('labels: occlusion index (inside occlusion)', performance.now() - t0);
   }
 
   private async loadPois(): Promise<void> {
@@ -552,6 +643,9 @@ export class OwnWorldView {
   sync(camera: GameCamera & { projector?: unknown }, loader: LoaderFrame, canvas: HTMLCanvasElement): void {
     if (!this.ready || !camera || !loader || !canvas || loader._lastCenterLat == null) return;
     this.loader = loader;
+    const phases = framePhases();
+    let pt = phases ? performance.now() : 0;
+    const lap = (name: string) => { if (!phases) return; const t = performance.now(); phases.add(`sync: ${name}`, t - pt); pt = t; };
     const view = this.solver.request(camera, loader, {
       pitchForViewMode: m => this.pitchForViewMode(m), zoomOffsetForViewMode: m => this.zoomOffsetForViewMode(m),
       landmarkView: this.landmarkView, displayScale: canvas.getBoundingClientRect().width / CANVAS_W, now: performance.now(),
@@ -568,6 +662,7 @@ export class OwnWorldView {
       (this as any)._lastCameraClearance = result;
     }
     const pitch = this.solver.applyClearance(view, !!camera.reducedMotion);
+    lap('camera solve and clearance');
     const city = this._completeCity;
     if (view.introFlat > 0 && city?.setSuspended) {
       city.setSuspended(true);
@@ -577,17 +672,23 @@ export class OwnWorldView {
     if (view.introFlat > 0) this.extras.setSuspended(true);
     if (view.introFlat === 0) this.introLanding = false;
     if (this._ownGround) { this._ownGround.update(view.subject, view.introFlat > 0 ? 0 : view.zoom, pitch); this.syncGroundConsumers(); }
+    lap('ground update');
     this.cameraMap.jumpTo({ center: view.lngLat, zoom: view.zoom, bearing: view.bearing, pitch, elevation });
+    lap('jumpTo and move listeners');
     this.lastSubject = view.subject;
     this._threeBuildings?.setDetailCentre?.(view.subject[0], view.subject[1]);
+    lap('building detail centre');
     this.extras.tick();
+    lap('extras tick');
     this.updateRiderCover(view.subject, pitch > 0 && !view.detached && view.introFlat === 0);
+    lap('rider cover');
     if (view.introFlat === 0) this.extras.setSuspended(false);
     if (view.introFlat === 0 && city) {
       city.setSuspended?.(false);
       if (!view.detached) city.setRider?.(view.subject[0], view.subject[1]);
       city.followCamera?.();
     }
+    lap('city follow');
     camera.projector = pitch > 0 || view.introFlat > 0 ? (x: number, y: number) => this.projectWorld(x, y, loader, canvas) : null;
   }
 
@@ -601,7 +702,8 @@ export class OwnWorldView {
 
   projectWorld(worldX: number, worldY: number, loader: LoaderFrame, canvas: HTMLCanvasElement): ScreenPoint {
     const lngLat = worldToLngLat(worldX, worldY, loader);
-    const p = this.cameraMap.project(lngLat);
+    // The engine's own camera (WorldCamera), not the MapLibre-shaped shim: the same projection (P5 B6, ~1,600 calls/s).
+    const p = this.camera.project(lngLat);
     // Pins stand on the relief/deck there (own ground), not at z = 0.
     const lift = this._ownGround?.ready ? this._ownGround.screenLift(lngLat) : null;
     if (lift) { const vp = this.host.viewport(); p.x += lift[0] / 2 * vp.width; p.y -= lift[1] / 2 * vp.height; }

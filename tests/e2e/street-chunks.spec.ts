@@ -47,7 +47,7 @@ for (const mode of ['off', 'on'] as const) {
     const want = mode === 'on' ? [chunk.id] : chunk.replaces;
     await page.waitForFunction(({ want }) => {
       const vm = (window as any).canalRecallGame.vectorMap, l = vm._signatureLandmarks;
-      const c = vm.map.getCenter(); vm.map.jumpTo({ center: [c.lng + 1e-7, c.lat] });
+      const c = vm.camera.center(); (vm.map ?? vm.cameraMap).jumpTo({ center: [c.lng + 1e-7, c.lat] });
       return l && want.every((id: string) => l.shown.has(id));
     }, { want }, { timeout: 150_000, polling: 1000 });
     await parkAt(page, at, ahead(at, bearing, 40));
@@ -59,7 +59,7 @@ for (const mode of ['off', 'on'] as const) {
     for (const [name, back, turn, height] of views) {
       const eye = ahead(ahead(chunk.instance.anchor, outward, back), bearing, turn ? -back * 1.1 : 0), target = ahead(chunk.instance.anchor, outward, -1);
       await page.evaluate(({ eye, target, height }) => {
-        const vm = (window as any).canalRecallGame.vectorMap, map = vm.map;
+        const vm = (window as any).canalRecallGame.vectorMap, map = vm.map ?? vm.cameraMap;
         vm.sync = () => {}; map.stop(); map.setMaxPitch(85);
         map.jumpTo(map.calculateCameraOptionsFromTo({ lng: eye[0], lat: eye[1] }, height, { lng: target[0], lat: target[1] }, height));
       }, { eye, target, height });
@@ -80,13 +80,13 @@ for (const mode of ['off', 'on'] as const) {
 
     // Hover: every pand of the chunk must resolve to its own BAG id from the street view.
     await page.evaluate(({ eye, target }) => {
-      const vm = (window as any).canalRecallGame.vectorMap, map = vm.map;
+      const vm = (window as any).canalRecallGame.vectorMap, map = vm.map ?? vm.cameraMap;
       map.jumpTo(map.calculateCameraOptionsFromTo({ lng: eye[0], lat: eye[1] }, 9, { lng: target[0], lat: target[1] }, 9));
     }, { eye: ahead(chunk.instance.anchor, outward, 60), target: ahead(chunk.instance.anchor, outward, -1) });
     await page.waitForTimeout(3000);
     const hover = await page.evaluate(({ pands, chunkId, replaces }) => {
       const vm = (window as any).canalRecallGame.vectorMap, l = vm._signatureLandmarks, THREE = (window as any).CanalRecallThree.THREE;
-      const canvas = vm.map.getCanvas(), w = canvas.clientWidth, h = canvas.clientHeight;
+      const canvas = vm.frameCanvas(), w = canvas.clientWidth, h = canvas.clientHeight;
       const results: any[] = [];
       for (const p of pands) {
         // Facade point of this pand in the chunk frame (mid-frontage, 5 m up), through the entry's own transform.
@@ -106,7 +106,7 @@ for (const mode of ['off', 'on'] as const) {
     // Frame times with the camera at rest (the layer re-renders on every repaint).
     // Layer render cost: the custom layer's own render(), CPU submit time and with a GPU sync (gl.finish).
     const layerCost = await page.evaluate(async () => {
-      const vm = (window as any).canalRecallGame.vectorMap, layer = vm._signatureLandmarks.layer, map = vm.map;
+      const vm = (window as any).canalRecallGame.vectorMap, layer = vm._signatureLandmarks.layer, map = vm.map ?? vm.cameraMap;
       if (!layer || vm._signatureLandmarks.sharedFrame) return null; // shared frame: no own custom layer to time
       const original = layer.render, submit: number[] = [], synced: number[] = [];
       layer.render = function (gl: WebGLRenderingContext, args: unknown) {
@@ -120,7 +120,7 @@ for (const mode of ['off', 'on'] as const) {
       return { frames: submit.length, submitMeanMs: mean(submit), syncedMeanMs: mean(synced), submitMedianMs: q(submit, 0.5), submitP95Ms: q(submit, 0.95), syncedMedianMs: q(synced, 0.5), syncedP95Ms: q(synced, 0.95) };
     });
     const frames = await page.evaluate(async () => {
-      const map = (window as any).canalRecallGame.vectorMap.map, times: number[] = [];
+      const map = (window as any).canalRecallGame.vectorMap.map ?? (window as any).canalRecallGame.vectorMap.cameraMap, times: number[] = [];
       let last = performance.now();
       await new Promise<void>(resolve => {
         const tick = () => { const now = performance.now(); times.push(now - last); last = now; if (times.length < 90) { map.triggerRepaint(); requestAnimationFrame(tick); } else resolve(); };

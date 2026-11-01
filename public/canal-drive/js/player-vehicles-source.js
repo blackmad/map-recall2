@@ -1,5 +1,6 @@
 // three.js is shared across the 3D bundles — see three-runtime-source.js.
 import { multiplyMat4, projectLocalBox } from '../../../src/canalRecall/game/vehicleScreenBox.ts';
+import { bikeLeanFromTurn } from '../../../src/canalRecall/drive/steerModel.ts';
 
 const { THREE, GLTFLoader, MeshoptDecoder } = window.CanalRecallThree;
 
@@ -50,10 +51,11 @@ const MAX_STEER = 0.42;
 // Omafiets is authored straight: `Lenker` is upright (+Y), wheel axles are +Z.
 const AUTHORED_STEER_OFFSET = 0;
 const STEER_EASING = 0.18;
-/** Lean into a turn, after slop-newyork's cyclist: steer × min(1, |v| / 9 m/s)
- *  × 0.34 rad, eased at 9/s (bikeLean in src/canalRecall/drive/steerModel.ts). */
-const LEAN_MAX = 0.34;
-const LEAN_FULL_SPEED_PX = 9 * 3;
+/** Lean into the turn the bike is making (bikeLeanFromTurn in
+ *  src/canalRecall/drive/steerModel.ts: atan(v·ω/g), capped at 0.34 rad),
+ *  eased at 9/s. Until 2026-11-01 the lean came from the raw steer key, so a
+ *  tap flopped the bike to the full 0.34 rad at once, and the roll sign put
+ *  it on the outside of the turn (#129, user's screenshot). */
 const LEAN_RATE = 9;
 const WHEEL_RADIUS_M = 0.35;
 /** The world scale the game uses; kept local so the bundle stays standalone. */
@@ -198,9 +200,17 @@ class Vehicle3D {
    * The mesh's CSS-pixel box this frame (`screenBox`, null while not drawn), from its local bounds, scale and
    * pose transform under the frame's clip-from-Mercator matrix. The START tag keeps off it (vehicleScreenBox.ts).
    */
+  /**
+   * The map's container element, asked once: it is the same element for the map's life, and asking the CameraMap shim
+   * every frame was its last per-frame call from this bundle (P5 B6, 29 calls/s).
+   */
+  _container() {
+    return this._containerEl || (this._containerEl = (this.map.getContainer && this.map.getContainer()) || null);
+  }
+
   _updateScreenBox(clipFromMercator) {
     const box = this._localBox;
-    const container = this.map.getContainer && this.map.getContainer();
+    const container = this._container();
     if (!box || !container) { this.screenBox = null; return; }
     const clipFromLocal = multiplyMat4(clipFromMercator, this._transform().elements);
     this.screenBox = projectLocalBox(clipFromLocal, box.min, box.max, this._modelRoot.scale.x, container.clientWidth, container.clientHeight);
@@ -246,7 +256,7 @@ class Vehicle3D {
   viewportScale() {
     const reference = this.options.viewportReferencePx;
     if (!reference) return 1;
-    const container = this.map.getContainer && this.map.getContainer();
+    const container = this._container();
     const shortSide = container ? Math.min(container.clientWidth, container.clientHeight) : 0;
     if (!(shortSide > 0)) return 1;
     return Math.max(1, Math.min(this.options.viewportMaxScale || 1, shortSide / reference));
@@ -442,17 +452,21 @@ export class PlayerBike3D extends Vehicle3D {
     const target = -Math.max(-1, Math.min(1, steerInput || 0)) * MAX_STEER;
     this.steerAngle += (target - this.steerAngle) * STEER_EASING;
     this.wheelSpin = (distancePx || 0) / (PIXELS_PER_METER_FALLBACK * WHEEL_RADIUS_M);
-    // Speed from the odometer, so the lean needs nothing new from the game.
+    // Speed from the odometer and the yaw rate from the heading, so the lean
+    // needs nothing new from the game and follows the turn actually made.
     const now = performance.now();
     const seconds = this._leanAt ? Math.min(0.25, (now - this._leanAt) / 1000) : 0;
     this._leanAt = now;
+    const heading = this.angle || 0;
     if (seconds > 0) {
       const speed = Math.abs((distancePx || 0) - (this._leanDistance || 0)) / seconds;
-      const steer = Math.max(-1, Math.min(1, steerInput || 0));
-      const target = steer * Math.min(1, speed / LEAN_FULL_SPEED_PX) * LEAN_MAX;
+      let turned = heading - (this._leanHeading ?? heading);
+      turned = Math.atan2(Math.sin(turned), Math.cos(turned));
+      const target = bikeLeanFromTurn(speed, turned / seconds);
       this.lean = (this.lean || 0) + (target - (this.lean || 0)) * (1 - Math.exp(-LEAN_RATE * seconds));
     }
     this._leanDistance = distancePx || 0;
+    this._leanHeading = heading;
     this._repaintOnChange();
   }
 
@@ -465,11 +479,12 @@ export class PlayerBike3D extends Vehicle3D {
 
   _pose(model) {
     const d = this._drawn || this;
-    // Roll about the bike's long axis (+X), into the turn: the opposite sense
-    // to the boat's heel, which leans out of it.
+    // Roll about the bike's long axis (+X) into the turn: +lean is a right
+    // turn and +Z is the rider's right (nose +X, up +Y), so a positive roll
+    // about +X tips the top toward +Z. (The boat's heel leans out of it.)
     if (model) {
       model.rotation.set(0, 0, 0);
-      model.rotateX(-(d.lean || 0));
+      model.rotateX(d.lean || 0);
     }
     const { steer, frontWheel, rearWheel } = this.parts;
     if (steer) {

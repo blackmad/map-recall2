@@ -1,0 +1,120 @@
+{
+ "street": "Retiefstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-31T15:09:05.738Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012066390",
+   "addresses": [
+    "Retiefstraat 204",
+    "Retiefstraat 206",
+    "Retiefstraat 208",
+    "Retiefstraat 210",
+    "Retiefstraat 218A"
+   ],
+   "groundUnits": [
+    {
+     "address": "Retiefstraat 210",
+     "use": "woonfunctie",
+     "areaM2": 46,
+     "bagId": "0363010000791832"
+    },
+    {
+     "address": "Retiefstraat 204",
+     "use": "woonfunctie",
+     "areaM2": 39,
+     "bagId": "0363010000791829"
+    },
+    {
+     "address": "Retiefstraat 208",
+     "use": "woonfunctie",
+     "areaM2": 39,
+     "bagId": "0363010000791831"
+    },
+    {
+     "address": "Retiefstraat 206",
+     "use": "woonfunctie",
+     "areaM2": 39,
+     "bagId": "0363010000791830"
+    },
+    {
+     "address": "Retiefstraat 218A",
+     "use": "woonfunctie",
+     "areaM2": 55,
+     "bagId": "0363010012576697"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012066681",
+   "addresses": [
+    "Retiefstraat 200",
+    "Retiefstraat 202",
+    "Retiefstraat 210A"
+   ],
+   "groundUnits": [
+    {
+     "address": "Retiefstraat 200",
+     "use": "woonfunctie",
+     "areaM2": 73,
+     "bagId": "0363010000791827"
+    },
+    {
+     "address": "Retiefstraat 202",
+     "use": "woonfunctie",
+     "areaM2": 73,
+     "bagId": "0363010000791828"
+    },
+    {
+     "address": "Retiefstraat 210A",
+     "use": "woonfunctie",
+     "areaM2": 61,
+     "bagId": "0363010012576696"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012063111",
+   "addresses": [
+    "Retiefstraat 194",
+    "Retiefstraat 196",
+    "Retiefstraat 198",
+    "Retiefstraat 198A"
+   ],
+   "groundUnits": [
+    {
+     "address": "Retiefstraat 198",
+     "use": "woonfunctie",
+     "areaM2": 73,
+     "bagId": "0363010000791826"
+    },
+    {
+     "address": "Retiefstraat 194",
+     "use": "woonfunctie",
+     "areaM2": 40,
+     "bagId": "0363010000791824"
+    },
+    {
+     "address": "Retiefstraat 196",
+     "use": "woonfunctie",
+     "areaM2": 41,
+     "bagId": "0363010000791825"
+    },
+    {
+     "address": "Retiefstraat 198A",
+     "use": "woonfunctie",
+     "areaM2": 59,
+     "bagId": "0363010012576695"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  }
+ ]
+}

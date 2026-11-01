@@ -6,7 +6,7 @@ import {
   type CoversFile, type PandFacts,
 } from './bagTiles.js';
 import { addFeatures, emptyIndex, nearbyPands, resolveSuppressed } from './bagPandIndex.js';
-import { tileUrl } from './buildingTileSource.js';
+import { BuildingTileCache, tileUrl } from './buildingTileSource.js';
 import { BuildingTileStreamer, loadBagCovers } from './buildingTilesBrowser.js';
 import type { Ring } from './buildingLadder.js';
 import { readFileSync } from 'node:fs';
@@ -285,4 +285,20 @@ test('3DBAG massing records (facade/sources/netherlands.ts): groundLevel is the 
   assert.equal(ordinary.groundLevel, fixtureAttributes(groundFixture.ordinary).b3_h_maaiveld);
   // Without a terrain field the record is what the source publishes.
   assert.equal(bag3dMassingRecords(pands)[0].groundLevel, -9.673999786376953);
+});
+
+test('the resident collection is in tile-key order, whatever order the tiles arrived in (#129: same tiles, same picture)', () => {
+  const f = (id: string) => ({ type: 'Feature', properties: { id }, geometry: null }) as any;
+  const tiles: [string, any[]][] = [['15/16834/10771', [f('a'), f('b')]], ['15/16833/10770', [f('c')]], ['15/16834/10770', [f('d'), f('e')]]];
+  const ids = (order: number[]) => {
+    const cache = new BuildingTileCache();
+    for (const i of order) cache.adopt(...tiles[i]);
+    return cache.collection().features.map((x: any) => x.properties.id).join(',');
+  };
+  assert.equal(ids([0, 1, 2]), 'c,d,e,a,b');
+  assert.equal(ids([2, 0, 1]), ids([0, 1, 2]));
+  const cache = new BuildingTileCache();
+  for (const t of tiles) cache.adopt(...t);
+  cache.drop('15/16834/10770');
+  assert.equal(cache.collection().features.map((x: any) => x.properties.id).join(','), 'c,a,b');
 });

@@ -19,7 +19,7 @@
 import type {HousePlacement, HouseTypeIntent} from './houseType.ts';
 import type {BlockFaceHouse, BlockFaceIntent, GroundFloorUse, RhythmSpec} from './intent.ts';
 import type {StripPalette} from './stripPalette.ts';
-import type {Skyline} from './stripSkyline.ts';
+import {skylineBounded, type SkyBound, type Skyline} from './stripSkyline.ts';
 import type {StripStructure} from './stripStructure.ts';
 import {rgbToLab, type FrontClass, type Rgb} from '../buildingRecipe/measureFacade.ts';
 import type {FrontBump} from './bayOutline.ts';
@@ -102,6 +102,15 @@ export interface TypeMatchRule {
    */
   crownMatch?: true;
   /**
+   * The crown a pand of this type takes when its strip skyline is no evidence (2026-11-01, #152): unread, matching no
+   * variant, or not sky-bounded (`skylineBounded`: it stands over the pand's 3DBAG roof max, ends on foliage, or is a
+   * narrow mass at one party wall). The note then says "crown from type". Transvaalbuurt 1908-1914 rows: bare branches
+   * over every 2023 strip read 15.5-18.4 m skylines and the unread fallback (the first crown, a point gable) drew gables
+   * on the flat fronts of Smitstraat 36-38, Transvaalstraat 54-56 and Laing's Nekstraat 36-38. Absent = the skyline
+   * picks whenever read and the first crown otherwise, byte-identical.
+   */
+  crownFromType?: string;
+  /**
    * The cornice line of the type's rows, measured on its exemplar strips (m over the pavement; Helmersbuurt 1893-1901:
    * Eerste Helmersstraat 217-229 at 10.8 m, where 3DBAG/PDOK eaves read the mansard top at 10.9-13.4 m). Set, the eaves
    * criterion compares the strip skyline (when read under clean sky) with it instead of 3DBAG's eaves (unread: no
@@ -126,6 +135,14 @@ export interface TypeMatchRule {
    * `axisPitchM`). Absent = the house rule, byte-identical.
    */
   frontage?: StairBlockFrontage;
+  /**
+   * A placed pand of this type that is a run of one (held or unplaced neighbours, or the face end on both sides) stands
+   * on its own as a one-house face when its BAG frontage is at least `minWidthM` (`placedRuns`, `lonePandReason`). For
+   * stair-block rows, where a BAG pand is a whole stair block of one design (Transvaalbuurt 1908-1914 and 1921-1923:
+   * 57 pands held as lone runs in round 3, #156). Narrower pands keep the rule: a 4-5 m pand alone is more often a
+   * misread than a house. Absent = a run of one is held, byte-identical (Bellamy and every other library).
+   */
+  lonePand?: {minWidthM: number};
   note?: string;
 }
 
@@ -186,6 +203,8 @@ export interface StripEvidence {
   /** `rowExposure` only: the pand's own trim-normalised wall before the row's gain replaced it. */
   wallOwnGain?: string;
   skyline: Skyline | null;
+  /** What ends the skyline's columns (stripSkyline.ts `measureSkyBound`); read by types with `match.crownFromType`. */
+  skyBound?: SkyBound;
   /** Body-band shares that are no evidence: the strip's grey placeholder and foliage. */
   voidShare: number; foliageShare: number;
   /** The strip evidence gate (stripEvidence.ts, #120): does the span show the front (sky over the roof in most columns)?
@@ -321,11 +340,27 @@ export function scoreType(t: MatchableType, ev: PandEvidence): TypeScore {
   return {typeId: t.id, score: r2(score), veto, criteria};
 }
 
+/**
+ * OSM street furniture matched to a frontage: a bench or a litter bin on the pavement is not a business in the pand.
+ * De la Reijstraat 28B (2026-11-01, #154): an `amenity=bench` 5.6 m out made the house `services` and gave it a shop
+ * front, which a type with a ground-storey oriel cannot carry. #157 added the rest of the pavement set: a public bookcase
+ * (Hasebroekstraat 28 drew a bar front: `amenity=pub` was matched as a prefix of `amenity=public_bookcase`; the use
+ * patterns are anchored now), a fountain, a give box, a bicycle repair stand.
+ */
+export const STREET_FURNITURE = /^amenity=(bench|waste_basket|waste_disposal|recycling|bicycle_parking|motorcycle_parking|parking|parking_entrance|parking_space|post_box|vending_machine|drinking_water|telephone|clock|charging_station|bicycle_rental|bicycle_repair_station|shelter|toilets|grit_bin|letter_box|public_bookcase|give_box|fountain)$/;
+/**
+ * The OSM category of a business node or way matched to a pand (scripts/block-face/auto-place.ts evidence): the first
+ * of shop, amenity, craft, office and healthcare.
+ */
+export function osmCategory(tags: Record<string, string | undefined>): string | undefined {
+  return tags.shop ? `shop=${tags.shop}` : tags.amenity ? `amenity=${tags.amenity}` : tags.craft ? `craft=${tags.craft}` : tags.office ? `office=${tags.office}` : tags.healthcare ? `healthcare=${tags.healthcare}` : undefined;
+}
 /** Ground use of a pand from BAG and OSM (no photo reading: the agreement says so). */
 export function groundUse(ev: PandEvidence, photoDate: string): GroundFloorUse {
-  const biz = ev.osm.find(o => o.category && !/^office=/.test(o.category)) ?? ev.osm[0];
+  const osm = ev.osm.filter(o => !o.category || !STREET_FURNITURE.test(o.category));
+  const biz = osm.find(o => o.category && !/^office=/.test(o.category)) ?? osm[0];
   const bagTrade = ev.groundUses.some(u => /winkel|bijeenkomst|horeca/.test(u));
-  const use: GroundFloorUse['use'] = biz?.category ? (/^amenity=(restaurant|fast_food)/.test(biz.category) ? 'restaurant' : /^amenity=cafe/.test(biz.category) ? 'cafe' : /^amenity=(bar|pub)/.test(biz.category) ? 'bar' : /^shop=/.test(biz.category) ? 'shop' : /^office=/.test(biz.category) ? 'office' : 'services')
+  const use: GroundFloorUse['use'] = biz?.category ? (/^amenity=(restaurant|fast_food)$/.test(biz.category) ? 'restaurant' : /^amenity=cafe$/.test(biz.category) ? 'cafe' : /^amenity=(bar|pub)$/.test(biz.category) ? 'bar' : /^shop=/.test(biz.category) ? 'shop' : /^office=/.test(biz.category) ? 'office' : 'services')
     : bagTrade ? 'shop' : ev.groundUses.some(u => /kantoor/.test(u)) ? 'office' : 'residential';
   return {use, ...(biz?.name ? {name: biz.name} : {}), ...(biz?.category ? {category: biz.category} : {}), ...(biz ? {osm: {type: biz.type, id: biz.id, ...(biz.name ? {name: biz.name} : {})}} : {}),
     bag: ev.groundUses, photoDate, agreement: biz ? 'osm-only' : 'bag-only', note: 'auto-place: BAG gebruiksdoel and OSM, not read off the photo'};
@@ -336,7 +371,7 @@ export interface Placed {
   house: BlockFaceHouse; notes: string[];
 }
 /** `review`: held after a person reviewed the run's strip sheet (buurten/<buurt>-review-holds.json). */
-export interface Held { pandId: string; address: string; stage: 'match' | 'evidence' | 'likeness' | 'run' | 'review'; reason: string; best?: TypeScore }
+export interface Held { pandId: string; address: string; stage: 'match' | 'evidence' | 'likeness' | 'run' | 'review' | 'installed'; reason: string; best?: TypeScore }
 export type Decision = ({kind: 'placed'} & Placed) | ({kind: 'held'} & Held);
 
 /** The shop ground of an auto-placed trading pand: the measured fascia colour, a residential door on the door side. */
@@ -380,7 +415,7 @@ export function decidePand(types: MatchableType[], ev: PandEvidence, slug: strin
   else if (t.match?.mirrorForDoor) { if (s.doorSide && s.doorSide !== t.match.mirrorForDoor) placement.mirror = true; notes.push(`door ${s.doorSide ?? 'unread'}${placement.mirror ? ': mirrored' : ''}`); }
   else if (!trading && s.doorSide && grounds.includes(`door-${s.doorSide}`)) placement.ground = `door-${s.doorSide}`;
   if (s.wall && !s.palette.stucco && s.foliageShare <= AUTO_PLACE.maxFoliage && t.match?.measuredWall !== false) placement.measuredPalette = {brick: s.wall, evidence: `strip ${s.date} span ${s.px.join('-')}: ${s.wallOwnGain ? `raw wall at the row's trim gain (autoPlace.ts rowExposure; own gain ${s.wallOwnGain})` : 'trim-normalised wall (buildingRecipe/measureFacade.ts)'}`};
-  const crown = crownFor(t, s.skyline);
+  const crown = crownFor(t, s.skyline, {roofMaxM: ev.roofMaxM, skyBound: s.skyBound});
   if (crown.name !== Object.keys(t.crowns)[0]) placement.crown = crown.name;
   notes.push(crown.why);
   const rhythm: Partial<RhythmSpec> = {citation: `auto-place: ${t.id} scored ${best.score} on ${best.criteria.map(c => `${c.key} ${c.score ?? '-'}`).join(', ')}; strip ${s.date} span ${s.px.join('-')}`};
@@ -399,17 +434,24 @@ export function crownRuleFor(t: MatchableType, c: Skyline['crown']): string | nu
   return null;
 }
 
-export function crownFor(t: MatchableType, sky: Skyline | null): {name: string; why: string} {
+export function crownFor(t: MatchableType, sky: Skyline | null, pand?: {roofMaxM: number; skyBound?: SkyBound}): {name: string; why: string} {
   const first = Object.keys(t.crowns)[0], rules = t.match?.crowns;
   if (!rules) return {name: first, why: `crown ${first} (type default)`};
-  if (!sky || sky.confidence < SKYLINE_MIN_CONFIDENCE) return {name: first, why: `crown ${first}: skyline unread (confidence ${sky?.confidence ?? 0})`};
+  // match.crownFromType: a skyline that is no evidence gives the type's crown, not the first variant.
+  const typed = t.match?.crownFromType !== undefined && t.crowns[t.match.crownFromType] ? t.match.crownFromType : null;
+  const fallback = (why: string) => typed ? {name: typed, why: `crown ${typed}: crown from type (${why})`} : {name: first, why: `crown ${first}: ${why}`};
+  if (!sky || sky.confidence < SKYLINE_MIN_CONFIDENCE) return fallback(`skyline unread (confidence ${sky?.confidence ?? 0})`);
+  if (typed && pand) {
+    const b = skylineBounded(sky, pand.skyBound, pand.roofMaxM);
+    if (!b.ok) return fallback(`skyline not sky-bounded: ${b.why}`);
+  }
   const c = sky.crown, inR = (v: number, r?: [number, number]) => !r || (v >= r[0] && v <= r[1]);
   for (const [name, r] of Object.entries(rules)) {
     if (!t.crowns[name]) continue;
     const fits = (q: CrownRule) => !!c && inR(c.riseM, q.riseM) && inR(c.topWidthM, q.topWidthM) && inR(c.widthM, q.widthM);
     if (r.none ? !c : fits(r) || (!!r.alt && fits(r.alt))) return {name, why: `crown ${name}: skyline ${c ? `rise ${c.riseM} m, width ${c.widthM} m, top ${c.topWidthM} m` : 'no crown over the eaves'}`};
   }
-  return {name: first, why: `crown ${first}: skyline ${c ? `rise ${c.riseM} m, width ${c.widthM} m, top ${c.topWidthM} m` : 'no crown'} matches no variant`};
+  return fallback(`skyline ${c ? `rise ${c.riseM} m, width ${c.widthM} m, top ${c.topWidthM} m` : 'no crown'} matches no variant`);
 }
 
 /**
@@ -557,41 +599,68 @@ export function placementGate(l: {ncc: number | null; abstain: string | null}, m
 
 /**
  * Era guard (#113, 2026-10-29): a pand whose strip reads RIBBON windows (measureFacade `frontClass`: horizontal glazing
- * runs, or windows over 85 % of the bay) is not a punched-window 19th-century row, and nor is the rest of its row.
- * Every placed pand of the contiguous same-build-year run around a ribbon reading is held when its type ends before
- * RIBBON_GUARD.maxTypeYear. Calibration on the #103/#113 batch strips: ribbon read on 0 of 45 installed pands, and on
- * 2 of 5 of Gerard Doustraat 1-7 (dou-1-7-r1: wide three-light windows drawn as narrow arched ones) and 1 of 5 of
- * Govert Flinckstraat 265-287 (flinck-265-287-r1: an interwar ribbon block drawn as an 1889 row), both held at review.
+ * runs, or windows over 85 % of the bay) is not a punched-window 19th-century row. The pand that reads ribbon is held
+ * when its type ends before RIBBON_GUARD.maxTypeYear; its contiguous same-build-year row is held with it only when ribbon
+ * reads on at least RIBBON_GUARD.rowShare of the row's usable strips. Calibration on the #103/#113 batch strips: ribbon
+ * read on 0 of 45 installed pands, and on 2 of 5 of Gerard Doustraat 1-7 (dou-1-7-r1: wide three-light windows drawn as
+ * narrow arched ones) and 1 of 5 of Govert Flinckstraat 265-287 (flinck-265-287-r1: an interwar ribbon block drawn as
+ * an 1889 row), both held at review. Per pand since 2026-11-01 (#152): one wide three-light front in a 1911 row
+ * (Transvaalstraat 33 of 7-41, 1 of 12; Pretoriusstraat 82 of 72-96, 1 of 9) held the whole row.
  * Returns the pands held.
  */
-export const RIBBON_GUARD = {maxTypeYear: 1914} as const;
+export const RIBBON_GUARD = {maxTypeYear: 1914, rowShare: 0.2} as const;
 export function ribbonRowHolds(decisions: Decision[], types: MatchableType[], evs: PandEvidence[]): string[] {
   const held: string[] = [];
   const usable = (e: PandEvidence) => !!e.strip && e.strip.voidShare <= AUTO_PLACE.maxVoid && e.strip.foliageShare <= AUTO_PLACE.maxFoliage;
+  const ribbon = (e: PandEvidence) => usable(e) && e.strip!.frontClass === 'ribbon' && e.builtYear !== null;
+  const hold = (j: number, k: number, year: number | null) => {
+    const d = decisions[j];
+    if (d.kind !== 'placed') return;
+    const t = types.find(x => x.id === d.typeId);
+    if (!t?.match || t.match.years[1] > RIBBON_GUARD.maxTypeYear) return;
+    decisions[j] = {kind: 'held', pandId: d.pandId, address: d.house.address, stage: 'match',
+      reason: `era guard: ${j === k ? 'the strip reads' : `${evs[k].address} (same ${year} row) reads`} ribbon windows; ${d.typeId} is a punched-window type`};
+    held.push(d.pandId);
+  };
   for (let k = 0; k < evs.length; k++) {
-    if (!usable(evs[k]) || evs[k].strip!.frontClass !== 'ribbon' || evs[k].builtYear === null) continue;
+    if (!ribbon(evs[k])) continue;
     const year = evs[k].builtYear;
     let a = k, b = k;
     while (a > 0 && evs[a - 1].builtYear === year) a--;
     while (b + 1 < evs.length && evs[b + 1].builtYear === year) b++;
-    for (let j = a; j <= b; j++) {
-      const d = decisions[j];
-      if (d.kind !== 'placed') continue;
-      const t = types.find(x => x.id === d.typeId);
-      if (!t?.match || t.match.years[1] > RIBBON_GUARD.maxTypeYear) continue;
-      decisions[j] = {kind: 'held', pandId: d.pandId, address: d.house.address, stage: 'match',
-        reason: `era guard: ${j === k ? 'the strip reads' : `${evs[k].address} (same ${year} row) reads`} ribbon windows; ${d.typeId} is a punched-window type`};
-      held.push(d.pandId);
-    }
+    const row = evs.slice(a, b + 1), seen = row.filter(usable).length, reads = row.filter(ribbon).length;
+    if (seen && reads / seen >= RIBBON_GUARD.rowShare) { for (let j = a; j <= b; j++) hold(j, k, year); }
+    else hold(k, k, year);
   }
   return held;
 }
 
-/** Contiguous runs of placed pands (street order); a run of one cannot be a face and is held. */
-export function placedRuns(decisions: Decision[]): {runs: Placed[][]; orphans: Held[]} {
+/**
+ * Why a placed pand may stand alone as a one-house face (`TypeMatchRule.lonePand`), or null: its type opts in and its
+ * BAG frontage reaches the type's `minWidthM`.
+ */
+export function lonePandReason(t: Pick<MatchableType, 'id' | 'match'> | undefined, widthM: number | undefined): string | null {
+  const min = t?.match?.lonePand?.minWidthM;
+  if (min === undefined || widthM === undefined || !(widthM >= min)) return null;
+  return `a stair block on its own: ${t!.id} opts in to one-house faces from ${min} m (frontage ${r2(widthM)} m)`;
+}
+
+/**
+ * Contiguous runs of placed pands (street order); a run of one cannot be a face and is held, unless `lone` gives a
+ * reason it stands on its own (`lonePandReason`; absent = every run of one is held, byte-identical).
+ */
+export function placedRuns(decisions: Decision[], lone?: (p: Placed) => string | null): {runs: Placed[][]; orphans: Held[]} {
   const runs: Placed[][] = [], orphans: Held[] = [];
   let cur: Placed[] = [];
-  const flush = () => { if (cur.length >= 2) runs.push(cur); else for (const p of cur) orphans.push({pandId: p.pandId, address: p.house.address, stage: 'run', reason: 'a single placed pand between held neighbours or the face end: a block face needs two houses'}); cur = []; };
+  const flush = () => {
+    if (cur.length >= 2) runs.push(cur);
+    else for (const p of cur) {
+      const why = lone?.(p);
+      if (why) { if (!p.notes.includes(`lone pand: ${why}`)) p.notes.push(`lone pand: ${why}`); runs.push([p]); }
+      else orphans.push({pandId: p.pandId, address: p.house.address, stage: 'run', reason: 'a single placed pand between held neighbours or the face end: a block face needs two houses'});
+    }
+    cur = [];
+  };
   for (const d of decisions) { if (d.kind === 'placed') cur.push(d); else flush(); }
   flush();
   return {runs, orphans};
@@ -606,5 +675,50 @@ export function runIntent(o: {id: string; street: string; stripDate: string; str
     types: o.types.filter(t => used.includes(t)),
     houses: o.run.map(p => p.house),
     continuity: {streetLevel: 'shared', corniceGroups: [], identical: [], partyClip: true,
-      roof: {source: 'recipe', pitchDeg: 30, evidence: 'auto-place: low attic behind the cornice; the strips show sky over the cornices of the type rows'}}};
+      roof: {source: 'recipe', pitchDeg: 30, evidence: 'auto-place: low attic behind the cornice; the strips show sky over the cornices of the type rows'},
+      // A run of one exists only when its type opted in (placedRuns `lone`); its note names why.
+      ...(o.run.length === 1 ? {lonePand: {evidence: o.run[0].notes.find(n => n.startsWith('lone pand: '))?.slice(11) ?? 'a stair block on its own'}} : {})}};
+}
+
+/** A run directory of a face (`<face>` or `<face>-r<k>`, a batch trim `-t` included) and whether a chunk installs it. */
+export interface ExistingRun { id: string; pands: readonly string[]; installed: boolean }
+
+/** Run ids of `faceId` that `chunks.json` installs (`chunk-face-<run>`). */
+export function installedRunIds(faceId: string, chunkIds: readonly string[]): string[] {
+  const esc = faceId.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), re = new RegExp(`^chunk-face-(${esc}(?:-r\\d+)?(?:-t)?)$`);
+  return chunkIds.flatMap(c => { const m = re.exec(c); return m ? [m[1]] : []; });
+}
+
+/**
+ * Installed runs a re-run keeps (#157 fix 2): every run with an installed chunk unless `--replace=<run>` names it. A
+ * buurt-wide `auto-place --review` re-run used to renumber runs and overwrite installed intents (round 4 restored
+ * retief-45-75-r1, pretorius-71-95-r1/r2 and pretorius-72-120-r1 from HEAD by hand; one re-run deleted pretorius-72-120-r1).
+ * Their pands are held at stage `installed` and their directories are never written or removed.
+ */
+export function frozenRuns(existing: readonly ExistingRun[], replace: ReadonlySet<string>): ExistingRun[] {
+  return existing.filter(r => r.installed && !replace.has(r.id));
+}
+
+/**
+ * Ids for the runs of a (re-)placement. Without frozen runs or replacements: the face itself for one run of every member,
+ * else `<face>-r1..k` in order (the numbering auto-place always used). With frozen runs: a frozen id is never given out;
+ * a run that re-places a `--replace` run keeps that run's id (the one it overlaps most); every other run takes the
+ * next free number, so an installed run directory is never renumbered or overwritten.
+ */
+export function assignRunIds(faceId: string, memberCount: number, runs: readonly (readonly string[])[], existing: readonly ExistingRun[], replace: ReadonlySet<string>): string[] {
+  const frozen = frozenRuns(existing, replace), replaced = existing.filter(r => r.installed && replace.has(r.id));
+  if (!frozen.length && !replaced.length) return runs.map((run, k) => runs.length === 1 && run.length === memberCount ? faceId : `${faceId}-r${k + 1}`);
+  const used = new Set(frozen.map(r => r.id)), ids: (string | null)[] = runs.map(() => null);
+  // Replaced runs first: each goes to the new run that shares most pands with it.
+  for (const r of replaced) {
+    let best = -1, overlap = 0;
+    for (const [k, run] of runs.entries()) { const o = run.filter(p => r.pands.includes(p)).length; if (ids[k] === null && o > overlap) { best = k; overlap = o; } }
+    if (best >= 0 && !used.has(r.id)) { ids[best] = r.id; used.add(r.id); }
+  }
+  let next = 1;
+  return ids.map(id => {
+    if (id) return id;
+    while (used.has(`${faceId}-r${next}`)) next++;
+    const out = `${faceId}-r${next}`; used.add(out); return out;
+  });
 }

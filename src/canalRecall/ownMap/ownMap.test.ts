@@ -145,6 +145,17 @@ test('label policy: earned names only; the asked name never, even when earned; P
   assert.equal(streetLabelVisible(game, 'Overtoom', 2000, 0), false, 'the far end has not been asked');
 });
 
+test('gameLabelContext: a prebuilt spoiler index is the one screened against (same answers as building it)', () => {
+  const names = ['Keizersgracht', 'Leidseplein'];
+  const index = buildSpoilerIndex(names);
+  const base = { mapLabelNames: new Set<string>(), knownPlaces: new Map(), knownRadius: 300, spoilerNames: names, quizQuiet: false, toWorld: (x: number, y: number) => ({ x, y }) };
+  const kept = gameLabelContext({ ...base, spoilerIndex: index }), built = gameLabelContext(base);
+  assert.equal(kept.spoilerIndex, index, 'the caller\'s index, not a rebuild');
+  assert.deepEqual(built.spoilerIndex, index);
+  for (const poi of ['Keizersgrachtkerk', 'Leidseplein Theater', 'Westerkerk', 'Herenhuis'])
+    assert.equal(poiLabelVisible(kept, poi), poiLabelVisible(built, poi), poi);
+});
+
 // Named regressions on the published extract.
 const overview = decodeOverview(JSON.parse(gunzipSync(readFileSync('public/data/extracts/amsterdam/own-map-v1/overview.json.gz')).toString()) as OverviewFile);
 

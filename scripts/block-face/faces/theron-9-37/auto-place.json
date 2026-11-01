@@ -3,7 +3,7 @@
  "street": "Danie Theronstraat",
  "library": "transvaalbuurt",
  "stripDate": "2020-04-29",
- "seconds": 2.31,
+ "seconds": 2.56,
  "thresholds": {
   "minScore": 0.7,
   "margin": 0.05,
@@ -13,7 +13,26 @@
   "widthSlackM": 0.4,
   "flatRoofRiseM": 1.5
  },
- "runs": [],
+ "runs": [
+  {
+   "face": "theron-9-37-r1",
+   "pands": [
+    "0363100012138289",
+    "0363100012148172"
+   ],
+   "installed": true
+  },
+  {
+   "face": "theron-9-37-r2",
+   "pands": [
+    "0363100012137971",
+    "0363100012139446",
+    "0363100012140487",
+    "0363100012125668"
+   ],
+   "installed": true
+  }
+ ],
  "pands": [
   {
    "pandId": "0363100012114231",
@@ -57,36 +76,8 @@
     "foliageShare": 0.59
    },
    "status": "held",
-   "stage": "match",
-   "reason": "every type vetoed (best transvaal-1911-five-storey-tall: built 1928, type 1908-1914; frontage 12.06 m, type 4.8-11 m)",
-   "best": {
-    "type": "transvaal-1911-five-storey-tall",
-    "score": 0,
-    "veto": [
-     "built 1928, type 1908-1914",
-     "frontage 12.06 m, type 4.8-11 m"
-    ],
-    "criteria": [
-     {
-      "key": "eaves",
-      "weight": 2,
-      "score": 0.5,
-      "note": "3DBAG eaves 12.95 m = 4 storeys of 3.24 m vs the type's 3.55 m"
-     },
-     {
-      "key": "storeys",
-      "weight": 1,
-      "score": 1,
-      "note": "3DBAG bouwlagen 5 vs 5"
-     },
-     {
-      "key": "stucco",
-      "weight": 2,
-      "score": null,
-      "note": "no strip"
-     }
-    ]
-   },
+   "stage": "run",
+   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
    "likeness": null,
    "challengers": {}
   },
@@ -96,85 +87,16 @@
    "builtYear": 1927,
    "widthM": 11.92,
    "eavesM": 12.96,
-   "storeys3dbag": 5,
-   "bagBay": null,
-   "strip": {
-    "wall": "#655951",
-    "wallRaw": "#4b4633",
-    "skyline": {
-     "eavesM": 0,
-     "eavesRow": 758,
-     "confidence": 0.25,
-     "crown": null
-    },
-    "stucco": false,
-    "bands": 1,
-    "columns": 3,
-    "frontClass": "punched",
-    "doorSide": "left",
-    "accentSide": "right",
-    "accentShare": 0.01,
-    "structure": {
-     "bayWidthM": 0,
-     "bayCentre": null,
-     "balconies": true,
-     "why": "dark open axis 0.88 m at 0.43 (light 0.07): no brick spandrel between the storeys",
-     "openAxes": [
-      {
-       "widthM": 0.88,
-       "centre": 0.43,
-       "light": 0.07
-      },
-      {
-       "widthM": 4.1,
-       "centre": 0.81,
-       "light": 0.26
-      }
-     ],
-     "slabs": [
-      {
-       "atM": 6.38,
-       "widthM": 1.13,
-       "centre": 0.05
-      }
-     ]
-    },
-    "voidShare": 0,
-    "foliageShare": 0.54
+   "status": "placed",
+   "type": "transvaal-1926-band-row",
+   "placement": {
+    "type": "transvaal-1926-band-row",
+    "mirror": true,
+    "paletteOverrides": {
+     "brick": "#433d37"
+    }
    },
-   "status": "held",
-   "stage": "match",
-   "reason": "every type vetoed (best transvaal-1911-five-storey-tall: built 1927, type 1908-1914; frontage 11.92 m, type 4.8-11 m)",
-   "best": {
-    "type": "transvaal-1911-five-storey-tall",
-    "score": 0,
-    "veto": [
-     "built 1927, type 1908-1914",
-     "frontage 11.92 m, type 4.8-11 m"
-    ],
-    "criteria": [
-     {
-      "key": "eaves",
-      "weight": 2,
-      "score": 0.5,
-      "note": "3DBAG eaves 12.96 m = 4 storeys of 3.24 m vs the type's 3.55 m"
-     },
-     {
-      "key": "storeys",
-      "weight": 1,
-      "score": 1,
-      "note": "3DBAG bouwlagen 5 vs 5"
-     },
-     {
-      "key": "stucco",
-      "weight": 2,
-      "score": null,
-      "note": "no strip"
-     }
-    ]
-   },
-   "likeness": null,
-   "challengers": {}
+   "installed": "theron-9-37-r1"
   },
   {
    "pandId": "0363100012148172",
@@ -182,85 +104,20 @@
    "builtYear": 1927,
    "widthM": 11.92,
    "eavesM": 12.94,
-   "storeys3dbag": 5,
-   "bagBay": null,
-   "strip": {
-    "wall": "#716357",
-    "wallRaw": "#544b43",
-    "skyline": {
-     "eavesM": 18.55,
-     "eavesRow": 16,
-     "confidence": 0.33,
-     "crown": null
+   "status": "placed",
+   "type": "transvaal-1926-band-row",
+   "placement": {
+    "type": "transvaal-1926-band-row",
+    "mirror": true,
+    "measuredPalette": {
+     "brick": "#716357",
+     "evidence": "strip 2020-04-29 span 959-1436: trim-normalised wall (buildingRecipe/measureFacade.ts)"
     },
-    "stucco": false,
-    "bands": 1,
-    "columns": 6,
-    "frontClass": "punched",
-    "doorSide": "left",
-    "accentSide": "left",
-    "accentShare": 0.029,
-    "structure": {
-     "bayWidthM": 0,
-     "bayCentre": null,
-     "balconies": false,
-     "why": "no dark open axis, 1 wide slab(s)",
-     "openAxes": [],
-     "slabs": [
-      {
-       "atM": 7.17,
-       "widthM": 2.85,
-       "centre": 0.13
-      },
-      {
-       "atM": 5.22,
-       "widthM": 1,
-       "centre": 0.83
-      }
-     ]
-    },
-    "voidShare": 0,
-    "foliageShare": 0.07
+    "paletteOverrides": {
+     "brick": "#433d37"
+    }
    },
-   "status": "held",
-   "stage": "match",
-   "reason": "every type vetoed (best transvaal-1911-five-storey-tall: built 1927, type 1908-1914; frontage 11.92 m, type 4.8-11 m)",
-   "best": {
-    "type": "transvaal-1911-five-storey-tall",
-    "score": 0,
-    "veto": [
-     "built 1927, type 1908-1914",
-     "frontage 11.92 m, type 4.8-11 m"
-    ],
-    "criteria": [
-     {
-      "key": "eaves",
-      "weight": 2,
-      "score": 0.5,
-      "note": "3DBAG eaves 12.94 m = 4 storeys of 3.23 m vs the type's 3.55 m"
-     },
-     {
-      "key": "storeys",
-      "weight": 1,
-      "score": 1,
-      "note": "3DBAG bouwlagen 5 vs 5"
-     },
-     {
-      "key": "stucco",
-      "weight": 2,
-      "score": 1,
-      "note": "strip accent share 0.023 (brick)"
-     },
-     {
-      "key": "columns",
-      "weight": 1.5,
-      "score": 0,
-      "note": "strip columns 6 vs 4 bays"
-     }
-    ]
-   },
-   "likeness": null,
-   "challengers": {}
+   "installed": "theron-9-37-r1"
   },
   {
    "pandId": "0363100012119062",
@@ -304,35 +161,8 @@
     "foliageShare": 0.14
    },
    "status": "held",
-   "stage": "match",
-   "reason": "every type vetoed (best transvaal-1911-five-storey-tall: built 1927, type 1908-1914)",
-   "best": {
-    "type": "transvaal-1911-five-storey-tall",
-    "score": 0,
-    "veto": [
-     "built 1927, type 1908-1914"
-    ],
-    "criteria": [
-     {
-      "key": "eaves",
-      "weight": 2,
-      "score": 0.5,
-      "note": "3DBAG eaves 13.06 m = 4 storeys of 3.27 m vs the type's 3.55 m"
-     },
-     {
-      "key": "storeys",
-      "weight": 1,
-      "score": 0,
-      "note": "3DBAG bouwlagen 4 vs 5"
-     },
-     {
-      "key": "stucco",
-      "weight": 2,
-      "score": 1,
-      "note": "strip accent share 0.002 (brick)"
-     }
-    ]
-   },
+   "stage": "review",
+   "reason": "review: Danie Theronstraat 21 is under yellow scaffold netting on the 2020-04-29 strip: the measured wall #56481f is the netting, and the model draws an olive front (theron-9-37-r1 sheet, 2026-11-01); the front itself is the band row, so a palette pin or a later strip would release it",
    "likeness": null,
    "challengers": {}
   },
@@ -342,78 +172,16 @@
    "builtYear": 1927,
    "widthM": 6.02,
    "eavesM": 13.08,
-   "storeys3dbag": 5,
-   "bagBay": null,
-   "strip": {
-    "wall": "#706360",
-    "wallRaw": "#4d4c31",
-    "skyline": {
-     "eavesM": 0,
-     "eavesRow": 758,
-     "confidence": 0.25,
-     "crown": null
-    },
-    "stucco": false,
-    "bands": 0,
-    "columns": 5,
-    "frontClass": "punched",
-    "doorSide": "right",
-    "accentSide": "right",
-    "accentShare": 0.015,
-    "structure": {
-     "bayWidthM": 0,
-     "bayCentre": null,
-     "balconies": false,
-     "why": "no dark open axis, 0 wide slab(s)",
-     "openAxes": [],
-     "slabs": [
-      {
-       "atM": 8.05,
-       "widthM": 1,
-       "centre": 0.38
-      },
-      {
-       "atM": 7.15,
-       "widthM": 0.95,
-       "centre": 0.76
-      }
-     ]
-    },
-    "voidShare": 0,
-    "foliageShare": 0.67
+   "status": "placed",
+   "type": "transvaal-1926-band-row",
+   "placement": {
+    "type": "transvaal-1926-band-row",
+    "mirror": true,
+    "paletteOverrides": {
+     "brick": "#433d37"
+    }
    },
-   "status": "held",
-   "stage": "match",
-   "reason": "every type vetoed (best transvaal-1911-five-storey-tall: built 1927, type 1908-1914)",
-   "best": {
-    "type": "transvaal-1911-five-storey-tall",
-    "score": 0,
-    "veto": [
-     "built 1927, type 1908-1914"
-    ],
-    "criteria": [
-     {
-      "key": "eaves",
-      "weight": 2,
-      "score": 1,
-      "note": "3DBAG eaves 13.08 m = 4 storeys of 3.27 m vs the type's 3.55 m"
-     },
-     {
-      "key": "storeys",
-      "weight": 1,
-      "score": 1,
-      "note": "3DBAG bouwlagen 5 vs 5"
-     },
-     {
-      "key": "stucco",
-      "weight": 2,
-      "score": null,
-      "note": "no strip"
-     }
-    ]
-   },
-   "likeness": null,
-   "challengers": {}
+   "installed": "theron-9-37-r2"
   },
   {
    "pandId": "0363100012139446",
@@ -421,85 +189,19 @@
    "builtYear": 1927,
    "widthM": 12.04,
    "eavesM": 12.99,
-   "storeys3dbag": 5,
-   "bagBay": null,
-   "strip": {
-    "wall": "#77675e",
-    "wallRaw": "#5d5249",
-    "skyline": {
-     "eavesM": 14.1,
-     "eavesRow": 194,
-     "confidence": 0.64,
-     "crown": {
-      "widthM": 1.82,
-      "riseM": 4.8,
-      "topWidthM": 1.82,
-      "centre": 0.35
-     }
+   "status": "placed",
+   "type": "transvaal-1926-band-row",
+   "placement": {
+    "type": "transvaal-1926-band-row",
+    "measuredPalette": {
+     "brick": "#77675e",
+     "evidence": "strip 2020-04-29 span 1917-2399: trim-normalised wall (buildingRecipe/measureFacade.ts)"
     },
-    "stucco": false,
-    "bands": 2,
-    "columns": 3,
-    "frontClass": "punched",
-    "doorSide": "right",
-    "accentSide": null,
-    "accentShare": 0.057,
-    "structure": {
-     "bayWidthM": 0,
-     "bayCentre": null,
-     "balconies": false,
-     "why": "no dark open axis, 1 wide slab(s)",
-     "openAxes": [],
-     "slabs": [
-      {
-       "atM": 7.22,
-       "widthM": 2.95,
-       "centre": 0.13
-      }
-     ]
-    },
-    "voidShare": 0,
-    "foliageShare": 0.1
+    "paletteOverrides": {
+     "brick": "#433d37"
+    }
    },
-   "status": "held",
-   "stage": "match",
-   "reason": "every type vetoed (best transvaal-1911-five-storey-tall: built 1927, type 1908-1914; frontage 12.04 m, type 4.8-11 m)",
-   "best": {
-    "type": "transvaal-1911-five-storey-tall",
-    "score": 0,
-    "veto": [
-     "built 1927, type 1908-1914",
-     "frontage 12.04 m, type 4.8-11 m"
-    ],
-    "criteria": [
-     {
-      "key": "eaves",
-      "weight": 2,
-      "score": 0.5,
-      "note": "3DBAG eaves 12.99 m = 4 storeys of 3.25 m vs the type's 3.55 m"
-     },
-     {
-      "key": "storeys",
-      "weight": 1,
-      "score": 1,
-      "note": "3DBAG bouwlagen 5 vs 5"
-     },
-     {
-      "key": "stucco",
-      "weight": 2,
-      "score": 1,
-      "note": "strip accent share 0.054 (brick)"
-     },
-     {
-      "key": "columns",
-      "weight": 1.5,
-      "score": 0.4,
-      "note": "strip columns 3 vs 4 bays"
-     }
-    ]
-   },
-   "likeness": null,
-   "challengers": {}
+   "installed": "theron-9-37-r2"
   },
   {
    "pandId": "0363100012140487",
@@ -507,79 +209,19 @@
    "builtYear": 1927,
    "widthM": 6.02,
    "eavesM": 13.04,
-   "storeys3dbag": 5,
-   "bagBay": null,
-   "strip": {
-    "wall": "#786a65",
-    "wallRaw": "#5e524b",
-    "skyline": {
-     "eavesM": 14.1,
-     "eavesRow": 194,
-     "confidence": 1,
-     "crown": null
+   "status": "placed",
+   "type": "transvaal-1926-band-row",
+   "placement": {
+    "type": "transvaal-1926-band-row",
+    "measuredPalette": {
+     "brick": "#786a65",
+     "evidence": "strip 2020-04-29 span 2399-2640: trim-normalised wall (buildingRecipe/measureFacade.ts)"
     },
-    "stucco": false,
-    "bands": 3,
-    "columns": 3,
-    "frontClass": "punched",
-    "doorSide": "left",
-    "accentSide": null,
-    "accentShare": 0.049,
-    "structure": {
-     "bayWidthM": 0,
-     "bayCentre": null,
-     "balconies": false,
-     "why": "no dark open axis, 1 wide slab(s)",
-     "openAxes": [],
-     "slabs": [
-      {
-       "atM": 7.35,
-       "widthM": 2.73,
-       "centre": 0.31
-      }
-     ]
-    },
-    "voidShare": 0,
-    "foliageShare": 0.12
+    "paletteOverrides": {
+     "brick": "#433d37"
+    }
    },
-   "status": "held",
-   "stage": "match",
-   "reason": "every type vetoed (best transvaal-1911-five-storey-tall: built 1927, type 1908-1914)",
-   "best": {
-    "type": "transvaal-1911-five-storey-tall",
-    "score": 0,
-    "veto": [
-     "built 1927, type 1908-1914"
-    ],
-    "criteria": [
-     {
-      "key": "eaves",
-      "weight": 2,
-      "score": 0.5,
-      "note": "3DBAG eaves 13.04 m = 4 storeys of 3.26 m vs the type's 3.55 m"
-     },
-     {
-      "key": "storeys",
-      "weight": 1,
-      "score": 1,
-      "note": "3DBAG bouwlagen 5 vs 5"
-     },
-     {
-      "key": "stucco",
-      "weight": 2,
-      "score": 1,
-      "note": "strip accent share 0.045 (brick)"
-     },
-     {
-      "key": "columns",
-      "weight": 1.5,
-      "score": 1,
-      "note": "strip columns 3 vs 3 bays"
-     }
-    ]
-   },
-   "likeness": null,
-   "challengers": {}
+   "installed": "theron-9-37-r2"
   },
   {
    "pandId": "0363100012125668",
@@ -587,78 +229,20 @@
    "builtYear": 1927,
    "widthM": 6.24,
    "eavesM": 13.01,
-   "storeys3dbag": 5,
-   "bagBay": null,
-   "strip": {
-    "wall": "#7c6a64",
-    "wallRaw": "#594f46",
-    "skyline": {
-     "eavesM": 14.18,
-     "eavesRow": 191,
-     "confidence": 1,
-     "crown": {
-      "widthM": 2.8,
-      "riseM": 2.35,
-      "topWidthM": 0.03,
-      "centre": 0.76
-     }
+   "status": "placed",
+   "type": "transvaal-1926-band-row",
+   "placement": {
+    "type": "transvaal-1926-band-row",
+    "measuredPalette": {
+     "brick": "#7c6a64",
+     "evidence": "strip 2020-04-29 span 2640-2890: trim-normalised wall (buildingRecipe/measureFacade.ts)"
     },
-    "stucco": false,
-    "bands": 0,
-    "columns": null,
-    "frontClass": "punched",
-    "doorSide": null,
-    "accentSide": null,
-    "accentShare": 0.017,
-    "structure": {
-     "bayWidthM": 0,
-     "bayCentre": null,
-     "balconies": false,
-     "why": "no dark open axis, 1 wide slab(s)",
-     "openAxes": [],
-     "slabs": [
-      {
-       "atM": 7.38,
-       "widthM": 2.58,
-       "centre": 0.66
-      }
-     ]
-    },
-    "voidShare": 0,
-    "foliageShare": 0.25
+    "mirror": true,
+    "paletteOverrides": {
+     "brick": "#433d37"
+    }
    },
-   "status": "held",
-   "stage": "match",
-   "reason": "every type vetoed (best transvaal-1911-five-storey-tall: built 1927, type 1908-1914)",
-   "best": {
-    "type": "transvaal-1911-five-storey-tall",
-    "score": 0,
-    "veto": [
-     "built 1927, type 1908-1914"
-    ],
-    "criteria": [
-     {
-      "key": "eaves",
-      "weight": 2,
-      "score": 0.5,
-      "note": "3DBAG eaves 13.01 m = 4 storeys of 3.25 m vs the type's 3.55 m"
-     },
-     {
-      "key": "storeys",
-      "weight": 1,
-      "score": 1,
-      "note": "3DBAG bouwlagen 5 vs 5"
-     },
-     {
-      "key": "stucco",
-      "weight": 2,
-      "score": 1,
-      "note": "strip accent share 0.014 (brick)"
-     }
-    ]
-   },
-   "likeness": null,
-   "challengers": {}
+   "installed": "theron-9-37-r2"
   },
   {
    "pandId": "0363100012108544",
@@ -701,41 +285,8 @@
     "foliageShare": 0.04
    },
    "status": "held",
-   "stage": "match",
-   "reason": "every type vetoed (best transvaal-1911-five-storey-tall: built 1928, type 1908-1914)",
-   "best": {
-    "type": "transvaal-1911-five-storey-tall",
-    "score": 0,
-    "veto": [
-     "built 1928, type 1908-1914"
-    ],
-    "criteria": [
-     {
-      "key": "eaves",
-      "weight": 2,
-      "score": 0.5,
-      "note": "3DBAG eaves 12.4 m = 4 storeys of 3.1 m vs the type's 3.55 m"
-     },
-     {
-      "key": "storeys",
-      "weight": 1,
-      "score": 1,
-      "note": "3DBAG bouwlagen 5 vs 5"
-     },
-     {
-      "key": "stucco",
-      "weight": 2,
-      "score": 1,
-      "note": "strip accent share 0.09 (brick)"
-     },
-     {
-      "key": "columns",
-      "weight": 1.5,
-      "score": 0,
-      "note": "strip columns 5 vs 3 bays"
-     }
-    ]
-   },
+   "stage": "review",
+   "reason": "review: Danie Theronstraat 33-35 (BAG 1928, 8.7 m) is the end block's own front: three wide windows and a narrow one per storey, no white bands, a taller parapet; transvaal-1926-band-row draws the band row (theron-9-37-r1 sheet, 2026-11-01; NCC 0.20)",
    "likeness": null,
    "challengers": {}
   },

@@ -54,7 +54,7 @@ export function addGroundCanopies(group: T.Group, intent: CanalHouseIntent, reci
     const doors = openings.filter(o => o.kind === 'door' && o.bottomM < 0.5);
     // A light over a door (its transom) belongs to the doorway: the slab goes over both.
     // A staircase light (`stairLight`, its ids `stair-light-*`) rising from over the door is not its transom: the slab goes under it.
-  const overDoor = (o: typeof openings[number]) => o.id.startsWith('stair-light') ? undefined : doors.find(d => o !== d && o.leftM >= d.leftM - 0.05 && o.leftM + o.widthM <= d.leftM + d.widthM + 0.05 && o.bottomM >= head(d) - 0.3);
+  const overDoor = (o: typeof openings[number]) => o.id.startsWith('stair-light') || (c.groundTransomOnly && o.bottomM >= firstStorey) ? undefined : doors.find(d => o !== d && o.leftM >= d.leftM - 0.05 && o.leftM + o.widthM <= d.leftM + d.widthM + 0.05 && o.bottomM >= head(d) - 0.3);
     for (const o of openings) {
       const isDoor = doors.includes(o), isWindow = o.kind === 'window' && head(o) < firstStorey && !overDoor(o);
       if (!(isDoor && over.includes('door')) && !(isWindow && over.includes('windows'))) continue;

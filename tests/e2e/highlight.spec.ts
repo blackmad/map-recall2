@@ -11,6 +11,7 @@
 import { test, expect, type Page } from '@playwright/test';
 import sharp from 'sharp';
 import { openRoute } from './helpers';
+import { OWN } from './worldCam';
 
 const ANNE_FRANK = 'extract_landmarks_614625734';
 const CORAL: [number, number, number] = [255, 128, 51];
@@ -49,8 +50,8 @@ async function park(page: Page, waitForThree = true): Promise<any> {
     g._lastDriveByAt = Infinity; // no drive-by card takes the highlight from here on
     g.vectorMap.setActiveLandmark(null);
     g._landmarkNotice = null;
-    const map = g.vectorMap.map, canvas = map.getCanvas();
-    for (const layer of map.getStyle().layers) if (layer.type === 'symbol') map.setLayoutProperty(layer.id, 'visibility', 'none');
+    const map = g.vectorMap.map ?? g.vectorMap.cameraMap, canvas = map.getCanvas();
+    if (g.vectorMap.map) { for (const layer of map.getStyle().layers) if (layer.type === 'symbol') map.setLayoutProperty(layer.id, 'visibility', 'none'); } else g.vectorMap.setLabelsVisible(false);
     for (const e of Array.from(document.body.querySelectorAll('*'))) if (e !== canvas && !e.contains(canvas)) (e as HTMLElement).style.visibility = 'hidden';
   });
   return landmark;
@@ -62,20 +63,21 @@ const FRAMES = [
 ];
 for (const frame of FRAMES) {
   test(`highlight (default a): the destination is found by its accent (${frame.name})`, async ({ page }, info) => {
+    test.skip(OWN, 'MapLibre style assertion: deleted with the default path at P5');
     test.skip(info.project.name !== 'desktop' && frame.name !== 'default frame', 'phone: the default frame');
     test.setTimeout(240_000);
     await openRoute(page, { travelMode: 'car', viewMode: 'chase', query: frame.query, abortHeavyTiles: true });
     const fallback = frame.name === 'MapLibre fallback';
     const landmark = await park(page, !fallback);
-    const canvas = page.locator('canvas.maplibregl-canvas').first();
+    const canvas = page.locator('canvas.maplibregl-canvas, canvas.engine-canvas').first();
     const scale = await page.evaluate(() => window.devicePixelRatio);
     const before = await colourPixels(await canvas.screenshot(), CORAL, scale);
     const state: any = await page.evaluate((l) => {
       const vm = (window as any).canalRecallGame.vectorMap;
       vm.setActiveLandmark(l);
-      const at = vm.map.project(l.lngLat);
+      const at = vm.camera.project(l.lngLat);
       return { at: [at.x, at.y], models: (vm._signatureLandmarks?._entries ?? []).filter((e: any) => e.highlighted).length, extrusions: vm._threeBuildings?.highlighted?.size ?? 0,
-        owns: vm._threeOwnsTops(), states: vm._highlightedBuildings.map((t: any) => vm.map.getFeatureState(t)) };
+        owns: vm._threeOwnsTops(), states: vm._highlightedBuildings.map((t: any) => (vm.map ?? vm.cameraMap).getFeatureState(t)) };
     }, landmark);
     await page.waitForTimeout(1500);
     // The hull's footprint arrives asynchronously (GeoJSONSource.getData), so read the marker after the wait.
@@ -119,6 +121,7 @@ for (const frame of FRAMES) {
 // bring it to at least 0.3 %; the facade keeps its own colours and no street name is shown.
 const TERRACE = { pand: 'NL.IMBAG.Pand.0363100012236453', pick: [4.87177, 52.36696] as [number, number], standDeg: 7, standM: 60 };
 test('highlight (default a): a terrace house from the chase camera carries ≥ 0.3 % accent pixels (small-target boost)', async ({ page }, info) => {
+  test.skip(OWN, 'MapLibre style assertion: deleted with the default path at P5');
   test.skip(info.project.name !== 'desktop', 'desktop frame, as the sheets');
   test.setTimeout(240_000);
   await page.setViewportSize({ width: 1280, height: 800 });
@@ -141,11 +144,11 @@ test('highlight (default a): a terrace house from the chase camera carries ≥ 0
     g._lastDriveByAt = Infinity;
     g.vectorMap.setActiveLandmark(null);
     g._landmarkNotice = null;
-    const map = g.vectorMap.map, canvas = map.getCanvas();
-    for (const layer of map.getStyle().layers) if (layer.type === 'symbol') map.setLayoutProperty(layer.id, 'visibility', 'none');
+    const map = g.vectorMap.map ?? g.vectorMap.cameraMap, canvas = map.getCanvas();
+    if (g.vectorMap.map) { for (const layer of map.getStyle().layers) if (layer.type === 'symbol') map.setLayoutProperty(layer.id, 'visibility', 'none'); } else g.vectorMap.setLabelsVisible(false);
     for (const e of Array.from(document.body.querySelectorAll('*'))) if (e !== canvas && !e.contains(canvas)) (e as HTMLElement).style.visibility = 'hidden';
   });
-  const canvas = page.locator('canvas.maplibregl-canvas').first();
+  const canvas = page.locator('canvas.maplibregl-canvas, canvas.engine-canvas').first();
   const scale = await page.evaluate(() => window.devicePixelRatio);
   const before = await colourPixels(await canvas.screenshot(), CORAL, scale, 60);
   await page.evaluate(({ pand, pick }) => (window as any).canalRecallGame.vectorMap.setActiveLandmark({
@@ -174,7 +177,7 @@ test('highlight=yellow: the old yellow comparison still paints the destination',
   test.setTimeout(240_000);
   await openRoute(page, { travelMode: 'car', viewMode: 'chase', query: '?highlight=yellow', abortHeavyTiles: true });
   const landmark = await park(page);
-  const canvas = page.locator('canvas.maplibregl-canvas').first();
+  const canvas = page.locator('canvas.maplibregl-canvas, canvas.engine-canvas').first();
   const scale = await page.evaluate(() => window.devicePixelRatio);
   const before = await colourPixels(await canvas.screenshot(), YELLOW, scale, 40);
   const marker = await page.evaluate((l) => { const vm = (window as any).canalRecallGame.vectorMap; vm.setActiveLandmark(l); return !!vm._highlightMarker; }, landmark);

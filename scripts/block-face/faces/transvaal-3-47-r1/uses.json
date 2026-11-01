@@ -1,0 +1,41 @@
+{
+ "street": "Transvaalstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-31T17:08:33.086Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012093192",
+   "addresses": [
+    "Transvaalstraat 39"
+   ],
+   "groundUnits": [
+    {
+     "address": "Transvaalstraat 39-H",
+     "use": "woonfunctie",
+     "areaM2": 69,
+     "bagId": "0363010000830535"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012146296",
+   "addresses": [
+    "Transvaalstraat 41"
+   ],
+   "groundUnits": [
+    {
+     "address": "Transvaalstraat 41-H",
+     "use": "woonfunctie",
+     "areaM2": 66,
+     "bagId": "0363010000830543"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  }
+ ]
+}

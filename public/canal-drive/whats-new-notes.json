@@ -3,6 +3,169 @@
   "notes": [
     {
       "date": "2026-11-01",
+      "title": "Amsterdam's buildings now load from compiled city cells",
+      "text": "The ride used to download the city's buildings as map tiles and work out their roofs, colours and neighbours on your device while you rode. The whole city is now compiled in advance into 9.7 MB of cells; a ride fetches only the cells around it, and the game's workers unpack them off the main thread. The buildings themselves do not change: at the five check spots the picture is pixel-identical to the old path. Expect fewer hitches as new streets stream in. If anything looks wrong, add ?world=live to the address to ride the old path and tell us."
+    },
+    {
+      "date": "2026-11-01",
+      "title": "The bike leans into its turns, and only as much as the turn",
+      "text": "Since the lean arrived on 30 October a tap on a steering key rolled the bike to its full 19° at once, and onto the outside of the turn, so from the chase camera it looked like it had fallen over while riding straight. The lean now follows the turn the bike is actually making (speed times yaw rate, as a real bicycle does), stays at zero while the bike rides straight however the key is held, and rolls into the turn.",
+      "images": [
+        {
+          "src": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/whats-new/2026-11-01-bike-lean-before.jpg",
+          "alt": "Before: the bike rolled almost flat onto its left side during a held right turn, seen from the chase camera",
+          "caption": "Before: a held right turn rolled the bike flat, to the outside."
+        },
+        {
+          "src": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/whats-new/2026-11-01-bike-lean-after.jpg",
+          "alt": "After: the bike upright and leaning slightly into the same held right turn",
+          "caption": "After: the same turn, upright with a slight lean into it."
+        }
+      ]
+    },
+    {
+      "date": "2026-11-01",
+      "title": "Transvaalbuurt: the 1930 stair towers, Afrikanerplein and Schalk Burgerstraat",
+      "text": "Three more Transvaalbuurt designs are drawn from measured types: the 1930 blocks on Albert Luthulistraat 6–32 with their stair towers rising over the coping and canopied red doors, the plain 1931 five-storey grid of Afrikanerplein 33–49 with its striped ground band, and the 1931 diaper-brick rows of Schalk Burgerstraat 59–71 and 99–111 with teal doors and paired windows. 22 more pands, 79 in the buurt. The 1922 loggia rows have their type and a new loggia kit part but stay held: their porches step 0.65 m out of the surveyed wall, more than the kit allows. Alongside, five block-face pipeline faults from the last round are fixed, and one is visible: Hasebroekstraat 28 in Bellamybuurt was drawn with a bar front because a public bookcase on the pavement matched a pub; it is a house again.",
+      "where": [
+        4.91985,
+        52.353
+      ],
+      "images": [
+        {
+          "src": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/whats-new/2026-11-01-transvaalbuurt-luthuli-6-20-strip.jpg",
+          "alt": "Albert Luthulistraat 6-20 panorama strip over the model: 1930 block with two stair towers",
+          "caption": "Albert Luthulistraat 6–20, strip over model."
+        },
+        {
+          "src": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/whats-new/2026-11-01-transvaalbuurt-5b-luthulistraat-6-20.jpg",
+          "alt": "Albert Luthulistraat 6-20 from the street in the game",
+          "caption": "The same block from the street."
+        },
+        {
+          "src": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/whats-new/2026-11-01-transvaalbuurt-afrikanerplein-strip.jpg",
+          "alt": "Afrikanerplein 25-55 strip over the model: plain five-storey grid with a striped ground band",
+          "caption": "Afrikanerplein 33–49, strip over model."
+        },
+        {
+          "src": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/whats-new/2026-11-01-transvaalbuurt-burger-45-131-strip.jpg",
+          "alt": "Schalk Burgerstraat 45-131 strip over the model: diaper-brick rows with teal doors",
+          "caption": "Schalk Burgerstraat 59–71 and 99–111, strip over model."
+        },
+        {
+          "src": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/whats-new/2026-11-01-hasebroek-28-before.jpg",
+          "alt": "Hasebroekstraat 2-46 review sheet before: house 28 drawn with a bar shopfront",
+          "caption": "Hasebroekstraat 28 before: a bar front from a public bookcase."
+        },
+        {
+          "src": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/whats-new/2026-11-01-hasebroek-28-after.jpg",
+          "alt": "Hasebroekstraat 2-46 review sheet after: house 28 drawn with a door and windows",
+          "caption": "After: a house front."
+        }
+      ]
+    },
+    {
+      "date": "2026-11-01",
+      "title": "One phrase for the modelled buildings",
+      "text": "The landing page, the neighbourhood pages and the model credits now all say \"individually modelled\" where some still said \"modelled by hand\" or \"hand-built\". The stat strip reads \"510+ individually modelled buildings\", the open-data figure says landmarks are individually modelled from photographs, and kit-built landmarks on the neighbourhood pages carry a \"Kit-built landmark\" badge."
+    },
+    {
+      "date": "2026-11-01",
+      "title": "Transvaalbuurt: five more designs, 44 more fronts",
+      "text": "Four lanes ran at once on the buurt's remaining families. Danie Theronstraat and President Steynstraat (1926–1928) now draw their band-window rows with the top ribbon of windows between white bands and the portiek canopies; De la Reijstraat 29–37 and Kraaipanstraat get the 1920 three-storey oriel rows with cream bays and dark blue doors; Retiefstraat 194–268 and Transvaalkade the plain 1921 five-storey row; Vaalrivierstraat 4–12 and Kraaipanstraat 63–65 the 1931 two-storey rows with blue door pairs. The 1911 rows gained their low shouldered gable, a gable shared by two houses (Transvaalstraat 42–44) and a white timber dormer that keeps its glass inside the roof (Transvaalstraat 39–41), and Retiefstraat 71D–73A were redrawn with the shouldered gables the photo shows. A stair block of five metres or more may now stand alone, which released four single pands. 44 new pands, 57 in the buurt so far; the rest are held with a reason each until the kit can draw them.",
+      "where": [
+        4.9156,
+        52.35205
+      ],
+      "images": [
+        {
+          "src": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/whats-new/2026-11-01-transvaalbuurt-theronstraat-before.jpg",
+          "alt": "Danie Theronstraat 25-31 before: generic gabled city-tier houses",
+          "caption": "Danie Theronstraat 25–31 before."
+        },
+        {
+          "src": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/whats-new/2026-11-01-transvaalbuurt-theronstraat-after.jpg",
+          "alt": "Danie Theronstraat 25-31 after: the flat-roofed 1926 band-window row",
+          "caption": "After: the 1926 band-window row."
+        },
+        {
+          "src": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/whats-new/2026-11-01-transvaalbuurt-theronstraat-strip.jpg",
+          "alt": "Panorama strip of Danie Theronstraat 2-36 over the model at the same scale",
+          "caption": "The 2020 panorama strip over the model, same frame and scale."
+        },
+        {
+          "src": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/whats-new/2026-11-01-transvaalbuurt-de-la-reijstraat.jpg",
+          "alt": "De la Reijstraat 29-37 from the street: three-storey oriel row with cream bays",
+          "caption": "De la Reijstraat 29–37, the 1920 oriel row."
+        },
+        {
+          "src": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/whats-new/2026-11-01-transvaalbuurt-vaalrivierstraat-strip.jpg",
+          "alt": "Vaalrivierstraat 4-12 strip over the model: two-storey row with blue door pairs",
+          "caption": "Vaalrivierstraat 4–12, strip over model."
+        }
+      ]
+    },
+    {
+      "date": "2026-11-01",
+      "title": "Under the new engine, the ride starts with the street around you drawn",
+      "text": "On the new engine (?engine=own) the ride could begin with only a couple of blocks drawn and the rest arriving over the next seconds, because behind the loading screen the buildings were styled far too slowly. The hold now finishes styling first and waits for the facades around you to be in place."
+    },
+    {
+      "date": "2026-11-01",
+      "title": "No colour step at the edge of the detailed city",
+      "text": "The simplified ground beyond the detailed area now uses the same asphalt, klinker and pavement colours as the streets around you, so the roads no longer change colour in the distance, as they did by the RAI.",
+      "where": [
+        4.8905,
+        52.342
+      ]
+    },
+    {
+      "date": "2026-11-01",
+      "title": "Surprise rides no longer finish next to the start",
+      "text": "A surprise ride could draw a finish 45 metres from its start (Micropia and Artis share a street), fail with \"Start and finish are too close\" and drop you back at setup. The picker now draws again among places at least 200 metres away; rides that already worked start exactly as before."
+    },
+    {
+      "date": "2026-11-01",
+      "title": "Fewer hitches as new facades arrive",
+      "text": "The work that prepares a block of facades for drawing (sorting its footprints into tiles, finding each house's neighbours, matching streets) does the same job in a third to a half of the time, with identical results. On a slow machine the longest hitch while riding through the Jordaan dropped from a tenth of a second to about half that."
+    },
+    {
+      "date": "2026-11-01",
+      "title": "Transvaalbuurt's 1911 rows start to appear",
+      "text": "Four stretches of the 1908–1914 five-storey rows on Retiefstraat 69–73 and Pretoriusstraat 79–87 and 86–90 are now drawn from a measured type instead of the plain city box: dark brick with white frames and stone lintels, a balcony on the centre axis of each upper storey, and a pointed gable or wall dormer where the photo shows one. Two kit fixes made this possible: a saddle roof under a pointed gable no longer overlaps the gable's brick, and a row's crown comes from its type unless the panorama's skyline is really sky (branches over the roofline used to become gables). Ten pands; the rest of the family is held until the kit can draw shared gables, white dormers and the low shouldered gables these streets favour.",
+      "where": [
+        4.91706,
+        52.35392
+      ],
+      "images": [
+        {
+          "src": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/whats-new/2026-11-01-transvaalbuurt-1911-rows.jpg",
+          "alt": "Retiefstraat 69-73 from the street: three five-storey brick fronts with pointed tile gables among the plain city-tier blocks",
+          "caption": "Retiefstraat 69–73 from the street, the first 1911 rows."
+        },
+        {
+          "src": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/whats-new/2026-11-01-transvaalbuurt-retiefstraat-strip.jpg",
+          "alt": "Panorama strip of Retiefstraat 45-75 over the model at the same scale: only 69C-73A are drawn, the rest of the face stays generic",
+          "caption": "The 2023 panorama strip over the model at the same scale: 69C–73A drawn, the rest held."
+        }
+      ]
+    },
+    {
+      "date": "2026-11-01",
+      "title": "Clicking an ordinary building no longer freezes the ride",
+      "text": "Since building facts started loading on the first click (31 October), a click on a house with a register year but no article asked for its facts again from inside its own refresh, forever, and the page stopped responding. One request per card now; the year card opens and the rest fills in once."
+    },
+    {
+      "date": "2026-11-01",
+      "title": "Amsterdam's streets load three times faster",
+      "text": "The Amsterdam street network now arrives as a compact binary file instead of a 14 MB JSON document: the same streets, decoded bit for bit (a test pins the published file to the shipped data), fetched and parsed in about 60 ms where it took 200. Routes, turn names and the reachability of every named spot are byte-identical. Other cities keep their JSON until their binaries are published.",
+      "where": [
+        4.8952,
+        52.3702
+      ]
+    },
+    {
+      "date": "2026-11-01",
       "title": "Long routes no longer freeze as canals and bridges load",
       "text": "Preparing a new ground cell used to stall the ride for up to half a second on long routes while it tested every canal polygon and every street segment for openings under footbridges. Those tests now skip polygons and segments that cannot contain the point (same result, byte-identical across the city). On the seeded Anne Frank → Rijksmuseum ride the long tasks went from 10 to 0 and the longest frame from 600 to 68 ms; a city-wide preparation run fell from 25 to 6 s.",
       "where": [

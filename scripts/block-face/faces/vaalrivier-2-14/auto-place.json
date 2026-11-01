@@ -3,7 +3,7 @@
  "street": "Vaalrivierstraat",
  "library": "transvaalbuurt",
  "stripDate": "2020-04-29",
- "seconds": 0.8,
+ "seconds": 0.87,
  "thresholds": {
   "minScore": 0.7,
   "margin": 0.05,
@@ -13,7 +13,19 @@
   "widthSlackM": 0.4,
   "flatRoofRiseM": 1.5
  },
- "runs": [],
+ "runs": [
+  {
+   "face": "vaalrivier-2-14-r1",
+   "pands": [
+    "0363100012120724",
+    "0363100012090866",
+    "0363100012108545",
+    "0363100012090850",
+    "0363100012137594"
+   ],
+   "installed": true
+  }
+ ],
  "pands": [
   {
    "pandId": "0363100012109842",
@@ -72,41 +84,8 @@
     "foliageShare": 0
    },
    "status": "held",
-   "stage": "match",
-   "reason": "every type vetoed (best transvaal-1911-five-storey-tall: built 1931, type 1908-1914)",
-   "best": {
-    "type": "transvaal-1911-five-storey-tall",
-    "score": 0,
-    "veto": [
-     "built 1931, type 1908-1914"
-    ],
-    "criteria": [
-     {
-      "key": "eaves",
-      "weight": 2,
-      "score": 0,
-      "note": "3DBAG eaves 6.29 m = 4 storeys of 1.57 m vs the type's 3.55 m"
-     },
-     {
-      "key": "storeys",
-      "weight": 1,
-      "score": 0,
-      "note": "3DBAG bouwlagen 3 vs 5"
-     },
-     {
-      "key": "stucco",
-      "weight": 2,
-      "score": 1,
-      "note": "strip accent share 0 (brick)"
-     },
-     {
-      "key": "columns",
-      "weight": 1.5,
-      "score": 0,
-      "note": "strip columns 5 vs 3 bays"
-     }
-    ]
-   },
+   "stage": "review",
+   "reason": "review: vaalrivier-2-14-r1 sheet (#153): auto-place draws a shopfront from OSM amenity=bicycle_parking; the 2020-04-29 strip shows the row's residential front (three windows per storey, the door group at the right end)",
    "likeness": null,
    "challengers": {}
   },
@@ -116,99 +95,16 @@
    "builtYear": 1931,
    "widthM": 8.03,
    "eavesM": 6.29,
-   "storeys3dbag": 3,
-   "bagBay": {
-    "fromM": 0,
-    "toM": 2.3,
-    "depthM": 0.66,
-    "centre": 0.144,
-    "lineRD": [
-     [
-      123050.72437499999,
-      484996.46475000004
-     ],
-     [
-      123047.380375,
-      485001.08075
-     ]
-    ]
+   "status": "placed",
+   "type": "vaalrivier-1931-row",
+   "placement": {
+    "type": "vaalrivier-1931-row",
+    "measuredPalette": {
+     "brick": "#53423a",
+     "evidence": "strip 2020-04-29 span 328-648: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
    },
-   "strip": {
-    "wall": "#53423a",
-    "wallRaw": "#58473f",
-    "skyline": {
-     "eavesM": 8.9,
-     "eavesRow": 321,
-     "confidence": 1,
-     "crown": {
-      "widthM": 2.25,
-      "riseM": 2.63,
-      "topWidthM": 2.25,
-      "centre": 0.15
-     }
-    },
-    "stucco": false,
-    "bands": 0,
-    "columns": 10,
-    "frontClass": "columns",
-    "doorSide": null,
-    "accentSide": null,
-    "accentShare": 0,
-    "structure": {
-     "bayWidthM": 0,
-     "bayCentre": null,
-     "balconies": true,
-     "why": "dark open axis 7.35 m at 0.5 (light 0.07): no brick spandrel between the storeys",
-     "openAxes": [
-      {
-       "widthM": 7.35,
-       "centre": 0.5,
-       "light": 0.07
-      }
-     ],
-     "slabs": []
-    },
-    "voidShare": 0,
-    "foliageShare": 0
-   },
-   "status": "held",
-   "stage": "match",
-   "reason": "every type vetoed (best transvaal-1911-five-storey-tall: built 1931, type 1908-1914)",
-   "best": {
-    "type": "transvaal-1911-five-storey-tall",
-    "score": 0,
-    "veto": [
-     "built 1931, type 1908-1914"
-    ],
-    "criteria": [
-     {
-      "key": "eaves",
-      "weight": 2,
-      "score": 0,
-      "note": "3DBAG eaves 6.29 m = 4 storeys of 1.57 m vs the type's 3.55 m"
-     },
-     {
-      "key": "storeys",
-      "weight": 1,
-      "score": 0,
-      "note": "3DBAG bouwlagen 3 vs 5"
-     },
-     {
-      "key": "stucco",
-      "weight": 2,
-      "score": 1,
-      "note": "strip accent share 0 (brick)"
-     },
-     {
-      "key": "columns",
-      "weight": 1.5,
-      "score": 0,
-      "note": "strip columns 10 vs 3 bays"
-     }
-    ]
-   },
-   "likeness": null,
-   "challengers": {}
+   "installed": "vaalrivier-2-14-r1"
   },
   {
    "pandId": "0363100012090866",
@@ -216,99 +112,17 @@
    "builtYear": 1931,
    "widthM": 8.03,
    "eavesM": 6.22,
-   "storeys3dbag": 3,
-   "bagBay": {
-    "fromM": 5.7,
-    "toM": 8,
-    "depthM": 0.66,
-    "centre": 0.856,
-    "lineRD": [
-     [
-      123047.38037500001,
-      485001.08075
-     ],
-     [
-      123044.035375,
-      485005.69675
-     ]
-    ]
-   },
-   "strip": {
-    "wall": "#53423a",
-    "wallRaw": "#56453d",
-    "skyline": {
-     "eavesM": 12.93,
-     "eavesRow": 160,
-     "confidence": 1,
-     "crown": {
-      "widthM": 1.38,
-      "riseM": 1,
-      "topWidthM": 1.38,
-      "centre": 0.62
-     }
+   "status": "placed",
+   "type": "vaalrivier-1931-row",
+   "placement": {
+    "type": "vaalrivier-1931-row",
+    "measuredPalette": {
+     "brick": "#53423a",
+     "evidence": "strip 2020-04-29 span 648-968: trim-normalised wall (buildingRecipe/measureFacade.ts)"
     },
-    "stucco": false,
-    "bands": 0,
-    "columns": 4,
-    "frontClass": "punched",
-    "doorSide": null,
-    "accentSide": null,
-    "accentShare": 0,
-    "structure": {
-     "bayWidthM": 0,
-     "bayCentre": null,
-     "balconies": true,
-     "why": "dark open axis 7.35 m at 0.5 (light 0.07): no brick spandrel between the storeys",
-     "openAxes": [
-      {
-       "widthM": 7.35,
-       "centre": 0.5,
-       "light": 0.07
-      }
-     ],
-     "slabs": []
-    },
-    "voidShare": 0,
-    "foliageShare": 0
+    "mirror": true
    },
-   "status": "held",
-   "stage": "match",
-   "reason": "every type vetoed (best transvaal-1911-five-storey-tall: built 1931, type 1908-1914)",
-   "best": {
-    "type": "transvaal-1911-five-storey-tall",
-    "score": 0,
-    "veto": [
-     "built 1931, type 1908-1914"
-    ],
-    "criteria": [
-     {
-      "key": "eaves",
-      "weight": 2,
-      "score": 0,
-      "note": "3DBAG eaves 6.22 m = 4 storeys of 1.55 m vs the type's 3.55 m"
-     },
-     {
-      "key": "storeys",
-      "weight": 1,
-      "score": 0,
-      "note": "3DBAG bouwlagen 3 vs 5"
-     },
-     {
-      "key": "stucco",
-      "weight": 2,
-      "score": 1,
-      "note": "strip accent share 0 (brick)"
-     },
-     {
-      "key": "columns",
-      "weight": 1.5,
-      "score": 0.4,
-      "note": "strip columns 4 vs 3 bays"
-     }
-    ]
-   },
-   "likeness": null,
-   "challengers": {}
+   "installed": "vaalrivier-2-14-r1"
   },
   {
    "pandId": "0363100012108545",
@@ -316,99 +130,16 @@
    "builtYear": 1931,
    "widthM": 8.03,
    "eavesM": 6.29,
-   "storeys3dbag": 3,
-   "bagBay": {
-    "fromM": 0,
-    "toM": 2.3,
-    "depthM": 0.66,
-    "centre": 0.144,
-    "lineRD": [
-     [
-      123041.336375,
-      485009.42175000004
-     ],
-     [
-      123037.99237499999,
-      485014.03675
-     ]
-    ]
+   "status": "placed",
+   "type": "vaalrivier-1931-row",
+   "placement": {
+    "type": "vaalrivier-1931-row",
+    "measuredPalette": {
+     "brick": "#58453d",
+     "evidence": "strip 2020-04-29 span 968-1288: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
    },
-   "strip": {
-    "wall": "#58453d",
-    "wallRaw": "#5a4840",
-    "skyline": {
-     "eavesM": 8.78,
-     "eavesRow": 326,
-     "confidence": 1,
-     "crown": {
-      "widthM": 0.65,
-      "riseM": 3.35,
-      "topWidthM": 0.65,
-      "centre": 0.04
-     }
-    },
-    "stucco": false,
-    "bands": 0,
-    "columns": 3,
-    "frontClass": "ribbon",
-    "doorSide": null,
-    "accentSide": null,
-    "accentShare": 0,
-    "structure": {
-     "bayWidthM": 0,
-     "bayCentre": null,
-     "balconies": true,
-     "why": "dark open axis 7.35 m at 0.5 (light 0.06): no brick spandrel between the storeys",
-     "openAxes": [
-      {
-       "widthM": 7.35,
-       "centre": 0.5,
-       "light": 0.06
-      }
-     ],
-     "slabs": []
-    },
-    "voidShare": 0,
-    "foliageShare": 0
-   },
-   "status": "held",
-   "stage": "match",
-   "reason": "every type vetoed (best transvaal-1911-five-storey-tall: built 1931, type 1908-1914)",
-   "best": {
-    "type": "transvaal-1911-five-storey-tall",
-    "score": 0,
-    "veto": [
-     "built 1931, type 1908-1914"
-    ],
-    "criteria": [
-     {
-      "key": "eaves",
-      "weight": 2,
-      "score": 0,
-      "note": "3DBAG eaves 6.29 m = 4 storeys of 1.57 m vs the type's 3.55 m"
-     },
-     {
-      "key": "storeys",
-      "weight": 1,
-      "score": 0,
-      "note": "3DBAG bouwlagen 3 vs 5"
-     },
-     {
-      "key": "stucco",
-      "weight": 2,
-      "score": 1,
-      "note": "strip accent share 0 (brick)"
-     },
-     {
-      "key": "columns",
-      "weight": 1.5,
-      "score": 1,
-      "note": "strip columns 3 vs 3 bays"
-     }
-    ]
-   },
-   "likeness": null,
-   "challengers": {}
+   "installed": "vaalrivier-2-14-r1"
   },
   {
    "pandId": "0363100012090850",
@@ -416,99 +147,17 @@
    "builtYear": 1931,
    "widthM": 8,
    "eavesM": 6.27,
-   "storeys3dbag": 3,
-   "bagBay": {
-    "fromM": 5.7,
-    "toM": 7.97,
-    "depthM": 0.66,
-    "centre": 0.858,
-    "lineRD": [
-     [
-      123037.992375,
-      485014.03675
-     ],
-     [
-      123034.647375,
-      485018.65175
-     ]
-    ]
-   },
-   "strip": {
-    "wall": "#58463e",
-    "wallRaw": "#5a483f",
-    "skyline": {
-     "eavesM": 8.85,
-     "eavesRow": 323,
-     "confidence": 1,
-     "crown": {
-      "widthM": 0.65,
-      "riseM": 5.28,
-      "topWidthM": 0.65,
-      "centre": 0.04
-     }
+   "status": "placed",
+   "type": "vaalrivier-1931-row",
+   "placement": {
+    "type": "vaalrivier-1931-row",
+    "measuredPalette": {
+     "brick": "#58463e",
+     "evidence": "strip 2020-04-29 span 1288-1607: trim-normalised wall (buildingRecipe/measureFacade.ts)"
     },
-    "stucco": false,
-    "bands": 0,
-    "columns": 4,
-    "frontClass": "columns",
-    "doorSide": null,
-    "accentSide": null,
-    "accentShare": 0,
-    "structure": {
-     "bayWidthM": 0,
-     "bayCentre": null,
-     "balconies": true,
-     "why": "dark open axis 7.33 m at 0.5 (light 0.05): no brick spandrel between the storeys",
-     "openAxes": [
-      {
-       "widthM": 7.33,
-       "centre": 0.5,
-       "light": 0.05
-      }
-     ],
-     "slabs": []
-    },
-    "voidShare": 0,
-    "foliageShare": 0
+    "mirror": true
    },
-   "status": "held",
-   "stage": "match",
-   "reason": "every type vetoed (best transvaal-1911-five-storey-tall: built 1931, type 1908-1914)",
-   "best": {
-    "type": "transvaal-1911-five-storey-tall",
-    "score": 0,
-    "veto": [
-     "built 1931, type 1908-1914"
-    ],
-    "criteria": [
-     {
-      "key": "eaves",
-      "weight": 2,
-      "score": 0,
-      "note": "3DBAG eaves 6.27 m = 4 storeys of 1.57 m vs the type's 3.55 m"
-     },
-     {
-      "key": "storeys",
-      "weight": 1,
-      "score": 0,
-      "note": "3DBAG bouwlagen 3 vs 5"
-     },
-     {
-      "key": "stucco",
-      "weight": 2,
-      "score": 1,
-      "note": "strip accent share 0 (brick)"
-     },
-     {
-      "key": "columns",
-      "weight": 1.5,
-      "score": 0.4,
-      "note": "strip columns 4 vs 3 bays"
-     }
-    ]
-   },
-   "likeness": null,
-   "challengers": {}
+   "installed": "vaalrivier-2-14-r1"
   },
   {
    "pandId": "0363100012137594",
@@ -516,99 +165,16 @@
    "builtYear": 1931,
    "widthM": 9.13,
    "eavesM": 6.27,
-   "storeys3dbag": 3,
-   "bagBay": {
-    "fromM": 0,
-    "toM": 2.33,
-    "depthM": 0.66,
-    "centre": 0.128,
-    "lineRD": [
-     [
-      123031.94737499999,
-      485022.37675
-     ],
-     [
-      123027.969375,
-      485027.86875
-     ]
-    ]
+   "status": "placed",
+   "type": "vaalrivier-1931-row",
+   "placement": {
+    "type": "vaalrivier-1931-row",
+    "measuredPalette": {
+     "brick": "#56433c",
+     "evidence": "strip 2020-04-29 span 1607-1971: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
    },
-   "strip": {
-    "wall": "#56433c",
-    "wallRaw": "#59463e",
-    "skyline": {
-     "eavesM": 8.88,
-     "eavesRow": 322,
-     "confidence": 0.9,
-     "crown": {
-      "widthM": 2.17,
-      "riseM": 8.05,
-      "topWidthM": 0.1,
-      "centre": 0.78
-     }
-    },
-    "stucco": false,
-    "bands": 0,
-    "columns": 5,
-    "frontClass": "punched",
-    "doorSide": null,
-    "accentSide": null,
-    "accentShare": 0,
-    "structure": {
-     "bayWidthM": 0,
-     "bayCentre": null,
-     "balconies": true,
-     "why": "dark open axis 8.35 m at 0.5 (light 0.09): no brick spandrel between the storeys",
-     "openAxes": [
-      {
-       "widthM": 8.35,
-       "centre": 0.5,
-       "light": 0.09
-      }
-     ],
-     "slabs": []
-    },
-    "voidShare": 0,
-    "foliageShare": 0
-   },
-   "status": "held",
-   "stage": "match",
-   "reason": "every type vetoed (best transvaal-1911-five-storey-tall: built 1931, type 1908-1914)",
-   "best": {
-    "type": "transvaal-1911-five-storey-tall",
-    "score": 0,
-    "veto": [
-     "built 1931, type 1908-1914"
-    ],
-    "criteria": [
-     {
-      "key": "eaves",
-      "weight": 2,
-      "score": 0,
-      "note": "3DBAG eaves 6.27 m = 4 storeys of 1.57 m vs the type's 3.55 m"
-     },
-     {
-      "key": "storeys",
-      "weight": 1,
-      "score": 0,
-      "note": "3DBAG bouwlagen 3 vs 5"
-     },
-     {
-      "key": "stucco",
-      "weight": 2,
-      "score": 1,
-      "note": "strip accent share 0 (brick)"
-     },
-     {
-      "key": "columns",
-      "weight": 1.5,
-      "score": 0,
-      "note": "strip columns 5 vs 3 bays"
-     }
-    ]
-   },
-   "likeness": null,
-   "challengers": {}
+   "installed": "vaalrivier-2-14-r1"
   },
   {
    "pandId": "0363100012088655",

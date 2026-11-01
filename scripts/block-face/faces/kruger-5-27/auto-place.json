@@ -3,7 +3,7 @@
  "street": "Krugerstraat",
  "library": "transvaalbuurt",
  "stripDate": "2020-04-29",
- "seconds": 2.02,
+ "seconds": 1.93,
  "thresholds": {
   "minScore": 0.7,
   "margin": 0.05,
@@ -68,20 +68,17 @@
    },
    "status": "held",
    "stage": "match",
-   "reason": "every type vetoed (best transvaal-1911-five-storey-tall: built 1930, type 1908-1914; frontage 14.92 m, type 4.8-11 m)",
+   "reason": "best transvaal-1929-block scores 0.35 < 0.7 (strip wall #806559 dE 28.8 to #b8b097 (<= 12); strip accent share 0.046 (brick); strip columns 3 vs 7 bays)",
    "best": {
-    "type": "transvaal-1911-five-storey-tall",
-    "score": 0,
-    "veto": [
-     "built 1930, type 1908-1914",
-     "frontage 14.92 m, type 4.8-11 m"
-    ],
+    "type": "transvaal-1929-block",
+    "score": 0.35,
+    "veto": [],
     "criteria": [
      {
       "key": "eaves",
       "weight": 2,
-      "score": 0.5,
-      "note": "3DBAG eaves 12.38 m = 4 storeys of 3.1 m vs the type's 3.55 m"
+      "score": 1,
+      "note": "3DBAG eaves 12.38 m = 4 storeys of 3.1 m vs the type's 3.25 m"
      },
      {
       "key": "storeys",
@@ -90,16 +87,22 @@
       "note": "3DBAG bouwlagen 5 vs 5"
      },
      {
+      "key": "wall",
+      "weight": 2,
+      "score": 0,
+      "note": "strip wall #806559 dE 28.8 to #b8b097 (<= 12)"
+     },
+     {
       "key": "stucco",
       "weight": 2,
-      "score": 1,
+      "score": 0,
       "note": "strip accent share 0.046 (brick)"
      },
      {
       "key": "columns",
       "weight": 1.5,
-      "score": 0.4,
-      "note": "strip columns 3 vs 4 bays"
+      "score": 0,
+      "note": "strip columns 3 vs 7 bays"
      }
     ]
    },
@@ -334,20 +337,17 @@
    },
    "status": "held",
    "stage": "match",
-   "reason": "every type vetoed (best transvaal-1911-five-storey-tall: built 1930, type 1908-1914; frontage 14.02 m, type 4.8-11 m)",
+   "reason": "best transvaal-1929-block scores 0.42 < 0.7 (strip wall #715a4f dE 33.1 to #b8b097 (<= 12); strip accent share 0.03 (brick); strip columns 8 vs 7 bays)",
    "best": {
-    "type": "transvaal-1911-five-storey-tall",
-    "score": 0,
-    "veto": [
-     "built 1930, type 1908-1914",
-     "frontage 14.02 m, type 4.8-11 m"
-    ],
+    "type": "transvaal-1929-block",
+    "score": 0.42,
+    "veto": [],
     "criteria": [
      {
       "key": "eaves",
       "weight": 2,
-      "score": 0.5,
-      "note": "3DBAG eaves 12.38 m = 4 storeys of 3.1 m vs the type's 3.55 m"
+      "score": 1,
+      "note": "3DBAG eaves 12.38 m = 4 storeys of 3.1 m vs the type's 3.25 m"
      },
      {
       "key": "storeys",
@@ -356,16 +356,22 @@
       "note": "3DBAG bouwlagen 5 vs 5"
      },
      {
+      "key": "wall",
+      "weight": 2,
+      "score": 0,
+      "note": "strip wall #715a4f dE 33.1 to #b8b097 (<= 12)"
+     },
+     {
       "key": "stucco",
       "weight": 2,
-      "score": 1,
+      "score": 0,
       "note": "strip accent share 0.03 (brick)"
      },
      {
       "key": "columns",
       "weight": 1.5,
-      "score": 0,
-      "note": "strip columns 8 vs 4 bays"
+      "score": 0.4,
+      "note": "strip columns 8 vs 7 bays"
      }
     ]
    },
@@ -514,26 +520,23 @@
    },
    "status": "held",
    "stage": "match",
-   "reason": "every type vetoed (best transvaal-1911-five-storey-tall: built 1930, type 1908-1914; frontage 12.5 m, type 4.8-11 m)",
+   "reason": "best transvaal-1926-band-row scores 0.62 < 0.7 (strip cornice 14.6 m vs the type's 13.9 m; strip columns 8 vs 6 bays)",
    "best": {
-    "type": "transvaal-1911-five-storey-tall",
-    "score": 0,
-    "veto": [
-     "built 1930, type 1908-1914",
-     "frontage 12.5 m, type 4.8-11 m"
-    ],
+    "type": "transvaal-1926-band-row",
+    "score": 0.62,
+    "veto": [],
     "criteria": [
      {
       "key": "eaves",
       "weight": 2,
       "score": 0.5,
-      "note": "3DBAG eaves 12.45 m = 4 storeys of 3.11 m vs the type's 3.55 m"
+      "note": "strip cornice 14.6 m vs the type's 13.9 m"
      },
      {
       "key": "storeys",
       "weight": 1,
       "score": 1,
-      "note": "3DBAG bouwlagen 5 vs 5"
+      "note": "3DBAG bouwlagen 5 vs 4/5"
      },
      {
       "key": "stucco",
@@ -545,7 +548,7 @@
       "key": "columns",
       "weight": 1.5,
       "score": 0,
-      "note": "strip columns 8 vs 4 bays"
+      "note": "strip columns 8 vs 6 bays"
      }
     ]
    },

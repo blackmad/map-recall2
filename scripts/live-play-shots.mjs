@@ -64,13 +64,13 @@ for (const spec of places) {
   // CAMZOOM=<z> sets the game camera zoom (0.16 is the aerial demo spot).
   if (process.env.CAMZOOM) { await page.evaluate(z => { canalRecallGame.camera.zoom = z; }, Number(process.env.CAMZOOM)); await page.waitForTimeout(500); }
   // TIER=from,to overrides the facade cells' screen-footprint tier (roofTier.ts) on every resident chunk (A/B only).
-  if (process.env.TIER) { await page.evaluate((tier) => { for (const e of canalRecallGame.vectorMap._threeBuildings.chunks.values()) { const u = e.mesh?.material?.uniforms; if (u?.cellTier) u.cellTier.value = tier; } canalRecallGame.vectorMap.map.triggerRepaint(); }, process.env.TIER.split(',').map(Number)); await page.waitForTimeout(500); }
+  if (process.env.TIER) { await page.evaluate((tier) => { for (const e of canalRecallGame.vectorMap._threeBuildings.chunks.values()) { const u = e.mesh?.material?.uniforms; if (u?.cellTier) u.cellTier.value = tier; } (canalRecallGame.vectorMap.map ?? canalRecallGame.vectorMap.cameraMap).triggerRepaint(); }, process.env.TIER.split(',').map(Number)); await page.waitForTimeout(500); }
   // EVAL_JS=<file>: a function body run in the page before each shot (e.g. answer a question so its name is painted).
   if (process.env.EVAL_JS) { await page.evaluate(src => (0, eval)(src), fs.readFileSync(process.env.EVAL_JS, 'utf8')); await page.waitForTimeout(Number(process.env.EVAL_WAIT_MS || 1500)); }
   const info = await page.evaluate(() => {
     const g = canalRecallGame, vm = g.vectorMap, og = vm._ownGround;
     const tb = vm._tileBuildings || vm._recipeTiles || null;
-    return { probe: window.__probe ?? null, travelMode: g.travelMode, pitch: vm.map?.getPitch?.(), zoom: vm.map?.getZoom?.(), ownGround: og ? og.status() : null, tileBuildings: tb && tb.stats ? tb.stats() : null };
+    return { probe: window.__probe ?? null, travelMode: g.travelMode, pitch: (vm.map ?? vm.cameraMap)?.getPitch?.(), zoom: (vm.map ?? vm.cameraMap)?.getZoom?.(), ownGround: og ? og.status() : null, tileBuildings: tb && tb.stats ? tb.stats() : null };
   });
   await page.screenshot({ path: `${out}/${name}.png` });
   // MASK=1: also a HUD-free frame (<name>.clean.png) and a region mask (<name>.mask.png, scripts/look/region-mask.js)

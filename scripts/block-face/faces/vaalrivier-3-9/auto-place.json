@@ -3,7 +3,7 @@
  "street": "Vaalrivierstraat",
  "library": "transvaalbuurt",
  "stripDate": "2020-04-29",
- "seconds": 0.64,
+ "seconds": 7.2,
  "thresholds": {
   "minScore": 0.7,
   "margin": 0.05,
@@ -13,7 +13,17 @@
   "widthSlackM": 0.4,
   "flatRoofRiseM": 1.5
  },
- "runs": [],
+ "runs": [
+  {
+   "face": "vaalrivier-3-9-r1",
+   "pands": [
+    "0363100012132149",
+    "0363100012145010"
+   ],
+   "passed": true,
+   "triangles": 1480
+  }
+ ],
  "pands": [
   {
    "pandId": "0363100012135231",
@@ -279,43 +289,41 @@
     "foliageShare": 0
    },
    "status": "held",
-   "stage": "match",
-   "reason": "every type vetoed (best transvaal-1911-five-storey-tall: built 1931, type 1908-1914)",
-   "best": {
-    "type": "transvaal-1911-five-storey-tall",
-    "score": 0,
-    "veto": [
-     "built 1931, type 1908-1914"
+   "stage": "likeness",
+   "reason": "edge NCC 0.149 < 0.15 (photo vs model body; likeness.ts FAIL: glazing storey band off by 0.18 mean 0.41 vs photo 0.61)",
+   "likeness": {
+    "pandId": "0363100012150126",
+    "ncc": 0.149,
+    "nccRaw": 0.149,
+    "shiftM": [
+     -0.05,
+     -0.1
     ],
-    "criteria": [
-     {
-      "key": "eaves",
-      "weight": 2,
-      "score": 0,
-      "note": "3DBAG eaves 6.1 m = 4 storeys of 1.52 m vs the type's 3.55 m"
-     },
-     {
-      "key": "storeys",
-      "weight": 1,
-      "score": 0,
-      "note": "3DBAG bouwlagen 3 vs 5"
-     },
-     {
-      "key": "stucco",
-      "weight": 2,
-      "score": 1,
-      "note": "strip accent share 0.002 (brick)"
-     },
-     {
-      "key": "columns",
-      "weight": 1.5,
-      "score": 0.4,
-      "note": "strip columns 2 vs 3 bays"
-     }
-    ]
+    "usable": 0.98,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.18 mean 0.41 vs photo 0.61"
+    ],
+    "wall": {
+     "photo": "#927a6f",
+     "model": "#a48e84",
+     "dL": 0.076
+    },
+    "glazing": {
+     "photo": 0.61,
+     "model": 0.41
+    },
+    "columns": {
+     "photo": 5,
+     "model": 4
+    },
+    "iou": 0.364
    },
-   "likeness": null,
-   "challengers": {}
+   "challengers": {
+    "vaalrivier-1931-row": 0.149,
+    "vaalrivier-1931-row~m": 0.142
+   }
   },
   {
    "pandId": "0363100012132149",
@@ -365,44 +373,55 @@
     "voidShare": 0,
     "foliageShare": 0
    },
-   "status": "held",
-   "stage": "match",
-   "reason": "every type vetoed (best transvaal-1911-five-storey-tall: built 1931, type 1908-1914)",
-   "best": {
-    "type": "transvaal-1911-five-storey-tall",
-    "score": 0,
-    "veto": [
-     "built 1931, type 1908-1914"
-    ],
-    "criteria": [
-     {
-      "key": "eaves",
-      "weight": 2,
-      "score": 0,
-      "note": "3DBAG eaves 6.09 m = 4 storeys of 1.52 m vs the type's 3.55 m"
-     },
-     {
-      "key": "storeys",
-      "weight": 1,
-      "score": 0,
-      "note": "3DBAG bouwlagen 3 vs 5"
-     },
-     {
-      "key": "stucco",
-      "weight": 2,
-      "score": 1,
-      "note": "strip accent share 0 (brick)"
-     },
-     {
-      "key": "columns",
-      "weight": 1.5,
-      "score": 0,
-      "note": "strip columns 10 vs 3 bays"
-     }
-    ]
+   "status": "placed",
+   "type": "vaalrivier-1931-row",
+   "score": 0.77,
+   "placement": {
+    "type": "vaalrivier-1931-row",
+    "measuredPalette": {
+     "brick": "#625044",
+     "evidence": "strip 2020-04-29 span 1148-1467: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "mirror": true
    },
-   "likeness": null,
-   "challengers": {}
+   "notes": [
+    "crown flat-overhang (type default)",
+    "photo decides: vaalrivier-1931-row~m edge NCC 0.174 vs vaalrivier-1931-row 0.099"
+   ],
+   "likeness": {
+    "pandId": "0363100012132149",
+    "ncc": 0.209,
+    "nccRaw": 0.209,
+    "shiftM": [
+     0.4,
+     0.25
+    ],
+    "usable": 0.96,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.38 mean 0.42 vs photo 0.79"
+    ],
+    "wall": {
+     "photo": "#665448",
+     "model": "#7c6556",
+     "dL": 0.071
+    },
+    "glazing": {
+     "photo": 0.79,
+     "model": 0.42
+    },
+    "columns": {
+     "photo": 5,
+     "model": 4
+    },
+    "iou": 0.391,
+    "footOffsetM": 2.23
+   },
+   "challengers": {
+    "vaalrivier-1931-row": 0.099,
+    "vaalrivier-1931-row~m": 0.174
+   }
   },
   {
    "pandId": "0363100012145010",
@@ -452,44 +471,58 @@
     "voidShare": 0,
     "foliageShare": 0.01
    },
-   "status": "held",
-   "stage": "match",
-   "reason": "every type vetoed (best transvaal-1911-five-storey-tall: built 1931, type 1908-1914)",
-   "best": {
-    "type": "transvaal-1911-five-storey-tall",
-    "score": 0,
-    "veto": [
-     "built 1931, type 1908-1914"
-    ],
-    "criteria": [
-     {
-      "key": "eaves",
-      "weight": 2,
-      "score": 0,
-      "note": "3DBAG eaves 6.11 m = 4 storeys of 1.53 m vs the type's 3.55 m"
-     },
-     {
-      "key": "storeys",
-      "weight": 1,
-      "score": 0,
-      "note": "3DBAG bouwlagen 3 vs 5"
-     },
-     {
-      "key": "stucco",
-      "weight": 2,
-      "score": 1,
-      "note": "strip accent share 0 (brick)"
-     },
-     {
-      "key": "columns",
-      "weight": 1.5,
-      "score": 0,
-      "note": "strip columns 11 vs 3 bays"
-     }
-    ]
+   "status": "placed",
+   "type": "vaalrivier-1931-row",
+   "score": 0.77,
+   "runnerUp": {
+    "typeId": "transvaal-1911-five-storey-tall",
+    "score": 0
    },
-   "likeness": null,
-   "challengers": {}
+   "placement": {
+    "type": "vaalrivier-1931-row",
+    "measuredPalette": {
+     "brick": "#82675d",
+     "evidence": "strip 2020-04-29 span 1467-1795: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "door unread",
+    "crown flat-overhang (type default)"
+   ],
+   "likeness": {
+    "pandId": "0363100012145010",
+    "ncc": 0.183,
+    "nccRaw": 0.183,
+    "shiftM": [
+     -0.4,
+     0.4
+    ],
+    "usable": 0.94,
+    "abstain": null,
+    "verdict": "WARN",
+    "reasons": [
+     "mask IoU 0.316 < 0.45"
+    ],
+    "wall": {
+     "photo": "#81665a",
+     "model": "#98796e",
+     "dL": 0.084
+    },
+    "glazing": {
+     "photo": 0.37,
+     "model": 0.41
+    },
+    "columns": {
+     "photo": 5,
+     "model": 4
+    },
+    "iou": 0.316,
+    "footOffsetM": 2.23
+   },
+   "challengers": {
+    "vaalrivier-1931-row": 0.178,
+    "vaalrivier-1931-row~m": 0.114
+   }
   }
  ]
 }

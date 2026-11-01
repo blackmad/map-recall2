@@ -71,6 +71,17 @@ export function decodeLine(e: readonly number[]): Vec2[] {
   return out;
 }
 
+/** decodeLine's bounding box [minX, minY, maxX, maxY] without decoding (Infinity/-Infinity: no point); the same values. */
+export function encodedLineBox(e: readonly number[]): [number, number, number, number] {
+  let x = 0, y = 0, a = Infinity, b = Infinity, c = -Infinity, d = -Infinity;
+  for (let i = 0; i + 1 < e.length; i += 2) {
+    x += e[i]; y += e[i + 1];
+    const px = x / 10, py = y / 10;
+    if (px < a) a = px; if (px > c) c = px; if (py < b) b = py; if (py > d) d = py;
+  }
+  return [a, b, c, d];
+}
+
 export interface ParksManifest { version: 1; cells: string[]; fetched: string; attribution: string; report?: Record<string, unknown> }
 
 // ------------------------------------------------------------------ classification (extractor)
@@ -575,7 +586,16 @@ export interface SurfaceRaster { find(x: number, y: number): number; uniform(ax:
  * through roadSurfaces.ts RoadIndex. `records[k]` is the record behind polygon `k`.
  */
 export class SurfaceIndex<S extends { r: EncodedLine[] } = ParksCell['surfaces'][number]> {
-  private readonly polys: { rings: Vec2[][]; box: [number, number, number, number]; flat: number[]; tris: number[] }[] = [];
+  private readonly polys: { rings: Vec2[][]; box: [number, number, number, number]; cut?: { flat: number[]; tris: number[] } }[] = [];
+  /**
+   * Earcut input and triangles of polygon `k`, made on first use (the raster and the drawn mesh need them; a point
+   * lookup does not, and the main thread's planning indexes were spending their build on earcut, #129).
+   */
+  private cutOf(k: number): { flat: number[]; tris: number[] } {
+    const p = this.polys[k];
+    if (!p.cut) { const { flat, holes } = flatten(p.rings); p.cut = { flat, tris: flat.length >= 6 ? earcut(flat, holes) : [] }; }
+    return p.cut;
+  }
   /** The record each polygon was built from, parallel to the polygon ids `find` returns. */
   readonly records: S[] = [];
   private readonly grid = new Map<string, number[]>();
@@ -591,15 +611,19 @@ export class SurfaceIndex<S extends { r: EncodedLine[] } = ParksCell['surfaces']
       seen.add(c);
       for (const s of c.surfaces) {
         if (!keep(s)) continue;
+        // Past `within`: skipped before decoding (a planning index over a 3x3 keeps a few dozen of its thousands, #129).
+        if (within && c !== cells[0] && s.r.length) {
+          const b = encodedLineBox(s.r[0]);
+          if (b[2] < within[0] || b[0] > within[2] || b[3] < within[1] || b[1] > within[3]) continue;
+        }
         const rings = s.r.map(decodeLine);
         if (!rings.length || rings[0].length < 3) continue;
         const xs = rings[0].map(p => p[0]), ys = rings[0].map(p => p[1]);
         const box: [number, number, number, number] = [Math.min(...xs), Math.min(...ys), Math.max(...xs), Math.max(...ys)], k = this.polys.length;
         if (within && c !== cells[0] && (box[2] < within[0] || box[0] > within[2] || box[3] < within[1] || box[1] > within[3])) continue;
         // The cover is what buildParks draws: the same earcut triangles (a self-intersecting BGT ring loses areas there,
-        // and the Vondelpark had a 5 x 4 m one that the even-odd ring test called lawn).
-        const { flat, holes } = flatten(rings);
-        this.polys.push({ rings, box, flat, tris: flat.length >= 6 ? earcut(flat, holes) : [] });
+        // and the Vondelpark had a 5 x 4 m one that the even-odd ring test called lawn), cut on first use (cutOf).
+        this.polys.push({ rings, box });
         this.records.push(s);
         const G = SurfaceIndex.G;
         for (let gx = Math.floor(box[0] / G); gx <= Math.floor(box[2] / G); gx++) for (let gy = Math.floor(box[1] / G); gy <= Math.floor(box[3] / G); gy++) (this.grid.get(`${gx}:${gy}`) ?? this.grid.set(`${gx}:${gy}`, []).get(`${gx}:${gy}`)!).push(k);
@@ -610,7 +634,7 @@ export class SurfaceIndex<S extends { r: EncodedLine[] } = ParksCell['surfaces']
   /** Decoded rings of polygon `k` (outer first). */
   ringsOf(k: number): readonly Vec2[][] { return this.polys[k].rings; }
   /** Earcut input of polygon `k` (as the raster and the drawn mesh use it). */
-  flatOf(k: number): { flat: readonly number[]; tris: readonly number[] } { const p = this.polys[k]; return { flat: p.flat, tris: p.tris }; }
+  flatOf(k: number): { flat: readonly number[]; tris: readonly number[] } { const { flat, tris } = this.cutOf(k); return { flat, tris }; }
   boxOf(k: number): readonly [number, number, number, number] { return this.polys[k].box; }
   get size(): number { return this.polys.length; }
   /** Bounding box of every surface (null: none). */
@@ -653,8 +677,9 @@ export class SurfaceIndex<S extends { r: EncodedLine[] } = ParksCell['surfaces']
     const [x0, y0] = box, W = Math.max(1, Math.ceil((box[2] - x0) / res)), H = Math.max(1, Math.ceil((box[3] - y0) / res));
     if (this.polys.length >= 65535) throw new Error('SurfaceIndex.raster: too many surfaces for 16-bit ids');
     const ids = new Uint16Array(W * H);
-    this.polys.forEach(({ box: b, flat, tris }, k) => {
+    this.polys.forEach(({ box: b }, k) => {
       if (b[2] < x0 || b[0] > box[2] || b[3] < y0 || b[1] > box[3]) return;
+      const { flat, tris } = this.cutOf(k);
       for (let t = 0; t < tris.length; t += 3) {
         const ax = (flat[tris[t] * 2] - x0) / res - 0.5, ay = (flat[tris[t] * 2 + 1] - y0) / res - 0.5, bx = (flat[tris[t + 1] * 2] - x0) / res - 0.5, by = (flat[tris[t + 1] * 2 + 1] - y0) / res - 0.5, cx = (flat[tris[t + 2] * 2] - x0) / res - 0.5, cy = (flat[tris[t + 2] * 2 + 1] - y0) / res - 0.5;
         const i0 = Math.max(0, Math.ceil(Math.min(ax, bx, cx))), i1 = Math.min(W - 1, Math.floor(Math.max(ax, bx, cx))), j0 = Math.max(0, Math.ceil(Math.min(ay, by, cy))), j1 = Math.min(H - 1, Math.floor(Math.max(ay, by, cy)));

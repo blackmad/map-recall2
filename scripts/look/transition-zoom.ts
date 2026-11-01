@@ -116,7 +116,7 @@ async function sweepSwitch(page: Page, name: string, playZoom: number) {
     await page.evaluate(v => { (window as any).__tz = v; }, { zoom: cam, overview: 1 });
     await frames2(page);
     await page.waitForTimeout(250);
-    await page.waitForFunction(() => (window as any).canalRecallGame.vectorMap.map.areTilesLoaded(), null, { timeout: 5000 }).catch(() => {});
+    await page.waitForFunction(() => ((window as any).canalRecallGame.vectorMap.map ?? (window as any).canalRecallGame.vectorMap.cameraMap).areTilesLoaded(), null, { timeout: 5000 }).catch(() => {});
     const st = await page.evaluate(() => {
       const vm = (window as any).canalRecallGame.vectorMap, m = vm.map, c = m.project(m.getCenter()), og = vm._ownGround;
       return { z: m.getZoom() as number, cx: c.x as number, cy: c.y as number, blend: og && og.status().transition ? og.blend.value as number : null };

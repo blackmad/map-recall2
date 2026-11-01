@@ -18,7 +18,7 @@ try {
   const v=canalRecallGame.vectorMap;
   // Hold the review camera independently of the rider, while keeping the game running.
   v.sync=()=>{};
-  v.map.jumpTo({center:[4.88745646,52.37638238],zoom:19,pitch:45,bearing:30});
+  (v.map ?? v.cameraMap).jumpTo({center:[4.88745646,52.37638238],zoom:19,pitch:45,bearing:30});
  });
  await page.waitForFunction(()=>canalRecallGame.vectorMap._signatureLandmarks._pending.has('embassy-free-mind'),{timeout:60000});
  assert.equal(await page.evaluate(()=>canalRecallGame.vectorMap._signatureSuppressOsmIds().includes('w266604553')),false,'generic building remains while its GLB is delayed');
@@ -27,7 +27,7 @@ try {
  const result=await page.evaluate(()=>{
   const v=canalRecallGame.vectorMap,s=v._signatureLandmarks,e=s.describe().find(m=>m.id==='embassy-free-mind');
   return {loaded:s.describe().length,total:s.models.length,placement:e.placement,
-   depthBiasEnabled:s.depthBiasEnabled,basemapVisibility:v.map.getLayoutProperty('building-3d','visibility'),
+   depthBiasEnabled:s.depthBiasEnabled,basemapVisibility:(v.map ?? v.cameraMap).getLayoutProperty('building-3d','visibility'),
    museumHighlight:s.highlights({id:'extract_landmarks_740511540'}),
    houseHighlight:s.highlights({id:'extract_landmarks_554373448'}),
    exactSuppression:v._signatureSuppressOsmIds().includes('w266604553'),

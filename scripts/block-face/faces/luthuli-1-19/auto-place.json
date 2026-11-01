@@ -3,7 +3,7 @@
  "street": "Albert Luthulistraat",
  "library": "transvaalbuurt",
  "stripDate": "2020-04-29",
- "seconds": 4.57,
+ "seconds": 1.64,
  "thresholds": {
   "minScore": 0.7,
   "margin": 0.05,
@@ -71,40 +71,10 @@
     "foliageShare": 0.02
    },
    "status": "held",
-   "stage": "likeness",
-   "reason": "edge NCC 0.013 < 0.15 (photo vs model body; likeness.ts FAIL: glazing storey band off by 0.22)",
-   "likeness": {
-    "pandId": "0363100012138010",
-    "ncc": 0.013,
-    "nccRaw": 0.013,
-    "shiftM": [
-     0.4,
-     -0.05
-    ],
-    "usable": 0.95,
-    "abstain": null,
-    "verdict": "FAIL",
-    "reasons": [
-     "glazing storey band off by 0.22"
-    ],
-    "wall": {
-     "photo": "#785b51",
-     "model": "#8f6c5f",
-     "dL": 0.073
-    },
-    "glazing": {
-     "photo": 0.32,
-     "model": 0.23
-    },
-    "columns": {
-     "photo": 2,
-     "model": 3
-    },
-    "iou": 0.14
-   },
-   "challengers": {
-    "transvaal-1923-portiek-tower": 0.013
-   }
+   "stage": "review",
+   "reason": "review: the corner block with a tall stair tower and a parapet over its own window grid (luthuli-1-19-r1 sheet, 2020-04-29 strip): the plain flat 1921 row type draws a low gutter front (#154, 2026-11-01)",
+   "likeness": null,
+   "challengers": {}
   },
   {
    "pandId": "0363100012142304",
@@ -158,40 +128,10 @@
     "foliageShare": 0.02
    },
    "status": "held",
-   "stage": "run",
-   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
-   "likeness": {
-    "pandId": "0363100012142304",
-    "ncc": 0.233,
-    "nccRaw": 0.233,
-    "shiftM": [
-     -0.3,
-     0.3
-    ],
-    "usable": 0.95,
-    "abstain": null,
-    "verdict": "WARN",
-    "reasons": [
-     "mask IoU 0.234 < 0.45"
-    ],
-    "wall": {
-     "photo": "#654d44",
-     "model": "#7e5f53",
-     "dL": 0.078
-    },
-    "glazing": {
-     "photo": 0.18,
-     "model": 0.23
-    },
-    "columns": {
-     "photo": 3,
-     "model": 3
-    },
-    "iou": 0.234
-   },
-   "challengers": {
-    "transvaal-1923-portiek-tower": 0.233
-   }
+   "stage": "review",
+   "reason": "review: a flat-roofed front with a raised stair bay carrying a patterned tile strip and narrow stair lights, white-framed windows in pairs and a railing on the roof; transvaal-1923-portiek-tower draws a brick tower block over a slate roof with plain punched windows (lone pand released by the #156 opt-in; luthuli-1-19-r1 sheet, 2026-11-01)",
+   "likeness": null,
+   "challengers": {}
   },
   {
    "pandId": "0363100012110043",

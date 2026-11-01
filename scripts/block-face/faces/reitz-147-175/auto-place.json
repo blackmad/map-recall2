@@ -3,7 +3,7 @@
  "street": "Reitzstraat",
  "library": "transvaalbuurt",
  "stripDate": "2020-04-29",
- "seconds": 0.89,
+ "seconds": 0.9,
  "thresholds": {
   "minScore": 0.7,
   "margin": 0.05,
@@ -56,8 +56,8 @@
     "foliageShare": 0.01
    },
    "status": "held",
-   "stage": "run",
-   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
+   "stage": "review",
+   "reason": "review: a flat-roofed buff-brick front with white flower-box balconettes under the windows and a white door surround; transvaal-1923-portiek-tower draws a brick tower block over a slate roof with plain punched windows (lone pand released by the #156 opt-in; reitz-147-175-r1 sheet, 2026-11-01)",
    "likeness": null,
    "challengers": {}
   },

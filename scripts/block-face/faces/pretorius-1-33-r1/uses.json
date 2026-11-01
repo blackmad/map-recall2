@@ -1,0 +1,25 @@
+{
+ "street": "Pretoriusstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-31T14:57:06.054Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012167293",
+   "addresses": [
+    "Pretoriusstraat 23"
+   ],
+   "groundUnits": [
+    {
+     "address": "Pretoriusstraat 23-H",
+     "use": "woonfunctie",
+     "areaM2": 67,
+     "bagId": "0363010000782485"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  }
+ ]
+}

@@ -57,11 +57,15 @@ export function addOrielConsoles(group: T.Group, intent: CanalHouseIntent, recip
   for (const f of fit.fronts) {
     const e = f.erker, facade = group.getObjectByName(`elevation/${f.id}`);
     if (!e?.oriel?.console || !facade) continue;
-    const out = 0.015, inset = (e.widthM - e.frontWidthM) / 2, l = e.leftM, r = e.leftM + e.widthM, d = out + e.depthM;
-    const plan = offsetConvex([[l, out], [l + inset, d], [r - inset, d], [r, out]], ORIEL.consoleOverM).map(([x, z]) => [x, Math.max(0, z)] as [number, number]);
-    plan[0][1] = -0.005; plan[3][1] = -0.005;
+    const out = 0.015, inset = (e.widthM - e.frontWidthM) / 2, d = out + e.depthM;
     const values: number[] = [];
-    prism(values, plan, e.oriel.footM - ORIEL.consoleM, e.oriel.footM - 0.002, {bottom: true});
+    // One slab per stack (`oriel.twin`: a second one under the twin stack, in the same mesh).
+    for (const l of [e.leftM, ...(e.oriel.twinLeftM !== undefined ? [e.oriel.twinLeftM] : [])]) {
+      const r = l + e.widthM;
+      const plan = offsetConvex([[l, out], [l + inset, d], [r - inset, d], [r, out]], ORIEL.consoleOverM).map(([x, z]) => [x, Math.max(0, z)] as [number, number]);
+      plan[0][1] = -0.005; plan[3][1] = -0.005;
+      prism(values, plan, e.oriel.footM - ORIEL.consoleM, e.oriel.footM - 0.002, {bottom: true});
+    }
     facade.add(meshOf(values, material(trimOf(recipe, f.id)), `oriel-console/${f.id}`, 'erker', 'trim', intent.pandId));
     added++;
   }

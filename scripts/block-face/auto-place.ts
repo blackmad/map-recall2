@@ -4,7 +4,9 @@
  * placed pands, compile (never --install), a per-pand likeness gate on the compiled model against the strip, and a
  * second pass without the pands that fail it. Review sheets with --review.
  *
- *   node --import tsx scripts/block-face/auto-place.ts --buurt=bellamybuurt-zuid --district=bellamy [--only=<face>,...] [--review] [--no-compile]
+ *   node --import tsx scripts/block-face/auto-place.ts --buurt=bellamybuurt-zuid --district=bellamy [--only=<face>,...] [--skip=<face>,...] [--review] [--no-compile]
+ *        [--replace=<run>,...]  re-place these installed runs; every other run with a chunk in chunks.json is kept as it is
+ *                               (pands held at stage `installed`, directory untouched; new runs take the next free number)
  *
  * Reads scripts/block-face/buurten/<buurt>.json (buurt-survey.ts), scripts/block-face/faces/<face>/{discovery,strip,uses}.json,
  * pands/<id>/facts.json, staging/block-face/<face>/strip.jpg and the library scripts/block-face/types/<district>/.
@@ -16,9 +18,10 @@ import fs from 'node:fs/promises';
 import {existsSync, readFileSync} from 'node:fs';
 import path from 'node:path';
 import sharp from 'sharp';
-import {AUTO_PLACE, FRONT_EAVES, frontEavesFor, decidePand, ribbonRowHolds, fillPairs, medianGain, rowCoherence, rowExposure, trimGains, placementGate, scoreType, placedRuns, runIntent, type Decision, type Held, type MatchableType, type PandEvidence, type Placed} from '../../src/canalRecall/blockFace/autoPlace.ts';
+import {AUTO_PLACE, FRONT_EAVES, frontEavesFor, decidePand, ribbonRowHolds, fillPairs, medianGain, rowCoherence, rowExposure, trimGains, placementGate, scoreType, placedRuns, lonePandReason, runIntent, assignRunIds, frozenRuns, installedRunIds, osmCategory, type Decision, type ExistingRun, type Held, type MatchableType, type PandEvidence, type Placed} from '../../src/canalRecall/blockFace/autoPlace.ts';
 import {classifyPixel, measureStripPalette} from '../../src/canalRecall/blockFace/stripPalette.ts';
 import {measureSkyline} from '../../src/canalRecall/blockFace/stripSkyline.ts';
+import {measureSkyBound} from '../../src/canalRecall/blockFace/stripSkyBound.ts';
 import {evidenceVerdict, measureSpanEvidence} from '../../src/canalRecall/blockFace/stripEvidence.ts';
 import {measureStripStructure} from '../../src/canalRecall/blockFace/stripStructure.ts';
 import {isLeaf, measureFacade, type FacadeImage, type FrontClass} from '../../src/canalRecall/buildingRecipe/measureFacade.ts';
@@ -29,7 +32,8 @@ import type {BuildingFacts} from '../../src/canalRecall/buildingRecipe/facts.ts'
 import {loadMaterialSoup} from '../landmarks/material-soup.ts';
 import {renderModels, closeRenderer} from '../building-recipes/render.ts';
 import {STRIP_LIKENESS, spanLikeness} from '../../src/canalRecall/blockFace/stripLikeness.ts';
-import {applyCrownPins, applyMirrorPins, crownPinProblems, mirrorPinProblems, typePinProblems, typesForFace, typesForPand, type CrownPin, type MirrorPin, type TypePin} from '../../src/canalRecall/blockFace/reviewCrowns.ts';
+import {runFootOffset} from '../../src/canalRecall/blockFace/stripFoot.ts';
+import {applyCrownPins, applyMirrorPins, crownPinProblems, holdBrokenPairs, mirrorPinProblems, typePinProblems, typesForFace, typesForPand, type CrownPin, type MirrorPin, type TypePin} from '../../src/canalRecall/blockFace/reviewCrowns.ts';
 import {applyDoorPins, doorPinProblems, type DoorPin} from '../../src/canalRecall/blockFace/reviewDoors.ts';
 import {acceptFloorFor, acceptPinProblems, applyPalettePins, palettePinProblems, type AcceptPin, type PalettePin} from '../../src/canalRecall/blockFace/reviewPalettes.ts';
 import {frontBump} from '../../src/canalRecall/blockFace/bayOutline.ts';
@@ -151,7 +155,7 @@ async function faceEvidence(faceId: string) {
     const f0 = facts.fronts[0], eavesM = f0.eavesM >= 6 ? f0.eavesM : facts.heights.dak70pM;
     const ev: PandEvidence = {pandId: id, address: u?.addresses?.[0] ?? `pand ${id.slice(-6)}`, builtYear: facts.heights.builtYear, widthM: r2(f0.widthM), eavesM: r2(eavesM), roofMaxM: r2(facts.heights.roofMaxM), storeys3dbag: facts.heights.storeys,
       groundUses: [...new Set<string>((u?.groundUnits ?? []).map((g: any) => g.use))],
-      osm: (u?.osm ?? []).map((b: any) => ({type: b.type, id: b.id, name: b.tags.name, category: b.tags.shop ? `shop=${b.tags.shop}` : b.tags.amenity ? `amenity=${b.tags.amenity}` : b.tags.craft ? `craft=${b.tags.craft}` : b.tags.office ? `office=${b.tags.office}` : b.tags.healthcare ? `healthcare=${b.tags.healthcare}` : undefined})),
+      osm: (u?.osm ?? []).map((b: any) => ({type: b.type, id: b.id, name: b.tags.name, category: osmCategory(b.tags)})),
       // The bay of the discovered BAG front (bay-outline.ts / intake --bay-outline=auto keep it in facts-bay-outline.json).
       bagBay: frontBump((existsSync(path.join(dir, 'pands', id, 'facts-bay-outline.json')) ? await readJson(path.join(dir, 'pands', id, 'facts-bay-outline.json')) as BuildingFacts : facts).fronts[0])};
     if (span) {
@@ -175,7 +179,8 @@ async function faceEvidence(faceId: string) {
         ev.eavesM = r2(skyline.eavesM);
       }
       const front = EVIDENCE_GATE ? measureSpanEvidence({rgb: raw.rgb, width: raw.width, height: raw.height, px, pixelsPerMetre: strip.pixelsPerMetre, eavesM: f0.eavesM, roofM: facts.heights.roofMaxM, panoramas: span.panoramas}) : null;
-      ev.strip = {date: span.date, px, palette, wall, skyline, ...evidenceShares(raw, px, strip.pixelsPerMetre, eavesM), ...(front ? {frontEvidence: {...evidenceVerdict(front), skyCols: front.skyCols}} : {}), columns, ...(frontClass ? {frontClass} : {}), doorSide: doorSide(raw, px, strip.pixelsPerMetre), ...(a => ({accentSide: a.side, accentShare: a.share}))(accentSide(raw, px, strip.pixelsPerMetre, eavesM)), structure};
+      const skyBound = measureSkyBound({rgb: raw.rgb, width: raw.width, height: raw.height, x0: px[0], x1: px[1], pixelsPerMetre: strip.pixelsPerMetre});
+      ev.strip = {date: span.date, px, palette, wall, skyline, skyBound, ...evidenceShares(raw, px, strip.pixelsPerMetre, eavesM), ...(front ? {frontEvidence: {...evidenceVerdict(front), skyCols: front.skyCols}} : {}), columns, ...(frontClass ? {frontClass} : {}), doorSide: doorSide(raw, px, strip.pixelsPerMetre), ...(a => ({accentSide: a.side, accentShare: a.share}))(accentSide(raw, px, strip.pixelsPerMetre, eavesM)), structure};
     }
     evs.push(ev);
   }
@@ -226,7 +231,10 @@ async function debugMasks(runId: string, pand: string, photo: any, model: any, L
 
 export interface PandLikeness { pandId: string; ncc: number | null; nccRaw: number; shiftM: [number, number]; usable: number; abstain: string | null;
   /** buildingRecipe/likeness.ts on the same span: reported, not gated (its colour clustering fails on dark overcast strips). */
-  verdict: LikenessResult['verdict']; reasons: string[]; wall: {photo: string; model: string | null; dL: number | null}; glazing: {photo: number; model: number}; columns: {photo: number | null; model: number | null}; iou: number | null }
+  verdict: LikenessResult['verdict']; reasons: string[]; wall: {photo: string; model: string | null; dL: number | null}; glazing: {photo: number; model: number}; columns: {photo: number | null; model: number | null}; iou: number | null;
+  /** The strip's facade foot above its bottom row (stripFoot.ts), when the edge NCC was read with it (#157). */
+  footOffsetM?: number }
+
 
 /** Likeness of each pand of a compiled run face: the strip span vs the model elevation of the chunk (buildingRecipe/likeness.ts). */
 export async function runLikeness(runId: string): Promise<PandLikeness[]> {
@@ -237,7 +245,8 @@ export async function runLikeness(runId: string): Promise<PandLikeness[]> {
   const [png] = await renderModels([{file: path.join(STAGING, runId, 'chunk.glb')}], [{eye: [(x0M + x1M) / 2, top / 2, 200], target: [(x0M + x1M) / 2, top / 2, 0], fov: 30, width: W, height: H,
     ortho: [-(x1M - x0M) / 2, (x1M - x0M) / 2, top / 2, -top / 2], background: '#9fb8cf', noGround: true}]);
   const modelRgb = new Uint8Array(await sharp(png).resize(W, H, {fit: 'fill'}).removeAlpha().raw().toBuffer());
-  const P = soup.positions;
+  const P = soup.positions, foot = runFootOffset(raw, strip, !process.argv.includes('--no-foot'));
+  if (foot.offsetM) console.log(`${runId}: facade foot ${foot.offsetM} m above the strip's bottom row (${foot.read}/${foot.spans} spans read, spread ${foot.spreadM} m)`);
   return report.perPand.map((pp: any, i: number) => {
     const s = strip.spans[i], w = (s.px[1] - s.px[0]) / strip.pixelsPerMetre, x0 = s.x0M;
     // the front plane: the 98th percentile of z of the vertices over the span
@@ -252,13 +261,13 @@ export async function runLikeness(runId: string): Promise<PandLikeness[]> {
     const model = modelElevation(soup, {o: [x0, 0, zFront - 1], r: [1, 0, 0], n: [0, 0, 1], uMin: 0, uMax: w}, box, lines, 0.1);
     const L = compareLikeness({photo, padCells: Math.round(PAD_M / photo.cell), model, lines});
     if (process.env.AUTO_PLACE_DEBUG) debugMasks(runId, pp.pand, photo, model, L);
-    const sl = spanLikeness({photoRgb: raw.rgb, modelRgb, width: W, height: H, px: s.px, eavesM: pp.eavesM, pixelsPerMetre: strip.pixelsPerMetre});
-    return {pandId: pp.pand, ncc: sl.ncc, nccRaw: sl.nccRaw ?? 0, shiftM: [sl.dx, sl.dy], usable: sl.usable, abstain: sl.abstain, verdict: L.verdict, reasons: L.reasons, wall: {photo: L.wall.photo, model: L.wall.model, dL: L.wall.dL}, glazing: {photo: r2(L.glazing.photoMean), model: r2(L.glazing.modelMean)}, columns: {photo: L.columns.photo, model: L.columns.model}, iou: L.iou};
+    const sl = spanLikeness({photoRgb: raw.rgb, modelRgb, width: W, height: H, px: s.px, eavesM: pp.eavesM, pixelsPerMetre: strip.pixelsPerMetre, ...(foot.offsetM ? {footOffsetM: foot.offsetM} : {})});
+    return {pandId: pp.pand, ncc: sl.ncc, nccRaw: sl.nccRaw ?? 0, shiftM: [sl.dx, sl.dy], usable: sl.usable, abstain: sl.abstain, verdict: L.verdict, reasons: L.reasons, wall: {photo: L.wall.photo, model: L.wall.model, dL: L.wall.dL}, glazing: {photo: r2(L.glazing.photoMean), model: r2(L.glazing.modelMean)}, columns: {photo: L.columns.photo, model: L.columns.model}, iou: L.iou, ...(foot.offsetM ? {footOffsetM: foot.offsetM} : {})};
   });
 }
 
 if (process.argv[1]?.endsWith('block-face/auto-place.ts')) {
-  const buurt = arg('buurt') ?? 'bellamybuurt-zuid', district = arg('district') ?? 'bellamy', only = arg('only')?.split(',');
+  const buurt = arg('buurt') ?? 'bellamybuurt-zuid', district = arg('district') ?? 'bellamy', only = arg('only')?.split(','), skipFaces = new Set((arg('skip') ?? '').split(',').filter(Boolean));
   // --photo-decides (Rivierenbuurt, 2026-10-16): where facts and strip readings cannot tell two types of one row apart
   // (Boterdiepstraat's flat and erker fronts share year, width, eaves and roof; the sunlit strip reads no door or accent
   // side), the edge NCC of every candidate (type x mirroring) decides instead of holding the pand.
@@ -272,6 +281,7 @@ if (process.argv[1]?.endsWith('block-face/auto-place.ts')) {
   const forced = arg('force-type');
   if (forced) types = types.filter(t => t.id === forced).map(t => ({...t, fit: undefined, match: {years: [0, 9999], eavesM: looseEaves(t), ...(t.match?.crowns ? {crowns: t.match.crowns} : {}), ...(t.match?.mirrorForAccent ? {mirrorForAccent: t.match.mirrorForAccent} : {}), ...(t.match?.baysByWidth ? {baysByWidth: t.match.baysByWidth} : {})}} as MatchableType));
   const typeIds = types.map(t => t.id);
+  for (const t of types) if (t.match?.crownFromType !== undefined && !t.crowns[t.match.crownFromType]) throw Error(`type ${t.id}: match.crownFromType "${t.match.crownFromType}" is not one of its crowns (${Object.keys(t.crowns).join(', ')})`);
   // Pands held after a review of their run's strip sheet (scripts/block-face/buurten/<buurt>-review-holds.json).
   const holdsFile = path.join('scripts/block-face/buurten', `${buurt}-review-holds.json`);
   const reviewHolds = new Map<string, string>(existsSync(holdsFile) ? (await readJson(holdsFile)).holds.map((h: {pandId: string; reason: string}) => [h.pandId, h.reason]) : []);
@@ -305,6 +315,10 @@ if (process.argv[1]?.endsWith('block-face/auto-place.ts')) {
   const {compileFace} = await import('./compile.ts');
   const {reviewFace} = process.argv.includes('--review') ? await import('./review.ts') : {reviewFace: null};
   const summary: any[] = [];
+  // Installed runs are kept (autoPlace.ts frozenRuns, #157): a re-run never writes, renumbers or removes a run directory
+  // that chunks.json installs, unless --replace=<run>,... names it.
+  const replace = new Set((arg('replace') ?? '').split(',').filter(Boolean));
+  const chunkIds: string[] = (await readJson('public/canal-drive/ordinary-buildings-data/chunks.json')).chunks.map((c: {id: string}) => c.id);
   const t0 = performance.now();
   // --row-exposure=date: the trim gains of every face of this run, pooled per strip date, before any face is placed.
   const dateGains = new Map<string, number[][]>();
@@ -319,12 +333,20 @@ if (process.argv[1]?.endsWith('block-face/auto-place.ts')) {
     // `covered` by an authored face; a face this buurt generated itself (the face or its runs) is not a cover.
     const coverIntent = f.covered && existsSync(path.join(FACES, f.covered, 'intent.json')) ? await readJson(path.join(FACES, f.covered, 'intent.json')) : null;
     const coveredByOther = !!coverIntent && !String(coverIntent.authoring?.author ?? '').startsWith('auto-place');
-    if (coveredByOther || (only && !only.includes(f.id))) continue;
+    if (coveredByOther || (only && !only.includes(f.id)) || skipFaces.has(f.id)) continue;
     if (!existsSync(path.join(FACES, f.id, 'strip.json')) || !existsSync(path.join(STAGING, f.id, 'strip.jpg'))) { summary.push({face: f.id, status: 'no intake'}); continue; }
     // A run face authored by hand from the library (Albert Luthulistraat 25-39, #149: authoring.author is not auto-place)
     // is kept: re-placing the face would delete or overwrite it. Remove that run face to let auto-place own the face again.
     const handRuns = (await fs.readdir(FACES)).filter(d => d.startsWith(`${f.id}-r`) && existsSync(path.join(FACES, d, 'intent.json')))
       .filter(d => !/^auto-place/.test(JSON.parse(readFileSync(path.join(FACES, d, 'intent.json'), 'utf8')).authoring?.author ?? 'auto-place'));
+    const installedIds = installedRunIds(f.id, chunkIds);
+    // The face itself is installed (one run of every member, or its batch trim): nothing to re-place without --replace.
+    const wholeFace = installedIds.filter(id => (id === f.id || id === `${f.id}-t`) && !replace.has(id));
+    if (wholeFace.length) { console.log(`${f.id}: skipped, installed as ${wholeFace.join(', ')} (--replace=${wholeFace[0]} to re-place it)`); continue; }
+    const existingRuns: ExistingRun[] = (await fs.readdir(FACES)).filter(d => new RegExp(`^${f.id}-r\\d+(-t)?$`).test(d) && existsSync(path.join(FACES, d, 'discovery.json')))
+      .map(d => ({id: d, pands: JSON.parse(readFileSync(path.join(FACES, d, 'discovery.json'), 'utf8')).members, installed: installedIds.includes(d)}));
+    const frozen = frozenRuns(existingRuns, replace), frozenIds = new Set(frozen.map(r => r.id));
+    if (frozen.length) console.log(`${f.id}: keeping installed run(s) ${frozen.map(r => r.id).join(', ')} (--replace=<run> to re-place one)`);
     if (handRuns.length) { console.log(`${f.id}: skipped, hand-authored run face ${handRuns.join(', ')}`); summary.push({face: f.id, status: `hand-authored ${handRuns.join(', ')}`}); continue; }
     const tf = performance.now();
     if (types !== library) console.log(`${f.id}: types pinned to ${types.map(t => t.id).join(', ')}`);
@@ -339,6 +361,8 @@ if (process.argv[1]?.endsWith('block-face/auto-place.ts')) {
       if (hold) return {kind: 'held', pandId: ev.pandId, address: ev.address, stage: 'review', reason: `review: ${hold}`};
       return decidePand(typesForPand(f.id, ev.pandId, library, typePins), ev, `${f.id.split('-')[0]}-${ev.pandId.slice(-6)}`, strip.date);
     });
+    // Pands of a kept installed run: held here, recorded below as placed in that run.
+    for (const [k, d] of decisions.entries()) { const r = frozen.find(x => x.pands.includes(d.pandId)); if (r) decisions[k] = {kind: 'held', pandId: d.pandId, address: evs[k].address, stage: 'installed', reason: `installed in chunk-face-${r.id}`}; }
     if (crownPins.length) { const pinned = applyCrownPins(f.id, decisions, crownPins, types); if (pinned.length) console.log(`${f.id}: crown pinned on ${pinned.length} pand(s)`); }
     if (doorPins.length) { const pinned = applyDoorPins(decisions, doorPins, types); if (pinned.length) console.log(`${f.id}: door pinned on ${pinned.length} pand(s)`); }
     if (palettePins.length) { const pinned = applyPalettePins(decisions, palettePins); if (pinned.length) console.log(`${f.id}: palette pinned on ${pinned.length} pand(s)`); }
@@ -350,10 +374,14 @@ if (process.argv[1]?.endsWith('block-face/auto-place.ts')) {
     const challengers = new Map<string, Record<string, number | null>>(), switched = new Set<string>();
     const likeness = new Map<string, PandLikeness>(), compiled = new Map<string, {passed: boolean; triangles: number}>();
     let runFaces: {id: string; ids: string[]}[] = [];
+    // A run of one stands as a one-house face when its type opts in (match.lonePand: stair blocks of 5 m or more).
+    const lone = (p: Placed) => lonePandReason(types.find(t => t.id === p.typeId), evs.find(e => e.pandId === p.pandId)?.widthM);
     for (let pass = 0; pass < 3; pass++) {
-      const {runs, orphans} = placedRuns(decisions);
+      for (const id of holdBrokenPairs(decisions)) console.log(`${f.id}: ${id.slice(-6)} held, its pair crown's other half is not placed`);
+      const {runs, orphans} = placedRuns(decisions, lone);
       for (const o of orphans) { const k = decisions.findIndex(d => d.pandId === o.pandId); decisions[k] = {kind: 'held', ...o}; }
-      runFaces = runs.map((run, k) => ({id: runs.length === 1 && run.length === discovery.members.length ? f.id : `${f.id}-r${k + 1}`, ids: run.map(p => p.pandId)}));
+      const runIds = assignRunIds(f.id, discovery.members.length, runs.map(run => run.map(p => p.pandId)), existingRuns, replace);
+      runFaces = runs.map((run, k) => ({id: runIds[k], ids: run.map(p => p.pandId)}));
       for (const [k, rf] of runFaces.entries()) {
         if (rf.id !== f.id) await writeRunFace(f.id, rf.id, rf.ids, strip, uses, discovery);
         const intent = withPhotoEaves(runIntent({id: rf.id, street: f.street, stripDate: strip.date, stripImage: rf.id === f.id ? strip.image : path.join(STAGING, rf.id, 'strip.jpg'), types: typeIds, run: runs[k],
@@ -407,7 +435,7 @@ if (process.argv[1]?.endsWith('block-face/auto-place.ts')) {
         if (!cd.some((d, k) => d.kind === 'placed' && decisions[k].kind === 'placed' && ((decisions[k] as Placed).typeId !== ct.id || flip))) continue;
         fillPairs(cd, [loose]);
         if (flip) for (const d of cd) if (d.kind === 'placed' && d.typeId === ct.id) { if (d.house.type!.mirror) delete d.house.type!.mirror; else d.house.type!.mirror = true; }
-        const {runs} = placedRuns(cd);
+        const {runs} = placedRuns(cd, lone);
         for (const [k, run] of runs.entries()) {
           const id = `${f.id}-x${ci + 1}${flip ? 'm' : ''}${k + 1}`;
           await writeRunFace(f.id, id, run.map(p => p.pandId), strip, uses, discovery);
@@ -453,6 +481,8 @@ if (process.argv[1]?.endsWith('block-face/auto-place.ts')) {
         nd.typeId = t.id; nd.house.type!.type = t.id;
         if (m) nd.house.type!.mirror = true; else delete nd.house.type!.mirror;
         nd.notes = [...nd.notes.filter(x => !/^(accent|door) /.test(x)), `photo decides: ${best[0]} edge NCC ${best[1]} vs ${own} ${l.ncc}`];
+        // A reviewer crown pin follows the pand to its new type (decidePand above re-reads the skyline crown).
+        if (crownPins.length) applyCrownPins(f.id, [nd], crownPins, types);
         decisions[k] = nd; switched.add(d.pandId); changed = true;
       }
       // The gate: FAIL holds; NO EVIDENCE holds unless a same-type neighbour in the run passes (row evidence).
@@ -486,12 +516,19 @@ if (process.argv[1]?.endsWith('block-face/auto-place.ts')) {
     }
     // Remove run directories of earlier passes that are no longer runs.
     const keep = new Set(runFaces.map(r => r.id));
-    for (const d of (await fs.readdir(FACES)).filter(d => d.startsWith(`${f.id}-r`) && !keep.has(d))) { await fs.rm(path.join(FACES, d), {recursive: true}); await fs.rm(path.join(STAGING, d), {recursive: true, force: true}); }
+    for (const d of (await fs.readdir(FACES)).filter(d => d.startsWith(`${f.id}-r`) && !keep.has(d) && !frozenIds.has(d))) { await fs.rm(path.join(FACES, d), {recursive: true}); await fs.rm(path.join(STAGING, d), {recursive: true, force: true}); }
     if (!keep.has(f.id)) await fs.rm(path.join(FACES, f.id, 'intent.json'), {force: true});
     if (reviewFace) for (const rf of runFaces) if (compiled.get(rf.id)) { try { await reviewFace(rf.id); } catch (e) { console.log(`${rf.id}: review failed ${(e as Error).message.slice(0, 200)}`); } }
+    const prevRecord = existsSync(path.join(FACES, f.id, 'auto-place.json')) ? await readJson(path.join(FACES, f.id, 'auto-place.json')) : null;
     const out = {face: f.id, street: f.street, library: district, stripDate: strip.date, seconds: r2((performance.now() - tf) / 1000), thresholds: AUTO_PLACE,
-      runs: runFaces.map(r => ({face: r.id, pands: r.ids, ...compiled.get(r.id)})),
+      runs: [...runFaces.map(r => ({face: r.id, pands: r.ids, ...compiled.get(r.id)})), ...frozen.map(r => ({face: r.id, pands: [...r.pands], installed: true}))],
       pands: decisions.map((d, k) => {
+        // A kept installed pand: its record from the placement that installed it, else what its run's intent says.
+        if (d.kind === 'held' && d.stage === 'installed') {
+          const run = frozen.find(r => r.pands.includes(d.pandId))!, prior = prevRecord?.pands?.find((p: any) => p.pandId === d.pandId && p.status === 'placed');
+          const house = JSON.parse(readFileSync(path.join(FACES, run.id, 'intent.json'), 'utf8')).houses.find((h: any) => h.pandId === d.pandId);
+          return {...(prior ?? {pandId: d.pandId, address: evs[k].address, builtYear: evs[k].builtYear, widthM: evs[k].widthM, eavesM: evs[k].eavesM, status: 'placed', type: house?.type?.type ?? null, placement: house?.type ?? null}), installed: run.id};
+        }
         const ev = evs[k], l = likeness.get(d.pandId), base = {pandId: d.pandId, address: ev.address, builtYear: ev.builtYear, widthM: ev.widthM, eavesM: ev.eavesM, storeys3dbag: ev.storeys3dbag, bagBay: ev.bagBay ?? null,
           strip: ev.strip ? {wall: ev.strip.wall, wallRaw: ev.strip.palette.wall, skyline: ev.strip.skyline, stucco: ev.strip.palette.stucco, bands: ev.strip.palette.bandRunsM.length, columns: ev.strip.columns, frontClass: ev.strip.frontClass ?? null, doorSide: ev.strip.doorSide, accentSide: ev.strip.accentSide, accentShare: ev.strip.accentShare,
             structure: ev.strip.structure ? {bayWidthM: ev.strip.structure.bayWidthM, bayCentre: ev.strip.structure.bayCentre, balconies: ev.strip.structure.balconies, why: ev.strip.structure.balconyWhy, openAxes: ev.strip.structure.openAxes, slabs: ev.strip.structure.slabs} : null, voidShare: ev.strip.voidShare, foliageShare: ev.strip.foliageShare} : null};
@@ -505,6 +542,7 @@ if (process.argv[1]?.endsWith('block-face/auto-place.ts')) {
     for (const p of out.pands as any[]) console.log(`  ${p.pandId.slice(-6)} ${String(p.address).padEnd(26)} ${p.status === 'placed' ? `${p.type} ${p.score} | NCC ${p.likeness?.ncc ?? '-'} (raw ${p.likeness?.nccRaw ?? '-'}) ${p.notes?.join('; ') ?? ''}` : `HELD ${p.stage}: ${p.reason}`}`.slice(0, 260));
     summary.push({face: f.id, street: f.street, pands: out.pands.length, placed, held: out.pands.length - placed, runs: out.runs, seconds: out.seconds,
       byType: Object.fromEntries([...new Set(out.pands.filter((p: any) => p.type).map((p: any) => p.type))].map(t => [t, out.pands.filter((p: any) => p.type === t).length])),
+      installed: out.pands.filter((p: any) => p.installed).length,
       holds: Object.fromEntries(['evidence', 'match', 'likeness', 'run', 'review'].map(s => [s, out.pands.filter((p: any) => p.stage === s).length]))});
   }
   const file = path.join('scripts/block-face/buurten', `${buurt}-placement.json`);

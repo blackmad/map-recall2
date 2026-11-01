@@ -47,7 +47,7 @@ try{
   await page.evaluate(()=>{const g=window.canalRecallGame;const nearest=(lng,lat)=>g.routePois.slice().sort((a,b)=>Math.hypot((a.lng-lng)*.61,a.lat-lat)-Math.hypot((b.lng-lng)*.61,b.lat-lat))[0];g._pickReviewRide=()=>({from:nearest(4.8687372,52.3608814),to:nearest(4.8979412,52.3713544),dueNear:[],alternatives:[]});});
   await page.locator('#route-card').evaluate(f=>f.requestSubmit());await page.waitForFunction(()=>window.canalRecallGame?.vectorMap?.ready,null,{timeout:120000});await page.evaluate(()=>window.canalRecallGame.vectorMap.sync=()=>{});
   for(const target of [...new Map(targets.map(t=>[t.inputId??t.id,t])).values()]){
-   await page.evaluate(target=>{const v=window.canalRecallGame.vectorMap;v.map.jumpTo({center:target.center,zoom:19,bearing:0,pitch:50});v._threeBuildings.setDetailCentre(...target.center);v._completeCity.followCamera();},target);
+   await page.evaluate(target=>{const v=window.canalRecallGame.vectorMap;(v.map ?? v.cameraMap).jumpTo({center:target.center,zoom:19,bearing:0,pitch:50});v._threeBuildings.setDetailCentre(...target.center);v._completeCity.followCamera();},target);
    await page.waitForTimeout(2000);await page.waitForFunction(()=>{const v=window.canalRecallGame.vectorMap,t=v._threeBuildings;return !v._completeCity.status().inFlight&&!t.pending.length&&!t.inflight.size;},null,{timeout:120000});
    const input=await page.evaluate(target=>{const v=window.canalRecallGame.vectorMap,t=v._threeBuildings;
     const resident=[...new Map([...t.sourceGroups.values()].flat().map(f=>[String(f.properties.id),f])).values()];

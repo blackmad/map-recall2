@@ -1,0 +1,47 @@
+{
+ "note": "The bottom 3 m of strip spans (Gemeente Amsterdam panoramas, CC BY 4.0), cut by #157 for the facade-foot test (blockFace/stripFoot.ts).",
+ "spans": [
+  {
+   "face": "tugelaweg-113-120",
+   "pandId": "0363100012118471",
+   "file": "tugelaweg-113-120--118471.jpg",
+   "pixelsPerMetre": 40,
+   "date": "2020-04-29"
+  },
+  {
+   "face": "tugelaweg-91-112",
+   "pandId": "0363100012144774",
+   "file": "tugelaweg-91-112--144774.jpg",
+   "pixelsPerMetre": 40,
+   "date": "2020-04-29"
+  },
+  {
+   "face": "tugelaweg-91-112",
+   "pandId": "0363100012083727",
+   "file": "tugelaweg-91-112--083727.jpg",
+   "pixelsPerMetre": 40,
+   "date": "2020-04-29"
+  },
+  {
+   "face": "theron-9-37",
+   "pandId": "0363100012148172",
+   "file": "theron-9-37--148172.jpg",
+   "pixelsPerMetre": 40,
+   "date": "2020-04-29"
+  },
+  {
+   "face": "luthuli-21-41",
+   "pandId": "0363100012109924",
+   "file": "luthuli-21-41--109924.jpg",
+   "pixelsPerMetre": 40,
+   "date": "2017-04-06"
+  },
+  {
+   "face": "retief-45-75",
+   "pandId": "0363100012123300",
+   "file": "retief-45-75--123300.jpg",
+   "pixelsPerMetre": 40,
+   "date": "2023-01-02"
+  }
+ ]
+}

@@ -33,7 +33,7 @@ for (const [lng, lat, bearing] of places) {
     // The farthest ground on screen from the map centre (the rider), metres: the touch ring must reach it (residency.ts).
     const m = vm.map, c = m.getCenter(), cv = m.getCanvas(), w = cv.clientWidth, h = cv.clientHeight;
     const reachM = Math.round(Math.max(...[[0, 0], [w / 2, 0], [w, 0], [0, h], [w, h]].map(([px, py]) => m.unproject([px, py]).distanceTo(c))));
-    return { tileDraws: f.tileDraws, pitch: Math.round(vm.map.getPitch()), zoom: +vm.map.getZoom().toFixed(2), calls: f.stats.main.calls, tris: f.stats.main.triangles, geometries: i.memory.geometries, textures: i.memory.textures, stats: f.drawStats(), reachM, view: `${w}x${h}`, ground: (({ radiusM, cells, details, buildMsMedian }) => ({ radiusM, cells: cells && Object.keys(cells).length, details, buildMsMedian }))(vm._ownGround?.status?.() || {}) };
+    return { tileDraws: f.tileDraws, pitch: Math.round(vm.camera.pitch()), zoom: +vm.camera.zoom().toFixed(2), calls: f.stats.main.calls, tris: f.stats.main.triangles, geometries: i.memory.geometries, textures: i.memory.textures, stats: f.drawStats(), reachM, view: `${w}x${h}`, ground: (({ radiusM, cells, details, buildMsMedian }) => ({ radiusM, cells: cells && Object.keys(cells).length, details, buildMsMedian }))(vm._ownGround?.status?.() || {}) };
   });
   // SHOTS=dir: a screenshot per place (before/after strips), named by place and the query string.
   if (process.env.SHOTS) { fs.mkdirSync(process.env.SHOTS, {recursive: true}); await page.screenshot({path: path.join(process.env.SHOTS, `${(process.env.LABEL || 'shot')}-${lng.toFixed(4)}_${lat.toFixed(4)}.png`)}); }
@@ -56,7 +56,7 @@ for (const [lng, lat, bearing] of places) {
     // RETILE=js: an expression run in the page between two ONLY shots (e.g. `vm._ownGround.retile(3)`), so the same
     // frame is shot before and after a mesh partition: pixel-exact, no run-to-run noise (sun, route, streaming).
     if (process.env.RETILE) for (const [step, js] of process.env.RETILE.split('||').entries()) {
-      const n = await page.evaluate((js) => { const vm = canalRecallGame.vectorMap; const out = (0, eval)(`(vm) => (${js})`)(vm); vm._sharedFrame.invalidateShadows?.(); vm.map.triggerRepaint(); return out; }, js);
+      const n = await page.evaluate((js) => { const vm = canalRecallGame.vectorMap; const out = (0, eval)(`(vm) => (${js})`)(vm); vm._sharedFrame.invalidateShadows?.(); (vm.map ?? vm.cameraMap).triggerRepaint(); return out; }, js);
       await page.waitForTimeout(1500);
       await page.screenshot({path: path.join(process.env.SHOTS, `${(process.env.LABEL || 'shot')}-${process.env.ONLY}-retiled${step || ''}-${lng.toFixed(4)}_${lat.toFixed(4)}.png`)});
       const after = await page.evaluate(() => { const f = canalRecallGame.vectorMap._sharedFrame; return { calls: f.stats.main.calls, tiles: f.tileDraws, stats: f.drawStats() }; });

@@ -1,0 +1,248 @@
+{
+ "schemaVersion": 1,
+ "kind": "house-type",
+ "id": "transvaal-1926-band-row",
+ "district": "transvaalbuurt",
+ "description": "Transvaalbuurt 1926-1928 portiek rows of Danie Theronstraat (2-36 and 9-37): a flat-roofed four-storey dark purple-brown brick front over a 1.3 m plain parapet with a thin dark coping (top 13.9 m); the top storey's evenly spaced two-light windows stand between a continuous white sill band (10.25-10.45 m) and a continuous white band 0.5 m over their heads (12.3-12.55 m); on storeys 1-2 the windows come in pairs with white sills, and the stair window, two lights either side of a white mullion, sits over the portiek door under a flat white concrete canopy (3.15-3.3 m). BAG cuts the row into 6 m half-portiek pands (pair + half stair) and 12 m pands (pair, stair, pair); the type is the 6 m half, repeated and mirrored along a 12 m pand",
+ "fit": {
+  "widthM": [
+   4.5,
+   7.5
+  ],
+  "storeys": [
+   4
+  ]
+ },
+ "match": {
+  "years": [
+   1926,
+   1928
+  ],
+  "storeys3dbag": [
+   4,
+   5
+  ],
+  "stucco": false,
+  "frontEavesM": 13.9,
+  "frontage": {
+   "mode": "stair-block",
+   "widthM": [
+    5.5,
+    12.6
+   ],
+   "storeys": [
+    4
+   ],
+   "axisPitchM": [
+    1.15,
+    4.1
+   ]
+  },
+  "mirrorForDoor": "right",
+  "crownFromType": "parapet",
+  "note": "Danie Theronstraat 2-36 and 9-37 on the 2020-04-29 strips (40 px/m, gridded 1 m): parapet top 13.9-14.2 m (strip skyline 14.1-14.18 on 25D-31A), 3DBAG eaves 12.3-13.1 m read the roof behind the parapet and ridge 15.2-15.8 m the roof-terrace railings, so the eaves are the type's front line (frontEavesM). BAG 1926-1928 on all 21 pands. Frontage: 6 m half-portiek pands (Danie Theronstraat 10-18, 21-31) and 12 m double pands (9-27, 20-30); the 2 m top-storey pitch gives three axes per 6 m. Told from the plain 1928 rows (transvaal-1928-plain-row) by the white bands, which the treed strips do not read (0-1 band runs on 17A-24), so the faces are pinned to this type in transvaalbuurt-west-review-types.json. The corner pands (2-8, 32-36, 33-37: 4.4-11.4 m, eaves 9.7-12.5 m) are other fronts. Axis pitch 1.15-4.1 m: the strip reads the window groups (3 columns over 12 m: pair, stair, pair; 4.0 m) or the windows (5-6 over 6-12 m; 1.2-2.0 m); 0.86 m (12A) is a tree",
+  "baysByWidth": [
+   {
+    "maxWidthM": 8.5,
+    "bays": 3
+   },
+   {
+    "maxWidthM": 99,
+    "bays": 6
+   }
+  ]
+ },
+ "body": {
+  "storeys": 4,
+  "bays": [
+   3,
+   3,
+   3,
+   3
+  ],
+  "axisGrid": 4,
+  "cornice": "none",
+  "windows": "casement-toplight",
+  "storeyWindows": {
+   "0": "casement-toplight-double"
+  },
+  "storeyHeights": [
+   3.6,
+   3.1,
+   3.1,
+   2.8
+  ],
+  "windowHeights": [
+   0.36,
+   0.5,
+   0.52,
+   0.475
+  ],
+  "headLines": [
+   0.83,
+   0.806,
+   0.806,
+   0.714
+  ],
+  "bayWidths": [
+   1.45,
+   1.9,
+   1.45,
+   1.2
+  ],
+  "bayFill": [
+   0.76,
+   0.62,
+   0.5,
+   0.76
+  ],
+  "storeyAxes": {
+   "0": [
+    0,
+    1,
+    3
+   ],
+   "1": [
+    0,
+    1,
+    3
+   ],
+   "2": [
+    0,
+    1,
+    3
+   ]
+  },
+  "storeyRibbons": {
+   "last": {
+    "from": 0.04,
+    "to": 0.92,
+    "pier": 0.8
+   }
+  },
+  "windowSurround": "sill",
+  "surroundStoreys": [
+   1,
+   2
+  ],
+  "bands": "painted",
+  "bandStoreys": [
+   3
+  ],
+  "bandLines": [
+   "sill",
+   "head"
+  ],
+  "bandHeights": {
+   "sill": 0.2,
+   "head": 0.25,
+   "headLift": 0.5
+  },
+  "repeat": {
+   "count": "fit",
+   "mirrorAlternate": true
+  }
+ },
+ "crowns": {
+  "parapet": {
+   "gable": "flat",
+   "cornice": "none",
+   "parapet": {
+    "courses": 24,
+    "coping": true
+   },
+   "note": "Danie Theronstraat 25-31 (139446 140487 125668): 1.3 m of plain brick from the white top band to a thin dark coping at 13.9 m; flat roof behind"
+  }
+ },
+ "grounds": {
+  "door-right": {
+   "doorBay": 2,
+   "groundCanopy": {
+    "over": [
+     "door"
+    ],
+    "projection": 0.6,
+    "thickness": 0.15,
+    "overhang": 0.2,
+    "gap": 0.1,
+    "doorOverhang": 0.4,
+    "colour": "#d8d4c8",
+    "groundTransomOnly": true
+   },
+   "note": "the portiek door on the stair axis against the party wall under a flat white canopy (3.15-3.3 m, 3-4 m over the double portiek); the garden windows of the ground floor under the window pairs"
+  }
+ },
+ "palettes": {
+  "purple-brown": {
+   "brick": "#433d37",
+   "frame": "#ebe8df",
+   "door": "#3a2f2a",
+   "stone": "#e2ded4",
+   "cornice": "#3e3632"
+  }
+ },
+ "roof": {
+  "material": "bitumen",
+  "source": "front",
+  "form": "flat",
+  "evidence": "Danie Theronstraat 2-37 strips: a level parapet with roof-terrace railings and vent pipes behind it, no roof face over the front; 3DBAG ridge 15.2-15.8 m is the terrace railings and roof storeys set back out of sight"
+ },
+ "rhythm": {
+  "bays": "per 6 m half-portiek: a window pair (two 1.15-1.25 m two-light windows, 0.35 m pier) and, against the party wall, one half of the stair window; top storey three evenly spaced windows at 2 m pitch",
+  "identicalBays": "no: pairs and the stair window",
+  "windowsPerStorey": "ground: garden windows + portiek door | 1-2: window pair + stair light | 3: three windows between the white bands",
+  "symmetry": "a 12 m portiek unit is symmetric about the stair axis",
+  "groundFloor": "portiek door under a flat white canopy on the stair axis, garden windows and French doors",
+  "signage": "none",
+  "roofline": "flat; a 1.3 m plain brick parapet with a thin dark coping over a continuous white band",
+  "photoRows": [
+   3,
+   3,
+   3,
+   3
+  ],
+  "photoGroundRows": 1
+ },
+ "evidence": [
+  {
+   "face": "theron-9-37",
+   "pands": [
+    "0363100012139446",
+    "0363100012140487",
+    "0363100012125668",
+    "0363100012148172"
+   ],
+   "citation": "strip.jpg 2020-04-29 at 40 px/m, ground at the strip foot, 1 m grid (staging/block-face/transvaalbuurt/1926/theron-9-37-grid.png): 25-27 (12 m) window pairs 0.3-3.3 and 8.9-11.6 m, stair pair 5.1-7.3 m with a white mullion over the portiek canopy 4.1-8.1 m at 3.15-3.3 m; storey 1 windows 4.55-6.1 m, storey 2 7.65-9.2 m with white sills; top storey six 1.2 m windows at 2.0 m pitch, 10.47-11.8 m, on a white band 10.22-10.47 m under a white band 12.3-12.55 m; plain parapet to 13.9 m; small dark header vents over the storey 1-2 pairs"
+  },
+  {
+   "face": "theron-2-36",
+   "pands": [
+    "0363100012116701",
+    "0363100012115092",
+    "0363100012112858"
+   ],
+   "citation": "strip.jpg 2020-04-29 at 40 px/m: 24-26 (12 m) pair 0-1.25 and 1.6-2.9 m, stair pair 4.75-7.0 m, pair 8.9-11.6 m; top storey windows centred 0.8, 2.9, 4.9, 6.9, 8.9, 10.9 m; 18 (6 m) the pair on its left half and the half stair window on its right party wall, 16 the mirror"
+  },
+  {
+   "face": "theron-9-37",
+   "pands": [
+    "0363100012148172",
+    "0363100012139446",
+    "0363100012140487",
+    "0363100012125668",
+    "0363100012115092",
+    "0363100012112858"
+   ],
+   "citation": "brick #433d37: per-channel median of the batch wall fit (fit-wall-palette, review wall reading through the city tint) on the six tree-free walls of Danie Theronstraat 17A, 18A, 20, 25D, 29A, 31A (#3b342f-#4c4844); the trim-normalised #6f6058 drew the wall +0.09 lighter. One brick for the row: the per-pand fit on Theronstraat 13A, 16A, 23A, 28 read hedge and tree green (photo blue channel 36-45) and drew olive walls"
+  }
+ ],
+ "schemaLimits": [
+  "the top band's small consoles and the dark header-brick vents over the storey 1-2 pairs are not drawn",
+  "the top band is lifted 0.5 m over the top-storey window heads (bandHeights.headLift), as the strip shows",
+  "the stair window's white mullion between its two halves is the two pands' frames meeting at the party wall",
+  "the French doors of the ground floor are drawn as four-light windows"
+ ],
+ "notes": [
+  "Palette: the type default is the measured purple-brown of 17A-31A (#716357-#7c6a64); every placed pand takes its trim-normalised strip wall (auto-place measuredPalette)."
+ ]
+}

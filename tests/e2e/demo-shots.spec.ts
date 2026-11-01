@@ -55,6 +55,36 @@ const SPOTS: Spot[] = [
   { name: 'allotments-nut-en-genoegen', centre: [4.85995, 52.38705], standDeg: 180, standM: 70 },
   { name: 'allotments-sloterdijkermeer', centre: [4.85119, 52.38726], standDeg: 180, standM: 70 },
   { name: 'aerial-singelgracht', centre: [4.8795, 52.3715], standDeg: 0, standM: 0, faceDeg: 20, camZoom: 0.16 },
+  // Transvaalbuurt round 3 (#152): the first installed 1911 rows, seen from mid-street.
+  { name: 'transvaal3-retiefstraat-69-73', centre: [4.9218115, 52.3553544], standDeg: 333, standM: 8, view: 'cockpit' },
+  { name: 'transvaal3-pretoriusstraat-79-87', centre: [4.9211937, 52.3544948], standDeg: 334, standM: 7, view: 'cockpit' },
+  { name: 'transvaal3-pretoriusstraat-86-90', centre: [4.9209401, 52.3546185], standDeg: 154, standM: 7, view: 'cockpit' },
+  // Transvaalbuurt 1929-31 (#153): the 1931 two-storey rows of Vaalrivierstraat and Kraaipanstraat.
+  { name: 'transvaal1929-vaalrivierstraat-8-10', centre: [4.9181592, 52.352046], standDeg: 54, standM: 7, view: 'cockpit' },
+  { name: 'transvaal1929-kraaipanstraat-63-65', centre: [4.9182174, 52.3516356], standDeg: 324, standM: 7, view: 'cockpit' },
+  // Transvaalbuurt 1920-1922 rows (#154): the five-storey flat row on Retiefstraat, the three-storey oriel rows.
+  { name: 'transvaal1920-retiefstraat-246-252', centre: [4.9210586, 52.3552715], standDeg: 153, standM: 8, view: 'cockpit' },
+  { name: 'transvaal1920-retiefstraat-194-204', centre: [4.921788, 52.3555028], standDeg: 153, standM: 8, view: 'cockpit' },
+  { name: 'transvaal1920-de-la-reijstraat-29-37', centre: [4.9194596, 52.351899], standDeg: 234, standM: 7, view: 'cockpit' },
+  { name: 'transvaal1920-kraaipanstraat-43-45', centre: [4.9197584, 52.3522057], standDeg: 54, standM: 7, view: 'cockpit' },
+  { name: 'transvaal1920-transvaalkade-103-105', centre: [4.9193327, 52.3515715], standDeg: 144, standM: 10, view: 'cockpit' },
+  // Transvaalbuurt 1926-1928 (#155): the Danie Theronstraat band rows and President Steynstraat 9-15, seen from mid-street.
+  { name: 'transvaal1926-theronstraat-25-31', centre: [4.9158006, 52.352054], standDeg: 283, standM: 8, view: 'cockpit' },
+  { name: 'transvaal1926-theronstraat-20-26', centre: [4.9154452, 52.3521013], standDeg: 103, standM: 8, view: 'cockpit' },
+  { name: 'transvaal1926-steynstraat-9-15', centre: [4.9161591, 52.3510951], standDeg: 299, standM: 7, view: 'cockpit' },
+  // Transvaalbuurt 1911 variants (#156): flat white dormers, a shared gable, lone stair blocks with wall dormers.
+  { name: 'transvaal1911b-transvaalstraat-39-41', centre: [4.9263594, 52.3552451], standDeg: 333, standM: 8, view: 'cockpit' },
+  { name: 'transvaal1911b-transvaalstraat-42-44', centre: [4.9256896, 52.3551322], standDeg: 138, standM: 8, view: 'cockpit' },
+  { name: 'transvaal1911b-retiefstraat-57', centre: [4.9223555, 52.3555254], standDeg: 333, standM: 8, view: 'cockpit' },
+  { name: 'transvaal1911b-retiefstraat-65a', centre: [4.9220452, 52.3554271], standDeg: 333, standM: 8, view: 'cockpit' },
+  { name: 'transvaal1911b-pretoriusstraat-23', centre: [4.9261931, 52.3559380], standDeg: 336, standM: 8, view: 'cockpit' },
+  { name: 'transvaal1911b-paardekraalstraat-13', centre: [4.9252210, 52.3551335], standDeg: 220, standM: 8, view: 'cockpit' },
+  // Transvaalbuurt round 5 (#158): the 1930-31 designs, seen from mid-street.
+  { name: 'transvaal5b-luthulistraat-6-20', centre: [4.9196105, 52.3531229], standDeg: 119, standM: 30, view: 'cockpit' },
+  { name: 'transvaal5b-luthulistraat-22-32', centre: [4.9191358, 52.3527690], standDeg: 144, standM: 30, view: 'cockpit' },
+  { name: 'transvaal5b-afrikanerplein-33-51', centre: [4.9171430, 52.3518849], standDeg: 315, standM: 30, view: 'cockpit' },
+  { name: 'transvaal5b-schalkburgerstraat-59-77', centre: [4.9209948, 52.3530040], standDeg: 234, standM: 30, view: 'cockpit' },
+  { name: 'transvaal5b-schalkburgerstraat-99-115', centre: [4.9213461, 52.3527139], standDeg: 234, standM: 30, view: 'cockpit' },
   { name: 'aerial-westerdok', centre: [4.8860, 52.3840], standDeg: 0, standM: 0, faceDeg: 20, camZoom: 0.16 },
 ];
 

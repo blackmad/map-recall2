@@ -294,10 +294,19 @@ export class GameLandmarkRuntime {
    *  fact tile was not resident yet, its year and type fill in on arrival. */
   _requestBuildingFacts(building: BuildingHit): void {
     const store = this._buildingFacts;
-    if (!store || !building.lngLat) return;
+    if (!store || !building.lngLat || typeof store.ensureAt !== 'function') return;
     // The plain card or the mapped place's card: either one is refreshed in place.
-    const cardIds = new Set([`clicked-${building.id || building.lngLat.join('-')}`, `clicked-poi-${building.id}`]);
+    const plainId = `clicked-${building.id || building.lngLat.join('-')}`;
+    const cardIds = new Set([plainId, `clicked-poi-${building.id}`]);
     const stillOpen = () => !!this._landmarkNotice && cardIds.has(this._landmarkNotice.id);
+    // One request per card: the refresh below rebuilds the card through
+    // `_cardForClickedBuilding`, which asks again whenever the row has no
+    // article, and a resident tile resolves at once — without this guard the
+    // microtasks chained forever and the page hung (2026-11-01,
+    // buildingFactsRequest.test.ts).
+    const inFlight = this._factsInFlight ??= new Set<string>();
+    if (inFlight.has(plainId)) return;
+    inFlight.add(plainId);
     void store.ensureAt(building.lngLat[0], building.lngLat[1]).then(() => {
       if (!stillOpen() || (!store.lookup(building.id) && !store.article(building.id))) return;
       const card = this._cardForClickedBuilding(building);
@@ -307,7 +316,7 @@ export class GameLandmarkRuntime {
       const { name, detail, longDetail, factTexts, wikipediaUrl, imageUrl, extractLang, wikidata } = card;
       this._landmarkNotice = { ...open, name, detail, longDetail, factTexts, wikipediaUrl, imageUrl, extractLang, wikidata };
       this._ensureLandmarkImage(this._landmarkNotice);
-    });
+    }).finally(() => inFlight.delete(plainId));
   }
 
   // ---- Encyclopedia text ----

@@ -101,6 +101,9 @@ export interface CrossGable { leftRD: number[]; apexRD: number[]; rightRD: numbe
 export const CROSS_GABLE_MARGIN_M = 0.03;
 /** Cross roofs start this far behind the frontage, behind the crown wall (fit.ts crown depth 0.18 m, bargeboards on it). */
 export const CROSS_GABLE_BEHIND_M = 0.25;
+/** `RoofIntent.rakeClear`: a saddle stays this far under its crown's rakes, square to the slope: past the GLB audit's 3 cm
+ *  zfight-tight band (geometryAudit.ts `zTightTol`) with a centimetre to spare. */
+export const RAKE_CLEAR_M = 0.04;
 
 export interface RecipeRoofReport {
   pandId: string;
@@ -158,8 +161,9 @@ export interface SaddleFit { ridgeM: number; pitchDeg: number; sideEavesM: numbe
  * `maxDropM` under the eaves `eavesM` (a small crown on a wide front: the caller falls back to an attic face).
  * `profile` is the crown outline in facade metres (x from the left edge, y above the pand ground), as fit.ts writes it.
  */
-export function saddleUnderProfile(profile: [number, number][], widthM: number, eavesM: number, opts: {pitchDeg?: number; marginM?: number; minPitchDeg?: number; maxPitchDeg?: number; maxDropM?: number} = {}): SaddleFit | null {
-  const m = opts.marginM ?? 0.03, c = widthM / 2, minTan = Math.tan((opts.minPitchDeg ?? 30) * Math.PI / 180), maxTan = Math.tan((opts.maxPitchDeg ?? 65) * Math.PI / 180);
+export function saddleUnderProfile(profile: [number, number][], widthM: number, eavesM: number, opts: {pitchDeg?: number; marginM?: number; minPitchDeg?: number; maxPitchDeg?: number; maxDropM?: number; clearM?: number} = {}): SaddleFit | null {
+  let m = opts.marginM ?? 0.03;
+  const c = widthM / 2, minTan = Math.tan((opts.minPitchDeg ?? 30) * Math.PI / 180), maxTan = Math.tan((opts.maxPitchDeg ?? 65) * Math.PI / 180);
   if (!(widthM > 0) || profile.length < 2) return null;
   // The outline height at the centre: the highest segment there (a riser at the centre takes its upper end).
   let top = -Infinity;
@@ -169,7 +173,7 @@ export function saddleUnderProfile(profile: [number, number][], widthM: number, 
     top = Math.max(top, Math.abs(x1 - x0) < 1e-9 ? Math.max(y0, y1) : y0 + (y1 - y0) * (c - x0) / (x1 - x0));
   }
   if (!Number.isFinite(top)) return null;
-  const ridge0 = top - m;
+  let ridge0 = top - m;
   // Each vertex bounds the ridge for a given pitch: ridge <= y - m + tan * |x - c|.
   const bound = (tan: number) => Math.min(ridge0, ...profile.map(([x, y]) => y - m + tan * Math.abs(x - c)));
   let tan: number;
@@ -178,6 +182,14 @@ export function saddleUnderProfile(profile: [number, number][], widthM: number, 
     // The pitch that keeps the ridge at the top: the steepest demand of any vertex off the centre.
     const need = Math.max(0, ...profile.filter(([x]) => Math.abs(x - c) > 1e-6).map(([x, y]) => (ridge0 - (y - m)) / Math.abs(x - c)));
     tan = Math.min(maxTan, Math.max(minTan, need));
+  }
+  // `clearM` (RoofIntent.rakeClear, `RAKE_CLEAR_M`): the roof stays this far under the crown's rakes measured square to the slope, not
+  // only `marginM` plumb. A saddle pitched to a point gable's rake runs parallel to the crown wall's raking top face, and
+  // 3 cm plumb at 45 degrees is 2.1 cm square to it: inside the GLB audit's zfight-tight band (Transvaalbuurt 1911 rows,
+  // 2026-11-01). The pitch does not depend on the margin (both sides of `need` shift by it), so only the ridge drops.
+  if (opts.clearM !== undefined) {
+    m = Math.max(m, opts.clearM * Math.sqrt(1 + tan * tan));
+    ridge0 = top - m;
   }
   const ridgeM = bound(tan), sideEavesM = ridgeM - tan * c;
   if (sideEavesM < eavesM - (opts.maxDropM ?? 1)) return null;
@@ -605,11 +617,22 @@ export function recipeRoofFacts(facts: BuildingFacts, input: RecipeRoofInput, op
   };
   // Pieces are collected per plane and merged before they become surfaces (mergeCoplanar).
   const planes = new Map<string, {h: (p: number[]) => number; pieces: number[][][]}>();
+  const folded = (ring: number[][]) => {
+    if (ring.length < 4) return false;
+    const whole = Math.abs(planArea(ring)), sum = (ts: number[][][]) => ts.reduce((a, t) => a + Math.abs(planArea(t)), 0);
+    return Math.abs(sum(triangles([ring])) - whole) > 1e-7 && Math.abs(sum(ring.slice(2).map((p, i) => [ring[0], ring[i + 1], p])) - whole) > 1e-7;
+  };
+  const foldSnaps: [number[], number[]][] = [];
   const push = (raw: number[][], h: (p: number[]) => number, key: string) => {
     if (raw.length < 3) return;
     // surveyRecipe moves a point within 0.5 mm of the outline onto it; doing it here, before pieces merge and shed
     // collinear vertices, keeps neighbours consistent (a T-junction moved on one side only overlaps by mm2).
     const r = snapRing(raw).map(onOutline), sign = Math.sign(planArea(raw));
+    // The outline projection can bring a cut point within the corner snap of a footprint corner it missed before (Reij
+    // 25-39 140934, 1922 oriel bump: 1.1 mm -> 0.92 mm), leaving a folded ring that neither earcut nor a fan covers
+    // exactly (0.8 dm2 twice over). That point is snapped in every piece sharing it (a T-junction moved on one side only
+    // overlaps), and only when such a fold exists: every face that triangulated before is unchanged.
+    if (folded(r)) for (const p of r) { const c = corners.find(q => Math.hypot(q[0] - p[0], q[1] - p[1]) < 1e-3); if (c && c !== p) foldSnaps.push([p, c]); }
     // A sliver the corner snap turned inside out is dropped (its area would count twice).
     if (Math.sign(planArea(r)) !== sign) { droppedM2 += Math.abs(planArea(r)); return; }
     if (!planes.has(key)) planes.set(key, {h, pieces: []});
@@ -800,6 +823,10 @@ export function recipeRoofFacts(facts: BuildingFacts, input: RecipeRoofInput, op
     if (lines.length) notes.push(`${lines.length} rear step line(s) from 3DBAG`);
   }
   const isCorner = (p: number[]) => corners.some(c => c === p || (Math.abs(c[0] - p[0]) < 1e-9 && Math.abs(c[1] - p[1]) < 1e-9));
+  if (foldSnaps.length) for (const plane of planes.values()) plane.pieces = plane.pieces.map(r => {
+    const out = r.map(p => foldSnaps.find(([q]) => Math.hypot(q[0] - p[0], q[1] - p[1]) < 1e-9)?.[1] ?? p);
+    return out.filter((p, i) => Math.hypot(p[0] - out[(i + 1) % out.length][0], p[1] - out[(i + 1) % out.length][1]) > 1e-9);
+  }).filter(r => r.length >= 3);
   for (const {h, pieces} of planes.values()) for (const m of mergeCoplanar(pieces, isCorner)) emit(m.ring, h, m.parts);
   if (droppedM2 > 1e-4) notes.push(`${droppedM2.toExponential(1)} m2 of sub-0.1-dm2 slivers dropped`);
   if (!input.forms) {

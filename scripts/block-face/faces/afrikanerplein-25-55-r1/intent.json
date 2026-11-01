@@ -1,0 +1,219 @@
+{
+ "schemaVersion": 1,
+ "kind": "block-face",
+ "id": "afrikanerplein-25-55-r1",
+ "street": "Afrikanerplein",
+ "sources": [
+  {
+   "id": "strip-2020-04-29",
+   "kind": "street-panorama",
+   "capturedAt": "2020-04-29",
+   "image": "staging/block-face/afrikanerplein-25-55-r1/strip.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "authoring": {
+  "author": "auto-place (blockFace/autoPlace.ts)",
+  "passes": 1,
+  "note": "auto-placed from the transvaalbuurt library (buurt Transvaalbuurt-West); scores and holds in scripts/block-face/faces/afrikanerplein-25-55/auto-place.json"
+ },
+ "types": [
+  "transvaal-1931-plain-grid-nodoor",
+  "transvaal-1931-plain-grid"
+ ],
+ "houses": [
+  {
+   "pandId": "0363100012070168",
+   "slug": "afrikanerplein-070168",
+   "address": "Afrikanerplein 33A",
+   "type": {
+    "type": "transvaal-1931-plain-grid"
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2020-04-29",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: transvaal-1931-plain-grid scored 1 on eaves -, storeys 1, stucco 1, columns 1; strip 2020-04-29 span 1147-1417"
+   }
+  },
+  {
+   "pandId": "0363100012125852",
+   "slug": "afrikanerplein-125852",
+   "address": "Afrikanerplein 35A",
+   "type": {
+    "type": "transvaal-1931-plain-grid-nodoor"
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2020-04-29",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: transvaal-1931-plain-grid-nodoor scored 1 on eaves -, storeys 1, stucco 1, columns 1; strip 2020-04-29 span 1417-1687"
+   }
+  },
+  {
+   "pandId": "0363100012084510",
+   "slug": "afrikanerplein-084510",
+   "address": "Afrikanerplein 37A",
+   "type": {
+    "type": "transvaal-1931-plain-grid"
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2020-04-29",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: transvaal-1931-plain-grid scored 1 on eaves -, storeys 1, stucco -; strip 2020-04-29 span 1687-1957"
+   }
+  },
+  {
+   "pandId": "0363100012079290",
+   "slug": "afrikanerplein-079290",
+   "address": "Afrikanerplein 39A",
+   "type": {
+    "type": "transvaal-1931-plain-grid-nodoor"
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2020-04-29",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: transvaal-1931-plain-grid-nodoor scored 1 on eaves -, storeys 1, stucco 1, columns 1; strip 2020-04-29 span 1957-2227"
+   }
+  },
+  {
+   "pandId": "0363100012143471",
+   "slug": "afrikanerplein-143471",
+   "address": "Afrikanerplein 41A",
+   "type": {
+    "type": "transvaal-1931-plain-grid"
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2020-04-29",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: transvaal-1931-plain-grid scored 1 on eaves -, storeys 1, stucco 1, columns 1; strip 2020-04-29 span 2227-2497"
+   }
+  },
+  {
+   "pandId": "0363100012068510",
+   "slug": "afrikanerplein-068510",
+   "address": "Afrikanerplein 43A",
+   "type": {
+    "type": "transvaal-1931-plain-grid",
+    "mirror": true
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2020-04-29",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: transvaal-1931-plain-grid scored 1 on eaves -, storeys 1, stucco -; strip 2020-04-29 span 2498-2769"
+   }
+  },
+  {
+   "pandId": "0363100012135325",
+   "slug": "afrikanerplein-135325",
+   "address": "Afrikanerplein 45A",
+   "type": {
+    "type": "transvaal-1931-plain-grid"
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2020-04-29",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: transvaal-1931-plain-grid scored 1 on eaves -, storeys 1, stucco 1, columns 1; strip 2020-04-29 span 2768-3038"
+   }
+  },
+  {
+   "pandId": "0363100012064549",
+   "slug": "afrikanerplein-064549",
+   "address": "Afrikanerplein 47A",
+   "type": {
+    "type": "transvaal-1931-plain-grid",
+    "mirror": true
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2020-04-29",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: transvaal-1931-plain-grid scored 1 on eaves -, storeys 1, stucco -; strip 2020-04-29 span 3038-3309"
+   }
+  },
+  {
+   "pandId": "0363100012086955",
+   "slug": "afrikanerplein-086955",
+   "address": "Afrikanerplein 49A",
+   "type": {
+    "type": "transvaal-1931-plain-grid"
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2020-04-29",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: transvaal-1931-plain-grid scored 1 on eaves -, storeys 1, stucco 1, columns 1; strip 2020-04-29 span 3309-3579"
+   }
+  }
+ ],
+ "continuity": {
+  "streetLevel": "shared",
+  "corniceGroups": [],
+  "identical": [],
+  "partyClip": true,
+  "roof": {
+   "source": "recipe",
+   "pitchDeg": 30,
+   "evidence": "auto-place: low attic behind the cornice; the strips show sky over the cornices of the type rows"
+  }
+ }
+}

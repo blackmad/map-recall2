@@ -3,6 +3,7 @@ import { openRoute } from './helpers';
 import { renderSpecs } from '../../scripts/look/measured-swatches';
 import { sunlitMeasuredWall } from '../../src/canalRecall/look/sunny';
 import { PILOTS, loadWallPage, measurePilot } from '../../scripts/look/measured-walls';
+import { OWN } from './worldCam';
 
 // The Building look setting switches looks live without a reload (Photo by default;
 // the retired MapLibre pattern layer survives as `?buildings3d=off`), and a
@@ -10,13 +11,14 @@ import { PILOTS, loadWallPage, measurePilot } from '../../scripts/look/measured-
 
 
 test('building look switches live between the three.js looks and the retired pattern layer', async ({ page }) => {
+  test.skip(OWN, 'MapLibre style assertion: deleted with the default path at P5');
   test.setTimeout(240_000);
   await openRoute(page, { travelMode: 'car', viewMode: 'chase', abortHeavyTiles: true, enterRacing: false });
   await page.waitForFunction(() => (window as any).canalRecallGame.vectorMap._facadesActive?.() === true, null, { timeout: 90_000 });
   await page.waitForTimeout(6000);
 
   const read = () => page.evaluate(() => {
-    const vm = (window as any).canalRecallGame.vectorMap, map = vm.map;
+    const vm = (window as any).canalRecallGame.vectorMap, map = vm.map ?? vm.cameraMap;
     const pattern = map.getLayer('osm-colored-building-facades') ? map.getLayoutProperty('osm-colored-building-facades', 'visibility') : 'absent';
     return { look: vm._buildings3dLook, pattern, three: vm._threeBuildings ? vm._threeBuildings.stats().chunks : 0,
       // Three looks draw the whole city: MapLibre's building layers are off, so no slab can hang in the air (user reports 2026-10-02).

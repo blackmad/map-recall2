@@ -3,7 +3,7 @@
  "street": "Smitstraat",
  "library": "transvaalbuurt",
  "stripDate": "2020-04-29",
- "seconds": 3.8,
+ "seconds": 12.49,
  "thresholds": {
   "minScore": 0.7,
   "margin": 0.05,
@@ -95,7 +95,11 @@
    },
    "challengers": {
     "transvaal-1911-five-storey-tall": 0.077,
-    "transvaal-1911-five-storey-tall~m": 0.062
+    "transvaal-1911-five-storey-tall~m": 0.062,
+    "transvaal-1911-five-storey": 0.058,
+    "transvaal-1911-five-storey~m": 0.037,
+    "transvaal-1923-portiek-tower": 0.045,
+    "transvaal-1929-block": 0.024
    }
   },
   {
@@ -184,7 +188,8 @@
    },
    "challengers": {
     "transvaal-1911-five-storey-tall": 0.033,
-    "transvaal-1911-five-storey-tall~m": 0.032
+    "transvaal-1911-five-storey-tall~m": 0.032,
+    "transvaal-1929-block": -0.061
    }
   },
   {
@@ -244,42 +249,46 @@
     "foliageShare": 0
    },
    "status": "held",
-   "stage": "run",
-   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
+   "stage": "likeness",
+   "reason": "edge NCC 0.145 < 0.15 (photo vs model body; likeness.ts FAIL: glazing storey band off by 0.23; window shape square vs photo wide; columns 3 vs photo 2)",
    "likeness": {
     "pandId": "0363100012141435",
-    "ncc": 0.153,
-    "nccRaw": 0.153,
+    "ncc": 0.145,
+    "nccRaw": 0.145,
     "shiftM": [
      -0.3,
-     0.15
+     0.2
     ],
-    "usable": 0.98,
+    "usable": 0.99,
     "abstain": null,
     "verdict": "FAIL",
     "reasons": [
-     "glazing storey band off by 0.15",
+     "glazing storey band off by 0.23",
      "window shape square vs photo wide",
      "columns 3 vs photo 2"
     ],
     "wall": {
-     "photo": "#65534d",
+     "photo": "#655550",
      "model": "#7d6963",
-     "dL": 0.09
+     "dL": 0.084
     },
     "glazing": {
-     "photo": 0.36,
+     "photo": 0.28,
      "model": 0.37
     },
     "columns": {
      "photo": 2,
      "model": 3
     },
-    "iou": 0.247
+    "iou": 0.243
    },
    "challengers": {
     "transvaal-1911-five-storey-tall": 0.153,
-    "transvaal-1911-five-storey-tall~m": 0.149
+    "transvaal-1911-five-storey-tall~m": 0.149,
+    "transvaal-1911-five-storey": 0.137,
+    "transvaal-1911-five-storey~m": 0.137,
+    "transvaal-1923-portiek-tower": 0.106,
+    "transvaal-1923-portiek": 0.113
    }
   }
  ]

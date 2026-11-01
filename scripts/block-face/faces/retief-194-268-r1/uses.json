@@ -1,0 +1,90 @@
+{
+ "street": "Retiefstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-31T15:09:05.738Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012137027",
+   "addresses": [
+    "Retiefstraat 252A",
+    "Retiefstraat 254",
+    "Retiefstraat 256",
+    "Retiefstraat 258",
+    "Retiefstraat 260"
+   ],
+   "groundUnits": [
+    {
+     "address": "Retiefstraat 254",
+     "use": "woonfunctie",
+     "areaM2": 38,
+     "bagId": "0363010000791854"
+    },
+    {
+     "address": "Retiefstraat 260",
+     "use": "woonfunctie",
+     "areaM2": 38,
+     "bagId": "0363010000791857"
+    },
+    {
+     "address": "Retiefstraat 252A",
+     "use": "woonfunctie",
+     "areaM2": 61,
+     "bagId": "0363010012576702"
+    },
+    {
+     "address": "Retiefstraat 258",
+     "use": "woonfunctie",
+     "areaM2": 37,
+     "bagId": "0363010000791856"
+    },
+    {
+     "address": "Retiefstraat 256",
+     "use": "woonfunctie",
+     "areaM2": 37,
+     "bagId": "0363010000791855"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012096769",
+   "addresses": [
+    "Retiefstraat 246",
+    "Retiefstraat 248",
+    "Retiefstraat 250",
+    "Retiefstraat 252"
+   ],
+   "groundUnits": [
+    {
+     "address": "Retiefstraat 246",
+     "use": "woonfunctie",
+     "areaM2": 38,
+     "bagId": "0363010000791850"
+    },
+    {
+     "address": "Retiefstraat 248",
+     "use": "woonfunctie",
+     "areaM2": 40,
+     "bagId": "0363010000791851"
+    },
+    {
+     "address": "Retiefstraat 252",
+     "use": "woonfunctie",
+     "areaM2": 40,
+     "bagId": "0363010000791853"
+    },
+    {
+     "address": "Retiefstraat 250",
+     "use": "woonfunctie",
+     "areaM2": 40,
+     "bagId": "0363010000791852"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  }
+ ]
+}

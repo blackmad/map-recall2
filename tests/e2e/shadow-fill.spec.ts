@@ -59,7 +59,7 @@ async function settle(page: Page): Promise<void> {
   await page.evaluate(() => { (window as any).__sfIdle = 0; });
   await page.waitForFunction(() => {
     const w = window as any, vm = w.canalRecallGame.vectorMap, t = vm._threeBuildings, l = vm._signatureLandmarks;
-    const c = vm.map.getCenter(); vm.map.jumpTo({ center: [c.lng + 1e-9, c.lat] });
+    const c = vm.camera.center(); (vm.map ?? vm.cameraMap).jumpTo({ center: [c.lng + 1e-9, c.lat] });
     const idle = !t || (t.ready && !t.pending.length && !t.inflight.size);
     const landmarksIdle = !l || !l._pending || !l._pending.size;
     const key = `${t?.stats?.().buildings ?? 0}|${t?.chunks?.size ?? 0}|${l?.shown?.size ?? 0}`;
@@ -67,7 +67,7 @@ async function settle(page: Page): Promise<void> {
     w.__sfKey = key;
     return w.__sfIdle >= 5;
   }, null, { timeout: 180_000, polling: 1000 });
-  await page.evaluate(() => { const w = window as any; w.canalRecallGame.vectorMap.map.jumpTo(w.__sfCamera); });
+  await page.evaluate(() => { const w = window as any; (w.canalRecallGame.vectorMap.map ?? w.canalRecallGame.vectorMap.cameraMap).jumpTo(w.__sfCamera); });
   await page.waitForTimeout(2500);
 }
 
@@ -77,7 +77,7 @@ const CONFIGS: Config[] = ['before', 'depthFix', 'after'];
 /** Page state for one shot: shadows on/off, depth-range fix, fill, which things draw. */
 async function stage(page: Page, s: { normalBias?: number; shadows: boolean; fullDepthRange?: boolean; fill?: number; city?: boolean; model?: string | null }): Promise<void> {
   await page.evaluate(async (s) => {
-    const vm = (window as any).canalRecallGame.vectorMap, sf = vm._sharedFrame, map = vm.map;
+    const vm = (window as any).canalRecallGame.vectorMap, sf = vm._sharedFrame, map = vm.map ?? vm.cameraMap;
     sf.setShadows(s.shadows);
     if (s.normalBias !== undefined) sf.rig.sun.shadow.normalBias = s.normalBias;
     sf.renderer.shadowMap.fullDepthRange = s.fullDepthRange !== false;
@@ -112,7 +112,7 @@ for (const mode of MODES) test(`shadow fill shots: ${mode.label}`, async ({ page
     if (ONLY && !ONLY.includes(spot.name)) continue;
     const eye = ahead(spot.target, spot.bearing, spot.distM);
     await page.evaluate(({ eye, spot }) => {
-      const g = (window as any).canalRecallGame, vm = g.vectorMap, map = vm.map;
+      const g = (window as any).canalRecallGame, vm = g.vectorMap, map = vm.map ?? vm.cameraMap;
       g._updateCanalQuiz = () => {}; g._updateBridgeQuiz = () => {};
       g.player.speed = 0; g.player.vx = 0; g.player.vy = 0;
       vm.sync = () => {}; map.stop(); map.setMaxPitch(85); map.setVerticalFieldOfView(50); map.setPadding({ top: 0, bottom: 0, left: 0, right: 0 });
@@ -121,12 +121,12 @@ for (const mode of MODES) test(`shadow fill shots: ${mode.label}`, async ({ page
     }, { eye, spot });
     await settle(page);
     await page.evaluate(() => {
-      const map = (window as any).canalRecallGame.vectorMap.map;
-      for (const layer of map.getStyle().layers) if (layer.type === 'symbol' && map.getLayoutProperty(layer.id, 'visibility') !== 'none') map.setLayoutProperty(layer.id, 'visibility', 'none');
+      const map = (window as any).canalRecallGame.vectorMap.map ?? (window as any).canalRecallGame.vectorMap.cameraMap;
+      if ((window as any).canalRecallGame.vectorMap.map) { for (const layer of map.getStyle().layers) if (layer.type === 'symbol' && map.getLayoutProperty(layer.id, 'visibility') !== 'none') map.setLayoutProperty(layer.id, 'visibility', 'none'); } else (window as any).canalRecallGame.vectorMap.setLabelsVisible(false);
       const canvas = map.getCanvas() as HTMLCanvasElement;
       for (const e of Array.from(document.body.querySelectorAll('*'))) if (e !== canvas && !e.contains(canvas)) (e as HTMLElement).style.visibility = 'hidden';
     });
-    const canvas = page.locator('canvas.maplibregl-canvas').first();
+    const canvas = page.locator('canvas.maplibregl-canvas, canvas.engine-canvas').first();
     const shot = async (name?: string) => { const png = await canvas.screenshot(); if (name) writeFileSync(join(dir, `${spot.name}-${name}.png`), png); return rawOf(png); };
     await stage(page, { shadows: false });
     const off = await shot('noshadow');
