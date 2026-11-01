@@ -40,7 +40,7 @@ const cdp = await page.context().newCDPSession(page);
 const throttle = device === 'touch' ? 4 : 1;
 await cdp.send('Emulation.setCPUThrottlingRate', {rate: throttle});
 await page.evaluate(() => {
-  const w = window, vm = canalRecallGame.vectorMap, map = vm.map;
+  const w = window, vm = canalRecallGame.vectorMap, map = vm.map ?? vm.cameraMap;
   const t = w.__perf = {frame: [], mapRender: [], threeLayers: [], calls: [], redraws0: vm._sharedFrame?.shadowRedraws ?? null};
   const wrap = (obj, key, bucket) => { const o = obj[key].bind(obj); obj[key] = (...a) => { const s = performance.now(); try { return o(...a); } finally { t[bucket].push(performance.now() - s); } }; };
   wrap(map, '_render', 'mapRender');

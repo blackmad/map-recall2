@@ -21,8 +21,8 @@ try {
     for (const zoom of [17.1, 17.5, 18]) {
       await page.evaluate(zoom => {
         const vm = window.canalRecallGame.vectorMap;
-        vm.map.jumpTo({ center: [4.874284, 52.371787], zoom, pitch: 65, bearing: -18.12 });
-        vm.map.triggerRepaint();
+        (vm.map ?? vm.cameraMap).jumpTo({ center: [4.874284, 52.371787], zoom, pitch: 65, bearing: -18.12 });
+        (vm.map ?? vm.cameraMap).triggerRepaint();
       }, zoom);
       await page.waitForTimeout(3000);
       const data = await page.evaluate(async () => {
