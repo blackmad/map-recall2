@@ -1,5 +1,23 @@
 # Canal Recall — what is built
 
+**Depth fade behind `?depthFade=1`: the far city loses saturation and moves toward haze, the near field stays pixel-identical (2026-11-02, #161 lever 1).**
+Materials (a37f977bc). `look/depthFade.ts`: with eye distance, saturation drops
+up to 70 % and colour moves up to 55 % toward the haze #a1c6e5. Window and trim
+micro-contrast blends to the facade cell's mean tint beyond max(150 m, fade
+start). The fade starts at 0.8× the eye-to-centre distance, is full at 3.5×,
+and never starts inside 80 m. It applies to the default and toon looks and the
+overview flat layers; the route band opts out. The busyness probe's far/near
+edge ratio drops on desktop westerkerk 1.45 → 0.84, bloemgracht 1.72 → 0.98,
+nassaukade 1.82 → 1.06, leidsegracht 1.55 → 0.87, ijburg 0.55 → 0.40, and on
+iPhone by about a third. That is why the lever is worth keeping, but it does
+not reach the ≤ 0.5 target alone. Cost: desktop draws 291 → 285, iPad
+unchanged. Merged flag-off because the look review found the Westerkerk tower
+inside the faded band, and orientation landmarks must stay sharp; the follow-up
+opts landmarks out and turns the fade on. Integrator: engine, own-ground,
+three, three-buildings, building-types, tile-buildings, signature and gallery
+bundles rebuilt (roofTier.ts and gameGround.ts are embedded in them); lint,
+test:look 170/170, test:engine 129/129, test:own-ground 227/227.
+
 **A camera looking away from the rider streams its own view, not the rider's square (2026-11-01, P1).**
 L1 hand-back 21b (6fc8d6004, 4bdf41c29, b191915b1). Below zoom 17.5 the fetch
 ring's `rideBox()` streamed only a 530 m square around the rider, so a camera

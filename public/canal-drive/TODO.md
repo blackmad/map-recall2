@@ -275,10 +275,14 @@ elevation bug, fixed; facade mask R8 merged 2026-11-01 (`f3f6ff157`, HISTORY
 "The facade mask uploads as R8"): iPhone atlas 21.67 MB, budget back to 22;
 too-white roofs #179 fixed 2026-11-01 (bcc38403a, HISTORY "Bright white flat
 roofs no longer clip"); toon look step 1 merged 2026-11-01 behind `?look=toon`
-(53d5299d8) and step 2 (9d64252cb, HISTORY "Toon look step 2"); materials next:
-the calming levers of #161 comment 6564393499, depth falloff first, flag-gated,
-default look too, measured with the busyness probe, target far/near edge ≤ 0.5
-from 0.55–1.82); the 150/400 m
+(53d5299d8) and step 2 (9d64252cb, HISTORY "Toon look step 2"); calming lever 1,
+depth fade, merged flag-off 2026-11-02 (a37f977bc, `?depthFade=1`, HISTORY "Depth
+fade"): far/near edge 1.45–1.82 → 0.84–1.06 desktop, target ≤ 0.5 not yet met;
+materials next: opt landmark/signature materials out of the fade (the
+Westerkerk tower loses its crispness) and flip the default on for both looks
+(What's New "The far city fades into haze" with off/on strips), then levers
+2–5 of #161 comment 6564393499 (the label budget may conflict with L1's
+labelPolicy.ts)); the 150/400 m
 facade LOD is parked (60–100k, 5–8 %, not worth its likeness risk yet). In-frame
 shader links are 0. P5 follow-ups: delete
 `building-tiles/` and `bag-tiles/` after a week of Sentry quiet on the
