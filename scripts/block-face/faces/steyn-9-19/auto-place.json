@@ -3,7 +3,7 @@
  "street": "President Steynstraat",
  "library": "transvaalbuurt",
  "stripDate": "2020-04-29",
- "seconds": 0.92,
+ "seconds": 4.61,
  "thresholds": {
   "minScore": 0.7,
   "margin": 0.05,
@@ -13,7 +13,19 @@
   "widthSlackM": 0.4,
   "flatRoofRiseM": 1.5
  },
- "runs": [],
+ "runs": [
+  {
+   "face": "steyn-9-19-r1",
+   "pands": [
+    "0363100012063929",
+    "0363100012073365",
+    "0363100012145744",
+    "0363100012138134"
+   ],
+   "passed": true,
+   "triangles": 5857
+  }
+ ],
  "pands": [
   {
    "pandId": "0363100012063929",
@@ -55,43 +67,49 @@
     "voidShare": 0,
     "foliageShare": 0.01
    },
-   "status": "held",
-   "stage": "match",
-   "reason": "every type vetoed (best transvaal-1911-five-storey-tall: built 1928, type 1908-1914)",
-   "best": {
-    "type": "transvaal-1911-five-storey-tall",
-    "score": 0,
-    "veto": [
-     "built 1928, type 1908-1914"
-    ],
-    "criteria": [
-     {
-      "key": "eaves",
-      "weight": 2,
-      "score": 1,
-      "note": "3DBAG eaves 13.1 m = 4 storeys of 3.27 m vs the type's 3.55 m"
-     },
-     {
-      "key": "storeys",
-      "weight": 1,
-      "score": 1,
-      "note": "3DBAG bouwlagen 5 vs 5"
-     },
-     {
-      "key": "stucco",
-      "weight": 2,
-      "score": 1,
-      "note": "strip accent share 0.164 (brick)"
-     },
-     {
-      "key": "columns",
-      "weight": 1.5,
-      "score": 0.4,
-      "note": "strip columns 3 vs 4 bays"
-     }
-    ]
+   "status": "placed",
+   "type": "transvaal-1928-plain-row",
+   "score": 1,
+   "placement": {
+    "type": "transvaal-1928-plain-row",
+    "measuredPalette": {
+     "brick": "#785a52",
+     "evidence": "strip 2020-04-29 span 0-267: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
    },
-   "likeness": null,
+   "notes": [
+    "door unread: as drawn, the opposite of 073365",
+    "crown parapet (type default)"
+   ],
+   "likeness": {
+    "pandId": "0363100012063929",
+    "ncc": 0.517,
+    "nccRaw": 0.517,
+    "shiftM": [
+     -0.2,
+     0.15
+    ],
+    "usable": 0.98,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.15 mean 0.29 vs photo 0.49"
+    ],
+    "wall": {
+     "photo": "#74574e",
+     "model": "#906c63",
+     "dL": 0.096
+    },
+    "glazing": {
+     "photo": 0.49,
+     "model": 0.29
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.585
+   },
    "challengers": {}
   },
   {
@@ -134,43 +152,50 @@
     "voidShare": 0,
     "foliageShare": 0.04
    },
-   "status": "held",
-   "stage": "match",
-   "reason": "every type vetoed (best transvaal-1911-five-storey-tall: built 1928, type 1908-1914)",
-   "best": {
-    "type": "transvaal-1911-five-storey-tall",
-    "score": 0,
-    "veto": [
-     "built 1928, type 1908-1914"
-    ],
-    "criteria": [
-     {
-      "key": "eaves",
-      "weight": 2,
-      "score": 1,
-      "note": "3DBAG eaves 13.17 m = 4 storeys of 3.29 m vs the type's 3.55 m"
-     },
-     {
-      "key": "storeys",
-      "weight": 1,
-      "score": 1,
-      "note": "3DBAG bouwlagen 5 vs 5"
-     },
-     {
-      "key": "stucco",
-      "weight": 2,
-      "score": 1,
-      "note": "strip accent share 0.142 (brick)"
-     },
-     {
-      "key": "columns",
-      "weight": 1.5,
-      "score": 0.4,
-      "note": "strip columns 3 vs 4 bays"
-     }
-    ]
+   "status": "placed",
+   "type": "transvaal-1928-plain-row",
+   "score": 1,
+   "placement": {
+    "type": "transvaal-1928-plain-row",
+    "mirror": true,
+    "measuredPalette": {
+     "brick": "#755651",
+     "evidence": "strip 2020-04-29 span 267-533: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
    },
-   "likeness": null,
+   "notes": [
+    "door right: mirrored",
+    "crown parapet (type default)"
+   ],
+   "likeness": {
+    "pandId": "0363100012073365",
+    "ncc": 0.505,
+    "nccRaw": 0.505,
+    "shiftM": [
+     -0.25,
+     0.1
+    ],
+    "usable": 0.91,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing  mean 0.28 vs photo 0.41"
+    ],
+    "wall": {
+     "photo": "#74544e",
+     "model": "#8d6862",
+     "dL": 0.088
+    },
+    "glazing": {
+     "photo": 0.41,
+     "model": 0.28
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.549
+   },
    "challengers": {}
   },
   {
@@ -213,43 +238,49 @@
     "voidShare": 0,
     "foliageShare": 0.01
    },
-   "status": "held",
-   "stage": "match",
-   "reason": "every type vetoed (best transvaal-1911-five-storey-tall: built 1928, type 1908-1914)",
-   "best": {
-    "type": "transvaal-1911-five-storey-tall",
-    "score": 0,
-    "veto": [
-     "built 1928, type 1908-1914"
-    ],
-    "criteria": [
-     {
-      "key": "eaves",
-      "weight": 2,
-      "score": 1,
-      "note": "3DBAG eaves 13.18 m = 4 storeys of 3.29 m vs the type's 3.55 m"
-     },
-     {
-      "key": "storeys",
-      "weight": 1,
-      "score": 1,
-      "note": "3DBAG bouwlagen 5 vs 5"
-     },
-     {
-      "key": "stucco",
-      "weight": 2,
-      "score": 1,
-      "note": "strip accent share 0.05 (brick)"
-     },
-     {
-      "key": "columns",
-      "weight": 1.5,
-      "score": 0.4,
-      "note": "strip columns 3 vs 4 bays"
-     }
-    ]
+   "status": "placed",
+   "type": "transvaal-1928-plain-row",
+   "score": 1,
+   "placement": {
+    "type": "transvaal-1928-plain-row",
+    "measuredPalette": {
+     "brick": "#775752",
+     "evidence": "strip 2020-04-29 span 533-798: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
    },
-   "likeness": null,
+   "notes": [
+    "door left",
+    "crown parapet (type default)"
+   ],
+   "likeness": {
+    "pandId": "0363100012145744",
+    "ncc": 0.541,
+    "nccRaw": 0.541,
+    "shiftM": [
+     -0.1,
+     0.15
+    ],
+    "usable": 0.95,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.16 mean 0.28 vs photo 0.46"
+    ],
+    "wall": {
+     "photo": "#71524a",
+     "model": "#8f6963",
+     "dL": 0.108
+    },
+    "glazing": {
+     "photo": 0.46,
+     "model": 0.28
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.502
+   },
    "challengers": {}
   },
   {
@@ -292,43 +323,48 @@
     "voidShare": 0,
     "foliageShare": 0.01
    },
-   "status": "held",
-   "stage": "match",
-   "reason": "every type vetoed (best transvaal-1911-five-storey-tall: built 1928, type 1908-1914)",
-   "best": {
-    "type": "transvaal-1911-five-storey-tall",
-    "score": 0,
-    "veto": [
-     "built 1928, type 1908-1914"
-    ],
-    "criteria": [
-     {
-      "key": "eaves",
-      "weight": 2,
-      "score": 1,
-      "note": "3DBAG eaves 13.21 m = 4 storeys of 3.3 m vs the type's 3.55 m"
-     },
-     {
-      "key": "storeys",
-      "weight": 1,
-      "score": 1,
-      "note": "3DBAG bouwlagen 5 vs 5"
-     },
-     {
-      "key": "stucco",
-      "weight": 2,
-      "score": 1,
-      "note": "strip accent share 0.052 (brick)"
-     },
-     {
-      "key": "columns",
-      "weight": 1.5,
-      "score": 1,
-      "note": "strip columns 3 vs 3 bays"
-     }
-    ]
+   "status": "placed",
+   "type": "transvaal-1928-plain-row",
+   "score": 1,
+   "placement": {
+    "type": "transvaal-1928-plain-row",
+    "mirror": true,
+    "measuredPalette": {
+     "brick": "#766260",
+     "evidence": "strip 2020-04-29 span 798-1048: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
    },
-   "likeness": null,
+   "notes": [
+    "door right: mirrored",
+    "crown parapet (type default)"
+   ],
+   "likeness": {
+    "pandId": "0363100012138134",
+    "ncc": 0.424,
+    "nccRaw": 0.424,
+    "shiftM": [
+     -0.1,
+     0.2
+    ],
+    "usable": 0.96,
+    "abstain": null,
+    "verdict": "PASS",
+    "reasons": [],
+    "wall": {
+     "photo": "#75605d",
+     "model": "#8c7472",
+     "dL": 0.086
+    },
+    "glazing": {
+     "photo": 0.35,
+     "model": 0.28
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.609
+   },
    "challengers": {}
   },
   {

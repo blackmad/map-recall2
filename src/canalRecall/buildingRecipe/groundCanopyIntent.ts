@@ -23,10 +23,16 @@ export interface GroundCanopyIntent {
   doorOverhang?: number;
   /** Slab colour (measured tint, #rrggbb); default the front's trim. */
   colour?: string;
+  /**
+   * `true` (Danie Theronstraat 1926-28): only lights of the ground storey count as the door's transom; the stair windows of
+   * the storeys above, on the door's axis, do not lift the slab out of the ground storey (which drops it). Absent = any
+   * light over the doorway counts, byte-identical (the installed Albert Luthulistraat 1923 portiek draws no slab that way).
+   */
+  groundTransomOnly?: boolean;
 }
 
 const HEX = /^#[0-9a-f]{6}$/i;
-const KEYS = ['over', 'projection', 'thickness', 'overhang', 'gap', 'doorOverhang', 'colour'];
+const KEYS = ['over', 'projection', 'thickness', 'overhang', 'gap', 'doorOverhang', 'colour', 'groundTransomOnly'];
 
 /** Problems with `groundCanopy`. */
 export function groundCanopyProblems(f: FrontIntent, at: string): string[] {
@@ -37,8 +43,10 @@ export function groundCanopyProblems(f: FrontIntent, at: string): string[] {
   for (const k of ['projection', 'thickness', 'overhang', 'gap'] as const) if (!inRange(o[k], GROUND_CANOPY[k])) p.push(`${at}.groundCanopy.${k}: ${GROUND_CANOPY[k].join('..')} m`);
   if (o.doorOverhang !== undefined && !inRange(o.doorOverhang, GROUND_CANOPY.overhang)) p.push(`${at}.groundCanopy.doorOverhang: ${GROUND_CANOPY.overhang.join('..')} m`);
   if (o.over !== undefined && (!Array.isArray(o.over) || !o.over.length || o.over.some(x => !(GROUND_CANOPY_OVER as readonly string[]).includes(x as string)))) p.push(`${at}.groundCanopy.over: some of ${GROUND_CANOPY_OVER.join(', ')}`);
+  if (o.groundTransomOnly !== undefined && typeof o.groundTransomOnly !== 'boolean') p.push(`${at}.groundCanopy.groundTransomOnly: true or false`);
   if (o.colour !== undefined && (typeof o.colour !== 'string' || !HEX.test(o.colour))) p.push(`${at}.groundCanopy.colour: a #rrggbb colour`);
   if (f.shopfront) p.push(`${at}.groundCanopy: not with a shopfront (its awning is the shop's canopy)`);
-  if (f.repeat) p.push(`${at}.groundCanopy: not on a repeated front`);
+  // A repeated front (Danie Theronstraat 1926-28: two mirrored half-portiek modules on a 12 m pand) gets a slab over every
+  // module's door: the slabs are cut from the laid-out openings, so each module's doorway carries its own.
   return p;
 }

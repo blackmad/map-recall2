@@ -1,6 +1,6 @@
 {
  "note": "Pands held after reviewing the auto-place strip sheets at full size against the photo (scripts/block-face/auto-place.ts reads this file: a listed pand is held at stage 'review' with its reason, whatever its score and edge NCC). Remove an entry when a type or kit change makes the pand read right, and review the sheet again.",
- "reviewed": "2026-10-31",
+ "reviewed": "2026-11-01",
  "holds": [
   {
    "pandId": "0363100012117142",
@@ -71,6 +71,21 @@
    "pandId": "0363100012138010",
    "address": "Albert Luthulistraat 1C",
    "reason": "the corner block with a tall stair tower and a parapet over its own window grid (luthuli-1-19-r1 sheet, 2020-04-29 strip): the plain flat 1921 row type draws a low gutter front (#154, 2026-11-01)"
+  },
+  {
+   "pandId": "0363100012133939",
+   "address": "Danie Theronstraat 32",
+   "reason": "Danie Theronstraat 32-36 (BAG 1928, 9 m) is the corner block's own front: four storeys of wide single windows without the white top bands, a sloping parapet; transvaal-1926-band-row draws the band row's pairs and stair window (theron-2-36-r1 sheet, 2026-11-01; NCC 0.19)"
+  },
+  {
+   "pandId": "0363100012108544",
+   "address": "Danie Theronstraat 33",
+   "reason": "Danie Theronstraat 33-35 (BAG 1928, 8.7 m) is the end block's own front: three wide windows and a narrow one per storey, no white bands, a taller parapet; transvaal-1926-band-row draws the band row (theron-9-37-r1 sheet, 2026-11-01; NCC 0.20)"
+  },
+  {
+   "pandId": "0363100012119062",
+   "address": "Danie Theronstraat 21",
+   "reason": "Danie Theronstraat 21 is under yellow scaffold netting on the 2020-04-29 strip: the measured wall #56481f is the netting, and the model draws an olive front (theron-9-37-r1 sheet, 2026-11-01); the front itself is the band row, so a palette pin or a later strip would release it"
   }
  ]
 }

@@ -1,0 +1,176 @@
+{
+ "schemaVersion": 1,
+ "kind": "house-type",
+ "id": "transvaal-1928-plain-row",
+ "district": "transvaalbuurt",
+ "description": "Transvaalbuurt 1927-1928 plain rows (President Steynstraat 9-19, Hofmeyrstraat 7): 6-7 m flat-roofed red-brown brick fronts of a 3.4 m ground storey and three 3.0 m upper storeys under a 1.3 m plain parapet with a dark coping (top 13.7 m); three equal white sash windows per upper storey, the top sash small-paned; on the ground a double house door on an outer axis and one wide window, under a light grey concrete lintel band (2.3-2.7 m); the door side alternates so two doors stand together. The twin of transvaal-1926-band-row without its white bands and stair windows",
+ "fit": {
+  "widthM": [
+   5.3,
+   7.6
+  ],
+  "storeys": [
+   4
+  ]
+ },
+ "match": {
+  "years": [
+   1926,
+   1928
+  ],
+  "storeys3dbag": [
+   4,
+   5
+  ],
+  "stucco": false,
+  "frontEavesM": 13.8,
+  "frontage": {
+   "mode": "stair-block",
+   "widthM": [
+    5.3,
+    7.6
+   ],
+   "storeys": [
+    4
+   ],
+   "axisPitchM": [
+    1.7,
+    2.6
+   ]
+  },
+  "mirrorForDoor": "left",
+  "crownFromType": "parapet",
+  "note": "President Steynstraat 9-19 and Hofmeyrstraat 7 on the 2020-04-29 strips (40 px/m, gridded 1 m): parapet top 13.65-13.8 m (strip skyline 13.8-14.3 m with the roof-vent tops), 3DBAG eaves 13.1-13.2 m and bouwlagen 5 (the roof storey behind the parapet), so the eaves are the type's front line (frontEavesM). BAG 1928. Three axes over 5.7-6.7 m (2.0-2.25 m pitch). Transvaalkade 130-132 and Hofmeyrstraat 42-44 carry a fifth row of small square attic lights under a parapet at 14.7-14.9 m: not this front (their skyline is a metre over the type line). Hofmeyrstraat 24-40 is read off a 2023-01-02 strip whose verticals are compressed (wall top at 12.3 m against 3DBAG 15.0 m, ground doors 1.3 m tall). No band criterion: the faces are pinned (transvaalbuurt-west-review-types.json)"
+ },
+ "body": {
+  "storeys": 4,
+  "bays": [
+   2,
+   3,
+   3,
+   3
+  ],
+  "cornice": "none",
+  "windows": "small-over-one",
+  "storeyWindows": {
+   "0": "casement-gridded-toplight-double"
+  },
+  "windowShare": 0.63,
+  "storeyHeights": [
+   3.4,
+   3,
+   3,
+   3
+  ],
+  "windowHeights": [
+   0.44,
+   0.517,
+   0.517,
+   0.517
+  ],
+  "headLines": [
+   0.676,
+   0.7,
+   0.717,
+   0.717
+  ],
+  "storeyBayWidths": {
+   "0": [
+    1,
+    2
+   ]
+  },
+  "bands": "painted",
+  "bandStoreys": [
+   0
+  ],
+  "bandLines": [
+   "head"
+  ],
+  "bandHeights": {
+   "head": 0.4
+  }
+ },
+ "crowns": {
+  "parapet": {
+   "gable": "flat",
+   "cornice": "none",
+   "parapet": {
+    "courses": 24,
+    "coping": true
+   },
+   "note": "President Steynstraat 9-15 (063929 073365 145744 138134): 1.3 m of brick from 12.4 m to a dark coping at 13.7 m, a row of upright header bricks at 12.5-12.7 m; flat roof behind"
+  }
+ },
+ "grounds": {
+  "door-left": {
+   "doorBay": 0,
+   "note": "a double house door 1.4-1.6 m wide (head 2.1 m) on the outer axis, the wide window (2.8 m, 0.8-2.3 m) over the other two; mirrored when the strip reads the door on the right"
+  }
+ },
+ "palettes": {
+  "red-brown": {
+   "brick": "#4c3c37",
+   "frame": "#ebe8df",
+   "door": "#5a2a22",
+   "stone": "#bdb8ae",
+   "cornice": "#3a3230"
+  }
+ },
+ "roof": {
+  "material": "bitumen",
+  "source": "front",
+  "form": "flat",
+  "evidence": "President Steynstraat 9-19 strip: the parapet top is the skyline, only vent pipes over it; 3DBAG 15.0 m is a roof storey set back out of sight from the street"
+ },
+ "rhythm": {
+  "bays": "three equal axes over 5.7-6.7 m; the ground a door axis and a wide window over two",
+  "identicalBays": "yes above the ground",
+  "windowsPerStorey": "ground: door + wide window | 1-3: three sash windows",
+  "symmetry": "symmetric above the ground; the door side alternates along the row",
+  "groundFloor": "house door on an outer axis under a grey lintel band, one wide window",
+  "signage": "none",
+  "roofline": "flat; a 1.3 m brick parapet with a dark coping",
+  "photoRows": [
+   3,
+   3,
+   3,
+   3
+  ],
+  "photoGroundRows": 1
+ },
+ "evidence": [
+  {
+   "face": "steyn-9-19",
+   "pands": [
+    "0363100012063929",
+    "0363100012073365",
+    "0363100012145744",
+    "0363100012138134"
+   ],
+   "citation": "strip.jpg 2020-04-29 at 40 px/m, ground at the strip foot, 1 m grid (staging/block-face/transvaalbuurt/1926/steyn-9-19-grid.png): 9 (6.7 m) door 0-1.95 m to 2.1 m, window 3.0-5.8 m from 0.8 to 2.3 m, grey band 2.1-2.65 m; upper windows 1.4 m wide centred 1.0, 3.05, 5.2 m, sills 3.95, 6.95, 9.95 m, heads 5.5, 8.55, 11.55 m; parapet 12.4-13.7 m; 11 and 13 put their doors together"
+  },
+  {
+   "face": "hofmeyr-3-7",
+   "pands": [
+    "0363100012074676"
+   ],
+   "citation": "strip.jpg 2020-04-29 at 40 px/m: 7 (5.7 m) three sash windows per storey at the same lines, door on the right, parapet to 14.0 m"
+  },
+  {
+   "face": "steyn-9-19",
+   "pands": [
+    "0363100012145744",
+    "0363100012138134"
+   ],
+   "citation": "brick #4c3c37: mean of the batch wall fit on President Steynstraat 13 and 15 (#4b3833, #4d3f3b); the trim-normalised #765853 drew 9 and 11 +0.09 lighter than the strip"
+  }
+ ],
+ "schemaLimits": [
+  "the row of upright header bricks at the parapet foot is not drawn",
+  "the house door's own glazed side light is not drawn"
+ ],
+ "notes": [
+  "Palette: the type default is the measured red-brown of President Steynstraat 9-15 (#755651-#785a52); every placed pand takes its trim-normalised strip wall (auto-place measuredPalette)."
+ ]
+}

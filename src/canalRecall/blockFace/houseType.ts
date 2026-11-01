@@ -167,6 +167,14 @@ const flipFrac = (s: {from: number; to: number}) => ({from: +(1 - s.to).toFixed(
  * flipped one-to-one (balconies on storeys with different bay counts) is an error, never a silent copy.
  */
 export function mirrorFront(f: FrontIntent): FrontIntent {
+  // An alternating row (`repeat.mirrorAlternate`) is mirrored as a whole by laying its modules in the other order
+  // (fit.ts `repeat.mirrored`): the module stays as authored, only the side-specific front-wide fields cannot follow.
+  if (f.repeat?.mirrorAlternate) {
+    const sided = (['lisenes', 'brickStripes', 'shopfront', 'groundFront', 'gridAt', 'crownAt', 'crownBays', 'crownGroups', 'tower', 'dormerAt', 'bayWindows', 'stairLight'] as const).filter(k => f[k] !== undefined);
+    if (sided.length) throw Error(`${f.id}: repeat.mirrorAlternate with ${sided.join(', ')} inside a mirrored type`);
+    const {mirrored, ...repeat} = f.repeat;
+    return {...f, repeat: mirrored ? repeat : {...repeat, mirrored: true}};
+  }
   const out: FrontIntent = {...f};
   const bays = Array.isArray(f.bays) ? f.bays : Array(f.storeys).fill(f.bays), grid = frontGrid(f);
   const flipAxis = (a: number) => grid - 1 - a;
@@ -211,7 +219,6 @@ export function mirrorFront(f: FrontIntent): FrontIntent {
     const sf = f.shopfront;
     if (sf.sign || sf.residentialDoor || sf.bays || sf.awning?.extent || (sf.entrance && /left|right/.test(sf.entrance))) throw Error(`${f.id}: a type ground with lettering or a side-specific shop cannot be mirrored; give the shop per house`);
   }
-  if (f.repeat?.mirrorAlternate) throw Error(`${f.id}: repeat.mirrorAlternate inside a mirrored type`);
   return out;
 }
 

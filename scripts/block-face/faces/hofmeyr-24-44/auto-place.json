@@ -3,7 +3,7 @@
  "street": "Hofmeyrstraat",
  "library": "transvaalbuurt",
  "stripDate": "2023-01-02",
- "seconds": 2.05,
+ "seconds": 2.1,
  "thresholds": {
   "minScore": 0.7,
   "margin": 0.05,
@@ -51,41 +51,8 @@
     "foliageShare": 0
    },
    "status": "held",
-   "stage": "match",
-   "reason": "every type vetoed (best transvaal-1911-five-storey-tall: built 1928, type 1908-1914)",
-   "best": {
-    "type": "transvaal-1911-five-storey-tall",
-    "score": 0,
-    "veto": [
-     "built 1928, type 1908-1914"
-    ],
-    "criteria": [
-     {
-      "key": "eaves",
-      "weight": 2,
-      "score": 1,
-      "note": "3DBAG eaves 14.68 m = 4 storeys of 3.67 m vs the type's 3.55 m"
-     },
-     {
-      "key": "storeys",
-      "weight": 1,
-      "score": 1,
-      "note": "3DBAG bouwlagen 5 vs 5"
-     },
-     {
-      "key": "stucco",
-      "weight": 2,
-      "score": 1,
-      "note": "strip accent share 0.1 (brick)"
-     },
-     {
-      "key": "columns",
-      "weight": 1.5,
-      "score": 0.4,
-      "note": "strip columns 3 vs 4 bays"
-     }
-    ]
-   },
+   "stage": "run",
+   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
    "likeness": null,
    "challengers": {}
   },
@@ -131,25 +98,25 @@
    },
    "status": "held",
    "stage": "match",
-   "reason": "every type vetoed (best transvaal-1911-five-storey-tall: built 1928, type 1908-1914)",
+   "reason": "every type vetoed (best transvaal-1928-plain-row: axis pitch 3.4 m (2 strip columns over 6.81 m), type 1.7-2.6 m)",
    "best": {
-    "type": "transvaal-1911-five-storey-tall",
+    "type": "transvaal-1928-plain-row",
     "score": 0,
     "veto": [
-     "built 1928, type 1908-1914"
+     "axis pitch 3.4 m (2 strip columns over 6.81 m), type 1.7-2.6 m"
     ],
     "criteria": [
      {
       "key": "eaves",
       "weight": 2,
       "score": 1,
-      "note": "3DBAG eaves 14.68 m = 4 storeys of 3.67 m vs the type's 3.55 m"
+      "note": "strip cornice 14.18 m vs the type's 13.8 m"
      },
      {
       "key": "storeys",
       "weight": 1,
       "score": 1,
-      "note": "3DBAG bouwlagen 5 vs 5"
+      "note": "3DBAG bouwlagen 5 vs 4/5"
      },
      {
       "key": "stucco",
@@ -160,8 +127,8 @@
      {
       "key": "columns",
       "weight": 1.5,
-      "score": 0,
-      "note": "strip columns 2 vs 4 bays"
+      "score": 0.4,
+      "note": "strip columns 2 vs 3 bays"
      }
     ]
    },
@@ -210,25 +177,26 @@
    },
    "status": "held",
    "stage": "match",
-   "reason": "every type vetoed (best transvaal-1911-five-storey-tall: built 1927, type 1908-1914)",
+   "reason": "every type vetoed (best transvaal-1928-plain-row: 3DBAG eaves 15.14 m = 5 storeys of the type's 3.3 m, type 4; axis pitch 1.55 m (4 strip columns over 6.21 m), type 1.7-2.6 m)",
    "best": {
-    "type": "transvaal-1911-five-storey-tall",
+    "type": "transvaal-1928-plain-row",
     "score": 0,
     "veto": [
-     "built 1927, type 1908-1914"
+     "3DBAG eaves 15.14 m = 5 storeys of the type's 3.3 m, type 4",
+     "axis pitch 1.55 m (4 strip columns over 6.21 m), type 1.7-2.6 m"
     ],
     "criteria": [
      {
       "key": "eaves",
       "weight": 2,
-      "score": 1,
-      "note": "3DBAG eaves 15.14 m = 4 storeys of 3.79 m vs the type's 3.55 m"
+      "score": 0.5,
+      "note": "strip cornice 12.9 m vs the type's 13.8 m"
      },
      {
       "key": "storeys",
       "weight": 1,
       "score": 1,
-      "note": "3DBAG bouwlagen 5 vs 5"
+      "note": "3DBAG bouwlagen 5 vs 4/5"
      },
      {
       "key": "stucco",
@@ -284,25 +252,25 @@
    },
    "status": "held",
    "stage": "match",
-   "reason": "every type vetoed (best transvaal-1911-five-storey-tall: built 1927, type 1908-1914)",
+   "reason": "every type vetoed (best transvaal-1928-plain-row: 3DBAG eaves 15.12 m = 5 storeys of the type's 3.3 m, type 4)",
    "best": {
-    "type": "transvaal-1911-five-storey-tall",
+    "type": "transvaal-1928-plain-row",
     "score": 0,
     "veto": [
-     "built 1927, type 1908-1914"
+     "3DBAG eaves 15.12 m = 5 storeys of the type's 3.3 m, type 4"
     ],
     "criteria": [
      {
       "key": "eaves",
       "weight": 2,
-      "score": 1,
-      "note": "3DBAG eaves 15.12 m = 4 storeys of 3.78 m vs the type's 3.55 m"
+      "score": 0.5,
+      "note": "strip cornice 12.82 m vs the type's 13.8 m"
      },
      {
       "key": "storeys",
       "weight": 1,
       "score": 1,
-      "note": "3DBAG bouwlagen 5 vs 5"
+      "note": "3DBAG bouwlagen 5 vs 4/5"
      },
      {
       "key": "stucco",
@@ -358,25 +326,25 @@
    },
    "status": "held",
    "stage": "match",
-   "reason": "every type vetoed (best transvaal-1911-five-storey-tall: built 1927, type 1908-1914)",
+   "reason": "every type vetoed (best transvaal-1928-plain-row: 3DBAG eaves 14.86 m = 5 storeys of the type's 3.3 m, type 4)",
    "best": {
-    "type": "transvaal-1911-five-storey-tall",
+    "type": "transvaal-1928-plain-row",
     "score": 0,
     "veto": [
-     "built 1927, type 1908-1914"
+     "3DBAG eaves 14.86 m = 5 storeys of the type's 3.3 m, type 4"
     ],
     "criteria": [
      {
       "key": "eaves",
       "weight": 2,
-      "score": 1,
-      "note": "3DBAG eaves 14.86 m = 4 storeys of 3.71 m vs the type's 3.55 m"
+      "score": 0.5,
+      "note": "strip cornice 12.97 m vs the type's 13.8 m"
      },
      {
       "key": "storeys",
       "weight": 1,
-      "score": 0,
-      "note": "3DBAG bouwlagen 4 vs 5"
+      "score": 1,
+      "note": "3DBAG bouwlagen 4 vs 4/5"
      },
      {
       "key": "stucco",
@@ -432,25 +400,25 @@
    },
    "status": "held",
    "stage": "match",
-   "reason": "every type vetoed (best transvaal-1911-five-storey-tall: built 1927, type 1908-1914)",
+   "reason": "every type vetoed (best transvaal-1928-plain-row: 3DBAG eaves 14.96 m = 5 storeys of the type's 3.3 m, type 4)",
    "best": {
-    "type": "transvaal-1911-five-storey-tall",
+    "type": "transvaal-1928-plain-row",
     "score": 0,
     "veto": [
-     "built 1927, type 1908-1914"
+     "3DBAG eaves 14.96 m = 5 storeys of the type's 3.3 m, type 4"
     ],
     "criteria": [
      {
       "key": "eaves",
       "weight": 2,
-      "score": 1,
-      "note": "3DBAG eaves 14.96 m = 4 storeys of 3.74 m vs the type's 3.55 m"
+      "score": 0.5,
+      "note": "strip cornice 12.88 m vs the type's 13.8 m"
      },
      {
       "key": "storeys",
       "weight": 1,
       "score": 1,
-      "note": "3DBAG bouwlagen 5 vs 5"
+      "note": "3DBAG bouwlagen 5 vs 4/5"
      },
      {
       "key": "stucco",
@@ -506,25 +474,25 @@
    },
    "status": "held",
    "stage": "match",
-   "reason": "every type vetoed (best transvaal-1911-five-storey-tall: built 1927, type 1908-1914)",
+   "reason": "every type vetoed (best transvaal-1928-plain-row: 3DBAG eaves 14.98 m = 5 storeys of the type's 3.3 m, type 4)",
    "best": {
-    "type": "transvaal-1911-five-storey-tall",
+    "type": "transvaal-1928-plain-row",
     "score": 0,
     "veto": [
-     "built 1927, type 1908-1914"
+     "3DBAG eaves 14.98 m = 5 storeys of the type's 3.3 m, type 4"
     ],
     "criteria": [
      {
       "key": "eaves",
       "weight": 2,
-      "score": 1,
-      "note": "3DBAG eaves 14.98 m = 4 storeys of 3.75 m vs the type's 3.55 m"
+      "score": 0.5,
+      "note": "strip cornice 12.9 m vs the type's 13.8 m"
      },
      {
       "key": "storeys",
       "weight": 1,
       "score": 1,
-      "note": "3DBAG bouwlagen 5 vs 5"
+      "note": "3DBAG bouwlagen 5 vs 4/5"
      },
      {
       "key": "stucco",
@@ -580,25 +548,25 @@
    },
    "status": "held",
    "stage": "match",
-   "reason": "every type vetoed (best transvaal-1911-five-storey-tall: built 1927, type 1908-1914)",
+   "reason": "every type vetoed (best transvaal-1928-plain-row: 3DBAG eaves 15 m = 5 storeys of the type's 3.3 m, type 4)",
    "best": {
-    "type": "transvaal-1911-five-storey-tall",
+    "type": "transvaal-1928-plain-row",
     "score": 0,
     "veto": [
-     "built 1927, type 1908-1914"
+     "3DBAG eaves 15 m = 5 storeys of the type's 3.3 m, type 4"
     ],
     "criteria": [
      {
       "key": "eaves",
       "weight": 2,
-      "score": 1,
-      "note": "3DBAG eaves 15 m = 4 storeys of 3.75 m vs the type's 3.55 m"
+      "score": 0.5,
+      "note": "strip cornice 12.88 m vs the type's 13.8 m"
      },
      {
       "key": "storeys",
       "weight": 1,
       "score": 1,
-      "note": "3DBAG bouwlagen 5 vs 5"
+      "note": "3DBAG bouwlagen 5 vs 4/5"
      },
      {
       "key": "stucco",
@@ -659,26 +627,26 @@
    },
    "status": "held",
    "stage": "match",
-   "reason": "every type vetoed (best transvaal-1911-five-storey-tall: built 1927, type 1908-1914; frontage 12.25 m, type 4.8-11 m)",
+   "reason": "every type vetoed (best transvaal-1928-plain-row: stair block 12.25 m, type 5.3-7.6 m; 3DBAG eaves 15.04 m = 5 storeys of the type's 3.3 m, type 4)",
    "best": {
-    "type": "transvaal-1911-five-storey-tall",
+    "type": "transvaal-1928-plain-row",
     "score": 0,
     "veto": [
-     "built 1927, type 1908-1914",
-     "frontage 12.25 m, type 4.8-11 m"
+     "stair block 12.25 m, type 5.3-7.6 m",
+     "3DBAG eaves 15.04 m = 5 storeys of the type's 3.3 m, type 4"
     ],
     "criteria": [
      {
       "key": "eaves",
       "weight": 2,
-      "score": 1,
-      "note": "3DBAG eaves 15.04 m = 4 storeys of 3.76 m vs the type's 3.55 m"
+      "score": 0,
+      "note": "strip cornice 12.13 m vs the type's 13.8 m"
      },
      {
       "key": "storeys",
       "weight": 1,
       "score": 1,
-      "note": "3DBAG bouwlagen 5 vs 5"
+      "note": "3DBAG bouwlagen 5 vs 4/5"
      },
      {
       "key": "stucco",
@@ -690,7 +658,7 @@
       "key": "columns",
       "weight": 1.5,
       "score": 0,
-      "note": "strip columns 7 vs 4 bays"
+      "note": "strip columns 7 vs 3 bays"
      }
     ]
    },
@@ -738,41 +706,8 @@
     "foliageShare": 0.01
    },
    "status": "held",
-   "stage": "match",
-   "reason": "every type vetoed (best transvaal-1911-five-storey-tall: built 1928, type 1908-1914)",
-   "best": {
-    "type": "transvaal-1911-five-storey-tall",
-    "score": 0,
-    "veto": [
-     "built 1928, type 1908-1914"
-    ],
-    "criteria": [
-     {
-      "key": "eaves",
-      "weight": 2,
-      "score": 0.5,
-      "note": "3DBAG eaves 12.81 m = 4 storeys of 3.2 m vs the type's 3.55 m"
-     },
-     {
-      "key": "storeys",
-      "weight": 1,
-      "score": 1,
-      "note": "3DBAG bouwlagen 5 vs 5"
-     },
-     {
-      "key": "stucco",
-      "weight": 2,
-      "score": 1,
-      "note": "strip accent share 0.003 (brick)"
-     },
-     {
-      "key": "columns",
-      "weight": 1.5,
-      "score": 0.4,
-      "note": "strip columns 3 vs 4 bays"
-     }
-    ]
-   },
+   "stage": "run",
+   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
    "likeness": null,
    "challengers": {}
   }
