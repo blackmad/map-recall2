@@ -1,0 +1,457 @@
+{
+ "schemaVersion": 1,
+ "id": "academie-van-bouwkunst",
+ "pand": "0363100012171994",
+ "brief": "scripts/landmarks/academie-van-bouwkunst-brief.md",
+ "signature": [
+  "turf-point-gables",
+  "ground-arches",
+  "white-stone-bands",
+  "red-shutters",
+  "pediment-oculus",
+  "academie-lettering",
+  "perron"
+ ],
+ "walls": [
+  {
+   "tag": "w01-44",
+   "bearing": 44,
+   "lengthM": 43.7,
+   "centre": [
+    4.9035602,
+    52.3676588
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002544_pano_0000_003037",
+   "capturedAt": "2022-04-26",
+   "checked": true,
+   "items": [
+    {
+     "id": "garden-wall",
+     "kind": "other",
+     "where": "long brick wall closing the courtyard, tiled coping, one door",
+     "approxSizeM": [
+      30,
+      3.6
+     ],
+     "plan": "simplified",
+     "how": "3DBAG wall and lean-to roof kept; door added",
+     "seenIn": "TMX7316010203-002544_pano_0000_003037"
+    },
+    {
+     "id": "gable-stone",
+     "kind": "gable-stone",
+     "where": "carved stone tablet on the NE end of the Huiszittenhuis at about 3.7 m",
+     "approxSizeM": [
+      1.4,
+      1.2
+     ],
+     "plan": "simplified",
+     "how": "framed stone tablet with a central boss; the carving is not modelled",
+     "seenIn": "TMX7316010203-002544_pano_0000_003037"
+    },
+    {
+     "id": "ne-dormers",
+     "kind": "other",
+     "where": "two dormers with round pediments and arched lights on the NE hip",
+     "approxSizeM": [
+      1.7,
+      2.7
+     ],
+     "plan": "simplified",
+     "how": "one of the two: slate box with a stone-tinted face, sash with stone bars and a round pediment at t 9.6; the second (nearer the corner) is left out because it collides with the Huis corner dormer",
+     "seenIn": "TMX7316010203-002544_pano_0000_003037"
+    },
+    {
+     "id": "vase-finials",
+     "kind": "sculpture",
+     "where": "two vase finials on the ends of the Huiszittenhuis ridge",
+     "approxSizeM": [
+      0.5,
+      0.9
+     ],
+     "plan": "skipped",
+     "skip": {
+      "reason": "too-small",
+      "note": "0.5 m vases 14 m up behind the dormers; at gallery size they are a few pixels"
+     },
+     "seenIn": "TMX7316010203-002544_pano_0000_003037"
+    },
+    {
+     "id": "chimney",
+     "kind": "other",
+     "where": "brick chimney on the NE end",
+     "approxSizeM": [
+      0.9,
+      2
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002544_pano_0000_003037"
+    },
+    {
+     "id": "courtyard-pediment",
+     "kind": "relief",
+     "where": "pediment with a carved crest on the courtyard front of the Huiszittenhuis, seen over the wall",
+     "approxSizeM": [
+      6,
+      2
+     ],
+     "plan": "skipped",
+     "skip": {
+      "reason": "not-visible",
+      "note": "inside the courtyard, its relief unreadable over the wall from the street (w01-44 shows only the pediment outline)"
+     },
+     "seenIn": "TMX7316010203-002544_pano_0000_003037"
+    },
+    {
+     "id": "courtyard-dormers",
+     "kind": "other",
+     "where": "arched dormers on the Turfpakhuizen courtyard slope",
+     "approxSizeM": [
+      1.3,
+      1.8
+     ],
+     "plan": "simplified",
+     "how": "two brick dormers with white arched faces",
+     "seenIn": "TMX7316010203-002544_pano_0000_003037"
+    },
+    {
+     "id": "ne-glazed-strip",
+     "kind": "window-shape",
+     "where": "low glazed strip with white mullions at the foot of the NE end",
+     "approxSizeM": [
+      4.5,
+      1.5
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002544_pano_0000_003037"
+    }
+   ]
+  },
+  {
+   "tag": "w02-308",
+   "bearing": 308,
+   "lengthM": 33.5,
+   "centre": [
+    4.9030496,
+    52.3675683
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-06-19_06-21-49_00258",
+   "capturedAt": "2025-06-19",
+   "checked": true,
+   "items": [
+    {
+     "id": "turf-point-gables",
+     "kind": "other",
+     "where": "Stadsturfpakhuizen front: three point gables, 6.6 / 12.4 / 6.7 m, the double middle one truncated under a small balustrade",
+     "approxSizeM": [
+      25.7,
+      15.3
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-06-19_06-21-49_00258"
+    },
+    {
+     "id": "white-stone-bands",
+     "kind": "other",
+     "where": "white stone bands across the whole front at 4.2, 6.8 and 9.15 m and a short band in each gable at 11.6 m",
+     "approxSizeM": [
+      25.7,
+      0.2
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-06-19_06-21-49_00258"
+    },
+    {
+     "id": "strekblokken",
+     "kind": "window-shape",
+     "where": "flat window heads of alternating white stone blocks and brick, white block at mid-height of each jamb (register: \"strekblokken\")",
+     "approxSizeM": [
+      1.1,
+      0.4
+     ],
+     "plan": "simplified",
+     "how": "5 or 3 white blocks over each rectangular window, one block per jamb; not fanned",
+     "seenIn": "recording_2025-06-19_06-21-49_00258"
+    },
+    {
+     "id": "boogblokken",
+     "kind": "window-shape",
+     "where": "round-headed windows under white stone block arches with keystone and springers (register: \"grote boogblokken\")",
+     "approxSizeM": [
+      1.6,
+      0.8
+     ],
+     "plan": "simplified",
+     "how": "continuous white arch band with keystone and springer blocks; the alternating block joints are not cut",
+     "seenIn": "recording_2025-06-19_06-21-49_00258"
+    },
+    {
+     "id": "ground-arches",
+     "kind": "window-shape",
+     "where": "four large basket arches at street level with white block rings (7 voussoir blocks each) and white jamb blocks, glazed",
+     "approxSizeM": [
+      2.8,
+      3.35
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-06-19_06-21-49_00258"
+    },
+    {
+     "id": "oval-medallions",
+     "kind": "relief",
+     "where": "oval stone medallion over each ground-floor arch",
+     "approxSizeM": [
+      1.1,
+      0.65
+     ],
+     "plan": "simplified",
+     "how": "white oval disc with a dark oval inset; the carving is not modelled",
+     "seenIn": "recording_2025-06-19_06-21-49_00258"
+    },
+    {
+     "id": "red-shutters",
+     "kind": "other",
+     "where": "dark red shutters folded open beside every wide window",
+     "approxSizeM": [
+      0.36,
+      1.8
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-06-19_06-21-49_00258"
+    },
+    {
+     "id": "gable-roundels",
+     "kind": "relief",
+     "where": "brick relief roundels in the gables beside the upper windows",
+     "approxSizeM": [
+      0.9,
+      0.9
+     ],
+     "plan": "simplified",
+     "how": "brick ring and disc 10 cm proud, no inner pattern",
+     "seenIn": "recording_2025-06-19_06-21-49_00258"
+    },
+    {
+     "id": "gable-finials",
+     "kind": "sculpture",
+     "where": "stone pinnacle finials on the side gable apexes and stone kneelers at the gable feet",
+     "approxSizeM": [
+      0.7,
+      1.3
+     ],
+     "plan": "simplified",
+     "how": "stacked stone blocks with a cap",
+     "seenIn": "recording_2025-06-19_06-21-49_00258"
+    },
+    {
+     "id": "gable-copings",
+     "kind": "other",
+     "where": "white stone copings along every gable rake",
+     "approxSizeM": [
+      8,
+      0.3
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-06-19_06-21-49_00258"
+    },
+    {
+     "id": "top-balustrade",
+     "kind": "balcony-ironwork",
+     "where": "small balustrade on the truncated top of the middle gable (contact sheet only, the crop cuts it off)",
+     "approxSizeM": [
+      4.6,
+      0.7
+     ],
+     "plan": "simplified",
+     "how": "stone rail on posts",
+     "seenIn": "recording_2025-06-19_06-21-49_00258"
+    },
+    {
+     "id": "small-arched-lights",
+     "kind": "window-shape",
+     "where": "small round-headed lights at street level between the arches and at the top of the side gables",
+     "approxSizeM": [
+      0.75,
+      1.45
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-06-19_06-21-49_00258"
+    }
+   ]
+  },
+  {
+   "tag": "w03-221",
+   "bearing": 221,
+   "lengthM": 33.4,
+   "centre": [
+    4.9030886,
+    52.3673515
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001177_pano_0000_000758",
+   "capturedAt": "2019-05-13",
+   "checked": true,
+   "items": [],
+   "note": "The panorama looks at the neighbouring flats across the yard; the Turfpakhuizen SW side is not in view (modelled as a plain brick eaves wall with the white bands)."
+  },
+  {
+   "tag": "w04-144",
+   "bearing": 144,
+   "lengthM": 30.2,
+   "centre": [
+    4.9034542,
+    52.3673352
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": false,
+   "items": []
+  },
+  {
+   "tag": "w05-143",
+   "bearing": 143,
+   "lengthM": 16.3,
+   "centre": [
+    4.9037501,
+    52.3674421
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-06-19_03-28-47_03038",
+   "capturedAt": "2025-06-19",
+   "checked": true,
+   "items": [
+    {
+     "id": "annex-sashes",
+     "kind": "window-shape",
+     "where": "two storeys of white sash windows with plain heads on the SE annex",
+     "approxSizeM": [
+      1.1,
+      2.1
+     ],
+     "plan": "simplified",
+     "how": "four axes of small-paned sashes with white head boards on the 3DBAG wall",
+     "seenIn": "recording_2025-06-19_03-28-47_03038"
+    }
+   ]
+  },
+  {
+   "tag": "w06-307",
+   "bearing": 307,
+   "lengthM": 7.8,
+   "centre": [
+    4.9032935,
+    52.367766
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002310_pano_0001_001342",
+   "capturedAt": "2021-09-15",
+   "checked": true,
+   "items": [
+    {
+     "id": "corniced-windows",
+     "kind": "window-shape",
+     "where": "bel-etage windows with white cornice heads; small-paned white sashes; souterrain windows, one round-headed",
+     "approxSizeM": [
+      1.5,
+      2.6
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002310_pano_0001_001342"
+    },
+    {
+     "id": "front-dormers",
+     "kind": "other",
+     "where": "dormers with round pediments on the hipped roof over the side bays",
+     "approxSizeM": [
+      1.7,
+      2.7
+     ],
+     "plan": "simplified",
+     "how": "the north-corner dormer only (slate box, stone-tinted face, barred sash, round pediment); the south-west dormer is left out: on the 3DBAG roof there it sinks behind the wall (audit opening-buried)",
+     "seenIn": "TMX7316010203-002310_pano_0001_001342"
+    }
+   ]
+  },
+  {
+   "tag": "w07-307",
+   "bearing": 307,
+   "lengthM": 6.9,
+   "centre": [
+    4.9032258,
+    52.3677145
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-06-19_06-21-49_00254",
+   "capturedAt": "2025-06-19",
+   "checked": true,
+   "items": [
+    {
+     "id": "pediment-oculus",
+     "kind": "window-shape",
+     "where": "pediment over the risalit with a round oculus in a white ring",
+     "approxSizeM": [
+      7,
+      2
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-06-19_06-21-49_00254"
+    },
+    {
+     "id": "academie-lettering",
+     "kind": "lettering",
+     "where": "ACADEMIE VAN BOUWKUNST in gilt capitals between the bel-etage and the upper storey of the risalit",
+     "approxSizeM": [
+      5.4,
+      0.26
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-06-19_06-21-49_00254"
+    },
+    {
+     "id": "perron",
+     "kind": "balcony-ironwork",
+     "where": "double perron: landing before the door, two flights along the front, iron railings",
+     "approxSizeM": [
+      8,
+      2.9
+     ],
+     "plan": "simplified",
+     "how": "stone landing on two cheeks, stepped flights, straight sloped rail with balusters; the curved railing ends are straight",
+     "seenIn": "recording_2025-06-19_06-21-49_00254"
+    },
+    {
+     "id": "door-surround",
+     "kind": "other",
+     "where": "central door with white surround and cornice, window above",
+     "approxSizeM": [
+      1.9,
+      4
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-06-19_06-21-49_00254"
+    },
+    {
+     "id": "main-cornice",
+     "kind": "other",
+     "where": "white frieze band and heavy white cornice at 9.4-10.5 m",
+     "approxSizeM": [
+      22.5,
+      1.1
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-06-19_06-21-49_00254"
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  }
+ ]
+}
