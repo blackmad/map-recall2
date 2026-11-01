@@ -80,11 +80,11 @@ for (const name of chosen) {
         return { frames: w.__frames.slice(5) as number[], backing: [canvas.width, canvas.height], heapMB: mem ? Math.round(mem.usedJSHeapSize / 1048576) : null, pixelRatio: surface.getPixelRatio(), governorSteps: governor ? governor.steps : null, tier: w.__canalPerf?.tier ?? null, tierReasons: w.__canalPerf?.tierReasons ?? null, tierProbe: w.__canalPerf?.tierProbe ?? null };
       });
       const f = raw.frames;
-      const sample = { name, dpr, device: phone ? 'phone' : 'desktop', n: f.length, fps: +(1000 / (f.reduce((a, b) => a + b, 0) / Math.max(1, f.length))).toFixed(1), median: +pick(f, 0.5).toFixed(1), p75: +pick(f, 0.75).toFixed(1), p95: +pick(f, 0.95).toFixed(1), backing: raw.backing, pixelRatio: raw.pixelRatio, heapMB: raw.heapMB, governorSteps: raw.governorSteps, engine: process.env.ENGINE ?? 'maplibre', tier: raw.tier, tierReasons: raw.tierReasons, tierProbe: raw.tierProbe };
+      const sample = { name, dpr, device: phone ? 'phone' : 'desktop', n: f.length, fps: +(1000 / (f.reduce((a, b) => a + b, 0) / Math.max(1, f.length))).toFixed(1), median: +pick(f, 0.5).toFixed(1), p75: +pick(f, 0.75).toFixed(1), p95: +pick(f, 0.95).toFixed(1), backing: raw.backing, pixelRatio: raw.pixelRatio, heapMB: raw.heapMB, governorSteps: raw.governorSteps, engine: process.env.ENGINE === 'maplibre' ? 'maplibre' : 'own', tier: raw.tier, tierReasons: raw.tierReasons, tierProbe: raw.tierProbe };
       results.push(sample);
       console.log(JSON.stringify(sample));
       mkdirSync('artifacts/perf', { recursive: true });
-      writeFileSync(`artifacts/perf/weak-gpu-${process.env.ENGINE === 'own' ? 'own-' : ''}${phone ? 'phone-' : ''}${dpr}.json`, JSON.stringify(results, null, 2));
+      writeFileSync(`artifacts/perf/weak-gpu-${process.env.ENGINE === 'maplibre' ? '' : 'own-'}${phone ? 'phone-' : ''}${dpr}.json`, JSON.stringify(results, null, 2));
     } finally {
       await browser.close();
     }

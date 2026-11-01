@@ -73,10 +73,18 @@ test('StepClock: fixed steps, leftover alpha, stalls capped', () => {
   assert.equal(clock.advance(0).steps, 0);
 });
 
-test('engine flag', () => {
+test('engine flag: own by default for Amsterdam (the flip), ?engine=maplibre and the global roll back', () => {
   assert.equal(engineFlag('?engine=own'), 'own');
   assert.equal(engineFlag('?engine=maplibre'), 'maplibre');
-  assert.equal(engineFlag(''), 'maplibre');
+  assert.equal(engineFlag(''), 'own', 'the default is the own engine');
+  assert.equal(engineFlag('', 'amsterdam'), 'own');
+  assert.equal(engineFlag('?engine=', 'amsterdam'), 'own', 'an empty value is not a rollback');
+  assert.equal(engineFlag('?engine=MapLibre', 'amsterdam'), 'own', 'the rollback value is exact, as the loader reads it');
+  (globalThis as any).__canalRecallEngine = 'maplibre';
+  try {
+    assert.equal(engineFlag('', 'amsterdam'), 'maplibre', 'the specs\' ENGINE=maplibre global');
+    assert.equal(engineFlag('?engine=own', 'amsterdam'), 'maplibre', 'the global beats the query');
+  } finally { delete (globalThis as any).__canalRecallEngine; }
 });
 
 test('engine choice is city-aware: own only in listed cities, each with the own map and the roads binary', async () => {
@@ -90,7 +98,8 @@ test('engine choice is city-aware: own only in listed cities, each with the own 
   }
   for (const city of readdirSync(root)) {
     assert.equal(engineFlag('?engine=own', city), OWN_ENGINE_CITIES.has(city) ? 'own' : 'maplibre', city);
-    assert.equal(engineFlag('', city), 'maplibre', `${city}: the default stays MapLibre`);
+    assert.equal(engineFlag('', city), OWN_ENGINE_CITIES.has(city) ? 'own' : 'maplibre', `${city}: the default is own only where listed`);
+    assert.equal(engineFlag('?engine=maplibre', city), 'maplibre', `${city}: ?engine=maplibre rolls back`);
   }
   assert.deepEqual([...OWN_ENGINE_CITIES], ['amsterdam']);
   for (const city of ['utrecht', 'rotterdam', 'den-haag']) assert.equal(engineForCity('own', city), 'maplibre', city);

@@ -4,7 +4,9 @@
 // once('render') calls. Read camera values through `vectorMap.camera` (WorldCamera: center, zoom, pitch, bearing,
 // bounds, project, unproject, whenIdle) and pixels through `vectorMap.frameCanvas()` / `captureFrame()`.
 // Delete with the default path at P5 (engine-programme-20261030.md).
-export const OWN = process.env.ENGINE === 'own';
+// The own engine is the default since the Amsterdam flip (#129): `ENGINE=maplibre` runs the MapLibre lane (the specs
+// that `test.skip(OWN, …)`) until P5 deletes it; `ENGINE=own` (or nothing) is the own engine.
+export const OWN = process.env.ENGINE !== 'maplibre';
 
 // Inside page.evaluate(() => { … }) copy this line (page functions must be self-contained):
 //   const vm = (window as any).canalRecallGame.vectorMap; const map = vm.map ?? vm.cameraMap;

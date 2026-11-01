@@ -137,19 +137,25 @@ export function hasWorldCamera(view: unknown): view is WorldView & { camera: Wor
 export const OWN_ENGINE_FILES = ['own-map-v1/overview.json.gz', 'roads-v2/streets-routing.bin.gz'] as const;
 export const OWN_ENGINE_CITIES: ReadonlySet<string> = new Set(['amsterdam']);
 
+/** The value that keeps MapLibre once the own engine is the default (`?engine=maplibre`); anything else asks for own. */
+export const ENGINE_ROLLBACK = 'maplibre';
+
 /** The engine a city can run: what was asked, except that a city without the own engine's extracts stays on MapLibre. */
 export function engineForCity(asked: 'own' | 'maplibre', cityId: string | null | undefined): 'own' | 'maplibre' {
   return asked === 'own' && OWN_ENGINE_CITIES.has(cityId || 'amsterdam') ? 'own' : 'maplibre';
 }
 
 /**
- * `game.js`'s choice: `?engine=own` (or `window.__canalRecallEngine = 'own'`), for the city being loaded (default
- * Amsterdam, the game's only city since 2026-10-22). A city without the own engine's extracts is MapLibre.
+ * `game.js`'s choice for the city being loaded (default Amsterdam, the game's only city since 2026-10-22). The own
+ * engine is the default (the Amsterdam flip, #129); `?engine=maplibre` (or `window.__canalRecallEngine =
+ * 'maplibre'`, the specs' ENGINE=maplibre lane) keeps MapLibre: the per-player rollback. Any other value, `?engine=own`
+ * included, asks for the own engine. A city without the own engine's extracts is MapLibre. mapLibreLoader.ts
+ * `wantsMapLibre` must agree on every query (mapLibreLoader.test.ts pins both on one table).
  */
 export function engineFlag(search = (globalThis as { location?: { search?: string } }).location?.search ?? '', cityId?: string | null): 'own' | 'maplibre' {
   const g = globalThis as { __canalRecallEngine?: string };
   const asked = g.__canalRecallEngine ?? new URLSearchParams(search).get('engine');
-  return engineForCity(asked === 'own' ? 'own' : 'maplibre', cityId);
+  return engineForCity(asked === ENGINE_ROLLBACK ? 'maplibre' : 'own', cityId);
 }
 
 /** The building looks a world view draws (vector-map.js setBuildingLook); 'default' is MapLibre's retired pattern layer. */

@@ -34,11 +34,15 @@ export type OpenRouteOptions = {
 };
 
 /**
- * `ENGINE=own` runs a spec against the engine world view (src/canalRecall/engine/ownWorldView.ts, `?engine=own`):
- * three.js owns the frame and MapLibre is never constructed. openRoute applies it; specs that `goto` themselves call it.
+ * The engine a spec runs. The own engine (src/canalRecall/engine/ownWorldView.ts) is the default since the Amsterdam
+ * flip (#129); `ENGINE=maplibre` runs the MapLibre world view (`window.__canalRecallEngine = 'maplibre'`, the same
+ * switch as `?engine=maplibre`) for the MapLibre lane until P5. `ENGINE=own` pins own explicitly. openRoute applies
+ * it; specs that `goto` themselves call it.
  */
 export async function useEngine(page: Page): Promise<void> {
-  if (process.env.ENGINE === 'own') await page.addInitScript(() => { (window as any).__canalRecallEngine = 'own'; });
+  const engine = process.env.ENGINE;
+  // A page that names its engine in the URL (`?engine=own` specs) keeps it: the global would beat the query.
+  if (engine === 'own' || engine === 'maplibre') await page.addInitScript((e) => { if (!/[?&]engine=/.test(location.search)) (window as any).__canalRecallEngine = e; }, engine);
   await useBundlesDir(page);
 }
 
@@ -86,7 +90,7 @@ export async function openRoute(page: Page, options: OpenRouteOptions = {}): Pro
 
   await page.goto(`/canal-drive/${query}`);
   await expect.poll(() => page.evaluate(() => Boolean(window.canalRecallGame))).toBe(true);
-  if (process.env.ENGINE === 'own') expect(await page.evaluate(() => (window.canalRecallGame as any).vectorMap.engine), 'ENGINE=own: the engine world view is in charge').toBe('own');
+  if (!/[?&]engine=/.test(query)) expect(await page.evaluate(() => (window.canalRecallGame as any).vectorMap.engine ?? 'maplibre'), `ENGINE=${process.env.ENGINE ?? '(default)'}: the asked world view is in charge`).toBe(process.env.ENGINE === 'maplibre' ? 'maplibre' : 'own');
   await expect(page.locator('#route-card')).toBeVisible();
   await setHiddenSelect(page, 'travel-mode', travelMode);
   if (viewMode) await setHiddenSelect(page, 'view-mode', viewMode);
