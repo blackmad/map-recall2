@@ -47,7 +47,7 @@ async function load(page: Page, query: string): Promise<void> {
 async function settleAt(page: Page, view: View): Promise<void> {
   const eye = ahead(view.target, view.bearing, view.distM);
   await page.evaluate(({ eye, view }) => {
-    const g = (window as any).canalRecallGame, vm = g.vectorMap, map = vm.map;
+    const g = (window as any).canalRecallGame, vm = g.vectorMap, map = vm.map ?? vm.cameraMap;
     g._updateCanalQuiz = () => {}; g._updateBridgeQuiz = () => {};
     g.player.speed = 0; g.player.vx = 0; g.player.vy = 0;
     vm.sync = () => {}; map.stop(); map.setMaxPitch(85); map.setVerticalFieldOfView(50); map.setPadding({ top: 0, bottom: 0, left: 0, right: 0 });
@@ -68,7 +68,7 @@ async function settleAt(page: Page, view: View): Promise<void> {
   await page.evaluate(() => { const w = window as any; (w.canalRecallGame.vectorMap.map ?? w.canalRecallGame.vectorMap.cameraMap).jumpTo(w.__bagCamera); });
   await page.waitForTimeout(4000);
   await page.evaluate(() => {
-    const map = (window as any).canalRecallGame.vectorMap.map;
+    const map = (window as any).canalRecallGame.vectorMap.map ?? (window as any).canalRecallGame.vectorMap.cameraMap;
     if ((window as any).canalRecallGame.vectorMap.map) { for (const layer of map.getStyle().layers) if (layer.type === 'symbol' && map.getLayoutProperty(layer.id, 'visibility') !== 'none') map.setLayoutProperty(layer.id, 'visibility', 'none'); } else (window as any).canalRecallGame.vectorMap.setLabelsVisible(false);
     const canvas = map.getCanvas() as HTMLCanvasElement;
     for (const e of Array.from(document.body.querySelectorAll('*'))) if (e !== canvas && !e.contains(canvas)) (e as HTMLElement).style.visibility = 'hidden';

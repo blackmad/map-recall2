@@ -194,7 +194,7 @@ test('engine camera matches MapLibre within the parity budget along the intro an
   const samples: number[][] = [];
   const sample = () => page.evaluate(() => {
     const vm = (window as any).canalRecallGame.vectorMap;
-    const map = vm.map, E = (window as any).CanalRecallEngine;
+    const map = vm.map ?? vm.cameraMap, E = (window as any).CanalRecallEngine;
     const el = map.getCanvas();
     const c = map.getCenter();
     const cam = new E.EngineCamera(() => ({ width: el.clientWidth, height: el.clientHeight }), {

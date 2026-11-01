@@ -63,7 +63,7 @@ try {
   }
   // Compare actual scene on/off at the same camera, with identical runtime and neighbors.
   const perf=await page.evaluate(async canopyMode=>{
-   const v=canalRecallGame.vectorMap,t=v._threeBuildings,map=v.map,original=[...t.lastFeatures];
+   const v=canalRecallGame.vectorMap,t=v._threeBuildings,map=v.map ?? v.cameraMap,original=[...t.lastFeatures];
    const idle=async()=>{while(t.pending.length||t.inflight.size||t.pumping)await new Promise(r=>setTimeout(r,50));await new Promise(r=>setTimeout(r,500));};
    const measure=async()=>{
     const frame=[],cpu=[],gpu=[],gl=t.renderer.getContext(),ext=gl.getExtension('EXT_disjoint_timer_query_webgl2');

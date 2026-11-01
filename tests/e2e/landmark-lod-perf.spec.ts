@@ -21,7 +21,7 @@ test(`landmark lod ${label}`, async ({ page }, info) => {
   await page.waitForFunction(() => (window as any).canalRecallGame.state === 4, null, { timeout: 90_000 }).catch(() => {});
   // Freeze the game camera so the map stays where the test puts it.
   await page.evaluate((cam) => {
-    const g = (window as any).canalRecallGame, vm = g.vectorMap, map = vm.map;
+    const g = (window as any).canalRecallGame, vm = g.vectorMap, map = vm.map ?? vm.cameraMap;
     for (const k of cam) { map['__' + k] = map[k]; map[k] = () => map; }
     vm._signatureLandmarks.setSuspended?.(false);
   }, CAM);
@@ -29,7 +29,7 @@ test(`landmark lod ${label}`, async ({ page }, info) => {
   const results: Record<string, unknown> = {};
   for (const [name, cam] of Object.entries(STATES)) {
     await page.evaluate((c) => {
-      const map = (window as any).canalRecallGame.vectorMap.map;
+      const map = (window as any).canalRecallGame.vectorMap.map ?? (window as any).canalRecallGame.vectorMap.cameraMap;
       map.__jumpTo.call(map, { center: c.center, zoom: c.zoom, pitch: c.pitch, bearing: c.bearing });
     }, cam);
     const t0 = Date.now();
@@ -42,7 +42,7 @@ test(`landmark lod ${label}`, async ({ page }, info) => {
     await page.screenshot({ path: `artifacts/landmark-lod/${label}-${name}-${info.project.name}.png` });
     await cdp.send('Emulation.setCPUThrottlingRate', { rate: info.project.name === 'iphone' ? 4 : 1 });
     await page.evaluate(() => {
-      const w = window as any, vm = w.canalRecallGame.vectorMap, map = vm.map, THREE = w.CanalRecallThree.THREE;
+      const w = window as any, vm = w.canalRecallGame.vectorMap, map = vm.map ?? vm.cameraMap, THREE = w.CanalRecallThree.THREE;
       const t: Record<string, number[]> = { frame: [], mapRender: [], landmarkRender: [], rendererTri: [] };
       w.__perf = t; w.__stopFrames = false;
       const wrap = (obj: any, key: string, bucket: string) => { const o = obj[key].bind(obj); const orig = obj[key]; obj[key] = (...a: unknown[]) => { const s = performance.now(); try { return o(...a); } finally { t[bucket].push(performance.now() - s); } }; return () => { obj[key] = orig; }; };

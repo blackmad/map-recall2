@@ -50,7 +50,7 @@ async function drawnLabels(page: Page) {
     const g = (window as any).canalRecallGame;
     const markers = (g._freeRideMarkers || []).map((m: any) => ({ key: m.key, name: g._freeRideNearby?.find((p: any) => p.key === m.key)?.name, x: Math.round(m.anchorX), y: Math.round(m.anchorY) }));
     // MapLibre symbols its collision pass placed (station and transit names are not the overlay's).
-    const map = g.vectorMap.map;
+    const map = g.vectorMap.map ?? g.vectorMap.cameraMap;
     const symbolIds = map.getStyle().layers.filter((l: any) => l.type === 'symbol' && map.getLayoutProperty(l.id, 'visibility') !== 'none').map((l: any) => l.id);
     const symbols = map.queryRenderedFeatures(undefined, { layers: symbolIds })
       .filter((f: any) => !/street|road|water|transportation_name|place|neighborhood|answered/.test(f.layer.id))

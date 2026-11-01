@@ -41,7 +41,7 @@ test('period walls strip', async ({ page }, info) => {
   const meta: Record<string, unknown> = { query: QUERY };
   for (const place of WALL_PLACES.filter(p => !ONLY.length || ONLY.includes(p.name))) for (const [kind, cam] of Object.entries(CAMERAS(place))) {
     await page.evaluate(({ cam }) => {
-      const g = (window as any).canalRecallGame, vm = g.vectorMap, map = vm.map;
+      const g = (window as any).canalRecallGame, vm = g.vectorMap, map = vm.map ?? vm.cameraMap;
       g._updateCanalQuiz = () => {}; g._updateBridgeQuiz = () => {}; (window as any).__wallsIdle = 0;
       g.player.speed = 0; g.player.vx = 0; g.player.vy = 0;
       vm.sync = () => {}; map.stop(); map.setMaxPitch(85); map.setVerticalFieldOfView(55); map.setPadding({ top: 0, bottom: 0, left: 0, right: 0 });
@@ -50,7 +50,7 @@ test('period walls strip', async ({ page }, info) => {
     }, { cam });
     await settle(page);
     await page.evaluate(() => {
-      const map = (window as any).canalRecallGame.vectorMap.map;
+      const map = (window as any).canalRecallGame.vectorMap.map ?? (window as any).canalRecallGame.vectorMap.cameraMap;
       if ((window as any).canalRecallGame.vectorMap.map) { for (const layer of map.getStyle().layers) if (layer.type === 'symbol' && map.getLayoutProperty(layer.id, 'visibility') !== 'none') map.setLayoutProperty(layer.id, 'visibility', 'none'); } else (window as any).canalRecallGame.vectorMap.setLabelsVisible(false);
       const canvas = map.getCanvas() as HTMLCanvasElement;
       for (const e of Array.from(document.body.querySelectorAll('*'))) if (e !== canvas && !e.contains(canvas)) (e as HTMLElement).style.visibility = 'hidden';

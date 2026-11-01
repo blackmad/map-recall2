@@ -26,7 +26,7 @@ try {
       }, zoom);
       await page.waitForTimeout(3000);
       const data = await page.evaluate(async () => {
-        const vm = window.canalRecallGame.vectorMap, map = vm.map;
+        const vm = window.canalRecallGame.vectorMap, map = vm.map ?? vm.cameraMap;
         // getStyle() omits custom layers in MapLibre; inspect runtime layers too.
         const layers = map.style._order.map(id => map.getLayer(id)).filter(Boolean);
         const groups = {

@@ -37,7 +37,7 @@ test('westerpark south: chase frames from the park', async ({ page }, info) => {
     await page.waitForTimeout(9000);
     await page.screenshot({ path: `${OUT}/${v.label || v.id}-chase.png` });
     await page.evaluate(({ eye, target }) => {
-      const vm = (window as any).canalRecallGame.vectorMap, map = vm.map;
+      const vm = (window as any).canalRecallGame.vectorMap, map = vm.map ?? vm.cameraMap;
       const sync = vm.sync; vm.sync = () => {}; map.stop(); map.setMaxPitch(85);
       map.jumpTo(map.calculateCameraOptionsFromTo({ lng: eye[0], lat: eye[1] }, 2.5, { lng: target[0], lat: target[1] }, 9));
       (window as any).__restoreSync = sync;

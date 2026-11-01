@@ -23,14 +23,14 @@ async function boot(page: Page) {
     return vm._completeCityHasBuildings && vm._threeBuildings?.ready && vm._threeBuildings.chunks.size > 3;
   }, null, { timeout: 120_000 });
   await page.evaluate((cam) => {
-    const g = (window as any).canalRecallGame, map = g.vectorMap.map;
+    const g = (window as any).canalRecallGame, map = g.vectorMap.map ?? g.vectorMap.cameraMap;
     for (const k of cam) { map['__' + k] = map[k]; map[k] = () => map; }
   }, CAM);
 }
 
 async function lookAt(page: Page, center: [number, number], zoom = 17.2, pitch = 50, bearing = 0) {
   await page.evaluate(({ center, zoom, pitch, bearing }) => {
-    const g = (window as any).canalRecallGame, map = g.vectorMap.map;
+    const g = (window as any).canalRecallGame, map = g.vectorMap.map ?? g.vectorMap.cameraMap;
     g._clearLandmarkNotice();
     map.__jumpTo.call(map, { center, zoom, pitch, bearing });
   }, { center, zoom, pitch, bearing });

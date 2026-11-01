@@ -80,7 +80,7 @@ async function settle(page: Page, ms = 5000): Promise<Record<string, any>> {
 /** Freeze the game's camera and look from `eye` (metres off the bridge centre along/across its axis, height above the surface there) at the centre. */
 async function look(page: Page, b: Bridge, eye: { along: number; across: number; up: number; water?: boolean }, target: { along: number; up: number } = { along: 0, up: 0 }): Promise<void> {
   await page.evaluate(({ b, eye, target }) => {
-    const g = (window as any).canalRecallGame, vm = g.vectorMap, map = vm.map, ground = vm._ownGround;
+    const g = (window as any).canalRecallGame, vm = g.vectorMap, map = vm.map ?? vm.cameraMap, ground = vm._ownGround;
     vm.__syncOriginal = vm.__syncOriginal || vm.sync;
     vm.sync = () => {};
     const rad = b.bearing * Math.PI / 180, ux = Math.sin(rad), uy = Math.cos(rad);

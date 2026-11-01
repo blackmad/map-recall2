@@ -63,7 +63,7 @@ for (const id of ids) {
     for (const [name, bearing, dist, alt] of views) {
       const eye = ahead(anchor, bearing, dist);
       await page.evaluate(({ eye, alt, anchor, targetAlt }) => {
-        const vm = (window as any).canalRecallGame.vectorMap, map = vm.map;
+        const vm = (window as any).canalRecallGame.vectorMap, map = vm.map ?? vm.cameraMap;
         vm.sync = () => {}; map.stop(); map.setMaxPitch(85); map.setVerticalFieldOfView(50); map.setPadding({ top: 0, bottom: 0, left: 0, right: 0 });
         map.jumpTo(map.calculateCameraOptionsFromTo({ lng: eye[0], lat: eye[1] }, alt, { lng: anchor[0], lat: anchor[1] }, targetAlt));
       }, { eye, alt, anchor, targetAlt: height * 0.4 });

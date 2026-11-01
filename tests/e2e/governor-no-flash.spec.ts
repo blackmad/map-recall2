@@ -31,7 +31,7 @@ test('render-governor pixel-ratio steps never put an empty (white) canvas on scr
   });
   await cdp.send('Page.startScreencast', { format: 'jpeg', quality: 30, maxWidth: 320, maxHeight: 200, everyNthFrame: 1 });
   await page.evaluate(() => {
-    const w = window as any, map = w.canalRecallGame.vectorMap.map;
+    const w = window as any, map = w.canalRecallGame.vectorMap.map ?? w.canalRecallGame.vectorMap.cameraMap;
     w.canalRecallGame.maxAsksPerMinute = 0;
     w.__steps = [];
     const setPixelRatio = map.setPixelRatio.bind(map);

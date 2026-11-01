@@ -46,7 +46,7 @@ test('shop houses close up in game', async ({ page }, info) => {
     for (const [name, back, height] of [['near', info.project.name === 'iphone' ? 22 : 12, 3], ['street', 22, 6]] as const) {
       const eye = ahead(h.anchor, outward, back), target = ahead(h.anchor, outward, -1);
       await page.evaluate(({ eye, target, height }) => {
-        const vm = (window as any).canalRecallGame.vectorMap, map = vm.map;
+        const vm = (window as any).canalRecallGame.vectorMap, map = vm.map ?? vm.cameraMap;
         vm.sync = () => {}; map.stop(); map.setMaxPitch(85);
         map.jumpTo(map.calculateCameraOptionsFromTo({ lng: eye[0], lat: eye[1] }, height, { lng: target[0], lat: target[1] }, height));
       }, { eye, target, height });

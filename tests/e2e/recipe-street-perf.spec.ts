@@ -51,7 +51,7 @@ for (const rep of [1, 2]) test(`ride the recipe street ${baseline ? '(baseline)'
   const throttle = info.project.name === 'iphone' ? 4 : 1;
   await cdp.send('Emulation.setCPUThrottlingRate', { rate: throttle });
   await page.evaluate(() => {
-    const w = window as any, vm = w.canalRecallGame.vectorMap, map = vm.map;
+    const w = window as any, vm = w.canalRecallGame.vectorMap, map = vm.map ?? vm.cameraMap;
     const t: Record<string, number[]> = { frame: [], mapRender: [], landmarkRender: [] };
     w.__perf = t;
     const wrap = (obj: any, key: string, bucket: string) => { const o = obj[key].bind(obj); obj[key] = (...a: unknown[]) => { const s = performance.now(); try { return o(...a); } finally { t[bucket].push(performance.now() - s); } }; };

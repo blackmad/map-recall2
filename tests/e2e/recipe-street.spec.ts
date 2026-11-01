@@ -76,7 +76,7 @@ test('recipe street: installed Bilderdijkstraat houses render in the game from t
   const centre = ahead(sorted[Math.floor(sorted.length / 2)].anchor, outward, 6);
   for (const [name, zoom, pitch] of [['row-street', 19.3, 64], ['row-high', 18.5, 50]] as const) {
     await page.evaluate(({ centre, bearing, zoom, pitch }) => {
-      const vm = (window as any).canalRecallGame.vectorMap, map = vm.map;
+      const vm = (window as any).canalRecallGame.vectorMap, map = vm.map ?? vm.cameraMap;
       vm.sync = () => {}; map.stop();
       map.jumpTo({ center: centre, zoom, pitch, bearing });
     }, { centre, bearing, zoom, pitch });
@@ -97,7 +97,7 @@ test('recipe street: installed Bilderdijkstraat houses render in the game from t
   for (const [name, house, turn] of facadeViews) {
     const back = info.project.name === 'iphone' ? 34 : 17, eye = ahead(ahead(house.anchor, outward, back), bearing, turn ? -back : 0), target = ahead(house.anchor, outward, -1);
     await page.evaluate(({ eye, target }) => {
-      const vm = (window as any).canalRecallGame.vectorMap, map = vm.map;
+      const vm = (window as any).canalRecallGame.vectorMap, map = vm.map ?? vm.cameraMap;
       vm.sync = () => {}; map.stop(); map.setMaxPitch(85);
       map.jumpTo(map.calculateCameraOptionsFromTo({ lng: eye[0], lat: eye[1] }, 9, { lng: target[0], lat: target[1] }, 9));
     }, { eye, target });

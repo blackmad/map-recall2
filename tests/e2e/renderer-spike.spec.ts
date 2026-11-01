@@ -67,7 +67,7 @@ test('same viewpoint: game vs spike', async ({ page }, info) => {
   }, RIDER);
   await page.waitForTimeout(12_000);
   const cam = await page.evaluate(() => {
-    const vm = (window as any).canalRecallGame.vectorMap, map = vm.map, c = map.getCenter();
+    const vm = (window as any).canalRecallGame.vectorMap, map = vm.map ?? vm.cameraMap, c = map.getCenter();
     const g = (window as any).canalRecallGame;
     return { lng: c.lng, lat: c.lat, zoom: map.getZoom(), pitch: map.getPitch(), bearing: map.getBearing(), fov: map.transform?.fov ?? 36.87, rider: vm.worldToLngLat(g.player.x, g.player.y, g.osmLoader), angle: g.player.angle };
   });

@@ -100,7 +100,7 @@ for (const name of spotsArg.split(',')) for (const view of ['chase', 'saddle']) 
     ? { id: `tapped-${spot.pand}`, name: 'Terrace house', lngLat: spot.pick, buildingIds: [spot.pand], featureTarget: { source: 'osm-building-appearance', id: spot.pand } }
     : await page.evaluate(id => window.canalRecallGame.landmarks.find(l => l.id === id), spot.landmarkId);
   const state = await page.evaluate(l => {
-    const vm = window.canalRecallGame.vectorMap, map = vm.map;
+    const vm = window.canalRecallGame.vectorMap, map = vm.map ?? vm.cameraMap;
     vm.setActiveLandmark(l);
     if (vm.map) { for (const layer of map.getStyle().layers) if (layer.type === 'symbol') map.setLayoutProperty(layer.id, 'visibility', 'none'); } else vm.setLabelsVisible(false);
     const canvas = map.getCanvas();

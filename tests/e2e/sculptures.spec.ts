@@ -25,7 +25,7 @@ async function boot(page: Page, sculptures: boolean): Promise<{ errors: string[]
   await page.waitForFunction(() => (window as any).canalRecallGame.state === 4, null, { timeout: 120_000 });
   // Freeze the game's camera; the test drives MapLibre directly.
   await page.evaluate((cam) => {
-    const vm = (window as any).canalRecallGame.vectorMap, map = vm.map;
+    const vm = (window as any).canalRecallGame.vectorMap, map = vm.map ?? vm.cameraMap;
     for (const k of cam) if (map[k]) { map['__' + k] = map[k]; map[k] = () => map; }
     map.setMaxPitch(85); map.setMaxZoom(24);
     vm._signatureLandmarks?.setSuspended?.(false);
@@ -40,7 +40,7 @@ async function boot(page: Page, sculptures: boolean): Promise<{ errors: string[]
  */
 async function view(page: Page, azDeg: number, distM: number, eyeM: number): Promise<void> {
   await page.evaluate(({ anchor, facing, azDeg, distM, eyeM }) => {
-    const map = (window as any).canalRecallGame.vectorMap.map;
+    const map = (window as any).canalRecallGame.vectorMap.map ?? (window as any).canalRecallGame.vectorMap.cameraMap;
     // Compass bearing from the statue to the eye: facing turned by −az (az + is toward the figure's left = counter-clockwise).
     const toEye = (facing - azDeg) * Math.PI / 180;
     // Aim at the figure's middle (~2.6 m up); MapLibre pitches at most 85°, so
@@ -77,7 +77,7 @@ async function waitHandModel(page: Page): Promise<void> {
 /** Two frames apart, so a just-made change has been drawn. */
 async function frames(page: Page, n = 3): Promise<void> {
   await page.evaluate((count) => new Promise<void>(resolve => {
-    const map = (window as any).canalRecallGame.vectorMap.map;
+    const map = (window as any).canalRecallGame.vectorMap.map ?? (window as any).canalRecallGame.vectorMap.cameraMap;
     let left = count;
     const tick = () => { map.triggerRepaint(); if (--left <= 0) resolve(); else requestAnimationFrame(tick); };
     requestAnimationFrame(tick);
@@ -86,7 +86,7 @@ async function frames(page: Page, n = 3): Promise<void> {
 
 async function measure(page: Page, ms = 5000): Promise<{ frameMedian: number; frameP95: number; mainPassMedian: number; mainPassP95: number; sculptureUpdateMedian: number; n: number }> {
   return page.evaluate((dur) => new Promise<any>(resolve => {
-    const vm = (window as any).canalRecallGame.vectorMap, map = vm.map, f = vm._sharedFrame;
+    const vm = (window as any).canalRecallGame.vectorMap, map = vm.map ?? vm.cameraMap, f = vm._sharedFrame;
     const frame: number[] = [], main: number[] = [], upd: number[] = [];
     let last = performance.now(), mainFrames = f.stats.main.frames;
     const end = last + dur;

@@ -100,7 +100,7 @@ test('facade tone: GLB and procedural pixels at seven spots', async ({ page }, i
   });
   await openRoute(page, { travelMode: 'car', abortHeavyTiles: true });
   await page.evaluate(() => {
-    const map = (window as any).canalRecallGame.vectorMap.map;
+    const map = (window as any).canalRecallGame.vectorMap.map ?? (window as any).canalRecallGame.vectorMap.cameraMap;
     if ((window as any).canalRecallGame.vectorMap.map) { for (const layer of map.getStyle().layers) if (layer.type === 'symbol') map.setLayoutProperty(layer.id, 'visibility', 'none'); } else (window as any).canalRecallGame.vectorMap.setLabelsVisible(false);
   });
   const results: Record<string, unknown> = {};
@@ -116,7 +116,7 @@ test('facade tone: GLB and procedural pixels at seven spots', async ({ page }, i
     // which moved the masked luma by more than a look change does (#73). Eye on the stand line, `standM` out and up at
     // 35 deg, looking at the target 8 m up.
     await page.evaluate(({ eye, target, alt }) => {
-      const vm = (window as any).canalRecallGame.vectorMap, map = vm.map;
+      const vm = (window as any).canalRecallGame.vectorMap, map = vm.map ?? vm.cameraMap;
       vm.__toneSync ??= vm.sync; vm.sync = () => {}; map.stop();
       map.jumpTo(map.calculateCameraOptionsFromTo({ lng: eye[0], lat: eye[1] }, alt, { lng: target[0], lat: target[1] }, 8));
     }, { eye: [p.lng, p.lat], target: c, alt: Math.round(spot.standM * Math.tan(35 * Math.PI / 180)) + 8 });
@@ -124,7 +124,7 @@ test('facade tone: GLB and procedural pixels at seven spots', async ({ page }, i
     await settle(page);
     await page.waitForTimeout(2500);
     await page.evaluate(() => {
-      const map = (window as any).canalRecallGame.vectorMap.map, canvas = map.getCanvas();
+      const map = (window as any).canalRecallGame.vectorMap.map ?? (window as any).canalRecallGame.vectorMap.cameraMap, canvas = map.getCanvas();
       for (const e of Array.from(document.body.querySelectorAll('*'))) if (e !== canvas && !e.contains(canvas)) (e as HTMLElement).style.visibility = 'hidden';
     });
     await page.waitForTimeout(600);

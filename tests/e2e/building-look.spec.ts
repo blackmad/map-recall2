@@ -18,7 +18,7 @@ test('building look switches live between the three.js looks and the retired pat
   await page.waitForTimeout(6000);
 
   const read = () => page.evaluate(() => {
-    const vm = (window as any).canalRecallGame.vectorMap, map = vm.map;
+    const vm = (window as any).canalRecallGame.vectorMap, map = vm.map ?? vm.cameraMap;
     const pattern = map.getLayer('osm-colored-building-facades') ? map.getLayoutProperty('osm-colored-building-facades', 'visibility') : 'absent';
     return { look: vm._buildings3dLook, pattern, three: vm._threeBuildings ? vm._threeBuildings.stats().chunks : 0,
       // Three looks draw the whole city: MapLibre's building layers are off, so no slab can hang in the air (user reports 2026-10-02).

@@ -46,7 +46,7 @@ const ahead = ([lng, lat]: number[], bearingDeg: number, metres: number): [numbe
 
 async function quiet(page: Page): Promise<void> {
   await page.evaluate(() => {
-    const map = (window as any).canalRecallGame.vectorMap.map;
+    const map = (window as any).canalRecallGame.vectorMap.map ?? (window as any).canalRecallGame.vectorMap.cameraMap;
     if ((window as any).canalRecallGame.vectorMap.map) { for (const layer of map.getStyle().layers) if (layer.type === 'symbol' && map.getLayoutProperty(layer.id, 'visibility') !== 'none') map.setLayoutProperty(layer.id, 'visibility', 'none'); } else (window as any).canalRecallGame.vectorMap.setLabelsVisible(false);
     const canvas = map.getCanvas() as HTMLCanvasElement;
     for (const e of Array.from(document.body.querySelectorAll('*'))) if (e !== canvas && !e.contains(canvas)) (e as HTMLElement).style.visibility = 'hidden';
@@ -73,7 +73,7 @@ async function settle(page: Page): Promise<void> {
 /** Draw calls and triangles inside the shared frame's main pass, whole-page draws, frame time, resident counts. */
 async function measure(page: Page, ms: number) {
   await page.evaluate(() => {
-    const w = window as any, vm = w.canalRecallGame.vectorMap, map = vm.map, f = vm._sharedFrame;
+    const w = window as any, vm = w.canalRecallGame.vectorMap, map = vm.map ?? vm.cameraMap, f = vm._sharedFrame;
     const t: Record<string, number[]> = { frame: [], frameCalls: [], frameTri: [], allCalls: [], mainMs: [] };
     w.__rtPerf = t; w.__rtStop = false;
     let tri = 0, calls = 0, all = 0, inMain = false;
@@ -156,7 +156,7 @@ for (const mode of MODES) test(`recipe tiles: ${mode.label}`, async ({ page }, i
     if (ONLY && !ONLY.includes(view.name)) continue;
     const eye = ahead(view.target, view.bearing, view.distM);
     await page.evaluate(({ eye, view }) => {
-      const g = (window as any).canalRecallGame, vm = g.vectorMap, map = vm.map;
+      const g = (window as any).canalRecallGame, vm = g.vectorMap, map = vm.map ?? vm.cameraMap;
       g._updateCanalQuiz = () => {}; g._updateBridgeQuiz = () => {}; (window as any).__rtIdle = 0;
       g.player.speed = 0; g.player.vx = 0; g.player.vy = 0;
       vm.sync = () => {}; map.stop(); map.setMaxPitch(85); map.setVerticalFieldOfView(50); map.setPadding({ top: 0, bottom: 0, left: 0, right: 0 });

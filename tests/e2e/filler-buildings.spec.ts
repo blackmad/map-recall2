@@ -87,7 +87,7 @@ for (const place of PLACES.filter(p => !only || only.includes(p.id))) {
     await parkAt(page, place.centre);
     // Wait until the streamed city layer holds features around the place.
     await page.waitForFunction(({ c }) => {
-      const map = (window as any).canalRecallGame.vectorMap.map;
+      const map = (window as any).canalRecallGame.vectorMap.map ?? (window as any).canalRecallGame.vectorMap.cameraMap;
       const near = (f: any) => { const g = f.geometry; const p = g.type === 'Polygon' ? g.coordinates[0][0] : g.coordinates[0][0][0]; return Math.abs(p[0] - c[0]) < 0.002 && Math.abs(p[1] - c[1]) < 0.0015; };
       try { return map.querySourceFeatures('osm-building-appearance').some(near); } catch { return false; }
     }, { c: place.centre }, { timeout: 120_000, polling: 1000 });
@@ -95,7 +95,7 @@ for (const place of PLACES.filter(p => !only || only.includes(p.id))) {
     await parkAt(page, place.parkAt ?? ahead(place.centre, place.views[0].bearing + 180, 60));
     await page.waitForTimeout(4000);
     const probe = await page.evaluate(({ c, mustDraw, mustHide, inspectIds }) => {
-      const vm = (window as any).canalRecallGame.vectorMap, map = vm.map;
+      const vm = (window as any).canalRecallGame.vectorMap, map = vm.map ?? vm.cameraMap;
       const hidden = new Set<string>(vm._signatureSuppressOsmIds().map(String));
       const feats = map.querySourceFeatures('osm-building-appearance');
       const byId = new Map<string, any>();
@@ -116,7 +116,7 @@ for (const place of PLACES.filter(p => !only || only.includes(p.id))) {
       // The rider stands under the camera, out of frame, so it does not cover the subject.
       await parkAt(page, eye);
       await page.evaluate(({ eye, alt, target, targetAlt }) => {
-        const vm = (window as any).canalRecallGame.vectorMap, map = vm.map;
+        const vm = (window as any).canalRecallGame.vectorMap, map = vm.map ?? vm.cameraMap;
         vm.sync = () => {}; map.stop(); map.setMaxPitch(85); map.setPadding({ top: 0, bottom: 0, left: 0, right: 0 });
         map.jumpTo(map.calculateCameraOptionsFromTo({ lng: eye[0], lat: eye[1] }, alt, { lng: target[0], lat: target[1] }, targetAlt));
       }, { eye, alt: view.altitudeM, target: place.centre, targetAlt: view.targetAltM });
