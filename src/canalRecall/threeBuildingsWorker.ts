@@ -13,6 +13,7 @@ import { WorldCellWorkerHost, isWorldRequest, type WorldRequest } from './world/
 import { answerRelief, isReliefRequest, type ReliefRequest } from './ownGround/reliefDecode.js';
 import { answerStandIn, isStandInRequest, type StandInRequest } from './rendererShared/shadowStandIns.js';
 import { planTiles, plannedTransferables } from './ownGround/cellTiles.js';
+import { answerOverview, isOverviewRequest, type OverviewRequest } from './ownMap/overviewPool.js';
 
 type Job = { surveyedEnvelopeData?: SurveyedBuildingEnvelope[]; surveyedEnvelopeRevision?: string; special?: 'kits' | 'boats'; boats?: Houseboat[]; layers: KitLayers; key: string; gen: number; look: BuildingLook; features: Feature[]; contextFeatures?: Feature[]; mode?: 'walls' | 'extras' | 'coarse' | 'shell'; streets?: Float32Array; profiles?: StreetAppearanceProfile[]; appearanceRevision?: string; hostOpenings?: ChunkHostOpeningConfig[]; hostOpeningRevision?: string; /** Facade tiles per side and the smallest chunk worth cutting: the tiles' x/y partition is cut here (cellTiles.ts planTiles). */ tiles?: number; tileMin?: number };
 
@@ -21,11 +22,13 @@ type Job = { surveyedEnvelopeData?: SurveyedBuildingEnvelope[]; surveyedEnvelope
 const world = new WorldCellWorkerHost(reply => (self as unknown as Worker).postMessage(reply));
 
 // The pool (engine/workerPool.ts) also decodes the own ground's relief tiles here (ownGround/reliefDecode.ts) and
-// welds landmark shadow stand-ins (rendererShared/shadowStandIns.ts, #129).
-self.onmessage = (event: MessageEvent<Job | WorldRequest | ReliefRequest | StandInRequest>) => {
+// welds landmark shadow stand-ins (rendererShared/shadowStandIns.ts, #129) and builds the engine's overview geometry.
+self.onmessage = (event: MessageEvent<Job | WorldRequest | ReliefRequest | StandInRequest | OverviewRequest>) => {
   if (isWorldRequest(event.data)) { world.handle(event.data); return; }
   if (isReliefRequest(event.data)) { answerRelief(event.data, (reply, transfer) => (self as unknown as Worker).postMessage(reply, transfer)); return; }
   if (isStandInRequest(event.data)) { answerStandIn(event.data, (reply, transfer) => (self as unknown as Worker).postMessage(reply, transfer)); return; }
+  // The engine's overview geometry (ownMap/overviewPool.ts, #129: 184 ms of the own boot on the main thread).
+  if (isOverviewRequest(event.data)) { void answerOverview(event.data, (reply, transfer) => (self as unknown as Worker).postMessage(reply, transfer)); return; }
   const { key, gen, look, features, contextFeatures, mode, streets, profiles, appearanceRevision, hostOpenings, hostOpeningRevision, surveyedEnvelopeRevision } = event.data;
   const t0 = performance.now();
   const {chunk,boundParentIds} = event.data.special === 'kits' ? {chunk:buildSpecialKits(features, look, event.data.layers),boundParentIds:[]}
