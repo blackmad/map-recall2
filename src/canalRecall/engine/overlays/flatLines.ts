@@ -11,7 +11,8 @@ import { lineGeometry, lineMaterial } from '../../ownMap/layers';
 import { interpolateStops, type Stops } from '../../ownMap/style';
 import { toLocal, ORIGIN, type Vec2 } from '../../ownMap/frame';
 import { metresPerPixel } from '../../ownMap/mapCamera';
-import { mercatorFromOwnLocal } from '../overviewLayer';
+import { mercatorFromOwnLocal, OVERVIEW_TILES, OVERVIEW_TILE_MIN_TRIANGLES } from '../overviewLayer';
+import { cutMesh, growTileSpheres } from '../../rendererShared/tiledGeometry';
 import type { FrameParticipant } from '../../rendererShared/sharedFrame';
 
 export type LngLatLine = readonly (readonly [number, number])[];
@@ -21,7 +22,7 @@ export interface LineStyleSpec { color: string; width: Stops; casing?: { color: 
 export class FlatLines implements FrameParticipant {
   readonly root = new THREE.Group();
   visible = true;
-  private meshes: { fill: THREE.Mesh; casing: THREE.Mesh | null; style: LineStyleSpec }[] = [];
+  private meshes: { fill: THREE.Mesh; casing: THREE.Mesh | null; style: LineStyleSpec; spans: boolean }[] = [];
   private centreLat: number = ORIGIN.lat;
   /** The last `set`, to build the geometry again after a context loss (its CPU arrays are freed once uploaded, #130). */
   private groups: readonly { lines: readonly LngLatLine[]; style: LineStyleSpec }[] = [];
@@ -44,8 +45,25 @@ export class FlatLines implements FrameParticipant {
       if (style.casing) { casing = new THREE.Mesh(geo, lineMaterial(style.casing.color, z)); casing.frustumCulled = false; casing.renderOrder = 50; this.root.add(casing); }
       for (const m of [fill, casing]) if (m) { (m.material as THREE.ShaderMaterial).depthTest = true; (m.material as THREE.ShaderMaterial).uniforms.uNear = { value: 0 }; }
       this.root.add(fill);
-      this.meshes.push({ fill, casing, style });
+      this.meshes.push({ fill, casing, style, spans: this.cut(fill, casing) });
     }
+  }
+
+  /**
+   * Draw the lines over only the span of their index on screen (tiledGeometry.ts drawAsSpans, as the overview): the
+   * cycle tracks cover the whole region (~108 k triangles) and were drawn whole every frame, though a chase view sees
+   * a few hundred metres of them (#129). One draw call, as before; one colour per mesh with no depth write, so the
+   * reordered index changes no pixel. The casing shares the fill's geometry and its spans. `?lineCull=0` (or
+   * `__canalRecallLineCull = false`) keeps the whole index.
+   */
+  private cut(fill: THREE.Mesh, casing: THREE.Mesh | null): boolean {
+    if (!lineCullFlag() || !cutMesh(THREE, fill, OVERVIEW_TILES, OVERVIEW_TILE_MIN_TRIANGLES, { draw: 'spans' })) return false;
+    if (casing) {
+      const cull = fill.onBeforeRender, geo = fill.geometry;
+      casing.onBeforeRender = (...a) => cull.apply(fill, a);
+      casing.onAfterRender = () => { geo.drawRange.start = 0; geo.drawRange.count = Infinity; };
+    }
+    return true;
   }
 
   /** A new renderer after a context loss: the freed CPU copies are built again from the last `set`. */
@@ -68,10 +86,20 @@ export class FlatLines implements FrameParticipant {
       const px = interpolateStops(m.style.width, zoom);
       const u = (m.fill.material as THREE.ShaderMaterial).uniforms;
       u.uHalf.value = px / 2 * mpp; u.uOpacity.value = m.style.opacity ?? 1;
-      if (m.casing) (m.casing.material as THREE.ShaderMaterial).uniforms.uHalf.value = (px + m.style.casing!.extraPx) / 2 * mpp;
+      const casingHalf = m.casing ? (px + m.style.casing!.extraPx) / 2 * mpp : 0;
+      if (m.casing) (m.casing.material as THREE.ShaderMaterial).uniforms.uHalf.value = casingHalf;
+      // The spans' spheres hold the stored centrelines at z = 0: grow them by the corner extrusion and the draw height.
+      if (m.spans) growTileSpheres(m.fill, Math.max(u.uHalf.value as number, casingHalf) * Math.SQRT2 + Math.abs(m.style.z ?? 0.15) + 1);
     }
     return any;
   }
+}
+
+/** Span culling for the flat lines: on unless `?lineCull=0` / `__canalRecallLineCull = false`. */
+export function lineCullFlag(): boolean {
+  const g = globalThis as { __canalRecallLineCull?: boolean; location?: { search?: string } };
+  if (g.__canalRecallLineCull === false) return false;
+  return new URLSearchParams(g.location?.search ?? '').get('lineCull') !== '0';
 }
 
 /** three's `onUpload` callback (`this` is the attribute): drop the CPU copy. */
