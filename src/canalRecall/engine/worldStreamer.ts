@@ -140,6 +140,7 @@ export class ChunkBuildQueue {
   private rank: ((key: string) => number) | null = null;
   get length(): number { return this.jobs.size; }
   has(key: string): boolean { return this.jobs.has(key); }
+  keys(): IterableIterator<string> { return this.jobs.keys(); }
   push(key: string, job: () => void): void { this.jobs.set(key, job); }
   /** Rank evaluated when the next job is taken (the rider moves between builds); null restores request order. */
   setRank(rank: ((key: string) => number) | null): void { this.rank = rank; }
