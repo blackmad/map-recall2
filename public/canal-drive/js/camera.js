@@ -92,6 +92,7 @@ class Camera {
       // no longer surges forward and back with the throttle.
       const wantedLookahead = this.reducedMotion ? 0 : CAMERA_LOOKAHEAD * speedRatio;
       this._lookahead += (wantedLookahead - this._lookahead) * ease(CAMERA_LOOKAHEAD_SMOOTHING);
+      if (Math.abs(wantedLookahead - this._lookahead) < 1e-4) this._lookahead = wantedLookahead;
     }
     this._updateRotation(target, seconds, ease);
     const position = this.followPosition(target);
@@ -124,6 +125,9 @@ class Camera {
       const ty = this.detached ? this.anchorY : this._followY;
       this.x += (tx - this.x) * ease(this.smoothing);
       this.y += (ty - this.y) * ease(this.smoothing);
+      // The ease never arrives on its own; a parked view must be exactly still (2026-11-01).
+      if (Math.abs(tx - this.x) < 1e-4) this.x = tx;
+      if (Math.abs(ty - this.y) < 1e-4) this.y = ty;
       // Detached, the next follow starts from the live position again.
       if (this._followState) this._followState.primed = false;
     }
@@ -166,7 +170,7 @@ class Camera {
     const rotationRate = this.reducedMotion ? CAMERA_REDUCED_ROTATION_SMOOTHING : CAMERA_ROTATION_SMOOTHING;
     // Wrapped, so a view held north-up after a heading-following stretch
     // reads 0 rather than 2π (every consumer treats it modularly).
-    this.rotation = normalizeAngle(this.rotation + delta * ease(this.smoothing * rotationRate));
+    this.rotation = normalizeAngle(Math.abs(delta) < 1e-7 ? wantedRotation : this.rotation + delta * ease(this.smoothing * rotationRate));
   }
   zoomIn() {
     this.zoom = clamp(this.zoom + CAMERA_ZOOM_STEP, this.minZoom, this.maxZoom);

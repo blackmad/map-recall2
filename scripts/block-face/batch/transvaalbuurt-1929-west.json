@@ -1,0 +1,67 @@
+{
+ "name": "transvaalbuurt-1929-west",
+ "buurt": "transvaalbuurt-west",
+ "library": "transvaalbuurt",
+ "generatedAt": "2026-11-01T08:39:27.260Z",
+ "method": "scripts/block-face/batch.ts",
+ "totals": {
+  "faces": 2,
+  "runs": 2,
+  "installed": 2,
+  "installedPands": 7,
+  "failed": 0,
+  "byReason": {}
+ },
+ "rows": [
+  {
+   "face": "vaalrivier-2-14",
+   "street": "Vaalrivierstraat",
+   "ride": 1328,
+   "restriped": null,
+   "stripQuality": {
+    "badShare": 0.149,
+    "reasons": [
+     "blown"
+    ]
+   },
+   "nccMin": 0.302,
+   "nccMedian": 0.319,
+   "stripOverDrawn": 0.801,
+   "wallFits": 0,
+   "droppedCorners": [],
+   "triangles": 3672,
+   "sheet": "staging/block-face/vaalrivier-2-14-r1/review/strip-sheet.png",
+   "stripDate": "2020-04-29",
+   "run": "vaalrivier-2-14-r1",
+   "pands": 5,
+   "mode": "auto-place",
+   "status": "installed",
+   "reasons": [],
+   "seconds": 9
+  },
+  {
+   "face": "kraaipan-63-65",
+   "street": "Kraaipanstraat",
+   "ride": 0,
+   "restriped": null,
+   "stripQuality": {
+    "badShare": 0,
+    "reasons": []
+   },
+   "nccMin": 0.248,
+   "nccMedian": 0.313,
+   "stripOverDrawn": 1.009,
+   "wallFits": 2,
+   "droppedCorners": [],
+   "triangles": 1493,
+   "sheet": "staging/block-face/kraaipan-63-65/review/strip-sheet.png",
+   "stripDate": "2020-04-29",
+   "run": "kraaipan-63-65",
+   "pands": 2,
+   "mode": "auto-place",
+   "status": "installed",
+   "reasons": [],
+   "seconds": 6.9
+  }
+ ]
+}

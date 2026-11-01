@@ -62,7 +62,14 @@ export interface CanalhouseDormer {
   /** Explicit source-visible opening in a native wall covering this dormer. */
   hostAperture?:{depthM:number};
   /** `arch`: a round (half-elliptic, `roofRiseM` high) roof over the dormer and a matching round front and back, instead of the two pitched planes (Kinkerstraat 22-24 round-hooded dormers). Absent = pitched, byte-identical. */
-  roofProfile?:'arch'; id: string; leftM: number; widthM: number; bottomM: number; heightM: number; depthM: number; roofRiseM: number; frontOverhangM?: number; trimWidthM?: number; verticalBars?: number[]; horizontalBars?: number[] }
+  roofProfile?:'arch';
+  /**
+   * A timber dormer whose window sits in its own front wall (Transvaalbuurt 1911-1914, Transvaalstraat 39-45, #156): a solid
+   * front in the body colour, `apronM` high under the window (its foot then clears the roof and the facade top it stands
+   * behind, so the glass never passes the roof plane) and `sideM` wide each side of it; the frame, pane and bars fill the
+   * rest. Absent = the whole front glazed, byte-identical.
+   */
+  frontWall?:{apronM:number;sideM:number}; id: string; leftM: number; widthM: number; bottomM: number; heightM: number; depthM: number; roofRiseM: number; frontOverhangM?: number; trimWidthM?: number; verticalBars?: number[]; horizontalBars?: number[] }
 /** `accent` is a second masonry colour (banding, relieving arches); `shop` is the shopfront joinery/fascia paint. */
 export interface CanalhouseFacadeBlock { id: string; leftM: number; bottomM: number; widthM: number; heightM: number; depthM: number; surface?: 'wall' | 'trim' | 'stone' | 'accent' | 'shop' }
 export interface CanalhouseBalcony {
@@ -163,6 +170,12 @@ export interface CompiledCanalHouseRecipe {
   stats: { triangles: number; meshes: number; bounds: { min: number[]; max: number[] } };
 }
 const EPS = 1e-5;
+/**
+ * Survey slack over the 0.5 m outset cap: BAG digitises the 0.5 m oriel bays of Retiefstraat 2-28 and Tugelaweg 19-31
+ * (1921-1922) at 0.498-0.502 m, and a 2 mm overshoot of the capped plan threw for every pand (#154). Only a plan at the
+ * cap gets it; every frontage that passed before passes unchanged.
+ */
+const OUTSET_CAP_SLACK_M = 0.005;
 /** Minimum projected polygon area admitted by the geometry compiler. Survey
  * converters must report fragments beneath this threshold, never silently fit
  * their unstable plane or change the source footprint to make them compile. */
@@ -454,7 +467,7 @@ export function compileCanalHouseRecipe(recipe: CanalHouseRecipe): CompiledCanal
       for(let i=(elevation.edgeIndex+1)%ring.length;i!==end;i=(i+1)%ring.length){
         const p=ring[i],distance=Math.abs((p[0]-a[0])*dz-(p[1]-a[1])*dx)/length;
         const outwardDistance=(p[0]-a[0])*nx+(p[1]-a[1])*nz;
-        if(distance>tolerance&&(!plan||outwardDistance>Math.max(tolerance,plan.maxOutsetM??0)+EPS||-outwardDistance>plan.maxInsetM+EPS))throw new Error('Grouped frontage is not a straight surveyed wall');
+        if(distance>tolerance&&(!plan||outwardDistance>Math.max(tolerance,plan.maxOutsetM??0)+(plan.maxOutsetM===.5?OUTSET_CAP_SLACK_M:EPS)||-outwardDistance>plan.maxInsetM+EPS))throw new Error('Grouped frontage is not a straight surveyed wall');
       }
     }
     // Details on a grouped frontage must sit outside every surveyed segment,
@@ -809,16 +822,27 @@ export function compileCanalHouseRecipe(recipe: CanalHouseRecipe): CompiledCanal
         box(x0,d.bottomM,wall,d.heightM,d.depthM,-d.depthM/2,wallSurface,`${label}/left-wall`);
         box(x1-wall,d.bottomM,wall,d.heightM,d.depthM,-d.depthM/2,wallSurface,`${label}/right-wall`);
         box(x0,d.bottomM,d.widthM,d.heightM,wall,-d.depthM+wall/2,wallSurface,`${label}/back-wall`);
-        box(x0,d.bottomM,t,d.heightM,.04,.03,'trim',`${label}/frame-left`);
-        box(x1-t,d.bottomM,t,d.heightM,.04,.03,'trim',`${label}/frame-right`);
-        box(x0,d.bottomM,d.widthM,t,.04,.03,'trim',`${label}/frame-bottom`);
-        box(x0,top-t,d.widthM,t,.04,.03,'trim',`${label}/frame-top`);
-        box(x0+t,d.bottomM+t,d.widthM-2*t,d.heightM-2*t,.03,.065,'glass',`${label}/pane`);
+        // `frontWall`: the window sits in a solid front (apron under it, posts beside it); absent, the opening is the whole front.
+        let wx0=x0,wx1=x1,wy0=d.bottomM;
+        if(d.frontWall){
+          const {apronM,sideM}=d.frontWall;finite(apronM,sideM);
+          if(apronM<0||sideM<0||apronM+t*2+.3>d.heightM||sideM*2+t*2+.3>d.widthM)throw Error('Dormer front wall leaves no window');
+          wx0=x0+sideM;wx1=x1-sideM;wy0=d.bottomM+apronM;
+          // Between the side walls (their front ends stay the only faces at the corners: no coplanar overlap).
+          if(apronM>EPS)box(x0+wall,d.bottomM,d.widthM-2*wall,apronM,wall,-wall/2,wallSurface,`${label}/front-apron`);
+          if(sideM>wall+EPS)for(const [x,side] of [[x0+wall,'left'],[x1-sideM,'right']] as const)box(x,wy0,sideM-wall,top-wy0,wall,-wall/2,wallSurface,`${label}/front-${side}`);
+        }
+        const ww=wx1-wx0,wh=top-wy0;
+        box(wx0,wy0,t,wh,.04,.03,'trim',`${label}/frame-left`);
+        box(wx1-t,wy0,t,wh,.04,.03,'trim',`${label}/frame-right`);
+        box(wx0,wy0,ww,t,.04,.03,'trim',`${label}/frame-bottom`);
+        box(wx0,top-t,ww,t,.04,.03,'trim',`${label}/frame-top`);
+        box(wx0+t,wy0+t,ww-2*t,wh-2*t,.03,.065,'glass',`${label}/pane`);
         // Bars 4.2 cm over the pane, not 3 cm: 3 cm is the audit's band that bleeds through at distance (geometryAudit
         // zTightTol); a tall two-light dormer's bar was 0.1 m2 of it (Gorontalostraat 25-45, 2026-10-17).
         const dormerBarZ=.107;
-        for(const f of d.verticalBars??[]){if(!(f>0&&f<1)||d.widthM*f-t/2<t||d.widthM*f+t/2>d.widthM-t)throw new Error('Dormer bar escapes pane');box(x0+d.widthM*f-t/2,d.bottomM+t,t,d.heightM-2*t,.03,dormerBarZ,'trim',`${label}/bar`);}
-        for(const f of d.horizontalBars??[]){if(!(f>0&&f<1)||d.heightM*f-t/2<t||d.heightM*f+t/2>d.heightM-t)throw new Error('Dormer bar escapes pane');box(x0+t,d.bottomM+d.heightM*f-t/2,d.widthM-2*t,t,.03,dormerBarZ,'trim',`${label}/bar`);}
+        for(const f of d.verticalBars??[]){if(!(f>0&&f<1)||ww*f-t/2<t||ww*f+t/2>ww-t)throw new Error('Dormer bar escapes pane');box(wx0+ww*f-t/2,wy0+t,t,wh-2*t,.03,dormerBarZ,'trim',`${label}/bar`);}
+        for(const f of d.horizontalBars??[]){if(!(f>0&&f<1)||wh*f-t/2<t||wh*f+t/2>wh-t)throw new Error('Dormer bar escapes pane');box(wx0+t,wy0+wh*f-t/2,ww-2*t,t,.03,dormerBarZ,'trim',`${label}/bar`);}
         const overhang=d.frontOverhangM??0;finite(overhang);if(overhang<0||overhang>.3)throw Error('Unsupported dormer front overhang');
         const roofValues:number[]=[],mid=(x0+x1)/2;
         const quad=(p:number[],q:number[],r:number[],s:number[])=>roofValues.push(...p,...q,...r,...p,...r,...s);

@@ -1,0 +1,205 @@
+{
+ "schemaVersion": 1,
+ "kind": "house-type",
+ "id": "transvaal-1921-five-storey-oriel",
+ "district": "transvaalbuurt",
+ "description": "Transvaalbuurt 1921-1922 oriel rows (Retiefstraat 2-28, Tugelaweg 19-31): 18 m red-brown brick stair blocks of a ground storey and three upper storeys of flats, five axes: a window axis, a canted brick bay with white-framed three-light fronts through storeys 1-2 on a white console over a wide ground window, the stair axis with the portiek door and narrow stair windows, the mirror bay, a window axis; plain windows on the top storey; a cream gutter board at about 12.4 m on a short red-tile roof face carrying four white timber dormers with flat caps",
+ "fit": {
+  "widthM": [
+   16.5,
+   18.6
+  ],
+  "storeys": [
+   4
+  ]
+ },
+ "match": {
+  "years": [
+   1921,
+   1922
+  ],
+  "eavesM": [
+   12.3,
+   15.0
+  ],
+  "storeys3dbag": [
+   5
+  ],
+  "stucco": false,
+  "baysByWidth": [
+   {
+    "maxWidthM": 99,
+    "bays": 5
+   }
+  ],
+  "note": "3DBAG eaves 12.5-13.3 m on Tugelaweg 19-31 and 12.8-14.8 m on Retiefstraat 2-28 (the dormers lift some pands), ridge 17.7-17.9 m, bouwlagen 5, BAG 1921-1922. The 18 m stair blocks only: Retiefstraat 4-8 and 16-20 (13.3 m) carry one bay and the corner pands (7.0-8.9 m) other fronts, and are left to a later variant"
+ },
+ "body": {
+  "storeys": 4,
+  "bays": 5,
+  "bayWidths": [
+   4.2,
+   3.55,
+   3.15,
+   3.5,
+   3.6
+  ],
+  "bayFill": [
+   0.38,
+   0.6,
+   0.35,
+   0.6,
+   0.44
+  ],
+  "storeyHeights": [
+   3.1,
+   3.1,
+   3.0,
+   3.15
+  ],
+  "windows": "casement-toplight",
+  "windowHeights": [
+   0.5,
+   0.58,
+   0.6,
+   0.5
+  ],
+  "headLines": [
+   0.68,
+   0.71,
+   0.73,
+   0.55
+  ],
+  "cornice": "none",
+  "bayWindows": {
+   "bays": {
+    "from": 1,
+    "to": 1
+   },
+   "storeys": [
+    1,
+    2
+   ],
+   "oriel": {
+    "span": 2.95,
+    "projection": 0.55,
+    "returns": 0.45,
+    "stallriser": 0.4,
+    "head": 0.9,
+    "frontLights": 3,
+    "transom": 0.72,
+    "panels": {
+     "2": {
+      "stallriser": 0.4,
+      "head": 0.8
+     }
+    },
+    "paintedStoreys": [
+     2
+    ],
+    "paintFrom": 0.35,
+    "console": true,
+    "twin": {
+     "from": 3,
+     "to": 3
+    }
+   }
+  }
+ },
+ "crowns": {
+  "dormers": {
+   "gable": "cornice",
+   "eavesOverhang": {
+    "projection": 0.3,
+    "fascia": 0.22,
+    "colour": "#e2d9bd",
+    "soffit": "#5a4036"
+   },
+   "dormers": 4,
+   "dormerStyle": "flat",
+   "dormerAt": [
+    {
+     "from": 0.05,
+     "to": 0.21
+    },
+    {
+     "from": 0.29,
+     "to": 0.44
+    },
+    {
+     "from": 0.58,
+     "to": 0.74
+    },
+    {
+     "from": 0.83,
+     "to": 0.98
+    }
+   ],
+   "note": "a cream gutter board at 12.35 m; four white timber dormers 2.7-2.9 m wide with flat overhanging caps, tops about 14.1 m, over the window and bay axes (Retiefstraat 10-14, 2023 strip)",
+   "dormerBody": "stone"
+  }
+ },
+ "grounds": {
+  "door-centre": {
+   "doorBay": 2,
+   "note": "the portiek door on the stair axis (1.8 m with its frame, 8.4-10.2 m of the 18 m front)"
+  }
+ },
+ "palettes": {
+  "red-brown": {
+   "brick": "#7b5446",
+   "frame": "white-painted",
+   "door": "#2c3430",
+   "stone": "#e2d9bd",
+   "cornice": "#e2d9bd"
+  }
+ },
+ "roof": {
+  "material": "red-tile",
+  "source": "front",
+  "pitchDeg": 55,
+  "evidence": "the strips show a short red-tile roof face over the gutter board carrying the dormers (Retiefstraat 2-28 2023, Tugelaweg 19-31); 3DBAG ridge 17.7-17.9 m behind it"
+ },
+ "rhythm": {
+  "bays": "window, canted bay, stair axis, canted bay, window",
+  "identicalBays": "no: the bays and the stair axis",
+  "windowsPerStorey": "ground: window, wide window, portiek door, wide window, window | 1-2: window, bay, stair window, bay, window | 3: five windows",
+  "symmetry": "near symmetric about the stair axis",
+  "groundFloor": "flats; the portiek door on the stair axis",
+  "signage": "none",
+  "roofline": "a cream gutter board, a short red-tile roof face with four white flat-capped dormers",
+  "photoRows": [
+   5,
+   5,
+   5,
+   5
+  ],
+  "photoGroundRows": 1
+ },
+ "evidence": [
+  {
+   "face": "retief-2-28",
+   "pands": [
+    "0363100012236977",
+    "0363100012236802"
+   ],
+   "citation": "strip.jpg 2023 at 40 px/m, pavement 0.5 m over the strip foot: 18.0 m pand; axis centres 2.2, 6.2, 9.3, 12.45, 16.4 m; canted bays 2.95 m across with three-light fronts, lights 3.5-5.3 and 6.6-8.4 m, a cream head panel 8.4-9.2 m, a white console at 2.8-3.0 m over a wide ground window 0.6-2.05 m; portiek door 8.4-10.2 m; top-storey windows 9.4-10.95 m; cream gutter board 12.35 m; four white dormers, tops 14.1 m"
+  },
+  {
+   "face": "tugelaweg-19-31",
+   "pands": [
+    "0363100012237041",
+    "0363100012236929"
+   ],
+   "citation": "strip.jpg at 40 px/m: 17.8-18.0 m pands with the same five axes, bays on axes 2 and 4, the stair door between them, gutter 12.0 m on the strip, four or five dormers to 14.3 m"
+  }
+ ],
+ "schemaLimits": [
+  "the house door beside the first window axis is not drawn (one door per front: the portiek door)",
+  "the stair windows are drawn as ordinary windows on the stair axis, not offset half a storey",
+  "a fifth dormer on some Tugelaweg pands is not drawn"
+ ],
+ "notes": [
+  "HELD (#154, 2026-11-01): authored and measured on Retiefstraat 2-28 / Tugelaweg 19-31, but no pand is placed. Every candidate scores edge NCC 0.01-0.13 against its strip (gate 0.15): the kit's casement-toplight panes and glazing band do not match the stone-mullioned, small-paned windows, and the four flat dormers cost ~80 tris a house so a 18 m house is 3.3k triangles (budget 3000). Fix the window kind and a cheaper dormer before this type can place."
+ ]
+}

@@ -160,3 +160,20 @@ Round 2 (#151) added two more.
    (ribbon) holds a whole same-year row for one pand's wide windows. Review every auto-placed
    face at gallery size beside its strip before any batch install; a `pass` from the gates is
    not a placement.
+
+Round 4 (#153–#156, four family lanes at once) added three more.
+
+8. **A build-year family is not one design.** The 1929–1931 band held about eight designs on 22
+   faces and the 1920–1922 band three; a type per design with 8 or more pands is the unit, and
+   a lane briefed for "the 1929 family" should expect to author two types and report six
+   designs without one. Count designs on the contact sheet before promising a yield.
+9. **Parallel family lanes work if they share only lists.** Four lanes in four worktrees
+   merged with chunks.json, review-holds, review-doors, review-crowns and review-types united
+   by key; placement and per-face auto-place records were taken from each lane (per-lane
+   snapshots) because a buurt-wide re-run renumbers runs and overwrites installed intents.
+   Until `auto-place` skips faces with an installed chunk, every lane must restore installed
+   run dirs from HEAD after a re-run, and `batch.ts --faces` must not be trusted with `--buurt`.
+10. **Measure the wall from tree-free columns.** The batch's per-pand wall refit read hedge
+   and tree green on Danie Theronstraat and made a patchwork row; one measured brick per row
+   (median of the tree-free walls, with evidence in the type palette) read right at gallery
+   size. Likewise `groundUse` must not read OSM street furniture as a shopfront.

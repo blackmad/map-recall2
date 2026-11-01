@@ -1,0 +1,97 @@
+{
+ "street": "Danie Theronstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched n/a (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012138289",
+   "addresses": [
+    "Danie Theronstraat 13A",
+    "Danie Theronstraat 13B",
+    "Danie Theronstraat 13C",
+    "Danie Theronstraat 13D",
+    "Danie Theronstraat 15"
+   ],
+   "groundUnits": [
+    {
+     "address": "Danie Theronstraat 13A",
+     "use": "woonfunctie",
+     "areaM2": 93,
+     "bagId": "0363010000997450"
+    },
+    {
+     "address": "Danie Theronstraat 13B",
+     "use": "woonfunctie",
+     "areaM2": 93,
+     "bagId": "0363010000997451"
+    },
+    {
+     "address": "Danie Theronstraat 13C",
+     "use": "woonfunctie",
+     "areaM2": 80,
+     "bagId": "0363010000997452"
+    },
+    {
+     "address": "Danie Theronstraat 13D",
+     "use": "woonfunctie",
+     "areaM2": 88,
+     "bagId": "0363010000997453"
+    },
+    {
+     "address": "Danie Theronstraat 15",
+     "use": "woonfunctie",
+     "areaM2": 142,
+     "bagId": "0363010000997454"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012148172",
+   "addresses": [
+    "Danie Theronstraat 17A",
+    "Danie Theronstraat 17B",
+    "Danie Theronstraat 17C",
+    "Danie Theronstraat 17D",
+    "Danie Theronstraat 19"
+   ],
+   "groundUnits": [
+    {
+     "address": "Danie Theronstraat 17A",
+     "use": "woonfunctie",
+     "areaM2": 93,
+     "bagId": "0363010000997445"
+    },
+    {
+     "address": "Danie Theronstraat 17B",
+     "use": "woonfunctie",
+     "areaM2": 93,
+     "bagId": "0363010000997446"
+    },
+    {
+     "address": "Danie Theronstraat 17C",
+     "use": "woonfunctie",
+     "areaM2": 80,
+     "bagId": "0363010000997447"
+    },
+    {
+     "address": "Danie Theronstraat 17D",
+     "use": "woonfunctie",
+     "areaM2": 88,
+     "bagId": "0363010000997448"
+    },
+    {
+     "address": "Danie Theronstraat 19",
+     "use": "woonfunctie",
+     "areaM2": 96,
+     "bagId": "0363010000997449"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  }
+ ]
+}

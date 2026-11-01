@@ -1,0 +1,203 @@
+{
+ "name": "transvaalbuurt-1920-west",
+ "buurt": "transvaalbuurt-west",
+ "library": "transvaalbuurt",
+ "generatedAt": "2026-11-01T09:16:00.162Z",
+ "method": "scripts/block-face/batch.ts",
+ "totals": {
+  "faces": 6,
+  "runs": 7,
+  "installed": 3,
+  "installedPands": 9,
+  "failed": 4,
+  "byReason": {
+   "strip-quality": 4
+  }
+ },
+ "rows": [
+  {
+   "face": "reij-25-39",
+   "street": "De la Reijstraat",
+   "ride": 0,
+   "restriped": null,
+   "stripQuality": {
+    "badShare": 0,
+    "reasons": []
+   },
+   "nccMin": 0.15,
+   "nccMedian": 0.224,
+   "stripOverDrawn": 0.999,
+   "wallFits": 10,
+   "droppedCorners": [],
+   "triangles": 5420,
+   "sheet": "staging/block-face/reij-25-39-r1/review/strip-sheet.png",
+   "stripDate": "2020-04-29",
+   "run": "reij-25-39-r1",
+   "pands": 5,
+   "mode": "auto-place",
+   "status": "installed",
+   "reasons": [],
+   "seconds": 28.3
+  },
+  {
+   "face": "kraaipan-41-45",
+   "street": "Kraaipanstraat",
+   "ride": 0,
+   "restriped": null,
+   "stripQuality": {
+    "badShare": 0,
+    "reasons": []
+   },
+   "nccMin": 0.28,
+   "nccMedian": 0.28,
+   "stripOverDrawn": 1.028,
+   "wallFits": 2,
+   "droppedCorners": [],
+   "triangles": 2185,
+   "sheet": "staging/block-face/kraaipan-41-45-r1/review/strip-sheet.png",
+   "stripDate": "2017-04-06",
+   "run": "kraaipan-41-45-r1",
+   "pands": 2,
+   "mode": "auto-place",
+   "status": "installed",
+   "reasons": [],
+   "seconds": 9.1
+  },
+  {
+   "face": "transvaalkade-103-105",
+   "street": "Transvaalkade",
+   "ride": 0,
+   "restriped": null,
+   "stripQuality": {
+    "badShare": 0,
+    "reasons": []
+   },
+   "nccMin": 0.208,
+   "nccMedian": 0.261,
+   "stripOverDrawn": 1.003,
+   "wallFits": 4,
+   "droppedCorners": [],
+   "triangles": 2118,
+   "sheet": "staging/block-face/transvaalkade-103-105/review/strip-sheet.png",
+   "stripDate": "2020-04-29",
+   "run": "transvaalkade-103-105",
+   "pands": 2,
+   "mode": "auto-place",
+   "status": "installed",
+   "reasons": [],
+   "seconds": 12.2
+  },
+  {
+   "face": "kraaipan-2-38",
+   "street": "Kraaipanstraat",
+   "ride": 0,
+   "restriped": null,
+   "stripQuality": {
+    "badShare": 0.948,
+    "reasons": [
+     "cold cast rb"
+    ]
+   },
+   "nccMin": 0.164,
+   "nccMedian": 0.216,
+   "stripOverDrawn": 1.156,
+   "wallFits": 1,
+   "droppedCorners": [],
+   "triangles": 3176,
+   "sheet": "staging/block-face/kraaipan-2-38-r1/review/strip-sheet.png",
+   "stripDate": "2019-05-16",
+   "run": "kraaipan-2-38-r1",
+   "pands": 3,
+   "mode": "auto-place",
+   "status": "failed",
+   "reasons": [
+    "strip-quality: cold cast rb"
+   ],
+   "seconds": 8
+  },
+  {
+   "face": "kraaipan-2-38",
+   "street": "Kraaipanstraat",
+   "ride": 0,
+   "restriped": null,
+   "stripQuality": {
+    "badShare": 0.948,
+    "reasons": [
+     "cold cast rb"
+    ]
+   },
+   "nccMin": 0.179,
+   "nccMedian": 0.206,
+   "stripOverDrawn": 1.166,
+   "wallFits": 1,
+   "droppedCorners": [],
+   "triangles": 6391,
+   "sheet": "staging/block-face/kraaipan-2-38-r2/review/strip-sheet.png",
+   "stripDate": "2019-05-16",
+   "run": "kraaipan-2-38-r2",
+   "pands": 6,
+   "mode": "auto-place",
+   "status": "failed",
+   "reasons": [
+    "strip-quality: cold cast rb"
+   ],
+   "seconds": 10.9
+  },
+  {
+   "face": "kraaipan-17-21",
+   "street": "Kraaipanstraat",
+   "ride": 0,
+   "restriped": null,
+   "stripQuality": {
+    "badShare": 0.664,
+    "reasons": [
+     "blown"
+    ]
+   },
+   "nccMin": 0.25,
+   "nccMedian": 0.25,
+   "stripOverDrawn": 1.058,
+   "wallFits": 2,
+   "droppedCorners": [],
+   "triangles": 2129,
+   "sheet": "staging/block-face/kraaipan-17-21-r1/review/strip-sheet.png",
+   "stripDate": "2017-04-06",
+   "run": "kraaipan-17-21-r1",
+   "pands": 2,
+   "mode": "auto-place",
+   "status": "failed",
+   "reasons": [
+    "strip-quality: blown"
+   ],
+   "seconds": 5.5
+  },
+  {
+   "face": "kraaipan-31-33",
+   "street": "Kraaipanstraat",
+   "ride": 0,
+   "restriped": null,
+   "stripQuality": {
+    "badShare": 1,
+    "reasons": [
+     "blown"
+    ]
+   },
+   "nccMin": 0.298,
+   "nccMedian": 0.298,
+   "stripOverDrawn": 1.173,
+   "wallFits": 2,
+   "droppedCorners": [],
+   "triangles": 2128,
+   "sheet": "staging/block-face/kraaipan-31-33/review/strip-sheet.png",
+   "stripDate": "2017-04-06",
+   "run": "kraaipan-31-33",
+   "pands": 2,
+   "mode": "auto-place",
+   "status": "failed",
+   "reasons": [
+    "strip-quality: blown"
+   ],
+   "seconds": 4.3
+  }
+ ]
+}

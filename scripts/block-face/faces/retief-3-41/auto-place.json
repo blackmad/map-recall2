@@ -3,7 +3,7 @@
  "street": "Retiefstraat",
  "library": "transvaalbuurt",
  "stripDate": "2023-01-02",
- "seconds": 29.19,
+ "seconds": 56.54,
  "thresholds": {
   "minScore": 0.7,
   "margin": 0.05,
@@ -576,7 +576,11 @@
    },
    "challengers": {
     "transvaal-1911-five-storey-tall": 0.049,
-    "transvaal-1911-five-storey-tall~m": 0.05
+    "transvaal-1911-five-storey-tall~m": 0.05,
+    "transvaal-1911-five-storey": 0.085,
+    "transvaal-1911-five-storey~m": 0.085,
+    "transvaal-1923-portiek-tower": 0.154,
+    "transvaal-1923-portiek": 0.142
    }
   },
   {
@@ -750,7 +754,10 @@
    },
    "challengers": {
     "transvaal-1911-five-storey-tall~m": 0.023,
-    "transvaal-1911-five-storey-tall": 0.022
+    "transvaal-1911-five-storey-tall": 0.022,
+    "transvaal-1911-five-storey~m": 0.039,
+    "transvaal-1911-five-storey": 0.039,
+    "transvaal-1923-portiek-tower": 0.155
    }
   },
   {

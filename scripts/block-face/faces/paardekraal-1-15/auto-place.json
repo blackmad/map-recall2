@@ -3,7 +3,7 @@
  "street": "Paardekraalstraat",
  "library": "transvaalbuurt",
  "stripDate": "2023-01-02",
- "seconds": 6.6,
+ "seconds": 24.04,
  "thresholds": {
   "minScore": 0.7,
   "margin": 0.05,
@@ -13,7 +13,16 @@
   "widthSlackM": 0.4,
   "flatRoofRiseM": 1.5
  },
- "runs": [],
+ "runs": [
+  {
+   "face": "paardekraal-1-15-r1",
+   "pands": [
+    "0363100012073473"
+   ],
+   "passed": true,
+   "triangles": 1860
+  }
+ ],
  "pands": [
   {
    "pandId": "0363100012104565",
@@ -193,7 +202,11 @@
    },
    "challengers": {
     "transvaal-1911-five-storey-tall": 0.092,
-    "transvaal-1911-five-storey-tall~m": 0.092
+    "transvaal-1911-five-storey-tall~m": 0.092,
+    "transvaal-1911-five-storey": 0.11,
+    "transvaal-1911-five-storey~m": 0.11,
+    "transvaal-1923-portiek-tower": 0.271,
+    "transvaal-1923-portiek": 0.217
    }
   },
   {
@@ -484,11 +497,66 @@
     "voidShare": 0,
     "foliageShare": 0.04
    },
-   "status": "held",
-   "stage": "review",
-   "reason": "review: reads right (white dormer, centre balcony axis, arched door left) but its only placed neighbour, 15, is held: a one-pand run (paardekraal-1-15-r1 sheet) (round 3 review at gallery size, 2026-11-01)",
-   "likeness": null,
-   "challengers": {}
+   "status": "placed",
+   "type": "transvaal-1911-five-storey-tall",
+   "score": 0.85,
+   "runnerUp": {
+    "typeId": "transvaal-1911-five-storey",
+    "score": 0.85
+   },
+   "placement": {
+    "type": "transvaal-1911-five-storey-tall",
+    "measuredPalette": {
+     "brick": "#866d61",
+     "evidence": "strip 2023-01-02 span 1639-1881: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "crown": "none"
+   },
+   "notes": [
+    "near tie with transvaal-1911-five-storey (0.85)",
+    "door left",
+    "crown none: reviewer pin (paardekraal-1-15-r1 sheet 2023-01-02 (lone pand, #156): a flat cornice; the box over it is a later glazed roof room set back from the front, not a dormer (the kit cannot draw it))",
+    "lone pand: a stair block on its own: transvaal-1911-five-storey-tall opts in to one-house faces from 5 m (frontage 6.04 m)"
+   ],
+   "likeness": {
+    "pandId": "0363100012073473",
+    "ncc": 0.175,
+    "nccRaw": 0.175,
+    "shiftM": [
+     -0.15,
+     -0.4
+    ],
+    "usable": 0.9,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "wall dL +0.33",
+     "glazing storey band off by 0.38 mean 0.38 vs photo 0.23",
+     "wall family unresolved (#37312e is dark and neutral, brick courses not resolved): lightness and hue judged only"
+    ],
+    "wall": {
+     "photo": "#37312e",
+     "model": "#9a8073",
+     "dL": 0.329
+    },
+    "glazing": {
+     "photo": 0.23,
+     "model": 0.38
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.355
+   },
+   "challengers": {
+    "transvaal-1911-five-storey-tall": 0.175,
+    "transvaal-1911-five-storey-tall~m": 0.175,
+    "transvaal-1911-five-storey": 0.104,
+    "transvaal-1911-five-storey~m": 0.104,
+    "transvaal-1923-portiek-tower": 0.301,
+    "transvaal-1923-portiek": 0.396
+   }
   },
   {
    "pandId": "0363100012063275",

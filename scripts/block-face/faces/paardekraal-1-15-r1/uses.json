@@ -1,0 +1,25 @@
+{
+ "street": "Paardekraalstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-31T14:47:49.441Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012073473",
+   "addresses": [
+    "Paardekraalstraat 13"
+   ],
+   "groundUnits": [
+    {
+     "address": "Paardekraalstraat 13-H",
+     "use": "woonfunctie",
+     "areaM2": 58,
+     "bagId": "0363010000770278"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  }
+ ]
+}

@@ -16,7 +16,7 @@ import fs from 'node:fs/promises';
 import {existsSync, readFileSync} from 'node:fs';
 import path from 'node:path';
 import sharp from 'sharp';
-import {AUTO_PLACE, FRONT_EAVES, frontEavesFor, decidePand, ribbonRowHolds, fillPairs, medianGain, rowCoherence, rowExposure, trimGains, placementGate, scoreType, placedRuns, runIntent, type Decision, type Held, type MatchableType, type PandEvidence, type Placed} from '../../src/canalRecall/blockFace/autoPlace.ts';
+import {AUTO_PLACE, FRONT_EAVES, frontEavesFor, decidePand, ribbonRowHolds, fillPairs, medianGain, rowCoherence, rowExposure, trimGains, placementGate, scoreType, placedRuns, lonePandReason, runIntent, type Decision, type Held, type MatchableType, type PandEvidence, type Placed} from '../../src/canalRecall/blockFace/autoPlace.ts';
 import {classifyPixel, measureStripPalette} from '../../src/canalRecall/blockFace/stripPalette.ts';
 import {measureSkyline} from '../../src/canalRecall/blockFace/stripSkyline.ts';
 import {measureSkyBound} from '../../src/canalRecall/blockFace/stripSkyBound.ts';
@@ -30,7 +30,7 @@ import type {BuildingFacts} from '../../src/canalRecall/buildingRecipe/facts.ts'
 import {loadMaterialSoup} from '../landmarks/material-soup.ts';
 import {renderModels, closeRenderer} from '../building-recipes/render.ts';
 import {STRIP_LIKENESS, spanLikeness} from '../../src/canalRecall/blockFace/stripLikeness.ts';
-import {applyCrownPins, applyMirrorPins, crownPinProblems, mirrorPinProblems, typePinProblems, typesForFace, typesForPand, type CrownPin, type MirrorPin, type TypePin} from '../../src/canalRecall/blockFace/reviewCrowns.ts';
+import {applyCrownPins, applyMirrorPins, crownPinProblems, holdBrokenPairs, mirrorPinProblems, typePinProblems, typesForFace, typesForPand, type CrownPin, type MirrorPin, type TypePin} from '../../src/canalRecall/blockFace/reviewCrowns.ts';
 import {applyDoorPins, doorPinProblems, type DoorPin} from '../../src/canalRecall/blockFace/reviewDoors.ts';
 import {acceptFloorFor, acceptPinProblems, applyPalettePins, palettePinProblems, type AcceptPin, type PalettePin} from '../../src/canalRecall/blockFace/reviewPalettes.ts';
 import {frontBump} from '../../src/canalRecall/blockFace/bayOutline.ts';
@@ -353,8 +353,11 @@ if (process.argv[1]?.endsWith('block-face/auto-place.ts')) {
     const challengers = new Map<string, Record<string, number | null>>(), switched = new Set<string>();
     const likeness = new Map<string, PandLikeness>(), compiled = new Map<string, {passed: boolean; triangles: number}>();
     let runFaces: {id: string; ids: string[]}[] = [];
+    // A run of one stands as a one-house face when its type opts in (match.lonePand: stair blocks of 5 m or more).
+    const lone = (p: Placed) => lonePandReason(types.find(t => t.id === p.typeId), evs.find(e => e.pandId === p.pandId)?.widthM);
     for (let pass = 0; pass < 3; pass++) {
-      const {runs, orphans} = placedRuns(decisions);
+      for (const id of holdBrokenPairs(decisions)) console.log(`${f.id}: ${id.slice(-6)} held, its pair crown's other half is not placed`);
+      const {runs, orphans} = placedRuns(decisions, lone);
       for (const o of orphans) { const k = decisions.findIndex(d => d.pandId === o.pandId); decisions[k] = {kind: 'held', ...o}; }
       runFaces = runs.map((run, k) => ({id: runs.length === 1 && run.length === discovery.members.length ? f.id : `${f.id}-r${k + 1}`, ids: run.map(p => p.pandId)}));
       for (const [k, rf] of runFaces.entries()) {
@@ -410,7 +413,7 @@ if (process.argv[1]?.endsWith('block-face/auto-place.ts')) {
         if (!cd.some((d, k) => d.kind === 'placed' && decisions[k].kind === 'placed' && ((decisions[k] as Placed).typeId !== ct.id || flip))) continue;
         fillPairs(cd, [loose]);
         if (flip) for (const d of cd) if (d.kind === 'placed' && d.typeId === ct.id) { if (d.house.type!.mirror) delete d.house.type!.mirror; else d.house.type!.mirror = true; }
-        const {runs} = placedRuns(cd);
+        const {runs} = placedRuns(cd, lone);
         for (const [k, run] of runs.entries()) {
           const id = `${f.id}-x${ci + 1}${flip ? 'm' : ''}${k + 1}`;
           await writeRunFace(f.id, id, run.map(p => p.pandId), strip, uses, discovery);

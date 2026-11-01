@@ -34194,7 +34194,7 @@
       "sourceUrl": "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012169550",
       "licence": "CC BY 4.0",
       "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
-      "modifications": "Original texture-free flat-colour geometry: 3DBAG LoD2.2 walls and roofs (CC BY 4.0) with block-kit facade systems cut into the wall groups, plus hand-modelled window hoods, entrance canopy and signage plate read from Gemeente Amsterdam panoramas (CC BY 4.0). No pixels or meshes imported."
+      "modifications": "Original texture-free flat-colour geometry: 3DBAG LoD2.2 walls and roofs (CC BY 4.0) with block-kit facade systems cut into the wall groups, plus individually modelled window hoods, entrance canopy and signage plate read from Gemeente Amsterdam panoramas (CC BY 4.0). No pixels or meshes imported."
     },
     "buildingFootprint": {
       "type": "Polygon",
@@ -35899,7 +35899,7 @@
       "sourceUrl": "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012167925",
       "licence": "CC BY 4.0",
       "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
-      "modifications": "Original texture-free flat-colour geometry: 3DBAG LoD2.2 walls and roofs (CC BY 4.0) with block-kit facade systems cut into the wall groups, plus hand-modelled plinth, string course, keystone consoles, entrance stair, pediment and tympanum relief read from Gemeente Amsterdam panoramas (CC BY 4.0) and Commons photographs RCE 20014425 (G.Th. Delemarre, CC BY-SA 4.0), 20408833 (Sergé Technau, CC BY-SA 4.0) and UvAMaagdenhuis.jpg (Mtcv, CC BY-SA 3.0). No pixels or meshes imported."
+      "modifications": "Original texture-free flat-colour geometry: 3DBAG LoD2.2 walls and roofs (CC BY 4.0) with block-kit facade systems cut into the wall groups, plus individually modelled plinth, string course, keystone consoles, entrance stair, pediment and tympanum relief read from Gemeente Amsterdam panoramas (CC BY 4.0) and Commons photographs RCE 20014425 (G.Th. Delemarre, CC BY-SA 4.0), 20408833 (Sergé Technau, CC BY-SA 4.0) and UvAMaagdenhuis.jpg (Mtcv, CC BY-SA 3.0). No pixels or meshes imported."
     },
     "bagYear": 1787,
     "buildingFootprint": {
@@ -37557,7 +37557,7 @@
       "sourceUrl": "https://nl.wikipedia.org/wiki/Wereldmuseum_Amsterdam",
       "licence": "CC BY 4.0",
       "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
-      "modifications": "Original texture-free flat-colour geometry: 3DBAG LoD2.2 walls and roofs (CC BY 4.0) with block-kit facade systems cut into the wall groups, plus hand-modelled portal, gables, relief panels, sculpture, tower finials and ironwork read from Gemeente Amsterdam panoramas (CC BY 4.0) and the Rijksmonument 526987 register text. No pixels or third-party meshes imported."
+      "modifications": "Original texture-free flat-colour geometry: 3DBAG LoD2.2 walls and roofs (CC BY 4.0) with block-kit facade systems cut into the wall groups, plus individually modelled portal, gables, relief panels, sculpture, tower finials and ironwork read from Gemeente Amsterdam panoramas (CC BY 4.0) and the Rijksmonument 526987 register text. No pixels or third-party meshes imported."
     },
     "buildingFootprint": {
       "type": "Polygon",
@@ -40652,7 +40652,7 @@
       "sourceUrl": "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012107349",
       "licence": "CC BY 4.0",
       "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
-      "modifications": "Original texture-free flat-colour geometry: 3DBAG LoD2.2 walls and roofs (CC BY 4.0) of the north wall block with block-kit facade systems (the square front with the kit ground arcade), plus the hand-modelled tower (clock dials, balconies, paired windows), the gatehouse over the Mercatorstraat underpass, erkers and hoist beams, measured from Gemeente Amsterdam panoramas (CC BY 4.0) and Wikimedia Commons photos (Ceescamel, CC BY-SA 4.0; Pbech, public domain) read on a metre grid. No pixels or meshes imported."
+      "modifications": "Original texture-free flat-colour geometry: 3DBAG LoD2.2 walls and roofs (CC BY 4.0) of the north wall block with block-kit facade systems (the square front with the kit ground arcade), plus the individually modelled tower (clock dials, balconies, paired windows), the gatehouse over the Mercatorstraat underpass, erkers and hoist beams, measured from Gemeente Amsterdam panoramas (CC BY 4.0) and Wikimedia Commons photos (Ceescamel, CC BY-SA 4.0; Pbech, public domain) read on a metre grid. No pixels or meshes imported."
     },
     "buildingFootprint": {
       "type": "Polygon",
@@ -40853,7 +40853,7 @@
       "sourceUrl": "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012073289",
       "licence": "CC BY 4.0",
       "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
-      "modifications": "Original texture-free flat-colour geometry: the hand-modelled tower, rear shaft with its balconies and the gatehouse over the Van Spilbergenstraat underpass, measured from Gemeente Amsterdam panoramas (CC BY 4.0) and Wikimedia Commons photos (Ceescamel, CC BY-SA 4.0) read on a metre grid, plus the 3DBAG LoD2.2 east bay (CC BY 4.0) with block-kit facades. No pixels or meshes imported."
+      "modifications": "Original texture-free flat-colour geometry: the individually modelled tower, rear shaft with its balconies and the gatehouse over the Van Spilbergenstraat underpass, measured from Gemeente Amsterdam panoramas (CC BY 4.0) and Wikimedia Commons photos (Ceescamel, CC BY-SA 4.0) read on a metre grid, plus the 3DBAG LoD2.2 east bay (CC BY 4.0) with block-kit facades. No pixels or meshes imported."
     },
     "buildingFootprint": {
       "type": "Polygon",
@@ -42211,7 +42211,7 @@
       "sourceUrl": "https://monumentenregister.cultureelerfgoed.nl/monumenten/518447",
       "licence": "CC BY 4.0",
       "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
-      "modifications": "Original texture-free flat-colour geometry: hand-modelled street fronts, round corner, drum and dome from the RCE register description (CC0) and rectified Gemeente Amsterdam panoramas (CC BY 4.0, read for proportion only); the rear is the 3DBAG LoD2.2 shell (CC BY 4.0) on the BAG footprint (CC0). No pixels or meshes imported."
+      "modifications": "Original texture-free flat-colour geometry: individually modelled street fronts, round corner, drum and dome from the RCE register description (CC0) and rectified Gemeente Amsterdam panoramas (CC BY 4.0, read for proportion only); the rear is the 3DBAG LoD2.2 shell (CC BY 4.0) on the BAG footprint (CC0). No pixels or meshes imported."
     },
     "buildingFootprint": {
       "type": "Polygon",
@@ -42741,7 +42741,7 @@
       "sourceUrl": "https://nl.wikipedia.org/wiki/Kalverpassage",
       "licence": "CC BY 4.0",
       "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
-      "modifications": "Original texture-free flat-colour geometry: hand-modelled Singel, Kalverstraat and Heiligeweg fronts, roof colonnade, glazed attic and glass tower from rectified Gemeente Amsterdam panoramas (CC BY 4.0, read for proportion only) and Wikipedia nl:Kalverpassage (CC BY-SA 4.0); the courtyard and rear are the 3DBAG LoD2.2 shell (CC BY 4.0) on the BAG footprint (CC0). No pixels or meshes imported."
+      "modifications": "Original texture-free flat-colour geometry: individually modelled Singel, Kalverstraat and Heiligeweg fronts, roof colonnade, glazed attic and glass tower from rectified Gemeente Amsterdam panoramas (CC BY 4.0, read for proportion only) and Wikipedia nl:Kalverpassage (CC BY-SA 4.0); the courtyard and rear are the 3DBAG LoD2.2 shell (CC BY 4.0) on the BAG footprint (CC0). No pixels or meshes imported."
     },
     "buildingFootprint": {
       "type": "Polygon",

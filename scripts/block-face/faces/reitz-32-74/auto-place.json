@@ -3,7 +3,7 @@
  "street": "Reitzstraat",
  "library": "transvaalbuurt",
  "stripDate": "2020-04-29",
- "seconds": 1.17,
+ "seconds": 8.56,
  "thresholds": {
   "minScore": 0.7,
   "margin": 0.05,
@@ -228,10 +228,45 @@
     "foliageShare": 0.28
    },
    "status": "held",
-   "stage": "run",
-   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
-   "likeness": null,
-   "challengers": {}
+   "stage": "likeness",
+   "reason": "edge NCC 0.053 < 0.15 (photo vs model body; likeness.ts WARN: mask IoU 0.338 < 0.45)",
+   "likeness": {
+    "pandId": "0363100012233492",
+    "ncc": 0.053,
+    "nccRaw": 0.053,
+    "shiftM": [
+     0,
+     0.05
+    ],
+    "usable": 0.57,
+    "abstain": null,
+    "verdict": "WARN",
+    "reasons": [
+     "mask IoU 0.338 < 0.45"
+    ],
+    "wall": {
+     "photo": "#6e5c51",
+     "model": "#867063",
+     "dL": 0.082
+    },
+    "glazing": {
+     "photo": 0.45,
+     "model": 0.38
+    },
+    "columns": {
+     "photo": null,
+     "model": 3
+    },
+    "iou": 0.338
+   },
+   "challengers": {
+    "transvaal-1911-five-storey-tall": 0.053,
+    "transvaal-1911-five-storey-tall~m": 0.053,
+    "transvaal-1911-five-storey": 0.069,
+    "transvaal-1911-five-storey~m": 0.069,
+    "transvaal-1923-portiek-tower": 0.088,
+    "transvaal-1923-portiek": 0.124
+   }
   }
  ]
 }
