@@ -1374,6 +1374,13 @@ Root `main` was cleaned on 2026-10-09 (see HISTORY). Live work, in order:
   Both engines also render every idle frame (fan): render-on-change WIP on
   L1's branch (idle renders/5 s 755 → 0, CPU ~250 % → ~20 %, pixel-identical
   frames; spec not green yet, stays out of main until it is).
+- **Heap gates after the ride-start cuts** (HISTORY "Heap at ride start under
+  `?engine=own&world=v1&roads=bin`"): desktop 493 MB meets ≤ 500; iPhone 359
+  MB against ≤ 160 is the open gap. Next owners: landmark GLB CPU arrays after
+  upload (25–42 MB), then the live data on a phone (ground store 90 MB, road
+  graph 39 MB, streetFronts 25 MB: smaller ring, lazy far-city CSR, fronts per
+  cell), owners table first on #130 (road lane). `engine-own.spec`'s `heapMB`
+  is noise without a GC; `scripts/heap-ride.mjs` is the measure.
 - **Weak-GPU low tier cannot meet p95 ≤ 33 ms on SwiftShader** (HISTORY
   "Weak-GPU low tier"): its steady frame is ≈ 290 ms, triangle-bound, and no
   single layer removal gets under 195 ms. Gate stays red as written; deciding

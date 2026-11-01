@@ -1,5 +1,22 @@
 # Canal Recall — what is built
 
+**Heap at ride start under `?engine=own&world=v1&roads=bin`: desktop 562–581 → 493 MB, the P3 gate (≤ 500 MB) met; iPhone 384 → 359 MB (2026-11-01, #130).**
+Measured with forced GC by `scripts/heap-ride.mjs` (the `engine-own.spec`
+`heapMB` reads without a GC and swings 443–1,341 MB between identical runs, so
+it cannot judge the gate). Cuts (road lane), all CPU copies never read after
+upload: the own ground releases its arrays on desktop too (≈ 40 MB, the rest
+as meshes first draw); the overview drops its CPU arrays via three's
+`onUpload` (34 MB) and rebuilds from its data on context restore; cycle,
+transit and neighbourhood lines (`overlays/flatLines.ts`, 7 MB) rebuild from
+the last `set()` on restore. Left as live data: ground store 90 MB, road graph
+39 MB, streetFronts 25 MB, facts. ArrayBuffer data in the snapshot 293 → 213
+MB; 60 s in 587–613 → 506–522 MB, the growth being landmark GLB arrays (+17
+MB, next cut). A context-loss probe caught that overview casings share their
+fill's geometry and were not rebuilt (three threw on null arrays); fixed in
+the same commit, re-run 0 stale attributes and 0 page errors. Merged over the
+materials lane's overview spans (both add helpers at the same spot in
+`overviewLayer.ts`; kept both).
+
 **Weak-GPU low tier: coarse ground on low, overview drawn over its on-screen spans on every tier; SwiftShader is triangle-bound (2026-11-01, #129).**
 The materials lane measured what SwiftShader is bound by with synchronous
 frames (redraw + 1 px readPixels, low tier, DPR 1.5, layers toggled in one

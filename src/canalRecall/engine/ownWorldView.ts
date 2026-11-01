@@ -345,7 +345,9 @@ export class OwnWorldView {
         });
       }
       const api = W().CanalRecallOwnGround;
-      const budget: Record<string, unknown> = { releaseArrays: coarse() && W().__canalRecallKeepGroundArrays !== true };
+      // Every device frees the ground's CPU arrays once uploaded (81 MB on the desktop ride start, heap gate #130);
+      // a lost context rebuilds the resident cells from the worker. Phones also draw through the tiles only.
+      const budget: Record<string, unknown> = { releaseArrays: W().__canalRecallKeepGroundArrays !== true, tilesOnly: coarse() };
       if (coarse()) budget.radiusM = 400;
       this._ownGround = new api.OwnGround(three.THREE, this._sharedFrame, {
         repaint: () => this.host.triggerRepaint(),
