@@ -29,10 +29,16 @@ test('standing still draws nothing, the still frame equals a redraw, and riding 
     return { renders, simulated: host.stats.idleFrames - a.idleFrames > 0, ...(renders ? { callers } : {}) };
   }), { timeout: 90_000, intervals: [0] }).toEqual({ renders: 0, simulated: true });
 
+  // Only the engine's canvas: the HUD over it (the suburb card's fade, the minimap) changes on its own clock. Hidden by
+  // visibility, which does not touch layout, so the canvas is neither resized nor redrawn by hiding it.
   const canvas = page.locator('canvas.engine-canvas');
-  const still = await canvas.screenshot();
+  const hud = await page.addStyleTag({ content: 'body * { visibility: hidden !important; } canvas.engine-canvas { visibility: visible !important; }' });
+  const framesBefore = await page.evaluate(() => (window as any).canalRecallGame.vectorMap.host.stats.frames);
+  const still = await canvas.screenshot({ animations: 'disabled' });
+  expect(await page.evaluate(() => (window as any).canalRecallGame.vectorMap.host.stats.frames), 'capturing draws nothing').toBe(framesBefore);
   await page.evaluate(() => (window as any).canalRecallGame.vectorMap.host.redraw());
-  expect(Buffer.compare(still, await canvas.screenshot()), 'the still frame is the frame a redraw makes').toBe(0);
+  expect(Buffer.compare(still, await canvas.screenshot({ animations: 'disabled' })), 'the still frame is the frame a redraw makes').toBe(0);
+  await hud.evaluate(el => el.remove());
 
   const before = await page.evaluate(() => (window as any).canalRecallGame.vectorMap.host.stats.frames);
   await page.keyboard.down('ArrowUp');
