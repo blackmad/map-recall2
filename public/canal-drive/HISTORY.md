@@ -1,5 +1,38 @@
 # Canal Recall — what is built
 
+**Facades package: exact speedups in the chunk pipeline, chunks built while the atlas paints, facade context-loss pinned, resident tiles in key order (2026-11-01, #129).**
+Materials lane (df2fc4959). (1) Exact, each proven equal to the old code on
+real data plus randomised inputs: `splitIntoTiles`/`planTiles` single pass
+(the overview cut 58.7 → 25 ms at 1×; main's `af8c3b26a` version kept, it
+also handles NaN centroids), `BuildingContextIndex` ≈ 2×, `SegmentGrid.near`
+≈ 2.7×, `poiNameSpoils` cached per index and label. Headed 4× Jordaan: frames
+over 50 ms 4 → 1 per minute, longest 100 → 59 ms; load maxima `setFeatures`
+167 → 90, `neighbors` 142 → 63, `streetsFor` 174 → 79, `cutSpans` 264 → 159
+ms. (2) The settle hold under `?engine=own` built nothing: the facade pump
+waited for the atlas, painted on the main thread in 6 ms slices and bound
+only after racing. Workers now build chunks while the atlas paints and the
+chunks install once it is bound: settle 850–1160 → 661–716 ms, racing after
+submit 2055–2459 → 1885–1967 ms (6 runs each). The ≤ 0.3 s target is not
+met; the atlas paint is the gate (next: a pre-painted atlas as a versioned
+extract). Known risk: a chase-first submit hit the 2.8 s hold timeout with
+the atlas unbound, so racing could start without facades; the hold must wait
+on the bind (materials, next). (3) Facade CPU arrays after a 60 s ride: 2.1
+MB, all `hidden` flags rewritten on answer/highlight/dim (kept); the 13.7 MB
+in heap-ride is chunks installed but not yet drawn, freed on first upload;
+nothing held is never read. `tests/e2e/facade-context-loss.spec.ts` rides
+60 s then loses the context: 2,599 attributes, 0 stale, 18 chunks redrawn,
+0 errors. (4) Resident tiles concatenate in key order instead of arrival
+order (f184fbb34; arrival order set build order, draw order and party-wall
+context): world-v1-ab AB_NOISE at 5 fixed-camera spots, default vs default2,
+> 30 px whole frame 3,941 → 1,442, > 8 px bike-masked 17,430 → 10,033; what
+remains is the player bike's wheel/pose animation (the harness must freeze
+it) and low-amplitude edge speckle (shadow frustum following the rider,
+mesh-id ties). `?world=v1` default stays held on that number. (5)
+`compileAsync` isReady throw fixed: `SharedFrame` polls the programs itself
+and stops at the timeout. Cafe Kompleet: the ridge-within-25 m A/B was
+identical at 4 poses, a geometry miss, reverted. Integrator: world-v1
+recompiled (BuildingContextIndex is in the code hash; cells unchanged) and
+the Transvaalbuurt round 3 installs picked up in the same compile.
 **Landmark request walk gated; `withOpenings` in tasks; the worker-pool overview build held (2026-11-01, #129).**
 L1 hand-back (14). (1) The signature-landmarks request walk (`_requestModels`,
 1124 ms/min of stall at 4×) is skipped only while nothing can have changed
