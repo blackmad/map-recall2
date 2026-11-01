@@ -59101,6 +59101,7 @@
         "sandstone": "#7a7974",
         "slate": "#4f5459",
         "glass": "#56676a",
+        "canopyGlass": "#637376",
         "frame": "#4a2f2c",
         "red": "#7a1e22",
         "dark": "#2f3133"
@@ -59313,14 +59314,14 @@
         "depthMetres": 73.12425231933594,
         "depthCoverage": 0.9815335881790058
       },
-      "triangles": 32532,
-      "bytes": 470356,
+      "triangles": 32580,
+      "bytes": 471816,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "lod1": {
-        "sourceHash": "1d5951e9bfd955c5",
+        "sourceHash": "0aeb60175612bc0d",
         "buildVersion": 2,
-        "bytes": 103148,
-        "triangles": 5139
+        "bytes": 104588,
+        "triangles": 5163
       }
     },
     "havengebouw": {

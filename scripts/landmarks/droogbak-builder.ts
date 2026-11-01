@@ -3,7 +3,7 @@
  * Rijksmonument 518416). Every part below comes from the rectified Gemeente Amsterdam panoramas (CC BY 4.0) listed in
  * scripts/landmarks/droogbak-inventory.json and scripts/landmarks/droogbak-brief.md; nothing is described from memory.
  *
- *  - A near-square block (four ~50 m fronts) round an open courtyard: BAG outline and the 3DBAG courtyard walls
+ *  - A near-square block (four ~50 m fronts) round a courtyard under a glass roof: BAG outline and the 3DBAG courtyard walls
  *    (scripts/landmarks/droogbak-prepare.ts, 3DBAG CC BY 4.0, BAG CC0).
  *  - Grey rusticated granite basement (0-2.3 m) with barred windows and red basement doors; above it three storeys of
  *    red brick banded with cream natural-stone courses: round-arched bel-etage windows, first-floor windows under
@@ -356,6 +356,8 @@ export function buildDroogbak(_w: number, _d: number, tools: BuildingTools) {
   for (let i = 0; i < 4; i++) { const j = (i + 1) % 4; quadUp([base[i][0], Y.corona[1], base[i][1]], [base[j][0], Y.corona[1], base[j][1]], [topQ[j][0], Y.top, topQ[j][1]], [topQ[i][0], Y.top, topQ[i][1]], 'slate'); }
   const lid = shapeOf(topQ); lid.holes.push(new T.Path(yard.map(p => new T.Vector2(p[0], p[1]))));
   b.add(upwardRoofPlane(lid, Y.top), 'slate');
+  // glass roof over the courtyard: 3DBAG roof part at 22.5-23.0 m over 392 of its 412 m2; PDOK 2024 orthophoto shows a glazed grid (#637376)
+  b.add(upwardRoofPlane(shapeOf(yard), Y.top - 0.05), 'canopyGlass');
   // NE centre pedestals (BAG edges 11 and 15, 0.88 m proud) with cream pilasters above
   const ne = ringFrame(upper, upperIdx.indexOf(9));
   for (const t of [5.53, 8.5]) { sl(ne.f, t, 0, 1.38, Y.belt[1], 0.88, 'sandstone'); sl(ne.f, t, Y.belt[1], 1.0, Y.s1[0] - Y.belt[1], 0.5, 'stone'); }
