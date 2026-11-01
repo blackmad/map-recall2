@@ -43123,5 +43123,49 @@
         ]
       ]
     }
+  },
+  {
+    "id": "lensbomen",
+    "name": "3 bomen, 6 lenzen (Lens Trees)",
+    "assetKind": "memorial",
+    "landmarkId": "osm_artwork_4360169260",
+    "modelUrl": "./models/lensbomen.glb",
+    "suppressOsmIds": [],
+    "spatialSuppression": false,
+    "footprint": {
+      "centre": [
+        4.8944996,
+        52.3686556
+      ],
+      "headingDegrees": 0,
+      "lengthMetres": 7.0,
+      "widthMetres": 6.0
+    },
+    "surveyed": {
+      "anchor": [
+        4.8944996,
+        52.3686556
+      ],
+      "northOffsetDegrees": 0,
+      "source": "Centroid of the three trunk bases triangulated from bearings in Gemeente Amsterdam panoramas TMX7316010203-000717_pano_0000_000526 (2018-05-14) and TMX7316010203-000224_pano_0000_000767 (2017-03-27), CC BY 4.0; 2.8 m south-east of OSM node 4360169260 (52.3686724, 4.8944688), which stays the POI. Heights scaled to the artist's 700 cm (Commons 'The lens trees.jpg'). See lensbomen-footprints.json."
+    },
+    "groundAltitudeMetres": 0,
+    "facingOffsetDegrees": 0,
+    "materialOverrides": {
+      "bronze": "#2d2b27",
+      "glass": "#d8d4c2",
+      "frame": "#8e908b"
+    },
+    "materialOpacity": {
+      "glass": 0.55
+    },
+    "attribution": {
+      "title": "3 bomen, 6 lenzen (Thom Puckey, 1989)",
+      "author": "Map Recall; sculpture by Thom Puckey (1989)",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:The_lens_trees.jpg",
+      "licence": "CC BY 4.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+      "modifications": "Original low-poly reconstruction: three tapered bronze trunks forking into horn-like branches (tapered Bezier tubes) carrying six translucent lenses in steel rims; arrangement and proportions read from Gemeente Amsterdam panoramas (CC BY 4.0) and Wikimedia Commons photographs by Ceescamel (CC BY-SA 4.0), Michal Klajban (CC BY-SA 3.0) and Thom Puckey (CC BY-SA 4.0), for proportion only. No photo pixels or imported meshes."
+    }
   }
 ]
