@@ -1066,6 +1066,40 @@ const fsStore = () => new GroundStore(async path => {
   return new Uint8Array(bytes[0] === 0x1f && bytes[1] === 0x8b ? gunzipSync(bytes) : bytes);
 });
 
+// The main thread's store is prepareOnly (gameGround.ts): it keeps OSM ways without the areas and road surfaces without
+// kerbs and cover ways, because it only prepares cells. Preparing must come out the same as with the full extracts: the
+// heights the rider and the buildings read, the decks, the way decks and the tunnel cuts. Places: a way deck on roads-v1
+// (De Clercqstraat), tunnel portals, a canal-belt bridge cell.
+test('GroundStore prepareOnly: prepared heights, decks and cuts match the full store; building refuses', { skip: !haveCells }, async () => {
+  const read = async (path: string) => { const bytes = readFileSync(`public/data/extracts/amsterdam/${path}`); return new Uint8Array(bytes[0] === 0x1f && bytes[1] === 0x8b ? gunzipSync(bytes) : bytes); };
+  const full = new GroundStore(read, { roads: true }), slim = new GroundStore(read, { roads: true, prepareOnly: true });
+  await full.init(); await slim.init();
+  const places: [number, number][] = [[DE_CLERCQSTRAAT.at[0], DE_CLERCQSTRAAT.at[1]], [4.91165, 52.37250], [4.94032, 52.35678], [4.8835, 52.3700]];
+  let samples = 0;
+  for (const [lng, lat] of places) {
+    const [x, y] = storeToLocal(lng, lat), key = full.cellAt(x, y);
+    await full.prepareCell(key); await slim.prepareCell(key);
+    const [x0, y0, x1, y1] = full.cellRect(key);
+    for (let py = y0; py <= y1; py += 3) for (let px = x0; px <= x1; px += 3) {
+      const a = full.surface.height(px, py), b = slim.surface.height(px, py);
+      assert.ok(Object.is(a, b), `${key} height at ${px.toFixed(1)},${py.toFixed(1)}: ${a} vs ${b}`);
+      const ga = full.surface.ground(px, py), gb = slim.surface.ground(px, py);
+      assert.ok(Object.is(ga, gb), `${key} ground at ${px.toFixed(1)},${py.toFixed(1)}: ${ga} vs ${gb}`);
+      samples++;
+    }
+  }
+  const internals = (s: GroundStore) => {
+    const o = s as unknown as { decksByCell: Map<string, unknown[]>; wayDeckIds: Set<number>; cutPlans: Map<string, unknown>; cutScanned: Set<number>; wayOpeningSides: Map<number, unknown> };
+    return { decks: [...o.decksByCell].map(([k, v]) => `${k}:${v.length}`).sort(), wayDecks: [...o.wayDeckIds].sort((a, b) => a - b), plans: [...o.cutPlans.keys()].sort(), scanned: [...o.cutScanned].sort((a, b) => a - b), openings: [...o.wayOpeningSides.keys()].sort((a, b) => a - b) };
+  };
+  assert.deepEqual(internals(slim), internals(full));
+  assert.ok(internals(full).wayDecks.length > 0 && internals(full).scanned.length > 0, 'the places exercise way decks and tunnel cuts');
+  assert.ok(samples > 50_000, `${samples} samples`);
+  const key = full.cellAt(...storeToLocal(4.8835, 52.3700));
+  await assert.rejects(slim.cellInput(key, 0), /prepareOnly/);
+  await assert.rejects(slim.farInput('0_0'), /prepareOnly/);
+});
+
 // GroundStore.init loads once (2026-10-16): a second load replaced the surface and dropped the decks earlier cells had
 // registered, so check:own-ground-cells' -1_-1 pin read 58 deck road polygons over no deck instead of 13.
 test('GroundStore.init: a second call reuses the first load (the surface and its decks stay)', { skip: !haveCells }, async () => {
