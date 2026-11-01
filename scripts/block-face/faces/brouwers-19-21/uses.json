@@ -1,0 +1,62 @@
+{
+ "street": "Jan Willem Brouwersstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-01T15:43:36.542Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012125480",
+   "addresses": [
+    "Jan Willem Brouwersstraat 19"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jan Willem Brouwersstraat 19-H",
+     "use": "woonfunctie",
+     "areaM2": 156,
+     "bagId": "0363010000688373"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012145883",
+   "addresses": [
+    "Jan Willem Brouwersstraat 21"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jan Willem Brouwersstraat 21-H",
+     "use": "gezondheidszorgfunctie,woonfunctie",
+     "areaM2": 58,
+     "bagId": "0363010000688378"
+    }
+   ],
+   "units": 2,
+   "osm": [
+    {
+     "type": "node",
+     "id": 9819780777,
+     "lngLat": [
+      4.8775877,
+      52.3559859
+     ],
+     "tags": {
+      "amenity": "doctors",
+      "healthcare": "doctor",
+      "healthcare:speciality": "otolaryngology",
+      "name": "Kliniek Oud Zuid",
+      "opening_hours": "Mo-Fr 09:00-17:00",
+      "phone": "+31 20 675 3933",
+      "website": "https://kliniekoudzuid.nl/"
+     },
+     "fetchedAt": "2026-11-01T15:43:36.542Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}

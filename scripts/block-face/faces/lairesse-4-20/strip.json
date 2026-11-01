@@ -1,0 +1,262 @@
+{
+ "face": "lairesse-4-20",
+ "image": "staging/block-face/lairesse-4-20/strip.jpg",
+ "pixelsPerMetre": 40,
+ "width": 3513,
+ "height": 1003,
+ "groundNAP": 0.44,
+ "heightM": 25.07,
+ "frame": {
+  "midRD": [
+   120232.62354166666,
+   485365.9013333333
+  ],
+  "uRD": [
+   0.9263736437475119,
+   0.3766057250891945
+  ],
+  "nRD": [
+   0.3766057250891945,
+   -0.9263736437475119
+  ]
+ },
+ "x0M": -32.21,
+ "x1M": 55.61,
+ "date": "2024-11-12",
+ "coverage": 1,
+ "spans": [
+  {
+   "pandId": "0363100012122938",
+   "x0M": -32.21,
+   "x1M": -23.74,
+   "px": [
+    0,
+    339
+   ],
+   "date": "2024-11-12",
+   "fallbackDate": false,
+   "panoramas": [
+    {
+     "panoId": "b_20241112_0936_Track07_Sphere_00039",
+     "timestamp": "2024-11-12T09:29:40Z",
+     "distanceM": 11.7,
+     "obliquityDeg": 15.6,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "b_20241112_0936_Track07_Sphere_00040",
+     "timestamp": "2024-11-12T09:29:42Z",
+     "distanceM": 11.8,
+     "obliquityDeg": 18.6,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "b_20241112_0936_Track07_Sphere_00038",
+     "timestamp": "2024-11-12T09:29:39Z",
+     "distanceM": 14.3,
+     "obliquityDeg": 37.7,
+     "missingFraction": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012145619",
+   "x0M": -22.4,
+   "x1M": -12.11,
+   "px": [
+    392,
+    804
+   ],
+   "date": "2024-11-12",
+   "fallbackDate": false,
+   "panoramas": [
+    {
+     "panoId": "b_20241112_0936_Track07_Sphere_00038",
+     "timestamp": "2024-11-12T09:29:39Z",
+     "distanceM": 11.3,
+     "obliquityDeg": 10.4,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "b_20241112_0936_Track07_Sphere_00037",
+     "timestamp": "2024-11-12T09:29:38Z",
+     "distanceM": 11.6,
+     "obliquityDeg": 16.4,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "b_20241112_0936_Track07_Sphere_00039",
+     "timestamp": "2024-11-12T09:29:40Z",
+     "distanceM": 13.4,
+     "obliquityDeg": 34.6,
+     "missingFraction": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012090956",
+   "x0M": -12.11,
+   "x1M": -1.99,
+   "px": [
+    804,
+    1209
+   ],
+   "date": "2024-11-12",
+   "fallbackDate": false,
+   "panoramas": [
+    {
+     "panoId": "b_20241112_0936_Track07_Sphere_00036",
+     "timestamp": "2024-11-12T09:29:37Z",
+     "distanceM": 11.3,
+     "obliquityDeg": 8.6,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "b_20241112_0936_Track07_Sphere_00035",
+     "timestamp": "2024-11-12T09:29:37Z",
+     "distanceM": 11.7,
+     "obliquityDeg": 17,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "b_20241112_0936_Track07_Sphere_00037",
+     "timestamp": "2024-11-12T09:29:38Z",
+     "distanceM": 13.1,
+     "obliquityDeg": 32,
+     "missingFraction": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012146221",
+   "x0M": -1.99,
+   "x1M": 7.88,
+   "px": [
+    1209,
+    1604
+   ],
+   "date": "2024-11-12",
+   "fallbackDate": false,
+   "panoramas": [
+    {
+     "panoId": "b_20241112_0936_Track07_Sphere_00034",
+     "timestamp": "2024-11-12T09:29:36Z",
+     "distanceM": 11.2,
+     "obliquityDeg": 8.1,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "b_20241112_0936_Track07_Sphere_00033",
+     "timestamp": "2024-11-12T09:29:35Z",
+     "distanceM": 11.6,
+     "obliquityDeg": 17.2,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "b_20241112_0936_Track07_Sphere_00035",
+     "timestamp": "2024-11-12T09:29:37Z",
+     "distanceM": 12.9,
+     "obliquityDeg": 30.7,
+     "missingFraction": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012141867",
+   "x0M": 7.88,
+   "x1M": 17.59,
+   "px": [
+    1603,
+    1991
+   ],
+   "date": "2024-11-12",
+   "fallbackDate": false,
+   "panoramas": [
+    {
+     "panoId": "b_20241112_0936_Track07_Sphere_00032",
+     "timestamp": "2024-11-12T09:29:35Z",
+     "distanceM": 11.1,
+     "obliquityDeg": 7,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "b_20241112_0936_Track07_Sphere_00031",
+     "timestamp": "2024-11-12T09:29:34Z",
+     "distanceM": 11.6,
+     "obliquityDeg": 18.1,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "b_20241112_0936_Track07_Sphere_00033",
+     "timestamp": "2024-11-12T09:29:35Z",
+     "distanceM": 12.8,
+     "obliquityDeg": 29.9,
+     "missingFraction": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012145693",
+   "x0M": 17.59,
+   "x1M": 55.61,
+   "px": [
+    1992,
+    3513
+   ],
+   "date": "2024-11-12",
+   "fallbackDate": false,
+   "panoramas": [
+    {
+     "panoId": "b_20241112_0936_Track07_Sphere_00027",
+     "timestamp": "2024-11-12T09:29:31Z",
+     "distanceM": 10.9,
+     "obliquityDeg": 1.5,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "b_20241112_0936_Track07_Sphere_00028",
+     "timestamp": "2024-11-12T09:29:32Z",
+     "distanceM": 12.1,
+     "obliquityDeg": 25.8,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "b_20241112_0936_Track07_Sphere_00029",
+     "timestamp": "2024-11-12T09:29:33Z",
+     "distanceM": 15,
+     "obliquityDeg": 43.2,
+     "missingFraction": 0
+    }
+   ]
+  }
+ ],
+ "candidatesByDate": {
+  "2016-08-03": 6,
+  "2020-01-29": 6,
+  "2024-11-12": 6,
+  "2022-03-21": 6,
+  "2025-07-30": 6,
+  "2019-05-03": 6,
+  "2020-05-13": 6,
+  "2019-01-18": 6,
+  "2018-06-07": 6,
+  "2021-04-28": 6,
+  "2017-04-19": 6,
+  "2021-04-26": 6,
+  "2024-11-06": 6,
+  "2018-06-06": 6,
+  "2023-01-10": 2,
+  "2022-10-05": 1,
+  "2019-12-04": 0,
+  "2024-12-17": 0,
+  "2025-01-30": 0,
+  "2020-08-27": 0,
+  "2022-09-05": 0,
+  "2019-01-17": 0,
+  "2017-04-12": 0,
+  "2019-12-06": 0,
+  "2023-01-20": 0
+ },
+ "description": "Rectified orthographic elevation of the whole face on the frontage planes: x = chunk-frame metres along the face (left→right seen from the street) from x0M, y = metres above the shared ground (groundNAP) from the bottom; grey = no panorama data. Per-pand spans list the panoramas median-fused for that frontage.",
+ "attribution": "Gemeente Amsterdam, Panoramabeelden (CC BY 4.0; faces and number plates blurred by the publisher)"
+}

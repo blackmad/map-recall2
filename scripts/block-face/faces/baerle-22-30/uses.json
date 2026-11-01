@@ -1,0 +1,167 @@
+{
+ "street": "Van Baerlestraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-01T16:18:36.545Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012122051",
+   "addresses": [
+    "Van Baerlestraat 28",
+    "Van Baerlestraat 30"
+   ],
+   "groundUnits": [
+    {
+     "address": "Alexander Boersstraat 54",
+     "use": "woonfunctie",
+     "areaM2": 146,
+     "bagId": "0363010000982548"
+    },
+    {
+     "address": "Van Baerlestraat 30",
+     "use": "winkelfunctie",
+     "areaM2": 586,
+     "bagId": "0363010000982558"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 1713450909,
+     "lngLat": [
+      4.8778338,
+      52.3588514
+     ],
+     "tags": {
+      "amenity": "waste_basket",
+      "check_date": "2025-08-25"
+     },
+     "fetchedAt": "2026-11-01T16:18:36.545Z",
+     "match": "frontage",
+     "distanceM": 2.1
+    },
+    {
+     "type": "node",
+     "id": 13105622841,
+     "lngLat": [
+      4.8778324,
+      52.3588145
+     ],
+     "tags": {
+      "amenity": "bicycle_parking",
+      "bicycle_parking": "stands",
+      "capacity": "2",
+      "covered": "no"
+     },
+     "fetchedAt": "2026-11-01T16:18:36.545Z",
+     "match": "frontage",
+     "distanceM": 3.7
+    },
+    {
+     "type": "node",
+     "id": 13458209787,
+     "lngLat": [
+      4.8777396,
+      52.3588694
+     ],
+     "tags": {
+      "shop": "vacant"
+     },
+     "fetchedAt": "2026-11-01T16:18:36.545Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012162963",
+   "addresses": [
+    "Van Baerlestraat 26"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Baerlestraat 26-H",
+     "use": "winkelfunctie",
+     "areaM2": 186,
+     "bagId": "0363010000834770"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 13458217153,
+     "lngLat": [
+      4.8776951,
+      52.3589925
+     ],
+     "tags": {
+      "brand": "Essentiel Antwerp",
+      "brand:wikidata": "Q117456339",
+      "name": "Essentiel Antwerp",
+      "shop": "clothes"
+     },
+     "fetchedAt": "2026-11-01T16:18:36.545Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012236146",
+   "addresses": [
+    "Van Baerlestraat 22",
+    "Van Baerlestraat 24"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Baerlestraat 22-H",
+     "use": "kantoorfunctie",
+     "areaM2": 89,
+     "bagId": "0363010000834763"
+    },
+    {
+     "address": "Van Baerlestraat 24-H",
+     "use": "winkelfunctie",
+     "areaM2": 153,
+     "bagId": "0363010000834767"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 13458194812,
+     "lngLat": [
+      4.8776358,
+      52.359042
+     ],
+     "tags": {
+      "name": "Oogappel",
+      "shop": "optician"
+     },
+     "fetchedAt": "2026-11-01T16:18:36.545Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 13458215290,
+     "lngLat": [
+      4.8775944,
+      52.3591019
+     ],
+     "tags": {
+      "name": "Reflections",
+      "shop": "clothes"
+     },
+     "fetchedAt": "2026-11-01T16:18:36.545Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}

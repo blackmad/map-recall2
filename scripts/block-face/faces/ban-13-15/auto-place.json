@@ -1,0 +1,215 @@
+{
+ "face": "ban-13-15",
+ "street": "Banstraat",
+ "library": "museumkwartier",
+ "stripDate": "2024-11-12",
+ "seconds": 0.52,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [],
+ "pands": [
+  {
+   "pandId": "0363100012162074",
+   "address": "Banstraat 13",
+   "builtYear": 1902,
+   "widthM": 6.71,
+   "eavesM": 14.93,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#6e5848",
+    "wallRaw": "#816c57",
+    "skyline": {
+     "eavesM": 13.03,
+     "eavesRow": 268,
+     "confidence": 1,
+     "crown": {
+      "widthM": 3.5,
+      "riseM": 3.1,
+      "topWidthM": 0.6,
+      "centre": 0.45
+     }
+    },
+    "stucco": false,
+    "bands": 5,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.427,
+    "structure": {
+     "bayWidthM": 0.33,
+     "bayCentre": 0.79,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 10.85,
+       "widthM": 1.38,
+       "centre": 0.89
+      },
+      {
+       "atM": 7.25,
+       "widthM": 1.15,
+       "centre": 0.5
+      }
+     ]
+    },
+    "voidShare": 0.12,
+    "foliageShare": 0.12
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best museum-cs-1900-gable-balcony: built 1902, type 1900-1901)",
+   "best": {
+    "type": "museum-cs-1900-gable-balcony",
+    "score": 0,
+    "veto": [
+     "built 1902, type 1900-1901"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 13.03 m vs the type's 10.4 m (wall-dormer skyline 14.4 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 4 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.239 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012163567",
+   "address": "Banstraat 15",
+   "builtYear": 1902,
+   "widthM": 7.22,
+   "eavesM": 14.85,
+   "storeys3dbag": 4,
+   "bagBay": {
+    "fromM": 0,
+    "toM": 2.12,
+    "depthM": 0.61,
+    "centre": 0.147,
+    "lineRD": [
+     [
+      120037.119125,
+      485385.53875
+     ],
+     [
+      120038.430125,
+      485380.94175
+     ]
+    ]
+   },
+   "strip": {
+    "wall": "#7e5d48",
+    "wallRaw": "#80664e",
+    "skyline": {
+     "eavesM": 17.73,
+     "eavesRow": 80,
+     "confidence": 0.65,
+     "crown": {
+      "widthM": 1.3,
+      "riseM": 2,
+      "topWidthM": 0.15,
+      "centre": 0.9
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.147,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 10.8,
+       "widthM": 1.02,
+       "centre": 0.45
+      },
+      {
+       "atM": 7.42,
+       "widthM": 1.7,
+       "centre": 0.45
+      }
+     ]
+    },
+    "voidShare": 0.01,
+    "foliageShare": 0.14
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best museum-cs-1900-gable-balcony: built 1902, type 1900-1901; frontage 7.22 m, type 5.5-6.6 m)",
+   "best": {
+    "type": "museum-cs-1900-gable-balcony",
+    "score": 0,
+    "veto": [
+     "built 1902, type 1900-1901",
+     "frontage 7.22 m, type 5.5-6.6 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 17.73 m vs the type's 10.4 m (wall-dormer skyline 14.4 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 4 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.115 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

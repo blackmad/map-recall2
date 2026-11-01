@@ -1,0 +1,176 @@
+{
+ "face": "boers-37-43",
+ "image": "staging/block-face/boers-37-43/strip.jpg",
+ "pixelsPerMetre": 40,
+ "width": 1146,
+ "height": 764,
+ "groundNAP": -1.27,
+ "heightM": 19.11,
+ "frame": {
+  "midRD": [
+   120257.17568750001,
+   485771.202375
+  ],
+  "uRD": [
+   -0.3307443620675381,
+   0.9437203860045291
+  ],
+  "nRD": [
+   0.9437203860045291,
+   0.3307443620675381
+  ]
+ },
+ "x0M": -14.06,
+ "x1M": 14.6,
+ "date": "2024-11-12",
+ "coverage": 1,
+ "spans": [
+  {
+   "pandId": "0363100012152870",
+   "x0M": -14.06,
+   "x1M": -6.35,
+   "px": [
+    0,
+    308
+   ],
+   "date": "2024-11-12",
+   "fallbackDate": false,
+   "panoramas": [
+    {
+     "panoId": "b_20241112_0936_Track32_Sphere_00023",
+     "timestamp": "2024-11-12T10:28:50Z",
+     "distanceM": 27.6,
+     "obliquityDeg": 9.5,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "b_20241112_0936_Track32_Sphere_00022",
+     "timestamp": "2024-11-12T10:28:49Z",
+     "distanceM": 22.3,
+     "obliquityDeg": 10.9,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "b_20241112_0936_Track32_Sphere_00021",
+     "timestamp": "2024-11-12T10:28:47Z",
+     "distanceM": 17.5,
+     "obliquityDeg": 13.4,
+     "missingFraction": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012237277",
+   "x0M": -6.35,
+   "x1M": -0.16,
+   "px": [
+    308,
+    556
+   ],
+   "date": "2024-11-12",
+   "fallbackDate": false,
+   "panoramas": [
+    {
+     "panoId": "b_20241112_0936_Track33_Sphere_00003",
+     "timestamp": "2024-11-12T10:30:03Z",
+     "distanceM": 6.9,
+     "obliquityDeg": 7.6,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "b_20241112_0936_Track32_Sphere_00023",
+     "timestamp": "2024-11-12T10:28:50Z",
+     "distanceM": 28.6,
+     "obliquityDeg": 18.7,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "b_20241112_0936_Track32_Sphere_00022",
+     "timestamp": "2024-11-12T10:28:49Z",
+     "distanceM": 23.6,
+     "obliquityDeg": 23,
+     "missingFraction": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012163721",
+   "x0M": -0.16,
+   "x1M": 6.23,
+   "px": [
+    556,
+    812
+   ],
+   "date": "2024-11-12",
+   "fallbackDate": false,
+   "panoramas": [
+    {
+     "panoId": "b_20241112_0936_Track33_Sphere_00004",
+     "timestamp": "2024-11-12T10:30:05Z",
+     "distanceM": 6.7,
+     "obliquityDeg": 2.8,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "b_20241112_0936_Track32_Sphere_00022",
+     "timestamp": "2024-11-12T10:28:49Z",
+     "distanceM": 26.8,
+     "obliquityDeg": 36.6,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "b_20241112_0936_Track33_Sphere_00005",
+     "timestamp": "2024-11-12T10:30:06Z",
+     "distanceM": 8.1,
+     "obliquityDeg": 36.8,
+     "missingFraction": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012165504",
+   "x0M": 6.23,
+   "x1M": 14.6,
+   "px": [
+    812,
+    1147
+   ],
+   "date": "2024-11-12",
+   "fallbackDate": false,
+   "panoramas": [
+    {
+     "panoId": "b_20241112_0936_Track33_Sphere_00005",
+     "timestamp": "2024-11-12T10:30:06Z",
+     "distanceM": 6.9,
+     "obliquityDeg": 20.7,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "b_20241112_0936_Track33_Sphere_00006",
+     "timestamp": "2024-11-12T10:30:08Z",
+     "distanceM": 6.9,
+     "obliquityDeg": 20.8,
+     "missingFraction": 0
+    }
+   ]
+  }
+ ],
+ "candidatesByDate": {
+  "2019-01-17": 4,
+  "2019-05-02": 4,
+  "2016-08-03": 4,
+  "2022-01-11": 4,
+  "2025-07-30": 4,
+  "2022-03-22": 4,
+  "2018-06-07": 4,
+  "2021-04-28": 4,
+  "2020-05-13": 4,
+  "2024-11-12": 4,
+  "2017-04-12": 4,
+  "2023-01-10": 1,
+  "2019-12-06": 0,
+  "2017-04-13": 0
+ },
+ "description": "Rectified orthographic elevation of the whole face on the frontage planes: x = chunk-frame metres along the face (left→right seen from the street) from x0M, y = metres above the shared ground (groundNAP) from the bottom; grey = no panorama data. Per-pand spans list the panoramas median-fused for that frontage.",
+ "attribution": "Gemeente Amsterdam, Panoramabeelden (CC BY 4.0; faces and number plates blurred by the publisher)"
+}

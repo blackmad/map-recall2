@@ -1,0 +1,269 @@
+{
+ "street": "Van Baerlestraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-01T16:25:22.872Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012164814",
+   "addresses": [
+    "Van Baerlestraat 44"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Baerlestraat 44-H",
+     "use": "industriefunctie",
+     "areaM2": 248,
+     "bagId": "0363010000834802"
+    },
+    {
+     "address": "Van Baerlestraat 44-H",
+     "use": "winkelfunctie",
+     "areaM2": 185,
+     "bagId": "0363010012065056"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 12672918227,
+     "lngLat": [
+      4.8780885,
+      52.3584192
+     ],
+     "tags": {
+      "brand": "Miele",
+      "brand:wikidata": "Q695230",
+      "name": "Miele",
+      "shop": "electronics"
+     },
+     "fetchedAt": "2026-11-01T16:25:22.872Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012156740",
+   "addresses": [
+    "Van Baerlestraat 42"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Baerlestraat 42-H",
+     "use": "winkelfunctie",
+     "areaM2": 248,
+     "bagId": "0363010000834796"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012158360",
+   "addresses": [
+    "Van Baerlestraat 40"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Baerlestraat 40-H",
+     "use": "winkelfunctie",
+     "areaM2": 209,
+     "bagId": "0363010000834792"
+    }
+   ],
+   "units": 2,
+   "osm": [
+    {
+     "type": "node",
+     "id": 12672940714,
+     "lngLat": [
+      4.8780309,
+      52.3584928
+     ],
+     "tags": {
+      "amenity": "cafe",
+      "brand": "Joe & The Juice",
+      "brand:wikidata": "Q26221514",
+      "cuisine": "coffee_shop",
+      "name": "Joe & The Juice",
+      "takeaway": "yes"
+     },
+     "fetchedAt": "2026-11-01T16:25:22.872Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012153208",
+   "addresses": [
+    "Van Baerlestraat 38"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Baerlestraat 38-H",
+     "use": "winkelfunctie",
+     "areaM2": 243,
+     "bagId": "0363010000834788"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 4136039738,
+     "lngLat": [
+      4.8779975,
+      52.3585403
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:street": "Van Baerlestraat",
+      "clothes": "women",
+      "name": "Maroc Maroc",
+      "shop": "beauty",
+      "website": "https://www.purdey.nl"
+     },
+     "fetchedAt": "2026-11-01T16:25:22.872Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012156304",
+   "addresses": [
+    "Van Baerlestraat 36"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Baerlestraat 36-H",
+     "use": "winkelfunctie",
+     "areaM2": 156,
+     "bagId": "0363010000834784"
+    }
+   ],
+   "units": 3,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2816384837,
+     "lngLat": [
+      4.8779629,
+      52.35859
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "36-H",
+      "addr:postcode": "1071AX",
+      "addr:street": "Van Baerlestraat",
+      "branch": "Amsterdam",
+      "brand": "Le Creuset",
+      "brand:website": "https://www.lecreuset.nl",
+      "brand:wikidata": "Q555861",
+      "name": "Le Creuset",
+      "shop": "houseware",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://www.lecreuset.nl/nl_NL/amsterdam-store/cap0205.html"
+     },
+     "fetchedAt": "2026-11-01T16:25:22.872Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012157788",
+   "addresses": [
+    "Van Baerlestraat 34"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Baerlestraat 34-H",
+     "use": "winkelfunctie",
+     "areaM2": 159,
+     "bagId": "0363010000834779"
+    }
+   ],
+   "units": 3,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2816384698,
+     "lngLat": [
+      4.8779355,
+      52.3586384
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "34-H",
+      "addr:postcode": "1071AX",
+      "addr:street": "Van Baerlestraat",
+      "name": "Marie-Stella-Maris",
+      "shop": "beauty",
+      "source": "BAG",
+      "source:date": "2014-03-24"
+     },
+     "fetchedAt": "2026-11-01T16:25:22.872Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012162838",
+   "addresses": [
+    "Van Baerlestraat 32"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Baerlestraat 32-H",
+     "use": "winkelfunctie",
+     "areaM2": 233,
+     "bagId": "0363010000834777"
+    }
+   ],
+   "units": 2,
+   "osm": [
+    {
+     "type": "node",
+     "id": 4136039741,
+     "lngLat": [
+      4.8778958,
+      52.3586874
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:street": "Van Baerlestraat",
+      "name": "Labfresh",
+      "shop": "clothes"
+     },
+     "fetchedAt": "2026-11-01T16:25:22.872Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 13105637383,
+     "lngLat": [
+      4.8778896,
+      52.3587446
+     ],
+     "tags": {
+      "amenity": "bicycle_parking",
+      "bicycle_parking": "stands",
+      "capacity": "2",
+      "covered": "no"
+     },
+     "fetchedAt": "2026-11-01T16:25:22.872Z",
+     "match": "frontage",
+     "distanceM": 2.6
+    }
+   ]
+  }
+ ]
+}

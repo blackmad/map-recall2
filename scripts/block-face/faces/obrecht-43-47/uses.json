@@ -1,0 +1,57 @@
+{
+ "street": "Jacob Obrechtstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-01T15:39:23.341Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012157101",
+   "addresses": [
+    "Jacob Obrechtstraat 43"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jacob Obrechtstraat 43-H",
+     "use": "woonfunctie",
+     "areaM2": 122,
+     "bagId": "0363010000679862"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012160392",
+   "addresses": [
+    "Jacob Obrechtstraat 45"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jacob Obrechtstraat 45-H",
+     "use": "woonfunctie",
+     "areaM2": 280,
+     "bagId": "0363010000679867"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012066610",
+   "addresses": [
+    "Jacob Obrechtstraat 47"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jacob Obrechtstraat 47-H",
+     "use": "woonfunctie",
+     "areaM2": 289,
+     "bagId": "0363010000679872"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  }
+ ]
+}

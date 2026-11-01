@@ -1,0 +1,194 @@
+{
+ "street": "Van Baerlestraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-01T16:27:45.380Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012164883",
+   "addresses": [
+    "Van Baerlestraat 96"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Baerlestraat 96-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 378,
+     "bagId": "0363010000834913"
+    },
+    {
+     "address": "Jan Willem Brouwersstraat 2",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 1,
+     "bagId": "0363010000688348"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 469633864,
+     "lngLat": [
+      4.8792088,
+      52.3568126
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "96",
+      "addr:postcode": "1071BB",
+      "addr:street": "Van Baerlestraat",
+      "amenity": "restaurant",
+      "check_date": "2025-03-16",
+      "contact:instagram": "brasseriekeyzer",
+      "email": "info@brasseriekeyzer.nl",
+      "indoor_seating": "yes",
+      "name": "Brasserie Keyzer",
+      "outdoor_seating": "no",
+      "phone": "+31 20 675 1866",
+      "website": "https://brasseriekeyzer.nl",
+      "website:menu": "https://brasseriekeyzer.nl/menu/"
+     },
+     "fetchedAt": "2026-11-01T16:27:45.380Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012160790",
+   "addresses": [
+    "Van Baerlestraat 92",
+    "Van Baerlestraat 92A",
+    "Van Baerlestraat 92B",
+    "Van Baerlestraat 92D",
+    "Van Baerlestraat 92E",
+    "Van Baerlestraat 92F",
+    "Van Baerlestraat 92C",
+    "Van Baerlestraat 94"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Baerlestraat 92",
+     "use": "winkelfunctie",
+     "areaM2": 218,
+     "bagId": "0363010000834904"
+    },
+    {
+     "address": "Van Baerlestraat 94",
+     "use": "winkelfunctie",
+     "areaM2": 203,
+     "bagId": "0363010001024230"
+    },
+    {
+     "address": "Van Baerlestraat 92A",
+     "use": "winkelfunctie",
+     "areaM2": 104,
+     "bagId": "0363010012122743"
+    },
+    {
+     "address": "Van Baerlestraat 92B",
+     "use": "woonfunctie",
+     "areaM2": 46,
+     "bagId": "0363010012122744"
+    },
+    {
+     "address": "Van Baerlestraat 92D",
+     "use": "woonfunctie",
+     "areaM2": 46,
+     "bagId": "0363010012122746"
+    },
+    {
+     "address": "Van Baerlestraat 92E",
+     "use": "woonfunctie",
+     "areaM2": 55,
+     "bagId": "0363010012122747"
+    },
+    {
+     "address": "Van Baerlestraat 92F",
+     "use": "woonfunctie",
+     "areaM2": 106,
+     "bagId": "0363010012122748"
+    },
+    {
+     "address": "Van Baerlestraat 94",
+     "use": "winkelfunctie",
+     "areaM2": 103,
+     "bagId": "0363010012122751"
+    },
+    {
+     "address": "Van Baerlestraat 92C",
+     "use": "woonfunctie",
+     "areaM2": 111,
+     "bagId": "0363010012122745"
+    }
+   ],
+   "units": 9,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2816385850,
+     "lngLat": [
+      4.8791213,
+      52.3569956
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "88",
+      "addr:postcode": "1071BB",
+      "addr:street": "Van Baerlestraat",
+      "branch": "Amsterdam, Van Baerlestraat 88-90",
+      "brand": "Pauw",
+      "brand:website": "https://pauw.com",
+      "brand:wikidata": "Q140812029",
+      "clothes": "men",
+      "email": "vanbaerlestraat88@pauw.com",
+      "name": "Pauw",
+      "opening_hours": "Tu-Sa 10:00-18:00",
+      "phone": "+31 20 6710967",
+      "shop": "clothes",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://pauw.com/pages/amsterdam-van-baerlestraat-88-90"
+     },
+     "fetchedAt": "2026-11-01T16:27:45.380Z",
+     "match": "frontage",
+     "distanceM": 5.4
+    },
+    {
+     "type": "node",
+     "id": 9036429964,
+     "lngLat": [
+      4.879167,
+      52.356934
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "92A",
+      "addr:postcode": "1071BB",
+      "addr:street": "Van Baerlestraat",
+      "amenity": "cafe",
+      "check_date": "2025-03-16",
+      "contact:instagram": "chimneycakenl",
+      "cuisine": "breakfast;coffee_shop;sandwich",
+      "email": "info@chimneyamsterdam.nl",
+      "indoor_seating": "yes",
+      "internet_access:fee": "no",
+      "name": "Chimney Cake Bakery & Café",
+      "opening_hours": "Mo-Su 08:00-22:00",
+      "outdoor_seating": "yes",
+      "phone": "+31 6 84506018",
+      "source": "BAG",
+      "source:date": "2021-08-08",
+      "website": "https://chimneyamsterdam.nl/",
+      "website:menu": "https://chimneyamsterdam.nl/menu/",
+      "wheelchair": "limited"
+     },
+     "fetchedAt": "2026-11-01T16:27:45.380Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}

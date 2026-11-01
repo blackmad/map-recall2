@@ -1,0 +1,254 @@
+{
+ "face": "obrecht-44-48",
+ "street": "Jacob Obrechtstraat",
+ "library": "museumkwartier",
+ "stripDate": "2024-11-12",
+ "seconds": 2.67,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [],
+ "pands": [
+  {
+   "pandId": "0363100012068364",
+   "address": "Jacob Obrechtstraat 48",
+   "builtYear": 1900,
+   "widthM": 6.56,
+   "eavesM": 14.74,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#c79764",
+    "wallRaw": "#666247",
+    "skyline": {
+     "eavesM": 18.1,
+     "eavesRow": 86,
+     "confidence": 0.48,
+     "crown": {
+      "widthM": 0.78,
+      "riseM": 2.15,
+      "topWidthM": 0.38,
+      "centre": 0.68
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "columns",
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0.026,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 7.1,
+       "widthM": 1.5,
+       "centre": 0.85
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.33
+   },
+   "status": "held",
+   "stage": "likeness",
+   "reason": "no photo evidence (usable photo 40 % < 50 %) and no passing same-type neighbour",
+   "likeness": {
+    "pandId": "0363100012068364",
+    "ncc": null,
+    "nccRaw": 0.228,
+    "shiftM": [
+     0.05,
+     0.1
+    ],
+    "usable": 0.4,
+    "abstain": "usable photo 40 % < 50 %",
+    "verdict": "NO EVIDENCE",
+    "reasons": [
+     "foliage 30 % > 25 %"
+    ],
+    "wall": {
+     "photo": "#956f4c",
+     "model": "#624237",
+     "dL": -0.141
+    },
+    "glazing": {
+     "photo": 0.72,
+     "model": 0.41
+    },
+    "columns": {
+     "photo": null,
+     "model": 3
+    },
+    "iou": 0.442
+   },
+   "challengers": {
+    "museum-cs-1900-gable-balcony~m": null,
+    "museum-cs-1900-gable-balcony": null
+   }
+  },
+  {
+   "pandId": "0363100012157283",
+   "address": "Jacob Obrechtstraat 46",
+   "builtYear": 1900,
+   "widthM": 6.68,
+   "eavesM": 13.62,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#a17c5c",
+    "wallRaw": "#5e5b47",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 810,
+     "confidence": 0.15,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 4,
+    "frontClass": "punched",
+    "doorSide": "left",
+    "accentSide": "left",
+    "accentShare": 0.043,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 0.6 m at 0.28 (light 0.13): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.6,
+       "centre": 0.28,
+       "light": 0.13
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 11.6,
+       "widthM": 0.8,
+       "centre": 0.78
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.43
+   },
+   "status": "held",
+   "stage": "likeness",
+   "reason": "no photo evidence (usable photo 32 % < 50 %) and no passing same-type neighbour",
+   "likeness": {
+    "pandId": "0363100012157283",
+    "ncc": null,
+    "nccRaw": 0.13,
+    "shiftM": [
+     -0.2,
+     0
+    ],
+    "usable": 0.32,
+    "abstain": "usable photo 32 % < 50 %",
+    "verdict": "NO EVIDENCE",
+    "reasons": [
+     "foliage 30 % > 25 %"
+    ],
+    "wall": {
+     "photo": "#615139",
+     "model": "#624237",
+     "dL": -0.002
+    },
+    "glazing": {
+     "photo": 0.28,
+     "model": 0.43
+    },
+    "columns": {
+     "photo": null,
+     "model": 3
+    },
+    "iou": 0.359
+   },
+   "challengers": {
+    "museum-cs-1900-gable-balcony": null,
+    "museum-cs-1900-gable-balcony~m": null
+   }
+  },
+  {
+   "pandId": "0363100012152782",
+   "address": "Jacob Obrechtstraat 44",
+   "builtYear": 1900,
+   "widthM": 4.34,
+   "eavesM": 13.65,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#695742",
+    "wallRaw": "#4d4937",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 810,
+     "confidence": 0.23,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 2,
+    "frontClass": "columns",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.024,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.37
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best museum-cs-1900-gable-balcony: frontage 4.34 m, type 5.5-6.6 m)",
+   "best": {
+    "type": "museum-cs-1900-gable-balcony",
+    "score": 0,
+    "veto": [
+     "frontage 4.34 m, type 5.5-6.6 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": null,
+      "note": "strip cornice unread (type line 10.4 m; 3DBAG 13.65 m not compared)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": null,
+      "note": "no strip"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

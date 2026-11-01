@@ -1,0 +1,65 @@
+{
+ "street": "Alexander Boersstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-01T15:25:53.691Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012157277",
+   "addresses": [
+    "Alexander Boersstraat 25C"
+   ],
+   "groundUnits": [
+    {
+     "address": "Alexander Boersstraat 25C",
+     "use": "winkelfunctie",
+     "areaM2": 87,
+     "bagId": "0363010000564857"
+    }
+   ],
+   "units": 1,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2816384319,
+     "lngLat": [
+      4.8774885,
+      52.3581694
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "25C",
+      "addr:postcode": "1071KV",
+      "addr:street": "Alexander Boersstraat",
+      "name": "Kantoorboekhandel Brugman",
+      "opening_hours": "Mo-Fr 09:00-18:00, Sa 09:00-17:00",
+      "phone": "+31 20 662 8027",
+      "shop": "books",
+      "source": "BAG",
+      "source:date": "2014-03-24"
+     },
+     "fetchedAt": "2026-11-01T15:25:53.691Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012199722",
+   "addresses": [
+    "Alexander Boersstraat 25K"
+   ],
+   "groundUnits": [
+    {
+     "address": "Alexander Boersstraat 25K",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 22,
+     "bagId": "0363010012574971"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  }
+ ]
+}

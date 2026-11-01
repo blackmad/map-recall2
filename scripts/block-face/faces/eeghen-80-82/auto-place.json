@@ -1,0 +1,215 @@
+{
+ "face": "eeghen-80-82",
+ "street": "Van Eeghenstraat",
+ "library": "museumkwartier",
+ "stripDate": "2024-11-12",
+ "seconds": 0.37,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [],
+ "pands": [
+  {
+   "pandId": "0363100012162678",
+   "address": "Van Eeghenstraat 82",
+   "builtYear": 1900,
+   "widthM": 6.89,
+   "eavesM": 11.7,
+   "storeys3dbag": 0,
+   "bagBay": {
+    "fromM": 3.89,
+    "toM": 6.89,
+    "depthM": 0.37,
+    "centre": 0.783,
+    "lineRD": [
+     [
+      119871.8173125,
+      485607.78325
+     ],
+     [
+      119870.9813125,
+      485611.58525
+     ]
+    ]
+   },
+   "strip": {
+    "wall": "#7a9ead",
+    "wallRaw": "#624c45",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 782,
+     "confidence": 0.15,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": "left",
+    "accentSide": "right",
+    "accentShare": 0.003,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 0.85 m at 0.07 (light 0.18): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.85,
+       "centre": 0.07,
+       "light": 0.18
+      },
+      {
+       "widthM": 0.97,
+       "centre": 0.27,
+       "light": 0.12
+      },
+      {
+       "widthM": 0.93,
+       "centre": 0.47,
+       "light": 0.19
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 6.9,
+       "widthM": 1.27,
+       "centre": 0.1
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.04
+   },
+   "status": "held",
+   "stage": "run",
+   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012236217",
+   "address": "Van Eeghenstraat 80",
+   "builtYear": 1900,
+   "widthM": 6.59,
+   "eavesM": 15.82,
+   "storeys3dbag": 0,
+   "bagBay": {
+    "fromM": 5.42,
+    "toM": 6.55,
+    "depthM": 0.74,
+    "centre": 0.913,
+    "lineRD": [
+     [
+      119869.90131249999,
+      485614.08525
+     ],
+     [
+      119868.7373125,
+      485619.37425
+     ]
+    ]
+   },
+   "strip": {
+    "wall": "#c0d7d6",
+    "wallRaw": "#5d5c41",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 782,
+     "confidence": 0.27,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 4,
+    "frontClass": "punched",
+    "doorSide": "right",
+    "accentSide": "right",
+    "accentShare": 0.012,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 0.85 m at 0.41 (light 0.21): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.85,
+       "centre": 0.41,
+       "light": 0.21
+      },
+      {
+       "widthM": 1.02,
+       "centre": 0.92,
+       "light": 0.33
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 11.63,
+       "widthM": 1.1,
+       "centre": 0.13
+      },
+      {
+       "atM": 10.43,
+       "widthM": 0.95,
+       "centre": 0.23
+      },
+      {
+       "atM": 6.97,
+       "widthM": 0.95,
+       "centre": 0.15
+      },
+      {
+       "atM": 6.3,
+       "widthM": 0.97,
+       "centre": 0.2
+      },
+      {
+       "atM": 5.17,
+       "widthM": 0.85,
+       "centre": 0.1
+      }
+     ]
+    },
+    "voidShare": 0.01,
+    "foliageShare": 0.31
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "best museum-cs-1900-gable-balcony scores 0 < 0.7 ()",
+   "best": {
+    "type": "museum-cs-1900-gable-balcony",
+    "score": 0,
+    "veto": [],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": null,
+      "note": "strip cornice unread (type line 10.4 m; 3DBAG 15.82 m not compared)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": null,
+      "note": "3DBAG bouwlagen 0 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": null,
+      "note": "no strip"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

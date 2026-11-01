@@ -72,6 +72,9 @@ const SPOTS: Spot[] = [
   { name: 'transvaal1926-theronstraat-25-31', centre: [4.9158006, 52.352054], standDeg: 283, standM: 8, view: 'cockpit' },
   { name: 'transvaal1926-theronstraat-20-26', centre: [4.9154452, 52.3521013], standDeg: 103, standM: 8, view: 'cockpit' },
   { name: 'transvaal1926-steynstraat-9-15', centre: [4.9161591, 52.3510951], standDeg: 299, standM: 7, view: 'cockpit' },
+  // Museumkwartier A (#159): the first Cornelis Schuytbuurt gable-balcony row, seen from mid-street.
+  { name: 'museum-a-breestraat-123-129', centre: [4.8724874, 52.3557232], standDeg: 337, standM: 9, view: 'cockpit' },
+  { name: 'museum-a-breestraat-123-129-chase', centre: [4.8724874, 52.3557232], standDeg: 337, standM: 30 },
   // Transvaalbuurt 1911 variants (#156): flat white dormers, a shared gable, lone stair blocks with wall dormers.
   { name: 'transvaal1911b-transvaalstraat-39-41', centre: [4.9263594, 52.3552451], standDeg: 333, standM: 8, view: 'cockpit' },
   { name: 'transvaal1911b-transvaalstraat-42-44', centre: [4.9256896, 52.3551322], standDeg: 138, standM: 8, view: 'cockpit' },
