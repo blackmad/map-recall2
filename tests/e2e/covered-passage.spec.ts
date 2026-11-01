@@ -1,6 +1,7 @@
 import { expect, test, type Page } from '@playwright/test';
 import sharp from 'sharp';
 import { openRoute } from './helpers';
+import { OWN } from './worldCam';
 
 // Named regression (user report 2026-10-01, "driving through this tunnel in
 // centraal is really hard"): the Cuyperspassage cycle tunnel runs under
@@ -33,8 +34,8 @@ async function slabShare(page: Page): Promise<number> {
   const box = await page.evaluate(() => {
     const g = (window as any).canalRecallGame;
     const vm = g.vectorMap;
-    const p = vm.map.project(vm.worldToLngLat(g.player.x, g.player.y, g.osmLoader));
-    const rect = vm.map.getCanvas().getBoundingClientRect();
+    const p = vm.camera.project(vm.worldToLngLat(g.player.x, g.player.y, g.osmLoader));
+    const rect = vm.frameCanvas().getBoundingClientRect();
     return { x: Math.round(rect.left + p.x - 160), y: Math.round(rect.top + p.y - 200), width: 320, height: 160 };
   });
   const png = await page.screenshot({ clip: box });
@@ -50,6 +51,7 @@ async function slabShare(page: Page): Promise<number> {
 }
 
 test('the rider can see the Cuyperspassage under Centraal\'s train shed', async ({ page }, testInfo) => {
+  test.skip(OWN, 'MapLibre style assertion: deleted with the default path at P5');
   test.skip(testInfo.project.name !== 'desktop', 'one camera is enough');
   test.setTimeout(180_000);
   // The shed comes from the building appearance layers, which need the
@@ -69,7 +71,7 @@ test('the rider can see the Cuyperspassage under Centraal\'s train shed', async 
   const open = await page.evaluate(() => {
     const vm = (window as any).canalRecallGame.vectorMap;
     const three = vm._threeOwnsTops?.();
-    return { covered: vm.riderCovered, three, opacity: vm.map.getPaintProperty('osm-colored-buildings', 'fill-extrusion-opacity'), hidden: three ? [...(vm._threeBuildings.hiddenBy.get('cover') ?? [])] : [] };
+    return { covered: vm.riderCovered, three, opacity: (vm.map ?? vm.cameraMap).getPaintProperty('osm-colored-buildings', 'fill-extrusion-opacity'), hidden: three ? [...(vm._threeBuildings.hiddenBy.get('cover') ?? [])] : [] };
   });
   expect(open.covered, 'out in the open the buildings come back').toBe(false);
   // The default (Photo) look draws buildings in three.js: the covering building is hidden while covered, then back.
