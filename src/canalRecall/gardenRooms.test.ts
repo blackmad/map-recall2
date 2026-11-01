@@ -2,7 +2,7 @@ import assert from 'node:assert/strict';
 import test from 'node:test';
 import { createHash } from 'node:crypto';
 import {
-  GARDEN_ROOM_TRI_BUDGET, LID_RAISE_M, ccwRing, gardenRoomDesign, gardenRoomRule, gardenRoomTriangles, glassEdge, mainHouse, overhangRing, partyWalls,
+  GARDEN_ROOM_TRI_BUDGET, LID_RAISE_M, ccwRing, gardenRoomDesign, gardenRoomRule, nearestStreetPoint, gardenRoomTriangles, glassEdge, mainHouse, overhangRing, partyWalls,
   type GardenRoomDesign, type Neighbour, type Pt,
 } from './gardenRooms.ts';
 import { GARDEN_ROOM_TONES, LOOK_VARIANTS, hexToRgb, type BuildingLook } from './look/palette.ts';
@@ -74,6 +74,22 @@ test('orientation: glass faces the main house on the street side, never a party 
   assert.equal(blocked[0], true);
   assert.notEqual(glassEdge(shed, blocked, main), 0);
   assert.equal(glassEdge(shed, [true, true, true, true], main), -1, 'enclosed on all sides: no glass');
+});
+
+test('orientation regression: a stepped 2013 room between Herengracht and Keizersgracht faces the street, not a 1.6 m return (NL.IMBAG.Pand.0363100012241009)', () => {
+  // Local metres from ORIGIN, from building-tiles 14 at 90ecb29bf. The nearest larger pand is a big complex to the
+  // south-west; toward its nearest point the old rule put the glass on the 1.6 m SW return. Keizersgracht is 52 m NW.
+  const ring = ccwRing([[-701.42, 893.83], [-703.46, 894.93], [-704.14, 893.72], [-704.69, 894.05], [-707.07, 889.63], [-705.84, 888.96], [-706.52, 887.75], [-705.1, 887.08]]);
+  const house = nb([[-708.02, 882.33], [-709.51, 879.68], [-724.81, 888.19], [-734.86, 893.72], [-737.24, 889.52], [-740.64, 891.51], [-755.19, 899.57], [-756.21, 897.7], [-755.05, 897.03], [-757.09, 893.38], [-712.44, 868.51], [-684.16, 852.93], [-667.85, 843.64], [-660.98, 855.8], [-677.23, 864.98], [-682.46, 867.85], [-693.27, 873.82]]);
+  const party = ring.map(() => false);
+  const len = (i: number) => Math.hypot(ring[(i + 1) % ring.length][0] - ring[i][0], ring[(i + 1) % ring.length][1] - ring[i][1]);
+  assert.ok(len(glassEdge(ring, party, house)) >= 0.4 * Math.max(...ring.map((_, i) => len(i))), 'never a short return');
+  // A street 52 m north-west (Keizersgracht's side): the glass takes the ~5 m NW wall.
+  const nw = new SegmentGrid(Float32Array.from([-760, 915, -700, 950]), 25);
+  const toward = nearestStreetPoint(ring, nw)!;
+  const g = glassEdge(ring, party, house, toward), a = ring[g], b = ring[(g + 1) % ring.length], l = len(g);
+  const bearing = (Math.atan2((b[1] - a[1]) / l, -(b[0] - a[0]) / l) * 180 / Math.PI + 360) % 360;
+  assert.ok(bearing > 270 && bearing < 330 && l > 4.5, `glass ${l.toFixed(1)} m facing ${bearing.toFixed(0)}`);
 });
 
 test('orientation: no house found -> the longest free edge', () => {

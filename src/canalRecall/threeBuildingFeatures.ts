@@ -24,7 +24,7 @@ import { SUPERMARKET_CHAINS } from './shopfronts.js';
 import { appendAllotmentHouses, isAllotmentHouse } from './allotmentHouses.js';
 import { SHED_LID_HEX, isGardenShed, ringAreaM2, shedHeightM, shedWallHex } from './gardenSheds.js';
 import { SegmentGrid } from './streetFronts.js';
-import { ccwRing, designInLook, gardenRoomDesign, gardenRoomGlassHex, gardenRoomLidHex, gardenRoomRule, gardenRoomTriangles, glassEdge, mainHouse, partyWalls, HOUSE_REACH_M, type Neighbour, type Pt } from './gardenRooms.js';
+import { ccwRing, designInLook, gardenRoomDesign, gardenRoomGlassHex, gardenRoomLidHex, gardenRoomRule, gardenRoomTriangles, glassEdge, mainHouse, nearestStreetPoint, partyWalls, HOUSE_REACH_M, type Neighbour, type Pt } from './gardenRooms.js';
 import { GARDEN_ROOM_TONES } from './look/palette.js';
 import { buurtProfileAt } from './buurtProfiles/data.js';
 import { profileWallBeatsMaterial } from './buurtProfiles/profiles.js';
@@ -235,7 +235,7 @@ function gardenRoomTrisFor(f: Feature, building: MeshBuilding, look: BuildingLoo
   const house = mainHouse(ring, ringArea(ring), neighbours, streets);
   const year = f.properties.constructionYear === null || f.properties.constructionYear === undefined || !Number.isFinite(Number(f.properties.constructionYear)) ? null : Number(f.properties.constructionYear);
   const tone = (hex: string) => cellSetOf(look) === 'procedural' ? hex : lookHex(hex, look);
-  return gardenRoomTriangles({ ring, heightM: building.heightM, glass: glassEdge(ring, party, house), party, design: designInLook(gardenRoomDesign(id, year), look), lidHex: building.lid?.hex ?? GARDEN_ROOM_TONES.lidEpdm, frameHex: tone(GARDEN_ROOM_TONES.frame), fasciaHex: tone(GARDEN_ROOM_TONES.fascia), glassHex: gardenRoomGlassHex(look) });
+  return gardenRoomTriangles({ ring, heightM: building.heightM, glass: glassEdge(ring, party, house, house ? nearestStreetPoint(ring, streets) : null), party, design: designInLook(gardenRoomDesign(id, year), look), lidHex: building.lid?.hex ?? GARDEN_ROOM_TONES.lidEpdm, frameHex: tone(GARDEN_ROOM_TONES.frame), fasciaHex: tone(GARDEN_ROOM_TONES.fascia), glassHex: gardenRoomGlassHex(look) });
 }
 
 /** A chunk for a group of streamed features in one look. */

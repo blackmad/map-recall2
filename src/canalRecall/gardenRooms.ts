@@ -15,8 +15,8 @@
  * hits) sits under tree canopy in the orthophoto (`ortho-roof-rule-pre1990.png`); the green is the tree.
  * Everything else stays a shed. Counts per rule for the centre box: `scripts/survey-garden-rooms.ts`.
  *
- * Orientation: the glass faces the main house of the parcel, the nearest larger pand that stands nearer a street
- * than the shed. Never on a party wall (an edge within 0.3 m of another pand). With no house, the longest free edge.
+ * Orientation: when the parcel has a main house (the nearest larger pand that stands nearer a street than the shed),
+ * the glass looks toward the nearest street, across that house's garden. Never on a party wall (an edge within 0.3 m of another pand). With no house, the longest free edge.
  *
  * Pure and deterministic per pand id: the chunk worker runs it. Geometry is flat-colour triangles on the flat
  * layer (every look variant has one), at most `GARDEN_ROOM_TRI_BUDGET` beyond the plain box, near tier only.
@@ -181,25 +181,43 @@ export function mainHouse(ring: readonly Pt[], areaM2: number, neighbours: reado
 /** Minimum wall length for the glass front. */
 export const GLASS_MIN_EDGE_M = 1.0;
 
+/** The nearest point on a front street to the ring's centroid, within `reach`; null when none. */
+export function nearestStreetPoint(ring: readonly Pt[], streets: SegmentGrid | null, reach = 80): Pt | null {
+  if (!streets) return null;
+  const c: Pt = [ring.reduce((s, p) => s + p[0], 0) / ring.length, ring.reduce((s, p) => s + p[1], 0) / ring.length];
+  let best: Pt | null = null, bestD = reach;
+  for (const s of streets.near(c[0] - reach, c[1] - reach, c[0] + reach, c[1] + reach)) {
+    const q = nearestOn(c, [streets.segs[s * 4], streets.segs[s * 4 + 1]], [streets.segs[s * 4 + 2], streets.segs[s * 4 + 3]]), d = Math.hypot(q[0] - c[0], q[1] - c[1]);
+    if (d < bestD) { bestD = d; best = q; }
+  }
+  return best;
+}
+
 /**
- * The glass edge: of the free edges at least 1 m long, the one whose outward normal looks most directly at the
- * house (cosine > 0.2); else, with no house or no edge facing it, the longest free edge; -1 when every edge is
- * a party wall.
+ * The glass edge. With a main house found, the house stands between the room and its street, so the glass looks
+ * toward the nearest street (one direction for the whole room; toward the house's own nearest point the rule
+ * turned paired rooms different ways whenever a neighbour's rear extension was nearer, lane #169 frames). Of the
+ * free edges at least 1 m long and at least 40 % of the longest free edge that face it (cosine > 0.2), facing
+ * first, then length. Else the longest free edge; -1 when every edge is a party wall.
  */
-export function glassEdge(ring: readonly Pt[], party: readonly boolean[], house: Neighbour | null): number {
+export function glassEdge(ring: readonly Pt[], party: readonly boolean[], house: Neighbour | null, toward: Pt | null = null): number {
   const len = (i: number) => { const a = ring[i], b = ring[(i + 1) % ring.length]; return Math.hypot(b[0] - a[0], b[1] - a[1]); };
   const free = ring.map((_, i) => i).filter(i => !party[i] && len(i) >= GLASS_MIN_EDGE_M);
   if (!free.length) return -1;
+  const longest = Math.max(...free.map(len));
   if (house) {
+    const c: Pt = [ring.reduce((s, p) => s + p[0], 0) / ring.length, ring.reduce((s, p) => s + p[1], 0) / ring.length];
+    let target = toward;
+    if (!target) { let d = Infinity; for (let k = 0; k < house.ring.length; k++) { const q = nearestOn(c, house.ring[k], house.ring[(k + 1) % house.ring.length]), dd = Math.hypot(q[0] - c[0], q[1] - c[1]); if (dd < d) { d = dd; target = q; } } }
+    const d = target ? Math.hypot(target[0] - c[0], target[1] - c[1]) : 0;
     let best = -1, bestScore = 0.2;
-    for (const i of free) {
-      const a = ring[i], b = ring[(i + 1) % ring.length], l = len(i), n: Pt = [(b[1] - a[1]) / l, -(b[0] - a[0]) / l];
-      const m: Pt = [(a[0] + b[0]) / 2, (a[1] + b[1]) / 2];
-      let target: Pt = m, d = Infinity;
-      for (let k = 0; k < house.ring.length; k++) { const q = nearestOn(m, house.ring[k], house.ring[(k + 1) % house.ring.length]), dd = Math.hypot(q[0] - m[0], q[1] - m[1]); if (dd < d) { d = dd; target = q; } }
-      if (!(d > 1e-6)) continue;
-      // Weight by a little length so a 1 m return does not beat the long wall facing the same way.
-      const score = ((target[0] - m[0]) * n[0] + (target[1] - m[1]) * n[1]) / d + Math.min(0.1, l / 40);
+    if (target && d > 1e-6) for (const i of free) {
+      const l = len(i);
+      if (l < 0.4 * longest) continue;
+      const a = ring[i], b = ring[(i + 1) % ring.length], n: Pt = [(b[1] - a[1]) / l, -(b[0] - a[0]) / l];
+      const cos = ((target[0] - c[0]) * n[0] + (target[1] - c[1]) * n[1]) / d;
+      if (cos < 0.2) continue;
+      const score = cos + 0.4 * l / longest;
       if (score > bestScore) { bestScore = score; best = i; }
     }
     if (best >= 0) return best;
