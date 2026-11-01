@@ -19,6 +19,7 @@
 import { framePhases } from './framePhases';
 import { chooseTier, TIER_SETTINGS, type QualityTier } from '../renderGovernor';
 import { tierProbe } from './tierProbe';
+import { GlCounters, objectLabel } from './glCounters';
 import { SharedFrame } from '../rendererShared/sharedFrame';
 import { mapLibreSky } from '../look/sunny';
 import { FrameHost, type FrameSimulation } from './frameHost';
@@ -116,6 +117,8 @@ export class OwnWorldView {
   _labelsVisible = false;
 
   _ownGround: any = null;
+  /** `?glCounters=1`: GL work counters (engine/glCounters.ts). */
+  _glCounters: GlCounters | null = null;
   _threeBuildings: any = null;
   _completeCity: any = null;
   /** Landmark models, trees, detailed buildings, pyramidal roofs, ARTIS (cityExtras.ts). */
@@ -196,6 +199,44 @@ export class OwnWorldView {
       // The game's loading screen (GameState.LOADING, presentationRuntime.ts) paints over the world opaquely.
       coveredFrameMs: () => (W().canalRecallGame?.state === LOADING_STATE ? COVERED_FRAME_MS : null),
     }, { antialias, pixelRatio: Math.min(dpr, cap), clearColor: clear, renderOnChange: flag('renderOnChange', '__canalRecallRenderOnChange', true) });
+    // GL work counters (engine/glCounters.ts, the P4 counters gate): opt-in, on window.__canalPerf.gl.
+    if (flag('glCounters', '__canalRecallGlCounters', false)) {
+      // three uploads geometry and links programs lazily inside its draw of an object: name that object as the owner.
+      const renderer = this.host.renderer;
+      let drawing: any = null, drawingMaterial: any = null;
+      const renderBufferDirect = renderer.renderBufferDirect.bind(renderer);
+      renderer.renderBufferDirect = (camera: any, scene: any, geometry: any, material: any, object: any, group: any) => {
+        drawing = object; drawingMaterial = material;
+        try { return renderBufferDirect(camera, scene, geometry, material, object, group); } finally { drawing = null; drawingMaterial = null; }
+      };
+      // Geometry is uploaded earlier, while three projects the scene (WebGLObjects.update), outside any draw. three
+      // registers its dispose listener on a geometry the first time it sees it, just before that upload: the geometry
+      // whose listener came last is the one uploading, and its mesh is found in the scene when an event needs a name.
+      let seen: any = null;
+      const geometryProto = THREE.BufferGeometry.prototype;
+      const addEventListener = geometryProto.addEventListener;
+      geometryProto.addEventListener = function (this: any, type: string, listener: any) {
+        if (type === 'dispose') seen = this;
+        return addEventListener.call(this, type, listener);
+      };
+      const meshOf = (geometry: any) => {
+        let found: any = null;
+        this._sharedFrame?.scene?.traverse?.((o: any) => { if (!found && o.geometry === geometry) found = o; });
+        return found;
+      };
+      const counters = new GlCounters({
+        programNames: () => (renderer.info?.programs ?? []).map((p: any) => `${p.name}#${p.id}`),
+        drawOwner: () => (drawing ? `${objectLabel(drawing).split(':')[0] || 'unnamed'}${drawingMaterial?.isMeshDepthMaterial || drawingMaterial?.isMeshDistanceMaterial ? ' (shadow)' : ''}` : 'outside a draw'),
+        context: () => {
+          if (drawing) return `${objectLabel(drawing)} [${drawingMaterial?.type ?? '?'}]`;
+          const mesh = seen ? meshOf(seen) : null;
+          return mesh ? `${objectLabel(mesh)} (new geometry)` : '';
+        },
+      });
+      counters.install(renderer.getContext());
+      this._glCounters = counters;
+      W().__canalPerf = { ...(W().__canalPerf ?? {}), gl: { markWarm: () => counters.markWarm(), report: () => counters.report() } };
+    }
     // Quality tier (renderGovernor.ts): chosen once from a ~1 s fill probe and what the browser reports; it sets
     // the start and the ceiling of the knobs below, the governor steps inside it. `?tier=low|mid|high` forces one.
     const search = new URLSearchParams(W().location?.search ?? '');
@@ -429,6 +470,7 @@ export class OwnWorldView {
     const t1 = phases ? performance.now() : 0;
     this.drawLabels();
     if (phases) phases.add('labels', performance.now() - t1);
+    this._glCounters?.endFrame();
   }
 
   /**
