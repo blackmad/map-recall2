@@ -1968,9 +1968,15 @@
   "triangles": 4325
  },
  "telefooncentrale-spuistraat": {
-  "sourceHash": "2c0733889aac6ec7",
+  "sourceHash": "a1d6702c7f4cb824",
   "buildVersion": 2,
   "bytes": 82488,
   "triangles": 3696
+ },
+ "telegraaf-gebouw": {
+  "sourceHash": "ca99fc45b4e0fec0",
+  "buildVersion": 2,
+  "bytes": 59492,
+  "triangles": 2506
  }
 }

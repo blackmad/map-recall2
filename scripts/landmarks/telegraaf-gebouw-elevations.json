@@ -1,0 +1,32 @@
+{
+ "id": "telegraaf-gebouw",
+ "source": "Counted 2026-11-01 (lane #183) from the landmark-brief.ts crops of the Gemeente Amsterdam panoramas (CC BY 4.0; w07-270 2021, w10-270 alt 2017, w11-271 and w12-270 2025, thumbs w07/w11), before comparing with the model.",
+ "countedBy": "photo",
+ "facades": [
+  {
+   "name": "Nieuwezijds Voorburgwal front (1930 part)",
+   "bearing": 270,
+   "photo": "artifacts/landmark-briefs/telegraaf-gebouw/w07-270.thumb.jpg",
+   "columns": 6,
+   "symmetric": false,
+   "gables": 0,
+   "note": "Six groups of three white-framed windows on four storeys (w07 thumb shows three groups, w11 thumb two more, w10 alt and w12 the pier rhythm). Each group is three windows divided by white frames only, so by the ribbon convention a group is one opening: six per row, six axes. The glass-block panels under the groups are glazing of blocks, not windows, and the ground storey is shopfront and doors divided by mullions (rows not counted: null). The tower at the south end is not symmetric with the north end. alongM keeps the 1930 front only (the slim brick bay, cream bay and grey corner to the north are later and carry their own windows); heightM stops at the coping (the set-back top storey and the tower are not in the street view).",
+   "depthBand": 3,
+   "rows": [
+    null,
+    6,
+    6,
+    6,
+    6
+   ],
+   "alongM": [
+    11.6,
+    43.05
+   ],
+   "heightM": [
+    0,
+    28.6
+   ]
+  }
+ ]
+}
