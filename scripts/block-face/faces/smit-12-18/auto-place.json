@@ -3,7 +3,7 @@
  "street": "Smitstraat",
  "library": "transvaalbuurt",
  "stripDate": "2020-04-29",
- "seconds": 6.46,
+ "seconds": 14.67,
  "thresholds": {
   "minScore": 0.7,
   "margin": 0.05,
@@ -78,10 +78,43 @@
     "foliageShare": 0
    },
    "status": "held",
-   "stage": "run",
-   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
-   "likeness": null,
-   "challengers": {}
+   "stage": "likeness",
+   "reason": "edge NCC 0.063 < 0.15 (photo vs model body; likeness.ts FAIL: glazing storey band off by 0.21)",
+   "likeness": {
+    "pandId": "0363100012134096",
+    "ncc": 0.063,
+    "nccRaw": 0.063,
+    "shiftM": [
+     -0.2,
+     0.4
+    ],
+    "usable": 0.91,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.21"
+    ],
+    "wall": {
+     "photo": "#74605e",
+     "model": "#937976",
+     "dL": 0.108
+    },
+    "glazing": {
+     "photo": 0.29,
+     "model": 0.38
+    },
+    "columns": {
+     "photo": null,
+     "model": 3
+    },
+    "iou": 0.36
+   },
+   "challengers": {
+    "transvaal-1911-five-storey-tall": 0.063,
+    "transvaal-1911-five-storey-tall~m": 0.063,
+    "transvaal-1911-five-storey": 0.084,
+    "transvaal-1911-five-storey~m": 0.084
+   }
   },
   {
    "pandId": "0363100012112873",

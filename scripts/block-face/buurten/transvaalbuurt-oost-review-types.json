@@ -1,0 +1,30 @@
+{
+ "note": "Faces a reviewer restricted to some house types after reading the strip at full size (scripts/block-face/auto-place.ts, blockFace/reviewCrowns.ts typesForFace), and pands whose drawn side a reviewer pinned (mirrors).",
+ "reviewed": "2026-11-01",
+ "pins": [
+  {
+   "face": "retief-45-75",
+   "pands": [
+    "0363100012129491"
+   ],
+   "types": [
+    "transvaal-1911-five-storey"
+   ],
+   "reason": "Retiefstraat 71D (2023-01-02 strip): the low-ground 1911 front with its door on the left; --photo-decides took the mirrored variant on edge NCC (0.291 vs 0.277), which puts the door and the shouldered gable on the wrong sides"
+  }
+ ],
+ "mirrors": [
+  {
+   "pandId": "0363100012154435",
+   "type": "transvaal-1911-five-storey-tall",
+   "mirror": false,
+   "reason": "Retiefstraat 57 (retief-45-75 strip 2023-01-02): the arched house door is on the left axis under the balcony stack; the door reading took the dark bundle on the right"
+  },
+  {
+   "pandId": "0363100012129491",
+   "type": "transvaal-1911-five-storey",
+   "mirror": false,
+   "reason": "Retiefstraat 71D (retief-45-75 strip 2023-01-02): the house door with its letterbox panel is on the left axis and the shouldered gable stands over the right two-thirds; the door reading mirrored it"
+  }
+ ]
+}

@@ -3,7 +3,7 @@
  "street": "Magersfonteinstraat",
  "library": "transvaalbuurt",
  "stripDate": "2020-04-29",
- "seconds": 13.83,
+ "seconds": 13.16,
  "thresholds": {
   "minScore": 0.7,
   "margin": 0.05,
@@ -100,8 +100,7 @@
     "iou": 0.126
    },
    "challengers": {
-    "transvaal-1923-portiek-tower": 0.076,
-    "transvaal-1921-five-storey-oriel": 0.078
+    "transvaal-1923-portiek-tower": 0.061
    }
   },
   {
@@ -189,9 +188,7 @@
     "iou": 0.207
    },
    "challengers": {
-    "transvaal-1921-five-storey-flat": 0.04,
-    "transvaal-1921-five-storey-oriel": 0.082,
-    "transvaal-1923-portiek-tower": 0.104,
+    "transvaal-1923-portiek-tower": 0.033,
     "transvaal-1923-portiek": 0.111
    }
   },
@@ -295,8 +292,11 @@
     "iou": 0.14
    },
    "challengers": {
-    "transvaal-1923-portiek-tower": -0.01,
-    "transvaal-1921-five-storey-oriel": -0.018,
+    "transvaal-1923-portiek-tower": -0.019,
+    "transvaal-1911-five-storey-tall": 0.154,
+    "transvaal-1911-five-storey-tall~m": 0.141,
+    "transvaal-1911-five-storey": 0.167,
+    "transvaal-1911-five-storey~m": 0.148,
     "transvaal-1923-portiek": 0.05
    }
   }

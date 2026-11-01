@@ -1,0 +1,126 @@
+{
+ "face": "transvaal-3-47-r1",
+ "image": "staging/block-face/transvaal-3-47-r1/strip.jpg",
+ "pixelsPerMetre": 40,
+ "width": 482,
+ "height": 824,
+ "groundNAP": 0.198,
+ "heightM": 20.6,
+ "frame": {
+  "midRD": [
+   123604.097625,
+   485360.34699999995
+  ],
+  "uRD": [
+   -0.8939112176499878,
+   -0.44824405736107226
+  ],
+  "nRD": [
+   -0.44824405736107226,
+   0.8939112176499878
+  ]
+ },
+ "x0M": -6.04,
+ "x1M": 6.01,
+ "date": "2023-01-02",
+ "coverage": 1,
+ "spans": [
+  {
+   "pandId": "0363100012093192",
+   "x0M": -6.04,
+   "x1M": 0.04,
+   "px": [
+    0,
+    243
+   ],
+   "date": "2023-01-02",
+   "fallbackDate": false,
+   "panoramas": [
+    {
+     "panoId": "TMX7316010203-002908_pano_0006_000025",
+     "timestamp": "2023-01-02T10:05:17.921420Z",
+     "distanceM": 8.9,
+     "obliquityDeg": 0.6,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "TMX7316010203-002908_pano_0006_000026",
+     "timestamp": "2023-01-02T10:05:18.706420Z",
+     "distanceM": 10.1,
+     "obliquityDeg": 28.2,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "TMX7316010203-002908_pano_0006_000024",
+     "timestamp": "2023-01-02T10:05:17.151510Z",
+     "distanceM": 10.2,
+     "obliquityDeg": 29.3,
+     "missingFraction": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012146296",
+   "x0M": 0.04,
+   "x1M": 6.01,
+   "px": [
+    243,
+    482
+   ],
+   "date": "2023-01-02",
+   "fallbackDate": false,
+   "panoramas": [
+    {
+     "panoId": "TMX7316010203-002908_pano_0006_000026",
+     "timestamp": "2023-01-02T10:05:18.706420Z",
+     "distanceM": 9,
+     "obliquityDeg": 7.8,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "TMX7316010203-002908_pano_0006_000027",
+     "timestamp": "2023-01-02T10:05:19.521390Z",
+     "distanceM": 9.7,
+     "obliquityDeg": 22.3,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "TMX7316010203-002908_pano_0006_000025",
+     "timestamp": "2023-01-02T10:05:17.921420Z",
+     "distanceM": 10.8,
+     "obliquityDeg": 34.4,
+     "missingFraction": 0
+    }
+   ]
+  }
+ ],
+ "candidatesByDate": {
+  "2022-06-13": 17,
+  "2024-09-16": 17,
+  "2019-12-19": 17,
+  "2018-05-15": 17,
+  "2025-06-20": 17,
+  "2017-04-06": 17,
+  "2023-01-02": 17,
+  "2021-05-28": 17,
+  "2022-01-12": 17,
+  "2019-05-16": 17,
+  "2020-04-29": 17,
+  "2016-06-08": 17,
+  "2025-09-30": 0,
+  "2021-05-31": 0,
+  "2024-10-02": 1,
+  "2020-09-10": 0,
+  "2020-02-03": 0,
+  "2018-12-11": 0
+ },
+ "description": "Rectified orthographic elevation of the whole face on the frontage planes: x = chunk-frame metres along the face (left→right seen from the street) from x0M, y = metres above the shared ground (groundNAP) from the bottom; grey = no panorama data. Per-pand spans list the panoramas median-fused for that frontage.",
+ "attribution": "Gemeente Amsterdam, Panoramabeelden (CC BY 4.0; faces and number plates blurred by the publisher)",
+ "croppedFrom": {
+  "face": "transvaal-3-47",
+  "px": [
+   3530,
+   4012
+  ]
+ }
+}

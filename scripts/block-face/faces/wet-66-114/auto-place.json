@@ -3,7 +3,7 @@
  "street": "Christiaan de Wetstraat",
  "library": "transvaalbuurt",
  "stripDate": "2020-04-29",
- "seconds": 14.2,
+ "seconds": 14.52,
  "thresholds": {
   "minScore": 0.7,
   "margin": 0.05,
@@ -202,7 +202,6 @@
     "transvaal-1911-five-storey-tall~m": 0.044,
     "transvaal-1911-five-storey": 0.03,
     "transvaal-1911-five-storey~m": 0.046,
-    "transvaal-1921-five-storey-oriel": 0.032,
     "transvaal-1923-portiek": -0.012
    }
   },
@@ -287,7 +286,6 @@
     "transvaal-1911-five-storey-tall~m": 0.082,
     "transvaal-1911-five-storey": 0.067,
     "transvaal-1911-five-storey~m": 0.095,
-    "transvaal-1921-five-storey-oriel": 0.045,
     "transvaal-1923-portiek": -0.057
    }
   }

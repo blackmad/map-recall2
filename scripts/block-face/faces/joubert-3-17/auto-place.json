@@ -3,7 +3,7 @@
  "street": "Joubertstraat",
  "library": "transvaalbuurt",
  "stripDate": "2020-04-29",
- "seconds": 3.46,
+ "seconds": 3.74,
  "thresholds": {
   "minScore": 0.7,
   "margin": 0.05,
@@ -234,8 +234,8 @@
     "foliageShare": 0.01
    },
    "status": "held",
-   "stage": "run",
-   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
+   "stage": "review",
+   "reason": "review: an Amsterdam School flat-roofed front: a vertical ribbed stair shaft over a white concrete door canopy, angled white bay windows and trapezoid attic lights; transvaal-1923-portiek-tower draws a brick tower block over a slate roof with plain punched windows (lone pand released by the #156 opt-in; joubert-3-17-r1 sheet, 2026-11-01)",
    "likeness": null,
    "challengers": {}
   },

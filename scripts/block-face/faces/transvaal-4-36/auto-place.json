@@ -3,7 +3,7 @@
  "street": "Transvaalstraat",
  "library": "transvaalbuurt",
  "stripDate": "2023-01-02",
- "seconds": 1.65,
+ "seconds": 1.69,
  "thresholds": {
   "minScore": 0.7,
   "margin": 0.05,
@@ -633,8 +633,8 @@
     "foliageShare": 0.04
    },
    "status": "held",
-   "stage": "run",
-   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
+   "stage": "likeness",
+   "reason": "run did not compile",
    "likeness": null,
    "challengers": {}
   }

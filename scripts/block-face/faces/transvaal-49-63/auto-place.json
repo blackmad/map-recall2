@@ -3,7 +3,7 @@
  "street": "Transvaalstraat",
  "library": "transvaalbuurt",
  "stripDate": "2023-01-02",
- "seconds": 6.36,
+ "seconds": 9.64,
  "thresholds": {
   "minScore": 0.7,
   "margin": 0.05,
@@ -190,6 +190,8 @@
    "challengers": {
     "transvaal-1911-five-storey-tall~m": 0.061,
     "transvaal-1911-five-storey-tall": 0.061,
+    "transvaal-1911-five-storey~m": 0.06,
+    "transvaal-1911-five-storey": 0.06,
     "transvaal-1923-portiek-tower": 0.047,
     "transvaal-1923-portiek": 0.102
    }

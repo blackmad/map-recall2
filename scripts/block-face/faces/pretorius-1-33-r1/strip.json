@@ -1,0 +1,92 @@
+{
+ "face": "pretorius-1-33-r1",
+ "image": "staging/block-face/pretorius-1-33-r1/strip.jpg",
+ "pixelsPerMetre": 40,
+ "width": 235,
+ "height": 917,
+ "groundNAP": 0.001,
+ "heightM": 22.93,
+ "frame": {
+  "midRD": [
+   123593.252875,
+   485437.51125
+  ],
+  "uRD": [
+   -0.9180214548272517,
+   -0.3965307156789452
+  ],
+  "nRD": [
+   -0.3965307156789452,
+   0.9180214548272517
+  ]
+ },
+ "x0M": -2.93,
+ "x1M": 2.94,
+ "date": "2023-01-02",
+ "coverage": 1,
+ "spans": [
+  {
+   "pandId": "0363100012167293",
+   "x0M": -2.93,
+   "x1M": 2.94,
+   "px": [
+    0,
+    235
+   ],
+   "date": "2023-01-02",
+   "fallbackDate": false,
+   "panoramas": [
+    {
+     "panoId": "TMX7316010203-002908_pano_0001_000107",
+     "timestamp": "2023-01-02T09:50:33.563980Z",
+     "distanceM": 12.3,
+     "obliquityDeg": 6.8,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "TMX7316010203-002908_pano_0001_000108",
+     "timestamp": "2023-01-02T09:50:34.353970Z",
+     "distanceM": 12.6,
+     "obliquityDeg": 16.6,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "TMX7316010203-002908_pano_0001_000106",
+     "timestamp": "2023-01-02T09:50:32.788960Z",
+     "distanceM": 13.8,
+     "obliquityDeg": 28.1,
+     "missingFraction": 0
+    }
+   ]
+  }
+ ],
+ "candidatesByDate": {
+  "2022-06-13": 14,
+  "2016-06-08": 14,
+  "2020-09-10": 12,
+  "2022-01-12": 14,
+  "2019-12-19": 14,
+  "2018-05-15": 14,
+  "2021-05-28": 14,
+  "2019-05-16": 14,
+  "2017-04-06": 14,
+  "2025-06-20": 14,
+  "2023-01-02": 14,
+  "2018-12-11": 14,
+  "2024-09-16": 14,
+  "2020-04-29": 14,
+  "2024-10-02": 4,
+  "2022-08-31": 4,
+  "2020-01-29": 0,
+  "2016-05-12": 0
+ },
+ "description": "Rectified orthographic elevation of the whole face on the frontage planes: x = chunk-frame metres along the face (left→right seen from the street) from x0M, y = metres above the shared ground (groundNAP) from the bottom; grey = no panorama data. Per-pand spans list the panoramas median-fused for that frontage.",
+ "attribution": "Gemeente Amsterdam, Panoramabeelden (CC BY 4.0; faces and number plates blurred by the publisher)",
+ "croppedFrom": {
+  "face": "pretorius-1-33",
+  "px": [
+   2616,
+   2851
+  ]
+ }
+}

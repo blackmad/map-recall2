@@ -3,7 +3,7 @@
  "street": "Danie Theronstraat",
  "library": "transvaalbuurt",
  "stripDate": "2020-04-29",
- "seconds": 13.78,
+ "seconds": 2.16,
  "thresholds": {
   "minScore": 0.7,
   "margin": 0.05,
@@ -13,20 +13,7 @@
   "widthSlackM": 0.4,
   "flatRoofRiseM": 1.5
  },
- "runs": [
-  {
-   "face": "theron-2-36-r1",
-   "pands": [
-    "0363100012069116",
-    "0363100012116701",
-    "0363100012115092",
-    "0363100012112858",
-    "0363100012089089"
-   ],
-   "passed": true,
-   "triangles": 9187
-  }
- ],
+ "runs": [],
  "pands": [
   {
    "pandId": "0363100012133939",
@@ -84,8 +71,41 @@
     "foliageShare": 0.13
    },
    "status": "held",
-   "stage": "review",
-   "reason": "review: Danie Theronstraat 32-36 (BAG 1928, 9 m) is the corner block's own front: four storeys of wide single windows without the white top bands, a sloping parapet; transvaal-1926-band-row draws the band row's pairs and stair window (theron-2-36-r1 sheet, 2026-11-01; NCC 0.19)",
+   "stage": "match",
+   "reason": "every type vetoed (best transvaal-1911-five-storey-tall: built 1928, type 1908-1914)",
+   "best": {
+    "type": "transvaal-1911-five-storey-tall",
+    "score": 0,
+    "veto": [
+     "built 1928, type 1908-1914"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0.5,
+      "note": "3DBAG eaves 12.52 m = 4 storeys of 3.13 m vs the type's 3.55 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.061 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0,
+      "note": "strip columns 5 vs 3 bays"
+     }
+    ]
+   },
    "likeness": null,
    "challengers": {}
   },
@@ -140,48 +160,38 @@
     "voidShare": 0,
     "foliageShare": 0.54
    },
-   "status": "placed",
-   "type": "transvaal-1926-band-row",
-   "score": 1,
-   "placement": {
-    "type": "transvaal-1926-band-row",
-    "mirror": true
-   },
-   "notes": [
-    "door left: mirrored",
-    "crown parapet (type default)",
-    "no photo evidence of its own (usable photo 39 % < 50 %); placed on row evidence from 116701",
-    "no photo evidence of its own (usable photo 39 % < 50 %); placed on row evidence from 116701"
-   ],
-   "likeness": {
-    "pandId": "0363100012069116",
-    "ncc": null,
-    "nccRaw": 0.475,
-    "shiftM": [
-     -0.2,
-     -0.4
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best transvaal-1911-five-storey-tall: built 1926, type 1908-1914; frontage 12 m, type 4.8-11 m)",
+   "best": {
+    "type": "transvaal-1911-five-storey-tall",
+    "score": 0,
+    "veto": [
+     "built 1926, type 1908-1914",
+     "frontage 12 m, type 4.8-11 m"
     ],
-    "usable": 0.39,
-    "abstain": "usable photo 39 % < 50 %",
-    "verdict": "NO EVIDENCE",
-    "reasons": [
-     "foliage 37 % > 25 %"
-    ],
-    "wall": {
-     "photo": "#736663",
-     "model": "#86746a",
-     "dL": 0.051
-    },
-    "glazing": {
-     "photo": 0.66,
-     "model": 0.27
-    },
-    "columns": {
-     "photo": null,
-     "model": 3
-    },
-    "iou": 0.35
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0.5,
+      "note": "3DBAG eaves 12.92 m = 4 storeys of 3.23 m vs the type's 3.55 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": null,
+      "note": "no strip"
+     }
+    ]
    },
+   "likeness": null,
    "challengers": {}
   },
   {
@@ -230,49 +240,41 @@
     "voidShare": 0,
     "foliageShare": 0.11
    },
-   "status": "placed",
-   "type": "transvaal-1926-band-row",
-   "score": 1,
-   "placement": {
-    "type": "transvaal-1926-band-row",
-    "measuredPalette": {
-     "brick": "#6f645e",
-     "evidence": "strip 2020-04-29 span 1090-1570: trim-normalised wall (buildingRecipe/measureFacade.ts)"
-    }
+   "status": "held",
+   "stage": "match",
+   "reason": "best transvaal-1923-portiek-tower scores 0.67 < 0.7 (strip columns 6 vs 3 bays)",
+   "best": {
+    "type": "transvaal-1923-portiek-tower",
+    "score": 0.67,
+    "veto": [],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": null,
+      "note": "strip cornice unread (type line 12.1 m; 3DBAG 12.91 m not compared)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.108 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0,
+      "note": "strip columns 6 vs 3 bays"
+     }
+    ]
    },
-   "notes": [
-    "door right",
-    "crown parapet (type default)"
-   ],
-   "likeness": {
-    "pandId": "0363100012116701",
-    "ncc": 0.495,
-    "nccRaw": 0.495,
-    "shiftM": [
-     -0.15,
-     -0.35
-    ],
-    "usable": 0.83,
-    "abstain": null,
-    "verdict": "NO EVIDENCE",
-    "reasons": [
-     "foliage 26 % > 25 %"
-    ],
-    "wall": {
-     "photo": "#756764",
-     "model": "#857871",
-     "dL": 0.057
-    },
-    "glazing": {
-     "photo": 0.3,
-     "model": 0.27
-    },
-    "columns": {
-     "photo": 3,
-     "model": 3
-    },
-    "iou": 0.495
-   },
+   "likeness": null,
    "challengers": {}
   },
   {
@@ -316,50 +318,41 @@
     "voidShare": 0,
     "foliageShare": 0.2
    },
-   "status": "placed",
-   "type": "transvaal-1926-band-row",
-   "score": 1,
-   "placement": {
-    "type": "transvaal-1926-band-row",
-    "mirror": true,
-    "measuredPalette": {
-     "brick": "#7d6d64",
-     "evidence": "strip 2020-04-29 span 1570-2050: trim-normalised wall (buildingRecipe/measureFacade.ts)"
-    }
+   "status": "held",
+   "stage": "match",
+   "reason": "best transvaal-1923-portiek-tower scores 0.67 < 0.7 (strip columns 6 vs 3 bays)",
+   "best": {
+    "type": "transvaal-1923-portiek-tower",
+    "score": 0.67,
+    "veto": [],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": null,
+      "note": "strip cornice unread (type line 12.1 m; 3DBAG 12.97 m not compared)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.077 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0,
+      "note": "strip columns 6 vs 3 bays"
+     }
+    ]
    },
-   "notes": [
-    "door left: mirrored",
-    "crown parapet (type default)"
-   ],
-   "likeness": {
-    "pandId": "0363100012115092",
-    "ncc": 0.51,
-    "nccRaw": 0.51,
-    "shiftM": [
-     -0.1,
-     -0.35
-    ],
-    "usable": 0.71,
-    "abstain": null,
-    "verdict": "NO EVIDENCE",
-    "reasons": [
-     "foliage 33 % > 25 %"
-    ],
-    "wall": {
-     "photo": "#786b68",
-     "model": "#928076",
-     "dL": 0.078
-    },
-    "glazing": {
-     "photo": 0.42,
-     "model": 0.27
-    },
-    "columns": {
-     "photo": 3,
-     "model": 3
-    },
-    "iou": 0.535
-   },
+   "likeness": null,
    "challengers": {}
   },
   {
@@ -408,45 +401,37 @@
     "voidShare": 0,
     "foliageShare": 0.35
    },
-   "status": "placed",
-   "type": "transvaal-1926-band-row",
-   "score": 1,
-   "placement": {
-    "type": "transvaal-1926-band-row"
-   },
-   "notes": [
-    "crown parapet (type default)",
-    "door reviewer pin: as drawn (Danie Theronstraat 18A: the half-portiek's stair window and portiek canopy stand on its right party wall (2020-04-29 strip); 6 m pands alternate along the row, the door read under the hedges is no guide)"
-   ],
-   "likeness": {
-    "pandId": "0363100012112858",
-    "ncc": 0.446,
-    "nccRaw": 0.446,
-    "shiftM": [
-     -0.05,
-     -0.35
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best transvaal-1911-five-storey-tall: built 1928, type 1908-1914)",
+   "best": {
+    "type": "transvaal-1911-five-storey-tall",
+    "score": 0,
+    "veto": [
+     "built 1928, type 1908-1914"
     ],
-    "usable": 0.52,
-    "abstain": null,
-    "verdict": "NO EVIDENCE",
-    "reasons": [
-     "foliage 35 % > 25 %"
-    ],
-    "wall": {
-     "photo": "#816f67",
-     "model": "#86746a",
-     "dL": 0.016
-    },
-    "glazing": {
-     "photo": 0.41,
-     "model": 0.27
-    },
-    "columns": {
-     "photo": null,
-     "model": null
-    },
-    "iou": 0.498
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0.5,
+      "note": "3DBAG eaves 12.85 m = 4 storeys of 3.21 m vs the type's 3.55 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": null,
+      "note": "no strip"
+     }
+    ]
    },
+   "likeness": null,
    "challengers": {}
   },
   {
@@ -484,49 +469,37 @@
     "voidShare": 0,
     "foliageShare": 0.84
    },
-   "status": "placed",
-   "type": "transvaal-1926-band-row",
-   "score": 1,
-   "placement": {
-    "type": "transvaal-1926-band-row",
-    "mirror": true
-   },
-   "notes": [
-    "crown parapet (type default)",
-    "door reviewer pin: mirrored (Danie Theronstraat 16A: the half-portiek's stair window and portiek canopy stand on its left party wall (2020-04-29 strip); 6 m pands alternate along the row, the door read under the hedges is no guide)",
-    "no photo evidence of its own (usable photo 18 % < 50 %); placed on row evidence from 112858",
-    "no photo evidence of its own (usable photo 18 % < 50 %); placed on row evidence from 112858"
-   ],
-   "likeness": {
-    "pandId": "0363100012089089",
-    "ncc": null,
-    "nccRaw": 0.643,
-    "shiftM": [
-     -0.3,
-     -0.4
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best transvaal-1911-five-storey-tall: built 1928, type 1908-1914)",
+   "best": {
+    "type": "transvaal-1911-five-storey-tall",
+    "score": 0,
+    "veto": [
+     "built 1928, type 1908-1914"
     ],
-    "usable": 0.18,
-    "abstain": "usable photo 18 % < 50 %",
-    "verdict": "NO EVIDENCE",
-    "reasons": [
-     "usable upper cells 29 % < 40 %",
-     "foliage 57 % > 25 %"
-    ],
-    "wall": {
-     "photo": "#867373",
-     "model": "#86746a",
-     "dL": -0.018
-    },
-    "glazing": {
-     "photo": 0.69,
-     "model": 0.26
-    },
-    "columns": {
-     "photo": null,
-     "model": 2
-    },
-    "iou": 0.287
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0.5,
+      "note": "3DBAG eaves 12.81 m = 4 storeys of 3.2 m vs the type's 3.55 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": null,
+      "note": "no strip"
+     }
+    ]
    },
+   "likeness": null,
    "challengers": {}
   },
   {
@@ -571,38 +544,36 @@
     "foliageShare": 0.72
    },
    "status": "held",
-   "stage": "likeness",
-   "reason": "no photo evidence (usable photo 26 % < 50 %) and no passing same-type neighbour",
-   "likeness": {
-    "pandId": "0363100012065292",
-    "ncc": null,
-    "nccRaw": 0.571,
-    "shiftM": [
-     0,
-     -0.4
+   "stage": "match",
+   "reason": "every type vetoed (best transvaal-1911-five-storey-tall: built 1928, type 1908-1914)",
+   "best": {
+    "type": "transvaal-1911-five-storey-tall",
+    "score": 0,
+    "veto": [
+     "built 1928, type 1908-1914"
     ],
-    "usable": 0.26,
-    "abstain": "usable photo 26 % < 50 %",
-    "verdict": "NO EVIDENCE",
-    "reasons": [
-     "usable upper cells 38 % < 40 %",
-     "foliage 49 % > 25 %"
-    ],
-    "wall": {
-     "photo": "#4e4235",
-     "model": "#86746a",
-     "dL": 0.214
-    },
-    "glazing": {
-     "photo": 0.35,
-     "model": 0.27
-    },
-    "columns": {
-     "photo": 4,
-     "model": null
-    },
-    "iou": 0.206
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "3DBAG eaves 13.12 m = 4 storeys of 3.28 m vs the type's 3.55 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": null,
+      "note": "no strip"
+     }
+    ]
    },
+   "likeness": null,
    "challengers": {}
   },
   {
@@ -642,25 +613,25 @@
    },
    "status": "held",
    "stage": "match",
-   "reason": "every type vetoed (best transvaal-1926-band-row: axis pitch 0.86 m (7 strip columns over 6 m), type 1.15-4.1 m)",
+   "reason": "every type vetoed (best transvaal-1911-five-storey-tall: built 1928, type 1908-1914)",
    "best": {
-    "type": "transvaal-1926-band-row",
+    "type": "transvaal-1911-five-storey-tall",
     "score": 0,
     "veto": [
-     "axis pitch 0.86 m (7 strip columns over 6 m), type 1.15-4.1 m"
+     "built 1928, type 1908-1914"
     ],
     "criteria": [
      {
       "key": "eaves",
       "weight": 2,
-      "score": null,
-      "note": "strip cornice unread (type line 13.9 m; 3DBAG 12.99 m not compared)"
+      "score": 0.5,
+      "note": "3DBAG eaves 12.99 m = 4 storeys of 3.25 m vs the type's 3.55 m"
      },
      {
       "key": "storeys",
       "weight": 1,
       "score": 1,
-      "note": "3DBAG bouwlagen 5 vs 4/5"
+      "note": "3DBAG bouwlagen 5 vs 5"
      },
      {
       "key": "stucco",
@@ -757,26 +728,25 @@
    },
    "status": "held",
    "stage": "match",
-   "reason": "every type vetoed (best transvaal-1926-band-row: stair block 4.43 m, type 5.5-12.6 m; 3DBAG eaves 9.65 m = 3 storeys of the type's 3.3 m, type 4)",
+   "reason": "every type vetoed (best transvaal-1911-five-storey-tall: built 1928, type 1908-1914)",
    "best": {
-    "type": "transvaal-1926-band-row",
+    "type": "transvaal-1911-five-storey-tall",
     "score": 0,
     "veto": [
-     "stair block 4.43 m, type 5.5-12.6 m",
-     "3DBAG eaves 9.65 m = 3 storeys of the type's 3.3 m, type 4"
+     "built 1928, type 1908-1914"
     ],
     "criteria": [
      {
       "key": "eaves",
       "weight": 2,
-      "score": null,
-      "note": "strip cornice unread (type line 13.9 m; 3DBAG 9.65 m not compared)"
+      "score": 0,
+      "note": "3DBAG eaves 9.65 m = 4 storeys of 2.41 m vs the type's 3.55 m"
      },
      {
       "key": "storeys",
       "weight": 1,
-      "score": 1,
-      "note": "3DBAG bouwlagen 4 vs 4/5"
+      "score": 0,
+      "note": "3DBAG bouwlagen 4 vs 5"
      },
      {
       "key": "stucco",

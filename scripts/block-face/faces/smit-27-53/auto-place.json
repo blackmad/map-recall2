@@ -3,7 +3,7 @@
  "street": "Smitstraat",
  "library": "transvaalbuurt",
  "stripDate": "2020-04-29",
- "seconds": 2.38,
+ "seconds": 6.01,
  "thresholds": {
   "minScore": 0.7,
   "margin": 0.05,
@@ -78,10 +78,44 @@
     "foliageShare": 0.01
    },
    "status": "held",
-   "stage": "run",
-   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
-   "likeness": null,
-   "challengers": {}
+   "stage": "likeness",
+   "reason": "edge NCC 0.073 < 0.15 (photo vs model body; likeness.ts FAIL: window shape tall vs photo square; columns 4 vs photo 2)",
+   "likeness": {
+    "pandId": "0363100012076148",
+    "ncc": 0.073,
+    "nccRaw": 0.073,
+    "shiftM": [
+     0.4,
+     -0.2
+    ],
+    "usable": 0.82,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "window shape tall vs photo square",
+     "columns 4 vs photo 2"
+    ],
+    "wall": {
+     "photo": "#76635e",
+     "model": "#8c7671",
+     "dL": 0.08
+    },
+    "glazing": {
+     "photo": 0.38,
+     "model": 0.38
+    },
+    "columns": {
+     "photo": 2,
+     "model": 4
+    },
+    "iou": 0.327
+   },
+   "challengers": {
+    "transvaal-1911-five-storey-tall": 0.073,
+    "transvaal-1911-five-storey-tall~m": 0.089,
+    "transvaal-1923-portiek-tower": 0.083,
+    "transvaal-1923-portiek": 0.123
+   }
   },
   {
    "pandId": "0363100012233640",
@@ -513,8 +547,8 @@
     "foliageShare": 0.02
    },
    "status": "held",
-   "stage": "run",
-   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
+   "stage": "review",
+   "reason": "review: the balcony stack runs on the right-hand axis at the face end and the cornice is a corner slab; the type draws centre balconies (lone pand released by the #156 opt-in; smit-27-53-r1 sheet, 2026-11-01)",
    "likeness": null,
    "challengers": {}
   }

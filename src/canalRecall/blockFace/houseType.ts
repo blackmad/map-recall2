@@ -21,7 +21,7 @@ import type {HouseDesign, RhythmSpec} from './intent.ts';
 
 /** Everything above the cornice line: a crown variant sets exactly these (and nothing else). */
 export const CROWN_KEYS = ['gable', 'crownCap', 'crownCapSpan', 'crownCapRise', 'crownShoulder', 'crownNeckWidth', 'crownCapCornice', 'crownCapRatio', 'crownAt', 'crownBays', 'crownRise', 'crownSteps', 'crownFinial',
-  'atticWindows', 'atticShape', 'dormers', 'dormerStyle', 'dormerAt', 'dormerCap', 'gableOrnament', 'roofFront', 'crownGroups', 'tower', 'hoist', 'parapet', 'eavesOverhang', 'dormerSize', 'renderedGable', 'dormerBody', 'dormerHoist'] as const;
+  'atticWindows', 'atticShape', 'dormers', 'dormerStyle', 'dormerAt', 'dormerCap', 'gableOrnament', 'roofFront', 'crownGroups', 'tower', 'hoist', 'parapet', 'eavesOverhang', 'dormerSize', 'renderedGable', 'dormerBody', 'dormerHoist', 'shouldered', 'crownHalf'] as const;
 /** Body fields a crown variant may also set (a gabled variant drops the cornice its cornice variant has). */
 export const CROWN_BODY_KEYS = ['cornice'] as const;
 /** The ground storey (with souterrain/stoop): a ground variant or a per-house shop sets these. */
@@ -192,6 +192,7 @@ export function mirrorFront(f: FrontIntent): FrontIntent {
   if (f.storeyBayWidths) out.storeyBayWidths = Object.fromEntries(Object.entries(f.storeyBayWidths).map(([k, v]) => [k, [...v].reverse()]));
   if (f.storeyAxes) out.storeyAxes = Object.fromEntries(Object.entries(f.storeyAxes).map(([k, v]) => [k, v.map(flipAxis).sort((p, q) => p - q)]));
   if (f.crownAt) out.crownAt = flipFrac(f.crownAt);
+  if (f.crownHalf) out.crownHalf = f.crownHalf === 'left' ? 'right' : 'left';
   if (f.crownBays) out.crownBays = flipAxes(f.crownBays);
   if (f.crownGroups) out.crownGroups = f.crownGroups.map(flipAxes).reverse();
   if (f.tower?.corner) throw Error(`${f.id}: a corner tower stands on the pand's own corner; it is not part of a mirrored type`);

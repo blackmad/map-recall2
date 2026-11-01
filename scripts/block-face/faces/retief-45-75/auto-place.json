@@ -3,7 +3,7 @@
  "street": "Retiefstraat",
  "library": "transvaalbuurt",
  "stripDate": "2023-01-02",
- "seconds": 32.4,
+ "seconds": 51.52,
  "thresholds": {
   "minScore": 0.7,
   "margin": 0.05,
@@ -15,6 +15,22 @@
  },
  "runs": [
   {
+   "face": "retief-45-75-r2",
+   "pands": [
+    "0363100012154435"
+   ],
+   "passed": true,
+   "triangles": 2052
+  },
+  {
+   "face": "retief-45-75-r3",
+   "pands": [
+    "0363100012074312"
+   ],
+   "passed": true,
+   "triangles": 2047
+  },
+  {
    "face": "retief-45-75-r1",
    "pands": [
     "0363100012112323",
@@ -22,7 +38,7 @@
     "0363100012067013"
    ],
    "passed": true,
-   "triangles": 6291
+   "triangles": 6650
   }
  ],
  "pands": [
@@ -518,41 +534,41 @@
    },
    "status": "held",
    "stage": "likeness",
-   "reason": "edge NCC 0.136 < 0.15 (photo vs model body; likeness.ts FAIL: glazing storey band off by 0.23; window shape tall vs photo square; columns 4 vs photo 2)",
+   "reason": "edge NCC 0.146 < 0.15 (photo vs model body; likeness.ts FAIL: glazing storey band off by 0.21; window shape tall vs photo square; columns 4 vs photo 2)",
    "likeness": {
     "pandId": "0363100012105469",
-    "ncc": 0.136,
-    "nccRaw": 0.136,
+    "ncc": 0.146,
+    "nccRaw": 0.146,
     "shiftM": [
-     0.05,
-     -0.35
+     0,
+     -0.25
     ],
     "usable": 0.99,
     "abstain": null,
     "verdict": "FAIL",
     "reasons": [
-     "glazing storey band off by 0.23",
+     "glazing storey band off by 0.21",
      "window shape tall vs photo square",
      "columns 4 vs photo 2"
     ],
     "wall": {
-     "photo": "#78655e",
+     "photo": "#76635e",
      "model": "#8c766f",
-     "dL": 0.073
+     "dL": 0.076
     },
     "glazing": {
      "photo": 0.41,
-     "model": 0.37
+     "model": 0.36
     },
     "columns": {
      "photo": 2,
      "model": 4
     },
-    "iou": 0.41
+    "iou": 0.423
    },
    "challengers": {
-    "transvaal-1911-five-storey-tall~m": 0.136,
-    "transvaal-1911-five-storey-tall": 0.178
+    "transvaal-1911-five-storey-tall~m": 0.146,
+    "transvaal-1911-five-storey-tall": 0.194
    }
   },
   {
@@ -616,41 +632,64 @@
     "voidShare": 0,
     "foliageShare": 0
    },
-   "status": "held",
-   "stage": "run",
-   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
+   "status": "placed",
+   "type": "transvaal-1911-five-storey-tall",
+   "score": 0.86,
+   "runnerUp": {
+    "typeId": "transvaal-1911-five-storey",
+    "score": 0.86
+   },
+   "placement": {
+    "type": "transvaal-1911-five-storey-tall",
+    "measuredPalette": {
+     "brick": "#7d6a63",
+     "evidence": "strip 2023-01-02 span 1995-2233: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "crown": "wall-dormer"
+   },
+   "notes": [
+    "near tie with transvaal-1911-five-storey (0.86)",
+    "crown wall-dormer: reviewer pin (retief-45-75-r4 sheet 2023-01-02 (lone pand, #156): a brick wall dormer with one light over the centre axis and a white flat cap, the same as 69C; the skyline reads branches)",
+    "door reviewer pin: as drawn (Retiefstraat 57 (retief-45-75 strip 2023-01-02): the arched house door is on the left axis under the balcony stack; the door reading took the dark bundle on the right)",
+    "lone pand: a stair block on its own: transvaal-1911-five-storey-tall opts in to one-house faces from 5 m (frontage 5.95 m)"
+   ],
    "likeness": {
     "pandId": "0363100012154435",
-    "ncc": 0.213,
-    "nccRaw": 0.213,
+    "ncc": 0.218,
+    "nccRaw": 0.218,
     "shiftM": [
      -0.2,
-     -0.25
+     -0.15
     ],
     "usable": 0.99,
     "abstain": null,
-    "verdict": "WARN",
+    "verdict": "FAIL",
     "reasons": [
+     "glazing storey band off by 0.22",
      "columns 3 vs photo 4"
     ],
     "wall": {
-     "photo": "#7c6a63",
+     "photo": "#7c6962",
      "model": "#927d75",
-     "dL": 0.078
+     "dL": 0.08
     },
     "glazing": {
-     "photo": 0.41,
+     "photo": 0.42,
      "model": 0.37
     },
     "columns": {
      "photo": 4,
      "model": 3
     },
-    "iou": 0.646
+    "iou": 0.617
    },
    "challengers": {
-    "transvaal-1911-five-storey-tall~m": 0.214,
-    "transvaal-1911-five-storey-tall": 0.214
+    "transvaal-1911-five-storey-tall": 0.207,
+    "transvaal-1911-five-storey-tall~m": 0.207,
+    "transvaal-1911-five-storey~m": 0.23,
+    "transvaal-1911-five-storey": 0.23,
+    "transvaal-1923-portiek-tower": 0.128,
+    "transvaal-1923-portiek": 0.154
    }
   },
   {
@@ -701,40 +740,40 @@
    },
    "status": "held",
    "stage": "likeness",
-   "reason": "edge NCC 0.028 < 0.15 (photo vs model body; likeness.ts FAIL: glazing storey band off by 0.20; columns 3 vs photo 4)",
+   "reason": "edge NCC 0.036 < 0.15 (photo vs model body; likeness.ts FAIL: glazing storey band off by 0.23; columns 3 vs photo 4)",
    "likeness": {
     "pandId": "0363100012136245",
-    "ncc": 0.028,
-    "nccRaw": 0.028,
+    "ncc": 0.036,
+    "nccRaw": 0.036,
     "shiftM": [
      -0.4,
-     0.05
+     0.1
     ],
     "usable": 0.91,
     "abstain": null,
     "verdict": "FAIL",
     "reasons": [
-     "glazing storey band off by 0.20",
+     "glazing storey band off by 0.23",
      "columns 3 vs photo 4"
     ],
     "wall": {
-     "photo": "#605451",
+     "photo": "#605552",
      "model": "#766864",
-     "dL": 0.08
+     "dL": 0.078
     },
     "glazing": {
-     "photo": 0.31,
+     "photo": 0.33,
      "model": 0.37
     },
     "columns": {
      "photo": 4,
      "model": 3
     },
-    "iou": 0.236
+    "iou": 0.241
    },
    "challengers": {
-    "transvaal-1911-five-storey-tall": 0.201,
-    "transvaal-1911-five-storey-tall~m": 0.201
+    "transvaal-1911-five-storey-tall": 0.191,
+    "transvaal-1911-five-storey-tall~m": 0.191
    }
   },
   {
@@ -784,44 +823,10 @@
     "foliageShare": 0
    },
    "status": "held",
-   "stage": "run",
-   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
-   "likeness": {
-    "pandId": "0363100012144201",
-    "ncc": 0.299,
-    "nccRaw": 0.299,
-    "shiftM": [
-     -0.25,
-     -0.4
-    ],
-    "usable": 0.99,
-    "abstain": null,
-    "verdict": "FAIL",
-    "reasons": [
-     "glazing storey band off by 0.24 mean 0.40 vs photo 0.53",
-     "columns 3 vs photo 4"
-    ],
-    "wall": {
-     "photo": "#74645d",
-     "model": "#87736c",
-     "dL": 0.067
-    },
-    "glazing": {
-     "photo": 0.53,
-     "model": 0.4
-    },
-    "columns": {
-     "photo": 4,
-     "model": 3
-    },
-    "iou": 0.508
-   },
-   "challengers": {
-    "transvaal-1911-five-storey-tall~m": 0.22,
-    "transvaal-1911-five-storey-tall": 0.22,
-    "transvaal-1911-five-storey": 0.3,
-    "transvaal-1911-five-storey~m": 0.3
-   }
+   "stage": "review",
+   "reason": "review: the ground floor is residential (an arched house door and two windows), but an OSM amenity=public_bookcase node makes auto-place draw a bar shop front; the wall dormer pin is right (lone pand released by the #156 opt-in; retief-45-75-r5 sheet, 2026-11-01)",
+   "likeness": null,
+   "challengers": {}
   },
   {
    "pandId": "0363100012092019",
@@ -875,43 +880,10 @@
     "foliageShare": 0
    },
    "status": "held",
-   "stage": "likeness",
-   "reason": "edge NCC 0.025 < 0.15 (photo vs model body; likeness.ts FAIL: glazing storey band off by 0.30)",
-   "likeness": {
-    "pandId": "0363100012092019",
-    "ncc": 0.025,
-    "nccRaw": 0.025,
-    "shiftM": [
-     0.4,
-     0
-    ],
-    "usable": 0.95,
-    "abstain": null,
-    "verdict": "FAIL",
-    "reasons": [
-     "glazing storey band off by 0.30"
-    ],
-    "wall": {
-     "photo": "#695850",
-     "model": "#8a7063",
-     "dL": 0.102
-    },
-    "glazing": {
-     "photo": 0.34,
-     "model": 0.42
-    },
-    "columns": {
-     "photo": 3,
-     "model": 3
-    },
-    "iou": 0.218
-   },
-   "challengers": {
-    "transvaal-1911-five-storey-tall~m": 0.22,
-    "transvaal-1911-five-storey-tall": 0.22,
-    "transvaal-1911-five-storey~m": 0.183,
-    "transvaal-1911-five-storey": 0.183
-   }
+   "stage": "review",
+   "reason": "review: the ground floor is residential (an arched house door and windows), but the OSM amenity=public_bookcase node 10979435695 on the pavement makes auto-place draw a bar shop front; the front otherwise reads as the 1911 type under a pointed gable (retief-45-75 strip 2023-01-02, #156)",
+   "likeness": null,
+   "challengers": {}
   },
   {
    "pandId": "0363100012074312",
@@ -964,45 +936,64 @@
     "voidShare": 0,
     "foliageShare": 0
    },
-   "status": "held",
-   "stage": "likeness",
-   "reason": "edge NCC 0 < 0.15 (photo vs model body; likeness.ts FAIL: wall dL +0.19; glazing storey band off by 0.20; columns 3 vs photo 4)",
+   "status": "placed",
+   "type": "transvaal-1911-five-storey-tall",
+   "score": 0.86,
+   "runnerUp": {
+    "typeId": "transvaal-1911-five-storey",
+    "score": 0.86
+   },
+   "placement": {
+    "type": "transvaal-1911-five-storey-tall",
+    "measuredPalette": {
+     "brick": "#75615a",
+     "evidence": "strip 2023-01-02 span 2947-3185: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "crown": "wall-dormer"
+   },
+   "notes": [
+    "near tie with transvaal-1911-five-storey (0.86)",
+    "door left",
+    "crown wall-dormer: reviewer pin (retief-45-75 strip 2023-01-02 (Retiefstraat 65A, #156): a brick wall dormer with one light over the centre axis and a white flat cap, like 69C)",
+    "lone pand: a stair block on its own: transvaal-1911-five-storey-tall opts in to one-house faces from 5 m (frontage 5.95 m)"
+   ],
    "likeness": {
     "pandId": "0363100012074312",
-    "ncc": 0,
-    "nccRaw": 0,
+    "ncc": 0.252,
+    "nccRaw": 0.252,
     "shiftM": [
      -0.1,
-     0.05
+     -0.1
     ],
-    "usable": 0.96,
+    "usable": 0.99,
     "abstain": null,
     "verdict": "FAIL",
     "reasons": [
-     "wall dL +0.19",
-     "glazing storey band off by 0.20",
+     "glazing storey band off by 0.36",
      "columns 3 vs photo 4"
     ],
     "wall": {
-     "photo": "#554640",
+     "photo": "#735f59",
      "model": "#8c746c",
-     "dL": 0.194
+     "dL": 0.086
     },
     "glazing": {
-     "photo": 0.27,
+     "photo": 0.3,
      "model": 0.37
     },
     "columns": {
      "photo": 4,
      "model": 3
     },
-    "iou": 0.252
+    "iou": 0.429
    },
    "challengers": {
     "transvaal-1911-five-storey-tall": 0.255,
     "transvaal-1911-five-storey-tall~m": 0.255,
-    "transvaal-1911-five-storey": 0.241,
-    "transvaal-1911-five-storey~m": 0.241
+    "transvaal-1911-five-storey": 0.234,
+    "transvaal-1911-five-storey~m": 0.234,
+    "transvaal-1923-portiek-tower": 0.135,
+    "transvaal-1923-portiek": 0.203
    }
   },
   {
@@ -1053,40 +1044,40 @@
    },
    "status": "held",
    "stage": "likeness",
-   "reason": "edge NCC 0.025 < 0.15 (photo vs model body; likeness.ts FAIL: glazing storey band off by 0.19; columns 3 vs photo 4)",
+   "reason": "edge NCC 0.067 < 0.15 (photo vs model body; likeness.ts WARN: columns 3 vs photo 4; mask IoU 0.259 < 0.45)",
    "likeness": {
     "pandId": "0363100012120175",
-    "ncc": 0.025,
-    "nccRaw": 0.025,
+    "ncc": 0.067,
+    "nccRaw": 0.067,
     "shiftM": [
      -0.4,
-     0.05
+     0.25
     ],
-    "usable": 0.96,
+    "usable": 0.97,
     "abstain": null,
-    "verdict": "FAIL",
+    "verdict": "WARN",
     "reasons": [
-     "glazing storey band off by 0.19",
-     "columns 3 vs photo 4"
+     "columns 3 vs photo 4",
+     "mask IoU 0.259 < 0.45"
     ],
     "wall": {
-     "photo": "#66554c",
+     "photo": "#69554c",
      "model": "#83695f",
-     "dL": 0.094
+     "dL": 0.088
     },
     "glazing": {
      "photo": 0.3,
-     "model": 0.37
+     "model": 0.38
     },
     "columns": {
      "photo": 4,
      "model": 3
     },
-    "iou": 0.244
+    "iou": 0.259
    },
    "challengers": {
-    "transvaal-1911-five-storey-tall~m": 0.222,
-    "transvaal-1911-five-storey-tall": 0.222
+    "transvaal-1911-five-storey-tall~m": 0.189,
+    "transvaal-1911-five-storey-tall": 0.189
    }
   },
   {
@@ -1168,7 +1159,7 @@
     "crown": "wall-dormer"
    },
    "notes": [
-    "photo decides: transvaal-1911-five-storey edge NCC 0.274 vs transvaal-1911-five-storey-tall 0.22",
+    "photo decides: transvaal-1911-five-storey edge NCC 0.274 vs transvaal-1911-five-storey-tall 0.217",
     "crown wall-dormer: reviewer pin (retief-45-75-r1 sheet 2023-01-02: a brick wall dormer with one light over the centre axis, flat white cap at about 15.9 m; the skyline reads the branches over it (17.7 m))"
    ],
    "likeness": {
@@ -1202,11 +1193,10 @@
     "iou": 0.438
    },
    "challengers": {
-    "transvaal-1911-five-storey-tall": 0.22,
-    "transvaal-1911-five-storey-tall~m": 0.22,
+    "transvaal-1911-five-storey-tall": 0.217,
+    "transvaal-1911-five-storey-tall~m": 0.217,
     "transvaal-1911-five-storey": 0.274,
-    "transvaal-1911-five-storey~m": 0.274,
-    "transvaal-1921-five-storey-oriel": 0.231
+    "transvaal-1911-five-storey~m": 0.274
    }
   },
   {
@@ -1268,25 +1258,25 @@
      "brick": "#56453f",
      "evidence": "strip 2023-01-02 span 3661-3921: trim-normalised wall (buildingRecipe/measureFacade.ts)"
     },
-    "mirror": true
+    "crown": "shouldered-gable"
    },
    "notes": [
-    "photo decides: transvaal-1911-five-storey~m edge NCC 0.291 vs transvaal-1911-five-storey-tall 0.198",
-    "crown point-gable: reviewer pin (retief-45-75-r1 sheet 2023-01-02: a low pointed brick gable over the whole front with attic lights; the skyline reads branches at 17.7 m)"
+    "crown shouldered-gable: reviewer pin (retief-45-75 strip 2023-01-02 (Retiefstraat 71D, #156 re-review): a low shouldered gable, not a steep point: eaves about 13.35 m, shoulder +1.4 m, apex +1.05 m, about 4.2 m wide on the side away from the door)",
+    "door reviewer pin: as drawn (Retiefstraat 71D (retief-45-75 strip 2023-01-02): the house door with its letterbox panel is on the left axis and the shouldered gable stands over the right two-thirds; the door reading mirrored it)"
    ],
    "likeness": {
     "pandId": "0363100012129491",
-    "ncc": 0.277,
-    "nccRaw": 0.277,
+    "ncc": 0.203,
+    "nccRaw": 0.203,
     "shiftM": [
-     0.05,
-     -0.15
+     -0.4,
+     -0.1
     ],
-    "usable": 0.98,
+    "usable": 0.97,
     "abstain": null,
     "verdict": "FAIL",
     "reasons": [
-     "glazing storey band off by 0.23"
+     "glazing storey band off by 0.24"
     ],
     "wall": {
      "photo": "#56443e",
@@ -1301,16 +1291,11 @@
      "photo": null,
      "model": 4
     },
-    "iou": 0.457
+    "iou": 0.392
    },
    "challengers": {
-    "transvaal-1911-five-storey-tall": 0.198,
-    "transvaal-1911-five-storey-tall~m": 0.314,
-    "transvaal-1911-five-storey": 0.208,
-    "transvaal-1911-five-storey~m": 0.291,
-    "transvaal-1921-five-storey-flat~m": 0.274,
-    "transvaal-1921-five-storey-flat": 0.207,
-    "transvaal-1921-five-storey-oriel": 0.247
+    "transvaal-1911-five-storey": 0.203,
+    "transvaal-1911-five-storey~m": 0.277
    }
   },
   {
@@ -1378,12 +1363,13 @@
     "measuredPalette": {
      "brick": "#5c4842",
      "evidence": "strip 2023-01-02 span 3921-4162: trim-normalised wall (buildingRecipe/measureFacade.ts)"
-    }
+    },
+    "crown": "shouldered-gable"
    },
    "notes": [
     "near tie with transvaal-1911-five-storey (1)",
     "door right: mirrored",
-    "crown point-gable: reviewer pin (retief-45-75-r1 sheet 2023-01-02: a low pointed brick gable over the whole front with attic lights, the twin of 71D; the skyline is unread under branches)"
+    "crown shouldered-gable: reviewer pin (retief-45-75 strip 2023-01-02 (Retiefstraat 73A, #156 re-review): the twin of 71D, a low shouldered gable (shoulder +1.4 m, apex +1.05 m) on the side away from the door)"
    ],
    "likeness": {
     "pandId": "0363100012067013",
@@ -1397,7 +1383,7 @@
     "abstain": null,
     "verdict": "FAIL",
     "reasons": [
-     "glazing storey band off by 0.30 mean 0.39 vs photo 0.68"
+     "glazing storey band off by 0.32 mean 0.37 vs photo 0.68"
     ],
     "wall": {
      "photo": "#5a4741",
@@ -1406,22 +1392,19 @@
     },
     "glazing": {
      "photo": 0.68,
-     "model": 0.39
+     "model": 0.37
     },
     "columns": {
      "photo": null,
      "model": 3
     },
-    "iou": 0.535
+    "iou": 0.506
    },
    "challengers": {
-    "transvaal-1911-five-storey-tall~m": 0.274,
-    "transvaal-1911-five-storey-tall": 0.274,
+    "transvaal-1911-five-storey-tall~m": 0.272,
+    "transvaal-1911-five-storey-tall": 0.272,
     "transvaal-1911-five-storey~m": 0.278,
-    "transvaal-1911-five-storey": 0.278,
-    "transvaal-1921-five-storey-flat": 0.328,
-    "transvaal-1921-five-storey-flat~m": 0.174,
-    "transvaal-1921-five-storey-oriel": 0.248
+    "transvaal-1911-five-storey": 0.278
    }
   },
   {

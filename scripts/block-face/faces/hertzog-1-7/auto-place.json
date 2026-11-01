@@ -3,7 +3,7 @@
  "street": "Hertzogstraat",
  "library": "transvaalbuurt",
  "stripDate": "2017-04-06",
- "seconds": 0.97,
+ "seconds": 5.51,
  "thresholds": {
   "minScore": 0.7,
   "margin": 0.05,
@@ -178,10 +178,43 @@
     "foliageShare": 0.02
    },
    "status": "held",
-   "stage": "run",
-   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
-   "likeness": null,
-   "challengers": {}
+   "stage": "likeness",
+   "reason": "edge NCC 0.105 < 0.15 (photo vs model body; likeness.ts FAIL: glazing storey band off by 0.34; window shape square vs photo tall; columns 3 vs photo 4)",
+   "likeness": {
+    "pandId": "0363100012061441",
+    "ncc": 0.105,
+    "nccRaw": 0.105,
+    "shiftM": [
+     0.4,
+     -0.2
+    ],
+    "usable": 0.95,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.34",
+     "window shape square vs photo tall",
+     "columns 3 vs photo 4"
+    ],
+    "wall": {
+     "photo": "#524034",
+     "model": "#705846",
+     "dL": 0.094
+    },
+    "glazing": {
+     "photo": 0.31,
+     "model": 0.22
+    },
+    "columns": {
+     "photo": 4,
+     "model": 3
+    },
+    "iou": 0.184
+   },
+   "challengers": {
+    "transvaal-1923-portiek-tower": 0.105,
+    "transvaal-1923-portiek": 0.119
+   }
   }
  ]
 }

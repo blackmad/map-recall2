@@ -3,7 +3,7 @@
  "street": "Ben Viljoenstraat",
  "library": "transvaalbuurt",
  "stripDate": "2023-01-02",
- "seconds": 1.35,
+ "seconds": 1.18,
  "thresholds": {
   "minScore": 0.7,
   "margin": 0.05,
@@ -56,8 +56,8 @@
     "foliageShare": 0.01
    },
    "status": "held",
-   "stage": "run",
-   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
+   "stage": "review",
+   "reason": "review: a flat-roofed front with a chimney stack at the left, paired windows and an arched entrance; transvaal-1923-portiek draws a slate roof with a raised parapet block and a red door (lone pand released by the #156 opt-in; viljoen-16-24-r1 sheet, 2026-11-01)",
    "likeness": null,
    "challengers": {}
   },
@@ -342,8 +342,8 @@
     "foliageShare": 0
    },
    "status": "held",
-   "stage": "run",
-   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
+   "stage": "review",
+   "reason": "review: a flat-roofed front with paired and triple windows and no stair panel; transvaal-1923-portiek draws a slate roof with a raised parapet block (lone pand released by the #156 opt-in; viljoen-16-24-r2 sheet, 2026-11-01)",
    "likeness": null,
    "challengers": {}
   }

@@ -3,7 +3,7 @@
  "street": "Krugerstraat",
  "library": "transvaalbuurt",
  "stripDate": "2020-04-29",
- "seconds": 4.22,
+ "seconds": 8.25,
  "thresholds": {
   "minScore": 0.7,
   "margin": 0.05,
@@ -143,8 +143,8 @@
     "foliageShare": 0.01
    },
    "status": "held",
-   "stage": "run",
-   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
+   "stage": "review",
+   "reason": "review: an Amsterdam School flat-roofed front: a ribbed stair shaft rising through the parapet over a stepped white canopy, a white corner bay and trapezoid attic lights; transvaal-1923-portiek-tower draws a brick tower block over a slate roof with plain punched windows (lone pand released by the #156 opt-in; kruger-4-28-r1 sheet, 2026-11-01)",
    "likeness": null,
    "challengers": {}
   },
@@ -256,8 +256,8 @@
     "foliageShare": 0.16
    },
    "status": "held",
-   "stage": "run",
-   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
+   "stage": "review",
+   "reason": "review: the twin of Krugerstraat 22 (ribbed stair shaft, white canopy, trapezoid attic lights, flat roof); transvaal-1923-portiek-tower draws a brick tower block over a slate roof with plain punched windows, and a shop front the photo does not show (lone pand released by the #156 opt-in; kruger-4-28-r2 sheet, 2026-11-01)",
    "likeness": null,
    "challengers": {}
   },

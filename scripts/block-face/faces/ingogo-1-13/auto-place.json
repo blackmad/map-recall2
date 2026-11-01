@@ -3,7 +3,7 @@
  "street": "Ingogostraat",
  "library": "transvaalbuurt",
  "stripDate": "2020-04-29",
- "seconds": 5.84,
+ "seconds": 11.64,
  "thresholds": {
   "minScore": 0.7,
   "margin": 0.05,
@@ -312,43 +312,10 @@
     "foliageShare": 0.03
    },
    "status": "held",
-   "stage": "likeness",
-   "reason": "edge NCC 0.132 < 0.15 (photo vs model body; likeness.ts FAIL: glazing storey band off by 0.25 mean 0.37 vs photo 0.22)",
-   "likeness": {
-    "pandId": "0363100012119806",
-    "ncc": 0.132,
-    "nccRaw": 0.132,
-    "shiftM": [
-     -0.4,
-     -0.3
-    ],
-    "usable": 0.85,
-    "abstain": null,
-    "verdict": "FAIL",
-    "reasons": [
-     "glazing storey band off by 0.25 mean 0.37 vs photo 0.22"
-    ],
-    "wall": {
-     "photo": "#6e5e58",
-     "model": "#8d7a75",
-     "dL": 0.118
-    },
-    "glazing": {
-     "photo": 0.22,
-     "model": 0.37
-    },
-    "columns": {
-     "photo": 3,
-     "model": 3
-    },
-    "iou": 0.235
-   },
-   "challengers": {
-    "transvaal-1911-five-storey-tall": 0.132,
-    "transvaal-1911-five-storey-tall~m": 0.132,
-    "transvaal-1923-portiek-tower": 0.118,
-    "transvaal-1923-portiek": 0.136
-   }
+   "stage": "review",
+   "reason": "review: the wall-dormer crown reads right on the strip (ingogo-1-13-r1 sheet, 2026-11-01, #156), but the compiled crown tops out at 18.86 m against a 3DBAG roof max of 15.6 m and fails height-vs-3dbag (limit 18.0 m with dormers); the 3DBAG top or the dormer rise needs measuring before it can stand",
+   "likeness": null,
+   "challengers": {}
   },
   {
    "pandId": "0363100012079342",
@@ -403,41 +370,41 @@
    },
    "status": "held",
    "stage": "likeness",
-   "reason": "edge NCC 0.093 < 0.15 (photo vs model body; likeness.ts FAIL: glazing storey band off by 0.42 mean 0.38 vs photo 0.69)",
+   "reason": "edge NCC 0.094 < 0.15 (photo vs model body; likeness.ts FAIL: glazing storey band off by 0.25)",
    "likeness": {
     "pandId": "0363100012079342",
-    "ncc": 0.093,
-    "nccRaw": 0.093,
+    "ncc": 0.094,
+    "nccRaw": 0.094,
     "shiftM": [
      -0.35,
-     -0.1
+     -0.4
     ],
-    "usable": 0.91,
+    "usable": 0.9,
     "abstain": null,
     "verdict": "FAIL",
     "reasons": [
-     "glazing storey band off by 0.42 mean 0.38 vs photo 0.69"
+     "glazing storey band off by 0.25"
     ],
     "wall": {
-     "photo": "#776763",
+     "photo": "#6b5d57",
      "model": "#817169",
-     "dL": 0.031
+     "dL": 0.078
     },
     "glazing": {
-     "photo": 0.69,
-     "model": 0.38
+     "photo": 0.35,
+     "model": 0.36
     },
     "columns": {
-     "photo": 4,
+     "photo": null,
      "model": 3
     },
-    "iou": 0.465
+    "iou": 0.486
    },
    "challengers": {
-    "transvaal-1911-five-storey-tall": 0.093,
-    "transvaal-1911-five-storey-tall~m": 0.093,
-    "transvaal-1923-portiek-tower": 0.107,
-    "transvaal-1923-portiek": 0.135
+    "transvaal-1911-five-storey-tall": 0.094,
+    "transvaal-1911-five-storey-tall~m": 0.094,
+    "transvaal-1923-portiek-tower": 0.127,
+    "transvaal-1923-portiek": 0.159
    }
   },
   {

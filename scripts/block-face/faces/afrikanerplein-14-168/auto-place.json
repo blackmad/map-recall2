@@ -3,7 +3,7 @@
  "street": "Afrikanerplein",
  "library": "transvaalbuurt",
  "stripDate": "2020-04-29",
- "seconds": 6.19,
+ "seconds": 19.16,
  "thresholds": {
   "minScore": 0.7,
   "margin": 0.05,
@@ -233,10 +233,45 @@
     "foliageShare": 0.02
    },
    "status": "held",
-   "stage": "run",
-   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
-   "likeness": null,
-   "challengers": {}
+   "stage": "likeness",
+   "reason": "edge NCC 0.123 < 0.15 (photo vs model body; likeness.ts FAIL: glazing storey band off by 0.15 mean 0.23 vs photo 0.35)",
+   "likeness": {
+    "pandId": "0363100012131433",
+    "ncc": 0.123,
+    "nccRaw": 0.123,
+    "shiftM": [
+     -0.05,
+     0
+    ],
+    "usable": 0.95,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.15 mean 0.23 vs photo 0.35"
+    ],
+    "wall": {
+     "photo": "#7c6b61",
+     "model": "#94827a",
+     "dL": 0.096
+    },
+    "glazing": {
+     "photo": 0.35,
+     "model": 0.23
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.181
+   },
+   "challengers": {
+    "transvaal-1923-portiek-tower": 0.123,
+    "transvaal-1911-five-storey-tall": 0.14,
+    "transvaal-1911-five-storey-tall~m": 0.15,
+    "transvaal-1911-five-storey": 0.123,
+    "transvaal-1911-five-storey~m": 0.133,
+    "transvaal-1923-portiek": 0.122
+   }
   },
   {
    "pandId": "0363100012066447",
@@ -360,10 +395,45 @@
     "foliageShare": 0.02
    },
    "status": "held",
-   "stage": "run",
-   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
-   "likeness": null,
-   "challengers": {}
+   "stage": "likeness",
+   "reason": "edge NCC 0.114 < 0.15 (photo vs model body; likeness.ts FAIL: window shape square vs photo tall; columns 3 vs photo 2)",
+   "likeness": {
+    "pandId": "0363100012098180",
+    "ncc": 0.114,
+    "nccRaw": 0.114,
+    "shiftM": [
+     -0.4,
+     0.35
+    ],
+    "usable": 0.94,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "window shape square vs photo tall",
+     "columns 3 vs photo 2"
+    ],
+    "wall": {
+     "photo": "#7a655d",
+     "model": "#998179",
+     "dL": 0.116
+    },
+    "glazing": {
+     "photo": 0.19,
+     "model": 0.27
+    },
+    "columns": {
+     "photo": 2,
+     "model": 3
+    },
+    "iou": 0.137
+   },
+   "challengers": {
+    "transvaal-1923-portiek-tower": 0.114,
+    "transvaal-1911-five-storey-tall": 0.151,
+    "transvaal-1911-five-storey-tall~m": 0.159,
+    "transvaal-1911-five-storey": 0.145,
+    "transvaal-1911-five-storey~m": 0.164
+   }
   }
  ]
 }
