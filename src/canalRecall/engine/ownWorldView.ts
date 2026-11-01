@@ -29,7 +29,7 @@ import { CameraMap, EngineCamera, unitsPerMetre, mercatorX, mercatorY } from './
 import { GameCameraSolver, lngLatToWorld, worldToLngLat, type GameCamera, type LoaderFrame } from './gameCamera';
 import { clearCamera, clearanceResidents } from './cameraClearance';
 import { RiderCoverTracker } from './riderCover';
-import { decodeOverviewBytes, fetchOverviewBytes, OverviewLayer, OVERVIEW_TILES, OVERVIEW_TILE_MIN_TRIANGLES } from './overviewLayer';
+import { decodeOverviewBytes, fetchOverviewBytes, OverviewLayer, overviewTileGrid, OVERVIEW_TILE_MIN_TRIANGLES } from './overviewLayer';
 import { overviewFromPool } from '../ownMap/overviewPool';
 import { awaitWorkerPool } from './workerPool';
 import type { JumpOptions, ScreenPoint, WorldCamera } from './worldViewApi';
@@ -352,7 +352,7 @@ export class OwnWorldView {
       // the worker fails, it is built here as before.
       const bytes = await fetchOverviewBytes(this.absoluteExtractRoot());
       // The facades layer owns the pool's stamped URL and loads in parallel: wait for its decision instead of racing it.
-      const pooled = awaitWorkerPool().then(pool => overviewFromPool(pool, bytes, OVERVIEW_TILES, OVERVIEW_TILE_MIN_TRIANGLES));
+      const pooled = awaitWorkerPool().then(pool => overviewFromPool(pool, bytes, overviewTileGrid(), OVERVIEW_TILE_MIN_TRIANGLES));
       const data = await decodeOverviewBytes(bytes);
       const prebuilt = await pooled;
       this.status.overviewBuilt = prebuilt ? 'pool' : 'main';

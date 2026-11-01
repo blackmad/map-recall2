@@ -171,7 +171,7 @@ export class OverviewLayer implements FrameParticipant {
     });
     for (const [geo, meshes] of byGeo) {
       const owner = meshes[0];
-      if (!cutMesh(THREE, owner, OVERVIEW_TILES, OVERVIEW_TILE_MIN_TRIANGLES, { draw: 'spans', tiles: this.preTiles.has(geo) ? this.preTiles.get(geo) : undefined })) continue;
+      if (!cutMesh(THREE, owner, overviewTileGrid(), OVERVIEW_TILE_MIN_TRIANGLES, { draw: 'spans', tiles: this.preTiles.has(geo) ? this.preTiles.get(geo) : undefined })) continue;
       const cull = owner.onBeforeRender;
       const whole = () => { geo.drawRange.start = 0; geo.drawRange.count = Infinity; };
       for (const m of meshes) {
@@ -293,9 +293,24 @@ export class OverviewLayer implements FrameParticipant {
   }
 }
 
-/** Span grid per side over each overview geometry's extent, and the smallest geometry worth cutting. */
-export const OVERVIEW_TILES = 8;
+/**
+ * Span grid per side over each overview geometry's extent, and the smallest geometry worth cutting. 32, not 8: a span
+ * runs from the first to the last tile on screen in serpentine order, so with tiles ~3 km across one chase-zoom frame
+ * drew whole rows of the region (iPad Jordaan ride: 263 k overview triangles per frame, p50, of the frame's 1.2 M);
+ * at 32 the same frames draw ~81 k, same draws, same pixels (pure culling, #129 2026-11-01). Skipping the tiles
+ * inside the own ground's covered disc was measured too and saves ~1 k: the disc (≤ 960 m of discard) holds hardly a
+ * whole tile at any grid that keeps the per-frame span test cheap. `?overviewCull=0` keeps the old 8 (the A/B).
+ */
+export const OVERVIEW_TILES = 32;
+export const OVERVIEW_TILES_BEFORE = 8;
 export const OVERVIEW_TILE_MIN_TRIANGLES = 2000;
+
+/** The span grid in use: OVERVIEW_TILES, or the old 8 under `?overviewCull=0` / `__canalRecallOverviewCull = false`. */
+export function overviewTileGrid(): number {
+  const g = globalThis as { location?: { search?: string }; __canalRecallOverviewCull?: boolean };
+  const off = g.__canalRecallOverviewCull === false || new URLSearchParams(g.location?.search ?? '').get('overviewCull') === '0';
+  return off ? OVERVIEW_TILES_BEFORE : OVERVIEW_TILES;
+}
 /** three's `onUpload` callback (`this` is the attribute): drop the CPU copy. */
 function releaseArray(this: { array: unknown }): void { this.array = null; }
 
