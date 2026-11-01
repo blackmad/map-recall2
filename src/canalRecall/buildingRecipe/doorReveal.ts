@@ -1,7 +1,7 @@
 /**
  * An inset doorway on an ordinary front (#181): most Amsterdam street doors stand back in the wall, not flush with it.
  * The door opening and its fanlight are cut `deep` metres into the wall as one cavity lined with jambs (brick in the
- * wall colour, or stone/painted where the type says so) and a soffit; the door leaf and the fanlight stand at its back,
+ * wall colour, or stone/plaster where the type says so) and a soffit; the door leaf and the fanlight stand at its back,
  * the threshold or the steps on its floor (the top step reaches the leaf), and a stoop (`basement: stoop`) climbs to the
  * cavity floor at the door's sill, as before.
  *
@@ -18,14 +18,18 @@ import type {CanalhouseOpening} from '../canalhouseRecipes.ts';
 
 export interface DoorRevealIntent {
   form: 'reveal' | 'portiek';
-  /** Metres from the facade to the door leaf: reveal 0.15..0.7, portiek 0.5..1.5. */
+  /**
+   * Metres from the facade to the back of the door frame: reveal 0.15..0.7, portiek 0.5..1.5. The 12 cm frame stands in
+   * front of that plane and the leaf ~9 cm in front of it, so a photo's visible jamb return to the frame face is
+   * `deep` - 0.135 and to the leaf `deep` - 0.1.
+   */
   deep: number;
   /** Steps inside the cavity, 0..5 (default 0: a stone threshold). */
   steps?: number;
   /** Riser height of those steps, 0.12..0.2 m (default 0.17). */
   riser?: number;
-  /** Lining of the jambs: the wall's brick (default), a stone jamb or a painted one (the trim colour). */
-  jamb?: 'brick' | 'stone' | 'painted';
+  /** Lining of the jambs: the wall's brick (default), a stone jamb, or a plastered one (drawn in the palette's pale stone: a trim-coloured lining is a frame part to the GLB audit, and on a deep portiek it reads as a frame outside its wall). */
+  jamb?: 'brick' | 'stone' | 'plaster';
   /** Opening width (m, 0.9..2.6) when the cavity is wider than the kit's door (a portiek before two doors). */
   span?: number;
   /** portiek: a flat's door on each side wall (needs deep >= 0.9). */
@@ -36,7 +40,9 @@ export interface DoorRevealIntent {
 
 const KEYS = ['form', 'deep', 'steps', 'riser', 'jamb', 'span', 'sideDoors', 'leaf'];
 const num = (v: unknown, lo: number, hi: number) => typeof v === 'number' && Number.isFinite(v) && v >= lo && v <= hi;
-export const DOOR_REVEAL = {riser: 0.17, sideDoorM: 0.9, sideDoorH: 2.3} as const;
+/** The cavity's 4 cm linings stand inside the opening, over the frame's outer edge: the frames are drawn 4 cm wider so
+ * the white frame keeps the 8 cm (door) and 6 cm (fanlight) the flush door shows. */
+export const DOOR_REVEAL = {riser: 0.17, sideDoorM: 0.9, sideDoorH: 2.3, doorTrim: 0.12, fanTrim: 0.1} as const;
 
 /** Problems with `doorReveal` on one front (`door`: the front has a door it can recess). */
 export function doorRevealProblems(d: unknown, front: {doorBay: number | null; doorArch?: unknown; groundFront?: unknown; shopfront?: {residentialDoor?: unknown}}, at: string): string[] {
@@ -48,7 +54,7 @@ export function doorRevealProblems(d: unknown, front: {doorBay: number | null; d
   if (!num(o.deep, lo, hi)) p.push(`${a}.deep: ${lo}..${hi} m for a ${o.form}`);
   if (o.steps !== undefined && !(Number.isInteger(o.steps) && (o.steps as number) >= 0 && (o.steps as number) <= 5)) p.push(`${a}.steps: 0..5`);
   if (o.riser !== undefined && !num(o.riser, 0.12, 0.2)) p.push(`${a}.riser: 0.12..0.2 m`);
-  if (o.jamb !== undefined && !['brick', 'stone', 'painted'].includes(o.jamb as string)) p.push(`${a}.jamb: brick | stone | painted`);
+  if (o.jamb !== undefined && !['brick', 'stone', 'plaster'].includes(o.jamb as string)) p.push(`${a}.jamb: brick | stone | plaster`);
   if (o.span !== undefined && !num(o.span, 0.9, 2.6)) p.push(`${a}.span: 0.9..2.6 m`);
   if (o.sideDoors !== undefined && (typeof o.sideDoors !== 'boolean' || (o.sideDoors && (o.form !== 'portiek' || !num(o.deep, 0.9, 1.5))))) p.push(`${a}.sideDoors: a portiek at least 0.9 m deep`);
   if (o.leaf !== undefined && o.leaf !== 'door' && o.leaf !== 'glazed') p.push(`${a}.leaf: door | glazed`);
@@ -65,14 +71,14 @@ const r3 = (v: number) => Math.round(v * 1000) / 1000;
  * the fanlight moved down onto the door's head so the two cut one cavity (top unchanged), both `deep` behind the wall.
  */
 export function doorRevealOpenings(d: DoorRevealIntent, left: number, bottom: number, width: number, doorH: number, transomH: number): CanalhouseOpening[] {
-  const jambSurface = d.jamb === 'stone' ? 'stone' as const : d.jamb === 'painted' ? 'trim' as const : 'wall' as const;
+  const jambSurface = d.jamb === 'stone' || d.jamb === 'plaster' ? 'stone' as const : 'wall' as const;
   const fan = transomH > 0.2, steps = d.steps ?? 0, riseM = d.riser ?? DOOR_REVEAL.riser;
   const landing = steps * riseM;
   const sideDoors = d.sideDoors ? {widthM: r3(Math.min(DOOR_REVEAL.sideDoorM, d.deep - 0.3)), heightM: r3(Math.min(DOOR_REVEAL.sideDoorH, doorH - landing - 0.05))} : undefined;
-  const door: CanalhouseOpening = {id: 'door', kind: 'door', leftM: left, bottomM: bottom, widthM: width, heightM: doorH, trimWidthM: 0.08, verticalBars: [.5],
+  const door: CanalhouseOpening = {id: 'door', kind: 'door', leftM: left, bottomM: bottom, widthM: width, heightM: doorH, trimWidthM: DOOR_REVEAL.doorTrim, verticalBars: [.5],
     paneSurface: d.leaf === 'glazed' ? 'glass' : 'door', frameSurface: 'trim', barSurface: 'trim', recessM: d.deep,
     recessReturns: {glazedSides: [], ...(fan ? {omit: ['soffit' as const]} : {}), jambSurface, sillSurface: 'stone', ...(steps ? {steps: {count: steps, riseM}} : {}), ...(sideDoors ? {sideDoors} : {})}};
   if (!fan) return [door];
-  return [door, {id: 'door-transom', kind: 'window', leftM: left, bottomM: r3(bottom + doorH), widthM: width, heightM: r3(transomH + 0.06), trimWidthM: 0.06, frameSurface: 'trim', barSurface: 'trim',
+  return [door, {id: 'door-transom', kind: 'window', leftM: left, bottomM: r3(bottom + doorH), widthM: width, heightM: r3(transomH + 0.06), trimWidthM: DOOR_REVEAL.fanTrim, frameSurface: 'trim', barSurface: 'trim',
     recessM: d.deep, recessReturns: {glazedSides: [], omit: ['sill'], jambSurface}}];
 }

@@ -1189,7 +1189,7 @@ export function compileCanalHouseRecipe(recipe: CanalHouseRecipe): CompiledCanal
         const native=child.parent===group&&child.userData.surface==='wall'&&(child.name.startsWith('shell/')||child.name.startsWith('roof/step-wall'));
         const crown=child.parent===facade&&child.name===`crown/${recipe.house.gable.value}`;
         if(!native&&!crown)return;
-        const cut=cutNativeFacadeAperture(child.geometry,inverse.clone().multiply(child.matrixWorld),{leftM:o.leftM,bottomM:o.bottomM,widthM:o.widthM,heightM:o.heightM,depthM});
+        const cut=cutNativeFacadeAperture(child.geometry,inverse.clone().multiply(child.matrixWorld),{leftM:o.leftM,bottomM:o.bottomM,widthM:o.widthM,heightM:o.heightM,depthM},o.recessReturns?.sillSurface!==undefined||o.recessReturns?.omit!==undefined);
         if(cut.geometry!==child.geometry){child.geometry.dispose();child.geometry=cut.geometry;}removed+=cut.removedAreaM2;
       });
       if(removed<.001)throw Error('Declared opening recess has no matching native host wall');

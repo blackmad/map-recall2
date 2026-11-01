@@ -68,10 +68,14 @@ test('doorRevealOpenings: the fanlight sits on the door head (top unchanged) and
 
 test('Eerste Helmersstraat 213: the reveal cuts the wall, lines it and sets the leaf back; absent = the flush door', async () => {
   const pand = '0363100012159748', f = facts('helmers-209-253', pand);
-  const flush = await compileBuilding(house('helmers-1897-banded', pand, 'Eerste Helmersstraat'), f);
+  const flush = await compileBuilding(house('helmers-1897-banded', pand, 'Eerste Helmersstraat', fr => { delete fr.doorReveal; }), f);
   assert.equal(meshes(flush.group, /recess/).length, 0);
   const again = await compileBuilding(house('helmers-1897-banded', pand, 'Eerste Helmersstraat', fr => { delete fr.doorReveal; }), f);
   assert.equal(hashOf(again.group), hashOf(flush.group));
+  // The type's own reveal (measured on the 2024-11-29 panoramas): 0.25 m, brick, no step.
+  const typed = await compileBuilding(house('helmers-1897-banded', pand, 'Eerste Helmersstraat'), f);
+  const typedNames = meshes(typed.group, /recess/).map(m => m.name);
+  assert.ok(typedNames.some(n => n.endsWith("door/recess/left-jamb")) && !typedNames.some(n => /step-/.test(n)), typedNames.join(", "));
   const inset = await compileBuilding(house('helmers-1897-banded', pand, 'Eerste Helmersstraat', fr => { fr.doorReveal = {form: 'reveal', deep: 0.3, steps: 1}; }), f);
   const names = meshes(inset.group, /recess/).map(m => m.name.replace(/^.*opening\//, ''));
   for (const n of ['door/recess/left-jamb', 'door/recess/step-0', 'door-transom/recess/soffit']) assert.ok(names.some(x => x.endsWith(n)), `${n} in ${names.join(', ')}`);
