@@ -1,6 +1,7 @@
 import { test, expect, type Page } from '@playwright/test';
 import { mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { openRoute } from './helpers';
+import { OWN } from './worldCam';
 
 // Block-face chunks in game: per installed face (chunk id `chunk-face-*`) a street-level shot from the opposite
 // pavement or quay (across the water on a canal), eye at 1.7 m, pitched up so cornices and gable tops are in
@@ -61,6 +62,7 @@ async function parkAt(page: Page, at: number[], face: number[]) {
 
 for (const chunk of faces) {
   test(`block face in game: ${chunk.name}`, async ({ page }, info) => {
+    test.skip(OWN, 'MapLibre style assertion: querySourceFeatures on the basemap; deleted with the default path at P5');
     test.setTimeout(300_000);
     mkdirSync(OUT, { recursive: true });
     await openRoute(page, { travelMode: 'car', viewMode: 'chase', abortHeavyTiles: false, enterRacing: false, query: '?streetChunks=1' });

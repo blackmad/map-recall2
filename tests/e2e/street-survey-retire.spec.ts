@@ -98,7 +98,7 @@ for (const mode of MODES) test(`street-survey shots: ${mode.label}`, async ({ pa
     const evalSource = process.env.SS_EVAL_FILE ? readFileSync(process.env.SS_EVAL_FILE, 'utf8') : process.env.SS_EVAL;
     if (evalSource) diag[`${view.name}:eval`] = await page.evaluate(evalSource);
     await page.waitForTimeout(1500);
-    await page.locator('canvas.maplibregl-canvas').first().screenshot({ path: join(dir, `${view.name}.png`) });
+    await page.locator('canvas.maplibregl-canvas, canvas.engine-canvas').first().screenshot({ path: join(dir, `${view.name}.png`) });
     diag[view.name] = await page.evaluate(() => {
       const vm = (window as any).canalRecallGame.vectorMap, sl = vm._signatureLandmarks;
       return (sl?._entries ?? []).filter((e: any) => e.spec.assetKind === 'ordinary-building').map((e: any) => {

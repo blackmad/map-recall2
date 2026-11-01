@@ -126,7 +126,7 @@ for (const mode of MODES) test(`shadow fill shots: ${mode.label}`, async ({ page
       const canvas = map.getCanvas() as HTMLCanvasElement;
       for (const e of Array.from(document.body.querySelectorAll('*'))) if (e !== canvas && !e.contains(canvas)) (e as HTMLElement).style.visibility = 'hidden';
     });
-    const canvas = page.locator('canvas.maplibregl-canvas').first();
+    const canvas = page.locator('canvas.maplibregl-canvas, canvas.engine-canvas').first();
     const shot = async (name?: string) => { const png = await canvas.screenshot(); if (name) writeFileSync(join(dir, `${spot.name}-${name}.png`), png); return rawOf(png); };
     await stage(page, { shadows: false });
     const off = await shot('noshadow');
