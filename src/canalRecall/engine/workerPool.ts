@@ -99,3 +99,11 @@ export function sharedWorkerPool(url: string, size = poolSize()): WorkerPool | n
   g[KEY] = pool.size ? pool : null;
   return g[KEY] ?? null;
 }
+
+/**
+ * The page's pool when a layer has already started it, else null; never starts one. For a layer that only lends work
+ * to the pool (the landmark stand-ins) and whose script URL would start it without the page's `?v=` stamp.
+ */
+export function existingWorkerPool(): WorkerPool | null {
+  return (globalThis as unknown as Record<string, WorkerPool | null | undefined>)[KEY] ?? null;
+}

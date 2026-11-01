@@ -20,7 +20,9 @@ import { landmarkHighlightStates } from '../../../src/canalRecall/look/highlight
 import { buildPickBvhs, nearestVisibleHit } from '../../../src/canalRecall/landmarks/pickBvh.ts';
 import { landmarkResidencyBudget, pickEvictions } from '../../../src/canalRecall/landmarks/landmarkResidency.ts';
 import { freezeStaticMatrices } from '../../../src/canalRecall/landmarks/staticMatrices.ts';
-import { buildShadowStandIn, disposeShadowStandIn } from '../../../src/canalRecall/rendererShared/shadowStandIns.ts';
+import { SHADOW_STAND_IN_PENDING, disposeShadowStandIn, shadowStandInFor } from '../../../src/canalRecall/rendererShared/shadowStandIns.ts';
+// The page's worker pool (engine/workerPool.ts; started by the building and ground layers) welds the shadow stand-ins off the main thread (#129).
+import { existingWorkerPool } from '../../../src/canalRecall/engine/workerPool.ts';
 import { applyMeshHighlight, highlightRecipe, LANDMARK_WORLD_UP } from '../../../src/canalRecall/look/highlight.ts';
 const { THREE, GLTFLoader, MeshoptDecoder } = window.CanalRecallThree;
 const { SIGNATURE_MODELS, placementFor, basemapBuildingFilter } = window.CanalRecallSignatureLandmarks;
@@ -760,6 +762,7 @@ export class SignatureLandmarks {
     const geometries = new Set(), materials = new Set(), textures = new Set();
     group.traverse(child => {
       if (child.userData?.shadowStandIn) { disposeShadowStandIn(child.userData.shadowStandIn); child.userData.shadowStandIn = null; }
+      if (child.userData?.[SHADOW_STAND_IN_PENDING]) delete child.userData[SHADOW_STAND_IN_PENDING];
       if (!child.isMesh) return;
       if (child.geometry) geometries.add(child.geometry);
       for (const material of Array.isArray(child.material) ? child.material : [child.material]) {
@@ -1084,8 +1087,12 @@ export class SignatureLandmarks {
     if (entry.standIn) { entry.holder.remove(entry.standIn.object); entry.standIn = null; }
     if (!this.sharedFrame || this.sharedFrame.shadowStandIns === false || entry.spec.sharedModel || entry.spec.chunkPands) return;
     const imported = entry.imported;
-    if (imported.userData.shadowStandIn === undefined) imported.userData.shadowStandIn = buildShadowStandIn(THREE, imported);
-    const standIn = imported.userData.shadowStandIn;
+    // Welded in the worker pool: until it arrives the level's meshes cast their own (same) shadow.
+    const standIn = shadowStandInFor(THREE, imported, existingWorkerPool(), () => {
+      if (this._removed || entry.imported !== imported || !this._entries?.includes(entry)) return;
+      this._attachShadowStandIn(entry);
+      this.map.triggerRepaint();
+    });
     if (!standIn) return;
     standIn.object.matrix.multiplyMatrices(entry.group.matrix, imported.matrix);
     standIn.object.matrixWorldNeedsUpdate = true;
@@ -1099,7 +1106,7 @@ export class SignatureLandmarks {
       for (const level of [entry.imported, entry.spare]) {
         const standIn = level?.userData.shadowStandIn;
         if (standIn) disposeShadowStandIn(standIn, true);
-        if (level) delete level.userData.shadowStandIn;
+        if (level) { delete level.userData.shadowStandIn; delete level.userData[SHADOW_STAND_IN_PENDING]; }
       }
       entry.standIn = null;
       if (this.sharedFrame) this.sharedFrame.constructor.setShadows(entry.group, true, true);

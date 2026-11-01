@@ -2,7 +2,7 @@
 // when a worker dies. Run: node --import tsx --test src/canalRecall/engine/workerPool.test.ts
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { WorkerPool, poolWorkerUrl, sharedWorkerPool, withWorkerFlags } from './workerPool.js';
+import { WorkerPool, existingWorkerPool, poolWorkerUrl, sharedWorkerPool, withWorkerFlags } from './workerPool.js';
 
 class Echo {
   onmessage: ((event: { data: unknown }) => void) | null = null;
@@ -42,5 +42,6 @@ test('pool: the page shares one; none without Worker', () => {
   delete (globalThis as Record<string, unknown>).__canalRecallWorkerPool;
   assert.equal(sharedWorkerPool('w.js'), null, 'Node: no Worker');
   assert.equal(sharedWorkerPool('w.js'), null, 'remembered');
+  assert.equal(existingWorkerPool(), null, 'joins only a started pool');
   delete (globalThis as Record<string, unknown>).__canalRecallWorkerPool;
 });
