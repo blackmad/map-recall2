@@ -25,6 +25,8 @@ import { createLightRig, type LightRig, type LightRigOptions } from './lightRig.
 import { mapLibreSky } from '../look/sunny.js';
 import { LayerRegistry, type FramePass } from './layerRegistry.js';
 import { plainBounds, type LngLatBounds } from '../engine/worldStreamer.js';
+import { worldCameraOf } from '../engine/worldCameraOf.js';
+import type { LngLat, WorldCamera } from '../engine/worldViewApi.js';
 import { chooseTileDraws } from './tiledGeometry.js';
 import { coverPauseFlag, MapCoverWatch, RESUME_DEFERRED_COMPILE_MS, RESUME_WARMUP_HOLD_MS } from './mapCover.js';
 import { PRECOMPILE_STEP_MS } from './compileBudget.js';
@@ -37,9 +39,24 @@ export type FrameContext = {
   /** three Matrix4: clip ← world (also the shared camera's projection). Use for picking against matrixWorld. */
   readonly clipFromWorld: any;
   readonly zoom: number;
-  /** View bounds, computed at most once per pass. */
+  /** View bounds, computed at most once per frame (once per pass under the MapLibre driver). */
   bounds(): LngLatBounds;
 };
+
+/**
+ * The camera read once per frame (#129): zoom now, centre and bounds on first use. The host driver takes one for both
+ * passes; the MapLibre driver one per pass. Read through the WorldCamera (worldCameraOf), not the CameraMap shim.
+ */
+type FrameView = { readonly zoom: number; center(): LngLat; bounds(): LngLatBounds };
+
+/** `?frameViewCheck=1`: after every participant, compare the frame's view with a fresh camera read (exactness pin). */
+type FrameViewCheck = { checks: number; misses: number; samples: string[] };
+function frameViewCheckOf(): FrameViewCheck | null {
+  const g = globalThis as { location?: { search?: string }; __canalRecallFrameViewCheck?: FrameViewCheck };
+  if (g.__canalRecallFrameViewCheck) return g.__canalRecallFrameViewCheck;
+  if (!/[?&]frameViewCheck=1\b/.test(g.location?.search ?? '')) return null;
+  return g.__canalRecallFrameViewCheck = { checks: 0, misses: 0, samples: [] };
+}
 
 /**
  * Tiled meshes draw whole when the tiles on screen hold at least this share of their triangles (chooseTileDraws). A
@@ -299,8 +316,36 @@ export class SharedFrame {
     const renderer = this.renderer;
     if (!renderer) return;
     const gl = renderer.getContext() as WebGL2RenderingContext;
-    this.renderPass('main', gl, clipFromMercator);
-    this.renderPass('overlay', gl, clipFromMercator);
+    // One camera read for both passes: nothing between them moves the camera (`?frameViewCheck=1` verifies it).
+    this.frameView = this.readView();
+    try {
+      this.renderPass('main', gl, clipFromMercator);
+      this.renderPass('overlay', gl, clipFromMercator);
+    } finally { this.frameView = null; }
+  }
+
+  private worldCameraRef: WorldCamera | null = null;
+  private get worldCamera(): WorldCamera { return this.worldCameraRef ??= worldCameraOf(this.map); }
+  /** The frame's camera read, shared by both passes while `drive` runs. */
+  private frameView: FrameView | null = null;
+  private readView(): FrameView {
+    const cam = this.worldCamera;
+    let center: LngLat | null = null, bounds: LngLatBounds | null = null;
+    return {
+      zoom: cam.zoom(),
+      center: () => (center ??= cam.center()),
+      bounds: () => (bounds ??= plainBounds(cam.bounds() as Parameters<typeof plainBounds>[0])),
+    };
+  }
+  private checkView(view: FrameView, where: string): void {
+    const check = frameViewCheckOf();
+    if (!check) return;
+    const cam = this.worldCamera, c = cam.center(), vc = view.center();
+    const b = plainBounds(cam.bounds() as Parameters<typeof plainBounds>[0]), vb = view.bounds();
+    check.checks++;
+    if (cam.zoom() === view.zoom && c.lng === vc.lng && c.lat === vc.lat && b.west === vb.west && b.east === vb.east && b.south === vb.south && b.north === vb.north) return;
+    check.misses++;
+    if (check.samples.length < 20) check.samples.push(`${where}: zoom ${view.zoom}→${cam.zoom()} centre ${vc.lng},${vc.lat}→${c.lng},${c.lat}`);
   }
 
   /** Register a participant. Returns an unregister function. */
@@ -514,12 +559,13 @@ export class SharedFrame {
     this.camera.projectionMatrix.fromArray(fm.clipFromWorld);
     this.camera.projectionMatrixInverse.copy(this.camera.projectionMatrix).invert();
     this.worldFromMercatorM.fromArray(fm.worldFromMercator);
-    let bounds: LngLatBounds | null = null;
+    const view = this.frameView ?? this.readView();
     const ctx: FrameContext = {
       pass, frame: fm, worldFromMercator: this.worldFromMercatorM, clipFromWorld: this.camera.projectionMatrix,
-      zoom: this.map.getZoom(),
-      bounds: () => (bounds ??= plainBounds(this.map.getBounds())),
+      zoom: view.zoom,
+      bounds: view.bounds,
     };
+    this.checkView(view, `${pass} start`);
     const drawn: Handle[] = [];
     const drawnIds: string[] = [];
     for (const entry of this.registry.all()) {
@@ -528,6 +574,7 @@ export class SharedFrame {
       let ok = false;
       try { ok = handle.participant.beforeRender?.(ctx) !== false; }
       catch (error) { console.warn(`Shared frame participant ${entry.id} failed`, error); }
+      this.checkView(view, `after ${entry.id}`);
       handle.wrapper.visible = ok;
       if (!ok) continue;
       const local = handle.participant.mercatorFromLocal?.(ctx);
@@ -560,7 +607,7 @@ export class SharedFrame {
       this.rig.sun.shadow.intensity = shadows ? this.rig.options.shadowIntensity * ramp : 0;
       let redraw = false;
       if (shadows) {
-        const c = this.map.getCenter();
+        const c = view.center();
         const focus = this.absOf(mercatorOfLngLat(c.lng, c.lat, 0));
         const fit = this.rig.follow(focus, ctx.zoom, abs => worldOfMercator(fm, this.mercatorOfAbs(abs)), this.options.shadowSnapM ?? 16);
         // The scene is static and the box moves in coarse steps, so the map is
