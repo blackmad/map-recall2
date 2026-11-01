@@ -1,0 +1,61 @@
+{
+ "id": "zuiderbad",
+ "countedBy": "lane landmarks-park-20261101 (opus) from the rectified panorama crops before the elevation renders were looked at; not a blind haiku count, the integrator may re-count. Ribbon convention: round-arched light groups divided by piers under 0.3 m count once; the triple doors under one transom count once.",
+ "facades": [
+  {
+   "name": "Hobbemakade front (east)",
+   "bearing": 94,
+   "photo": "artifacts/landmark-lanes/zuiderbad/ref-east.jpg",
+   "rows": [
+    9
+   ],
+   "heightM": [
+    4.5,
+    9.2
+   ],
+   "symmetric": false,
+   "note": "Cropped to the first floor (4.5-9.2 m): nine bays south to north (crops w10, w15, w09, w12, w14, w08, w13, w07, w11), one first-floor window each. The ground row is real and was counted 11 from the photos (window, door, wide door, window, triple doors, door, triple doors, window, window flanked by two small square windows); the uncropped spec [11, 9] passed compare:facades (model 11,9), but a ground storey mixing doors and windows reads as off-size to the rhythm gate (same treatment as wolkenkrabber). The rounded corner is not part of this face.",
+   "alongM": [
+    0,
+    50.7
+   ]
+  },
+  {
+   "name": "north front",
+   "bearing": 13,
+   "photo": "artifacts/landmark-lanes/zuiderbad/ref-north.jpg",
+   "rows": [
+    3,
+    1
+   ],
+   "symmetric": false,
+   "note": "Cropped above the ground storey: first floor three round-arched groups (side bays three lights, centre two; piers under 0.3 m, one opening each), and the lunette in the lantern tower behind. The ground row is real and was counted 5 from w03.alt (east window-door-window group under three arches as one, centre door with two side lights as three, west bay one wide window); the uncropped spec [5, 3, 1] passed compare:facades (model 5,3,1), but the mixed door/window ground storey reads as off-size to the rhythm gate.",
+   "alongM": [
+    8.4,
+    26.6
+   ],
+   "heightM": [
+    4.5,
+    17.5
+   ]
+  },
+  {
+   "name": "south gable, east part",
+   "bearing": 183,
+   "photo": "artifacts/landmark-lanes/zuiderbad/ref-south.jpg",
+   "rows": [
+    1,
+    1
+   ],
+   "heightM": [
+    0,
+    9.2
+   ],
+   "note": "w04 (2016): one segmental-arched ground opening (lower half behind the hedge) under one three-light first-floor window; crop to the east 11.4 m of the face.",
+   "alongM": [
+    19.4,
+    30.6
+   ]
+  }
+ ]
+}

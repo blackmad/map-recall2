@@ -1936,5 +1936,11 @@
   "buildVersion": 2,
   "bytes": 54100,
   "triangles": 2285
+ },
+ "zuiderbad": {
+  "sourceHash": "a7c82c954243af02",
+  "buildVersion": 2,
+  "bytes": 83392,
+  "triangles": 4389
  }
 }
