@@ -23,7 +23,7 @@ import type { OsmGroundExtract } from './osmGround.js';
 import type { WaterGeometry } from './water.js';
 import type { HeightFn, Vec2 } from './surface.js';
 import type { Rect } from './groundStore.js';
-import { groundPalette, type GroundPalette } from './groundLook.js';
+import { groundPalette, roadLookTones, type GroundPalette, type RoadLookId } from './groundLook.js';
 
 /** Far blocks are this many streamed cells on a side. */
 export const FAR_BLOCK_CELLS = 2;
@@ -39,11 +39,16 @@ export const FAR_SIMPLIFY_M = 3;
 type RGB = [number, number, number];
 const rgb = (c: readonly number[]): RGB => [c[0] / 255, c[1] / 255, c[2] / 255];
 const hex = (h: string): RGB => { const v = parseInt(h.slice(1), 16); return [((v >> 16) & 255) / 255, ((v >> 8) & 255) / 255, (v & 255) / 255]; };
-/** The near ring's flat tones (its textures' base colours) for a ground palette (groundLook.ts). */
-export function farColours({ street, tones: G }: GroundPalette) {
+/**
+ * The near ring's flat tones (its textures' base colours) for a ground palette (groundLook.ts) and road look. Under a
+ * road look the near ring draws its look tones and bare land as the pavement (gameGround makeMaterials), so the far
+ * ring does too; round 1's palette (null) left a lighter asphalt past the resident cells (user at the RAI, 2026-10-31).
+ */
+export function farColours({ street, tones: G }: GroundPalette, look: RoadLookId | null = 'B') {
+  const t = roadLookTones(street, look);
   return {
-    land: rgb(G.land.base), water: hex(G.water), park: rgb(G.park), wood: rgb(G.wood),
-    asphalt: rgb(street.asphalt.base), klinker: rgb(street.klinker.base), cycle: rgb(street.cycle.base),
+    land: rgb(look ? t.pavement : G.land.base), water: hex(G.water), park: rgb(G.park), wood: rgb(G.wood),
+    asphalt: rgb(t.asphalt), klinker: rgb(t.klinker), cycle: rgb(street.cycle.base),
   } as const;
 }
 export type FarColours = ReturnType<typeof farColours>;

@@ -1,5 +1,11 @@
 # Canal Recall — what is built
 
+**Far ring draws the road look's tones (2026-11-01).** User near the RAI: "why the change in road color here?". The
+far ring (`farRing.ts` `farColours`) kept round 1's palette after look B became the default: asphalt 86,88,93 vs the
+near ring's 93,95,100, klinker 122,90,80 vs 120,104,101, and bare land tan 168,158,142 where the near ring draws it as
+the look-B pavement 200,195,186. `farColours` now takes the road look (worker init's `roadLook`, null for
+`?roadLook=round1`) and returns exactly the near ring's tones.
+
 **Surprise rides no longer finish next to the start; the worker-pool overview build is back; one camera read per frame (2026-11-01, #129).**
 L1 hand-back (15). The held pool commit was not broken: building the
 overview in the pool means the main thread no longer creates the overview's

@@ -88,8 +88,9 @@ ctx.onmessage = event => {
     compact = msg.compact === true;
     detail = msg.detail === 'touch' ? 'touch' : 'full';
     tiles = Math.max(0, Math.floor(msg.tiles ?? 0)); tileMin = Math.max(0, msg.tileMin ?? 0);
-    setKerbShadowRoadLook(isRoadLookId(msg.roadLook) ? msg.roadLook : null);
-    colours = msg.groundLook && msg.groundLook !== 'default' ? farColours(groundPalette(msg.groundLook)) : undefined;
+    const look = isRoadLookId(msg.roadLook) ? msg.roadLook : null;
+    setKerbShadowRoadLook(look);
+    colours = farColours(groundPalette(msg.groundLook || 'default'), look);
     ready = store.init().then(() => ctx.postMessage({ type: 'ready', cells: [...store!.osmCells] }))
       .catch(error => ctx.postMessage({ type: 'error', message: `init: ${String(error?.message ?? error)}` }));
     return;
