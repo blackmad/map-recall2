@@ -132,6 +132,8 @@ const fakeMap = {
 const streamer = new BuildingTileStreamer(fakeMap, 'buildings', '/test');
 try {
   globalThis.fetch = (async (input: RequestInfo | URL) => {
+    // The compiled cells are the default world (2026-11-01); this check is the tile path, so the probe finds none.
+    if (String(input).includes('world-v1/')) return new Response('not found', { status: 404 });
     if (String(input).includes('index-z')) return Response.json({ zoom: 14, tileList: ['test'] });
     tileFetches++;
     return Response.json({ type: 'FeatureCollection', features: [raw] });
