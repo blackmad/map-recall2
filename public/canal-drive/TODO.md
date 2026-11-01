@@ -280,14 +280,20 @@ other-city extracts before the flip. Oracle round 3 merged 2026-11-01 (HISTORY
 "Oracle migration round 3"): four oracles (`_completeCityHasBuildings`,
 `_facadesActive()`, `_signatureSuppressOsmIds`, `.cr-map-labels`) and three own
 gaps (overview-transition blend, recipe-tiles settle stat, governor start ratio
-1.5 vs 2) are L1's; the lane runs the non-P1 specs on iphone under own next.
+1.5 vs 2) are L1's. Oracle round 4 merged 2026-11-01 (HISTORY "Oracle migration
+round 4"): the 48 non-P1 specs on iphone under own are 38 passed / 6 failed, all
+failures the four oracles plus one new own gap for L1, `city-startup-lod` iphone
+texture budget 26 MB against 22 MB; style-only and perf-probe tests skip under
+own; the MapLibre-only call audit is done (review/capture scripts left as
+MapLibre tools, listed in the entry). The oracle lane has no open items; it
+re-opens when L1 lands an oracle.
 **Integrator
 next:** `CanalRecallUi.stepSteer`
 in `car.js` through the frame host; drop the `leaflet`/`@types/leaflet`
 dependencies at the flip. L1 next: the remaining P1 items (camera parity ≤ 3.2
-px on the intro path and Anne Frank → Rijksmuseum, Utrecht/Rotterdam/Den Haag
-own-map extracts with water, `_waitForMapSettle` replacement) and a fair A/B
-after each.
+px on the intro path and Anne Frank → Rijksmuseum, `_waitForMapSettle`
+replacement, city-aware engine choice; other-city own-map extracts are parked
+by the Amsterdam-only decision) and a fair A/B after each.
 Steps 4–5 merged 2026-10-30 (`487cb157e`): `ENGINE=own` switch for the gate
 specs, ride-perf, phone-memory and `ride-perf-owners.mjs` (owner `engine`);
 overlays under the flag (cycle tracks, transit, neighbourhood lines solid not
@@ -321,8 +327,15 @@ centimetre height policy: cells are published `--no-policy` since
 at the far edge, materials pins the ground LOD per cell in the harness and
 re-runs on the published set; then the flag can default). Noted for a kit
 lane: a 4 mm eaves change flips a storey count, the storey/kit derivation
-needs hysteresis. Road lane: millimetre-integer heights to recover the
-0.78 MB gzip the exact values cost (gate ≤ 10 MB, 9.70 now). The earlier wording:
+needs hysteresis. Millimetre heights PARKED (integrator, 2026-11-01): the road
+lane measured all 604 cells; `height`/`minHeight` are already exact integers,
+the only float column is `roofEavesHeightM` (122,955 computed doubles, ~0.96 MB
+gzip), no lossless layout saves > 50 KB, and the real lever is rounding the
+eaves to the mm where it is computed (roofMesh/sourceVisualRoof/landmarkKits,
+a ≤ 0.5 mm runtime building change, city ~9.0 MB). Measured 2026-11-01
+(HISTORY "One ride downloads 1.1–2.0 MB"): seeded 1.13 MB, free ride 2.00 MB
+(27 cells for 202 m); the lever is the streamer's fetch ring, not cell
+bytes (road lane); mm heights stay parked. The earlier wording:
 `?world=v1` is identical to the default path in the browser (five spots,
 desktop and iPhone: same feature ids and styled features per tile; Node
 `world:verify` 295 tiles / 349,220 buildings / 0 differ). The four-tile
@@ -381,7 +394,12 @@ met with a GC-forced sample (303 MB main at ride start, world below default
 at ride end), `engine/workerPool.ts`, old queues deleted; the main own-ground
 cell build keeps its own worker. **Step 5 road CSR merged 2026-10-31**
 (`922496ea7`, HISTORY "The road graph is flat arrays"): road-graph heap
-50 → 8 MB (+7.3 MB typed arrays), routes identical. **Step 5b merged
+50 → 8 MB (+7.3 MB typed arrays), routes identical; `roadGraphMB` 15.5 (claimed
+at ride start after forced GC, gate ≤ 30) recorded in budgets 2026-11-01.
+**Other-city road binaries merged 2026-11-01** (`7d1c1b6c5`, HISTORY "Binary
+road extracts for Utrecht, Rotterdam and Den Haag"); the road lane's
+six-phone-tiles change (662e918c6) is HELD for its heap/pop-in numbers and a
+ride-start before/after shot. **Step 5b merged
 2026-10-31** (HISTORY "The road-graph build is 40 % faster"): number keys and
 a stamp dedupe in the build, `scripts/time-to-ride-phases.mjs` for the
 per-step table; navigation → racing 5.41 → 4.75 s. **Step 5c merged
