@@ -121,6 +121,41 @@
    "pandId": "0363100012065386",
    "address": "Ben Viljoenstraat 16",
    "reason": "a flat-roofed front with paired and triple windows and no stair panel; transvaal-1923-portiek draws a slate roof with a raised parapet block (lone pand released by the #156 opt-in; viljoen-16-24-r2 sheet, 2026-11-01)"
+  },
+  {
+   "pandId": "0363100012151603",
+   "address": "Vaalrivierstraat 15B",
+   "reason": "design 4 of #158 (1922 recessed-loggia rows): transvaal-1922-loggia-row with the new front loggia kit part draws the recessed first-floor loggia, but every Colensostraat/Vaalrivierstraat pand has a 0.64-0.66 m outward BAG jog (1.9 m wide, at the loggia/door bay) and compile rejects a grouped frontage outset beyond 0.5 m ('Grouped frontage is not a straight surveyed wall'); the columns score (0.67) reads the porch jog as extra bays. Needs a stepped-frontage (porch projection) kit part or a measured outset cap before it can stand (2020-04-29 strip, gridded in staging/block-face/transvaalbuurt/5b)"
+  },
+  {
+   "pandId": "0363100012086645",
+   "address": "Vaalrivierstraat 17B",
+   "reason": "design 4 of #158 (1922 recessed-loggia rows): transvaal-1922-loggia-row with the new front loggia kit part draws the recessed first-floor loggia, but every Colensostraat/Vaalrivierstraat pand has a 0.64-0.66 m outward BAG jog (1.9 m wide, at the loggia/door bay) and compile rejects a grouped frontage outset beyond 0.5 m ('Grouped frontage is not a straight surveyed wall'); the columns score (0.67) reads the porch jog as extra bays. Needs a stepped-frontage (porch projection) kit part or a measured outset cap before it can stand (2020-04-29 strip, gridded in staging/block-face/transvaalbuurt/5b)"
+  },
+  {
+   "pandId": "0363100012069560",
+   "address": "Vaalrivierstraat 19",
+   "reason": "design 4 of #158 (1922 recessed-loggia rows): transvaal-1922-loggia-row with the new front loggia kit part draws the recessed first-floor loggia, but every Colensostraat/Vaalrivierstraat pand has a 0.64-0.66 m outward BAG jog (1.9 m wide, at the loggia/door bay) and compile rejects a grouped frontage outset beyond 0.5 m ('Grouped frontage is not a straight surveyed wall'); the columns score (0.67) reads the porch jog as extra bays. Needs a stepped-frontage (porch projection) kit part or a measured outset cap before it can stand (2020-04-29 strip, gridded in staging/block-face/transvaalbuurt/5b)"
+  },
+  {
+   "pandId": "0363100012072652",
+   "address": "Vaalrivierstraat 21",
+   "reason": "design 4 of #158 (1922 recessed-loggia rows): transvaal-1922-loggia-row with the new front loggia kit part draws the recessed first-floor loggia, but every Colensostraat/Vaalrivierstraat pand has a 0.64-0.66 m outward BAG jog (1.9 m wide, at the loggia/door bay) and compile rejects a grouped frontage outset beyond 0.5 m ('Grouped frontage is not a straight surveyed wall'); the columns score (0.67) reads the porch jog as extra bays. Needs a stepped-frontage (porch projection) kit part or a measured outset cap before it can stand (2020-04-29 strip, gridded in staging/block-face/transvaalbuurt/5b)"
+  },
+  {
+   "pandId": "0363100012081369",
+   "address": "Afrikanerplein 25A",
+   "reason": "Afrikanerplein 25 (BAG 1989 rebuild): the same grid height but a different window layout on the 2020-04-29 strip; not of transvaal-1931-plain-grid (#158)"
+  },
+  {
+   "pandId": "0363100012093680",
+   "address": "Afrikanerplein 29A",
+   "reason": "Afrikanerplein 29 (BAG 1989 rebuild): the plain-grid front but BAG 1989 vetoes the 1930-31 type; the year needs checking against the Beeldbank before pinning (#158)"
+  },
+  {
+   "pandId": "0363100012097742",
+   "address": "Afrikanerplein 51A",
+   "reason": "Afrikanerplein 51: a street tree covers the strip's upper storeys and lifts the read cornice to 16.2 m (type 14.55 m, score 0.69); no clean columns to judge the front (#158)"
   }
  ]
 }

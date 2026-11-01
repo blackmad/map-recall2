@@ -1,0 +1,2075 @@
+{
+ "street": "Afrikanerplein",
+ "seed": "0363100012081369",
+ "members": [
+  "0363100012070168",
+  "0363100012125852",
+  "0363100012084510",
+  "0363100012079290",
+  "0363100012143471",
+  "0363100012068510",
+  "0363100012135325",
+  "0363100012064549",
+  "0363100012086955"
+ ],
+ "ends": [
+  {
+   "side": "left",
+   "reason": "run of afrikanerplein-25-55: 093680 held (auto-place.json)"
+  },
+  {
+   "side": "right",
+   "reason": "run of afrikanerplein-25-55: 097742 held (auto-place.json)"
+  }
+ ],
+ "rejected": [
+  {
+   "pandId": "0363100012061566",
+   "reason": "no frontage on Afrikanerplein: No footprint edge faces Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012065134",
+   "reason": "no frontage on Afrikanerplein: No footprint edge faces Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012068401",
+   "reason": "frontage 87.9 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012074773",
+   "reason": "no frontage on Afrikanerplein: No footprint edge faces Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012061216",
+   "reason": "no frontage on Afrikanerplein: No footprint edge faces Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012061600",
+   "reason": "no frontage on Afrikanerplein: No footprint edge faces Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012061769",
+   "reason": "frontage 169.6 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012062552",
+   "reason": "frontage 31.7 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012062562",
+   "reason": "frontage 143.5 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012062612",
+   "reason": "frontage 41.3 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012063471",
+   "reason": "no frontage on Afrikanerplein: No footprint edge faces Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012063602",
+   "reason": "frontage 109.3 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012063929",
+   "reason": "frontage 54.1 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012065292",
+   "reason": "frontage 72.8 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012065386",
+   "reason": "frontage 37.8 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012067045",
+   "reason": "frontage 117.6 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012067111",
+   "reason": "frontage 129.8 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012067320",
+   "reason": "frontage 86.4 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012067496",
+   "reason": "frontage 31.5 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012068244",
+   "reason": "frontage 187.2 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012068521",
+   "reason": "sightline to Afrikanerplein crosses 0363100012096496"
+  },
+  {
+   "pandId": "0363100012068716",
+   "reason": "sightline to Afrikanerplein crosses 0363100012069611"
+  },
+  {
+   "pandId": "0363100012068825",
+   "reason": "frontage 104.3 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012068957",
+   "reason": "frontage 31.8 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012069116",
+   "reason": "frontage 72.0 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012069468",
+   "reason": "frontage 174.8 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012069560",
+   "reason": "frontage 112.6 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012069611",
+   "reason": "no frontage on Afrikanerplein: No footprint edge faces Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012070068",
+   "reason": "frontage 104.0 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012070259",
+   "reason": "frontage 43.9 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012070507",
+   "reason": "no frontage on Afrikanerplein: No footprint edge faces Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012070809",
+   "reason": "frontage 99.3 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012071769",
+   "reason": "frontage 44.0 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012072652",
+   "reason": "frontage 118.4 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012072682",
+   "reason": "frontage 126.4 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012072943",
+   "reason": "frontage 75.5 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012073273",
+   "reason": "frontage 143.3 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012073365",
+   "reason": "frontage 60.9 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012073427",
+   "reason": "no frontage on Afrikanerplein: No footprint edge faces Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012073654",
+   "reason": "no frontage on Afrikanerplein: No footprint edge faces Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012073809",
+   "reason": "frontage 128.6 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012073977",
+   "reason": "frontage 72.4 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012074114",
+   "reason": "no frontage on Afrikanerplein: No footprint edge faces Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012074323",
+   "reason": "no frontage on Afrikanerplein: No footprint edge faces Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012074676",
+   "reason": "frontage 73.8 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012076615",
+   "reason": "no frontage on Afrikanerplein: No footprint edge faces Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012081211",
+   "reason": "frontage 112.1 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012084768",
+   "reason": "frontage 120.3 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012074817",
+   "reason": "frontage 40.9 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012074901",
+   "reason": "frontage 148.6 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012075103",
+   "reason": "frontage 166.8 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012075751",
+   "reason": "frontage 89.3 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012076039",
+   "reason": "frontage 103.0 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012076498",
+   "reason": "frontage 51.3 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012076608",
+   "reason": "frontage 87.0 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012077463",
+   "reason": "frontage 86.3 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012077743",
+   "reason": "frontage 150.3 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012078181",
+   "reason": "frontage 129.1 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012078183",
+   "reason": "no frontage on Afrikanerplein: No footprint edge faces Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012079037",
+   "reason": "frontage 74.1 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012079451",
+   "reason": "frontage 103.4 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012079489",
+   "reason": "no frontage on Afrikanerplein: No footprint edge faces Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012079506",
+   "reason": "frontage 41.1 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012079840",
+   "reason": "no frontage on Afrikanerplein: No footprint edge faces Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012081633",
+   "reason": "frontage 102.6 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012081737",
+   "reason": "frontage 84.6 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012082203",
+   "reason": "frontage 157.3 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012082258",
+   "reason": "frontage 85.1 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012083847",
+   "reason": "frontage 35.8 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012083941",
+   "reason": "sightline to Afrikanerplein crosses 0363100012132444"
+  },
+  {
+   "pandId": "0363100012084269",
+   "reason": "frontage 60.3 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012084592",
+   "reason": "no frontage on Afrikanerplein: No footprint edge faces Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012084950",
+   "reason": "frontage 182.6 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012085617",
+   "reason": "frontage 84.3 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012086048",
+   "reason": "no frontage on Afrikanerplein: No footprint edge faces Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012086208",
+   "reason": "frontage 102.0 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012086284",
+   "reason": "frontage 103.5 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012086645",
+   "reason": "frontage 106.6 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012086731",
+   "reason": "frontage 109.7 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012086761",
+   "reason": "frontage 97.8 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012087418",
+   "reason": "frontage 120.2 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012087850",
+   "reason": "frontage 132.5 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012088316",
+   "reason": "frontage 86.6 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012088339",
+   "reason": "frontage 91.9 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012088765",
+   "reason": "frontage 38.4 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012088780",
+   "reason": "frontage 99.6 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012089052",
+   "reason": "frontage 117.2 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012089089",
+   "reason": "frontage 72.8 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012099797",
+   "reason": "frontage 117.6 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012101555",
+   "reason": "frontage 105.8 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012102524",
+   "reason": "frontage 80.6 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012089130",
+   "reason": "frontage 63.6 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012089391",
+   "reason": "frontage 88.1 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012089836",
+   "reason": "frontage 107.8 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012090850",
+   "reason": "frontage 32.2 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012090866",
+   "reason": "frontage 48.1 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012091191",
+   "reason": "frontage 42.9 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012091211",
+   "reason": "frontage 83.7 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012092315",
+   "reason": "frontage 133.4 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012092661",
+   "reason": "frontage 69.7 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012092667",
+   "reason": "frontage 119.6 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012092908",
+   "reason": "frontage 95.1 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012093263",
+   "reason": "frontage 64.1 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012093949",
+   "reason": "frontage 96.8 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012094578",
+   "reason": "no frontage on Afrikanerplein: No footprint edge faces Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012094919",
+   "reason": "no frontage on Afrikanerplein: No footprint edge faces Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012095081",
+   "reason": "no frontage on Afrikanerplein: No footprint edge faces Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012095089",
+   "reason": "frontage 132.3 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012095702",
+   "reason": "frontage 102.6 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012096065",
+   "reason": "sightline to Afrikanerplein crosses 0363100012094272"
+  },
+  {
+   "pandId": "0363100012096148",
+   "reason": "frontage 31.3 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012096202",
+   "reason": "frontage 156.4 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012096496",
+   "reason": "sightline to Afrikanerplein crosses 0363100012098180"
+  },
+  {
+   "pandId": "0363100012097026",
+   "reason": "frontage 154.5 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012097697",
+   "reason": "frontage 79.1 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012098320",
+   "reason": "frontage 127.4 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012098724",
+   "reason": "no frontage on Afrikanerplein: No footprint edge faces Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012098793",
+   "reason": "frontage 190.3 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012099286",
+   "reason": "frontage 110.5 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012100541",
+   "reason": "frontage 72.9 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012100982",
+   "reason": "no frontage on Afrikanerplein: No footprint edge faces Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012101363",
+   "reason": "frontage 69.3 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012101809",
+   "reason": "frontage 128.3 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012101968",
+   "reason": "frontage 159.0 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012102719",
+   "reason": "frontage 72.9 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012102819",
+   "reason": "no frontage on Afrikanerplein: No footprint edge faces Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012102941",
+   "reason": "frontage 133.0 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012103446",
+   "reason": "no frontage on Afrikanerplein: No footprint edge faces Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012103508",
+   "reason": "frontage 64.8 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012105200",
+   "reason": "frontage 108.9 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012105582",
+   "reason": "frontage 85.9 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012105783",
+   "reason": "frontage 79.1 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012105976",
+   "reason": "frontage 90.3 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012106188",
+   "reason": "no frontage on Afrikanerplein: No footprint edge faces Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012115391",
+   "reason": "frontage 99.4 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012119583",
+   "reason": "frontage 93.6 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012120470",
+   "reason": "frontage 83.2 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012106599",
+   "reason": "frontage 145.9 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012107101",
+   "reason": "frontage 153.2 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012107235",
+   "reason": "no frontage on Afrikanerplein: No footprint edge faces Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012107303",
+   "reason": "no frontage on Afrikanerplein: No footprint edge faces Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012108224",
+   "reason": "frontage 84.2 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012108544",
+   "reason": "frontage 38.7 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012108545",
+   "reason": "frontage 40.1 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012108752",
+   "reason": "frontage 74.5 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012108831",
+   "reason": "frontage 70.5 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012108935",
+   "reason": "sightline to Afrikanerplein crosses 0363100012098180"
+  },
+  {
+   "pandId": "0363100012108962",
+   "reason": "frontage 88.1 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012109842",
+   "reason": "frontage 63.9 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012109924",
+   "reason": "frontage 118.9 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012110043",
+   "reason": "no frontage on Afrikanerplein: No footprint edge faces Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012110167",
+   "reason": "frontage 103.1 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012110306",
+   "reason": "frontage 138.9 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012111001",
+   "reason": "frontage 164.3 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012111423",
+   "reason": "frontage 42.3 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012112858",
+   "reason": "frontage 72.8 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012113458",
+   "reason": "frontage 51.9 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012113510",
+   "reason": "frontage 38.3 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012113965",
+   "reason": "no frontage on Afrikanerplein: No footprint edge faces Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012114066",
+   "reason": "frontage 153.3 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012114231",
+   "reason": "frontage 38.5 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012114683",
+   "reason": "no frontage on Afrikanerplein: No footprint edge faces Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012114784",
+   "reason": "frontage 36.6 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012114813",
+   "reason": "no frontage on Afrikanerplein: No footprint edge faces Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012115092",
+   "reason": "frontage 72.6 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012115223",
+   "reason": "frontage 133.2 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012116100",
+   "reason": "frontage 119.7 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012116701",
+   "reason": "frontage 72.3 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012116889",
+   "reason": "frontage 70.6 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012117142",
+   "reason": "frontage 123.3 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012118471",
+   "reason": "frontage 106.2 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012118763",
+   "reason": "frontage 61.6 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012119062",
+   "reason": "frontage 37.2 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012119150",
+   "reason": "no frontage on Afrikanerplein: No footprint edge faces Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012119532",
+   "reason": "frontage 138.4 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012119746",
+   "reason": "frontage 119.0 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012119983",
+   "reason": "no frontage on Afrikanerplein: No footprint edge faces Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012120724",
+   "reason": "frontage 56.0 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012121091",
+   "reason": "no frontage on Afrikanerplein: No footprint edge faces Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012121133",
+   "reason": "frontage 40.5 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012121657",
+   "reason": "frontage 83.3 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012122087",
+   "reason": "frontage 94.0 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012123055",
+   "reason": "frontage 105.2 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012123446",
+   "reason": "frontage 73.7 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012123796",
+   "reason": "frontage 137.4 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012123924",
+   "reason": "no frontage on Afrikanerplein: No footprint edge faces Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012124344",
+   "reason": "frontage 47.5 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012124743",
+   "reason": "frontage 75.2 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012125379",
+   "reason": "frontage 52.5 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012125668",
+   "reason": "frontage 36.5 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012125720",
+   "reason": "frontage 66.2 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012126013",
+   "reason": "no frontage on Afrikanerplein: No footprint edge faces Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012126387",
+   "reason": "frontage 101.0 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012126814",
+   "reason": "frontage 88.2 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012126906",
+   "reason": "frontage 80.1 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012127064",
+   "reason": "frontage 113.7 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012127111",
+   "reason": "frontage 122.7 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012127247",
+   "reason": "frontage 165.7 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012127519",
+   "reason": "no frontage on Afrikanerplein: No footprint edge faces Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012127658",
+   "reason": "frontage 110.4 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012128261",
+   "reason": "frontage 81.9 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012128866",
+   "reason": "frontage 77.5 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012129188",
+   "reason": "frontage 131.2 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012129254",
+   "reason": "frontage 37.6 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012130038",
+   "reason": "frontage 112.9 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012131537",
+   "reason": "frontage 110.9 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012131556",
+   "reason": "frontage 101.2 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012132149",
+   "reason": "frontage 45.4 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012132444",
+   "reason": "sightline to Afrikanerplein crosses 0363100012133198"
+  },
+  {
+   "pandId": "0363100012132830",
+   "reason": "frontage 129.3 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012133204",
+   "reason": "frontage 71.5 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012133223",
+   "reason": "frontage 100.9 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012133518",
+   "reason": "no frontage on Afrikanerplein: No footprint edge faces Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012133939",
+   "reason": "frontage 66.6 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012134073",
+   "reason": "frontage 180.7 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012134472",
+   "reason": "frontage 67.3 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012134600",
+   "reason": "frontage 85.6 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012134611",
+   "reason": "frontage 132.4 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012134742",
+   "reason": "frontage 50.8 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012135114",
+   "reason": "frontage 100.2 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012135231",
+   "reason": "sightline to Afrikanerplein crosses 0363100012133761"
+  },
+  {
+   "pandId": "0363100012135437",
+   "reason": "frontage 127.9 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012135489",
+   "reason": "frontage 68.4 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012135592",
+   "reason": "frontage 95.0 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012138579",
+   "reason": "no frontage on Afrikanerplein: No footprint edge faces Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012139944",
+   "reason": "no frontage on Afrikanerplein: No footprint edge faces Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012140448",
+   "reason": "no frontage on Afrikanerplein: No footprint edge faces Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012144037",
+   "reason": "frontage 82.3 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012144655",
+   "reason": "frontage 79.8 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012147517",
+   "reason": "frontage 119.5 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012135794",
+   "reason": "frontage 76.8 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012135876",
+   "reason": "frontage 121.5 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012135892",
+   "reason": "frontage 147.1 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012135963",
+   "reason": "frontage 124.0 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012136455",
+   "reason": "frontage 121.4 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012136673",
+   "reason": "no frontage on Afrikanerplein: No footprint edge faces Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012136880",
+   "reason": "frontage 129.1 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012137110",
+   "reason": "frontage 103.1 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012137443",
+   "reason": "frontage 126.0 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012137594",
+   "reason": "sightline to Afrikanerplein crosses 0363100012088655"
+  },
+  {
+   "pandId": "0363100012137886",
+   "reason": "frontage 71.4 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012137971",
+   "reason": "frontage 37.1 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012138010",
+   "reason": "frontage 172.1 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012138134",
+   "reason": "frontage 73.8 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012138289",
+   "reason": "frontage 38.4 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012138431",
+   "reason": "frontage 57.8 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012138441",
+   "reason": "frontage 113.9 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012139446",
+   "reason": "frontage 36.9 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012139681",
+   "reason": "frontage 90.2 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012140132",
+   "reason": "frontage 122.3 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012140487",
+   "reason": "frontage 36.6 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012140934",
+   "reason": "frontage 117.4 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012141292",
+   "reason": "frontage 113.9 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012141339",
+   "reason": "no frontage on Afrikanerplein: No footprint edge faces Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012141486",
+   "reason": "no frontage on Afrikanerplein: No footprint edge faces Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012141566",
+   "reason": "frontage 123.7 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012141663",
+   "reason": "frontage 58.0 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012142206",
+   "reason": "frontage 97.7 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012142304",
+   "reason": "frontage 161.5 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012142519",
+   "reason": "frontage 126.1 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012144506",
+   "reason": "no frontage on Afrikanerplein: No footprint edge faces Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012145010",
+   "reason": "frontage 53.0 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012145564",
+   "reason": "frontage 131.5 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012145599",
+   "reason": "frontage 65.9 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012145617",
+   "reason": "frontage 82.9 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012145744",
+   "reason": "frontage 67.3 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012146282",
+   "reason": "frontage 125.3 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012146315",
+   "reason": "frontage 113.8 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012146692",
+   "reason": "frontage 63.7 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012147463",
+   "reason": "no frontage on Afrikanerplein: No footprint edge faces Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012147863",
+   "reason": "frontage 77.3 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012147910",
+   "reason": "frontage 118.9 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012148020",
+   "reason": "frontage 126.6 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012148086",
+   "reason": "frontage 90.4 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012148172",
+   "reason": "frontage 38.3 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012148195",
+   "reason": "frontage 77.6 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012148607",
+   "reason": "no frontage on Afrikanerplein: No footprint edge faces Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012149042",
+   "reason": "frontage 68.2 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012149403",
+   "reason": "no frontage on Afrikanerplein: No footprint edge faces Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012149786",
+   "reason": "frontage 153.8 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012150126",
+   "reason": "frontage 37.4 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012150301",
+   "reason": "no frontage on Afrikanerplein: No footprint edge faces Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012150331",
+   "reason": "sightline to Afrikanerplein crosses 0363100012119150"
+  },
+  {
+   "pandId": "0363100012150397",
+   "reason": "no frontage on Afrikanerplein: No footprint edge faces Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012150686",
+   "reason": "frontage 30.2 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012151300",
+   "reason": "frontage 85.3 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012151603",
+   "reason": "frontage 100.7 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012151989",
+   "reason": "frontage 38.0 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012152175",
+   "reason": "frontage 123.8 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012152184",
+   "reason": "frontage 87.4 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012154068",
+   "reason": "frontage 38.0 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012154076",
+   "reason": "no frontage on Afrikanerplein: No footprint edge faces Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012154472",
+   "reason": "no frontage on Afrikanerplein: No footprint edge faces Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012154531",
+   "reason": "no frontage on Afrikanerplein: No footprint edge faces Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012154575",
+   "reason": "no frontage on Afrikanerplein: No footprint edge faces Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012154803",
+   "reason": "frontage 71.9 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012154844",
+   "reason": "no frontage on Afrikanerplein: No footprint edge faces Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012154913",
+   "reason": "frontage 44.4 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012154997",
+   "reason": "frontage 118.4 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012155118",
+   "reason": "frontage 103.1 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012155546",
+   "reason": "frontage 43.2 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012159280",
+   "reason": "frontage 56.7 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012163453",
+   "reason": "frontage 130.4 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012164695",
+   "reason": "frontage 215.1 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012167300",
+   "reason": "frontage 31.5 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012183372",
+   "reason": "frontage 45.3 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012183373",
+   "reason": "frontage 43.8 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012191096",
+   "reason": "frontage 30.0 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012191097",
+   "reason": "no frontage on Afrikanerplein: No footprint edge faces Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012191098",
+   "reason": "no frontage on Afrikanerplein: No footprint edge faces Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012191099",
+   "reason": "frontage 55.9 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012191100",
+   "reason": "no frontage on Afrikanerplein: No footprint edge faces Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012191101",
+   "reason": "no frontage on Afrikanerplein: No footprint edge faces Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012191102",
+   "reason": "frontage 53.6 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012191391",
+   "reason": "frontage 135.1 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012193352",
+   "reason": "frontage 32.2 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012194533",
+   "reason": "frontage 100.3 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012194534",
+   "reason": "frontage 89.2 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012194535",
+   "reason": "frontage 91.9 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012194536",
+   "reason": "frontage 117.4 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012194537",
+   "reason": "frontage 128.7 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012194538",
+   "reason": "frontage 133.0 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012194539",
+   "reason": "frontage 103.2 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012194540",
+   "reason": "frontage 114.6 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012195479",
+   "reason": "frontage 145.3 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012195496",
+   "reason": "frontage 86.6 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012198834",
+   "reason": "frontage 114.3 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012198835",
+   "reason": "frontage 116.0 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012198836",
+   "reason": "frontage 104.0 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012198837",
+   "reason": "frontage 105.7 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012199219",
+   "reason": "sightline to Afrikanerplein crosses 0363100012138546"
+  },
+  {
+   "pandId": "0363100012199220",
+   "reason": "sightline to Afrikanerplein crosses 0363100012097742"
+  },
+  {
+   "pandId": "0363100012199221",
+   "reason": "frontage 98.4 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012199222",
+   "reason": "frontage 100.1 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012199223",
+   "reason": "frontage 102.2 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012199224",
+   "reason": "frontage 105.6 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012199225",
+   "reason": "no frontage on Afrikanerplein: No footprint edge faces Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012199226",
+   "reason": "no frontage on Afrikanerplein: No footprint edge faces Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012199227",
+   "reason": "frontage 112.1 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012199228",
+   "reason": "frontage 109.7 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012199229",
+   "reason": "frontage 107.1 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012199230",
+   "reason": "no frontage on Afrikanerplein: No footprint edge faces Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012199231",
+   "reason": "frontage 111.9 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012199232",
+   "reason": "frontage 112.3 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012199289",
+   "reason": "frontage 112.7 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012199290",
+   "reason": "frontage 100.5 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012199291",
+   "reason": "frontage 111.1 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012199292",
+   "reason": "frontage 100.9 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012199293",
+   "reason": "frontage 111.5 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012199294",
+   "reason": "frontage 115.6 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012199298",
+   "reason": "frontage 107.7 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012199299",
+   "reason": "frontage 108.0 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012199306",
+   "reason": "no frontage on Afrikanerplein: No footprint edge faces Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012199307",
+   "reason": "no frontage on Afrikanerplein: No footprint edge faces Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012199311",
+   "reason": "frontage 112.9 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012199312",
+   "reason": "sightline to Afrikanerplein crosses 0363100012064549"
+  },
+  {
+   "pandId": "0363100012199313",
+   "reason": "no frontage on Afrikanerplein: No footprint edge faces Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012199314",
+   "reason": "sightline to Afrikanerplein crosses 0363100012081369"
+  },
+  {
+   "pandId": "0363100012199315",
+   "reason": "frontage 40.5 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012199316",
+   "reason": "sightline to Afrikanerplein crosses 0363100012093680"
+  },
+  {
+   "pandId": "0363100012199317",
+   "reason": "frontage 38.0 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012199318",
+   "reason": "sightline to Afrikanerplein crosses 0363100012093680"
+  },
+  {
+   "pandId": "0363100012199319",
+   "reason": "sightline to Afrikanerplein crosses 0363100012081369"
+  },
+  {
+   "pandId": "0363100012199386",
+   "reason": "frontage 52.4 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012199387",
+   "reason": "frontage 52.8 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012199388",
+   "reason": "no frontage on Afrikanerplein: No footprint edge faces Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012199389",
+   "reason": "sightline to Afrikanerplein crosses 0363100012070168"
+  },
+  {
+   "pandId": "0363100012199390",
+   "reason": "sightline to Afrikanerplein crosses 0363100012135325"
+  },
+  {
+   "pandId": "0363100012199391",
+   "reason": "sightline to Afrikanerplein crosses 0363100012068510"
+  },
+  {
+   "pandId": "0363100012199392",
+   "reason": "sightline to Afrikanerplein crosses 0363100012143471"
+  },
+  {
+   "pandId": "0363100012199393",
+   "reason": "sightline to Afrikanerplein crosses 0363100012079290"
+  },
+  {
+   "pandId": "0363100012199394",
+   "reason": "sightline to Afrikanerplein crosses 0363100012086955"
+  },
+  {
+   "pandId": "0363100012199395",
+   "reason": "sightline to Afrikanerplein crosses 0363100012084510"
+  },
+  {
+   "pandId": "0363100012199396",
+   "reason": "sightline to Afrikanerplein crosses 0363100012125852"
+  },
+  {
+   "pandId": "0363100012203118",
+   "reason": "frontage 77.1 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012203119",
+   "reason": "frontage 102.7 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012206387",
+   "reason": "frontage 75.2 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012206968",
+   "reason": "frontage 92.0 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012207723",
+   "reason": "frontage 101.4 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012208322",
+   "reason": "frontage 90.0 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012208872",
+   "reason": "frontage 90.5 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012210044",
+   "reason": "frontage 90.7 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012210045",
+   "reason": "frontage 91.9 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012210046",
+   "reason": "frontage 94.2 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012210047",
+   "reason": "frontage 95.5 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012210048",
+   "reason": "frontage 96.1 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012210049",
+   "reason": "frontage 83.5 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012213941",
+   "reason": "frontage 85.3 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012214503",
+   "reason": "frontage 56.6 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012214504",
+   "reason": "frontage 54.7 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012214505",
+   "reason": "frontage 42.6 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012214953",
+   "reason": "frontage 98.1 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012218964",
+   "reason": "no frontage on Afrikanerplein: No footprint edge faces Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012223677",
+   "reason": "frontage 88.4 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012223678",
+   "reason": "frontage 145.3 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012223680",
+   "reason": "frontage 130.5 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012223683",
+   "reason": "frontage 143.5 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012223684",
+   "reason": "frontage 142.5 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012223685",
+   "reason": "frontage 119.8 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012223686",
+   "reason": "frontage 118.5 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012223689",
+   "reason": "frontage 131.6 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012223690",
+   "reason": "frontage 105.5 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012223691",
+   "reason": "frontage 107.4 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012223692",
+   "reason": "frontage 87.7 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012223693",
+   "reason": "frontage 93.0 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012223694",
+   "reason": "frontage 94.9 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012223695",
+   "reason": "frontage 93.8 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012223696",
+   "reason": "frontage 95.7 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012223697",
+   "reason": "frontage 106.2 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012223698",
+   "reason": "frontage 108.1 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012223699",
+   "reason": "frontage 155.9 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012223700",
+   "reason": "frontage 154.9 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012223701",
+   "reason": "frontage 156.8 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012223702",
+   "reason": "frontage 158.6 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012223704",
+   "reason": "frontage 157.7 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012223705",
+   "reason": "frontage 159.6 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012224399",
+   "reason": "frontage 100.4 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012224400",
+   "reason": "frontage 89.6 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012224401",
+   "reason": "frontage 92.0 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012240282",
+   "reason": "frontage 231.7 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012240283",
+   "reason": "frontage 200.7 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012240284",
+   "reason": "frontage 199.8 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012240286",
+   "reason": "frontage 217.7 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012240287",
+   "reason": "frontage 195.1 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012240288",
+   "reason": "frontage 190.9 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012240889",
+   "reason": "frontage 107.4 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012224402",
+   "reason": "frontage 117.5 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012224403",
+   "reason": "frontage 103.3 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012224404",
+   "reason": "frontage 114.7 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012224983",
+   "reason": "frontage 109.4 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012224984",
+   "reason": "frontage 109.0 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012224985",
+   "reason": "frontage 109.8 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012224986",
+   "reason": "frontage 110.2 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012224987",
+   "reason": "frontage 110.6 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012224988",
+   "reason": "frontage 99.9 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012224989",
+   "reason": "frontage 99.9 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012224990",
+   "reason": "frontage 101.6 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012224991",
+   "reason": "frontage 102.2 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012224992",
+   "reason": "frontage 102.4 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012224993",
+   "reason": "frontage 108.2 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012224994",
+   "reason": "frontage 108.6 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012224995",
+   "reason": "frontage 106.5 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012224996",
+   "reason": "frontage 106.9 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012224997",
+   "reason": "frontage 107.3 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012224998",
+   "reason": "frontage 107.8 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012229480",
+   "reason": "frontage 111.0 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012230879",
+   "reason": "frontage 30.8 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012231402",
+   "reason": "frontage 69.9 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012231403",
+   "reason": "frontage 68.3 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012231404",
+   "reason": "frontage 42.4 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012231405",
+   "reason": "frontage 57.4 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012231406",
+   "reason": "frontage 55.9 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012231407",
+   "reason": "frontage 46.7 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012231408",
+   "reason": "frontage 45.3 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012231409",
+   "reason": "no frontage on Afrikanerplein: No footprint edge faces Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012232453",
+   "reason": "frontage 90.6 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012233492",
+   "reason": "frontage 136.0 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012233534",
+   "reason": "frontage 213.7 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012233548",
+   "reason": "frontage 140.5 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012236731",
+   "reason": "frontage 134.4 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012240281",
+   "reason": "frontage 205.2 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012240887",
+   "reason": "sightline to Afrikanerplein crosses 0363100012141876"
+  },
+  {
+   "pandId": "0363100012240888",
+   "reason": "frontage 70.5 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012243120",
+   "reason": "frontage 37.1 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012243121",
+   "reason": "frontage 31.9 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012243122",
+   "reason": "frontage 93.6 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012243123",
+   "reason": "frontage 36.9 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012253936",
+   "reason": "frontage 124.8 m from Afrikanerplein"
+  },
+  {
+   "pandId": "0363100012066447",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012074671",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012088081",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012088873",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012094272",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012098180",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012110028",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012113463",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012122445",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012123328",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012131433",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012131601",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012133198",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012133761",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012137582",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012148898",
+   "reason": "fronts the other side / another direction"
+  }
+ ],
+ "areaHalfSizeM": 180,
+ "pands": [
+  {
+   "pandId": "0363100012070168",
+   "alongM": 24.44,
+   "widthM": 6.75,
+   "eavesM": 14.91,
+   "roofMaxM": 14.93,
+   "storeys3dbag": 5,
+   "builtYear": 1931,
+   "uncertainty": [
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  },
+  {
+   "pandId": "0363100012125852",
+   "alongM": 31.19,
+   "widthM": 6.76,
+   "eavesM": 14.92,
+   "roofMaxM": 14.95,
+   "storeys3dbag": 4,
+   "builtYear": 1931,
+   "uncertainty": [
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  },
+  {
+   "pandId": "0363100012084510",
+   "alongM": 37.95,
+   "widthM": 6.75,
+   "eavesM": 14.92,
+   "roofMaxM": 14.93,
+   "storeys3dbag": 5,
+   "builtYear": 1931,
+   "uncertainty": [
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  },
+  {
+   "pandId": "0363100012079290",
+   "alongM": 44.7,
+   "widthM": 6.76,
+   "eavesM": 14.93,
+   "roofMaxM": 14.93,
+   "storeys3dbag": 5,
+   "builtYear": 1931,
+   "uncertainty": [
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  },
+  {
+   "pandId": "0363100012143471",
+   "alongM": 51.46,
+   "widthM": 6.76,
+   "eavesM": 14.88,
+   "roofMaxM": 14.88,
+   "storeys3dbag": 5,
+   "builtYear": 1931,
+   "uncertainty": [
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  },
+  {
+   "pandId": "0363100012068510",
+   "alongM": 58.22,
+   "widthM": 6.77,
+   "eavesM": 14.85,
+   "roofMaxM": 14.88,
+   "storeys3dbag": 5,
+   "builtYear": 1931,
+   "uncertainty": [
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  },
+  {
+   "pandId": "0363100012135325",
+   "alongM": 64.98,
+   "widthM": 6.76,
+   "eavesM": 14.86,
+   "roofMaxM": 14.89,
+   "storeys3dbag": 5,
+   "builtYear": 1931,
+   "uncertainty": [
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  },
+  {
+   "pandId": "0363100012064549",
+   "alongM": 71.74,
+   "widthM": 6.77,
+   "eavesM": 14.86,
+   "roofMaxM": 14.89,
+   "storeys3dbag": 5,
+   "builtYear": 1931,
+   "uncertainty": [
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  },
+  {
+   "pandId": "0363100012086955",
+   "alongM": 78.5,
+   "widthM": 6.76,
+   "eavesM": 14.91,
+   "roofMaxM": 14.92,
+   "storeys3dbag": 5,
+   "builtYear": 1931,
+   "uncertainty": [
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  }
+ ],
+ "runOf": "afrikanerplein-25-55"
+}
