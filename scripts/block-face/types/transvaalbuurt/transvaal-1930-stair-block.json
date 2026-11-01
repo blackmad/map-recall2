@@ -1,0 +1,243 @@
+{
+ "schemaVersion": 1,
+ "kind": "house-type",
+ "id": "transvaal-1930-stair-block",
+ "district": "transvaalbuurt",
+ "description": "Transvaalbuurt 1930 portiek blocks of Albert Luthulistraat 6-32, the stair pand between two towers: a dark red-brown brick front of a 4.1 m ground storey and three 3.1 m upper storeys under a 0.75 m plain parapet with a light coping (top 14.25 m); a window pair at each end (white two-light casements with a top light), and in the middle the portiek: a small window either side of the stair axis, whose stair lights climb half a storey off the main line in an ochre header-brick panel; no tower. Its sibling transvaal-1930-stair-tower is the 14-16.5 m tower pand",
+ "fit": {
+  "widthM": [
+   11.5,
+   14
+  ],
+  "storeys": [
+   4
+  ]
+ },
+ "match": {
+  "years": [
+   1929,
+   1931
+  ],
+  "eavesM": [
+   12.2,
+   15.3
+  ],
+  "storeys3dbag": [
+   5
+  ],
+  "stucco": false,
+  "balconies": false,
+  "frontEavesM": 14.25,
+  "frontage": {
+   "mode": "stair-block",
+   "widthM": [
+    12.0,
+    13.6
+   ],
+   "storeys": [
+    4
+   ],
+   "axisPitchM": [
+    1.1,
+    4.5
+   ]
+  },
+  "lonePand": {
+   "minWidthM": 5
+  },
+  "crownFromType": "parapet",
+  "note": "Albert Luthulistraat 6-32 (BAG 1930 on all 7 pands; 3DBAG bouwlagen 5, eaves 12.7-14.8 m, roof max 14.7-14.8 m: the setback roof storey, not the towers, which 3DBAG misses). One design of two pand kinds that BAG cuts alternately: 16.2-16.5 m tower pands (and 073273 at 14.3 m) and 12.6-12.9 m stair pands; the frontage width tells them apart (transvaal-1930-stair-tower 13.8-17.2 m, transvaal-1930-stair-block 12.0-13.6 m)."
+ },
+ "body": {
+  "storeys": 4,
+  "bays": [
+   7,
+   7,
+   7,
+   7
+  ],
+  "axisGrid": 9,
+  "cornice": "none",
+  "windows": "casement-toplight",
+  "storeyHeights": [
+   4.1,
+   3.1,
+   3.1,
+   3.2
+  ],
+  "windowHeights": [
+   0.39,
+   0.48,
+   0.5,
+   0.5
+  ],
+  "headLines": [
+   0.9,
+   0.81,
+   0.82,
+   0.81
+  ],
+  "bayWidths": [
+   2.1,
+   1.64,
+   1.2,
+   0.96,
+   1.8,
+   0.96,
+   1.2,
+   1.64,
+   2.1
+  ],
+  "bayFill": [
+   0.62,
+   0.79,
+   0.5,
+   0.89,
+   0.44,
+   0.89,
+   0.5,
+   0.79,
+   0.62
+  ],
+  "storeyAxes": {
+   "0": [
+    0,
+    1,
+    3,
+    4,
+    5,
+    7,
+    8
+   ],
+   "1": [
+    0,
+    1,
+    3,
+    4,
+    5,
+    7,
+    8
+   ],
+   "2": [
+    0,
+    1,
+    3,
+    4,
+    5,
+    7,
+    8
+   ],
+   "3": [
+    0,
+    1,
+    3,
+    4,
+    5,
+    7,
+    8
+   ]
+  },
+  "axisWindows": {
+   "3": "two-light",
+   "4": "casement-small-panes",
+   "5": "two-light"
+  },
+  "brickStripes": [
+   {
+    "rise": [
+     5.4,
+     12.2
+    ],
+    "pitch": 0.3,
+    "stripe": 0.26,
+    "span": [
+     0.475,
+     0.525
+    ]
+   }
+  ]
+ },
+ "crowns": {
+  "parapet": {
+   "gable": "flat",
+   "parapet": {
+    "courses": 14,
+    "coping": true
+   },
+   "note": "Albert Luthulistraat 26-28 (088339): coping 14.0-14.3 m over plain brick, the roof-terrace railing of the setback roof storey behind"
+  }
+ },
+ "grounds": {
+  "door-centre": {
+   "doorBay": 4,
+   "note": "the portiek door (red, 1.0 m, head 3.6 m) on the stair axis, a small window and mailboxes either side, no canopy"
+  }
+ },
+ "palettes": {
+  "dark-red-brown": {
+   "brick": "#6f5b53",
+   "frame": "#e8e6de",
+   "door": "#7a2a2c",
+   "stone": "#71797f",
+   "band": "#827959",
+   "cornice": "#8a726b"
+  }
+ },
+ "roof": {
+  "material": "bitumen",
+  "source": "front",
+  "form": "flat",
+  "evidence": "Albert Luthulistraat 22-32 strip 2020-04-29: a level coping with a white roof-terrace railing of the setback roof storey behind it (14.4-15.3 m); no roof face over the front; 3DBAG roof max 14.7-14.8 m"
+ },
+ "rhythm": {
+  "bays": "a window pair, a small window, the stair axis, a small window, a window pair",
+  "identicalBays": "no: pairs and small windows",
+  "windowsPerStorey": "ground: pair + small window + portiek door + small window + pair | 1-3: the same with the stair light",
+  "symmetry": "symmetric about the stair axis",
+  "groundFloor": "the portiek door on the stair axis, no canopy",
+  "signage": "none",
+  "roofline": "flat; a plain parapet with a light coping",
+  "photoRows": [
+   3,
+   3,
+   3,
+   3
+  ],
+  "photoGroundRows": 1
+ },
+ "evidence": [
+  {
+   "face": "luthuli-22-32",
+   "pands": [
+    "0363100012088339"
+   ],
+   "citation": "strip.jpg 2020-04-29 at 40 px/m, gridded 1 m (staging/block-face/transvaalbuurt/5b/luthuli-22-32-16-30-grid.png): from the pand's left (16.2 m) pair 0.6-1.9 and 2.25-3.55 m, small windows 5.0-5.85 and 7.75-8.6 m, stair lights 6.4-7.2 m in an ochre panel 6.35-7.25 m from 5.4 to 12.1 m, pair 10.0-11.3 and 11.65-12.9 m (symmetric about the stair axis at 6.8 m); window rows as the tower pand, the small windows 5.25-6.3 m; door 6.2-7.2 m head 3.6 m"
+  },
+  {
+   "face": "luthuli-6-20",
+   "pands": [
+    "0363100012087850",
+    "0363100012097026"
+   ],
+   "citation": "strip.jpg 2020-04-29 at 40 px/m (staging/block-face/transvaalbuurt/5b/luthuli-6-20-grid.png): 087850 (12.8 m) and 097026 (12.9 m) the same front, stair axis at 22.7 and 49.8 m"
+  },
+  {
+   "face": "luthuli-22-32",
+   "pands": [
+    "0363100012124743",
+    "0363100012088339"
+   ],
+   "citation": "raw strip wall #6f5b53-#756055 on tree-free piers (0.3-2.8 m and 16.3-20.5 m at 7-8 m), #655249-#68554d on luthuli-6-20 (30-34 and 44-48 m); ochre header-brick stair ladder #827959; grey canopy #71797f; coping #8a726b"
+  }
+ ],
+ "schemaLimits": [
+  "the stair lights climb half a storey off the main window line (heads 8.8 and 11.8 m against 9.75 and 12.9 m, a small light at 5.0-5.4 m over the door); drawn on the main head line",
+  "the ochre header-brick stair panel is drawn as close brick stripes in the band brick (brickStripes), cut round the stair lights",
+  "the small windows beside the stair axis are 1.05 m tall against the pairs' 1.5 m; drawn as tall as the pairs",
+  "the setback roof storey with its white roof-terrace railing (14.4-15.3 m) is not drawn",
+  "the yellow brick piers between the windows of a pair are not drawn"
+ ],
+ "notes": [
+  "Palette: the type default is the raw strip wall of the tree-free piers; every placed pand takes its trim-normalised strip wall (auto-place measuredPalette)."
+ ]
+}

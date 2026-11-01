@@ -1,0 +1,163 @@
+{
+ "face": "burger-45-131-r2",
+ "image": "staging/block-face/burger-45-131-r2/strip.jpg",
+ "pixelsPerMetre": 40,
+ "width": 810,
+ "height": 699,
+ "groundNAP": 0.405,
+ "heightM": 17.47,
+ "frame": {
+  "midRD": [
+   123260.75070833333,
+   485080.9039166666
+  ],
+  "uRD": [
+   0.5887940277947554,
+   -0.8082831142818886
+  ],
+  "nRD": [
+   -0.8082831142818886,
+   -0.5887940277947554
+  ]
+ },
+ "x0M": -10.13,
+ "x1M": 10.12,
+ "date": "2020-04-30",
+ "coverage": 1,
+ "spans": [
+  {
+   "pandId": "0363100012117331",
+   "x0M": -10.13,
+   "x1M": -3.38,
+   "px": [
+    0,
+    270
+   ],
+   "date": "2020-04-30",
+   "fallbackDate": false,
+   "panoramas": [
+    {
+     "panoId": "TMX7316010203-001684_pano_0000_000347",
+     "timestamp": "2020-04-30T08:17:37.677550Z",
+     "distanceM": 12.2,
+     "obliquityDeg": 8.7,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "TMX7316010203-001684_pano_0000_000346",
+     "timestamp": "2020-04-30T08:17:37.217540Z",
+     "distanceM": 12.3,
+     "obliquityDeg": 14.7,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "TMX7316010203-001684_pano_0000_000348",
+     "timestamp": "2020-04-30T08:17:38.137540Z",
+     "distanceM": 14,
+     "obliquityDeg": 29,
+     "missingFraction": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012076140",
+   "x0M": -3.38,
+   "x1M": 3.37,
+   "px": [
+    270,
+    540
+   ],
+   "date": "2020-04-30",
+   "fallbackDate": false,
+   "panoramas": [
+    {
+     "panoId": "TMX7316010203-001684_pano_0000_000348",
+     "timestamp": "2020-04-30T08:17:38.137540Z",
+     "distanceM": 12.3,
+     "obliquityDeg": 0.3,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "TMX7316010203-001684_pano_0000_000349",
+     "timestamp": "2020-04-30T08:17:38.597530Z",
+     "distanceM": 13.4,
+     "obliquityDeg": 22.1,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "TMX7316010203-001684_pano_0000_000347",
+     "timestamp": "2020-04-30T08:17:37.677550Z",
+     "distanceM": 13,
+     "obliquityDeg": 22.2,
+     "missingFraction": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012150447",
+   "x0M": 3.37,
+   "x1M": 10.12,
+   "px": [
+    540,
+    810
+   ],
+   "date": "2020-04-30",
+   "fallbackDate": false,
+   "panoramas": [
+    {
+     "panoId": "TMX7316010203-001684_pano_0000_000349",
+     "timestamp": "2020-04-30T08:17:38.597530Z",
+     "distanceM": 12.6,
+     "obliquityDeg": 7.4,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "TMX7316010203-001684_pano_0000_000350",
+     "timestamp": "2020-04-30T08:17:39.052680Z",
+     "distanceM": 13,
+     "obliquityDeg": 14.8,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "TMX7316010203-001684_pano_0000_000348",
+     "timestamp": "2020-04-30T08:17:38.137540Z",
+     "distanceM": 14,
+     "obliquityDeg": 28.2,
+     "missingFraction": 0
+    }
+   ]
+  }
+ ],
+ "candidatesByDate": {
+  "2025-06-20": 9,
+  "2020-04-29": 9,
+  "2019-12-19": 5,
+  "2019-05-16": 8,
+  "2022-06-13": 9,
+  "2021-05-28": 9,
+  "2024-10-02": 9,
+  "2017-04-06": 9,
+  "2016-06-08": 9,
+  "2024-09-16": 8,
+  "2018-05-15": 9,
+  "2019-05-15": 6,
+  "2020-04-30": 9,
+  "2020-09-04": 8,
+  "2020-01-29": 9,
+  "2024-10-08": 3,
+  "2025-09-30": 2,
+  "2017-03-31": 0,
+  "2021-05-31": 0,
+  "2018-12-11": 0,
+  "2017-03-29": 0
+ },
+ "description": "Rectified orthographic elevation of the whole face on the frontage planes: x = chunk-frame metres along the face (left→right seen from the street) from x0M, y = metres above the shared ground (groundNAP) from the bottom; grey = no panorama data. Per-pand spans list the panoramas median-fused for that frontage.",
+ "attribution": "Gemeente Amsterdam, Panoramabeelden (CC BY 4.0; faces and number plates blurred by the publisher)",
+ "croppedFrom": {
+  "face": "burger-45-131",
+  "px": [
+   2033,
+   2843
+  ]
+ }
+}

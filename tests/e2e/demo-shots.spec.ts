@@ -79,6 +79,12 @@ const SPOTS: Spot[] = [
   { name: 'transvaal1911b-retiefstraat-65a', centre: [4.9220452, 52.3554271], standDeg: 333, standM: 8, view: 'cockpit' },
   { name: 'transvaal1911b-pretoriusstraat-23', centre: [4.9261931, 52.3559380], standDeg: 336, standM: 8, view: 'cockpit' },
   { name: 'transvaal1911b-paardekraalstraat-13', centre: [4.9252210, 52.3551335], standDeg: 220, standM: 8, view: 'cockpit' },
+  // Transvaalbuurt round 5 (#158): the 1930-31 designs, seen from mid-street.
+  { name: 'transvaal5b-luthulistraat-6-20', centre: [4.9196105, 52.3531229], standDeg: 119, standM: 30, view: 'cockpit' },
+  { name: 'transvaal5b-luthulistraat-22-32', centre: [4.9191358, 52.3527690], standDeg: 144, standM: 30, view: 'cockpit' },
+  { name: 'transvaal5b-afrikanerplein-33-51', centre: [4.9171430, 52.3518849], standDeg: 315, standM: 30, view: 'cockpit' },
+  { name: 'transvaal5b-schalkburgerstraat-59-77', centre: [4.9209948, 52.3530040], standDeg: 234, standM: 30, view: 'cockpit' },
+  { name: 'transvaal5b-schalkburgerstraat-99-115', centre: [4.9213461, 52.3527139], standDeg: 234, standM: 30, view: 'cockpit' },
   { name: 'aerial-westerdok', centre: [4.8860, 52.3840], standDeg: 0, standM: 0, faceDeg: 20, camZoom: 0.16 },
 ];
 
