@@ -268,10 +268,11 @@ p95 +7 %; desktop ground 504k → 397k, frame 1.97 M → 1.87 M; step 2 merged
 2026-11-01, `c9f743361`, HISTORY "Kerbs and bollards of the rider's cell draw
 only within 150 m": iPad ground 222k; trees culled to the view 2026-11-01,
 `8cfc3ceb4`, HISTORY "Only the trees on screen are drawn": iPad frame p50
-0.80 M vs ≤ 0.70 M, desktop 1.42 M; next: the whole-frame shading flip the
-pin harness sees with 3D trees on (1–3 levels, cause unknown, may be a real
-subtle flicker), then open-ended trunks (~50k desktop), then the cycle
-overlay 108k); the 150/400 m
+0.80 M; flat lines culled + trunk caps 2026-11-01, `4d97ed9c5`/`086f295b6`,
+HISTORY "The flat map lines draw only the span on screen": **iPad p50 0.696 M,
+target ≤ 0.70 M MET**, desktop 1.33 M; the shading flip was a harness
+elevation bug, fixed; materials next: facade mask format (iPhone atlas
+< 22 MB), too-white roofs #179, cartoon look #161); the 150/400 m
 facade LOD is parked (60–100k, 5–8 %, not worth its likeness risk yet). In-frame
 shader links are 0. P5 follow-ups: delete
 `building-tiles/` and `bag-tiles/` after a week of Sentry quiet on the

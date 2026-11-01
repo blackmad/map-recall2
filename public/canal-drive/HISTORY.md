@@ -1,5 +1,24 @@
 # Canal Recall — what is built
 
+**The flat map lines draw only the span on screen and trunks drop their bottom caps: the iPad triangle gate is met, p50 0.696 M against 0.70 M (2026-11-01, P4).**
+Materials lane (4d97ed9c5, 086f295b6). The flat lines (cycle tracks,
+transit, neighbourhood lines) draw only the part of their index on screen
+with the overview's culling, still one draw (`?lineCull=0` keeps the old
+behaviour; `engine/flatLines.test.ts`): engine-cycle 107.6k → 13.5k
+triangles; Jordaan ride p50 desktop frame 1.391 M → 1.326 M (p95 2.60 →
+2.52 M), iPad 0.789 M → 0.696 M (p95 1.51 → 1.42 M); pins against
+`lineCull=0` 0 / 1 / 0 / 0 / 1 px. Trunks: the wood cylinder drops only
+its bottom cap, which faces into the ground or the trunk below (28 → 21
+triangles per trunk or fork; top caps kept because a trunk top is not
+always inside a crown; `?treeCaps=1` keeps the old geometry;
+`rendererShared/trunkGeometry.ts` with a test): desktop trees 136.6k →
+129.5k, iPad 47.3k → 41.1k, 0 px at all five spots with 3D trees on.
+In-frame links 0 everywhere. The P4 iPad triangle target is met for the
+first time: 1.21 M at acceptance → 0.696 M (tileWhole fix, overview span
+grid, ground 6×6 and reach, tree cull, line cull, trunks). Remaining
+owners: facades 259k, own ground 222k, landmarks 73k, trees 41k.
+Integrator: engine and 3d bundles rebuilt; `trianglesIpad` re-recorded.
+
 **The built routing graph and surface index are cached on the device: on a return visit the world is ready ~3× sooner after submit (2026-11-01, P3).**
 Road lane (c0e02ebec, 9245cf0cf, 514e18c3d). `routing/roadWorldCache.ts`
 keys the record by version, city, mode, the roads-v2 source sha and the

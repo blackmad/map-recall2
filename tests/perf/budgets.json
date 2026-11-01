@@ -148,12 +148,12 @@
       "trianglesIpad": {
         "target": 700000,
         "measured": {
-          "p50": 800000,
-          "p95": 1540000
+          "p50": 696000,
+          "p95": 1420000
         },
         "unit": "triangles per frame, iPad profile, every pass",
         "owners": "mean per frame: facades 666k (+33k shadow), own-ground 306k, overview 279k, trees 183k (+19k shadow), cycle overlay 108k, landmarks 73k (+29k shadow), player bike 36k",
-        "note": "re-recorded 2026-11-01 with 8cfc3ceb4 (tree instance culling: iPad trees 183k -> 48k + 19k shadow, frame p50 0.94 M -> 0.80 M, p95 1.70 -> 1.54 M; desktop trees 529k -> 136k + 51k shadow, frame 1.84 M -> 1.42 M, p95 3.11 -> 2.66 M; draws unchanged); earlier with c9f743361 (own ground steps 1+2: near cell 6x6 and kerbs/bollards within 150 m; iPad own ground 298k -> 222k, frame p50 1.02 M -> 0.94 M, p95 1.71 M after step 1; desktop frame 1.97 M -> 1.84 M; draws iPad p95 746 -> 789); earlier with c415a1e1b (overview span grid 32: overview 279k -> 83k per frame on iPad; iPad p50/p95 1.21 M / 1.98 M -> 1.02 M / 1.78 M, desktop p50 2.18 M -> 1.97 M, draws unchanged 385 / 287, 0 px at five spots against ?overviewCull=0); earlier re-record with 811ff753c (tileWhole parse bug drew whole facade chunks on touch: 1.65 M / 2.47 M before); per-frame means after the fix: own ground 306k, overview 279k, facades 259k (far shells 91k, extras 80k, kits 49k, near walls/roofs 35k), trees 183k, cycle overlay 108k, landmarks 73k, bike 36k, shadows ~80k"
+        "note": "re-recorded 2026-11-01 with 4d97ed9c5/086f295b6 (flat map lines culled to the view 108k -> 14k, trunk bottom caps dropped: iPad frame p50 0.789 M -> 0.696 M, p95 1.51 -> 1.42 M; desktop 1.391 M -> 1.326 M, p95 2.60 -> 2.52 M) — the 700k p50 target is MET; earlier with 8cfc3ceb4 (tree instance culling: iPad trees 183k -> 48k + 19k shadow, frame p50 0.94 M -> 0.80 M, p95 1.70 -> 1.54 M; desktop trees 529k -> 136k + 51k shadow, frame 1.84 M -> 1.42 M, p95 3.11 -> 2.66 M; draws unchanged); earlier with c9f743361 (own ground steps 1+2: near cell 6x6 and kerbs/bollards within 150 m; iPad own ground 298k -> 222k, frame p50 1.02 M -> 0.94 M, p95 1.71 M after step 1; desktop frame 1.97 M -> 1.84 M; draws iPad p95 746 -> 789); earlier with c415a1e1b (overview span grid 32: overview 279k -> 83k per frame on iPad; iPad p50/p95 1.21 M / 1.98 M -> 1.02 M / 1.78 M, desktop p50 2.18 M -> 1.97 M, draws unchanged 385 / 287, 0 px at five spots against ?overviewCull=0); earlier re-record with 811ff753c (tileWhole parse bug drew whole facade chunks on touch: 1.65 M / 2.47 M before); per-frame means after the fix: own ground 306k, overview 279k, facades 259k (far shells 91k, extras 80k, kits 49k, near walls/roofs 35k), trees 183k, cycle overlay 108k, landmarks 73k, bike 36k, shadows ~80k"
       }
     }
   }
