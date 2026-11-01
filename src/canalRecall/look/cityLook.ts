@@ -45,6 +45,7 @@ import { FACADE_TIER_GLSL, FACADE_TIER_OFF, ROOF_LAYERS_OFF, ROOF_TIER_GLSL, roo
 import { BAKED_SHADE_GLSL } from '../rendererShared/lightRig.ts';
 import { sceneLookFrom, sceneSlotHex, type SceneLook } from './sunny.ts';
 import { photoMatchedWallTint, type WallExposure } from './chunkWallExposure.ts';
+import { accentGlsl, packMask } from './maskPacking.ts';
 
 // ---------------------------------------------------------------------------
 // Flag
@@ -505,7 +506,8 @@ vec2 cityUv = vSlot.y > 0.5 ? clamp(vFacUv, 0.0, 1.0) : vFacUv;
 vec3 cityP = vec3(cityUv, vLayer);
 vec3 cityC; vec2 cityM;
 #ifdef CITY_SLOT
-cityC = texture(cells, cityP).rgb; cityM = texture(masks, cityP).rg;
+vec4 cityCC = texture(cells, cityP); vec2 cityMM = texture(masks, cityP).rg;
+cityC = cityCC.rgb; cityM = vec2(cityMM.r, ${accentGlsl('cityMM', 'cityCC')});
 #else
 cellTierSample(cityP, vFacDist, cityC, cityM);
 cityC = roofTierColour(cityC, cityUv, vLayer, vFacDist);
@@ -789,7 +791,8 @@ export function createCityLook(THREE: any, options: CityLookOptions = {}): CityL
     if (!doc) return; // node (tests): materials and attributes only, no atlas
     const brick = options.brick !== undefined ? options.brick : await loadCityBrick(doc);
     const { colour, mask } = paintSlotLayers(doc, brick, size);
-    own = { colour: arrayTexture(colour, THREE.RGBAFormat), mask: arrayTexture(mask, THREE.RGFormat) };
+    const packed = packMask(colour, mask);
+    own = { colour: arrayTexture(packed.colour, THREE.RGBAFormat), mask: arrayTexture(packed.mask, packed.channels === 1 ? THREE.RedFormat : THREE.RGFormat) };
     if (!bound) { uniforms.cells.value = own.colour; uniforms.masks.value = own.mask; uniforms.slotBase.value = 0; }
   })();
   const material = (variant: CityVariant) => {

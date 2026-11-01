@@ -58,6 +58,7 @@ import { MotionEstimate, aheadRank, lookAheadEnabled } from './streamingLookAhea
 import { detailBlock, type DetailBlock } from './detailRing.js';
 import { worldCameraOf } from './engine/worldCameraOf.js';
 import type { WorldCamera } from './engine/worldViewApi.js';
+import { packMask } from './look/maskPacking.js';
 
 type BuildOptions = { surveyedEnvelopeData: EnvelopeTransport["envelopes"]; surveyedEnvelopeRevision: string; look: BuildingLook; streets?: Float32Array; profiles: readonly StreetAppearanceProfile[]; contextFeatures?: readonly Feature[]; appearanceRevision: string; hostOpenings: readonly ChunkHostOpeningConfig[]; hostOpeningRevision: string };
 
@@ -257,7 +258,9 @@ export function lookTexturesOf(THREE: any, atlas: LookAtlasArrays, maxAnisotropy
     t.generateMipmaps = true; t.anisotropy = maxAnisotropy; t.unpackAlignment = 1; t.needsUpdate = true;
     return t;
   };
-  return { colour: array(atlas.colour, THREE.RGBAFormat), mask: array(atlas.mask, THREE.RGFormat), slotBase: atlas.layers };
+  // The accent goes up in the colour's alpha and the mask as R8 (look/maskPacking.ts); `?maskFormat=rg` keeps RG.
+  const packed = packMask(atlas.colour, atlas.mask);
+  return { colour: array(packed.colour, THREE.RGBAFormat), mask: array(packed.mask, packed.channels === 1 ? THREE.RedFormat : THREE.RGFormat), slotBase: atlas.layers };
 }
 
 /**

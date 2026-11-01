@@ -1,3 +1,4 @@
+import { accentGlsl } from './look/maskPacking.js';
 /**
  * Roof texture scale by distance: the pantile and slate cells are 1.2 m wide with
  * 5-6 courses of 0.2 m tiles, which reads as noise from a chase camera. The
@@ -81,12 +82,14 @@ vec3 roofTierColour(vec3 fine, vec2 uv, float layer, float dist) {
 export const FACADE_TIER_GLSL = /* glsl */ `
 uniform vec2 cellTier;
 void cellTierSample(vec3 p, float dist, out vec3 c, out vec2 m) {
-  c = texture(cells, p).rgb; m = texture(masks, p).rg;
+  vec4 cc = texture(cells, p); vec2 mm = texture(masks, p).rg;
+  c = cc.rgb; m = vec2(mm.r, ${accentGlsl('mm', 'cc')});
   if (cellTier.x < 0.0) return;
   float rho = max(length(dFdx(p.xy)), length(dFdy(p.xy))) * float(textureSize(cells, 0).x);
   float far = smoothstep(cellTier.x, cellTier.y, rho);
   if (far <= 0.0) return;
-  c = mix(c, textureLod(cells, p, 8.0).rgb, far); m = mix(m, textureLod(masks, p, 8.0).rg, far);
+  vec4 fc = textureLod(cells, p, 8.0); vec2 fm = textureLod(masks, p, 8.0).rg;
+  c = mix(c, fc.rgb, far); m = mix(m, vec2(fm.r, ${accentGlsl('fm', 'fc')}), far);
 }`;
 
 /** The roof blend on the CPU, for tests and the gallery's tier readout: weights of the fine, mid and far samples. */

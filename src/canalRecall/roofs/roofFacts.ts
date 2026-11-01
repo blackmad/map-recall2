@@ -5,6 +5,7 @@
  *
  *   roofSlot        the slot (`look/palette.ts` ROOF_SLOTS)
  *   roofMeasured    the measured colour, cast removed ('#rrggbb')
+ *   roofConfidence  the reading's confidence 0..1 (the tile stores tenths; gardenRooms.ts reads it)
  *   roofSolar       solar share 0..1 (only when > 0)
  *   roofTerrace     true for a roof terrace
  *   roofDormer      3DBAG says the sloped roof has (true) or lacks (false) dormers
@@ -37,6 +38,7 @@ async function readJson(response: Response): Promise<unknown> {
 export function applyRoofFact(properties: Record<string, unknown>, fact: RoofFact): void {
   properties.roofSlot = fact.slot;
   properties.roofMeasured = rgbToHex(fact.rgb);
+  properties.roofConfidence = fact.confidence;
   if (fact.solarShare > 0) properties.roofSolar = fact.solarShare;
   if (fact.terrace) properties.roofTerrace = true;
   if (fact.dormer !== undefined) properties.roofDormer = fact.dormer;

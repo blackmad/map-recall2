@@ -405,6 +405,32 @@ export function contextualBuildingPalette(id: string, constructionYear?: number 
   return { wallKey: wall, roofKey: roof, groundKey: ground, wall: CONTEXTUAL_BUILDING_COLOURS[wall], roof: CONTEXTUAL_BUILDING_COLOURS[roof], ground: CONTEXTUAL_BUILDING_COLOURS[ground] };
 }
 
+/**
+ * Garden rooms (gardenRooms.ts, lane #169, 2026-11-01): the contemporary Dutch back-garden building, two families.
+ * Display priors sampled from the reference photographs of the user's search ("dutch prefab backyard building
+ * amsterdam"), not measured per pand:
+ *   - larch / thermo-wood slats: fresh honey-ochre #b8925a-#c9a46b (the oiled-larch range of the photos), weathering
+ *     toward the silver-grey of untreated larch after a few winters #9a8f7e;
+ *   - matte black: black-stained or charred board and black composite, #2a2a28-#3a3835 (never pure black: the
+ *     photos' "black" is a warm charcoal that still shows its boards in sun);
+ *   - frames anthracite aluminium (RAL 7016-ish) #2b2d2f; fascia the same family, a step darker #26282a;
+ *   - glass the look's glazing tint (the street crowns' #35464f, cartoon #68a2bf);
+ *   - lid: the measured roof slot when the orthophoto read one, else dark EPDM #3c3e40; sedum's slot base when green.
+ * Joints are the boards' own shadow lines: timber x0.62, black a lighter edge #4a4844 (sun on the board edges).
+ */
+export const GARDEN_ROOM_TONES = {
+  slatFresh: ['#b8925a', '#c9a46b'] as const,
+  slatWeathered: '#9a8f7e',
+  black: ['#2a2a28', '#3a3835'] as const,
+  blackJoint: '#4a4844',
+  slatJointMul: 0.62,
+  frame: '#2b2d2f',
+  fascia: '#26282a',
+  glass: '#35464f',
+  glassCartoon: '#68a2bf',
+  lidEpdm: '#3c3e40',
+} as const;
+
 /** OSM `building:material` → display hue. A material family suggests a hue, never a measured wall colour. */
 export const MATERIAL_WALL_COLOURS: Readonly<Record<string, string>> = { brick: '#9a5846', stone: '#bcb5a6', concrete: '#b9b8b2', plaster: '#ded8cb', stucco: '#ded8cb', wood: '#8c6f55', metal: '#999c9e', glass: '#8d9a9e' };
 export function materialWallDisplayPrior(material: unknown): string | null {

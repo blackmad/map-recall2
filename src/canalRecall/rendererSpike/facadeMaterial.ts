@@ -49,8 +49,9 @@ varying vec3 vAccent;
 float facadeLuma;`)
       .replace('#include <map_fragment>', `
 vec3 fp = vec3(vFacUv, vLayer);
-vec3 fc = texture(cells, fp).rgb;
-vec2 fm = texture(masks, fp).rg;
+vec4 fcc = texture(cells, fp); vec2 fmm = texture(masks, fp).rg;
+vec3 fc = fcc.rgb;
+vec2 fm = vec2(fmm.r, fmm.g + 1.0 - fcc.a);
 fc *= mix(vec3(1.0), vTint, fm.r) * mix(vec3(1.0), vAccent, fm.g);
 facadeLuma = dot(fc, vec3(0.299, 0.587, 0.114));
 diffuseColor.rgb *= pow(fc, vec3(2.2));`)

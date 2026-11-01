@@ -34,6 +34,7 @@ import type { ChainLook } from './shopfronts.js';
 import { wordRuns } from './blockLetters.js';
 import earcut from 'earcut';
 import { ExtraSink, EXTRA_BUDGET, roofExtras, buildingWallExtras, type ExtraContext } from './facadeExtras.js';
+import type { FlatTri } from './facadeExtraCore.js';
 import { fitRect, roofTrianglesForOutline, type RoofDims, type RoofPlan, type RoofTri } from './roofMesh.js';
 import { measuredRoofFurniture } from './roofs/roofFurniture.js';
 import type { FurnitureItem } from './roofs/roofSlots.js';
@@ -96,6 +97,8 @@ export type MeshBuilding = {
    * the extras chunk on a flat roof instead of the guessed roof extras. Offsets are from the outline's first vertex.
    */
   measuredRoof?: { furniture: readonly FurnitureItem[]; terrace: boolean };
+  /** A garden room's glass front, joints and overhanging lid (gardenRooms.ts): flat colour, walls chunk only. */
+  gardenRoom?: { tris: readonly FlatTri[] };
 };
 
 export type Origin = { lng: number; lat: number };
@@ -464,7 +467,7 @@ export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin, m
   const CORNICE_STYLES = new Set<string>(['canal', 'c19', 'school']);
   type Quad = { kind: string; accent: [number, number, number]; e: Edge; u0: number; u1: number; v1: number; v0?: number; z1Left?:number;z1Right?:number;v1Left?:number;v1Right?:number;layer: number; z0: number; z1: number; tint: [number, number, number, number]; along0: number; along1: number };
   const quadsByBuilding: Array<{ b: MeshBuilding; quads: Quad[]; walls: number; roof: StreetCrownTri[]; lid: LidMesh | null; sign: SignTri[]; extraTris: number }> = [];
-  let signTotal = 0, extrasTotal = 0;
+  let signTotal = 0, extrasTotal = 0, gardenTotal = 0;
   let quadTotal = 0, wallTotal = 0, roofTotal = 0, lidVerts = 0, lidIndices = 0;
   const kxLocal = mPerDegLng(origin.lat);
   /** `shell`: the touch LOD away from the rider — one wall quad per wall, a flat lid, nothing else. */
@@ -644,6 +647,7 @@ export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin, m
       const street = exposed.filter(e => doorAllowed.has(e));
       sign.push(...chainFrontTris(b.chain, street.length ? street : exposed.length ? exposed : edges, b.minHeightM, groundSeen < Infinity ? groundSeen : 3.2, origin));
     }
+    if (walled && b.gardenRoom) { sign.push(...b.gardenRoom.tris); gardenTotal += b.gardenRoom.tris.length; }
     if (extraSink) {
       buildingWallExtras(wallExtraContexts, extraSink);
       // Roof extras on a flat roof only (a pitched roof has its own chimneys and dormers).
@@ -792,7 +796,8 @@ export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin, m
     }
     ranges.push({ id: b.id, start, count: v - start });
   }
-  addKind('frontage', signTotal - extrasTotal);
+  addKind('frontage', signTotal - extrasTotal - gardenTotal);
+  addKind('garden-room', gardenTotal);
   addKind('extras', extrasTotal);
   const chunk = { positions, uvs, layers, tints, accents, indices, ranges, vertexCount, quadCount: quadTotal + Math.ceil(roofTotal / 2), wallCount: wallTotal, buildingCount: ranges.length, kinds };
   return mode === 'walls' ? applyHostWallOpenings(chunk, origin, hostOpenings) : chunk;

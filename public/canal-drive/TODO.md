@@ -268,10 +268,14 @@ p95 +7 %; desktop ground 504k → 397k, frame 1.97 M → 1.87 M; step 2 merged
 2026-11-01, `c9f743361`, HISTORY "Kerbs and bollards of the rider's cell draw
 only within 150 m": iPad ground 222k; trees culled to the view 2026-11-01,
 `8cfc3ceb4`, HISTORY "Only the trees on screen are drawn": iPad frame p50
-0.80 M vs ≤ 0.70 M, desktop 1.42 M; next: the whole-frame shading flip the
-pin harness sees with 3D trees on (1–3 levels, cause unknown, may be a real
-subtle flicker), then open-ended trunks (~50k desktop), then the cycle
-overlay 108k); the 150/400 m
+0.80 M; flat lines culled + trunk caps 2026-11-01, `4d97ed9c5`/`086f295b6`,
+HISTORY "The flat map lines draw only the span on screen": **iPad p50 0.696 M,
+target ≤ 0.70 M MET**, desktop 1.33 M; the shading flip was a harness
+elevation bug, fixed; facade mask R8 merged 2026-11-01 (`f3f6ff157`, HISTORY
+"The facade mask uploads as R8"): iPhone atlas 21.67 MB, budget back to 22;
+too-white roofs #179 fixed 2026-11-01 (bcc38403a, HISTORY "Bright white flat
+roofs no longer clip"); toon look step 1 merged 2026-11-01 behind `?look=toon`
+(53d5299d8, HISTORY "Toon look step 1"); materials next: toon step 2 (#161)); the 150/400 m
 facade LOD is parked (60–100k, 5–8 %, not worth its likeness risk yet). In-frame
 shader links are 0. P5 follow-ups: delete
 `building-tiles/` and `bag-tiles/` after a week of Sentry quiet on the
@@ -306,21 +310,42 @@ HISTORY "The own view answers the four oracles"): the four oracles answered,
 camera parity < 1e-7 px on intro and Anne Frank → Rijksmuseum, `_waitForMapSettle`
 was already replaced (camera.whenIdle, hand-back 4), city-aware engine choice
 (`engineFlag(search, cityId)`, Amsterdam-only, `game.js` passes `this.cityId`).
-**Open before the Amsterdam flip (L1), after hand-back 19 (`1baaf686c`, HISTORY
-"The Westerkerk miss was the spec aiming at open air"):** the Westerkerk click
-and the building looks under own are done; left: POI labels must win the click
-under own as under MapLibre (Westermarkt "Guy Olivier" label pixels; add to
-the named regression); bag-tiles spec gets `&world=live` (dead path otherwise);
-overview footprints (6.8 % vs 5 %, MapLibre 3.7 %): resident world-v1 FOOT
-cells drawn in roof tone and faded with the blend (~1 day), far coarse layer
-only if still over 5 %; then the flip checklist (default switch for
-cityId amsterdam, specs under default afterwards, Sentry watch for context
-loss / graphics failures, rollback flag forcing MapLibre). Re-baselined:
-iPhone texture budget 22 → 27 MB (`iphoneTextureMB`, facade atlas by design;
-96 px phone bays need a look review; mask-format cut is a later materials
-item). Note: shared-frame `register(..., {order})` has no effect for
-group-rooted participants (three.js takes the innermost group's order);
-fixed for the overview only.
+**Amsterdam flip (L1), after hand-back 20 (`040f36423`, HISTORY "Under own a POI
+label wins the click"):** blockers done (labels win the click, bag-tiles on the
+tile path, overview footprints 4.1 %, Sentry engine/tier tags); checklist
+written (#129). Left before the flip commit: the three red specs on main
+(building-click-perf :146/:228 both engines; iPhone city-startup-lod
+`checked > 0`; iPhone render-on-change "riding off draws at once" under own —
+probably the briefing world build or the tree cull), L1 bisecting; the
+bag-tiles pixel-share drift (both engines, open). Then L1 prepares the flip
+commit on its branch (engineFlag default + wantsMapLibre + query-table tests +
+`ENGINE=maplibre` spec switch); the integrator merges it once the Sentry tags
+have been live for a day, and watches the 48 h bar. Pin harness: the shading flip was an unpinned
+camera elevation, fixed in the spec (d80ab4245); trees are pinnable. **User
+asks (2026-11-01):** a first-person riding camera (#171, small opus lane after
+the flip), the cartoon look mode (#161: step 1 merged behind `?look=toon`,
+strips on #161 for the user's verdict; step 2 = chroma-aware saturation so
+greys and whites stay neutral, brick gets the push and hue never rotates, band
+count as a flag, then cel bands, outlines and a flat sky), road gaps at bridges
+(#178, opus lane `road-bridge-gaps-20261101`: measurement merged 2026-11-01,
+96c951790, HISTORY "Road gaps on bridges measured city-wide"; 1,293 of 2,418
+canal-scale bridge ways show ≥ 5 m² of carriageway gap; fixes approved behind
+`?bridgeGaps=0`: (1) one set of per-side, per-station deck widths for every
+consumer, (2) draw the bridge-level survey polygon on every deck, then (3) way
+decks over land under a survey bridge polygon once 1–2 are pinned; polder water
+levels out of scope),
+bumpy ground at Stationsplein / Centraal forecourt (AHN has no ground over the
+metro box and under the shed; fix = flatten the own ground to road level under
+road and plaza polygons; small lane after the flip). World compiler (#130,
+P3): `scripts/world/pipeline.ts` CODE hashes 18 files, but the compiler also
+imports `roofs/roofSlots.ts`, `look/palette.ts` and `threeBuildingMesh.ts`
+(esbuild metafile, 127 inputs), so a change there would not mark the cells
+stale; the roof cap of 2026-11-01 was checked by hand (recompiled, 604 of 604
+cells byte-identical). Hash the compiler's whole import graph instead of a
+hand list. Integrator handoff for
+the next session: `docs/handoffs/integrator-handoff-20261101.md`. Note: shared-frame
+`register(..., {order})` has no effect for group-rooted participants
+(three.js takes the innermost group's order); fixed for the overview only.
 Steps 4–5 merged 2026-10-30 (`487cb157e`): `ENGINE=own` switch for the gate
 specs, ride-perf, phone-memory and `ride-perf-owners.mjs` (owner `engine`);
 overlays under the flag (cycle tracks, transit, neighbourhood lines solid not
@@ -450,8 +475,14 @@ cut merged (5f0fad294, graph identical); lever (a) merged 2026-11-01
 (d15d66991/512a5782d, HISTORY "The city's roads, routing graph and surface
 index build while the player reads the briefing"): 5 s dwell → 3.0 s on the
 phone profile, 2.6 s desktop; immediate submit still 7.8 s on the phone (gate
-≤ 4 s RED) → lever (b) prebuilt graph binary next, then the depth-aware
-pop-in detector (tooling);
+≤ 4 s RED); lever b2 merged 2026-11-01 (c0e02ebec…514e18c3d, HISTORY "The
+built routing graph and surface index are cached on the device"): return
+visits have the world ready 1.7–2.1 s after submit on the phone profile vs
+5.6–5.8 cold, 0.3 s desktop; what is left warm is the settle hold 1.5–2.6 s
+with nothing pending (L1/materials: why does the hold wait that long when
+nothing is pending?); b1 prebuilt graph only if the real-iPhone phase table
+shows the graph build > ~1 s; depth-aware pop-in detector (tooling) still to
+do; the road lane is idle;
 real-device timing owed once the phone is unlocked and re-trusted
 (`scripts/time-to-ride-device.mjs --target safari`); #150 landing animation
 excluded. Heap levers from the `_canalSharedFrame` breakdown:
@@ -461,8 +492,6 @@ kept after upload 27.1 MB (materials, after ground step 2); landmark CPU
 arrays 11.6 → 11.2 MB done (69544e547; the interleaved GLB buffers, ~3.8 MB
 on iPhone, are parked). The no-maplibre `package.json` diff loads
 clean and waits for the flip (lane scratch `no-maplibre-package.diff`).
-**Parked idea (user, 2026-11-01): a cartoon / low-fi high-colour look mode
-with no new models — issue #161, a materials lane after the own-ground steps.
 **Step 5b merged
 2026-10-31** (HISTORY "The road-graph build is 40 % faster"): number keys and
 a stamp dedupe in the build, `scripts/time-to-ride-phases.mjs` for the
@@ -524,7 +553,7 @@ not run it.
 
 **Landmark follow-ups (2026-11-01):** Barlaeus Gymnasium's 1885 sandstone front (pand 0363100012169565, "ANNO GYMNASIUM 1885" with its sculpture group) has no model; the installed `barlaeus` recipe is the 1866 building next door (facts in source-data `landmarks/barlaeus-gymnasium/`). Lensbomen: the glass-grid mullions and a measured lens tint. Droogbak: mansard tint (#4f5459 from panoramas vs #aeafab–#c3c3be on the orthophoto, probably sun on metal). Het Nieuwe Huis: curved bow windows and rounded balcony ends on faceted shells, patterned brick, the clock on the sloping 3DBAG plane. Amstelstation: curtain-wall mullion hierarchy (the rhythm gate splits a 0.29 m mullion into four runs), mixed-case sign lettering, sloped forecourt. ABN AMRO: curved cantilevered glass volume, leaning granite plinth, multi-pane window units in the pier grid. Wolkenkrabber: canopy-band corner wrap, the Deltastraat flanking blocks, the Berlage statue. Blind facade counts owed for all eleven (the lanes counted their own elevations). Tooling: `ingame-capture.ts` draws the model without the city (every lane's shot shows bare ground), and a `demo-shots` cockpit spot does not face its centre; fix one of them before the next landmark round. `roof-prism-kit.test.ts` is not in any npm test script.
 
-**Courtyard outbuildings (user 2026-11-01, #169 `lane/courtyard-outbuildings-20261101`, running):** a garden-room kit for the shed pands in canal-house back gardens (6,049 shed-sized pands in the centre box, 475 built since 2005): timber-slat and matte-black boxes with a glass front facing the house, classified by build year and orthophoto roof; integrator recompiles `world-v1` after the merge.
+**Garden rooms follow-ups (#169 merged 2026-11-01):** the kit (`src/canalRecall/gardenRooms.ts`) only fires for 226 of 5,513 centre sheds (BAG year ≥ 2005 or a measured white-membrane/glass roof slot at ≥ 0.6, and ≥ 6 m²; sedum dropped because every sampled pre-1990 "sedum" lid was tree canopy). Only 17 are in the ring/Oud-Zuid boxes; most rebuilt garden rooms on older pands stay grey sheds because no open signal separates a rebuilt room from an old shed (try: 3DBAG roof height vs. BAG year, AHN point density, Beeldbank garden photos). Orientation is rule-based (glass toward the nearest front street, never a party wall) and unverified per parcel. Black-family glass (#35464f on #2a2a28) reads nearly black at distance. The kit cannot say: pitched/lean-to rooms, pergolas, decks, fences, hedges, sliding vs bi-fold fronts, roof lights, a real 7 cm slat pitch (joints ≥ 0.22 m). Rooms are ~10 px from the ride camera; the change is judged at close zoom (`tests/e2e/garden-rooms-shots.spec.ts`, which hides the MapLibre placeholder extrusions and takes the renderer camera).
 
 **Street furniture from open data (user asked 2026-11-01, not started):** Amsterdam's container API has every underground container (30,839, with fraction, cluster location and container type/volume, RD coordinates); the BGT carries lamp posts (`paal` plus_type lichtmast, capped at 1,000 per query box), the container pads (`bak` "afval apart plaats"), shelters, advertising columns, art objects, phone boxes, memorials, toilets and bicycle racks (`straatmeubilair`); benches and bollards are not in the BGT for Amsterdam (OSM only). A lane would place instanced models from these points.
 
