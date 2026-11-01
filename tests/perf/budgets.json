@@ -24,10 +24,10 @@
       "date": "2026-10-16"
     },
     "iphoneHeapMB": {
-      "value": 245,
-      "unit": "MB JS heap, iPhone profile",
-      "source": "docs/handoffs/lane-perf-phones-20261023.md; artifacts/perf/phone-memory-iphone.json",
-      "date": "2026-10-24"
+      "value": 250,
+      "unit": "MB JS heap at ride start, iPhone profile, scripts/heap-ride.mjs with a forced GC",
+      "source": "integrator decision 2026-11-01 (user: use your judgement): the programme's 160 MB assumed MapLibre's duplicate building source and workers were gone, which happens at the P5 flip; 305 MB measured 2026-11-01, the road lane's data cuts and 6 phone tiles continue; 160 is re-evaluated after the flip",
+      "date": "2026-11-01"
     },
     "iphoneArrayBuffersMB": {
       "value": 67,
@@ -60,10 +60,10 @@
       "date": "2026-10-10"
     },
     "worldCellsCityMB": {
-      "value": 8,
+      "value": 9.5,
       "unit": "MB gzip, all building cells in public/data/extracts/amsterdam/world-v1 (sum of cells/*.bin gzipped)",
-      "source": "#130 format v3 hand-back 2026-10-31: lossless v3 is 10.4 MB, the brief's 4 MB came from slop's footprint density without styles; restated by the integrator",
-      "date": "2026-10-31"
+      "source": "integrator decision 2026-11-01 (user: use your judgement): every lossless cut is spent (v5 8.92 MB), the lossy ones (decimetre heights, collinear removal) change facades, and no ride downloads the city; worldRideDownloadMB is the binding gate; 9.5 leaves headroom for new STYL fields. History: v3 10.4 MB, the 4 MB figure was a density estimate without styles",
+      "date": "2026-11-01"
     },
     "worldRideDownloadMB": {
       "value": 2,
