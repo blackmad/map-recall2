@@ -379,7 +379,9 @@ async function run(browser, n) {
   return { n, setup, raw, dump, errors, heap0, net: { bytes: bytes - net0.bytes, requests: requests - net0.requests } };
 }
 
-const HITCH_MS = 50, TURN_DEG = 2, TILT_DEG = 1, ZOOM_STEP = 0.02;
+// TURN_DEG_PER_S: a turn is judged by its rate too, so a smooth turn (the own engine's, ~1.3 deg a frame at 60 fps) is
+// skipped like a jerky one (MapLibre's 2+ deg steps): rotation round a tall near landmark is parallax, not pop (#129).
+const HITCH_MS = 50, TURN_DEG = 2, TURN_DEG_PER_S = 60, TILT_DEG = 1, ZOOM_STEP = 0.02;
 function summarise(r) {
   const { raw } = r;
   const caps = raw.captures; // [i, t, x, y]
@@ -401,7 +403,7 @@ function summarise(r) {
     const db = Math.abs(((caps[k][4] - caps[k - 1][4] + 540) % 360) - 180);
     // (Not during the start flight: it zooms every frame by design, looking straight down at a flat city.)
     const flying = caps[k][7] > 0 || caps[k - 1][7] > 0;
-    if (!flying && (db > TURN_DEG || Math.abs(caps[k][5] - caps[k - 1][5]) > TILT_DEG || Math.abs(caps[k][6] - caps[k - 1][6]) > ZOOM_STEP)) { turns++; turnArea += res.area; continue; }
+    if (!flying && (db > TURN_DEG || db / Math.max(1, hi - caps[k - 1][1]) * 1000 > TURN_DEG_PER_S || Math.abs(caps[k][5] - caps[k - 1][5]) > TILT_DEG || Math.abs(caps[k][6] - caps[k - 1][6]) > ZOOM_STEP)) { turns++; turnArea += res.area; continue; }
     while (ei < evs.length && evs[ei][0] <= lo) ei++;
     const kinds = new Set(); for (let j = ei; j < evs.length && evs[j][0] <= hi; j++) kinds.add(evs[j][1]);
     if (!res.area) continue;
