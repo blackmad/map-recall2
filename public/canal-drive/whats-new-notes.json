@@ -3,6 +3,23 @@
   "notes": [
     {
       "date": "2026-11-02",
+      "title": "The far city fades into haze",
+      "text": "Distant streets now lose colour and detail toward the horizon, so the corridor ahead stands out, while landmarks such as the Westerkerk stay crisp.",
+      "images": [
+        {
+          "src": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/whats-new/2026-11-02-depth-fade-westerkerk.jpg",
+          "alt": "Westerkerk from the chase camera on desktop, without and with the haze",
+          "caption": "Before | after | changed pixels in red (the church is unchanged)"
+        },
+        {
+          "src": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/whats-new/2026-11-02-depth-fade-westerkerk-iphone.jpg",
+          "alt": "The same view on a phone, without and with the haze",
+          "caption": "Phone: before | after | changed pixels"
+        }
+      ]
+    },
+    {
+      "date": "2026-11-02",
       "title": "Nine more landmarks: two Amstel bridges, two pools, Berlage, Duiker and the Vingboons houses",
       "text": "Round two of the bespoke landmark lanes. The Blauwbrug and the Magere Brug are now real bridges, not kit arches: the Blauwbrug with its three openings, ship-prow piers and eight crowned lantern pylons, the Magere Brug with its white double bascule, balance beams and nine arches, and the bike rides over both at the game's own deck height. Zwembad Het Marnix (Mecanoo 2006) with its wave logo, and the Zuiderbad behind the Rijksmuseum (1911, built as a cycling school) with its nine bays and stepped gables. The Bungehuis on the Spuistraat in stone with its pinnacles; the four Cromhouthuizen neck gables on the Herengracht (Vingboons 1662) and the six joined houses of the Waldorf Astoria at Herengracht 542–556; De Burcht, Berlage's diamond workers' union with its tower and crenellated front; and Duiker's Eerste Openluchtschool, the glass-and-concrete school inside the Cliostraat block, with its gatehouse. Every one measured from the city panoramas and open photographs; the Vondelparkpaviljoen turned out to be in the game already.",
       "images": [

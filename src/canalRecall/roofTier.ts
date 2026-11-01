@@ -1,4 +1,5 @@
 import { accentGlsl } from './look/maskPacking.js';
+import { DEPTH_FADE_DETAIL_GLSL, DEPTH_FADE_DETAIL_PARS } from './look/depthFade.js';
 /**
  * Roof texture scale by distance: the pantile and slate cells are 1.2 m wide with
  * 5-6 courses of 0.2 m tiles, which reads as noise from a chase camera. The
@@ -76,17 +77,23 @@ vec3 roofTierColour(vec3 fine, vec2 uv, float layer, float dist) {
 
 /**
  * GLSL: `cellTierSample(p, dist, c, m)` replaces `texture(cells, p)` / `texture(masks, p)` for facade cells. Needs
- * both samplers above it. `dist` is unused (kept so call sites read like the roof tier). Within the near tier it is
+ * both samplers above it. `dist` (eye metres) drives the depth fade's detail blend when the scene fades
+ * (USE_FOG, look/depthFade.ts). Within the near tier it is
  * exactly the filtered `texture` call.
  */
-export const FACADE_TIER_GLSL = /* glsl */ `
+export const FACADE_TIER_GLSL = /* glsl */ `${DEPTH_FADE_DETAIL_PARS}
 uniform vec2 cellTier;
 void cellTierSample(vec3 p, float dist, out vec3 c, out vec2 m) {
   vec4 cc = texture(cells, p); vec2 mm = texture(masks, p).rg;
   c = cc.rgb; m = vec2(mm.r, ${accentGlsl('mm', 'cc')});
-  if (cellTier.x < 0.0) return;
-  float rho = max(length(dFdx(p.xy)), length(dFdy(p.xy))) * float(textureSize(cells, 0).x);
-  float far = smoothstep(cellTier.x, cellTier.y, rho);
+  float far = 0.0;
+  if (cellTier.x >= 0.0) {
+    float rho = max(length(dFdx(p.xy)), length(dFdy(p.xy))) * float(textureSize(cells, 0).x);
+    far = smoothstep(cellTier.x, cellTier.y, rho);
+  }
+#ifdef USE_FOG
+  far = max(far, ${DEPTH_FADE_DETAIL_GLSL('dist')});
+#endif
   if (far <= 0.0) return;
   vec4 fc = textureLod(cells, p, 8.0); vec2 fm = textureLod(masks, p, 8.0).rg;
   c = mix(c, fc.rgb, far); m = mix(m, vec2(fm.r, ${accentGlsl('fm', 'fc')}), far);

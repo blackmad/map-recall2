@@ -878,8 +878,9 @@ export class OwnGround {
     for (const [layer, m] of Object.entries(M)) this.blendMaterial(m, flat[layer] ?? 'vertex');
     // Overlays: the game's own route / active-street colours (vector-map.js), draped.
     const overlay = (color: string, k: number, o: Record<string, unknown> = {}) => new THREE.MeshBasicMaterial({ color, polygonOffset: true, polygonOffsetFactor: -k, polygonOffsetUnits: -2 * k, ...o });
-    M.routeCasing = overlay('#03121c', 5, { transparent: true, opacity: 0.75, depthWrite: false });
-    M.route = overlay('#38BDF8', 6, { transparent: true, opacity: 0.9, depthWrite: false });
+    M.routeCasing = overlay('#03121c', 5, { transparent: true, opacity: 0.75, depthWrite: false, fog: false });
+    // The route band stays clear of the depth falloff haze (look/depthFalloff.ts): the corridor is what the rider reads.
+    M.route = overlay('#38BDF8', 6, { transparent: true, opacity: 0.9, depthWrite: false, fog: false });
     M.highlight = overlay('#38BDF8', 7, { transparent: true, opacity: 0.96, depthWrite: false });
     M.destination = overlay('#f97316', 7, { transparent: true, opacity: 0.85, depthWrite: false });
     Object.assign(this.base, M);

@@ -2,6 +2,43 @@
 
 **Night of 1–2 November: nine landmarks, two bespoke bridges, seven kiosks, street furniture, door reveals (#170, #172–#176, #180, #181).** Round-2 landmark lanes (opus, two each): zuiderbad, marnixbad + bungehuis, cromhouthuizen + waldorf-astoria-herengracht, blauwbrug + magere-brug, de-burcht + eerste-openluchtschool; the Vondelparkpaviljoen was already installed as `idfa-pavilion` (registry check by pand id from now on). New kit parts: `holedWall.ts` (real openings through a wall, #172), `neck-gable.ts` (Vingboons neck gables, #174), `bridgeFrame.ts` + `bridge-parts.ts` + `bridge-deck-probe.ts` (#175). Bridges: `ownGround/bespokeBridges.ts` maps BRU0236/BRU0242 to the models, `groundCell.ts` skips the kit body and movable frame there, `check-ground-cells.ts` expects the bespoke model at both; `tests/e2e/bespoke-bridges.spec.ts` rides each bridge both ways on three lines (float ≤ 0.11 m, no sinking). Known: the Blauwbrug's south sidewalk strip beyond ~7 m from the centreline rides on relief height (TODO). Geometry-audit baseline first rows recorded for cromhouthuizen (7 off-spec: oculi and door transoms) and waldorf-astoria-herengracht (2). Kiosks (#180): `src/canalRecall/kiosks/kioskKit.ts` (glass/herring/trailer/flower-stall variants, hatches, awnings, lattice shutters, pixel lettering) and seven landmark-category kiosks; four held with reasons (Pat's unproven on standplaats 762, Ramon's unphotographed, Park Kiosk BEA is a 100 m² pavilion, Bloemenmarkt needs greenhouse roofs; its 14 stalls are BAG ligplaatsen). Street furniture (#170): extract `public/data/extracts/amsterdam/street-furniture/` (134,712 objects from the container register + BGT paal/bak/straatmeubilair, 444 z15 tiles, 4.3 MB), seven measured models ≤ 120 tris, instanced own-engine layer after the inventory-trees pattern (≤ 6 draws, +~17k tris/frame, one GL program), the fourth `street-furniture` category in `buildingCategory.ts`, whats-new.html, census and content stats, `street-furniture.html` gallery; litter bins unplaced (no register), benches and bollards in BGT but unmodelled. Door reveals (#181): `buildingRecipe/doorReveal.ts` (`{form: reveal|portiek, deep, steps, jamb, span, sideDoors}`), byte-identical when absent (fit golden 207/207 identical), set on eight types with photo-cited depths, five Helmersbuurt/Transvaalbuurt rows recompiled and installed; Duivelseiland portieken held (pale plaster reads as a slab at grazing angles), Steyn 1928 held (measured depth hides the door), arched portieken not expressible. Integration: union-merged in hand-back order, signature bundle, covers, backlog, buurt pages, looks, content stats, model-first-added, exposure rows (helmers-209-253-r1 has no archived strip, row kept), bundles; sources archived to map-recall2-source-data.
 
+**The far city fades into haze by default; catalogue landmarks stay crisp (2026-11-02, #161 lever 1).**
+Materials (9083203ff, on top of a37f977bc). The user asked how to make the chase-cam
+frame less busy; the busyness probe showed the far third of the frame carrying
+more edges than the near one at four of five spots (far/near 1.45–1.82), so the
+eye is pulled to the horizon instead of the corridor. The depth fade is now on
+for every look (`?depthFade=0` turns it off). Catalogue landmarks, including
+church towers and catalogue bridges, skip it through a `noFade` city-look
+material variant (a `|nofade` key suffix that highlight and dim swaps keep),
+keyed on the landmark load path in `signature-landmarks-source.js` rather than
+the model kind, because the first review found the Westerkerk tower going soft
+and orientation landmarks must stay sharp. Kiosks, street furniture, building
+types and chunks fade with the city. Westerkerk far/near: desktop 1.45 → 0.85,
+iPhone 1.69 → 1.21, near third unchanged, and the diff mask shows the tower and
+nave untouched. The ≤ 0.5 target is expected from levers 2–5 combined, not this
+one. Integrator: engine, 3d, three, three-buildings, building-types,
+tile-buildings, signature-landmarks and the three gallery bundles rebuilt; lint,
+test:look 172/172, test:engine 129/129, test:own-ground 227/227. What's New
+note with the off/on strips.
+
+**Depth fade behind `?depthFade=1`: the far city loses saturation and moves toward haze, the near field stays pixel-identical (2026-11-02, #161 lever 1).**
+Materials (a37f977bc). `look/depthFade.ts`: with eye distance, saturation drops
+up to 70 % and colour moves up to 55 % toward the haze #a1c6e5. Window and trim
+micro-contrast blends to the facade cell's mean tint beyond max(150 m, fade
+start). The fade starts at 0.8× the eye-to-centre distance, is full at 3.5×,
+and never starts inside 80 m. It applies to the default and toon looks and the
+overview flat layers; the route band opts out. The busyness probe's far/near
+edge ratio drops on desktop westerkerk 1.45 → 0.84, bloemgracht 1.72 → 0.98,
+nassaukade 1.82 → 1.06, leidsegracht 1.55 → 0.87, ijburg 0.55 → 0.40, and on
+iPhone by about a third. That is why the lever is worth keeping, but it does
+not reach the ≤ 0.5 target alone. Cost: desktop draws 291 → 285, iPad
+unchanged. Merged flag-off because the look review found the Westerkerk tower
+inside the faded band, and orientation landmarks must stay sharp; the follow-up
+opts landmarks out and turns the fade on. Integrator: engine, own-ground,
+three, three-buildings, building-types, tile-buildings, signature and gallery
+bundles rebuilt (roofTier.ts and gameGround.ts are embedded in them); lint,
+test:look 170/170, test:engine 129/129, test:own-ground 227/227.
+
 **A camera looking away from the rider streams its own view, not the rider's square (2026-11-01, P1).**
 L1 hand-back 21b (6fc8d6004, 4bdf41c29, b191915b1). Below zoom 17.5 the fetch
 ring's `rideBox()` streamed only a 530 m square around the rider, so a camera
