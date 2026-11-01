@@ -13,8 +13,8 @@ try{
  await page.waitForFunction(count=>canalRecallGame.vectorMap._parkLandscape.debugFeatures===count,expectedParkFeatures,{timeout:60000});
  await page.evaluate(()=>canalRecallGame.vectorMap.setTreesVisible(true));
  await page.waitForFunction(()=>canalRecallGame.vectorMap._inventoryTrees.debugTrees>10,{timeout:60000});
- console.log(await page.evaluate(()=>{const v=canalRecallGame.vectorMap;return{player:canalRecallGame.player.x,trees:v._inventoryTrees.debugTrees,draws:v._inventoryTrees.debugDraws,oldTrees:v.map.getLayoutProperty('tree-crowns','visibility'),parkFeatures:v._parkLandscape.debugFeatures};}));
- assert.equal(await page.evaluate(()=>canalRecallGame.vectorMap.map.getLayoutProperty('tree-crowns','visibility')),'none');
+ console.log(await page.evaluate(()=>{const v=canalRecallGame.vectorMap;return{player:canalRecallGame.player.x,trees:v._inventoryTrees.debugTrees,draws:v._inventoryTrees.debugDraws,oldTrees:(v.map ?? v.cameraMap).getLayoutProperty('tree-crowns','visibility'),parkFeatures:v._parkLandscape.debugFeatures};}));
+ assert.equal(await page.evaluate(()=>(canalRecallGame.vectorMap.map ?? canalRecallGame.vectorMap.cameraMap).getLayoutProperty('tree-crowns','visibility')),'none');
  await page.evaluate(()=>canalRecallGame.vectorMap.setTreesVisible(false));
  assert.equal(await page.evaluate(()=>canalRecallGame.vectorMap._inventoryTrees.enabled),false);
  assert.equal(await page.evaluate(()=>canalRecallGame.vectorMap._inventoryTrees.meshes.length),0);
