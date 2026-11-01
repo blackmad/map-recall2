@@ -253,7 +253,7 @@ async function run(browser, n) {
   // --from flight: measure from the start of the flight (the rider is held until it lands); default: from the landing.
   await page.waitForFunction(fromFlight => canalRecallGame.state === 4 && (fromFlight || canalRecallGame.camera.introOverview === 0), opt('from', 'landing') === 'flight', { timeout: 150_000, polling: 16 });
   const setup = await page.evaluate(([via, speed, workerSrc]) => {
-    const g = canalRecallGame, p = g.player, vm = g.vectorMap, map = vm.map;
+    const g = canalRecallGame, p = g.player, vm = g.vectorMap, map = vm.map ?? vm.host, cam = vm.map ?? vm.cameraMap; // ?engine=own: the frame host draws, the CameraMap holds the camera
     g._quizFreezesRide = () => false;
     p.handleInput = () => {};
     const l = g.osmLoader, ppm = (0, eval)('PIXELS_PER_METER');
@@ -292,7 +292,7 @@ async function run(browser, n) {
       landmarkLod: ev(sl, '_swapLevel', 'landmark-lod', (entry, inc, level) => `${entry.spec.id}:${level}`),
       trees: ev(vm._inventoryTrees, 'rebuild', 'trees'),
     };
-    map.on('data', e => { if (P.on && e.dataType === 'source' && e.tile && e.sourceId) P.events.push([performance.now(), 'basemap-tile', e.sourceId]); });
+    if (vm.map) map.on('data', e => { if (P.on && e.dataType === 'source' && e.tile && e.sourceId) P.events.push([performance.now(), 'basemap-tile', e.sourceId]); });
     // Capture after every render.
     const worker = new Worker(URL.createObjectURL(new Blob([workerSrc], { type: 'text/javascript' })));
     P.worker = worker;
@@ -304,13 +304,13 @@ async function run(browser, n) {
       const r = render(...a);
       if (P.on) {
         const t = performance.now();
-        ctx.drawImage(map.getCanvas(), 0, 0, 640, 400);
+        ctx.drawImage(map.getCanvas ? map.getCanvas() : map.canvas, 0, 0, 640, 400);
         const img = ctx.getImageData(0, 0, 640, 400);
         if (P.shots === undefined) { P.shots = (window.__popShots || []).slice(); P.shotUrls = []; }
         P.captureMs = (P.captureMs || 0) + performance.now() - t;
         const i = P.frame++;
-        if (i % 60 === 0) { const c = map.getCenter(); P.track = P.track || []; P.track.push([+(t / 1000).toFixed(1), +c.lat.toFixed(5), +c.lng.toFixed(5), +map.getZoom().toFixed(2), +map.getPitch().toFixed(0)]); }
-        const cap = [i, t, p.x, p.y, map.getBearing(), map.getPitch(), map.getZoom(), g.camera.introOverview || 0], last = P.captures[P.captures.length - 1];
+        if (i % 60 === 0) { const c = cam.getCenter(); P.track = P.track || []; P.track.push([+(t / 1000).toFixed(1), +c.lat.toFixed(5), +c.lng.toFixed(5), +cam.getZoom().toFixed(2), +cam.getPitch().toFixed(0)]); }
+        const cap = [i, t, p.x, p.y, cam.getBearing(), cam.getPitch(), cam.getZoom(), g.camera.introOverview || 0], last = P.captures[P.captures.length - 1];
         P.captures.push(cap);
         // Frames the summary does not judge (hitch, turn; see summarise) are not kept as strips either.
         const turned = last && !(cap[7] > 0 || last[7] > 0) && (Math.abs(((cap[4] - last[4] + 540) % 360) - 180) > 2 || Math.abs(cap[5] - last[5]) > 1 || Math.abs(cap[6] - last[6]) > 0.02);
@@ -322,7 +322,7 @@ async function run(browser, n) {
       }
       return r;
     };
-    const c0 = map.getCenter();
+    const c0 = cam.getCenter();
     return { railPx: Math.round(cum[cum.length - 1] || 0), hooked, ppm, startLngLat: [+c0.lng.toFixed(5), +c0.lat.toFixed(5)] };
   }, [R.via, R.speed, WORKER.replace('__MIN_BLOB__', opt('min-blob', '16')).replace(/__DE__/g, opt('de', '20'))]);
   await page.waitForTimeout(warmup * 1000);
@@ -335,8 +335,8 @@ async function run(browser, n) {
   if (argv.includes('--calibrate')) await page.evaluate(() => {
     const vm = canalRecallGame.vectorMap, P = window.__pop, mark = k => P.events.push([performance.now(), k, '']);
     const tr = vm._inventoryTrees, sl = vm._signatureLandmarks, tb = vm._threeBuildings;
-    setTimeout(() => { tr.enabled = false; vm.map.triggerRepaint(); mark('calib-trees-off'); }, 4000);
-    setTimeout(() => { tr.enabled = true; vm.map.triggerRepaint(); mark('calib-trees-on'); }, 5000);
+    setTimeout(() => { tr.enabled = false; (vm.map ?? vm.host).triggerRepaint(); mark('calib-trees-off'); }, 4000);
+    setTimeout(() => { tr.enabled = true; (vm.map ?? vm.host).triggerRepaint(); mark('calib-trees-on'); }, 5000);
     setTimeout(() => { tb.setVisible(false); mark('calib-buildings-off'); }, 8000);
     setTimeout(() => { tb.setVisible(true); mark('calib-buildings-on'); }, 9000);
   });
