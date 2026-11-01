@@ -1,0 +1,671 @@
+{
+ "schemaVersion": 1,
+ "id": "telefooncentrale-spuistraat",
+ "pand": "0363100012165118",
+ "brief": "scripts/landmarks/telefooncentrale-spuistraat-brief.md",
+ "signature": [
+  "c-corner-balconies",
+  "e-parapet-bands",
+  "e-canopy",
+  "e-third-piers",
+  "c-nw-w-logo",
+  "k-canopy",
+  "e-steps",
+  "s-w-sculpture",
+  "roof-glass-box"
+ ],
+ "walls": [
+  {
+   "tag": "w01-85",
+   "bearing": 85,
+   "lengthM": 36.3,
+   "centre": [
+    4.8902856,
+    52.3728464
+   ],
+   "evidence": "photo",
+   "panoId": "b_20250108_1349_Track19_Sphere_00226",
+   "capturedAt": "2025-01-08",
+   "checked": true,
+   "items": [
+    {
+     "id": "e-parapet-bands",
+     "kind": "other",
+     "where": "three projecting brick parapet bands with stone edges over the ground, first and second storeys, the whole front (5.95-7.4, 10.45-11.95, 14.55-16.05 m)",
+     "approxSizeM": [
+      36.3,
+      1.45
+     ],
+     "plan": "modelled",
+     "seenIn": "b_20250108_1349_Track19_Sphere_00226",
+     "how": "telefooncentrale-spuistraat-builder.ts band(): brick slab 0.25 m proud between stone strips 0.30/0.34 m proud"
+    },
+    {
+     "id": "e-canopy",
+     "kind": "canopy",
+     "where": "continuous concrete canopy over the set-back third floor, 19.6-20.05 m, about 1.5 m deep",
+     "approxSizeM": [
+      36.3,
+      0.45
+     ],
+     "plan": "modelled",
+     "seenIn": "b_20250108_1349_Track19_Sphere_00226",
+     "how": "concrete slab 1.5 m deep on every main front, wrapped round the corners by cornerBands()"
+    },
+    {
+     "id": "e-third-piers",
+     "kind": "colonnade",
+     "where": "deep brick piers between the third-floor windows under the canopy (windows lie deeper, register)",
+     "approxSizeM": [
+      0.8,
+      3.5
+     ],
+     "plan": "modelled",
+     "seenIn": "b_20250108_1349_Track19_Sphere_00226",
+     "how": "brick slabs 0.55 m proud on every bay line"
+    },
+    {
+     "id": "e-shop-glazing",
+     "kind": "window-shape",
+     "where": "raised shop storey glazed 1.35-5.85 m between brick piers, nine bays, green steel frames",
+     "approxSizeM": [
+      3.1,
+      4.5
+     ],
+     "plan": "modelled",
+     "seenIn": "b_20250108_1349_Track19_Sphere_00226",
+     "how": "steelWindow() per bay with side-light mullions and transom"
+    },
+    {
+     "id": "e-steps",
+     "kind": "other",
+     "where": "flight of granite steps along the whole Nieuwezijds Voorburgwal front up to the raised shop storey",
+     "approxSizeM": [
+      35,
+      1.2
+     ],
+     "plan": "modelled",
+     "seenIn": "b_20250108_1349_Track19_Sphere_00226",
+     "how": "steps(): six treads 0.2 m high"
+    },
+    {
+     "id": "e-steel-windows",
+     "kind": "window-shape",
+     "where": "landscape windows on a 3.9 m bay: narrow side lights each side and a transom near the head",
+     "approxSizeM": [
+      3.1,
+      2.8
+     ],
+     "plan": "modelled",
+     "seenIn": "b_20250108_1349_Track19_Sphere_00226",
+     "how": "steelWindow(): glass with two frame mullions and a transom"
+    },
+    {
+     "id": "e-shop-signs",
+     "kind": "sign",
+     "where": "Albert Heijn, Gall & Gall and Etos shop lettering on the first parapet band",
+     "approxSizeM": [
+      3.5,
+      0.5
+     ],
+     "plan": "skipped",
+     "seenIn": "b_20250108_1349_Track19_Sphere_00226",
+     "skip": {
+      "reason": "temporary",
+      "note": "tenant signage of the supermarket and shops, replaced with each tenant"
+     }
+    },
+    {
+     "id": "e-w-logo-se",
+     "kind": "lettering",
+     "where": "gold chevron W logo on the brick parapet above the canopy at the south end (corner bay)",
+     "approxSizeM": [
+      2.0,
+      1.5
+     ],
+     "plan": "modelled",
+     "seenIn": "b_20250108_1349_Track19_Sphere_00226",
+     "how": "wLogo(): four gold strokes, the middle peak lower, on edge 41"
+    }
+   ]
+  },
+  {
+   "tag": "w02-278",
+   "bearing": 278,
+   "lengthM": 27.5,
+   "centre": [
+    4.8896871,
+    52.372709
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001900_pano_0002_000433",
+   "capturedAt": "2020-08-31",
+   "checked": true,
+   "items": [
+    {
+     "id": "s-steel-windows",
+     "kind": "window-shape",
+     "where": "ground and upper windows of the hotel wing, same steel frames with side lights and transom; ground windows with frosted glass",
+     "approxSizeM": [
+      3.8,
+      3.4
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001900_pano_0002_000433",
+     "how": "steelWindow() on a 4.6 m bay"
+    },
+    {
+     "id": "s-south-door",
+     "kind": "canopy",
+     "where": "side door with a thin dark canopy at the south end of the Spuistraat front",
+     "approxSizeM": [
+      3.0,
+      0.3
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001900_pano_0002_000433",
+     "how": "sideDoor(): dark door and canopy at 2.6 m"
+    },
+    {
+     "id": "s-w-banner",
+     "kind": "sign",
+     "where": "free-standing \"W AMSTERDAM\" barrier board on the pavement",
+     "approxSizeM": [
+      2.6,
+      0.9
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7316010203-001900_pano_0002_000433",
+     "skip": {
+      "reason": "temporary",
+      "note": "movable pavement board"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "w03-154",
+   "bearing": 154,
+   "lengthM": 24.4,
+   "centre": [
+    4.8900538,
+    52.3725425
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-06-16_04-42-37_01215",
+   "capturedAt": "2025-06-16",
+   "checked": true,
+   "items": [
+    {
+     "id": "p-grilles",
+     "kind": "other",
+     "where": "basement grilles in the granite plinth under every ground window",
+     "approxSizeM": [
+      2.0,
+      0.6
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-06-16_04-42-37_01215",
+     "how": "dark slab per bay in the plinth"
+    },
+    {
+     "id": "p-plinth",
+     "kind": "other",
+     "where": "high grey granite plinth 0-1.5 m (register: \"hoge granieten plint\")",
+     "approxSizeM": [
+      24,
+      1.5
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-06-16_04-42-37_01215",
+     "how": "concrete-coloured slab 0.15 m proud on every front"
+    },
+    {
+     "id": "p-door-canopy",
+     "kind": "canopy",
+     "where": "side door with a dark canopy at the west end of the Paleisstraat front",
+     "approxSizeM": [
+      3.0,
+      0.3
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-06-16_04-42-37_01215",
+     "how": "sideDoor() at t 1.7 m, the window over it shortened"
+    }
+   ]
+  },
+  {
+   "tag": "w04-278",
+   "bearing": 278,
+   "lengthM": 18.8,
+   "centre": [
+    4.8897348,
+    52.3729351
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001900_pano_0002_000428",
+   "capturedAt": "2020-08-31",
+   "checked": true,
+   "items": [
+    {
+     "id": "s-w-sculpture",
+     "kind": "sculpture",
+     "where": "big gold lattice W on the pavement beside the hotel entrance, about 2.5 x 1.9 m",
+     "approxSizeM": [
+      2.5,
+      1.9
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-001900_pano_0002_000428",
+     "how": "wSculpture(): four solid gold strokes on a dark foot; the lattice infill is not cut"
+    },
+    {
+     "id": "s-north-door",
+     "kind": "canopy",
+     "where": "side door with a dark canopy at the north end of the Spuistraat front",
+     "approxSizeM": [
+      3.0,
+      0.3
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001900_pano_0002_000428",
+     "how": "sideDoor() at t 1.6 m"
+    },
+    {
+     "id": "s-entrance-canopy",
+     "kind": "canopy",
+     "where": "hotel entrance canopy at the Spuistraat niche (register: entrance three bays wide with canopy)",
+     "approxSizeM": [
+      4.4,
+      0.35
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-001900_pano_0002_000428",
+     "how": "entrance(): glass doors in the 2.2 m niche under a dark canopy 4.4 m wide; the exact three-bay span is not resolved on the crops"
+    }
+   ]
+  },
+  {
+   "tag": "w05-4",
+   "bearing": 4,
+   "lengthM": 12.5,
+   "centre": [
+    4.89001,
+    52.3730806
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002310_pano_0001_000197",
+   "capturedAt": "2021-09-15",
+   "checked": true,
+   "items": [
+    {
+     "id": "n-band-steps",
+     "kind": "other",
+     "where": "the parapet bands step forward where they leave the three central bays and run on round the set-back corner bays",
+     "approxSizeM": [
+      1.0,
+      1.45
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002310_pano_0001_000197",
+     "how": "main bands end at the ring edge; the wrapped corner balconies start 1.1 m out, so the step shows"
+    }
+   ]
+  },
+  {
+   "tag": "w06-4",
+   "bearing": 4,
+   "lengthM": 8.5,
+   "centre": [
+    4.8898378,
+    52.3730821
+   ],
+   "evidence": "photo",
+   "panoId": "b_20241216_0911_Track30_Sphere_00078",
+   "capturedAt": "2024-12-16",
+   "checked": true,
+   "items": [
+    {
+     "id": "c-corner-balconies",
+     "kind": "other",
+     "where": "rounded balconies wrapping the set-back corner bay at the parapet levels and the canopy, cantilevered past the corner (NW corner from the Raadhuisstraat)",
+     "approxSizeM": [
+      9,
+      1.45
+     ],
+     "plan": "modelled",
+     "seenIn": "b_20241216_0911_Track30_Sphere_00078",
+     "how": "cornerBands(): wrapBand outline 1.1 m (canopy 1.5 m) round the simplified corner run, brick between stone strips"
+    },
+    {
+     "id": "c-corner-windows",
+     "kind": "window-shape",
+     "where": "one window per storey on each corner-bay face, solid brick to the corner",
+     "approxSizeM": [
+      2.6,
+      2.8
+     ],
+     "plan": "modelled",
+     "seenIn": "b_20241216_0911_Track30_Sphere_00078",
+     "how": "cornerFace()"
+    }
+   ]
+  },
+  {
+   "tag": "w07-4",
+   "bearing": 4,
+   "lengthM": 8.4,
+   "centre": [
+    4.8901807,
+    52.3730675
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001183_pano_0000_000223",
+   "capturedAt": "2019-05-14",
+   "checked": true,
+   "items": [
+    {
+     "id": "n-ne-corner",
+     "kind": "other",
+     "where": "north-east corner bay with balconies, lower storeys hidden by a tram",
+     "approxSizeM": [
+      8.4,
+      20
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-001183_pano_0000_000223",
+     "how": "same corner system as the other three corners; checked on w01-85 thumb and w05-4 thumb"
+    }
+   ]
+  },
+  {
+   "tag": "w08-154",
+   "bearing": 154,
+   "lengthM": 6.3,
+   "centre": [
+    4.8902672,
+    52.3726141
+   ],
+   "evidence": "photo",
+   "panoId": "b_20250109_1300_Track02_Sphere_00148",
+   "capturedAt": "2025-01-09",
+   "checked": true,
+   "items": [
+    {
+     "id": "c-se-face",
+     "kind": "window-shape",
+     "where": "south-east corner bay on the Paleisstraat: one window per storey under the wrapped balconies",
+     "approxSizeM": [
+      2.6,
+      2.8
+     ],
+     "plan": "modelled",
+     "seenIn": "b_20250109_1300_Track02_Sphere_00148",
+     "how": "cornerFace() on edge 40"
+    }
+   ]
+  },
+  {
+   "tag": "w09-278",
+   "bearing": 278,
+   "lengthM": 6.2,
+   "centre": [
+    4.88977,
+    52.373057
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001544_pano_0001_000503",
+   "capturedAt": "2020-01-08",
+   "checked": true,
+   "items": [
+    {
+     "id": "c-nw-w-logo",
+     "kind": "lettering",
+     "where": "gold chevron W logo on the parapet of the north-west corner bay, Spuistraat side",
+     "approxSizeM": [
+      2.0,
+      1.5
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001544_pano_0001_000503",
+     "how": "wLogo() on edge 12"
+    }
+   ]
+  },
+  {
+   "tag": "w10-278",
+   "bearing": 278,
+   "lengthM": 6,
+   "centre": [
+    4.8896626,
+    52.3725478
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001900_pano_0002_000437",
+   "capturedAt": "2020-08-31",
+   "checked": true,
+   "items": [
+    {
+     "id": "k-canopy",
+     "kind": "canopy",
+     "where": "dark brown concrete canopy wrapping the stretched-hexagon kiosk at about 3.2 m",
+     "approxSizeM": [
+      14,
+      0.4
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001900_pano_0002_000437",
+     "how": "kiosk(): wrapBand outline 0.9 m deep round the kiosk run"
+    },
+    {
+     "id": "k-door",
+     "kind": "other",
+     "where": "door in the kiosk wall under the canopy",
+     "approxSizeM": [
+      1.0,
+      2.3
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001900_pano_0002_000437",
+     "how": "dark slab on kiosk edge 26"
+    },
+    {
+     "id": "k-plinth",
+     "kind": "other",
+     "where": "granite plinth of the kiosk, same height as the main plinth (register)",
+     "approxSizeM": [
+      14,
+      2.4
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001900_pano_0002_000437",
+     "how": "concrete-coloured slab 0-2.4 m on every kiosk face"
+    }
+   ]
+  },
+  {
+   "tag": "w11-85",
+   "bearing": 85,
+   "lengthM": 5.1,
+   "centre": [
+    4.8903055,
+    52.3726496
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-06-16_04-42-37_01224",
+   "capturedAt": "2025-06-16",
+   "checked": true,
+   "items": [
+    {
+     "id": "c-se-balconies",
+     "kind": "other",
+     "where": "rounded balcony noses at the south-east corner (Nieuwezijds Voorburgwal / Paleisstraat)",
+     "approxSizeM": [
+      6,
+      1.45
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-06-16_04-42-37_01224",
+     "how": "cornerBands() on the SE corner run"
+    },
+    {
+     "id": "x-stall",
+     "kind": "other",
+     "where": "free-standing pavement stall in front of the corner",
+     "approxSizeM": [
+      3.5,
+      2.5
+     ],
+     "plan": "skipped",
+     "seenIn": "recording_2025-06-16_04-42-37_01224",
+     "skip": {
+      "reason": "temporary",
+      "note": "movable kiosk on the pavement, not part of the building"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "w12-85",
+   "bearing": 85,
+   "lengthM": 5.1,
+   "centre": [
+    4.8902458,
+    52.373042
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001174_pano_0000_001054",
+   "capturedAt": "2019-05-10",
+   "checked": true,
+   "items": [
+    {
+     "id": "x-ice-kiosk",
+     "kind": "other",
+     "where": "free-standing ice-cream kiosk on the pavement at the corner",
+     "approxSizeM": [
+      3.5,
+      2.3
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7316010203-001174_pano_0000_001054",
+     "skip": {
+      "reason": "temporary",
+      "note": "movable kiosk on the pavement, not part of the building"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "w13-273",
+   "bearing": 273,
+   "lengthM": 4.2,
+   "centre": [
+    4.8896345,
+    52.3724661
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001900_pano_0002_000439",
+   "capturedAt": "2020-08-31",
+   "checked": true,
+   "items": [
+    {
+     "id": "k-west",
+     "kind": "other",
+     "where": "west face of the kiosk: blind brick over the plinth under the canopy",
+     "approxSizeM": [
+      4.2,
+      5.3
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001900_pano_0002_000439",
+     "how": "kiosk() edges 26-27"
+    }
+   ]
+  },
+  {
+   "tag": "w14-212",
+   "bearing": 212,
+   "lengthM": 4.2,
+   "centre": [
+    4.8896591,
+    52.3724372
+   ],
+   "evidence": "photo",
+   "panoId": "b_20250109_1300_Track05_Sphere_00157",
+   "capturedAt": "2025-01-09",
+   "checked": true,
+   "items": [
+    {
+     "id": "sw-w-logo",
+     "kind": "lettering",
+     "where": "gold chevron W logo on the parapet of the short south-west face",
+     "approxSizeM": [
+      2.0,
+      1.5
+     ],
+     "plan": "modelled",
+     "seenIn": "b_20250109_1300_Track05_Sphere_00157",
+     "how": "wLogo() on the SW face behind the kiosk"
+    },
+    {
+     "id": "sw-window-column",
+     "kind": "window-shape",
+     "where": "one window per storey on the short south-west face over the kiosk",
+     "approxSizeM": [
+      2.6,
+      2.8
+     ],
+     "plan": "modelled",
+     "seenIn": "b_20250109_1300_Track05_Sphere_00157",
+     "how": "cornerFace(upper) on the SW face"
+    },
+    {
+     "id": "roof-glass-box",
+     "kind": "other",
+     "where": "glass-panelled box on the roof on the Spuistraat side (register: \"doosvormige opbouw ... bekleed met glazen panelen\")",
+     "approxSizeM": [
+      14,
+      4
+     ],
+     "plan": "simplified",
+     "seenIn": "b_20250109_1300_Track05_Sphere_00157",
+     "how": "roofBox(): the 3DBAG walls above 30 m drawn in glass; no panel grid"
+    }
+   ]
+  },
+  {
+   "tag": "w15-153",
+   "bearing": 153,
+   "lengthM": 4.2,
+   "centre": [
+    4.8897122,
+    52.3724359
+   ],
+   "evidence": "photo",
+   "panoId": "b_20250109_1300_Track02_Sphere_00140",
+   "capturedAt": "2025-01-09",
+   "checked": true,
+   "items": [
+    {
+     "id": "k-ribbon",
+     "kind": "window-shape",
+     "where": "ribbon window in the kiosk wall over the canopy on its south faces",
+     "approxSizeM": [
+      4,
+      0.75
+     ],
+     "plan": "modelled",
+     "seenIn": "b_20250109_1300_Track02_Sphere_00140",
+     "how": "glass strip with mullions on kiosk edges 28-30"
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  }
+ ]
+}
