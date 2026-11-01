@@ -96,7 +96,7 @@ sheet's IN GAME column and the gallery card work again in lane worktrees
 a POI or destination for De Roos, a blind counter on
 `de-roos-elevations.json`, a "free-standing glazing" class in audit:glb so
 serres and timber screens are not fitted to the ochre and green slots to
-dodge the opening count, and a FIFO queue for `/tmp/canal-pw.sh` (one job
+dodge the opening count, and a FIFO queue for `/tmp/canal-pw.sh` (two shared slots since 2026-11-01, exclusive mode for timings; one job
 waited 3 h behind 25 others today; the lock is not fair).
 
 **City look, after the flip (2026-10-30, #137 = A, HISTORY "City look on by
@@ -272,6 +272,11 @@ palette themes (Google tiles are being deleted). **Not done:** the 2026-10-10
 re-port (own picker, overview extract with rail/footway/landuse, ~2.7k lines)
 and the step-6 `_makeLayer` / `SHARED_FRAME_DEFAULT` deletions.
 State: **L4 world streamer steps 1–3 merged 2026-10-30** (#136, `4b63096e1`):
+Gate restated 2026-11-01 (user: "do we actually need pixel A/B at zero?",
+no): structural equality of the styled building set at the five spots in
+node (zero tolerance) plus a pixel check with the player frozen and the
+shadow camera pinned, 0 px over 30, sub-30 speckle counted not chased
+(materials). The earlier wording:
 `?world=v1` is identical to the default path in the browser (five spots,
 desktop and iPhone: same feature ids and styled features per tile; Node
 `world:verify` 295 tiles / 349,220 buildings / 0 differ). The four-tile
@@ -318,8 +323,9 @@ are built behind `--height-step=0.1` / `--eaves-step=0.1` but HELD: the
 fixed-camera A/B shows 7–29 K px over 30 vs a 0.1–1.3 K floor because the
 runtime derives storeys, window rows and the facade kit from the fine value
 (a Westerkerk brick gable turned grey). A safe variant would round only where
-the derived storey/kit decision is unchanged; parked. The gate stays red by
-decision (no lossy footprints). Next for L4 (sent): ride-start heap sample and the owners
+the derived storey/kit decision is unchanged; parked. Decision 2026-11-01
+(user delegated): the city gate moves to ≤ 9.5 MB gzip lossless (met at
+8.92); the per-ride ≤ 2 MB gate is the binding one; no more byte cuts. Next for L4 (sent): ride-start heap sample and the owners
 (12/18/24/36 resident cells, one decoded cell shared across tiles,
 transfer not copy), then chunk and own-ground builds onto the pool so
 `chunkBuildQueue.ts`, `ownGround/residency.ts`, `rendererShared/residency.ts`
@@ -1415,12 +1421,14 @@ Root `main` was cleaned on 2026-10-09 (see HISTORY). Live work, in order:
   renders per 5 s at rest; the default engine still renders every idle frame
   until the flip.
 - **Heap gates** (HISTORY "Phone heap cuts"): desktop 436 MB meets ≤ 500;
-  iPhone 305 MB against ≤ 160 stays red. Owners left on the phone: shared
-  frame 135 MB (88 MB buffers; materials/L1), own-ground store 43 (road lane
-  next: per-cell contents and never-read copies), building cache 33, track
-  24, overview 20, landmark CPU arrays 24–36, facades 14 (materials). Held
-  product option: 6 phone building tiles instead of 9 (user's call, a look
-  trade). `no-maplibre.bundle.js` has no npm build script (old overview
+  iPhone 305 MB against ≤ 250 (moved from 160 on 2026-11-01, user
+  delegated: 160 assumed the post-flip state without MapLibre's duplicate
+  building source and workers; re-evaluated after the flip). Owners left on
+  the phone: shared frame 135 MB (88 MB buffers; materials/L1), own-ground
+  store 43 (road lane: per-cell contents and never-read copies), building
+  cache 33, track 24, overview 20, landmark CPU arrays 24–36, facades 14
+  (materials). Taken: 6 phone building tiles instead of 9 (road lane, after
+  the spawn-pose item; pop-in gate re-measured on the phone profile). `no-maplibre.bundle.js` has no npm build script (old overview
   decoder inside, still works): add one before the flip. `engine-own.spec`'s `heapMB` is noise without a GC;
   `scripts/heap-ride.mjs` is the measure.
 - **Time to ride under own ≈ 3.5 s median, three of six runs within 70 ms of

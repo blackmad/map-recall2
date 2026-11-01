@@ -1,5 +1,24 @@
 # Canal Recall — what is built
 
+**Gate decisions and two browser slots (2026-11-01).** The user delegated the
+two red P2/P3 gates ("use your judgement") and asked whether the `?world=v1`
+A/B must reach zero pixels (no). City bytes: 8 → 9.5 MB gzip lossless in
+`tests/perf/budgets.json` (8.92 published; every lossless cut is spent, the
+lossy ones change facades, no ride downloads the city; the per-ride ≤ 2 MB
+gate binds). iPhone JS heap at ride start: 160 → 250 MB until the flip (the
+160 assumed MapLibre's duplicate building source and workers gone, which is
+P5; 305 measured; the road lane's data cuts continue and the held "6 phone
+building tiles instead of 9" option is taken for the phone profile with
+the pop-in gate re-measured; 160 re-evaluated after the flip). `?world=v1`
+default gate: structural equality of the styled building set at five spots
+(zero tolerance) plus a pixel check with the player frozen and the shadow
+camera pinned, 0 px over 30 and sub-30 speckle counted, not chased; the
+remaining pixels were the bike's animation and edge speckle, not world
+data. The browser lock `/tmp/canal-pw.sh` has two shared slots for spec
+runs, pixel A/Bs and probes, and `CANAL_PW_EXCLUSIVE=1` for anything whose
+result is milliseconds (user: "maybe raise the number of browsers you can
+run?"); timing tables from a shared slot are not hand-back evidence.
+
 **Far ring draws the road look's tones (2026-11-01).** User near the RAI: "why the change in road color here?". The
 far ring (`farRing.ts` `farColours`) kept round 1's palette after look B became the default: asphalt 86,88,93 vs the
 near ring's 93,95,100, klinker 122,90,80 vs 120,104,101, and bare land tan 168,158,142 where the near ring draws it as
@@ -15871,7 +15890,6 @@ first twelve already measured the camera model.
   one the bad metric suggested.
 
 ## 2026-09-13 — Roof-focused review and keyboard workflow
-
 
 The reconstruction workbench now opens directly on its current comparison and
 review editor; project statistics are collapsed below. Roof focus pairs a zoomed
