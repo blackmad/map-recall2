@@ -45,9 +45,9 @@ await page.evaluate(() => {
   wrap(map, '_render', 'mapRender');
   const own = vm._sharedFrame ? [vm._sharedFrame.mainLayer, vm._sharedFrame.overlayLayer]
     : [vm._threeBuildings?.layer, vm._signatureLandmarks?.layer, vm._inventoryTrees?.layer, vm._artisAnimals?.layer, vm._pyramidalRoofs?.layer, vm._playerBike?.layer, vm._playerFerry?.layer, vm._playerBoat?.layer, vm._playerTransit?.layer];
-  for (const l of own) if (l?.render && map.getLayer(l.id)) wrap(l, 'render', 'threeLayers');
+  for (const l of own) if (l?.render && map.getLayer?.(l.id)) wrap(l, 'render', 'threeLayers');
   // WebGL draw calls per frame (all of MapLibre + ours).
-  const gl = map.painter.context.gl; let calls = 0;
+  const gl = map.painter?.context.gl ?? {}; let calls = 0; // ENGINE=own: no painter, no MapLibre draw counts
   for (const fn of ['drawArrays', 'drawElements', 'drawElementsInstanced', 'drawArraysInstanced', 'drawRangeElements']) { const o = gl[fn]?.bind(gl); if (o) gl[fn] = (...a) => { calls++; return o(...a); }; }
   map.on('render', () => { t.calls.push(calls); calls = 0; });
   if (vm._sharedFrame) {
