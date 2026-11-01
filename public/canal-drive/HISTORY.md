@@ -1,5 +1,27 @@
 # Canal Recall — what is built
 
+**Phone heap cuts: packed road and snap indexes, interned tile strings, packed overview streets; iPhone 336 → 305 MB, desktop 467 → 436 (2026-11-01, #130).**
+Road lane, forced-GC reachable MB at start / end of a 60 s ride: desktop
+466.8 / 454.3 → 436.2 / 423.6, iPhone 335.9 / 336.6 → 305.3 / 305.9. Owners:
+`game.track` 38.7 → 23.8, roadIndex 22.9 → 8.0 (CSR, bucket order unchanged,
+equivalence test over rings 0/1/2/4 and 10k queries with object identity),
+snap index 6.7 → 2.4 (packed in place rather than merged into the road
+index: it covers ferries that landOnly blanks, is built before the road
+network exists and answers an unbounded nearest query), building cache 41.3
+→ 33.1 (the world-v1 batch receive interns the property strings that
+structured clone duplicated; a full columnar cache was not built because
+callers cache feature objects and post them to the buildings worker),
+overview streets 20.9 → 17.5 (cumulative Int32, decoded on read, values
+identical). Ground ring/keep radii on the phone: no safe cut (ring already
+400 m, per-cell stores already bounded); the product option is 6 phone
+building tiles instead of 9, held for the user. Frames at the three fixed
+cameras within the cross-run noise floor. The iPhone gate (≤ 160 MB) stays
+red: the shared frame claims 135 MB (88 MB of buffers), own-ground store 43,
+building cache 33, track 24, overview 20, landmark CPU arrays 24–36, facades
+14. `check-road-surface.ts` asserts the packed layout at equal strength.
+`no-maplibre.bundle.js` also contains `overviewFormat` but no npm script
+builds it; it keeps the old decoder and still works.
+
 **Landmark chunk copies typed, streetFronts handed to the buildings layer: desktop ride start 493 → 462 MB; time to ride under own ≈ 3.5 s with the settle hold as its variance (2026-11-01, #130).**
 Road lane. The 17.6 MB of interleaved landmark GLB buffers are kept: click
 picking reads them (three's fallback raycast reads uv and normal before a
