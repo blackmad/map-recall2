@@ -1,0 +1,268 @@
+{
+ "street": "Van Eeghenstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-01T14:51:54.172Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012164230",
+   "addresses": [
+    "Van Eeghenstraat 69"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Eeghenstraat 69",
+     "use": "woonfunctie",
+     "areaM2": 345,
+     "bagId": "0363010000838739"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012161652",
+   "addresses": [
+    "Van Eeghenstraat 73"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Eeghenstraat 73",
+     "use": "woonfunctie",
+     "areaM2": 355,
+     "bagId": "0363010000838741"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012160357",
+   "addresses": [
+    "Van Eeghenstraat 75"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Eeghenstraat 75",
+     "use": "woonfunctie",
+     "areaM2": 338,
+     "bagId": "0363010000838742"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012163185",
+   "addresses": [
+    "Van Eeghenstraat 77"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Eeghenstraat 77",
+     "use": "woonfunctie",
+     "areaM2": 421,
+     "bagId": "0363010000838744"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012165447",
+   "addresses": [
+    "Van Eeghenstraat 79"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Eeghenstraat 79",
+     "use": "woonfunctie",
+     "areaM2": 258,
+     "bagId": "0363010000838746"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012157162",
+   "addresses": [
+    "Van Eeghenstraat 81",
+    "Van Eeghenstraat 81A",
+    "Van Eeghenstraat 81B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Eeghenstraat 81",
+     "use": "kantoorfunctie",
+     "areaM2": 396,
+     "bagId": "0363010000564903"
+    },
+    {
+     "address": "Van Eeghenstraat 81A",
+     "use": "kantoorfunctie",
+     "areaM2": 147,
+     "bagId": "0363010012128841"
+    },
+    {
+     "address": "Van Eeghenstraat 81B",
+     "use": "woonfunctie",
+     "areaM2": 261,
+     "bagId": "0363010012128842"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012162328",
+   "addresses": [
+    "Van Eeghenstraat 83"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Eeghenstraat 83",
+     "use": "woonfunctie",
+     "areaM2": 316,
+     "bagId": "0363010000838749"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012152676",
+   "addresses": [
+    "Van Eeghenstraat 85"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Eeghenstraat 85",
+     "use": "woonfunctie",
+     "areaM2": 445,
+     "bagId": "0363010000838751"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012162779",
+   "addresses": [
+    "Van Eeghenstraat 87"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Eeghenstraat 87",
+     "use": "woonfunctie",
+     "areaM2": 305,
+     "bagId": "0363010000838754"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012162358",
+   "addresses": [
+    "Van Eeghenstraat 89"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Eeghenstraat 89-H",
+     "use": "woonfunctie",
+     "areaM2": 205,
+     "bagId": "0363010000838759"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012161542",
+   "addresses": [
+    "Van Eeghenstraat 91"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Eeghenstraat 91-H",
+     "use": "woonfunctie",
+     "areaM2": 223,
+     "bagId": "0363010000838762"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012166667",
+   "addresses": [
+    "Van Eeghenstraat 93"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Eeghenstraat 93",
+     "use": "woonfunctie",
+     "areaM2": 478,
+     "bagId": "0363010000838768"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012159904",
+   "addresses": [
+    "Van Eeghenstraat 95"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Eeghenstraat 95-H",
+     "use": "woonfunctie",
+     "areaM2": 150,
+     "bagId": "0363010000838770"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012237151",
+   "addresses": [
+    "Van Eeghenstraat 97",
+    "Van Eeghenstraat 97C",
+    "Van Eeghenstraat 99",
+    "Van Eeghenstraat 101"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Eeghenstraat 99",
+     "use": "woonfunctie",
+     "areaM2": 392,
+     "bagId": "0363010001026520"
+    },
+    {
+     "address": "Van Eeghenstraat 101",
+     "use": "woonfunctie",
+     "areaM2": 573,
+     "bagId": "0363010011122378"
+    },
+    {
+     "address": "Van Eeghenstraat 97",
+     "use": "woonfunctie",
+     "areaM2": 451,
+     "bagId": "0363010011122377"
+    },
+    {
+     "address": "Van Eeghenstraat 97C",
+     "use": "woonfunctie",
+     "areaM2": 287,
+     "bagId": "0363010012577505"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  }
+ ]
+}

@@ -643,7 +643,10 @@ export function fitGableLights(profile: CanalhousePoint[], lights: GableLight[],
 /** Neck share of a neck/bell crown's width: measured (`crownNeckWidth`) or the stock 0.5 neck / 0.46 bell. */
 const neckShare = (f: FrontIntent) => f.crownNeckWidth ?? (f.gable === 'bell' ? 0.46 : 0.5);
 /** Cap rise of a neck/bell crown `width` wide: measured (`crownCapRatio` of the neck, within 0.4 of the rise) or the stock share of the rise. */
-const capRiseOf = (f: FrontIntent, rise: number, width: number) => f.crownCapRatio !== undefined ? Math.min(f.crownCapRatio * width * neckShare(f), rise * 0.4) : f.gable === 'bell' ? Math.min(0.6, rise * 0.15) : Math.min(0.45, rise * 0.1);
+// A flat cap (`crownCap: "flat"`, Van Breestraat 119-127 bell gables, Museumkwartier #159) has no rise: the neck ends in a
+// level coping. Before, a neck/bell crown with a flat cap threw in canalhouseCrownProfile (a flat cap with a rise), so no
+// installed recipe carries one and every other crown is byte-identical.
+const capRiseOf = (f: FrontIntent, rise: number, width: number) => f.crownCap === 'flat' ? 0 : f.crownCapRatio !== undefined ? Math.min(f.crownCapRatio * width * neckShare(f), rise * 0.4) : f.gable === 'bell' ? Math.min(0.6, rise * 0.15) : Math.min(0.45, rise * 0.1);
 
 /**
  * A `shouldered` gable `width` wide (FrontIntent.shouldered): plumb sides `shoulder` over the eaves, then straight rakes
@@ -689,8 +692,8 @@ function crownProfile(f: FrontIntent, width: number, eaves: number, top: number,
     // every neck (power 0.6) and bell (quarter sine) flank convex, the inverse of the claw pieces and bell flares on the
     // photos (user, 2026-10-16); every flank measured on the six bell/neck faces reads concave.
     // `crownNeckWidth` / `crownCapRiseM`: measured on the photo; absent, the stock shares (byte-identical).
-    case 'neck': case 'raised-neck': { const n = width * neckShare(f); return canalhouseCrownProfile('hals', width, eaves, top, n, eaves + rise * (f.gable === 'neck' ? 0.45 : 0.25), 0, {cap: f.crownCap ?? 'pediment', capRiseM: capRiseOf(f, rise, width), crestWidthM: n, shoulder: f.crownShoulder ?? 'concave'}); }
-    case 'bell': { const n = width * neckShare(f); return canalhouseCrownProfile('klok', width, eaves, top, n, eaves + rise * 0.55, 0, {cap: f.crownCap ?? 'rounded', capRiseM: capRiseOf(f, rise, width), crestWidthM: n, shoulder: f.crownShoulder ?? 'concave'}); }
+    case 'neck': case 'raised-neck': { const n = width * neckShare(f); return canalhouseCrownProfile('hals', width, eaves, top, n, eaves + rise * (f.crownShoulderRise ?? (f.gable === 'neck' ? 0.45 : 0.25)), 0, {cap: f.crownCap ?? 'pediment', capRiseM: capRiseOf(f, rise, width), crestWidthM: n, shoulder: f.crownShoulder ?? 'concave'}); }
+    case 'bell': { const n = width * neckShare(f); return canalhouseCrownProfile('klok', width, eaves, top, n, eaves + rise * (f.crownShoulderRise ?? 0.55), 0, {cap: f.crownCap ?? 'rounded', capRiseM: capRiseOf(f, rise, width), crestWidthM: n, shoulder: f.crownShoulder ?? 'concave'}); }
     case 'cornice': {
       if (f.crownCap && f.crownCap !== 'flat') {
         // Wide: a parapet over nearly the whole front with the cap across it (1900s fronts, 081118/087959).
@@ -1019,8 +1022,11 @@ export function fitIntent(intent: CanalHouseIntent, surveyFacts: BuildingFacts):
     if (profile) {
       // Plumb sides (a shouldered gable, a half crown's party edge) are two vertices at one x: a mirrored outline is read
       // right to left first so the stable sort keeps each riser's foot before its head.
+      // A riser's two vertices can differ by an ulp once a crown on part of the front is offset (Van Breestraat 129,
+      // Museumkwartier #159: 3.5980496799642876 vs 3.598049679964287 put the head before the foot and cut a V into a
+      // step gable's top), so x within 1e-9 counts as equal, the stable sort keeps the outline's own order and the riser takes one x.
       const plumb = front.gable === 'shouldered' || !!front.crownHalf;
-      elevation.crown = seen({profile: (plumb && mirrored ? [...profile].reverse() : profile).map(([x, y]) => [Math.min(width, Math.max(0, mirrored ? width - x : x)), Math.max(eaves, y)] as CanalhousePoint).sort((p, q) => p[0] - q[0]), depthM: 0.18, trimWidthM: front.renderedGable ? 0 : 0.08, surface: 'wall'});
+      elevation.crown = seen({profile: (plumb && mirrored ? [...profile].reverse() : profile).map(([x, y]) => [Math.min(width, Math.max(0, mirrored ? width - x : x)), Math.max(eaves, y)] as CanalhousePoint).sort((p, q) => Math.abs(p[0] - q[0]) < 1e-9 ? 0 : p[0] - q[0]).map((p, i, a) => i > 0 && p[0] < a[i - 1][0] ? [a[i - 1][0], p[1]] as CanalhousePoint : p), depthM: 0.18, trimWidthM: front.renderedGable ? 0 : 0.08, surface: 'wall'});
       // `renderedGable.bargeboard`: painted boards inside each raking edge of the crown, in the trim colour (bargeboards.ts);
       // they replace the crown's trim edge boxes (a frame-class box past the gable end is judged an opening outside its wall).
       if (front.renderedGable) { const boards = bargeboardOrnaments(elevation.crown.value.profile, eaves, front.renderedGable.bargeboard, width); if (boards.length) elevation.ornaments = elevation.ornaments ? {...elevation.ornaments, value: [...elevation.ornaments.value, ...boards]} : seen(boards); }

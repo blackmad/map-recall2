@@ -1,0 +1,41 @@
+{
+ "street": "Banstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched n/a (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012073181",
+   "addresses": [
+    "Banstraat 17"
+   ],
+   "groundUnits": [
+    {
+     "address": "Banstraat 17-H",
+     "use": "woonfunctie",
+     "areaM2": 275,
+     "bagId": "0363010000577093"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012083178",
+   "addresses": [
+    "Banstraat 19"
+   ],
+   "groundUnits": [
+    {
+     "address": "Banstraat 19-H",
+     "use": "woonfunctie",
+     "areaM2": 140,
+     "bagId": "0363010000577098"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  }
+ ]
+}

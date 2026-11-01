@@ -275,6 +275,13 @@ export interface FrontIntent {
   /** Neck/bell: the neck's width as a share of the crown width, measured on the photo (default 0.5 neck, 0.46 bell). */
   crownNeckWidth?: number;
   /**
+   * Neck/bell: where the flank meets the neck, as a share of the crown's rise over the eaves (0.2..0.95; default 0.45
+   * neck, 0.25 raised neck, 0.55 bell). Van Breestraat 119-127 (Museumkwartier, #159): the bell gables rise near plumb
+   * from the cornice and curve in only at the top to a flat coping (a convex flank meeting a short neck at 0.85 of the
+   * rise); the default 0.55 drew a low flare under a 1.8 m plumb neck. Absent = byte-identical.
+   */
+  crownShoulderRise?: number;
+  /**
    * Neck/bell: an entablature under the cap, measured on the photo, every part a share of the neck width (intents carry
    * no metres): a cornice `ledge` tall projecting `projection` past each side of the neck, over a `frieze` (painted with
    * the cap in the stone colour). Absent: the cap sits straight on the brick neck (unchanged).
@@ -1583,6 +1590,7 @@ export function validateIntent(input: unknown): CanalHouseIntent {
     if (f.crownCapSpan !== undefined) oneOf(f.crownCapSpan, CROWN_CAP_SPANS, `${at}.crownCapSpan`);
     if (f.crownCapRise !== undefined) oneOf(f.crownCapRise, CROWN_CAP_RISES, `${at}.crownCapRise`);
     const neckOrBell = ['neck', 'raised-neck', 'bell'].includes(f.gable);
+    if (f.crownShoulderRise !== undefined && (!neckOrBell || !(f.crownShoulderRise >= 0.2 && f.crownShoulderRise <= 0.95))) problems.push(`${at}.crownShoulderRise: a neck/bell flank height share in [0.2, 0.95] (gable ${f.gable}, ${f.crownShoulderRise})`);
     if (f.crownNeckWidth !== undefined && (!neckOrBell || !(f.crownNeckWidth >= 0.2 && f.crownNeckWidth <= 0.8))) problems.push(`${at}.crownNeckWidth: a neck/bell neck share in [0.2, 0.8] (gable ${f.gable}, ${f.crownNeckWidth})`);
     if (f.crownCapRatio !== undefined && (!neckOrBell || !(f.crownCapRatio >= 0.03 && f.crownCapRatio <= 0.6))) problems.push(`${at}.crownCapRatio: a neck/bell cap rise share of the neck in [0.03, 0.6]`);
     if (f.crownCapCornice !== undefined) {

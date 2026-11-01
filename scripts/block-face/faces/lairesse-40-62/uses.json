@@ -1,0 +1,255 @@
+{
+ "street": "De Lairessestraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-01T12:54:04.203Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012142706",
+   "addresses": [
+    "De Lairessestraat 62"
+   ],
+   "groundUnits": [
+    {
+     "address": "De Lairessestraat 62-H",
+     "use": "kantoorfunctie",
+     "areaM2": 246,
+     "bagId": "0363010000618053"
+    },
+    {
+     "address": "De Lairessestraat 62-2",
+     "use": "kantoorfunctie",
+     "areaM2": 97,
+     "bagId": "0363010002004751"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012129826",
+   "addresses": [
+    "De Lairessestraat 60"
+   ],
+   "groundUnits": [
+    {
+     "address": "De Lairessestraat 60-H",
+     "use": "woonfunctie",
+     "areaM2": 166,
+     "bagId": "0363010000618050"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012154036",
+   "addresses": [
+    "De Lairessestraat 58"
+   ],
+   "groundUnits": [
+    {
+     "address": "De Lairessestraat 58-H",
+     "use": "woonfunctie",
+     "areaM2": 166,
+     "bagId": "0363010000618046"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012092421",
+   "addresses": [
+    "De Lairessestraat 56"
+   ],
+   "groundUnits": [
+    {
+     "address": "De Lairessestraat 56-H",
+     "use": "woonfunctie",
+     "areaM2": 210,
+     "bagId": "0363010000618042"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012127853",
+   "addresses": [
+    "De Lairessestraat 54"
+   ],
+   "groundUnits": [
+    {
+     "address": "De Lairessestraat 54-H",
+     "use": "woonfunctie",
+     "areaM2": 210,
+     "bagId": "0363010000618035"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012138291",
+   "addresses": [
+    "De Lairessestraat 52"
+   ],
+   "groundUnits": [
+    {
+     "address": "De Lairessestraat 52-H",
+     "use": "woonfunctie",
+     "areaM2": 309,
+     "bagId": "0363010000618032"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012086729",
+   "addresses": [
+    "De Lairessestraat 50"
+   ],
+   "groundUnits": [
+    {
+     "address": "De Lairessestraat 50-H",
+     "use": "woonfunctie",
+     "areaM2": 348,
+     "bagId": "0363010000618026"
+    },
+    {
+     "address": "De Lairessestraat 50-H",
+     "use": "woonfunctie",
+     "areaM2": 227,
+     "bagId": "0363010012155775"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012136080",
+   "addresses": [
+    "De Lairessestraat 48"
+   ],
+   "groundUnits": [
+    {
+     "address": "De Lairessestraat 48-H",
+     "use": "woonfunctie",
+     "areaM2": 163,
+     "bagId": "0363010000618013"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012133086",
+   "addresses": [
+    "De Lairessestraat 46"
+   ],
+   "groundUnits": [
+    {
+     "address": "De Lairessestraat 46-H",
+     "use": "woonfunctie",
+     "areaM2": 227,
+     "bagId": "0363010000618008"
+    }
+   ],
+   "units": 6,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012065680",
+   "addresses": [
+    "De Lairessestraat 44"
+   ],
+   "groundUnits": [
+    {
+     "address": "De Lairessestraat 44-H",
+     "use": "woonfunctie",
+     "areaM2": 242,
+     "bagId": "0363010000618004"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012061747",
+   "addresses": [
+    "De Lairessestraat 42"
+   ],
+   "groundUnits": [
+    {
+     "address": "De Lairessestraat 42-H",
+     "use": "winkelfunctie",
+     "areaM2": 215,
+     "bagId": "0363010000618001"
+    },
+    {
+     "address": "De Lairessestraat 42-H",
+     "use": "gezondheidszorgfunctie",
+     "areaM2": 220,
+     "bagId": "0363010011872095"
+    }
+   ],
+   "units": 6,
+   "osm": [
+    {
+     "type": "node",
+     "id": 3039437173,
+     "lngLat": [
+      4.8756993,
+      52.3548255
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "42",
+      "addr:postcode": "1071PB",
+      "addr:street": "De Lairessestraat",
+      "alt_name": "Huisartsenpraktijk De Lairesse",
+      "amenity": "doctors",
+      "check_date": "2024-10-23",
+      "healthcare": "doctor",
+      "name": "De Lairesse",
+      "website": "https://www.huisartsenpraktijkdelairesse.nl"
+     },
+     "fetchedAt": "2026-11-01T12:54:04.203Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012118867",
+   "addresses": [
+    "De Lairessestraat 40"
+   ],
+   "groundUnits": [
+    {
+     "address": "De Lairessestraat 40-H",
+     "use": "woonfunctie",
+     "areaM2": 82,
+     "bagId": "0363010000617997"
+    },
+    {
+     "address": "De Lairessestraat 40-1",
+     "use": "kantoorfunctie",
+     "areaM2": 255,
+     "bagId": "0363010000617998"
+    },
+    {
+     "address": "Jacob Obrechtstraat 54",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 146,
+     "bagId": "0363010000679878"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  }
+ ]
+}

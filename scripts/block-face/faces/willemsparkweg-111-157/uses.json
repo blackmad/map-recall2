@@ -1,0 +1,300 @@
+{
+ "street": "Willemsparkweg",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-01T15:16:15.056Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012162510",
+   "addresses": [
+    "Willemsparkweg 111"
+   ],
+   "groundUnits": [
+    {
+     "address": "Willemsparkweg 111-H",
+     "use": "woonfunctie",
+     "areaM2": 181,
+     "bagId": "0363010011211433"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012160424",
+   "addresses": [
+    "Willemsparkweg 113"
+   ],
+   "groundUnits": [
+    {
+     "address": "Willemsparkweg 113",
+     "use": "woonfunctie",
+     "areaM2": 325,
+     "bagId": "0363010000873105"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012237307",
+   "addresses": [
+    "Willemsparkweg 115",
+    "Willemsparkweg 117"
+   ],
+   "groundUnits": [
+    {
+     "address": "Willemsparkweg 115-H",
+     "use": "woonfunctie",
+     "areaM2": 183,
+     "bagId": "0363010000873108"
+    },
+    {
+     "address": "Willemsparkweg 117-O",
+     "use": "winkelfunctie",
+     "areaM2": 95,
+     "bagId": "0363010001020635"
+    },
+    {
+     "address": "Willemsparkweg 117-H",
+     "use": "woonfunctie",
+     "areaM2": 72,
+     "bagId": "0363010001020636"
+    },
+    {
+     "address": "Willemsparkweg 117-H",
+     "use": "winkelfunctie,woonfunctie",
+     "areaM2": 283,
+     "bagId": "0363010012114884"
+    },
+    {
+     "address": "Willemsparkweg 117-H",
+     "use": "woonfunctie",
+     "areaM2": 159,
+     "bagId": "0363010012127626"
+    }
+   ],
+   "units": 9,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012236239",
+   "addresses": [
+    "Willemsparkweg 119",
+    "Willemsparkweg 121"
+   ],
+   "groundUnits": [
+    {
+     "address": "Willemsparkweg 119",
+     "use": "woonfunctie",
+     "areaM2": 343,
+     "bagId": "0363010000873113"
+    },
+    {
+     "address": "Willemsparkweg 121-H",
+     "use": "woonfunctie",
+     "areaM2": 126,
+     "bagId": "0363010000873116"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012160717",
+   "addresses": [
+    "Willemsparkweg 123"
+   ],
+   "groundUnits": [
+    {
+     "address": "Willemsparkweg 123",
+     "use": "woonfunctie",
+     "areaM2": 300,
+     "bagId": "0363010000873120"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012167026",
+   "addresses": [
+    "Willemsparkweg 125B",
+    "Willemsparkweg 125A",
+    "Willemsparkweg 125C"
+   ],
+   "groundUnits": [
+    {
+     "address": "Willemsparkweg 125B",
+     "use": "woonfunctie",
+     "areaM2": 78,
+     "bagId": "0363010000873124"
+    },
+    {
+     "address": "Willemsparkweg 125A",
+     "use": "woonfunctie",
+     "areaM2": 171,
+     "bagId": "0363010001002434"
+    },
+    {
+     "address": "Willemsparkweg 125C",
+     "use": "woonfunctie",
+     "areaM2": 132,
+     "bagId": "0363010001002435"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012162767",
+   "addresses": [
+    "Willemsparkweg 127"
+   ],
+   "groundUnits": [
+    {
+     "address": "Willemsparkweg 127",
+     "use": "woonfunctie",
+     "areaM2": 325,
+     "bagId": "0363010000992087"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012163206",
+   "addresses": [
+    "Willemsparkweg 129"
+   ],
+   "groundUnits": [
+    {
+     "address": "Willemsparkweg 129",
+     "use": "woonfunctie",
+     "areaM2": 193,
+     "bagId": "0363010000873131"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012163813",
+   "addresses": [
+    "Willemsparkweg 131"
+   ],
+   "groundUnits": [
+    {
+     "address": "Willemsparkweg 131",
+     "use": "woonfunctie",
+     "areaM2": 324,
+     "bagId": "0363010000873134"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012158884",
+   "addresses": [
+    "Willemsparkweg 133"
+   ],
+   "groundUnits": [
+    {
+     "address": "Willemsparkweg 133",
+     "use": "woonfunctie",
+     "areaM2": 327,
+     "bagId": "0363010001002613"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012159771",
+   "addresses": [
+    "Willemsparkweg 135A",
+    "Willemsparkweg 135B",
+    "Willemsparkweg 135C",
+    "Willemsparkweg 135D"
+   ],
+   "groundUnits": [
+    {
+     "address": "Willemsparkweg 135A",
+     "use": "kantoorfunctie",
+     "areaM2": 65,
+     "bagId": "0363010001024609"
+    },
+    {
+     "address": "Willemsparkweg 135B",
+     "use": "kantoorfunctie",
+     "areaM2": 65,
+     "bagId": "0363010001024610"
+    },
+    {
+     "address": "Willemsparkweg 135C",
+     "use": "kantoorfunctie",
+     "areaM2": 64,
+     "bagId": "0363010001024611"
+    },
+    {
+     "address": "Willemsparkweg 135D",
+     "use": "kantoorfunctie",
+     "areaM2": 60,
+     "bagId": "0363010001024612"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012162923",
+   "addresses": [
+    "Willemsparkweg 137"
+   ],
+   "groundUnits": [
+    {
+     "address": "Willemsparkweg 137",
+     "use": "woonfunctie",
+     "areaM2": 310,
+     "bagId": "0363010000873141"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012159150",
+   "addresses": [
+    "Willemsparkweg 139"
+   ],
+   "groundUnits": [
+    {
+     "address": "Willemsparkweg 139-H",
+     "use": "woonfunctie",
+     "areaM2": 178,
+     "bagId": "0363010000873144"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012160745",
+   "addresses": [
+    "Willemsparkweg 141"
+   ],
+   "groundUnits": [
+    {
+     "address": "Willemsparkweg 141",
+     "use": "woonfunctie",
+     "areaM2": 324,
+     "bagId": "0363010000873147"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  }
+ ]
+}

@@ -1,0 +1,116 @@
+{
+ "street": "Van Eeghenstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-01T14:47:07.606Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012156562",
+   "addresses": [
+    "Van Eeghenstraat 98"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Eeghenstraat 98",
+     "use": "kantoorfunctie",
+     "areaM2": 531,
+     "bagId": "0363010000838774"
+    }
+   ],
+   "units": 2,
+   "osm": [
+    {
+     "type": "way",
+     "id": 277068376,
+     "lngLat": [
+      4.8699146,
+      52.3567542
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "98",
+      "addr:postcode": "1071GL",
+      "addr:street": "Van Eeghenstraat",
+      "building": "yes",
+      "height": "20.8",
+      "name": "Höcker Advocaten",
+      "office": "lawyer",
+      "opening_hours": "08:00-18:00",
+      "phone": "+31 20 577 7700",
+      "ref:bag": "0363100012156562",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "source:height": "3DBAG",
+      "source:height:date": "2025-09-03",
+      "start_date": "1903",
+      "website": "https://www.hocker.nl/",
+      "wheelchair": "limited"
+     },
+     "fetchedAt": "2026-11-01T14:47:07.606Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012162522",
+   "addresses": [
+    "Van Eeghenstraat 96",
+    "Van Eeghenstraat 96C",
+    "Van Eeghenstraat 96A",
+    "Van Eeghenstraat 96B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Eeghenstraat 96",
+     "use": "kantoorfunctie",
+     "areaM2": 589,
+     "bagId": "0363010000838772"
+    },
+    {
+     "address": "Van Eeghenstraat 96",
+     "use": "kantoorfunctie",
+     "areaM2": 2794,
+     "bagId": "0363010012148183"
+    },
+    {
+     "address": "Van Eeghenstraat 96C",
+     "use": "woonfunctie",
+     "areaM2": 139,
+     "bagId": "0363010012591158"
+    },
+    {
+     "address": "Van Eeghenstraat 96A",
+     "use": "woonfunctie",
+     "areaM2": 358,
+     "bagId": "0363010012577503"
+    },
+    {
+     "address": "Van Eeghenstraat 96B",
+     "use": "woonfunctie",
+     "areaM2": 278,
+     "bagId": "0363010012577504"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012159803",
+   "addresses": [
+    "Van Eeghenstraat 94"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Eeghenstraat 94",
+     "use": "kantoorfunctie",
+     "areaM2": 599,
+     "bagId": "0363010000838769"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  }
+ ]
+}

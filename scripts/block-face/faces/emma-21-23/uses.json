@@ -1,0 +1,41 @@
+{
+ "street": "Emmastraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-01T13:08:50.466Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012166784",
+   "addresses": [
+    "Emmastraat 21"
+   ],
+   "groundUnits": [
+    {
+     "address": "Emmastraat 21-H",
+     "use": "woonfunctie",
+     "areaM2": 123,
+     "bagId": "0363010000632679"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012153401",
+   "addresses": [
+    "Emmastraat 23"
+   ],
+   "groundUnits": [
+    {
+     "address": "Emmastraat 23-H",
+     "use": "woonfunctie",
+     "areaM2": 100,
+     "bagId": "0363010000609034"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  }
+ ]
+}

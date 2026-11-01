@@ -1,0 +1,253 @@
+{
+ "street": "Willemsparkweg",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-01T15:14:51.394Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012160627",
+   "addresses": [
+    "Willemsparkweg 89"
+   ],
+   "groundUnits": [
+    {
+     "address": "Willemsparkweg 89-H",
+     "use": "kantoorfunctie",
+     "areaM2": 190,
+     "bagId": "0363010000873063"
+    }
+   ],
+   "units": 2,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2816320399,
+     "lngLat": [
+      4.8743211,
+      52.3568782
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:country": "NL",
+      "addr:housenumber": "87-H",
+      "addr:postcode": "1071GT",
+      "addr:street": "Willemsparkweg",
+      "amenity": "restaurant",
+      "check_date": "2025-03-16",
+      "cuisine": "italian",
+      "email": "info@classicoamsterdam.nl",
+      "name": "Classico",
+      "opening_hours": "Mo-Su 13:00-15:00,17:30-22:30",
+      "payment:cash": "yes",
+      "payment:mastercard": "yes",
+      "phone": "+31 20 676 0700",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://www.classicoamsterdam.nl/",
+      "wheelchair": "limited"
+     },
+     "fetchedAt": "2026-11-01T15:14:51.394Z",
+     "match": "frontage",
+     "distanceM": 3.9
+    },
+    {
+     "type": "node",
+     "id": 14134710201,
+     "lngLat": [
+      4.8742344,
+      52.356856
+     ],
+     "tags": {
+      "name": "Engel & Völkers",
+      "office": "estate_agent"
+     },
+     "fetchedAt": "2026-11-01T15:14:51.394Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012136890",
+   "addresses": [
+    "Willemsparkweg 91",
+    "Willemsparkweg 91B",
+    "Willemsparkweg 91A",
+    "Willemsparkweg 91C"
+   ],
+   "groundUnits": [
+    {
+     "address": "Willemsparkweg 91",
+     "use": "woonfunctie",
+     "areaM2": 264,
+     "bagId": "0363010001167630"
+    },
+    {
+     "address": "Willemsparkweg 91B",
+     "use": "woonfunctie",
+     "areaM2": 74,
+     "bagId": "0363010012580286"
+    },
+    {
+     "address": "Willemsparkweg 91A",
+     "use": "woonfunctie",
+     "areaM2": 80,
+     "bagId": "0363010012580285"
+    },
+    {
+     "address": "Willemsparkweg 91C",
+     "use": "woonfunctie",
+     "areaM2": 209,
+     "bagId": "0363010012580287"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012167075",
+   "addresses": [
+    "Willemsparkweg 93"
+   ],
+   "groundUnits": [
+    {
+     "address": "Willemsparkweg 93",
+     "use": "woonfunctie",
+     "areaM2": 312,
+     "bagId": "0363010001002630"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012156255",
+   "addresses": [
+    "Willemsparkweg 95"
+   ],
+   "groundUnits": [
+    {
+     "address": "Willemsparkweg 95-H",
+     "use": "winkelfunctie",
+     "areaM2": 76,
+     "bagId": "0363010000873078"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012161713",
+   "addresses": [
+    "Willemsparkweg 97"
+   ],
+   "groundUnits": [
+    {
+     "address": "Willemsparkweg 97",
+     "use": "woonfunctie",
+     "areaM2": 294,
+     "bagId": "0363010000873083"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012155809",
+   "addresses": [
+    "Willemsparkweg 99"
+   ],
+   "groundUnits": [
+    {
+     "address": "Willemsparkweg 99",
+     "use": "woonfunctie",
+     "areaM2": 275,
+     "bagId": "0363010000873085"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012164175",
+   "addresses": [
+    "Willemsparkweg 101"
+   ],
+   "groundUnits": [
+    {
+     "address": "Willemsparkweg 101",
+     "use": "woonfunctie",
+     "areaM2": 98,
+     "bagId": "0363010000873087"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012167399",
+   "addresses": [
+    "Willemsparkweg 103"
+   ],
+   "groundUnits": [
+    {
+     "address": "Willemsparkweg 103-H",
+     "use": "woonfunctie",
+     "areaM2": 206,
+     "bagId": "0363010000873088"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012163186",
+   "addresses": [
+    "Willemsparkweg 105"
+   ],
+   "groundUnits": [
+    {
+     "address": "Willemsparkweg 105-H",
+     "use": "woonfunctie",
+     "areaM2": 240,
+     "bagId": "0363010000873091"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012163708",
+   "addresses": [
+    "Willemsparkweg 107"
+   ],
+   "groundUnits": [
+    {
+     "address": "Willemsparkweg 107-H",
+     "use": "woonfunctie",
+     "areaM2": 230,
+     "bagId": "0363010000873095"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012165409",
+   "addresses": [
+    "Willemsparkweg 109"
+   ],
+   "groundUnits": [
+    {
+     "address": "Willemsparkweg 109-H",
+     "use": "woonfunctie",
+     "areaM2": 219,
+     "bagId": "0363010000873099"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  }
+ ]
+}

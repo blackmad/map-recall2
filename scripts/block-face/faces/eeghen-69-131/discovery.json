@@ -1,0 +1,1512 @@
+{
+ "street": "Van Eeghenstraat",
+ "seed": "0363100012164230",
+ "members": [
+  "0363100012164230",
+  "0363100012161652",
+  "0363100012160357",
+  "0363100012163185",
+  "0363100012165447",
+  "0363100012157162",
+  "0363100012162328",
+  "0363100012152676",
+  "0363100012162779",
+  "0363100012162358",
+  "0363100012161542",
+  "0363100012166667",
+  "0363100012159904",
+  "0363100012237151"
+ ],
+ "ends": [
+  {
+   "side": "left",
+   "reason": "trimmed at 0363100012164230 (face continues: 157657 158126 164226 158878 163681)"
+  },
+  {
+   "side": "right",
+   "reason": "trimmed at 0363100012237151 (face continues: 157576 161526 158618 162673 158164 163900 166069 157374 162937 162260 163546 167040 162110 163871)"
+  }
+ ],
+ "rejected": [
+  {
+   "pandId": "0363100012072072",
+   "reason": "frontage 112.1 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012076391",
+   "reason": "frontage 207.7 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012105604",
+   "reason": "frontage 98.2 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012130582",
+   "reason": "frontage 66.1 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012152346",
+   "reason": "frontage 78.4 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012152495",
+   "reason": "frontage 114.2 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012152540",
+   "reason": "sightline to Van Eeghenstraat crosses 0363100012161859"
+  },
+  {
+   "pandId": "0363100012152638",
+   "reason": "frontage 148.2 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012152719",
+   "reason": "frontage 78.8 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012152774",
+   "reason": "frontage 207.9 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012153028",
+   "reason": "frontage 149.3 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012153071",
+   "reason": "frontage 34.4 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012153806",
+   "reason": "frontage 241.2 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012154232",
+   "reason": "frontage 171.0 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012061429",
+   "reason": "frontage 136.2 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012071521",
+   "reason": "frontage 32.6 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012072748",
+   "reason": "frontage 165.6 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012073967",
+   "reason": "frontage 63.4 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012085898",
+   "reason": "frontage 195.5 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012093476",
+   "reason": "frontage 140.2 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012103513",
+   "reason": "frontage 63.1 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012124153",
+   "reason": "frontage 193.4 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012125741",
+   "reason": "frontage 64.0 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012136890",
+   "reason": "frontage 87.5 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012144618",
+   "reason": "frontage 34.0 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012152275",
+   "reason": "frontage 128.9 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012152315",
+   "reason": "frontage 82.8 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012152423",
+   "reason": "frontage 49.8 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012152432",
+   "reason": "frontage 135.2 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012152866",
+   "reason": "frontage 186.1 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012152918",
+   "reason": "frontage 62.5 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012152926",
+   "reason": "frontage 166.3 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012153282",
+   "reason": "frontage 129.5 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012153322",
+   "reason": "frontage 33.1 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012153607",
+   "reason": "frontage 58.6 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012153824",
+   "reason": "frontage 136.1 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012154188",
+   "reason": "frontage 152.5 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012154281",
+   "reason": "frontage 55.3 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012154383",
+   "reason": "frontage 78.6 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012154394",
+   "reason": "frontage 32.1 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012155582",
+   "reason": "frontage 44.9 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012155596",
+   "reason": "frontage 148.2 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012155748",
+   "reason": "frontage 207.7 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012155784",
+   "reason": "frontage 114.3 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012155885",
+   "reason": "frontage 179.1 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012156035",
+   "reason": "frontage 114.1 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012156283",
+   "reason": "frontage 114.2 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012156363",
+   "reason": "frontage 148.1 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012156384",
+   "reason": "frontage 44.8 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012156500",
+   "reason": "frontage 41.8 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012156507",
+   "reason": "frontage 44.4 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012156558",
+   "reason": "frontage 45.7 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012156628",
+   "reason": "frontage 148.1 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012156648",
+   "reason": "frontage 42.0 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012156668",
+   "reason": "frontage 34.2 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012156696",
+   "reason": "frontage 164.1 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012156890",
+   "reason": "frontage 114.6 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012157254",
+   "reason": "frontage 41.9 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012157377",
+   "reason": "frontage 88.4 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012154301",
+   "reason": "frontage 135.4 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012155490",
+   "reason": "frontage 161.2 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012155524",
+   "reason": "frontage 31.3 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012155618",
+   "reason": "frontage 136.7 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012155651",
+   "reason": "frontage 60.8 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012155697",
+   "reason": "frontage 136.0 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012155750",
+   "reason": "sightline to Van Eeghenstraat crosses 0363100012157657"
+  },
+  {
+   "pandId": "0363100012155809",
+   "reason": "frontage 94.2 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012155916",
+   "reason": "frontage 153.9 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012156063",
+   "reason": "frontage 167.5 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012156255",
+   "reason": "frontage 90.8 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012156733",
+   "reason": "frontage 166.9 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012156817",
+   "reason": "frontage 118.9 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012156820",
+   "reason": "frontage 107.4 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012156974",
+   "reason": "frontage 51.7 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012157074",
+   "reason": "frontage 64.6 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012157235",
+   "reason": "frontage 158.3 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012157240",
+   "reason": "frontage 60.8 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012157363",
+   "reason": "frontage 33.0 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012157378",
+   "reason": "frontage 92.4 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012157380",
+   "reason": "frontage 43.9 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012157431",
+   "reason": "frontage 78.7 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012157701",
+   "reason": "sightline to Van Eeghenstraat crosses 0363100012156847"
+  },
+  {
+   "pandId": "0363100012157721",
+   "reason": "frontage 179.2 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012157764",
+   "reason": "frontage 114.1 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012158032",
+   "reason": "frontage 78.0 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012158338",
+   "reason": "frontage 148.2 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012158629",
+   "reason": "frontage 78.3 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012158641",
+   "reason": "frontage 39.8 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012158724",
+   "reason": "frontage 181.3 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012158788",
+   "reason": "frontage 32.7 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012158802",
+   "reason": "frontage 237.7 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012158992",
+   "reason": "frontage 179.0 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012159009",
+   "reason": "frontage 148.2 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012159292",
+   "reason": "frontage 44.2 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012157396",
+   "reason": "frontage 167.6 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012157652",
+   "reason": "frontage 167.4 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012157977",
+   "reason": "frontage 130.1 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012157986",
+   "reason": "frontage 65.2 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012158094",
+   "reason": "frontage 121.7 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012158300",
+   "reason": "sightline to Van Eeghenstraat crosses 0363100012157657"
+  },
+  {
+   "pandId": "0363100012158340",
+   "reason": "frontage 34.9 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012158436",
+   "reason": "frontage 114.6 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012158600",
+   "reason": "frontage 60.2 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012158612",
+   "reason": "frontage 166.5 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012158726",
+   "reason": "frontage 54.1 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012158738",
+   "reason": "frontage 136.6 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012158884",
+   "reason": "frontage 98.1 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012158954",
+   "reason": "frontage 167.1 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012158971",
+   "reason": "frontage 40.6 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012159150",
+   "reason": "frontage 96.3 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012159165",
+   "reason": "frontage 134.5 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012159184",
+   "reason": "frontage 92.7 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012159195",
+   "reason": "frontage 54.6 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012159329",
+   "reason": "frontage 33.8 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012159380",
+   "reason": "frontage 124.9 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012159400",
+   "reason": "frontage 33.5 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012159675",
+   "reason": "frontage 36.6 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012159730",
+   "reason": "frontage 45.2 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012159785",
+   "reason": "frontage 148.2 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012159946",
+   "reason": "frontage 79.0 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012160186",
+   "reason": "frontage 148.2 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012160243",
+   "reason": "frontage 179.1 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012160277",
+   "reason": "frontage 44.7 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012160336",
+   "reason": "frontage 78.2 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012160416",
+   "reason": "frontage 170.7 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012160437",
+   "reason": "frontage 79.0 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012160444",
+   "reason": "frontage 32.0 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012160614",
+   "reason": "frontage 32.5 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012160752",
+   "reason": "frontage 207.6 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012160760",
+   "reason": "frontage 78.5 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012160779",
+   "reason": "frontage 148.0 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012160927",
+   "reason": "frontage 179.0 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012161222",
+   "reason": "frontage 179.1 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012161353",
+   "reason": "frontage 31.6 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012159459",
+   "reason": "frontage 191.0 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012159477",
+   "reason": "frontage 62.8 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012159568",
+   "reason": "no frontage on Van Eeghenstraat: No footprint edge faces Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012159608",
+   "reason": "frontage 167.5 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012159625",
+   "reason": "frontage 119.2 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012159676",
+   "reason": "no frontage on Van Eeghenstraat: No footprint edge faces Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012159745",
+   "reason": "frontage 132.7 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012159771",
+   "reason": "frontage 97.5 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012159828",
+   "reason": "frontage 65.3 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012159878",
+   "reason": "frontage 159.7 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012159882",
+   "reason": "frontage 136.7 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012159909",
+   "reason": "frontage 32.4 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012159984",
+   "reason": "frontage 58.6 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012160202",
+   "reason": "frontage 134.4 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012160404",
+   "reason": "frontage 60.7 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012160424",
+   "reason": "frontage 98.4 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012160627",
+   "reason": "frontage 85.8 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012160695",
+   "reason": "no frontage on Van Eeghenstraat: No footprint edge faces Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012160717",
+   "reason": "frontage 98.6 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012160745",
+   "reason": "frontage 95.5 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012160835",
+   "reason": "sightline to Van Eeghenstraat crosses 0363100012156383"
+  },
+  {
+   "pandId": "0363100012160863",
+   "reason": "frontage 64.3 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012161015",
+   "reason": "frontage 34.3 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012161237",
+   "reason": "frontage 61.7 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012161567",
+   "reason": "frontage 116.4 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012162023",
+   "reason": "frontage 114.6 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012162153",
+   "reason": "frontage 32.3 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012162837",
+   "reason": "frontage 43.1 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012162934",
+   "reason": "frontage 185.7 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012163181",
+   "reason": "frontage 214.9 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012163259",
+   "reason": "frontage 114.2 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012163294",
+   "reason": "frontage 77.7 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012161408",
+   "reason": "frontage 30.4 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012161533",
+   "reason": "frontage 90.2 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012161681",
+   "reason": "frontage 135.2 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012161713",
+   "reason": "frontage 92.5 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012162022",
+   "reason": "frontage 65.3 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012162235",
+   "reason": "frontage 65.1 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012162250",
+   "reason": "frontage 65.1 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012162282",
+   "reason": "frontage 135.2 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012162309",
+   "reason": "frontage 150.2 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012162429",
+   "reason": "frontage 94.1 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012162463",
+   "reason": "frontage 93.1 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012162510",
+   "reason": "frontage 98.2 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012162708",
+   "reason": "frontage 166.7 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012162759",
+   "reason": "frontage 162.7 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012162765",
+   "reason": "frontage 135.3 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012162767",
+   "reason": "frontage 98.8 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012162923",
+   "reason": "frontage 96.9 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012163074",
+   "reason": "frontage 63.8 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012163099",
+   "reason": "frontage 94.9 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012163186",
+   "reason": "frontage 97.4 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012163206",
+   "reason": "frontage 98.9 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012163334",
+   "reason": "frontage 114.4 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012163428",
+   "reason": "sightline to Van Eeghenstraat crosses 0363100012152540"
+  },
+  {
+   "pandId": "0363100012163687",
+   "reason": "frontage 179.8 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012163914",
+   "reason": "frontage 124.0 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012164193",
+   "reason": "frontage 148.2 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012164293",
+   "reason": "frontage 114.3 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012164389",
+   "reason": "frontage 33.4 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012164423",
+   "reason": "frontage 34.5 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012164442",
+   "reason": "frontage 42.1 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012164472",
+   "reason": "frontage 148.2 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012164563",
+   "reason": "frontage 43.0 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012164575",
+   "reason": "frontage 77.6 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012164901",
+   "reason": "frontage 104.3 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012165339",
+   "reason": "frontage 207.7 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012165368",
+   "reason": "frontage 46.9 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012165544",
+   "reason": "frontage 114.1 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012163509",
+   "reason": "frontage 155.3 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012163708",
+   "reason": "frontage 97.8 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012163766",
+   "reason": "frontage 62.6 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012163813",
+   "reason": "frontage 98.6 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012163903",
+   "reason": "frontage 59.7 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012163913",
+   "reason": "frontage 88.3 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012164175",
+   "reason": "frontage 95.8 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012164264",
+   "reason": "frontage 135.2 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012164344",
+   "reason": "frontage 61.8 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012164365",
+   "reason": "frontage 151.2 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012164455",
+   "reason": "frontage 99.8 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012164532",
+   "reason": "frontage 62.1 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012164610",
+   "reason": "frontage 43.9 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012164640",
+   "reason": "frontage 134.2 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012164733",
+   "reason": "frontage 136.7 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012164739",
+   "reason": "frontage 132.3 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012164847",
+   "reason": "frontage 127.9 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012165265",
+   "reason": "frontage 63.3 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012165267",
+   "reason": "frontage 63.2 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012165313",
+   "reason": "sightline to Van Eeghenstraat crosses 0363100012156383"
+  },
+  {
+   "pandId": "0363100012165409",
+   "reason": "frontage 97.9 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012165446",
+   "reason": "frontage 34.9 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012165704",
+   "reason": "frontage 35.2 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012165922",
+   "reason": "frontage 179.9 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012165999",
+   "reason": "frontage 32.5 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012166111",
+   "reason": "no frontage on Van Eeghenstraat: No footprint edge faces Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012166116",
+   "reason": "frontage 34.3 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012166364",
+   "reason": "frontage 148.2 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012166445",
+   "reason": "frontage 114.1 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012166459",
+   "reason": "frontage 98.3 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012166597",
+   "reason": "frontage 118.1 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012166942",
+   "reason": "frontage 112.4 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012167018",
+   "reason": "frontage 77.4 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012167372",
+   "reason": "frontage 148.2 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012167422",
+   "reason": "frontage 148.2 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012187115",
+   "reason": "frontage 166.5 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012189424",
+   "reason": "sightline to Van Eeghenstraat crosses 0363100012156847"
+  },
+  {
+   "pandId": "0363100012195629",
+   "reason": "frontage 30.5 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012197821",
+   "reason": "frontage 222.9 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012165609",
+   "reason": "frontage 137.0 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012165811",
+   "reason": "frontage 133.5 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012165895",
+   "reason": "frontage 89.3 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012165961",
+   "reason": "frontage 136.5 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012165995",
+   "reason": "frontage 65.2 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012166003",
+   "reason": "frontage 156.8 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012166091",
+   "reason": "frontage 134.8 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012166283",
+   "reason": "frontage 135.1 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012166328",
+   "reason": "frontage 164.1 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012166794",
+   "reason": "frontage 62.8 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012166881",
+   "reason": "frontage 167.5 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012166917",
+   "reason": "frontage 167.5 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012166952",
+   "reason": "frontage 119.6 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012166982",
+   "reason": "frontage 38.4 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012167026",
+   "reason": "frontage 98.7 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012167075",
+   "reason": "frontage 89.1 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012167203",
+   "reason": "no frontage on Van Eeghenstraat: No footprint edge faces Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012167288",
+   "reason": "frontage 91.2 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012167324",
+   "reason": "frontage 136.7 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012167399",
+   "reason": "frontage 96.8 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012184929",
+   "reason": "frontage 49.3 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012185904",
+   "reason": "frontage 44.2 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012186892",
+   "reason": "frontage 46.9 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012187802",
+   "reason": "frontage 49.7 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012192844",
+   "reason": "frontage 50.1 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012199729",
+   "reason": "frontage 124.8 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012215931",
+   "reason": "frontage 30.1 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012235940",
+   "reason": "frontage 228.7 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012236183",
+   "reason": "frontage 78.7 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012236385",
+   "reason": "frontage 207.8 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012236405",
+   "reason": "frontage 222.1 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012236842",
+   "reason": "frontage 77.9 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012236970",
+   "reason": "frontage 59.1 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012237031",
+   "reason": "frontage 114.2 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012237239",
+   "reason": "frontage 148.7 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012242115",
+   "reason": "frontage 98.4 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012201298",
+   "reason": "frontage 178.1 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012207563",
+   "reason": "frontage 30.7 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012224622",
+   "reason": "frontage 81.4 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012233599",
+   "reason": "no frontage on Van Eeghenstraat: No footprint edge faces Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012235897",
+   "reason": "frontage 132.1 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012235899",
+   "reason": "frontage 113.6 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012235985",
+   "reason": "frontage 127.1 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012236185",
+   "reason": "frontage 123.4 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012236239",
+   "reason": "frontage 98.6 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012236255",
+   "reason": "frontage 125.6 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012236585",
+   "reason": "frontage 35.6 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012236714",
+   "reason": "frontage 105.9 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012236757",
+   "reason": "frontage 46.9 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012236835",
+   "reason": "frontage 167.4 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012236903",
+   "reason": "frontage 58.1 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012237089",
+   "reason": "frontage 128.7 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012237156",
+   "reason": "frontage 122.6 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012237221",
+   "reason": "frontage 84.1 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012237307",
+   "reason": "frontage 98.6 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012237366",
+   "reason": "no frontage on Van Eeghenstraat: No footprint edge faces Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012255132",
+   "reason": "frontage 114.7 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012153043",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012153392",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012068201",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012082975",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012153074",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012153264",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012153485",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012154372",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012155892",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012156448",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012156847",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012155415",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012156383",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012158601",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012158707",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012157873",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012158108",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012159629",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012160039",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012160183",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012161859",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012162080",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012162727",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012163199",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012162678",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012163894",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012165181",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012163533",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012166341",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012165923",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012210436",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012236217",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012236280",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012236450",
+   "reason": "fronts the other side / another direction"
+  }
+ ],
+ "areaHalfSizeM": 180,
+ "pands": [
+  {
+   "pandId": "0363100012164230",
+   "alongM": 0,
+   "widthM": 6.73,
+   "eavesM": 14.69,
+   "roofMaxM": 14.72,
+   "storeys3dbag": 4,
+   "builtYear": 1899,
+   "uncertainty": [
+    "Frontage extended across a native jog of up to 1 m (possible partial front at the default 0.35 m).",
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  },
+  {
+   "pandId": "0363100012161652",
+   "alongM": 6.97,
+   "widthM": 7.28,
+   "eavesM": 13.18,
+   "roofMaxM": 15.8,
+   "storeys3dbag": 4,
+   "builtYear": 1898,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012160357",
+   "alongM": 13.94,
+   "widthM": 6.66,
+   "eavesM": 13.37,
+   "roofMaxM": 18.2,
+   "storeys3dbag": 0,
+   "builtYear": 1899,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012163185",
+   "alongM": 21.05,
+   "widthM": 7.55,
+   "eavesM": 13.92,
+   "roofMaxM": 19.36,
+   "storeys3dbag": 4,
+   "builtYear": 1900,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012165447",
+   "alongM": 28.37,
+   "widthM": 7.11,
+   "eavesM": 16.96,
+   "roofMaxM": 17.01,
+   "storeys3dbag": 4,
+   "builtYear": 1900,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012157162",
+   "alongM": 35.42,
+   "widthM": 7,
+   "eavesM": 17,
+   "roofMaxM": 19.34,
+   "storeys3dbag": 5,
+   "builtYear": 1900,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012162328",
+   "alongM": 42.38,
+   "widthM": 7,
+   "eavesM": 16.9,
+   "roofMaxM": 16.92,
+   "storeys3dbag": 4,
+   "builtYear": 1900,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012152676",
+   "alongM": 49.3,
+   "widthM": 6.97,
+   "eavesM": 17.09,
+   "roofMaxM": 17.11,
+   "storeys3dbag": 4,
+   "builtYear": 1900,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012162779",
+   "alongM": 56.24,
+   "widthM": 7.03,
+   "eavesM": 17.01,
+   "roofMaxM": 17.06,
+   "storeys3dbag": 4,
+   "builtYear": 1900,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012162358",
+   "alongM": 63.24,
+   "widthM": 7.08,
+   "eavesM": 15.38,
+   "roofMaxM": 16.07,
+   "storeys3dbag": 4,
+   "builtYear": 1899,
+   "uncertainty": [
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  },
+  {
+   "pandId": "0363100012161542",
+   "alongM": 70.28,
+   "widthM": 7.13,
+   "eavesM": 18.51,
+   "roofMaxM": 21.51,
+   "storeys3dbag": 0,
+   "builtYear": 1899,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012166667",
+   "alongM": 77.51,
+   "widthM": 7.47,
+   "eavesM": 13.56,
+   "roofMaxM": 17.31,
+   "storeys3dbag": 0,
+   "builtYear": 1899,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012159904",
+   "alongM": 84.48,
+   "widthM": 6.62,
+   "eavesM": 13.39,
+   "roofMaxM": 15.19,
+   "storeys3dbag": 4,
+   "builtYear": 1899,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012237151",
+   "alongM": 98.15,
+   "widthM": 21.16,
+   "eavesM": 12.34,
+   "roofMaxM": 18.08,
+   "storeys3dbag": 4,
+   "builtYear": 1900,
+   "uncertainty": []
+  }
+ ]
+}

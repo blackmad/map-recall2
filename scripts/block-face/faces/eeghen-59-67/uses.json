@@ -1,0 +1,117 @@
+{
+ "street": "Van Eeghenstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-01T14:50:45.747Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012157657",
+   "addresses": [
+    "Van Eeghenstraat 59"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Eeghenstraat 59-H",
+     "use": "kantoorfunctie",
+     "areaM2": 150,
+     "bagId": "0363010000838724"
+    },
+    {
+     "address": "Van Eeghenstraat 59-H",
+     "use": "kantoorfunctie",
+     "areaM2": 87,
+     "bagId": "0363010012116262"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 383721457,
+     "lngLat": [
+      4.8740344,
+      52.3574281
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:country": "NL",
+      "addr:housenumber": "59",
+      "addr:postcode": "1071EW",
+      "addr:street": "Van Eeghenstraat",
+      "amenity": "arts_centre",
+      "name": "SBK / Galerie59",
+      "wheelchair": "no"
+     },
+     "fetchedAt": "2026-11-01T14:50:45.747Z",
+     "match": "address",
+     "distanceM": 8.6
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012158126",
+   "addresses": [
+    "Van Eeghenstraat 61"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Eeghenstraat 61-H",
+     "use": "woonfunctie",
+     "areaM2": 185,
+     "bagId": "0363010000838727"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012164226",
+   "addresses": [
+    "Van Eeghenstraat 63"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Eeghenstraat 63-H",
+     "use": "woonfunctie",
+     "areaM2": 228,
+     "bagId": "0363010000838730"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012158878",
+   "addresses": [
+    "Van Eeghenstraat 65"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Eeghenstraat 65",
+     "use": "woonfunctie",
+     "areaM2": 408,
+     "bagId": "0363010000998500"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012163681",
+   "addresses": [
+    "Van Eeghenstraat 67"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Eeghenstraat 67",
+     "use": "woonfunctie",
+     "areaM2": 370,
+     "bagId": "0363010000838737"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  }
+ ]
+}

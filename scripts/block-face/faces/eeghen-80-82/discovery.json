@@ -1,0 +1,249 @@
+{
+ "street": "Van Eeghenstraat",
+ "seed": "0363100012236217",
+ "members": [
+  "0363100012162678",
+  "0363100012236217"
+ ],
+ "ends": [
+  {
+   "side": "left",
+   "reason": "no further pand fronts the street in the fetched area"
+  },
+  {
+   "side": "right",
+   "reason": "no further pand fronts the street in the fetched area"
+  }
+ ],
+ "rejected": [
+  {
+   "pandId": "0363100012152918",
+   "reason": "frontage 62.5 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012159477",
+   "reason": "frontage 62.8 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012159828",
+   "reason": "frontage 65.3 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012160863",
+   "reason": "frontage 64.3 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012161237",
+   "reason": "frontage 61.7 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012162022",
+   "reason": "frontage 65.3 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012162235",
+   "reason": "frontage 65.1 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012162250",
+   "reason": "frontage 65.1 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012163074",
+   "reason": "frontage 63.8 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012164532",
+   "reason": "frontage 62.1 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012165995",
+   "reason": "frontage 65.2 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012184929",
+   "reason": "frontage 49.3 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012186892",
+   "reason": "frontage 46.9 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012187802",
+   "reason": "frontage 49.7 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012192844",
+   "reason": "frontage 50.1 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012143090",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012153074",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012153264",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012157152",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012157374",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012157576",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012157873",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012158164",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012158618",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012159803",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012159904",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012160183",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012161526",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012161542",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012161649",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012162110",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012162260",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012162358",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012162522",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012162673",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012162779",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012162937",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012163452",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012163546",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012163871",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012163900",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012165160",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012166069",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012166667",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012167040",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012208469",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012210436",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012236280",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012236450",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012237151",
+   "reason": "fronts the other side / another direction"
+  }
+ ],
+ "areaHalfSizeM": 90,
+ "pands": [
+  {
+   "pandId": "0363100012162678",
+   "alongM": -6.4,
+   "widthM": 6.89,
+   "eavesM": 11.7,
+   "roofMaxM": 16.7,
+   "storeys3dbag": 0,
+   "builtYear": 1900,
+   "uncertainty": [
+    "Frontage extended across a native jog of up to 1 m (possible partial front at the default 0.35 m).",
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  },
+  {
+   "pandId": "0363100012236217",
+   "alongM": 0,
+   "widthM": 6.59,
+   "eavesM": 15.82,
+   "roofMaxM": 17.55,
+   "storeys3dbag": 0,
+   "builtYear": 1900,
+   "uncertainty": [
+    "Frontage extended across a native jog of up to 1 m (possible partial front at the default 0.35 m).",
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  }
+ ]
+}

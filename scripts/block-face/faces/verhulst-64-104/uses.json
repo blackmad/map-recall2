@@ -1,0 +1,317 @@
+{
+ "street": "Johannes Verhulststraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-01T13:38:33.519Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012162555",
+   "addresses": [
+    "Johannes Verhulststraat 92"
+   ],
+   "groundUnits": [
+    {
+     "address": "Johannes Verhulststraat 92-H",
+     "use": "woonfunctie",
+     "areaM2": 276,
+     "bagId": "0363010000694100"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012162414",
+   "addresses": [
+    "Johannes Verhulststraat 90",
+    "Johannes Verhulststraat 90A",
+    "Johannes Verhulststraat 90D",
+    "Johannes Verhulststraat 90B",
+    "Johannes Verhulststraat 90C"
+   ],
+   "groundUnits": [
+    {
+     "address": "Johannes Verhulststraat 90-H",
+     "use": "kantoorfunctie",
+     "areaM2": 237,
+     "bagId": "0363010000694096"
+    },
+    {
+     "address": "Johannes Verhulststraat 90A",
+     "use": "woonfunctie",
+     "areaM2": 167,
+     "bagId": "0363010012155295"
+    },
+    {
+     "address": "Johannes Verhulststraat 90D",
+     "use": "woonfunctie",
+     "areaM2": 190,
+     "bagId": "0363010012155298"
+    },
+    {
+     "address": "Johannes Verhulststraat 90B",
+     "use": "woonfunctie",
+     "areaM2": 176,
+     "bagId": "0363010012155296"
+    },
+    {
+     "address": "Johannes Verhulststraat 90C",
+     "use": "woonfunctie",
+     "areaM2": 176,
+     "bagId": "0363010012155297"
+    }
+   ],
+   "units": 6,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012160916",
+   "addresses": [
+    "Johannes Verhulststraat 88"
+   ],
+   "groundUnits": [
+    {
+     "address": "Johannes Verhulststraat 88",
+     "use": "kantoorfunctie,woonfunctie",
+     "areaM2": 365,
+     "bagId": "0363010000992589"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012157810",
+   "addresses": [
+    "Johannes Verhulststraat 86"
+   ],
+   "groundUnits": [
+    {
+     "address": "Johannes Verhulststraat 86-H",
+     "use": "woonfunctie",
+     "areaM2": 151,
+     "bagId": "0363010000694087"
+    },
+    {
+     "address": "Johannes Verhulststraat 86-H",
+     "use": "woonfunctie",
+     "areaM2": 330,
+     "bagId": "0363010012164688"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012154225",
+   "addresses": [
+    "Johannes Verhulststraat 84"
+   ],
+   "groundUnits": [
+    {
+     "address": "Johannes Verhulststraat 84-H",
+     "use": "kantoorfunctie,woonfunctie",
+     "areaM2": 249,
+     "bagId": "0363010000694083"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012161439",
+   "addresses": [
+    "Johannes Verhulststraat 82"
+   ],
+   "groundUnits": [
+    {
+     "address": "Johannes Verhulststraat 82-H",
+     "use": "woonfunctie",
+     "areaM2": 255,
+     "bagId": "0363010000694079"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012157695",
+   "addresses": [
+    "Johannes Verhulststraat 80"
+   ],
+   "groundUnits": [
+    {
+     "address": "Johannes Verhulststraat 80-H",
+     "use": "woonfunctie",
+     "areaM2": 153,
+     "bagId": "0363010000694075"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012162982",
+   "addresses": [
+    "Johannes Verhulststraat 78"
+   ],
+   "groundUnits": [
+    {
+     "address": "Johannes Verhulststraat 78-H",
+     "use": "woonfunctie",
+     "areaM2": 260,
+     "bagId": "0363010000694070"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012154361",
+   "addresses": [
+    "Johannes Verhulststraat 76"
+   ],
+   "groundUnits": [
+    {
+     "address": "Johannes Verhulststraat 76-H",
+     "use": "woonfunctie",
+     "areaM2": 260,
+     "bagId": "0363010000694063"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012159158",
+   "addresses": [
+    "Johannes Verhulststraat 74"
+   ],
+   "groundUnits": [
+    {
+     "address": "Johannes Verhulststraat 74-H",
+     "use": "woonfunctie",
+     "areaM2": 262,
+     "bagId": "0363010000694059"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012153472",
+   "addresses": [
+    "Johannes Verhulststraat 72"
+   ],
+   "groundUnits": [
+    {
+     "address": "Johannes Verhulststraat 72-H",
+     "use": "woonfunctie",
+     "areaM2": 267,
+     "bagId": "0363010000694055"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012157368",
+   "addresses": [
+    "Johannes Verhulststraat 70A"
+   ],
+   "groundUnits": [
+    {
+     "address": "Johannes Verhulststraat 70A-H",
+     "use": "woonfunctie",
+     "areaM2": 140,
+     "bagId": "0363010001035985"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012163183",
+   "addresses": [
+    "Johannes Verhulststraat 70"
+   ],
+   "groundUnits": [
+    {
+     "address": "Johannes Verhulststraat 70-H",
+     "use": "winkelfunctie",
+     "areaM2": 67,
+     "bagId": "0363010000694046"
+    }
+   ],
+   "units": 7,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012161588",
+   "addresses": [
+    "Johannes Verhulststraat 68"
+   ],
+   "groundUnits": [
+    {
+     "address": "Johannes Verhulststraat 68-H",
+     "use": "woonfunctie",
+     "areaM2": 153,
+     "bagId": "0363010000694042"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012154264",
+   "addresses": [
+    "Johannes Verhulststraat 66"
+   ],
+   "groundUnits": [
+    {
+     "address": "Johannes Verhulststraat 66-H",
+     "use": "woonfunctie",
+     "areaM2": 147,
+     "bagId": "0363010000694034"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012160721",
+   "addresses": [
+    "Johannes Verhulststraat 64"
+   ],
+   "groundUnits": [
+    {
+     "address": "Johannes Verhulststraat 64-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 172,
+     "bagId": "0363010000694030"
+    }
+   ],
+   "units": 3,
+   "osm": [
+    {
+     "type": "node",
+     "id": 6223021786,
+     "lngLat": [
+      4.8738784,
+      52.3550513
+     ],
+     "tags": {
+      "amenity": "restaurant",
+      "check_date": "2024-04-24",
+      "cuisine": "mediterranean",
+      "name": "Oud-Zuid"
+     },
+     "fetchedAt": "2026-11-01T13:38:33.519Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}
