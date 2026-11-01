@@ -688,7 +688,16 @@ export class GroundStore {
       const claimed = this.claimedBy(around), m = 30;
       const ways = bridgeWayInputs(osms, () => false, [rect[0] - m, rect[1] - m, rect[2] + m, rect[3] + m]);
       // A way with any station a measured deck or footprint carries is that bridge's (its end nodes can lie past the deck span).
-      const free = bridgeWayBundles(ways.filter(w => { const d = wayOpeningDeck(w); for (let i = 0; i < d.x.length; i++) if (claimed(d.x[i], d.y[i])) return false; return true; }));
+      // Tested a way per step (#129 hand-back 16: the whole filter was one 18-32 ms task at 4x); same test, same order.
+      const unclaimed: typeof ways = [], paceWays = pacer(this.options.paceMs);
+      for (const w of ways) {
+        const d = wayOpeningDeck(w);
+        let free = true;
+        for (let i = 0; i < d.x.length && free; i++) if (claimed(d.x[i], d.y[i])) free = false;
+        if (free) unclaimed.push(w);
+        await paceWays();
+      }
+      const free = bridgeWayBundles(unclaimed);
       if (free.length) {
         await yieldToFrame();
         // Paced like the planning (#129: groundCrossing alone was a 33-37 ms task at 4x); the same test either way.
