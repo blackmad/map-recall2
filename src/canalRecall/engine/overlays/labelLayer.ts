@@ -56,9 +56,11 @@ export class LabelLayer {
   private winners = new Set<string>();
   private fullRev = -1;
   /** Full placements (all candidates) vs re-placements of the last winners; read by the perf probe. */
-  readonly stats = { full: 0, winnersOnly: 0, skipped: 0, fullMs: 0, lastFullMs: 0, occluded: 0 };
+  readonly stats = { full: 0, winnersOnly: 0, skipped: 0, fullMs: 0, lastFullMs: 0, occluded: 0, betweenMs: 0, betweenSightlines: 0 };
   /** POI labels hidden behind nearer buildings (engine/labelOcclusion.ts); null tests nothing. */
   private occludedTest: ((c: LabelCandidate) => boolean) | null = null;
+  /** Between full placements: sightlines per frame, and whether street and water names are re-tested (A/B knobs). */
+  readonly between = { budget: OCCLUSION_PER_FRAME, lines: true };
   /** Next drawn POI winner to re-test between full placements. */
   private occlusionCursor = 0;
   setOcclusion(test: ((c: LabelCandidate) => boolean) | null, frontOf: ((id: string) => Vec2 | null) | null = null, lineTest: ((id: string, anchors: readonly Vec2[]) => boolean) | null = null): void {
@@ -202,17 +204,31 @@ export class LabelLayer {
       }
       occluded = hidden.size;
     } else if (!full && this.occludedTest) {
-      // Between full placements the camera still moves (up to 400 ms, or 24 px / 2°): re-test a few of the drawn POI
+      // Between full placements the camera still moves (up to 400 ms, or 24 px / 2°): re-test a few of the drawn
       // winners per frame, in turn, and drop one that went behind a building since (the next full pass re-tests it
-      // and may place another in its room). The test's own hysteresis keeps an edge label from blinking.
-      const pois = this.placed.filter(l => { const c = original.get(l.id); return !!c && c.kind === 'poi' && !!c.at && c.priority < 1e6; });
-      for (let i = 0; i < Math.min(OCCLUSION_PER_FRAME, pois.length); i++) {
-        const l = pois[(this.occlusionCursor + i) % pois.length];
-        // Hidden: dropped now. A frontage that moved is drawn there from the next full placement (no re-place here).
-        if (this.testOcclusion(original.get(l.id)!).hidden) this.winners.delete(l.id);
+      // and may place another in its room). POIs cost one sightline, street and water names one per anchor; the
+      // frame spends up to OCCLUSION_PER_FRAME sightlines. The tests' own hysteresis keeps an edge label from blinking.
+      const t0 = performance.now();
+      const due = this.placed.filter(l => {
+        const c = original.get(l.id);
+        if (!c || c.priority >= 1e6) return false;
+        return (c.kind === 'poi' && !!c.at) || (this.between.lines && (c.kind === 'street' || c.kind === 'water') && !!l.anchors?.length && !!this.lineTest);
+      });
+      let spent = 0, k = 0;
+      for (; k < due.length && spent < this.between.budget; k++) {
+        const l = due[(this.occlusionCursor + k) % due.length], c = original.get(l.id)!;
+        if (c.kind === 'poi') {
+          spent++;
+          // Hidden: dropped now. A frontage that moved is drawn there from the next full placement (no re-place here).
+          if (this.testOcclusion(c).hidden) this.winners.delete(l.id);
+        } else {
+          spent += l.anchors!.length;
+          if (this.lineTest!(c.id, l.anchors!)) this.winners.delete(l.id);
+        }
       }
-      this.occlusionCursor = pois.length ? (this.occlusionCursor + OCCLUSION_PER_FRAME) % pois.length : 0;
-      if (pois.length) this.placed = this.placed.filter(l => this.winners.has(l.id));
+      this.occlusionCursor = due.length ? (this.occlusionCursor + k) % due.length : 0;
+      this.stats.betweenMs += performance.now() - t0; this.stats.betweenSightlines += spent;
+      if (due.length) this.placed = this.placed.filter(l => this.winners.has(l.id));
     }
     if (full) {
       const ms = performance.now() - now;
@@ -231,8 +247,8 @@ export type LabelPose = readonly [number, number, number, number, number];
 
 /** Re-placements after dropping occluded winners; newcomers hidden after the last one are dropped, not replaced. */
 const OCCLUSION_ROUNDS = 3;
-/** Drawn POI winners re-tested per frame between full placements (a sightline is ~10-30 us). */
-const OCCLUSION_PER_FRAME = 4;
+/** Sightlines spent per frame re-testing drawn winners between full placements (a sightline is ~10-30 us). */
+const OCCLUSION_PER_FRAME = 8;
 
 export function samePose(a: LabelPose, b: LabelPose): boolean {
   return Math.abs(a[0] - b[0]) < 0.01 && Math.abs(a[1] - b[1]) < 0.01 && Math.abs(a[2] - b[2]) < 1e-4 && Math.abs(a[3] - b[3]) < 0.01 && Math.abs(a[4] - b[4]) < 0.01;
