@@ -838,14 +838,24 @@ export class SignatureLandmarks {
         const ranges = object.isMesh && object.geometry?.userData?.pandRanges;
         if (!ranges || !object.geometry.index) return;
         const g = object.geometry, sep = api.separatePands(g.index.array, g.attributes.position.count, ranges);
-        // Through the accessors (glTF attributes may be interleaved or quantized): plain float copies.
-        const getters = ['getX', 'getY', 'getZ', 'getW'];
+        // Position through the accessors as plain floats (the lift writes floats into it; glTF positions may be
+        // interleaved or quantized). Every other attribute keeps its stored type and normalized flag when the
+        // bundle has the strided remap (compactIndex ships with it): a Uint8 tint widened to float was 4x the
+        // bytes, 16 MB of CPU copies on a 60 s desktop ride (heap gate, #130). Same values through the accessors.
+        const getters = ['getX', 'getY', 'getZ', 'getW'], typed = typeof api.compactIndex === 'function';
         for (const name of Object.keys(g.attributes)) {
-          const a = g.attributes[name], size = a.itemSize, out = new Float32Array(sep.source.length * size);
+          const a = g.attributes[name], size = a.itemSize;
+          if (typed && name !== 'position') {
+            const array = a.isInterleavedBufferAttribute ? a.data.array : a.array;
+            const out = api.remapAttribute(array, size, sep.source, a.isInterleavedBufferAttribute ? a.data.stride : size, a.isInterleavedBufferAttribute ? a.offset : 0);
+            g.setAttribute(name, new THREE.BufferAttribute(out, size, a.normalized));
+            continue;
+          }
+          const out = new Float32Array(sep.source.length * size);
           for (let v = 0; v < sep.source.length; v++) for (let c = 0; c < size; c++) out[v * size + c] = a[getters[c]](sep.source[v]);
           g.setAttribute(name, new THREE.BufferAttribute(out, size, false));
         }
-        g.setIndex(new THREE.BufferAttribute(sep.index, 1));
+        g.setIndex(new THREE.BufferAttribute(typed ? api.compactIndex(sep.index, sep.source.length) : sep.index, 1));
         // mesh-local → Mercator (holder space = Mercator; the holder's own lift stays 0 for chunks).
         const toMercator = new THREE.Matrix4().copy(entry.transform).multiply(entry.group.matrix).multiply(groupInverse).multiply(object.matrixWorld);
         const up = new THREE.Vector3(0, 0, entry.units).applyMatrix4(new THREE.Matrix4().copy(toMercator).invert().setPosition(0, 0, 0));

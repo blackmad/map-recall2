@@ -43,7 +43,7 @@ import { localToLngLat, type BridgeExtract, type ElevationIndex } from '../eleva
 import { fromLocal, toLocal } from '../galleryPipeline';
 import { lngLatToRd } from '../facade/rdNew';
 import { groundMercatorFromLocal, groundParticipant, mul4, ndcOf } from './sharedFrameGround';
-import { groundVertices, liftPands, remapAttribute, separatePands } from './chunkBases';
+import { compactIndex, groundVertices, liftPands, remapAttribute, separatePands } from './chunkBases';
 import { mercatorOfLngLat, mercatorUnitsPerMetre } from '../rendererShared/frameMath';
 
 // ------------------------------------------------------------- helpers
@@ -1023,6 +1023,30 @@ test('street chunks: a vertex shared by two pands is split, each pand lifts alon
   const lifted = liftPands(base, sep.owner, [0, 1, 0], p => (p === 1 ? 0.5 : 0));
   for (let i = 0; i < sep.owner.length; i++) assert.equal(lifted[i * 3 + 1] - base[i * 3 + 1], sep.owner[i] === 1 ? 0.5 : 0);
   assert.equal(base[1 * 3 + 1], 0, 'the unlifted copy is kept');
+});
+
+test('street chunks: separated attributes keep their stored type, interleaved ones are read by stride', () => {
+  const sep = separatePands([0, 1, 2, 0, 2, 3, 1, 4, 5, 1, 5, 2], 6, [[0, 0, 2], [1, 2, 2]]);
+  // Normalized Uint8 tint (4 per vertex): the copy is Uint8 with the same bytes, not a widened float.
+  const tint = new Uint8Array(24).map((_, i) => (i * 37) % 256);
+  const t = remapAttribute(tint, 4, sep.source);
+  assert.ok(t instanceof Uint8Array);
+  for (let v = 0; v < sep.source.length; v++) assert.deepEqual([...t.slice(v * 4, v * 4 + 4)], [...tint.slice(sep.source[v] * 4, sep.source[v] * 4 + 4)]);
+  // Interleaved Int16 [x y z nx ny nz u v] (stride 8): the uv at offset 6 comes out packed.
+  const inter = new Int16Array(48).map((_, i) => i * 3 - 70);
+  const uv = remapAttribute(inter, 2, sep.source, 8, 6);
+  assert.ok(uv instanceof Int16Array);
+  assert.equal(uv.length, sep.source.length * 2);
+  for (let v = 0; v < sep.source.length; v++) assert.deepEqual([uv[v * 2], uv[v * 2 + 1]], [inter[sep.source[v] * 8 + 6], inter[sep.source[v] * 8 + 7]]);
+  // The default stride is the packed one (unchanged behaviour).
+  assert.deepEqual([...remapAttribute(inter, 8, sep.source)], [...remapAttribute(inter, 8, sep.source, 8, 0)]);
+  // Index: Uint16 while every vertex fits, the same values.
+  const small = compactIndex(sep.index, sep.source.length);
+  assert.ok(small instanceof Uint16Array);
+  assert.deepEqual([...small], [...sep.index]);
+  const big = new Uint32Array([0, 65536, 3]);
+  assert.equal(compactIndex(big, 65537), big);
+  assert.ok(compactIndex(new Uint32Array([0, 65535, 1]), 65536) instanceof Uint16Array);
 });
 
 test('canvas pin lift: clip ← local product and NDC of a raised point', () => {

@@ -44,11 +44,21 @@ export function separatePands(index: ArrayLike<number>, vertexCount: number, ran
   return { index: out, source: Uint32Array.from(source), owner: Int32Array.from(owner), duplicated };
 }
 
-/** Copy an interleaved-free attribute array through `source` (itemSize components per vertex). */
-export function remapAttribute<T extends Float32Array | Uint16Array | Uint8Array | Int16Array | Int8Array | Uint32Array>(array: T, itemSize: number, source: Uint32Array): T {
+/**
+ * Copy an attribute array through `source` (itemSize components per vertex), keeping its type: a quantized glTF
+ * attribute (normalized Uint8 tint, Int8 normal) stays that size instead of widening to float. An interleaved
+ * buffer reads vertex v's components at `v * stride + offset` (three's InterleavedBuffer stride and the attribute's
+ * offset, in elements); the copy is packed.
+ */
+export function remapAttribute<T extends Float32Array | Uint16Array | Uint8Array | Int16Array | Int8Array | Uint32Array>(array: T, itemSize: number, source: Uint32Array, stride = itemSize, offset = 0): T {
   const out = new (array.constructor as new (n: number) => T)(source.length * itemSize);
-  for (let v = 0; v < source.length; v++) for (let c = 0; c < itemSize; c++) out[v * itemSize + c] = array[source[v] * itemSize + c];
+  for (let v = 0; v < source.length; v++) for (let c = 0; c < itemSize; c++) out[v * itemSize + c] = array[source[v] * stride + offset + c];
   return out;
+}
+
+/** The smallest index array for `vertexCount` vertices: Uint16 below 65536 (half the bytes), else the input. */
+export function compactIndex(index: Uint32Array, vertexCount: number): Uint16Array | Uint32Array {
+  return vertexCount <= 65536 ? Uint16Array.from(index) : index;
 }
 
 /**
