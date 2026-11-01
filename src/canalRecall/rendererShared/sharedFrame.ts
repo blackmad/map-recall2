@@ -31,6 +31,7 @@ import type { LngLat, WorldCamera } from '../engine/worldViewApi.js';
 import { chooseTileDraws } from './tiledGeometry.js';
 import { coverPauseFlag, MapCoverWatch, RESUME_DEFERRED_COMPILE_MS, RESUME_WARMUP_HOLD_MS } from './mapCover.js';
 import { PRECOMPILE_STEP_MS } from './compileBudget.js';
+import { disposeShadowPrimer, shadowPrimer } from './shadowPrimer.js';
 
 export type FrameContext = {
   readonly pass: FramePass;
@@ -166,6 +167,8 @@ export class SharedFrame {
   private shadowAge = 0;
   /** Frames whose main pass redrew the shadow map (diagnostics / perf). */
   shadowRedraws = 0;
+  /** The depth programs were linked in a shadow redraw (shadowPrimer.ts); `?shadowPrimer=0` skips it. */
+  private shadowPrimed = shadowPrimerOff();
   /** MapLibre's depth range when the shadow map was last drawn (diagnostics; the map itself is drawn at [0, 1]). */
   shadowDepthRange: [number, number] | null = null;
   /**
@@ -657,7 +660,12 @@ export class SharedFrame {
       renderer.shadowMap.needsUpdate = redraw;
       const r0 = phases ? performance.now() : 0;
       if (phases) phases.add('shadow fit', r0 - s0);
-      const ok = renderLosingContext(renderer, this.scene, this.camera, gl);
+      // The first redraw also links every depth-program variant (shadowPrimer.ts): zero-area casters, no pixels.
+      const primer = redraw && !this.shadowPrimed ? shadowPrimer(this.THREE) : null;
+      if (primer) this.scene.add(primer);
+      let ok: boolean;
+      try { ok = renderLosingContext(renderer, this.scene, this.camera, gl); }
+      finally { if (primer) { disposeShadowPrimer(primer); this.shadowPrimed = true; } }
       if (phases) phases.add('three render main', performance.now() - r0);
       if (!ok) return;
     } else {
@@ -689,6 +697,13 @@ export class SharedFrame {
  * dropped quietly; `webglcontextlost` follows and contextLost() takes over.
  * Any error from a live context still throws. Returns whether it drew.
  */
+/** `?shadowPrimer=0` (or `window.__canalRecallShadowPrimer = false`): no depth-program primer (A/B control). */
+function shadowPrimerOff(): boolean {
+  const g = globalThis as { __canalRecallShadowPrimer?: unknown; location?: { search?: string } };
+  if (g.__canalRecallShadowPrimer === false) return true;
+  try { return new URLSearchParams(g.location?.search ?? '').get('shadowPrimer') === '0'; } catch { return false; }
+}
+
 export function renderLosingContext(renderer: { render(scene: any, camera: any): void }, scene: any, camera: any, gl: WebGL2RenderingContext): boolean {
   try {
     renderer.render(scene, camera);

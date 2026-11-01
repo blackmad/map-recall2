@@ -349,7 +349,9 @@ test('shared frame: two passes, one renderer, participants placed by their own l
 
   const gl = { drawingBufferWidth: 800, drawingBufferHeight: 600 } as any;
   frame.mainLayer.render(gl, { defaultProjectionData: { mainMatrix: clip } });
-  assert.deepEqual(log, ['reset', 'viewport 800x600', 'render[shadow] facades']);
+  // The first shadow redraw also carries the depth-program primer (shadowPrimer.ts), and only that one.
+  assert.deepEqual(log, ['reset', 'viewport 800x600', 'render[shadow] facades,shadow-depth-primer']);
+  assert.equal(frame.scene.getObjectByName('shadow-depth-primer'), undefined, 'the primer leaves after its pass');
   // The facade wrapper maps local metres to world metres about the eye.
   const wrapper = frame.scene.getObjectByName('shared-frame/facades');
   const atTarget = new THREE.Vector3(0, 0, 0).applyMatrix4(wrapper.matrix);
@@ -484,7 +486,7 @@ test('shared frame: behind a covering card no pass draws and no participant runs
   (frame as any).resumedAt = performance.now();
   assert.equal(frame.warmupDue(), false, 'held just after the card goes, while the first draw compiles');
   assert.equal(runs, 1);
-  assert.deepEqual(log, ['reset', 'reset', 'viewport 800x600', 'render[shadow] ground'], 'the compile resets state, then the pass draws');
+  assert.deepEqual(log, ['reset', 'reset', 'viewport 800x600', 'render[shadow] ground,shadow-depth-primer'], 'the compile resets state, then the pass draws (its first shadow redraw with the depth primer)');
 });
 
 test('shared frame, host driver: no custom layers, drive() draws both passes, a restore adopts the new renderer', () => {
@@ -501,7 +503,7 @@ test('shared frame, host driver: no custom layers, drive() draws both passes, a 
   frame.register('ground', { root: new THREE.Group(), onAttach: () => calls.push('attach'), onContextRestored: () => calls.push('restore') });
   frame.register('bike', { root: new THREE.Group() }, { pass: 'overlay' });
   frame.drive(amsterdamClip().clip);
-  assert.deepEqual(log.filter(l => l.startsWith('render')).map(l => l.replace('[shadow]', '')), ['render ground', 'render bike']);
+  assert.deepEqual(log.filter(l => l.startsWith('render')).map(l => l.replace('[shadow]', '')), ['render ground,shadow-depth-primer', 'render bike']);
   let disposed = 0;
   current.dispose = () => { disposed++; };
   map.fire('webglcontextlost');
