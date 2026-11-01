@@ -11,3 +11,16 @@ test('busyness: a flat frame is 0; a striped top third is busier than a flat bot
   const b1 = frameBusyness(busy, w, h, 3);
   assert.ok(b1.far.edge > 10 && b1.far.variance > 1000 && b1.near.edge === 0);
 });
+
+test('busyness: chroma sees a red-on-grey stripe the luma barely does; grey stripes have no chroma', () => {
+  const w = 30, h = 30, grey = [120, 120, 120], red = [190, 92, 85];
+  const frame = new Uint8Array(w * h * 3);
+  for (let i = 0; i < w * h; i++) frame.set(grey, i * 3);
+  for (let y = 0; y < 10; y++) for (let x = 0; x < w; x++) if (x % 6 < 2) frame.set(red, (y * w + x) * 3);
+  const b = frameBusyness(frame, w, h, 3);
+  assert.ok(b.far.chroma > 3 * b.far.edge, `chroma ${b.far.chroma} vs luma ${b.far.edge}`);
+  assert.equal(b.near.chroma, 0);
+  const g = new Uint8Array(w * h * 3).fill(120);
+  for (let y = 0; y < 10; y++) for (let x = 0; x < w; x++) if (x % 4 < 2) g.fill(250, (y * w + x) * 3, (y * w + x) * 3 + 3);
+  assert.ok(frameBusyness(g, w, h, 3).far.chroma < 1e-3 * frameBusyness(g, w, h, 3).far.edge);
+});

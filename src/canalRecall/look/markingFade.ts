@@ -12,12 +12,13 @@
 // marking has strength 0), so the program count does not change. The range lives in uniforms shared through a global,
 // because the shared frame (engine bundle) sets them and the ground (own-ground bundle) reads them.
 //
-// `?markingFade=1` turns it on, `?markingFade=0` off (or `__canalRecallMarkingFade` before load); default off until
-// the look review (MARKING_FADE_DEFAULT). Off, the ground's shaders are exactly as before.
+// On by default for every look after the #161 look review (the far red strands are chroma edges, the horizon's
+// "spaghetti"); `?markingFade=0` (or `__canalRecallMarkingFade = false` before load) turns it off, and then the
+// ground's shaders are exactly as before.
 
 import { depthFadeRange } from './depthFade.js';
 
-export const MARKING_FADE_DEFAULT = false;
+export const MARKING_FADE_DEFAULT = true;
 /** The fade never starts closer than this, metres... */
 export const MARKING_FADE_FROM_M = 120;
 /** ...and is full this far past its start. */

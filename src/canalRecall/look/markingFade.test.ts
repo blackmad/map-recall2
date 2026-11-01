@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import { MARKING_FADE_DEFAULT, MARKING_FADE_FROM_M, MARKING_FADE_STRENGTH, markingFadeFlag, markingFadeRange, markingFadeUniforms, markingFadeWeight } from './markingFade.ts';
 import { groundProgram } from '../ownGround/groundMaterial.ts';
 
-test('markingFadeFlag: ?markingFade=1 on, 0 off, default until the look review', () => {
+test('markingFadeFlag: on by default, ?markingFade=0 off', () => {
   const g = globalThis as { __canalRecallMarkingFade?: unknown };
   assert.equal(markingFadeFlag(), MARKING_FADE_DEFAULT);
   g.__canalRecallMarkingFade = '1'; assert.equal(markingFadeFlag(), true);
@@ -30,6 +30,7 @@ const shaderOf = (marking: { tone: number[]; strength: number } | null) => {
 
 test('flag off: the ground programs are exactly as before; on: one shared edit, strength per layer', () => {
   const g = globalThis as { __canalRecallMarkingFade?: unknown };
+  g.__canalRecallMarkingFade = false;
   const off = shaderOf({ tone: [0.2, 0.2, 0.2], strength: 1 });
   assert.doesNotMatch(off.shader.fragmentShader + off.shader.vertexShader, /ownMark|vOwnEyeDist/);
   assert.equal(off.shader.uniforms.ownMarkStrength, undefined);
