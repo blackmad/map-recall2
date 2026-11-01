@@ -1,4 +1,10 @@
-{"id": "olympisch-stadion", "countedBy": "lane #165 (opus) from artifacts/landmark-briefs/olympisch-stadion/w01-258.jpg before the builder was written, 2026-11-01; ground storey hidden by planters, banners and bicycles", "facades": [
-  {"name": "west main stand (w01)", "bearing": 258, "photo": "artifacts/landmark-briefs/olympisch-stadion/w01-258.jpg",
-   "rows": [null, 7, 11], "symmetric": true, "gables": 0, "alongM": [26.8, 84.4]}
+{"id": "olympisch-stadion", "countedBy": "lane #165 (opus) from artifacts/landmark-briefs/olympisch-stadion/w01-258.jpg before the builder was written, 2026-11-01; split 2026-11-01 at the entrance bay so the 17 m projecting bay glazing is its own entry, not an odd window in the ribbon row. The ground storey (below 4 m) is cropped out: in the photo it is hidden by planters, banners and bicycles, so nothing there can be counted.", "facades": [
+  {"name": "west main stand (w01) lower ribbons, south of the entrance bay", "bearing": 258, "photo": "artifacts/landmark-briefs/olympisch-stadion/w01-258.jpg",
+   "rows": [3], "gables": 0, "alongM": [26.8, 46.6], "heightM": [4.0, 7.3]},
+  {"name": "west main stand (w01) entrance bay", "bearing": 258, "photo": "artifacts/landmark-briefs/olympisch-stadion/w01-258.jpg",
+   "rows": [1], "gables": 0, "alongM": [46.8, 64.2], "heightM": [4.0, 7.3]},
+  {"name": "west main stand (w01) lower ribbons, north of the entrance bay", "bearing": 258, "photo": "artifacts/landmark-briefs/olympisch-stadion/w01-258.jpg",
+   "rows": [3], "gables": 0, "alongM": [64.4, 84.4], "heightM": [4.0, 7.3]},
+  {"name": "west main stand (w01) upper ribbons", "bearing": 258, "photo": "artifacts/landmark-briefs/olympisch-stadion/w01-258.jpg",
+   "rows": [11], "symmetric": true, "gables": 0, "alongM": [26.8, 84.4], "heightM": [7.4, 46]}
 ]}
