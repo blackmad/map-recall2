@@ -23,6 +23,8 @@ export class FlatLines implements FrameParticipant {
   visible = true;
   private meshes: { fill: THREE.Mesh; casing: THREE.Mesh | null; style: LineStyleSpec }[] = [];
   private centreLat: number = ORIGIN.lat;
+  /** The last `set`, to build the geometry again after a context loss (its CPU arrays are freed once uploaded, #130). */
+  private groups: readonly { lines: readonly LngLatLine[]; style: LineStyleSpec }[] = [];
 
   constructor(readonly id: string, private readonly view: { center(): { lng: number; lat: number }; zoom(): number }) { this.root.name = `engine-${id}`; }
 
@@ -30,10 +32,12 @@ export class FlatLines implements FrameParticipant {
   set(groups: readonly { lines: readonly LngLatLine[]; style: LineStyleSpec }[]): void {
     for (const m of this.meshes) { this.root.remove(m.fill); m.fill.geometry.dispose(); (m.fill.material as THREE.Material).dispose(); if (m.casing) { this.root.remove(m.casing); (m.casing.material as THREE.Material).dispose(); } }
     this.meshes = [];
+    this.groups = groups;
     for (const { lines, style } of groups) {
       const local: Vec2[][] = lines.filter(l => l.length > 1).map(l => l.map(([lng, lat]) => toLocal(lng, lat)));
       if (!local.length) continue;
       const geo = lineGeometry(local);
+      for (const a of [...Object.values(geo.attributes), geo.index]) (a as THREE.BufferAttribute | null)?.onUpload(releaseArray);
       const z = style.z ?? 0.15;
       const fill = new THREE.Mesh(geo, lineMaterial(style.color, z)); fill.frustumCulled = false; fill.renderOrder = 51;
       let casing: THREE.Mesh | null = null;
@@ -43,6 +47,9 @@ export class FlatLines implements FrameParticipant {
       this.meshes.push({ fill, casing, style });
     }
   }
+
+  /** A new renderer after a context loss: the freed CPU copies are built again from the last `set`. */
+  onContextRestored(): void { if (this.groups.length) this.set(this.groups); }
 
   get lineCount(): number { return this.meshes.length; }
   mercatorFromLocal(): number[] { return mercatorFromOwnLocal(this.centreLat); }
@@ -66,3 +73,6 @@ export class FlatLines implements FrameParticipant {
     return any;
   }
 }
+
+/** three's `onUpload` callback (`this` is the attribute): drop the CPU copy. */
+function releaseArray(this: { array: unknown }): void { this.array = null; }
