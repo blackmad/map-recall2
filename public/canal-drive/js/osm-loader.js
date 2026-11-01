@@ -17,13 +17,21 @@ class OSMLoader {
   // Load the curated Amsterdam waterways shipped with Map Recall. The return
   // shape intentionally matches Smokey's Overpass road loader so the original
   // game engine can remain unchanged.
-  // `?roads=bin`: read the street extract from the compiled binary
+  // The street extract is read from the compiled binary by default
   // (src/canalRecall/routing/roadExtract.ts, roads-v2/streets-routing.bin.gz)
-  // instead of the 14 MB JSON. It decodes to the same features, bit for bit, so everything after
-  // this point is unchanged. Any failure — no flag, no file for this city, a
-  // stale bundle, a damaged file — returns null and the JSON path runs.
+  // instead of the 14 MB JSON. It decodes to the same features, bit for bit
+  // (roadExtract.test.ts pins the published file to the shipped JSON), so
+  // everything after this point is unchanged. `?roads=json` forces the JSON.
+  // Only cities in BINARY_ROAD_CITIES have a published binary; the others read
+  // the JSON without a 404 first (`?roads=bin` still tries theirs). Any
+  // failure — no file, a stale bundle, a damaged file — returns null and the
+  // JSON path runs.
+  static BINARY_ROAD_CITIES = new Set(['amsterdam']);
+
   async _fetchRoadExtract(city) {
-    if (new URLSearchParams(window.location.search).get('roads') !== 'bin') return null;
+    const roads = new URLSearchParams(window.location.search).get('roads');
+    if (roads === 'json') return null;
+    if (roads !== 'bin' && !OSMLoader.BINARY_ROAD_CITIES.has(city.id)) return null;
     if (!PROJECT || typeof PROJECT.loadRoadExtract !== 'function') return null;
     try {
       const response = await fetch(new URL(`${city.extractPath}/roads-v2/streets-routing.bin.gz`, window.location.href));

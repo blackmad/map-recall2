@@ -67,30 +67,26 @@ export function planTiles(positions: ArrayLike<number>, indices: Uint16Array | U
     tileOf[t] = k;
     counts[k]++;
   }
-  // One pass over the triangles (a counting sort), not one per tile: each tile's triangles keep their order and its
-  // box takes the same min/max over the same vertices, so the tiles are unchanged; the 8×8 overview cut was 64 scans.
+  const out: PlannedTile[] = [];
   const Ctor = indices instanceof Uint16Array ? Uint16Array : Uint32Array;
-  const tiles: (Uint16Array | Uint32Array | null)[] = new Array(n * n).fill(null), fill = new Uint32Array(n * n);
-  const box = new Float64Array(n * n * 4);
-  for (let k = 0; k < n * n; k++) {
-    if (counts[k]) tiles[k] = new Ctor(counts[k] * 3);
-    box[k * 4] = box[k * 4 + 1] = Infinity; box[k * 4 + 2] = box[k * 4 + 3] = -Infinity;
-  }
+  // One pass scatters every triangle into its tile, in triangle order (each tile used to rescan all triangles: n² passes,
+  // #130). A NaN centroid's tile is stored as 0 but never counted (as before): its writes past a tile's end are dropped.
+  const tileIdx: (Uint16Array | Uint32Array)[] = [], fill = new Uint32Array(n * n), box = new Float64Array(n * n * 4);
+  for (let k = 0; k < n * n; k++) { tileIdx.push(new Ctor(counts[k] * 3)); box.fill(Infinity, k * 4, k * 4 + 2); box.fill(-Infinity, k * 4 + 2, k * 4 + 4); }
   for (let t = 0; t < triangles; t++) {
-    const k = tileOf[t], idx = tiles[k]!, b = k * 4;
-    let m = fill[k];
+    const k = tileOf[t], idx = tileIdx[k], b = k * 4;
     for (let v = 0; v < 3; v++) {
       const vi = indices[3 * t + v], o = vi * stride;
-      idx[m++] = vi;
+      idx[fill[k]++] = vi;
       const x = positions[o], y = positions[o + 1];
-      if (x < box[b]) box[b] = x; if (x > box[b + 2]) box[b + 2] = x; if (y < box[b + 1]) box[b + 1] = y; if (y > box[b + 3]) box[b + 3] = y;
+      if (x < box[b]) box[b] = x; if (x > box[b + 2]) box[b + 2] = x;
+      if (y < box[b + 1]) box[b + 1] = y; if (y > box[b + 3]) box[b + 3] = y;
     }
-    fill[k] = m;
   }
-  const out: PlannedTile[] = [];
   for (let k = 0; k < n * n; k++) {
-    const idx = tiles[k];
-    if (idx) out.push({ indices: idx, cell: k, box: [box[k * 4], box[k * 4 + 1], box[k * 4 + 2], box[k * 4 + 3]] });
+    if (!counts[k]) continue;
+    const b = k * 4;
+    out.push({ indices: tileIdx[k], cell: k, box: [box[b], box[b + 1], box[b + 2], box[b + 3]] });
   }
   return out;
 }

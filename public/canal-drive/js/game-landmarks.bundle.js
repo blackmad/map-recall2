@@ -5984,9 +5984,13 @@ ${register}` : detail,
      *  fact tile was not resident yet, its year and type fill in on arrival. */
     _requestBuildingFacts(building) {
       const store = this._buildingFacts;
-      if (!store || !building.lngLat) return;
-      const cardIds = /* @__PURE__ */ new Set([`clicked-${building.id || building.lngLat.join("-")}`, `clicked-poi-${building.id}`]);
+      if (!store || !building.lngLat || typeof store.ensureAt !== "function") return;
+      const plainId = `clicked-${building.id || building.lngLat.join("-")}`;
+      const cardIds = /* @__PURE__ */ new Set([plainId, `clicked-poi-${building.id}`]);
       const stillOpen = () => !!this._landmarkNotice && cardIds.has(this._landmarkNotice.id);
+      const inFlight = this._factsInFlight ??= /* @__PURE__ */ new Set();
+      if (inFlight.has(plainId)) return;
+      inFlight.add(plainId);
       void store.ensureAt(building.lngLat[0], building.lngLat[1]).then(() => {
         if (!stillOpen() || !store.lookup(building.id) && !store.article(building.id)) return;
         const card = this._cardForClickedBuilding(building);
@@ -5995,7 +5999,7 @@ ${register}` : detail,
         const { name, detail, longDetail, factTexts, wikipediaUrl, imageUrl, extractLang, wikidata } = card;
         this._landmarkNotice = { ...open, name, detail, longDetail, factTexts, wikipediaUrl, imageUrl, extractLang, wikidata };
         this._ensureLandmarkImage(this._landmarkNotice);
-      });
+      }).finally(() => inFlight.delete(plainId));
     }
     // ---- Encyclopedia text ----
     /** The extract carries a Wikipedia URL for 236 of its 300 landmarks, which

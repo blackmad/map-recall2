@@ -794,6 +794,57 @@ test('cell tiles partition a layer\'s triangles exactly once, each tile bounded 
   assert.ok(splitIntoTiles(positions, new Uint16Array(6).map((_, i) => idx[i]), 2)!.every(t => t.indices instanceof Uint16Array), 'keeps a 16-bit index');
 });
 
+// The one-pass scatter (#130) gives the per-tile rescan's tiles exactly: the same index order, centres and radii, with
+// and without groups, 16- and 32-bit indices, an interleaved stride, NaN positions and an off-extent vertex.
+test('cell tiles: the one-pass split equals the per-tile rescan exactly', () => {
+  const reference = (positions: ArrayLike<number>, indices: Uint16Array | Uint32Array, n: number, stride: number, groups?: { start: number; count: number }[]) => {
+    const triangles = indices.length / 3;
+    let x0 = Infinity, y0 = Infinity, x1 = -Infinity, y1 = -Infinity;
+    for (let i = 0; i < indices.length; i++) { const o = indices[i] * stride, x = positions[o], y = positions[o + 1]; if (x < x0) x0 = x; if (x > x1) x1 = x; if (y < y0) y0 = y; if (y > y1) y1 = y; }
+    const w = Math.max(1e-6, x1 - x0), h = Math.max(1e-6, y1 - y0), tileOf = new Uint16Array(triangles), counts = new Uint32Array(n * n);
+    const cellOf = (cx: number, cy: number) => Math.min(n - 1, Math.max(0, Math.floor((cy - y0) / h * n))) * n + Math.min(n - 1, Math.max(0, Math.floor((cx - x0) / w * n)));
+    let groupTile: Int32Array | null = null;
+    if (groups?.length) {
+      let vertices = 0; for (const g of groups) vertices = Math.max(vertices, g.start + g.count);
+      groupTile = new Int32Array(vertices).fill(-1);
+      for (const g of groups) { if (!g.count) continue; let gx0 = Infinity, gy0 = Infinity, gx1 = -Infinity, gy1 = -Infinity;
+        for (let v = g.start; v < g.start + g.count; v++) { const x = positions[v * stride], y = positions[v * stride + 1]; if (x < gx0) gx0 = x; if (x > gx1) gx1 = x; if (y < gy0) gy0 = y; if (y > gy1) gy1 = y; }
+        groupTile.fill(cellOf((gx0 + gx1) / 2, (gy0 + gy1) / 2), g.start, g.start + g.count); }
+    }
+    for (let t = 0; t < triangles; t++) { const ia = indices[3 * t], a = ia * stride, b = indices[3 * t + 1] * stride, c = indices[3 * t + 2] * stride;
+      const grouped = groupTile && ia < groupTile.length ? groupTile[ia] : -1;
+      const k = grouped >= 0 ? grouped : cellOf((positions[a] + positions[b] + positions[c]) / 3, (positions[a + 1] + positions[b + 1] + positions[c + 1]) / 3);
+      tileOf[t] = k; counts[k]++; }
+    const out = [], Ctor = indices instanceof Uint16Array ? Uint16Array : Uint32Array;
+    for (let k = 0; k < n * n; k++) {
+      if (!counts[k]) continue;
+      const idx = new Ctor(counts[k] * 3);
+      let m = 0, bx0 = Infinity, by0 = Infinity, bz0 = Infinity, bx1 = -Infinity, by1 = -Infinity, bz1 = -Infinity;
+      for (let t = 0; t < triangles; t++) { if (tileOf[t] !== k) continue;
+        for (let v = 0; v < 3; v++) { const vi = indices[3 * t + v], o = vi * stride; idx[m++] = vi; const x = positions[o], y = positions[o + 1], z = positions[o + 2];
+          if (x < bx0) bx0 = x; if (x > bx1) bx1 = x; if (y < by0) by0 = y; if (y > by1) by1 = y; if (z < bz0) bz0 = z; if (z > bz1) bz1 = z; } }
+      out.push({ indices: idx, center: [(bx0 + bx1) / 2, (by0 + by1) / 2, (bz0 + bz1) / 2], radius: Math.hypot(bx1 - bx0, by1 - by0, bz1 - bz0) / 2, cell: k });
+    }
+    return out;
+  };
+  let seed = 7;
+  const rnd = () => { seed = (seed * 1664525 + 1013904223) >>> 0; return seed / 2 ** 32; };
+  for (const [stride, vertices, triangles, n, bits, grouped] of [[3, 3000, 5000, 8, 32, false], [5, 2000, 4000, 4, 16, false], [3, 4000, 6000, 6, 32, true], [3, 50, 40, 8, 16, true]] as const) {
+    const positions = new Float32Array(vertices * stride).map(() => rnd() * 1000 - 200);
+    positions[7 * stride] = NaN; positions[11 * stride + 1] = 1e7;
+    const indices = new (bits === 16 ? Uint16Array : Uint32Array)(triangles * 3).map(() => Math.floor(rnd() * vertices));
+    const groups = grouped ? Array.from({ length: 40 }, (_, i) => ({ start: i * Math.floor(vertices / 50), count: i % 7 === 0 ? 0 : Math.floor(vertices / 60) })) : undefined;
+    const got = splitIntoTiles(positions, indices, n, 0, stride, groups)!, want = reference(positions, indices, n, stride, groups);
+    assert.equal(got.length, want.length);
+    got.forEach((t, i) => {
+      const r = want[i];
+      assert.equal(t.cell, r.cell); assert.equal(t.indices.constructor, r.indices.constructor);
+      assert.deepEqual([...t.indices], [...r.indices], `tile ${t.cell} index order`);
+      assert.ok(t.center.every((c, j) => Object.is(c, r.center[j])) && Object.is(t.radius, r.radius), `tile ${t.cell} sphere`);
+    });
+  }
+});
+
 test('basemap ground layers take the own ground palette; buildings and labels are left alone', () => {
   const layers = [
     { id: 'background', type: 'background' }, { id: 'water', type: 'fill', 'source-layer': 'water' }, { id: 'waterway_river', type: 'line', 'source-layer': 'waterway' },
@@ -1066,6 +1117,40 @@ const haveCells = existsSync('public/data/extracts/amsterdam/own-ground-osm-v1/c
 const fsStore = () => new GroundStore(async path => {
   const bytes = readFileSync(`public/data/extracts/amsterdam/${path}`);
   return new Uint8Array(bytes[0] === 0x1f && bytes[1] === 0x8b ? gunzipSync(bytes) : bytes);
+});
+
+// The main thread's store is prepareOnly (gameGround.ts): it keeps OSM ways without the areas and road surfaces without
+// kerbs and cover ways, because it only prepares cells. Preparing must come out the same as with the full extracts: the
+// heights the rider and the buildings read, the decks, the way decks and the tunnel cuts. Places: a way deck on roads-v1
+// (De Clercqstraat), tunnel portals, a canal-belt bridge cell.
+test('GroundStore prepareOnly: prepared heights, decks and cuts match the full store; building refuses', { skip: !haveCells }, async () => {
+  const read = async (path: string) => { const bytes = readFileSync(`public/data/extracts/amsterdam/${path}`); return new Uint8Array(bytes[0] === 0x1f && bytes[1] === 0x8b ? gunzipSync(bytes) : bytes); };
+  const full = new GroundStore(read, { roads: true }), slim = new GroundStore(read, { roads: true, prepareOnly: true });
+  await full.init(); await slim.init();
+  const places: [number, number][] = [[DE_CLERCQSTRAAT.at[0], DE_CLERCQSTRAAT.at[1]], [4.91165, 52.37250], [4.94032, 52.35678], [4.8835, 52.3700]];
+  let samples = 0;
+  for (const [lng, lat] of places) {
+    const [x, y] = storeToLocal(lng, lat), key = full.cellAt(x, y);
+    await full.prepareCell(key); await slim.prepareCell(key);
+    const [x0, y0, x1, y1] = full.cellRect(key);
+    for (let py = y0; py <= y1; py += 3) for (let px = x0; px <= x1; px += 3) {
+      const a = full.surface.height(px, py), b = slim.surface.height(px, py);
+      assert.ok(Object.is(a, b), `${key} height at ${px.toFixed(1)},${py.toFixed(1)}: ${a} vs ${b}`);
+      const ga = full.surface.ground(px, py), gb = slim.surface.ground(px, py);
+      assert.ok(Object.is(ga, gb), `${key} ground at ${px.toFixed(1)},${py.toFixed(1)}: ${ga} vs ${gb}`);
+      samples++;
+    }
+  }
+  const internals = (s: GroundStore) => {
+    const o = s as unknown as { decksByCell: Map<string, unknown[]>; wayDeckIds: Set<number>; cutPlans: Map<string, unknown>; cutScanned: Set<number>; wayOpeningSides: Map<number, unknown> };
+    return { decks: [...o.decksByCell].map(([k, v]) => `${k}:${v.length}`).sort(), wayDecks: [...o.wayDeckIds].sort((a, b) => a - b), plans: [...o.cutPlans.keys()].sort(), scanned: [...o.cutScanned].sort((a, b) => a - b), openings: [...o.wayOpeningSides.keys()].sort((a, b) => a - b) };
+  };
+  assert.deepEqual(internals(slim), internals(full));
+  assert.ok(internals(full).wayDecks.length > 0 && internals(full).scanned.length > 0, 'the places exercise way decks and tunnel cuts');
+  assert.ok(samples > 50_000, `${samples} samples`);
+  const key = full.cellAt(...storeToLocal(4.8835, 52.3700));
+  await assert.rejects(slim.cellInput(key, 0), /prepareOnly/);
+  await assert.rejects(slim.farInput('0_0'), /prepareOnly/);
 });
 
 // GroundStore.init loads once (2026-10-16): a second load replaced the surface and dropped the decks earlier cells had
@@ -2390,4 +2475,35 @@ test('bandedInPolygon answers as the even-odd test over every edge (water.ts inW
     }
     for (const r of poly) for (const [x, y] of r) assert.equal(test(x, y), evenOdd(poly, x, y), `vertex ${x},${y}`);
   }
+});
+
+// #129: the page plans way decks and tunnel cuts across tasks (groundStore pacer, planCutsSteps, the planning queue).
+// With a task after every step, the decks and cuts placed are the same as one-task planning (the worker's), value for value.
+test('GroundStore: paced planning on the page places the same decks and cuts as one-task planning', { skip: !haveCells }, async () => {
+  const read = async (path: string) => { const b = readFileSync(`public/data/extracts/amsterdam/${path}`); return new Uint8Array(b[0] === 0x1f && b[1] === 0x8b ? gunzipSync(b) : b); };
+  const places: Vec2[] = [[4.8835, 52.37], [4.8870, 52.3790], [4.91165, 52.3725], [4.94032, 52.35678]];
+  const plan = async (paced: boolean) => {
+    const store = new GroundStore(read, { roads: true, paceMs: 0 });
+    await store.init();
+    const g = globalThis as { document?: unknown };
+    let yields = 0;
+    const realSetTimeout = globalThis.setTimeout;
+    if (paced) {
+      g.document = {};
+      (globalThis as { setTimeout: unknown }).setTimeout = (fn: () => void, ms?: number) => { yields++; return realSetTimeout(fn, ms); };
+    }
+    try {
+      const keys = places.map(([lng, lat]) => { const [x, y] = storeToLocal(lng, lat); return store.cellAt(x, y); });
+      for (const k of keys) await store.prepareCell(k);
+      const decks = [...new Set(keys.flatMap(k => GroundStore.neighbours(k)))].sort().map(k => [k, store.decks(k).map(d => d.profile)]);
+      return { decks: JSON.stringify(decks), cuts: JSON.stringify(store.surface.cuts), yields };
+    } finally {
+      if (paced) { delete g.document; (globalThis as { setTimeout: unknown }).setTimeout = realSetTimeout; }
+    }
+  };
+  const once = await plan(false), paced = await plan(true);
+  assert.ok(paced.yields > 50, `the paced plan yielded (${paced.yields})`);
+  assert.ok(once.cuts.length > 100 && once.decks.length > 1000, 'the places hold cuts and way decks');
+  assert.equal(paced.decks, once.decks);
+  assert.equal(paced.cuts, once.cuts);
 });

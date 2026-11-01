@@ -30,7 +30,7 @@ import { openUnderFootbridges, waterZAt, type OpeningDeck, type WaterGeometry } 
 import { openUnderHouseboats, type Boat } from './moorings.js';
 import type { CellDetail, CellInput } from './groundCell.js';
 import { farBlockCells, type FarBlockInput } from './farRing.js';
-import { cutWays, isTunnelTags, planCuts, type CutWay } from './tunnels.js';
+import { cutWays, isTunnelTags, planCutsSteps, type CutWay } from './tunnels.js';
 
 /** Relief ensured (and scanned) this far around a cell with tunnel portals, metres: a ramp's reach from its portal. */
 
@@ -45,10 +45,24 @@ export const yieldToFrame = (): Promise<void> => {
   return g.scheduler?.yield ? g.scheduler.yield() : new Promise(resolve => setTimeout(resolve, 0));
 };
 
+/**
+ * A yieldToFrame that yields only once `budgetMs` of work ran since the pacer's last yield (or its making): a loop
+ * calls it after each step and ends its task every few milliseconds instead of after every step (#129).
+ */
+export const PACE_BUDGET_MS = 6;
+export const pacer = (budgetMs = PACE_BUDGET_MS): (() => Promise<void>) => {
+  let last = performance.now();
+  return async () => {
+    if (performance.now() - last < budgetMs) return;
+    await yieldToFrame();
+    last = performance.now();
+  };
+};
+
 export const CUT_REACH_M = 600;
 import { deckReach, movableApproaches, pointInRing } from './decks.js';
 import { prepareWays, isBridgeWay } from './streets.js';
-import { WAY_DECK_CLEAR_M, WAY_OPENING_REACH_M, bridgeWayBundles, capDeckSides, deckEdgeSides, setDeckSides, ROAD_EDGE_REACH_MAX_M, roadEdgeSides, joinChains, wayDeckGroups, wayDeckHighway, wayOpeningDeck, type WayDeckInput } from './wayDecks.js';
+import { WAY_DECK_CLEAR_M, WAY_OPENING_REACH_M, bridgeWayBundles, capDeckSides, deckEdgeSides, setDeckSides, ROAD_EDGE_REACH_MAX_M, roadEdgeSides, joinChains, groupWayDecks, wayDeckCrossing, wayDeckHighway, wayOpeningDeck, type WayDeckInput } from './wayDecks.js';
 import { RoadIndex } from './roadSurfaces.js';
 import { landedPlatformRings } from './landedPlatforms.js';
 
@@ -183,7 +197,7 @@ export class GroundStore {
    * the predictor decode of every tile under the rider's ring leave the main thread; the motion profile had
    * them in 100–200 ms bursts, docs/perf-motion-stutter-20261016.md). Same decode, same heights.
    */
-  constructor(private readonly fetchBytes: FetchBytes, private readonly options: { parks?: boolean; courtyards?: boolean; openings?: boolean; moorings?: boolean; approaches?: boolean; clipDecks?: boolean; roads?: boolean; reliefTile?: ReliefTileLoader; /** Decks for OSM bridge ways the extract does not carry (wayDecks.ts); default on. */ wayDecks?: boolean; /** Deck ends landed under the survey (footprints over the reach, covered tops sunk past the span); default on, off only for the regression's pin. */ deckEnds?: boolean; /** Way decks run on over a hole in the relief past the water (wayDecks.ts HOLE_M); default on. */ wayDeckHoles?: boolean; /** Bridge ways meeting end to end join before the way decks are drawn (wayDecks.ts joinChains); default on. */ wayDeckChains?: boolean; /** Open the water under OSM bridge ways whose water stops at the bridge (wayDecks.ts WAY_OPENING_REACH_M); default on, off only for the regression's before. */ wayOpenings?: boolean; /** roads-v1: way decks widen to the road surfaces' outer edges (wayDecks.ts roadEdgeSides); default on. */ wayDeckCarriage?: boolean; /** Tunnel cuts: ramps into tunnels and slots through embankments (tunnels.ts); default on. */ tunnels?: boolean; /** Railway tracks from rail-v1 (railTracks.ts); default on. */ rails?: boolean; /** Rail levels and the never-under-the-ground floor (railProfile.ts); default on, off: the #145 build (for measuring). */ railLevels?: boolean; /** Piers, girders and railings under the rail decks (railBridge.ts); default on, off: the round-2 build (for measuring). */ railBridges?: boolean; /** rail-v1 as shipped in build 04e3c88 (railTracks `legacy`): the rail regressions' pre-fix build only. */ railLegacy?: boolean; /** roads-v1 ground polygons over water at street height count as decks for the water mask (wetGround.ts); default on, off only for the regression's pin. */ wetGround?: boolean } = {}) {}
+  constructor(private readonly fetchBytes: FetchBytes, private readonly options: { parks?: boolean; courtyards?: boolean; openings?: boolean; moorings?: boolean; approaches?: boolean; clipDecks?: boolean; roads?: boolean; reliefTile?: ReliefTileLoader; /** Decks for OSM bridge ways the extract does not carry (wayDecks.ts); default on. */ wayDecks?: boolean; /** Deck ends landed under the survey (footprints over the reach, covered tops sunk past the span); default on, off only for the regression's pin. */ deckEnds?: boolean; /** Way decks run on over a hole in the relief past the water (wayDecks.ts HOLE_M); default on. */ wayDeckHoles?: boolean; /** Bridge ways meeting end to end join before the way decks are drawn (wayDecks.ts joinChains); default on. */ wayDeckChains?: boolean; /** Open the water under OSM bridge ways whose water stops at the bridge (wayDecks.ts WAY_OPENING_REACH_M); default on, off only for the regression's before. */ wayOpenings?: boolean; /** roads-v1: way decks widen to the road surfaces' outer edges (wayDecks.ts roadEdgeSides); default on. */ wayDeckCarriage?: boolean; /** Tunnel cuts: ramps into tunnels and slots through embankments (tunnels.ts); default on. */ tunnels?: boolean; /** Railway tracks from rail-v1 (railTracks.ts); default on. */ rails?: boolean; /** Rail levels and the never-under-the-ground floor (railProfile.ts); default on, off: the #145 build (for measuring). */ railLevels?: boolean; /** Piers, girders and railings under the rail decks (railBridge.ts); default on, off: the round-2 build (for measuring). */ railBridges?: boolean; /** rail-v1 as shipped in build 04e3c88 (railTracks `legacy`): the rail regressions' pre-fix build only. */ railLegacy?: boolean; /** roads-v1 ground polygons over water at street height count as decks for the water mask (wetGround.ts); default on, off only for the regression's pin. */ wetGround?: boolean; /** The main thread's store: it prepares cells (decks, way decks, tunnel cuts) and answers heights but never builds one (the worker does), so cells keep only what prepareCell reads: OSM ways without the areas, road surfaces without kerbs and cover ways. cellInput/farInput refuse. */ prepareOnly?: boolean; /** Work between yields while planning way decks and cuts on the page (pacer), ms; default PACE_BUDGET_MS, 0: yield after every step (the exactness pin). */ paceMs?: number } = {}) {}
   /** Houseboat footprints (houseboats.json, game frame), by elevation cell of their centroid. */
   private boatsByCell = new Map<string, Boat[]>();
   /** Boats whose berth was opened, per cell (named regressions, the lane report). */
@@ -407,6 +421,18 @@ export class GroundStore {
     if (this.options.tunnels !== false) await Promise.all(GroundStore.neighbours(key).map(n => this.planCutsFor(n)));
   }
 
+  /**
+   * Way decks and tunnel cuts are planned one at a time (placeWayDecks, planCutsFor): a plan now spans several tasks
+   * (pacer), and plans share state (the way ids given a deck, the ways scanned for cuts, the surface they read), so one
+   * plan runs to its end before the next starts, in the order they asked, as they did when each was a single task.
+   */
+  private planQueue: Promise<unknown> = Promise.resolve();
+  private planning<T>(plan: () => Promise<T>): Promise<T> {
+    const run = this.planQueue.then(plan);
+    this.planQueue = run.catch(() => undefined);
+    return run;
+  }
+
   /** Tunnel cuts planned per cell (the cell holding the portals), once each. */
   private readonly cutPlans = new Map<string, Promise<void>>();
   /** Way ids scanned for cuts (each scanned once, by the first plan that reaches it); negative ids: tunnel runs tried as slots. */
@@ -421,7 +447,7 @@ export class GroundStore {
   private readonly cutWayCells = new Map<string, Promise<CutWay[]>>();
   private cutWaysOf(k: string): Promise<CutWay[]> {
     let p = this.cutWayCells.get(k);
-    if (!p) { p = this.osmCell(k).then(o => cutWays(o?.ways ?? [], q => toLocal(q[0], q[1]))); this.cutWayCells.set(k, p); }
+    if (!p) { p = this.osmCell(k).then(async o => { await yieldToFrame(); return cutWays(o?.ways ?? [], q => toLocal(q[0], q[1])); }); this.cutWayCells.set(k, p); } // a task per cell's conversion (#129)
     return p;
   }
 
@@ -433,11 +459,18 @@ export class GroundStore {
         if (!osm?.ways.some(w => isTunnelTags(w.tags))) return;
         const [x0, y0, x1, y1] = this.cellRect(n), box: Rect = [x0 - CUT_REACH_M, y0 - CUT_REACH_M, x1 + CUT_REACH_M, y1 + CUT_REACH_M];
         const [around] = await Promise.all([Promise.all(GroundStore.neighbours(n).map(k => this.cutWaysOf(k))), this.ensureRelief(box)]);
-        await yieldToFrame();
-        // A way crossing a cell edge is in both cells' extracts: once each.
-        const seen = new Set<number>(), ways = around.flat().filter(w => !seen.has(w.id) && !!seen.add(w.id));
-        const inCell = (q: Vec2) => q[0] >= x0 && q[0] < x1 && q[1] >= y0 && q[1] < y1;
-        for (const c of planCuts(ways, this.surface.relief, inCell, this.cutScanned, box)) this.surface.addCut(c);
+        await this.planning(async () => {
+          await yieldToFrame();
+          // A way crossing a cell edge is in both cells' extracts: once each.
+          const seen = new Set<number>(), ways = around.flat().filter(w => !seen.has(w.id) && !!seen.add(w.id));
+          const inCell = (q: Vec2) => q[0] >= x0 && q[0] < x1 && q[1] >= y0 && q[1] < y1;
+          // A step per way scanned, a task every PACE_BUDGET_MS (one plan was a 60-120 ms task while riding, #129).
+          const steps = planCutsSteps(ways, this.surface.relief, inCell, this.cutScanned, box), pace = pacer(this.options.paceMs);
+          for (let r = steps.next(); ; r = steps.next()) {
+            if (r.done) { for (const c of r.value) this.surface.addCut(c); break; }
+            await pace();
+          }
+        });
       })();
       this.cutPlans.set(n, p);
     }
@@ -475,16 +508,27 @@ export class GroundStore {
    * owned by the cell of its first point, when its box lies within this cell's relief pad.
    */
   private async placeWayDecks(key: string): Promise<void> {
-    const [x0, y0, x1, y1] = this.cellRect(key), pad = CELL_RELIEF_PAD_M - 50;
     const around = GroundStore.neighbours(key);
     const [osms, waters] = await Promise.all([Promise.all(around.map(k => this.osmCell(k))), Promise.all(around.map(k => this.waterCell(k)))]);
+    await this.planning(() => this.planWayDecks(key, around, osms, waters));
+  }
+
+  private async planWayDecks(key: string, around: string[], osms: (OsmGroundExtract | null)[], waters: (WaterGeometry | null)[]): Promise<void> {
+    const [x0, y0, x1, y1] = this.cellRect(key), pad = CELL_RELIEF_PAD_M - 50;
     await yieldToFrame(); // the cells' JSON decode above and the deck grouping below are separate tasks
+    // Each step below is short; a task ends every PACE_BUDGET_MS (the grouping, the road index and the edge search
+    // ran as one 60-120 ms task while riding, #129). Same steps in the same order as one task.
+    const pace = pacer(this.options.paceMs);
     // Each polygon with its box: a station tests only the polygons around it.
     const wet = waterTest(waters.flatMap(w => w?.polygons ?? []));
     const claimed = this.claimedBy(around);
     const ways = bridgeWayInputs(osms, id => this.wayDeckIds.has(id), [x0 - pad, y0 - pad, x1 + pad, y1 + pad]);
     // Consecutive pieces of one bridge join first (wayDecks.ts joinChains).
-    const { profiles } = wayDeckGroups(this.options.wayDeckChains === false ? ways : joinChains(ways).ways, wet, claimed, this.options.wayDeckHoles === false ? undefined : this.surface.ground);
+    const chained = this.options.wayDeckChains === false ? ways : joinChains(ways).ways, ground = this.options.wayDeckHoles === false ? undefined : this.surface.ground;
+    await pace();
+    const crossings: ReturnType<typeof wayDeckCrossing>[] = [];
+    for (const w of chained) { crossings.push(wayDeckCrossing(w, wet, claimed, ground)); await pace(); }
+    const { profiles } = groupWayDecks(crossings, wet, ground);
     for (const w of ways) this.wayDeckIds.add(w.id);
     // roads-v1: the parapets stand at the road surfaces' outer edges (carriageway, cycle path, footway), not the way's drawn half-width (wayDecks.ts roadEdgeSides).
     if (profiles.length && this.options.roads === true && this.options.wayDeckCarriage !== false) {
@@ -499,9 +543,11 @@ export class GroundStore {
         Math.max(...profiles.map(p => p.bbox[2])) + reach, Math.max(...profiles.map(p => p.bbox[3])) + reach,
       ];
       const index = new RoadIndex([null, ...cells], within);
+      await yieldToFrame();
       const onRoad = (x: number, y: number) => index.classAt(x, y, true) !== null;
       for (const profile of profiles) {
         const sides = roadEdgeSides(profile, onRoad);
+        await pace();
         if (!sides) continue;
         profile.sides = sides;
         const r = Math.max(0, Math.max(...sides) - Math.max(...profile.halfWidth));
@@ -527,11 +573,12 @@ export class GroundStore {
       if (!open) continue;
       // The survey's deck-level polygons outline the bridge (wayDecks.ts deckEdgeSides); the opening's water is the cap.
       if (this.options.roads === true) {
-        deckIndex ??= new RoadIndex([null, ...await Promise.all(around.map(k => this.roadCell(k)))], deckWithin ?? undefined);
+        if (!deckIndex) { deckIndex = new RoadIndex([null, ...await Promise.all(around.map(k => this.roadCell(k)))], deckWithin ?? undefined); await yieldToFrame(); }
         const idx = deckIndex, e = deckEdgeSides(profile, (x, y) => idx.onDeck(x, y), Math.max(...profile.halfWidth, ...open) + ROAD_EDGE_REACH_MAX_M);
         if (e[0] !== undefined || e[1] !== undefined) setDeckSides(profile, [e[0] ?? open[0], e[1] ?? open[1]]);
         else capDeckSides(profile, open);
       } else capDeckSides(profile, open);
+      await pace();
     }
     for (const profile of profiles) {
       const owner = this.cellAt(profile.x[0], profile.y[0]);
@@ -659,7 +706,7 @@ export class GroundStore {
     let p = this.osm.get(key);
     if (!p) {
       p = this.osmCells.has(key)
-        ? this.fetchBytes(`${EXTRACTS.osm}/cells/${key}.json.gz`).then(bytes => { this.loadedBytes.osm += bytes.byteLength; return JSON.parse(new TextDecoder().decode(bytes)) as OsmGroundExtract; }).catch(() => null)
+        ? this.fetchBytes(`${EXTRACTS.osm}/cells/${key}.json.gz`).then(bytes => { this.loadedBytes.osm += bytes.byteLength; const o = JSON.parse(new TextDecoder().decode(bytes)) as OsmGroundExtract; return this.options.prepareOnly ? { ...o, areas: [] } : o; }).catch(() => null)
         : Promise.resolve(null);
       this.osm.set(key, p);
     }
@@ -683,7 +730,7 @@ export class GroundStore {
     let p = this.roads.get(key);
     if (!p) {
       p = this.roadCells.has(key)
-        ? this.fetchBytes(`${EXTRACTS.roads}/cells/${key}.json.gz`).then(bytes => { this.loadedBytes.roads += bytes.byteLength; const c = JSON.parse(new TextDecoder().decode(bytes)) as RoadCell; return ROAD_CELL_VERSIONS.includes(c.version) ? c : null; }).catch(() => null)
+        ? this.fetchBytes(`${EXTRACTS.roads}/cells/${key}.json.gz`).then(bytes => { this.loadedBytes.roads += bytes.byteLength; const c = JSON.parse(new TextDecoder().decode(bytes)) as RoadCell; return ROAD_CELL_VERSIONS.includes(c.version) ? (this.options.prepareOnly ? { ...c, kerbs: [], coverWays: [] } : c) : null; }).catch(() => null)
         : Promise.resolve(null);
       this.roads.set(key, p);
     }
@@ -760,6 +807,7 @@ export class GroundStore {
    * OSM of its 3×3 neighbourhood, and the deck footprints near it.
    */
   async cellInput(key: string, lod: 0 | 1, detail: CellDetail = 'full'): Promise<CellInput> {
+    if (this.options.prepareOnly) throw new Error('GroundStore: a prepareOnly store keeps no OSM areas or kerbs and cannot build a cell');
     await this.prepareCell(key);
     const around = GroundStore.neighbours(key);
     const [water, waterAround, osm, osmAround, parksAround, roadsAround, courtyardsAround, marksAround, railsAround] = await Promise.all([
@@ -829,6 +877,7 @@ export class GroundStore {
    * OSM ground, and the relief over the block (loaded here; the next eviction drops it again). Null: nothing to draw.
    */
   async farInput(blockKey: string): Promise<FarBlockInput | null> {
+    if (this.options.prepareOnly) throw new Error('GroundStore: a prepareOnly store keeps no OSM areas and cannot build a far block');
     const keys = farBlockCells(blockKey).filter(k => this.osmCells.has(k) && this.covers(k));
     if (!keys.length) return null;
     const rects = keys.map(k => this.cellRect(k));

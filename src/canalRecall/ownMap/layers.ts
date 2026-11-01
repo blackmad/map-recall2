@@ -107,11 +107,15 @@ export function lineGeometry(lines: readonly (readonly Vec2[])[]): THREE.BufferG
     const [ax, ay] = l[i - 1], [bx, by] = l[i];
     const len = Math.hypot(bx - ax, by - ay) || 1, dx = (bx - ax) / len, dy = (by - ay) / len;
     const v = s * 4;
-    const put = (k: number, x: number, y: number, side: number, ext: number) => {
-      pos.set([x, y, 0], (v + k) * 3); dir.set([dx, dy], (v + k) * 2); corner.set([side, ext], (v + k) * 2);
-    };
-    put(0, ax, ay, 1, -1); put(1, ax, ay, -1, -1); put(2, bx, by, 1, 1); put(3, bx, by, -1, 1);
-    idx.set([v, v + 1, v + 2, v + 1, v + 3, v + 2], s * 6);
+    // Written in place (no per-vertex arrays: the overview's ~400k segments made this a boot hot spot, #130).
+    for (let k = 0; k < 4; k++) {
+      const p = (v + k) * 3, q = (v + k) * 2, far = k >= 2;
+      pos[p] = far ? bx : ax; pos[p + 1] = far ? by : ay; pos[p + 2] = 0;
+      dir[q] = dx; dir[q + 1] = dy;
+      corner[q] = k % 2 === 0 ? 1 : -1; corner[q + 1] = far ? 1 : -1;
+    }
+    const o = s * 6;
+    idx[o] = v; idx[o + 1] = v + 1; idx[o + 2] = v + 2; idx[o + 3] = v + 1; idx[o + 4] = v + 3; idx[o + 5] = v + 2;
     s++;
   }
   const g = new THREE.BufferGeometry();
