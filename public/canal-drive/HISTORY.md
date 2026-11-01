@@ -1,5 +1,32 @@
 # Canal Recall — what is built
 
+**A camera looking away from the rider streams its own view, not the rider's square (2026-11-01, P1).**
+L1 hand-back 21b (6fc8d6004, 4bdf41c29, b191915b1). Below zoom 17.5 the fetch
+ring's `rideBox()` streamed only a 530 m square around the rider, so a camera
+panned elsewhere (building-click-perf :146/:228) looked at unstreamed cells.
+The rider square is now used only while the rider is in the camera's view.
+Free Ride is unchanged at 11 cells, 0.79–0.81 MB, and the new world-v1-bytes
+check caps it at 16 cells and 1.5 MB, so the ring cannot quietly grow back. The
+iPhone city-startup-lod spec now waits for a detailed building installed over a
+built shell before it checks; its thresholds are unchanged. Integrator:
+building-tiles bundle rebuilt; lint, test:engine 129/129, test:world-format
+36/36; desktop smoke building-click-perf, world-v1-bytes, start-heading.
+
+**Toon look step 2: the saturation push is chroma-aware, so greys and whites stay neutral; a busyness probe measures the frame (2026-11-01, #161).**
+Materials (9d64252cb). `?look=toon` remaps in OKLab: chroma ×(1 + 0.45 ·
+smoothstep(0.04, 0.15, |ab|)) with hue held, and lightness 70 % toward 8 bands
+(`?toonBands=6|8|10`). A CPU twin, `toonRemap()`, is tested: grey stays grey,
+brick gains chroma at the same hue, and a capped white stays under 252. The pass
+costs one full-screen draw: desktop draws p50 285 → 286, iPad tris unchanged at
+0.696 M. The lavender, teal and yellow fronts in the strips come from the
+existing Cartoon buildings palette, not the pass, so retuning them is a palette
+question. `look/busyness.ts` measures Sobel edge energy and colour variance per
+frame third. On the default look the far third is busier than the near one
+almost everywhere: far/near edge bloemgracht 1.72, ijburg 0.55, leidsegracht
+1.55, nassaukade 1.82, westerkerk 1.45, against a calming target of ≤ 0.5.
+Flag only, so no What's New. Integrator: engine bundle rebuilt; test:look
+166/166.
+
 **Toon look step 1 behind `?look=toon`: the existing Cartoon buildings look plus one full-frame palette pass (2026-11-01, #161).**
 Materials (53d5299d8). `engine/toonLook.ts` starts the own engine on the Cartoon
 buildings look (an explicit `?buildings3d=` still wins) and adds a FrameHost

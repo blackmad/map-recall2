@@ -275,7 +275,10 @@ elevation bug, fixed; facade mask R8 merged 2026-11-01 (`f3f6ff157`, HISTORY
 "The facade mask uploads as R8"): iPhone atlas 21.67 MB, budget back to 22;
 too-white roofs #179 fixed 2026-11-01 (bcc38403a, HISTORY "Bright white flat
 roofs no longer clip"); toon look step 1 merged 2026-11-01 behind `?look=toon`
-(53d5299d8, HISTORY "Toon look step 1"); materials next: toon step 2 (#161)); the 150/400 m
+(53d5299d8) and step 2 (9d64252cb, HISTORY "Toon look step 2"); materials next:
+the calming levers of #161 comment 6564393499, depth falloff first, flag-gated,
+default look too, measured with the busyness probe, target far/near edge ≤ 0.5
+from 0.55–1.82); the 150/400 m
 facade LOD is parked (60–100k, 5–8 %, not worth its likeness risk yet). In-frame
 shader links are 0. P5 follow-ups: delete
 `building-tiles/` and `bag-tiles/` after a week of Sentry quiet on the
@@ -323,10 +326,11 @@ commit on its branch (engineFlag default + wantsMapLibre + query-table tests +
 have been live for a day, and watches the 48 h bar. Pin harness: the shading flip was an unpinned
 camera elevation, fixed in the spec (d80ab4245); trees are pinnable. **User
 asks (2026-11-01):** a first-person riding camera (#171, small opus lane after
-the flip), the cartoon look mode (#161: step 1 merged behind `?look=toon`,
-strips on #161 for the user's verdict; step 2 = chroma-aware saturation so
-greys and whites stay neutral, brick gets the push and hue never rotates, band
-count as a flag, then cel bands, outlines and a flat sky), road gaps at bridges
+the flip), the cartoon look mode (#161: steps 1–2 merged behind `?look=toon`,
+strips on #161 for the user's verdict; open question: the lavender, teal and
+yellow fronts come from the Cartoon buildings palette itself and read random at
+chase-cam distance, a palette retune rather than a post-pass fix; then cel
+bands, outlines and a flat sky), road gaps at bridges
 (#178, opus lane `road-bridge-gaps-20261101`: measurement merged 2026-11-01,
 96c951790, HISTORY "Road gaps on bridges measured city-wide"; 1,293 of 2,418
 canal-scale bridge ways show ≥ 5 m² of carriageway gap; fixes approved behind
