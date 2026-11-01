@@ -2394,7 +2394,7 @@ test('bandedInPolygon answers as the even-odd test over every edge (water.ts inW
 
 // #129: the page plans way decks and tunnel cuts across tasks (groundStore pacer, planCutsSteps, the planning queue).
 // With a task after every step, the decks and cuts placed are the same as one-task planning (the worker's), value for value.
-test('GroundStore: paced planning on the page places the same decks and cuts as one-task planning', { skip: !haveCells }, async () => {
+test('GroundStore: paced planning on the page places the same decks, cuts and water openings as one-task planning', { skip: !haveCells }, async () => {
   const read = async (path: string) => { const b = readFileSync(`public/data/extracts/amsterdam/${path}`); return new Uint8Array(b[0] === 0x1f && b[1] === 0x8b ? gunzipSync(b) : b); };
   const places: Vec2[] = [[4.8835, 52.37], [4.8870, 52.3790], [4.91165, 52.3725], [4.94032, 52.35678]];
   const plan = async (paced: boolean) => {
@@ -2411,7 +2411,10 @@ test('GroundStore: paced planning on the page places the same decks and cuts as 
       const keys = places.map(([lng, lat]) => { const [x, y] = storeToLocal(lng, lat); return store.cellAt(x, y); });
       for (const k of keys) await store.prepareCell(k);
       const decks = [...new Set(keys.flatMap(k => GroundStore.neighbours(k)))].sort().map(k => [k, store.decks(k).map(d => d.profile)]);
-      return { decks: JSON.stringify(decks), cuts: JSON.stringify(store.surface.cuts), yields };
+      // The water under the bridges (withOpenings: the way openings and the house-boat berths, paced on the page too).
+      const cells = [...new Set(keys.flatMap(k => GroundStore.neighbours(k)))].sort();
+      const water = await Promise.all(cells.map(async k => [k, await store.waterCell(k), store.openedDecks.get(k) ?? null, store.openedBerths.get(k) ?? null]));
+      return { decks: JSON.stringify(decks), cuts: JSON.stringify(store.surface.cuts), water: JSON.stringify(water), yields };
     } finally {
       if (paced) { delete g.document; (globalThis as { setTimeout: unknown }).setTimeout = realSetTimeout; }
     }
@@ -2421,4 +2424,6 @@ test('GroundStore: paced planning on the page places the same decks and cuts as 
   assert.ok(once.cuts.length > 100 && once.decks.length > 1000, 'the places hold cuts and way decks');
   assert.equal(paced.decks, once.decks);
   assert.equal(paced.cuts, once.cuts);
+  assert.ok(once.water.length > 100000 && /OSM/.test(once.water), 'the places hold water with way openings');
+  assert.equal(paced.water, once.water);
 });
