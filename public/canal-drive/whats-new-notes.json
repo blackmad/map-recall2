@@ -3,6 +3,23 @@
   "notes": [
     {
       "date": "2026-11-01",
+      "title": "The bike leans into its turns, and only as much as the turn",
+      "text": "Since the lean arrived on 30 October a tap on a steering key rolled the bike to its full 19° at once, and onto the outside of the turn, so from the chase camera it looked like it had fallen over while riding straight. The lean now follows the turn the bike is actually making (speed times yaw rate, as a real bicycle does), stays at zero while the bike rides straight however the key is held, and rolls into the turn.",
+      "images": [
+        {
+          "src": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/whats-new/2026-11-01-bike-lean-before.jpg",
+          "alt": "Before: the bike rolled almost flat onto its left side during a held right turn, seen from the chase camera",
+          "caption": "Before: a held right turn rolled the bike flat, to the outside."
+        },
+        {
+          "src": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/whats-new/2026-11-01-bike-lean-after.jpg",
+          "alt": "After: the bike upright and leaning slightly into the same held right turn",
+          "caption": "After: the same turn, upright with a slight lean into it."
+        }
+      ]
+    },
+    {
+      "date": "2026-11-01",
       "title": "One phrase for the modelled buildings",
       "text": "The landing page, the neighbourhood pages and the model credits now all say \"individually modelled\" where some still said \"modelled by hand\" or \"hand-built\". The stat strip reads \"510+ individually modelled buildings\", the open-data figure says landmarks are individually modelled from photographs, and kit-built landmarks on the neighbourhood pages carry a \"Kit-built landmark\" badge."
     },

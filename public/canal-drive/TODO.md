@@ -254,8 +254,13 @@ specs under own, the rest on iphone and the four perf scripts for real.
 Materials hand-back merged 2026-11-01 (HISTORY "World-v1 is pixel-identical"):
 0 px at the five A/B spots on the published cells, so the `?world=v1`
 default flip is unblocked (integrator, next round, with iphone + desktop smoke
-and a What's New note); open on that lane: the first-load render difference
-(harness only), pre-painted atlas, noise/shaders off boot. Pre-existing default red to own: `street-survey-retire` "shots: default" (35
+and a What's New note); closed on that lane 2026-11-01: the pre-painted atlas stays opt-in (atlas
+ready ~1 s sooner locally but racing 0.7–1.2 s later, equal at 20 Mbit; the
+network is the bottleneck), shaders-off-at-boot (program calls cost 13 ms at
+boot, nothing to win). Parked: world-v1 A/B first load after a cold start
+sometimes differs by ~1000 px at Westerkerk (not camera/lifts/styled/install
+order); the harness warm-up hides it; find the cause before trusting
+cold-load pixel A/Bs. Pre-existing default red to own: `street-survey-retire` "shots: default" (35
 entries, expected none) and the flaky `city-startup-lod` "mobile city shells
 remain". **Integrator
 next:** `CanalRecallUi.stepSteer`

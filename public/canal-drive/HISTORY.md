@@ -1,5 +1,26 @@
 # Canal Recall — what is built
 
+**The bike's lean follows the turn it makes and rolls into it (2026-11-01).**
+User's screenshot: the bike "leaning weird", near flat on its side while
+riding straight. Measured on the deployed default engine with the model
+pinned at 3× and the saddle, grip and hub vertices projected onto the
+screenshot (the drawn pose matched the scene graph exactly): the drawn roll
+was the lean value, but the lean came from the raw steer key times a speed
+ramp that saturates at 27 px/s while the bike rides at 50–150 px/s, so a
+tap went to the full 0.34 rad (19°) within ~0.1 s, and `rotateX(-lean)`
+put it on the outside of the turn (+Z is the rider's right with nose +X and
+up +Y; `steer` + is a right turn, `angle` increasing clockwise on the
+y-down canvas). From a steep chase camera a 19° roll shows the whole side
+of the bike, which reads as fallen over. Now `bikeLeanFromTurn(speed,
+yawRate)` in `steerModel.ts` = atan(v·ω/280) capped at 0.34 rad, + right;
+the vehicle derives ω from the heading delta and v from the odometer, eases
+at 9/s, and `_pose` rolls `rotateX(+lean)`. Zero while riding straight
+however the key is held, ~6° in a gentle turn, the cap only in a 1 rad/s
+turn at 100 px/s. Tests in `steerModel.test.ts`; `bikeLean` kept for
+reference. Verified on this checkout: lean 0.007–0.027 in headless held
+turns (yaw there is slow), saddle over the hub line, upright from behind.
+What's New note with before/after screenshots.
+
 **World-v1 is pixel-identical to the live path at the five A/B spots; the settle hold waits on what the first frame shows; the covered world renders once a second (2026-11-01, P2/P4).**
 Materials lane hand-back (52957eae9), merged with L1 (16)'s `framePhases`
 `rendered` flag combined in `frameHost.ts`. The `?world=v1` structural gate
