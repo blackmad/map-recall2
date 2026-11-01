@@ -92,9 +92,26 @@ async function fixedShot(page: Page, at: readonly number[], face: readonly numbe
   await settle(page);
   await page.evaluate(() => (window as any).canalRecallGame.vectorMap.camera?.whenIdle?.());
   // The shadow map is redrawn only when its snapped box or the root-level caster signature changes, and between
-  // redraws it is re-aimed at the moving origin: what it holds depends on when the last redraw happened. Redraw it
-  // at the held pose so the shot is a function of the scene, not of the path that led to it.
-  await page.evaluate(() => (window as any).canalRecallGame.vectorMap._sharedFrame?.invalidateShadows?.());
+  // redraws it is re-aimed at the moving origin: what it holds depends on when the last redraw happened. Its snap
+  // grid (sharedFrame.ts absOf) is anchored at the first map centre the frame saw, which is wherever the boot
+  // happened to be: a different texel grid each run, so every shadow edge rasterised differently (the remaining
+  // default vs default2 speckle, 2026-11-01). Re-anchor at the held pose and redraw, so the shot is a function of
+  // the scene and the pose, not of the path that led to it.
+  await page.evaluate(() => {
+    const frame = (window as any).canalRecallGame.vectorMap._sharedFrame;
+    if (!frame) return;
+    frame.anchor = null;
+    // Opaque draws ordered by creation-independent keys (depth, then the object's name path and material) instead of
+    // three's material and mesh ids, which follow load order: coplanar ties then resolve the same way in every run.
+    // With the re-anchor: 0 px default vs default2 at all five spots; without the sort the same anchor gave 7 px in
+    // one run and 2,647 px > 30 in the next (2026-11-01). AB_SORT=three keeps three's order.
+    if ((window as any).__abStableSort && frame.renderer?.setOpaqueSort) {
+      const keyOf = new WeakMap<object, string>();
+      const k = (o: any, m: any) => { let v = keyOf.get(o); if (v === undefined) { let n = ''; for (let p = o; p; p = p.parent) n = `${p.name || p.type}/${n}`; v = `${m.type}:${m.name}|${n}`; keyOf.set(o, v); } return v; };
+      frame.renderer.setOpaqueSort((a: any, b: any) => a.groupOrder - b.groupOrder || a.renderOrder - b.renderOrder || (a.z - b.z) || (k(a.object, a.material) < k(b.object, b.material) ? -1 : k(a.object, a.material) > k(b.object, b.material) ? 1 : 0));
+    }
+    frame.invalidateShadows?.();
+  });
   const url: string = await page.evaluate(() => (window as any).canalRecallGame.vectorMap.captureFrame().then((c: HTMLCanvasElement | null) => c?.toDataURL('image/png') ?? ''));
   await page.evaluate(() => { const vm = (window as any).canalRecallGame.vectorMap; if (vm.__abHeld) { Object.assign(vm, vm.__abHeld); delete vm.__abHeld; } });
   expect(url.startsWith('data:image/png;base64,'), 'world canvas captured').toBe(true);
@@ -126,7 +143,7 @@ for (const variant of VARIANTS) {
   test(`world ab: ${variant.name}`, async ({ page }) => {
     test.setTimeout(900_000);
     await serve(page);
-    await page.addInitScript(() => { (window as any).__canalRecallTrees3d = false; (window as any).__canalRecallChunkFade = false; });
+    await page.addInitScript((stable) => { (window as any).__canalRecallTrees3d = false; (window as any).__canalRecallChunkFade = false; (window as any).__abStableSort = stable; }, process.env.AB_SORT !== 'three');
     await openRoute(page, { travelMode: 'car', viewMode: 'chase', enterRacing: true, query: variant.query });
     mkdirSync(OUT, { recursive: true });
     const spots: Record<string, any> = {};
