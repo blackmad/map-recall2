@@ -53,8 +53,14 @@ export function poiLabelVisible(ctx: LabelContext, name: string): boolean {
   if (!name || ctx.quizQuiet) return false;
   if (ctx.spoilerIndex && poiNameSpoils(name, ctx.spoilerIndex)) return false;
   // The asked name is always a spoiler, even if the index has not caught up.
-  if (ctx.hiddenName && poiNameSpoils(name, buildSpoilerIndex([ctx.hiddenName]))) return false;
+  if (ctx.hiddenName && poiNameSpoils(name, hiddenIndex(ctx.hiddenName))) return false;
   return true;
+}
+/** The asked name's own index, one per name, so poiNameSpoils' memo holds across POIs and rebuilds. */
+let hiddenIndexOf: { name: string; index: SpoilerIndex } | null = null;
+function hiddenIndex(name: string): SpoilerIndex {
+  if (hiddenIndexOf?.name !== name) hiddenIndexOf = { name, index: buildSpoilerIndex([name]) };
+  return hiddenIndexOf.index;
 }
 
 export function neighbourhoodLabelVisible(ctx: LabelContext): boolean {

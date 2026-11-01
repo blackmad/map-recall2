@@ -1,5 +1,104 @@
 # Canal Recall — what is built
 
+**Facades package: exact speedups in the chunk pipeline, chunks built while the atlas paints, facade context-loss pinned, resident tiles in key order (2026-11-01, #129).**
+Materials lane (df2fc4959). (1) Exact, each proven equal to the old code on
+real data plus randomised inputs: `splitIntoTiles`/`planTiles` single pass
+(the overview cut 58.7 → 25 ms at 1×; main's `af8c3b26a` version kept, it
+also handles NaN centroids), `BuildingContextIndex` ≈ 2×, `SegmentGrid.near`
+≈ 2.7×, `poiNameSpoils` cached per index and label. Headed 4× Jordaan: frames
+over 50 ms 4 → 1 per minute, longest 100 → 59 ms; load maxima `setFeatures`
+167 → 90, `neighbors` 142 → 63, `streetsFor` 174 → 79, `cutSpans` 264 → 159
+ms. (2) The settle hold under `?engine=own` built nothing: the facade pump
+waited for the atlas, painted on the main thread in 6 ms slices and bound
+only after racing. Workers now build chunks while the atlas paints and the
+chunks install once it is bound: settle 850–1160 → 661–716 ms, racing after
+submit 2055–2459 → 1885–1967 ms (6 runs each). The ≤ 0.3 s target is not
+met; the atlas paint is the gate (next: a pre-painted atlas as a versioned
+extract). Known risk: a chase-first submit hit the 2.8 s hold timeout with
+the atlas unbound, so racing could start without facades; the hold must wait
+on the bind (materials, next). (3) Facade CPU arrays after a 60 s ride: 2.1
+MB, all `hidden` flags rewritten on answer/highlight/dim (kept); the 13.7 MB
+in heap-ride is chunks installed but not yet drawn, freed on first upload;
+nothing held is never read. `tests/e2e/facade-context-loss.spec.ts` rides
+60 s then loses the context: 2,599 attributes, 0 stale, 18 chunks redrawn,
+0 errors. (4) Resident tiles concatenate in key order instead of arrival
+order (f184fbb34; arrival order set build order, draw order and party-wall
+context): world-v1-ab AB_NOISE at 5 fixed-camera spots, default vs default2,
+> 30 px whole frame 3,941 → 1,442, > 8 px bike-masked 17,430 → 10,033; what
+remains is the player bike's wheel/pose animation (the harness must freeze
+it) and low-amplitude edge speckle (shadow frustum following the rider,
+mesh-id ties). `?world=v1` default stays held on that number. (5)
+`compileAsync` isReady throw fixed: `SharedFrame` polls the programs itself
+and stops at the timeout. Cafe Kompleet: the ridge-within-25 m A/B was
+identical at 4 poses, a geometry miss, reverted. Integrator: world-v1
+recompiled (BuildingContextIndex is in the code hash; cells unchanged) and
+the Transvaalbuurt round 3 installs picked up in the same compile.
+**Landmark request walk gated; `withOpenings` in tasks; the worker-pool overview build held (2026-11-01, #129).**
+L1 hand-back (14). (1) The signature-landmarks request walk (`_requestModels`,
+1124 ms/min of stall at 4×) is skipped only while nothing can have changed
+since the last walk that found no candidate: same request revision (every
+add/set/delete/clear on `_pending`, `_failed`, `shown` bumps it), same
+`models` and `generation`, and the view moved less than half the smallest
+outside slack of the loadable models (`engine/viewSlack.ts`; 2,000 random
+views never disagree with `withinView`). `?landmarkGate=0` turns it off;
+`window.__canalRecallLandmarkGateCheck` re-runs every skipped walk as a
+shadow check (0 misses in 6,822 and 6,854 skips on the seeded Jordaan ride
+at 1×; request sets differ by about one model between any two runs, gate
+off vs gate off included, so the in-run shadow check is the pin). 4×:
+stall 1124 → 196 ms/min, signature-landmarks total 2363 → 1243 ms. (2)
+`withOpenings` yields after the OSM load, around `groundCrossing`, and
+before the houseboat openings; 'paced planning' now also pins the water cell
+plus `openedDecks`/`openedBerths` of every neighbour as JSON (asserted over
+100,000 chars with OSM openings, so it cannot pass on empty data); the
+browser saving is not measured yet. (3) HELD with (4): the overview arrays and tiles built by
+`ownMap/overviewArrays.ts` (no THREE) in the three-buildings worker
+(`ownMap/overviewPool.ts`), `OverviewLayer` taking the prebuilt arrays with a
+main-thread fallback, byte-identical pin `engine/overviewArrays.test.ts`,
+main-thread construction 213–224 → 13–20 ms in node, boot → submit under
+`?engine=own` ~1021 → ~770 ms median, and `OwnWorldView.projectWorld` calling
+the camera directly (engine `project` through the shim 1640/s → 0) all sit
+in one commit (f8e79ee5e) that stops the desktop ride from starting under
+`?engine=own`: engine-own:78, render-on-change:10 and label-occlusion:102
+wait 90 s for the player after the route submit (iphone and the default
+engine pass). Reverted on the integrator branch (eb27afe4a); L1 finds the
+cause (an overview request on a worker mid-job, a reply the pool drops when
+it kills a worker, or the fallback not firing) and hands the commit back
+with a spec pin. Left on the shim meanwhile: engine `project`,
+inventory-trees and the per-frame getZoom/getCenter/getBounds/jumpTo.
+
+**Transvaalbuurt round 3 (2026-11-01, #152): the first 1911 rows installed, 10 pands on Retiefstraat and Pretoriusstraat.**
+Two opt-in kit fixes cleared round 2's blockers without changing an
+installed face (roof-golden 0; Albert Luthulistraat 21–41 and six Bellamy
+faces recompiled byte-identical). `roof.rakeClear` drops a point gable's
+saddle 4 cm square under the rakes: the 0.5–0.8 m² brick/tile overlap the
+GLB audit rejected was the saddle sitting 3 cm plumb under the raking crown
+wall, not the neighbour as the brief assumed (the installed
+`bilder-157757-164549` has the same overlap and could opt in).
+`match.crownFromType` gives a pand its type's crown unless the strip
+skyline is read with confidence and is sky-bounded (`stripSkyBound.ts`:
+under the 3DBAG roof max + 0.5 m, not ending on foliage, no narrow mass at
+a party wall); the 2023 strips read bare branches at 16.6–20.6 m over 13 m
+cornices. The ribbon era guard holds the pand that reads ribbon, and the
+whole row only when 20 % or more of it reads so (Gerard Doustraat and
+Govert Flinckstraat keep their row holds; Transvaalstraat 7–41 now holds 33
+and 35 only). Reviewer crown pins survive a `--photo-decides` twin switch
+(`transvaalbuurt-oost-review-crowns.json`). Outcome split, Oost: vetoed 147
+/ held 284 / placed and installed 10 (before review 147 / 270 / 24); West
+unchanged 263 / 36 / 0. Installed in ride order: Retiefstraat 69C (wall
+dormer), 71D, 73A; Pretoriusstraat 90B, 88, 86; 79–81; 85–87. Held with
+reasons in `transvaalbuurt-oost-review-holds.json`: Transvaalstraat 46
+(another design), 42–44 (one gable over two pands), 39–41 and 43B–45A (white
+timber dormer whose glass leaves the roof plane), Pretoriusstraat 83
+(stepped crenellated gable), 13–17 (3DBAG reads the rear block), Majubastraat
+7A and 29, Paardekraalstraat 13–15, 92A (likeness gate). What the kit still
+cannot say: a crown shared across two pands, the pointed gablet with an
+oculus over the centre of Pretoriusstraat 79–87, a dormer whose glass stays
+inside the roof plane, a stepped crenellated gable, a gable over part of a
+five-axis front, and the low shouldered gables of Retiefstraat 71D–73A (the
+kit's point gable is steeper and taller). Covers 601/634, exposure rows
+rebuilt, roof goldens recorded for the four runs, strips and sheets in
+source-data `block-face-strips/transvaalbuurt-round3/`.
+
 **A click on an ordinary building hung the page since the lazy facts store; one request per card (2026-11-01).**
 Integrator. `_cardForClickedBuilding` asks `_requestBuildingFacts` whenever the
 row has no article (most of the city); the refresh on arrival rebuilt the

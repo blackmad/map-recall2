@@ -169,17 +169,37 @@ export function buildSpoilerIndex(names: Iterable<string>): SpoilerIndex {
  *  "Keizersgrachtkerk" on the Keizersgracht said the answer while the n-grams
  *  passed it (spoiler audit 2026-10-22). Stems are not prefix-matched, or
  *  "Herenhuis" would count for the Herengracht. */
+/** Answers per index and label: the engine's label layer asks for every POI on every rebuild (#129 4x profile: the
+ *  name normalisation was ~140 ms of the load's label rebuilds). An index is built whole and never edited in place;
+ *  a new one (vector-map.js on a spoiler change) starts a new memo. */
+const spoilsMemo = new WeakMap<SpoilerIndex, Map<string, boolean>>();
 export function poiNameSpoils(label: string | null | undefined, index: SpoilerIndex | null): boolean {
   if (!label || !index || index.names.size === 0) return false;
-  const words = normaliseSpoilerName(label).split(' ').filter(Boolean);
-  for (let size = 1; size <= Math.min(SPOILER_MAX_WORDS, words.length); size++) {
-    for (let start = 0; start + size <= words.length; start++) {
-      if (index.names.has(words.slice(start, start + size).join(' '))) return true;
-    }
+  let memo = spoilsMemo.get(index);
+  if (!memo) spoilsMemo.set(index, memo = new Map());
+  let spoils = memo.get(label);
+  if (spoils === undefined) memo.set(label, spoils = labelSpoils(label, index));
+  return spoils;
+}
+/** A label's words and its 1–5 word runs, which do not depend on the index: a new index (names learned while
+ *  loading) asks again about the same POIs. */
+const labelGrams = new Map<string, { words: string[]; grams: string[] }>();
+/** The lengths of an index's full names: a word's prefix can only match a name of one of these lengths. */
+const fullLengths = new WeakMap<Set<string>, number[]>();
+function labelSpoils(label: string, index: SpoilerIndex): boolean {
+  let held = labelGrams.get(label);
+  if (!held) {
+    const words = normaliseSpoilerName(label).split(' ').filter(Boolean), grams: string[] = [];
+    for (let size = 1; size <= Math.min(SPOILER_MAX_WORDS, words.length); size++)
+      for (let start = 0; start + size <= words.length; start++) grams.push(words.slice(start, start + size).join(' '));
+    labelGrams.set(label, held = { words, grams });
   }
+  for (const gram of held.grams) if (index.names.has(gram)) return true;
   if (index.full && index.full.size) {
-    for (const word of words) {
-      for (let n = SPOILER_MIN_LENGTH; n < word.length; n++) if (index.full.has(word.slice(0, n))) return true;
+    let lengths = fullLengths.get(index.full);
+    if (!lengths) fullLengths.set(index.full, lengths = [...new Set([...index.full].map(n => n.length))].filter(n => n >= SPOILER_MIN_LENGTH).sort((a, b) => a - b));
+    for (const word of held.words) {
+      for (const n of lengths) { if (n >= word.length) break; if (index.full.has(word.slice(0, n))) return true; }
     }
   }
   return false;

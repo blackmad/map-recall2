@@ -3561,17 +3561,34 @@
     }
     return { names: index, lowerRaw, full };
   }
+  var spoilsMemo = /* @__PURE__ */ new WeakMap();
   function poiNameSpoils(label, index) {
     if (!label || !index || index.names.size === 0) return false;
-    const words2 = normaliseSpoilerName(label).split(" ").filter(Boolean);
-    for (let size = 1; size <= Math.min(SPOILER_MAX_WORDS, words2.length); size++) {
-      for (let start = 0; start + size <= words2.length; start++) {
-        if (index.names.has(words2.slice(start, start + size).join(" "))) return true;
-      }
+    let memo = spoilsMemo.get(index);
+    if (!memo) spoilsMemo.set(index, memo = /* @__PURE__ */ new Map());
+    let spoils = memo.get(label);
+    if (spoils === void 0) memo.set(label, spoils = labelSpoils(label, index));
+    return spoils;
+  }
+  var labelGrams = /* @__PURE__ */ new Map();
+  var fullLengths = /* @__PURE__ */ new WeakMap();
+  function labelSpoils(label, index) {
+    let held = labelGrams.get(label);
+    if (!held) {
+      const words2 = normaliseSpoilerName(label).split(" ").filter(Boolean), grams = [];
+      for (let size = 1; size <= Math.min(SPOILER_MAX_WORDS, words2.length); size++)
+        for (let start = 0; start + size <= words2.length; start++) grams.push(words2.slice(start, start + size).join(" "));
+      labelGrams.set(label, held = { words: words2, grams });
     }
+    for (const gram of held.grams) if (index.names.has(gram)) return true;
     if (index.full && index.full.size) {
-      for (const word of words2) {
-        for (let n = SPOILER_MIN_LENGTH; n < word.length; n++) if (index.full.has(word.slice(0, n))) return true;
+      let lengths = fullLengths.get(index.full);
+      if (!lengths) fullLengths.set(index.full, lengths = [...new Set([...index.full].map((n) => n.length))].filter((n) => n >= SPOILER_MIN_LENGTH).sort((a, b) => a - b));
+      for (const word of held.words) {
+        for (const n of lengths) {
+          if (n >= word.length) break;
+          if (index.full.has(word.slice(0, n))) return true;
+        }
       }
     }
     return false;

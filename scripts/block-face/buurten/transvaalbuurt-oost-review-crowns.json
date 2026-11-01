@@ -1,0 +1,90 @@
+{
+ "note": "Crown variants pinned after reading the round-3 strip sheets at gallery size (blockFace/reviewCrowns.ts). The 2023-01-02 strips carry bare branches over most 1911 fronts, so the skyline is not sky-bounded and the 1911 types fall back to their crown from type (none); a pin restores what the strip shows. One pin per placed type (the photo decides between the low- and tall-ground twins).",
+ "reviewed": "2026-11-01",
+ "pins": [
+  {
+   "pandId": "0363100012112323",
+   "type": "transvaal-1911-five-storey",
+   "crown": "wall-dormer",
+   "reason": "retief-45-75-r1 sheet 2023-01-02: a brick wall dormer with one light over the centre axis, flat white cap at about 15.9 m; the skyline reads the branches over it (17.7 m)"
+  },
+  {
+   "pandId": "0363100012112323",
+   "type": "transvaal-1911-five-storey-tall",
+   "crown": "wall-dormer",
+   "reason": "retief-45-75-r1 sheet 2023-01-02: a brick wall dormer with one light over the centre axis, flat white cap at about 15.9 m; the skyline reads the branches over it (17.7 m)"
+  },
+  {
+   "pandId": "0363100012129491",
+   "type": "transvaal-1911-five-storey",
+   "crown": "point-gable",
+   "reason": "retief-45-75-r1 sheet 2023-01-02: a low pointed brick gable over the whole front with attic lights; the skyline reads branches at 17.7 m"
+  },
+  {
+   "pandId": "0363100012129491",
+   "type": "transvaal-1911-five-storey-tall",
+   "crown": "point-gable",
+   "reason": "retief-45-75-r1 sheet 2023-01-02: a low pointed brick gable over the whole front with attic lights; the skyline reads branches at 17.7 m"
+  },
+  {
+   "pandId": "0363100012067013",
+   "type": "transvaal-1911-five-storey",
+   "crown": "point-gable",
+   "reason": "retief-45-75-r1 sheet 2023-01-02: a low pointed brick gable over the whole front with attic lights, the twin of 71D; the skyline is unread under branches"
+  },
+  {
+   "pandId": "0363100012067013",
+   "type": "transvaal-1911-five-storey-tall",
+   "crown": "point-gable",
+   "reason": "retief-45-75-r1 sheet 2023-01-02: a low pointed brick gable over the whole front with attic lights, the twin of 71D; the skyline is unread under branches"
+  },
+  {
+   "pandId": "0363100012102414",
+   "type": "transvaal-1911-five-storey",
+   "crown": "point-gable",
+   "reason": "pretorius-72-120-r1 sheet 2023-01-02: a pointed brick gable over the front with attic lights; the skyline read a 1.5 m rise and took it for the white dormer"
+  },
+  {
+   "pandId": "0363100012102414",
+   "type": "transvaal-1911-five-storey-tall",
+   "crown": "point-gable",
+   "reason": "pretorius-72-120-r1 sheet 2023-01-02: a pointed brick gable over the front with attic lights; the skyline read a 1.5 m rise and took it for the white dormer"
+  },
+  {
+   "pandId": "0363100012149642",
+   "type": "transvaal-1911-five-storey",
+   "crown": "point-gable",
+   "reason": "pretorius-72-120-r1 sheet 2023-01-02: a pointed brick gable over the front with attic lights, as 92A"
+  },
+  {
+   "pandId": "0363100012149642",
+   "type": "transvaal-1911-five-storey-tall",
+   "crown": "point-gable",
+   "reason": "pretorius-72-120-r1 sheet 2023-01-02: a pointed brick gable over the front with attic lights, as 92A"
+  },
+  {
+   "pandId": "0363100012076819",
+   "type": "transvaal-1911-five-storey",
+   "crown": "point-gable",
+   "reason": "pretorius-72-120-r1 sheet 2023-01-02: a pointed brick gable over the front behind the branches"
+  },
+  {
+   "pandId": "0363100012076819",
+   "type": "transvaal-1911-five-storey-tall",
+   "crown": "point-gable",
+   "reason": "pretorius-72-120-r1 sheet 2023-01-02: a pointed brick gable over the front behind the branches"
+  },
+  {
+   "pandId": "0363100012142310",
+   "type": "transvaal-1911-five-storey",
+   "crown": "point-gable",
+   "reason": "pretorius-72-120-r1 sheet 2023-01-02: a pointed brick gable over most of the front like 90B; the skyline's 1.5 m rise drew a white dormer the strip does not show"
+  },
+  {
+   "pandId": "0363100012142310",
+   "type": "transvaal-1911-five-storey-tall",
+   "crown": "point-gable",
+   "reason": "pretorius-72-120-r1 sheet 2023-01-02: a pointed brick gable over most of the front like 90B; the skyline's 1.5 m rise drew a white dormer the strip does not show"
+  }
+ ]
+}

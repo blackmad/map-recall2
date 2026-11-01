@@ -395,14 +395,30 @@ export class SharedFrame {
    */
   compileAsync(object: any, timeoutMs = 2000): Promise<void> {
     const renderer = this.renderer;
-    if (!renderer?.compileAsync || this.coverPaused) return Promise.resolve();
-    let ready: Promise<unknown>;
-    try { ready = renderer.compileAsync(object, this.camera, this.scene); }
+    if (!renderer?.compile || this.coverPaused) return Promise.resolve();
+    // three's own compileAsync polls `properties.get(material).currentProgram.isReady()` every 10 ms until all are
+    // ready, with no way to stop: after a context loss the properties are reset, the program is undefined and the
+    // poll throws in a timer ("Cannot read properties of undefined (reading 'isReady')", #129), and it keeps polling
+    // after our timeout. The same poll here: a missing program counts as ready (its first draw compiles), and it ends
+    // at the timeout.
+    let materials: Set<any>;
+    try { materials = new Set(renderer.compile(object, this.camera, this.scene)); }
     catch (error) { console.warn('Shared frame: could not precompile', error); return Promise.resolve(); }
     finally { renderer.resetState(); }
-    let timer: ReturnType<typeof setTimeout> | undefined;
-    const timeout = new Promise<void>(resolve => { timer = setTimeout(resolve, timeoutMs); });
-    return Promise.race([ready.then(() => undefined, () => undefined), timeout]).finally(() => clearTimeout(timer));
+    const parallel = (() => { try { return renderer.extensions?.get?.('KHR_parallel_shader_compile') != null; } catch { return false; } })();
+    return new Promise<void>(resolve => {
+      const until = Date.now() + timeoutMs;
+      const check = () => {
+        for (const material of materials) {
+          let ready = true;
+          try { ready = renderer.properties?.get?.(material)?.currentProgram?.isReady?.() ?? true; } catch { ready = true; }
+          if (ready) materials.delete(material);
+        }
+        if (!materials.size || Date.now() >= until) { resolve(); return; }
+        setTimeout(check, Math.min(10, Math.max(0, until - Date.now())));
+      };
+      if (parallel) check(); else setTimeout(check, 10);
+    });
   }
 
   /** Set cast/receive on every mesh under `object`. */

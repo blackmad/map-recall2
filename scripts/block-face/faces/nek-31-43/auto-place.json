@@ -3,7 +3,7 @@
  "street": "Laing's Nekstraat",
  "library": "transvaalbuurt",
  "stripDate": "2023-01-02",
- "seconds": 5.3,
+ "seconds": 7.83,
  "thresholds": {
   "minScore": 0.7,
   "margin": 0.05,
@@ -63,11 +63,11 @@
    },
    "status": "held",
    "stage": "likeness",
-   "reason": "edge NCC 0.032 < 0.15 (photo vs model body; likeness.ts WARN: mask IoU 0.224 < 0.45)",
+   "reason": "edge NCC 0.007 < 0.15 (photo vs model body; likeness.ts WARN: mask IoU 0.218 < 0.45)",
    "likeness": {
     "pandId": "0363100012066211",
-    "ncc": 0.032,
-    "nccRaw": 0.032,
+    "ncc": 0.007,
+    "nccRaw": 0.007,
     "shiftM": [
      -0.4,
      0.25
@@ -76,7 +76,7 @@
     "abstain": null,
     "verdict": "WARN",
     "reasons": [
-     "mask IoU 0.224 < 0.45"
+     "mask IoU 0.218 < 0.45"
     ],
     "wall": {
      "photo": "#8b766e",
@@ -84,18 +84,18 @@
      "dL": 0.063
     },
     "glazing": {
-     "photo": 0.36,
-     "model": 0.43
+     "photo": 0.37,
+     "model": 0.42
     },
     "columns": {
      "photo": null,
      "model": 4
     },
-    "iou": 0.224
+    "iou": 0.218
    },
    "challengers": {
-    "transvaal-1911-five-storey-tall": 0.032,
-    "transvaal-1911-five-storey-tall~m": 0.04
+    "transvaal-1911-five-storey-tall": 0.007,
+    "transvaal-1911-five-storey-tall~m": 0.025
    }
   },
   {
@@ -177,11 +177,11 @@
    },
    "status": "held",
    "stage": "likeness",
-   "reason": "edge NCC 0.02 < 0.15 (photo vs model body; likeness.ts FAIL: window shape square vs photo tall; columns 3 vs photo 4)",
+   "reason": "edge NCC 0.043 < 0.15 (photo vs model body; likeness.ts FAIL: window shape square vs photo tall; columns 3 vs photo 4)",
    "likeness": {
     "pandId": "0363100012061814",
-    "ncc": 0.02,
-    "nccRaw": 0.02,
+    "ncc": 0.043,
+    "nccRaw": 0.043,
     "shiftM": [
      0.3,
      0.4
@@ -200,17 +200,17 @@
     },
     "glazing": {
      "photo": 0.3,
-     "model": 0.37
+     "model": 0.36
     },
     "columns": {
      "photo": 4,
      "model": 3
     },
-    "iou": 0.194
+    "iou": 0.18
    },
    "challengers": {
-    "transvaal-1911-five-storey-tall": 0.02,
-    "transvaal-1911-five-storey-tall~m": 0.02
+    "transvaal-1911-five-storey-tall": 0.043,
+    "transvaal-1911-five-storey-tall~m": 0.043
    }
   },
   {

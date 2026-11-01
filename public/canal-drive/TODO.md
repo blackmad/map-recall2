@@ -384,7 +384,7 @@ not run it.
 
 **Next neighbourhood kits (user, 2026-10-26):** in order De Pijp, Oud-West (Kinkerstraat/Bilderdijkstraat), the Jordaan, Oud-Zuid, then Dapperbuurt and Indische Buurt. Use the #81 block-face kit method. No more outer-estate rounds for now.
 
-**Transvaalbuurt round 3, in flight (user, 2026-11-01, #152, branch `lane/transvaalbuurt-install-3-20261101`, brief `docs/handoffs/lane-transvaalbuurt-install-3-20261101.md`; rounds 1 and 2 in HISTORY "Transvaalbuurt kit" and "Transvaalbuurt round 2"):** round 2 (#151) put the stair-block frontage and the 1911 five-storey twins in the library and compared the 274-pand 1908–1914 family for the first time, but nothing survived review, so the buurt still shows one installed row (Albert Luthulistraat 25–39). Two kit blockers before any 1911 row installs: (1) a point gable beside a cornice or dormer neighbour leaves 1.2–2.3 m² of coplanar brick/tile overlap that the GLB audit rejects (a `crownAt` inset did not clear it; blocks Retiefstraat 69C–73A, Pretoriusstraat 79–87, Paardekraalstraat 1–15, Transvaalstraat 42–48); (2) the crown read needs a clean sky and reads trees at 15.5–18.4 m as point gables on flat fronts (Smitstraat 36–38, Transvaalstraat 54–56, 100–102, Laing's Nekstraat 34–56). Then: the ribbon era guard holds whole same-year rows when one pand reads "ribbon" (12 of Transvaalstraat 7–41, 9 of Pretoriusstraat 72–96; make it per pand); the 1923 portiek design's stair-only (5.6 m) and window-only (10 m) BAG pands (Schalk Burgerstraat 18, 28); round-arched doors and segmental relieving arches on the 1911 rows; three axis widths on one front (Retiefstraat 3–41). Families still without a type (pands West+Oost): 1929–1931 corner-tower blocks 123, 1920–1922 three-storey rows 80 (+44 taller), 1926–1928 band-window rows 53, 1915–1919 58, after 1931 99; and a flat-roof-with-setback crown for the installed 1923 design (its grey pitched roof is the largest visible gap). Lane state and strips: `docs/handoffs/lane-transvaalbuurt-types-2-20261031.md`, source-data `block-face-strips/transvaalbuurt-round2/`. The face split at bends (`buurtFaces.ts`) also changes faces that fail intake today in Bloemgrachtbuurt and Kinkerstraat; their survey JSONs were not regenerated.
+**Transvaalbuurt round 4, next (user, 2026-11-01; rounds 1–3 in HISTORY "Transvaalbuurt kit", "round 2", "round 3"):** the buurt shows the 1923 portiek row on Albert Luthulistraat 25–39 and ten 1911 pands on Retiefstraat 69–73 and Pretoriusstraat 79–90; 284 Oost pands and 36 West pands are compared and held. Kit work that would release the most held pands, in order: (1) the low shouldered gable of the 1911 rows (the kit's point gable is steeper and taller; Retiefstraat 71D–73A are drawn with it today) and a gable over part of a five-axis front (Paardekraalstraat 13–15); (2) a crown shared across two pands (Transvaalstraat 42–44); (3) a white timber dormer whose glass stays inside the roof plane (Transvaalstraat 39–45A fail the GLB audit opening-outside with it); (4) the pointed gablet with an oculus over Pretoriusstraat 79–87 (drawn bare); (5) the 1923 design's stair-only (5.6 m) and window-only (10 m) BAG pands (Schalk Burgerstraat 18, 28). `bilder-157757-164549` carries the same 0.9 m² rake overlap `roof.rakeClear` fixes; opt it in when that face is next recompiled. Families still without a type (pands West+Oost): 1929–1931 corner-tower blocks 123, 1920–1922 three-storey rows 80 (+44 taller), 1926–1928 band-window rows 53, 1915–1919 58, after 1931 99; and a flat-roof-with-setback crown for the 1923 design (its grey pitched roof is the largest visible gap on the installed row). The buurt batch skips faces marked `covered` in the buurt doc (`transvaal-3-47`, `transvaal-49-63`, `pretorius-53-69`); `transvaal-3-47` was re-run by hand and is held. Lane state: `docs/handoffs/lane-transvaalbuurt-install-3-20261101.md`; strips in source-data `block-face-strips/transvaalbuurt-round3/`. The face split at bends (`buurtFaces.ts`) also changes faces that fail intake today in Bloemgrachtbuurt and Kinkerstraat; their survey JSONs were not regenerated.
 
 **Next lane: large-recipe roof clean-up (#87, user yes 2026-10-26).** 3DBAG slivers and stray flat levels on the large models' roofs: 20 installed houses have many slivers and 77 have 6 or more flat levels. Warmoesstraat 157-163 and Van Eeghenstraat 97-101 were flagged. The plan is in the issue.
 
@@ -1394,11 +1394,22 @@ Root `main` was cleaned on 2026-10-09 (see HISTORY). Live work, in order:
   continuation 115–171 → 19–22 ms; the 4× worst frames are now the engine
   render callback and cell-decode continuations (next split: `withOpenings`
   → `groundCrossing` ~11 ms, L1); `setFeatures` 606 / `_applyChunkPandBases`
-  374 / `post` 219 ms at 4× (materials); signature-landmarks `_requestModels`
-  is run-to-run spread, not a regression (paired 804 vs 779 ms); gating it to
-  load-slot/shown-set changes is approved with an exactness pin on which
-  models get requested (L1). Shim callers left: engine `project` ~1600/s,
-  inventory-trees (L1).
+  374 / `post` 219 ms at 4× before the materials facades package (on main
+  2026-11-01, HISTORY "Facades package"): exact single-pass tiles, 2× context
+  index, 2.7× segment grid; headed 4× frames over 50 ms 4 → 1 per minute,
+  longest 100 → 59 ms, `setFeatures` max 167 → 90 ms; materials next: the
+  pre-painted atlas (settle hold + texture painting), then procedural noise
+  and shader programs off the boot path; signature-landmarks `_requestModels` is gated since
+  hand-back (14) (skipped only while the request revision, models,
+  generation and view-within-slack are unchanged; shadow check 0 misses in
+  6,8xx skips; 4× stall 1124 → 196 ms/min; `?landmarkGate=0` turns it off);
+  `withOpenings` runs as tasks (browser saving unmeasured, L1). HELD:
+  f8e79ee5e (overview build in the worker pool, boot → submit ~1021 → ~770
+  ms, and engine `project` off the shim) stops the desktop ride from
+  starting under own (engine-own:78, render-on-change:10,
+  label-occlusion:102 wait for the player); reverted on main, L1 finds the
+  cause and pins it. Shim callers left: engine `project` ~1600/s,
+  inventory-trees, per-frame getZoom/getCenter/getBounds/jumpTo (L1).
   Idle rendering (fan) is fixed under own: render-on-change on main, 0
   renders per 5 s at rest; the default engine still renders every idle frame
   until the flip.
@@ -1412,12 +1423,19 @@ Root `main` was cleaned on 2026-10-09 (see HISTORY). Live work, in order:
   decoder inside, still works): add one before the flip. `engine-own.spec`'s `heapMB` is noise without a GC;
   `scripts/heap-ride.mjs` is the measure.
 - **Time to ride under own ≈ 3.5 s median, three of six runs within 70 ms of
-  the 4 s gate**: the settle hold waiting on facade chunks is the variance
-  (materials lane: spawn chunks first); boot → submit 0.84–1.03 s vs 0.48–0.57
+  the 4 s gate**: the settle hold waited on facade chunks that could not
+  build until the atlas (painted on the main thread in 6 ms slices) was
+  bound; chunks now build while it paints (settle 850–1160 → 661–716 ms,
+  racing after submit 2055–2459 → 1885–1967 ms), the ≤ 0.3 s hold target
+  needs the pre-painted atlas (materials), and the 2.8 s hold timeout must
+  wait on the atlas bind so racing never starts without facades (materials,
+  before the flip); boot → submit 0.84–1.03 s vs 0.48–0.57
   default, owners named (HISTORY "Binary road extract is Amsterdam's
-  default"): engine overview build 184 ms after a first cut (rest off the
-  boot path: L1), three-buildings texture painting ≈ 117 ms, own-ground
-  procedural noise ≈ 110 ms, shader programs ≈ 75 ms (materials).
+  default"): engine overview build 184 ms (the worker-pool build, ~250 ms
+  off boot → submit, is held with f8e79ee5e until L1 fixes the desktop
+  ride start), three-buildings texture painting ≈ 117 ms (materials: ship a
+  pre-painted atlas, which also ends the settle hold on the atlas bind),
+  own-ground procedural noise ≈ 110 ms, shader programs ≈ 75 ms (materials).
 - **Two iphone spawn-pose failures on main** (road lane): `street-follow-tap`
   3/3 (binary, JSON and fresh bundles alike; the seeded spawn is on
   Amsteldijk on a straight path, so the "waiting for a side" premise is
