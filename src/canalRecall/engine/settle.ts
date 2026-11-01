@@ -13,7 +13,7 @@ export interface SettleSources {
   status: Record<string, unknown>;
   _ownGround: { ready?: boolean; loadingCells?: number; coversRect?(x0: number, y0: number, x1: number, y1: number): boolean } | null;
   _threeBuildings: { loadingCount?: number; hurryAtlas?(): void } | null;
-  _completeCity?: { status?(): { inFlight: number; queued: number } } | null;
+  _completeCity?: { status?(): { inFlight: number; queued: number; styling?: boolean }; hurryStyling?(): void } | null;
   _signatureLandmarks?: { _pending?: { size: number } } | null;
 }
 
@@ -39,7 +39,9 @@ export function settleChecks(v: SettleSources): Array<[string, () => boolean]> {
       const [x, y] = toLocal(c.lng, c.lat), r = SETTLE_GROUND_RADIUS_M;
       return !g.coversRect(x - r, y - r, x + r, y + r);
     }],
-    ['buildingTiles', () => { const s = v._completeCity?.status?.(); return !!s && s.inFlight + s.queued > 0; }],
+    // Fetched is not enough: arrivals are styled and published to the facades in slices, and the hold waits for that
+    // (asking hurries it), or racing began before the spawn's buildings reached the facade layer (#129, f840fb6).
+    ['buildingTiles', () => { const c = v._completeCity; c?.hurryStyling?.(); const s = c?.status?.(); return !!s && (s.inFlight + s.queued > 0 || !!s.styling); }],
     // Asked only while something waits on the view: the facades then finish their atlas in longer slices.
     ['facades', () => { v._threeBuildings?.hurryAtlas?.(); return (v._threeBuildings?.loadingCount ?? 0) > 0; }],
     ['landmarks', () => (v._signatureLandmarks?._pending?.size ?? 0) > 0],

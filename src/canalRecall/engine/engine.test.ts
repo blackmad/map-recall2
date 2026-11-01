@@ -301,6 +301,14 @@ test('settled: whenIdle waits for every named loader check, polling while work f
   view._threeBuildings = { loadingCount: 1, hurryAtlas: () => { hurried++; } };
   assert.deepEqual(settlePending(view), ['buildingTiles', 'facades']);
   assert.equal(hurried, 1, 'the hold asked the facades to finish the atlas in longer slices');
+  // Fetched tiles still being styled and handed to the facades hold the view too, and asking hurries them.
+  let styling = true, hurriedStyling = 0;
+  view._threeBuildings = null;
+  view._completeCity = { status: () => ({ inFlight: 0, queued: 0, styling }), hurryStyling: () => { hurriedStyling++; } };
+  assert.deepEqual(settlePending(view), ['buildingTiles']);
+  assert.equal(hurriedStyling, 1);
+  styling = false;
+  assert.deepEqual(settlePending(view), []);
 });
 
 test('map shim getBounds is MapLibre LngLatBounds-shaped: contains (artis-animals.js), getWest… (park-landscape.js)', async () => {

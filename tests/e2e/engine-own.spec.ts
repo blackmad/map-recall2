@@ -55,6 +55,9 @@ async function countMapLibre(page: Page): Promise<void> {
  * Installed facade chunk meshes with geometry that are attached and not hidden (threeBuildingsBrowser.ts `chunks`).
  * Ancestors are not checked: the shared frame toggles its participant wrappers per pass.
  */
+/** Share of the facades resident 3 s into a standing start that the first racing frame must already show. */
+const FIRST_FRAME_SHARE = 0.7;
+
 function facadeMeshCount(): number {
   const tb = (window as any).canalRecallGame?.vectorMap?._threeBuildings;
   let count = 0;
@@ -89,7 +92,35 @@ test('?engine=own rides with three.js owning the frame; maplibregl.Map is never 
     const file = `${bundles}/${/\/([\w-]+\.bundle\.js)/.exec(route.request().url())![1]}`;
     return existsSync(file) ? route.fulfill({ path: file, contentType: 'application/javascript' }) : route.continue();
   });
-  await openRoute(page, { query: '?engine=own', viewMode: 'chase' });
+  // The first racing frame must already have facades round the rider (#129 decision b, the deployed f840fb6 probe:
+  // only the station and two blocks drew when racing began). Counted on the frame the game itself enters racing, so
+  // the route opens without forcing the state and waits for the loading hold to end.
+  await page.addInitScript(() => {
+    const w = window as any;
+    const watch = () => {
+      const g = w.canalRecallGame;
+      if (g?.state === 4) {
+        const tb = g.vectorMap?._threeBuildings;
+        let count = 0;
+        for (const chunk of tb?.chunks?.values?.() ?? []) if (chunk.mesh?.parent && chunk.mesh.visible !== false && chunk.info?.vertexCount > 0) count++;
+        w.__facadesAtRacing = { count, ready: !!tb?.ready, settle: g._lastMapSettle ?? null };
+        return;
+      }
+      requestAnimationFrame(watch);
+    };
+    requestAnimationFrame(watch);
+  });
+  await openRoute(page, { query: '?engine=own', viewMode: 'chase', enterRacing: false });
+  await expect.poll(() => page.evaluate(() => (window as any).__facadesAtRacing ?? null), { timeout: 90_000, message: 'the game enters racing' }).not.toBeNull();
+  const atRacing = await page.evaluate(() => (window as any).__facadesAtRacing);
+  console.log('facades at the first racing frame', JSON.stringify(atRacing));
+  expect(atRacing.ready, 'the facade atlas is bound when racing begins').toBe(true);
+  expect(atRacing.count, 'facade chunk meshes are visible in the first racing frame').toBeGreaterThan(0);
+  // Not a token few: standing still, the set 3 s later is what the spawn view holds.
+  await page.waitForTimeout(3000);
+  const settledCount = await page.evaluate(facadeMeshCount);
+  console.log('facades 3 s after racing began', settledCount);
+  expect(atRacing.count, `facades at the first racing frame (${atRacing.count}) against 3 s later (${settledCount})`).toBeGreaterThanOrEqual(Math.ceil(settledCount * FIRST_FRAME_SHARE));
   const view = await page.evaluate(() => {
     const vm = (window as any).canalRecallGame.vectorMap;
     return { engine: vm.engine, hasCamera: typeof vm.camera?.project === 'function', canvas: !!vm.frameCanvas?.() };

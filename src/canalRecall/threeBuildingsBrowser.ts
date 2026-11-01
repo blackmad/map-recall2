@@ -339,7 +339,13 @@ export class ThreeBuildings {
    * Behind the loading screen nothing is riding, and at 6 ms slices the ~0.4 s paint stretched to ~3 s of wall time
    * against the boot's other tasks (cache-probe, 2026-11-01). Same pixels.
    */
-  hurryAtlas(): void { if (!this.ready) this.atlasSliceMs = RESTORE_TEXTURE_SLICE_MS; }
+  hurryAtlas(): void {
+    if (!this.ready) this.atlasSliceMs = RESTORE_TEXTURE_SLICE_MS;
+    // Installs, one budgeted drain per animation frame, also go on timers while the hold waits: frames came 0.3-0.9 s
+    // apart behind the loading screen. Back to frames once nothing is left to install.
+    if (this.staged.length || this.pending.length || this.inflight.size) this.installHurried = true;
+  }
+  private installHurried = false;
   /** Where the facade atlas came from (look/lookAtlas.ts): the pre-painted extract, or why it was painted. */
   atlasSource: { reason: string; ms: number; file: string; paintMs?: number } | null = null;
   private lookToken = 0;
@@ -1219,8 +1225,8 @@ export class ThreeBuildings {
   private scheduleStage(): void {
     if (this.stageScheduled || !this.staged.length) return;
     this.stageScheduled = true;
-    const run = () => { this.stageScheduled = false; this.drainStaged(); };
-    if (typeof requestAnimationFrame === 'function') requestAnimationFrame(run); else setTimeout(run, 0);
+    const run = () => { this.stageScheduled = false; this.drainStaged(); if (!this.staged.length && !this.pending.length && !this.inflight.size) this.installHurried = false; };
+    if (this.installHurried || typeof requestAnimationFrame !== 'function') setTimeout(run, 0); else requestAnimationFrame(run);
   }
 
   private readonly uploadBudget = new FrameBudget(INSTALL_BUDGET_MS, installBudgetBytes());
