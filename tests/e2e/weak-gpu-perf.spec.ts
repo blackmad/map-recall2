@@ -1,4 +1,4 @@
-import { test, chromium } from '@playwright/test';
+import { test, chromium, devices } from '@playwright/test';
 import { existsSync, mkdirSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { openRoute } from './helpers';
@@ -25,13 +25,17 @@ const VARIANTS: Record<string, string> = {
   ownGroundOff: '?governor=0&ownGround=0',
   governed: '',
   // Quality tiers (renderGovernor.ts, the own engine: ENGINE=own): the probe picks one; these force the others.
+  tierLow: '?governor=0&tier=low',
   tierHigh: '?governor=0&tier=high',
   tierMid: '?governor=0&tier=mid',
   // The low tier with the desktop ground level (before the tier set it): the A/B for the low tier's coarse ground.
   tierLowFullGround: '?governor=0&tier=low&groundDetail=full&groundNear=cell&groundRing=steps',
 };
 const chosen = (process.env.WEAK_GPU_VARIANTS ?? Object.keys(VARIANTS).join(',')).split(',');
-const dpr = Number(process.env.WEAK_GPU_DPR ?? 1.5);
+// WEAK_GPU_DEVICE=phone: the iphone project's profile (390x844, touch, coarse pointer: the phone device defaults) at
+// WEAK_GPU_DPR (default 3 there), the P4 gate's phone profile.
+const phone = process.env.WEAK_GPU_DEVICE === 'phone';
+const dpr = Number(process.env.WEAK_GPU_DPR ?? (phone ? 3 : 1.5));
 const pick = (values: number[], q: number) => [...values].sort((a, b) => a - b)[Math.min(values.length - 1, Math.floor(q * values.length))] ?? 0;
 const results: Record<string, unknown>[] = [];
 
@@ -41,7 +45,9 @@ for (const name of chosen) {
     const browser = await chromium.launch({
       args: ['--use-gl=angle', '--use-angle=swiftshader', '--enable-unsafe-swiftshader', '--ignore-gpu-blocklist', '--disable-gpu-vsync', '--disable-frame-rate-limit'],
     });
-    const context = await browser.newContext({ baseURL, viewport: { width: 1440, height: 900 }, deviceScaleFactor: dpr });
+    const context = await browser.newContext(phone
+      ? { ...devices['iPhone 13'], baseURL, deviceScaleFactor: dpr }
+      : { baseURL, viewport: { width: 1440, height: 900 }, deviceScaleFactor: dpr });
     const page = await context.newPage();
     // BUNDLES_DIR=<dir>: serve *.bundle.js from there (a source change before the integrator rebuilds).
     const bundles = process.env.BUNDLES_DIR;
@@ -74,11 +80,11 @@ for (const name of chosen) {
         return { frames: w.__frames.slice(5) as number[], backing: [canvas.width, canvas.height], heapMB: mem ? Math.round(mem.usedJSHeapSize / 1048576) : null, pixelRatio: surface.getPixelRatio(), governorSteps: governor ? governor.steps : null, tier: w.__canalPerf?.tier ?? null, tierReasons: w.__canalPerf?.tierReasons ?? null, tierProbe: w.__canalPerf?.tierProbe ?? null };
       });
       const f = raw.frames;
-      const sample = { name, dpr, n: f.length, fps: +(1000 / (f.reduce((a, b) => a + b, 0) / Math.max(1, f.length))).toFixed(1), median: +pick(f, 0.5).toFixed(1), p75: +pick(f, 0.75).toFixed(1), p95: +pick(f, 0.95).toFixed(1), backing: raw.backing, pixelRatio: raw.pixelRatio, heapMB: raw.heapMB, governorSteps: raw.governorSteps, engine: process.env.ENGINE ?? 'maplibre', tier: raw.tier, tierReasons: raw.tierReasons, tierProbe: raw.tierProbe };
+      const sample = { name, dpr, device: phone ? 'phone' : 'desktop', n: f.length, fps: +(1000 / (f.reduce((a, b) => a + b, 0) / Math.max(1, f.length))).toFixed(1), median: +pick(f, 0.5).toFixed(1), p75: +pick(f, 0.75).toFixed(1), p95: +pick(f, 0.95).toFixed(1), backing: raw.backing, pixelRatio: raw.pixelRatio, heapMB: raw.heapMB, governorSteps: raw.governorSteps, engine: process.env.ENGINE ?? 'maplibre', tier: raw.tier, tierReasons: raw.tierReasons, tierProbe: raw.tierProbe };
       results.push(sample);
       console.log(JSON.stringify(sample));
       mkdirSync('artifacts/perf', { recursive: true });
-      writeFileSync(`artifacts/perf/weak-gpu-${process.env.ENGINE === 'own' ? 'own-' : ''}${dpr}.json`, JSON.stringify(results, null, 2));
+      writeFileSync(`artifacts/perf/weak-gpu-${process.env.ENGINE === 'own' ? 'own-' : ''}${phone ? 'phone-' : ''}${dpr}.json`, JSON.stringify(results, null, 2));
     } finally {
       await browser.close();
     }

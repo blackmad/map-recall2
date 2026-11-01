@@ -201,9 +201,12 @@ export class OwnWorldView {
     const search = new URLSearchParams(W().location?.search ?? '');
     const asked = search.get('tier');
     const ratio = this.host.getPixelRatio();
-    const probe = asked ? null : tierProbe(THREE, this.host.renderer, { deviceMemory: W().navigator?.deviceMemory, hardwareConcurrency: W().navigator?.hardwareConcurrency, dpr, coarse: coarse() },
+    // The probe runs even when a tier is asked for: a forced tier then boots the same way as the tier it pins (the
+    // probe's few frames shifted which coarse tiles stayed resident, auto vs `?tier=high` on the M4, 2026-11-01), and
+    // specs that force a tier still report what this machine's probe measured.
+    const probe = tierProbe(THREE, this.host.renderer, { deviceMemory: W().navigator?.deviceMemory, hardwareConcurrency: W().navigator?.hardwareConcurrency, dpr, coarse: coarse() },
       { width: Math.max(container.clientWidth, W().innerWidth || 0) * ratio, height: Math.max(container.clientHeight, W().innerHeight || 0) * ratio });
-    const { tier, reasons } = probe ? chooseTier(probe) : chooseTier({ frameMs: null, gpu: '', deviceMemory: null, hardwareConcurrency: null, dpr, coarse: coarse() }, asked);
+    const { tier, reasons } = chooseTier(probe, asked);
     const settings = TIER_SETTINGS[tier];
     const explicitDpr = Number.isFinite(askedDpr) && askedDpr > 0;
     if (!explicitDpr && this.host.getPixelRatio() > settings.dprCap) this.host.setPixelRatio(settings.dprCap);

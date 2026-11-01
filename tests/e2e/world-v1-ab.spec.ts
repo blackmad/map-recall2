@@ -50,7 +50,14 @@ const bearingOf = (at: readonly number[], face: readonly number[]) =>
 // Westerkerk, 353 over 30; byte-identical within each state; camera, lifts, styled features and chunk sets equal;
 // not worker vs inline builds, not install order; 2026-11-01, cause open). With AB_CAMERA=fixed a throwaway load runs
 // first, so default, world and default2 are all later loads.
-const VARIANTS = [...(process.env.AB_CAMERA === 'fixed' && !process.env.AB_NO_WARMUP ? [{ name: 'warmup', query: withQuery('') }] : []), { name: 'default', query: withQuery('') }, { name: 'world', query: withQuery('world=v1') }, ...(process.env.AB_NOISE ? [{ name: 'default2', query: withQuery('') }] : [])];
+// AB_B_QUERY replaces `world=v1` as the B side (files keep the name `world`), for frozen-frame pins of other flags. The
+// quality-tier pin (#129): on a real GPU the probe must pick `high` and leave nothing behind, so auto equals `?tier=high`
+// to the pixel; `?tier=` skips the probe. Headed (Metal), own engine, governor off so neither side steps:
+//   ENGINE=own WORLD_AB=1 WORLD_AB_STALE=1 AB_CAMERA=fixed AB_DPR=2 AB_SPOTS=westerkerk,nassaukade AB_QUERY=governor=0 \
+//     AB_B_QUERY=tier=high npx playwright test world-v1-ab --project=desktop --headed
+const B_QUERY = (process.env.AB_B_QUERY ?? 'world=v1').replace(/^[?&]/, '');
+if (Number(process.env.AB_DPR) > 0) test.use({ deviceScaleFactor: Number(process.env.AB_DPR) });
+const VARIANTS = [...(process.env.AB_CAMERA === 'fixed' && !process.env.AB_NO_WARMUP ? [{ name: 'warmup', query: withQuery('') }] : []), { name: 'default', query: withQuery('') }, { name: 'world', query: withQuery(B_QUERY) }, ...(process.env.AB_NOISE ? [{ name: 'default2', query: withQuery('') }] : [])];
 
 async function serve(page: Page) {
   // On the context, so a worker's cell fetches are served too.
@@ -284,7 +291,7 @@ for (const variant of VARIANTS) {
         // Per facade chunk: the ground lift applied to each building (ids and metres), to find a load-order dependence.
         const lifts: Record<string, string | null> = {};
         for (const [k, e] of vm._threeBuildings?.chunks ?? []) lifts[k] = e.lift ? fnv(JSON.stringify([...e.lift.applied].sort())) + `:${e.lift.pending?.size ?? 0}` : null;
-        return { lifts, usingWorldCells: !!city.usingWorldCells, publishing: city.isPublishing, status: city.status(), tiles, ids, three: { chunks: t.chunks, buildings: t.buildings, walls: t.walls, quads: t.quads, vertices: t.vertices, triangles: t.triangles },
+        return { tier: (window as any).__canalPerf?.tier ?? null, tierProbeMs: (window as any).__canalPerf?.tierProbe?.frameMs ?? null, pixelRatio: vm.host?.getPixelRatio?.() ?? vm.map?.getPixelRatio?.() ?? null, lifts, usingWorldCells: !!city.usingWorldCells, publishing: city.isPublishing, status: city.status(), tiles, ids, three: { chunks: t.chunks, buildings: t.buildings, walls: t.walls, quads: t.quads, vertices: t.vertices, triangles: t.triangles },
           decodeMs: city.world ? Object.fromEntries(city.world.decodeMs) : null, inflateMs: city.world?.inflateMs ? Object.fromEntries(city.world.inflateMs) : null, decodeThread: city.world?.decodeThread ?? null, worldMessages: city.world?.messages ?? null, longestMessageMs: city.world?.longestMessageMs ?? null, dumped };
       }, (process.env.AB_DUMP_IDS ?? '').split(',').filter(Boolean));
       spots[spot.name].shot = shot;
@@ -300,7 +307,7 @@ for (const variant of VARIANTS) {
     }
     results[variant.name] = spots;
     writeFileSync(`${OUT}/${variant.name}.json`, JSON.stringify(spots, null, 2));
-    if (variant.name === 'world') for (const s of Object.values(spots)) expect(s.usingWorldCells, 'world-v1 index served').toBe(true);
+    if (variant.name === 'world' && /(^|&)world=v1(&|$)/.test(B_QUERY)) for (const s of Object.values(spots)) expect(s.usingWorldCells, 'world-v1 index served').toBe(true);
   });
 }
 
@@ -323,7 +330,7 @@ test('world ab: compare', async () => {
     const px = differ(ia, ib).n, pxOver30 = differ(ia, ib).over30;
     const noise = process.env.AB_NOISE ? differ(ia, await sharp(read('default2')[spot.name].shot).raw().toBuffer({ resolveWithObject: true })) : null;
     const tiles2 = process.env.AB_NOISE ? read('default2')[spot.name].tiles : null;
-    rows[spot.name] = { commonTiles: common.length, tilesOnlyDefault: Object.keys(x.tiles).filter(k => !(k in y.tiles)), tilesOnlyWorld: Object.keys(y.tiles).filter(k => !(k in x.tiles)), tilesWithDifferentFeatures: differing, perTile, threeDefault: x.three, threeWorld: y.three, pixelsDiffering: px, pixelsDifferingOver30: pxOver30, noiseFloor: noise && { pixelsDiffering: noise.n, pixelsDifferingOver30: noise.over30, sameTilesAsDefault: JSON.stringify(Object.keys(tiles2).sort()) === JSON.stringify(Object.keys(x.tiles).sort()), tilesWithDifferentFeatures: Object.keys(x.tiles).filter(k => k in tiles2 && tiles2[k] !== x.tiles[k]) }, pixels: ia.info.width * ia.info.height, decodeMs: y.decodeMs, inflateMs: y.inflateMs, decodeThread: y.decodeThread, worldMessages: y.worldMessages, longestMessageMs: y.longestMessageMs };
+    rows[spot.name] = { tier: [x.tier, y.tier], pixelRatio: [x.pixelRatio, y.pixelRatio], tierProbeMs: x.tierProbeMs, commonTiles: common.length, tilesOnlyDefault: Object.keys(x.tiles).filter(k => !(k in y.tiles)), tilesOnlyWorld: Object.keys(y.tiles).filter(k => !(k in x.tiles)), tilesWithDifferentFeatures: differing, perTile, threeDefault: x.three, threeWorld: y.three, pixelsDiffering: px, pixelsDifferingOver30: pxOver30, noiseFloor: noise && { pixelsDiffering: noise.n, pixelsDifferingOver30: noise.over30, sameTilesAsDefault: JSON.stringify(Object.keys(tiles2).sort()) === JSON.stringify(Object.keys(x.tiles).sort()), tilesWithDifferentFeatures: Object.keys(x.tiles).filter(k => k in tiles2 && tiles2[k] !== x.tiles[k]) }, pixels: ia.info.width * ia.info.height, decodeMs: y.decodeMs, inflateMs: y.inflateMs, decodeThread: y.decodeThread, worldMessages: y.worldMessages, longestMessageMs: y.longestMessageMs };
   }
   writeFileSync(`${OUT}/compare.json`, JSON.stringify(rows, null, 2));
   const brief = (r: any) => ({ ...r, perTile: Object.fromEntries(Object.entries<any>(r.perTile).map(([k, t]) => [k, { ...t, onlyWorld: t.onlyWorld.length, onlyDefault: t.onlyDefault.length, styledDiffer: t.styledDiffer.length }])) });
