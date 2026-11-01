@@ -87,3 +87,16 @@ test('a deck polygon half on a deck is drawn, without its triangles over a groun
   assert.deepEqual(deckShare(flat, tris, onDeck, overGround), [0, 2, 3]);
   assert.equal(deckShare(flat, tris, () => false, () => false), null, 'off every deck: not drawn');
 });
+
+test('dryWayDeckProfile: a deck over the dry run, ends open, no water, a claim inside keeps it off', async () => {
+  const { dryWayDeckProfile } = await import('./wayDecks.js');
+  const w = { id: 1, name: 'busway', points: [[0, 0], [60, 0]] as [number, number][], halfWidth: 3 };
+  const dry = (x: number) => x >= 10;
+  const p = dryWayDeckProfile(w, dry, () => false);
+  assert.ok(p, 'a deck');
+  assert.equal(p!.id, 'OSM1');
+  assert.equal(p!.water, null);
+  // the run reaches the way's end (open end: a bus station deck carries on past it)
+  assert.ok(p!.deck[1] >= 59, `deck to the end: ${p!.deck}`);
+  assert.equal(dryWayDeckProfile(w, dry, (x) => x > 30 && x < 32), null);
+});
