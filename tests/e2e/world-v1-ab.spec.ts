@@ -91,6 +91,10 @@ async function fixedShot(page: Page, at: readonly number[], face: readonly numbe
   }, pose);
   await settle(page);
   await page.evaluate(() => (window as any).canalRecallGame.vectorMap.camera?.whenIdle?.());
+  // The shadow map is redrawn only when its snapped box or the root-level caster signature changes, and between
+  // redraws it is re-aimed at the moving origin: what it holds depends on when the last redraw happened. Redraw it
+  // at the held pose so the shot is a function of the scene, not of the path that led to it.
+  await page.evaluate(() => (window as any).canalRecallGame.vectorMap._sharedFrame?.invalidateShadows?.());
   const url: string = await page.evaluate(() => (window as any).canalRecallGame.vectorMap.captureFrame().then((c: HTMLCanvasElement | null) => c?.toDataURL('image/png') ?? ''));
   await page.evaluate(() => { const vm = (window as any).canalRecallGame.vectorMap; if (vm.__abHeld) { Object.assign(vm, vm.__abHeld); delete vm.__abHeld; } });
   expect(url.startsWith('data:image/png;base64,'), 'world canvas captured').toBe(true);
