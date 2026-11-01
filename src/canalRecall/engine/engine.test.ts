@@ -525,3 +525,10 @@ test('the own overview takes the colours MapLibre\'s patched basemap draws under
   assert.equal(g.landuse.cemetery, base('landuse_cemetery', 'fill', 'landuse'));
   for (const cls of LANDUSE_CLASSES) assert.ok(g.landuse[cls], `landuse ${cls} has a ground colour`);
 });
+
+test('a URL building look reads as vector-map.js reads it, so both engines honour the same links', async () => {
+  const { urlBuildingLook } = await import('./worldViewApi');
+  for (const [raw, look] of [['cartoon', 'cartoon'], ['photo', 'photo'], ['storybook', 'storybook'], ['untextured', 'untextured'],
+    ['1', 'procedural'], [true, 'procedural'], ['on', 'procedural'], ['procedural', 'procedural'], ['off', 'default'], ['default', 'default'],
+    [null, null], [undefined, null], ['banana', null]] as const) assert.equal(urlBuildingLook(raw), look, String(raw));
+});
