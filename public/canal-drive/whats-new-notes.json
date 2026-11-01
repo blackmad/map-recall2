@@ -3,6 +3,11 @@
   "notes": [
     {
       "date": "2026-11-01",
+      "title": "Amsterdam's buildings now load from compiled city cells",
+      "text": "The ride used to download the city's buildings as map tiles and work out their roofs, colours and neighbours on your device while you rode. The whole city is now compiled in advance into 9.7 MB of cells; a ride fetches only the cells around it, and the game's workers unpack them off the main thread. The buildings themselves do not change: at the five check spots the picture is pixel-identical to the old path. Expect fewer hitches as new streets stream in. If anything looks wrong, add ?world=live to the address to ride the old path and tell us."
+    },
+    {
+      "date": "2026-11-01",
       "title": "The bike leans into its turns, and only as much as the turn",
       "text": "Since the lean arrived on 30 October a tap on a steering key rolled the bike to its full 19° at once, and onto the outside of the turn, so from the chase camera it looked like it had fallen over while riding straight. The lean now follows the turn the bike is actually making (speed times yaw rate, as a real bicycle does), stays at zero while the bike rides straight however the key is held, and rolls into the turn.",
       "images": [

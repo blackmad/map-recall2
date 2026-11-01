@@ -1,5 +1,29 @@
 # Canal Recall — what is built
 
+**The compiled city cells are the default world; `?world=live` is the tile path (2026-11-01, P2 → P5 step).**
+Integrator decision after the materials lane's result on the published
+`--no-policy` cells (HISTORY "World-v1 is pixel-identical"): the P2 gate
+restated on 2026-11-01 (structural equality of the styled building set at
+the five A/B spots, `check-ab-spots.ts`, plus a pinned pixel A/B at 0 px)
+held, so `worldV1Enabled()` now answers true unless the query says
+`world=live` (also `0`, `off`, `tiles`); `?world=v1` still spells the
+default. A city without published cells (every city but Amsterdam today)
+falls back to its GeoJSON tiles in `probeWorld`, as before. The A/B specs
+(`world-v1-ab`, `world-v1-bytes`, `world-v1-resident`) and the streamer
+test ask for `world=live` on their default side. What the player gets: the
+buildings come from the 9.70 MB of compiled cells (the whole city; a
+ride fetches only the cells around it, `worldRideDownloadMB` gate 2 MB
+still to be measured by #130 part 2) instead of the GeoJSON z14 tiles
+(16 MB on disk), decoded in the worker pool with no GeoJSON parse, feature
+clones or decorator chain on the main thread (lane L4's time-to-resident
+and stutter-owner numbers are in the 2026-10-30/31 entries). Verified here: `check-ab-spots` same at all five
+spots, `test:world-format` 34/34 with the new `worldV1Enabled` test, and
+the default-engine specs (`canal-recall`, `labels`, `landmark-highlight`)
+on desktop + iphone 43 passed / 1 failed (the pre-existing iphone
+`HUD withholds an unanswered street` red, routing lane's spawn-pose item)
+plus `engine-own` on desktop 2 passed. P5 deletion of `building-tiles/` and `bag-tiles/` waits for a week
+of Sentry quiet on the default.
+
 **The bike's lean follows the turn it makes and rolls into it (2026-11-01).**
 User's screenshot: the bike "leaning weird", near flat on its side while
 riding straight. Measured on the deployed default engine with the model

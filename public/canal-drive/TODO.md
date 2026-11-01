@@ -252,9 +252,12 @@ equivalents for `_completeCityHasBuildings`, `.cr-map-labels`, the style reads
 and the C-group assertions (L1); the lane's next round runs the other 44
 specs under own, the rest on iphone and the four perf scripts for real.
 Materials hand-back merged 2026-11-01 (HISTORY "World-v1 is pixel-identical"):
-0 px at the five A/B spots on the published cells, so the `?world=v1`
-default flip is unblocked (integrator, next round, with iphone + desktop smoke
-and a What's New note); closed on that lane 2026-11-01: the pre-painted atlas stays opt-in (atlas
+0 px at the five A/B spots on the published cells; **`?world=v1` is the
+default since 2026-11-01** (HISTORY "The compiled city cells are the default
+world"; `?world=live` is the tile path). P5 follow-ups: delete
+`building-tiles/` and `bag-tiles/` after a week of Sentry quiet on the
+default; measure `worldRideDownloadMB` (#130 part 2, gate 2 MB, still
+pending). closed on that lane 2026-11-01: the pre-painted atlas stays opt-in (atlas
 ready ~1 s sooner locally but racing 0.7–1.2 s later, equal at 20 Mbit; the
 network is the bottleneck), shaders-off-at-boot (program calls cost 13 ms at
 boot, nothing to win). Parked: world-v1 A/B first load after a cold start

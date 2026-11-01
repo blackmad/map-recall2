@@ -1,4 +1,4 @@
-// The `?world=v1` consumer in BuildingTileStreamer against its default path, in Node: same resident
+// The `?world=v1` consumer in BuildingTileStreamer against the live tile path (`?world=live`), in Node: same resident
 // features (raw and styled, in order) for the same tiles, no GeoJSON or facts fetches, no MapLibre copy.
 // Run: node --import tsx --test src/canalRecall/world/worldStreamer.test.ts
 import '../../../scripts/world/useBrowserMath.js'; // first: the browser's Math.cos/sin (browserMath.ts)
@@ -42,7 +42,7 @@ function fakeMap(world: boolean) {
 async function residentFor(world: boolean, files: Map<string, Uint8Array>) {
   const fetched: string[] = [];
   const realFetch = globalThis.fetch;
-  (globalThis as any).location = { search: world ? '?world=v1' : '' };
+  (globalThis as any).location = { search: world ? '?world=v1' : '?world=live' };
   globalThis.fetch = (async (input: any) => {
     const url = String(input); fetched.push(url);
     const rel = url.startsWith(BASE + '/') ? url.slice(BASE.length + 1) : null;

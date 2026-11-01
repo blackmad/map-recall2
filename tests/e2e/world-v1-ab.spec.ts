@@ -6,7 +6,7 @@ import sharp from 'sharp';
 import { openRoute } from './helpers';
 import { AB_SPOTS } from '../../scripts/world/abSpots';
 
-// `?world=v1` against the default tile path at the world-compiler sentinels (lane L3, issue #130).
+// `?world=v1` (the default since 2026-11-01) against the live tile path (`?world=live`) at the world-compiler sentinels (lane L3, issue #130).
 // Opt-in measurement until world-v1 is published:
 //   WORLD_AB=1 [WORLD_DIR=artifacts/world/staging] [BUNDLES_DIR=dir] PW_PORT=4525 \
 //     /tmp/canal-pw.sh npx playwright test world-v1-ab --project=desktop
@@ -50,7 +50,7 @@ const bearingOf = (at: readonly number[], face: readonly number[]) =>
 // Westerkerk, 353 over 30; byte-identical within each state; camera, lifts, styled features and chunk sets equal;
 // not worker vs inline builds, not install order; 2026-11-01, cause open). With AB_CAMERA=fixed a throwaway load runs
 // first, so default, world and default2 are all later loads.
-const VARIANTS = [...(process.env.AB_CAMERA === 'fixed' && !process.env.AB_NO_WARMUP ? [{ name: 'warmup', query: withQuery('') }] : []), { name: 'default', query: withQuery('') }, { name: 'world', query: withQuery('world=v1') }, ...(process.env.AB_NOISE ? [{ name: 'default2', query: withQuery('') }] : [])];
+const VARIANTS = [...(process.env.AB_CAMERA === 'fixed' && !process.env.AB_NO_WARMUP ? [{ name: 'warmup', query: withQuery('world=live') }] : []), { name: 'default', query: withQuery('world=live') }, { name: 'world', query: withQuery('world=v1') }, ...(process.env.AB_NOISE ? [{ name: 'default2', query: withQuery('') }] : [])];
 
 async function serve(page: Page) {
   // On the context, so a worker's cell fetches are served too.
