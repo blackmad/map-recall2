@@ -327,6 +327,8 @@ import {buildDeSchreeuwOosterpark} from './de-schreeuw-oosterpark-builder';
 import {buildWaterdraagsterBellamyplein} from './waterdraagster-bellamyplein-builder';
 import {buildMamaBaranka} from './mama-baranka-builder';
 import {buildSpanjemonument} from './spanjemonument-builder';
+import {buildHuisMetDeHoofden} from './huis-met-de-hoofden-builder';
+import {buildLensbomen} from './lensbomen-builder';
 import {applyInstalledFigures} from './installed-figures';
 import {computeSourceHashes,ALWAYS_REBUILD,type SourceHashes} from './manual-source-hash';
 import {setSink} from './nearbar-kit';
@@ -850,6 +852,8 @@ for(const spec of MANUAL_LANDMARKS.filter(model => !selectedIds.length || select
     else if(id==='waterdraagster-bellamyplein')buildWaterdraagsterBellamyplein(w,d,helpers);
     else if(id==='mama-baranka')buildMamaBaranka(w,d,helpers);
     else if(id==='spanjemonument')buildSpanjemonument(w,d,helpers);
+    else if(id==='huis-met-de-hoofden')buildHuisMetDeHoofden(w,d,helpers);
+    else if(id==='lensbomen')buildLensbomen(w,d,helpers);
     else buildCulturalLandmark(id,w,d,helpers);
   }
   }catch(e){

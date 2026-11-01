@@ -1,0 +1,361 @@
+{
+ "schemaVersion": 1,
+ "id": "huis-met-de-hoofden",
+ "pand": "0363100012177213",
+ "brief": "scripts/landmarks/huis-met-de-hoofden-brief.md",
+ "signature": [
+  "six-busts",
+  "stepped-gable",
+  "gable-crown",
+  "door-portal",
+  "cross-windows",
+  "wing-gate",
+  "balustrades"
+ ],
+ "walls": [
+  {
+   "tag": "w01-120",
+   "bearing": 120,
+   "lengthM": 17,
+   "centre": [
+    4.887583,
+    52.3763415
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "items": [],
+   "note": "Rear garden wall: no panorama or open photograph found. Modelled only as the double stepped rear gable nl.wikipedia describes (\"twee trapgevels\", the right one reconstructed in 1954), plain brick, no openings invented."
+  },
+  {
+   "tag": "w02-300",
+   "bearing": 300,
+   "lengthM": 13.9,
+   "centre": [
+    4.887349,
+    52.3764385
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316060226-000030_pano_0005_000155",
+   "capturedAt": "2016-08-17",
+   "checked": true,
+   "items": [
+    {
+     "id": "six-busts",
+     "kind": "sculpture",
+     "where": "bel-etage piers: six sandstone busts on consoles between the windows and flanking the door portal (left to right Apollo, Ceres, Mercury, Minerva, Bacchus, Diana)",
+     "approxSizeM": [
+      0.6,
+      1.1
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002972_pano_0000_000126; RCE 20408929 (Commons, Sergé Technau 2005, CC BY-SA 4.0)",
+     "how": "bust(): console bracket, shoulders, neck, head, and each god's attribute (laurel wreath, corn ears, winged helmet, crested helmet with visor, grape cluster, crescent)",
+     "note": "Identities and attributes from nl.wikipedia 'De zes hoofden' (the brief's 'Mars' is Mercury there); left-to-right order assumed from the list order and the helmets either side of the door, Minerva's crest on the right"
+    },
+    {
+     "id": "stepped-gable",
+     "kind": "tower",
+     "where": "centre: three-stage stepped gable over the three middle axes (stage 1 with three cross windows, stage 2 with one window between niches, stage 3 with an arched niche)",
+     "approxSizeM": [
+      8.1,
+      8.9
+     ],
+     "plan": "modelled",
+     "seenIn": "RCE 20408929 (Commons, Sergé Technau 2005, CC BY-SA 4.0)",
+     "how": "gableBox stages at 12.6-15.0-18.2-20.95 m, half-widths 4.07/2.95/1.5 m, stone cornices per stage"
+    },
+    {
+     "id": "gable-crown",
+     "kind": "other",
+     "where": "top of the gable: free-standing columns either side of stage 3, entablature with vases, broken segmental pediment, crowning block with scrolls and a ball finial",
+     "approxSizeM": [
+      4.3,
+      2.7
+     ],
+     "plan": "modelled",
+     "seenIn": "RCE 20408929 (Commons, Sergé Technau 2005, CC BY-SA 4.0); Commons \"Huis met de Hoofden, facade, sunny day, 2017.jpg\" (Samuel Mudrík, CC BY-SA 4.0)",
+     "how": "cylinder columns on plinths, lathe vases, two arc halves of a pediment, block with scroll cylinders, ball"
+    },
+    {
+     "id": "obelisks",
+     "kind": "other",
+     "where": "on the shoulders of gable stage 1, left and right",
+     "approxSizeM": [
+      0.5,
+      2.8
+     ],
+     "plan": "modelled",
+     "seenIn": "RCE 20408929 (Commons, Sergé Technau 2005, CC BY-SA 4.0); Commons \"Huis met de Hoofden, facade, sunny day, 2017.jpg\" (Samuel Mudrík, CC BY-SA 4.0)",
+     "how": "square tapered cylinder on a plinth with a small ball"
+    },
+    {
+     "id": "volutes",
+     "kind": "other",
+     "where": "klauwstukken: S-volutes at the shoulders of each gable stage and beside the balustrades",
+     "approxSizeM": [
+      0.9,
+      1.6
+     ],
+     "plan": "simplified",
+     "seenIn": "RCE 20408929 (Commons, Sergé Technau 2005, CC BY-SA 4.0)",
+     "how": "quarter-sine profile extruded as a stone slab with a round scroll end"
+    },
+    {
+     "id": "gable-niches",
+     "kind": "other",
+     "where": "stage 2: two round-arched white niches beside the window; stage 3: one central arched niche",
+     "approxSizeM": [
+      0.7,
+      1.8
+     ],
+     "plan": "modelled",
+     "seenIn": "RCE 20408929 (Commons, Sergé Technau 2005, CC BY-SA 4.0); Commons \"Huis met de Hoofden, facade, sunny day, 2017.jpg\" (Samuel Mudrík, CC BY-SA 4.0)",
+     "how": "white archSlab panels"
+    },
+    {
+     "id": "door-portal",
+     "kind": "other",
+     "where": "centre: sandstone door portal with pilasters, round-arched door, entablature, a window above flanked by cartouches, a small pediment with a lion-mask roundel",
+     "approxSizeM": [
+      2.95,
+      6.8
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002972_pano_0000_000126; RCE 20408929 (Commons, Sergé Technau 2005, CC BY-SA 4.0)",
+     "how": "pilasters, archBand, entablature slab, cross window, cartouche polygons, trapezoid pediment and roundel"
+    },
+    {
+     "id": "double-stoop",
+     "kind": "other",
+     "where": "low double stoop to the door with an iron railing",
+     "approxSizeM": [
+      3.2,
+      0.8
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-002972_pano_0000_000126",
+     "how": "stone landing and three steps down to each side, iron posts and rail; the 17th-century balusters are drawn as plain iron bars"
+    },
+    {
+     "id": "cross-windows",
+     "kind": "window-shape",
+     "where": "every storey: stone cross windows (kruiskozijnen) with leaded lights; four tall ones on the bel-etage, five on the second storey, three in gable stage 1, one in stage 2, one over the door, two on the wing",
+     "approxSizeM": [
+      1.42,
+      4.5
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316060226-000030_pano_0005_000155; TMX7316010203-002972_pano_0000_000126; RCE 20408929 (Commons, Sergé Technau 2005, CC BY-SA 4.0)",
+     "how": "crossWindow(): glass, white frame, mullion, transom, a lead came per light row, sill"
+    },
+    {
+     "id": "relieving-arches",
+     "kind": "other",
+     "where": "segmental brick relieving arches with stone keystones over every window",
+     "approxSizeM": [
+      2.0,
+      0.45
+     ],
+     "plan": "modelled",
+     "seenIn": "Commons \"Huis met de Hoofden, facade, sunny day, 2017.jpg\" (Samuel Mudrík, CC BY-SA 4.0); TMX7316010203-002972_pano_0000_000126",
+     "how": "segBand in a second brick tone plus a keystone block"
+    },
+    {
+     "id": "stone-bands",
+     "kind": "other",
+     "where": "sandstone string courses, cornices and the blocks (blokjes) on the brick piers at transom and head height",
+     "approxSizeM": [
+      13.9,
+      0.3
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002972_pano_0000_000126; RCE 20408929 (Commons, Sergé Technau 2005, CC BY-SA 4.0)"
+    },
+    {
+     "id": "festoons",
+     "kind": "relief",
+     "where": "second storey piers: fruit festoons under small round oculi, with a vertical stone tablet above",
+     "approxSizeM": [
+      0.45,
+      0.4
+     ],
+     "plan": "simplified",
+     "seenIn": "Commons \"Huis met de Hoofden, facade, sunny day, 2017.jpg\" (Samuel Mudrík, CC BY-SA 4.0); RCE 20408929 (Commons, Sergé Technau 2005, CC BY-SA 4.0)",
+     "how": "five small stone spheres and a dark disc per pier, tablet slab"
+    },
+    {
+     "id": "balustrades",
+     "kind": "balcony-ironwork",
+     "where": "over the outer bays at the foot of the roof: stone balustrades with turned balusters between end posts",
+     "approxSizeM": [
+      2.6,
+      1.6
+     ],
+     "plan": "modelled",
+     "seenIn": "RCE 20408929 (Commons, Sergé Technau 2005, CC BY-SA 4.0); TMX7316010203-002972_pano_0000_000126",
+     "how": "pedestal, tapered 6-sided balusters, coping, end posts"
+    },
+    {
+     "id": "date-stones",
+     "kind": "lettering",
+     "where": "'ANNO' over the left bel-etage window and '1622' over the right one, on stone tablets",
+     "approxSizeM": [
+      1.45,
+      0.4
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316060226-000030_pano_0005_000155; Commons 'Amsterdam - Keizersgracht 123 - Huis met de Hoofden-1.jpg' (Michele Ahin, CC BY-SA 3.0 nl)",
+     "how": "stone tablet with raised stroke lettering (figure-kit letterBoxes)"
+    },
+    {
+     "id": "comenius-tablet",
+     "kind": "sign",
+     "where": "on the axis between the second-storey window and the gable cornice: memorial tablet to J.A. Komensky (Comenius) 1592-1670",
+     "approxSizeM": [
+      1.7,
+      0.36
+     ],
+     "plan": "simplified",
+     "seenIn": "Commons \"Huis met de Hoofden, facade, sunny day, 2017.jpg\" (Samuel Mudrík, CC BY-SA 4.0)",
+     "how": "plain stone tablet; the 6 cm lettering is too small to read in the game"
+    },
+    {
+     "id": "plinth-cellar-gates",
+     "kind": "other",
+     "where": "sandstone plinth with two round-arched cellar gates under the outer bays (lion masks on the keystones) and barred basement windows under bays 2 and 3",
+     "approxSizeM": [
+      1.8,
+      1.9
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316060226-000030_pano_0005_000155; RCE 20408929 (Commons, Sergé Technau 2005, CC BY-SA 4.0)",
+     "how": "stone plinth slab, dark arches with stone archBands and a mask, dark windows with iron bars"
+    },
+    {
+     "id": "lion-masks",
+     "kind": "relief",
+     "where": "lion masks on the cellar-gate keystones, on the stage-2 cornice and on the wing gate pilasters",
+     "approxSizeM": [
+      0.3,
+      0.35
+     ],
+     "plan": "simplified",
+     "seenIn": "RCE 20408929 (Commons, Sergé Technau 2005, CC BY-SA 4.0); TMX7316060226-000030_pano_0005_000155",
+     "how": "flattened stone spheres"
+    },
+    {
+     "id": "wing-gate",
+     "kind": "other",
+     "where": "right: the gateway wing with a sandstone gate portal (round arch, pilasters with masks, entablature), the coachman's room with two windows, a crest of volutes and three balls",
+     "approxSizeM": [
+      3.1,
+      9.4
+     ],
+     "plan": "modelled",
+     "seenIn": "RCE 20408929 (Commons, Sergé Technau 2005, CC BY-SA 4.0); TMX7316010203-002972_pano_0000_000126",
+     "how": "pilasters, arch, entablature, two one-light cross windows, pedestal with volutes and balls"
+    },
+    {
+     "id": "dormers",
+     "kind": "window-shape",
+     "where": "two stacked dormers with pointed roofs on the roof slope behind each balustrade",
+     "approxSizeM": [
+      1.0,
+      1.3
+     ],
+     "plan": "modelled",
+     "seenIn": "RCE 20408929 (Commons, Sergé Technau 2005, CC BY-SA 4.0)",
+     "how": "slate box with glazing and a four-sided pointed roof, set on the cross-roof slope"
+    },
+    {
+     "id": "chimneys",
+     "kind": "other",
+     "where": "two tall brick chimneys on the party walls with stone caps",
+     "approxSizeM": [
+      1.0,
+      8.0
+     ],
+     "plan": "modelled",
+     "seenIn": "3DBAG LoD2.2 (flats at 22.0-22.1 m) and RCE 20408929 (Commons, Sergé Technau 2005, CC BY-SA 4.0)"
+    },
+    {
+     "id": "side-step-gables",
+     "kind": "other",
+     "where": "the stepped party-wall gables of the cross roof seen in profile beside the front",
+     "approxSizeM": [
+      9.0,
+      8.2
+     ],
+     "plan": "modelled",
+     "seenIn": "RCE 20408929 (Commons, Sergé Technau 2005, CC BY-SA 4.0)",
+     "how": "steppedGable(): stacked brick steps with stone caps"
+    },
+    {
+     "id": "house-number-and-signs",
+     "kind": "sign",
+     "where": "door: house number 123 plate, a museum banner board on the stoop railing",
+     "approxSizeM": [
+      0.2,
+      0.2
+     ],
+     "plan": "skipped",
+     "seenIn": "2022 panorama TMX7316010203-002972_pano_0000_000126",
+     "skip": {
+      "reason": "temporary",
+      "note": "the Embassy of the Free Mind banner boards on the railing change with exhibitions; the number plate is 20 cm"
+     }
+    },
+    {
+     "id": "flag-pole",
+     "kind": "other",
+     "where": "a flag pole leaning out from the second storey over the door",
+     "approxSizeM": [
+      0.1,
+      6.0
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7316010203-002972_pano_0000_000126",
+     "skip": {
+      "reason": "temporary",
+      "note": "a removable flag pole, absent on the 2005 RCE photograph"
+     }
+    }
+   ],
+   "note": "The canal front, 17 m with the gateway wing (BAG). The brief's 13.9 m is the main house without the wing. Second view 2022 TMX7316010203-002972_pano_0000_000126; full-height view from the RCE photograph 20408929."
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  },
+  {
+   "name": "RCE photograph 20408929, Overzicht voorgevel (Sergé Technau, 2005)",
+   "url": "https://commons.wikimedia.org/wiki/File:Overzicht_voorgevel_met_twee_zandstenen_poortjes_en_borstbeelden_tussen_de_vensters_van_de_bel-etage_-_Amsterdam_-_20408929_-_RCE.jpg",
+   "licence": "CC BY-SA 4.0"
+  },
+  {
+   "name": "Huis met de Hoofden, facade, sunny day, 2017 (Samuel Mudrík)",
+   "url": "https://commons.wikimedia.org/wiki/File:Huis_met_de_Hoofden,_facade,_sunny_day,_2017.jpg",
+   "licence": "CC BY-SA 4.0"
+  },
+  {
+   "name": "Amsterdam - Keizersgracht 123 - Huis met de Hoofden-1 (Michele Ahin, 2010)",
+   "url": "https://commons.wikimedia.org/wiki/File:Amsterdam_-_Keizersgracht_123_-_Huis_met_de_Hoofden-1.jpg",
+   "licence": "CC BY-SA 3.0 nl"
+  },
+  {
+   "name": "nl.wikipedia Huis met de Hoofden",
+   "url": "https://nl.wikipedia.org/wiki/Huis_met_de_Hoofden",
+   "licence": "CC BY-SA 4.0"
+  },
+  {
+   "name": "3DBAG LoD2.2 NL.IMBAG.Pand.0363100012177213",
+   "url": "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012177213",
+   "licence": "CC BY 4.0"
+  }
+ ]
+}
