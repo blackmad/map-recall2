@@ -1990,5 +1990,11 @@
   "buildVersion": 2,
   "bytes": 46764,
   "triangles": 2275
+ },
+ "citroen-zuid": {
+  "sourceHash": "77e91e8b501ceee6",
+  "buildVersion": 2,
+  "bytes": 35724,
+  "triangles": 1457
  }
 }
