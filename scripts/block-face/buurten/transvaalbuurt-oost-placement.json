@@ -1,8 +1,8 @@
 {
  "buurt": "transvaalbuurt-oost",
  "library": "transvaalbuurt",
- "generatedAt": "2026-11-01T09:08:04.271Z",
- "seconds": 11.65,
+ "generatedAt": "2026-11-01T10:01:53.729Z",
+ "seconds": 51.53,
  "totals": {
   "faces": 82,
   "pands": 489,
@@ -909,10 +909,10 @@
       "0363100012067013"
      ],
      "passed": true,
-     "triangles": 6291
+     "triangles": 6650
     }
    ],
-   "seconds": 42.35,
+   "seconds": 51.52,
    "byType": {
     "transvaal-1911-five-storey-tall": 3,
     "transvaal-1911-five-storey": 2

@@ -1,11 +1,11 @@
 {
  "name": "transvaalbuurt-1911b-oost",
- "generatedAt": "2026-11-01T09:07:24.694Z",
+ "generatedAt": "2026-11-01T10:02:21.680Z",
  "method": "scripts/block-face/batch.ts steps 3-5 by hand (covered or installed faces)",
  "totals": {
-  "runs": 7,
-  "installed": 6,
-  "installedPands": 8
+  "runs": 10,
+  "installed": 8,
+  "installedPands": 14
  },
  "rows": [
   {
@@ -177,6 +177,84 @@
    "status": "installed",
    "reasons": [],
    "seconds": 5.5
+  },
+  {
+   "face": "retief-45-75",
+   "street": "Retiefstraat",
+   "ride": null,
+   "restriped": null,
+   "stripQuality": {
+    "badShare": 0,
+    "reasons": []
+   },
+   "nccMin": 0,
+   "nccMedian": 0,
+   "stripOverDrawn": null,
+   "wallFits": 2,
+   "droppedCorners": [],
+   "triangles": 6649,
+   "sheet": "staging/block-face/retief-45-75-r1/review/strip-sheet.png",
+   "stripDate": "2023-01-02",
+   "run": "retief-45-75-r1",
+   "pands": 3,
+   "mode": "auto-place",
+   "status": "failed",
+   "reasons": [
+    "likeness: 3 pand(s) under NCC 0.15 (112323 0, 129491 0, 067013 0)"
+   ],
+   "seconds": 8.2
+  },
+  {
+   "face": "retief-45-75",
+   "street": "Retiefstraat",
+   "ride": null,
+   "restriped": null,
+   "stripQuality": {
+    "badShare": 0,
+    "reasons": []
+   },
+   "nccMin": 0.216,
+   "nccMedian": 0.277,
+   "stripOverDrawn": 1.001,
+   "wallFits": 0,
+   "droppedCorners": [],
+   "triangles": 6649,
+   "sheet": "staging/block-face/retief-45-75-r1/review/strip-sheet.png",
+   "stripDate": "2023-01-02",
+   "run": "retief-45-75-r1",
+   "pands": 3,
+   "mode": "auto-place",
+   "status": "installed",
+   "reasons": [
+    "roof-golden (installed; integrator to review): 0 violations, 2 reclassed, 1 intent changes"
+   ],
+   "seconds": 5.6
+  },
+  {
+   "face": "retief-45-75",
+   "street": "Retiefstraat",
+   "ride": null,
+   "restriped": null,
+   "stripQuality": {
+    "badShare": 0,
+    "reasons": []
+   },
+   "nccMin": 0.203,
+   "nccMedian": 0.216,
+   "stripOverDrawn": 1.001,
+   "wallFits": 0,
+   "droppedCorners": [],
+   "triangles": 6650,
+   "sheet": "staging/block-face/retief-45-75-r1/review/strip-sheet.png",
+   "stripDate": "2023-01-02",
+   "run": "retief-45-75-r1",
+   "pands": 3,
+   "mode": "auto-place",
+   "status": "installed",
+   "reasons": [
+    "roof-golden (installed; integrator to review): 0 violations, 2 reclassed, 1 intent changes"
+   ],
+   "seconds": 6
   }
  ]
 }

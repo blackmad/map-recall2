@@ -3,7 +3,7 @@
  "street": "Retiefstraat",
  "library": "transvaalbuurt",
  "stripDate": "2023-01-02",
- "seconds": 42.35,
+ "seconds": 51.52,
  "thresholds": {
   "minScore": 0.7,
   "margin": 0.05,
@@ -38,7 +38,7 @@
     "0363100012067013"
    ],
    "passed": true,
-   "triangles": 6291
+   "triangles": 6650
   }
  ],
  "pands": [
@@ -1258,25 +1258,25 @@
      "brick": "#56453f",
      "evidence": "strip 2023-01-02 span 3661-3921: trim-normalised wall (buildingRecipe/measureFacade.ts)"
     },
-    "mirror": true
+    "crown": "shouldered-gable"
    },
    "notes": [
-    "photo decides: transvaal-1911-five-storey~m edge NCC 0.291 vs transvaal-1911-five-storey-tall 0.205",
-    "crown point-gable: reviewer pin (retief-45-75-r1 sheet 2023-01-02: a low pointed brick gable over the whole front with attic lights; the skyline reads branches at 17.7 m)"
+    "crown shouldered-gable: reviewer pin (retief-45-75 strip 2023-01-02 (Retiefstraat 71D, #156 re-review): a low shouldered gable, not a steep point: eaves about 13.35 m, shoulder +1.4 m, apex +1.05 m, about 4.2 m wide on the side away from the door)",
+    "door reviewer pin: as drawn (Retiefstraat 71D (retief-45-75 strip 2023-01-02): the house door with its letterbox panel is on the left axis and the shouldered gable stands over the right two-thirds; the door reading mirrored it)"
    ],
    "likeness": {
     "pandId": "0363100012129491",
-    "ncc": 0.277,
-    "nccRaw": 0.277,
+    "ncc": 0.203,
+    "nccRaw": 0.203,
     "shiftM": [
-     0.05,
-     -0.15
+     -0.4,
+     -0.1
     ],
-    "usable": 0.98,
+    "usable": 0.97,
     "abstain": null,
     "verdict": "FAIL",
     "reasons": [
-     "glazing storey band off by 0.23"
+     "glazing storey band off by 0.24"
     ],
     "wall": {
      "photo": "#56443e",
@@ -1291,13 +1291,11 @@
      "photo": null,
      "model": 4
     },
-    "iou": 0.457
+    "iou": 0.392
    },
    "challengers": {
-    "transvaal-1911-five-storey-tall": 0.205,
-    "transvaal-1911-five-storey-tall~m": 0.305,
-    "transvaal-1911-five-storey": 0.208,
-    "transvaal-1911-five-storey~m": 0.291
+    "transvaal-1911-five-storey": 0.203,
+    "transvaal-1911-five-storey~m": 0.277
    }
   },
   {
@@ -1365,12 +1363,13 @@
     "measuredPalette": {
      "brick": "#5c4842",
      "evidence": "strip 2023-01-02 span 3921-4162: trim-normalised wall (buildingRecipe/measureFacade.ts)"
-    }
+    },
+    "crown": "shouldered-gable"
    },
    "notes": [
     "near tie with transvaal-1911-five-storey (1)",
     "door right: mirrored",
-    "crown point-gable: reviewer pin (retief-45-75-r1 sheet 2023-01-02: a low pointed brick gable over the whole front with attic lights, the twin of 71D; the skyline is unread under branches)"
+    "crown shouldered-gable: reviewer pin (retief-45-75 strip 2023-01-02 (Retiefstraat 73A, #156 re-review): the twin of 71D, a low shouldered gable (shoulder +1.4 m, apex +1.05 m) on the side away from the door)"
    ],
    "likeness": {
     "pandId": "0363100012067013",
@@ -1384,7 +1383,7 @@
     "abstain": null,
     "verdict": "FAIL",
     "reasons": [
-     "glazing storey band off by 0.30 mean 0.39 vs photo 0.68"
+     "glazing storey band off by 0.32 mean 0.37 vs photo 0.68"
     ],
     "wall": {
      "photo": "#5a4741",
@@ -1393,13 +1392,13 @@
     },
     "glazing": {
      "photo": 0.68,
-     "model": 0.39
+     "model": 0.37
     },
     "columns": {
      "photo": null,
      "model": 3
     },
-    "iou": 0.535
+    "iou": 0.506
    },
    "challengers": {
     "transvaal-1911-five-storey-tall~m": 0.272,

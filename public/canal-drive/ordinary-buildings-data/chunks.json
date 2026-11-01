@@ -1,6 +1,6 @@
 {
  "version": 1,
- "generatedAt": "2026-11-01T09:07:22.133Z",
+ "generatedAt": "2026-11-01T10:02:20.799Z",
  "chunks": [
   {
    "id": "chunk-face-bilder-080336-090492",
@@ -71176,324 +71176,6 @@
    ]
   },
   {
-   "id": "chunk-face-retief-45-75-r1",
-   "category": "street-survey",
-   "name": "face-retief-45-75-r1",
-   "modelUrl": "./models/ordinary-buildings/chunks/chunk-face-retief-45-75-r1.glb?asset=2f5a34d638cd72d6",
-   "sha256": "2f5a34d638cd72d67cb848b697718ac665707032c70afd4725f1f82ca50485c8",
-   "bytes": 432380,
-   "triangles": 6291,
-   "primitives": 11,
-   "instance": {
-    "anchor": [
-     4.921808847192701,
-     52.355352257664585
-    ],
-    "northOffsetDegrees": 152.5976,
-    "mirror": false
-   },
-   "bounds": {
-    "min": [
-     -9.209,
-     0,
-     -13.381
-    ],
-    "max": [
-     9.248,
-     16.544,
-     0.646
-    ]
-   },
-   "height": 16.544,
-   "suppress": [
-    "NL.IMBAG.Pand.0363100012112323",
-    "NL.IMBAG.Pand.0363100012129491",
-    "NL.IMBAG.Pand.0363100012067013"
-   ],
-   "replaces": [
-    "ordinary-0363100012112323",
-    "ordinary-0363100012129491",
-    "ordinary-0363100012067013"
-   ],
-   "footprint": {
-    "type": "MultiPolygon",
-    "coordinates": [
-     [
-      [
-       [
-        4.9219289,
-        52.3553903
-       ],
-       [
-        4.9218513,
-        52.3553657
-       ],
-       [
-        4.9219228,
-        52.3552811
-       ],
-       [
-        4.9219548,
-        52.3552912
-       ],
-       [
-        4.9219733,
-        52.3552693
-       ],
-       [
-        4.9220189,
-        52.3552838
-       ]
-      ]
-     ],
-     [
-      [
-       [
-        4.9218513,
-        52.3553657
-       ],
-       [
-        4.9217667,
-        52.3553389
-       ],
-       [
-        4.9218382,
-        52.3552543
-       ],
-       [
-        4.9219228,
-        52.3552811
-       ]
-      ]
-     ],
-     [
-      [
-       [
-        4.9217667,
-        52.3553389
-       ],
-       [
-        4.9216883,
-        52.3553141
-       ],
-       [
-        4.9217486,
-        52.3552427
-       ],
-       [
-        4.9217681,
-        52.3552388
-       ],
-       [
-        4.9218337,
-        52.3552596
-       ]
-      ]
-     ]
-    ]
-   },
-   "pands": [
-    {
-     "recipeId": "retief-112323",
-     "pandId": "0363100012112323",
-     "buildingId": "NL.IMBAG.Pand.0363100012112323",
-     "address": "Retiefstraat 69C",
-     "frontage": {
-      "x0": -9.206,
-      "x1": -3.255,
-      "widthM": 5.95
-     },
-     "bounds": {
-      "min": [
-       -9.209,
-       0,
-       -13.381
-      ],
-      "max": [
-       -3.255,
-       16.04,
-       0.646
-      ]
-     },
-     "triangles": 2045,
-     "ranges": [
-      {
-       "primitive": 0,
-       "firstTriangle": 0,
-       "triangleCount": 84
-      },
-      {
-       "primitive": 3,
-       "firstTriangle": 0,
-       "triangleCount": 396
-      },
-      {
-       "primitive": 4,
-       "firstTriangle": 0,
-       "triangleCount": 12
-      },
-      {
-       "primitive": 5,
-       "firstTriangle": 0,
-       "triangleCount": 904
-      },
-      {
-       "primitive": 6,
-       "firstTriangle": 0,
-       "triangleCount": 444
-      },
-      {
-       "primitive": 7,
-       "firstTriangle": 0,
-       "triangleCount": 180
-      },
-      {
-       "primitive": 8,
-       "firstTriangle": 0,
-       "triangleCount": 2
-      },
-      {
-       "primitive": 9,
-       "firstTriangle": 0,
-       "triangleCount": 4
-      },
-      {
-       "primitive": 10,
-       "firstTriangle": 0,
-       "triangleCount": 19
-      }
-     ]
-    },
-    {
-     "recipeId": "retief-129491",
-     "pandId": "0363100012129491",
-     "buildingId": "NL.IMBAG.Pand.0363100012129491",
-     "address": "Retiefstraat 71D",
-     "frontage": {
-      "x0": -3.255,
-      "x1": 3.234,
-      "widthM": 6.49
-     },
-     "bounds": {
-      "min": [
-       -3.259,
-       0,
-       -10.644
-      ],
-      "max": [
-       3.234,
-       16.544,
-       0.645
-      ]
-     },
-     "triangles": 2321,
-     "ranges": [
-      {
-       "primitive": 1,
-       "firstTriangle": 0,
-       "triangleCount": 47
-      },
-      {
-       "primitive": 3,
-       "firstTriangle": 396,
-       "triangleCount": 492
-      },
-      {
-       "primitive": 4,
-       "firstTriangle": 12,
-       "triangleCount": 12
-      },
-      {
-       "primitive": 5,
-       "firstTriangle": 904,
-       "triangleCount": 1092
-      },
-      {
-       "primitive": 6,
-       "firstTriangle": 444,
-       "triangleCount": 444
-      },
-      {
-       "primitive": 7,
-       "firstTriangle": 180,
-       "triangleCount": 228
-      },
-      {
-       "primitive": 10,
-       "firstTriangle": 19,
-       "triangleCount": 6
-      }
-     ]
-    },
-    {
-     "recipeId": "retief-067013",
-     "pandId": "0363100012067013",
-     "buildingId": "NL.IMBAG.Pand.0363100012067013",
-     "address": "Retiefstraat 73A",
-     "frontage": {
-      "x0": 3.234,
-      "x1": 9.248,
-      "widthM": 6.014
-     },
-     "bounds": {
-      "min": [
-       3.231,
-       0,
-       -9.978
-      ],
-      "max": [
-       9.248,
-       16.394,
-       0.645
-      ]
-     },
-     "triangles": 1925,
-     "ranges": [
-      {
-       "primitive": 2,
-       "firstTriangle": 0,
-       "triangleCount": 57
-      },
-      {
-       "primitive": 3,
-       "firstTriangle": 888,
-       "triangleCount": 396
-      },
-      {
-       "primitive": 4,
-       "firstTriangle": 24,
-       "triangleCount": 12
-      },
-      {
-       "primitive": 5,
-       "firstTriangle": 1996,
-       "triangleCount": 836
-      },
-      {
-       "primitive": 6,
-       "firstTriangle": 888,
-       "triangleCount": 444
-      },
-      {
-       "primitive": 7,
-       "firstTriangle": 408,
-       "triangleCount": 172
-      },
-      {
-       "primitive": 8,
-       "firstTriangle": 2,
-       "triangleCount": 1
-      },
-      {
-       "primitive": 10,
-       "firstTriangle": 25,
-       "triangleCount": 7
-      }
-     ]
-    }
-   ]
-  },
-  {
    "id": "chunk-face-pretorius-72-120-r1",
    "category": "street-survey",
    "name": "face-pretorius-72-120-r1",
@@ -73508,6 +73190,339 @@
        "primitive": 8,
        "firstTriangle": 0,
        "triangleCount": 6
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "chunk-face-retief-45-75-r1",
+   "category": "street-survey",
+   "name": "face-retief-45-75-r1",
+   "modelUrl": "./models/ordinary-buildings/chunks/chunk-face-retief-45-75-r1.glb?asset=2c82ea403fcfcd35",
+   "sha256": "2c82ea403fcfcd35308a686c29b588d4fc51bbbaa57ea701fbcc8a2b86bd0be5",
+   "bytes": 456148,
+   "triangles": 6650,
+   "primitives": 11,
+   "instance": {
+    "anchor": [
+     4.921808847192701,
+     52.355352257664585
+    ],
+    "northOffsetDegrees": 152.5976,
+    "mirror": false
+   },
+   "bounds": {
+    "min": [
+     -9.209,
+     0,
+     -13.381
+    ],
+    "max": [
+     9.248,
+     16.04,
+     0.646
+    ]
+   },
+   "height": 16.04,
+   "suppress": [
+    "NL.IMBAG.Pand.0363100012112323",
+    "NL.IMBAG.Pand.0363100012129491",
+    "NL.IMBAG.Pand.0363100012067013"
+   ],
+   "replaces": [
+    "ordinary-0363100012112323",
+    "ordinary-0363100012129491",
+    "ordinary-0363100012067013"
+   ],
+   "footprint": {
+    "type": "MultiPolygon",
+    "coordinates": [
+     [
+      [
+       [
+        4.9219289,
+        52.3553903
+       ],
+       [
+        4.9218513,
+        52.3553657
+       ],
+       [
+        4.9219228,
+        52.3552811
+       ],
+       [
+        4.9219548,
+        52.3552912
+       ],
+       [
+        4.9219733,
+        52.3552693
+       ],
+       [
+        4.9220189,
+        52.3552838
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.9218513,
+        52.3553657
+       ],
+       [
+        4.9217667,
+        52.3553389
+       ],
+       [
+        4.9218382,
+        52.3552543
+       ],
+       [
+        4.9219228,
+        52.3552811
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.9217667,
+        52.3553389
+       ],
+       [
+        4.9216883,
+        52.3553141
+       ],
+       [
+        4.9217486,
+        52.3552427
+       ],
+       [
+        4.9217681,
+        52.3552388
+       ],
+       [
+        4.9218337,
+        52.3552596
+       ]
+      ]
+     ]
+    ]
+   },
+   "pands": [
+    {
+     "recipeId": "retief-112323",
+     "pandId": "0363100012112323",
+     "buildingId": "NL.IMBAG.Pand.0363100012112323",
+     "address": "Retiefstraat 69C",
+     "frontage": {
+      "x0": -9.206,
+      "x1": -3.255,
+      "widthM": 5.95
+     },
+     "bounds": {
+      "min": [
+       -9.209,
+       0,
+       -13.381
+      ],
+      "max": [
+       -3.255,
+       16.04,
+       0.646
+      ]
+     },
+     "triangles": 2044,
+     "ranges": [
+      {
+       "primitive": 0,
+       "firstTriangle": 0,
+       "triangleCount": 83
+      },
+      {
+       "primitive": 3,
+       "firstTriangle": 0,
+       "triangleCount": 396
+      },
+      {
+       "primitive": 4,
+       "firstTriangle": 0,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 0,
+       "triangleCount": 904
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 0,
+       "triangleCount": 444
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 0,
+       "triangleCount": 180
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 0,
+       "triangleCount": 2
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 0,
+       "triangleCount": 4
+      },
+      {
+       "primitive": 10,
+       "firstTriangle": 0,
+       "triangleCount": 19
+      }
+     ]
+    },
+    {
+     "recipeId": "retief-129491",
+     "pandId": "0363100012129491",
+     "buildingId": "NL.IMBAG.Pand.0363100012129491",
+     "address": "Retiefstraat 71D",
+     "frontage": {
+      "x0": -3.255,
+      "x1": 3.234,
+      "widthM": 6.49
+     },
+     "bounds": {
+      "min": [
+       -3.259,
+       0,
+       -10.644
+      ],
+      "max": [
+       3.234,
+       15.99,
+       0.645
+      ]
+     },
+     "triangles": 2506,
+     "ranges": [
+      {
+       "primitive": 1,
+       "firstTriangle": 0,
+       "triangleCount": 56
+      },
+      {
+       "primitive": 3,
+       "firstTriangle": 396,
+       "triangleCount": 492
+      },
+      {
+       "primitive": 4,
+       "firstTriangle": 12,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 904,
+       "triangleCount": 1240
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 444,
+       "triangleCount": 444
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 180,
+       "triangleCount": 252
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 2,
+       "triangleCount": 2
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 4,
+       "triangleCount": 5
+      },
+      {
+       "primitive": 10,
+       "firstTriangle": 19,
+       "triangleCount": 3
+      }
+     ]
+    },
+    {
+     "recipeId": "retief-067013",
+     "pandId": "0363100012067013",
+     "buildingId": "NL.IMBAG.Pand.0363100012067013",
+     "address": "Retiefstraat 73A",
+     "frontage": {
+      "x0": 3.234,
+      "x1": 9.248,
+      "widthM": 6.014
+     },
+     "bounds": {
+      "min": [
+       3.231,
+       0,
+       -9.978
+      ],
+      "max": [
+       9.248,
+       15.971,
+       0.645
+      ]
+     },
+     "triangles": 2100,
+     "ranges": [
+      {
+       "primitive": 2,
+       "firstTriangle": 0,
+       "triangleCount": 58
+      },
+      {
+       "primitive": 3,
+       "firstTriangle": 888,
+       "triangleCount": 396
+      },
+      {
+       "primitive": 4,
+       "firstTriangle": 24,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 2144,
+       "triangleCount": 984
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 888,
+       "triangleCount": 444
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 432,
+       "triangleCount": 196
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 4,
+       "triangleCount": 2
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 9,
+       "triangleCount": 4
+      },
+      {
+       "primitive": 10,
+       "firstTriangle": 22,
+       "triangleCount": 4
       }
      ]
     }
