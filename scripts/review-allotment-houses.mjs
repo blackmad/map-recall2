@@ -45,11 +45,11 @@ try {
   const targets=[{id:'sloterdijkermeer-wide',center:[4.853,52.38725],zoom:16.8,pitch:50,bearing:-25},{id:'sloterdijkermeer-south-heldout',center:[4.8508,52.38665],zoom:18.5,pitch:60,bearing:35},{id:'nut-en-genoegen-heldout',center:[4.8603,52.3872],zoom:18.3,pitch:60,bearing:-25},{id:'railway-transition',center:[4.8557,52.38825],zoom:18.4,pitch:58,bearing:155}];
   for(const camera of targets){
    const riderBefore=await page.evaluate(()=>({x:canalRecallGame.player.x,y:canalRecallGame.player.y}));
-   await page.evaluate(async camera=>{const v=canalRecallGame.vectorMap;v.setBuildingLook('photo');await v.setBuildingsLook('photo');v.map.jumpTo(camera);v._facadesOutOfZoom=false;v._applyFacadeState();v._syncFacadeZoom(camera.zoom);v._completeCity.setSuspended(false);v._threeBuildings.setDetailCentre(...camera.center);v._completeCity.followCamera();v.map.triggerRepaint();},camera);
+   await page.evaluate(async camera=>{const v=canalRecallGame.vectorMap;v.setBuildingLook('photo');await v.setBuildingsLook('photo');(v.map ?? v.cameraMap).jumpTo(camera);v._facadesOutOfZoom=false;v._applyFacadeState();v._syncFacadeZoom(camera.zoom);v._completeCity.setSuspended(false);v._threeBuildings.setDetailCentre(...camera.center);v._completeCity.followCamera();(v.map ?? v.cameraMap).triggerRepaint();},camera);
    await idle();
    const data=await page.evaluate(async()=>{
     const v=canalRecallGame.vectorMap,t=v._threeBuildings,intervals=[];let last=performance.now();
-    await new Promise(resolve=>{const frame=now=>{intervals.push(now-last);last=now;if(intervals.length<61){v.map.triggerRepaint();requestAnimationFrame(frame);}else resolve();};requestAnimationFrame(frame);});
+    await new Promise(resolve=>{const frame=now=>{intervals.push(now-last);last=now;if(intervals.length<61){(v.map ?? v.cameraMap).triggerRepaint();requestAnimationFrame(frame);}else resolve();};requestAnimationFrame(frame);});
     intervals.shift();intervals.sort((a,b)=>a-b);
     const garden=[...new Set(t.lastFeatures.filter(f=>f.properties.allotmentHouse).map(f=>f.properties.id))];
     const gardenOwnership={coarseRanges:0,hiddenBehindDetail:0,wrongFlags:0};

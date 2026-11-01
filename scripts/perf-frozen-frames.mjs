@@ -95,8 +95,8 @@ for (const spot of SPOTS.filter(s => !only.length || only.includes(s.name))) {
     const vm = canalRecallGame.vectorMap, t = vm._threeBuildings, l = vm._signatureLandmarks;
     const idle = !t || (t.ready && !t.pending.length && !t.inflight.size);
     const landmarksIdle = !l || ((!l._pending || !l._pending.size) && !(l._lodLoads > 0));
-    const key = `${t?.chunks?.size ?? 0}|${l?.shown?.size ?? 0}|${(l?._entries || []).map(e => e.level).join('')}|${vm.map.areTilesLoaded()}`;
-    window.__frozenIdle = idle && landmarksIdle && vm.map.areTilesLoaded() && key === window.__frozenKey ? window.__frozenIdle + 1 : 0;
+    const key = `${t?.chunks?.size ?? 0}|${l?.shown?.size ?? 0}|${(l?._entries || []).map(e => e.level).join('')}|${(vm.map ?? vm.cameraMap).areTilesLoaded()}`;
+    window.__frozenIdle = idle && landmarksIdle && (vm.map ?? vm.cameraMap).areTilesLoaded() && key === window.__frozenKey ? window.__frozenIdle + 1 : 0;
     window.__frozenKey = key;
     return window.__frozenIdle >= 5;
   }, null, { timeout: 180000, polling: 1000 });
@@ -107,7 +107,7 @@ for (const spot of SPOTS.filter(s => !only.length || only.includes(s.name))) {
   const grab = async (name, before) => {
     if (before) { await page.evaluate(before); await page.waitForTimeout(300); }
     const shot = await page.evaluate(() => new Promise(resolve => {
-      const map = canalRecallGame.vectorMap.map, l = canalRecallGame.vectorMap._signatureLandmarks;
+      const map = canalRecallGame.vectorMap.map ?? canalRecallGame.vectorMap.cameraMap, l = canalRecallGame.vectorMap._signatureLandmarks;
       map.once('render', () => resolve({ url: map.getCanvas().toDataURL('image/png'), drawn: (l?._entries || []).filter(e => e.pickProjection).length, resident: l?._entries?.length ?? 0 }));
       map.triggerRepaint();
     }));

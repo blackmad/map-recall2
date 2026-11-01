@@ -80,7 +80,7 @@ async function teleport(page: Page, p: { lng: number; lat: number; bearing: numb
 async function settle(page: Page) {
   await page.waitForFunction(() => {
     const vm = (window as any).canalRecallGame.vectorMap, og = vm._ownGround;
-    if (!vm.map.areTilesLoaded()) return false;
+    if (!(vm.map ?? vm.cameraMap).areTilesLoaded()) return false;
     if (!og) return true;
     const s = og.status();
     return s.ready && !s.queued && !Object.keys(s.pending).length;
