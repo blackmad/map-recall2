@@ -1,5 +1,37 @@
 # Canal Recall — what is built
 
+**Landmark request walk gated; `withOpenings` in tasks; the worker-pool overview build held (2026-11-01, #129).**
+L1 hand-back (14). (1) The signature-landmarks request walk (`_requestModels`,
+1124 ms/min of stall at 4×) is skipped only while nothing can have changed
+since the last walk that found no candidate: same request revision (every
+add/set/delete/clear on `_pending`, `_failed`, `shown` bumps it), same
+`models` and `generation`, and the view moved less than half the smallest
+outside slack of the loadable models (`engine/viewSlack.ts`; 2,000 random
+views never disagree with `withinView`). `?landmarkGate=0` turns it off;
+`window.__canalRecallLandmarkGateCheck` re-runs every skipped walk as a
+shadow check (0 misses in 6,822 and 6,854 skips on the seeded Jordaan ride
+at 1×; request sets differ by about one model between any two runs, gate
+off vs gate off included, so the in-run shadow check is the pin). 4×:
+stall 1124 → 196 ms/min, signature-landmarks total 2363 → 1243 ms. (2)
+`withOpenings` yields after the OSM load, around `groundCrossing`, and
+before the houseboat openings; 'paced planning' now also pins the water cell
+plus `openedDecks`/`openedBerths` of every neighbour as JSON (asserted over
+100,000 chars with OSM openings, so it cannot pass on empty data); the
+browser saving is not measured yet. (3) HELD with (4): the overview arrays and tiles built by
+`ownMap/overviewArrays.ts` (no THREE) in the three-buildings worker
+(`ownMap/overviewPool.ts`), `OverviewLayer` taking the prebuilt arrays with a
+main-thread fallback, byte-identical pin `engine/overviewArrays.test.ts`,
+main-thread construction 213–224 → 13–20 ms in node, boot → submit under
+`?engine=own` ~1021 → ~770 ms median, and `OwnWorldView.projectWorld` calling
+the camera directly (engine `project` through the shim 1640/s → 0) all sit
+in one commit (f8e79ee5e) that stops the desktop ride from starting under
+`?engine=own`: engine-own:78, render-on-change:10 and label-occlusion:102
+wait 90 s for the player after the route submit (iphone and the default
+engine pass). Reverted on the integrator branch (eb27afe4a); L1 finds the
+cause (an overview request on a worker mid-job, a reply the pool drops when
+it kills a worker, or the fallback not firing) and hands the commit back
+with a spec pin. Left on the shim meanwhile: engine `project`,
+inventory-trees and the per-frame getZoom/getCenter/getBounds/jumpTo.
 **A click on an ordinary building hung the page since the lazy facts store; one request per card (2026-11-01).**
 Integrator. `_cardForClickedBuilding` asks `_requestBuildingFacts` whenever the
 row has no article (most of the city); the refresh on arrival rebuilt the
