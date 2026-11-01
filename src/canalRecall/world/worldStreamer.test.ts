@@ -156,3 +156,74 @@ test('worker batches: property strings are interned on arrival, values and objec
   assert.equal(full.size, INTERN_LIMIT); assert.ok(!full.has('fresh'));
   assert.deepEqual(c, { k: 'fresh', j: 'v7' });
 });
+
+test('fetch ring (#130): ride box at ride zoom, a ride-sized square around the rider in the intro, cells grown by the margin', async () => {
+  const { rideBox, ringCells, grow, worldRingEnabled, RIDE_HALF_M, WORLD_RING_MARGIN_M } = await import('./worldRing.ts');
+  const view = { west: 4.880, south: 52.370, east: 4.889, north: 52.376 };
+  assert.equal(rideBox(view, 17.8, [4.882, 52.371]), view, 'ride zoom: the camera box');
+  const intro = rideBox(view, 17, [4.882, 52.371]);
+  assert.ok(Math.abs((intro.east - intro.west) * 67967.53053174692 - 2 * RIDE_HALF_M) < 1e-6 && Math.abs((intro.north - intro.south) * 111320 - 2 * RIDE_HALF_M) < 1e-6, 'intro: a square around the rider');
+  assert.equal(rideBox(view, 17, null), view, 'no rider yet: the camera box');
+  const g = grow(view, WORLD_RING_MARGIN_M);
+  assert.ok(Math.abs((g.west - view.west) * 67967.53053174692 + WORLD_RING_MARGIN_M) < 1e-6);
+  // A cell just outside the view but within the margin is in the ring; one beyond it is not.
+  const cells = ringCells(view, []);
+  const { cellOf, cellKeyOf } = await import('./cellGrid.ts');
+  assert.ok(cells.has(cellKeyOf(...cellOf(view.west - 250 / 67967.53053174692, view.south))), 'within the margin');
+  assert.ok(!cells.has(cellKeyOf(...cellOf(view.west - 1400 / 67967.53053174692, view.south))), 'beyond it');
+  const ahead = { west: 4.95, south: 52.40, east: 4.951, north: 52.401 };
+  assert.ok(ringCells(view, [ahead]).has(cellKeyOf(...cellOf(4.95, 52.40))), 'look-ahead boxes join the ring');
+  assert.equal(worldRingEnabled('?worldRing=0'), false); assert.equal(worldRingEnabled('?world=v1'), true);
+});
+
+test('fetch ring (#130): a tile cut from some of its cells is topped up with the same objects and ends equal to the whole tile', async () => {
+  const files = await worldFiles(false);
+  const whole = await residentFor(true, files);
+  const realFetch = globalThis.fetch;
+  (globalThis as any).location = { search: '?world=v1' };
+  globalThis.fetch = (async (input: any) => {
+    const url = String(input), rel = url.startsWith(BASE + '/') ? url.slice(BASE.length + 1) : null;
+    if (rel && files.has(rel)) return new Response(files.get(rel) as BodyInit);
+    const file = rel && path.join(EXTRACT, rel);
+    return file && fs.existsSync(file) ? new Response(fs.readFileSync(file)) : new Response(null, { status: 404 });
+  }) as typeof fetch;
+  try {
+    const chain = gameChain(), s = new BuildingTileStreamer(fakeMap(true), 'osm-building-appearance', BASE) as any;
+    s.setFeatureDecorator(chain.featureDecorator as any);
+    assert.equal(await s.probe(), true);
+    s.attach();
+    const tile = { z: 14, x: 8414, y: 5384 }, key = '14/8414/5384', all: string[] = s.world.index.tileCells['8414/5384'];
+    assert.ok(all.length >= 2, `the test tile spans ${all.length} cells`);
+    // First the ring holds one cell of the tile: only that cell's buildings are adopted.
+    s.ring = new Set([all[0]]);
+    await s.fetchTile(tile);
+    const partial: any[] = s.cache.entries().get(key);
+    assert.ok(partial.length > 0 && partial.length < whole.out.get(key)!.raw.length, `partial ${partial.length} of ${whole.out.get(key)!.raw.length}`);
+    const partialStyled = partial.map((f: any) => s.styled(f));
+    assert.deepEqual(s.missingRingCells(key, tile), []);
+    // The ring grows over the tile: a top-up reads the missing cells only and keeps every held object.
+    s.ring = new Set(all);
+    assert.deepEqual(s.missingRingCells(key, tile), all.slice(1));
+    await s.fetchTile(tile);
+    const full: any[] = s.cache.entries().get(key);
+    const want = whole.out.get(key)!;
+    assert.equal(full.length, want.raw.length);
+    full.forEach((f, i) => {
+      assert.equal(String(f.properties.id), String(want.raw[i].properties.id), `#${i} order`);
+      assert.ok(sameValue(f.geometry, want.raw[i].geometry) && sameValue(s.styled(f).properties, want.styled[i].properties), `#${i} ${f.properties.id}`);
+    });
+    partial.forEach((f, i) => {
+      assert.ok(full.includes(f), `held building ${f.properties.id} is the same object after the top-up`);
+      assert.equal(s.styled(f), partialStyled[i], `held building ${f.properties.id} keeps its styled object`);
+    });
+    // Nothing more to read: a further fetch leaves the tile as it is.
+    await s.fetchTile(tile);
+    assert.equal(s.cache.entries().get(key), full);
+    // A ring holding none of a tile's cells adopts nothing and does not mark the tile empty.
+    const other = { z: 14, x: 8413, y: 5384 };
+    s.ring = new Set(['99_99']);
+    await s.fetchTile(other);
+    assert.equal(s.cache.entries().has('14/8413/5384'), false);
+    assert.equal(s.empty.has('14/8413/5384'), false);
+  } finally { globalThis.fetch = realFetch; delete (globalThis as any).location; }
+});
