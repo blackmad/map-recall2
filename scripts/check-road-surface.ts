@@ -82,7 +82,9 @@ check('an empty network answers rather than throwing', () => {
 
 check('a one-point way contributes no spans', () => {
   const index = buildRoadSpatialIndex([{ points: [{ x: 0, y: 0 }], width: 32 }]);
-  assert.equal(index.cells.size, 0);
+  assert.equal(index.keys.length, 0, 'no cell');
+  assert.equal(index.stringCells.size, 0, 'no out-of-range cell');
+  assert.equal(index.spanSeg.length, 0, 'no span');
 });
 
 // --- Which road am I on? ----------------------------------------------------
