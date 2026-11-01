@@ -2892,7 +2892,8 @@
       },
       "triangles": 2812,
       "bytes": 35220,
-      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
+      "held": true
     },
     "the-movies": {
       "id": "the-movies",
@@ -56479,6 +56480,257 @@
         "buildVersion": 2,
         "bytes": 75072,
         "triangles": 3500
+      }
+    },
+    "huis-met-de-hoofden": {
+      "id": "huis-met-de-hoofden",
+      "name": "Huis met de Hoofden",
+      "landmarkId": "extract_landmarks_554373448",
+      "relatedLandmarkIds": [
+        "extract_landmarks_740511540"
+      ],
+      "modelUrl": "./models/huis-met-de-hoofden.glb",
+      "suppressOsmIds": [
+        "w266604553",
+        "NL.IMBAG.Pand.0363100012177213"
+      ],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.8873964,
+          52.3763984
+        ],
+        "headingDegrees": 119.43055315122695,
+        "lengthMetres": 19.34692195663892,
+        "widthMetres": 17.000397123090277
+      },
+      "surveyed": {
+        "anchor": [
+          4.8873964,
+          52.3763984
+        ],
+        "northOffsetDegrees": 0,
+        "source": "Vertex average of the BAG 0363100012177213 ring (PDOK BAG WFS, CC0) as the anchor; local east/south metres at 111320 m per degree (cos-latitude in longitude). The builder's facade frame runs along the BAG front from its north corner (bearing 210, front facing 300); part heights from the 3DBAG LoD2.2 roof planes (CC BY 4.0, ground 0.854 m NAP); facade heights measured on the RCE photograph 20408929 (CC BY-SA 4.0) scaled to the 13.87 m BAG front of the main house. See huis-met-de-hoofden-footprints.json."
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 0,
+      "materialOverrides": {
+        "brick": "#865e4a",
+        "red": "#9a6650",
+        "stone": "#cbc8bb",
+        "white": "#e6e2d6",
+        "glass": "#2c3331",
+        "frame": "#3a3e3c",
+        "slate": "#4f5154",
+        "dark": "#22261f"
+      },
+      "attribution": {
+        "title": "Huis met de Hoofden, Keizersgracht 123",
+        "author": "Map Recall",
+        "sourceUrl": "https://nl.wikipedia.org/wiki/Huis_met_de_Hoofden",
+        "licence": "CC BY 4.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "modifications": "Original texture-free flat-colour geometry on the BAG footprint (CC0) with 3DBAG heights (CC BY 4.0): the 1622 Amsterdam Renaissance canal front with its six sandstone busts (Apollo, Ceres, Mercury, Minerva, Bacchus, Diana), cross windows under relieving arches, sandstone bands and blocks, festoons, door portal on a double stoop, balustrades, three-stage stepped gable with volutes, obelisks, niches, columns, broken pediment and ball finial, and the gateway wing; read from the RCE photographs 20408929 and 20018060 (Sergé Technau, CC BY-SA 4.0), Wikimedia Commons photographs by Samuel Mudrík (CC BY-SA 4.0) and Michele Ahin (CC BY-SA 3.0 nl), and Gemeente Amsterdam panoramas (CC BY 4.0), for proportion only. No photo pixels or imported meshes."
+      },
+      "bagYear": 1622,
+      "partyWallBearings": [
+        30,
+        210
+      ],
+      "buildingFootprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.8876405,
+              52.376406
+            ],
+            [
+              4.8876035,
+              52.3764187
+            ],
+            [
+              4.8873959,
+              52.3764902
+            ],
+            [
+              4.8873951,
+              52.3764905
+            ],
+            [
+              4.8873904,
+              52.3764854
+            ],
+            [
+              4.8873727,
+              52.3764662
+            ],
+            [
+              4.8873596,
+              52.3764518
+            ],
+            [
+              4.8873269,
+              52.3764163
+            ],
+            [
+              4.8873137,
+              52.376402
+            ],
+            [
+              4.8872952,
+              52.3763818
+            ],
+            [
+              4.8872928,
+              52.3763826
+            ],
+            [
+              4.8872703,
+              52.3763582
+            ],
+            [
+              4.8872739,
+              52.376357
+            ],
+            [
+              4.8874328,
+              52.3763022
+            ],
+            [
+              4.8874611,
+              52.3762925
+            ],
+            [
+              4.8875181,
+              52.3762729
+            ],
+            [
+              4.8876405,
+              52.376406
+            ]
+          ]
+        ]
+      },
+      "buildingCategory": "landmark",
+      "bounds": {
+        "min": [
+          -8.840401649475098,
+          -6.12323395273311e-19,
+          -10.452136039733887
+        ],
+        "max": [
+          16.739648818969727,
+          23.049999237060547,
+          13.974225997924805
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.8873964,
+          52.3763984
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 90,
+        "facadeBearingDegrees": 119.43055315122695,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 25.580050468444824,
+        "heightMetres": 23.049999237060547,
+        "depthMetres": 24.42636203765869,
+        "depthCoverage": 1.4368112615723736
+      },
+      "triangles": 14144,
+      "bytes": 158896,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
+      "lod1": {
+        "sourceHash": "6d7d0c5dbdfda371",
+        "buildVersion": 2,
+        "bytes": 54304,
+        "triangles": 2502
+      }
+    },
+    "lensbomen": {
+      "id": "lensbomen",
+      "name": "3 bomen, 6 lenzen (Lens Trees)",
+      "assetKind": "memorial",
+      "landmarkId": "osm_artwork_4360169260",
+      "modelUrl": "./models/lensbomen.glb",
+      "suppressOsmIds": [],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.8944996,
+          52.3686556
+        ],
+        "headingDegrees": 0,
+        "lengthMetres": 7,
+        "widthMetres": 6
+      },
+      "surveyed": {
+        "anchor": [
+          4.8944996,
+          52.3686556
+        ],
+        "northOffsetDegrees": 0,
+        "source": "Centroid of the three trunk bases triangulated from bearings in Gemeente Amsterdam panoramas TMX7316010203-000717_pano_0000_000526 (2018-05-14) and TMX7316010203-000224_pano_0000_000767 (2017-03-27), CC BY 4.0; 2.8 m south-east of OSM node 4360169260 (52.3686724, 4.8944688), which stays the POI. Heights scaled to the artist's 700 cm (Commons 'The lens trees.jpg'). See lensbomen-footprints.json."
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 0,
+      "materialOverrides": {
+        "bronze": "#2d2b27",
+        "glass": "#d8d4c2",
+        "frame": "#8e908b"
+      },
+      "materialOpacity": {
+        "glass": 0.8
+      },
+      "attribution": {
+        "title": "3 bomen, 6 lenzen (Thom Puckey, 1989)",
+        "author": "Map Recall; sculpture by Thom Puckey (1989)",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:The_lens_trees.jpg",
+        "licence": "CC BY 4.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "modifications": "Original low-poly reconstruction: three tapered bronze trunks forking into horn-like branches (tapered Bezier tubes) carrying six translucent lenses in steel rims; arrangement and proportions read from Gemeente Amsterdam panoramas (CC BY 4.0) and Wikimedia Commons photographs by Ceescamel (CC BY-SA 4.0), Michal Klajban (CC BY-SA 3.0) and Thom Puckey (CC BY-SA 4.0), for proportion only. No photo pixels or imported meshes."
+      },
+      "buildingCategory": "landmark",
+      "bounds": {
+        "min": [
+          -2.6284806728363037,
+          -0.000032692314562154934,
+          -2.3708391189575195
+        ],
+        "max": [
+          2.491607427597046,
+          7,
+          2.1547889709472656
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.8944996,
+          52.3686556
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 90,
+        "facadeBearingDegrees": 0,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 5.12008810043335,
+        "heightMetres": 7.000032692314562,
+        "depthMetres": 4.525628089904785,
+        "depthCoverage": 0.7542713483174642
+      },
+      "triangles": 3552,
+      "bytes": 55388,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
+      "lod1": {
+        "sourceHash": "84573bdb953f314b",
+        "buildVersion": 2,
+        "bytes": 15204,
+        "triangles": 508
       }
     }
   }

@@ -1870,5 +1870,17 @@
   "buildVersion": 2,
   "bytes": 75072,
   "triangles": 3500
+ },
+ "huis-met-de-hoofden": {
+  "sourceHash": "6d7d0c5dbdfda371",
+  "buildVersion": 2,
+  "bytes": 54304,
+  "triangles": 2502
+ },
+ "lensbomen": {
+  "sourceHash": "84573bdb953f314b",
+  "buildVersion": 2,
+  "bytes": 15204,
+  "triangles": 508
  }
 }
