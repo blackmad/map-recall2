@@ -179,7 +179,8 @@
   }
  },
  "roof": {
-  "material": "red-tile"
+  "material": "red-tile",
+  "rakeClear": true
  },
  "rhythm": {
   "bays": "window, balcony door, window at 5.5-6.3 m; two axes at 5 m; four at 6.4-7.6 m (window, balcony door, two windows: Pretoriusstraat 72-120 and 71-95); three wide axes on the 8.5 m double fronts, four at 10.8 m",

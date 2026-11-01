@@ -101,6 +101,9 @@ export interface CrossGable { leftRD: number[]; apexRD: number[]; rightRD: numbe
 export const CROSS_GABLE_MARGIN_M = 0.03;
 /** Cross roofs start this far behind the frontage, behind the crown wall (fit.ts crown depth 0.18 m, bargeboards on it). */
 export const CROSS_GABLE_BEHIND_M = 0.25;
+/** `RoofIntent.rakeClear`: a saddle stays this far under its crown's rakes, square to the slope: past the GLB audit's 3 cm
+ *  zfight-tight band (geometryAudit.ts `zTightTol`) with a centimetre to spare. */
+export const RAKE_CLEAR_M = 0.04;
 
 export interface RecipeRoofReport {
   pandId: string;
@@ -158,8 +161,9 @@ export interface SaddleFit { ridgeM: number; pitchDeg: number; sideEavesM: numbe
  * `maxDropM` under the eaves `eavesM` (a small crown on a wide front: the caller falls back to an attic face).
  * `profile` is the crown outline in facade metres (x from the left edge, y above the pand ground), as fit.ts writes it.
  */
-export function saddleUnderProfile(profile: [number, number][], widthM: number, eavesM: number, opts: {pitchDeg?: number; marginM?: number; minPitchDeg?: number; maxPitchDeg?: number; maxDropM?: number} = {}): SaddleFit | null {
-  const m = opts.marginM ?? 0.03, c = widthM / 2, minTan = Math.tan((opts.minPitchDeg ?? 30) * Math.PI / 180), maxTan = Math.tan((opts.maxPitchDeg ?? 65) * Math.PI / 180);
+export function saddleUnderProfile(profile: [number, number][], widthM: number, eavesM: number, opts: {pitchDeg?: number; marginM?: number; minPitchDeg?: number; maxPitchDeg?: number; maxDropM?: number; clearM?: number} = {}): SaddleFit | null {
+  let m = opts.marginM ?? 0.03;
+  const c = widthM / 2, minTan = Math.tan((opts.minPitchDeg ?? 30) * Math.PI / 180), maxTan = Math.tan((opts.maxPitchDeg ?? 65) * Math.PI / 180);
   if (!(widthM > 0) || profile.length < 2) return null;
   // The outline height at the centre: the highest segment there (a riser at the centre takes its upper end).
   let top = -Infinity;
@@ -169,7 +173,7 @@ export function saddleUnderProfile(profile: [number, number][], widthM: number, 
     top = Math.max(top, Math.abs(x1 - x0) < 1e-9 ? Math.max(y0, y1) : y0 + (y1 - y0) * (c - x0) / (x1 - x0));
   }
   if (!Number.isFinite(top)) return null;
-  const ridge0 = top - m;
+  let ridge0 = top - m;
   // Each vertex bounds the ridge for a given pitch: ridge <= y - m + tan * |x - c|.
   const bound = (tan: number) => Math.min(ridge0, ...profile.map(([x, y]) => y - m + tan * Math.abs(x - c)));
   let tan: number;
@@ -178,6 +182,14 @@ export function saddleUnderProfile(profile: [number, number][], widthM: number, 
     // The pitch that keeps the ridge at the top: the steepest demand of any vertex off the centre.
     const need = Math.max(0, ...profile.filter(([x]) => Math.abs(x - c) > 1e-6).map(([x, y]) => (ridge0 - (y - m)) / Math.abs(x - c)));
     tan = Math.min(maxTan, Math.max(minTan, need));
+  }
+  // `clearM` (RoofIntent.rakeClear, `RAKE_CLEAR_M`): the roof stays this far under the crown's rakes measured square to the slope, not
+  // only `marginM` plumb. A saddle pitched to a point gable's rake runs parallel to the crown wall's raking top face, and
+  // 3 cm plumb at 45 degrees is 2.1 cm square to it: inside the GLB audit's zfight-tight band (Transvaalbuurt 1911 rows,
+  // 2026-11-01). The pitch does not depend on the margin (both sides of `need` shift by it), so only the ridge drops.
+  if (opts.clearM !== undefined) {
+    m = Math.max(m, opts.clearM * Math.sqrt(1 + tan * tan));
+    ridge0 = top - m;
   }
   const ridgeM = bound(tan), sideEavesM = ridgeM - tan * c;
   if (sideEavesM < eavesM - (opts.maxDropM ?? 1)) return null;
