@@ -58614,7 +58614,7 @@
       "buildingCategory": "landmark",
       "bounds": {
         "min": [
-          -14.079999923706055,
+          -15.232088088989258,
           -3.5762786065873797e-9,
           -14.080303192138672
         ],
@@ -58637,17 +58637,17 @@
       "extent": {
         "widthMetres": 28.569303512573242,
         "heightMetres": 47.40200043082237,
-        "depthMetres": 22.726420402526855,
-        "depthCoverage": 1.0570428094198538
+        "depthMetres": 23.87850856781006,
+        "depthCoverage": 1.1106283054795376
       },
-      "triangles": 7648,
-      "bytes": 117632,
+      "triangles": 7888,
+      "bytes": 120984,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "lod1": {
-        "sourceHash": "1f6b53a6a88263d0",
+        "sourceHash": "1da18b6e8d540940",
         "buildVersion": 2,
-        "bytes": 52536,
-        "triangles": 2214
+        "bytes": 54100,
+        "triangles": 2285
       }
     }
   }

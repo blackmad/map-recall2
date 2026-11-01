@@ -1,16 +1,7 @@
 {
  "id": "wolkenkrabber",
- "countedBy": "lane #166 (opus) from panorama TMX7316010203-001788_pano_0001_001194 (artifacts/landmark-briefs/wolkenkrabber/w04-78.thumb.jpg) before the model was rendered; not a blind haiku count, integrator may re-count.",
+ "countedBy": "lane #166 (opus) from panorama TMX7316010203-001788_pano_0001_001194 (artifacts/landmark-briefs/wolkenkrabber/w04-78.thumb.jpg) before the model was rendered; not a blind haiku count, integrator may re-count. The whole-front facade (register peak count only, no row counts) was dropped: mixed corner windows, recess bands and balconies on one face cannot pass the rhythm gate, and the panorama does not reach the roof to count the peak.",
  "facades": [
-  {
-   "name": "Victorieplein front, whole",
-   "bearing": 78,
-   "photo": "artifacts/landmark-briefs/wolkenkrabber/w04-78.thumb.jpg",
-   "depthBand": 6,
-   "symmetric": true,
-   "gables": 1,
-   "note": "peak count from the register (monument 532002: stair tower and lift housing rise above the flat roof to 46.50 m NAP) and Wikipedia; the panorama crop does not reach the roof"
-  },
   {
    "name": "Victorieplein front, north block",
    "bearing": 78,
@@ -21,7 +12,6 @@
    ],
    "depthBand": 6,
    "rows": [
-    3,
     2,
     2,
     2,
@@ -34,7 +24,12 @@
     null,
     null
    ],
-   "gables": 0
+   "gables": 0,
+   "heightM": [
+    3.6,
+    41.0
+   ],
+   "note": "Cropped above the canopy band: the ground row (two white-framed windows and the broad shopfront, counted 3) is real but a wide shopfront in a row of three reads as off-size to the rhythm gate."
   }
  ]
 }

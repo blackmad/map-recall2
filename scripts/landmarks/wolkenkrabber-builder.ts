@@ -118,8 +118,8 @@ export function buildWolkenkrabber(_w: number, _d: number, b: BuildingTools & {m
       slab(b, f, shopC, 0.55, 3.8, 2.6, 0.06, 'white');
       slab(b, f, shopC, 0.65, 3.6, 2.4, 0.1, 'glass');
       slab(b, f, L / 2, Y0 - 0.95, L, 0.85, 1.6, 'greyBrick');
-    } else if (dot(w) < -0.9 && Math.abs(across(midOf2(w))) < 6 && L > 3.5) {
-      // rear centre: balcony stacks against a grey recess
+    } else if (dot(w) < -0.9 && L > 4.5) {
+      // rear wings either side of the stair spine: full-width balcony stacks against a grey recess (w05-258, w06-257)
       slab(b, f, L / 2, Y0 - 0.3, L - 0.6, 40.2 - Y0 - 0.2, 0.05, 'concrete');
       for (const y of floorsY) {
         slab(b, f, L / 2, y + 0.2, L - 1.2, 2.3, 0.1, 'glass', 0.05);
@@ -137,4 +137,3 @@ export function buildWolkenkrabber(_w: number, _d: number, b: BuildingTools & {m
   }
   setSink(0);
 }
-const midOf2 = (w: Wall): Pt => [w.origin[0] + w.tangent[0] * w.length / 2, w.origin[1] + w.tangent[1] * w.length / 2];
