@@ -179,7 +179,7 @@ export class OwnWorldView {
     const clear = typeof sky?.['sky-color'] === 'string' ? new THREE.Color(sky['sky-color']).getHex() : 0xbfd8ee;
     this.host = new FrameHost(THREE, container, {
       render: () => this.renderFrame(),
-    }, { antialias, pixelRatio: Math.min(dpr, cap), clearColor: clear });
+    }, { antialias, pixelRatio: Math.min(dpr, cap), clearColor: clear, renderOnChange: flag('renderOnChange', '__canalRecallRenderOnChange', true) });
     // Quality tier (renderGovernor.ts): chosen once from a ~1 s fill probe and what the browser reports; it sets
     // the start and the ceiling of the knobs below, the governor steps inside it. `?tier=low|mid|high` forces one.
     const search = new URLSearchParams(W().location?.search ?? '');
@@ -309,6 +309,7 @@ export class OwnWorldView {
       this._threeBuildings = new api.ThreeBuildings(this.cameraMap, MERCATOR, 'photo');
       this._threeBuildings.attachToSharedFrame(this._sharedFrame);
       if (this.streetFronts && this._threeBuildings.setStreets) this._threeBuildings.setStreets(this.streetFronts);
+      this.streetFronts = null;
       this._threeBuildings.setVisible(true);
       const city = this._completeCity = new runtime.BuildingTileStreamer(this.cameraMap, 'osm-building-appearance', this.extractPath);
       // No MapLibre source to feed: the streamer answers featuresAt / sampleFeatures itself.
@@ -345,7 +346,9 @@ export class OwnWorldView {
         });
       }
       const api = W().CanalRecallOwnGround;
-      const budget: Record<string, unknown> = { releaseArrays: coarse() && W().__canalRecallKeepGroundArrays !== true };
+      // Every device frees the ground's CPU arrays once uploaded (81 MB on the desktop ride start, heap gate #130);
+      // a lost context rebuilds the resident cells from the worker. Phones also draw through the tiles only.
+      const budget: Record<string, unknown> = { releaseArrays: W().__canalRecallKeepGroundArrays !== true, tilesOnly: coarse() };
       if (coarse()) budget.radiusM = 400;
       this._ownGround = new api.OwnGround(three.THREE, this._sharedFrame, {
         repaint: () => this.host.triggerRepaint(),
@@ -655,7 +658,8 @@ export class OwnWorldView {
     ferry.zoomScale = zoomScale;
     const lngLat = worldToLngLat(player.x, player.y, loader);
     const surface = this.riderSurface();
-    ferry.setAltitude?.(surface ? surface.waterLevelAt(lngLat) + 0.22 : 0.22);
+    // Only while drawn: the water test ran every frame of every ride for a hidden ferry (#129); `update` below shows it.
+    if (visible) ferry.setAltitude?.(surface ? surface.waterLevelAt(lngLat) + 0.22 : 0.22);
     ferry.update(lngLat, player.angle, visible);
   }
   setPlayerTransit(player: any, loader: LoaderFrame, visible: boolean, underground = false, zoomScale = 1): void {
@@ -718,7 +722,14 @@ export class OwnWorldView {
   }
 
   // ---- content the game hands over ----
-  setStreetFronts(ways: unknown): void { this.streetFronts = ways; this._threeBuildings?.setStreets?.(ways); }
+  /**
+   * The buildings layer keeps its own packed street segments; the raw OSM ways are held only until it exists to take
+   * them (24.7 MB on the ride-start heap when kept for the session, #130).
+   */
+  setStreetFronts(ways: unknown): void {
+    if (this._threeBuildings) { this._threeBuildings.setStreets?.(ways); this.streetFronts = null; }
+    else this.streetFronts = ways;
+  }
   setSpoilerNames(names: string[]): void { this.spoilerNames = names || []; }
   _spoils(name: string): boolean { return !!name && this.spoilerNames.includes(name); }
   setMeasuredColoursOnly(on: boolean): void { this.measuredColoursOnly = !!on; this.extras.syncEnabled(); }
@@ -856,10 +867,15 @@ export class OwnWorldView {
   // Not under the flag (UNIMPLEMENTED): a no-op so the game runs.
 }
 
+/** Found numbers, by name: they are `const` in constants.js, and the indirect eval compiled a script per call, several a frame (#129). */
+const GLOBAL_NUMS = new Map<string, number>();
 function globalNum(name: string, fallback: number): number {
+  const known = GLOBAL_NUMS.get(name);
+  if (known !== undefined) return known;
   try {
     // Top-level `const` in constants.js is a global lexical binding, not a window property.
     const v = (0, eval)(`typeof ${name} === 'number' ? ${name} : undefined`);
-    return typeof v === 'number' ? v : fallback;
+    if (typeof v === 'number') { GLOBAL_NUMS.set(name, v); return v; }
+    return fallback;
   } catch (_) { return fallback; }
 }

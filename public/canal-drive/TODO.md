@@ -230,7 +230,11 @@ camera when the deck is lifted"): deck-lift projection fix in `vector-map.js`
 iPhone spec rides, `docs/handoffs/flip-inventory-20261031.md` (B1–B14, 7-step
 P5 order; corrections: `mapGuard.ts` stays in part, maplibre-gl/leaflet stay
 in package.json for 8 lab pages, `liveTiles.ts`, `MapComponent.tsx`).
-Hand-back (6) merged 2026-11-01 (HISTORY "Stutter owners under `?engine=own`
+Hand-back (7) merged 2026-11-01 (HISTORY "Seeded-route stutter owners
+fixed"): four exact own-ground fixes (What's New "Long routes no longer freeze
+as canals and bridges load"), render-on-change green (`render-on-change.spec`),
+`CameraMap.jumpTo` sub-mm tolerance, vehicle pose snapshots. Hand-back (6)
+merged 2026-11-01 (HISTORY "Stutter owners under `?engine=own`
 named"): stutter owner table + three fixes (What's New "Fewer hitches when
 new ground streams in"), `clearanceResidents()`, P5 B1 (no maplibre-gl fetch
 under the flag), the oracle-migration-2 haiku brief; render-on-change WIP
@@ -1363,17 +1367,50 @@ Root `main` was cleaned on 2026-10-09 (see HISTORY). Live work, in order:
   anything measurable, so fill is not the owner on this Mac). The user still
   feels stutter on localhost `?engine=own`: owners are main-thread hitches,
   named per task by `motion-stutter.mjs` under own at DPR 2 (HISTORY "Stutter
-  owners under `?engine=own` named"); the first three are fixed on main
-  (frames > 50 ms 7 → 0, long tasks 7 → 0 on the Jordaan ride). Still above
-  16 ms, 13 frames of 17–40 ms per 60 s: `_applyChunkPandBases` on a newly
-  added street chunk (≈ 100 ms total: first separation + relief sampling),
-  three.js render + `shadowMap.render` (≈ 70 ms), GC (49 ms), main-thread
-  own-ground `splitIntoTiles`/`cutMesh` (30 ms), the wayOpening deck index
-  still on the full 3×3 road cells (≈ 32 ms), facade `t4` (24 ms); P3 gate
-  "no streaming task > 16 ms at 1×" not met (L1, seeded-route run pending).
-  Both engines also render every idle frame (fan): render-on-change WIP on
-  L1's branch (idle renders/5 s 755 → 0, CPU ~250 % → ~20 %, pixel-identical
-  frames; spec not green yet, stays out of main until it is).
+  owners under `?engine=own` named", "Seeded-route stutter owners fixed").
+  Seeded route meets the P3 gate at 1× (long tasks 10 → 0, longest 600 → 68
+  ms). Jordaan after the 4× round (HISTORY "Per-frame CPU under
+  `?engine=own` at 4×"): 1× no task > 50 ms, longest 34 ms, but streaming
+  tasks > 16 ms remain (`splitIntoTiles` in ground `cutMesh` 48 ms, chunk pand
+  bases 57 ms); 4× owners per 60 s: three-buildings `t4`/`setFeatures`/`post`
+  ≈ 1.8 s, `_applyChunkPandBases` ≈ 1.2 s, `buildShadowStandIn` on landmark
+  `_add` 1.1 s, `splitIntoTiles` 0.4 s; render pass 13 s sets p99.
+  `pop-in.mjs` runs under own since hand-back (9); hand-back (10) settled its
+  3,500 px/s "unexplained" own figure: chase-camera turn parallax on the
+  Westerkerk tower, counted only under own because the script skipped turn
+  frames by a > 2° bearing step (MapLibre turns in jumps, the own camera
+  turns ≤ 1.33°/frame); the script now also skips frames turning > 60°/s.
+  Re-summarised, car route 60 s: total pop MapLibre 1,480 vs own 1,846 px/s,
+  unexplained 563 vs 1,263 (the slower tail of the same turn, parallax not
+  pop), landmark-model 592 vs 452, trees 4 vs 131, ground cells / building
+  chunks 0 / 0 in both. Open: the within-150 m install count with
+  per-install cell geometry (the P3 pop-in gate), `buildShadowStandIn` and
+  `splitIntoTiles` to the worker pool with the Jordaan 1×/4× re-measure, P5
+  B6 (B3 satisfied under own, B4 applied); a fresh L1 session picks these up
+  (the previous one ran out of context after hand-back (10)).
+  Idle rendering (fan) is fixed under own: render-on-change on main, 0
+  renders per 5 s at rest; the default engine still renders every idle frame
+  until the flip.
+- **Heap gates** (HISTORY "Landmark chunk copies typed"): desktop 462 MB at
+  ride start / 469 at 60 s meets ≤ 500; iPhone 332 MB against ≤ 160 is not
+  reachable by trimming owners (city-wide data as JS objects); the road lane
+  builds, in order, roadIndex CSR + snap-index merge, columnar building tile
+  cache, overview polyline pack, phone ground radii (≈ 235–250 MB expected),
+  the materials lane releases the facade CPU arrays (33.9 MB). The gate stays
+  red with that reason. `engine-own.spec`'s `heapMB` is noise without a GC;
+  `scripts/heap-ride.mjs` is the measure.
+- **Time to ride under own ≈ 3.5 s median, three of six runs within 70 ms of
+  the 4 s gate**: the settle hold waiting on facade chunks is the variance
+  (materials lane: spawn chunks first); boot → submit 0.9 s vs 0.53 default
+  is unprofiled (L1/road lane after). `compileAsync` "isReady of undefined"
+  after context loss, seen once (materials lane).
+- **Weak-GPU low tier cannot meet p95 ≤ 33 ms on SwiftShader** (HISTORY
+  "Weak-GPU low tier"): its steady frame is ≈ 290 ms, triangle-bound, and no
+  single layer removal gets under 195 ms. Gate stays red as written; deciding
+  what the low tier may drop (trees, landmarks, overview beyond the ground)
+  needs a real weak device and the user's pixel budget, not a proxy. Related
+  P4 numbers: own ground at the Dam 1.78 M triangles on low / 2.21 M on high
+  against the 700k iPad budget (materials lane, 2026-11-01).
 - **POI/business labels through buildings under `?engine=own`** (user
   screenshot, Eerste Constantijn Huygensstraat; "we still need more
   occlusion"). Round 2 on main (HISTORY "Label occlusion round 2"): 16 → 1

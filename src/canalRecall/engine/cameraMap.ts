@@ -22,6 +22,10 @@ import type { LngLat, LngLatLike, ScreenPoint, ViewBounds, WorldCamera } from '.
 /** MapLibre's earth (6371008.8 m), the one its zoom and `mainMatrix` use. */
 const EARTH_CIRCUMFERENCE = 2 * Math.PI * 6371008.8;
 
+/** Below these a jump is not applied (CameraMap.jumpTo): ~1 mm of centre, far under a pixel at any game zoom. */
+export interface CameraTolerance { deg: number; zoom: number; angle: number; metres: number }
+export const JUMP_TOLERANCE: CameraTolerance = { deg: 1e-8, zoom: 1e-7, angle: 1e-6, metres: 1e-3 };
+
 export function mercatorX(lng: number): number { return (180 + lng) / 360; }
 export function mercatorY(lat: number): number { return (180 - (180 / Math.PI) * Math.log(Math.tan(Math.PI / 4 + (lat * Math.PI) / 360))) / 360; }
 export function lngOfMercatorX(x: number): number { return x * 360 - 180; }
@@ -99,6 +103,18 @@ export class EngineCamera {
     if (options.elevation != null && Number.isFinite(options.elevation)) this.elevation = options.elevation;
     if (options.fovDeg != null) this.fovDeg = options.fovDeg;
     return { moved: this.key() !== before, zoomed: this.zoom !== zoomBefore };
+  }
+
+  /** Would `set(options)` change no field by more than `tol` (centre in degrees)? Options it does not handle count as changes. */
+  within(options: MapCameraOptions, tol: CameraTolerance): boolean {
+    const keys = Object.keys(options).filter(k => (options as Record<string, unknown>)[k] !== undefined);
+    if (keys.some(k => !['center', 'zoom', 'bearing', 'pitch', 'elevation'].includes(k))) return false;
+    if (options.center) { const [lng, lat] = asLngLat(options.center); if (!(Math.abs(lng - this.lng) <= tol.deg && Math.abs(Math.max(-85, Math.min(85, lat)) - this.lat) <= tol.deg)) return false; }
+    if (options.zoom != null && !(Math.abs(Math.max(this.minZoom, Math.min(this.maxZoom, options.zoom)) - this.zoom) <= tol.zoom)) return false;
+    if (options.bearing != null) { const d = Math.abs(((((options.bearing - this.bearing) + 180) % 360) + 360) % 360 - 180); if (!(d <= tol.angle)) return false; }
+    if (options.pitch != null && !(Math.abs(Math.max(0, Math.min(this.maxPitch, options.pitch)) - this.pitch) <= tol.angle)) return false;
+    if (options.elevation != null && !(Math.abs(options.elevation - this.elevation) <= tol.metres)) return false;
+    return true;
   }
 
   state(): CameraState { return { center: [0, 0], zoom: this.zoom, bearing: this.bearing, pitch: this.pitch, fovDeg: this.fovDeg, elevation: this.elevation }; }
@@ -220,6 +236,9 @@ export class CameraMap {
 
   // ---- MapLibre-shaped camera ----
   jumpTo(options: MapCameraOptions): this {
+    // The rider at rest still creeps by ~1e-5 px a frame (legacy physics); a jump that changes nothing visibly is not
+    // applied, so render-on-change stays idle (#129). Drift past the tolerance is applied, so nothing lags by more.
+    if (this.camera.within(options, JUMP_TOLERANCE)) return this;
     const { moved, zoomed } = this.camera.set(options);
     if (!moved) return this;
     this.host.fire('movestart');

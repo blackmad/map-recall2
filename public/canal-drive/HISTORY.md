@@ -1,5 +1,133 @@
 # Canal Recall — what is built
 
+**Landmark chunk copies typed, streetFronts handed to the buildings layer: desktop ride start 493 → 462 MB; time to ride under own ≈ 3.5 s with the settle hold as its variance (2026-11-01, #130).**
+Road lane. The 17.6 MB of interleaved landmark GLB buffers are kept: click
+picking reads them (three's fallback raycast reads uv and normal before a
+mesh's pick BVH exists), the pand lift rewrites positions, and a context
+restore re-uploads from them. Cut instead: `_applyChunkPandBases` widened
+every street-chunk attribute to Float32; non-position attributes now keep
+their stored type and normalized flag (interleaved ones read by stride) and
+the index is Uint16 when it fits (`ownGround/chunkBases.ts`,
+`signature-landmarks-source.js`): landmark CPU arrays 40.5 → 33.3 MB at 60 s
+with the same 143 chunk meshes. `ownWorldView` no longer keeps the raw OSM
+ways as `streetFronts` for the session (24.7 MB on both devices); the
+buildings layer keeps its own packed segments. Context-loss probe after a 60 s
+ride: 0 stale attributes, 0 errors. Heap with forced GC: desktop 493 → 462 MB
+at ride start and 506–522 → 469 at 60 s (both under the 500 MB gate), iPhone
+359 → 332 MB. iPhone proposal (nothing built yet, integrator go given in the
+lane's order): roadIndex CSR + snap-index merge (−18 to −21 MB, −6.7),
+columnar building tile cache (−20 to −25), overview polyline pack (−15),
+ground ring/keep radii (−12 to −20); ≈ 235–250 MB after all of them, ≈
+205–220 with the facade arrays (33.9 MB, materials lane) released; the 160 MB
+gate is not reachable by trimming owners because the city-wide data is held
+as millions of JS objects, so it stays red with that reason. Time to ride
+under `?engine=own&world=v1&roads=bin`, six warm runs: 3.96, 3.08, 2.33,
+2.74, 3.93, 3.95 s (median ≈ 3.5, three within 70 ms of the 4 s gate; default
+3.98 median in the same session). Boot → submit 0.9 s vs 0.53 default (not
+profiled), submit → track ≈ 1.0 vs 1.75. The settle hold (0.08–1.87 s) is all
+the variance; `time-to-ride-phases.mjs` now reports `settlePending` and its
+owner: facade chunks, pending until ≈ 2.8 s after submit in slow runs with ≈
+1.1 s of main-thread idle inside. Decision: racing does not start without
+facades; the materials lane builds the spawn cell's chunks first. Seen once on
+main's bundles: three's `compileAsync` poll throws "isReady of undefined"
+after a context loss (materials lane).
+
+**Per-frame CPU under `?engine=own` at 4×: water level, view-mode constants, clearance walk; Jordaan 1× longest frame 68 → 34 ms (2026-11-01, #129).**
+L1 interim, all exact: `waterZAt` gets a per-polygon box plus y-banded edges
+cached per polygon list (200,000 random points over 12 central cells give
+identical levels, 6.9 → 0.33 s; the hidden ferry no longer asks for a water
+level every frame; it owned 1.46 s per 60 s at 4×); the `constants.js`
+view-mode numbers are cached as `const` (an indirect eval compiled a script
+several times a frame, 0.6 s); the camera-clearance `sightlineBlocker` puts
+the ~34,000 residents in a 0.002° grid built once per resident list (300
+random sightlines over 5,000 houses give the same blocker as the linear walk,
+0.52 s). Jordaan, real GPU, DPR 2, 60 s: 1× longest frame 67.8 → 33.9 ms, > 50
+ms per minute 1 → 0, p99 10.3; 4× long tasks 67 (4,646 ms) → 56 (3,852 ms),
+p99 84.4 → 81.8 (the after run started under load 14.2 from another lane).
+P3 gate still not met: at 1× streaming tasks over 16 ms remain from
+`splitIntoTiles` in the ground `cutMesh` (48 ms) and the chunk pand bases (57
+ms); at 4× the owners per 60 s are `buildShadowStandIn` on landmark `_add`
+(1,086 ms), `_applyChunkPandBases` (≈ 1,240 ms), three-buildings `t4` /
+`setFeatures` / `post` (≈ 1,840 ms), `splitIntoTiles` (370 ms); the render
+pass at 4× is 13 s and sets p99 but is not streaming work. Next: move
+`buildShadowStandIn` and `splitIntoTiles` to the worker pool (pure array
+functions). P5 B3 is already answered under own (`game-route.js` finishes on
+idle with no 450 ms pause; only the MapLibre branch deletion remains for P5).
+
+**Seeded-route stutter owners fixed (long tasks 10 → 0, longest frame 600 → 68 ms); render-on-change green under `?engine=own` (idle renders 755 → 0) (2026-11-01, #129).**
+L1 hand-back (7), measured on the real GPU (DPR 2, 1800×1100, headed, 60 s
+motion window). Four exact fixes in the own-ground preparation, each with
+byte-identical output across the city (95 cells for water and openings, 139
+for placed decks; `test:own-ground` 251/251): `openUnderFootbridges`'
+`inWater` skips polygons whose bbox does not hold the point (owned 350–584 ms
+tasks); `groundCrossing` buckets ground street and rail segments into a 32 m
+grid (≈ 210 ms); the deck-edge `RoadIndex` in `placeWayDecks` holds only
+polygons near the opened decks instead of the whole 3×3 (≈ 140 ms);
+`bandedInPolygon` tests the large canal polygons by y-bands, with a randomised
+test against the plain test (≈ 170 ms). City prepare run 25.1 → 5.6 s. Seeded
+route: long tasks 10 (2,008 ms) → 0, longest frame 600 → 68 ms, > 100 ms per
+minute 5 → 0, p99 16.3 → 10.4 ms: the P3 gate at 1× is met there. Jordaan:
+7 (462 ms) → 2 (108 ms) long tasks, longest 92 → 75 ms, p99 17.0 under load
+5.1; the remaining owners are all ≤ 55 ms (`_applyChunkPandBases` on a new
+street chunk, three-buildings `setFeatures`/`t4`, `splitIntoTiles`/`cutMesh`,
+render pass, GC); 4× not measured this round. The own ground is the default
+ground, so this is a What's New ("Long routes no longer freeze as canals and
+bridges load"). Render-on-change, own engine only: `CameraMap.jumpTo` ignores
+sub-millimetre jumps (a rider at rest creeps ≈ 1e-5 px per frame in the
+legacy physics and caused 120 renders per 2 s; drift past the tolerance is
+still applied, unit-tested) and the vehicles draw a pose snapshot taken only
+when the rounded pose key changes, so wheel and lean easing below the
+rounding moves no pixels. Idle: 0 renders per 5 s (755 before), renderer CPU
+21–92 % vs 55–187 % with `?renderOnChange=0`, the still frame pixel-identical
+to a redraw; `render-on-change.spec` compares the engine canvas only because
+the HUD fades on its own clock. Not done: separate GPU ms for the overview
+fills (superseded by the materials lane's spans), `pop-in.mjs` under both
+engines, the P5 steps.
+
+**Heap at ride start under `?engine=own&world=v1&roads=bin`: desktop 562–581 → 493 MB, the P3 gate (≤ 500 MB) met; iPhone 384 → 359 MB (2026-11-01, #130).**
+Measured with forced GC by `scripts/heap-ride.mjs` (the `engine-own.spec`
+`heapMB` reads without a GC and swings 443–1,341 MB between identical runs, so
+it cannot judge the gate). Cuts (road lane), all CPU copies never read after
+upload: the own ground releases its arrays on desktop too (≈ 40 MB, the rest
+as meshes first draw); the overview drops its CPU arrays via three's
+`onUpload` (34 MB) and rebuilds from its data on context restore; cycle,
+transit and neighbourhood lines (`overlays/flatLines.ts`, 7 MB) rebuild from
+the last `set()` on restore. Left as live data: ground store 90 MB, road graph
+39 MB, streetFronts 25 MB, facts. ArrayBuffer data in the snapshot 293 → 213
+MB; 60 s in 587–613 → 506–522 MB, the growth being landmark GLB arrays (+17
+MB, next cut). A context-loss probe caught that overview casings share their
+fill's geometry and were not rebuilt (three threw on null arrays); fixed in
+the same commit, re-run 0 stale attributes and 0 page errors. Merged over the
+materials lane's overview spans (both add helpers at the same spot in
+`overviewLayer.ts`; kept both).
+
+**Weak-GPU low tier: coarse ground on low, overview drawn over its on-screen spans on every tier; SwiftShader is triangle-bound (2026-11-01, #129).**
+The materials lane measured what SwiftShader is bound by with synchronous
+frames (redraw + 1 px readPixels, low tier, DPR 1.5, layers toggled in one
+page): triangles, not fill (DPR 0.5 moves 450 → 445 ms) and not draws (≈ 200
+calls in every configuration). Per layer: overview 1.0 M triangles ≈ 175 ms
+(0.7 M never culled because every overview mesh had `frustumCulled = false`),
+own ground 90–150 ms, trees 65–75 ms, landmarks 40–45 ms. Two changes: (1) the
+low tier builds the own ground at the coarse level (`TierSettings.ground` in
+`renderGovernor.ts`: detail touch, groundNear all, ring view; mid and high
+unchanged; an explicit query or global still wins), Dam ground triangles 2.21
+→ 1.78 M, low-tier pixel diff 5.8 % of px (drape tone on squares and paving,
+missing bollards); (2) the overview is drawn over its on-screen index span on
+every tier (`engine/overviewLayer.ts`: each geometry cut 8×8 through
+`cutMesh`/`drawAsSpans`, one draw per mesh, tile spheres grown by draw depth
+and line extrusion, `?overviewSpans=0` turns it off): 0 px diff at the high
+tier at the rider pose and the Dam, ≈ 0.65 M fewer triangles, SwiftShader
+low-tier frame 394 → 293 ms at the rider and 492 → 367 at the Dam, desktop
+GPU time unchanged (4–5 ms). SwiftShader p95 per tier (ENGINE=own, DPR 1.5):
+main low 1.8 fps / 244 / 2,904 ms → this low 2.8 / 123 / 1,082; mid 2.3 /
+224 / 985; high 2.1 / 129 / 1,406. The P4 gate (low tier p95 ≤ 33 ms) is not
+met and cannot be on SwiftShader: its steady frame is ≈ 290 ms and removing
+any one of ground, overview, trees or landmarks still leaves 195–220 ms.
+Integrator decision: the gate stays as written and red, no layer is dropped
+from the low tier on a proxy's numbers; it needs a real weak device, which
+the user has deferred. Culling overview triangles inside the ground's discard
+disc was pixel-exact but removed 1 %, dropped.
+
 **World cell format v5 published, lossless: 9.13 → 8.92 MB; decimetre heights built and held (2026-11-01, #130).**
 v5 (road lane) stores `roofFurniture` as a typed integer-list column and adds
 a run symbol to the FOOT shared-vertex back-references; the decoder reads

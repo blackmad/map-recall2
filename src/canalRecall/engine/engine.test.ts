@@ -316,3 +316,70 @@ test('map shim getBounds is MapLibre LngLatBounds-shaped: contains (artis-animal
   assert.equal(wrap.contains([179.5, 0]), true, 'antimeridian-wrapped box');
   assert.equal(wrap.contains([0, 0]), false);
 });
+
+test('FrameHost render on change: a still simulation frame draws nothing; a camera move or an install draws once', async () => {
+  const { FrameHost } = await import('./frameHost');
+  const canvas: any = { style: {}, width: 0, height: 0, addEventListener() {}, remove() {} };
+  const container: any = { clientWidth: 400, clientHeight: 300, ownerDocument: { createElement: () => canvas }, appendChild() {} };
+  const createRenderer = () => ({ autoClear: true, getContext: () => ({ isContextLost: () => false }), clear() {}, setViewport() {}, setRenderTarget() {}, dispose() {} });
+  let frames: Array<(t: number) => void> = [];
+  let renders = 0, moved = false;
+  const host = new FrameHost({}, container, { render: () => { renders++; } }, { createRenderer, requestFrame: cb => { frames.push(cb); return 1; }, cancelFrame() {} });
+  host.setSimulation({ frame: () => { if (moved) { moved = false; host.triggerRepaint(); } } });
+  host.start();
+  let t = 0;
+  const step = (n = 1) => { for (let i = 0; i < n; i++) { const f = frames; frames = []; for (const cb of f) cb(t += 1000 / 120); } };
+  step(); assert.equal(renders, 1, 'the first frame (dirty from setSimulation)');
+  step(600); assert.equal(renders, 1, 'five seconds standing still: no redraw');
+  assert.equal(host.stats.idleFrames, 600);
+  moved = true; step(); assert.equal(renders, 2, 'input moves the camera: drawn that same frame');
+  host.renderOnChange = false; step(10); assert.equal(renders, 12, 'renderOnChange off: every simulation frame draws');
+  host.stop();
+});
+
+test('CameraMap.jumpTo: a sub-millimetre creep is not a move, real motion and accumulated drift are (render on change, #129)', async () => {
+  const { CameraMap } = await import('./cameraMap');
+  let repaints = 0, moves = 0;
+  const host: any = { viewport: () => ({ width: 800, height: 600 }), on() {}, off() {}, once() {}, fire: (t: string) => { if (t === 'move') moves++; }, triggerRepaint: () => { repaints++; } };
+  const cm = new CameraMap(host, {});
+  const at = { center: [4.890243805168056, 52.35848155860159] as [number, number], zoom: 17.808254834882085, bearing: 113.9, pitch: 60, elevation: -1.77 };
+  cm.jumpTo(at);
+  const r0 = repaints;
+  // The measured creep of a rider at rest: 1.1e-10 degrees and 1e-12 zoom a frame.
+  for (let i = 1; i <= 60; i++) cm.jumpTo({ ...at, center: [at.center[0] + i * 1.1e-10, at.center[1] - i * 3e-11], zoom: at.zoom + i * 1e-12 });
+  assert.equal(repaints, r0, 'a second of creep draws nothing');
+  assert.equal(cm.getCenter().lng, at.center[0], 'and is not applied');
+  cm.jumpTo({ ...at, center: [at.center[0] + 2e-8, at.center[1]] });
+  assert.equal(repaints, r0 + 1, 'drift past the tolerance moves the camera');
+  assert.equal(cm.getCenter().lng, at.center[0] + 2e-8);
+  cm.jumpTo({ ...at, center: [at.center[0] + 2e-8, at.center[1]], bearing: 114 });
+  assert.equal(repaints, r0 + 2, 'turning moves it');
+  assert.ok(moves >= 3);
+  cm.jumpTo({ ...at, bearing: 180 });
+  const r1 = repaints;
+  cm.jumpTo({ ...at, bearing: -179.9999995 });
+  assert.equal(repaints, r1, 'the wrap at ±180 compares as one angle');
+});
+
+test('sightlineBlocker through the resident grid finds the blocker the linear walk finds (#129)', async () => {
+  const { sightlineBlocker } = await import('./cameraClearance');
+  let seed = 11;
+  const rnd = () => ((seed = (seed * 1103515245 + 12345) % 2147483648) / 2147483648);
+  const list: any[] = [];
+  // 5,000 overlapping houses of 4-40 m around the Dam, some straddling the 0.002-degree grid lines.
+  for (let i = 0; i < 5000; i++) {
+    const w = 4.88 + rnd() * 0.03, s = 52.365 + rnd() * 0.02, dx = (4 + rnd() * 36) / 68000, dy = (4 + rnd() * 36) / 111320;
+    list.push({ properties: { id: `h${i}`, height: 3 + rnd() * 25 }, geometry: { type: 'Polygon', coordinates: [[[w, s], [w + dx, s], [w + dx, s + dy], [w, s + dy], [w, s]]] } });
+  }
+  let blocked = 0;
+  for (let q = 0; q < 300; q++) {
+    const center: [number, number] = [4.88 + rnd() * 0.03, 52.365 + rnd() * 0.02];
+    const a = rnd() * Math.PI * 2, d = 20 + rnd() * 120;
+    const from: [number, number] = [center[0] + Math.cos(a) * d / 68000, center[1] + Math.sin(a) * d / 111320];
+    const alt = 5 + rnd() * 60;
+    const grid = sightlineBlocker(from, center, alt, list), linear = sightlineBlocker(from, center, alt, list, Infinity);
+    assert.equal(grid?.properties?.id ?? null, linear?.properties?.id ?? null, `query ${q}`);
+    if (linear) blocked++;
+  }
+  assert.ok(blocked > 30, `the queries exercise blocking (${blocked})`);
+});

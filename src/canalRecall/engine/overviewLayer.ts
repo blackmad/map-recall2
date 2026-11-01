@@ -59,6 +59,15 @@ export class OverviewLayer implements FrameParticipant {
   private readonly parks: THREE.Mesh;
   private readonly waterMesh: THREE.Mesh;
   private centreLat: number = ORIGIN.lat;
+  /** How to build each geometry again (a lost context): the CPU copies are freed once uploaded (heap gate, #130). */
+  private readonly rebuild = new Map<THREE.BufferGeometry, () => THREE.BufferGeometry>();
+  /** A geometry that frees its CPU arrays after upload, with the recipe to make it again. */
+  private built(make: () => THREE.BufferGeometry): THREE.BufferGeometry {
+    const g = make();
+    for (const a of [...Object.values(g.attributes), g.index]) (a as THREE.BufferAttribute | null)?.onUpload(releaseArray);
+    this.rebuild.set(g, make);
+    return g;
+  }
 
   /**
    * The overview's own near-field uniforms (not ownMap/layers.ts's shared `handover`, which the engine's overlay
@@ -80,17 +89,17 @@ export class OverviewLayer implements FrameParticipant {
     this.water = new WaterIndex(data.water);
     const [x0, y0, x1, y1] = data.bounds;
     const pad = 20_000;
-    this.land = new THREE.Mesh(polygonGeometry([[[[x0 - pad, y0 - pad], [x1 + pad, y0 - pad], [x1 + pad, y1 + pad], [x0 - pad, y1 + pad]]]]), fillMaterial(PALETTE.land, OVERVIEW_Z));
+    this.land = new THREE.Mesh(this.built(() => polygonGeometry([[[[x0 - pad, y0 - pad], [x1 + pad, y0 - pad], [x1 + pad, y1 + pad], [x0 - pad, y1 + pad]]]])), fillMaterial(PALETTE.land, OVERVIEW_Z));
     this.land.renderOrder = -1;
-    const water = new THREE.Mesh(polygonGeometry(data.water), fillMaterial(PALETTE.water, OVERVIEW_Z)); water.renderOrder = 2;
-    const parks = new THREE.Mesh(polygonGeometry(data.parks.flatMap(p => p.rings.map(r => [r]))), fillMaterial(PALETTE.park, OVERVIEW_Z)); parks.renderOrder = 1;
+    const water = new THREE.Mesh(this.built(() => polygonGeometry(data.water)), fillMaterial(PALETTE.water, OVERVIEW_Z)); water.renderOrder = 2;
+    const parks = new THREE.Mesh(this.built(() => polygonGeometry(data.parks.flatMap(p => p.rings.map(r => [r])))), fillMaterial(PALETTE.park, OVERVIEW_Z)); parks.renderOrder = 1;
     this.parks = parks; this.waterMesh = water;
     for (const m of [this.land, parks, water]) m.frustumCulled = false;
     this.root.add(this.land, parks, water);
     this.addV2Layers(data);
     const ordered = [...STREET_CLASSES].sort((a, b) => STREET_STYLE[a].order - STREET_STYLE[b].order);
     for (const cls of ordered) {
-      const geo = lineGeometry(data.streets.filter(s => s.cls === cls).map(s => s.points));
+      const geo = this.built(() => lineGeometry(data.streets.filter(s => s.cls === cls).map(s => s.points)));
       const st = STREET_STYLE[cls];
       const fill = new THREE.Mesh(geo, lineMaterial(st.fill, OVERVIEW_Z)); fill.renderOrder = 20 + st.order; fill.frustumCulled = false;
       let casing: THREE.Mesh | null = null;
@@ -149,11 +158,11 @@ export class OverviewLayer implements FrameParticipant {
       const polys = data.landuse.filter(l => l.cls === cls).map(l => l.rings);
       if (!polys.length) continue;
       // Between the land (-1) and the parks (1), in the style's order.
-      add(new THREE.Mesh(polygonGeometry(polys), fillMaterial(LANDUSE_STYLE[cls].fill, OVERVIEW_Z)), LANDUSE_STYLE[cls].order / 10);
+      add(new THREE.Mesh(this.built(() => polygonGeometry(polys)), fillMaterial(LANDUSE_STYLE[cls].fill, OVERVIEW_Z)), LANDUSE_STYLE[cls].order / 10);
     }
-    if (data.piers.length) add(new THREE.Mesh(polygonGeometry(data.piers.map(r => [r])), fillMaterial(PIER_STYLE.fill, OVERVIEW_Z)), 3);
+    if (data.piers.length) add(new THREE.Mesh(this.built(() => polygonGeometry(data.piers.map(r => [r]))), fillMaterial(PIER_STYLE.fill, OVERVIEW_Z)), 3);
     if (data.pierLines.length) {
-      const mesh = add(new THREE.Mesh(lineGeometry(data.pierLines), lineMaterial(PIER_STYLE.fill, OVERVIEW_Z)), 4);
+      const mesh = add(new THREE.Mesh(this.built(() => lineGeometry(data.pierLines)), lineMaterial(PIER_STYLE.fill, OVERVIEW_Z)), 4);
       this.extraLines.push({ mesh, width: PIER_STYLE.width, scale: 1, opacity: 1 });
     }
     const groups = new Map<string, { kind: keyof typeof RAIL_STYLE; tunnel: boolean; service: boolean; lines: Vec2[][] }>();
@@ -166,7 +175,8 @@ export class OverviewLayer implements FrameParticipant {
     for (const g of groups.values()) {
       const st = RAIL_STYLE[g.kind];
       // Tunnels under the streets, faint; surface track over the street fills.
-      const mesh = add(new THREE.Mesh(lineGeometry(g.lines), lineMaterial(st.fill, OVERVIEW_Z)), g.tunnel ? 9 : 30);
+      const lines = g.lines;
+      const mesh = add(new THREE.Mesh(this.built(() => lineGeometry(lines)), lineMaterial(st.fill, OVERVIEW_Z)), g.tunnel ? 9 : 30);
       this.extraLines.push({ mesh, width: st.width, scale: g.service ? 0.6 : 1, opacity: g.tunnel ? RAIL_TUNNEL_STYLE.opacity : 1 });
     }
   }
@@ -186,6 +196,22 @@ export class OverviewLayer implements FrameParticipant {
   }
 
   isWater(lng: number, lat: number): boolean { return this.water.isWater(lng, lat); }
+
+  /** A new renderer after a context loss: the freed CPU copies are built again from the overview data. */
+  onContextRestored(): void {
+    const fresh = new Map<THREE.BufferGeometry, THREE.BufferGeometry>();
+    this.root.traverse(o => {
+      const m = o as THREE.Mesh, old = m.geometry as THREE.BufferGeometry | undefined;
+      if (!old) return;
+      let g = fresh.get(old); // a casing shares its fill's geometry
+      if (!g) {
+        const make = this.rebuild.get(old);
+        if (!make) return;
+        g = this.built(make); fresh.set(old, g); this.rebuild.delete(old); old.dispose();
+      }
+      m.geometry = g;
+    });
+  }
 
   mercatorFromLocal(): number[] { return mercatorFromOwnLocal(this.centreLat); }
 
@@ -241,6 +267,8 @@ export class OverviewLayer implements FrameParticipant {
 /** Span grid per side over each overview geometry's extent, and the smallest geometry worth cutting. */
 const OVERVIEW_TILES = 8;
 const OVERVIEW_TILE_MIN_TRIANGLES = 2000;
+/** three's `onUpload` callback (`this` is the attribute): drop the CPU copy. */
+function releaseArray(this: { array: unknown }): void { this.array = null; }
 
 /** Candidate radii (m) for the covered disc round the rider, largest first. */
 const COVER_RADII = [1200, 900, 600, 400, 250] as const;

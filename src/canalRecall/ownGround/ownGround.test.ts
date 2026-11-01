@@ -24,7 +24,7 @@ import { BgtIndex, classOf, polygonBox, sectionWidths, toDm, wayWidths, type Bgt
 import { buildStreets, prepareWays, resolvePriorSidewalks, routeRibbon, shadowedWays, LIFT } from './streets';
 import { benchesAlong, bgtParkSurface, buildParks, cullCovered, decodeLine, encodeLine, playgroundKit, playgroundPiece, CULL_RES_M, PARK_LIFT, SURFACE_LAYER, SurfaceIndex, type ParksCell } from './parks';
 import { closedRays, courtyardSurface, inBlockInterior, pixelVegetated, segmentsOf, vegetatedShare, BED_SHARE, COURTYARD_SURFACES, LAWN_SHARE, RAYS, SegmentIndex, type CourtyardsCell, type Segment as CourtyardSegment } from './courtyards';
-import { buildWaterMask, maskDistance, midSpanLand, openUnderFootbridges, quayWallMesh, waterSurfaceMesh, waterZAt, type WaterGeometry } from './water';
+import { bandedInPolygon, buildWaterMask, maskDistance, midSpanLand, openUnderFootbridges, quayWallMesh, waterSurfaceMesh, waterZAt, type WaterGeometry } from './water';
 import { buildFarBlock, farBlockCells, farBlockOf, farBlocksWithin, farRadiusM, simplify, FAR_BLOCK_BUDGET, FAR_LIFT, FAR_MAX_M } from './farRing';
 import type { OsmGroundExtract, OsmWay } from './osmGround';
 import { bridgeWayBundles, capDeckSides, deckEdgeSides, roadEdgeSides, joinChains, setDeckSides, wayDeckGroups, wayDeckProfile, wayOpeningDeck, WAY_OPENING_PAST_M, WAY_OPENING_REACH_M } from './wayDecks';
@@ -43,7 +43,7 @@ import { localToLngLat, type BridgeExtract, type ElevationIndex } from '../eleva
 import { fromLocal, toLocal } from '../galleryPipeline';
 import { lngLatToRd } from '../facade/rdNew';
 import { groundMercatorFromLocal, groundParticipant, mul4, ndcOf } from './sharedFrameGround';
-import { groundVertices, liftPands, remapAttribute, separatePands } from './chunkBases';
+import { compactIndex, groundVertices, liftPands, remapAttribute, separatePands } from './chunkBases';
 import { mercatorOfLngLat, mercatorUnitsPerMetre } from '../rendererShared/frameMath';
 
 // ------------------------------------------------------------- helpers
@@ -1023,6 +1023,30 @@ test('street chunks: a vertex shared by two pands is split, each pand lifts alon
   const lifted = liftPands(base, sep.owner, [0, 1, 0], p => (p === 1 ? 0.5 : 0));
   for (let i = 0; i < sep.owner.length; i++) assert.equal(lifted[i * 3 + 1] - base[i * 3 + 1], sep.owner[i] === 1 ? 0.5 : 0);
   assert.equal(base[1 * 3 + 1], 0, 'the unlifted copy is kept');
+});
+
+test('street chunks: separated attributes keep their stored type, interleaved ones are read by stride', () => {
+  const sep = separatePands([0, 1, 2, 0, 2, 3, 1, 4, 5, 1, 5, 2], 6, [[0, 0, 2], [1, 2, 2]]);
+  // Normalized Uint8 tint (4 per vertex): the copy is Uint8 with the same bytes, not a widened float.
+  const tint = new Uint8Array(24).map((_, i) => (i * 37) % 256);
+  const t = remapAttribute(tint, 4, sep.source);
+  assert.ok(t instanceof Uint8Array);
+  for (let v = 0; v < sep.source.length; v++) assert.deepEqual([...t.slice(v * 4, v * 4 + 4)], [...tint.slice(sep.source[v] * 4, sep.source[v] * 4 + 4)]);
+  // Interleaved Int16 [x y z nx ny nz u v] (stride 8): the uv at offset 6 comes out packed.
+  const inter = new Int16Array(48).map((_, i) => i * 3 - 70);
+  const uv = remapAttribute(inter, 2, sep.source, 8, 6);
+  assert.ok(uv instanceof Int16Array);
+  assert.equal(uv.length, sep.source.length * 2);
+  for (let v = 0; v < sep.source.length; v++) assert.deepEqual([uv[v * 2], uv[v * 2 + 1]], [inter[sep.source[v] * 8 + 6], inter[sep.source[v] * 8 + 7]]);
+  // The default stride is the packed one (unchanged behaviour).
+  assert.deepEqual([...remapAttribute(inter, 8, sep.source)], [...remapAttribute(inter, 8, sep.source, 8, 0)]);
+  // Index: Uint16 while every vertex fits, the same values.
+  const small = compactIndex(sep.index, sep.source.length);
+  assert.ok(small instanceof Uint16Array);
+  assert.deepEqual([...small], [...sep.index]);
+  const big = new Uint32Array([0, 65536, 3]);
+  assert.equal(compactIndex(big, 65537), big);
+  assert.ok(compactIndex(new Uint32Array([0, 65535, 1]), 65536) instanceof Uint16Array);
 });
 
 test('canvas pin lift: clip ← local product and NDC of a raised point', () => {
@@ -2294,4 +2318,31 @@ test('rail tracks: Dijksgracht corridor has tracks (ballast and rails over the e
   }
   assert.ok(samples >= 6 && covered === samples, `ballast over ${covered}/${samples} corridor track vertices`);
   assert.ok(raised >= samples * 0.8, `bed raised over the land at ${raised}/${samples}`);
+});
+
+test('bandedInPolygon answers as the even-odd test over every edge (water.ts inWater, #129)', () => {
+  let seed = 7;
+  const rnd = () => ((seed = (seed * 1103515245 + 12345) % 2147483648) / 2147483648);
+  const evenOdd = (poly: Vec2[][], x: number, y: number) => {
+    let c = false;
+    for (const ring of poly) for (let i = 0, j = ring.length - 1; i < ring.length; j = i++) {
+      const [xi, yi] = ring[i], [xj, yj] = ring[j];
+      if ((yi > y) !== (yj > y) && x < ((xj - xi) * (y - yi)) / (yj - yi) + xi) c = !c;
+    }
+    return c;
+  };
+  for (let n = 0; n < 20; n++) {
+    // A jagged star with a hole, vertices on and off band edges, some on integer y.
+    const ring = (cx: number, cy: number, r: number, k: number): Vec2[] => Array.from({ length: k }, (_, i) => {
+      const a = (i / k) * Math.PI * 2, d = r * (0.4 + 0.6 * rnd());
+      return [cx + Math.cos(a) * d, n % 2 ? Math.round(cy + Math.sin(a) * d) : cy + Math.sin(a) * d] as Vec2;
+    });
+    const poly = [ring(0, 0, 80, 40 + n * 10), ring(5, 3, 10, 12)];
+    const test = bandedInPolygon(poly);
+    for (let i = 0; i < 4000; i++) {
+      const x = (rnd() - 0.5) * 200, y = i % 5 === 0 ? Math.round((rnd() - 0.5) * 200) : (rnd() - 0.5) * 200;
+      assert.equal(test(x, y), evenOdd(poly, x, y), `polygon ${n} at ${x},${y}`);
+    }
+    for (const r of poly) for (const [x, y] of r) assert.equal(test(x, y), evenOdd(poly, x, y), `vertex ${x},${y}`);
+  }
 });

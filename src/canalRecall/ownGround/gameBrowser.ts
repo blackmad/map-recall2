@@ -5,7 +5,7 @@ export { OwnGround, type GroundHost, type OwnGroundOptions } from './gameGround.
 export { GROUND_ORDER } from './sharedFrameGround.js';
 export { WATER_Z, toLocal, fromLocal, GroundStore } from './groundStore.js';
 export { footprintAxis, movableLeaves, pointInRing } from './decks.js';
-export { separatePands, remapAttribute, groundVertices, liftPands } from './chunkBases.js';
+export { separatePands, remapAttribute, compactIndex, groundVertices, liftPands } from './chunkBases.js';
 export { basemapGroundPatches } from './basemapPalette.js';
 export { overviewBasemapPatches } from '../overviewTransition/basemapOverview.js';
 export { overviewTilesPlan, OVERVIEW_TILES_DIR, OVERVIEW_TILES_SOURCE, OVERVIEW_TILES_LAYER } from '../overviewTiles/tileset.js';
