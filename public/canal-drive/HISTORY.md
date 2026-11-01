@@ -50,6 +50,8 @@ Three identical loads with trees on: Westerkerk 1.51 M → 135 px (scattered
 singles; default vs default2 is 122), Bloemgracht 0 → 2, Nassaukade 183k →
 1, Leidsegracht 0 → 3, IJburg 1.72 M → 1. Trees are pinnable now.
 
+**Garden rooms in the back gardens (2026-11-01, #169):** `src/canalRecall/gardenRooms.ts` turns a qualifying shed pand into a flat-roofed timber-slat (60 %) or matte-black (40 %) room with a glass front and door toward the house, anthracite frame, board joints, a lid with 0.25 m overhang and a 0.15 m fascia, at most 60 triangles over the plain box, walls chunk only, not in coarse/shell/extras. Qualifying: ≥ 6 m² and (BAG year ≥ 2005 or white-membrane/glass roof slot at confidence ≥ 0.6); 226 of 5,513 centre sheds. The brief's draft rule (any area, sedum counts) gave 710, but all 24 sampled pre-1990 "sedum" lids were tree canopy in the PDOK orthophoto and 172 of the 2005+ pands under 6 m² were bin and bike boxes, so the lane changed the rule with that evidence. Chunk hashes pinned in 5 looks × 4 LODs × 3 shed cases from the base commit; neighbours byte-identical. `roofFacts` now stamps `roofConfidence` (no mesh byte changes on its own). Palette in `look/palette.ts` `GARDEN_ROOM_TONES` (oiled larch #b8925a–#c9a46b greying toward #9a8f7e, warm charcoal #2a2a28–#3a3835, RAL 7016 frame). Integrator rebuilt three-buildings/worker and building-style bundles and recompiled world-v1 (`--no-policy`, as published). Evidence sheets in map-recall2-source-data `garden-rooms/20261101/`.
+
 **Only the trees on screen are drawn: desktop frame 1.84 M → 1.42 M triangles, iPad 0.94 M → 0.80 M (2026-11-01, P4).**
 Materials lane (8cfc3ceb4). Before, every tree in the padded view box was
 drawn, ~2,000 on desktop, most off screen on a pitched chase view.
