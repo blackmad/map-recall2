@@ -302,18 +302,21 @@ HISTORY "The own view answers the four oracles"): the four oracles answered,
 camera parity < 1e-7 px on intro and Anne Frank → Rijksmuseum, `_waitForMapSettle`
 was already replaced (camera.whenIdle, hand-back 4), city-aware engine choice
 (`engineFlag(search, cityId)`, Amsterdam-only, `game.js` passes `this.cityId`).
-**Open before the Amsterdam flip (L1):** four own-engine spec failures now
-visible — `building-click-perf`:228 0.947 vs 0.95 (the Westerkerk click at
-Westermarkt resolves to the wrong pand: a learning-correctness bug, fix first),
-`building-look`:47 (URL look `cartoon` not honoured under own) and :58 (B-key
-look cycle not wired), `bag-tiles`:110 (`usingBagTiles` false with `?bagTiles=1`);
-overview blend 6.8 % vs 5 % (MapLibre 3.7 %): roofs and gardens over plain land
-because the own overview has no building footprints — needs footprints in the
-own-map data or an own-engine budget row; `city-startup-lod` iphone texture 26
-vs 22 MB (cause unknown); governor-no-flash under own should force `?tier=high`
-(own starts at the tier's cap). Note: shared-frame `register(..., {order})` has
-no effect for group-rooted participants (three.js takes the innermost group's
-order); fixed for the overview only.
+**Open before the Amsterdam flip (L1), after hand-back 19 (`1baaf686c`, HISTORY
+"The Westerkerk miss was the spec aiming at open air"):** the Westerkerk click
+and the building looks under own are done; left: POI labels must win the click
+under own as under MapLibre (Westermarkt "Guy Olivier" label pixels; add to
+the named regression); bag-tiles spec gets `&world=live` (dead path otherwise);
+overview footprints (6.8 % vs 5 %, MapLibre 3.7 %): resident world-v1 FOOT
+cells drawn in roof tone and faded with the blend (~1 day), far coarse layer
+only if still over 5 %; then the flip checklist (default switch for
+cityId amsterdam, specs under default afterwards, Sentry watch for context
+loss / graphics failures, rollback flag forcing MapLibre). Re-baselined:
+iPhone texture budget 22 → 27 MB (`iphoneTextureMB`, facade atlas by design;
+96 px phone bays need a look review; mask-format cut is a later materials
+item). Note: shared-frame `register(..., {order})` has no effect for
+group-rooted participants (three.js takes the innermost group's order);
+fixed for the overview only.
 Steps 4–5 merged 2026-10-30 (`487cb157e`): `ENGINE=own` switch for the gate
 specs, ride-perf, phone-memory and `ride-perf-owners.mjs` (owner `engine`);
 overlays under the flag (cycle tracks, transit, neighbourhood lines solid not

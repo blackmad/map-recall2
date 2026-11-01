@@ -1,5 +1,39 @@
 # Canal Recall — what is built
 
+**The Westerkerk miss was the spec aiming at open air; the own engine honours the building looks; governor-no-flash runs under own (2026-11-01, P1/P5).**
+L1 hand-back 19 (1baaf686c). building-click-perf's "every kind" sampler
+aimed a 3×3 grid at the model box's mid-height, and the Westerkerk's box is
+its 87 m tower, so at 43 m every aim point over the nave was open air and
+the click fell through to the Anne Frank museum block behind; both engines
+behave the same at those pixels and the model itself picks correctly on
+~300 pixels. The grid now also aims at 1/4 and 3/4 height, and a named
+regression "Westermarkt: a click on the drawn Westerkerk opens the
+Westerkerk" checks every drawn pixel (own 521/521, default 521/521). Gap
+found: under MapLibre a drawn POI label wins the click, own does not check
+labels (default's 228 fails "generic" at Westermarkt where 3 pands go to the
+"Guy Olivier" label); decision: own must hit-test labels before the prism
+pick (L1 next). Building looks under own: the URL look (`?buildings3d=` or
+the global) and the B-key / Settings cycle (photo, procedural, storybook,
+cartoon, untextured) switch the walls as on MapLibre, a URL look locks out
+the saved preference; building-look :47/:58 pass under own. governor-no-flash
+under own forces `?tier=high` (own starts at the tier's cap), wraps the frame
+host's `setPixelRatio`, and each slow frame asks for the next one (a stopped
+car left frame gaps that restarted the governor's 12 s settle): 2 → 1.5 →
+1.13 passes. bag-tiles is a dead path on both engines (the tile probe
+answers world-v1 before `?bagTiles=1` is read): the spec gets `&world=live`.
+iPhone texture 26 MB is the facade atlas on both engines (208 layers at 128
+px, 24.5 MB + 12 city-look slots 1.5 MB): re-baselined to 27 MB with the
+reason (`iphoneTextureMB` in budgets; 96 px bays would need a look review,
+the mask-format cut is a later materials item). Overview footprints gap:
+estimate 1 day for resident world-v1 FOOT cells drawn in roof tone and faded
+with the blend, 1–1.5 days (+0.35–0.6 MB) for a far coarse layer; resident
+cells first, then re-measure. Checks: lint, test:engine 120/120,
+test:own-ground 223/223; own desktop core + building-look +
+building-click-perf + governor 17 passed 3 skipped; own iPhone core 5 / 3;
+default desktop look-consistency, start-heading, building-look, Westermarkt,
+governor 22 passed 1 skipped. Integrator: engine bundle rebuilt,
+test:engine 121/121.
+
 **Kerbs and bollards of the rider's cell draw only within 150 m; the pin harness stops landmark cards (2026-11-01, P4).**
 Materials lane (c9f743361). `tiledGeometry.ts` `setTileReach`: a tile wholly
 beyond the distance from the rider is not drawn, with 25 m of hysteresis,
