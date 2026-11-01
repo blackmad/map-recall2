@@ -4,10 +4,11 @@
  * index.html used to carry static maplibre-gl `<script>` / `<link>` tags, so `?engine=own` downloaded and parsed the
  * library and never used it. This classic script runs in their place, at the same point in `<head>`. For the MapLibre
  * engine it `document.write`s the same tags. That keeps them parser-blocking and in document order, so vector-map.js,
- * the map guard and game.js see `window.maplibregl` exactly as before. For `own` it writes nothing.
+ * the map guard and game.js see `window.maplibregl` exactly as before. For `own` (the default since the Amsterdam
+ * flip) it writes nothing.
  *
  * The engine is chosen the way `engineFlag()` (worldViewApi.ts) chooses it: `window.__canalRecallEngine` (the specs'
- * init script) first, then `?engine=`. That logic is repeated here rather than imported, so this bundle stays a few
+ * init script) first, then `?engine=`; only `maplibre` loads the library. That logic is repeated here rather than imported, so this bundle stays a few
  * hundred bytes.
  *
  * Caveat: Chrome refuses a cross-site parser-blocking script written by `document.write` on 2G-class connections
@@ -17,10 +18,14 @@
 export const MAPLIBRE_VERSION = '5.24.0';
 export const MAPLIBRE_BASE = `https://unpkg.com/maplibre-gl@${MAPLIBRE_VERSION}/dist`;
 
-/** True unless the page asks for the three.js engine (engineFlag() === 'own'). */
+/**
+ * True only when the page asks for MapLibre (`?engine=maplibre` or the global): engineFlag() === 'maplibre' for the
+ * city game.js loads first (Amsterdam, `DEFAULT_CITY_ID`; game.js picks the engine before any saved city applies).
+ * The own engine is the default since the Amsterdam flip (#129).
+ */
 export function wantsMapLibre(search: string, engineGlobal: unknown): boolean {
   const asked = engineGlobal ?? new URLSearchParams(search).get('engine');
-  return asked !== 'own';
+  return asked === 'maplibre';
 }
 
 /** The head markup the static tags had, in their order (the basemap preconnect, the CSS, the JS). */

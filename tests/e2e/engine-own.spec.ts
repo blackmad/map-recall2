@@ -1,6 +1,7 @@
 import { expect, test, type Page } from '@playwright/test';
 import { existsSync, readFileSync } from 'node:fs';
-import { openRoute } from './helpers';
+import { openRoute, useEngine } from './helpers';
+import { OWN } from './worldCam';
 
 // The GL program budget lives in one place (tests/perf/budgets.json, read by scripts/perf-gate.mjs too).
 const BUDGETS = JSON.parse(readFileSync('tests/perf/budgets.json', 'utf8')).entries;
@@ -19,7 +20,8 @@ test('the default path still loads maplibre-gl (script and stylesheet) and build
   test.setTimeout(120_000);
   const requests: string[] = [];
   page.on('request', r => { if (MAPLIBRE_ASSET.test(r.url())) requests.push(r.url()); });
-  test.skip(process.env.ENGINE === 'own', 'the default path only');
+  test.skip(OWN, 'the MapLibre path only: ENGINE=maplibre');
+  await useEngine(page);
   await page.goto('/canal-drive/');
   await expect.poll(() => page.evaluate(() => !!(window as any).canalRecallGame?.vectorMap?.map), { timeout: 90_000 }).toBe(true);
   expect(requests.some(u => /\.js(\?|$)/.test(u)), 'maplibre-gl.js requested').toBe(true);
@@ -232,7 +234,7 @@ test('?engine=own rides with three.js owning the frame; maplibregl.Map is never 
 // (engine/cameraMap.ts EngineCamera) projects the same ground points to within the budget (tests/perf/budgets.json cameraParityPx).
 // Under `?engine=own` itself: engine-parity.spec.ts.
 test('engine camera matches MapLibre within the parity budget along the intro and a ride', async ({ page }) => {
-  test.skip(process.env.ENGINE === 'own', 'the oracle is MapLibre: run without ENGINE=own');
+  test.skip(OWN, 'the oracle is MapLibre: ENGINE=maplibre');
   test.setTimeout(180_000);
   await openRoute(page, { viewMode: 'chase', enterRacing: false });
   const samples: number[][] = [];
