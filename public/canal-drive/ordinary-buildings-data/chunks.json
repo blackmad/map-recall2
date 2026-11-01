@@ -1,6 +1,6 @@
 {
  "version": 1,
- "generatedAt": "2026-11-01T10:02:20.799Z",
+ "generatedAt": "2026-11-01T13:54:22.103Z",
  "chunks": [
   {
    "id": "chunk-face-bilder-080336-090492",
@@ -77564,6 +77564,1402 @@
        "primitive": 8,
        "firstTriangle": 0,
        "triangleCount": 6
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "chunk-face-anthonisz-40-72-r1",
+   "category": "street-survey",
+   "name": "face-anthonisz-40-72-r1",
+   "modelUrl": "./models/ordinary-buildings/chunks/chunk-face-anthonisz-40-72-r1.glb?asset=a8dc3b3d9b0f3670",
+   "sha256": "a8dc3b3d9b0f3670966caaa09b321ad5c8ec88bc2ae27d97249e972c48830a3e",
+   "bytes": 763228,
+   "triangles": 11332,
+   "primitives": 10,
+   "instance": {
+    "anchor": [
+     4.885768490115115,
+     52.353805794332025
+    ],
+    "northOffsetDegrees": 162.2058,
+    "mirror": false
+   },
+   "bounds": {
+    "min": [
+     -13.389,
+     0,
+     -14.984
+    ],
+    "max": [
+     13.288,
+     16.301,
+     0.645
+    ]
+   },
+   "height": 16.301,
+   "suppress": [
+    "NL.IMBAG.Pand.0363100012159956",
+    "NL.IMBAG.Pand.0363100012158092",
+    "NL.IMBAG.Pand.0363100012164470",
+    "NL.IMBAG.Pand.0363100012159040",
+    "NL.IMBAG.Pand.0363100012160204"
+   ],
+   "replaces": [
+    "ordinary-0363100012159956",
+    "ordinary-0363100012158092",
+    "ordinary-0363100012164470",
+    "ordinary-0363100012159040",
+    "ordinary-0363100012160204"
+   ],
+   "footprint": {
+    "type": "MultiPolygon",
+    "coordinates": [
+     [
+      [
+       [
+        4.8859542,
+        52.3538422
+       ],
+       [
+        4.8858781,
+        52.3538273
+       ],
+       [
+        4.8859285,
+        52.3537327
+       ],
+       [
+        4.8860052,
+        52.3537478
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.8858781,
+        52.3538273
+       ],
+       [
+        4.8858086,
+        52.3538137
+       ],
+       [
+        4.8858592,
+        52.353719
+       ],
+       [
+        4.8858765,
+        52.3536859
+       ],
+       [
+        4.8859465,
+        52.3536998
+       ],
+       [
+        4.8859285,
+        52.3537327
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.8858086,
+        52.3538137
+       ],
+       [
+        4.8857319,
+        52.3537986
+       ],
+       [
+        4.8857824,
+        52.3537038
+       ],
+       [
+        4.8858592,
+        52.353719
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.8857319,
+        52.3537986
+       ],
+       [
+        4.8856554,
+        52.3537836
+       ],
+       [
+        4.8857056,
+        52.3536886
+       ],
+       [
+        4.8857171,
+        52.3536673
+       ],
+       [
+        4.8857938,
+        52.3536824
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.8856554,
+        52.3537836
+       ],
+       [
+        4.8855827,
+        52.3537694
+       ],
+       [
+        4.8856333,
+        52.3536743
+       ],
+       [
+        4.8857056,
+        52.3536886
+       ]
+      ]
+     ]
+    ]
+   },
+   "pands": [
+    {
+     "recipeId": "anthonisz-159956",
+     "pandId": "0363100012159956",
+     "buildingId": "NL.IMBAG.Pand.0363100012159956",
+     "address": "Cornelis Anthoniszstraat 70",
+     "frontage": {
+      "x0": -13.285,
+      "x1": -7.84,
+      "widthM": 5.444
+     },
+     "bounds": {
+      "min": [
+       -13.389,
+       0,
+       -11.113
+      ],
+      "max": [
+       -7.84,
+       16.04,
+       0.645
+      ]
+     },
+     "triangles": 2143,
+     "ranges": [
+      {
+       "primitive": 0,
+       "firstTriangle": 0,
+       "triangleCount": 39
+      },
+      {
+       "primitive": 1,
+       "firstTriangle": 0,
+       "triangleCount": 444
+      },
+      {
+       "primitive": 2,
+       "firstTriangle": 0,
+       "triangleCount": 328
+      },
+      {
+       "primitive": 3,
+       "firstTriangle": 0,
+       "triangleCount": 16
+      },
+      {
+       "primitive": 4,
+       "firstTriangle": 0,
+       "triangleCount": 828
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 0,
+       "triangleCount": 300
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 0,
+       "triangleCount": 172
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 0,
+       "triangleCount": 11
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 0,
+       "triangleCount": 5
+      }
+     ]
+    },
+    {
+     "recipeId": "anthonisz-158092",
+     "pandId": "0363100012158092",
+     "buildingId": "NL.IMBAG.Pand.0363100012158092",
+     "address": "Cornelis Anthoniszstraat 68",
+     "frontage": {
+      "x0": -7.84,
+      "x1": -2.867,
+      "widthM": 4.973
+     },
+     "bounds": {
+      "min": [
+       -7.955,
+       0,
+       -14.984
+      ],
+      "max": [
+       -2.867,
+       16.118,
+       0.645
+      ]
+     },
+     "triangles": 2103,
+     "ranges": [
+      {
+       "primitive": 0,
+       "firstTriangle": 39,
+       "triangleCount": 73
+      },
+      {
+       "primitive": 1,
+       "firstTriangle": 444,
+       "triangleCount": 420
+      },
+      {
+       "primitive": 2,
+       "firstTriangle": 328,
+       "triangleCount": 328
+      },
+      {
+       "primitive": 3,
+       "firstTriangle": 16,
+       "triangleCount": 16
+      },
+      {
+       "primitive": 4,
+       "firstTriangle": 828,
+       "triangleCount": 780
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 300,
+       "triangleCount": 300
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 172,
+       "triangleCount": 160
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 11,
+       "triangleCount": 14
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 0,
+       "triangleCount": 6
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 5,
+       "triangleCount": 6
+      }
+     ]
+    },
+    {
+     "recipeId": "anthonisz-164470",
+     "pandId": "0363100012164470",
+     "buildingId": "NL.IMBAG.Pand.0363100012164470",
+     "address": "Cornelis Anthoniszstraat 66",
+     "frontage": {
+      "x0": -2.868,
+      "x1": 2.615,
+      "widthM": 5.483
+     },
+     "bounds": {
+      "min": [
+       -2.942,
+       0,
+       -11.138
+      ],
+      "max": [
+       2.615,
+       16.301,
+       0.645
+      ]
+     },
+     "triangles": 2493,
+     "ranges": [
+      {
+       "primitive": 0,
+       "firstTriangle": 112,
+       "triangleCount": 32
+      },
+      {
+       "primitive": 1,
+       "firstTriangle": 864,
+       "triangleCount": 556
+      },
+      {
+       "primitive": 2,
+       "firstTriangle": 656,
+       "triangleCount": 328
+      },
+      {
+       "primitive": 3,
+       "firstTriangle": 32,
+       "triangleCount": 16
+      },
+      {
+       "primitive": 4,
+       "firstTriangle": 1608,
+       "triangleCount": 988
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 600,
+       "triangleCount": 300
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 332,
+       "triangleCount": 252
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 25,
+       "triangleCount": 14
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 6,
+       "triangleCount": 3
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 11,
+       "triangleCount": 4
+      }
+     ]
+    },
+    {
+     "recipeId": "anthonisz-159040",
+     "pandId": "0363100012159040",
+     "buildingId": "NL.IMBAG.Pand.0363100012159040",
+     "address": "Cornelis Anthoniszstraat 64",
+     "frontage": {
+      "x0": 2.616,
+      "x1": 8.091,
+      "widthM": 5.475
+     },
+     "bounds": {
+      "min": [
+       2.544,
+       0,
+       -13.65
+      ],
+      "max": [
+       8.091,
+       16.301,
+       0.645
+      ]
+     },
+     "triangles": 2470,
+     "ranges": [
+      {
+       "primitive": 0,
+       "firstTriangle": 144,
+       "triangleCount": 66
+      },
+      {
+       "primitive": 1,
+       "firstTriangle": 1420,
+       "triangleCount": 556
+      },
+      {
+       "primitive": 2,
+       "firstTriangle": 984,
+       "triangleCount": 328
+      },
+      {
+       "primitive": 3,
+       "firstTriangle": 48,
+       "triangleCount": 16
+      },
+      {
+       "primitive": 4,
+       "firstTriangle": 2596,
+       "triangleCount": 940
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 900,
+       "triangleCount": 300
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 584,
+       "triangleCount": 240
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 39,
+       "triangleCount": 15
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 9,
+       "triangleCount": 2
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 15,
+       "triangleCount": 7
+      }
+     ]
+    },
+    {
+     "recipeId": "anthonisz-160204",
+     "pandId": "0363100012160204",
+     "buildingId": "NL.IMBAG.Pand.0363100012160204",
+     "address": "Cornelis Anthoniszstraat 62",
+     "frontage": {
+      "x0": 8.091,
+      "x1": 13.288,
+      "widthM": 5.197
+     },
+     "bounds": {
+      "min": [
+       8.056,
+       0,
+       -11.162
+      ],
+      "max": [
+       13.288,
+       16.301,
+       0.645
+      ]
+     },
+     "triangles": 2123,
+     "ranges": [
+      {
+       "primitive": 0,
+       "firstTriangle": 210,
+       "triangleCount": 40
+      },
+      {
+       "primitive": 1,
+       "firstTriangle": 1976,
+       "triangleCount": 420
+      },
+      {
+       "primitive": 2,
+       "firstTriangle": 1312,
+       "triangleCount": 328
+      },
+      {
+       "primitive": 3,
+       "firstTriangle": 64,
+       "triangleCount": 16
+      },
+      {
+       "primitive": 4,
+       "firstTriangle": 3536,
+       "triangleCount": 828
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 1200,
+       "triangleCount": 300
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 824,
+       "triangleCount": 172
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 54,
+       "triangleCount": 13
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 11,
+       "triangleCount": 1
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 22,
+       "triangleCount": 5
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "chunk-face-florisz-2-10-r1",
+   "category": "street-survey",
+   "name": "face-florisz-2-10-r1",
+   "modelUrl": "./models/ordinary-buildings/chunks/chunk-face-florisz-2-10-r1.glb?asset=c9bc4d472e0fba67",
+   "sha256": "c9bc4d472e0fba673f1f91fce77bd8c35f449a3187afced1fd4952431c95ada6",
+   "bytes": 528844,
+   "triangles": 7725,
+   "primitives": 10,
+   "instance": {
+    "anchor": [
+     4.884456956062044,
+     52.3530496233816
+    ],
+    "northOffsetDegrees": 164.2334,
+    "mirror": false
+   },
+   "bounds": {
+    "min": [
+     -10.884,
+     0,
+     -12.17
+    ],
+    "max": [
+     10.526,
+     15.28,
+     0.645
+    ]
+   },
+   "height": 15.28,
+   "suppress": [
+    "NL.IMBAG.Pand.0363100012159183",
+    "NL.IMBAG.Pand.0363100012152551",
+    "NL.IMBAG.Pand.0363100012152951",
+    "NL.IMBAG.Pand.0363100012162188"
+   ],
+   "replaces": [
+    "ordinary-0363100012159183",
+    "ordinary-0363100012152551",
+    "ordinary-0363100012152951",
+    "ordinary-0363100012162188"
+   ],
+   "footprint": {
+    "type": "MultiPolygon",
+    "coordinates": [
+     [
+      [
+       [
+        4.8846048,
+        52.3530751
+       ],
+       [
+        4.8845313,
+        52.3530624
+       ],
+       [
+        4.8845837,
+        52.3529584
+       ],
+       [
+        4.884659,
+        52.3529712
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.8845313,
+        52.3530624
+       ],
+       [
+        4.8844559,
+        52.3530495
+       ],
+       [
+        4.8845073,
+        52.3529455
+       ],
+       [
+        4.8845837,
+        52.3529584
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.8844559,
+        52.3530495
+       ],
+       [
+        4.884384,
+        52.353037
+       ],
+       [
+        4.8844339,
+        52.3529331
+       ],
+       [
+        4.8845073,
+        52.3529455
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.884384,
+        52.353037
+       ],
+       [
+        4.8843084,
+        52.353024
+       ],
+       [
+        4.8843441,
+        52.3529461
+       ],
+       [
+        4.8843563,
+        52.3529199
+       ],
+       [
+        4.8844339,
+        52.3529331
+       ]
+      ]
+     ]
+    ]
+   },
+   "pands": [
+    {
+     "recipeId": "florisz-159183",
+     "pandId": "0363100012159183",
+     "buildingId": "NL.IMBAG.Pand.0363100012159183",
+     "address": "Balthasar Floriszstraat 8",
+     "frontage": {
+      "x0": -10.463,
+      "x1": -5.261,
+      "widthM": 5.202
+     },
+     "bounds": {
+      "min": [
+       -10.884,
+       0,
+       -12.17
+      ],
+      "max": [
+       -5.261,
+       15.26,
+       0.35
+      ]
+     },
+     "triangles": 1741,
+     "ranges": [
+      {
+       "primitive": 0,
+       "firstTriangle": 0,
+       "triangleCount": 25
+      },
+      {
+       "primitive": 1,
+       "firstTriangle": 0,
+       "triangleCount": 420
+      },
+      {
+       "primitive": 2,
+       "firstTriangle": 0,
+       "triangleCount": 256
+      },
+      {
+       "primitive": 3,
+       "firstTriangle": 0,
+       "triangleCount": 16
+      },
+      {
+       "primitive": 4,
+       "firstTriangle": 0,
+       "triangleCount": 828
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 0,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 0,
+       "triangleCount": 172
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 0,
+       "triangleCount": 8
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 0,
+       "triangleCount": 4
+      }
+     ]
+    },
+    {
+     "recipeId": "florisz-152551",
+     "pandId": "0363100012152551",
+     "buildingId": "NL.IMBAG.Pand.0363100012152551",
+     "address": "Balthasar Floriszstraat 6",
+     "frontage": {
+      "x0": -5.261,
+      "x1": 0.072,
+      "widthM": 5.333
+     },
+     "bounds": {
+      "min": [
+       -5.563,
+       0,
+       -12.146
+      ],
+      "max": [
+       0.072,
+       15.26,
+       0.645
+      ]
+     },
+     "triangles": 2120,
+     "ranges": [
+      {
+       "primitive": 0,
+       "firstTriangle": 25,
+       "triangleCount": 20
+      },
+      {
+       "primitive": 1,
+       "firstTriangle": 420,
+       "triangleCount": 444
+      },
+      {
+       "primitive": 2,
+       "firstTriangle": 256,
+       "triangleCount": 328
+      },
+      {
+       "primitive": 3,
+       "firstTriangle": 16,
+       "triangleCount": 16
+      },
+      {
+       "primitive": 4,
+       "firstTriangle": 828,
+       "triangleCount": 828
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 12,
+       "triangleCount": 300
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 172,
+       "triangleCount": 172
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 8,
+       "triangleCount": 8
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 4,
+       "triangleCount": 4
+      }
+     ]
+    },
+    {
+     "recipeId": "florisz-152951",
+     "pandId": "0363100012152951",
+     "buildingId": "NL.IMBAG.Pand.0363100012152951",
+     "address": "Balthasar Floriszstraat 4",
+     "frontage": {
+      "x0": 0.072,
+      "x1": 5.164,
+      "widthM": 5.092
+     },
+     "bounds": {
+      "min": [
+       -0.163,
+       0,
+       -12.12
+      ],
+      "max": [
+       5.164,
+       15.25,
+       0.645
+      ]
+     },
+     "triangles": 2093,
+     "ranges": [
+      {
+       "primitive": 0,
+       "firstTriangle": 45,
+       "triangleCount": 17
+      },
+      {
+       "primitive": 1,
+       "firstTriangle": 864,
+       "triangleCount": 420
+      },
+      {
+       "primitive": 2,
+       "firstTriangle": 584,
+       "triangleCount": 328
+      },
+      {
+       "primitive": 3,
+       "firstTriangle": 32,
+       "triangleCount": 16
+      },
+      {
+       "primitive": 4,
+       "firstTriangle": 1656,
+       "triangleCount": 828
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 312,
+       "triangleCount": 300
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 344,
+       "triangleCount": 172
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 16,
+       "triangleCount": 7
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 0,
+       "triangleCount": 1
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 8,
+       "triangleCount": 4
+      }
+     ]
+    },
+    {
+     "recipeId": "florisz-162188",
+     "pandId": "0363100012162188",
+     "buildingId": "NL.IMBAG.Pand.0363100012162188",
+     "address": "Balthasar Floriszstraat 2A",
+     "frontage": {
+      "x0": 5.164,
+      "x1": 10.513,
+      "widthM": 5.348
+     },
+     "bounds": {
+      "min": [
+       5.026,
+       0,
+       -12.096
+      ],
+      "max": [
+       10.526,
+       15.28,
+       0.35
+      ]
+     },
+     "triangles": 1771,
+     "ranges": [
+      {
+       "primitive": 0,
+       "firstTriangle": 62,
+       "triangleCount": 30
+      },
+      {
+       "primitive": 1,
+       "firstTriangle": 1284,
+       "triangleCount": 444
+      },
+      {
+       "primitive": 2,
+       "firstTriangle": 912,
+       "triangleCount": 256
+      },
+      {
+       "primitive": 3,
+       "firstTriangle": 48,
+       "triangleCount": 16
+      },
+      {
+       "primitive": 4,
+       "firstTriangle": 2484,
+       "triangleCount": 828
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 612,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 516,
+       "triangleCount": 172
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 23,
+       "triangleCount": 7
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 1,
+       "triangleCount": 2
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 12,
+       "triangleCount": 4
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "chunk-face-florisz-12-38-r1",
+   "category": "street-survey",
+   "name": "face-florisz-12-38-r1",
+   "modelUrl": "./models/ordinary-buildings/chunks/chunk-face-florisz-12-38-r1.glb?asset=1f05db4731d31ba7",
+   "sha256": "1f05db4731d31ba74f0ebaebd8aa03e835a9a1f86a4c984d9fad6a3fc245a19a",
+   "bytes": 483412,
+   "triangles": 7051,
+   "primitives": 10,
+   "instance": {
+    "anchor": [
+     4.885389971573355,
+     52.353189787346096
+    ],
+    "northOffsetDegrees": 167.1867,
+    "mirror": false
+   },
+   "bounds": {
+    "min": [
+     -10.505,
+     0,
+     -12.235
+    ],
+    "max": [
+     10.78,
+     16.01,
+     0.351
+    ]
+   },
+   "height": 16.01,
+   "suppress": [
+    "NL.IMBAG.Pand.0363100012157185",
+    "NL.IMBAG.Pand.0363100012144384",
+    "NL.IMBAG.Pand.0363100012164388",
+    "NL.IMBAG.Pand.0363100012156418"
+   ],
+   "replaces": [
+    "ordinary-0363100012157185",
+    "ordinary-0363100012144384",
+    "ordinary-0363100012164388",
+    "ordinary-0363100012156418"
+   ],
+   "footprint": {
+    "type": "MultiPolygon",
+    "coordinates": [
+     [
+      [
+       [
+        4.8855397,
+        52.3532106
+       ],
+       [
+        4.8854661,
+        52.3532004
+       ],
+       [
+        4.8855054,
+        52.3530945
+       ],
+       [
+        4.8855794,
+        52.3531052
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.8854661,
+        52.3532004
+       ],
+       [
+        4.8853919,
+        52.3531901
+       ],
+       [
+        4.8854332,
+        52.3530841
+       ],
+       [
+        4.8855054,
+        52.3530945
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.8853919,
+        52.3531901
+       ],
+       [
+        4.8853142,
+        52.3531793
+       ],
+       [
+        4.885356,
+        52.353073
+       ],
+       [
+        4.8854332,
+        52.3530841
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.8853142,
+        52.3531793
+       ],
+       [
+        4.8852357,
+        52.3531684
+       ],
+       [
+        4.8852779,
+        52.3530618
+       ],
+       [
+        4.885356,
+        52.353073
+       ]
+      ]
+     ]
+    ]
+   },
+   "pands": [
+    {
+     "recipeId": "florisz-157185",
+     "pandId": "0363100012157185",
+     "buildingId": "NL.IMBAG.Pand.0363100012157185",
+     "address": "Balthasar Floriszstraat 26",
+     "frontage": {
+      "x0": -10.461,
+      "x1": -5.317,
+      "widthM": 5.145
+     },
+     "bounds": {
+      "min": [
+       -10.505,
+       0,
+       -12.116
+      ],
+      "max": [
+       -5.317,
+       15.833,
+       0.35
+      ]
+     },
+     "triangles": 1746,
+     "ranges": [
+      {
+       "primitive": 0,
+       "firstTriangle": 0,
+       "triangleCount": 30
+      },
+      {
+       "primitive": 1,
+       "firstTriangle": 0,
+       "triangleCount": 420
+      },
+      {
+       "primitive": 2,
+       "firstTriangle": 0,
+       "triangleCount": 256
+      },
+      {
+       "primitive": 3,
+       "firstTriangle": 0,
+       "triangleCount": 16
+      },
+      {
+       "primitive": 4,
+       "firstTriangle": 0,
+       "triangleCount": 828
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 0,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 0,
+       "triangleCount": 172
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 0,
+       "triangleCount": 8
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 0,
+       "triangleCount": 4
+      }
+     ]
+    },
+    {
+     "recipeId": "florisz-144384",
+     "pandId": "0363100012144384",
+     "buildingId": "NL.IMBAG.Pand.0363100012144384",
+     "address": "Balthasar Floriszstraat 24",
+     "frontage": {
+      "x0": -5.317,
+      "x1": -0.137,
+      "widthM": 5.18
+     },
+     "bounds": {
+      "min": [
+       -5.327,
+       0,
+       -12.154
+      ],
+      "max": [
+       -0.137,
+       16.01,
+       0.351
+      ]
+     },
+     "triangles": 1765,
+     "ranges": [
+      {
+       "primitive": 0,
+       "firstTriangle": 30,
+       "triangleCount": 36
+      },
+      {
+       "primitive": 1,
+       "firstTriangle": 420,
+       "triangleCount": 420
+      },
+      {
+       "primitive": 2,
+       "firstTriangle": 256,
+       "triangleCount": 256
+      },
+      {
+       "primitive": 3,
+       "firstTriangle": 16,
+       "triangleCount": 16
+      },
+      {
+       "primitive": 4,
+       "firstTriangle": 828,
+       "triangleCount": 828
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 12,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 172,
+       "triangleCount": 172
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 8,
+       "triangleCount": 13
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 0,
+       "triangleCount": 5
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 4,
+       "triangleCount": 7
+      }
+     ]
+    },
+    {
+     "recipeId": "florisz-164388",
+     "pandId": "0363100012164388",
+     "buildingId": "NL.IMBAG.Pand.0363100012164388",
+     "address": "Balthasar Floriszstraat 22",
+     "frontage": {
+      "x0": -0.137,
+      "x1": 5.294,
+      "widthM": 5.431
+     },
+     "bounds": {
+      "min": [
+       -0.272,
+       0,
+       -12.194
+      ],
+      "max": [
+       5.294,
+       15.901,
+       0.35
+      ]
+     },
+     "triangles": 1770,
+     "ranges": [
+      {
+       "primitive": 0,
+       "firstTriangle": 66,
+       "triangleCount": 26
+      },
+      {
+       "primitive": 1,
+       "firstTriangle": 840,
+       "triangleCount": 444
+      },
+      {
+       "primitive": 2,
+       "firstTriangle": 512,
+       "triangleCount": 256
+      },
+      {
+       "primitive": 3,
+       "firstTriangle": 32,
+       "triangleCount": 16
+      },
+      {
+       "primitive": 4,
+       "firstTriangle": 1656,
+       "triangleCount": 828
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 24,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 344,
+       "triangleCount": 172
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 21,
+       "triangleCount": 10
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 5,
+       "triangleCount": 2
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 11,
+       "triangleCount": 4
+      }
+     ]
+    },
+    {
+     "recipeId": "florisz-156418",
+     "pandId": "0363100012156418",
+     "buildingId": "NL.IMBAG.Pand.0363100012156418",
+     "address": "Balthasar Floriszstraat 20",
+     "frontage": {
+      "x0": 5.294,
+      "x1": 10.78,
+      "widthM": 5.486
+     },
+     "bounds": {
+      "min": [
+       5.131,
+       0,
+       -12.235
+      ],
+      "max": [
+       10.78,
+       15.825,
+       0.35
+      ]
+     },
+     "triangles": 1770,
+     "ranges": [
+      {
+       "primitive": 0,
+       "firstTriangle": 92,
+       "triangleCount": 30
+      },
+      {
+       "primitive": 1,
+       "firstTriangle": 1284,
+       "triangleCount": 444
+      },
+      {
+       "primitive": 2,
+       "firstTriangle": 768,
+       "triangleCount": 256
+      },
+      {
+       "primitive": 3,
+       "firstTriangle": 48,
+       "triangleCount": 16
+      },
+      {
+       "primitive": 4,
+       "firstTriangle": 2484,
+       "triangleCount": 828
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 36,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 516,
+       "triangleCount": 172
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 31,
+       "triangleCount": 6
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 7,
+       "triangleCount": 2
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 15,
+       "triangleCount": 4
       }
      ]
     }

@@ -1,0 +1,649 @@
+{
+ "face": "bast-18-30",
+ "street": "Pieter Baststraat",
+ "library": "museumkwartier",
+ "stripDate": "2024-12-11",
+ "seconds": 0.9,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [],
+ "pands": [
+  {
+   "pandId": "0363100012163221",
+   "address": "Pieter Baststraat 30",
+   "builtYear": 1905,
+   "widthM": 5.16,
+   "eavesM": 13.53,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#836e55",
+    "wallRaw": "#91795b",
+    "skyline": {
+     "eavesM": 14.7,
+     "eavesRow": 230,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.43,
+      "riseM": 0.95,
+      "topWidthM": 1.02,
+      "centre": 0.53
+     }
+    },
+    "stucco": false,
+    "bands": 4,
+    "columns": 3,
+    "frontClass": "columns",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.304,
+    "structure": {
+     "bayWidthM": 0.7,
+     "bayCentre": 0.51,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0.13,
+    "foliageShare": 0.12
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best museum-de-1899-corbel-cornice: built 1905, type 1898-1901)",
+   "best": {
+    "type": "museum-de-1899-corbel-cornice",
+    "score": 0,
+    "veto": [
+     "built 1905, type 1898-1901"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "strip cornice 14.7 m vs the type's 13.4 m (wall-dormer skyline 14.7 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.122 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012159065",
+   "address": "Pieter Baststraat 28",
+   "builtYear": 1905,
+   "widthM": 5.17,
+   "eavesM": 13.63,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#9a7e65",
+    "wallRaw": "#a08669",
+    "skyline": {
+     "eavesM": 14.75,
+     "eavesRow": 228,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.98,
+      "riseM": 0.93,
+      "topWidthM": 1.75,
+      "centre": 0.43
+     }
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0.303,
+    "structure": {
+     "bayWidthM": 0.93,
+     "bayCentre": 0.45,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0.14,
+    "foliageShare": 0.18
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best museum-de-1899-corbel-cornice: built 1905, type 1898-1901)",
+   "best": {
+    "type": "museum-de-1899-corbel-cornice",
+    "score": 0,
+    "veto": [
+     "built 1905, type 1898-1901"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "strip cornice 14.75 m vs the type's 13.4 m (wall-dormer skyline 14.7 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.114 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012156867",
+   "address": "Pieter Baststraat 26",
+   "builtYear": 1905,
+   "widthM": 5.36,
+   "eavesM": 13.84,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#957459",
+    "wallRaw": "#aa896b",
+    "skyline": {
+     "eavesM": 14.72,
+     "eavesRow": 229,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.98,
+      "riseM": 0.95,
+      "topWidthM": 1.82,
+      "centre": 0.49
+     }
+    },
+    "stucco": false,
+    "bands": 2,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.317,
+    "structure": {
+     "bayWidthM": 1.02,
+     "bayCentre": 0.15,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 6.55,
+       "widthM": 1.18,
+       "centre": 0.13
+      }
+     ]
+    },
+    "voidShare": 0.2,
+    "foliageShare": 0.17
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best museum-de-1899-corbel-cornice: built 1905, type 1898-1901)",
+   "best": {
+    "type": "museum-de-1899-corbel-cornice",
+    "score": 0,
+    "veto": [
+     "built 1905, type 1898-1901"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "strip cornice 14.72 m vs the type's 13.4 m (wall-dormer skyline 14.7 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.094 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012156965",
+   "address": "Pieter Baststraat 24",
+   "builtYear": 1905,
+   "widthM": 5.42,
+   "eavesM": 14.61,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#ab7859",
+    "wallRaw": "#c3936f",
+    "skyline": {
+     "eavesM": 15.05,
+     "eavesRow": 216,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.98,
+      "riseM": 2.2,
+      "topWidthM": 0.2,
+      "centre": 0.45
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.244,
+    "structure": {
+     "bayWidthM": 0.95,
+     "bayCentre": 0.13,
+     "balconies": true,
+     "why": "dark open axis 1.02 m at 0.45 (light 0.41): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 1.02,
+       "centre": 0.45,
+       "light": 0.41
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 8.15,
+       "widthM": 1.15,
+       "centre": 0.14
+      }
+     ]
+    },
+    "voidShare": 0.14,
+    "foliageShare": 0.12
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best museum-de-1899-corbel-cornice: built 1905, type 1898-1901)",
+   "best": {
+    "type": "museum-de-1899-corbel-cornice",
+    "score": 0,
+    "veto": [
+     "built 1905, type 1898-1901"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "strip cornice 15.05 m vs the type's 13.4 m (wall-dormer skyline 14.7 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.094 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012156966",
+   "address": "Pieter Baststraat 22",
+   "builtYear": 1905,
+   "widthM": 4.94,
+   "eavesM": 14.4,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#87664b",
+    "wallRaw": "#9b7c5e",
+    "skyline": {
+     "eavesM": 15.05,
+     "eavesRow": 216,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.1,
+      "riseM": 2,
+      "topWidthM": 0.88,
+      "centre": 0.45
+     }
+    },
+    "stucco": false,
+    "bands": 2,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0.252,
+    "structure": {
+     "bayWidthM": 0.93,
+     "bayCentre": 0.79,
+     "balconies": true,
+     "why": "bay-less open axis 0.75 m at 0.45 (light 0.52): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.75,
+       "centre": 0.45,
+       "light": 0.52
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 10.95,
+       "widthM": 0.97,
+       "centre": 0.46
+      },
+      {
+       "atM": 8.02,
+       "widthM": 1.05,
+       "centre": 0.46
+      },
+      {
+       "atM": 5.17,
+       "widthM": 1.1,
+       "centre": 0.46
+      }
+     ]
+    },
+    "voidShare": 0.13,
+    "foliageShare": 0.12
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best museum-de-1899-corbel-cornice: built 1905, type 1898-1901)",
+   "best": {
+    "type": "museum-de-1899-corbel-cornice",
+    "score": 0,
+    "veto": [
+     "built 1905, type 1898-1901"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "strip cornice 15.05 m vs the type's 13.4 m (wall-dormer skyline 14.7 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.093 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012160300",
+   "address": "Pieter Baststraat 20",
+   "builtYear": 1905,
+   "widthM": 5.13,
+   "eavesM": 14.36,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#81684f",
+    "wallRaw": "#96795b",
+    "skyline": {
+     "eavesM": 15,
+     "eavesRow": 218,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.4,
+      "riseM": 2.68,
+      "topWidthM": 0.9,
+      "centre": 0.46
+     }
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.229,
+    "structure": {
+     "bayWidthM": 0.9,
+     "bayCentre": 0.49,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 11,
+       "widthM": 1.07,
+       "centre": 0.49
+      },
+      {
+       "atM": 8.15,
+       "widthM": 1.07,
+       "centre": 0.49
+      },
+      {
+       "atM": 5.22,
+       "widthM": 1.07,
+       "centre": 0.49
+      }
+     ]
+    },
+    "voidShare": 0.08,
+    "foliageShare": 0.12
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best museum-de-1899-corbel-cornice: built 1905, type 1898-1901)",
+   "best": {
+    "type": "museum-de-1899-corbel-cornice",
+    "score": 0,
+    "veto": [
+     "built 1905, type 1898-1901"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "strip cornice 15 m vs the type's 13.4 m (wall-dormer skyline 14.7 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.124 (brick)"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012166201",
+   "address": "Pieter Baststraat 18E",
+   "builtYear": 1905,
+   "widthM": 4.91,
+   "eavesM": 12.7,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#b5805f",
+    "wallRaw": "#c99670",
+    "skyline": {
+     "eavesM": 13.55,
+     "eavesRow": 276,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.17,
+      "riseM": 1.72,
+      "topWidthM": 1.8,
+      "centre": 0.47
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "columns",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.28,
+    "structure": {
+     "bayWidthM": 1.13,
+     "bayCentre": 0.86,
+     "balconies": true,
+     "why": "bay-less open axis 0.85 m at 0.17 (light 0.57): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.85,
+       "centre": 0.17,
+       "light": 0.57
+      },
+      {
+       "widthM": 0.97,
+       "centre": 0.5,
+       "light": 0.43
+      },
+      {
+       "widthM": 0.93,
+       "centre": 0.85,
+       "light": 0.61
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 9.1,
+       "widthM": 1.15,
+       "centre": 0.51
+      },
+      {
+       "atM": 6.17,
+       "widthM": 1.2,
+       "centre": 0.15
+      }
+     ]
+    },
+    "voidShare": 0.17,
+    "foliageShare": 0.17
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best museum-de-1899-corbel-cornice: built 1905, type 1898-1901)",
+   "best": {
+    "type": "museum-de-1899-corbel-cornice",
+    "score": 0,
+    "veto": [
+     "built 1905, type 1898-1901"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "strip cornice 13.55 m vs the type's 13.4 m (wall-dormer skyline 14.7 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.081 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

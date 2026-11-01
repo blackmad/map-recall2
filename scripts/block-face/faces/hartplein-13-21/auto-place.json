@@ -1,0 +1,456 @@
+{
+ "face": "hartplein-13-21",
+ "street": "Roelof Hartplein",
+ "library": "museumkwartier",
+ "stripDate": "2024-12-11",
+ "seconds": 0.74,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [],
+ "pands": [
+  {
+   "pandId": "0363100012158280",
+   "address": "Roelof Hartplein 13",
+   "builtYear": 1899,
+   "widthM": 6.25,
+   "eavesM": 17.48,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#988475",
+    "wallRaw": "#807860",
+    "skyline": {
+     "eavesM": 16.68,
+     "eavesRow": 223,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.4,
+      "riseM": 1.18,
+      "topWidthM": 0.38,
+      "centre": 0.79
+     }
+    },
+    "stucco": false,
+    "bands": 6,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.356,
+    "structure": {
+     "bayWidthM": 0.38,
+     "bayCentre": 0.9,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 10,
+       "widthM": 2.58,
+       "centre": 0.32
+      },
+      {
+       "atM": 6.1,
+       "widthM": 0.97,
+       "centre": 0.4
+      }
+     ]
+    },
+    "voidShare": 0.07,
+    "foliageShare": 0.31
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "best museum-de-1899-corbel-cornice scores 0.33 < 0.7 (strip cornice 16.68 m vs the type's 13.4 m (wall-dormer skyline 14.7 m))",
+   "best": {
+    "type": "museum-de-1899-corbel-cornice",
+    "score": 0.33,
+    "veto": [],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 16.68 m vs the type's 13.4 m (wall-dormer skyline 14.7 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": null,
+      "note": "no strip"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012159008",
+   "address": "Roelof Hartplein 15",
+   "builtYear": 1899,
+   "widthM": 5.87,
+   "eavesM": 17.12,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#90836c",
+    "wallRaw": "#968870",
+    "skyline": {
+     "eavesM": 16.23,
+     "eavesRow": 241,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.3,
+      "riseM": 1.25,
+      "topWidthM": 1.9,
+      "centre": 0.21
+     }
+    },
+    "stucco": false,
+    "bands": 8,
+    "columns": 4,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.452,
+    "structure": {
+     "bayWidthM": 1.32,
+     "bayCentre": 0.12,
+     "balconies": true,
+     "why": "balcony slabs stacked at 9.7 m (2.5 m wide), 6.17 m (2.15 m wide)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 9.7,
+       "widthM": 2.5,
+       "centre": 0.68
+      },
+      {
+       "atM": 6.17,
+       "widthM": 2.15,
+       "centre": 0.66
+      }
+     ]
+    },
+    "voidShare": 0.16,
+    "foliageShare": 0.22
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "best museum-de-1899-corbel-cornice scores 0.55 < 0.7 (strip cornice 16.23 m vs the type's 13.4 m (wall-dormer skyline 14.7 m); strip columns 4 vs 3 bays)",
+   "best": {
+    "type": "museum-de-1899-corbel-cornice",
+    "score": 0.55,
+    "veto": [],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 16.23 m vs the type's 13.4 m (wall-dormer skyline 14.7 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.257 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0.4,
+      "note": "strip columns 4 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012165388",
+   "address": "Roelof Hartplein 17",
+   "builtYear": 1899,
+   "widthM": 3.96,
+   "eavesM": 17.11,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#8c735e",
+    "wallRaw": "#887f69",
+    "skyline": {
+     "eavesM": 15.85,
+     "eavesRow": 256,
+     "confidence": 1,
+     "crown": {
+      "widthM": 0.78,
+      "riseM": 1.2,
+      "topWidthM": 0.28,
+      "centre": 0.51
+     }
+    },
+    "stucco": false,
+    "bands": 6,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.398,
+    "structure": {
+     "bayWidthM": 1.8,
+     "bayCentre": 0.5,
+     "balconies": true,
+     "why": "balcony slabs stacked at 13 m (1.43 m wide), 9.7 m (2.55 m wide), 6.17 m (2.3 m wide)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 13,
+       "widthM": 1.43,
+       "centre": 0.36
+      },
+      {
+       "atM": 9.7,
+       "widthM": 2.55,
+       "centre": 0.48
+      },
+      {
+       "atM": 6.17,
+       "widthM": 2.3,
+       "centre": 0.48
+      }
+     ]
+    },
+    "voidShare": 0.14,
+    "foliageShare": 0.29
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best museum-de-1899-corbel-cornice: frontage 3.96 m, type 5-6 m)",
+   "best": {
+    "type": "museum-de-1899-corbel-cornice",
+    "score": 0,
+    "veto": [
+     "frontage 3.96 m, type 5-6 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 15.85 m vs the type's 13.4 m (wall-dormer skyline 14.7 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.254 (brick)"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012164462",
+   "address": "Roelof Hartplein 19",
+   "builtYear": 1899,
+   "widthM": 4.03,
+   "eavesM": 17.01,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#86715e",
+    "wallRaw": "#82775e",
+    "skyline": {
+     "eavesM": 16,
+     "eavesRow": 250,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.02,
+      "riseM": 1.05,
+      "topWidthM": 0.75,
+      "centre": 0.49
+     }
+    },
+    "stucco": false,
+    "bands": 8,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.332,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "balcony slabs stacked at 10 m (2.92 m wide), 6.25 m (2.4 m wide), 5.57 m (1.95 m wide)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 10,
+       "widthM": 2.92,
+       "centre": 0.45
+      },
+      {
+       "atM": 6.77,
+       "widthM": 1,
+       "centre": 0.77
+      },
+      {
+       "atM": 6.25,
+       "widthM": 2.4,
+       "centre": 0.47
+      },
+      {
+       "atM": 5.57,
+       "widthM": 1.95,
+       "centre": 0.45
+      }
+     ]
+    },
+    "voidShare": 0.11,
+    "foliageShare": 0.33
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best museum-de-1899-corbel-cornice: frontage 4.03 m, type 5-6 m)",
+   "best": {
+    "type": "museum-de-1899-corbel-cornice",
+    "score": 0,
+    "veto": [
+     "frontage 4.03 m, type 5-6 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 16 m vs the type's 13.4 m (wall-dormer skyline 14.7 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": null,
+      "note": "no strip"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012165285",
+   "address": "Roelof Hartplein 21",
+   "builtYear": 1899,
+   "widthM": 4,
+   "eavesM": 17.04,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#8b7962",
+    "wallRaw": "#857c67",
+    "skyline": {
+     "eavesM": 16.07,
+     "eavesRow": 247,
+     "confidence": 1,
+     "crown": {
+      "widthM": 0.6,
+      "riseM": 1.8,
+      "topWidthM": 0.55,
+      "centre": 0.08
+     }
+    },
+    "stucco": false,
+    "bands": 6,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.372,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 9.93,
+       "widthM": 2.45,
+       "centre": 0.5
+      },
+      {
+       "atM": 6.77,
+       "widthM": 0.93,
+       "centre": 0.5
+      }
+     ]
+    },
+    "voidShare": 0.13,
+    "foliageShare": 0.3
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best museum-de-1899-corbel-cornice: frontage 4 m, type 5-6 m)",
+   "best": {
+    "type": "museum-de-1899-corbel-cornice",
+    "score": 0,
+    "veto": [
+     "frontage 4 m, type 5-6 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 16.07 m vs the type's 13.4 m (wall-dormer skyline 14.7 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.21 (brick)"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

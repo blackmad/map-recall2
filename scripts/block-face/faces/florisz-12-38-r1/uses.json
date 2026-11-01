@@ -1,0 +1,73 @@
+{
+ "street": "Balthasar Floriszstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-01T12:23:47.128Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012157185",
+   "addresses": [
+    "Balthasar Floriszstraat 26"
+   ],
+   "groundUnits": [
+    {
+     "address": "Balthasar Floriszstraat 26-H",
+     "use": "woonfunctie",
+     "areaM2": 98,
+     "bagId": "0363010000980953"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012144384",
+   "addresses": [
+    "Balthasar Floriszstraat 24"
+   ],
+   "groundUnits": [
+    {
+     "address": "Balthasar Floriszstraat 24-H",
+     "use": "woonfunctie",
+     "areaM2": 47,
+     "bagId": "0363010000576127"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012164388",
+   "addresses": [
+    "Balthasar Floriszstraat 22"
+   ],
+   "groundUnits": [
+    {
+     "address": "Balthasar Floriszstraat 22-H",
+     "use": "woonfunctie",
+     "areaM2": 24,
+     "bagId": "0363010000576119"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012156418",
+   "addresses": [
+    "Balthasar Floriszstraat 20"
+   ],
+   "groundUnits": [
+    {
+     "address": "Balthasar Floriszstraat 20-H",
+     "use": "woonfunctie",
+     "areaM2": 46,
+     "bagId": "0363010000576111"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  }
+ ]
+}
