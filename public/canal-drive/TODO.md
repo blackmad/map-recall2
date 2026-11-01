@@ -273,7 +273,8 @@ HISTORY "The flat map lines draw only the span on screen": **iPad p50 0.696 M,
 target ≤ 0.70 M MET**, desktop 1.33 M; the shading flip was a harness
 elevation bug, fixed; facade mask R8 merged 2026-11-01 (`f3f6ff157`, HISTORY
 "The facade mask uploads as R8"): iPhone atlas 21.67 MB, budget back to 22;
-materials next: too-white roofs #179, cartoon look #161); the 150/400 m
+too-white roofs #179 fixed 2026-11-01 (bcc38403a, HISTORY "Bright white flat
+roofs no longer clip"); materials next: cartoon look #161); the 150/400 m
 facade LOD is parked (60–100k, 5–8 %, not worth its likeness risk yet). In-frame
 shader links are 0. P5 follow-ups: delete
 `building-tiles/` and `bag-tiles/` after a week of Sentry quiet on the
@@ -328,10 +329,16 @@ canal-scale bridge ways show ≥ 5 m² of carriageway gap; fixes approved behind
 `?bridgeGaps=0`: (1) one set of per-side, per-station deck widths for every
 consumer, (2) draw the bridge-level survey polygon on every deck, then (3) way
 decks over land under a survey bridge polygon once 1–2 are pinned; polder water
-levels out of scope), too-white roofs in Da Costabuurt (#179, materials queue),
+levels out of scope),
 bumpy ground at Stationsplein / Centraal forecourt (AHN has no ground over the
 metro box and under the shed; fix = flatten the own ground to road level under
-road and plaza polygons; small lane after the flip). Integrator handoff for
+road and plaza polygons; small lane after the flip). World compiler (#130,
+P3): `scripts/world/pipeline.ts` CODE hashes 18 files, but the compiler also
+imports `roofs/roofSlots.ts`, `look/palette.ts` and `threeBuildingMesh.ts`
+(esbuild metafile, 127 inputs), so a change there would not mark the cells
+stale; the roof cap of 2026-11-01 was checked by hand (recompiled, 604 of 604
+cells byte-identical). Hash the compiler's whole import graph instead of a
+hand list. Integrator handoff for
 the next session: `docs/handoffs/integrator-handoff-20261101.md`. Note: shared-frame
 `register(..., {order})` has no effect for group-rooted participants
 (three.js takes the innermost group's order); fixed for the overview only.

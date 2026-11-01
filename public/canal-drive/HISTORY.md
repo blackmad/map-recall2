@@ -1,5 +1,19 @@
 # Canal Recall — what is built
 
+**Bright white flat roofs no longer clip to pure white: a measured flat roof is capped at tint luma 212, so the lit roof stays under its orthophoto (2026-11-01, #179).**
+Materials (bcc38403a, spec limit 4efb2a0e7). Da Costakade, pand
+0363100012143235, measured #e6e6ef: `roofSlotHex` kept it inside the white-membrane
+band (luma 227), but a level roof lit by the rig reads about 1.17× its tint in
+linear light, so it drew at p50 254 with 35 k of 63 k pixels at 255, over an
+orthophoto median of 236. `FLAT_ROOF_LIT_TOP` = 212 caps measured flat roofs only;
+only white membranes reach it (every other flat slot tops out at 182), and
+unmeasured membrane roofs keep the slot base, so no palette golden moves. After:
+p50 237, p95 245, 7 px clipped. Named regression in `roofSlots.test.ts`. The
+roof-tint bundles were rebuilt, including the three-buildings worker. The world
+compiler imports `roofSlots.ts`, but the file is not on its hashed list, so the
+cells were recompiled by hand: all 604 cells are byte-identical, and nothing was
+republished. Integrator: lint, roof tests 14/14, test:look 165/165.
+
 **Road gaps on bridges measured city-wide: three quarters of what shows through is a surveyed bridge-level road polygon the game drops (2026-11-01, #178).**
 Road bridge-gaps lane, hand-back 1 of 3 (96c951790), probe only, no game change.
 `ownGround/bridgeGaps.ts` and `scripts/roads/probe-bridge-gaps.ts` walk all 5,434

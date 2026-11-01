@@ -3,6 +3,18 @@
   "notes": [
     {
       "date": "2026-11-01",
+      "title": "White roofs keep their texture",
+      "text": "Bright white flat roofs (e.g. Da Costakade) no longer burn out to pure white; they keep the orthophoto's tone and texture.",
+      "images": [
+        {
+          "src": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/whats-new/2026-11-01-white-roof-da-costakade.png",
+          "alt": "The Da Costakade flat roof before, after and in the orthophoto",
+          "caption": "Before | after | orthophoto"
+        }
+      ]
+    },
+    {
+      "date": "2026-11-01",
       "title": "Your second ride starts faster",
       "text": "The first time you ride, the game builds the city's street network on your device. It now keeps that build, so when you come back the ride is ready a few seconds sooner after you press Start, on phones most of all. Nothing is sent anywhere; the copy lives in your browser and is rebuilt if the city data changes.",
       "images": []
