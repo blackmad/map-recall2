@@ -1972,5 +1972,11 @@
   "buildVersion": 2,
   "bytes": 78468,
   "triangles": 4147
+ },
+ "carlton-hotel": {
+  "sourceHash": "2085964f78c2f01c",
+  "buildVersion": 2,
+  "bytes": 52916,
+  "triangles": 2426
  }
 }

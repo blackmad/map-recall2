@@ -51,7 +51,7 @@
   "sourceUrl": "https://nl.wikipedia.org/wiki/Vijzelbank",
   "licence": "CC BY 4.0",
   "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
-  "modifications": "Original texture-free flat-colour geometry on 3DBAG LoD2.2 roof pieces (CC BY 4.0) and the BAG footprint (CC0): dark floor-edge bands round every terrace, white fins on the bay axes, the white colonnade, the Kerkstraat passage with its double-height void and walkway, fire escapes and terrace railings, read for proportion and tone from Gemeente Amsterdam panoramas (CC BY 4.0) and Wikimedia Commons photographs by Ceescamel (CC BY-SA 4.0) and Rudolphous (CC BY-SA 3.0 nl). Names and dates: Wikipedia nl 'Vijzelbank' (CC BY-SA 4.0) and the municipal monument register. No pixels or meshes imported."
+  "modifications": "Original texture-free flat-colour geometry on 3DBAG LoD2.2 roof pieces (CC BY 4.0) and the BAG footprint (CC0): pale floor-edge bands round every terrace, white fins on the bay axes, the white colonnade, the Kerkstraat passage with its double-height void and walkway, fire escapes and terrace railings, read for proportion and tone from Gemeente Amsterdam panoramas (CC BY 4.0) and Wikimedia Commons photographs by Ceescamel (CC BY-SA 4.0) and Rudolphous (CC BY-SA 3.0 nl). Names and dates: Wikipedia nl 'Vijzelbank' (CC BY-SA 4.0) and the municipal monument register. No pixels or meshes imported."
  },
  "buildingFootprint": {
   "type": "Polygon",

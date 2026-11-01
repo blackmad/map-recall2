@@ -52,3 +52,42 @@ export const runFrame = (r: Run): {f: Frame; len: number} => {
   const len = Math.hypot(r.b[0] - r.a[0], r.b[1] - r.a[1]);
   return {f: {origin: r.a, tangent: [(r.b[0] - r.a[0]) / len, (r.b[1] - r.a[1]) / len], n: r.n}, len};
 };
+
+/**
+ * Closed prism whose top follows `topAt(x, z)` per vertex (a sloped 3DBAG roof plane, a mansard), base flat at y0: walls are
+ * quads with a slanted top edge, the roof is the plan triangulation lifted to topAt, the soffit (optional) faces down.
+ */
+export function slopedPrism(b: BuildingTools, poly: Pt[][], y0: number, topAt: (x: number, z: number) => number, wall: string, roof: string | null, soffit: string | null) {
+  const [outer, ...holes] = poly.map(open);
+  const pos: number[] = [];
+  [outer, ...holes].forEach((r, ri) => {
+    const s = Math.sign(r.reduce((a, p, i) => { const q = r[(i + 1) % r.length]; return a + p[0] * q[1] - q[0] * p[1]; }, 0)) * (ri === 0 ? 1 : -1) || 1;
+    r.forEach((p, i) => {
+      const q = r[(i + 1) % r.length], nx = s * (q[1] - p[1]), nz = -s * (q[0] - p[0]);
+      const A = [p[0], y0, p[1]], B = [q[0], y0, q[1]], C = [q[0], topAt(q[0], q[1]), q[1]], D = [p[0], topAt(p[0], p[1]), p[1]];
+      const ux = B[0] - A[0], uz = B[2] - A[2];
+      if (-uz * nx + ux * nz >= 0) pos.push(...A, ...B, ...C, ...A, ...C, ...D); else pos.push(...A, ...C, ...B, ...A, ...D, ...C);
+    });
+  });
+  const g = new T.BufferGeometry();
+  g.setAttribute('position', new T.Float32BufferAttribute(pos, 3));
+  g.computeVertexNormals();
+  b.add(g, wall as never);
+  const shape = new T.Shape(outer.map(([x, z]) => new T.Vector2(x, z)));
+  for (const h of holes) shape.holes.push(new T.Path(h.map(([x, z]) => new T.Vector2(x, z))));
+  const flat = (yAt: (x: number, z: number) => number, up: boolean) => {
+    const sg = new T.ShapeGeometry(shape).toNonIndexed();
+    const p = sg.getAttribute('position'), out: number[] = [];
+    for (let i = 0; i < p.count; i += 3) {
+      const v = [0, 1, 2].map(j => [p.getX(i + j), yAt(p.getX(i + j), p.getY(i + j)), p.getY(i + j)]);
+      const ny = (v[1][2] - v[0][2]) * (v[2][0] - v[0][0]) - (v[1][0] - v[0][0]) * (v[2][2] - v[0][2]);
+      if ((ny > 0) === up) out.push(...v[0], ...v[1], ...v[2]); else out.push(...v[0], ...v[2], ...v[1]);
+    }
+    const r = new T.BufferGeometry();
+    r.setAttribute('position', new T.Float32BufferAttribute(out, 3));
+    r.computeVertexNormals();
+    return r;
+  };
+  if (roof) { const g2 = flat(topAt, true); g2.userData.role = 'roof'; b.add(g2, roof as never); }
+  if (soffit) b.add(flat(() => y0, false), soffit as never);
+}
