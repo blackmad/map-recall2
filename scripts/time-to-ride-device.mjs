@@ -18,6 +18,9 @@ const argv = process.argv.slice(2);
 const out = argv[0] && !argv[0].startsWith('--') ? argv[0] : 'artifacts/perf/time-to-ride-device.json';
 const opt = (k, d) => { const i = argv.indexOf(`--${k}`); return i >= 0 ? argv[i + 1] : d; };
 const profile = argv.includes('--profile');
+// --warm: a second visit. Each run first rides once in the same browser context (same IndexedDB), waits for the
+// built world to be cached, then reloads and measures.
+const warm = argv.includes('--warm');
 const device = opt('device', 'iphone'), dwell = Number(opt('dwell', '0'));
 const target = opt('target', 'emulated'), runs = Number(opt('runs', '3')), qs = opt('qs', '?engine=own'), cpu = Number(opt('cpu', device === 'desktop' ? '1' : '4'));
 const base = opt('base', target === 'safari' ? 'https://canalrecall-blackmad.web.app/ride' : `http://127.0.0.1:${process.env.PORT || 4543}/canal-drive/`);
@@ -64,15 +67,23 @@ const INSTRUMENT = `(() => {
   requestAnimationFrame(poll);
   // The briefing's city-world build (game-route.js _prepareCityWorld): which one, and when it finished (negative:
   // before submit). The ride joins it at submit if it has not.
-  const watchPrep = () => { const p = g._cityWorldPrep; if (p && !T.prepKey) { T.prepKey = p.key; p.promise.then(() => { T.prepDone = performance.now(); }, () => { T.prepFailed = true; }); } };
+  const watchPrep = () => { const p = g._cityWorldPrep; if (p && !T.prepKey) { T.prepKey = p.key; p.promise.then(r => { T.prepDone = performance.now(); T.prepCached = !!(r && r.cached); }, () => { T.prepFailed = true; }); } };
   watchPrep();
   window.__ttrSubmit = () => { T.submit = performance.now(); document.querySelector('#route-card').requestSubmit(); setTimeout(watchPrep, 0); };
 })();`;
 
+// Bike ride, chase view, picked as the player picks them: through the briefing's preferences store (the legacy
+// selects remain for older builds; the runtime applies the store's picks at submit).
+const PICK_BIKE = `(() => {
+  const g = window.canalRecallGame, store = g._overlay && g._overlay.store;
+  if (store && store.patchPrefs) store.patchPrefs({ travelMode: 'car', viewMode: 'chase' }, g._overlayZoom ? g._overlayZoom() : undefined);
+  for (const [id, v] of [['travel-mode', 'car'], ['view-mode', 'chase']]) { const s = document.getElementById(id); if (s) { s.value = v; s.dispatchEvent(new Event('change', { bubbles: true })); } }
+})()`;
+
 function summarise(T) {
   const rel = v => (v == null ? null : Math.round(v - T.submit));
   return {
-    mode: T.mode || null, prep: T.prepKey ? { key: T.prepKey, doneMs: rel(T.prepDone), failed: !!T.prepFailed } : null,
+    mode: T.mode || null, prep: T.prepKey ? { key: T.prepKey, doneMs: rel(T.prepDone), failed: !!T.prepFailed, cached: !!T.prepCached } : null,
     firsts: Object.fromEntries(Object.entries(T.firsts).map(([k, v]) => [k, rel(v)])),
     progress: T.progress.map(([p, t]) => [p, rel(t)]),
     spans: T.spans.map(s => ({ k: s.k, startMs: rel(s.t0), ms: s.t1 != null ? Math.round(s.t1 - s.t0) : null })),
@@ -89,7 +100,7 @@ async function emulated() {
     const page = await context.newPage();
     const errors = [];
     page.on('pageerror', e => errors.push(e.message));
-    page.on('console', m => { if (m.type() === 'error' || /City world build failed/.test(m.text())) errors.push(m.text().slice(0, 200)); });
+    page.on('console', m => { if (m.type() === 'error' || /City world build failed|Road world cache refused/.test(m.text())) errors.push(m.text().slice(0, 200)); });
     if (process.env.BUNDLES_DIR) await page.route(/\/canal-drive\/js\/([\w-]+\.bundle\.js)(\?.*)?$/, route => {
       const file = path.join(process.env.BUNDLES_DIR, /\/([\w-]+\.bundle\.js)/.exec(route.request().url())[1]);
       return fs.existsSync(file) ? route.fulfill({ path: file, contentType: 'application/javascript' }) : route.continue();
@@ -97,17 +108,30 @@ async function emulated() {
     await page.addInitScript(() => { let s = 0x5eed1234; Math.random = () => { s = (s * 1664525 + 1013904223) >>> 0; return s / 2 ** 32; }; });
     const cdp = await context.newCDPSession(page);
     if (cpu > 1) await cdp.send('Emulation.setCPUThrottlingRate', { rate: cpu });
+    if (warm) {
+      await page.goto(base + qs);
+      await page.waitForFunction(() => window.canalRecallGame && document.querySelector('#route-card') && window.canalRecallGame.osmLoader, null, { timeout: 180_000 });
+      await page.evaluate(PICK_BIKE);
+      await page.evaluate(() => document.querySelector('#route-card').requestSubmit());
+      await page.waitForFunction(() => window.canalRecallGame.state === 4, null, { timeout: 180_000, polling: 200 });
+      // road-network.js storeWorld writes ~3 s into the ride, when idle. Wait for the bike world's record: the boat
+      // world the briefing started on before the bike was picked may have been stored first.
+      const stored = await page.waitForFunction(() => new Promise(resolve => {
+        try {
+          const req = indexedDB.open('canal-recall-road-world');
+          req.onsuccess = () => { try { const store = req.result.transaction('worlds').objectStore('worlds'); const c = store.getAllKeys(); c.onsuccess = () => { const key = c.result.find(k => String(k).includes('|car|')); if (!key) { req.result.close(); resolve(false); return; } const g = store.get(key); g.onsuccess = () => { req.result.close(); resolve(!!(g.result && typeof g.result.fingerprint === 'string')); }; g.onerror = () => resolve(false); }; c.onerror = () => resolve(false); } catch (_) { resolve(false); } };
+          req.onerror = () => resolve(false);
+        } catch (_) { resolve(false); }
+      }), null, { timeout: 60_000, polling: 1000 }).then(() => true, () => false);
+      if (!stored) errors.push('warm: the first visit did not cache its world');
+      // A reload straight after the key shows up still found no record (the put not yet durable); give it 3 s.
+      await page.waitForTimeout(Number(process.env.WARM_EXTRA_MS || 3000));
+    }
     const t0 = Date.now();
     await page.goto(base + qs);
     await page.waitForFunction(() => window.canalRecallGame && document.querySelector('#route-card') && window.canalRecallGame.osmLoader, null, { timeout: 180_000 });
     const readyMs = Date.now() - t0;
-    // Bike ride, chase view, picked as the player picks them: through the briefing's preferences store (the legacy
-    // selects remain for older builds; the runtime applies the store's picks at submit).
-    await page.evaluate(() => {
-      const g = window.canalRecallGame, store = g._overlay && g._overlay.store;
-      if (store && store.patchPrefs) store.patchPrefs({ travelMode: 'car', viewMode: 'chase' }, g._overlayZoom ? g._overlayZoom() : undefined);
-      for (const [id, v] of [['travel-mode', 'car'], ['view-mode', 'chase']]) { const s = document.getElementById(id); if (s) { s.value = v; s.dispatchEvent(new Event('change', { bubbles: true })); } }
-    });
+    await page.evaluate(PICK_BIKE);
     if (dwell) await page.waitForTimeout(dwell);
     await page.evaluate(INSTRUMENT);
     // --profile: self time by function from submit to the start of racing (the CDP profiler's start stall lands
@@ -160,7 +184,7 @@ async function safari() {
       await call('POST', `${S}/url`, { url: `${base}${qs}${sep}probe=${Date.now()}` });
       await execAsync(`const done = arguments[0]; const t = setInterval(() => { if (window.canalRecallGame && document.querySelector('#route-card') && window.canalRecallGame.osmLoader) { clearInterval(t); done(true); } }, 100);`);
       const readyMs = Date.now() - t0;
-      await exec(`for (const [id, v] of [['travel-mode','car'],['view-mode','chase']]) { const s = document.getElementById(id); if (s) { s.value = v; s.dispatchEvent(new Event('change', { bubbles: true })); } }`);
+      await exec(PICK_BIKE);
       if (dwell) await new Promise(r => setTimeout(r, dwell));
       await exec(INSTRUMENT);
       await exec('window.__ttrSubmit();');
@@ -178,12 +202,12 @@ for (const [i, r] of results.entries()) {
   const f = r.firsts, span = k => r.spans.filter(s => s.k === k);
   const s1 = k => { const s = span(k)[0]; return s ? `${s.startMs}+${s.ms}` : '-'; };
   if (r.errors?.length) console.log(`run ${i + 1} errors: ${r.errors.slice(0, 5).join(' | ')}`);
-  console.log(`run ${i + 1}: ready ${r.readyMs} ms; submit -> introStart ${f.introStart} ms, racing (landed) ${f.racing} ms; mode ${r.mode}, briefing build ${r.prep ? `${r.prep.key} done ${r.prep.doneMs} ms${r.prep.failed ? ' FAILED' : ''}` : 'none'}`);
+  console.log(`run ${i + 1}: ready ${r.readyMs} ms; submit -> introStart ${f.introStart} ms, racing (landed) ${f.racing} ms; mode ${r.mode}, briefing build ${r.prep ? `${r.prep.key} done ${r.prep.doneMs} ms${r.prep.cached ? ' (from the device cache)' : ''}${r.prep.failed ? ' FAILED' : ''}` : 'none'}`);
   console.log(`  fetchRoads ${s1('fetchRoads')}  buildRoadSegments ${s1('buildRoadSegments')}  loadLandmarks ${s1('loadLandmarks')}  routingGraph ${s1('routingGraph')}  surfaceIndex ${s1('surfaceIndex')}  planRoute ${s1('planRoute')}  preRenderTrack ${s1('preRenderTrack')}  setupRace ${s1('setupRace')}`);
   console.log(`  settle holds ${span('settleHold').map(s => `${s.startMs}+${s.ms}`).join(', ')} (${r.settles.map(s => `${s.ms}${s.timedOut ? ' timed out' : ''} [${(s.pending || []).join(',')}]`).join('; ')}); prepareIntro ${s1('prepareIntro')}`);
   console.log(`  first ground cell ${f.groundCell}, building tile ${f.buildingTile}, facade chunk ${f.facadeChunk}; progress ${r.progress.map(([p, t]) => `${p}@${t}`).join(' ')}`);
 }
 for (const [i, r] of results.entries()) if (r.profile?.roads) console.log(`run ${i + 1} roads window (progress 0.8 -> 0.92) self ms: ${r.profile.roads.slice(0, 10).map(x => `${x.k} ${x.ms}`).join('; ')}`);
 fs.mkdirSync(path.dirname(out), { recursive: true });
-fs.writeFileSync(out, JSON.stringify({ when: new Date().toISOString(), target, device, dwell, base, qs, cpu: target === 'emulated' ? cpu : null, results }, null, 2));
+fs.writeFileSync(out, JSON.stringify({ when: new Date().toISOString(), target, device, dwell, warm, base, qs, cpu: target === 'emulated' ? cpu : null, results }, null, 2));
 console.log(`wrote ${out}`);

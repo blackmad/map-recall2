@@ -31,6 +31,9 @@ const routeNoun = (profile, plural) => {
   return key ? routeText(key) : raw;
 };
 
+// ms — how long the city-world build waits for the device cache before building alongside it (_prepareCityWorld).
+const ROAD_WORLD_CACHE_HEAD_START_MS = 400;
+
 class GameRouteRuntime {
   _overlayZoom() {
     return { min: this.camera.minZoom, max: this.camera.maxZoom, defaultZoom: CAMERA_ZOOM_INITIAL };
@@ -1640,7 +1643,7 @@ class GameRouteRuntime {
     next.promise = (async () => {
       const ways = await next.fetched;
       // What this fetch set on the loader, put back when a ride takes this world (a later fetch may have run).
-      const loaded = { cityId: loader.cityId, plazaFeatures: loader.plazaFeatures, ferryNetwork: loader.ferryNetwork };
+      const loaded = { cityId: loader.cityId, plazaFeatures: loader.plazaFeatures, ferryNetwork: loader.ferryNetwork, roadExtractVersion: loader.roadExtractVersion };
       if (!ways.length) return { key, lat: centre.lat, lng: centre.lng, ways, segments: [], loaded };
       const segments = await loader.buildRoadSegmentsAsync(ways, centre.lat, centre.lng, cancelled, scheduling);
       loaded.projection = {
@@ -1657,9 +1660,28 @@ class GameRouteRuntime {
         segments.push(...CanalRecallFerry.ferrySegments(loaded.ferryNetwork, segments, project));
       }
       if (!segments.length) return { key, lat: centre.lat, lng: centre.lng, ways, segments, loaded };
-      const routingGraph = await RoadNetwork.prepareRoutingGraph(segments, cancelled, scheduling);
-      const surfaceIndex = await RoadNetwork.prepareSurfaceIndex(segments, routingGraph, cancelled, scheduling);
-      return { key, lat: centre.lat, lng: centre.lng, ways, segments, routingGraph, surfaceIndex, loaded };
+      // A return visit restores the graph and surface index this device built last time for these exact segments.
+      // The read gets a head start (uncontended it is ~10 ms plus the checks; sharing the main thread with the
+      // build's slices it took ~450 ms on desktop and lost the race), then runs alongside the build, which stops at
+      // its next slice if the read wins: a slow or hung store (a private window) costs at most the head start.
+      const cache = RoadNetwork.worldCache(segments, { cityId, travelMode, extractVersion: loaded.roadExtractVersion });
+      let restored = null;
+      const restoring = RoadNetwork.restoreWorld(segments, cache).then(r => { if (r) restored = r; return r; });
+      if (cache) await Promise.race([restoring, new Promise(resolve => setTimeout(resolve, ROAD_WORLD_CACHE_HEAD_START_MS))]);
+      if (cancelled()) throw new DOMException('City world build superseded', 'AbortError');
+      if (restored) return { key, lat: centre.lat, lng: centre.lng, ways, segments, ...restored, loaded, cached: true };
+      const buildScheduling = { cancelled: () => cancelled() || !!restored, get budgetMs() { return scheduling.budgetMs; } };
+      const building = (async () => {
+        const routingGraph = await RoadNetwork.prepareRoutingGraph(segments, buildScheduling.cancelled, buildScheduling);
+        const surfaceIndex = await RoadNetwork.prepareSurfaceIndex(segments, routingGraph, buildScheduling.cancelled, buildScheduling);
+        return { routingGraph, surfaceIndex };
+      })();
+      building.catch(() => {});
+      const won = await Promise.race([restoring.then(r => r || building), building.catch(error => (restored ? restored : Promise.reject(error)))]);
+      if (cancelled()) throw new DOMException('City world build superseded', 'AbortError');
+      if (restored && won === restored) return { key, lat: centre.lat, lng: centre.lng, ways, segments, ...restored, loaded, cached: true };
+      RoadNetwork.storeWorld(cache, segments, won.routingGraph, won.surfaceIndex);
+      return { key, lat: centre.lat, lng: centre.lng, ways, segments, routingGraph: won.routingGraph, surfaceIndex: won.surfaceIndex, loaded };
     })();
     // A failed build is not kept: the ride builds at submit as before.
     next.promise.catch(() => { if (this._cityWorldPrep === next) this._cityWorldPrep = null; });
