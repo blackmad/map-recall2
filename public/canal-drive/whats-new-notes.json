@@ -3,6 +3,11 @@
   "notes": [
     {
       "date": "2026-11-01",
+      "title": "Under the new engine, the ride starts with the street around you drawn",
+      "text": "On the new engine (?engine=own) the ride could begin with only a couple of blocks drawn and the rest arriving over the next seconds, because behind the loading screen the buildings were styled far too slowly. The hold now finishes styling first and waits for the facades around you to be in place."
+    },
+    {
+      "date": "2026-11-01",
       "title": "No colour step at the edge of the detailed city",
       "text": "The simplified ground beyond the detailed area now uses the same asphalt, klinker and pavement colours as the streets around you, so the roads no longer change colour in the distance, as they did by the RAI.",
       "where": [
