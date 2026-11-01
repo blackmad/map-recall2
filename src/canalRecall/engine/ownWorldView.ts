@@ -134,6 +134,8 @@ export class OwnWorldView implements WorldViewOracles {
   _facadesActive(): boolean { return !!this.facadesLib() && !!this._threeBuildings && this.status.buildings === true; }
   /** The building ids the shown signature models hide (cityExtras.ts suppressedIds: covers.json under ?bagTiles=1). */
   _signatureSuppressOsmIds(): string[] { return this.extras.suppressedIds(); }
+  /** covers.json under ?bagTiles=1 (vector-map.js `_bagCovers`; bag-tiles.spec reads it). */
+  get _bagCovers(): unknown { return this.extras.covers; }
   get _inventoryTrees(): any { return this.extras.trees; }
   get _detailedBuildings(): any { return this.extras.detailed; }
   get _pyramidalRoofs(): any { return this.extras.roofs; }

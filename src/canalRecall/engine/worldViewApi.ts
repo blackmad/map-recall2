@@ -119,6 +119,8 @@ export interface WorldViewOracles {
   _facadesActive(): boolean;
   /** Building ids the shown signature-landmark models hide (covers.json pands under `?bagTiles=1`). */
   _signatureSuppressOsmIds(): string[];
+  /** covers.json once loaded under `?bagTiles=1` on the live tile path, else null. */
+  readonly _bagCovers: unknown;
 }
 
 /** Narrow a value to the world view's camera (both implementations). */
