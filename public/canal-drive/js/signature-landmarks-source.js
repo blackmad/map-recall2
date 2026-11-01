@@ -20,6 +20,7 @@ import { landmarkHighlightStates } from '../../../src/canalRecall/look/highlight
 import { buildPickBvhs, nearestVisibleHit } from '../../../src/canalRecall/landmarks/pickBvh.ts';
 import { landmarkResidencyBudget, pickEvictions } from '../../../src/canalRecall/landmarks/landmarkResidency.ts';
 import { freezeStaticMatrices } from '../../../src/canalRecall/landmarks/staticMatrices.ts';
+import { hasReleasedVertexData, releaseGeometryOnUpload, releaseVertexDataOnUpload } from '../../../src/canalRecall/landmarks/releaseVertexData.ts';
 import { SHADOW_STAND_IN_PENDING, disposeShadowStandIn, shadowStandInFor } from '../../../src/canalRecall/rendererShared/shadowStandIns.ts';
 // The page's worker pool (engine/workerPool.ts; started by the building and ground layers) welds the shadow stand-ins off the main thread (#129).
 import { existingWorkerPool } from '../../../src/canalRecall/engine/workerPool.ts';
@@ -246,7 +247,12 @@ export class SignatureLandmarks {
       onAttach: () => this._setup(this.map),
       // A context loss empties MapLibre's style until the restored one loads; models that landed in that gap
       // failed on its calls (`getLayer` of a null style) and would keep their extrusions for the session.
-      onContextRestored: () => { this._rebuildShadowStandIns(); this._failed.clear(); this._applyBasemapFilter(); this._requestModels(); },
+      // Models whose vertex arrays were freed after upload (_releaseVertexData) cannot be uploaded again: drop them
+      // before the restored renderer draws, and load them afresh below.
+      onContextRestored: () => {
+        this._dropEntries(new Set((this._entries || []).filter(e => hasReleasedVertexData(e.imported) || hasReleasedVertexData(e.spare)).map(e => e.spec.id)));
+        this._rebuildShadowStandIns(); this._failed.clear(); this._applyBasemapFilter(); this._requestModels();
+      },
       beforeRender: ctx => {
         if (this._removed || !this.enabled || !this._entries.length) return false;
         let any = false;
@@ -930,6 +936,8 @@ export class SignatureLandmarks {
           g.setAttribute(name, new THREE.BufferAttribute(out, size, false));
         }
         g.setIndex(new THREE.BufferAttribute(typed ? api.compactIndex(sep.index, sep.source.length) : sep.index, 1));
+        // The split attributes are final now: free their CPU copies once uploaded (position stays for the lift).
+        if (this._releaseOn()) releaseGeometryOnUpload(g);
         // mesh-local → Mercator (holder space = Mercator; the holder's own lift stays 0 for chunks).
         const toMercator = new THREE.Matrix4().copy(entry.transform).multiply(entry.group.matrix).multiply(groupInverse).multiply(object.matrixWorld);
         const up = new THREE.Vector3(0, 0, entry.units).applyMatrix4(new THREE.Matrix4().copy(toMercator).invert().setPosition(0, 0, 0));
@@ -1053,6 +1061,7 @@ export class SignatureLandmarks {
       level, imported, spare: null, spareLevel: null, levelLoading: false,
       radiusMetres: Math.hypot(size.x, size.z) / 2 * placement.scale };
     this._entries.push(entry);
+    this._releaseVertexData(spec, imported);
     this._attachShadowStandIn(entry);
     if (this._groundBase) this._applyGroundBase(entry);
     this.shown.add(spec.id);
@@ -1060,6 +1069,27 @@ export class SignatureLandmarks {
     this._applySuppression();
     this.onModelShown(spec, placement);
     map.triggerRepaint();
+  }
+
+  /** `?landmarkRelease=0` keeps every landmark vertex array on the CPU (A/B for the heap row). */
+  _releaseOn() {
+    if (this._releaseFlag === undefined) {
+      let off = false;
+      try { off = new URLSearchParams(window.location.search).get('landmarkRelease') === '0'; } catch { /* no location */ }
+      this._releaseFlag = !off;
+    }
+    return this._releaseFlag;
+  }
+
+  /**
+   * Frees a placed level's non-position vertex arrays once the GPU has them (landmarks/releaseVertexData.ts).
+   * Shared-mesh masters (one GLB behind many clones, refcounted across loads) and building-type scenes (kit
+   * geometry other layers may hold) keep theirs; street-chunk pands are split after placement and are released
+   * in _applyChunkPandBases instead.
+   */
+  _releaseVertexData(spec, level) {
+    if (!this._releaseOn() || spec.sharedModel || spec.sceneFactory) return;
+    releaseVertexDataOnUpload(level, geometry => !!geometry.userData?.pandRanges);
   }
 
   /** Whether this spec has a lod1 sibling the loader may use. */
@@ -1134,6 +1164,7 @@ export class SignatureLandmarks {
     freezeStaticMatrices(incoming);
     entry.group.add(incoming);
     entry.group.remove(outgoing);
+    this._releaseVertexData(entry.spec, incoming);
     entry.imported = incoming;
     entry.pickBox = null;
     entry.spare = outgoing; entry.spareLevel = entry.level;

@@ -12,7 +12,8 @@ import { panBy, pinch, rotateAround, zoomAround, clampCamera } from './gestures'
 import { mapLibreEye } from '../rendererSpike/ride';
 import { placeLabels, CollisionGrid, type LabelCandidate } from './labels';
 import { streetLabelVisible, poiLabelVisible, neighbourhoodLabelVisible, gameLabelContext, type LabelContext } from './labelPolicy';
-import { buildSpoilerIndex } from '../orientationPois';
+import { buildSpoilerIndex, normaliseSpoilerName } from '../orientationPois';
+import { isPlaceKnown } from '../game/recallRules';
 import { interpolateStops } from './style';
 import type { Vec2 } from './frame';
 
@@ -158,6 +159,32 @@ test('gameLabelContext: a prebuilt spoiler index is the one screened against (sa
 
 // Named regressions on the published extract.
 const overview = decodeOverview(JSON.parse(gunzipSync(readFileSync('public/data/extracts/amsterdam/own-map-v1/overview.json.gz')).toString()) as OverviewFile);
+
+test('extract: the street screen answers as the unmemoised rule for every named street (asked name, answered places)', () => {
+  const names = new Set(['Prinsengracht', 'Keizersgracht', 'Overtoom']);
+  const known = new Map([['Leidsestraat', [{ x: 100, y: 100 }]], ['Vijzelstraat', [{ x: 5000, y: 3000 }]], ['Herengracht', [{ x: 0, y: 0 }]]]);
+  const toWorld = (x: number, y: number) => { const [lng, lat] = fromLocal(x, y); return { x: (lng - 4.9) * 2e5, y: (lat - 52.37) * 2e5 }; };
+  for (const hidden of ['Herengracht', 'herengracht ', 'Overtoom', '']) {
+    const ctx = gameLabelContext({ mapLabelNames: names, knownPlaces: known, knownRadius: 1800, quizPromptName: hidden, spoilerNames: [], quizQuiet: false, toWorld });
+    // The rule as written before the memo (labelPolicy.ts, 2026-11-01): normalise both names on every call, world point first.
+    const reference = (text: string, x: number, y: number) => {
+      if (!text) return false;
+      if (hidden && (text === hidden || normaliseSpoilerName(text) === normaliseSpoilerName(hidden))) return false;
+      if (names.has(text)) return true;
+      const w = toWorld(x, y);
+      return isPlaceKnown(known.get(text), w.x, w.y, 1800);
+    };
+    let shown = 0;
+    overview.streets.forEach(s => {
+      if (!s.name) return;
+      const mid = s.points[s.points.length >> 1];
+      const got = streetLabelVisible(ctx, s.name, mid[0], mid[1]);
+      if (got !== reference(s.name, mid[0], mid[1])) assert.fail(`${s.name} with ${hidden || 'nothing'} asked`);
+      if (got) shown++;
+    });
+    assert.ok(shown > 0, `some streets shown with ${hidden || 'nothing'} asked`);
+  }
+});
 
 test('extract: water test replaces queryRenderedFeatures (Singelgracht at the Da Costagracht mouth)', () => {
   const water = new PolygonGrid(overview.water);

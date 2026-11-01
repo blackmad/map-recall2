@@ -44,8 +44,23 @@ export interface LabelContext {
  */
 export function streetLabelVisible(ctx: LabelContext, text: string, x: number, y: number): boolean {
   if (!text) return false;
-  if (ctx.hiddenName && (text === ctx.hiddenName || normaliseSpoilerName(text) === normaliseSpoilerName(ctx.hiddenName))) return false;
+  if (ctx.hiddenName && (text === ctx.hiddenName || normalisedName(text) === normalisedName(ctx.hiddenName))) return false;
   return ctx.isLabelled(text, x, y);
+}
+
+/**
+ * normaliseSpoilerName, remembered per name (a pure function). The label rebuild screens every named street (86k)
+ * against the asked name: 13-15 ms at 1x, 52-70 ms at 4x per learned street (#129 hand-back 17).
+ */
+const normalisedNames = new Map<string, string>();
+function normalisedName(name: string): string {
+  let n = normalisedNames.get(name);
+  if (n === undefined) {
+    if (normalisedNames.size > 50_000) normalisedNames.clear();
+    n = normaliseSpoilerName(name);
+    normalisedNames.set(name, n);
+  }
+  return n;
 }
 
 /** A POI / venue / landmark name: never one that contains a quiz name. */
@@ -88,8 +103,11 @@ export function gameLabelContext(game: {
   return {
     isLabelled: (text, x, y) => {
       if (game.mapLabelNames.has(text)) return true;
+      // Only a name answered somewhere needs the point in world units (isPlaceKnown is false without places).
+      const places = game.knownPlaces.get(text);
+      if (!places) return false;
       const w = game.toWorld(x, y);
-      return isPlaceKnown(game.knownPlaces.get(text), w.x, w.y, game.knownRadius);
+      return isPlaceKnown(places, w.x, w.y, game.knownRadius);
     },
     hiddenName: game.quizPromptName || game.quizCandidateName || '',
     spoilerIndex: game.spoilerIndex ?? buildSpoilerIndex(game.spoilerNames),

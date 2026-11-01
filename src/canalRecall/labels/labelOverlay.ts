@@ -18,6 +18,7 @@ import {
   categoryClass, distanceFade, labelAllowed, labelBudget, labelPriority, planLabels, VENUE_RADIUS_M,
   type LabelCandidate, type LabelRules, type Rect, type ScreenCandidate,
 } from './labelPlan';
+import { COVER_POLL_MS, isCoveredState } from './coveredState';
 import { labelCss, labelFont, LABEL_FADE_CSS_MS, LABEL_ROOT_CLASS, PILL_CLASS, PILL_FONT } from './labelStyle';
 import { dedupeLabelCandidates, screenDuplicateIds, type MarkedPlace } from './labelDedupe';
 
@@ -577,14 +578,7 @@ export class LabelOverlay {
   }
 }
 
-const COVER_POLL_MS = 150;
-
-/** Game states whose canvas covers the map with paper (game.js GameState: MENU 0, MAP_SELECT 1, LOADING 2). */
-export function isCoveredState(state: unknown): boolean {
-  const gs = (0, eval)('typeof GameState === "object" ? GameState : null') as Record<string, number> | null;
-  const covered = gs ? [gs.MENU, gs.MAP_SELECT, gs.LOADING] : [0, 1, 2];
-  return typeof state === 'number' && covered.includes(state);
-}
+export { isCoveredState };
 
 /** vector-map.js mount: one overlay per map (null without a map). */
 export function mountLabelOverlay(vm: VectorMapLike, game: () => GameLike): LabelOverlay | null {

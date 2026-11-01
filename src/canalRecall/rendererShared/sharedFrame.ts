@@ -29,6 +29,7 @@ import { worldCameraOf } from '../engine/worldCameraOf.js';
 import { framePhases } from '../engine/framePhases.js';
 import type { LngLat, WorldCamera } from '../engine/worldViewApi.js';
 import { chooseTileDraws } from './tiledGeometry.js';
+import { updateDrawnWorld, type WorldNode } from './drawnWorld.js';
 import { coverPauseFlag, MapCoverWatch, RESUME_DEFERRED_COMPILE_MS, RESUME_WARMUP_HOLD_MS } from './mapCover.js';
 import { PRECOMPILE_STEP_MS } from './compileBudget.js';
 import { disposeShadowPrimer, shadowPrimer } from './shadowPrimer.js';
@@ -209,8 +210,10 @@ export class SharedFrame {
     this.shadowsOn = options.shadows ?? true;
     this.scene = new THREE.Scene();
     this.scene.name = 'shared-frame';
-    // The world matrices of every participant are refreshed by render(); the
-    // camera's own matrices stay identity (the view lives in its projection).
+    // World matrices are refreshed right before each render for what can draw (drawnWorld.ts: three's
+    // updateMatrixWorld without the invisible subtrees, #129); the camera's own matrices stay identity (the view
+    // lives in its projection).
+    this.scene.matrixWorldAutoUpdate = false;
     this.camera = new THREE.Camera();
     this.camera.matrixWorldAutoUpdate = false;
     this.rig = createLightRig(THREE, { ...options.light, shadows: options.shadows ?? true, shadowMapSize: options.shadowMapSize ?? options.light?.shadowMapSize });
@@ -361,6 +364,14 @@ export class SharedFrame {
     if (cam.zoom() === view.zoom && c.lng === vc.lng && c.lat === vc.lat && b.west === vb.west && b.east === vb.east && b.south === vb.south && b.north === vb.north) return;
     check.misses++;
     if (check.samples.length < 20) check.samples.push(`${where}: zoom ${view.zoom}→${cam.zoom()} centre ${vc.lng},${vc.lat}→${c.lng},${c.lat}`);
+  }
+
+  /** Nodes whose world matrix the last pass refreshed (drawnWorld.ts), for diagnostics. */
+  worldNodes = 0;
+  private updateWorld(phases: ReturnType<typeof framePhases>): void {
+    const t = phases ? performance.now() : 0;
+    this.worldNodes = updateDrawnWorld(this.scene as unknown as WorldNode);
+    if (phases) phases.add('world matrices', performance.now() - t);
   }
 
   /** Register a participant. Returns an unregister function. */
@@ -674,14 +685,18 @@ export class SharedFrame {
       // The first redraw also links every depth-program variant (shadowPrimer.ts): zero-area casters, no pixels.
       const primer = redraw && !this.shadowPrimed ? shadowPrimer(this.THREE) : null;
       if (primer) this.scene.add(primer);
+      // After the primer joins the scene: its casters need world matrices too (the scene does not auto-update).
+      this.updateWorld(phases);
+      const r1 = phases ? performance.now() : 0;
       let ok: boolean;
       try { ok = renderLosingContext(renderer, this.scene, this.camera, gl); }
       finally { if (primer) { disposeShadowPrimer(primer); this.shadowPrimed = true; } }
-      if (phases) phases.add('three render main', performance.now() - r0);
+      if (phases) phases.add('three render main', performance.now() - r1);
       if (!ok) return;
     } else {
       const r0 = phases ? performance.now() : 0;
       renderer.shadowMap.needsUpdate = false;
+      this.updateWorld(phases);
       for (const handle of drawn) {
         const xray = handle.participant.xrayMaterial?.();
         if (!xray) continue;

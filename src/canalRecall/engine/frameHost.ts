@@ -172,11 +172,11 @@ export class FrameHost {
   fire(type: string, event?: unknown): void {
     const set = this.listeners.get(type);
     if (!set) return;
-    const phases = type === 'render' ? framePhases() : null;
+    const phases = framePhases();
     for (const listener of [...set]) {
       const t0 = phases ? performance.now() : 0;
       try { listener(event); } catch (error) { console.warn(`frame host: ${type} listener failed`, error); }
-      if (phases) phases.add(`render listener: ${(listener as { label?: string }).label ?? (listener.name || String(listener).slice(0, 60))}`, performance.now() - t0);
+      if (phases) phases.add(`${type} listener: ${(listener as { label?: string }).label ?? (listener.name || String(listener).slice(0, 60))}`, performance.now() - t0);
     }
   }
   getCanvas(): HTMLCanvasElement { return this.canvas; }

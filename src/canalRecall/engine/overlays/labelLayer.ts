@@ -10,6 +10,7 @@
 // the road ahead, as answeredStreetNameLayer did) and the ferry landings.
 
 import { framePhases } from '../framePhases';
+import { LABEL_ROOT_CLASS } from '../../labels/labelStyle';
 import { placeLabels, drawPlacedLabels, type LabelCandidate, type LabelKind, type LabelPaint, type PlacedLabel } from '../../ownMap/labels';
 import { neighbourhoodLabelVisible, poiLabelVisible, streetLabelVisible, type LabelContext } from '../../ownMap/labelPolicy';
 import { interpolateStops, STREET_STYLE } from '../../ownMap/style';
@@ -89,12 +90,35 @@ export class LabelLayer {
   visible = true;
   zoom = 0;
 
+  /**
+   * The labels' DOM root, `.cr-map-labels` like the MapLibre overlay's (labels/labelOverlay.ts), so a check of "labels
+   * hidden while paper covers the map" reads the same element under either engine. Inline geometry: the overlay's
+   * stylesheet sizes its own root to zero (it positions each label), and the canvas here fills the view.
+   */
+  readonly root: HTMLElement;
+  /** Menu, setup and loading paint paper over the map: nothing is drawn and the root is hidden (setCovered). */
+  covered = false;
+
   constructor(container: HTMLElement, private readonly policy: () => LabelContext) {
-    this.canvas = container.ownerDocument.createElement('canvas');
+    const doc = container.ownerDocument;
+    this.root = doc.createElement('div');
+    this.root.className = LABEL_ROOT_CLASS;
+    this.root.style.cssText = 'position:absolute;inset:0;width:100%;height:100%;overflow:visible;pointer-events:none';
+    this.canvas = doc.createElement('canvas');
     this.canvas.className = 'engine-labels';
     this.canvas.style.cssText = 'position:absolute;inset:0;width:100%;height:100%;pointer-events:none';
-    container.appendChild(this.canvas);
+    this.root.appendChild(this.canvas);
+    container.appendChild(this.root);
     this.ctx = this.canvas.getContext('2d')!;
+  }
+
+  /** Paper over the map (labels/coveredState.ts): hide the root at once and draw nothing until uncovered. */
+  setCovered(covered: boolean): boolean {
+    if (covered === this.covered) return false;
+    this.covered = covered;
+    this.root.style.visibility = covered ? 'hidden' : '';
+    this.rev++;
+    return true;
   }
 
   setOverview(data: OverviewData): void { this.data = data; this.ctxKey = ''; this.rev++; }
@@ -163,14 +187,15 @@ export class LabelLayer {
     const phases = framePhases();
     let pt = phases ? performance.now() : 0;
     const lap = (name: string) => { if (!phases) return; const t = performance.now(); phases.add(`labels: ${name}`, t - pt); pt = t; };
-    const policy = this.visible ? this.policy() : null;
+    const shows = this.visible && !this.covered;
+    const policy = shows ? this.policy() : null;
     lap('policy');
     if (policy) {
       const key = `${policy.hiddenName}|${policy.quizQuiet}|${(policy as { revision?: unknown }).revision ?? ''}|${this.pois.length}|${!!this.data}`;
       if (key !== this.ctxKey) { this.ctxKey = key; this.rebuild(policy); this.rev++; }
     }
     lap('rebuild');
-    const rev = this.visible ? this.rev : -2;
+    const rev = shows ? this.rev : -2;
     // A still camera and unchanged inputs: the canvas already holds this frame.
     if (!resized && pose && this.drawnPose && rev === this.drawnRev && samePose(pose, this.drawnPose)) { this.stats.skipped++; return; }
     this.drawnRev = rev;
@@ -178,7 +203,7 @@ export class LabelLayer {
     this.ctx.setTransform(1, 0, 0, 1, 0, 0);
     this.ctx.clearRect(0, 0, w, h);
     this.placed = [];
-    if (!this.visible) return;
+    if (!shows) return;
     // Which labels win only changes when the camera has moved enough (or every 400 ms while it creeps); in between
     // the last winners are re-placed at the new projection (cheap: a handful of labels, not every candidate).
     const now = performance.now();

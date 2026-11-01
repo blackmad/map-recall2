@@ -142,12 +142,12 @@
       "trianglesIpad": {
         "target": 700000,
         "measured": {
-          "p50": 1020000,
-          "p95": 1780000
+          "p50": 940000,
+          "p95": 1710000
         },
         "unit": "triangles per frame, iPad profile, every pass",
         "owners": "mean per frame: facades 666k (+33k shadow), own-ground 306k, overview 279k, trees 183k (+19k shadow), cycle overlay 108k, landmarks 73k (+29k shadow), player bike 36k",
-        "note": "re-recorded 2026-11-01 with c415a1e1b (overview span grid 32: overview 279k -> 83k per frame on iPad; iPad p50/p95 1.21 M / 1.98 M -> 1.02 M / 1.78 M, desktop p50 2.18 M -> 1.97 M, draws unchanged 385 / 287, 0 px at five spots against ?overviewCull=0); earlier re-record with 811ff753c (tileWhole parse bug drew whole facade chunks on touch: 1.65 M / 2.47 M before); per-frame means after the fix: own ground 306k, overview 279k, facades 259k (far shells 91k, extras 80k, kits 49k, near walls/roofs 35k), trees 183k, cycle overlay 108k, landmarks 73k, bike 36k, shadows ~80k"
+        "note": "re-recorded 2026-11-01 with c9f743361 (own ground steps 1+2: near cell 6x6 and kerbs/bollards within 150 m; iPad own ground 298k -> 222k, frame p50 1.02 M -> 0.94 M, p95 1.71 M after step 1; desktop frame 1.97 M -> 1.84 M; draws iPad p95 746 -> 789); earlier with c415a1e1b (overview span grid 32: overview 279k -> 83k per frame on iPad; iPad p50/p95 1.21 M / 1.98 M -> 1.02 M / 1.78 M, desktop p50 2.18 M -> 1.97 M, draws unchanged 385 / 287, 0 px at five spots against ?overviewCull=0); earlier re-record with 811ff753c (tileWhole parse bug drew whole facade chunks on touch: 1.65 M / 2.47 M before); per-frame means after the fix: own ground 306k, overview 279k, facades 259k (far shells 91k, extras 80k, kits 49k, near walls/roofs 35k), trees 183k, cycle overlay 108k, landmarks 73k, bike 36k, shadows ~80k"
       }
     }
   }

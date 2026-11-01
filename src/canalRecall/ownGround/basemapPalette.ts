@@ -47,3 +47,30 @@ export function basemapGroundPatches(layers: readonly StyleLayerLike[], palette:
   }
   return out;
 }
+
+/** The own overview's flat layers (engine/overviewLayer.ts) in the own ground's colours. */
+export interface OverviewGroundColours {
+  land: string; park: string; water: string; streetFill: string; streetCasing: string; rail: string; pier: string;
+  /** Footways (the overview's `path` class), as the basemap's pedestrian paths. */
+  pathFill: string;
+  /** By overview landuse class (ownMap/overviewFormat.ts LANDUSE_CLASSES). */
+  landuse: Record<string, string>;
+}
+
+/**
+ * The own engine's overview as `basemapGroundColour` paints MapLibre's flat basemap: the same tokens, so the overview
+ * -> city blend (overviewTransition/blend.ts) dissolves the overview into ground of its own colour. In Liberty's
+ * palette the own overview showed blue water and white streets up to zoom 14.1, and the own ground took over in the
+ * ground palette at 14.2 (overview-transition:101 under ?engine=own, ΔE>20 on 20.6 % of the frame, mean luma −18.6).
+ * Streets and casings are one asphalt band, as on the basemap; landuse follows the basemap's landcover rules.
+ */
+export function overviewGroundColours(palette: GroundPalette = groundPalette(GROUND_LOOK_DEFAULT)): OverviewGroundColours {
+  const t = groundTokens(palette);
+  return {
+    land: t.land, park: t.park, water: t.water, streetFill: t.road, streetCasing: t.road, rail: t.rail, pier: t.land, pathFill: t.pavement,
+    landuse: {
+      green: t.park, sport: t.park, cemetery: t.park, allotments: t.park, wetland: t.park,
+      wood: t.wood, sand: t.gravel, farmland: t.land, industrial: t.land, construction: t.land,
+    },
+  };
+}
