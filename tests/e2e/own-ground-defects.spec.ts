@@ -228,7 +228,7 @@ test('far-ring cells dissolve in: mid-dissolve shot, no shader errors', async ({
     // Jump the ring 1.6 km east: a column of cells arrives.
     const east: [number, number] = [4.8685, 52.3745];
     ground.update(east, 15.8, 76);
-    vm.map.jumpTo({ center: east, zoom: 15.8, pitch: 76, bearing: 90 });
+    (vm.map ?? vm.cameraMap).jumpTo({ center: east, zoom: 15.8, pitch: 76, bearing: 90 });
   });
   await expect.poll(async () => { const s = await status(page); return Object.keys(s.pending ?? {}).length === 0 && !s.queued; }, { timeout: 240_000, intervals: [500] }).toBe(true);
   await page.waitForTimeout(4000);

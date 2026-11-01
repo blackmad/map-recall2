@@ -39,7 +39,7 @@ test('shop houses close up in game', async ({ page }, info) => {
     await parkAt(page, at, ahead(at, bearing, 40));
     await page.waitForFunction(({ id }) => {
       const vm = (window as any).canalRecallGame.vectorMap, l = vm._signatureLandmarks;
-      const c = vm.map.getCenter(); vm.map.jumpTo({ center: [c.lng + 1e-7, c.lat] });
+      const c = vm.camera.center(); (vm.map ?? vm.cameraMap).jumpTo({ center: [c.lng + 1e-7, c.lat] });
       return l && l.shown.has(id);
     }, { id: h.id }, { timeout: 120_000, polling: 1000 });
     await parkAt(page, ahead(at, outward, 120), ahead(at, outward, 160));

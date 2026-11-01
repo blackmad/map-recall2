@@ -3,6 +3,7 @@ import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { openRoute } from './helpers';
 import { ROAD_SPOTS as DIAGNOSE_SPOTS, spotViewpoint } from '../../src/canalRecall/ownGround/roadRegressions';
+import { OWN } from './worldCam';
 
 // Roads under own ground (`?ownGround=1`): the user's three road spots, the
 // De Clercqstraat block and the three named deck regressions, chase view,
@@ -157,6 +158,7 @@ test('roads: shots at the user spots and the deck regressions', async ({ page },
 const FAR_FIELD: Place = { lng: 4.8575, lat: 52.37125, bearing: 263 };
 
 test('far field: shots with the basemap ground hidden and shown under own ground', async ({ page }, info) => {
+  test.skip(OWN, 'MapLibre style assertion: deleted with the default path at P5');
   test.setTimeout(900_000);
   mkdirSync(OUT, { recursive: true });
   const errors = await boot(page);
@@ -172,8 +174,8 @@ test('far field: shots with the basemap ground hidden and shown under own ground
   await page.screenshot({ path: `${OUT}/${info.project.name}-far-field.png` });
   const probe = await page.evaluate(() => {
     const vm = (window as any).canalRecallGame.vectorMap;
-    const order = vm.map.getLayersOrder ? vm.map.getLayersOrder() : vm.map.getStyle().layers.map((l: any) => l.id);
-    const style = vm.map.getStyle().layers;
+    const order = (vm.map ?? vm.cameraMap).getLayersOrder ? (vm.map ?? vm.cameraMap).getLayersOrder() : (vm.map ?? vm.cameraMap).getStyle().layers.map((l: any) => l.id);
+    const style = (vm.map ?? vm.cameraMap).getStyle().layers;
     const first3d = style.findIndex((l: any) => l.type === 'fill-extrusion' || (l.type === 'custom' && l.renderingMode === '3d') || l.type === 'custom');
     return { basemapHidden: vm._basemapGroundHidden, first3d: style[first3d]?.id, first3dIndex: first3d, transport: style.findIndex((l: any) => l['source-layer'] === 'transportation'), count: order.length };
   });
