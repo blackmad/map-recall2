@@ -136,3 +136,23 @@ for (const debug of [true, false]) test(`world-v1 tiles through the worker proto
     await assert.rejects(late, /abort/);
   } finally { globalThis.fetch = realFetch; (globalThis as any).Worker = realWorker; }
 });
+
+test('worker batches: property strings are interned on arrival, values and objects unchanged, ids left alone', async () => {
+  const { internStrings, INTERN_LIMIT } = await import('./worldCells.ts');
+  const table = new Map<string, string>();
+  const bag = (id: string) => ({ id, facade: 'canal-priorBrickRed', height: 10.5, roofDormer: true, nested: { chain: 'Albert Heijn', list: ['a', 'b', 2] }, tags: ['x', { deep: 'y' }] });
+  const a = structuredClone(bag('NL.IMBAG.Pand.1')), b = structuredClone(bag('NL.IMBAG.Pand.2'));
+  const nested = a.nested;
+  internStrings(a, table); internStrings(b, table);
+  assert.deepEqual(a, bag('NL.IMBAG.Pand.1')); assert.deepEqual(b, bag('NL.IMBAG.Pand.2'));
+  assert.equal(a.nested, nested, 'the same nested object, its values replaced in place');
+  assert.ok(!table.has('NL.IMBAG.Pand.1') && !table.has('NL.IMBAG.Pand.2'), 'ids are unique: never interned');
+  for (const v of ['canal-priorBrickRed', 'Albert Heijn', 'a', 'b', 'x', 'y']) assert.equal(table.get(v), v);
+  internStrings(null, table); internStrings(undefined, table);
+  // Bounded: past the limit nothing new is added, known values still resolve.
+  const full = new Map<string, string>(Array.from({ length: INTERN_LIMIT }, (_, i) => [`v${i}`, `v${i}`] as [string, string]));
+  const c = { k: 'fresh', j: 'v7' };
+  internStrings(c, full);
+  assert.equal(full.size, INTERN_LIMIT); assert.ok(!full.has('fresh'));
+  assert.deepEqual(c, { k: 'fresh', j: 'v7' });
+});

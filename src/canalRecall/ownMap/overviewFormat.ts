@@ -98,6 +98,48 @@ export function decodeLine(data: readonly number[], unit: number, start = 0): Ve
 }
 
 export interface OverviewStreet { cls: StreetClass; name: string; points: Vec2[] }
+
+/**
+ * Every street polyline's quantised coordinates in one Int32Array (running sums of the file's deltas, so
+ * `x * unit` gives exactly the doubles `decodeLine` gives). The decoded `Vec2[]` per street was 20.9 MB on the
+ * ride-start heap (#130); the meshes are built from it once and the labels read only named streets.
+ */
+class StreetStore {
+  constructor(readonly coords: Int32Array, readonly starts: Int32Array, readonly unit: number) {}
+  decode(i: number): Vec2[] {
+    const out: Vec2[] = [], u = this.unit, c = this.coords;
+    for (let k = this.starts[i], end = this.starts[i + 1]; k < end; k += 2) out.push([c[k] * u, c[k + 1] * u]);
+    return out;
+  }
+}
+
+/** A street whose points are decoded from the packed store on read; a named street keeps them (labels). */
+class PackedStreet implements OverviewStreet {
+  private cached: Vec2[] | undefined;
+  constructor(readonly cls: StreetClass, readonly name: string, private readonly store: StreetStore, private readonly index: number) {}
+  get points(): Vec2[] {
+    if (this.cached) return this.cached;
+    const points = this.store.decode(this.index);
+    if (this.name) this.cached = points;
+    return points;
+  }
+}
+
+/** `file.streets` rows ([class, name, dx, dy, ...]) as packed streets: same classes, names and points. */
+export function packedStreets(rows: readonly number[][], unit: number, name: (i: number) => string): OverviewStreet[] {
+  let total = 0;
+  for (const row of rows) total += Math.max(0, (row.length - 2) >> 1) * 2;
+  const coords = new Int32Array(total), starts = new Int32Array(rows.length + 1);
+  let at = 0;
+  rows.forEach((row, r) => {
+    starts[r] = at;
+    let x = 0, y = 0;
+    for (let i = 2; i + 1 < row.length; i += 2) { x += row[i]; y += row[i + 1]; coords[at++] = x; coords[at++] = y; }
+  });
+  starts[rows.length] = at;
+  const store = new StreetStore(coords, starts, unit);
+  return rows.map((row, r) => new PackedStreet(STREET_CLASSES[row[0]], name(row[1]), store, r));
+}
 export interface OverviewPark { name: string; rings: Vec2[][] }
 export interface OverviewData {
   bounds: [number, number, number, number];
@@ -121,7 +163,7 @@ export function decodeOverview(file: OverviewFile): OverviewData {
     bounds: file.bounds,
     water: file.water.map(poly => poly.map(ring => decodeLine(ring, u))),
     parks: file.parks.map(([n, ...rings]) => ({ name: name(n), rings: rings.map(r => decodeLine(r, u)) })),
-    streets: file.streets.map(row => ({ cls: STREET_CLASSES[row[0]], name: name(row[1]), points: decodeLine(row, u, 2) })),
+    streets: packedStreets(file.streets, u, name),
     waterLines: file.waterLines.map(row => ({ name: name(row[0]), points: decodeLine(row, u, 1) })),
     hoods: file.hoods.map(([n, x, y]) => ({ name: name(n), at: [x * u, y * u] as Vec2 })),
     landuse: (file.landuse ?? []).map(([[c], ...rings]) => ({ cls: LANDUSE_CLASSES[c], rings: rings.map(r => decodeLine(r, u)) })),

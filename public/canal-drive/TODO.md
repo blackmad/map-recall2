@@ -1391,13 +1391,14 @@ Root `main` was cleaned on 2026-10-09 (see HISTORY). Live work, in order:
   Idle rendering (fan) is fixed under own: render-on-change on main, 0
   renders per 5 s at rest; the default engine still renders every idle frame
   until the flip.
-- **Heap gates** (HISTORY "Landmark chunk copies typed"): desktop 462 MB at
-  ride start / 469 at 60 s meets ≤ 500; iPhone 332 MB against ≤ 160 is not
-  reachable by trimming owners (city-wide data as JS objects); the road lane
-  builds, in order, roadIndex CSR + snap-index merge, columnar building tile
-  cache, overview polyline pack, phone ground radii (≈ 235–250 MB expected),
-  the materials lane releases the facade CPU arrays (33.9 MB). The gate stays
-  red with that reason. `engine-own.spec`'s `heapMB` is noise without a GC;
+- **Heap gates** (HISTORY "Phone heap cuts"): desktop 436 MB meets ≤ 500;
+  iPhone 305 MB against ≤ 160 stays red. Owners left on the phone: shared
+  frame 135 MB (88 MB buffers; materials/L1), own-ground store 43 (road lane
+  next: per-cell contents and never-read copies), building cache 33, track
+  24, overview 20, landmark CPU arrays 24–36, facades 14 (materials). Held
+  product option: 6 phone building tiles instead of 9 (user's call, a look
+  trade). `no-maplibre.bundle.js` has no npm build script (old overview
+  decoder inside, still works): add one before the flip. `engine-own.spec`'s `heapMB` is noise without a GC;
   `scripts/heap-ride.mjs` is the measure.
 - **Time to ride under own ≈ 3.5 s median, three of six runs within 70 ms of
   the 4 s gate**: the settle hold waiting on facade chunks is the variance

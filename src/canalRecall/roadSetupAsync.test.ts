@@ -58,3 +58,33 @@ test('surface index cell keys: neighbouring, negative and far-out-of-range cells
  assert.deepEqual(at(0,0),[],'cell (0,0) is empty');
  assert.deepEqual(at(0,0,2).sort(),[0,1]);
 });
+
+test('packed road index: roadsNear gives the Map-of-arrays index\'s spans, in its order, for every ring', () => {
+ // The index as it was before packing (#130): one RoadSpan object per span, pushed into a Map bucket per cell.
+ const reference=(segments: {points:{x:number;y:number}[];width:number}[],cellSize: number,connectors: {a:{x:number;y:number};b:{x:number;y:number};segmentIndex:number}[])=>{
+  const LIMIT=2**25,key=(gx:number,gy:number)=>Math.abs(gx)<LIMIT&&Math.abs(gy)<LIMIT?(gx+LIMIT)*2**26+(gy+LIMIT):`${gx},${gy}`;
+  const cells=new Map<number|string,any[]>();
+  const add=(span:any)=>{const pad=span.width+10;
+   for(let gx=Math.floor((Math.min(span.a.x,span.b.x)-pad)/cellSize);gx<=Math.floor((Math.max(span.a.x,span.b.x)+pad)/cellSize);gx++)
+    for(let gy=Math.floor((Math.min(span.a.y,span.b.y)-pad)/cellSize);gy<=Math.floor((Math.max(span.a.y,span.b.y)+pad)/cellSize);gy++){const k=key(gx,gy),b=cells.get(k);if(b)b.push(span);else cells.set(k,[span]);}};
+  segments.forEach((s,segIdx)=>{for(let ptIdx=0;ptIdx<s.points.length-1;ptIdx++)add({a:s.points[ptIdx],b:s.points[ptIdx+1],segIdx,ptIdx,width:s.width});});
+  for(const c of connectors){const s=segments[c.segmentIndex];if(s)add({a:c.a,b:c.b,segIdx:c.segmentIndex,ptIdx:-1,width:s.width});}
+  return (x:number,y:number,ring=1)=>{const gx=Math.floor(x/cellSize),gy=Math.floor(y/cellSize),out:any[]=[];
+   for(let dx=-ring;dx<=ring;dx++)for(let dy=-ring;dy<=ring;dy++){const b=cells.get(key(gx+dx,gy+dy));if(b)out.push(...b);}return out;};
+ };
+ let seed=7;const rnd=()=>{seed=(seed*1103515245+12345)%2**31;return seed/2**31;};
+ const segments=Array.from({length:240},()=>{let x=rnd()*6000-3000,y=rnd()*6000-3000;return{width:8+rnd()*40,points:Array.from({length:1+Math.floor(rnd()*6)},()=>({x:x+=rnd()*400-200,y:y+=rnd()*400-200}))};});
+ // A way out of the numeric key range (string cells) and a degenerate one.
+ segments.push({width:20,points:[{x:2**25*100+50,y:10},{x:2**25*100+400,y:30}]},{width:12,points:[{x:5,y:5}]});
+ const connectors=Array.from({length:60},(_,i)=>({a:segments[i].points[0],b:segments[i+1].points.at(-1)!,segmentIndex:i}));
+ connectors.push({a:{x:0,y:0},b:{x:1,y:1},segmentIndex:9999});
+ const packed=buildRoadSpatialIndex(segments,100,connectors),near=reference(segments,100,connectors);
+ const probes=[...Array.from({length:400},()=>({x:rnd()*7000-3500,y:rnd()*7000-3500})),{x:2**25*100+200,y:20}];
+ let compared=0;
+ for(const p of probes)for(const ring of [0,1,2,4]){const got=roadsNear(packed,p.x,p.y,ring),want=near(p.x,p.y,ring);
+  assert.equal(got.length,want.length);
+  for(let i=0;i<got.length;i++){assert.deepEqual(got[i],want[i]);assert.equal(got[i].a,want[i].a,'the way\'s own point objects');compared++;}}
+ assert.ok(compared>10000,`compared ${compared}`);
+ // One object per span across queries, as the shared bucket objects were.
+ const p=probes[0];assert.equal(roadsNear(packed,p.x,p.y,4)[0],roadsNear(packed,p.x,p.y,4)[0]);
+});

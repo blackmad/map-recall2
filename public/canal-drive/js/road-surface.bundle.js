@@ -196,9 +196,13 @@ var CanalRecallRoadSurface = (() => {
     return { x: cx, y: cy, dist: Math.hypot(px - cx, py - cy) };
   }
   function* roadSurfaceStages(segments, cellSize = ROAD_GRID_CELL, connectors = []) {
-    const cells = /* @__PURE__ */ new Map();
-    const add = (span) => {
-      const { a, b, width } = span;
+    let pairKeys = new Float64Array(1 << 16), pairIds = new Int32Array(1 << 16), pairs = 0;
+    const stringBuckets = /* @__PURE__ */ new Map();
+    const spanSegList = [], spanPtList = [];
+    const add = (a, b, segIdx, ptCode, width) => {
+      const id = spanSegList.length;
+      spanSegList.push(segIdx);
+      spanPtList.push(ptCode);
       const pad = width + 10;
       const gx0 = Math.floor((Math.min(a.x, b.x) - pad) / cellSize);
       const gx1 = Math.floor((Math.max(a.x, b.x) + pad) / cellSize);
@@ -207,9 +211,23 @@ var CanalRecallRoadSurface = (() => {
       for (let gx = gx0; gx <= gx1; gx++) {
         for (let gy = gy0; gy <= gy1; gy++) {
           const key = cellKey(gx, gy);
-          const bucket = cells.get(key);
-          if (bucket) bucket.push(span);
-          else cells.set(key, [span]);
+          if (typeof key === "string") {
+            const bucket = stringBuckets.get(key);
+            if (bucket) bucket.push(id);
+            else stringBuckets.set(key, [id]);
+            continue;
+          }
+          if (pairs === pairKeys.length) {
+            const k = new Float64Array(pairs * 2);
+            k.set(pairKeys);
+            pairKeys = k;
+            const i = new Int32Array(pairs * 2);
+            i.set(pairIds);
+            pairIds = i;
+          }
+          pairKeys[pairs] = key;
+          pairIds[pairs] = id;
+          pairs++;
         }
       }
     };
@@ -217,7 +235,7 @@ var CanalRecallRoadSurface = (() => {
       if (segIdx % 32 === 0) yield;
       const segment = segments[segIdx];
       for (let ptIdx = 0; ptIdx < segment.points.length - 1; ptIdx++) {
-        add({ a: segment.points[ptIdx], b: segment.points[ptIdx + 1], segIdx, ptIdx, width: segment.width });
+        add(segment.points[ptIdx], segment.points[ptIdx + 1], segIdx, ptIdx, segment.width);
       }
     }
     for (let i = 0; i < connectors.length; i++) {
@@ -225,9 +243,74 @@ var CanalRecallRoadSurface = (() => {
       const connector = connectors[i];
       const segment = segments[connector.segmentIndex];
       if (!segment) continue;
-      add({ a: connector.a, b: connector.b, segIdx: connector.segmentIndex, ptIdx: -1, width: segment.width });
+      add(connector.a, connector.b, connector.segmentIndex, -1 - i, segment.width);
     }
-    return { cellSize, cells };
+    yield;
+    const cellOf = /* @__PURE__ */ new Map();
+    const counts = [];
+    for (let p = 0; p < pairs; p++) {
+      const c = cellOf.get(pairKeys[p]);
+      if (c === void 0) {
+        cellOf.set(pairKeys[p], counts.length);
+        counts.push(1);
+      } else counts[c]++;
+      if ((p & 65535) === 65535) yield;
+    }
+    const order = Float64Array.from(cellOf.keys()).sort();
+    const keys = order, offsets = new Int32Array(keys.length + 1), slot = new Int32Array(counts.length);
+    for (let c = 0; c < keys.length; c++) {
+      const first = cellOf.get(keys[c]);
+      offsets[c + 1] = offsets[c] + counts[first];
+      slot[first] = offsets[c];
+    }
+    yield;
+    const ids = new Int32Array(pairs);
+    for (let p = 0; p < pairs; p++) {
+      ids[slot[cellOf.get(pairKeys[p])]++] = pairIds[p];
+      if ((p & 65535) === 65535) yield;
+    }
+    const stringCells = /* @__PURE__ */ new Map();
+    for (const [key, list] of stringBuckets) stringCells.set(key, Int32Array.from(list));
+    const widths = new Float64Array(segments.length);
+    for (let i = 0; i < segments.length; i++) widths[i] = segments[i].width;
+    return {
+      cellSize,
+      keys,
+      offsets,
+      ids,
+      stringCells,
+      spanSeg: Int32Array.from(spanSegList),
+      spanPt: Int32Array.from(spanPtList),
+      widths,
+      segments,
+      connectors,
+      spanCache: new Array(spanSegList.length)
+    };
+  }
+  function spanOf(index, id) {
+    const cached = index.spanCache[id];
+    if (cached) return cached;
+    const segIdx = index.spanSeg[id], code = index.spanPt[id], width = index.widths[segIdx];
+    let span;
+    if (code >= 0) {
+      const points = index.segments[segIdx].points;
+      span = { a: points[code], b: points[code + 1], segIdx, ptIdx: code, width };
+    } else {
+      const connector = index.connectors[-1 - code];
+      span = { a: connector.a, b: connector.b, segIdx, ptIdx: -1, width };
+    }
+    index.spanCache[id] = span;
+    return span;
+  }
+  function cellIndex(keys, key) {
+    let lo = 0, hi = keys.length - 1;
+    while (lo <= hi) {
+      const mid = lo + hi >>> 1, k = keys[mid];
+      if (k < key) lo = mid + 1;
+      else if (k > key) hi = mid - 1;
+      else return mid;
+    }
+    return -1;
   }
   function buildRoadSpatialIndex(segments, cellSize = ROAD_GRID_CELL, connectors = []) {
     const stages = roadSurfaceStages(segments, cellSize, connectors);
@@ -244,8 +327,15 @@ var CanalRecallRoadSurface = (() => {
     const found = [];
     for (let dx = -ring; dx <= ring; dx++) {
       for (let dy = -ring; dy <= ring; dy++) {
-        const bucket = index.cells.get(cellKey(gx + dx, gy + dy));
-        if (bucket) found.push(...bucket);
+        const key = cellKey(gx + dx, gy + dy);
+        if (typeof key === "string") {
+          const list = index.stringCells.get(key);
+          if (list) for (let i = 0; i < list.length; i++) found.push(spanOf(index, list[i]));
+          continue;
+        }
+        const c = cellIndex(index.keys, key);
+        if (c < 0) continue;
+        for (let i = index.offsets[c], end = index.offsets[c + 1]; i < end; i++) found.push(spanOf(index, index.ids[i]));
       }
     }
     return found;
