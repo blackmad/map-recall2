@@ -1,5 +1,32 @@
 # Canal Recall — what is built
 
+**Eleven landmarks and Museumkwartier round 1 (2026-11-01, #159 #160 #162–#167):**
+the user asked for ten landmark buildings by end of day and the Lensbomen sculpture. Six opus
+lanes (two landmarks each, Amstelstation alone) delivered `olympisch-stadion`, `het-nieuwe-huis`,
+`academie-van-bouwkunst`, `hollandsche-manege`, `amstelstation`, `droogbak`, `havengebouw`,
+`abn-amro-hoofdkantoor`, `wolkenkrabber`, `huis-met-de-hoofden` and `lensbomen` (catalogue 355 → 366).
+Two picks were dropped because they already existed under ids a catalogue grep missed
+(`muziekgebouw-bimhuis` in `manualModels.ts`, `barlaeus` as an installed large recipe); the user caught
+the first. Audit-rule fixes that came out of it (`geometryAudit.ts`, tested): a predicted missing window
+only between two regular windows and never where an opening already is (stadium entrance bay); a
+`symmetric` facade entry's odd-row centre axis is the composition, exempt from size and level
+(Academie risalit). Facade specs split at feature bays (`alongM` ranges) rather than baselines raised;
+first baseline rows recorded for `droogbak` (17 photo-true off-size windows, 4 solid piers) and
+`havengebouw` (6 plinth openings). `embassy-free-mind` and `levend-paardenmuseum` held (superseded on
+their pands). Droogbak's courtyard carries a glazed roof read from the 2024 orthophoto. Museumkwartier
+survey lanes: 105 + 92 faces intaked, four libraries tried on every family (oud-west placed 48/29
+before review on CS/CG but none survived gallery review), six types in `types/museumkwartier/`
+(`museum-cs-1900-gable-balcony`, `museum-de-1899-corbel-cornice/-flat/-flat-plain`,
+`museum-hc-1910-glazed-oriel`, `museum-jv-1910-lintel-parapet`), 30 pands in 6 rows installed
+(chunks 137 → 143), kit: `corbelTable`, `bayWindows.oriel.consoleCorbel`, `crownShoulderRise`, flat cap
+on neck/bell gables, V-notch fix in the crown-profile sort (`cw-heren-175702` and `kinker-334-374`
+goldens re-recorded). Integration: union merges per lane with a scripted catalogue/dispatcher union
+(one merge lost the `embassy-free-mind` held flag, caught by `test:building-taxonomy`), signature
+bundle, lods, covers, backlog, buurt pages, explorer looks, exposure rows; strips and landmark sources
+archived to map-recall2-source-data. The landmark lanes' in-game captures draw the model without the
+city around it (`ingame-capture.ts`), and the `demo-shots` cockpit spots do not face the model; the
+notes use the lanes' captures.
+
 **Road lane final hand-back: other-city binaries verified, the spawn-pose premise pinned, the six-tile cut dropped, the iPhone heap and pop-in gates measured red (2026-11-01, P3/#130).**
 Road lane (5c9915cdf; c91bdd0bc `heap-ride.mjs HEAP_SHOT=<png>`). Other-city
 binaries: way hash identical between binary and `?roads=json` on the

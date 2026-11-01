@@ -72,6 +72,9 @@ const SPOTS: Spot[] = [
   { name: 'transvaal1926-theronstraat-25-31', centre: [4.9158006, 52.352054], standDeg: 283, standM: 8, view: 'cockpit' },
   { name: 'transvaal1926-theronstraat-20-26', centre: [4.9154452, 52.3521013], standDeg: 103, standM: 8, view: 'cockpit' },
   { name: 'transvaal1926-steynstraat-9-15', centre: [4.9161591, 52.3510951], standDeg: 299, standM: 7, view: 'cockpit' },
+  // Landmark lanes 2026-11-01: Huis met de Hoofden from the far Keizersgracht quay, the Lensbomen on the Binnengasthuis square.
+  { name: 'huis-met-de-hoofden', centre: [4.8858, 52.3773], standDeg: 120, standM: 30, faceDeg: 300, view: 'cockpit' },
+  { name: 'lensbomen', centre: [4.8944688, 52.3686724], standDeg: 20, standM: 16, faceDeg: 200, view: 'cockpit' },
   // Museumkwartier A (#159): the first Cornelis Schuytbuurt gable-balcony row, seen from mid-street.
   { name: 'museum-a-breestraat-123-129', centre: [4.8724874, 52.3557232], standDeg: 337, standM: 9, view: 'cockpit' },
   { name: 'museum-a-breestraat-123-129-chase', centre: [4.8724874, 52.3557232], standDeg: 337, standM: 30 },
