@@ -172,11 +172,13 @@ export class BuildingTileCache {
   entries(): ReadonlyMap<string, BuildingFeature[]> { return this.tiles; }
 
   /** Every resident feature. Concatenated once per change, not per call: the
-   *  camera-clearance check asks for it every 8 m of travel. */
+   *  camera-clearance check asks for it every 8 m of travel. The tiles go in key order, not arrival order: the
+   *  facades group, build and draw buildings in this order (and take party-wall context from it), so the same
+   *  resident tiles draw the same picture on every load (#129: default vs default differed by 1.5-4 K speckled px). */
   collection(): { type: 'FeatureCollection'; features: BuildingFeature[] } {
     if (!this.list) {
       const features: BuildingFeature[] = [];
-      for (const tile of this.tiles.values()) features.push(...tile);
+      for (const key of [...this.tiles.keys()].sort()) features.push(...this.tiles.get(key)!);
       this.list = features;
     }
     return { type: 'FeatureCollection', features: this.list };
