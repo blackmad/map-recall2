@@ -32,12 +32,26 @@ test('the 3D layer draws again after the WebGL context is lost and restored', as
       groundCells: ground ? Object.keys(ground.cells).length : 0,
       // Resident cells cover the rider, so the basemap's ground under them is hidden (gameGround coversRider).
       groundDrawn: !!ground?.visible && !!ground?.basemapHidden,
+      // Placed landmark models; those whose vertex arrays were freed after upload are dropped and loaded again.
+      landmarks: vm._signatureLandmarks?._entries?.length ?? 0,
+      // Placed models whose vertex arrays were already freed when the context was lost: they cannot be uploaded again.
+      staleReleased: (vm._signatureLandmarks?._entries || []).filter((e: any) => (window as any).__releasedAtLoss?.has(e.group)).length,
     };
   });
   await expect.poll(async () => (await state()).groundCells, { timeout: 60_000 }).toBeGreaterThan(0);
   const before = await state();
   expect(before.renderer).toBe(true);
 
+  // Models drawn from freed vertex arrays (landmarks/releaseVertexData.ts; an empty array behind a non-empty count).
+  const releasedBefore = await page.evaluate(() => {
+    const released = new Set((((window as any).canalRecallGame.vectorMap._signatureLandmarks?._entries || []) as any[]).filter(e => {
+      let freed = false;
+      e.group.traverse((o: any) => { for (const a of Object.values(o.geometry?.attributes || {}) as any[]) if (a.count > 0 && a.array?.length === 0) freed = true; });
+      return freed;
+    }).map(e => e.group));
+    (window as any).__releasedAtLoss = released;
+    return released.size;
+  });
   await page.evaluate(() => {
     const gl = ((vm: any) => { const c = vm.frameCanvas?.() ?? vm.frameCanvas(); return c.getContext('webgl2') || c.getContext('webgl'); })((window as any).canalRecallGame.vectorMap);
     (window as any).__loseContext = gl.getExtension('WEBGL_lose_context');
@@ -57,6 +71,9 @@ test('the 3D layer draws again after the WebGL context is lost and restored', as
   const drawnMs = Date.now() - restoredAt;
   // Ground cells come back from the worker on phones (their arrays were freed), immediately on desktop.
   await expect.poll(async () => { const s = await state(); return s.groundCells > 0 && s.groundDrawn; }, { timeout: 30_000 }).toBe(true);
+  // Landmarks whose vertex arrays were freed after upload (landmarks/releaseVertexData.ts) come back from a reload.
+  await expect.poll(async () => (await state()).landmarks, { timeout: 30_000 }).toBeGreaterThanOrEqual(before.landmarks);
+  expect((await state()).staleReleased, 'no model drawn from freed vertex arrays after the restore').toBe(0);
   const after = await state();
   expect(after.context).toEqual({ lost: 1, restored: 1 });
   expect(styleless).toEqual([]);
@@ -65,7 +82,7 @@ test('the 3D layer draws again after the WebGL context is lost and restored', as
     const vm = (window as any).canalRecallGame.vectorMap;
     return [vm._suppressionStale, vm._detailedLayersStale, vm._modelShownStale].some(Boolean);
   }), { timeout: 10_000 }).toBe(false);
-  console.log(JSON.stringify({ project: test.info().project.name, drawnMs, groundCells: after.groundCells }));
+  console.log(JSON.stringify({ project: test.info().project.name, drawnMs, groundCells: after.groundCells, landmarks: [before.landmarks, after.landmarks], releasedBefore }));
 });
 
 // #109 (#106 follow-up 3): MapLibre's restore resizes the map, and `resize()` fires `moveend`. The building streamer
