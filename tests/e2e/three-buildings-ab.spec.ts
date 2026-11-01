@@ -84,7 +84,7 @@ for (const variant of VARIANTS) {
         }, ratio);
         const decode = (url: string) => Buffer.from(url.split(',')[1], 'base64');
         const one = decode(await grab(1)), three = decode(await grab(3));
-        await page.evaluate(() => (window as any).canalRecallGame.vectorMap.map.setPixelRatio(1));
+        await page.evaluate(() => ((window as any).canalRecallGame.vectorMap.map ?? (window as any).canalRecallGame.vectorMap.cameraMap).setPixelRatio(1));
         const meta = await sharp(one).metadata(), w = meta.width!, h = meta.height!;
         const region = { left: Math.round(w * 0.25), top: Math.round(h * 0.28), width: Math.round(w * 0.5), height: Math.round(h * 0.42) };
         const a = await sharp(one).extract(region).greyscale().raw().toBuffer();
