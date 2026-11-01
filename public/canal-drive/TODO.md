@@ -1383,11 +1383,15 @@ Root `main` was cleaned on 2026-10-09 (see HISTORY). Live work, in order:
   Re-summarised, car route 60 s: total pop MapLibre 1,480 vs own 1,846 px/s,
   unexplained 563 vs 1,263 (the slower tail of the same turn, parallax not
   pop), landmark-model 592 vs 452, trees 4 vs 131, ground cells / building
-  chunks 0 / 0 in both. Open: the within-150 m install count with
-  per-install cell geometry (the P3 pop-in gate), `buildShadowStandIn` and
-  `splitIntoTiles` to the worker pool with the Jordaan 1×/4× re-measure, P5
-  B6 (B3 satisfied under own, B4 applied); a fresh L1 session picks these up
-  (the previous one ran out of context after hand-back (10)).
+  chunks 0 / 0 in both. Hand-back (11): the P3 pop-in gate is met (0
+  installs within 150 m under both engines, nearest chunk 154 m, thin);
+  `buildShadowStandIn` and own-ground `splitIntoTiles` are off the main
+  thread; ARTIS is off the camera shim (B6 started). Streaming gate still
+  open: facade `cutMesh` tiles (444 ms at 4×, needs worker-cut tiles + a
+  height patch after the lift, L1), `setFeatures` 606 / `_applyChunkPandBases`
+  374 / `post` 219 ms at 4× (materials), one 1× frame a minute over 50 ms
+  unnamed. L1 next: facade tiles in the worker, signature-landmarks and
+  building-tiles off the shim.
   Idle rendering (fan) is fixed under own: render-on-change on main, 0
   renders per 5 s at rest; the default engine still renders every idle frame
   until the flip.

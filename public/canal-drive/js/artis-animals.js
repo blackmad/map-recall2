@@ -4,6 +4,10 @@
   class ArtisAnimals {
     constructor(map, maplibregl, extractRoot, options = {}) {
       this.map = map;
+      // The view comes from the WorldCamera (engine/worldCameraOf.ts, P5 B6), not the MapLibre-shaped map.
+      const engine = window.CanalRecallEngine;
+      this.camera = options.camera || engine.worldCameraOf(map);
+      this.contains = (anchor) => engine.boundsContain(this.camera.bounds(), anchor);
       this.maplibregl = maplibregl;
       this.active = extractRoot.endsWith('/amsterdam');
       this.root = new URL('models/artis-animals/', location.href);
@@ -23,25 +27,25 @@
         mercatorFromLocal: () => this.transform.elements,
         beforeRender: () => this.nearby() && this.entries.some(e=>e.group.visible),
       }, {order: options.sharedOrder ?? 10});
-      map.on('moveend',this.move); this.update();
+      this._offMove = engine.onViewChange(this.camera, this.move); this.update();
     }
     /** Leave the frame and free its geometry, materials and textures (what the legacy layer's onRemove did). */
     remove() {
       this._unregister?.(); this._unregister = null;
-      this.removed = true; this.map.off('moveend',this.move);
+      this.removed = true; this._offMove?.(); this._offMove = null;
       const geometries = new Set(), materials = new Set(), textures = new Set();
       this.scene.traverse(o=>{if(o.geometry)geometries.add(o.geometry);for(const m of o.material ? (Array.isArray(o.material)?o.material:[o.material]) : []){materials.add(m);for(const v of Object.values(m))if(v?.isTexture)textures.add(v);}});
       for(const x of [...geometries,...materials,...textures])x.dispose();
     }
     setExtractRoot(root) {this.active=root.endsWith('/amsterdam');this.update();}
     nearby() {
-      if (!this.active || this.removed || this.map.getZoom()<16) return false;
-      const b=this.map.getBounds();
-      return b.getWest()<4.920 && b.getEast()>4.910 && b.getSouth()<52.369 && b.getNorth()>52.362;
+      if (!this.active || this.removed || this.camera.zoom()<16) return false;
+      const b=this.camera.bounds();
+      return !!b && b.west<4.920 && b.east>4.910 && b.south<52.369 && b.north>52.362;
     }
     async update() {
       const nearby=this.nearby();
-      for(const e of this.entries)e.group.visible=nearby && this.map.getBounds().contains(e.spec.anchor);
+      for(const e of this.entries)e.group.visible=nearby && this.contains(e.spec.anchor);
       if(!nearby)return;
       if(!this.index) {
         if(this.indexPending || Date.now()<(this.indexRetryAt||0))return;
@@ -54,9 +58,8 @@
         finally {this.indexPending=false;}
         if(!this.index || !this.nearby())return;
       }
-      const bounds=this.map.getBounds();
       for(const spec of this.index.animals) {
-        if(!bounds.contains(spec.anchor) || this.entries.some(e=>e.spec.id===spec.id) || this.pending.has(spec.id) || Date.now()<(this.failures.get(spec.id)||0))continue;
+        if(!this.contains(spec.anchor) || this.entries.some(e=>e.spec.id===spec.id) || this.pending.has(spec.id) || Date.now()<(this.failures.get(spec.id)||0))continue;
         const url=new URL(spec.file,this.root);url.searchParams.set('asset',spec.version);
         const promise=this.loader.loadAsync(url.href).then(gltf=>{
           if(this.removed){gltf.scene.traverse(o=>{o.geometry?.dispose();for(const m of o.material?(Array.isArray(o.material)?o.material:[o.material]):[]) {for(const v of Object.values(m))if(v?.isTexture)v.dispose();m.dispose();}});return;}
@@ -67,7 +70,7 @@
           const group=new THREE.Group();group.add(model);group.rotation.y=spec.headingDegrees*Math.PI/180;
           const coord=this.maplibregl.MercatorCoordinate.fromLngLat(spec.anchor,0);
           group.position.set((coord.x-this.origin.x)/this.unit+spec.offsetMetres[0],0,(coord.y-this.origin.y)/this.unit+spec.offsetMetres[1]);
-          group.visible=this.nearby() && this.map.getBounds().contains(spec.anchor);
+          group.visible=this.nearby() && this.contains(spec.anchor);
           if(this.sharedFrame)this.sharedFrame.constructor.setShadows(group,true,true);
           this.scene.add(group);this.entries.push({spec,group});this.failures.delete(spec.id);this.map.triggerRepaint();
         }).catch(e=>{this.failures.set(spec.id,Date.now()+30000);console.warn(`ARTIS ${spec.name} unavailable`,e);})
