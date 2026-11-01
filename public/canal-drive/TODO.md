@@ -1383,11 +1383,15 @@ Root `main` was cleaned on 2026-10-09 (see HISTORY). Live work, in order:
   Re-summarised, car route 60 s: total pop MapLibre 1,480 vs own 1,846 px/s,
   unexplained 563 vs 1,263 (the slower tail of the same turn, parallax not
   pop), landmark-model 592 vs 452, trees 4 vs 131, ground cells / building
-  chunks 0 / 0 in both. Open: the within-150 m install count with
-  per-install cell geometry (the P3 pop-in gate), `buildShadowStandIn` and
-  `splitIntoTiles` to the worker pool with the Jordaan 1×/4× re-measure, P5
-  B6 (B3 satisfied under own, B4 applied); a fresh L1 session picks these up
-  (the previous one ran out of context after hand-back (10)).
+  chunks 0 / 0 in both. Hand-back (11): the P3 pop-in gate is met (0
+  installs within 150 m under both engines, nearest chunk 154 m, thin);
+  `buildShadowStandIn` and own-ground `splitIntoTiles` are off the main
+  thread; ARTIS is off the camera shim (B6 started). Streaming gate still
+  open: facade `cutMesh` tiles (444 ms at 4×, needs worker-cut tiles + a
+  height patch after the lift, L1), `setFeatures` 606 / `_applyChunkPandBases`
+  374 / `post` 219 ms at 4× (materials), one 1× frame a minute over 50 ms
+  unnamed. L1 next: facade tiles in the worker, signature-landmarks and
+  building-tiles off the shim.
   Idle rendering (fan) is fixed under own: render-on-change on main, 0
   renders per 5 s at rest; the default engine still renders every idle frame
   until the flip.
@@ -1417,11 +1421,13 @@ Root `main` was cleaned on 2026-10-09 (see HISTORY). Live work, in order:
   occlusion"). Round 2 on main (HISTORY "Label occlusion round 2"): 16 → 1
   at the user's pose, Dam 27 → 0, Westerkerk 14 → 0–1; street/water names
   occluded too; `street-label-occlusion.spec` passes under both engines.
-  Left: Cafe Kompleet at a row-house corner the frontage walk misses; names
-  ever drawn through a building while riding 6 s from the Westerkerk still
-  14 → 7 (between-pass re-tests cover 4 POIs per frame, not street names);
-  the occlusion step's own per-frame cost is not isolated against the ≤ 0.3
-  ms budget. The user looks at this next on the deployed `?engine=own`.
+  Round 3 (HISTORY "Label occlusion round 3"): street names re-tested per
+  copy while riding, budget 8 sightlines a frame (100–137 µs). Left: Cafe
+  Kompleet, a roof-height case (saltbox 17 m in front hit at 7.9 m on screen
+  while the sightline clears the walk's top): test at the glyph top or use
+  the ridge for occluders within ≈ 25 m (materials, after the facades
+  package); riding POI samples through buildings ECH 25/22, Westerkerk 62,
+  Dam 4 per 6 s. The user looks at this next on the deployed `?engine=own`.
 - **Extract refresh drift (found 2026-10-31, #147).** `scripts/
   refresh-amsterdam-extract.sh` from the same archived PBF no longer
   reproduces the committed extract: streets-routing 47,259 → 45,620 ways

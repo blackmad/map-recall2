@@ -1,5 +1,55 @@
 # Canal Recall — what is built
 
+**Label occlusion round 3: street names re-tested per copy while riding, between-pass budget 4 → 8; Cafe Kompleet is a roof-height case, not a corner (2026-11-01, #129).**
+Materials lane. The between-pass budget is 8 sightlines a frame (a POI costs
+1, a street or water name 1 per anchor; `stats.betweenMs`,
+`stats.betweenSightlines`, A/B knobs `between.{budget,lines}`), and street
+and water names join the per-frame round-robin. The new riding test found
+that a long name placed several times under one id had only its first copy
+tested (Overtoom stayed drawn behind a building for 2 s); each copy is now
+tested on its own with its own hysteresis key and dropped alone. Moving
+counts over a 6 s ride per pose, run twice, main → this: POI
+through-building samples ECH 34/30 → 25/22, Westerkerk 79/81 → 62/62, Dam
+4/6 → 4/4; line labels drawn while hidden, summed over the three poses, 7 and
+11 → 1 and 2; per-frame cost 82–104 → 100–137 µs. `label-occlusion.spec`
+gains a riding assertion (no copy still drawn 250 ms after a building hid
+it, cost < 500 µs; fails on main's old bundle). Under render-on-change,
+flipping `labelOcclusionOn` never redrew the labels (the spec saw on == off);
+the switch now asks for a frame. Cafe Kompleet is not fixed: trying the
+camera-facing frontage first leaves it in place and adds Rue D'Alger and
+others, so it was reverted; the debug pick shows the roof-height model is the
+cause (the saltbox 17 m in front is hit at 7.9 m on screen while the
+sightline clears the walk's top for that roof shape); next candidate is the
+glyph top, or the ridge for occluders within ≈ 25 m, after the facades
+package.
+
+**P3 pop-in gate met under both engines; ground tiles cut and shadow stand-ins welded off the main thread; ARTIS off the camera shim (2026-11-01, #129).**
+L1 hand-back (11). `pop-in.mjs` now counts own-ground cell and facade chunk
+arrivals within 150 m of the rider: car route, 60 s, real GPU, DPR 2: 0 under
+MapLibre and 0 under `?engine=own`, with a thin margin (nearest facade chunk
+154.3 / 154.6 m; ground cells ≥ 1,189 m, LOD swaps ≥ 257 m, landmark models ≥
+539 m); the coarse shell under the rider is replaced in place 2–4 times a
+minute at 0 px charged. Own-ground `splitIntoTiles` runs in the ground worker
+(`ownGround/cellTiles.ts`, `groundWorker.ts`, `gameGround.ts`,
+`rendererShared/tiledGeometry.ts`) and `buildShadowStandIn` welds in the
+worker pool (`rendererShared/shadowStandIns.ts`, `threeBuildingsWorker.ts`,
+`signature-landmarks-source.js`; `existingWorkerPool` in `engine/workerPool.ts`
+never starts a pool of its own), both byte-identical with the old
+implementation kept as the test reference. Their time in frames over 16 ms:
+`buildShadowStandIn` 13 → 0 ms at 1× and 795 → 0 at 4×, `splitIntoTiles` 43 →
+0 and 387 → 0. Jordaan 1×: longest frame 74.8 → 58 ms, one frame a minute
+over 50 ms, p99 10.3; 4×: 34 → 36 long tasks, longest task 117 → 104 ms, p99
+65.4 → 59.2 (quieter machine for the after runs). P3 streaming gate still
+open: facade chunks also `splitIntoTiles` in three-buildings `cutMesh` (9 ms
+at 1×, 444 at 4×) and cannot move as is because the ground lift changes
+heights after the worker build (next: worker-cut tiles + a height patch);
+materials lane's `setFeatures` 606 ms, `_applyChunkPandBases` 374,
+`post` 219 at 4×. P5 B6: `engine/worldCameraOf.ts` gives a participant a
+`WorldCamera` under both engines (`onViewChange` stands in for `moveend` and
+fires only when the view moved); ARTIS (`artis-animals.js`, served unbundled)
+makes 0 shim calls (222.6/s before); `scripts/camera-shim-calls.mjs` counts
+per bundle; next by rate: signature-landmarks 416–871/s, building-tiles.
+
 **Phone heap cuts: packed road and snap indexes, interned tile strings, packed overview streets; iPhone 336 → 305 MB, desktop 467 → 436 (2026-11-01, #130).**
 Road lane, forced-GC reachable MB at start / end of a 60 s ride: desktop
 466.8 / 454.3 → 436.2 / 423.6, iPhone 335.9 / 336.6 → 305.3 / 305.9. Owners:

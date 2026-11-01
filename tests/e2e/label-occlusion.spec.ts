@@ -98,3 +98,57 @@ test('a POI label behind a nearer building is not drawn; the street-frontage lab
   const stats = await page.evaluate(() => ({ ...(window as any).canalRecallGame.vectorMap._labels.stats }));
   expect(stats.occluded, 'occlusion hid something at the last full placement').toBeGreaterThan(0);
 });
+
+test('riding: between full placements no street or water name stays drawn behind a building, at a bounded cost', async ({ page }) => {
+  test.setTimeout(240_000);
+  await page.setViewportSize({ width: 1800, height: 1100 });
+  await openRoute(page, { query: '?engine=own', viewMode: 'chase' });
+  await teleport(page, STAND);
+  await page.waitForTimeout(2500);
+  await teleport(page, STAND);
+  await expect.poll(() => page.evaluate(() => (window as any).canalRecallGame.vectorMap.pendingWork().length), { timeout: 120_000, intervals: [500] }).toBe(0);
+  // A player who has learned every street and canal name, with the street-labels toggle (D) on: they may all be named.
+  await page.evaluate(() => {
+    const g = (window as any).canalRecallGame, d = g.vectorMap._labels.data;
+    if (!(g._mapLabelNames instanceof Set)) g._mapLabelNames = new Set();
+    for (const s of [...d.streets, ...d.waterLines]) if (s.name) g._mapLabelNames.add(s.name);
+    g.vectorMap.setLabelsVisible(true);
+  });
+  await page.waitForTimeout(2000);
+  // Ride north up the street for 5 s; every 250 ms, ask the occlusion test about every drawn street and water name.
+  const s0 = await page.evaluate(() => { const L = (window as any).canalRecallGame.vectorMap._labels; return { ...L.stats }; });
+  await page.evaluate(() => { const p = (window as any).canalRecallGame.player; delete p.handleInput; });
+  await page.keyboard.down('ArrowUp');
+  // A copy that went behind a building is re-tested within one round of the per-frame round-robin (8 sightlines a
+  // frame, ~10-30 drawn names): it may be caught in one sample, never in two in a row (250 ms apart).
+  const stale: string[] = [];
+  let lines = 0, last = new Set<string>();
+  for (let i = 0; i < 20; i++) {
+    await page.waitForTimeout(250);
+    const r = await page.evaluate((sample) => {
+      const L = (window as any).canalRecallGame.vectorMap._labels, out = { lines: 0, hidden: [] as string[] }, copies = new Map<string, number>();
+      for (const l of L.placed) {
+        const n = copies.get(l.id) ?? 0; copies.set(l.id, n + 1);
+        if ((l.kind !== 'street' && l.kind !== 'water') || !l.anchors?.length || !L.lineTest) continue;
+        out.lines++;
+        // Every drawn copy (a long street repeats), under a fresh probe key each sample: judged from the shown side,
+        // so only a name clearly behind a building (beyond the hysteresis margin) counts, as the layer judges it.
+        if (L.lineTest(`probe${sample}:${l.id}@${n}`, l.anchors)) out.hidden.push(`${l.text} #${n}`);
+      }
+      return out;
+    }, i);
+    lines += r.lines;
+    for (const h of r.hidden) if (last.has(h)) stale.push(h);
+    last = new Set(r.hidden);
+  }
+  await page.keyboard.up('ArrowUp');
+  const s1 = await page.evaluate(() => { const L = (window as any).canalRecallGame.vectorMap._labels; return { ...L.stats }; });
+  const frames = s1.winnersOnly - s0.winnersOnly;
+  const usPerFrame = (s1.betweenMs - s0.betweenMs) * 1000 / Math.max(1, frames);
+  console.log(JSON.stringify({ lines, stale, frames, usPerFrame: +usPerFrame.toFixed(1), sightlinesPerFrame: +((s1.betweenSightlines - s0.betweenSightlines) / Math.max(1, frames)).toFixed(2) }));
+  expect(lines, 'street names are drawn on this ride').toBeGreaterThan(0);
+  expect(frames, 'frames between full placements happened').toBeGreaterThan(20);
+  expect(stale, 'street or water names still drawn 250 ms after a building hid them').toEqual([]);
+  // 8 sightlines a frame at ~20 us each (lab 2026-11-01: 140-200 us on the M4 Pro).
+  expect(usPerFrame, 'between-pass occlusion cost per frame (us)').toBeLessThan(500);
+});
