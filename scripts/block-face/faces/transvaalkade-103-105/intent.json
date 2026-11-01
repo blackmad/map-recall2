@@ -30,6 +30,9 @@
     "measuredPalette": {
      "brick": "#7b6150",
      "evidence": "strip 2020-04-29 span 0-238: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "paletteOverrides": {
+     "brick": "#534337"
     }
    },
    "groundFloor": {
@@ -42,6 +45,18 @@
     "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
    },
    "rhythm": {
+    "bays": "a narrow door axis (a pair of flat doors under a top light) and a wide axis with a canted timber bay through both storeys",
+    "identicalBays": "no: narrow + wide",
+    "windowsPerStorey": "ground: door pair + bay | 1: small square window + bay",
+    "symmetry": "mirrored in pairs: the door pairs meet on every second party wall, the bays on the others",
+    "groundFloor": "door pair at the party wall, the canted bay window",
+    "signage": "none",
+    "roofline": "a thin cream eaves board, a steep red-tile roof face with roof lights",
+    "photoRows": [
+     2,
+     2
+    ],
+    "photoGroundRows": 1,
     "citation": "auto-place: transvaal-1920-three-storey scored 0.77 on storeys 1, wall 1, stucco 1, columns 0; strip 2020-04-29 span 0-238"
    }
   },
@@ -55,7 +70,10 @@
      "brick": "#766251",
      "evidence": "strip 2020-04-29 span 238-520: trim-normalised wall (buildingRecipe/measureFacade.ts)"
     },
-    "mirror": true
+    "mirror": true,
+    "paletteOverrides": {
+     "brick": "#4f4136"
+    }
    },
    "groundFloor": {
     "use": "residential",
@@ -67,6 +85,18 @@
     "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
    },
    "rhythm": {
+    "bays": "a narrow door axis (a pair of flat doors under a top light) and a wide axis with a canted timber bay through both storeys",
+    "identicalBays": "no: narrow + wide",
+    "windowsPerStorey": "ground: door pair + bay | 1: small square window + bay",
+    "symmetry": "mirrored in pairs: the door pairs meet on every second party wall, the bays on the others",
+    "groundFloor": "door pair at the party wall, the canted bay window",
+    "signage": "none",
+    "roofline": "a thin cream eaves board, a steep red-tile roof face with roof lights",
+    "photoRows": [
+     2,
+     2
+    ],
+    "photoGroundRows": 1,
     "citation": "auto-place: transvaal-1920-three-storey scored 1 on storeys 1, wall 1, stucco 1, columns 1; strip 2020-04-29 span 238-520"
    }
   }

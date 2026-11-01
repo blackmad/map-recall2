@@ -1,8 +1,8 @@
 {
  "buurt": "transvaalbuurt-oost",
  "library": "transvaalbuurt",
- "generatedAt": "2026-11-01T08:49:19.435Z",
- "seconds": 584.96,
+ "generatedAt": "2026-11-01T09:05:29.182Z",
+ "seconds": 39.51,
  "totals": {
   "faces": 82,
   "pands": 489,
@@ -815,7 +815,7 @@
      "triangles": 2539
     }
    ],
-   "seconds": 36.16,
+   "seconds": 39.5,
    "byType": {
     "transvaal-1921-five-storey-flat": 5
    },

@@ -26,30 +26,9 @@
    "slug": "kraaipan-133518",
    "address": "Kraaipanstraat 43A",
    "type": {
-    "type": "transvaal-1920-three-storey"
-   },
-   "groundFloor": {
-    "use": "residential",
-    "bag": [
-     "woonfunctie"
-    ],
-    "photoDate": "2017-04-06",
-    "agreement": "bag-only",
-    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
-   },
-   "rhythm": {
-    "citation": "auto-place: transvaal-1920-three-storey scored 1 on storeys 1, wall -, stucco -; strip 2017-04-06 span 240-480"
-   }
-  },
-  {
-   "pandId": "0363100012061600",
-   "slug": "kraaipan-061600",
-   "address": "Kraaipanstraat 45",
-   "type": {
     "type": "transvaal-1920-three-storey",
-    "measuredPalette": {
-     "brick": "#816857",
-     "evidence": "strip 2017-04-06 span 480-724: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    "paletteOverrides": {
+     "brick": "#55533f"
     }
    },
    "groundFloor": {
@@ -62,6 +41,57 @@
     "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
    },
    "rhythm": {
+    "bays": "a narrow door axis (a pair of flat doors under a top light) and a wide axis with a canted timber bay through both storeys",
+    "identicalBays": "no: narrow + wide",
+    "windowsPerStorey": "ground: door pair + bay | 1: small square window + bay",
+    "symmetry": "mirrored in pairs: the door pairs meet on every second party wall, the bays on the others",
+    "groundFloor": "door pair at the party wall, the canted bay window",
+    "signage": "none",
+    "roofline": "a thin cream eaves board, a steep red-tile roof face with roof lights",
+    "photoRows": [
+     2,
+     2
+    ],
+    "photoGroundRows": 1,
+    "citation": "auto-place: transvaal-1920-three-storey scored 1 on storeys 1, wall -, stucco -; strip 2017-04-06 span 240-480"
+   }
+  },
+  {
+   "pandId": "0363100012061600",
+   "slug": "kraaipan-061600",
+   "address": "Kraaipanstraat 45",
+   "type": {
+    "type": "transvaal-1920-three-storey",
+    "measuredPalette": {
+     "brick": "#816857",
+     "evidence": "strip 2017-04-06 span 480-724: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "paletteOverrides": {
+     "brick": "#4c4034"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2017-04-06",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "bays": "a narrow door axis (a pair of flat doors under a top light) and a wide axis with a canted timber bay through both storeys",
+    "identicalBays": "no: narrow + wide",
+    "windowsPerStorey": "ground: door pair + bay | 1: small square window + bay",
+    "symmetry": "mirrored in pairs: the door pairs meet on every second party wall, the bays on the others",
+    "groundFloor": "door pair at the party wall, the canted bay window",
+    "signage": "none",
+    "roofline": "a thin cream eaves board, a steep red-tile roof face with roof lights",
+    "photoRows": [
+     2,
+     2
+    ],
+    "photoGroundRows": 1,
     "citation": "auto-place: transvaal-1920-three-storey scored 1 on storeys 1, wall 1, stucco 1; strip 2017-04-06 span 480-724"
    }
   }

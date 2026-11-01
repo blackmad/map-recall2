@@ -3,7 +3,7 @@
  "street": "De la Reijstraat",
  "library": "transvaalbuurt",
  "stripDate": "2020-04-29",
- "seconds": 5.26,
+ "seconds": 10.35,
  "thresholds": {
   "minScore": 0.7,
   "margin": 0.05,
@@ -24,7 +24,7 @@
     "0363100012123796"
    ],
    "passed": true,
-   "triangles": 5428
+   "triangles": 5420
   }
  ],
  "pands": [

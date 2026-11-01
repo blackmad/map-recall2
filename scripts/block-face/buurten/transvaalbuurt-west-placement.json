@@ -1,8 +1,8 @@
 {
  "buurt": "transvaalbuurt-west",
  "library": "transvaalbuurt",
- "generatedAt": "2026-11-01T08:41:29.359Z",
- "seconds": 32.77,
+ "generatedAt": "2026-11-01T09:15:55.818Z",
+ "seconds": 4.32,
  "totals": {
   "faces": 76,
   "pands": 359,
@@ -335,7 +335,7 @@
      "triangles": 2129
     }
    ],
-   "seconds": 5.66,
+   "seconds": 5.92,
    "byType": {
     "transvaal-1920-three-storey": 2
    },
@@ -378,7 +378,7 @@
      "triangles": 6391
     }
    ],
-   "seconds": 20.87,
+   "seconds": 22.17,
    "byType": {
     "transvaal-1920-three-storey": 9
    },
@@ -424,7 +424,7 @@
      "triangles": 2128
     }
    ],
-   "seconds": 4.24,
+   "seconds": 4.31,
    "byType": {
     "transvaal-1920-three-storey": 2
    },
@@ -470,7 +470,7 @@
      "triangles": 2185
     }
    ],
-   "seconds": 3.77,
+   "seconds": 5.12,
    "byType": {
     "transvaal-1920-three-storey": 2
    },
@@ -845,10 +845,10 @@
       "0363100012123796"
      ],
      "passed": true,
-     "triangles": 5428
+     "triangles": 5420
     }
    ],
-   "seconds": 5.26,
+   "seconds": 10.35,
    "byType": {
     "transvaal-1920-three-storey": 5
    },
@@ -1115,7 +1115,7 @@
      "triangles": 2118
     }
    ],
-   "seconds": 4.07,
+   "seconds": 6.57,
    "byType": {
     "transvaal-1920-three-storey": 2
    },
