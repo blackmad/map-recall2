@@ -1,0 +1,1744 @@
+{
+ "street": "Nicolaas Maesstraat",
+ "seed": "0363100012155888",
+ "members": [
+  "0363100012155888",
+  "0363100012160657",
+  "0363100012156757",
+  "0363100012167160",
+  "0363100012156834",
+  "0363100012163345",
+  "0363100012157088",
+  "0363100012161951",
+  "0363100012152284",
+  "0363100012158521",
+  "0363100012236344",
+  "0363100012236193",
+  "0363100012236672",
+  "0363100012236620",
+  "0363100012237088",
+  "0363100012237099"
+ ],
+ "ends": [
+  {
+   "side": "left",
+   "reason": "trimmed at 0363100012155888 (face continues: 233691)"
+  },
+  {
+   "side": "right",
+   "reason": "trimmed at 0363100012237099 (face continues: 129521 135196 138937 061243)"
+  }
+ ],
+ "rejected": [
+  {
+   "pandId": "0363100012062764",
+   "reason": "frontage 68.2 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012065856",
+   "reason": "frontage 179.9 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012068221",
+   "reason": "no frontage on Nicolaas Maesstraat: No footprint edge faces Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012075211",
+   "reason": "frontage 31.2 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012078861",
+   "reason": "frontage 68.5 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012069411",
+   "reason": "frontage 173.4 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012070992",
+   "reason": "frontage 78.5 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012072116",
+   "reason": "frontage 214.9 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012074908",
+   "reason": "frontage 212.2 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012076024",
+   "reason": "frontage 108.8 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012078650",
+   "reason": "frontage 172.6 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012080119",
+   "reason": "frontage 109.6 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012061410",
+   "reason": "frontage 129.4 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012063908",
+   "reason": "frontage 70.5 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012065378",
+   "reason": "frontage 95.7 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012066027",
+   "reason": "frontage 33.1 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012068043",
+   "reason": "frontage 32.6 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012068545",
+   "reason": "frontage 42.3 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012068870",
+   "reason": "frontage 159.1 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012070429",
+   "reason": "frontage 69.2 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012070697",
+   "reason": "frontage 37.8 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012071097",
+   "reason": "frontage 168.6 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012071799",
+   "reason": "frontage 141.7 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012073360",
+   "reason": "frontage 159.9 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012073782",
+   "reason": "frontage 40.9 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012074664",
+   "reason": "frontage 39.6 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012075006",
+   "reason": "frontage 159.4 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012075285",
+   "reason": "frontage 32.1 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012076109",
+   "reason": "frontage 131.9 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012076301",
+   "reason": "frontage 135.1 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012076302",
+   "reason": "frontage 140.9 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012077169",
+   "reason": "frontage 42.2 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012077874",
+   "reason": "frontage 93.1 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012078452",
+   "reason": "frontage 134.3 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012078941",
+   "reason": "frontage 71.7 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012079390",
+   "reason": "frontage 71.0 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012079547",
+   "reason": "frontage 32.5 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012080156",
+   "reason": "no frontage on Nicolaas Maesstraat: No footprint edge faces Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012082767",
+   "reason": "frontage 67.2 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012082921",
+   "reason": "frontage 194.5 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012062753",
+   "reason": "no frontage on Nicolaas Maesstraat: No footprint edge faces Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012063157",
+   "reason": "no frontage on Nicolaas Maesstraat: No footprint edge faces Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012072599",
+   "reason": "no frontage on Nicolaas Maesstraat: No footprint edge faces Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012074466",
+   "reason": "no frontage on Nicolaas Maesstraat: No footprint edge faces Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012085825",
+   "reason": "frontage 163.7 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012088998",
+   "reason": "frontage 115.0 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012091903",
+   "reason": "frontage 68.3 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012092773",
+   "reason": "frontage 31.2 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012094362",
+   "reason": "frontage 172.9 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012094867",
+   "reason": "frontage 68.3 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012098227",
+   "reason": "frontage 31.2 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012099544",
+   "reason": "frontage 148.2 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012100965",
+   "reason": "frontage 32.9 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012101742",
+   "reason": "frontage 173.3 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012102526",
+   "reason": "frontage 92.9 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012103528",
+   "reason": "frontage 143.3 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012105172",
+   "reason": "frontage 115.7 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012083440",
+   "reason": "frontage 176.1 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012084411",
+   "reason": "frontage 214.5 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012094824",
+   "reason": "frontage 173.3 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012099460",
+   "reason": "no frontage on Nicolaas Maesstraat: No footprint edge faces Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012100160",
+   "reason": "no frontage on Nicolaas Maesstraat: No footprint edge faces Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012083474",
+   "reason": "frontage 71.6 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012084446",
+   "reason": "frontage 41.1 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012086311",
+   "reason": "frontage 164.9 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012086954",
+   "reason": "frontage 39.4 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012088552",
+   "reason": "frontage 105.5 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012089090",
+   "reason": "frontage 33.3 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012089211",
+   "reason": "frontage 100.4 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012089533",
+   "reason": "frontage 67.2 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012089720",
+   "reason": "frontage 70.2 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012090555",
+   "reason": "frontage 71.9 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012090723",
+   "reason": "frontage 39.5 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012092203",
+   "reason": "no frontage on Nicolaas Maesstraat: No footprint edge faces Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012092581",
+   "reason": "frontage 86.1 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012093632",
+   "reason": "no frontage on Nicolaas Maesstraat: No footprint edge faces Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012096687",
+   "reason": "frontage 67.1 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012097766",
+   "reason": "frontage 95.6 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012099485",
+   "reason": "no frontage on Nicolaas Maesstraat: No footprint edge faces Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012099898",
+   "reason": "frontage 70.0 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012102212",
+   "reason": "frontage 95.2 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012102603",
+   "reason": "frontage 70.7 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012105454",
+   "reason": "frontage 42.1 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012105468",
+   "reason": "frontage 32.5 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012087993",
+   "reason": "sightline to Nicolaas Maesstraat crosses 0363100012109321"
+  },
+  {
+   "pandId": "0363100012100351",
+   "reason": "no frontage on Nicolaas Maesstraat: No footprint edge faces Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012105580",
+   "reason": "frontage 31.2 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012109324",
+   "reason": "frontage 31.2 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012109538",
+   "reason": "frontage 31.1 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012114124",
+   "reason": "frontage 142.6 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012115579",
+   "reason": "frontage 175.6 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012118275",
+   "reason": "frontage 102.9 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012121101",
+   "reason": "frontage 31.1 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012122526",
+   "reason": "frontage 143.0 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012124029",
+   "reason": "frontage 68.3 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012125734",
+   "reason": "sightline to Nicolaas Maesstraat crosses 0363100012063128"
+  },
+  {
+   "pandId": "0363100012108862",
+   "reason": "frontage 109.0 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012111241",
+   "reason": "no frontage on Nicolaas Maesstraat: No footprint edge faces Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012111913",
+   "reason": "frontage 73.1 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012112804",
+   "reason": "frontage 180.9 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012113779",
+   "reason": "frontage 75.5 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012120516",
+   "reason": "no frontage on Nicolaas Maesstraat: No footprint edge faces Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012123673",
+   "reason": "frontage 93.9 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012107472",
+   "reason": "frontage 177.4 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012107749",
+   "reason": "frontage 70.8 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012108114",
+   "reason": "frontage 71.3 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012108582",
+   "reason": "frontage 160.1 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012109125",
+   "reason": "frontage 150.3 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012110320",
+   "reason": "frontage 33.8 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012110579",
+   "reason": "frontage 165.8 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012111893",
+   "reason": "frontage 39.6 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012113371",
+   "reason": "frontage 37.6 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012114665",
+   "reason": "frontage 71.1 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012116072",
+   "reason": "frontage 32.7 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012116424",
+   "reason": "frontage 42.2 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012119354",
+   "reason": "frontage 94.6 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012119530",
+   "reason": "frontage 193.2 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012119761",
+   "reason": "frontage 69.5 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012120761",
+   "reason": "frontage 108.0 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012121676",
+   "reason": "frontage 116.0 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012122255",
+   "reason": "frontage 92.4 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012122829",
+   "reason": "frontage 115.2 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012124673",
+   "reason": "frontage 95.4 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012107822",
+   "reason": "frontage 32.3 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012107845",
+   "reason": "no frontage on Nicolaas Maesstraat: No footprint edge faces Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012110232",
+   "reason": "no frontage on Nicolaas Maesstraat: No footprint edge faces Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012121498",
+   "reason": "no frontage on Nicolaas Maesstraat: No footprint edge faces Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012125850",
+   "reason": "no frontage on Nicolaas Maesstraat: No footprint edge faces Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012128474",
+   "reason": "no frontage on Nicolaas Maesstraat: No footprint edge faces Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012136354",
+   "reason": "frontage 116.4 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012139185",
+   "reason": "frontage 102.8 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012142362",
+   "reason": "frontage 32.7 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012142608",
+   "reason": "frontage 31.2 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012142916",
+   "reason": "frontage 157.3 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012143335",
+   "reason": "frontage 142.3 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012149513",
+   "reason": "frontage 68.2 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012127043",
+   "reason": "frontage 99.5 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012129366",
+   "reason": "frontage 83.2 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012131367",
+   "reason": "frontage 107.8 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012132257",
+   "reason": "frontage 108.6 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012132314",
+   "reason": "frontage 102.4 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012132812",
+   "reason": "no frontage on Nicolaas Maesstraat: No footprint edge faces Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012137088",
+   "reason": "frontage 72.3 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012138332",
+   "reason": "no frontage on Nicolaas Maesstraat: No footprint edge faces Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012138649",
+   "reason": "frontage 213.7 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012138687",
+   "reason": "frontage 174.3 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012142717",
+   "reason": "no frontage on Nicolaas Maesstraat: No footprint edge faces Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012144606",
+   "reason": "frontage 173.6 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012126652",
+   "reason": "frontage 70.3 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012127564",
+   "reason": "frontage 170.3 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012127925",
+   "reason": "frontage 134.8 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012130657",
+   "reason": "frontage 34.0 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012132021",
+   "reason": "frontage 32.9 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012132213",
+   "reason": "no frontage on Nicolaas Maesstraat: No footprint edge faces Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012132447",
+   "reason": "frontage 79.5 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012134185",
+   "reason": "no frontage on Nicolaas Maesstraat: No footprint edge faces Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012136110",
+   "reason": "frontage 170.1 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012136992",
+   "reason": "frontage 69.1 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012138486",
+   "reason": "frontage 69.8 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012138798",
+   "reason": "frontage 71.4 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012139354",
+   "reason": "frontage 42.5 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012141661",
+   "reason": "no frontage on Nicolaas Maesstraat: No footprint edge faces Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012142671",
+   "reason": "frontage 67.1 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012142783",
+   "reason": "frontage 42.1 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012144118",
+   "reason": "frontage 89.2 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012145801",
+   "reason": "frontage 72.1 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012146977",
+   "reason": "frontage 134.1 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012147718",
+   "reason": "frontage 69.4 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012149061",
+   "reason": "frontage 32.9 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012150713",
+   "reason": "frontage 169.3 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012142048",
+   "reason": "no frontage on Nicolaas Maesstraat: No footprint edge faces Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012154818",
+   "reason": "frontage 67.7 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012155921",
+   "reason": "frontage 67.4 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012151883",
+   "reason": "frontage 102.1 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012152369",
+   "reason": "frontage 76.9 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012152528",
+   "reason": "frontage 101.6 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012153603",
+   "reason": "frontage 95.7 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012151501",
+   "reason": "frontage 72.0 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012152421",
+   "reason": "frontage 34.0 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012152723",
+   "reason": "frontage 32.5 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012152797",
+   "reason": "frontage 96.5 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012152818",
+   "reason": "frontage 43.0 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012152819",
+   "reason": "frontage 36.1 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012153148",
+   "reason": "frontage 40.7 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012153370",
+   "reason": "frontage 89.2 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012153563",
+   "reason": "frontage 67.1 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012153747",
+   "reason": "frontage 72.6 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012153904",
+   "reason": "frontage 42.3 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012154211",
+   "reason": "frontage 32.9 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012154327",
+   "reason": "frontage 98.9 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012154402",
+   "reason": "frontage 67.3 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012154443",
+   "reason": "frontage 134.7 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012155183",
+   "reason": "frontage 69.7 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012155320",
+   "reason": "frontage 129.8 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012155335",
+   "reason": "frontage 106.1 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012155395",
+   "reason": "frontage 32.9 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012155476",
+   "reason": "frontage 79.5 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012155755",
+   "reason": "frontage 32.9 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012155779",
+   "reason": "frontage 40.5 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012155939",
+   "reason": "frontage 33.4 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012156478",
+   "reason": "frontage 40.4 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012156622",
+   "reason": "frontage 49.6 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012156759",
+   "reason": "frontage 130.3 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012156833",
+   "reason": "sightline to Nicolaas Maesstraat crosses 0363100012155454"
+  },
+  {
+   "pandId": "0363100012156856",
+   "reason": "frontage 67.2 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012156857",
+   "reason": "frontage 73.3 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012157229",
+   "reason": "frontage 33.7 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012157273",
+   "reason": "frontage 99.3 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012158280",
+   "reason": "frontage 206.3 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012159008",
+   "reason": "frontage 212.4 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012159529",
+   "reason": "frontage 95.6 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012159779",
+   "reason": "no frontage on Nicolaas Maesstraat: No footprint edge faces Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012160565",
+   "reason": "frontage 108.1 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012157286",
+   "reason": "sightline to Nicolaas Maesstraat crosses 0363100012160976"
+  },
+  {
+   "pandId": "0363100012157299",
+   "reason": "frontage 67.2 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012157703",
+   "reason": "frontage 33.0 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012157890",
+   "reason": "frontage 79.6 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012158007",
+   "reason": "frontage 103.9 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012158115",
+   "reason": "no frontage on Nicolaas Maesstraat: No footprint edge faces Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012158182",
+   "reason": "frontage 40.8 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012158207",
+   "reason": "frontage 129.6 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012158419",
+   "reason": "frontage 32.5 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012158538",
+   "reason": "frontage 32.9 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012158591",
+   "reason": "frontage 67.4 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012158844",
+   "reason": "frontage 67.2 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012158932",
+   "reason": "frontage 130.3 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012159001",
+   "reason": "frontage 32.9 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012159034",
+   "reason": "frontage 67.2 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012159254",
+   "reason": "frontage 40.4 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012159520",
+   "reason": "frontage 97.1 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012159652",
+   "reason": "frontage 67.0 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012159717",
+   "reason": "frontage 32.6 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012159835",
+   "reason": "frontage 32.5 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012160067",
+   "reason": "frontage 99.9 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012160362",
+   "reason": "frontage 67.3 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012160498",
+   "reason": "sightline to Nicolaas Maesstraat crosses 0363100012161495"
+  },
+  {
+   "pandId": "0363100012160510",
+   "reason": "frontage 67.2 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012160592",
+   "reason": "frontage 113.0 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012160621",
+   "reason": "frontage 33.5 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012160741",
+   "reason": "frontage 67.3 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012160830",
+   "reason": "frontage 67.3 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012160844",
+   "reason": "frontage 67.1 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012160976",
+   "reason": "sightline to Nicolaas Maesstraat crosses 0363100012233691"
+  },
+  {
+   "pandId": "0363100012161109",
+   "reason": "sightline to Nicolaas Maesstraat crosses 0363100012155454"
+  },
+  {
+   "pandId": "0363100012161125",
+   "reason": "frontage 67.2 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012161406",
+   "reason": "frontage 179.1 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012163041",
+   "reason": "frontage 179.6 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012164462",
+   "reason": "frontage 224.0 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012164703",
+   "reason": "frontage 179.4 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012165388",
+   "reason": "frontage 218.2 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012161880",
+   "reason": "frontage 154.9 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012163704",
+   "reason": "frontage 126.8 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012163789",
+   "reason": "frontage 89.1 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012163880",
+   "reason": "frontage 120.5 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012165798",
+   "reason": "frontage 102.2 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012165960",
+   "reason": "frontage 114.1 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012161263",
+   "reason": "frontage 33.1 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012161495",
+   "reason": "sightline to Nicolaas Maesstraat crosses 0363100012165520"
+  },
+  {
+   "pandId": "0363100012161607",
+   "reason": "frontage 67.2 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012161885",
+   "reason": "frontage 99.1 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012161927",
+   "reason": "frontage 67.0 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012161969",
+   "reason": "sightline to Nicolaas Maesstraat crosses 0363100012163247"
+  },
+  {
+   "pandId": "0363100012161973",
+   "reason": "frontage 98.8 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012162581",
+   "reason": "frontage 67.3 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012163146",
+   "reason": "frontage 67.3 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012163247",
+   "reason": "sightline to Nicolaas Maesstraat crosses 0363100012236564"
+  },
+  {
+   "pandId": "0363100012163472",
+   "reason": "sightline to Nicolaas Maesstraat crosses 0363100012155454"
+  },
+  {
+   "pandId": "0363100012163735",
+   "reason": "frontage 130.0 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012163788",
+   "reason": "frontage 104.5 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012164245",
+   "reason": "frontage 67.4 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012164391",
+   "reason": "frontage 67.3 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012164394",
+   "reason": "frontage 30.4 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012164431",
+   "reason": "frontage 70.9 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012165301",
+   "reason": "frontage 33.1 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012165662",
+   "reason": "frontage 67.3 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012166167",
+   "reason": "frontage 67.3 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012166179",
+   "reason": "sightline to Nicolaas Maesstraat crosses 0363100012163247"
+  },
+  {
+   "pandId": "0363100012166268",
+   "reason": "frontage 91.8 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012166345",
+   "reason": "frontage 104.0 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012166495",
+   "reason": "frontage 31.2 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012166510",
+   "reason": "frontage 32.5 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012166937",
+   "reason": "frontage 97.6 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012194430",
+   "reason": "no frontage on Nicolaas Maesstraat: No footprint edge faces Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012205068",
+   "reason": "no frontage on Nicolaas Maesstraat: No footprint edge faces Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012207314",
+   "reason": "no frontage on Nicolaas Maesstraat: No footprint edge faces Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012233435",
+   "reason": "frontage 165.6 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012233575",
+   "reason": "frontage 108.8 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012233633",
+   "reason": "no frontage on Nicolaas Maesstraat: No footprint edge faces Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012235978",
+   "reason": "frontage 107.0 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012236207",
+   "reason": "frontage 83.8 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012166538",
+   "reason": "frontage 48.2 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012166563",
+   "reason": "frontage 33.6 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012166607",
+   "reason": "frontage 41.0 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012166772",
+   "reason": "frontage 85.6 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012166919",
+   "reason": "frontage 98.9 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012167007",
+   "reason": "sightline to Nicolaas Maesstraat crosses 0363100012157286"
+  },
+  {
+   "pandId": "0363100012167149",
+   "reason": "frontage 133.2 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012167193",
+   "reason": "frontage 32.5 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012167274",
+   "reason": "frontage 132.4 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012187040",
+   "reason": "frontage 30.8 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012190884",
+   "reason": "no frontage on Nicolaas Maesstraat: No footprint edge faces Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012196840",
+   "reason": "sightline to Nicolaas Maesstraat crosses 0363100012160354"
+  },
+  {
+   "pandId": "0363100012200136",
+   "reason": "frontage 134.0 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012203385",
+   "reason": "frontage 158.7 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012211064",
+   "reason": "frontage 100.3 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012211065",
+   "reason": "frontage 99.1 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012211066",
+   "reason": "frontage 92.5 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012211067",
+   "reason": "frontage 92.5 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012213439",
+   "reason": "frontage 88.9 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012217232",
+   "reason": "sightline to Nicolaas Maesstraat crosses 0363100012162777"
+  },
+  {
+   "pandId": "0363100012219147",
+   "reason": "frontage 92.8 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012219640",
+   "reason": "frontage 31.6 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012230919",
+   "reason": "frontage 90.3 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012232413",
+   "reason": "frontage 88.7 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012233447",
+   "reason": "frontage 86.2 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012233624",
+   "reason": "no frontage on Nicolaas Maesstraat: No footprint edge faces Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012233653",
+   "reason": "frontage 106.0 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012233672",
+   "reason": "frontage 89.6 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012236025",
+   "reason": "frontage 67.4 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012236106",
+   "reason": "frontage 33.8 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012236201",
+   "reason": "frontage 67.3 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012236287",
+   "reason": "frontage 67.1 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012236509",
+   "reason": "frontage 67.4 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012217582",
+   "reason": "no frontage on Nicolaas Maesstraat: No footprint edge faces Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012236724",
+   "reason": "frontage 68.2 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012236860",
+   "reason": "frontage 111.3 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012237204",
+   "reason": "frontage 114.6 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012237248",
+   "reason": "frontage 149.5 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012236579",
+   "reason": "frontage 78.6 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012236941",
+   "reason": "no frontage on Nicolaas Maesstraat: No footprint edge faces Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012237136",
+   "reason": "frontage 133.2 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012237149",
+   "reason": "frontage 133.3 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012237262",
+   "reason": "frontage 51.8 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012236746",
+   "reason": "frontage 67.3 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012236781",
+   "reason": "sightline to Nicolaas Maesstraat crosses 0363100012160498"
+  },
+  {
+   "pandId": "0363100012236921",
+   "reason": "frontage 99.2 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012236996",
+   "reason": "frontage 91.3 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012237032",
+   "reason": "frontage 67.4 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012237068",
+   "reason": "frontage 67.2 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012237179",
+   "reason": "frontage 42.7 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012237213",
+   "reason": "frontage 38.2 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012237244",
+   "reason": "frontage 67.3 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012237303",
+   "reason": "frontage 40.8 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012239943",
+   "reason": "frontage 165.8 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012246038",
+   "reason": "frontage 131.0 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012246039",
+   "reason": "frontage 131.2 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012249642",
+   "reason": "sightline to Nicolaas Maesstraat crosses 0363100012235968"
+  },
+  {
+   "pandId": "0363100100092060",
+   "reason": "frontage 176.0 m from Nicolaas Maesstraat"
+  },
+  {
+   "pandId": "0363100012099034",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012084204",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012085631",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012110888",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012109321",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012111932",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012113999",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012114773",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012140135",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012150854",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012152130",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012152362",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012155454",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012156358",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012156419",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012156566",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012157533",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012157775",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012158132",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012158546",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012158828",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012160058",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012160354",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012160611",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012160736",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012161545",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012161636",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012161919",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012162777",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012163118",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012163219",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012163646",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012164318",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012165520",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012166032",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012191238",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012220484",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012235968",
+   "reason": "fronts the other side / another direction"
+  }
+ ],
+ "areaHalfSizeM": 180,
+ "pands": [
+  {
+   "pandId": "0363100012155888",
+   "alongM": 0,
+   "widthM": 5.89,
+   "eavesM": 3.26,
+   "roofMaxM": 3.27,
+   "storeys3dbag": 0,
+   "builtYear": 1901,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012160657",
+   "alongM": 6.15,
+   "widthM": 6.41,
+   "eavesM": 13.57,
+   "roofMaxM": 18.34,
+   "storeys3dbag": 5,
+   "builtYear": 1906,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012156757",
+   "alongM": 12.78,
+   "widthM": 6.85,
+   "eavesM": 13.53,
+   "roofMaxM": 20.91,
+   "storeys3dbag": 5,
+   "builtYear": 1906,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012167160",
+   "alongM": 19.59,
+   "widthM": 6.76,
+   "eavesM": 13.58,
+   "roofMaxM": 17.84,
+   "storeys3dbag": 4,
+   "builtYear": 1906,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012156834",
+   "alongM": 25.25,
+   "widthM": 4.57,
+   "eavesM": 14.96,
+   "roofMaxM": 15.91,
+   "storeys3dbag": 4,
+   "builtYear": 1905,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012163345",
+   "alongM": 32.18,
+   "widthM": 6.69,
+   "eavesM": 14.86,
+   "roofMaxM": 16.73,
+   "storeys3dbag": 4,
+   "builtYear": 1905,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012157088",
+   "alongM": 38.76,
+   "widthM": 6.48,
+   "eavesM": 12.42,
+   "roofMaxM": 18.39,
+   "storeys3dbag": 4,
+   "builtYear": 1905,
+   "uncertainty": [
+    "Frontage extended across a native jog of up to 1 m (possible partial front at the default 0.35 m).",
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  },
+  {
+   "pandId": "0363100012161951",
+   "alongM": 45.12,
+   "widthM": 6.27,
+   "eavesM": 12.03,
+   "roofMaxM": 18.68,
+   "storeys3dbag": 4,
+   "builtYear": 1905,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012152284",
+   "alongM": 51.42,
+   "widthM": 6.34,
+   "eavesM": 15.36,
+   "roofMaxM": 16.87,
+   "storeys3dbag": 4,
+   "builtYear": 1905,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012158521",
+   "alongM": 57.89,
+   "widthM": 6.59,
+   "eavesM": 14.96,
+   "roofMaxM": 15.96,
+   "storeys3dbag": 4,
+   "builtYear": 1905,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012236344",
+   "alongM": 64.44,
+   "widthM": 6.51,
+   "eavesM": 15.32,
+   "roofMaxM": 17.86,
+   "storeys3dbag": 4,
+   "builtYear": 1904,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012236193",
+   "alongM": 70.86,
+   "widthM": 6.34,
+   "eavesM": 17.29,
+   "roofMaxM": 18.28,
+   "storeys3dbag": 5,
+   "builtYear": 1904,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012236672",
+   "alongM": 77.28,
+   "widthM": 6.49,
+   "eavesM": 15.2,
+   "roofMaxM": 15.22,
+   "storeys3dbag": 4,
+   "builtYear": 1904,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012236620",
+   "alongM": 83.73,
+   "widthM": 6.42,
+   "eavesM": 15.35,
+   "roofMaxM": 16.29,
+   "storeys3dbag": 4,
+   "builtYear": 1904,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012237088",
+   "alongM": 90.02,
+   "widthM": 6.16,
+   "eavesM": 15.24,
+   "roofMaxM": 15.29,
+   "storeys3dbag": 5,
+   "builtYear": 1904,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012237099",
+   "alongM": 96.3,
+   "widthM": 6.39,
+   "eavesM": 15.31,
+   "roofMaxM": 18.83,
+   "storeys3dbag": 5,
+   "builtYear": 1904,
+   "uncertainty": []
+  }
+ ]
+}

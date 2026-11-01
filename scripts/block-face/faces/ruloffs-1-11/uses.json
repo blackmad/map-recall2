@@ -1,0 +1,66 @@
+{
+ "street": "Bartholomeus Ruloffsstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-01T13:15:11.040Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012093460",
+   "addresses": [
+    "Bartholomeus Ruloffsstraat 1",
+    "Bartholomeus Ruloffsstraat 3"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jacob Obrechtplein 13",
+     "use": "industriefunctie",
+     "areaM2": 565,
+     "bagId": "0363010000578011"
+    }
+   ],
+   "units": 13,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012081607",
+   "addresses": [
+    "Bartholomeus Ruloffsstraat 5"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bartholomeus Ruloffsstraat 5-H",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 1307,
+     "bagId": "0363010012146324"
+    },
+    {
+     "address": "Bartholomeus Ruloffsstraat 5-H",
+     "use": "industriefunctie",
+     "areaM2": 2432,
+     "bagId": "0363010000578018"
+    }
+   ],
+   "units": 6,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012153998",
+   "addresses": [
+    "Bartholomeus Ruloffsstraat 7",
+    "Bartholomeus Ruloffsstraat 9",
+    "Bartholomeus Ruloffsstraat 11"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bartholomeus Ruloffsstraat 7-H",
+     "use": "bijeenkomstfunctie,sportfunctie",
+     "areaM2": 284,
+     "bagId": "0363010000578022"
+    }
+   ],
+   "units": 10,
+   "osm": []
+  }
+ ]
+}

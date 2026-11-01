@@ -1,0 +1,152 @@
+{
+ "street": "Van Baerlestraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-01T14:58:02.738Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012150713",
+   "addresses": [
+    "Van Baerlestraat 172"
+   ],
+   "groundUnits": [],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2895268799,
+     "lngLat": [
+      4.8817202,
+      52.3532876
+     ],
+     "tags": {
+      "check_date": "2024-06-20",
+      "name": "Martyrium",
+      "shop": "books"
+     },
+     "fetchedAt": "2026-11-01T14:58:02.738Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012108582",
+   "addresses": [
+    "Van Baerlestraat 170"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Baerlestraat 170-H",
+     "use": "winkelfunctie",
+     "areaM2": 324,
+     "bagId": "0363010000835019"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012109125",
+   "addresses": [
+    "Van Baerlestraat 168"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Baerlestraat 168-H",
+     "use": "woonfunctie",
+     "areaM2": 227,
+     "bagId": "0363010000835015"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012076302",
+   "addresses": [
+    "Van Baerlestraat 166"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Baerlestraat 166-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 273,
+     "bagId": "0363010000835011"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2816570012,
+     "lngLat": [
+      4.8815484,
+      52.3535221
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "166-H",
+      "addr:postcode": "1071BH",
+      "addr:street": "Van Baerlestraat",
+      "amenity": "restaurant",
+      "check_date": "2024-06-20",
+      "name": "Nieuw Peking",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://www.nieuwpeking-amsterdam.nl/"
+     },
+     "fetchedAt": "2026-11-01T14:58:02.738Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012076301",
+   "addresses": [
+    "Van Baerlestraat 164"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Baerlestraat 164-4",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 42,
+     "bagId": "0363010001002054"
+    },
+    {
+     "address": "Van Baerlestraat 164-H",
+     "use": "kantoorfunctie",
+     "areaM2": 78,
+     "bagId": "0363010012063117"
+    }
+   ],
+   "units": 6,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2816570008,
+     "lngLat": [
+      4.881512,
+      52.3535742
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "164-H",
+      "addr:postcode": "1071BH",
+      "addr:street": "Van Baerlestraat",
+      "name": "Van Baerle Makelaars",
+      "office": "estate_agent",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://www.vanbaerlemakelaars.nl/"
+     },
+     "fetchedAt": "2026-11-01T14:58:02.738Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,253 @@
+{
+ "street": "Frans van Mierisstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-01T13:46:26.836Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012236287",
+   "addresses": [
+    "Frans van Mierisstraat 119",
+    "Frans van Mierisstraat 121A",
+    "Frans van Mierisstraat 121B",
+    "Frans van Mierisstraat 121C",
+    "Frans van Mierisstraat 121D",
+    "Frans van Mierisstraat 121E",
+    "Frans van Mierisstraat 121F",
+    "Frans van Mierisstraat 121G",
+    "Frans van Mierisstraat 121H"
+   ],
+   "groundUnits": [
+    {
+     "address": "Frans van Mierisstraat 119",
+     "use": "kantoorfunctie",
+     "areaM2": 105,
+     "bagId": "0363010000638981"
+    },
+    {
+     "address": "Frans van Mierisstraat 121A",
+     "use": "woonfunctie",
+     "areaM2": 95,
+     "bagId": "0363010000957530"
+    },
+    {
+     "address": "Frans van Mierisstraat 121B",
+     "use": "woonfunctie",
+     "areaM2": 105,
+     "bagId": "0363010000957531"
+    },
+    {
+     "address": "Frans van Mierisstraat 121C",
+     "use": "woonfunctie",
+     "areaM2": 105,
+     "bagId": "0363010000957532"
+    },
+    {
+     "address": "Frans van Mierisstraat 121D",
+     "use": "woonfunctie",
+     "areaM2": 190,
+     "bagId": "0363010000957533"
+    },
+    {
+     "address": "Frans van Mierisstraat 121E",
+     "use": "woonfunctie",
+     "areaM2": 110,
+     "bagId": "0363010000957534"
+    },
+    {
+     "address": "Frans van Mierisstraat 121F",
+     "use": "woonfunctie",
+     "areaM2": 158,
+     "bagId": "0363010000957535"
+    },
+    {
+     "address": "Hondecoeterstraat 16",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 1,
+     "bagId": "0363010000957536"
+    },
+    {
+     "address": "Frans van Mierisstraat 121G",
+     "use": "woonfunctie",
+     "areaM2": 260,
+     "bagId": "0363010001982018"
+    },
+    {
+     "address": "Frans van Mierisstraat 121H",
+     "use": "woonfunctie",
+     "areaM2": 171,
+     "bagId": "0363010003721217"
+    }
+   ],
+   "units": 10,
+   "osm": [
+    {
+     "type": "node",
+     "id": 14141196455,
+     "lngLat": [
+      4.8785907,
+      52.3536491
+     ],
+     "tags": {
+      "amenity": "charging_station",
+      "bicycle": "no",
+      "capacity:motorcar": "2",
+      "operator": "Equans",
+      "operator:wikidata": "Q118687687"
+     },
+     "fetchedAt": "2026-11-01T13:46:26.836Z",
+     "match": "frontage",
+     "distanceM": 5
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012142671",
+   "addresses": [
+    "Frans van Mierisstraat 123"
+   ],
+   "groundUnits": [
+    {
+     "address": "Frans van Mierisstraat 123-H",
+     "use": "woonfunctie",
+     "areaM2": 154,
+     "bagId": "0363010000638987"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012096687",
+   "addresses": [
+    "Frans van Mierisstraat 125"
+   ],
+   "groundUnits": [
+    {
+     "address": "Frans van Mierisstraat 125-H",
+     "use": "woonfunctie",
+     "areaM2": 177,
+     "bagId": "0363010000638990"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012089533",
+   "addresses": [
+    "Frans van Mierisstraat 127"
+   ],
+   "groundUnits": [
+    {
+     "address": "Frans van Mierisstraat 127-H",
+     "use": "woonfunctie",
+     "areaM2": 164,
+     "bagId": "0363010000638993"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012237068",
+   "addresses": [
+    "Frans van Mierisstraat 129"
+   ],
+   "groundUnits": [
+    {
+     "address": "Frans van Mierisstraat 129-H",
+     "use": "woonfunctie",
+     "areaM2": 177,
+     "bagId": "0363010000638999"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012237244",
+   "addresses": [
+    "Frans van Mierisstraat 131"
+   ],
+   "groundUnits": [
+    {
+     "address": "Frans van Mierisstraat 131-H",
+     "use": "woonfunctie",
+     "areaM2": 276,
+     "bagId": "0363010000639005"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012236746",
+   "addresses": [
+    "Frans van Mierisstraat 133"
+   ],
+   "groundUnits": [
+    {
+     "address": "Frans van Mierisstraat 133-H",
+     "use": "woonfunctie",
+     "areaM2": 296,
+     "bagId": "0363010000947430"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012120258",
+   "addresses": [
+    "Frans van Mierisstraat 135"
+   ],
+   "groundUnits": [
+    {
+     "address": "Frans van Mierisstraat 135-H",
+     "use": "woonfunctie",
+     "areaM2": 161,
+     "bagId": "0363010000639015"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 14141240849,
+     "lngLat": [
+      4.8776326,
+      52.3534454
+     ],
+     "tags": {
+      "amenity": "charging_station",
+      "bicycle": "no",
+      "capacity:motorcar": "2",
+      "operator": "Equans",
+      "operator:wikidata": "Q118687687"
+     },
+     "fetchedAt": "2026-11-01T13:46:26.836Z",
+     "match": "frontage",
+     "distanceM": 6.3
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012144493",
+   "addresses": [
+    "Frans van Mierisstraat 137"
+   ],
+   "groundUnits": [
+    {
+     "address": "Frans van Mierisstraat 137-H",
+     "use": "woonfunctie",
+     "areaM2": 186,
+     "bagId": "0363010000639021"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  }
+ ]
+}

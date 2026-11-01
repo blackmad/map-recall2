@@ -1,0 +1,237 @@
+{
+ "street": "Jacob Obrechtstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-01T13:58:34.143Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012079935",
+   "addresses": [
+    "Jacob Obrechtstraat 53"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jacob Obrechtstraat 53",
+     "use": "woonfunctie",
+     "areaM2": 263,
+     "bagId": "0363010000679877"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012254672",
+   "addresses": [
+    "Jacob Obrechtstraat 55",
+    "Jacob Obrechtstraat 55A",
+    "Jacob Obrechtstraat 55B",
+    "Jacob Obrechtstraat 55C"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jacob Obrechtstraat 55",
+     "use": "woonfunctie",
+     "areaM2": 430,
+     "bagId": "0363010000679879"
+    },
+    {
+     "address": "Jacob Obrechtstraat 55A",
+     "use": "woonfunctie",
+     "areaM2": 337,
+     "bagId": "0363010012123991"
+    },
+    {
+     "address": "Jacob Obrechtstraat 55B",
+     "use": "woonfunctie",
+     "areaM2": 220,
+     "bagId": "0363010012123992"
+    },
+    {
+     "address": "Jacob Obrechtstraat 55C",
+     "use": "woonfunctie",
+     "areaM2": 197,
+     "bagId": "0363010012123993"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012111363",
+   "addresses": [
+    "Jacob Obrechtstraat 67A",
+    "Jacob Obrechtstraat 67B",
+    "Jacob Obrechtstraat 67C",
+    "Jacob Obrechtstraat 67D",
+    "Jacob Obrechtstraat 67E",
+    "Jacob Obrechtstraat 67F",
+    "Jacob Obrechtstraat 67G",
+    "Jacob Obrechtstraat 67H",
+    "Jacob Obrechtstraat 67K",
+    "Jacob Obrechtstraat 67L",
+    "Jacob Obrechtstraat 67M",
+    "Jacob Obrechtstraat 67N",
+    "Jacob Obrechtstraat 67P",
+    "Jacob Obrechtstraat 67R",
+    "Jacob Obrechtstraat 67S",
+    "Jacob Obrechtstraat 67T"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jacob Obrechtstraat 67A",
+     "use": "woonfunctie",
+     "areaM2": 70,
+     "bagId": "0363010001036237"
+    },
+    {
+     "address": "Jacob Obrechtstraat 67B",
+     "use": "woonfunctie",
+     "areaM2": 70,
+     "bagId": "0363010001036238"
+    },
+    {
+     "address": "Jacob Obrechtstraat 67C",
+     "use": "woonfunctie",
+     "areaM2": 217,
+     "bagId": "0363010001036239"
+    },
+    {
+     "address": "Jacob Obrechtstraat 67D",
+     "use": "woonfunctie",
+     "areaM2": 244,
+     "bagId": "0363010001036240"
+    },
+    {
+     "address": "Jacob Obrechtstraat 67E",
+     "use": "woonfunctie",
+     "areaM2": 206,
+     "bagId": "0363010001036241"
+    },
+    {
+     "address": "Jacob Obrechtstraat 67F",
+     "use": "woonfunctie",
+     "areaM2": 122,
+     "bagId": "0363010001036242"
+    },
+    {
+     "address": "Jacob Obrechtstraat 67G",
+     "use": "woonfunctie",
+     "areaM2": 227,
+     "bagId": "0363010001036243"
+    },
+    {
+     "address": "Jacob Obrechtstraat 67H",
+     "use": "woonfunctie",
+     "areaM2": 206,
+     "bagId": "0363010001036244"
+    },
+    {
+     "address": "Jacob Obrechtstraat 67K",
+     "use": "woonfunctie",
+     "areaM2": 122,
+     "bagId": "0363010001036245"
+    },
+    {
+     "address": "Jacob Obrechtstraat 67L",
+     "use": "woonfunctie",
+     "areaM2": 227,
+     "bagId": "0363010001036246"
+    },
+    {
+     "address": "Jacob Obrechtstraat 67M",
+     "use": "woonfunctie",
+     "areaM2": 206,
+     "bagId": "0363010001036247"
+    },
+    {
+     "address": "Jacob Obrechtstraat 67N",
+     "use": "woonfunctie",
+     "areaM2": 122,
+     "bagId": "0363010001036248"
+    },
+    {
+     "address": "Jacob Obrechtstraat 67P",
+     "use": "woonfunctie",
+     "areaM2": 227,
+     "bagId": "0363010001036249"
+    },
+    {
+     "address": "Jacob Obrechtstraat 67R",
+     "use": "woonfunctie",
+     "areaM2": 280,
+     "bagId": "0363010001036250"
+    },
+    {
+     "address": "Jacob Obrechtstraat 67S",
+     "use": "woonfunctie",
+     "areaM2": 101,
+     "bagId": "0363010001036251"
+    },
+    {
+     "address": "Jacob Obrechtstraat 67T",
+     "use": "woonfunctie",
+     "areaM2": 227,
+     "bagId": "0363010001036252"
+    }
+   ],
+   "units": 16,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012065330",
+   "addresses": [
+    "Jacob Obrechtstraat 69"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jacob Obrechtstraat 69",
+     "use": "logiesfunctie",
+     "areaM2": 594,
+     "bagId": "0363010000701006"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012107142",
+   "addresses": [
+    "Jacob Obrechtstraat 71"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jacob Obrechtstraat 71-H",
+     "use": "woonfunctie",
+     "areaM2": 265,
+     "bagId": "0363010000679917"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012065200",
+   "addresses": [
+    "Jacob Obrechtstraat 73"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jacob Obrechtstraat 73-H",
+     "use": "woonfunctie",
+     "areaM2": 253,
+     "bagId": "0363010000679921"
+    },
+    {
+     "address": "Nicolaas Maesstraat 116",
+     "use": "woonfunctie",
+     "areaM2": 41,
+     "bagId": "0363010001025421"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  }
+ ]
+}

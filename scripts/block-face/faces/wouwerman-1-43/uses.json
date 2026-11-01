@@ -1,0 +1,300 @@
+{
+ "street": "Wouwermanstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-01T15:07:16.010Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012113371",
+   "addresses": [
+    "Wouwermanstraat 1",
+    "Wouwermanstraat 3"
+   ],
+   "groundUnits": [
+    {
+     "address": "Wouwermanstraat 1-H",
+     "use": "kantoorfunctie",
+     "areaM2": 50,
+     "bagId": "0363010011122706"
+    },
+    {
+     "address": "Wouwermanstraat 3-H",
+     "use": "industriefunctie",
+     "areaM2": 136,
+     "bagId": "0363010011122707"
+    },
+    {
+     "address": "Wouwermanstraat 1-H",
+     "use": "industriefunctie,woonfunctie",
+     "areaM2": 214,
+     "bagId": "0363010012121198"
+    }
+   ],
+   "units": 6,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012166607",
+   "addresses": [
+    "Wouwermanstraat 5"
+   ],
+   "groundUnits": [
+    {
+     "address": "Wouwermanstraat 5-H",
+     "use": "woonfunctie",
+     "areaM2": 120,
+     "bagId": "0363010000876747"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012158182",
+   "addresses": [
+    "Wouwermanstraat 7"
+   ],
+   "groundUnits": [
+    {
+     "address": "Wouwermanstraat 7-H",
+     "use": "woonfunctie",
+     "areaM2": 119,
+     "bagId": "0363010000876753"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012153148",
+   "addresses": [
+    "Wouwermanstraat 9"
+   ],
+   "groundUnits": [
+    {
+     "address": "Wouwermanstraat 9-H",
+     "use": "woonfunctie",
+     "areaM2": 146,
+     "bagId": "0363010000995661"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012155779",
+   "addresses": [
+    "Wouwermanstraat 11"
+   ],
+   "groundUnits": [
+    {
+     "address": "Wouwermanstraat 11-H",
+     "use": "woonfunctie",
+     "areaM2": 148,
+     "bagId": "0363010000876764"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012156478",
+   "addresses": [
+    "Wouwermanstraat 13"
+   ],
+   "groundUnits": [
+    {
+     "address": "Wouwermanstraat 13-H",
+     "use": "woonfunctie",
+     "areaM2": 120,
+     "bagId": "0363010000876768"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012159254",
+   "addresses": [
+    "Wouwermanstraat 15"
+   ],
+   "groundUnits": [
+    {
+     "address": "Wouwermanstraat 15-H",
+     "use": "woonfunctie",
+     "areaM2": 167,
+     "bagId": "0363010012590367"
+    },
+    {
+     "address": "Wouwermanstraat 15-H",
+     "use": "woonfunctie",
+     "areaM2": 70,
+     "bagId": "0363010000876772"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012153904",
+   "addresses": [
+    "Wouwermanstraat 17",
+    "Wouwermanstraat 17A",
+    "Wouwermanstraat 17B",
+    "Wouwermanstraat 17C",
+    "Wouwermanstraat 17D"
+   ],
+   "groundUnits": [
+    {
+     "address": "Wouwermanstraat 17-H",
+     "use": "woonfunctie",
+     "areaM2": 161,
+     "bagId": "0363010000876777"
+    },
+    {
+     "address": "Wouwermanstraat 17C",
+     "use": "woonfunctie",
+     "areaM2": 73,
+     "bagId": "0363010012072164"
+    },
+    {
+     "address": "Wouwermanstraat 17D",
+     "use": "woonfunctie",
+     "areaM2": 81,
+     "bagId": "0363010012072165"
+    }
+   ],
+   "units": 8,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012068545",
+   "addresses": [
+    "Wouwermanstraat 19"
+   ],
+   "groundUnits": [
+    {
+     "address": "Wouwermanstraat 19-H",
+     "use": "woonfunctie",
+     "areaM2": 194,
+     "bagId": "0363010000876781"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012077169",
+   "addresses": [
+    "Wouwermanstraat 21"
+   ],
+   "groundUnits": [
+    {
+     "address": "Wouwermanstraat 21-H",
+     "use": "woonfunctie",
+     "areaM2": 130,
+     "bagId": "0363010000876785"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012116424",
+   "addresses": [
+    "Wouwermanstraat 23"
+   ],
+   "groundUnits": [
+    {
+     "address": "Wouwermanstraat 23-H",
+     "use": "woonfunctie",
+     "areaM2": 161,
+     "bagId": "0363010000876789"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012142783",
+   "addresses": [
+    "Wouwermanstraat 25"
+   ],
+   "groundUnits": [
+    {
+     "address": "Wouwermanstraat 25-H",
+     "use": "woonfunctie",
+     "areaM2": 161,
+     "bagId": "0363010000876793"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012105454",
+   "addresses": [
+    "Wouwermanstraat 27"
+   ],
+   "groundUnits": [
+    {
+     "address": "Wouwermanstraat 27-H",
+     "use": "woonfunctie",
+     "areaM2": 186,
+     "bagId": "0363010000876798"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012074664",
+   "addresses": [
+    "Wouwermanstraat 29"
+   ],
+   "groundUnits": [
+    {
+     "address": "Wouwermanstraat 29-H",
+     "use": "woonfunctie",
+     "areaM2": 161,
+     "bagId": "0363010000876802"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012111893",
+   "addresses": [
+    "Wouwermanstraat 31"
+   ],
+   "groundUnits": [
+    {
+     "address": "Wouwermanstraat 31-H",
+     "use": "woonfunctie",
+     "areaM2": 205,
+     "bagId": "0363010000876805"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012090723",
+   "addresses": [
+    "Wouwermanstraat 33"
+   ],
+   "groundUnits": [
+    {
+     "address": "Wouwermanstraat 33-H",
+     "use": "woonfunctie",
+     "areaM2": 243,
+     "bagId": "0363010000876810"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  }
+ ]
+}

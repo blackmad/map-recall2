@@ -1,0 +1,213 @@
+{
+ "street": "Van Baerlestraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-01T14:48:19.726Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012165520",
+   "addresses": [
+    "Van Baerlestraat 134"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Baerlestraat 134-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 210,
+     "bagId": "0363010001163332"
+    }
+   ],
+   "units": 3,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2816569720,
+     "lngLat": [
+      4.8806241,
+      52.3548123
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "134-H",
+      "addr:postcode": "1071BD",
+      "addr:street": "Van Baerlestraat",
+      "amenity": "restaurant",
+      "check_date": "2024-06-20",
+      "cuisine": "indian",
+      "name": "Anjappar",
+      "opening_hours": "Mo-Su 12:00-22:00",
+      "phone": "+31 20 786 0524",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://anjappar.nl/"
+     },
+     "fetchedAt": "2026-11-01T14:48:19.726Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012161495",
+   "addresses": [
+    "Van Baerlestraat 132"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Baerlestraat 132-H",
+     "use": "winkelfunctie",
+     "areaM2": 80,
+     "bagId": "0363010000834970"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012160498",
+   "addresses": [
+    "Van Baerlestraat 130"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Baerlestraat 130-H",
+     "use": "winkelfunctie",
+     "areaM2": 164,
+     "bagId": "0363010000834967"
+    }
+   ],
+   "units": 6,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012236781",
+   "addresses": [
+    "Van Baerlestraat 128"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Baerlestraat 128-H",
+     "use": "bijeenkomstfunctie,woonfunctie",
+     "areaM2": 19,
+     "bagId": "0363010000834965"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2816569496,
+     "lngLat": [
+      4.8805343,
+      52.3549559
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "128-H",
+      "addr:postcode": "1071BD",
+      "addr:street": "Van Baerlestraat",
+      "amenity": "restaurant",
+      "cuisine": "italian",
+      "name": "Pinocchio",
+      "phone": "+31 6 84506018",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://www.pinocchioamsterdam.nl"
+     },
+     "fetchedAt": "2026-11-01T14:48:19.726Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012164394",
+   "addresses": [
+    "Van Baerlestraat 126"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Baerlestraat 126-H",
+     "use": "winkelfunctie",
+     "areaM2": 142,
+     "bagId": "0363010000834963"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012152819",
+   "addresses": [
+    "Van Baerlestraat 124"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Baerlestraat 124-H",
+     "use": "woonfunctie",
+     "areaM2": 140,
+     "bagId": "0363010000834961"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012152818",
+   "addresses": [
+    "Van Baerlestraat 122"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Baerlestraat 122-H",
+     "use": "winkelfunctie",
+     "areaM2": 233,
+     "bagId": "0363010001989362"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012156622",
+   "addresses": [
+    "Van Baerlestraat 120"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Baerlestraat 120-H",
+     "use": "winkelfunctie",
+     "areaM2": 172,
+     "bagId": "0363010000834955"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2816569452,
+     "lngLat": [
+      4.8803669,
+      52.3551716
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "120-H",
+      "addr:postcode": "1071BD",
+      "addr:street": "Van Baerlestraat",
+      "amenity": "restaurant",
+      "name": "The Marlin Bar",
+      "phone": "+31 20 2051334",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://www.themarlinbar.nl"
+     },
+     "fetchedAt": "2026-11-01T14:48:19.726Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}

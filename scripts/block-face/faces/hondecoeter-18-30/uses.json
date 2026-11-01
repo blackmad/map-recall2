@@ -1,0 +1,121 @@
+{
+ "street": "Hondecoeterstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched n/a (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012099485",
+   "addresses": [
+    "Hondecoeterstraat 30"
+   ],
+   "groundUnits": [
+    {
+     "address": "Hondecoeterstraat 30-H",
+     "use": "woonfunctie",
+     "areaM2": 110,
+     "bagId": "0363010000670225"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012134185",
+   "addresses": [
+    "Hondecoeterstraat 28"
+   ],
+   "groundUnits": [
+    {
+     "address": "Hondecoeterstraat 28-H",
+     "use": "woonfunctie",
+     "areaM2": 95,
+     "bagId": "0363010000670221"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012092203",
+   "addresses": [
+    "Hondecoeterstraat 26"
+   ],
+   "groundUnits": [
+    {
+     "address": "Hondecoeterstraat 26-H",
+     "use": "woonfunctie",
+     "areaM2": 87,
+     "bagId": "0363010000670217"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012093632",
+   "addresses": [
+    "Hondecoeterstraat 24"
+   ],
+   "groundUnits": [
+    {
+     "address": "Hondecoeterstraat 24-H",
+     "use": "woonfunctie",
+     "areaM2": 117,
+     "bagId": "0363010000670213"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012160067",
+   "addresses": [
+    "Hondecoeterstraat 22"
+   ],
+   "groundUnits": [
+    {
+     "address": "Hondecoeterstraat 22-H",
+     "use": "woonfunctie",
+     "areaM2": 135,
+     "bagId": "0363010000670209"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012158115",
+   "addresses": [
+    "Hondecoeterstraat 20"
+   ],
+   "groundUnits": [
+    {
+     "address": "Hondecoeterstraat 20-H",
+     "use": "woonfunctie",
+     "areaM2": 119,
+     "bagId": "0363010000670202"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012153370",
+   "addresses": [
+    "Hondecoeterstraat 18"
+   ],
+   "groundUnits": [
+    {
+     "address": "Hondecoeterstraat 18-H",
+     "use": "kantoorfunctie",
+     "areaM2": 83,
+     "bagId": "0363010000670194"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  }
+ ]
+}
