@@ -1,0 +1,662 @@
+{
+ "schemaVersion": 1,
+ "id": "barbizon-palace",
+ "pand": "0363100012165693",
+ "brief": "scripts/landmarks/barbizon-palace-brief.md",
+ "signature": [
+  "rooftop-lettering",
+  "ph72-neck-gable",
+  "entrance-canopy",
+  "logo-disc",
+  "oriel-stacks",
+  "ph66-neck-gable",
+  "ph67-tent-roof"
+ ],
+ "walls": [
+  {
+   "tag": "w01-334",
+   "bearing": 334,
+   "lengthM": 21.5,
+   "centre": [
+    4.9002173,
+    52.3764452
+   ],
+   "evidence": "photo",
+   "panoId": "b_20250114_1026_Track08_Sphere_00134",
+   "capturedAt": "2025-01-14",
+   "checked": true,
+   "items": [
+    {
+     "id": "rooftop-lettering",
+     "kind": "lettering",
+     "where": "NW front, on a frame over the roof parapet, t 30-46 m",
+     "approxSizeM": [
+      16,
+      1.6
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-06-17_08-04-10_03792",
+     "how": "BARBIZON PALACE in pale block letters on a dark rail frame standing on the parapet, 18.4-20.0 m"
+    },
+    {
+     "id": "logo-disc",
+     "kind": "sign",
+     "where": "NW front, on the roof at the east end, t 27.5-29.2 m",
+     "approxSizeM": [
+      1.8,
+      1.8
+     ],
+     "plan": "simplified",
+     "seenIn": "recording_2025-06-17_08-04-10_03792",
+     "how": "red disc with three pale concentric rings and a vertical bar on posts, 18.3-20.2 m"
+    },
+    {
+     "id": "entrance-canopy",
+     "kind": "canopy",
+     "where": "NW front, ground floor t 26-39 m, projecting over the pavement",
+     "approxSizeM": [
+      13,
+      0.8
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-06-17_08-04-10_03792",
+     "how": "dark slate fascia 3.4-4.2 m and soffit on round white columns, projecting 3.2 m"
+    },
+    {
+     "id": "canopy-lettering",
+     "kind": "lettering",
+     "where": "NW front, canopy fascia",
+     "approxSizeM": [
+      11,
+      0.6
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-06-17_08-04-10_03792",
+     "how": "NH COLLECTION in large pale letters and BARBIZON PALACE in smaller ones on the fascia"
+    },
+    {
+     "id": "ground-columns",
+     "kind": "colonnade",
+     "where": "NW front, ground floor",
+     "approxSizeM": [
+      0.45,
+      3.4
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-06-17_08-04-10_03792",
+     "how": "white round columns at 3.4 m centres in front of recessed dark glazing"
+    },
+    {
+     "id": "oriel-stacks",
+     "kind": "window-shape",
+     "where": "NW front, the two stacks t 30.3-33.7 and 34.4-37.8 m, storeys 2-5",
+     "approxSizeM": [
+      3.4,
+      13.5
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-06-17_08-04-10_03792",
+     "how": "projecting brick stacks 0.5 m deep with paired white-framed windows and grey stone sill slabs at every storey"
+    },
+    {
+     "id": "window-pairs",
+     "kind": "window-shape",
+     "where": "NW front, every stack: two windows per storey in white frames",
+     "approxSizeM": [
+      2.6,
+      1.9
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-06-17_08-04-10_03792",
+     "how": "paired windows per storey, 5 storeys over the canopy"
+    },
+    {
+     "id": "stone-bands",
+     "kind": "other",
+     "where": "NW front, grey stone courses at every floor and stone frames round the flush stacks",
+     "approxSizeM": [
+      22,
+      0.2
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-06-17_08-04-10_03792",
+     "how": "grey bands 0.2 m proud at 6.8, 9.6, 12.4, 15.2 m"
+    },
+    {
+     "id": "stack-caps",
+     "kind": "other",
+     "where": "NW front, grey stone boxes capping each stack over the parapet",
+     "approxSizeM": [
+      3.4,
+      1.2
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-06-17_08-04-10_03792",
+     "how": "grey cap blocks over every stack, set at different heights"
+    },
+    {
+     "id": "roof-flags",
+     "kind": "other",
+     "where": "NW front, flag poles on the roof",
+     "approxSizeM": [
+      1.2,
+      0.8
+     ],
+     "plan": "simplified",
+     "seenIn": "recording_2025-06-17_08-04-10_03792",
+     "how": "three poles with a red flag slab each, at t 29.5, 37 and 42 m"
+    },
+    {
+     "id": "east-fascia",
+     "kind": "other",
+     "where": "NW front, ground floor t 39-48 m",
+     "approxSizeM": [
+      9,
+      0.6
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-06-17_08-04-10_03792",
+     "how": "pale stone fascia band 3.4-4.0 m over the recessed glazing"
+    },
+    {
+     "id": "fairy-lights",
+     "kind": "other",
+     "where": "NW front, string lights on the brick piers (winter)",
+     "approxSizeM": [
+      0.1,
+      14
+     ],
+     "plan": "skipped",
+     "seenIn": "b_20250114_1026_Track08_Sphere_00134",
+     "skip": {
+      "reason": "temporary",
+      "note": "festive string lights in the January capture, absent in June 2025"
+     }
+    }
+   ],
+   "note": "The 1988 hotel front on the Prins Hendrikkade (PH 59), t 25.9-48.0 m of the front frame; read on the rectified strip of the 2025-01-14 panoramas b_20250114_1026_Track01_Sphere_00060/61 (40 px/m) and on the 2025-06-17 view recording_2025-06-17_08-04-10_03792."
+  },
+  {
+   "tag": "ph72-336",
+   "bearing": 336,
+   "lengthM": 5.75,
+   "evidence": "photo",
+   "panoId": "b_20250114_1026_Track01_Sphere_00068",
+   "capturedAt": "2025-01-14",
+   "checked": true,
+   "note": "Prins Hendrikkade 72 (pand 0363100012182721, BAG 1712), t 0-5.75 m; rectified strip of the 2025-01-14 panoramas (40 px/m).",
+   "items": [
+    {
+     "id": "ph72-neck-gable",
+     "kind": "other",
+     "where": "PH 72, top storey",
+     "approxSizeM": [
+      5.4,
+      6.5
+     ],
+     "plan": "modelled",
+     "seenIn": "b_20250114_1026_Track01_Sphere_00068",
+     "how": "neck gable (neck-gable.ts kit): shoulder 15.2 m, neck 2.4 m wide to a cornice at 19.4 m, segmental crown to 20.2 m"
+    },
+    {
+     "id": "ph72-claws",
+     "kind": "relief",
+     "where": "PH 72, shoulders of the neck",
+     "approxSizeM": [
+      1.3,
+      2.2
+     ],
+     "plan": "simplified",
+     "seenIn": "b_20250114_1026_Track01_Sphere_00068",
+     "how": "concave claw pieces ending in scrolls (kit claws plus spheres for the scroll knots)"
+    },
+    {
+     "id": "ph72-crown-cartouche",
+     "kind": "relief",
+     "where": "PH 72, crown of the neck under the cornice",
+     "approxSizeM": [
+      1.8,
+      1.6
+     ],
+     "plan": "simplified",
+     "seenIn": "b_20250114_1026_Track01_Sphere_00068",
+     "how": "segmental pediment and a carved cartouche of clustered spheres on the neck, 17.9-20.2 m"
+    },
+    {
+     "id": "ph72-oculi",
+     "kind": "window-shape",
+     "where": "PH 72, shoulder storey left and right of the neck window",
+     "approxSizeM": [
+      0.9,
+      0.9
+     ],
+     "plan": "modelled",
+     "seenIn": "b_20250114_1026_Track01_Sphere_00068",
+     "how": "round oeil-de-boeuf windows with white stone rings at 14.25 m"
+    },
+    {
+     "id": "ph72-gable-stone",
+     "kind": "gable-stone",
+     "where": "PH 72, between the first-floor windows over the middle bay",
+     "approxSizeM": [
+      0.7,
+      0.4
+     ],
+     "plan": "modelled",
+     "seenIn": "b_20250114_1026_Track01_Sphere_00068",
+     "how": "red tablet 7.5-7.9 m"
+    },
+    {
+     "id": "ph72-pui",
+     "kind": "other",
+     "where": "PH 72, ground floor",
+     "approxSizeM": [
+      5.4,
+      3.9
+     ],
+     "plan": "modelled",
+     "seenIn": "b_20250114_1026_Track01_Sphere_00068",
+     "how": "white stone pui: pilasters, a fascia 2.6-3.8 m and dark doors"
+    },
+    {
+     "id": "ph72-lanterns",
+     "kind": "lamp",
+     "where": "PH 72, two wall lanterns on the pui",
+     "approxSizeM": [
+      0.3,
+      0.5
+     ],
+     "plan": "simplified",
+     "seenIn": "b_20250114_1026_Track01_Sphere_00068",
+     "how": "small dark lantern boxes at 2.4 m"
+    },
+    {
+     "id": "ph72-hoist-door",
+     "kind": "other",
+     "where": "PH 72, neck",
+     "approxSizeM": [
+      0.75,
+      1.0
+     ],
+     "plan": "modelled",
+     "seenIn": "b_20250114_1026_Track01_Sphere_00068",
+     "how": "small dark loft door at 15.9-16.9 m"
+    }
+   ]
+  },
+  {
+   "tag": "ph69-336",
+   "bearing": 336,
+   "lengthM": 5.57,
+   "evidence": "photo",
+   "panoId": "b_20250114_1026_Track01_Sphere_00067",
+   "capturedAt": "2025-01-14",
+   "checked": true,
+   "note": "Prins Hendrikkade 69 (pand 0363100012182719, BAG 1825), t 5.75-11.32 m; rectified strip of the 2025-01-14 panoramas (40 px/m).",
+   "items": [
+    {
+     "id": "ph69-cornice",
+     "kind": "other",
+     "where": "PH 69, crown",
+     "approxSizeM": [
+      5.6,
+      1.6
+     ],
+     "plan": "modelled",
+     "seenIn": "b_20250114_1026_Track01_Sphere_00067",
+     "how": "white wooden cornice 13.4-15.0 m: fascia board and a projecting lip"
+    },
+    {
+     "id": "ph69-sash-windows",
+     "kind": "window-shape",
+     "where": "PH 69, four storeys of three white-framed sash windows",
+     "approxSizeM": [
+      1.3,
+      2.3
+     ],
+     "plan": "modelled",
+     "seenIn": "b_20250114_1026_Track01_Sphere_00067",
+     "how": "white frames and bars, diminishing upwards"
+    },
+    {
+     "id": "ph69-pui",
+     "kind": "other",
+     "where": "PH 69, ground floor",
+     "approxSizeM": [
+      5.6,
+      3.0
+     ],
+     "plan": "modelled",
+     "seenIn": "b_20250114_1026_Track01_Sphere_00067",
+     "how": "white pilasters, two doors under grille transoms and two shop windows"
+    },
+    {
+     "id": "ph69-roof-hoist",
+     "kind": "other",
+     "where": "PH 69, behind the cornice",
+     "approxSizeM": [
+      0.6,
+      0.8
+     ],
+     "plan": "skipped",
+     "seenIn": "b_20250114_1026_Track01_Sphere_00067",
+     "skip": {
+      "reason": "too-small",
+      "note": "a small roof hatch/chimney behind the cornice, 0.6 m"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "ph68-337",
+   "bearing": 337,
+   "lengthM": 5.62,
+   "evidence": "photo",
+   "panoId": "b_20250114_1026_Track01_Sphere_00066",
+   "capturedAt": "2025-01-14",
+   "checked": true,
+   "note": "Prins Hendrikkade 68 (pand 0363100012182720, BAG 1812), t 11.32-16.94 m; rectified strip of the 2025-01-14 panoramas (40 px/m).",
+   "items": [
+    {
+     "id": "ph68-cornice",
+     "kind": "other",
+     "where": "PH 68, crown",
+     "approxSizeM": [
+      5.6,
+      2.3
+     ],
+     "plan": "modelled",
+     "seenIn": "b_20250114_1026_Track01_Sphere_00066",
+     "how": "white band 13.0-14.2 m under a dentil cornice to 15.3 m"
+    },
+    {
+     "id": "ph68-dark-windows",
+     "kind": "window-shape",
+     "where": "PH 68, three storeys of three windows with dark frames and cross bars",
+     "approxSizeM": [
+      1.3,
+      2.4
+     ],
+     "plan": "modelled",
+     "seenIn": "b_20250114_1026_Track01_Sphere_00066",
+     "how": "dark (near-black) frames and bars"
+    },
+    {
+     "id": "ph68-plaque",
+     "kind": "gable-stone",
+     "where": "PH 68, between the first and second floor over the middle bay",
+     "approxSizeM": [
+      0.6,
+      0.35
+     ],
+     "plan": "modelled",
+     "seenIn": "b_20250114_1026_Track01_Sphere_00066",
+     "how": "pale stone tablet 7.25-7.6 m"
+    },
+    {
+     "id": "ph68-door",
+     "kind": "other",
+     "where": "PH 68, ground floor left",
+     "approxSizeM": [
+      1.4,
+      3.9
+     ],
+     "plan": "modelled",
+     "seenIn": "b_20250114_1026_Track01_Sphere_00066",
+     "how": "white door surround with transom"
+    },
+    {
+     "id": "ph68-chimney",
+     "kind": "other",
+     "where": "PH 68, roof behind the cornice",
+     "approxSizeM": [
+      0.6,
+      0.6
+     ],
+     "plan": "modelled",
+     "seenIn": "b_20250114_1026_Track01_Sphere_00066",
+     "how": "brick chimney stack 15.3-15.9 m"
+    }
+   ]
+  },
+  {
+   "tag": "ph67-334",
+   "bearing": 334,
+   "lengthM": 5.06,
+   "evidence": "photo",
+   "panoId": "b_20250114_1026_Track01_Sphere_00064",
+   "capturedAt": "2025-01-14",
+   "checked": true,
+   "note": "Prins Hendrikkade 67 (pand 0363100012182718, BAG 1800), t 16.94-22.0 m; rectified strip of the 2025-01-14 panoramas (40 px/m).",
+   "items": [
+    {
+     "id": "ph67-tent-roof",
+     "kind": "other",
+     "where": "PH 67, roof",
+     "approxSizeM": [
+      4.0,
+      1.8
+     ],
+     "plan": "modelled",
+     "seenIn": "b_20250114_1026_Track01_Sphere_00064",
+     "how": "hipped (tent) roof rising from the cornice at 13.1 m to 14.9 m, hipped to the street"
+    },
+    {
+     "id": "ph67-cornice",
+     "kind": "other",
+     "where": "PH 67, crown",
+     "approxSizeM": [
+      5.0,
+      1.0
+     ],
+     "plan": "modelled",
+     "seenIn": "b_20250114_1026_Track01_Sphere_00064",
+     "how": "white cornice band 12.0-13.1 m"
+    },
+    {
+     "id": "ph67-pui",
+     "kind": "other",
+     "where": "PH 67, ground floor",
+     "approxSizeM": [
+      5.0,
+      3.1
+     ],
+     "plan": "modelled",
+     "seenIn": "b_20250114_1026_Track01_Sphere_00064",
+     "how": "pale stone pui with three dark openings"
+    }
+   ]
+  },
+  {
+   "tag": "ph66-336",
+   "bearing": 336,
+   "lengthM": 3.95,
+   "evidence": "photo",
+   "panoId": "b_20250114_1026_Track08_Sphere_00136",
+   "capturedAt": "2025-01-14",
+   "checked": true,
+   "note": "Prins Hendrikkade 66 (pand 0363100012171455, BAG 1725), t 22.0-25.94 m; rectified strip of the 2025-01-14 panoramas (40 px/m).",
+   "items": [
+    {
+     "id": "ph66-neck-gable",
+     "kind": "other",
+     "where": "PH 66, top storey",
+     "approxSizeM": [
+      4.0,
+      2.8
+     ],
+     "plan": "modelled",
+     "seenIn": "b_20250114_1026_Track08_Sphere_00136",
+     "how": "neck gable (neck-gable.ts kit): shoulder 13.6 m, neck 1.6 m wide, cornice 15.75 m, segmental crown to 16.4 m"
+    },
+    {
+     "id": "ph66-claws",
+     "kind": "relief",
+     "where": "PH 66, shoulders",
+     "approxSizeM": [
+      0.9,
+      1.6
+     ],
+     "plan": "simplified",
+     "seenIn": "b_20250114_1026_Track08_Sphere_00136",
+     "how": "kit claw pieces with scroll knots"
+    },
+    {
+     "id": "ph66-shopfront",
+     "kind": "other",
+     "where": "PH 66, ground floor",
+     "approxSizeM": [
+      4.0,
+      3.8
+     ],
+     "plan": "modelled",
+     "seenIn": "b_20250114_1026_Track08_Sphere_00136",
+     "how": "glazed shopfront with white posts under a cornice at 3.6-3.9 m"
+    },
+    {
+     "id": "ph66-sign",
+     "kind": "sign",
+     "where": "PH 66, small red projecting sign at 3.3 m",
+     "approxSizeM": [
+      0.4,
+      0.4
+     ],
+     "plan": "skipped",
+     "seenIn": "b_20250114_1026_Track08_Sphere_00136",
+     "skip": {
+      "reason": "too-small",
+      "note": "0.4 m shop sign"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "w02-143",
+   "bearing": 143,
+   "lengthM": 10.8,
+   "centre": [
+    4.9009152,
+    52.3760347
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "items": [],
+   "note": "Rear wall in the block interior (no street access, no panorama within 35 m): 3DBAG LoD2.2 shell only."
+  },
+  {
+   "tag": "w03-235",
+   "bearing": 235,
+   "lengthM": 10.3,
+   "centre": [
+    4.9003391,
+    52.3760939
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002629_pano_0001_000192",
+   "capturedAt": "2022-06-27",
+   "checked": true,
+   "items": [
+    {
+     "id": "zd-french-windows",
+     "kind": "balcony-ironwork",
+     "where": "Zeedijk front, upper storeys",
+     "approxSizeM": [
+      1.2,
+      2.2
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-002031_pano_0000_000295",
+     "how": "red French windows with red bar balconettes on two axes, small white-framed windows between"
+    },
+    {
+     "id": "zd-band",
+     "kind": "other",
+     "where": "Zeedijk front, pale band over the ground floor",
+     "approxSizeM": [
+      10,
+      0.4
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002031_pano_0000_000295",
+     "how": "pale stone band 3.4-3.8 m"
+    },
+    {
+     "id": "zd-doors",
+     "kind": "other",
+     "where": "Zeedijk front, ground floor",
+     "approxSizeM": [
+      1.4,
+      2.8
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002031_pano_0000_000295",
+     "how": "red doors in pale frames and two louvred openings"
+    },
+    {
+     "id": "zd-hanging-signs",
+     "kind": "sign",
+     "where": "Zeedijk front, cafe signs on brackets",
+     "approxSizeM": [
+      0.6,
+      0.8
+     ],
+     "plan": "skipped",
+     "seenIn": "b_20250114_1026_Track08_Sphere_00121",
+     "skip": {
+      "reason": "too-small",
+      "note": "cafe nameboards on brackets, 0.6 m"
+     }
+    }
+   ],
+   "note": "Zeedijk 9-11, the hotel side door front on the Zeedijk (narrow street; perspective views TMX7316010203-002031_pano_0000_000295 2021-03-08 and b_20250114_1026_Track08_Sphere_00121 2025-01-14)."
+  },
+  {
+   "tag": "w04-141",
+   "bearing": 141,
+   "lengthM": 8.6,
+   "centre": [
+    4.9010279,
+    52.3760903
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "items": [],
+   "note": "Rear wall in the block interior (no street access, no panorama within 35 m): 3DBAG LoD2.2 shell only."
+  },
+  {
+   "tag": "w05-140",
+   "bearing": 140,
+   "lengthM": 5.9,
+   "centre": [
+    4.9011156,
+    52.3761349
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "items": [],
+   "note": "Rear wall in the block interior (no street access, no panorama within 35 m): 3DBAG LoD2.2 shell only."
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  }
+ ],
+ "pands": [
+  "0363100012165693",
+  "0363100012171455",
+  "0363100012182718",
+  "0363100012182720",
+  "0363100012182719",
+  "0363100012182721",
+  "0363100012249789"
+ ]
+}

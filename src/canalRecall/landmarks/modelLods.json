@@ -1990,5 +1990,11 @@
   "buildVersion": 2,
   "bytes": 46764,
   "triangles": 2275
+ },
+ "barbizon-palace": {
+  "sourceHash": "64ab583f1cbe374b",
+  "buildVersion": 2,
+  "bytes": 86824,
+  "triangles": 3976
  }
 }
