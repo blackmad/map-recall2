@@ -399,9 +399,24 @@ cell build keeps its own worker. **Step 5 road CSR merged 2026-10-31**
 50 → 8 MB (+7.3 MB typed arrays), routes identical; `roadGraphMB` 15.5 (claimed
 at ride start after forced GC, gate ≤ 30) recorded in budgets 2026-11-01.
 **Other-city road binaries merged 2026-11-01** (`7d1c1b6c5`, HISTORY "Binary
-road extracts for Utrecht, Rotterdam and Den Haag"); the road lane's
-six-phone-tiles change (662e918c6) is HELD for its heap/pop-in numbers and a
-ride-start before/after shot. **Step 5b merged
+road extracts for Utrecht, Rotterdam and Den Haag"; way hashes identical on
+all four cities). **Road lane final hand-back merged 2026-11-01** (`5c9915cdf`,
+HISTORY "Road lane final hand-back"): spawn-pose premise pinned in the specs
+(Eerste Leliedwarsstraat / Bloemgracht T; Reestraat HUD withhold), six-tile
+cut dropped (never binds). **P0 — pop-in (user, 2026-11-01: "I'm not loving the
+pop-in"):** the pop-in gate is RED on the iPhone profile, default engine: 24
+building-chunk arrivals within 150 m at ride start (nearest 34.7 m) + 4
+ground-cell swaps vs zero; heap gate RED too, 300 MB vs 250 (`_canalSharedFrame`
+101 MB, `atGrid.grid` 34, facades CPU arrays 27, `roadIndex.segments` 20,
+landmarks CPU arrays 12). Road lane next: rerun both under `ENGINE=own`, then
+the approved fetch-ring cap (cells under the ride-zoom view + 300 m plus
+look-ahead, not whole z14 tiles; pop-in pin desktop + iPhone, restyle check,
+bytes rerun), then a breakdown of the 101 MB in `_canalSharedFrame` (L1's
+file; fix routed after the report). The no-maplibre `package.json` diff loads
+clean and waits for the flip (lane scratch `no-maplibre-package.diff`).
+**Parked idea (user, 2026-11-01): a cartoon / low-fi high-colour look mode
+with no new models — issue #161, a materials lane after the own-ground steps.
+**Step 5b merged
 2026-10-31** (HISTORY "The road-graph build is 40 % faster"): number keys and
 a stamp dedupe in the build, `scripts/time-to-ride-phases.mjs` for the
 per-step table; navigation → racing 5.41 → 4.75 s. **Step 5c merged

@@ -1,5 +1,39 @@
 # Canal Recall — what is built
 
+**Road lane final hand-back: other-city binaries verified, the spawn-pose premise pinned, the six-tile cut dropped, the iPhone heap and pop-in gates measured red (2026-11-01, P3/#130).**
+Road lane (5c9915cdf; c91bdd0bc `heap-ride.mjs HEAP_SHOT=<png>`). Other-city
+binaries: way hash identical between binary and `?roads=json` on the
+default engine for all four cities (Amsterdam 68,127 ways, Utrecht 30,516,
+Rotterdam 42,199, Den Haag 26,716); the quiet-run Amsterdam timing stands
+(62–64 ms binary vs 200–214 ms JSON), the other-city timings ran under load
+13 and are not recorded. Spawn pose: the seeded spawn is not a stable
+premise, a bisect names 1e3c26fbe (landmarks compile before they join the
+scene) because `compileAsync` placement changes how many seeded
+`Math.random` calls precede the route pick; own-engine spawns vary with load
+timing. The side-pick freeze had three causes (a teleport beside a new
+street asks a question and an open question holds the bike, `keyboard.press`
+is shorter than a frame, `openRoute` enters racing during the intro
+overview). Specs pinned instead, no game change: street-follow-tap rides
+into the Eerste Leliedwarsstraat / Bloemgracht T (maxAsksPerMinute 0,
+ArrowUp 200 ms, after introOverview === 0; iPhone 10/10), and the
+canal-recall HUD-withhold test is pinned mid-block on Reestraat turned 90°
+(desktop 3/3, iPhone 3/3). Six phone tiles (662e918c6) dropped by the
+integrator on the lane's advice: only 1 tile is held at ride start so the
+budget never binds, and the frames are identical; `pop-in.mjs --device
+iphone` kept. **Gates red, measured on the default engine, iPhone profile:**
+JS heap at ride start 300 MB (main 187, buffers 112, workers ~100) against
+250, owners claimed `_canalSharedFrame` 101.4 MB, `atGrid.grid` 33.6,
+facades CPU arrays 27.1, `roadIndex.segments` 19.6, landmarks CPU arrays
+11.5; pop-in 24 building-chunk arrivals within 150 m of the rider at ride
+start (nearest 34.7 m) plus 4 ground-cell swaps against zero. Both rerun
+under the own engine next (the engine Amsterdam ships). The 27 Free Ride
+cells: `world.plan` wants every 1 km cell under every planned z14 tile
+(~1.5 km, not grid-aligned, 1–9 cells each) and the first plan uses the
+intro camera at zoom 17; the cap (cells intersecting the ride-zoom view
+bounds + 300 m plus the look-ahead boxes) is approved with a pop-in pin and
+a restyle check. The no-maplibre `package.json` diff loads clean and waits
+for the flip. Integrator: roadExtract 10/10, lint clean.
+
 **The overview draws only the tiles on screen: iPad overview triangles 279k → 83k (2026-11-01, P4).**
 Materials lane (c415a1e1b). The overview spans used an 8-per-side grid, so
 each span ran from the first to the last ~3 km tile on screen and a chase
