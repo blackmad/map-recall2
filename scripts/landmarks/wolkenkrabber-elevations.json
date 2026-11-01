@@ -1,0 +1,40 @@
+{
+ "id": "wolkenkrabber",
+ "countedBy": "lane #166 (opus) from panorama TMX7316010203-001788_pano_0001_001194 (artifacts/landmark-briefs/wolkenkrabber/w04-78.thumb.jpg) before the model was rendered; not a blind haiku count, integrator may re-count.",
+ "facades": [
+  {
+   "name": "Victorieplein front, whole",
+   "bearing": 78,
+   "photo": "artifacts/landmark-briefs/wolkenkrabber/w04-78.thumb.jpg",
+   "depthBand": 6,
+   "symmetric": true,
+   "gables": 1,
+   "note": "peak count from the register (monument 532002: stair tower and lift housing rise above the flat roof to 46.50 m NAP) and Wikipedia; the panorama crop does not reach the roof"
+  },
+  {
+   "name": "Victorieplein front, north block",
+   "bearing": 78,
+   "photo": "artifacts/landmark-briefs/wolkenkrabber/w04-78.thumb.jpg",
+   "alongM": [
+    15.0,
+    25.0
+   ],
+   "depthBand": 6,
+   "rows": [
+    3,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    null,
+    null,
+    null
+   ],
+   "gables": 0
+  }
+ ]
+}

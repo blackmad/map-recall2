@@ -328,6 +328,7 @@ import {buildWaterdraagsterBellamyplein} from './waterdraagster-bellamyplein-bui
 import {buildMamaBaranka} from './mama-baranka-builder';
 import {buildSpanjemonument} from './spanjemonument-builder';
 import {buildAbnAmroHoofdkantoor} from './abn-amro-hoofdkantoor-builder';
+import {buildWolkenkrabber} from './wolkenkrabber-builder';
 import {applyInstalledFigures} from './installed-figures';
 import {computeSourceHashes,ALWAYS_REBUILD,type SourceHashes} from './manual-source-hash';
 import {setSink} from './nearbar-kit';
@@ -852,6 +853,7 @@ for(const spec of MANUAL_LANDMARKS.filter(model => !selectedIds.length || select
     else if(id==='mama-baranka')buildMamaBaranka(w,d,helpers);
     else if(id==='spanjemonument')buildSpanjemonument(w,d,helpers);
     else if(id==='abn-amro-hoofdkantoor')buildAbnAmroHoofdkantoor(w,d,helpers);
+    else if(id==='wolkenkrabber')buildWolkenkrabber(w,d,helpers);
     else buildCulturalLandmark(id,w,d,helpers);
   }
   }catch(e){

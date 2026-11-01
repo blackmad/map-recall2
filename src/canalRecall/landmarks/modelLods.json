@@ -1876,5 +1876,11 @@
   "buildVersion": 2,
   "bytes": 100296,
   "triangles": 6465
+ },
+ "wolkenkrabber": {
+  "sourceHash": "1f6b53a6a88263d0",
+  "buildVersion": 2,
+  "bytes": 52536,
+  "triangles": 2214
  }
 }
