@@ -266,13 +266,16 @@ test('every kind of drawn building opens a card when clicked', async ({ page }, 
         // reached through its POI label, not its mesh.
         if (e.spec.assetKind === 'memorial') continue;
         // A bounding-box centre can be open air (an L-shaped church, a flat
-        // monument): aim at the first of a 3×3 grid of mid-height points that
-        // lands on the model itself, as a player would.
+        // monument): aim at the first of a 3×3×3 grid of points that lands on
+        // the model itself, as a player would. Mid-height alone missed the
+        // Westerkerk: its box is the 87 m tower's, so at 43 m only the tower is
+        // solid and every mid-height point over the nave was open air, whose
+        // ray rightly reached the Anne Frank museum block behind (#129 round 18).
         const box = new T.Box3().setFromObject(e.group), own = (hit: any) => hit && hit.lngLat === e.placement.anchor;
         let aim: { x: number; y: number; z: number } | null = null, first: typeof aim = null;
-        for (const fx of [0.5, 0.3, 0.7]) for (const fy of [0.5, 0.3, 0.7]) {
+        for (const fz of [0.5, 0.25, 0.75]) for (const fx of [0.5, 0.3, 0.7]) for (const fy of [0.5, 0.3, 0.7]) {
           if (aim) break;
-          const v = new T.Vector3(box.min.x + (box.max.x - box.min.x) * fx, box.min.y + (box.max.y - box.min.y) * fy, (box.min.z + box.max.z) / 2).applyMatrix4(e.pickProjection);
+          const v = new T.Vector3(box.min.x + (box.max.x - box.min.x) * fx, box.min.y + (box.max.y - box.min.y) * fy, box.min.z + (box.max.z - box.min.z) * fz).applyMatrix4(e.pickProjection);
           const x = (v.x + 1) / 2 * W, y = (1 - v.y) / 2 * H;
           if (v.z < -1 || v.z > 1 || !onScreen(x, y)) continue;
           first ??= { x, y, z: v.z };
@@ -308,4 +311,41 @@ test('every kind of drawn building opens a card when clicked', async ({ page }, 
     expect(s.card / s.n, `${kind}: clicks that open a card ${JSON.stringify(s)}`).toBeGreaterThanOrEqual(0.95);
     expect((s.own + s.occluded) / s.n, `${kind}: clicks resolving to the building aimed at, or one in front of it ${JSON.stringify(s)}`).toBeGreaterThanOrEqual(0.95);
   }
+});
+
+// Named regression (#129, own engine round 18): at Westermarkt every pixel the Westerkerk model draws must answer
+// with the Westerkerk (its model, its POI label, or a building standing in front of it), never the Anne Frank museum block behind
+// (NL.IMBAG.Pand.0363100012169587). Pixels come from the model's own pick, scanned over the view.
+test('Westermarkt: a click on the drawn Westerkerk opens the Westerkerk, not the museum behind', async ({ page }, info) => {
+  test.skip(info.project.name !== 'desktop', 'one project samples the view');
+  test.setTimeout(300_000);
+  await boot(page);
+  await lookAt(page, WESTERMARKT, 16.9, 50);
+  await expect.poll(() => page.evaluate(() => {
+    const vm = (window as any).canalRecallGame.vectorMap, sig = vm._signatureLandmarks;
+    const e = sig?._entries?.find((x: any) => x.spec.id === 'westerkerk');
+    let meshes = 0; e?.group.traverse((o: any) => { if (o.isMesh) meshes++; });
+    return meshes;
+  }), { timeout: 120_000 }).toBeGreaterThan(0);
+  await page.waitForTimeout(4000);
+  const r = await page.evaluate(() => {
+    const vm = (window as any).canalRecallGame.vectorMap, sig = vm._signatureLandmarks;
+    const canvas = vm.frameCanvas(), W = canvas.clientWidth, H = canvas.clientHeight;
+    const e = sig._entries.find((x: any) => x.spec.id === 'westerkerk');
+    let drawn = 0, right = 0;
+    const wrong: string[] = [];
+    for (let y = 60; y < H * 0.85; y += 6) for (let x = 30; x < W - 30; x += 6) {
+      const s = sig.inspectAtScreen(x, y, W, H);
+      if (!s || s.lngLat !== e.placement.anchor) continue;
+      drawn++;
+      const hit = vm.inspectBuilding(x, y, { width: W, height: H });
+      // The model itself, the Westerkerk's own POI label (MapLibre path: a drawn POI label wins the click), or a nearer surface.
+      if (hit && (hit.lngLat === e.placement.anchor || /^Westerkerk$/i.test(hit.name ?? '') || (hit.depth != null && hit.depth <= s.depth + 1e-6))) right++;
+      else if (wrong.length < 5) wrong.push(`${x},${y}→${hit ? hit.id : 'no hit'}`);
+    }
+    return { drawn, right, wrong };
+  });
+  console.log('westermarkt westerkerk', JSON.stringify(r));
+  expect(r.drawn, 'the Westerkerk draws in the Westermarkt view').toBeGreaterThan(50);
+  expect(r.right, `every Westerkerk pixel answers the Westerkerk ${JSON.stringify(r)}`).toBe(r.drawn);
 });
