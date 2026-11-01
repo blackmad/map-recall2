@@ -1,0 +1,41 @@
+{
+ "street": "Nicolaas Maesstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-01T16:14:02.405Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012088937",
+   "addresses": [
+    "Nicolaas Maesstraat 5"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nicolaas Maesstraat 5-H",
+     "use": "woonfunctie",
+     "areaM2": 210,
+     "bagId": "0363010000750634"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012086273",
+   "addresses": [
+    "Nicolaas Maesstraat 7"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nicolaas Maesstraat 7-H",
+     "use": "woonfunctie",
+     "areaM2": 227,
+     "bagId": "0363010000750636"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  }
+ ]
+}

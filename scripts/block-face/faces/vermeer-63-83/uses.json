@@ -1,0 +1,206 @@
+{
+ "street": "Johannes Vermeerstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-01T15:51:29.993Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012083881",
+   "addresses": [
+    "Johannes Vermeerstraat 63"
+   ],
+   "groundUnits": [
+    {
+     "address": "Johannes Vermeerstraat 63",
+     "use": "kantoorfunctie",
+     "areaM2": 511,
+     "bagId": "0363010000694471"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012090437",
+   "addresses": [
+    "Johannes Vermeerstraat 65"
+   ],
+   "groundUnits": [
+    {
+     "address": "Johannes Vermeerstraat 65-H",
+     "use": "woonfunctie",
+     "areaM2": 192,
+     "bagId": "0363010000694472"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012138489",
+   "addresses": [
+    "Johannes Vermeerstraat 67"
+   ],
+   "groundUnits": [
+    {
+     "address": "Johannes Vermeerstraat 67-H",
+     "use": "woonfunctie",
+     "areaM2": 90,
+     "bagId": "0363010000694474"
+    }
+   ],
+   "units": 6,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012092897",
+   "addresses": [
+    "Johannes Vermeerstraat 69"
+   ],
+   "groundUnits": [
+    {
+     "address": "Johannes Vermeerstraat 69-H",
+     "use": "woonfunctie",
+     "areaM2": 170,
+     "bagId": "0363010000694477"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012085468",
+   "addresses": [
+    "Johannes Vermeerstraat 71"
+   ],
+   "groundUnits": [
+    {
+     "address": "Johannes Vermeerstraat 71-H",
+     "use": "woonfunctie",
+     "areaM2": 202,
+     "bagId": "0363010000694479"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012147036",
+   "addresses": [
+    "Johannes Vermeerstraat 73"
+   ],
+   "groundUnits": [
+    {
+     "address": "Johannes Vermeerstraat 73-H",
+     "use": "woonfunctie",
+     "areaM2": 216,
+     "bagId": "0363010000694481"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012114454",
+   "addresses": [
+    "Johannes Vermeerstraat 75"
+   ],
+   "groundUnits": [
+    {
+     "address": "Johannes Vermeerstraat 75-H",
+     "use": "woonfunctie",
+     "areaM2": 266,
+     "bagId": "0363010000694483"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012151574",
+   "addresses": [
+    "Johannes Vermeerstraat 77"
+   ],
+   "groundUnits": [
+    {
+     "address": "Johannes Vermeerstraat 77-H",
+     "use": "woonfunctie",
+     "areaM2": 178,
+     "bagId": "0363010000694485"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012110601",
+   "addresses": [
+    "Johannes Vermeerstraat 79"
+   ],
+   "groundUnits": [
+    {
+     "address": "Johannes Vermeerstraat 79-H",
+     "use": "woonfunctie",
+     "areaM2": 192,
+     "bagId": "0363010001001912"
+    }
+   ],
+   "units": 3,
+   "osm": [
+    {
+     "type": "node",
+     "id": 4742191873,
+     "lngLat": [
+      4.8843933,
+      52.35471
+     ],
+     "tags": {
+      "amenity": "charging_station",
+      "capacity": "2",
+      "operator": "NUON",
+      "operator:wikidata": "Q513830",
+      "operator:wikipedia": "nl:Vattenfall Nederland",
+      "panoramax": "3e15af68-929c-4664-85ff-e4361250f186",
+      "socket:type2": "2"
+     },
+     "fetchedAt": "2026-11-01T15:51:29.993Z",
+     "match": "frontage",
+     "distanceM": 6
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012140658",
+   "addresses": [
+    "Johannes Vermeerstraat 81"
+   ],
+   "groundUnits": [
+    {
+     "address": "Johannes Vermeerstraat 81-H",
+     "use": "woonfunctie",
+     "areaM2": 293,
+     "bagId": "0363010000694490"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012065248",
+   "addresses": [
+    "Johannes Vermeerstraat 83"
+   ],
+   "groundUnits": [
+    {
+     "address": "Johannes Vermeerstraat 83-H",
+     "use": "woonfunctie",
+     "areaM2": 126,
+     "bagId": "0363010000694492"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  }
+ ]
+}

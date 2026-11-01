@@ -1,0 +1,63 @@
+{
+ "street": "Willemsparkweg",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-01T15:09:53.136Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012235930",
+   "addresses": [
+    "Willemsparkweg 168A",
+    "Willemsparkweg 168B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Willemsparkweg 168A",
+     "use": "winkelfunctie",
+     "areaM2": 132,
+     "bagId": "0363010001170284"
+    },
+    {
+     "address": "Willemsparkweg 168B",
+     "use": "woonfunctie",
+     "areaM2": 118,
+     "bagId": "0363010003713726"
+    }
+   ],
+   "units": 2,
+   "osm": [
+    {
+     "type": "node",
+     "id": 12672987957,
+     "lngLat": [
+      4.8703126,
+      52.3560483
+     ],
+     "tags": {
+      "shop": "beauty"
+     },
+     "fetchedAt": "2026-11-01T15:09:53.136Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012236904",
+   "addresses": [
+    "Willemsparkweg 166"
+   ],
+   "groundUnits": [
+    {
+     "address": "Willemsparkweg 166-H",
+     "use": "winkelfunctie",
+     "areaM2": 126,
+     "bagId": "0363010000873197"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  }
+ ]
+}

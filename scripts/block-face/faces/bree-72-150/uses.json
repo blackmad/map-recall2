@@ -1,0 +1,374 @@
+{
+ "street": "Van Breestraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-01T14:05:24.245Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012155618",
+   "addresses": [
+    "Van Breestraat 106"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Breestraat 106-H",
+     "use": "woonfunctie",
+     "areaM2": 134,
+     "bagId": "0363010000837068"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012164733",
+   "addresses": [
+    "Van Breestraat 104"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Breestraat 104-H",
+     "use": "woonfunctie",
+     "areaM2": 182,
+     "bagId": "0363010000837063"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012158738",
+   "addresses": [
+    "Van Breestraat 102"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Breestraat 102-H",
+     "use": "woonfunctie",
+     "areaM2": 182,
+     "bagId": "0363010000837055"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012166091",
+   "addresses": [
+    "Van Breestraat 100"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Breestraat 100-H",
+     "use": "winkelfunctie",
+     "areaM2": 147,
+     "bagId": "0363010000837049"
+    }
+   ],
+   "units": 3,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2816315507,
+     "lngLat": [
+      4.8734743,
+      52.3561931
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "100-H",
+      "addr:postcode": "1071ZT",
+      "addr:street": "Van Breestraat",
+      "name": "Knokki",
+      "shop": "hifi",
+      "source": "BAG",
+      "source:date": "2014-03-24"
+     },
+     "fetchedAt": "2026-11-01T14:05:24.245Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012165609",
+   "addresses": [
+    "Van Breestraat 98"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Breestraat 98-H",
+     "use": "woonfunctie",
+     "areaM2": 60,
+     "bagId": "0363010000837042"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012061429",
+   "addresses": [
+    "Van Breestraat 96"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Breestraat 96-H",
+     "use": "woonfunctie",
+     "areaM2": 196,
+     "bagId": "0363010000698993"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012155697",
+   "addresses": [
+    "Van Breestraat 94"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Breestraat 94-H",
+     "use": "woonfunctie",
+     "areaM2": 141,
+     "bagId": "0363010000837035"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012154301",
+   "addresses": [
+    "Van Breestraat 92"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Breestraat 92-H",
+     "use": "woonfunctie",
+     "areaM2": 185,
+     "bagId": "0363010000837024"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012160202",
+   "addresses": [
+    "Van Breestraat 90"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Breestraat 90-H",
+     "use": "woonfunctie",
+     "areaM2": 115,
+     "bagId": "0363010000837020"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012157977",
+   "addresses": [
+    "Van Breestraat 88A",
+    "Van Breestraat 88B",
+    "Van Breestraat 88C",
+    "Van Breestraat 88D",
+    "Van Breestraat 88E",
+    "Van Breestraat 88F",
+    "Van Breestraat 88G",
+    "Van Breestraat 88H"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Breestraat 88A",
+     "use": "woonfunctie",
+     "areaM2": 33,
+     "bagId": "0363010000837017"
+    },
+    {
+     "address": "Van Breestraat 88B",
+     "use": "woonfunctie",
+     "areaM2": 33,
+     "bagId": "0363010000990582"
+    },
+    {
+     "address": "Van Breestraat 88C",
+     "use": "woonfunctie",
+     "areaM2": 33,
+     "bagId": "0363010000990583"
+    },
+    {
+     "address": "Van Breestraat 88D",
+     "use": "woonfunctie",
+     "areaM2": 33,
+     "bagId": "0363010000990585"
+    },
+    {
+     "address": "Van Breestraat 88E",
+     "use": "woonfunctie",
+     "areaM2": 33,
+     "bagId": "0363010000990586"
+    },
+    {
+     "address": "Van Breestraat 88F",
+     "use": "woonfunctie",
+     "areaM2": 33,
+     "bagId": "0363010000990587"
+    },
+    {
+     "address": "Van Breestraat 88G",
+     "use": "woonfunctie",
+     "areaM2": 33,
+     "bagId": "0363010000990589"
+    },
+    {
+     "address": "Van Breestraat 88H",
+     "use": "woonfunctie",
+     "areaM2": 33,
+     "bagId": "0363010000990590"
+    }
+   ],
+   "units": 8,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012164847",
+   "addresses": [
+    "Van Breestraat 86"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Breestraat 86-H",
+     "use": "woonfunctie",
+     "areaM2": 84,
+     "bagId": "0363010012066664"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012235985",
+   "addresses": [
+    "Van Breestraat 84"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Breestraat 84-H",
+     "use": "woonfunctie",
+     "areaM2": 226,
+     "bagId": "0363010000837009"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012236255",
+   "addresses": [
+    "Van Breestraat 82"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Breestraat 82-H",
+     "use": "woonfunctie",
+     "areaM2": 167,
+     "bagId": "0363010000837004"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012236185",
+   "addresses": [
+    "Van Breestraat 80"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Breestraat 80-H",
+     "use": "woonfunctie",
+     "areaM2": 121,
+     "bagId": "0363010000836996"
+    },
+    {
+     "address": "Van Breestraat 80-H",
+     "use": "woonfunctie",
+     "areaM2": 191,
+     "bagId": "0363010012097797"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012237156",
+   "addresses": [
+    "Van Breestraat 78"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Breestraat 78-H",
+     "use": "woonfunctie",
+     "areaM2": 226,
+     "bagId": "0363010000836992"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012158094",
+   "addresses": [
+    "Van Breestraat 76"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Breestraat 76-H",
+     "use": "woonfunctie",
+     "areaM2": 128,
+     "bagId": "0363010000836988"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012166952",
+   "addresses": [
+    "Van Breestraat 74"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Breestraat 74-H",
+     "use": "woonfunctie",
+     "areaM2": 225,
+     "bagId": "0363010000836985"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012156817",
+   "addresses": [
+    "Van Breestraat 72"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Breestraat 72-H",
+     "use": "kantoorfunctie",
+     "areaM2": 160,
+     "bagId": "0363010000836982"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  }
+ ]
+}

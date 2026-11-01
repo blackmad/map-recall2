@@ -1,0 +1,396 @@
+{
+ "street": "Willemsparkweg",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-01T15:13:23.543Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012166754",
+   "addresses": [
+    "Willemsparkweg 200A",
+    "Willemsparkweg 200B",
+    "Willemsparkweg 200C",
+    "Willemsparkweg 200D",
+    "Willemsparkweg 200E",
+    "Willemsparkweg 200F",
+    "Willemsparkweg 200G"
+   ],
+   "groundUnits": [
+    {
+     "address": "Willemsparkweg 200A",
+     "use": "woonfunctie",
+     "areaM2": 50,
+     "bagId": "0363010000873264"
+    },
+    {
+     "address": "Willemsparkweg 200B",
+     "use": "woonfunctie",
+     "areaM2": 50,
+     "bagId": "0363010000990831"
+    },
+    {
+     "address": "Willemsparkweg 200C",
+     "use": "woonfunctie",
+     "areaM2": 50,
+     "bagId": "0363010000990832"
+    },
+    {
+     "address": "Willemsparkweg 200D",
+     "use": "woonfunctie",
+     "areaM2": 50,
+     "bagId": "0363010000990833"
+    },
+    {
+     "address": "Willemsparkweg 200E",
+     "use": "woonfunctie",
+     "areaM2": 50,
+     "bagId": "0363010000990834"
+    },
+    {
+     "address": "Willemsparkweg 200F",
+     "use": "woonfunctie",
+     "areaM2": 50,
+     "bagId": "0363010000990835"
+    },
+    {
+     "address": "Willemsparkweg 200G",
+     "use": "woonfunctie",
+     "areaM2": 50,
+     "bagId": "0363010000990836"
+    }
+   ],
+   "units": 7,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012157556",
+   "addresses": [
+    "Willemsparkweg 198A",
+    "Willemsparkweg 198B",
+    "Willemsparkweg 198C",
+    "Willemsparkweg 198D",
+    "Willemsparkweg 198G",
+    "Willemsparkweg 198F",
+    "Willemsparkweg 198E"
+   ],
+   "groundUnits": [
+    {
+     "address": "Willemsparkweg 198A",
+     "use": "woonfunctie",
+     "areaM2": 42,
+     "bagId": "0363010000873252"
+    },
+    {
+     "address": "Willemsparkweg 198B",
+     "use": "woonfunctie",
+     "areaM2": 62,
+     "bagId": "0363010000873253"
+    },
+    {
+     "address": "Willemsparkweg 198C",
+     "use": "woonfunctie",
+     "areaM2": 67,
+     "bagId": "0363010000873254"
+    },
+    {
+     "address": "Willemsparkweg 198D",
+     "use": "woonfunctie",
+     "areaM2": 123,
+     "bagId": "0363010000873258"
+    },
+    {
+     "address": "Willemsparkweg 198G",
+     "use": "woonfunctie",
+     "areaM2": 138,
+     "bagId": "0363010000873261"
+    },
+    {
+     "address": "Willemsparkweg 198F",
+     "use": "woonfunctie",
+     "areaM2": 28,
+     "bagId": "0363010000873260"
+    },
+    {
+     "address": "Willemsparkweg 198E",
+     "use": "woonfunctie",
+     "areaM2": 28,
+     "bagId": "0363010000873259"
+    }
+   ],
+   "units": 7,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012154322",
+   "addresses": [
+    "Willemsparkweg 196"
+   ],
+   "groundUnits": [
+    {
+     "address": "Willemsparkweg 196-H",
+     "use": "woonfunctie",
+     "areaM2": 205,
+     "bagId": "0363010000873248"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012153337",
+   "addresses": [
+    "Willemsparkweg 194"
+   ],
+   "groundUnits": [
+    {
+     "address": "Willemsparkweg 194-H",
+     "use": "woonfunctie",
+     "areaM2": 175,
+     "bagId": "0363010000953710"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012162633",
+   "addresses": [
+    "Willemsparkweg 192"
+   ],
+   "groundUnits": [
+    {
+     "address": "Willemsparkweg 192-H",
+     "use": "woonfunctie",
+     "areaM2": 230,
+     "bagId": "0363010000873242"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012164725",
+   "addresses": [
+    "Willemsparkweg 190"
+   ],
+   "groundUnits": [
+    {
+     "address": "Willemsparkweg 190-H",
+     "use": "woonfunctie",
+     "areaM2": 262,
+     "bagId": "0363010000873239"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012236186",
+   "addresses": [
+    "Willemsparkweg 188"
+   ],
+   "groundUnits": [
+    {
+     "address": "Willemsparkweg 188-H",
+     "use": "woonfunctie",
+     "areaM2": 186,
+     "bagId": "0363010001171251"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012158668",
+   "addresses": [
+    "Willemsparkweg 186"
+   ],
+   "groundUnits": [
+    {
+     "address": "Willemsparkweg 186-H",
+     "use": "woonfunctie",
+     "areaM2": 172,
+     "bagId": "0363010000980859"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012164684",
+   "addresses": [
+    "Willemsparkweg 184"
+   ],
+   "groundUnits": [
+    {
+     "address": "Willemsparkweg 184-H",
+     "use": "woonfunctie",
+     "areaM2": 271,
+     "bagId": "0363010000873226"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012163036",
+   "addresses": [
+    "Willemsparkweg 182"
+   ],
+   "groundUnits": [
+    {
+     "address": "Willemsparkweg 182-H",
+     "use": "woonfunctie",
+     "areaM2": 209,
+     "bagId": "0363010001018693"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012157586",
+   "addresses": [
+    "Willemsparkweg 180"
+   ],
+   "groundUnits": [
+    {
+     "address": "Willemsparkweg 180",
+     "use": "woonfunctie",
+     "areaM2": 290,
+     "bagId": "0363010000873218"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012164523",
+   "addresses": [
+    "Willemsparkweg 178"
+   ],
+   "groundUnits": [
+    {
+     "address": "Willemsparkweg 178-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 136,
+     "bagId": "0363010000979875"
+    }
+   ],
+   "units": 2,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2816317701,
+     "lngLat": [
+      4.8699118,
+      52.3559187
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "178-H",
+      "addr:postcode": "1071HV",
+      "addr:street": "Willemsparkweg",
+      "amenity": "restaurant",
+      "branch": "Amsterdam Willemsparkweg",
+      "brand": "De Pizzabakkers",
+      "brand:website": "https://www.depizzabakkers.nl",
+      "brand:wikidata": "Q124218622",
+      "cuisine": "italian_pizza",
+      "email": "willemsparkweg@depizzabakkers.nl",
+      "name": "De Pizzabakkers",
+      "opening_hours": "Mo-Tu 16:00-22:00; Fr-Su 12:00-22:00",
+      "payment:cash": "no",
+      "phone": "+31 20 235 5556",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://www.depizzabakkers.nl/vestigingen/amsterdam-willemsparkweg/"
+     },
+     "fetchedAt": "2026-11-01T15:13:23.543Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012161355",
+   "addresses": [
+    "Willemsparkweg 176"
+   ],
+   "groundUnits": [
+    {
+     "address": "Willemsparkweg 176-H",
+     "use": "kantoorfunctie",
+     "areaM2": 120,
+     "bagId": "0363010000873210"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012152869",
+   "addresses": [
+    "Willemsparkweg 174"
+   ],
+   "groundUnits": [
+    {
+     "address": "Willemsparkweg 174",
+     "use": "woonfunctie",
+     "areaM2": 293,
+     "bagId": "0363010000873207"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012157545",
+   "addresses": [
+    "Willemsparkweg 172"
+   ],
+   "groundUnits": [
+    {
+     "address": "Willemsparkweg 172-H",
+     "use": "woonfunctie",
+     "areaM2": 250,
+     "bagId": "0363010000873203"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012155662",
+   "addresses": [
+    "Willemsparkweg 170"
+   ],
+   "groundUnits": [
+    {
+     "address": "Willemsparkweg 170-H",
+     "use": "winkelfunctie",
+     "areaM2": 70,
+     "bagId": "0363010000873200"
+    }
+   ],
+   "units": 2,
+   "osm": [
+    {
+     "type": "node",
+     "id": 12672987957,
+     "lngLat": [
+      4.8703126,
+      52.3560483
+     ],
+     "tags": {
+      "shop": "beauty"
+     },
+     "fetchedAt": "2026-11-01T15:13:23.543Z",
+     "match": "frontage",
+     "distanceM": 4.4
+    }
+   ]
+  }
+ ]
+}

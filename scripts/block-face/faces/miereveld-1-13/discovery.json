@@ -1,0 +1,326 @@
+{
+ "street": "Van Miereveldstraat",
+ "seed": "0363100012154971",
+ "members": [
+  "0363100012154971",
+  "0363100012145556",
+  "0363100012079958",
+  "0363100012147731",
+  "0363100012110232",
+  "0363100012107845",
+  "0363100012062753"
+ ],
+ "ends": [
+  {
+   "side": "left",
+   "reason": "next fronting pand 0363100012099107 21.0 m on shares no party wall (cross street or gap)"
+  },
+  {
+   "side": "right",
+   "reason": "trimmed at 0363100012062753 (face continues: 217582)"
+  }
+ ],
+ "rejected": [
+  {
+   "pandId": "0363100012142717",
+   "reason": "frontage 44.5 m from Van Miereveldstraat"
+  },
+  {
+   "pandId": "0363100012062052",
+   "reason": "frontage 85.1 m from Van Miereveldstraat"
+  },
+  {
+   "pandId": "0363100012062389",
+   "reason": "frontage 107.2 m from Van Miereveldstraat"
+  },
+  {
+   "pandId": "0363100012063157",
+   "reason": "no frontage on Van Miereveldstraat: No footprint edge faces Van Miereveldstraat"
+  },
+  {
+   "pandId": "0363100012071285",
+   "reason": "frontage 38.3 m from Van Miereveldstraat"
+  },
+  {
+   "pandId": "0363100012074466",
+   "reason": "sightline to Van Miereveldstraat crosses 0363100012217582"
+  },
+  {
+   "pandId": "0363100012074509",
+   "reason": "frontage 80.5 m from Van Miereveldstraat"
+  },
+  {
+   "pandId": "0363100012074834",
+   "reason": "frontage 47.0 m from Van Miereveldstraat"
+  },
+  {
+   "pandId": "0363100012076037",
+   "reason": "frontage 91.8 m from Van Miereveldstraat"
+  },
+  {
+   "pandId": "0363100012076064",
+   "reason": "frontage 44.4 m from Van Miereveldstraat"
+  },
+  {
+   "pandId": "0363100012077834",
+   "reason": "frontage 90.3 m from Van Miereveldstraat"
+  },
+  {
+   "pandId": "0363100012079467",
+   "reason": "frontage 102.8 m from Van Miereveldstraat"
+  },
+  {
+   "pandId": "0363100012080690",
+   "reason": "no frontage on Van Miereveldstraat: No footprint edge faces Van Miereveldstraat"
+  },
+  {
+   "pandId": "0363100012088681",
+   "reason": "frontage 39.3 m from Van Miereveldstraat"
+  },
+  {
+   "pandId": "0363100012089294",
+   "reason": "frontage 40.7 m from Van Miereveldstraat"
+  },
+  {
+   "pandId": "0363100012089576",
+   "reason": "frontage 88.5 m from Van Miereveldstraat"
+  },
+  {
+   "pandId": "0363100012103484",
+   "reason": "frontage 82.0 m from Van Miereveldstraat"
+  },
+  {
+   "pandId": "0363100012115557",
+   "reason": "sightline to Van Miereveldstraat crosses 0363100012074466"
+  },
+  {
+   "pandId": "0363100012116517",
+   "reason": "frontage 83.6 m from Van Miereveldstraat"
+  },
+  {
+   "pandId": "0363100012117556",
+   "reason": "frontage 43.1 m from Van Miereveldstraat"
+  },
+  {
+   "pandId": "0363100012117845",
+   "reason": "frontage 30.3 m from Van Miereveldstraat"
+  },
+  {
+   "pandId": "0363100012121461",
+   "reason": "frontage 78.7 m from Van Miereveldstraat"
+  },
+  {
+   "pandId": "0363100012121710",
+   "reason": "frontage 75.5 m from Van Miereveldstraat"
+  },
+  {
+   "pandId": "0363100012124449",
+   "reason": "frontage 93.4 m from Van Miereveldstraat"
+  },
+  {
+   "pandId": "0363100012125850",
+   "reason": "no frontage on Van Miereveldstraat: No footprint edge faces Van Miereveldstraat"
+  },
+  {
+   "pandId": "0363100012126152",
+   "reason": "frontage 36.3 m from Van Miereveldstraat"
+  },
+  {
+   "pandId": "0363100012126885",
+   "reason": "frontage 86.7 m from Van Miereveldstraat"
+  },
+  {
+   "pandId": "0363100012130921",
+   "reason": "frontage 128.8 m from Van Miereveldstraat"
+  },
+  {
+   "pandId": "0363100012134189",
+   "reason": "frontage 44.0 m from Van Miereveldstraat"
+  },
+  {
+   "pandId": "0363100012136130",
+   "reason": "frontage 79.1 m from Van Miereveldstraat"
+  },
+  {
+   "pandId": "0363100012150046",
+   "reason": "sightline to Van Miereveldstraat crosses 0363100012099107"
+  },
+  {
+   "pandId": "0363100012150353",
+   "reason": "frontage 71.4 m from Van Miereveldstraat"
+  },
+  {
+   "pandId": "0363100012154873",
+   "reason": "no frontage on Van Miereveldstraat: No footprint edge faces Van Miereveldstraat"
+  },
+  {
+   "pandId": "0363100012183422",
+   "reason": "frontage 31.4 m from Van Miereveldstraat"
+  },
+  {
+   "pandId": "0363100012190726",
+   "reason": "frontage 127.2 m from Van Miereveldstraat"
+  },
+  {
+   "pandId": "0363100012209281",
+   "reason": "frontage 102.5 m from Van Miereveldstraat"
+  },
+  {
+   "pandId": "0363100012233575",
+   "reason": "frontage 41.2 m from Van Miereveldstraat"
+  },
+  {
+   "pandId": "0363100012237262",
+   "reason": "no frontage on Van Miereveldstraat: No footprint edge faces Van Miereveldstraat"
+  },
+  {
+   "pandId": "0363100012214752",
+   "reason": "frontage 47.6 m from Van Miereveldstraat"
+  },
+  {
+   "pandId": "0363100012217595",
+   "reason": "frontage 39.1 m from Van Miereveldstraat"
+  },
+  {
+   "pandId": "0363100012220878",
+   "reason": "sightline to Van Miereveldstraat crosses 0363100012207262"
+  },
+  {
+   "pandId": "0363100012232429",
+   "reason": "no frontage on Van Miereveldstraat: No footprint edge faces Van Miereveldstraat"
+  },
+  {
+   "pandId": "0363100012233573",
+   "reason": "frontage 83.7 m from Van Miereveldstraat"
+  },
+  {
+   "pandId": "0363100012237309",
+   "reason": "frontage 52.2 m from Van Miereveldstraat"
+  },
+  {
+   "pandId": "0363100012237313",
+   "reason": "frontage 96.3 m from Van Miereveldstraat"
+  },
+  {
+   "pandId": "0363100012246868",
+   "reason": "frontage 96.0 m from Van Miereveldstraat"
+  },
+  {
+   "pandId": "0363100012571600",
+   "reason": "sightline to Van Miereveldstraat crosses 0363100012233427"
+  },
+  {
+   "pandId": "0363100012100351",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012111009",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012112954",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012116189",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012142048",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012207262",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012233427",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012233484",
+   "reason": "fronts the other side / another direction"
+  }
+ ],
+ "areaHalfSizeM": 90,
+ "pands": [
+  {
+   "pandId": "0363100012154971",
+   "alongM": 0,
+   "widthM": 9.96,
+   "eavesM": 13.11,
+   "roofMaxM": 16.43,
+   "storeys3dbag": 0,
+   "builtYear": 1913,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012145556",
+   "alongM": 8.5,
+   "widthM": 7.04,
+   "eavesM": 14.66,
+   "roofMaxM": 14.83,
+   "storeys3dbag": 0,
+   "builtYear": 1913,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012079958",
+   "alongM": 17.23,
+   "widthM": 10.42,
+   "eavesM": 4.4,
+   "roofMaxM": 14.01,
+   "storeys3dbag": 3,
+   "builtYear": 1914,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012147731",
+   "alongM": 26.26,
+   "widthM": 7.63,
+   "eavesM": 10.4,
+   "roofMaxM": 16.82,
+   "storeys3dbag": 4,
+   "builtYear": 1913,
+   "uncertainty": [
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  },
+  {
+   "pandId": "0363100012110232",
+   "alongM": 33.28,
+   "widthM": 6.43,
+   "eavesM": 12.59,
+   "roofMaxM": 16.17,
+   "storeys3dbag": 0,
+   "builtYear": 1913,
+   "uncertainty": [
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  },
+  {
+   "pandId": "0363100012107845",
+   "alongM": 40.19,
+   "widthM": 7.4,
+   "eavesM": 10.78,
+   "roofMaxM": 16.11,
+   "storeys3dbag": 0,
+   "builtYear": 1913,
+   "uncertainty": [
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  },
+  {
+   "pandId": "0363100012062753",
+   "alongM": 49.47,
+   "widthM": 11.17,
+   "eavesM": 12.74,
+   "roofMaxM": 16.4,
+   "storeys3dbag": 0,
+   "builtYear": 1913,
+   "uncertainty": [
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  }
+ ]
+}

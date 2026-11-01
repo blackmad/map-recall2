@@ -1,0 +1,62 @@
+{
+ "note": "Pands held after reading their run's strip sheet at gallery size beside the strip (scripts/block-face/auto-place.ts). Museumkwartier A (#159), 2026-11-01.",
+ "reviewed": "2026-11-01",
+ "holds": [
+  {
+   "pandId": "0363100012160202",
+   "reason": "Van Breestraat 90 (bree-72-150-r1, 2024-11-12 strip): a pointed brick gable over two axes of segmental windows, another design; museum-cs-1900-gable-balcony passed the gate on row evidence only"
+  },
+  {
+   "pandId": "0363100012157977",
+   "reason": "Van Breestraat 88A (bree-72-150-r1): orange brick with red speklagen, two axes and a white oriel stack with a balcony, a dormer; not the three-axis gable-balcony front (edge NCC 0.185 is a false positive)"
+  },
+  {
+   "pandId": "0363100012164847",
+   "reason": "Van Breestraat 86 (bree-72-150-r1): the same orange banded two-axis front with a white oriel as 88A; false positive at NCC 0.154"
+  },
+  {
+   "pandId": "0363100012166718",
+   "reason": "Valeriusstraat 7: valerius-3-37-r1 sheet (oud-west kinker-1902-balcony-axis, edge NCC 0.18-0.43, 2024-11-12 strip): Valeriusstraat 1905-06 fronts are wide two-light windows with transoms under segmental heads, balconettes on storeys 1-2, white timber oriel stacks on 9, 15 and 21, a flat corbel-frieze cornice without dormers on 7-11 and 19-23 and a mansard with dormers on 13-17; the Kinkerstraat type draws narrow windows, balconettes on three storeys, a dormer on every front and no ground doors"
+  },
+  {
+   "pandId": "0363100012152610",
+   "reason": "Valeriusstraat 9: valerius-3-37-r1 sheet (oud-west kinker-1902-balcony-axis, edge NCC 0.18-0.43, 2024-11-12 strip): Valeriusstraat 1905-06 fronts are wide two-light windows with transoms under segmental heads, balconettes on storeys 1-2, white timber oriel stacks on 9, 15 and 21, a flat corbel-frieze cornice without dormers on 7-11 and 19-23 and a mansard with dormers on 13-17; the Kinkerstraat type draws narrow windows, balconettes on three storeys, a dormer on every front and no ground doors"
+  },
+  {
+   "pandId": "0363100012158233",
+   "reason": "Valeriusstraat 11: valerius-3-37-r1 sheet (oud-west kinker-1902-balcony-axis, edge NCC 0.18-0.43, 2024-11-12 strip): Valeriusstraat 1905-06 fronts are wide two-light windows with transoms under segmental heads, balconettes on storeys 1-2, white timber oriel stacks on 9, 15 and 21, a flat corbel-frieze cornice without dormers on 7-11 and 19-23 and a mansard with dormers on 13-17; the Kinkerstraat type draws narrow windows, balconettes on three storeys, a dormer on every front and no ground doors"
+  },
+  {
+   "pandId": "0363100012161338",
+   "reason": "Valeriusstraat 13: valerius-3-37-r1 sheet (oud-west kinker-1902-balcony-axis, edge NCC 0.18-0.43, 2024-11-12 strip): Valeriusstraat 1905-06 fronts are wide two-light windows with transoms under segmental heads, balconettes on storeys 1-2, white timber oriel stacks on 9, 15 and 21, a flat corbel-frieze cornice without dormers on 7-11 and 19-23 and a mansard with dormers on 13-17; the Kinkerstraat type draws narrow windows, balconettes on three storeys, a dormer on every front and no ground doors"
+  },
+  {
+   "pandId": "0363100012166199",
+   "reason": "Valeriusstraat 15: valerius-3-37-r1 sheet (oud-west kinker-1902-balcony-axis, edge NCC 0.18-0.43, 2024-11-12 strip): Valeriusstraat 1905-06 fronts are wide two-light windows with transoms under segmental heads, balconettes on storeys 1-2, white timber oriel stacks on 9, 15 and 21, a flat corbel-frieze cornice without dormers on 7-11 and 19-23 and a mansard with dormers on 13-17; the Kinkerstraat type draws narrow windows, balconettes on three storeys, a dormer on every front and no ground doors"
+  },
+  {
+   "pandId": "0363100012164322",
+   "reason": "Valeriusstraat 17: valerius-3-37-r1 sheet (oud-west kinker-1902-balcony-axis, edge NCC 0.18-0.43, 2024-11-12 strip): Valeriusstraat 1905-06 fronts are wide two-light windows with transoms under segmental heads, balconettes on storeys 1-2, white timber oriel stacks on 9, 15 and 21, a flat corbel-frieze cornice without dormers on 7-11 and 19-23 and a mansard with dormers on 13-17; the Kinkerstraat type draws narrow windows, balconettes on three storeys, a dormer on every front and no ground doors"
+  },
+  {
+   "pandId": "0363100012159902",
+   "reason": "Valeriusstraat 19: valerius-3-37-r1 sheet (oud-west kinker-1902-balcony-axis, edge NCC 0.18-0.43, 2024-11-12 strip): Valeriusstraat 1905-06 fronts are wide two-light windows with transoms under segmental heads, balconettes on storeys 1-2, white timber oriel stacks on 9, 15 and 21, a flat corbel-frieze cornice without dormers on 7-11 and 19-23 and a mansard with dormers on 13-17; the Kinkerstraat type draws narrow windows, balconettes on three storeys, a dormer on every front and no ground doors"
+  },
+  {
+   "pandId": "0363100012161861",
+   "reason": "Valeriusstraat 21: valerius-3-37-r1 sheet (oud-west kinker-1902-balcony-axis, edge NCC 0.18-0.43, 2024-11-12 strip): Valeriusstraat 1905-06 fronts are wide two-light windows with transoms under segmental heads, balconettes on storeys 1-2, white timber oriel stacks on 9, 15 and 21, a flat corbel-frieze cornice without dormers on 7-11 and 19-23 and a mansard with dormers on 13-17; the Kinkerstraat type draws narrow windows, balconettes on three storeys, a dormer on every front and no ground doors"
+  },
+  {
+   "pandId": "0363100012165300",
+   "reason": "Valeriusstraat 23: valerius-3-37-r1 sheet (oud-west kinker-1902-balcony-axis, edge NCC 0.18-0.43, 2024-11-12 strip): Valeriusstraat 1905-06 fronts are wide two-light windows with transoms under segmental heads, balconettes on storeys 1-2, white timber oriel stacks on 9, 15 and 21, a flat corbel-frieze cornice without dormers on 7-11 and 19-23 and a mansard with dormers on 13-17; the Kinkerstraat type draws narrow windows, balconettes on three storeys, a dormer on every front and no ground doors"
+  },
+  {
+   "pandId": "0363100012159222",
+   "reason": "Valeriusstraat 25: valerius-3-37-r1 sheet (oud-west kinker-1902-balcony-axis, edge NCC 0.18-0.43, 2024-11-12 strip): Valeriusstraat 1905-06 fronts are wide two-light windows with transoms under segmental heads, balconettes on storeys 1-2, white timber oriel stacks on 9, 15 and 21, a flat corbel-frieze cornice without dormers on 7-11 and 19-23 and a mansard with dormers on 13-17; the Kinkerstraat type draws narrow windows, balconettes on three storeys, a dormer on every front and no ground doors; 25-27A are lighter red gabled fronts, another design"
+  },
+  {
+   "pandId": "0363100012166594",
+   "reason": "Valeriusstraat 27A: valerius-3-37-r1 sheet (oud-west kinker-1902-balcony-axis, edge NCC 0.18-0.43, 2024-11-12 strip): Valeriusstraat 1905-06 fronts are wide two-light windows with transoms under segmental heads, balconettes on storeys 1-2, white timber oriel stacks on 9, 15 and 21, a flat corbel-frieze cornice without dormers on 7-11 and 19-23 and a mansard with dormers on 13-17; the Kinkerstraat type draws narrow windows, balconettes on three storeys, a dormer on every front and no ground doors; 27A drew a blue wall (palette misread); 25-27A are lighter red gabled fronts, another design"
+  }
+ ]
+}

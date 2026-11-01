@@ -1,0 +1,742 @@
+{
+ "face": "ruysdael-59-99",
+ "street": "Ruysdaelstraat",
+ "library": "museumkwartier",
+ "stripDate": "2024-11-06",
+ "seconds": 6.86,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [],
+ "pands": [
+  {
+   "pandId": "0363100012127925",
+   "address": "Ruysdaelstraat 59",
+   "builtYear": 1923,
+   "widthM": 8.16,
+   "eavesM": 13.44,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#7a6455",
+    "wallRaw": "#786753",
+    "skyline": {
+     "eavesM": 14.57,
+     "eavesRow": 446,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 7,
+    "frontClass": "columns",
+    "doorSide": null,
+    "accentSide": "left",
+    "accentShare": 0.146,
+    "structure": {
+     "bayWidthM": 0.95,
+     "bayCentre": 0.57,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0.06,
+    "foliageShare": 0.24
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best museum-de-1899-corbel-cornice: built 1923, type 1898-1901; frontage 8.16 m, type 5-6 m)",
+   "best": {
+    "type": "museum-de-1899-corbel-cornice",
+    "score": 0,
+    "veto": [
+     "built 1923, type 1898-1901",
+     "frontage 8.16 m, type 5-6 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "strip cornice 14.57 m vs the type's 13.4 m (wall-dormer skyline 14.7 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.082 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0,
+      "note": "strip columns 7 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012154443",
+   "address": "Ruysdaelstraat 61",
+   "builtYear": 1923,
+   "widthM": 8.55,
+   "eavesM": 13.32,
+   "storeys3dbag": 0,
+   "bagBay": {
+    "fromM": 0.3,
+    "toM": 0.3,
+    "depthM": 0.28,
+    "centre": 0.035
+   },
+   "strip": {
+    "wall": "#574231",
+    "wallRaw": "#54543d",
+    "skyline": {
+     "eavesM": 14.82,
+     "eavesRow": 436,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.45,
+      "riseM": 1.5,
+      "topWidthM": 0.28,
+      "centre": 0.09
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 5,
+    "frontClass": "punched",
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0.047,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.63
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best museum-de-1899-corbel-cornice: built 1923, type 1898-1901; frontage 8.55 m, type 5-6 m)",
+   "best": {
+    "type": "museum-de-1899-corbel-cornice",
+    "score": 0,
+    "veto": [
+     "built 1923, type 1898-1901",
+     "frontage 8.55 m, type 5-6 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "strip cornice 14.82 m vs the type's 13.4 m (wall-dormer skyline 14.7 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": null,
+      "note": "3DBAG bouwlagen 0 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": null,
+      "note": "no strip"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012078452",
+   "address": "Ruysdaelstraat 63",
+   "builtYear": 1923,
+   "widthM": 8.18,
+   "eavesM": 13.26,
+   "storeys3dbag": 0,
+   "bagBay": null,
+   "strip": {
+    "wall": "#785b4a",
+    "wallRaw": "#7c6854",
+    "skyline": {
+     "eavesM": 14.63,
+     "eavesRow": 444,
+     "confidence": 1,
+     "crown": {
+      "widthM": 0.57,
+      "riseM": 1.5,
+      "topWidthM": 0.1,
+      "centre": 0.96
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 5,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": "left",
+    "accentShare": 0.171,
+    "structure": {
+     "bayWidthM": 1.18,
+     "bayCentre": 0.35,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0.06,
+    "foliageShare": 0.24
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best museum-de-1899-corbel-cornice: built 1923, type 1898-1901; frontage 8.18 m, type 5-6 m)",
+   "best": {
+    "type": "museum-de-1899-corbel-cornice",
+    "score": 0,
+    "veto": [
+     "built 1923, type 1898-1901",
+     "frontage 8.18 m, type 5-6 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "strip cornice 14.63 m vs the type's 13.4 m (wall-dormer skyline 14.7 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": null,
+      "note": "3DBAG bouwlagen 0 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.095 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0,
+      "note": "strip columns 5 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012146977",
+   "address": "Ruysdaelstraat 65",
+   "builtYear": 1923,
+   "widthM": 5,
+   "eavesM": 16.36,
+   "storeys3dbag": 0,
+   "bagBay": null,
+   "strip": {
+    "wall": "#725946",
+    "wallRaw": "#736952",
+    "skyline": {
+     "eavesM": 17.23,
+     "eavesRow": 340,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.18,
+      "riseM": 4.5,
+      "topWidthM": 0.3,
+      "centre": 0.41
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": "right",
+    "accentSide": "left",
+    "accentShare": 0.115,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0.05,
+    "foliageShare": 0.33
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best museum-de-1899-corbel-cornice: built 1923, type 1898-1901)",
+   "best": {
+    "type": "museum-de-1899-corbel-cornice",
+    "score": 0,
+    "veto": [
+     "built 1923, type 1898-1901"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 17.23 m vs the type's 13.4 m (wall-dormer skyline 14.7 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": null,
+      "note": "3DBAG bouwlagen 0 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": null,
+      "note": "no strip"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012200136",
+   "address": "pand 200136",
+   "builtYear": 1903,
+   "widthM": 2.93,
+   "eavesM": 3.93,
+   "storeys3dbag": 0,
+   "bagBay": null,
+   "strip": {
+    "wall": "#4e422f",
+    "wallRaw": null,
+    "skyline": {
+     "eavesM": 15.32,
+     "eavesRow": 416,
+     "confidence": 0.89,
+     "crown": {
+      "widthM": 0.72,
+      "riseM": 3.05,
+      "topWidthM": 0.28,
+      "centre": 0.86
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 4,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": null,
+    "voidShare": 1,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "evidence",
+   "reason": "strip 100 % without panorama data",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012167149",
+   "address": "Ruysdaelstraat 67",
+   "builtYear": 1903,
+   "widthM": 36.71,
+   "eavesM": 15.77,
+   "storeys3dbag": 0,
+   "bagBay": null,
+   "strip": {
+    "wall": "#666761",
+    "wallRaw": "#6a7364",
+    "skyline": {
+     "eavesM": 18.4,
+     "eavesRow": 293,
+     "confidence": 1,
+     "crown": {
+      "widthM": 8.18,
+      "riseM": 2.38,
+      "topWidthM": 1.27,
+      "centre": 0.66
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 22,
+    "frontClass": "punched",
+    "doorSide": "right",
+    "accentSide": "right",
+    "accentShare": 0.429,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 1 m at 0.27 (light 0.04): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 1,
+       "centre": 0.27,
+       "light": 0.04
+      },
+      {
+       "widthM": 0.88,
+       "centre": 0.3,
+       "light": 0.01
+      },
+      {
+       "widthM": 1.05,
+       "centre": 0.38,
+       "light": 0.01
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 8.13,
+       "widthM": 0.95,
+       "centre": 0.47
+      },
+      {
+       "atM": 7.67,
+       "widthM": 0.9,
+       "centre": 0.36
+      },
+      {
+       "atM": 7.38,
+       "widthM": 1.15,
+       "centre": 0.18
+      },
+      {
+       "atM": 7.07,
+       "widthM": 0.85,
+       "centre": 0.11
+      }
+     ]
+    },
+    "voidShare": 0.01,
+    "foliageShare": 0.47
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best museum-de-1899-corbel-cornice: built 1903, type 1898-1901; frontage 36.71 m, type 5-6 m)",
+   "best": {
+    "type": "museum-de-1899-corbel-cornice",
+    "score": 0,
+    "veto": [
+     "built 1903, type 1898-1901",
+     "frontage 36.71 m, type 5-6 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 18.4 m vs the type's 13.4 m (wall-dormer skyline 14.7 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": null,
+      "note": "3DBAG bouwlagen 0 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": null,
+      "note": "no strip"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012167274",
+   "address": "Ruysdaelstraat 71A",
+   "builtYear": 1905,
+   "widthM": 10.25,
+   "eavesM": 16.16,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#6b513f",
+    "wallRaw": "#766554",
+    "skyline": {
+     "eavesM": 16.2,
+     "eavesRow": 381,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 4,
+    "frontClass": "punched",
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0.101,
+    "structure": {
+     "bayWidthM": 0.9,
+     "bayCentre": 0.95,
+     "balconies": false,
+     "why": "no dark open axis, 2 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 13.32,
+       "widthM": 0.82,
+       "centre": 0.67
+      },
+      {
+       "atM": 10.02,
+       "widthM": 1.38,
+       "centre": 0.15
+      },
+      {
+       "atM": 6.57,
+       "widthM": 1.4,
+       "centre": 0.65
+      }
+     ]
+    },
+    "voidShare": 0.04,
+    "foliageShare": 0.18
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best museum-de-1899-corbel-cornice: built 1905, type 1898-1901; frontage 10.25 m, type 5-6 m)",
+   "best": {
+    "type": "museum-de-1899-corbel-cornice",
+    "score": 0,
+    "veto": [
+     "built 1905, type 1898-1901",
+     "frontage 10.25 m, type 5-6 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 16.2 m vs the type's 13.4 m (wall-dormer skyline 14.7 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.054 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0.4,
+      "note": "strip columns 4 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012076109",
+   "address": "Ruysdaelstraat 73P",
+   "builtYear": 1983,
+   "widthM": 16.84,
+   "eavesM": 14.43,
+   "storeys3dbag": 0,
+   "bagBay": null,
+   "strip": {
+    "wall": "#755645",
+    "wallRaw": "#7a6753",
+    "skyline": {
+     "eavesM": 15.22,
+     "eavesRow": 420,
+     "confidence": 1,
+     "crown": {
+      "widthM": 5.13,
+      "riseM": 2.3,
+      "topWidthM": 0.55,
+      "centre": 0.17
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": "right",
+    "accentSide": "right",
+    "accentShare": 0.114,
+    "structure": {
+     "bayWidthM": 1.07,
+     "bayCentre": 0.93,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0.01,
+    "foliageShare": 0.33
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best museum-de-1899-corbel-cornice: built 1983, type 1898-1901; frontage 16.84 m, type 5-6 m)",
+   "best": {
+    "type": "museum-de-1899-corbel-cornice",
+    "score": 0,
+    "veto": [
+     "built 1983, type 1898-1901",
+     "frontage 16.84 m, type 5-6 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0.5,
+      "note": "strip cornice 15.22 m vs the type's 13.4 m (wall-dormer skyline 14.7 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": null,
+      "note": "3DBAG bouwlagen 0 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": null,
+      "note": "no strip"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012246038",
+   "address": "Ruysdaelstraat 77",
+   "builtYear": 2020,
+   "widthM": 40.06,
+   "eavesM": 15.12,
+   "storeys3dbag": 0,
+   "bagBay": null,
+   "strip": {
+    "wall": "#4d453b",
+    "wallRaw": "#52564b",
+    "skyline": {
+     "eavesM": 17.3,
+     "eavesRow": 337,
+     "confidence": 1,
+     "crown": {
+      "widthM": 6,
+      "riseM": 3.63,
+      "topWidthM": 0.2,
+      "centre": 0.51
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 10,
+    "frontClass": "punched",
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.061,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 3 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 14.07,
+       "widthM": 0.93,
+       "centre": 0.98
+      },
+      {
+       "atM": 13.03,
+       "widthM": 12.72,
+       "centre": 0.76
+      },
+      {
+       "atM": 9.95,
+       "widthM": 2.58,
+       "centre": 0.63
+      },
+      {
+       "atM": 6.8,
+       "widthM": 2.6,
+       "centre": 0.38
+      }
+     ]
+    },
+    "voidShare": 0.04,
+    "foliageShare": 0.3
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best museum-de-1899-corbel-cornice: built 2020, type 1898-1901; frontage 40.06 m, type 5-6 m)",
+   "best": {
+    "type": "museum-de-1899-corbel-cornice",
+    "score": 0,
+    "veto": [
+     "built 2020, type 1898-1901",
+     "frontage 40.06 m, type 5-6 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 17.3 m vs the type's 13.4 m (wall-dormer skyline 14.7 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": null,
+      "note": "3DBAG bouwlagen 0 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.011 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0,
+      "note": "strip columns 10 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

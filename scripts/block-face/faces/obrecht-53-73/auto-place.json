@@ -1,0 +1,539 @@
+{
+ "face": "obrecht-53-73",
+ "street": "Jacob Obrechtstraat",
+ "library": "museumkwartier",
+ "stripDate": "2024-11-06",
+ "seconds": 4.52,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [],
+ "pands": [
+  {
+   "pandId": "0363100012079935",
+   "address": "Jacob Obrechtstraat 53",
+   "builtYear": 1925,
+   "widthM": 8.76,
+   "eavesM": 11.66,
+   "storeys3dbag": 3,
+   "bagBay": null,
+   "strip": {
+    "wall": "#614d32",
+    "wallRaw": "#544b3a",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 1000,
+     "confidence": 0.21,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 2,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": "left",
+    "accentShare": 0.131,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 7.75,
+       "widthM": 0.85,
+       "centre": 0.86
+      },
+      {
+       "atM": 7.3,
+       "widthM": 1.38,
+       "centre": 0.13
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.29
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best museum-de-1899-corbel-cornice: built 1925, type 1898-1901; frontage 8.76 m, type 5-6 m)",
+   "best": {
+    "type": "museum-de-1899-corbel-cornice",
+    "score": 0,
+    "veto": [
+     "built 1925, type 1898-1901",
+     "frontage 8.76 m, type 5-6 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": null,
+      "note": "strip cornice unread (type line 13.4 m; 3DBAG 11.66 m not compared)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 0,
+      "note": "3DBAG bouwlagen 3 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.133 (brick)"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012254672",
+   "address": "Jacob Obrechtstraat 55",
+   "builtYear": 1927,
+   "widthM": 9.79,
+   "eavesM": 13.02,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#5f5542",
+    "wallRaw": "#5e5745",
+    "skyline": {
+     "eavesM": 12.9,
+     "eavesRow": 484,
+     "confidence": 0.93,
+     "crown": {
+      "widthM": 1.35,
+      "riseM": 5.2,
+      "topWidthM": 0.15,
+      "centre": 0.93
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 2,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": "right",
+    "accentShare": 0.21,
+    "structure": {
+     "bayWidthM": 1.82,
+     "bayCentre": 0.71,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.32
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best museum-de-1899-corbel-cornice: built 1927, type 1898-1901; frontage 9.79 m, type 5-6 m)",
+   "best": {
+    "type": "museum-de-1899-corbel-cornice",
+    "score": 0,
+    "veto": [
+     "built 1927, type 1898-1901",
+     "frontage 9.79 m, type 5-6 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "strip cornice 12.9 m vs the type's 13.4 m (wall-dormer skyline 14.7 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 4 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": null,
+      "note": "no strip"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012111363",
+   "address": "Jacob Obrechtstraat 67A",
+   "builtYear": 1927,
+   "widthM": 37.53,
+   "eavesM": 16.84,
+   "storeys3dbag": 0,
+   "bagBay": null,
+   "strip": {
+    "wall": "#6e5d48",
+    "wallRaw": "#696249",
+    "skyline": {
+     "eavesM": 19.2,
+     "eavesRow": 232,
+     "confidence": 0.8,
+     "crown": {
+      "widthM": 4.75,
+      "riseM": 4.2,
+      "topWidthM": 1.65,
+      "centre": 0.93
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 8,
+    "frontClass": "punched",
+    "doorSide": "left",
+    "accentSide": "right",
+    "accentShare": 0.088,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "balcony slabs stacked at 12.88 m (1.68 m wide), 9.65 m (1.68 m wide), 9.13 m (1.82 m wide), 7.4 m (1.45 m wide), 5.45 m (2.17 m wide), 5.15 m (2.65 m wide)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 12.88,
+       "widthM": 1.68,
+       "centre": 0.41
+      },
+      {
+       "atM": 10.02,
+       "widthM": 0.8,
+       "centre": 0.93
+      },
+      {
+       "atM": 9.65,
+       "widthM": 1.68,
+       "centre": 0.26
+      },
+      {
+       "atM": 9.13,
+       "widthM": 1.82,
+       "centre": 0.38
+      },
+      {
+       "atM": 7.4,
+       "widthM": 1.45,
+       "centre": 0.11
+      },
+      {
+       "atM": 5.45,
+       "widthM": 2.17,
+       "centre": 0.72
+      },
+      {
+       "atM": 5.15,
+       "widthM": 2.65,
+       "centre": 0.41
+      },
+      {
+       "atM": 4.85,
+       "widthM": 0.95,
+       "centre": 0.26
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.38
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best museum-de-1899-corbel-cornice: built 1927, type 1898-1901; frontage 37.53 m, type 5-6 m)",
+   "best": {
+    "type": "museum-de-1899-corbel-cornice",
+    "score": 0,
+    "veto": [
+     "built 1927, type 1898-1901",
+     "frontage 37.53 m, type 5-6 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 19.2 m vs the type's 13.4 m (wall-dormer skyline 14.7 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": null,
+      "note": "3DBAG bouwlagen 0 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": null,
+      "note": "no strip"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012065330",
+   "address": "Jacob Obrechtstraat 69",
+   "builtYear": 1911,
+   "widthM": 7.12,
+   "eavesM": 15.79,
+   "storeys3dbag": 5,
+   "bagBay": {
+    "fromM": 0,
+    "toM": 3.06,
+    "depthM": 0.54,
+    "centre": 0.216,
+    "lineRD": [
+     [
+      120233.38175,
+      485256.484
+     ],
+     [
+      120234.42975000001,
+      485252.799
+     ]
+    ]
+   },
+   "strip": {
+    "wall": "#69594b",
+    "wallRaw": "#6b5f4e",
+    "skyline": {
+     "eavesM": 22.82,
+     "eavesRow": 87,
+     "confidence": 0.73,
+     "crown": {
+      "widthM": 0.7,
+      "riseM": 2.18,
+      "topWidthM": 0.13,
+      "centre": 0.7
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.263,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 2 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 12.32,
+       "widthM": 1.85,
+       "centre": 0.7
+      },
+      {
+       "atM": 8.57,
+       "widthM": 1.18,
+       "centre": 0.66
+      },
+      {
+       "atM": 7.52,
+       "widthM": 1.65,
+       "centre": 0.13
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.17
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "best museum-hc-1910-glazed-oriel scores 0.6 < 0.7 (strip cornice 22.82 m vs the type's 15.3 m)",
+   "best": {
+    "type": "museum-hc-1910-glazed-oriel",
+    "score": 0.6,
+    "veto": [],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 22.82 m vs the type's 15.3 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.243 (brick)"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012107142",
+   "address": "Jacob Obrechtstraat 71",
+   "builtYear": 1911,
+   "widthM": 6.76,
+   "eavesM": 15.79,
+   "storeys3dbag": 5,
+   "bagBay": {
+    "fromM": 3.55,
+    "toM": 6.73,
+    "depthM": 0.62,
+    "centre": 0.764,
+    "lineRD": [
+     [
+      120234.73975000001,
+      485252.89900000003
+     ],
+     [
+      120236.31875,
+      485249.569
+     ]
+    ]
+   },
+   "strip": {
+    "wall": "#635544",
+    "wallRaw": "#665948",
+    "skyline": {
+     "eavesM": 17.57,
+     "eavesRow": 297,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.27,
+      "riseM": 1.85,
+      "topWidthM": 0.78,
+      "centre": 0.68
+     }
+    },
+    "stucco": false,
+    "bands": 2,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.191,
+    "structure": {
+     "bayWidthM": 0.3,
+     "bayCentre": 0.48,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 11.82,
+       "widthM": 0.97,
+       "centre": 0.7
+      },
+      {
+       "atM": 8.52,
+       "widthM": 1.68,
+       "centre": 0.6
+      },
+      {
+       "atM": 7.02,
+       "widthM": 0.9,
+       "centre": 0.12
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.2
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "best museum-hc-1910-glazed-oriel scores 0.6 < 0.7 (strip cornice 17.57 m vs the type's 15.3 m)",
+   "best": {
+    "type": "museum-hc-1910-glazed-oriel",
+    "score": 0.6,
+    "veto": [],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 17.57 m vs the type's 15.3 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.177 (brick)"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012065200",
+   "address": "Jacob Obrechtstraat 73",
+   "builtYear": 1911,
+   "widthM": 7.12,
+   "eavesM": 15.78,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#786b51",
+    "wallRaw": "#575039",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 1000,
+     "confidence": 0.1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.01,
+    "structure": {
+     "bayWidthM": 0.3,
+     "bayCentre": 0.03,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 7.67,
+       "widthM": 1.13,
+       "centre": 0.66
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.34
+   },
+   "status": "held",
+   "stage": "run",
+   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

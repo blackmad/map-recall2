@@ -1,0 +1,71 @@
+{
+ "street": "Ruysdaelstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-01T13:12:09.020Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012112615",
+   "addresses": [
+    "Ruysdaelstraat 41",
+    "Ruysdaelstraat 43"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ruysdaelstraat 41",
+     "use": "woonfunctie",
+     "areaM2": 72,
+     "bagId": "0363010000801561"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012092787",
+   "addresses": [
+    "Ruysdaelstraat 45"
+   ],
+   "groundUnits": [],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012570892",
+   "addresses": [
+    "Ruysdaelstraat 47"
+   ],
+   "groundUnits": [],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012237248",
+   "addresses": [
+    "Ruysdaelstraat 49A",
+    "Ruysdaelstraat 49B",
+    "Ruysdaelstraat 49C",
+    "Ruysdaelstraat 49D",
+    "Ruysdaelstraat 49E",
+    "Ruysdaelstraat 49F"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ruysdaelstraat 49A-1",
+     "use": "kantoorfunctie",
+     "areaM2": 1266,
+     "bagId": "0363010000951114"
+    },
+    {
+     "address": "Ruysdaelstraat 49A-8",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 229,
+     "bagId": "0363010000951115"
+    }
+   ],
+   "units": 26,
+   "osm": []
+  }
+ ]
+}

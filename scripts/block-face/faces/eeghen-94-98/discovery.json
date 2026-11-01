@@ -1,0 +1,282 @@
+{
+ "street": "Van Eeghenstraat",
+ "seed": "0363100012159803",
+ "members": [
+  "0363100012156562",
+  "0363100012162522",
+  "0363100012159803"
+ ],
+ "ends": [
+  {
+   "side": "left",
+   "reason": "next fronting pand 0363100012161170 18.2 m on shares no party wall (cross street or gap)"
+  },
+  {
+   "side": "right",
+   "reason": "next fronting pand 0363100012163452 20.0 m on shares no party wall (cross street or gap)"
+  }
+ ],
+ "rejected": [
+  {
+   "pandId": "0363100012152869",
+   "reason": "frontage 47.8 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012153606",
+   "reason": "frontage 34.2 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012155651",
+   "reason": "frontage 60.8 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012155662",
+   "reason": "frontage 55.7 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012157240",
+   "reason": "frontage 60.8 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012157545",
+   "reason": "frontage 48.0 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012157586",
+   "reason": "frontage 45.8 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012158500",
+   "reason": "frontage 36.5 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012158578",
+   "reason": "sightline to Van Eeghenstraat crosses 0363100012163817"
+  },
+  {
+   "pandId": "0363100012158726",
+   "reason": "frontage 54.1 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012161355",
+   "reason": "frontage 49.4 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012161390",
+   "reason": "sightline to Van Eeghenstraat crosses 0363100012166564"
+  },
+  {
+   "pandId": "0363100012161533",
+   "reason": "frontage 90.2 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012163817",
+   "reason": "sightline to Van Eeghenstraat crosses 0363100012165160"
+  },
+  {
+   "pandId": "0363100012163903",
+   "reason": "frontage 59.7 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012163913",
+   "reason": "frontage 88.3 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012164523",
+   "reason": "frontage 45.7 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012164557",
+   "reason": "frontage 41.0 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012165895",
+   "reason": "frontage 89.3 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012167008",
+   "reason": "sightline to Van Eeghenstraat crosses 0363100012161390"
+  },
+  {
+   "pandId": "0363100012167288",
+   "reason": "frontage 91.2 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012196230",
+   "reason": "frontage 60.0 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012235930",
+   "reason": "no frontage on Van Eeghenstraat: No footprint edge faces Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012236119",
+   "reason": "frontage 48.2 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012236347",
+   "reason": "frontage 50.7 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012236472",
+   "reason": "no frontage on Van Eeghenstraat: No footprint edge faces Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012236757",
+   "reason": "frontage 46.9 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012236903",
+   "reason": "frontage 58.1 m from Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012236904",
+   "reason": "no frontage on Van Eeghenstraat: No footprint edge faces Van Eeghenstraat"
+  },
+  {
+   "pandId": "0363100012152927",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012153061",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012153158",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012155542",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012156483",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012157152",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012157305",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012157374",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012157759",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012158260",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012159709",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012160642",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012161649",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012162110",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012162260",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012162678",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012162937",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012163488",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012163535",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012163546",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012163871",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012165160",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012165473",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012166069",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012166564",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012167022",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012167040",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012236217",
+   "reason": "fronts the other side / another direction"
+  }
+ ],
+ "areaHalfSizeM": 90,
+ "pands": [
+  {
+   "pandId": "0363100012156562",
+   "alongM": -18.19,
+   "widthM": 2.52,
+   "eavesM": 18.14,
+   "roofMaxM": 20.79,
+   "storeys3dbag": 5,
+   "builtYear": 1903,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012162522",
+   "alongM": -8.95,
+   "widthM": 7.56,
+   "eavesM": 15.24,
+   "roofMaxM": 20.63,
+   "storeys3dbag": 5,
+   "builtYear": 1903,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012159803",
+   "alongM": 0,
+   "widthM": 2.48,
+   "eavesM": 3.44,
+   "roofMaxM": 21.34,
+   "storeys3dbag": 5,
+   "builtYear": 1903,
+   "uncertainty": []
+  }
+ ]
+}

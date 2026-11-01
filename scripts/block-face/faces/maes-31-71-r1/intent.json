@@ -1,0 +1,279 @@
+{
+ "schemaVersion": 1,
+ "kind": "block-face",
+ "id": "maes-31-71-r1",
+ "street": "Nicolaas Maesstraat",
+ "sources": [
+  {
+   "id": "strip-2022-03-21",
+   "kind": "street-panorama",
+   "capturedAt": "2022-03-21",
+   "image": "staging/block-face/maes-31-71-r1/strip.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "authoring": {
+  "author": "auto-place (blockFace/autoPlace.ts)",
+  "passes": 1,
+  "note": "auto-placed from the museumkwartier library (buurt Johannes Vermeerbuurt); scores and holds in scripts/block-face/faces/maes-31-71/auto-place.json"
+ },
+ "types": [
+  "museum-jv-1910-lintel-parapet"
+ ],
+ "houses": [
+  {
+   "pandId": "0363100012101245",
+   "slug": "maes-101245",
+   "address": "Nicolaas Maesstraat 47",
+   "type": {
+    "type": "museum-jv-1910-lintel-parapet",
+    "measuredPalette": {
+     "brick": "#957869",
+     "evidence": "strip 2022-03-21 span 2096-2361: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "paletteOverrides": {
+     "brick": "#716b65"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2022-03-21",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: museum-jv-1910-lintel-parapet scored 1 on eaves 1, storeys 1, stucco 1, columns 1; strip 2022-03-21 span 2096-2361"
+   }
+  },
+  {
+   "pandId": "0363100012064242",
+   "slug": "maes-064242",
+   "address": "Nicolaas Maesstraat 49",
+   "type": {
+    "type": "museum-jv-1910-lintel-parapet",
+    "measuredPalette": {
+     "brick": "#675a50",
+     "evidence": "strip 2022-03-21 span 2361-2612: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "mirror": true,
+    "paletteOverrides": {
+     "brick": "#716b65"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2022-03-21",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: museum-jv-1910-lintel-parapet scored 1 on eaves 1, storeys 1, stucco 1, columns 1; strip 2022-03-21 span 2361-2612"
+   }
+  },
+  {
+   "pandId": "0363100012125531",
+   "slug": "maes-125531",
+   "address": "Nicolaas Maesstraat 51",
+   "type": {
+    "type": "museum-jv-1910-lintel-parapet",
+    "measuredPalette": {
+     "brick": "#887770",
+     "evidence": "strip 2022-03-21 span 2612-2865: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "paletteOverrides": {
+     "brick": "#716b65"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2022-03-21",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: museum-jv-1910-lintel-parapet scored 1 on eaves 1, storeys 1, stucco 1, columns 1; strip 2022-03-21 span 2612-2865"
+   }
+  },
+  {
+   "pandId": "0363100012161910",
+   "slug": "maes-161910",
+   "address": "Nicolaas Maesstraat 53",
+   "type": {
+    "type": "museum-jv-1910-lintel-parapet",
+    "measuredPalette": {
+     "brick": "#534a40",
+     "evidence": "strip 2022-03-21 span 2864-3106: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "mirror": true,
+    "paletteOverrides": {
+     "brick": "#716b65"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2022-03-21",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: museum-jv-1910-lintel-parapet scored 1 on eaves 1, storeys 1, stucco 1, columns 1; strip 2022-03-21 span 2864-3106"
+   }
+  },
+  {
+   "pandId": "0363100012063128",
+   "slug": "maes-063128",
+   "address": "Nicolaas Maesstraat 55",
+   "type": {
+    "type": "museum-jv-1910-lintel-parapet",
+    "measuredPalette": {
+     "brick": "#5f5750",
+     "evidence": "strip 2022-03-21 span 3107-3360: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "paletteOverrides": {
+     "brick": "#716b65"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2022-03-21",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: museum-jv-1910-lintel-parapet scored 1 on eaves 1, storeys 1, stucco 1, columns 1; strip 2022-03-21 span 3107-3360"
+   }
+  },
+  {
+   "pandId": "0363100012111419",
+   "slug": "maes-111419",
+   "address": "Nicolaas Maesstraat 57",
+   "type": {
+    "type": "museum-jv-1910-lintel-parapet",
+    "measuredPalette": {
+     "brick": "#716b67",
+     "evidence": "strip 2022-03-21 span 3359-3604: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "mirror": true,
+    "paletteOverrides": {
+     "brick": "#716b65"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2022-03-21",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: museum-jv-1910-lintel-parapet scored 1 on eaves 1, storeys 1, stucco 1, columns 1; strip 2022-03-21 span 3359-3604"
+   }
+  },
+  {
+   "pandId": "0363100012150328",
+   "slug": "maes-150328",
+   "address": "Nicolaas Maesstraat 59",
+   "type": {
+    "type": "museum-jv-1910-lintel-parapet",
+    "measuredPalette": {
+     "brick": "#6e6965",
+     "evidence": "strip 2022-03-21 span 3604-3862: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "paletteOverrides": {
+     "brick": "#716b65"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2022-03-21",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: museum-jv-1910-lintel-parapet scored 1 on eaves 1, storeys 1, stucco 1, columns 1; strip 2022-03-21 span 3604-3862"
+   }
+  },
+  {
+   "pandId": "0363100012095505",
+   "slug": "maes-095505",
+   "address": "Nicolaas Maesstraat 61",
+   "type": {
+    "type": "museum-jv-1910-lintel-parapet",
+    "measuredPalette": {
+     "brick": "#836d62",
+     "evidence": "strip 2022-03-21 span 3862-4110: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "mirror": true,
+    "paletteOverrides": {
+     "brick": "#716b65"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2022-03-21",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: museum-jv-1910-lintel-parapet scored 1 on eaves 1, storeys 1, stucco 1, columns 1; strip 2022-03-21 span 3862-4110"
+   }
+  }
+ ],
+ "continuity": {
+  "streetLevel": "shared",
+  "corniceGroups": [],
+  "identical": [],
+  "partyClip": true,
+  "roof": {
+   "source": "recipe",
+   "pitchDeg": 30,
+   "evidence": "auto-place: low attic behind the cornice; the strips show sky over the cornices of the type rows"
+  },
+  "measuredEaves": [
+   {
+    "pand": "0363100012064242",
+    "stripRow": 250,
+    "evidence": "review (#160): cornice 13.65 m on the 1 m gridded strip; the skyline's 14.63 m is the top of the roof face behind the cornice, foreshortened"
+   },
+   {
+    "pand": "0363100012125531",
+    "stripRow": 250,
+    "evidence": "review (#160): cornice 13.65 m on the 1 m gridded strip; the skyline's 14.55 m is the top of the roof face behind the cornice, foreshortened"
+   },
+   {
+    "pand": "0363100012150328",
+    "stripRow": 250,
+    "frontRoof": {},
+    "evidence": "auto-place: the museum-jv-1910-lintel-parapet cornice line 13.65 m (measured on its exemplar strips; this pand's skyline unread); 3DBAG/PDOK eaves 14.87 m"
+   },
+   {
+    "pand": "0363100012095505",
+    "stripRow": 250,
+    "evidence": "review (#160): cornice 13.65 m on the 1 m gridded strip; the skyline's 14.65 m is the top of the roof face behind the cornice, foreshortened"
+   }
+  ]
+ }
+}

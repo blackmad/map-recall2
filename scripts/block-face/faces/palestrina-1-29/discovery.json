@@ -1,0 +1,2043 @@
+{
+ "street": "Palestrinastraat",
+ "seed": "0363100012153647",
+ "members": [
+  "0363100012153647",
+  "0363100012160974",
+  "0363100012152715",
+  "0363100012158394",
+  "0363100012131514",
+  "0363100012109934",
+  "0363100012119449",
+  "0363100012110342",
+  "0363100012088169",
+  "0363100012135596",
+  "0363100012076391",
+  "0363100012160752",
+  "0363100012165339",
+  "0363100012155748",
+  "0363100012236385"
+ ],
+ "ends": [
+  {
+   "side": "left",
+   "reason": "trimmed at 0363100012153647 (face continues: 107332)"
+  },
+  {
+   "side": "right",
+   "reason": "trimmed at 0363100012236385 (face continues: 152774)"
+  }
+ ],
+ "rejected": [
+  {
+   "pandId": "0363100012069411",
+   "reason": "frontage 84.2 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012072072",
+   "reason": "frontage 82.8 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012072116",
+   "reason": "frontage 42.5 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012073293",
+   "reason": "frontage 46.1 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012074908",
+   "reason": "frontage 42.8 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012076024",
+   "reason": "frontage 163.3 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012077791",
+   "reason": "frontage 172.2 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012078650",
+   "reason": "frontage 80.3 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012078695",
+   "reason": "frontage 67.7 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012080119",
+   "reason": "frontage 168.0 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012082824",
+   "reason": "frontage 158.0 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012083440",
+   "reason": "frontage 79.3 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012084411",
+   "reason": "frontage 40.9 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012094824",
+   "reason": "no frontage on Palestrinastraat: No footprint edge faces Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012103728",
+   "reason": "frontage 40.7 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012061581",
+   "reason": "frontage 157.4 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012061747",
+   "reason": "frontage 121.9 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012063908",
+   "reason": "frontage 187.3 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012065378",
+   "reason": "frontage 157.2 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012065680",
+   "reason": "frontage 121.2 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012066610",
+   "reason": "frontage 103.0 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012068364",
+   "reason": "frontage 106.0 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012068545",
+   "reason": "frontage 217.3 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012070429",
+   "reason": "frontage 184.5 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012074664",
+   "reason": "frontage 212.6 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012077169",
+   "reason": "frontage 216.0 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012077779",
+   "reason": "frontage 157.2 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012078941",
+   "reason": "frontage 199.4 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012079390",
+   "reason": "frontage 189.6 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012083474",
+   "reason": "frontage 197.2 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012086729",
+   "reason": "frontage 133.5 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012086954",
+   "reason": "frontage 211.9 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012088619",
+   "reason": "frontage 114.2 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012089720",
+   "reason": "frontage 186.0 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012090555",
+   "reason": "frontage 201.8 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012090723",
+   "reason": "frontage 212.1 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012090956",
+   "reason": "frontage 117.5 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012091058",
+   "reason": "frontage 157.3 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012092581",
+   "reason": "frontage 157.2 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012097766",
+   "reason": "frontage 157.0 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012099898",
+   "reason": "frontage 185.6 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012102212",
+   "reason": "frontage 157.0 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012102603",
+   "reason": "frontage 186.9 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012105244",
+   "reason": "frontage 157.3 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012105454",
+   "reason": "frontage 213.1 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012105894",
+   "reason": "frontage 157.3 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012107749",
+   "reason": "frontage 188.1 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012108114",
+   "reason": "frontage 193.2 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012108862",
+   "reason": "frontage 173.2 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012112804",
+   "reason": "no frontage on Palestrinastraat: No footprint edge faces Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012115230",
+   "reason": "frontage 32.6 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012117884",
+   "reason": "sightline to Palestrinastraat crosses 0363100012156951"
+  },
+  {
+   "pandId": "0363100012123673",
+   "reason": "frontage 153.7 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012125480",
+   "reason": "no frontage on Palestrinastraat: No footprint edge faces Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012127043",
+   "reason": "frontage 149.1 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012131367",
+   "reason": "frontage 155.3 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012132257",
+   "reason": "frontage 159.1 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012132314",
+   "reason": "frontage 152.2 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012137088",
+   "reason": "frontage 208.4 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012138215",
+   "reason": "frontage 111.9 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012138649",
+   "reason": "frontage 40.9 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012138687",
+   "reason": "frontage 88.7 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012143018",
+   "reason": "frontage 111.9 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012144606",
+   "reason": "frontage 86.4 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012145693",
+   "reason": "frontage 112.8 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012145883",
+   "reason": "no frontage on Palestrinastraat: No footprint edge faces Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012111893",
+   "reason": "frontage 212.3 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012113371",
+   "reason": "frontage 233.9 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012114665",
+   "reason": "frontage 191.3 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012115169",
+   "reason": "frontage 157.2 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012116424",
+   "reason": "frontage 214.8 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012118867",
+   "reason": "frontage 116.9 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012119761",
+   "reason": "frontage 184.9 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012122929",
+   "reason": "frontage 157.3 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012122938",
+   "reason": "frontage 115.5 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012124673",
+   "reason": "frontage 157.0 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012126652",
+   "reason": "frontage 184.2 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012132447",
+   "reason": "frontage 179.1 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012133086",
+   "reason": "frontage 127.1 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012136080",
+   "reason": "frontage 127.4 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012136992",
+   "reason": "frontage 176.1 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012138291",
+   "reason": "frontage 138.2 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012138486",
+   "reason": "frontage 185.4 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012138798",
+   "reason": "frontage 195.1 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012139354",
+   "reason": "frontage 184.3 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012141867",
+   "reason": "frontage 117.5 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012142783",
+   "reason": "frontage 213.9 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012144118",
+   "reason": "frontage 157.0 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012145619",
+   "reason": "frontage 117.6 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012145801",
+   "reason": "frontage 205.6 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012146221",
+   "reason": "frontage 117.5 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012147718",
+   "reason": "frontage 184.7 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012150265",
+   "reason": "no frontage on Palestrinastraat: No footprint edge faces Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012151883",
+   "reason": "frontage 149.7 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012152346",
+   "reason": "frontage 108.8 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012152381",
+   "reason": "frontage 178.2 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012152419",
+   "reason": "frontage 100.5 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012152420",
+   "reason": "frontage 106.0 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012152486",
+   "reason": "frontage 39.3 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012152495",
+   "reason": "frontage 70.5 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012152501",
+   "reason": "frontage 70.2 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012152528",
+   "reason": "frontage 197.8 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012152638",
+   "reason": "frontage 37.7 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012152719",
+   "reason": "frontage 107.0 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012152743",
+   "reason": "frontage 70.3 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012152751",
+   "reason": "frontage 40.9 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012152796",
+   "reason": "frontage 107.7 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012152809",
+   "reason": "no frontage on Palestrinastraat: No footprint edge faces Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012152836",
+   "reason": "frontage 107.1 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012152896",
+   "reason": "frontage 45.8 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012153028",
+   "reason": "frontage 43.7 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012153111",
+   "reason": "frontage 44.9 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012153182",
+   "reason": "frontage 181.4 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012153222",
+   "reason": "frontage 177.5 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012153396",
+   "reason": "frontage 34.4 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012153397",
+   "reason": "frontage 69.8 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012153603",
+   "reason": "frontage 200.0 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012153721",
+   "reason": "frontage 178.3 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012153806",
+   "reason": "frontage 40.5 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012154090",
+   "reason": "frontage 39.1 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012154215",
+   "reason": "frontage 40.6 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012154232",
+   "reason": "no frontage on Palestrinastraat: No footprint edge faces Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012154372",
+   "reason": "frontage 208.0 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012154379",
+   "reason": "sightline to Palestrinastraat crosses 0363100012153647"
+  },
+  {
+   "pandId": "0363100012154383",
+   "reason": "frontage 108.0 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012155582",
+   "reason": "frontage 142.1 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012155596",
+   "reason": "frontage 41.3 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012153008",
+   "reason": "frontage 83.5 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012153149",
+   "reason": "frontage 78.5 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012154188",
+   "reason": "no frontage on Palestrinastraat: No footprint edge faces Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012151501",
+   "reason": "frontage 204.4 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012152452",
+   "reason": "no frontage on Palestrinastraat: No footprint edge faces Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012152782",
+   "reason": "frontage 92.5 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012153148",
+   "reason": "frontage 225.8 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012153904",
+   "reason": "frontage 218.7 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012155183",
+   "reason": "frontage 185.2 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012155607",
+   "reason": "sightline to Palestrinastraat crosses 0363100012161393"
+  },
+  {
+   "pandId": "0363100012155644",
+   "reason": "frontage 88.2 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012155784",
+   "reason": "frontage 70.6 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012155817",
+   "reason": "frontage 104.4 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012155885",
+   "reason": "sightline to Palestrinastraat crosses 0363100012162934"
+  },
+  {
+   "pandId": "0363100012155892",
+   "reason": "frontage 207.9 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012155894",
+   "reason": "frontage 92.2 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012155965",
+   "reason": "sightline to Palestrinastraat crosses 0363100012155607"
+  },
+  {
+   "pandId": "0363100012156011",
+   "reason": "frontage 87.2 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012156035",
+   "reason": "frontage 70.4 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012156165",
+   "reason": "no frontage on Palestrinastraat: No footprint edge faces Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012156224",
+   "reason": "frontage 148.7 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012156247",
+   "reason": "frontage 82.6 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012156283",
+   "reason": "frontage 70.5 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012156291",
+   "reason": "frontage 74.1 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012156329",
+   "reason": "no frontage on Palestrinastraat: No footprint edge faces Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012156363",
+   "reason": "frontage 41.5 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012156384",
+   "reason": "frontage 142.7 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012156464",
+   "reason": "no frontage on Palestrinastraat: No footprint edge faces Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012156500",
+   "reason": "frontage 142.8 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012156507",
+   "reason": "frontage 142.5 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012156524",
+   "reason": "frontage 44.3 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012156558",
+   "reason": "frontage 142.9 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012156624",
+   "reason": "frontage 121.4 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012156628",
+   "reason": "frontage 41.4 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012156648",
+   "reason": "frontage 142.4 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012156696",
+   "reason": "frontage 30.1 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012156890",
+   "reason": "frontage 70.7 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012156897",
+   "reason": "frontage 37.1 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012156951",
+   "reason": "no frontage on Palestrinastraat: No footprint edge faces Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012157085",
+   "reason": "frontage 103.8 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012157181",
+   "reason": "frontage 77.4 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012157241",
+   "reason": "frontage 176.1 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012157247",
+   "reason": "frontage 41.9 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012157254",
+   "reason": "frontage 142.8 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012157377",
+   "reason": "frontage 108.4 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012157378",
+   "reason": "frontage 102.5 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012157380",
+   "reason": "frontage 141.8 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012157431",
+   "reason": "frontage 111.0 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012157438",
+   "reason": "no frontage on Palestrinastraat: No footprint edge faces Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012156079",
+   "reason": "no frontage on Palestrinastraat: No footprint edge faces Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012155864",
+   "reason": "frontage 179.1 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012155779",
+   "reason": "frontage 223.8 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012155847",
+   "reason": "no frontage on Palestrinastraat: No footprint edge faces Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012156478",
+   "reason": "frontage 222.0 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012157101",
+   "reason": "frontage 90.7 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012157226",
+   "reason": "frontage 86.6 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012157283",
+   "reason": "frontage 99.0 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012157764",
+   "reason": "frontage 70.4 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012157795",
+   "reason": "frontage 85.2 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012158014",
+   "reason": "frontage 177.1 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012158017",
+   "reason": "frontage 107.8 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012158032",
+   "reason": "frontage 109.2 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012158336",
+   "reason": "frontage 105.6 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012158337",
+   "reason": "frontage 107.1 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012158338",
+   "reason": "frontage 39.8 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012158378",
+   "reason": "frontage 70.0 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012158385",
+   "reason": "frontage 77.2 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012158442",
+   "reason": "frontage 39.4 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012158475",
+   "reason": "frontage 181.5 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012158601",
+   "reason": "frontage 208.1 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012158617",
+   "reason": "frontage 178.2 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012158629",
+   "reason": "frontage 107.6 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012158640",
+   "reason": "frontage 119.5 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012158647",
+   "reason": "frontage 103.7 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012158802",
+   "reason": "frontage 37.0 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012158803",
+   "reason": "frontage 89.6 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012158807",
+   "reason": "frontage 108.1 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012158943",
+   "reason": "frontage 143.3 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012158950",
+   "reason": "no frontage on Palestrinastraat: No footprint edge faces Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012159009",
+   "reason": "frontage 37.8 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012159211",
+   "reason": "frontage 77.2 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012159256",
+   "reason": "frontage 44.7 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012159292",
+   "reason": "frontage 142.6 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012159293",
+   "reason": "no frontage on Palestrinastraat: No footprint edge faces Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012159344",
+   "reason": "frontage 38.2 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012159371",
+   "reason": "frontage 144.4 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012159514",
+   "reason": "frontage 108.8 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012159629",
+   "reason": "frontage 208.2 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012159730",
+   "reason": "frontage 141.9 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012159785",
+   "reason": "frontage 39.7 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012159919",
+   "reason": "frontage 77.3 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012159946",
+   "reason": "frontage 110.5 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012157575",
+   "reason": "no frontage on Palestrinastraat: No footprint edge faces Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012159380",
+   "reason": "frontage 72.8 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012159619",
+   "reason": "frontage 88.9 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012159625",
+   "reason": "frontage 79.1 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012159796",
+   "reason": "frontage 179.1 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012158182",
+   "reason": "frontage 228.0 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012159077",
+   "reason": "no frontage on Palestrinastraat: No footprint edge faces Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012159254",
+   "reason": "frontage 220.3 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012159697",
+   "reason": "frontage 93.2 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012160014",
+   "reason": "frontage 143.2 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012160038",
+   "reason": "frontage 77.3 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012160186",
+   "reason": "frontage 39.5 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012160266",
+   "reason": "frontage 56.4 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012160277",
+   "reason": "frontage 142.3 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012160336",
+   "reason": "frontage 104.8 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012160337",
+   "reason": "sightline to Palestrinastraat crosses 0363100012153647"
+  },
+  {
+   "pandId": "0363100012160411",
+   "reason": "frontage 178.2 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012160416",
+   "reason": "sightline to Palestrinastraat crosses 0363100012155885"
+  },
+  {
+   "pandId": "0363100012160437",
+   "reason": "frontage 106.9 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012160453",
+   "reason": "frontage 143.7 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012160547",
+   "reason": "no frontage on Palestrinastraat: No footprint edge faces Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012160548",
+   "reason": "no frontage on Palestrinastraat: No footprint edge faces Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012160760",
+   "reason": "frontage 107.1 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012160779",
+   "reason": "frontage 36.7 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012160787",
+   "reason": "frontage 70.1 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012160790",
+   "reason": "frontage 103.8 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012160796",
+   "reason": "frontage 40.4 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012160817",
+   "reason": "frontage 52.8 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012160997",
+   "reason": "frontage 77.2 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012161081",
+   "reason": "frontage 114.4 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012161172",
+   "reason": "frontage 77.3 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012161210",
+   "reason": "frontage 77.2 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012161332",
+   "reason": "frontage 39.5 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012161430",
+   "reason": "no frontage on Palestrinastraat: No footprint edge faces Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012161477",
+   "reason": "no frontage on Palestrinastraat: No footprint edge faces Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012161550",
+   "reason": "frontage 178.1 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012161567",
+   "reason": "frontage 70.7 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012161732",
+   "reason": "frontage 77.4 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012161757",
+   "reason": "frontage 178.8 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012161802",
+   "reason": "frontage 147.1 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012161854",
+   "reason": "frontage 179.1 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012161880",
+   "reason": "frontage 103.4 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012161940",
+   "reason": "frontage 32.9 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012162023",
+   "reason": "frontage 70.7 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012162112",
+   "reason": "frontage 77.3 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012162230",
+   "reason": "frontage 179.1 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012162246",
+   "reason": "frontage 69.9 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012160039",
+   "reason": "frontage 208.2 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012161408",
+   "reason": "frontage 162.4 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012160392",
+   "reason": "frontage 96.7 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012160954",
+   "reason": "no frontage on Palestrinastraat: No footprint edge faces Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012162425",
+   "reason": "frontage 44.5 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012162438",
+   "reason": "frontage 112.5 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012162484",
+   "reason": "frontage 70.2 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012162487",
+   "reason": "frontage 77.2 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012162514",
+   "reason": "frontage 112.3 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012162575",
+   "reason": "frontage 44.0 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012162727",
+   "reason": "frontage 208.2 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012162815",
+   "reason": "frontage 182.2 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012162837",
+   "reason": "frontage 142.0 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012162839",
+   "reason": "frontage 143.1 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012163181",
+   "reason": "sightline to Palestrinastraat crosses 0363100012152774"
+  },
+  {
+   "pandId": "0363100012163199",
+   "reason": "frontage 208.1 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012163259",
+   "reason": "frontage 70.5 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012163294",
+   "reason": "frontage 107.5 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012163334",
+   "reason": "frontage 70.7 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012163402",
+   "reason": "frontage 108.9 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012163413",
+   "reason": "frontage 41.0 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012163471",
+   "reason": "frontage 143.3 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012163537",
+   "reason": "frontage 83.9 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012163555",
+   "reason": "no frontage on Palestrinastraat: No footprint edge faces Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012163593",
+   "reason": "frontage 103.3 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012163621",
+   "reason": "frontage 70.3 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012163687",
+   "reason": "no frontage on Palestrinastraat: No footprint edge faces Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012163754",
+   "reason": "frontage 69.8 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012163762",
+   "reason": "frontage 43.8 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012163789",
+   "reason": "frontage 207.2 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012163883",
+   "reason": "frontage 44.8 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012163884",
+   "reason": "no frontage on Palestrinastraat: No footprint edge faces Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012163914",
+   "reason": "frontage 71.0 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012163917",
+   "reason": "frontage 110.9 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012164158",
+   "reason": "sightline to Palestrinastraat crosses 0363100012160974"
+  },
+  {
+   "pandId": "0363100012164193",
+   "reason": "frontage 37.9 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012164237",
+   "reason": "frontage 56.1 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012164293",
+   "reason": "frontage 70.6 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012164327",
+   "reason": "frontage 77.3 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012164345",
+   "reason": "frontage 70.1 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012164442",
+   "reason": "frontage 142.7 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012164458",
+   "reason": "no frontage on Palestrinastraat: No footprint edge faces Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012164472",
+   "reason": "frontage 39.6 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012164489",
+   "reason": "frontage 71.1 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012164531",
+   "reason": "frontage 178.4 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012162309",
+   "reason": "frontage 46.4 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012164365",
+   "reason": "no frontage on Palestrinastraat: No footprint edge faces Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012164455",
+   "reason": "frontage 97.3 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012162728",
+   "reason": "frontage 89.7 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012163157",
+   "reason": "frontage 83.7 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012163436",
+   "reason": "no frontage on Palestrinastraat: No footprint edge faces Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012163437",
+   "reason": "no frontage on Palestrinastraat: No footprint edge faces Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012164333",
+   "reason": "frontage 157.3 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012164540",
+   "reason": "frontage 77.3 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012164563",
+   "reason": "frontage 143.1 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012164575",
+   "reason": "frontage 107.6 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012164612",
+   "reason": "frontage 62.9 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012164614",
+   "reason": "frontage 55.1 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012164629",
+   "reason": "sightline to Palestrinastraat crosses 0363100012153647"
+  },
+  {
+   "pandId": "0363100012164633",
+   "reason": "no frontage on Palestrinastraat: No footprint edge faces Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012164701",
+   "reason": "frontage 38.1 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012164709",
+   "reason": "frontage 155.1 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012164761",
+   "reason": "frontage 143.4 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012164862",
+   "reason": "frontage 50.5 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012164883",
+   "reason": "frontage 98.3 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012164901",
+   "reason": "frontage 88.7 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012165281",
+   "reason": "frontage 42.6 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012165333",
+   "reason": "frontage 152.7 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012165346",
+   "reason": "frontage 41.2 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012165363",
+   "reason": "frontage 36.9 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012165368",
+   "reason": "frontage 141.7 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012165442",
+   "reason": "frontage 41.6 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012165479",
+   "reason": "frontage 91.5 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012165527",
+   "reason": "frontage 181.5 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012165544",
+   "reason": "frontage 70.4 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012165669",
+   "reason": "frontage 77.3 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012165742",
+   "reason": "frontage 177.5 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012165797",
+   "reason": "frontage 88.2 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012165801",
+   "reason": "frontage 70.1 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012165890",
+   "reason": "frontage 116.3 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012165998",
+   "reason": "frontage 44.1 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012166010",
+   "reason": "frontage 88.7 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012166025",
+   "reason": "frontage 107.1 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012166072",
+   "reason": "no frontage on Palestrinastraat: No footprint edge faces Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012166099",
+   "reason": "frontage 103.2 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012166111",
+   "reason": "frontage 141.6 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012166115",
+   "reason": "no frontage on Palestrinastraat: No footprint edge faces Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012166316",
+   "reason": "frontage 71.7 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012166364",
+   "reason": "frontage 40.0 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012166436",
+   "reason": "frontage 68.8 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012166445",
+   "reason": "frontage 70.6 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012166459",
+   "reason": "frontage 96.5 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012166553",
+   "reason": "no frontage on Palestrinastraat: No footprint edge faces Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012166597",
+   "reason": "frontage 76.8 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012166789",
+   "reason": "frontage 70.0 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012166880",
+   "reason": "frontage 51.6 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012165923",
+   "reason": "frontage 208.1 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012166607",
+   "reason": "frontage 230.2 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012166942",
+   "reason": "frontage 70.5 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012166994",
+   "reason": "frontage 88.7 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012167018",
+   "reason": "frontage 108.7 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012167023",
+   "reason": "no frontage on Palestrinastraat: No footprint edge faces Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012167035",
+   "reason": "frontage 113.6 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012167076",
+   "reason": "frontage 32.5 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012167087",
+   "reason": "frontage 150.6 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012167167",
+   "reason": "frontage 120.7 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012167195",
+   "reason": "frontage 178.5 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012167277",
+   "reason": "sightline to Palestrinastraat crosses 0363100012155607"
+  },
+  {
+   "pandId": "0363100012167280",
+   "reason": "frontage 70.5 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012167292",
+   "reason": "frontage 41.0 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012167372",
+   "reason": "frontage 39.9 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012167395",
+   "reason": "frontage 70.2 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012167409",
+   "reason": "no frontage on Palestrinastraat: No footprint edge faces Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012167422",
+   "reason": "frontage 41.2 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012185427",
+   "reason": "frontage 32.0 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012185906",
+   "reason": "frontage 50.8 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012187048",
+   "reason": "frontage 39.4 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012187115",
+   "reason": "frontage 33.3 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012195629",
+   "reason": "frontage 166.8 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012197821",
+   "reason": "sightline to Palestrinastraat crosses 0363100012155748"
+  },
+  {
+   "pandId": "0363100012200115",
+   "reason": "sightline to Palestrinastraat crosses 0363100012218615"
+  },
+  {
+   "pandId": "0363100012200127",
+   "reason": "frontage 168.3 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012202476",
+   "reason": "frontage 78.3 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012215931",
+   "reason": "frontage 167.2 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012227595",
+   "reason": "frontage 105.4 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012228575",
+   "reason": "frontage 108.5 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012228732",
+   "reason": "frontage 40.6 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012233435",
+   "reason": "frontage 70.4 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012233618",
+   "reason": "frontage 83.2 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012234991",
+   "reason": "no frontage on Palestrinastraat: No footprint edge faces Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012235374",
+   "reason": "no frontage on Palestrinastraat: No footprint edge faces Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012235394",
+   "reason": "frontage 110.3 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012235927",
+   "reason": "frontage 96.7 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012235940",
+   "reason": "sightline to Palestrinastraat crosses 0363100012152774"
+  },
+  {
+   "pandId": "0363100012235978",
+   "reason": "frontage 181.8 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012236000",
+   "reason": "frontage 117.4 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012236083",
+   "reason": "no frontage on Palestrinastraat: No footprint edge faces Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012236145",
+   "reason": "no frontage on Palestrinastraat: No footprint edge faces Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012236179",
+   "reason": "frontage 158.3 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012166982",
+   "reason": "no frontage on Palestrinastraat: No footprint edge faces Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012201298",
+   "reason": "frontage 45.4 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012224622",
+   "reason": "frontage 115.7 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012235899",
+   "reason": "frontage 84.5 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012167444",
+   "reason": "frontage 81.3 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012191157",
+   "reason": "frontage 104.0 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012191848",
+   "reason": "frontage 181.1 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012227383",
+   "reason": "frontage 181.1 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012236183",
+   "reason": "frontage 110.4 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012236205",
+   "reason": "frontage 50.6 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012236252",
+   "reason": "frontage 145.3 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012236405",
+   "reason": "sightline to Palestrinastraat crosses 0363100012152774"
+  },
+  {
+   "pandId": "0363100012236415",
+   "reason": "frontage 90.2 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012236417",
+   "reason": "no frontage on Palestrinastraat: No footprint edge faces Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012236419",
+   "reason": "frontage 40.9 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012236464",
+   "reason": "frontage 38.8 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012236560",
+   "reason": "frontage 51.8 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012236636",
+   "reason": "no frontage on Palestrinastraat: No footprint edge faces Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012236637",
+   "reason": "frontage 39.4 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012236776",
+   "reason": "no frontage on Palestrinastraat: No footprint edge faces Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012236842",
+   "reason": "frontage 107.6 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012236923",
+   "reason": "frontage 118.1 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012236947",
+   "reason": "no frontage on Palestrinastraat: No footprint edge faces Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012236999",
+   "reason": "frontage 180.1 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012237012",
+   "reason": "frontage 50.0 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012237031",
+   "reason": "frontage 70.6 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012237136",
+   "reason": "frontage 110.4 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012237228",
+   "reason": "no frontage on Palestrinastraat: No footprint edge faces Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012237237",
+   "reason": "no frontage on Palestrinastraat: No footprint edge faces Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012237239",
+   "reason": "frontage 40.2 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012237358",
+   "reason": "frontage 31.4 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012242451",
+   "reason": "frontage 94.7 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012251804",
+   "reason": "frontage 168.7 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012251805",
+   "reason": "frontage 161.7 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012236714",
+   "reason": "frontage 89.9 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012237179",
+   "reason": "frontage 184.6 m from Palestrinastraat"
+  },
+  {
+   "pandId": "0363100012124153",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012152539",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012153364",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012155374",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012157494",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012157721",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012158476",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012158724",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012158992",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012159349",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012160243",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012160927",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012161222",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012161393",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012161793",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012162052",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012162934",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012165357",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012165922",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012166047",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012166253",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012218615",
+   "reason": "fronts the other side / another direction"
+  }
+ ],
+ "areaHalfSizeM": 180,
+ "pands": [
+  {
+   "pandId": "0363100012153647",
+   "alongM": 0,
+   "widthM": 14.25,
+   "eavesM": 12.27,
+   "roofMaxM": 14.58,
+   "storeys3dbag": 4,
+   "builtYear": 1903,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012160974",
+   "alongM": 13.26,
+   "widthM": 12.28,
+   "eavesM": 14.61,
+   "roofMaxM": 16.78,
+   "storeys3dbag": 4,
+   "builtYear": 1903,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012152715",
+   "alongM": 23.03,
+   "widthM": 7.25,
+   "eavesM": 14.97,
+   "roofMaxM": 15.06,
+   "storeys3dbag": 4,
+   "builtYear": 1905,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012158394",
+   "alongM": 30.18,
+   "widthM": 7.04,
+   "eavesM": 14.83,
+   "roofMaxM": 15.19,
+   "storeys3dbag": 4,
+   "builtYear": 1903,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012131514",
+   "alongM": 37,
+   "widthM": 6.62,
+   "eavesM": 16.13,
+   "roofMaxM": 16.57,
+   "storeys3dbag": 5,
+   "builtYear": 1909,
+   "uncertainty": [
+    "Frontage extended across a native jog of up to 1 m (possible partial front at the default 0.35 m).",
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  },
+  {
+   "pandId": "0363100012109934",
+   "alongM": 43.27,
+   "widthM": 5.93,
+   "eavesM": 16.13,
+   "roofMaxM": 19,
+   "storeys3dbag": 5,
+   "builtYear": 1909,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012119449",
+   "alongM": 49.67,
+   "widthM": 6.86,
+   "eavesM": 16.23,
+   "roofMaxM": 19.05,
+   "storeys3dbag": 5,
+   "builtYear": 1909,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012110342",
+   "alongM": 56.34,
+   "widthM": 6.5,
+   "eavesM": 15.07,
+   "roofMaxM": 19.04,
+   "storeys3dbag": 5,
+   "builtYear": 1906,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012088169",
+   "alongM": 62.77,
+   "widthM": 6.36,
+   "eavesM": 13.59,
+   "roofMaxM": 18.97,
+   "storeys3dbag": 5,
+   "builtYear": 1906,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012135596",
+   "alongM": 69.11,
+   "widthM": 6.32,
+   "eavesM": 13.63,
+   "roofMaxM": 19.51,
+   "storeys3dbag": 5,
+   "builtYear": 1906,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012076391",
+   "alongM": 75.85,
+   "widthM": 7.16,
+   "eavesM": 13.65,
+   "roofMaxM": 19.08,
+   "storeys3dbag": 5,
+   "builtYear": 1906,
+   "uncertainty": [
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  },
+  {
+   "pandId": "0363100012160752",
+   "alongM": 82.56,
+   "widthM": 6.25,
+   "eavesM": 15.59,
+   "roofMaxM": 18.1,
+   "storeys3dbag": 5,
+   "builtYear": 1903,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012165339",
+   "alongM": 88.81,
+   "widthM": 6.25,
+   "eavesM": 15.64,
+   "roofMaxM": 16.06,
+   "storeys3dbag": 5,
+   "builtYear": 1903,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012155748",
+   "alongM": 95.05,
+   "widthM": 6.25,
+   "eavesM": 15.63,
+   "roofMaxM": 16.05,
+   "storeys3dbag": 5,
+   "builtYear": 1903,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012236385",
+   "alongM": 104.87,
+   "widthM": 13.37,
+   "eavesM": 15.64,
+   "roofMaxM": 18.3,
+   "storeys3dbag": 5,
+   "builtYear": 1903,
+   "uncertainty": []
+  }
+ ]
+}

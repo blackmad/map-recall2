@@ -1,0 +1,108 @@
+{
+ "street": "Pieter de Hoochstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-01T16:34:28.470Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012236873",
+   "addresses": [
+    "Pieter de Hoochstraat 61",
+    "Pieter de Hoochstraat 63"
+   ],
+   "groundUnits": [
+    {
+     "address": "Pieter de Hoochstraat 61",
+     "use": "woonfunctie",
+     "areaM2": 115,
+     "bagId": "0363010000775031"
+    },
+    {
+     "address": "Pieter de Hoochstraat 63",
+     "use": "woonfunctie",
+     "areaM2": 211,
+     "bagId": "0363010000775032"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012233703",
+   "addresses": [
+    "Pieter de Hoochstraat 65",
+    "Pieter de Hoochstraat 67",
+    "Pieter de Hoochstraat 67D",
+    "Pieter de Hoochstraat 67E",
+    "Pieter de Hoochstraat 67C"
+   ],
+   "groundUnits": [
+    {
+     "address": "Pieter de Hoochstraat 65",
+     "use": "woonfunctie",
+     "areaM2": 125,
+     "bagId": "0363010000775033"
+    },
+    {
+     "address": "Pieter de Hoochstraat 67",
+     "use": "woonfunctie",
+     "areaM2": 200,
+     "bagId": "0363010000775034"
+    },
+    {
+     "address": "Pieter de Hoochstraat 67D",
+     "use": "woonfunctie",
+     "areaM2": 61,
+     "bagId": "0363010012155265"
+    },
+    {
+     "address": "Pieter de Hoochstraat 67E",
+     "use": "woonfunctie",
+     "areaM2": 55,
+     "bagId": "0363010012155266"
+    },
+    {
+     "address": "Pieter de Hoochstraat 67C",
+     "use": "woonfunctie",
+     "areaM2": 63,
+     "bagId": "0363010012155264"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 7973766358,
+     "lngLat": [
+      4.8855787,
+      52.3546754
+     ],
+     "tags": {
+      "amenity": "bench"
+     },
+     "fetchedAt": "2026-11-01T16:34:28.470Z",
+     "match": "frontage",
+     "distanceM": 0.5
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012143780",
+   "addresses": [
+    "Pieter de Hoochstraat 69",
+    "Pieter de Hoochstraat 71"
+   ],
+   "groundUnits": [
+    {
+     "address": "Pieter de Hoochstraat 71",
+     "use": "kantoorfunctie",
+     "areaM2": 44,
+     "bagId": "0363010000775038"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  }
+ ]
+}

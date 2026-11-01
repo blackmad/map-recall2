@@ -1,0 +1,325 @@
+{
+ "street": "Valeriusstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-01T14:04:07.778Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012155790",
+   "addresses": [
+    "Valeriusstraat 39"
+   ],
+   "groundUnits": [
+    {
+     "address": "Valeriusstraat 39-H",
+     "use": "woonfunctie",
+     "areaM2": 134,
+     "bagId": "0363010000850215"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012161609",
+   "addresses": [
+    "Valeriusstraat 41"
+   ],
+   "groundUnits": [
+    {
+     "address": "Valeriusstraat 41-H",
+     "use": "woonfunctie",
+     "areaM2": 192,
+     "bagId": "0363010000850219"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012158288",
+   "addresses": [
+    "Valeriusstraat 43"
+   ],
+   "groundUnits": [
+    {
+     "address": "Valeriusstraat 43-H",
+     "use": "woonfunctie",
+     "areaM2": 192,
+     "bagId": "0363010000850223"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012155613",
+   "addresses": [
+    "Valeriusstraat 45"
+   ],
+   "groundUnits": [
+    {
+     "address": "Valeriusstraat 45-H",
+     "use": "woonfunctie",
+     "areaM2": 191,
+     "bagId": "0363010000850228"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012154219",
+   "addresses": [
+    "Valeriusstraat 47"
+   ],
+   "groundUnits": [
+    {
+     "address": "Valeriusstraat 47-H",
+     "use": "woonfunctie",
+     "areaM2": 60,
+     "bagId": "0363010000850233"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012157542",
+   "addresses": [
+    "Valeriusstraat 49"
+   ],
+   "groundUnits": [
+    {
+     "address": "Valeriusstraat 49",
+     "use": "woonfunctie",
+     "areaM2": 187,
+     "bagId": "0363010001023822"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012157102",
+   "addresses": [
+    "Valeriusstraat 51"
+   ],
+   "groundUnits": [
+    {
+     "address": "Valeriusstraat 51",
+     "use": "woonfunctie",
+     "areaM2": 279,
+     "bagId": "0363010000850244"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012156278",
+   "addresses": [
+    "Valeriusstraat 53"
+   ],
+   "groundUnits": [
+    {
+     "address": "Valeriusstraat 53",
+     "use": "woonfunctie",
+     "areaM2": 351,
+     "bagId": "0363010000951318"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012159308",
+   "addresses": [
+    "Valeriusstraat 55"
+   ],
+   "groundUnits": [
+    {
+     "address": "Valeriusstraat 55-H",
+     "use": "kantoorfunctie,winkelfunctie",
+     "areaM2": 117,
+     "bagId": "0363010000850250"
+    }
+   ],
+   "units": 2,
+   "osm": [
+    {
+     "type": "node",
+     "id": 13069482403,
+     "lngLat": [
+      4.8704943,
+      52.3544883
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "55-H",
+      "addr:postcode": "1071MD",
+      "addr:street": "Valeriusstraat",
+      "brand": "B&B Hotels",
+      "brand:wikidata": "Q794939",
+      "name": "Valerius Apartments",
+      "tourism": "hotel"
+     },
+     "fetchedAt": "2026-11-01T14:04:07.778Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012161257",
+   "addresses": [
+    "Valeriusstraat 57"
+   ],
+   "groundUnits": [
+    {
+     "address": "Valeriusstraat 57-H",
+     "use": "woonfunctie",
+     "areaM2": 207,
+     "bagId": "0363010000850254"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012160763",
+   "addresses": [
+    "Valeriusstraat 59"
+   ],
+   "groundUnits": [
+    {
+     "address": "Valeriusstraat 59-H",
+     "use": "woonfunctie",
+     "areaM2": 191,
+     "bagId": "0363010000850258"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012156586",
+   "addresses": [
+    "Valeriusstraat 61"
+   ],
+   "groundUnits": [
+    {
+     "address": "Valeriusstraat 61-H",
+     "use": "woonfunctie",
+     "areaM2": 211,
+     "bagId": "0363010000850262"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012237285",
+   "addresses": [
+    "Valeriusstraat 63"
+   ],
+   "groundUnits": [
+    {
+     "address": "Valeriusstraat 63-H",
+     "use": "woonfunctie",
+     "areaM2": 197,
+     "bagId": "0363010000850270"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012099146",
+   "addresses": [
+    "Valeriusstraat 65"
+   ],
+   "groundUnits": [
+    {
+     "address": "Valeriusstraat 65-H",
+     "use": "woonfunctie",
+     "areaM2": 255,
+     "bagId": "0363010000980697"
+    },
+    {
+     "address": "Valeriusstraat 65-H",
+     "use": "woonfunctie",
+     "areaM2": 173,
+     "bagId": "0363010012171443"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012152773",
+   "addresses": [
+    "Valeriusstraat 67"
+   ],
+   "groundUnits": [
+    {
+     "address": "Valeriusstraat 67-H",
+     "use": "woonfunctie",
+     "areaM2": 125,
+     "bagId": "0363010000850279"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012163737",
+   "addresses": [
+    "Valeriusstraat 69"
+   ],
+   "groundUnits": [
+    {
+     "address": "Valeriusstraat 69-H",
+     "use": "woonfunctie",
+     "areaM2": 206,
+     "bagId": "0363010000850283"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012156459",
+   "addresses": [
+    "Valeriusstraat 71"
+   ],
+   "groundUnits": [
+    {
+     "address": "Valeriusstraat 71-H",
+     "use": "woonfunctie",
+     "areaM2": 220,
+     "bagId": "0363010000850287"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012152699",
+   "addresses": [
+    "Valeriusstraat 73"
+   ],
+   "groundUnits": [
+    {
+     "address": "Valeriusstraat 73-H",
+     "use": "woonfunctie",
+     "areaM2": 202,
+     "bagId": "0363010000850293"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  }
+ ]
+}

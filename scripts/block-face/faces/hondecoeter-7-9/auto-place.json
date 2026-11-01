@@ -1,0 +1,161 @@
+{
+ "face": "hondecoeter-7-9",
+ "street": "Hondecoeterstraat",
+ "library": "museumkwartier",
+ "stripDate": "2023-01-03",
+ "seconds": 0.62,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [],
+ "pands": [
+  {
+   "pandId": "0363100012233672",
+   "address": "Hondecoeterstraat 7",
+   "builtYear": 1911,
+   "widthM": 5.66,
+   "eavesM": 13.54,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#473b35",
+    "wallRaw": "#463b35",
+    "skyline": {
+     "eavesM": 20.32,
+     "eavesRow": 32,
+     "confidence": 0.37,
+     "crown": {
+      "widthM": 0.75,
+      "riseM": 0.8,
+      "topWidthM": 0.53,
+      "centre": 0.73
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 9.5,
+       "widthM": 0.9,
+       "centre": 0.09
+      },
+      {
+       "atM": 5.97,
+       "widthM": 1.15,
+       "centre": 0.68
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "run",
+   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012236921",
+   "address": "Hondecoeterstraat 9",
+   "builtYear": 1911,
+   "widthM": 9.79,
+   "eavesM": 13.36,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#403732",
+    "wallRaw": "#473d38",
+    "skyline": {
+     "eavesM": 20.3,
+     "eavesRow": 33,
+     "confidence": 0.34,
+     "crown": {
+      "widthM": 0.72,
+      "riseM": 0.82,
+      "topWidthM": 0.4,
+      "centre": 0.13
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 9.82,
+       "widthM": 0.8,
+       "centre": 0.96
+      },
+      {
+       "atM": 6.07,
+       "widthM": 1.2,
+       "centre": 0.29
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best museum-de-1899-corbel-cornice: built 1911, type 1898-1901; frontage 9.79 m, type 5-6 m)",
+   "best": {
+    "type": "museum-de-1899-corbel-cornice",
+    "score": 0,
+    "veto": [
+     "built 1911, type 1898-1901",
+     "frontage 9.79 m, type 5-6 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": null,
+      "note": "strip cornice unread (type line 13.4 m; 3DBAG 13.36 m not compared)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0 (brick)"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

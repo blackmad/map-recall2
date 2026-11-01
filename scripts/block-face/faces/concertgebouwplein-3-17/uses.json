@@ -1,0 +1,187 @@
+{
+ "street": "Concertgebouwplein",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-01T13:27:52.984Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012108862",
+   "addresses": [
+    "Concertgebouwplein 3",
+    "Concertgebouwplein 3A",
+    "Concertgebouwplein 3B",
+    "Concertgebouwplein 3C"
+   ],
+   "groundUnits": [
+    {
+     "address": "Concertgebouwplein 3",
+     "use": "kantoorfunctie",
+     "areaM2": 493,
+     "bagId": "0363010000929986"
+    },
+    {
+     "address": "Concertgebouwplein 3A",
+     "use": "kantoorfunctie",
+     "areaM2": 304,
+     "bagId": "0363010012147373"
+    },
+    {
+     "address": "Concertgebouwplein 3B",
+     "use": "woonfunctie",
+     "areaM2": 120,
+     "bagId": "0363010012147374"
+    },
+    {
+     "address": "Concertgebouwplein 3C",
+     "use": "woonfunctie",
+     "areaM2": 247,
+     "bagId": "0363010012147375"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 9036391729,
+     "lngLat": [
+      4.8796756,
+      52.3556688
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "3A",
+      "addr:postcode": "1071LL",
+      "addr:street": "Concertgebouwplein",
+      "contact:instagram": "werkenbijnavara",
+      "contact:linkedin": "navara",
+      "email": "info@navara.nl",
+      "name": "NAVARA BT Amsterdam",
+      "office": "it",
+      "operator": "NAVARA",
+      "operator:wikidata": "Q131607175",
+      "phone": "+31 343 445678",
+      "source": "BAG",
+      "source:date": "2021-08-08",
+      "website": "https://navara.nl"
+     },
+     "fetchedAt": "2026-11-01T13:27:52.984Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012080119",
+   "addresses": [
+    "Concertgebouwplein 5"
+   ],
+   "groundUnits": [
+    {
+     "address": "Concertgebouwplein 5",
+     "use": "kantoorfunctie",
+     "areaM2": 552,
+     "bagId": "0363010000929988"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012076024",
+   "addresses": [
+    "Concertgebouwplein 7"
+   ],
+   "groundUnits": [
+    {
+     "address": "Concertgebouwplein 7",
+     "use": "woonfunctie",
+     "areaM2": 546,
+     "bagId": "0363010000929990"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012132257",
+   "addresses": [
+    "Concertgebouwplein 9"
+   ],
+   "groundUnits": [
+    {
+     "address": "Concertgebouwplein 9",
+     "use": "kantoorfunctie",
+     "areaM2": 487,
+     "bagId": "0363010000929992"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012131367",
+   "addresses": [
+    "Concertgebouwplein 11"
+   ],
+   "groundUnits": [
+    {
+     "address": "Concertgebouwplein 11",
+     "use": "kantoorfunctie",
+     "areaM2": 442,
+     "bagId": "0363010000929993"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012132314",
+   "addresses": [
+    "Concertgebouwplein 13"
+   ],
+   "groundUnits": [
+    {
+     "address": "Concertgebouwplein 13-H",
+     "use": "kantoorfunctie",
+     "areaM2": 472,
+     "bagId": "0363010000999196"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012151883",
+   "addresses": [
+    "Concertgebouwplein 15"
+   ],
+   "groundUnits": [
+    {
+     "address": "Concertgebouwplein 15-H",
+     "use": "kantoorfunctie",
+     "areaM2": 554,
+     "bagId": "0363010000929997"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012127043",
+   "addresses": [
+    "Concertgebouwplein 17"
+   ],
+   "groundUnits": [
+    {
+     "address": "Concertgebouwplein 17",
+     "use": "woonfunctie",
+     "areaM2": 397,
+     "bagId": "0363010000930000"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  }
+ ]
+}

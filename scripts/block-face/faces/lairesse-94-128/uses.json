@@ -1,0 +1,226 @@
+{
+ "street": "De Lairessestraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-01T13:05:11.325Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012070647",
+   "addresses": [
+    "De Lairessestraat 120"
+   ],
+   "groundUnits": [
+    {
+     "address": "De Lairessestraat 120-H",
+     "use": "woonfunctie",
+     "areaM2": 290,
+     "bagId": "0363010000618164"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012123944",
+   "addresses": [
+    "De Lairessestraat 118"
+   ],
+   "groundUnits": [
+    {
+     "address": "De Lairessestraat 118-H",
+     "use": "woonfunctie",
+     "areaM2": 235,
+     "bagId": "0363010000618161"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012083412",
+   "addresses": [
+    "De Lairessestraat 116"
+   ],
+   "groundUnits": [
+    {
+     "address": "De Lairessestraat 116-H",
+     "use": "woonfunctie",
+     "areaM2": 200,
+     "bagId": "0363010000618156"
+    },
+    {
+     "address": "De Lairessestraat 116-H",
+     "use": "woonfunctie",
+     "areaM2": 147,
+     "bagId": "0363010012154738"
+    }
+   ],
+   "units": 6,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012093617",
+   "addresses": [
+    "De Lairessestraat 114"
+   ],
+   "groundUnits": [
+    {
+     "address": "De Lairessestraat 114-H",
+     "use": "woonfunctie",
+     "areaM2": 258,
+     "bagId": "0363010000618154"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012120297",
+   "addresses": [
+    "De Lairessestraat 112"
+   ],
+   "groundUnits": [
+    {
+     "address": "De Lairessestraat 112-H",
+     "use": "woonfunctie",
+     "areaM2": 265,
+     "bagId": "0363010000618152"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012069081",
+   "addresses": [
+    "De Lairessestraat 110"
+   ],
+   "groundUnits": [
+    {
+     "address": "De Lairessestraat 110-H",
+     "use": "woonfunctie",
+     "areaM2": 230,
+     "bagId": "0363010000618149"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012075610",
+   "addresses": [
+    "De Lairessestraat 108"
+   ],
+   "groundUnits": [
+    {
+     "address": "De Lairessestraat 108-H",
+     "use": "kantoorfunctie",
+     "areaM2": 247,
+     "bagId": "0363010000618145"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012103357",
+   "addresses": [
+    "De Lairessestraat 106"
+   ],
+   "groundUnits": [
+    {
+     "address": "De Lairessestraat 106-H",
+     "use": "woonfunctie",
+     "areaM2": 285,
+     "bagId": "0363010000618142"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012075246",
+   "addresses": [
+    "De Lairessestraat 104"
+   ],
+   "groundUnits": [
+    {
+     "address": "De Lairessestraat 104-H",
+     "use": "woonfunctie",
+     "areaM2": 145,
+     "bagId": "0363010000991731"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012072277",
+   "addresses": [
+    "De Lairessestraat 100",
+    "De Lairessestraat 102"
+   ],
+   "groundUnits": [
+    {
+     "address": "De Lairessestraat 100",
+     "use": "woonfunctie",
+     "areaM2": 222,
+     "bagId": "0363010000618133"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012062487",
+   "addresses": [
+    "De Lairessestraat 94",
+    "De Lairessestraat 96",
+    "De Lairessestraat 98"
+   ],
+   "groundUnits": [
+    {
+     "address": "Cornelis Schuytstraat 56",
+     "use": "woonfunctie",
+     "areaM2": 182,
+     "bagId": "0363010000610184"
+    },
+    {
+     "address": "De Lairessestraat 94",
+     "use": "woonfunctie",
+     "areaM2": 162,
+     "bagId": "0363010000618111"
+    },
+    {
+     "address": "De Lairessestraat 96-H",
+     "use": "woonfunctie",
+     "areaM2": 51,
+     "bagId": "0363010000618119"
+    }
+   ],
+   "units": 15,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2343797039,
+     "lngLat": [
+      4.872053,
+      52.353737
+     ],
+     "tags": {
+      "amenity": "clock",
+      "display": "analog",
+      "faces": "2",
+      "operator": "Gemeente Amsterdam",
+      "support": "pole",
+      "visibility": "street"
+     },
+     "fetchedAt": "2026-11-01T13:05:11.325Z",
+     "match": "frontage",
+     "distanceM": 7.8
+    }
+   ]
+  }
+ ]
+}

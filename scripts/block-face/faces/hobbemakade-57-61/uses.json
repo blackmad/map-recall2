@@ -1,0 +1,153 @@
+{
+ "street": "Hobbemakade",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-01T12:45:39.831Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012118975",
+   "addresses": [
+    "Hobbemakade 61"
+   ],
+   "groundUnits": [
+    {
+     "address": "Hobbemakade 61-H",
+     "use": "woonfunctie",
+     "areaM2": 45,
+     "bagId": "0363010000667730"
+    },
+    {
+     "address": "Hobbemakade 61-O",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 45,
+     "bagId": "0363010000667731"
+    }
+   ],
+   "units": 6,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012126826",
+   "addresses": [
+    "Hobbemakade 59",
+    "Hobbemakade 60"
+   ],
+   "groundUnits": [
+    {
+     "address": "Hobbemakade 59-H",
+     "use": "woonfunctie",
+     "areaM2": 69,
+     "bagId": "0363010000667722"
+    },
+    {
+     "address": "Hobbemakade 60-H",
+     "use": "woonfunctie",
+     "areaM2": 60,
+     "bagId": "0363010000667726"
+    }
+   ],
+   "units": 8,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012109347",
+   "addresses": [
+    "Hobbemakade 57",
+    "Hobbemakade 58"
+   ],
+   "groundUnits": [
+    {
+     "address": "Hobbemakade 57",
+     "use": "winkelfunctie",
+     "areaM2": 157,
+     "bagId": "0363010000667717"
+    },
+    {
+     "address": "Hobbemakade 57",
+     "use": "winkelfunctie",
+     "areaM2": 235,
+     "bagId": "0363010012149468"
+    }
+   ],
+   "units": 6,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2816521372,
+     "lngLat": [
+      4.8862652,
+      52.354423
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "57",
+      "addr:postcode": "1071XL",
+      "addr:street": "Hobbemakade",
+      "branch": "Hobbemakade",
+      "brand": "SPAR city",
+      "brand:website": "https://www.spar.nl/city/",
+      "brand:wikidata": "Q124630664",
+      "email": "SPARcityHobbemakade@despar.info",
+      "name": "SPAR city",
+      "opening_hours": "Mo-Sa 08:00-22:00; Su 10:00-22:00",
+      "operator": "SPAR",
+      "operator:wikidata": "Q610492",
+      "phone": "+31 20 800 35 63",
+      "shop": "convenience",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://www.spar.nl/winkels/spar-city-hobbemakade-1122/"
+     },
+     "fetchedAt": "2026-11-01T12:45:39.831Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 13105632231,
+     "lngLat": [
+      4.886301,
+      52.3544407
+     ],
+     "tags": {
+      "amenity": "waste_basket"
+     },
+     "fetchedAt": "2026-11-01T12:45:39.831Z",
+     "match": "frontage",
+     "distanceM": 0.8
+    },
+    {
+     "type": "node",
+     "id": 13105637387,
+     "lngLat": [
+      4.88627,
+      52.3544537
+     ],
+     "tags": {
+      "amenity": "bench",
+      "backrest": "yes"
+     },
+     "fetchedAt": "2026-11-01T12:45:39.831Z",
+     "match": "frontage",
+     "distanceM": 2.8
+    },
+    {
+     "type": "node",
+     "id": 13105646896,
+     "lngLat": [
+      4.8863085,
+      52.354422
+     ],
+     "tags": {
+      "amenity": "bench",
+      "backrest": "yes"
+     },
+     "fetchedAt": "2026-11-01T12:45:39.831Z",
+     "match": "frontage",
+     "distanceM": 0.9
+    }
+   ]
+  }
+ ]
+}

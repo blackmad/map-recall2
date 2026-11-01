@@ -1,0 +1,575 @@
+{
+ "face": "hart-5-15",
+ "street": "Roelof Hartstraat",
+ "library": "museumkwartier",
+ "stripDate": "2024-12-11",
+ "seconds": 1.09,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [],
+ "pands": [
+  {
+   "pandId": "0363100012158479",
+   "address": "Roelof Hartstraat 5",
+   "builtYear": 1905,
+   "widthM": 5.69,
+   "eavesM": 14.39,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#564937",
+    "wallRaw": "#7f7058",
+    "skyline": {
+     "eavesM": 16.65,
+     "eavesRow": 196,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 3,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0.19,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 13.4,
+       "widthM": 1.2,
+       "centre": 0.86
+      },
+      {
+       "atM": 10.18,
+       "widthM": 1.4,
+       "centre": 0.48
+      },
+      {
+       "atM": 7.47,
+       "widthM": 0.9,
+       "centre": 0.85
+      },
+      {
+       "atM": 7.02,
+       "widthM": 1.18,
+       "centre": 0.5
+      }
+     ]
+    },
+    "voidShare": 0.07,
+    "foliageShare": 0.27
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best museum-de-1899-corbel-cornice: built 1905, type 1898-1901)",
+   "best": {
+    "type": "museum-de-1899-corbel-cornice",
+    "score": 0,
+    "veto": [
+     "built 1905, type 1898-1901"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 16.65 m vs the type's 13.4 m (wall-dormer skyline 14.7 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.106 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012237161",
+   "address": "Roelof Hartstraat 7",
+   "builtYear": 1905,
+   "widthM": 5.71,
+   "eavesM": 14.46,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#77624c",
+    "wallRaw": "#77684f",
+    "skyline": {
+     "eavesM": 16.75,
+     "eavesRow": 192,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "columns",
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.187,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 10.1,
+       "widthM": 1.5,
+       "centre": 0.55
+      },
+      {
+       "atM": 6.88,
+       "widthM": 0.97,
+       "centre": 0.61
+      }
+     ]
+    },
+    "voidShare": 0.03,
+    "foliageShare": 0.29
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best museum-de-1899-corbel-cornice: built 1905, type 1898-1901)",
+   "best": {
+    "type": "museum-de-1899-corbel-cornice",
+    "score": 0,
+    "veto": [
+     "built 1905, type 1898-1901"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 16.75 m vs the type's 13.4 m (wall-dormer skyline 14.7 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.143 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012167452",
+   "address": "Roelof Hartstraat 9",
+   "builtYear": 1905,
+   "widthM": 6.06,
+   "eavesM": 16.45,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#755d49",
+    "wallRaw": "#85725c",
+    "skyline": {
+     "eavesM": 16.77,
+     "eavesRow": 191,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 5,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0.218,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 13.97,
+       "widthM": 1,
+       "centre": 0.42
+      },
+      {
+       "atM": 13.3,
+       "widthM": 1.18,
+       "centre": 0.2
+      },
+      {
+       "atM": 10.15,
+       "widthM": 1.65,
+       "centre": 0.53
+      },
+      {
+       "atM": 7,
+       "widthM": 1.2,
+       "centre": 0.53
+      }
+     ]
+    },
+    "voidShare": 0.05,
+    "foliageShare": 0.26
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best museum-de-1899-corbel-cornice: built 1905, type 1898-1901)",
+   "best": {
+    "type": "museum-de-1899-corbel-cornice",
+    "score": 0,
+    "veto": [
+     "built 1905, type 1898-1901"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 16.77 m vs the type's 13.4 m (wall-dormer skyline 14.7 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.163 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012161776",
+   "address": "Roelof Hartstraat 11",
+   "builtYear": 1905,
+   "widthM": 5.58,
+   "eavesM": 14.57,
+   "storeys3dbag": 0,
+   "bagBay": null,
+   "strip": {
+    "wall": "#665a42",
+    "wallRaw": "#7a6f56",
+    "skyline": {
+     "eavesM": 17.85,
+     "eavesRow": 148,
+     "confidence": 0.88,
+     "crown": {
+      "widthM": 1.13,
+      "riseM": 3.35,
+      "topWidthM": 0.05,
+      "centre": 0.45
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.27,
+    "structure": {
+     "bayWidthM": 0.55,
+     "bayCentre": 0.55,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 13.3,
+       "widthM": 1.15,
+       "centre": 0.88
+      }
+     ]
+    },
+    "voidShare": 0.01,
+    "foliageShare": 0.4
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best museum-de-1899-corbel-cornice: built 1905, type 1898-1901)",
+   "best": {
+    "type": "museum-de-1899-corbel-cornice",
+    "score": 0,
+    "veto": [
+     "built 1905, type 1898-1901"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 17.85 m vs the type's 13.4 m (wall-dormer skyline 14.7 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": null,
+      "note": "3DBAG bouwlagen 0 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": null,
+      "note": "no strip"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012165887",
+   "address": "Roelof Hartstraat 13",
+   "builtYear": 1905,
+   "widthM": 5.65,
+   "eavesM": 15.04,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#7c6852",
+    "wallRaw": "#8a7a62",
+    "skyline": {
+     "eavesM": 15.9,
+     "eavesRow": 226,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.77,
+      "riseM": 1.9,
+      "topWidthM": 0.57,
+      "centre": 0.52
+     }
+    },
+    "stucco": false,
+    "bands": 3,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.285,
+    "structure": {
+     "bayWidthM": 1.18,
+     "bayCentre": 0.52,
+     "balconies": true,
+     "why": "dark open axis 1.07 m at 0.52 (light 0.49): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 1.07,
+       "centre": 0.52,
+       "light": 0.49
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 13.4,
+       "widthM": 1.13,
+       "centre": 0.85
+      },
+      {
+       "atM": 7.1,
+       "widthM": 0.82,
+       "centre": 0.89
+      }
+     ]
+    },
+    "voidShare": 0.06,
+    "foliageShare": 0.37
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best museum-de-1899-corbel-cornice: built 1905, type 1898-1901)",
+   "best": {
+    "type": "museum-de-1899-corbel-cornice",
+    "score": 0,
+    "veto": [
+     "built 1905, type 1898-1901"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 15.9 m vs the type's 13.4 m (wall-dormer skyline 14.7 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": null,
+      "note": "no strip"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012166699",
+   "address": "Roelof Hartstraat 15E",
+   "builtYear": 1905,
+   "widthM": 7.55,
+   "eavesM": 15.23,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#725a49",
+    "wallRaw": "#8b715b",
+    "skyline": {
+     "eavesM": 16.35,
+     "eavesRow": 208,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.17,
+      "riseM": 2.8,
+      "topWidthM": 0.17,
+      "centre": 0.56
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": "right",
+    "accentShare": 0.195,
+    "structure": {
+     "bayWidthM": 1,
+     "bayCentre": 0.18,
+     "balconies": true,
+     "why": "bay-less open axis 0.97 m at 0.17 (light 0.55): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.97,
+       "centre": 0.17,
+       "light": 0.55
+      },
+      {
+       "widthM": 0.88,
+       "centre": 0.57,
+       "light": 0.47
+      },
+      {
+       "widthM": 0.65,
+       "centre": 0.84,
+       "light": 0.46
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 14.1,
+       "widthM": 1.18,
+       "centre": 0.18
+      },
+      {
+       "atM": 11.02,
+       "widthM": 1.2,
+       "centre": 0.18
+      },
+      {
+       "atM": 7.88,
+       "widthM": 1.2,
+       "centre": 0.18
+      }
+     ]
+    },
+    "voidShare": 0.05,
+    "foliageShare": 0.18
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best museum-de-1899-corbel-cornice: built 1905, type 1898-1901; frontage 7.55 m, type 5-6 m)",
+   "best": {
+    "type": "museum-de-1899-corbel-cornice",
+    "score": 0,
+    "veto": [
+     "built 1905, type 1898-1901",
+     "frontage 7.55 m, type 5-6 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 16.35 m vs the type's 13.4 m (wall-dormer skyline 14.7 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.142 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

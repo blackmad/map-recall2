@@ -1,0 +1,89 @@
+{
+ "street": "Jan Willem Brouwersstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-01T15:42:45.244Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012237012",
+   "addresses": [
+    "Jan Willem Brouwersstraat 3"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jan Willem Brouwersstraat 3",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 1367,
+     "bagId": "0363010000688349"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012072116",
+   "addresses": [
+    "Jan Willem Brouwersstraat 9"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jan Willem Brouwersstraat 9-H",
+     "use": "woonfunctie",
+     "areaM2": 113,
+     "bagId": "0363010000688354"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012084411",
+   "addresses": [
+    "Jan Willem Brouwersstraat 11"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jan Willem Brouwersstraat 11-H",
+     "use": "woonfunctie",
+     "areaM2": 201,
+     "bagId": "0363010000688359"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012138649",
+   "addresses": [
+    "Jan Willem Brouwersstraat 13"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jan Willem Brouwersstraat 13-H",
+     "use": "woonfunctie",
+     "areaM2": 143,
+     "bagId": "0363010000688363"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012074908",
+   "addresses": [
+    "Jan Willem Brouwersstraat 15"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jan Willem Brouwersstraat 15-H",
+     "use": "woonfunctie",
+     "areaM2": 143,
+     "bagId": "0363010000688366"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  }
+ ]
+}

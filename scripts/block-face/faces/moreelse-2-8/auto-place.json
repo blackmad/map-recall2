@@ -1,0 +1,144 @@
+{
+ "face": "moreelse-2-8",
+ "street": "Moreelsestraat",
+ "library": "museumkwartier",
+ "stripDate": "2024-12-11",
+ "seconds": 1.1,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [],
+ "pands": [
+  {
+   "pandId": "0363100012099034",
+   "address": "Moreelsestraat 4",
+   "builtYear": 1910,
+   "widthM": 19.11,
+   "eavesM": 15.72,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#a3866a",
+    "wallRaw": "#be9a7b",
+    "skyline": {
+     "eavesM": 16.2,
+     "eavesRow": 144,
+     "confidence": 1,
+     "crown": {
+      "widthM": 3.2,
+      "riseM": 2.43,
+      "topWidthM": 1.38,
+      "centre": 0.77
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 5,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.293,
+    "structure": {
+     "bayWidthM": 2.2,
+     "bayCentre": 0.08,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 14.67,
+       "widthM": 2.08,
+       "centre": 0.94
+      }
+     ]
+    },
+    "voidShare": 0.15,
+    "foliageShare": 0.12
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best museum-de-1899-corbel-cornice: built 1910, type 1898-1901; frontage 19.11 m, type 5-6 m)",
+   "best": {
+    "type": "museum-de-1899-corbel-cornice",
+    "score": 0,
+    "veto": [
+     "built 1910, type 1898-1901",
+     "frontage 19.11 m, type 5-6 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 16.2 m vs the type's 13.4 m (wall-dormer skyline 14.7 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.123 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0,
+      "note": "strip columns 5 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012217232",
+   "address": "Moreelsestraat 2",
+   "builtYear": 1910,
+   "widthM": 13.77,
+   "eavesM": 3.94,
+   "storeys3dbag": 0,
+   "bagBay": null,
+   "strip": {
+    "wall": "#805a3f",
+    "wallRaw": null,
+    "skyline": {
+     "eavesM": 8.4,
+     "eavesRow": 456,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.73,
+      "riseM": 7.4,
+      "topWidthM": 0.33,
+      "centre": 0.11
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 7,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": null,
+    "voidShare": 1,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "evidence",
+   "reason": "strip 100 % without panorama data",
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

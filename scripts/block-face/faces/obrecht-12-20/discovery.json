@@ -1,0 +1,626 @@
+{
+ "street": "Jacob Obrechtstraat",
+ "seed": "0363100012159380",
+ "members": [
+  "0363100012159380",
+  "0363100012159625",
+  "0363100012235899",
+  "0363100012236714",
+  "0363100012164455"
+ ],
+ "ends": [
+  {
+   "side": "left",
+   "reason": "next fronting pand 0363100012237239 28.4 m on shares no party wall (cross street or gap)"
+  },
+  {
+   "side": "right",
+   "reason": "next fronting pand 0363100012158971 61.2 m on shares no party wall (cross street or gap)"
+  }
+ ],
+ "rejected": [
+  {
+   "pandId": "0363100012152346",
+   "reason": "frontage 57.6 m from Jacob Obrechtstraat"
+  },
+  {
+   "pandId": "0363100012152495",
+   "reason": "frontage 67.7 m from Jacob Obrechtstraat"
+  },
+  {
+   "pandId": "0363100012152638",
+   "reason": "frontage 62.3 m from Jacob Obrechtstraat"
+  },
+  {
+   "pandId": "0363100012152719",
+   "reason": "frontage 32.3 m from Jacob Obrechtstraat"
+  },
+  {
+   "pandId": "0363100012153028",
+   "reason": "sightline to Jacob Obrechtstraat crosses 0363100012237239"
+  },
+  {
+   "pandId": "0363100012154383",
+   "reason": "frontage 44.7 m from Jacob Obrechtstraat"
+  },
+  {
+   "pandId": "0363100012155596",
+   "reason": "sightline to Jacob Obrechtstraat crosses 0363100012156363"
+  },
+  {
+   "pandId": "0363100012155748",
+   "reason": "frontage 38.7 m from Jacob Obrechtstraat"
+  },
+  {
+   "pandId": "0363100012155784",
+   "reason": "frontage 53.6 m from Jacob Obrechtstraat"
+  },
+  {
+   "pandId": "0363100012156283",
+   "reason": "frontage 77.3 m from Jacob Obrechtstraat"
+  },
+  {
+   "pandId": "0363100012156363",
+   "reason": "sightline to Jacob Obrechtstraat crosses 0363100012160779"
+  },
+  {
+   "pandId": "0363100012156628",
+   "reason": "sightline to Jacob Obrechtstraat crosses 0363100012156363"
+  },
+  {
+   "pandId": "0363100012156890",
+   "reason": "frontage 38.4 m from Jacob Obrechtstraat"
+  },
+  {
+   "pandId": "0363100012157380",
+   "reason": "sightline to Jacob Obrechtstraat crosses 0363100012165368"
+  },
+  {
+   "pandId": "0363100012157431",
+   "reason": "frontage 38.1 m from Jacob Obrechtstraat"
+  },
+  {
+   "pandId": "0363100012157721",
+   "reason": "frontage 40.2 m from Jacob Obrechtstraat"
+  },
+  {
+   "pandId": "0363100012061429",
+   "reason": "frontage 96.5 m from Jacob Obrechtstraat"
+  },
+  {
+   "pandId": "0363100012072748",
+   "reason": "frontage 85.2 m from Jacob Obrechtstraat"
+  },
+  {
+   "pandId": "0363100012073967",
+   "reason": "frontage 71.6 m from Jacob Obrechtstraat"
+  },
+  {
+   "pandId": "0363100012085898",
+   "reason": "frontage 98.6 m from Jacob Obrechtstraat"
+  },
+  {
+   "pandId": "0363100012125741",
+   "reason": "frontage 77.9 m from Jacob Obrechtstraat"
+  },
+  {
+   "pandId": "0363100012136890",
+   "reason": "frontage 32.6 m from Jacob Obrechtstraat"
+  },
+  {
+   "pandId": "0363100012152866",
+   "reason": "frontage 106.8 m from Jacob Obrechtstraat"
+  },
+  {
+   "pandId": "0363100012152926",
+   "reason": "frontage 91.0 m from Jacob Obrechtstraat"
+  },
+  {
+   "pandId": "0363100012154188",
+   "reason": "frontage 32.9 m from Jacob Obrechtstraat"
+  },
+  {
+   "pandId": "0363100012154281",
+   "reason": "frontage 39.3 m from Jacob Obrechtstraat"
+  },
+  {
+   "pandId": "0363100012154301",
+   "reason": "frontage 84.5 m from Jacob Obrechtstraat"
+  },
+  {
+   "pandId": "0363100012155490",
+   "reason": "frontage 67.6 m from Jacob Obrechtstraat"
+  },
+  {
+   "pandId": "0363100012155697",
+   "reason": "frontage 90.4 m from Jacob Obrechtstraat"
+  },
+  {
+   "pandId": "0363100012155809",
+   "reason": "frontage 58.5 m from Jacob Obrechtstraat"
+  },
+  {
+   "pandId": "0363100012155916",
+   "reason": "frontage 38.7 m from Jacob Obrechtstraat"
+  },
+  {
+   "pandId": "0363100012156255",
+   "reason": "frontage 45.1 m from Jacob Obrechtstraat"
+  },
+  {
+   "pandId": "0363100012156733",
+   "reason": "frontage 108.5 m from Jacob Obrechtstraat"
+  },
+  {
+   "pandId": "0363100012156817",
+   "reason": "sightline to Jacob Obrechtstraat crosses 0363100012159380"
+  },
+  {
+   "pandId": "0363100012156974",
+   "reason": "sightline to Jacob Obrechtstraat crosses 0363100012152423"
+  },
+  {
+   "pandId": "0363100012157235",
+   "reason": "frontage 55.9 m from Jacob Obrechtstraat"
+  },
+  {
+   "pandId": "0363100012157977",
+   "reason": "frontage 73.1 m from Jacob Obrechtstraat"
+  },
+  {
+   "pandId": "0363100012158032",
+   "reason": "frontage 77.1 m from Jacob Obrechtstraat"
+  },
+  {
+   "pandId": "0363100012158338",
+   "reason": "frontage 50.9 m from Jacob Obrechtstraat"
+  },
+  {
+   "pandId": "0363100012158629",
+   "reason": "frontage 64.1 m from Jacob Obrechtstraat"
+  },
+  {
+   "pandId": "0363100012158724",
+   "reason": "sightline to Jacob Obrechtstraat crosses 0363100012162934"
+  },
+  {
+   "pandId": "0363100012159009",
+   "reason": "frontage 67.4 m from Jacob Obrechtstraat"
+  },
+  {
+   "pandId": "0363100012159730",
+   "reason": "frontage 33.7 m from Jacob Obrechtstraat"
+  },
+  {
+   "pandId": "0363100012159785",
+   "reason": "frontage 56.6 m from Jacob Obrechtstraat"
+  },
+  {
+   "pandId": "0363100012159946",
+   "reason": "sightline to Jacob Obrechtstraat crosses 0363100012236183"
+  },
+  {
+   "pandId": "0363100012160243",
+   "reason": "frontage 46.7 m from Jacob Obrechtstraat"
+  },
+  {
+   "pandId": "0363100012160336",
+   "reason": "frontage 71.2 m from Jacob Obrechtstraat"
+  },
+  {
+   "pandId": "0363100012160437",
+   "reason": "sightline to Jacob Obrechtstraat crosses 0363100012159946"
+  },
+  {
+   "pandId": "0363100012160760",
+   "reason": "frontage 51.4 m from Jacob Obrechtstraat"
+  },
+  {
+   "pandId": "0363100012161222",
+   "reason": "frontage 52.9 m from Jacob Obrechtstraat"
+  },
+  {
+   "pandId": "0363100012161567",
+   "reason": "sightline to Jacob Obrechtstraat crosses 0363100012163914"
+  },
+  {
+   "pandId": "0363100012162023",
+   "reason": "frontage 32.6 m from Jacob Obrechtstraat"
+  },
+  {
+   "pandId": "0363100012162837",
+   "reason": "frontage 40.4 m from Jacob Obrechtstraat"
+  },
+  {
+   "pandId": "0363100012163259",
+   "reason": "frontage 72.6 m from Jacob Obrechtstraat"
+  },
+  {
+   "pandId": "0363100012163294",
+   "reason": "frontage 91.8 m from Jacob Obrechtstraat"
+  },
+  {
+   "pandId": "0363100012163334",
+   "reason": "frontage 43.9 m from Jacob Obrechtstraat"
+  },
+  {
+   "pandId": "0363100012163555",
+   "reason": "sightline to Jacob Obrechtstraat crosses 0363100012161332"
+  },
+  {
+   "pandId": "0363100012158094",
+   "reason": "frontage 37.3 m from Jacob Obrechtstraat"
+  },
+  {
+   "pandId": "0363100012158600",
+   "reason": "frontage 52.1 m from Jacob Obrechtstraat"
+  },
+  {
+   "pandId": "0363100012158612",
+   "reason": "frontage 96.9 m from Jacob Obrechtstraat"
+  },
+  {
+   "pandId": "0363100012158738",
+   "reason": "frontage 115.0 m from Jacob Obrechtstraat"
+  },
+  {
+   "pandId": "0363100012158954",
+   "reason": "frontage 114.3 m from Jacob Obrechtstraat"
+  },
+  {
+   "pandId": "0363100012159195",
+   "reason": "frontage 33.0 m from Jacob Obrechtstraat"
+  },
+  {
+   "pandId": "0363100012159459",
+   "reason": "frontage 107.4 m from Jacob Obrechtstraat"
+  },
+  {
+   "pandId": "0363100012159878",
+   "reason": "frontage 61.7 m from Jacob Obrechtstraat"
+  },
+  {
+   "pandId": "0363100012159984",
+   "reason": "frontage 45.8 m from Jacob Obrechtstraat"
+  },
+  {
+   "pandId": "0363100012160202",
+   "reason": "frontage 78.6 m from Jacob Obrechtstraat"
+  },
+  {
+   "pandId": "0363100012160357",
+   "reason": "frontage 62.3 m from Jacob Obrechtstraat"
+  },
+  {
+   "pandId": "0363100012160627",
+   "reason": "sightline to Jacob Obrechtstraat crosses 0363100012152315"
+  },
+  {
+   "pandId": "0363100012161652",
+   "reason": "frontage 55.4 m from Jacob Obrechtstraat"
+  },
+  {
+   "pandId": "0363100012161713",
+   "reason": "frontage 51.9 m from Jacob Obrechtstraat"
+  },
+  {
+   "pandId": "0363100012162309",
+   "reason": "sightline to Jacob Obrechtstraat crosses 0363100012153028"
+  },
+  {
+   "pandId": "0363100012162708",
+   "reason": "frontage 102.7 m from Jacob Obrechtstraat"
+  },
+  {
+   "pandId": "0363100012162759",
+   "reason": "frontage 73.5 m from Jacob Obrechtstraat"
+  },
+  {
+   "pandId": "0363100012163186",
+   "reason": "frontage 78.2 m from Jacob Obrechtstraat"
+  },
+  {
+   "pandId": "0363100012163509",
+   "reason": "frontage 44.2 m from Jacob Obrechtstraat"
+  },
+  {
+   "pandId": "0363100012163708",
+   "reason": "frontage 84.5 m from Jacob Obrechtstraat"
+  },
+  {
+   "pandId": "0363100012164293",
+   "reason": "frontage 58.3 m from Jacob Obrechtstraat"
+  },
+  {
+   "pandId": "0363100012165339",
+   "reason": "frontage 44.9 m from Jacob Obrechtstraat"
+  },
+  {
+   "pandId": "0363100012165346",
+   "reason": "sightline to Jacob Obrechtstraat crosses 0363100012161332"
+  },
+  {
+   "pandId": "0363100012165368",
+   "reason": "sightline to Jacob Obrechtstraat crosses 0363100012166111"
+  },
+  {
+   "pandId": "0363100012165922",
+   "reason": "frontage 33.6 m from Jacob Obrechtstraat"
+  },
+  {
+   "pandId": "0363100012166364",
+   "reason": "frontage 40.1 m from Jacob Obrechtstraat"
+  },
+  {
+   "pandId": "0363100012166445",
+   "reason": "frontage 48.8 m from Jacob Obrechtstraat"
+  },
+  {
+   "pandId": "0363100012166942",
+   "reason": "frontage 82.3 m from Jacob Obrechtstraat"
+  },
+  {
+   "pandId": "0363100012167372",
+   "reason": "frontage 45.5 m from Jacob Obrechtstraat"
+  },
+  {
+   "pandId": "0363100012167422",
+   "reason": "frontage 34.1 m from Jacob Obrechtstraat"
+  },
+  {
+   "pandId": "0363100012197821",
+   "reason": "frontage 39.2 m from Jacob Obrechtstraat"
+  },
+  {
+   "pandId": "0363100012236385",
+   "reason": "sightline to Jacob Obrechtstraat crosses 0363100012152774"
+  },
+  {
+   "pandId": "0363100012236842",
+   "reason": "frontage 85.5 m from Jacob Obrechtstraat"
+  },
+  {
+   "pandId": "0363100012237031",
+   "reason": "frontage 63.2 m from Jacob Obrechtstraat"
+  },
+  {
+   "pandId": "0363100012164175",
+   "reason": "frontage 65.0 m from Jacob Obrechtstraat"
+  },
+  {
+   "pandId": "0363100012164344",
+   "reason": "frontage 58.8 m from Jacob Obrechtstraat"
+  },
+  {
+   "pandId": "0363100012164365",
+   "reason": "sightline to Jacob Obrechtstraat crosses 0363100012153028"
+  },
+  {
+   "pandId": "0363100012164610",
+   "reason": "sightline to Jacob Obrechtstraat crosses 0363100012152423"
+  },
+  {
+   "pandId": "0363100012164847",
+   "reason": "frontage 67.5 m from Jacob Obrechtstraat"
+  },
+  {
+   "pandId": "0363100012165409",
+   "reason": "frontage 90.8 m from Jacob Obrechtstraat"
+  },
+  {
+   "pandId": "0363100012165609",
+   "reason": "frontage 102.5 m from Jacob Obrechtstraat"
+  },
+  {
+   "pandId": "0363100012166003",
+   "reason": "frontage 50.0 m from Jacob Obrechtstraat"
+  },
+  {
+   "pandId": "0363100012166091",
+   "reason": "frontage 108.4 m from Jacob Obrechtstraat"
+  },
+  {
+   "pandId": "0363100012166328",
+   "reason": "frontage 79.3 m from Jacob Obrechtstraat"
+  },
+  {
+   "pandId": "0363100012166794",
+   "reason": "frontage 65.2 m from Jacob Obrechtstraat"
+  },
+  {
+   "pandId": "0363100012166952",
+   "reason": "frontage 31.5 m from Jacob Obrechtstraat"
+  },
+  {
+   "pandId": "0363100012167075",
+   "reason": "frontage 38.9 m from Jacob Obrechtstraat"
+  },
+  {
+   "pandId": "0363100012167399",
+   "reason": "frontage 71.5 m from Jacob Obrechtstraat"
+  },
+  {
+   "pandId": "0363100012201298",
+   "reason": "frontage 37.7 m from Jacob Obrechtstraat"
+  },
+  {
+   "pandId": "0363100012235985",
+   "reason": "frontage 61.6 m from Jacob Obrechtstraat"
+  },
+  {
+   "pandId": "0363100012236185",
+   "reason": "frontage 49.6 m from Jacob Obrechtstraat"
+  },
+  {
+   "pandId": "0363100012236255",
+   "reason": "frontage 55.5 m from Jacob Obrechtstraat"
+  },
+  {
+   "pandId": "0363100012237156",
+   "reason": "frontage 43.6 m from Jacob Obrechtstraat"
+  },
+  {
+   "pandId": "0363100012237221",
+   "reason": "sightline to Jacob Obrechtstraat crosses 0363100012152315"
+  },
+  {
+   "pandId": "0363100012072072",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012152774",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012153396",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012155885",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012156696",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012157377",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012157378",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012152315",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012152423",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012160416",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012160779",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012161332",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012162934",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012163181",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012163914",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012164901",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012166111",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012166459",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012166597",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012235940",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012236183",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012236405",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012166982",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012224622",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012233599",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012237366",
+   "reason": "fronts the other side / another direction"
+  }
+ ],
+ "areaHalfSizeM": 90,
+ "pands": [
+  {
+   "pandId": "0363100012159380",
+   "alongM": 0,
+   "widthM": 6.51,
+   "eavesM": 13.27,
+   "roofMaxM": 16.97,
+   "storeys3dbag": 5,
+   "builtYear": 1898,
+   "uncertainty": [
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  },
+  {
+   "pandId": "0363100012159625",
+   "alongM": 6.17,
+   "widthM": 5.84,
+   "eavesM": 13.61,
+   "roofMaxM": 17.95,
+   "storeys3dbag": 5,
+   "builtYear": 1898,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012235899",
+   "alongM": 11.83,
+   "widthM": 5.47,
+   "eavesM": 13.97,
+   "roofMaxM": 16.78,
+   "storeys3dbag": 5,
+   "builtYear": 1898,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012236714",
+   "alongM": 18.42,
+   "widthM": 7.71,
+   "eavesM": 14.7,
+   "roofMaxM": 17.47,
+   "storeys3dbag": 5,
+   "builtYear": 1898,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012164455",
+   "alongM": 25.37,
+   "widthM": 6.19,
+   "eavesM": 11.7,
+   "roofMaxM": 15.63,
+   "storeys3dbag": 4,
+   "builtYear": 1898,
+   "uncertainty": []
+  }
+ ]
+}

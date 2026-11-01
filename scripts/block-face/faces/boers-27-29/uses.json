@@ -1,0 +1,55 @@
+{
+ "street": "Alexander Boersstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-01T15:26:33.471Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012159121",
+   "addresses": [
+    "Alexander Boersstraat 27",
+    "Alexander Boersstraat 27B",
+    "Alexander Boersstraat 27A"
+   ],
+   "groundUnits": [
+    {
+     "address": "Alexander Boersstraat 27",
+     "use": "woonfunctie",
+     "areaM2": 102,
+     "bagId": "0363010000783219"
+    },
+    {
+     "address": "Alexander Boersstraat 27B",
+     "use": "woonfunctie",
+     "areaM2": 121,
+     "bagId": "0363010012074346"
+    },
+    {
+     "address": "Alexander Boersstraat 27A",
+     "use": "woonfunctie",
+     "areaM2": 115,
+     "bagId": "0363010012074347"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012166741",
+   "addresses": [
+    "Alexander Boersstraat 29"
+   ],
+   "groundUnits": [
+    {
+     "address": "Alexander Boersstraat 29-H",
+     "use": "kantoorfunctie",
+     "areaM2": 118,
+     "bagId": "0363010000564861"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  }
+ ]
+}

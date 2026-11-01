@@ -1,0 +1,1065 @@
+{
+ "face": "verhulst-34-62",
+ "street": "Johannes Verhulststraat",
+ "library": "museumkwartier",
+ "stripDate": "2024-11-12",
+ "seconds": 2.61,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [],
+ "pands": [
+  {
+   "pandId": "0363100012160501",
+   "address": "Johannes Verhulststraat 62",
+   "builtYear": 1905,
+   "widthM": 5.26,
+   "eavesM": 12,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#b58b6d",
+    "wallRaw": "#d0a280",
+    "skyline": {
+     "eavesM": 14.57,
+     "eavesRow": 264,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.25,
+      "riseM": 4.23,
+      "topWidthM": 0.47,
+      "centre": 0.77
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0.733,
+    "structure": {
+     "bayWidthM": 2.17,
+     "bayCentre": 0.32,
+     "balconies": false,
+     "why": "no dark open axis (light ones: 0.68 m @ 0.77), 1 wide slab(s)",
+     "openAxes": [
+      {
+       "widthM": 0.68,
+       "centre": 0.46,
+       "light": 0.77
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 5.77,
+       "widthM": 1.25,
+       "centre": 0.23
+      }
+     ]
+    },
+    "voidShare": 0.52,
+    "foliageShare": 0.07
+   },
+   "status": "held",
+   "stage": "evidence",
+   "reason": "strip 52 % without panorama data",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012163906",
+   "address": "Johannes Verhulststraat 60",
+   "builtYear": 1902,
+   "widthM": 6.94,
+   "eavesM": 14.34,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#957c5e",
+    "wallRaw": "#7e7958",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 847,
+     "confidence": 0.15,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.114,
+    "structure": {
+     "bayWidthM": 1.32,
+     "bayCentre": 0.25,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0.02,
+    "foliageShare": 0.5
+   },
+   "status": "held",
+   "stage": "evidence",
+   "reason": "no front on the strip: sky over the roof in 62 % of columns (< 75 %): the strip shows a nearer wall, fence or tree, not the front",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012158230",
+   "address": "Johannes Verhulststraat 58",
+   "builtYear": 1902,
+   "widthM": 6.47,
+   "eavesM": 13.58,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#8f7a64",
+    "wallRaw": "#998c6f",
+    "skyline": {
+     "eavesM": 15.47,
+     "eavesRow": 228,
+     "confidence": 0.34,
+     "crown": {
+      "widthM": 1.2,
+      "riseM": 1.33,
+      "topWidthM": 1,
+      "centre": 0.9
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 6,
+    "frontClass": "blank",
+    "doorSide": "right",
+    "accentSide": "left",
+    "accentShare": 0.257,
+    "structure": {
+     "bayWidthM": 0.45,
+     "bayCentre": 0.21,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 6.67,
+       "widthM": 1.5,
+       "centre": 0.47
+      }
+     ]
+    },
+    "voidShare": 0.11,
+    "foliageShare": 0.36
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best museum-cs-1900-gable-balcony: built 1902, type 1900-1901)",
+   "best": {
+    "type": "museum-cs-1900-gable-balcony",
+    "score": 0,
+    "veto": [
+     "built 1902, type 1900-1901"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": null,
+      "note": "strip cornice unread (type line 10.4 m; 3DBAG 13.58 m not compared)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": null,
+      "note": "no strip"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012156369",
+   "address": "Johannes Verhulststraat 56",
+   "builtYear": 1905,
+   "widthM": 6.38,
+   "eavesM": 14.81,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#3a3323",
+    "wallRaw": "#595a35",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 847,
+     "confidence": 0.02,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "blank",
+    "doorSide": null,
+    "accentSide": "left",
+    "accentShare": 0.098,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 7.75,
+       "widthM": 1.13,
+       "centre": 0.47
+      }
+     ]
+    },
+    "voidShare": 0.02,
+    "foliageShare": 0.68
+   },
+   "status": "held",
+   "stage": "evidence",
+   "reason": "no front on the strip: sky over the roof in 8 % of columns (< 75 %): the strip shows a nearer wall, fence or tree, not the front",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012163288",
+   "address": "Johannes Verhulststraat 54",
+   "builtYear": 1905,
+   "widthM": 6.77,
+   "eavesM": 16.32,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#5a4d35",
+    "wallRaw": "#c3a276",
+    "skyline": {
+     "eavesM": 15.18,
+     "eavesRow": 240,
+     "confidence": 0.76,
+     "crown": {
+      "widthM": 2.83,
+      "riseM": 5.6,
+      "topWidthM": 0.05,
+      "centre": 0.5
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 4,
+    "frontClass": "blank",
+    "doorSide": "left",
+    "accentSide": "right",
+    "accentShare": 0.416,
+    "structure": {
+     "bayWidthM": 6.22,
+     "bayCentre": 0.5,
+     "balconies": true,
+     "why": "dark open axis 1.1 m at 0.16 (light 0.05): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 1.1,
+       "centre": 0.16,
+       "light": 0.05
+      },
+      {
+       "widthM": 2.77,
+       "centre": 0.63,
+       "light": 0.72
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0.3,
+    "foliageShare": 0.23
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best museum-cs-1900-gable-balcony: built 1905, type 1900-1901)",
+   "best": {
+    "type": "museum-cs-1900-gable-balcony",
+    "score": 0,
+    "veto": [
+     "built 1905, type 1900-1901"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0.5,
+      "note": "strip cornice 15.18 m vs the type's 10.4 m (wall-dormer skyline 14.4 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 4 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.102 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0.4,
+      "note": "strip columns 4 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012163090",
+   "address": "Johannes Verhulststraat 52",
+   "builtYear": 1905,
+   "widthM": 6.65,
+   "eavesM": 16.37,
+   "storeys3dbag": 0,
+   "bagBay": null,
+   "strip": {
+    "wall": "#a48367",
+    "wallRaw": "#d5b08a",
+    "skyline": {
+     "eavesM": 15.1,
+     "eavesRow": 243,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 2,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.526,
+    "structure": {
+     "bayWidthM": 6.1,
+     "bayCentre": 0.5,
+     "balconies": true,
+     "why": "balcony slabs stacked at 8.65 m (2.2 m wide), 7.82 m (1.35 m wide), 5.2 m (1.48 m wide)",
+     "openAxes": [
+      {
+       "widthM": 0.78,
+       "centre": 0.11,
+       "light": 0.61
+      },
+      {
+       "widthM": 0.63,
+       "centre": 0.95,
+       "light": 0.58
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 8.65,
+       "widthM": 2.2,
+       "centre": 0.41
+      },
+      {
+       "atM": 7.82,
+       "widthM": 1.35,
+       "centre": 0.13
+      },
+      {
+       "atM": 5.2,
+       "widthM": 1.48,
+       "centre": 0.44
+      },
+      {
+       "atM": 4.9,
+       "widthM": 1.2,
+       "centre": 0.13
+      }
+     ]
+    },
+    "voidShare": 0.36,
+    "foliageShare": 0.13
+   },
+   "status": "held",
+   "stage": "evidence",
+   "reason": "strip 36 % without panorama data",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012159619",
+   "address": "Johannes Verhulststraat 50",
+   "builtYear": 1905,
+   "widthM": 6.43,
+   "eavesM": 16.2,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#d2a062",
+    "wallRaw": "#e5b780",
+    "skyline": {
+     "eavesM": 14.78,
+     "eavesRow": 256,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": "left",
+    "accentShare": 0.428,
+    "structure": {
+     "bayWidthM": 5.92,
+     "bayCentre": 0.5,
+     "balconies": true,
+     "why": "dark open axis 1.18 m at 0.76 (light 0.3): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 1.35,
+       "centre": 0.11,
+       "light": 0.63
+      },
+      {
+       "widthM": 1.18,
+       "centre": 0.76,
+       "light": 0.3
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0.28,
+    "foliageShare": 0.22
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best museum-cs-1900-gable-balcony: built 1905, type 1900-1901)",
+   "best": {
+    "type": "museum-cs-1900-gable-balcony",
+    "score": 0,
+    "veto": [
+     "built 1905, type 1900-1901"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "strip cornice 14.78 m vs the type's 10.4 m (wall-dormer skyline 14.4 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 4 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.118 (brick)"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012153008",
+   "address": "Johannes Verhulststraat 48",
+   "builtYear": 1905,
+   "widthM": 6.54,
+   "eavesM": 16.46,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#b68d6a",
+    "wallRaw": "#988565",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 847,
+     "confidence": 0.04,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": 6,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.141,
+    "structure": {
+     "bayWidthM": 0.7,
+     "bayCentre": 0.11,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0.05,
+    "foliageShare": 0.25
+   },
+   "status": "held",
+   "stage": "evidence",
+   "reason": "no front on the strip: sky over the roof in 36 % of columns (< 75 %): the strip shows a nearer wall, fence or tree, not the front",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012153149",
+   "address": "Johannes Verhulststraat 46",
+   "builtYear": 1905,
+   "widthM": 6.3,
+   "eavesM": 16.36,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#2d2919",
+    "wallRaw": "#b09e7e",
+    "skyline": {
+     "eavesM": 15.18,
+     "eavesRow": 240,
+     "confidence": 0.94,
+     "crown": {
+      "widthM": 1.93,
+      "riseM": 2.02,
+      "topWidthM": 0.88,
+      "centre": 0.31
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": "left",
+    "accentSide": "left",
+    "accentShare": 0.448,
+    "structure": {
+     "bayWidthM": 1.27,
+     "bayCentre": 0.11,
+     "balconies": false,
+     "why": "no dark open axis, 2 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 8.8,
+       "widthM": 1.48,
+       "centre": 0.84
+      },
+      {
+       "atM": 8.27,
+       "widthM": 0.85,
+       "centre": 0.79
+      },
+      {
+       "atM": 7.9,
+       "widthM": 3.13,
+       "centre": 0.27
+      }
+     ]
+    },
+    "voidShare": 0.27,
+    "foliageShare": 0.23
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best museum-cs-1900-gable-balcony: built 1905, type 1900-1901)",
+   "best": {
+    "type": "museum-cs-1900-gable-balcony",
+    "score": 0,
+    "veto": [
+     "built 1905, type 1900-1901"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0.5,
+      "note": "strip cornice 15.18 m vs the type's 10.4 m (wall-dormer skyline 14.4 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.14 (brick)"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012237237",
+   "address": "Johannes Verhulststraat 44",
+   "builtYear": 1902,
+   "widthM": 6.17,
+   "eavesM": 15.87,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#252112",
+    "wallRaw": "#cea57f",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 847,
+     "confidence": 0.14,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "curtain",
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0.405,
+    "structure": {
+     "bayWidthM": 5.67,
+     "bayCentre": 0.5,
+     "balconies": false,
+     "why": "no dark open axis (light ones: 0.88 m @ 0.52), 1 wide slab(s)",
+     "openAxes": [
+      {
+       "widthM": 0.88,
+       "centre": 0.08,
+       "light": 0.52
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 10.4,
+       "widthM": 0.82,
+       "centre": 0.31
+      },
+      {
+       "atM": 7.32,
+       "widthM": 1.5,
+       "centre": 0.81
+      },
+      {
+       "atM": 6.27,
+       "widthM": 0.82,
+       "centre": 0.42
+      }
+     ]
+    },
+    "voidShare": 0.28,
+    "foliageShare": 0.28
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best museum-cs-1900-gable-balcony: built 1902, type 1900-1901)",
+   "best": {
+    "type": "museum-cs-1900-gable-balcony",
+    "score": 0,
+    "veto": [
+     "built 1902, type 1900-1901"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": null,
+      "note": "strip cornice unread (type line 10.4 m; 3DBAG 15.87 m not compared)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 4 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.116 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012236417",
+   "address": "Johannes Verhulststraat 42",
+   "builtYear": 1902,
+   "widthM": 5.92,
+   "eavesM": 15.36,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#252212",
+    "wallRaw": "#be9c7e",
+    "skyline": {
+     "eavesM": 15.38,
+     "eavesRow": 232,
+     "confidence": 0.81,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 2,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0.441,
+    "structure": {
+     "bayWidthM": 2.8,
+     "bayCentre": 0.26,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 10.47,
+       "widthM": 1.38,
+       "centre": 0.25
+      }
+     ]
+    },
+    "voidShare": 0.28,
+    "foliageShare": 0.25
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best museum-cs-1900-gable-balcony: built 1902, type 1900-1901)",
+   "best": {
+    "type": "museum-cs-1900-gable-balcony",
+    "score": 0,
+    "veto": [
+     "built 1902, type 1900-1901"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0.5,
+      "note": "strip cornice 15.38 m vs the type's 10.4 m (wall-dormer skyline 14.4 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 4 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.148 (brick)"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012236636",
+   "address": "Johannes Verhulststraat 40",
+   "builtYear": 1902,
+   "widthM": 6.07,
+   "eavesM": 15.42,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#1d1a0b",
+    "wallRaw": "#78704a",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 847,
+     "confidence": 0.05,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": "right",
+    "accentSide": "left",
+    "accentShare": 0.109,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0.03,
+    "foliageShare": 0.49
+   },
+   "status": "held",
+   "stage": "evidence",
+   "reason": "no front on the strip: sky over the roof in 55 % of columns (< 75 %): the strip shows a nearer wall, fence or tree, not the front",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012236145",
+   "address": "Johannes Verhulststraat 38",
+   "builtYear": 1902,
+   "widthM": 6.04,
+   "eavesM": 15.37,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#ce916d",
+    "wallRaw": "#9e8a6b",
+    "skyline": {
+     "eavesM": 15.88,
+     "eavesRow": 212,
+     "confidence": 0.61,
+     "crown": {
+      "widthM": 0.8,
+      "riseM": 5.3,
+      "topWidthM": 0.65,
+      "centre": 0.76
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 4,
+    "frontClass": "punched",
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.33,
+    "structure": {
+     "bayWidthM": 3.33,
+     "bayCentre": 0.3,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0.17,
+    "foliageShare": 0.27
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best museum-cs-1900-gable-balcony: built 1902, type 1900-1901)",
+   "best": {
+    "type": "museum-cs-1900-gable-balcony",
+    "score": 0,
+    "veto": [
+     "built 1902, type 1900-1901"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 15.88 m vs the type's 10.4 m (wall-dormer skyline 14.4 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.095 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0.4,
+      "note": "strip columns 4 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012236947",
+   "address": "Johannes Verhulststraat 36",
+   "builtYear": 1902,
+   "widthM": 6.02,
+   "eavesM": 15.43,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#cf9b65",
+    "wallRaw": "#9e946b",
+    "skyline": {
+     "eavesM": 16.18,
+     "eavesRow": 200,
+     "confidence": 0.31,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "columns",
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0.281,
+    "structure": {
+     "bayWidthM": 5.53,
+     "bayCentre": 0.5,
+     "balconies": true,
+     "why": "dark open axis 0.68 m at 0.36 (light 0.26): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.68,
+       "centre": 0.36,
+       "light": 0.26
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0.13,
+    "foliageShare": 0.42
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best museum-cs-1900-gable-balcony: built 1902, type 1900-1901)",
+   "best": {
+    "type": "museum-cs-1900-gable-balcony",
+    "score": 0,
+    "veto": [
+     "built 1902, type 1900-1901"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": null,
+      "note": "strip cornice unread (type line 10.4 m; 3DBAG 15.43 m not compared)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": null,
+      "note": "no strip"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012236560",
+   "address": "Johannes Verhulststraat 34",
+   "builtYear": 1902,
+   "widthM": 6.15,
+   "eavesM": 15.36,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#d29c64",
+    "wallRaw": "#deb57a",
+    "skyline": {
+     "eavesM": 16.32,
+     "eavesRow": 194,
+     "confidence": 0.98,
+     "crown": {
+      "widthM": 1.45,
+      "riseM": 1.25,
+      "topWidthM": 1.18,
+      "centre": 0.87
+     }
+    },
+    "stucco": false,
+    "bands": 2,
+    "columns": 2,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.379,
+    "structure": {
+     "bayWidthM": 1.25,
+     "bayCentre": 0.78,
+     "balconies": true,
+     "why": "bay-less open axis 0.65 m at 0.74 (light 0.52): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.65,
+       "centre": 0.74,
+       "light": 0.52
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0.22,
+    "foliageShare": 0.24
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best museum-cs-1900-gable-balcony: built 1902, type 1900-1901)",
+   "best": {
+    "type": "museum-cs-1900-gable-balcony",
+    "score": 0,
+    "veto": [
+     "built 1902, type 1900-1901"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 16.32 m vs the type's 10.4 m (wall-dormer skyline 14.4 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.1 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0.4,
+      "note": "strip columns 2 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

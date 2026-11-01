@@ -11,6 +11,7 @@ import type {CanalHouseRecipe, CanalhouseDressing, CanalhouseElevation, Canalhou
 import type {CanalhouseGlazedBay} from '../canalhouseGlazedBay.ts';
 import {brickStripeBlocks} from './brickStripes.ts';
 import {parapetBandBlocks} from './parapetBand.ts';
+import {corbelTableBlocks} from './corbelTable.ts';
 import {stairLightOpenings} from './stairLight.ts';
 import {frontLoggiaOpening, isLoggia} from './frontLoggia.ts';
 import {bargeboardOrnaments} from './bargeboards.ts';
@@ -20,7 +21,7 @@ import {unobservedHouse, type GableType} from '../facade/houseRecord.ts';
 import {measured, type Observation} from '../facade/evidence.ts';
 import type {BuildingFacts, FrontFacts} from './facts.ts';
 import {pointInRing, roofHeightAt} from './facts.ts';
-import {swatch, DIMINISHING_WINDOW_HEIGHTS, DARK_TYMPANUM_K, ORIEL, TIMBER_DORMER, type CanalHouseIntent, type FrontIntent, type GableIntent, type ShopSign} from './intent.ts';
+import {swatch, DIMINISHING_WINDOW_HEIGHTS, DARK_TYMPANUM_K, ORIEL, TIMBER_DORMER, type CanalHouseIntent, type OrielConsoleCorbel, type FrontIntent, type GableIntent, type ShopSign} from './intent.ts';
 import {cleanRoof, type RoofCleanupReport} from './roofCleanup.ts';
 import {gableOrnaments} from './gableOrnament.ts';
 import {entablatureCornice} from './entablature.ts';
@@ -133,7 +134,7 @@ export interface FitReport {
     /** Multi-bay erker (facade x): its stack's top, plan and cap. */
     erker?: {leftM: number; widthM: number; frontWidthM: number; depthM: number; topM: number; cap: 'hip' | 'flat' | 'none'; finish?: 'painted';
       /** A timber oriel (`bayWindows.oriel`): the storeys painted in the trim colour, the console under its foot. */
-      oriel?: {paintedStoreys: number[]; paintFrom?: number; console: boolean; footM: number; storeys: number[];
+      oriel?: {paintedStoreys: number[]; paintFrom?: number; console: boolean; footM: number; storeys: number[]; consoleCorbel?: OrielConsoleCorbel;
         /** `oriel.twin`: the second stack's left edge (facade x), same width, plan and storeys. */
         twinLeftM?: number};
       /** Box frames (`bayWindows.hood`): one hood slab over each box, at the box tops (elevation metres). */
@@ -213,7 +214,7 @@ interface Layout { openings: CanalhouseOpening[]; glazedBays: CanalhouseGlazedBa
   /** Amsterdam School set only (absent otherwise): storey bottoms and window heads (index = storey from the ground), and the multi-bay erker span (viewer-left metres). */
   school?: {bottoms: number[]; heads: (number | null)[]; erker?: {leftM: number; widthM: number; storeys: number[]; topM: number; hoods?: {topM: number}[];
     /** A timber oriel (`bayWindows.oriel`): its plan, the painted storeys, a console under its foot (elevation metres). */
-    oriel?: {depthM: number; frontWidthM: number; footM: number; paintedStoreys: number[]; paintFrom?: number; console: boolean; twinLeftM?: number}}} }
+    oriel?: {depthM: number; frontWidthM: number; footM: number; paintedStoreys: number[]; paintFrom?: number; console: boolean; twinLeftM?: number; consoleCorbel?: OrielConsoleCorbel}}} }
 
 /** Shopfront proportions: pier width, stall riser top, fascia depth below the ground-storey top. */
 const SHOP = {pierM: 0.3, glassBottomM: 0.55, fasciaM: 0.62, fasciaGapM: 0.08};
@@ -431,7 +432,7 @@ function layoutFront(f: FrontIntent, width: number, heightTop: number): Layout {
     }
     const top = storeys.at(-1)!;
     school.erker = {leftM: round(erkerSpan[0]), widthM: w, storeys, topM: round(school.bottoms[top] + moduleH(top)),
-      oriel: {depthM: depth, frontWidthM: round(w - 2 * ret), footM: round(school.bottoms[storeys[0] === 0 ? storeys.find(v => v > 0) ?? 0 : storeys[0]]), paintedStoreys: oriel.paintedStoreys ?? [], ...(oriel.paintFrom !== undefined ? {paintFrom: oriel.paintFrom} : {}), console: !!oriel.console, ...(twinSpan ? {twinLeftM: round(twinSpan[0])} : {})}};
+      oriel: {depthM: depth, frontWidthM: round(w - 2 * ret), footM: round(school.bottoms[storeys[0] === 0 ? storeys.find(v => v > 0) ?? 0 : storeys[0]]), paintedStoreys: oriel.paintedStoreys ?? [], ...(oriel.paintFrom !== undefined ? {paintFrom: oriel.paintFrom} : {}), console: !!oriel.console, ...(oriel.consoleCorbel ? {consoleCorbel: oriel.consoleCorbel} : {}), ...(twinSpan ? {twinLeftM: round(twinSpan[0])} : {})}};
   } else if (school && erkerSpan && erkerBays) {
     const storeys = f.bayWindows!.storeys, w = round(erkerSpan[1] - erkerSpan[0]), lights = 2 * (erkerBays.to - erkerBays.from + 1);
     for (const s of storeys) {
@@ -646,7 +647,10 @@ export function fitGableLights(profile: CanalhousePoint[], lights: GableLight[],
 /** Neck share of a neck/bell crown's width: measured (`crownNeckWidth`) or the stock 0.5 neck / 0.46 bell. */
 const neckShare = (f: FrontIntent) => f.crownNeckWidth ?? (f.gable === 'bell' ? 0.46 : 0.5);
 /** Cap rise of a neck/bell crown `width` wide: measured (`crownCapRatio` of the neck, within 0.4 of the rise) or the stock share of the rise. */
-const capRiseOf = (f: FrontIntent, rise: number, width: number) => f.crownCapRatio !== undefined ? Math.min(f.crownCapRatio * width * neckShare(f), rise * 0.4) : f.gable === 'bell' ? Math.min(0.6, rise * 0.15) : Math.min(0.45, rise * 0.1);
+// A flat cap (`crownCap: "flat"`, Van Breestraat 119-127 bell gables, Museumkwartier #159) has no rise: the neck ends in a
+// level coping. Before, a neck/bell crown with a flat cap threw in canalhouseCrownProfile (a flat cap with a rise), so no
+// installed recipe carries one and every other crown is byte-identical.
+const capRiseOf = (f: FrontIntent, rise: number, width: number) => f.crownCap === 'flat' ? 0 : f.crownCapRatio !== undefined ? Math.min(f.crownCapRatio * width * neckShare(f), rise * 0.4) : f.gable === 'bell' ? Math.min(0.6, rise * 0.15) : Math.min(0.45, rise * 0.1);
 
 /**
  * A `shouldered` gable `width` wide (FrontIntent.shouldered): plumb sides `shoulder` over the eaves, then straight rakes
@@ -692,8 +696,8 @@ function crownProfile(f: FrontIntent, width: number, eaves: number, top: number,
     // every neck (power 0.6) and bell (quarter sine) flank convex, the inverse of the claw pieces and bell flares on the
     // photos (user, 2026-10-16); every flank measured on the six bell/neck faces reads concave.
     // `crownNeckWidth` / `crownCapRiseM`: measured on the photo; absent, the stock shares (byte-identical).
-    case 'neck': case 'raised-neck': { const n = width * neckShare(f); return canalhouseCrownProfile('hals', width, eaves, top, n, eaves + rise * (f.gable === 'neck' ? 0.45 : 0.25), 0, {cap: f.crownCap ?? 'pediment', capRiseM: capRiseOf(f, rise, width), crestWidthM: n, shoulder: f.crownShoulder ?? 'concave'}); }
-    case 'bell': { const n = width * neckShare(f); return canalhouseCrownProfile('klok', width, eaves, top, n, eaves + rise * 0.55, 0, {cap: f.crownCap ?? 'rounded', capRiseM: capRiseOf(f, rise, width), crestWidthM: n, shoulder: f.crownShoulder ?? 'concave'}); }
+    case 'neck': case 'raised-neck': { const n = width * neckShare(f); return canalhouseCrownProfile('hals', width, eaves, top, n, eaves + rise * (f.crownShoulderRise ?? (f.gable === 'neck' ? 0.45 : 0.25)), 0, {cap: f.crownCap ?? 'pediment', capRiseM: capRiseOf(f, rise, width), crestWidthM: n, shoulder: f.crownShoulder ?? 'concave'}); }
+    case 'bell': { const n = width * neckShare(f); return canalhouseCrownProfile('klok', width, eaves, top, n, eaves + rise * (f.crownShoulderRise ?? 0.55), 0, {cap: f.crownCap ?? 'rounded', capRiseM: capRiseOf(f, rise, width), crestWidthM: n, shoulder: f.crownShoulder ?? 'concave'}); }
     case 'cornice': {
       if (f.crownCap && f.crownCap !== 'flat') {
         // Wide: a parapet over nearly the whole front with the cap across it (1900s fronts, 081118/087959).
@@ -1022,8 +1026,11 @@ export function fitIntent(intent: CanalHouseIntent, surveyFacts: BuildingFacts):
     if (profile) {
       // Plumb sides (a shouldered gable, a half crown's party edge) are two vertices at one x: a mirrored outline is read
       // right to left first so the stable sort keeps each riser's foot before its head.
+      // A riser's two vertices can differ by an ulp once a crown on part of the front is offset (Van Breestraat 129,
+      // Museumkwartier #159: 3.5980496799642876 vs 3.598049679964287 put the head before the foot and cut a V into a
+      // step gable's top), so x within 1e-9 counts as equal, the stable sort keeps the outline's own order and the riser takes one x.
       const plumb = front.gable === 'shouldered' || !!front.crownHalf;
-      elevation.crown = seen({profile: (plumb && mirrored ? [...profile].reverse() : profile).map(([x, y]) => [Math.min(width, Math.max(0, mirrored ? width - x : x)), Math.max(eaves, y)] as CanalhousePoint).sort((p, q) => p[0] - q[0]), depthM: 0.18, trimWidthM: front.renderedGable ? 0 : 0.08, surface: 'wall'});
+      elevation.crown = seen({profile: (plumb && mirrored ? [...profile].reverse() : profile).map(([x, y]) => [Math.min(width, Math.max(0, mirrored ? width - x : x)), Math.max(eaves, y)] as CanalhousePoint).sort((p, q) => Math.abs(p[0] - q[0]) < 1e-9 ? 0 : p[0] - q[0]).map((p, i, a) => i > 0 && p[0] < a[i - 1][0] ? [a[i - 1][0], p[1]] as CanalhousePoint : p), depthM: 0.18, trimWidthM: front.renderedGable ? 0 : 0.08, surface: 'wall'});
       // `renderedGable.bargeboard`: painted boards inside each raking edge of the crown, in the trim colour (bargeboards.ts);
       // they replace the crown's trim edge boxes (a frame-class box past the gable end is judged an opening outside its wall).
       if (front.renderedGable) { const boards = bargeboardOrnaments(elevation.crown.value.profile, eaves, front.renderedGable.bargeboard, width); if (boards.length) elevation.ornaments = elevation.ornaments ? {...elevation.ornaments, value: [...elevation.ornaments.value, ...boards]} : seen(boards); }
@@ -1104,6 +1111,8 @@ export function fitIntent(intent: CanalHouseIntent, surveyFacts: BuildingFacts):
     if (front.brickStripes) elevation.bands.value.push(...brickStripeBlocks(front.brickStripes, width, flipX));
     // A dark band of the parapet's top courses (`parapet.band`, parapetBand.ts), stopped at a tower and laid under its top.
     if (parapetM !== null && front.parapet!.band) elevation.bands.value.push(...parapetBandBlocks(front.parapet!.band, {count, mw, eaves, copingM: front.parapet!.coping ? DE_BAARSJES.copingM : 0, tower: towerSpan ? {span: towerSpan, top: towerTop} : null, place, flipX}));
+    // The brick corbel table on the cornice foot (`corbelTable`, corbelTable.ts): under an entablature, on its cap's foot.
+    if (front.corbelTable && elevation.cornice) elevation.bands.value.push(...corbelTableBlocks(front.corbelTable, width, front.entablature ? round(eaves - front.entablature.cap) : elevation.cornice.value.bottomM));
     if (layout.groundBlocks?.length) elevation.blocks = seen([...(elevation.blocks?.value ?? []), ...Array.from({length: count}, (_, k) => layout.groundBlocks!.map(b => ({...b, id: idFor(k, b.id), leftM: round(flipX(place(k, b.leftM, b.widthM), b.widthM))}))).flat()]);
     if (front.shopfront && layout.shopGlass && layout.shopZone) {
       const g0 = layout.groundBase > 0 ? 1 : 0, floor = layout.groundBase + layout.storeyHeights[g0];
@@ -1242,7 +1251,7 @@ export function fitIntent(intent: CanalHouseIntent, surveyFacts: BuildingFacts):
       ...(canopy ? {canopy} : {}),
       ...(lisenes ? {lisenes} : {}),
       ...(erker?.oriel ? {erker: {leftM: round(flipX(erker.leftM, erker.widthM)), widthM: erker.widthM, frontWidthM: erker.oriel.frontWidthM, depthM: erker.oriel.depthM, topM: erker.topM, cap: 'none' as const,
-        oriel: {paintedStoreys: erker.oriel.paintedStoreys, ...(erker.oriel.paintFrom !== undefined ? {paintFrom: erker.oriel.paintFrom} : {}), console: erker.oriel.console, footM: erker.oriel.footM, storeys: erker.storeys, ...(erker.oriel.twinLeftM !== undefined ? {twinLeftM: round(flipX(erker.oriel.twinLeftM, erker.widthM))} : {})}}}
+        oriel: {paintedStoreys: erker.oriel.paintedStoreys, ...(erker.oriel.paintFrom !== undefined ? {paintFrom: erker.oriel.paintFrom} : {}), console: erker.oriel.console, footM: erker.oriel.footM, storeys: erker.storeys, ...(erker.oriel.consoleCorbel ? {consoleCorbel: erker.oriel.consoleCorbel} : {}), ...(erker.oriel.twinLeftM !== undefined ? {twinLeftM: round(flipX(erker.oriel.twinLeftM, erker.widthM))} : {})}}}
       : erker ? {erker: erker.hoods ? {leftM: round(flipX(erker.leftM, erker.widthM)), widthM: erker.widthM, frontWidthM: erker.widthM, depthM: DE_BAARSJES.boxDepthM, topM: erker.topM, cap: 'none' as const, finish: 'painted' as const, hoods: erker.hoods}
         : {leftM: round(flipX(erker.leftM, erker.widthM)), widthM: erker.widthM, frontWidthM: round(erker.widthM - 2 * ERKER.returnM), depthM: ERKER.depthM, topM: erker.topM, cap: front.bayWindows!.cap ?? 'none', ...(front.bayWindows!.finish ? {finish: front.bayWindows!.finish} : {})}} : {}),
       ...(timberBalconies ? {timberBalconies} : {}), ...(balconyHoods.length ? {balconyHoods} : {}), ...(front.balconyRun ? {balconyRun: balconyRunFor(front.balconyRun, layout, width)} : {})});

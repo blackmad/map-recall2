@@ -1,0 +1,147 @@
+{
+ "schemaVersion": 1,
+ "kind": "house-type",
+ "id": "museum-jv-1910-lintel-parapet",
+ "district": "museumkwartier",
+ "description": "Nicolaas Maesstraat 47-61 (1910): 6.1-6.6 m brown-red brick fronts of four storeys under a flat roof behind a 1 m brick parapet with a stone coping; three axes of white T-windows under eared stone lintel slabs; iron-railed balconies on bracketed slabs on the centre axis of storeys 1 and 2; a double house door with a transom on an end axis",
+ "fit": {
+  "widthM": [
+   5.8,
+   6.8
+  ],
+  "storeys": [
+   4
+  ]
+ },
+ "match": {
+  "years": [
+   1909,
+   1911
+  ],
+  "yearSlack": 0,
+  "storeys3dbag": [
+   4,
+   5
+  ],
+  "stucco": false,
+  "frontEavesM": 13.65,
+  "note": "Nicolaas Maesstraat 51 on the 2024-12-11 strip (40 px/m, 1 m grid): storeys to 13.65 m, a brick parapet with recessed panels to its coping at 14.65 m; 3DBAG eaves 13.9-14.1 m read the roof edge behind the parapet. BAG 1910, widths 6.1-6.6 m; the strip skyline reads the parapet coping, 14.4-14.6 m on 47-61 (frontSkylineM)",
+  "frontSkylineM": 14.6,
+  "mirrorForDoor": "right"
+ },
+ "body": {
+  "storeys": 4,
+  "bays": 3,
+  "storeyHeights": [
+   4.05,
+   3.25,
+   3.05,
+   3.3
+  ],
+  "windows": "t-window",
+  "windowShare": 0.58,
+  "windowHeights": [
+   0.59,
+   0.72,
+   0.8,
+   0.74
+  ],
+  "headLines": [
+   0.83,
+   0.8,
+   0.87,
+   0.82
+  ],
+  "windowSurround": "stone-lintel",
+  "cornice": "none",
+  "balconies": {
+   "storeys": [
+    1,
+    2
+   ],
+   "bays": [
+    1
+   ],
+   "projecting": true
+  }
+ },
+ "crowns": {
+  "parapet": {
+   "gable": "flat",
+   "cornice": "none",
+   "parapet": {
+    "courses": 18,
+    "coping": true
+   },
+   "note": "Nicolaas Maesstraat 47-61: a brick parapet 13.65-14.65 m with three recessed panels and a stone coping (the panels are not drawn)"
+  }
+ },
+ "grounds": {
+  "door-right": {
+   "doorBay": 2,
+   "basement": "none",
+   "note": "Nicolaas Maesstraat 51: a double house door with a transom on the right axis, two windows; the left-door houses (49, 53, 57, 61) are this front mirrored (match.mirrorForDoor)"
+  }
+ },
+ "palettes": {
+  "brown-red": {
+   "brick": "#8a6656",
+   "frame": "white-painted",
+   "door": "#4a2420",
+   "stone": "#d8d0c0",
+   "cornice": "#d8d0c0"
+  }
+ },
+ "roof": {
+  "material": "bitumen",
+  "form": "flat",
+  "source": "front",
+  "evidence": "Nicolaas Maesstraat 47-61 (2024-12-11 strip): sky over the parapet coping on every pand; 3DBAG roof parts over 55 sit behind the parapet, out of the street view"
+ },
+ "rhythm": {
+  "bays": "3 equal window axes",
+  "identicalBays": "every upper storey: three T-windows of one width (1.2 m) under eared stone lintels",
+  "windowsPerStorey": "ground: door + 2 | 1: 3 | 2: 3 | 3: 3",
+  "symmetry": "upper storeys symmetric; the door on the left or right axis",
+  "groundFloor": "residential: a double house door with a transom and two windows",
+  "signage": "none",
+  "roofline": "flat roof behind a 1 m brick parapet with a stone coping at 14.65 m",
+  "photoRows": [
+   3,
+   3,
+   3,
+   3
+  ],
+  "photoGroundRows": 1,
+  "photoGables": 0
+ },
+ "evidence": [
+  {
+   "face": "maes-31-71",
+   "pands": [
+    "0363100012125531"
+   ],
+   "citation": "strip.jpg 2024-12-11 at 40 px/m, 1 m grid (Nicolaas Maesstraat 51, 6.3 m): ground windows 0.95-3.35 m, double door 0.4-3.3 m with its transom; balcony slabs 4.0-4.3 and 7.2-7.5 m; storey 1 windows 4.3-6.65 m, storey 2 7.5-9.95 m, storey 3 10.6-13.05 m, eared stone lintels 0.25 m over each head; parapet 13.65-14.65 m with three recessed panels and a coping; windows 1.2 m wide"
+  },
+  {
+   "face": "maes-31-71",
+   "pands": [
+    "0363100012101245",
+    "0363100012064242",
+    "0363100012161910",
+    "0363100012063128",
+    "0363100012111419",
+    "0363100012150328",
+    "0363100012095505"
+   ],
+   "citation": "strip.jpg 2024-12-11 pands 9-16 (47-61): the same axes, lintels, balconies and parapet"
+  }
+ ],
+ "schemaLimits": [
+  "the parapet's recessed panels and its moulded foot are drawn as plain brick under the coping",
+  "the balcony slabs' cast brackets are the library's projecting balcony"
+ ],
+ "notes": [
+  "Palette: placed pands take their own measured wall (auto-place measuredPalette); one brick per row from tree-free columns at install."
+ ]
+}

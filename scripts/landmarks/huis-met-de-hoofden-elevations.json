@@ -1,0 +1,7 @@
+{"id": "huis-met-de-hoofden", "countedBy": "lane #164 (opus) from ref-front.jpg = RCE 20408929 (2005) and the 2022 panorama TMX7316010203-002972_pano_0000_000126 for the basement windows hidden by cars; not a blind count, 2026-11-01", "facades": [
+ {"name": "canal front (Keizersgracht)", "bearing": 300, "photo": "artifacts/landmark-lanes/huis-met-de-hoofden/ref-front.jpg",
+  "rows": [4, 2, 4, 3, 5, 3, 2, 3],
+  "rowsNote": "bottom up: two arched cellar gates + two basement windows; the door and the wing's gate; four bel-etage cross windows; the window over the door + the wing's two windows; five second-storey windows; three in gable stage 1; two lower dormers (the left pair is behind the tree, seen as two dark lights); the stage-2 window + two upper dormers",
+  "symmetric": false, "gables": 3,
+  "gablesNote": "the stepped gable and the two party-wall chimneys rise as separate peaks"}
+]}

@@ -1,0 +1,1009 @@
+{
+ "buurt": "concertgebouwbuurt",
+ "library": "museumkwartier",
+ "generatedAt": "2026-11-01T17:19:55.236Z",
+ "seconds": 65.01,
+ "totals": {
+  "faces": 44,
+  "pands": 329,
+  "placed": 0
+ },
+ "faces": [
+  {
+   "face": "baerle-14-18",
+   "street": "Van Baerlestraat",
+   "pands": 3,
+   "placed": 0,
+   "held": 3,
+   "runs": [],
+   "seconds": 0.78,
+   "byType": {},
+   "holds": {
+    "evidence": 0,
+    "match": 3,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "baerle-20-20",
+   "status": "no intake"
+  },
+  {
+   "face": "baerle-22-30",
+   "street": "Van Baerlestraat",
+   "pands": 3,
+   "placed": 0,
+   "held": 3,
+   "runs": [],
+   "seconds": 1.05,
+   "byType": {},
+   "holds": {
+    "evidence": 0,
+    "match": 3,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "baerle-32-44",
+   "street": "Van Baerlestraat",
+   "pands": 7,
+   "placed": 0,
+   "held": 7,
+   "runs": [],
+   "seconds": 1.16,
+   "byType": {},
+   "holds": {
+    "evidence": 0,
+    "match": 7,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "baerle-52-88",
+   "street": "Van Baerlestraat",
+   "pands": 12,
+   "placed": 0,
+   "held": 12,
+   "runs": [],
+   "seconds": 2.96,
+   "byType": {},
+   "holds": {
+    "evidence": 0,
+    "match": 12,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "baerle-6-10",
+   "street": "Van Baerlestraat",
+   "pands": 3,
+   "placed": 0,
+   "held": 3,
+   "runs": [],
+   "seconds": 0.68,
+   "byType": {},
+   "holds": {
+    "evidence": 0,
+    "match": 3,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "baerle-92-96",
+   "street": "Van Baerlestraat",
+   "pands": 2,
+   "placed": 0,
+   "held": 2,
+   "runs": [],
+   "seconds": 0.5,
+   "byType": {},
+   "holds": {
+    "evidence": 0,
+    "match": 2,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "baerle-98-98",
+   "status": "no intake"
+  },
+  {
+   "face": "boers-1-5",
+   "street": "Alexander Boersstraat",
+   "pands": 3,
+   "placed": 0,
+   "held": 3,
+   "runs": [],
+   "seconds": 0.2,
+   "byType": {},
+   "holds": {
+    "evidence": 0,
+    "match": 3,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "boers-12-12",
+   "status": "no intake"
+  },
+  {
+   "face": "boers-16-30",
+   "street": "Alexander Boersstraat",
+   "pands": 8,
+   "placed": 0,
+   "held": 8,
+   "runs": [],
+   "seconds": 1.24,
+   "byType": {},
+   "holds": {
+    "evidence": 0,
+    "match": 8,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "boers-19-25",
+   "street": "Alexander Boersstraat",
+   "pands": 4,
+   "placed": 0,
+   "held": 4,
+   "runs": [],
+   "seconds": 0.67,
+   "byType": {},
+   "holds": {
+    "evidence": 0,
+    "match": 4,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "boers-2-10",
+   "street": "Alexander Boersstraat",
+   "pands": 5,
+   "placed": 0,
+   "held": 5,
+   "runs": [],
+   "seconds": 0.92,
+   "byType": {},
+   "holds": {
+    "evidence": 0,
+    "match": 5,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "boers-25-25",
+   "street": "Alexander Boersstraat",
+   "pands": 2,
+   "placed": 0,
+   "held": 2,
+   "runs": [],
+   "seconds": 0.1,
+   "byType": {},
+   "holds": {
+    "evidence": 0,
+    "match": 2,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "boers-27-29",
+   "street": "Alexander Boersstraat",
+   "pands": 2,
+   "placed": 0,
+   "held": 2,
+   "runs": [],
+   "seconds": 0.22,
+   "byType": {},
+   "holds": {
+    "evidence": 0,
+    "match": 2,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "boers-31-31",
+   "status": "no intake"
+  },
+  {
+   "face": "boers-34-48",
+   "status": "no intake"
+  },
+  {
+   "face": "boers-35-35",
+   "status": "no intake"
+  },
+  {
+   "face": "boers-37-43",
+   "street": "Alexander Boersstraat",
+   "pands": 4,
+   "placed": 0,
+   "held": 4,
+   "runs": [],
+   "seconds": 0.83,
+   "byType": {},
+   "holds": {
+    "evidence": 0,
+    "match": 4,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "boers-50-50",
+   "status": "no intake"
+  },
+  {
+   "face": "boers-52-52",
+   "status": "no intake"
+  },
+  {
+   "face": "boers-60-60",
+   "status": "no intake"
+  },
+  {
+   "face": "boers-7-7",
+   "status": "no intake"
+  },
+  {
+   "face": "boers-9-17",
+   "street": "Alexander Boersstraat",
+   "pands": 5,
+   "placed": 0,
+   "held": 5,
+   "runs": [],
+   "seconds": 0.43,
+   "byType": {},
+   "holds": {
+    "evidence": 0,
+    "match": 5,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "bree-19-67",
+   "street": "Van Breestraat",
+   "pands": 19,
+   "placed": 0,
+   "held": 19,
+   "runs": [],
+   "seconds": 4.15,
+   "byType": {},
+   "holds": {
+    "evidence": 2,
+    "match": 6,
+    "likeness": 2,
+    "run": 1,
+    "review": 8
+   }
+  },
+  {
+   "face": "bree-2-70",
+   "street": "Van Breestraat",
+   "pands": 20,
+   "placed": 0,
+   "held": 20,
+   "runs": [],
+   "seconds": 7.06,
+   "byType": {},
+   "holds": {
+    "evidence": 0,
+    "match": 17,
+    "likeness": 3,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "brouwers-1-1",
+   "status": "no intake"
+  },
+  {
+   "face": "brouwers-17-17",
+   "status": "no intake"
+  },
+  {
+   "face": "brouwers-19-21",
+   "street": "Jan Willem Brouwersstraat",
+   "pands": 2,
+   "placed": 0,
+   "held": 2,
+   "runs": [],
+   "seconds": 0.31,
+   "byType": {},
+   "holds": {
+    "evidence": 0,
+    "match": 2,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "brouwers-22-22",
+   "status": "no intake"
+  },
+  {
+   "face": "brouwers-23-25",
+   "street": "Jan Willem Brouwersstraat",
+   "pands": 2,
+   "placed": 0,
+   "held": 2,
+   "runs": [],
+   "seconds": 0.28,
+   "byType": {},
+   "holds": {
+    "evidence": 0,
+    "match": 2,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "brouwers-24-30",
+   "street": "Jan Willem Brouwersstraat",
+   "pands": 4,
+   "placed": 0,
+   "held": 4,
+   "runs": [],
+   "seconds": 0.47,
+   "byType": {},
+   "holds": {
+    "evidence": 0,
+    "match": 4,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "brouwers-3-15",
+   "status": "no intake"
+  },
+  {
+   "face": "brouwers-4-4",
+   "status": "no intake"
+  },
+  {
+   "face": "brouwers-40-66",
+   "street": "Jan Willem Brouwersstraat",
+   "pands": 2,
+   "placed": 0,
+   "held": 2,
+   "runs": [],
+   "seconds": 0.35,
+   "byType": {},
+   "holds": {
+    "evidence": 0,
+    "match": 2,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "brouwers-6-18",
+   "street": "Jan Willem Brouwersstraat",
+   "pands": 7,
+   "placed": 0,
+   "held": 7,
+   "runs": [],
+   "seconds": 1.21,
+   "byType": {},
+   "holds": {
+    "evidence": 0,
+    "match": 6,
+    "likeness": 0,
+    "run": 1,
+    "review": 0
+   }
+  },
+  {
+   "face": "brouwers-68-86",
+   "status": "no intake"
+  },
+  {
+   "face": "concertgebouwplein-14-14",
+   "status": "no intake"
+  },
+  {
+   "face": "concertgebouwplein-20-34",
+   "status": "no intake"
+  },
+  {
+   "face": "eeghen-1-1",
+   "status": "no intake"
+  },
+  {
+   "face": "eeghen-1-57",
+   "street": "Van Eeghenstraat",
+   "pands": 16,
+   "placed": 0,
+   "held": 16,
+   "runs": [],
+   "seconds": 2.64,
+   "byType": {},
+   "holds": {
+    "evidence": 0,
+    "match": 16,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "eeghen-2-36",
+   "street": "Van Eeghenstraat",
+   "pands": 17,
+   "placed": 0,
+   "held": 17,
+   "runs": [],
+   "seconds": 2.25,
+   "byType": {},
+   "holds": {
+    "evidence": 6,
+    "match": 11,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "eeghen-2-8",
+   "street": "Korte Van Eeghenstraat",
+   "pands": 4,
+   "placed": 0,
+   "held": 4,
+   "runs": [],
+   "seconds": 0.53,
+   "byType": {},
+   "holds": {
+    "evidence": 0,
+    "match": 4,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "eeghen-38-58",
+   "street": "Van Eeghenstraat",
+   "pands": 11,
+   "placed": 0,
+   "held": 11,
+   "runs": [],
+   "seconds": 1.36,
+   "byType": {},
+   "holds": {
+    "evidence": 3,
+    "match": 8,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "eeghenlaan-10-10",
+   "status": "no intake"
+  },
+  {
+   "face": "eeghenlaan-11-11",
+   "status": "no intake"
+  },
+  {
+   "face": "eeghenlaan-12-12",
+   "status": "no intake"
+  },
+  {
+   "face": "eeghenlaan-13-13",
+   "status": "no intake"
+  },
+  {
+   "face": "eeghenlaan-14-14",
+   "status": "no intake"
+  },
+  {
+   "face": "eeghenlaan-15-15",
+   "status": "no intake"
+  },
+  {
+   "face": "eeghenlaan-16-16",
+   "status": "no intake"
+  },
+  {
+   "face": "eeghenlaan-17-17",
+   "status": "no intake"
+  },
+  {
+   "face": "eeghenlaan-18-18",
+   "status": "no intake"
+  },
+  {
+   "face": "eeghenlaan-19-19",
+   "status": "no intake"
+  },
+  {
+   "face": "eeghenlaan-2-2",
+   "status": "no intake"
+  },
+  {
+   "face": "eeghenlaan-21-21",
+   "status": "no intake"
+  },
+  {
+   "face": "eeghenlaan-22-22",
+   "status": "no intake"
+  },
+  {
+   "face": "eeghenlaan-23-23",
+   "status": "no intake"
+  },
+  {
+   "face": "eeghenlaan-24-24",
+   "status": "no intake"
+  },
+  {
+   "face": "eeghenlaan-25-25",
+   "status": "no intake"
+  },
+  {
+   "face": "eeghenlaan-26-26",
+   "status": "no intake"
+  },
+  {
+   "face": "eeghenlaan-27-27",
+   "status": "no intake"
+  },
+  {
+   "face": "eeghenlaan-28-28",
+   "status": "no intake"
+  },
+  {
+   "face": "eeghenlaan-29-29",
+   "status": "no intake"
+  },
+  {
+   "face": "eeghenlaan-3-3",
+   "status": "no intake"
+  },
+  {
+   "face": "eeghenlaan-30-30",
+   "status": "no intake"
+  },
+  {
+   "face": "eeghenlaan-31-31",
+   "status": "no intake"
+  },
+  {
+   "face": "eeghenlaan-32-32",
+   "status": "no intake"
+  },
+  {
+   "face": "eeghenlaan-33-33",
+   "status": "no intake"
+  },
+  {
+   "face": "eeghenlaan-34-34",
+   "status": "no intake"
+  },
+  {
+   "face": "eeghenlaan-35-35",
+   "status": "no intake"
+  },
+  {
+   "face": "eeghenlaan-4-4",
+   "status": "no intake"
+  },
+  {
+   "face": "eeghenlaan-5-5",
+   "status": "no intake"
+  },
+  {
+   "face": "eeghenlaan-6-6",
+   "status": "no intake"
+  },
+  {
+   "face": "eeghenlaan-7-7",
+   "status": "no intake"
+  },
+  {
+   "face": "eeghenlaan-8-8",
+   "status": "no intake"
+  },
+  {
+   "face": "eeghenlaan-9-9",
+   "status": "no intake"
+  },
+  {
+   "face": "hooft-135-177",
+   "street": "Pieter Cornelisz. Hooftstraat",
+   "pands": 16,
+   "placed": 0,
+   "held": 16,
+   "runs": [],
+   "seconds": 3.41,
+   "byType": {},
+   "holds": {
+    "evidence": 0,
+    "match": 16,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "hooft-144-228",
+   "street": "Pieter Cornelisz. Hooftstraat",
+   "pands": 11,
+   "placed": 0,
+   "held": 11,
+   "runs": [],
+   "seconds": 3.26,
+   "byType": {},
+   "holds": {
+    "evidence": 0,
+    "match": 11,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "lairesse-4-20",
+   "street": "De Lairessestraat",
+   "pands": 6,
+   "placed": 0,
+   "held": 6,
+   "runs": [],
+   "seconds": 2.8,
+   "byType": {},
+   "holds": {
+    "evidence": 0,
+    "match": 6,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "obrecht-1-5",
+   "street": "Jacob Obrechtstraat",
+   "pands": 3,
+   "placed": 0,
+   "held": 3,
+   "runs": [],
+   "seconds": 0.49,
+   "byType": {},
+   "holds": {
+    "evidence": 0,
+    "match": 3,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "obrecht-11-19",
+   "street": "Jacob Obrechtstraat",
+   "pands": 5,
+   "placed": 0,
+   "held": 5,
+   "runs": [],
+   "seconds": 0.63,
+   "byType": {},
+   "holds": {
+    "evidence": 1,
+    "match": 4,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "obrecht-19-27",
+   "street": "Jacob Obrechtstraat",
+   "pands": 5,
+   "placed": 0,
+   "held": 5,
+   "runs": [],
+   "seconds": 1.15,
+   "byType": {},
+   "holds": {
+    "evidence": 0,
+    "match": 5,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "obrecht-29-29",
+   "status": "no intake"
+  },
+  {
+   "face": "obrecht-33-39",
+   "street": "Jacob Obrechtstraat",
+   "pands": 4,
+   "placed": 0,
+   "held": 4,
+   "runs": [],
+   "seconds": 0.62,
+   "byType": {},
+   "holds": {
+    "evidence": 0,
+    "match": 4,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "obrecht-40-40",
+   "status": "no intake"
+  },
+  {
+   "face": "obrecht-43-47",
+   "street": "Jacob Obrechtstraat",
+   "pands": 3,
+   "placed": 0,
+   "held": 3,
+   "runs": [],
+   "seconds": 0.4,
+   "byType": {},
+   "holds": {
+    "evidence": 0,
+    "match": 3,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "obrecht-49-49",
+   "status": "no intake"
+  },
+  {
+   "face": "obrecht-7-7",
+   "status": "no intake"
+  },
+  {
+   "face": "obrecht-9-9",
+   "status": "no intake"
+  },
+  {
+   "face": "palestrina-1-29",
+   "street": "Palestrinastraat",
+   "pands": 15,
+   "placed": 0,
+   "held": 15,
+   "runs": [],
+   "seconds": 3.32,
+   "byType": {},
+   "holds": {
+    "evidence": 0,
+    "match": 15,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "palestrina-2-32",
+   "street": "Palestrinastraat",
+   "pands": 16,
+   "placed": 0,
+   "held": 16,
+   "runs": [],
+   "seconds": 2.61,
+   "byType": {},
+   "holds": {
+    "evidence": 3,
+    "match": 8,
+    "likeness": 0,
+    "run": 0,
+    "review": 5
+   }
+  },
+  {
+   "face": "verhulst-2-30",
+   "street": "Johannes Verhulststraat",
+   "pands": 15,
+   "placed": 0,
+   "held": 15,
+   "runs": [],
+   "seconds": 2.17,
+   "byType": {},
+   "holds": {
+    "evidence": 3,
+    "match": 12,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "verhulst-5-29",
+   "street": "Johannes Verhulststraat",
+   "pands": 13,
+   "placed": 0,
+   "held": 13,
+   "runs": [],
+   "seconds": 2.3,
+   "byType": {},
+   "holds": {
+    "evidence": 3,
+    "match": 10,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "vossius-53-53",
+   "status": "no intake"
+  },
+  {
+   "face": "vossius-53-53-236997",
+   "status": "no intake"
+  },
+  {
+   "face": "vossius-54-74",
+   "street": "Vossiusstraat",
+   "pands": 2,
+   "placed": 0,
+   "held": 2,
+   "runs": [],
+   "seconds": 0.75,
+   "byType": {},
+   "holds": {
+    "evidence": 0,
+    "match": 2,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "vossius-75-79",
+   "status": "no intake"
+  },
+  {
+   "face": "wanning-1-21",
+   "street": "Wanningstraat",
+   "pands": 8,
+   "placed": 0,
+   "held": 8,
+   "runs": [],
+   "seconds": 2.05,
+   "byType": {},
+   "holds": {
+    "evidence": 0,
+    "match": 8,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "wanning-10-14",
+   "street": "Wanningstraat",
+   "pands": 2,
+   "placed": 0,
+   "held": 2,
+   "runs": [],
+   "seconds": 0.44,
+   "byType": {},
+   "holds": {
+    "evidence": 0,
+    "match": 2,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "wanning-2-8",
+   "street": "Wanningstraat",
+   "pands": 4,
+   "placed": 0,
+   "held": 4,
+   "runs": [],
+   "seconds": 0.61,
+   "byType": {},
+   "holds": {
+    "evidence": 0,
+    "match": 4,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "willemsparkweg-11-69",
+   "street": "Willemsparkweg",
+   "pands": 15,
+   "placed": 0,
+   "held": 15,
+   "runs": [],
+   "seconds": 2.66,
+   "byType": {},
+   "holds": {
+    "evidence": 1,
+    "match": 14,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "willemsparkweg-3-9",
+   "street": "Willemsparkweg",
+   "pands": 4,
+   "placed": 0,
+   "held": 4,
+   "runs": [],
+   "seconds": 0.71,
+   "byType": {},
+   "holds": {
+    "evidence": 0,
+    "match": 4,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "willemsparkweg-73-73",
+   "status": "no intake"
+  },
+  {
+   "face": "willemsparkweg-75-75",
+   "status": "no intake"
+  },
+  {
+   "face": "willemsparkweg-8-72",
+   "street": "Willemsparkweg",
+   "pands": 15,
+   "placed": 0,
+   "held": 15,
+   "runs": [],
+   "seconds": 2.22,
+   "byType": {},
+   "holds": {
+    "evidence": 5,
+    "match": 10,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  }
+ ]
+}

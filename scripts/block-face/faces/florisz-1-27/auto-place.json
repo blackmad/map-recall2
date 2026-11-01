@@ -1,0 +1,1158 @@
+{
+ "face": "florisz-1-27",
+ "street": "Balthasar Floriszstraat",
+ "library": "museumkwartier",
+ "stripDate": "2024-12-11",
+ "seconds": 6.94,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [],
+ "pands": [
+  {
+   "pandId": "0363100012152578",
+   "address": "Balthasar Floriszstraat 1",
+   "builtYear": 1899,
+   "widthM": 6.65,
+   "eavesM": 17.82,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#e1be9f",
+    "wallRaw": "#e5c8ab",
+    "skyline": {
+     "eavesM": 16.13,
+     "eavesRow": 272,
+     "confidence": 1,
+     "crown": {
+      "widthM": 0.93,
+      "riseM": 1.23,
+      "topWidthM": 0.38,
+      "centre": 0.47
+     }
+    },
+    "stucco": false,
+    "bands": 8,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.526,
+    "structure": {
+     "bayWidthM": 1.35,
+     "bayCentre": 0.49,
+     "balconies": true,
+     "why": "bay-less open axis 0.63 m at 0.44 (light 0.57): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.63,
+       "centre": 0.44,
+       "light": 0.57
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 14.1,
+       "widthM": 0.88,
+       "centre": 0.45
+      },
+      {
+       "atM": 10.95,
+       "widthM": 1.35,
+       "centre": 0.82
+      },
+      {
+       "atM": 4.88,
+       "widthM": 1.45,
+       "centre": 0.16
+      }
+     ]
+    },
+    "voidShare": 0.38,
+    "foliageShare": 0.11
+   },
+   "status": "held",
+   "stage": "evidence",
+   "reason": "strip 38 % without panorama data",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012159970",
+   "address": "Balthasar Floriszstraat 3",
+   "builtYear": 1899,
+   "widthM": 5.23,
+   "eavesM": 15.42,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#967b61",
+    "wallRaw": "#cda789",
+    "skyline": {
+     "eavesM": 14.43,
+     "eavesRow": 340,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.98,
+      "riseM": 1.7,
+      "topWidthM": 0.47,
+      "centre": 0.44
+     }
+    },
+    "stucco": false,
+    "bands": 14,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0.49,
+    "structure": {
+     "bayWidthM": 1.15,
+     "bayCentre": 0.49,
+     "balconies": true,
+     "why": "dark open axis 0.6 m at 0.81 (light 0.49): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.6,
+       "centre": 0.81,
+       "light": 0.49
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 12.78,
+       "widthM": 2.6,
+       "centre": 0.27
+      }
+     ]
+    },
+    "voidShare": 0.28,
+    "foliageShare": 0.18
+   },
+   "status": "held",
+   "stage": "run",
+   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012165229",
+   "address": "Balthasar Floriszstraat 5",
+   "builtYear": 1899,
+   "widthM": 5.25,
+   "eavesM": 15.67,
+   "storeys3dbag": 0,
+   "bagBay": null,
+   "strip": {
+    "wall": "#a0967c",
+    "wallRaw": "#d1ad8d",
+    "skyline": {
+     "eavesM": 14.43,
+     "eavesRow": 340,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.98,
+      "riseM": 1.32,
+      "topWidthM": 1.82,
+      "centre": 0.52
+     }
+    },
+    "stucco": false,
+    "bands": 9,
+    "columns": 3,
+    "frontClass": "curtain",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.572,
+    "structure": {
+     "bayWidthM": 1.3,
+     "bayCentre": 0.82,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 12.7,
+       "widthM": 1.45,
+       "centre": 0.31
+      }
+     ]
+    },
+    "voidShare": 0.36,
+    "foliageShare": 0.17
+   },
+   "status": "held",
+   "stage": "evidence",
+   "reason": "strip 36 % without panorama data",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012158047",
+   "address": "Balthasar Floriszstraat 7",
+   "builtYear": 1899,
+   "widthM": 5.43,
+   "eavesM": 15.67,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#d0a583",
+    "wallRaw": "#dbb291",
+    "skyline": {
+     "eavesM": 14.53,
+     "eavesRow": 336,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.02,
+      "riseM": 1.85,
+      "topWidthM": 1.77,
+      "centre": 0.49
+     }
+    },
+    "stucco": false,
+    "bands": 9,
+    "columns": 3,
+    "frontClass": "blank",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.481,
+    "structure": {
+     "bayWidthM": 1.18,
+     "bayCentre": 0.49,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 12.65,
+       "widthM": 1,
+       "centre": 0.44
+      },
+      {
+       "atM": 6.8,
+       "widthM": 1.25,
+       "centre": 0.48
+      }
+     ]
+    },
+    "voidShare": 0.3,
+    "foliageShare": 0.15
+   },
+   "status": "held",
+   "stage": "likeness",
+   "reason": "no photo evidence (usable photo 44 % < 50 %) and no passing same-type neighbour",
+   "likeness": {
+    "pandId": "0363100012158047",
+    "ncc": null,
+    "nccRaw": 0.34,
+    "shiftM": [
+     0,
+     -0.4
+    ],
+    "usable": 0.44,
+    "abstain": "usable photo 44 % < 50 %",
+    "verdict": "NO EVIDENCE",
+    "reasons": [
+     "foliage 28 % > 25 %"
+    ],
+    "wall": {
+     "photo": "#d0a584",
+     "model": "#c7946b",
+     "dL": -0.067
+    },
+    "glazing": {
+     "photo": 0.13,
+     "model": 0.48
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.247
+   },
+   "challengers": {
+    "museum-de-1899-corbel-cornice": null
+   }
+  },
+  {
+   "pandId": "0363100012166637",
+   "address": "Balthasar Floriszstraat 9",
+   "builtYear": 1899,
+   "widthM": 5.2,
+   "eavesM": 15.82,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#b2a586",
+    "wallRaw": "#e2b999",
+    "skyline": {
+     "eavesM": 14.55,
+     "eavesRow": 335,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.88,
+      "riseM": 0.8,
+      "topWidthM": 2.88,
+      "centre": 0.48
+     }
+    },
+    "stucco": false,
+    "bands": 13,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.517,
+    "structure": {
+     "bayWidthM": 1.23,
+     "bayCentre": 0.83,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 6.38,
+       "widthM": 1.13,
+       "centre": 0.5
+      }
+     ]
+    },
+    "voidShare": 0.34,
+    "foliageShare": 0.16
+   },
+   "status": "held",
+   "stage": "likeness",
+   "reason": "no photo evidence (usable photo 39 % < 50 %) and no passing same-type neighbour",
+   "likeness": {
+    "pandId": "0363100012166637",
+    "ncc": null,
+    "nccRaw": 0.373,
+    "shiftM": [
+     0,
+     0.1
+    ],
+    "usable": 0.39,
+    "abstain": "usable photo 39 % < 50 %",
+    "verdict": "NO EVIDENCE",
+    "reasons": [
+     "foliage 30 % > 25 %",
+     "washed out 31 % > 30 %"
+    ],
+    "wall": {
+     "photo": "#be9a7d",
+     "model": "#b0a282",
+     "dL": -0.018
+    },
+    "glazing": {
+     "photo": 0.14,
+     "model": 0.5
+    },
+    "columns": {
+     "photo": 2,
+     "model": 3
+    },
+    "iou": 0.283
+   },
+   "challengers": {
+    "museum-de-1899-corbel-cornice": null
+   }
+  },
+  {
+   "pandId": "0363100012157787",
+   "address": "Balthasar Floriszstraat 11",
+   "builtYear": 1899,
+   "widthM": 5.14,
+   "eavesM": 15.65,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#c1a872",
+    "wallRaw": "#8e7a5c",
+    "skyline": {
+     "eavesM": 14.72,
+     "eavesRow": 328,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.38,
+      "riseM": 1.8,
+      "topWidthM": 0.57,
+      "centre": 0.51
+     }
+    },
+    "stucco": false,
+    "bands": 5,
+    "columns": 5,
+    "frontClass": "punched",
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0.213,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 10.3,
+       "widthM": 0.9,
+       "centre": 0.91
+      },
+      {
+       "atM": 8.95,
+       "widthM": 1.1,
+       "centre": 0.84
+      }
+     ]
+    },
+    "voidShare": 0.04,
+    "foliageShare": 0.28
+   },
+   "status": "held",
+   "stage": "likeness",
+   "reason": "no photo evidence (usable photo 46 % < 50 %) and no passing same-type neighbour",
+   "likeness": {
+    "pandId": "0363100012157787",
+    "ncc": null,
+    "nccRaw": 0.198,
+    "shiftM": [
+     0,
+     -0.1
+    ],
+    "usable": 0.46,
+    "abstain": "usable photo 46 % < 50 %",
+    "verdict": "NO EVIDENCE",
+    "reasons": [
+     "foliage 36 % > 25 %"
+    ],
+    "wall": {
+     "photo": "#9f7e64",
+     "model": "#c1a871",
+     "dL": 0.092
+    },
+    "glazing": {
+     "photo": 0.47,
+     "model": 0.5
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.458
+   },
+   "challengers": {
+    "museum-de-1899-corbel-cornice": null
+   }
+  },
+  {
+   "pandId": "0363100012162853",
+   "address": "Balthasar Floriszstraat 13",
+   "builtYear": 1899,
+   "widthM": 5.33,
+   "eavesM": 15.83,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#956e4c",
+    "wallRaw": "#e3a882",
+    "skyline": {
+     "eavesM": 14.72,
+     "eavesRow": 328,
+     "confidence": 1,
+     "crown": {
+      "widthM": 0.75,
+      "riseM": 1.4,
+      "topWidthM": 0.28,
+      "centre": 0.51
+     }
+    },
+    "stucco": false,
+    "bands": 3,
+    "columns": 4,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.441,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 0.75 m at 0.85 (light 0.44): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.75,
+       "centre": 0.85,
+       "light": 0.44
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0.23,
+    "foliageShare": 0.15
+   },
+   "status": "held",
+   "stage": "likeness",
+   "reason": "no photo evidence (usable photo 49 % < 50 %) and no passing same-type neighbour",
+   "likeness": {
+    "pandId": "0363100012162853",
+    "ncc": null,
+    "nccRaw": 0.204,
+    "shiftM": [
+     0.15,
+     0.4
+    ],
+    "usable": 0.49,
+    "abstain": "usable photo 49 % < 50 %",
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.45 mean 0.49 vs photo 0.11",
+     "columns 3 vs photo 2"
+    ],
+    "wall": {
+     "photo": "#d4956e",
+     "model": "#ac815c",
+     "dL": -0.114
+    },
+    "glazing": {
+     "photo": 0.11,
+     "model": 0.49
+    },
+    "columns": {
+     "photo": 2,
+     "model": 3
+    },
+    "iou": 0.182
+   },
+   "challengers": {
+    "museum-de-1899-corbel-cornice": null
+   }
+  },
+  {
+   "pandId": "0363100012161443",
+   "address": "Balthasar Floriszstraat 15",
+   "builtYear": 1899,
+   "widthM": 5.43,
+   "eavesM": 15.86,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#f0a97f",
+    "wallRaw": "#f4c49c",
+    "skyline": {
+     "eavesM": 14.63,
+     "eavesRow": 332,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.77,
+      "riseM": 1.5,
+      "topWidthM": 0.33,
+      "centre": 0.53
+     }
+    },
+    "stucco": false,
+    "bands": 3,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.533,
+    "structure": {
+     "bayWidthM": 4.97,
+     "bayCentre": 0.5,
+     "balconies": true,
+     "why": "dark open axis 0.95 m at 0.23 (light 0.47): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.95,
+       "centre": 0.23,
+       "light": 0.47
+      },
+      {
+       "widthM": 1.07,
+       "centre": 0.48,
+       "light": 0.54
+      },
+      {
+       "widthM": 0.9,
+       "centre": 0.83,
+       "light": 0.54
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0.36,
+    "foliageShare": 0.09
+   },
+   "status": "held",
+   "stage": "evidence",
+   "reason": "strip 36 % without panorama data",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012166412",
+   "address": "Balthasar Floriszstraat 17",
+   "builtYear": 1899,
+   "widthM": 5.22,
+   "eavesM": 15.83,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#e59e77",
+    "wallRaw": "#ebb48f",
+    "skyline": {
+     "eavesM": 14.55,
+     "eavesRow": 335,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.6,
+      "riseM": 1.57,
+      "topWidthM": 0.5,
+      "centre": 0.52
+     }
+    },
+    "stucco": false,
+    "bands": 8,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.497,
+    "structure": {
+     "bayWidthM": 2.92,
+     "bayCentre": 0.7,
+     "balconies": true,
+     "why": "dark open axis 0.75 m at 0.81 (light 0.48): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.93,
+       "centre": 0.53,
+       "light": 0.5
+      },
+      {
+       "widthM": 0.75,
+       "centre": 0.81,
+       "light": 0.48
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 12.9,
+       "widthM": 1.27,
+       "centre": 0.52
+      }
+     ]
+    },
+    "voidShare": 0.28,
+    "foliageShare": 0.12
+   },
+   "status": "held",
+   "stage": "likeness",
+   "reason": "no photo evidence (usable photo 47 % < 50 %) and no passing same-type neighbour",
+   "likeness": {
+    "pandId": "0363100012166412",
+    "ncc": null,
+    "nccRaw": 0.352,
+    "shiftM": [
+     0.1,
+     -0.4
+    ],
+    "usable": 0.47,
+    "abstain": "usable photo 47 % < 50 %",
+    "verdict": "FAIL",
+    "reasons": [
+     "wall dL -0.15",
+     "glazing  mean 0.48 vs photo 0.70"
+    ],
+    "wall": {
+     "photo": "#e7b995",
+     "model": "#cc8a66",
+     "dL": -0.145
+    },
+    "glazing": {
+     "photo": 0.7,
+     "model": 0.48
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.464
+   },
+   "challengers": {
+    "museum-de-1899-corbel-cornice": null
+   }
+  },
+  {
+   "pandId": "0363100012164000",
+   "address": "Balthasar Floriszstraat 19",
+   "builtYear": 1900,
+   "widthM": 5.29,
+   "eavesM": 15.37,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#d2a483",
+    "wallRaw": "#e0b999",
+    "skyline": {
+     "eavesM": 14.38,
+     "eavesRow": 342,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 6,
+    "columns": 4,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.503,
+    "structure": {
+     "bayWidthM": 1.13,
+     "bayCentre": 0.51,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 12.72,
+       "widthM": 1.02,
+       "centre": 0.25
+      },
+      {
+       "atM": 12.43,
+       "widthM": 2.83,
+       "centre": 0.29
+      }
+     ]
+    },
+    "voidShare": 0.28,
+    "foliageShare": 0.13
+   },
+   "status": "held",
+   "stage": "likeness",
+   "reason": "no photo evidence (usable photo 44 % < 50 %) and no passing same-type neighbour",
+   "likeness": {
+    "pandId": "0363100012164000",
+    "ncc": null,
+    "nccRaw": 0.281,
+    "shiftM": [
+     0.1,
+     -0.25
+    ],
+    "usable": 0.44,
+    "abstain": "usable photo 44 % < 50 %",
+    "verdict": "FAIL",
+    "reasons": [
+     "wall dL -0.17",
+     "glazing storey band off by 0.46 mean 0.50 vs photo 0.12",
+     "columns 3 vs photo 2"
+    ],
+    "wall": {
+     "photo": "#e7c0a1",
+     "model": "#c99169",
+     "dL": -0.169
+    },
+    "glazing": {
+     "photo": 0.12,
+     "model": 0.5
+    },
+    "columns": {
+     "photo": 2,
+     "model": 3
+    },
+    "iou": 0.135
+   },
+   "challengers": {
+    "museum-de-1899-corbel-cornice": null
+   }
+  },
+  {
+   "pandId": "0363100012167342",
+   "address": "Balthasar Floriszstraat 21",
+   "builtYear": 1900,
+   "widthM": 5.41,
+   "eavesM": 15.3,
+   "storeys3dbag": 5,
+   "bagBay": {
+    "fromM": 2.08,
+    "toM": 2.08,
+    "depthM": 0.45,
+    "centre": 0.383
+   },
+   "strip": {
+    "wall": "#e8bf9f",
+    "wallRaw": "#dcb799",
+    "skyline": {
+     "eavesM": 14.72,
+     "eavesRow": 328,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 2,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.468,
+    "structure": {
+     "bayWidthM": 1.07,
+     "bayCentre": 0.55,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 13.38,
+       "widthM": 1.25,
+       "centre": 0.42
+      },
+      {
+       "atM": 13.07,
+       "widthM": 1.05,
+       "centre": 0.3
+      },
+      {
+       "atM": 12.78,
+       "widthM": 1.05,
+       "centre": 0.75
+      },
+      {
+       "atM": 12.47,
+       "widthM": 0.97,
+       "centre": 0.9
+      }
+     ]
+    },
+    "voidShare": 0.26,
+    "foliageShare": 0.12
+   },
+   "status": "held",
+   "stage": "likeness",
+   "reason": "no photo evidence (usable photo 44 % < 50 %) and no passing same-type neighbour",
+   "likeness": {
+    "pandId": "0363100012167342",
+    "ncc": null,
+    "nccRaw": 0.09,
+    "shiftM": [
+     0.2,
+     0.4
+    ],
+    "usable": 0.44,
+    "abstain": "usable photo 44 % < 50 %",
+    "verdict": "NO EVIDENCE",
+    "reasons": [
+     "foliage 25 % > 25 %"
+    ],
+    "wall": {
+     "photo": "#e1b798",
+     "model": "#cc9366",
+     "dL": -0.139
+    },
+    "glazing": {
+     "photo": 0.34,
+     "model": 0.5
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.3
+   },
+   "challengers": {
+    "museum-de-1899-corbel-cornice": null
+   }
+  },
+  {
+   "pandId": "0363100012166458",
+   "address": "Balthasar Floriszstraat 23",
+   "builtYear": 1899,
+   "widthM": 5.24,
+   "eavesM": 16.28,
+   "storeys3dbag": 5,
+   "bagBay": {
+    "fromM": 3.36,
+    "toM": 3.36,
+    "depthM": 0.67,
+    "centre": 0.641
+   },
+   "strip": {
+    "wall": "#b38f74",
+    "wallRaw": "#c29e81",
+    "skyline": {
+     "eavesM": 16.52,
+     "eavesRow": 256,
+     "confidence": 1,
+     "crown": {
+      "widthM": 3.08,
+      "riseM": 1.4,
+      "topWidthM": 1.45,
+      "centre": 0.68
+     }
+    },
+    "stucco": false,
+    "bands": 3,
+    "columns": 5,
+    "frontClass": "columns",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.444,
+    "structure": {
+     "bayWidthM": 1.15,
+     "bayCentre": 0.53,
+     "balconies": true,
+     "why": "dark open axis 1.02 m at 0.54 (light 0.48): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 1.02,
+       "centre": 0.54,
+       "light": 0.48
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 12.82,
+       "widthM": 0.8,
+       "centre": 0.47
+      },
+      {
+       "atM": 12.45,
+       "widthM": 0.8,
+       "centre": 0.2
+      },
+      {
+       "atM": 10.13,
+       "widthM": 0.95,
+       "centre": 0.9
+      },
+      {
+       "atM": 6.75,
+       "widthM": 1.25,
+       "centre": 0.77
+      }
+     ]
+    },
+    "voidShare": 0.19,
+    "foliageShare": 0.19
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "best museum-de-1899-corbel-cornice scores 0.46 < 0.7 (strip cornice 16.52 m vs the type's 13.4 m (wall-dormer skyline 14.7 m); strip columns 5 vs 3 bays)",
+   "best": {
+    "type": "museum-de-1899-corbel-cornice",
+    "score": 0.46,
+    "veto": [],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 16.52 m vs the type's 13.4 m (wall-dormer skyline 14.7 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.221 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0,
+      "note": "strip columns 5 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012157182",
+   "address": "Balthasar Floriszstraat 25",
+   "builtYear": 1899,
+   "widthM": 5.37,
+   "eavesM": 13.26,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#e4e6dd",
+    "wallRaw": "#daddd2",
+    "skyline": {
+     "eavesM": 12.32,
+     "eavesRow": 424,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.63,
+      "riseM": 4.6,
+      "topWidthM": 0.88,
+      "centre": 0.73
+     }
+    },
+    "stucco": true,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0.83,
+    "structure": {
+     "bayWidthM": 1.02,
+     "bayCentre": 0.1,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 6.47,
+       "widthM": 1.23,
+       "centre": 0.55
+      }
+     ]
+    },
+    "voidShare": 0.31,
+    "foliageShare": 0.24
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "best museum-de-1899-corbel-cornice scores 0.2 < 0.7 (strip cornice 12.32 m vs the type's 13.4 m (wall-dormer skyline 14.7 m); strip accent share 0.773 (stucco))",
+   "best": {
+    "type": "museum-de-1899-corbel-cornice",
+    "score": 0.2,
+    "veto": [],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 12.32 m vs the type's 13.4 m (wall-dormer skyline 14.7 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 0,
+      "note": "strip accent share 0.773 (stucco)"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012165513",
+   "address": "Balthasar Floriszstraat 27",
+   "builtYear": 1899,
+   "widthM": 5.26,
+   "eavesM": 13.27,
+   "storeys3dbag": 5,
+   "bagBay": {
+    "fromM": 0,
+    "toM": 1.14,
+    "depthM": 0.32,
+    "centre": 0.108,
+    "lineRD": [
+     [
+      120750.060375,
+      485151.5395
+     ],
+     [
+      120754.321375,
+      485152.4155
+     ]
+    ]
+   },
+   "strip": {
+    "wall": "#d4dbd4",
+    "wallRaw": "#d6dad0",
+    "skyline": {
+     "eavesM": 12.13,
+     "eavesRow": 432,
+     "confidence": 1,
+     "crown": {
+      "widthM": 0.53,
+      "riseM": 2.4,
+      "topWidthM": 0.47,
+      "centre": 0.05
+     }
+    },
+    "stucco": true,
+    "bands": 0,
+    "columns": 4,
+    "frontClass": "columns",
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.817,
+    "structure": {
+     "bayWidthM": 1.45,
+     "bayCentre": 0.15,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 6.88,
+       "widthM": 4.35,
+       "centre": 0.45
+      }
+     ]
+    },
+    "voidShare": 0.25,
+    "foliageShare": 0.2
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "best museum-de-1899-corbel-cornice scores 0.25 < 0.7 (strip cornice 12.13 m vs the type's 13.4 m (wall-dormer skyline 14.7 m); strip accent share 0.768 (stucco); strip columns 4 vs 3 bays)",
+   "best": {
+    "type": "museum-de-1899-corbel-cornice",
+    "score": 0.25,
+    "veto": [],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 12.13 m vs the type's 13.4 m (wall-dormer skyline 14.7 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 0,
+      "note": "strip accent share 0.768 (stucco)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0.4,
+      "note": "strip columns 4 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

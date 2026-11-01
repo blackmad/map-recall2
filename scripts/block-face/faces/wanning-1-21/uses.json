@@ -1,0 +1,194 @@
+{
+ "street": "Wanningstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-01T16:51:17.978Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012117884",
+   "addresses": [
+    "Wanningstraat 1"
+   ],
+   "groundUnits": [
+    {
+     "address": "Wanningstraat 1",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 1838,
+     "bagId": "0363010000793504"
+    }
+   ],
+   "units": 1,
+   "osm": [
+    {
+     "type": "node",
+     "id": 1363942792,
+     "lngLat": [
+      4.8775005,
+      52.3569612
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "1",
+      "addr:postcode": "1071LA",
+      "addr:street": "Wanningstraat",
+      "air_conditioning": "yes",
+      "contact:email": "info@innerhotel.nl",
+      "contact:fax": "+31 20 675 0268",
+      "internet_access": "wlan",
+      "internet_access:fee": "no",
+      "name": "XO Hotel Inner",
+      "phone": "+31 20 662 5792",
+      "rooms": "81",
+      "stars": "2",
+      "tourism": "hotel",
+      "website": "https://xohotels.com/hotel/xo-hotel-inner-amsterdam/"
+     },
+     "fetchedAt": "2026-11-01T16:51:17.978Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012159293",
+   "addresses": [
+    "Wanningstraat 9"
+   ],
+   "groundUnits": [
+    {
+     "address": "Wanningstraat 9",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 365,
+     "bagId": "0363010000861846"
+    }
+   ],
+   "units": 1,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2816385852,
+     "lngLat": [
+      4.8775926,
+      52.3567767
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "9",
+      "addr:postcode": "1071LA",
+      "addr:street": "Wanningstraat",
+      "check_date": "2025-12-26",
+      "internet_access": "wlan",
+      "internet_access:fee": "no",
+      "name": "Hotel Verdi",
+      "phone": "+31 20 676 0073",
+      "rooms": "11",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "stars": "2",
+      "tourism": "hotel"
+     },
+     "fetchedAt": "2026-11-01T16:51:17.978Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012156951",
+   "addresses": [
+    "Wanningstraat 11"
+   ],
+   "groundUnits": [
+    {
+     "address": "Wanningstraat 11-H",
+     "use": "woonfunctie",
+     "areaM2": 312,
+     "bagId": "0363010000861848"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012152539",
+   "addresses": [
+    "Wanningstraat 13"
+   ],
+   "groundUnits": [
+    {
+     "address": "Wanningstraat 13-H",
+     "use": "woonfunctie",
+     "areaM2": 381,
+     "bagId": "0363010000861850"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012165357",
+   "addresses": [
+    "Wanningstraat 15"
+   ],
+   "groundUnits": [
+    {
+     "address": "Wanningstraat 15",
+     "use": "woonfunctie",
+     "areaM2": 327,
+     "bagId": "0363010000861853"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012166115",
+   "addresses": [
+    "Wanningstraat 17"
+   ],
+   "groundUnits": [
+    {
+     "address": "Wanningstraat 17-H",
+     "use": "woonfunctie",
+     "areaM2": 145,
+     "bagId": "0363010000861854"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012167409",
+   "addresses": [
+    "Wanningstraat 19"
+   ],
+   "groundUnits": [
+    {
+     "address": "Wanningstraat 19-H",
+     "use": "woonfunctie",
+     "areaM2": 126,
+     "bagId": "0363010000861858"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012161477",
+   "addresses": [
+    "Wanningstraat 21"
+   ],
+   "groundUnits": [
+    {
+     "address": "Wanningstraat 21-H",
+     "use": "woonfunctie",
+     "areaM2": 192,
+     "bagId": "0363010000861860"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  }
+ ]
+}

@@ -1,0 +1,279 @@
+{
+ "face": "baerle-6-10",
+ "street": "Van Baerlestraat",
+ "library": "museumkwartier",
+ "stripDate": "2024-12-11",
+ "seconds": 0.68,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [],
+ "pands": [
+  {
+   "pandId": "0363100012162086",
+   "address": "Van Baerlestraat 10",
+   "builtYear": 1876,
+   "widthM": 7.31,
+   "eavesM": 16.61,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#86725c",
+    "wallRaw": "#8d856c",
+    "skyline": {
+     "eavesM": 15.35,
+     "eavesRow": 224,
+     "confidence": 1,
+     "crown": {
+      "widthM": 3.27,
+      "riseM": 3.2,
+      "topWidthM": 0.55,
+      "centre": 0.37
+     }
+    },
+    "stucco": false,
+    "bands": 4,
+    "columns": 2,
+    "frontClass": "columns",
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.255,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "balcony slabs stacked at 13.78 m (1.3 m wide), 10.7 m (1.4 m wide)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 13.78,
+       "widthM": 1.3,
+       "centre": 0.85
+      },
+      {
+       "atM": 10.7,
+       "widthM": 1.4,
+       "centre": 0.84
+      },
+      {
+       "atM": 7.7,
+       "widthM": 0.88,
+       "centre": 0.23
+      }
+     ]
+    },
+    "voidShare": 0.05,
+    "foliageShare": 0.45
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best museum-cs-1900-gable-balcony: built 1876, type 1900-1901; frontage 7.31 m, type 5.5-6.6 m)",
+   "best": {
+    "type": "museum-cs-1900-gable-balcony",
+    "score": 0,
+    "veto": [
+     "built 1876, type 1900-1901",
+     "frontage 7.31 m, type 5.5-6.6 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0.5,
+      "note": "strip cornice 15.35 m vs the type's 10.4 m (wall-dormer skyline 14.4 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 4 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": null,
+      "note": "no strip"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012153327",
+   "address": "Van Baerlestraat 8",
+   "builtYear": 1876,
+   "widthM": 7.36,
+   "eavesM": 15.7,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#826447",
+    "wallRaw": "#978462",
+    "skyline": {
+     "eavesM": 17.63,
+     "eavesRow": 133,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0.211,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0.02,
+    "foliageShare": 0.28
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best museum-cs-1900-gable-balcony: built 1876, type 1900-1901; frontage 7.36 m, type 5.5-6.6 m)",
+   "best": {
+    "type": "museum-cs-1900-gable-balcony",
+    "score": 0,
+    "veto": [
+     "built 1876, type 1900-1901",
+     "frontage 7.36 m, type 5.5-6.6 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 17.63 m vs the type's 10.4 m (wall-dormer skyline 14.4 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 4 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.149 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012236767",
+   "address": "Van Baerlestraat 6",
+   "builtYear": 1876,
+   "widthM": 7.29,
+   "eavesM": 15.34,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#7a5840",
+    "wallRaw": "#958863",
+    "skyline": {
+     "eavesM": 15.35,
+     "eavesRow": 224,
+     "confidence": 1,
+     "crown": {
+      "widthM": 3.8,
+      "riseM": 3.22,
+      "topWidthM": 1.05,
+      "centre": 0.28
+     }
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.201,
+    "structure": {
+     "bayWidthM": 0.33,
+     "bayCentre": 0.98,
+     "balconies": false,
+     "why": "no dark open axis, 2 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 12.35,
+       "widthM": 6.6,
+       "centre": 0.51
+      },
+      {
+       "atM": 10.7,
+       "widthM": 1.3,
+       "centre": 0.52
+      },
+      {
+       "atM": 7.63,
+       "widthM": 0.9,
+       "centre": 0.51
+      },
+      {
+       "atM": 6.57,
+       "widthM": 0.88,
+       "centre": 0.54
+      }
+     ]
+    },
+    "voidShare": 0.04,
+    "foliageShare": 0.35
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best museum-cs-1900-gable-balcony: built 1876, type 1900-1901; frontage 7.29 m, type 5.5-6.6 m)",
+   "best": {
+    "type": "museum-cs-1900-gable-balcony",
+    "score": 0,
+    "veto": [
+     "built 1876, type 1900-1901",
+     "frontage 7.29 m, type 5.5-6.6 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0.5,
+      "note": "strip cornice 15.35 m vs the type's 10.4 m (wall-dormer skyline 14.4 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 4 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": null,
+      "note": "no strip"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

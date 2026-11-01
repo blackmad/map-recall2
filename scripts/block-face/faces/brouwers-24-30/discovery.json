@@ -1,0 +1,657 @@
+{
+ "street": "Jan Willem Brouwersstraat",
+ "seed": "0363100012165281",
+ "members": [
+  "0363100012165281",
+  "0363100012164701",
+  "0363100012161940",
+  "0363100012164158"
+ ],
+ "ends": [
+  {
+   "side": "left",
+   "reason": "trimmed at 0363100012165281 (face continues: 152896)"
+  },
+  {
+   "side": "right",
+   "reason": "no further pand fronts the street in the fetched area"
+  }
+ ],
+ "rejected": [
+  {
+   "pandId": "0363100012069411",
+   "reason": "no frontage on Jan Willem Brouwersstraat: No footprint edge faces Jan Willem Brouwersstraat"
+  },
+  {
+   "pandId": "0363100012076391",
+   "reason": "frontage 74.0 m from Jan Willem Brouwersstraat"
+  },
+  {
+   "pandId": "0363100012088169",
+   "reason": "no frontage on Jan Willem Brouwersstraat: No footprint edge faces Jan Willem Brouwersstraat"
+  },
+  {
+   "pandId": "0363100012103728",
+   "reason": "frontage 75.9 m from Jan Willem Brouwersstraat"
+  },
+  {
+   "pandId": "0363100012107332",
+   "reason": "no frontage on Jan Willem Brouwersstraat: No footprint edge faces Jan Willem Brouwersstraat"
+  },
+  {
+   "pandId": "0363100012109934",
+   "reason": "no frontage on Jan Willem Brouwersstraat: No footprint edge faces Jan Willem Brouwersstraat"
+  },
+  {
+   "pandId": "0363100012110342",
+   "reason": "no frontage on Jan Willem Brouwersstraat: No footprint edge faces Jan Willem Brouwersstraat"
+  },
+  {
+   "pandId": "0363100012117884",
+   "reason": "frontage 58.0 m from Jan Willem Brouwersstraat"
+  },
+  {
+   "pandId": "0363100012119449",
+   "reason": "no frontage on Jan Willem Brouwersstraat: No footprint edge faces Jan Willem Brouwersstraat"
+  },
+  {
+   "pandId": "0363100012131514",
+   "reason": "no frontage on Jan Willem Brouwersstraat: No footprint edge faces Jan Willem Brouwersstraat"
+  },
+  {
+   "pandId": "0363100012135596",
+   "reason": "no frontage on Jan Willem Brouwersstraat: No footprint edge faces Jan Willem Brouwersstraat"
+  },
+  {
+   "pandId": "0363100012138687",
+   "reason": "frontage 32.4 m from Jan Willem Brouwersstraat"
+  },
+  {
+   "pandId": "0363100012144606",
+   "reason": "no frontage on Jan Willem Brouwersstraat: No footprint edge faces Jan Willem Brouwersstraat"
+  },
+  {
+   "pandId": "0363100012145693",
+   "reason": "frontage 45.9 m from Jan Willem Brouwersstraat"
+  },
+  {
+   "pandId": "0363100012150265",
+   "reason": "frontage 100.3 m from Jan Willem Brouwersstraat"
+  },
+  {
+   "pandId": "0363100012152486",
+   "reason": "frontage 91.2 m from Jan Willem Brouwersstraat"
+  },
+  {
+   "pandId": "0363100012152495",
+   "reason": "frontage 131.3 m from Jan Willem Brouwersstraat"
+  },
+  {
+   "pandId": "0363100012152539",
+   "reason": "frontage 34.2 m from Jan Willem Brouwersstraat"
+  },
+  {
+   "pandId": "0363100012152638",
+   "reason": "no frontage on Jan Willem Brouwersstraat: No footprint edge faces Jan Willem Brouwersstraat"
+  },
+  {
+   "pandId": "0363100012152715",
+   "reason": "no frontage on Jan Willem Brouwersstraat: No footprint edge faces Jan Willem Brouwersstraat"
+  },
+  {
+   "pandId": "0363100012152751",
+   "reason": "frontage 85.0 m from Jan Willem Brouwersstraat"
+  },
+  {
+   "pandId": "0363100012153111",
+   "reason": "frontage 33.5 m from Jan Willem Brouwersstraat"
+  },
+  {
+   "pandId": "0363100012153364",
+   "reason": "no frontage on Jan Willem Brouwersstraat: No footprint edge faces Jan Willem Brouwersstraat"
+  },
+  {
+   "pandId": "0363100012153396",
+   "reason": "frontage 102.9 m from Jan Willem Brouwersstraat"
+  },
+  {
+   "pandId": "0363100012153647",
+   "reason": "sightline to Jan Willem Brouwersstraat crosses 0363100012154379"
+  },
+  {
+   "pandId": "0363100012153806",
+   "reason": "frontage 78.4 m from Jan Willem Brouwersstraat"
+  },
+  {
+   "pandId": "0363100012154090",
+   "reason": "frontage 78.1 m from Jan Willem Brouwersstraat"
+  },
+  {
+   "pandId": "0363100012154215",
+   "reason": "frontage 66.0 m from Jan Willem Brouwersstraat"
+  },
+  {
+   "pandId": "0363100012154379",
+   "reason": "no frontage on Jan Willem Brouwersstraat: No footprint edge faces Jan Willem Brouwersstraat"
+  },
+  {
+   "pandId": "0363100012155374",
+   "reason": "no frontage on Jan Willem Brouwersstraat: No footprint edge faces Jan Willem Brouwersstraat"
+  },
+  {
+   "pandId": "0363100012155607",
+   "reason": "frontage 49.7 m from Jan Willem Brouwersstraat"
+  },
+  {
+   "pandId": "0363100012155748",
+   "reason": "frontage 91.2 m from Jan Willem Brouwersstraat"
+  },
+  {
+   "pandId": "0363100012065378",
+   "reason": "frontage 50.6 m from Jan Willem Brouwersstraat"
+  },
+  {
+   "pandId": "0363100012066610",
+   "reason": "frontage 102.8 m from Jan Willem Brouwersstraat"
+  },
+  {
+   "pandId": "0363100012097766",
+   "reason": "frontage 51.1 m from Jan Willem Brouwersstraat"
+  },
+  {
+   "pandId": "0363100012141867",
+   "reason": "frontage 71.5 m from Jan Willem Brouwersstraat"
+  },
+  {
+   "pandId": "0363100012146221",
+   "reason": "frontage 79.8 m from Jan Willem Brouwersstraat"
+  },
+  {
+   "pandId": "0363100012155965",
+   "reason": "frontage 60.8 m from Jan Willem Brouwersstraat"
+  },
+  {
+   "pandId": "0363100012156951",
+   "reason": "frontage 44.1 m from Jan Willem Brouwersstraat"
+  },
+  {
+   "pandId": "0363100012157181",
+   "reason": "frontage 39.1 m from Jan Willem Brouwersstraat"
+  },
+  {
+   "pandId": "0363100012157494",
+   "reason": "frontage 59.1 m from Jan Willem Brouwersstraat"
+  },
+  {
+   "pandId": "0363100012157721",
+   "reason": "no frontage on Jan Willem Brouwersstraat: No footprint edge faces Jan Willem Brouwersstraat"
+  },
+  {
+   "pandId": "0363100012158338",
+   "reason": "no frontage on Jan Willem Brouwersstraat: No footprint edge faces Jan Willem Brouwersstraat"
+  },
+  {
+   "pandId": "0363100012158385",
+   "reason": "frontage 93.7 m from Jan Willem Brouwersstraat"
+  },
+  {
+   "pandId": "0363100012158394",
+   "reason": "no frontage on Jan Willem Brouwersstraat: No footprint edge faces Jan Willem Brouwersstraat"
+  },
+  {
+   "pandId": "0363100012158442",
+   "reason": "frontage 94.0 m from Jan Willem Brouwersstraat"
+  },
+  {
+   "pandId": "0363100012158476",
+   "reason": "frontage 55.7 m from Jan Willem Brouwersstraat"
+  },
+  {
+   "pandId": "0363100012158802",
+   "reason": "frontage 72.7 m from Jan Willem Brouwersstraat"
+  },
+  {
+   "pandId": "0363100012158992",
+   "reason": "no frontage on Jan Willem Brouwersstraat: No footprint edge faces Jan Willem Brouwersstraat"
+  },
+  {
+   "pandId": "0363100012159009",
+   "reason": "frontage 104.2 m from Jan Willem Brouwersstraat"
+  },
+  {
+   "pandId": "0363100012159211",
+   "reason": "frontage 75.4 m from Jan Willem Brouwersstraat"
+  },
+  {
+   "pandId": "0363100012159256",
+   "reason": "sightline to Jan Willem Brouwersstraat crosses 0363100012152896"
+  },
+  {
+   "pandId": "0363100012159293",
+   "reason": "frontage 51.1 m from Jan Willem Brouwersstraat"
+  },
+  {
+   "pandId": "0363100012159349",
+   "reason": "frontage 52.5 m from Jan Willem Brouwersstraat"
+  },
+  {
+   "pandId": "0363100012159785",
+   "reason": "no frontage on Jan Willem Brouwersstraat: No footprint edge faces Jan Willem Brouwersstraat"
+  },
+  {
+   "pandId": "0363100012159919",
+   "reason": "frontage 63.0 m from Jan Willem Brouwersstraat"
+  },
+  {
+   "pandId": "0363100012160038",
+   "reason": "frontage 33.0 m from Jan Willem Brouwersstraat"
+  },
+  {
+   "pandId": "0363100012160186",
+   "reason": "frontage 96.8 m from Jan Willem Brouwersstraat"
+  },
+  {
+   "pandId": "0363100012160243",
+   "reason": "no frontage on Jan Willem Brouwersstraat: No footprint edge faces Jan Willem Brouwersstraat"
+  },
+  {
+   "pandId": "0363100012160266",
+   "reason": "frontage 40.1 m from Jan Willem Brouwersstraat"
+  },
+  {
+   "pandId": "0363100012160752",
+   "reason": "frontage 80.6 m from Jan Willem Brouwersstraat"
+  },
+  {
+   "pandId": "0363100012160796",
+   "reason": "frontage 84.7 m from Jan Willem Brouwersstraat"
+  },
+  {
+   "pandId": "0363100012160927",
+   "reason": "no frontage on Jan Willem Brouwersstraat: No footprint edge faces Jan Willem Brouwersstraat"
+  },
+  {
+   "pandId": "0363100012160974",
+   "reason": "frontage 30.6 m from Jan Willem Brouwersstraat"
+  },
+  {
+   "pandId": "0363100012160997",
+   "reason": "frontage 87.1 m from Jan Willem Brouwersstraat"
+  },
+  {
+   "pandId": "0363100012161172",
+   "reason": "frontage 44.5 m from Jan Willem Brouwersstraat"
+  },
+  {
+   "pandId": "0363100012161210",
+   "reason": "frontage 80.7 m from Jan Willem Brouwersstraat"
+  },
+  {
+   "pandId": "0363100012161222",
+   "reason": "no frontage on Jan Willem Brouwersstraat: No footprint edge faces Jan Willem Brouwersstraat"
+  },
+  {
+   "pandId": "0363100012161332",
+   "reason": "no frontage on Jan Willem Brouwersstraat: No footprint edge faces Jan Willem Brouwersstraat"
+  },
+  {
+   "pandId": "0363100012161393",
+   "reason": "frontage 44.0 m from Jan Willem Brouwersstraat"
+  },
+  {
+   "pandId": "0363100012161793",
+   "reason": "frontage 49.5 m from Jan Willem Brouwersstraat"
+  },
+  {
+   "pandId": "0363100012161880",
+   "reason": "no frontage on Jan Willem Brouwersstraat: No footprint edge faces Jan Willem Brouwersstraat"
+  },
+  {
+   "pandId": "0363100012162052",
+   "reason": "no frontage on Jan Willem Brouwersstraat: No footprint edge faces Jan Willem Brouwersstraat"
+  },
+  {
+   "pandId": "0363100012162112",
+   "reason": "sightline to Jan Willem Brouwersstraat crosses 0363100012161732"
+  },
+  {
+   "pandId": "0363100012162425",
+   "reason": "sightline to Jan Willem Brouwersstraat crosses 0363100012152896"
+  },
+  {
+   "pandId": "0363100012162487",
+   "reason": "frontage 68.7 m from Jan Willem Brouwersstraat"
+  },
+  {
+   "pandId": "0363100012162575",
+   "reason": "frontage 45.4 m from Jan Willem Brouwersstraat"
+  },
+  {
+   "pandId": "0363100012163259",
+   "reason": "frontage 128.9 m from Jan Willem Brouwersstraat"
+  },
+  {
+   "pandId": "0363100012163413",
+   "reason": "frontage 87.3 m from Jan Willem Brouwersstraat"
+  },
+  {
+   "pandId": "0363100012157101",
+   "reason": "frontage 101.9 m from Jan Willem Brouwersstraat"
+  },
+  {
+   "pandId": "0363100012160392",
+   "reason": "frontage 103.5 m from Jan Willem Brouwersstraat"
+  },
+  {
+   "pandId": "0363100012163555",
+   "reason": "frontage 97.0 m from Jan Willem Brouwersstraat"
+  },
+  {
+   "pandId": "0363100012163762",
+   "reason": "frontage 52.1 m from Jan Willem Brouwersstraat"
+  },
+  {
+   "pandId": "0363100012163883",
+   "reason": "sightline to Jan Willem Brouwersstraat crosses 0363100012152896"
+  },
+  {
+   "pandId": "0363100012164193",
+   "reason": "no frontage on Jan Willem Brouwersstraat: No footprint edge faces Jan Willem Brouwersstraat"
+  },
+  {
+   "pandId": "0363100012164327",
+   "reason": "frontage 57.1 m from Jan Willem Brouwersstraat"
+  },
+  {
+   "pandId": "0363100012164472",
+   "reason": "frontage 99.7 m from Jan Willem Brouwersstraat"
+  },
+  {
+   "pandId": "0363100012164540",
+   "reason": "frontage 50.4 m from Jan Willem Brouwersstraat"
+  },
+  {
+   "pandId": "0363100012164614",
+   "reason": "frontage 35.0 m from Jan Willem Brouwersstraat"
+  },
+  {
+   "pandId": "0363100012164629",
+   "reason": "no frontage on Jan Willem Brouwersstraat: No footprint edge faces Jan Willem Brouwersstraat"
+  },
+  {
+   "pandId": "0363100012165339",
+   "reason": "frontage 85.7 m from Jan Willem Brouwersstraat"
+  },
+  {
+   "pandId": "0363100012165346",
+   "reason": "frontage 91.1 m from Jan Willem Brouwersstraat"
+  },
+  {
+   "pandId": "0363100012165357",
+   "reason": "sightline to Jan Willem Brouwersstraat crosses 0363100012161477"
+  },
+  {
+   "pandId": "0363100012165363",
+   "reason": "frontage 79.2 m from Jan Willem Brouwersstraat"
+  },
+  {
+   "pandId": "0363100012165442",
+   "reason": "frontage 59.2 m from Jan Willem Brouwersstraat"
+  },
+  {
+   "pandId": "0363100012165669",
+   "reason": "sightline to Jan Willem Brouwersstraat crosses 0363100012161732"
+  },
+  {
+   "pandId": "0363100012165998",
+   "reason": "frontage 38.6 m from Jan Willem Brouwersstraat"
+  },
+  {
+   "pandId": "0363100012166047",
+   "reason": "frontage 62.3 m from Jan Willem Brouwersstraat"
+  },
+  {
+   "pandId": "0363100012166115",
+   "reason": "sightline to Jan Willem Brouwersstraat crosses 0363100012161477"
+  },
+  {
+   "pandId": "0363100012166253",
+   "reason": "no frontage on Jan Willem Brouwersstraat: No footprint edge faces Jan Willem Brouwersstraat"
+  },
+  {
+   "pandId": "0363100012166880",
+   "reason": "frontage 45.0 m from Jan Willem Brouwersstraat"
+  },
+  {
+   "pandId": "0363100012167277",
+   "reason": "frontage 55.5 m from Jan Willem Brouwersstraat"
+  },
+  {
+   "pandId": "0363100012167292",
+   "reason": "frontage 89.9 m from Jan Willem Brouwersstraat"
+  },
+  {
+   "pandId": "0363100012167409",
+   "reason": "sightline to Jan Willem Brouwersstraat crosses 0363100012161477"
+  },
+  {
+   "pandId": "0363100012185427",
+   "reason": "frontage 68.8 m from Jan Willem Brouwersstraat"
+  },
+  {
+   "pandId": "0363100012187048",
+   "reason": "frontage 51.1 m from Jan Willem Brouwersstraat"
+  },
+  {
+   "pandId": "0363100012197821",
+   "reason": "frontage 85.8 m from Jan Willem Brouwersstraat"
+  },
+  {
+   "pandId": "0363100012200115",
+   "reason": "frontage 64.8 m from Jan Willem Brouwersstraat"
+  },
+  {
+   "pandId": "0363100012218615",
+   "reason": "frontage 48.0 m from Jan Willem Brouwersstraat"
+  },
+  {
+   "pandId": "0363100012228732",
+   "reason": "frontage 34.3 m from Jan Willem Brouwersstraat"
+  },
+  {
+   "pandId": "0363100012235394",
+   "reason": "no frontage on Jan Willem Brouwersstraat: No footprint edge faces Jan Willem Brouwersstraat"
+  },
+  {
+   "pandId": "0363100012235927",
+   "reason": "no frontage on Jan Willem Brouwersstraat: No footprint edge faces Jan Willem Brouwersstraat"
+  },
+  {
+   "pandId": "0363100012235940",
+   "reason": "frontage 101.7 m from Jan Willem Brouwersstraat"
+  },
+  {
+   "pandId": "0363100012236385",
+   "reason": "frontage 97.2 m from Jan Willem Brouwersstraat"
+  },
+  {
+   "pandId": "0363100012236405",
+   "reason": "frontage 103.6 m from Jan Willem Brouwersstraat"
+  },
+  {
+   "pandId": "0363100012236419",
+   "reason": "frontage 81.2 m from Jan Willem Brouwersstraat"
+  },
+  {
+   "pandId": "0363100012236464",
+   "reason": "frontage 76.5 m from Jan Willem Brouwersstraat"
+  },
+  {
+   "pandId": "0363100012236637",
+   "reason": "frontage 75.9 m from Jan Willem Brouwersstraat"
+  },
+  {
+   "pandId": "0363100012237031",
+   "reason": "frontage 133.7 m from Jan Willem Brouwersstraat"
+  },
+  {
+   "pandId": "0363100012237136",
+   "reason": "sightline to Jan Willem Brouwersstraat crosses 0363100012161880"
+  },
+  {
+   "pandId": "0363100012237358",
+   "reason": "frontage 65.9 m from Jan Willem Brouwersstraat"
+  },
+  {
+   "pandId": "0363100012072116",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012073293",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012074908",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012078650",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012078695",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012083440",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012084411",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012094824",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012112804",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012125480",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012138649",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012145883",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012156524",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012159344",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012160337",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012161477",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012161732",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012163537",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012164237",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012164612",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012164862",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012166436",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012167076",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012233435",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012234991",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012236415",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012237012",
+   "reason": "fronts the other side / another direction"
+  }
+ ],
+ "areaHalfSizeM": 90,
+ "pands": [
+  {
+   "pandId": "0363100012165281",
+   "alongM": 0,
+   "widthM": 5.7,
+   "eavesM": 11.44,
+   "roofMaxM": 16.52,
+   "storeys3dbag": 4,
+   "builtYear": 1899,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012164701",
+   "alongM": 5.74,
+   "widthM": 5.78,
+   "eavesM": 11.33,
+   "roofMaxM": 16.4,
+   "storeys3dbag": 4,
+   "builtYear": 1899,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012161940",
+   "alongM": 11.42,
+   "widthM": 5.67,
+   "eavesM": 11.78,
+   "roofMaxM": 14.32,
+   "storeys3dbag": 4,
+   "builtYear": 1899,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012164158",
+   "alongM": 17.18,
+   "widthM": 6.31,
+   "eavesM": 11.69,
+   "roofMaxM": 14.26,
+   "storeys3dbag": 4,
+   "builtYear": 1899,
+   "uncertainty": []
+  }
+ ]
+}

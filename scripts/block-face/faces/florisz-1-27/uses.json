@@ -1,0 +1,245 @@
+{
+ "street": "Balthasar Floriszstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-01T12:32:44.405Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012152578",
+   "addresses": [
+    "Balthasar Floriszstraat 1"
+   ],
+   "groundUnits": [
+    {
+     "address": "Balthasar Floriszstraat 1-H",
+     "use": "woonfunctie",
+     "areaM2": 85,
+     "bagId": "0363010000576032"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012159970",
+   "addresses": [
+    "Balthasar Floriszstraat 3"
+   ],
+   "groundUnits": [
+    {
+     "address": "Balthasar Floriszstraat 3-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 67,
+     "bagId": "0363010000576041"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012165229",
+   "addresses": [
+    "Balthasar Floriszstraat 5"
+   ],
+   "groundUnits": [
+    {
+     "address": "Balthasar Floriszstraat 5-H",
+     "use": "woonfunctie",
+     "areaM2": 70,
+     "bagId": "0363010000576049"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012158047",
+   "addresses": [
+    "Balthasar Floriszstraat 7"
+   ],
+   "groundUnits": [
+    {
+     "address": "Balthasar Floriszstraat 7-H",
+     "use": "woonfunctie",
+     "areaM2": 50,
+     "bagId": "0363010001012059"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012166637",
+   "addresses": [
+    "Balthasar Floriszstraat 9"
+   ],
+   "groundUnits": [
+    {
+     "address": "Balthasar Floriszstraat 9-H",
+     "use": "woonfunctie",
+     "areaM2": 135,
+     "bagId": "0363010001015752"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012157787",
+   "addresses": [
+    "Balthasar Floriszstraat 11"
+   ],
+   "groundUnits": [
+    {
+     "address": "Balthasar Floriszstraat 11-H",
+     "use": "kantoorfunctie,woonfunctie",
+     "areaM2": 52,
+     "bagId": "0363010000576075"
+    },
+    {
+     "address": "Balthasar Floriszstraat 11-4",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 20,
+     "bagId": "0363010001002352"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012162853",
+   "addresses": [
+    "Balthasar Floriszstraat 13"
+   ],
+   "groundUnits": [
+    {
+     "address": "Balthasar Floriszstraat 13-H",
+     "use": "woonfunctie",
+     "areaM2": 51,
+     "bagId": "0363010000576082"
+    },
+    {
+     "address": "Balthasar Floriszstraat 13-H",
+     "use": "woonfunctie",
+     "areaM2": 103,
+     "bagId": "0363010012106150"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012161443",
+   "addresses": [
+    "Balthasar Floriszstraat 15"
+   ],
+   "groundUnits": [
+    {
+     "address": "Balthasar Floriszstraat 15-H",
+     "use": "woonfunctie",
+     "areaM2": 51,
+     "bagId": "0363010000576090"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012166412",
+   "addresses": [
+    "Balthasar Floriszstraat 17"
+   ],
+   "groundUnits": [
+    {
+     "address": "Balthasar Floriszstraat 17-H",
+     "use": "woonfunctie",
+     "areaM2": 51,
+     "bagId": "0363010000576099"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012164000",
+   "addresses": [
+    "Balthasar Floriszstraat 19"
+   ],
+   "groundUnits": [
+    {
+     "address": "Balthasar Floriszstraat 19-H",
+     "use": "kantoorfunctie",
+     "areaM2": 84,
+     "bagId": "0363010000576107"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012167342",
+   "addresses": [
+    "Balthasar Floriszstraat 21"
+   ],
+   "groundUnits": [
+    {
+     "address": "Balthasar Floriszstraat 21-H",
+     "use": "woonfunctie",
+     "areaM2": 41,
+     "bagId": "0363010000576115"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012166458",
+   "addresses": [
+    "Balthasar Floriszstraat 23"
+   ],
+   "groundUnits": [
+    {
+     "address": "Balthasar Floriszstraat 23-H",
+     "use": "winkelfunctie",
+     "areaM2": 80,
+     "bagId": "0363010000576123"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012157182",
+   "addresses": [
+    "Balthasar Floriszstraat 25"
+   ],
+   "groundUnits": [
+    {
+     "address": "Balthasar Floriszstraat 25-H",
+     "use": "woonfunctie",
+     "areaM2": 49,
+     "bagId": "0363010000576131"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012165513",
+   "addresses": [
+    "Balthasar Floriszstraat 27"
+   ],
+   "groundUnits": [
+    {
+     "address": "Balthasar Floriszstraat 27-H",
+     "use": "woonfunctie",
+     "areaM2": 49,
+     "bagId": "0363010000576139"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  }
+ ]
+}

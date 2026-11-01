@@ -1,0 +1,493 @@
+{
+ "face": "mieris-90-108",
+ "street": "Frans van Mierisstraat",
+ "library": "museumkwartier",
+ "stripDate": "2024-11-06",
+ "seconds": 2.8,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [],
+ "pands": [
+  {
+   "pandId": "0363100012148154",
+   "address": "Frans van Mierisstraat 106",
+   "builtYear": 1910,
+   "widthM": 8.94,
+   "eavesM": 15.32,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#5e4f38",
+    "wallRaw": "#615d43",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 949,
+     "confidence": 0.05,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 12,
+    "frontClass": "columns",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.042,
+    "structure": {
+     "bayWidthM": 0.4,
+     "bayCentre": 0.13,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 14.35,
+       "widthM": 0.82,
+       "centre": 0.89
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.54
+   },
+   "status": "held",
+   "stage": "evidence",
+   "reason": "no front on the strip: sky over the roof in 43 % of columns (< 75 %): the strip shows a nearer wall, fence or tree, not the front",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012119516",
+   "address": "Frans van Mierisstraat 102",
+   "builtYear": 1910,
+   "widthM": 8.94,
+   "eavesM": 15.31,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#917e67",
+    "wallRaw": "#908265",
+    "skyline": {
+     "eavesM": 21.85,
+     "eavesRow": 75,
+     "confidence": 0.35,
+     "crown": {
+      "widthM": 0.88,
+      "riseM": 1.88,
+      "topWidthM": 0.68,
+      "centre": 0.47
+     }
+    },
+    "stucco": false,
+    "bands": 3,
+    "columns": 4,
+    "frontClass": "punched",
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.319,
+    "structure": {
+     "bayWidthM": 0.95,
+     "bayCentre": 0.38,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 7.05,
+       "widthM": 1.5,
+       "centre": 0.73
+      },
+      {
+       "atM": 6.75,
+       "widthM": 1.02,
+       "centre": 0.37
+      }
+     ]
+    },
+    "voidShare": 0.09,
+    "foliageShare": 0.32
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best museum-de-1899-corbel-cornice: built 1910, type 1898-1901; frontage 8.94 m, type 5-6 m)",
+   "best": {
+    "type": "museum-de-1899-corbel-cornice",
+    "score": 0,
+    "veto": [
+     "built 1910, type 1898-1901",
+     "frontage 8.94 m, type 5-6 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": null,
+      "note": "strip cornice unread (type line 13.4 m; 3DBAG 15.31 m not compared)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": null,
+      "note": "no strip"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012149061",
+   "address": "Frans van Mierisstraat 100",
+   "builtYear": 1911,
+   "widthM": 6.68,
+   "eavesM": 18.03,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#796c58",
+    "wallRaw": "#80865d",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 949,
+     "confidence": 0.1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 9,
+    "columns": 9,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.307,
+    "structure": {
+     "bayWidthM": 0.5,
+     "bayCentre": 0.81,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 6.55,
+       "widthM": 1.27,
+       "centre": 0.82
+      }
+     ]
+    },
+    "voidShare": 0.07,
+    "foliageShare": 0.74
+   },
+   "status": "held",
+   "stage": "run",
+   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012079547",
+   "address": "Frans van Mierisstraat 98",
+   "builtYear": 1911,
+   "widthM": 6.69,
+   "eavesM": 17.93,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#7d7667",
+    "wallRaw": "#94937d",
+    "skyline": {
+     "eavesM": 16.38,
+     "eavesRow": 294,
+     "confidence": 1,
+     "crown": {
+      "widthM": 3.98,
+      "riseM": 6.95,
+      "topWidthM": 0.2,
+      "centre": 0.32
+     }
+    },
+    "stucco": false,
+    "bands": 12,
+    "columns": 4,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.637,
+    "structure": {
+     "bayWidthM": 1.05,
+     "bayCentre": 0.45,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 7.67,
+       "widthM": 0.85,
+       "centre": 0.85
+      },
+      {
+       "atM": 6.17,
+       "widthM": 1.27,
+       "centre": 0.42
+      }
+     ]
+    },
+    "voidShare": 0.33,
+    "foliageShare": 0.43
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "best museum-hc-1910-glazed-oriel scores 0.33 < 0.7 (strip cornice 16.38 m vs the type's 15.3 m)",
+   "best": {
+    "type": "museum-hc-1910-glazed-oriel",
+    "score": 0.33,
+    "veto": [],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 16.38 m vs the type's 15.3 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": null,
+      "note": "no strip"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012105468",
+   "address": "Frans van Mierisstraat 96",
+   "builtYear": 1911,
+   "widthM": 6.69,
+   "eavesM": 17.99,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#938c73",
+    "wallRaw": "#949a7a",
+    "skyline": {
+     "eavesM": 18.43,
+     "eavesRow": 212,
+     "confidence": 0.87,
+     "crown": {
+      "widthM": 2.4,
+      "riseM": 4.9,
+      "topWidthM": 0.17,
+      "centre": 0.66
+     }
+    },
+    "stucco": false,
+    "bands": 5,
+    "columns": 5,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.529,
+    "structure": {
+     "bayWidthM": 1.55,
+     "bayCentre": 0.14,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 7.47,
+       "widthM": 1.05,
+       "centre": 0.47
+      },
+      {
+       "atM": 7.17,
+       "widthM": 1.18,
+       "centre": 0.81
+      },
+      {
+       "atM": 6.88,
+       "widthM": 1.25,
+       "centre": 0.82
+      },
+      {
+       "atM": 6.42,
+       "widthM": 0.85,
+       "centre": 0.79
+      }
+     ]
+    },
+    "voidShare": 0.2,
+    "foliageShare": 0.58
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "best museum-hc-1910-glazed-oriel scores 0.33 < 0.7 (strip cornice 18.43 m vs the type's 15.3 m)",
+   "best": {
+    "type": "museum-hc-1910-glazed-oriel",
+    "score": 0.33,
+    "veto": [],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 18.43 m vs the type's 15.3 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": null,
+      "note": "no strip"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012161158",
+   "address": "Frans van Mierisstraat 90",
+   "builtYear": 1906,
+   "widthM": 34.5,
+   "eavesM": 15.45,
+   "storeys3dbag": 5,
+   "bagBay": {
+    "fromM": 34.5,
+    "toM": 34.5,
+    "depthM": 0.33,
+    "centre": 1,
+    "lineRD": [
+     [
+      120315.56375,
+      485208.573
+     ],
+     [
+      120330.62575,
+      485214.15
+     ]
+    ]
+   },
+   "strip": {
+    "wall": "#928a72",
+    "wallRaw": "#92967c",
+    "skyline": {
+     "eavesM": 19.32,
+     "eavesRow": 176,
+     "confidence": 0.94,
+     "crown": {
+      "widthM": 2.45,
+      "riseM": 4.4,
+      "topWidthM": 0.17,
+      "centre": 0.26
+     }
+    },
+    "stucco": false,
+    "bands": 2,
+    "columns": 24,
+    "frontClass": "punched",
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.25,
+    "structure": {
+     "bayWidthM": 1.5,
+     "bayCentre": 0.65,
+     "balconies": true,
+     "why": "dark open axis 2 m at 0.19 (light 0.04): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 2,
+       "centre": 0.19,
+       "light": 0.04
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 14.7,
+       "widthM": 5.7,
+       "centre": 0.73
+      },
+      {
+       "atM": 10.13,
+       "widthM": 0.82,
+       "centre": 0.39
+      },
+      {
+       "atM": 6.9,
+       "widthM": 1.55,
+       "centre": 0.27
+      },
+      {
+       "atM": 6.3,
+       "widthM": 0.88,
+       "centre": 0.24
+      },
+      {
+       "atM": 5.63,
+       "widthM": 0.85,
+       "centre": 0.24
+      }
+     ]
+    },
+    "voidShare": 0.03,
+    "foliageShare": 0.71
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best museum-de-1899-corbel-cornice: built 1906, type 1898-1901; frontage 34.5 m, type 5-6 m)",
+   "best": {
+    "type": "museum-de-1899-corbel-cornice",
+    "score": 0,
+    "veto": [
+     "built 1906, type 1898-1901",
+     "frontage 34.5 m, type 5-6 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 19.32 m vs the type's 13.4 m (wall-dormer skyline 14.7 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": null,
+      "note": "no strip"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

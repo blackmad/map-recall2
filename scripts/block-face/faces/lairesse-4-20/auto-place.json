@@ -1,0 +1,518 @@
+{
+ "face": "lairesse-4-20",
+ "street": "De Lairessestraat",
+ "library": "museumkwartier",
+ "stripDate": "2024-11-12",
+ "seconds": 2.8,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [],
+ "pands": [
+  {
+   "pandId": "0363100012122938",
+   "address": "De Lairessestraat 20",
+   "builtYear": 1915,
+   "widthM": 8.49,
+   "eavesM": 9.87,
+   "storeys3dbag": 0,
+   "bagBay": {
+    "fromM": 6.3,
+    "toM": 8.46,
+    "depthM": 0.76,
+    "centre": 0.872,
+    "lineRD": [
+     [
+      120202.74375000001,
+      485353.885
+     ],
+     [
+      120207.50975,
+      485355.889
+     ]
+    ]
+   },
+   "strip": {
+    "wall": "#4d3b28",
+    "wallRaw": "#453e29",
+    "skyline": {
+     "eavesM": 15.5,
+     "eavesRow": 383,
+     "confidence": 1,
+     "crown": {
+      "widthM": 4.1,
+      "riseM": 4.38,
+      "topWidthM": 0.33,
+      "centre": 0.74
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 9,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": "right",
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 1.73 m at 0.11 (light 0): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 1.73,
+       "centre": 0.11,
+       "light": 0
+      },
+      {
+       "widthM": 1.05,
+       "centre": 0.56,
+       "light": 0.26
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.57
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best museum-cs-1900-gable-balcony: built 1915, type 1900-1901; frontage 8.49 m, type 5.5-6.6 m)",
+   "best": {
+    "type": "museum-cs-1900-gable-balcony",
+    "score": 0,
+    "veto": [
+     "built 1915, type 1900-1901",
+     "frontage 8.49 m, type 5.5-6.6 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 15.5 m vs the type's 10.4 m (wall-dormer skyline 14.4 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": null,
+      "note": "3DBAG bouwlagen 0 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": null,
+      "note": "no strip"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012145619",
+   "address": "De Lairessestraat 16",
+   "builtYear": 1918,
+   "widthM": 10.29,
+   "eavesM": 14.5,
+   "storeys3dbag": 5,
+   "bagBay": {
+    "fromM": 0.26,
+    "toM": 0.26,
+    "depthM": 0.29,
+    "centre": 0.025
+   },
+   "strip": {
+    "wall": "#684a34",
+    "wallRaw": "#5c4c34",
+    "skyline": {
+     "eavesM": 17.05,
+     "eavesRow": 321,
+     "confidence": 1,
+     "crown": {
+      "widthM": 3.58,
+      "riseM": 2.02,
+      "topWidthM": 0.2,
+      "centre": 0.34
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 5,
+    "frontClass": "punched",
+    "doorSide": "left",
+    "accentSide": "right",
+    "accentShare": 0.075,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 11.57,
+       "widthM": 0.82,
+       "centre": 0.13
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.49
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best museum-cs-1900-gable-balcony: built 1918, type 1900-1901; frontage 10.29 m, type 5.5-6.6 m)",
+   "best": {
+    "type": "museum-cs-1900-gable-balcony",
+    "score": 0,
+    "veto": [
+     "built 1918, type 1900-1901",
+     "frontage 10.29 m, type 5.5-6.6 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 17.05 m vs the type's 10.4 m (wall-dormer skyline 14.4 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": null,
+      "note": "no strip"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012090956",
+   "address": "De Lairessestraat 14",
+   "builtYear": 1918,
+   "widthM": 10.13,
+   "eavesM": 14.39,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#131706",
+    "wallRaw": "#48452e",
+    "skyline": {
+     "eavesM": 17.5,
+     "eavesRow": 303,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.8,
+      "riseM": 2,
+      "topWidthM": 0.25,
+      "centre": 0.39
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 13,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": "right",
+    "accentShare": 0.02,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 5.15,
+       "widthM": 1.07,
+       "centre": 0.15
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.69
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best museum-cs-1900-gable-balcony: built 1918, type 1900-1901; frontage 10.13 m, type 5.5-6.6 m)",
+   "best": {
+    "type": "museum-cs-1900-gable-balcony",
+    "score": 0,
+    "veto": [
+     "built 1918, type 1900-1901",
+     "frontage 10.13 m, type 5.5-6.6 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 17.5 m vs the type's 10.4 m (wall-dormer skyline 14.4 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": null,
+      "note": "no strip"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012146221",
+   "address": "De Lairessestraat 12",
+   "builtYear": 1918,
+   "widthM": 9.87,
+   "eavesM": 14.47,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#634d37",
+    "wallRaw": "#3f452a",
+    "skyline": {
+     "eavesM": 17.3,
+     "eavesRow": 311,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.15,
+      "riseM": 1.8,
+      "topWidthM": 0.85,
+      "centre": 0.12
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 10,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": "right",
+    "accentShare": 0.02,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.83
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best museum-cs-1900-gable-balcony: built 1918, type 1900-1901; frontage 9.87 m, type 5.5-6.6 m)",
+   "best": {
+    "type": "museum-cs-1900-gable-balcony",
+    "score": 0,
+    "veto": [
+     "built 1918, type 1900-1901",
+     "frontage 9.87 m, type 5.5-6.6 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 17.3 m vs the type's 10.4 m (wall-dormer skyline 14.4 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": null,
+      "note": "no strip"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012141867",
+   "address": "De Lairessestraat 10",
+   "builtYear": 1918,
+   "widthM": 9.71,
+   "eavesM": 14.59,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#50452b",
+    "wallRaw": "#3f4728",
+    "skyline": {
+     "eavesM": 17.48,
+     "eavesRow": 304,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.88,
+      "riseM": 2,
+      "topWidthM": 0.2,
+      "centre": 0.19
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 6,
+    "frontClass": "columns",
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0.017,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.89
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best museum-cs-1900-gable-balcony: built 1918, type 1900-1901; frontage 9.71 m, type 5.5-6.6 m)",
+   "best": {
+    "type": "museum-cs-1900-gable-balcony",
+    "score": 0,
+    "veto": [
+     "built 1918, type 1900-1901",
+     "frontage 9.71 m, type 5.5-6.6 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 17.48 m vs the type's 10.4 m (wall-dormer skyline 14.4 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": null,
+      "note": "no strip"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012145693",
+   "address": "De Lairessestraat 4",
+   "builtYear": 1922,
+   "widthM": 38.02,
+   "eavesM": 19.51,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#473526",
+    "wallRaw": "#41432b",
+    "skyline": {
+     "eavesM": 20.63,
+     "eavesRow": 178,
+     "confidence": 0.71,
+     "crown": {
+      "widthM": 2.92,
+      "riseM": 4.45,
+      "topWidthM": 0.28,
+      "centre": 0.37
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 20,
+    "frontClass": "punched",
+    "doorSide": "left",
+    "accentSide": "left",
+    "accentShare": 0.013,
+    "structure": {
+     "bayWidthM": 4.15,
+     "bayCentre": 0.19,
+     "balconies": true,
+     "why": "dark open axis 1.02 m at 0.21 (light 0.3): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 1.02,
+       "centre": 0.21,
+       "light": 0.3
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 7.72,
+       "widthM": 0.88,
+       "centre": 0.63
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.69
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best museum-cs-1900-gable-balcony: built 1922, type 1900-1901; frontage 38.02 m, type 5.5-6.6 m)",
+   "best": {
+    "type": "museum-cs-1900-gable-balcony",
+    "score": 0,
+    "veto": [
+     "built 1922, type 1900-1901",
+     "frontage 38.02 m, type 5.5-6.6 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 20.63 m vs the type's 10.4 m (wall-dormer skyline 14.4 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": null,
+      "note": "no strip"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

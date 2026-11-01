@@ -1,0 +1,290 @@
+{
+ "street": "Cornelis Schuytstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-01T12:50:29.279Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012164601",
+   "addresses": [
+    "Cornelis Schuytstraat 17"
+   ],
+   "groundUnits": [
+    {
+     "address": "Cornelis Schuytstraat 17-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 141,
+     "bagId": "0363010000610092"
+    }
+   ],
+   "units": 3,
+   "osm": [
+    {
+     "type": "node",
+     "id": 4791462175,
+     "lngLat": [
+      4.87131,
+      52.3553896
+     ],
+     "tags": {
+      "amenity": "restaurant",
+      "check_date": "2024-04-24",
+      "cuisine": "italian",
+      "name": "Ristorante Sardegna"
+     },
+     "fetchedAt": "2026-11-01T12:50:29.279Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012155519",
+   "addresses": [
+    "Cornelis Schuytstraat 19"
+   ],
+   "groundUnits": [
+    {
+     "address": "Cornelis Schuytstraat 19-H",
+     "use": "winkelfunctie",
+     "areaM2": 124,
+     "bagId": "0363010000610097"
+    }
+   ],
+   "units": 3,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2816317784,
+     "lngLat": [
+      4.8713479,
+      52.3553375
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "19-H",
+      "addr:postcode": "1071JD",
+      "addr:street": "Cornelis Schuytstraat",
+      "name": "1 Amsterdam",
+      "phone": "+31 20 671 5239",
+      "shop": "clothes",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://1-amsterdam.nl/"
+     },
+     "fetchedAt": "2026-11-01T12:50:29.279Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012166710",
+   "addresses": [
+    "Cornelis Schuytstraat 21"
+   ],
+   "groundUnits": [
+    {
+     "address": "Cornelis Schuytstraat 21-H",
+     "use": "woonfunctie",
+     "areaM2": 209,
+     "bagId": "0363010000610103"
+    },
+    {
+     "address": "Cornelis Schuytstraat 21-H",
+     "use": "winkelfunctie",
+     "areaM2": 133,
+     "bagId": "0363010012154529"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012162193",
+   "addresses": [
+    "Cornelis Schuytstraat 23"
+   ],
+   "groundUnits": [
+    {
+     "address": "Cornelis Schuytstraat 23-H",
+     "use": "winkelfunctie",
+     "areaM2": 189,
+     "bagId": "0363010000610107"
+    }
+   ],
+   "units": 2,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2816318411,
+     "lngLat": [
+      4.8714244,
+      52.3552301
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "23",
+      "addr:postcode": "1071JD",
+      "addr:street": "Cornelis Schuytstraat",
+      "check_date": "2025-09-02",
+      "check_date:currency:XBT": "2025-09-02",
+      "contact:email": "info@brilamsterdam.nl",
+      "contact:facebook": "brilamsterdam",
+      "contact:instagram": "brilamsterdam",
+      "currency:XBT": "yes",
+      "name": "Bril Amsterdam",
+      "opening_hours": "Tu-Fr 10:00-18:00; Sa 10:00-17:00",
+      "payment:lightning": "yes",
+      "payment:lightning_contactless": "no",
+      "payment:onchain": "no",
+      "phone": "+31 20 67 67 050",
+      "shop": "optician",
+      "survey:date": "2024-02-18",
+      "website": "https://www.brilamsterdam.nl/"
+     },
+     "fetchedAt": "2026-11-01T12:50:29.279Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012165584",
+   "addresses": [
+    "Cornelis Schuytstraat 25"
+   ],
+   "groundUnits": [
+    {
+     "address": "Cornelis Schuytstraat 25-H",
+     "use": "winkelfunctie",
+     "areaM2": 103,
+     "bagId": "0363010000610112"
+    }
+   ],
+   "units": 3,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2816318430,
+     "lngLat": [
+      4.8714461,
+      52.3551953
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "25-H",
+      "addr:postcode": "1071JD",
+      "addr:street": "Cornelis Schuytstraat",
+      "name": "Parfumerie Louise",
+      "not:brand:wikidata": "Q769749",
+      "opening_hours": "\"Sluiting per 25-7\"; Mo 12:00-18:00; Tu-Sa 09:00-18:00; PH off",
+      "ref": "7839",
+      "shop": "perfumery",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://www.parfumerielouise.nl/",
+      "wheelchair": "limited"
+     },
+     "fetchedAt": "2026-11-01T12:50:29.279Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012152291",
+   "addresses": [
+    "Cornelis Schuytstraat 27"
+   ],
+   "groundUnits": [
+    {
+     "address": "Cornelis Schuytstraat 27-H",
+     "use": "winkelfunctie",
+     "areaM2": 128,
+     "bagId": "0363010000610117"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012160599",
+   "addresses": [
+    "Cornelis Schuytstraat 29"
+   ],
+   "groundUnits": [
+    {
+     "address": "Cornelis Schuytstraat 29-H",
+     "use": "winkelfunctie",
+     "areaM2": 40,
+     "bagId": "0363010000835475"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012157482",
+   "addresses": [
+    "Cornelis Schuytstraat 31"
+   ],
+   "groundUnits": [
+    {
+     "address": "Cornelis Schuytstraat 31-H",
+     "use": "winkelfunctie",
+     "areaM2": 99,
+     "bagId": "0363010000610128"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012157483",
+   "addresses": [
+    "Cornelis Schuytstraat 33"
+   ],
+   "groundUnits": [
+    {
+     "address": "Cornelis Schuytstraat 33-H",
+     "use": "winkelfunctie",
+     "areaM2": 222,
+     "bagId": "0363010000952879"
+    }
+   ],
+   "units": 2,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2816318497,
+     "lngLat": [
+      4.8715781,
+      52.3550042
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "33-H",
+      "addr:postcode": "1071JD",
+      "addr:street": "Cornelis Schuytstraat",
+      "clothes": "unisex",
+      "contact:facebook": "BelleroseOfficial",
+      "contact:instagram": "belleroseofficial",
+      "email": "amsterdam3@bellerose.be",
+      "name": "Bellarose",
+      "opening_hours": "Mo 12:00-18:30; Tu-Sa 10:00-18:30; Su 12:00-17:00",
+      "phone": "+31 20 773 5497",
+      "shop": "clothes",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://www.bellerose.be"
+     },
+     "fetchedAt": "2026-11-01T12:50:29.279Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}

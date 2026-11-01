@@ -1,0 +1,109 @@
+{
+ "street": "Cornelis Schuytstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-01T12:48:43.708Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012163817",
+   "addresses": [
+    "Cornelis Schuytstraat 1"
+   ],
+   "groundUnits": [
+    {
+     "address": "Cornelis Schuytstraat 1-H",
+     "use": "woonfunctie",
+     "areaM2": 136,
+     "bagId": "0363010000610059"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012158578",
+   "addresses": [
+    "Cornelis Schuytstraat 3"
+   ],
+   "groundUnits": [
+    {
+     "address": "Cornelis Schuytstraat 3",
+     "use": "woonfunctie",
+     "areaM2": 232,
+     "bagId": "0363010000610063"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012158500",
+   "addresses": [
+    "Cornelis Schuytstraat 5"
+   ],
+   "groundUnits": [
+    {
+     "address": "Cornelis Schuytstraat 5-H",
+     "use": "woonfunctie",
+     "areaM2": 142,
+     "bagId": "0363010000610066"
+    },
+    {
+     "address": "Willemsparkweg 160-H",
+     "use": "industriefunctie",
+     "areaM2": 96,
+     "bagId": "0363010000873185"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2816316894,
+     "lngLat": [
+      4.8707435,
+      52.3562619
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "158-H",
+      "addr:postcode": "1071HS",
+      "addr:street": "Willemsparkweg",
+      "check_date": "2025-03-15",
+      "email": "amsterdam@degoudenton.nl",
+      "name": "de Gouden ton",
+      "opening_hours": "Mo-Fr 10:00-18:00; Sa 10:00-17:00",
+      "phone": "+31 20 679 6231",
+      "shop": "wine",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://www.degoudenton.nl"
+     },
+     "fetchedAt": "2026-11-01T12:48:43.708Z",
+     "match": "frontage",
+     "distanceM": 5.8
+    },
+    {
+     "type": "node",
+     "id": 4713255700,
+     "lngLat": [
+      4.8705373,
+      52.356269
+     ],
+     "tags": {
+      "amenity": "charging_station",
+      "capacity": "2",
+      "operator": "NUON",
+      "operator:wikidata": "Q513830",
+      "operator:wikipedia": "nl:Vattenfall Nederland",
+      "socket:type2": "2"
+     },
+     "fetchedAt": "2026-11-01T12:48:43.708Z",
+     "match": "frontage",
+     "distanceM": 7.4
+    }
+   ]
+  }
+ ]
+}

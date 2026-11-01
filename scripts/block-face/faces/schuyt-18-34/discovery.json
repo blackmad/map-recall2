@@ -1,0 +1,766 @@
+{
+ "street": "Cornelis Schuytstraat",
+ "seed": "0363100012236596",
+ "members": [
+  "0363100012237370",
+  "0363100012157345",
+  "0363100012160258",
+  "0363100012235947",
+  "0363100012166878",
+  "0363100012158893",
+  "0363100012236596"
+ ],
+ "ends": [
+  {
+   "side": "left",
+   "reason": "next fronting pand 0363100012236765 26.6 m on shares no party wall (cross street or gap)"
+  },
+  {
+   "side": "right",
+   "reason": "next fronting pand 0363100012237103 24.1 m on shares no party wall (cross street or gap)"
+  }
+ ],
+ "rejected": [
+  {
+   "pandId": "0363100012152457",
+   "reason": "frontage 129.1 m from Cornelis Schuytstraat"
+  },
+  {
+   "pandId": "0363100012153143",
+   "reason": "frontage 97.5 m from Cornelis Schuytstraat"
+  },
+  {
+   "pandId": "0363100012153398",
+   "reason": "frontage 99.3 m from Cornelis Schuytstraat"
+  },
+  {
+   "pandId": "0363100012153471",
+   "reason": "frontage 110.3 m from Cornelis Schuytstraat"
+  },
+  {
+   "pandId": "0363100012153568",
+   "reason": "frontage 52.7 m from Cornelis Schuytstraat"
+  },
+  {
+   "pandId": "0363100012154219",
+   "reason": "frontage 51.3 m from Cornelis Schuytstraat"
+  },
+  {
+   "pandId": "0363100012154235",
+   "reason": "frontage 105.1 m from Cornelis Schuytstraat"
+  },
+  {
+   "pandId": "0363100012155511",
+   "reason": "frontage 40.2 m from Cornelis Schuytstraat"
+  },
+  {
+   "pandId": "0363100012155613",
+   "reason": "frontage 44.7 m from Cornelis Schuytstraat"
+  },
+  {
+   "pandId": "0363100012155790",
+   "reason": "sightline to Cornelis Schuytstraat crosses 0363100012236765"
+  },
+  {
+   "pandId": "0363100012156186",
+   "reason": "frontage 33.2 m from Cornelis Schuytstraat"
+  },
+  {
+   "pandId": "0363100012156278",
+   "reason": "frontage 69.1 m from Cornelis Schuytstraat"
+  },
+  {
+   "pandId": "0363100012156367",
+   "reason": "frontage 59.8 m from Cornelis Schuytstraat"
+  },
+  {
+   "pandId": "0363100012156442",
+   "reason": "frontage 69.2 m from Cornelis Schuytstraat"
+  },
+  {
+   "pandId": "0363100012156525",
+   "reason": "frontage 46.5 m from Cornelis Schuytstraat"
+  },
+  {
+   "pandId": "0363100012156586",
+   "reason": "frontage 92.8 m from Cornelis Schuytstraat"
+  },
+  {
+   "pandId": "0363100012156790",
+   "reason": "no frontage on Cornelis Schuytstraat: No footprint edge faces Cornelis Schuytstraat"
+  },
+  {
+   "pandId": "0363100012156875",
+   "reason": "sightline to Cornelis Schuytstraat crosses 0363100012158893"
+  },
+  {
+   "pandId": "0363100012157002",
+   "reason": "frontage 35.0 m from Cornelis Schuytstraat"
+  },
+  {
+   "pandId": "0363100012157061",
+   "reason": "frontage 83.0 m from Cornelis Schuytstraat"
+  },
+  {
+   "pandId": "0363100012157080",
+   "reason": "frontage 57.2 m from Cornelis Schuytstraat"
+  },
+  {
+   "pandId": "0363100012157102",
+   "reason": "frontage 63.3 m from Cornelis Schuytstraat"
+  },
+  {
+   "pandId": "0363100012157228",
+   "reason": "frontage 87.2 m from Cornelis Schuytstraat"
+  },
+  {
+   "pandId": "0363100012157293",
+   "reason": "frontage 117.2 m from Cornelis Schuytstraat"
+  },
+  {
+   "pandId": "0363100012157399",
+   "reason": "sightline to Cornelis Schuytstraat crosses 0363100012165421"
+  },
+  {
+   "pandId": "0363100012066327",
+   "reason": "frontage 35.2 m from Cornelis Schuytstraat"
+  },
+  {
+   "pandId": "0363100012091335",
+   "reason": "frontage 76.6 m from Cornelis Schuytstraat"
+  },
+  {
+   "pandId": "0363100012098390",
+   "reason": "frontage 32.6 m from Cornelis Schuytstraat"
+  },
+  {
+   "pandId": "0363100012152275",
+   "reason": "frontage 47.7 m from Cornelis Schuytstraat"
+  },
+  {
+   "pandId": "0363100012152869",
+   "reason": "sightline to Cornelis Schuytstraat crosses 0363100012155662"
+  },
+  {
+   "pandId": "0363100012152960",
+   "reason": "sightline to Cornelis Schuytstraat crosses 0363100012155519"
+  },
+  {
+   "pandId": "0363100012153282",
+   "reason": "frontage 53.9 m from Cornelis Schuytstraat"
+  },
+  {
+   "pandId": "0363100012154120",
+   "reason": "frontage 66.3 m from Cornelis Schuytstraat"
+  },
+  {
+   "pandId": "0363100012154268",
+   "reason": "frontage 39.2 m from Cornelis Schuytstraat"
+  },
+  {
+   "pandId": "0363100012155891",
+   "reason": "frontage 34.7 m from Cornelis Schuytstraat"
+  },
+  {
+   "pandId": "0363100012156058",
+   "reason": "frontage 58.7 m from Cornelis Schuytstraat"
+  },
+  {
+   "pandId": "0363100012156064",
+   "reason": "sightline to Cornelis Schuytstraat crosses 0363100012161826"
+  },
+  {
+   "pandId": "0363100012156069",
+   "reason": "frontage 73.2 m from Cornelis Schuytstraat"
+  },
+  {
+   "pandId": "0363100012156412",
+   "reason": "sightline to Cornelis Schuytstraat crosses 0363100012163757"
+  },
+  {
+   "pandId": "0363100012156672",
+   "reason": "frontage 42.1 m from Cornelis Schuytstraat"
+  },
+  {
+   "pandId": "0363100012156743",
+   "reason": "frontage 40.8 m from Cornelis Schuytstraat"
+  },
+  {
+   "pandId": "0363100012156887",
+   "reason": "frontage 55.7 m from Cornelis Schuytstraat"
+  },
+  {
+   "pandId": "0363100012157542",
+   "reason": "frontage 56.9 m from Cornelis Schuytstraat"
+  },
+  {
+   "pandId": "0363100012157647",
+   "reason": "frontage 33.1 m from Cornelis Schuytstraat"
+  },
+  {
+   "pandId": "0363100012158288",
+   "reason": "frontage 38.9 m from Cornelis Schuytstraat"
+  },
+  {
+   "pandId": "0363100012159289",
+   "reason": "frontage 33.6 m from Cornelis Schuytstraat"
+  },
+  {
+   "pandId": "0363100012159308",
+   "reason": "frontage 75.1 m from Cornelis Schuytstraat"
+  },
+  {
+   "pandId": "0363100012159952",
+   "reason": "frontage 92.9 m from Cornelis Schuytstraat"
+  },
+  {
+   "pandId": "0363100012160638",
+   "reason": "frontage 97.9 m from Cornelis Schuytstraat"
+  },
+  {
+   "pandId": "0363100012160763",
+   "reason": "frontage 86.9 m from Cornelis Schuytstraat"
+  },
+  {
+   "pandId": "0363100012160924",
+   "reason": "frontage 51.0 m from Cornelis Schuytstraat"
+  },
+  {
+   "pandId": "0363100012161050",
+   "reason": "frontage 92.7 m from Cornelis Schuytstraat"
+  },
+  {
+   "pandId": "0363100012161257",
+   "reason": "frontage 81.0 m from Cornelis Schuytstraat"
+  },
+  {
+   "pandId": "0363100012161609",
+   "reason": "frontage 33.3 m from Cornelis Schuytstraat"
+  },
+  {
+   "pandId": "0363100012161756",
+   "reason": "frontage 85.0 m from Cornelis Schuytstraat"
+  },
+  {
+   "pandId": "0363100012161809",
+   "reason": "frontage 91.1 m from Cornelis Schuytstraat"
+  },
+  {
+   "pandId": "0363100012162004",
+   "reason": "frontage 72.5 m from Cornelis Schuytstraat"
+  },
+  {
+   "pandId": "0363100012162067",
+   "reason": "frontage 66.1 m from Cornelis Schuytstraat"
+  },
+  {
+   "pandId": "0363100012162096",
+   "reason": "frontage 81.2 m from Cornelis Schuytstraat"
+  },
+  {
+   "pandId": "0363100012162225",
+   "reason": "frontage 111.1 m from Cornelis Schuytstraat"
+  },
+  {
+   "pandId": "0363100012157478",
+   "reason": "frontage 46.6 m from Cornelis Schuytstraat"
+  },
+  {
+   "pandId": "0363100012157545",
+   "reason": "sightline to Cornelis Schuytstraat crosses 0363100012155662"
+  },
+  {
+   "pandId": "0363100012157586",
+   "reason": "frontage 42.6 m from Cornelis Schuytstraat"
+  },
+  {
+   "pandId": "0363100012157736",
+   "reason": "frontage 60.0 m from Cornelis Schuytstraat"
+  },
+  {
+   "pandId": "0363100012157770",
+   "reason": "frontage 62.7 m from Cornelis Schuytstraat"
+  },
+  {
+   "pandId": "0363100012158071",
+   "reason": "frontage 35.7 m from Cornelis Schuytstraat"
+  },
+  {
+   "pandId": "0363100012158319",
+   "reason": "frontage 66.7 m from Cornelis Schuytstraat"
+  },
+  {
+   "pandId": "0363100012158668",
+   "reason": "frontage 61.3 m from Cornelis Schuytstraat"
+  },
+  {
+   "pandId": "0363100012159147",
+   "reason": "frontage 80.4 m from Cornelis Schuytstraat"
+  },
+  {
+   "pandId": "0363100012159184",
+   "reason": "frontage 38.1 m from Cornelis Schuytstraat"
+  },
+  {
+   "pandId": "0363100012159745",
+   "reason": "frontage 88.1 m from Cornelis Schuytstraat"
+  },
+  {
+   "pandId": "0363100012159813",
+   "reason": "sightline to Cornelis Schuytstraat crosses 0363100012236236"
+  },
+  {
+   "pandId": "0363100012160059",
+   "reason": "frontage 46.3 m from Cornelis Schuytstraat"
+  },
+  {
+   "pandId": "0363100012160882",
+   "reason": "frontage 52.7 m from Cornelis Schuytstraat"
+  },
+  {
+   "pandId": "0363100012161182",
+   "reason": "frontage 76.5 m from Cornelis Schuytstraat"
+  },
+  {
+   "pandId": "0363100012161355",
+   "reason": "frontage 32.1 m from Cornelis Schuytstraat"
+  },
+  {
+   "pandId": "0363100012161378",
+   "reason": "frontage 49.2 m from Cornelis Schuytstraat"
+  },
+  {
+   "pandId": "0363100012161533",
+   "reason": "sightline to Cornelis Schuytstraat crosses 0363100012163913"
+  },
+  {
+   "pandId": "0363100012161806",
+   "reason": "frontage 64.6 m from Cornelis Schuytstraat"
+  },
+  {
+   "pandId": "0363100012162422",
+   "reason": "frontage 41.6 m from Cornelis Schuytstraat"
+  },
+  {
+   "pandId": "0363100012162826",
+   "reason": "frontage 69.5 m from Cornelis Schuytstraat"
+  },
+  {
+   "pandId": "0363100012162938",
+   "reason": "frontage 39.2 m from Cornelis Schuytstraat"
+  },
+  {
+   "pandId": "0363100012163240",
+   "reason": "frontage 34.7 m from Cornelis Schuytstraat"
+  },
+  {
+   "pandId": "0363100012163440",
+   "reason": "sightline to Cornelis Schuytstraat crosses 0363100012156790"
+  },
+  {
+   "pandId": "0363100012163692",
+   "reason": "frontage 41.0 m from Cornelis Schuytstraat"
+  },
+  {
+   "pandId": "0363100012163773",
+   "reason": "frontage 53.1 m from Cornelis Schuytstraat"
+  },
+  {
+   "pandId": "0363100012163926",
+   "reason": "frontage 116.6 m from Cornelis Schuytstraat"
+  },
+  {
+   "pandId": "0363100012164180",
+   "reason": "frontage 88.2 m from Cornelis Schuytstraat"
+  },
+  {
+   "pandId": "0363100012164280",
+   "reason": "frontage 63.2 m from Cornelis Schuytstraat"
+  },
+  {
+   "pandId": "0363100012164649",
+   "reason": "frontage 59.8 m from Cornelis Schuytstraat"
+  },
+  {
+   "pandId": "0363100012164819",
+   "reason": "frontage 123.3 m from Cornelis Schuytstraat"
+  },
+  {
+   "pandId": "0363100012165248",
+   "reason": "sightline to Cornelis Schuytstraat crosses 0363100012237370"
+  },
+  {
+   "pandId": "0363100012165324",
+   "reason": "no frontage on Cornelis Schuytstraat: No footprint edge faces Cornelis Schuytstraat"
+  },
+  {
+   "pandId": "0363100012165421",
+   "reason": "no frontage on Cornelis Schuytstraat: No footprint edge faces Cornelis Schuytstraat"
+  },
+  {
+   "pandId": "0363100012165528",
+   "reason": "frontage 103.0 m from Cornelis Schuytstraat"
+  },
+  {
+   "pandId": "0363100012165656",
+   "reason": "frontage 74.9 m from Cornelis Schuytstraat"
+  },
+  {
+   "pandId": "0363100012166083",
+   "reason": "frontage 45.2 m from Cornelis Schuytstraat"
+  },
+  {
+   "pandId": "0363100012166160",
+   "reason": "frontage 35.9 m from Cornelis Schuytstraat"
+  },
+  {
+   "pandId": "0363100012166354",
+   "reason": "frontage 103.7 m from Cornelis Schuytstraat"
+  },
+  {
+   "pandId": "0363100012166492",
+   "reason": "frontage 78.8 m from Cornelis Schuytstraat"
+  },
+  {
+   "pandId": "0363100012166821",
+   "reason": "frontage 41.8 m from Cornelis Schuytstraat"
+  },
+  {
+   "pandId": "0363100012189733",
+   "reason": "frontage 34.2 m from Cornelis Schuytstraat"
+  },
+  {
+   "pandId": "0363100012192955",
+   "reason": "sightline to Cornelis Schuytstraat crosses 0363100012155985"
+  },
+  {
+   "pandId": "0363100012162429",
+   "reason": "frontage 51.4 m from Cornelis Schuytstraat"
+  },
+  {
+   "pandId": "0363100012162463",
+   "reason": "frontage 44.9 m from Cornelis Schuytstraat"
+  },
+  {
+   "pandId": "0363100012163036",
+   "reason": "frontage 47.9 m from Cornelis Schuytstraat"
+  },
+  {
+   "pandId": "0363100012163099",
+   "reason": "frontage 59.0 m from Cornelis Schuytstraat"
+  },
+  {
+   "pandId": "0363100012163560",
+   "reason": "frontage 70.9 m from Cornelis Schuytstraat"
+  },
+  {
+   "pandId": "0363100012164523",
+   "reason": "frontage 37.6 m from Cornelis Schuytstraat"
+  },
+  {
+   "pandId": "0363100012164640",
+   "reason": "frontage 78.0 m from Cornelis Schuytstraat"
+  },
+  {
+   "pandId": "0363100012164684",
+   "reason": "frontage 54.1 m from Cornelis Schuytstraat"
+  },
+  {
+   "pandId": "0363100012164739",
+   "reason": "frontage 83.4 m from Cornelis Schuytstraat"
+  },
+  {
+   "pandId": "0363100012165318",
+   "reason": "frontage 52.5 m from Cornelis Schuytstraat"
+  },
+  {
+   "pandId": "0363100012165811",
+   "reason": "frontage 71.8 m from Cornelis Schuytstraat"
+  },
+  {
+   "pandId": "0363100012165895",
+   "reason": "sightline to Cornelis Schuytstraat crosses 0363100012163913"
+  },
+  {
+   "pandId": "0363100012166121",
+   "reason": "sightline to Cornelis Schuytstraat crosses 0363100012161826"
+  },
+  {
+   "pandId": "0363100012167288",
+   "reason": "frontage 31.7 m from Cornelis Schuytstraat"
+  },
+  {
+   "pandId": "0363100012196024",
+   "reason": "frontage 41.4 m from Cornelis Schuytstraat"
+  },
+  {
+   "pandId": "0363100012210708",
+   "reason": "frontage 40.4 m from Cornelis Schuytstraat"
+  },
+  {
+   "pandId": "0363100012233669",
+   "reason": "frontage 47.7 m from Cornelis Schuytstraat"
+  },
+  {
+   "pandId": "0363100012235918",
+   "reason": "frontage 53.7 m from Cornelis Schuytstraat"
+  },
+  {
+   "pandId": "0363100012235975",
+   "reason": "frontage 46.4 m from Cornelis Schuytstraat"
+  },
+  {
+   "pandId": "0363100012236107",
+   "reason": "no frontage on Cornelis Schuytstraat: No footprint edge faces Cornelis Schuytstraat"
+  },
+  {
+   "pandId": "0363100012236526",
+   "reason": "sightline to Cornelis Schuytstraat crosses 0363100012157482"
+  },
+  {
+   "pandId": "0363100012237102",
+   "reason": "sightline to Cornelis Schuytstraat crosses 0363100012236647"
+  },
+  {
+   "pandId": "0363100012237345",
+   "reason": "frontage 134.6 m from Cornelis Schuytstraat"
+  },
+  {
+   "pandId": "0363100012237369",
+   "reason": "frontage 40.8 m from Cornelis Schuytstraat"
+  },
+  {
+   "pandId": "0363100012200138",
+   "reason": "frontage 47.4 m from Cornelis Schuytstraat"
+  },
+  {
+   "pandId": "0363100012202519",
+   "reason": "frontage 66.0 m from Cornelis Schuytstraat"
+  },
+  {
+   "pandId": "0363100012204731",
+   "reason": "frontage 33.3 m from Cornelis Schuytstraat"
+  },
+  {
+   "pandId": "0363100012214625",
+   "reason": "frontage 59.5 m from Cornelis Schuytstraat"
+  },
+  {
+   "pandId": "0363100012220245",
+   "reason": "frontage 53.7 m from Cornelis Schuytstraat"
+  },
+  {
+   "pandId": "0363100012231607",
+   "reason": "frontage 53.5 m from Cornelis Schuytstraat"
+  },
+  {
+   "pandId": "0363100012233841",
+   "reason": "sightline to Cornelis Schuytstraat crosses 0363100012159412"
+  },
+  {
+   "pandId": "0363100012235897",
+   "reason": "frontage 65.7 m from Cornelis Schuytstraat"
+  },
+  {
+   "pandId": "0363100012237089",
+   "reason": "frontage 59.6 m from Cornelis Schuytstraat"
+  },
+  {
+   "pandId": "0363100012152291",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012152757",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012155519",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012155662",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012156820",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012157482",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012157483",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012160599",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012162193",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012158436",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012159412",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012159568",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012159676",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012160695",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012161826",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012165584",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012163913",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012164204",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012164601",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012166206",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012166710",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012167203",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012207536",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012236061",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012236133",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012236134",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012236647",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012235930",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012236069",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012236236",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012236904",
+   "reason": "fronts the other side / another direction"
+  }
+ ],
+ "areaHalfSizeM": 90,
+ "pands": [
+  {
+   "pandId": "0363100012237370",
+   "alongM": -38.6,
+   "widthM": 16.83,
+   "eavesM": 11.29,
+   "roofMaxM": 15.76,
+   "storeys3dbag": 4,
+   "builtYear": 1899,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012157345",
+   "alongM": -27.47,
+   "widthM": 5.44,
+   "eavesM": 11.93,
+   "roofMaxM": 16.69,
+   "storeys3dbag": 4,
+   "builtYear": 1899,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012160258",
+   "alongM": -21.83,
+   "widthM": 5.84,
+   "eavesM": 11.28,
+   "roofMaxM": 16.12,
+   "storeys3dbag": 4,
+   "builtYear": 1899,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012235947",
+   "alongM": -16.25,
+   "widthM": 5.34,
+   "eavesM": 14.34,
+   "roofMaxM": 16.88,
+   "storeys3dbag": 4,
+   "builtYear": 1899,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012166878",
+   "alongM": -10.8,
+   "widthM": 5.56,
+   "eavesM": 13.4,
+   "roofMaxM": 16.24,
+   "storeys3dbag": 4,
+   "builtYear": 1899,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012158893",
+   "alongM": -5.14,
+   "widthM": 5.77,
+   "eavesM": 13.41,
+   "roofMaxM": 13.6,
+   "storeys3dbag": 4,
+   "builtYear": 1899,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012236596",
+   "alongM": 0,
+   "widthM": 4.5,
+   "eavesM": 13.46,
+   "roofMaxM": 13.65,
+   "storeys3dbag": 4,
+   "builtYear": 1899,
+   "uncertainty": []
+  }
+ ]
+}

@@ -1,0 +1,284 @@
+{
+ "street": "Johannes Verhulststraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-01T13:36:26.425Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012160501",
+   "addresses": [
+    "Johannes Verhulststraat 62"
+   ],
+   "groundUnits": [
+    {
+     "address": "Johannes Verhulststraat 62-H",
+     "use": "kantoorfunctie",
+     "areaM2": 230,
+     "bagId": "0363010000694025"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012163906",
+   "addresses": [
+    "Johannes Verhulststraat 60"
+   ],
+   "groundUnits": [
+    {
+     "address": "Johannes Verhulststraat 60-H",
+     "use": "woonfunctie",
+     "areaM2": 109,
+     "bagId": "0363010000694019"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012158230",
+   "addresses": [
+    "Johannes Verhulststraat 58"
+   ],
+   "groundUnits": [
+    {
+     "address": "Johannes Verhulststraat 58-H",
+     "use": "woonfunctie",
+     "areaM2": 220,
+     "bagId": "0363010001024888"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012156369",
+   "addresses": [
+    "Johannes Verhulststraat 56"
+   ],
+   "groundUnits": [
+    {
+     "address": "Johannes Verhulststraat 56",
+     "use": "woonfunctie",
+     "areaM2": 289,
+     "bagId": "0363010000694013"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012163288",
+   "addresses": [
+    "Johannes Verhulststraat 54"
+   ],
+   "groundUnits": [
+    {
+     "address": "Johannes Verhulststraat 54",
+     "use": "woonfunctie",
+     "areaM2": 385,
+     "bagId": "0363010000694010"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012163090",
+   "addresses": [
+    "Johannes Verhulststraat 52"
+   ],
+   "groundUnits": [
+    {
+     "address": "Johannes Verhulststraat 52",
+     "use": "gezondheidszorgfunctie",
+     "areaM2": 460,
+     "bagId": "0363010000694007"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012159619",
+   "addresses": [
+    "Johannes Verhulststraat 50",
+    "Johannes Verhulststraat 50A",
+    "Johannes Verhulststraat 50B",
+    "Johannes Verhulststraat 50C"
+   ],
+   "groundUnits": [
+    {
+     "address": "Johannes Verhulststraat 50",
+     "use": "woonfunctie",
+     "areaM2": 289,
+     "bagId": "0363010000694003"
+    },
+    {
+     "address": "Johannes Verhulststraat 50A",
+     "use": "woonfunctie",
+     "areaM2": 170,
+     "bagId": "0363010012169905"
+    },
+    {
+     "address": "Johannes Verhulststraat 50B",
+     "use": "woonfunctie",
+     "areaM2": 75,
+     "bagId": "0363010012169906"
+    },
+    {
+     "address": "Johannes Verhulststraat 50C",
+     "use": "woonfunctie",
+     "areaM2": 145,
+     "bagId": "0363010012169907"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012153008",
+   "addresses": [
+    "Johannes Verhulststraat 48"
+   ],
+   "groundUnits": [
+    {
+     "address": "Johannes Verhulststraat 48",
+     "use": "woonfunctie",
+     "areaM2": 289,
+     "bagId": "0363010000694000"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012153149",
+   "addresses": [
+    "Johannes Verhulststraat 46"
+   ],
+   "groundUnits": [
+    {
+     "address": "Johannes Verhulststraat 46-H",
+     "use": "woonfunctie",
+     "areaM2": 179,
+     "bagId": "0363010000693995"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012237237",
+   "addresses": [
+    "Johannes Verhulststraat 44"
+   ],
+   "groundUnits": [
+    {
+     "address": "Johannes Verhulststraat 44-H",
+     "use": "woonfunctie",
+     "areaM2": 228,
+     "bagId": "0363010000693988"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012236417",
+   "addresses": [
+    "Johannes Verhulststraat 42"
+   ],
+   "groundUnits": [
+    {
+     "address": "Johannes Verhulststraat 42-H",
+     "use": "woonfunctie",
+     "areaM2": 204,
+     "bagId": "0363010000693985"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012236636",
+   "addresses": [
+    "Johannes Verhulststraat 40"
+   ],
+   "groundUnits": [
+    {
+     "address": "Johannes Verhulststraat 40-H",
+     "use": "woonfunctie",
+     "areaM2": 202,
+     "bagId": "0363010000693982"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012236145",
+   "addresses": [
+    "Johannes Verhulststraat 38"
+   ],
+   "groundUnits": [
+    {
+     "address": "Johannes Verhulststraat 38-H",
+     "use": "woonfunctie",
+     "areaM2": 123,
+     "bagId": "0363010000693976"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012236947",
+   "addresses": [
+    "Johannes Verhulststraat 36"
+   ],
+   "groundUnits": [
+    {
+     "address": "Johannes Verhulststraat 36-H",
+     "use": "woonfunctie",
+     "areaM2": 206,
+     "bagId": "0363010000693972"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012236560",
+   "addresses": [
+    "Johannes Verhulststraat 34",
+    "Johannes Verhulststraat 34E",
+    "Johannes Verhulststraat 34D"
+   ],
+   "groundUnits": [
+    {
+     "address": "Johannes Verhulststraat 34-H",
+     "use": "woonfunctie",
+     "areaM2": 65,
+     "bagId": "0363010001018690"
+    },
+    {
+     "address": "Johannes Verhulststraat 34E",
+     "use": "woonfunctie",
+     "areaM2": 53,
+     "bagId": "0363010012158996"
+    },
+    {
+     "address": "Johannes Verhulststraat 34D",
+     "use": "woonfunctie",
+     "areaM2": 45,
+     "bagId": "0363010012158997"
+    }
+   ],
+   "units": 6,
+   "osm": []
+  }
+ ]
+}

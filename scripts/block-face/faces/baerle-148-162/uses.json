@@ -1,0 +1,243 @@
+{
+ "street": "Van Baerlestraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-01T14:56:20.066Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012160592",
+   "addresses": [
+    "Van Baerlestraat 162"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Baerlestraat 162-H",
+     "use": "winkelfunctie",
+     "areaM2": 240,
+     "bagId": "0363010000835005"
+    }
+   ],
+   "units": 3,
+   "osm": [
+    {
+     "type": "node",
+     "id": 3083675088,
+     "lngLat": [
+      4.8813928,
+      52.3537421
+     ],
+     "tags": {
+      "check_date": "2024-06-20",
+      "name": "Simon Meijssen",
+      "opening_hours": "Mo-Sa 07:30-18:00",
+      "shop": "bakery",
+      "website": "https://simonmeijssen.nl/"
+     },
+     "fetchedAt": "2026-11-01T14:56:20.066Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012155335",
+   "addresses": [
+    "Van Baerlestraat 160"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Baerlestraat 160-H",
+     "use": "winkelfunctie",
+     "areaM2": 188,
+     "bagId": "0363010011259440"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012154327",
+   "addresses": [
+    "Van Baerlestraat 158"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Baerlestraat 158-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 216,
+     "bagId": "0363010000835000"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2816569788,
+     "lngLat": [
+      4.8812918,
+      52.3538676
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "158-H",
+      "addr:postcode": "1071BG",
+      "addr:street": "Van Baerlestraat",
+      "amenity": "restaurant",
+      "check_date": "2025-11-19",
+      "check_date:opening_hours": "2025-11-19",
+      "name": "Brasserie van Baerle",
+      "opening_hours": "Mo-Sa 12:00-16:00, Mo-Fr 17:45-22:30, Su 12:00-20:00",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://brasserievanbaerle.nl/"
+     },
+     "fetchedAt": "2026-11-01T14:56:20.066Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012166268",
+   "addresses": [
+    "Van Baerlestraat 156"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Baerlestraat 156-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 225,
+     "bagId": "0363010000834997"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012166772",
+   "addresses": [
+    "Van Baerlestraat 154"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Baerlestraat 154-H",
+     "use": "winkelfunctie",
+     "areaM2": 161,
+     "bagId": "0363010000834995"
+    }
+   ],
+   "units": 6,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012155476",
+   "addresses": [
+    "Van Baerlestraat 152"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Baerlestraat 152-H",
+     "use": "woonfunctie",
+     "areaM2": 175,
+     "bagId": "0363010000834993"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012156857",
+   "addresses": [
+    "Van Baerlestraat 150"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Baerlestraat 150-H",
+     "use": "winkelfunctie",
+     "areaM2": 187,
+     "bagId": "0363010012591986"
+    },
+    {
+     "address": "Van Baerlestraat 150-H",
+     "use": "winkelfunctie",
+     "areaM2": 225,
+     "bagId": "0363010000834991"
+    }
+   ],
+   "units": 6,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2816569775,
+     "lngLat": [
+      4.8811516,
+      52.3540905
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "150-H",
+      "addr:postcode": "1071BG",
+      "addr:street": "Van Baerlestraat",
+      "brand": "Toni & Guy",
+      "brand:wikidata": "Q324784",
+      "brand:wikipedia": "en:Toni & Guy",
+      "check_date": "2024-06-20",
+      "female:signed": "no",
+      "male:signed": "no",
+      "name": "Toni & Guy Hairdressing",
+      "shop": "hairdresser",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://www.toniandguy.nl/salon/v-baerlestraat/#amsterdam"
+     },
+     "fetchedAt": "2026-11-01T14:56:20.066Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012156856",
+   "addresses": [
+    "Van Baerlestraat 148"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Baerlestraat 148-H",
+     "use": "winkelfunctie",
+     "areaM2": 110,
+     "bagId": "0363010000834989"
+    }
+   ],
+   "units": 6,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2816569752,
+     "lngLat": [
+      4.8811163,
+      52.3541405
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "148-H",
+      "addr:postcode": "1071BG",
+      "addr:street": "Van Baerlestraat",
+      "check_date": "2024-06-20",
+      "female:signed": "no",
+      "male:signed": "no",
+      "name": "Pierôt",
+      "shop": "hairdresser",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://pierot.nl/"
+     },
+     "fetchedAt": "2026-11-01T14:56:20.066Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}

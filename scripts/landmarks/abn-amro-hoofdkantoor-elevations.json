@@ -1,0 +1,42 @@
+{
+ "id": "abn-amro-hoofdkantoor",
+ "countedBy": "lane #166 (opus) from Wikimedia Commons File:ABN_AMRO3.jpg (public domain, 2005) before the model was rendered; crop artifacts/landmark-lanes/abn-amro-hoofdkantoor/commons/c3-face.jpg. Not a blind haiku count: integrator may re-count.",
+ "facades": [
+  {
+   "name": "main tower east end (above the wings)",
+   "bearing": 90,
+   "photo": "artifacts/landmark-lanes/abn-amro-hoofdkantoor/commons/c3.jpg",
+   "heightM": [
+    33,
+    107.5
+   ],
+   "depthBand": 110,
+   "columns": 3,
+   "symmetric": false,
+   "gables": 0,
+   "alongM": [
+    85.8,
+    100.4
+   ],
+   "openings": [
+    "glass",
+    "canopyGlass"
+   ]
+  },
+  {
+   "name": "south-east tower curved volume and granite block (Gustav Mahlerlaan side)",
+   "bearing": 180,
+   "photo": "artifacts/landmark-briefs/abn-amro-hoofdkantoor/w12-90.jpg",
+   "depthBand": 16,
+   "alongM": [
+    112,
+    142
+   ],
+   "openings": [
+    "glass",
+    "canopyGlass"
+   ]
+  }
+ ],
+ "note": "openings exclude 'dark': on this model 'dark' is the polished granite wall, not glazing"
+}

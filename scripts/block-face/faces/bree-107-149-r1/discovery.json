@@ -1,0 +1,2070 @@
+{
+ "street": "Van Breestraat",
+ "seed": "0363100012236835",
+ "members": [
+  "0363100012160540",
+  "0363100012160169",
+  "0363100012157147",
+  "0363100012163068"
+ ],
+ "ends": [
+  {
+   "side": "left",
+   "reason": "run of bree-107-149: 158648 held (auto-place.json)"
+  },
+  {
+   "side": "right",
+   "reason": "run of bree-107-149: 163680 held (auto-place.json)"
+  }
+ ],
+ "rejected": [
+  {
+   "pandId": "0363100012072072",
+   "reason": "sightline to Van Breestraat crosses 0363100012163914"
+  },
+  {
+   "pandId": "0363100012115230",
+   "reason": "frontage 87.4 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012152346",
+   "reason": "frontage 47.8 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012073181",
+   "reason": "frontage 156.7 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012076155",
+   "reason": "frontage 179.3 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012083178",
+   "reason": "frontage 163.7 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012087585",
+   "reason": "frontage 178.8 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012088441",
+   "reason": "frontage 165.3 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012090597",
+   "reason": "frontage 178.8 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012091029",
+   "reason": "frontage 179.0 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012105690",
+   "reason": "frontage 179.5 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012120769",
+   "reason": "frontage 179.4 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012129826",
+   "reason": "frontage 175.6 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012134755",
+   "reason": "frontage 179.1 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012138601",
+   "reason": "frontage 179.2 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012142706",
+   "reason": "frontage 175.6 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012152291",
+   "reason": "frontage 35.5 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012152307",
+   "reason": "frontage 134.7 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012073967",
+   "reason": "frontage 80.5 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012085898",
+   "reason": "frontage 37.0 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012103513",
+   "reason": "frontage 80.5 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012124153",
+   "reason": "frontage 41.8 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012125741",
+   "reason": "frontage 80.5 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012136890",
+   "reason": "frontage 48.7 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012143090",
+   "reason": "frontage 167.0 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012152315",
+   "reason": "no frontage on Van Breestraat: No footprint edge faces Van Breestraat"
+  },
+  {
+   "pandId": "0363100012152423",
+   "reason": "frontage 80.4 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012061747",
+   "reason": "frontage 176.1 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012061959",
+   "reason": "frontage 218.9 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012065680",
+   "reason": "frontage 176.1 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012068364",
+   "reason": "frontage 164.8 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012085089",
+   "reason": "frontage 218.6 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012086729",
+   "reason": "frontage 177.4 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012092421",
+   "reason": "frontage 178.3 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012098952",
+   "reason": "frontage 217.9 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012106312",
+   "reason": "frontage 218.8 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012109214",
+   "reason": "frontage 218.4 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012118112",
+   "reason": "frontage 218.7 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012118867",
+   "reason": "frontage 176.7 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012127853",
+   "reason": "frontage 177.4 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012129766",
+   "reason": "frontage 218.3 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012133086",
+   "reason": "frontage 176.4 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012136080",
+   "reason": "frontage 176.1 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012138291",
+   "reason": "frontage 177.9 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012144785",
+   "reason": "frontage 218.5 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012145293",
+   "reason": "frontage 218.8 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012152719",
+   "reason": "frontage 46.1 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012152774",
+   "reason": "frontage 68.0 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012153396",
+   "reason": "frontage 95.2 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012154232",
+   "reason": "sightline to Van Breestraat crosses 0363100012153028"
+  },
+  {
+   "pandId": "0363100012154383",
+   "reason": "frontage 47.1 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012155582",
+   "reason": "frontage 81.2 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012152610",
+   "reason": "frontage 74.3 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012152755",
+   "reason": "frontage 135.2 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012152982",
+   "reason": "frontage 135.5 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012153037",
+   "reason": "frontage 99.8 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012153305",
+   "reason": "frontage 136.7 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012153385",
+   "reason": "frontage 45.2 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012153472",
+   "reason": "frontage 100.1 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012153529",
+   "reason": "frontage 98.9 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012153568",
+   "reason": "frontage 73.7 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012154036",
+   "reason": "frontage 177.3 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012154219",
+   "reason": "frontage 72.7 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012154225",
+   "reason": "frontage 99.5 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012154264",
+   "reason": "frontage 101.3 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012154361",
+   "reason": "frontage 99.8 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012154652",
+   "reason": "frontage 218.5 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012152498",
+   "reason": "frontage 42.9 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012152676",
+   "reason": "frontage 131.3 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012152757",
+   "reason": "sightline to Van Breestraat crosses 0363100012159412"
+  },
+  {
+   "pandId": "0363100012152866",
+   "reason": "sightline to Van Breestraat crosses 0363100012156733"
+  },
+  {
+   "pandId": "0363100012152905",
+   "reason": "frontage 45.5 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012152918",
+   "reason": "frontage 80.6 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012153008",
+   "reason": "frontage 101.3 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012153074",
+   "reason": "frontage 168.7 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012153149",
+   "reason": "frontage 101.4 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012153264",
+   "reason": "frontage 168.5 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012153422",
+   "reason": "frontage 45.4 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012153607",
+   "reason": "frontage 80.7 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012154120",
+   "reason": "frontage 44.1 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012154263",
+   "reason": "frontage 37.7 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012154281",
+   "reason": "frontage 80.4 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012155519",
+   "reason": "sightline to Van Breestraat crosses 0363100012164601"
+  },
+  {
+   "pandId": "0363100012152452",
+   "reason": "frontage 137.1 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012152782",
+   "reason": "frontage 151.6 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012155885",
+   "reason": "frontage 39.1 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012156384",
+   "reason": "frontage 81.8 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012156507",
+   "reason": "frontage 81.5 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012156648",
+   "reason": "frontage 81.4 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012156696",
+   "reason": "sightline to Van Breestraat crosses 0363100012156363"
+  },
+  {
+   "pandId": "0363100012156897",
+   "reason": "frontage 93.8 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012155613",
+   "reason": "frontage 72.7 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012155655",
+   "reason": "frontage 80.1 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012155786",
+   "reason": "frontage 79.2 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012155790",
+   "reason": "frontage 72.8 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012155985",
+   "reason": "frontage 91.0 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012156079",
+   "reason": "frontage 137.0 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012156186",
+   "reason": "frontage 98.7 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012156369",
+   "reason": "frontage 101.0 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012156371",
+   "reason": "frontage 98.9 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012156526",
+   "reason": "no frontage on Van Breestraat: No footprint edge faces Van Breestraat"
+  },
+  {
+   "pandId": "0363100012156605",
+   "reason": "frontage 136.1 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012156680",
+   "reason": "frontage 158.3 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012156790",
+   "reason": "frontage 103.2 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012157002",
+   "reason": "frontage 100.2 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012157102",
+   "reason": "frontage 72.6 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012157160",
+   "reason": "frontage 135.3 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012155651",
+   "reason": "frontage 80.7 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012155750",
+   "reason": "frontage 109.0 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012155809",
+   "reason": "frontage 48.5 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012156255",
+   "reason": "frontage 48.6 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012156302",
+   "reason": "frontage 48.0 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012156683",
+   "reason": "frontage 45.2 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012156820",
+   "reason": "frontage 32.7 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012156974",
+   "reason": "frontage 80.4 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012157074",
+   "reason": "frontage 80.5 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012157152",
+   "reason": "frontage 123.0 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012157162",
+   "reason": "frontage 129.5 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012155847",
+   "reason": "frontage 137.3 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012157247",
+   "reason": "frontage 99.7 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012157377",
+   "reason": "frontage 47.6 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012157378",
+   "reason": "frontage 41.6 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012157380",
+   "reason": "frontage 81.0 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012157431",
+   "reason": "frontage 50.2 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012157721",
+   "reason": "frontage 39.4 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012158032",
+   "reason": "frontage 48.3 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012157198",
+   "reason": "frontage 148.9 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012157345",
+   "reason": "frontage 35.6 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012157368",
+   "reason": "frontage 97.5 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012157399",
+   "reason": "frontage 100.2 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012157482",
+   "reason": "frontage 46.2 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012157483",
+   "reason": "frontage 52.0 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012157526",
+   "reason": "frontage 45.1 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012157542",
+   "reason": "frontage 72.6 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012157547",
+   "reason": "frontage 91.7 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012157548",
+   "reason": "frontage 85.8 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012157575",
+   "reason": "frontage 136.9 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012157647",
+   "reason": "frontage 44.4 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012157695",
+   "reason": "frontage 99.6 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012157810",
+   "reason": "frontage 100.0 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012157931",
+   "reason": "frontage 136.8 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012158230",
+   "reason": "frontage 103.7 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012158233",
+   "reason": "frontage 74.2 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012158288",
+   "reason": "frontage 72.7 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012158517",
+   "reason": "frontage 136.2 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012157240",
+   "reason": "frontage 80.7 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012157374",
+   "reason": "frontage 129.4 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012157576",
+   "reason": "frontage 132.4 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012157657",
+   "reason": "frontage 122.4 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012157732",
+   "reason": "sightline to Van Breestraat crosses 0363100012166881"
+  },
+  {
+   "pandId": "0363100012157986",
+   "reason": "frontage 80.5 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012157998",
+   "reason": "frontage 32.6 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012158126",
+   "reason": "frontage 122.2 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012158164",
+   "reason": "frontage 131.4 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012158300",
+   "reason": "frontage 115.3 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012158436",
+   "reason": "sightline to Van Breestraat crosses 0363100012152757"
+  },
+  {
+   "pandId": "0363100012158500",
+   "reason": "frontage 104.9 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012158578",
+   "reason": "frontage 111.6 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012158600",
+   "reason": "frontage 80.4 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012157226",
+   "reason": "frontage 137.4 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012157283",
+   "reason": "frontage 158.1 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012158629",
+   "reason": "frontage 46.7 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012158724",
+   "reason": "frontage 41.4 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012159292",
+   "reason": "frontage 81.6 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012159730",
+   "reason": "frontage 81.0 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012159946",
+   "reason": "frontage 49.6 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012160243",
+   "reason": "frontage 39.4 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012158893",
+   "reason": "sightline to Van Breestraat crosses 0363100012236596"
+  },
+  {
+   "pandId": "0363100012159080",
+   "reason": "frontage 136.8 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012159158",
+   "reason": "frontage 100.0 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012159222",
+   "reason": "frontage 73.8 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012159309",
+   "reason": "frontage 135.9 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012159902",
+   "reason": "frontage 74.0 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012160138",
+   "reason": "frontage 98.7 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012158618",
+   "reason": "frontage 131.2 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012158726",
+   "reason": "frontage 80.7 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012158878",
+   "reason": "frontage 122.9 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012158884",
+   "reason": "frontage 45.6 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012158971",
+   "reason": "no frontage on Van Breestraat: No footprint edge faces Van Breestraat"
+  },
+  {
+   "pandId": "0363100012159150",
+   "reason": "frontage 46.8 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012159184",
+   "reason": "frontage 46.6 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012159195",
+   "reason": "frontage 80.4 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012159459",
+   "reason": "frontage 32.4 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012159477",
+   "reason": "frontage 80.5 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012159568",
+   "reason": "no frontage on Van Breestraat: No footprint edge faces Van Breestraat"
+  },
+  {
+   "pandId": "0363100012159619",
+   "reason": "frontage 101.2 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012159625",
+   "reason": "sightline to Van Breestraat crosses 0363100012159380"
+  },
+  {
+   "pandId": "0363100012159676",
+   "reason": "frontage 39.5 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012159771",
+   "reason": "frontage 46.3 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012159828",
+   "reason": "frontage 80.5 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012159904",
+   "reason": "frontage 132.7 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012159984",
+   "reason": "frontage 80.4 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012160172",
+   "reason": "frontage 45.8 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012160183",
+   "reason": "frontage 167.5 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012159077",
+   "reason": "frontage 137.0 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012159697",
+   "reason": "frontage 137.3 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012160277",
+   "reason": "frontage 81.4 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012160336",
+   "reason": "frontage 43.8 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012160416",
+   "reason": "frontage 30.7 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012160437",
+   "reason": "frontage 46.0 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012160760",
+   "reason": "frontage 46.2 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012161332",
+   "reason": "frontage 100.3 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012160258",
+   "reason": "sightline to Van Breestraat crosses 0363100012158893"
+  },
+  {
+   "pandId": "0363100012160501",
+   "reason": "frontage 102.6 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012160599",
+   "reason": "frontage 41.2 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012160696",
+   "reason": "frontage 136.1 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012160721",
+   "reason": "frontage 97.7 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012160778",
+   "reason": "frontage 134.5 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012160782",
+   "reason": "frontage 134.6 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012160916",
+   "reason": "frontage 99.3 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012160924",
+   "reason": "frontage 44.4 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012161248",
+   "reason": "frontage 135.6 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012161338",
+   "reason": "frontage 74.2 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012161439",
+   "reason": "frontage 99.6 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012161588",
+   "reason": "frontage 101.2 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012161609",
+   "reason": "frontage 72.8 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012161642",
+   "reason": "frontage 101.4 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012161861",
+   "reason": "frontage 74.0 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012161877",
+   "reason": "frontage 74.4 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012160307",
+   "reason": "frontage 45.7 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012160357",
+   "reason": "frontage 129.0 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012160404",
+   "reason": "frontage 80.7 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012160424",
+   "reason": "frontage 46.0 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012160627",
+   "reason": "frontage 43.3 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012160695",
+   "reason": "no frontage on Van Breestraat: No footprint edge faces Van Breestraat"
+  },
+  {
+   "pandId": "0363100012160717",
+   "reason": "frontage 47.5 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012160728",
+   "reason": "sightline to Van Breestraat crosses 0363100012163757"
+  },
+  {
+   "pandId": "0363100012160745",
+   "reason": "frontage 46.9 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012160863",
+   "reason": "frontage 80.4 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012161015",
+   "reason": "frontage 102.0 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012161237",
+   "reason": "frontage 80.6 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012161408",
+   "reason": "frontage 101.6 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012161526",
+   "reason": "frontage 131.3 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012161533",
+   "reason": "frontage 46.3 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012161542",
+   "reason": "frontage 132.6 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012161649",
+   "reason": "frontage 118.5 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012161652",
+   "reason": "frontage 126.9 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012161666",
+   "reason": "frontage 45.6 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012161713",
+   "reason": "frontage 48.5 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012160954",
+   "reason": "frontage 137.2 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012162837",
+   "reason": "frontage 81.1 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012162934",
+   "reason": "frontage 45.8 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012163181",
+   "reason": "frontage 74.9 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012161898",
+   "reason": "frontage 135.8 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012162193",
+   "reason": "sightline to Van Breestraat crosses 0363100012155519"
+  },
+  {
+   "pandId": "0363100012162302",
+   "reason": "frontage 101.4 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012162414",
+   "reason": "frontage 99.1 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012162555",
+   "reason": "frontage 99.0 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012162769",
+   "reason": "frontage 134.4 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012162938",
+   "reason": "frontage 44.4 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012162982",
+   "reason": "frontage 99.8 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012163183",
+   "reason": "frontage 97.6 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012163240",
+   "reason": "frontage 73.5 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012162022",
+   "reason": "frontage 80.6 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012162074",
+   "reason": "frontage 88.9 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012162110",
+   "reason": "frontage 122.6 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012162235",
+   "reason": "frontage 80.5 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012162250",
+   "reason": "frontage 80.5 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012162260",
+   "reason": "frontage 128.3 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012162328",
+   "reason": "frontage 131.0 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012162358",
+   "reason": "frontage 130.9 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012162429",
+   "reason": "frontage 46.9 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012162463",
+   "reason": "frontage 45.1 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012162510",
+   "reason": "frontage 44.8 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012162673",
+   "reason": "frontage 131.5 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012162678",
+   "reason": "frontage 171.2 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012162767",
+   "reason": "frontage 45.5 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012162779",
+   "reason": "frontage 131.5 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012162923",
+   "reason": "frontage 45.3 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012162937",
+   "reason": "frontage 128.9 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012163074",
+   "reason": "frontage 80.5 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012163090",
+   "reason": "frontage 101.2 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012163099",
+   "reason": "frontage 44.6 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012163185",
+   "reason": "frontage 128.2 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012163186",
+   "reason": "frontage 48.3 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012163206",
+   "reason": "frontage 45.7 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012163288",
+   "reason": "frontage 101.1 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012163293",
+   "reason": "frontage 33.0 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012162728",
+   "reason": "frontage 137.4 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012163157",
+   "reason": "frontage 137.5 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012163555",
+   "reason": "no frontage on Van Breestraat: No footprint edge faces Van Breestraat"
+  },
+  {
+   "pandId": "0363100012163687",
+   "reason": "frontage 37.5 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012164901",
+   "reason": "sightline to Van Breestraat crosses 0363100012072072"
+  },
+  {
+   "pandId": "0363100012163440",
+   "reason": "frontage 101.1 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012163567",
+   "reason": "frontage 95.5 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012163590",
+   "reason": "frontage 136.6 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012163692",
+   "reason": "frontage 100.4 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012163840",
+   "reason": "frontage 135.6 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012163906",
+   "reason": "frontage 105.8 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012164322",
+   "reason": "frontage 74.1 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012164336",
+   "reason": "frontage 135.7 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012164649",
+   "reason": "frontage 44.9 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012164696",
+   "reason": "frontage 101.7 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012165248",
+   "reason": "frontage 44.4 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012163379",
+   "reason": "frontage 45.9 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012163484",
+   "reason": "frontage 39.7 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012163546",
+   "reason": "frontage 127.0 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012163681",
+   "reason": "frontage 123.8 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012163708",
+   "reason": "frontage 48.2 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012163757",
+   "reason": "sightline to Van Breestraat crosses 0363100012237103"
+  },
+  {
+   "pandId": "0363100012163766",
+   "reason": "frontage 80.6 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012163813",
+   "reason": "frontage 45.6 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012163817",
+   "reason": "frontage 118.1 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012163871",
+   "reason": "frontage 120.7 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012163900",
+   "reason": "frontage 132.4 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012163903",
+   "reason": "frontage 80.7 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012163913",
+   "reason": "no frontage on Van Breestraat: No footprint edge faces Van Breestraat"
+  },
+  {
+   "pandId": "0363100012164175",
+   "reason": "frontage 46.2 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012164226",
+   "reason": "frontage 122.3 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012164230",
+   "reason": "frontage 126.4 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012164344",
+   "reason": "frontage 80.4 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012164455",
+   "reason": "frontage 35.2 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012164532",
+   "reason": "frontage 80.6 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012164610",
+   "reason": "frontage 80.4 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012165160",
+   "reason": "frontage 124.5 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012165265",
+   "reason": "frontage 80.5 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012163436",
+   "reason": "no frontage on Van Breestraat: No footprint edge faces Van Breestraat"
+  },
+  {
+   "pandId": "0363100012163437",
+   "reason": "no frontage on Van Breestraat: No footprint edge faces Van Breestraat"
+  },
+  {
+   "pandId": "0363100012165368",
+   "reason": "frontage 80.9 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012165922",
+   "reason": "frontage 40.1 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012166111",
+   "reason": "frontage 80.7 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012166459",
+   "reason": "frontage 35.7 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012166597",
+   "reason": "sightline to Van Breestraat crosses 0363100012163914"
+  },
+  {
+   "pandId": "0363100012165300",
+   "reason": "frontage 73.9 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012165324",
+   "reason": "frontage 97.1 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012165421",
+   "reason": "frontage 103.4 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012165584",
+   "reason": "sightline to Van Breestraat crosses 0363100012155519"
+  },
+  {
+   "pandId": "0363100012166083",
+   "reason": "frontage 44.4 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012166160",
+   "reason": "frontage 44.7 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012166171",
+   "reason": "frontage 134.8 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012166199",
+   "reason": "frontage 74.1 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012166224",
+   "reason": "frontage 135.1 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012166594",
+   "reason": "frontage 73.8 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012166718",
+   "reason": "frontage 74.4 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012166821",
+   "reason": "frontage 44.7 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012166878",
+   "reason": "sightline to Van Breestraat crosses 0363100012158893"
+  },
+  {
+   "pandId": "0363100012167003",
+   "reason": "frontage 99.9 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012167177",
+   "reason": "frontage 84.8 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012167252",
+   "reason": "frontage 136.0 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012165267",
+   "reason": "frontage 80.6 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012165409",
+   "reason": "frontage 48.2 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012165447",
+   "reason": "frontage 129.1 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012165895",
+   "reason": "frontage 46.4 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012165995",
+   "reason": "frontage 80.5 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012166069",
+   "reason": "frontage 130.5 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012166540",
+   "reason": "frontage 45.5 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012166667",
+   "reason": "frontage 128.2 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012166710",
+   "reason": "sightline to Van Breestraat crosses 0363100012155519"
+  },
+  {
+   "pandId": "0363100012166794",
+   "reason": "frontage 80.4 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012166982",
+   "reason": "no frontage on Van Breestraat: No footprint edge faces Van Breestraat"
+  },
+  {
+   "pandId": "0363100012167026",
+   "reason": "frontage 45.8 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012167040",
+   "reason": "frontage 126.0 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012167075",
+   "reason": "frontage 48.7 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012167203",
+   "reason": "frontage 38.1 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012167244",
+   "reason": "frontage 45.3 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012185906",
+   "reason": "frontage 111.6 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012187115",
+   "reason": "sightline to Van Breestraat crosses 0363100012237239"
+  },
+  {
+   "pandId": "0363100012183409",
+   "reason": "frontage 168.5 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012189733",
+   "reason": "frontage 90.0 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012190007",
+   "reason": "frontage 168.2 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012190008",
+   "reason": "frontage 168.2 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012192955",
+   "reason": "frontage 92.3 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012196024",
+   "reason": "frontage 37.1 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012203778",
+   "reason": "frontage 168.1 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012207536",
+   "reason": "frontage 108.0 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012210347",
+   "reason": "frontage 168.1 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012210708",
+   "reason": "frontage 37.0 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012210743",
+   "reason": "frontage 172.4 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012211833",
+   "reason": "frontage 168.5 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012213694",
+   "reason": "frontage 172.3 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012215739",
+   "reason": "frontage 169.7 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012221213",
+   "reason": "frontage 169.8 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012221214",
+   "reason": "frontage 169.7 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012233086",
+   "reason": "frontage 169.6 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012167288",
+   "reason": "frontage 47.0 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012167399",
+   "reason": "frontage 46.2 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012167420",
+   "reason": "sightline to Van Breestraat crosses 0363100012163757"
+  },
+  {
+   "pandId": "0363100012184929",
+   "reason": "frontage 105.5 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012185557",
+   "reason": "frontage 38.3 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012185904",
+   "reason": "frontage 111.6 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012186892",
+   "reason": "frontage 104.6 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012187802",
+   "reason": "frontage 105.4 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012192844",
+   "reason": "frontage 106.4 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012196230",
+   "reason": "frontage 81.9 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012198806",
+   "reason": "frontage 38.2 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012199729",
+   "reason": "sightline to Van Breestraat crosses 0363100012166091"
+  },
+  {
+   "pandId": "0363100012200138",
+   "reason": "frontage 37.9 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012200469",
+   "reason": "frontage 38.6 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012201298",
+   "reason": "frontage 33.2 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012202519",
+   "reason": "frontage 38.1 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012205413",
+   "reason": "frontage 38.2 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012208469",
+   "reason": "frontage 167.4 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012209537",
+   "reason": "frontage 38.4 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012210145",
+   "reason": "frontage 38.7 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012210436",
+   "reason": "frontage 181.9 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012211885",
+   "reason": "frontage 38.5 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012214625",
+   "reason": "frontage 38.0 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012224622",
+   "reason": "frontage 54.9 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012231607",
+   "reason": "frontage 37.9 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012233599",
+   "reason": "frontage 41.5 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012167444",
+   "reason": "frontage 137.6 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012191157",
+   "reason": "frontage 157.8 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012235940",
+   "reason": "frontage 88.8 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012236145",
+   "reason": "frontage 103.9 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012236183",
+   "reason": "frontage 49.6 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012236385",
+   "reason": "frontage 67.9 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012236405",
+   "reason": "frontage 82.2 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012236417",
+   "reason": "frontage 102.8 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012236560",
+   "reason": "frontage 104.1 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012236636",
+   "reason": "frontage 103.8 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012236947",
+   "reason": "frontage 104.0 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012233669",
+   "reason": "frontage 44.8 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012235918",
+   "reason": "frontage 44.2 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012235947",
+   "reason": "sightline to Van Breestraat crosses 0363100012158893"
+  },
+  {
+   "pandId": "0363100012235975",
+   "reason": "frontage 73.6 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012236061",
+   "reason": "frontage 73.3 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012236062",
+   "reason": "frontage 134.3 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012236107",
+   "reason": "frontage 97.6 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012236133",
+   "reason": "frontage 85.1 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012236134",
+   "reason": "frontage 90.7 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012236220",
+   "reason": "frontage 134.9 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012236445",
+   "reason": "frontage 135.0 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012236526",
+   "reason": "frontage 44.6 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012236647",
+   "reason": "frontage 79.3 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012236765",
+   "reason": "frontage 73.0 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012237102",
+   "reason": "frontage 73.4 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012235899",
+   "reason": "sightline to Van Breestraat crosses 0363100012159380"
+  },
+  {
+   "pandId": "0363100012236069",
+   "reason": "frontage 33.0 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012236119",
+   "reason": "no frontage on Van Breestraat: No footprint edge faces Van Breestraat"
+  },
+  {
+   "pandId": "0363100012236217",
+   "reason": "frontage 179.8 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012236236",
+   "reason": "sightline to Van Breestraat crosses 0363100012159412"
+  },
+  {
+   "pandId": "0363100012236239",
+   "reason": "frontage 45.6 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012236342",
+   "reason": "frontage 52.7 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012236347",
+   "reason": "no frontage on Van Breestraat: No footprint edge faces Van Breestraat"
+  },
+  {
+   "pandId": "0363100012236553",
+   "reason": "frontage 52.8 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012236587",
+   "reason": "frontage 74.5 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012236714",
+   "reason": "sightline to Van Breestraat crosses 0363100012159380"
+  },
+  {
+   "pandId": "0363100012236757",
+   "reason": "frontage 80.7 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012236903",
+   "reason": "no frontage on Van Breestraat: No footprint edge faces Van Breestraat"
+  },
+  {
+   "pandId": "0363100012237151",
+   "reason": "frontage 129.3 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012237221",
+   "reason": "frontage 45.9 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012237237",
+   "reason": "frontage 101.2 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012237369",
+   "reason": "frontage 73.5 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012237370",
+   "reason": "frontage 41.1 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012237307",
+   "reason": "frontage 42.9 m from Van Breestraat"
+  },
+  {
+   "pandId": "0363100012237366",
+   "reason": "no frontage on Van Breestraat: No footprint edge faces Van Breestraat"
+  },
+  {
+   "pandId": "0363100012061429",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012066327",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012152275",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012152495",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012152432",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012153282",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012153824",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012154301",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012155784",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012156890",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012155618",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012155697",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012156817",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012157977",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012158094",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012158738",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012159165",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012159380",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012159412",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012159745",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012159813",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012159882",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012160202",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012161567",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012161681",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012162023",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012163259",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012163334",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012162282",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012162422",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012162765",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012163914",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012164293",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012164264",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012164640",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012164733",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012164739",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012164847",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012166445",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012165609",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012165811",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012165961",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012166091",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012166283",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012166952",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012167324",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012237031",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012233841",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012235897",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012235985",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012236185",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012236255",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012237089",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012237103",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012237156",
+   "reason": "fronts the other side / another direction"
+  }
+ ],
+ "areaHalfSizeM": 180,
+ "pands": [
+  {
+   "pandId": "0363100012160540",
+   "alongM": 45.48,
+   "widthM": 5.57,
+   "eavesM": 14.38,
+   "roofMaxM": 16.99,
+   "storeys3dbag": 5,
+   "builtYear": 1901,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012160169",
+   "alongM": 51.34,
+   "widthM": 6.15,
+   "eavesM": 14.24,
+   "roofMaxM": 14.51,
+   "storeys3dbag": 4,
+   "builtYear": 1901,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012157147",
+   "alongM": 57.32,
+   "widthM": 5.81,
+   "eavesM": 13.98,
+   "roofMaxM": 14.27,
+   "storeys3dbag": 4,
+   "builtYear": 1901,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012163068",
+   "alongM": 63.24,
+   "widthM": 6.04,
+   "eavesM": 14.31,
+   "roofMaxM": 16.91,
+   "storeys3dbag": 5,
+   "builtYear": 1900,
+   "uncertainty": []
+  }
+ ],
+ "runOf": "bree-107-149"
+}

@@ -1,0 +1,151 @@
+{
+ "street": "Nicolaas Maesstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-01T16:15:05.270Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012101245",
+   "addresses": [
+    "Nicolaas Maesstraat 47"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nicolaas Maesstraat 47-H",
+     "use": "woonfunctie",
+     "areaM2": 174,
+     "bagId": "0363010000750688"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012064242",
+   "addresses": [
+    "Nicolaas Maesstraat 49"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nicolaas Maesstraat 49-H",
+     "use": "woonfunctie",
+     "areaM2": 182,
+     "bagId": "0363010000750691"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012125531",
+   "addresses": [
+    "Nicolaas Maesstraat 51"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nicolaas Maesstraat 51-H",
+     "use": "woonfunctie",
+     "areaM2": 205,
+     "bagId": "0363010000750696"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012161910",
+   "addresses": [
+    "Nicolaas Maesstraat 53",
+    "Nicolaas Maesstraat 53B",
+    "Nicolaas Maesstraat 53A"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nicolaas Maesstraat 53",
+     "use": "woonfunctie",
+     "areaM2": 347,
+     "bagId": "0363010000996776"
+    },
+    {
+     "address": "Nicolaas Maesstraat 53B",
+     "use": "woonfunctie",
+     "areaM2": 177,
+     "bagId": "0363010012581550"
+    },
+    {
+     "address": "Nicolaas Maesstraat 53A",
+     "use": "woonfunctie",
+     "areaM2": 140,
+     "bagId": "0363010012581551"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012063128",
+   "addresses": [
+    "Nicolaas Maesstraat 55"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nicolaas Maesstraat 55-H",
+     "use": "woonfunctie",
+     "areaM2": 185,
+     "bagId": "0363010000750705"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012111419",
+   "addresses": [
+    "Nicolaas Maesstraat 57"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nicolaas Maesstraat 57-H",
+     "use": "woonfunctie",
+     "areaM2": 145,
+     "bagId": "0363010000750709"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012150328",
+   "addresses": [
+    "Nicolaas Maesstraat 59"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nicolaas Maesstraat 59-H",
+     "use": "woonfunctie",
+     "areaM2": 194,
+     "bagId": "0363010000750713"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012095505",
+   "addresses": [
+    "Nicolaas Maesstraat 61"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nicolaas Maesstraat 61-H",
+     "use": "woonfunctie",
+     "areaM2": 184,
+     "bagId": "0363010000750717"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  }
+ ]
+}

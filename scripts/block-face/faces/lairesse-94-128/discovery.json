@@ -1,0 +1,1927 @@
+{
+ "street": "De Lairessestraat",
+ "seed": "0363100012062487",
+ "members": [
+  "0363100012070647",
+  "0363100012123944",
+  "0363100012083412",
+  "0363100012093617",
+  "0363100012120297",
+  "0363100012069081",
+  "0363100012075610",
+  "0363100012103357",
+  "0363100012075246",
+  "0363100012072277",
+  "0363100012062487"
+ ],
+ "ends": [
+  {
+   "side": "left",
+   "reason": "trimmed at 0363100012070647 (face continues: 151463 110784 075157 104304)"
+  },
+  {
+   "side": "right",
+   "reason": "next fronting pand 0363100012236783 61.2 m on shares no party wall (cross street or gap)"
+  }
+ ],
+ "rejected": [
+  {
+   "pandId": "0363100012064298",
+   "reason": "sightline to De Lairessestraat crosses 0363100012074980"
+  },
+  {
+   "pandId": "0363100012064873",
+   "reason": "sightline to De Lairessestraat crosses 0363100012062487"
+  },
+  {
+   "pandId": "0363100012065307",
+   "reason": "frontage 40.9 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012066050",
+   "reason": "frontage 139.2 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012068206",
+   "reason": "frontage 74.9 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012072660",
+   "reason": "frontage 75.1 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012073682",
+   "reason": "frontage 145.2 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012074448",
+   "reason": "no frontage on De Lairessestraat: No footprint edge faces De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012074786",
+   "reason": "frontage 41.2 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012074960",
+   "reason": "frontage 38.6 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012074980",
+   "reason": "sightline to De Lairessestraat crosses 0363100012151463"
+  },
+  {
+   "pandId": "0363100012074994",
+   "reason": "frontage 147.8 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012075909",
+   "reason": "sightline to De Lairessestraat crosses 0363100012128237"
+  },
+  {
+   "pandId": "0363100012076787",
+   "reason": "no frontage on De Lairessestraat: No footprint edge faces De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012076859",
+   "reason": "frontage 42.2 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012077416",
+   "reason": "frontage 72.4 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012078708",
+   "reason": "frontage 105.4 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012079207",
+   "reason": "sightline to De Lairessestraat crosses 0363100012233583"
+  },
+  {
+   "pandId": "0363100012080908",
+   "reason": "frontage 40.4 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012082315",
+   "reason": "frontage 103.7 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012083442",
+   "reason": "frontage 74.9 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012087363",
+   "reason": "frontage 43.4 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012088441",
+   "reason": "sightline to De Lairessestraat crosses 0363100012105690"
+  },
+  {
+   "pandId": "0363100012089859",
+   "reason": "frontage 103.7 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012089981",
+   "reason": "frontage 40.9 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012090624",
+   "reason": "frontage 41.3 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012090632",
+   "reason": "frontage 137.6 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012085898",
+   "reason": "frontage 112.4 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012091070",
+   "reason": "frontage 109.2 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012092413",
+   "reason": "frontage 167.1 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012092996",
+   "reason": "frontage 76.0 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012093428",
+   "reason": "frontage 76.3 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012093822",
+   "reason": "frontage 70.6 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012094660",
+   "reason": "frontage 76.0 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012095146",
+   "reason": "no frontage on De Lairessestraat: No footprint edge faces De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012096287",
+   "reason": "frontage 69.9 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012097438",
+   "reason": "no frontage on De Lairessestraat: No footprint edge faces De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012098114",
+   "reason": "frontage 137.6 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012098319",
+   "reason": "frontage 72.8 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012099146",
+   "reason": "frontage 105.6 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012099742",
+   "reason": "frontage 49.8 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012100144",
+   "reason": "frontage 41.1 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012100261",
+   "reason": "frontage 103.6 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012101603",
+   "reason": "frontage 39.5 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012101844",
+   "reason": "frontage 40.8 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012102667",
+   "reason": "frontage 72.5 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012103738",
+   "reason": "frontage 111.4 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012105646",
+   "reason": "frontage 50.7 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012106372",
+   "reason": "frontage 40.7 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012109483",
+   "reason": "no frontage on De Lairessestraat: No footprint edge faces De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012110458",
+   "reason": "frontage 41.5 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012110856",
+   "reason": "frontage 72.3 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012111103",
+   "reason": "frontage 105.3 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012112295",
+   "reason": "frontage 100.9 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012114112",
+   "reason": "frontage 103.6 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012114577",
+   "reason": "frontage 140.8 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012115790",
+   "reason": "no frontage on De Lairessestraat: No footprint edge faces De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012117061",
+   "reason": "frontage 47.9 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012117212",
+   "reason": "sightline to De Lairessestraat crosses 0363100012087604"
+  },
+  {
+   "pandId": "0363100012117294",
+   "reason": "frontage 87.1 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012117654",
+   "reason": "frontage 137.7 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012117848",
+   "reason": "sightline to De Lairessestraat crosses 0363100012236783"
+  },
+  {
+   "pandId": "0363100012117921",
+   "reason": "frontage 76.1 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012118111",
+   "reason": "frontage 72.3 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012091335",
+   "reason": "frontage 205.8 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012120998",
+   "reason": "frontage 137.8 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012121310",
+   "reason": "frontage 111.6 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012121659",
+   "reason": "frontage 41.5 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012124868",
+   "reason": "frontage 72.5 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012126275",
+   "reason": "frontage 72.6 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012126993",
+   "reason": "frontage 70.5 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012128012",
+   "reason": "frontage 38.9 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012129170",
+   "reason": "frontage 41.0 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012130671",
+   "reason": "frontage 40.6 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012131152",
+   "reason": "frontage 40.7 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012132164",
+   "reason": "frontage 140.6 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012132563",
+   "reason": "frontage 40.1 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012135586",
+   "reason": "frontage 45.8 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012135828",
+   "reason": "frontage 109.7 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012139128",
+   "reason": "frontage 139.5 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012139184",
+   "reason": "frontage 39.9 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012140339",
+   "reason": "frontage 30.9 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012142224",
+   "reason": "frontage 46.2 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012144642",
+   "reason": "frontage 40.7 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012144861",
+   "reason": "frontage 40.5 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012145346",
+   "reason": "frontage 41.2 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012145616",
+   "reason": "frontage 105.2 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012146007",
+   "reason": "frontage 48.3 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012146306",
+   "reason": "frontage 76.1 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012149971",
+   "reason": "frontage 105.2 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012150752",
+   "reason": "frontage 41.1 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012152291",
+   "reason": "frontage 155.1 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012152307",
+   "reason": "frontage 46.8 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012152457",
+   "reason": "frontage 136.5 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012152325",
+   "reason": "frontage 237.4 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012152561",
+   "reason": "frontage 39.2 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012152564",
+   "reason": "frontage 172.2 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012152610",
+   "reason": "frontage 111.3 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012152616",
+   "reason": "frontage 53.4 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012152699",
+   "reason": "frontage 107.5 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012152755",
+   "reason": "frontage 46.7 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012152773",
+   "reason": "frontage 107.5 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012152982",
+   "reason": "frontage 48.4 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012152993",
+   "reason": "frontage 46.1 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012153037",
+   "reason": "frontage 81.7 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012153094",
+   "reason": "frontage 35.9 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012153117",
+   "reason": "frontage 137.8 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012153143",
+   "reason": "frontage 171.0 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012153238",
+   "reason": "frontage 78.7 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012153385",
+   "reason": "frontage 139.8 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012153398",
+   "reason": "frontage 137.1 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012153401",
+   "reason": "frontage 95.3 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012153471",
+   "reason": "frontage 169.9 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012153472",
+   "reason": "frontage 83.4 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012153520",
+   "reason": "frontage 44.7 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012153529",
+   "reason": "frontage 82.5 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012153568",
+   "reason": "frontage 114.4 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012154219",
+   "reason": "frontage 111.0 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012154225",
+   "reason": "frontage 83.4 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012154235",
+   "reason": "frontage 136.6 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012154264",
+   "reason": "frontage 82.2 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012154313",
+   "reason": "frontage 138.4 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012154361",
+   "reason": "frontage 84.1 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012154883",
+   "reason": "frontage 37.9 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012155458",
+   "reason": "frontage 31.0 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012155511",
+   "reason": "frontage 174.0 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012155535",
+   "reason": "frontage 172.3 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012155586",
+   "reason": "frontage 81.3 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012155613",
+   "reason": "frontage 110.6 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012155640",
+   "reason": "frontage 171.3 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012155646",
+   "reason": "frontage 81.2 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012155655",
+   "reason": "frontage 112.4 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012155786",
+   "reason": "frontage 111.6 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012155790",
+   "reason": "frontage 110.7 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012155815",
+   "reason": "frontage 41.7 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012155902",
+   "reason": "frontage 46.0 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012155985",
+   "reason": "frontage 99.3 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012152905",
+   "reason": "frontage 140.4 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012152960",
+   "reason": "frontage 175.6 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012153422",
+   "reason": "frontage 140.2 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012154120",
+   "reason": "frontage 139.5 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012155519",
+   "reason": "frontage 177.2 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012155891",
+   "reason": "frontage 175.7 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012156058",
+   "reason": "frontage 176.4 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012156069",
+   "reason": "frontage 240.1 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012156103",
+   "reason": "frontage 108.4 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012156186",
+   "reason": "frontage 82.4 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012156232",
+   "reason": "frontage 47.6 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012156278",
+   "reason": "frontage 111.0 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012156303",
+   "reason": "frontage 78.6 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012156367",
+   "reason": "frontage 173.1 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012156368",
+   "reason": "frontage 203.5 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012156369",
+   "reason": "frontage 81.4 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012156371",
+   "reason": "frontage 82.3 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012156442",
+   "reason": "frontage 138.5 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012156459",
+   "reason": "frontage 107.4 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012156525",
+   "reason": "frontage 173.2 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012156526",
+   "reason": "frontage 47.5 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012156586",
+   "reason": "frontage 108.3 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012156605",
+   "reason": "frontage 47.4 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012156680",
+   "reason": "frontage 33.0 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012156705",
+   "reason": "frontage 46.0 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012156790",
+   "reason": "frontage 82.7 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012156858",
+   "reason": "frontage 78.7 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012156875",
+   "reason": "frontage 172.9 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012156952",
+   "reason": "frontage 169.9 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012157002",
+   "reason": "frontage 82.1 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012157061",
+   "reason": "frontage 205.8 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012157080",
+   "reason": "frontage 138.4 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012157102",
+   "reason": "frontage 111.0 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012157160",
+   "reason": "frontage 48.1 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012157198",
+   "reason": "frontage 41.4 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012157228",
+   "reason": "frontage 138.3 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012157293",
+   "reason": "frontage 136.3 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012157345",
+   "reason": "frontage 155.3 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012157368",
+   "reason": "frontage 83.2 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012157399",
+   "reason": "frontage 82.1 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012157405",
+   "reason": "frontage 45.9 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012157444",
+   "reason": "frontage 43.5 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012157482",
+   "reason": "frontage 144.4 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012157483",
+   "reason": "frontage 138.4 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012157526",
+   "reason": "frontage 139.5 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012157542",
+   "reason": "frontage 111.0 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012157547",
+   "reason": "frontage 100.5 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012157548",
+   "reason": "frontage 106.5 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012157558",
+   "reason": "frontage 203.6 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012157647",
+   "reason": "frontage 138.5 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012157660",
+   "reason": "frontage 79.8 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012156412",
+   "reason": "frontage 206.7 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012156672",
+   "reason": "frontage 206.4 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012156683",
+   "reason": "frontage 139.8 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012156743",
+   "reason": "frontage 175.8 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012156887",
+   "reason": "frontage 206.2 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012157060",
+   "reason": "frontage 239.6 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012157478",
+   "reason": "frontage 176.0 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012157695",
+   "reason": "frontage 83.7 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012157724",
+   "reason": "frontage 78.6 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012157810",
+   "reason": "frontage 83.2 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012157829",
+   "reason": "frontage 44.7 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012158110",
+   "reason": "frontage 45.8 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012158230",
+   "reason": "frontage 81.4 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012158233",
+   "reason": "frontage 111.6 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012158261",
+   "reason": "frontage 44.9 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012158288",
+   "reason": "frontage 110.6 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012158335",
+   "reason": "frontage 46.1 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012158517",
+   "reason": "frontage 39.9 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012158518",
+   "reason": "frontage 43.7 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012158539",
+   "reason": "frontage 47.6 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012158893",
+   "reason": "frontage 177.5 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012158939",
+   "reason": "frontage 78.6 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012159158",
+   "reason": "frontage 83.8 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012159222",
+   "reason": "frontage 110.5 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012159287",
+   "reason": "frontage 175.2 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012159289",
+   "reason": "frontage 172.8 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012159308",
+   "reason": "frontage 110.0 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012159309",
+   "reason": "frontage 47.4 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012159592",
+   "reason": "frontage 78.9 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012159889",
+   "reason": "frontage 79.2 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012159902",
+   "reason": "frontage 109.9 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012159949",
+   "reason": "frontage 45.8 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012159952",
+   "reason": "frontage 137.8 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012160108",
+   "reason": "frontage 79.5 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012160138",
+   "reason": "frontage 82.1 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012160258",
+   "reason": "frontage 160.7 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012160301",
+   "reason": "frontage 138.7 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012160376",
+   "reason": "frontage 137.2 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012160425",
+   "reason": "frontage 203.4 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012160501",
+   "reason": "frontage 81.4 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012160545",
+   "reason": "frontage 43.6 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012160560",
+   "reason": "frontage 46.2 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012160599",
+   "reason": "frontage 150.2 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012160638",
+   "reason": "frontage 204.2 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012160696",
+   "reason": "frontage 47.2 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012160721",
+   "reason": "frontage 81.9 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012160731",
+   "reason": "frontage 45.7 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012160763",
+   "reason": "frontage 108.9 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012160778",
+   "reason": "frontage 48.3 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012160782",
+   "reason": "frontage 47.5 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012157770",
+   "reason": "frontage 205.9 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012158071",
+   "reason": "frontage 206.5 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012159147",
+   "reason": "frontage 235.4 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012160033",
+   "reason": "frontage 240.4 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012160086",
+   "reason": "frontage 236.9 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012160172",
+   "reason": "frontage 139.7 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012160307",
+   "reason": "frontage 140.0 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012160859",
+   "reason": "frontage 107.6 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012160916",
+   "reason": "frontage 83.0 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012160924",
+   "reason": "frontage 138.5 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012161050",
+   "reason": "frontage 204.9 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012161051",
+   "reason": "frontage 107.7 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012161248",
+   "reason": "frontage 48.3 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012161257",
+   "reason": "frontage 111.4 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012161338",
+   "reason": "frontage 111.6 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012161439",
+   "reason": "frontage 83.6 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012161509",
+   "reason": "frontage 110.6 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012161588",
+   "reason": "frontage 82.6 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012161609",
+   "reason": "frontage 110.7 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012161642",
+   "reason": "frontage 82.0 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012161756",
+   "reason": "frontage 174.7 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012161771",
+   "reason": "frontage 42.2 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012161809",
+   "reason": "frontage 174.0 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012161861",
+   "reason": "frontage 110.9 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012161877",
+   "reason": "frontage 110.8 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012161898",
+   "reason": "frontage 47.8 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012161950",
+   "reason": "frontage 34.9 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012162004",
+   "reason": "frontage 174.9 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012162067",
+   "reason": "frontage 172.9 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012162096",
+   "reason": "frontage 138.4 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012162152",
+   "reason": "frontage 111.0 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012162193",
+   "reason": "frontage 166.6 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012162225",
+   "reason": "frontage 136.3 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012162302",
+   "reason": "frontage 81.9 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012162304",
+   "reason": "frontage 47.5 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012162414",
+   "reason": "frontage 82.8 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012162474",
+   "reason": "frontage 43.8 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012162555",
+   "reason": "frontage 82.7 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012162769",
+   "reason": "frontage 48.8 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012162826",
+   "reason": "frontage 205.9 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012162938",
+   "reason": "frontage 138.5 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012162982",
+   "reason": "frontage 83.9 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012163183",
+   "reason": "frontage 82.9 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012163240",
+   "reason": "frontage 109.9 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012163440",
+   "reason": "frontage 82.6 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012163567",
+   "reason": "frontage 95.2 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012163590",
+   "reason": "frontage 46.8 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012163692",
+   "reason": "frontage 82.2 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012163737",
+   "reason": "frontage 107.4 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012163773",
+   "reason": "frontage 171.8 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012163840",
+   "reason": "frontage 48.0 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012161378",
+   "reason": "frontage 206.4 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012161666",
+   "reason": "frontage 140.6 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012161806",
+   "reason": "frontage 173.8 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012161942",
+   "reason": "frontage 238.4 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012162074",
+   "reason": "frontage 102.5 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012163379",
+   "reason": "frontage 139.3 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012163906",
+   "reason": "frontage 81.4 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012163926",
+   "reason": "frontage 169.6 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012163945",
+   "reason": "frontage 44.9 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012164180",
+   "reason": "frontage 205.5 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012164280",
+   "reason": "frontage 138.4 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012164322",
+   "reason": "frontage 111.3 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012164336",
+   "reason": "frontage 48.1 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012164439",
+   "reason": "frontage 80.5 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012164581",
+   "reason": "frontage 137.5 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012164649",
+   "reason": "frontage 139.2 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012164696",
+   "reason": "frontage 81.5 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012164722",
+   "reason": "frontage 170.1 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012164819",
+   "reason": "frontage 136.4 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012165233",
+   "reason": "frontage 44.1 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012165248",
+   "reason": "frontage 138.4 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012165287",
+   "reason": "frontage 87.0 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012165300",
+   "reason": "frontage 110.7 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012165324",
+   "reason": "frontage 93.2 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012165421",
+   "reason": "frontage 82.0 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012165528",
+   "reason": "frontage 203.7 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012165584",
+   "reason": "frontage 160.8 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012165656",
+   "reason": "frontage 138.4 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012166039",
+   "reason": "frontage 48.2 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012166083",
+   "reason": "frontage 138.5 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012166160",
+   "reason": "frontage 138.5 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012166171",
+   "reason": "frontage 49.0 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012166177",
+   "reason": "frontage 37.9 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012166199",
+   "reason": "frontage 111.4 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012166224",
+   "reason": "frontage 47.7 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012166278",
+   "reason": "frontage 169.6 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012166354",
+   "reason": "frontage 170.3 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012166492",
+   "reason": "frontage 174.8 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012166594",
+   "reason": "frontage 111.1 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012166671",
+   "reason": "frontage 164.2 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012166672",
+   "reason": "frontage 158.5 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012166718",
+   "reason": "frontage 111.0 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012166762",
+   "reason": "frontage 79.2 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012166784",
+   "reason": "frontage 101.1 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012166813",
+   "reason": "frontage 60.4 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012166821",
+   "reason": "frontage 138.6 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012166878",
+   "reason": "frontage 171.9 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012166900",
+   "reason": "frontage 171.9 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012167003",
+   "reason": "frontage 81.6 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012167100",
+   "reason": "frontage 203.8 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012167177",
+   "reason": "frontage 105.3 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012164601",
+   "reason": "frontage 182.7 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012165318",
+   "reason": "frontage 176.2 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012166540",
+   "reason": "frontage 140.5 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012166710",
+   "reason": "frontage 172.0 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012167239",
+   "reason": "frontage 238.5 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012167252",
+   "reason": "frontage 47.2 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012183409",
+   "reason": "sightline to De Lairessestraat crosses 0363100012138601"
+  },
+  {
+   "pandId": "0363100012186217",
+   "reason": "frontage 87.2 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012189733",
+   "reason": "frontage 104.1 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012189744",
+   "reason": "sightline to De Lairessestraat crosses 0363100012075909"
+  },
+  {
+   "pandId": "0363100012190007",
+   "reason": "sightline to De Lairessestraat crosses 0363100012091029"
+  },
+  {
+   "pandId": "0363100012190008",
+   "reason": "sightline to De Lairessestraat crosses 0363100012090597"
+  },
+  {
+   "pandId": "0363100012192180",
+   "reason": "frontage 36.1 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012192955",
+   "reason": "frontage 101.1 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012196024",
+   "reason": "frontage 157.8 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012199406",
+   "reason": "frontage 31.9 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012203778",
+   "reason": "sightline to De Lairessestraat crosses 0363100012078857"
+  },
+  {
+   "pandId": "0363100012207149",
+   "reason": "frontage 116.7 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012207536",
+   "reason": "frontage 84.7 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012210347",
+   "reason": "sightline to De Lairessestraat crosses 0363100012087585"
+  },
+  {
+   "pandId": "0363100012210660",
+   "reason": "sightline to De Lairessestraat crosses 0363100012087604"
+  },
+  {
+   "pandId": "0363100012210708",
+   "reason": "frontage 157.3 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012210743",
+   "reason": "sightline to De Lairessestraat crosses 0363100012105690"
+  },
+  {
+   "pandId": "0363100012211833",
+   "reason": "sightline to De Lairessestraat crosses 0363100012138601"
+  },
+  {
+   "pandId": "0363100012212817",
+   "reason": "frontage 30.8 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012213694",
+   "reason": "sightline to De Lairessestraat crosses 0363100012105690"
+  },
+  {
+   "pandId": "0363100012215739",
+   "reason": "sightline to De Lairessestraat crosses 0363100012076155"
+  },
+  {
+   "pandId": "0363100012221213",
+   "reason": "sightline to De Lairessestraat crosses 0363100012120769"
+  },
+  {
+   "pandId": "0363100012221214",
+   "reason": "sightline to De Lairessestraat crosses 0363100012120769"
+  },
+  {
+   "pandId": "0363100012228981",
+   "reason": "sightline to De Lairessestraat crosses 0363100012146540"
+  },
+  {
+   "pandId": "0363100012233669",
+   "reason": "frontage 138.8 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012234000",
+   "reason": "frontage 42.4 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012234572",
+   "reason": "frontage 36.9 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012235009",
+   "reason": "frontage 115.5 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012235908",
+   "reason": "frontage 204.0 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012235918",
+   "reason": "frontage 139.0 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012235947",
+   "reason": "frontage 166.6 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012235975",
+   "reason": "frontage 110.1 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012236061",
+   "reason": "frontage 117.1 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012236062",
+   "reason": "no frontage on De Lairessestraat: No footprint edge faces De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012167244",
+   "reason": "frontage 140.0 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012185557",
+   "reason": "frontage 158.8 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012198806",
+   "reason": "frontage 158.2 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012200138",
+   "reason": "frontage 157.5 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012200469",
+   "reason": "frontage 159.2 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012202519",
+   "reason": "frontage 158.4 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012205413",
+   "reason": "frontage 158.3 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012209537",
+   "reason": "frontage 158.7 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012211885",
+   "reason": "frontage 158.8 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012214625",
+   "reason": "frontage 157.8 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012220245",
+   "reason": "frontage 228.9 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012231607",
+   "reason": "frontage 157.6 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012236089",
+   "reason": "frontage 136.8 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012236107",
+   "reason": "frontage 93.0 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012236133",
+   "reason": "frontage 105.6 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012236134",
+   "reason": "frontage 98.7 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012236220",
+   "reason": "frontage 49.4 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012236242",
+   "reason": "frontage 107.4 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012236445",
+   "reason": "frontage 49.5 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012236451",
+   "reason": "frontage 77.2 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012236482",
+   "reason": "frontage 203.6 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012236526",
+   "reason": "frontage 138.5 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012236596",
+   "reason": "frontage 183.2 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012236647",
+   "reason": "frontage 111.2 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012236765",
+   "reason": "frontage 117.2 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012237102",
+   "reason": "frontage 109.8 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012237285",
+   "reason": "frontage 108.5 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012237345",
+   "reason": "frontage 137.0 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012237369",
+   "reason": "frontage 109.9 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012237370",
+   "reason": "frontage 138.5 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012236342",
+   "reason": "frontage 139.1 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012236553",
+   "reason": "frontage 138.6 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012236587",
+   "reason": "frontage 118.3 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012237103",
+   "reason": "frontage 207.0 m from De Lairessestraat"
+  },
+  {
+   "pandId": "0363100012071424",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012071825",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012073056",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012073790",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012076441",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012087604",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012088073",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012092189",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012096120",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012099747",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012104246",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012107659",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012108730",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012117646",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012125862",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012128237",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012128897",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012131291",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012133118",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012133383",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012134429",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012137958",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012141671",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012146540",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012151231",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012151288",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012151460",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012195033",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012228980",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012233583",
+   "reason": "fronts the other side / another direction"
+  }
+ ],
+ "areaHalfSizeM": 180,
+ "pands": [
+  {
+   "pandId": "0363100012070647",
+   "alongM": -102.52,
+   "widthM": 7.72,
+   "eavesM": 15.81,
+   "roofMaxM": 22.39,
+   "storeys3dbag": 5,
+   "builtYear": 1918,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012123944",
+   "alongM": -94.76,
+   "widthM": 7.74,
+   "eavesM": 15.62,
+   "roofMaxM": 20.53,
+   "storeys3dbag": 5,
+   "builtYear": 1918,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012083412",
+   "alongM": -86.47,
+   "widthM": 8.85,
+   "eavesM": 15.72,
+   "roofMaxM": 22.07,
+   "storeys3dbag": 5,
+   "builtYear": 1917,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012093617",
+   "alongM": -78.2,
+   "widthM": 7.69,
+   "eavesM": 15.59,
+   "roofMaxM": 20.34,
+   "storeys3dbag": 5,
+   "builtYear": 1917,
+   "uncertainty": [
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  },
+  {
+   "pandId": "0363100012120297",
+   "alongM": -70.71,
+   "widthM": 7.29,
+   "eavesM": 15.59,
+   "roofMaxM": 20.41,
+   "storeys3dbag": 5,
+   "builtYear": 1917,
+   "uncertainty": [
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  },
+  {
+   "pandId": "0363100012069081",
+   "alongM": -63.21,
+   "widthM": 7.71,
+   "eavesM": 15.54,
+   "roofMaxM": 20.24,
+   "storeys3dbag": 5,
+   "builtYear": 1917,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012075610",
+   "alongM": -55.56,
+   "widthM": 7.57,
+   "eavesM": 15.58,
+   "roofMaxM": 22.2,
+   "storeys3dbag": 5,
+   "builtYear": 1917,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012103357",
+   "alongM": -47.81,
+   "widthM": 7.93,
+   "eavesM": 15.56,
+   "roofMaxM": 20.3,
+   "storeys3dbag": 5,
+   "builtYear": 1917,
+   "uncertainty": [
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  },
+  {
+   "pandId": "0363100012075246",
+   "alongM": -39.79,
+   "widthM": 8.11,
+   "eavesM": 15.57,
+   "roofMaxM": 22.08,
+   "storeys3dbag": 5,
+   "builtYear": 1917,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012072277",
+   "alongM": -28.5,
+   "widthM": 14.48,
+   "eavesM": 15.38,
+   "roofMaxM": 19.83,
+   "storeys3dbag": 5,
+   "builtYear": 1909,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012062487",
+   "alongM": 0,
+   "widthM": 42.52,
+   "eavesM": 15.4,
+   "roofMaxM": 21.06,
+   "storeys3dbag": 5,
+   "builtYear": 1909,
+   "uncertainty": [
+    "Frontage extended across a native jog of up to 1 m (possible partial front at the default 0.35 m).",
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  }
+ ]
+}

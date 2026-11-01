@@ -1,0 +1,89 @@
+{
+ "street": "Roelof Hartplein",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-01T13:05:38.594Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012158280",
+   "addresses": [
+    "Roelof Hartplein 13"
+   ],
+   "groundUnits": [
+    {
+     "address": "Roelof Hartplein 13-H",
+     "use": "woonfunctie",
+     "areaM2": 194,
+     "bagId": "0363010000794733"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012159008",
+   "addresses": [
+    "Roelof Hartplein 15"
+   ],
+   "groundUnits": [
+    {
+     "address": "Roelof Hartplein 15-H",
+     "use": "woonfunctie",
+     "areaM2": 153,
+     "bagId": "0363010000794736"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012165388",
+   "addresses": [
+    "Roelof Hartplein 17"
+   ],
+   "groundUnits": [
+    {
+     "address": "Roelof Hartplein 17-H",
+     "use": "woonfunctie",
+     "areaM2": 132,
+     "bagId": "0363010000794747"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012164462",
+   "addresses": [
+    "Roelof Hartplein 19"
+   ],
+   "groundUnits": [
+    {
+     "address": "Roelof Hartplein 19-H",
+     "use": "woonfunctie",
+     "areaM2": 138,
+     "bagId": "0363010000794750"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012165285",
+   "addresses": [
+    "Roelof Hartplein 21"
+   ],
+   "groundUnits": [
+    {
+     "address": "Roelof Hartplein 21-H",
+     "use": "woonfunctie",
+     "areaM2": 138,
+     "bagId": "0363010000794753"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  }
+ ]
+}

@@ -1,0 +1,305 @@
+{
+ "street": "Gabriël Metsustraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-01T15:25:32.370Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012237262",
+   "addresses": [
+    "Gabriël Metsustraat 20"
+   ],
+   "groundUnits": [
+    {
+     "address": "Gabriël Metsustraat 20",
+     "use": "woonfunctie",
+     "areaM2": 76,
+     "bagId": "0363010000641556"
+    }
+   ],
+   "units": 1,
+   "osm": [
+    {
+     "type": "node",
+     "id": 14162380438,
+     "lngLat": [
+      4.8824211,
+      52.3557846
+     ],
+     "tags": {
+      "amenity": "bicycle_parking"
+     },
+     "fetchedAt": "2026-11-01T15:25:32.370Z",
+     "match": "frontage",
+     "distanceM": 5.7
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012142717",
+   "addresses": [
+    "Gabriël Metsustraat 16"
+   ],
+   "groundUnits": [
+    {
+     "address": "Gabriël Metsustraat 16",
+     "use": "bijeenkomstfunctie,kantoorfunctie,overige gebruiksfunctie",
+     "areaM2": 1899,
+     "bagId": "0363010000641555"
+    }
+   ],
+   "units": 1,
+   "osm": [
+    {
+     "type": "node",
+     "id": 13105647922,
+     "lngLat": [
+      4.8817465,
+      52.3559105
+     ],
+     "tags": {
+      "amenity": "waste_basket"
+     },
+     "fetchedAt": "2026-11-01T15:25:32.370Z",
+     "match": "frontage",
+     "distanceM": 6
+    },
+    {
+     "type": "node",
+     "id": 13105649202,
+     "lngLat": [
+      4.8818819,
+      52.3558841
+     ],
+     "tags": {
+      "amenity": "bicycle_parking",
+      "bicycle_parking": "stands",
+      "capacity": "20",
+      "covered": "no"
+     },
+     "fetchedAt": "2026-11-01T15:25:32.370Z",
+     "match": "frontage",
+     "distanceM": 5.9
+    },
+    {
+     "type": "node",
+     "id": 14162380437,
+     "lngLat": [
+      4.8821164,
+      52.3558434
+     ],
+     "tags": {
+      "amenity": "bicycle_parking"
+     },
+     "fetchedAt": "2026-11-01T15:25:32.370Z",
+     "match": "frontage",
+     "distanceM": 7.3
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012100160",
+   "addresses": [
+    "Gabriël Metsustraat 14"
+   ],
+   "groundUnits": [
+    {
+     "address": "Gabriël Metsustraat 14-H",
+     "use": "woonfunctie",
+     "areaM2": 212,
+     "bagId": "0363010000641553"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012233633",
+   "addresses": [
+    "Gabriël Metsustraat 12"
+   ],
+   "groundUnits": [
+    {
+     "address": "Gabriël Metsustraat 12-H",
+     "use": "woonfunctie",
+     "areaM2": 258,
+     "bagId": "0363010000641550"
+    }
+   ],
+   "units": 2,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2816519654,
+     "lngLat": [
+      4.8814635,
+      52.3558766
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "12-2",
+      "addr:postcode": "1071EA",
+      "addr:street": "Gabriël Metsustraat",
+      "name": "Museum Square View B&B",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "tourism": "guest_house"
+     },
+     "fetchedAt": "2026-11-01T15:25:32.370Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 13105637208,
+     "lngLat": [
+      4.8814494,
+      52.355967
+     ],
+     "tags": {
+      "amenity": "bicycle_parking",
+      "bicycle_parking": "stands",
+      "capacity": "6",
+      "covered": "no"
+     },
+     "fetchedAt": "2026-11-01T15:25:32.370Z",
+     "match": "frontage",
+     "distanceM": 6.3
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012236941",
+   "addresses": [
+    "Gabriël Metsustraat 8"
+   ],
+   "groundUnits": [
+    {
+     "address": "Gabriël Metsustraat 8",
+     "use": "kantoorfunctie",
+     "areaM2": 1957,
+     "bagId": "0363010000641547"
+    }
+   ],
+   "units": 1,
+   "osm": [
+    {
+     "type": "node",
+     "id": 4375694658,
+     "lngLat": [
+      4.8812191,
+      52.3558772
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "8",
+      "addr:postcode": "1071EA",
+      "addr:street": "Gabriël Metsustraat",
+      "amenity": "coworking_space",
+      "description": "work spaces for rent",
+      "name": "Deskowitz Museumplein",
+      "website": "http://www.deskowitz.com/amsterdam/?c=Museumplein"
+     },
+     "fetchedAt": "2026-11-01T15:25:32.370Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012166937",
+   "addresses": [
+    "Gabriël Metsustraat 2B",
+    "Gabriël Metsustraat 2",
+    "Gabriël Metsustraat 2A",
+    "Gabriël Metsustraat 2C",
+    "Gabriël Metsustraat 4D",
+    "Gabriël Metsustraat 4",
+    "Gabriël Metsustraat 4C",
+    "Gabriël Metsustraat 4E",
+    "Gabriël Metsustraat 4A",
+    "Gabriël Metsustraat 4B",
+    "Gabriël Metsustraat 6A",
+    "Gabriël Metsustraat 6B",
+    "Gabriël Metsustraat 6C"
+   ],
+   "groundUnits": [
+    {
+     "address": "Gabriël Metsustraat 4D",
+     "use": "winkelfunctie",
+     "areaM2": 841,
+     "bagId": "0363010001008780"
+    },
+    {
+     "address": "Gabriël Metsustraat 2",
+     "use": "woonfunctie",
+     "areaM2": 326,
+     "bagId": "0363010012145631"
+    },
+    {
+     "address": "Gabriël Metsustraat 4",
+     "use": "kantoorfunctie",
+     "areaM2": 262,
+     "bagId": "0363010012173050"
+    },
+    {
+     "address": "Gabriël Metsustraat 4C",
+     "use": "woonfunctie",
+     "areaM2": 81,
+     "bagId": "0363010001169140"
+    },
+    {
+     "address": "Gabriël Metsustraat 4E",
+     "use": "woonfunctie",
+     "areaM2": 81,
+     "bagId": "0363010001169141"
+    },
+    {
+     "address": "Gabriël Metsustraat 2A",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 25,
+     "bagId": "0363010001008778"
+    },
+    {
+     "address": "Gabriël Metsustraat 4A",
+     "use": "woonfunctie",
+     "areaM2": 102,
+     "bagId": "0363010001008776"
+    },
+    {
+     "address": "Gabriël Metsustraat 4B",
+     "use": "woonfunctie",
+     "areaM2": 126,
+     "bagId": "0363010001008777"
+    },
+    {
+     "address": "Gabriël Metsustraat 6A",
+     "use": "woonfunctie",
+     "areaM2": 91,
+     "bagId": "0363010001008775"
+    },
+    {
+     "address": "Gabriël Metsustraat 2B",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 29,
+     "bagId": "0363010012173048"
+    },
+    {
+     "address": "Gabriël Metsustraat 2C",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 331,
+     "bagId": "0363010012173049"
+    },
+    {
+     "address": "Gabriël Metsustraat 6C",
+     "use": "woonfunctie",
+     "areaM2": 249,
+     "bagId": "0363010012173052"
+    }
+   ],
+   "units": 17,
+   "osm": []
+  }
+ ]
+}

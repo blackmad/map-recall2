@@ -35,14 +35,16 @@ const connectFerries = (graph, segments) => (window.CanalRecallFerry
   : graph);
 
 class RoadNetwork {
-  static async prepareRoutingGraph(segments, cancelled) {
+  // `scheduling` ({ cancelled, budgetMs }, read on every slice) lets the briefing's city-world build run in short
+  // slices and lengthen them once a ride waits on it (game-route.js _prepareCityWorld).
+  static async prepareRoutingGraph(segments, cancelled, scheduling = null) {
     const graph = await GRAPH.buildRoadGraphAsync(routingSegmentsOf(landOnly(segments)),
-      { mergeSize: 18, junctionStitchRadius: JUNCTION_STITCH_RADIUS }, { cancelled, budgetMs: ROAD_SETUP_SLICE_MS });
+      { mergeSize: 18, junctionStitchRadius: JUNCTION_STITCH_RADIUS }, scheduling || { cancelled, budgetMs: ROAD_SETUP_SLICE_MS });
     return connectFerries(graph, segments);
   }
 
-  static prepareSurfaceIndex(segments, routingGraph, cancelled) {
-    return SURFACE.buildRoadSpatialIndexAsync(landOnly(segments), ROAD_GRID_CELL, routingGraph.connectors || [], { cancelled, budgetMs: ROAD_SETUP_SLICE_MS });
+  static prepareSurfaceIndex(segments, routingGraph, cancelled, scheduling = null) {
+    return SURFACE.buildRoadSpatialIndexAsync(landOnly(segments), ROAD_GRID_CELL, routingGraph.connectors || [], scheduling || { cancelled, budgetMs: ROAD_SETUP_SLICE_MS });
   }
 
   constructor(segments, startPoint, finishPoint, tiles, routingGraph = null, surfaceIndex = null) {

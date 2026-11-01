@@ -1,0 +1,210 @@
+{
+ "face": "brouwers-19-21",
+ "street": "Jan Willem Brouwersstraat",
+ "library": "museumkwartier",
+ "stripDate": "2024-11-12",
+ "seconds": 0.31,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [],
+ "pands": [
+  {
+   "pandId": "0363100012125480",
+   "address": "Jan Willem Brouwersstraat 19",
+   "builtYear": 1888,
+   "widthM": 8.85,
+   "eavesM": 12.97,
+   "storeys3dbag": 4,
+   "bagBay": {
+    "fromM": 3.02,
+    "toM": 5.93,
+    "depthM": 0.3,
+    "centre": 0.506
+   },
+   "strip": {
+    "wall": "#574739",
+    "wallRaw": "#4a4234",
+    "skyline": {
+     "eavesM": 13.28,
+     "eavesRow": 289,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 4,
+    "frontClass": "punched",
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.134,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.18
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best museum-cs-1900-gable-balcony: built 1888, type 1900-1901; frontage 8.85 m, type 5.5-6.6 m)",
+   "best": {
+    "type": "museum-cs-1900-gable-balcony",
+    "score": 0,
+    "veto": [
+     "built 1888, type 1900-1901",
+     "frontage 8.85 m, type 5.5-6.6 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 13.28 m vs the type's 10.4 m (wall-dormer skyline 14.4 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 4 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.112 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0.4,
+      "note": "strip columns 4 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012145883",
+   "address": "Jan Willem Brouwersstraat 21",
+   "builtYear": 1888,
+   "widthM": 8.12,
+   "eavesM": 7.64,
+   "storeys3dbag": 3,
+   "bagBay": {
+    "fromM": 2.51,
+    "toM": 6.78,
+    "depthM": 0.37,
+    "centre": 0.571,
+    "lineRD": [
+     [
+      120279.03975,
+      485469.429
+     ],
+     [
+      120278.46975,
+      485461.957
+     ]
+    ]
+   },
+   "strip": {
+    "wall": "#574938",
+    "wallRaw": "#41382b",
+    "skyline": {
+     "eavesM": 8.38,
+     "eavesRow": 485,
+     "confidence": 1,
+     "crown": {
+      "widthM": 3.35,
+      "riseM": 4.93,
+      "topWidthM": 0.45,
+      "centre": 0.23
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 4,
+    "frontClass": "punched",
+    "doorSide": "left",
+    "accentSide": "left",
+    "accentShare": 0.001,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 1.35 m at 0.19 (light 0.24): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 1.35,
+       "centre": 0.19,
+       "light": 0.24
+      },
+      {
+       "widthM": 1.45,
+       "centre": 0.47,
+       "light": 0.33
+      },
+      {
+       "widthM": 1.43,
+       "centre": 0.77,
+       "light": 0.37
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.1
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best museum-cs-1900-gable-balcony: built 1888, type 1900-1901; frontage 8.12 m, type 5.5-6.6 m)",
+   "best": {
+    "type": "museum-cs-1900-gable-balcony",
+    "score": 0,
+    "veto": [
+     "built 1888, type 1900-1901",
+     "frontage 8.12 m, type 5.5-6.6 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 8.38 m vs the type's 10.4 m (wall-dormer skyline 14.4 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 0,
+      "note": "3DBAG bouwlagen 3 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.052 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0.4,
+      "note": "strip columns 4 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

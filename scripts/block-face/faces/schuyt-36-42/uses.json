@@ -1,0 +1,94 @@
+{
+ "street": "Cornelis Schuytstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched n/a (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012155985",
+   "addresses": [
+    "Cornelis Schuytstraat 42",
+    "Cornelis Schuytstraat 42C",
+    "Cornelis Schuytstraat 42B",
+    "Cornelis Schuytstraat 42A"
+   ],
+   "groundUnits": [
+    {
+     "address": "Cornelis Schuytstraat 42-H",
+     "use": "woonfunctie",
+     "areaM2": 122,
+     "bagId": "0363010000610155"
+    },
+    {
+     "address": "Cornelis Schuytstraat 42C",
+     "use": "woonfunctie",
+     "areaM2": 132,
+     "bagId": "0363010012589696"
+    },
+    {
+     "address": "Cornelis Schuytstraat 42B",
+     "use": "woonfunctie",
+     "areaM2": 58,
+     "bagId": "0363010012589695"
+    },
+    {
+     "address": "Cornelis Schuytstraat 42A",
+     "use": "woonfunctie",
+     "areaM2": 143,
+     "bagId": "0363010012589694"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012167177",
+   "addresses": [
+    "Cornelis Schuytstraat 40"
+   ],
+   "groundUnits": [
+    {
+     "address": "Cornelis Schuytstraat 40-H",
+     "use": "winkelfunctie",
+     "areaM2": 165,
+     "bagId": "0363010003767027"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012155786",
+   "addresses": [
+    "Cornelis Schuytstraat 38"
+   ],
+   "groundUnits": [
+    {
+     "address": "Cornelis Schuytstraat 38-H",
+     "use": "winkelfunctie",
+     "areaM2": 112,
+     "bagId": "0363010000610144"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012236765",
+   "addresses": [
+    "Cornelis Schuytstraat 36"
+   ],
+   "groundUnits": [
+    {
+     "address": "Cornelis Schuytstraat 36-H",
+     "use": "winkelfunctie",
+     "areaM2": 158,
+     "bagId": "0363010000995860"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  }
+ ]
+}

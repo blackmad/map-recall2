@@ -1,0 +1,170 @@
+{
+ "street": "Van Baerlestraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-01T14:49:32.810Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012236106",
+   "addresses": [
+    "Van Baerlestraat 144",
+    "Van Baerlestraat 146"
+   ],
+   "groundUnits": [
+    {
+     "address": "Frans van Mierisstraat 50A",
+     "use": "kantoorfunctie",
+     "areaM2": 371,
+     "bagId": "0363010000993462"
+    },
+    {
+     "address": "Van Baerlestraat 146-H",
+     "use": "kantoorfunctie",
+     "areaM2": 210,
+     "bagId": "0363010000993463"
+    },
+    {
+     "address": "Van Baerlestraat 144-H",
+     "use": "kantoorfunctie",
+     "areaM2": 220,
+     "bagId": "0363010000996804"
+    },
+    {
+     "address": "Frans van Mierisstraat 50B",
+     "use": "kantoorfunctie",
+     "areaM2": 104,
+     "bagId": "0363010012076484"
+    },
+    {
+     "address": "Frans van Mierisstraat 50A",
+     "use": "kantoorfunctie",
+     "areaM2": 111,
+     "bagId": "0363010012076485"
+    },
+    {
+     "address": "Frans van Mierisstraat 50D",
+     "use": "kantoorfunctie",
+     "areaM2": 95,
+     "bagId": "0363010012076486"
+    },
+    {
+     "address": "Frans van Mierisstraat 50C",
+     "use": "kantoorfunctie",
+     "areaM2": 104,
+     "bagId": "0363010012076487"
+    }
+   ],
+   "units": 10,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2816569750,
+     "lngLat": [
+      4.8809669,
+      52.3543555
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "146-H",
+      "addr:postcode": "1071BE",
+      "addr:street": "Van Baerlestraat",
+      "check_date": "2025-08-18",
+      "name": "Ploeg notariaat",
+      "office": "notary",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://ploegnotariaat.nl"
+     },
+     "fetchedAt": "2026-11-01T14:49:32.810Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012167007",
+   "addresses": [
+    "Van Baerlestraat 142"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Baerlestraat 142-H",
+     "use": "woonfunctie",
+     "areaM2": 162,
+     "bagId": "0363010000834980"
+    }
+   ],
+   "units": 2,
+   "osm": [
+    {
+     "type": "node",
+     "id": 4881472738,
+     "lngLat": [
+      4.8810255,
+      52.3545097
+     ],
+     "tags": {
+      "amenity": "charging_station",
+      "capacity": "2",
+      "operator": "Vattenfall",
+      "operator:wikidata": "Q513830",
+      "operator:wikipedia": "nl:Vattenfall Nederland",
+      "socket:type2": "2"
+     },
+     "fetchedAt": "2026-11-01T14:49:32.810Z",
+     "match": "frontage",
+     "distanceM": 7.9
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012157286",
+   "addresses": [
+    "Van Baerlestraat 140"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Baerlestraat 140-H",
+     "use": "woonfunctie",
+     "areaM2": 265,
+     "bagId": "0363010000834978"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012160976",
+   "addresses": [
+    "Van Baerlestraat 138"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Baerlestraat 138-H",
+     "use": "woonfunctie",
+     "areaM2": 274,
+     "bagId": "0363010000936504"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012233691",
+   "addresses": [
+    "Van Baerlestraat 136"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nicolaas Maesstraat 71B",
+     "use": "kantoorfunctie",
+     "areaM2": 165,
+     "bagId": "0363010003701843"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  }
+ ]
+}

@@ -1,0 +1,203 @@
+{
+ "street": "Joh.M. Coenenstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-01T14:08:43.715Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012122501",
+   "addresses": [
+    "Joh.M. Coenenstraat 24",
+    "Joh.M. Coenenstraat 26"
+   ],
+   "groundUnits": [
+    {
+     "address": "Joh.M. Coenenstraat 24-H",
+     "use": "woonfunctie",
+     "areaM2": 101,
+     "bagId": "0363010000691606"
+    },
+    {
+     "address": "Joh.M. Coenenstraat 26-H",
+     "use": "woonfunctie",
+     "areaM2": 112,
+     "bagId": "0363010000691614"
+    }
+   ],
+   "units": 8,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012071771",
+   "addresses": [
+    "Joh.M. Coenenstraat 20",
+    "Joh.M. Coenenstraat 22"
+   ],
+   "groundUnits": [
+    {
+     "address": "Joh.M. Coenenstraat 20-H",
+     "use": "woonfunctie",
+     "areaM2": 101,
+     "bagId": "0363010000691590"
+    },
+    {
+     "address": "Joh.M. Coenenstraat 22-H",
+     "use": "woonfunctie",
+     "areaM2": 101,
+     "bagId": "0363010000691598"
+    }
+   ],
+   "units": 8,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012123148",
+   "addresses": [
+    "Joh.M. Coenenstraat 16",
+    "Joh.M. Coenenstraat 18"
+   ],
+   "groundUnits": [
+    {
+     "address": "Joh.M. Coenenstraat 16-H",
+     "use": "woonfunctie",
+     "areaM2": 101,
+     "bagId": "0363010000691574"
+    },
+    {
+     "address": "Joh.M. Coenenstraat 18-H",
+     "use": "woonfunctie",
+     "areaM2": 101,
+     "bagId": "0363010000691582"
+    }
+   ],
+   "units": 8,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012075943",
+   "addresses": [
+    "Joh.M. Coenenstraat 12",
+    "Joh.M. Coenenstraat 14"
+   ],
+   "groundUnits": [
+    {
+     "address": "Joh.M. Coenenstraat 12-H",
+     "use": "woonfunctie",
+     "areaM2": 101,
+     "bagId": "0363010000691556"
+    },
+    {
+     "address": "Joh.M. Coenenstraat 14-H",
+     "use": "woonfunctie",
+     "areaM2": 101,
+     "bagId": "0363010000691566"
+    }
+   ],
+   "units": 8,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012134792",
+   "addresses": [
+    "Joh.M. Coenenstraat 8",
+    "Joh.M. Coenenstraat 10"
+   ],
+   "groundUnits": [
+    {
+     "address": "Joh.M. Coenenstraat 8-H",
+     "use": "woonfunctie",
+     "areaM2": 101,
+     "bagId": "0363010000691548"
+    },
+    {
+     "address": "Joh.M. Coenenstraat 10-H",
+     "use": "woonfunctie",
+     "areaM2": 101,
+     "bagId": "0363010000691552"
+    }
+   ],
+   "units": 8,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012085712",
+   "addresses": [
+    "Joh.M. Coenenstraat 4",
+    "Joh.M. Coenenstraat 6D",
+    "Joh.M. Coenenstraat 6B",
+    "Joh.M. Coenenstraat 6C",
+    "Joh.M. Coenenstraat 6E",
+    "Joh.M. Coenenstraat 6F",
+    "Joh.M. Coenenstraat 6G",
+    "Joh.M. Coenenstraat 6K",
+    "Joh.M. Coenenstraat 6H",
+    "Joh.M. Coenenstraat 6A"
+   ],
+   "groundUnits": [
+    {
+     "address": "Joh.M. Coenenstraat 4",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 440,
+     "bagId": "0363010001022301"
+    },
+    {
+     "address": "Joh.M. Coenenstraat 6D",
+     "use": "woonfunctie",
+     "areaM2": 92,
+     "bagId": "0363010001022303"
+    },
+    {
+     "address": "Joh.M. Coenenstraat 6B",
+     "use": "woonfunctie",
+     "areaM2": 99,
+     "bagId": "0363010001022304"
+    },
+    {
+     "address": "Joh.M. Coenenstraat 6C",
+     "use": "woonfunctie",
+     "areaM2": 124,
+     "bagId": "0363010001022306"
+    },
+    {
+     "address": "Joh.M. Coenenstraat 6E",
+     "use": "woonfunctie",
+     "areaM2": 95,
+     "bagId": "0363010001022307"
+    },
+    {
+     "address": "Joh.M. Coenenstraat 6F",
+     "use": "woonfunctie",
+     "areaM2": 106,
+     "bagId": "0363010001022308"
+    },
+    {
+     "address": "Joh.M. Coenenstraat 6G",
+     "use": "woonfunctie",
+     "areaM2": 86,
+     "bagId": "0363010001022309"
+    },
+    {
+     "address": "Joh.M. Coenenstraat 6K",
+     "use": "woonfunctie",
+     "areaM2": 103,
+     "bagId": "0363010001022311"
+    },
+    {
+     "address": "Joh.M. Coenenstraat 6H",
+     "use": "woonfunctie",
+     "areaM2": 84,
+     "bagId": "0363010001022310"
+    },
+    {
+     "address": "Joh.M. Coenenstraat 6A",
+     "use": "woonfunctie",
+     "areaM2": 102,
+     "bagId": "0363010001022302"
+    }
+   ],
+   "units": 10,
+   "osm": []
+  }
+ ]
+}

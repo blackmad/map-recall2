@@ -1,0 +1,1700 @@
+{
+ "street": "Ruysdaelstraat",
+ "seed": "0363100012127925",
+ "members": [
+  "0363100012127925",
+  "0363100012154443",
+  "0363100012078452",
+  "0363100012146977",
+  "0363100012200136",
+  "0363100012167149",
+  "0363100012167274",
+  "0363100012076109",
+  "0363100012246038"
+ ],
+ "ends": [
+  {
+   "side": "left",
+   "reason": "trimmed at 0363100012127925 (face continues: 076301)"
+  },
+  {
+   "side": "right",
+   "reason": "trimmed at 0363100012246038 (face continues: 156759 158932 163735 155320 158207 061410)"
+  }
+ ],
+ "rejected": [
+  {
+   "pandId": "0363100012062764",
+   "reason": "frontage 50.5 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012063128",
+   "reason": "frontage 110.8 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012064242",
+   "reason": "frontage 111.9 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012065856",
+   "reason": "frontage 39.6 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012070257",
+   "reason": "frontage 194.5 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012071939",
+   "reason": "frontage 225.3 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012075211",
+   "reason": "frontage 88.3 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012075537",
+   "reason": "frontage 93.2 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012076752",
+   "reason": "frontage 110.0 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012077283",
+   "reason": "frontage 108.7 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012078861",
+   "reason": "frontage 53.0 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012079583",
+   "reason": "frontage 89.5 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012061243",
+   "reason": "frontage 101.0 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012063908",
+   "reason": "frontage 195.1 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012064720",
+   "reason": "frontage 109.6 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012065812",
+   "reason": "frontage 100.5 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012066027",
+   "reason": "frontage 76.1 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012066928",
+   "reason": "frontage 126.6 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012068043",
+   "reason": "frontage 86.6 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012068545",
+   "reason": "frontage 167.6 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012068870",
+   "reason": "frontage 31.2 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012069906",
+   "reason": "frontage 69.3 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012070818",
+   "reason": "frontage 164.4 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012070981",
+   "reason": "frontage 80.9 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012071097",
+   "reason": "frontage 42.6 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012071771",
+   "reason": "frontage 131.3 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012073360",
+   "reason": "frontage 32.7 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012074664",
+   "reason": "frontage 163.7 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012075006",
+   "reason": "frontage 31.9 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012075285",
+   "reason": "frontage 75.5 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012075888",
+   "reason": "frontage 95.6 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012075943",
+   "reason": "frontage 117.9 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012076302",
+   "reason": "sightline to Ruysdaelstraat crosses 0363100012076301"
+  },
+  {
+   "pandId": "0363100012076543",
+   "reason": "no frontage on Ruysdaelstraat: No footprint edge faces Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012077169",
+   "reason": "frontage 167.3 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012077408",
+   "reason": "frontage 109.4 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012077874",
+   "reason": "frontage 31.6 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012079390",
+   "reason": "frontage 196.3 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012081607",
+   "reason": "frontage 62.7 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012082767",
+   "reason": "frontage 40.4 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012082921",
+   "reason": "frontage 67.9 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012084446",
+   "reason": "frontage 164.2 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012085225",
+   "reason": "frontage 218.4 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012085825",
+   "reason": "sightline to Ruysdaelstraat crosses 0363100012143335"
+  },
+  {
+   "pandId": "0363100012089113",
+   "reason": "frontage 109.6 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012089324",
+   "reason": "frontage 86.0 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012091903",
+   "reason": "frontage 50.9 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012092773",
+   "reason": "frontage 88.9 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012093896",
+   "reason": "frontage 109.1 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012094362",
+   "reason": "frontage 34.5 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012094774",
+   "reason": "frontage 54.9 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012094867",
+   "reason": "frontage 50.4 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012098227",
+   "reason": "frontage 87.5 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012099544",
+   "reason": "sightline to Ruysdaelstraat crosses 0363100012071799"
+  },
+  {
+   "pandId": "0363100012100965",
+   "reason": "frontage 87.2 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012101245",
+   "reason": "frontage 112.0 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012101742",
+   "reason": "frontage 34.2 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012105580",
+   "reason": "frontage 88.1 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012106506",
+   "reason": "frontage 198.2 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012085656",
+   "reason": "frontage 73.9 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012085712",
+   "reason": "frontage 88.8 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012086257",
+   "reason": "frontage 70.3 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012086311",
+   "reason": "frontage 37.9 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012086954",
+   "reason": "frontage 162.7 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012088868",
+   "reason": "frontage 175.1 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012089090",
+   "reason": "frontage 75.8 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012089211",
+   "reason": "sightline to Ruysdaelstraat crosses 0363100012120761"
+  },
+  {
+   "pandId": "0363100012089720",
+   "reason": "frontage 194.2 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012090723",
+   "reason": "frontage 163.1 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012092203",
+   "reason": "no frontage on Ruysdaelstraat: No footprint edge faces Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012093460",
+   "reason": "frontage 36.5 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012094340",
+   "reason": "frontage 135.4 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012095505",
+   "reason": "frontage 110.1 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012097163",
+   "reason": "frontage 60.0 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012099034",
+   "reason": "frontage 151.3 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012099803",
+   "reason": "sightline to Ruysdaelstraat crosses 0363100012061410"
+  },
+  {
+   "pandId": "0363100012099898",
+   "reason": "frontage 193.8 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012101927",
+   "reason": "frontage 200.3 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012102603",
+   "reason": "frontage 195.5 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012105454",
+   "reason": "frontage 166.5 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012107472",
+   "reason": "frontage 52.2 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012107746",
+   "reason": "frontage 184.1 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012107749",
+   "reason": "frontage 195.9 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012108582",
+   "reason": "frontage 31.5 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012108712",
+   "reason": "frontage 108.5 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012109324",
+   "reason": "frontage 88.5 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012109332",
+   "reason": "frontage 189.9 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012109459",
+   "reason": "frontage 206.8 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012109538",
+   "reason": "frontage 88.0 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012111240",
+   "reason": "frontage 89.7 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012111419",
+   "reason": "frontage 107.1 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012113503",
+   "reason": "frontage 110.4 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012115579",
+   "reason": "frontage 36.3 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012119364",
+   "reason": "frontage 109.7 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012120629",
+   "reason": "frontage 55.8 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012121101",
+   "reason": "frontage 88.2 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012124029",
+   "reason": "frontage 53.2 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012124348",
+   "reason": "frontage 210.3 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012125531",
+   "reason": "frontage 111.4 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012125734",
+   "reason": "frontage 87.4 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012125930",
+   "reason": "frontage 118.4 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012127220",
+   "reason": "frontage 57.1 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012129013",
+   "reason": "frontage 56.3 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012129222",
+   "reason": "frontage 204.3 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012129511",
+   "reason": "frontage 57.1 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012130993",
+   "reason": "frontage 212.9 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012109125",
+   "reason": "sightline to Ruysdaelstraat crosses 0363100012076301"
+  },
+  {
+   "pandId": "0363100012110320",
+   "reason": "frontage 76.5 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012110579",
+   "reason": "frontage 39.4 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012110888",
+   "reason": "frontage 134.0 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012111893",
+   "reason": "frontage 163.4 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012112467",
+   "reason": "frontage 85.8 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012113371",
+   "reason": "frontage 164.7 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012116072",
+   "reason": "frontage 86.8 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012116424",
+   "reason": "frontage 167.0 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012119530",
+   "reason": "frontage 64.4 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012120067",
+   "reason": "frontage 151.6 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012120761",
+   "reason": "sightline to Ruysdaelstraat crosses 0363100012121676"
+  },
+  {
+   "pandId": "0363100012121249",
+   "reason": "frontage 70.5 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012122501",
+   "reason": "frontage 137.8 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012123148",
+   "reason": "frontage 124.6 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012126637",
+   "reason": "frontage 104.3 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012126652",
+   "reason": "frontage 194.7 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012127564",
+   "reason": "frontage 44.4 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012128092",
+   "reason": "frontage 64.6 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012128160",
+   "reason": "frontage 72.5 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012129521",
+   "reason": "frontage 104.4 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012132153",
+   "reason": "frontage 89.1 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012132525",
+   "reason": "frontage 56.5 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012136011",
+   "reason": "frontage 51.4 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012136626",
+   "reason": "frontage 89.3 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012136943",
+   "reason": "frontage 195.3 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012142362",
+   "reason": "frontage 87.0 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012142505",
+   "reason": "frontage 100.2 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012142608",
+   "reason": "frontage 88.7 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012142916",
+   "reason": "sightline to Ruysdaelstraat crosses 0363100012071799"
+  },
+  {
+   "pandId": "0363100012146724",
+   "reason": "frontage 192.1 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012148010",
+   "reason": "frontage 125.1 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012149513",
+   "reason": "frontage 50.8 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012150151",
+   "reason": "frontage 109.4 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012152578",
+   "reason": "frontage 88.6 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012153011",
+   "reason": "frontage 39.8 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012132021",
+   "reason": "frontage 77.7 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012133078",
+   "reason": "frontage 85.1 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012134792",
+   "reason": "frontage 111.3 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012135196",
+   "reason": "frontage 104.0 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012135932",
+   "reason": "frontage 201.0 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012136110",
+   "reason": "frontage 44.6 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012138486",
+   "reason": "frontage 193.4 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012138937",
+   "reason": "frontage 102.2 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012140711",
+   "reason": "frontage 183.3 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012141661",
+   "reason": "sightline to Ruysdaelstraat crosses 0363100012061410"
+  },
+  {
+   "pandId": "0363100012142783",
+   "reason": "frontage 166.8 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012147406",
+   "reason": "frontage 174.1 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012148809",
+   "reason": "frontage 157.0 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012148909",
+   "reason": "frontage 194.4 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012148966",
+   "reason": "frontage 76.0 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012149149",
+   "reason": "frontage 147.1 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012149357",
+   "reason": "frontage 160.4 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012149421",
+   "reason": "frontage 118.2 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012149470",
+   "reason": "frontage 56.5 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012150328",
+   "reason": "frontage 110.2 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012150713",
+   "reason": "frontage 40.9 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012150854",
+   "reason": "frontage 141.4 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012151751",
+   "reason": "frontage 108.9 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012152284",
+   "reason": "frontage 103.0 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012152362",
+   "reason": "frontage 131.7 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012152421",
+   "reason": "frontage 91.2 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012152723",
+   "reason": "frontage 79.0 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012152818",
+   "reason": "frontage 172.6 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012152819",
+   "reason": "frontage 165.9 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012154115",
+   "reason": "no frontage on Ruysdaelstraat: No footprint edge faces Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012154818",
+   "reason": "frontage 41.3 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012155471",
+   "reason": "no frontage on Ruysdaelstraat: No footprint edge faces Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012155921",
+   "reason": "frontage 50.5 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012156095",
+   "reason": "frontage 66.6 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012156879",
+   "reason": "frontage 191.1 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012157012",
+   "reason": "frontage 179.9 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012157787",
+   "reason": "frontage 91.3 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012157821",
+   "reason": "frontage 39.6 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012157894",
+   "reason": "frontage 39.6 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012153148",
+   "reason": "frontage 167.2 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012153370",
+   "reason": "no frontage on Ruysdaelstraat: No footprint edge faces Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012153563",
+   "reason": "frontage 39.2 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012153747",
+   "reason": "frontage 52.5 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012153904",
+   "reason": "frontage 167.9 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012153998",
+   "reason": "frontage 67.1 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012154007",
+   "reason": "frontage 90.9 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012154211",
+   "reason": "frontage 77.0 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012154327",
+   "reason": "sightline to Ruysdaelstraat crosses 0363100012155335"
+  },
+  {
+   "pandId": "0363100012154402",
+   "reason": "frontage 49.5 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012155335",
+   "reason": "sightline to Ruysdaelstraat crosses 0363100012160592"
+  },
+  {
+   "pandId": "0363100012155395",
+   "reason": "frontage 77.2 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012155454",
+   "reason": "frontage 138.6 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012155476",
+   "reason": "frontage 42.7 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012155755",
+   "reason": "frontage 76.7 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012155779",
+   "reason": "frontage 166.8 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012155888",
+   "reason": "frontage 113.1 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012155939",
+   "reason": "frontage 85.4 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012156358",
+   "reason": "frontage 132.1 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012156419",
+   "reason": "frontage 131.1 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012156478",
+   "reason": "frontage 166.4 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012156566",
+   "reason": "frontage 134.5 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012156757",
+   "reason": "frontage 105.3 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012156833",
+   "reason": "frontage 151.0 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012156834",
+   "reason": "frontage 103.9 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012156856",
+   "reason": "frontage 52.8 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012156857",
+   "reason": "frontage 48.8 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012157088",
+   "reason": "frontage 103.5 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012157229",
+   "reason": "frontage 86.3 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012157286",
+   "reason": "frontage 101.0 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012157299",
+   "reason": "frontage 40.0 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012157533",
+   "reason": "frontage 140.5 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012157703",
+   "reason": "frontage 79.5 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012157775",
+   "reason": "frontage 134.7 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012157890",
+   "reason": "frontage 45.9 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012158047",
+   "reason": "frontage 90.9 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012158184",
+   "reason": "frontage 37.4 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012158280",
+   "reason": "frontage 66.3 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012158462",
+   "reason": "no frontage on Ruysdaelstraat: No footprint edge faces Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012159008",
+   "reason": "frontage 72.5 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012159228",
+   "reason": "frontage 66.6 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012159614",
+   "reason": "frontage 117.9 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012159969",
+   "reason": "frontage 37.2 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012159970",
+   "reason": "frontage 90.6 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012160591",
+   "reason": "frontage 95.8 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012161202",
+   "reason": "no frontage on Ruysdaelstraat: No footprint edge faces Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012161406",
+   "reason": "frontage 39.5 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012158115",
+   "reason": "no frontage on Ruysdaelstraat: No footprint edge faces Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012158132",
+   "reason": "frontage 131.9 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012158182",
+   "reason": "frontage 167.5 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012158222",
+   "reason": "frontage 110.7 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012158419",
+   "reason": "frontage 79.3 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012158521",
+   "reason": "frontage 102.8 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012158538",
+   "reason": "frontage 77.4 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012158546",
+   "reason": "frontage 135.1 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012158591",
+   "reason": "frontage 44.8 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012158828",
+   "reason": "frontage 134.9 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012158844",
+   "reason": "frontage 39.5 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012159001",
+   "reason": "frontage 77.9 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012159034",
+   "reason": "frontage 40.7 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012159254",
+   "reason": "frontage 166.3 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012159337",
+   "reason": "frontage 109.4 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012159652",
+   "reason": "frontage 40.1 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012159717",
+   "reason": "frontage 78.1 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012159835",
+   "reason": "frontage 78.4 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012160058",
+   "reason": "frontage 132.6 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012160362",
+   "reason": "frontage 50.0 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012160498",
+   "reason": "frontage 147.7 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012160510",
+   "reason": "frontage 39.6 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012160611",
+   "reason": "frontage 133.6 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012160621",
+   "reason": "frontage 85.7 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012160657",
+   "reason": "frontage 105.5 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012160736",
+   "reason": "frontage 132.9 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012160741",
+   "reason": "frontage 47.2 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012160830",
+   "reason": "frontage 46.7 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012160844",
+   "reason": "frontage 39.9 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012160976",
+   "reason": "frontage 107.6 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012161109",
+   "reason": "frontage 156.9 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012161125",
+   "reason": "frontage 33.1 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012161263",
+   "reason": "frontage 79.8 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012161462",
+   "reason": "frontage 66.5 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012161910",
+   "reason": "frontage 111.3 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012162410",
+   "reason": "no frontage on Ruysdaelstraat: No footprint edge faces Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012162853",
+   "reason": "frontage 91.5 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012163041",
+   "reason": "frontage 39.5 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012163132",
+   "reason": "frontage 66.4 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012163921",
+   "reason": "frontage 39.7 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012164048",
+   "reason": "frontage 66.5 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012164356",
+   "reason": "frontage 66.4 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012164462",
+   "reason": "frontage 84.0 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012164466",
+   "reason": "frontage 39.6 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012164691",
+   "reason": "frontage 66.6 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012164703",
+   "reason": "frontage 39.5 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012165229",
+   "reason": "frontage 90.8 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012165285",
+   "reason": "frontage 89.9 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012165310",
+   "reason": "frontage 66.5 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012165388",
+   "reason": "frontage 78.3 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012165484",
+   "reason": "frontage 39.6 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012161495",
+   "reason": "frontage 141.5 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012161545",
+   "reason": "frontage 132.4 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012161607",
+   "reason": "frontage 40.3 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012161636",
+   "reason": "frontage 130.9 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012161919",
+   "reason": "frontage 130.2 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012161927",
+   "reason": "frontage 39.1 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012161951",
+   "reason": "frontage 103.3 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012161969",
+   "reason": "frontage 97.6 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012162581",
+   "reason": "frontage 59.3 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012162777",
+   "reason": "frontage 140.2 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012163118",
+   "reason": "frontage 133.1 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012163146",
+   "reason": "frontage 41.0 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012163219",
+   "reason": "frontage 133.4 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012163247",
+   "reason": "frontage 110.7 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012163345",
+   "reason": "frontage 103.7 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012163472",
+   "reason": "frontage 144.9 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012163646",
+   "reason": "frontage 131.4 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012164245",
+   "reason": "frontage 45.2 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012164318",
+   "reason": "frontage 133.8 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012164391",
+   "reason": "frontage 49.8 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012164394",
+   "reason": "frontage 159.8 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012165301",
+   "reason": "frontage 80.0 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012165520",
+   "reason": "frontage 135.7 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012165662",
+   "reason": "frontage 45.6 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012166032",
+   "reason": "frontage 134.3 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012166167",
+   "reason": "frontage 45.5 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012166179",
+   "reason": "frontage 104.3 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012166268",
+   "reason": "sightline to Ruysdaelstraat crosses 0363100012154327"
+  },
+  {
+   "pandId": "0363100012166637",
+   "reason": "frontage 84.6 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012166868",
+   "reason": "frontage 39.7 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012167012",
+   "reason": "frontage 66.4 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012200899",
+   "reason": "frontage 84.2 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012205647",
+   "reason": "no frontage on Ruysdaelstraat: No footprint edge faces Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012207257",
+   "reason": "sightline to Ruysdaelstraat crosses 0363100012092787"
+  },
+  {
+   "pandId": "0363100012207258",
+   "reason": "frontage 38.8 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012236051",
+   "reason": "no frontage on Ruysdaelstraat: No footprint edge faces Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012236611",
+   "reason": "frontage 34.9 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012236703",
+   "reason": "no frontage on Ruysdaelstraat: No footprint edge faces Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012236724",
+   "reason": "frontage 48.6 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012166510",
+   "reason": "frontage 78.8 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012166563",
+   "reason": "frontage 86.0 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012166607",
+   "reason": "frontage 167.9 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012166772",
+   "reason": "frontage 36.4 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012167007",
+   "reason": "frontage 94.3 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012167160",
+   "reason": "frontage 105.1 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012167193",
+   "reason": "frontage 78.6 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012187040",
+   "reason": "frontage 155.4 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012191238",
+   "reason": "frontage 140.0 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012203385",
+   "reason": "frontage 33.0 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012206732",
+   "reason": "frontage 53.5 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012208002",
+   "reason": "frontage 58.2 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012213439",
+   "reason": "frontage 35.2 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012218857",
+   "reason": "frontage 93.6 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012218858",
+   "reason": "frontage 91.9 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012219147",
+   "reason": "sightline to Ruysdaelstraat crosses 0363100012233653"
+  },
+  {
+   "pandId": "0363100012219640",
+   "reason": "frontage 158.8 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012220484",
+   "reason": "frontage 149.3 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012230919",
+   "reason": "frontage 30.7 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012232413",
+   "reason": "frontage 35.1 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012233447",
+   "reason": "frontage 39.2 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012233672",
+   "reason": "sightline to Ruysdaelstraat crosses 0363100012233653"
+  },
+  {
+   "pandId": "0363100012233691",
+   "reason": "frontage 114.0 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012236025",
+   "reason": "frontage 45.8 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012236106",
+   "reason": "frontage 80.7 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012236193",
+   "reason": "frontage 103.3 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012236201",
+   "reason": "frontage 41.1 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012236287",
+   "reason": "sightline to Ruysdaelstraat crosses 0363100012153370"
+  },
+  {
+   "pandId": "0363100012236344",
+   "reason": "frontage 103.5 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012236509",
+   "reason": "frontage 46.0 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012236564",
+   "reason": "frontage 117.4 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012236620",
+   "reason": "frontage 102.8 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012236672",
+   "reason": "frontage 103.0 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012236781",
+   "reason": "frontage 153.7 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012236921",
+   "reason": "sightline to Ruysdaelstraat crosses 0363100012233653"
+  },
+  {
+   "pandId": "0363100012237032",
+   "reason": "frontage 34.9 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012237088",
+   "reason": "frontage 102.6 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012237099",
+   "reason": "frontage 102.4 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012237303",
+   "reason": "frontage 84.6 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012239943",
+   "reason": "frontage 39.1 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012246039",
+   "reason": "sightline to Ruysdaelstraat crosses 0363100012246038"
+  },
+  {
+   "pandId": "0363100100092059",
+   "reason": "frontage 54.2 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100100092060",
+   "reason": "frontage 50.6 m from Ruysdaelstraat"
+  },
+  {
+   "pandId": "0363100012073582",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012077675",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012080468",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012088998",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012102526",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012105172",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012106456",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012088552",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012093632",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012118275",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012119354",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012121676",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012122829",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012135539",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012136354",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012139185",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012152797",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012157273",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012158007",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012159520",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012160067",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012160592",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012161885",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012161973",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012163788",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012166345",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012166919",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012233653",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012236860",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012236928",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012237204",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012237324",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012236996",
+   "reason": "fronts the other side / another direction"
+  }
+ ],
+ "areaHalfSizeM": 180,
+ "pands": [
+  {
+   "pandId": "0363100012127925",
+   "alongM": 0,
+   "widthM": 8.16,
+   "eavesM": 13.44,
+   "roofMaxM": 16.49,
+   "storeys3dbag": 5,
+   "builtYear": 1923,
+   "uncertainty": [
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  },
+  {
+   "pandId": "0363100012154443",
+   "alongM": 8.35,
+   "widthM": 8.55,
+   "eavesM": 13.32,
+   "roofMaxM": 16.53,
+   "storeys3dbag": 0,
+   "builtYear": 1923,
+   "uncertainty": [
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  },
+  {
+   "pandId": "0363100012078452",
+   "alongM": 16.72,
+   "widthM": 8.18,
+   "eavesM": 13.26,
+   "roofMaxM": 16.39,
+   "storeys3dbag": 0,
+   "builtYear": 1923,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012146977",
+   "alongM": 23.31,
+   "widthM": 5,
+   "eavesM": 16.36,
+   "roofMaxM": 16.39,
+   "storeys3dbag": 0,
+   "builtYear": 1923,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012200136",
+   "alongM": 27.28,
+   "widthM": 2.93,
+   "eavesM": 3.92,
+   "roofMaxM": 3.94,
+   "storeys3dbag": 0,
+   "builtYear": 1903,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012167149",
+   "alongM": 47.1,
+   "widthM": 36.71,
+   "eavesM": 15.77,
+   "roofMaxM": 22.83,
+   "storeys3dbag": 0,
+   "builtYear": 1903,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012167274",
+   "alongM": 70.57,
+   "widthM": 10.25,
+   "eavesM": 16.16,
+   "roofMaxM": 22.25,
+   "storeys3dbag": 5,
+   "builtYear": 1905,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012076109",
+   "alongM": 84.12,
+   "widthM": 16.84,
+   "eavesM": 14.43,
+   "roofMaxM": 22.24,
+   "storeys3dbag": 0,
+   "builtYear": 1983,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012246038",
+   "alongM": 112.57,
+   "widthM": 40.06,
+   "eavesM": 15.12,
+   "roofMaxM": 23.73,
+   "storeys3dbag": 0,
+   "builtYear": 2020,
+   "uncertainty": []
+  }
+ ]
+}
