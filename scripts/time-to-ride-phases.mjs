@@ -48,6 +48,12 @@ async function run(browser) {
         first('buildingTile', [...(vm?._completeCity?.tileTimes?.values() ?? [])].some(t => t.resident != null));
         first('buildingTiles4', [...(vm?._completeCity?.tileTimes?.values() ?? [])].filter(t => t.resident != null).length >= 4);
         first('racing', g.state === 4 && g.camera?.introOverview === 0);
+        // The settle hold (progress 0.92, game-route.js _waitForMapSettle): when each loader the own engine's
+        // camera.whenIdle() waits on (vm.pendingWork(), engine/settle.ts) was last seen still pending.
+        if (g.loadingProgress === 0.92 && typeof vm?.pendingWork === 'function' && (T.settleFrame = (T.settleFrame || 0) + 1) % 3 === 0) {
+          try { for (const name of vm.pendingWork()) (T.pending ||= {})[String(name)] = performance.now(); } catch (_) {}
+        }
+        if (g._lastMapSettle && !T.mapSettle) T.mapSettle = g._lastMapSettle;
         if (g.loadingProgress != null && T.lastProgress !== g.loadingProgress) { T.lastProgress = g.loadingProgress; T.spans.push({ k: `progress ${g.loadingProgress}`, t0: performance.now() }); }
       }
       if (T.firsts.racing == null) requestAnimationFrame(poll);
@@ -126,6 +132,9 @@ async function run(browser) {
     firsts: Object.fromEntries(Object.entries(ttr.firsts).map(([k, v]) => [k, rel(v)])),
     spans: ttr.spans.map(s => ({ k: s.k, startMs: rel(s.t0), ms: s.t1 != null ? Math.round(s.t1 - s.t0) : null })),
     selfByScript: top(selfByScript, 20), selfByFn: top(selfByFn, 40), errors,
+    // Own engine: each loader the settle hold waited on, by when it was last seen pending (ms after submit).
+    settlePending: Object.fromEntries(Object.entries(ttr.pending || {}).map(([k, v]) => [k, rel(v)]).sort((a, b) => b[1] - a[1])),
+    mapSettle: ttr.mapSettle ?? null,
   };
 }
 
@@ -135,6 +144,7 @@ for (let i = 0; i < runs; i++) {
   const r = await run(browser);
   results.push(r);
   console.log(`run ${i + 1}: submit@${r.submittedAtMs} ms; after submit: ${Object.entries(r.firsts).map(([k, v]) => `${k} ${v}`).join(', ')}`);
+  if (r.mapSettle) console.log(`  settle ${r.mapSettle.ms} ms${r.mapSettle.timedOut ? ' (timed out)' : ''}; last pending: ${Object.entries(r.settlePending).map(([k, v]) => `${k} @${v}`).join(', ') || 'none'}`);
   for (const s of r.spans.filter(s => s.ms != null)) console.log(`  ${s.k} @${s.startMs} ${s.ms} ms`);
 }
 await browser.close();
