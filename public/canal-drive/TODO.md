@@ -428,15 +428,21 @@ landmarks CPU arrays 12). **Fetch ring merged 2026-11-01** (`b74955c7c`, HISTORY
 "The world streamer fetches the cells under the ride view"): free-ride cells
 halved, iPhone start heap 302 → 276 MB, 0 restyles; own-engine iPhone gates
 still red (heap 276 vs 250; 24 chunk arrivals at 35 m during the ride, with or
-without the ring). **The 150 m count is not what the player sees** (camera ~600 m
-deep): the gate moves to screen-space pop px/s per owner, desktop, both
-engines (road lane; earlier: MapLibre 1,480 vs own 1,846 px/s, landmark models
-and an unexplained bucket largest); the user is asked which pop-in they saw
-(#168 needs-david). Heap levers from the `_canalSharedFrame` breakdown:
+without the ring). **Neither detector sees what the user reported** (HISTORY "Pop-in measured the
+way the player sees it"): the 150 m count reads 0 on desktop, the px/s
+detector reads 4–5 px/s on the seeded ride on both engines, and its big
+Jordaan number is Westerkerk parallax (a detector false positive); the 24
+phone arrivals at 35 m are a measurement artefact with nil visible cost
+(closed). Blocked on the user's answer to #168 (what pops, where, when); then
+the detector becomes depth-aware (road lane, second item) and the owner is
+cut. Road lane now: time to ride on the real phone, navigation → racing 5.7 s
+vs the 4 s gate (per-phase table, largest phase first; #150 landing animation
+excluded). Heap levers from the `_canalSharedFrame` breakdown:
 OverviewLayer keeps the decoded overview data + rebuild closures + prebuilt
 geometry, 45.6 MB (L1, after its flip blockers); facade geometry CPU arrays
 kept after upload 27.1 MB (materials, after ground step 2); landmark CPU
-arrays 11.6 MB (road lane, context-restore must still pass). The no-maplibre `package.json` diff loads
+arrays 11.6 → 11.2 MB done (69544e547; the interleaved GLB buffers, ~3.8 MB
+on iPhone, are parked). The no-maplibre `package.json` diff loads
 clean and waits for the flip (lane scratch `no-maplibre-package.diff`).
 **Parked idea (user, 2026-11-01): a cartoon / low-fi high-colour look mode
 with no new models — issue #161, a materials lane after the own-ground steps.
