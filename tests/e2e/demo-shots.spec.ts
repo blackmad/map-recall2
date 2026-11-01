@@ -59,6 +59,9 @@ const SPOTS: Spot[] = [
   { name: 'transvaal3-retiefstraat-69-73', centre: [4.9218115, 52.3553544], standDeg: 333, standM: 8, view: 'cockpit' },
   { name: 'transvaal3-pretoriusstraat-79-87', centre: [4.9211937, 52.3544948], standDeg: 334, standM: 7, view: 'cockpit' },
   { name: 'transvaal3-pretoriusstraat-86-90', centre: [4.9209401, 52.3546185], standDeg: 154, standM: 7, view: 'cockpit' },
+  // Transvaalbuurt 1929-31 (#153): the 1931 two-storey rows of Vaalrivierstraat and Kraaipanstraat.
+  { name: 'transvaal1929-vaalrivierstraat-8-10', centre: [4.9181592, 52.352046], standDeg: 54, standM: 7, view: 'cockpit' },
+  { name: 'transvaal1929-kraaipanstraat-63-65', centre: [4.9182174, 52.3516356], standDeg: 324, standM: 7, view: 'cockpit' },
   { name: 'aerial-westerdok', centre: [4.8860, 52.3840], standDeg: 0, standM: 0, faceDeg: 20, camZoom: 0.16 },
 ];
 
