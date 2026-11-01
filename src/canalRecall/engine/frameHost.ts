@@ -38,6 +38,8 @@ export interface FrameHostHooks {
    * are kept, so the first uncovered frame draws at once.
    */
   coveredFrameMs?(): number | null;
+  /** After `render`, before the frame is shown: a full-frame pass over the drawn buffer (the toon look, #161). */
+  post?(renderer: any, width: number, height: number): void;
 }
 
 /**
@@ -294,6 +296,7 @@ export class FrameHost {
     const phases = framePhases();
     if (phases) phases.add('clear', (this.options.now ?? (() => performance.now()))() - now);
     this.hooks.render(this.alpha, now);
+    if (this.hooks.post) this.hooks.post(renderer, this.canvas.width, this.canvas.height);
     this.stats.renderMs = (this.options.now ?? (() => performance.now()))() - now;
     this.stats.frames++;
     this.fire('render');
