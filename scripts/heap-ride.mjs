@@ -59,7 +59,7 @@ const settleMs = await page.evaluate(async () => {
 });
 await page.waitForTimeout(3000);
 
-const markOwners = () => page.evaluate(() => {
+const markOwners = () => page.evaluate(async deep => {
   const g = window.canalRecallGame, vm = g.vectorMap, marks = {};
   const isObj = v => v && (typeof v === 'object' || typeof v === 'function') && !(v instanceof Node) && v !== window;
   const add = (prefix, root, depth) => {
@@ -74,11 +74,26 @@ const markOwners = () => page.evaluate(() => {
   add('game', g, 1); add('vm', vm, 2);
   // The big owners one level further (their fields: caches, indexes, per-cell maps).
   for (const k of ['_ownGround', '_completeCity', '_threeBuildings', 'ferryTrack', '_overview', '_labels']) add(`vm.${k}`, vm[k], 2);
-  if (vm._ownGround?.store) add('vm._ownGround.store', vm._ownGround.store, 1);
+  if (vm._ownGround?.store) add('vm._ownGround.store', vm._ownGround.store, deep ? 3 : 1);
+  // HEAP_DEEP=1: the ground store per cell. Each Map entry (a cell's settled value, promises included) and its fields
+  // are marked as `vm._ownGround.store.<map>[<cell>].<field>`; `deepByField` sums them across cells.
+  if (deep && vm._ownGround?.store) {
+    const store = vm._ownGround.store;
+    const settled = async v => (v && typeof v.then === 'function' ? Promise.race([v, Promise.resolve(undefined)]).catch(() => undefined) : v);
+    for (const k of Object.keys(store)) {
+      const map = store[k]; if (!(map instanceof Map)) continue;
+      for (const [cell, raw] of map) {
+        const v = await settled(raw); if (!isObj(v)) continue;
+        marks[`vm._ownGround.store.${k}[${cell}]`] = new WeakRef(v);
+        if (Array.isArray(v)) continue;
+        for (const f of Object.keys(v)) { const x = v[f]; if (isObj(x) && typeof x !== 'function') marks[`vm._ownGround.store.${k}[${cell}].${f}`] = new WeakRef(x); }
+      }
+    }
+  }
   for (const k of Object.keys(window)) if (/^(CanalRecall|maplibregl|THREE|__)/.test(k) && k !== '__heapMarks') { try { if (isObj(window[k])) marks[`window.${k}`] = new WeakRef(window[k]); } catch (_) {} }
   window.__heapMarks = marks;
   return Object.keys(marks).length;
-});
+}, Boolean(process.env.HEAP_DEEP));
 
 async function sample(label) {
   const heap = await heapSample(cdp);
@@ -115,7 +130,12 @@ async function sample(label) {
     await takeSnapshot(cdp, file);
     row.snapshotMB = Math.round(fs.statSync(file).size / 1048576); row.snapshotS = Math.round((Date.now() - t) / 1000);
     await page.evaluate(() => { delete window.__heapMarks; });
-    try { row.owners = analyseSnapshot(file); } finally { fs.rmSync(file, { force: true }); }
+    try { row.owners = analyseSnapshot(file, process.env.HEAP_DEEP ? { top: 100000, digits: 3 } : undefined); } finally { fs.rmSync(file, { force: true }); }
+    if (process.env.HEAP_DEEP && row.owners) {
+      const by = {};
+      for (const m of row.owners.marks) { const k = m.k.replace(/\[[^\]]*\]/, '[*]'); if (k !== m.k) { const b = by[k] ??= { mb: 0, cells: 0 }; b.mb += m.mb; b.cells++; } }
+      row.deepByField = Object.fromEntries(Object.entries(by).map(([k, b]) => [k, { mb: Math.round(b.mb * 10) / 10, cells: b.cells }]).sort((a, b) => b[1].mb - a[1].mb));
+    }
   }
   console.log(`${device} ${label}: used ${heap.main.usedMB} MB (+${heap.main.backingMB ?? '?'} buffers) workers ${heap.workersUsedMB} MB usedJSHeap ${perf.usedJSHeapMB} MB${row.owners ? ` reachable ${row.owners.reachableMB} MB` : ''}`);
   if (row.owners) for (const m of row.owners.claimed.slice(0, 15)) console.log(`  claimed ${m.mb} MB (${m.buffersMB} buffers) ${m.k}`);

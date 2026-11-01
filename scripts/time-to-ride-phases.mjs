@@ -18,6 +18,8 @@ const qs = opt('qs', '');
 // --net <down kbit/s>,<latency ms>: emulate a remote connection (localhost hides download time), e.g. 20000,40.
 // --settle <ms>: wait on the briefing after picking car/chase before submitting, as a player would (default 0).
 const settle = Number(opt('settle', '0'));
+// --warm: load the page once in the same context first, so the measured run reads every file from the HTTP cache.
+const warm = argv.includes('--warm');
 const net = opt('net', '') ? opt('net').split(',').map(Number) : null;
 const origin = `http://127.0.0.1:${process.env.PORT || 4543}`;
 const startPoi = 'anne-frank', destPoi = 'rijksmuseum';
@@ -60,6 +62,12 @@ async function run(browser) {
     };
     requestAnimationFrame(poll);
   });
+  if (warm) {
+    await page.goto(`${origin}/canal-drive/${qs}`);
+    await page.waitForFunction(([a, b]) => window.canalRecallGame?.routePois?.some(p => p.id === a) && window.canalRecallGame.routePois.some(p => p.id === b), [startPoi, destPoi], { timeout: 120_000 });
+    // The roads only download on submit: fetch them so the measured run's fetchRoads is warm too.
+    await page.evaluate(() => canalRecallGame.osmLoader.fetchRoads(0, 0, 0, 'car', 'amsterdam')).catch(() => {});
+  }
   await page.goto(`${origin}/canal-drive/js/build-stamp.js`).catch(() => {});
   const cdp = await context.newCDPSession(page);
   if (net) await cdp.send('Network.enable'), await cdp.send('Network.emulateNetworkConditions', { offline: false, downloadThroughput: net[0] * 125, uploadThroughput: net[0] * 125, latency: net[1] });
@@ -112,26 +120,47 @@ async function run(browser) {
   // Profile window: submit -> racing, aligned by the profile's own clock (profile times are µs since an arbitrary epoch;
   // the last sample is "now" at Profiler.stop, close enough to align at sampling-interval precision).
   const ends = profile.endTime / 1000, offset = marks.now - ends;
-  const from = submitted, to = ttr.firsts.racing;
   const byId = new Map(profile.nodes.map(n => [n.id, n]));
-  const selfByScript = new Map(), selfByFn = new Map();
-  let t = profile.startTime / 1000 + offset;
-  profile.samples.forEach((id, i) => {
-    t += (profile.timeDeltas[i] || 0) / 1000;
-    if (t < from || t > to) return;
-    const dt = (profile.timeDeltas[i + 1] || 0) / 1000;
-    const f = byId.get(id).callFrame, script = f.url ? f.url.split('/').pop().split('?')[0] : f.functionName || '(native)';
-    selfByScript.set(script, (selfByScript.get(script) || 0) + dt);
-    const key = `${f.functionName || '(anon)'} ${script}:${f.lineNumber + 1}`;
-    selfByFn.set(key, (selfByFn.get(key) || 0) + dt);
-  });
+  const parentOf = new Map();
+  for (const n of profile.nodes) for (const c of n.children || []) parentOf.set(c, n.id);
+  // A native frame (getImageData, a shader link, GC excepted) is charged to the nearest script frame that called it.
+  const ownerFrame = id => {
+    let n = byId.get(id);
+    while (n && !n.callFrame.url && parentOf.has(n.id)) n = byId.get(parentOf.get(n.id));
+    return n && n.callFrame.url ? n.callFrame : byId.get(id).callFrame;
+  };
+  // Self time by script and by function inside [from, to] (page clock, ms).
+  const selfIn = (from, to) => {
+    const selfByScript = new Map(), selfByFn = new Map(), ownerByScript = new Map(), ownerByFn = new Map();
+    let t = profile.startTime / 1000 + offset;
+    profile.samples.forEach((id, i) => {
+      t += (profile.timeDeltas[i] || 0) / 1000;
+      if (t < from || t > to) return;
+      const dt = (profile.timeDeltas[i + 1] || 0) / 1000;
+      const f = byId.get(id).callFrame, script = f.url ? f.url.split('/').pop().split('?')[0] : f.functionName || '(native)';
+      selfByScript.set(script, (selfByScript.get(script) || 0) + dt);
+      const key = `${f.functionName || '(anon)'} ${script}:${f.lineNumber + 1}`;
+      selfByFn.set(key, (selfByFn.get(key) || 0) + dt);
+      const o = ownerFrame(id), oScript = o.url ? o.url.split('/').pop().split('?')[0] : o.functionName || '(native)';
+      ownerByScript.set(oScript, (ownerByScript.get(oScript) || 0) + dt);
+      const oKey = `${o.functionName || '(anon)'} ${oScript}:${o.lineNumber + 1}${f.url ? '' : ` [${f.functionName}]`}`;
+      ownerByFn.set(oKey, (ownerByFn.get(oKey) || 0) + dt);
+    });
+    return { selfByScript, selfByFn, ownerByScript, ownerByFn };
+  };
+  // The page clock restarts at the measured navigation, so boot is [0, submit].
+  const ride = selfIn(submitted, ttr.firsts.racing), boot = selfIn(0, submitted);
   const top = (m, n) => [...m].sort((a, b) => b[1] - a[1]).slice(0, n).map(([k, ms]) => ({ k, ms: Math.round(ms) }));
   const rel = v => (v == null ? null : Math.round(v - submitted));
   return {
     submittedAtMs: Math.round(submitted),
     firsts: Object.fromEntries(Object.entries(ttr.firsts).map(([k, v]) => [k, rel(v)])),
     spans: ttr.spans.map(s => ({ k: s.k, startMs: rel(s.t0), ms: s.t1 != null ? Math.round(s.t1 - s.t0) : null })),
-    selfByScript: top(selfByScript, 20), selfByFn: top(selfByFn, 40), errors,
+    selfByScript: top(ride.selfByScript, 20), selfByFn: top(ride.selfByFn, 40), errors,
+    // Navigation -> submit: what boot spends its main thread on.
+    bootSelfByScript: top(boot.selfByScript, 20), bootSelfByFn: top(boot.selfByFn, 30),
+    // The same window with native frames charged to their calling script ("[getImageData]" names the native).
+    bootByOwner: top(boot.ownerByScript, 20), bootByOwnerFn: top(boot.ownerByFn, 30),
     // Own engine: each loader the settle hold waited on, by when it was last seen pending (ms after submit).
     settlePending: Object.fromEntries(Object.entries(ttr.pending || {}).map(([k, v]) => [k, rel(v)]).sort((a, b) => b[1] - a[1])),
     mapSettle: ttr.mapSettle ?? null,
@@ -149,5 +178,5 @@ for (let i = 0; i < runs; i++) {
 }
 await browser.close();
 fs.mkdirSync(path.dirname(out), { recursive: true });
-fs.writeFileSync(out, JSON.stringify({ when: new Date().toISOString(), qs, results }, null, 2));
+fs.writeFileSync(out, JSON.stringify({ when: new Date().toISOString(), qs, warm, results }, null, 2));
 console.log(`wrote ${out}`);

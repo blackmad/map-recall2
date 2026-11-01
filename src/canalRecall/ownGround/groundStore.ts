@@ -197,7 +197,7 @@ export class GroundStore {
    * the predictor decode of every tile under the rider's ring leave the main thread; the motion profile had
    * them in 100–200 ms bursts, docs/perf-motion-stutter-20261016.md). Same decode, same heights.
    */
-  constructor(private readonly fetchBytes: FetchBytes, private readonly options: { parks?: boolean; courtyards?: boolean; openings?: boolean; moorings?: boolean; approaches?: boolean; clipDecks?: boolean; roads?: boolean; reliefTile?: ReliefTileLoader; /** Decks for OSM bridge ways the extract does not carry (wayDecks.ts); default on. */ wayDecks?: boolean; /** Deck ends landed under the survey (footprints over the reach, covered tops sunk past the span); default on, off only for the regression's pin. */ deckEnds?: boolean; /** Way decks run on over a hole in the relief past the water (wayDecks.ts HOLE_M); default on. */ wayDeckHoles?: boolean; /** Bridge ways meeting end to end join before the way decks are drawn (wayDecks.ts joinChains); default on. */ wayDeckChains?: boolean; /** Open the water under OSM bridge ways whose water stops at the bridge (wayDecks.ts WAY_OPENING_REACH_M); default on, off only for the regression's before. */ wayOpenings?: boolean; /** roads-v1: way decks widen to the road surfaces' outer edges (wayDecks.ts roadEdgeSides); default on. */ wayDeckCarriage?: boolean; /** Tunnel cuts: ramps into tunnels and slots through embankments (tunnels.ts); default on. */ tunnels?: boolean; /** Railway tracks from rail-v1 (railTracks.ts); default on. */ rails?: boolean; /** Rail levels and the never-under-the-ground floor (railProfile.ts); default on, off: the #145 build (for measuring). */ railLevels?: boolean; /** Piers, girders and railings under the rail decks (railBridge.ts); default on, off: the round-2 build (for measuring). */ railBridges?: boolean; /** rail-v1 as shipped in build 04e3c88 (railTracks `legacy`): the rail regressions' pre-fix build only. */ railLegacy?: boolean; /** roads-v1 ground polygons over water at street height count as decks for the water mask (wetGround.ts); default on, off only for the regression's pin. */ wetGround?: boolean; /** Work between yields while planning way decks and cuts on the page (pacer), ms; default PACE_BUDGET_MS, 0: yield after every step (the exactness pin). */ paceMs?: number } = {}) {}
+  constructor(private readonly fetchBytes: FetchBytes, private readonly options: { parks?: boolean; courtyards?: boolean; openings?: boolean; moorings?: boolean; approaches?: boolean; clipDecks?: boolean; roads?: boolean; reliefTile?: ReliefTileLoader; /** Decks for OSM bridge ways the extract does not carry (wayDecks.ts); default on. */ wayDecks?: boolean; /** Deck ends landed under the survey (footprints over the reach, covered tops sunk past the span); default on, off only for the regression's pin. */ deckEnds?: boolean; /** Way decks run on over a hole in the relief past the water (wayDecks.ts HOLE_M); default on. */ wayDeckHoles?: boolean; /** Bridge ways meeting end to end join before the way decks are drawn (wayDecks.ts joinChains); default on. */ wayDeckChains?: boolean; /** Open the water under OSM bridge ways whose water stops at the bridge (wayDecks.ts WAY_OPENING_REACH_M); default on, off only for the regression's before. */ wayOpenings?: boolean; /** roads-v1: way decks widen to the road surfaces' outer edges (wayDecks.ts roadEdgeSides); default on. */ wayDeckCarriage?: boolean; /** Tunnel cuts: ramps into tunnels and slots through embankments (tunnels.ts); default on. */ tunnels?: boolean; /** Railway tracks from rail-v1 (railTracks.ts); default on. */ rails?: boolean; /** Rail levels and the never-under-the-ground floor (railProfile.ts); default on, off: the #145 build (for measuring). */ railLevels?: boolean; /** Piers, girders and railings under the rail decks (railBridge.ts); default on, off: the round-2 build (for measuring). */ railBridges?: boolean; /** rail-v1 as shipped in build 04e3c88 (railTracks `legacy`): the rail regressions' pre-fix build only. */ railLegacy?: boolean; /** roads-v1 ground polygons over water at street height count as decks for the water mask (wetGround.ts); default on, off only for the regression's pin. */ wetGround?: boolean; /** The main thread's store: it prepares cells (decks, way decks, tunnel cuts) and answers heights but never builds one (the worker does), so cells keep only what prepareCell reads: OSM ways without the areas, road surfaces without kerbs and cover ways. cellInput/farInput refuse. */ prepareOnly?: boolean; /** Work between yields while planning way decks and cuts on the page (pacer), ms; default PACE_BUDGET_MS, 0: yield after every step (the exactness pin). */ paceMs?: number } = {}) {}
   /** Houseboat footprints (houseboats.json, game frame), by elevation cell of their centroid. */
   private boatsByCell = new Map<string, Boat[]>();
   /** Boats whose berth was opened, per cell (named regressions, the lane report). */
@@ -713,7 +713,7 @@ export class GroundStore {
     let p = this.osm.get(key);
     if (!p) {
       p = this.osmCells.has(key)
-        ? this.fetchBytes(`${EXTRACTS.osm}/cells/${key}.json.gz`).then(bytes => { this.loadedBytes.osm += bytes.byteLength; return JSON.parse(new TextDecoder().decode(bytes)) as OsmGroundExtract; }).catch(() => null)
+        ? this.fetchBytes(`${EXTRACTS.osm}/cells/${key}.json.gz`).then(bytes => { this.loadedBytes.osm += bytes.byteLength; const o = JSON.parse(new TextDecoder().decode(bytes)) as OsmGroundExtract; return this.options.prepareOnly ? { ...o, areas: [] } : o; }).catch(() => null)
         : Promise.resolve(null);
       this.osm.set(key, p);
     }
@@ -737,7 +737,7 @@ export class GroundStore {
     let p = this.roads.get(key);
     if (!p) {
       p = this.roadCells.has(key)
-        ? this.fetchBytes(`${EXTRACTS.roads}/cells/${key}.json.gz`).then(bytes => { this.loadedBytes.roads += bytes.byteLength; const c = JSON.parse(new TextDecoder().decode(bytes)) as RoadCell; return ROAD_CELL_VERSIONS.includes(c.version) ? c : null; }).catch(() => null)
+        ? this.fetchBytes(`${EXTRACTS.roads}/cells/${key}.json.gz`).then(bytes => { this.loadedBytes.roads += bytes.byteLength; const c = JSON.parse(new TextDecoder().decode(bytes)) as RoadCell; return ROAD_CELL_VERSIONS.includes(c.version) ? (this.options.prepareOnly ? { ...c, kerbs: [], coverWays: [] } : c) : null; }).catch(() => null)
         : Promise.resolve(null);
       this.roads.set(key, p);
     }
@@ -814,6 +814,7 @@ export class GroundStore {
    * OSM of its 3×3 neighbourhood, and the deck footprints near it.
    */
   async cellInput(key: string, lod: 0 | 1, detail: CellDetail = 'full'): Promise<CellInput> {
+    if (this.options.prepareOnly) throw new Error('GroundStore: a prepareOnly store keeps no OSM areas or kerbs and cannot build a cell');
     await this.prepareCell(key);
     const around = GroundStore.neighbours(key);
     const [water, waterAround, osm, osmAround, parksAround, roadsAround, courtyardsAround, marksAround, railsAround] = await Promise.all([
@@ -883,6 +884,7 @@ export class GroundStore {
    * OSM ground, and the relief over the block (loaded here; the next eviction drops it again). Null: nothing to draw.
    */
   async farInput(blockKey: string): Promise<FarBlockInput | null> {
+    if (this.options.prepareOnly) throw new Error('GroundStore: a prepareOnly store keeps no OSM areas and cannot build a far block');
     const keys = farBlockCells(blockKey).filter(k => this.osmCells.has(k) && this.covers(k));
     if (!keys.length) return null;
     const rects = keys.map(k => this.cellRect(k));

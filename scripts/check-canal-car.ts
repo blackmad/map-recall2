@@ -11,6 +11,7 @@ import { bridgeWayNetwork, carriedStreetName, isBridgeWayName, routeQuestionRoad
 import { afterFerryMove, beginFerryFrame, leadingEdge, nearestWater, type FerryGame } from '../src/canalRecall/ferry/travel';
 import type { Terminal } from '../src/canalRecall/ferry/network';
 import { ijFerryWorld, ijWaterTest, sail, toLatLon as ijToLatLon, toWorld as ijToWorld } from './lib/ferryIjWorld';
+import { loadRoutingFeatures, routingSource } from './lib/routingFeatures';
 
 const options = { edgeTolerance: 12 };
 const road = (overrides: Partial<RoadContact> = {}): RoadContact => ({
@@ -116,7 +117,7 @@ type RoutingStreet = {
   path?: [number, number][];
   paths?: [number, number][][];
 };
-const routing = JSON.parse(await readFile('public/data/extracts/amsterdam/streets-routing.json', 'utf8')) as RoutingStreet[];
+const routing = await loadRoutingFeatures<RoutingStreet>();
 const pointsFor = (name: string): [number, number][] => routing
   .filter(street => street.name === name)
   .flatMap(street => street.paths ?? (street.path ? [street.path] : []))
@@ -608,4 +609,4 @@ let ferrySummary = '';
   ferrySummary = `, ferry: NDSM quay 24.7 m and Buiksloterweg 15 m reports dock, ${farQuay} NDSM bank touches blocked, f80d47da hull afloat, ${crossings.length} IJ crossings dock`;
 }
 
-process.stdout.write(`Canal Recall car checks passed (6 simulations, including Keizersgracht canal edge; 4 Da Costakade approaches, Stirumstraat roundabout, ${bridgeSegments.length} bridge segments, routing-class coverage${bridgeWaySummary}${plazaSummary}${ferrySummary}).\n`);
+process.stdout.write(`Canal Recall car checks passed (roads: ${routingSource()}; 6 simulations, including Keizersgracht canal edge; 4 Da Costakade approaches, Stirumstraat roundabout, ${bridgeSegments.length} bridge segments, routing-class coverage${bridgeWaySummary}${plazaSummary}${ferrySummary}).\n`);

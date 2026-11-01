@@ -1,5 +1,84 @@
 # Canal Recall — what is built
 
+**A click on an ordinary building hung the page since the lazy facts store; one request per card (2026-11-01).**
+Integrator. `_cardForClickedBuilding` asks `_requestBuildingFacts` whenever the
+row has no article (most of the city); the refresh on arrival rebuilt the
+card through the same path, which asked again, and a resident tile's
+`ensureAt` resolves at once, so the microtasks chained forever and the page
+stopped responding (on main since cd5be8a55, deployed in 6a0131868; the
+`check-poi-click-selection` fake stubs `_requestBuildingFacts` and the
+canal-recall year-card spec's fake threw before the loop, which is why no
+check caught it). `_factsInFlight` holds the card ids being asked for and the
+refresh never re-asks; `buildingFactsRequest.test.ts` (in `test:prism-pick`)
+fails against the unguarded code with "facts requested in a loop" and passes
+with the guard. What's New "Clicking an ordinary building no longer freezes
+the ride".
+**Ground planning paced on the page under `?engine=own`; three-buildings zoom and vehicle container off the camera shim (2026-11-01, #129).**
+L1 hand-back (13). The `prepareCell` continuation that owned the one 1× frame
+over 50 ms (the cell entering the ring: way-deck grouping, road-edge search,
+tunnel plan) stays on the main thread (the decks and cuts are the page's own
+surface; shipping them from the worker would make a second source of truth)
+but ends its task every ~6 ms (`pacer`; a no-op in the worker and in node):
+a step per way profile, per road-edge profile, per opened profile, per way
+scanned by `tunnels.ts planCutsSteps` (a generator `planCuts` drains
+unchanged, so the worker's plan is the same); plans share state so they run
+one at a time. `SurfaceIndex` skips polygons outside the search box before
+decoding and runs earcut on first use. Exactness pin: ownGround.test 'paced
+planning' (a task after every step places the same decks and cuts at four
+places, value for value). Jordaan, own: 1× longest frame 50.4 → 42.7 ms,
+frames over 50 ms 1 → 0; 4× largest ground continuation 115–171 → 19–22 ms,
+longest frame 199 → 151–160 ms, frames over 100 ms 13 → 7–10 (the rest is the
+engine render callback and cell-decode continuations; next split is
+`withOpenings` → `groundCrossing`, ~11 ms, in the water cell decode). The 1×
+target (no continuation over 16 ms) is inferred from 4× (~20 ms → ~5 ms); the
+browser records no long-animation-frame entry at 1×. Signature-landmarks
+`_requestModels` 393 → 629 ms at 4× was run-to-run spread, not a regression
+(paired bundle swap 804 vs 779 ms; a view-bucket index cut the node walk 430
+→ 145 models but moved nothing in the game, dropped); a real cut is to run
+the check only when a load slot frees or the shown/failed set changes (held,
+pinned once agreed). Camera shim: three-buildings `getZoom` 105/s → 0 (reads
+`worldCameraOf`), player-vehicles `getContainer` 37/s → 0 (asked once); left:
+engine `project` ~1600/s and inventory-trees. Integrator: the `canal-recall`
+year-only building spec faked the facts store with `lookup` only, so every
+default run since the lazy store (cd5be8a55) threw "store.ensureAt is not a
+function"; the fake now models the store. Raw runs in the lane's
+`artifacts/perf/r3-*.json`, `artifacts/camera-shim/r3-*.json`.
+
+**Binary road extract is Amsterdam's default; boot → submit owners named; phone own-ground store drops never-read inputs (2026-11-01, #130).**
+Road lane. `osm-loader.js` reads `roads-v2/streets-routing.bin.gz` for cities
+in `BINARY_ROAD_CITIES` (Amsterdam); `?roads=json` forces the JSON, the
+other cities read their JSON without a 404 first; any failure returns null
+and the JSON path runs. New gate: the published binary must match the shipped
+JSON (sha256 and decoded text); `test:canal-car` and `test:reachability` load
+the binary through `scripts/lib/routingFeatures.ts` (`ROADS=json` switches
+back): canal-car passes every named spot, reachability output byte-identical
+(Dam, Buikslotermeerplein, NDSM-werf, Oosterdokskade, Brug 228 in component
+0), canal-streets and city-startup pass. Warm fetchRoads: binary 63 ms vs
+JSON 205 on the default engine, 70 under own. What's New "Amsterdam's streets
+load three times faster". The `roadExtract` tests ran nowhere
+(`test:city-startup` passed the file to `check-road-setup-adapter`, which
+ignored it); they are in the node test list now (24/24). `street-follow-tap`
+fails on iphone 3/3 on main regardless of roads path: the seeded spawn is now
+on Amsteldijk on a straight path, so the spec's "waiting for a side" premise
+is stale (road lane fixes the premise). Boot → submit under own 0.84–1.03 s
+vs default 0.48–0.57: engine overview build 236 ms (part fixed:
+`lineGeometry` writes in place and `splitIntoTiles` scatters in one pass,
+byte-identical; engine boot 184 ms, median boot → submit 957 → 919 ms; the
+rest of the overview build off the boot path is L1's), three-buildings
+texture painting ≈ 117 ms, own-ground `makeMaterials` procedural noise ≈ 110
+ms, three.js shader programs ≈ 75 ms (materials); submit → racing under own
+1.36–1.56 s. Own-ground store on the phone: the main-thread store never
+builds a cell, so the OSM `areas` and the road cells' `kerbs`/`coverWays` it
+held were never read; a `prepareOnly` store option drops them (building on
+that store throws; prepare output unchanged over > 50k height samples plus
+decks, way decks and tunnel cuts): iPhone store 42.7 → 37.7 MB (reachable
+308.1 → 303.6), desktop 90.5 → 79.2 (436.1 → 424.9); what stays per cell is
+read by heights, way decks and tunnel cuts (relief 11.9 MB, OSM ways 5.7,
+road surfaces 6.2, cutWayCells 4.1). Shared frame on the iPhone: 94 MB, 48
+MB of it buffers (the 135 MB figure was desktop); scene CPU arrays facades
+27.6, landmarks 11.5, own-ground 2.9, players ≈ 1; the other ≈ 50 MB is
+three.js objects and materials.
+
 **Facade chunk tiles planned in the worker; signature-landmarks and building-tiles off the camera shim; the last 1× long frame named (2026-11-01, #129).**
 L1 hand-back (12). `cellTiles.ts` splits facade tiling into `planTiles` (the
 x/y partition and each tile's box, cut in the pool worker) and `finishTiles`

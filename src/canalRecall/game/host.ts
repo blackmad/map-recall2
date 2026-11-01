@@ -134,6 +134,8 @@ export interface LandmarkHost extends GameCoreHost {
   /** Construction year, type and listing for clicked buildings, loaded
    *  around the rider (`buildingFacts.ts`). */
   _buildingFacts?: import('../buildingFacts').BuildingFactStore;
+  /** Card ids whose fact tile is being asked for (landmarkRuntime `_requestBuildingFacts`): one request per card, never a chain. */
+  _factsInFlight?: Set<string>;
   _clickPoiInfo?: import('../clickPoiInfo').ClickPoiIndex | null;
   /** Street-side art and memorials a ground click can open (streetArt.ts). */
   _streetArt?: import('../streetArt').StreetArtIndex | null;

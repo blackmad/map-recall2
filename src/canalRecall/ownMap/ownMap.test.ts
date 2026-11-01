@@ -208,3 +208,33 @@ test('overview streets are packed (#130): the same classes, names and points as 
   const [p] = decodeOverview({ ...file, streets: [row] }).streets[0].points;
   assert.ok(Object.is(p[0], decodeLine(row, unit, 2)[0][0]) && Object.is(p[1], decodeLine(row, unit, 2)[0][1]));
 });
+
+// lineGeometry writes its quads in place (#130): every attribute and the index equal the per-vertex `set` version's,
+// over the shipped overview's streets of every class (and a degenerate zero-length segment).
+test('lineGeometry: in-place quads equal the per-vertex set version exactly', async () => {
+  const { lineGeometry } = await import('./layers');
+  const reference = (lines: readonly (readonly [number, number][])[]) => {
+    let segs = 0;
+    for (const l of lines) segs += Math.max(0, l.length - 1);
+    const pos = new Float32Array(segs * 12), dir = new Float32Array(segs * 8), corner = new Float32Array(segs * 8), idx = new Uint32Array(segs * 6);
+    let s = 0;
+    for (const l of lines) for (let i = 1; i < l.length; i++) {
+      const [ax, ay] = l[i - 1], [bx, by] = l[i];
+      const len = Math.hypot(bx - ax, by - ay) || 1, dx = (bx - ax) / len, dy = (by - ay) / len, v = s * 4;
+      const put = (k: number, x: number, y: number, side: number, ext: number) => { pos.set([x, y, 0], (v + k) * 3); dir.set([dx, dy], (v + k) * 2); corner.set([side, ext], (v + k) * 2); };
+      put(0, ax, ay, 1, -1); put(1, ax, ay, -1, -1); put(2, bx, by, 1, 1); put(3, bx, by, -1, 1);
+      idx.set([v, v + 1, v + 2, v + 1, v + 3, v + 2], s * 6);
+      s++;
+    }
+    return { pos, dir, corner, idx };
+  };
+  const data = decodeOverview(JSON.parse(gunzipSync(readFileSync('public/data/extracts/amsterdam/own-map-v1/overview.json.gz')).toString('utf8')) as OverviewFile);
+  const lines = [...data.streets.map(s => s.points as [number, number][]), [[5, 5], [5, 5], [9, 1]] as [number, number][]];
+  const g = lineGeometry(lines), want = reference(lines);
+  const same = (a: ArrayLike<number>, b: ArrayLike<number>) => a.length === b.length && Buffer.compare(Buffer.from(new Uint8Array((a as Float32Array).buffer)), Buffer.from(new Uint8Array((b as Float32Array).buffer))) === 0;
+  assert.ok(want.idx.length > 1_000_000, `${want.idx.length / 6} segments`);
+  assert.ok(same(g.getAttribute('position').array, want.pos), 'position');
+  assert.ok(same(g.getAttribute('aDir').array, want.dir), 'aDir');
+  assert.ok(same(g.getAttribute('aCorner').array, want.corner), 'aCorner');
+  assert.ok(same(g.index!.array, want.idx), 'index');
+});

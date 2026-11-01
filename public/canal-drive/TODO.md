@@ -1389,13 +1389,16 @@ Root `main` was cleaned on 2026-10-09 (see HISTORY). Live work, in order:
   thread; ARTIS is off the camera shim (B6 started). Streaming gate still
   open (HISTORY "Facade chunk tiles planned in the worker"): facade tiles
   are off the main thread (436 → 0 ms at 4×) but the 4× totals did not move;
-  the 1× frame over 50 ms is the `prepareCell` yield continuation for the
-  cell entering the ring (45–57 ms; 117–128 ms at 4×; L1 next: into the
-  ground worker or yields inside, exactness-pinned); `setFeatures` 606 /
-  `_applyChunkPandBases` 374 / `post` 219 ms at 4× (materials);
-  signature-landmarks `_requestModels` 393 → 629 ms at 4× unproven (L1 paired
-  run). Shim callers left: three-buildings `getZoom` 82/s, player-vehicles
-  `getContainer` (L1).
+  hand-back (13) paced `prepareCell` planning on the page (HISTORY "Ground
+  planning paced on the page"): 1× frames over 50 ms 1 → 0, the 4× ground
+  continuation 115–171 → 19–22 ms; the 4× worst frames are now the engine
+  render callback and cell-decode continuations (next split: `withOpenings`
+  → `groundCrossing` ~11 ms, L1); `setFeatures` 606 / `_applyChunkPandBases`
+  374 / `post` 219 ms at 4× (materials); signature-landmarks `_requestModels`
+  is run-to-run spread, not a regression (paired 804 vs 779 ms); gating it to
+  load-slot/shown-set changes is approved with an exactness pin on which
+  models get requested (L1). Shim callers left: engine `project` ~1600/s,
+  inventory-trees (L1).
   Idle rendering (fan) is fixed under own: render-on-change on main, 0
   renders per 5 s at rest; the default engine still renders every idle frame
   until the flip.
@@ -1410,8 +1413,14 @@ Root `main` was cleaned on 2026-10-09 (see HISTORY). Live work, in order:
   `scripts/heap-ride.mjs` is the measure.
 - **Time to ride under own ≈ 3.5 s median, three of six runs within 70 ms of
   the 4 s gate**: the settle hold waiting on facade chunks is the variance
-  (materials lane: spawn chunks first); boot → submit 0.9 s vs 0.53 default
-  is unprofiled (L1/road lane after). `compileAsync` "isReady of undefined"
+  (materials lane: spawn chunks first); boot → submit 0.84–1.03 s vs 0.48–0.57
+  default, owners named (HISTORY "Binary road extract is Amsterdam's
+  default"): engine overview build 184 ms after a first cut (rest off the
+  boot path: L1), three-buildings texture painting ≈ 117 ms, own-ground
+  procedural noise ≈ 110 ms, shader programs ≈ 75 ms (materials).
+- **`street-follow-tap` fails on iphone 3/3 on main** (binary, JSON and fresh
+  bundles alike): the seeded spawn is on Amsteldijk on a straight path, so
+  the "waiting for a side" premise is stale; the road lane re-pins the pose. `compileAsync` "isReady of undefined"
   after context loss, seen once (materials lane).
 - **Weak-GPU low tier cannot meet p95 ≤ 33 ms on SwiftShader** (HISTORY
   "Weak-GPU low tier"): its steady frame is ≈ 290 ms, triangle-bound, and no
