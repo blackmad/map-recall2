@@ -1912,5 +1912,17 @@
   "buildVersion": 2,
   "bytes": 58528,
   "triangles": 2438
+ },
+ "droogbak": {
+  "sourceHash": "1d5951e9bfd955c5",
+  "buildVersion": 2,
+  "bytes": 103148,
+  "triangles": 5139
+ },
+ "havengebouw": {
+  "sourceHash": "dfd315d58de38070",
+  "buildVersion": 2,
+  "bytes": 63936,
+  "triangles": 2857
  }
 }
