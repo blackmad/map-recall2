@@ -44,6 +44,8 @@ export class CityExtras {
   detailed: any = null;
   roofs: any = null;
   artis: any = null;
+  /** Street furniture from the open registers (street-furniture-source.js, lane #170); `?furniture=0` leaves it out. */
+  furniture: any = null;
   private roofFeatures: any[] = [];
   private treesVisible = false;
   private detailedVisible = false;
@@ -99,6 +101,14 @@ export class CityExtras {
         this.trees.load(h.extractPath());
       } catch (error) { h.fail('trees', error); }
     }
+    const furniture = W().CanalRecallStreetFurniture;
+    if (furniture?.StreetFurniture && furniture.furnitureFlag?.() !== false) {
+      try {
+        this.furniture = new furniture.StreetFurniture(h.cameraMap, h.mercator, { sharedFrame: h.sharedFrame, camera: h.cameraMap.api });
+        W().__canalStreetFurniture = this.furniture;
+        this.furniture.load(h.extractPath());
+      } catch (error) { h.fail('street furniture', error); }
+    }
     this.syncEnabled();
   }
 
@@ -128,7 +138,7 @@ export class CityExtras {
 
   /** The start flight holds what the driving view loaded; landing resumes (vector-map.js sync). */
   setSuspended(suspended: boolean): void {
-    for (const s of [this.signature, this.trees]) s?.setSuspended?.(suspended);
+    for (const s of [this.signature, this.trees, this.furniture]) s?.setSuspended?.(suspended);
   }
 
   /** Own ground: models and trees stand on the relief / decks (vector-map.js _syncOwnGroundConsumers). */
@@ -136,6 +146,7 @@ export class CityExtras {
     if (!ground?.ready || this.hookedGround === ground) return;
     this.hookedGround = ground;
     this.trees?.setGroundBase?.((lngLat: [number, number]) => ground.pointBase(lngLat));
+    this.furniture?.setGroundBase?.((lngLat: [number, number]) => ground.pointBase(lngLat));
     this.signature?.setGroundBase?.((anchor: [number, number], halfM: number) => ground.pointBase(anchor, halfM));
   }
   /**
@@ -146,6 +157,7 @@ export class CityExtras {
    */
   refreshGroundBases(now = performance.now()): void {
     this.trees?.refreshGroundBases?.();
+    this.furniture?.refreshGroundBases?.();
     this.landmarkRebaseDue = true;
     this.tick(now);
   }
