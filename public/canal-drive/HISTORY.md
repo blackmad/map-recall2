@@ -1,5 +1,35 @@
 # Canal Recall — what is built
 
+**Seeded-route stutter owners fixed (long tasks 10 → 0, longest frame 600 → 68 ms); render-on-change green under `?engine=own` (idle renders 755 → 0) (2026-11-01, #129).**
+L1 hand-back (7), measured on the real GPU (DPR 2, 1800×1100, headed, 60 s
+motion window). Four exact fixes in the own-ground preparation, each with
+byte-identical output across the city (95 cells for water and openings, 139
+for placed decks; `test:own-ground` 251/251): `openUnderFootbridges`'
+`inWater` skips polygons whose bbox does not hold the point (owned 350–584 ms
+tasks); `groundCrossing` buckets ground street and rail segments into a 32 m
+grid (≈ 210 ms); the deck-edge `RoadIndex` in `placeWayDecks` holds only
+polygons near the opened decks instead of the whole 3×3 (≈ 140 ms);
+`bandedInPolygon` tests the large canal polygons by y-bands, with a randomised
+test against the plain test (≈ 170 ms). City prepare run 25.1 → 5.6 s. Seeded
+route: long tasks 10 (2,008 ms) → 0, longest frame 600 → 68 ms, > 100 ms per
+minute 5 → 0, p99 16.3 → 10.4 ms: the P3 gate at 1× is met there. Jordaan:
+7 (462 ms) → 2 (108 ms) long tasks, longest 92 → 75 ms, p99 17.0 under load
+5.1; the remaining owners are all ≤ 55 ms (`_applyChunkPandBases` on a new
+street chunk, three-buildings `setFeatures`/`t4`, `splitIntoTiles`/`cutMesh`,
+render pass, GC); 4× not measured this round. The own ground is the default
+ground, so this is a What's New ("Long routes no longer freeze as canals and
+bridges load"). Render-on-change, own engine only: `CameraMap.jumpTo` ignores
+sub-millimetre jumps (a rider at rest creeps ≈ 1e-5 px per frame in the
+legacy physics and caused 120 renders per 2 s; drift past the tolerance is
+still applied, unit-tested) and the vehicles draw a pose snapshot taken only
+when the rounded pose key changes, so wheel and lean easing below the
+rounding moves no pixels. Idle: 0 renders per 5 s (755 before), renderer CPU
+21–92 % vs 55–187 % with `?renderOnChange=0`, the still frame pixel-identical
+to a redraw; `render-on-change.spec` compares the engine canvas only because
+the HUD fades on its own clock. Not done: separate GPU ms for the overview
+fills (superseded by the materials lane's spans), `pop-in.mjs` under both
+engines, the P5 steps.
+
 **Heap at ride start under `?engine=own&world=v1&roads=bin`: desktop 562–581 → 493 MB, the P3 gate (≤ 500 MB) met; iPhone 384 → 359 MB (2026-11-01, #130).**
 Measured with forced GC by `scripts/heap-ride.mjs` (the `engine-own.spec`
 `heapMB` reads without a GC and swings 443–1,341 MB between identical runs, so
