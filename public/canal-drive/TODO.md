@@ -96,7 +96,7 @@ sheet's IN GAME column and the gallery card work again in lane worktrees
 a POI or destination for De Roos, a blind counter on
 `de-roos-elevations.json`, a "free-standing glazing" class in audit:glb so
 serres and timber screens are not fitted to the ochre and green slots to
-dodge the opening count, and a FIFO queue for `/tmp/canal-pw.sh` (one job
+dodge the opening count, and a FIFO queue for `/tmp/canal-pw.sh` (two shared slots since 2026-11-01, exclusive mode for timings; one job
 waited 3 h behind 25 others today; the lock is not fair).
 
 **City look, after the flip (2026-10-30, #137 = A, HISTORY "City look on by
@@ -272,6 +272,11 @@ palette themes (Google tiles are being deleted). **Not done:** the 2026-10-10
 re-port (own picker, overview extract with rail/footway/landuse, ~2.7k lines)
 and the step-6 `_makeLayer` / `SHARED_FRAME_DEFAULT` deletions.
 State: **L4 world streamer steps 1–3 merged 2026-10-30** (#136, `4b63096e1`):
+Gate restated 2026-11-01 (user: "do we actually need pixel A/B at zero?",
+no): structural equality of the styled building set at the five spots in
+node (zero tolerance) plus a pixel check with the player frozen and the
+shadow camera pinned, 0 px over 30, sub-30 speckle counted not chased
+(materials). The earlier wording:
 `?world=v1` is identical to the default path in the browser (five spots,
 desktop and iPhone: same feature ids and styled features per tile; Node
 `world:verify` 295 tiles / 349,220 buildings / 0 differ). The four-tile
@@ -318,8 +323,9 @@ are built behind `--height-step=0.1` / `--eaves-step=0.1` but HELD: the
 fixed-camera A/B shows 7–29 K px over 30 vs a 0.1–1.3 K floor because the
 runtime derives storeys, window rows and the facade kit from the fine value
 (a Westerkerk brick gable turned grey). A safe variant would round only where
-the derived storey/kit decision is unchanged; parked. The gate stays red by
-decision (no lossy footprints). Next for L4 (sent): ride-start heap sample and the owners
+the derived storey/kit decision is unchanged; parked. Decision 2026-11-01
+(user delegated): the city gate moves to ≤ 9.5 MB gzip lossless (met at
+8.92); the per-ride ≤ 2 MB gate is the binding one; no more byte cuts. Next for L4 (sent): ride-start heap sample and the owners
 (12/18/24/36 resident cells, one decoded cell shared across tiles,
 transfer not copy), then chunk and own-ground builds onto the pool so
 `chunkBuildQueue.ts`, `ownGround/residency.ts`, `rendererShared/residency.ts`
@@ -384,7 +390,7 @@ not run it.
 
 **Next neighbourhood kits (user, 2026-10-26):** in order De Pijp, Oud-West (Kinkerstraat/Bilderdijkstraat), the Jordaan, Oud-Zuid, then Dapperbuurt and Indische Buurt. Use the #81 block-face kit method. No more outer-estate rounds for now.
 
-**Transvaalbuurt round 4, next (user, 2026-11-01; rounds 1–3 in HISTORY "Transvaalbuurt kit", "round 2", "round 3"):** the buurt shows the 1923 portiek row on Albert Luthulistraat 25–39 and ten 1911 pands on Retiefstraat 69–73 and Pretoriusstraat 79–90; 284 Oost pands and 36 West pands are compared and held. Kit work that would release the most held pands, in order: (1) the low shouldered gable of the 1911 rows (the kit's point gable is steeper and taller; Retiefstraat 71D–73A are drawn with it today) and a gable over part of a five-axis front (Paardekraalstraat 13–15); (2) a crown shared across two pands (Transvaalstraat 42–44); (3) a white timber dormer whose glass stays inside the roof plane (Transvaalstraat 39–45A fail the GLB audit opening-outside with it); (4) the pointed gablet with an oculus over Pretoriusstraat 79–87 (drawn bare); (5) the 1923 design's stair-only (5.6 m) and window-only (10 m) BAG pands (Schalk Burgerstraat 18, 28). `bilder-157757-164549` carries the same 0.9 m² rake overlap `roof.rakeClear` fixes; opt it in when that face is next recompiled. Families still without a type (pands West+Oost): 1929–1931 corner-tower blocks 123, 1920–1922 three-storey rows 80 (+44 taller), 1926–1928 band-window rows 53, 1915–1919 58, after 1931 99; and a flat-roof-with-setback crown for the 1923 design (its grey pitched roof is the largest visible gap on the installed row). The buurt batch skips faces marked `covered` in the buurt doc (`transvaal-3-47`, `transvaal-49-63`, `pretorius-53-69`); `transvaal-3-47` was re-run by hand and is held. Lane state: `docs/handoffs/lane-transvaalbuurt-install-3-20261101.md`; strips in source-data `block-face-strips/transvaalbuurt-round3/`. The face split at bends (`buurtFaces.ts`) also changes faces that fail intake today in Bloemgrachtbuurt and Kinkerstraat; their survey JSONs were not regenerated.
+**Transvaalbuurt round 4, in flight as four lanes (user, 2026-11-01 "okay do that"; rounds 1–3 in HISTORY "Transvaalbuurt kit", "round 2", "round 3"):** the funnel after round 3 (both buurten, 848 pands on 174 photographed faces; another 174 faces have no usable strip): 380 vetoed on build year because only two of seven families have a type, 26 vetoed on frontage, 78 fit no type on facts, 74 without photo evidence on the pand, 80 compared and failed likeness, 57 lone pands between held neighbours, 23 runs did not compile, 41 held at review, 13 installed. Lanes, one worktree each: #153 `lane/transvaalbuurt-1929-blocks-20261101` (1929–1931 blocks with corner towers, 120 pands, 22 faces; Vaalrivierstraat 1931 three-storey rows), #154 `lane/transvaalbuurt-1920-rows-20261101` (1920–1922 three-storey rows ~60 pands and 1921–1922 five-storey rows ~44), #155 `lane/transvaalbuurt-1926-rows-20261101` (1926–1928 band-window rows, 50 pands, 8 faces), #156 `lane/transvaalbuurt-1911-variants-20261101` (low shouldered gable, one gable over two pands, in-plane white dormer, per-type lone-pand opt-in for stair blocks ≥ 5 m). Briefs in `docs/handoffs/lane-transvaalbuurt-<name>-20261101.md`. At integration: placement and per-face auto-place records are regenerated after the merge, chunks.json and review-holds merged as unions, then roof goldens per run, exposure rows (run strips copied into the integrator staging first), covers, signature-placement bundle, buurt pages, check:canal. Still open after these: the 1923 design's stair-only and window-only BAG pands (Schalk Burgerstraat 18, 28), the oculus gablet of Pretoriusstraat 79–87, a flat-roof-with-setback crown for the installed 1923 row (unless #153/#155 add it), `bilder-157757-164549` opting into `roof.rakeClear`, the 1915–1919 (58) and post-1931 (99) pands, and the 174 faces without a usable strip. The buurt batch skips faces marked `covered` in the buurt doc (`transvaal-3-47`, `transvaal-49-63`, `pretorius-53-69`). The face split at bends (`buurtFaces.ts`) also changes faces that fail intake today in Bloemgrachtbuurt and Kinkerstraat; their survey JSONs were not regenerated.
 
 **Next lane: large-recipe roof clean-up (#87, user yes 2026-10-26).** 3DBAG slivers and stray flat levels on the large models' roofs: 20 installed houses have many slivers and 77 have 6 or more flat levels. Warmoesstraat 157-163 and Van Eeghenstraat 97-101 were flagged. The plan is in the issue.
 
@@ -1415,12 +1421,14 @@ Root `main` was cleaned on 2026-10-09 (see HISTORY). Live work, in order:
   renders per 5 s at rest; the default engine still renders every idle frame
   until the flip.
 - **Heap gates** (HISTORY "Phone heap cuts"): desktop 436 MB meets ≤ 500;
-  iPhone 305 MB against ≤ 160 stays red. Owners left on the phone: shared
-  frame 135 MB (88 MB buffers; materials/L1), own-ground store 43 (road lane
-  next: per-cell contents and never-read copies), building cache 33, track
-  24, overview 20, landmark CPU arrays 24–36, facades 14 (materials). Held
-  product option: 6 phone building tiles instead of 9 (user's call, a look
-  trade). `no-maplibre.bundle.js` has no npm build script (old overview
+  iPhone 305 MB against ≤ 250 (moved from 160 on 2026-11-01, user
+  delegated: 160 assumed the post-flip state without MapLibre's duplicate
+  building source and workers; re-evaluated after the flip). Owners left on
+  the phone: shared frame 135 MB (88 MB buffers; materials/L1), own-ground
+  store 43 (road lane: per-cell contents and never-read copies), building
+  cache 33, track 24, overview 20, landmark CPU arrays 24–36, facades 14
+  (materials). Taken: 6 phone building tiles instead of 9 (road lane, after
+  the spawn-pose item; pop-in gate re-measured on the phone profile). `no-maplibre.bundle.js` has no npm build script (old overview
   decoder inside, still works): add one before the flip. `engine-own.spec`'s `heapMB` is noise without a GC;
   `scripts/heap-ride.mjs` is the measure.
 - **Time to ride under own ≈ 3.5 s median, three of six runs within 70 ms of
