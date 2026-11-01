@@ -75,9 +75,10 @@ export function calmBayLayers(colour: Uint8Array, mask: Uint8Array, layers: numb
 /**
  * Paint a look's arrays on the main thread, in `sliceMs` slices. `slotLayers` paints the city look's material-slot
  * layers (look/cityLook.ts `paintSlotLayers`) after the bay cells (`?cityLook=1` in the shared frame); a caller may
- * pass them already painted instead (`true` paints them here). Byte for byte what buildLookTextures always uploaded.
+ * pass them already painted instead (`true` paints them here). `sliceMs` may be a function, read at every yield (the
+ * settle hold lengthens the slices while it waits). Byte for byte what buildLookTextures always uploaded.
  */
-export async function paintLookArrays(look: 'procedural' | Look, size = CELL_PX, options: { slotLayers?: boolean | { colour: Uint8Array; mask: Uint8Array }; sliceMs?: number } = {}): Promise<LookAtlasArrays> {
+export async function paintLookArrays(look: 'procedural' | Look, size = CELL_PX, options: { slotLayers?: boolean | { colour: Uint8Array; mask: Uint8Array }; sliceMs?: number | (() => number) } = {}): Promise<LookAtlasArrays> {
   if (size !== CELL_PX && size !== CELL_PX / 2) throw new Error('Unsupported building texture size');
   const slotLayers = options.slotLayers === true ? paintSlotLayers(document, await loadCityBrick(document), size) : options.slotLayers || undefined;
   const { layers, total } = lookAtlasLayers(look, !!slotLayers);
@@ -87,7 +88,8 @@ export async function paintLookArrays(look: 'procedural' | Look, size = CELL_PX,
   if (slotLayers) { colour.set(slotLayers.colour, px * 4 * layers); mask.set(slotLayers.mask, px * 2 * layers); }
   let batchStart = performance.now();
   const yieldBudget = async () => {
-    if (performance.now() - batchStart < (options.sliceMs ?? TEXTURE_SLICE_MS)) return;
+    const slice = typeof options.sliceMs === 'function' ? options.sliceMs() : options.sliceMs;
+    if (performance.now() - batchStart < (slice ?? TEXTURE_SLICE_MS)) return;
     await new Promise<void>(resolve => setTimeout(resolve, 0));
     batchStart = performance.now();
   };

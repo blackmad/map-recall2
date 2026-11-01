@@ -47,7 +47,7 @@ import { PROCEDURAL_RECIPE_LAYER_OFFSET } from './streetFacadeRendering.js';
 import { buildingProjectionScale } from './buildingProjectionScale.js';
 import { createFacadeDepthMaterial, createLitFacadeMaterial } from './rendererShared/litFacadeMaterial.js';
 import { HIDDEN, HIGHLIGHT_GLSL, attachHighlightPasses, detachHighlightPasses, footprintCentroid, highlightDefines, highlightRecipe, mPerDegLng, DESATURATE_RADIUS_M, type HighlightFocus, type LngLat } from './look/highlight.js';
-import { ROOF_LAYER_COUNT, RESTORE_TEXTURE_SLICE_MS, calmBayLayers, lookAtlasLayers, paintLookArrays, type LookAtlasArrays } from './look/paintLookAtlas.js';
+import { ROOF_LAYER_COUNT, RESTORE_TEXTURE_SLICE_MS, TEXTURE_SLICE_MS, calmBayLayers, lookAtlasLayers, paintLookArrays, type LookAtlasArrays } from './look/paintLookAtlas.js';
 import { loadLookAtlas, lookAtlasStamp, readCachedLookAtlas, storeCachedLookAtlas } from './look/lookAtlas.js';
 import { SLOT_LAYER_COUNT, cityLookEnabled, createCityLookMaterial, createCityUniforms, getCityLook, loadCityBrick, paintSlotLayers } from './look/cityLook.js';
 import { boundingSphereOf } from './geometryBounds.js';
@@ -240,7 +240,7 @@ export type ThreeBuildingStats = { kitVertices: number; chunks: number; building
  * appended after the bay cells; `slotBase` is where they start. Without it the arrays are
  * exactly the bay cells, as before. Painting is look/paintLookAtlas.ts `paintLookArrays`.
  */
-export async function buildLookTextures(THREE: any, look: 'procedural' | Look, maxAnisotropy: number, size = CELL_PX, options: { slotLayers?: boolean | { colour: Uint8Array; mask: Uint8Array }; sliceMs?: number } = {}): Promise<{ colour: any; mask: any; slotBase: number }> {
+export async function buildLookTextures(THREE: any, look: 'procedural' | Look, maxAnisotropy: number, size = CELL_PX, options: { slotLayers?: boolean | { colour: Uint8Array; mask: Uint8Array }; sliceMs?: number | (() => number) } = {}): Promise<{ colour: any; mask: any; slotBase: number }> {
   return lookTexturesOf(THREE, await paintLookArrays(look, size, options), maxAnisotropy);
 }
 
@@ -332,6 +332,14 @@ export class ThreeBuildings {
   private textureSets = new Map<BuildingLook, Promise<{ colour: any; mask: any; slotBase: number }>>();
   /** `?cityLook=1`: facades draw with the city look (look/cityLook.ts) and their array carries the slot layers. */
   private readonly cityLook = cityLookEnabled();
+  /** Painting slice while something waits on the facades (hurryAtlas); undefined: the first-load slice. */
+  private atlasSliceMs: number | undefined;
+  /**
+   * The settle hold is waiting on the facades (engine/settle.ts): paint the rest of the atlas in restore-sized slices.
+   * Behind the loading screen nothing is riding, and at 6 ms slices the ~0.4 s paint stretched to ~3 s of wall time
+   * against the boot's other tasks (cache-probe, 2026-11-01). Same pixels.
+   */
+  hurryAtlas(): void { if (!this.ready) this.atlasSliceMs = RESTORE_TEXTURE_SLICE_MS; }
   /** Where the facade atlas came from (look/lookAtlas.ts): the pre-painted extract, or why it was painted. */
   atlasSource: { reason: string; ms: number; file: string; paintMs?: number } | null = null;
   private lookToken = 0;
@@ -552,6 +560,7 @@ export class ThreeBuildings {
     this.look = look;
     this.bindLookMaterial(look, set);
     this.ready = true;
+    this.atlasSliceMs = undefined;
     const staged = new Set(this.staged.map(s => s.key));
     for (const [key, source] of this.sourceGroups) {
       if (same && (this.inflight.has(key) || staged.has(key) || this.pending.has(key))) continue;
@@ -583,7 +592,7 @@ export class ThreeBuildings {
     this.atlasSource = { reason: load.reason, ms: Math.round(load.ms), file: load.file };
     if (load.atlas) return lookTexturesOf(this.THREE, load.atlas, anisotropy);
     const paintStarted = performance.now();
-    const painted = await paintLookArrays(look, size, { slotLayers: slots, sliceMs });
+    const painted = await paintLookArrays(look, size, { slotLayers: slots, sliceMs: () => this.atlasSliceMs ?? sliceMs ?? TEXTURE_SLICE_MS });
     this.atlasSource.paintMs = Math.round(performance.now() - paintStarted);
     storeCachedLookAtlas(stamp, painted, look, slots);
     return lookTexturesOf(this.THREE, painted, anisotropy);

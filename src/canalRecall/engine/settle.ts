@@ -12,7 +12,7 @@ export interface SettleSources {
   _overview: unknown;
   status: Record<string, unknown>;
   _ownGround: { ready?: boolean; loadingCells?: number; coversRect?(x0: number, y0: number, x1: number, y1: number): boolean } | null;
-  _threeBuildings: { loadingCount?: number } | null;
+  _threeBuildings: { loadingCount?: number; hurryAtlas?(): void } | null;
   _completeCity?: { status?(): { inFlight: number; queued: number } } | null;
   _signatureLandmarks?: { _pending?: { size: number } } | null;
 }
@@ -40,7 +40,8 @@ export function settleChecks(v: SettleSources): Array<[string, () => boolean]> {
       return !g.coversRect(x - r, y - r, x + r, y + r);
     }],
     ['buildingTiles', () => { const s = v._completeCity?.status?.(); return !!s && s.inFlight + s.queued > 0; }],
-    ['facades', () => (v._threeBuildings?.loadingCount ?? 0) > 0],
+    // Asked only while something waits on the view: the facades then finish their atlas in longer slices.
+    ['facades', () => { v._threeBuildings?.hurryAtlas?.(); return (v._threeBuildings?.loadingCount ?? 0) > 0; }],
     ['landmarks', () => (v._signatureLandmarks?._pending?.size ?? 0) > 0],
   ];
 }
