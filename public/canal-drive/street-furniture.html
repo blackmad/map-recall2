@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en"><head>
+<meta name="robots" content="noindex"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Street furniture</title>
+<style>
+:root{--bg:#f4f1e8;--ink:#2b2622;--mut:#6d655b;--card:#fffdf8;--line:#ddd5c4;--accent:#9a4a2e}
+@media (prefers-color-scheme:dark){:root{--bg:#1f1c18;--ink:#eee8da;--mut:#a39a8a;--card:#2a2621;--line:#3b362e;--accent:#e08a62}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 system-ui,-apple-system,Segoe UI,sans-serif}
+header,main{max-width:1180px;margin:0 auto;padding:0 16px}header{padding-top:28px}
+h1{margin:0 0 4px;font-size:26px}header p{color:var(--mut);margin:4px 0 14px;max-width:72ch}
+nav a{color:var(--accent);margin-right:14px;font-size:14px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,340px),1fr));gap:14px;margin:18px 0 40px}
+article{background:var(--card);border:1px solid var(--line);border-radius:12px;overflow:hidden;display:flex;flex-direction:column}
+article:target{outline:2px solid var(--accent)}
+.pair{display:grid;grid-template-columns:1fr 1fr;gap:2px;background:var(--line)}
+.pair canvas,.pair img,.pair .none{display:block;width:100%;aspect-ratio:4/5;object-fit:cover;background:#d9d4c8}
+.pair .none{display:flex;align-items:center;justify-content:center;color:var(--mut);font-size:12px;padding:8px;text-align:center}
+canvas{cursor:grab;touch-action:pan-y}
+.body{padding:10px 14px 14px}
+h2{margin:0;font-size:17px}
+.meta{color:var(--mut);font-size:13px;margin:2px 0 8px}
+h3{font-size:12px;text-transform:uppercase;letter-spacing:.04em;color:var(--mut);margin:10px 0 2px}
+ul{margin:0;padding-left:18px;font-size:13.5px}
+.src{font-size:12px;color:var(--mut);margin-top:10px;overflow-wrap:anywhere}
+.src a{color:var(--accent)}
+</style></head><body>
+<header>
+  <nav><a href="whats-new.html">What's new</a><a href="index.html">Play the game</a></nav>
+  <h1>Street furniture</h1>
+  <p id="intro">Objects the city registers on its streets (underground waste containers, lamp posts, tram shelters, advertising columns, bike hoops), modelled once each from measured street panoramas and placed in the ride wherever the open registers put them. Drag a model to turn it; the photo is the Gemeente Amsterdam panorama it was measured from.</p>
+</header>
+<main><div class="grid" id="grid" aria-live="polite"></div></main>
+<script src="./js/three.bundle.js"></script>
+<script>
+const { THREE: T, GLTFLoader } = window.CanalRecallThree;
+const fmt = n => Number(n || 0).toLocaleString('en');
+window.streetFurniturePage = { ready: false, drawn: [] };
+const renderer = new T.WebGLRenderer({ antialias: true, alpha: true });
+const scene = new T.Scene();
+scene.add(new T.HemisphereLight(0xffffff, 0x8a8170, 2.2));
+const sun = new T.DirectionalLight(0xfff1d6, 2.4); scene.add(sun);
+const camera = new T.PerspectiveCamera(30, 1, 0.05, 200);
+const cards = [];
+function draw(c) {
+  if (!c.model) return;
+  const w = Math.max(1, c.canvas.clientWidth), h = Math.max(1, c.canvas.clientHeight), dpr = Math.min(devicePixelRatio || 1, 2);
+  if (c.canvas.width !== Math.round(w * dpr)) { c.canvas.width = Math.round(w * dpr); c.canvas.height = Math.round(h * dpr); }
+  renderer.setPixelRatio(dpr); renderer.setSize(w, h, false); renderer.setClearColor(0, 0);
+  camera.aspect = w / h; camera.updateProjectionMatrix();
+  camera.position.set(c.target.x + c.distance * Math.sin(c.theta) * Math.sin(1.15), c.target.y + c.distance * Math.cos(1.15), c.target.z + c.distance * Math.cos(c.theta) * Math.sin(1.15));
+  camera.lookAt(c.target);
+  sun.position.set(Math.sin(c.theta - .7) * 10, 14, Math.cos(c.theta - .7) * 10);
+  scene.add(c.model); renderer.render(scene, camera); scene.remove(c.model);
+  const ctx = c.canvas.getContext('2d'); ctx.clearRect(0, 0, c.canvas.width, c.canvas.height); ctx.drawImage(renderer.domElement, 0, 0, c.canvas.width, c.canvas.height);
+  if (!c.drawn) { c.drawn = true; window.streetFurniturePage.drawn.push(c.id); }
+}
+function card(m) {
+  const art = document.createElement('article'); art.id = m.id;
+  const pair = document.createElement('div'); pair.className = 'pair';
+  const canvas = document.createElement('canvas'); canvas.setAttribute('role', 'img'); canvas.setAttribute('aria-label', `3D model of the ${m.name}. Drag to rotate.`);
+  pair.append(canvas);
+  if (m.photo) {
+    const img = document.createElement('img'); img.loading = 'lazy'; img.alt = `Panorama of a ${m.name.toLowerCase()} (${m.photo.panoId})`; img.src = m.photo.thumbnail;
+    img.onerror = () => { const d = document.createElement('div'); d.className = 'none'; d.textContent = 'Panorama unavailable'; img.replaceWith(d); };
+    pair.append(img);
+  } else { const d = document.createElement('div'); d.className = 'none'; d.textContent = 'No panorama view (dimensions are priors)'; pair.append(d); }
+  const body = document.createElement('div'); body.className = 'body';
+  body.innerHTML = '<h2></h2><p class="meta"></p><h3>Measured</h3><ul class="measured"></ul><h3>Priors</h3><ul class="prior"></ul><p class="src"></p>';
+  body.querySelector('h2').textContent = m.name;
+  body.querySelector('.meta').textContent = `${fmt(m.triangles)} triangles · ${fmt(m.instances)} placed in the ride · ${m.subtypes}`;
+  const list = (sel, items) => { const ul = body.querySelector(sel); for (const t of items.length ? items : ['none']) { const li = document.createElement('li'); li.textContent = t; ul.append(li); } };
+  list('.measured', m.measured || []); list('.prior', m.prior || []);
+  const src = body.querySelector('.src');
+  src.append(`Source: ${m.source}.`);
+  if (m.photo) { src.append(' Photo: '); const a = document.createElement('a'); a.href = m.photo.thumbnail; a.textContent = `${m.photo.panoId}, ${m.photo.distanceM} m`; src.append(a, ` (${m.photo.licence}).`); }
+  art.append(pair, body);
+  const c = { id: m.id, canvas, model: null, target: new T.Vector3(), distance: 5, theta: 0.7, drawn: false };
+  let last = null;
+  canvas.addEventListener('pointerdown', e => { last = e.clientX; canvas.setPointerCapture(e.pointerId); });
+  canvas.addEventListener('pointerup', () => { last = null; });
+  canvas.addEventListener('pointermove', e => { if (last == null) return; c.theta -= (e.clientX - last) * 0.01; last = e.clientX; draw(c); });
+  new GLTFLoader().load(m.modelUrl, gltf => {
+    const box = new T.Box3().setFromObject(gltf.scene); box.getCenter(c.target);
+    c.distance = box.getSize(new T.Vector3()).length() * 1.9; c.model = gltf.scene; draw(c);
+  }, undefined, () => { canvas.replaceWith(Object.assign(document.createElement('div'), { className: 'none', textContent: 'Model unavailable' })); });
+  cards.push(c);
+  return art;
+}
+fetch('./street-furniture/catalogue.json').then(r => r.json()).then(cat => {
+  const grid = document.getElementById('grid');
+  for (const m of cat.models) grid.append(card(m));
+  document.getElementById('intro').append(` ${fmt(cat.instances)} objects placed from ${cat.models.length} models; registers retrieved ${String(cat.extractRetrievedAt || '').slice(0, 10)}.`);
+  window.streetFurniturePage.ready = true;
+  if (location.hash) document.getElementById(location.hash.slice(1))?.scrollIntoView();
+  const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let t0 = 0;
+  const tick = t => { if (!reduced && !document.hidden && t - t0 > 40) { t0 = t; for (const c of cards) { c.theta += 0.012; draw(c); } } requestAnimationFrame(tick); };
+  requestAnimationFrame(tick);
+});
+</script>
+</body></html>

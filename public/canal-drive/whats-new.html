@@ -103,6 +103,7 @@
     <a href="manual-landmarks.html">Landmark models</a>
     <a href="manual-ordinary-buildings.html">Ordinary buildings</a>
     <a href="street-surveys.html">Kit rows</a>
+    <a href="street-furniture.html">Street furniture</a>
     <a href="coverage.html">Buurt coverage</a>
     <a href="landmark-queue.html">Building queue</a>
     <a href="park-landscape.html">Park views</a>
@@ -120,6 +121,7 @@
       <div class="stat"><b data-k="survey">&ndash;</b><span>houses in kit rows</span></div>
       <a class="stat" href="designs.html"><b data-k="designs">&ndash;</b><span>houses from repeated designs</span></a>
       <div class="stat"><b data-k="kits">&ndash;</b><span>landmark kits</span></div>
+      <a class="stat" href="street-furniture.html"><b data-k="furniture">&ndash;</b><span id="furnitureNote">street furniture models</span></a>
       <div class="stat"><b data-k="tris">&ndash;</b><span>triangles in total</span></div>
       <div class="stat fresh"><b data-k="week">&ndash;</b><span id="weekNote">new this week</span></div>
     </div>
@@ -132,6 +134,7 @@
       <button type="button" data-kind="landmark" aria-pressed="false">Landmarks</button>
       <button type="button" data-kind="ordinary" aria-pressed="false">Ordinary</button>
       <button type="button" data-kind="street-survey" aria-pressed="false">Kit rows</button>
+      <button type="button" data-kind="street-furniture" aria-pressed="false">Street furniture</button>
     </div>
     <label class="search"><input id="q" type="search" placeholder="Search by name" aria-label="Search by name" autocomplete="off"></label>
     <span class="count" id="count" role="status"></span>
@@ -300,8 +303,8 @@ document.addEventListener('visibilitychange', () => { if (document.hidden && raf
 
 // ---------- DOM
 // Taxonomy: src/canalRecall/buildingCategory.ts. Only `landmark` counts as a landmark.
-const KIND_LABEL = { landmark: 'Landmark', ordinary: 'Ordinary', 'street-survey': 'Kit row' };
-const KIND_LONG = { landmark: 'Landmark', ordinary: 'Ordinary building', 'street-survey': 'Kit row (block face)' };
+const KIND_LABEL = { landmark: 'Landmark', ordinary: 'Ordinary', 'street-survey': 'Kit row', 'street-furniture': 'Street furniture' };
+const KIND_LONG = { landmark: 'Landmark', ordinary: 'Ordinary building', 'street-survey': 'Kit row (block face)', 'street-furniture': 'Street furniture' };
 function makeCard(item, isNew) {
   const art = document.createElement('article');
   art.className = 'card';
@@ -322,7 +325,7 @@ function makeCard(item, isNew) {
   const h = document.createElement('h3'); h.textContent = item.name;
   const meta = document.createElement('p'); meta.className = 'meta';
   const when = item.date ? item.date.toLocaleTimeString('en', { hour: '2-digit', minute: '2-digit' }) + ' · ' : '';
-  meta.textContent = `${when}${KIND_LONG[item.kind] || 'Ordinary building'} · ${fmt(item.triangles)} triangles`;
+  meta.textContent = `${when}${KIND_LONG[item.kind] || 'Ordinary building'} · ${fmt(item.triangles)} triangles${item.instances != null ? ` · ${fmt(item.instances)} placed` : ''}`;
   body.append(h, meta);
   const links = document.createElement('div'); links.className = 'links';
   const a1 = document.createElement('a'); a1.href = item.gallery; a1.textContent = 'Open in gallery';
@@ -456,11 +459,12 @@ function renderChanges(notes) {
 }
 async function init() {
   fetchJson('./whats-new-notes.json').then(j => renderChanges(j.notes)).catch(() => {});
-  const [dates, firstAddedJson, sig, ord, queueJson, chunkJson] = await Promise.all([
+  const [dates, firstAddedJson, sig, ord, queueJson, chunkJson, furnitureJson] = await Promise.all([
     fetchJson('./models/model-dates.json'), fetchJson('./models/model-first-added.json').catch(() => ({ models: {} })),
     fetchJson('./models/signature-landmarks.json'),
     fetchJson('./ordinary-buildings-data/catalogue.json'), fetchJson('./poi-work-queue.json').catch(() => ({ tasks: [] })),
     fetchJson('./ordinary-buildings-data/chunks.json').catch(() => ({ chunks: [] })),
+    fetchJson('./street-furniture/catalogue.json').catch(() => ({ models: [] })),
   ]);
   fetchJson('./data/content-stats.json').then(j => { const n = j.stats?.kitBuildings?.count; if (n) $('[data-k="designs"]').textContent = fmt(n); }).catch(() => {});
   fetchJson('./landmark-census.json').then(j => { const n = j.byTier?.landmarkKit?.models; if (n) $('[data-k="kits"]').textContent = fmt(n); }).catch(() => {});
@@ -506,6 +510,15 @@ async function init() {
       gallery: category === 'street-survey' ? `./street-surveys.html#${encodeURIComponent(m.id)}` : `./manual-ordinary-buildings.html?only=${encodeURIComponent(m.id)}`,
     });
   }
+  // Street furniture (buildingCategory 'street-furniture', lane #170): one card per model, placed by the open registers.
+  for (const m of furnitureJson.models || []) {
+    const iso = installed(m.modelUrl);
+    items.push({
+      id: `furniture-${m.id}`, kind: 'street-furniture', name: m.name || m.id, modelUrl: m.modelUrl, triangles: m.triangles || 0, instances: m.instances || 0,
+      date: iso && Number.isFinite(Date.parse(iso)) ? new Date(iso) : null, lng: null, lat: null,
+      photo: m.photo?.thumbnail, gallery: `./street-furniture.html#${encodeURIComponent(m.id)}`,
+    });
+  }
   items.sort((a, b) => (b.date ? b.date.getTime() : -Infinity) - (a.date ? a.date.getTime() : -Infinity) || a.name.localeCompare(b.name));
   state.items = items;
 
@@ -519,7 +532,10 @@ async function init() {
   const set = (k, v) => { $(`[data-k="${k}"]`).textContent = v; };
   const surveys = items.filter(i => i.kind === 'street-survey').length;
   const surveyHouses = items.filter(i => i.kind === 'street-survey').reduce((s, i) => s + (i.houses || 1), 0);
-  set('landmarks', fmt(landmarks)); set('ordinary', fmt(items.length - landmarks - surveys)); set('survey', fmt(surveyHouses));
+  const furniture = items.filter(i => i.kind === 'street-furniture');
+  set('landmarks', fmt(landmarks)); set('ordinary', fmt(items.length - landmarks - surveys - furniture.length)); set('survey', fmt(surveyHouses));
+  set('furniture', fmt(furniture.length));
+  if (furniture.length) $('#furnitureNote').textContent = `street furniture models \u00b7 ${fmt(furniture.reduce((s, i) => s + i.instances, 0))} placed`;
   set('tris', fmt(items.reduce((s, i) => s + i.triangles, 0))); set('week', fmt(week));
   const midnight = new Date(); midnight.setHours(0, 0, 0, 0);
   const today = items.filter(i => i.date && i.date >= midnight).length;

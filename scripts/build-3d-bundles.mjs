@@ -31,6 +31,12 @@ const targets = [
     globalName: 'CanalRecallInventoryTrees',
   },
   {
+    // Street furniture from the open registers (lane #170); cityExtras.ts builds it under ?engine=own.
+    entry: 'public/canal-drive/js/street-furniture-source.js',
+    out: 'public/canal-drive/js/street-furniture.bundle.js',
+    globalName: 'CanalRecallStreetFurniture',
+  },
+  {
     entry: 'public/canal-drive/js/facade-recipe-source.js',
     out: 'public/canal-drive/js/facade-recipe.bundle.js',
     globalName: 'CanalRecallRecipe',
