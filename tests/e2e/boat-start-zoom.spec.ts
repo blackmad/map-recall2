@@ -33,7 +33,7 @@ const zoomState = (page: Page) => page.evaluate((key) => {
 async function boatPixels(page: Page): Promise<number> {
   const [x, y] = await page.evaluate(() => {
     const g = (window as any).canalRecallGame, vm = g.vectorMap;
-    const p = vm.map.project(vm.worldToLngLat(g.player.x, g.player.y, g.osmLoader));
+    const p = vm.camera.project(vm.worldToLngLat(g.player.x, g.player.y, g.osmLoader));
     return [p.x, p.y];
   });
   const clip = { x: Math.max(0, x - 50), y: Math.max(0, y - 50), width: 100, height: 100 };

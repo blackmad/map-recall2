@@ -1,5 +1,6 @@
 import { test, expect } from '@playwright/test';
 import { openRoute } from './helpers';
+import { OWN } from './worldCam';
 
 // Named regression (user report 2026-09-28, "why is the bike bright yellow
 // now?"): the x-ray pass that shows the bike through buildings ran after the
@@ -8,6 +9,7 @@ import { openRoute } from './helpers';
 // the bike in its own colours where nothing covers it, and stay the last layer
 // so buildings are already in the depth buffer when it draws.
 test('the chase bike keeps its own colours in the open and draws after the buildings', async ({ page }) => {
+  test.skip(OWN, 'MapLibre style assertion: deleted with the default path at P5');
   test.setTimeout(180000);
   await openRoute(page, { travelMode: 'car', viewMode: 'chase', abortHeavyTiles: false, enterRacing: false });
   await page.waitForFunction(() => (window as any).canalRecallGame.state === 4, null, { timeout: 90000 });
@@ -21,7 +23,7 @@ test('the chase bike keeps its own colours in the open and draws after the build
   // layer: it registers in the frame's overlay pass, and the frame's `shared-frame-overlay` layer is the one that
   // must come after every building layer. The frame's main pass (facades, landmarks, roofs) draws before it.
   const layering = await page.evaluate(() => {
-    const map = (window as any).canalRecallGame.vectorMap.map;
+    const map = (window as any).canalRecallGame.vectorMap.map ?? (window as any).canalRecallGame.vectorMap.cameraMap;
     const frame = map._canalSharedFrame;
     const entries = frame ? frame.registry.all().map((e: any) => ({ id: e.id, pass: e.pass })) : null;
     return { order: map.style._order as string[], entries };
@@ -47,7 +49,7 @@ test('the chase bike keeps its own colours in the open and draws after the build
   // The phone layout parks HUD (joystick, question card, notices) over the player, and a DOM overlay in the clip
   // makes every frame identical. Hide everything that is not on the map canvas's own ancestor chain.
   await page.evaluate(() => {
-    const canvas = (window as any).canalRecallGame.vectorMap.map.getCanvas() as HTMLElement;
+    const canvas = (window as any).canalRecallGame.vectorMap.frameCanvas() as HTMLElement;
     for (let node: HTMLElement | null = canvas; node && node !== document.body; node = node.parentElement) {
       for (const sibling of Array.from(node.parentElement?.children ?? []) as HTMLElement[]) {
         if (sibling !== node) sibling.style.visibility = 'hidden';
@@ -58,7 +60,7 @@ test('the chase bike keeps its own colours in the open and draws after the build
   // Leidseplein with the same seed) and on Nes the player stands on a kerb behind a roof, so B and C are then
   // identical and nothing is tested. The old bug painted the bike yellow in the open, which needs no building.
   await page.evaluate(() => {
-    const map = (window as any).canalRecallGame.vectorMap.map;
+    const map = (window as any).canalRecallGame.vectorMap.map ?? (window as any).canalRecallGame.vectorMap.cameraMap;
     for (const id of map.style._order as string[]) {
       if (id !== 'player-bike-3d' && /building|facade|roof|landmark|three/.test(id)) map.setLayoutProperty(id, 'visibility', 'none');
     }
@@ -68,7 +70,7 @@ test('the chase bike keeps its own colours in the open and draws after the build
     const g = (window as any).canalRecallGame;
     const ll = g.vectorMap.worldToLngLat(g.player.x, g.player.y, g.osmLoader);
     const p = g.vectorMap.camera.project(ll);
-    const rect = g.vectorMap.map.getCanvas().getBoundingClientRect();
+    const rect = g.vectorMap.frameCanvas().getBoundingClientRect();
     return { x: Math.round(rect.left + p.x - 60), y: Math.round(rect.top + p.y - 90), width: 120, height: 120 };
   });
   const frame = async (setup: string) => {
