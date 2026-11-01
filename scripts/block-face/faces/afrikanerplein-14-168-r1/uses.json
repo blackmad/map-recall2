@@ -1,0 +1,60 @@
+{
+ "street": "Afrikanerplein",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-31T14:00:59.825Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012131433",
+   "addresses": [
+    "Afrikanerplein 92",
+    "Afrikanerplein 94",
+    "Afrikanerplein 96",
+    "Afrikanerplein 98",
+    "Afrikanerplein 100",
+    "Afrikanerplein 102"
+   ],
+   "groundUnits": [
+    {
+     "address": "Afrikanerplein 102",
+     "use": "woonfunctie",
+     "areaM2": 49,
+     "bagId": "0363010000675981"
+    },
+    {
+     "address": "Afrikanerplein 94",
+     "use": "woonfunctie",
+     "areaM2": 52,
+     "bagId": "0363010000675982"
+    },
+    {
+     "address": "Afrikanerplein 98",
+     "use": "woonfunctie",
+     "areaM2": 52,
+     "bagId": "0363010000677005"
+    },
+    {
+     "address": "Afrikanerplein 92",
+     "use": "woonfunctie",
+     "areaM2": 63,
+     "bagId": "0363010000675237"
+    },
+    {
+     "address": "Afrikanerplein 96",
+     "use": "woonfunctie",
+     "areaM2": 85,
+     "bagId": "0363010000675238"
+    },
+    {
+     "address": "Afrikanerplein 100",
+     "use": "woonfunctie",
+     "areaM2": 102,
+     "bagId": "0363010000687067"
+    }
+   ],
+   "units": 6,
+   "osm": []
+  }
+ ]
+}

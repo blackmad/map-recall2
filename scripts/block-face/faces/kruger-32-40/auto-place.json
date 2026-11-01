@@ -3,7 +3,7 @@
  "street": "Krugerstraat",
  "library": "transvaalbuurt",
  "stripDate": "2022-01-17",
- "seconds": 0.77,
+ "seconds": 15.7,
  "thresholds": {
   "minScore": 0.7,
   "margin": 0.05,
@@ -13,7 +13,19 @@
   "widthSlackM": 0.4,
   "flatRoofRiseM": 1.5
  },
- "runs": [],
+ "runs": [
+  {
+   "face": "kruger-32-40",
+   "pands": [
+    "0363100012132444",
+    "0363100012083941",
+    "0363100012150686",
+    "0363100012114784"
+   ],
+   "passed": true,
+   "triangles": 5311
+  }
+ ],
  "pands": [
   {
    "pandId": "0363100012132444",
@@ -61,44 +73,81 @@
     "voidShare": 0,
     "foliageShare": 0.06
    },
-   "status": "held",
-   "stage": "match",
-   "reason": "every type vetoed (best transvaal-1911-five-storey-tall: built 1929, type 1908-1914)",
-   "best": {
-    "type": "transvaal-1911-five-storey-tall",
-    "score": 0,
-    "veto": [
-     "built 1929, type 1908-1914"
-    ],
-    "criteria": [
-     {
-      "key": "eaves",
-      "weight": 2,
-      "score": 1,
-      "note": "3DBAG eaves 13.51 m = 4 storeys of 3.38 m vs the type's 3.55 m"
-     },
-     {
-      "key": "storeys",
-      "weight": 1,
-      "score": null,
-      "note": "3DBAG bouwlagen 0 vs 5"
-     },
-     {
-      "key": "stucco",
-      "weight": 2,
-      "score": 1,
-      "note": "strip accent share 0.181 (brick)"
-     },
-     {
-      "key": "columns",
-      "weight": 1.5,
-      "score": 0.4,
-      "note": "strip columns 3 vs 4 bays"
-     }
-    ]
+   "status": "placed",
+   "type": "transvaal-1926-band-row",
+   "score": 1,
+   "runnerUp": {
+    "typeId": "transvaal-1928-plain-row",
+    "score": 1
    },
-   "likeness": null,
-   "challengers": {}
+   "placement": {
+    "type": "transvaal-1926-band-row",
+    "ground": {
+     "shopfront": {
+      "colour": "#765f51",
+      "fascia": true,
+      "entrance": "centre",
+      "glazing": "split",
+      "stallriser": "low",
+      "residentialDoor": {
+       "side": "left",
+       "colour": "#2a2a2a"
+      },
+      "evidence": "auto-place: osm-only (winkelfunctie, shop=hairdresser); fascia colour measured on the strip 2022-01-17 span 0-256"
+     }
+    },
+    "measuredPalette": {
+     "brick": "#725448",
+     "evidence": "strip 2022-01-17 span 0-256: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "near tie with transvaal-1928-plain-row (1)",
+    "door unread",
+    "crown parapet (type default)"
+   ],
+   "likeness": {
+    "pandId": "0363100012132444",
+    "ncc": 0.218,
+    "nccRaw": 0.218,
+    "shiftM": [
+     0.1,
+     0.4
+    ],
+    "usable": 0.83,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "window shape none vs photo square",
+     "columns none vs photo 3"
+    ],
+    "wall": {
+     "photo": "#6f5548",
+     "model": "#8c6758",
+     "dL": 0.088
+    },
+    "glazing": {
+     "photo": 0.35,
+     "model": 0.29
+    },
+    "columns": {
+     "photo": 3,
+     "model": null
+    },
+    "iou": 0.286
+   },
+   "challengers": {
+    "transvaal-1926-band-row": 0.218,
+    "transvaal-1911-five-storey-tall": 0.193,
+    "transvaal-1911-five-storey-tall~m": 0.234,
+    "transvaal-1911-five-storey": 0.268,
+    "transvaal-1911-five-storey~m": 0.3,
+    "transvaal-1921-five-storey-flat": 0.214,
+    "transvaal-1921-five-storey-flat~m": 0.234,
+    "transvaal-1923-portiek-tower": 0.202,
+    "transvaal-1923-portiek": 0.17,
+    "transvaal-1926-band-row~m": 0.205
+   }
   },
   {
    "pandId": "0363100012083941",
@@ -151,44 +200,81 @@
     "voidShare": 0,
     "foliageShare": 0.09
    },
-   "status": "held",
-   "stage": "match",
-   "reason": "every type vetoed (best transvaal-1911-five-storey-tall: built 1929, type 1908-1914)",
-   "best": {
-    "type": "transvaal-1911-five-storey-tall",
-    "score": 0,
-    "veto": [
-     "built 1929, type 1908-1914"
-    ],
-    "criteria": [
-     {
-      "key": "eaves",
-      "weight": 2,
-      "score": 1,
-      "note": "3DBAG eaves 13.51 m = 4 storeys of 3.38 m vs the type's 3.55 m"
-     },
-     {
-      "key": "storeys",
-      "weight": 1,
-      "score": 1,
-      "note": "3DBAG bouwlagen 5 vs 5"
-     },
-     {
-      "key": "stucco",
-      "weight": 2,
-      "score": 1,
-      "note": "strip accent share 0.176 (brick)"
-     },
-     {
-      "key": "columns",
-      "weight": 1.5,
-      "score": 0.4,
-      "note": "strip columns 3 vs 4 bays"
-     }
-    ]
+   "status": "placed",
+   "type": "transvaal-1926-band-row",
+   "score": 1,
+   "runnerUp": {
+    "typeId": "transvaal-1928-plain-row",
+    "score": 1
    },
-   "likeness": null,
-   "challengers": {}
+   "placement": {
+    "type": "transvaal-1926-band-row",
+    "ground": {
+     "shopfront": {
+      "colour": "#8a8c7b",
+      "fascia": true,
+      "entrance": "centre",
+      "glazing": "split",
+      "stallriser": "low",
+      "residentialDoor": {
+       "side": "left",
+       "colour": "#2a2a2a"
+      },
+      "evidence": "auto-place: bag-only (winkelfunctie); fascia colour measured on the strip 2022-01-17 span 256-512"
+     }
+    },
+    "measuredPalette": {
+     "brick": "#69554a",
+     "evidence": "strip 2022-01-17 span 256-512: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "near tie with transvaal-1928-plain-row (1)",
+    "door unread",
+    "crown parapet (type default)"
+   ],
+   "likeness": {
+    "pandId": "0363100012083941",
+    "ncc": 0.191,
+    "nccRaw": 0.191,
+    "shiftM": [
+     0.3,
+     0.4
+    ],
+    "usable": 0.78,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.23",
+     "window shape none vs photo square",
+     "columns none vs photo 3"
+    ],
+    "wall": {
+     "photo": "#6a5549",
+     "model": "#826a5c",
+     "dL": 0.084
+    },
+    "glazing": {
+     "photo": 0.25,
+     "model": 0.3
+    },
+    "columns": {
+     "photo": 3,
+     "model": null
+    },
+    "iou": 0.177
+   },
+   "challengers": {
+    "transvaal-1926-band-row": 0.187,
+    "transvaal-1911-five-storey-tall": 0.268,
+    "transvaal-1911-five-storey-tall~m": 0.25,
+    "transvaal-1911-five-storey": 0.308,
+    "transvaal-1911-five-storey~m": 0.305,
+    "transvaal-1921-five-storey-flat": 0.173,
+    "transvaal-1921-five-storey-flat~m": 0.244,
+    "transvaal-1923-portiek-tower": 0.095,
+    "transvaal-1923-portiek": 0.163
+   }
   },
   {
    "pandId": "0363100012150686",
@@ -231,44 +317,81 @@
     "voidShare": 0.02,
     "foliageShare": 0.09
    },
-   "status": "held",
-   "stage": "match",
-   "reason": "every type vetoed (best transvaal-1911-five-storey-tall: built 1929, type 1908-1914)",
-   "best": {
-    "type": "transvaal-1911-five-storey-tall",
-    "score": 0,
-    "veto": [
-     "built 1929, type 1908-1914"
-    ],
-    "criteria": [
-     {
-      "key": "eaves",
-      "weight": 2,
-      "score": 1,
-      "note": "3DBAG eaves 13.56 m = 4 storeys of 3.39 m vs the type's 3.55 m"
-     },
-     {
-      "key": "storeys",
-      "weight": 1,
-      "score": 1,
-      "note": "3DBAG bouwlagen 5 vs 5"
-     },
-     {
-      "key": "stucco",
-      "weight": 2,
-      "score": 1,
-      "note": "strip accent share 0.112 (brick)"
-     },
-     {
-      "key": "columns",
-      "weight": 1.5,
-      "score": 0.4,
-      "note": "strip columns 3 vs 4 bays"
-     }
-    ]
+   "status": "placed",
+   "type": "transvaal-1926-band-row",
+   "score": 1,
+   "runnerUp": {
+    "typeId": "transvaal-1928-plain-row",
+    "score": 1
    },
-   "likeness": null,
-   "challengers": {}
+   "placement": {
+    "type": "transvaal-1926-band-row",
+    "ground": {
+     "shopfront": {
+      "colour": "#7c6153",
+      "fascia": true,
+      "entrance": "centre",
+      "glazing": "split",
+      "stallriser": "low",
+      "residentialDoor": {
+       "side": "left",
+       "colour": "#2a2a2a"
+      },
+      "evidence": "auto-place: bag-only (bijeenkomstfunctie); fascia colour measured on the strip 2022-01-17 span 512-768"
+     }
+    },
+    "measuredPalette": {
+     "brick": "#735648",
+     "evidence": "strip 2022-01-17 span 512-768: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "near tie with transvaal-1928-plain-row (1)",
+    "door unread: as drawn, the opposite of 114784",
+    "crown parapet (type default)"
+   ],
+   "likeness": {
+    "pandId": "0363100012150686",
+    "ncc": 0.233,
+    "nccRaw": 0.233,
+    "shiftM": [
+     0.35,
+     0.35
+    ],
+    "usable": 0.78,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "window shape none vs photo tall",
+     "columns none vs photo 3"
+    ],
+    "wall": {
+     "photo": "#735649",
+     "model": "#8d6a58",
+     "dL": 0.08
+    },
+    "glazing": {
+     "photo": 0.32,
+     "model": 0.3
+    },
+    "columns": {
+     "photo": 3,
+     "model": null
+    },
+    "iou": 0.244
+   },
+   "challengers": {
+    "transvaal-1926-band-row": 0.233,
+    "transvaal-1911-five-storey-tall": 0.273,
+    "transvaal-1911-five-storey-tall~m": 0.258,
+    "transvaal-1911-five-storey": 0.33,
+    "transvaal-1911-five-storey~m": 0.333,
+    "transvaal-1921-five-storey-flat": 0.208,
+    "transvaal-1921-five-storey-flat~m": 0.239,
+    "transvaal-1923-portiek-tower": 0.177,
+    "transvaal-1923-portiek": 0.231,
+    "transvaal-1926-band-row~m": 0.188
+   }
   },
   {
    "pandId": "0363100012114784",
@@ -320,44 +443,58 @@
     "voidShare": 0.01,
     "foliageShare": 0.06
    },
-   "status": "held",
-   "stage": "match",
-   "reason": "every type vetoed (best transvaal-1911-five-storey-tall: built 1930, type 1908-1914)",
-   "best": {
-    "type": "transvaal-1911-five-storey-tall",
-    "score": 0,
-    "veto": [
-     "built 1930, type 1908-1914"
-    ],
-    "criteria": [
-     {
-      "key": "eaves",
-      "weight": 2,
-      "score": 0.5,
-      "note": "3DBAG eaves 13.01 m = 4 storeys of 3.25 m vs the type's 3.55 m"
-     },
-     {
-      "key": "storeys",
-      "weight": 1,
-      "score": 1,
-      "note": "3DBAG bouwlagen 5 vs 5"
-     },
-     {
-      "key": "stucco",
-      "weight": 2,
-      "score": 1,
-      "note": "strip accent share 0.182 (brick)"
-     },
-     {
-      "key": "columns",
-      "weight": 1.5,
-      "score": 0,
-      "note": "strip columns 6 vs 4 bays"
-     }
-    ]
+   "status": "placed",
+   "type": "transvaal-1926-band-row",
+   "score": 0.77,
+   "runnerUp": {
+    "typeId": "transvaal-1911-five-storey-tall",
+    "score": 0
    },
-   "likeness": null,
-   "challengers": {}
+   "placement": {
+    "type": "transvaal-1926-band-row",
+    "mirror": true,
+    "measuredPalette": {
+     "brick": "#6f594d",
+     "evidence": "strip 2022-01-17 span 768-1044: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "door left: mirrored",
+    "crown parapet (type default)"
+   ],
+   "likeness": {
+    "pandId": "0363100012114784",
+    "ncc": 0.18,
+    "nccRaw": 0.18,
+    "shiftM": [
+     -0.4,
+     0.3
+    ],
+    "usable": 0.82,
+    "abstain": null,
+    "verdict": "WARN",
+    "reasons": [
+     "mask IoU 0.342 < 0.45"
+    ],
+    "wall": {
+     "photo": "#725b4e",
+     "model": "#886d5e",
+     "dL": 0.075
+    },
+    "glazing": {
+     "photo": 0.3,
+     "model": 0.26
+    },
+    "columns": {
+     "photo": null,
+     "model": null
+    },
+    "iou": 0.342
+   },
+   "challengers": {
+    "transvaal-1926-band-row~m": 0.18,
+    "transvaal-1926-band-row": 0.157
+   }
   }
  ]
 }

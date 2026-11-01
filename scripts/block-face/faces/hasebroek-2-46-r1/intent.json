@@ -126,37 +126,19 @@
    "address": "Hasebroekstraat 28",
    "type": {
     "type": "bellamy-1904-balcony-axis",
-    "ground": {
-     "shopfront": {
-      "colour": "#201e1b",
-      "fascia": true,
-      "entrance": "centre",
-      "glazing": "split",
-      "stallriser": "low",
-      "residentialDoor": {
-       "side": "left",
-       "colour": "#2a2a2a"
-      },
-      "evidence": "auto-place: osm-only (industriefunctie, amenity=public_bookcase); fascia colour measured on the strip 2022-01-04 span 870-1086"
-     }
-    },
+    "ground": "door-left",
     "measuredPalette": {
      "brick": "#433b36",
      "evidence": "strip 2022-01-04 span 870-1086: trim-normalised wall (buildingRecipe/measureFacade.ts)"
     }
    },
    "groundFloor": {
-    "use": "bar",
-    "category": "amenity=public_bookcase",
-    "osm": {
-     "type": "node",
-     "id": 10598756425
-    },
+    "use": "residential",
     "bag": [
      "industriefunctie"
     ],
     "photoDate": "2022-01-04",
-    "agreement": "osm-only",
+    "agreement": "bag-only",
     "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
    },
    "rhythm": {

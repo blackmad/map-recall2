@@ -1,0 +1,102 @@
+{
+ "street": "Retiefstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-31T15:16:10.086Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012103086",
+   "addresses": [
+    "Retiefstraat 7M",
+    "Retiefstraat 7H",
+    "Retiefstraat 7B",
+    "Retiefstraat 7",
+    "Retiefstraat 7E",
+    "Retiefstraat 7F",
+    "Retiefstraat 7G",
+    "Retiefstraat 7C",
+    "Retiefstraat 7K",
+    "Retiefstraat 7A",
+    "Retiefstraat 7L",
+    "Retiefstraat 7D"
+   ],
+   "groundUnits": [
+    {
+     "address": "Retiefstraat 7M",
+     "use": "woonfunctie",
+     "areaM2": 49,
+     "bagId": "0363010012159268"
+    },
+    {
+     "address": "Retiefstraat 7H",
+     "use": "woonfunctie",
+     "areaM2": 41,
+     "bagId": "0363010012159265"
+    },
+    {
+     "address": "Retiefstraat 7B",
+     "use": "woonfunctie",
+     "areaM2": 55,
+     "bagId": "0363010012159259"
+    },
+    {
+     "address": "Retiefstraat 7-H",
+     "use": "woonfunctie",
+     "areaM2": 80,
+     "bagId": "0363010000791544"
+    },
+    {
+     "address": "Retiefstraat 7E",
+     "use": "woonfunctie",
+     "areaM2": 42,
+     "bagId": "0363010012159262"
+    },
+    {
+     "address": "Retiefstraat 7F",
+     "use": "woonfunctie",
+     "areaM2": 41,
+     "bagId": "0363010012159263"
+    },
+    {
+     "address": "Retiefstraat 7G",
+     "use": "woonfunctie",
+     "areaM2": 42,
+     "bagId": "0363010012159264"
+    },
+    {
+     "address": "Retiefstraat 7C",
+     "use": "woonfunctie",
+     "areaM2": 56,
+     "bagId": "0363010012159260"
+    },
+    {
+     "address": "Retiefstraat 7K",
+     "use": "woonfunctie",
+     "areaM2": 41,
+     "bagId": "0363010012159266"
+    },
+    {
+     "address": "Retiefstraat 7A",
+     "use": "woonfunctie",
+     "areaM2": 53,
+     "bagId": "0363010012159258"
+    },
+    {
+     "address": "Retiefstraat 7L",
+     "use": "woonfunctie",
+     "areaM2": 49,
+     "bagId": "0363010012159267"
+    },
+    {
+     "address": "Retiefstraat 7D",
+     "use": "woonfunctie",
+     "areaM2": 41,
+     "bagId": "0363010012159261"
+    }
+   ],
+   "units": 15,
+   "osm": []
+  }
+ ]
+}

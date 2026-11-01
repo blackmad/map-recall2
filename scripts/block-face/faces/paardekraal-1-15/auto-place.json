@@ -3,7 +3,7 @@
  "street": "Paardekraalstraat",
  "library": "transvaalbuurt",
  "stripDate": "2023-01-02",
- "seconds": 24.04,
+ "seconds": 7.84,
  "thresholds": {
   "minScore": 0.7,
   "margin": 0.05,
@@ -19,8 +19,7 @@
    "pands": [
     "0363100012073473"
    ],
-   "passed": true,
-   "triangles": 1860
+   "installed": true
   }
  ],
  "pands": [
@@ -556,7 +555,8 @@
     "transvaal-1911-five-storey~m": 0.104,
     "transvaal-1923-portiek-tower": 0.301,
     "transvaal-1923-portiek": 0.396
-   }
+   },
+   "installed": "paardekraal-1-15-r1"
   },
   {
    "pandId": "0363100012063275",

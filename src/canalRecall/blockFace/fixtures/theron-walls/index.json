@@ -1,0 +1,117 @@
+{
+ "note": "Wall boxes (review.ts: span inset 8 px, 3.8 m .. eaves - 1 m) of Danie Theronstraat pands, 2020-04-29 strips (Gemeente Amsterdam panoramas, CC BY 4.0), cut by #157 for the tree-free wall refit test.",
+ "pands": [
+  {
+   "face": "theron-9-37",
+   "pandId": "0363100012138289",
+   "address": "Danie Theronstraat 13A",
+   "file": "0363100012138289.jpg",
+   "pixelsPerMetre": 40,
+   "stripBox": {
+    "x0": 490,
+    "x1": 951,
+    "y0": 185,
+    "y1": 606
+   },
+   "date": "2020-04-29"
+  },
+  {
+   "face": "theron-9-37",
+   "pandId": "0363100012148172",
+   "address": "Danie Theronstraat 17A",
+   "file": "0363100012148172.jpg",
+   "pixelsPerMetre": 40,
+   "stripBox": {
+    "x0": 967,
+    "x1": 1428,
+    "y0": 184,
+    "y1": 606
+   },
+   "date": "2020-04-29"
+  },
+  {
+   "face": "theron-9-37",
+   "pandId": "0363100012137971",
+   "address": "Danie Theronstraat 23A",
+   "file": "0363100012137971.jpg",
+   "pixelsPerMetre": 40,
+   "stripBox": {
+    "x0": 1685,
+    "x1": 1910,
+    "y0": 180,
+    "y1": 606
+   },
+   "date": "2020-04-29"
+  },
+  {
+   "face": "theron-9-37",
+   "pandId": "0363100012139446",
+   "address": "Danie Theronstraat 25D",
+   "file": "0363100012139446.jpg",
+   "pixelsPerMetre": 40,
+   "stripBox": {
+    "x0": 1925,
+    "x1": 2391,
+    "y0": 177,
+    "y1": 606
+   },
+   "date": "2020-04-29"
+  },
+  {
+   "face": "theron-2-36",
+   "pandId": "0363100012069116",
+   "address": "Danie Theronstraat 28",
+   "file": "0363100012069116.jpg",
+   "pixelsPerMetre": 40,
+   "stripBox": {
+    "x0": 618,
+    "x1": 1082,
+    "y0": 129,
+    "y1": 550
+   },
+   "date": "2020-04-29"
+  },
+  {
+   "face": "theron-2-36",
+   "pandId": "0363100012116701",
+   "address": "Danie Theronstraat 24",
+   "file": "0363100012116701.jpg",
+   "pixelsPerMetre": 40,
+   "stripBox": {
+    "x0": 1098,
+    "x1": 1562,
+    "y0": 140,
+    "y1": 550
+   },
+   "date": "2020-04-29"
+  },
+  {
+   "face": "theron-2-36",
+   "pandId": "0363100012115092",
+   "address": "Danie Theronstraat 20",
+   "file": "0363100012115092.jpg",
+   "pixelsPerMetre": 40,
+   "stripBox": {
+    "x0": 1578,
+    "x1": 2042,
+    "y0": 140,
+    "y1": 550
+   },
+   "date": "2020-04-29"
+  },
+  {
+   "face": "theron-2-36",
+   "pandId": "0363100012089089",
+   "address": "Danie Theronstraat 16A",
+   "file": "0363100012089089.jpg",
+   "pixelsPerMetre": 40,
+   "stripBox": {
+    "x0": 2298,
+    "x1": 2522,
+    "y0": 136,
+    "y1": 550
+   },
+   "date": "2020-04-29"
+  }
+ ]
+}

@@ -3,7 +3,7 @@
  "street": "Kraaipanstraat",
  "library": "transvaalbuurt",
  "stripDate": "2017-04-06",
- "seconds": 0.16,
+ "seconds": 0.17,
  "thresholds": {
   "minScore": 0.7,
   "margin": 0.05,
@@ -13,7 +13,16 @@
   "widthSlackM": 0.4,
   "flatRoofRiseM": 1.5
  },
- "runs": [],
+ "runs": [
+  {
+   "face": "kraaipan-41-45-r1",
+   "pands": [
+    "0363100012133518",
+    "0363100012061600"
+   ],
+   "installed": true
+  }
+ ],
  "pands": [
   {
    "pandId": "0363100012094919",
@@ -68,25 +77,23 @@
    },
    "status": "held",
    "stage": "match",
-   "reason": "every type vetoed (best transvaal-1911-five-storey-tall: built 1920, type 1908-1914)",
+   "reason": "best transvaal-1920-three-storey scores 0.6 < 0.7 (strip wall #c8c0ad dE 33.3 to #7f675d (<= 10))",
    "best": {
-    "type": "transvaal-1911-five-storey-tall",
-    "score": 0,
-    "veto": [
-     "built 1920, type 1908-1914"
-    ],
+    "type": "transvaal-1920-three-storey",
+    "score": 0.6,
+    "veto": [],
     "criteria": [
-     {
-      "key": "eaves",
-      "weight": 2,
-      "score": 0,
-      "note": "3DBAG eaves 6.31 m = 4 storeys of 1.58 m vs the type's 3.55 m"
-     },
      {
       "key": "storeys",
       "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 3 vs 3"
+     },
+     {
+      "key": "wall",
+      "weight": 2,
       "score": 0,
-      "note": "3DBAG bouwlagen 3 vs 5"
+      "note": "strip wall #c8c0ad dE 33.3 to #7f675d (<= 10)"
      },
      {
       "key": "stucco",
@@ -105,83 +112,15 @@
    "builtYear": 1921,
    "widthM": 6,
    "eavesM": 7.8,
-   "storeys3dbag": 3,
-   "bagBay": {
-    "fromM": 2.26,
-    "toM": 3.82,
-    "depthM": 0.33,
-    "centre": 0.507
+   "status": "placed",
+   "type": "transvaal-1920-three-storey",
+   "placement": {
+    "type": "transvaal-1920-three-storey",
+    "paletteOverrides": {
+     "brick": "#55533f"
+    }
    },
-   "strip": {
-    "wall": "#746353",
-    "wallRaw": "#68664f",
-    "skyline": {
-     "eavesM": 12.85,
-     "eavesRow": 51,
-     "confidence": 0.85,
-     "crown": {
-      "widthM": 1.38,
-      "riseM": 0.88,
-      "topWidthM": 1.38,
-      "centre": 0.63
-     }
-    },
-    "stucco": false,
-    "bands": 0,
-    "columns": 6,
-    "frontClass": "punched",
-    "doorSide": null,
-    "accentSide": null,
-    "accentShare": 0.007,
-    "structure": {
-     "bayWidthM": 0,
-     "bayCentre": null,
-     "balconies": true,
-     "why": "dark open axis 1.13 m at 0.9 (light 0.14): no brick spandrel between the storeys",
-     "openAxes": [
-      {
-       "widthM": 1.13,
-       "centre": 0.9,
-       "light": 0.14
-      }
-     ],
-     "slabs": []
-    },
-    "voidShare": 0,
-    "foliageShare": 0.42
-   },
-   "status": "held",
-   "stage": "match",
-   "reason": "every type vetoed (best transvaal-1911-five-storey-tall: built 1921, type 1908-1914)",
-   "best": {
-    "type": "transvaal-1911-five-storey-tall",
-    "score": 0,
-    "veto": [
-     "built 1921, type 1908-1914"
-    ],
-    "criteria": [
-     {
-      "key": "eaves",
-      "weight": 2,
-      "score": 0,
-      "note": "3DBAG eaves 7.8 m = 4 storeys of 1.95 m vs the type's 3.55 m"
-     },
-     {
-      "key": "storeys",
-      "weight": 1,
-      "score": 0,
-      "note": "3DBAG bouwlagen 3 vs 5"
-     },
-     {
-      "key": "stucco",
-      "weight": 2,
-      "score": null,
-      "note": "no strip"
-     }
-    ]
-   },
-   "likeness": null,
-   "challengers": {}
+   "installed": "kraaipan-41-45-r1"
   },
   {
    "pandId": "0363100012061600",
@@ -189,84 +128,19 @@
    "builtYear": 1921,
    "widthM": 6.11,
    "eavesM": 7.11,
-   "storeys3dbag": 3,
-   "bagBay": {
-    "fromM": 3.21,
-    "toM": 4.75,
-    "depthM": 0.33,
-    "centre": 0.651
-   },
-   "strip": {
-    "wall": "#816857",
-    "wallRaw": "#605342",
-    "skyline": {
-     "eavesM": 12.53,
-     "eavesRow": 64,
-     "confidence": 0.7,
-     "crown": null
+   "status": "placed",
+   "type": "transvaal-1920-three-storey",
+   "placement": {
+    "type": "transvaal-1920-three-storey",
+    "measuredPalette": {
+     "brick": "#816857",
+     "evidence": "strip 2017-04-06 span 480-724: trim-normalised wall (buildingRecipe/measureFacade.ts)"
     },
-    "stucco": false,
-    "bands": 0,
-    "columns": null,
-    "frontClass": "punched",
-    "doorSide": null,
-    "accentSide": null,
-    "accentShare": 0,
-    "structure": {
-     "bayWidthM": 0,
-     "bayCentre": null,
-     "balconies": true,
-     "why": "dark open axis 5.6 m at 0.5 (light 0.19): no brick spandrel between the storeys",
-     "openAxes": [
-      {
-       "widthM": 5.6,
-       "centre": 0.5,
-       "light": 0.19
-      }
-     ],
-     "slabs": [
-      {
-       "atM": 5.3,
-       "widthM": 1.73,
-       "centre": 0.42
-      }
-     ]
-    },
-    "voidShare": 0,
-    "foliageShare": 0.1
+    "paletteOverrides": {
+     "brick": "#4c4034"
+    }
    },
-   "status": "held",
-   "stage": "match",
-   "reason": "every type vetoed (best transvaal-1911-five-storey-tall: built 1921, type 1908-1914)",
-   "best": {
-    "type": "transvaal-1911-five-storey-tall",
-    "score": 0,
-    "veto": [
-     "built 1921, type 1908-1914"
-    ],
-    "criteria": [
-     {
-      "key": "eaves",
-      "weight": 2,
-      "score": 0,
-      "note": "3DBAG eaves 7.11 m = 4 storeys of 1.78 m vs the type's 3.55 m"
-     },
-     {
-      "key": "storeys",
-      "weight": 1,
-      "score": 0,
-      "note": "3DBAG bouwlagen 3 vs 5"
-     },
-     {
-      "key": "stucco",
-      "weight": 2,
-      "score": 1,
-      "note": "strip accent share 0.008 (brick)"
-     }
-    ]
-   },
-   "likeness": null,
-   "challengers": {}
+   "installed": "kraaipan-41-45-r1"
   }
  ]
 }

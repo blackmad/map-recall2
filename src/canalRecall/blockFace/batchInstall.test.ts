@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {coveredElsewhere, installVerdict, restripDates, sampleShare, trimShared} from './batchInstall.ts';
+import {autoPlaceArgs, coveredElsewhere, installVerdict, restripDates, sampleShare, selectBatchFaces, trimShared} from './batchInstall.ts';
 
 test('Kinkerstraat 49-63: the corner owned by face-bilder-133467-159649 is trimmed, never taken', () => {
   const members = ['0363100012133467', '0363100012150001', '0363100012150002'];
@@ -72,4 +72,21 @@ test('brick for the strip wall luma: stripOverDrawn 1 by construction, clamp rep
   assert.equal(r.reached, true);
   assert.ok(Math.abs(drawnWallLuma({brick: r.brick}) - target) <= Math.max(1, target * 0.03));
   assert.equal(brickForDrawnLuma('#7a4a30', 250).reached, false);
+});
+
+test('#157 fix 1: --faces restricts a --buurt run (round 4 installed kruger-32-40, another lane\'s face)', () => {
+  const buurt = [{id: 'kruger-32-40'}, {id: 'theron-2-36'}, {id: 'retief-45-75'}, {id: 'tugelaweg-91-112'}];
+  assert.deepEqual(selectBatchFaces(buurt, ['tugelaweg-91-112', 'theron-2-36']).faces.map(f => f.id), ['theron-2-36', 'tugelaweg-91-112']);
+  assert.deepEqual(selectBatchFaces(buurt, ['theron-2-36']).missing, []);
+  assert.deepEqual(selectBatchFaces(buurt, ['theron-2-36', 'nowhere-1-3']).missing, ['nowhere-1-3']);
+  assert.equal(selectBatchFaces(buurt, null).faces.length, 4);
+});
+
+test('#157 fix 2: the batch carries --photo-decides and the face\'s own --replace runs to auto-place', () => {
+  const a = autoPlaceArgs({buurt: 'transvaalbuurt-oost', district: 'transvaalbuurt', face: 'pretorius-71-95', photoDecides: true, replace: ['pretorius-71-95-r2', 'retief-45-75-r1']});
+  assert.ok(a.includes('--only=pretorius-71-95'));
+  assert.ok(a.includes('--photo-decides'));
+  assert.ok(a.includes('--replace=pretorius-71-95-r2'));
+  assert.ok(!a.some(x => x.includes('retief')));
+  assert.ok(!autoPlaceArgs({buurt: 'b', district: 'd', face: 'f', photoDecides: false}).some(x => /photo-decides|replace/.test(x)));
 });
