@@ -32,38 +32,6 @@ bundles (presentation). Integrator: `build:canal-engine`, `build:canal-three`
 (`three.bundle.js` exports `SharedFrame`), `build:canal-3d`; test:engine
 109/109; tsc clean.
 
-**P4 counters gate measured and recorded; in-frame shader links after warm-up are 0 on desktop and iPad (2026-11-01, P4).**
-Materials lane hand-back (bb5c00bce): `engine/glCounters.ts` (opt-in
-`?glCounters=1`, `__canalPerf.gl` with `markWarm()`/`report()`) counts, from
-the end of warm-up, draws and triangles per frame and per participant
-(shadow pass separate), compiles and links, and uploads ≥ 1 MiB, each with
-an owner; `motion-stutter.mjs GL_COUNTERS=1` writes the report, `--device
-ipad` adds the iPad profile. Seeded Jordaan ride on rails (~2 km in 40 s),
-`?engine=own`, 10 s warm-up, headed Metal M4 Pro, tier high, 60° pitch:
-in-frame links 0 / 0 (iPad was 2: the own-ground hedge double-sided shadow
-depth program and the pyramidal-roof cap program; now
-`rendererShared/shadowPrimer.ts` links every depth-program variant with
-zero-area casters on the first shadow redraw, `?shadowPrimer=0` turns it
-off, frozen frame 9 / 0 px on vs off = harness noise, and
-`pyramidal-roofs-source.js` keeps one never-drawn cap as the program's
-anchor compiled through `compileAsync` instead of relinking per
-`setFeatures`); compileShader after warm-up 4 / 8, all landmark and
-stand-in precompiles through `compileAsync` off the frame; uploads ≥ 1 MiB
-49 (94 MB) / 32 (61 MB): facade chunk geometry 37 / 24, own-ground cell
-layers and land textures 12 / 6, one landmark on iPad; draws at 60° p50 294
-p95 399 max 508 / p50 326 p95 589 max 858 (iPad per frame: own ground 124,
-landmarks 59 + 18 shadow, overview 40, bike 36, roof caps 26, facades 15);
-triangles iPad p50 1.65 M p95 2.47 M (facades 666 k, own ground 306 k,
-overview 279 k, trees 183 k, cycle overlay 108 k, landmarks 73 k), desktop
-p50 2.18 M. The draft block is accepted into `tests/perf/budgets.json` as
-`p4Counters` (targets are the gates, measured are the baselines). Open
-owners: facade LOD for the iPad triangle budget and sub-MiB facade uploads
-(materials/facade lane), own-ground cells uploaded in pieces (ground),
-merged roof caps (~25 draws) and bike parts (~35 draws) in the legacy
-bundles (presentation). Integrator: `build:canal-engine`, `build:canal-three`
-(`three.bundle.js` exports `SharedFrame`), `build:canal-3d`; test:engine
-109/109; tsc clean.
-
 **Quality tiers: the probe runs under a forced tier too; auto equals `?tier=high` to the pixel on the M4; the phone low-tier gate stays red (2026-11-01, P4).**
 Materials lane hand-back (46b9bbd4d). Most of the tiers item was already
 on main (dadb83eb6, 7c201b35c, 05c5e9550: `chooseTier`, `TIER_SETTINGS`,
