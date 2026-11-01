@@ -19,6 +19,6 @@ test('review sheet: a jumped-to landmark is shown within 30 s', async ({ page },
   await page.locator('#route-card').evaluate((f: HTMLFormElement) => f.requestSubmit());
   await page.waitForFunction(() => (window as any).canalRecallGame.state === 4 && (window as any).canalRecallGame.camera?.introOverview === 0, null, { timeout: 90_000 });
   await page.evaluate(() => { (window as any).canalRecallGame.vectorMap.sync = () => {}; });
-  await page.evaluate(c => (window as any).canalRecallGame.vectorMap.map.jumpTo({ center: c, zoom: 19.2, pitch: 70, bearing: 157 }), ANCHOR);
+  await page.evaluate(c => ((window as any).canalRecallGame.vectorMap.map ?? (window as any).canalRecallGame.vectorMap.cameraMap).jumpTo({ center: c, zoom: 19.2, pitch: 70, bearing: 157 }), ANCHOR);
   await page.waitForFunction(i => (window as any).canalRecallGame.vectorMap._signatureLandmarks.shown.has(i), ID, { timeout: 30_000 });
 });

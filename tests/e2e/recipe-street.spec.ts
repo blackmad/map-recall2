@@ -51,7 +51,7 @@ test('recipe street: installed Bilderdijkstraat houses render in the game from t
   // Let tiles, facts and the shared GLBs stream in; jiggle the map so the loader requests what is now in view.
   await page.waitForFunction(({ need }) => {
     const vm = (window as any).canalRecallGame.vectorMap, l = vm._signatureLandmarks;
-    const c = vm.map.getCenter(); vm.map.jumpTo({ center: [c.lng + 1e-7, c.lat] });
+    const c = vm.camera.center(); (vm.map ?? vm.cameraMap).jumpTo({ center: [c.lng + 1e-7, c.lat] });
     return l && need.filter((id: string) => l.shown.has(id)).length >= Math.min(8, need.length);
   }, { need: houses.map(h => h.id) }, { timeout: 120_000, polling: 1000 });
   await parkAt(page, at, face);
@@ -68,7 +68,7 @@ test('recipe street: installed Bilderdijkstraat houses render in the game from t
   for (const [i, spot] of [mid, sorted.at(-1)!].entries()) {
     const atN = ahead(ahead(spot.anchor, bearing, -10), outward, 9);
     await parkAt(page, atN, ahead(atN, bearing, 40));
-    await page.waitForFunction(() => { const vm = (window as any).canalRecallGame.vectorMap; const c = vm.map.getCenter(); vm.map.jumpTo({ center: [c.lng + 1e-7, c.lat] }); return true; });
+    await page.waitForFunction(() => { const vm = (window as any).canalRecallGame.vectorMap; const c = vm.camera.center(); (vm.map ?? vm.cameraMap).jumpTo({ center: [c.lng + 1e-7, c.lat] }); return true; });
     await page.waitForTimeout(5000);
     await page.screenshot({ path: `${OUT}/in-game-${info.project.name}-${i === 0 ? 'mid' : 'far'}.png` });
   }

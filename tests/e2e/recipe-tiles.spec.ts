@@ -56,7 +56,7 @@ async function quiet(page: Page): Promise<void> {
 async function settle(page: Page): Promise<void> {
   await page.waitForFunction(() => {
     const w = window as any, vm = w.canalRecallGame.vectorMap, t = vm._threeBuildings, l = vm._signatureLandmarks, r = vm._tileBuildings;
-    const c = vm.map.getCenter(); vm.map.jumpTo({ center: [c.lng + 1e-9, c.lat] });
+    const c = vm.camera.center(); (vm.map ?? vm.cameraMap).jumpTo({ center: [c.lng + 1e-9, c.lat] });
     const idle = !t || (t.ready && !t.pending.length && !t.inflight.size);
     const landmarksIdle = !l || !l._pending || !l._pending.size;
     const rs = r?.stats();
@@ -66,7 +66,7 @@ async function settle(page: Page): Promise<void> {
     w.__rtKey = key;
     return w.__rtIdle >= 5;
   }, null, { timeout: 180_000, polling: 1000 });
-  await page.evaluate(() => { const w = window as any; w.canalRecallGame.vectorMap.map.jumpTo(w.__rtCamera); });
+  await page.evaluate(() => { const w = window as any; (w.canalRecallGame.vectorMap.map ?? w.canalRecallGame.vectorMap.cameraMap).jumpTo(w.__rtCamera); });
   await page.waitForTimeout(4000);
 }
 
@@ -172,7 +172,7 @@ for (const mode of MODES) test(`recipe tiles: ${mode.label}`, async ({ page }, i
     if (on) {
       // Picking through the game's own inspector on a 16x10 grid: how many points resolve to a recipe-tile pand.
       pick = await page.evaluate(() => {
-        const vm = (window as any).canalRecallGame.vectorMap, rect = vm.map.getCanvas().getBoundingClientRect(), pands = new Set<string>();
+        const vm = (window as any).canalRecallGame.vectorMap, rect = vm.frameCanvas().getBoundingClientRect(), pands = new Set<string>();
         let hits = 0, tileHits = 0;
         for (let i = 0; i < 16; i++) for (let j = 0; j < 10; j++) {
           const r = vm.inspectBuilding((i + 0.5) * rect.width / 16, (j + 0.5) * rect.height / 10, rect);
