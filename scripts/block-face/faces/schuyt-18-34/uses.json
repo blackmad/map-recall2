@@ -1,0 +1,189 @@
+{
+ "street": "Cornelis Schuytstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-01T12:33:28.747Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012237370",
+   "addresses": [
+    "Cornelis Schuytstraat 30",
+    "Cornelis Schuytstraat 32",
+    "Cornelis Schuytstraat 34"
+   ],
+   "groundUnits": [
+    {
+     "address": "Cornelis Schuytstraat 30-H",
+     "use": "winkelfunctie,woonfunctie",
+     "areaM2": 54,
+     "bagId": "0363010000610126"
+    },
+    {
+     "address": "Cornelis Schuytstraat 32-H",
+     "use": "woonfunctie",
+     "areaM2": 54,
+     "bagId": "0363010000610130"
+    },
+    {
+     "address": "Cornelis Schuytstraat 34-H",
+     "use": "winkelfunctie",
+     "areaM2": 194,
+     "bagId": "0363010000610133"
+    },
+    {
+     "address": "Cornelis Schuytstraat 32-H",
+     "use": "winkelfunctie",
+     "areaM2": 130,
+     "bagId": "0363010012078118"
+    },
+    {
+     "address": "Cornelis Schuytstraat 30-H",
+     "use": "winkelfunctie",
+     "areaM2": 123,
+     "bagId": "0363010012157262"
+    }
+   ],
+   "units": 11,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012157345",
+   "addresses": [
+    "Cornelis Schuytstraat 28"
+   ],
+   "groundUnits": [],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012160258",
+   "addresses": [
+    "Cornelis Schuytstraat 26"
+   ],
+   "groundUnits": [
+    {
+     "address": "Cornelis Schuytstraat 26-H",
+     "use": "winkelfunctie",
+     "areaM2": 284,
+     "bagId": "0363010000610115"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2297199268,
+     "lngLat": [
+      4.8711118,
+      52.3550946
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "26-28",
+      "addr:postcode": "1071JJ",
+      "addr:street": "Cornelis Schuytstraat",
+      "email": "schuyt@goodfoodforyou.nl",
+      "name": "Organic",
+      "opening_hours": "Mo-Fr 07:00-20:00, Sa 07:00-19:00, Su 08:00-19:00",
+      "organic": "only",
+      "phone": "+31 20 3795195",
+      "shop": "convenience",
+      "website": "https://www.organicfoodforyou.nl"
+     },
+     "fetchedAt": "2026-11-01T12:33:28.747Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012235947",
+   "addresses": [
+    "Cornelis Schuytstraat 24"
+   ],
+   "groundUnits": [
+    {
+     "address": "Cornelis Schuytstraat 24-H",
+     "use": "winkelfunctie",
+     "areaM2": 172,
+     "bagId": "0363010000610109"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012166878",
+   "addresses": [
+    "Cornelis Schuytstraat 22"
+   ],
+   "groundUnits": [
+    {
+     "address": "Cornelis Schuytstraat 22-H",
+     "use": "winkelfunctie",
+     "areaM2": 134,
+     "bagId": "0363010000610105"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012158893",
+   "addresses": [
+    "Cornelis Schuytstraat 20"
+   ],
+   "groundUnits": [
+    {
+     "address": "Cornelis Schuytstraat 20-H",
+     "use": "winkelfunctie",
+     "areaM2": 132,
+     "bagId": "0363010000610100"
+    }
+   ],
+   "units": 3,
+   "osm": [
+    {
+     "type": "node",
+     "id": 483553126,
+     "lngLat": [
+      4.87097,
+      52.355255
+     ],
+     "tags": {
+      "addr:street": "Cornelis Schuytstraat",
+      "brand": "Gall & Gall",
+      "brand:wikidata": "Q13639185",
+      "brand:wikipedia": "nl:Gall & Gall",
+      "name": "Gall & Gall",
+      "opening_hours": "Mo-Fr 08:00-20:00; Sa 08:00-19:00; Su 10:00-18:00",
+      "phone": "+31 20 670 0973",
+      "ref": "6531",
+      "shop": "alcohol",
+      "website": "https://www.gall.nl/winkels/details/?storeId=6531"
+     },
+     "fetchedAt": "2026-11-01T12:33:28.747Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012236596",
+   "addresses": [
+    "Cornelis Schuytstraat 18"
+   ],
+   "groundUnits": [
+    {
+     "address": "Cornelis Schuytstraat 18-H",
+     "use": "winkelfunctie",
+     "areaM2": 178,
+     "bagId": "0363010000988813"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  }
+ ]
+}

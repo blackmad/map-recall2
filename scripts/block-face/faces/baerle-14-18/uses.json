@@ -1,0 +1,98 @@
+{
+ "street": "Van Baerlestraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-01T16:17:38.078Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012155878",
+   "addresses": [
+    "Van Baerlestraat 18"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Baerlestraat 18-H",
+     "use": "winkelfunctie",
+     "areaM2": 196,
+     "bagId": "0363010000834749"
+    }
+   ],
+   "units": 6,
+   "osm": [
+    {
+     "type": "node",
+     "id": 13105622840,
+     "lngLat": [
+      4.8775275,
+      52.3595225
+     ],
+     "tags": {
+      "amenity": "waste_basket"
+     },
+     "fetchedAt": "2026-11-01T16:17:38.078Z",
+     "match": "frontage",
+     "distanceM": 8
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012076244",
+   "addresses": [
+    "Van Baerlestraat 16"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Baerlestraat 16-H",
+     "use": "winkelfunctie",
+     "areaM2": 174,
+     "bagId": "0363010000834742"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 7552843757,
+     "lngLat": [
+      4.8773335,
+      52.3595411
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "16-H",
+      "addr:postcode": "1071AW",
+      "addr:street": "Van Baerlestraat",
+      "brand:wikipedia": "en:Leica Camera",
+      "check_date": "2025-08-25",
+      "clothes": "men",
+      "name": "Flâneur",
+      "opening_hours": "Tu-Sa 10:00-18:00; Su 12:00-17:00",
+      "phone": "+31 20 238 2192",
+      "shop": "clothes",
+      "website": "https://www.leicastoreamsterdam.nl/"
+     },
+     "fetchedAt": "2026-11-01T16:17:38.078Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012158964",
+   "addresses": [
+    "Van Baerlestraat 14"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Baerlestraat 14-H",
+     "use": "winkelfunctie",
+     "areaM2": 184,
+     "bagId": "0363010001167762"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  }
+ ]
+}

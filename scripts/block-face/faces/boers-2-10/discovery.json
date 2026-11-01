@@ -1,0 +1,369 @@
+{
+ "street": "Alexander Boersstraat",
+ "seed": "0363100012158803",
+ "members": [
+  "0363100012156011",
+  "0363100012165797",
+  "0363100012166010",
+  "0363100012166994",
+  "0363100012158803"
+ ],
+ "ends": [
+  {
+   "side": "left",
+   "reason": "next fronting pand 0363100012156247 19.9 m on shares no party wall (cross street or gap)"
+  },
+  {
+   "side": "right",
+   "reason": "trimmed at 0363100012158803 (face continues: 165479)"
+  }
+ ],
+ "rejected": [
+  {
+   "pandId": "0363100012072116",
+   "reason": "frontage 65.7 m from Alexander Boersstraat"
+  },
+  {
+   "pandId": "0363100012073293",
+   "reason": "frontage 91.5 m from Alexander Boersstraat"
+  },
+  {
+   "pandId": "0363100012074908",
+   "reason": "frontage 84.9 m from Alexander Boersstraat"
+  },
+  {
+   "pandId": "0363100012082824",
+   "reason": "frontage 77.4 m from Alexander Boersstraat"
+  },
+  {
+   "pandId": "0363100012084411",
+   "reason": "frontage 72.2 m from Alexander Boersstraat"
+  },
+  {
+   "pandId": "0363100012096166",
+   "reason": "frontage 92.9 m from Alexander Boersstraat"
+  },
+  {
+   "pandId": "0363100012107332",
+   "reason": "frontage 84.6 m from Alexander Boersstraat"
+  },
+  {
+   "pandId": "0363100012117884",
+   "reason": "sightline to Alexander Boersstraat crosses 0363100012160547"
+  },
+  {
+   "pandId": "0363100012125480",
+   "reason": "frontage 98.6 m from Alexander Boersstraat"
+  },
+  {
+   "pandId": "0363100012138649",
+   "reason": "frontage 78.2 m from Alexander Boersstraat"
+  },
+  {
+   "pandId": "0363100012138687",
+   "reason": "no frontage on Alexander Boersstraat: No footprint edge faces Alexander Boersstraat"
+  },
+  {
+   "pandId": "0363100012143018",
+   "reason": "frontage 30.6 m from Alexander Boersstraat"
+  },
+  {
+   "pandId": "0363100012145883",
+   "reason": "frontage 100.4 m from Alexander Boersstraat"
+  },
+  {
+   "pandId": "0363100012152419",
+   "reason": "sightline to Alexander Boersstraat crosses 0363100012166010"
+  },
+  {
+   "pandId": "0363100012152420",
+   "reason": "sightline to Alexander Boersstraat crosses 0363100012166010"
+  },
+  {
+   "pandId": "0363100012152539",
+   "reason": "frontage 51.9 m from Alexander Boersstraat"
+  },
+  {
+   "pandId": "0363100012155817",
+   "reason": "sightline to Alexander Boersstraat crosses 0363100012156011"
+  },
+  {
+   "pandId": "0363100012156291",
+   "reason": "sightline to Alexander Boersstraat crosses 0363100012156165"
+  },
+  {
+   "pandId": "0363100012156524",
+   "reason": "frontage 33.8 m from Alexander Boersstraat"
+  },
+  {
+   "pandId": "0363100012156951",
+   "reason": "frontage 47.2 m from Alexander Boersstraat"
+  },
+  {
+   "pandId": "0363100012158336",
+   "reason": "sightline to Alexander Boersstraat crosses 0363100012156011"
+  },
+  {
+   "pandId": "0363100012158337",
+   "reason": "sightline to Alexander Boersstraat crosses 0363100012165797"
+  },
+  {
+   "pandId": "0363100012158640",
+   "reason": "sightline to Alexander Boersstraat crosses 0363100012161081"
+  },
+  {
+   "pandId": "0363100012158647",
+   "reason": "sightline to Alexander Boersstraat crosses 0363100012156011"
+  },
+  {
+   "pandId": "0363100012158807",
+   "reason": "frontage 33.2 m from Alexander Boersstraat"
+  },
+  {
+   "pandId": "0363100012159293",
+   "reason": "frontage 43.9 m from Alexander Boersstraat"
+  },
+  {
+   "pandId": "0363100012159344",
+   "reason": "frontage 40.4 m from Alexander Boersstraat"
+  },
+  {
+   "pandId": "0363100012160790",
+   "reason": "sightline to Alexander Boersstraat crosses 0363100012158803"
+  },
+  {
+   "pandId": "0363100012161081",
+   "reason": "sightline to Alexander Boersstraat crosses 0363100012161430"
+  },
+  {
+   "pandId": "0363100012161477",
+   "reason": "frontage 53.5 m from Alexander Boersstraat"
+  },
+  {
+   "pandId": "0363100012163593",
+   "reason": "sightline to Alexander Boersstraat crosses 0363100012166994"
+  },
+  {
+   "pandId": "0363100012164237",
+   "reason": "sightline to Alexander Boersstraat crosses 0363100012164612"
+  },
+  {
+   "pandId": "0363100012164612",
+   "reason": "sightline to Alexander Boersstraat crosses 0363100012166436"
+  },
+  {
+   "pandId": "0363100012164629",
+   "reason": "frontage 89.2 m from Alexander Boersstraat"
+  },
+  {
+   "pandId": "0363100012164862",
+   "reason": "sightline to Alexander Boersstraat crosses 0363100012164237"
+  },
+  {
+   "pandId": "0363100012164883",
+   "reason": "sightline to Alexander Boersstraat crosses 0363100012165479"
+  },
+  {
+   "pandId": "0363100012165357",
+   "reason": "frontage 57.2 m from Alexander Boersstraat"
+  },
+  {
+   "pandId": "0363100012165890",
+   "reason": "frontage 41.1 m from Alexander Boersstraat"
+  },
+  {
+   "pandId": "0363100012166099",
+   "reason": "sightline to Alexander Boersstraat crosses 0363100012233618"
+  },
+  {
+   "pandId": "0363100012166115",
+   "reason": "frontage 58.9 m from Alexander Boersstraat"
+  },
+  {
+   "pandId": "0363100012167076",
+   "reason": "frontage 46.8 m from Alexander Boersstraat"
+  },
+  {
+   "pandId": "0363100012167167",
+   "reason": "frontage 35.0 m from Alexander Boersstraat"
+  },
+  {
+   "pandId": "0363100012167409",
+   "reason": "frontage 59.0 m from Alexander Boersstraat"
+  },
+  {
+   "pandId": "0363100012187048",
+   "reason": "frontage 32.3 m from Alexander Boersstraat"
+  },
+  {
+   "pandId": "0363100012202476",
+   "reason": "no frontage on Alexander Boersstraat: No footprint edge faces Alexander Boersstraat"
+  },
+  {
+   "pandId": "0363100012227595",
+   "reason": "sightline to Alexander Boersstraat crosses 0363100012158017"
+  },
+  {
+   "pandId": "0363100012228575",
+   "reason": "sightline to Alexander Boersstraat crosses 0363100012152809"
+  },
+  {
+   "pandId": "0363100012228732",
+   "reason": "frontage 33.5 m from Alexander Boersstraat"
+  },
+  {
+   "pandId": "0363100012234991",
+   "reason": "sightline to Alexander Boersstraat crosses 0363100012233435"
+  },
+  {
+   "pandId": "0363100012236923",
+   "reason": "sightline to Alexander Boersstraat crosses 0363100012237228"
+  },
+  {
+   "pandId": "0363100012237012",
+   "reason": "frontage 37.3 m from Alexander Boersstraat"
+  },
+  {
+   "pandId": "0363100012237149",
+   "reason": "no frontage on Alexander Boersstraat: No footprint edge faces Alexander Boersstraat"
+  },
+  {
+   "pandId": "0363100012251804",
+   "reason": "frontage 84.1 m from Alexander Boersstraat"
+  },
+  {
+   "pandId": "0363100012251805",
+   "reason": "frontage 81.5 m from Alexander Boersstraat"
+  },
+  {
+   "pandId": "0363100012155894",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012156165",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012158017",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012160266",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012160547",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012160548",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012160817",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012161430",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012163884",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012164614",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012166072",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012166436",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012166880",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012167023",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012233435",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012233618",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012236205",
+   "reason": "fronts the other side / another direction"
+  }
+ ],
+ "areaHalfSizeM": 90,
+ "pands": [
+  {
+   "pandId": "0363100012156011",
+   "alongM": -28.42,
+   "widthM": 6.79,
+   "eavesM": 9.77,
+   "roofMaxM": 13.19,
+   "storeys3dbag": 4,
+   "builtYear": 1895,
+   "uncertainty": [
+    "Frontage extended across a native jog of up to 1 m (possible partial front at the default 0.35 m).",
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  },
+  {
+   "pandId": "0363100012165797",
+   "alongM": -21.74,
+   "widthM": 6.64,
+   "eavesM": 11,
+   "roofMaxM": 13.27,
+   "storeys3dbag": 4,
+   "builtYear": 1895,
+   "uncertainty": [
+    "Frontage extended across a native jog of up to 1 m (possible partial front at the default 0.35 m).",
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  },
+  {
+   "pandId": "0363100012166010",
+   "alongM": -15.19,
+   "widthM": 6.53,
+   "eavesM": 13.18,
+   "roofMaxM": 13.43,
+   "storeys3dbag": 4,
+   "builtYear": 1895,
+   "uncertainty": [
+    "Frontage extended across a native jog of up to 1 m (possible partial front at the default 0.35 m).",
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  },
+  {
+   "pandId": "0363100012166994",
+   "alongM": -8.65,
+   "widthM": 6.56,
+   "eavesM": 11.02,
+   "roofMaxM": 13.55,
+   "storeys3dbag": 4,
+   "builtYear": 1895,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012158803",
+   "alongM": 0,
+   "widthM": 10.74,
+   "eavesM": 14.28,
+   "roofMaxM": 14.31,
+   "storeys3dbag": 4,
+   "builtYear": 1895,
+   "uncertainty": []
+  }
+ ]
+}

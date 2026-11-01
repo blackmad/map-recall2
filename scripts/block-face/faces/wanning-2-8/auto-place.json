@@ -1,0 +1,429 @@
+{
+ "face": "wanning-2-8",
+ "street": "Wanningstraat",
+ "library": "museumkwartier",
+ "stripDate": "2024-11-12",
+ "seconds": 0.61,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [],
+ "pands": [
+  {
+   "pandId": "0363100012161393",
+   "address": "Wanningstraat 8",
+   "builtYear": 1902,
+   "widthM": 5.87,
+   "eavesM": 12.93,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#75553d",
+    "wallRaw": "#705e4a",
+    "skyline": {
+     "eavesM": 15.85,
+     "eavesRow": 104,
+     "confidence": 1,
+     "crown": {
+      "widthM": 3.2,
+      "riseM": 1.83,
+      "topWidthM": 1.82,
+      "centre": 0.54
+     }
+    },
+    "stucco": false,
+    "bands": 2,
+    "columns": 3,
+    "frontClass": "columns",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.11,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 11.8,
+       "widthM": 1.55,
+       "centre": 0.14
+      },
+      {
+       "atM": 10.97,
+       "widthM": 1.23,
+       "centre": 0.16
+      },
+      {
+       "atM": 7.45,
+       "widthM": 1.15,
+       "centre": 0.18
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.17
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best museum-cs-1900-gable-balcony: built 1902, type 1900-1901)",
+   "best": {
+    "type": "museum-cs-1900-gable-balcony",
+    "score": 0,
+    "veto": [
+     "built 1902, type 1900-1901"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 15.85 m vs the type's 10.4 m (wall-dormer skyline 14.4 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 4 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.094 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012155607",
+   "address": "Wanningstraat 4C",
+   "builtYear": 1902,
+   "widthM": 5.75,
+   "eavesM": 15.24,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#3e3324",
+    "wallRaw": "#685543",
+    "skyline": {
+     "eavesM": 13.57,
+     "eavesRow": 195,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.3,
+      "riseM": 2.08,
+      "topWidthM": 0.35,
+      "centre": 0.22
+     }
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": "right",
+    "accentSide": "right",
+    "accentShare": 0.174,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 2 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 12,
+       "widthM": 1.43,
+       "centre": 0.54
+      },
+      {
+       "atM": 11.02,
+       "widthM": 1.25,
+       "centre": 0.15
+      },
+      {
+       "atM": 7.5,
+       "widthM": 1.18,
+       "centre": 0.5
+      }
+     ]
+    },
+    "voidShare": 0.02,
+    "foliageShare": 0.14
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best museum-cs-1900-gable-balcony: built 1902, type 1900-1901)",
+   "best": {
+    "type": "museum-cs-1900-gable-balcony",
+    "score": 0,
+    "veto": [
+     "built 1902, type 1900-1901"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0.5,
+      "note": "strip cornice 13.57 m vs the type's 10.4 m (wall-dormer skyline 14.4 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 4 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.1 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012167277",
+   "address": "Wanningstraat 4A",
+   "builtYear": 1902,
+   "widthM": 5.64,
+   "eavesM": 15.22,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#6f5d51",
+    "wallRaw": "#6c5a46",
+    "skyline": {
+     "eavesM": 13.9,
+     "eavesRow": 182,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.4,
+      "riseM": 2.95,
+      "topWidthM": 0.55,
+      "centre": 0.77
+     }
+    },
+    "stucco": false,
+    "bands": 4,
+    "columns": 3,
+    "frontClass": "curtain",
+    "doorSide": "left",
+    "accentSide": "left",
+    "accentShare": 0.2,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 2 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 11.88,
+       "widthM": 1.6,
+       "centre": 0.51
+      },
+      {
+       "atM": 11.57,
+       "widthM": 1.25,
+       "centre": 0.21
+      },
+      {
+       "atM": 10.97,
+       "widthM": 1.23,
+       "centre": 0.12
+      },
+      {
+       "atM": 7.45,
+       "widthM": 1.18,
+       "centre": 0.47
+      },
+      {
+       "atM": 7.07,
+       "widthM": 0.8,
+       "centre": 0.49
+      }
+     ]
+    },
+    "voidShare": 0.04,
+    "foliageShare": 0.16
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best museum-cs-1900-gable-balcony: built 1902, type 1900-1901)",
+   "best": {
+    "type": "museum-cs-1900-gable-balcony",
+    "score": 0,
+    "veto": [
+     "built 1902, type 1900-1901"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "strip cornice 13.9 m vs the type's 10.4 m (wall-dormer skyline 14.4 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.11 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012155965",
+   "address": "Wanningstraat 2",
+   "builtYear": 1898,
+   "widthM": 6,
+   "eavesM": 12.66,
+   "storeys3dbag": 5,
+   "bagBay": {
+    "fromM": 3.38,
+    "toM": 5.89,
+    "depthM": 1.12,
+    "centre": 0.787,
+    "lineRD": [
+     [
+      120264.41518750001,
+      485550.43575
+     ],
+     [
+      120261.9581875,
+      485554.24575
+     ]
+    ]
+   },
+   "strip": {
+    "wall": "#b9af94",
+    "wallRaw": "#7b6350",
+    "skyline": {
+     "eavesM": 13.15,
+     "eavesRow": 212,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.4,
+      "riseM": 2.65,
+      "topWidthM": 1.48,
+      "centre": 0.5
+     }
+    },
+    "stucco": false,
+    "bands": 4,
+    "columns": 3,
+    "frontClass": "ribbon",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.259,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "balcony slabs stacked at 8.9 m (4.83 m wide), 5.75 m (1.68 m wide), 5.45 m (1.25 m wide)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 11.22,
+       "widthM": 1.07,
+       "centre": 0.5
+      },
+      {
+       "atM": 8.9,
+       "widthM": 4.83,
+       "centre": 0.5
+      },
+      {
+       "atM": 5.75,
+       "widthM": 1.68,
+       "centre": 0.42
+      },
+      {
+       "atM": 5.45,
+       "widthM": 1.25,
+       "centre": 0.12
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.15
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best museum-cs-1900-gable-balcony: built 1898, type 1900-1901)",
+   "best": {
+    "type": "museum-cs-1900-gable-balcony",
+    "score": 0,
+    "veto": [
+     "built 1898, type 1900-1901"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 13.15 m vs the type's 10.4 m (wall-dormer skyline 14.4 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.212 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

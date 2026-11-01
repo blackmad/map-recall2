@@ -1,0 +1,1360 @@
+{
+ "face": "eeghen-2-36",
+ "street": "Van Eeghenstraat",
+ "library": "museumkwartier",
+ "stripDate": "2024-11-12",
+ "seconds": 2.25,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [],
+ "pands": [
+  {
+   "pandId": "0363100012161859",
+   "address": "Van Eeghenstraat 34",
+   "builtYear": 1896,
+   "widthM": 6.05,
+   "eavesM": 9.85,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#35312d",
+    "wallRaw": "#43433a",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 829,
+     "confidence": 0.24,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": 3,
+    "frontClass": "columns",
+    "doorSide": "left",
+    "accentSide": "right",
+    "accentShare": 0.147,
+    "structure": {
+     "bayWidthM": 1.15,
+     "bayCentre": 0.86,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 5.2,
+       "widthM": 0.95,
+       "centre": 0.55
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.13
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best museum-cs-1900-gable-balcony: built 1896, type 1900-1901)",
+   "best": {
+    "type": "museum-cs-1900-gable-balcony",
+    "score": 0,
+    "veto": [
+     "built 1896, type 1900-1901"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": null,
+      "note": "strip cornice unread (type line 10.4 m; 3DBAG 9.85 m not compared)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 4 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.07 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012166341",
+   "address": "Van Eeghenstraat 32",
+   "builtYear": 1896,
+   "widthM": 6.07,
+   "eavesM": 14.14,
+   "storeys3dbag": 5,
+   "bagBay": {
+    "fromM": 3.87,
+    "toM": 3.87,
+    "depthM": 0.63,
+    "centre": 0.638
+   },
+   "strip": {
+    "wall": "#2c2921",
+    "wallRaw": "#777564",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 829,
+     "confidence": 0.3,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "columns",
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0.373,
+    "structure": {
+     "bayWidthM": 5.5,
+     "bayCentre": 0.5,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0.23,
+    "foliageShare": 0.22
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best museum-cs-1900-gable-balcony: built 1896, type 1900-1901)",
+   "best": {
+    "type": "museum-cs-1900-gable-balcony",
+    "score": 0,
+    "veto": [
+     "built 1896, type 1900-1901"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": null,
+      "note": "strip cornice unread (type line 10.4 m; 3DBAG 14.14 m not compared)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.066 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012165181",
+   "address": "Van Eeghenstraat 30",
+   "builtYear": 1898,
+   "widthM": 6.12,
+   "eavesM": 15.84,
+   "storeys3dbag": 0,
+   "bagBay": null,
+   "strip": {
+    "wall": "#74594a",
+    "wallRaw": "#8a7961",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 829,
+     "confidence": 0.22,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 4,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.613,
+    "structure": {
+     "bayWidthM": 5.63,
+     "bayCentre": 0.5,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 7.75,
+       "widthM": 1.35,
+       "centre": 0.16
+      }
+     ]
+    },
+    "voidShare": 0.44,
+    "foliageShare": 0.14
+   },
+   "status": "held",
+   "stage": "evidence",
+   "reason": "strip 44 % without panorama data",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012153392",
+   "address": "Van Eeghenstraat 28",
+   "builtYear": 1898,
+   "widthM": 6.1,
+   "eavesM": 15.23,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#aadddd",
+    "wallRaw": "#947b61",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 829,
+     "confidence": 0.08,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 7,
+    "frontClass": "punched",
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.331,
+    "structure": {
+     "bayWidthM": 5.6,
+     "bayCentre": 0.5,
+     "balconies": false,
+     "why": "no dark open axis (light ones: 2.55 m @ 0.52), 0 wide slab(s)",
+     "openAxes": [
+      {
+       "widthM": 2.55,
+       "centre": 0.51,
+       "light": 0.52
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0.25,
+    "foliageShare": 0.16
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best museum-cs-1900-gable-balcony: built 1898, type 1900-1901)",
+   "best": {
+    "type": "museum-cs-1900-gable-balcony",
+    "score": 0,
+    "veto": [
+     "built 1898, type 1900-1901"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": null,
+      "note": "strip cornice unread (type line 10.4 m; 3DBAG 15.23 m not compared)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 4 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.058 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0,
+      "note": "strip columns 7 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012153043",
+   "address": "Van Eeghenstraat 26",
+   "builtYear": 1898,
+   "widthM": 6.08,
+   "eavesM": 15.34,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#b4dadc",
+    "wallRaw": "#8a8574",
+    "skyline": {
+     "eavesM": 19.93,
+     "eavesRow": 32,
+     "confidence": 0.38,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 4,
+    "frontClass": "columns",
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0.474,
+    "structure": {
+     "bayWidthM": 5.33,
+     "bayCentre": 0.48,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 8.52,
+       "widthM": 0.9,
+       "centre": 0.4
+      },
+      {
+       "atM": 6.8,
+       "widthM": 1.65,
+       "centre": 0.49
+      }
+     ]
+    },
+    "voidShare": 0.35,
+    "foliageShare": 0.11
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best museum-cs-1900-gable-balcony: built 1898, type 1900-1901)",
+   "best": {
+    "type": "museum-cs-1900-gable-balcony",
+    "score": 0,
+    "veto": [
+     "built 1898, type 1900-1901"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": null,
+      "note": "strip cornice unread (type line 10.4 m; 3DBAG 15.34 m not compared)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.078 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0.4,
+      "note": "strip columns 4 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012156448",
+   "address": "Van Eeghenstraat 24",
+   "builtYear": 1898,
+   "widthM": 6.29,
+   "eavesM": 11.31,
+   "storeys3dbag": 5,
+   "bagBay": {
+    "fromM": 3.66,
+    "toM": 6.26,
+    "depthM": 0.59,
+    "centre": 0.792,
+    "lineRD": [
+     [
+      120180.10331250001,
+      485712.78475
+     ],
+     [
+      120183.5753125,
+      485714.68675
+     ]
+    ]
+   },
+   "strip": {
+    "wall": "#28261c",
+    "wallRaw": "#726354",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 829,
+     "confidence": 0.25,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.335,
+    "structure": {
+     "bayWidthM": 0.75,
+     "bayCentre": 0.17,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0.12,
+    "foliageShare": 0.09
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best museum-cs-1900-gable-balcony: built 1898, type 1900-1901)",
+   "best": {
+    "type": "museum-cs-1900-gable-balcony",
+    "score": 0,
+    "veto": [
+     "built 1898, type 1900-1901"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": null,
+      "note": "strip cornice unread (type line 10.4 m; 3DBAG 11.31 m not compared)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.077 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012163894",
+   "address": "Van Eeghenstraat 22",
+   "builtYear": 1898,
+   "widthM": 6.26,
+   "eavesM": 13.19,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#554238",
+    "wallRaw": "#776656",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 829,
+     "confidence": 0.24,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 2,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.418,
+    "structure": {
+     "bayWidthM": 4.97,
+     "bayCentre": 0.48,
+     "balconies": true,
+     "why": "dark open axis 0.68 m at 0.48 (light 0.43): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.68,
+       "centre": 0.48,
+       "light": 0.43
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 7.47,
+       "widthM": 1.75,
+       "centre": 0.26
+      }
+     ]
+    },
+    "voidShare": 0.23,
+    "foliageShare": 0.16
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best museum-cs-1900-gable-balcony: built 1898, type 1900-1901)",
+   "best": {
+    "type": "museum-cs-1900-gable-balcony",
+    "score": 0,
+    "veto": [
+     "built 1898, type 1900-1901"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": null,
+      "note": "strip cornice unread (type line 10.4 m; 3DBAG 13.19 m not compared)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.105 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012158707",
+   "address": "Van Eeghenstraat 20",
+   "builtYear": 1898,
+   "widthM": 6.24,
+   "eavesM": 12.99,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#6f564a",
+    "wallRaw": "#6f6355",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 829,
+     "confidence": 0.16,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.244,
+    "structure": {
+     "bayWidthM": 1.13,
+     "bayCentre": 0.84,
+     "balconies": false,
+     "why": "no dark open axis, 2 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 7.67,
+       "widthM": 1.23,
+       "centre": 0.83
+      },
+      {
+       "atM": 7.38,
+       "widthM": 1.18,
+       "centre": 0.16
+      },
+      {
+       "atM": 5.42,
+       "widthM": 1.55,
+       "centre": 0.13
+      },
+      {
+       "atM": 5.13,
+       "widthM": 1.57,
+       "centre": 0.53
+      }
+     ]
+    },
+    "voidShare": 0.08,
+    "foliageShare": 0.14
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best museum-cs-1900-gable-balcony: built 1898, type 1900-1901)",
+   "best": {
+    "type": "museum-cs-1900-gable-balcony",
+    "score": 0,
+    "veto": [
+     "built 1898, type 1900-1901"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": null,
+      "note": "strip cornice unread (type line 10.4 m; 3DBAG 12.99 m not compared)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.109 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012159899",
+   "address": "Van Eeghenstraat 18",
+   "builtYear": 1898,
+   "widthM": 6.2,
+   "eavesM": 12.92,
+   "storeys3dbag": 5,
+   "bagBay": {
+    "fromM": 3.89,
+    "toM": 5.72,
+    "depthM": 0.32,
+    "centre": 0.775
+   },
+   "strip": {
+    "wall": "#6e5548",
+    "wallRaw": "#74685a",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 829,
+     "confidence": 0.28,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.255,
+    "structure": {
+     "bayWidthM": 1.15,
+     "bayCentre": 0.15,
+     "balconies": true,
+     "why": "dark open axis 1 m at 0.15 (light 0.49): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 1,
+       "centre": 0.15,
+       "light": 0.49
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 10.97,
+       "widthM": 1.15,
+       "centre": 0.49
+      },
+      {
+       "atM": 7.82,
+       "widthM": 1.32,
+       "centre": 0.48
+      }
+     ]
+    },
+    "voidShare": 0.08,
+    "foliageShare": 0.12
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best museum-cs-1900-gable-balcony: built 1898, type 1900-1901)",
+   "best": {
+    "type": "museum-cs-1900-gable-balcony",
+    "score": 0,
+    "veto": [
+     "built 1898, type 1900-1901"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": null,
+      "note": "strip cornice unread (type line 10.4 m; 3DBAG 12.92 m not compared)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.112 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012158520",
+   "address": "Van Eeghenstraat 16",
+   "builtYear": 1898,
+   "widthM": 6.29,
+   "eavesM": 13.11,
+   "storeys3dbag": 4,
+   "bagBay": {
+    "fromM": 0,
+    "toM": 2.95,
+    "depthM": 1.06,
+    "centre": 0.238,
+    "lineRD": [
+     [
+      120205.5403125,
+      485724.09075000003
+     ],
+     [
+      120208.7203125,
+      485724.87075
+     ]
+    ]
+   },
+   "strip": {
+    "wall": "#725a45",
+    "wallRaw": "#87755f",
+    "skyline": {
+     "eavesM": 18.73,
+     "eavesRow": 80,
+     "confidence": 0.9,
+     "crown": {
+      "widthM": 1.57,
+      "riseM": 2,
+      "topWidthM": 0.2,
+      "centre": 0.48
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "columns",
+    "doorSide": "left",
+    "accentSide": "right",
+    "accentShare": 0.504,
+    "structure": {
+     "bayWidthM": 5.8,
+     "bayCentre": 0.5,
+     "balconies": true,
+     "why": "dark open axis 0.65 m at 0.33 (light 0.38): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.65,
+       "centre": 0.33,
+       "light": 0.38
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 8,
+       "widthM": 1.52,
+       "centre": 0.15
+      },
+      {
+       "atM": 7.32,
+       "widthM": 1.05,
+       "centre": 0.15
+      }
+     ]
+    },
+    "voidShare": 0.31,
+    "foliageShare": 0.19
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best museum-cs-1900-gable-balcony: built 1898, type 1900-1901)",
+   "best": {
+    "type": "museum-cs-1900-gable-balcony",
+    "score": 0,
+    "veto": [
+     "built 1898, type 1900-1901"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 18.73 m vs the type's 10.4 m (wall-dormer skyline 14.4 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 4 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.16 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012159938",
+   "address": "Van Eeghenstraat 14",
+   "builtYear": 1898,
+   "widthM": 6.42,
+   "eavesM": 13.54,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#7e6152",
+    "wallRaw": "#907c69",
+    "skyline": {
+     "eavesM": 14.78,
+     "eavesRow": 238,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.77,
+      "riseM": 1.62,
+      "topWidthM": 0.17,
+      "centre": 0.85
+     }
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": 3,
+    "frontClass": "columns",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.655,
+    "structure": {
+     "bayWidthM": 5.92,
+     "bayCentre": 0.5,
+     "balconies": false,
+     "why": "no dark open axis (light ones: 1.13 m @ 0.74, 1.23 m @ 0.71, 1.15 m @ 0.78), 1 wide slab(s)",
+     "openAxes": [
+      {
+       "widthM": 1.13,
+       "centre": 0.16,
+       "light": 0.74
+      },
+      {
+       "widthM": 1.23,
+       "centre": 0.47,
+       "light": 0.71
+      },
+      {
+       "widthM": 1.15,
+       "centre": 0.83,
+       "light": 0.78
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 7.63,
+       "widthM": 1.43,
+       "centre": 0.46
+      }
+     ]
+    },
+    "voidShare": 0.49,
+    "foliageShare": 0.08
+   },
+   "status": "held",
+   "stage": "evidence",
+   "reason": "strip 49 % without panorama data",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012153460",
+   "address": "Van Eeghenstraat 12",
+   "builtYear": 1892,
+   "widthM": 6.01,
+   "eavesM": 15.81,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#aedcdd",
+    "wallRaw": "#9f967e",
+    "skyline": {
+     "eavesM": 15.53,
+     "eavesRow": 208,
+     "confidence": 1,
+     "crown": {
+      "widthM": 0.88,
+      "riseM": 1.9,
+      "topWidthM": 0.23,
+      "centre": 0.18
+     }
+    },
+    "stucco": false,
+    "bands": 3,
+    "columns": null,
+    "frontClass": "curtain",
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0.663,
+    "structure": {
+     "bayWidthM": 5.5,
+     "bayCentre": 0.5,
+     "balconies": false,
+     "why": "no dark open axis (light ones: 1.02 m @ 0.71), 1 wide slab(s)",
+     "openAxes": [
+      {
+       "widthM": 1.02,
+       "centre": 0.78,
+       "light": 0.71
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 8.18,
+       "widthM": 1.1,
+       "centre": 0.4
+      },
+      {
+       "atM": 5.63,
+       "widthM": 1.27,
+       "centre": 0.13
+      }
+     ]
+    },
+    "voidShare": 0.5,
+    "foliageShare": 0.18
+   },
+   "status": "held",
+   "stage": "evidence",
+   "reason": "strip 50 % without panorama data",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012161215",
+   "address": "Van Eeghenstraat 10",
+   "builtYear": 1892,
+   "widthM": 6,
+   "eavesM": 14.81,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#acdadc",
+    "wallRaw": "#c7ad8b",
+    "skyline": {
+     "eavesM": 13.8,
+     "eavesRow": 277,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.48,
+      "riseM": 1.32,
+      "topWidthM": 0.2,
+      "centre": 0.45
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "curtain",
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.686,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 7.72,
+       "widthM": 1.38,
+       "centre": 0.57
+      }
+     ]
+    },
+    "voidShare": 0.54,
+    "foliageShare": 0.12
+   },
+   "status": "held",
+   "stage": "evidence",
+   "reason": "strip 54 % without panorama data",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012167141",
+   "address": "Van Eeghenstraat 8",
+   "builtYear": 1892,
+   "widthM": 6.05,
+   "eavesM": 15.41,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#41382a",
+    "wallRaw": "#efdba7",
+    "skyline": {
+     "eavesM": 13.13,
+     "eavesRow": 304,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.17,
+      "riseM": 1.72,
+      "topWidthM": 0.53,
+      "centre": 0.51
+     }
+    },
+    "stucco": false,
+    "bands": 2,
+    "columns": 5,
+    "frontClass": "blank",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.519,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 7.27,
+       "widthM": 0.88,
+       "centre": 0.63
+      }
+     ]
+    },
+    "voidShare": 0.45,
+    "foliageShare": 0.15
+   },
+   "status": "held",
+   "stage": "evidence",
+   "reason": "strip 45 % without panorama data",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012158822",
+   "address": "Van Eeghenstraat 6",
+   "builtYear": 1892,
+   "widthM": 5.97,
+   "eavesM": 13.12,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#61513d",
+    "wallRaw": "#d0c669",
+    "skyline": {
+     "eavesM": 13.03,
+     "eavesRow": 308,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.48,
+      "riseM": 2.3,
+      "topWidthM": 0.13,
+      "centre": 0.52
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.323,
+    "structure": {
+     "bayWidthM": 5.47,
+     "bayCentre": 0.5,
+     "balconies": true,
+     "why": "dark open axis 0.78 m at 0.24 (light 0.3): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.78,
+       "centre": 0.24,
+       "light": 0.3
+      },
+      {
+       "widthM": 1.38,
+       "centre": 0.51,
+       "light": 0.47
+      },
+      {
+       "widthM": 0.65,
+       "centre": 0.94,
+       "light": 0.22
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0.18,
+    "foliageShare": 0.42
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best museum-cs-1900-gable-balcony: built 1892, type 1900-1901)",
+   "best": {
+    "type": "museum-cs-1900-gable-balcony",
+    "score": 0,
+    "veto": [
+     "built 1892, type 1900-1901"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 13.03 m vs the type's 10.4 m (wall-dormer skyline 14.4 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": null,
+      "note": "no strip"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012164217",
+   "address": "Van Eeghenstraat 4",
+   "builtYear": 1894,
+   "widthM": 6.14,
+   "eavesM": 13.92,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#7b6052",
+    "wallRaw": "#8e7c68",
+    "skyline": {
+     "eavesM": 14.97,
+     "eavesRow": 230,
+     "confidence": 0.97,
+     "crown": {
+      "widthM": 3.7,
+      "riseM": 5.75,
+      "topWidthM": 0.2,
+      "centre": 0.33
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 4,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": "left",
+    "accentShare": 0.554,
+    "structure": {
+     "bayWidthM": 5.22,
+     "bayCentre": 0.46,
+     "balconies": false,
+     "why": "no dark open axis (light ones: 1.35 m @ 0.8, 0.6 m @ 0.74), 0 wide slab(s)",
+     "openAxes": [
+      {
+       "widthM": 1.35,
+       "centre": 0.25,
+       "light": 0.8
+      },
+      {
+       "widthM": 0.6,
+       "centre": 0.43,
+       "light": 0.74
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 8,
+       "widthM": 0.88,
+       "centre": 0.59
+      }
+     ]
+    },
+    "voidShare": 0.38,
+    "foliageShare": 0.17
+   },
+   "status": "held",
+   "stage": "evidence",
+   "reason": "strip 38 % without panorama data",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012237276",
+   "address": "Van Eeghenstraat 2",
+   "builtYear": 1894,
+   "widthM": 7.02,
+   "eavesM": 16.25,
+   "storeys3dbag": 5,
+   "bagBay": {
+    "fromM": 0,
+    "toM": 7.02,
+    "depthM": 1,
+    "centre": 0.5,
+    "lineRD": [
+     [
+      120245.5343125,
+      485741.00825
+     ],
+     [
+      120248.8233125,
+      485742.25025
+     ]
+    ]
+   },
+   "strip": {
+    "wall": "#535756",
+    "wallRaw": "#7b8175",
+    "skyline": {
+     "eavesM": 15.93,
+     "eavesRow": 192,
+     "confidence": 1,
+     "crown": {
+      "widthM": 0.75,
+      "riseM": 1.4,
+      "topWidthM": 0.33,
+      "centre": 0.41
+     }
+    },
+    "stucco": false,
+    "bands": 8,
+    "columns": 4,
+    "frontClass": "columns",
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0.379,
+    "structure": {
+     "bayWidthM": 1.57,
+     "bayCentre": 0.22,
+     "balconies": false,
+     "why": "no dark open axis, 2 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 7,
+       "widthM": 1.48,
+       "centre": 0.81
+      },
+      {
+       "atM": 5.27,
+       "widthM": 1.35,
+       "centre": 0.8
+      }
+     ]
+    },
+    "voidShare": 0.23,
+    "foliageShare": 0.23
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best museum-cs-1900-gable-balcony: built 1894, type 1900-1901; frontage 7.02 m, type 5.5-6.6 m)",
+   "best": {
+    "type": "museum-cs-1900-gable-balcony",
+    "score": 0,
+    "veto": [
+     "built 1894, type 1900-1901",
+     "frontage 7.02 m, type 5.5-6.6 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 15.93 m vs the type's 10.4 m (wall-dormer skyline 14.4 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.136 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0.4,
+      "note": "strip columns 4 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

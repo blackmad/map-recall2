@@ -1,0 +1,222 @@
+{
+ "street": "De Lairessestraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-01T13:01:31.170Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012076329",
+   "addresses": [
+    "De Lairessestraat 86"
+   ],
+   "groundUnits": [
+    {
+     "address": "De Lairessestraat 86-H",
+     "use": "woonfunctie",
+     "areaM2": 245,
+     "bagId": "0363010000618093"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012147794",
+   "addresses": [
+    "De Lairessestraat 84"
+   ],
+   "groundUnits": [
+    {
+     "address": "De Lairessestraat 84-H",
+     "use": "woonfunctie",
+     "areaM2": 186,
+     "bagId": "0363010000579343"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012124728",
+   "addresses": [
+    "De Lairessestraat 82",
+    "De Lairessestraat 82A",
+    "De Lairessestraat 82B",
+    "De Lairessestraat 82C"
+   ],
+   "groundUnits": [
+    {
+     "address": "De Lairessestraat 82-H",
+     "use": "kantoorfunctie",
+     "areaM2": 195,
+     "bagId": "0363010000618091"
+    },
+    {
+     "address": "De Lairessestraat 82A",
+     "use": "woonfunctie",
+     "areaM2": 263,
+     "bagId": "0363010003696951"
+    },
+    {
+     "address": "De Lairessestraat 82B",
+     "use": "woonfunctie",
+     "areaM2": 82,
+     "bagId": "0363010003696952"
+    },
+    {
+     "address": "De Lairessestraat 82C",
+     "use": "woonfunctie",
+     "areaM2": 157,
+     "bagId": "0363010003696953"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012078857",
+   "addresses": [
+    "De Lairessestraat 80"
+   ],
+   "groundUnits": [
+    {
+     "address": "De Lairessestraat 80-H",
+     "use": "woonfunctie",
+     "areaM2": 290,
+     "bagId": "0363010000618088"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012087585",
+   "addresses": [
+    "De Lairessestraat 78"
+   ],
+   "groundUnits": [
+    {
+     "address": "De Lairessestraat 78-H",
+     "use": "woonfunctie",
+     "areaM2": 184,
+     "bagId": "0363010000618082"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012090597",
+   "addresses": [
+    "De Lairessestraat 76"
+   ],
+   "groundUnits": [
+    {
+     "address": "De Lairessestraat 76-H",
+     "use": "woonfunctie",
+     "areaM2": 184,
+     "bagId": "0363010000618079"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012091029",
+   "addresses": [
+    "De Lairessestraat 74"
+   ],
+   "groundUnits": [
+    {
+     "address": "De Lairessestraat 74-H",
+     "use": "woonfunctie",
+     "areaM2": 184,
+     "bagId": "0363010000618075"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012134755",
+   "addresses": [
+    "De Lairessestraat 72"
+   ],
+   "groundUnits": [
+    {
+     "address": "De Lairessestraat 72-H",
+     "use": "woonfunctie",
+     "areaM2": 205,
+     "bagId": "0363010000618071"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012138601",
+   "addresses": [
+    "De Lairessestraat 70"
+   ],
+   "groundUnits": [
+    {
+     "address": "De Lairessestraat 70-H",
+     "use": "woonfunctie",
+     "areaM2": 184,
+     "bagId": "0363010000618067"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012076155",
+   "addresses": [
+    "De Lairessestraat 68"
+   ],
+   "groundUnits": [
+    {
+     "address": "De Lairessestraat 68-H",
+     "use": "woonfunctie",
+     "areaM2": 222,
+     "bagId": "0363010000618063"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012120769",
+   "addresses": [
+    "De Lairessestraat 66"
+   ],
+   "groundUnits": [
+    {
+     "address": "De Lairessestraat 66-H",
+     "use": "woonfunctie",
+     "areaM2": 184,
+     "bagId": "0363010000618059"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012105690",
+   "addresses": [
+    "De Lairessestraat 64"
+   ],
+   "groundUnits": [
+    {
+     "address": "Banstraat 30",
+     "use": "woonfunctie",
+     "areaM2": 203,
+     "bagId": "0363010000577110"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  }
+ ]
+}

@@ -1,0 +1,216 @@
+{
+ "schemaVersion": 1,
+ "kind": "block-face",
+ "id": "bree-107-149-r1",
+ "street": "Van Breestraat",
+ "sources": [
+  {
+   "id": "strip-2024-11-12",
+   "kind": "street-panorama",
+   "capturedAt": "2024-11-12",
+   "image": "staging/block-face/bree-107-149-r1/strip.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "authoring": {
+  "author": "review (#159, Museumkwartier A): auto-placed by blockFace/autoPlace.ts, reviewed at gallery size beside the 2024-11-12 strip",
+  "passes": 1,
+  "note": "auto-placed from the museumkwartier library (buurt Cornelis Schuytbuurt); scores and holds in scripts/block-face/faces/bree-107-149/auto-place.json; review pass 2026-11-01 for 123-129: three axes, centre balconettes on storeys 1-2, arched doors left, step gables on 123 and 129 and bell gables on 125-127 as the strip shows"
+ },
+ "types": [
+  "museum-cs-1900-gable-balcony"
+ ],
+ "houses": [
+  {
+   "pandId": "0363100012160540",
+   "slug": "bree-160540",
+   "address": "Van Breestraat 123",
+   "type": {
+    "type": "museum-cs-1900-gable-balcony",
+    "paletteOverrides": {
+     "brick": "#694e3d"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2024-11-12",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "bays": "3 equal window axes",
+    "identicalBays": "every storey: 3 two-light windows with a top light; the centre a French window behind a balconette on storeys 1-2",
+    "windowsPerStorey": "ground: door + 2 | 1: 3 | 2: 3 | gable: 1",
+    "symmetry": "upper storeys symmetric; door always left",
+    "groundFloor": "residential",
+    "signage": "none",
+    "roofline": "brick cornice frieze at 10.4 m; a centred wall gable to 14.4 m (step, bell or point); an attic storey with dormers between the gables",
+    "photoRows": [
+     2,
+     3,
+     3,
+     1
+    ],
+    "photoGroundRows": 1,
+    "photoGables": 1,
+    "citation": "auto-place: museum-cs-1900-gable-balcony scored 1 on eaves 1, storeys 1, stucco 1, columns 1; strip 2024-11-12 span 1814-2037"
+   }
+  },
+  {
+   "pandId": "0363100012160169",
+   "slug": "bree-160169",
+   "address": "Van Breestraat 125",
+   "type": {
+    "type": "museum-cs-1900-gable-balcony",
+    "crown": "bell-gable",
+    "paletteOverrides": {
+     "brick": "#584735"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2024-11-12",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "bays": "3 equal window axes",
+    "identicalBays": "every storey: 3 two-light windows with a top light; the centre a French window behind a balconette on storeys 1-2",
+    "windowsPerStorey": "ground: door + 2 | 1: 3 | 2: 3 | gable: 1",
+    "symmetry": "upper storeys symmetric; door always left",
+    "groundFloor": "residential",
+    "signage": "none",
+    "roofline": "brick cornice frieze at 10.4 m; a centred wall gable to 14.4 m (step, bell or point); an attic storey with dormers between the gables",
+    "photoRows": [
+     2,
+     3,
+     3,
+     1
+    ],
+    "photoGroundRows": 1,
+    "photoGables": 1,
+    "citation": "auto-place: museum-cs-1900-gable-balcony scored 1 on eaves -, storeys 1, stucco -; strip 2024-11-12 span 2036-2282"
+   }
+  },
+  {
+   "pandId": "0363100012157147",
+   "slug": "bree-157147",
+   "address": "Van Breestraat 127",
+   "type": {
+    "type": "museum-cs-1900-gable-balcony",
+    "crown": "bell-gable",
+    "paletteOverrides": {
+     "brick": "#554433"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2024-11-12",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "bays": "3 equal window axes",
+    "identicalBays": "every storey: 3 two-light windows with a top light; the centre a French window behind a balconette on storeys 1-2",
+    "windowsPerStorey": "ground: door + 2 | 1: 3 | 2: 3 | gable: 1",
+    "symmetry": "upper storeys symmetric; door always left",
+    "groundFloor": "residential",
+    "signage": "none",
+    "roofline": "brick cornice frieze at 10.4 m; a centred wall gable to 14.4 m (step, bell or point); an attic storey with dormers between the gables",
+    "photoRows": [
+     2,
+     3,
+     3,
+     1
+    ],
+    "photoGroundRows": 1,
+    "photoGables": 1,
+    "citation": "auto-place: museum-cs-1900-gable-balcony scored 1 on eaves -, storeys 1, stucco -; strip 2024-11-12 span 2282-2514"
+   }
+  },
+  {
+   "pandId": "0363100012163068",
+   "slug": "bree-163068",
+   "address": "Van Breestraat 129",
+   "type": {
+    "type": "museum-cs-1900-gable-balcony",
+    "paletteOverrides": {
+     "brick": "#524034"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2024-11-12",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "bays": "3 equal window axes",
+    "identicalBays": "every storey: 3 two-light windows with a top light; the centre a French window behind a balconette on storeys 1-2",
+    "windowsPerStorey": "ground: door + 2 | 1: 3 | 2: 3 | gable: 1",
+    "symmetry": "upper storeys symmetric; door always left",
+    "groundFloor": "residential",
+    "signage": "none",
+    "roofline": "brick cornice frieze at 10.4 m; a centred wall gable to 14.4 m (step, bell or point); an attic storey with dormers between the gables",
+    "photoRows": [
+     2,
+     3,
+     3,
+     1
+    ],
+    "photoGroundRows": 1,
+    "photoGables": 1,
+    "citation": "auto-place: museum-cs-1900-gable-balcony scored 1 on eaves 1, storeys 1, stucco 1, columns 1; strip 2024-11-12 span 2515-2756"
+   }
+  }
+ ],
+ "continuity": {
+  "streetLevel": "shared",
+  "corniceGroups": [],
+  "identical": [],
+  "partyClip": true,
+  "roof": {
+   "source": "recipe",
+   "pitchDeg": 30,
+   "evidence": "auto-place: low attic behind the cornice; the strips show sky over the cornices of the type rows"
+  },
+  "measuredEaves": [
+   {
+    "pand": "0363100012160540",
+    "stripRow": 397,
+    "frontRoof": {},
+    "evidence": "auto-place: the museum-cs-1900-gable-balcony cornice line 10.4 m (measured on its exemplar strips; this pand's skyline unread); 3DBAG/PDOK eaves 14.38 m"
+   },
+   {
+    "pand": "0363100012160169",
+    "stripRow": 397,
+    "frontRoof": {},
+    "evidence": "auto-place: the museum-cs-1900-gable-balcony cornice line 10.4 m (measured on its exemplar strips; this pand's skyline unread); 3DBAG/PDOK eaves 14.24 m"
+   },
+   {
+    "pand": "0363100012157147",
+    "stripRow": 397,
+    "frontRoof": {},
+    "evidence": "auto-place: the museum-cs-1900-gable-balcony cornice line 10.4 m (measured on its exemplar strips; this pand's skyline unread); 3DBAG/PDOK eaves 13.98 m"
+   },
+   {
+    "pand": "0363100012163068",
+    "stripRow": 397,
+    "frontRoof": {},
+    "evidence": "auto-place: the museum-cs-1900-gable-balcony cornice line 10.4 m (measured on its exemplar strips; this pand's skyline unread); 3DBAG/PDOK eaves 14.31 m"
+   }
+  ]
+ }
+}

@@ -1,0 +1,1334 @@
+{
+ "face": "willemsparkweg-80-110",
+ "street": "Willemsparkweg",
+ "library": "museumkwartier",
+ "stripDate": "2025-01-29",
+ "seconds": 2.88,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [],
+ "pands": [
+  {
+   "pandId": "0363100012157986",
+   "address": "Willemsparkweg 110A",
+   "builtYear": 1891,
+   "widthM": 6.46,
+   "eavesM": 7.15,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#0d0d03",
+    "wallRaw": "#564028",
+    "skyline": {
+     "eavesM": 14,
+     "eavesRow": 289,
+     "confidence": 0.55,
+     "crown": {
+      "widthM": 1.63,
+      "riseM": 7.23,
+      "topWidthM": 0.5,
+      "centre": 0.14
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": "left",
+    "accentSide": "left",
+    "accentShare": 0.044,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 2.8 m at 0.4 (light 0.15): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 2.8,
+       "centre": 0.4,
+       "light": 0.15
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 5.42,
+       "widthM": 1.63,
+       "centre": 0.5
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.16
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best museum-cs-1900-gable-balcony: built 1891, type 1900-1901)",
+   "best": {
+    "type": "museum-cs-1900-gable-balcony",
+    "score": 0,
+    "veto": [
+     "built 1891, type 1900-1901"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": null,
+      "note": "strip cornice unread (type line 10.4 m; 3DBAG 7.15 m not compared)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 4 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.001 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012157074",
+   "address": "Willemsparkweg 108",
+   "builtYear": 1891,
+   "widthM": 6.34,
+   "eavesM": 13.85,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#171709",
+    "wallRaw": "#666655",
+    "skyline": {
+     "eavesM": 14.82,
+     "eavesRow": 256,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.8,
+      "riseM": 1.63,
+      "topWidthM": 2.45,
+      "centre": 0.46
+     }
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": 3,
+    "frontClass": "columns",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.139,
+    "structure": {
+     "bayWidthM": 0.72,
+     "bayCentre": 0.5,
+     "balconies": false,
+     "why": "no dark open axis, 2 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 11.75,
+       "widthM": 1.35,
+       "centre": 0.48
+      },
+      {
+       "atM": 7.92,
+       "widthM": 1.43,
+       "centre": 0.85
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.47
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best museum-cs-1900-gable-balcony: built 1891, type 1900-1901)",
+   "best": {
+    "type": "museum-cs-1900-gable-balcony",
+    "score": 0,
+    "veto": [
+     "built 1891, type 1900-1901"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "strip cornice 14.82 m vs the type's 10.4 m (wall-dormer skyline 14.4 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": null,
+      "note": "no strip"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012165265",
+   "address": "Willemsparkweg 106",
+   "builtYear": 1891,
+   "widthM": 6.66,
+   "eavesM": 16.39,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#654f38",
+    "wallRaw": "#9b7e5d",
+    "skyline": {
+     "eavesM": 14.82,
+     "eavesRow": 256,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.83,
+      "riseM": 1.8,
+      "topWidthM": 2.1,
+      "centre": 0.5
+     }
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": 9,
+    "frontClass": "punched",
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.214,
+    "structure": {
+     "bayWidthM": 0.95,
+     "bayCentre": 0.16,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 8.9,
+       "widthM": 1.15,
+       "centre": 0.49
+      }
+     ]
+    },
+    "voidShare": 0.07,
+    "foliageShare": 0.24
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best museum-cs-1900-gable-balcony: built 1891, type 1900-1901)",
+   "best": {
+    "type": "museum-cs-1900-gable-balcony",
+    "score": 0,
+    "veto": [
+     "built 1891, type 1900-1901"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "strip cornice 14.82 m vs the type's 10.4 m (wall-dormer skyline 14.4 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 4 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.109 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0,
+      "note": "strip columns 9 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012103513",
+   "address": "Willemsparkweg 102A",
+   "builtYear": 2003,
+   "widthM": 13.05,
+   "eavesM": 14.28,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#a98156",
+    "wallRaw": "#a2825d",
+    "skyline": {
+     "eavesM": 16.13,
+     "eavesRow": 204,
+     "confidence": 0.96,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 6,
+    "frontClass": "columns",
+    "doorSide": null,
+    "accentSide": "left",
+    "accentShare": 0.165,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 7.22,
+       "widthM": 1.98,
+       "centre": 0.92
+      }
+     ]
+    },
+    "voidShare": 0.01,
+    "foliageShare": 0.3
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best museum-cs-1900-gable-balcony: built 2003, type 1900-1901; frontage 13.05 m, type 5.5-6.6 m)",
+   "best": {
+    "type": "museum-cs-1900-gable-balcony",
+    "score": 0,
+    "veto": [
+     "built 2003, type 1900-1901",
+     "frontage 13.05 m, type 5.5-6.6 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 16.13 m vs the type's 10.4 m (wall-dormer skyline 14.4 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.102 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0,
+      "note": "strip columns 6 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012125741",
+   "address": "Willemsparkweg 100A",
+   "builtYear": 1892,
+   "widthM": 6.78,
+   "eavesM": 16.36,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#5e4f3c",
+    "wallRaw": "#715e46",
+    "skyline": {
+     "eavesM": 14.85,
+     "eavesRow": 255,
+     "confidence": 0.76,
+     "crown": {
+      "widthM": 1.9,
+      "riseM": 6.38,
+      "topWidthM": 0.1,
+      "centre": 0.55
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.18,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 5.02,
+       "widthM": 1.27,
+       "centre": 0.11
+      }
+     ]
+    },
+    "voidShare": 0.05,
+    "foliageShare": 0.22
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best museum-cs-1900-gable-balcony: built 1892, type 1900-1901)",
+   "best": {
+    "type": "museum-cs-1900-gable-balcony",
+    "score": 0,
+    "veto": [
+     "built 1892, type 1900-1901"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "strip cornice 14.85 m vs the type's 10.4 m (wall-dormer skyline 14.4 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 4 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.081 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012073967",
+   "address": "Willemsparkweg 98",
+   "builtYear": 1892,
+   "widthM": 6.34,
+   "eavesM": 16.22,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#80563a",
+    "wallRaw": "#866348",
+    "skyline": {
+     "eavesM": 14.75,
+     "eavesRow": 259,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.8,
+      "riseM": 1.7,
+      "topWidthM": 2.52,
+      "centre": 0.52
+     }
+    },
+    "stucco": false,
+    "bands": 5,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.254,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 8.3,
+       "widthM": 1.5,
+       "centre": 0.51
+      },
+      {
+       "atM": 5,
+       "widthM": 1.13,
+       "centre": 0.12
+      }
+     ]
+    },
+    "voidShare": 0.08,
+    "foliageShare": 0.23
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best museum-cs-1900-gable-balcony: built 1892, type 1900-1901)",
+   "best": {
+    "type": "museum-cs-1900-gable-balcony",
+    "score": 0,
+    "veto": [
+     "built 1892, type 1900-1901"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "strip cornice 14.75 m vs the type's 10.4 m (wall-dormer skyline 14.4 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.118 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012166794",
+   "address": "Willemsparkweg 96",
+   "builtYear": 1892,
+   "widthM": 6.52,
+   "eavesM": 16.24,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#6f523b",
+    "wallRaw": "#81674d",
+    "skyline": {
+     "eavesM": 14.65,
+     "eavesRow": 263,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.77,
+      "riseM": 2.6,
+      "topWidthM": 0.57,
+      "centre": 0.51
+     }
+    },
+    "stucco": false,
+    "bands": 7,
+    "columns": 3,
+    "frontClass": "columns",
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.311,
+    "structure": {
+     "bayWidthM": 0.88,
+     "bayCentre": 0.51,
+     "balconies": true,
+     "why": "balcony slabs stacked at 11.27 m (1.38 m wide), 8.27 m (1.35 m wide)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 11.27,
+       "widthM": 1.38,
+       "centre": 0.5
+      },
+      {
+       "atM": 8.27,
+       "widthM": 1.35,
+       "centre": 0.49
+      }
+     ]
+    },
+    "voidShare": 0.13,
+    "foliageShare": 0.22
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best museum-cs-1900-gable-balcony: built 1892, type 1900-1901)",
+   "best": {
+    "type": "museum-cs-1900-gable-balcony",
+    "score": 0,
+    "veto": [
+     "built 1892, type 1900-1901"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "strip cornice 14.65 m vs the type's 10.4 m (wall-dormer skyline 14.4 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.122 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012164344",
+   "address": "Willemsparkweg 94",
+   "builtYear": 1890,
+   "widthM": 6.44,
+   "eavesM": 13.78,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#3a3625",
+    "wallRaw": "#5e5c49",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 849,
+     "confidence": 0.27,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 4,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0.177,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 11.22,
+       "widthM": 1.48,
+       "centre": 0.52
+      },
+      {
+       "atM": 10.7,
+       "widthM": 0.95,
+       "centre": 0.72
+      },
+      {
+       "atM": 5.52,
+       "widthM": 1,
+       "centre": 0.87
+      },
+      {
+       "atM": 5.22,
+       "widthM": 1,
+       "centre": 0.87
+      }
+     ]
+    },
+    "voidShare": 0.01,
+    "foliageShare": 0.49
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best museum-cs-1900-gable-balcony: built 1890, type 1900-1901)",
+   "best": {
+    "type": "museum-cs-1900-gable-balcony",
+    "score": 0,
+    "veto": [
+     "built 1890, type 1900-1901"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": null,
+      "note": "strip cornice unread (type line 10.4 m; 3DBAG 13.78 m not compared)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": null,
+      "note": "no strip"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012158600",
+   "address": "Willemsparkweg 92",
+   "builtYear": 1890,
+   "widthM": 6.75,
+   "eavesM": 13.88,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#363121",
+    "wallRaw": "#706c55",
+    "skyline": {
+     "eavesM": 20.13,
+     "eavesRow": 44,
+     "confidence": 0.33,
+     "crown": {
+      "widthM": 0.5,
+      "riseM": 1.1,
+      "topWidthM": 0.3,
+      "centre": 0.25
+     }
+    },
+    "stucco": false,
+    "bands": 3,
+    "columns": 9,
+    "frontClass": "punched",
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0.159,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 2 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 11.7,
+       "widthM": 1.63,
+       "centre": 0.86
+      },
+      {
+       "atM": 11.4,
+       "widthM": 1.45,
+       "centre": 0.18
+      },
+      {
+       "atM": 4.8,
+       "widthM": 1.1,
+       "centre": 0.91
+      }
+     ]
+    },
+    "voidShare": 0.01,
+    "foliageShare": 0.44
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best museum-cs-1900-gable-balcony: built 1890, type 1900-1901)",
+   "best": {
+    "type": "museum-cs-1900-gable-balcony",
+    "score": 0,
+    "veto": [
+     "built 1890, type 1900-1901"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": null,
+      "note": "strip cornice unread (type line 10.4 m; 3DBAG 13.88 m not compared)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 4 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": null,
+      "note": "no strip"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012159984",
+   "address": "Willemsparkweg 90",
+   "builtYear": 1890,
+   "widthM": 6.4,
+   "eavesM": 13.97,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#a08560",
+    "wallRaw": "#948968",
+    "skyline": {
+     "eavesM": 14.63,
+     "eavesRow": 264,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.77,
+      "riseM": 2.23,
+      "topWidthM": 2.58,
+      "centre": 0.44
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 5,
+    "frontClass": "curtain",
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.187,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "balcony slabs stacked at 11.43 m (1.52 m wide), 8.95 m (3.08 m wide), 7.75 m (1.5 m wide)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 11.43,
+       "widthM": 1.52,
+       "centre": 0.47
+      },
+      {
+       "atM": 8.95,
+       "widthM": 3.08,
+       "centre": 0.42
+      },
+      {
+       "atM": 7.75,
+       "widthM": 1.5,
+       "centre": 0.83
+      },
+      {
+       "atM": 4.82,
+       "widthM": 1.75,
+       "centre": 0.85
+      }
+     ]
+    },
+    "voidShare": 0.03,
+    "foliageShare": 0.36
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best museum-cs-1900-gable-balcony: built 1890, type 1900-1901)",
+   "best": {
+    "type": "museum-cs-1900-gable-balcony",
+    "score": 0,
+    "veto": [
+     "built 1890, type 1900-1901"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "strip cornice 14.63 m vs the type's 10.4 m (wall-dormer skyline 14.4 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 4 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": null,
+      "note": "no strip"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012154281",
+   "address": "Willemsparkweg 88",
+   "builtYear": 1890,
+   "widthM": 6.88,
+   "eavesM": 13.28,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#70583f",
+    "wallRaw": "#be956d",
+    "skyline": {
+     "eavesM": 13.65,
+     "eavesRow": 303,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.8,
+      "riseM": 2.4,
+      "topWidthM": 1.52,
+      "centre": 0.47
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0.152,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 0.88 m at 0.47 (light 0.28): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.88,
+       "centre": 0.47,
+       "light": 0.28
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 8.02,
+       "widthM": 0.8,
+       "centre": 0.46
+      }
+     ]
+    },
+    "voidShare": 0.01,
+    "foliageShare": 0.23
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best museum-cs-1900-gable-balcony: built 1890, type 1900-1901)",
+   "best": {
+    "type": "museum-cs-1900-gable-balcony",
+    "score": 0,
+    "veto": [
+     "built 1890, type 1900-1901"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0.5,
+      "note": "strip cornice 13.65 m vs the type's 10.4 m (wall-dormer skyline 14.4 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.123 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012159195",
+   "address": "Willemsparkweg 86",
+   "builtYear": 1890,
+   "widthM": 6.43,
+   "eavesM": 13.37,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#56432d",
+    "wallRaw": "#908664",
+    "skyline": {
+     "eavesM": 13.63,
+     "eavesRow": 304,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.83,
+      "riseM": 3.82,
+      "topWidthM": 0.4,
+      "centre": 0.55
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 6,
+    "frontClass": "blank",
+    "doorSide": "right",
+    "accentSide": "left",
+    "accentShare": 0.113,
+    "structure": {
+     "bayWidthM": 1,
+     "bayCentre": 0.18,
+     "balconies": true,
+     "why": "dark open axis 0.95 m at 0.53 (light 0.22): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.95,
+       "centre": 0.53,
+       "light": 0.22
+      },
+      {
+       "widthM": 0.97,
+       "centre": 0.86,
+       "light": 0.09
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0.06,
+    "foliageShare": 0.24
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best museum-cs-1900-gable-balcony: built 1890, type 1900-1901)",
+   "best": {
+    "type": "museum-cs-1900-gable-balcony",
+    "score": 0,
+    "veto": [
+     "built 1890, type 1900-1901"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0.5,
+      "note": "strip cornice 13.63 m vs the type's 10.4 m (wall-dormer skyline 14.4 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.052 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0,
+      "note": "strip columns 6 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012156974",
+   "address": "Willemsparkweg 84",
+   "builtYear": 1890,
+   "widthM": 7.02,
+   "eavesM": 13.65,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#5b452d",
+    "wallRaw": "#8d7756",
+    "skyline": {
+     "eavesM": 13.93,
+     "eavesRow": 292,
+     "confidence": 0.76,
+     "crown": {
+      "widthM": 2.02,
+      "riseM": 7.15,
+      "topWidthM": 0.07,
+      "centre": 0.56
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": "right",
+    "accentShare": 0.135,
+    "structure": {
+     "bayWidthM": 1.63,
+     "bayCentre": 0.87,
+     "balconies": true,
+     "why": "dark open axis 0.68 m at 0.48 (light 0.14): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.68,
+       "centre": 0.48,
+       "light": 0.14
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 4.8,
+       "widthM": 1.38,
+       "centre": 0.89
+      }
+     ]
+    },
+    "voidShare": 0.06,
+    "foliageShare": 0.26
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best museum-cs-1900-gable-balcony: built 1890, type 1900-1901; frontage 7.02 m, type 5.5-6.6 m)",
+   "best": {
+    "type": "museum-cs-1900-gable-balcony",
+    "score": 0,
+    "veto": [
+     "built 1890, type 1900-1901",
+     "frontage 7.02 m, type 5.5-6.6 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "strip cornice 13.93 m vs the type's 10.4 m (wall-dormer skyline 14.4 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.061 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012164610",
+   "address": "Willemsparkweg 82",
+   "builtYear": 1890,
+   "widthM": 6.8,
+   "eavesM": 13.09,
+   "storeys3dbag": 0,
+   "bagBay": null,
+   "strip": {
+    "wall": "#714a2f",
+    "wallRaw": "#e4ce9a",
+    "skyline": {
+     "eavesM": 12.68,
+     "eavesRow": 342,
+     "confidence": 1,
+     "crown": {
+      "widthM": 3.23,
+      "riseM": 2.17,
+      "topWidthM": 1.95,
+      "centre": 0.51
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.207,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 8.55,
+       "widthM": 1,
+       "centre": 0.13
+      },
+      {
+       "atM": 6.15,
+       "widthM": 1.15,
+       "centre": 0.86
+      }
+     ]
+    },
+    "voidShare": 0.09,
+    "foliageShare": 0.41
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best museum-cs-1900-gable-balcony: built 1890, type 1900-1901)",
+   "best": {
+    "type": "museum-cs-1900-gable-balcony",
+    "score": 0,
+    "veto": [
+     "built 1890, type 1900-1901"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 12.68 m vs the type's 10.4 m (wall-dormer skyline 14.4 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": null,
+      "note": "3DBAG bouwlagen 0 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": null,
+      "note": "no strip"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012152423",
+   "address": "Willemsparkweg 80",
+   "builtYear": 1890,
+   "widthM": 2.68,
+   "eavesM": 9.36,
+   "storeys3dbag": 0,
+   "bagBay": null,
+   "strip": {
+    "wall": "#ecc488",
+    "wallRaw": "#ad8154",
+    "skyline": {
+     "eavesM": 11.97,
+     "eavesRow": 370,
+     "confidence": 1,
+     "crown": {
+      "widthM": 0.57,
+      "riseM": 3.65,
+      "topWidthM": 0.2,
+      "centre": 0.12
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "curtain",
+    "doorSide": null,
+    "accentSide": "right",
+    "accentShare": 0.033,
+    "structure": {
+     "bayWidthM": 2.48,
+     "bayCentre": 0.5,
+     "balconies": true,
+     "why": "dark open axis 2.48 m at 0.5 (light 0.41): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 2.48,
+       "centre": 0.5,
+       "light": 0.41
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0.01,
+    "foliageShare": 0.29
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best museum-cs-1900-gable-balcony: built 1890, type 1900-1901; frontage 2.68 m, type 5.5-6.6 m)",
+   "best": {
+    "type": "museum-cs-1900-gable-balcony",
+    "score": 0,
+    "veto": [
+     "built 1890, type 1900-1901",
+     "frontage 2.68 m, type 5.5-6.6 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 11.97 m vs the type's 10.4 m (wall-dormer skyline 14.4 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": null,
+      "note": "3DBAG bouwlagen 0 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0 (brick)"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

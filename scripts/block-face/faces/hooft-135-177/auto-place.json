@@ -1,0 +1,1531 @@
+{
+ "face": "hooft-135-177",
+ "street": "Pieter Cornelisz. Hooftstraat",
+ "library": "museumkwartier",
+ "stripDate": "2024-12-11",
+ "seconds": 3.41,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [],
+ "pands": [
+  {
+   "pandId": "0363100012152596",
+   "address": "Pieter Cornelisz. Hooftstraat 135",
+   "builtYear": 1905,
+   "widthM": 6.99,
+   "eavesM": 15.04,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#53544e",
+    "wallRaw": "#505a4f",
+    "skyline": {
+     "eavesM": 16.13,
+     "eavesRow": 230,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.02,
+      "riseM": 1.75,
+      "topWidthM": 1.05,
+      "centre": 0.42
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "columns",
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.083,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 7.85,
+       "widthM": 1.1,
+       "centre": 0.57
+      },
+      {
+       "atM": 5.97,
+       "widthM": 1.13,
+       "centre": 0.79
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.47
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best museum-cs-1900-gable-balcony: built 1905, type 1900-1901)",
+   "best": {
+    "type": "museum-cs-1900-gable-balcony",
+    "score": 0,
+    "veto": [
+     "built 1905, type 1900-1901"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 16.13 m vs the type's 10.4 m (wall-dormer skyline 14.4 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": null,
+      "note": "no strip"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012162906",
+   "address": "Pieter Cornelisz. Hooftstraat 139",
+   "builtYear": 1905,
+   "widthM": 5.16,
+   "eavesM": 12.25,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#080d06",
+    "wallRaw": "#575f51",
+    "skyline": {
+     "eavesM": 11.1,
+     "eavesRow": 431,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.35,
+      "riseM": 3.2,
+      "topWidthM": 1,
+      "centre": 0.75
+     }
+    },
+    "stucco": false,
+    "bands": 3,
+    "columns": 2,
+    "frontClass": "columns",
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0.385,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 2 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 10.27,
+       "widthM": 3.02,
+       "centre": 0.32
+      },
+      {
+       "atM": 9.97,
+       "widthM": 2.4,
+       "centre": 0.25
+      },
+      {
+       "atM": 7.27,
+       "widthM": 1.57,
+       "centre": 0.23
+      },
+      {
+       "atM": 6.75,
+       "widthM": 1.88,
+       "centre": 0.8
+      },
+      {
+       "atM": 5.7,
+       "widthM": 0.95,
+       "centre": 0.23
+      }
+     ]
+    },
+    "voidShare": 0.02,
+    "foliageShare": 0.65
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best museum-cs-1900-gable-balcony: built 1905, type 1900-1901)",
+   "best": {
+    "type": "museum-cs-1900-gable-balcony",
+    "score": 0,
+    "veto": [
+     "built 1905, type 1900-1901"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0.5,
+      "note": "strip cornice 11.1 m vs the type's 10.4 m (wall-dormer skyline 14.4 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 4 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": null,
+      "note": "no strip"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012160917",
+   "address": "Pieter Cornelisz. Hooftstraat 141",
+   "builtYear": 1905,
+   "widthM": 4.88,
+   "eavesM": 12.33,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#4d4033",
+    "wallRaw": "#555645",
+    "skyline": {
+     "eavesM": 12.28,
+     "eavesRow": 384,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.63,
+      "riseM": 2.03,
+      "topWidthM": 0.78,
+      "centre": 0.18
+     }
+    },
+    "stucco": false,
+    "bands": 2,
+    "columns": 2,
+    "frontClass": "punched",
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.289,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 0.78 m at 0.69 (light 0.14): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.78,
+       "centre": 0.69,
+       "light": 0.14
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 10.93,
+       "widthM": 3.58,
+       "centre": 0.4
+      },
+      {
+       "atM": 10.63,
+       "widthM": 1.3,
+       "centre": 0.65
+      },
+      {
+       "atM": 10.25,
+       "widthM": 3.67,
+       "centre": 0.59
+      },
+      {
+       "atM": 7.32,
+       "widthM": 1.1,
+       "centre": 0.69
+      },
+      {
+       "atM": 6.8,
+       "widthM": 1.75,
+       "centre": 0.7
+      },
+      {
+       "atM": 5.75,
+       "widthM": 0.95,
+       "centre": 0.11
+      }
+     ]
+    },
+    "voidShare": 0.01,
+    "foliageShare": 0.48
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best museum-cs-1900-gable-balcony: built 1905, type 1900-1901; frontage 4.88 m, type 5.5-6.6 m)",
+   "best": {
+    "type": "museum-cs-1900-gable-balcony",
+    "score": 0,
+    "veto": [
+     "built 1905, type 1900-1901",
+     "frontage 4.88 m, type 5.5-6.6 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 12.28 m vs the type's 10.4 m (wall-dormer skyline 14.4 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": null,
+      "note": "no strip"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012164625",
+   "address": "Pieter Cornelisz. Hooftstraat 143",
+   "builtYear": 1905,
+   "widthM": 5.15,
+   "eavesM": 12.48,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#1f231c",
+    "wallRaw": "#5f6557",
+    "skyline": {
+     "eavesM": 11.63,
+     "eavesRow": 410,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.27,
+      "riseM": 3.47,
+      "topWidthM": 0.38,
+      "centre": 0.76
+     }
+    },
+    "stucco": false,
+    "bands": 6,
+    "columns": 5,
+    "frontClass": "columns",
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.336,
+    "structure": {
+     "bayWidthM": 0.68,
+     "bayCentre": 0.65,
+     "balconies": true,
+     "why": "bay-less open axis 0.63 m at 0.64 (light 0.74): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.63,
+       "centre": 0.64,
+       "light": 0.74
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 10.35,
+       "widthM": 2.23,
+       "centre": 0.23
+      },
+      {
+       "atM": 10.05,
+       "widthM": 2.33,
+       "centre": 0.24
+      },
+      {
+       "atM": 6.75,
+       "widthM": 1.73,
+       "centre": 0.28
+      }
+     ]
+    },
+    "voidShare": 0.03,
+    "foliageShare": 0.51
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best museum-cs-1900-gable-balcony: built 1905, type 1900-1901)",
+   "best": {
+    "type": "museum-cs-1900-gable-balcony",
+    "score": 0,
+    "veto": [
+     "built 1905, type 1900-1901"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 11.63 m vs the type's 10.4 m (wall-dormer skyline 14.4 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 4 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": null,
+      "note": "no strip"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012155818",
+   "address": "Pieter Cornelisz. Hooftstraat 145",
+   "builtYear": 1905,
+   "widthM": 5.19,
+   "eavesM": 12.46,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#998a7d",
+    "wallRaw": "#555d4e",
+    "skyline": {
+     "eavesM": 11.32,
+     "eavesRow": 422,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2,
+      "riseM": 4.15,
+      "topWidthM": 0.03,
+      "centre": 0.21
+     }
+    },
+    "stucco": false,
+    "bands": 2,
+    "columns": 2,
+    "frontClass": "curtain",
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.347,
+    "structure": {
+     "bayWidthM": 1.2,
+     "bayCentre": 0.41,
+     "balconies": true,
+     "why": "bay-less open axis 0.68 m at 0.36 (light 0.77): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.68,
+       "centre": 0.36,
+       "light": 0.77
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 10.35,
+       "widthM": 3.45,
+       "centre": 0.64
+      },
+      {
+       "atM": 7.27,
+       "widthM": 0.93,
+       "centre": 0.69
+      },
+      {
+       "atM": 6.75,
+       "widthM": 1.77,
+       "centre": 0.71
+      }
+     ]
+    },
+    "voidShare": 0.03,
+    "foliageShare": 0.59
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best museum-cs-1900-gable-balcony: built 1905, type 1900-1901)",
+   "best": {
+    "type": "museum-cs-1900-gable-balcony",
+    "score": 0,
+    "veto": [
+     "built 1905, type 1900-1901"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0.5,
+      "note": "strip cornice 11.32 m vs the type's 10.4 m (wall-dormer skyline 14.4 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 4 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": null,
+      "note": "no strip"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012164856",
+   "address": "Pieter Cornelisz. Hooftstraat 147",
+   "builtYear": 1905,
+   "widthM": 5.07,
+   "eavesM": 12.55,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#716151",
+    "wallRaw": "#666353",
+    "skyline": {
+     "eavesM": 11.1,
+     "eavesRow": 431,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.27,
+      "riseM": 4.15,
+      "topWidthM": 0.2,
+      "centre": 0.76
+     }
+    },
+    "stucco": false,
+    "bands": 2,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0.41,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 10.35,
+       "widthM": 3.58,
+       "centre": 0.38
+      },
+      {
+       "atM": 6.82,
+       "widthM": 1.77,
+       "centre": 0.26
+      }
+     ]
+    },
+    "voidShare": 0.04,
+    "foliageShare": 0.56
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best museum-cs-1900-gable-balcony: built 1905, type 1900-1901; frontage 5.07 m, type 5.5-6.6 m)",
+   "best": {
+    "type": "museum-cs-1900-gable-balcony",
+    "score": 0,
+    "veto": [
+     "built 1905, type 1900-1901",
+     "frontage 5.07 m, type 5.5-6.6 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0.5,
+      "note": "strip cornice 11.1 m vs the type's 10.4 m (wall-dormer skyline 14.4 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 4 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": null,
+      "note": "no strip"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012155497",
+   "address": "Pieter Cornelisz. Hooftstraat 149",
+   "builtYear": 1905,
+   "widthM": 5.1,
+   "eavesM": 12.77,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#6f6053",
+    "wallRaw": "#656454",
+    "skyline": {
+     "eavesM": 11.1,
+     "eavesRow": 431,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.15,
+      "riseM": 4,
+      "topWidthM": 0.15,
+      "centre": 0.23
+     }
+    },
+    "stucco": false,
+    "bands": 2,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.355,
+    "structure": {
+     "bayWidthM": 0.72,
+     "bayCentre": 0.34,
+     "balconies": true,
+     "why": "bay-less open axis 0.65 m at 0.35 (light 0.78): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.65,
+       "centre": 0.35,
+       "light": 0.78
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 10.35,
+       "widthM": 2.88,
+       "centre": 0.69
+      },
+      {
+       "atM": 6.82,
+       "widthM": 1.8,
+       "centre": 0.71
+      }
+     ]
+    },
+    "voidShare": 0.05,
+    "foliageShare": 0.49
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best museum-cs-1900-gable-balcony: built 1905, type 1900-1901)",
+   "best": {
+    "type": "museum-cs-1900-gable-balcony",
+    "score": 0,
+    "veto": [
+     "built 1905, type 1900-1901"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0.5,
+      "note": "strip cornice 11.1 m vs the type's 10.4 m (wall-dormer skyline 14.4 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": null,
+      "note": "no strip"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012167375",
+   "address": "Pieter Cornelisz. Hooftstraat 151",
+   "builtYear": 1905,
+   "widthM": 10.12,
+   "eavesM": 14.7,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#adaca9",
+    "wallRaw": "#616a5d",
+    "skyline": {
+     "eavesM": 12.78,
+     "eavesRow": 364,
+     "confidence": 1,
+     "crown": {
+      "widthM": 4.4,
+      "riseM": 3.13,
+      "topWidthM": 0.55,
+      "centre": 0.5
+     }
+    },
+    "stucco": false,
+    "bands": 7,
+    "columns": 2,
+    "frontClass": "columns",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.344,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "balcony slabs stacked at 10.97 m (1.88 m wide), 10.38 m (4.97 m wide), 10.07 m (2.2 m wide), 6.77 m (1.75 m wide)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 10.97,
+       "widthM": 1.88,
+       "centre": 0.63
+      },
+      {
+       "atM": 10.38,
+       "widthM": 4.97,
+       "centre": 0.5
+      },
+      {
+       "atM": 10.07,
+       "widthM": 2.2,
+       "centre": 0.88
+      },
+      {
+       "atM": 9.25,
+       "widthM": 1.02,
+       "centre": 0.12
+      },
+      {
+       "atM": 8.95,
+       "widthM": 0.95,
+       "centre": 0.41
+      },
+      {
+       "atM": 7.3,
+       "widthM": 0.8,
+       "centre": 0.12
+      },
+      {
+       "atM": 6.77,
+       "widthM": 1.75,
+       "centre": 0.9
+      },
+      {
+       "atM": 6.02,
+       "widthM": 0.82,
+       "centre": 0.6
+      }
+     ]
+    },
+    "voidShare": 0.07,
+    "foliageShare": 0.42
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best museum-cs-1900-gable-balcony: built 1905, type 1900-1901; frontage 10.12 m, type 5.5-6.6 m)",
+   "best": {
+    "type": "museum-cs-1900-gable-balcony",
+    "score": 0,
+    "veto": [
+     "built 1905, type 1900-1901",
+     "frontage 10.12 m, type 5.5-6.6 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 12.78 m vs the type's 10.4 m (wall-dormer skyline 14.4 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": null,
+      "note": "no strip"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012160875",
+   "address": "Pieter Cornelisz. Hooftstraat 155",
+   "builtYear": 1905,
+   "widthM": 5.22,
+   "eavesM": 14.39,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#a9a6a3",
+    "wallRaw": "#5f6a5b",
+    "skyline": {
+     "eavesM": 12.65,
+     "eavesRow": 369,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.88,
+      "riseM": 2.42,
+      "topWidthM": 0.23,
+      "centre": 0.81
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0.276,
+    "structure": {
+     "bayWidthM": 1.3,
+     "bayCentre": 0.6,
+     "balconies": true,
+     "why": "balcony slabs stacked at 10.18 m (2.77 m wide), 6.72 m (1.75 m wide)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 10.18,
+       "widthM": 2.77,
+       "centre": 0.29
+      },
+      {
+       "atM": 9.2,
+       "widthM": 1.02,
+       "centre": 0.31
+      },
+      {
+       "atM": 8.6,
+       "widthM": 0.9,
+       "centre": 0.87
+      },
+      {
+       "atM": 6.72,
+       "widthM": 1.75,
+       "centre": 0.31
+      },
+      {
+       "atM": 6.13,
+       "widthM": 1.05,
+       "centre": 0.87
+      }
+     ]
+    },
+    "voidShare": 0.05,
+    "foliageShare": 0.5
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best museum-cs-1900-gable-balcony: built 1905, type 1900-1901)",
+   "best": {
+    "type": "museum-cs-1900-gable-balcony",
+    "score": 0,
+    "veto": [
+     "built 1905, type 1900-1901"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 12.65 m vs the type's 10.4 m (wall-dormer skyline 14.4 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": null,
+      "note": "no strip"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012079242",
+   "address": "Pieter Cornelisz. Hooftstraat 157",
+   "builtYear": 1905,
+   "widthM": 5.15,
+   "eavesM": 12.39,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#1b241e",
+    "wallRaw": "#656d5e",
+    "skyline": {
+     "eavesM": 11.1,
+     "eavesRow": 431,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.25,
+      "riseM": 4.18,
+      "topWidthM": 0.42,
+      "centre": 0.24
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.329,
+    "structure": {
+     "bayWidthM": 0.35,
+     "bayCentre": 0.39,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 10.35,
+       "widthM": 1.38,
+       "centre": 0.86
+      },
+      {
+       "atM": 6.75,
+       "widthM": 1.7,
+       "centre": 0.74
+      }
+     ]
+    },
+    "voidShare": 0.02,
+    "foliageShare": 0.59
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best museum-cs-1900-gable-balcony: built 1905, type 1900-1901)",
+   "best": {
+    "type": "museum-cs-1900-gable-balcony",
+    "score": 0,
+    "veto": [
+     "built 1905, type 1900-1901"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0.5,
+      "note": "strip cornice 11.1 m vs the type's 10.4 m (wall-dormer skyline 14.4 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": null,
+      "note": "no strip"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012157624",
+   "address": "Pieter Cornelisz. Hooftstraat 159",
+   "builtYear": 1905,
+   "widthM": 4.92,
+   "eavesM": 12.47,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#b0aca8",
+    "wallRaw": "#5f6958",
+    "skyline": {
+     "eavesM": 12.22,
+     "eavesRow": 386,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.95,
+      "riseM": 2.08,
+      "topWidthM": 1,
+      "centre": 0.78
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0.169,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "balcony slabs stacked at 10.35 m (3.8 m wide), 7.35 m (1.48 m wide)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 10.35,
+       "widthM": 3.8,
+       "centre": 0.42
+      },
+      {
+       "atM": 9.22,
+       "widthM": 1.02,
+       "centre": 0.32
+      },
+      {
+       "atM": 7.35,
+       "widthM": 1.48,
+       "centre": 0.3
+      },
+      {
+       "atM": 6.9,
+       "widthM": 0.97,
+       "centre": 0.81
+      }
+     ]
+    },
+    "voidShare": 0.01,
+    "foliageShare": 0.4
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best museum-cs-1900-gable-balcony: built 1905, type 1900-1901; frontage 4.92 m, type 5.5-6.6 m)",
+   "best": {
+    "type": "museum-cs-1900-gable-balcony",
+    "score": 0,
+    "veto": [
+     "built 1905, type 1900-1901",
+     "frontage 4.92 m, type 5.5-6.6 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 12.22 m vs the type's 10.4 m (wall-dormer skyline 14.4 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 4 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": null,
+      "note": "no strip"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012157553",
+   "address": "Pieter Cornelisz. Hooftstraat 161",
+   "builtYear": 1877,
+   "widthM": 5.56,
+   "eavesM": 14.69,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#333935",
+    "wallRaw": "#61624f",
+    "skyline": {
+     "eavesM": 13.25,
+     "eavesRow": 345,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.93,
+      "riseM": 1.85,
+      "topWidthM": 0.4,
+      "centre": 0.19
+     }
+    },
+    "stucco": false,
+    "bands": 5,
+    "columns": 6,
+    "frontClass": "punched",
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.368,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 4 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 10.32,
+       "widthM": 5.1,
+       "centre": 0.5
+      },
+      {
+       "atM": 7.32,
+       "widthM": 1.57,
+       "centre": 0.73
+      },
+      {
+       "atM": 6.88,
+       "widthM": 1.9,
+       "centre": 0.19
+      },
+      {
+       "atM": 6.57,
+       "widthM": 1.48,
+       "centre": 0.71
+      }
+     ]
+    },
+    "voidShare": 0.04,
+    "foliageShare": 0.57
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best museum-cs-1900-gable-balcony: built 1877, type 1900-1901)",
+   "best": {
+    "type": "museum-cs-1900-gable-balcony",
+    "score": 0,
+    "veto": [
+     "built 1877, type 1900-1901"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 13.25 m vs the type's 10.4 m (wall-dormer skyline 14.4 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 4 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": null,
+      "note": "no strip"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012152280",
+   "address": "Pieter Cornelisz. Hooftstraat 163",
+   "builtYear": 1877,
+   "widthM": 6.99,
+   "eavesM": 15.52,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#634c3f",
+    "wallRaw": "#605748",
+    "skyline": {
+     "eavesM": 14.8,
+     "eavesRow": 283,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.38,
+      "riseM": 2.7,
+      "topWidthM": 1.57,
+      "centre": 0.5
+     }
+    },
+    "stucco": false,
+    "bands": 3,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.115,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 12.1,
+       "widthM": 1.43,
+       "centre": 0.16
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.41
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best museum-cs-1900-gable-balcony: built 1877, type 1900-1901)",
+   "best": {
+    "type": "museum-cs-1900-gable-balcony",
+    "score": 0,
+    "veto": [
+     "built 1877, type 1900-1901"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "strip cornice 14.8 m vs the type's 10.4 m (wall-dormer skyline 14.4 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": null,
+      "note": "no strip"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012155349",
+   "address": "Pieter Cornelisz. Hooftstraat 165",
+   "builtYear": 1877,
+   "widthM": 6.98,
+   "eavesM": 15.36,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#5f483c",
+    "wallRaw": "#5b5245",
+    "skyline": {
+     "eavesM": 15,
+     "eavesRow": 275,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.4,
+      "riseM": 2.1,
+      "topWidthM": 1.73,
+      "centre": 0.53
+     }
+    },
+    "stucco": false,
+    "bands": 2,
+    "columns": 3,
+    "frontClass": "columns",
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.098,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 5.02,
+       "widthM": 0.97,
+       "centre": 0.17
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.25
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best museum-cs-1900-gable-balcony: built 1877, type 1900-1901)",
+   "best": {
+    "type": "museum-cs-1900-gable-balcony",
+    "score": 0,
+    "veto": [
+     "built 1877, type 1900-1901"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0.5,
+      "note": "strip cornice 15 m vs the type's 10.4 m (wall-dormer skyline 14.4 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.058 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012162518",
+   "address": "Pieter Cornelisz. Hooftstraat 167",
+   "builtYear": 1877,
+   "widthM": 6.86,
+   "eavesM": 16.84,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#5e4a3d",
+    "wallRaw": "#665f50",
+    "skyline": {
+     "eavesM": 16,
+     "eavesRow": 235,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": 3,
+    "frontClass": "columns",
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.074,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 2 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 14.42,
+       "widthM": 1.35,
+       "centre": 0.52
+      },
+      {
+       "atM": 11.13,
+       "widthM": 1.38,
+       "centre": 0.88
+      },
+      {
+       "atM": 8.57,
+       "widthM": 1.23,
+       "centre": 0.86
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.25
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best museum-cs-1900-gable-balcony: built 1877, type 1900-1901)",
+   "best": {
+    "type": "museum-cs-1900-gable-balcony",
+    "score": 0,
+    "veto": [
+     "built 1877, type 1900-1901"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 16 m vs the type's 10.4 m (wall-dormer skyline 14.4 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.024 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012130582",
+   "address": "Pieter Cornelisz. Hooftstraat 169A",
+   "builtYear": 2003,
+   "widthM": 49.11,
+   "eavesM": 15.02,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#634131",
+    "wallRaw": "#655444",
+    "skyline": {
+     "eavesM": 13.07,
+     "eavesRow": 352,
+     "confidence": 1,
+     "crown": {
+      "widthM": 11.97,
+      "riseM": 1.63,
+      "topWidthM": 1.13,
+      "centre": 0.5
+     }
+    },
+    "stucco": false,
+    "bands": 2,
+    "columns": 22,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.248,
+    "structure": {
+     "bayWidthM": 2.4,
+     "bayCentre": 0.19,
+     "balconies": false,
+     "why": "no dark open axis (light ones: 1 m @ 0.89, 0.88 m @ 0.79, 0.78 m @ 0.93), 1 wide slab(s)",
+     "openAxes": [
+      {
+       "widthM": 1,
+       "centre": 0.14,
+       "light": 0.89
+      },
+      {
+       "widthM": 0.88,
+       "centre": 0.18,
+       "light": 0.79
+      },
+      {
+       "widthM": 0.78,
+       "centre": 0.87,
+       "light": 0.93
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 7.75,
+       "widthM": 1.45,
+       "centre": 0.98
+      },
+      {
+       "atM": 7.45,
+       "widthM": 0.9,
+       "centre": 0.06
+      },
+      {
+       "atM": 5.05,
+       "widthM": 1.07,
+       "centre": 0.39
+      }
+     ]
+    },
+    "voidShare": 0.08,
+    "foliageShare": 0.3
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best museum-cs-1900-gable-balcony: built 2003, type 1900-1901; frontage 49.11 m, type 5.5-6.6 m)",
+   "best": {
+    "type": "museum-cs-1900-gable-balcony",
+    "score": 0,
+    "veto": [
+     "built 2003, type 1900-1901",
+     "frontage 49.11 m, type 5.5-6.6 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 13.07 m vs the type's 10.4 m (wall-dormer skyline 14.4 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 4 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.104 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0,
+      "note": "strip columns 22 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

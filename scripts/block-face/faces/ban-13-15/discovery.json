@@ -1,0 +1,576 @@
+{
+ "street": "Banstraat",
+ "seed": "0363100012162074",
+ "members": [
+  "0363100012162074",
+  "0363100012163567"
+ ],
+ "ends": [
+  {
+   "side": "left",
+   "reason": "next fronting pand 0363100012085898 30.8 m on shares no party wall (cross street or gap)"
+  },
+  {
+   "side": "right",
+   "reason": "trimmed at 0363100012163567 (face continues: 160501)"
+  }
+ ],
+ "rejected": [
+  {
+   "pandId": "0363100012115230",
+   "reason": "frontage 103.9 m from Banstraat"
+  },
+  {
+   "pandId": "0363100012154232",
+   "reason": "frontage 102.5 m from Banstraat"
+  },
+  {
+   "pandId": "0363100012156897",
+   "reason": "frontage 106.0 m from Banstraat"
+  },
+  {
+   "pandId": "0363100012129826",
+   "reason": "sightline to Banstraat crosses 0363100012142706"
+  },
+  {
+   "pandId": "0363100012152610",
+   "reason": "frontage 41.6 m from Banstraat"
+  },
+  {
+   "pandId": "0363100012152755",
+   "reason": "frontage 82.8 m from Banstraat"
+  },
+  {
+   "pandId": "0363100012152982",
+   "reason": "frontage 68.7 m from Banstraat"
+  },
+  {
+   "pandId": "0363100012153305",
+   "reason": "sightline to Banstraat crosses 0363100012163590"
+  },
+  {
+   "pandId": "0363100012153472",
+   "reason": "frontage 35.6 m from Banstraat"
+  },
+  {
+   "pandId": "0363100012154036",
+   "reason": "sightline to Banstraat crosses 0363100012129826"
+  },
+  {
+   "pandId": "0363100012154225",
+   "reason": "frontage 77.8 m from Banstraat"
+  },
+  {
+   "pandId": "0363100012154264",
+   "reason": "sightline to Banstraat crosses 0363100012160721"
+  },
+  {
+   "pandId": "0363100012154361",
+   "reason": "frontage 49.6 m from Banstraat"
+  },
+  {
+   "pandId": "0363100012156079",
+   "reason": "frontage 40.2 m from Banstraat"
+  },
+  {
+   "pandId": "0363100012156369",
+   "reason": "sightline to Banstraat crosses 0363100012158230"
+  },
+  {
+   "pandId": "0363100012156605",
+   "reason": "sightline to Banstraat crosses 0363100012158517"
+  },
+  {
+   "pandId": "0363100012157160",
+   "reason": "frontage 76.0 m from Banstraat"
+  },
+  {
+   "pandId": "0363100012072748",
+   "reason": "frontage 37.9 m from Banstraat"
+  },
+  {
+   "pandId": "0363100012124153",
+   "reason": "frontage 50.0 m from Banstraat"
+  },
+  {
+   "pandId": "0363100012152432",
+   "reason": "frontage 32.9 m from Banstraat"
+  },
+  {
+   "pandId": "0363100012152905",
+   "reason": "frontage 57.5 m from Banstraat"
+  },
+  {
+   "pandId": "0363100012152926",
+   "reason": "frontage 32.1 m from Banstraat"
+  },
+  {
+   "pandId": "0363100012153008",
+   "reason": "frontage 55.3 m from Banstraat"
+  },
+  {
+   "pandId": "0363100012153149",
+   "reason": "frontage 61.8 m from Banstraat"
+  },
+  {
+   "pandId": "0363100012153422",
+   "reason": "frontage 63.6 m from Banstraat"
+  },
+  {
+   "pandId": "0363100012155490",
+   "reason": "frontage 55.5 m from Banstraat"
+  },
+  {
+   "pandId": "0363100012156063",
+   "reason": "sightline to Banstraat crosses 0363100012159608"
+  },
+  {
+   "pandId": "0363100012156733",
+   "reason": "sightline to Banstraat crosses 0363100012158954"
+  },
+  {
+   "pandId": "0363100012157235",
+   "reason": "frontage 67.2 m from Banstraat"
+  },
+  {
+   "pandId": "0363100012086729",
+   "reason": "frontage 59.6 m from Banstraat"
+  },
+  {
+   "pandId": "0363100012092421",
+   "reason": "frontage 32.9 m from Banstraat"
+  },
+  {
+   "pandId": "0363100012127853",
+   "reason": "frontage 41.9 m from Banstraat"
+  },
+  {
+   "pandId": "0363100012133086",
+   "reason": "frontage 76.7 m from Banstraat"
+  },
+  {
+   "pandId": "0363100012136080",
+   "reason": "frontage 68.4 m from Banstraat"
+  },
+  {
+   "pandId": "0363100012138291",
+   "reason": "frontage 50.3 m from Banstraat"
+  },
+  {
+   "pandId": "0363100012152452",
+   "reason": "frontage 53.2 m from Banstraat"
+  },
+  {
+   "pandId": "0363100012155847",
+   "reason": "frontage 66.3 m from Banstraat"
+  },
+  {
+   "pandId": "0363100012157226",
+   "reason": "frontage 86.3 m from Banstraat"
+  },
+  {
+   "pandId": "0363100012157247",
+   "reason": "frontage 104.4 m from Banstraat"
+  },
+  {
+   "pandId": "0363100012157368",
+   "reason": "frontage 31.5 m from Banstraat"
+  },
+  {
+   "pandId": "0363100012157575",
+   "reason": "frontage 33.8 m from Banstraat"
+  },
+  {
+   "pandId": "0363100012157695",
+   "reason": "frontage 64.0 m from Banstraat"
+  },
+  {
+   "pandId": "0363100012157810",
+   "reason": "frontage 84.6 m from Banstraat"
+  },
+  {
+   "pandId": "0363100012157931",
+   "reason": "sightline to Banstraat crosses 0363100012153305"
+  },
+  {
+   "pandId": "0363100012158230",
+   "reason": "sightline to Banstraat crosses 0363100012160501"
+  },
+  {
+   "pandId": "0363100012158233",
+   "reason": "frontage 47.6 m from Banstraat"
+  },
+  {
+   "pandId": "0363100012159080",
+   "reason": "sightline to Banstraat crosses 0363100012153305"
+  },
+  {
+   "pandId": "0363100012159158",
+   "reason": "frontage 42.6 m from Banstraat"
+  },
+  {
+   "pandId": "0363100012159309",
+   "reason": "frontage 34.0 m from Banstraat"
+  },
+  {
+   "pandId": "0363100012159902",
+   "reason": "frontage 71.4 m from Banstraat"
+  },
+  {
+   "pandId": "0363100012160696",
+   "reason": "sightline to Banstraat crosses 0363100012158517"
+  },
+  {
+   "pandId": "0363100012161248",
+   "reason": "frontage 54.7 m from Banstraat"
+  },
+  {
+   "pandId": "0363100012161338",
+   "reason": "frontage 53.6 m from Banstraat"
+  },
+  {
+   "pandId": "0363100012161439",
+   "reason": "frontage 70.6 m from Banstraat"
+  },
+  {
+   "pandId": "0363100012161588",
+   "reason": "sightline to Banstraat crosses 0363100012154264"
+  },
+  {
+   "pandId": "0363100012161861",
+   "reason": "frontage 77.4 m from Banstraat"
+  },
+  {
+   "pandId": "0363100012161877",
+   "reason": "sightline to Banstraat crosses 0363100012155655"
+  },
+  {
+   "pandId": "0363100012161898",
+   "reason": "frontage 41.2 m from Banstraat"
+  },
+  {
+   "pandId": "0363100012162982",
+   "reason": "frontage 56.9 m from Banstraat"
+  },
+  {
+   "pandId": "0363100012157396",
+   "reason": "frontage 36.0 m from Banstraat"
+  },
+  {
+   "pandId": "0363100012157652",
+   "reason": "frontage 41.6 m from Banstraat"
+  },
+  {
+   "pandId": "0363100012158612",
+   "reason": "sightline to Banstraat crosses 0363100012156733"
+  },
+  {
+   "pandId": "0363100012158648",
+   "reason": "frontage 47.8 m from Banstraat"
+  },
+  {
+   "pandId": "0363100012159608",
+   "reason": "sightline to Banstraat crosses 0363100012166881"
+  },
+  {
+   "pandId": "0363100012159619",
+   "reason": "frontage 48.8 m from Banstraat"
+  },
+  {
+   "pandId": "0363100012159878",
+   "reason": "frontage 61.4 m from Banstraat"
+  },
+  {
+   "pandId": "0363100012160172",
+   "reason": "frontage 31.7 m from Banstraat"
+  },
+  {
+   "pandId": "0363100012160307",
+   "reason": "frontage 38.5 m from Banstraat"
+  },
+  {
+   "pandId": "0363100012161666",
+   "reason": "frontage 45.1 m from Banstraat"
+  },
+  {
+   "pandId": "0363100012162708",
+   "reason": "sightline to Banstraat crosses 0363100012156733"
+  },
+  {
+   "pandId": "0363100012162759",
+   "reason": "frontage 49.7 m from Banstraat"
+  },
+  {
+   "pandId": "0363100012162765",
+   "reason": "frontage 38.1 m from Banstraat"
+  },
+  {
+   "pandId": "0363100012159077",
+   "reason": "frontage 46.7 m from Banstraat"
+  },
+  {
+   "pandId": "0363100012159697",
+   "reason": "frontage 73.3 m from Banstraat"
+  },
+  {
+   "pandId": "0363100012160954",
+   "reason": "frontage 59.7 m from Banstraat"
+  },
+  {
+   "pandId": "0363100012162728",
+   "reason": "frontage 79.9 m from Banstraat"
+  },
+  {
+   "pandId": "0363100012163687",
+   "reason": "frontage 82.4 m from Banstraat"
+  },
+  {
+   "pandId": "0363100012236145",
+   "reason": "frontage 86.3 m from Banstraat"
+  },
+  {
+   "pandId": "0363100012236417",
+   "reason": "frontage 74.2 m from Banstraat"
+  },
+  {
+   "pandId": "0363100012236560",
+   "reason": "frontage 98.3 m from Banstraat"
+  },
+  {
+   "pandId": "0363100012236636",
+   "reason": "frontage 80.2 m from Banstraat"
+  },
+  {
+   "pandId": "0363100012236947",
+   "reason": "frontage 92.3 m from Banstraat"
+  },
+  {
+   "pandId": "0363100012237237",
+   "reason": "frontage 68.1 m from Banstraat"
+  },
+  {
+   "pandId": "0363100012163183",
+   "reason": "sightline to Banstraat crosses 0363100012154264"
+  },
+  {
+   "pandId": "0363100012163840",
+   "reason": "frontage 61.5 m from Banstraat"
+  },
+  {
+   "pandId": "0363100012163906",
+   "reason": "sightline to Banstraat crosses 0363100012160501"
+  },
+  {
+   "pandId": "0363100012164322",
+   "reason": "frontage 65.5 m from Banstraat"
+  },
+  {
+   "pandId": "0363100012164336",
+   "reason": "frontage 47.9 m from Banstraat"
+  },
+  {
+   "pandId": "0363100012166199",
+   "reason": "frontage 59.6 m from Banstraat"
+  },
+  {
+   "pandId": "0363100012166224",
+   "reason": "frontage 90.0 m from Banstraat"
+  },
+  {
+   "pandId": "0363100012166718",
+   "reason": "frontage 35.6 m from Banstraat"
+  },
+  {
+   "pandId": "0363100012167252",
+   "reason": "sightline to Banstraat crosses 0363100012156605"
+  },
+  {
+   "pandId": "0363100012213694",
+   "reason": "sightline to Banstraat crosses 0363100012210743"
+  },
+  {
+   "pandId": "0363100012215739",
+   "reason": "sightline to Banstraat crosses 0363100012088441"
+  },
+  {
+   "pandId": "0363100012221213",
+   "reason": "sightline to Banstraat crosses 0363100012088441"
+  },
+  {
+   "pandId": "0363100012221214",
+   "reason": "sightline to Banstraat crosses 0363100012088441"
+  },
+  {
+   "pandId": "0363100012236445",
+   "reason": "frontage 96.8 m from Banstraat"
+  },
+  {
+   "pandId": "0363100012163090",
+   "reason": "frontage 42.2 m from Banstraat"
+  },
+  {
+   "pandId": "0363100012163288",
+   "reason": "frontage 35.5 m from Banstraat"
+  },
+  {
+   "pandId": "0363100012163379",
+   "reason": "sightline to Banstraat crosses 0363100012156302"
+  },
+  {
+   "pandId": "0363100012166003",
+   "reason": "frontage 73.1 m from Banstraat"
+  },
+  {
+   "pandId": "0363100012166328",
+   "reason": "frontage 43.8 m from Banstraat"
+  },
+  {
+   "pandId": "0363100012166540",
+   "reason": "frontage 51.3 m from Banstraat"
+  },
+  {
+   "pandId": "0363100012166881",
+   "reason": "sightline to Banstraat crosses 0363100012236835"
+  },
+  {
+   "pandId": "0363100012166917",
+   "reason": "frontage 30.7 m from Banstraat"
+  },
+  {
+   "pandId": "0363100012167324",
+   "reason": "no frontage on Banstraat: No footprint edge faces Banstraat"
+  },
+  {
+   "pandId": "0363100012200469",
+   "reason": "frontage 51.7 m from Banstraat"
+  },
+  {
+   "pandId": "0363100012201298",
+   "reason": "frontage 84.6 m from Banstraat"
+  },
+  {
+   "pandId": "0363100012210145",
+   "reason": "frontage 45.3 m from Banstraat"
+  },
+  {
+   "pandId": "0363100012236342",
+   "reason": "sightline to Banstraat crosses 0363100012236553"
+  },
+  {
+   "pandId": "0363100012163157",
+   "reason": "frontage 92.8 m from Banstraat"
+  },
+  {
+   "pandId": "0363100012088441",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012155655",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012156680",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012152498",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012154263",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012155618",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012156302",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012157547",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012157548",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012158517",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012160721",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012157732",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012157998",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012159882",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012161681",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012210743",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012164264",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012164733",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012236553",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012236587",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012236835",
+   "reason": "fronts the other side / another direction"
+  }
+ ],
+ "areaHalfSizeM": 90,
+ "pands": [
+  {
+   "pandId": "0363100012162074",
+   "alongM": 0,
+   "widthM": 6.71,
+   "eavesM": 14.93,
+   "roofMaxM": 17.72,
+   "storeys3dbag": 4,
+   "builtYear": 1902,
+   "uncertainty": [
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  },
+  {
+   "pandId": "0363100012163567",
+   "alongM": 6.95,
+   "widthM": 7.22,
+   "eavesM": 14.85,
+   "roofMaxM": 17.63,
+   "storeys3dbag": 4,
+   "builtYear": 1902,
+   "uncertainty": [
+    "Frontage extended across a native jog of up to 1 m (possible partial front at the default 0.35 m).",
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  }
+ ]
+}

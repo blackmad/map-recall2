@@ -1,0 +1,85 @@
+{
+ "street": "Emmastraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-01T13:09:48.902Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012166177",
+   "addresses": [
+    "Emmastraat 25"
+   ],
+   "groundUnits": [
+    {
+     "address": "Emmastraat 25",
+     "use": "woonfunctie",
+     "areaM2": 301,
+     "bagId": "0363010000632686"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012155458",
+   "addresses": [
+    "Emmastraat 27"
+   ],
+   "groundUnits": [
+    {
+     "address": "Emmastraat 27-H",
+     "use": "woonfunctie",
+     "areaM2": 269,
+     "bagId": "0363010000632689"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012064298",
+   "addresses": [
+    "Emmastraat 29"
+   ],
+   "groundUnits": [
+    {
+     "address": "Emmastraat 29-O",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 96,
+     "bagId": "0363010000632694"
+    },
+    {
+     "address": "Emmastraat 29-H",
+     "use": "woonfunctie",
+     "areaM2": 82,
+     "bagId": "0363010000997407"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012074980",
+   "addresses": [
+    "Emmastraat 31"
+   ],
+   "groundUnits": [
+    {
+     "address": "Emmastraat 31-H",
+     "use": "woonfunctie",
+     "areaM2": 113,
+     "bagId": "0363010000632697"
+    },
+    {
+     "address": "Emmastraat 31-O",
+     "use": "winkelfunctie",
+     "areaM2": 79,
+     "bagId": "0363010000632698"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  }
+ ]
+}

@@ -1,0 +1,150 @@
+{
+ "street": "Jacob Obrechtstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-01T13:30:29.233Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012157247",
+   "addresses": [
+    "Jacob Obrechtstraat 40"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jacob Obrechtstraat 40-H",
+     "use": "bijeenkomstfunctie,woonfunctie",
+     "areaM2": 84,
+     "bagId": "0363010000679857"
+    },
+    {
+     "address": "Johannes Verhulststraat 32-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 122,
+     "bagId": "0363010001025420"
+    },
+    {
+     "address": "Jacob Obrechtstraat 40-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 122,
+     "bagId": "0363010012067491"
+    }
+   ],
+   "units": 8,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2641587834,
+     "lngLat": [
+      4.8754197,
+      52.3555256
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "32",
+      "addr:postcode": "1071NE",
+      "addr:street": "Johannes Verhulststraat",
+      "amenity": "restaurant",
+      "cuisine": "italian",
+      "diet:vegetarian": "yes",
+      "email": "info@le4stagioni.nl",
+      "name": "Le 4 Stagioni",
+      "opening_hours": "Su-Th 17:00-22:00; Fr-Sa 17:00-23:00",
+      "phone": "+31 20 662 0071",
+      "website": "https://www.le4stagioni.nl/"
+     },
+     "fetchedAt": "2026-11-01T13:30:29.233Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012156897",
+   "addresses": [
+    "Jacob Obrechtstraat 38"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jacob Obrechtstraat 38-H",
+     "use": "woonfunctie",
+     "areaM2": 193,
+     "bagId": "0363010000679849"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012115230",
+   "addresses": [
+    "Jacob Obrechtstraat 36"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jacob Obrechtstraat 36",
+     "use": "kantoorfunctie,woonfunctie",
+     "areaM2": 407,
+     "bagId": "0363010000679844"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012124153",
+   "addresses": [
+    "Jacob Obrechtstraat 28",
+    "Jacob Obrechtstraat 30"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jacob Obrechtstraat 30",
+     "use": "woonfunctie",
+     "areaM2": 623,
+     "bagId": "0363010000679839"
+    },
+    {
+     "address": "Jacob Obrechtstraat 28",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 1809,
+     "bagId": "0363010000679836"
+    }
+   ],
+   "units": 2,
+   "osm": [
+    {
+     "type": "node",
+     "id": 561527110,
+     "lngLat": [
+      4.8751073,
+      52.3558942
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "28",
+      "addr:postcode": "1071KM",
+      "addr:street": "Jacob Obrechtstraat",
+      "amenity": "place_of_worship",
+      "denomination": "roman_catholic",
+      "description": "Parochie Onze Lieve Vrouw van de Allerheiligste Rozenkrans",
+      "email": "secretariaat@obrechtkerk.nl",
+      "name": "Obrechtkerk",
+      "phone": "+31 20 662 3779",
+      "religion": "christian",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://www.obrechtkerk.nl/",
+      "wheelchair": "limited",
+      "wikidata": "Q2045005",
+      "wikimedia_commons": "Category:Obrechtkerk",
+      "wikipedia": "nl:Obrechtkerk"
+     },
+     "fetchedAt": "2026-11-01T13:30:29.233Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}

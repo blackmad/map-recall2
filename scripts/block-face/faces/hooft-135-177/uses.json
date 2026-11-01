@@ -1,0 +1,364 @@
+{
+ "street": "Pieter Cornelisz. Hooftstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-01T16:09:46.504Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012152596",
+   "addresses": [
+    "Pieter Cornelisz. Hooftstraat 135",
+    "Pieter Cornelisz. Hooftstraat 137"
+   ],
+   "groundUnits": [],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012162906",
+   "addresses": [
+    "Pieter Cornelisz. Hooftstraat 139"
+   ],
+   "groundUnits": [],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012160917",
+   "addresses": [
+    "Pieter Cornelisz. Hooftstraat 141",
+    "Pieter Cornelisz. Hooftstraat 141A",
+    "Pieter Cornelisz. Hooftstraat 141B",
+    "Pieter Cornelisz. Hooftstraat 141C",
+    "Pieter Cornelisz. Hooftstraat 141D"
+   ],
+   "groundUnits": [
+    {
+     "address": "Pieter Cornelisz. Hooftstraat 141",
+     "use": "winkelfunctie",
+     "areaM2": 170,
+     "bagId": "0363010000770160"
+    },
+    {
+     "address": "Pieter Cornelisz. Hooftstraat 141A",
+     "use": "winkelfunctie",
+     "areaM2": 69,
+     "bagId": "0363010012120519"
+    },
+    {
+     "address": "Pieter Cornelisz. Hooftstraat 141A",
+     "use": "winkelfunctie",
+     "areaM2": 50,
+     "bagId": "0363010012582915"
+    },
+    {
+     "address": "Pieter Cornelisz. Hooftstraat 141B",
+     "use": "kantoorfunctie",
+     "areaM2": 56,
+     "bagId": "0363010012582916"
+    },
+    {
+     "address": "Pieter Cornelisz. Hooftstraat 141D",
+     "use": "woonfunctie",
+     "areaM2": 58,
+     "bagId": "0363010012582918"
+    }
+   ],
+   "units": 9,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012164625",
+   "addresses": [
+    "Pieter Cornelisz. Hooftstraat 143"
+   ],
+   "groundUnits": [
+    {
+     "address": "Pieter Cornelisz. Hooftstraat 143",
+     "use": "woonfunctie",
+     "areaM2": 259,
+     "bagId": "0363010000770165"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012155818",
+   "addresses": [
+    "Pieter Cornelisz. Hooftstraat 145"
+   ],
+   "groundUnits": [
+    {
+     "address": "Pieter Cornelisz. Hooftstraat 145",
+     "use": "woonfunctie",
+     "areaM2": 173,
+     "bagId": "0363010000770170"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012164856",
+   "addresses": [
+    "Pieter Cornelisz. Hooftstraat 147"
+   ],
+   "groundUnits": [
+    {
+     "address": "Pieter Cornelisz. Hooftstraat 147",
+     "use": "woonfunctie",
+     "areaM2": 173,
+     "bagId": "0363010000770173"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012155497",
+   "addresses": [
+    "Pieter Cornelisz. Hooftstraat 149"
+   ],
+   "groundUnits": [
+    {
+     "address": "Pieter Cornelisz. Hooftstraat 149",
+     "use": "woonfunctie",
+     "areaM2": 225,
+     "bagId": "0363010000955575"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012167375",
+   "addresses": [
+    "Pieter Cornelisz. Hooftstraat 151",
+    "Pieter Cornelisz. Hooftstraat 153"
+   ],
+   "groundUnits": [
+    {
+     "address": "Pieter Cornelisz. Hooftstraat 151-H",
+     "use": "woonfunctie",
+     "areaM2": 46,
+     "bagId": "0363010000770179"
+    },
+    {
+     "address": "Pieter Cornelisz. Hooftstraat 153-H",
+     "use": "woonfunctie",
+     "areaM2": 41,
+     "bagId": "0363010000770185"
+    }
+   ],
+   "units": 8,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012160875",
+   "addresses": [
+    "Pieter Cornelisz. Hooftstraat 155"
+   ],
+   "groundUnits": [
+    {
+     "address": "Pieter Cornelisz. Hooftstraat 155-H",
+     "use": "woonfunctie",
+     "areaM2": 46,
+     "bagId": "0363010000770191"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012079242",
+   "addresses": [
+    "Pieter Cornelisz. Hooftstraat 157"
+   ],
+   "groundUnits": [
+    {
+     "address": "Pieter Cornelisz. Hooftstraat 157",
+     "use": "woonfunctie",
+     "areaM2": 285,
+     "bagId": "0363010000770207"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012157624",
+   "addresses": [
+    "Pieter Cornelisz. Hooftstraat 159"
+   ],
+   "groundUnits": [
+    {
+     "address": "Pieter Cornelisz. Hooftstraat 159",
+     "use": "woonfunctie",
+     "areaM2": 302,
+     "bagId": "0363010000770212"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012157553",
+   "addresses": [
+    "Pieter Cornelisz. Hooftstraat 161"
+   ],
+   "groundUnits": [
+    {
+     "address": "Pieter Cornelisz. Hooftstraat 161-H",
+     "use": "woonfunctie",
+     "areaM2": 48,
+     "bagId": "0363010000770215"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012152280",
+   "addresses": [
+    "Pieter Cornelisz. Hooftstraat 163"
+   ],
+   "groundUnits": [
+    {
+     "address": "Pieter Cornelisz. Hooftstraat 163-H",
+     "use": "woonfunctie",
+     "areaM2": 162,
+     "bagId": "0363010000979781"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012155349",
+   "addresses": [
+    "Pieter Cornelisz. Hooftstraat 165"
+   ],
+   "groundUnits": [
+    {
+     "address": "Pieter Cornelisz. Hooftstraat 165-H",
+     "use": "woonfunctie",
+     "areaM2": 154,
+     "bagId": "0363010000770219"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012162518",
+   "addresses": [
+    "Pieter Cornelisz. Hooftstraat 167"
+   ],
+   "groundUnits": [
+    {
+     "address": "Pieter Cornelisz. Hooftstraat 167-H",
+     "use": "woonfunctie",
+     "areaM2": 130,
+     "bagId": "0363010000770222"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012130582",
+   "addresses": [
+    "Pieter Cornelisz. Hooftstraat 169A",
+    "Pieter Cornelisz. Hooftstraat 169B",
+    "Pieter Cornelisz. Hooftstraat 169C",
+    "Pieter Cornelisz. Hooftstraat 169",
+    "Pieter Cornelisz. Hooftstraat 171A",
+    "Pieter Cornelisz. Hooftstraat 171B",
+    "Pieter Cornelisz. Hooftstraat 173A",
+    "Pieter Cornelisz. Hooftstraat 173B",
+    "Pieter Cornelisz. Hooftstraat 175C",
+    "Pieter Cornelisz. Hooftstraat 175A",
+    "Pieter Cornelisz. Hooftstraat 175B",
+    "Pieter Cornelisz. Hooftstraat 177"
+   ],
+   "groundUnits": [
+    {
+     "address": "Pieter Cornelisz. Hooftstraat 169A",
+     "use": "woonfunctie",
+     "areaM2": 213,
+     "bagId": "0363010001007909"
+    },
+    {
+     "address": "Pieter Cornelisz. Hooftstraat 169B",
+     "use": "woonfunctie",
+     "areaM2": 117,
+     "bagId": "0363010001007910"
+    },
+    {
+     "address": "Pieter Cornelisz. Hooftstraat 169C",
+     "use": "woonfunctie",
+     "areaM2": 213,
+     "bagId": "0363010001007911"
+    },
+    {
+     "address": "Pieter Cornelisz. Hooftstraat 171A",
+     "use": "woonfunctie",
+     "areaM2": 287,
+     "bagId": "0363010001007915"
+    },
+    {
+     "address": "Pieter Cornelisz. Hooftstraat 171B",
+     "use": "woonfunctie",
+     "areaM2": 184,
+     "bagId": "0363010001007916"
+    },
+    {
+     "address": "Pieter Cornelisz. Hooftstraat 173A",
+     "use": "woonfunctie",
+     "areaM2": 250,
+     "bagId": "0363010001007919"
+    },
+    {
+     "address": "Pieter Cornelisz. Hooftstraat 173B",
+     "use": "woonfunctie",
+     "areaM2": 189,
+     "bagId": "0363010001007920"
+    },
+    {
+     "address": "Pieter Cornelisz. Hooftstraat 175C",
+     "use": "woonfunctie",
+     "areaM2": 416,
+     "bagId": "0363010001007923"
+    },
+    {
+     "address": "Pieter Cornelisz. Hooftstraat 177",
+     "use": "woonfunctie",
+     "areaM2": 225,
+     "bagId": "0363010001007924"
+    },
+    {
+     "address": "Pieter Cornelisz. Hooftstraat 169",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 153,
+     "bagId": "0363010001015296"
+    },
+    {
+     "address": "Pieter Cornelisz. Hooftstraat 175A",
+     "use": "woonfunctie",
+     "areaM2": 223,
+     "bagId": "0363010001007921"
+    },
+    {
+     "address": "Pieter Cornelisz. Hooftstraat 175B",
+     "use": "woonfunctie",
+     "areaM2": 362,
+     "bagId": "0363010001007922"
+    }
+   ],
+   "units": 12,
+   "osm": []
+  }
+ ]
+}

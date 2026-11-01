@@ -1,0 +1,2299 @@
+{
+ "street": "Valeriusstraat",
+ "seed": "0363100012155790",
+ "members": [
+  "0363100012155790",
+  "0363100012161609",
+  "0363100012158288",
+  "0363100012155613",
+  "0363100012154219",
+  "0363100012157542",
+  "0363100012157102",
+  "0363100012156278",
+  "0363100012159308",
+  "0363100012161257",
+  "0363100012160763",
+  "0363100012156586",
+  "0363100012237285",
+  "0363100012099146",
+  "0363100012152773",
+  "0363100012163737",
+  "0363100012156459",
+  "0363100012152699"
+ ],
+ "ends": [
+  {
+   "side": "left",
+   "reason": "trimmed at 0363100012155790 (face continues: 236765)"
+  },
+  {
+   "side": "right",
+   "reason": "trimmed at 0363100012152699 (face continues: 160859 161051 156103 161509 162152 236242)"
+  }
+ ],
+ "rejected": [
+  {
+   "pandId": "0363100012062487",
+   "reason": "frontage 101.2 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012064298",
+   "reason": "frontage 99.0 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012064344",
+   "reason": "frontage 31.7 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012064873",
+   "reason": "frontage 95.1 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012065307",
+   "reason": "frontage 185.3 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012068214",
+   "reason": "frontage 97.9 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012069081",
+   "reason": "frontage 107.7 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012070647",
+   "reason": "frontage 108.3 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012071424",
+   "reason": "frontage 151.0 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012071825",
+   "reason": "frontage 151.2 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012072277",
+   "reason": "frontage 108.0 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012073056",
+   "reason": "frontage 150.3 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012074448",
+   "reason": "no frontage on Valeriusstraat: No footprint edge faces Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012074960",
+   "reason": "frontage 183.2 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012074980",
+   "reason": "frontage 105.7 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012075157",
+   "reason": "frontage 108.0 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012075246",
+   "reason": "frontage 108.0 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012075610",
+   "reason": "frontage 107.8 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012075909",
+   "reason": "frontage 157.7 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012076329",
+   "reason": "frontage 108.3 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012076441",
+   "reason": "frontage 151.0 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012076859",
+   "reason": "frontage 186.8 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012078857",
+   "reason": "frontage 113.3 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012083217",
+   "reason": "sightline to Valeriusstraat crosses 0363100012104755"
+  },
+  {
+   "pandId": "0363100012083412",
+   "reason": "frontage 107.7 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012087585",
+   "reason": "frontage 112.0 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012087604",
+   "reason": "frontage 150.4 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012088073",
+   "reason": "frontage 151.0 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012089981",
+   "reason": "frontage 185.2 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012090597",
+   "reason": "frontage 112.0 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012090624",
+   "reason": "frontage 185.3 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012091029",
+   "reason": "frontage 112.0 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012093617",
+   "reason": "frontage 107.8 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012093822",
+   "reason": "frontage 215.2 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012094660",
+   "reason": "frontage 220.6 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012096120",
+   "reason": "frontage 150.3 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012098280",
+   "reason": "sightline to Valeriusstraat crosses 0363100012102449"
+  },
+  {
+   "pandId": "0363100012098319",
+   "reason": "frontage 217.4 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012101844",
+   "reason": "frontage 185.6 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012102667",
+   "reason": "frontage 217.3 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012103357",
+   "reason": "frontage 107.8 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012104246",
+   "reason": "frontage 150.3 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012061429",
+   "reason": "frontage 83.4 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012066327",
+   "reason": "frontage 75.8 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012091335",
+   "reason": "frontage 75.3 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012098390",
+   "reason": "frontage 109.3 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012104304",
+   "reason": "frontage 108.3 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012106372",
+   "reason": "frontage 185.2 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012107659",
+   "reason": "frontage 150.2 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012108730",
+   "reason": "frontage 150.3 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012110458",
+   "reason": "frontage 186.0 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012110784",
+   "reason": "frontage 112.3 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012117212",
+   "reason": "frontage 168.2 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012117343",
+   "reason": "frontage 91.0 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012117646",
+   "reason": "frontage 150.2 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012117848",
+   "reason": "frontage 95.8 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012120297",
+   "reason": "frontage 107.7 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012121659",
+   "reason": "frontage 185.6 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012123944",
+   "reason": "frontage 108.4 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012124728",
+   "reason": "frontage 108.2 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012125862",
+   "reason": "frontage 150.3 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012126275",
+   "reason": "frontage 217.3 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012126993",
+   "reason": "frontage 215.2 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012128012",
+   "reason": "frontage 183.6 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012128237",
+   "reason": "frontage 150.0 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012128897",
+   "reason": "frontage 150.1 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012129170",
+   "reason": "frontage 185.6 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012131152",
+   "reason": "frontage 185.5 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012131291",
+   "reason": "frontage 150.2 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012133118",
+   "reason": "frontage 151.4 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012134429",
+   "reason": "frontage 150.1 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012134755",
+   "reason": "frontage 111.9 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012135586",
+   "reason": "frontage 190.4 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012137958",
+   "reason": "frontage 150.1 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012138601",
+   "reason": "frontage 111.9 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012140339",
+   "reason": "frontage 175.5 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012141671",
+   "reason": "frontage 150.2 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012144642",
+   "reason": "frontage 185.5 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012147794",
+   "reason": "frontage 105.8 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012150752",
+   "reason": "frontage 185.3 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012151231",
+   "reason": "frontage 151.2 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012151463",
+   "reason": "frontage 112.3 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012152291",
+   "reason": "sightline to Valeriusstraat crosses 0363100012157482"
+  },
+  {
+   "pandId": "0363100012152307",
+   "reason": "frontage 68.5 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012152532",
+   "reason": "frontage 69.6 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012152561",
+   "reason": "frontage 90.9 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012152564",
+   "reason": "frontage 44.0 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012152275",
+   "reason": "frontage 75.9 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012152325",
+   "reason": "frontage 109.3 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012152432",
+   "reason": "frontage 77.0 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012152498",
+   "reason": "sightline to Valeriusstraat crosses 0363100012156302"
+  },
+  {
+   "pandId": "0363100012152616",
+   "reason": "frontage 76.6 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012152755",
+   "reason": "frontage 68.6 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012152982",
+   "reason": "frontage 68.6 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012152993",
+   "reason": "frontage 83.6 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012153037",
+   "reason": "frontage 34.6 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012153094",
+   "reason": "frontage 89.4 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012153143",
+   "reason": "frontage 41.7 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012153238",
+   "reason": "frontage 38.1 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012153401",
+   "reason": "sightline to Valeriusstraat crosses 0363100012162152"
+  },
+  {
+   "pandId": "0363100012153471",
+   "reason": "frontage 41.7 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012153472",
+   "reason": "frontage 32.7 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012153520",
+   "reason": "frontage 70.0 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012153529",
+   "reason": "frontage 32.7 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012153668",
+   "reason": "frontage 98.1 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012154225",
+   "reason": "frontage 32.8 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012154264",
+   "reason": "frontage 33.5 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012154361",
+   "reason": "frontage 32.7 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012154384",
+   "reason": "sightline to Valeriusstraat crosses 0363100012160235"
+  },
+  {
+   "pandId": "0363100012154883",
+   "reason": "frontage 182.5 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012155458",
+   "reason": "frontage 92.2 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012155511",
+   "reason": "frontage 43.2 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012155535",
+   "reason": "frontage 43.9 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012155586",
+   "reason": "frontage 34.7 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012152757",
+   "reason": "frontage 87.3 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012152866",
+   "reason": "frontage 38.5 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012152869",
+   "reason": "frontage 145.9 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012152960",
+   "reason": "frontage 44.8 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012153158",
+   "reason": "frontage 181.2 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012153282",
+   "reason": "frontage 76.0 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012153337",
+   "reason": "frontage 145.9 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012153606",
+   "reason": "frontage 169.7 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012153824",
+   "reason": "frontage 76.8 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012154263",
+   "reason": "sightline to Valeriusstraat crosses 0363100012152498"
+  },
+  {
+   "pandId": "0363100012154268",
+   "reason": "frontage 109.4 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012154301",
+   "reason": "frontage 88.5 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012154322",
+   "reason": "frontage 145.9 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012155519",
+   "reason": "frontage 46.6 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012155542",
+   "reason": "frontage 179.7 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012155640",
+   "reason": "frontage 42.6 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012155646",
+   "reason": "frontage 36.1 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012155655",
+   "reason": "sightline to Valeriusstraat crosses 0363100012236587"
+  },
+  {
+   "pandId": "0363100012155700",
+   "reason": "frontage 36.1 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012155710",
+   "reason": "frontage 97.8 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012155786",
+   "reason": "sightline to Valeriusstraat crosses 0363100012236765"
+  },
+  {
+   "pandId": "0363100012155815",
+   "reason": "frontage 85.0 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012155902",
+   "reason": "frontage 69.3 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012155985",
+   "reason": "sightline to Valeriusstraat crosses 0363100012155786"
+  },
+  {
+   "pandId": "0363100012156024",
+   "reason": "frontage 103.8 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012156081",
+   "reason": "frontage 81.5 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012156082",
+   "reason": "frontage 86.9 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012156186",
+   "reason": "frontage 33.4 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012156232",
+   "reason": "frontage 68.5 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012156284",
+   "reason": "frontage 109.1 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012156303",
+   "reason": "frontage 37.0 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012156367",
+   "reason": "frontage 42.5 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012156368",
+   "reason": "frontage 75.3 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012156371",
+   "reason": "frontage 33.5 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012156525",
+   "reason": "frontage 42.5 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012156526",
+   "reason": "no frontage on Valeriusstraat: No footprint edge faces Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012156605",
+   "reason": "frontage 68.4 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012156705",
+   "reason": "frontage 68.7 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012156790",
+   "reason": "frontage 37.8 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012155618",
+   "reason": "frontage 77.4 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012155651",
+   "reason": "frontage 146.6 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012155662",
+   "reason": "frontage 146.0 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012155697",
+   "reason": "frontage 85.8 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012155891",
+   "reason": "frontage 44.9 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012156058",
+   "reason": "frontage 45.2 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012156063",
+   "reason": "frontage 41.0 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012156064",
+   "reason": "frontage 109.3 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012156069",
+   "reason": "frontage 110.4 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012156302",
+   "reason": "sightline to Valeriusstraat crosses 0363100012236553"
+  },
+  {
+   "pandId": "0363100012156412",
+   "reason": "frontage 75.8 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012156483",
+   "reason": "frontage 181.9 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012156506",
+   "reason": "frontage 179.2 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012156672",
+   "reason": "frontage 75.6 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012156708",
+   "reason": "frontage 179.8 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012156733",
+   "reason": "frontage 50.9 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012156743",
+   "reason": "frontage 45.0 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012156820",
+   "reason": "frontage 98.4 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012156858",
+   "reason": "frontage 36.9 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012156875",
+   "reason": "frontage 42.0 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012156952",
+   "reason": "frontage 41.6 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012156963",
+   "reason": "frontage 69.5 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012157002",
+   "reason": "frontage 34.3 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012157061",
+   "reason": "frontage 75.4 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012157160",
+   "reason": "frontage 68.6 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012157169",
+   "reason": "frontage 44.1 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012157198",
+   "reason": "frontage 83.2 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012157345",
+   "reason": "sightline to Valeriusstraat crosses 0363100012237370"
+  },
+  {
+   "pandId": "0363100012157368",
+   "reason": "frontage 30.1 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012157399",
+   "reason": "frontage 34.3 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012157405",
+   "reason": "frontage 68.9 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012157444",
+   "reason": "frontage 69.6 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012157482",
+   "reason": "sightline to Valeriusstraat crosses 0363100012157483"
+  },
+  {
+   "pandId": "0363100012157547",
+   "reason": "sightline to Valeriusstraat crosses 0363100012155655"
+  },
+  {
+   "pandId": "0363100012157548",
+   "reason": "sightline to Valeriusstraat crosses 0363100012155655"
+  },
+  {
+   "pandId": "0363100012157558",
+   "reason": "frontage 75.4 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012157660",
+   "reason": "frontage 39.5 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012157695",
+   "reason": "frontage 32.7 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012157724",
+   "reason": "frontage 36.9 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012157810",
+   "reason": "frontage 33.4 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012157829",
+   "reason": "frontage 69.8 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012158110",
+   "reason": "frontage 69.4 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012156887",
+   "reason": "frontage 75.5 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012157060",
+   "reason": "frontage 111.3 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012157147",
+   "reason": "frontage 45.6 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012157305",
+   "reason": "frontage 182.0 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012157396",
+   "reason": "frontage 40.5 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012157478",
+   "reason": "frontage 45.0 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012157545",
+   "reason": "frontage 145.9 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012157556",
+   "reason": "frontage 145.8 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012157586",
+   "reason": "frontage 145.9 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012157652",
+   "reason": "frontage 44.8 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012157732",
+   "reason": "frontage 35.1 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012157736",
+   "reason": "frontage 111.1 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012157759",
+   "reason": "frontage 181.8 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012157770",
+   "reason": "frontage 75.4 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012157998",
+   "reason": "frontage 30.1 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012158071",
+   "reason": "frontage 75.7 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012158260",
+   "reason": "frontage 180.9 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012158261",
+   "reason": "frontage 69.9 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012158335",
+   "reason": "frontage 69.2 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012158518",
+   "reason": "frontage 69.7 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012158539",
+   "reason": "frontage 68.4 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012158842",
+   "reason": "frontage 69.6 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012158893",
+   "reason": "frontage 46.4 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012158939",
+   "reason": "frontage 38.0 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012159158",
+   "reason": "frontage 32.7 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012159287",
+   "reason": "frontage 45.2 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012159289",
+   "reason": "frontage 42.0 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012159309",
+   "reason": "frontage 68.5 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012159592",
+   "reason": "frontage 38.2 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012159889",
+   "reason": "frontage 34.4 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012159949",
+   "reason": "frontage 68.8 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012160108",
+   "reason": "frontage 39.4 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012160138",
+   "reason": "frontage 33.4 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012158319",
+   "reason": "frontage 110.3 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012158436",
+   "reason": "frontage 92.8 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012158500",
+   "reason": "frontage 170.7 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012158612",
+   "reason": "frontage 56.2 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012158648",
+   "reason": "frontage 44.8 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012158668",
+   "reason": "frontage 146.0 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012158726",
+   "reason": "frontage 146.7 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012158738",
+   "reason": "frontage 78.4 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012158884",
+   "reason": "frontage 112.8 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012158954",
+   "reason": "frontage 42.0 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012159147",
+   "reason": "frontage 106.0 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012159150",
+   "reason": "frontage 113.6 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012159165",
+   "reason": "frontage 76.7 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012159184",
+   "reason": "frontage 112.9 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012159412",
+   "reason": "frontage 75.4 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012159459",
+   "reason": "frontage 34.1 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012159568",
+   "reason": "no frontage on Valeriusstraat: No footprint edge faces Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012159608",
+   "reason": "frontage 45.1 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012159676",
+   "reason": "frontage 105.2 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012159709",
+   "reason": "frontage 181.7 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012159745",
+   "reason": "frontage 76.6 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012159771",
+   "reason": "frontage 113.3 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012159813",
+   "reason": "frontage 75.7 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012159882",
+   "reason": "frontage 77.3 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012160033",
+   "reason": "frontage 112.2 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012160059",
+   "reason": "frontage 109.5 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012160086",
+   "reason": "frontage 108.6 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012160169",
+   "reason": "frontage 45.6 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012160258",
+   "reason": "sightline to Valeriusstraat crosses 0363100012157345"
+  },
+  {
+   "pandId": "0363100012160425",
+   "reason": "frontage 75.3 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012160492",
+   "reason": "sightline to Valeriusstraat crosses 0363100012160235"
+  },
+  {
+   "pandId": "0363100012160545",
+   "reason": "frontage 69.6 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012160560",
+   "reason": "frontage 69.1 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012160599",
+   "reason": "sightline to Valeriusstraat crosses 0363100012157482"
+  },
+  {
+   "pandId": "0363100012160638",
+   "reason": "frontage 75.4 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012160721",
+   "reason": "sightline to Valeriusstraat crosses 0363100012155655"
+  },
+  {
+   "pandId": "0363100012160731",
+   "reason": "frontage 69.0 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012160778",
+   "reason": "frontage 68.5 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012160782",
+   "reason": "frontage 68.5 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012160916",
+   "reason": "frontage 32.8 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012161050",
+   "reason": "frontage 75.6 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012161220",
+   "reason": "frontage 36.0 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012161248",
+   "reason": "frontage 68.6 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012161439",
+   "reason": "frontage 32.7 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012161588",
+   "reason": "frontage 33.5 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012161642",
+   "reason": "frontage 36.1 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012161756",
+   "reason": "frontage 44.3 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012161771",
+   "reason": "frontage 68.3 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012161809",
+   "reason": "frontage 44.2 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012161898",
+   "reason": "frontage 68.5 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012160540",
+   "reason": "frontage 44.7 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012160642",
+   "reason": "frontage 182.2 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012160695",
+   "reason": "no frontage on Valeriusstraat: No footprint edge faces Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012160728",
+   "reason": "frontage 92.8 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012160745",
+   "reason": "frontage 113.6 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012160882",
+   "reason": "frontage 112.4 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012161182",
+   "reason": "frontage 45.4 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012161355",
+   "reason": "frontage 146.0 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012161378",
+   "reason": "frontage 75.7 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012161533",
+   "reason": "frontage 112.4 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012161681",
+   "reason": "frontage 77.1 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012161806",
+   "reason": "frontage 42.4 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012161826",
+   "reason": "no frontage on Valeriusstraat: No footprint edge faces Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012161950",
+   "reason": "frontage 90.4 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012162004",
+   "reason": "frontage 44.4 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012162067",
+   "reason": "frontage 42.3 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012162193",
+   "reason": "frontage 35.9 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012162302",
+   "reason": "frontage 36.1 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012162304",
+   "reason": "frontage 68.6 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012162371",
+   "reason": "sightline to Valeriusstraat crosses 0363100012160235"
+  },
+  {
+   "pandId": "0363100012162414",
+   "reason": "frontage 32.7 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012162474",
+   "reason": "frontage 69.8 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012162555",
+   "reason": "frontage 32.7 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012162769",
+   "reason": "frontage 68.5 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012162826",
+   "reason": "frontage 75.4 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012162982",
+   "reason": "frontage 32.7 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012163183",
+   "reason": "frontage 30.0 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012163262",
+   "reason": "frontage 69.6 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012163440",
+   "reason": "frontage 35.8 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012163692",
+   "reason": "frontage 34.3 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012163773",
+   "reason": "frontage 41.1 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012163830",
+   "reason": "frontage 92.4 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012163840",
+   "reason": "frontage 68.6 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012161942",
+   "reason": "frontage 109.7 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012162282",
+   "reason": "frontage 76.9 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012162422",
+   "reason": "frontage 75.9 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012162429",
+   "reason": "frontage 113.3 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012162463",
+   "reason": "frontage 111.5 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012162633",
+   "reason": "frontage 146.0 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012162708",
+   "reason": "frontage 53.3 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012162765",
+   "reason": "frontage 76.9 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012162767",
+   "reason": "frontage 113.0 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012162923",
+   "reason": "frontage 112.3 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012163036",
+   "reason": "frontage 145.9 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012163068",
+   "reason": "frontage 45.5 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012163099",
+   "reason": "frontage 111.2 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012163205",
+   "reason": "frontage 178.6 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012163206",
+   "reason": "frontage 113.0 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012163293",
+   "reason": "frontage 98.4 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012163484",
+   "reason": "frontage 105.0 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012163488",
+   "reason": "frontage 181.2 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012163535",
+   "reason": "frontage 179.8 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012163560",
+   "reason": "frontage 43.2 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012163680",
+   "reason": "frontage 45.4 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012163757",
+   "reason": "frontage 81.6 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012163813",
+   "reason": "frontage 112.9 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012163926",
+   "reason": "frontage 41.5 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012163945",
+   "reason": "frontage 69.5 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012164180",
+   "reason": "frontage 75.5 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012164336",
+   "reason": "frontage 68.5 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012164439",
+   "reason": "frontage 34.8 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012164696",
+   "reason": "frontage 36.4 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012164722",
+   "reason": "frontage 41.5 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012165233",
+   "reason": "frontage 69.5 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012165287",
+   "reason": "frontage 43.9 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012165324",
+   "reason": "frontage 31.8 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012165421",
+   "reason": "frontage 37.7 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012165528",
+   "reason": "frontage 75.3 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012165582",
+   "reason": "frontage 37.6 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012165584",
+   "reason": "frontage 30.2 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012165963",
+   "reason": "frontage 36.0 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012166039",
+   "reason": "no frontage on Valeriusstraat: No footprint edge faces Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012166171",
+   "reason": "frontage 68.5 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012166177",
+   "reason": "frontage 85.5 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012163913",
+   "reason": "no frontage on Valeriusstraat: No footprint edge faces Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012164204",
+   "reason": "no frontage on Valeriusstraat: No footprint edge faces Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012164264",
+   "reason": "frontage 77.2 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012164523",
+   "reason": "frontage 146.0 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012164557",
+   "reason": "no frontage on Valeriusstraat: No footprint edge faces Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012164601",
+   "reason": "frontage 52.0 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012164640",
+   "reason": "frontage 76.4 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012164684",
+   "reason": "frontage 145.9 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012164725",
+   "reason": "frontage 146.0 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012164733",
+   "reason": "frontage 77.6 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012164739",
+   "reason": "frontage 76.5 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012165318",
+   "reason": "frontage 45.1 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012165473",
+   "reason": "frontage 180.6 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012165609",
+   "reason": "frontage 81.3 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012165811",
+   "reason": "frontage 76.3 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012165895",
+   "reason": "frontage 112.4 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012165961",
+   "reason": "frontage 76.9 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012165962",
+   "reason": "frontage 145.7 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012166091",
+   "reason": "frontage 79.7 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012166121",
+   "reason": "frontage 112.9 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012166206",
+   "reason": "no frontage on Valeriusstraat: No footprint edge faces Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012166224",
+   "reason": "frontage 68.6 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012166278",
+   "reason": "frontage 39.5 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012166354",
+   "reason": "frontage 41.6 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012166492",
+   "reason": "frontage 44.3 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012166671",
+   "reason": "frontage 34.1 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012166672",
+   "reason": "sightline to Valeriusstraat crosses 0363100012160301"
+  },
+  {
+   "pandId": "0363100012166762",
+   "reason": "frontage 36.3 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012166784",
+   "reason": "sightline to Valeriusstraat crosses 0363100012162152"
+  },
+  {
+   "pandId": "0363100012166813",
+   "reason": "frontage 69.6 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012166878",
+   "reason": "frontage 40.9 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012166900",
+   "reason": "frontage 42.6 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012167003",
+   "reason": "frontage 34.6 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012167100",
+   "reason": "frontage 75.3 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012167177",
+   "reason": "sightline to Valeriusstraat crosses 0363100012155786"
+  },
+  {
+   "pandId": "0363100012167252",
+   "reason": "frontage 68.5 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012183409",
+   "reason": "frontage 101.2 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012189733",
+   "reason": "sightline to Valeriusstraat crosses 0363100012163240"
+  },
+  {
+   "pandId": "0363100012190007",
+   "reason": "frontage 101.2 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012190008",
+   "reason": "frontage 101.2 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012192955",
+   "reason": "sightline to Valeriusstraat crosses 0363100012155790"
+  },
+  {
+   "pandId": "0363100012196024",
+   "reason": "sightline to Valeriusstraat crosses 0363100012166821"
+  },
+  {
+   "pandId": "0363100012199379",
+   "reason": "frontage 113.0 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012203778",
+   "reason": "frontage 101.4 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012207536",
+   "reason": "frontage 42.5 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012166283",
+   "reason": "frontage 76.7 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012166710",
+   "reason": "frontage 41.3 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012166754",
+   "reason": "frontage 145.8 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012166881",
+   "reason": "frontage 47.0 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012166917",
+   "reason": "frontage 40.5 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012167008",
+   "reason": "frontage 176.5 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012167022",
+   "reason": "frontage 180.0 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012167203",
+   "reason": "frontage 103.8 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012167225",
+   "reason": "frontage 179.5 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012167239",
+   "reason": "frontage 110.2 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012167288",
+   "reason": "frontage 113.2 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012167324",
+   "reason": "frontage 77.4 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012167420",
+   "reason": "frontage 87.0 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012185557",
+   "reason": "sightline to Valeriusstraat crosses 0363100012156683"
+  },
+  {
+   "pandId": "0363100012196230",
+   "reason": "frontage 147.3 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012198806",
+   "reason": "sightline to Valeriusstraat crosses 0363100012157526"
+  },
+  {
+   "pandId": "0363100012200138",
+   "reason": "sightline to Valeriusstraat crosses 0363100012233669"
+  },
+  {
+   "pandId": "0363100012200469",
+   "reason": "sightline to Valeriusstraat crosses 0363100012166540"
+  },
+  {
+   "pandId": "0363100012202519",
+   "reason": "sightline to Valeriusstraat crosses 0363100012154120"
+  },
+  {
+   "pandId": "0363100012204731",
+   "reason": "frontage 98.3 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012205413",
+   "reason": "sightline to Valeriusstraat crosses 0363100012153385"
+  },
+  {
+   "pandId": "0363100012210347",
+   "reason": "frontage 101.4 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012210660",
+   "reason": "frontage 171.4 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012210708",
+   "reason": "sightline to Valeriusstraat crosses 0363100012166160"
+  },
+  {
+   "pandId": "0363100012211833",
+   "reason": "frontage 101.2 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012234000",
+   "reason": "frontage 186.9 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012235908",
+   "reason": "frontage 75.3 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012235947",
+   "reason": "frontage 35.6 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012235963",
+   "reason": "frontage 110.1 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012236059",
+   "reason": "frontage 112.0 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012236062",
+   "reason": "frontage 68.5 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012236107",
+   "reason": "frontage 31.9 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012236133",
+   "reason": "sightline to Valeriusstraat crosses 0363100012236061"
+  },
+  {
+   "pandId": "0363100012236134",
+   "reason": "sightline to Valeriusstraat crosses 0363100012236061"
+  },
+  {
+   "pandId": "0363100012236220",
+   "reason": "frontage 68.6 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012236445",
+   "reason": "frontage 68.6 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012236451",
+   "reason": "frontage 34.7 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012236462",
+   "reason": "frontage 69.4 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012236482",
+   "reason": "frontage 75.3 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012236580",
+   "reason": "frontage 75.2 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012236596",
+   "reason": "frontage 52.2 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012236610",
+   "reason": "frontage 75.2 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012236647",
+   "reason": "sightline to Valeriusstraat crosses 0363100012236061"
+  },
+  {
+   "pandId": "0363100012209537",
+   "reason": "sightline to Valeriusstraat crosses 0363100012167244"
+  },
+  {
+   "pandId": "0363100012210145",
+   "reason": "sightline to Valeriusstraat crosses 0363100012161666"
+  },
+  {
+   "pandId": "0363100012211885",
+   "reason": "sightline to Valeriusstraat crosses 0363100012153422"
+  },
+  {
+   "pandId": "0363100012214625",
+   "reason": "sightline to Valeriusstraat crosses 0363100012164649"
+  },
+  {
+   "pandId": "0363100012220245",
+   "reason": "frontage 98.3 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012231607",
+   "reason": "sightline to Valeriusstraat crosses 0363100012235918"
+  },
+  {
+   "pandId": "0363100012233412",
+   "reason": "frontage 110.1 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012233841",
+   "reason": "frontage 75.6 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012235897",
+   "reason": "frontage 76.2 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012235929",
+   "reason": "frontage 110.1 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012235930",
+   "reason": "no frontage on Valeriusstraat: No footprint edge faces Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012236069",
+   "reason": "frontage 98.4 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012236119",
+   "reason": "no frontage on Valeriusstraat: No footprint edge faces Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012236186",
+   "reason": "frontage 146.0 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012236236",
+   "reason": "frontage 81.6 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012236347",
+   "reason": "no frontage on Valeriusstraat: No footprint edge faces Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012236472",
+   "reason": "no frontage on Valeriusstraat: No footprint edge faces Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012236525",
+   "reason": "frontage 145.8 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012236783",
+   "reason": "frontage 103.0 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012237146",
+   "reason": "frontage 112.0 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012237162",
+   "reason": "frontage 60.5 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012236757",
+   "reason": "frontage 146.9 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012236835",
+   "reason": "frontage 40.6 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012236903",
+   "reason": "no frontage on Valeriusstraat: No footprint edge faces Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012236904",
+   "reason": "no frontage on Valeriusstraat: No footprint edge faces Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012237089",
+   "reason": "frontage 76.1 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012237103",
+   "reason": "frontage 76.0 m from Valeriusstraat"
+  },
+  {
+   "pandId": "0363100012085778",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012102449",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012085898",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012104755",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012108767",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012125848",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012152457",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012153117",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012153385",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012153398",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012154235",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012154313",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012152905",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012153422",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012154120",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012156442",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012156683",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012157080",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012157228",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012157293",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012157483",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012157526",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012157647",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012159952",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012160172",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012160301",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012160376",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012160924",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012160307",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012161666",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012162096",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012162225",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012162938",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012163379",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012164280",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012164581",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012164649",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012164819",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012165248",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012165656",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012166083",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012166160",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012166821",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012166540",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012167244",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012233669",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012235918",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012236089",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012236526",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012236342",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012236553",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012237345",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012237370",
+   "reason": "fronts the other side / another direction"
+  }
+ ],
+ "areaHalfSizeM": 180,
+ "pands": [
+  {
+   "pandId": "0363100012155790",
+   "alongM": 0,
+   "widthM": 5.89,
+   "eavesM": 14.73,
+   "roofMaxM": 17.19,
+   "storeys3dbag": 5,
+   "builtYear": 1902,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012161609",
+   "alongM": 5.77,
+   "widthM": 5.66,
+   "eavesM": 14.8,
+   "roofMaxM": 17.36,
+   "storeys3dbag": 5,
+   "builtYear": 1902,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012158288",
+   "alongM": 11.49,
+   "widthM": 5.78,
+   "eavesM": 14.67,
+   "roofMaxM": 17.4,
+   "storeys3dbag": 5,
+   "builtYear": 1902,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012155613",
+   "alongM": 17.72,
+   "widthM": 6.67,
+   "eavesM": 14.81,
+   "roofMaxM": 17.75,
+   "storeys3dbag": 4,
+   "builtYear": 1902,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012154219",
+   "alongM": 23.82,
+   "widthM": 5.55,
+   "eavesM": 13.97,
+   "roofMaxM": 16.72,
+   "storeys3dbag": 5,
+   "builtYear": 1902,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012157542",
+   "alongM": 29.81,
+   "widthM": 6.43,
+   "eavesM": 14.19,
+   "roofMaxM": 14.51,
+   "storeys3dbag": 4,
+   "builtYear": 1902,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012157102",
+   "alongM": 35.88,
+   "widthM": 5.72,
+   "eavesM": 14.22,
+   "roofMaxM": 16.75,
+   "storeys3dbag": 5,
+   "builtYear": 1902,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012156278",
+   "alongM": 41.76,
+   "widthM": 6.03,
+   "eavesM": 14.18,
+   "roofMaxM": 16.76,
+   "storeys3dbag": 4,
+   "builtYear": 1902,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012159308",
+   "alongM": 47.79,
+   "widthM": 6.01,
+   "eavesM": 14.88,
+   "roofMaxM": 18.24,
+   "storeys3dbag": 5,
+   "builtYear": 1938,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012161257",
+   "alongM": 53.73,
+   "widthM": 5.88,
+   "eavesM": 15.21,
+   "roofMaxM": 15.47,
+   "storeys3dbag": 5,
+   "builtYear": 1902,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012160763",
+   "alongM": 59.56,
+   "widthM": 5.82,
+   "eavesM": 15.12,
+   "roofMaxM": 15.41,
+   "storeys3dbag": 0,
+   "builtYear": 1902,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012156586",
+   "alongM": 65.67,
+   "widthM": 6.34,
+   "eavesM": 14.73,
+   "roofMaxM": 15.04,
+   "storeys3dbag": 0,
+   "builtYear": 1902,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012237285",
+   "alongM": 71.85,
+   "widthM": 6.03,
+   "eavesM": 12.14,
+   "roofMaxM": 18,
+   "storeys3dbag": 4,
+   "builtYear": 1906,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012099146",
+   "alongM": 77.89,
+   "widthM": 6.05,
+   "eavesM": 15.04,
+   "roofMaxM": 15.55,
+   "storeys3dbag": 4,
+   "builtYear": 1906,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012152773",
+   "alongM": 84.55,
+   "widthM": 7.27,
+   "eavesM": 12.46,
+   "roofMaxM": 15.4,
+   "storeys3dbag": 4,
+   "builtYear": 1906,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012163737",
+   "alongM": 91.18,
+   "widthM": 5.99,
+   "eavesM": 14.87,
+   "roofMaxM": 17.49,
+   "storeys3dbag": 5,
+   "builtYear": 1906,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012156459",
+   "alongM": 96.89,
+   "widthM": 5.43,
+   "eavesM": 14.93,
+   "roofMaxM": 17.68,
+   "storeys3dbag": 5,
+   "builtYear": 1906,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012152699",
+   "alongM": 102.8,
+   "widthM": 6.39,
+   "eavesM": 11.93,
+   "roofMaxM": 15.49,
+   "storeys3dbag": 4,
+   "builtYear": 1906,
+   "uncertainty": []
+  }
+ ]
+}

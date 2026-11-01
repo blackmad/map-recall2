@@ -1,0 +1,268 @@
+{
+ "face": "baerle-14-18",
+ "street": "Van Baerlestraat",
+ "library": "museumkwartier",
+ "stripDate": "2024-12-11",
+ "seconds": 0.78,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [],
+ "pands": [
+  {
+   "pandId": "0363100012155878",
+   "address": "Van Baerlestraat 18",
+   "builtYear": 1902,
+   "widthM": 8.02,
+   "eavesM": 16.69,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#474e49",
+    "wallRaw": "#4d5547",
+    "skyline": {
+     "eavesM": 19.43,
+     "eavesRow": 180,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.98,
+      "riseM": 1.72,
+      "topWidthM": 0.85,
+      "centre": 0.52
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "columns",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.201,
+    "structure": {
+     "bayWidthM": 0.6,
+     "bayCentre": 0.24,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 14.9,
+       "widthM": 0.93,
+       "centre": 0.5
+      },
+      {
+       "atM": 4.77,
+       "widthM": 4.15,
+       "centre": 0.43
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.65
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best museum-cs-1900-gable-balcony: built 1902, type 1900-1901; frontage 8.02 m, type 5.5-6.6 m)",
+   "best": {
+    "type": "museum-cs-1900-gable-balcony",
+    "score": 0,
+    "veto": [
+     "built 1902, type 1900-1901",
+     "frontage 8.02 m, type 5.5-6.6 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 19.43 m vs the type's 10.4 m (wall-dormer skyline 14.4 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": null,
+      "note": "no strip"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012076244",
+   "address": "Van Baerlestraat 16",
+   "builtYear": 1902,
+   "widthM": 7.67,
+   "eavesM": 16.64,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#4f5149",
+    "wallRaw": "#4c5043",
+    "skyline": {
+     "eavesM": 18.98,
+     "eavesRow": 198,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.77,
+      "riseM": 2.55,
+      "topWidthM": 0.75,
+      "centre": 0.49
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "columns",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.207,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.59
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best museum-cs-1900-gable-balcony: built 1902, type 1900-1901; frontage 7.67 m, type 5.5-6.6 m)",
+   "best": {
+    "type": "museum-cs-1900-gable-balcony",
+    "score": 0,
+    "veto": [
+     "built 1902, type 1900-1901",
+     "frontage 7.67 m, type 5.5-6.6 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 18.98 m vs the type's 10.4 m (wall-dormer skyline 14.4 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": null,
+      "note": "no strip"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012158964",
+   "address": "Van Baerlestraat 14",
+   "builtYear": 1876,
+   "widthM": 7.47,
+   "eavesM": 17.83,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#1e2522",
+    "wallRaw": "#5a5e4f",
+    "skyline": {
+     "eavesM": 19.13,
+     "eavesRow": 192,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.98,
+      "riseM": 2.02,
+      "topWidthM": 0.38,
+      "centre": 0.49
+     }
+    },
+    "stucco": false,
+    "bands": 7,
+    "columns": 3,
+    "frontClass": "columns",
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.156,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "balcony slabs stacked at 14.67 m (1.38 m wide), 11.68 m (1.25 m wide), 7.92 m (1.38 m wide)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 14.67,
+       "widthM": 1.38,
+       "centre": 0.5
+      },
+      {
+       "atM": 11.68,
+       "widthM": 1.25,
+       "centre": 0.5
+      },
+      {
+       "atM": 7.92,
+       "widthM": 1.38,
+       "centre": 0.83
+      }
+     ]
+    },
+    "voidShare": 0.01,
+    "foliageShare": 0.52
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best museum-cs-1900-gable-balcony: built 1876, type 1900-1901; frontage 7.47 m, type 5.5-6.6 m)",
+   "best": {
+    "type": "museum-cs-1900-gable-balcony",
+    "score": 0,
+    "veto": [
+     "built 1876, type 1900-1901",
+     "frontage 7.47 m, type 5.5-6.6 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 19.13 m vs the type's 10.4 m (wall-dormer skyline 14.4 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": null,
+      "note": "no strip"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

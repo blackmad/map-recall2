@@ -1,0 +1,200 @@
+{
+ "face": "obrecht-24-26",
+ "street": "Jacob Obrechtstraat",
+ "library": "museumkwartier",
+ "stripDate": "2024-11-12",
+ "seconds": 0.38,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [],
+ "pands": [
+  {
+   "pandId": "0363100012163687",
+   "address": "Jacob Obrechtstraat 26",
+   "builtYear": 1904,
+   "widthM": 11.86,
+   "eavesM": 6.68,
+   "storeys3dbag": 0,
+   "bagBay": {
+    "fromM": 0.16,
+    "toM": 11.85,
+    "depthM": 0.38,
+    "centre": 0.507,
+    "lineRD": [
+     [
+      120119.4583125,
+      485473.99125
+     ],
+     [
+      120115.27331250001,
+      485483.84425
+     ]
+    ]
+   },
+   "strip": {
+    "wall": "#5d5039",
+    "wallRaw": "#5a5339",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 871,
+     "confidence": 0.29,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 2,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 4.38 m at 0.5 (light 0.3): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 4.38,
+       "centre": 0.5,
+       "light": 0.3
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.5
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best museum-cs-1900-gable-balcony: built 1904, type 1900-1901; frontage 11.86 m, type 5.5-6.6 m)",
+   "best": {
+    "type": "museum-cs-1900-gable-balcony",
+    "score": 0,
+    "veto": [
+     "built 1904, type 1900-1901",
+     "frontage 11.86 m, type 5.5-6.6 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": null,
+      "note": "strip cornice unread (type line 10.4 m; 3DBAG 6.68 m not compared)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": null,
+      "note": "3DBAG bouwlagen 0 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": null,
+      "note": "no strip"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012154232",
+   "address": "Jacob Obrechtstraat 24",
+   "builtYear": 1904,
+   "widthM": 7.56,
+   "eavesM": 17.54,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#735c4c",
+    "wallRaw": "#5e6147",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 871,
+     "confidence": 0.27,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": "right",
+    "accentSide": "right",
+    "accentShare": 0.043,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 0.78 m at 0.86 (light 0.39): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.78,
+       "centre": 0.86,
+       "light": 0.39
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 9.07,
+       "widthM": 1.43,
+       "centre": 0.85
+      },
+      {
+       "atM": 5.63,
+       "widthM": 1.27,
+       "centre": 0.22
+      },
+      {
+       "atM": 4.8,
+       "widthM": 1.25,
+       "centre": 0.54
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.61
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best museum-cs-1900-gable-balcony: built 1904, type 1900-1901; frontage 7.56 m, type 5.5-6.6 m)",
+   "best": {
+    "type": "museum-cs-1900-gable-balcony",
+    "score": 0,
+    "veto": [
+     "built 1904, type 1900-1901",
+     "frontage 7.56 m, type 5.5-6.6 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": null,
+      "note": "strip cornice unread (type line 10.4 m; 3DBAG 17.54 m not compared)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 4 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": null,
+      "note": "no strip"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

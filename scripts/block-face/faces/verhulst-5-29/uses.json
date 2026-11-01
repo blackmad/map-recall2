@@ -1,0 +1,217 @@
+{
+ "street": "Johannes Verhulststraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-01T15:47:20.267Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012162112",
+   "addresses": [
+    "Johannes Verhulststraat 5"
+   ],
+   "groundUnits": [
+    {
+     "address": "Johannes Verhulststraat 5-H",
+     "use": "woonfunctie",
+     "areaM2": 136,
+     "bagId": "0363010000693909"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012165669",
+   "addresses": [
+    "Johannes Verhulststraat 7"
+   ],
+   "groundUnits": [
+    {
+     "address": "Johannes Verhulststraat 7-H",
+     "use": "woonfunctie",
+     "areaM2": 130,
+     "bagId": "0363010000693913"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012160038",
+   "addresses": [
+    "Johannes Verhulststraat 9"
+   ],
+   "groundUnits": [
+    {
+     "address": "Johannes Verhulststraat 9-H",
+     "use": "woonfunctie",
+     "areaM2": 130,
+     "bagId": "0363010000693918"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012157181",
+   "addresses": [
+    "Johannes Verhulststraat 11"
+   ],
+   "groundUnits": [
+    {
+     "address": "Johannes Verhulststraat 11-H",
+     "use": "woonfunctie",
+     "areaM2": 205,
+     "bagId": "0363010000693922"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012161172",
+   "addresses": [
+    "Johannes Verhulststraat 13"
+   ],
+   "groundUnits": [
+    {
+     "address": "Johannes Verhulststraat 13-H",
+     "use": "woonfunctie",
+     "areaM2": 127,
+     "bagId": "0363010000693925"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012164540",
+   "addresses": [
+    "Johannes Verhulststraat 15"
+   ],
+   "groundUnits": [
+    {
+     "address": "Johannes Verhulststraat 15-H",
+     "use": "woonfunctie",
+     "areaM2": 130,
+     "bagId": "0363010000693929"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012164327",
+   "addresses": [
+    "Johannes Verhulststraat 17"
+   ],
+   "groundUnits": [
+    {
+     "address": "Johannes Verhulststraat 17-H",
+     "use": "woonfunctie",
+     "areaM2": 130,
+     "bagId": "0363010000693933"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012159919",
+   "addresses": [
+    "Johannes Verhulststraat 19"
+   ],
+   "groundUnits": [
+    {
+     "address": "Johannes Verhulststraat 19-H",
+     "use": "woonfunctie",
+     "areaM2": 130,
+     "bagId": "0363010000693936"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012162487",
+   "addresses": [
+    "Johannes Verhulststraat 21"
+   ],
+   "groundUnits": [
+    {
+     "address": "Johannes Verhulststraat 21-H",
+     "use": "woonfunctie",
+     "areaM2": 209,
+     "bagId": "0363010000693940"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012159211",
+   "addresses": [
+    "Johannes Verhulststraat 23"
+   ],
+   "groundUnits": [
+    {
+     "address": "Johannes Verhulststraat 23-H",
+     "use": "woonfunctie",
+     "areaM2": 201,
+     "bagId": "0363010000693944"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012161210",
+   "addresses": [
+    "Johannes Verhulststraat 25"
+   ],
+   "groundUnits": [
+    {
+     "address": "Johannes Verhulststraat 25-H",
+     "use": "woonfunctie",
+     "areaM2": 130,
+     "bagId": "0363010000693950"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012160997",
+   "addresses": [
+    "Johannes Verhulststraat 27"
+   ],
+   "groundUnits": [
+    {
+     "address": "Johannes Verhulststraat 27-H",
+     "use": "woonfunctie",
+     "areaM2": 130,
+     "bagId": "0363010000693954"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012158385",
+   "addresses": [
+    "Johannes Verhulststraat 29"
+   ],
+   "groundUnits": [
+    {
+     "address": "Johannes Verhulststraat 29-H",
+     "use": "woonfunctie",
+     "areaM2": 130,
+     "bagId": "0363010000693958"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  }
+ ]
+}

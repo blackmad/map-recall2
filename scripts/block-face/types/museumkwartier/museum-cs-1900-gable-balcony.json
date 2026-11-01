@@ -1,0 +1,184 @@
+{
+ "schemaVersion": 1,
+ "kind": "house-type",
+ "id": "museum-cs-1900-gable-balcony",
+ "district": "museumkwartier",
+ "description": "Van Breestraat 119-137 (1900-1901): 6 m red brick fronts of three storeys under a brick cornice frieze at 10.4 m; three axes of two-light windows with a top light and white sills; the centre axis French windows with iron balconettes on stone slabs and corbels on storeys 1 and 2; a round-arched house door on the left axis beside two ground windows with transoms; over the centre a brick wall gable 3.4 m wide rising to 14.4 m with one attic light, alternately stepped, bell-topped with a flat cap, or pointed; a slate attic storey with dormers behind the cornice between the gables",
+ "fit": {
+  "widthM": [
+   5.5,
+   6.6
+  ],
+  "storeys": [
+   3
+  ]
+ },
+ "body": {
+  "storeys": 3,
+  "bays": 3,
+  "storeyHeights": [
+   4.2,
+   3.1,
+   3.1
+  ],
+  "windows": "casement-toplight",
+  "windowSurround": "sill",
+  "windowHeights": [
+   0.52,
+   0.68,
+   0.68
+  ],
+  "headLines": [
+   0.76,
+   0.81,
+   0.77
+  ],
+  "cornice": "bracketed",
+  "balconies": {
+   "storeys": [
+    1,
+    2
+   ],
+   "bays": [
+    1
+   ],
+   "projecting": true
+  }
+ },
+ "crowns": {
+  "step-gable": {
+   "gable": "step",
+   "crownSteps": 3,
+   "crownRise": 1.3,
+   "crownAt": {
+    "from": 0.18,
+    "to": 0.82
+   },
+   "atticWindows": 1,
+   "note": "123, 129, 133, 135 (160540, 163068, 161182, 163560): a 3.6-3.9 m gable on plumb sides to about 12.4 m, then steps to a flat coping 1.2 m wide at 14.4 m; drawn as three equal steps (risers 1.3 m, treads 0.45 m), the nearest the step outline says"
+  },
+  "bell-gable": {
+   "gable": "bell",
+   "crownRise": 1.3,
+   "crownCap": "flat",
+   "crownShoulder": "convex",
+   "crownShoulderRise": 0.85,
+   "crownNeckWidth": 0.52,
+   "crownAt": {
+    "from": 0.18,
+    "to": 0.82
+   },
+   "atticWindows": 1,
+   "note": "119, 121, 125, 127 (157652, 158648, 160169, 157147): a 3.9 m gable rising near plumb from the cornice and curving in at the top (volutes) to a flat coping 2.0 m wide at 14.4 m: convex flanks meeting a short neck at 0.85 of the rise"
+  },
+  "point-gable": {
+   "gable": "point",
+   "crownRise": 1.3,
+   "crownAt": {
+    "from": 0.18,
+    "to": 0.82
+   },
+   "atticWindows": 1,
+   "note": "131, 137 (163680, 161806): a pointed gable, its rakes from 10.9 to 14.4 m"
+  }
+ },
+ "grounds": {
+  "door-left": {
+   "doorBay": 0,
+   "basement": "none",
+   "doorArch": {
+    "span": 1,
+    "apex": 3.3
+   },
+   "note": "every house of 119-137: a round-arched house door on the left axis, the arch crown at 3.3 m; two ground windows with a transom (1.0-3.2 m)"
+  }
+ },
+ "palettes": {
+  "red-brown-1900": {
+   "brick": "#2b1d18",
+   "frame": "white-painted",
+   "door": "#2a2622",
+   "stone": "#d8d2c4",
+   "cornice": "#33231c"
+  }
+ },
+ "roof": {
+  "material": "slate"
+ },
+ "rhythm": {
+  "bays": "3 equal window axes",
+  "identicalBays": "every storey: 3 two-light windows with a top light; the centre a French window behind a balconette on storeys 1-2",
+  "windowsPerStorey": "ground: door + 2 | 1: 3 | 2: 3 | gable: 1",
+  "symmetry": "upper storeys symmetric; door always left",
+  "groundFloor": "residential",
+  "signage": "none",
+  "roofline": "brick cornice frieze at 10.4 m; a centred wall gable to 14.4 m (step, bell or point); an attic storey with dormers between the gables",
+  "photoRows": [
+   2,
+   3,
+   3,
+   1
+  ],
+  "photoGroundRows": 1,
+  "photoGables": 1
+ },
+ "match": {
+  "years": [
+   1900,
+   1901
+  ],
+  "yearSlack": 0,
+  "stucco": false,
+  "storeys3dbag": [
+   4,
+   5
+  ],
+  "frontEavesM": 10.4,
+  "frontSkylineM": 14.4,
+  "mirrorForDoor": "left",
+  "measuredWall": false,
+  "crownFromType": "step-gable",
+  "note": "Van Breestraat 119-137 on the 2024-11-12 strip (40 px/m, gridded 1 m): 3DBAG eaves 14.0-14.4 m and roof max 14.3-17.1 m are the flat attic storey behind the cornice and the gable tops; the front cornice is 10.4 m. One house per pand, 5.6-6.5 m. The skyline reads the gable tops (13.9-14.7 m on 119, 123, 129; frontSkylineM 14.4) or, on 135-137, the attic storey top between them (12.3-13.4 m); under the bare branches does not tell the three gables apart: the crown is pinned per pand in cornelis-schuytbuurt-review-crowns.json"
+ },
+ "evidence": [
+  {
+   "face": "bree-107-149",
+   "pands": [
+    "0363100012157652",
+    "0363100012158648"
+   ],
+   "citation": "strip.jpg 2024-11-12 at 40 px/m, ground at the strip foot, 1 m grid (staging/block-face/museumkwartier/a/bree-119-123-grid.png): ground windows 1.0-3.2 m, door arch to 3.3 m, balcony slabs 4.2-4.5 and 7.3-7.6 m, storey-1 windows 4.6-6.7 m, storey-2 7.6-9.7 m, cornice frieze 10.3-10.9 m, gable light 11.0-12.4 m, gable top 14.4 m; windows 1.1-1.15 m wide at 1.9 m pitch"
+  },
+  {
+   "face": "bree-107-149",
+   "pands": [
+    "0363100012160540",
+    "0363100012160169",
+    "0363100012157147",
+    "0363100012163068",
+    "0363100012163680",
+    "0363100012161182",
+    "0363100012163560",
+    "0363100012161806"
+   ],
+   "citation": "strip.jpg 2024-11-12 (staging/block-face/museumkwartier/a/bree-123-141-grid.png): the same axes, balconettes and left doors on 123-137; gables step on 123, 129, 133, 135, bell on 125, 127, point on 131, 137; 139-141 are another front (dark brick, white bands, dormers)"
+  },
+  {
+   "face": "bree-107-149",
+   "pands": [
+    "0363100012163068",
+    "0363100012160540",
+    "0363100012160169",
+    "0363100012157147"
+   ],
+   "citation": "brick #2b1d18: fit-wall-palette.ts through the city tint on the tree-free wall of Van Breestraat 129 (photo #463527, model #774c32 from #633f29; predicted render #4c392c); the photo walls of 123-129 read #433421-#503b2b on the overcast 2024-11-12 strip. One brick for the row (measuredWall false): the per-pand trim-normalised walls drew 123 orange (#946952) and 129 brown (#633f29) in one brick row"
+  }
+ ],
+ "schemaLimits": [
+  "the gable volutes and the stone cartouche in the bell gables are not drawn",
+  "the dormers of the attic storey between the gables are not drawn"
+ ],
+ "notes": [
+  "Palette: one measured brick for the row (Transvaalbuurt lesson 10); the per-pand strip walls differ by exposure and street trees, not by brick."
+ ]
+}

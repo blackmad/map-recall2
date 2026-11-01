@@ -1,0 +1,496 @@
+{
+ "face": "boers-2-10",
+ "street": "Alexander Boersstraat",
+ "library": "museumkwartier",
+ "stripDate": "2024-11-12",
+ "seconds": 0.92,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [],
+ "pands": [
+  {
+   "pandId": "0363100012156011",
+   "address": "Alexander Boersstraat 10",
+   "builtYear": 1895,
+   "widthM": 6.79,
+   "eavesM": 9.77,
+   "storeys3dbag": 4,
+   "bagBay": {
+    "fromM": 4.59,
+    "toM": 6.78,
+    "depthM": 0.75,
+    "centre": 0.838,
+    "lineRD": [
+     [
+      120349.92818749999,
+      485583.38975
+     ],
+     [
+      120352.53918749999,
+      485579.45975
+     ]
+    ]
+   },
+   "strip": {
+    "wall": "#87664e",
+    "wallRaw": "#5d4f3f",
+    "skyline": {
+     "eavesM": 12.55,
+     "eavesRow": 150,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2,
+      "riseM": 1.38,
+      "topWidthM": 1.88,
+      "centre": 0.31
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": "right",
+    "accentSide": "right",
+    "accentShare": 0.046,
+    "structure": {
+     "bayWidthM": 0.9,
+     "bayCentre": 0.83,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.06
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best museum-cs-1900-gable-balcony: built 1895, type 1900-1901)",
+   "best": {
+    "type": "museum-cs-1900-gable-balcony",
+    "score": 0,
+    "veto": [
+     "built 1895, type 1900-1901"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 12.55 m vs the type's 10.4 m (wall-dormer skyline 14.4 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 4 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.026 (brick)"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012165797",
+   "address": "Alexander Boersstraat 8",
+   "builtYear": 1895,
+   "widthM": 6.64,
+   "eavesM": 11,
+   "storeys3dbag": 4,
+   "bagBay": {
+    "fromM": 4.48,
+    "toM": 6.63,
+    "depthM": 0.85,
+    "centre": 0.838,
+    "lineRD": [
+     [
+      120354.4881875,
+      485578.05874999997
+     ],
+     [
+      120357.20918749999,
+      485574.28975
+     ]
+    ]
+   },
+   "strip": {
+    "wall": "#645544",
+    "wallRaw": "#615444",
+    "skyline": {
+     "eavesM": 12.7,
+     "eavesRow": 144,
+     "confidence": 1,
+     "crown": {
+      "widthM": 0.75,
+      "riseM": 0.8,
+      "topWidthM": 0.57,
+      "centre": 0.67
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": "left",
+    "accentSide": "left",
+    "accentShare": 0.076,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.12
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best museum-cs-1900-gable-balcony: built 1895, type 1900-1901)",
+   "best": {
+    "type": "museum-cs-1900-gable-balcony",
+    "score": 0,
+    "veto": [
+     "built 1895, type 1900-1901"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 12.7 m vs the type's 10.4 m (wall-dormer skyline 14.4 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 4 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.087 (brick)"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012166010",
+   "address": "Alexander Boersstraat 6",
+   "builtYear": 1895,
+   "widthM": 6.53,
+   "eavesM": 13.18,
+   "storeys3dbag": 4,
+   "bagBay": {
+    "fromM": 1.17,
+    "toM": 4.53,
+    "depthM": 0.38,
+    "centre": 0.437,
+    "lineRD": [
+     [
+      120358.99018749999,
+      485572.04575
+     ],
+     [
+      120361.28918749999,
+      485566.77975
+     ]
+    ]
+   },
+   "strip": {
+    "wall": "#534333",
+    "wallRaw": "#6b5948",
+    "skyline": {
+     "eavesM": 13.1,
+     "eavesRow": 128,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.77,
+      "riseM": 2.6,
+      "topWidthM": 0.65,
+      "centre": 0.34
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": "right",
+    "accentSide": "left",
+    "accentShare": 0.198,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 10.1,
+       "widthM": 1.23,
+       "centre": 0.5
+      },
+      {
+       "atM": 6.65,
+       "widthM": 1.27,
+       "centre": 0.18
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.13
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best museum-cs-1900-gable-balcony: built 1895, type 1900-1901)",
+   "best": {
+    "type": "museum-cs-1900-gable-balcony",
+    "score": 0,
+    "veto": [
+     "built 1895, type 1900-1901"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 13.1 m vs the type's 10.4 m (wall-dormer skyline 14.4 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 4 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.168 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012166994",
+   "address": "Alexander Boersstraat 4",
+   "builtYear": 1895,
+   "widthM": 6.56,
+   "eavesM": 11.02,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#222119",
+    "wallRaw": "#37362c",
+    "skyline": {
+     "eavesM": 13.13,
+     "eavesRow": 127,
+     "confidence": 1,
+     "crown": {
+      "widthM": 4.08,
+      "riseM": 2.18,
+      "topWidthM": 0.6,
+      "centre": 0.35
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 2,
+    "frontClass": "blank",
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 7.65,
+       "widthM": 3.02,
+       "centre": 0.25
+      },
+      {
+       "atM": 5.25,
+       "widthM": 1.1,
+       "centre": 0.16
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.1
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best museum-cs-1900-gable-balcony: built 1895, type 1900-1901)",
+   "best": {
+    "type": "museum-cs-1900-gable-balcony",
+    "score": 0,
+    "veto": [
+     "built 1895, type 1900-1901"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 13.13 m vs the type's 10.4 m (wall-dormer skyline 14.4 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 4 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0.4,
+      "note": "strip columns 2 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012158803",
+   "address": "Alexander Boersstraat 2A",
+   "builtYear": 1895,
+   "widthM": 10.74,
+   "eavesM": 14.28,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#7d604a",
+    "wallRaw": "#72604b",
+    "skyline": {
+     "eavesM": 14.7,
+     "eavesRow": 64,
+     "confidence": 0.66,
+     "crown": {
+      "widthM": 1.13,
+      "riseM": 1.6,
+      "topWidthM": 1.13,
+      "centre": 0.64
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.134,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 13.3,
+       "widthM": 1.13,
+       "centre": 0.94
+      },
+      {
+       "atM": 11.13,
+       "widthM": 0.93,
+       "centre": 0.26
+      },
+      {
+       "atM": 10.68,
+       "widthM": 0.88,
+       "centre": 0.18
+      },
+      {
+       "atM": 9.93,
+       "widthM": 1,
+       "centre": 0.13
+      },
+      {
+       "atM": 6.77,
+       "widthM": 1.05,
+       "centre": 0.13
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.19
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best museum-cs-1900-gable-balcony: built 1895, type 1900-1901; frontage 10.74 m, type 5.5-6.6 m)",
+   "best": {
+    "type": "museum-cs-1900-gable-balcony",
+    "score": 0,
+    "veto": [
+     "built 1895, type 1900-1901",
+     "frontage 10.74 m, type 5.5-6.6 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "strip cornice 14.7 m vs the type's 10.4 m (wall-dormer skyline 14.4 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 4 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.106 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

@@ -1,0 +1,157 @@
+{
+ "street": "Jacob Obrechtstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-01T15:36:27.471Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012166459",
+   "addresses": [
+    "Jacob Obrechtstraat 11",
+    "Jacob Obrechtstraat 11A",
+    "Jacob Obrechtstraat 11B",
+    "Jacob Obrechtstraat 11C",
+    "Jacob Obrechtstraat 11D"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jacob Obrechtstraat 11",
+     "use": "woonfunctie",
+     "areaM2": 237,
+     "bagId": "0363010000679797"
+    },
+    {
+     "address": "Jacob Obrechtstraat 11A",
+     "use": "woonfunctie",
+     "areaM2": 67,
+     "bagId": "0363010012153374"
+    },
+    {
+     "address": "Jacob Obrechtstraat 11B",
+     "use": "woonfunctie",
+     "areaM2": 53,
+     "bagId": "0363010012153375"
+    },
+    {
+     "address": "Jacob Obrechtstraat 11D",
+     "use": "woonfunctie",
+     "areaM2": 68,
+     "bagId": "0363010012153377"
+    }
+   ],
+   "units": 6,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012164901",
+   "addresses": [
+    "Jacob Obrechtstraat 13",
+    "Jacob Obrechtstraat 13A",
+    "Jacob Obrechtstraat 13B",
+    "Jacob Obrechtstraat 13C",
+    "Jacob Obrechtstraat 13D"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jacob Obrechtstraat 13",
+     "use": "woonfunctie",
+     "areaM2": 286,
+     "bagId": "0363010000980485"
+    },
+    {
+     "address": "Jacob Obrechtstraat 13A",
+     "use": "winkelfunctie",
+     "areaM2": 116,
+     "bagId": "0363010012168396"
+    },
+    {
+     "address": "Jacob Obrechtstraat 13C",
+     "use": "woonfunctie",
+     "areaM2": 79,
+     "bagId": "0363010012569040"
+    },
+    {
+     "address": "Jacob Obrechtstraat 13D",
+     "use": "woonfunctie",
+     "areaM2": 72,
+     "bagId": "0363010012569041"
+    }
+   ],
+   "units": 6,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012072072",
+   "addresses": [
+    "Jacob Obrechtstraat 15"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jacob Obrechtstraat 15",
+     "use": "woonfunctie",
+     "areaM2": 286,
+     "bagId": "0363010000642663"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012166597",
+   "addresses": [
+    "Jacob Obrechtstraat 17"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jacob Obrechtstraat 17",
+     "use": "woonfunctie",
+     "areaM2": 286,
+     "bagId": "0363010001983567"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012163914",
+   "addresses": [
+    "Jacob Obrechtstraat 19"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jacob Obrechtstraat 19-H",
+     "use": "winkelfunctie",
+     "areaM2": 64,
+     "bagId": "0363010000679813"
+    },
+    {
+     "address": "Van Breestraat 70A",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 18,
+     "bagId": "0363010012569959"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 30731893,
+     "lngLat": [
+      4.8751608,
+      52.3565629
+     ],
+     "tags": {
+      "amenity": "recycling",
+      "recycling:glass_bottles": "yes",
+      "recycling:paper": "yes",
+      "recycling_type": "container"
+     },
+     "fetchedAt": "2026-11-01T15:36:27.471Z",
+     "match": "frontage",
+     "distanceM": 6.6
+    }
+   ]
+  }
+ ]
+}

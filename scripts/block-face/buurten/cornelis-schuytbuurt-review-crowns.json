@@ -1,0 +1,12 @@
+{
+ "note": "Crown variants pinned after reading the Van Breestraat 107-149 strip (2024-11-12, gridded 1 m: staging/block-face/museumkwartier/a/bree-123-141-grid.png). Bare branches cross the skyline over most of the row, so museum-cs-1900-gable-balcony falls back to its crown from type (step-gable); a pin restores the bell and point gables the strip shows.",
+ "reviewed": "2026-11-01",
+ "pins": [
+  {"pandId": "0363100012157652", "type": "museum-cs-1900-gable-balcony", "crown": "bell-gable", "reason": "Van Breestraat 119: curved gable flanks with volutes and a stone cartouche to a flat cap at 14.4 m, one arched light"},
+  {"pandId": "0363100012158648", "type": "museum-cs-1900-gable-balcony", "crown": "bell-gable", "reason": "Van Breestraat 121: the same curved gable as 119 under the branches, flat cap at 14.3 m"},
+  {"pandId": "0363100012160169", "type": "museum-cs-1900-gable-balcony", "crown": "bell-gable", "reason": "Van Breestraat 125: curved flanks and a flat cap at 14.4 m, an arched relief over the light"},
+  {"pandId": "0363100012157147", "type": "museum-cs-1900-gable-balcony", "crown": "bell-gable", "reason": "Van Breestraat 127: curved flanks with volutes, flat cap at 14.5 m"},
+  {"pandId": "0363100012163680", "type": "museum-cs-1900-gable-balcony", "crown": "point-gable", "reason": "Van Breestraat 131: a pointed gable, its rakes from the cornice to 14.4 m, a small finial"},
+  {"pandId": "0363100012161806", "type": "museum-cs-1900-gable-balcony", "crown": "point-gable", "reason": "Van Breestraat 137: a pointed gable to 14.5 m, the same as 131"}
+ ]
+}

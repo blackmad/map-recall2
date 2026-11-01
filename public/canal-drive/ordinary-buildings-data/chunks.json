@@ -1,6 +1,6 @@
 {
  "version": 1,
- "generatedAt": "2026-11-01T12:58:48.956Z",
+ "generatedAt": "2026-11-01T16:10:41.612Z",
  "chunks": [
   {
    "id": "chunk-face-bilder-080336-090492",
@@ -80228,6 +80228,420 @@
        "primitive": 10,
        "firstTriangle": 8,
        "triangleCount": 5
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "chunk-face-bree-107-149-r1",
+   "category": "street-survey",
+   "name": "face-bree-107-149-r1",
+   "modelUrl": "./models/ordinary-buildings/chunks/chunk-face-bree-107-149-r1.glb?asset=334d0cbba10ede8f",
+   "sha256": "334d0cbba10ede8f7229d0972072922becc58d8ade8bc0e2e8da3e44bd359b85",
+   "bytes": 485952,
+   "triangles": 7152,
+   "primitives": 12,
+   "instance": {
+    "anchor": [
+     4.872487387477371,
+     52.355723228447935
+    ],
+    "northOffsetDegrees": 156.108,
+    "mirror": false
+   },
+   "bounds": {
+    "min": [
+     -11.649,
+     0,
+     -13.958
+    ],
+    "max": [
+     12.169,
+     14.378,
+     0.646
+    ]
+   },
+   "height": 14.378,
+   "suppress": [
+    "NL.IMBAG.Pand.0363100012160540",
+    "NL.IMBAG.Pand.0363100012160169",
+    "NL.IMBAG.Pand.0363100012157147",
+    "NL.IMBAG.Pand.0363100012163068"
+   ],
+   "replaces": [
+    "ordinary-0363100012160540",
+    "ordinary-0363100012160169",
+    "ordinary-0363100012157147",
+    "ordinary-0363100012163068"
+   ],
+   "footprint": {
+    "type": "MultiPolygon",
+    "coordinates": [
+     [
+      [
+       [
+        4.8726438,
+        52.3557655
+       ],
+       [
+        4.872569,
+        52.3557453
+       ],
+       [
+        4.8726492,
+        52.3556303
+       ],
+       [
+        4.8727245,
+        52.3556506
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.872569,
+        52.3557453
+       ],
+       [
+        4.8724865,
+        52.355723
+       ],
+       [
+        4.8725615,
+        52.3556165
+       ],
+       [
+        4.8726434,
+        52.3556386
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.8724865,
+        52.355723
+       ],
+       [
+        4.8724085,
+        52.3557019
+       ],
+       [
+        4.872482,
+        52.355595
+       ],
+       [
+        4.8725615,
+        52.3556165
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.8724085,
+        52.3557019
+       ],
+       [
+        4.8723274,
+        52.35568
+       ],
+       [
+        4.8724005,
+        52.355573
+       ],
+       [
+        4.872482,
+        52.355595
+       ]
+      ]
+     ]
+    ]
+   },
+   "pands": [
+    {
+     "recipeId": "bree-160540",
+     "pandId": "0363100012160540",
+     "buildingId": "NL.IMBAG.Pand.0363100012160540",
+     "address": "Van Breestraat 123",
+     "frontage": {
+      "x0": -11.649,
+      "x1": -6.078,
+      "widthM": 5.571
+     },
+     "bounds": {
+      "min": [
+       -11.649,
+       0,
+       -13.958
+      ],
+      "max": [
+       -5.903,
+       14.378,
+       0.644
+      ]
+     },
+     "triangles": 1726,
+     "ranges": [
+      {
+       "primitive": 3,
+       "firstTriangle": 0,
+       "triangleCount": 122
+      },
+      {
+       "primitive": 4,
+       "firstTriangle": 0,
+       "triangleCount": 192
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 0,
+       "triangleCount": 48
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 0,
+       "triangleCount": 876
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 0,
+       "triangleCount": 344
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 0,
+       "triangleCount": 126
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 0,
+       "triangleCount": 10
+      },
+      {
+       "primitive": 10,
+       "firstTriangle": 0,
+       "triangleCount": 5
+      },
+      {
+       "primitive": 11,
+       "firstTriangle": 0,
+       "triangleCount": 3
+      }
+     ]
+    },
+    {
+     "recipeId": "bree-160169",
+     "pandId": "0363100012160169",
+     "buildingId": "NL.IMBAG.Pand.0363100012160169",
+     "address": "Van Breestraat 125",
+     "frontage": {
+      "x0": -6.078,
+      "x1": 0.068,
+      "widthM": 6.145
+     },
+     "bounds": {
+      "min": [
+       -6.078,
+       0,
+       -12.952
+      ],
+      "max": [
+       0.182,
+       14.378,
+       0.644
+      ]
+     },
+     "triangles": 1855,
+     "ranges": [
+      {
+       "primitive": 2,
+       "firstTriangle": 0,
+       "triangleCount": 171
+      },
+      {
+       "primitive": 4,
+       "firstTriangle": 192,
+       "triangleCount": 192
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 48,
+       "triangleCount": 60
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 876,
+       "triangleCount": 948
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 344,
+       "triangleCount": 344
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 126,
+       "triangleCount": 126
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 10,
+       "triangleCount": 9
+      },
+      {
+       "primitive": 10,
+       "firstTriangle": 5,
+       "triangleCount": 3
+      },
+      {
+       "primitive": 11,
+       "firstTriangle": 3,
+       "triangleCount": 2
+      }
+     ]
+    },
+    {
+     "recipeId": "bree-157147",
+     "pandId": "0363100012157147",
+     "buildingId": "NL.IMBAG.Pand.0363100012157147",
+     "address": "Van Breestraat 127",
+     "frontage": {
+      "x0": 0.067,
+      "x1": 5.877,
+      "widthM": 5.81
+     },
+     "bounds": {
+      "min": [
+       0.067,
+       0,
+       -12.944
+      ],
+      "max": [
+       6.104,
+       14.364,
+       0.646
+      ]
+     },
+     "triangles": 1853,
+     "ranges": [
+      {
+       "primitive": 1,
+       "firstTriangle": 0,
+       "triangleCount": 170
+      },
+      {
+       "primitive": 4,
+       "firstTriangle": 384,
+       "triangleCount": 192
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 108,
+       "triangleCount": 60
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 1824,
+       "triangleCount": 948
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 688,
+       "triangleCount": 344
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 252,
+       "triangleCount": 126
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 19,
+       "triangleCount": 1
+      },
+      {
+       "primitive": 10,
+       "firstTriangle": 8,
+       "triangleCount": 3
+      },
+      {
+       "primitive": 11,
+       "firstTriangle": 5,
+       "triangleCount": 9
+      }
+     ]
+    },
+    {
+     "recipeId": "bree-163068",
+     "pandId": "0363100012163068",
+     "buildingId": "NL.IMBAG.Pand.0363100012163068",
+     "address": "Van Breestraat 129",
+     "frontage": {
+      "x0": 5.877,
+      "x1": 11.914,
+      "widthM": 6.037
+     },
+     "bounds": {
+      "min": [
+       5.877,
+       0,
+       -12.938
+      ],
+      "max": [
+       12.169,
+       14.364,
+       0.646
+      ]
+     },
+     "triangles": 1718,
+     "ranges": [
+      {
+       "primitive": 0,
+       "firstTriangle": 0,
+       "triangleCount": 105
+      },
+      {
+       "primitive": 4,
+       "firstTriangle": 576,
+       "triangleCount": 192
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 168,
+       "triangleCount": 60
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 2772,
+       "triangleCount": 876
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 1032,
+       "triangleCount": 344
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 378,
+       "triangleCount": 126
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 20,
+       "triangleCount": 11
+      },
+      {
+       "primitive": 10,
+       "firstTriangle": 11,
+       "triangleCount": 2
+      },
+      {
+       "primitive": 11,
+       "firstTriangle": 14,
+       "triangleCount": 2
       }
      ]
     }

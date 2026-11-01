@@ -1,0 +1,41 @@
+{
+ "street": "Van Eeghenstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-01T14:52:32.841Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012157152",
+   "addresses": [
+    "Van Eeghenstraat 135"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Eeghenstraat 135-H",
+     "use": "woonfunctie",
+     "areaM2": 120,
+     "bagId": "0363010000838806"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012165160",
+   "addresses": [
+    "Van Eeghenstraat 137"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Eeghenstraat 137-H",
+     "use": "woonfunctie",
+     "areaM2": 95,
+     "bagId": "0363010000838808"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  }
+ ]
+}

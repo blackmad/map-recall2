@@ -1,0 +1,1086 @@
+{
+ "face": "palestrina-2-32",
+ "street": "Palestrinastraat",
+ "library": "museumkwartier",
+ "stripDate": "2024-11-12",
+ "seconds": 2.61,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [],
+ "pands": [
+  {
+   "pandId": "0363100012158724",
+   "address": "Palestrinastraat 32",
+   "builtYear": 1903,
+   "widthM": 7.06,
+   "eavesM": 14.11,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#879495",
+    "wallRaw": "#626646",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 833,
+     "confidence": 0.16,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 4,
+    "frontClass": "punched",
+    "doorSide": "right",
+    "accentSide": "left",
+    "accentShare": 0.246,
+    "structure": {
+     "bayWidthM": 1.63,
+     "bayCentre": 0.13,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 9.45,
+       "widthM": 0.85,
+       "centre": 0.78
+      },
+      {
+       "atM": 6.3,
+       "widthM": 0.85,
+       "centre": 0.8
+      },
+      {
+       "atM": 5.7,
+       "widthM": 1.05,
+       "centre": 0.83
+      }
+     ]
+    },
+    "voidShare": 0.06,
+    "foliageShare": 0.66
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best museum-cs-1900-gable-balcony: built 1903, type 1900-1901; frontage 7.06 m, type 5.5-6.6 m)",
+   "best": {
+    "type": "museum-cs-1900-gable-balcony",
+    "score": 0,
+    "veto": [
+     "built 1903, type 1900-1901",
+     "frontage 7.06 m, type 5.5-6.6 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": null,
+      "note": "strip cornice unread (type line 10.4 m; 3DBAG 14.11 m not compared)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 4 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": null,
+      "note": "no strip"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012165922",
+   "address": "Palestrinastraat 30",
+   "builtYear": 1903,
+   "widthM": 6.53,
+   "eavesM": 14.1,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#b68f6f",
+    "wallRaw": "#7a6f4a",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 833,
+     "confidence": 0.27,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 6,
+    "frontClass": "columns",
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.153,
+    "structure": {
+     "bayWidthM": 1.8,
+     "bayCentre": 0.85,
+     "balconies": false,
+     "why": "no dark open axis (light ones: 0.68 m @ 0.57), 0 wide slab(s)",
+     "openAxes": [
+      {
+       "widthM": 0.68,
+       "centre": 0.82,
+       "light": 0.57
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 6.45,
+       "widthM": 1.2,
+       "centre": 0.79
+      }
+     ]
+    },
+    "voidShare": 0.05,
+    "foliageShare": 0.35
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best museum-cs-1900-gable-balcony: built 1903, type 1900-1901)",
+   "best": {
+    "type": "museum-cs-1900-gable-balcony",
+    "score": 0,
+    "veto": [
+     "built 1903, type 1900-1901"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": null,
+      "note": "strip cornice unread (type line 10.4 m; 3DBAG 14.1 m not compared)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 4 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": null,
+      "note": "no strip"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012157721",
+   "address": "Palestrinastraat 28",
+   "builtYear": 1903,
+   "widthM": 6.62,
+   "eavesM": 12.07,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#be9777",
+    "wallRaw": "#987b5f",
+    "skyline": {
+     "eavesM": 14.03,
+     "eavesRow": 272,
+     "confidence": 1,
+     "crown": {
+      "widthM": 3.08,
+      "riseM": 2.03,
+      "topWidthM": 0.6,
+      "centre": 0.49
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "columns",
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.236,
+    "structure": {
+     "bayWidthM": 1.05,
+     "bayCentre": 0.14,
+     "balconies": true,
+     "why": "dark open axis 1.05 m at 0.46 (light 0.28): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 1.05,
+       "centre": 0.46,
+       "light": 0.28
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 7.05,
+       "widthM": 0.82,
+       "centre": 0.31
+      }
+     ]
+    },
+    "voidShare": 0.12,
+    "foliageShare": 0.13
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best museum-cs-1900-gable-balcony: built 1903, type 1900-1901)",
+   "best": {
+    "type": "museum-cs-1900-gable-balcony",
+    "score": 0,
+    "veto": [
+     "built 1903, type 1900-1901"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "strip cornice 14.03 m vs the type's 10.4 m (wall-dormer skyline 14.4 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.108 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012160243",
+   "address": "Palestrinastraat 26",
+   "builtYear": 1903,
+   "widthM": 6.24,
+   "eavesM": 16.17,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#ddc9a6",
+    "wallRaw": "#dbb088",
+    "skyline": {
+     "eavesM": 13.95,
+     "eavesRow": 275,
+     "confidence": 1,
+     "crown": {
+      "widthM": 3.2,
+      "riseM": 2.9,
+      "topWidthM": 1.2,
+      "centre": 0.41
+     }
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.377,
+    "structure": {
+     "bayWidthM": 1.3,
+     "bayCentre": 0.41,
+     "balconies": true,
+     "why": "dark open axis 1.02 m at 0.42 (light 0.43): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 1.02,
+       "centre": 0.42,
+       "light": 0.43
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 11.25,
+       "widthM": 0.85,
+       "centre": 0.41
+      }
+     ]
+    },
+    "voidShare": 0.25,
+    "foliageShare": 0.12
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best museum-cs-1900-gable-balcony: built 1903, type 1900-1901)",
+   "best": {
+    "type": "museum-cs-1900-gable-balcony",
+    "score": 0,
+    "veto": [
+     "built 1903, type 1900-1901"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "strip cornice 13.95 m vs the type's 10.4 m (wall-dormer skyline 14.4 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.075 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012161222",
+   "address": "Palestrinastraat 24",
+   "builtYear": 1903,
+   "widthM": 5.96,
+   "eavesM": 13.64,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#775f3f",
+    "wallRaw": "#70623e",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 833,
+     "confidence": 0.21,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": "right",
+    "accentSide": "left",
+    "accentShare": 0.063,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.33
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best museum-cs-1900-gable-balcony: built 1903, type 1900-1901)",
+   "best": {
+    "type": "museum-cs-1900-gable-balcony",
+    "score": 0,
+    "veto": [
+     "built 1903, type 1900-1901"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": null,
+      "note": "strip cornice unread (type line 10.4 m; 3DBAG 13.64 m not compared)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": null,
+      "note": "no strip"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012160927",
+   "address": "Palestrinastraat 22",
+   "builtYear": 1903,
+   "widthM": 6.36,
+   "eavesM": 16.31,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#7f654b",
+    "wallRaw": "#a28d6e",
+    "skyline": {
+     "eavesM": 14.03,
+     "eavesRow": 272,
+     "confidence": 1,
+     "crown": {
+      "widthM": 3.15,
+      "riseM": 3.22,
+      "topWidthM": 1.13,
+      "centre": 0.43
+     }
+    },
+    "stucco": false,
+    "bands": 3,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0.377,
+    "structure": {
+     "bayWidthM": 1,
+     "bayCentre": 0.46,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 10.72,
+       "widthM": 1.2,
+       "centre": 0.8
+      }
+     ]
+    },
+    "voidShare": 0.19,
+    "foliageShare": 0.16
+   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: Palestrinastraat 22 (palestrina-2-32 sheets, oud-west, 2024-11-12 strip): three storeys under a cornice and a mansard with pedestal dormers (a brick wall gable on 20); the Kinkerstraat types draw four storeys with no doors",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012158992",
+   "address": "Palestrinastraat 20",
+   "builtYear": 1903,
+   "widthM": 6.31,
+   "eavesM": 16.31,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#261e10",
+    "wallRaw": "#c19778",
+    "skyline": {
+     "eavesM": 14.03,
+     "eavesRow": 272,
+     "confidence": 1,
+     "crown": {
+      "widthM": 3.23,
+      "riseM": 2.8,
+      "topWidthM": 0.8,
+      "centre": 0.44
+     }
+    },
+    "stucco": false,
+    "bands": 2,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.342,
+    "structure": {
+     "bayWidthM": 1.2,
+     "bayCentre": 0.44,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0.22,
+    "foliageShare": 0.11
+   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: Palestrinastraat 20 (palestrina-2-32 sheets, oud-west, 2024-11-12 strip): three storeys under a cornice and a mansard with pedestal dormers (a brick wall gable on 20); the Kinkerstraat types draw four storeys with no doors",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012153364",
+   "address": "Palestrinastraat 18",
+   "builtYear": 1903,
+   "widthM": 6.28,
+   "eavesM": 12.88,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#675a3d",
+    "wallRaw": "#887850",
+    "skyline": {
+     "eavesM": 19.23,
+     "eavesRow": 64,
+     "confidence": 0.34,
+     "crown": {
+      "widthM": 0.6,
+      "riseM": 1.6,
+      "topWidthM": 0.15,
+      "centre": 0.16
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": "right",
+    "accentSide": "left",
+    "accentShare": 0.169,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 10.7,
+       "widthM": 1.15,
+       "centre": 0.11
+      }
+     ]
+    },
+    "voidShare": 0.07,
+    "foliageShare": 0.18
+   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: Palestrinastraat 18 (palestrina-2-32 sheets, oud-west, 2024-11-12 strip): three storeys under a cornice and a mansard with pedestal dormers (a brick wall gable on 20); the Kinkerstraat types draw four storeys with no doors",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012155374",
+   "address": "Palestrinastraat 16",
+   "builtYear": 1903,
+   "widthM": 6.34,
+   "eavesM": 11.85,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#6e5d47",
+    "wallRaw": "#7e7053",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 833,
+     "confidence": 0.19,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 6,
+    "frontClass": "punched",
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.128,
+    "structure": {
+     "bayWidthM": 0.35,
+     "bayCentre": 0.79,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 10.72,
+       "widthM": 1.18,
+       "centre": 0.76
+      }
+     ]
+    },
+    "voidShare": 0.01,
+    "foliageShare": 0.34
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best museum-cs-1900-gable-balcony: built 1903, type 1900-1901)",
+   "best": {
+    "type": "museum-cs-1900-gable-balcony",
+    "score": 0,
+    "veto": [
+     "built 1903, type 1900-1901"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": null,
+      "note": "strip cornice unread (type line 10.4 m; 3DBAG 11.85 m not compared)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": null,
+      "note": "no strip"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012166253",
+   "address": "Palestrinastraat 14",
+   "builtYear": 1903,
+   "widthM": 6.34,
+   "eavesM": 16.13,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#8a7962",
+    "wallRaw": "#a28d71",
+    "skyline": {
+     "eavesM": 13.95,
+     "eavesRow": 275,
+     "confidence": 0.99,
+     "crown": {
+      "widthM": 3.2,
+      "riseM": 3.95,
+      "topWidthM": 0.3,
+      "centre": 0.42
+     }
+    },
+    "stucco": false,
+    "bands": 3,
+    "columns": 6,
+    "frontClass": "blank",
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0.363,
+    "structure": {
+     "bayWidthM": 0.9,
+     "bayCentre": 0.44,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 13.05,
+       "widthM": 1.05,
+       "centre": 0.81
+      },
+      {
+       "atM": 11.25,
+       "widthM": 0.95,
+       "centre": 0.44
+      },
+      {
+       "atM": 6.9,
+       "widthM": 0.85,
+       "centre": 0.28
+      }
+     ]
+    },
+    "voidShare": 0.17,
+    "foliageShare": 0.14
+   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: Palestrinastraat 14 (palestrina-2-32 sheets, oud-west, 2024-11-12 strip): three storeys under a cornice and a mansard with pedestal dormers (a brick wall gable on 20); the Kinkerstraat types draw four storeys with no doors",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012162052",
+   "address": "Palestrinastraat 12",
+   "builtYear": 1902,
+   "widthM": 6.53,
+   "eavesM": 13.15,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#b79276",
+    "wallRaw": "#978165",
+    "skyline": {
+     "eavesM": 13.63,
+     "eavesRow": 288,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.77,
+      "riseM": 2.25,
+      "topWidthM": 0.6,
+      "centre": 0.45
+     }
+    },
+    "stucco": false,
+    "bands": 2,
+    "columns": 7,
+    "frontClass": "columns",
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0.296,
+    "structure": {
+     "bayWidthM": 1.02,
+     "bayCentre": 0.12,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0.14,
+    "foliageShare": 0.17
+   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: Palestrinastraat 12 (palestrina-2-32 sheets, oud-west, 2024-11-12 strip): three storeys under a cornice and a mansard with pedestal dormers (a brick wall gable on 20); the Kinkerstraat types draw four storeys with no doors",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012166047",
+   "address": "Palestrinastraat 10",
+   "builtYear": 1902,
+   "widthM": 6.1,
+   "eavesM": 12.3,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#515953",
+    "wallRaw": "#71704b",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 833,
+     "confidence": 0.12,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": "left",
+    "accentSide": "left",
+    "accentShare": 0.078,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 5.55,
+       "widthM": 0.85,
+       "centre": 0.83
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.6
+   },
+   "status": "held",
+   "stage": "evidence",
+   "reason": "no front on the strip: sky over the roof in 56 % of columns (< 75 %): the strip shows a nearer wall, fence or tree, not the front",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012157494",
+   "address": "Palestrinastraat 8",
+   "builtYear": 1902,
+   "widthM": 6.73,
+   "eavesM": 12.54,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#937c55",
+    "wallRaw": "#7c714d",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 833,
+     "confidence": 0.11,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 4,
+    "frontClass": "columns",
+    "doorSide": "left",
+    "accentSide": "right",
+    "accentShare": 0.124,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0.03,
+    "foliageShare": 0.38
+   },
+   "status": "held",
+   "stage": "evidence",
+   "reason": "no front on the strip: sky over the roof in 69 % of columns (< 75 %): the strip shows a nearer wall, fence or tree, not the front",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012158476",
+   "address": "Palestrinastraat 6",
+   "builtYear": 1902,
+   "widthM": 6.68,
+   "eavesM": 15.27,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#cd9e7a",
+    "wallRaw": "#daae87",
+    "skyline": {
+     "eavesM": 14.35,
+     "eavesRow": 259,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.77,
+      "riseM": 1.7,
+      "topWidthM": 1.63,
+      "centre": 0.48
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.39,
+    "structure": {
+     "bayWidthM": 2.05,
+     "bayCentre": 0.49,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 10.9,
+       "widthM": 1.32,
+       "centre": 0.14
+      },
+      {
+       "atM": 8.35,
+       "widthM": 0.9,
+       "centre": 0.11
+      }
+     ]
+    },
+    "voidShare": 0.26,
+    "foliageShare": 0.12
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best museum-cs-1900-gable-balcony: built 1902, type 1900-1901)",
+   "best": {
+    "type": "museum-cs-1900-gable-balcony",
+    "score": 0,
+    "veto": [
+     "built 1902, type 1900-1901"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "strip cornice 14.35 m vs the type's 10.4 m (wall-dormer skyline 14.4 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 4 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.093 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012159349",
+   "address": "Palestrinastraat 4",
+   "builtYear": 1902,
+   "widthM": 6.29,
+   "eavesM": 15.36,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#bf916e",
+    "wallRaw": "#d3a381",
+    "skyline": {
+     "eavesM": 14.18,
+     "eavesRow": 266,
+     "confidence": 0.98,
+     "crown": {
+      "widthM": 1.3,
+      "riseM": 1.05,
+      "topWidthM": 1,
+      "centre": 0.43
+     }
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.462,
+    "structure": {
+     "bayWidthM": 3.25,
+     "bayCentre": 0.28,
+     "balconies": true,
+     "why": "dark open axis 0.88 m at 0.14 (light 0.49): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.88,
+       "centre": 0.14,
+       "light": 0.49
+      },
+      {
+       "widthM": 0.95,
+       "centre": 0.77,
+       "light": 0.42
+      },
+      {
+       "widthM": 0.6,
+       "centre": 0.95,
+       "light": 0.25
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 7.5,
+       "widthM": 1.23,
+       "centre": 0.78
+      }
+     ]
+    },
+    "voidShare": 0.25,
+    "foliageShare": 0.17
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best museum-cs-1900-gable-balcony: built 1902, type 1900-1901)",
+   "best": {
+    "type": "museum-cs-1900-gable-balcony",
+    "score": 0,
+    "veto": [
+     "built 1902, type 1900-1901"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "strip cornice 14.18 m vs the type's 10.4 m (wall-dormer skyline 14.4 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 4 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.203 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012161793",
+   "address": "Palestrinastraat 2",
+   "builtYear": 1902,
+   "widthM": 6.81,
+   "eavesM": 15.09,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#685c3b",
+    "wallRaw": "#625a3b",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 833,
+     "confidence": 0.17,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0.078,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0.01,
+    "foliageShare": 0.39
+   },
+   "status": "held",
+   "stage": "evidence",
+   "reason": "no front on the strip: sky over the roof in 63 % of columns (< 75 %): the strip shows a nearer wall, fence or tree, not the front",
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

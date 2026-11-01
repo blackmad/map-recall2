@@ -1,0 +1,50 @@
+{
+ "street": "Van Eeghenstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-01T14:46:32.033Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012160183",
+   "addresses": [
+    "Van Eeghenstraat 88"
+   ],
+   "groundUnits": [],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012153264",
+   "addresses": [
+    "Van Eeghenstraat 86"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Eeghenstraat 86-H",
+     "use": "kantoorfunctie",
+     "areaM2": 267,
+     "bagId": "0363010000838752"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012153074",
+   "addresses": [
+    "Van Eeghenstraat 84"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Eeghenstraat 84",
+     "use": "woonfunctie",
+     "areaM2": 604,
+     "bagId": "0363010000838750"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  }
+ ]
+}

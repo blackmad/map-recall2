@@ -1,0 +1,494 @@
+{
+ "face": "obrecht-19-27",
+ "street": "Jacob Obrechtstraat",
+ "library": "museumkwartier",
+ "stripDate": "2024-11-12",
+ "seconds": 1.15,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [],
+ "pands": [
+  {
+   "pandId": "0363100012160779",
+   "address": "Jacob Obrechtstraat 19A",
+   "builtYear": 1899,
+   "widthM": 16.08,
+   "eavesM": 7.25,
+   "storeys3dbag": 4,
+   "bagBay": {
+    "fromM": 0,
+    "toM": 5.49,
+    "depthM": 0.43,
+    "centre": 0.171,
+    "lineRD": [
+     [
+      120124.45431249999,
+      485514.78875
+     ],
+     [
+      120128.1803125,
+      485505.18875000003
+     ]
+    ]
+   },
+   "strip": {
+    "wall": "#101307",
+    "wallRaw": "#69442b",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 903,
+     "confidence": 0.19,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": "left",
+    "accentSide": "right",
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 1.18,
+     "bayCentre": 0.04,
+     "balconies": true,
+     "why": "bay-less open axis 1.23 m at 0.04 (light 0.69): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 1.23,
+       "centre": 0.04,
+       "light": 0.69
+      },
+      {
+       "widthM": 1.2,
+       "centre": 0.26,
+       "light": 0.72
+      },
+      {
+       "widthM": 1.18,
+       "centre": 0.46,
+       "light": 0.2
+      },
+      {
+       "widthM": 1.13,
+       "centre": 0.68,
+       "light": 0.21
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.18
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best museum-cs-1900-gable-balcony: built 1899, type 1900-1901; frontage 16.08 m, type 5.5-6.6 m)",
+   "best": {
+    "type": "museum-cs-1900-gable-balcony",
+    "score": 0,
+    "veto": [
+     "built 1899, type 1900-1901",
+     "frontage 16.08 m, type 5.5-6.6 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": null,
+      "note": "strip cornice unread (type line 10.4 m; 3DBAG 7.25 m not compared)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 4 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.013 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012156696",
+   "address": "Jacob Obrechtstraat 21",
+   "builtYear": 1903,
+   "widthM": 6.54,
+   "eavesM": 15.23,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#735f46",
+    "wallRaw": "#695f47",
+    "skyline": {
+     "eavesM": 19.38,
+     "eavesRow": 128,
+     "confidence": 0.72,
+     "crown": {
+      "widthM": 1.6,
+      "riseM": 3.2,
+      "topWidthM": 0.35,
+      "centre": 0.67
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "columns",
+    "doorSide": "left",
+    "accentSide": "right",
+    "accentShare": 0.135,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 2 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 14.32,
+       "widthM": 0.8,
+       "centre": 0.92
+      },
+      {
+       "atM": 11.02,
+       "widthM": 1.3,
+       "centre": 0.89
+      },
+      {
+       "atM": 7.42,
+       "widthM": 1.38,
+       "centre": 0.19
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.24
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best museum-cs-1900-gable-balcony: built 1903, type 1900-1901)",
+   "best": {
+    "type": "museum-cs-1900-gable-balcony",
+    "score": 0,
+    "veto": [
+     "built 1903, type 1900-1901"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 19.38 m vs the type's 10.4 m (wall-dormer skyline 14.4 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.115 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012160416",
+   "address": "Jacob Obrechtstraat 23",
+   "builtYear": 1903,
+   "widthM": 8.4,
+   "eavesM": 17.52,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#6f5743",
+    "wallRaw": "#72664a",
+    "skyline": {
+     "eavesM": 21.98,
+     "eavesRow": 24,
+     "confidence": 0.38,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": "right",
+    "accentSide": "left",
+    "accentShare": 0.123,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "balcony slabs stacked at 12.88 m (1.5 m wide), 9.13 m (1.77 m wide)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 12.88,
+       "widthM": 1.5,
+       "centre": 0.18
+      },
+      {
+       "atM": 9.13,
+       "widthM": 1.77,
+       "centre": 0.2
+      },
+      {
+       "atM": 4.77,
+       "widthM": 1.95,
+       "centre": 0.21
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.35
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best museum-cs-1900-gable-balcony: built 1903, type 1900-1901; frontage 8.4 m, type 5.5-6.6 m)",
+   "best": {
+    "type": "museum-cs-1900-gable-balcony",
+    "score": 0,
+    "veto": [
+     "built 1903, type 1900-1901",
+     "frontage 8.4 m, type 5.5-6.6 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": null,
+      "note": "strip cornice unread (type line 10.4 m; 3DBAG 17.52 m not compared)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": null,
+      "note": "no strip"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012155885",
+   "address": "Jacob Obrechtstraat 25",
+   "builtYear": 1903,
+   "widthM": 6.95,
+   "eavesM": 15.55,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#886f4d",
+    "wallRaw": "#7a6947",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 903,
+     "confidence": 0.15,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "columns",
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0.116,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 14.5,
+       "widthM": 1.27,
+       "centre": 0.76
+      },
+      {
+       "atM": 11.13,
+       "widthM": 0.85,
+       "centre": 0.74
+      },
+      {
+       "atM": 7.45,
+       "widthM": 1.13,
+       "centre": 0.77
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.29
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best museum-cs-1900-gable-balcony: built 1903, type 1900-1901)",
+   "best": {
+    "type": "museum-cs-1900-gable-balcony",
+    "score": 0,
+    "veto": [
+     "built 1903, type 1900-1901"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": null,
+      "note": "strip cornice unread (type line 10.4 m; 3DBAG 15.55 m not compared)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.105 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012162934",
+   "address": "Jacob Obrechtstraat 27",
+   "builtYear": 1903,
+   "widthM": 7,
+   "eavesM": 15.45,
+   "storeys3dbag": 5,
+   "bagBay": {
+    "fromM": 5.09,
+    "toM": 6.99,
+    "depthM": 0.37,
+    "centre": 0.864,
+    "lineRD": [
+     [
+      120136.6373125,
+      485485.00075
+     ],
+     [
+      120138.09031249999,
+      485481.98675000004
+     ]
+    ]
+   },
+   "strip": {
+    "wall": "#735942",
+    "wallRaw": "#6c6244",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 903,
+     "confidence": 0.19,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 5,
+    "frontClass": "columns",
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.071,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 0.7 m at 0.14 (light 0.33): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.7,
+       "centre": 0.14,
+       "light": 0.33
+      },
+      {
+       "widthM": 1.07,
+       "centre": 0.49,
+       "light": 0.27
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.44
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best museum-cs-1900-gable-balcony: built 1903, type 1900-1901)",
+   "best": {
+    "type": "museum-cs-1900-gable-balcony",
+    "score": 0,
+    "veto": [
+     "built 1903, type 1900-1901"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": null,
+      "note": "strip cornice unread (type line 10.4 m; 3DBAG 15.45 m not compared)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": null,
+      "note": "no strip"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

@@ -1,0 +1,223 @@
+{
+ "face": "baerle-92-96",
+ "street": "Van Baerlestraat",
+ "library": "museumkwartier",
+ "stripDate": "2024-12-11",
+ "seconds": 0.5,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [],
+ "pands": [
+  {
+   "pandId": "0363100012164883",
+   "address": "Van Baerlestraat 96",
+   "builtYear": 1895,
+   "widthM": 7.06,
+   "eavesM": 15.74,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#987257",
+    "wallRaw": "#be9c7e",
+    "skyline": {
+     "eavesM": 14.72,
+     "eavesRow": 244,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.38,
+      "riseM": 1.33,
+      "topWidthM": 1.5,
+      "centre": 0.57
+     }
+    },
+    "stucco": false,
+    "bands": 4,
+    "columns": 2,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.27,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 1 m at 0.27 (light 0.12): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 1,
+       "centre": 0.27,
+       "light": 0.12
+      },
+      {
+       "widthM": 1.73,
+       "centre": 0.58,
+       "light": 0.42
+      },
+      {
+       "widthM": 1.25,
+       "centre": 0.9,
+       "light": 0.12
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 12.92,
+       "widthM": 1.3,
+       "centre": 0.14
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.26
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best museum-cs-1900-gable-balcony: built 1895, type 1900-1901; frontage 7.06 m, type 5.5-6.6 m)",
+   "best": {
+    "type": "museum-cs-1900-gable-balcony",
+    "score": 0,
+    "veto": [
+     "built 1895, type 1900-1901",
+     "frontage 7.06 m, type 5.5-6.6 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "strip cornice 14.72 m vs the type's 10.4 m (wall-dormer skyline 14.4 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 4 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.24 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0.4,
+      "note": "strip columns 2 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012160790",
+   "address": "Van Baerlestraat 92",
+   "builtYear": 1895,
+   "widthM": 10.61,
+   "eavesM": 13.85,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#ab8460",
+    "wallRaw": "#b99773",
+    "skyline": {
+     "eavesM": 14.03,
+     "eavesRow": 272,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.98,
+      "riseM": 2.03,
+      "topWidthM": 1.07,
+      "centre": 0.8
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 6,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.232,
+    "structure": {
+     "bayWidthM": 0.57,
+     "bayCentre": 0.75,
+     "balconies": true,
+     "why": "dark open axis 0.63 m at 0.17 (light 0.01): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.63,
+       "centre": 0.17,
+       "light": 0.01
+      },
+      {
+       "widthM": 0.63,
+       "centre": 0.33,
+       "light": 0.23
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 10.77,
+       "widthM": 0.82,
+       "centre": 0.57
+      },
+      {
+       "atM": 6.95,
+       "widthM": 0.8,
+       "centre": 0.59
+      }
+     ]
+    },
+    "voidShare": 0.01,
+    "foliageShare": 0.28
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best museum-cs-1900-gable-balcony: built 1895, type 1900-1901; frontage 10.61 m, type 5.5-6.6 m)",
+   "best": {
+    "type": "museum-cs-1900-gable-balcony",
+    "score": 0,
+    "veto": [
+     "built 1895, type 1900-1901",
+     "frontage 10.61 m, type 5.5-6.6 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "strip cornice 14.03 m vs the type's 10.4 m (wall-dormer skyline 14.4 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 4 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.245 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0,
+      "note": "strip columns 6 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

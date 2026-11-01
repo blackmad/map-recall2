@@ -1,0 +1,226 @@
+{
+ "face": "vossius-54-74",
+ "street": "Vossiusstraat",
+ "library": "museumkwartier",
+ "stripDate": "2022-03-22",
+ "seconds": 0.75,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [],
+ "pands": [
+  {
+   "pandId": "0363100012159248",
+   "address": "Vossiusstraat 54",
+   "builtYear": 1876,
+   "widthM": 2.68,
+   "eavesM": 16.26,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#aaaea8",
+    "wallRaw": "#b4b5ad",
+    "skyline": {
+     "eavesM": 17.95,
+     "eavesRow": 320,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.68,
+      "riseM": 3.23,
+      "topWidthM": 0.65,
+      "centre": 0.42
+     }
+    },
+    "stucco": true,
+    "bands": 14,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.437,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 11.4,
+       "widthM": 0.97,
+       "centre": 0.37
+      },
+      {
+       "atM": 5.55,
+       "widthM": 0.93,
+       "centre": 0.41
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.05
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best museum-cs-1900-gable-balcony: built 1876, type 1900-1901; frontage 2.68 m, type 5.5-6.6 m)",
+   "best": {
+    "type": "museum-cs-1900-gable-balcony",
+    "score": 0,
+    "veto": [
+     "built 1876, type 1900-1901",
+     "frontage 2.68 m, type 5.5-6.6 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 17.95 m vs the type's 10.4 m (wall-dormer skyline 14.4 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 0,
+      "note": "strip accent share 0.475 (stucco)"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012067476",
+   "address": "Vossiusstraat 56",
+   "builtYear": 1885,
+   "widthM": 16.27,
+   "eavesM": 17.14,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#c5c2b6",
+    "wallRaw": "#c6c2b4",
+    "skyline": {
+     "eavesM": 18.65,
+     "eavesRow": 292,
+     "confidence": 0.97,
+     "crown": {
+      "widthM": 3.6,
+      "riseM": 3.3,
+      "topWidthM": 0.72,
+      "centre": 0.45
+     }
+    },
+    "stucco": true,
+    "bands": 8,
+    "columns": 7,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.452,
+    "structure": {
+     "bayWidthM": 0.55,
+     "bayCentre": 0.52,
+     "balconies": true,
+     "why": "dark open axis 0.8 m at 0.03 (light 0.2): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.8,
+       "centre": 0.03,
+       "light": 0.2
+      },
+      {
+       "widthM": 1.32,
+       "centre": 0.32,
+       "light": 0.19
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 15.57,
+       "widthM": 1.32,
+       "centre": 0.21
+      },
+      {
+       "atM": 10.63,
+       "widthM": 0.9,
+       "centre": 0.45
+      },
+      {
+       "atM": 7.85,
+       "widthM": 2.05,
+       "centre": 0.61
+      },
+      {
+       "atM": 7.55,
+       "widthM": 1.93,
+       "centre": 0.62
+      },
+      {
+       "atM": 5.52,
+       "widthM": 1,
+       "centre": 0.74
+      },
+      {
+       "atM": 5.22,
+       "widthM": 2.15,
+       "centre": 0.2
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.03
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best museum-cs-1900-gable-balcony: built 1885, type 1900-1901; frontage 16.27 m, type 5.5-6.6 m)",
+   "best": {
+    "type": "museum-cs-1900-gable-balcony",
+    "score": 0,
+    "veto": [
+     "built 1885, type 1900-1901",
+     "frontage 16.27 m, type 5.5-6.6 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 18.65 m vs the type's 10.4 m (wall-dormer skyline 14.4 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 0,
+      "note": "strip accent share 0.494 (stucco)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0,
+      "note": "strip columns 7 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}
