@@ -665,12 +665,18 @@ export class GroundStore {
     if (this.options.wayOpenings !== false) {
       // OSM bridge ways over water cut at the bridge, no register outline carrying them (wayDecks.ts WAY_OPENING_REACH_M).
       const around = GroundStore.neighbours(key), osms = await Promise.all(around.map(k => this.osmCell(k)));
+      // The cell's decode, the bridge ways and the ground crossings are separate tasks (#129: one water cell's decode
+      // chain was an 11+ ms task while riding at 1x). Same steps, same order.
+      await yieldToFrame();
       const claimed = this.claimedBy(around), m = 30;
       const ways = bridgeWayInputs(osms, () => false, [rect[0] - m, rect[1] - m, rect[2] + m, rect[3] + m]);
       // A way with any station a measured deck or footprint carries is that bridge's (its end nodes can lie past the deck span).
       const free = bridgeWayBundles(ways.filter(w => { const d = wayOpeningDeck(w); for (let i = 0; i < d.x.length; i++) if (claimed(d.x[i], d.y[i])) return false; return true; }));
       if (free.length) {
-        const w = openUnderFootbridges(r.geo, free.map(wayOpeningDeck), rect, WATER_Z, { maxWidth: Infinity, reach: WAY_OPENING_REACH_M, under: groundCrossing(osms) });
+        await yieldToFrame();
+        const under = groundCrossing(osms);
+        await yieldToFrame();
+        const w = openUnderFootbridges(r.geo, free.map(wayOpeningDeck), rect, WATER_Z, { maxWidth: Infinity, reach: WAY_OPENING_REACH_M, under });
         for (const [id, sd] of w.sides) this.wayOpeningSides.set(id, sd);
         r = { ...w, opened: [...r.opened, ...w.opened] };
       }
@@ -678,6 +684,7 @@ export class GroundStore {
     if (r.opened.length) this.openedDecks.set(key, r.opened);
     const boats = this.boatsByCell.get(key);
     if (!boats?.length) return r.geo;
+    await yieldToFrame();
     const m = openUnderHouseboats(r.geo, boats, rect, WATER_Z);
     if (m.opened.length) this.openedBerths.set(key, m.opened);
     return m.geo;
