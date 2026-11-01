@@ -322,7 +322,13 @@ bring the iPhone atlas back under ~22 MB without shrinking the 128 px bays
 (26.0 MB today, both engines). Pin harness: the shading flip was an unpinned
 camera elevation, fixed in the spec (d80ab4245); trees are pinnable. **User
 asks (2026-11-01):** a first-person riding camera (#171, small opus lane after
-the flip) and the cartoon look mode (#161). Note: shared-frame
+the flip), the cartoon look mode (#161, materials queue), road gaps at bridges
+(#178, opus lane `road-bridge-gaps-20261101` running: measure city-wide, then
+the systemic fix), too-white roofs in Da Costabuurt (#179, materials queue),
+bumpy ground at Stationsplein / Centraal forecourt (AHN has no ground over the
+metro box and under the shed; fix = flatten the own ground to road level under
+road and plaza polygons; small lane after the flip). Integrator handoff for
+the next session: `docs/handoffs/integrator-handoff-20261101.md`. Note: shared-frame
 `register(..., {order})` has no effect for group-rooted participants
 (three.js takes the innermost group's order); fixed for the overview only.
 Steps 4–5 merged 2026-10-30 (`487cb157e`): `ENGINE=own` switch for the gate
