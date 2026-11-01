@@ -1374,9 +1374,16 @@ Root `main` was cleaned on 2026-10-09 (see HISTORY). Live work, in order:
   tasks > 16 ms remain (`splitIntoTiles` in ground `cutMesh` 48 ms, chunk pand
   bases 57 ms); 4× owners per 60 s: three-buildings `t4`/`setFeatures`/`post`
   ≈ 1.8 s, `_applyChunkPandBases` ≈ 1.2 s, `buildShadowStandIn` on landmark
-  `_add` 1.1 s, `splitIntoTiles` 0.4 s; render pass 13 s sets p99. L1 next:
-  `buildShadowStandIn` and `splitIntoTiles` to the worker pool, then
-  `pop-in.mjs` under both engines and P5 B6.
+  `_add` 1.1 s, `splitIntoTiles` 0.4 s; render pass 13 s sets p99.
+  `pop-in.mjs` runs under own since hand-back (9): car route 60 s, total pop
+  MapLibre 2,085 vs own 4,343 px/s, unexplained 576 vs 3,500, landmark-model
+  997 vs 603, ground/chunk installs 0 both; the own figure is suspected to be
+  a capture artefact of render-on-change (fewer rendered frames between
+  captures), to be settled with `?renderOnChange=0` and the `--frames` strips
+  before anything is fixed; the within-150 m install count (P3 pop-in gate)
+  still needs per-install cell geometry. L1 next: that check, then
+  `buildShadowStandIn` and `splitIntoTiles` to the worker pool, then P5 B6
+  (B3 already satisfied under own, B4 applied).
   Idle rendering (fan) is fixed under own: render-on-change on main, 0
   renders per 5 s at rest; the default engine still renders every idle frame
   until the flip.
