@@ -1870,5 +1870,11 @@
   "buildVersion": 2,
   "bytes": 75072,
   "triangles": 3500
+ },
+ "amstelstation": {
+  "sourceHash": "152f5c777a82421c",
+  "buildVersion": 2,
+  "bytes": 58528,
+  "triangles": 2438
  }
 }
