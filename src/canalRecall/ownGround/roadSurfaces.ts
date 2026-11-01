@@ -467,6 +467,10 @@ export interface RoadBuildInput {
   /** 1 on a measured deck, 0 off every deck (GroundSurface.deckWeight). */
   deckWeight: (x: number, y: number) => number;
   overWater: (x: number, y: number) => boolean;
+  /** Inside an unmeasured (flat) deck footprint (bridgeGaps, issue #178): a deck polygon there drapes on the riding surface, as the footprint's top does. Absent: flat footprints carry no deck polygon (the pre-fix build). */
+  onFlatDeck?: (x: number, y: number) => boolean;
+  /** bridgeGaps (issue #178): a deck polygon whose interior point misses every deck is still drawn when DECK_SHARE_MIN of it lies on one, without its triangles over a ground polygon. */
+  bridgeGaps?: boolean;
   lod: 0 | 1;
   /** Ground drape sag / float tolerance overrides for the road classes (measurement scripts); the defaults are DRAPE_TOL. */
   drapeTol?: number;
@@ -511,6 +515,29 @@ export function deckLevelHeight(surface: GroundSurface, rect: readonly [number, 
  * The road meshes of one cell: the index's own polygons [0, own) and the cell's kerb lines. Returns the layers,
  * the stats and the ids of the own polygons that were not drawn (the land under them must stay).
  */
+/** A deck polygon is drawn when at least this share of its area lies on a deck or over water (bridgeGaps, deckShare). */
+export const DECK_SHARE_MIN = 0.25;
+/**
+ * bridgeGaps (issue #178): a deck-level polygon whose interior point lies off every deck (a long survey polygon over a
+ * flat footprint and its ramp, a polygon wider than the deck) is drawn when DECK_SHARE_MIN of its area (by triangle
+ * centroids) lies on a deck, without the triangles whose centroid lies over a ground polygon (never a bridge painted
+ * over the street under it). Null: not drawn.
+ */
+export function deckShare(flat: readonly number[], tris: readonly number[], onDeck: (x: number, y: number) => boolean, overGround: (x: number, y: number) => boolean): number[] | null {
+  let total = 0, on = 0;
+  const kept: number[] = [];
+  for (let t = 0; t < tris.length; t += 3) {
+    const a = tris[t] * 2, b = tris[t + 1] * 2, c = tris[t + 2] * 2;
+    const area = Math.abs((flat[b] - flat[a]) * (flat[c + 1] - flat[a + 1]) - (flat[c] - flat[a]) * (flat[b + 1] - flat[a + 1])) / 2;
+    const cx = (flat[a] + flat[b] + flat[c]) / 3, cy = (flat[a + 1] + flat[b + 1] + flat[c + 1]) / 3;
+    total += area;
+    const deck = onDeck(cx, cy);
+    if (deck) on += area;
+    if (deck || !overGround(cx, cy)) kept.push(tris[t], tris[t + 1], tris[t + 2]);
+  }
+  return total > 0 && on >= DECK_SHARE_MIN * total && kept.length ? kept : null;
+}
+
 export function buildRoadSurfaces(cell: RoadCell, index: RoadIndex, input: RoadBuildInput): { layers: Partial<Record<RoadLayer, MeshArrays>>; stats: RoadBuildStats; skipped: Set<number> } {
   const t0 = Date.now();
   const layers: Partial<Record<RoadLayer, MeshArrays>> = {};
@@ -527,16 +554,21 @@ export function buildRoadSurfaces(cell: RoadCell, index: RoadIndex, input: RoadB
   // of the heights on top cost more in Map lookups than the land grid's own lookup (the deck surface keeps it).
   const landHeight = input.height, deckHeight = memoHeight(input.deckHeight);
   /** The surface a deck polygon (or a kerb on one) drapes on, or null when nothing carries it. */
-  const deckSurface = (p: Vec2 | null): HeightFn | null => (p && (input.deckWeight(p[0], p[1]) > 0 || input.overWater(p[0], p[1])) ? deckHeight : null);
+  const deckSurface = (p: Vec2 | null): HeightFn | null => (p && (input.deckWeight(p[0], p[1]) > 0 || input.overWater(p[0], p[1]) || !!input.onFlatDeck?.(p[0], p[1])) ? deckHeight : null);
   for (let k = 0; k < index.own; k++) {
     const rec = index.records[k];
     // The index's own earcut of the polygon (SurfaceIndex flatOf): the raster and the drawn mesh are the same triangles.
-    const { flat, tris } = index.flatOf(k);
+    const { flat, tris: tris0 } = index.flatOf(k);
     if (flat.length < 6) { stats.degenerate++; skipped.add(k); continue; }
-    if (!tris.length) { stats.degenerate++; skipped.add(k); continue; }
+    if (!tris0.length) { stats.degenerate++; skipped.add(k); continue; }
     let height = landHeight;
+    let tris = tris0;
     if (rec.h >= 1) {
-      const on = deckSurface(interiorPoint(index.ringsOf(k)));
+      let on = deckSurface(interiorPoint(index.ringsOf(k)));
+      if (!on && input.bridgeGaps) {
+        const kept = deckShare(flat, tris, (x, y) => !!deckSurface([x, y]), (x, y) => index.findAll(x, y).some(j => index.records[j].h === 0));
+        if (kept) { tris = kept; on = deckHeight; }
+      }
       if (!on) { stats.skippedHigh++; skipped.add(k); continue; }
       height = on;
       stats.onDeck++;

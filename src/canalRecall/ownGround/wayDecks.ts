@@ -43,7 +43,7 @@ export const wayDeckHighway = (h: string | undefined): boolean => !!h && !/^(ste
 /** Audits only: why a bridge way got no deck (probe-way-decks --why). */
 export const wayDeckWhy: { fn: ((id: string, reason: string) => void) | null } = { fn: null };
 
-export function wayDeckProfile(id: string, name: string, points: readonly Vec2[], halfWidth: number, wet: (x: number, y: number) => boolean, claimed: (x: number, y: number) => boolean, ground?: (x: number, y: number) => number): DeckProfile | null {
+export function wayDeckProfile(id: string, name: string, points: readonly Vec2[], halfWidth: number, wet: (x: number, y: number) => boolean, claimed: (x: number, y: number) => boolean, ground?: (x: number, y: number) => number, openEnds = false): DeckProfile | null {
   const no = (reason: string): null => { wayDeckWhy.fn?.(id, reason); return null; };
   if (points.length < 2) return no('fewer than 2 points');
   // A coarse pass first (every 2 m): most bridge ways in a cell cross no water the extract leaves undecked.
@@ -74,7 +74,8 @@ export function wayDeckProfile(id: string, name: string, points: readonly Vec2[]
   // The water run: first to last wet station (a pier or island between counts as the span).
   if ((last - first) * WAY_DECK_STEP_M < WAY_DECK_MIN_WATER_M) return no(`water run ${((last - first) * WAY_DECK_STEP_M).toFixed(1)} m`);
   // Both ends must reach land within the approaches (a way along a quay or a pontoon is not a crossing).
-  if (wetAt[0] || wetAt[all.length - 1]) return no(`an end over water (${+wetAt[0]}, ${+wetAt[all.length - 1]})`);
+  // `openEnds` (dryWayDeck): a structure over land may run on past the way (a bus station deck's busways).
+  if (!openEnds && (wetAt[0] || wetAt[all.length - 1])) return no(`an end over water (${+wetAt[0]}, ${+wetAt[all.length - 1]})`);
   // A crossing runs straight over the water: a boardwalk curving round a pond (the Westerpark ring, OSM 47460645) is not one.
   if (Math.hypot(all[last][0] - all[first][0], all[last][1] - all[first][1]) < WAY_DECK_STRAIGHT * (last - first) * WAY_DECK_STEP_M) return no('not straight over the water');
   for (let k = first; k <= last; k++) if (claimed(all[k][0], all[k][1])) return no(`claimed at station ${k - first} of ${last - first}`);
@@ -389,4 +390,18 @@ export function setDeckSides(p: DeckProfile, sides: readonly [number, number]): 
   }
   delete p.sides;
   p.bbox = [bx0, by0, bx1, by1];
+}
+
+/**
+ * A deck for a bridge way over land (bridgeGaps step 3, issue #178; integrator 2026-11-01): the road survey puts a
+ * deck-level polygon (h ≥ 1) under the way and nothing at road level on the ground under it (`dry`: the condition that
+ * keeps a bridge from being painted over the street beneath a viaduct). The way deck spans the dry run, its ends may
+ * stay on the structure (a bus station deck), it carries no water (`water` null: no piers or arches from water spans)
+ * and lies on the chord between its approach ends (h 0), as the canal way decks do.
+ */
+export function dryWayDeckProfile(w: WayDeckInput, dry: (x: number, y: number) => boolean, claimed: (x: number, y: number) => boolean): DeckProfile | null {
+  const p = wayDeckProfile(`OSM${w.id}`, w.name, w.points, w.halfWidth, dry, claimed, undefined, true);
+  if (!p) return null;
+  p.water = null;
+  return p;
 }

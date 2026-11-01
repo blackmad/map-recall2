@@ -7,7 +7,7 @@
 // lies on a deck. Per way: centreline gap metres, longest gap, carriageway gap m², coplanar ties, the largest step of
 // the drawn top between neighbouring samples, and the drawn top against the riding surface.
 //
-//   npx tsx scripts/roads/probe-bridge-gaps.ts [--label=before] [--shard=0/4] [--cells=-2_0,-2_-1] [--no-bridge-gaps]
+//   npx tsx scripts/roads/probe-bridge-gaps.ts [--label=before] [--shard=0/4] [--cells=-2_0,-2_-1] [--no-bridge-gaps] [--dry-way-decks]
 //   npx tsx scripts/roads/probe-bridge-gaps.ts --report [--label=before] [--compare=before]
 //
 // Shards write artifacts/roads/bridge-gaps/<label>/shard-<i>.json; --report merges them into <label>/table.csv,
@@ -54,7 +54,7 @@ export interface WayRow extends WayGapSummary {
 
 async function probe(): Promise<void> {
   const label = flag('label') ?? 'before';
-  const store = new GroundStore(read, { roads: true, ...(process.argv.includes('--no-bridge-gaps') ? { bridgeGaps: false } : {}) });
+  const store = new GroundStore(read, { roads: true, ...(process.argv.includes('--no-bridge-gaps') ? { bridgeGaps: false } : {}), ...(process.argv.includes('--dry-way-decks') ? { dryWayDecks: true } : {}) });
   await store.init();
   const [si, sn] = (flag('shard') ?? '0/1').split('/').map(Number);
   const all = flag('cells')?.split(',') ?? [...store.osmCells].sort();
@@ -69,14 +69,30 @@ async function probe(): Promise<void> {
   const rows: WayRow[] = [];
   const t0 = Date.now();
   for (const [ki, key] of keys.entries()) {
-    if (!store.covers(key)) continue;
+    const got = await probeCell(store, key, cell);
+    rows.push(...got);
+    if (got.length) console.error(`[${si}/${sn}] ${ki + 1}/${keys.length} ${key}: ${got.length} ways, ${rows.length} total, ${((Date.now() - t0) / 1000).toFixed(0)} s`);
+  }
+  const dir = join(OUT, label);
+  mkdirSync(dir, { recursive: true });
+  writeFileSync(join(dir, `shard-${si}.json`), JSON.stringify({ shard: [si, sn], cells: keys.length, rows }));
+}
+
+/**
+ * The bridge ways whose middle lies in `key` (optionally only `only`), probed in the cell and its neighbours as built
+ * by `cell` (a cache over buildCell). One row per way.
+ */
+export async function probeCell(store: GroundStore, key: string, cell: (k: string) => Promise<BuiltCell>, only?: ReadonlySet<number>): Promise<WayRow[]> {
+    const rows: WayRow[] = [];
+    if (!store.covers(key)) return rows;
     const input = await store.cellInput(key, 0), [x0, y0, x1, y1] = input.rect;
     const ways = (input.osm ? prepareWays(input.osm.ways, input.project) : []).filter(w => {
+      if (only && !only.has(w.id)) return false;
       if (!isBridgeWay(w) || !w.tags.highway || w.tags.highway === 'steps' || w.tags.tunnel) return false;
       const mid = w.points[w.points.length >> 1];
       return mid[0] >= x0 && mid[0] < x1 && mid[1] >= y0 && mid[1] < y1; // each way once, in its middle's cell
     });
-    if (!ways.length) continue;
+    if (!ways.length) return rows;
     const near: BuiltCell[] = [];
     for (const k of GroundStore.neighbours(key)) if (store.covers(k)) near.push(await cell(k));
     let bx0 = Infinity, by0 = Infinity, bx1 = -Infinity, by1 = -Infinity;
@@ -107,11 +123,7 @@ async function probe(): Promise<void> {
         worstAt: worst, ...sum,
       });
     }
-    console.error(`[${si}/${sn}] ${ki + 1}/${keys.length} ${key}: ${ways.length} ways, ${rows.length} total, ${((Date.now() - t0) / 1000).toFixed(0)} s`);
-  }
-  const dir = join(OUT, label);
-  mkdirSync(dir, { recursive: true });
-  writeFileSync(join(dir, `shard-${si}.json`), JSON.stringify({ shard: [si, sn], cells: keys.length, rows }));
+    return rows;
 }
 
 /** Middle of the longest non-road centreline run, m along the way (null: none). */
@@ -187,5 +199,6 @@ async function histogramPng(dir: string, label: string, compare?: string): Promi
   await sharp(Buffer.from(svg)).png().toFile(join(dir, compare ? `histogram-${compare}-vs-${label}.png` : 'histogram.png'));
 }
 
-if (process.argv.includes('--report')) { report(); await histogramPng(join(OUT, flag('label') ?? 'before'), flag('label') ?? 'before', flag('compare')); }
+if (!process.argv[1]?.endsWith('probe-bridge-gaps.ts')) { /* imported */ }
+else if (process.argv.includes('--report')) { report(); await histogramPng(join(OUT, flag('label') ?? 'before'), flag('label') ?? 'before', flag('compare')); }
 else await probe();

@@ -53,6 +53,13 @@ export interface DeckProfile {
    * off-centre). Undefined elsewhere.
    */
   sides?: [number, number];
+  /**
+   * The riding half-widths left (+normal) and right of the road line per station, where the road survey's deck-level
+   * polygons say the bridge is wider than `halfWidth` (ownGround/bridgeGaps.ts surveyDeckEdges, issue #178). Set only
+   * with the bridgeGaps option; the riding surface (GroundSurface.locate), the deck footprint, the kit's widths
+   * (sideWidths, decks.ts deckWidths) all read it, so the deck, its parapets and the road on it share one width.
+   */
+  edges?: { left: Float64Array; right: Float64Array };
   /** Way decks only (ownGround/wayDecks.ts HOLE_M): station ranges past the water over a hole in the relief (an underpass, its ramps). */
   under?: [number, number][];
 }
@@ -138,6 +145,7 @@ export function decodeProfile(bridge: MeasuredBridge, quant: number, toScene: To
 /** Half-widths left and right of the road line at station `i`: DeckProfile.sides over the deck span, else halfWidth. */
 export function sideWidths(p: DeckProfile, i: number): [number, number] {
   const hw = p.halfWidth[i];
+  if (p.edges) return [Math.max(hw, p.edges.left[i]), Math.max(hw, p.edges.right[i])];
   return p.sides && p.s[i] >= p.deck[0] && p.s[i] <= p.deck[1] ? [Math.max(hw, p.sides[0]), Math.max(hw, p.sides[1])] : [hw, hw];
 }
 

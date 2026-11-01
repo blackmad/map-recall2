@@ -136,7 +136,10 @@ export function deckWidths(deck: DeckSurface, overWater: WaterTest, onBand?: Ban
     let v = wet[side][i];
     for (let j = i - 1; j >= 0 && p.s[i] - p.s[j] <= WIDEN_PAST_WATER_M; j--) v = Math.max(v, wet[side][j]);
     for (let j = i + 1; j < n && p.s[j] - p.s[i] <= WIDEN_PAST_WATER_M; j++) v = Math.max(v, wet[side][j]);
-    out[side][i] = Math.max(core[side][i], Math.min(sideWidths(p, i)[side], v));
+    // With survey edges (DeckProfile.edges, bridgeGaps) the survey says where the bridge is: over the span the deck
+    // reaches them whether or not the mask shows water there (the mask leaves deck footprints out).
+    const onSpan = p.s[i] >= p.deck[0] && p.s[i] <= p.deck[1];
+    out[side][i] = Math.max(core[side][i], p.edges && onSpan ? sideWidths(p, i)[side] : Math.min(sideWidths(p, i)[side], v));
   }
   // A dip between two stations at the outline, at most WIDTH_DIP_M apart along the span, is the mask's speckle under the
   // deck (a pier footing, the Blauwbrug BRU0236's left side fell from 14.6 to 10.4 m at two stations): it takes the
