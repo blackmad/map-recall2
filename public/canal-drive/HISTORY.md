@@ -1,5 +1,41 @@
 # Canal Recall — what is built
 
+**Surprise rides no longer finish next to the start; the worker-pool overview build is back; one camera read per frame (2026-11-01, #129).**
+L1 hand-back (15). The held pool commit was not broken: building the
+overview in the pool means the main thread no longer creates the overview's
+three.js geometries before the route card, each of which drew a `Math.random`
+id, so the seeded boot drew 468 fewer values before submit (1,353 vs 1,821)
+and the e2e seed picked Micropia → Artis instead of Zuiderkerk Tower →
+Concertgebouw. Those two are 45 m apart and both snap to Plantage Kerklaan,
+so the ride failed "Start and finish are too close" (67 m) and fell back to
+setup, and the player never appeared. A real picker bug any seed could hit:
+`routeSelection.pickDestinationNear` now draws again when the pick is
+closer than `SURPRISE_MIN_PAIR_KM` (0.2 km, as `HOME_MIN_TRIP_KM`), choosing
+only among places far enough away; a first pick that is far enough returns
+after the same single draw, so every seeded ride that already started still
+starts the same (`test:route-selection`, `check-start-heading` green); if
+nothing is in range the near pick is still returned. Pins: Micropia → Artis
+in `routeSelection.test`; `engine-own.spec` "the overview is built in the
+worker pool and the seeded ride starts" (`status.overviewBuilt === 'pool'`,
+rides Micropia → Begijnhof). With both, all desktop own-engine specs pass
+including the three that timed out; the pool commit is reinstated on main
+(overview up 0.3 s after submit, boot → submit ~1021 → ~770 ms median). An
+iphone `render-on-change` "capturing draws nothing" (213 vs 214 frames) is
+a flake present without the change (1/3 either way). `withOpenings` split
+measured: the water cell's decode continuation at 4× 51–55 → 5 ms, the work
+now sits in its own `groundCrossing` yield task (33–37 ms at 4×, ~9 ms at
+1×, next to pace internally); the longest frame is unchanged because the
+engine's render callback owns it (40–56 ms at 4×). `SharedFrame.drive` reads
+the view once per frame through the WorldCamera and shares it with both
+passes and every participant; `EngineCamera.bounds` is cached per camera
+frame; inventory trees read zoom/centre/bounds through `worldCameraOf`.
+Pins: `?frameViewCheck=1` re-reads the camera after every participant
+(142,569 checks, 0 misses over a 1× Jordaan ride), unit tests in
+`rendererShared.test` and `engine.test`. Camera shim calls per second 561 →
+156; nothing left on it is a camera read (`jumpTo` is the engine's one
+write per frame, `checkIdle` the shim's own render listener, the rest are
+repaint requests). What's New "Surprise rides no longer finish next to the
+start".
 **Facades package: exact speedups in the chunk pipeline, chunks built while the atlas paints, facade context-loss pinned, resident tiles in key order (2026-11-01, #129).**
 Materials lane (df2fc4959). (1) Exact, each proven equal to the old code on
 real data plus randomised inputs: `splitIntoTiles`/`planTiles` single pass

@@ -1403,13 +1403,14 @@ Root `main` was cleaned on 2026-10-09 (see HISTORY). Live work, in order:
   hand-back (14) (skipped only while the request revision, models,
   generation and view-within-slack are unchanged; shadow check 0 misses in
   6,8xx skips; 4× stall 1124 → 196 ms/min; `?landmarkGate=0` turns it off);
-  `withOpenings` runs as tasks (browser saving unmeasured, L1). HELD:
-  f8e79ee5e (overview build in the worker pool, boot → submit ~1021 → ~770
-  ms, and engine `project` off the shim) stops the desktop ride from
-  starting under own (engine-own:78, render-on-change:10,
-  label-occlusion:102 wait for the player); reverted on main, L1 finds the
-  cause and pins it. Shim callers left: engine `project` ~1600/s,
-  inventory-trees, per-frame getZoom/getCenter/getBounds/jumpTo (L1).
+  `withOpenings` runs as tasks (water cell decode continuation at 4× 51–55
+  → 5 ms; the work now sits in its own `groundCrossing` task, 33–37 ms at
+  4×, L1 paces it internally next). The overview build in the worker pool
+  is on main (hand-back (15): the desktop stall was the surprise picker's
+  seed shift, fixed; boot → submit ~1021 → ~770 ms). The longest frame
+  under own at 4× (40–56 ms) is the engine's render callback: L1 profiles
+  its owners next. Camera shim: 561 → 156 calls/s, nothing left on it is a
+  camera read (`jumpTo` write, `checkIdle`, repaint requests).
   Idle rendering (fan) is fixed under own: render-on-change on main, 0
   renders per 5 s at rest; the default engine still renders every idle frame
   until the flip.
@@ -1431,9 +1432,9 @@ Root `main` was cleaned on 2026-10-09 (see HISTORY). Live work, in order:
   wait on the atlas bind so racing never starts without facades (materials,
   before the flip); boot → submit 0.84–1.03 s vs 0.48–0.57
   default, owners named (HISTORY "Binary road extract is Amsterdam's
-  default"): engine overview build 184 ms (the worker-pool build, ~250 ms
-  off boot → submit, is held with f8e79ee5e until L1 fixes the desktop
-  ride start), three-buildings texture painting ≈ 117 ms (materials: ship a
+  default"): engine overview build (now in the worker pool, ~250 ms off
+  boot → submit, main-thread construction 213–224 → 13–20 ms),
+  three-buildings texture painting ≈ 117 ms (materials: ship a
   pre-painted atlas, which also ends the settle hold on the atlas bind),
   own-ground procedural noise ≈ 110 ms, shader programs ≈ 75 ms (materials).
 - **Two iphone spawn-pose failures on main** (road lane): `street-follow-tap`

@@ -3,6 +3,11 @@
   "notes": [
     {
       "date": "2026-11-01",
+      "title": "Surprise rides no longer finish next to the start",
+      "text": "A surprise ride could draw a finish 45 metres from its start (Micropia and Artis share a street), fail with \"Start and finish are too close\" and drop you back at setup. The picker now draws again among places at least 200 metres away; rides that already worked start exactly as before."
+    },
+    {
+      "date": "2026-11-01",
       "title": "Fewer hitches as new facades arrive",
       "text": "The work that prepares a block of facades for drawing (sorting its footprints into tiles, finding each house's neighbours, matching streets) does the same job in a third to a half of the time, with identical results. On a slow machine the longest hitch while riding through the Jordaan dropped from a tenth of a second to about half that."
     },
