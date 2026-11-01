@@ -84,23 +84,31 @@ test('a removed map stops the wait', () => {
 
 // #109 / #106 follow-up 3: a context restore resizes the map, and MapLibre's `resize()` fires `moveend`. On the
 // briefing nothing had aimed the streamer, so that moveend planned the style's Damrak default and 67-183 k facade
-// triangles drew behind the card that had not drawn before the loss. A moveend only re-plans an aimed streamer.
-test('moveend before the first explicit followCamera (a restore\'s resize) plans nothing; after it, it re-plans', () => {
+// triangles drew behind the card that had not drawn before the loss. A moved view only re-plans an aimed streamer.
+// Since P5 B6 the streamer hears moves through WorldCamera (engine/worldCameraOf.ts onViewChange): a rendered frame
+// whose view differs from the last one, which is what a moveend (a restore's resize included) gives.
+test('a moved view before the first explicit followCamera (a restore\'s resize) plans nothing; after it, it re-plans', () => {
   const handlers: Record<string, Array<() => void>> = {};
   const { map } = fakeMap();
   map.on = ((event: string, handler: () => void) => { (handlers[event] ??= []).push(handler); }) as never;
+  let west = 4.89;
+  map.getBounds = () => ({ getWest: () => west, getSouth: () => 52.37, getEast: () => 4.9, getNorth: () => 52.38 });
+  const moved = () => { west -= 0.001; for (const h of handlers.render ?? []) h(); };
   const streamer = new BuildingTileStreamer(map as never, 'buildings', '/data');
   const internals = streamer as unknown as { available: boolean; update(): void; lastFollowSignature: string };
   internals.available = true;
   let plans = 0;
   internals.update = () => { plans++; };
   streamer.attach();
-  for (const h of handlers.moveend ?? []) h();
-  assert.equal(plans, 0, 'the style default view is not planned on a bare moveend');
+  moved();
+  assert.equal(plans, 0, 'the style default view is not planned on a bare move');
   streamer.followCamera();
   assert.equal(plans, 1, 'the game\'s camera sync plans');
   internals.lastFollowSignature = '';
-  for (const h of handlers.moveend ?? []) h();
-  assert.equal(plans, 2, 'once aimed, moveend re-plans as before');
+  moved();
+  assert.equal(plans, 2, 'once aimed, a moved view re-plans as before');
+  internals.lastFollowSignature = '';
+  for (const h of handlers.render ?? []) h();
+  assert.equal(plans, 2, 'a redraw of the same view does not re-plan');
   streamer.dispose();
 });

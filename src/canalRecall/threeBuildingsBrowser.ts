@@ -50,6 +50,7 @@ import { HIDDEN, HIGHLIGHT_GLSL, attachHighlightPasses, detachHighlightPasses, f
 import { SLOT_LAYER_COUNT, cityLookEnabled, createCityLookMaterial, createCityUniforms, getCityLook, loadCityBrick, paintSlotLayers } from './look/cityLook.js';
 import { boundingSphereOf } from './geometryBounds.js';
 import { cutMesh, disposeTiles, growTileSpheres } from './rendererShared/tiledGeometry.js';
+import { finishTiles, type PlannedTile } from './ownGround/cellTiles.js';
 import { MotionEstimate, aheadRank, lookAheadEnabled } from './streamingLookAhead.js';
 import { detailBlock, type DetailBlock } from './detailRing.js';
 
@@ -256,7 +257,9 @@ const BOAT_PREFIX = 'boats:';
 const NO_SOURCE: Feature[] = [];
 /** The chunk worker sits next to this bundle (three-buildings-worker.bundle.js). */
 const WORKER_URL = typeof document !== 'undefined' ? poolWorkerUrl((document.currentScript as HTMLScriptElement | null)?.src ?? '') : '';
-type ChunkReply = { key: string; gen: number; chunk: Chunk; ms: number; appearanceRevision: string; hostOpeningRevision: string; surveyedEnvelopeRevision: string; boundParentIds: string[] };
+type ChunkReply = { key: string; gen: number; chunk: Chunk; ms: number; appearanceRevision: string; hostOpeningRevision: string; surveyedEnvelopeRevision: string; boundParentIds: string[]; /** The facade tiles' x/y partition, cut in the worker (cellTiles.ts planTiles) at `tiles` per side. */ tiles?: { n: number; plan: PlannedTile[] | null } };
+/** Worker-cut tile plans of the chunks waiting to install (finished after the ground lift: cellTiles.ts finishTiles). */
+const plannedTiles = new WeakMap<Chunk, { n: number; plan: PlannedTile[] | null }>();
 const KIT_HIDE_SET: ReadonlySet<string> = new Set(KIT_HIDE_IDS);
 
 
@@ -1142,7 +1145,7 @@ export class ThreeBuildings {
       pool.post(w, { key, gen, ...options, features: source, mode: this.modeFor(key),
         special: key === KIT_KEY ? 'kits' : key.startsWith(BOAT_PREFIX) ? 'boats' : undefined,
         boats: key.startsWith(BOAT_PREFIX) ? this.boatTiles.get(key.slice(BOAT_PREFIX.length)) ?? [] : undefined,
-        layers: this.kitLayers() });
+        layers: this.kitLayers(), tiles: this.facadeTiles, tileMin: FACADE_TILE_MIN_TRIANGLES });
       return;
     }
     const t0 = performance.now();
@@ -1197,6 +1200,7 @@ export class ThreeBuildings {
     if (!options || reply.appearanceRevision !== options.appearanceRevision || options.appearanceRevision !== this.appearanceRevision || reply.surveyedEnvelopeRevision !== options.surveyedEnvelopeRevision || options.surveyedEnvelopeRevision !== this.surveyedEnvelopeTransport.revision || reply.hostOpeningRevision !== options.hostOpeningRevision || options.hostOpeningRevision !== this.openingRevision(key, source)) { this.pump(); return; }
     this.inflight.delete(key);
     this.inflightOptions.delete(key);
+    if (reply.tiles) plannedTiles.set(chunk, reply.tiles);
     this.stage({ key, source, chunk, ms, options, boundParentIds: reply.boundParentIds });
     this.pump();
   }
@@ -1353,7 +1357,9 @@ export class ThreeBuildings {
     geometry.boundingSphere = new THREE.Sphere(new THREE.Vector3(...sphere.center), sphere.radius);
     const mesh = new THREE.Mesh(geometry, this.material);
     // Culled tiles over the same buffers (FACADE_TILES), measured while the CPU arrays still exist; a building stays in one tile.
-    cutMesh(THREE, mesh, this.facadeTiles, FACADE_TILE_MIN_TRIANGLES, { groups: chunk.ranges, release: true });
+    // A worker-built chunk brings its tiles' partition (x/y only); the heights are read here, after the ground lift.
+    const planned = plannedTiles.get(chunk);
+    cutMesh(THREE, mesh, this.facadeTiles, FACADE_TILE_MIN_TRIANGLES, { groups: chunk.ranges, release: true, tiles: planned && planned.n === this.facadeTiles ? planned.plan && finishTiles(chunk.positions, planned.plan) : undefined });
     mesh.userData ??= {};
     mesh.userData.installedSurveyedEnvelopeData = options?.surveyedEnvelopeData;
     mesh.userData.boundParentIds = boundParentIds;

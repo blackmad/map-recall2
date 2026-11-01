@@ -69,6 +69,7 @@ export class CityExtras {
     if (signature?.SignatureLandmarks && models) {
       try {
         this.signature = new signature.SignatureLandmarks(h.cameraMap, h.mercator, {
+          camera: h.cameraMap.api,
           sharedFrame: h.sharedFrame,
           models,
           streetChunks: true,

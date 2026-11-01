@@ -23,6 +23,19 @@ export interface CellTile {
  * the caller keeps one mesh.
  */
 export function splitIntoTiles(positions: ArrayLike<number>, indices: Uint16Array | Uint32Array, n: number, minTriangles = 0, stride = 3, groups?: readonly { start: number; count: number }[]): CellTile[] | null {
+  const plan = planTiles(positions, indices, n, minTriangles, stride, groups);
+  return plan && finishTiles(positions, plan, stride);
+}
+
+/**
+ * A tile before its heights are known: the partition and the x/y box of the vertices it uses. The partition reads
+ * only x and y, so it can be cut where the mesh is built and finished after the ground lift (z only) on the main
+ * thread (`finishTiles`), with exactly the result `splitIntoTiles` gives on the lifted positions.
+ */
+export interface PlannedTile { indices: Uint16Array | Uint32Array; cell: number; box: [number, number, number, number] }
+
+/** The x/y half of `splitIntoTiles` (same arguments). */
+export function planTiles(positions: ArrayLike<number>, indices: Uint16Array | Uint32Array, n: number, minTriangles = 0, stride = 3, groups?: readonly { start: number; count: number }[]): PlannedTile[] | null {
   const triangles = indices.length / 3;
   if (n <= 1 || triangles < Math.max(2, minTriangles)) return null;
   let x0 = Infinity, y0 = Infinity, x1 = -Infinity, y1 = -Infinity;
@@ -58,32 +71,44 @@ export function splitIntoTiles(positions: ArrayLike<number>, indices: Uint16Arra
   // box takes the same min/max over the same vertices, so the tiles are unchanged; the 8×8 overview cut was 64 scans.
   const Ctor = indices instanceof Uint16Array ? Uint16Array : Uint32Array;
   const tiles: (Uint16Array | Uint32Array | null)[] = new Array(n * n).fill(null), fill = new Uint32Array(n * n);
-  const box = new Float64Array(n * n * 6);
+  const box = new Float64Array(n * n * 4);
   for (let k = 0; k < n * n; k++) {
     if (counts[k]) tiles[k] = new Ctor(counts[k] * 3);
-    box[k * 6] = box[k * 6 + 1] = box[k * 6 + 2] = Infinity; box[k * 6 + 3] = box[k * 6 + 4] = box[k * 6 + 5] = -Infinity;
+    box[k * 4] = box[k * 4 + 1] = Infinity; box[k * 4 + 2] = box[k * 4 + 3] = -Infinity;
   }
   for (let t = 0; t < triangles; t++) {
-    const k = tileOf[t], idx = tiles[k]!, b = k * 6;
+    const k = tileOf[t], idx = tiles[k]!, b = k * 4;
     let m = fill[k];
     for (let v = 0; v < 3; v++) {
       const vi = indices[3 * t + v], o = vi * stride;
       idx[m++] = vi;
-      const x = positions[o], y = positions[o + 1], z = positions[o + 2];
-      if (x < box[b]) box[b] = x; if (x > box[b + 3]) box[b + 3] = x; if (y < box[b + 1]) box[b + 1] = y; if (y > box[b + 4]) box[b + 4] = y; if (z < box[b + 2]) box[b + 2] = z; if (z > box[b + 5]) box[b + 5] = z;
+      const x = positions[o], y = positions[o + 1];
+      if (x < box[b]) box[b] = x; if (x > box[b + 2]) box[b + 2] = x; if (y < box[b + 1]) box[b + 1] = y; if (y > box[b + 3]) box[b + 3] = y;
     }
     fill[k] = m;
   }
-  const out: CellTile[] = [];
+  const out: PlannedTile[] = [];
   for (let k = 0; k < n * n; k++) {
     const idx = tiles[k];
-    if (!idx) continue;
-    const b = k * 6, bx0 = box[b], by0 = box[b + 1], bz0 = box[b + 2], bx1 = box[b + 3], by1 = box[b + 4], bz1 = box[b + 5];
-    const center: [number, number, number] = [(bx0 + bx1) / 2, (by0 + by1) / 2, (bz0 + bz1) / 2];
-    // The box's half-diagonal: a sphere round every vertex the tile uses (looser than the tightest, never smaller).
-    out.push({ indices: idx, center, radius: Math.hypot(bx1 - bx0, by1 - by0, bz1 - bz0) / 2, cell: k });
+    if (idx) out.push({ indices: idx, cell: k, box: [box[k * 4], box[k * 4 + 1], box[k * 4 + 2], box[k * 4 + 3]] });
   }
   return out;
+}
+
+/** The planned tiles' bounding spheres over `positions` as they are now (the heights read here, the x/y box kept). */
+export function finishTiles(positions: ArrayLike<number>, plan: readonly PlannedTile[], stride = 3): CellTile[] {
+  return plan.map(({ indices: idx, cell, box: [bx0, by0, bx1, by1] }) => {
+    let bz0 = Infinity, bz1 = -Infinity;
+    for (let i = 0; i < idx.length; i++) { const z = positions[idx[i] * stride + 2]; if (z < bz0) bz0 = z; if (z > bz1) bz1 = z; }
+    const center: [number, number, number] = [(bx0 + bx1) / 2, (by0 + by1) / 2, (bz0 + bz1) / 2];
+    // The box's half-diagonal: a sphere round every vertex the tile uses (looser than the tightest, never smaller).
+    return { indices: idx, center, radius: Math.hypot(bx1 - bx0, by1 - by0, bz1 - bz0) / 2, cell };
+  });
+}
+
+/** The planned tiles' index buffers, to transfer. */
+export function plannedTransferables(plan: readonly PlannedTile[] | null | undefined): ArrayBuffer[] {
+  return (plan ?? []).map(t => t.indices.buffer as ArrayBuffer);
 }
 
 /**

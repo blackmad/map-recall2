@@ -23,6 +23,8 @@ import { freezeStaticMatrices } from '../../../src/canalRecall/landmarks/staticM
 import { SHADOW_STAND_IN_PENDING, disposeShadowStandIn, shadowStandInFor } from '../../../src/canalRecall/rendererShared/shadowStandIns.ts';
 // The page's worker pool (engine/workerPool.ts; started by the building and ground layers) welds the shadow stand-ins off the main thread (#129).
 import { existingWorkerPool } from '../../../src/canalRecall/engine/workerPool.ts';
+// The view comes from the WorldCamera (engine/worldCameraOf.ts, P5 B6), not the MapLibre-shaped map.
+import { onViewChange, worldCameraOf } from '../../../src/canalRecall/engine/worldCameraOf.ts';
 import { applyMeshHighlight, highlightRecipe, LANDMARK_WORLD_UP } from '../../../src/canalRecall/look/highlight.ts';
 const { THREE, GLTFLoader, MeshoptDecoder } = window.CanalRecallThree;
 const { SIGNATURE_MODELS, placementFor, basemapBuildingFilter } = window.CanalRecallSignatureLandmarks;
@@ -78,6 +80,7 @@ export class SignatureLandmarks {
    */
   constructor(map, maplibregl, options = {}) {
     this.map = map;
+    this.camera = options.camera || worldCameraOf(map);
     this.maplibregl = maplibregl;
     this.onModelShown = options.onModelShown || (() => {});
     this.onSuppressionChanged = options.onSuppressionChanged || (() => {});
@@ -201,7 +204,7 @@ export class SignatureLandmarks {
                 const dressed = await (this._dress(gltf) ?? gltf);
                 return this._shade(dressed).scene;
               };
-              built = await api.createBuildingTypes({ THREE, loadUnit, getCentre: () => this.map.getCenter?.() }, list);
+              built = await api.createBuildingTypes({ THREE, loadUnit, getCentre: () => this.camera.center() }, list);
               built.group.userData.recipeLook = true;
               window.__canalRecallBuildingTypes = Object.assign(window.__canalRecallBuildingTypes || {}, { [area]: built });
               return built.group;
@@ -263,8 +266,7 @@ export class SignatureLandmarks {
     this._generation++;
     this._hostOpeningRevision = '[]';
     this.onHostWallOpeningsChanged();
-    this.map.off('moveend', this._onMove);
-    for (const type of ['move', 'resize', 'render']) this.map.off(type, this._dropViewBounds);
+    this._offView?.(); this._offView = null;
     this._pending.clear();
     for (const entry of this._entries) { entry.holder?.parent?.remove(entry.holder); this._disposeModel(entry.group, entry.spec, entry.url); this._disposeSpare(entry); }
     this._entries = [];
@@ -282,8 +284,10 @@ export class SignatureLandmarks {
     // fails and every landmark silently falls back to its grey box.
     if (MeshoptDecoder) loader.setMeshoptDecoder(MeshoptDecoder);
     this._loader = loader;
-    map.on('moveend', this._onMove);
-    for (const type of ['move', 'resize', 'render']) map.on(type, this._dropViewBounds);
+    // moveend on WorldCamera; the view-bounds cache also lasts one frame (it is keyed by the view besides).
+    this._offView?.();
+    const offMove = onViewChange(this.camera, this._onMove), offFrame = this.camera.onFrame(this._dropViewBounds);
+    this._offView = () => { offMove(); offFrame(); };
     this._requestModels();
   }
 
@@ -314,9 +318,9 @@ export class SignatureLandmarks {
     if (!this.enabled || !width || !height) return null;
     const nx = x / width * 2 - 1, ny = 1 - y / height * 2;
     let result = null;
-    const local = new THREE.Ray(), toLocal = new THREE.Matrix4();
+    const local = new THREE.Ray(), toLocal = new THREE.Matrix4(), view = this._viewBounds();
     for (const entry of this._entries || []) {
-      if (!this.canShowModel(entry.spec) || !entry.pickProjection || !this._nearby(entry.spec, entry.placement.anchor)) continue;
+      if (!this.canShowModel(entry.spec) || !entry.pickProjection || !this._nearby(entry.spec, entry.placement.anchor, view)) continue;
       const inverse = entry.pickProjection.clone().invert();
       const near = new THREE.Vector3(nx, ny, -1).applyMatrix4(inverse);
       const far = new THREE.Vector3(nx, ny, 1).applyMatrix4(inverse);
@@ -589,7 +593,13 @@ export class SignatureLandmarks {
    * Kept until the camera moves, the map resizes or a frame has drawn.
    */
   _viewBounds() {
-    return this._viewBoundsCache ??= plainBounds(this.map.getBounds());
+    // Kept while the view (camera and window size) is the one it was measured for, and at most until a frame has drawn.
+    // Compared as numbers: this runs once per model per frame, and formatting a key string cost 1.5 s a minute at 4x.
+    const cam = this.camera, c = cam.center(), k = this._viewBoundsKey ??= new Float64Array(7);
+    const z = cam.zoom(), b = cam.bearing(), p = cam.pitch(), w = window.innerWidth, h = window.innerHeight;
+    if (this._viewBoundsCache && k[0] === z && k[1] === c.lng && k[2] === c.lat && k[3] === b && k[4] === p && k[5] === w && k[6] === h) return this._viewBoundsCache;
+    k[0] = z; k[1] = c.lng; k[2] = c.lat; k[3] = b; k[4] = p; k[5] = w; k[6] = h;
+    return this._viewBoundsCache = plainBounds(cam.bounds());
   }
 
   /**
@@ -603,14 +613,15 @@ export class SignatureLandmarks {
     const now = performance.now();
     if (now - this._lastEvictCheck < 500) return;
     this._lastEvictCheck = now;
-    const center = this.map.getCenter(), cos = Math.cos(center.lat * Math.PI / 180);
+    const center = this.camera.center(), cos = Math.cos(center.lat * Math.PI / 180);
+    const view = this._viewBounds();
     const models = this._entries.map(entry => {
       const anchor = entry.placement?.anchor || entry.spec.surveyed?.anchor || entry.spec.footprint?.centre;
       const highlighted = entry.highlighted || (this.activeLandmarkId && entry.spec.landmarkId === this.activeLandmarkId);
       return {
         id: entry.spec.id,
         distanceSq: anchor ? ((anchor[0] - center.lng) * cos) ** 2 + (anchor[1] - center.lat) ** 2 : 0,
-        inView: !anchor || this._nearby(entry.spec, anchor),
+        inView: !anchor || this._nearby(entry.spec, anchor, view),
         // Procedural building types rebuild a whole instanced scene; a level swap in flight owns its entry.
         evictable: !!anchor && !entry.spec.sceneFactory && !entry.levelLoading && !highlighted,
       };
@@ -623,11 +634,12 @@ export class SignatureLandmarks {
 
   _requestModels() {
     if (this._removed || !this.enabled || this._suspended || !this._loader || this._pending.size >= 2) return;
-    if (this.loadVisibleOnly && this.map.getZoom() < this.minLoadZoom) return;
+    if (this.loadVisibleOnly && this.camera.zoom() < this.minLoadZoom) return;
+    // One view for the whole list (the camera cannot move inside this loop).
+    const view = this.loadVisibleOnly ? this._viewBounds() : null;
     const candidates = this.models.filter(spec => !this.shown.has(spec.id) && !this._pending.has(spec.id) &&
-      !this._failed.has(spec.id) && (!this.loadVisibleOnly || this._nearby(spec)));
-    const bounds = this.map.getBounds();
-    const center = this.map.getCenter?.() || {lng: (bounds.getWest() + bounds.getEast()) / 2, lat: (bounds.getSouth() + bounds.getNorth()) / 2};
+      !this._failed.has(spec.id) && (!this.loadVisibleOnly || this._nearby(spec, undefined, view)));
+    const center = this.camera.center();
     const distance = spec => {
       const anchor = spec.surveyed?.anchor || spec.footprint?.centre;
       return anchor ? ((anchor[0] - center.lng) * Math.cos(center.lat * Math.PI / 180)) ** 2 + (anchor[1] - center.lat) ** 2 : Infinity;
@@ -1000,7 +1012,7 @@ export class SignatureLandmarks {
 
   /** Footprint radius of a model in screen pixels at the current zoom. */
   _radiusPixels(radiusMetres, anchor) {
-    return lodApi().footprintRadiusPixels(radiusMetres, this.map.getZoom(), anchor[1]);
+    return lodApi().footprintRadiusPixels(radiusMetres, this.camera.zoom(), anchor[1]);
   }
 
   /** Level to load first: lod1 for models that are small on screen. Unknown size or no lod1 means full. */
@@ -1019,9 +1031,10 @@ export class SignatureLandmarks {
    */
   _updateLevels() {
     if (this._removed || !this.enabled || !this._loader) return;
+    const view = this._viewBounds();
     for (const entry of this._entries) {
       if (!this._hasLod(entry.spec) || entry.levelLoading || entry.lodFailed) continue;
-      if (!this._nearby(entry.spec, entry.placement.anchor)) continue;
+      if (!this._nearby(entry.spec, entry.placement.anchor, view)) continue;
       const wanted = lodApi().chooseLevel(entry.level, this._radiusPixels(entry.radiusMetres, entry.placement.anchor));
       if (wanted === entry.level) continue;
       if (entry.spare && entry.spareLevel === wanted) { this._swapLevel(entry, entry.spare, wanted); continue; }

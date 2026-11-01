@@ -1,5 +1,57 @@
 # Canal Recall — what is built
 
+**Facade chunk tiles planned in the worker; signature-landmarks and building-tiles off the camera shim; the last 1× long frame named (2026-11-01, #129).**
+L1 hand-back (12). `cellTiles.ts` splits facade tiling into `planTiles` (the
+x/y partition and each tile's box, cut in the pool worker) and `finishTiles`
+(each tile's heights read on the main thread after the ground lift); the lift
+moves only z per building and the partition reads only x/y, so the result is
+exact (`rendererShared/facadeTiles.test.ts` pins byte-identity on real
+Jordaan chunks with a random float32 lift per building). Facade
+`splitIntoTiles` in the stall profile: 20 → 0 ms at 1×, 436 → 0 ms at 4×;
+the 4× totals did not move (32 → 35 long tasks, within run-to-run spread),
+so the P3 streaming gate stays open. B6: signature-landmarks and
+building-tiles read `WorldCamera` through `worldCameraOf`; shim calls per
+second over a 20 s ride 455.8 → 4.8 (`triggerRepaint` only) and 228.1 → 0.1
+(the GeoJSON source path, a P5 deletion). The #109 restore test fires a
+frame whose view moved instead of a bare `moveend`, keeps its three
+assertions and adds one (a redraw of the same view does not re-plan). A
+regression in the first version was caught before hand-back: the view-bounds
+cache compared a formatted key string once per model per frame (≈ 1.5 s a
+minute at 4×); it compares numbers now and `_viewBounds` is gone from the
+profile. Open: signature-landmarks' `_requestModels` filter over every model
+(393 → 629 ms at 4×, unproven against spread); next shim callers
+three-buildings `getZoom` (82/s) and player-vehicles `getContainer`. The one
+1× frame over 50 ms is the same moment in every run: a 45–57 ms
+`scheduler.yield` continuation of `GroundStore.prepareCell` for the cell
+entering the ring (`placeWayDecks` road index 12–21 ms, `planCutsFor` over
+the neighbours 15–21 ms, `lngLatToRd` + a polygon test ≈ 20 ms), load
+sensitive (41.7 and 42.1 ms in quieter runs) and the worst-frame owner at 4×
+(117–128 ms); next: that planning into the ground worker or yields inside
+it, with an exactness pin.
+
+**Label occlusion round 3: street names re-tested per copy while riding, between-pass budget 4 → 8; Cafe Kompleet is a roof-height case, not a corner (2026-11-01, #129).**
+Materials lane. The between-pass budget is 8 sightlines a frame (a POI costs
+1, a street or water name 1 per anchor; `stats.betweenMs`,
+`stats.betweenSightlines`, A/B knobs `between.{budget,lines}`), and street
+and water names join the per-frame round-robin. The new riding test found
+that a long name placed several times under one id had only its first copy
+tested (Overtoom stayed drawn behind a building for 2 s); each copy is now
+tested on its own with its own hysteresis key and dropped alone. Moving
+counts over a 6 s ride per pose, run twice, main → this: POI
+through-building samples ECH 34/30 → 25/22, Westerkerk 79/81 → 62/62, Dam
+4/6 → 4/4; line labels drawn while hidden, summed over the three poses, 7 and
+11 → 1 and 2; per-frame cost 82–104 → 100–137 µs. `label-occlusion.spec`
+gains a riding assertion (no copy still drawn 250 ms after a building hid
+it, cost < 500 µs; fails on main's old bundle). Under render-on-change,
+flipping `labelOcclusionOn` never redrew the labels (the spec saw on == off);
+the switch now asks for a frame. Cafe Kompleet is not fixed: trying the
+camera-facing frontage first leaves it in place and adds Rue D'Alger and
+others, so it was reverted; the debug pick shows the roof-height model is the
+cause (the saltbox 17 m in front is hit at 7.9 m on screen while the
+sightline clears the walk's top for that roof shape); next candidate is the
+glyph top, or the ridge for occluders within ≈ 25 m, after the facades
+package.
+
 **P3 pop-in gate met under both engines; ground tiles cut and shadow stand-ins welded off the main thread; ARTIS off the camera shim (2026-11-01, #129).**
 L1 hand-back (11). `pop-in.mjs` now counts own-ground cell and facade chunk
 arrivals within 150 m of the rider: car route, 60 s, real GPU, DPR 2: 0 under
