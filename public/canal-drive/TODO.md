@@ -442,9 +442,12 @@ phone arrivals at 35 m are a measurement artefact with nil visible cost
 the detector becomes depth-aware (road lane, second item) and the owner is
 cut. Road lane now: time to ride (HISTORY "Time to ride by phase on the phone
 profile"): routing graph is the largest phase (2.85 s emulated), stitch pass
-cut merged (5f0fad294, graph identical); next lever (a) build the city world
-during the briefing with two probes (immediate submit = gate ≤ 4 s, 5 s
-briefing dwell = player case), then (b) a prebuilt graph binary if still red;
+cut merged (5f0fad294, graph identical); lever (a) merged 2026-11-01
+(d15d66991/512a5782d, HISTORY "The city's roads, routing graph and surface
+index build while the player reads the briefing"): 5 s dwell → 3.0 s on the
+phone profile, 2.6 s desktop; immediate submit still 7.8 s on the phone (gate
+≤ 4 s RED) → lever (b) prebuilt graph binary next, then the depth-aware
+pop-in detector (tooling);
 real-device timing owed once the phone is unlocked and re-trusted
 (`scripts/time-to-ride-device.mjs --target safari`); #150 landing animation
 excluded. Heap levers from the `_canalSharedFrame` breakdown:

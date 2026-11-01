@@ -1,5 +1,35 @@
 # Canal Recall — what is built
 
+**The city's roads, routing graph and surface index build while the player reads the briefing: time to ride ~3 s on the phone profile after a 5 s read (2026-11-01, P3).**
+Road lane (d15d66991, 512a5782d). `game-route.js` starts the city build 250
+ms after the route catalogue is ready, for the city and mode picked on the
+briefing (re-aimed when the player changes them), in 24 ms slices; a
+submit joins the build in flight and lengthens the slices to 48 ms, never
+restarting and never blocking input; a build for a city or mode the player
+left stops at its next slice; fetches run one at a time; when a ride takes a
+build, the loader state it set (projection, snap index, squares, ferry
+network) is put back; `?worldPrewarm=0` builds at submit as before; only
+the first ride of a session uses it (a second ride already reuses the
+first's world). Two-probe table, submit → introStart, medians of three:
+emulated iPhone 13 at 4× CPU immediate submit 7.79 s with the build vs 7.83
+without (the build itself takes ~4.5 s after submit, so this case needs the
+prebuilt graph, lever b); 5 s briefing dwell 3.00 s vs 6.74; desktop
+immediate 2.67 vs 3.47, dwell 2.57 vs 3.54. With a dwell what is left is
+the world-view settle hold (1.1–2.3 s, nothing pending) and ~0.2 s of road
+phases. 12 ms slices left the build running 0.4–1.2 s past submit (dwell
+2.9–4.0 s), so 24 ms it is; a 24 ms slice can drop a briefing frame on a
+throttled phone, accepted by the integrator (the briefing is a static
+overlay). `time-to-ride-device.mjs` gains `--dwell ms` and `--device
+desktop`, picks the bike through the prefs store (the old hidden-select
+dispatch never changed the mode the runtime rode, so earlier "car" probes
+may have ridden the default mode) and reports the mode and when the
+briefing build finished. Checks: test:road-graph; route identity against
+the 5f0fad294 snapshot identical; lint; `ENGINE=own` start-heading +
+open-squares desktop and iPhone 23 passed 1 skipped (a world built before
+the route leaves the spawn and first street unchanged); integrator
+default-engine smoke start-heading + open-squares desktop 12/12. No bundles (classic scripts;
+the deploy re-stamps `?v=`).
+
 **Eleven landmarks and Museumkwartier round 1 (2026-11-01, #159 #160 #162–#167):**
 the user asked for ten landmark buildings by end of day and the Lensbomen sculpture. Six opus
 lanes (two landmarks each, Amstelstation alone) delivered `olympisch-stadion`, `het-nieuwe-huis`,
