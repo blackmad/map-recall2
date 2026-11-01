@@ -1,5 +1,24 @@
 # Canal Recall — what is built
 
+**The overview draws only the tiles on screen: iPad overview triangles 279k → 83k (2026-11-01, P4).**
+Materials lane (c415a1e1b). The overview spans used an 8-per-side grid, so
+each span ran from the first to the last ~3 km tile on screen and a chase
+frame drew whole rows of the region; the grid is 32 per side now and
+`drawAsSpans` tests each span against the frustum in the mesh's own local
+frame, reusing the chosen range for meshes that share a geometry (a fill and
+its casing; `growTileSpheres` invalidates the reuse). iPad per frame:
+overview 279k → 83k, whole frame p50/p95 1.21 M / 1.98 M → 1.02 M / 1.78 M;
+desktop p50 2.18 M → 1.97 M; draws unchanged (385 iPad, 287 desktop);
+in-frame links still 0. Frozen frame against `?overviewCull=0` (the old 8):
+0 px at all five spots, noise floor 0. Not built: a covered-disc cull (the
+0.8 × 600–1200 m disc holds hardly a whole tile, ~1k triangles over 40
+sampled iPad frames) and a two-run split per mesh (54k but more draws
+while iPad draws p95 is 746). Facades on desktop use `drawAsSpans` too and
+are covered by the 0 px pins. Integrator: engine, three-buildings and
+own-ground-game bundles rebuilt (`tiledGeometry` is in all three);
+test:engine 113/113; lint clean; `trianglesIpad` re-recorded. Next owner:
+own ground (~300k triangles, 120 draws on iPad).
+
 **One ride downloads 1.1–2.0 MB of compiled cells; the per-ride gate is measured (2026-11-01, P2/#130 part 2).**
 Integrator, `tests/e2e/world-v1-bytes.spec.ts` (`WORLD_BYTES=1`) on the
 published cells, desktop, 4× CPU, 90 s rides. Seeded Anne Frank →
