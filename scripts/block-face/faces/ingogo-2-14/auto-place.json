@@ -3,7 +3,7 @@
  "street": "Ingogostraat",
  "library": "transvaalbuurt",
  "stripDate": "2020-04-29",
- "seconds": 22.04,
+ "seconds": 26.04,
  "thresholds": {
   "minScore": 0.7,
   "margin": 0.05,
@@ -186,6 +186,7 @@
     "transvaal-1911-five-storey-tall~m": -0.02,
     "transvaal-1911-five-storey": -0.025,
     "transvaal-1911-five-storey~m": -0.025,
+    "transvaal-1921-five-storey-oriel": -0.01,
     "transvaal-1923-portiek-tower": 0.272,
     "transvaal-1923-portiek": 0.269
    }
@@ -284,8 +285,12 @@
     "transvaal-1911-five-storey-tall~m": 0.031,
     "transvaal-1911-five-storey": 0.038,
     "transvaal-1911-five-storey~m": 0.038,
+    "transvaal-1921-five-storey-flat": 0.197,
+    "transvaal-1921-five-storey-flat~m": -0.084,
+    "transvaal-1921-five-storey-oriel": 0.066,
     "transvaal-1923-portiek-tower": 0.322,
-    "transvaal-1923-portiek": 0.275
+    "transvaal-1923-portiek": 0.275,
+    "transvaal-1929-block": 0.141
    }
   },
   {
@@ -376,8 +381,12 @@
     "transvaal-1911-five-storey-tall~m": 0.021,
     "transvaal-1911-five-storey": 0.035,
     "transvaal-1911-five-storey~m": 0.035,
+    "transvaal-1921-five-storey-flat": -0.033,
+    "transvaal-1921-five-storey-flat~m": 0.187,
+    "transvaal-1921-five-storey-oriel": -0.025,
     "transvaal-1923-portiek-tower": 0.28,
-    "transvaal-1923-portiek": 0.251
+    "transvaal-1923-portiek": 0.251,
+    "transvaal-1929-block": 0.109
    }
   },
   {
@@ -473,6 +482,8 @@
     "transvaal-1911-five-storey-tall~m": 0.03,
     "transvaal-1911-five-storey": 0.043,
     "transvaal-1911-five-storey~m": 0.043,
+    "transvaal-1921-five-storey-flat": 0.081,
+    "transvaal-1921-five-storey-flat~m": 0.22,
     "transvaal-1923-portiek-tower": -0.031,
     "transvaal-1923-portiek": -0.053
    }

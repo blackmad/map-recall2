@@ -266,6 +266,96 @@
    "pandId": "0363100012119806",
    "address": "Ingogostraat 9",
    "reason": "the wall-dormer crown reads right on the strip (ingogo-1-13-r1 sheet, 2026-11-01, #156), but the compiled crown tops out at 18.86 m against a 3DBAG roof max of 15.6 m and fails height-vs-3dbag (limit 18.0 m with dormers); the 3DBAG top or the dormer rise needs measuring before it can stand"
+  },
+  {
+   "pandId": "0363100012105195",
+   "address": "Colensostraat 13",
+   "reason": "design 4 of #158 (1922 recessed-loggia rows): transvaal-1922-loggia-row with the new front loggia kit part draws the recessed first-floor loggia, but every Colensostraat/Vaalrivierstraat pand has a 0.64-0.66 m outward BAG jog (1.9 m wide, at the loggia/door bay) and compile rejects a grouped frontage outset beyond 0.5 m ('Grouped frontage is not a straight surveyed wall'); the columns score (0.67) reads the porch jog as extra bays. Needs a stepped-frontage (porch projection) kit part or a measured outset cap before it can stand (2020-04-29 strip, gridded in staging/block-face/transvaalbuurt/5b)"
+  },
+  {
+   "pandId": "0363100012072680",
+   "address": "Colensostraat 17",
+   "reason": "design 4 of #158 (1922 recessed-loggia rows): transvaal-1922-loggia-row with the new front loggia kit part draws the recessed first-floor loggia, but every Colensostraat/Vaalrivierstraat pand has a 0.64-0.66 m outward BAG jog (1.9 m wide, at the loggia/door bay) and compile rejects a grouped frontage outset beyond 0.5 m ('Grouped frontage is not a straight surveyed wall'); the columns score (0.67) reads the porch jog as extra bays. Needs a stepped-frontage (porch projection) kit part or a measured outset cap before it can stand (2020-04-29 strip, gridded in staging/block-face/transvaalbuurt/5b)"
+  },
+  {
+   "pandId": "0363100012098146",
+   "address": "Colensostraat 21",
+   "reason": "design 4 of #158 (1922 recessed-loggia rows): transvaal-1922-loggia-row with the new front loggia kit part draws the recessed first-floor loggia, but every Colensostraat/Vaalrivierstraat pand has a 0.64-0.66 m outward BAG jog (1.9 m wide, at the loggia/door bay) and compile rejects a grouped frontage outset beyond 0.5 m ('Grouped frontage is not a straight surveyed wall'); the columns score (0.67) reads the porch jog as extra bays. Needs a stepped-frontage (porch projection) kit part or a measured outset cap before it can stand (2020-04-29 strip, gridded in staging/block-face/transvaalbuurt/5b)"
+  },
+  {
+   "pandId": "0363100012117405",
+   "address": "Colensostraat 25",
+   "reason": "design 4 of #158 (1922 recessed-loggia rows): transvaal-1922-loggia-row with the new front loggia kit part draws the recessed first-floor loggia, but every Colensostraat/Vaalrivierstraat pand has a 0.64-0.66 m outward BAG jog (1.9 m wide, at the loggia/door bay) and compile rejects a grouped frontage outset beyond 0.5 m ('Grouped frontage is not a straight surveyed wall'); the columns score (0.67) reads the porch jog as extra bays. Needs a stepped-frontage (porch projection) kit part or a measured outset cap before it can stand (2020-04-29 strip, gridded in staging/block-face/transvaalbuurt/5b)"
+  },
+  {
+   "pandId": "0363100012064734",
+   "address": "Colensostraat 26",
+   "reason": "design 4 of #158 (1922 recessed-loggia rows): transvaal-1922-loggia-row with the new front loggia kit part draws the recessed first-floor loggia, but every Colensostraat/Vaalrivierstraat pand has a 0.64-0.66 m outward BAG jog (1.9 m wide, at the loggia/door bay) and compile rejects a grouped frontage outset beyond 0.5 m ('Grouped frontage is not a straight surveyed wall'); the columns score (0.67) reads the porch jog as extra bays. Needs a stepped-frontage (porch projection) kit part or a measured outset cap before it can stand (2020-04-29 strip, gridded in staging/block-face/transvaalbuurt/5b)"
+  },
+  {
+   "pandId": "0363100012147649",
+   "address": "Colensostraat 22",
+   "reason": "design 4 of #158 (1922 recessed-loggia rows): transvaal-1922-loggia-row with the new front loggia kit part draws the recessed first-floor loggia, but every Colensostraat/Vaalrivierstraat pand has a 0.64-0.66 m outward BAG jog (1.9 m wide, at the loggia/door bay) and compile rejects a grouped frontage outset beyond 0.5 m ('Grouped frontage is not a straight surveyed wall'); the columns score (0.67) reads the porch jog as extra bays. Needs a stepped-frontage (porch projection) kit part or a measured outset cap before it can stand (2020-04-29 strip, gridded in staging/block-face/transvaalbuurt/5b)"
+  },
+  {
+   "pandId": "0363100012127557",
+   "address": "Colensostraat 18",
+   "reason": "design 4 of #158 (1922 recessed-loggia rows): transvaal-1922-loggia-row with the new front loggia kit part draws the recessed first-floor loggia, but every Colensostraat/Vaalrivierstraat pand has a 0.64-0.66 m outward BAG jog (1.9 m wide, at the loggia/door bay) and compile rejects a grouped frontage outset beyond 0.5 m ('Grouped frontage is not a straight surveyed wall'); the columns score (0.67) reads the porch jog as extra bays. Needs a stepped-frontage (porch projection) kit part or a measured outset cap before it can stand (2020-04-29 strip, gridded in staging/block-face/transvaalbuurt/5b)"
+  },
+  {
+   "pandId": "0363100012094468",
+   "address": "Colensostraat 14",
+   "reason": "design 4 of #158 (1922 recessed-loggia rows): transvaal-1922-loggia-row with the new front loggia kit part draws the recessed first-floor loggia, but every Colensostraat/Vaalrivierstraat pand has a 0.64-0.66 m outward BAG jog (1.9 m wide, at the loggia/door bay) and compile rejects a grouped frontage outset beyond 0.5 m ('Grouped frontage is not a straight surveyed wall'); the columns score (0.67) reads the porch jog as extra bays. Needs a stepped-frontage (porch projection) kit part or a measured outset cap before it can stand (2020-04-29 strip, gridded in staging/block-face/transvaalbuurt/5b)"
+  },
+  {
+   "pandId": "0363100012143885",
+   "address": "Transvaalstraat 131A",
+   "reason": "Transvaalstraat 131-143 (BAG 1922) is listed with the loggia rows in #158 but the 2020-04-29 strip shows a different front: a window pair and a small window per storey and no recessed loggia; no type authored this round, left as the 3DBAG box"
+  },
+  {
+   "pandId": "0363100012123734",
+   "address": "Transvaalstraat 133A",
+   "reason": "Transvaalstraat 131-143 (BAG 1922) is listed with the loggia rows in #158 but the 2020-04-29 strip shows a different front: a window pair and a small window per storey and no recessed loggia; no type authored this round, left as the 3DBAG box"
+  },
+  {
+   "pandId": "0363100012103780",
+   "address": "Transvaalstraat 135A",
+   "reason": "Transvaalstraat 131-143 (BAG 1922) is listed with the loggia rows in #158 but the 2020-04-29 strip shows a different front: a window pair and a small window per storey and no recessed loggia; no type authored this round, left as the 3DBAG box"
+  },
+  {
+   "pandId": "0363100012136060",
+   "address": "Transvaalstraat 137A",
+   "reason": "Transvaalstraat 131-143 (BAG 1922) is listed with the loggia rows in #158 but the 2020-04-29 strip shows a different front: a window pair and a small window per storey and no recessed loggia; no type authored this round, left as the 3DBAG box"
+  },
+  {
+   "pandId": "0363100012070736",
+   "address": "Transvaalstraat 139A",
+   "reason": "Transvaalstraat 131-143 (BAG 1922) is listed with the loggia rows in #158 but the 2020-04-29 strip shows a different front: a window pair and a small window per storey and no recessed loggia; no type authored this round, left as the 3DBAG box"
+  },
+  {
+   "pandId": "0363100012142199",
+   "address": "Transvaalstraat 141B",
+   "reason": "Transvaalstraat 131-143 (BAG 1922) is listed with the loggia rows in #158 but the 2020-04-29 strip shows a different front: a window pair and a small window per storey and no recessed loggia; no type authored this round, left as the 3DBAG box"
+  },
+  {
+   "pandId": "0363100012073386",
+   "address": "Transvaalstraat 143",
+   "reason": "Transvaalstraat 131-143 (BAG 1922) is listed with the loggia rows in #158 but the 2020-04-29 strip shows a different front: a window pair and a small window per storey and no recessed loggia; no type authored this round, left as the 3DBAG box"
+  },
+  {
+   "pandId": "0363100012117986",
+   "address": "Schalk Burgerstraat 45",
+   "reason": "Schalk Burgerstraat 45-57: the 10.6 m corner wing (3DBAG eaves 10.4 m), another front than transvaal-1931-diaper-row (#158)"
+  },
+  {
+   "pandId": "0363100012102728",
+   "address": "Schalk Burgerstraat 79",
+   "reason": "Schalk Burgerstraat 79-97: the 19.9 m raised centre over a round-arched gateway with its own window rhythm; the kit has no gateway arch or raised centre bay for it (#158)"
+  },
+  {
+   "pandId": "0363100012122976",
+   "address": "Schalk Burgerstraat 117",
+   "reason": "Schalk Burgerstraat 117-131: the 11.3 m corner with balconies, another front (#158)"
   }
  ]
 }

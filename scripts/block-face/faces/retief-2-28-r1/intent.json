@@ -1,0 +1,71 @@
+{
+ "schemaVersion": 1,
+ "kind": "block-face",
+ "id": "retief-2-28-r1",
+ "street": "Retiefstraat",
+ "sources": [
+  {
+   "id": "strip-2023-01-02",
+   "kind": "street-panorama",
+   "capturedAt": "2023-01-02",
+   "image": "staging/block-face/retief-2-28-r1/strip.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "authoring": {
+  "author": "auto-place (blockFace/autoPlace.ts)",
+  "passes": 1,
+  "note": "auto-placed from the transvaalbuurt library (buurt Transvaalbuurt-Oost); scores and holds in scripts/block-face/faces/retief-2-28/auto-place.json"
+ },
+ "types": [
+  "transvaal-1923-portiek"
+ ],
+ "houses": [
+  {
+   "pandId": "0363100012236810",
+   "slug": "retief-236810",
+   "address": "Retiefstraat 16A",
+   "type": {
+    "type": "transvaal-1923-portiek",
+    "measuredPalette": {
+     "brick": "#715948",
+     "evidence": "strip 2023-01-02 span 1442-1972: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2023-01-02",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: transvaal-1923-portiek scored 0.8 on eaves 0.5, storeys 1, stucco 1; strip 2023-01-02 span 1442-1972"
+   }
+  }
+ ],
+ "continuity": {
+  "streetLevel": "shared",
+  "corniceGroups": [],
+  "identical": [],
+  "partyClip": true,
+  "roof": {
+   "source": "recipe",
+   "pitchDeg": 30,
+   "evidence": "auto-place: low attic behind the cornice; the strips show sky over the cornices of the type rows"
+  },
+  "lonePand": {
+   "evidence": "a stair block on its own: transvaal-1923-portiek opts in to one-house faces from 5 m (frontage 13.26 m)"
+  },
+  "measuredEaves": [
+   {
+    "pand": "0363100012236810",
+    "stripRow": 324,
+    "frontRoof": {},
+    "evidence": "auto-place: the transvaal-1923-portiek cornice line 12.1 m (measured on its exemplar strips; this pand's skyline unread); 3DBAG/PDOK eaves 13.26 m"
+   }
+  ]
+ }
+}

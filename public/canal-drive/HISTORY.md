@@ -21,6 +21,46 @@ reference. Verified on this checkout: lean 0.007–0.027 in headless held
 turns (yaw there is slow), saddle over the hub line, upright from behind.
 What's New note with before/after screenshots.
 
+**Transvaalbuurt round 5 (2026-11-01, #157 pipeline, #158 designs): 22 pands in three designs, 79 in the buurt; the five pipeline faults fixed.**
+#157: (1) `batch.ts --faces=`/`--only=` restricts a `--buurt` run and prints the
+list first; (2) `auto-place` keeps every run in `chunks.json` (pands held at
+stage `installed`, run dirs never written, renumbered or removed; a face
+installed whole is skipped; `--replace=<run>` re-places one; `--skip=`
+added; `--photo-decides` carried through the batch); (3) the batch wall
+refit drops foliage columns (isLeaf share > 8 %) and takes the row median
+under 40 % clean columns or 1.2 m; (4) `groundUse` treats public_bookcase,
+fountain, give_box, parking_space and bicycle_repair_station as street
+furniture and matches whole values (Hasebroekstraat 28's bar came from
+`amenity=pub` prefix-matching `public_bookcase`); (5) `stripFoot.ts` reads
+the facade foot as the paving line, one offset per strip, and the edge NCC
+and sheet place the photo between foot and eaves (`--no-foot` for the old
+read): Tugelaweg 95–118 NCC 0.07–0.16 → 0.11–0.22, now over the gate but
+held at gallery size (stair panel misplaced, punched windows where the photo
+has bands, storeys ~15 % too tall: the real front stands 1.9 m above 3DBAG
+ground, and the kit has no plinth offset). Hasebroekstraat 28 re-installed
+with a ground-only patch (bar → residential, 2477 → 2325 tris, roof top
++0.16 m); Eerste Jacob van Campenstraat 8 and Bloemgracht 158A/162 held
+because a re-place drags other changes. Records regenerated for both buurten
+with the fixed pipeline: 0 installed run dirs changed. #158: seven types
+(`transvaal-1930-stair-tower`/`-block`, `transvaal-1931-plain-grid`/`-nodoor`,
+`transvaal-1931-diaper-row`/`-oriel-left`, `transvaal-1922-loggia-row`) and
+the front loggia kit part (`loggia: {storeys, axes, deep, rail, head,
+lights}`, byte-identical when absent); installed Albert Luthulistraat 6–20
+and 22–32 (7, hand-placed like luthuli-21-41 because the tower blocks the
+sky read; NCC median 0.46–0.48), Afrikanerplein 33–49 (9; two pands on the
+no-door twin, one portiek door serving two pands), Schalk Burgerstraat
+59–71 and 99–111 (6; the `-oriel-left` twin for pands whose BAG cut lies 1 m
+off the portiek axis, NCC 0.28 → 0.60). Held: Afrikanerplein 25, 29 (1989),
+51 (tree); Schalk Burgerstraat 45, 79–97 (gateway arch, raised centre), 117;
+the 1922 loggia rows (Colensostraat 13–28, Vaalrivierstraat 15–21: a 0.65 m
+porch jog beyond the 0.5 m grouped-frontage cap); Transvaalstraat 131–143
+(another design). Integration: chunks 132 → 137, records for #158's eight
+faces regenerated with `--only` under the frozen-run rule, goldens for six
+runs, exposure rows, covers 623/656, signature-placement bundle, buurt pages.
+Funnel after this round (806 pands on the records, both buurten): no type
+fit on facts 389, no photo evidence 80, failed likeness 151, lone or run 29,
+review 72, placed 85, installed 79.
+
 **World-v1 is pixel-identical to the live path at the five A/B spots; the settle hold waits on what the first frame shows; the covered world renders once a second (2026-11-01, P2/P4).**
 Materials lane hand-back (52957eae9), merged with L1 (16)'s `framePhases`
 `rendered` flag combined in `frameHost.ts`. The `?world=v1` structural gate

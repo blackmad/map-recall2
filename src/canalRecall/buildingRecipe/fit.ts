@@ -12,6 +12,7 @@ import type {CanalhouseGlazedBay} from '../canalhouseGlazedBay.ts';
 import {brickStripeBlocks} from './brickStripes.ts';
 import {parapetBandBlocks} from './parapetBand.ts';
 import {stairLightOpenings} from './stairLight.ts';
+import {frontLoggiaOpening, isLoggia} from './frontLoggia.ts';
 import {bargeboardOrnaments} from './bargeboards.ts';
 import {canalhouseCrownProfile} from '../canalhouseRecipes.ts';
 import {surveyRecipe} from '../../../scripts/canalhouse-recipes/survey-recipe.ts';
@@ -367,6 +368,8 @@ function layoutFront(f: FrontIntent, width: number, heightTop: number): Layout {
         glazedBays.push({id: `bay-s${s}-b${b}`, leftM: centre - bw / 2, bottomM: y + h * 0.12, widthM: bw, heightM: bh, depthM: 0.55, frontWidthM: bw * 0.72, lowerPanelM: 0.28, upperPanelM: 0.22, frameWidthM: 0.05, frameDepthM: 0.06, glassDepthM: 0.02, verticalBars: [.5], horizontalBars: [.3]});
         continue;
       }
+      // `loggia` (frontLoggia.ts): the axis's window is a recessed loggia over a brick parapet.
+      if (isLoggia(f.loggia, s, plan.axis(b))) { openings.push(frontLoggiaOpening(f.loggia, `loggia-s${s}-b${b}`, centre, winW, y, h, f.headLines?.[s] ?? HEAD_LINE)); continue; }
       const balcony = f.balconies?.storeys.includes(s) && (f.balconies.storeyBays?.[String(s)] ?? f.balconies.bays).includes(b);
       if (balcony) {
         balconies.push({storey: s, bay: b});

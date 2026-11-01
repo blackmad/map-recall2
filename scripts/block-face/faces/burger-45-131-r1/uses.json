@@ -1,0 +1,106 @@
+{
+ "street": "Schalk Burgerstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-31T15:20:38.843Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012140152",
+   "addresses": [
+    "Schalk Burgerstraat 59",
+    "Schalk Burgerstraat 61",
+    "Schalk Burgerstraat 63"
+   ],
+   "groundUnits": [
+    {
+     "address": "Schalk Burgerstraat 59",
+     "use": "woonfunctie",
+     "areaM2": 48,
+     "bagId": "0363010000805871"
+    },
+    {
+     "address": "Schalk Burgerstraat 61",
+     "use": "woonfunctie",
+     "areaM2": 54,
+     "bagId": "0363010000805873"
+    },
+    {
+     "address": "Schalk Burgerstraat 63",
+     "use": "woonfunctie",
+     "areaM2": 95,
+     "bagId": "0363010000805875"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012076994",
+   "addresses": [
+    "Schalk Burgerstraat 65",
+    "Schalk Burgerstraat 67",
+    "Schalk Burgerstraat 69"
+   ],
+   "groundUnits": [
+    {
+     "address": "Schalk Burgerstraat 67",
+     "use": "woonfunctie",
+     "areaM2": 54,
+     "bagId": "0363010000805879"
+    },
+    {
+     "address": "Schalk Burgerstraat 69",
+     "use": "woonfunctie",
+     "areaM2": 51,
+     "bagId": "0363010000805881"
+    },
+    {
+     "address": "Schalk Burgerstraat 65",
+     "use": "woonfunctie",
+     "areaM2": 104,
+     "bagId": "0363010000805877"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012093454",
+   "addresses": [
+    "Schalk Burgerstraat 71",
+    "Schalk Burgerstraat 73",
+    "Schalk Burgerstraat 75",
+    "Schalk Burgerstraat 77"
+   ],
+   "groundUnits": [
+    {
+     "address": "Schalk Burgerstraat 73",
+     "use": "woonfunctie",
+     "areaM2": 52,
+     "bagId": "0363010000805885"
+    },
+    {
+     "address": "Schalk Burgerstraat 75",
+     "use": "woonfunctie",
+     "areaM2": 54,
+     "bagId": "0363010000805887"
+    },
+    {
+     "address": "Schalk Burgerstraat 77",
+     "use": "woonfunctie",
+     "areaM2": 45,
+     "bagId": "0363010000805889"
+    },
+    {
+     "address": "Schalk Burgerstraat 71",
+     "use": "woonfunctie",
+     "areaM2": 49,
+     "bagId": "0363010000805883"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  }
+ ]
+}

@@ -3,7 +3,7 @@
  "street": "Krugerplein",
  "library": "transvaalbuurt",
  "stripDate": "2020-04-30",
- "seconds": 11.47,
+ "seconds": 13.27,
  "thresholds": {
   "minScore": 0.7,
   "margin": 0.05,
@@ -98,6 +98,7 @@
     "transvaal-1911-five-storey-tall": 0.054,
     "transvaal-1911-five-storey~m": 0.051,
     "transvaal-1911-five-storey": 0.051,
+    "transvaal-1921-five-storey-oriel": 0.031,
     "transvaal-1923-portiek-tower": 0.04
    }
   },
@@ -193,7 +194,8 @@
     "transvaal-1911-five-storey-tall~m": 0.091,
     "transvaal-1911-five-storey-tall": 0.118,
     "transvaal-1911-five-storey~m": 0.091,
-    "transvaal-1911-five-storey": 0.1
+    "transvaal-1911-five-storey": 0.1,
+    "transvaal-1921-five-storey-oriel": 0.03
    }
   },
   {
@@ -286,6 +288,7 @@
     "transvaal-1911-five-storey-tall~m": 0.148,
     "transvaal-1911-five-storey": 0.175,
     "transvaal-1911-five-storey~m": 0.177,
+    "transvaal-1921-five-storey-oriel": 0.053,
     "transvaal-1923-portiek-tower": 0.027,
     "transvaal-1923-portiek": 0.113
    }

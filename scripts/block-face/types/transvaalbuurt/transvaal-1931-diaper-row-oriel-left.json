@@ -1,0 +1,241 @@
+{
+ "schemaVersion": 1,
+ "kind": "house-type",
+ "id": "transvaal-1931-diaper-row-oriel-left",
+ "district": "transvaalbuurt",
+ "description": "Transvaalbuurt 1931 portiek rows of Schalk Burgerstraat 59-77 and 99-115: 6.7-6.8 m stair-block pands of five storeys in a grey-brown brick laid in a diaper (a lattice of lighter headers over the whole wall), a 3.45 m ground storey, three 2.95 m storeys and a 3.2 m top storey with small windows under light hoods; a pair of white two-light casements and, on the axis against one party wall, a shallow box window with glazed returns (a corner window) on storeys 1-3 over the portiek door, which shares a flat canopy with its mirrored neighbour's; a flat roof run out as a light eaves slab at 15.0-15.45 m This twin is the pand whose oriel and portiek door stand at its left party wall: the BAG cut between two pands sharing a portiek lies about 1 m left of the portiek axis, so the left-hand pand is not a mirror of the right-hand one (oriel 0.6 m from its left wall, the pair at 3.1 and 4.8 m)",
+ "fit": {
+  "widthM": [
+   6.0,
+   7.4
+  ],
+  "storeys": [
+   5
+  ]
+ },
+ "match": {
+  "years": [
+   1930,
+   1931
+  ],
+  "eavesM": [
+   14.0,
+   15.8
+  ],
+  "storeys3dbag": [
+   5
+  ],
+  "stucco": false,
+  "frontEavesM": 15.45,
+  "frontage": {
+   "mode": "stair-block",
+   "widthM": [
+    6.0,
+    7.4
+   ],
+   "storeys": [
+    5
+   ],
+   "axisPitchM": [
+    1.4,
+    3.2
+   ]
+  },
+  "lonePand": {
+   "minWidthM": 5
+  },
+  "mirrorForDoor": "left",
+  "crownFromType": "flat-slab",
+  "note": "Schalk Burgerstraat 45-131 (BAG 1931 on all 9 pands) on the 2020-04-30 strip, gridded 1 m: six 6.7-6.8 m stair-block pands of this front (59-77, 99-115); the 19.9 m centre pand 79-97 (a raised centre over a round-arched gateway, windows in a different rhythm) and the end pands 45-57 (10.6 m, 3DBAG eaves 10.4 m: a corner wing) and 117-131 (11.3 m, a corner with balconies) are other fronts and fall outside the width range. 3DBAG eaves 14.9 m; the eaves slab on the strip 15.0-15.45 m (frontEavesM). Axis pitch 1.4-3.2 m: three columns over 6.8 m. Twin: Schalk Burgerstraat 65, 99, 111 (2020-04-30 strip gridded 1 m: oriel centre 0.6 m, pair 3.1 and 4.8 m, attic windows 0.7, 2.9, 5.1 m from the pand left); the mirrored base type put the pair 0.9 m right of the photo. Placed by review pin only. Wall: match.measuredWall false, one brick for the row: #585553 fitted through the city tint (fit-wall-palette fitWallBrick: drawn #6e5957 of #5b5352 -> photo median #695f5c of the six tree-free pand walls 59-111), drawn #6d5f57.",
+  "measuredWall": false
+ },
+ "body": {
+  "storeys": 5,
+  "bays": [
+   3,
+   3,
+   3,
+   3,
+   3
+  ],
+  "axisGrid": 5,
+  "cornice": "none",
+  "windows": "casement-toplight",
+  "storeyHeights": [
+   3.45,
+   2.95,
+   2.95,
+   2.95,
+   3.15
+  ],
+  "windowHeights": [
+   0.41,
+   0.45,
+   0.49,
+   0.51,
+   0.34
+  ],
+  "headLines": [
+   0.89,
+   0.83,
+   0.83,
+   0.84,
+   0.66
+  ],
+  "bayWidths": [
+   1.3,
+   1.1,
+   1.45,
+   1.9,
+   1.0
+  ],
+  "bayFill": [
+   0.92,
+   0.5,
+   0.86,
+   0.68,
+   0.5
+  ],
+  "storeyAxes": {
+   "0": [
+    0,
+    2,
+    3
+   ],
+   "1": [
+    0,
+    2,
+    3
+   ],
+   "2": [
+    0,
+    2,
+    3
+   ],
+   "3": [
+    0,
+    2,
+    3
+   ],
+   "4": [
+    0,
+    2,
+    3
+   ]
+  },
+  "storeyWindowWidths": {
+   "4": 0.75
+  },
+  "bayWindows": {
+   "bays": {
+    "from": 0,
+    "to": 0
+   },
+   "storeys": [
+    1,
+    2,
+    3
+   ],
+   "hood": true
+  }
+ },
+ "crowns": {
+  "flat-slab": {
+   "gable": "flat",
+   "eavesOverhang": {
+    "projection": 0.5,
+    "fascia": 0.45,
+    "colour": "#c4c5c7",
+    "soffit": "#8d8e90"
+   },
+   "note": "Schalk Burgerstraat 59-77 (140152 076994 093454): a light grey eaves slab 15.0-15.45 m (raw #acadaf), flat roof"
+  }
+ },
+ "grounds": {
+  "door-left": {
+   "doorBay": 0,
+   "groundCanopy": {
+    "over": [
+     "door"
+    ],
+    "projection": 0.6,
+    "thickness": 0.2,
+    "overhang": 0.4,
+    "gap": 0.15,
+    "doorOverhang": 0.4,
+    "colour": "#8f8c88",
+    "groundTransomOnly": true
+   },
+   "note": "the teal portiek door on the oriel axis at the left party wall under the flat grey canopy shared with the left neighbour; ground windows under the pair"
+  }
+ },
+ "palettes": {
+  "diaper-grey-brown": {
+   "brick": "#585553",
+   "frame": "#e6e4de",
+   "door": "#2f5a5a",
+   "stone": "#c9c6bf",
+   "cornice": "#c4c5c7"
+  }
+ },
+ "roof": {
+  "material": "bitumen",
+  "source": "front",
+  "form": "flat",
+  "evidence": "Schalk Burgerstraat 59-115 strip 2020-04-30: blue sky directly over the eaves slab, no roof face; 3DBAG roof max 14.9 m = eaves"
+ },
+ "rhythm": {
+  "bays": "a window pair, then the box window over the door against one party wall",
+  "identicalBays": "no: the pair and the box window",
+  "windowsPerStorey": "ground: two windows + portiek door | 1-3: pair + box window | 4: three small windows",
+  "symmetry": "pairs of pands mirror about the party wall with the doors",
+  "groundFloor": "portiek door at one party wall under a canopy shared with the neighbour",
+  "signage": "none",
+  "roofline": "flat; a light eaves slab",
+  "photoRows": [
+   3,
+   3,
+   3,
+   3,
+   3
+  ],
+  "photoGroundRows": 1
+ },
+ "evidence": [
+  {
+   "face": "burger-45-131",
+   "pands": [
+    "0363100012093454",
+    "0363100012140152",
+    "0363100012076994"
+   ],
+   "citation": "strip.jpg 2020-04-30 at 40 px/m, gridded 1 m (staging/block-face/transvaalbuurt/5b/burger-45-131-13-30-grid.png): 71-77 (093454, 24.1-30.9 m) pair 24.4-25.6 and 26.0-27.3 m, box window 28.8-30.0 m on storeys 1-3; rows 1.65-3.07 (ground), 4.57-5.9, 7.4-8.85, 10.3-11.8, 13.3-14.4 m (small top windows under light hoods 14.4-14.7 m); door 28.9-30.0 m under a canopy 3.1-3.35 m; eaves slab 15.0-15.45 m; 59-63 and 65-69 mirror about their party wall at 17.4 m (both doors and box windows there)"
+  },
+  {
+   "face": "burger-45-131",
+   "pands": [
+    "0363100012093454",
+    "0363100012117331"
+   ],
+   "citation": "raw strip wall #675d58-#736765 (piers at 6-13 m on 59-77, #675d5a on 105-109): the mean of the diaper's dark stretchers and light headers; ground brick #524942"
+  },
+  {
+   "face": "burger-45-131",
+   "pands": [
+    "0363100012076994",
+    "0363100012117331",
+    "0363100012150447"
+   ],
+   "citation": "strip.jpg 2020-04-30 at 40 px/m over the burger-45-131-r1/r2 model-ortho (staging/block-face/transvaalbuurt/5b): 65 oriel 0.6 m, pair 3.13 and 4.8 m, door 0.77 m; 99 and 111 the same"
+  }
+ ],
+ "schemaLimits": [
+  "the diaper (a lattice of lighter headers over the whole wall) is not drawn: the wall is its mean colour. Geometry facings would need thousands of triangles over a 3000-triangle front; it needs a patterned brick material in the engine",
+  "the box windows are canted corner windows with teal frames; drawn as square box frames (bayWindows.hood) in the trim colour",
+  "the light hoods over the small top-storey windows are not drawn",
+  "the ground storey's darker brick is drawn in the wall brick"
+ ],
+ "notes": [
+  "Palette: the type default is the raw strip wall; every placed pand takes its trim-normalised strip wall (auto-place measuredPalette); one brick per row at review (lesson 10)."
+ ]
+}

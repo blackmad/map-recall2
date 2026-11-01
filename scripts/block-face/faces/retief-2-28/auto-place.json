@@ -3,7 +3,7 @@
  "street": "Retiefstraat",
  "library": "transvaalbuurt",
  "stripDate": "2023-01-02",
- "seconds": 3.4,
+ "seconds": 23.64,
  "thresholds": {
   "minScore": 0.7,
   "margin": 0.05,
@@ -13,7 +13,16 @@
   "widthSlackM": 0.4,
   "flatRoofRiseM": 1.5
  },
- "runs": [],
+ "runs": [
+  {
+   "face": "retief-2-28-r1",
+   "pands": [
+    "0363100012236810"
+   ],
+   "passed": true,
+   "triangles": 1732
+  }
+ ],
  "pands": [
   {
    "pandId": "0363100012237243",
@@ -199,9 +208,48 @@
    },
    "status": "held",
    "stage": "likeness",
-   "reason": "run did not compile",
-   "likeness": null,
-   "challengers": {}
+   "reason": "edge NCC 0.125 < 0.15 (photo vs model body; likeness.ts FAIL: glazing storey band off by 0.19 mean 0.24 vs photo 0.37; window shape square vs photo wide)",
+   "likeness": {
+    "pandId": "0363100012236802",
+    "ncc": 0.125,
+    "nccRaw": 0.125,
+    "shiftM": [
+     0.4,
+     0.1
+    ],
+    "usable": 0.92,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.19 mean 0.24 vs photo 0.37",
+     "window shape square vs photo wide"
+    ],
+    "wall": {
+     "photo": "#675144",
+     "model": "#876753",
+     "dL": 0.092
+    },
+    "glazing": {
+     "photo": 0.37,
+     "model": 0.24
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.247,
+    "footOffsetM": 1
+   },
+   "challengers": {
+    "transvaal-1923-portiek": 0.125,
+    "transvaal-1911-five-storey-tall": -0.026,
+    "transvaal-1911-five-storey-tall~m": -0.005,
+    "transvaal-1911-five-storey": -0.032,
+    "transvaal-1911-five-storey~m": -0.006,
+    "transvaal-1921-five-storey-flat": 0.022,
+    "transvaal-1921-five-storey-flat~m": 0.022,
+    "transvaal-1923-portiek-tower": -0.009
+   }
   },
   {
    "pandId": "0363100012236810",
@@ -274,11 +322,66 @@
     "voidShare": 0,
     "foliageShare": 0.02
    },
-   "status": "held",
-   "stage": "likeness",
-   "reason": "run did not compile",
-   "likeness": null,
-   "challengers": {}
+   "status": "placed",
+   "type": "transvaal-1923-portiek",
+   "score": 0.8,
+   "runnerUp": {
+    "typeId": "transvaal-1923-portiek-tower",
+    "score": 0.6
+   },
+   "placement": {
+    "type": "transvaal-1923-portiek",
+    "measuredPalette": {
+     "brick": "#715948",
+     "evidence": "strip 2023-01-02 span 1442-1972: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "crown raised (type default)",
+    "lone pand: a stair block on its own: transvaal-1923-portiek opts in to one-house faces from 5 m (frontage 13.26 m)"
+   ],
+   "likeness": {
+    "pandId": "0363100012236810",
+    "ncc": 0.267,
+    "nccRaw": 0.267,
+    "shiftM": [
+     -0.4,
+     0.25
+    ],
+    "usable": 0.95,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.25 mean 0.24 vs photo 0.38",
+     "window shape square vs photo wide",
+     "columns 3 vs photo 2"
+    ],
+    "wall": {
+     "photo": "#725848",
+     "model": "#8b6e59",
+     "dL": 0.082
+    },
+    "glazing": {
+     "photo": 0.38,
+     "model": 0.24
+    },
+    "columns": {
+     "photo": 2,
+     "model": 3
+    },
+    "iou": 0.304,
+    "footOffsetM": 1
+   },
+   "challengers": {
+    "transvaal-1923-portiek": 0.282,
+    "transvaal-1911-five-storey-tall": 0.057,
+    "transvaal-1911-five-storey-tall~m": 0.083,
+    "transvaal-1911-five-storey": 0.077,
+    "transvaal-1911-five-storey~m": 0.15,
+    "transvaal-1921-five-storey-flat": 0.107,
+    "transvaal-1921-five-storey-flat~m": 0.027,
+    "transvaal-1923-portiek-tower": 0.153
+   }
   },
   {
    "pandId": "0363100012236977",
@@ -349,20 +452,17 @@
    },
    "status": "held",
    "stage": "match",
-   "reason": "every type vetoed (best transvaal-1911-five-storey-tall: built 1922, type 1908-1914; frontage 18.02 m, type 4.8-11 m)",
+   "reason": "best transvaal-1921-five-storey-oriel scores 0.62 < 0.7 (3DBAG eaves 14.82 m = 4 storeys of 3.71 m vs the type's 3.41 m; strip columns 3 vs 5 bays)",
    "best": {
-    "type": "transvaal-1911-five-storey-tall",
-    "score": 0,
-    "veto": [
-     "built 1922, type 1908-1914",
-     "frontage 18.02 m, type 4.8-11 m"
-    ],
+    "type": "transvaal-1921-five-storey-oriel",
+    "score": 0.62,
+    "veto": [],
     "criteria": [
      {
       "key": "eaves",
       "weight": 2,
-      "score": 1,
-      "note": "3DBAG eaves 14.82 m = 4 storeys of 3.71 m vs the type's 3.55 m"
+      "score": 0.5,
+      "note": "3DBAG eaves 14.82 m = 4 storeys of 3.71 m vs the type's 3.41 m"
      },
      {
       "key": "storeys",
@@ -379,8 +479,8 @@
      {
       "key": "columns",
       "weight": 1.5,
-      "score": 0.4,
-      "note": "strip columns 3 vs 4 bays"
+      "score": 0,
+      "note": "strip columns 3 vs 5 bays"
      }
     ]
    },
@@ -592,42 +692,8 @@
     "foliageShare": 0.02
    },
    "status": "held",
-   "stage": "match",
-   "reason": "every type vetoed (best transvaal-1911-five-storey-tall: built 1922, type 1908-1914; frontage 18.32 m, type 4.8-11 m)",
-   "best": {
-    "type": "transvaal-1911-five-storey-tall",
-    "score": 0,
-    "veto": [
-     "built 1922, type 1908-1914",
-     "frontage 18.32 m, type 4.8-11 m"
-    ],
-    "criteria": [
-     {
-      "key": "eaves",
-      "weight": 2,
-      "score": 1,
-      "note": "3DBAG eaves 13.39 m = 4 storeys of 3.35 m vs the type's 3.55 m"
-     },
-     {
-      "key": "storeys",
-      "weight": 1,
-      "score": 1,
-      "note": "3DBAG bouwlagen 5 vs 5"
-     },
-     {
-      "key": "stucco",
-      "weight": 2,
-      "score": 1,
-      "note": "strip accent share 0.123 (brick)"
-     },
-     {
-      "key": "columns",
-      "weight": 1.5,
-      "score": 0.4,
-      "note": "strip columns 3 vs 4 bays"
-     }
-    ]
-   },
+   "stage": "run",
+   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
    "likeness": null,
    "challengers": {}
   },

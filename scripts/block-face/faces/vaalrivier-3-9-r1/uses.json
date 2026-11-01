@@ -1,0 +1,55 @@
+{
+ "street": "Vaalrivierstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-31T16:00:49.944Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012132149",
+   "addresses": [
+    "Vaalrivierstraat 7A",
+    "Vaalrivierstraat 7B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Vaalrivierstraat 7A",
+     "use": "woonfunctie",
+     "areaM2": 54,
+     "bagId": "0363010000849456"
+    },
+    {
+     "address": "Vaalrivierstraat 7B",
+     "use": "woonfunctie",
+     "areaM2": 88,
+     "bagId": "0363010000849457"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012145010",
+   "addresses": [
+    "Vaalrivierstraat 9B",
+    "Vaalrivierstraat 9A"
+   ],
+   "groundUnits": [
+    {
+     "address": "Vaalrivierstraat 9B",
+     "use": "woonfunctie",
+     "areaM2": 55,
+     "bagId": "0363010000849461"
+    },
+    {
+     "address": "Vaalrivierstraat 9A",
+     "use": "woonfunctie",
+     "areaM2": 88,
+     "bagId": "0363010000849460"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  }
+ ]
+}
