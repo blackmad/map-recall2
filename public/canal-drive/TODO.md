@@ -306,21 +306,25 @@ HISTORY "The own view answers the four oracles"): the four oracles answered,
 camera parity < 1e-7 px on intro and Anne Frank → Rijksmuseum, `_waitForMapSettle`
 was already replaced (camera.whenIdle, hand-back 4), city-aware engine choice
 (`engineFlag(search, cityId)`, Amsterdam-only, `game.js` passes `this.cityId`).
-**Open before the Amsterdam flip (L1), after hand-back 19 (`1baaf686c`, HISTORY
-"The Westerkerk miss was the spec aiming at open air"):** the Westerkerk click
-and the building looks under own are done; left: POI labels must win the click
-under own as under MapLibre (Westermarkt "Guy Olivier" label pixels; add to
-the named regression); bag-tiles spec gets `&world=live` (dead path otherwise);
-overview footprints (6.8 % vs 5 %, MapLibre 3.7 %): resident world-v1 FOOT
-cells drawn in roof tone and faded with the blend (~1 day), far coarse layer
-only if still over 5 %; then the flip checklist (default switch for
-cityId amsterdam, specs under default afterwards, Sentry watch for context
-loss / graphics failures, rollback flag forcing MapLibre). Re-baselined:
-iPhone texture budget 22 → 27 MB (`iphoneTextureMB`, facade atlas by design;
-96 px phone bays need a look review; mask-format cut is a later materials
-item). Note: shared-frame `register(..., {order})` has no effect for
-group-rooted participants (three.js takes the innermost group's order);
-fixed for the overview only.
+**Amsterdam flip (L1), after hand-back 20 (`040f36423`, HISTORY "Under own a POI
+label wins the click"):** blockers done (labels win the click, bag-tiles on the
+tile path, overview footprints 4.1 %, Sentry engine/tier tags); checklist
+written (#129). Left before the flip commit: the three red specs on main
+(building-click-perf :146/:228 both engines; iPhone city-startup-lod
+`checked > 0`; iPhone render-on-change "riding off draws at once" under own —
+probably the briefing world build or the tree cull), L1 bisecting; the
+bag-tiles pixel-share drift (both engines, open). Then L1 prepares the flip
+commit on its branch (engineFlag default + wantsMapLibre + query-table tests +
+`ENGINE=maplibre` spec switch); the integrator merges it once the Sentry tags
+have been live for a day, and watches the 48 h bar. P4 (materials, later): cut
+the facade mask format (RG8 → R8 or a lower mip policy for mask layers) to
+bring the iPhone atlas back under ~22 MB without shrinking the 128 px bays
+(26.0 MB today, both engines). Pin harness: the shading flip was an unpinned
+camera elevation, fixed in the spec (d80ab4245); trees are pinnable. **User
+asks (2026-11-01):** a first-person riding camera (#171, small opus lane after
+the flip) and the cartoon look mode (#161). Note: shared-frame
+`register(..., {order})` has no effect for group-rooted participants
+(three.js takes the innermost group's order); fixed for the overview only.
 Steps 4–5 merged 2026-10-30 (`487cb157e`): `ENGINE=own` switch for the gate
 specs, ride-perf, phone-memory and `ride-perf-owners.mjs` (owner `engine`);
 overlays under the flag (cycle tracks, transit, neighbourhood lines solid not

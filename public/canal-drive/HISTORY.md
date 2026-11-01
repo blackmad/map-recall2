@@ -1,5 +1,55 @@
 # Canal Recall — what is built
 
+**Under own a POI label wins the click; the own overview draws roof-tone footprints from the resident cells (zoom sweep 6.8 → 4.1 %); Sentry events carry engine and tier tags; the Amsterdam flip checklist is written (2026-11-01, P1/P5).**
+L1 hand-back 20 (040f36423). `inspectBuilding` hit-tests the LabelLayer
+before the prism pick and own POI ids match the MapLibre label overlay
+(orientation POIs, landmarks, branded POIs); the Westermarkt regression
+requires every drawn POI label pixel to open that POI (own 2420/2420,
+default 2954/2954, Westerkerk 521/521). bag-tiles: both runs on
+`&world=live` with a `_bagCovers` oracle for own; a pixel-share assertion
+(Westerkerk / Rijksmuseum, bag against legacy) still fails on both engines
+with main's committed bundles — data or default-path drift, thresholds
+untouched, open. city-startup-lod iPhone limit 27 MB with its reason.
+`engine/overviewFootprints.ts` draws the resident world-v1 FOOT cells in
+roof tone, one tile per frame while visible, faded with the blend: the
+zoom sweep's worst step 6.8 % → 4.1–4.2 % (MapLibre 3.9 %, bound 5 %), so
+the far coarse layer is not needed. Sentry: every event tagged engine
+(own / maplibre) and tier (`monitoring.bundle.js`). Flip checklist
+(#129 comment): `engineFlag` default `asked = global ?? ?engine ?? 'own'`
+through `engineForCity` (other cities stay MapLibre, `game.js` unchanged),
+`mapLibreLoader.wantsMapLibre` flipped in the same commit, both pinned on
+one query table; plain runs then exercise own and the 25 `test.skip(OWN)`
+spec files need a scheduled `ENGINE=maplibre` lane until P5; Sentry bar
+over 48 h of the cohort on the engine tag: own context-lost per session no
+worse than MapLibre, dead-gpu / webgl-unavailable not rising; rollback per
+user `?engine=maplibre` or `window.__canalRecallEngine='maplibre'`, global
+by reverting the two lines. Red on main, not from this branch (L1 takes
+them next, they gate the flip): building-click-perf :146 (residency wait
+timeout) and :228 ("kit sampled" 0) on both engines; iPhone
+city-startup-lod `checked > 0` = 0 on both engines; iPhone render-on-change
+"riding off draws at once" 2/2 fail under own with main's bundles —
+probably timing from the briefing world build or the tree cull. Checks:
+lint, test:engine 124/124, test:own-ground 224/224; own desktop engine-own,
+engine-parity, render-on-change, context-restore, overview-transition,
+building-look, governor-no-flash and Westermarkt pass; default desktop
+look-consistency and start-heading pass. Integrator: engine, 3d,
+building-tiles, three-buildings and monitoring bundles rebuilt.
+
+**The pin harness's whole-frame shading flip was an unpinned camera elevation, harness-only (2026-11-01, P4).**
+Materials lane (d80ab4245, spec only). The fixed shot's `jumpToLngLat` set
+centre, zoom, bearing and pitch but not elevation, so the camera kept the
+ride's eased rider-surface height from whenever sync was held (Westerkerk
+0.263 vs 0.295 m between loads, Leidsegracht 0.002 vs 0.127; Bloemgracht
+identical and 0 px): a 0.05–0.13 px vertical shift that reads as a 1–3-level
+emboss over 1.5–3.2 M px. Not tone mapping, the governor or the shadow
+pass. Not player-visible: 30 consecutive frames at a held pose hash
+identical at all five spots (`AB_FRAMES=N` probe); in play the elevation
+follows the rider every frame. Both jumps now pin the elevation to
+`_ownGround.heightAt(centre)` and each shot records its camera state.
+Three identical loads with trees on: Westerkerk 1.51 M → 135 px (scattered
+singles; default vs default2 is 122), Bloemgracht 0 → 2, Nassaukade 183k →
+1, Leidsegracht 0 → 3, IJburg 1.72 M → 1. Trees are pinnable now.
+
 **Only the trees on screen are drawn: desktop frame 1.84 M → 1.42 M triangles, iPad 0.94 M → 0.80 M (2026-11-01, P4).**
 Materials lane (8cfc3ceb4). Before, every tree in the padded view box was
 drawn, ~2,000 on desktop, most off screen on a pitched chase view.
