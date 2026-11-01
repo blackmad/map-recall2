@@ -1,0 +1,2066 @@
+{
+ "name": "transvaalbuurt-3-oost",
+ "buurt": "transvaalbuurt-oost",
+ "library": "transvaalbuurt",
+ "generatedAt": "2026-11-01T05:29:29.751Z",
+ "method": "scripts/block-face/batch.ts",
+ "totals": {
+  "faces": 79,
+  "runs": 80,
+  "installed": 4,
+  "installedPands": 10,
+  "failed": 76,
+  "byReason": {
+   "no-type": 76
+  }
+ },
+ "rows": [
+  {
+   "face": "retief-45-75",
+   "street": "Retiefstraat",
+   "ride": 35869,
+   "restriped": null,
+   "stripQuality": {
+    "badShare": 0,
+    "reasons": []
+   },
+   "nccMin": 0.216,
+   "nccMedian": 0.277,
+   "stripOverDrawn": 1.001,
+   "wallFits": 0,
+   "droppedCorners": [],
+   "triangles": 6291,
+   "sheet": "staging/block-face/retief-45-75-r1/review/strip-sheet.png",
+   "stripDate": "2023-01-02",
+   "run": "retief-45-75-r1",
+   "pands": 3,
+   "mode": "auto-place",
+   "status": "installed",
+   "reasons": [],
+   "seconds": 6
+  },
+  {
+   "face": "maritz-1-47",
+   "street": "Maritzstraat",
+   "ride": 27724,
+   "restriped": null,
+   "stripQuality": {
+    "badShare": 0,
+    "reasons": []
+   },
+   "nccMin": null,
+   "nccMedian": null,
+   "stripOverDrawn": null,
+   "wallFits": 0,
+   "droppedCorners": [],
+   "triangles": null,
+   "sheet": null,
+   "run": "maritz-1-47",
+   "pands": 4,
+   "mode": "auto-place",
+   "stripDate": "2020-04-30",
+   "status": "failed",
+   "reasons": [
+    "no-type: 0/4 placed (2x match: every type vetoed (best transvaal-#-five-storey-tall: built #, type #-; 1x match: best transvaal-#-portiek scores # < # (strip cornice # m vs the type's; 1x run: a single placed pand between held neighbours or the face end: a block )"
+   ],
+   "seconds": 1.9
+  },
+  {
+   "face": "pretorius-72-120",
+   "street": "Pretoriusstraat",
+   "ride": 25028,
+   "restriped": null,
+   "stripQuality": {
+    "badShare": 0,
+    "reasons": []
+   },
+   "nccMin": 0.309,
+   "nccMedian": 0.326,
+   "stripOverDrawn": 0.903,
+   "wallFits": 0,
+   "droppedCorners": [],
+   "triangles": 6877,
+   "sheet": "staging/block-face/pretorius-72-120-r1/review/strip-sheet.png",
+   "stripDate": "2023-01-02",
+   "run": "pretorius-72-120-r1",
+   "pands": 3,
+   "mode": "auto-place",
+   "status": "installed",
+   "reasons": [],
+   "seconds": 5.1
+  },
+  {
+   "face": "paardekraal-2-16",
+   "street": "Paardekraalstraat",
+   "ride": 20249,
+   "restriped": null,
+   "stripQuality": {
+    "badShare": 0,
+    "reasons": []
+   },
+   "nccMin": null,
+   "nccMedian": null,
+   "stripOverDrawn": null,
+   "wallFits": 0,
+   "droppedCorners": [],
+   "triangles": null,
+   "sheet": null,
+   "run": "paardekraal-2-16",
+   "pands": 8,
+   "mode": "auto-place",
+   "stripDate": "2022-01-12",
+   "status": "failed",
+   "reasons": [
+    "no-type: 0/8 placed (2x run: a single placed pand between held neighbours or the face end: a block ; 2x likeness: edge NCC # < # (photo vs model body; likeness#ts FAIL: glazing storey ; 1x match: best transvaal-#-five-storey-tall scores # < # (#DBAG eaves # m = # st)"
+   ],
+   "seconds": 15
+  },
+  {
+   "face": "paardekraal-1-15",
+   "street": "Paardekraalstraat",
+   "ride": 19953,
+   "restriped": null,
+   "stripQuality": {
+    "badShare": 0,
+    "reasons": []
+   },
+   "nccMin": null,
+   "nccMedian": null,
+   "stripOverDrawn": null,
+   "wallFits": 0,
+   "droppedCorners": [],
+   "triangles": null,
+   "sheet": null,
+   "run": "paardekraal-1-15",
+   "pands": 7,
+   "mode": "auto-place",
+   "stripDate": "2023-01-02",
+   "status": "failed",
+   "reasons": [
+    "no-type: 0/7 placed (2x likeness: edge NCC # < # (photo vs model body; likeness#ts FAIL: glazing storey ; 2x match: best transvaal-#-five-storey-tall scores # < # (#DBAG eaves # m = # st; 1x match: every type vetoed (best transvaal-#-five-storey-tall: frontage # m, ty)"
+   ],
+   "seconds": 7.2
+  },
+  {
+   "face": "retief-83-105",
+   "street": "Retiefstraat",
+   "ride": 19512,
+   "restriped": null,
+   "stripQuality": {
+    "badShare": 0,
+    "reasons": []
+   },
+   "nccMin": null,
+   "nccMedian": null,
+   "stripOverDrawn": null,
+   "wallFits": 0,
+   "droppedCorners": [],
+   "triangles": null,
+   "sheet": null,
+   "run": "retief-83-105",
+   "pands": 12,
+   "mode": "auto-place",
+   "stripDate": "2020-04-29",
+   "status": "failed",
+   "reasons": [
+    "no-type: 0/12 placed (6x match: best transvaal-#-five-storey-tall scores # < # (#DBAG eaves # m = # st; 2x likeness: edge NCC # < # (photo vs model body; likeness#ts FAIL: glazing storey ; 2x run: a single placed pand between held neighbours or the face end: a block )"
+   ],
+   "seconds": 8.3
+  },
+  {
+   "face": "retief-194-268",
+   "street": "Retiefstraat",
+   "ride": 18577,
+   "restriped": null,
+   "stripQuality": {
+    "badShare": 0,
+    "reasons": []
+   },
+   "nccMin": null,
+   "nccMedian": null,
+   "stripOverDrawn": null,
+   "wallFits": 0,
+   "droppedCorners": [],
+   "triangles": null,
+   "sheet": null,
+   "run": "retief-194-268",
+   "pands": 9,
+   "mode": "auto-place",
+   "stripDate": "2020-04-29",
+   "status": "failed",
+   "reasons": [
+    "no-type: 0/9 placed (4x likeness: run did not compile; 1x run: a single placed pand between held neighbours or the face end: a block ; 1x likeness: edge NCC # < # (photo vs model body; likeness#ts FAIL: glazing storey )"
+   ],
+   "seconds": 14.5
+  },
+  {
+   "face": "burger-45-131",
+   "street": "Schalk Burgerstraat",
+   "ride": 16082,
+   "restriped": null,
+   "stripQuality": null,
+   "nccMin": null,
+   "nccMedian": null,
+   "stripOverDrawn": null,
+   "wallFits": 0,
+   "droppedCorners": [],
+   "triangles": null,
+   "sheet": null,
+   "run": "burger-45-131",
+   "pands": 9,
+   "mode": "auto-place",
+   "stripDate": null,
+   "status": "failed",
+   "reasons": [
+    "no-type: no library year (built 1931; transvaalbuurt types 1908-1914, 1908-1914, 1921-1924, 1921-1924)"
+   ],
+   "seconds": 0
+  },
+  {
+   "face": "linnaeus-48-86",
+   "street": "Linnaeusstraat",
+   "ride": 14936,
+   "restriped": null,
+   "stripQuality": {
+    "badShare": 0,
+    "reasons": []
+   },
+   "nccMin": null,
+   "nccMedian": null,
+   "stripOverDrawn": null,
+   "wallFits": 0,
+   "droppedCorners": [],
+   "triangles": null,
+   "sheet": null,
+   "run": "linnaeus-48-86",
+   "pands": 17,
+   "mode": "auto-place",
+   "stripDate": "2020-04-30",
+   "status": "failed",
+   "reasons": [
+    "no-type: 0/16 placed (13x match: every type vetoed (best transvaal-#-five-storey-tall: built #, type #-; 1x match: best transvaal-#-five-storey-tall scores # < # (#DBAG eaves # m = # st; 1x match: best transvaal-#-portiek-tower scores # < # (strip accent share # (stu)"
+   ],
+   "seconds": 4.2
+  },
+  {
+   "face": "spitskop-1-37",
+   "street": "Spitskopstraat",
+   "ride": 14534,
+   "restriped": null,
+   "stripQuality": {
+    "badShare": 0,
+    "reasons": []
+   },
+   "nccMin": null,
+   "nccMedian": null,
+   "stripOverDrawn": null,
+   "wallFits": 0,
+   "droppedCorners": [],
+   "triangles": null,
+   "sheet": null,
+   "run": "spitskop-1-37",
+   "pands": 3,
+   "mode": "auto-place",
+   "stripDate": "2017-04-06",
+   "status": "failed",
+   "reasons": [
+    "no-type: 0/3 placed (3x match: every type vetoed (best transvaal-#-five-storey-tall: built #, type #-)"
+   ],
+   "seconds": 1.5
+  },
+  {
+   "face": "tugelaweg-63-65",
+   "street": "Tugelaweg",
+   "ride": 13547,
+   "restriped": null,
+   "stripQuality": {
+    "badShare": 0,
+    "reasons": []
+   },
+   "nccMin": null,
+   "nccMedian": null,
+   "stripOverDrawn": null,
+   "wallFits": 0,
+   "droppedCorners": [],
+   "triangles": null,
+   "sheet": null,
+   "run": "tugelaweg-63-65",
+   "pands": 2,
+   "mode": "auto-place",
+   "stripDate": "2020-04-29",
+   "status": "failed",
+   "reasons": [
+    "no-type: 0/2 placed (1x match: every type vetoed (best transvaal-#-five-storey-tall: built #, type #-; 1x run: a single placed pand between held neighbours or the face end: a block )"
+   ],
+   "seconds": 1.3
+  },
+  {
+   "face": "bikoplein-3-9",
+   "street": "Steve Bikoplein",
+   "ride": 8722,
+   "restriped": null,
+   "stripQuality": {
+    "badShare": 0,
+    "reasons": []
+   },
+   "nccMin": null,
+   "nccMedian": null,
+   "stripOverDrawn": null,
+   "wallFits": 0,
+   "droppedCorners": [],
+   "triangles": null,
+   "sheet": null,
+   "run": "bikoplein-3-9",
+   "pands": 4,
+   "mode": "auto-place",
+   "stripDate": "2023-01-02",
+   "status": "failed",
+   "reasons": [
+    "no-type: 0/4 placed (2x match: best transvaal-#-five-storey-tall scores # < # (#DBAG eaves # m = # st; 2x match: era guard: Steve Bikoplein # (same # row) reads ribbon windows; transv)"
+   ],
+   "seconds": 2.1
+  },
+  {
+   "face": "transvaal-65-93",
+   "street": "Transvaalstraat",
+   "ride": 7533,
+   "restriped": null,
+   "stripQuality": {
+    "badShare": 0,
+    "reasons": []
+   },
+   "nccMin": null,
+   "nccMedian": null,
+   "stripOverDrawn": null,
+   "wallFits": 0,
+   "droppedCorners": [],
+   "triangles": null,
+   "sheet": null,
+   "run": "transvaal-65-93",
+   "pands": 11,
+   "mode": "auto-place",
+   "stripDate": "2023-01-02",
+   "status": "failed",
+   "reasons": [
+    "no-type: 0/11 placed (9x match: every type vetoed (best transvaal-#-five-storey-tall: built #, type #-; 1x evidence: no front on the strip: sky over the roof in # % of columns (< # %): th; 1x match: every type vetoed (best transvaal-#-five-storey-tall: frontage # m, ty)"
+   ],
+   "seconds": 3.3
+  },
+  {
+   "face": "krugerplein-15-19",
+   "street": "Krugerplein",
+   "ride": 6890,
+   "restriped": null,
+   "stripQuality": {
+    "badShare": 0,
+    "reasons": []
+   },
+   "nccMin": null,
+   "nccMedian": null,
+   "stripOverDrawn": null,
+   "wallFits": 0,
+   "droppedCorners": [],
+   "triangles": null,
+   "sheet": null,
+   "run": "krugerplein-15-19",
+   "pands": 3,
+   "mode": "auto-place",
+   "stripDate": "2020-04-30",
+   "status": "failed",
+   "reasons": [
+    "no-type: 0/3 placed (1x likeness: edge NCC # < # (photo vs model body; likeness#ts WARN: mask IoU # < #); 1x likeness: edge NCC # < # (photo vs model body; likeness#ts FAIL: glazing storey ; 1x likeness: no photo evidence (usable photo # % < # %) and no passing same-type ne)"
+   ],
+   "seconds": 11.2
+  },
+  {
+   "face": "transvaal-50-70",
+   "street": "Transvaalstraat",
+   "ride": 6841,
+   "restriped": null,
+   "stripQuality": {
+    "badShare": 0,
+    "reasons": []
+   },
+   "nccMin": null,
+   "nccMedian": null,
+   "stripOverDrawn": null,
+   "wallFits": 0,
+   "droppedCorners": [],
+   "triangles": null,
+   "sheet": null,
+   "run": "transvaal-50-70",
+   "pands": 6,
+   "mode": "auto-place",
+   "stripDate": "2022-01-12",
+   "status": "failed",
+   "reasons": [
+    "no-type: 0/6 placed (2x run: a single placed pand between held neighbours or the face end: a block ; 2x match: every type vetoed (best transvaal-#-five-storey-tall: built #, type #-; 2x review: review: Transvaalstraat #-#: a flat front under a light cornice with b)"
+   ],
+   "seconds": 3
+  },
+  {
+   "face": "retief-272-292",
+   "street": "Retiefstraat",
+   "ride": 6669,
+   "restriped": null,
+   "stripQuality": {
+    "badShare": 0,
+    "reasons": []
+   },
+   "nccMin": null,
+   "nccMedian": null,
+   "stripOverDrawn": null,
+   "wallFits": 0,
+   "droppedCorners": [],
+   "triangles": null,
+   "sheet": null,
+   "run": "retief-272-292",
+   "pands": 3,
+   "mode": "auto-place",
+   "stripDate": "2020-04-29",
+   "status": "failed",
+   "reasons": [
+    "no-type: 0/3 placed (1x run: a single placed pand between held neighbours or the face end: a block ; 1x likeness: edge NCC # < # (photo vs model body; likeness#ts FAIL: wall hue # deg;; 1x evidence: no front on the strip: sky over the roof in # % of columns (< # %): th)"
+   ],
+   "seconds": 4.2
+  },
+  {
+   "face": "magersfontein-4-42",
+   "street": "Magersfonteinstraat",
+   "ride": 6439,
+   "restriped": null,
+   "stripQuality": {
+    "badShare": 0,
+    "reasons": []
+   },
+   "nccMin": null,
+   "nccMedian": null,
+   "stripOverDrawn": null,
+   "wallFits": 0,
+   "droppedCorners": [],
+   "triangles": null,
+   "sheet": null,
+   "run": "magersfontein-4-42",
+   "pands": 3,
+   "mode": "auto-place",
+   "stripDate": "2020-04-29",
+   "status": "failed",
+   "reasons": [
+    "no-type: 0/3 placed (2x likeness: edge NCC # < # (photo vs model body; likeness#ts FAIL: window shape sq; 1x likeness: edge NCC # < # (photo vs model body; likeness#ts FAIL: wall hue # deg;)"
+   ],
+   "seconds": 7.9
+  },
+  {
+   "face": "retief-3-41",
+   "street": "Retiefstraat",
+   "ride": 5944,
+   "restriped": null,
+   "stripQuality": {
+    "badShare": 0,
+    "reasons": []
+   },
+   "nccMin": null,
+   "nccMedian": null,
+   "stripOverDrawn": null,
+   "wallFits": 0,
+   "droppedCorners": [],
+   "triangles": null,
+   "sheet": null,
+   "run": "retief-3-41",
+   "pands": 20,
+   "mode": "auto-place",
+   "stripDate": "2023-01-02",
+   "status": "failed",
+   "reasons": [
+    "no-type: 0/13 placed (7x likeness: edge NCC # < # (photo vs model body; likeness#ts FAIL: glazing storey ; 5x likeness: edge NCC # < # (photo vs model body; likeness#ts FAIL: wall dL +#; gla; 1x likeness: edge NCC # < # (photo vs model body; likeness#ts FAIL: glazing  mean #)"
+   ],
+   "seconds": 29.7
+  },
+  {
+   "face": "spitskop-4-8",
+   "street": "Spitskopstraat",
+   "ride": 5926,
+   "restriped": null,
+   "stripQuality": {
+    "badShare": 0.333,
+    "reasons": [
+     "blown"
+    ]
+   },
+   "nccMin": null,
+   "nccMedian": null,
+   "stripOverDrawn": null,
+   "wallFits": 0,
+   "droppedCorners": [],
+   "triangles": null,
+   "sheet": null,
+   "run": "spitskop-4-8",
+   "pands": 3,
+   "mode": "auto-place",
+   "stripDate": "2017-04-06",
+   "status": "failed",
+   "reasons": [
+    "no-type: 0/3 placed (3x match: every type vetoed (best transvaal-#-five-storey-tall: built #, type #-)"
+   ],
+   "seconds": 26.4
+  },
+  {
+   "face": "pretorius-71-95",
+   "street": "Pretoriusstraat",
+   "ride": 5897,
+   "restriped": null,
+   "stripQuality": {
+    "badShare": 0,
+    "reasons": []
+   },
+   "nccMin": 0.212,
+   "nccMedian": 0.23,
+   "stripOverDrawn": 0.996,
+   "wallFits": 2,
+   "droppedCorners": [],
+   "triangles": 4464,
+   "sheet": "staging/block-face/pretorius-71-95-r1/review/strip-sheet.png",
+   "stripDate": "2023-01-02",
+   "run": "pretorius-71-95-r1",
+   "pands": 2,
+   "mode": "auto-place",
+   "status": "installed",
+   "reasons": [],
+   "seconds": 7.7
+  },
+  {
+   "face": "pretorius-71-95",
+   "street": "Pretoriusstraat",
+   "ride": 5897,
+   "restriped": null,
+   "stripQuality": {
+    "badShare": 0,
+    "reasons": []
+   },
+   "nccMin": 0.212,
+   "nccMedian": 0.222,
+   "stripOverDrawn": 0.966,
+   "wallFits": 1,
+   "droppedCorners": [],
+   "triangles": 4444,
+   "sheet": "staging/block-face/pretorius-71-95-r2/review/strip-sheet.png",
+   "stripDate": "2023-01-02",
+   "run": "pretorius-71-95-r2",
+   "pands": 2,
+   "mode": "auto-place",
+   "status": "installed",
+   "reasons": [],
+   "seconds": 7.1
+  },
+  {
+   "face": "pretorius-14-48",
+   "street": "Pretoriusstraat",
+   "ride": 5754,
+   "restriped": null,
+   "stripQuality": {
+    "badShare": 0,
+    "reasons": []
+   },
+   "nccMin": null,
+   "nccMedian": null,
+   "stripOverDrawn": null,
+   "wallFits": 0,
+   "droppedCorners": [],
+   "triangles": null,
+   "sheet": null,
+   "run": "pretorius-14-48",
+   "pands": 18,
+   "mode": "auto-place",
+   "stripDate": "2023-01-02",
+   "status": "failed",
+   "reasons": [
+    "no-type: 0/16 placed (12x match: best transvaal-#-five-storey-tall scores # < # (#DBAG eaves # m = # st; 4x likeness: run did not compile)"
+   ],
+   "seconds": 6.1
+  },
+  {
+   "face": "linnaeus-104-114",
+   "street": "Linnaeusstraat",
+   "ride": 5581,
+   "restriped": null,
+   "stripQuality": {
+    "badShare": 0.179,
+    "reasons": [
+     "cold cast rb"
+    ]
+   },
+   "nccMin": null,
+   "nccMedian": null,
+   "stripOverDrawn": null,
+   "wallFits": 0,
+   "droppedCorners": [],
+   "triangles": null,
+   "sheet": null,
+   "run": "linnaeus-104-114",
+   "pands": 4,
+   "mode": "auto-place",
+   "stripDate": "2023-01-02",
+   "status": "failed",
+   "reasons": [
+    "no-type: 0/4 placed (2x likeness: run did not compile; 1x run: a single placed pand between held neighbours or the face end: a block ; 1x match: best transvaal-#-five-storey-tall scores # < # (#DBAG eaves # m = # st)"
+   ],
+   "seconds": 3.1
+  },
+  {
+   "face": "transvaal-42-48",
+   "street": "Transvaalstraat",
+   "ride": 5394,
+   "restriped": null,
+   "stripQuality": {
+    "badShare": 0,
+    "reasons": []
+   },
+   "nccMin": null,
+   "nccMedian": null,
+   "stripOverDrawn": null,
+   "wallFits": 0,
+   "droppedCorners": [],
+   "triangles": null,
+   "sheet": null,
+   "run": "transvaal-42-48",
+   "pands": 4,
+   "mode": "auto-place",
+   "stripDate": "2023-01-02",
+   "status": "failed",
+   "reasons": [
+    "no-type: 0/4 placed (2x review: review: Transvaalstraat #-# share one large ornamented pointed gable (; 1x match: best transvaal-#-five-storey-tall scores # < # (#DBAG eaves # m = # st; 1x review: review: another design: a taller narrow front with a stepped side gabl)"
+   ],
+   "seconds": 1.5
+  },
+  {
+   "face": "krugerplein-21-23",
+   "street": "Krugerplein",
+   "ride": 4953,
+   "restriped": null,
+   "stripQuality": {
+    "badShare": 0,
+    "reasons": []
+   },
+   "nccMin": null,
+   "nccMedian": null,
+   "stripOverDrawn": null,
+   "wallFits": 0,
+   "droppedCorners": [],
+   "triangles": null,
+   "sheet": null,
+   "run": "krugerplein-21-23",
+   "pands": 2,
+   "mode": "auto-place",
+   "stripDate": "2020-04-30",
+   "status": "failed",
+   "reasons": [
+    "no-type: 0/2 placed (1x likeness: edge NCC # < # (photo vs model body; likeness#ts NO EVIDENCE: foliage ; 1x likeness: edge NCC # < # (photo vs model body; likeness#ts FAIL: glazing storey )"
+   ],
+   "seconds": 5.8
+  },
+  {
+   "face": "transvaalkade-2-2",
+   "street": "Transvaalkade",
+   "ride": 4557,
+   "restriped": null,
+   "stripQuality": null,
+   "nccMin": null,
+   "nccMedian": null,
+   "stripOverDrawn": null,
+   "wallFits": 0,
+   "droppedCorners": [],
+   "triangles": null,
+   "sheet": null,
+   "run": "transvaalkade-2-2",
+   "pands": 2,
+   "mode": "auto-place",
+   "stripDate": null,
+   "status": "failed",
+   "reasons": [
+    "no-type: no library year (built 1878; transvaalbuurt types 1908-1914, 1908-1914, 1921-1924, 1921-1924)"
+   ],
+   "seconds": 0
+  },
+  {
+   "face": "transvaalkade-4-4",
+   "street": "Transvaalkade",
+   "ride": 4411,
+   "restriped": null,
+   "stripQuality": {
+    "badShare": 0,
+    "reasons": []
+   },
+   "nccMin": null,
+   "nccMedian": null,
+   "stripOverDrawn": null,
+   "wallFits": 0,
+   "droppedCorners": [],
+   "triangles": null,
+   "sheet": null,
+   "run": "transvaalkade-4-4",
+   "pands": 2,
+   "mode": "auto-place",
+   "stripDate": "2023-01-02",
+   "status": "failed",
+   "reasons": [
+    "no-type: 0/2 placed (2x match: best transvaal-#-five-storey-tall scores # < # (#DBAG eaves # m = # st)"
+   ],
+   "seconds": 0.9
+  },
+  {
+   "face": "smit-12-18",
+   "street": "Smitstraat",
+   "ride": 4403,
+   "restriped": null,
+   "stripQuality": {
+    "badShare": 0,
+    "reasons": []
+   },
+   "nccMin": null,
+   "nccMedian": null,
+   "stripOverDrawn": null,
+   "wallFits": 0,
+   "droppedCorners": [],
+   "triangles": null,
+   "sheet": null,
+   "run": "smit-12-18",
+   "pands": 4,
+   "mode": "auto-place",
+   "stripDate": "2020-04-29",
+   "status": "failed",
+   "reasons": [
+    "no-type: 0/4 placed (1x run: a single placed pand between held neighbours or the face end: a block ; 1x match: best transvaal-#-five-storey-tall scores # < # (#DBAG eaves # m = # st; 1x likeness: edge NCC # < # (photo vs model body; likeness#ts WARN: columns # vs ph)"
+   ],
+   "seconds": 6.5
+  },
+  {
+   "face": "majuba-153-175",
+   "street": "Majubastraat",
+   "ride": 4346,
+   "restriped": null,
+   "stripQuality": {
+    "badShare": 0,
+    "reasons": []
+   },
+   "nccMin": null,
+   "nccMedian": null,
+   "stripOverDrawn": null,
+   "wallFits": 0,
+   "droppedCorners": [],
+   "triangles": null,
+   "sheet": null,
+   "run": "majuba-153-175",
+   "pands": 2,
+   "mode": "auto-place",
+   "stripDate": "2020-04-29",
+   "status": "failed",
+   "reasons": [
+    "no-type: 0/2 placed (1x match: best transvaal-#-five-storey-tall scores # < # (#DBAG eaves # m = # st; 1x match: every type vetoed (best transvaal-#-five-storey-tall: frontage # m, ty)"
+   ],
+   "seconds": 1.3
+  },
+  {
+   "face": "pretorius-37-47",
+   "street": "Pretoriusstraat",
+   "ride": 4277,
+   "restriped": null,
+   "stripQuality": {
+    "badShare": 0,
+    "reasons": []
+   },
+   "nccMin": null,
+   "nccMedian": null,
+   "stripOverDrawn": null,
+   "wallFits": 0,
+   "droppedCorners": [],
+   "triangles": null,
+   "sheet": null,
+   "run": "pretorius-37-47",
+   "pands": 6,
+   "mode": "auto-place",
+   "stripDate": "2023-01-02",
+   "status": "failed",
+   "reasons": [
+    "no-type: 0/6 placed (5x likeness: edge NCC # < # (photo vs model body; likeness#ts FAIL: glazing storey ; 1x likeness: edge NCC # < # (photo vs model body; likeness#ts FAIL: window shape sq)"
+   ],
+   "seconds": 13.2
+  },
+  {
+   "face": "transvaalkade-5-5",
+   "street": "Transvaalkade",
+   "ride": 4127,
+   "restriped": null,
+   "stripQuality": {
+    "badShare": 0,
+    "reasons": []
+   },
+   "nccMin": null,
+   "nccMedian": null,
+   "stripOverDrawn": null,
+   "wallFits": 0,
+   "droppedCorners": [],
+   "triangles": null,
+   "sheet": null,
+   "run": "transvaalkade-5-5",
+   "pands": 2,
+   "mode": "auto-place",
+   "stripDate": "2023-01-02",
+   "status": "failed",
+   "reasons": [
+    "no-type: 0/2 placed (2x match: best transvaal-#-five-storey-tall scores # < # (#DBAG eaves # m = # st)"
+   ],
+   "seconds": 0.9
+  },
+  {
+   "face": "bikoplein-4-12",
+   "street": "Steve Bikoplein",
+   "ride": 4116,
+   "restriped": null,
+   "stripQuality": {
+    "badShare": 0,
+    "reasons": []
+   },
+   "nccMin": null,
+   "nccMedian": null,
+   "stripOverDrawn": null,
+   "wallFits": 0,
+   "droppedCorners": [],
+   "triangles": null,
+   "sheet": null,
+   "run": "bikoplein-4-12",
+   "pands": 5,
+   "mode": "auto-place",
+   "stripDate": "2023-01-02",
+   "status": "failed",
+   "reasons": [
+    "no-type: 0/5 placed (4x likeness: run did not compile; 1x match: every type vetoed (best transvaal-#-five-storey-tall: frontage # m, ty)"
+   ],
+   "seconds": 3.1
+  },
+  {
+   "face": "transvaalkade-6-6",
+   "street": "Transvaalkade",
+   "ride": 3390,
+   "restriped": null,
+   "stripQuality": null,
+   "nccMin": null,
+   "nccMedian": null,
+   "stripOverDrawn": null,
+   "wallFits": 0,
+   "droppedCorners": [],
+   "triangles": null,
+   "sheet": null,
+   "run": "transvaalkade-6-6",
+   "pands": 2,
+   "mode": "auto-place",
+   "stripDate": null,
+   "status": "failed",
+   "reasons": [
+    "no-type: no library year (built 1882; transvaalbuurt types 1908-1914, 1908-1914, 1921-1924, 1921-1924)"
+   ],
+   "seconds": 0
+  },
+  {
+   "face": "transvaalkade-7-7",
+   "street": "Transvaalkade",
+   "ride": 3365,
+   "restriped": null,
+   "stripQuality": null,
+   "nccMin": null,
+   "nccMedian": null,
+   "stripOverDrawn": null,
+   "wallFits": 0,
+   "droppedCorners": [],
+   "triangles": null,
+   "sheet": null,
+   "run": "transvaalkade-7-7",
+   "pands": 2,
+   "mode": "auto-place",
+   "stripDate": null,
+   "status": "failed",
+   "reasons": [
+    "no-type: no library year (built 1882; transvaalbuurt types 1908-1914, 1908-1914, 1921-1924, 1921-1924)"
+   ],
+   "seconds": 0
+  },
+  {
+   "face": "transvaalkade-3-3",
+   "street": "Transvaalkade",
+   "ride": 3141,
+   "restriped": null,
+   "stripQuality": null,
+   "nccMin": null,
+   "nccMedian": null,
+   "stripOverDrawn": null,
+   "wallFits": 0,
+   "droppedCorners": [],
+   "triangles": null,
+   "sheet": null,
+   "run": "transvaalkade-3-3",
+   "pands": 2,
+   "mode": "auto-place",
+   "stripDate": null,
+   "status": "failed",
+   "reasons": [
+    "no-type: no library year (built 1878; transvaalbuurt types 1908-1914, 1908-1914, 1921-1924, 1921-1924)"
+   ],
+   "seconds": 0
+  },
+  {
+   "face": "linnaeus-92-102",
+   "street": "Linnaeusstraat",
+   "ride": 2832,
+   "restriped": null,
+   "stripQuality": {
+    "badShare": 0,
+    "reasons": []
+   },
+   "nccMin": null,
+   "nccMedian": null,
+   "stripOverDrawn": null,
+   "wallFits": 0,
+   "droppedCorners": [],
+   "triangles": null,
+   "sheet": null,
+   "run": "linnaeus-92-102",
+   "pands": 5,
+   "mode": "auto-place",
+   "stripDate": "2023-01-02",
+   "status": "failed",
+   "reasons": [
+    "no-type: 0/5 placed (2x match: every type vetoed (best transvaal-#-five-storey-tall: built #, type #-; 1x likeness: edge NCC # < # (photo vs model body; likeness#ts FAIL: wall family bri; 1x likeness: edge NCC # < # (photo vs model body; likeness#ts FAIL: wall dL +#; gla)"
+   ],
+   "seconds": 8.1
+  },
+  {
+   "face": "transvaalkade-8-8",
+   "street": "Transvaalkade",
+   "ride": 2812,
+   "restriped": null,
+   "stripQuality": null,
+   "nccMin": null,
+   "nccMedian": null,
+   "stripOverDrawn": null,
+   "wallFits": 0,
+   "droppedCorners": [],
+   "triangles": null,
+   "sheet": null,
+   "run": "transvaalkade-8-8",
+   "pands": 2,
+   "mode": "auto-place",
+   "stripDate": null,
+   "status": "failed",
+   "reasons": [
+    "no-type: no library year (built 1882; transvaalbuurt types 1908-1914, 1908-1914, 1921-1924, 1921-1924)"
+   ],
+   "seconds": 0
+  },
+  {
+   "face": "bikoplein-17-21",
+   "street": "Steve Bikoplein",
+   "ride": 2610,
+   "restriped": null,
+   "stripQuality": {
+    "badShare": 0,
+    "reasons": []
+   },
+   "nccMin": null,
+   "nccMedian": null,
+   "stripOverDrawn": null,
+   "wallFits": 0,
+   "droppedCorners": [],
+   "triangles": null,
+   "sheet": null,
+   "run": "bikoplein-17-21",
+   "pands": 3,
+   "mode": "auto-place",
+   "stripDate": "2024-10-02",
+   "status": "failed",
+   "reasons": [
+    "no-type: 0/3 placed (1x likeness: edge NCC # < # (photo vs model body; likeness#ts FAIL: glazing  mean #; 1x likeness: edge NCC # < # (photo vs model body; likeness#ts FAIL: glazing storey ; 1x match: every type vetoed (best transvaal-#-five-storey-tall: frontage # m, ty)"
+   ],
+   "seconds": 6.5
+  },
+  {
+   "face": "majuba-1-151",
+   "street": "Majubastraat",
+   "ride": 1399,
+   "restriped": null,
+   "stripQuality": {
+    "badShare": 0,
+    "reasons": []
+   },
+   "nccMin": null,
+   "nccMedian": null,
+   "stripOverDrawn": null,
+   "wallFits": 0,
+   "droppedCorners": [],
+   "triangles": null,
+   "sheet": null,
+   "run": "majuba-1-151",
+   "pands": 12,
+   "mode": "auto-place",
+   "stripDate": "2020-04-29",
+   "status": "failed",
+   "reasons": [
+    "no-type: 0/12 placed (5x run: a single placed pand between held neighbours or the face end: a block ; 4x match: best transvaal-#-five-storey-tall scores # < # (#DBAG eaves # m = # st; 2x review: review: #A is mostly off the #-#-# strip; # is a six-axis front with t)"
+   ],
+   "seconds": 10.6
+  },
+  {
+   "face": "smit-15-19",
+   "street": "Smitstraat",
+   "ride": 1399,
+   "restriped": null,
+   "stripQuality": {
+    "badShare": 0,
+    "reasons": []
+   },
+   "nccMin": null,
+   "nccMedian": null,
+   "stripOverDrawn": null,
+   "wallFits": 0,
+   "droppedCorners": [],
+   "triangles": null,
+   "sheet": null,
+   "run": "smit-15-19",
+   "pands": 3,
+   "mode": "auto-place",
+   "stripDate": "2020-04-29",
+   "status": "failed",
+   "reasons": [
+    "no-type: 0/3 placed (2x likeness: edge NCC # < # (photo vs model body; likeness#ts FAIL: glazing storey ; 1x run: a single placed pand between held neighbours or the face end: a block )"
+   ],
+   "seconds": 6.3
+  },
+  {
+   "face": "transvaal-131-143",
+   "street": "Transvaalstraat",
+   "ride": 1014,
+   "restriped": null,
+   "stripQuality": {
+    "badShare": 0.19,
+    "reasons": [
+     "blown"
+    ]
+   },
+   "nccMin": null,
+   "nccMedian": null,
+   "stripOverDrawn": null,
+   "wallFits": 0,
+   "droppedCorners": [],
+   "triangles": null,
+   "sheet": null,
+   "run": "transvaal-131-143",
+   "pands": 7,
+   "mode": "auto-place",
+   "stripDate": "2024-10-02",
+   "status": "failed",
+   "reasons": [
+    "no-type: 0/7 placed (7x match: every type vetoed (best transvaal-#-five-storey-tall: built #, type #-)"
+   ],
+   "seconds": 1.1
+  },
+  {
+   "face": "nek-31-43",
+   "street": "Laing's Nekstraat",
+   "ride": 980,
+   "restriped": null,
+   "stripQuality": {
+    "badShare": 0,
+    "reasons": []
+   },
+   "nccMin": null,
+   "nccMedian": null,
+   "stripOverDrawn": null,
+   "wallFits": 0,
+   "droppedCorners": [],
+   "triangles": null,
+   "sheet": null,
+   "run": "nek-31-43",
+   "pands": 7,
+   "mode": "auto-place",
+   "stripDate": "2023-01-02",
+   "status": "failed",
+   "reasons": [
+    "no-type: 0/7 placed (3x match: best transvaal-#-five-storey-tall scores # < # (#DBAG eaves # m = # st; 1x likeness: edge NCC # < # (photo vs model body; likeness#ts WARN: mask IoU # < #); 1x likeness: edge NCC # < # (photo vs model body; likeness#ts FAIL: window shape sq)"
+   ],
+   "seconds": 8.4
+  },
+  {
+   "face": "pretorius-1-33",
+   "street": "Pretoriusstraat",
+   "ride": 973,
+   "restriped": null,
+   "stripQuality": {
+    "badShare": 0,
+    "reasons": []
+   },
+   "nccMin": null,
+   "nccMedian": null,
+   "stripOverDrawn": null,
+   "wallFits": 0,
+   "droppedCorners": [],
+   "triangles": null,
+   "sheet": null,
+   "run": "pretorius-1-33",
+   "pands": 14,
+   "mode": "auto-place",
+   "stripDate": "2023-01-02",
+   "status": "failed",
+   "reasons": [
+    "no-type: 0/14 placed (4x run: a single placed pand between held neighbours or the face end: a block ; 3x review: review: the recipe attic rises #-# m over the strip cornice (#DBAG roo; 2x match: every type vetoed (best transvaal-#-five-storey-tall: built #, type #-)"
+   ],
+   "seconds": 18.5
+  },
+  {
+   "face": "transvaal-106-140",
+   "street": "Transvaalstraat",
+   "ride": 922,
+   "restriped": null,
+   "stripQuality": {
+    "badShare": 0,
+    "reasons": []
+   },
+   "nccMin": null,
+   "nccMedian": null,
+   "stripOverDrawn": null,
+   "wallFits": 0,
+   "droppedCorners": [],
+   "triangles": null,
+   "sheet": null,
+   "run": "transvaal-106-140",
+   "pands": 16,
+   "mode": "auto-place",
+   "stripDate": "2020-04-29",
+   "status": "failed",
+   "reasons": [
+    "no-type: 0/14 placed (4x run: a single placed pand between held neighbours or the face end: a block ; 4x evidence: no front on the strip: sky over the roof in # % of columns (< # %): th; 2x match: every type vetoed (best transvaal-#-five-storey-tall: built #, type #-)"
+   ],
+   "seconds": 4.4
+  },
+  {
+   "face": "tugelaweg-2-16",
+   "street": "Tugelaweg",
+   "ride": 747,
+   "restriped": null,
+   "stripQuality": null,
+   "nccMin": null,
+   "nccMedian": null,
+   "stripOverDrawn": null,
+   "wallFits": 0,
+   "droppedCorners": [],
+   "triangles": null,
+   "sheet": null,
+   "run": "tugelaweg-2-16",
+   "pands": 2,
+   "mode": "auto-place",
+   "stripDate": null,
+   "status": "failed",
+   "reasons": [
+    "no-type: no library year (built 1923/1994; transvaalbuurt types 1908-1914, 1908-1914, 1921-1924, 1921-1924)"
+   ],
+   "seconds": 0
+  },
+  {
+   "face": "pretorius-54-68",
+   "street": "Pretoriusstraat",
+   "ride": 643,
+   "restriped": null,
+   "stripQuality": {
+    "badShare": 0,
+    "reasons": []
+   },
+   "nccMin": null,
+   "nccMedian": null,
+   "stripOverDrawn": null,
+   "wallFits": 0,
+   "droppedCorners": [],
+   "triangles": null,
+   "sheet": null,
+   "run": "pretorius-54-68",
+   "pands": 8,
+   "mode": "auto-place",
+   "stripDate": "2023-01-02",
+   "status": "failed",
+   "reasons": [
+    "no-type: 0/8 placed (4x likeness: edge NCC # < # (photo vs model body; likeness#ts FAIL: glazing storey ; 3x match: best transvaal-#-five-storey-tall scores # < # (#DBAG eaves # m = # st; 1x run: a single placed pand between held neighbours or the face end: a block )"
+   ],
+   "seconds": 17.2
+  },
+  {
+   "face": "transvaal-4-36",
+   "street": "Transvaalstraat",
+   "ride": 464,
+   "restriped": null,
+   "stripQuality": null,
+   "nccMin": null,
+   "nccMedian": null,
+   "stripOverDrawn": null,
+   "wallFits": 0,
+   "droppedCorners": [],
+   "triangles": null,
+   "sheet": null,
+   "run": "transvaal-4-36",
+   "pands": 8,
+   "mode": "auto-place",
+   "stripDate": null,
+   "status": "failed",
+   "reasons": [
+    "no-type: no library year (built 1913/1994/1995/1999; transvaalbuurt types 1908-1914, 1908-1914, 1921-1924, 1921-1924)"
+   ],
+   "seconds": 0
+  },
+  {
+   "face": "pretorius-2-10",
+   "street": "Pretoriusstraat",
+   "ride": 411,
+   "restriped": null,
+   "stripQuality": {
+    "badShare": 0,
+    "reasons": []
+   },
+   "nccMin": null,
+   "nccMedian": null,
+   "stripOverDrawn": null,
+   "wallFits": 0,
+   "droppedCorners": [],
+   "triangles": null,
+   "sheet": null,
+   "run": "pretorius-2-10",
+   "pands": 5,
+   "mode": "auto-place",
+   "stripDate": "2023-01-02",
+   "status": "failed",
+   "reasons": [
+    "no-type: 0/5 placed (2x likeness: run did not compile; 2x match: every type vetoed (best transvaal-#-five-storey-tall: frontage # m, ty; 1x match: every type vetoed (best transvaal-#-five-storey-tall: built #, type #-)"
+   ],
+   "seconds": 2.3
+  },
+  {
+   "face": "tugelaweg-50-53",
+   "street": "Tugelaweg",
+   "ride": 405,
+   "restriped": null,
+   "stripQuality": {
+    "badShare": 0,
+    "reasons": []
+   },
+   "nccMin": null,
+   "nccMedian": null,
+   "stripOverDrawn": null,
+   "wallFits": 0,
+   "droppedCorners": [],
+   "triangles": null,
+   "sheet": null,
+   "run": "tugelaweg-50-53",
+   "pands": 2,
+   "mode": "auto-place",
+   "stripDate": "2020-04-29",
+   "status": "failed",
+   "reasons": [
+    "no-type: 0/2 placed (2x review: review: a plain flat four-storey front with a light cornice and five w)"
+   ],
+   "seconds": 1.3
+  },
+  {
+   "face": "ingogo-2-14",
+   "street": "Ingogostraat",
+   "ride": 394,
+   "restriped": null,
+   "stripQuality": {
+    "badShare": 0,
+    "reasons": []
+   },
+   "nccMin": null,
+   "nccMedian": null,
+   "stripOverDrawn": null,
+   "wallFits": 0,
+   "droppedCorners": [],
+   "triangles": null,
+   "sheet": null,
+   "run": "ingogo-2-14",
+   "pands": 7,
+   "mode": "auto-place",
+   "stripDate": "2020-04-29",
+   "status": "failed",
+   "reasons": [
+    "no-type: 0/7 placed (2x likeness: edge NCC # < # (photo vs model body; likeness#ts FAIL: glazing storey ; 1x likeness: edge NCC # < # (photo vs model body; likeness#ts WARN: columns # vs ph; 1x likeness: edge NCC -# < # (photo vs model body; likeness#ts FAIL: glazing storey)"
+   ],
+   "seconds": 19.1
+  },
+  {
+   "face": "ingogo-1-13",
+   "street": "Ingogostraat",
+   "ride": 144,
+   "restriped": null,
+   "stripQuality": {
+    "badShare": 0,
+    "reasons": []
+   },
+   "nccMin": null,
+   "nccMedian": null,
+   "stripOverDrawn": null,
+   "wallFits": 0,
+   "droppedCorners": [],
+   "triangles": null,
+   "sheet": null,
+   "run": "ingogo-1-13",
+   "pands": 7,
+   "mode": "auto-place",
+   "stripDate": "2020-04-29",
+   "status": "failed",
+   "reasons": [
+    "no-type: 0/7 placed (4x evidence: no front on the strip: sky over the roof in # % of columns (< # %): th; 2x likeness: edge NCC # < # (photo vs model body; likeness#ts FAIL: glazing storey ; 1x match: best transvaal-#-five-storey-tall scores # < # (#DBAG eaves # m = # st)"
+   ],
+   "seconds": 7.9
+  },
+  {
+   "face": "cilliers-2-8",
+   "street": "Cilliersstraat",
+   "ride": 0,
+   "restriped": null,
+   "stripQuality": {
+    "badShare": 0,
+    "reasons": []
+   },
+   "nccMin": null,
+   "nccMedian": null,
+   "stripOverDrawn": null,
+   "wallFits": 0,
+   "droppedCorners": [],
+   "triangles": null,
+   "sheet": null,
+   "run": "cilliers-2-8",
+   "pands": 3,
+   "mode": "auto-place",
+   "stripDate": "2020-04-29",
+   "status": "failed",
+   "reasons": [
+    "no-type: 0/3 placed (2x evidence: no front on the strip: sky over the roof in # % of columns (< # %): th; 1x match: every type vetoed (best transvaal-#-five-storey-tall: built #, type #-)"
+   ],
+   "seconds": 1.4
+  },
+  {
+   "face": "cilliers-44-94",
+   "street": "Cilliersstraat",
+   "ride": 0,
+   "restriped": null,
+   "stripQuality": null,
+   "nccMin": null,
+   "nccMedian": null,
+   "stripOverDrawn": null,
+   "wallFits": 0,
+   "droppedCorners": [],
+   "triangles": null,
+   "sheet": null,
+   "run": "cilliers-44-94",
+   "pands": 2,
+   "mode": "auto-place",
+   "stripDate": null,
+   "status": "failed",
+   "reasons": [
+    "no-type: no library year (built 1994; transvaalbuurt types 1908-1914, 1908-1914, 1921-1924, 1921-1924)"
+   ],
+   "seconds": 0
+  },
+  {
+   "face": "cilliers-7-105",
+   "street": "Cilliersstraat",
+   "ride": 0,
+   "restriped": null,
+   "stripQuality": null,
+   "nccMin": null,
+   "nccMedian": null,
+   "stripOverDrawn": null,
+   "wallFits": 0,
+   "droppedCorners": [],
+   "triangles": null,
+   "sheet": null,
+   "run": "cilliers-7-105",
+   "pands": 5,
+   "mode": "auto-place",
+   "stripDate": null,
+   "status": "failed",
+   "reasons": [
+    "no-type: no library year (built 1994; transvaalbuurt types 1908-1914, 1908-1914, 1921-1924, 1921-1924)"
+   ],
+   "seconds": 0
+  },
+  {
+   "face": "colenso-2-12",
+   "street": "Colensostraat",
+   "ride": 0,
+   "restriped": null,
+   "stripQuality": null,
+   "nccMin": null,
+   "nccMedian": null,
+   "stripOverDrawn": null,
+   "wallFits": 0,
+   "droppedCorners": [],
+   "triangles": null,
+   "sheet": null,
+   "run": "colenso-2-12",
+   "pands": 5,
+   "mode": "auto-place",
+   "stripDate": null,
+   "status": "failed",
+   "reasons": [
+    "no-type: no library year (built 1900/1922; transvaalbuurt types 1908-1914, 1908-1914, 1921-1924, 1921-1924)"
+   ],
+   "seconds": 0
+  },
+  {
+   "face": "colenso-14-28",
+   "street": "Colensostraat",
+   "ride": 0,
+   "restriped": null,
+   "stripQuality": {
+    "badShare": 0,
+    "reasons": []
+   },
+   "nccMin": null,
+   "nccMedian": null,
+   "stripOverDrawn": null,
+   "wallFits": 0,
+   "droppedCorners": [],
+   "triangles": null,
+   "sheet": null,
+   "run": "colenso-14-28",
+   "pands": 4,
+   "mode": "auto-place",
+   "stripDate": "2019-12-19",
+   "status": "failed",
+   "reasons": [
+    "no-type: 0/4 placed (4x match: every type vetoed (best transvaal-#-five-storey-tall: built #, type #-)"
+   ],
+   "seconds": 0.9
+  },
+  {
+   "face": "colenso-1-11",
+   "street": "Colensostraat",
+   "ride": 0,
+   "restriped": null,
+   "stripQuality": null,
+   "nccMin": null,
+   "nccMedian": null,
+   "stripOverDrawn": null,
+   "wallFits": 0,
+   "droppedCorners": [],
+   "triangles": null,
+   "sheet": null,
+   "run": "colenso-1-11",
+   "pands": 4,
+   "mode": "auto-place",
+   "stripDate": null,
+   "status": "failed",
+   "reasons": [
+    "no-type: no library year (built 1900/1922; transvaalbuurt types 1908-1914, 1908-1914, 1921-1924, 1921-1924)"
+   ],
+   "seconds": 0
+  },
+  {
+   "face": "colenso-13-25",
+   "street": "Colensostraat",
+   "ride": 0,
+   "restriped": null,
+   "stripQuality": {
+    "badShare": 1,
+    "reasons": [
+     "blown"
+    ]
+   },
+   "nccMin": null,
+   "nccMedian": null,
+   "stripOverDrawn": null,
+   "wallFits": 0,
+   "droppedCorners": [],
+   "triangles": null,
+   "sheet": null,
+   "run": "colenso-13-25",
+   "pands": 4,
+   "mode": "auto-place",
+   "stripDate": "2020-04-29",
+   "status": "failed",
+   "reasons": [
+    "no-type: 0/4 placed (4x match: every type vetoed (best transvaal-#-five-storey-tall: built #, type #-)"
+   ],
+   "seconds": 1
+  },
+  {
+   "face": "cronj-2-6",
+   "street": "Cronjéstraat",
+   "ride": 0,
+   "restriped": null,
+   "stripQuality": {
+    "badShare": 0,
+    "reasons": []
+   },
+   "nccMin": null,
+   "nccMedian": null,
+   "stripOverDrawn": null,
+   "wallFits": 0,
+   "droppedCorners": [],
+   "triangles": null,
+   "sheet": null,
+   "run": "cronj-2-6",
+   "pands": 3,
+   "mode": "auto-place",
+   "stripDate": "2020-04-29",
+   "status": "failed",
+   "reasons": [
+    "no-type: 0/3 placed (2x evidence: strip # % without panorama data; 1x match: every type vetoed (best transvaal-#-five-storey-tall: built #, type #-)"
+   ],
+   "seconds": 0.8
+  },
+  {
+   "face": "cronj-8-12",
+   "street": "Cronjéstraat",
+   "ride": 0,
+   "restriped": null,
+   "stripQuality": {
+    "badShare": 0,
+    "reasons": []
+   },
+   "nccMin": null,
+   "nccMedian": null,
+   "stripOverDrawn": null,
+   "wallFits": 0,
+   "droppedCorners": [],
+   "triangles": null,
+   "sheet": null,
+   "run": "cronj-8-12",
+   "pands": 2,
+   "mode": "auto-place",
+   "stripDate": "2020-04-29",
+   "status": "failed",
+   "reasons": [
+    "no-type: 0/2 placed (1x evidence: no front on the strip: sky over the roof in # % of columns (< # %): th; 1x evidence: strip # % without panorama data)"
+   ],
+   "seconds": 0.9
+  },
+  {
+   "face": "cronj-1-17",
+   "street": "Cronjéstraat",
+   "ride": 0,
+   "restriped": null,
+   "stripQuality": {
+    "badShare": 0.18,
+    "reasons": [
+     "cyan cast gm"
+    ]
+   },
+   "nccMin": null,
+   "nccMedian": null,
+   "stripOverDrawn": null,
+   "wallFits": 0,
+   "droppedCorners": [],
+   "triangles": null,
+   "sheet": null,
+   "run": "cronj-1-17",
+   "pands": 7,
+   "mode": "auto-place",
+   "stripDate": "2024-10-02",
+   "status": "failed",
+   "reasons": [
+    "no-type: 0/7 placed (6x match: every type vetoed (best transvaal-#-five-storey-tall: built #, type #-; 1x evidence: no front on the strip: sky over the roof in # % of columns (< # %): th)"
+   ],
+   "seconds": 1.8
+  },
+  {
+   "face": "hertzog-1-7",
+   "street": "Hertzogstraat",
+   "ride": 0,
+   "restriped": null,
+   "stripQuality": {
+    "badShare": 0,
+    "reasons": []
+   },
+   "nccMin": null,
+   "nccMedian": null,
+   "stripOverDrawn": null,
+   "wallFits": 0,
+   "droppedCorners": [],
+   "triangles": null,
+   "sheet": null,
+   "run": "hertzog-1-7",
+   "pands": 2,
+   "mode": "auto-place",
+   "stripDate": "2017-04-06",
+   "status": "failed",
+   "reasons": [
+    "no-type: 0/2 placed (1x match: every type vetoed (best transvaal-#-five-storey-tall: built #, type #-; 1x run: a single placed pand between held neighbours or the face end: a block )"
+   ],
+   "seconds": 1.7
+  },
+  {
+   "face": "nek-34-56",
+   "street": "Laing's Nekstraat",
+   "ride": 0,
+   "restriped": null,
+   "stripQuality": {
+    "badShare": 0,
+    "reasons": []
+   },
+   "nccMin": null,
+   "nccMedian": null,
+   "stripOverDrawn": null,
+   "wallFits": 0,
+   "droppedCorners": [],
+   "triangles": null,
+   "sheet": null,
+   "run": "nek-34-56",
+   "pands": 8,
+   "mode": "auto-place",
+   "stripDate": "2022-01-12",
+   "status": "failed",
+   "reasons": [
+    "no-type: 0/8 placed (5x review: review: Laing's Nekstraat #-# (BAG #-#) is one long flat-roofed block ; 2x match: every type vetoed (best transvaal-#-five-storey-tall: frontage # m, ty; 1x run: a single placed pand between held neighbours or the face end: a block )"
+   ],
+   "seconds": 2.7
+  },
+  {
+   "face": "nek-60-162",
+   "street": "Laing's Nekstraat",
+   "ride": 0,
+   "restriped": null,
+   "stripQuality": {
+    "badShare": 0,
+    "reasons": []
+   },
+   "nccMin": null,
+   "nccMedian": null,
+   "stripOverDrawn": null,
+   "wallFits": 0,
+   "droppedCorners": [],
+   "triangles": null,
+   "sheet": null,
+   "run": "nek-60-162",
+   "pands": 4,
+   "mode": "auto-place",
+   "stripDate": "2020-04-29",
+   "status": "failed",
+   "reasons": [
+    "no-type: 0/4 placed (4x match: every type vetoed (best transvaal-#-five-storey-tall: built #, type #-)"
+   ],
+   "seconds": 1.4
+  },
+  {
+   "face": "nek-49-61",
+   "street": "Laing's Nekstraat",
+   "ride": 0,
+   "restriped": null,
+   "stripQuality": {
+    "badShare": 0.143,
+    "reasons": [
+     "blown"
+    ]
+   },
+   "nccMin": null,
+   "nccMedian": null,
+   "stripOverDrawn": null,
+   "wallFits": 0,
+   "droppedCorners": [],
+   "triangles": null,
+   "sheet": null,
+   "run": "nek-49-61",
+   "pands": 7,
+   "mode": "auto-place",
+   "stripDate": "2020-04-29",
+   "status": "failed",
+   "reasons": [
+    "no-type: 0/7 placed (6x match: best transvaal-#-five-storey-tall scores # < # (#DBAG eaves # m = # st; 1x evidence: no front on the strip: sky over the roof in # % of columns (< # %): th)"
+   ],
+   "seconds": 1
+  },
+  {
+   "face": "majuba-6-34",
+   "street": "Majubastraat",
+   "ride": 0,
+   "restriped": null,
+   "stripQuality": null,
+   "nccMin": null,
+   "nccMedian": null,
+   "stripOverDrawn": null,
+   "wallFits": 0,
+   "droppedCorners": [],
+   "triangles": null,
+   "sheet": null,
+   "run": "majuba-6-34",
+   "pands": 5,
+   "mode": "auto-place",
+   "stripDate": null,
+   "status": "failed",
+   "reasons": [
+    "no-type: no library year (built 1996/1999; transvaalbuurt types 1908-1914, 1908-1914, 1921-1924, 1921-1924)"
+   ],
+   "seconds": 0
+  },
+  {
+   "face": "retief-2-28",
+   "street": "Retiefstraat",
+   "ride": 0,
+   "restriped": null,
+   "stripQuality": {
+    "badShare": 0,
+    "reasons": []
+   },
+   "nccMin": null,
+   "nccMedian": null,
+   "stripOverDrawn": null,
+   "wallFits": 0,
+   "droppedCorners": [],
+   "triangles": null,
+   "sheet": null,
+   "run": "retief-2-28",
+   "pands": 8,
+   "mode": "auto-place",
+   "stripDate": "2023-01-02",
+   "status": "failed",
+   "reasons": [
+    "no-type: 0/7 placed (5x match: every type vetoed (best transvaal-#-five-storey-tall: built #, type #-; 2x likeness: run did not compile)"
+   ],
+   "seconds": 5
+  },
+  {
+   "face": "smit-24-30",
+   "street": "Smitstraat",
+   "ride": 0,
+   "restriped": null,
+   "stripQuality": {
+    "badShare": 0,
+    "reasons": []
+   },
+   "nccMin": null,
+   "nccMedian": null,
+   "stripOverDrawn": null,
+   "wallFits": 0,
+   "droppedCorners": [],
+   "triangles": null,
+   "sheet": null,
+   "run": "smit-24-30",
+   "pands": 4,
+   "mode": "auto-place",
+   "stripDate": "2020-04-29",
+   "status": "failed",
+   "reasons": [
+    "no-type: 0/4 placed (2x likeness: edge NCC # < # (photo vs model body; likeness#ts FAIL: glazing storey ; 2x likeness: edge NCC # < # (photo vs model body; likeness#ts WARN: mask IoU # < #))"
+   ],
+   "seconds": 11.4
+  },
+  {
+   "face": "smit-34-40",
+   "street": "Smitstraat",
+   "ride": 0,
+   "restriped": null,
+   "stripQuality": {
+    "badShare": 0,
+    "reasons": []
+   },
+   "nccMin": null,
+   "nccMedian": null,
+   "stripOverDrawn": null,
+   "wallFits": 0,
+   "droppedCorners": [],
+   "triangles": null,
+   "sheet": null,
+   "run": "smit-34-40",
+   "pands": 4,
+   "mode": "auto-place",
+   "stripDate": "2020-04-29",
+   "status": "failed",
+   "reasons": [
+    "no-type: 0/4 placed (2x match: best transvaal-#-five-storey-tall scores # < # (#DBAG eaves # m = # st; 2x review: review: Smitstraat #-#: a flat-topped front with horizontal balcony ba)"
+   ],
+   "seconds": 1.1
+  },
+  {
+   "face": "smit-27-53",
+   "street": "Smitstraat",
+   "ride": 0,
+   "restriped": null,
+   "stripQuality": {
+    "badShare": 0,
+    "reasons": []
+   },
+   "nccMin": null,
+   "nccMedian": null,
+   "stripOverDrawn": null,
+   "wallFits": 0,
+   "droppedCorners": [],
+   "triangles": null,
+   "sheet": null,
+   "run": "smit-27-53",
+   "pands": 7,
+   "mode": "auto-place",
+   "stripDate": "2020-04-29",
+   "status": "failed",
+   "reasons": [
+    "no-type: 0/7 placed (2x run: a single placed pand between held neighbours or the face end: a block ; 2x evidence: no front on the strip: sky over the roof in # % of columns (< # %): th; 2x match: every type vetoed (best transvaal-#-five-storey-tall: frontage # m, ty)"
+   ],
+   "seconds": 2.6
+  },
+  {
+   "face": "bikoplein-18-24",
+   "street": "Steve Bikoplein",
+   "ride": 0,
+   "restriped": null,
+   "stripQuality": {
+    "badShare": 0,
+    "reasons": []
+   },
+   "nccMin": null,
+   "nccMedian": null,
+   "stripOverDrawn": null,
+   "wallFits": 0,
+   "droppedCorners": [],
+   "triangles": null,
+   "sheet": null,
+   "run": "bikoplein-18-24",
+   "pands": 4,
+   "mode": "auto-place",
+   "stripDate": "2016-06-08",
+   "status": "failed",
+   "reasons": [
+    "no-type: 0/4 placed (2x match: best transvaal-#-five-storey-tall scores # < # (#DBAG eaves # m = # st; 2x evidence: no front on the strip: sky over the roof in # % of columns (< # %): th)"
+   ],
+   "seconds": 1.6
+  },
+  {
+   "face": "transvaalplein-4-6",
+   "street": "Transvaalplein",
+   "ride": 0,
+   "restriped": null,
+   "stripQuality": {
+    "badShare": 0,
+    "reasons": []
+   },
+   "nccMin": null,
+   "nccMedian": null,
+   "stripOverDrawn": null,
+   "wallFits": 0,
+   "droppedCorners": [],
+   "triangles": null,
+   "sheet": null,
+   "run": "transvaalplein-4-6",
+   "pands": 2,
+   "mode": "auto-place",
+   "stripDate": "2020-04-29",
+   "status": "failed",
+   "reasons": [
+    "no-type: 0/2 placed (1x match: every type vetoed (best transvaal-#-five-storey-tall: frontage # m, ty; 1x evidence: no front on the strip: sky over the roof in # % of columns (< # %): th)"
+   ],
+   "seconds": 0.6
+  },
+  {
+   "face": "transvaalplein-18-22",
+   "street": "Transvaalplein",
+   "ride": 0,
+   "restriped": null,
+   "stripQuality": {
+    "badShare": 0.343,
+    "reasons": [
+     "cold cast rb"
+    ]
+   },
+   "nccMin": null,
+   "nccMedian": null,
+   "stripOverDrawn": null,
+   "wallFits": 0,
+   "droppedCorners": [],
+   "triangles": null,
+   "sheet": null,
+   "run": "transvaalplein-18-22",
+   "pands": 2,
+   "mode": "auto-place",
+   "stripDate": "2020-04-29",
+   "status": "failed",
+   "reasons": [
+    "no-type: 0/2 placed (2x match: best transvaal-#-five-storey-tall scores # < # (#DBAG eaves # m = # st)"
+   ],
+   "seconds": 0.8
+  },
+  {
+   "face": "transvaalplein-26-28",
+   "street": "Transvaalplein",
+   "ride": 0,
+   "restriped": null,
+   "stripQuality": {
+    "badShare": 0,
+    "reasons": []
+   },
+   "nccMin": null,
+   "nccMedian": null,
+   "stripOverDrawn": null,
+   "wallFits": 0,
+   "droppedCorners": [],
+   "triangles": null,
+   "sheet": null,
+   "run": "transvaalplein-26-28",
+   "pands": 2,
+   "mode": "auto-place",
+   "stripDate": "2020-04-29",
+   "status": "failed",
+   "reasons": [
+    "no-type: 0/2 placed (1x match: every type vetoed (best transvaal-#-five-storey-tall: frontage # m, ty; 1x match: best transvaal-#-five-storey-tall scores # < # (#DBAG eaves # m = # st)"
+   ],
+   "seconds": 0.6
+  },
+  {
+   "face": "transvaalplein-23-25",
+   "street": "Transvaalplein",
+   "ride": 0,
+   "restriped": null,
+   "stripQuality": {
+    "badShare": 0,
+    "reasons": []
+   },
+   "nccMin": null,
+   "nccMedian": null,
+   "stripOverDrawn": null,
+   "wallFits": 0,
+   "droppedCorners": [],
+   "triangles": null,
+   "sheet": null,
+   "run": "transvaalplein-23-25",
+   "pands": 2,
+   "mode": "auto-place",
+   "stripDate": "2020-04-29",
+   "status": "failed",
+   "reasons": [
+    "no-type: 0/2 placed (2x match: best transvaal-#-five-storey-tall scores # < # (#DBAG eaves # m = # st)"
+   ],
+   "seconds": 0.7
+  },
+  {
+   "face": "transvaalplein-29-37",
+   "street": "Transvaalplein",
+   "ride": 0,
+   "restriped": null,
+   "stripQuality": {
+    "badShare": 0,
+    "reasons": []
+   },
+   "nccMin": null,
+   "nccMedian": null,
+   "stripOverDrawn": null,
+   "wallFits": 0,
+   "droppedCorners": [],
+   "triangles": null,
+   "sheet": null,
+   "run": "transvaalplein-29-37",
+   "pands": 4,
+   "mode": "auto-place",
+   "stripDate": "2020-04-29",
+   "status": "failed",
+   "reasons": [
+    "no-type: 0/4 placed (2x evidence: no front on the strip: sky over the roof in # % of columns (< # %): th; 1x match: every type vetoed (best transvaal-#-five-storey-tall: frontage # m, ty; 1x match: best transvaal-#-five-storey-tall scores # < # (#DBAG eaves # m = # st)"
+   ],
+   "seconds": 0.7
+  },
+  {
+   "face": "transvaal-74-104",
+   "street": "Transvaalstraat",
+   "ride": 0,
+   "restriped": null,
+   "stripQuality": {
+    "badShare": 0,
+    "reasons": []
+   },
+   "nccMin": null,
+   "nccMedian": null,
+   "stripOverDrawn": null,
+   "wallFits": 0,
+   "droppedCorners": [],
+   "triangles": null,
+   "sheet": null,
+   "run": "transvaal-74-104",
+   "pands": 16,
+   "mode": "auto-place",
+   "stripDate": "2020-04-29",
+   "status": "failed",
+   "reasons": [
+    "no-type: 0/16 placed (8x match: best transvaal-#-five-storey-tall scores # < # (#DBAG eaves # m = # st; 2x evidence: no front on the strip: sky over the roof in # % of columns (< # %): th; 2x review: review: Transvaalstraat #A-#B (corner, #): a flat-topped four-storey c)"
+   ],
+   "seconds": 7.7
+  },
+  {
+   "face": "transvaal-97-113",
+   "street": "Transvaalstraat",
+   "ride": 0,
+   "restriped": null,
+   "stripQuality": {
+    "badShare": 0,
+    "reasons": []
+   },
+   "nccMin": null,
+   "nccMedian": null,
+   "stripOverDrawn": null,
+   "wallFits": 0,
+   "droppedCorners": [],
+   "triangles": null,
+   "sheet": null,
+   "run": "transvaal-97-113",
+   "pands": 9,
+   "mode": "auto-place",
+   "stripDate": "2020-04-29",
+   "status": "failed",
+   "reasons": [
+    "no-type: 0/9 placed (6x match: every type vetoed (best transvaal-#-five-storey-tall: built #, type #-; 3x match: best transvaal-#-five-storey-tall scores # < # (#DBAG eaves # m = # st)"
+   ],
+   "seconds": 1.2
+  },
+  {
+   "face": "transvaal-125-129",
+   "street": "Transvaalstraat",
+   "ride": 0,
+   "restriped": null,
+   "stripQuality": {
+    "badShare": 0,
+    "reasons": []
+   },
+   "nccMin": null,
+   "nccMedian": null,
+   "stripOverDrawn": null,
+   "wallFits": 0,
+   "droppedCorners": [],
+   "triangles": null,
+   "sheet": null,
+   "run": "transvaal-125-129",
+   "pands": 3,
+   "mode": "auto-place",
+   "stripDate": "2020-04-29",
+   "status": "failed",
+   "reasons": [
+    "no-type: 0/3 placed (3x match: every type vetoed (best transvaal-#-five-storey-tall: built #, type #-)"
+   ],
+   "seconds": 0.8
+  },
+  {
+   "face": "tugelaweg-19-31",
+   "street": "Tugelaweg",
+   "ride": 0,
+   "restriped": null,
+   "stripQuality": {
+    "badShare": 0,
+    "reasons": []
+   },
+   "nccMin": null,
+   "nccMedian": null,
+   "stripOverDrawn": null,
+   "wallFits": 0,
+   "droppedCorners": [],
+   "triangles": null,
+   "sheet": null,
+   "run": "tugelaweg-19-31",
+   "pands": 7,
+   "mode": "auto-place",
+   "stripDate": "2020-04-29",
+   "status": "failed",
+   "reasons": [
+    "no-type: 0/6 placed (5x likeness: run did not compile; 1x match: every type vetoed (best transvaal-#-five-storey-tall: built #, type #-)"
+   ],
+   "seconds": 4.6
+  }
+ ]
+}

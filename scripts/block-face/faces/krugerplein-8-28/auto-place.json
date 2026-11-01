@@ -3,7 +3,7 @@
  "street": "Krugerplein",
  "library": "transvaalbuurt",
  "stripDate": "2020-04-29",
- "seconds": 8.62,
+ "seconds": 8.57,
  "thresholds": {
   "minScore": 0.7,
   "margin": 0.05,
@@ -172,29 +172,29 @@
    },
    "status": "held",
    "stage": "likeness",
-   "reason": "edge NCC 0.097 < 0.15 (photo vs model body; likeness.ts FAIL: wall dL +0.13; glazing storey band off by 0.27)",
+   "reason": "edge NCC 0.08 < 0.15 (photo vs model body; likeness.ts FAIL: wall dL +0.13; glazing storey band off by 0.34)",
    "likeness": {
     "pandId": "0363100012105745",
-    "ncc": 0.097,
-    "nccRaw": 0.097,
+    "ncc": 0.08,
+    "nccRaw": 0.08,
     "shiftM": [
      -0.4,
-     -0.05
+     0.05
     ],
     "usable": 0.93,
     "abstain": null,
     "verdict": "FAIL",
     "reasons": [
      "wall dL +0.13",
-     "glazing storey band off by 0.27"
+     "glazing storey band off by 0.34"
     ],
     "wall": {
-     "photo": "#7f6b5f",
+     "photo": "#7f6b60",
      "model": "#a08b82",
-     "dL": 0.133
+     "dL": 0.131
     },
     "glazing": {
-     "photo": 0.47,
+     "photo": 0.48,
      "model": 0.41
     },
     "columns": {
@@ -204,8 +204,8 @@
     "iou": 0.298
    },
    "challengers": {
-    "transvaal-1911-five-storey-tall": 0.097,
-    "transvaal-1911-five-storey-tall~m": 0.081,
+    "transvaal-1911-five-storey-tall": 0.08,
+    "transvaal-1911-five-storey-tall~m": 0.086,
     "transvaal-1911-five-storey": 0.075,
     "transvaal-1911-five-storey~m": 0.106,
     "transvaal-1923-portiek-tower": 0.051,
@@ -260,20 +260,20 @@
    },
    "status": "held",
    "stage": "likeness",
-   "reason": "edge NCC 0.106 < 0.15 (photo vs model body; likeness.ts FAIL: glazing storey band off by 0.42 mean 0.39 vs photo 0.76)",
+   "reason": "edge NCC 0.112 < 0.15 (photo vs model body; likeness.ts FAIL: glazing storey band off by 0.49 mean 0.38 vs photo 0.73)",
    "likeness": {
     "pandId": "0363100012077637",
-    "ncc": 0.106,
-    "nccRaw": 0.106,
+    "ncc": 0.112,
+    "nccRaw": 0.112,
     "shiftM": [
      0.2,
-     0.4
+     0.25
     ],
-    "usable": 0.92,
+    "usable": 0.93,
     "abstain": null,
     "verdict": "FAIL",
     "reasons": [
-     "glazing storey band off by 0.42 mean 0.39 vs photo 0.76"
+     "glazing storey band off by 0.49 mean 0.38 vs photo 0.73"
     ],
     "wall": {
      "photo": "#8a6e62",
@@ -281,18 +281,18 @@
      "dL": 0.084
     },
     "glazing": {
-     "photo": 0.76,
-     "model": 0.39
+     "photo": 0.73,
+     "model": 0.38
     },
     "columns": {
      "photo": null,
      "model": 4
     },
-    "iou": 0.403
+    "iou": 0.386
    },
    "challengers": {
-    "transvaal-1911-five-storey-tall": 0.106,
-    "transvaal-1911-five-storey-tall~m": 0.081,
+    "transvaal-1911-five-storey-tall": 0.112,
+    "transvaal-1911-five-storey-tall~m": 0.089,
     "transvaal-1911-five-storey": 0.133,
     "transvaal-1911-five-storey~m": 0.101,
     "transvaal-1923-portiek-tower": 0.04,

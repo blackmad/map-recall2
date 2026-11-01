@@ -1,0 +1,113 @@
+{
+ "street": "Retiefstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-31T15:17:52.539Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012112323",
+   "addresses": [
+    "Retiefstraat 69C",
+    "Retiefstraat 69A",
+    "Retiefstraat 69B",
+    "Retiefstraat 69D"
+   ],
+   "groundUnits": [
+    {
+     "address": "Retiefstraat 69C",
+     "use": "woonfunctie",
+     "areaM2": 61,
+     "bagId": "0363010000791751"
+    },
+    {
+     "address": "Retiefstraat 69A",
+     "use": "woonfunctie",
+     "areaM2": 86,
+     "bagId": "0363010000791749"
+    },
+    {
+     "address": "Retiefstraat 69B",
+     "use": "woonfunctie",
+     "areaM2": 61,
+     "bagId": "0363010000791750"
+    },
+    {
+     "address": "Retiefstraat 69D",
+     "use": "woonfunctie",
+     "areaM2": 61,
+     "bagId": "0363010000791752"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012129491",
+   "addresses": [
+    "Retiefstraat 71D",
+    "Retiefstraat 71A",
+    "Retiefstraat 71B",
+    "Retiefstraat 71C"
+   ],
+   "groundUnits": [
+    {
+     "address": "Retiefstraat 71D",
+     "use": "woonfunctie",
+     "areaM2": 69,
+     "bagId": "0363010000791756"
+    },
+    {
+     "address": "Retiefstraat 71A",
+     "use": "woonfunctie",
+     "areaM2": 50,
+     "bagId": "0363010000791753"
+    },
+    {
+     "address": "Retiefstraat 71B",
+     "use": "woonfunctie",
+     "areaM2": 50,
+     "bagId": "0363010000791754"
+    },
+    {
+     "address": "Retiefstraat 71C",
+     "use": "woonfunctie",
+     "areaM2": 50,
+     "bagId": "0363010000791755"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012067013",
+   "addresses": [
+    "Retiefstraat 73A",
+    "Retiefstraat 73C",
+    "Retiefstraat 73B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Retiefstraat 73A",
+     "use": "woonfunctie",
+     "areaM2": 93,
+     "bagId": "0363010000791757"
+    },
+    {
+     "address": "Retiefstraat 73C",
+     "use": "woonfunctie",
+     "areaM2": 59,
+     "bagId": "0363010000791759"
+    },
+    {
+     "address": "Retiefstraat 73B",
+     "use": "woonfunctie",
+     "areaM2": 48,
+     "bagId": "0363010000791758"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  }
+ ]
+}

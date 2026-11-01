@@ -456,6 +456,8 @@ if (process.argv[1]?.endsWith('block-face/auto-place.ts')) {
         nd.typeId = t.id; nd.house.type!.type = t.id;
         if (m) nd.house.type!.mirror = true; else delete nd.house.type!.mirror;
         nd.notes = [...nd.notes.filter(x => !/^(accent|door) /.test(x)), `photo decides: ${best[0]} edge NCC ${best[1]} vs ${own} ${l.ncc}`];
+        // A reviewer crown pin follows the pand to its new type (decidePand above re-reads the skyline crown).
+        if (crownPins.length) applyCrownPins(f.id, [nd], crownPins, types);
         decisions[k] = nd; switched.add(d.pandId); changed = true;
       }
       // The gate: FAIL holds; NO EVIDENCE holds unless a same-type neighbour in the run passes (row evidence).

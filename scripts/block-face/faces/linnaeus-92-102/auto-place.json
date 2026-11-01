@@ -3,7 +3,7 @@
  "street": "Linnaeusstraat",
  "library": "transvaalbuurt",
  "stripDate": "2023-01-02",
- "seconds": 5.47,
+ "seconds": 7.55,
  "thresholds": {
   "minScore": 0.7,
   "margin": 0.05,
@@ -107,7 +107,7 @@
      "photo": null,
      "model": 2
     },
-    "iou": 0.456
+    "iou": 0.46
    },
    "challengers": {
     "transvaal-1911-five-storey-tall": 0.103,
@@ -209,21 +209,21 @@
    },
    "status": "held",
    "stage": "likeness",
-   "reason": "edge NCC 0.031 < 0.15 (photo vs model body; likeness.ts FAIL: wall dL +0.36; glazing storey band off by 0.66 mean 0.44 vs photo 1.00; wall family unresolved (#000000 is dark and neutral, brick courses not resolved): lightness and hue judged only)",
+   "reason": "edge NCC 0.019 < 0.15 (photo vs model body; likeness.ts FAIL: wall dL +0.36; glazing storey band off by 0.68 mean 0.43 vs photo 1.00; wall family unresolved (#000000 is dark and neutral, brick courses not resolved): lightness and hue judged only)",
    "likeness": {
     "pandId": "0363100012134183",
-    "ncc": 0.031,
-    "nccRaw": 0.031,
+    "ncc": 0.019,
+    "nccRaw": 0.019,
     "shiftM": [
      0.1,
-     0.4
+     0.25
     ],
-    "usable": 0.99,
+    "usable": 1,
     "abstain": null,
     "verdict": "FAIL",
     "reasons": [
      "wall dL +0.36",
-     "glazing storey band off by 0.66 mean 0.44 vs photo 1.00",
+     "glazing storey band off by 0.68 mean 0.43 vs photo 1.00",
      "wall family unresolved (#000000 is dark and neutral, brick courses not resolved): lightness and hue judged only"
     ],
     "wall": {
@@ -233,17 +233,17 @@
     },
     "glazing": {
      "photo": 1,
-     "model": 0.44
+     "model": 0.43
     },
     "columns": {
      "photo": null,
      "model": 3
     },
-    "iou": 0.479
+    "iou": 0.461
    },
    "challengers": {
-    "transvaal-1911-five-storey-tall": 0.031,
-    "transvaal-1911-five-storey-tall~m": 0.031,
+    "transvaal-1911-five-storey-tall": 0.019,
+    "transvaal-1911-five-storey-tall~m": 0.019,
     "transvaal-1911-five-storey": 0.036,
     "transvaal-1911-five-storey~m": 0.036
    }

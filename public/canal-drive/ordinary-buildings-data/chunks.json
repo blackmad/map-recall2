@@ -1,6 +1,6 @@
 {
  "version": 1,
- "generatedAt": "2026-10-31T17:28:54.480Z",
+ "generatedAt": "2026-11-01T05:26:00.737Z",
  "chunks": [
   {
    "id": "chunk-face-bilder-080336-090492",
@@ -71170,6 +71170,1232 @@
        "primitive": 12,
        "firstTriangle": 13,
        "triangleCount": 2
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "chunk-face-retief-45-75-r1",
+   "category": "street-survey",
+   "name": "face-retief-45-75-r1",
+   "modelUrl": "./models/ordinary-buildings/chunks/chunk-face-retief-45-75-r1.glb?asset=2f5a34d638cd72d6",
+   "sha256": "2f5a34d638cd72d67cb848b697718ac665707032c70afd4725f1f82ca50485c8",
+   "bytes": 432380,
+   "triangles": 6291,
+   "primitives": 11,
+   "instance": {
+    "anchor": [
+     4.921808847192701,
+     52.355352257664585
+    ],
+    "northOffsetDegrees": 152.5976,
+    "mirror": false
+   },
+   "bounds": {
+    "min": [
+     -9.209,
+     0,
+     -13.381
+    ],
+    "max": [
+     9.248,
+     16.544,
+     0.646
+    ]
+   },
+   "height": 16.544,
+   "suppress": [
+    "NL.IMBAG.Pand.0363100012112323",
+    "NL.IMBAG.Pand.0363100012129491",
+    "NL.IMBAG.Pand.0363100012067013"
+   ],
+   "replaces": [
+    "ordinary-0363100012112323",
+    "ordinary-0363100012129491",
+    "ordinary-0363100012067013"
+   ],
+   "footprint": {
+    "type": "MultiPolygon",
+    "coordinates": [
+     [
+      [
+       [
+        4.9219289,
+        52.3553903
+       ],
+       [
+        4.9218513,
+        52.3553657
+       ],
+       [
+        4.9219228,
+        52.3552811
+       ],
+       [
+        4.9219548,
+        52.3552912
+       ],
+       [
+        4.9219733,
+        52.3552693
+       ],
+       [
+        4.9220189,
+        52.3552838
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.9218513,
+        52.3553657
+       ],
+       [
+        4.9217667,
+        52.3553389
+       ],
+       [
+        4.9218382,
+        52.3552543
+       ],
+       [
+        4.9219228,
+        52.3552811
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.9217667,
+        52.3553389
+       ],
+       [
+        4.9216883,
+        52.3553141
+       ],
+       [
+        4.9217486,
+        52.3552427
+       ],
+       [
+        4.9217681,
+        52.3552388
+       ],
+       [
+        4.9218337,
+        52.3552596
+       ]
+      ]
+     ]
+    ]
+   },
+   "pands": [
+    {
+     "recipeId": "retief-112323",
+     "pandId": "0363100012112323",
+     "buildingId": "NL.IMBAG.Pand.0363100012112323",
+     "address": "Retiefstraat 69C",
+     "frontage": {
+      "x0": -9.206,
+      "x1": -3.255,
+      "widthM": 5.95
+     },
+     "bounds": {
+      "min": [
+       -9.209,
+       0,
+       -13.381
+      ],
+      "max": [
+       -3.255,
+       16.04,
+       0.646
+      ]
+     },
+     "triangles": 2045,
+     "ranges": [
+      {
+       "primitive": 0,
+       "firstTriangle": 0,
+       "triangleCount": 84
+      },
+      {
+       "primitive": 3,
+       "firstTriangle": 0,
+       "triangleCount": 396
+      },
+      {
+       "primitive": 4,
+       "firstTriangle": 0,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 0,
+       "triangleCount": 904
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 0,
+       "triangleCount": 444
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 0,
+       "triangleCount": 180
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 0,
+       "triangleCount": 2
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 0,
+       "triangleCount": 4
+      },
+      {
+       "primitive": 10,
+       "firstTriangle": 0,
+       "triangleCount": 19
+      }
+     ]
+    },
+    {
+     "recipeId": "retief-129491",
+     "pandId": "0363100012129491",
+     "buildingId": "NL.IMBAG.Pand.0363100012129491",
+     "address": "Retiefstraat 71D",
+     "frontage": {
+      "x0": -3.255,
+      "x1": 3.234,
+      "widthM": 6.49
+     },
+     "bounds": {
+      "min": [
+       -3.259,
+       0,
+       -10.644
+      ],
+      "max": [
+       3.234,
+       16.544,
+       0.645
+      ]
+     },
+     "triangles": 2321,
+     "ranges": [
+      {
+       "primitive": 1,
+       "firstTriangle": 0,
+       "triangleCount": 47
+      },
+      {
+       "primitive": 3,
+       "firstTriangle": 396,
+       "triangleCount": 492
+      },
+      {
+       "primitive": 4,
+       "firstTriangle": 12,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 904,
+       "triangleCount": 1092
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 444,
+       "triangleCount": 444
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 180,
+       "triangleCount": 228
+      },
+      {
+       "primitive": 10,
+       "firstTriangle": 19,
+       "triangleCount": 6
+      }
+     ]
+    },
+    {
+     "recipeId": "retief-067013",
+     "pandId": "0363100012067013",
+     "buildingId": "NL.IMBAG.Pand.0363100012067013",
+     "address": "Retiefstraat 73A",
+     "frontage": {
+      "x0": 3.234,
+      "x1": 9.248,
+      "widthM": 6.014
+     },
+     "bounds": {
+      "min": [
+       3.231,
+       0,
+       -9.978
+      ],
+      "max": [
+       9.248,
+       16.394,
+       0.645
+      ]
+     },
+     "triangles": 1925,
+     "ranges": [
+      {
+       "primitive": 2,
+       "firstTriangle": 0,
+       "triangleCount": 57
+      },
+      {
+       "primitive": 3,
+       "firstTriangle": 888,
+       "triangleCount": 396
+      },
+      {
+       "primitive": 4,
+       "firstTriangle": 24,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 1996,
+       "triangleCount": 836
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 888,
+       "triangleCount": 444
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 408,
+       "triangleCount": 172
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 2,
+       "triangleCount": 1
+      },
+      {
+       "primitive": 10,
+       "firstTriangle": 25,
+       "triangleCount": 7
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "chunk-face-pretorius-72-120-r1",
+   "category": "street-survey",
+   "name": "face-pretorius-72-120-r1",
+   "modelUrl": "./models/ordinary-buildings/chunks/chunk-face-pretorius-72-120-r1.glb?asset=4b3bfe9278e44b47",
+   "sha256": "4b3bfe9278e44b47623b8167dfc2264092bb27bad1d43a001be7f37081e8a099",
+   "bytes": 468164,
+   "triangles": 6877,
+   "primitives": 14,
+   "instance": {
+    "anchor": [
+     4.920937379494258,
+     52.35461636615979
+    ],
+    "northOffsetDegrees": 333.3052,
+    "mirror": false
+   },
+   "bounds": {
+    "min": [
+     -10.199,
+     0,
+     -18.021
+    ],
+    "max": [
+     10.201,
+     16.678,
+     0.645
+    ]
+   },
+   "height": 16.678,
+   "suppress": [
+    "NL.IMBAG.Pand.0363100012149642",
+    "NL.IMBAG.Pand.0363100012142310",
+    "NL.IMBAG.Pand.0363100012076819"
+   ],
+   "replaces": [
+    "ordinary-0363100012149642",
+    "ordinary-0363100012142310",
+    "ordinary-0363100012076819"
+   ],
+   "footprint": {
+    "type": "MultiPolygon",
+    "coordinates": [
+     [
+      [
+       [
+        4.9207744,
+        52.3547471
+       ],
+       [
+        4.9206852,
+        52.3547197
+       ],
+       [
+        4.9208036,
+        52.3545753
+       ],
+       [
+        4.9208928,
+        52.3546027
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.9208637,
+        52.3547745
+       ],
+       [
+        4.9207744,
+        52.3547471
+       ],
+       [
+        4.9208928,
+        52.3546027
+       ],
+       [
+        4.920982,
+        52.3546301
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.9209529,
+        52.3548019
+       ],
+       [
+        4.9209201,
+        52.3547918
+       ],
+       [
+        4.920939,
+        52.3547687
+       ],
+       [
+        4.9209286,
+        52.3547655
+       ],
+       [
+        4.920923,
+        52.3547552
+       ],
+       [
+        4.9209493,
+        52.3547232
+       ],
+       [
+        4.9209145,
+        52.3547125
+       ],
+       [
+        4.920982,
+        52.3546301
+       ],
+       [
+        4.9210712,
+        52.3546575
+       ]
+      ]
+     ]
+    ]
+   },
+   "pands": [
+    {
+     "recipeId": "pretorius-149642",
+     "pandId": "0363100012149642",
+     "buildingId": "NL.IMBAG.Pand.0363100012149642",
+     "address": "Pretoriusstraat 90B",
+     "frontage": {
+      "x0": -10.199,
+      "x1": -3.4,
+      "widthM": 6.799
+     },
+     "bounds": {
+      "min": [
+       -10.199,
+       0,
+       -18.021
+      ],
+      "max": [
+       -3.399,
+       16.678,
+       0.645
+      ]
+     },
+     "triangles": 2277,
+     "ranges": [
+      {
+       "primitive": 1,
+       "firstTriangle": 0,
+       "triangleCount": 74
+      },
+      {
+       "primitive": 3,
+       "firstTriangle": 0,
+       "triangleCount": 444
+      },
+      {
+       "primitive": 4,
+       "firstTriangle": 0,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 0,
+       "triangleCount": 852
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 0,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 0,
+       "triangleCount": 432
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 0,
+       "triangleCount": 228
+      },
+      {
+       "primitive": 10,
+       "firstTriangle": 0,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 11,
+       "firstTriangle": 0,
+       "triangleCount": 198
+      },
+      {
+       "primitive": 12,
+       "firstTriangle": 0,
+       "triangleCount": 5
+      },
+      {
+       "primitive": 13,
+       "firstTriangle": 0,
+       "triangleCount": 8
+      }
+     ]
+    },
+    {
+     "recipeId": "pretorius-142310",
+     "pandId": "0363100012142310",
+     "buildingId": "NL.IMBAG.Pand.0363100012142310",
+     "address": "Pretoriusstraat 88",
+     "frontage": {
+      "x0": -3.4,
+      "x1": 3.399,
+      "widthM": 6.799
+     },
+     "bounds": {
+      "min": [
+       -3.4,
+       0,
+       -18.021
+      ],
+      "max": [
+       3.401,
+       16.6,
+       0.645
+      ]
+     },
+     "triangles": 2282,
+     "ranges": [
+      {
+       "primitive": 0,
+       "firstTriangle": 0,
+       "triangleCount": 67
+      },
+      {
+       "primitive": 3,
+       "firstTriangle": 444,
+       "triangleCount": 444
+      },
+      {
+       "primitive": 4,
+       "firstTriangle": 12,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 852,
+       "triangleCount": 852
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 12,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 432,
+       "triangleCount": 432
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 0,
+       "triangleCount": 240
+      },
+      {
+       "primitive": 10,
+       "firstTriangle": 12,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 11,
+       "firstTriangle": 198,
+       "triangleCount": 198
+      },
+      {
+       "primitive": 12,
+       "firstTriangle": 5,
+       "triangleCount": 5
+      },
+      {
+       "primitive": 13,
+       "firstTriangle": 8,
+       "triangleCount": 8
+      }
+     ]
+    },
+    {
+     "recipeId": "pretorius-076819",
+     "pandId": "0363100012076819",
+     "buildingId": "NL.IMBAG.Pand.0363100012076819",
+     "address": "Pretoriusstraat 86",
+     "frontage": {
+      "x0": 3.399,
+      "x1": 10.2,
+      "widthM": 6.801
+     },
+     "bounds": {
+      "min": [
+       3.399,
+       0,
+       -18.02
+      ],
+      "max": [
+       10.201,
+       16.534,
+       0.645
+      ]
+     },
+     "triangles": 2318,
+     "ranges": [
+      {
+       "primitive": 2,
+       "firstTriangle": 0,
+       "triangleCount": 101
+      },
+      {
+       "primitive": 3,
+       "firstTriangle": 888,
+       "triangleCount": 492
+      },
+      {
+       "primitive": 4,
+       "firstTriangle": 24,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 1704,
+       "triangleCount": 1036
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 864,
+       "triangleCount": 444
+      },
+      {
+       "primitive": 11,
+       "firstTriangle": 396,
+       "triangleCount": 214
+      },
+      {
+       "primitive": 12,
+       "firstTriangle": 10,
+       "triangleCount": 8
+      },
+      {
+       "primitive": 13,
+       "firstTriangle": 16,
+       "triangleCount": 11
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "chunk-face-pretorius-71-95-r1",
+   "category": "street-survey",
+   "name": "face-pretorius-71-95-r1",
+   "modelUrl": "./models/ordinary-buildings/chunks/chunk-face-pretorius-71-95-r1.glb?asset=97283e3a708cf3fa",
+   "sha256": "97283e3a708cf3fa014a9cd5bbb44a814ae9ba374c8f1a429a909fea52882cc8",
+   "bytes": 305692,
+   "triangles": 4464,
+   "primitives": 10,
+   "instance": {
+    "anchor": [
+     4.921325184261987,
+     52.35453393870728
+    ],
+    "northOffsetDegrees": 153.2801,
+    "mirror": false
+   },
+   "bounds": {
+    "min": [
+     -6.785,
+     0,
+     -16.666
+    ],
+    "max": [
+     6.804,
+     16.989,
+     0.754
+    ]
+   },
+   "height": 16.989,
+   "suppress": [
+    "NL.IMBAG.Pand.0363100012065205",
+    "NL.IMBAG.Pand.0363100012076837"
+   ],
+   "replaces": [
+    "ordinary-0363100012065205",
+    "ordinary-0363100012076837"
+   ],
+   "footprint": {
+    "type": "MultiPolygon",
+    "coordinates": [
+     [
+      [
+       [
+        4.9214147,
+        52.3545607
+       ],
+       [
+        4.9213664,
+        52.3545458
+       ],
+       [
+        4.9213654,
+        52.3545471
+       ],
+       [
+        4.9213248,
+        52.3545346
+       ],
+       [
+        4.9213959,
+        52.3544478
+       ],
+       [
+        4.9214182,
+        52.3544547
+       ],
+       [
+        4.921457,
+        52.3544073
+       ],
+       [
+        4.9215018,
+        52.354421
+       ],
+       [
+        4.9214629,
+        52.3544684
+       ],
+       [
+        4.9214848,
+        52.3544751
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.9213248,
+        52.3545346
+       ],
+       [
+        4.9212841,
+        52.3545221
+       ],
+       [
+        4.9212852,
+        52.3545208
+       ],
+       [
+        4.9212365,
+        52.3545059
+       ],
+       [
+        4.9213066,
+        52.3544204
+       ],
+       [
+        4.9213289,
+        52.3544272
+       ],
+       [
+        4.9213677,
+        52.3543798
+       ],
+       [
+        4.9214124,
+        52.3543936
+       ],
+       [
+        4.9213736,
+        52.354441
+       ],
+       [
+        4.9213959,
+        52.3544478
+       ]
+      ]
+     ]
+    ]
+   },
+   "pands": [
+    {
+     "recipeId": "pretorius-065205",
+     "pandId": "0363100012065205",
+     "buildingId": "NL.IMBAG.Pand.0363100012065205",
+     "address": "Pretoriusstraat 79",
+     "frontage": {
+      "x0": -6.783,
+      "x1": -0.009,
+      "widthM": 6.774
+     },
+     "bounds": {
+      "min": [
+       -6.785,
+       0,
+       -16.666
+      ],
+      "max": [
+       -0.006,
+       16.986,
+       0.751
+      ]
+     },
+     "triangles": 2240,
+     "ranges": [
+      {
+       "primitive": 1,
+       "firstTriangle": 0,
+       "triangleCount": 125
+      },
+      {
+       "primitive": 2,
+       "firstTriangle": 0,
+       "triangleCount": 492
+      },
+      {
+       "primitive": 3,
+       "firstTriangle": 0,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 4,
+       "firstTriangle": 0,
+       "triangleCount": 944
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 0,
+       "triangleCount": 444
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 0,
+       "triangleCount": 196
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 0,
+       "triangleCount": 6
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 0,
+       "triangleCount": 9
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 0,
+       "triangleCount": 12
+      }
+     ]
+    },
+    {
+     "recipeId": "pretorius-076837",
+     "pandId": "0363100012076837",
+     "buildingId": "NL.IMBAG.Pand.0363100012076837",
+     "address": "Pretoriusstraat 81",
+     "frontage": {
+      "x0": -0.009,
+      "x1": 6.801,
+      "widthM": 6.809
+     },
+     "bounds": {
+      "min": [
+       -0.009,
+       0,
+       -16.664
+      ],
+      "max": [
+       6.804,
+       16.989,
+       0.754
+      ]
+     },
+     "triangles": 2224,
+     "ranges": [
+      {
+       "primitive": 0,
+       "firstTriangle": 0,
+       "triangleCount": 108
+      },
+      {
+       "primitive": 2,
+       "firstTriangle": 492,
+       "triangleCount": 492
+      },
+      {
+       "primitive": 3,
+       "firstTriangle": 12,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 4,
+       "firstTriangle": 944,
+       "triangleCount": 944
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 444,
+       "triangleCount": 444
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 196,
+       "triangleCount": 196
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 6,
+       "triangleCount": 4
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 9,
+       "triangleCount": 7
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 12,
+       "triangleCount": 17
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "chunk-face-pretorius-71-95-r2",
+   "category": "street-survey",
+   "name": "face-pretorius-71-95-r2",
+   "modelUrl": "./models/ordinary-buildings/chunks/chunk-face-pretorius-71-95-r2.glb?asset=bab212e93546adf2",
+   "sha256": "bab212e93546adf289892521c001ad61bcf1340a8c2a4e5291ad6ec7914ea9e2",
+   "bytes": 303576,
+   "triangles": 4444,
+   "primitives": 10,
+   "instance": {
+    "anchor": [
+     4.921056906618795,
+     52.35445151892765
+    ],
+    "northOffsetDegrees": 153.3596,
+    "mirror": false
+   },
+   "bounds": {
+    "min": [
+     -6.846,
+     0,
+     -16.67
+    ],
+    "max": [
+     6.886,
+     16.843,
+     0.753
+    ]
+   },
+   "height": 16.843,
+   "suppress": [
+    "NL.IMBAG.Pand.0363100012061274",
+    "NL.IMBAG.Pand.0363100012087223"
+   ],
+   "replaces": [
+    "ordinary-0363100012061274",
+    "ordinary-0363100012087223"
+   ],
+   "footprint": {
+    "type": "MultiPolygon",
+    "coordinates": [
+     [
+      [
+       [
+        4.9211471,
+        52.3544784
+       ],
+       [
+        4.9210986,
+        52.3544635
+       ],
+       [
+        4.9210975,
+        52.3544647
+       ],
+       [
+        4.9210567,
+        52.3544522
+       ],
+       [
+        4.9211278,
+        52.3543655
+       ],
+       [
+        4.9211501,
+        52.3543723
+       ],
+       [
+        4.921189,
+        52.3543249
+       ],
+       [
+        4.9212337,
+        52.3543387
+       ],
+       [
+        4.9211949,
+        52.3543861
+       ],
+       [
+        4.9212172,
+        52.3543929
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.9210567,
+        52.3544522
+       ],
+       [
+        4.9210159,
+        52.3544398
+       ],
+       [
+        4.9210169,
+        52.3544385
+       ],
+       [
+        4.9209671,
+        52.3544232
+       ],
+       [
+        4.9210395,
+        52.3543384
+       ],
+       [
+        4.9210608,
+        52.3543449
+       ],
+       [
+        4.9210996,
+        52.3542975
+       ],
+       [
+        4.9211443,
+        52.3543112
+       ],
+       [
+        4.9211055,
+        52.3543586
+       ],
+       [
+        4.9211278,
+        52.3543655
+       ]
+      ]
+     ]
+    ]
+   },
+   "pands": [
+    {
+     "recipeId": "pretorius-061274",
+     "pandId": "0363100012061274",
+     "buildingId": "NL.IMBAG.Pand.0363100012061274",
+     "address": "Pretoriusstraat 85",
+     "frontage": {
+      "x0": -6.835,
+      "x1": -0.023,
+      "widthM": 6.812
+     },
+     "bounds": {
+      "min": [
+       -6.846,
+       0,
+       -16.662
+      ],
+      "max": [
+       -0.023,
+       16.838,
+       0.751
+      ]
+     },
+     "triangles": 2217,
+     "ranges": [
+      {
+       "primitive": 1,
+       "firstTriangle": 0,
+       "triangleCount": 109
+      },
+      {
+       "primitive": 2,
+       "firstTriangle": 0,
+       "triangleCount": 492
+      },
+      {
+       "primitive": 3,
+       "firstTriangle": 0,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 4,
+       "firstTriangle": 0,
+       "triangleCount": 944
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 0,
+       "triangleCount": 444
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 0,
+       "triangleCount": 196
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 0,
+       "triangleCount": 6
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 0,
+       "triangleCount": 8
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 0,
+       "triangleCount": 6
+      }
+     ]
+    },
+    {
+     "recipeId": "pretorius-087223",
+     "pandId": "0363100012087223",
+     "buildingId": "NL.IMBAG.Pand.0363100012087223",
+     "address": "Pretoriusstraat 87",
+     "frontage": {
+      "x0": -0.023,
+      "x1": 6.882,
+      "widthM": 6.905
+     },
+     "bounds": {
+      "min": [
+       -0.034,
+       0,
+       -16.67
+      ],
+      "max": [
+       6.886,
+       16.843,
+       0.753
+      ]
+     },
+     "triangles": 2227,
+     "ranges": [
+      {
+       "primitive": 0,
+       "firstTriangle": 0,
+       "triangleCount": 112
+      },
+      {
+       "primitive": 2,
+       "firstTriangle": 492,
+       "triangleCount": 492
+      },
+      {
+       "primitive": 3,
+       "firstTriangle": 12,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 4,
+       "firstTriangle": 944,
+       "triangleCount": 944
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 444,
+       "triangleCount": 444
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 196,
+       "triangleCount": 196
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 6,
+       "triangleCount": 5
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 8,
+       "triangleCount": 3
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 6,
+       "triangleCount": 19
       }
      ]
     }
