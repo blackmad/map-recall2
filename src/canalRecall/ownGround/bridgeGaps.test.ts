@@ -42,3 +42,48 @@ test('a road the deck top covers reads as a buried gap; a missing stretch as mis
 test('histogram bins are half-open with an open last bin', () => {
   assert.deepEqual(histogram([0, 0.4, 1, 5, 100], [0, 1, 4]).map(b => b.count), [2, 1, 2]);
 });
+
+// ------------------------------------------------------------------ the fix (bridgeGaps)
+import { edgesBox, surveyDeckEdges, EDGE_NO_OUTLINE_M } from './bridgeGaps.js';
+import { GroundSurface, type DeckSurface } from './surface.js';
+import { deckShare } from './roadSurfaces.js';
+import type { DeckProfile } from '../elevation/bridgeDeck.js';
+
+/** A straight deck along +x from 0 to 20 m (stations every 0.5 m), half-width 3, span 4..16, left = +y. */
+function deck(sides?: [number, number]): DeckProfile {
+  const n = 41, x = new Float64Array(n), y = new Float64Array(n), s = new Float64Array(n), h = new Float64Array(n), hw = new Float64Array(n).fill(3);
+  for (let i = 0; i < n; i++) { x[i] = i * 0.5; s[i] = i * 0.5; }
+  return { id: 'BRU9999', name: 't', family: 'steel-deck', x, y, s, h, halfWidth: hw, water: [6, 14], deck: [4, 16], bbox: [0, -3, 20, 3], ...(sides ? { sides } : {}) };
+}
+
+test('survey edges: the deck reaches the deck-level polygons, capped by the outline, only over its span', () => {
+  const onDeck = (x: number, y: number) => x >= 3 && x <= 17 && y >= -2 && y <= 7;
+  const free = surveyDeckEdges(deck(), onDeck)!;
+  assert.equal(free.left[20], 3 + EDGE_NO_OUTLINE_M, 'no outline side: at most half-width + 2 m');
+  assert.equal(free.right[20], 3, 'never narrower than the half-width');
+  assert.equal(free.left[0], 3, 'the approach keeps its half-width');
+  const wide = surveyDeckEdges(deck([9, 3]), onDeck)!;
+  assert.equal(wide.left[20], 7.25, 'the last deck-level point plus half a step');
+  assert.equal(surveyDeckEdges(deck([9, 3]), (x, y) => Math.abs(y) <= 3), null, 'a survey no wider than the deck leaves it as it was');
+  assert.deepEqual(edgesBox(deck(), wide), [-4.25, -7.25, 24.25, 7.25]);
+});
+
+test('the riding surface and the footprint read the edges on their side', () => {
+  const p = deck([9, 3]), edges = surveyDeckEdges(p, (x, y) => y >= -2 && y <= 7)!;
+  const d: DeckSurface = { profile: { ...p, edges }, z: new Float64Array(41).fill(1), ends: [0, 0], span: [4, 16], ease: [2.5, 2.5] };
+  assert.equal(GroundSurface.locate(d, 10, 6).halfWidth, 7.25, 'left of the line: the left edge');
+  assert.equal(GroundSurface.locate(d, 10, -5).halfWidth, 3, 'right of the line: the half-width');
+  const ring = GroundSurface.footprint(d);
+  assert.equal(Math.max(...ring.map(q => q[1])), 7.25);
+  assert.equal(Math.min(...ring.map(q => q[1])), -3);
+  const plain: DeckSurface = { ...d, profile: p };
+  assert.equal(GroundSurface.locate(plain, 10, 6).halfWidth, 3, 'without edges: unchanged');
+});
+
+test('a deck polygon half on a deck is drawn, without its triangles over a ground polygon', () => {
+  // Two triangles of a 10 x 10 square: the left one (centroid x < 5) on the deck, the right one over a ground polygon.
+  const flat = [0, 0, 10, 0, 10, 10, 0, 10], tris = [0, 2, 3, 0, 1, 2];
+  const onDeck = (x: number) => x < 5, overGround = (x: number) => x >= 5;
+  assert.deepEqual(deckShare(flat, tris, onDeck, overGround), [0, 2, 3]);
+  assert.equal(deckShare(flat, tris, () => false, () => false), null, 'off every deck: not drawn');
+});

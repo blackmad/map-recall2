@@ -7,6 +7,7 @@
 // Pure measurement over built cells (groundCell.ts buildCell); scripts/roads/probe-bridge-gaps.ts walks the city.
 import { CUT_CHANNEL, DRAW_RANK, maskChannelAt, type BuiltCell, type GroundLayer } from './groundCell.js';
 import type { DeckSurface, Vec2 } from './surface.js';
+import type { DeckProfile } from '../elevation/bridgeDeck.js';
 
 /** Layers that read as road from above (the surfaces a rider expects under the wheels; paint and rails on top of one). */
 export const ROAD_LAYERS: ReadonlySet<GroundLayer> = new Set<GroundLayer>(['asphalt', 'klinker', 'brick', 'cycle', 'paving', 'gravel', 'kerb', 'paint', 'tram', 'parkPath', 'parkGravel', 'track']);
@@ -256,4 +257,58 @@ function inRing(ring: readonly Vec2[], x: number, y: number): boolean {
     if ((yi > y) !== (yj > y) && x < (xj - xi) * (y - yi) / (yj - yi) + xi) inside = !inside;
   }
   return inside;
+}
+
+// ------------------------------------------------------------------ the fix: one width per deck side (bridgeGaps)
+
+/** Survey edge walk: step across, the largest gap between deck-level polygons crossed, the margin past the last hit. */
+export const EDGE_STEP_M = 0.5, EDGE_GAP_M = 1.5;
+/** A deck whose survey reaches less than this past its half-width on both sides keeps no edges (unchanged). */
+export const EDGE_MIN_WIDEN_M = 0.3;
+/** Without an outline side (DeckProfile.sides: the outline is not OUTLINE_WIDER_M wider), the survey may widen a side by at most this. */
+export const EDGE_NO_OUTLINE_M = 2;
+/** Along the deck a station takes the widest edge within this (one skewed polygon corner does not notch the parapet). */
+export const EDGE_SPREAD_M = 1;
+
+/**
+ * The riding half-widths left and right of a deck's road line from the road survey's deck-level polygons (h ≥ 1,
+ * `onDeckPoly`), per station over the deck span (issue #178): each side walks out from the line in EDGE_STEP_M steps,
+ * across gaps of at most EDGE_GAP_M, to the last deck-level point, capped at the outline's side (DeckProfile.sides)
+ * plus a step, or the half-width plus EDGE_NO_OUTLINE_M. Never narrower than the half-width; outside the span the
+ * half-width. Null when no station widens by EDGE_MIN_WIDEN_M (the deck is left as it was).
+ */
+export function surveyDeckEdges(p: Pick<DeckProfile, 'x' | 'y' | 's' | 'halfWidth' | 'deck' | 'sides'>, onDeckPoly: (x: number, y: number) => boolean): { left: Float64Array; right: Float64Array } | null {
+  const n = p.s.length, raw = [new Float64Array(n), new Float64Array(n)], hwMax = Math.max(...p.halfWidth);
+  let widened = false;
+  for (let i = 0; i < n; i++) {
+    const hw = p.halfWidth[i];
+    raw[0][i] = raw[1][i] = hw;
+    if (p.s[i] < p.deck[0] || p.s[i] > p.deck[1]) continue;
+    const a = Math.max(0, i - 1), b = Math.min(n - 1, i + 1), dx = p.x[b] - p.x[a], dy = p.y[b] - p.y[a], l = Math.hypot(dx, dy) || 1, nx = -dy / l, ny = dx / l;
+    for (const side of [0, 1] as const) {
+      const sg = side === 0 ? 1 : -1, cap = p.sides ? Math.max(hw, p.sides[side]) + EDGE_STEP_M : hwMax + EDGE_NO_OUTLINE_M;
+      let last = -1;
+      for (let t = 0; t <= cap + 1e-9 && t - Math.max(0, last) <= EDGE_GAP_M; t += EDGE_STEP_M) if (onDeckPoly(p.x[i] + nx * sg * t, p.y[i] + ny * sg * t)) last = t;
+      if (last >= 0) raw[side][i] = Math.max(hw, Math.min(cap, last + EDGE_STEP_M / 2));
+    }
+  }
+  const out = [new Float64Array(n), new Float64Array(n)];
+  for (const side of [0, 1] as const) for (let i = 0; i < n; i++) {
+    let v = raw[side][i];
+    if (p.s[i] >= p.deck[0] && p.s[i] <= p.deck[1]) {
+      for (let j = i - 1; j >= 0 && p.s[i] - p.s[j] <= EDGE_SPREAD_M; j--) if (p.s[j] >= p.deck[0]) v = Math.max(v, raw[side][j]);
+      for (let j = i + 1; j < n && p.s[j] - p.s[i] <= EDGE_SPREAD_M; j++) if (p.s[j] <= p.deck[1]) v = Math.max(v, raw[side][j]);
+    }
+    out[side][i] = v;
+    if (v - p.halfWidth[i] >= EDGE_MIN_WIDEN_M) widened = true;
+  }
+  return widened ? { left: out[0], right: out[1] } : null;
+}
+
+/** A deck profile's box grown to its edges (DeckProfile.edges). */
+export function edgesBox(p: Pick<DeckProfile, 'bbox' | 'halfWidth'>, edges: { left: Float64Array; right: Float64Array }): [number, number, number, number] {
+  let r = 0;
+  for (let i = 0; i < edges.left.length; i++) r = Math.max(r, edges.left[i] - p.halfWidth[i], edges.right[i] - p.halfWidth[i]);
+  const [x0, y0, x1, y1] = p.bbox;
+  return [x0 - r, y0 - r, x1 + r, y1 + r];
 }

@@ -186,6 +186,21 @@ export class GroundSurface {
     return deck;
   }
 
+  /**
+   * Give a placed deck its riding edges (DeckProfile.edges, bridgeGaps) and index it over its grown box. Called once,
+   * before any cell built from this surface reads the deck (groundStore.ts prepareCell awaits it).
+   */
+  widenDeck(deck: DeckSurface, edges: { left: Float64Array; right: Float64Array }, bbox: [number, number, number, number]): void {
+    deck.profile.edges = edges;
+    deck.profile.bbox = bbox;
+    const [x0, y0, x1, y1] = bbox, pad = DECK_BLEND_M;
+    for (let bx = Math.floor((x0 - pad) / BUCKET_M); bx <= Math.floor((x1 + pad) / BUCKET_M); bx++)
+      for (let by = Math.floor((y0 - pad) / BUCKET_M); by <= Math.floor((y1 + pad) / BUCKET_M); by++) {
+        const k = bucketKey(bx, by), list = this.buckets.get(k) ?? this.buckets.set(k, []).get(k)!;
+        if (!list.includes(deck)) list.push(deck);
+      }
+  }
+
   /** 0 at either deck end → 1 once past that end's ease. */
   static easeWeight(s: number, span: readonly [number, number], ease: readonly [number, number]): number {
     return Math.min(smoothstep((s - span[0]) / ease[0]), smoothstep((span[1] - s) / ease[1]));
@@ -202,7 +217,9 @@ export class GroundSurface {
       if (p.s[i] < s0 - 0.5 || p.s[i] > s1 + 0.5) continue;
       const a = Math.max(0, i - 1), b = Math.min(p.s.length - 1, i + 1), dx = p.x[b] - p.x[a], dy = p.y[b] - p.y[a], l = Math.hypot(dx, dy) || 1;
       const nx = -dy / l, ny = dx / l, hw = p.halfWidth[i];
-      left.push([p.x[i] + nx * hw, p.y[i] + ny * hw]); right.push([p.x[i] - nx * hw, p.y[i] - ny * hw]);
+      // DeckProfile.edges (bridgeGaps): the riding width on each side, as the surface reads it.
+      const hl = p.edges ? Math.max(hw, p.edges.left[i]) : hw, hr = p.edges ? Math.max(hw, p.edges.right[i]) : hw;
+      left.push([p.x[i] + nx * hl, p.y[i] + ny * hl]); right.push([p.x[i] - nx * hr, p.y[i] - ny * hr]);
     }
     return [...left, ...right.reverse()];
   }
@@ -219,9 +236,15 @@ export class GroundSurface {
     }
     const lerp = (arr: Float64Array) => arr[bi] + (arr[Math.min(n - 1, bi + 1)] - arr[bi]) * bt;
     const s = lerp(p.s);
+    // DeckProfile.edges (bridgeGaps): the half-width on the point's side of the road line.
+    let halfWidth = lerp(p.halfWidth);
+    if (p.edges) {
+      const j = Math.min(n - 1, bi + 1), left = (p.x[j] - p.x[bi]) * (y - p.y[bi]) - (p.y[j] - p.y[bi]) * (x - p.x[bi]) >= 0;
+      halfWidth = Math.max(halfWidth, lerp(left ? p.edges.left : p.edges.right));
+    }
     // Only the deck span lifts the surface; the approaches are relief.
     const off = s <= deck.span[0] || s >= deck.span[1];
-    return { d: off ? Infinity : Math.sqrt(best), z: lerp(deck.z), halfWidth: lerp(p.halfWidth), s, lateral: Math.sqrt(best) };
+    return { d: off ? Infinity : Math.sqrt(best), z: lerp(deck.z), halfWidth, s, lateral: Math.sqrt(best) };
   }
 
   /** Riding-surface z: relief, lifted onto any measured deck within its width (blended over DECK_BLEND_M); a tunnel cut's floor in its strip. */

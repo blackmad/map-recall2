@@ -29,6 +29,15 @@ export const ROAD_SPOTS: [string, Place][] = [
   // the Marnixstraat busway crossing the red fietsstraat at the Frederik Hendrikplantsoen, looking north.
   ['kinkerstraat-dacostagracht', { lng: 4.87243, lat: 52.36731, bearing: 64 }],
   ['marnixstraat-plantsoen', { lng: 4.87643, lat: 52.37421, bearing: 20 }],
+  // Road gaps across bridges (issue #178, roadRegressions BRIDGE_GAPS): 25 m (20 m) before each way, looking along it.
+  // BRIDGE_GAPS=0 shoots the before. The Da Costakade pair from the user's report, then five of the probe's top 20.
+  ['bridge-gaps-bru0108', { lng: 4.87266, lat: 52.37147, bearing: 249 }],
+  ['bridge-gaps-bru0007', { lng: 4.87133, lat: 52.37235, bearing: 21 }],
+  ['bridge-gaps-nauernaseweg', { lng: 4.74998, lat: 52.43227, bearing: 62 }],
+  ['bridge-gaps-ijdoornlaan', { lng: 4.93733, lat: 52.40041, bearing: 123 }],
+  ['bridge-gaps-kraaienplein', { lng: 4.91462, lat: 52.38625, bearing: 319 }],
+  ['bridge-gaps-van-der-madeweg', { lng: 4.93679, lat: 52.32961, bearing: 100 }],
+  ['bridge-gaps-stramanweg', { lng: 4.94281, lat: 52.31461, bearing: 61 }],
   // The road-diagnose spots (roadRegressions ROAD_SPOTS, 2026-10-23): judged beside the orthophoto.
   ...DIAGNOSE_SPOTS.map(s => [s.id, spotViewpoint(s)] as [string, Place]),
   // Ground divots (issue #53, 2026-10-24): Stationsplein in front of Centraal, looking north-north-east at the station
@@ -63,6 +72,8 @@ async function boot(page: Page, viewMode = 'chase'): Promise<string[]> {
   await page.addInitScript(() => { (window as any).__canalRecallOwnGround = true; });
   // The BGT road partition is the default since 2026-10-16; ROADS=0 draws the OSM bands (before/after shots in separate directories).
   if (process.env.ROADS === '0') await page.addInitScript(() => { (window as any).__canalRecallRoads = false; });
+  // BRIDGE_GAPS=0: the bridge decks as before the bridge-gaps fix (gameGround bridgeGapsFlag, issue #178), for its A/B.
+  if (process.env.BRIDGE_GAPS === '0') await page.addInitScript(() => { (window as any).__canalRecallBridgeGaps = false; });
   // BUNDLES_DIR=<dir>: serve *.bundle.js from a local build (as ride-perf.spec.ts), so a lane shoots its source change
   // without touching the published bundles.
   const bundles = process.env.BUNDLES_DIR;
