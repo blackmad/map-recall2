@@ -42990,5 +42990,224 @@
         ]
       ]
     }
+  },
+  {
+    "id": "droogbak",
+    "name": "Droogbak (former HIJSM head office)",
+    "modelUrl": "./models/droogbak.glb",
+    "suppressOsmIds": [
+      "NL.IMBAG.Pand.0363100012171155"
+    ],
+    "spatialSuppression": false,
+    "footprint": {
+      "centre": [
+        4.89395096,
+        52.38042157
+      ],
+      "headingDegrees": 0,
+      "lengthMetres": 70.5,
+      "widthMetres": 74.5
+    },
+    "surveyed": {
+      "anchor": [
+        4.89395096,
+        52.38042157
+      ],
+      "northOffsetDegrees": 0,
+      "source": "Vertex average of the BAG 0363100012171155 outline (RD); outline, courtyard ring (chained 3DBAG LoD2.2 courtyard walls) in native east/south metres (scripts/landmarks/droogbak-prepare.ts). Storey lines, bays, oriels, turrets, portal and cornice measured on rectified Gemeente Amsterdam panorama crops (scripts/landmarks/droogbak-inventory.json); mansard top 22.8 m and centre turret 29.9 m from 3DBAG."
+    },
+    "groundAltitudeMetres": 0,
+    "facingOffsetDegrees": 0,
+    "heightMetres": 29.9,
+    "bagYear": 1884,
+    "materialOverrides": {
+      "brick": "#8c5444",
+      "stone": "#c4bca2",
+      "sandstone": "#7a7974",
+      "slate": "#4f5459",
+      "glass": "#56676a",
+      "frame": "#4a2f2c",
+      "red": "#7a1e22",
+      "dark": "#2f3133"
+    },
+    "attribution": {
+      "title": "Droogbak 1A, former head office of the Hollandsche IJzeren Spoorweg-Maatschappij (1884, Rijksmonument 518416)",
+      "author": "Map Recall",
+      "sourceUrl": "https://api.data.amsterdam.nl/v1/monumenten/monumenten/11fda686-bdbc-4216-b5e6-bed08e316d41",
+      "licence": "CC BY 4.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+      "modifications": "Original texture-free flat-colour geometry: banded brick fronts, granite basement, round-arched bel-etage, sunburst and segmental window heads, bracketed cornice, corner and centre turrets, NE oriels and the SE entrance risalit from rectified Gemeente Amsterdam panoramas (CC BY 4.0, read for proportion only); outline from BAG (CC0), courtyard and roof heights from 3DBAG LoD2.2 (CC BY 4.0). No pixels or meshes imported."
+    },
+    "buildingFootprint": {
+      "type": "Polygon",
+      "coordinates": [
+        [
+          [
+            4.8941347,
+            52.3802178
+          ],
+          [
+            4.894212,
+            52.3802832
+          ],
+          [
+            4.8942065,
+            52.3802857
+          ],
+          [
+            4.8942424,
+            52.380316
+          ],
+          [
+            4.8942338,
+            52.3803198
+          ],
+          [
+            4.8943114,
+            52.3803852
+          ],
+          [
+            4.8943174,
+            52.3803826
+          ],
+          [
+            4.8944027,
+            52.3804547
+          ],
+          [
+            4.894185,
+            52.3805509
+          ],
+          [
+            4.8941884,
+            52.3805538
+          ],
+          [
+            4.8941308,
+            52.3805793
+          ],
+          [
+            4.8941383,
+            52.3805857
+          ],
+          [
+            4.8941219,
+            52.380593
+          ],
+          [
+            4.8941144,
+            52.3805866
+          ],
+          [
+            4.8940954,
+            52.380595
+          ],
+          [
+            4.894103,
+            52.3806014
+          ],
+          [
+            4.8940865,
+            52.3806086
+          ],
+          [
+            4.894079,
+            52.3806022
+          ],
+          [
+            4.894021,
+            52.3806278
+          ],
+          [
+            4.8940176,
+            52.3806249
+          ],
+          [
+            4.8937999,
+            52.3807211
+          ],
+          [
+            4.8937174,
+            52.3806516
+          ],
+          [
+            4.8937228,
+            52.3806492
+          ],
+          [
+            4.893648,
+            52.3805861
+          ],
+          [
+            4.8936408,
+            52.3805893
+          ],
+          [
+            4.8935237,
+            52.3804907
+          ],
+          [
+            4.8935309,
+            52.3804875
+          ],
+          [
+            4.8934561,
+            52.3804245
+          ],
+          [
+            4.8934506,
+            52.3804269
+          ],
+          [
+            4.893368,
+            52.3803574
+          ],
+          [
+            4.8935707,
+            52.3802469
+          ],
+          [
+            4.8935668,
+            52.3802442
+          ],
+          [
+            4.893721,
+            52.3801601
+          ],
+          [
+            4.8937249,
+            52.3801629
+          ],
+          [
+            4.8939282,
+            52.3800521
+          ],
+          [
+            4.8940135,
+            52.3801253
+          ],
+          [
+            4.8940071,
+            52.3801281
+          ],
+          [
+            4.8940838,
+            52.380194
+          ],
+          [
+            4.8940929,
+            52.38019
+          ],
+          [
+            4.8941289,
+            52.3802203
+          ],
+          [
+            4.8941347,
+            52.3802178
+          ]
+        ]
+      ]
+    }
   }
 ]
