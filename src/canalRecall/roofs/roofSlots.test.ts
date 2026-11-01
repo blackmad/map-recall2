@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import { test } from 'node:test';
-import { classifyRoof, decodeRoofFactTile, encodeRoofFactTile, slotForFamily, type RoofFact } from './roofSlots.ts';
+import { classifyRoof, decodeRoofFactTile, encodeRoofFactTile, FLAT_ROOF_LIT_TOP, roofSlotHex, slotForFamily, type RoofFact } from './roofSlots.ts';
 import { applyRoofFact, composeEnrichers, roofFactsEnricher } from './roofFacts.ts';
 import { measuredRoofFurniture, UNIT_TRIANGLES } from './roofFurniture.ts';
 import { ExtraSink } from '../facadeExtraCore.ts';
@@ -128,4 +128,15 @@ test('3DBAG dormer flags round-trip and decide the planned dormers; tiles withou
   const p: Record<string, unknown> = {};
   applyRoofFact(p, back.get('0363100012000002')!);
   assert.equal(p.roofDormer, false);
+});
+
+test('#179 Da Costakade (pand 0363100012143235): a measured white membrane is capped so its lit roof stays under the photo', () => {
+  // Orthophoto (PDOK 2025, roof crop): median luma 236. Lit, a level lid reads ~1.17× its tint in linear light.
+  const hex = roofSlotHex('white-membrane', [0xe6, 0xe6, 0xef]), y = lumaOf(hexToRgb(hex));
+  assert.ok(y <= FLAT_ROOF_LIT_TOP && y >= ROOF_SLOT_TONES['white-membrane'].luma[0], `${hex} luma ${y.toFixed(1)}`);
+  const lit = 255 * Math.min(1, (Math.pow(y / 255, 2.2) * 1.17)) ** (1 / 2.2);
+  assert.ok(lit < 236, `lit ${lit.toFixed(0)}`);
+  // Unmeasured membranes keep the slot base; a membrane measured below the cap keeps its reading.
+  assert.equal(roofSlotHex('white-membrane'), ROOF_SLOT_TONES['white-membrane'].hex);
+  assert.ok(lumaOf(hexToRgb(roofSlotHex('white-membrane', [200, 200, 196]))) < FLAT_ROOF_LIT_TOP - 4);
 });

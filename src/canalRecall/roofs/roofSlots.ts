@@ -178,9 +178,21 @@ export function roofSlotHex(slot: RoofSlot, measured?: RGB | null, weight = 0.75
     const [h, s, l] = rgbToHsl(c);
     c = hslToRgb([h, s, Math.max(0, Math.min(1, l * target / Math.max(1, y)))]);
   }
+  // A measured flat roof is lit as a level surface, ~1.17× its tint in linear light: above FLAT_ROOF_LIT_TOP it draws
+  // brighter than the orthophoto it was read from and clips (#179).
+  if (measured && tone.cell === 'flat' && lumaOf(c) > FLAT_ROOF_LIT_TOP) { const [h, s, l] = rgbToHsl(c); c = hslToRgb([h, s, l * FLAT_ROOF_LIT_TOP / lumaOf(c)]); }
   const hex = rgbToHex(c), y = lumaOf(hexToRgb(hex));
   return y >= lo && y <= hi ? hex : tone.hex;
 }
+
+/**
+ * The brightest tint (sRGB luma) a measured flat roof is drawn in. Lit, a level lid reads ~1.17× its tint in linear
+ * light, so the old white-membrane band top (228) drew the Da Costakade roof (pand 0363100012143235, measured
+ * #e6e6ef) at 245–255, clipped flat white over an orthophoto median of luma 236 (#179, 2026-11-01). At 212 the lit
+ * roof lands at ~227, under the photo. Only white membranes reach it (every other flat slot tops out at 182);
+ * unmeasured membrane roofs keep the slot base.
+ */
+export const FLAT_ROOF_LIT_TOP = 212;
 
 // ---------------------------------------------------------------------------
 // Roof furniture (measured placements on a roof)

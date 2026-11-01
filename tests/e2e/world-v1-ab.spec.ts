@@ -152,6 +152,17 @@ async function fixedShot(page: Page, at: readonly number[], face: readonly numbe
     const vm = (window as any).canalRecallGame.vectorMap, f = vm._sharedFrame, cm = vm.cameraMap?.camera ?? vm.cameraMap;
     return { clip: f ? Array.from(f.camera.projectionMatrix.elements as number[]) : null, state: cm ? { lng: cm.lng, lat: cm.lat, zoom: cm.zoom, bearing: cm.bearing, pitch: cm.pitch, elevation: cm.elevation, fovDeg: cm.fovDeg } : null };
   }));
+  // AB_PICK="x,y;x,y" (CSS px): the building under each point at the held pose, with its roof and colour properties.
+  if (process.env.AB_PICK) shotPicks.push(await page.evaluate((points: number[][]) => {
+    const vm = (window as any).canalRecallGame.vectorMap, tb = vm._threeBuildings, vp = vm.host.viewport();
+    return points.map(([x, y]) => {
+      const hit = tb?.inspectAtScreen?.(x * vp.width / innerWidth, y * vp.height / innerHeight, vp.width, vp.height);
+      if (!hit) return { x, y, id: null };
+      let props: Record<string, unknown> | null = null;
+      for (const chunk of tb.chunks.values()) { const f = chunk.source?.find?.((f: any) => String(f.properties?.id) === hit.id); if (f) { props = Object.fromEntries(Object.entries(f.properties).filter(([k]) => /roof|colou?r|facade|style|tier|height|type|year|kit|recipe/i.test(k))); break; } }
+      return { x, y, id: hit.id, lngLat: hit.lngLat, props };
+    });
+  }, process.env.AB_PICK.split(';').map(p => p.split(',').map(Number))));
   // AB_FRAMES=N: N more frames at the held pose, hashed, to tell a per-frame flicker from a per-load difference.
   if (Number(process.env.AB_FRAMES) > 0) frameRuns.push(await page.evaluate(async (n: number) => {
     const vm = (window as any).canalRecallGame.vectorMap, seen: string[] = [], seq: number[] = [];
@@ -273,6 +284,7 @@ async function settle(page: Page) {
 const results: Record<string, any> = {};
 const frameRuns: { distinct: number; flips: number; seq: string }[] = [];
 const shotCameras: unknown[] = [];
+const shotPicks: unknown[] = [];
 test.beforeAll(() => {
   if (process.env.WORLD_AB_STALE) return;
   mkdirSync(OUT, { recursive: true });
@@ -332,6 +344,7 @@ for (const variant of VARIANTS) {
       spots[spot.name].shot = shot;
       if (frameRuns.length) spots[spot.name].frames = frameRuns.pop();
       if (shotCameras.length) spots[spot.name].camera = shotCameras.pop();
+      if (shotPicks.length) spots[spot.name].picks = shotPicks.pop();
       if (owners) {
         for (const pass of ['noshadow', 'pand', 'mesh']) writeFileSync(`${OUT}/${spot.name}-${variant.name}-${pass}.png`, owners[pass]);
         writeFileSync(`${OUT}/owners-${spot.name}-${variant.name}.json`, JSON.stringify({ codes: owners.codes, camera: owners.camera, layers: JSON.parse(owners.layers.toString()) }));
