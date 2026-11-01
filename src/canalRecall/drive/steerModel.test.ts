@@ -69,6 +69,22 @@ for (const [name, params] of [['bike', BIKE], ['boat', { ...LEGACY_BASE, turnRat
   }
 }
 
+// 2026-11-01: a parked vehicle must come to an exact rest, not flip sign around zero every step.
+test('rest: with no command the speed reaches exactly zero and stays there', () => {
+  for (const params of [LEGACY_BASE, BIKE]) {
+    const state = initialSteerState();
+    state.speed = 30;
+    const idle = input({});
+    // The legacy car coasts for well over a minute (rolling resistance 0.12 px/s², no lift-off braking).
+    for (let i = 0; i < 60 * 200; i++) step(state, idle, 1 / 60, params);
+    assert.equal(state.speed, 0, `${params.steering}: speed is exactly 0 after 200 s of coasting`);
+    const x = state.x, y = state.y;
+    for (let i = 0; i < 600; i++) step(state, idle, 1 / 60, params);
+    assert.equal(state.speed, 0);
+    assert.equal(state.x, x); assert.equal(state.y, y);
+  }
+});
+
 test('the 90° corner really turns and the straight really goes', () => {
   const straight = ride(BIKE, 60, 4, scripts.straight.script);
   assert.ok(straight.x > 600 && Math.abs(straight.y) < 1e-6, `straight ends at ${straight.x.toFixed(0)}, ${straight.y.toFixed(2)}`);

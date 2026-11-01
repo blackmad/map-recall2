@@ -60,7 +60,7 @@
      "brick": "#56453f",
      "evidence": "strip 2023-01-02 span 3661-3921: trim-normalised wall (buildingRecipe/measureFacade.ts)"
     },
-    "mirror": true
+    "crown": "shouldered-gable"
    },
    "groundFloor": {
     "use": "residential",
@@ -85,7 +85,8 @@
     "measuredPalette": {
      "brick": "#5c4842",
      "evidence": "strip 2023-01-02 span 3921-4162: trim-normalised wall (buildingRecipe/measureFacade.ts)"
-    }
+    },
+    "crown": "shouldered-gable"
    },
    "groundFloor": {
     "use": "residential",

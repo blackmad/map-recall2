@@ -1,0 +1,124 @@
+{
+ "street": "Vaalrivierstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-31T15:58:46.512Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012120724",
+   "addresses": [
+    "Vaalrivierstraat 12A",
+    "Vaalrivierstraat 12B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Vaalrivierstraat 12A",
+     "use": "woonfunctie",
+     "areaM2": 52,
+     "bagId": "0363010000849466"
+    },
+    {
+     "address": "Vaalrivierstraat 12B",
+     "use": "woonfunctie",
+     "areaM2": 52,
+     "bagId": "0363010000849467"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012090866",
+   "addresses": [
+    "Vaalrivierstraat 10A",
+    "Vaalrivierstraat 10B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Vaalrivierstraat 10A",
+     "use": "woonfunctie",
+     "areaM2": 52,
+     "bagId": "0363010000849463"
+    },
+    {
+     "address": "Vaalrivierstraat 10B",
+     "use": "woonfunctie",
+     "areaM2": 52,
+     "bagId": "0363010000849464"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012108545",
+   "addresses": [
+    "Vaalrivierstraat 8A",
+    "Vaalrivierstraat 8B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Vaalrivierstraat 8A",
+     "use": "woonfunctie",
+     "areaM2": 52,
+     "bagId": "0363010000849458"
+    },
+    {
+     "address": "Vaalrivierstraat 8B",
+     "use": "woonfunctie",
+     "areaM2": 52,
+     "bagId": "0363010000849459"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012090850",
+   "addresses": [
+    "Vaalrivierstraat 6A",
+    "Vaalrivierstraat 6B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Vaalrivierstraat 6A",
+     "use": "woonfunctie",
+     "areaM2": 52,
+     "bagId": "0363010000849454"
+    },
+    {
+     "address": "Vaalrivierstraat 6B",
+     "use": "woonfunctie",
+     "areaM2": 52,
+     "bagId": "0363010000849455"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012137594",
+   "addresses": [
+    "Vaalrivierstraat 4A",
+    "Vaalrivierstraat 4B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Vaalrivierstraat 4A",
+     "use": "woonfunctie",
+     "areaM2": 56,
+     "bagId": "0363010000849450"
+    },
+    {
+     "address": "Vaalrivierstraat 4B",
+     "use": "woonfunctie",
+     "areaM2": 52,
+     "bagId": "0363010000849451"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  }
+ ]
+}

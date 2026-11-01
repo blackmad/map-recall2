@@ -1920,8 +1920,10 @@ class GameRouteRuntime {
       // Hold briefly until MapLibre finishes the first idle at the spawn so
       // the handoff into racing is not a Damrak→neighbourhood jump mid-frame.
       // Riding on, the map is already there.
+      // 4 s (was 2.8): under ?engine=own the facades check holds until the look's atlas is bound (#129: never race
+      // without facades); in the chase-and-submit probe flow the 2.8 s cut that short (atlas unbound at racing).
       if (!world) {
-        await this._waitForMapSettle(2800);
+        await this._waitForMapSettle(4000);
         if (stale()) return;
       }
 

@@ -30,7 +30,12 @@ import type {WindowBoxIntent} from '../blockBuilding/windowBox.ts';
 import type {GalleryIntent} from '../blockBuilding/gallery.ts';
 import type {SignBoardIntent} from '../blockBuilding/signBoards.ts';
 
-export const GABLES = ['spout', 'neck', 'raised-neck', 'bell', 'step', 'point', 'cornice', 'flat'] as const;
+/**
+ * `shouldered` (Transvaalbuurt 1911-1914: Retiefstraat 71D-73A, Transvaalstraat 42-44): a low broad gable whose sides
+ * rise plumb from the eaves for `shouldered.shoulder` before a shallow rake climbs `rise` to a point (or a flat top
+ * `flatTop` wide). Needs `shouldered`.
+ */
+export const GABLES = ['spout', 'neck', 'raised-neck', 'bell', 'step', 'point', 'cornice', 'flat', 'shouldered'] as const;
 export type GableIntent = typeof GABLES[number];
 /** `frieze`: a tall (1.6 m) plain attic frieze with its cornice, in the cornice colour (18th-c. fronts; oculi in it are not drawn). */
 export const CORNICES = ['none', 'simple', 'bracketed', 'heavy', 'frieze'] as const;
@@ -152,6 +157,17 @@ export interface OrielIntent {
   /** Metres over a painted module's foot where the paint starts: the stallriser under it stays brick (Hasebroekstraat 56-70: 0.75). */
   paintFrom?: number;
   console?: boolean;
+  /**
+   * Metres of wall between the top module and its storey's top (De la Reijstraat 25-42, 1920: the canted timber bay
+   * ends at 5.2 m, 0.9 m of brick under the eaves board at 6.1 m). Absent = the stack runs to the storey top.
+   */
+  topGap?: number;
+  /**
+   * A second identical stack (span, plan, modules, paint, console) centred on these inclusive axes of the shared grid
+   * (Retiefstraat 2-28 and Tugelaweg 19-31, 1921-1922: two canted brick bays per 18 m stair block, either side of the
+   * stair axis). Absent = one stack.
+   */
+  twin?: {from: number; to: number};
 }
 export const ORIEL = {projection: 0.5, returns: 0.3, stallriser: 0.4, head: 0.35, frontLights: 3, consoleM: 0.15, consoleOverM: 0.06} as const;
 
@@ -177,8 +193,16 @@ export type GroundBay = typeof GROUND_BAYS[number];
 /** `flat` (Jan Evertsenstraat 151-160, 1939): a timber dormer 1.8 m high (151: 13.3-15.3 m with its roof edge) at the plain dormer's setback, under a flat roof (no pitched top). */
 /** `arched` (Kinkerstraat 22-24, 1890): a dormer under a round hood, half an ellipse as high as half its width (0.45..1 m), its round front in the dormer body colour (white with `dormerBody: "stone"`). */
 export const DORMER_STYLES = ['plain', 'pediment', 'pointed', 'box', 'flat', 'arched'] as const;
-/** Dormer body materials (`FrontIntent.dormerBody`); absent = the trim slot. */
-export const DORMER_BODIES = ['stone', 'brick'] as const;
+/**
+ * Dormer body materials (`FrontIntent.dormerBody`); absent = the trim slot. `timber` (Transvaalbuurt 1911-1914,
+ * Transvaalstraat 39-45, #156): a white-painted timber dormer (the trim colour) whose window sits in its own front wall, an
+ * apron under it and posts beside it (library `CanalhouseDormer.frontWall`), so the glass stands clear of the roof plane
+ * and the facade top behind which the dormer stands (round 3: the fully glazed front reached 6 cm over the eaves and
+ * failed the GLB audit, opening-outside 2.5 m2).
+ */
+export const DORMER_BODIES = ['stone', 'brick', 'timber'] as const;
+/** `dormerBody: "timber"`: the apron under the window (m) and the post share of the dormer width each side (clamped). */
+export const TIMBER_DORMER = {apronM: 0.35, sideShare: 0.16, sideMinM: 0.12, sideMaxM: 0.35} as const;
 /**
  * Tower caps: a pyramid, a flat slab, or `stepped` (Amsterdam School: two receding brick tiers under a flat slab).
  * `merlons` (Helmersbuurt 1899-1900 wall dormers, Derde Helmersstraat 54-66): a flat brick top with three square brick
@@ -224,6 +248,22 @@ export interface FrontIntent {
   /** Left-to-right share of the discovered frontage when several fronts face one street. */
   share?: number;
   gable: GableIntent;
+  /**
+   * A `shouldered` gable's measured outline in metres: the plumb shoulder over the eaves at each side of the crown span
+   * (`shoulder`, 0.1..3), the rake's rise from the shoulder to the top (`rise`, 0.3..5), and a flat top `flatTop`
+   * wide (absent or 0 = pointed). Retiefstraat 71D-73A strip 2023-01-02: 1.4 / 1.05 m over a 4.2 m span; Transvaalstraat
+   * 42-44: 1.2 / 2.9 m over 7.75 m. The crown top is eaves + shoulder + rise (`crownRise` is not used). Only with
+   * `gable: "shouldered"`; absent elsewhere = byte-identical.
+   */
+  shouldered?: {shoulder: number; rise: number; flatTop?: number};
+  /**
+   * One crown over two pands (a pair module, blockFace/houseType.ts `pair`): this front carries the `left` or `right`
+   * half of a symmetric crown whose centre line is the party wall at the crown span's end (`crownAt.to = 1` for the left
+   * half, `crownAt.from = 0` for the right). Transvaalstraat 42-44: one ornamented gable centred on the party wall. The
+   * outline is the crown drawn twice the span wide and cut at its centre, so the two halves meet at the apex. Only on a
+   * gabled crown with `crownAt`; absent = the whole crown on this front, byte-identical.
+   */
+  crownHalf?: 'left' | 'right';
   /** Crown top shape for neck/bell/cornice crowns. */
   crownCap?: typeof CROWN_CAPS[number];
   /** Cornice crowns: the cap is a narrow centre piece (default) or a wide parapet across the front (1900s Bilderdijkstraat fronts). */
@@ -469,7 +509,9 @@ export interface FrontIntent {
    * foot on the window heads); default sill + head. Band heights in metres (`bandHeights`, defaults sill 0.14, transom
    * 0.10, head 0.17), measured on the strip.
    */
-  bandHeights?: {sill?: number; transom?: number; head?: number};
+  bandHeights?: {sill?: number; transom?: number; head?: number;
+    /** Metres of brick between the window heads and the foot of the head band (0..1; Danie Theronstraat 1926-28: the white top band 0.5 m over the top-storey heads). Absent = on the heads, byte-identical. */
+    headLift?: number};
   /** `bands: painted`: the centre of the transom band as a share of the window height from the sill (0.3..0.95, default 0.78), measured on the strip (Kinkerstraat 18-4: 0.65). */
   bandTransomAt?: number;
   bandLines?: ('sill' | 'transom' | 'head')[];
@@ -493,8 +535,12 @@ export interface FrontIntent {
    * into the city brick range). Absent = byte-identical. `from` (m, 0.05..4): the paint starts that far over each listed
    * storey's floor, brick below it (Gorontalostraat 25-45, 1926: the white top storey begins at its window sills, 0.45 m
    * over the floor; Zaanhof 1919: the render starts over the first-floor window heads, 3.3 m up a tall top storey; absent = from the floor).
+   * `panels` (Transvaalbuurt 1929, Tugelaweg 91-120: a grey rendered stair panel over the portiek axis of a cream-rendered
+   * block): a second paint `breadth` metres wide centred on grid `axis`, 1 cm proud of the painted storeys, from the floor
+   * of storey `fromStorey` (default the first listed storey, plus `from`) to 2 cm under the eaves, cut around the openings
+   * like them, in its own measured `colour`. Absent = byte-identical.
    */
-  paintedStoreys?: {storeys: number[]; colour: string; from?: number};
+  paintedStoreys?: {storeys: number[]; colour: string; from?: number; panels?: PaintedPanel[]};
   /**
    * Brick lisenes (Amsterdam School pilasters) at the front's viewer-left (`leftEnd`) / right (`rightEnd`) end, from the top of the ground storey
    * to 0.3 m under the eaves, 0.1 m proud, with a 0.15 m corbel cap 0.16 m proud. `half` (0.25 m wide) is the house's half
@@ -604,7 +650,13 @@ export interface FrontIntent {
    */
   bandPiers?: boolean;
   /** The same house module repeated along this front (rows built together, double fronts). */
-  repeat?: { count: number | 'fit'; mirrorAlternate?: boolean };
+  repeat?: { count: number | 'fit'; mirrorAlternate?: boolean;
+    /**
+     * With `mirrorAlternate`: the alternating row as a whole is mirrored (blockFace mirrorFront of a placed type): module k
+     * is laid mirrored when `count - 1 - k` is even, so the last module is the authored one (Danie Theronstraat 16: the
+     * half-portiek with its stair on the left). With an even count it is the same front. Absent = byte-identical.
+     */
+    mirrored?: boolean };
   /** Per-front palette when one owner has visibly different fronts. */
   palette?: Partial<PaletteIntent>;
   /** Stone ornament of a historic gable or cornice front (De Wallen, 17th/18th c.); see `GableOrnamentIntent`. */
@@ -1589,13 +1641,35 @@ export function validateIntent(input: unknown): CanalHouseIntent {
       const c = f.crownAt;
       if (!c || !(c.from >= 0 && c.to <= 1 && c.to - c.from >= 0.2)) problems.push(`${at}.crownAt: {from, to} fractions with 0 <= from < to <= 1 covering at least 0.2`);
     }
+    if (f.gable === 'shouldered' || f.shouldered !== undefined) {
+      const sh = f.shouldered;
+      if (f.gable !== 'shouldered') problems.push(`${at}.shouldered: only with gable "shouldered" (gable ${f.gable})`);
+      else if (!sh || typeof sh !== 'object') problems.push(`${at}.shouldered: a shouldered gable needs {shoulder, rise}`);
+      else {
+        if (!(sh.shoulder >= 0.1 && sh.shoulder <= 3)) problems.push(`${at}.shouldered.shoulder: 0.1..3 m`);
+        if (!(sh.rise >= 0.3 && sh.rise <= 5)) problems.push(`${at}.shouldered.rise: 0.3..5 m`);
+        if (sh.flatTop !== undefined && !(sh.flatTop >= 0 && sh.flatTop <= 4)) problems.push(`${at}.shouldered.flatTop: 0..4 m`);
+        if (Object.keys(sh).some(k => !['shoulder', 'rise', 'flatTop'].includes(k))) problems.push(`${at}.shouldered: unknown field (shoulder, rise, flatTop)`);
+      }
+      if (f.crownRise !== undefined) problems.push(`${at}.crownRise: a shouldered gable's top is shoulder + rise`);
+    }
+    if (f.crownHalf !== undefined) {
+      if (f.crownHalf !== 'left' && f.crownHalf !== 'right') problems.push(`${at}.crownHalf: left or right`);
+      if (['cornice', 'flat'].includes(f.gable)) problems.push(`${at}.crownHalf: only on a gabled crown (gable ${f.gable})`);
+      if (!f.crownAt) problems.push(`${at}.crownHalf: needs crownAt (the half crown's span, ending on the party wall)`);
+      else if (f.crownHalf === 'left' ? f.crownAt.to !== 1 : f.crownAt.from !== 0) problems.push(`${at}.crownHalf: the ${f.crownHalf} half ends on the ${f.crownHalf === 'left' ? 'right' : 'left'} party wall (crownAt.${f.crownHalf === 'left' ? 'to = 1' : 'from = 0'})`);
+      if (f.crownGroups) problems.push(`${at}.crownHalf: not with crownGroups`);
+    }
     if (f.crownBays !== undefined) {
       const grid = f.axisGrid ?? Math.max(...(Array.isArray(f.bays) ? f.bays.slice(f.storeys > 1 ? 1 : 0) : [f.bays])), c = f.crownBays;
       if (!c || !Number.isInteger(c.from) || !Number.isInteger(c.to) || c.from < 0 || c.to >= grid || c.from > c.to) problems.push(`${at}.crownBays: {from, to} bay axes with 0 <= from <= to < ${grid}`);
     }
     if (f.archedStoreys !== undefined) { if (!Array.isArray(f.archedStoreys)) problems.push(`${at}.archedStoreys must be a list`); else f.archedStoreys.forEach(v => count(v, `${at}.archedStoreys`, 0, f.storeys - 1)); }
     if (f.archRings !== undefined) oneOf(f.archRings, ['stone', 'band', 'none'], `${at}.archRings`);
-    if (f.repeat) { if (f.repeat.count !== 'fit') count(f.repeat.count, `${at}.repeat.count`, 1, 20); }
+    if (f.repeat) {
+      if (f.repeat.count !== 'fit') count(f.repeat.count, `${at}.repeat.count`, 1, 20);
+      if (f.repeat.mirrored !== undefined && (typeof f.repeat.mirrored !== 'boolean' || !f.repeat.mirrorAlternate)) problems.push(`${at}.repeat.mirrored: a boolean, with mirrorAlternate`);
+    }
     if (f.share !== undefined && !(f.share > 0 && f.share <= 1)) problems.push(`${at}.share must be in (0,1]`);
     if (f.shopfront) {
       const sf = f.shopfront;
@@ -1742,6 +1816,12 @@ export function orielProblems(f: FrontIntent, at: string): string[] {
   if (o.paintedStoreys !== undefined && (!Array.isArray(o.paintedStoreys) || o.paintedStoreys.some(s => !bw.storeys.includes(s)))) p.push(`${at}.bayWindows.oriel.paintedStoreys: storeys of bayWindows.storeys`);
   if (o.paintFrom !== undefined && (!num(o.paintFrom, 0.05, 2.4) || !o.paintedStoreys?.length)) p.push(`${at}.bayWindows.oriel.paintFrom: 0.05..2.4 m, with paintedStoreys`);
   if (o.console !== undefined && typeof o.console !== 'boolean') p.push(`${at}.bayWindows.oriel.console: boolean`);
+  if (o.topGap !== undefined && !num(o.topGap, 0.1, 2)) p.push(`${at}.bayWindows.oriel.topGap: 0.1..2 m of wall over the top module`);
+  if (o.twin !== undefined) {
+    const t = o.twin as {from: unknown; to: unknown}, b = bw.bays!;
+    if (!t || !Number.isInteger(t.from) || !Number.isInteger(t.to) || (t.from as number) > (t.to as number) || (t.from as number) < 0) p.push(`${at}.bayWindows.oriel.twin: {from, to} axes, from <= to`);
+    else if ((t.from as number) <= b.to && (t.to as number) >= b.from) p.push(`${at}.bayWindows.oriel.twin: axes ${t.from}-${t.to} overlap the first stack's ${b.from}-${b.to}`);
+  }
   if (bw.cap !== undefined && bw.cap !== 'none') p.push(`${at}.bayWindows.oriel: cap is not drawn on an oriel (it stops under the cornice)`);
   return p;
 }
@@ -1764,7 +1844,8 @@ function paintedProblems(f: FrontIntent, at: string, oneOf: (v: unknown, allowed
   if (f.bandHeights !== undefined) {
     const b = f.bandHeights as Record<string, unknown>;
     if (f.bands !== 'painted') p.push(`${at}.bandHeights: only with bands "painted"`);
-    if (!b || typeof b !== 'object' || Object.keys(b).some(k => !['sill', 'transom', 'head'].includes(k)) || Object.values(b).some(v => !frac(v, 0.04, 0.4))) p.push(`${at}.bandHeights: {sill?, transom?, head?} metres, 0.04..0.4`);
+    if (!b || typeof b !== 'object' || Object.keys(b).some(k => !['sill', 'transom', 'head', 'headLift'].includes(k)) || Object.entries(b).some(([k, v]) => k !== 'headLift' && !frac(v, 0.04, 0.4))) p.push(`${at}.bandHeights: {sill?, transom?, head?} metres, 0.04..0.4 (headLift 0..1)`);
+    if (b && typeof b === 'object' && b.headLift !== undefined && !frac(b.headLift, 0, 1)) p.push(`${at}.bandHeights.headLift: 0..1 m`);
   }
   if (f.bandLines !== undefined) {
     const l = f.bandLines;
@@ -1799,10 +1880,29 @@ export function tilePanelProblems(f: FrontIntent, at: string): string[] {
   return p;
 }
 
+/** A painted panel over the painted storeys (`paintedStoreys.panels`): centred on a grid axis, `breadth` metres wide. */
+export interface PaintedPanel { axis: number; breadth: number; colour: string; fromStorey?: number }
+/** Validation range of a panel's breadth (m). */
+export const PAINTED_PANEL_BREADTH = [0.3, 4] as const;
+
 /** Problems with `paintedStoreys` (one or more storeys painted in a second colour). */
 export function paintedStoreyProblems(f: FrontIntent, at: string): string[] {
   const p: string[] = [], ps = f.paintedStoreys as {storeys?: unknown; colour?: unknown; from?: unknown} | undefined;
-  if (!ps || typeof ps !== 'object' || Object.keys(ps).some(k => !['storeys', 'colour', 'from'].includes(k))) return [`${at}.paintedStoreys: {storeys, colour, from?}`];
+  if (!ps || typeof ps !== 'object' || Object.keys(ps).some(k => !['storeys', 'colour', 'from', 'panels'].includes(k))) return [`${at}.paintedStoreys: {storeys, colour, from?} (and panels?)`];
+  const panels = (ps as {panels?: unknown}).panels;
+  if (panels !== undefined) {
+    const grid = frontGrid(f);
+    if (!Array.isArray(panels) || !panels.length) p.push(`${at}.paintedStoreys.panels: a non-empty list of {axis, breadth, colour}`);
+    else panels.forEach((q: unknown, k) => {
+      const o = q as Record<string, unknown>, a = `${at}.paintedStoreys.panels[${k}]`;
+      if (!o || typeof o !== 'object' || Object.keys(o).some(x => !['axis', 'breadth', 'colour', 'fromStorey'].includes(x))) { p.push(`${a}: {axis, breadth, colour, fromStorey?}`); return; }
+      if (o.fromStorey !== undefined && !(Number.isInteger(o.fromStorey) && (o.fromStorey as number) >= 0 && (o.fromStorey as number) < f.storeys)) p.push(`${a}.fromStorey: a storey 0..${f.storeys - 1}`);
+      if (!(Number.isInteger(o.axis) && (o.axis as number) >= 0 && (o.axis as number) < grid)) p.push(`${a}.axis: an axis of the shared grid, 0..${grid - 1}`);
+      if (!(typeof o.breadth === 'number' && o.breadth >= PAINTED_PANEL_BREADTH[0] && o.breadth <= PAINTED_PANEL_BREADTH[1])) p.push(`${a}.breadth: ${PAINTED_PANEL_BREADTH.join('..')} m`);
+      if (typeof o.colour !== 'string' || !/^#[0-9a-f]{6}$/i.test(o.colour)) p.push(`${a}.colour: a #rrggbb paint colour`);
+    });
+    if (f.repeat) p.push(`${at}.paintedStoreys.panels: not on a repeated front`);
+  }
   if (ps.from !== undefined && !(typeof ps.from === 'number' && ps.from >= 0.05 && ps.from <= 4)) p.push(`${at}.paintedStoreys.from: 0.05..4 m over the storey floor`);
   const l = ps.storeys as number[];
   if (!Array.isArray(l) || !l.length || l.some((s, i) => !Number.isInteger(s) || s < 0 || s >= f.storeys || (i > 0 && s <= l[i - 1]))) p.push(`${at}.paintedStoreys.storeys: ascending storey indices within 0..${f.storeys - 1}`);

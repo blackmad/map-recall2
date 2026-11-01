@@ -1,0 +1,617 @@
+{
+ "street": "Paardekraalstraat",
+ "seed": "0363100012104565",
+ "members": [
+  "0363100012073473"
+ ],
+ "ends": [
+  {
+   "side": "left",
+   "reason": "run of paardekraal-1-15: 068159 held (auto-place.json)"
+  },
+  {
+   "side": "right",
+   "reason": "run of paardekraal-1-15: 063275 held (auto-place.json)"
+  }
+ ],
+ "rejected": [
+  {
+   "pandId": "0363100012075924",
+   "reason": "frontage 126.4 m from Paardekraalstraat"
+  },
+  {
+   "pandId": "0363100012061814",
+   "reason": "frontage 46.3 m from Paardekraalstraat"
+  },
+  {
+   "pandId": "0363100012061965",
+   "reason": "frontage 42.6 m from Paardekraalstraat"
+  },
+  {
+   "pandId": "0363100012062620",
+   "reason": "frontage 77.5 m from Paardekraalstraat"
+  },
+  {
+   "pandId": "0363100012063449",
+   "reason": "frontage 34.2 m from Paardekraalstraat"
+  },
+  {
+   "pandId": "0363100012063736",
+   "reason": "frontage 59.9 m from Paardekraalstraat"
+  },
+  {
+   "pandId": "0363100012066211",
+   "reason": "frontage 43.6 m from Paardekraalstraat"
+  },
+  {
+   "pandId": "0363100012066368",
+   "reason": "sightline to Paardekraalstraat crosses 0363100012097703"
+  },
+  {
+   "pandId": "0363100012068730",
+   "reason": "frontage 90.7 m from Paardekraalstraat"
+  },
+  {
+   "pandId": "0363100012069186",
+   "reason": "frontage 73.1 m from Paardekraalstraat"
+  },
+  {
+   "pandId": "0363100012069699",
+   "reason": "frontage 59.3 m from Paardekraalstraat"
+  },
+  {
+   "pandId": "0363100012070199",
+   "reason": "no frontage on Paardekraalstraat: No footprint edge faces Paardekraalstraat"
+  },
+  {
+   "pandId": "0363100012070813",
+   "reason": "frontage 74.2 m from Paardekraalstraat"
+  },
+  {
+   "pandId": "0363100012071217",
+   "reason": "sightline to Paardekraalstraat crosses 0363100012138748"
+  },
+  {
+   "pandId": "0363100012071714",
+   "reason": "frontage 46.9 m from Paardekraalstraat"
+  },
+  {
+   "pandId": "0363100012072896",
+   "reason": "frontage 102.9 m from Paardekraalstraat"
+  },
+  {
+   "pandId": "0363100012073177",
+   "reason": "frontage 37.2 m from Paardekraalstraat"
+  },
+  {
+   "pandId": "0363100012077968",
+   "reason": "frontage 81.3 m from Paardekraalstraat"
+  },
+  {
+   "pandId": "0363100012078226",
+   "reason": "sightline to Paardekraalstraat crosses 0363100012080020"
+  },
+  {
+   "pandId": "0363100012078977",
+   "reason": "sightline to Paardekraalstraat crosses 0363100012133895"
+  },
+  {
+   "pandId": "0363100012079342",
+   "reason": "frontage 60.7 m from Paardekraalstraat"
+  },
+  {
+   "pandId": "0363100012080020",
+   "reason": "sightline to Paardekraalstraat crosses 0363100012093100"
+  },
+  {
+   "pandId": "0363100012081061",
+   "reason": "frontage 84.1 m from Paardekraalstraat"
+  },
+  {
+   "pandId": "0363100012082397",
+   "reason": "frontage 48.5 m from Paardekraalstraat"
+  },
+  {
+   "pandId": "0363100012082846",
+   "reason": "frontage 73.1 m from Paardekraalstraat"
+  },
+  {
+   "pandId": "0363100012084193",
+   "reason": "frontage 86.2 m from Paardekraalstraat"
+  },
+  {
+   "pandId": "0363100012085865",
+   "reason": "frontage 50.9 m from Paardekraalstraat"
+  },
+  {
+   "pandId": "0363100012086462",
+   "reason": "no frontage on Paardekraalstraat: No footprint edge faces Paardekraalstraat"
+  },
+  {
+   "pandId": "0363100012086628",
+   "reason": "sightline to Paardekraalstraat crosses 0363100012078977"
+  },
+  {
+   "pandId": "0363100012087836",
+   "reason": "sightline to Paardekraalstraat crosses 0363100012099620"
+  },
+  {
+   "pandId": "0363100012089528",
+   "reason": "sightline to Paardekraalstraat crosses 0363100012070199"
+  },
+  {
+   "pandId": "0363100012091272",
+   "reason": "frontage 79.5 m from Paardekraalstraat"
+  },
+  {
+   "pandId": "0363100012093692",
+   "reason": "frontage 45.9 m from Paardekraalstraat"
+  },
+  {
+   "pandId": "0363100012094192",
+   "reason": "no frontage on Paardekraalstraat: No footprint edge faces Paardekraalstraat"
+  },
+  {
+   "pandId": "0363100012094749",
+   "reason": "frontage 114.6 m from Paardekraalstraat"
+  },
+  {
+   "pandId": "0363100012095538",
+   "reason": "no frontage on Paardekraalstraat: No footprint edge faces Paardekraalstraat"
+  },
+  {
+   "pandId": "0363100012095627",
+   "reason": "frontage 58.2 m from Paardekraalstraat"
+  },
+  {
+   "pandId": "0363100012096974",
+   "reason": "sightline to Paardekraalstraat crosses 0363100012070199"
+  },
+  {
+   "pandId": "0363100012097925",
+   "reason": "frontage 67.2 m from Paardekraalstraat"
+  },
+  {
+   "pandId": "0363100012098835",
+   "reason": "sightline to Paardekraalstraat crosses 0363100012097703"
+  },
+  {
+   "pandId": "0363100012099620",
+   "reason": "sightline to Paardekraalstraat crosses 0363100012107767"
+  },
+  {
+   "pandId": "0363100012100672",
+   "reason": "frontage 120.1 m from Paardekraalstraat"
+  },
+  {
+   "pandId": "0363100012102991",
+   "reason": "frontage 109.0 m from Paardekraalstraat"
+  },
+  {
+   "pandId": "0363100012103345",
+   "reason": "sightline to Paardekraalstraat crosses 0363100012083320"
+  },
+  {
+   "pandId": "0363100012105384",
+   "reason": "frontage 70.7 m from Paardekraalstraat"
+  },
+  {
+   "pandId": "0363100012105544",
+   "reason": "frontage 42.8 m from Paardekraalstraat"
+  },
+  {
+   "pandId": "0363100012109151",
+   "reason": "frontage 38.4 m from Paardekraalstraat"
+  },
+  {
+   "pandId": "0363100012109699",
+   "reason": "frontage 48.4 m from Paardekraalstraat"
+  },
+  {
+   "pandId": "0363100012112805",
+   "reason": "frontage 31.8 m from Paardekraalstraat"
+  },
+  {
+   "pandId": "0363100012114338",
+   "reason": "frontage 88.8 m from Paardekraalstraat"
+  },
+  {
+   "pandId": "0363100012119314",
+   "reason": "frontage 30.5 m from Paardekraalstraat"
+  },
+  {
+   "pandId": "0363100012119806",
+   "reason": "frontage 63.9 m from Paardekraalstraat"
+  },
+  {
+   "pandId": "0363100012119914",
+   "reason": "frontage 63.6 m from Paardekraalstraat"
+  },
+  {
+   "pandId": "0363100012119923",
+   "reason": "frontage 35.8 m from Paardekraalstraat"
+  },
+  {
+   "pandId": "0363100012121521",
+   "reason": "frontage 67.9 m from Paardekraalstraat"
+  },
+  {
+   "pandId": "0363100012123913",
+   "reason": "frontage 55.3 m from Paardekraalstraat"
+  },
+  {
+   "pandId": "0363100012126873",
+   "reason": "frontage 44.7 m from Paardekraalstraat"
+  },
+  {
+   "pandId": "0363100012127724",
+   "reason": "frontage 42.2 m from Paardekraalstraat"
+  },
+  {
+   "pandId": "0363100012128128",
+   "reason": "frontage 96.3 m from Paardekraalstraat"
+  },
+  {
+   "pandId": "0363100012128269",
+   "reason": "frontage 43.6 m from Paardekraalstraat"
+  },
+  {
+   "pandId": "0363100012131128",
+   "reason": "frontage 47.1 m from Paardekraalstraat"
+  },
+  {
+   "pandId": "0363100012131135",
+   "reason": "frontage 37.1 m from Paardekraalstraat"
+  },
+  {
+   "pandId": "0363100012131136",
+   "reason": "frontage 37.9 m from Paardekraalstraat"
+  },
+  {
+   "pandId": "0363100012132650",
+   "reason": "frontage 61.2 m from Paardekraalstraat"
+  },
+  {
+   "pandId": "0363100012132653",
+   "reason": "frontage 51.5 m from Paardekraalstraat"
+  },
+  {
+   "pandId": "0363100012132898",
+   "reason": "frontage 44.3 m from Paardekraalstraat"
+  },
+  {
+   "pandId": "0363100012132989",
+   "reason": "sightline to Paardekraalstraat crosses 0363100012069586"
+  },
+  {
+   "pandId": "0363100012133339",
+   "reason": "frontage 36.9 m from Paardekraalstraat"
+  },
+  {
+   "pandId": "0363100012133526",
+   "reason": "frontage 39.5 m from Paardekraalstraat"
+  },
+  {
+   "pandId": "0363100012134100",
+   "reason": "frontage 81.9 m from Paardekraalstraat"
+  },
+  {
+   "pandId": "0363100012135274",
+   "reason": "no frontage on Paardekraalstraat: No footprint edge faces Paardekraalstraat"
+  },
+  {
+   "pandId": "0363100012135621",
+   "reason": "frontage 43.8 m from Paardekraalstraat"
+  },
+  {
+   "pandId": "0363100012136338",
+   "reason": "frontage 47.8 m from Paardekraalstraat"
+  },
+  {
+   "pandId": "0363100012136733",
+   "reason": "frontage 54.7 m from Paardekraalstraat"
+  },
+  {
+   "pandId": "0363100012137945",
+   "reason": "frontage 50.8 m from Paardekraalstraat"
+  },
+  {
+   "pandId": "0363100012138121",
+   "reason": "frontage 54.8 m from Paardekraalstraat"
+  },
+  {
+   "pandId": "0363100012138328",
+   "reason": "frontage 75.7 m from Paardekraalstraat"
+  },
+  {
+   "pandId": "0363100012140329",
+   "reason": "frontage 48.9 m from Paardekraalstraat"
+  },
+  {
+   "pandId": "0363100012140529",
+   "reason": "sightline to Paardekraalstraat crosses 0363100012138748"
+  },
+  {
+   "pandId": "0363100012140767",
+   "reason": "frontage 49.6 m from Paardekraalstraat"
+  },
+  {
+   "pandId": "0363100012141451",
+   "reason": "sightline to Paardekraalstraat crosses 0363100012138748"
+  },
+  {
+   "pandId": "0363100012141977",
+   "reason": "no frontage on Paardekraalstraat: No footprint edge faces Paardekraalstraat"
+  },
+  {
+   "pandId": "0363100012144421",
+   "reason": "frontage 52.3 m from Paardekraalstraat"
+  },
+  {
+   "pandId": "0363100012149663",
+   "reason": "frontage 34.1 m from Paardekraalstraat"
+  },
+  {
+   "pandId": "0363100012150452",
+   "reason": "frontage 89.3 m from Paardekraalstraat"
+  },
+  {
+   "pandId": "0363100012155547",
+   "reason": "sightline to Paardekraalstraat crosses 0363100012208383"
+  },
+  {
+   "pandId": "0363100012155931",
+   "reason": "frontage 96.6 m from Paardekraalstraat"
+  },
+  {
+   "pandId": "0363100012156756",
+   "reason": "sightline to Paardekraalstraat crosses 0363100012155547"
+  },
+  {
+   "pandId": "0363100012160793",
+   "reason": "frontage 103.1 m from Paardekraalstraat"
+  },
+  {
+   "pandId": "0363100012161532",
+   "reason": "frontage 91.5 m from Paardekraalstraat"
+  },
+  {
+   "pandId": "0363100012162156",
+   "reason": "sightline to Paardekraalstraat crosses 0363100012155547"
+  },
+  {
+   "pandId": "0363100012163421",
+   "reason": "sightline to Paardekraalstraat crosses 0363100012155547"
+  },
+  {
+   "pandId": "0363100012164603",
+   "reason": "frontage 84.9 m from Paardekraalstraat"
+  },
+  {
+   "pandId": "0363100012165600",
+   "reason": "frontage 107.5 m from Paardekraalstraat"
+  },
+  {
+   "pandId": "0363100012184989",
+   "reason": "frontage 38.7 m from Paardekraalstraat"
+  },
+  {
+   "pandId": "0363100012190081",
+   "reason": "frontage 91.1 m from Paardekraalstraat"
+  },
+  {
+   "pandId": "0363100012190910",
+   "reason": "frontage 38.2 m from Paardekraalstraat"
+  },
+  {
+   "pandId": "0363100012196231",
+   "reason": "sightline to Paardekraalstraat crosses 0363100012146593"
+  },
+  {
+   "pandId": "0363100012196328",
+   "reason": "frontage 102.4 m from Paardekraalstraat"
+  },
+  {
+   "pandId": "0363100012199775",
+   "reason": "sightline to Paardekraalstraat crosses 0363100012068159"
+  },
+  {
+   "pandId": "0363100012200740",
+   "reason": "frontage 56.9 m from Paardekraalstraat"
+  },
+  {
+   "pandId": "0363100012203811",
+   "reason": "no frontage on Paardekraalstraat: No footprint edge faces Paardekraalstraat"
+  },
+  {
+   "pandId": "0363100012205787",
+   "reason": "frontage 46.6 m from Paardekraalstraat"
+  },
+  {
+   "pandId": "0363100012206043",
+   "reason": "frontage 96.2 m from Paardekraalstraat"
+  },
+  {
+   "pandId": "0363100012206044",
+   "reason": "frontage 95.3 m from Paardekraalstraat"
+  },
+  {
+   "pandId": "0363100012206364",
+   "reason": "sightline to Paardekraalstraat crosses 0363100012104565"
+  },
+  {
+   "pandId": "0363100012207035",
+   "reason": "frontage 100.0 m from Paardekraalstraat"
+  },
+  {
+   "pandId": "0363100012208466",
+   "reason": "sightline to Paardekraalstraat crosses 0363100012138083"
+  },
+  {
+   "pandId": "0363100012209092",
+   "reason": "frontage 44.6 m from Paardekraalstraat"
+  },
+  {
+   "pandId": "0363100012209352",
+   "reason": "frontage 40.5 m from Paardekraalstraat"
+  },
+  {
+   "pandId": "0363100012212712",
+   "reason": "no frontage on Paardekraalstraat: No footprint edge faces Paardekraalstraat"
+  },
+  {
+   "pandId": "0363100012217250",
+   "reason": "frontage 88.5 m from Paardekraalstraat"
+  },
+  {
+   "pandId": "0363100012217816",
+   "reason": "frontage 75.3 m from Paardekraalstraat"
+  },
+  {
+   "pandId": "0363100012217926",
+   "reason": "frontage 48.0 m from Paardekraalstraat"
+  },
+  {
+   "pandId": "0363100012222976",
+   "reason": "frontage 72.8 m from Paardekraalstraat"
+  },
+  {
+   "pandId": "0363100012225481",
+   "reason": "frontage 32.9 m from Paardekraalstraat"
+  },
+  {
+   "pandId": "0363100012225534",
+   "reason": "frontage 36.3 m from Paardekraalstraat"
+  },
+  {
+   "pandId": "0363100012225551",
+   "reason": "frontage 38.9 m from Paardekraalstraat"
+  },
+  {
+   "pandId": "0363100012226495",
+   "reason": "frontage 41.1 m from Paardekraalstraat"
+  },
+  {
+   "pandId": "0363100012227170",
+   "reason": "frontage 40.1 m from Paardekraalstraat"
+  },
+  {
+   "pandId": "0363100012230754",
+   "reason": "sightline to Paardekraalstraat crosses 0363100012146593"
+  },
+  {
+   "pandId": "0363100012231210",
+   "reason": "frontage 60.3 m from Paardekraalstraat"
+  },
+  {
+   "pandId": "0363100012232510",
+   "reason": "frontage 31.3 m from Paardekraalstraat"
+  },
+  {
+   "pandId": "0363100012233455",
+   "reason": "frontage 54.0 m from Paardekraalstraat"
+  },
+  {
+   "pandId": "0363100012233567",
+   "reason": "frontage 70.0 m from Paardekraalstraat"
+  },
+  {
+   "pandId": "0363100012233572",
+   "reason": "frontage 40.0 m from Paardekraalstraat"
+  },
+  {
+   "pandId": "0363100012234654",
+   "reason": "frontage 34.6 m from Paardekraalstraat"
+  },
+  {
+   "pandId": "0363100012235160",
+   "reason": "frontage 33.9 m from Paardekraalstraat"
+  },
+  {
+   "pandId": "0363100012236318",
+   "reason": "frontage 81.2 m from Paardekraalstraat"
+  },
+  {
+   "pandId": "0363100012236740",
+   "reason": "sightline to Paardekraalstraat crosses 0363100012066368"
+  },
+  {
+   "pandId": "0363100012241221",
+   "reason": "frontage 73.4 m from Paardekraalstraat"
+  },
+  {
+   "pandId": "0363100012069586",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012075886",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012087890",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012093100",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012097625",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012097703",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012115848",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012133895",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012138083",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012139936",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012144997",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012145188",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012146593",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012166191",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012198154",
+   "reason": "fronts the other side / another direction"
+  }
+ ],
+ "areaHalfSizeM": 90,
+ "pands": [
+  {
+   "pandId": "0363100012073473",
+   "alongM": 38.28,
+   "widthM": 6.04,
+   "eavesM": 13.05,
+   "roofMaxM": 15.94,
+   "storeys3dbag": 5,
+   "builtYear": 1912,
+   "uncertainty": []
+  }
+ ],
+ "runOf": "paardekraal-1-15"
+}

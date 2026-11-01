@@ -1,0 +1,1345 @@
+{
+ "street": "Danie Theronstraat",
+ "seed": "0363100012070259",
+ "members": [
+  "0363100012069116",
+  "0363100012116701",
+  "0363100012115092",
+  "0363100012112858",
+  "0363100012089089"
+ ],
+ "ends": [
+  {
+   "side": "left",
+   "reason": "run of theron-2-36: 133939 held (auto-place.json)"
+  },
+  {
+   "side": "right",
+   "reason": "run of theron-2-36: 065292 held (auto-place.json)"
+  }
+ ],
+ "rejected": [
+  {
+   "pandId": "0363100012081547",
+   "reason": "frontage 166.2 m from Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012062331",
+   "reason": "frontage 142.2 m from Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012062552",
+   "reason": "sightline to Danie Theronstraat crosses 0363100012065386"
+  },
+  {
+   "pandId": "0363100012062612",
+   "reason": "frontage 141.6 m from Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012063471",
+   "reason": "frontage 40.5 m from Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012063929",
+   "reason": "frontage 71.0 m from Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012064549",
+   "reason": "frontage 95.2 m from Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012064983",
+   "reason": "frontage 173.3 m from Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012065386",
+   "reason": "sightline to Danie Theronstraat crosses 0363100012070259"
+  },
+  {
+   "pandId": "0363100012066447",
+   "reason": "frontage 44.0 m from Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012067045",
+   "reason": "frontage 182.9 m from Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012067320",
+   "reason": "sightline to Danie Theronstraat crosses 0363100012070259"
+  },
+  {
+   "pandId": "0363100012067496",
+   "reason": "sightline to Danie Theronstraat crosses 0363100012124344"
+  },
+  {
+   "pandId": "0363100012068422",
+   "reason": "frontage 37.2 m from Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012068510",
+   "reason": "frontage 102.4 m from Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012068521",
+   "reason": "sightline to Danie Theronstraat crosses 0363100012062552"
+  },
+  {
+   "pandId": "0363100012068716",
+   "reason": "frontage 48.5 m from Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012068957",
+   "reason": "sightline to Danie Theronstraat crosses 0363100012154068"
+  },
+  {
+   "pandId": "0363100012069221",
+   "reason": "frontage 35.6 m from Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012069284",
+   "reason": "frontage 154.2 m from Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012069611",
+   "reason": "frontage 44.1 m from Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012070068",
+   "reason": "frontage 49.3 m from Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012070168",
+   "reason": "frontage 120.1 m from Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012070809",
+   "reason": "frontage 79.4 m from Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012071769",
+   "reason": "frontage 83.6 m from Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012071902",
+   "reason": "frontage 206.4 m from Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012072943",
+   "reason": "no frontage on Danie Theronstraat: No footprint edge faces Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012073365",
+   "reason": "frontage 72.8 m from Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012073427",
+   "reason": "no frontage on Danie Theronstraat: No footprint edge faces Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012074671",
+   "reason": "frontage 76.9 m from Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012074676",
+   "reason": "sightline to Danie Theronstraat crosses 0363100012134472"
+  },
+  {
+   "pandId": "0363100012074817",
+   "reason": "frontage 74.6 m from Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012075050",
+   "reason": "frontage 166.2 m from Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012075983",
+   "reason": "frontage 173.2 m from Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012076498",
+   "reason": "no frontage on Danie Theronstraat: No footprint edge faces Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012076608",
+   "reason": "no frontage on Danie Theronstraat: No footprint edge faces Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012077463",
+   "reason": "no frontage on Danie Theronstraat: No footprint edge faces Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012078181",
+   "reason": "frontage 176.5 m from Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012078183",
+   "reason": "frontage 110.2 m from Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012079037",
+   "reason": "frontage 45.5 m from Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012079290",
+   "reason": "frontage 109.5 m from Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012079451",
+   "reason": "frontage 42.9 m from Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012079489",
+   "reason": "frontage 55.3 m from Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012079506",
+   "reason": "frontage 175.2 m from Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012079840",
+   "reason": "frontage 49.7 m from Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012081369",
+   "reason": "frontage 133.0 m from Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012081633",
+   "reason": "frontage 42.1 m from Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012105249",
+   "reason": "frontage 135.7 m from Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012081737",
+   "reason": "no frontage on Danie Theronstraat: No footprint edge faces Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012082258",
+   "reason": "no frontage on Danie Theronstraat: No footprint edge faces Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012083727",
+   "reason": "frontage 130.4 m from Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012083847",
+   "reason": "no frontage on Danie Theronstraat: No footprint edge faces Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012083941",
+   "reason": "no frontage on Danie Theronstraat: No footprint edge faces Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012084269",
+   "reason": "no frontage on Danie Theronstraat: No footprint edge faces Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012084510",
+   "reason": "frontage 113.0 m from Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012086208",
+   "reason": "frontage 41.6 m from Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012086284",
+   "reason": "frontage 43.0 m from Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012086731",
+   "reason": "no frontage on Danie Theronstraat: No footprint edge faces Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012086761",
+   "reason": "no frontage on Danie Theronstraat: No footprint edge faces Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012086955",
+   "reason": "frontage 91.7 m from Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012087333",
+   "reason": "frontage 156.4 m from Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012087418",
+   "reason": "no frontage on Danie Theronstraat: No footprint edge faces Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012087880",
+   "reason": "frontage 211.1 m from Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012088081",
+   "reason": "frontage 109.7 m from Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012088655",
+   "reason": "frontage 138.1 m from Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012088765",
+   "reason": "frontage 134.6 m from Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012088780",
+   "reason": "no frontage on Danie Theronstraat: No footprint edge faces Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012088873",
+   "reason": "frontage 115.7 m from Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012089052",
+   "reason": "frontage 165.8 m from Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012089130",
+   "reason": "no frontage on Danie Theronstraat: No footprint edge faces Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012090381",
+   "reason": "frontage 180.5 m from Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012090850",
+   "reason": "no frontage on Danie Theronstraat: No footprint edge faces Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012090866",
+   "reason": "no frontage on Danie Theronstraat: No footprint edge faces Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012091191",
+   "reason": "sightline to Danie Theronstraat crosses 0363100012073427"
+  },
+  {
+   "pandId": "0363100012091211",
+   "reason": "sightline to Danie Theronstraat crosses 0363100012133204"
+  },
+  {
+   "pandId": "0363100012093263",
+   "reason": "no frontage on Danie Theronstraat: No footprint edge faces Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012093680",
+   "reason": "frontage 125.5 m from Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012093712",
+   "reason": "frontage 39.8 m from Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012094272",
+   "reason": "frontage 71.0 m from Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012094499",
+   "reason": "frontage 118.6 m from Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012095702",
+   "reason": "frontage 42.2 m from Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012096065",
+   "reason": "frontage 74.5 m from Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012096148",
+   "reason": "frontage 77.1 m from Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012096496",
+   "reason": "frontage 34.8 m from Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012097697",
+   "reason": "sightline to Danie Theronstraat crosses 0363100012074676"
+  },
+  {
+   "pandId": "0363100012097742",
+   "reason": "frontage 88.1 m from Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012098180",
+   "reason": "frontage 46.0 m from Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012098724",
+   "reason": "frontage 84.4 m from Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012099286",
+   "reason": "no frontage on Danie Theronstraat: No footprint edge faces Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012100982",
+   "reason": "frontage 94.2 m from Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012101809",
+   "reason": "frontage 166.8 m from Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012102941",
+   "reason": "frontage 107.1 m from Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012103508",
+   "reason": "no frontage on Danie Theronstraat: No footprint edge faces Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012105582",
+   "reason": "no frontage on Danie Theronstraat: No footprint edge faces Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012105783",
+   "reason": "no frontage on Danie Theronstraat: No footprint edge faces Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012105976",
+   "reason": "sightline to Danie Theronstraat crosses 0363100012133939"
+  },
+  {
+   "pandId": "0363100012107041",
+   "reason": "frontage 154.3 m from Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012108120",
+   "reason": "frontage 182.8 m from Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012108224",
+   "reason": "no frontage on Danie Theronstraat: No footprint edge faces Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012108545",
+   "reason": "no frontage on Danie Theronstraat: No footprint edge faces Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012108935",
+   "reason": "frontage 40.9 m from Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012108962",
+   "reason": "sightline to Danie Theronstraat crosses 0363100012074676"
+  },
+  {
+   "pandId": "0363100012109806",
+   "reason": "no frontage on Danie Theronstraat: No footprint edge faces Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012109842",
+   "reason": "no frontage on Danie Theronstraat: No footprint edge faces Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012110028",
+   "reason": "frontage 89.9 m from Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012110167",
+   "reason": "frontage 42.6 m from Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012110278",
+   "reason": "frontage 198.5 m from Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012110455",
+   "reason": "frontage 185.2 m from Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012111423",
+   "reason": "frontage 69.7 m from Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012111793",
+   "reason": "frontage 125.3 m from Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012111896",
+   "reason": "frontage 144.2 m from Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012113458",
+   "reason": "no frontage on Danie Theronstraat: No footprint edge faces Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012113463",
+   "reason": "frontage 83.6 m from Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012113510",
+   "reason": "no frontage on Danie Theronstraat: No footprint edge faces Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012113965",
+   "reason": "frontage 53.0 m from Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012114579",
+   "reason": "frontage 189.8 m from Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012114683",
+   "reason": "frontage 35.1 m from Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012114784",
+   "reason": "frontage 144.1 m from Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012114813",
+   "reason": "no frontage on Danie Theronstraat: No footprint edge faces Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012115065",
+   "reason": "frontage 38.6 m from Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012116100",
+   "reason": "no frontage on Danie Theronstraat: No footprint edge faces Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012116532",
+   "reason": "no frontage on Danie Theronstraat: No footprint edge faces Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012117142",
+   "reason": "no frontage on Danie Theronstraat: No footprint edge faces Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012117143",
+   "reason": "frontage 145.9 m from Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012117492",
+   "reason": "frontage 170.6 m from Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012118471",
+   "reason": "frontage 56.8 m from Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012118498",
+   "reason": "frontage 140.0 m from Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012118763",
+   "reason": "no frontage on Danie Theronstraat: No footprint edge faces Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012119150",
+   "reason": "no frontage on Danie Theronstraat: No footprint edge faces Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012119983",
+   "reason": "no frontage on Danie Theronstraat: No footprint edge faces Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012120724",
+   "reason": "no frontage on Danie Theronstraat: No footprint edge faces Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012121133",
+   "reason": "frontage 109.0 m from Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012121657",
+   "reason": "no frontage on Danie Theronstraat: No footprint edge faces Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012122445",
+   "reason": "frontage 96.8 m from Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012123055",
+   "reason": "frontage 155.6 m from Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012123328",
+   "reason": "frontage 103.0 m from Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012124344",
+   "reason": "sightline to Danie Theronstraat crosses 0363100012125379"
+  },
+  {
+   "pandId": "0363100012125720",
+   "reason": "frontage 103.4 m from Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012125852",
+   "reason": "frontage 116.6 m from Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012126387",
+   "reason": "frontage 40.8 m from Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012126906",
+   "reason": "frontage 51.7 m from Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012127064",
+   "reason": "frontage 145.0 m from Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012127111",
+   "reason": "no frontage on Danie Theronstraat: No footprint edge faces Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012128261",
+   "reason": "no frontage on Danie Theronstraat: No footprint edge faces Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012129254",
+   "reason": "frontage 80.2 m from Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012131433",
+   "reason": "frontage 43.9 m from Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012131556",
+   "reason": "frontage 133.1 m from Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012131601",
+   "reason": "frontage 122.2 m from Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012132138",
+   "reason": "frontage 169.8 m from Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012132149",
+   "reason": "no frontage on Danie Theronstraat: No footprint edge faces Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012132444",
+   "reason": "frontage 130.2 m from Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012133198",
+   "reason": "frontage 127.7 m from Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012133204",
+   "reason": "no frontage on Danie Theronstraat: No footprint edge faces Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012133761",
+   "reason": "frontage 150.0 m from Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012134742",
+   "reason": "frontage 85.7 m from Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012135231",
+   "reason": "no frontage on Danie Theronstraat: No footprint edge faces Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012135325",
+   "reason": "frontage 98.8 m from Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012135592",
+   "reason": "frontage 34.5 m from Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012135876",
+   "reason": "no frontage on Danie Theronstraat: No footprint edge faces Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012135963",
+   "reason": "no frontage on Danie Theronstraat: No footprint edge faces Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012136673",
+   "reason": "frontage 91.6 m from Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012137110",
+   "reason": "frontage 44.3 m from Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012137443",
+   "reason": "frontage 94.3 m from Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012137582",
+   "reason": "frontage 39.9 m from Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012137594",
+   "reason": "no frontage on Danie Theronstraat: No footprint edge faces Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012137886",
+   "reason": "frontage 109.3 m from Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012138134",
+   "reason": "frontage 77.6 m from Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012138441",
+   "reason": "frontage 176.7 m from Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012138546",
+   "reason": "frontage 84.0 m from Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012139291",
+   "reason": "frontage 156.7 m from Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012140061",
+   "reason": "frontage 167.9 m from Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012141292",
+   "reason": "no frontage on Danie Theronstraat: No footprint edge faces Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012141663",
+   "reason": "frontage 43.0 m from Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012141876",
+   "reason": "frontage 78.6 m from Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012142223",
+   "reason": "frontage 183.3 m from Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012142519",
+   "reason": "frontage 157.2 m from Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012143471",
+   "reason": "frontage 105.9 m from Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012145010",
+   "reason": "no frontage on Danie Theronstraat: No footprint edge faces Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012145599",
+   "reason": "frontage 165.4 m from Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012145617",
+   "reason": "no frontage on Danie Theronstraat: No footprint edge faces Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012145744",
+   "reason": "frontage 74.9 m from Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012146692",
+   "reason": "no frontage on Danie Theronstraat: No footprint edge faces Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012147863",
+   "reason": "sightline to Danie Theronstraat crosses 0363100012070259"
+  },
+  {
+   "pandId": "0363100012147910",
+   "reason": "no frontage on Danie Theronstraat: No footprint edge faces Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012148086",
+   "reason": "frontage 31.8 m from Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012148195",
+   "reason": "sightline to Danie Theronstraat crosses 0363100012133204"
+  },
+  {
+   "pandId": "0363100012148298",
+   "reason": "frontage 141.5 m from Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012148898",
+   "reason": "frontage 42.2 m from Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012148978",
+   "reason": "frontage 159.8 m from Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012149042",
+   "reason": "frontage 50.0 m from Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012150126",
+   "reason": "no frontage on Danie Theronstraat: No footprint edge faces Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012150331",
+   "reason": "no frontage on Danie Theronstraat: No footprint edge faces Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012150686",
+   "reason": "no frontage on Danie Theronstraat: No footprint edge faces Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012151989",
+   "reason": "frontage 124.4 m from Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012152184",
+   "reason": "no frontage on Danie Theronstraat: No footprint edge faces Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012154068",
+   "reason": "sightline to Danie Theronstraat crosses 0363100012076498"
+  },
+  {
+   "pandId": "0363100012154472",
+   "reason": "no frontage on Danie Theronstraat: No footprint edge faces Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012154913",
+   "reason": "no frontage on Danie Theronstraat: No footprint edge faces Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012155118",
+   "reason": "frontage 42.5 m from Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012155546",
+   "reason": "no frontage on Danie Theronstraat: No footprint edge faces Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012159280",
+   "reason": "frontage 92.9 m from Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012167300",
+   "reason": "frontage 118.6 m from Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012183372",
+   "reason": "frontage 36.2 m from Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012183373",
+   "reason": "no frontage on Danie Theronstraat: No footprint edge faces Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012191096",
+   "reason": "no frontage on Danie Theronstraat: No footprint edge faces Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012191097",
+   "reason": "no frontage on Danie Theronstraat: No footprint edge faces Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012191098",
+   "reason": "no frontage on Danie Theronstraat: No footprint edge faces Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012191100",
+   "reason": "no frontage on Danie Theronstraat: No footprint edge faces Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012193352",
+   "reason": "no frontage on Danie Theronstraat: No footprint edge faces Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012194533",
+   "reason": "no frontage on Danie Theronstraat: No footprint edge faces Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012194534",
+   "reason": "no frontage on Danie Theronstraat: No footprint edge faces Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012194535",
+   "reason": "no frontage on Danie Theronstraat: No footprint edge faces Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012195496",
+   "reason": "sightline to Danie Theronstraat crosses 0363100012069116"
+  },
+  {
+   "pandId": "0363100012198834",
+   "reason": "frontage 153.5 m from Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012198835",
+   "reason": "frontage 155.1 m from Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012198836",
+   "reason": "frontage 144.0 m from Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012198837",
+   "reason": "frontage 145.6 m from Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012199219",
+   "reason": "frontage 99.9 m from Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012199220",
+   "reason": "frontage 100.7 m from Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012199221",
+   "reason": "no frontage on Danie Theronstraat: No footprint edge faces Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012199222",
+   "reason": "no frontage on Danie Theronstraat: No footprint edge faces Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012199223",
+   "reason": "no frontage on Danie Theronstraat: No footprint edge faces Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012199231",
+   "reason": "no frontage on Danie Theronstraat: No footprint edge faces Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012199290",
+   "reason": "no frontage on Danie Theronstraat: No footprint edge faces Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012199291",
+   "reason": "no frontage on Danie Theronstraat: No footprint edge faces Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012199292",
+   "reason": "no frontage on Danie Theronstraat: No footprint edge faces Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012199293",
+   "reason": "no frontage on Danie Theronstraat: No footprint edge faces Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012199294",
+   "reason": "no frontage on Danie Theronstraat: No footprint edge faces Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012199298",
+   "reason": "frontage 172.6 m from Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012199299",
+   "reason": "frontage 173.5 m from Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012199306",
+   "reason": "frontage 98.7 m from Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012199307",
+   "reason": "frontage 98.3 m from Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012199311",
+   "reason": "no frontage on Danie Theronstraat: No footprint edge faces Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012199312",
+   "reason": "frontage 108.3 m from Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012199313",
+   "reason": "frontage 162.5 m from Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012199314",
+   "reason": "frontage 145.2 m from Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012199315",
+   "reason": "no frontage on Danie Theronstraat: No footprint edge faces Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012199316",
+   "reason": "frontage 135.2 m from Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012199317",
+   "reason": "no frontage on Danie Theronstraat: No footprint edge faces Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012199318",
+   "reason": "frontage 140.5 m from Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012199319",
+   "reason": "frontage 143.7 m from Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012199386",
+   "reason": "no frontage on Danie Theronstraat: No footprint edge faces Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012199387",
+   "reason": "no frontage on Danie Theronstraat: No footprint edge faces Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012199388",
+   "reason": "frontage 162.8 m from Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012199389",
+   "reason": "frontage 134.4 m from Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012199390",
+   "reason": "frontage 114.5 m from Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012199391",
+   "reason": "frontage 115.3 m from Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012199392",
+   "reason": "frontage 121.7 m from Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012199393",
+   "reason": "frontage 122.5 m from Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012199394",
+   "reason": "frontage 107.5 m from Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012199395",
+   "reason": "frontage 128.9 m from Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012199396",
+   "reason": "frontage 129.7 m from Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012203117",
+   "reason": "frontage 164.2 m from Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012203118",
+   "reason": "frontage 48.2 m from Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012203119",
+   "reason": "frontage 83.0 m from Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012207723",
+   "reason": "no frontage on Danie Theronstraat: No footprint edge faces Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012208322",
+   "reason": "sightline to Danie Theronstraat crosses 0363100012115092"
+  },
+  {
+   "pandId": "0363100012208872",
+   "reason": "frontage 30.1 m from Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012210044",
+   "reason": "frontage 31.1 m from Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012210045",
+   "reason": "frontage 31.9 m from Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012210046",
+   "reason": "frontage 33.9 m from Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012210047",
+   "reason": "frontage 35.1 m from Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012210048",
+   "reason": "frontage 35.6 m from Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012210049",
+   "reason": "sightline to Danie Theronstraat crosses 0363100012070259"
+  },
+  {
+   "pandId": "0363100012211754",
+   "reason": "no frontage on Danie Theronstraat: No footprint edge faces Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012213941",
+   "reason": "sightline to Danie Theronstraat crosses 0363100012133939"
+  },
+  {
+   "pandId": "0363100012214505",
+   "reason": "no frontage on Danie Theronstraat: No footprint edge faces Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012218964",
+   "reason": "frontage 86.4 m from Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012224400",
+   "reason": "no frontage on Danie Theronstraat: No footprint edge faces Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012224401",
+   "reason": "no frontage on Danie Theronstraat: No footprint edge faces Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012224983",
+   "reason": "no frontage on Danie Theronstraat: No footprint edge faces Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012224984",
+   "reason": "no frontage on Danie Theronstraat: No footprint edge faces Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012224985",
+   "reason": "no frontage on Danie Theronstraat: No footprint edge faces Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012224986",
+   "reason": "no frontage on Danie Theronstraat: No footprint edge faces Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012224987",
+   "reason": "no frontage on Danie Theronstraat: No footprint edge faces Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012224988",
+   "reason": "no frontage on Danie Theronstraat: No footprint edge faces Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012224989",
+   "reason": "no frontage on Danie Theronstraat: No footprint edge faces Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012224990",
+   "reason": "no frontage on Danie Theronstraat: No footprint edge faces Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012224991",
+   "reason": "no frontage on Danie Theronstraat: No footprint edge faces Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012224992",
+   "reason": "no frontage on Danie Theronstraat: No footprint edge faces Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012224993",
+   "reason": "no frontage on Danie Theronstraat: No footprint edge faces Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012224994",
+   "reason": "no frontage on Danie Theronstraat: No footprint edge faces Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012224995",
+   "reason": "no frontage on Danie Theronstraat: No footprint edge faces Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012224996",
+   "reason": "no frontage on Danie Theronstraat: No footprint edge faces Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012224997",
+   "reason": "no frontage on Danie Theronstraat: No footprint edge faces Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012224998",
+   "reason": "no frontage on Danie Theronstraat: No footprint edge faces Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012230879",
+   "reason": "no frontage on Danie Theronstraat: No footprint edge faces Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012231402",
+   "reason": "frontage 43.9 m from Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012231403",
+   "reason": "frontage 43.6 m from Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012231404",
+   "reason": "no frontage on Danie Theronstraat: No footprint edge faces Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012231405",
+   "reason": "frontage 43.2 m from Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012231406",
+   "reason": "frontage 43.4 m from Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012231407",
+   "reason": "frontage 38.5 m from Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012231408",
+   "reason": "frontage 39.4 m from Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012231409",
+   "reason": "no frontage on Danie Theronstraat: No footprint edge faces Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012232453",
+   "reason": "frontage 30.1 m from Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012236544",
+   "reason": "frontage 160.8 m from Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012240887",
+   "reason": "frontage 90.9 m from Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012240888",
+   "reason": "frontage 130.0 m from Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012241501",
+   "reason": "frontage 177.1 m from Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012243120",
+   "reason": "frontage 110.3 m from Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012243121",
+   "reason": "frontage 103.6 m from Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012243122",
+   "reason": "frontage 159.2 m from Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012243123",
+   "reason": "frontage 118.0 m from Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012253936",
+   "reason": "frontage 142.7 m from Danie Theronstraat"
+  },
+  {
+   "pandId": "0363100012108544",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012114231",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012119062",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012125379",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012125668",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012137971",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012138289",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012138431",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012139446",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012140487",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012148172",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012154803",
+   "reason": "fronts the other side / another direction"
+  }
+ ],
+ "areaHalfSizeM": 180,
+ "pands": [
+  {
+   "pandId": "0363100012069116",
+   "alongM": -85.42,
+   "widthM": 12,
+   "eavesM": 12.92,
+   "roofMaxM": 15.44,
+   "storeys3dbag": 5,
+   "builtYear": 1926,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012116701",
+   "alongM": -73.42,
+   "widthM": 12,
+   "eavesM": 12.91,
+   "roofMaxM": 15.07,
+   "storeys3dbag": 5,
+   "builtYear": 1926,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012115092",
+   "alongM": -61.43,
+   "widthM": 12,
+   "eavesM": 12.97,
+   "roofMaxM": 15.08,
+   "storeys3dbag": 5,
+   "builtYear": 1926,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012112858",
+   "alongM": -52.43,
+   "widthM": 6,
+   "eavesM": 12.85,
+   "roofMaxM": 15.16,
+   "storeys3dbag": 5,
+   "builtYear": 1928,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012089089",
+   "alongM": -46.43,
+   "widthM": 6,
+   "eavesM": 12.81,
+   "roofMaxM": 15.21,
+   "storeys3dbag": 5,
+   "builtYear": 1928,
+   "uncertainty": []
+  }
+ ],
+ "runOf": "theron-2-36"
+}

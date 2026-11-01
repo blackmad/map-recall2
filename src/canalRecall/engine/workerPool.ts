@@ -107,3 +107,23 @@ export function sharedWorkerPool(url: string, size = poolSize()): WorkerPool | n
 export function existingWorkerPool(): WorkerPool | null {
   return (globalThis as unknown as Record<string, WorkerPool | null | undefined>)[KEY] ?? null;
 }
+
+/**
+ * The page's pool once a layer has decided about it: resolves with the pool when `sharedWorkerPool` has started one,
+ * with null as soon as it has declined (`?workerPool=0`, no Worker) or when `timeoutMs` passes with no decision.
+ * For a layer whose load runs in parallel with the layer that owns the pool's URL (the engine overview runs beside
+ * the facades: `existingWorkerPool()` alone made "pool" or "main" a race on which fetch finished first, 2026-11-01).
+ */
+export function awaitWorkerPool(timeoutMs = 2000, stepMs = 20): Promise<WorkerPool | null> {
+  const g = globalThis as unknown as Record<string, WorkerPool | null | undefined>;
+  if (KEY in g) return Promise.resolve(g[KEY] ?? null);
+  return new Promise(resolve => {
+    const started = Date.now();
+    const tick = () => {
+      if (KEY in g) return resolve(g[KEY] ?? null);
+      if (Date.now() - started >= timeoutMs) return resolve(null);
+      setTimeout(tick, stepMs);
+    };
+    setTimeout(tick, stepMs);
+  });
+}

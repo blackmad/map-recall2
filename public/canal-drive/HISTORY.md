@@ -1,5 +1,174 @@
 # Canal Recall — what is built
 
+**Engine frame owners at 4× named by `?framePhases=1`; label policy spikes gone; groundCrossing and the openings filter paced; frozen frames under own (2026-11-01, #129).**
+L1 hand-back (16). `?framePhases=1` times each phase of the engine frame
+(three render main / overlay / shadow, game frame with its sync sub-phases,
+labels, participant hooks). Per-frame means at 4× on the Jordaan ride barely
+move (three render main 6.6 ms, game frame 3.3 → 3.1, overlay 1.25, labels
+0.25): the 40–150 ms frames are spikes. The 115–150 ms frames were `labels:
+policy and rebuild`, three per ride, each time a street is learned: the
+policy rebuilt the spoiler index from an unchanged list (60–75 ms), now
+reused while the names are equal element-wise (1.1–1.5 ms per change after
+the first; the first build still 70 ms); `rebuild` stays 52–70 ms per change
+(the `isLabelled`/`isPlaceKnown` test over every named street; next: test
+only streets whose state changed, under the same-frame hidden-name rule).
+The game frame's spikes (300+ ms at boot, 35–80 ms riding) are `sync: ground
+update` (own-ground install 40–178 ms), `sync: building detail centre`
+(setFeatures 34–53 ms) and `sync: jumpTo and move listeners` (35–46 ms),
+the next owners to split. `three render main`'s CPU is matrix updates
+(`multiplyMatrices` 3.0 s, `updateMatrixWorld` 2.2 s in the stall window):
+the eye-relative wrapper changes every frame so every static child
+recomputes its world matrix; freezing static meshes' matrices is exact but
+touches every participant, approved as its own item. Rider cover's
+`featuresAt` uses a box grid (same answers, same order, tested; a 680 ms
+stall profile → 0.03 ms/frame). `groundCrossing` tasks ≤ 12 ms at 4× (were
+33–37), the `withOpenings` claimed filter paced (max own-ground continuation
+19–36 ms); still over 16 ms: `new RoadIndex` in planWayDecks (~44 ms), single
+wayDeckCrossing/planCutsSteps steps, openUnderHouseboats at load. Motion at
+4×, interleaved main vs branch, exclusive lock, four pairs: hitches over 50
+ms/min 79→62, 64→53, 88→76, 70→66; stalled time down 0.5–1.6 s; p99 better
+in 3 of 4; the single longest frame unchanged (150–177 ms). Frozen frames
+(`scripts/perf-frozen-frames.mjs`) pins the engine camera under own (noise
+floor 1.04 M → ≤ 14 k px); main vs branch within main-vs-main noise at every
+spot (Dam 16 vs 14 px, Waag 5,377 vs 5,274). render-on-change names who
+asked for a repaint; its iphone "capturing draws nothing" flake is the
+rider's at-rest creep crossing JUMP_TOLERANCE (1e-8°, ~1 mm) during the slow
+capture: the integrator stops the creep at its source in the player physics
+rather than loosening the check. P1 gate table as measured now (own desktop
+/ own iphone / default desktop / default iphone): draws median 368 / 178 /
+773 / 502, programs 23 / 20 / 44 / 37, task ms per frame 3.68 / 2.54 / 3.56
+/ 4.49, heap MB 547 / 404 / 875 / 602, MapLibre workers 0 / 0 / 1 / 3.
+
+**A parked rider is exactly still; world-v1 cells published without the height policy; perf viewport is the user's screen (2026-11-01).**
+Integrator. (1) The steer model's resistance term `sign(v || 0.001)` flipped
+the speed's sign every step at rest, so a parked vehicle crept by
+±resistance·h forever, the eased camera never arrived, and render-on-change
+on iphone flaked ("capturing draws nothing", "the still frame is the frame a
+redraw makes"; L1 traced it to the creep crossing `JUMP_TOLERANCE`). Static
+friction: with no command, a step of resistance that would carry the speed
+through zero stops it (`steerModel.ts`, test 'rest': the legacy car coasts
+~200 s, the bicycle stops in seconds, both end at exactly 0 and hold their
+position); `cameraFollow.ts` and `camera.js` set an eased value to its
+target below 1e-4 px / 1e-7 rad. test:canal-car unchanged. (2) The world vs
+default pixels were the cells' centimetre height policy (materials' owner
+frames, `tests/e2e/world-v1-ab.spec.ts` AB_OWNERS=1 and
+`scripts/world/classify-ab-owners.ts`): 13.2665 → 13.27 m changes a whole
+facade, because the storey/kit derivation has no hysteresis. Cells are now
+compiled `--no-policy` and published (529 of 604 differ; 8.92 → 9.70 MB
+gzip; `--no-policy` cells give 0/0/0/0 px over 30 at four spots and 141 at
+ijburg-edge, an own-ground LOD choice at the far edge the harness pins
+next). The city bytes gate moves 9.5 → 10 MB in `budgets.json`; the road
+lane encodes heights as millimetre integers losslessly to win the bytes
+back. The structural gate compares unrounded values from now on. The hold
+timeout is not the timeout's fault: the hold waited for every chunk of
+every loaded tile out to 1.9 km, built one at a time at 2–3 chunks/s with
+300–500 ms round trips for 10–150 ms of work; materials settles on a ring
+and fixes throughput next. (3) The user asked why the tests draw at twice
+the screen: perf runs used 1800×1100 CSS at DPR 2 (7.9 Mpx) while the
+user's 14-inch MacBook Pro is 1512×982 at DPR 2 (5.9 Mpx), so the fill cost
+was a third over the real screen; `motion-stutter.mjs` defaults to
+1512×982 at DPR 2 now (`_desktopPerfViewport` in budgets.json) and the e2e
+desktop project stays at 1440×900 DPR 1 for layout, not perf.
+
+**Worktree pruning is part of the integration round (2026-11-01).** The disk
+hit 100 % (7.5 GB free) with 64 worktrees of ~1.2 GB tracked files each plus
+their artifacts; a lane write would have failed next. 45 merged, idle,
+unowned worktrees were removed (56 GB freed) after copying 15,000 review
+sheets into `map-recall2-worktrees/_pruned-sheets/` and WIP-committing dirt
+onto six lane branches (centraal-surround models, type-libraries' 95 Elands
+face folders, transvaalbuurt-types-2's five r1 faces, generic-uplift
+bundles, ferry-stuck, zebra-munt). `scripts/worktrees/triage.sh` was
+rewritten so this can be routine: it judges "merged" against `origin/main`
+(the local `main` ref was stale, so the old script never matched), treats
+untracked artifacts/caches/staging as not dirt, stages sheets itself,
+WIP-commits the rest onto the branch, and skips anything with a live cwd or
+touched within 12 h. `--remove-merged` replaces `--remove-merged-clean` and
+`--archive-dirty` (kept as aliases); `--sweep-sheets [days]` clears the
+sheet archive (12 GB after this round, the user's call). CLAUDE.md now asks
+for a `--remove-merged` run after every push to `main`. Left in place:
+`oudwest-kit-20261029` (one unmerged Kinkerstraat commit plus 12 dirty
+Bilderdijkstraat intents, #98), the live Transvaalbuurt and engine lanes,
+and a locked agent worktree.
+
+**Transvaalbuurt round 4 (2026-11-01, #153–#156): four family lanes at once, 44 pands installed, 57 in the buurt.**
+After round 3 the funnel read 380 of 848 photographed pands vetoed on build
+year alone (two of seven families had a type), so four Opus lanes ran in
+parallel, one worktree each, sharing only the holds and chunk lists.
+Installed per lane: #153 1929–1931: no single design (about eight), so two
+types, `transvaal-1929-block` (Tugelaweg cream-render stair block, held by
+likeness: the strips put the facade foot 0.6–1.8 m above the strip ground)
+and `vaalrivier-1931-row` (two-storey), plus `paintedStoreys.panels`;
+installed Vaalrivierstraat 4–12 and Kraaipanstraat 63–65 (7 pands; family
+West 81 vetoed / 48 held / 7 placed). #154 1920–1922: `transvaal-1920-three-storey`
+(oriel rows), `transvaal-1921-five-storey-flat`, and `-oriel` authored but
+held (NCC 0.01–0.13, 3.3k tris); kit `bayWindows.oriel.twin`, oriel
+`topGap`, street furniture no longer a business, a `recipeRoof` fold fix;
+installed Retiefstraat 194–268 (5), De la Reijstraat 29A–37 (5),
+Kraaipanstraat 43A–45 (2), Transvaalkade 103–105 (2) (three-storey family 54
+/ 22 / 22 placed, 9 installed; five-storey 25 / 31 / 5). #155 1926–1928:
+`transvaal-1926-band-row` and `transvaal-1928-plain-row`; kit
+`repeat.mirrored`, `bandHeights.headLift`, canopies on repeated fronts,
+`groundTransomOnly`; installed Danie Theronstraat 2–36 and 9–37 (11) and
+President Steynstraat 9–15 (4) with one measured brick per row instead of
+the batch's per-pand refit, which read hedge green (West 22 / 14 / 15).
+#156 1911 variants: `gable: "shouldered"`, one gable over two pands
+(`crownHalf`, pair pins), `dormerBody: "timber"` with the glass in the
+dormer's own front wall, and `TypeMatchRule.lonePand {minWidthM: 5}` on the
+four stair-block types (Bellamy unchanged, frozen-record test); installed
+Transvaalstraat 39–41 and 42–44, Retiefstraat 57 and 65A, Pretoriusstraat
+23, Paardekraalstraat 13 (8), and Retiefstraat 71D–73A re-installed as
+shouldered gables with 71D pinned unmirrored (family Oost 19 / 238 / 17;
+lone pands released 27, installed 4, the rest fail likeness honestly).
+Integration: lists united (chunks 115→132, holds, door/type/crown pins),
+placement and per-face auto-place records taken from each lane in merge
+order (they are per-lane snapshots, not regenerated: a buurt-wide re-run
+renumbers runs and overwrites installed intents, which every lane had to
+restore from HEAD), 18 roof goldens recorded, exposure rows measured for all
+runs, covers 618/651, signature-placement bundle rebuilt, strips and sheets
+in source-data `block-face-strips/transvaalbuurt-round4/` and every intaked
+strip now archived. Pipeline findings, not fixed: `batch.ts --faces` is
+ignored with `--buurt` and the whole buurt runs (it installed another lane's
+face once, reverted); the batch's per-pand wall refit reads tree green off
+the strip; auto-place `groundUse` turns OSM street furniture (waste_disposal,
+bicycle_parking, public_bookcase) into a shopfront; the buurt batch skips
+faces with an installed chunk or marked `covered`.
+
+**The own engine never races without facades around the rider; world-v1 structural gate in node; the A/B harness is an instrument (2026-11-01, #129).**
+Materials lane (6a29f4724). The deployed build f840fb6 started racing with
+only the station and two blocks drawn (HISTORY "Facades package" named the
+risk; the integrator's deployed probe showed it). Cause: behind the loading
+screen `requestAnimationFrame` fires only every 0.3–0.9 s, and the building
+tile streamer styled 16–448 features per call, so ~13k buildings were still
+unstyled when racing began and the facade pump had nothing to build. Fix:
+while the hold waits, the settle `buildingTiles` check calls
+`hurryStyling()` (24 ms `setTimeout` slices, unstyled arrivals count as
+busy) and `hurryAtlas` speeds the chunk installs; the painted atlas is kept
+in this browser between visits; the hold's timeout is 4 s (was 2.8).
+`engine-own.spec` now checks the first natural racing frame: atlas ready,
+facade chunks > 0 and at least 70 % of the count 3 s later (0 before the
+fix; 21 and 21 after, settle 2,110 ms without a timeout). The deployed probe
+run locally shows a fully built street around the rider in the first racing
+frame. Still open: one probe run timed out at 4.4 s with outer chunks
+installing (the lane reports what that first frame lacks). `?world=v1`:
+`scripts/world/check-ab-spots.ts` compares the compiled cells with the
+default path's styled set at the five A/B spots in node (identical, the
+structural gate passes); the pixel harness hides the player from every
+camera layer, re-anchors the shadow snap grid at the held pose and orders
+opaque draws by creation-independent keys, so default vs default is 0 px
+at any threshold; world vs default still differs by 229 / 2,179 / 3,142 /
+1,261 / 1,971 px over 30 at the five spots, something downstream of the
+styled set (chunk tiling from cells vs z14 tiles, shadow coverage, roof
+furniture, the hidden-id stage are the candidates; materials next). Ground
+grain textures are painted as one ImageData per texture instead of a
+fillRect per block, pixel for pixel. Integrator: world index re-stamped
+for the code hash (0 cells differ).
+Integrator: after this merge the engine-own pool pin answered 'main': `loadOverview`
+and `loadBuildings` run in parallel and ThreeBuildings starts the pool, so
+`existingWorkerPool()` after the overview fetch was a race the hold fix's
+timing lost; `awaitWorkerPool()` (engine/workerPool.ts) resolves once the
+pool is decided and the overview waits for it (test `awaitWorkerPool.test.ts`).
+The iphone `render-on-change` "capturing draws nothing" failure is the known
+flake (L1: 1/3 with or without the change).
 **Gate decisions and two browser slots (2026-11-01).** The user delegated the
 two red P2/P3 gates ("use your judgement") and asked whether the `?world=v1`
 A/B must reach zero pixels (no). City bytes: 8 → 9.5 MB gzip lossless in

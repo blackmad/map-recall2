@@ -1,0 +1,65 @@
+{
+ "name": "transvaalbuurt-1920-oost",
+ "buurt": "transvaalbuurt-oost",
+ "library": "transvaalbuurt",
+ "generatedAt": "2026-11-01T09:05:57.147Z",
+ "method": "scripts/block-face/batch.ts",
+ "totals": {
+  "faces": 1,
+  "runs": 2,
+  "installed": 2,
+  "installedPands": 5,
+  "failed": 0,
+  "byReason": {}
+ },
+ "rows": [
+  {
+   "face": "retief-194-268",
+   "street": "Retiefstraat",
+   "ride": 18577,
+   "restriped": null,
+   "stripQuality": {
+    "badShare": 0,
+    "reasons": []
+   },
+   "nccMin": 0.192,
+   "nccMedian": 0.201,
+   "stripOverDrawn": 0.946,
+   "wallFits": 1,
+   "droppedCorners": [],
+   "triangles": 1702,
+   "sheet": "staging/block-face/retief-194-268-r1/review/strip-sheet.png",
+   "stripDate": "2020-04-29",
+   "run": "retief-194-268-r1",
+   "pands": 2,
+   "mode": "auto-place",
+   "status": "installed",
+   "reasons": [],
+   "seconds": 11.3
+  },
+  {
+   "face": "retief-194-268",
+   "street": "Retiefstraat",
+   "ride": 18577,
+   "restriped": null,
+   "stripQuality": {
+    "badShare": 0,
+    "reasons": []
+   },
+   "nccMin": 0.19,
+   "nccMedian": 0.218,
+   "stripOverDrawn": 1.141,
+   "wallFits": 2,
+   "droppedCorners": [],
+   "triangles": 2539,
+   "sheet": "staging/block-face/retief-194-268-r2/review/strip-sheet.png",
+   "stripDate": "2020-04-29",
+   "run": "retief-194-268-r2",
+   "pands": 3,
+   "mode": "auto-place",
+   "status": "installed",
+   "reasons": [],
+   "seconds": 16.6
+  }
+ ]
+}

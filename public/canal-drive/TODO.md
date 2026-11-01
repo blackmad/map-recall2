@@ -274,9 +274,17 @@ and the step-6 `_makeLayer` / `SHARED_FRAME_DEFAULT` deletions.
 State: **L4 world streamer steps 1–3 merged 2026-10-30** (#136, `4b63096e1`):
 Gate restated 2026-11-01 (user: "do we actually need pixel A/B at zero?",
 no): structural equality of the styled building set at the five spots in
-node (zero tolerance) plus a pixel check with the player frozen and the
-shadow camera pinned, 0 px over 30, sub-30 speckle counted not chased
-(materials). The earlier wording:
+node (zero tolerance; `scripts/world/check-ab-spots.ts` PASSES, five spots
+identical) plus a pixel check with the player frozen and the shadow camera
+pinned, 0 px over 30, sub-30 speckle counted not chased (harness done:
+default vs default is 0 px at any threshold; world vs default was the
+centimetre height policy: cells are published `--no-policy` since
+2026-11-01, 0/0/0/0 px at four spots, 141 at ijburg-edge = own-ground LOD
+at the far edge, materials pins the ground LOD per cell in the harness and
+re-runs on the published set; then the flag can default). Noted for a kit
+lane: a 4 mm eaves change flips a storey count, the storey/kit derivation
+needs hysteresis. Road lane: millimetre-integer heights to recover the
+0.78 MB gzip the exact values cost (gate ≤ 10 MB, 9.70 now). The earlier wording:
 `?world=v1` is identical to the default path in the browser (five spots,
 desktop and iPhone: same feature ids and styled features per tile; Node
 `world:verify` 295 tiles / 349,220 buildings / 0 differ). The four-tile
@@ -390,7 +398,7 @@ not run it.
 
 **Next neighbourhood kits (user, 2026-10-26):** in order De Pijp, Oud-West (Kinkerstraat/Bilderdijkstraat), the Jordaan, Oud-Zuid, then Dapperbuurt and Indische Buurt. Use the #81 block-face kit method. No more outer-estate rounds for now.
 
-**Transvaalbuurt round 4, in flight as four lanes (user, 2026-11-01 "okay do that"; rounds 1–3 in HISTORY "Transvaalbuurt kit", "round 2", "round 3"):** the funnel after round 3 (both buurten, 848 pands on 174 photographed faces; another 174 faces have no usable strip): 380 vetoed on build year because only two of seven families have a type, 26 vetoed on frontage, 78 fit no type on facts, 74 without photo evidence on the pand, 80 compared and failed likeness, 57 lone pands between held neighbours, 23 runs did not compile, 41 held at review, 13 installed. Lanes, one worktree each: #153 `lane/transvaalbuurt-1929-blocks-20261101` (1929–1931 blocks with corner towers, 120 pands, 22 faces; Vaalrivierstraat 1931 three-storey rows), #154 `lane/transvaalbuurt-1920-rows-20261101` (1920–1922 three-storey rows ~60 pands and 1921–1922 five-storey rows ~44), #155 `lane/transvaalbuurt-1926-rows-20261101` (1926–1928 band-window rows, 50 pands, 8 faces), #156 `lane/transvaalbuurt-1911-variants-20261101` (low shouldered gable, one gable over two pands, in-plane white dormer, per-type lone-pand opt-in for stair blocks ≥ 5 m). Briefs in `docs/handoffs/lane-transvaalbuurt-<name>-20261101.md`. At integration: placement and per-face auto-place records are regenerated after the merge, chunks.json and review-holds merged as unions, then roof goldens per run, exposure rows (run strips copied into the integrator staging first), covers, signature-placement bundle, buurt pages, check:canal. Still open after these: the 1923 design's stair-only and window-only BAG pands (Schalk Burgerstraat 18, 28), the oculus gablet of Pretoriusstraat 79–87, a flat-roof-with-setback crown for the installed 1923 row (unless #153/#155 add it), `bilder-157757-164549` opting into `roof.rakeClear`, the 1915–1919 (58) and post-1931 (99) pands, and the 174 faces without a usable strip. The buurt batch skips faces marked `covered` in the buurt doc (`transvaal-3-47`, `transvaal-49-63`, `pretorius-53-69`). The face split at bends (`buurtFaces.ts`) also changes faces that fail intake today in Bloemgrachtbuurt and Kinkerstraat; their survey JSONs were not regenerated.
+**Transvaalbuurt round 5, next (rounds 1–4 in HISTORY "Transvaalbuurt kit", "round 2", "round 3", "round 4"):** 57 pands installed on Albert Luthulistraat, Retiefstraat, Pretoriusstraat, Transvaalstraat, Paardekraalstraat, De la Reijstraat, Kraaipanstraat, Transvaalkade, Vaalrivierstraat, Danie Theronstraat and President Steynstraat; the type library has ten types. Pipeline fixes first, each small and typed: (1) `batch.ts --faces` is ignored when `--buurt` is given (it ran the whole buurt and installed another lane's face); (2) a buurt-wide `auto-place --review` re-run renumbers runs and overwrites installed run intents (every round-4 lane restored them from HEAD by hand): skip faces with an installed chunk unless `--replace`; (3) the batch's per-pand wall refit reads hedge and tree green (Danie Theronstraat 13A/16A/23A/28 came out near-black): refit from tree-free columns only or take the row median; (4) auto-place `groundUse` turns OSM street furniture (amenity=waste_disposal, bicycle_parking, public_bookcase) into a shopfront (Vaalrivierstraat 14–22, Retiefstraat 61–63, also campen-2-34-r2, flinck-169-233-r1, hasebroek-2-46-r1 carries it); (5) the Tugelaweg strips put the facade foot 0.6–1.8 m above the strip ground, which fails the 1929 block on likeness (NCC 0.07–0.13): a strip-foot offset read, not a type change. Then the designs with the most held pands and no type: Albert Luthulistraat 6–32 (1930 stair towers rising ~3 m over the coping, 7 pands, measured in `transvaalbuurt-round4/1929/luth-a.png`), Schalk Burgerstraat 45–131 (diaper brick, corner oriels, 9), Afrikanerplein 1–23 (band windows, arched portieken) and 25–55 (plain five-storey grid, 14), Krugerstraat 5–27 (point gables with a tall tower), the 1922 recessed-loggia rows (Transvaalstraat 131–143, Colensostraat, Vaalrivierstraat 15–21; loggias exist only in large intents), Hofmeyrstraat 24–44 (3DBAG 15 m vs a compressed 2023 strip), the 1923 design's stair-only and window-only BAG pands (Schalk Burgerstraat 18, 28). Kit gaps the holds name: a brick attic bay over several axes (Pretoriusstraat 76–80), the oculus gablet of Pretoriusstraat 79–87, header-brick vent rows and consoles under the top band, a stone-mullioned small-paned window, a cheap flat dormer (triangle budget), double doors, a fifth storey of attic lights, a setback roof storey that 3DBAG sees and the strips do not (also the installed 1923 row's grey pitched roof), 71D's balcony stack on the third of four axes with the door left. `bilder-157757-164549` carries the same rake overlap `roof.rakeClear` fixes; opt it in when next recompiled. Placement records (`transvaalbuurt-{oost,west}-placement.json`, per-face `auto-place.json`) are per-lane snapshots after the four-way merge; regenerate them once fix (2) lands. The face split at bends (`buurtFaces.ts`) also changes faces that fail intake today in Bloemgrachtbuurt and Kinkerstraat; their survey JSONs were not regenerated.
 
 **Next lane: large-recipe roof clean-up (#87, user yes 2026-10-26).** 3DBAG slivers and stray flat levels on the large models' roofs: 20 installed houses have many slivers and 77 have 6 or more flat levels. Warmoesstraat 157-163 and Van Eeghenstraat 97-101 were flagged. The plan is in the issue.
 
@@ -1395,6 +1403,15 @@ Root `main` was cleaned on 2026-10-09 (see HISTORY). Live work, in order:
   thread; ARTIS is off the camera shim (B6 started). Streaming gate still
   open (HISTORY "Facade chunk tiles planned in the worker"): facade tiles
   are off the main thread (436 → 0 ms at 4×) but the 4× totals did not move;
+  hand-back (16) named the engine frame's owners with `?framePhases=1`
+  (HISTORY "Engine frame owners at 4×"): label policy spikes fixed, rebuild
+  52–70 ms per learned street left (test only changed streets, L1), game
+  frame spikes = own-ground install 40–178 ms / setFeatures detail centre
+  34–53 / move listeners 35–46 (L1 splits), `three render main` CPU is
+  matrix updates from the eye-relative wrapper (frozen matrices for static
+  meshes approved, L1); hitches over 50 ms/min 79→62, 64→53, 88→76, 70→66,
+  longest frame unchanged ~150–177 ms. Perf viewport is now 1512×982 at
+  DPR 2 (the user's screen); earlier tables were at 1800×1100.
   hand-back (13) paced `prepareCell` planning on the page (HISTORY "Ground
   planning paced on the page"): 1× frames over 50 ms 1 → 0, the 4× ground
   continuation 115–171 → 19–22 ms; the 4× worst frames are now the engine
@@ -1436,9 +1453,14 @@ Root `main` was cleaned on 2026-10-09 (see HISTORY). Live work, in order:
   build until the atlas (painted on the main thread in 6 ms slices) was
   bound; chunks now build while it paints (settle 850–1160 → 661–716 ms,
   racing after submit 2055–2459 → 1885–1967 ms), the ≤ 0.3 s hold target
-  needs the pre-painted atlas (materials), and the 2.8 s hold timeout must
-  wait on the atlas bind so racing never starts without facades (materials,
-  before the flip); boot → submit 0.84–1.03 s vs 0.48–0.57
+  needs the pre-painted atlas (materials); racing never starts without
+  facades since the hold fix (HISTORY "The own engine never races without
+  facades around the rider": styling hurried behind the loading screen, hold
+  timeout 4 s, `engine-own.spec` checks the first racing frame; the hold
+  still times out at 4.7–4.8 s because it waits for every chunk of every
+  loaded tile out to 1.9 km, built one at a time at 2–3 chunks/s with
+  300–500 ms round trips: materials settles on a ring and fixes build
+  throughput, exactness-pinned); boot → submit 0.84–1.03 s vs 0.48–0.57
   default, owners named (HISTORY "Binary road extract is Amsterdam's
   default"): engine overview build (now in the worker pool, ~250 ms off
   boot → submit, main-thread construction 213–224 → 13–20 ms),

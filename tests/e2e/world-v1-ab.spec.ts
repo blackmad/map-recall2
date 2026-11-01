@@ -4,6 +4,7 @@ import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import path from 'node:path';
 import sharp from 'sharp';
 import { openRoute } from './helpers';
+import { AB_SPOTS } from '../../scripts/world/abSpots';
 
 // `?world=v1` against the default tile path at the world-compiler sentinels (lane L3, issue #130).
 // Opt-in measurement until world-v1 is published:
@@ -23,17 +24,16 @@ import { openRoute } from './helpers';
 // world camera after settle (`sync`/`aimAtWorld` held), sets one pose per spot through the WorldView API
 // (`jumpToLngLat`, as engine-parity.spec replays poses), settles again and reads the world canvas itself
 // (`captureFrame`: no HUD, no car sprite). Run it with AB_NOISE=1 to show the floor before a policy claim.
+// AB_OWNERS=1 (with AB_CAMERA=fixed) also writes per-spot owner frames; scripts/world/classify-ab-owners.ts turns
+// them into diff images classed coverage / chunk / shadow / shading / edge, by pand, roof or wall, and mesh. First
+// result (materials, 2026-11-01): every pixel over 30 at four spots is the cells' centimetre heights (cells compiled
+// --no-policy give 0 px there and identical styled features); the fifth (ijburg-edge, 141 px) is the own ground's
+// LOD at the far edge.
 test.skip(!process.env.WORLD_AB, 'set WORLD_AB=1 to measure');
 
 const OUT = process.env.AB_DIR || 'artifacts/world/ab';
 const WORLD_DIR = path.resolve(process.env.WORLD_DIR || 'artifacts/world/staging');
-const SPOTS = [
-  { name: 'westerkerk', at: [4.8826, 52.3741], face: [4.8843, 52.3746] },
-  { name: 'bloemgracht-80', at: [4.8798, 52.3752], face: [4.8809, 52.3750] },
-  { name: 'nassaukade', at: [4.8722, 52.3712], face: [4.8732, 52.3722] },
-  { name: 'leidsegracht-courtyard', at: [4.8868, 52.3676], face: [4.8884, 52.3686] },
-  { name: 'ijburg-edge', at: [5.0185, 52.3512], face: [5.0203, 52.3521] },
-] as const;
+const SPOTS = AB_SPOTS;
 // AB_SPOTS=westerkerk,nassaukade measures a subset (diagnosis runs).
 const SPOT_FILTER = (process.env.AB_SPOTS ?? '').split(',').filter(Boolean);
 const RUN_SPOTS = SPOT_FILTER.length ? SPOTS.filter(s => SPOT_FILTER.includes(s.name)) : SPOTS;
@@ -75,20 +75,138 @@ async function park(page: Page, at: readonly number[], face: readonly number[]) 
 }
 
 /** Hold the world camera at one pose per spot (AB_CAMERA=fixed) and return the world canvas as PNG bytes. */
-async function fixedShot(page: Page, at: readonly number[], face: readonly number[]): Promise<Buffer> {
+async function fixedShot(page: Page, at: readonly number[], face: readonly number[], owners?: Record<string, any>): Promise<Buffer> {
   const pose = { center: [at[0], at[1]] as [number, number], zoom: FIXED_ZOOM, bearing: bearingOf(at, face) };
   await page.evaluate((pose) => {
     const vm = (window as any).canalRecallGame.vectorMap;
     vm.__abHeld ??= { sync: vm.sync, aimAtWorld: vm.aimAtWorld };
     vm.sync = () => {}; vm.aimAtWorld = () => {};
+    // The player's vehicle is posed and animated per frame (wheel spin, lean): nearly every > 30 px pixel of default
+    // vs default2 (materials, 2026-11-01). Off every camera layer, so neither the main nor the shadow pass draws it.
+    for (const top of vm._sharedFrame?.scene?.children ?? []) {
+      if (!/(^|\/)player-/.test(`${top.userData?.participant ?? ''} ${top.name ?? ''}`)) continue;
+      top.traverse((o: any) => o.layers?.disableAll?.());
+    }
     vm.jumpToLngLat({ ...pose, pitch: vm.pitchForViewMode('chase') });
   }, pose);
   await settle(page);
   await page.evaluate(() => (window as any).canalRecallGame.vectorMap.camera?.whenIdle?.());
+  // The shadow map is redrawn only when its snapped box or the root-level caster signature changes, and between
+  // redraws it is re-aimed at the moving origin: what it holds depends on when the last redraw happened. Its snap
+  // grid (sharedFrame.ts absOf) is anchored at the first map centre the frame saw, which is wherever the boot
+  // happened to be: a different texel grid each run, so every shadow edge rasterised differently (the remaining
+  // default vs default2 speckle, 2026-11-01). Re-anchor at the held pose and redraw, so the shot is a function of
+  // the scene and the pose, not of the path that led to it.
+  await page.evaluate(() => {
+    const frame = (window as any).canalRecallGame.vectorMap._sharedFrame;
+    if (!frame) return;
+    frame.anchor = null;
+    // Opaque draws ordered by creation-independent keys (depth, then the object's name path and material) instead of
+    // three's material and mesh ids, which follow load order: coplanar ties then resolve the same way in every run.
+    // With the re-anchor: 0 px default vs default2 at all five spots; without the sort the same anchor gave 7 px in
+    // one run and 2,647 px > 30 in the next (2026-11-01). AB_SORT=three keeps three's order.
+    if ((window as any).__abStableSort && frame.renderer?.setOpaqueSort) {
+      const keyOf = new WeakMap<object, string>();
+      const k = (o: any, m: any) => { let v = keyOf.get(o); if (v === undefined) { let n = ''; for (let p = o; p; p = p.parent) n = `${p.name || p.type}/${n}`; v = `${m.type}:${m.name}|${n}`; keyOf.set(o, v); } return v; };
+      frame.renderer.setOpaqueSort((a: any, b: any) => a.groupOrder - b.groupOrder || a.renderOrder - b.renderOrder || (a.z - b.z) || (k(a.object, a.material) < k(b.object, b.material) ? -1 : k(a.object, a.material) > k(b.object, b.material) ? 1 : 0));
+    }
+    frame.invalidateShadows?.();
+  });
   const url: string = await page.evaluate(() => (window as any).canalRecallGame.vectorMap.captureFrame().then((c: HTMLCanvasElement | null) => c?.toDataURL('image/png') ?? ''));
+  if (owners) Object.assign(owners, await ownerPasses(page));
   await page.evaluate(() => { const vm = (window as any).canalRecallGame.vectorMap; if (vm.__abHeld) { Object.assign(vm, vm.__abHeld); delete vm.__abHeld; } });
   expect(url.startsWith('data:image/png;base64,'), 'world canvas captured').toBe(true);
   return Buffer.from(url.slice(url.indexOf(',') + 1), 'base64');
+}
+
+/**
+ * AB_OWNERS=1: after the colour shot, at the same held pose, three more frames that say who owns each pixel
+ * (scripts/world/classify-ab-owners.ts reads them): `noshadow` (the colour frame with every light's castShadow off),
+ * `pand` (flat codes: a building chunk's pixel is its pand id and wall/roof, anything else its mesh) and `mesh`
+ * (flat codes per mesh: a chunk's pixel is its chunk key). MapLibre's own layers are hidden for the code frames, so
+ * an uncoded pixel is MapLibre ground or an antialiased edge. Codes are 24-bit FNV hashes of the label, the same in
+ * every variant; `codes` maps them back.
+ */
+async function ownerPasses(page: Page): Promise<Record<string, any>> {
+  const grab = () => page.evaluate(() => (window as any).canalRecallGame.vectorMap.captureFrame().then((c: HTMLCanvasElement | null) => c?.toDataURL('image/png') ?? ''));
+  const bytes = (url: string) => Buffer.from(url.slice(url.indexOf(',') + 1), 'base64');
+  await page.evaluate(() => {
+    const lights: any[] = [];
+    (window as any).canalRecallGame.vectorMap._sharedFrame.scene.traverse((o: any) => { if (o.isLight && o.castShadow) { lights.push(o); o.castShadow = false; } });
+    (window as any).__abLights = lights;
+  });
+  const noshadow = bytes(await grab());
+  await page.evaluate(() => { for (const l of (window as any).__abLights) l.castShadow = true; });
+  const codes: Record<number, string> = {}, out: Record<string, Buffer> = { noshadow };
+  for (const pass of ['pand', 'mesh']) {
+    Object.assign(codes, await page.evaluate((pass) => {
+      const vm = (window as any).canalRecallGame.vectorMap, frame = vm._sharedFrame, tb = vm._threeBuildings, map = vm.map;
+      const THREE = frame.THREE ?? (window as any).THREE;
+      const fnv = (s: string) => { let h = 0x811c9dc5; for (let i = 0; i < s.length; i++) { h ^= s.charCodeAt(i); h = Math.imul(h, 0x01000193) >>> 0; } return ((h >>> 8) ^ (h & 0xff)) & 0xffffff || 1; };
+      const codes: Record<number, string> = {};
+      const code = (label: string) => { const c = fnv(label); codes[c] = label; return c; };
+      const rgb = (c: number) => new THREE.Vector3((c >> 16 & 255) / 255, (c >> 8 & 255) / 255, (c & 255) / 255);
+      const roofBase = tb?.look === 'procedural' ? 60 : 191;
+      const vertexShader = `attribute vec3 abWall; attribute vec3 abRoof; attribute float layer; attribute float hidden; varying vec3 vC; varying float vH;
+        uniform vec3 uOwner; uniform float useAttr;
+        #include <common>
+        #include <logdepthbuf_pars_vertex>
+        void main() { vH = useAttr > 0.5 ? hidden : 0.0; vC = useAttr > 0.5 ? (layer >= ${roofBase}.0 - 0.5 && layer < ${roofBase + 4}.0 - 0.5 ? abRoof : abWall) : uOwner;
+          vec4 p = vec4(position, 1.0);
+          #ifdef USE_INSTANCING
+          p = instanceMatrix * p;
+          #endif
+          gl_Position = projectionMatrix * modelViewMatrix * p;
+          #include <logdepthbuf_vertex>
+        }`;
+      const fragmentShader = `varying vec3 vC; varying float vH;
+        #include <logdepthbuf_pars_fragment>
+        void main() { if (vH > 0.5 && vH < 1.5) discard; gl_FragColor = vec4(vC, 1.0);
+          #include <logdepthbuf_fragment>
+        }`;
+      const chunkOf = new Map<any, string>();
+      for (const [key, e] of tb?.chunks ?? []) if (e.mesh) chunkOf.set(e.mesh, key);
+      const swapped: [any, any][] = [], added: [any, string[]][] = [], hiddenObjs: any[] = [];
+      const labelOf = (o: any) => { let n = ''; for (let p = o; p && p !== frame.scene; p = p.parent) n = `${p.name || p.userData?.participant || p.type}/${n}`; return n; };
+      frame.scene.traverse((o: any) => {
+        if (o.isSprite || o.isPoints) { if (o.visible) { o.visible = false; hiddenObjs.push(o); } return; }
+        if (!o.material) return;
+        const key = chunkOf.get(o);
+        const perPand = pass === 'pand' && key !== undefined && o.geometry.getAttribute('hidden');
+        // Depth state copied from the real material (the first, for a multi-material mesh): the detail extras sit on
+        // their walls through polygonOffset, and without it the code frame z-fights where the colour frame does not.
+        const src = Array.isArray(o.material) ? o.material[0] : o.material;
+        const m = new THREE.ShaderMaterial({ vertexShader, fragmentShader, side: src.side ?? THREE.FrontSide,
+          depthTest: src.depthTest, depthWrite: src.depthWrite, polygonOffset: src.polygonOffset, polygonOffsetFactor: src.polygonOffsetFactor, polygonOffsetUnits: src.polygonOffsetUnits,
+          colorWrite: src.colorWrite, visible: src.visible,
+          uniforms: { uOwner: { value: rgb(code(key !== undefined ? `chunk:${key}` : `mesh:${labelOf(o)}`)) }, useAttr: { value: perPand ? 1 : 0 } } });
+        if (perPand) {
+          const n = o.geometry.getAttribute('position').count, wall = new Float32Array(n * 3), roof = new Float32Array(n * 3);
+          for (const [id, r] of tb.chunks.get(key).ranges) {
+            const w = rgb(code(`pand:${id}|wall`)), f = rgb(code(`pand:${id}|roof`));
+            for (let v = r.start; v < r.start + r.count; v++) { wall.set([w.x, w.y, w.z], v * 3); roof.set([f.x, f.y, f.z], v * 3); }
+          }
+          o.geometry.setAttribute('abWall', new THREE.BufferAttribute(wall, 3)); o.geometry.setAttribute('abRoof', new THREE.BufferAttribute(roof, 3));
+          added.push([o.geometry, ['abWall', 'abRoof']]);
+        }
+        swapped.push([o, o.material]);
+        o.material = Array.isArray(o.material) ? o.material.map(() => m) : m;
+      });
+      const layers: [string, string][] = [];
+      for (const l of map?.getStyle?.()?.layers ?? []) if (l.type !== 'custom') { layers.push([l.id, map.getLayoutProperty(l.id, 'visibility') ?? 'visible']); map.setLayoutProperty(l.id, 'visibility', 'none'); }
+      (window as any).__abRestore = () => {
+        for (const [o, m] of swapped) o.material = m;
+        for (const [g, names] of added) for (const n of names) g.deleteAttribute(n);
+        for (const o of hiddenObjs) o.visible = true;
+        for (const [id, v] of layers) map.setLayoutProperty(id, 'visibility', v);
+      };
+      return codes;
+    }, pass));
+    out[pass] = bytes(await grab());
+    await page.evaluate(() => { (window as any).__abRestore(); delete (window as any).__abRestore; });
+  }
+  out.layers = Buffer.from(JSON.stringify(await page.evaluate(() => ((window as any).canalRecallGame.vectorMap.map?.getStyle?.()?.layers ?? []).map((l: any) => [l.id, l.type, l.layout?.visibility ?? 'visible']))));
+  return { ...out, codes };
 }
 
 /** Streamer idle and the three.js layer done building for two consecutive polls. */
@@ -116,7 +234,7 @@ for (const variant of VARIANTS) {
   test(`world ab: ${variant.name}`, async ({ page }) => {
     test.setTimeout(900_000);
     await serve(page);
-    await page.addInitScript(() => { (window as any).__canalRecallTrees3d = false; (window as any).__canalRecallChunkFade = false; });
+    await page.addInitScript((stable) => { (window as any).__canalRecallTrees3d = false; (window as any).__canalRecallChunkFade = false; (window as any).__abStableSort = stable; }, process.env.AB_SORT !== 'three');
     await openRoute(page, { travelMode: 'car', viewMode: 'chase', enterRacing: true, query: variant.query });
     mkdirSync(OUT, { recursive: true });
     const spots: Record<string, any> = {};
@@ -128,7 +246,8 @@ for (const variant of VARIANTS) {
       await park(page, spot.at, spot.face);
       await page.waitForTimeout(800);
       const shot = `${OUT}/${spot.name}-${variant.name}.png`;
-      if (FIXED_CAMERA) writeFileSync(shot, await fixedShot(page, spot.at, spot.face));
+      const owners: Record<string, any> | undefined = process.env.AB_OWNERS ? {} : undefined;
+      if (FIXED_CAMERA) writeFileSync(shot, await fixedShot(page, spot.at, spot.face, owners));
       else await page.screenshot({ path: shot });
       spots[spot.name] = await page.evaluate((dumpIds: string[]) => {
         const vm = (window as any).canalRecallGame.vectorMap, city = vm._completeCity;
@@ -145,6 +264,10 @@ for (const variant of VARIANTS) {
           decodeMs: city.world ? Object.fromEntries(city.world.decodeMs) : null, inflateMs: city.world?.inflateMs ? Object.fromEntries(city.world.inflateMs) : null, decodeThread: city.world?.decodeThread ?? null, worldMessages: city.world?.messages ?? null, longestMessageMs: city.world?.longestMessageMs ?? null, dumped };
       }, (process.env.AB_DUMP_IDS ?? '').split(',').filter(Boolean));
       spots[spot.name].shot = shot;
+      if (owners) {
+        for (const pass of ['noshadow', 'pand', 'mesh']) writeFileSync(`${OUT}/${spot.name}-${variant.name}-${pass}.png`, owners[pass]);
+        writeFileSync(`${OUT}/owners-${spot.name}-${variant.name}.json`, JSON.stringify({ codes: owners.codes, layers: JSON.parse(owners.layers.toString()) }));
+      }
       writeFileSync(`${OUT}/ids-${spot.name}-${variant.name}.json`, JSON.stringify(spots[spot.name].ids));
       delete spots[spot.name].ids;
       // AB_DUMP_IDS=id,id: the styled properties of those buildings, to diff what differs.

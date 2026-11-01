@@ -205,6 +205,11 @@ export function step(state: SteerState, input: SteerInput, h: number, params: St
     return commanded - v * Math.abs(v) * params.drag - (params.rollingResist + input.surfaceDrag) * sign;
   };
   let speed = state.speed + accelAt(state.speed + accelAt(state.speed) * h * 0.5) * h;
+  // At rest the resistance term flips the speed's sign every step (sign(v || 0.001)), so a parked
+  // vehicle crept by ±resistance·h forever and the camera never settled (render-on-change's
+  // "capturing draws nothing" flake, 2026-11-01). Static friction: with no command, a step of
+  // resistance that would carry the speed through zero stops it.
+  if (commanded === 0 && Math.abs(state.speed) <= (params.rollingResist + input.surfaceDrag) * h) speed = 0;
   // Lifting off scrubs speed in proportion to it: exact, not Euler.
   if (params.liftOffBraking > 0 && input.throttle === 0 && input.brake === 0) {
     speed *= Math.exp(-params.liftOffBraking * h);

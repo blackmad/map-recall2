@@ -1,0 +1,25 @@
+{
+ "street": "Retiefstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-31T15:17:52.539Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012154435",
+   "addresses": [
+    "Retiefstraat 57"
+   ],
+   "groundUnits": [
+    {
+     "address": "Retiefstraat 57-H",
+     "use": "woonfunctie",
+     "areaM2": 117,
+     "bagId": "0363010000791710"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  }
+ ]
+}

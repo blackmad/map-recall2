@@ -135,6 +135,14 @@ export interface TypeMatchRule {
    * `axisPitchM`). Absent = the house rule, byte-identical.
    */
   frontage?: StairBlockFrontage;
+  /**
+   * A placed pand of this type that is a run of one (held or unplaced neighbours, or the face end on both sides) stands
+   * on its own as a one-house face when its BAG frontage is at least `minWidthM` (`placedRuns`, `lonePandReason`). For
+   * stair-block rows, where a BAG pand is a whole stair block of one design (Transvaalbuurt 1908-1914 and 1921-1923:
+   * 57 pands held as lone runs in round 3, #156). Narrower pands keep the rule: a 4-5 m pand alone is more often a
+   * misread than a house. Absent = a run of one is held, byte-identical (Bellamy and every other library).
+   */
+  lonePand?: {minWidthM: number};
   note?: string;
 }
 
@@ -332,9 +340,16 @@ export function scoreType(t: MatchableType, ev: PandEvidence): TypeScore {
   return {typeId: t.id, score: r2(score), veto, criteria};
 }
 
+/**
+ * OSM street furniture matched to a frontage: a bench or a litter bin on the pavement is not a business in the pand.
+ * De la Reijstraat 28B (2026-11-01, #154): an `amenity=bench` 5.6 m out made the house `services` and gave it a shop
+ * front, which a type with a ground-storey oriel cannot carry.
+ */
+export const STREET_FURNITURE = /^amenity=(bench|waste_basket|waste_disposal|recycling|bicycle_parking|motorcycle_parking|parking|parking_entrance|post_box|vending_machine|drinking_water|telephone|clock|charging_station|bicycle_rental|shelter|toilets|grit_bin|letter_box)$/;
 /** Ground use of a pand from BAG and OSM (no photo reading: the agreement says so). */
 export function groundUse(ev: PandEvidence, photoDate: string): GroundFloorUse {
-  const biz = ev.osm.find(o => o.category && !/^office=/.test(o.category)) ?? ev.osm[0];
+  const osm = ev.osm.filter(o => !o.category || !STREET_FURNITURE.test(o.category));
+  const biz = osm.find(o => o.category && !/^office=/.test(o.category)) ?? osm[0];
   const bagTrade = ev.groundUses.some(u => /winkel|bijeenkomst|horeca/.test(u));
   const use: GroundFloorUse['use'] = biz?.category ? (/^amenity=(restaurant|fast_food)/.test(biz.category) ? 'restaurant' : /^amenity=cafe/.test(biz.category) ? 'cafe' : /^amenity=(bar|pub)/.test(biz.category) ? 'bar' : /^shop=/.test(biz.category) ? 'shop' : /^office=/.test(biz.category) ? 'office' : 'services')
     : bagTrade ? 'shop' : ev.groundUses.some(u => /kantoor/.test(u)) ? 'office' : 'residential';
@@ -611,11 +626,32 @@ export function ribbonRowHolds(decisions: Decision[], types: MatchableType[], ev
   return held;
 }
 
-/** Contiguous runs of placed pands (street order); a run of one cannot be a face and is held. */
-export function placedRuns(decisions: Decision[]): {runs: Placed[][]; orphans: Held[]} {
+/**
+ * Why a placed pand may stand alone as a one-house face (`TypeMatchRule.lonePand`), or null: its type opts in and its
+ * BAG frontage reaches the type's `minWidthM`.
+ */
+export function lonePandReason(t: Pick<MatchableType, 'id' | 'match'> | undefined, widthM: number | undefined): string | null {
+  const min = t?.match?.lonePand?.minWidthM;
+  if (min === undefined || widthM === undefined || !(widthM >= min)) return null;
+  return `a stair block on its own: ${t!.id} opts in to one-house faces from ${min} m (frontage ${r2(widthM)} m)`;
+}
+
+/**
+ * Contiguous runs of placed pands (street order); a run of one cannot be a face and is held, unless `lone` gives a
+ * reason it stands on its own (`lonePandReason`; absent = every run of one is held, byte-identical).
+ */
+export function placedRuns(decisions: Decision[], lone?: (p: Placed) => string | null): {runs: Placed[][]; orphans: Held[]} {
   const runs: Placed[][] = [], orphans: Held[] = [];
   let cur: Placed[] = [];
-  const flush = () => { if (cur.length >= 2) runs.push(cur); else for (const p of cur) orphans.push({pandId: p.pandId, address: p.house.address, stage: 'run', reason: 'a single placed pand between held neighbours or the face end: a block face needs two houses'}); cur = []; };
+  const flush = () => {
+    if (cur.length >= 2) runs.push(cur);
+    else for (const p of cur) {
+      const why = lone?.(p);
+      if (why) { if (!p.notes.includes(`lone pand: ${why}`)) p.notes.push(`lone pand: ${why}`); runs.push([p]); }
+      else orphans.push({pandId: p.pandId, address: p.house.address, stage: 'run', reason: 'a single placed pand between held neighbours or the face end: a block face needs two houses'});
+    }
+    cur = [];
+  };
   for (const d of decisions) { if (d.kind === 'placed') cur.push(d); else flush(); }
   flush();
   return {runs, orphans};
@@ -630,5 +666,7 @@ export function runIntent(o: {id: string; street: string; stripDate: string; str
     types: o.types.filter(t => used.includes(t)),
     houses: o.run.map(p => p.house),
     continuity: {streetLevel: 'shared', corniceGroups: [], identical: [], partyClip: true,
-      roof: {source: 'recipe', pitchDeg: 30, evidence: 'auto-place: low attic behind the cornice; the strips show sky over the cornices of the type rows'}}};
+      roof: {source: 'recipe', pitchDeg: 30, evidence: 'auto-place: low attic behind the cornice; the strips show sky over the cornices of the type rows'},
+      // A run of one exists only when its type opted in (placedRuns `lone`); its note names why.
+      ...(o.run.length === 1 ? {lonePand: {evidence: o.run[0].notes.find(n => n.startsWith('lone pand: '))?.slice(11) ?? 'a stair block on its own'}} : {})}};
 }

@@ -1,0 +1,115 @@
+{
+ "schemaVersion": 1,
+ "kind": "block-face",
+ "id": "kraaipan-63-65",
+ "street": "Kraaipanstraat",
+ "sources": [
+  {
+   "id": "strip-2020-04-29",
+   "kind": "street-panorama",
+   "capturedAt": "2020-04-29",
+   "image": "staging/block-face/kraaipan-63-65/strip.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "authoring": {
+  "author": "auto-place (blockFace/autoPlace.ts)",
+  "passes": 1,
+  "note": "auto-placed from the transvaalbuurt library (buurt Transvaalbuurt-West); scores and holds in scripts/block-face/faces/kraaipan-63-65/auto-place.json"
+ },
+ "types": [
+  "vaalrivier-1931-row"
+ ],
+ "houses": [
+  {
+   "pandId": "0363100012108224",
+   "slug": "kraaipan-108224",
+   "address": "Kraaipanstraat 63A",
+   "type": {
+    "type": "vaalrivier-1931-row",
+    "measuredPalette": {
+     "brick": "#5d4a40",
+     "evidence": "strip 2020-04-29 span 0-328: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "mirror": true,
+    "paletteOverrides": {
+     "brick": "#4f3c33"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2020-04-29",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "bays": "door group, three windows",
+    "identicalBays": "no: the door axis is wider and carries a small upper window",
+    "windowsPerStorey": "ground: doors + three windows | 1: small window + three windows",
+    "symmetry": "mirrored in pairs about the shared door group",
+    "groundFloor": "the portiek door pair under a flat canopy at one end, three windows",
+    "signage": "none",
+    "roofline": "flat, a thin light eaves slab",
+    "photoRows": [
+     1,
+     1
+    ],
+    "photoGroundRows": 1,
+    "citation": "auto-place: vaalrivier-1931-row scored 0.86 on eaves 1, storeys 1, stucco 1, columns 0.4; strip 2020-04-29 span 0-328"
+   }
+  },
+  {
+   "pandId": "0363100012145617",
+   "slug": "kraaipan-145617",
+   "address": "Kraaipanstraat 65A",
+   "type": {
+    "type": "vaalrivier-1931-row",
+    "measuredPalette": {
+     "brick": "#5e4d42",
+     "evidence": "strip 2020-04-29 span 328-654: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "paletteOverrides": {
+     "brick": "#4e3d32"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2020-04-29",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "bays": "door group, three windows",
+    "identicalBays": "no: the door axis is wider and carries a small upper window",
+    "windowsPerStorey": "ground: doors + three windows | 1: small window + three windows",
+    "symmetry": "mirrored in pairs about the shared door group",
+    "groundFloor": "the portiek door pair under a flat canopy at one end, three windows",
+    "signage": "none",
+    "roofline": "flat, a thin light eaves slab",
+    "photoRows": [
+     1,
+     1
+    ],
+    "photoGroundRows": 1,
+    "citation": "auto-place: vaalrivier-1931-row scored 0.86 on eaves 1, storeys 1, stucco 1, columns 0.4; strip 2020-04-29 span 328-654"
+   }
+  }
+ ],
+ "continuity": {
+  "streetLevel": "shared",
+  "corniceGroups": [],
+  "identical": [],
+  "partyClip": true,
+  "roof": {
+   "source": "recipe",
+   "pitchDeg": 30,
+   "evidence": "auto-place: low attic behind the cornice; the strips show sky over the cornices of the type rows"
+  }
+ }
+}

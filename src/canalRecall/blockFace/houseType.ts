@@ -21,7 +21,7 @@ import type {HouseDesign, RhythmSpec} from './intent.ts';
 
 /** Everything above the cornice line: a crown variant sets exactly these (and nothing else). */
 export const CROWN_KEYS = ['gable', 'crownCap', 'crownCapSpan', 'crownCapRise', 'crownShoulder', 'crownNeckWidth', 'crownCapCornice', 'crownCapRatio', 'crownAt', 'crownBays', 'crownRise', 'crownSteps', 'crownFinial',
-  'atticWindows', 'atticShape', 'dormers', 'dormerStyle', 'dormerAt', 'dormerCap', 'gableOrnament', 'roofFront', 'crownGroups', 'tower', 'hoist', 'parapet', 'eavesOverhang', 'dormerSize', 'renderedGable', 'dormerBody', 'dormerHoist'] as const;
+  'atticWindows', 'atticShape', 'dormers', 'dormerStyle', 'dormerAt', 'dormerCap', 'gableOrnament', 'roofFront', 'crownGroups', 'tower', 'hoist', 'parapet', 'eavesOverhang', 'dormerSize', 'renderedGable', 'dormerBody', 'dormerHoist', 'shouldered', 'crownHalf'] as const;
 /** Body fields a crown variant may also set (a gabled variant drops the cornice its cornice variant has). */
 export const CROWN_BODY_KEYS = ['cornice'] as const;
 /** The ground storey (with souterrain/stoop): a ground variant or a per-house shop sets these. */
@@ -167,6 +167,14 @@ const flipFrac = (s: {from: number; to: number}) => ({from: +(1 - s.to).toFixed(
  * flipped one-to-one (balconies on storeys with different bay counts) is an error, never a silent copy.
  */
 export function mirrorFront(f: FrontIntent): FrontIntent {
+  // An alternating row (`repeat.mirrorAlternate`) is mirrored as a whole by laying its modules in the other order
+  // (fit.ts `repeat.mirrored`): the module stays as authored, only the side-specific front-wide fields cannot follow.
+  if (f.repeat?.mirrorAlternate) {
+    const sided = (['lisenes', 'brickStripes', 'shopfront', 'groundFront', 'gridAt', 'crownAt', 'crownBays', 'crownGroups', 'tower', 'dormerAt', 'bayWindows', 'stairLight'] as const).filter(k => f[k] !== undefined);
+    if (sided.length) throw Error(`${f.id}: repeat.mirrorAlternate with ${sided.join(', ')} inside a mirrored type`);
+    const {mirrored, ...repeat} = f.repeat;
+    return {...f, repeat: mirrored ? repeat : {...repeat, mirrored: true}};
+  }
   const out: FrontIntent = {...f};
   const bays = Array.isArray(f.bays) ? f.bays : Array(f.storeys).fill(f.bays), grid = frontGrid(f);
   const flipAxis = (a: number) => grid - 1 - a;
@@ -184,6 +192,7 @@ export function mirrorFront(f: FrontIntent): FrontIntent {
   if (f.storeyBayWidths) out.storeyBayWidths = Object.fromEntries(Object.entries(f.storeyBayWidths).map(([k, v]) => [k, [...v].reverse()]));
   if (f.storeyAxes) out.storeyAxes = Object.fromEntries(Object.entries(f.storeyAxes).map(([k, v]) => [k, v.map(flipAxis).sort((p, q) => p - q)]));
   if (f.crownAt) out.crownAt = flipFrac(f.crownAt);
+  if (f.crownHalf) out.crownHalf = f.crownHalf === 'left' ? 'right' : 'left';
   if (f.crownBays) out.crownBays = flipAxes(f.crownBays);
   if (f.crownGroups) out.crownGroups = f.crownGroups.map(flipAxes).reverse();
   if (f.tower?.corner) throw Error(`${f.id}: a corner tower stands on the pand's own corner; it is not part of a mirrored type`);
@@ -195,6 +204,7 @@ export function mirrorFront(f: FrontIntent): FrontIntent {
   }
   if (f.brickStripes) out.brickStripes = f.brickStripes.map(mirrorStripeZone);
   if (f.stairLight) out.stairLight = {...f.stairLight, axis: flipAxis(f.stairLight.axis)};
+  if (f.paintedStoreys?.panels) out.paintedStoreys = {...f.paintedStoreys, panels: f.paintedStoreys.panels.map(q => ({...q, axis: flipAxis(q.axis)}))};
   if (f.friezeVents?.axes) out.friezeVents = {...f.friezeVents, axes: f.friezeVents.axes.map(flipAxis).sort((p, q) => p - q)};
   if (f.dormerAt) out.dormerAt = f.dormerAt.map(flipFrac).reverse();
   // Dormer indices count left to right as drawn: a mirrored front reverses them (with its dormerAt spans).
@@ -204,13 +214,12 @@ export function mirrorFront(f: FrontIntent): FrontIntent {
     const n = sameCount(f.balconies.storeys, 'balconies'), flip = (l: number[]) => l.map(b => n - 1 - b).sort((p, q) => p - q);
     out.balconies = {...f.balconies, bays: flip(f.balconies.bays), ...(f.balconies.storeyBays ? {storeyBays: Object.fromEntries(Object.entries(f.balconies.storeyBays).map(([k, v]) => [k, flip(v)]))} : {})};
   }
-  if (f.bayWindows?.bays) out.bayWindows = {...f.bayWindows, bays: flipAxes(f.bayWindows.bays)};
+  if (f.bayWindows?.bays) out.bayWindows = {...f.bayWindows, bays: flipAxes(f.bayWindows.bays), ...(f.bayWindows.oriel?.twin ? {oriel: {...f.bayWindows.oriel, twin: flipAxes(f.bayWindows.oriel.twin)}} : {})};
   else if (f.bayWindows) { const n = sameCount(f.bayWindows.storeys, 'bay windows'); out.bayWindows = {...f.bayWindows, bay: n - 1 - f.bayWindows.bay!}; }  if (f.groundFront) out.groundFront = {...f.groundFront, bays: [...f.groundFront.bays].reverse()};
   if (f.shopfront) {
     const sf = f.shopfront;
     if (sf.sign || sf.residentialDoor || sf.bays || sf.awning?.extent || (sf.entrance && /left|right/.test(sf.entrance))) throw Error(`${f.id}: a type ground with lettering or a side-specific shop cannot be mirrored; give the shop per house`);
   }
-  if (f.repeat?.mirrorAlternate) throw Error(`${f.id}: repeat.mirrorAlternate inside a mirrored type`);
   return out;
 }
 
