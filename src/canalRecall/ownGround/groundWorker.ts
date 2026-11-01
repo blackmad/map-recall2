@@ -5,6 +5,7 @@
 // Messages in:  { type: 'init', root, parks, roads, groundLook, compact, detail }  extract root URL (absolute); parks: load parks-v1; roads: load roads-v1; far-ring palette;
 //                                                           compact: send compact meshes (compactMesh.ts, phones);
 //                                                           detail: 'touch' on a touch device, the device's far-cell level (gameGround.ts)
+//                                                           tiles, tileMin: cut each layer into tiles×tiles culled tiles here (cellTiles.ts layerTiles)
 //               { type: 'build', key, lod, gen, detail }  build one cell at 'full' or 'touch' detail (CellDetail)
 //               { type: 'far', key, gen }         build one far block (farRing.ts)
 //               { type: 'evict', x, y, keepM, keep: string[] }
@@ -22,10 +23,11 @@ import { buildFarBlock, farColours, farTransferables, type FarColours } from './
 import { groundPalette, isRoadLookId, type GroundLook } from './groundLook.js';
 import { setKerbShadowRoadLook } from './roadSurfaces.js';
 import { GroundBuildQueue } from './buildQueue.js';
+import { layerTiles, tileTransferables } from './cellTiles.js';
 import { cellGpuTransferables, compactCell, compactFar, farGpuTransferables } from './compactMesh.js';
 
 type In =
-  | { type: 'init'; root: string; parks?: boolean; rails?: boolean; roads?: boolean; groundLook?: GroundLook; compact?: boolean; detail?: CellDetail; /** The road look under review (gameGround roadLookFlag), for the kerb shadows' ramp ends. */ roadLook?: string | null }
+  | { type: 'init'; root: string; parks?: boolean; rails?: boolean; roads?: boolean; groundLook?: GroundLook; compact?: boolean; detail?: CellDetail; tiles?: number; tileMin?: number; /** The road look under review (gameGround roadLookFlag), for the kerb shadows' ramp ends. */ roadLook?: string | null }
   | { type: 'build'; key: string; lod: 0 | 1; gen: number; detail?: CellDetail }
   | { type: 'far'; key: string; gen: number }
   | { type: 'evict'; x: number; y: number; keepM: number; keep: string[] }
@@ -36,6 +38,8 @@ let store: GroundStore | null = null;
 let ready: Promise<void> | null = null;
 let colours: FarColours | undefined;
 let compact = false;
+/** Tiles per side and the smallest layer worth cutting (init `tiles`, `tileMin`); 0: the main thread cuts (or nobody). */
+let tiles = 0, tileMin = 0;
 /** The device's far-cell level (init `detail`): `touch` on a coarse-pointer device, `full` on a desktop. */
 let detail: CellDetail = 'full';
 // One build at a time: cells are big and the order matters (nearest ahead first, buildQueue.ts).
@@ -56,7 +60,9 @@ async function pump(s: GroundStore): Promise<void> {
         try {
           const input = await s.cellInput(job.key, job.lod, job.detail);
           const built = buildCell(input), cell = compact ? compactCell(built) : built;
-          ctx.postMessage({ type: 'cell', gen: job.gen, cell }, compact ? cellGpuTransferables(cell) : cellTransferables(cell));
+          // The tiles of the meshes exactly as sent (compact or not): the main thread's install only wraps them.
+          if (tiles > 1) cell.tiles = layerTiles(cell.layers, tiles, tileMin);
+          ctx.postMessage({ type: 'cell', gen: job.gen, cell }, [...(compact ? cellGpuTransferables(cell) : cellTransferables(cell)), ...tileTransferables(cell.tiles)]);
         } catch (error) {
           ctx.postMessage({ type: 'error', key: job.key, gen: job.gen, message: String((error as Error)?.stack ?? error) });
         }
@@ -81,6 +87,7 @@ ctx.onmessage = event => {
     store = new GroundStore(httpFetchBytes(msg.root), { parks: msg.parks !== false, roads: msg.roads === true, rails: msg.rails !== false });
     compact = msg.compact === true;
     detail = msg.detail === 'touch' ? 'touch' : 'full';
+    tiles = Math.max(0, Math.floor(msg.tiles ?? 0)); tileMin = Math.max(0, msg.tileMin ?? 0);
     setKerbShadowRoadLook(isRoadLookId(msg.roadLook) ? msg.roadLook : null);
     colours = msg.groundLook && msg.groundLook !== 'default' ? farColours(groundPalette(msg.groundLook)) : undefined;
     ready = store.init().then(() => ctx.postMessage({ type: 'ready', cells: [...store!.osmCells] }))

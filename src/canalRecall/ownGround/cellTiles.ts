@@ -75,3 +75,25 @@ export function splitIntoTiles(positions: ArrayLike<number>, indices: Uint16Arra
   }
   return out;
 }
+
+/**
+ * Every layer's tiles of a built cell, computed where the cell is built (the ground worker), so the main thread's
+ * install only wraps them (#129: `splitIntoTiles` in `cutMesh` was a > 16 ms streaming task at 1x on the Jordaan ride).
+ * The same call `rawTiles` makes on the main thread for a ground layer (a Float32 xyz position, offset 0, stride 3,
+ * no groups, the whole draw range): the result is identical. Null for a layer the main thread would keep whole.
+ */
+export function layerTiles(layers: Readonly<Record<string, { positions: ArrayLike<number>; indices: Uint16Array | Uint32Array } | undefined>>, n: number, minTriangles: number): Record<string, CellTile[] | null> {
+  const out: Record<string, CellTile[] | null> = {};
+  for (const [layer, m] of Object.entries(layers)) {
+    if (!m) continue;
+    out[layer] = m.positions instanceof Float32Array && m.indices ? splitIntoTiles(m.positions, m.indices, n, minTriangles, 3) : null;
+  }
+  return out;
+}
+
+/** The tiles' index buffers, to transfer with the cell. */
+export function tileTransferables(tiles: Readonly<Record<string, CellTile[] | null>> | undefined): ArrayBuffer[] {
+  const out: ArrayBuffer[] = [];
+  for (const list of Object.values(tiles ?? {})) for (const t of list ?? []) out.push(t.indices.buffer as ArrayBuffer);
+  return out;
+}

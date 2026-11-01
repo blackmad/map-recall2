@@ -47,6 +47,7 @@ import { gpuMeshBytes, isCompact, type GpuMesh } from './compactMesh.js';
 import { groundParticipant, GROUND_ORDER, ndcOf } from './sharedFrameGround.js';
 import { footprintBase } from './placement.js';
 import { cutMesh, disposeTiles } from '../rendererShared/tiledGeometry.js';
+import type { CellTile } from './cellTiles.js';
 import { inTouchRing, residentRadius, touchAheadMarginM, touchResidentRadius, viewCornerReachM, viewReachM } from '../engine/worldStreamer.js';
 import { farBlockCells, farBlocksWithin, farRadiusM, FAR_KEEP_M, type BuiltFar } from './farRing.js';
 import { routeRibbon } from './streets.js';
@@ -359,7 +360,7 @@ export class OwnGround {
       this.worker.onmessage = event => this.onWorker(event.data);
       this.worker.onerror = event => { this.stats.errors.push(`worker: ${event.message}`); };
       // Compact meshes: the same geometry in ~half the bytes (compactMesh.ts).
-      this.worker.postMessage({ type: 'init', root, parks: this.opts.parks, rails: this.opts.rails, roads: this.opts.roads, groundLook: this.opts.groundLook, compact: compactFlag(), detail: this.opts.detail, roadLook: roadLookFlag() });
+      this.worker.postMessage({ type: 'init', root, parks: this.opts.parks, rails: this.opts.rails, roads: this.opts.roads, groundLook: this.opts.groundLook, compact: compactFlag(), detail: this.opts.detail, roadLook: roadLookFlag(), tiles: this.opts.tiles, tileMin: TILE_MIN_TRIANGLES });
     } catch (error) {
       this.stats.errors.push(`worker unavailable: ${String(error)}`);
     }
@@ -972,11 +973,12 @@ export class OwnGround {
    * shared frame draws it whole or through the tiles per frame. With `releaseArrays` (phones) the tiles are the only
    * draw: the mesh's own index is dropped instead of kept on the CPU for a whole draw.
    */
-  private tile(mesh: any): void {
+  private tile(mesh: any, tiles?: CellTile[] | null): void {
     if (this.opts.tiles <= 1) return;
     const tilesOnly = this.opts.tilesOnly;
     // A phone keeps no CPU copy of a whole index (`tilesOnly`); spans rewrite the index in place and need none.
-    if (cutMesh(this.THREE, mesh, this.opts.tiles, TILE_MIN_TRIANGLES, { release: !!this.opts.releaseArrays, tilesOnly }) && tilesOnly && mesh.userData.tiles?.length) mesh.geometry.setIndex(null);
+    // `tiles`: cut in the worker (cellTiles.ts layerTiles, the same partition), so only the wrapping runs here.
+    if (cutMesh(this.THREE, mesh, this.opts.tiles, TILE_MIN_TRIANGLES, { release: !!this.opts.releaseArrays, tilesOnly, tiles }) && tilesOnly && mesh.userData.tiles?.length) mesh.geometry.setIndex(null);
   }
 
   private packedGeometry(p: GpuMesh): any {
@@ -1045,7 +1047,7 @@ export class OwnGround {
       // Deck bodies, hedges and park furniture stand up; the rest is ground.
       mesh.castShadow = layer === 'deckBody' || layer === 'hedge' || layer === 'furniture';
       mesh.renderOrder = layer === 'water' || layer === 'quay' ? 0 : layer === 'land' ? 1 : 2;
-      this.tile(mesh);
+      this.tile(mesh, cell.tiles ? cell.tiles[layer] ?? null : undefined);
       group.add(mesh);
       triangles += p.indices.length / 3;
       bytes += gpuMeshBytes(p as GpuMesh);
