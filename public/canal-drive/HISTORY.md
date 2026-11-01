@@ -1,5 +1,36 @@
 # Canal Recall — what is built
 
+**Oracle migration round 3: the remaining 48 specs ran under the own engine; the oracle list is four items (2026-11-01, P0/P5).**
+Oracle-migration-2 lane (haiku, 42a661282). The remaining 48 migrated
+specs under `ENGINE=own` desktop, in six batches: one rewrite bug found and
+fixed (the screenshot locator `canvas.maplibregl-canvas` in eight specs
+waited for a canvas the own engine never creates; now `canvas.maplibregl-canvas,
+canvas.engine-canvas`, the default path still matches its MapLibre canvas
+first), block-face's 132 `querySourceFeatures` tests and
+overview-transition's 'Vondelpark lawn' skipped under own as style-only.
+After the fix: period-walls-strip, shadow-fill, generic-gap-strip,
+highlight, highlight-shots and street-survey chunks pass under own; P1
+gate set on the iphone project 13 passed / 0 failed, desktop 16 / 1
+(labels:134). Oracles with no own equivalent, left red not skipped, now
+L1's: `vectorMap._completeCityHasBuildings` (set only by the MapLibre
+`_completeCity.attach`; waited on in building-click-perf 146/228,
+building-article-card:80, street-art-landmark-cards:78,
+landmark-highlight:142), `vectorMap._facadesActive()` (building-look
+47/58), `vectorMap._signatureSuppressOsmIds` (bag-tiles:110), the
+`.cr-map-labels` container (labels:134). Own-engine behaviour gaps, L1's:
+overview-transition:101 (the zoom sweep 14.1→14.2 has no blend, ΔE>20 on
+69.8 %, mean luma −35), recipe-tiles 'off'/'types' (settle never idles
+under own), governor-no-flash:20 (own starts at pixel ratio 1.5, MapLibre
+2). The four perf scripts ran for real on the default engine under the
+exclusive lock (ride-perf-fixed-route, ride-perf-places, highlight-perf,
+perf-frozen-frames SPOTS=dam): all exit 0. Pre-existing default red
+unchanged: `building-click-perf`:228 0.818 vs 0.95, `street-survey-retire`
+'shots: default' 35 entries, `city-startup-lod` flaky. Integrator: tsc
+clean; default-desktop smoke of highlight, period-walls-strip,
+generic-gap-strip and shadow-fill after the locator change: 7 passed, 1
+skipped. Lane's next round: own iphone runs of the non-P1 specs and
+a final audit of direct MapLibre-only calls in non-skipped tests.
+
 **A query string drew every tiled mesh whole on touch; iPad baselines re-recorded; the facade LOD is parked for the bigger owners (2026-11-01, P4).**
 Materials lane (811ff753c). `sharedFrame.ts` `tileWholeShareFlag` did
 `Number(params.get('tileWhole'))`, and `Number(null)` is 0, so any page
