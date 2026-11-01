@@ -48139,5 +48139,50 @@
    "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
    "modifications": "Original low-poly reconstruction from the typed kiosk kit, drawn shut as in the panoramas: white shutter box with a roller-shuttered end under a grey zinc hip roof, the STUBBE HARING ridge board with two blue leaping fish. Graffiti not drawn. Footprint from the BAG standplaats (CC0); proportions and tints from Gemeente Amsterdam panoramas (CC BY 4.0). No photo pixels or imported meshes."
   }
+ },
+ {
+  "id": "kiosk-haringhandel-jonk",
+  "name": "Haringhandel Jonk",
+  "landmarkId": "osm_food_9860683033",
+  "modelUrl": "./models/kiosk-haringhandel-jonk.glb",
+  "suppressOsmIds": [
+   "NL.IMBAG.Pand.0363100012247454",
+   "w1381187931"
+  ],
+  "spatialSuppression": false,
+  "footprint": {
+   "centre": [
+    4.890787,
+    52.368854
+   ],
+   "headingDegrees": 338.48,
+   "lengthMetres": 3.991,
+   "widthMetres": 3.453
+  },
+  "surveyed": {
+   "anchor": [
+    4.890787,
+    52.368854
+   ],
+   "northOffsetDegrees": 0,
+   "source": "bag-pand: BAG pand 0363100012247454 (2018) outline, vertex average as the anchor (OSM node 9860683033 Haringhandel Jonk is 0.6 m away); shutter walls 3.75 x 3.21 m inside it; heights from 3DBAG (eaves 3.0 m, top 3.12 m). Shutters, logo and slab from Gemeente Amsterdam panoramas recording_2025-06-30_05-16-46_00991 / _00992 / _00994 (CC BY 4.0). See scripts/landmarks/kiosk-haringhandel-jonk-footprints.json."
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 0,
+  "heightMetres": 3.12,
+  "assetKind": "building",
+  "materialOverrides": {
+   "slate": "#3a4641",
+   "bronze": "#2c3533",
+   "gold": "#a8946e"
+  },
+  "attribution": {
+   "title": "Haringhandel Jonk, Spui",
+   "author": "Map Recall",
+   "sourceUrl": "https://www.openstreetmap.org/node/9860683033",
+   "licence": "CC BY 4.0",
+   "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+   "modifications": "Original low-poly reconstruction from the typed kiosk kit, drawn shut as in the panoramas: dark green roller shutters on all four faces under a thick dark roof slab, the JONK / Volendammer Haringhandel lettering on three faces (fish outline not drawn). Footprint and heights from BAG/3DBAG (CC0); tints from Gemeente Amsterdam panoramas (CC BY 4.0), lettering tan estimated by eye. No photo pixels or imported meshes."
+  }
  }
 ]

@@ -1,0 +1,80 @@
+{
+ "id": "kiosk-haringhandel-jonk",
+ "generatedBy": "node --import tsx scripts/landmarks/kiosk-footprint.ts --id=kiosk-haringhandel-jonk --pand=0363100012247454 --near=52.3688567,4.8908001",
+ "source": {
+  "kind": "bag-pand",
+  "id": "0363100012247454",
+  "url": "https://api.data.amsterdam.nl/v1/bag/panden/0363100012247454/",
+  "licence": "CC0 (BAG)",
+  "properties": {
+   "id": "NL.IMBAG.Pand.0363100012247454",
+   "tier": 3,
+   "minHeight": 0,
+   "height": 3.12,
+   "eaves": 3,
+   "roof": 1,
+   "year": 2018,
+   "osm": [
+    "w1381187931"
+   ]
+  }
+ },
+ "anchor": [
+  4.890787,
+  52.368854
+ ],
+ "ringLngLat": [
+  [
+   4.890823,
+   52.368846
+  ],
+  [
+   4.890805,
+   52.368875
+  ],
+  [
+   4.890751,
+   52.368862
+  ],
+  [
+   4.890769,
+   52.368833
+  ],
+  [
+   4.890823,
+   52.368846
+  ]
+ ],
+ "localEastSouthMetres": [
+  [
+   2.447,
+   0.891
+  ],
+  [
+   1.223,
+   -2.338
+  ],
+  [
+   -2.447,
+   -0.891
+  ],
+  [
+   -1.223,
+   2.338
+  ]
+ ],
+ "areaM2": 13.62,
+ "rect": {
+  "centre": [
+   0,
+   0
+  ],
+  "widthM": 3.991,
+  "depthM": 3.453,
+  "frontBearing": 338.48
+ },
+ "notes": [
+  "The brief's \"Spui herring stand\": OSM node 9860683033 \"Haringhandel Jonk\" (Spui 7a) sits 0.6 m from the centre of BAG pand 0363100012247454 (2018, 13.6 m2, 3DBAG eaves 3.0 m, top 3.12 m, OSM w1381187931), and the panoramas show the JONK Volendammer Haringhandel logo on that box.",
+  "Shutter walls 3.75 x 3.21 m inside the 3.99 x 3.45 m outline (the slab overhangs about 12 cm in recording_2025-06-30_05-16-46_00991)."
+ ]
+}

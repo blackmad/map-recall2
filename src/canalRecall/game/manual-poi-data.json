@@ -2834,5 +2834,20 @@
       52.3790639,
       4.8942367
     ]
+  },
+  {
+    "modelId": "kiosk-haringhandel-jonk",
+    "landmarkId": "osm_food_9860683033",
+    "name": "Haringhandel Jonk",
+    "funFact": "Haringhandel Jonk sells Volendam herring from a dark green kiosk on the Spui, registered with BAG in 2018; when it is shut, its roller shutters carry the JONK fish logo on three sides.",
+    "sourceUrl": "https://www.openstreetmap.org/node/9860683033",
+    "additionalSources": [
+      "https://api.data.amsterdam.nl/v1/bag/panden/0363100012247454/",
+      "https://haringhandeljonk.com/"
+    ],
+    "center": [
+      52.368854,
+      4.890787
+    ]
   }
 ]

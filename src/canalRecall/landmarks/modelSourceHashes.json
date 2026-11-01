@@ -1,5 +1,5 @@
 {
-  "toolchain": "d6241c6d7e58ee7e429fef02faf4dd32799e7901cda73d8edcfa7b1d6a4b5859",
+  "toolchain": "97a062fbb16d9aea0b6224befbc35eb6deb4c14e79a10c0d549b930ce67eb567",
   "models": {
     "abn-amro-hoofdkantoor": "90ff65a2d9f94e99b2ab33438567f147959a43f017d3d9cf9d2ae68b6dae7cbf",
     "academie-theater-dans": "503b3e8d59937cbf7ac8776eb644c11fd10b567e5ac1113e0caa55c83cb68cde",
@@ -184,6 +184,7 @@
     "kiosk-dr-falafel": "279d56129c3e3d7041beec0c8bbda7d98664395918854ed54c27235b4b70ae15",
     "kiosk-dumplings-nassauplein": "184f52a73e04c4496d9dc1fb69b917d15b0c5875f6c9b9472239c957dee0b285",
     "kiosk-frens-haringhandel": "089f879336da45ec7a3eaabeabd8d0a17db4dc7b1f4c3df6b29163a21310f6cb",
+    "kiosk-haringhandel-jonk": "dde97b525a5a01473c1a747af12b9a53f1d2692e342a96b7e4577121e9991ad0",
     "kiosk-mr-blou": "10befeea937c1b3e0db81f5383b566caec4e48b820cccb56de5b4c25bf824039",
     "kiosk-stubbes-haring": "a0fc41b27ddecaa2d9fd74c798764acd426917cd6bfd3056d883c1ff7d661e23",
     "kleine-komedie": "f0dca73ee8727c2485a8d768e5a1842a6846a4a0f6a5123a17bb6492f9d1a6a5",
