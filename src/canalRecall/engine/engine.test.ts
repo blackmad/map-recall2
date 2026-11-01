@@ -77,6 +77,21 @@ test('engine flag', () => {
   assert.equal(engineFlag(''), 'maplibre');
 });
 
+test('engine choice is city-aware: own only where the own map and the roads binary exist', async () => {
+  const { existsSync, readdirSync } = await import('node:fs');
+  const { OWN_ENGINE_CITIES, OWN_ENGINE_FILES, engineForCity } = await import('./worldViewApi');
+  const root = 'public/data/extracts';
+  for (const city of readdirSync(root)) {
+    const has = OWN_ENGINE_FILES.every(f => existsSync(`${root}/${city}/${f}`));
+    assert.equal(OWN_ENGINE_CITIES.has(city), has, `${city}: own engine listed iff ${OWN_ENGINE_FILES.join(' and ')} exist`);
+    assert.equal(engineFlag('?engine=own', city), has ? 'own' : 'maplibre', city);
+    assert.equal(engineFlag('', city), 'maplibre', `${city}: the default stays MapLibre`);
+  }
+  assert.ok(OWN_ENGINE_CITIES.has('amsterdam'));
+  for (const city of ['utrecht', 'rotterdam', 'den-haag']) assert.equal(engineForCity('own', city), 'maplibre', city);
+  assert.equal(engineForCity('own', null), 'own', 'no city yet: Amsterdam, the default');
+});
+
 test('FrameHost: fixed ticks, render on demand, context loss and restore, guarded', async () => {
   const { FrameHost } = await import('./frameHost');
   const { guardFrameHost } = await import('./frameGuards');

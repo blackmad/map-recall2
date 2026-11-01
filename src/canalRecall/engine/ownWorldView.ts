@@ -32,8 +32,9 @@ import { RiderCoverTracker } from './riderCover';
 import { decodeOverviewBytes, fetchOverviewBytes, OverviewLayer, OVERVIEW_TILES, OVERVIEW_TILE_MIN_TRIANGLES } from './overviewLayer';
 import { overviewFromPool } from '../ownMap/overviewPool';
 import { awaitWorkerPool } from './workerPool';
-import type { JumpOptions, ScreenPoint, WorldCamera } from './worldViewApi';
+import type { JumpOptions, ScreenPoint, WorldCamera, WorldViewOracles } from './worldViewApi';
 import { FlatLines, type LngLatLine } from './overlays/flatLines';
+import { COVER_POLL_MS, isCoveredState } from '../labels/coveredState';
 import { LabelLayer, type PointLabel } from './overlays/labelLayer';
 import { gameLabelContext, type LabelContext } from '../ownMap/labelPolicy';
 import { buildSpoilerIndex, type SpoilerIndex } from '../orientationPois';
@@ -99,7 +100,7 @@ export const UNIMPLEMENTED = [
 
 type Vehicle = any;
 
-export class OwnWorldView {
+export class OwnWorldView implements WorldViewOracles {
   readonly engine = 'own' as const;
   ready = false;
   readonly container: HTMLElement;
@@ -124,6 +125,14 @@ export class OwnWorldView {
   /** Landmark models, trees, detailed buildings, pyramidal roofs, ARTIS (cityExtras.ts). */
   readonly extras: CityExtras;
   get _signatureLandmarks(): any { return this.extras.signature; }
+
+  // ---- spec oracles (worldViewApi.ts WorldViewOracles), the names vector-map.js answers to ----
+  /** Set by the streamer's first-buildings callback (loadBuildings), as vector-map.js's `_completeCity.attach`. */
+  _completeCityHasBuildings = false;
+  /** The three.js buildings draw with the facades library loaded (no theme or detail switch under own). */
+  _facadesActive(): boolean { return !!this.facadesLib() && !!this._threeBuildings && this.status.buildings === true; }
+  /** The building ids the shown signature models hide (cityExtras.ts suppressedIds: covers.json under ?bagTiles=1). */
+  _signatureSuppressOsmIds(): string[] { return this.extras.suppressedIds(); }
   get _inventoryTrees(): any { return this.extras.trees; }
   get _detailedBuildings(): any { return this.extras.detailed; }
   get _pyramidalRoofs(): any { return this.extras.roofs; }
@@ -293,6 +302,11 @@ export class OwnWorldView {
     this._sharedFrame.register('engine-transit', this._lines.transit, { order: -55 });
     this._sharedFrame.register('engine-cycle', this._lines.cycle, { order: -50 });
     this._labels = new LabelLayer(container, () => this.labelPolicy());
+    // Paper over the map (menu, setup, loading) hides the labels without waiting for a repaint: a state change need
+    // not move the map, so the check also runs on its own slow clock, as the MapLibre overlay's (labels/labelOverlay.ts).
+    const syncCovered = () => { if (this._labels.setCovered(isCoveredState(W().canalRecallGame?.state))) this.host.triggerRepaint(); };
+    syncCovered();
+    W().setInterval(syncCovered, COVER_POLL_MS);
     if (three.HighlightMarker && three.highlightStyle?.() !== 'yellow') {
       try {
         this._highlightMarker = new three.HighlightMarker(THREE, this.cameraMap, {
@@ -391,7 +405,7 @@ export class OwnWorldView {
       const base = api.exceptLandmarks ? api.exceptLandmarks(decorate, new Set(), undefined) : decorate;
       city.setFeatureDecorator(api.decorateKitRoof ? (f: any) => api.decorateShopfront(api.decorateFront(api.decorateKitRoof(base(f)))) : base);
       if (!(await city.probe())) { this.fail('buildings', 'tiles not published'); return; }
-      city.attach(() => { this.status.firstBuildingsAt = performance.now(); }, (features: any[]) => {
+      city.attach(() => { this._completeCityHasBuildings = true; this.status.firstBuildingsAt = performance.now(); }, (features: any[]) => {
         this._tileFeatures = features;
         this.extras.setBuildingFeatures(features);
         try { this._threeBuildings.setFeatures(features); } catch (error) { console.warn('[engine] facade sync failed', error); }
