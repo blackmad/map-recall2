@@ -4,6 +4,7 @@ import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import path from 'node:path';
 import sharp from 'sharp';
 import { openRoute } from './helpers';
+import { AB_SPOTS } from '../../scripts/world/abSpots';
 
 // `?world=v1` against the default tile path at the world-compiler sentinels (lane L3, issue #130).
 // Opt-in measurement until world-v1 is published:
@@ -27,13 +28,7 @@ test.skip(!process.env.WORLD_AB, 'set WORLD_AB=1 to measure');
 
 const OUT = process.env.AB_DIR || 'artifacts/world/ab';
 const WORLD_DIR = path.resolve(process.env.WORLD_DIR || 'artifacts/world/staging');
-const SPOTS = [
-  { name: 'westerkerk', at: [4.8826, 52.3741], face: [4.8843, 52.3746] },
-  { name: 'bloemgracht-80', at: [4.8798, 52.3752], face: [4.8809, 52.3750] },
-  { name: 'nassaukade', at: [4.8722, 52.3712], face: [4.8732, 52.3722] },
-  { name: 'leidsegracht-courtyard', at: [4.8868, 52.3676], face: [4.8884, 52.3686] },
-  { name: 'ijburg-edge', at: [5.0185, 52.3512], face: [5.0203, 52.3521] },
-] as const;
+const SPOTS = AB_SPOTS;
 // AB_SPOTS=westerkerk,nassaukade measures a subset (diagnosis runs).
 const SPOT_FILTER = (process.env.AB_SPOTS ?? '').split(',').filter(Boolean);
 const RUN_SPOTS = SPOT_FILTER.length ? SPOTS.filter(s => SPOT_FILTER.includes(s.name)) : SPOTS;
@@ -81,10 +76,37 @@ async function fixedShot(page: Page, at: readonly number[], face: readonly numbe
     const vm = (window as any).canalRecallGame.vectorMap;
     vm.__abHeld ??= { sync: vm.sync, aimAtWorld: vm.aimAtWorld };
     vm.sync = () => {}; vm.aimAtWorld = () => {};
+    // The player's vehicle is posed and animated per frame (wheel spin, lean): nearly every > 30 px pixel of default
+    // vs default2 (materials, 2026-11-01). Off every camera layer, so neither the main nor the shadow pass draws it.
+    for (const top of vm._sharedFrame?.scene?.children ?? []) {
+      if (!/(^|\/)player-/.test(`${top.userData?.participant ?? ''} ${top.name ?? ''}`)) continue;
+      top.traverse((o: any) => o.layers?.disableAll?.());
+    }
     vm.jumpToLngLat({ ...pose, pitch: vm.pitchForViewMode('chase') });
   }, pose);
   await settle(page);
   await page.evaluate(() => (window as any).canalRecallGame.vectorMap.camera?.whenIdle?.());
+  // The shadow map is redrawn only when its snapped box or the root-level caster signature changes, and between
+  // redraws it is re-aimed at the moving origin: what it holds depends on when the last redraw happened. Its snap
+  // grid (sharedFrame.ts absOf) is anchored at the first map centre the frame saw, which is wherever the boot
+  // happened to be: a different texel grid each run, so every shadow edge rasterised differently (the remaining
+  // default vs default2 speckle, 2026-11-01). Re-anchor at the held pose and redraw, so the shot is a function of
+  // the scene and the pose, not of the path that led to it.
+  await page.evaluate(() => {
+    const frame = (window as any).canalRecallGame.vectorMap._sharedFrame;
+    if (!frame) return;
+    frame.anchor = null;
+    // Opaque draws ordered by creation-independent keys (depth, then the object's name path and material) instead of
+    // three's material and mesh ids, which follow load order: coplanar ties then resolve the same way in every run.
+    // With the re-anchor: 0 px default vs default2 at all five spots; without the sort the same anchor gave 7 px in
+    // one run and 2,647 px > 30 in the next (2026-11-01). AB_SORT=three keeps three's order.
+    if ((window as any).__abStableSort && frame.renderer?.setOpaqueSort) {
+      const keyOf = new WeakMap<object, string>();
+      const k = (o: any, m: any) => { let v = keyOf.get(o); if (v === undefined) { let n = ''; for (let p = o; p; p = p.parent) n = `${p.name || p.type}/${n}`; v = `${m.type}:${m.name}|${n}`; keyOf.set(o, v); } return v; };
+      frame.renderer.setOpaqueSort((a: any, b: any) => a.groupOrder - b.groupOrder || a.renderOrder - b.renderOrder || (a.z - b.z) || (k(a.object, a.material) < k(b.object, b.material) ? -1 : k(a.object, a.material) > k(b.object, b.material) ? 1 : 0));
+    }
+    frame.invalidateShadows?.();
+  });
   const url: string = await page.evaluate(() => (window as any).canalRecallGame.vectorMap.captureFrame().then((c: HTMLCanvasElement | null) => c?.toDataURL('image/png') ?? ''));
   await page.evaluate(() => { const vm = (window as any).canalRecallGame.vectorMap; if (vm.__abHeld) { Object.assign(vm, vm.__abHeld); delete vm.__abHeld; } });
   expect(url.startsWith('data:image/png;base64,'), 'world canvas captured').toBe(true);
@@ -116,7 +138,7 @@ for (const variant of VARIANTS) {
   test(`world ab: ${variant.name}`, async ({ page }) => {
     test.setTimeout(900_000);
     await serve(page);
-    await page.addInitScript(() => { (window as any).__canalRecallTrees3d = false; (window as any).__canalRecallChunkFade = false; });
+    await page.addInitScript((stable) => { (window as any).__canalRecallTrees3d = false; (window as any).__canalRecallChunkFade = false; (window as any).__abStableSort = stable; }, process.env.AB_SORT !== 'three');
     await openRoute(page, { travelMode: 'car', viewMode: 'chase', enterRacing: true, query: variant.query });
     mkdirSync(OUT, { recursive: true });
     const spots: Record<string, any> = {};

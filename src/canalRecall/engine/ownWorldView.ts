@@ -30,7 +30,7 @@ import { clearCamera, clearanceResidents } from './cameraClearance';
 import { RiderCoverTracker } from './riderCover';
 import { decodeOverviewBytes, fetchOverviewBytes, OverviewLayer, OVERVIEW_TILES, OVERVIEW_TILE_MIN_TRIANGLES } from './overviewLayer';
 import { overviewFromPool } from '../ownMap/overviewPool';
-import { existingWorkerPool } from './workerPool';
+import { awaitWorkerPool } from './workerPool';
 import type { JumpOptions, ScreenPoint, WorldCamera } from './worldViewApi';
 import { FlatLines, type LngLatLine } from './overlays/flatLines';
 import { LabelLayer, type PointLabel } from './overlays/labelLayer';
@@ -298,7 +298,8 @@ export class OwnWorldView {
       // the water index and the labels (ownMap/overviewPool.ts, #129: 184 ms of boot -> submit); without a pool, or if
       // the worker fails, it is built here as before.
       const bytes = await fetchOverviewBytes(this.absoluteExtractRoot());
-      const pooled = overviewFromPool(existingWorkerPool(), bytes, OVERVIEW_TILES, OVERVIEW_TILE_MIN_TRIANGLES);
+      // The facades layer owns the pool's stamped URL and loads in parallel: wait for its decision instead of racing it.
+      const pooled = awaitWorkerPool().then(pool => overviewFromPool(pool, bytes, OVERVIEW_TILES, OVERVIEW_TILE_MIN_TRIANGLES));
       const data = await decodeOverviewBytes(bytes);
       const prebuilt = await pooled;
       this.status.overviewBuilt = prebuilt ? 'pool' : 'main';

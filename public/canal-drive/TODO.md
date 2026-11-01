@@ -274,9 +274,12 @@ and the step-6 `_makeLayer` / `SHARED_FRAME_DEFAULT` deletions.
 State: **L4 world streamer steps 1–3 merged 2026-10-30** (#136, `4b63096e1`):
 Gate restated 2026-11-01 (user: "do we actually need pixel A/B at zero?",
 no): structural equality of the styled building set at the five spots in
-node (zero tolerance) plus a pixel check with the player frozen and the
-shadow camera pinned, 0 px over 30, sub-30 speckle counted not chased
-(materials). The earlier wording:
+node (zero tolerance; `scripts/world/check-ab-spots.ts` PASSES, five spots
+identical) plus a pixel check with the player frozen and the shadow camera
+pinned, 0 px over 30, sub-30 speckle counted not chased (harness done:
+default vs default is 0 px at any threshold; world vs default still 229 /
+2,179 / 3,142 / 1,261 / 1,971 px over 30, something downstream of the
+styled set, materials names the owner next). The earlier wording:
 `?world=v1` is identical to the default path in the browser (five spots,
 desktop and iPhone: same feature ids and styled features per tile; Node
 `world:verify` 295 tiles / 349,220 buildings / 0 differ). The four-tile
@@ -1436,9 +1439,12 @@ Root `main` was cleaned on 2026-10-09 (see HISTORY). Live work, in order:
   build until the atlas (painted on the main thread in 6 ms slices) was
   bound; chunks now build while it paints (settle 850–1160 → 661–716 ms,
   racing after submit 2055–2459 → 1885–1967 ms), the ≤ 0.3 s hold target
-  needs the pre-painted atlas (materials), and the 2.8 s hold timeout must
-  wait on the atlas bind so racing never starts without facades (materials,
-  before the flip); boot → submit 0.84–1.03 s vs 0.48–0.57
+  needs the pre-painted atlas (materials); racing never starts without
+  facades since the hold fix (HISTORY "The own engine never races without
+  facades around the rider": styling hurried behind the loading screen, hold
+  timeout 4 s, `engine-own.spec` checks the first racing frame; one probe
+  run still timed out at 4.4 s with outer chunks installing, materials
+  reports what that frame lacks); boot → submit 0.84–1.03 s vs 0.48–0.57
   default, owners named (HISTORY "Binary road extract is Amsterdam's
   default"): engine overview build (now in the worker pool, ~250 ms off
   boot → submit, main-thread construction 213–224 → 13–20 ms),

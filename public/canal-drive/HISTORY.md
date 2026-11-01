@@ -1,5 +1,41 @@
 # Canal Recall — what is built
 
+**The own engine never races without facades around the rider; world-v1 structural gate in node; the A/B harness is an instrument (2026-11-01, #129).**
+Materials lane (6a29f4724). The deployed build f840fb6 started racing with
+only the station and two blocks drawn (HISTORY "Facades package" named the
+risk; the integrator's deployed probe showed it). Cause: behind the loading
+screen `requestAnimationFrame` fires only every 0.3–0.9 s, and the building
+tile streamer styled 16–448 features per call, so ~13k buildings were still
+unstyled when racing began and the facade pump had nothing to build. Fix:
+while the hold waits, the settle `buildingTiles` check calls
+`hurryStyling()` (24 ms `setTimeout` slices, unstyled arrivals count as
+busy) and `hurryAtlas` speeds the chunk installs; the painted atlas is kept
+in this browser between visits; the hold's timeout is 4 s (was 2.8).
+`engine-own.spec` now checks the first natural racing frame: atlas ready,
+facade chunks > 0 and at least 70 % of the count 3 s later (0 before the
+fix; 21 and 21 after, settle 2,110 ms without a timeout). The deployed probe
+run locally shows a fully built street around the rider in the first racing
+frame. Still open: one probe run timed out at 4.4 s with outer chunks
+installing (the lane reports what that first frame lacks). `?world=v1`:
+`scripts/world/check-ab-spots.ts` compares the compiled cells with the
+default path's styled set at the five A/B spots in node (identical, the
+structural gate passes); the pixel harness hides the player from every
+camera layer, re-anchors the shadow snap grid at the held pose and orders
+opaque draws by creation-independent keys, so default vs default is 0 px
+at any threshold; world vs default still differs by 229 / 2,179 / 3,142 /
+1,261 / 1,971 px over 30 at the five spots, something downstream of the
+styled set (chunk tiling from cells vs z14 tiles, shadow coverage, roof
+furniture, the hidden-id stage are the candidates; materials next). Ground
+grain textures are painted as one ImageData per texture instead of a
+fillRect per block, pixel for pixel. Integrator: world index re-stamped
+for the code hash (0 cells differ).
+Integrator: after this merge the engine-own pool pin answered 'main': `loadOverview`
+and `loadBuildings` run in parallel and ThreeBuildings starts the pool, so
+`existingWorkerPool()` after the overview fetch was a race the hold fix's
+timing lost; `awaitWorkerPool()` (engine/workerPool.ts) resolves once the
+pool is decided and the overview waits for it (test `awaitWorkerPool.test.ts`).
+The iphone `render-on-change` "capturing draws nothing" failure is the known
+flake (L1: 1/3 with or without the change).
 **Gate decisions and two browser slots (2026-11-01).** The user delegated the
 two red P2/P3 gates ("use your judgement") and asked whether the `?world=v1`
 A/B must reach zero pixels (no). City bytes: 8 → 9.5 MB gzip lossless in

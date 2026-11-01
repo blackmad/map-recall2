@@ -55,6 +55,7 @@ import { disc, emptyMesh, merge, type MeshArrays } from './drape.js';
 import { riderPose as surfaceRiderPose, type Vec2 } from './surface.js';
 import { gardenTone, GROUND_LOOK_DEFAULT, groundPalette, isRoadLookId, roadLookTones, type GroundLook, type RoadLookId } from './groundLook.js';
 import { asphaltGrain, herringboneBricks, KLINKER_TONES } from './streetTextures.js';
+import { paintNoise } from './groundNoise.js';
 import { FLAT_GROUND_GAIN } from './groundLight.js';
 import { RAIL_STRIPE, RAIL_TONES, railStripes, SLEEPER_TILE_M } from './railTracks.js';
 import { OverviewBlend, presenceOf, transitionOn } from '../overviewTransition/blend.js';
@@ -704,12 +705,8 @@ export class OwnGround {
     const look = roadLookFlag(), lookTones = roadLookTones(STREET_GROUND, look), asphaltBase = lookTones.asphalt;
     let seed = 99;
     const rnd = () => { seed = (seed * 1664525 + 1013904223) >>> 0; return seed / 4294967296; };
-    const noise = (g: CanvasRenderingContext2D, s: number, base: readonly number[], spread: number, grain = 2) => {
-      for (let y = 0; y < s; y += grain) for (let x = 0; x < s; x += grain) {
-        const v = (rnd() - 0.5) * spread;
-        g.fillStyle = `rgb(${base[0] + v},${base[1] + v},${base[2] + v})`; g.fillRect(x, y, grain, grain);
-      }
-    };
+    // One ImageData per texture, pixel for pixel the fillRect-per-block painter (groundNoise.ts).
+    const noise = (g: CanvasRenderingContext2D, s: number, base: readonly number[], spread: number, grain = 2) => paintNoise(g, s, base, spread, grain, rnd);
     const pavers = (base: readonly number[], joint: string, metres: number, w: number, h: number) => this.canvasTexture(512, metres, (g, s) => {
       g.fillStyle = joint; g.fillRect(0, 0, s, s);
       const pw = s * w / metres, ph = s * h / metres;

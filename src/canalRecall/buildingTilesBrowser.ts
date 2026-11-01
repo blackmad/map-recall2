@@ -152,6 +152,8 @@ export function sameStyledFeature(a: BuildingFeature, b: BuildingFeature): boole
 
 /** Main-thread ms per frame for styling arriving buildings before a flush publishes them. */
 export const STYLE_BUDGET_MS = 5;
+/** The same while the loading hold waits on the resident set (hurryStyling): the screen is covered, nothing rides. */
+export const HURRIED_STYLE_BUDGET_MS = 24;
 
 /** Half-size of a look-ahead area: enough to touch the next z14 tile (about 1.5 km) a little early. */
 const LOOK_AHEAD_HALF_M = 150;
@@ -683,7 +685,7 @@ export class BuildingTileStreamer {
     setTimeout(() => { if (!this.disposed) this.update(); }, 1000 * 2 ** (attempts - 1));
   }
 
-  /** Ask for a flush on the next animation frame; repeated calls coalesce. */
+  /** Ask for a flush on the next animation frame (on a timer while hurried); repeated calls coalesce. */
   private scheduleFlush(): void {
     this.flushDirty = true;
     if (this.flushScheduled) return;
@@ -694,21 +696,42 @@ export class BuildingTileStreamer {
       // preload may publish now so geometry is ready before the player arrives.
       if (!this.flushDirty || this.disposed || this.suspended && !this.preloadBounds) return;
       // Style (facade + roof planning) the arrivals a few ms per frame first; publish once all are styled.
-      if (!this.styleWithin(STYLE_BUDGET_MS)) { this.scheduleFlush(); return; }
+      if (!this.styleWithin(this.hurried ? HURRIED_STYLE_BUDGET_MS : STYLE_BUDGET_MS)) { this.scheduleFlush(); return; }
       this.flushDirty = false;
-      this.flush();
+      const hurried = this.hurried;
+      this.hurried = false;
+      this.flush(hurried);
     };
-    if (typeof requestAnimationFrame === 'function') requestAnimationFrame(run);
+    if (this.hurried) setTimeout(run, 0);
+    else if (typeof requestAnimationFrame === 'function') requestAnimationFrame(run);
     else queueMicrotask(run);
   }
 
+  private hurried = false;
+  /**
+   * Something waits on the resident set (the loading hold, engine/settle.ts): style and publish on timers in longer
+   * slices until the next publish. Behind the loading screen animation frames came 0.3-0.9 s apart, so one 5 ms
+   * slice per frame left the spawn's ~13 k buildings unstyled and unpublished for tens of seconds after racing began
+   * (the deployed f840fb6 probe: the first racing frame had no facades; 2026-11-01). Same features, sooner.
+   */
+  hurryStyling(): void {
+    if (this.hurried || !this.flushDirty || this.disposed) return;
+    this.hurried = true;
+    this.flushScheduled = false; // a pending animation-frame run may still come; run() is idempotent
+    this.scheduleFlush();
+  }
+
+  /** Arrivals still to style and publish (not while a flight holds publishing), or published but not yet handed on. */
+  get styling(): boolean { return this.flushDirty && !(this.suspended && !this.preloadBounds) || !!this.featuresPending; }
+
   private featuresPending: BuildingFeature[] | null = null;
-  private deferFeatures(features: BuildingFeature[]): void {
+  private deferFeatures(features: BuildingFeature[], hurried = false): void {
     const first = !this.featuresPending;
     this.featuresPending = features;
     if (!first) return;
     const run = () => { const latest = this.featuresPending; this.featuresPending = null; if (latest && !this.disposed) this.onFeatures?.(latest); };
-    if (typeof requestAnimationFrame === 'function') requestAnimationFrame(run); else queueMicrotask(run);
+    if (hurried) setTimeout(run, 0);
+    else if (typeof requestAnimationFrame === 'function') requestAnimationFrame(run); else queueMicrotask(run);
   }
 
   /**
@@ -730,13 +753,13 @@ export class BuildingTileStreamer {
   }
   private styleCursor = 0;
 
-  private flush(): void {
+  private flush(hurried = false): void {
     const collection = this.cache.collection();
     const features = collection.features.map(feature => this.styled(feature));
     this.countsDirty = true;
     // The three.js regroup (onFeatures) runs a frame after MapLibre's diff, so a tile's two main-thread
     // costs land in different frames instead of one (docs/perf-motion-stutter-20261016.md).
-    this.deferFeatures(features);
+    this.deferFeatures(features, hurried);
     const source = this.liveSource();
     if (source) this.sendToSource(source, features);
     if (features.length > 0 && this.onFirstBuildings) {
@@ -886,7 +909,7 @@ export class BuildingTileStreamer {
   private sampleCache:{list:BuildingFeature[];version:number;limit:number;out:BuildingFeature[]}|null=null;
   private styleVersion=0;
 
-  status(): { tiles: number; budget: number; features: number; styledFeatures:number; contextualFeatures:number; contextualGrounds:number; contextualRoofs:number; inFlight: number; available: boolean; queued: number } {
+  status(): { tiles: number; budget: number; features: number; styledFeatures:number; contextualFeatures:number; contextualGrounds:number; contextualRoofs:number; inFlight: number; available: boolean; queued: number; styling: boolean } {
     this.refreshCounts();
     return {
       tiles: this.cache.size,
@@ -896,6 +919,7 @@ export class BuildingTileStreamer {
       inFlight: this.inFlight,
       available: this.available,
       queued: this.queue.length,
+      styling: this.styling,
     };
   }
 }
