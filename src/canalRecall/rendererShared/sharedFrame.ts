@@ -67,10 +67,21 @@ function frameViewCheckOf(): FrameViewCheck | null {
  * overrides it.
  */
 export const DESKTOP_TILE_WHOLE_SHARE = 0.6;
-function tileWholeShareFlag(): number {
+/**
+ * An explicit `tileWhole` share, or null when none was asked. A page with any query string but no `tileWhole` reads
+ * `get('tileWhole')` as null, and `Number(null)` is 0: that forced every tiled mesh whole on every page with a query
+ * (`?engine=own` included), so an iPad drew whole facade chunks: 668k facade triangles per frame on the Jordaan ride
+ * against 255k through the tiles (P4 counters gate, 2026-11-01).
+ */
+export function askedTileWhole(raw: number | string | null | undefined): number | null {
+  if (raw === null || raw === undefined || (typeof raw === 'string' && raw.trim() === '')) return null;
+  const asked = Number(raw);
+  return Number.isFinite(asked) && asked >= 0 && asked <= 2 ? asked : null;
+}
+export function tileWholeShareFlag(): number {
   const g = globalThis as { __canalRecallTileWhole?: number | string; matchMedia?: (query: string) => { matches: boolean }; location?: { search?: string } };
-  const asked = Number(g.__canalRecallTileWhole ?? (g.location?.search ? new URLSearchParams(g.location.search).get('tileWhole') : NaN));
-  if (Number.isFinite(asked) && asked >= 0 && asked <= 2) return asked;
+  const asked = askedTileWhole(g.__canalRecallTileWhole ?? (g.location?.search ? new URLSearchParams(g.location.search).get('tileWhole') : null));
+  if (asked !== null) return asked;
   return g.matchMedia?.('(pointer: coarse)')?.matches ? 2 : DESKTOP_TILE_WHOLE_SHARE;
 }
 
