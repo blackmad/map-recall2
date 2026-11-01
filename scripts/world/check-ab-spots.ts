@@ -1,7 +1,8 @@
 /**
  * The `?world=v1` structural gate (#129/#130): at the A/B's five fixed spots (abSpots.ts), the buildings the cells
  * give back must equal the default runtime path run now from this checkout's extract and code, field for field,
- * zero tolerance:
+ * zero tolerance, against the unrounded runtime values (a cell policy that rounds heights or simplifies footprints
+ * fails here, by design):
  *   ids and order, footprints, styled bag (heights, roof and style fields), roof plans (when the cells carry them),
  *   the coarse group, party-wall neighbours (BuildingContextIndex with the runtime's exclusion rule, over the spot's
  *   tile and its ring), and the hidden ids (covers.json and the kit tables).
@@ -19,7 +20,7 @@ import { KIT_HIDE_IDS } from '../../src/canalRecall/landmarkKits.js';
 import { BuildingContextIndex } from '../../src/canalRecall/buildingContextIndex.js';
 import { asPolygons } from '../../src/canalRecall/threeBuildingFeatures.js';
 import { sameValue, styledFeature, rawFeature, HIDE_KIT, HIDE_COVER_OSM, HIDE_COVER_PAND, type Cell, type CellBuilding, type Geometry, type Props } from '../../src/canalRecall/world/cellFormat.js';
-import { quantiseHeights, sharedVertices, policyFootprint, policyOptionsOf, POLICY_VERSION } from '../../src/canalRecall/world/cellPolicy.js';
+import { policyOptionsOf, POLICY_VERSION } from '../../src/canalRecall/world/cellPolicy.js';
 
 const args = process.argv.slice(2);
 const value = (name: string) => args.find(a => a.startsWith(`--${name}=`))?.split('=').slice(1).join('=');
@@ -42,10 +43,11 @@ async function main() {
   const options = policyOptionsOf(index), globals = readGlobalStrings(DIR), chain = gameChain();
   const cells = new Map<string, Cell>();
   const cell = (k: string) => { let c = cells.get(k); if (!c) cells.set(k, c = readCell(DIR, k, globals)); return c; };
-  const shared = new Map<string, Set<string>>();
-  const sharedOf = (k: string) => { let s = shared.get(k); if (!s) shared.set(k, s = sharedVertices(cell(k).buildings.map(b => b.geometry))); return s; };
-  const policyGeometry = (g: Geometry, k: string): Geometry => options?.collinear ? policyFootprint(g, sharedOf(k)) : g;
-  const policyBag = (p: Props): Props => options ? quantiseHeights(p, options.heightStepM, options.eavesStepM) : p;
+  // The default side is never rounded or simplified: the cells must reproduce the runtime path exactly (#129,
+  // 2026-11-01). Cells compiled under a value-changing policy (centimetre heights, collinear removal) differ here,
+  // as they do on screen: that policy changed whole facades in the fixed-camera owners A/B.
+  const policy = options && (options.collinear || options.heightStepM || options.eavesStepM) ? options : null;
+  console.log(`cell policy: ${policy ? JSON.stringify(policy) : 'none'} (compared against the unrounded default path)`);
   // Hidden ids as compile.ts derives them.
   const expectedHide = new Map<string, number>();
   const hide = (id: string, reason: number) => expectedHide.set(id, (expectedHide.get(id) ?? 0) | reason);
@@ -82,8 +84,8 @@ async function main() {
       if (!p) { diff(`${id}: only in the default path`); return; }
       if (picked[i]?.b.id !== id) diff(`${id}: order (default #${i}, world #${picked.indexOf(p)})`);
       const { b, key } = p, raw = rawFeature(b);
-      if (!sameValue(raw.geometry, policyGeometry(r.raw.geometry as Geometry, r.cell))) diff(`${id}: footprint`);
-      const styled = styledFeature(b, raw).properties, want = policyBag(r.styled.properties);
+      if (!sameValue(raw.geometry, r.raw.geometry as Geometry)) diff(`${id}: footprint`);
+      const styled = styledFeature(b, raw).properties, want = r.styled.properties as Props;
       if (!sameValue(styled, want)) {
         const keys = [...new Set([...Object.keys(styled), ...Object.keys(want)])].filter(k => !sameValue(styled[k], want[k]));
         diff(`${id}: styled ${keys.slice(0, 6).join(', ')}`);
