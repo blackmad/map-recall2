@@ -2748,5 +2748,20 @@
       52.4025624,
       4.9235048
     ]
+  },
+  {
+    "modelId": "lensbomen",
+    "landmarkId": "osm_artwork_4360169260",
+    "name": "3 bomen, 6 lenzen (Thom Puckey)",
+    "funFact": "Thom Puckey's three bronze trees of 1989 hold six perspex lenses in their branches; the whole group stands seven metres tall on the old Binnengasthuis hospital grounds, now a University of Amsterdam campus.",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:The_lens_trees.jpg",
+    "additionalSources": [
+      "https://www.wikidata.org/wiki/Q26453081",
+      "https://nl.wikipedia.org/wiki/Binnengasthuis_(Amsterdam)"
+    ],
+    "center": [
+      52.3686724,
+      4.8944688
+    ]
   }
 ]

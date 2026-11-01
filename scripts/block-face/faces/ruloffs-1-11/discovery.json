@@ -1,0 +1,359 @@
+{
+ "street": "Bartholomeus Ruloffsstraat",
+ "seed": "0363100012093460",
+ "members": [
+  "0363100012093460",
+  "0363100012081607",
+  "0363100012153998"
+ ],
+ "ends": [
+  {
+   "side": "left",
+   "reason": "no further pand fronts the street in the fetched area"
+  },
+  {
+   "side": "right",
+   "reason": "trimmed at 0363100012153998 (face continues: 133078)"
+  }
+ ],
+ "rejected": [
+  {
+   "pandId": "0363100012061410",
+   "reason": "frontage 36.6 m from Bartholomeus Ruloffsstraat"
+  },
+  {
+   "pandId": "0363100012061926",
+   "reason": "frontage 91.2 m from Bartholomeus Ruloffsstraat"
+  },
+  {
+   "pandId": "0363100012065812",
+   "reason": "sightline to Bartholomeus Ruloffsstraat crosses 0363100012126637"
+  },
+  {
+   "pandId": "0363100012069906",
+   "reason": "frontage 46.5 m from Bartholomeus Ruloffsstraat"
+  },
+  {
+   "pandId": "0363100012071771",
+   "reason": "frontage 36.7 m from Bartholomeus Ruloffsstraat"
+  },
+  {
+   "pandId": "0363100012074574",
+   "reason": "frontage 65.5 m from Bartholomeus Ruloffsstraat"
+  },
+  {
+   "pandId": "0363100012075176",
+   "reason": "frontage 102.1 m from Bartholomeus Ruloffsstraat"
+  },
+  {
+   "pandId": "0363100012075888",
+   "reason": "frontage 42.0 m from Bartholomeus Ruloffsstraat"
+  },
+  {
+   "pandId": "0363100012076109",
+   "reason": "frontage 108.5 m from Bartholomeus Ruloffsstraat"
+  },
+  {
+   "pandId": "0363100012079291",
+   "reason": "sightline to Bartholomeus Ruloffsstraat crosses 0363100012080156"
+  },
+  {
+   "pandId": "0363100012079949",
+   "reason": "frontage 66.5 m from Bartholomeus Ruloffsstraat"
+  },
+  {
+   "pandId": "0363100012080156",
+   "reason": "no frontage on Bartholomeus Ruloffsstraat: No footprint edge faces Bartholomeus Ruloffsstraat"
+  },
+  {
+   "pandId": "0363100012085656",
+   "reason": "sightline to Bartholomeus Ruloffsstraat crosses 0363100012121249"
+  },
+  {
+   "pandId": "0363100012089533",
+   "reason": "frontage 74.8 m from Bartholomeus Ruloffsstraat"
+  },
+  {
+   "pandId": "0363100012092203",
+   "reason": "frontage 40.5 m from Bartholomeus Ruloffsstraat"
+  },
+  {
+   "pandId": "0363100012093632",
+   "reason": "frontage 48.8 m from Bartholomeus Ruloffsstraat"
+  },
+  {
+   "pandId": "0363100012093999",
+   "reason": "frontage 67.0 m from Bartholomeus Ruloffsstraat"
+  },
+  {
+   "pandId": "0363100012096682",
+   "reason": "no frontage on Bartholomeus Ruloffsstraat: No footprint edge faces Bartholomeus Ruloffsstraat"
+  },
+  {
+   "pandId": "0363100012096687",
+   "reason": "frontage 75.4 m from Bartholomeus Ruloffsstraat"
+  },
+  {
+   "pandId": "0363100012097163",
+   "reason": "frontage 79.4 m from Bartholomeus Ruloffsstraat"
+  },
+  {
+   "pandId": "0363100012099055",
+   "reason": "frontage 80.7 m from Bartholomeus Ruloffsstraat"
+  },
+  {
+   "pandId": "0363100012099485",
+   "reason": "sightline to Bartholomeus Ruloffsstraat crosses 0363100012080156"
+  },
+  {
+   "pandId": "0363100012099803",
+   "reason": "sightline to Bartholomeus Ruloffsstraat crosses 0363100012093460"
+  },
+  {
+   "pandId": "0363100012112467",
+   "reason": "frontage 76.5 m from Bartholomeus Ruloffsstraat"
+  },
+  {
+   "pandId": "0363100012118801",
+   "reason": "no frontage on Bartholomeus Ruloffsstraat: No footprint edge faces Bartholomeus Ruloffsstraat"
+  },
+  {
+   "pandId": "0363100012120258",
+   "reason": "frontage 84.7 m from Bartholomeus Ruloffsstraat"
+  },
+  {
+   "pandId": "0363100012121249",
+   "reason": "sightline to Bartholomeus Ruloffsstraat crosses 0363100012133078"
+  },
+  {
+   "pandId": "0363100012122255",
+   "reason": "frontage 45.4 m from Bartholomeus Ruloffsstraat"
+  },
+  {
+   "pandId": "0363100012122501",
+   "reason": "sightline to Bartholomeus Ruloffsstraat crosses 0363100012094340"
+  },
+  {
+   "pandId": "0363100012128092",
+   "reason": "frontage 63.0 m from Bartholomeus Ruloffsstraat"
+  },
+  {
+   "pandId": "0363100012132213",
+   "reason": "sightline to Bartholomeus Ruloffsstraat crosses 0363100012079291"
+  },
+  {
+   "pandId": "0363100012134185",
+   "reason": "frontage 35.9 m from Bartholomeus Ruloffsstraat"
+  },
+  {
+   "pandId": "0363100012141661",
+   "reason": "sightline to Bartholomeus Ruloffsstraat crosses 0363100012093460"
+  },
+  {
+   "pandId": "0363100012142671",
+   "reason": "frontage 76.7 m from Bartholomeus Ruloffsstraat"
+  },
+  {
+   "pandId": "0363100012144493",
+   "reason": "frontage 90.1 m from Bartholomeus Ruloffsstraat"
+  },
+  {
+   "pandId": "0363100012149470",
+   "reason": "frontage 95.9 m from Bartholomeus Ruloffsstraat"
+  },
+  {
+   "pandId": "0363100012152797",
+   "reason": "frontage 129.4 m from Bartholomeus Ruloffsstraat"
+  },
+  {
+   "pandId": "0363100012153370",
+   "reason": "frontage 72.7 m from Bartholomeus Ruloffsstraat"
+  },
+  {
+   "pandId": "0363100012154007",
+   "reason": "frontage 59.2 m from Bartholomeus Ruloffsstraat"
+  },
+  {
+   "pandId": "0363100012155320",
+   "reason": "frontage 49.8 m from Bartholomeus Ruloffsstraat"
+  },
+  {
+   "pandId": "0363100012156759",
+   "reason": "frontage 65.4 m from Bartholomeus Ruloffsstraat"
+  },
+  {
+   "pandId": "0363100012157273",
+   "reason": "frontage 103.7 m from Bartholomeus Ruloffsstraat"
+  },
+  {
+   "pandId": "0363100012158007",
+   "reason": "frontage 112.7 m from Bartholomeus Ruloffsstraat"
+  },
+  {
+   "pandId": "0363100012158115",
+   "reason": "frontage 63.4 m from Bartholomeus Ruloffsstraat"
+  },
+  {
+   "pandId": "0363100012158207",
+   "reason": "frontage 44.5 m from Bartholomeus Ruloffsstraat"
+  },
+  {
+   "pandId": "0363100012158932",
+   "reason": "frontage 60.0 m from Bartholomeus Ruloffsstraat"
+  },
+  {
+   "pandId": "0363100012159520",
+   "reason": "frontage 141.7 m from Bartholomeus Ruloffsstraat"
+  },
+  {
+   "pandId": "0363100012160067",
+   "reason": "frontage 54.4 m from Bartholomeus Ruloffsstraat"
+  },
+  {
+   "pandId": "0363100012161125",
+   "reason": "no frontage on Bartholomeus Ruloffsstraat: No footprint edge faces Bartholomeus Ruloffsstraat"
+  },
+  {
+   "pandId": "0363100012161885",
+   "reason": "frontage 97.5 m from Bartholomeus Ruloffsstraat"
+  },
+  {
+   "pandId": "0363100012161973",
+   "reason": "frontage 124.7 m from Bartholomeus Ruloffsstraat"
+  },
+  {
+   "pandId": "0363100012163735",
+   "reason": "frontage 54.8 m from Bartholomeus Ruloffsstraat"
+  },
+  {
+   "pandId": "0363100012163788",
+   "reason": "no frontage on Bartholomeus Ruloffsstraat: No footprint edge faces Bartholomeus Ruloffsstraat"
+  },
+  {
+   "pandId": "0363100012166345",
+   "reason": "frontage 117.8 m from Bartholomeus Ruloffsstraat"
+  },
+  {
+   "pandId": "0363100012166919",
+   "reason": "frontage 107.6 m from Bartholomeus Ruloffsstraat"
+  },
+  {
+   "pandId": "0363100012167274",
+   "reason": "frontage 120.2 m from Bartholomeus Ruloffsstraat"
+  },
+  {
+   "pandId": "0363100012190884",
+   "reason": "no frontage on Bartholomeus Ruloffsstraat: No footprint edge faces Bartholomeus Ruloffsstraat"
+  },
+  {
+   "pandId": "0363100012206732",
+   "reason": "frontage 71.2 m from Bartholomeus Ruloffsstraat"
+  },
+  {
+   "pandId": "0363100012208002",
+   "reason": "frontage 54.9 m from Bartholomeus Ruloffsstraat"
+  },
+  {
+   "pandId": "0363100012211064",
+   "reason": "no frontage on Bartholomeus Ruloffsstraat: No footprint edge faces Bartholomeus Ruloffsstraat"
+  },
+  {
+   "pandId": "0363100012211065",
+   "reason": "no frontage on Bartholomeus Ruloffsstraat: No footprint edge faces Bartholomeus Ruloffsstraat"
+  },
+  {
+   "pandId": "0363100012211066",
+   "reason": "frontage 60.1 m from Bartholomeus Ruloffsstraat"
+  },
+  {
+   "pandId": "0363100012211067",
+   "reason": "frontage 62.7 m from Bartholomeus Ruloffsstraat"
+  },
+  {
+   "pandId": "0363100012219147",
+   "reason": "no frontage on Bartholomeus Ruloffsstraat: No footprint edge faces Bartholomeus Ruloffsstraat"
+  },
+  {
+   "pandId": "0363100012233624",
+   "reason": "frontage 35.0 m from Bartholomeus Ruloffsstraat"
+  },
+  {
+   "pandId": "0363100012233653",
+   "reason": "frontage 65.1 m from Bartholomeus Ruloffsstraat"
+  },
+  {
+   "pandId": "0363100012233672",
+   "reason": "no frontage on Bartholomeus Ruloffsstraat: No footprint edge faces Bartholomeus Ruloffsstraat"
+  },
+  {
+   "pandId": "0363100012236287",
+   "reason": "frontage 78.9 m from Bartholomeus Ruloffsstraat"
+  },
+  {
+   "pandId": "0363100012236746",
+   "reason": "frontage 82.4 m from Bartholomeus Ruloffsstraat"
+  },
+  {
+   "pandId": "0363100012236921",
+   "reason": "no frontage on Bartholomeus Ruloffsstraat: No footprint edge faces Bartholomeus Ruloffsstraat"
+  },
+  {
+   "pandId": "0363100012237068",
+   "reason": "frontage 77.6 m from Bartholomeus Ruloffsstraat"
+  },
+  {
+   "pandId": "0363100012237244",
+   "reason": "frontage 79.1 m from Bartholomeus Ruloffsstraat"
+  },
+  {
+   "pandId": "0363100012246038",
+   "reason": "frontage 70.6 m from Bartholomeus Ruloffsstraat"
+  },
+  {
+   "pandId": "0363100012246039",
+   "reason": "frontage 69.1 m from Bartholomeus Ruloffsstraat"
+  },
+  {
+   "pandId": "0363100012076543",
+   "reason": "fronts the other side / another direction"
+  }
+ ],
+ "areaHalfSizeM": 90,
+ "pands": [
+  {
+   "pandId": "0363100012093460",
+   "alongM": 0,
+   "widthM": 28.09,
+   "eavesM": 13.31,
+   "roofMaxM": 13.37,
+   "storeys3dbag": 4,
+   "builtYear": 1923,
+   "uncertainty": [
+    "Frontage extended across a native jog of up to 1 m (possible partial front at the default 0.35 m).",
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  },
+  {
+   "pandId": "0363100012081607",
+   "alongM": 16.97,
+   "widthM": 6.14,
+   "eavesM": 13.56,
+   "roofMaxM": 16.11,
+   "storeys3dbag": 0,
+   "builtYear": 1925,
+   "uncertainty": [
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  },
+  {
+   "pandId": "0363100012153998",
+   "alongM": 29.37,
+   "widthM": 18.77,
+   "eavesM": 13.28,
+   "roofMaxM": 13.38,
+   "storeys3dbag": 5,
+   "builtYear": 1925,
+   "uncertainty": []
+  }
+ ]
+}

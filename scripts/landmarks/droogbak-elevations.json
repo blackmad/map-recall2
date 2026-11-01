@@ -1,0 +1,68 @@
+{
+  "id": "droogbak",
+  "countedBy": "lane landmarks-ij-20261101 (opus) from the rectified brief crops listed per facade, 2026-11-01; not a blind count: the integrator may dispatch one",
+  "facades": [
+    {
+      "name": "SE (entrance, Droogbak/Haarlemmer Houttuinen side)",
+      "bearing": 126,
+      "photo": "artifacts/landmark-briefs/droogbak/w08-126.jpg + w12-126.jpg + w11-126.jpg + w07-126.jpg",
+      "rows": [
+        14,
+        17,
+        17,
+        18,
+        6
+      ],
+      "symmetric": true,
+      "note": "rows: basement (none under the entrance stair), bel-etage (the portal counts by its glazed arched fanlight), first floor, second floor (four arched lights in the risalit), attic lights (two per corner turret, two in the entrance attic). Openings are glass, dark and the red-painted doors.",
+      "openings": [
+        "glass",
+        "dark",
+        "red"
+      ]
+    },
+    {
+      "name": "NE (Droogbak front)",
+      "bearing": 36,
+      "photo": "artifacts/landmark-briefs/droogbak/w03-36.jpg + w04-36.jpg + w16-36.jpg",
+      "rows": [
+        13,
+        13,
+        15,
+        15,
+        null,
+        null
+      ],
+      "symmetric": true,
+      "note": "basement includes the two red basement doors (w03-36); oriel bays count their paired lights on the first floor and the loggia pair on the second; the turret row is not counted (partly behind the mansard)",
+      "openings": [
+        "glass",
+        "dark",
+        "red"
+      ]
+    },
+    {
+      "name": "SW",
+      "bearing": 222,
+      "photo": "artifacts/landmark-briefs/droogbak/w01-222.jpg + w05-222.jpg + w02-222.jpg",
+      "rows": [
+        null,
+        13,
+        15,
+        15,
+        null
+      ],
+      "symmetric": false,
+      "note": "alongM starts at the SW front: in the first 4 m of the silhouette the measured face is the NW pavilion face (edge 28), 84 degrees to this front and seen edge-on. Bel-etage: one arched light under each corner pair (w01-222, w02-222) plus 3+5+3 singles; upper floors 5 per wing. The basement is not counted: hoarding hides it on w02-222 and bicycles on w05-222 (w01-222 shows red doors under all three singles).",
+      "openings": [
+        "glass",
+        "dark",
+        "red"
+      ],
+      "alongM": [
+        4.0,
+        60
+      ]
+    }
+  ]
+}

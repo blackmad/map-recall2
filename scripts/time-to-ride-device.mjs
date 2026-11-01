@@ -1,6 +1,8 @@
 // Time to ride by phase on a phone (P3 gate: navigation -> racing <= 4 s; real iPhone 2026-11-01: 5.7 s).
 //   PORT=4543 node scripts/time-to-ride-device.mjs <out.json> [--target emulated|safari] [--runs 3] [--qs '?engine=own']
-//     [--base http://host:port/canal-drive/] [--cpu 4] [--profile]
+//     [--base http://host:port/canal-drive/] [--cpu 4] [--profile] [--dwell ms] [--device iphone|desktop]
+// --dwell: wait on the briefing this long after the route card is up before submitting (the player who reads it);
+//   0 (default) submits at once, the P3 gate's worst case. --device desktop: 1280x800 Chromium, --cpu 1 by default.
 // emulated: Playwright iPhone 13 against the local dev server (BUNDLES_DIR=<dir> serves *.bundle.js from a scratch
 //   build), CPU throttled --cpu x (default 4, the iPhone method of docs/perf).
 // safari: the connected iPhone through safaridriver (W3C WebDriver on SAFARIDRIVER, default http://127.0.0.1:4471;
@@ -16,7 +18,8 @@ const argv = process.argv.slice(2);
 const out = argv[0] && !argv[0].startsWith('--') ? argv[0] : 'artifacts/perf/time-to-ride-device.json';
 const opt = (k, d) => { const i = argv.indexOf(`--${k}`); return i >= 0 ? argv[i + 1] : d; };
 const profile = argv.includes('--profile');
-const target = opt('target', 'emulated'), runs = Number(opt('runs', '3')), qs = opt('qs', '?engine=own'), cpu = Number(opt('cpu', '4'));
+const device = opt('device', 'iphone'), dwell = Number(opt('dwell', '0'));
+const target = opt('target', 'emulated'), runs = Number(opt('runs', '3')), qs = opt('qs', '?engine=own'), cpu = Number(opt('cpu', device === 'desktop' ? '1' : '4'));
 const base = opt('base', target === 'safari' ? 'https://canalrecall-blackmad.web.app/ride' : `http://127.0.0.1:${process.env.PORT || 4543}/canal-drive/`);
 
 // Installed once the route card is up, before submit. Everything is page-clock ms; the runner subtracts submit.
@@ -53,18 +56,23 @@ const INSTRUMENT = `(() => {
     if (T.firsts.groundCell == null && ++frame % 10 === 0) first('groundCell', (() => { try { const gr = vm && vm._ownGround; if (!gr) return false; const st = gr.status && gr.status(); return !!(gr.ready && ((st && (st.built > 0 || Object.keys(st.cells || {}).length > 0)) || (gr.resident && gr.resident.size > 0))); } catch (_) { return false; } })());
     try { first('buildingTile', [...((vm && vm._completeCity && vm._completeCity.tileTimes && vm._completeCity.tileTimes.values()) || [])].some(t => t.resident != null)); } catch (_) {}
     try { first('facadeChunk', !!(vm && vm._threeBuildings && [...vm._threeBuildings.chunks.values()].some(c => c.mesh))); } catch (_) {}
-    first('introStart', g.state === 4);
+    first('introStart', g.state === 4); if (g.state === 4 && !T.mode) T.mode = g.travelMode;
     first('racing', g.state === 4 && ((g.camera && g.camera.introOverview) || 0) === 0);
     if (g._lastMapSettle) (T.settles = T.settles || []).includes(g._lastMapSettle) || T.settles.push(g._lastMapSettle);
     if (T.firsts.racing == null) requestAnimationFrame(poll);
   };
   requestAnimationFrame(poll);
-  window.__ttrSubmit = () => { T.submit = performance.now(); document.querySelector('#route-card').requestSubmit(); };
+  // The briefing's city-world build (game-route.js _prepareCityWorld): which one, and when it finished (negative:
+  // before submit). The ride joins it at submit if it has not.
+  const watchPrep = () => { const p = g._cityWorldPrep; if (p && !T.prepKey) { T.prepKey = p.key; p.promise.then(() => { T.prepDone = performance.now(); }, () => { T.prepFailed = true; }); } };
+  watchPrep();
+  window.__ttrSubmit = () => { T.submit = performance.now(); document.querySelector('#route-card').requestSubmit(); setTimeout(watchPrep, 0); };
 })();`;
 
 function summarise(T) {
   const rel = v => (v == null ? null : Math.round(v - T.submit));
   return {
+    mode: T.mode || null, prep: T.prepKey ? { key: T.prepKey, doneMs: rel(T.prepDone), failed: !!T.prepFailed } : null,
     firsts: Object.fromEntries(Object.entries(T.firsts).map(([k, v]) => [k, rel(v)])),
     progress: T.progress.map(([p, t]) => [p, rel(t)]),
     spans: T.spans.map(s => ({ k: s.k, startMs: rel(s.t0), ms: s.t1 != null ? Math.round(s.t1 - s.t0) : null })),
@@ -77,8 +85,11 @@ async function emulated() {
   const browser = await chromium.launch();
   const results = [];
   for (let i = 0; i < runs; i++) {
-    const context = await browser.newContext({ ...devices['iPhone 13'] });
+    const context = await browser.newContext(device === 'desktop' ? { viewport: { width: 1280, height: 800 } } : { ...devices['iPhone 13'] });
     const page = await context.newPage();
+    const errors = [];
+    page.on('pageerror', e => errors.push(e.message));
+    page.on('console', m => { if (m.type() === 'error' || /City world build failed/.test(m.text())) errors.push(m.text().slice(0, 200)); });
     if (process.env.BUNDLES_DIR) await page.route(/\/canal-drive\/js\/([\w-]+\.bundle\.js)(\?.*)?$/, route => {
       const file = path.join(process.env.BUNDLES_DIR, /\/([\w-]+\.bundle\.js)/.exec(route.request().url())[1]);
       return fs.existsSync(file) ? route.fulfill({ path: file, contentType: 'application/javascript' }) : route.continue();
@@ -90,7 +101,14 @@ async function emulated() {
     await page.goto(base + qs);
     await page.waitForFunction(() => window.canalRecallGame && document.querySelector('#route-card') && window.canalRecallGame.osmLoader, null, { timeout: 180_000 });
     const readyMs = Date.now() - t0;
-    await page.evaluate(() => { for (const [id, v] of [['travel-mode', 'car'], ['view-mode', 'chase']]) { const s = document.getElementById(id); if (s) { s.value = v; s.dispatchEvent(new Event('change', { bubbles: true })); } } });
+    // Bike ride, chase view, picked as the player picks them: through the briefing's preferences store (the legacy
+    // selects remain for older builds; the runtime applies the store's picks at submit).
+    await page.evaluate(() => {
+      const g = window.canalRecallGame, store = g._overlay && g._overlay.store;
+      if (store && store.patchPrefs) store.patchPrefs({ travelMode: 'car', viewMode: 'chase' }, g._overlayZoom ? g._overlayZoom() : undefined);
+      for (const [id, v] of [['travel-mode', 'car'], ['view-mode', 'chase']]) { const s = document.getElementById(id); if (s) { s.value = v; s.dispatchEvent(new Event('change', { bubbles: true })); } }
+    });
+    if (dwell) await page.waitForTimeout(dwell);
     await page.evaluate(INSTRUMENT);
     // --profile: self time by function from submit to the start of racing (the CDP profiler's start stall lands
     // before submit: it starts 2 s earlier).
@@ -98,7 +116,7 @@ async function emulated() {
     await page.evaluate(() => window.__ttrSubmit());
     await page.waitForFunction(() => window.__ttr.firsts.racing != null, null, { timeout: 180_000, polling: 200 });
     const T = await page.evaluate(() => window.__ttr);
-    const r = { readyMs, ...summarise(T) };
+    const r = { readyMs, errors, ...summarise(T) };
     if (profile) {
       const { profile: prof } = await cdp.send('Profiler.stop');
       const now = await page.evaluate(() => performance.now());
@@ -143,6 +161,7 @@ async function safari() {
       await execAsync(`const done = arguments[0]; const t = setInterval(() => { if (window.canalRecallGame && document.querySelector('#route-card') && window.canalRecallGame.osmLoader) { clearInterval(t); done(true); } }, 100);`);
       const readyMs = Date.now() - t0;
       await exec(`for (const [id, v] of [['travel-mode','car'],['view-mode','chase']]) { const s = document.getElementById(id); if (s) { s.value = v; s.dispatchEvent(new Event('change', { bubbles: true })); } }`);
+      if (dwell) await new Promise(r => setTimeout(r, dwell));
       await exec(INSTRUMENT);
       await exec('window.__ttrSubmit();');
       await execAsync(`const done = arguments[0]; const t = setInterval(() => { if (window.__ttr.firsts.racing != null) { clearInterval(t); done(true); } }, 200); setTimeout(() => { clearInterval(t); done(false); }, 170000);`);
@@ -158,12 +177,13 @@ const results = target === 'safari' ? await safari() : await emulated();
 for (const [i, r] of results.entries()) {
   const f = r.firsts, span = k => r.spans.filter(s => s.k === k);
   const s1 = k => { const s = span(k)[0]; return s ? `${s.startMs}+${s.ms}` : '-'; };
-  console.log(`run ${i + 1}: ready ${r.readyMs} ms; submit -> introStart ${f.introStart} ms, racing (landed) ${f.racing} ms`);
+  if (r.errors?.length) console.log(`run ${i + 1} errors: ${r.errors.slice(0, 5).join(' | ')}`);
+  console.log(`run ${i + 1}: ready ${r.readyMs} ms; submit -> introStart ${f.introStart} ms, racing (landed) ${f.racing} ms; mode ${r.mode}, briefing build ${r.prep ? `${r.prep.key} done ${r.prep.doneMs} ms${r.prep.failed ? ' FAILED' : ''}` : 'none'}`);
   console.log(`  fetchRoads ${s1('fetchRoads')}  buildRoadSegments ${s1('buildRoadSegments')}  loadLandmarks ${s1('loadLandmarks')}  routingGraph ${s1('routingGraph')}  surfaceIndex ${s1('surfaceIndex')}  planRoute ${s1('planRoute')}  preRenderTrack ${s1('preRenderTrack')}  setupRace ${s1('setupRace')}`);
   console.log(`  settle holds ${span('settleHold').map(s => `${s.startMs}+${s.ms}`).join(', ')} (${r.settles.map(s => `${s.ms}${s.timedOut ? ' timed out' : ''} [${(s.pending || []).join(',')}]`).join('; ')}); prepareIntro ${s1('prepareIntro')}`);
   console.log(`  first ground cell ${f.groundCell}, building tile ${f.buildingTile}, facade chunk ${f.facadeChunk}; progress ${r.progress.map(([p, t]) => `${p}@${t}`).join(' ')}`);
 }
 for (const [i, r] of results.entries()) if (r.profile?.roads) console.log(`run ${i + 1} roads window (progress 0.8 -> 0.92) self ms: ${r.profile.roads.slice(0, 10).map(x => `${x.k} ${x.ms}`).join('; ')}`);
 fs.mkdirSync(path.dirname(out), { recursive: true });
-fs.writeFileSync(out, JSON.stringify({ when: new Date().toISOString(), target, base, qs, cpu: target === 'emulated' ? cpu : null, results }, null, 2));
+fs.writeFileSync(out, JSON.stringify({ when: new Date().toISOString(), target, device, dwell, base, qs, cpu: target === 'emulated' ? cpu : null, results }, null, 2));
 console.log(`wrote ${out}`);

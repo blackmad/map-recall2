@@ -1,0 +1,353 @@
+{
+ "street": "Ruysdaelstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-01T16:35:36.226Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012102526",
+   "addresses": [
+    "Ruysdaelstraat 58",
+    "Ruysdaelstraat 58A",
+    "Ruysdaelstraat 60",
+    "Ruysdaelstraat 60A"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ruysdaelstraat 58-H",
+     "use": "kantoorfunctie",
+     "areaM2": 1104,
+     "bagId": "0363010000801627"
+    },
+    {
+     "address": "Ruysdaelstraat 58-H",
+     "use": "kantoorfunctie",
+     "areaM2": 1007,
+     "bagId": "0363010012145431"
+    }
+   ],
+   "units": 15,
+   "osm": [
+    {
+     "type": "node",
+     "id": 13448773878,
+     "lngLat": [
+      4.8828861,
+      52.3539946
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "50-56",
+      "addr:postcode": "1071XE",
+      "addr:street": "Ruysdaelstraat",
+      "amenity": "restaurant",
+      "branch": "Amsterdam",
+      "brand": "Hendrik",
+      "brand:website": "https://restauranthendrik.nl",
+      "email": "amsterdam@restauranthendrik.nl",
+      "name": "Hendrik",
+      "phone": "+31 20 3413586",
+      "website": "https://amsterdam.restauranthendrik.nl"
+     },
+     "fetchedAt": "2026-11-01T16:35:36.226Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012236860",
+   "addresses": [
+    "Ruysdaelstraat 54",
+    "Ruysdaelstraat 56"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ruysdaelstraat 56-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 438,
+     "bagId": "0363010000801607"
+    }
+   ],
+   "units": 13,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012139185",
+   "addresses": [
+    "Ruysdaelstraat 50"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ruysdaelstraat 50",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 290,
+     "bagId": "0363010001965303"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012118275",
+   "addresses": [
+    "Ruysdaelstraat 48A",
+    "Ruysdaelstraat 48B",
+    "Ruysdaelstraat 48C",
+    "Ruysdaelstraat 48D",
+    "Ruysdaelstraat 48E",
+    "Ruysdaelstraat 48F",
+    "Ruysdaelstraat 48G",
+    "Ruysdaelstraat 48H",
+    "Ruysdaelstraat 48"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ruysdaelstraat 48A",
+     "use": "woonfunctie",
+     "areaM2": 101,
+     "bagId": "0363010001965295"
+    },
+    {
+     "address": "Ruysdaelstraat 48B",
+     "use": "woonfunctie",
+     "areaM2": 101,
+     "bagId": "0363010001965296"
+    },
+    {
+     "address": "Ruysdaelstraat 48C",
+     "use": "woonfunctie",
+     "areaM2": 101,
+     "bagId": "0363010001965297"
+    },
+    {
+     "address": "Ruysdaelstraat 48D",
+     "use": "woonfunctie",
+     "areaM2": 101,
+     "bagId": "0363010001965298"
+    },
+    {
+     "address": "Ruysdaelstraat 48E",
+     "use": "woonfunctie",
+     "areaM2": 101,
+     "bagId": "0363010001965299"
+    },
+    {
+     "address": "Ruysdaelstraat 48F",
+     "use": "woonfunctie",
+     "areaM2": 101,
+     "bagId": "0363010001965300"
+    },
+    {
+     "address": "Ruysdaelstraat 48G",
+     "use": "woonfunctie",
+     "areaM2": 99,
+     "bagId": "0363010001965301"
+    },
+    {
+     "address": "Ruysdaelstraat 48H",
+     "use": "woonfunctie",
+     "areaM2": 99,
+     "bagId": "0363010001965302"
+    },
+    {
+     "address": "Ruysdaelstraat 48",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 142,
+     "bagId": "0363010012590828"
+    }
+   ],
+   "units": 9,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012236928",
+   "addresses": [
+    "Ruysdaelstraat 46"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ruysdaelstraat 46",
+     "use": "industriefunctie",
+     "areaM2": 55,
+     "bagId": "0363010001965294"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012237324",
+   "addresses": [
+    "Ruysdaelstraat 40",
+    "Ruysdaelstraat 42",
+    "Ruysdaelstraat 44C",
+    "Ruysdaelstraat 44B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ruysdaelstraat 42-H",
+     "use": "woonfunctie",
+     "areaM2": 116,
+     "bagId": "0363010000801562"
+    },
+    {
+     "address": "Ruysdaelstraat 40-H",
+     "use": "woonfunctie",
+     "areaM2": 104,
+     "bagId": "0363010001963456"
+    },
+    {
+     "address": "Ruysdaelstraat 44C",
+     "use": "woonfunctie",
+     "areaM2": 108,
+     "bagId": "0363010001965292"
+    },
+    {
+     "address": "Ruysdaelstraat 44B",
+     "use": "woonfunctie",
+     "areaM2": 94,
+     "bagId": "0363010001965293"
+    }
+   ],
+   "units": 11,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012135539",
+   "addresses": [
+    "Ruysdaelstraat 38"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ruysdaelstraat 38-H",
+     "use": "woonfunctie",
+     "areaM2": 114,
+     "bagId": "0363010000801552"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012077675",
+   "addresses": [
+    "Ruysdaelstraat 36"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ruysdaelstraat 36-H",
+     "use": "industriefunctie",
+     "areaM2": 242,
+     "bagId": "0363010000801547"
+    },
+    {
+     "address": "Ruysdaelstraat 36-H",
+     "use": "kantoorfunctie",
+     "areaM2": 395,
+     "bagId": "0363010012165138"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012106456",
+   "addresses": [
+    "Ruysdaelstraat 34"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ruysdaelstraat 34-H",
+     "use": "industriefunctie",
+     "areaM2": 370,
+     "bagId": "0363010000801539"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012073582",
+   "addresses": [
+    "Ruysdaelstraat 32"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ruysdaelstraat 32-H",
+     "use": "woonfunctie",
+     "areaM2": 69,
+     "bagId": "0363010000801531"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012080468",
+   "addresses": [
+    "Ruysdaelstraat 30"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ruysdaelstraat 30-H",
+     "use": "woonfunctie",
+     "areaM2": 61,
+     "bagId": "0363010000801524"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012124499",
+   "addresses": [
+    "Ruysdaelstraat 28"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ruysdaelstraat 28-H",
+     "use": "woonfunctie",
+     "areaM2": 61,
+     "bagId": "0363010000801516"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012117972",
+   "addresses": [
+    "Ruysdaelstraat 26"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ruysdaelstraat 26-H",
+     "use": "industriefunctie",
+     "areaM2": 80,
+     "bagId": "0363010000979911"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 10787232060,
+     "lngLat": [
+      4.8842332,
+      52.3542096
+     ],
+     "tags": {
+      "amenity": "vending_machine",
+      "ref": "13224",
+      "vending": "parking_tickets"
+     },
+     "fetchedAt": "2026-11-01T16:35:36.226Z",
+     "match": "frontage",
+     "distanceM": 5.5
+    }
+   ]
+  }
+ ]
+}

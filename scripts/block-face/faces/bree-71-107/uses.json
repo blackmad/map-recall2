@@ -1,0 +1,325 @@
+{
+ "street": "Van Breestraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-01T14:18:30.270Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012237239",
+   "addresses": [
+    "Van Breestraat 71"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Breestraat 71",
+     "use": "woonfunctie",
+     "areaM2": 231,
+     "bagId": "0363010000836981"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012153028",
+   "addresses": [
+    "Van Breestraat 73",
+    "Van Breestraat 73A",
+    "Van Breestraat 73B",
+    "Van Breestraat 73C",
+    "Van Breestraat 73D"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Breestraat 73",
+     "use": "woonfunctie",
+     "areaM2": 323,
+     "bagId": "0363010000836984"
+    },
+    {
+     "address": "Van Breestraat 73A",
+     "use": "woonfunctie",
+     "areaM2": 99,
+     "bagId": "0363010012155759"
+    },
+    {
+     "address": "Van Breestraat 73B",
+     "use": "woonfunctie",
+     "areaM2": 69,
+     "bagId": "0363010012155760"
+    },
+    {
+     "address": "Van Breestraat 73C",
+     "use": "woonfunctie",
+     "areaM2": 59,
+     "bagId": "0363010012155761"
+    },
+    {
+     "address": "Van Breestraat 73D",
+     "use": "woonfunctie",
+     "areaM2": 68,
+     "bagId": "0363010012155762"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012162309",
+   "addresses": [
+    "Van Breestraat 75"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Breestraat 75",
+     "use": "woonfunctie",
+     "areaM2": 332,
+     "bagId": "0363010000836987"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012164365",
+   "addresses": [
+    "Van Breestraat 77"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Breestraat 77",
+     "use": "woonfunctie",
+     "areaM2": 262,
+     "bagId": "0363010001975862"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012154188",
+   "addresses": [
+    "Van Breestraat 79"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Breestraat 79-H",
+     "use": "woonfunctie",
+     "areaM2": 149,
+     "bagId": "0363010000836994"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012155916",
+   "addresses": [
+    "Van Breestraat 81"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Breestraat 81-H",
+     "use": "woonfunctie",
+     "areaM2": 225,
+     "bagId": "0363010001000898"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012163509",
+   "addresses": [
+    "Van Breestraat 83"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Breestraat 83-H",
+     "use": "woonfunctie",
+     "areaM2": 121,
+     "bagId": "0363010000837006"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012166003",
+   "addresses": [
+    "Van Breestraat 85"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Breestraat 85-H",
+     "use": "woonfunctie",
+     "areaM2": 129,
+     "bagId": "0363010000837011"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012157235",
+   "addresses": [
+    "Van Breestraat 87"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Breestraat 87-H",
+     "use": "woonfunctie",
+     "areaM2": 197,
+     "bagId": "0363010000837014"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012159878",
+   "addresses": [
+    "Van Breestraat 89"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Breestraat 89-H",
+     "use": "woonfunctie",
+     "areaM2": 129,
+     "bagId": "0363010000837018"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012155490",
+   "addresses": [
+    "Van Breestraat 91"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Breestraat 91-H",
+     "use": "woonfunctie",
+     "areaM2": 130,
+     "bagId": "0363010000837022"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012162759",
+   "addresses": [
+    "Van Breestraat 93"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Breestraat 93-H",
+     "use": "woonfunctie",
+     "areaM2": 120,
+     "bagId": "0363010000837033"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012166328",
+   "addresses": [
+    "Van Breestraat 95"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Breestraat 95-H",
+     "use": "woonfunctie",
+     "areaM2": 118,
+     "bagId": "0363010000837037"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012072748",
+   "addresses": [
+    "Van Breestraat 97"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Breestraat 97-H",
+     "use": "woonfunctie",
+     "areaM2": 110,
+     "bagId": "0363010000837040"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012152926",
+   "addresses": [
+    "Van Breestraat 99"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Breestraat 99-H",
+     "use": "woonfunctie",
+     "areaM2": 61,
+     "bagId": "0363010000837046"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012158612",
+   "addresses": [
+    "Van Breestraat 101"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Breestraat 101-H",
+     "use": "woonfunctie",
+     "areaM2": 126,
+     "bagId": "0363010000837052"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012162708",
+   "addresses": [
+    "Van Breestraat 103"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Breestraat 103-H",
+     "use": "woonfunctie",
+     "areaM2": 134,
+     "bagId": "0363010000837057"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012156733",
+   "addresses": [
+    "Van Breestraat 105"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Breestraat 105-H",
+     "use": "woonfunctie",
+     "areaM2": 131,
+     "bagId": "0363010000835480"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  }
+ ]
+}

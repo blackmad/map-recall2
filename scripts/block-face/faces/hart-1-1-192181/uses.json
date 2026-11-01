@@ -1,0 +1,41 @@
+{
+ "street": "Roelof Hartstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched n/a (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012196867",
+   "addresses": [
+    "Roelof Hartstraat 1K"
+   ],
+   "groundUnits": [
+    {
+     "address": "Roelof Hartstraat 1K",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 45,
+     "bagId": "0363010012078579"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012192181",
+   "addresses": [
+    "Roelof Hartstraat 1A"
+   ],
+   "groundUnits": [
+    {
+     "address": "Roelof Hartstraat 1A",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 17,
+     "bagId": "0363010012574225"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  }
+ ]
+}

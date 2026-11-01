@@ -1,0 +1,57 @@
+{
+ "street": "Van Baerlestraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-01T16:16:42.282Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012162086",
+   "addresses": [
+    "Van Baerlestraat 10"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Baerlestraat 10-H",
+     "use": "winkelfunctie",
+     "areaM2": 200,
+     "bagId": "0363010001002045"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012153327",
+   "addresses": [
+    "Van Baerlestraat 8"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Baerlestraat 8-H",
+     "use": "winkelfunctie",
+     "areaM2": 206,
+     "bagId": "0363010000834730"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012236767",
+   "addresses": [
+    "Van Baerlestraat 6"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Baerlestraat 6-H",
+     "use": "winkelfunctie",
+     "areaM2": 135,
+     "bagId": "0363010000834726"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  }
+ ]
+}

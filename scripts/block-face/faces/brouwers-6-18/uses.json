@@ -1,0 +1,186 @@
+{
+ "street": "Jan Willem Brouwersstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-01T15:40:18.558Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012167076",
+   "addresses": [
+    "Jan Willem Brouwersstraat 18"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jan Willem Brouwersstraat 18-H",
+     "use": "woonfunctie",
+     "areaM2": 245,
+     "bagId": "0363010000688371"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012159344",
+   "addresses": [
+    "Jan Willem Brouwersstraat 16"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jan Willem Brouwersstraat 16",
+     "use": "kantoorfunctie",
+     "areaM2": 358,
+     "bagId": "0363010000688368"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012156524",
+   "addresses": [
+    "Jan Willem Brouwersstraat 14"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jan Willem Brouwersstraat 14",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 356,
+     "bagId": "0363010000688365"
+    }
+   ],
+   "units": 1,
+   "osm": [
+    {
+     "type": "node",
+     "id": 1490565052,
+     "lngLat": [
+      4.8782511,
+      52.356547
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "14",
+      "addr:postcode": "1071LJ",
+      "addr:street": "Jan Willem Brouwersstraat",
+      "contact:fax": "+31 20 470 3010",
+      "contact:phone": "+31 20 470 3007",
+      "name": "Annemarie",
+      "tourism": "hostel"
+     },
+     "fetchedAt": "2026-11-01T15:40:18.558Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012164862",
+   "addresses": [
+    "Jan Willem Brouwersstraat 12"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jan Willem Brouwersstraat 12-H",
+     "use": "kantoorfunctie",
+     "areaM2": 243,
+     "bagId": "0363010000688361"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012164237",
+   "addresses": [
+    "Jan Willem Brouwersstraat 10A",
+    "Jan Willem Brouwersstraat 10B",
+    "Jan Willem Brouwersstraat 10C"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jan Willem Brouwersstraat 10A",
+     "use": "woonfunctie",
+     "areaM2": 92,
+     "bagId": "0363010000688356"
+    },
+    {
+     "address": "Jan Willem Brouwersstraat 10C",
+     "use": "woonfunctie",
+     "areaM2": 132,
+     "bagId": "0363010000688358"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012164612",
+   "addresses": [
+    "Jan Willem Brouwersstraat 8",
+    "Jan Willem Brouwersstraat 8E",
+    "Jan Willem Brouwersstraat 8D",
+    "Jan Willem Brouwersstraat 8C",
+    "Jan Willem Brouwersstraat 8B",
+    "Jan Willem Brouwersstraat 8A"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jan Willem Brouwersstraat 8",
+     "use": "woonfunctie",
+     "areaM2": 325,
+     "bagId": "0363010000688353"
+    },
+    {
+     "address": "Jan Willem Brouwersstraat 8E",
+     "use": "woonfunctie",
+     "areaM2": 64,
+     "bagId": "0363010012599668"
+    },
+    {
+     "address": "Jan Willem Brouwersstraat 8D",
+     "use": "woonfunctie",
+     "areaM2": 72,
+     "bagId": "0363010012599667"
+    },
+    {
+     "address": "Jan Willem Brouwersstraat 8C",
+     "use": "woonfunctie",
+     "areaM2": 81,
+     "bagId": "0363010012599666"
+    },
+    {
+     "address": "Jan Willem Brouwersstraat 8B",
+     "use": "woonfunctie",
+     "areaM2": 21,
+     "bagId": "0363010012599665"
+    },
+    {
+     "address": "Jan Willem Brouwersstraat 8A",
+     "use": "woonfunctie",
+     "areaM2": 54,
+     "bagId": "0363010012599664"
+    }
+   ],
+   "units": 6,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012166436",
+   "addresses": [
+    "Jan Willem Brouwersstraat 6"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jan Willem Brouwersstraat 6",
+     "use": "woonfunctie",
+     "areaM2": 375,
+     "bagId": "0363010000688352"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  }
+ ]
+}

@@ -1,0 +1,120 @@
+{
+ "street": "Jacob Obrechtstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-01T15:38:28.486Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012236405",
+   "addresses": [
+    "Jacob Obrechtstraat 33"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jacob Obrechtstraat 33-H",
+     "use": "bijeenkomstfunctie,logiesfunctie",
+     "areaM2": 1044,
+     "bagId": "0363010000579342"
+    }
+   ],
+   "units": 3,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2816384677,
+     "lngLat": [
+      4.875735,
+      52.3558449
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "33",
+      "addr:postcode": "1071KG",
+      "addr:street": "Jacob Obrechtstraat",
+      "internet_access": "wlan",
+      "name": "Omega Hotel",
+      "name:de": "Omega Hotel",
+      "opening_hours": "24/7",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "tourism": "hotel",
+      "wheelchair": "limited"
+     },
+     "fetchedAt": "2026-11-01T15:38:28.486Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012235940",
+   "addresses": [
+    "Jacob Obrechtstraat 35"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jacob Obrechtstraat 35-H",
+     "use": "woonfunctie",
+     "areaM2": 240,
+     "bagId": "0363010001037214"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 4713255702,
+     "lngLat": [
+      4.8756089,
+      52.3557603
+     ],
+     "tags": {
+      "amenity": "charging_station",
+      "bicycle": "no",
+      "capacity": "2",
+      "operator": "NUON",
+      "operator:wikidata": "Q513830",
+      "operator:wikipedia": "nl:Vattenfall Nederland",
+      "socket:type2": "2"
+     },
+     "fetchedAt": "2026-11-01T15:38:28.486Z",
+     "match": "frontage",
+     "distanceM": 7.5
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012153396",
+   "addresses": [
+    "Jacob Obrechtstraat 37"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jacob Obrechtstraat 37-H",
+     "use": "woonfunctie",
+     "areaM2": 113,
+     "bagId": "0363010000679845"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012161332",
+   "addresses": [
+    "Jacob Obrechtstraat 39"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jacob Obrechtstraat 39-H",
+     "use": "winkelfunctie",
+     "areaM2": 108,
+     "bagId": "0363010001015140"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  }
+ ]
+}

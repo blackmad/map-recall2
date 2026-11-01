@@ -1,0 +1,302 @@
+{
+ "street": "Van Baerlestraat",
+ "seed": "0363100012236767",
+ "members": [
+  "0363100012162086",
+  "0363100012153327",
+  "0363100012236767"
+ ],
+ "ends": [
+  {
+   "side": "left",
+   "reason": "trimmed at 0363100012162086 (face continues: 155878 076244 158964 158496)"
+  },
+  {
+   "side": "right",
+   "reason": "trimmed at 0363100012236767 (face continues: 236997)"
+  }
+ ],
+ "rejected": [
+  {
+   "pandId": "0363100012105226",
+   "reason": "frontage 78.2 m from Van Baerlestraat"
+  },
+  {
+   "pandId": "0363100012156564",
+   "reason": "frontage 66.4 m from Van Baerlestraat"
+  },
+  {
+   "pandId": "0363100012156581",
+   "reason": "frontage 60.5 m from Van Baerlestraat"
+  },
+  {
+   "pandId": "0363100012159189",
+   "reason": "frontage 72.3 m from Van Baerlestraat"
+  },
+  {
+   "pandId": "0363100012061354",
+   "reason": "sightline to Van Baerlestraat crosses 0363100012236146"
+  },
+  {
+   "pandId": "0363100012067476",
+   "reason": "frontage 53.5 m from Van Baerlestraat"
+  },
+  {
+   "pandId": "0363100012079242",
+   "reason": "frontage 63.2 m from Van Baerlestraat"
+  },
+  {
+   "pandId": "0363100012105604",
+   "reason": "frontage 129.4 m from Van Baerlestraat"
+  },
+  {
+   "pandId": "0363100012116485",
+   "reason": "frontage 35.9 m from Van Baerlestraat"
+  },
+  {
+   "pandId": "0363100012149871",
+   "reason": "frontage 73.5 m from Van Baerlestraat"
+  },
+  {
+   "pandId": "0363100012152280",
+   "reason": "frontage 77.9 m from Van Baerlestraat"
+  },
+  {
+   "pandId": "0363100012152596",
+   "reason": "sightline to Van Baerlestraat crosses 0363100012161888"
+  },
+  {
+   "pandId": "0363100012153152",
+   "reason": "frontage 46.2 m from Van Baerlestraat"
+  },
+  {
+   "pandId": "0363100012153582",
+   "reason": "sightline to Van Baerlestraat crosses 0363100012158051"
+  },
+  {
+   "pandId": "0363100012155349",
+   "reason": "frontage 85.1 m from Van Baerlestraat"
+  },
+  {
+   "pandId": "0363100012155497",
+   "reason": "frontage 45.8 m from Van Baerlestraat"
+  },
+  {
+   "pandId": "0363100012155818",
+   "reason": "frontage 36.5 m from Van Baerlestraat"
+  },
+  {
+   "pandId": "0363100012156070",
+   "reason": "frontage 60.2 m from Van Baerlestraat"
+  },
+  {
+   "pandId": "0363100012157553",
+   "reason": "frontage 72.7 m from Van Baerlestraat"
+  },
+  {
+   "pandId": "0363100012157624",
+   "reason": "frontage 68.2 m from Van Baerlestraat"
+  },
+  {
+   "pandId": "0363100012158202",
+   "reason": "no frontage on Van Baerlestraat: No footprint edge faces Van Baerlestraat"
+  },
+  {
+   "pandId": "0363100012158238",
+   "reason": "frontage 79.9 m from Van Baerlestraat"
+  },
+  {
+   "pandId": "0363100012158516",
+   "reason": "frontage 48.5 m from Van Baerlestraat"
+  },
+  {
+   "pandId": "0363100012158926",
+   "reason": "frontage 66.8 m from Van Baerlestraat"
+  },
+  {
+   "pandId": "0363100012159248",
+   "reason": "frontage 38.4 m from Van Baerlestraat"
+  },
+  {
+   "pandId": "0363100012159571",
+   "reason": "frontage 42.4 m from Van Baerlestraat"
+  },
+  {
+   "pandId": "0363100012159859",
+   "reason": "frontage 53.2 m from Van Baerlestraat"
+  },
+  {
+   "pandId": "0363100012159913",
+   "reason": "sightline to Van Baerlestraat crosses 0363100012155878"
+  },
+  {
+   "pandId": "0363100012160875",
+   "reason": "frontage 59.0 m from Van Baerlestraat"
+  },
+  {
+   "pandId": "0363100012160917",
+   "reason": "sightline to Van Baerlestraat crosses 0363100012152596"
+  },
+  {
+   "pandId": "0363100012162518",
+   "reason": "frontage 91.7 m from Van Baerlestraat"
+  },
+  {
+   "pandId": "0363100012162906",
+   "reason": "sightline to Van Baerlestraat crosses 0363100012152596"
+  },
+  {
+   "pandId": "0363100012163305",
+   "reason": "sightline to Van Baerlestraat crosses 0363100012162374"
+  },
+  {
+   "pandId": "0363100012164625",
+   "reason": "frontage 32.1 m from Van Baerlestraat"
+  },
+  {
+   "pandId": "0363100012164689",
+   "reason": "frontage 39.4 m from Van Baerlestraat"
+  },
+  {
+   "pandId": "0363100012191299",
+   "reason": "frontage 42.0 m from Van Baerlestraat"
+  },
+  {
+   "pandId": "0363100012207165",
+   "reason": "frontage 37.1 m from Van Baerlestraat"
+  },
+  {
+   "pandId": "0363100012209232",
+   "reason": "frontage 43.9 m from Van Baerlestraat"
+  },
+  {
+   "pandId": "0363100012220023",
+   "reason": "frontage 54.5 m from Van Baerlestraat"
+  },
+  {
+   "pandId": "0363100012220024",
+   "reason": "frontage 54.7 m from Van Baerlestraat"
+  },
+  {
+   "pandId": "0363100012252391",
+   "reason": "frontage 69.2 m from Van Baerlestraat"
+  },
+  {
+   "pandId": "0363100012164856",
+   "reason": "frontage 41.2 m from Van Baerlestraat"
+  },
+  {
+   "pandId": "0363100012165153",
+   "reason": "frontage 32.2 m from Van Baerlestraat"
+  },
+  {
+   "pandId": "0363100012165739",
+   "reason": "sightline to Van Baerlestraat crosses 0363100012162374"
+  },
+  {
+   "pandId": "0363100012166614",
+   "reason": "sightline to Van Baerlestraat crosses 0363100012158202"
+  },
+  {
+   "pandId": "0363100012167375",
+   "reason": "frontage 49.6 m from Van Baerlestraat"
+  },
+  {
+   "pandId": "0363100012186809",
+   "reason": "sightline to Van Baerlestraat crosses 0363100012158964"
+  },
+  {
+   "pandId": "0363100012235986",
+   "reason": "frontage 37.2 m from Van Baerlestraat"
+  },
+  {
+   "pandId": "0363100012236705",
+   "reason": "sightline to Van Baerlestraat crosses 0363100012153582"
+  },
+  {
+   "pandId": "0363100012236862",
+   "reason": "frontage 86.6 m from Van Baerlestraat"
+  },
+  {
+   "pandId": "0363100012237033",
+   "reason": "frontage 31.0 m from Van Baerlestraat"
+  },
+  {
+   "pandId": "0363100012242115",
+   "reason": "frontage 115.5 m from Van Baerlestraat"
+  },
+  {
+   "pandId": "0363100012253789",
+   "reason": "frontage 89.5 m from Van Baerlestraat"
+  },
+  {
+   "pandId": "0363100012069703",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012122426",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012157809",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012152941",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012158051",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012162374",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012162894",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012165349",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012166876",
+   "reason": "fronts the other side / another direction"
+  }
+ ],
+ "areaHalfSizeM": 90,
+ "pands": [
+  {
+   "pandId": "0363100012162086",
+   "alongM": -14.66,
+   "widthM": 7.31,
+   "eavesM": 16.61,
+   "roofMaxM": 18.96,
+   "storeys3dbag": 4,
+   "builtYear": 1876,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012153327",
+   "alongM": -7.32,
+   "widthM": 7.36,
+   "eavesM": 15.7,
+   "roofMaxM": 15.84,
+   "storeys3dbag": 4,
+   "builtYear": 1876,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012236767",
+   "alongM": 0,
+   "widthM": 7.29,
+   "eavesM": 15.34,
+   "roofMaxM": 16.71,
+   "storeys3dbag": 4,
+   "builtYear": 1876,
+   "uncertainty": []
+  }
+ ]
+}

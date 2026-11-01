@@ -1,0 +1,352 @@
+{
+ "face": "ruloffs-1-11",
+ "street": "Bartholomeus Ruloffsstraat",
+ "library": "museumkwartier",
+ "stripDate": "2024-11-06",
+ "seconds": 2.18,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [],
+ "pands": [
+  {
+   "pandId": "0363100012093460",
+   "address": "Bartholomeus Ruloffsstraat 1",
+   "builtYear": 1923,
+   "widthM": 28.09,
+   "eavesM": 13.31,
+   "storeys3dbag": 4,
+   "bagBay": {
+    "fromM": 2.84,
+    "toM": 27.6,
+    "depthM": 1.2,
+    "centre": 0.542
+   },
+   "strip": {
+    "wall": "#6e513b",
+    "wallRaw": "#72624d",
+    "skyline": {
+     "eavesM": 16.27,
+     "eavesRow": 74,
+     "confidence": 0.96,
+     "crown": {
+      "widthM": 4.95,
+      "riseM": 1.75,
+      "topWidthM": 0.07,
+      "centre": 0.1
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 9,
+    "frontClass": "columns",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.203,
+    "structure": {
+     "bayWidthM": 1.52,
+     "bayCentre": 0.72,
+     "balconies": true,
+     "why": "dark open axis 0.65 m at 0.78 (light 0): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 1.05,
+       "centre": 0.71,
+       "light": 0.59
+      },
+      {
+       "widthM": 0.65,
+       "centre": 0.78,
+       "light": 0
+      },
+      {
+       "widthM": 2.45,
+       "centre": 0.85,
+       "light": 0.41
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 12.2,
+       "widthM": 0.8,
+       "centre": 0.1
+      },
+      {
+       "atM": 11.75,
+       "widthM": 1.93,
+       "centre": 0.47
+      },
+      {
+       "atM": 11,
+       "widthM": 1.65,
+       "centre": 0.03
+      },
+      {
+       "atM": 10.63,
+       "widthM": 1.52,
+       "centre": 0.92
+      },
+      {
+       "atM": 7.55,
+       "widthM": 1.35,
+       "centre": 0.25
+      },
+      {
+       "atM": 7.17,
+       "widthM": 3.27,
+       "centre": 0.06
+      },
+      {
+       "atM": 6.88,
+       "widthM": 1.43,
+       "centre": 0.54
+      },
+      {
+       "atM": 6.2,
+       "widthM": 0.9,
+       "centre": 0.12
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.3
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best museum-de-1899-corbel-cornice: built 1923, type 1898-1901; frontage 28.09 m, type 5-6 m)",
+   "best": {
+    "type": "museum-de-1899-corbel-cornice",
+    "score": 0,
+    "veto": [
+     "built 1923, type 1898-1901",
+     "frontage 28.09 m, type 5-6 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 16.27 m vs the type's 13.4 m (wall-dormer skyline 14.7 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 4 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.22 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0,
+      "note": "strip columns 9 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012081607",
+   "address": "Bartholomeus Ruloffsstraat 5",
+   "builtYear": 1925,
+   "widthM": 6.14,
+   "eavesM": 13.56,
+   "storeys3dbag": 0,
+   "bagBay": null,
+   "strip": {
+    "wall": "#4f5152",
+    "wallRaw": "#48504d",
+    "skyline": {
+     "eavesM": 15.28,
+     "eavesRow": 114,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.77,
+      "riseM": 0.87,
+      "topWidthM": 1.68,
+      "centre": 0.16
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 7,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.053,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 12.5,
+       "widthM": 1.48,
+       "centre": 0.87
+      },
+      {
+       "atM": 10.4,
+       "widthM": 1.15,
+       "centre": 0.9
+      },
+      {
+       "atM": 7.1,
+       "widthM": 1.2,
+       "centre": 0.47
+      },
+      {
+       "atM": 6.13,
+       "widthM": 2.1,
+       "centre": 0.5
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.18
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best museum-de-1899-corbel-cornice: built 1925, type 1898-1901)",
+   "best": {
+    "type": "museum-de-1899-corbel-cornice",
+    "score": 0,
+    "veto": [
+     "built 1925, type 1898-1901"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0.5,
+      "note": "strip cornice 15.28 m vs the type's 13.4 m (wall-dormer skyline 14.7 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": null,
+      "note": "3DBAG bouwlagen 0 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.062 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0,
+      "note": "strip columns 7 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012153998",
+   "address": "Bartholomeus Ruloffsstraat 7",
+   "builtYear": 1925,
+   "widthM": 18.77,
+   "eavesM": 13.28,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#725744",
+    "wallRaw": "#675641",
+    "skyline": {
+     "eavesM": 14.7,
+     "eavesRow": 137,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 2,
+    "columns": 5,
+    "frontClass": "columns",
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.192,
+    "structure": {
+     "bayWidthM": 1.13,
+     "bayCentre": 0.66,
+     "balconies": false,
+     "why": "no dark open axis, 2 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 12.45,
+       "widthM": 1.48,
+       "centre": 0.79
+      },
+      {
+       "atM": 9.52,
+       "widthM": 1.52,
+       "centre": 0.65
+      },
+      {
+       "atM": 6.38,
+       "widthM": 1.35,
+       "centre": 0.75
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.29
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best museum-de-1899-corbel-cornice: built 1925, type 1898-1901; frontage 18.77 m, type 5-6 m)",
+   "best": {
+    "type": "museum-de-1899-corbel-cornice",
+    "score": 0,
+    "veto": [
+     "built 1925, type 1898-1901",
+     "frontage 18.77 m, type 5-6 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "strip cornice 14.7 m vs the type's 13.4 m (wall-dormer skyline 14.7 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.187 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0,
+      "note": "strip columns 5 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

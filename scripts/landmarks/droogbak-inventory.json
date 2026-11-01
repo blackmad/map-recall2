@@ -1,0 +1,672 @@
+{
+ "schemaVersion": 1,
+ "id": "droogbak",
+ "pand": "0363100012171155",
+ "brief": "scripts/landmarks/droogbak-brief.md",
+ "signature": [
+  "banded-brick",
+  "corner-tower-dormer",
+  "modillion-cornice",
+  "se-portal",
+  "round-arched-gf",
+  "ne-oriel",
+  "granite-plinth"
+ ],
+ "walls": [
+  {
+   "tag": "w01-222",
+   "bearing": 222,
+   "lengthM": 18.5,
+   "centre": [
+    4.8938267,
+    52.380108
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001178_pano_0001_006353",
+   "capturedAt": "2019-05-13",
+   "checked": true,
+   "items": [
+    {
+     "id": "sw-corner-bay",
+     "kind": "window-shape",
+     "where": "corner risalit with paired windows at every storey and a tower dormer",
+     "approxSizeM": [
+      3.6,
+      16
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001178_pano_0001_006353",
+     "how": "bay(gfSingle): one arched bel-etage light and one basement window under the paired upper lights, turret() over the corner"
+    }
+   ]
+  },
+  {
+   "tag": "w02-222",
+   "bearing": 222,
+   "lengthM": 18.5,
+   "centre": [
+    4.8934695,
+    52.3803027
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001900_pano_0001_000016",
+   "capturedAt": "2020-08-31",
+   "checked": true,
+   "items": []
+  },
+  {
+   "tag": "w03-36",
+   "bearing": 36,
+   "lengthM": 18.3,
+   "centre": [
+    4.894294,
+    52.3805033
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002037_pano_0000_003026",
+   "capturedAt": "2021-03-11",
+   "checked": true,
+   "items": [
+    {
+     "id": "banded-brick",
+     "kind": "other",
+     "where": "every storey from the plinth to the frieze, all fronts",
+     "approxSizeM": [
+      18.3,
+      14.5
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002037_pano_0000_003026",
+     "how": "droogbak-builder.ts plinthAndCourses(): cream natural-stone courses (0.16-0.22 m) at a 0.5-0.6 m pitch over red brick, 6 cm proud, split into pieces of at most 12 m; windows set over them"
+    },
+    {
+     "id": "granite-plinth",
+     "kind": "other",
+     "where": "basement storey 0-2.3 m, all fronts",
+     "approxSizeM": [
+      18.3,
+      2.3
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002037_pano_0000_003026",
+     "how": "plinthAndCourses() granite slab and belt; basement(): barred dark windows and red-painted doors (counted as openings in droogbak-elevations.json)"
+    },
+    {
+     "id": "round-arched-gf",
+     "kind": "window-shape",
+     "where": "ground (bel-etage) storey, one per bay",
+     "approxSizeM": [
+      1.4,
+      2.7
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002037_pano_0000_003026",
+     "how": "archWin(): round-headed glass in a cream arched surround with post, transom, keystone and sill"
+    },
+    {
+     "id": "sunburst-heads",
+     "kind": "window-shape",
+     "where": "first-floor windows, radiating cream voussoirs over each",
+     "approxSizeM": [
+      2.2,
+      0.9
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002037_pano_0000_003026",
+     "how": "sunburstWin(): cream surround and three radiating voussoir blocks over a flat lintel (five in the photo)"
+    },
+    {
+     "id": "v-keystone-heads",
+     "kind": "window-shape",
+     "where": "second-floor windows, V-shaped keystone pair over a flat hood",
+     "approxSizeM": [
+      1.8,
+      0.6
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002037_pano_0000_003026",
+     "how": "hoodWin(): surround, sill, hood slab and an inverted three-sided cone as the V keystone"
+    },
+    {
+     "id": "modillion-cornice",
+     "kind": "other",
+     "where": "eaves, all fronts, 17.5-19.3 m",
+     "approxSizeM": [
+      18.3,
+      1.8
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002037_pano_0000_003026",
+     "how": "plinthAndCourses() frieze and bracket row at 1.05 m pitch; cornice(): one mitred corona ring slab 0.95 m out at 18.4-19.3 m"
+    },
+    {
+     "id": "ne-oriel",
+     "kind": "other",
+     "where": "left end near the east corner, first floor bay window on two carved consoles, stone loggia with paired round-arched windows on the second floor",
+     "approxSizeM": [
+      4.2,
+      9.0
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002037_pano_0000_003026",
+     "how": "oriel(): stone bay 0.9 m deep on two consoles over a basement window and arched bel-etage light, paired first-floor lights, pilastered second-floor loggia with paired arched lights"
+    },
+    {
+     "id": "corner-tower-dormer",
+     "kind": "tower",
+     "where": "above the oriel, square attic turret with paired arched windows, cornice and cap",
+     "approxSizeM": [
+      3.2,
+      5.0
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002037_pano_0000_003026",
+     "how": "turret(): brick box with cream corner quoins, stripes, arched lights where they clear the mansard, cornice box, hipped cap and finial"
+    },
+    {
+     "id": "roof-finials",
+     "kind": "sculpture",
+     "where": "on pedestals along the cornice over each bay axis",
+     "approxSizeM": [
+      0.6,
+      1.4
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-002037_pano_0000_003026",
+     "how": "FINIALS: pedestal box, cone and ball per wing bay axis"
+    }
+   ]
+  },
+  {
+   "tag": "w04-36",
+   "bearing": 36,
+   "lengthM": 18.3,
+   "centre": [
+    4.8939089,
+    52.3806735
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002620_pano_0002_000433",
+   "capturedAt": "2022-06-22",
+   "checked": true,
+   "items": [
+    {
+     "id": "ne-oriel-west",
+     "kind": "other",
+     "where": "right end near the north corner, mirror of the east oriel",
+     "approxSizeM": [
+      4.2,
+      9.0
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002620_pano_0002_000433",
+     "how": "oriel() at the other end of the NE front"
+    },
+    {
+     "id": "ne-tower-dormer-west",
+     "kind": "tower",
+     "where": "above the north oriel",
+     "approxSizeM": [
+      3.2,
+      5.0
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002620_pano_0002_000433",
+     "how": "turret()"
+    }
+   ]
+  },
+  {
+   "tag": "w05-222",
+   "bearing": 222,
+   "lengthM": 14.1,
+   "centre": [
+    4.893644,
+    52.3802027
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002531_pano_0004_000012",
+   "capturedAt": "2022-04-21",
+   "checked": true,
+   "items": [
+    {
+     "id": "sw-centre-dormer",
+     "kind": "tower",
+     "where": "centre of the SW front, attic turret with ironwork railing either side and scroll claws",
+     "approxSizeM": [
+      4.0,
+      5.5
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002531_pano_0004_000012",
+     "how": "turret() with a second setback stage and bronze railings"
+    }
+   ]
+  },
+  {
+   "tag": "w06-306",
+   "bearing": 306,
+   "lengthM": 13.6,
+   "centre": [
+    4.8935824,
+    52.3805405
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-06-16_03-46-32_02435",
+   "capturedAt": "2025-06-16",
+   "checked": true,
+   "items": [
+    {
+     "id": "glass-annex",
+     "kind": "other",
+     "where": "modern glass and grey-brick building against the NW front",
+     "approxSizeM": [
+      13,
+      10
+     ],
+     "plan": "skipped",
+     "seenIn": "recording_2025-06-16_03-46-32_02435",
+     "skip": {
+      "reason": "not-visible",
+      "note": "separate later building on another pand; it hides this part of the NW front"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "w07-126",
+   "bearing": 126,
+   "lengthM": 10,
+   "centre": [
+    4.893971,
+    52.3800892
+   ],
+   "evidence": "photo",
+   "panoId": "b_20241211_1256_Track16_Sphere_00075",
+   "capturedAt": "2024-12-11",
+   "checked": true,
+   "items": []
+  },
+  {
+   "tag": "w08-126",
+   "bearing": 126,
+   "lengthM": 9.9,
+   "centre": [
+    4.8943602,
+    52.3804191
+   ],
+   "evidence": "photo",
+   "panoId": "b_20241211_1256_Track16_Sphere_00052",
+   "capturedAt": "2024-12-11",
+   "checked": true,
+   "items": [
+    {
+     "id": "se-corner-dormer",
+     "kind": "tower",
+     "where": "centred over the corner pavilion: attic turret with two arched lights, scroll brackets and pinnacles",
+     "approxSizeM": [
+      3.4,
+      5.5
+     ],
+     "plan": "modelled",
+     "seenIn": "b_20241211_1256_Track16_Sphere_00052",
+     "how": "turret() over the SE corner pavilion"
+    },
+    {
+     "id": "segmental-pediments",
+     "kind": "window-shape",
+     "where": "first floor of the corner pavilion, segmental pediments over the three windows",
+     "approxSizeM": [
+      2.2,
+      0.6
+     ],
+     "plan": "modelled",
+     "seenIn": "b_20241211_1256_Track16_Sphere_00052",
+     "how": "segmentWin(): segmental hood band and sill"
+    }
+   ]
+  },
+  {
+   "tag": "w09-306",
+   "bearing": 306,
+   "lengthM": 9.6,
+   "centre": [
+    4.8934095,
+    52.3803927
+   ],
+   "evidence": "photo",
+   "panoId": "b_20241211_1256_Track16_Sphere_00172",
+   "capturedAt": "2024-12-11",
+   "checked": true,
+   "items": []
+  },
+  {
+   "tag": "w10-306",
+   "bearing": 306,
+   "lengthM": 9.6,
+   "centre": [
+    4.8937588,
+    52.3806869
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-06-16_03-46-32_02437",
+   "capturedAt": "2025-06-16",
+   "checked": true,
+   "items": []
+  },
+  {
+   "tag": "w11-126",
+   "bearing": 126,
+   "lengthM": 9,
+   "centre": [
+    4.8940456,
+    52.3801616
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000225_pano_0008_000872",
+   "capturedAt": "2017-03-27",
+   "checked": true,
+   "items": []
+  },
+  {
+   "tag": "w12-126",
+   "bearing": 126,
+   "lengthM": 9,
+   "centre": [
+    4.8941735,
+    52.380251
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001047_pano_0000_003436",
+   "capturedAt": "2019-01-10",
+   "checked": true,
+   "items": [
+    {
+     "id": "se-portal",
+     "kind": "other",
+     "where": "centre of the SE (entrance) front: round-arched portal with the red double door, cream pilasters and arch",
+     "approxSizeM": [
+      3.0,
+      4.6
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001047_pano_0000_003436",
+     "how": "entrance(): red double door leaf to 5.2 m, glazed arched fanlight above a stone transom, cream arch ring and pilasters"
+    },
+    {
+     "id": "se-stairs",
+     "kind": "other",
+     "where": "granite flight across the entrance risalit",
+     "approxSizeM": [
+      8.0,
+      2.3
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001047_pano_0000_003436",
+     "how": "entrance(): six full-width sandstone steps"
+    },
+    {
+     "id": "pedimented-windows",
+     "kind": "window-shape",
+     "where": "ground floor either side of the portal, triangular pediments",
+     "approxSizeM": [
+      1.8,
+      0.6
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001047_pano_0000_003436",
+     "how": "entrance(): prism pediments over the two flanking windows"
+    },
+    {
+     "id": "relief-panels",
+     "kind": "relief",
+     "where": "first floor of the risalit, sculpted panels over the windows",
+     "approxSizeM": [
+      2.5,
+      0.7
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-001047_pano_0000_003436",
+     "how": "raised two-layer cream stone panels with a sunk field; figures not carved"
+    },
+    {
+     "id": "risalit-arched-2f",
+     "kind": "window-shape",
+     "where": "second floor of the risalit, four round-arched windows (centre pair)",
+     "approxSizeM": [
+      1.2,
+      2.0
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001047_pano_0000_003436",
+     "how": "entrance(): four arched lights without posts, the centre pair close"
+    },
+    {
+     "id": "attic-medallion",
+     "kind": "crest",
+     "where": "attic over the entrance: round medallion with relief in a cream frame, flanked by arched lights, urns on the corners",
+     "approxSizeM": [
+      1.6,
+      1.6
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-001047_pano_0000_003436",
+     "how": "disc in a ring with a raised boss, inside the attic face"
+    },
+    {
+     "id": "attic-urns",
+     "kind": "sculpture",
+     "where": "corners of the entrance attic",
+     "approxSizeM": [
+      0.5,
+      0.9
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-001047_pano_0000_003436",
+     "how": "pedestal and ball"
+    },
+    {
+     "id": "roof-cresting",
+     "kind": "balcony-ironwork",
+     "where": "cast-iron cresting along the mansard top behind the entrance attic",
+     "approxSizeM": [
+      10,
+      0.6
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-001047_pano_0000_003436",
+     "how": "rail with posts on the attic and the centre turret"
+    },
+    {
+     "id": "tenant-sign",
+     "kind": "sign",
+     "where": "fascia under the cornice of the risalit",
+     "approxSizeM": [
+      9,
+      0.4
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7316010203-001047_pano_0000_003436",
+     "skip": {
+      "reason": "temporary",
+      "note": "office tenant name band, changes with the tenant"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "w13-126",
+   "bearing": 126,
+   "lengthM": 9,
+   "centre": [
+    4.8942728,
+    52.380353
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001672_pano_0000_001705",
+   "capturedAt": "2020-04-24",
+   "checked": true,
+   "items": [
+    {
+     "id": "scaffold",
+     "kind": "other",
+     "where": "2020 scaffold and site huts",
+     "approxSizeM": [
+      9,
+      15
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7316010203-001672_pano_0000_001705",
+     "skip": {
+      "reason": "temporary",
+      "note": "restoration scaffold in the 2020 capture"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "w14-306",
+   "bearing": 306,
+   "lengthM": 8.7,
+   "centre": [
+    4.8936855,
+    52.3806182
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-06-16_03-46-32_02436",
+   "capturedAt": "2025-06-16",
+   "checked": true,
+   "items": []
+  },
+  {
+   "tag": "w15-306",
+   "bearing": 306,
+   "lengthM": 8.7,
+   "centre": [
+    4.8934937,
+    52.3804565
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000703_pano_0000_002165",
+   "capturedAt": "2018-05-02",
+   "checked": true,
+   "items": []
+  },
+  {
+   "tag": "w16-36",
+   "bearing": 36,
+   "lengthM": 4.9,
+   "centre": [
+    4.8940501,
+    52.3806155
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7315120208-000073_pano_0005_000670",
+   "capturedAt": "2016-06-09",
+   "checked": true,
+   "items": [
+    {
+     "id": "ne-centre-tower",
+     "kind": "tower",
+     "where": "centre of the Droogbak (NE) front, taller attic turret over the paired-window centre (3DBAG peak 29.9 m NAP-ground)",
+     "approxSizeM": [
+      3.6,
+      8.0
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7315120208-000073_pano_0005_000670",
+     "how": "turret() taller variant with a second stage 3.8 m wide"
+    },
+    {
+     "id": "granite-pedestals",
+     "kind": "other",
+     "where": "tall rusticated granite pedestals flanking the centre bay in the plinth",
+     "approxSizeM": [
+      1.4,
+      3.0
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7315120208-000073_pano_0005_000670",
+     "how": "plinth piers projecting 0.88 m per the BAG outline"
+    }
+   ]
+  },
+  {
+   "tag": "w17-36",
+   "bearing": 36,
+   "lengthM": 4.8,
+   "centre": [
+    4.8941597,
+    52.3805671
+   ],
+   "evidence": "photo",
+   "panoId": "b_20241121_1354_Track01_Sphere_00294",
+   "capturedAt": "2024-11-21",
+   "checked": true,
+   "items": [
+    {
+     "id": "weathervane",
+     "kind": "other",
+     "where": "on the east-corner tower dormer",
+     "approxSizeM": [
+      0.8,
+      1.6
+     ],
+     "plan": "simplified",
+     "seenIn": "b_20241121_1354_Track01_Sphere_00294",
+     "how": "rod and flat vane blade"
+    }
+   ]
+  },
+  {
+   "tag": "w18-126",
+   "bearing": 126,
+   "lengthM": 4.2,
+   "centre": [
+    4.8941111,
+    52.3802057
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002620_pano_0006_000116",
+   "capturedAt": "2022-06-22",
+   "checked": true,
+   "items": []
+  },
+  {
+   "tag": "w19-126",
+   "bearing": 126,
+   "lengthM": 4.2,
+   "centre": [
+    4.8942245,
+    52.3803014
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-06-16_04-42-37_00048",
+   "capturedAt": "2025-06-16",
+   "checked": true,
+   "items": []
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas (all walls)",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/",
+   "licence": "CC BY 4.0"
+  },
+  {
+   "name": "3DBAG LoD2.2 NL.IMBAG.Pand.0363100012171155",
+   "url": "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012171155",
+   "licence": "CC BY 4.0"
+  },
+  {
+   "name": "BAG pand 0363100012171155",
+   "url": "https://service.pdok.nl/lv/bag/wfs/v2_0",
+   "licence": "CC0"
+  },
+  {
+   "name": "Rijksmonument 518416 (municipal register record, no description text)",
+   "url": "https://api.data.amsterdam.nl/v1/monumenten/monumenten/11fda686-bdbc-4216-b5e6-bed08e316d41?_format=json",
+   "licence": "CC0"
+  }
+ ]
+}

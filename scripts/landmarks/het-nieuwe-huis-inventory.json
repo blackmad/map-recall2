@@ -1,0 +1,793 @@
+{
+ "schemaVersion": 1,
+ "id": "het-nieuwe-huis",
+ "pand": "0363100012148010",
+ "brief": "scripts/landmarks/het-nieuwe-huis-brief.md",
+ "signature": [
+  "w01-tower-clock",
+  "w03-lettering",
+  "w03-bays",
+  "w01-balcony-band",
+  "w03-corner-towers",
+  "w08-balconies"
+ ],
+ "walls": [
+  {
+   "tag": "w01-33",
+   "bearing": 33,
+   "lengthM": 37.6,
+   "centre": [
+    4.88295,
+    52.3525655
+   ],
+   "evidence": "photo",
+   "panoId": "b_20241211_0838_Track03_Sphere_00010",
+   "capturedAt": "2024-12-11",
+   "checked": true,
+   "items": [
+    {
+     "id": "w01-tower-clock",
+     "kind": "clock",
+     "where": "left (south-east) end: square brick tower rising ~14 m over the roof, a projecting cream ledge under a top stage with a clock face on each side, a flagpole",
+     "approxSizeM": [
+      4.5,
+      14
+     ],
+     "plan": "modelled",
+     "seenIn": "Het-Nieuwe-Huis-Roelof-Hartplein-JPG.jpg",
+     "how": "tower(): 3DBAG tower shell; cream ledge 4.2 m under the top, a white clock disc with dark hands on each face of the top stage, small slit windows in the shaft, flagpole",
+     "note": "clock read on Commons \"Het Nieuwe Huis, Roelof Hartplein\" (Marcelmulder68, CC BY-SA 3.0 nl); the panorama crop cuts the tower top"
+    },
+    {
+     "id": "w01-balcony-band",
+     "kind": "other",
+     "where": "continuous balcony band along the plein from ~7 m to the north-west end: brick parapet 3.7-5.5 m and brick fascia 7.45-8.9 m, cream edge lines under both, windows recessed between",
+     "approxSizeM": [
+      30.6,
+      5.2
+     ],
+     "plan": "modelled",
+     "seenIn": "b_20241211_0838_Track03_Sphere_00010",
+     "how": "plein(): two 1.2 m deep brick slabs with cream undersides on facade-ring edges 78-81"
+    },
+    {
+     "id": "w01-rounded-balconies",
+     "kind": "other",
+     "where": "north-west end: the balcony band and two upper balconies (rows at ~12 and ~15 m) round the corner with cream undersides",
+     "approxSizeM": [
+      6,
+      1.6
+     ],
+     "plan": "simplified",
+     "seenIn": "b_20241211_0838_Track03_Sphere_00010",
+     "how": "the lower band runs to the end of the edge; the rounded ends and the two upper balconies are not drawn"
+    },
+    {
+     "id": "w01-shopfronts",
+     "kind": "window-shape",
+     "where": "glazed shop storey 0-3.6 m between grey stone piers, cream band over it",
+     "approxSizeM": [
+      30,
+      3.6
+     ],
+     "plan": "modelled",
+     "seenIn": "b_20241211_0838_Track03_Sphere_00010",
+     "how": "street edges: 2.2 m shop windows with two mullions and a transom on a 2.7 m pitch, cream band at 3.62 m"
+    },
+    {
+     "id": "w01-stone-ground",
+     "kind": "other",
+     "where": "right part: ground storey faced in grey stone with small barred windows and a door",
+     "approxSizeM": [
+      11,
+      3.6
+     ],
+     "plan": "simplified",
+     "seenIn": "b_20241211_0838_Track03_Sphere_00010",
+     "how": "0.9 m stone plinth along every wall; the full-height stone facing is not drawn"
+    },
+    {
+     "id": "w01-storey-windows",
+     "kind": "window-shape",
+     "where": "five storeys of cream-framed windows in groups of three, sills 8.8/11.7/14.7/17.6 m, a wider top row at 20.6 m",
+     "approxSizeM": [
+      1.3,
+      1.45
+     ],
+     "plan": "simplified",
+     "seenIn": "b_20241211_0838_Track03_Sphere_00010",
+     "how": "uniform 1.8 m column pitch per storey (groups of three not reproduced)"
+    },
+    {
+     "id": "w01-shop-signs",
+     "kind": "sign",
+     "where": "shop name signs over the shop windows",
+     "approxSizeM": [
+      4,
+      0.4
+     ],
+     "plan": "skipped",
+     "seenIn": "b_20241211_0838_Track03_Sphere_00010",
+     "skip": {
+      "reason": "temporary",
+      "note": "tenant signs"
+     }
+    },
+    {
+     "id": "w01-cornice",
+     "kind": "other",
+     "where": "thin brick cornice at the wall top",
+     "approxSizeM": [
+      30,
+      0.15
+     ],
+     "plan": "skipped",
+     "seenIn": "b_20241211_0838_Track03_Sphere_00010",
+     "skip": {
+      "reason": "too-small",
+      "note": "a few courses of brick"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "w02-17",
+   "bearing": 17,
+   "lengthM": 31.2,
+   "centre": [
+    4.882658,
+    52.3522125
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": false,
+   "items": []
+  },
+  {
+   "tag": "w03-337",
+   "bearing": 337,
+   "lengthM": 29.7,
+   "centre": [
+    4.882466,
+    52.352618
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002118_pano_0000_000971",
+   "capturedAt": "2021-04-26",
+   "checked": true,
+   "items": [
+    {
+     "id": "w03-lettering",
+     "kind": "lettering",
+     "where": "OPENBARE BIBLIOTHEEK in cream raised capitals on the brick canopy band over the bays, 8.3-9.8 m",
+     "approxSizeM": [
+      10.8,
+      0.5
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002118_pano_0000_000971",
+     "how": "library(): raisedLettering 0.5 m capitals on a 1.65 m brick band 1.1 m proud, cream line under it"
+    },
+    {
+     "id": "w03-bays",
+     "kind": "window-shape",
+     "where": "three projecting two-storey bays of grid-glazed library windows (ground 1.25-4.2 m, first floor 5.45-7.8 m) between brick piers",
+     "approxSizeM": [
+      3.7,
+      6.6
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002118_pano_0000_000971",
+     "how": "library(): brick bay boxes 0.55 m proud with cream frames, glass and a 4 x 3 glazing grid on both storeys"
+    },
+    {
+     "id": "w03-pier-capitals",
+     "kind": "other",
+     "where": "stone blocks capping the brick piers between the bays under the canopy",
+     "approxSizeM": [
+      0.7,
+      0.7
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002118_pano_0000_000971",
+     "how": "library(): stone block per pier at 7.2 m"
+    },
+    {
+     "id": "w03-corner-towers",
+     "kind": "tower",
+     "where": "two rounded corner towers flanking the front with curved bow windows on five storeys and cream sills",
+     "approxSizeM": [
+      7,
+      24
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-002118_pano_0000_000971",
+     "how": "library(): flat cream-framed windows with concrete sills on the tower axes; the curvature is the 3DBAG/BAG facets"
+    },
+    {
+     "id": "w03-corbels",
+     "kind": "relief",
+     "where": "stone corbels either side of the second-storey bow windows of both towers",
+     "approxSizeM": [
+      0.6,
+      0.9
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002118_pano_0000_000971",
+     "how": "library(): stone blocks either side of the 8.4 m bow window"
+    },
+    {
+     "id": "w03-entrances",
+     "kind": "canopy",
+     "where": "entrances at the base of each tower in a grey stone ground storey under a thin cream canopy",
+     "approxSizeM": [
+      4,
+      3.6
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002118_pano_0000_000971",
+     "how": "library(): stone panel, dark door, cream canopy at 3.6 m"
+    },
+    {
+     "id": "w03-brick-pattern",
+     "kind": "other",
+     "where": "decorative darker header patterning in the brick of the central block",
+     "approxSizeM": [
+      14,
+      10
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-002118_pano_0000_000971",
+     "how": "plain brick colour"
+    },
+    {
+     "id": "w03-upper-windows",
+     "kind": "window-shape",
+     "where": "recessed central block: three rows of triple windows (10.4, 13.2, 16.0 m) and nine small windows in three groups at 19 m",
+     "approxSizeM": [
+      2.2,
+      1.35
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002118_pano_0000_000971",
+     "how": "library(): rows at the measured sills"
+    },
+    {
+     "id": "w03-railing",
+     "kind": "balcony-ironwork",
+     "where": "red steel ramp railing at the left entrance",
+     "approxSizeM": [
+      6,
+      1
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7316010203-002118_pano_0000_000971",
+     "skip": {
+      "reason": "too-small",
+      "note": "thin handrail"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "w04-213",
+   "bearing": 213,
+   "lengthM": 20.2,
+   "centre": [
+    4.8828615,
+    52.35245
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": false,
+   "items": []
+  },
+  {
+   "tag": "w05-55",
+   "bearing": 55,
+   "lengthM": 10.6,
+   "centre": [
+    4.8823645,
+    52.3523
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": false,
+   "items": []
+  },
+  {
+   "tag": "w06-197",
+   "bearing": 197,
+   "lengthM": 9.9,
+   "centre": [
+    4.8827245,
+    52.3520595
+   ],
+   "evidence": "photo",
+   "panoId": "b_20241106_1111_Track36_Sphere_00017",
+   "capturedAt": "2024-11-06",
+   "checked": true,
+   "items": [
+    {
+     "id": "w06-windows",
+     "kind": "window-shape",
+     "where": "curved corner: storey windows, ground floor with two doors in a stone plinth",
+     "approxSizeM": [
+      9.9,
+      18
+     ],
+     "plan": "simplified",
+     "seenIn": "b_20241106_1111_Track36_Sphere_00017",
+     "how": "storey windows and 0.9 m stone plinth; the doors are not drawn"
+    },
+    {
+     "id": "w06-creeper",
+     "kind": "other",
+     "where": "climbing plant over the entrance",
+     "approxSizeM": [
+      3,
+      4
+     ],
+     "plan": "skipped",
+     "seenIn": "b_20241106_1111_Track36_Sphere_00017",
+     "skip": {
+      "reason": "temporary",
+      "note": "vegetation"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "w07-236",
+   "bearing": 236,
+   "lengthM": 9.3,
+   "centre": [
+    4.8821975,
+    52.3522215
+   ],
+   "evidence": "photo",
+   "panoId": "b_20241106_1111_Track35_Sphere_00009",
+   "capturedAt": "2024-11-06",
+   "checked": true,
+   "items": [
+    {
+     "id": "w07-band",
+     "kind": "other",
+     "where": "projecting band with cream underside over the ground floor",
+     "approxSizeM": [
+      9.3,
+      0.3
+     ],
+     "plan": "simplified",
+     "seenIn": "b_20241106_1111_Track35_Sphere_00009",
+     "how": "cream band at 3.62 m over the shop storey"
+    },
+    {
+     "id": "w07-sign",
+     "kind": "sign",
+     "where": "MEDISCH CENTRUM ROELOF HART gold lettering on a panel over the door",
+     "approxSizeM": [
+      2,
+      1
+     ],
+     "plan": "skipped",
+     "seenIn": "b_20241106_1111_Track35_Sphere_00009",
+     "skip": {
+      "reason": "temporary",
+      "note": "tenant sign"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "w08-290",
+   "bearing": 290,
+   "lengthM": 9.1,
+   "centre": [
+    4.88222,
+    52.3525025
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002118_pano_0000_000965",
+   "capturedAt": "2021-04-26",
+   "checked": true,
+   "items": [
+    {
+     "id": "w08-balconies",
+     "kind": "other",
+     "where": "rounded corner with stacked cantilevered brick balconies with cream undersides (3.7-5.4 m and 7.4-9 m) and windows recessed behind",
+     "approxSizeM": [
+      9,
+      5.3
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002118_pano_0000_000965",
+     "how": "plein(): the balcony band on facade-ring edge 7"
+    },
+    {
+     "id": "w08-poster",
+     "kind": "sign",
+     "where": "advertising column in front",
+     "approxSizeM": [
+      1.2,
+      2.5
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7316010203-002118_pano_0000_000965",
+     "skip": {
+      "reason": "temporary",
+      "note": "street furniture"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "w09-158",
+   "bearing": 158,
+   "lengthM": 8.6,
+   "centre": [
+    4.882403,
+    52.352425
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": false,
+   "items": []
+  },
+  {
+   "tag": "w10-291",
+   "bearing": 291,
+   "lengthM": 8.4,
+   "centre": [
+    4.8821235,
+    52.3523425
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-07-30_09-09-11_00335",
+   "capturedAt": "2025-07-30",
+   "checked": true,
+   "items": [
+    {
+     "id": "w10-shopfronts",
+     "kind": "window-shape",
+     "where": "shop storey and storey windows",
+     "approxSizeM": [
+      8.4,
+      3.6
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-07-30_09-09-11_00335",
+     "how": "street-edge shop windows and storey rows"
+    }
+   ]
+  },
+  {
+   "tag": "w11-210",
+   "bearing": 210,
+   "lengthM": 7.8,
+   "centre": [
+    4.8830285,
+    52.3523765
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": false,
+   "items": []
+  },
+  {
+   "tag": "w12-197",
+   "bearing": 197,
+   "lengthM": 6.8,
+   "centre": [
+    4.8825,
+    52.3521055
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002457_pano_0000_001898",
+   "capturedAt": "2022-03-21",
+   "checked": true,
+   "items": [
+    {
+     "id": "w12-low-front",
+     "kind": "window-shape",
+     "where": "one-storey brick front with groups of tall narrow cream-framed windows 1.0-4.0 m",
+     "approxSizeM": [
+      6.8,
+      3
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002457_pano_0000_001898",
+     "how": "lowFront(): 0.62 m windows on a 0.95 m pitch with transoms, cream coping line"
+    }
+   ]
+  },
+  {
+   "tag": "w13-197",
+   "bearing": 197,
+   "lengthM": 6.7,
+   "centre": [
+    4.8826105,
+    52.3520865
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-07-30_09-09-11_00350",
+   "capturedAt": "2025-07-30",
+   "checked": true,
+   "items": [
+    {
+     "id": "w13-low-front",
+     "kind": "window-shape",
+     "where": "same low front under scaffolding (2025); 2018 view shows the tall windows",
+     "approxSizeM": [
+      6.7,
+      3
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-07-30_09-09-11_00350",
+     "how": "lowFront()"
+    },
+    {
+     "id": "w13-scaffold",
+     "kind": "other",
+     "where": "scaffolding and netting",
+     "approxSizeM": [
+      6.7,
+      20
+     ],
+     "plan": "skipped",
+     "seenIn": "recording_2025-07-30_09-09-11_00350",
+     "skip": {
+      "reason": "temporary",
+      "note": "2025 works"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "w14-109",
+   "bearing": 109,
+   "lengthM": 6.7,
+   "centre": [
+    4.8823295,
+    52.3523815
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": false,
+   "items": []
+  },
+  {
+   "tag": "w15-196",
+   "bearing": 196,
+   "lengthM": 5.4,
+   "centre": [
+    4.8823315,
+    52.3521295
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-07-30_09-09-11_00346",
+   "capturedAt": "2025-07-30",
+   "checked": true,
+   "items": [
+    {
+     "id": "w15-corner",
+     "kind": "window-shape",
+     "where": "corner with stone ground floor, door and storey windows",
+     "approxSizeM": [
+      5.4,
+      18
+     ],
+     "plan": "simplified",
+     "seenIn": "recording_2025-07-30_09-09-11_00346",
+     "how": "stone plinth and storey windows"
+    }
+   ]
+  },
+  {
+   "tag": "w16-246",
+   "bearing": 246,
+   "lengthM": 5.4,
+   "centre": [
+    4.882548,
+    52.352416
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002118_pano_0000_000966",
+   "capturedAt": "2021-04-26",
+   "checked": true,
+   "items": [
+    {
+     "id": "w16-balcony",
+     "kind": "other",
+     "where": "curved balcony with cream underside over a stone-faced ground storey",
+     "approxSizeM": [
+      5.4,
+      1.8
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-002118_pano_0000_000966",
+     "how": "storey windows on the shell; the balcony slab is not drawn"
+    }
+   ]
+  },
+  {
+   "tag": "w17-65",
+   "bearing": 65,
+   "lengthM": 5.3,
+   "centre": [
+    4.8826565,
+    52.3524455
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002223_pano_0000_000688",
+   "capturedAt": "2021-07-08",
+   "checked": true,
+   "items": [
+    {
+     "id": "w17-shopfront",
+     "kind": "window-shape",
+     "where": "large shop window between stone piers, cream band over it",
+     "approxSizeM": [
+      5.3,
+      3.6
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002223_pano_0000_000688",
+     "how": "street-edge shop windows and cream band"
+    },
+    {
+     "id": "w17-sign",
+     "kind": "sign",
+     "where": "shop lettering in the window",
+     "approxSizeM": [
+      3,
+      0.4
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7316010203-002223_pano_0000_000688",
+     "skip": {
+      "reason": "temporary",
+      "note": "tenant sign"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "w18-197",
+   "bearing": 197,
+   "lengthM": 4.6,
+   "centre": [
+    4.8824045,
+    52.352123
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-07-30_09-09-11_00347",
+   "capturedAt": "2025-07-30",
+   "checked": true,
+   "items": [
+    {
+     "id": "w18-scaffold",
+     "kind": "other",
+     "where": "scaffolding over the south wing; a rounded stair tower at the left",
+     "approxSizeM": [
+      4.6,
+      20
+     ],
+     "plan": "skipped",
+     "seenIn": "recording_2025-07-30_09-09-11_00347",
+     "skip": {
+      "reason": "temporary",
+      "note": "2025 works"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "w19-291",
+   "bearing": 291,
+   "lengthM": 4.5,
+   "centre": [
+    4.8821645,
+    52.352395
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002118_pano_0000_000962",
+   "capturedAt": "2021-04-26",
+   "checked": true,
+   "items": [
+    {
+     "id": "w19-shopfronts",
+     "kind": "window-shape",
+     "where": "shop storey, cream band, storey windows; rounded balcony band at first floor",
+     "approxSizeM": [
+      4.5,
+      3.6
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-002118_pano_0000_000962",
+     "how": "shop windows, cream band, storey rows; the balcony band is not drawn here"
+    }
+   ]
+  },
+  {
+   "tag": "w20-291",
+   "bearing": 291,
+   "lengthM": 4.5,
+   "centre": [
+    4.8821935,
+    52.352443
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001497_pano_0003_000194",
+   "capturedAt": "2019-12-06",
+   "checked": true,
+   "items": [
+    {
+     "id": "w20-shopfronts",
+     "kind": "window-shape",
+     "where": "shop storey, cream band, storey windows",
+     "approxSizeM": [
+      4.5,
+      3.6
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001497_pano_0003_000194",
+     "how": "shop windows, cream band, storey rows"
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  },
+  {
+   "name": "Rijksmonumentenregister 527856",
+   "url": "https://monumentenregister.cultureelerfgoed.nl/monumenten/527856",
+   "licence": "CC0"
+  },
+  {
+   "name": "Amsterdam-Roelof-Hartplein-50-JPG.jpg",
+   "url": "https://commons.wikimedia.org/wiki/File:Amsterdam_-_Roelof_Hartplein_50.JPG",
+   "licence": "CC BY-SA 3.0 nl"
+  },
+  {
+   "name": "Amsterdam-Het-Nieuwe-Huis-001-JPG.jpg",
+   "url": "https://commons.wikimedia.org/wiki/File:Amsterdam_Het_Nieuwe_Huis_001.JPG",
+   "licence": "CC BY 3.0"
+  },
+  {
+   "name": "Het-Nieuwe-Huis-Roelof-Hartplein-JPG.jpg",
+   "url": "https://commons.wikimedia.org/wiki/File:Het_Nieuwe_Huis,_Roelof_Hartplein.JPG",
+   "licence": "CC BY-SA 3.0 nl"
+  },
+  {
+   "name": "Het-Nieuwe-Huis-jpg.jpg",
+   "url": "https://commons.wikimedia.org/wiki/File:Het_Nieuwe_Huis.jpg",
+   "licence": "CC BY-SA 3.0 nl"
+  },
+  {
+   "name": "Amsterdam-Het-Nieuwe-Huis-29669549874-jpg.jpg",
+   "url": "https://commons.wikimedia.org/wiki/File:Amsterdam_-_Het_Nieuwe_Huis_(29669549874).jpg",
+   "licence": "CC BY 2.0"
+  },
+  {
+   "name": "Amsterdam-Het-Nieuwe-Huis-29669550994-jpg.jpg",
+   "url": "https://commons.wikimedia.org/wiki/File:Amsterdam_-_Het_Nieuwe_Huis_(29669550994).jpg",
+   "licence": "CC BY 2.0"
+  },
+  {
+   "name": "Roelof-Hartplein-bibliotheek-jpg.jpg",
+   "url": "https://commons.wikimedia.org/wiki/File:Roelof_Hartplein_bibliotheek.jpg",
+   "licence": "Public domain"
+  }
+ ]
+}

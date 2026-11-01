@@ -1,0 +1,107 @@
+{
+ "street": "Honthorststraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-01T15:27:44.875Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012142126",
+   "addresses": [
+    "Honthorststraat 50"
+   ],
+   "groundUnits": [
+    {
+     "address": "Honthorststraat 50-H",
+     "use": "woonfunctie",
+     "areaM2": 152,
+     "bagId": "0363010000670452"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012087328",
+   "addresses": [
+    "Honthorststraat 48"
+   ],
+   "groundUnits": [
+    {
+     "address": "Honthorststraat 48-H",
+     "use": "woonfunctie",
+     "areaM2": 252,
+     "bagId": "0363010000670448"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012110929",
+   "addresses": [
+    "Honthorststraat 46"
+   ],
+   "groundUnits": [
+    {
+     "address": "Honthorststraat 46-H",
+     "use": "woonfunctie",
+     "areaM2": 192,
+     "bagId": "0363010000670444"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012071827",
+   "addresses": [
+    "Honthorststraat 44"
+   ],
+   "groundUnits": [
+    {
+     "address": "Honthorststraat 44-H",
+     "use": "woonfunctie",
+     "areaM2": 188,
+     "bagId": "0363010000670442"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012077492",
+   "addresses": [
+    "Honthorststraat 42"
+   ],
+   "groundUnits": [
+    {
+     "address": "Honthorststraat 42-H",
+     "use": "woonfunctie",
+     "areaM2": 112,
+     "bagId": "0363010000670440"
+    }
+   ],
+   "units": 2,
+   "osm": [
+    {
+     "type": "node",
+     "id": 8745641789,
+     "lngLat": [
+      4.88552,
+      52.3576477
+     ],
+     "tags": {
+      "amenity": "charging_station",
+      "capacity": "2",
+      "motorcar": "yes",
+      "source": "survey"
+     },
+     "fetchedAt": "2026-11-01T15:27:44.875Z",
+     "match": "frontage",
+     "distanceM": 5.2
+    }
+   ]
+  }
+ ]
+}

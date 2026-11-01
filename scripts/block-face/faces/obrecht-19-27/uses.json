@@ -1,0 +1,116 @@
+{
+ "street": "Jacob Obrechtstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-01T15:37:22.729Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012160779",
+   "addresses": [
+    "Jacob Obrechtstraat 19A",
+    "Jacob Obrechtstraat 19B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jacob Obrechtstraat 19A",
+     "use": "winkelfunctie",
+     "areaM2": 85,
+     "bagId": "0363010000679816"
+    },
+    {
+     "address": "Jacob Obrechtstraat 19B",
+     "use": "winkelfunctie",
+     "areaM2": 112,
+     "bagId": "0363010000679817"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 9802409017,
+     "lngLat": [
+      4.875281,
+      52.3564541
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "69",
+      "addr:postcode": "1071ZG",
+      "addr:street": "Van Breestraat",
+      "name": "Sander Hotel",
+      "tourism": "hotel"
+     },
+     "fetchedAt": "2026-11-01T15:37:22.729Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012156696",
+   "addresses": [
+    "Jacob Obrechtstraat 21"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jacob Obrechtstraat 21-H",
+     "use": "woonfunctie",
+     "areaM2": 68,
+     "bagId": "0363010000679820"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012160416",
+   "addresses": [
+    "Jacob Obrechtstraat 23"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jacob Obrechtstraat 23-H",
+     "use": "woonfunctie",
+     "areaM2": 188,
+     "bagId": "0363010000679825"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012155885",
+   "addresses": [
+    "Jacob Obrechtstraat 25"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jacob Obrechtstraat 25",
+     "use": "woonfunctie",
+     "areaM2": 471,
+     "bagId": "0363010000679830"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012162934",
+   "addresses": [
+    "Jacob Obrechtstraat 27"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jacob Obrechtstraat 27-H",
+     "use": "winkelfunctie",
+     "areaM2": 155,
+     "bagId": "0363010000679832"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  }
+ ]
+}

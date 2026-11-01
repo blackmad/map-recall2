@@ -1,0 +1,1545 @@
+{
+ "street": "Wouwermanstraat",
+ "seed": "0363100012137088",
+ "members": [
+  "0363100012114665",
+  "0363100012108114",
+  "0363100012138798",
+  "0363100012083474",
+  "0363100012078941"
+ ],
+ "ends": [
+  {
+   "side": "left",
+   "reason": "run of wouwerman-2-44: 079390 held (auto-place.json)"
+  },
+  {
+   "side": "right",
+   "reason": "run of wouwerman-2-44: 090555 held (auto-place.json)"
+  }
+ ],
+ "rejected": [
+  {
+   "pandId": "0363100012063128",
+   "reason": "no frontage on Wouwermanstraat: No footprint edge faces Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012064242",
+   "reason": "frontage 141.7 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012068221",
+   "reason": "frontage 128.0 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012078861",
+   "reason": "frontage 173.7 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012088998",
+   "reason": "frontage 190.0 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012069411",
+   "reason": "frontage 110.9 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012070992",
+   "reason": "frontage 31.6 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012072116",
+   "reason": "frontage 152.5 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012073293",
+   "reason": "frontage 147.7 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012074908",
+   "reason": "frontage 150.2 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012076024",
+   "reason": "frontage 44.9 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012078650",
+   "reason": "frontage 110.3 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012078695",
+   "reason": "no frontage on Wouwermanstraat: No footprint edge faces Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012080119",
+   "reason": "frontage 45.3 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012083440",
+   "reason": "frontage 114.3 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012084411",
+   "reason": "frontage 152.2 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012094824",
+   "reason": "frontage 111.3 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012061243",
+   "reason": "frontage 68.4 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012064720",
+   "reason": "no frontage on Wouwermanstraat: No footprint edge faces Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012065378",
+   "reason": "frontage 33.3 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012066027",
+   "reason": "frontage 94.9 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012067174",
+   "reason": "frontage 76.1 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012068043",
+   "reason": "no frontage on Wouwermanstraat: No footprint edge faces Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012074730",
+   "reason": "frontage 71.7 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012075285",
+   "reason": "frontage 93.1 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012077408",
+   "reason": "no frontage on Wouwermanstraat: No footprint edge faces Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012077779",
+   "reason": "frontage 38.9 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012077874",
+   "reason": "frontage 164.0 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012079547",
+   "reason": "frontage 106.1 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012082767",
+   "reason": "frontage 129.9 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012083384",
+   "reason": "frontage 56.4 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012089090",
+   "reason": "frontage 94.8 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012089211",
+   "reason": "frontage 171.3 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012091058",
+   "reason": "no frontage on Wouwermanstraat: No footprint edge faces Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012092581",
+   "reason": "sightline to Wouwermanstraat crosses 0363100012132447"
+  },
+  {
+   "pandId": "0363100012098227",
+   "reason": "no frontage on Wouwermanstraat: No footprint edge faces Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012100965",
+   "reason": "no frontage on Wouwermanstraat: No footprint edge faces Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012101245",
+   "reason": "frontage 148.0 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012102526",
+   "reason": "frontage 188.2 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012103528",
+   "reason": "frontage 223.0 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012105172",
+   "reason": "frontage 193.1 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012111419",
+   "reason": "no frontage on Wouwermanstraat: No footprint edge faces Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012114124",
+   "reason": "frontage 217.8 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012096166",
+   "reason": "no frontage on Wouwermanstraat: No footprint edge faces Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012099460",
+   "reason": "no frontage on Wouwermanstraat: No footprint edge faces Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012100160",
+   "reason": "no frontage on Wouwermanstraat: No footprint edge faces Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012107332",
+   "reason": "frontage 184.1 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012108862",
+   "reason": "frontage 44.5 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012111241",
+   "reason": "no frontage on Wouwermanstraat: No footprint edge faces Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012111913",
+   "reason": "no frontage on Wouwermanstraat: No footprint edge faces Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012112804",
+   "reason": "frontage 119.3 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012113779",
+   "reason": "frontage 34.7 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012117884",
+   "reason": "frontage 229.9 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012095505",
+   "reason": "no frontage on Wouwermanstraat: No footprint edge faces Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012097766",
+   "reason": "frontage 33.4 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012097793",
+   "reason": "no frontage on Wouwermanstraat: No footprint edge faces Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012099034",
+   "reason": "frontage 66.8 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012101217",
+   "reason": "frontage 81.9 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012101863",
+   "reason": "no frontage on Wouwermanstraat: No footprint edge faces Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012102212",
+   "reason": "frontage 33.5 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012105468",
+   "reason": "frontage 103.1 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012107170",
+   "reason": "no frontage on Wouwermanstraat: No footprint edge faces Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012107670",
+   "reason": "frontage 83.5 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012110320",
+   "reason": "frontage 95.8 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012110888",
+   "reason": "frontage 41.1 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012113666",
+   "reason": "no frontage on Wouwermanstraat: No footprint edge faces Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012115169",
+   "reason": "no frontage on Wouwermanstraat: No footprint edge faces Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012116072",
+   "reason": "no frontage on Wouwermanstraat: No footprint edge faces Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012119354",
+   "reason": "frontage 159.0 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012119516",
+   "reason": "frontage 114.5 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012100351",
+   "reason": "no frontage on Wouwermanstraat: No footprint edge faces Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012111009",
+   "reason": "frontage 186.9 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012112954",
+   "reason": "frontage 163.4 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012114773",
+   "reason": "frontage 142.8 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012116189",
+   "reason": "frontage 197.7 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012121101",
+   "reason": "no frontage on Wouwermanstraat: No footprint edge faces Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012122526",
+   "reason": "frontage 220.5 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012124029",
+   "reason": "no frontage on Wouwermanstraat: No footprint edge faces Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012125531",
+   "reason": "no frontage on Wouwermanstraat: No footprint edge faces Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012125734",
+   "reason": "no frontage on Wouwermanstraat: No footprint edge faces Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012128474",
+   "reason": "frontage 121.4 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012136354",
+   "reason": "frontage 196.3 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012140135",
+   "reason": "frontage 134.1 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012142362",
+   "reason": "no frontage on Wouwermanstraat: No footprint edge faces Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012143335",
+   "reason": "frontage 215.4 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012120516",
+   "reason": "frontage 60.7 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012123673",
+   "reason": "frontage 31.3 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012125480",
+   "reason": "no frontage on Wouwermanstraat: No footprint edge faces Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012127043",
+   "reason": "frontage 36.9 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012129366",
+   "reason": "sightline to Wouwermanstraat crosses 0363100012152369"
+  },
+  {
+   "pandId": "0363100012131367",
+   "reason": "frontage 44.4 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012132257",
+   "reason": "frontage 44.8 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012132314",
+   "reason": "frontage 39.2 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012132812",
+   "reason": "frontage 85.5 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012138332",
+   "reason": "no frontage on Wouwermanstraat: No footprint edge faces Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012138649",
+   "reason": "frontage 151.5 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012138687",
+   "reason": "frontage 111.3 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012142717",
+   "reason": "no frontage on Wouwermanstraat: No footprint edge faces Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012144606",
+   "reason": "frontage 110.9 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012145693",
+   "reason": "frontage 76.5 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012120011",
+   "reason": "frontage 41.5 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012120761",
+   "reason": "frontage 178.7 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012121676",
+   "reason": "frontage 185.7 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012122829",
+   "reason": "frontage 190.0 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012124673",
+   "reason": "frontage 33.5 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012128629",
+   "reason": "frontage 49.0 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012128736",
+   "reason": "no frontage on Wouwermanstraat: No footprint edge faces Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012129521",
+   "reason": "frontage 69.2 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012131184",
+   "reason": "no frontage on Wouwermanstraat: No footprint edge faces Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012132021",
+   "reason": "frontage 95.8 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012132447",
+   "reason": "sightline to Wouwermanstraat crosses 0363100012237179"
+  },
+  {
+   "pandId": "0363100012135196",
+   "reason": "frontage 69.0 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012138937",
+   "reason": "frontage 68.7 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012139354",
+   "reason": "sightline to Wouwermanstraat crosses 0363100012237179"
+  },
+  {
+   "pandId": "0363100012144118",
+   "reason": "sightline to Wouwermanstraat crosses 0363100012136992"
+  },
+  {
+   "pandId": "0363100012125850",
+   "reason": "frontage 138.2 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012142048",
+   "reason": "frontage 144.2 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012154818",
+   "reason": "frontage 156.4 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012155921",
+   "reason": "frontage 152.0 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012145883",
+   "reason": "frontage 136.6 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012151883",
+   "reason": "frontage 39.1 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012152369",
+   "reason": "sightline to Wouwermanstraat crosses 0363100012164431"
+  },
+  {
+   "pandId": "0363100012152528",
+   "reason": "frontage 39.4 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012152539",
+   "reason": "frontage 206.2 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012152896",
+   "reason": "frontage 146.7 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012153603",
+   "reason": "frontage 33.1 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012153647",
+   "reason": "frontage 190.8 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012154379",
+   "reason": "frontage 176.4 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012155607",
+   "reason": "frontage 218.4 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012155965",
+   "reason": "frontage 229.9 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012156524",
+   "reason": "frontage 181.0 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012146105",
+   "reason": "frontage 63.9 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012149061",
+   "reason": "frontage 109.9 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012149750",
+   "reason": "no frontage on Wouwermanstraat: No footprint edge faces Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012150328",
+   "reason": "no frontage on Wouwermanstraat: No footprint edge faces Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012150854",
+   "reason": "frontage 85.4 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012151751",
+   "reason": "no frontage on Wouwermanstraat: No footprint edge faces Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012152130",
+   "reason": "no frontage on Wouwermanstraat: No footprint edge faces Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012152284",
+   "reason": "frontage 70.5 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012152362",
+   "reason": "frontage 39.3 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012152421",
+   "reason": "frontage 105.9 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012152723",
+   "reason": "frontage 96.4 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012152818",
+   "reason": "sightline to Wouwermanstraat crosses 0363100012156622"
+  },
+  {
+   "pandId": "0363100012152819",
+   "reason": "sightline to Wouwermanstraat crosses 0363100012152818"
+  },
+  {
+   "pandId": "0363100012153563",
+   "reason": "frontage 128.9 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012153747",
+   "reason": "frontage 143.9 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012154211",
+   "reason": "frontage 95.3 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012154327",
+   "reason": "frontage 164.0 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012154402",
+   "reason": "frontage 143.9 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012155335",
+   "reason": "frontage 171.2 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012155395",
+   "reason": "frontage 95.5 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012155454",
+   "reason": "frontage 61.2 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012155476",
+   "reason": "frontage 144.6 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012155755",
+   "reason": "frontage 95.2 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012155888",
+   "reason": "frontage 71.8 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012155939",
+   "reason": "frontage 113.2 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012156358",
+   "reason": "frontage 39.7 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012156419",
+   "reason": "frontage 39.1 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012156566",
+   "reason": "frontage 42.7 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012156951",
+   "reason": "frontage 216.0 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012158803",
+   "reason": "frontage 193.1 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012159293",
+   "reason": "frontage 223.0 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012159344",
+   "reason": "frontage 180.8 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012159529",
+   "reason": "frontage 38.4 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012159779",
+   "reason": "frontage 66.2 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012160266",
+   "reason": "frontage 214.4 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012160337",
+   "reason": "frontage 173.0 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012160565",
+   "reason": "frontage 49.4 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012156757",
+   "reason": "frontage 71.5 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012156833",
+   "reason": "no frontage on Wouwermanstraat: No footprint edge faces Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012156834",
+   "reason": "frontage 71.2 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012156856",
+   "reason": "frontage 132.2 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012156857",
+   "reason": "frontage 138.4 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012157088",
+   "reason": "frontage 71.0 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012157229",
+   "reason": "frontage 122.7 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012157286",
+   "reason": "frontage 85.5 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012157299",
+   "reason": "frontage 129.7 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012157533",
+   "reason": "no frontage on Wouwermanstraat: No footprint edge faces Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012157703",
+   "reason": "frontage 97.2 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012157775",
+   "reason": "frontage 42.7 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012157890",
+   "reason": "frontage 150.2 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012158132",
+   "reason": "frontage 39.4 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012158222",
+   "reason": "no frontage on Wouwermanstraat: No footprint edge faces Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012158419",
+   "reason": "frontage 96.5 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012158521",
+   "reason": "frontage 70.4 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012158538",
+   "reason": "frontage 95.7 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012158546",
+   "reason": "frontage 43.0 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012158591",
+   "reason": "frontage 131.4 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012158828",
+   "reason": "frontage 42.9 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012158844",
+   "reason": "frontage 129.2 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012159001",
+   "reason": "frontage 96.0 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012159034",
+   "reason": "frontage 130.2 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012159337",
+   "reason": "frontage 89.9 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012159652",
+   "reason": "frontage 128.6 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012159717",
+   "reason": "frontage 95.8 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012159835",
+   "reason": "frontage 95.9 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012160058",
+   "reason": "frontage 39.9 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012160354",
+   "reason": "frontage 38.6 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012160362",
+   "reason": "frontage 149.0 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012160498",
+   "reason": "frontage 39.3 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012160510",
+   "reason": "frontage 129.4 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012160592",
+   "reason": "frontage 178.1 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012160611",
+   "reason": "frontage 40.7 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012160621",
+   "reason": "frontage 116.0 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012160657",
+   "reason": "frontage 71.7 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012160736",
+   "reason": "frontage 40.1 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012160741",
+   "reason": "frontage 132.0 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012161910",
+   "reason": "no frontage on Wouwermanstraat: No footprint edge faces Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012160790",
+   "reason": "frontage 193.6 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012160817",
+   "reason": "frontage 224.4 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012161393",
+   "reason": "frontage 212.5 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012161477",
+   "reason": "frontage 180.2 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012161732",
+   "reason": "frontage 119.6 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012161880",
+   "reason": "frontage 93.6 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012161940",
+   "reason": "frontage 166.2 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012162112",
+   "reason": "frontage 114.1 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012163537",
+   "reason": "frontage 113.3 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012163593",
+   "reason": "frontage 204.1 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012163704",
+   "reason": "frontage 67.8 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012163789",
+   "reason": "sightline to Wouwermanstraat crosses 0363100012129366"
+  },
+  {
+   "pandId": "0363100012163880",
+   "reason": "frontage 61.3 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012164158",
+   "reason": "frontage 170.3 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012164237",
+   "reason": "frontage 181.4 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012164612",
+   "reason": "frontage 181.6 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012164614",
+   "reason": "frontage 209.2 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012164629",
+   "reason": "frontage 179.9 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012164701",
+   "reason": "frontage 161.0 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012164862",
+   "reason": "frontage 181.2 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012164883",
+   "reason": "frontage 183.1 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012160830",
+   "reason": "frontage 131.7 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012160844",
+   "reason": "frontage 129.4 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012160976",
+   "reason": "frontage 78.9 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012161109",
+   "reason": "no frontage on Wouwermanstraat: No footprint edge faces Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012161158",
+   "reason": "frontage 71.9 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012161263",
+   "reason": "frontage 97.4 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012161495",
+   "reason": "frontage 45.3 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012161545",
+   "reason": "frontage 39.8 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012161607",
+   "reason": "frontage 130.0 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012161636",
+   "reason": "frontage 38.9 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012161919",
+   "reason": "frontage 38.8 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012161927",
+   "reason": "frontage 128.7 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012161951",
+   "reason": "frontage 70.7 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012161969",
+   "reason": "frontage 99.9 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012162581",
+   "reason": "frontage 139.3 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012162777",
+   "reason": "no frontage on Wouwermanstraat: No footprint edge faces Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012163118",
+   "reason": "frontage 40.3 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012163146",
+   "reason": "frontage 130.4 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012163219",
+   "reason": "frontage 40.5 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012163247",
+   "reason": "frontage 87.1 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012163345",
+   "reason": "frontage 71.0 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012163472",
+   "reason": "frontage 55.8 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012163646",
+   "reason": "frontage 39.2 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012164245",
+   "reason": "frontage 131.0 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012164318",
+   "reason": "frontage 40.9 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012164391",
+   "reason": "frontage 146.3 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012164394",
+   "reason": "sightline to Wouwermanstraat crosses 0363100012152818"
+  },
+  {
+   "pandId": "0363100012165281",
+   "reason": "frontage 155.9 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012165357",
+   "reason": "frontage 199.5 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012165479",
+   "reason": "frontage 182.6 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012165798",
+   "reason": "frontage 44.1 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012165960",
+   "reason": "frontage 55.4 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012166010",
+   "reason": "frontage 210.4 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012166115",
+   "reason": "frontage 193.0 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012166436",
+   "reason": "frontage 182.0 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012166880",
+   "reason": "frontage 219.1 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012166937",
+   "reason": "frontage 66.1 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012166994",
+   "reason": "frontage 203.8 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012167076",
+   "reason": "frontage 180.6 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012167277",
+   "reason": "frontage 224.2 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012167409",
+   "reason": "frontage 186.5 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012187048",
+   "reason": "frontage 224.0 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012194430",
+   "reason": "no frontage on Wouwermanstraat: No footprint edge faces Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012205068",
+   "reason": "no frontage on Wouwermanstraat: No footprint edge faces Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012207314",
+   "reason": "no frontage on Wouwermanstraat: No footprint edge faces Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012228732",
+   "reason": "frontage 207.6 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012165301",
+   "reason": "frontage 97.6 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012165520",
+   "reason": "frontage 49.9 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012165662",
+   "reason": "frontage 131.9 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012166032",
+   "reason": "frontage 41.3 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012166167",
+   "reason": "frontage 131.6 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012166179",
+   "reason": "frontage 93.1 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012166268",
+   "reason": "frontage 156.9 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012166495",
+   "reason": "no frontage on Wouwermanstraat: No footprint edge faces Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012166510",
+   "reason": "frontage 96.2 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012166563",
+   "reason": "frontage 119.2 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012166772",
+   "reason": "frontage 150.7 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012167007",
+   "reason": "frontage 92.2 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012167160",
+   "reason": "frontage 71.3 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012167193",
+   "reason": "frontage 96.1 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012183440",
+   "reason": "frontage 50.7 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012187040",
+   "reason": "sightline to Wouwermanstraat crosses 0363100012142783"
+  },
+  {
+   "pandId": "0363100012191238",
+   "reason": "no frontage on Wouwermanstraat: No footprint edge faces Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012191848",
+   "reason": "no frontage on Wouwermanstraat: No footprint edge faces Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012196840",
+   "reason": "frontage 31.3 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012204080",
+   "reason": "frontage 47.6 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012211101",
+   "reason": "frontage 51.3 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012213439",
+   "reason": "frontage 152.8 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012217232",
+   "reason": "frontage 55.2 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012218010",
+   "reason": "frontage 55.2 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012219640",
+   "reason": "sightline to Wouwermanstraat crosses 0363100012113371"
+  },
+  {
+   "pandId": "0363100012220484",
+   "reason": "no frontage on Wouwermanstraat: No footprint edge faces Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012227383",
+   "reason": "no frontage on Wouwermanstraat: No footprint edge faces Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012207262",
+   "reason": "frontage 183.0 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012220878",
+   "reason": "frontage 180.5 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012236724",
+   "reason": "frontage 161.9 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012237204",
+   "reason": "frontage 197.4 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012233435",
+   "reason": "frontage 102.2 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012233575",
+   "reason": "frontage 128.5 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012233633",
+   "reason": "frontage 75.1 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012234991",
+   "reason": "frontage 157.9 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012235394",
+   "reason": "frontage 91.0 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012235927",
+   "reason": "frontage 100.2 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012235978",
+   "reason": "frontage 44.7 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012236205",
+   "reason": "frontage 229.7 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012236415",
+   "reason": "frontage 106.7 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012236941",
+   "reason": "frontage 65.7 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012237012",
+   "reason": "frontage 144.3 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012237136",
+   "reason": "frontage 71.9 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012237149",
+   "reason": "frontage 74.1 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012237262",
+   "reason": "frontage 107.9 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012232413",
+   "reason": "frontage 152.3 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012233447",
+   "reason": "frontage 157.4 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012233691",
+   "reason": "frontage 72.1 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012235968",
+   "reason": "frontage 34.8 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012236025",
+   "reason": "frontage 131.1 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012236106",
+   "reason": "frontage 98.8 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012236193",
+   "reason": "frontage 70.0 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012236201",
+   "reason": "frontage 130.6 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012236344",
+   "reason": "frontage 70.2 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012236509",
+   "reason": "frontage 131.3 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012236564",
+   "reason": "frontage 80.9 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012236620",
+   "reason": "frontage 69.7 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012236672",
+   "reason": "frontage 69.9 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012236781",
+   "reason": "frontage 33.0 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012236996",
+   "reason": "frontage 155.4 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012237032",
+   "reason": "frontage 130.9 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012237088",
+   "reason": "frontage 69.6 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012237099",
+   "reason": "frontage 69.4 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012237213",
+   "reason": "no frontage on Wouwermanstraat: No footprint edge faces Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012237303",
+   "reason": "frontage 112.8 m from Wouwermanstraat"
+  },
+  {
+   "pandId": "0363100012249642",
+   "reason": "sightline to Wouwermanstraat crosses 0363100012237179"
+  },
+  {
+   "pandId": "0363100012068545",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012070697",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012073782",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012074664",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012077169",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012084446",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012086954",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012090723",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012105454",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012111893",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012113371",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012116424",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012130657",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012142783",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012153148",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012153904",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012155779",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012156478",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012156622",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012158182",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012159254",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012166538",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012166607",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012236207",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012236579",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012237179",
+   "reason": "fronts the other side / another direction"
+  }
+ ],
+ "areaHalfSizeM": 180,
+ "pands": [
+  {
+   "pandId": "0363100012114665",
+   "alongM": -48.44,
+   "widthM": 6.63,
+   "eavesM": 14.24,
+   "roofMaxM": 18.19,
+   "storeys3dbag": 5,
+   "builtYear": 1910,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012108114",
+   "alongM": -42.12,
+   "widthM": 6.01,
+   "eavesM": 14.43,
+   "roofMaxM": 17.59,
+   "storeys3dbag": 5,
+   "builtYear": 1911,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012138798",
+   "alongM": -36.11,
+   "widthM": 6.01,
+   "eavesM": 14.33,
+   "roofMaxM": 17.68,
+   "storeys3dbag": 5,
+   "builtYear": 1911,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012083474",
+   "alongM": -30.1,
+   "widthM": 6.01,
+   "eavesM": 14.21,
+   "roofMaxM": 17.53,
+   "storeys3dbag": 5,
+   "builtYear": 1911,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012078941",
+   "alongM": -24.09,
+   "widthM": 6.01,
+   "eavesM": 14.14,
+   "roofMaxM": 17.45,
+   "storeys3dbag": 5,
+   "builtYear": 1911,
+   "uncertainty": []
+  }
+ ],
+ "runOf": "wouwerman-2-44"
+}

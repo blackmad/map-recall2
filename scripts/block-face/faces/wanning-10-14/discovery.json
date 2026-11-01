@@ -1,0 +1,633 @@
+{
+ "street": "Wanningstraat",
+ "seed": "0363100012107332",
+ "members": [
+  "0363100012164629",
+  "0363100012107332"
+ ],
+ "ends": [
+  {
+   "side": "left",
+   "reason": "no further pand fronts the street in the fetched area"
+  },
+  {
+   "side": "right",
+   "reason": "next fronting pand 0363100012161393 26.4 m on shares no party wall (cross street or gap)"
+  }
+ ],
+ "rejected": [
+  {
+   "pandId": "0363100012069411",
+   "reason": "frontage 51.6 m from Wanningstraat"
+  },
+  {
+   "pandId": "0363100012072116",
+   "reason": "no frontage on Wanningstraat: No footprint edge faces Wanningstraat"
+  },
+  {
+   "pandId": "0363100012073293",
+   "reason": "sightline to Wanningstraat crosses 0363100012074908"
+  },
+  {
+   "pandId": "0363100012074908",
+   "reason": "no frontage on Wanningstraat: No footprint edge faces Wanningstraat"
+  },
+  {
+   "pandId": "0363100012076391",
+   "reason": "frontage 95.4 m from Wanningstraat"
+  },
+  {
+   "pandId": "0363100012078650",
+   "reason": "frontage 46.8 m from Wanningstraat"
+  },
+  {
+   "pandId": "0363100012078695",
+   "reason": "frontage 38.7 m from Wanningstraat"
+  },
+  {
+   "pandId": "0363100012083440",
+   "reason": "frontage 46.0 m from Wanningstraat"
+  },
+  {
+   "pandId": "0363100012088169",
+   "reason": "frontage 82.5 m from Wanningstraat"
+  },
+  {
+   "pandId": "0363100012094824",
+   "reason": "no frontage on Wanningstraat: No footprint edge faces Wanningstraat"
+  },
+  {
+   "pandId": "0363100012103728",
+   "reason": "sightline to Wanningstraat crosses 0363100012237358"
+  },
+  {
+   "pandId": "0363100012109934",
+   "reason": "frontage 63.2 m from Wanningstraat"
+  },
+  {
+   "pandId": "0363100012110342",
+   "reason": "frontage 76.0 m from Wanningstraat"
+  },
+  {
+   "pandId": "0363100012112804",
+   "reason": "frontage 43.3 m from Wanningstraat"
+  },
+  {
+   "pandId": "0363100012119449",
+   "reason": "frontage 69.2 m from Wanningstraat"
+  },
+  {
+   "pandId": "0363100012125480",
+   "reason": "sightline to Wanningstraat crosses 0363100012073293"
+  },
+  {
+   "pandId": "0363100012131514",
+   "reason": "frontage 56.9 m from Wanningstraat"
+  },
+  {
+   "pandId": "0363100012135596",
+   "reason": "frontage 88.9 m from Wanningstraat"
+  },
+  {
+   "pandId": "0363100012138687",
+   "reason": "frontage 58.7 m from Wanningstraat"
+  },
+  {
+   "pandId": "0363100012144606",
+   "reason": "frontage 55.2 m from Wanningstraat"
+  },
+  {
+   "pandId": "0363100012145883",
+   "reason": "frontage 30.4 m from Wanningstraat"
+  },
+  {
+   "pandId": "0363100012152486",
+   "reason": "frontage 61.5 m from Wanningstraat"
+  },
+  {
+   "pandId": "0363100012152501",
+   "reason": "frontage 39.6 m from Wanningstraat"
+  },
+  {
+   "pandId": "0363100012152715",
+   "reason": "frontage 42.3 m from Wanningstraat"
+  },
+  {
+   "pandId": "0363100012152743",
+   "reason": "frontage 48.2 m from Wanningstraat"
+  },
+  {
+   "pandId": "0363100012152751",
+   "reason": "frontage 45.3 m from Wanningstraat"
+  },
+  {
+   "pandId": "0363100012152896",
+   "reason": "no frontage on Wanningstraat: No footprint edge faces Wanningstraat"
+  },
+  {
+   "pandId": "0363100012153111",
+   "reason": "frontage 69.7 m from Wanningstraat"
+  },
+  {
+   "pandId": "0363100012153364",
+   "reason": "frontage 82.3 m from Wanningstraat"
+  },
+  {
+   "pandId": "0363100012153647",
+   "reason": "sightline to Wanningstraat crosses 0363100012107332"
+  },
+  {
+   "pandId": "0363100012153806",
+   "reason": "frontage 115.3 m from Wanningstraat"
+  },
+  {
+   "pandId": "0363100012154090",
+   "reason": "sightline to Wanningstraat crosses 0363100012103728"
+  },
+  {
+   "pandId": "0363100012154215",
+   "reason": "frontage 102.6 m from Wanningstraat"
+  },
+  {
+   "pandId": "0363100012154379",
+   "reason": "sightline to Wanningstraat crosses 0363100012164629"
+  },
+  {
+   "pandId": "0363100012155374",
+   "reason": "frontage 76.0 m from Wanningstraat"
+  },
+  {
+   "pandId": "0363100012155644",
+   "reason": "frontage 72.2 m from Wanningstraat"
+  },
+  {
+   "pandId": "0363100012155817",
+   "reason": "frontage 99.4 m from Wanningstraat"
+  },
+  {
+   "pandId": "0363100012156011",
+   "reason": "frontage 84.8 m from Wanningstraat"
+  },
+  {
+   "pandId": "0363100012156035",
+   "reason": "frontage 70.5 m from Wanningstraat"
+  },
+  {
+   "pandId": "0363100012156247",
+   "reason": "frontage 72.5 m from Wanningstraat"
+  },
+  {
+   "pandId": "0363100012156291",
+   "reason": "sightline to Wanningstraat crosses 0363100012164489"
+  },
+  {
+   "pandId": "0363100012156524",
+   "reason": "frontage 40.7 m from Wanningstraat"
+  },
+  {
+   "pandId": "0363100012157181",
+   "reason": "frontage 90.1 m from Wanningstraat"
+  },
+  {
+   "pandId": "0363100012157494",
+   "reason": "frontage 50.2 m from Wanningstraat"
+  },
+  {
+   "pandId": "0363100012157764",
+   "reason": "frontage 66.5 m from Wanningstraat"
+  },
+  {
+   "pandId": "0363100012157795",
+   "reason": "frontage 72.4 m from Wanningstraat"
+  },
+  {
+   "pandId": "0363100012158378",
+   "reason": "no frontage on Wanningstraat: No footprint edge faces Wanningstraat"
+  },
+  {
+   "pandId": "0363100012158394",
+   "reason": "frontage 49.6 m from Wanningstraat"
+  },
+  {
+   "pandId": "0363100012158442",
+   "reason": "frontage 67.0 m from Wanningstraat"
+  },
+  {
+   "pandId": "0363100012158476",
+   "reason": "frontage 43.6 m from Wanningstraat"
+  },
+  {
+   "pandId": "0363100012158647",
+   "reason": "frontage 99.4 m from Wanningstraat"
+  },
+  {
+   "pandId": "0363100012158802",
+   "reason": "frontage 108.7 m from Wanningstraat"
+  },
+  {
+   "pandId": "0363100012158803",
+   "reason": "frontage 89.1 m from Wanningstraat"
+  },
+  {
+   "pandId": "0363100012158992",
+   "reason": "frontage 88.6 m from Wanningstraat"
+  },
+  {
+   "pandId": "0363100012159256",
+   "reason": "frontage 52.9 m from Wanningstraat"
+  },
+  {
+   "pandId": "0363100012159344",
+   "reason": "frontage 34.3 m from Wanningstraat"
+  },
+  {
+   "pandId": "0363100012159349",
+   "reason": "frontage 37.2 m from Wanningstraat"
+  },
+  {
+   "pandId": "0363100012160038",
+   "reason": "frontage 84.8 m from Wanningstraat"
+  },
+  {
+   "pandId": "0363100012160186",
+   "reason": "frontage 72.5 m from Wanningstraat"
+  },
+  {
+   "pandId": "0363100012160266",
+   "reason": "frontage 55.1 m from Wanningstraat"
+  },
+  {
+   "pandId": "0363100012160547",
+   "reason": "frontage 39.6 m from Wanningstraat"
+  },
+  {
+   "pandId": "0363100012160548",
+   "reason": "frontage 38.3 m from Wanningstraat"
+  },
+  {
+   "pandId": "0363100012160752",
+   "reason": "frontage 103.0 m from Wanningstraat"
+  },
+  {
+   "pandId": "0363100012160787",
+   "reason": "frontage 31.1 m from Wanningstraat"
+  },
+  {
+   "pandId": "0363100012160796",
+   "reason": "frontage 121.7 m from Wanningstraat"
+  },
+  {
+   "pandId": "0363100012160817",
+   "reason": "frontage 48.3 m from Wanningstraat"
+  },
+  {
+   "pandId": "0363100012160927",
+   "reason": "frontage 94.9 m from Wanningstraat"
+  },
+  {
+   "pandId": "0363100012160974",
+   "reason": "frontage 30.2 m from Wanningstraat"
+  },
+  {
+   "pandId": "0363100012161172",
+   "reason": "frontage 94.8 m from Wanningstraat"
+  },
+  {
+   "pandId": "0363100012161732",
+   "reason": "frontage 63.0 m from Wanningstraat"
+  },
+  {
+   "pandId": "0363100012161793",
+   "reason": "frontage 30.5 m from Wanningstraat"
+  },
+  {
+   "pandId": "0363100012161880",
+   "reason": "frontage 77.1 m from Wanningstraat"
+  },
+  {
+   "pandId": "0363100012161940",
+   "reason": "no frontage on Wanningstraat: No footprint edge faces Wanningstraat"
+  },
+  {
+   "pandId": "0363100012162052",
+   "reason": "frontage 63.1 m from Wanningstraat"
+  },
+  {
+   "pandId": "0363100012162112",
+   "reason": "no frontage on Wanningstraat: No footprint edge faces Wanningstraat"
+  },
+  {
+   "pandId": "0363100012162246",
+   "reason": "no frontage on Wanningstraat: No footprint edge faces Wanningstraat"
+  },
+  {
+   "pandId": "0363100012162425",
+   "reason": "frontage 58.6 m from Wanningstraat"
+  },
+  {
+   "pandId": "0363100012162484",
+   "reason": "frontage 43.0 m from Wanningstraat"
+  },
+  {
+   "pandId": "0363100012162575",
+   "reason": "frontage 82.1 m from Wanningstraat"
+  },
+  {
+   "pandId": "0363100012163413",
+   "reason": "frontage 50.7 m from Wanningstraat"
+  },
+  {
+   "pandId": "0363100012163537",
+   "reason": "frontage 65.4 m from Wanningstraat"
+  },
+  {
+   "pandId": "0363100012163621",
+   "reason": "frontage 52.2 m from Wanningstraat"
+  },
+  {
+   "pandId": "0363100012163762",
+   "reason": "frontage 88.9 m from Wanningstraat"
+  },
+  {
+   "pandId": "0363100012163883",
+   "reason": "frontage 64.5 m from Wanningstraat"
+  },
+  {
+   "pandId": "0363100012163884",
+   "reason": "frontage 38.6 m from Wanningstraat"
+  },
+  {
+   "pandId": "0363100012164158",
+   "reason": "no frontage on Wanningstraat: No footprint edge faces Wanningstraat"
+  },
+  {
+   "pandId": "0363100012164193",
+   "reason": "frontage 83.3 m from Wanningstraat"
+  },
+  {
+   "pandId": "0363100012164237",
+   "reason": "frontage 53.7 m from Wanningstraat"
+  },
+  {
+   "pandId": "0363100012164345",
+   "reason": "sightline to Wanningstraat crosses 0363100012158378"
+  },
+  {
+   "pandId": "0363100012164472",
+   "reason": "frontage 78.0 m from Wanningstraat"
+  },
+  {
+   "pandId": "0363100012164489",
+   "reason": "no frontage on Wanningstraat: No footprint edge faces Wanningstraat"
+  },
+  {
+   "pandId": "0363100012164540",
+   "reason": "frontage 100.1 m from Wanningstraat"
+  },
+  {
+   "pandId": "0363100012164612",
+   "reason": "frontage 60.3 m from Wanningstraat"
+  },
+  {
+   "pandId": "0363100012164614",
+   "reason": "frontage 54.9 m from Wanningstraat"
+  },
+  {
+   "pandId": "0363100012164701",
+   "reason": "no frontage on Wanningstraat: No footprint edge faces Wanningstraat"
+  },
+  {
+   "pandId": "0363100012164862",
+   "reason": "frontage 47.3 m from Wanningstraat"
+  },
+  {
+   "pandId": "0363100012165281",
+   "reason": "no frontage on Wanningstraat: No footprint edge faces Wanningstraat"
+  },
+  {
+   "pandId": "0363100012165339",
+   "reason": "frontage 108.7 m from Wanningstraat"
+  },
+  {
+   "pandId": "0363100012165363",
+   "reason": "frontage 39.9 m from Wanningstraat"
+  },
+  {
+   "pandId": "0363100012165442",
+   "reason": "frontage 95.7 m from Wanningstraat"
+  },
+  {
+   "pandId": "0363100012165544",
+   "reason": "frontage 61.4 m from Wanningstraat"
+  },
+  {
+   "pandId": "0363100012165669",
+   "reason": "no frontage on Wanningstraat: No footprint edge faces Wanningstraat"
+  },
+  {
+   "pandId": "0363100012165797",
+   "reason": "frontage 87.1 m from Wanningstraat"
+  },
+  {
+   "pandId": "0363100012165801",
+   "reason": "no frontage on Wanningstraat: No footprint edge faces Wanningstraat"
+  },
+  {
+   "pandId": "0363100012165998",
+   "reason": "frontage 75.2 m from Wanningstraat"
+  },
+  {
+   "pandId": "0363100012166010",
+   "reason": "frontage 88.4 m from Wanningstraat"
+  },
+  {
+   "pandId": "0363100012166047",
+   "reason": "frontage 56.8 m from Wanningstraat"
+  },
+  {
+   "pandId": "0363100012166099",
+   "reason": "frontage 95.0 m from Wanningstraat"
+  },
+  {
+   "pandId": "0363100012166253",
+   "reason": "frontage 69.6 m from Wanningstraat"
+  },
+  {
+   "pandId": "0363100012166316",
+   "reason": "sightline to Wanningstraat crosses 0363100012164489"
+  },
+  {
+   "pandId": "0363100012166436",
+   "reason": "frontage 66.7 m from Wanningstraat"
+  },
+  {
+   "pandId": "0363100012166789",
+   "reason": "no frontage on Wanningstraat: No footprint edge faces Wanningstraat"
+  },
+  {
+   "pandId": "0363100012166880",
+   "reason": "frontage 48.4 m from Wanningstraat"
+  },
+  {
+   "pandId": "0363100012166994",
+   "reason": "frontage 88.7 m from Wanningstraat"
+  },
+  {
+   "pandId": "0363100012167023",
+   "reason": "frontage 40.9 m from Wanningstraat"
+  },
+  {
+   "pandId": "0363100012167076",
+   "reason": "sightline to Wanningstraat crosses 0363100012167409"
+  },
+  {
+   "pandId": "0363100012167280",
+   "reason": "frontage 57.5 m from Wanningstraat"
+  },
+  {
+   "pandId": "0363100012167292",
+   "reason": "frontage 56.1 m from Wanningstraat"
+  },
+  {
+   "pandId": "0363100012167395",
+   "reason": "frontage 34.1 m from Wanningstraat"
+  },
+  {
+   "pandId": "0363100012185427",
+   "reason": "sightline to Wanningstraat crosses 0363100012237358"
+  },
+  {
+   "pandId": "0363100012187048",
+   "reason": "frontage 33.1 m from Wanningstraat"
+  },
+  {
+   "pandId": "0363100012200115",
+   "reason": "sightline to Wanningstraat crosses 0363100012155965"
+  },
+  {
+   "pandId": "0363100012218615",
+   "reason": "sightline to Wanningstraat crosses 0363100012161393"
+  },
+  {
+   "pandId": "0363100012228732",
+   "reason": "frontage 40.1 m from Wanningstraat"
+  },
+  {
+   "pandId": "0363100012233435",
+   "reason": "frontage 52.7 m from Wanningstraat"
+  },
+  {
+   "pandId": "0363100012233618",
+   "reason": "no frontage on Wanningstraat: No footprint edge faces Wanningstraat"
+  },
+  {
+   "pandId": "0363100012234991",
+   "reason": "frontage 51.3 m from Wanningstraat"
+  },
+  {
+   "pandId": "0363100012235927",
+   "reason": "frontage 74.1 m from Wanningstraat"
+  },
+  {
+   "pandId": "0363100012236205",
+   "reason": "frontage 42.0 m from Wanningstraat"
+  },
+  {
+   "pandId": "0363100012236415",
+   "reason": "frontage 71.7 m from Wanningstraat"
+  },
+  {
+   "pandId": "0363100012236419",
+   "reason": "frontage 34.5 m from Wanningstraat"
+  },
+  {
+   "pandId": "0363100012236464",
+   "reason": "sightline to Wanningstraat crosses 0363100012103728"
+  },
+  {
+   "pandId": "0363100012236637",
+   "reason": "sightline to Wanningstraat crosses 0363100012103728"
+  },
+  {
+   "pandId": "0363100012237012",
+   "reason": "no frontage on Wanningstraat: No footprint edge faces Wanningstraat"
+  },
+  {
+   "pandId": "0363100012084411",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012117884",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012138649",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012152539",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012153397",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012156951",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012159293",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012160337",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012161477",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012163754",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012165357",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012166115",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012167409",
+   "reason": "fronts the other side / another direction"
+  }
+ ],
+ "areaHalfSizeM": 90,
+ "pands": [
+  {
+   "pandId": "0363100012164629",
+   "alongM": -10.4,
+   "widthM": 1.23,
+   "eavesM": 12.41,
+   "roofMaxM": 15.43,
+   "storeys3dbag": 5,
+   "builtYear": 1903,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012107332",
+   "alongM": 0,
+   "widthM": 14.64,
+   "eavesM": 13.46,
+   "roofMaxM": 16.05,
+   "storeys3dbag": 5,
+   "builtYear": 1903,
+   "uncertainty": [
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  }
+ ]
+}

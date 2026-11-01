@@ -1,0 +1,304 @@
+{
+ "street": "Koninginneweg",
+ "seed": "0363100012162397",
+ "members": [
+  "0363100012162397",
+  "0363100012156316",
+  "0363100012159961",
+  "0363100012163144",
+  "0363100012167359"
+ ],
+ "ends": [
+  {
+   "side": "left",
+   "reason": "next fronting pand 0363100012236925 38.7 m on shares no party wall (cross street or gap)"
+  },
+  {
+   "side": "right",
+   "reason": "trimmed at 0363100012167359 (face continues: 158554)"
+  }
+ ],
+ "rejected": [
+  {
+   "pandId": "0363100012153668",
+   "reason": "no frontage on Koninginneweg: No footprint edge faces Koninginneweg"
+  },
+  {
+   "pandId": "0363100012156024",
+   "reason": "no frontage on Koninginneweg: No footprint edge faces Koninginneweg"
+  },
+  {
+   "pandId": "0363100012156081",
+   "reason": "frontage 40.2 m from Koninginneweg"
+  },
+  {
+   "pandId": "0363100012156082",
+   "reason": "no frontage on Koninginneweg: No footprint edge faces Koninginneweg"
+  },
+  {
+   "pandId": "0363100012156284",
+   "reason": "no frontage on Koninginneweg: No footprint edge faces Koninginneweg"
+  },
+  {
+   "pandId": "0363100012163830",
+   "reason": "no frontage on Koninginneweg: No footprint edge faces Koninginneweg"
+  },
+  {
+   "pandId": "0363100012167100",
+   "reason": "frontage 56.8 m from Koninginneweg"
+  },
+  {
+   "pandId": "0363100012235908",
+   "reason": "no frontage on Koninginneweg: No footprint edge faces Koninginneweg"
+  },
+  {
+   "pandId": "0363100012068485",
+   "reason": "frontage 86.2 m from Koninginneweg"
+  },
+  {
+   "pandId": "0363100012152325",
+   "reason": "frontage 63.4 m from Koninginneweg"
+  },
+  {
+   "pandId": "0363100012153337",
+   "reason": "frontage 75.8 m from Koninginneweg"
+  },
+  {
+   "pandId": "0363100012154322",
+   "reason": "frontage 69.2 m from Koninginneweg"
+  },
+  {
+   "pandId": "0363100012155542",
+   "reason": "frontage 78.1 m from Koninginneweg"
+  },
+  {
+   "pandId": "0363100012156506",
+   "reason": "frontage 57.6 m from Koninginneweg"
+  },
+  {
+   "pandId": "0363100012156659",
+   "reason": "frontage 43.8 m from Koninginneweg"
+  },
+  {
+   "pandId": "0363100012156708",
+   "reason": "frontage 50.6 m from Koninginneweg"
+  },
+  {
+   "pandId": "0363100012157285",
+   "reason": "frontage 122.4 m from Koninginneweg"
+  },
+  {
+   "pandId": "0363100012157556",
+   "reason": "frontage 63.3 m from Koninginneweg"
+  },
+  {
+   "pandId": "0363100012158260",
+   "reason": "frontage 104.7 m from Koninginneweg"
+  },
+  {
+   "pandId": "0363100012158526",
+   "reason": "frontage 113.5 m from Koninginneweg"
+  },
+  {
+   "pandId": "0363100012158747",
+   "reason": "sightline to Koninginneweg crosses 0363100012162397"
+  },
+  {
+   "pandId": "0363100012160033",
+   "reason": "frontage 56.1 m from Koninginneweg"
+  },
+  {
+   "pandId": "0363100012160086",
+   "reason": "frontage 44.9 m from Koninginneweg"
+  },
+  {
+   "pandId": "0363100012160133",
+   "reason": "frontage 129.9 m from Koninginneweg"
+  },
+  {
+   "pandId": "0363100012162570",
+   "reason": "sightline to Koninginneweg crosses 0363100012162397"
+  },
+  {
+   "pandId": "0363100012163205",
+   "reason": "frontage 64.4 m from Koninginneweg"
+  },
+  {
+   "pandId": "0363100012163535",
+   "reason": "frontage 85.0 m from Koninginneweg"
+  },
+  {
+   "pandId": "0363100012165473",
+   "reason": "frontage 98.5 m from Koninginneweg"
+  },
+  {
+   "pandId": "0363100012165962",
+   "reason": "no frontage on Koninginneweg: No footprint edge faces Koninginneweg"
+  },
+  {
+   "pandId": "0363100012166754",
+   "reason": "frontage 57.5 m from Koninginneweg"
+  },
+  {
+   "pandId": "0363100012167022",
+   "reason": "frontage 92.0 m from Koninginneweg"
+  },
+  {
+   "pandId": "0363100012167225",
+   "reason": "frontage 71.3 m from Koninginneweg"
+  },
+  {
+   "pandId": "0363100012167239",
+   "reason": "frontage 49.5 m from Koninginneweg"
+  },
+  {
+   "pandId": "0363100012218819",
+   "reason": "frontage 47.3 m from Koninginneweg"
+  },
+  {
+   "pandId": "0363100012233412",
+   "reason": "frontage 38.9 m from Koninginneweg"
+  },
+  {
+   "pandId": "0363100012235883",
+   "reason": "no frontage on Koninginneweg: No footprint edge faces Koninginneweg"
+  },
+  {
+   "pandId": "0363100012246445",
+   "reason": "frontage 32.5 m from Koninginneweg"
+  },
+  {
+   "pandId": "0363100012236059",
+   "reason": "sightline to Koninginneweg crosses 0363100012235963"
+  },
+  {
+   "pandId": "0363100012236482",
+   "reason": "frontage 62.0 m from Koninginneweg"
+  },
+  {
+   "pandId": "0363100012236580",
+   "reason": "no frontage on Koninginneweg: No footprint edge faces Koninginneweg"
+  },
+  {
+   "pandId": "0363100012236610",
+   "reason": "frontage 44.6 m from Koninginneweg"
+  },
+  {
+   "pandId": "0363100012237146",
+   "reason": "sightline to Koninginneweg crosses 0363100012235963"
+  },
+  {
+   "pandId": "0363100012235929",
+   "reason": "frontage 33.0 m from Koninginneweg"
+  },
+  {
+   "pandId": "0363100012236438",
+   "reason": "frontage 36.9 m from Koninginneweg"
+  },
+  {
+   "pandId": "0363100012236525",
+   "reason": "frontage 31.6 m from Koninginneweg"
+  },
+  {
+   "pandId": "0363100012236607",
+   "reason": "frontage 59.1 m from Koninginneweg"
+  },
+  {
+   "pandId": "0363100012236712",
+   "reason": "no frontage on Koninginneweg: No footprint edge faces Koninginneweg"
+  },
+  {
+   "pandId": "0363100012157421",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012158485",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012158223",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012163599",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012112493",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012152519",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012161974",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012233601",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012236391",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012237162",
+   "reason": "fronts the other side / another direction"
+  }
+ ],
+ "areaHalfSizeM": 90,
+ "pands": [
+  {
+   "pandId": "0363100012162397",
+   "alongM": 0,
+   "widthM": 10.04,
+   "eavesM": 9.41,
+   "roofMaxM": 14.8,
+   "storeys3dbag": 4,
+   "builtYear": 1896,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012156316",
+   "alongM": 8.05,
+   "widthM": 6.07,
+   "eavesM": 10.77,
+   "roofMaxM": 13.39,
+   "storeys3dbag": 4,
+   "builtYear": 1896,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012159961",
+   "alongM": 14.16,
+   "widthM": 6.24,
+   "eavesM": 13.34,
+   "roofMaxM": 13.44,
+   "storeys3dbag": 4,
+   "builtYear": 1896,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012163144",
+   "alongM": 20.44,
+   "widthM": 6.29,
+   "eavesM": 13.98,
+   "roofMaxM": 16.12,
+   "storeys3dbag": 4,
+   "builtYear": 1896,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012167359",
+   "alongM": 26.74,
+   "widthM": 6.33,
+   "eavesM": 13.73,
+   "roofMaxM": 15.77,
+   "storeys3dbag": 4,
+   "builtYear": 1896,
+   "uncertainty": []
+  }
+ ]
+}

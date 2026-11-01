@@ -1,0 +1,1139 @@
+{
+ "face": "maes-31-71",
+ "street": "Nicolaas Maesstraat",
+ "library": "museumkwartier",
+ "stripDate": "2022-03-21",
+ "seconds": 18.45,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [
+  {
+   "face": "maes-31-71-r1",
+   "pands": [
+    "0363100012101245",
+    "0363100012064242",
+    "0363100012125531",
+    "0363100012161910",
+    "0363100012063128",
+    "0363100012111419",
+    "0363100012150328",
+    "0363100012095505"
+   ],
+   "passed": true,
+   "triangles": 13392
+  }
+ ],
+ "pands": [
+  {
+   "pandId": "0363100012113503",
+   "address": "Nicolaas Maesstraat 31",
+   "builtYear": 1911,
+   "widthM": 7.04,
+   "eavesM": 14.39,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#67594e",
+    "wallRaw": "#6d6157",
+    "skyline": {
+     "eavesM": 15.53,
+     "eavesRow": 175,
+     "confidence": 0.84,
+     "crown": {
+      "widthM": 3.17,
+      "riseM": 4.37,
+      "topWidthM": 0.38,
+      "centre": 0.75
+     }
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": "right",
+    "accentShare": 0.11,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 5.85,
+       "widthM": 1.23,
+       "centre": 0.33
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.05
+   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: strip 2024-12-11: a 1911 corner block with white rendered bands, canted bays and a gabled roof; no type for it",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012076752",
+   "address": "Nicolaas Maesstraat 33",
+   "builtYear": 1911,
+   "widthM": 6.95,
+   "eavesM": 15.94,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#7e6c5d",
+    "wallRaw": "#897667",
+    "skyline": {
+     "eavesM": 15.7,
+     "eavesRow": 168,
+     "confidence": 0.92,
+     "crown": {
+      "widthM": 2.08,
+      "riseM": 3.4,
+      "topWidthM": 0.05,
+      "centre": 0.44
+     }
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.149,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 5.8,
+       "widthM": 0.9,
+       "centre": 0.56
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.03
+   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: strip 2024-12-11: a 1911 corner block with white rendered bands, canted bays and a gabled roof; no type for it",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012089113",
+   "address": "Nicolaas Maesstraat 35",
+   "builtYear": 1910,
+   "widthM": 6.55,
+   "eavesM": 13.69,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#675749",
+    "wallRaw": "#685a51",
+    "skyline": {
+     "eavesM": 15.05,
+     "eavesRow": 194,
+     "confidence": 0.9,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "columns",
+    "doorSide": "right",
+    "accentSide": "left",
+    "accentShare": 0.006,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.01
+   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: strip 2024-12-11: another 1910 design: flat heads under alternating white voussoir blocks, a white transom band, a bracketed cornice; no type for it (museum-hc-1910-glazed-oriel drew an oriel and tower dormers)",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012125930",
+   "address": "Nicolaas Maesstraat 37",
+   "builtYear": 1910,
+   "widthM": 6.76,
+   "eavesM": 13.73,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#635344",
+    "wallRaw": "#736054",
+    "skyline": {
+     "eavesM": 14.7,
+     "eavesRow": 208,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": "left",
+    "accentShare": 0.023,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.01
+   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: strip 2024-12-11: another 1910 design: flat heads under alternating white voussoir blocks, a white transom band, a bracketed cornice; no type for it (museum-hc-1910-glazed-oriel drew an oriel and tower dormers)",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012093896",
+   "address": "Nicolaas Maesstraat 39",
+   "builtYear": 1910,
+   "widthM": 6.49,
+   "eavesM": 13.76,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#816b5f",
+    "wallRaw": "#6e6055",
+    "skyline": {
+     "eavesM": 14.85,
+     "eavesRow": 202,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "columns",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.068,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 9.32,
+       "widthM": 1.05,
+       "centre": 0.38
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.01
+   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: strip 2024-12-11: another 1910 design: flat heads under alternating white voussoir blocks, a white transom band, a bracketed cornice; no type for it (museum-hc-1910-glazed-oriel drew an oriel and tower dormers)",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012150151",
+   "address": "Nicolaas Maesstraat 41",
+   "builtYear": 1910,
+   "widthM": 6.23,
+   "eavesM": 13.84,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#6e5e52",
+    "wallRaw": "#6f6056",
+    "skyline": {
+     "eavesM": 14.85,
+     "eavesRow": 202,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": "left",
+    "accentShare": 0.006,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.01
+   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: strip 2024-12-11: another 1910 design: flat heads under alternating white voussoir blocks, a white transom band, a bracketed cornice; no type for it (museum-hc-1910-glazed-oriel drew an oriel and tower dormers)",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012077283",
+   "address": "Nicolaas Maesstraat 43",
+   "builtYear": 1910,
+   "widthM": 5.98,
+   "eavesM": 13.75,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#666a72",
+    "wallRaw": "#6e5f54",
+    "skyline": {
+     "eavesM": 14.85,
+     "eavesRow": 202,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": "right",
+    "accentShare": 0.024,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 9.18,
+       "widthM": 0.97,
+       "centre": 0.81
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.01
+   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: strip 2024-12-11: another 1910 design: flat heads under alternating white voussoir blocks, a white transom band, a bracketed cornice; no type for it (museum-hc-1910-glazed-oriel drew an oriel and tower dormers)",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012108712",
+   "address": "Nicolaas Maesstraat 45",
+   "builtYear": 1910,
+   "widthM": 6.2,
+   "eavesM": 13.8,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#8b6c5e",
+    "wallRaw": "#6a5c50",
+    "skyline": {
+     "eavesM": 14.82,
+     "eavesRow": 203,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "columns",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.02,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.01
+   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: strip 2024-12-11: another 1910 design: flat heads under alternating white voussoir blocks, a white transom band, a bracketed cornice; no type for it (museum-hc-1910-glazed-oriel drew an oriel and tower dormers)",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012101245",
+   "address": "Nicolaas Maesstraat 47",
+   "builtYear": 1910,
+   "widthM": 6.63,
+   "eavesM": 13.92,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#957869",
+    "wallRaw": "#6a5d53",
+    "skyline": {
+     "eavesM": 14.7,
+     "eavesRow": 208,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "columns",
+    "doorSide": null,
+    "accentSide": "left",
+    "accentShare": 0.015,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 0.97 m at 0.49 (light 0.22): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.97,
+       "centre": 0.49,
+       "light": 0.22
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.02
+   },
+   "status": "placed",
+   "type": "museum-jv-1910-lintel-parapet",
+   "score": 1,
+   "placement": {
+    "type": "museum-jv-1910-lintel-parapet",
+    "measuredPalette": {
+     "brick": "#957869",
+     "evidence": "strip 2022-03-21 span 2096-2361: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "door unread: as drawn, the opposite of 064242",
+    "crown parapet (type default)"
+   ],
+   "likeness": {
+    "pandId": "0363100012101245",
+    "ncc": 0.317,
+    "nccRaw": 0.317,
+    "shiftM": [
+     0.05,
+     -0.3
+    ],
+    "usable": 0.95,
+    "abstain": null,
+    "verdict": "PASS",
+    "reasons": [],
+    "wall": {
+     "photo": "#927566",
+     "model": "#a48b7e",
+     "dL": 0.082
+    },
+    "glazing": {
+     "photo": 0.34,
+     "model": 0.41
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.61
+   },
+   "challengers": {
+    "museum-jv-1910-lintel-parapet": 0.317,
+    "museum-jv-1910-lintel-parapet~m": 0.317
+   }
+  },
+  {
+   "pandId": "0363100012064242",
+   "address": "Nicolaas Maesstraat 49",
+   "builtYear": 1910,
+   "widthM": 6.27,
+   "eavesM": 13.88,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#675a50",
+    "wallRaw": "#675d55",
+    "skyline": {
+     "eavesM": 14.63,
+     "eavesRow": 211,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": "left",
+    "accentShare": 0.027,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 0.63 m at 0.12 (light 0.33): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.63,
+       "centre": 0.12,
+       "light": 0.33
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 6.9,
+       "widthM": 0.95,
+       "centre": 0.69
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.02
+   },
+   "status": "placed",
+   "type": "museum-jv-1910-lintel-parapet",
+   "score": 1,
+   "placement": {
+    "type": "museum-jv-1910-lintel-parapet",
+    "measuredPalette": {
+     "brick": "#675a50",
+     "evidence": "strip 2022-03-21 span 2361-2612: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "mirror": true
+   },
+   "notes": [
+    "crown parapet (type default)",
+    "door left: mirrored: reviewer pin (maes-31-71 strip 2022-03-21: Nicolaas Maesstraat 49 has its double house door on the left axis, paired with its neighbour's door on the party wall)"
+   ],
+   "likeness": {
+    "pandId": "0363100012064242",
+    "ncc": 0.244,
+    "nccRaw": 0.244,
+    "shiftM": [
+     -0.05,
+     0.3
+    ],
+    "usable": 0.97,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.18 mean 0.42 vs photo 0.29"
+    ],
+    "wall": {
+     "photo": "#695e55",
+     "model": "#7f6f63",
+     "dL": 0.071
+    },
+    "glazing": {
+     "photo": 0.29,
+     "model": 0.42
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.576
+   },
+   "challengers": {
+    "museum-jv-1910-lintel-parapet~m": 0.244,
+    "museum-jv-1910-lintel-parapet": 0.219
+   }
+  },
+  {
+   "pandId": "0363100012125531",
+   "address": "Nicolaas Maesstraat 51",
+   "builtYear": 1910,
+   "widthM": 6.32,
+   "eavesM": 13.99,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#887770",
+    "wallRaw": "#6e665f",
+    "skyline": {
+     "eavesM": 14.55,
+     "eavesRow": 214,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.063,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 7.02,
+       "widthM": 1.27,
+       "centre": 0.14
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.02
+   },
+   "status": "placed",
+   "type": "museum-jv-1910-lintel-parapet",
+   "score": 1,
+   "placement": {
+    "type": "museum-jv-1910-lintel-parapet",
+    "measuredPalette": {
+     "brick": "#887770",
+     "evidence": "strip 2022-03-21 span 2612-2865: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "door unread: as drawn, the opposite of 064242",
+    "crown parapet (type default)"
+   ],
+   "likeness": {
+    "pandId": "0363100012125531",
+    "ncc": 0.258,
+    "nccRaw": 0.258,
+    "shiftM": [
+     -0.25,
+     0.3
+    ],
+    "usable": 0.94,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.35 mean 0.42 vs photo 0.24"
+    ],
+    "wall": {
+     "photo": "#86756e",
+     "model": "#998a83",
+     "dL": 0.078
+    },
+    "glazing": {
+     "photo": 0.24,
+     "model": 0.42
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.568
+   },
+   "challengers": {
+    "museum-jv-1910-lintel-parapet": 0.258,
+    "museum-jv-1910-lintel-parapet~m": 0.271
+   }
+  },
+  {
+   "pandId": "0363100012161910",
+   "address": "Nicolaas Maesstraat 53",
+   "builtYear": 1910,
+   "widthM": 6.06,
+   "eavesM": 14.06,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#534a40",
+    "wallRaw": "#736c65",
+    "skyline": {
+     "eavesM": 14.32,
+     "eavesRow": 223,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": "right",
+    "accentShare": 0.021,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 0.7 m at 0.15 (light 0.07): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.7,
+       "centre": 0.15,
+       "light": 0.07
+      },
+      {
+       "widthM": 0.97,
+       "centre": 0.48,
+       "light": 0.18
+      },
+      {
+       "widthM": 0.65,
+       "centre": 0.85,
+       "light": 0.29
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 7,
+       "widthM": 1.1,
+       "centre": 0.83
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.05
+   },
+   "status": "placed",
+   "type": "museum-jv-1910-lintel-parapet",
+   "score": 1,
+   "placement": {
+    "type": "museum-jv-1910-lintel-parapet",
+    "measuredPalette": {
+     "brick": "#534a40",
+     "evidence": "strip 2022-03-21 span 2864-3106: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "mirror": true
+   },
+   "notes": [
+    "crown parapet (type default)",
+    "door left: mirrored: reviewer pin (maes-31-71 strip 2022-03-21: Nicolaas Maesstraat 53 has its double house door on the left axis, paired with its neighbour's door on the party wall)"
+   ],
+   "likeness": {
+    "pandId": "0363100012161910",
+    "ncc": 0.193,
+    "nccRaw": 0.193,
+    "shiftM": [
+     -0.05,
+     -0.05
+    ],
+    "usable": 0.88,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.31 mean 0.42 vs photo 0.61"
+    ],
+    "wall": {
+     "photo": "#716965",
+     "model": "#6d6154",
+     "dL": -0.041
+    },
+    "glazing": {
+     "photo": 0.61,
+     "model": 0.42
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.608
+   },
+   "challengers": {
+    "museum-jv-1910-lintel-parapet~m": 0.193,
+    "museum-jv-1910-lintel-parapet": 0.193
+   }
+  },
+  {
+   "pandId": "0363100012063128",
+   "address": "Nicolaas Maesstraat 55",
+   "builtYear": 1910,
+   "widthM": 6.32,
+   "eavesM": 14.01,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#5f5750",
+    "wallRaw": "#6b6561",
+    "skyline": {
+     "eavesM": 14.28,
+     "eavesRow": 225,
+     "confidence": 0.92,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "columns",
+    "doorSide": null,
+    "accentSide": "left",
+    "accentShare": 0.003,
+    "structure": {
+     "bayWidthM": 0.93,
+     "bayCentre": 0.8,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 7.02,
+       "widthM": 1.13,
+       "centre": 0.81
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.05
+   },
+   "status": "placed",
+   "type": "museum-jv-1910-lintel-parapet",
+   "score": 1,
+   "placement": {
+    "type": "museum-jv-1910-lintel-parapet",
+    "measuredPalette": {
+     "brick": "#5f5750",
+     "evidence": "strip 2022-03-21 span 3107-3360: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "door unread: as drawn, the opposite of 161910",
+    "crown parapet (type default)"
+   ],
+   "likeness": {
+    "pandId": "0363100012063128",
+    "ncc": 0.303,
+    "nccRaw": 0.303,
+    "shiftM": [
+     -0.15,
+     0.05
+    ],
+    "usable": 0.86,
+    "abstain": null,
+    "verdict": "PASS",
+    "reasons": [],
+    "wall": {
+     "photo": "#6f6865",
+     "model": "#776d64",
+     "dL": 0.014
+    },
+    "glazing": {
+     "photo": 0.41,
+     "model": 0.42
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.608
+   },
+   "challengers": {
+    "museum-jv-1910-lintel-parapet": 0.303,
+    "museum-jv-1910-lintel-parapet~m": 0.303
+   }
+  },
+  {
+   "pandId": "0363100012111419",
+   "address": "Nicolaas Maesstraat 57",
+   "builtYear": 1910,
+   "widthM": 6.12,
+   "eavesM": 13.98,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#716b67",
+    "wallRaw": "#76716d",
+    "skyline": {
+     "eavesM": 14.32,
+     "eavesRow": 223,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "columns",
+    "doorSide": null,
+    "accentSide": "left",
+    "accentShare": 0.018,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 7,
+       "widthM": 1.27,
+       "centre": 0.84
+      },
+      {
+       "atM": 5.27,
+       "widthM": 0.82,
+       "centre": 0.81
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.01
+   },
+   "status": "placed",
+   "type": "museum-jv-1910-lintel-parapet",
+   "score": 1,
+   "placement": {
+    "type": "museum-jv-1910-lintel-parapet",
+    "measuredPalette": {
+     "brick": "#716b67",
+     "evidence": "strip 2022-03-21 span 3359-3604: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "mirror": true
+   },
+   "notes": [
+    "crown parapet (type default)",
+    "door left: mirrored: reviewer pin (maes-31-71 strip 2022-03-21: Nicolaas Maesstraat 57 has its double house door on the left axis, paired with its neighbour's door on the party wall)"
+   ],
+   "likeness": {
+    "pandId": "0363100012111419",
+    "ncc": 0.257,
+    "nccRaw": 0.257,
+    "shiftM": [
+     -0.1,
+     -0.15
+    ],
+    "usable": 0.95,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing  mean 0.41 vs photo 0.52"
+    ],
+    "wall": {
+     "photo": "#706864",
+     "model": "#867f7a",
+     "dL": 0.086
+    },
+    "glazing": {
+     "photo": 0.52,
+     "model": 0.41
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.604
+   },
+   "challengers": {
+    "museum-jv-1910-lintel-parapet~m": 0.257,
+    "museum-jv-1910-lintel-parapet": 0.257
+   }
+  },
+  {
+   "pandId": "0363100012150328",
+   "address": "Nicolaas Maesstraat 59",
+   "builtYear": 1910,
+   "widthM": 6.46,
+   "eavesM": 14.87,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#6e6965",
+    "wallRaw": "#6f6b66",
+    "skyline": {
+     "eavesM": 14.82,
+     "eavesRow": 203,
+     "confidence": 0.95,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "columns",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.022,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 7.02,
+       "widthM": 1.1,
+       "centre": 0.8
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.02
+   },
+   "status": "placed",
+   "type": "museum-jv-1910-lintel-parapet",
+   "score": 1,
+   "placement": {
+    "type": "museum-jv-1910-lintel-parapet",
+    "measuredPalette": {
+     "brick": "#6e6965",
+     "evidence": "strip 2022-03-21 span 3604-3862: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "door unread: as drawn, the opposite of 111419",
+    "crown parapet (type default)"
+   ],
+   "likeness": {
+    "pandId": "0363100012150328",
+    "ncc": 0.341,
+    "nccRaw": 0.341,
+    "shiftM": [
+     -0.3,
+     -0.4
+    ],
+    "usable": 0.92,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.46 mean 0.41 vs photo 0.13"
+    ],
+    "wall": {
+     "photo": "#6c635e",
+     "model": "#837d78",
+     "dL": 0.096
+    },
+    "glazing": {
+     "photo": 0.13,
+     "model": 0.41
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.303
+   },
+   "challengers": {
+    "museum-jv-1910-lintel-parapet": 0.341,
+    "museum-jv-1910-lintel-parapet~m": 0.369
+   }
+  },
+  {
+   "pandId": "0363100012095505",
+   "address": "Nicolaas Maesstraat 61",
+   "builtYear": 1910,
+   "widthM": 6.2,
+   "eavesM": 13.97,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#836d62",
+    "wallRaw": "#625a54",
+    "skyline": {
+     "eavesM": 14.65,
+     "eavesRow": 210,
+     "confidence": 0.92,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "columns",
+    "doorSide": null,
+    "accentSide": "left",
+    "accentShare": 0.008,
+    "structure": {
+     "bayWidthM": 0.72,
+     "bayCentre": 0.48,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 7,
+       "widthM": 1.35,
+       "centre": 0.16
+      },
+      {
+       "atM": 6.55,
+       "widthM": 1,
+       "centre": 0.63
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.03
+   },
+   "status": "placed",
+   "type": "museum-jv-1910-lintel-parapet",
+   "score": 1,
+   "placement": {
+    "type": "museum-jv-1910-lintel-parapet",
+    "measuredPalette": {
+     "brick": "#836d62",
+     "evidence": "strip 2022-03-21 span 3862-4110: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "mirror": true
+   },
+   "notes": [
+    "crown parapet (type default)",
+    "door left: mirrored: reviewer pin (maes-31-71 strip 2022-03-21: Nicolaas Maesstraat 61 has its double house door on the left axis, paired with its neighbour's door on the party wall)"
+   ],
+   "likeness": {
+    "pandId": "0363100012095505",
+    "ncc": 0.288,
+    "nccRaw": 0.288,
+    "shiftM": [
+     -0.25,
+     0.4
+    ],
+    "usable": 0.92,
+    "abstain": null,
+    "verdict": "PASS",
+    "reasons": [],
+    "wall": {
+     "photo": "#7e6c63",
+     "model": "#978074",
+     "dL": 0.082
+    },
+    "glazing": {
+     "photo": 0.47,
+     "model": 0.4
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.63
+   },
+   "challengers": {
+    "museum-jv-1910-lintel-parapet~m": 0.288,
+    "museum-jv-1910-lintel-parapet": 0.293
+   }
+  }
+ ]
+}

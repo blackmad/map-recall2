@@ -1,0 +1,1468 @@
+{
+ "face": "valerius-40-88",
+ "street": "Valeriusstraat",
+ "library": "museumkwartier",
+ "stripDate": "2024-11-12",
+ "seconds": 2.38,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [],
+ "pands": [
+  {
+   "pandId": "0363100012152457",
+   "address": "Valeriusstraat 74",
+   "builtYear": 1903,
+   "widthM": 5.49,
+   "eavesM": 14.17,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#c79c69",
+    "wallRaw": "#c29d72",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 790,
+     "confidence": 0.24,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": 3,
+    "frontClass": "columns",
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0.632,
+    "structure": {
+     "bayWidthM": 5.03,
+     "bayCentre": 0.5,
+     "balconies": false,
+     "why": "no dark open axis (light ones: 0.95 m @ 0.6, 2.1 m @ 0.73), 0 wide slab(s)",
+     "openAxes": [
+      {
+       "widthM": 0.95,
+       "centre": 0.24,
+       "light": 0.6
+      },
+      {
+       "widthM": 2.1,
+       "centre": 0.74,
+       "light": 0.73
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 6.97,
+       "widthM": 1.02,
+       "centre": 0.25
+      }
+     ]
+    },
+    "voidShare": 0.43,
+    "foliageShare": 0.18
+   },
+   "status": "held",
+   "stage": "evidence",
+   "reason": "strip 43 % without panorama data",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012164819",
+   "address": "Valeriusstraat 72",
+   "builtYear": 1903,
+   "widthM": 5.75,
+   "eavesM": 14.47,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#685743",
+    "wallRaw": "#948467",
+    "skyline": {
+     "eavesM": 14.4,
+     "eavesRow": 214,
+     "confidence": 0.42,
+     "crown": {
+      "widthM": 0.63,
+      "riseM": 5.35,
+      "topWidthM": 0.57,
+      "centre": 0.37
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.543,
+    "structure": {
+     "bayWidthM": 3.05,
+     "bayCentre": 0.71,
+     "balconies": false,
+     "why": "no dark open axis (light ones: 1 m @ 0.56, 0.88 m @ 0.73, 0.78 m @ 0.5), 0 wide slab(s)",
+     "openAxes": [
+      {
+       "widthM": 1,
+       "centre": 0.18,
+       "light": 0.56
+      },
+      {
+       "widthM": 0.88,
+       "centre": 0.61,
+       "light": 0.73
+      },
+      {
+       "widthM": 0.78,
+       "centre": 0.89,
+       "light": 0.5
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 9.9,
+       "widthM": 1.02,
+       "centre": 0.88
+      },
+      {
+       "atM": 6.07,
+       "widthM": 0.85,
+       "centre": 0.89
+      }
+     ]
+    },
+    "voidShare": 0.4,
+    "foliageShare": 0.29
+   },
+   "status": "held",
+   "stage": "evidence",
+   "reason": "strip 40 % without panorama data",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012157293",
+   "address": "Valeriusstraat 70",
+   "builtYear": 1903,
+   "widthM": 6.07,
+   "eavesM": 14.51,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#665944",
+    "wallRaw": "#7d735b",
+    "skyline": {
+     "eavesM": 16.98,
+     "eavesRow": 111,
+     "confidence": 0.34,
+     "crown": {
+      "widthM": 0.6,
+      "riseM": 2.77,
+      "topWidthM": 0.17,
+      "centre": 0.57
+     }
+    },
+    "stucco": false,
+    "bands": 4,
+    "columns": 3,
+    "frontClass": "columns",
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0.476,
+    "structure": {
+     "bayWidthM": 3.1,
+     "bayCentre": 0.41,
+     "balconies": true,
+     "why": "dark open axis 1.02 m at 0.52 (light 0.44): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 1.02,
+       "centre": 0.52,
+       "light": 0.44
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0.3,
+    "foliageShare": 0.3
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best museum-cs-1900-gable-balcony: built 1903, type 1900-1901)",
+   "best": {
+    "type": "museum-cs-1900-gable-balcony",
+    "score": 0,
+    "veto": [
+     "built 1903, type 1900-1901"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": null,
+      "note": "strip cornice unread (type line 10.4 m; 3DBAG 14.51 m not compared)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.133 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012162225",
+   "address": "Valeriusstraat 68",
+   "builtYear": 1903,
+   "widthM": 6.09,
+   "eavesM": 14.63,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#9f8b6d",
+    "wallRaw": "#807a62",
+    "skyline": {
+     "eavesM": 14.38,
+     "eavesRow": 215,
+     "confidence": 0.31,
+     "crown": {
+      "widthM": 0.93,
+      "riseM": 5.38,
+      "topWidthM": 0.1,
+      "centre": 0.2
+     }
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": 6,
+    "frontClass": "columns",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.303,
+    "structure": {
+     "bayWidthM": 4.65,
+     "bayCentre": 0.54,
+     "balconies": true,
+     "why": "dark open axis 0.6 m at 0.85 (light 0.47): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.6,
+       "centre": 0.85,
+       "light": 0.47
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 12.97,
+       "widthM": 0.97,
+       "centre": 0.87
+      },
+      {
+       "atM": 6.67,
+       "widthM": 0.85,
+       "centre": 0.82
+      }
+     ]
+    },
+    "voidShare": 0.15,
+    "foliageShare": 0.45
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best museum-cs-1900-gable-balcony: built 1903, type 1900-1901)",
+   "best": {
+    "type": "museum-cs-1900-gable-balcony",
+    "score": 0,
+    "veto": [
+     "built 1903, type 1900-1901"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": null,
+      "note": "strip cornice unread (type line 10.4 m; 3DBAG 14.63 m not compared)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": null,
+      "note": "no strip"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012154235",
+   "address": "Valeriusstraat 66",
+   "builtYear": 1903,
+   "widthM": 5.99,
+   "eavesM": 14.62,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#846f5a",
+    "wallRaw": "#989075",
+    "skyline": {
+     "eavesM": 14.55,
+     "eavesRow": 208,
+     "confidence": 0.55,
+     "crown": {
+      "widthM": 0.78,
+      "riseM": 1.2,
+      "topWidthM": 0.63,
+      "centre": 0.86
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0.224,
+    "structure": {
+     "bayWidthM": 0.78,
+     "bayCentre": 0.86,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 12.97,
+       "widthM": 1.13,
+       "centre": 0.5
+      },
+      {
+       "atM": 9.6,
+       "widthM": 0.9,
+       "centre": 0.2
+      },
+      {
+       "atM": 6.6,
+       "widthM": 1.02,
+       "centre": 0.21
+      }
+     ]
+    },
+    "voidShare": 0.1,
+    "foliageShare": 0.54
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best museum-cs-1900-gable-balcony: built 1903, type 1900-1901)",
+   "best": {
+    "type": "museum-cs-1900-gable-balcony",
+    "score": 0,
+    "veto": [
+     "built 1903, type 1900-1901"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": null,
+      "note": "strip cornice unread (type line 10.4 m; 3DBAG 14.62 m not compared)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": null,
+      "note": "no strip"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012153398",
+   "address": "Valeriusstraat 64",
+   "builtYear": 1903,
+   "widthM": 5.84,
+   "eavesM": 14.63,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#73604d",
+    "wallRaw": "#a79d80",
+    "skyline": {
+     "eavesM": 14.47,
+     "eavesRow": 211,
+     "confidence": 0.69,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "columns",
+    "doorSide": null,
+    "accentSide": "right",
+    "accentShare": 0.401,
+    "structure": {
+     "bayWidthM": 5.4,
+     "bayCentre": 0.5,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 13.05,
+       "widthM": 1.13,
+       "centre": 0.56
+      },
+      {
+       "atM": 9.97,
+       "widthM": 1.07,
+       "centre": 0.87
+      },
+      {
+       "atM": 4.8,
+       "widthM": 0.82,
+       "centre": 0.17
+      }
+     ]
+    },
+    "voidShare": 0.28,
+    "foliageShare": 0.38
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best museum-cs-1900-gable-balcony: built 1903, type 1900-1901)",
+   "best": {
+    "type": "museum-cs-1900-gable-balcony",
+    "score": 0,
+    "veto": [
+     "built 1903, type 1900-1901"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "strip cornice 14.47 m vs the type's 10.4 m (wall-dormer skyline 14.4 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": null,
+      "note": "no strip"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012159952",
+   "address": "Valeriusstraat 62",
+   "builtYear": 1904,
+   "widthM": 6.34,
+   "eavesM": 11.89,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#78634c",
+    "wallRaw": "#7b755a",
+    "skyline": {
+     "eavesM": 14.55,
+     "eavesRow": 208,
+     "confidence": 0.93,
+     "crown": {
+      "widthM": 2.1,
+      "riseM": 2.02,
+      "topWidthM": 0.82,
+      "centre": 0.38
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 6,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.271,
+    "structure": {
+     "bayWidthM": 1.02,
+     "bayCentre": 0.82,
+     "balconies": false,
+     "why": "no dark open axis, 2 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 10.47,
+       "widthM": 1.1,
+       "centre": 0.22
+      },
+      {
+       "atM": 7.25,
+       "widthM": 1.75,
+       "centre": 0.26
+      },
+      {
+       "atM": 6.95,
+       "widthM": 1.38,
+       "centre": 0.53
+      },
+      {
+       "atM": 5.22,
+       "widthM": 0.8,
+       "centre": 0.56
+      }
+     ]
+    },
+    "voidShare": 0.1,
+    "foliageShare": 0.39
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best museum-cs-1900-gable-balcony: built 1904, type 1900-1901)",
+   "best": {
+    "type": "museum-cs-1900-gable-balcony",
+    "score": 0,
+    "veto": [
+     "built 1904, type 1900-1901"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "strip cornice 14.55 m vs the type's 10.4 m (wall-dormer skyline 14.4 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": null,
+      "note": "no strip"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012157228",
+   "address": "Valeriusstraat 60",
+   "builtYear": 1904,
+   "widthM": 5.75,
+   "eavesM": 14.87,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#343d36",
+    "wallRaw": "#697461",
+    "skyline": {
+     "eavesM": 14.72,
+     "eavesRow": 201,
+     "confidence": 0.62,
+     "crown": {
+      "widthM": 0.75,
+      "riseM": 5.03,
+      "topWidthM": 0.17,
+      "centre": 0.1
+     }
+    },
+    "stucco": false,
+    "bands": 15,
+    "columns": 4,
+    "frontClass": "columns",
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.619,
+    "structure": {
+     "bayWidthM": 1.23,
+     "bayCentre": 0.18,
+     "balconies": false,
+     "why": "no dark open axis, 2 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 10.45,
+       "widthM": 1.25,
+       "centre": 0.18
+      },
+      {
+       "atM": 7.15,
+       "widthM": 1.3,
+       "centre": 0.86
+      }
+     ]
+    },
+    "voidShare": 0.27,
+    "foliageShare": 0.6
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best museum-cs-1900-gable-balcony: built 1904, type 1900-1901)",
+   "best": {
+    "type": "museum-cs-1900-gable-balcony",
+    "score": 0,
+    "veto": [
+     "built 1904, type 1900-1901"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "strip cornice 14.72 m vs the type's 10.4 m (wall-dormer skyline 14.4 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": null,
+      "note": "no strip"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012162096",
+   "address": "Valeriusstraat 58",
+   "builtYear": 1904,
+   "widthM": 6.01,
+   "eavesM": 11.81,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#a78c76",
+    "wallRaw": "#8d8367",
+    "skyline": {
+     "eavesM": 14.68,
+     "eavesRow": 203,
+     "confidence": 0.7,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0.3,
+    "structure": {
+     "bayWidthM": 1.07,
+     "bayCentre": 0.23,
+     "balconies": true,
+     "why": "dark open axis 1.05 m at 0.55 (light 0.36): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 1.05,
+       "centre": 0.55,
+       "light": 0.36
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 4.97,
+       "widthM": 0.97,
+       "centre": 0.88
+      }
+     ]
+    },
+    "voidShare": 0.14,
+    "foliageShare": 0.29
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best museum-cs-1900-gable-balcony: built 1904, type 1900-1901)",
+   "best": {
+    "type": "museum-cs-1900-gable-balcony",
+    "score": 0,
+    "veto": [
+     "built 1904, type 1900-1901"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "strip cornice 14.68 m vs the type's 10.4 m (wall-dormer skyline 14.4 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.12 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012165656",
+   "address": "Valeriusstraat 56",
+   "builtYear": 1904,
+   "widthM": 6.27,
+   "eavesM": 11.86,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#b09d81",
+    "wallRaw": "#7c775e",
+    "skyline": {
+     "eavesM": 14.63,
+     "eavesRow": 205,
+     "confidence": 0.96,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0.362,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 0.82 m at 0.54 (light 0.4): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.82,
+       "centre": 0.54,
+       "light": 0.4
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 7.2,
+       "widthM": 1.27,
+       "centre": 0.83
+      },
+      {
+       "atM": 5.25,
+       "widthM": 1.23,
+       "centre": 0.52
+      }
+     ]
+    },
+    "voidShare": 0.16,
+    "foliageShare": 0.35
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best museum-cs-1900-gable-balcony: built 1904, type 1900-1901)",
+   "best": {
+    "type": "museum-cs-1900-gable-balcony",
+    "score": 0,
+    "veto": [
+     "built 1904, type 1900-1901"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "strip cornice 14.63 m vs the type's 10.4 m (wall-dormer skyline 14.4 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": null,
+      "note": "no strip"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012156442",
+   "address": "Valeriusstraat 54",
+   "builtYear": 1903,
+   "widthM": 5.77,
+   "eavesM": 14.78,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#c1ad8e",
+    "wallRaw": "#938c71",
+    "skyline": {
+     "eavesM": 14.55,
+     "eavesRow": 208,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 3,
+    "columns": null,
+    "frontClass": "curtain",
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.253,
+    "structure": {
+     "bayWidthM": 0.88,
+     "bayCentre": 0.86,
+     "balconies": true,
+     "why": "dark open axis 0.78 m at 0.51 (light 0.34): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.78,
+       "centre": 0.51,
+       "light": 0.34
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 13.42,
+       "widthM": 1.3,
+       "centre": 0.87
+      },
+      {
+       "atM": 7.42,
+       "widthM": 0.93,
+       "centre": 0.86
+      },
+      {
+       "atM": 4.8,
+       "widthM": 1.35,
+       "centre": 0.52
+      }
+     ]
+    },
+    "voidShare": 0.03,
+    "foliageShare": 0.45
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best museum-cs-1900-gable-balcony: built 1903, type 1900-1901)",
+   "best": {
+    "type": "museum-cs-1900-gable-balcony",
+    "score": 0,
+    "veto": [
+     "built 1903, type 1900-1901"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "strip cornice 14.55 m vs the type's 10.4 m (wall-dormer skyline 14.4 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": null,
+      "note": "no strip"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012164280",
+   "address": "Valeriusstraat 52",
+   "builtYear": 1903,
+   "widthM": 5.98,
+   "eavesM": 14.96,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#d9ad84",
+    "wallRaw": "#999174",
+    "skyline": {
+     "eavesM": 14.4,
+     "eavesRow": 214,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "columns",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.332,
+    "structure": {
+     "bayWidthM": 1.1,
+     "bayCentre": 0.87,
+     "balconies": true,
+     "why": "bay-less open axis 0.95 m at 0.23 (light 0.55): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.95,
+       "centre": 0.23,
+       "light": 0.55
+      },
+      {
+       "widthM": 0.97,
+       "centre": 0.55,
+       "light": 0.39
+      },
+      {
+       "widthM": 0.85,
+       "centre": 0.85,
+       "light": 0.53
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 13.13,
+       "widthM": 0.9,
+       "centre": 0.88
+      },
+      {
+       "atM": 7.95,
+       "widthM": 0.82,
+       "centre": 0.92
+      }
+     ]
+    },
+    "voidShare": 0.17,
+    "foliageShare": 0.3
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best museum-cs-1900-gable-balcony: built 1903, type 1900-1901)",
+   "best": {
+    "type": "museum-cs-1900-gable-balcony",
+    "score": 0,
+    "veto": [
+     "built 1903, type 1900-1901"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "strip cornice 14.4 m vs the type's 10.4 m (wall-dormer skyline 14.4 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.157 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012157080",
+   "address": "Valeriusstraat 50",
+   "builtYear": 1903,
+   "widthM": 5.98,
+   "eavesM": 14.93,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#98856d",
+    "wallRaw": "#9e8e6d",
+    "skyline": {
+     "eavesM": 14.43,
+     "eavesRow": 213,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "columns",
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0.344,
+    "structure": {
+     "bayWidthM": 1.68,
+     "bayCentre": 0.51,
+     "balconies": false,
+     "why": "no dark open axis (light ones: 0.88 m @ 0.59, 1.05 m @ 0.51, 0.95 m @ 0.57), 0 wide slab(s)",
+     "openAxes": [
+      {
+       "widthM": 0.88,
+       "centre": 0.24,
+       "light": 0.59
+      },
+      {
+       "widthM": 1.05,
+       "centre": 0.53,
+       "light": 0.51
+      },
+      {
+       "widthM": 0.95,
+       "centre": 0.85,
+       "light": 0.57
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 13.15,
+       "widthM": 0.93,
+       "centre": 0.22
+      },
+      {
+       "atM": 7.75,
+       "widthM": 0.93,
+       "centre": 0.9
+      }
+     ]
+    },
+    "voidShare": 0.23,
+    "foliageShare": 0.19
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best museum-cs-1900-gable-balcony: built 1903, type 1900-1901)",
+   "best": {
+    "type": "museum-cs-1900-gable-balcony",
+    "score": 0,
+    "veto": [
+     "built 1903, type 1900-1901"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "strip cornice 14.43 m vs the type's 10.4 m (wall-dormer skyline 14.4 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 4 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.068 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012160924",
+   "address": "Valeriusstraat 48",
+   "builtYear": 1903,
+   "widthM": 6.21,
+   "eavesM": 15.03,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#968566",
+    "wallRaw": "#998e73",
+    "skyline": {
+     "eavesM": 14.45,
+     "eavesRow": 212,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "columns",
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.628,
+    "structure": {
+     "bayWidthM": 5.7,
+     "bayCentre": 0.5,
+     "balconies": false,
+     "why": "no dark open axis (light ones: 0.97 m @ 0.65), 0 wide slab(s)",
+     "openAxes": [
+      {
+       "widthM": 0.97,
+       "centre": 0.85,
+       "light": 0.65
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 7.17,
+       "widthM": 1.07,
+       "centre": 0.62
+      }
+     ]
+    },
+    "voidShare": 0.46,
+    "foliageShare": 0.27
+   },
+   "status": "held",
+   "stage": "evidence",
+   "reason": "strip 46 % without panorama data",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012166083",
+   "address": "Valeriusstraat 46",
+   "builtYear": 1902,
+   "widthM": 5.79,
+   "eavesM": 12.13,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#7b6850",
+    "wallRaw": "#94886b",
+    "skyline": {
+     "eavesM": 14.78,
+     "eavesRow": 199,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 7,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.5,
+    "structure": {
+     "bayWidthM": 2.02,
+     "bayCentre": 0.5,
+     "balconies": false,
+     "why": "no dark open axis (light ones: 0.82 m @ 0.56), 1 wide slab(s)",
+     "openAxes": [
+      {
+       "widthM": 0.82,
+       "centre": 0.53,
+       "light": 0.56
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 7.25,
+       "widthM": 1.3,
+       "centre": 0.18
+      }
+     ]
+    },
+    "voidShare": 0.29,
+    "foliageShare": 0.3
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best museum-cs-1900-gable-balcony: built 1902, type 1900-1901)",
+   "best": {
+    "type": "museum-cs-1900-gable-balcony",
+    "score": 0,
+    "veto": [
+     "built 1902, type 1900-1901"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "strip cornice 14.78 m vs the type's 10.4 m (wall-dormer skyline 14.4 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.165 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0,
+      "note": "strip columns 7 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012162938",
+   "address": "Valeriusstraat 44",
+   "builtYear": 1902,
+   "widthM": 6.04,
+   "eavesM": 11.45,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#8c765c",
+    "wallRaw": "#a49271",
+    "skyline": {
+     "eavesM": 15.57,
+     "eavesRow": 167,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.415,
+    "structure": {
+     "bayWidthM": 1.3,
+     "bayCentre": 0.54,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 7.25,
+       "widthM": 1.27,
+       "centre": 0.86
+      }
+     ]
+    },
+    "voidShare": 0.19,
+    "foliageShare": 0.33
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best museum-cs-1900-gable-balcony: built 1902, type 1900-1901)",
+   "best": {
+    "type": "museum-cs-1900-gable-balcony",
+    "score": 0,
+    "veto": [
+     "built 1902, type 1900-1901"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 15.57 m vs the type's 10.4 m (wall-dormer skyline 14.4 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": null,
+      "note": "no strip"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012157647",
+   "address": "Valeriusstraat 42",
+   "builtYear": 1902,
+   "widthM": 5.97,
+   "eavesM": 14.9,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#8f6b50",
+    "wallRaw": "#a4926d",
+    "skyline": {
+     "eavesM": 15.63,
+     "eavesRow": 165,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 3,
+    "columns": 3,
+    "frontClass": "columns",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.617,
+    "structure": {
+     "bayWidthM": 3.5,
+     "bayCentre": 0.4,
+     "balconies": false,
+     "why": "no dark open axis (light ones: 0.6 m @ 0.61, 0.93 m @ 0.7), 2 wide slab(s)",
+     "openAxes": [
+      {
+       "widthM": 0.6,
+       "centre": 0.47,
+       "light": 0.61
+      },
+      {
+       "widthM": 0.93,
+       "centre": 0.85,
+       "light": 0.7
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 7.25,
+       "widthM": 1.25,
+       "centre": 0.5
+      },
+      {
+       "atM": 6.95,
+       "widthM": 1.27,
+       "centre": 0.5
+      }
+     ]
+    },
+    "voidShare": 0.43,
+    "foliageShare": 0.21
+   },
+   "status": "held",
+   "stage": "evidence",
+   "reason": "strip 43 % without panorama data",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012165248",
+   "address": "Valeriusstraat 40",
+   "builtYear": 1902,
+   "widthM": 6.23,
+   "eavesM": 14.81,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#a38462",
+    "wallRaw": "#9f8f6e",
+    "skyline": {
+     "eavesM": 14.53,
+     "eavesRow": 209,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": 3,
+    "frontClass": "blank",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.593,
+    "structure": {
+     "bayWidthM": 3.38,
+     "bayCentre": 0.64,
+     "balconies": false,
+     "why": "no dark open axis (light ones: 1.15 m @ 0.66), 0 wide slab(s)",
+     "openAxes": [
+      {
+       "widthM": 1.15,
+       "centre": 0.54,
+       "light": 0.66
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 7.17,
+       "widthM": 0.88,
+       "centre": 0.23
+      }
+     ]
+    },
+    "voidShare": 0.43,
+    "foliageShare": 0.22
+   },
+   "status": "held",
+   "stage": "evidence",
+   "reason": "strip 43 % without panorama data",
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

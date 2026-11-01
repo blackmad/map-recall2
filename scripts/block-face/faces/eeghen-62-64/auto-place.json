@@ -1,0 +1,234 @@
+{
+ "face": "eeghen-62-64",
+ "street": "Van Eeghenstraat",
+ "library": "museumkwartier",
+ "stripDate": "2024-11-12",
+ "seconds": 0.22,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [],
+ "pands": [
+  {
+   "pandId": "0363100012068201",
+   "address": "Van Eeghenstraat 64",
+   "builtYear": 1902,
+   "widthM": 6.61,
+   "eavesM": 10.42,
+   "storeys3dbag": 0,
+   "bagBay": {
+    "fromM": 3.54,
+    "toM": 6.6,
+    "depthM": 0.43,
+    "centre": 0.768,
+    "lineRD": [
+     [
+      120028.2623125,
+      485657.56925
+     ],
+     [
+      120031.56331249999,
+      485658.83625
+     ]
+    ]
+   },
+   "strip": {
+    "wall": "#6a574c",
+    "wallRaw": "#7d6f60",
+    "skyline": {
+     "eavesM": 13.78,
+     "eavesRow": 92,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.73,
+      "riseM": 1.7,
+      "topWidthM": 0.25,
+      "centre": 0.77
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 2,
+    "frontClass": "punched",
+    "doorSide": "right",
+    "accentSide": "right",
+    "accentShare": 0.35,
+    "structure": {
+     "bayWidthM": 1.35,
+     "bayCentre": 0.27,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 8.18,
+       "widthM": 1.32,
+       "centre": 0.28
+      }
+     ]
+    },
+    "voidShare": 0.16,
+    "foliageShare": 0.13
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best museum-cs-1900-gable-balcony: built 1902, type 1900-1901)",
+   "best": {
+    "type": "museum-cs-1900-gable-balcony",
+    "score": 0,
+    "veto": [
+     "built 1902, type 1900-1901"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0.5,
+      "note": "strip cornice 13.78 m vs the type's 10.4 m (wall-dormer skyline 14.4 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": null,
+      "note": "3DBAG bouwlagen 0 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.049 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0.4,
+      "note": "strip columns 2 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012163533",
+   "address": "Van Eeghenstraat 62",
+   "builtYear": 1902,
+   "widthM": 5.84,
+   "eavesM": 10.39,
+   "storeys3dbag": 4,
+   "bagBay": {
+    "fromM": 0,
+    "toM": 2.65,
+    "depthM": 0.62,
+    "centre": 0.228,
+    "lineRD": [
+     [
+      120036.7113125,
+      485661.28925
+     ],
+     [
+      120039.6123125,
+      485662.55425
+     ]
+    ]
+   },
+   "strip": {
+    "wall": "#846c58",
+    "wallRaw": "#a68c75",
+    "skyline": {
+     "eavesM": 11.63,
+     "eavesRow": 178,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.05,
+      "riseM": 2.22,
+      "topWidthM": 0.28,
+      "centre": 0.73
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.259,
+    "structure": {
+     "bayWidthM": 5.38,
+     "bayCentre": 0.5,
+     "balconies": true,
+     "why": "dark open axis 0.85 m at 0.17 (light 0.48): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.85,
+       "centre": 0.17,
+       "light": 0.48
+      },
+      {
+       "widthM": 1.02,
+       "centre": 0.36,
+       "light": 0.49
+      },
+      {
+       "widthM": 0.95,
+       "centre": 0.74,
+       "light": 0.43
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 8.22,
+       "widthM": 0.85,
+       "centre": 0.71
+      },
+      {
+       "atM": 5.3,
+       "widthM": 1.6,
+       "centre": 0.66
+      }
+     ]
+    },
+    "voidShare": 0.13,
+    "foliageShare": 0.23
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best museum-cs-1900-gable-balcony: built 1902, type 1900-1901)",
+   "best": {
+    "type": "museum-cs-1900-gable-balcony",
+    "score": 0,
+    "veto": [
+     "built 1902, type 1900-1901"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 11.63 m vs the type's 10.4 m (wall-dormer skyline 14.4 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 4 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.094 (brick)"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

@@ -1,0 +1,479 @@
+{
+ "face": "mieris-14-22",
+ "street": "Frans van Mierisstraat",
+ "library": "museumkwartier",
+ "stripDate": "2024-12-11",
+ "seconds": 5.06,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [],
+ "pands": [
+  {
+   "pandId": "0363100012109324",
+   "address": "Frans van Mierisstraat 22",
+   "builtYear": 1911,
+   "widthM": 6.01,
+   "eavesM": 16.75,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#6a5d46",
+    "wallRaw": "#a49478",
+    "skyline": {
+     "eavesM": 15.7,
+     "eavesRow": 168,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.58,
+      "riseM": 1.4,
+      "topWidthM": 2.35,
+      "centre": 0.77
+     }
+    },
+    "stucco": false,
+    "bands": 12,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.478,
+    "structure": {
+     "bayWidthM": 1.15,
+     "bayCentre": 0.1,
+     "balconies": true,
+     "why": "bay-less open axis 0.95 m at 0.1 (light 0.51): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.95,
+       "centre": 0.1,
+       "light": 0.51
+      },
+      {
+       "widthM": 0.93,
+       "centre": 0.81,
+       "light": 0.56
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 13.75,
+       "widthM": 1.75,
+       "centre": 0.25
+      },
+      {
+       "atM": 6.32,
+       "widthM": 1.52,
+       "centre": 0.47
+      }
+     ]
+    },
+    "voidShare": 0.21,
+    "foliageShare": 0.2
+   },
+   "status": "held",
+   "stage": "likeness",
+   "reason": "no photo evidence (usable photo 49 % < 50 %) and no passing same-type neighbour",
+   "likeness": {
+    "pandId": "0363100012109324",
+    "ncc": null,
+    "nccRaw": 0.106,
+    "shiftM": [
+     0.4,
+     -0.15
+    ],
+    "usable": 0.49,
+    "abstain": "usable photo 49 % < 50 %",
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.58 mean 0.53 vs photo 0.08"
+    ],
+    "wall": {
+     "photo": "#685c44",
+     "model": "#847457",
+     "dL": 0.092
+    },
+    "glazing": {
+     "photo": 0.08,
+     "model": 0.53
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.147
+   },
+   "challengers": {
+    "museum-hc-1910-glazed-oriel": null
+   }
+  },
+  {
+   "pandId": "0363100012142608",
+   "address": "Frans van Mierisstraat 20",
+   "builtYear": 1911,
+   "widthM": 6.39,
+   "eavesM": 16.8,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#c2a182",
+    "wallRaw": "#c8a785",
+    "skyline": {
+     "eavesM": 15.75,
+     "eavesRow": 166,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.52,
+      "riseM": 1.38,
+      "topWidthM": 2.05,
+      "centre": 0.21
+     }
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": 7,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.39,
+    "structure": {
+     "bayWidthM": 1.13,
+     "bayCentre": 0.49,
+     "balconies": true,
+     "why": "bay-less open axis 0.97 m at 0.15 (light 0.53): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.97,
+       "centre": 0.15,
+       "light": 0.53
+      },
+      {
+       "widthM": 0.93,
+       "centre": 0.48,
+       "light": 0.43
+      },
+      {
+       "widthM": 0.93,
+       "centre": 0.81,
+       "light": 0.45
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0.19,
+    "foliageShare": 0.21
+   },
+   "status": "held",
+   "stage": "likeness",
+   "reason": "no photo evidence (usable photo 39 % < 50 %) and no passing same-type neighbour",
+   "likeness": {
+    "pandId": "0363100012142608",
+    "ncc": null,
+    "nccRaw": 0.142,
+    "shiftM": [
+     -0.15,
+     -0.35
+    ],
+    "usable": 0.39,
+    "abstain": "usable photo 39 % < 50 %",
+    "verdict": "FAIL",
+    "reasons": [
+     "wall dL +0.24",
+     "glazing storey band off by 0.68 mean 0.52 vs photo 0.06",
+     "columns 3 vs photo 7"
+    ],
+    "wall": {
+     "photo": "#70634a",
+     "model": "#bc9876",
+     "dL": 0.235
+    },
+    "glazing": {
+     "photo": 0.06,
+     "model": 0.52
+    },
+    "columns": {
+     "photo": 7,
+     "model": 3
+    },
+    "iou": 0.062
+   },
+   "challengers": {
+    "museum-hc-1910-glazed-oriel": null
+   }
+  },
+  {
+   "pandId": "0363100012092773",
+   "address": "Frans van Mierisstraat 18",
+   "builtYear": 1911,
+   "widthM": 5.78,
+   "eavesM": 13.8,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#e6bb94",
+    "wallRaw": "#d6b892",
+    "skyline": {
+     "eavesM": 15.7,
+     "eavesRow": 168,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.38,
+      "riseM": 2.23,
+      "topWidthM": 0.75,
+      "centre": 0.78
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 4,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.349,
+    "structure": {
+     "bayWidthM": 1.13,
+     "bayCentre": 0.49,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 5.85,
+       "widthM": 1.18,
+       "centre": 0.49
+      }
+     ]
+    },
+    "voidShare": 0.19,
+    "foliageShare": 0.18
+   },
+   "status": "held",
+   "stage": "likeness",
+   "reason": "no photo evidence (usable photo 45 % < 50 %) and no passing same-type neighbour",
+   "likeness": {
+    "pandId": "0363100012092773",
+    "ncc": null,
+    "nccRaw": -0.038,
+    "shiftM": [
+     -0.35,
+     -0.4
+    ],
+    "usable": 0.45,
+    "abstain": "usable photo 45 % < 50 %",
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.53 mean 0.55 vs photo 0.18"
+    ],
+    "wall": {
+     "photo": "#dcb893",
+     "model": "#cc9766",
+     "dL": -0.12
+    },
+    "glazing": {
+     "photo": 0.18,
+     "model": 0.55
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.24
+   },
+   "challengers": {
+    "museum-hc-1910-glazed-oriel": null
+   }
+  },
+  {
+   "pandId": "0363100012132153",
+   "address": "Frans van Mierisstraat 16",
+   "builtYear": 1911,
+   "widthM": 6.5,
+   "eavesM": 13.89,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#bea080",
+    "wallRaw": "#c9a885",
+    "skyline": {
+     "eavesM": 15.72,
+     "eavesRow": 167,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.73,
+      "riseM": 2.17,
+      "topWidthM": 0.78,
+      "centre": 0.23
+     }
+    },
+    "stucco": false,
+    "bands": 2,
+    "columns": 3,
+    "frontClass": "columns",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.317,
+    "structure": {
+     "bayWidthM": 1.07,
+     "bayCentre": 0.19,
+     "balconies": true,
+     "why": "dark open axis 0.93 m at 0.2 (light 0.48): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.93,
+       "centre": 0.2,
+       "light": 0.48
+      },
+      {
+       "widthM": 1.05,
+       "centre": 0.52,
+       "light": 0.37
+      },
+      {
+       "widthM": 0.78,
+       "centre": 0.84,
+       "light": 0.44
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 9.85,
+       "widthM": 0.85,
+       "centre": 0.84
+      },
+      {
+       "atM": 6.47,
+       "widthM": 0.93,
+       "centre": 0.19
+      }
+     ]
+    },
+    "voidShare": 0.15,
+    "foliageShare": 0.13
+   },
+   "status": "held",
+   "stage": "likeness",
+   "reason": "edge NCC 0.135 < 0.15 (photo vs model body; likeness.ts WARN: mask IoU 0.352 < 0.45)",
+   "likeness": {
+    "pandId": "0363100012132153",
+    "ncc": 0.135,
+    "nccRaw": 0.135,
+    "shiftM": [
+     0.1,
+     -0.05
+    ],
+    "usable": 0.56,
+    "abstain": null,
+    "verdict": "WARN",
+    "reasons": [
+     "mask IoU 0.352 < 0.45"
+    ],
+    "wall": {
+     "photo": "#bb9a7a",
+     "model": "#ba9a78",
+     "dL": -0.006
+    },
+    "glazing": {
+     "photo": 0.55,
+     "model": 0.52
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.352
+   },
+   "challengers": {
+    "museum-hc-1910-glazed-oriel": 0.135
+   }
+  },
+  {
+   "pandId": "0363100012136626",
+   "address": "Frans van Mierisstraat 14",
+   "builtYear": 1911,
+   "widthM": 6.33,
+   "eavesM": 16.7,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#5f543d",
+    "wallRaw": "#9d8c6f",
+    "skyline": {
+     "eavesM": 17.38,
+     "eavesRow": 101,
+     "confidence": 0.95,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.328,
+    "structure": {
+     "bayWidthM": 0.45,
+     "bayCentre": 0.18,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 13.85,
+       "widthM": 1.4,
+       "centre": 0.48
+      },
+      {
+       "atM": 5.82,
+       "widthM": 1,
+       "centre": 0.47
+      }
+     ]
+    },
+    "voidShare": 0.09,
+    "foliageShare": 0.2
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "best museum-hc-1910-glazed-oriel scores 0.69 < 0.7 (strip cornice 17.38 m vs the type's 15.3 m)",
+   "best": {
+    "type": "museum-hc-1910-glazed-oriel",
+    "score": 0.69,
+    "veto": [],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 17.38 m vs the type's 15.3 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.194 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

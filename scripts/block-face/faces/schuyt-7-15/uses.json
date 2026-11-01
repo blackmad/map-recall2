@@ -1,0 +1,101 @@
+{
+ "street": "Cornelis Schuytstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-01T12:49:35.231Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012156820",
+   "addresses": [
+    "Cornelis Schuytstraat 7"
+   ],
+   "groundUnits": [
+    {
+     "address": "Cornelis Schuytstraat 7-H",
+     "use": "winkelfunctie",
+     "areaM2": 128,
+     "bagId": "0363010000610070"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012158436",
+   "addresses": [
+    "Cornelis Schuytstraat 9"
+   ],
+   "groundUnits": [
+    {
+     "address": "Cornelis Schuytstraat 9-H",
+     "use": "winkelfunctie",
+     "areaM2": 190,
+     "bagId": "0363010000610075"
+    },
+    {
+     "address": "Cornelis Schuytstraat 9-H",
+     "use": "winkelfunctie",
+     "areaM2": 149,
+     "bagId": "0363010012143152"
+    }
+   ],
+   "units": 6,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012152757",
+   "addresses": [
+    "Cornelis Schuytstraat 11"
+   ],
+   "groundUnits": [
+    {
+     "address": "Cornelis Schuytstraat 11-H",
+     "use": "winkelfunctie",
+     "areaM2": 172,
+     "bagId": "0363010000610080"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012236236",
+   "addresses": [
+    "Cornelis Schuytstraat 13"
+   ],
+   "groundUnits": [
+    {
+     "address": "Cornelis Schuytstraat 13-H",
+     "use": "winkelfunctie",
+     "areaM2": 131,
+     "bagId": "0363010001026202"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012159412",
+   "addresses": [
+    "Cornelis Schuytstraat 15"
+   ],
+   "groundUnits": [
+    {
+     "address": "Cornelis Schuytstraat 15-H",
+     "use": "winkelfunctie",
+     "areaM2": 98,
+     "bagId": "0363010000610090"
+    },
+    {
+     "address": "Van Breestraat 150A",
+     "use": "woonfunctie",
+     "areaM2": 66,
+     "bagId": "0363010000837168"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  }
+ ]
+}

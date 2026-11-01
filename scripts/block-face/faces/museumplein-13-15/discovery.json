@@ -1,0 +1,181 @@
+{
+ "street": "Museumplein",
+ "seed": "0363100012116189",
+ "members": [
+  "0363100012116189",
+  "0363100012111009"
+ ],
+ "ends": [
+  {
+   "side": "left",
+   "reason": "next fronting pand 0363100012233484 19.4 m on shares no party wall (cross street or gap)"
+  },
+  {
+   "side": "right",
+   "reason": "next fronting pand 0363100012207262 9.5 m on shares no party wall (cross street or gap)"
+  }
+ ],
+ "rejected": [
+  {
+   "pandId": "0363100012100160",
+   "reason": "frontage 65.6 m from Museumplein"
+  },
+  {
+   "pandId": "0363100012142717",
+   "reason": "frontage 64.9 m from Museumplein"
+  },
+  {
+   "pandId": "0363100012233575",
+   "reason": "frontage 36.1 m from Museumplein"
+  },
+  {
+   "pandId": "0363100012233633",
+   "reason": "frontage 67.3 m from Museumplein"
+  },
+  {
+   "pandId": "0363100012236941",
+   "reason": "frontage 75.2 m from Museumplein"
+  },
+  {
+   "pandId": "0363100012062753",
+   "reason": "frontage 70.3 m from Museumplein"
+  },
+  {
+   "pandId": "0363100012071285",
+   "reason": "no frontage on Museumplein: No footprint edge faces Museumplein"
+  },
+  {
+   "pandId": "0363100012074466",
+   "reason": "frontage 84.3 m from Museumplein"
+  },
+  {
+   "pandId": "0363100012074834",
+   "reason": "no frontage on Museumplein: No footprint edge faces Museumplein"
+  },
+  {
+   "pandId": "0363100012076064",
+   "reason": "frontage 107.5 m from Museumplein"
+  },
+  {
+   "pandId": "0363100012079958",
+   "reason": "frontage 58.6 m from Museumplein"
+  },
+  {
+   "pandId": "0363100012088681",
+   "reason": "no frontage on Museumplein: No footprint edge faces Museumplein"
+  },
+  {
+   "pandId": "0363100012089294",
+   "reason": "no frontage on Museumplein: No footprint edge faces Museumplein"
+  },
+  {
+   "pandId": "0363100012099107",
+   "reason": "frontage 41.4 m from Museumplein"
+  },
+  {
+   "pandId": "0363100012100351",
+   "reason": "frontage 42.6 m from Museumplein"
+  },
+  {
+   "pandId": "0363100012107845",
+   "reason": "frontage 67.9 m from Museumplein"
+  },
+  {
+   "pandId": "0363100012110232",
+   "reason": "frontage 65.8 m from Museumplein"
+  },
+  {
+   "pandId": "0363100012115557",
+   "reason": "frontage 91.1 m from Museumplein"
+  },
+  {
+   "pandId": "0363100012117556",
+   "reason": "no frontage on Museumplein: No footprint edge faces Museumplein"
+  },
+  {
+   "pandId": "0363100012117845",
+   "reason": "frontage 60.8 m from Museumplein"
+  },
+  {
+   "pandId": "0363100012126152",
+   "reason": "frontage 99.6 m from Museumplein"
+  },
+  {
+   "pandId": "0363100012134189",
+   "reason": "no frontage on Museumplein: No footprint edge faces Museumplein"
+  },
+  {
+   "pandId": "0363100012145556",
+   "reason": "frontage 54.6 m from Museumplein"
+  },
+  {
+   "pandId": "0363100012147731",
+   "reason": "frontage 62.7 m from Museumplein"
+  },
+  {
+   "pandId": "0363100012150046",
+   "reason": "frontage 51.4 m from Museumplein"
+  },
+  {
+   "pandId": "0363100012154971",
+   "reason": "frontage 50.8 m from Museumplein"
+  },
+  {
+   "pandId": "0363100012183422",
+   "reason": "frontage 67.2 m from Museumplein"
+  },
+  {
+   "pandId": "0363100012217582",
+   "reason": "frontage 74.0 m from Museumplein"
+  },
+  {
+   "pandId": "0363100012217595",
+   "reason": "no frontage on Museumplein: No footprint edge faces Museumplein"
+  },
+  {
+   "pandId": "0363100012232428",
+   "reason": "frontage 53.1 m from Museumplein"
+  },
+  {
+   "pandId": "0363100012232429",
+   "reason": "frontage 49.7 m from Museumplein"
+  },
+  {
+   "pandId": "0363100012233427",
+   "reason": "sightline to Museumplein crosses 0363100012571600"
+  },
+  {
+   "pandId": "0363100012237309",
+   "reason": "frontage 110.2 m from Museumplein"
+  }
+ ],
+ "areaHalfSizeM": 90,
+ "pands": [
+  {
+   "pandId": "0363100012116189",
+   "alongM": 0,
+   "widthM": 11.03,
+   "eavesM": 12.1,
+   "roofMaxM": 18.16,
+   "storeys3dbag": 0,
+   "builtYear": 1912,
+   "uncertainty": [
+    "Frontage extended across a native jog of up to 1 m (possible partial front at the default 0.35 m).",
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  },
+  {
+   "pandId": "0363100012111009",
+   "alongM": 11.08,
+   "widthM": 11.14,
+   "eavesM": 12.13,
+   "roofMaxM": 18.2,
+   "storeys3dbag": 0,
+   "builtYear": 1910,
+   "uncertainty": [
+    "Frontage extended across a native jog of up to 1 m (possible partial front at the default 0.35 m).",
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  }
+ ]
+}

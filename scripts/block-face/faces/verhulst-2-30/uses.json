@@ -1,0 +1,310 @@
+{
+ "street": "Johannes Verhulststraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-01T15:45:38.336Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012163555",
+   "addresses": [
+    "Johannes Verhulststraat 30"
+   ],
+   "groundUnits": [
+    {
+     "address": "Johannes Verhulststraat 30-H",
+     "use": "winkelfunctie",
+     "areaM2": 64,
+     "bagId": "0363010000693960"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012165346",
+   "addresses": [
+    "Johannes Verhulststraat 28"
+   ],
+   "groundUnits": [
+    {
+     "address": "Johannes Verhulststraat 28-H",
+     "use": "woonfunctie",
+     "areaM2": 169,
+     "bagId": "0363010012163953"
+    },
+    {
+     "address": "Johannes Verhulststraat 28-H",
+     "use": "woonfunctie",
+     "areaM2": 258,
+     "bagId": "0363010000693956"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012160796",
+   "addresses": [
+    "Johannes Verhulststraat 26"
+   ],
+   "groundUnits": [
+    {
+     "address": "Johannes Verhulststraat 26-H",
+     "use": "woonfunctie",
+     "areaM2": 280,
+     "bagId": "0363010000693952"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012153806",
+   "addresses": [
+    "Johannes Verhulststraat 24"
+   ],
+   "groundUnits": [
+    {
+     "address": "Johannes Verhulststraat 24-H",
+     "use": "woonfunctie",
+     "areaM2": 180,
+     "bagId": "0363010000693946"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012158802",
+   "addresses": [
+    "Johannes Verhulststraat 22"
+   ],
+   "groundUnits": [
+    {
+     "address": "Johannes Verhulststraat 22-H",
+     "use": "woonfunctie",
+     "areaM2": 281,
+     "bagId": "0363010000693942"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012154215",
+   "addresses": [
+    "Johannes Verhulststraat 20"
+   ],
+   "groundUnits": [
+    {
+     "address": "Johannes Verhulststraat 20-H",
+     "use": "woonfunctie",
+     "areaM2": 245,
+     "bagId": "0363010000693938"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012165442",
+   "addresses": [
+    "Johannes Verhulststraat 18"
+   ],
+   "groundUnits": [
+    {
+     "address": "Johannes Verhulststraat 18",
+     "use": "woonfunctie",
+     "areaM2": 262,
+     "bagId": "0363010000693935"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012163762",
+   "addresses": [
+    "Johannes Verhulststraat 16"
+   ],
+   "groundUnits": [
+    {
+     "address": "Johannes Verhulststraat 16-H",
+     "use": "woonfunctie",
+     "areaM2": 54,
+     "bagId": "0363010000980047"
+    },
+    {
+     "address": "Johannes Verhulststraat 16-1",
+     "use": "kantoorfunctie",
+     "areaM2": 72,
+     "bagId": "0363010000980048"
+    },
+    {
+     "address": "Johannes Verhulststraat 16-H",
+     "use": "woonfunctie",
+     "areaM2": 183,
+     "bagId": "0363010012607765"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012162575",
+   "addresses": [
+    "Johannes Verhulststraat 14"
+   ],
+   "groundUnits": [
+    {
+     "address": "Johannes Verhulststraat 14-H",
+     "use": "kantoorfunctie",
+     "areaM2": 161,
+     "bagId": "0363010000693927"
+    },
+    {
+     "address": "Johannes Verhulststraat 14-H",
+     "use": "woonfunctie",
+     "areaM2": 99,
+     "bagId": "0363010012115508"
+    },
+    {
+     "address": "Johannes Verhulststraat 14-1",
+     "use": "kantoorfunctie",
+     "areaM2": 76,
+     "bagId": "0363010012115509"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012165998",
+   "addresses": [
+    "Johannes Verhulststraat 12"
+   ],
+   "groundUnits": [
+    {
+     "address": "Johannes Verhulststraat 12",
+     "use": "woonfunctie",
+     "areaM2": 246,
+     "bagId": "0363010000693924"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012153111",
+   "addresses": [
+    "Johannes Verhulststraat 10"
+   ],
+   "groundUnits": [
+    {
+     "address": "Johannes Verhulststraat 10-H",
+     "use": "woonfunctie",
+     "areaM2": 144,
+     "bagId": "0363010000693920"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012163883",
+   "addresses": [
+    "Johannes Verhulststraat 8"
+   ],
+   "groundUnits": [
+    {
+     "address": "Johannes Verhulststraat 8-H",
+     "use": "woonfunctie",
+     "areaM2": 142,
+     "bagId": "0363010000693916"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012162425",
+   "addresses": [
+    "Johannes Verhulststraat 6"
+   ],
+   "groundUnits": [
+    {
+     "address": "Johannes Verhulststraat 6-H",
+     "use": "woonfunctie",
+     "areaM2": 118,
+     "bagId": "0363010000693911"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012159256",
+   "addresses": [
+    "Johannes Verhulststraat 4"
+   ],
+   "groundUnits": [
+    {
+     "address": "Johannes Verhulststraat 4-H",
+     "use": "woonfunctie",
+     "areaM2": 203,
+     "bagId": "0363010000693907"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012152896",
+   "addresses": [
+    "Johannes Verhulststraat 2B",
+    "Johannes Verhulststraat 2A"
+   ],
+   "groundUnits": [
+    {
+     "address": "Johannes Verhulststraat 2B",
+     "use": "woonfunctie",
+     "areaM2": 130,
+     "bagId": "0363010000693906"
+    },
+    {
+     "address": "Johannes Verhulststraat 2A",
+     "use": "woonfunctie",
+     "areaM2": 86,
+     "bagId": "0363010001004813"
+    },
+    {
+     "address": "Jan Willem Brouwersstraat 32",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 153,
+     "bagId": "0363010001004814"
+    }
+   ],
+   "units": 3,
+   "osm": [
+    {
+     "type": "node",
+     "id": 936532412,
+     "lngLat": [
+      4.8772825,
+      52.3559611
+     ],
+     "tags": {
+      "amenity": "pub",
+      "check_date": "2024-04-24",
+      "name": "Cafe Welling",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-11-01T15:45:38.336Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}

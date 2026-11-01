@@ -1,0 +1,130 @@
+{
+ "id": "academie-van-bouwkunst",
+ "countedBy": "lane (opus) from the rectified Gemeente Amsterdam panoramas w02-308 (recording_2025-06-19_06-21-49_00258) and w07-307 / w06-307, 2026-11-01; not a blind count",
+ "facades": [
+  {
+   "name": "Turfpakhuizen front, NE gable (NW, point gable)",
+   "bearing": 308,
+   "photo": "artifacts/landmark-briefs/academie-van-bouwkunst/w02-308.jpg",
+   "depthBand": 3,
+   "note": "The single warehouse left in w02-308: basket arch and two small lights, storeys 1 and 2 narrow-wide-narrow (the wide one shuttered), one wide window in the gable, a small light at the top.",
+   "rows": [
+    1,
+    2,
+    3,
+    3,
+    1,
+    1
+   ],
+   "columns": 3,
+   "symmetric": true,
+   "gables": 1,
+   "alongM": [
+    22.5,
+    29.1
+   ]
+  },
+  {
+   "name": "Turfpakhuizen front, double gable (NW, truncated under the balustrade)",
+   "bearing": 308,
+   "photo": "artifacts/landmark-briefs/academie-van-bouwkunst/w02-308.jpg",
+   "depthBand": 3,
+   "note": "The double warehouse in the middle of w02-308: two basket arches and two small lights, storeys 1 and 2 eight axes, gable storey six, two wide windows at the top.",
+   "rows": [
+    2,
+    2,
+    8,
+    8,
+    6,
+    2
+   ],
+   "columns": 8,
+   "symmetric": true,
+   "gables": 1,
+   "alongM": [
+    29.1,
+    41.55
+   ]
+  },
+  {
+   "name": "Turfpakhuizen front, SW gable (NW, point gable)",
+   "bearing": 308,
+   "photo": "artifacts/landmark-briefs/academie-van-bouwkunst/w02-308.jpg",
+   "depthBand": 3,
+   "note": "The single warehouse right in w02-308, mirror of the NE one.",
+   "rows": [
+    1,
+    2,
+    3,
+    3,
+    1,
+    1
+   ],
+   "columns": 3,
+   "symmetric": true,
+   "gables": 1,
+   "alongM": [
+    41.55,
+    48.2
+   ]
+  },
+  {
+   "name": "Huiszittenhuis front, NE wing (NW, three axes)",
+   "bearing": 308,
+   "photo": "artifacts/landmark-briefs/academie-van-bouwkunst/w07-307.jpg",
+   "depthBand": 3,
+   "note": "Left of the risalit in w07-307: souterrain, bel-etage and upper storey, three axes each, the middle souterrain window arched; one dormer with a round pediment above.",
+   "rows": [
+    3,
+    3,
+    3,
+    1
+   ],
+   "columns": 3,
+   "gables": 1,
+   "alongM": [
+    0,
+    8.0
+   ]
+  },
+  {
+   "name": "Huiszittenhuis front, risalit (NW, pediment)",
+   "bearing": 308,
+   "photo": "artifacts/landmark-briefs/academie-van-bouwkunst/w07-307.jpg",
+   "depthBand": 3,
+   "note": "The 0.25 m risalit: narrow flanking windows (about 0.8 m) around the wide middle axis (front door under the perron, the light over it, wide windows above), the oculus in the pediment.",
+   "rows": [
+    3,
+    1,
+    3,
+    3,
+    1
+   ],
+   "columns": 3,
+   "symmetric": true,
+   "gables": 1,
+   "alongM": [
+    8.0,
+    15.2
+   ]
+  },
+  {
+   "name": "Huiszittenhuis front, SW wing (NW, three axes)",
+   "bearing": 308,
+   "photo": "artifacts/landmark-briefs/academie-van-bouwkunst/w07-307.jpg",
+   "depthBand": 3,
+   "note": "Right of the risalit in w07-307: souterrain, bel-etage and upper storey, three axes each. One dormer with a round pediment above (w07-307); the model leaves it out (it sinks behind the wall on the 3DBAG roof).",
+   "rows": [
+    3,
+    3,
+    3
+   ],
+   "columns": 3,
+   "gables": 1,
+   "alongM": [
+    15.2,
+    22.4
+   ]
+  }
+ ]
+}

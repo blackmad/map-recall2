@@ -1,0 +1,31 @@
+{
+ "note": "Pands held after reviewing the auto-place strip sheets at gallery size against the photo (scripts/block-face/auto-place.ts reads this file: a listed pand is held at stage 'review' with its reason, whatever its score and edge NCC). Remove an entry when a type or kit change makes the pand read right, and review the sheet again.",
+ "reviewed": "2026-11-01",
+ "holds": [
+  {
+   "pandId": "0363100012138486",
+   "address": "Wouwermanstraat 34",
+   "reason": "strip 2024-11-06: another design (1910): a brick oriel on storey 2 with flat stone-lintel heads, square house doors with transoms and no arched portal; museum-hc-1910-glazed-oriel draws segmental heads, a white glazed oriel and an arched portal"
+  },
+  {
+   "pandId": "0363100012099898",
+   "address": "Wouwermanstraat 32",
+   "reason": "strip 2024-11-06: another design (1910): a brick oriel on storey 2 with flat stone-lintel heads, square house doors with transoms and no arched portal; museum-hc-1910-glazed-oriel draws segmental heads, a white glazed oriel and an arched portal"
+  },
+  {
+   "pandId": "0363100012089720",
+   "address": "Wouwermanstraat 30",
+   "reason": "strip 2024-11-06: another design (1910): a brick oriel on storey 2 with flat stone-lintel heads, square house doors with transoms and no arched portal; museum-hc-1910-glazed-oriel draws segmental heads, a white glazed oriel and an arched portal"
+  },
+  {
+   "pandId": "0363100012126652",
+   "address": "Wouwermanstraat 28",
+   "reason": "strip 2024-11-06: another design (1910): a brick oriel on storey 2 with flat stone-lintel heads, square house doors with transoms and no arched portal; museum-hc-1910-glazed-oriel draws segmental heads, a white glazed oriel and an arched portal"
+  },
+  {
+   "pandId": "0363100012063908",
+   "address": "Wouwermanstraat 26",
+   "reason": "strip 2024-11-06: another design (1910): a brick oriel on storey 2 with flat stone-lintel heads, square house doors with transoms and no arched portal; museum-hc-1910-glazed-oriel draws segmental heads, a white glazed oriel and an arched portal"
+  }
+ ]
+}

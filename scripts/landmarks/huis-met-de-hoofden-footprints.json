@@ -1,0 +1,245 @@
+{
+ "id": "huis-met-de-hoofden",
+ "pand": "NL.IMBAG.Pand.0363100012177213",
+ "address": "Keizersgracht 123, 1015CJ Amsterdam (VBO 0363010000700611)",
+ "bagYear": 1622,
+ "status": "Pand in gebruik",
+ "sources": [
+  {
+   "what": "BAG pand ring",
+   "url": "https://service.pdok.nl/lv/bag/wfs/v2_0?service=WFS&version=2.0.0&request=GetFeature&typeName=bag:pand (bbox 52.3760,4.8866,52.3768,4.8880)",
+   "retrieved": "2026-11-01",
+   "licence": "CC0"
+  },
+  {
+   "what": "3DBAG LoD2.2 roof planes",
+   "url": "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012177213",
+   "retrieved": "2026-11-01",
+   "licence": "CC BY 4.0",
+   "note": "b3_h_maaiveld 0.854 m NAP, b3_h_nok 21.71, roof planes 12.2-22.2 m above ground; pw_datum 2023"
+  }
+ ],
+ "anchor": [
+  4.8873964,
+  52.3763984
+ ],
+ "ringRD": [
+  [
+   120982.604,
+   487732.231
+  ],
+  [
+   120980.097,
+   487733.665
+  ],
+  [
+   120966.015,
+   487741.718
+  ],
+  [
+   120965.96,
+   487741.75
+  ],
+  [
+   120965.638,
+   487741.186
+  ],
+  [
+   120964.417,
+   487739.051
+  ],
+  [
+   120963.509,
+   487737.463
+  ],
+  [
+   120961.256,
+   487733.522
+  ],
+  [
+   120960.347,
+   487731.934
+  ],
+  [
+   120959.07,
+   487729.7
+  ],
+  [
+   120958.907,
+   487729.795
+  ],
+  [
+   120957.36,
+   487727.09
+  ],
+  [
+   120957.601,
+   487726.952
+  ],
+  [
+   120968.385,
+   487720.784
+  ],
+  [
+   120970.301,
+   487719.689
+  ],
+  [
+   120974.167,
+   487717.478
+  ],
+  [
+   120982.604,
+   487732.231
+  ]
+ ],
+ "ringWGS84": [
+  [
+   4.887640493594463,
+   52.37640600190563
+  ],
+  [
+   4.887603533248608,
+   52.37641873438644
+  ],
+  [
+   4.887395924113796,
+   52.376490236524766
+  ],
+  [
+   4.887395113199029,
+   52.37649052070956
+  ],
+  [
+   4.887390441769289,
+   52.376485431922816
+  ],
+  [
+   4.887372727696304,
+   52.376466168388426
+  ],
+  [
+   4.88735955461783,
+   52.37645184029777
+  ],
+  [
+   4.887326868665009,
+   52.37641628174966
+  ],
+  [
+   4.887313680931217,
+   52.37640195359181
+  ],
+  [
+   4.887295154598711,
+   52.37638179683284
+  ],
+  [
+   4.887292751329586,
+   52.37638264052189
+  ],
+  [
+   4.8872703078056965,
+   52.37635823400933
+  ],
+  [
+   4.887273860854828,
+   52.37635700870228
+  ],
+  [
+   4.8874328478291424,
+   52.37630224345929
+  ],
+  [
+   4.88746109501452,
+   52.37629252110247
+  ],
+  [
+   4.887518090761315,
+   52.37627288974206
+  ],
+  [
+   4.887640493594463,
+   52.37640600190563
+  ]
+ ],
+ "localFrame": {
+  "axisDeg": -120.0,
+  "origin": [
+   -0.09,
+   -10.25
+  ],
+  "note": "x along the canal front from the north corner (bearing 210), z out of the front (bearing 300), native east/south metres from the anchor at 111320 m/deg"
+ },
+ "planLocal": {
+  "front": [
+   [
+    0,
+    0
+   ],
+   [
+    13.87,
+    -0.17
+   ],
+   [
+    13.88,
+    0.01
+   ],
+   [
+    16.99,
+    -0.02
+   ]
+  ],
+  "main": "x 0-13.87 (front), 14.5 behind z -4.1",
+  "wing": "x 13.87-16.99, z 0 to -4.1",
+  "rear": "z -19.15 to -19.35"
+ },
+ "heightsFrom3DBAG": {
+  "frontEaves": 12.6,
+  "crossRoofRidge": 20.3,
+  "crossRoofRidgeZ": -4.5,
+  "rearRidges": 19.2,
+  "rearRidgeX": [
+   4.2,
+   10.1
+  ],
+  "chimneyTops": 22.05,
+  "wing": 8.0,
+  "wingBackFlat": 18.7,
+  "rearLowFlat": 6.7
+ },
+ "heightsFromPhotos": {
+  "source": "RCE 20408929 at 0.0121 m/px horizontally (13.87 m BAG main front over 1149 px) and 0.0126 m/px vertically (bel-etage window 2.2-6.7 m from the 2022 panorama)",
+  "plinth": 2.0,
+  "belEtage": [
+   2.2,
+   6.7
+  ],
+  "cornice1": 7.62,
+  "second": [
+   7.95,
+   10.8
+  ],
+  "cornice2": 11.85,
+  "third": [
+   12.15,
+   13.95
+  ],
+  "stage1Top": 15.0,
+  "stage2Top": 18.2,
+  "stage3Top": 20.95,
+  "finialTop": 23.05,
+  "axisX": 7.07,
+  "bays": [
+   1.72,
+   4.42,
+   9.72,
+   12.42
+  ]
+ },
+ "neighboursThatStayVisible": [
+  "NL.IMBAG.Pand.0363100012167694 (Keizersgracht 119-121)",
+  "NL.IMBAG.Pand.0363100012165029 (Keizersgracht 125-127)"
+ ],
+ "replaces": "embassy-free-mind (held, same pand)"
+}

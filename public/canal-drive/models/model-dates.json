@@ -1,6 +1,16 @@
 {
   "description": "Model asset update dates, not historical building construction dates.",
   "models": {
+    "abn-amro-hoofdkantoor": {
+      "updatedAt": "2026-11-01T18:18:06.022Z",
+      "version": "9a2b538531ac83a5",
+      "dateSource": "asset-update"
+    },
+    "abn-amro-hoofdkantoor.lod1": {
+      "updatedAt": "2026-11-01T18:18:03.406Z",
+      "version": "26cb8c36cbac4db6",
+      "dateSource": "asset-update"
+    },
     "academie-theater-dans": {
       "updatedAt": "2026-10-23T21:20:33.294Z",
       "version": "d8abfa92db6923d7",
@@ -9,6 +19,16 @@
     "academie-theater-dans.lod1": {
       "updatedAt": "2026-10-24T16:41:14.289Z",
       "version": "1f8d850d4993c054",
+      "dateSource": "asset-update"
+    },
+    "academie-van-bouwkunst": {
+      "updatedAt": "2026-11-01T18:09:36.749Z",
+      "version": "65954ae0ec76278e",
+      "dateSource": "asset-update"
+    },
+    "academie-van-bouwkunst.lod1": {
+      "updatedAt": "2026-11-01T18:09:21.352Z",
+      "version": "a68a4b0baa3386d2",
       "dateSource": "asset-update"
     },
     "adam-tower": {
@@ -84,6 +104,16 @@
     "amstelkerk.lod1": {
       "updatedAt": "2026-10-23T20:23:30.306Z",
       "version": "11d55db9752e9697",
+      "dateSource": "asset-update"
+    },
+    "amstelstation": {
+      "updatedAt": "2026-11-01T18:12:43.735Z",
+      "version": "152f5c777a82421c",
+      "dateSource": "asset-update"
+    },
+    "amstelstation.lod1": {
+      "updatedAt": "2026-11-01T18:11:55.049Z",
+      "version": "e1751a80dfa83514",
       "dateSource": "asset-update"
     },
     "amsterdam-dungeon": {
@@ -766,6 +796,16 @@
       "version": "c851a015af5af978",
       "dateSource": "asset-update"
     },
+    "droogbak": {
+      "updatedAt": "2026-11-01T18:18:02.058Z",
+      "version": "0aeb60175612bc0d",
+      "dateSource": "asset-update"
+    },
+    "droogbak.lod1": {
+      "updatedAt": "2026-11-01T18:17:30.276Z",
+      "version": "eb68ac68ebaf3ee4",
+      "dateSource": "asset-update"
+    },
     "dutch-resistance-museum": {
       "updatedAt": "2026-10-20T10:12:41.204Z",
       "version": "65a0b4eb809caef4",
@@ -1221,6 +1261,16 @@
       "version": "12335ca7f2de0fe8",
       "dateSource": "asset-update"
     },
+    "havengebouw": {
+      "updatedAt": "2026-11-01T17:17:48.175Z",
+      "version": "dfd315d58de38070",
+      "dateSource": "asset-update"
+    },
+    "havengebouw.lod1": {
+      "updatedAt": "2026-11-01T18:13:46.276Z",
+      "version": "d94bf9e8ff2664ea",
+      "dateSource": "asset-update"
+    },
     "he-hua-temple": {
       "updatedAt": "2026-10-20T10:11:50.610Z",
       "version": "a6e7133c8cf673b9",
@@ -1254,6 +1304,16 @@
     "herepoort-bergpoort": {
       "updatedAt": "2026-10-20T10:12:58.145Z",
       "version": "04ba05c7a02dbb7d",
+      "dateSource": "asset-update"
+    },
+    "het-nieuwe-huis": {
+      "updatedAt": "2026-11-01T17:52:56.901Z",
+      "version": "1dabed264c783f80",
+      "dateSource": "asset-update"
+    },
+    "het-nieuwe-huis.lod1": {
+      "updatedAt": "2026-11-01T17:52:36.355Z",
+      "version": "68f3947337fb4765",
       "dateSource": "asset-update"
     },
     "het-schip": {
@@ -1304,6 +1364,16 @@
     "hnk-sloterdijk.lod1": {
       "updatedAt": "2026-10-23T20:23:30.376Z",
       "version": "d20654687b22c16a",
+      "dateSource": "asset-update"
+    },
+    "hollandsche-manege": {
+      "updatedAt": "2026-11-01T18:01:03.941Z",
+      "version": "023c8ea79a32b66b",
+      "dateSource": "asset-update"
+    },
+    "hollandsche-manege.lod1": {
+      "updatedAt": "2026-11-01T18:00:38.931Z",
+      "version": "d8a023a16e3e7bd4",
       "dateSource": "asset-update"
     },
     "hollandsche-schouwburg": {
@@ -1429,6 +1499,16 @@
     "huis-marseille.lod1": {
       "updatedAt": "2026-10-23T20:23:30.384Z",
       "version": "ec5f0a071245ff62",
+      "dateSource": "asset-update"
+    },
+    "huis-met-de-hoofden": {
+      "updatedAt": "2026-11-01T17:15:43.829Z",
+      "version": "6d7d0c5dbdfda371",
+      "dateSource": "asset-update"
+    },
+    "huis-met-de-hoofden.lod1": {
+      "updatedAt": "2026-11-01T17:15:41.227Z",
+      "version": "2f1ecf565d8bfc6f",
       "dateSource": "asset-update"
     },
     "huize-frankendael": {
@@ -1559,6 +1639,11 @@
     "kalvertoren": {
       "updatedAt": "2026-10-31T14:29:00.129Z",
       "version": "2a2010e69de4af5e",
+      "dateSource": "asset-update"
+    },
+    "kalvertoren.lod1": {
+      "updatedAt": "2026-10-31T17:37:49.190Z",
+      "version": "6d8999a31b6fa2ae",
       "dateSource": "asset-update"
     },
     "kattenkabinet": {
@@ -1739,6 +1824,16 @@
     "lekstraat-synagoge.lod1": {
       "updatedAt": "2026-10-23T20:23:30.400Z",
       "version": "b989c6c493efcf7d",
+      "dateSource": "asset-update"
+    },
+    "lensbomen": {
+      "updatedAt": "2026-11-01T17:15:43.850Z",
+      "version": "84573bdb953f314b",
+      "dateSource": "asset-update"
+    },
+    "lensbomen.lod1": {
+      "updatedAt": "2026-11-01T17:15:41.229Z",
+      "version": "703e5c2aa0cbf526",
       "dateSource": "asset-update"
     },
     "levend-paardenmuseum": {
@@ -2239,6 +2334,16 @@
     "olvg-west.lod1": {
       "updatedAt": "2026-10-23T20:23:30.433Z",
       "version": "bf78edf663a09df7",
+      "dateSource": "asset-update"
+    },
+    "olympisch-stadion": {
+      "updatedAt": "2026-11-01T17:52:56.710Z",
+      "version": "234c41654ea98cca",
+      "dateSource": "asset-update"
+    },
+    "olympisch-stadion.lod1": {
+      "updatedAt": "2026-11-01T17:52:36.365Z",
+      "version": "19fe909838b38d78",
       "dateSource": "asset-update"
     },
     "ons-lieve-heer-op-solder": {
@@ -3309,6 +3414,16 @@
     "winkler-prins-monument.lod1": {
       "updatedAt": "2026-10-14T02:54:28.497Z",
       "version": "8236f27a203f801c",
+      "dateSource": "asset-update"
+    },
+    "wolkenkrabber": {
+      "updatedAt": "2026-11-01T18:18:06.056Z",
+      "version": "1da18b6e8d540940",
+      "dateSource": "asset-update"
+    },
+    "wolkenkrabber.lod1": {
+      "updatedAt": "2026-11-01T18:18:03.413Z",
+      "version": "e8e73753798b4543",
       "dateSource": "asset-update"
     },
     "woongebouw-wladiwostok": {

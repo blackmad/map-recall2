@@ -1,0 +1,73 @@
+{
+ "street": "Van Breestraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-01T14:23:35.363Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012160540",
+   "addresses": [
+    "Van Breestraat 123"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Breestraat 123-H",
+     "use": "woonfunctie",
+     "areaM2": 215,
+     "bagId": "0363010000837111"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012160169",
+   "addresses": [
+    "Van Breestraat 125"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Breestraat 125-H",
+     "use": "woonfunctie",
+     "areaM2": 195,
+     "bagId": "0363010000837116"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012157147",
+   "addresses": [
+    "Van Breestraat 127"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Breestraat 127-H",
+     "use": "woonfunctie",
+     "areaM2": 133,
+     "bagId": "0363010000837121"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012163068",
+   "addresses": [
+    "Van Breestraat 129"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Breestraat 129-H",
+     "use": "woonfunctie",
+     "areaM2": 188,
+     "bagId": "0363010000837125"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  }
+ ]
+}

@@ -1,0 +1,57 @@
+{
+ "street": "Banstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-01T12:21:29.156Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012157547",
+   "addresses": [
+    "Banstraat 22"
+   ],
+   "groundUnits": [
+    {
+     "address": "Banstraat 22-H",
+     "use": "winkelfunctie,woonfunctie",
+     "areaM2": 197,
+     "bagId": "0363010000577101"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012157548",
+   "addresses": [
+    "Banstraat 20"
+   ],
+   "groundUnits": [
+    {
+     "address": "Banstraat 20",
+     "use": "gezondheidszorgfunctie,woonfunctie",
+     "areaM2": 371,
+     "bagId": "0363010000577100"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012155655",
+   "addresses": [
+    "Banstraat 18"
+   ],
+   "groundUnits": [
+    {
+     "address": "Banstraat 18-H",
+     "use": "woonfunctie",
+     "areaM2": 220,
+     "bagId": "0363010000577095"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  }
+ ]
+}

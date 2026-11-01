@@ -1,0 +1,89 @@
+{
+ "street": "Concertgebouwplein",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched n/a (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012065378",
+   "addresses": [
+    "Concertgebouwplein 21"
+   ],
+   "groundUnits": [
+    {
+     "address": "Concertgebouwplein 21",
+     "use": "kantoorfunctie",
+     "areaM2": 367,
+     "bagId": "0363010000930004"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012097766",
+   "addresses": [
+    "Concertgebouwplein 23"
+   ],
+   "groundUnits": [
+    {
+     "address": "Concertgebouwplein 23",
+     "use": "woonfunctie",
+     "areaM2": 313,
+     "bagId": "0363010000930005"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012124673",
+   "addresses": [
+    "Concertgebouwplein 25"
+   ],
+   "groundUnits": [
+    {
+     "address": "Concertgebouwplein 25",
+     "use": "kantoorfunctie",
+     "areaM2": 310,
+     "bagId": "0363010000930006"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012102212",
+   "addresses": [
+    "Concertgebouwplein 27"
+   ],
+   "groundUnits": [
+    {
+     "address": "Concertgebouwplein 27",
+     "use": "kantoorfunctie",
+     "areaM2": 270,
+     "bagId": "0363010000930007"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012144118",
+   "addresses": [
+    "Concertgebouwplein 29"
+   ],
+   "groundUnits": [
+    {
+     "address": "Concertgebouwplein 29-H",
+     "use": "kantoorfunctie",
+     "areaM2": 663,
+     "bagId": "0363010000930008"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  }
+ ]
+}

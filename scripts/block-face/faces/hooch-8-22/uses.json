@@ -1,0 +1,178 @@
+{
+ "street": "Pieter de Hoochstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched n/a (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012079894",
+   "addresses": [
+    "Pieter de Hoochstraat 22"
+   ],
+   "groundUnits": [
+    {
+     "address": "Pieter de Hoochstraat 22-H",
+     "use": "woonfunctie",
+     "areaM2": 298,
+     "bagId": "0363010000775002"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012122594",
+   "addresses": [
+    "Pieter de Hoochstraat 20"
+   ],
+   "groundUnits": [
+    {
+     "address": "Pieter de Hoochstraat 20-H",
+     "use": "woonfunctie",
+     "areaM2": 306,
+     "bagId": "0363010000774999"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012135779",
+   "addresses": [
+    "Pieter de Hoochstraat 18",
+    "Pieter de Hoochstraat 18D",
+    "Pieter de Hoochstraat 18C",
+    "Pieter de Hoochstraat 18E",
+    "Pieter de Hoochstraat 18B",
+    "Pieter de Hoochstraat 18A"
+   ],
+   "groundUnits": [
+    {
+     "address": "Pieter de Hoochstraat 18-H",
+     "use": "kantoorfunctie",
+     "areaM2": 219,
+     "bagId": "0363010000774997"
+    },
+    {
+     "address": "Pieter de Hoochstraat 18D",
+     "use": "kantoorfunctie",
+     "areaM2": 125,
+     "bagId": "0363010011211395"
+    },
+    {
+     "address": "Pieter de Hoochstraat 18C",
+     "use": "kantoorfunctie",
+     "areaM2": 83,
+     "bagId": "0363010011211396"
+    },
+    {
+     "address": "Pieter de Hoochstraat 18E",
+     "use": "kantoorfunctie",
+     "areaM2": 28,
+     "bagId": "0363010011211397"
+    },
+    {
+     "address": "Pieter de Hoochstraat 18D",
+     "use": "kantoorfunctie",
+     "areaM2": 203,
+     "bagId": "0363010011211398"
+    },
+    {
+     "address": "Pieter de Hoochstraat 18B",
+     "use": "kantoorfunctie",
+     "areaM2": 96,
+     "bagId": "0363010012068195"
+    },
+    {
+     "address": "Pieter de Hoochstraat 18A",
+     "use": "kantoorfunctie",
+     "areaM2": 90,
+     "bagId": "0363010012068196"
+    }
+   ],
+   "units": 8,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012090747",
+   "addresses": [
+    "Pieter de Hoochstraat 16"
+   ],
+   "groundUnits": [
+    {
+     "address": "Pieter de Hoochstraat 16-H",
+     "use": "woonfunctie",
+     "areaM2": 179,
+     "bagId": "0363010000774994"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012149721",
+   "addresses": [
+    "Pieter de Hoochstraat 14"
+   ],
+   "groundUnits": [
+    {
+     "address": "Pieter de Hoochstraat 14-H",
+     "use": "woonfunctie",
+     "areaM2": 128,
+     "bagId": "0363010000774992"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012095224",
+   "addresses": [
+    "Pieter de Hoochstraat 12"
+   ],
+   "groundUnits": [
+    {
+     "address": "Pieter de Hoochstraat 12-H",
+     "use": "woonfunctie",
+     "areaM2": 293,
+     "bagId": "0363010000774990"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012134540",
+   "addresses": [
+    "Pieter de Hoochstraat 10"
+   ],
+   "groundUnits": [
+    {
+     "address": "Pieter de Hoochstraat 10-H",
+     "use": "woonfunctie",
+     "areaM2": 220,
+     "bagId": "0363010000774988"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012116862",
+   "addresses": [
+    "Pieter de Hoochstraat 8"
+   ],
+   "groundUnits": [
+    {
+     "address": "Pieter de Hoochstraat 8",
+     "use": "woonfunctie",
+     "areaM2": 350,
+     "bagId": "0363010000774987"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  }
+ ]
+}

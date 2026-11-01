@@ -129,13 +129,13 @@
  },
  {
   "slug": "duivelseiland",
-  "buildings": 1,
+  "buildings": 4,
   "kits": 0,
   "facts": 3,
   "origins": 4,
   "bridges": 0,
   "shots": 2,
-  "plan": 2,
+  "plan": 3,
   "lacks": [
    "bridges"
   ]
@@ -194,7 +194,7 @@
  },
  {
   "slug": "grachtengordel",
-  "buildings": 49,
+  "buildings": 50,
   "kits": 0,
   "facts": 151,
   "origins": 91,
@@ -433,7 +433,7 @@
  },
  {
   "slug": "museumkwartier",
-  "buildings": 27,
+  "buildings": 34,
   "kits": 0,
   "facts": 69,
   "origins": 84,
@@ -472,7 +472,7 @@
  },
  {
   "slug": "nieuwmarkt-lastage",
-  "buildings": 34,
+  "buildings": 35,
   "kits": 0,
   "facts": 172,
   "origins": 145,
@@ -540,7 +540,7 @@
  },
  {
   "slug": "oud-zuid",
-  "buildings": 41,
+  "buildings": 49,
   "kits": 0,
   "facts": 158,
   "origins": 286,
@@ -646,7 +646,7 @@
  },
  {
   "slug": "rivierenbuurt",
-  "buildings": 13,
+  "buildings": 14,
   "kits": 0,
   "facts": 17,
   "origins": 93,
@@ -659,7 +659,7 @@
  },
  {
   "slug": "scheldebuurt",
-  "buildings": 5,
+  "buildings": 6,
   "kits": 0,
   "facts": 13,
   "origins": 60,
@@ -757,7 +757,7 @@
  },
  {
   "slug": "stadionbuurt",
-  "buildings": 3,
+  "buildings": 4,
   "kits": 0,
   "facts": 36,
   "origins": 59,
@@ -861,7 +861,7 @@
  },
  {
   "slug": "vondelparkbuurt",
-  "buildings": 7,
+  "buildings": 8,
   "kits": 0,
   "facts": 21,
   "origins": 14,
@@ -956,7 +956,7 @@
  },
  {
   "slug": "zuidas",
-  "buildings": 7,
+  "buildings": 8,
   "kits": 0,
   "facts": 59,
   "origins": 56,

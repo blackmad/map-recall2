@@ -1,0 +1,331 @@
+{
+ "street": "Van Baerlestraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-01T14:47:05.286Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012164431",
+   "addresses": [
+    "Van Baerlestraat 118"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Baerlestraat 118-H",
+     "use": "winkelfunctie",
+     "areaM2": 207,
+     "bagId": "0363010001023842"
+    }
+   ],
+   "units": 6,
+   "osm": [
+    {
+     "type": "node",
+     "id": 6111810557,
+     "lngLat": [
+      4.8802808,
+      52.355341
+     ],
+     "tags": {
+      "shop": "bicycle"
+     },
+     "fetchedAt": "2026-11-01T14:47:05.286Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012152369",
+   "addresses": [
+    "Van Baerlestraat 116"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Baerlestraat 116-H",
+     "use": "winkelfunctie",
+     "areaM2": 193,
+     "bagId": "0363010000834946"
+    },
+    {
+     "address": "Van Baerlestraat 116-H",
+     "use": "winkelfunctie",
+     "areaM2": 167,
+     "bagId": "0363010012088976"
+    },
+    {
+     "address": "Van Baerlestraat 116-1",
+     "use": "winkelfunctie,woonfunctie",
+     "areaM2": 82,
+     "bagId": "0363010012088977"
+    }
+   ],
+   "units": 7,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2816569420,
+     "lngLat": [
+      4.8802211,
+      52.3553949
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "116-H",
+      "addr:postcode": "1071BC",
+      "addr:street": "Van Baerlestraat",
+      "brand": "Bang & Olufsen",
+      "brand:website": "https://www.bang-olufsen.com/en/nl",
+      "brand:wikidata": "Q790020",
+      "brand:wikipedia": "nl:Bang & Olufsen",
+      "name": "Bang & Olufsen",
+      "shop": "hifi",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://stores.bang-olufsen.com/en/netherlands/amsterdam/van-baerlestraat-116"
+     },
+     "fetchedAt": "2026-11-01T14:47:05.286Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012129366",
+   "addresses": [
+    "Van Baerlestraat 114"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Baerlestraat 114-H",
+     "use": "winkelfunctie,woonfunctie",
+     "areaM2": 242,
+     "bagId": "0363010000834944"
+    },
+    {
+     "address": "Van Baerlestraat 114-H",
+     "use": "winkelfunctie",
+     "areaM2": 102,
+     "bagId": "0363010012086776"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 10768492439,
+     "lngLat": [
+      4.8802135,
+      52.3554588
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "114",
+      "addr:postcode": "1071BC",
+      "addr:street": "Van Baerlestraat",
+      "amenity": "post_office",
+      "brand": "DHL",
+      "brand:wikidata": "Q489815",
+      "name": "DHL ServicePoint Amsterdam",
+      "opening_hours": "Mo-Fr 09:00-20:00; Sa 10:00-17:00",
+      "source:opening_hours": "Website DHL, checked 2024-03-24"
+     },
+     "fetchedAt": "2026-11-01T14:47:05.286Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012163789",
+   "addresses": [
+    "Van Baerlestraat 112"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Baerlestraat 112-H",
+     "use": "woonfunctie",
+     "areaM2": 124,
+     "bagId": "0363010001009421"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012153603",
+   "addresses": [
+    "Van Baerlestraat 110"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Baerlestraat 110-H",
+     "use": "winkelfunctie",
+     "areaM2": 132,
+     "bagId": "0363010000834939"
+    },
+    {
+     "address": "Van Baerlestraat 110-H",
+     "use": "winkelfunctie",
+     "areaM2": 68,
+     "bagId": "0363010012137698"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2816569079,
+     "lngLat": [
+      4.8801165,
+      52.3555563
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "110-H",
+      "addr:postcode": "1071BC",
+      "addr:street": "Van Baerlestraat",
+      "beauty": "hair_removal;skin_care",
+      "name": "Mourits Huidtherapie",
+      "shop": "beauty",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://mouritshuidtherapie.nl/"
+     },
+     "fetchedAt": "2026-11-01T14:47:05.286Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012152528",
+   "addresses": [
+    "Van Baerlestraat 108"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Baerlestraat 108-H",
+     "use": "winkelfunctie",
+     "areaM2": 111,
+     "bagId": "0363010000834937"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012235978",
+   "addresses": [
+    "Van Baerlestraat 102C",
+    "Van Baerlestraat 102A",
+    "Van Baerlestraat 102B",
+    "Van Baerlestraat 102D",
+    "Van Baerlestraat 102E",
+    "Van Baerlestraat 104",
+    "Van Baerlestraat 106"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Baerlestraat 102C",
+     "use": "winkelfunctie",
+     "areaM2": 480,
+     "bagId": "0363010000952398"
+    },
+    {
+     "address": "Van Baerlestraat 102A",
+     "use": "woonfunctie",
+     "areaM2": 76,
+     "bagId": "0363010000952399"
+    },
+    {
+     "address": "Van Baerlestraat 102B",
+     "use": "woonfunctie",
+     "areaM2": 72,
+     "bagId": "0363010000952400"
+    },
+    {
+     "address": "Van Baerlestraat 102D",
+     "use": "woonfunctie",
+     "areaM2": 41,
+     "bagId": "0363010001989467"
+    },
+    {
+     "address": "Van Baerlestraat 102E",
+     "use": "woonfunctie",
+     "areaM2": 33,
+     "bagId": "0363010001989468"
+    }
+   ],
+   "units": 11,
+   "osm": [
+    {
+     "type": "node",
+     "id": 178889189,
+     "lngLat": [
+      4.880033,
+      52.3556634
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:country": "NL",
+      "addr:housenumber": "102-106",
+      "addr:postcode": "1071BC",
+      "addr:street": "Van Baerlestraat",
+      "amenity": "bank",
+      "bic": "RABONL2U",
+      "brand": "Rabobank",
+      "brand:website": "https://www.rabobank.nl/",
+      "brand:wikidata": "Q252004",
+      "brand:wikipedia": "nl:Rabobank",
+      "name": "Rabobank",
+      "opening_hours": "Mo 13:00-17:00; Tu-Fr 10:00-17:00",
+      "operator": "Rabobank Amsterdam",
+      "website": "https://www.rabobank.nl/lokale-bank/amsterdam"
+     },
+     "fetchedAt": "2026-11-01T14:47:05.286Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 12548705813,
+     "lngLat": [
+      4.879911,
+      52.3557992
+     ],
+     "tags": {
+      "name": "De Bijbel: het woord van God",
+      "shop": "kiosk"
+     },
+     "fetchedAt": "2026-11-01T14:47:05.286Z",
+     "match": "frontage",
+     "distanceM": 6.6
+    },
+    {
+     "type": "node",
+     "id": 12871441750,
+     "lngLat": [
+      4.8800233,
+      52.3557585
+     ],
+     "tags": {
+      "amenity": "atm",
+      "brand": "Geldmaat",
+      "brand:wikidata": "Q74051230",
+      "cash_out": "yes",
+      "covered": "no",
+      "mapillary": "319139516547560",
+      "operator": "Geldmaat",
+      "operator:wikidata": "Q74051230",
+      "source": "survey;Mapillary"
+     },
+     "fetchedAt": "2026-11-01T14:47:05.286Z",
+     "match": "frontage",
+     "distanceM": 0.2
+    }
+   ]
+  }
+ ]
+}

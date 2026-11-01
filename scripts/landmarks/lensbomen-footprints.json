@@ -1,0 +1,62 @@
+{
+ "id": "lensbomen",
+ "osmNode": "n4360169260",
+ "osmPoint": [
+  4.8944688,
+  52.3686724
+ ],
+ "wikidata": "Q26453081",
+ "year": 1989,
+ "artist": "Thom Puckey",
+ "material": "bronze, perspex (artist's Commons description)",
+ "heightCm": 700,
+ "panoramas": [
+  {
+   "id": "TMX7316010203-000717_pano_0000_000526",
+   "captured": "2018-05-14",
+   "lngLat": [
+    4.89463441922816,
+    52.3687005519091
+   ],
+   "bearingsToTrunks": {
+    "A": 231.4,
+    "B": 244.3,
+    "C": 247.9
+   }
+  },
+  {
+   "id": "TMX7316010203-000224_pano_0000_000767",
+   "captured": "2017-03-27",
+   "lngLat": [
+    4.89448621248548,
+    52.3687271013771
+   ],
+   "bearingsToTrunks": {
+    "C": 162.5,
+    "B": 191.7
+   }
+  }
+ ],
+ "panoramaNote": "Equirectangular images are north-centred (column W/2 = bearing 0); bearings read on perspective renders. A has only one bearing; its distance is the base-row range scaled by the 0.81 range ratio the triangulated B and C give (camera about 2.0 m).",
+ "trunksEastNorthFromCentroid": {
+  "A": [
+   1.66,
+   -1.0
+  ],
+  "B": [
+   -2.71,
+   -0.71
+  ],
+  "C": [
+   1.06,
+   1.71
+  ]
+ },
+ "anchor": [
+  4.8944996,
+  52.3686556
+ ],
+ "lean": "B leans about 1.6 m east over its 3.1 m trunk (2017 panorama from the north); A and C stand upright",
+ "heights": "panorama reading: forks 3.0-3.2 m, tips 6.9-8.3 m; scaled by 7.0/8.3 to the artist's 700 cm",
+ "lenses": "six, 0.9-1.0 m across in steel rims (2012 and 2018 photographs: lens/height ratio about 0.14); pale, slightly amber in overcast photos, clear with reflections in 2023-ish photos"
+}

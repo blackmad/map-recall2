@@ -1,0 +1,482 @@
+{
+ "schemaVersion": 1,
+ "id": "hollandsche-manege",
+ "pand": "0363100012074454",
+ "brief": "scripts/landmarks/hollandsche-manege-brief.md",
+ "signature": [
+  "hall-gable",
+  "gateway-arch",
+  "manege-frieze",
+  "hall-name",
+  "oculi",
+  "east-arched-windows"
+ ],
+ "walls": [
+  {
+   "tag": "w01-69",
+   "bearing": 69,
+   "lengthM": 45,
+   "centre": [
+    4.872046,
+    52.3614335
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316060226-000022_pano_0006_000594",
+   "capturedAt": "2016-08-16",
+   "checked": true,
+   "items": [
+    {
+     "id": "east-arched-windows",
+     "kind": "window-shape",
+     "where": "eleven round-headed windows with circle-tracery fanlights at 3 m centres high in the rendered wall",
+     "approxSizeM": [
+      1.05,
+      2.6
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316060226-000022_pano_0006_000594"
+    },
+    {
+     "id": "east-lanterns",
+     "kind": "lamp",
+     "where": "wall lanterns under the coping between the windows",
+     "approxSizeM": [
+      0.25,
+      0.5
+     ],
+     "plan": "simplified",
+     "how": "bronze bracket and box",
+     "seenIn": "TMX7316060226-000022_pano_0006_000594"
+    },
+    {
+     "id": "east-render",
+     "kind": "other",
+     "where": "the whole wall rendered white with a plinth and coping",
+     "approxSizeM": [
+      45,
+      10.3
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316060226-000022_pano_0006_000594"
+    },
+    {
+     "id": "downpipes",
+     "kind": "other",
+     "where": "three downpipes",
+     "approxSizeM": [
+      0.1,
+      10
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316060226-000022_pano_0006_000594"
+    }
+   ]
+  },
+  {
+   "tag": "w02-158",
+   "bearing": 158,
+   "lengthM": 22.3,
+   "centre": [
+    4.8719245,
+    52.3611195
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002789_pano_0000_000856",
+   "capturedAt": "2022-09-02",
+   "checked": true,
+   "items": [],
+   "note": "the crop shows the Vondelstraat house fronts in front of this wall; the hall wall is behind them"
+  },
+  {
+   "tag": "w03-248",
+   "bearing": 248,
+   "lengthM": 21.4,
+   "centre": [
+    4.871628,
+    52.361374
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "items": []
+  },
+  {
+   "tag": "w04-338",
+   "bearing": 338,
+   "lengthM": 19.5,
+   "centre": [
+    4.8717905,
+    52.361588
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-07-31_06-59-14_01643",
+   "capturedAt": "2025-07-31",
+   "checked": true,
+   "items": [
+    {
+     "id": "hall-gable",
+     "kind": "other",
+     "where": "brick gable of the riding hall over a white rendered base",
+     "approxSizeM": [
+      19.5,
+      15.3
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-07-31_06-59-14_01643"
+    },
+    {
+     "id": "hall-name",
+     "kind": "lettering",
+     "where": "DE HOLLANDSCHE MANEGE on a stone band over the doors",
+     "approxSizeM": [
+      8.0,
+      0.5
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-07-31_06-59-14_01643"
+    },
+    {
+     "id": "hall-doors",
+     "kind": "window-shape",
+     "where": "arched timber double doors in a stone surround",
+     "approxSizeM": [
+      3.0,
+      3.7
+     ],
+     "plan": "simplified",
+     "how": "timber leaves as raised panels, stone arch band, bronze hinge straps",
+     "seenIn": "recording_2025-07-31_06-59-14_01643"
+    },
+    {
+     "id": "oculi",
+     "kind": "window-shape",
+     "where": "five round windows with four white keystones each",
+     "approxSizeM": [
+      1.4,
+      1.4
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-07-31_06-59-14_01643"
+    },
+    {
+     "id": "raking-cornice",
+     "kind": "other",
+     "where": "broad white raking cornice with returns at the eaves",
+     "approxSizeM": [
+      19.5,
+      0.6
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-07-31_06-59-14_01643"
+    },
+    {
+     "id": "chimney",
+     "kind": "other",
+     "where": "chimney stack at the apex",
+     "approxSizeM": [
+      1.3,
+      1.6
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-07-31_06-59-14_01643"
+    },
+    {
+     "id": "art-posts",
+     "kind": "sculpture",
+     "where": "two tall tiled concrete posts on stepped bases in the square",
+     "approxSizeM": [
+      0.6,
+      8.0
+     ],
+     "plan": "skipped",
+     "skip": {
+      "reason": "not-visible",
+      "note": "they stand free in the square, not on the building; they are street furniture for another layer"
+     },
+     "seenIn": "recording_2025-07-31_06-59-14_01643"
+    },
+    {
+     "id": "hall-roof-lantern",
+     "kind": "other",
+     "where": "the hall roof with the raised ridge boxes (lantern) that 3DBAG shows at 16 and 18 m",
+     "approxSizeM": [
+      12,
+      3
+     ],
+     "plan": "simplified",
+     "how": "3DBAG LoD2.2 roof kept as is, slate; no panorama shows the lantern glazing, so it is not drawn",
+     "seenIn": "recording_2025-07-31_06-59-14_01643"
+    }
+   ]
+  },
+  {
+   "tag": "w05-338",
+   "bearing": 338,
+   "lengthM": 18.7,
+   "centre": [
+    4.8715605,
+    52.3612525
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "items": []
+  },
+  {
+   "tag": "w06-158",
+   "bearing": 158,
+   "lengthM": 15.7,
+   "centre": [
+    4.8716325,
+    52.361108
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "items": []
+  },
+  {
+   "tag": "w07-67",
+   "bearing": 67,
+   "lengthM": 13.2,
+   "centre": [
+    4.872204,
+    52.3611275
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-07-31_10-53-44_01149",
+   "capturedAt": "2025-07-31",
+   "checked": true,
+   "items": [],
+   "note": "the crop shows the Vondelstraat houses (balconies, planters); the manege wall is behind them"
+  },
+  {
+   "tag": "w08-338",
+   "bearing": 338,
+   "lengthM": 9.5,
+   "centre": [
+    4.8716335,
+    52.361479
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-07-31_06-59-14_01640",
+   "capturedAt": "2025-07-31",
+   "checked": true,
+   "items": [
+    {
+     "id": "stable-end",
+     "kind": "other",
+     "where": "stable wing end, white render with a small brick gable",
+     "approxSizeM": [
+      9.5,
+      10
+     ],
+     "plan": "simplified",
+     "how": "3DBAG shell kept, brick; the render is not drawn",
+     "seenIn": "recording_2025-07-31_06-59-14_01640"
+    }
+   ],
+   "note": "the stable wing end: a low white wall with a brick gable behind the art post; kept as the 3DBAG shell (brick)"
+  },
+  {
+   "tag": "w09-248",
+   "bearing": 248,
+   "lengthM": 7.2,
+   "centre": [
+    4.871678,
+    52.361525
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-07-31_06-59-14_01636",
+   "capturedAt": "2025-07-31",
+   "checked": true,
+   "items": [],
+   "note": "the crop shows a modern block with a glass-block porch; the manege wall is behind it"
+  },
+  {
+   "tag": "w10-157",
+   "bearing": 157,
+   "lengthM": 6.6,
+   "centre": [
+    4.8722705,
+    52.360962
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002789_pano_0000_000852",
+   "capturedAt": "2022-09-02",
+   "checked": true,
+   "items": [
+    {
+     "id": "gateway-arch",
+     "kind": "window-shape",
+     "where": "round-arched passage through the stucco ground storey",
+     "approxSizeM": [
+      3.2,
+      4.4
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002789_pano_0000_000852"
+    },
+    {
+     "id": "stucco-storey",
+     "kind": "other",
+     "where": "white rusticated stucco ground storey with pilasters either side of the arch",
+     "approxSizeM": [
+      6.7,
+      5.7
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002789_pano_0000_000852"
+    },
+    {
+     "id": "manege-frieze",
+     "kind": "lettering",
+     "where": "MANEGE in the entablature frieze over the arch",
+     "approxSizeM": [
+      1.8,
+      0.3
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002789_pano_0000_000852"
+    },
+    {
+     "id": "keystone-cartouche",
+     "kind": "relief",
+     "where": "carved keystone cartouche between the arch and the frieze",
+     "approxSizeM": [
+      0.5,
+      0.7
+     ],
+     "plan": "simplified",
+     "how": "stone keystone with a white cartouche block; the carving (no horse head readable at 50 px/m) is not modelled",
+     "seenIn": "TMX7316010203-002789_pano_0000_000852"
+    },
+    {
+     "id": "gate-lanterns",
+     "kind": "lamp",
+     "where": "two wall lanterns on arms beside the arch",
+     "approxSizeM": [
+      0.4,
+      0.9
+     ],
+     "plan": "simplified",
+     "how": "glass box with a bronze cap on a bronze arm",
+     "seenIn": "TMX7316010203-002789_pano_0000_000852"
+    },
+    {
+     "id": "enamel-plaques",
+     "kind": "sign",
+     "where": "two blue enamel plaques at the foot of the pilasters",
+     "approxSizeM": [
+      0.35,
+      0.45
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002789_pano_0000_000852"
+    },
+    {
+     "id": "hooded-windows",
+     "kind": "window-shape",
+     "where": "three first-floor windows in white stone surrounds under segmental hoods with gilt ornament",
+     "approxSizeM": [
+      1.8,
+      3.2
+     ],
+     "plan": "simplified",
+     "how": "stone surround, timber frame with transom, segmental stone hood over a flat ochre ornament strip",
+     "seenIn": "TMX7316010203-002789_pano_0000_000852"
+    },
+    {
+     "id": "upper-windows",
+     "kind": "window-shape",
+     "where": "three second-floor windows in stone surrounds",
+     "approxSizeM": [
+      1.6,
+      2.5
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002789_pano_0000_000852"
+    },
+    {
+     "id": "top-cornice",
+     "kind": "other",
+     "where": "stone frieze and cornice under the brick attic",
+     "approxSizeM": [
+      6.7,
+      0.6
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002789_pano_0000_000852"
+    },
+    {
+     "id": "roof-dormer",
+     "kind": "other",
+     "where": "pedimented dormer over the cornice",
+     "approxSizeM": [
+      1.5,
+      1.5
+     ],
+     "plan": "skipped",
+     "skip": {
+      "reason": "not-visible",
+      "note": "only its top shows above the cornice in the aimed view; the rectified crop cuts it off and the 3DBAG roof there is a party roof"
+     },
+     "seenIn": "TMX7316010203-002789_pano_0000_000852"
+    }
+   ]
+  },
+  {
+   "tag": "w11-69",
+   "bearing": 69,
+   "lengthM": 6.6,
+   "centre": [
+    4.872231,
+    52.3612295
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "items": []
+  },
+  {
+   "tag": "w12-249",
+   "bearing": 249,
+   "lengthM": 6.4,
+   "centre": [
+    4.871756,
+    52.361108
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "items": []
+  },
+  {
+   "tag": "w13-159",
+   "bearing": 159,
+   "lengthM": 6.1,
+   "centre": [
+    4.872207,
+    52.361192
+   ],
+   "evidence": "photo",
+   "panoId": "b_20241129_0829_Track66_Sphere_00016",
+   "capturedAt": "2024-11-29",
+   "checked": true,
+   "items": [],
+   "note": "the crop shows a Vondelstraat house (bay window, balcony) in front of this wall"
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  }
+ ]
+}

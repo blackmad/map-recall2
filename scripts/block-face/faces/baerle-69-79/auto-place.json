@@ -1,0 +1,646 @@
+{
+ "face": "baerle-69-79",
+ "street": "Van Baerlestraat",
+ "library": "museumkwartier",
+ "stripDate": "2024-12-11",
+ "seconds": 1.96,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [],
+ "pands": [
+  {
+   "pandId": "0363100012236564",
+   "address": "Van Baerlestraat 69",
+   "builtYear": 1904,
+   "widthM": 6.33,
+   "eavesM": 16.9,
+   "storeys3dbag": 5,
+   "bagBay": {
+    "fromM": 6.32,
+    "toM": 6.32,
+    "depthM": 0.3,
+    "centre": 1,
+    "lineRD": [
+     [
+      120527.28675,
+      485326.994
+     ],
+     [
+      120528.78275,
+      485323.863
+     ]
+    ]
+   },
+   "strip": {
+    "wall": "#937b60",
+    "wallRaw": "#907e62",
+    "skyline": {
+     "eavesM": 18.73,
+     "eavesRow": 182,
+     "confidence": 1,
+     "crown": {
+      "widthM": 3.02,
+      "riseM": 3.77,
+      "topWidthM": 0.63,
+      "centre": 0.45
+     }
+    },
+    "stucco": false,
+    "bands": 4,
+    "columns": 7,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.2,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "balcony slabs stacked at 14.35 m (1.32 m wide), 11.13 m (1.32 m wide)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 14.35,
+       "widthM": 1.32,
+       "centre": 0.12
+      },
+      {
+       "atM": 11.13,
+       "widthM": 1.32,
+       "centre": 0.12
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.38
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best museum-de-1899-corbel-cornice: built 1904, type 1898-1901)",
+   "best": {
+    "type": "museum-de-1899-corbel-cornice",
+    "score": 0,
+    "veto": [
+     "built 1904, type 1898-1901"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 18.73 m vs the type's 13.4 m (wall-dormer skyline 14.7 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": null,
+      "note": "no strip"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012163247",
+   "address": "Van Baerlestraat 71",
+   "builtYear": 1904,
+   "widthM": 6.71,
+   "eavesM": 16.06,
+   "storeys3dbag": 5,
+   "bagBay": {
+    "fromM": 0,
+    "toM": 2.09,
+    "depthM": 0.4,
+    "centre": 0.156,
+    "lineRD": [
+     [
+      120531.12675,
+      485318.421
+     ],
+     [
+      120532.33674999999,
+      485314.977
+     ]
+    ]
+   },
+   "strip": {
+    "wall": "#69563d",
+    "wallRaw": "#78694e",
+    "skyline": {
+     "eavesM": 16.77,
+     "eavesRow": 260,
+     "confidence": 1,
+     "crown": {
+      "widthM": 4.28,
+      "riseM": 4.13,
+      "topWidthM": 0.4,
+      "centre": 0.51
+     }
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": 3,
+    "frontClass": "columns",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.221,
+    "structure": {
+     "bayWidthM": 0.65,
+     "bayCentre": 0.5,
+     "balconies": true,
+     "why": "balcony slabs stacked at 14.42 m (1.4 m wide), 11.13 m (1.3 m wide), 8.27 m (1.4 m wide)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 15.03,
+       "widthM": 1.6,
+       "centre": 0.84
+      },
+      {
+       "atM": 14.42,
+       "widthM": 1.4,
+       "centre": 0.16
+      },
+      {
+       "atM": 11.13,
+       "widthM": 1.3,
+       "centre": 0.16
+      },
+      {
+       "atM": 8.27,
+       "widthM": 1.4,
+       "centre": 0.89
+      },
+      {
+       "atM": 7.45,
+       "widthM": 0.85,
+       "centre": 0.8
+      },
+      {
+       "atM": 4.75,
+       "widthM": 0.88,
+       "centre": 0.09
+      }
+     ]
+    },
+    "voidShare": 0.02,
+    "foliageShare": 0.29
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best museum-de-1899-corbel-cornice: built 1904, type 1898-1901; frontage 6.71 m, type 5-6 m)",
+   "best": {
+    "type": "museum-de-1899-corbel-cornice",
+    "score": 0,
+    "veto": [
+     "built 1904, type 1898-1901",
+     "frontage 6.71 m, type 5-6 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 16.77 m vs the type's 13.4 m (wall-dormer skyline 14.7 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.194 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012166179",
+   "address": "Van Baerlestraat 73",
+   "builtYear": 1904,
+   "widthM": 6.71,
+   "eavesM": 15.92,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#6d5d43",
+    "wallRaw": "#746348",
+    "skyline": {
+     "eavesM": 16.48,
+     "eavesRow": 272,
+     "confidence": 1,
+     "crown": {
+      "widthM": 4,
+      "riseM": 3.63,
+      "topWidthM": 1.63,
+      "centre": 0.5
+     }
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": 9,
+    "frontClass": "punched",
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0.199,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 15.03,
+       "widthM": 1.6,
+       "centre": 0.17
+      },
+      {
+       "atM": 14.42,
+       "widthM": 1.32,
+       "centre": 0.5
+      },
+      {
+       "atM": 11.13,
+       "widthM": 1.32,
+       "centre": 0.15
+      },
+      {
+       "atM": 8.35,
+       "widthM": 1.07,
+       "centre": 0.16
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.34
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best museum-de-1899-corbel-cornice: built 1904, type 1898-1901; frontage 6.71 m, type 5-6 m)",
+   "best": {
+    "type": "museum-de-1899-corbel-cornice",
+    "score": 0,
+    "veto": [
+     "built 1904, type 1898-1901",
+     "frontage 6.71 m, type 5-6 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 16.48 m vs the type's 13.4 m (wall-dormer skyline 14.7 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": null,
+      "note": "no strip"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012161969",
+   "address": "Van Baerlestraat 75",
+   "builtYear": 1904,
+   "widthM": 6.71,
+   "eavesM": 15.78,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#69553a",
+    "wallRaw": "#756549",
+    "skyline": {
+     "eavesM": 16.48,
+     "eavesRow": 272,
+     "confidence": 1,
+     "crown": {
+      "widthM": 4.17,
+      "riseM": 3.63,
+      "topWidthM": 1.57,
+      "centre": 0.5
+     }
+    },
+    "stucco": false,
+    "bands": 3,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.216,
+    "structure": {
+     "bayWidthM": 1.1,
+     "bayCentre": 0.49,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 15.03,
+       "widthM": 1.57,
+       "centre": 0.16
+      },
+      {
+       "atM": 14.5,
+       "widthM": 1.32,
+       "centre": 0.49
+      },
+      {
+       "atM": 11.13,
+       "widthM": 1.32,
+       "centre": 0.49
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.31
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best museum-de-1899-corbel-cornice: built 1904, type 1898-1901; frontage 6.71 m, type 5-6 m)",
+   "best": {
+    "type": "museum-de-1899-corbel-cornice",
+    "score": 0,
+    "veto": [
+     "built 1904, type 1898-1901",
+     "frontage 6.71 m, type 5-6 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 16.48 m vs the type's 13.4 m (wall-dormer skyline 14.7 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": null,
+      "note": "no strip"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012152421",
+   "address": "Van Baerlestraat 77",
+   "builtYear": 1904,
+   "widthM": 6.71,
+   "eavesM": 15.92,
+   "storeys3dbag": 5,
+   "bagBay": {
+    "fromM": 0,
+    "toM": 0,
+    "depthM": 0.25,
+    "centre": 0,
+    "lineRD": [
+     [
+      120538.4591875,
+      485301.0415
+     ],
+     [
+      120539.7161875,
+      485298.0035
+     ]
+    ]
+   },
+   "strip": {
+    "wall": "#67553c",
+    "wallRaw": "#7b6a4e",
+    "skyline": {
+     "eavesM": 16.48,
+     "eavesRow": 272,
+     "confidence": 1,
+     "crown": {
+      "widthM": 4,
+      "riseM": 4.02,
+      "topWidthM": 1.07,
+      "centre": 0.47
+     }
+    },
+    "stucco": false,
+    "bands": 4,
+    "columns": 6,
+    "frontClass": "columns",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.225,
+    "structure": {
+     "bayWidthM": 1.1,
+     "bayCentre": 0.82,
+     "balconies": false,
+     "why": "no dark open axis, 2 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 14.5,
+       "widthM": 1.35,
+       "centre": 0.48
+      },
+      {
+       "atM": 11.88,
+       "widthM": 1.38,
+       "centre": 0.15
+      },
+      {
+       "atM": 11.13,
+       "widthM": 1.35,
+       "centre": 0.83
+      },
+      {
+       "atM": 8.27,
+       "widthM": 1,
+       "centre": 0.09
+      },
+      {
+       "atM": 4.82,
+       "widthM": 1.45,
+       "centre": 0.88
+      }
+     ]
+    },
+    "voidShare": 0.02,
+    "foliageShare": 0.29
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best museum-de-1899-corbel-cornice: built 1904, type 1898-1901; frontage 6.71 m, type 5-6 m)",
+   "best": {
+    "type": "museum-de-1899-corbel-cornice",
+    "score": 0,
+    "veto": [
+     "built 1904, type 1898-1901",
+     "frontage 6.71 m, type 5-6 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 16.48 m vs the type's 13.4 m (wall-dormer skyline 14.7 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.207 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0,
+      "note": "strip columns 6 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012237303",
+   "address": "Van Baerlestraat 79",
+   "builtYear": 1904,
+   "widthM": 6.5,
+   "eavesM": 16.46,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#907156",
+    "wallRaw": "#997d5f",
+    "skyline": {
+     "eavesM": 18.68,
+     "eavesRow": 184,
+     "confidence": 1,
+     "crown": {
+      "widthM": 3.45,
+      "riseM": 3.4,
+      "topWidthM": 0.45,
+      "centre": 0.48
+     }
+    },
+    "stucco": false,
+    "bands": 3,
+    "columns": 3,
+    "frontClass": "columns",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.177,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 3 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 14.42,
+       "widthM": 1.3,
+       "centre": 0.11
+      },
+      {
+       "atM": 11.13,
+       "widthM": 1.35,
+       "centre": 0.46
+      },
+      {
+       "atM": 7.45,
+       "widthM": 1.3,
+       "centre": 0.8
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.25
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best museum-de-1899-corbel-cornice: built 1904, type 1898-1901; frontage 6.5 m, type 5-6 m)",
+   "best": {
+    "type": "museum-de-1899-corbel-cornice",
+    "score": 0,
+    "veto": [
+     "built 1904, type 1898-1901",
+     "frontage 6.5 m, type 5-6 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 18.68 m vs the type's 13.4 m (wall-dormer skyline 14.7 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.176 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

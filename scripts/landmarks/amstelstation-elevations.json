@@ -1,0 +1,46 @@
+{
+ "id": "amstelstation",
+ "source": "Counted 2026-11-01 (lane #167) from the landmark-brief.ts crops of the Gemeente Amsterdam panoramas (CC BY 4.0): w07-160 (south hall front) and w13-70 (east gable over the podium).",
+ "countedBy": "photo",
+ "facades": [
+  {
+   "name": "Hall south front: glazed wall",
+   "bearing": 160,
+   "heightM": [
+    7.6,
+    16.0
+   ],
+   "rows": [
+    1
+   ],
+   "gables": 0,
+   "openings": [
+    "glass"
+   ],
+   "photo": "artifacts/landmark-briefs/amstelstation/w07-160.jpg",
+   "note": "One curtain of glazing between the banded brick corner piers. The heavier mullions every sixth bay (about 0.29 m on the photo's 2.23 m bay grid, the thin ones about 0.17 m) do not divide it, so it counts as one opening; the clock hangs in front of the eastern run.",
+   "frontDepth": 10.1,
+   "depthBand": 1.0,
+   "alongM": [
+    24.2,
+    67.2
+   ]
+  },
+  {
+   "name": "Hall east gable over the podium",
+   "bearing": 70,
+   "heightM": [
+    5.0,
+    19.5
+   ],
+   "gables": 1,
+   "rows": [
+    null
+   ],
+   "photo": "artifacts/landmark-briefs/amstelstation/w13-70.jpg",
+   "note": "Stone gable field with vertical ribs between brick piers banded in white, one low-pitched peak, a louvre under the apex; no windows.",
+   "frontDepth": 67.7,
+   "depthBand": 1.0
+  }
+ ]
+}

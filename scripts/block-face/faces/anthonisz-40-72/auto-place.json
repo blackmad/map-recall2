@@ -1,0 +1,1381 @@
+{
+ "face": "anthonisz-40-72",
+ "street": "Cornelis Anthoniszstraat",
+ "library": "museumkwartier",
+ "stripDate": "2024-12-11",
+ "seconds": 7.23,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [
+  {
+   "face": "anthonisz-40-72-r1",
+   "pands": [
+    "0363100012159956",
+    "0363100012158092",
+    "0363100012164470",
+    "0363100012159040",
+    "0363100012160204"
+   ],
+   "passed": true,
+   "triangles": 11332
+  }
+ ],
+ "pands": [
+  {
+   "pandId": "0363100012157250",
+   "address": "Cornelis Anthoniszstraat 72",
+   "builtYear": 1900,
+   "widthM": 5.27,
+   "eavesM": 15.27,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#9d6c4a",
+    "wallRaw": "#a67956",
+    "skyline": {
+     "eavesM": 15.8,
+     "eavesRow": 180,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.18,
+      "riseM": 2.9,
+      "topWidthM": 0.38,
+      "centre": 0.33
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0.143,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0.02,
+    "foliageShare": 0.11
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "best museum-de-1899-corbel-cornice scores 0.69 < 0.7 (strip cornice 15.8 m vs the type's 13.4 m (wall-dormer skyline 14.7 m))",
+   "best": {
+    "type": "museum-de-1899-corbel-cornice",
+    "score": 0.69,
+    "veto": [],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 15.8 m vs the type's 13.4 m (wall-dormer skyline 14.7 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.082 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012159956",
+   "address": "Cornelis Anthoniszstraat 70",
+   "builtYear": 1900,
+   "widthM": 5.44,
+   "eavesM": 13.11,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#c3835c",
+    "wallRaw": "#d18f67",
+    "skyline": {
+     "eavesM": 14.7,
+     "eavesRow": 224,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.25,
+      "riseM": 1.75,
+      "topWidthM": 0.6,
+      "centre": 0.43
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "columns",
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.26,
+    "structure": {
+     "bayWidthM": 1.05,
+     "bayCentre": 0.12,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0.17,
+    "foliageShare": 0.07
+   },
+   "status": "placed",
+   "type": "museum-de-1899-corbel-flat",
+   "score": 1,
+   "placement": {
+    "type": "museum-de-1899-corbel-flat",
+    "ground": "door-left",
+    "measuredPalette": {
+     "brick": "#c3835c",
+     "evidence": "strip 2024-12-11 span 211-429: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "crown pediment-dormer (type default)"
+   ],
+   "likeness": {
+    "pandId": "0363100012159956",
+    "ncc": 0.4,
+    "nccRaw": 0.4,
+    "shiftM": [
+     -0.2,
+     -0.2
+    ],
+    "usable": 0.67,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.50 mean 0.49 vs photo 0.18"
+    ],
+    "wall": {
+     "photo": "#be7f5a",
+     "model": "#c88e6a",
+     "dL": 0.051
+    },
+    "glazing": {
+     "photo": 0.18,
+     "model": 0.49
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.413
+   },
+   "challengers": {
+    "museum-de-1899-corbel-flat": 0.4
+   }
+  },
+  {
+   "pandId": "0363100012158092",
+   "address": "Cornelis Anthoniszstraat 68",
+   "builtYear": 1900,
+   "widthM": 4.97,
+   "eavesM": 15.57,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#d39166",
+    "wallRaw": "#c88e69",
+    "skyline": {
+     "eavesM": 14.8,
+     "eavesRow": 220,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.38,
+      "riseM": 1.52,
+      "topWidthM": 1.2,
+      "centre": 0.49
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0.275,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 12.85,
+       "widthM": 4.58,
+       "centre": 0.5
+      }
+     ]
+    },
+    "voidShare": 0.16,
+    "foliageShare": 0.06
+   },
+   "status": "placed",
+   "type": "museum-de-1899-corbel-flat",
+   "score": 1,
+   "placement": {
+    "type": "museum-de-1899-corbel-flat",
+    "ground": "door-right",
+    "measuredPalette": {
+     "brick": "#d39166",
+     "evidence": "strip 2024-12-11 span 429-628: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "crown pediment-dormer (type default)"
+   ],
+   "likeness": {
+    "pandId": "0363100012158092",
+    "ncc": 0.434,
+    "nccRaw": 0.434,
+    "shiftM": [
+     -0.1,
+     0
+    ],
+    "usable": 0.72,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.26"
+    ],
+    "wall": {
+     "photo": "#c58a64",
+     "model": "#cc8e66",
+     "dL": 0.018
+    },
+    "glazing": {
+     "photo": 0.49,
+     "model": 0.49
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.666
+   },
+   "challengers": {
+    "museum-de-1899-corbel-flat": 0.434
+   }
+  },
+  {
+   "pandId": "0363100012164470",
+   "address": "Cornelis Anthoniszstraat 66",
+   "builtYear": 1900,
+   "widthM": 5.48,
+   "eavesM": 15.55,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#b58462",
+    "wallRaw": "#b88f6c",
+    "skyline": {
+     "eavesM": 14.72,
+     "eavesRow": 223,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.57,
+      "riseM": 1.6,
+      "topWidthM": 0.28,
+      "centre": 0.49
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.191,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 12.78,
+       "widthM": 3.02,
+       "centre": 0.48
+      },
+      {
+       "atM": 8.8,
+       "widthM": 1.18,
+       "centre": 0.19
+      }
+     ]
+    },
+    "voidShare": 0.05,
+    "foliageShare": 0.08
+   },
+   "status": "placed",
+   "type": "museum-de-1899-corbel-cornice",
+   "score": 1,
+   "placement": {
+    "type": "museum-de-1899-corbel-cornice",
+    "ground": "door-left",
+    "measuredPalette": {
+     "brick": "#b58462",
+     "evidence": "strip 2024-12-11 span 628-847: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "crown pediment-dormer (type default)"
+   ],
+   "likeness": {
+    "pandId": "0363100012164470",
+    "ncc": 0.368,
+    "nccRaw": 0.368,
+    "shiftM": [
+     0.05,
+     -0.05
+    ],
+    "usable": 0.74,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.15"
+    ],
+    "wall": {
+     "photo": "#b78462",
+     "model": "#be9274",
+     "dL": 0.049
+    },
+    "glazing": {
+     "photo": 0.42,
+     "model": 0.49
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.689
+   },
+   "challengers": {
+    "museum-de-1899-corbel-cornice": 0.368
+   }
+  },
+  {
+   "pandId": "0363100012159040",
+   "address": "Cornelis Anthoniszstraat 64",
+   "builtYear": 1900,
+   "widthM": 5.48,
+   "eavesM": 15.63,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#8e694a",
+    "wallRaw": "#b8916d",
+    "skyline": {
+     "eavesM": 14.7,
+     "eavesRow": 224,
+     "confidence": 1,
+     "crown": {
+      "widthM": 0.78,
+      "riseM": 1.2,
+      "topWidthM": 0.42,
+      "centre": 0.48
+     }
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0.294,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 12.9,
+       "widthM": 4.2,
+       "centre": 0.58
+      }
+     ]
+    },
+    "voidShare": 0.16,
+    "foliageShare": 0.11
+   },
+   "status": "placed",
+   "type": "museum-de-1899-corbel-cornice",
+   "score": 1,
+   "placement": {
+    "type": "museum-de-1899-corbel-cornice",
+    "ground": "door-right",
+    "measuredPalette": {
+     "brick": "#8e694a",
+     "evidence": "strip 2024-12-11 span 847-1066: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "crown pediment-dormer (type default)"
+   ],
+   "likeness": {
+    "pandId": "0363100012159040",
+    "ncc": 0.434,
+    "nccRaw": 0.434,
+    "shiftM": [
+     -0.05,
+     -0.05
+    ],
+    "usable": 0.59,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.44 mean 0.48 vs photo 0.16"
+    ],
+    "wall": {
+     "photo": "#b48361",
+     "model": "#a87c58",
+     "dL": -0.041
+    },
+    "glazing": {
+     "photo": 0.16,
+     "model": 0.48
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.393
+   },
+   "challengers": {
+    "museum-de-1899-corbel-cornice": 0.434
+   }
+  },
+  {
+   "pandId": "0363100012160204",
+   "address": "Cornelis Anthoniszstraat 62",
+   "builtYear": 1900,
+   "widthM": 5.2,
+   "eavesM": 15.41,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#b1815d",
+    "wallRaw": "#ba8f69",
+    "skyline": {
+     "eavesM": 14.7,
+     "eavesRow": 224,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.88,
+      "riseM": 2.9,
+      "topWidthM": 0.33,
+      "centre": 0.7
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.284,
+    "structure": {
+     "bayWidthM": 1,
+     "bayCentre": 0.16,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 12.82,
+       "widthM": 2.2,
+       "centre": 0.23
+      },
+      {
+       "atM": 6.45,
+       "widthM": 0.93,
+       "centre": 0.79
+      }
+     ]
+    },
+    "voidShare": 0.13,
+    "foliageShare": 0.12
+   },
+   "status": "placed",
+   "type": "museum-de-1899-corbel-flat",
+   "score": 1,
+   "placement": {
+    "type": "museum-de-1899-corbel-flat",
+    "ground": "door-left",
+    "measuredPalette": {
+     "brick": "#b1815d",
+     "evidence": "strip 2024-12-11 span 1066-1274: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "crown pediment-dormer (type default)"
+   ],
+   "likeness": {
+    "pandId": "0363100012160204",
+    "ncc": 0.523,
+    "nccRaw": 0.523,
+    "shiftM": [
+     -0.05,
+     0
+    ],
+    "usable": 0.6,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.31 mean 0.48 vs photo 0.22"
+    ],
+    "wall": {
+     "photo": "#a27655",
+     "model": "#bc9374",
+     "dL": 0.112
+    },
+    "glazing": {
+     "photo": 0.22,
+     "model": 0.48
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.509
+   },
+   "challengers": {
+    "museum-de-1899-corbel-flat": 0.523
+   }
+  },
+  {
+   "pandId": "0363100012166337",
+   "address": "Cornelis Anthoniszstraat 60",
+   "builtYear": 1905,
+   "widthM": 5.39,
+   "eavesM": 15.48,
+   "storeys3dbag": 5,
+   "bagBay": {
+    "fromM": 3.73,
+    "toM": 5.37,
+    "depthM": 0.39,
+    "centre": 0.847,
+    "lineRD": [
+     [
+      120825.002375,
+      485214.59650000004
+     ],
+     [
+      120821.537375,
+      485213.23250000004
+     ]
+    ]
+   },
+   "strip": {
+    "wall": "#8c6242",
+    "wallRaw": "#8d7151",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 812,
+     "confidence": 0.21,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0.106,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 0.78 m at 0.51 (light 0.18): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.78,
+       "centre": 0.51,
+       "light": 0.18
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 6.1,
+       "widthM": 1.13,
+       "centre": 0.82
+      }
+     ]
+    },
+    "voidShare": 0.01,
+    "foliageShare": 0.2
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best museum-de-1899-corbel-cornice: built 1905, type 1898-1901)",
+   "best": {
+    "type": "museum-de-1899-corbel-cornice",
+    "score": 0,
+    "veto": [
+     "built 1905, type 1898-1901"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": null,
+      "note": "strip cornice unread (type line 13.4 m; 3DBAG 15.48 m not compared)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.084 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012166353",
+   "address": "Cornelis Anthoniszstraat 58A",
+   "builtYear": 1900,
+   "widthM": 5.31,
+   "eavesM": 15.63,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#b76d40",
+    "wallRaw": "#c18158",
+    "skyline": {
+     "eavesM": 14.65,
+     "eavesRow": 226,
+     "confidence": 0.91,
+     "crown": {
+      "widthM": 3.35,
+      "riseM": 5.65,
+      "topWidthM": 0.53,
+      "centre": 0.34
+     }
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.281,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 1.02 m at 0.17 (light 0.23): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 1.02,
+       "centre": 0.17,
+       "light": 0.23
+      },
+      {
+       "widthM": 1.02,
+       "centre": 0.49,
+       "light": 0.42
+      },
+      {
+       "widthM": 1.05,
+       "centre": 0.82,
+       "light": 0.46
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 12.25,
+       "widthM": 1.02,
+       "centre": 0.1
+      }
+     ]
+    },
+    "voidShare": 0.08,
+    "foliageShare": 0.14
+   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: Cornelis Anthoniszstraat 58A: the arched-head corbel front over a white timber shop pui on the whole ground storey (the type draws a house door and two windows); with 56 held it would stand alone",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012153235",
+   "address": "Cornelis Anthoniszstraat 56",
+   "builtYear": 1900,
+   "widthM": 5.4,
+   "eavesM": 15.78,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#b98363",
+    "wallRaw": "#c18e6c",
+    "skyline": {
+     "eavesM": 14.6,
+     "eavesRow": 228,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.4,
+      "riseM": 1.3,
+      "topWidthM": 1.35,
+      "centre": 0.48
+     }
+    },
+    "stucco": false,
+    "bands": 2,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0.323,
+    "structure": {
+     "bayWidthM": 1.05,
+     "bayCentre": 0.49,
+     "balconies": true,
+     "why": "balcony slabs stacked at 12.95 m (2.05 m wide), 9.2 m (1.3 m wide)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 12.95,
+       "widthM": 2.05,
+       "centre": 0.45
+      },
+      {
+       "atM": 9.2,
+       "widthM": 1.3,
+       "centre": 0.48
+      }
+     ]
+    },
+    "voidShare": 0.18,
+    "foliageShare": 0.09
+   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: Cornelis Anthoniszstraat 56 is the banded 1899 design: white painted sill and head bands across the front, flat heads, a timber shop pui; not the corbel-cornice row",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012157008",
+   "address": "Cornelis Anthoniszstraat 54",
+   "builtYear": 1900,
+   "widthM": 5.36,
+   "eavesM": 15.58,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#ca8257",
+    "wallRaw": "#ce895e",
+    "skyline": {
+     "eavesM": 15.8,
+     "eavesRow": 180,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.6,
+      "riseM": 1.72,
+      "topWidthM": 0.3,
+      "centre": 0.45
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.22,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0.06,
+    "foliageShare": 0.13
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "best museum-de-1899-corbel-cornice scores 0.69 < 0.7 (strip cornice 15.8 m vs the type's 13.4 m (wall-dormer skyline 14.7 m))",
+   "best": {
+    "type": "museum-de-1899-corbel-cornice",
+    "score": 0.69,
+    "veto": [],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 15.8 m vs the type's 13.4 m (wall-dormer skyline 14.7 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.112 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012158008",
+   "address": "Cornelis Anthoniszstraat 52",
+   "builtYear": 1900,
+   "widthM": 5.1,
+   "eavesM": 15.49,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#94694c",
+    "wallRaw": "#ac8665",
+    "skyline": {
+     "eavesM": 14.9,
+     "eavesRow": 216,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.02,
+      "riseM": 3.8,
+      "topWidthM": 0.2,
+      "centre": 0.49
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0.227,
+    "structure": {
+     "bayWidthM": 0.97,
+     "bayCentre": 0.82,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 13.03,
+       "widthM": 1.18,
+       "centre": 0.38
+      },
+      {
+       "atM": 11.9,
+       "widthM": 1.15,
+       "centre": 0.48
+      },
+      {
+       "atM": 8.97,
+       "widthM": 1.27,
+       "centre": 0.81
+      },
+      {
+       "atM": 6.05,
+       "widthM": 1.15,
+       "centre": 0.83
+      }
+     ]
+    },
+    "voidShare": 0.06,
+    "foliageShare": 0.17
+   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: Cornelis Anthoniszstraat 50-52 are a banded design with white keystones over segmental heads, white impost bands and round-arched paired doors; the corbel-cornice types draw plain brick",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012161772",
+   "address": "Cornelis Anthoniszstraat 50",
+   "builtYear": 1900,
+   "widthM": 5.22,
+   "eavesM": 15.47,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#a17356",
+    "wallRaw": "#c0906e",
+    "skyline": {
+     "eavesM": 14.85,
+     "eavesRow": 218,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.98,
+      "riseM": 1.47,
+      "topWidthM": 0.7,
+      "centre": 0.49
+     }
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.322,
+    "structure": {
+     "bayWidthM": 1.05,
+     "bayCentre": 0.48,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0.19,
+    "foliageShare": 0.11
+   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: Cornelis Anthoniszstraat 50: as 52, white keystones and impost bands, paired round-arched doors",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012164605",
+   "address": "Cornelis Anthoniszstraat 48",
+   "builtYear": 1900,
+   "widthM": 5.49,
+   "eavesM": 15.62,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#9f7355",
+    "wallRaw": "#aa8261",
+    "skyline": {
+     "eavesM": 17.7,
+     "eavesRow": 104,
+     "confidence": 0.82,
+     "crown": {
+      "widthM": 1,
+      "riseM": 1.8,
+      "topWidthM": 0.15,
+      "centre": 0.88
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0.173,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 9.25,
+       "widthM": 1.55,
+       "centre": 0.48
+      }
+     ]
+    },
+    "voidShare": 0.05,
+    "foliageShare": 0.12
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "best museum-de-1899-corbel-cornice scores 0.69 < 0.7 (strip cornice 17.7 m vs the type's 13.4 m (wall-dormer skyline 14.7 m))",
+   "best": {
+    "type": "museum-de-1899-corbel-cornice",
+    "score": 0.69,
+    "veto": [],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 17.7 m vs the type's 13.4 m (wall-dormer skyline 14.7 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.083 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012154134",
+   "address": "Cornelis Anthoniszstraat 46A",
+   "builtYear": 1900,
+   "widthM": 4.84,
+   "eavesM": 15.49,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#8a6244",
+    "wallRaw": "#977758",
+    "skyline": {
+     "eavesM": 18.05,
+     "eavesRow": 90,
+     "confidence": 0.65,
+     "crown": {
+      "widthM": 1.25,
+      "riseM": 2.25,
+      "topWidthM": 0.07,
+      "centre": 0.38
+     }
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.224,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 2 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 13.15,
+       "widthM": 1.02,
+       "centre": 0.88
+      },
+      {
+       "atM": 12.02,
+       "widthM": 1.13,
+       "centre": 0.82
+      },
+      {
+       "atM": 9.25,
+       "widthM": 1.3,
+       "centre": 0.8
+      },
+      {
+       "atM": 8.95,
+       "widthM": 1.43,
+       "centre": 0.79
+      },
+      {
+       "atM": 6.1,
+       "widthM": 1.13,
+       "centre": 0.82
+      }
+     ]
+    },
+    "voidShare": 0.05,
+    "foliageShare": 0.16
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "best museum-de-1899-corbel-cornice scores 0.69 < 0.7 (strip cornice 18.05 m vs the type's 13.4 m (wall-dormer skyline 14.7 m))",
+   "best": {
+    "type": "museum-de-1899-corbel-cornice",
+    "score": 0.69,
+    "veto": [],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 18.05 m vs the type's 13.4 m (wall-dormer skyline 14.7 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.139 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012161511",
+   "address": "Cornelis Anthoniszstraat 46",
+   "builtYear": 1900,
+   "widthM": 6.07,
+   "eavesM": 12.9,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#53412a",
+    "wallRaw": "#d79262",
+    "skyline": {
+     "eavesM": 13.9,
+     "eavesRow": 256,
+     "confidence": 0.97,
+     "crown": {
+      "widthM": 3.02,
+      "riseM": 6.03,
+      "topWidthM": 0.55,
+      "centre": 0.48
+     }
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": 3,
+    "frontClass": "columns",
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.211,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 1.13 m at 0.14 (light 0.41): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 1.13,
+       "centre": 0.14,
+       "light": 0.41
+      },
+      {
+       "widthM": 1.23,
+       "centre": 0.48,
+       "light": 0.36
+      },
+      {
+       "widthM": 1.13,
+       "centre": 0.81,
+       "light": 0.42
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0.09,
+    "foliageShare": 0.14
+   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: Cornelis Anthoniszstraat 46: polychrome white bands at every sill and head line under a tall stepped front gable over a shop; another design",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012156630",
+   "address": "Cornelis Anthoniszstraat 44",
+   "builtYear": 1900,
+   "widthM": 5.6,
+   "eavesM": 13.57,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#795b3e",
+    "wallRaw": "#957756",
+    "skyline": {
+     "eavesM": 16.88,
+     "eavesRow": 137,
+     "confidence": 0.5,
+     "crown": {
+      "widthM": 1.48,
+      "riseM": 3.43,
+      "topWidthM": 0.33,
+      "centre": 0.27
+     }
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": 3,
+    "frontClass": "columns",
+    "doorSide": "right",
+    "accentSide": "left",
+    "accentShare": 0.153,
+    "structure": {
+     "bayWidthM": 0.4,
+     "bayCentre": 0.1,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0.02,
+    "foliageShare": 0.2
+   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: Cornelis Anthoniszstraat 44: white-block bands and heads, tree-occluded, a wall dormer; another design",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012160945",
+   "address": "Cornelis Anthoniszstraat 42",
+   "builtYear": 1900,
+   "widthM": 5.45,
+   "eavesM": 12.68,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#856244",
+    "wallRaw": "#9b7a5b",
+    "skyline": {
+     "eavesM": 17.1,
+     "eavesRow": 128,
+     "confidence": 0.57,
+     "crown": {
+      "widthM": 0.85,
+      "riseM": 3.2,
+      "topWidthM": 0.45,
+      "centre": 0.12
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "columns",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.153,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 5.4,
+       "widthM": 1.15,
+       "centre": 0.81
+      }
+     ]
+    },
+    "voidShare": 0.02,
+    "foliageShare": 0.14
+   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: Cornelis Anthoniszstraat 40-42: polychrome fronts with white-block bands and heads (42 with a tall corner wall dormer), tree-occluded; not the corbel-cornice row",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012063666",
+   "address": "Cornelis Anthoniszstraat 40",
+   "builtYear": 1900,
+   "widthM": 5.48,
+   "eavesM": 12.49,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#856040",
+    "wallRaw": "#816547",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 812,
+     "confidence": 0.24,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "columns",
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.08,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.19
+   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: Cornelis Anthoniszstraat 40: polychrome white-block bands and a shop on the ground storey; not the corbel-cornice row",
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

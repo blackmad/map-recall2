@@ -1,0 +1,85 @@
+{
+ "street": "Van Eeghenstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-01T14:50:00.525Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012158526",
+   "addresses": [
+    "Van Eeghenstraat 110",
+    "Van Eeghenstraat 110A",
+    "Van Eeghenstraat 110B",
+    "Van Eeghenstraat 110C",
+    "Van Eeghenstraat 110D"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Eeghenstraat 110-H",
+     "use": "onderwijsfunctie",
+     "areaM2": 469,
+     "bagId": "0363010000951286"
+    },
+    {
+     "address": "Van Eeghenstraat 110A",
+     "use": "woonfunctie",
+     "areaM2": 297,
+     "bagId": "0363010012139154"
+    },
+    {
+     "address": "Van Eeghenstraat 110B",
+     "use": "woonfunctie",
+     "areaM2": 93,
+     "bagId": "0363010012139155"
+    },
+    {
+     "address": "Van Eeghenstraat 110C",
+     "use": "woonfunctie",
+     "areaM2": 182,
+     "bagId": "0363010012139156"
+    },
+    {
+     "address": "Van Eeghenstraat 110D",
+     "use": "woonfunctie",
+     "areaM2": 222,
+     "bagId": "0363010012139157"
+    }
+   ],
+   "units": 7,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012157285",
+   "addresses": [
+    "Van Eeghenstraat 108"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Eeghenstraat 108-H",
+     "use": "kantoorfunctie",
+     "areaM2": 130,
+     "bagId": "0363010000996333"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012160133",
+   "addresses": [
+    "Van Eeghenstraat 106"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Eeghenstraat 106",
+     "use": "woonfunctie",
+     "areaM2": 470,
+     "bagId": "0363010000838786"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  }
+ ]
+}

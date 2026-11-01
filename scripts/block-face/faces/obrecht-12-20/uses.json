@@ -1,0 +1,115 @@
+{
+ "street": "Jacob Obrechtstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched n/a (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012159380",
+   "addresses": [
+    "Jacob Obrechtstraat 20"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jacob Obrechtstraat 20-H",
+     "use": "winkelfunctie",
+     "areaM2": 137,
+     "bagId": "0363010001169312"
+    },
+    {
+     "address": "Jacob Obrechtstraat 20-1",
+     "use": "kantoorfunctie",
+     "areaM2": 60,
+     "bagId": "0363010001169313"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012159625",
+   "addresses": [
+    "Jacob Obrechtstraat 18"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jacob Obrechtstraat 18-H",
+     "use": "kantoorfunctie",
+     "areaM2": 146,
+     "bagId": "0363010000679810"
+    },
+    {
+     "address": "Jacob Obrechtstraat 18-H",
+     "use": "kantoorfunctie",
+     "areaM2": 122,
+     "bagId": "0363010012062417"
+    }
+   ],
+   "units": 6,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012235899",
+   "addresses": [
+    "Jacob Obrechtstraat 16A",
+    "Jacob Obrechtstraat 16C",
+    "Jacob Obrechtstraat 16B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jacob Obrechtstraat 16A",
+     "use": "woonfunctie",
+     "areaM2": 115,
+     "bagId": "0363010000679804"
+    },
+    {
+     "address": "Jacob Obrechtstraat 16C",
+     "use": "kantoorfunctie",
+     "areaM2": 120,
+     "bagId": "0363010000679806"
+    },
+    {
+     "address": "Jacob Obrechtstraat 16B",
+     "use": "woonfunctie",
+     "areaM2": 109,
+     "bagId": "0363010000679805"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012236714",
+   "addresses": [
+    "Jacob Obrechtstraat 14"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jacob Obrechtstraat 14-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 130,
+     "bagId": "0363010001001609"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012164455",
+   "addresses": [
+    "Jacob Obrechtstraat 12"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jacob Obrechtstraat 12-H",
+     "use": "winkelfunctie",
+     "areaM2": 94,
+     "bagId": "0363010000679798"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  }
+ ]
+}

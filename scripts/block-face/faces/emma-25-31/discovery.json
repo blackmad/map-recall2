@@ -1,0 +1,481 @@
+{
+ "street": "Emmastraat",
+ "seed": "0363100012166177",
+ "members": [
+  "0363100012166177",
+  "0363100012155458",
+  "0363100012064298",
+  "0363100012074980"
+ ],
+ "ends": [
+  {
+   "side": "left",
+   "reason": "trimmed at 0363100012166177 (face continues: 153520)"
+  },
+  {
+   "side": "right",
+   "reason": "trimmed at 0363100012074980 (face continues: 151463)"
+  }
+ ],
+ "rejected": [
+  {
+   "pandId": "0363100012069081",
+   "reason": "frontage 77.1 m from Emmastraat"
+  },
+  {
+   "pandId": "0363100012070647",
+   "reason": "frontage 42.9 m from Emmastraat"
+  },
+  {
+   "pandId": "0363100012074786",
+   "reason": "frontage 38.3 m from Emmastraat"
+  },
+  {
+   "pandId": "0363100012075157",
+   "reason": "sightline to Emmastraat crosses 0363100012110784"
+  },
+  {
+   "pandId": "0363100012075610",
+   "reason": "frontage 83.5 m from Emmastraat"
+  },
+  {
+   "pandId": "0363100012083412",
+   "reason": "frontage 57.8 m from Emmastraat"
+  },
+  {
+   "pandId": "0363100012085778",
+   "reason": "frontage 32.4 m from Emmastraat"
+  },
+  {
+   "pandId": "0363100012093617",
+   "reason": "frontage 64.2 m from Emmastraat"
+  },
+  {
+   "pandId": "0363100012099146",
+   "reason": "frontage 71.8 m from Emmastraat"
+  },
+  {
+   "pandId": "0363100012100144",
+   "reason": "frontage 48.4 m from Emmastraat"
+  },
+  {
+   "pandId": "0363100012103357",
+   "reason": "frontage 90.6 m from Emmastraat"
+  },
+  {
+   "pandId": "0363100012104304",
+   "reason": "frontage 35.2 m from Emmastraat"
+  },
+  {
+   "pandId": "0363100012104755",
+   "reason": "sightline to Emmastraat crosses 0363100012102449"
+  },
+  {
+   "pandId": "0363100012108767",
+   "reason": "sightline to Emmastraat crosses 0363100012102449"
+  },
+  {
+   "pandId": "0363100012110784",
+   "reason": "sightline to Emmastraat crosses 0363100012151463"
+  },
+  {
+   "pandId": "0363100012112074",
+   "reason": "frontage 76.6 m from Emmastraat"
+  },
+  {
+   "pandId": "0363100012117343",
+   "reason": "frontage 79.3 m from Emmastraat"
+  },
+  {
+   "pandId": "0363100012120297",
+   "reason": "frontage 70.8 m from Emmastraat"
+  },
+  {
+   "pandId": "0363100012123944",
+   "reason": "frontage 50.7 m from Emmastraat"
+  },
+  {
+   "pandId": "0363100012125848",
+   "reason": "sightline to Emmastraat crosses 0363100012102449"
+  },
+  {
+   "pandId": "0363100012128897",
+   "reason": "frontage 38.5 m from Emmastraat"
+  },
+  {
+   "pandId": "0363100012131291",
+   "reason": "frontage 63.0 m from Emmastraat"
+  },
+  {
+   "pandId": "0363100012134429",
+   "reason": "frontage 55.3 m from Emmastraat"
+  },
+  {
+   "pandId": "0363100012137958",
+   "reason": "frontage 48.2 m from Emmastraat"
+  },
+  {
+   "pandId": "0363100012143893",
+   "reason": "frontage 81.3 m from Emmastraat"
+  },
+  {
+   "pandId": "0363100012146540",
+   "reason": "frontage 37.8 m from Emmastraat"
+  },
+  {
+   "pandId": "0363100012152532",
+   "reason": "frontage 44.9 m from Emmastraat"
+  },
+  {
+   "pandId": "0363100012152699",
+   "reason": "frontage 46.8 m from Emmastraat"
+  },
+  {
+   "pandId": "0363100012152773",
+   "reason": "frontage 64.6 m from Emmastraat"
+  },
+  {
+   "pandId": "0363100012153037",
+   "reason": "frontage 113.7 m from Emmastraat"
+  },
+  {
+   "pandId": "0363100012153238",
+   "reason": "frontage 40.4 m from Emmastraat"
+  },
+  {
+   "pandId": "0363100012154313",
+   "reason": "sightline to Emmastraat crosses 0363100012160301"
+  },
+  {
+   "pandId": "0363100012155586",
+   "reason": "frontage 95.1 m from Emmastraat"
+  },
+  {
+   "pandId": "0363100012155646",
+   "reason": "frontage 88.5 m from Emmastraat"
+  },
+  {
+   "pandId": "0363100012155700",
+   "reason": "frontage 41.1 m from Emmastraat"
+  },
+  {
+   "pandId": "0363100012155710",
+   "reason": "frontage 72.2 m from Emmastraat"
+  },
+  {
+   "pandId": "0363100012155902",
+   "reason": "frontage 82.9 m from Emmastraat"
+  },
+  {
+   "pandId": "0363100012156103",
+   "reason": "sightline to Emmastraat crosses 0363100012161509"
+  },
+  {
+   "pandId": "0363100012156303",
+   "reason": "frontage 51.4 m from Emmastraat"
+  },
+  {
+   "pandId": "0363100012156459",
+   "reason": "frontage 53.2 m from Emmastraat"
+  },
+  {
+   "pandId": "0363100012156586",
+   "reason": "frontage 83.9 m from Emmastraat"
+  },
+  {
+   "pandId": "0363100012156858",
+   "reason": "frontage 63.4 m from Emmastraat"
+  },
+  {
+   "pandId": "0363100012156963",
+   "reason": "frontage 57.5 m from Emmastraat"
+  },
+  {
+   "pandId": "0363100012157169",
+   "reason": "frontage 31.8 m from Emmastraat"
+  },
+  {
+   "pandId": "0363100012157405",
+   "reason": "frontage 110.4 m from Emmastraat"
+  },
+  {
+   "pandId": "0363100012157444",
+   "reason": "frontage 57.9 m from Emmastraat"
+  },
+  {
+   "pandId": "0363100012157660",
+   "reason": "sightline to Emmastraat crosses 0363100012236451"
+  },
+  {
+   "pandId": "0363100012157724",
+   "reason": "frontage 57.4 m from Emmastraat"
+  },
+  {
+   "pandId": "0363100012157829",
+   "reason": "frontage 30.5 m from Emmastraat"
+  },
+  {
+   "pandId": "0363100012158110",
+   "reason": "frontage 76.9 m from Emmastraat"
+  },
+  {
+   "pandId": "0363100012158261",
+   "reason": "sightline to Emmastraat crosses 0363100012153520"
+  },
+  {
+   "pandId": "0363100012158273",
+   "reason": "frontage 61.3 m from Emmastraat"
+  },
+  {
+   "pandId": "0363100012158335",
+   "reason": "frontage 89.9 m from Emmastraat"
+  },
+  {
+   "pandId": "0363100012158518",
+   "reason": "frontage 44.1 m from Emmastraat"
+  },
+  {
+   "pandId": "0363100012158842",
+   "reason": "frontage 38.0 m from Emmastraat"
+  },
+  {
+   "pandId": "0363100012158939",
+   "reason": "frontage 46.3 m from Emmastraat"
+  },
+  {
+   "pandId": "0363100012159592",
+   "reason": "frontage 34.4 m from Emmastraat"
+  },
+  {
+   "pandId": "0363100012159889",
+   "reason": "sightline to Emmastraat crosses 0363100012157660"
+  },
+  {
+   "pandId": "0363100012159949",
+   "reason": "frontage 116.9 m from Emmastraat"
+  },
+  {
+   "pandId": "0363100012160108",
+   "reason": "sightline to Emmastraat crosses 0363100012157660"
+  },
+  {
+   "pandId": "0363100012160138",
+   "reason": "frontage 132.4 m from Emmastraat"
+  },
+  {
+   "pandId": "0363100012160545",
+   "reason": "frontage 51.0 m from Emmastraat"
+  },
+  {
+   "pandId": "0363100012160560",
+   "reason": "frontage 96.9 m from Emmastraat"
+  },
+  {
+   "pandId": "0363100012160731",
+   "reason": "frontage 104.1 m from Emmastraat"
+  },
+  {
+   "pandId": "0363100012160859",
+   "reason": "frontage 40.6 m from Emmastraat"
+  },
+  {
+   "pandId": "0363100012161051",
+   "reason": "frontage 34.6 m from Emmastraat"
+  },
+  {
+   "pandId": "0363100012161220",
+   "reason": "frontage 54.6 m from Emmastraat"
+  },
+  {
+   "pandId": "0363100012161509",
+   "reason": "sightline to Emmastraat crosses 0363100012162152"
+  },
+  {
+   "pandId": "0363100012161642",
+   "reason": "frontage 126.5 m from Emmastraat"
+  },
+  {
+   "pandId": "0363100012162152",
+   "reason": "sightline to Emmastraat crosses 0363100012236242"
+  },
+  {
+   "pandId": "0363100012162302",
+   "reason": "frontage 120.1 m from Emmastraat"
+  },
+  {
+   "pandId": "0363100012162474",
+   "reason": "frontage 37.1 m from Emmastraat"
+  },
+  {
+   "pandId": "0363100012163262",
+   "reason": "frontage 50.9 m from Emmastraat"
+  },
+  {
+   "pandId": "0363100012163737",
+   "reason": "frontage 58.6 m from Emmastraat"
+  },
+  {
+   "pandId": "0363100012163945",
+   "reason": "frontage 70.8 m from Emmastraat"
+  },
+  {
+   "pandId": "0363100012164439",
+   "reason": "frontage 75.8 m from Emmastraat"
+  },
+  {
+   "pandId": "0363100012164495",
+   "reason": "frontage 47.8 m from Emmastraat"
+  },
+  {
+   "pandId": "0363100012164696",
+   "reason": "frontage 101.4 m from Emmastraat"
+  },
+  {
+   "pandId": "0363100012165233",
+   "reason": "frontage 64.8 m from Emmastraat"
+  },
+  {
+   "pandId": "0363100012165963",
+   "reason": "frontage 47.8 m from Emmastraat"
+  },
+  {
+   "pandId": "0363100012166762",
+   "reason": "frontage 69.5 m from Emmastraat"
+  },
+  {
+   "pandId": "0363100012167003",
+   "reason": "frontage 108.1 m from Emmastraat"
+  },
+  {
+   "pandId": "0363100012199379",
+   "reason": "frontage 55.3 m from Emmastraat"
+  },
+  {
+   "pandId": "0363100012208544",
+   "reason": "frontage 84.8 m from Emmastraat"
+  },
+  {
+   "pandId": "0363100012236462",
+   "reason": "frontage 64.0 m from Emmastraat"
+  },
+  {
+   "pandId": "0363100012236841",
+   "reason": "frontage 41.7 m from Emmastraat"
+  },
+  {
+   "pandId": "0363100012237285",
+   "reason": "frontage 77.9 m from Emmastraat"
+  },
+  {
+   "pandId": "0363100012240938",
+   "reason": "frontage 34.1 m from Emmastraat"
+  },
+  {
+   "pandId": "0363100012064344",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012068214",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012083217",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012098280",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012102449",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012152561",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012152616",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012152993",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012154384",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012160235",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012160492",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012162371",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012165287",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012165582",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012166813",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012233583",
+   "reason": "fronts the other side / another direction"
+  }
+ ],
+ "areaHalfSizeM": 90,
+ "pands": [
+  {
+   "pandId": "0363100012166177",
+   "alongM": 0,
+   "widthM": 6.69,
+   "eavesM": 16.35,
+   "roofMaxM": 18.64,
+   "storeys3dbag": 4,
+   "builtYear": 1903,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012155458",
+   "alongM": 6.8,
+   "widthM": 6.92,
+   "eavesM": 15.88,
+   "roofMaxM": 15.95,
+   "storeys3dbag": 5,
+   "builtYear": 1903,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012064298",
+   "alongM": 13.56,
+   "widthM": 6.6,
+   "eavesM": 16.89,
+   "roofMaxM": 21.14,
+   "storeys3dbag": 5,
+   "builtYear": 1918,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012074980",
+   "alongM": 20.11,
+   "widthM": 6.51,
+   "eavesM": 16.75,
+   "roofMaxM": 20.59,
+   "storeys3dbag": 0,
+   "builtYear": 1918,
+   "uncertainty": []
+  }
+ ]
+}

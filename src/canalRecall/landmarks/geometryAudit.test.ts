@@ -141,6 +141,16 @@ test('rhythm: a skipped column and an odd-sized window are flagged', () => {
   assert.deepEqual(analyseRhythm(regular).missing, []);
   const gap = [...row(1, [1, 4, 7, 10, 13]), ...row(5, [1, 4, 10, 13])];
   assert.deepEqual(analyseRhythm(gap).missing.map(m => m.t), [7.6]);
+  // A wide glazed bay filling a two-bay gap is an opening, not two missing windows (Olympisch Stadion w01, #165).
+  const bay = [...gap, {t0: 6.2, t1: 9.0, y0: 3, y1: 5.5, area: 7}];
+  assert.deepEqual(analyseRhythm(bay).missing, [], 'a wide opening at the predicted position is not missing');
+  // A symmetric front's centre axis may be wider (a risalit door under a wider window): not off-size, still checked for level.
+  const axis = [...row(1, [1, 4, 10, 13]), {t0: 6.6, t1: 8.6, y0: 1, y1: 3, area: 4}, ...row(5, [1, 4, 10, 13]), {t0: 6.6, t1: 8.6, y0: 5, y1: 7, area: 4}];
+  assert.equal(analyseRhythm(axis).mismatched.length, 2, 'without the declaration the wide centre is off-size');
+  assert.equal(analyseRhythm(axis, {symmetric: true}).mismatched.length, 0, 'declared symmetric: the centre axis is the composition');
+  const axisLow = [...row(1, [1, 4, 10, 13]), {t0: 6.6, t1: 8.6, y0: 0.2, y1: 2.2, area: 4}];
+  assert.equal(analyseRhythm(axisLow, {symmetric: true}).mismatched.length, 0, 'a door on the axis runs to the ground: not off-level');
+  assert.equal(analyseRhythm(axisLow).mismatched.length, 1, 'undeclared, the same opening is off-level');
   const odd = [...row(1, [1, 4, 10, 13]), ...row(1, [7], 2.4)];
   assert.equal(analyseRhythm(odd).mismatched.length, 1);
 });

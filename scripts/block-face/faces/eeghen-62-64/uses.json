@@ -1,0 +1,71 @@
+{
+ "street": "Van Eeghenstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-01T14:32:22.571Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012068201",
+   "addresses": [
+    "Van Eeghenstraat 64"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Eeghenstraat 64",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 502,
+     "bagId": "0363010000838732"
+    }
+   ],
+   "units": 1,
+   "osm": [
+    {
+     "type": "node",
+     "id": 4051951351,
+     "lngLat": [
+      4.8738348,
+      52.3577632
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:country": "NL",
+      "addr:housenumber": "64",
+      "addr:postcode": "1071GK",
+      "addr:street": "Van Eeghenstraat",
+      "email": "info@hotelatlas.nl",
+      "fax": "+31 20 671 7633",
+      "internet_access": "wlan",
+      "internet_access:fee": "no",
+      "name": "Hotel Atlas Vondelpark",
+      "phone": "+31 20 676 6336",
+      "smoking": "no",
+      "stars": "3",
+      "tourism": "hotel",
+      "website": "https://www.hotelatlas.nl/",
+      "wheelchair": "no"
+     },
+     "fetchedAt": "2026-11-01T14:32:22.571Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012163533",
+   "addresses": [
+    "Van Eeghenstraat 62"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Eeghenstraat 62",
+     "use": "woonfunctie",
+     "areaM2": 390,
+     "bagId": "0363010000838729"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  }
+ ]
+}

@@ -1,0 +1,187 @@
+{
+ "face": "eeghen-100-104",
+ "street": "Van Eeghenstraat",
+ "library": "museumkwartier",
+ "stripDate": "2024-11-12",
+ "seconds": 0.58,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [],
+ "pands": [
+  {
+   "pandId": "0363100012162741",
+   "address": "Van Eeghenstraat 104",
+   "builtYear": 1907,
+   "widthM": 8.38,
+   "eavesM": 15.9,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#545852",
+    "wallRaw": "#5f624d",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 984,
+     "confidence": 0.06,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "columns",
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0.116,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0.02,
+    "foliageShare": 0.49
+   },
+   "status": "held",
+   "stage": "evidence",
+   "reason": "no front on the strip: sky over the roof in 60 % of columns (< 75 %): the strip shows a nearer wall, fence or tree, not the front",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012159419",
+   "address": "Van Eeghenstraat 102",
+   "builtYear": 1907,
+   "widthM": 2.4,
+   "eavesM": 15.99,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#6f695e",
+    "wallRaw": "#85806f",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 984,
+     "confidence": 0.1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 5,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.597,
+    "structure": {
+     "bayWidthM": 1.88,
+     "bayCentre": 0.43,
+     "balconies": false,
+     "why": "no dark open axis, 2 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 6.45,
+       "widthM": 1.55,
+       "centre": 0.5
+      },
+      {
+       "atM": 5.7,
+       "widthM": 1.75,
+       "centre": 0.48
+      }
+     ]
+    },
+    "voidShare": 0.41,
+    "foliageShare": 0.2
+   },
+   "status": "held",
+   "stage": "evidence",
+   "reason": "strip 41 % without panorama data",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012161170",
+   "address": "Van Eeghenstraat 100",
+   "builtYear": 1907,
+   "widthM": 8.26,
+   "eavesM": 16.24,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#867b68",
+    "wallRaw": "#7b7862",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 984,
+     "confidence": 0.28,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 6,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.378,
+    "structure": {
+     "bayWidthM": 3.98,
+     "bayCentre": 0.74,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 6.95,
+       "widthM": 0.8,
+       "centre": 0.67
+      }
+     ]
+    },
+    "voidShare": 0.21,
+    "foliageShare": 0.36
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best museum-cs-1900-gable-balcony: built 1907, type 1900-1901; frontage 8.26 m, type 5.5-6.6 m)",
+   "best": {
+    "type": "museum-cs-1900-gable-balcony",
+    "score": 0,
+    "veto": [
+     "built 1907, type 1900-1901",
+     "frontage 8.26 m, type 5.5-6.6 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": null,
+      "note": "strip cornice unread (type line 10.4 m; 3DBAG 16.24 m not compared)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 4 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": null,
+      "note": "no strip"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

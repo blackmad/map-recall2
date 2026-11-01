@@ -1,0 +1,270 @@
+{
+ "schemaVersion": 1,
+ "id": "wolkenkrabber",
+ "pand": "0363100012127007",
+ "brief": "scripts/landmarks/wolkenkrabber-brief.md",
+ "signature": [
+  "stair-drum",
+  "balcony-stacks",
+  "corner-windows",
+  "canopy-band",
+  "shopfronts"
+ ],
+ "walls": [
+  {
+   "tag": "w01-168",
+   "bearing": 168,
+   "lengthM": 16,
+   "centre": [
+    4.9026675,
+    52.345812
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316060226-000005_pano_0000_004024",
+   "capturedAt": "2016-07-26",
+   "checked": true,
+   "items": [
+    {
+     "id": "side-windows",
+     "kind": "window-shape",
+     "where": "brick south side: white-framed windows in rows",
+     "approxSizeM": [
+      1.2,
+      1.6
+     ],
+     "plan": "modelled",
+     "how": "windowAt() about one per 3.8 m per storey",
+     "seenIn": "TMX7316060226-000005_pano_0000_004024"
+    }
+   ]
+  },
+  {
+   "tag": "w02-348",
+   "bearing": 348,
+   "lengthM": 16,
+   "centre": [
+    4.9025845,
+    52.346033
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2024-09-05_05-59-45_04827",
+   "capturedAt": "2024-09-05",
+   "checked": true,
+   "items": []
+  },
+  {
+   "tag": "w03-78",
+   "bearing": 78,
+   "lengthM": 8.7,
+   "centre": [
+    4.902768,
+    52.345866
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002477_pano_0002_000282",
+   "capturedAt": "2022-03-24",
+   "checked": true,
+   "items": [
+    {
+     "id": "stair-drum",
+     "kind": "tower",
+     "where": "glazed half-round stair drum in the middle of the Victorieplein front, gold mullions, rising above the roof",
+     "approxSizeM": [
+      3.7,
+      44.6
+     ],
+     "plan": "modelled",
+     "how": "open glass half-cylinder r 1.85 m to 44.6 m, nine gold fins and a gold ring at every floor",
+     "seenIn": "TMX7316010203-002477_pano_0002_000282"
+    },
+    {
+     "id": "balcony-stacks",
+     "kind": "balcony-ironwork",
+     "where": "stack of grey balconies against a grey-painted recess either side of the drum, every floor",
+     "approxSizeM": [
+      5.5,
+      35
+     ],
+     "plan": "simplified",
+     "how": "per floor: concrete slab 1.35 m deep, 1.0 m grey parapet panel, glazed band behind on a grey recess panel",
+     "seenIn": "TMX7316010203-002477_pano_0002_000282"
+    },
+    {
+     "id": "shopfronts",
+     "kind": "window-shape",
+     "where": "ground-floor shop windows in white frames at the front corners",
+     "approxSizeM": [
+      8,
+      2.8
+     ],
+     "plan": "simplified",
+     "how": "glass ribbon 2.8 m tall with white mullions on 1.6 m axes",
+     "seenIn": "TMX7316010203-002477_pano_0002_000282"
+    },
+    {
+     "id": "canopy-band",
+     "kind": "canopy",
+     "where": "grey canopy band (the broad first-floor balcony) over the ground floor along the front",
+     "approxSizeM": [
+      9,
+      0.9
+     ],
+     "plan": "simplified",
+     "how": "grey slab 0.85 m tall projecting 1.6 m along each block front; the rounded corner wrap is not drawn",
+     "seenIn": "TMX7316010203-002477_pano_0002_000282"
+    }
+   ]
+  },
+  {
+   "tag": "w04-78",
+   "bearing": 78,
+   "lengthM": 8.6,
+   "centre": [
+    4.902713,
+    52.3460115
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001788_pano_0001_001194",
+   "capturedAt": "2020-07-06",
+   "checked": true,
+   "items": [
+    {
+     "id": "corner-windows",
+     "kind": "window-shape",
+     "where": "column of tall white-framed windows at each outer corner of the front",
+     "approxSizeM": [
+      1.3,
+      2.2
+     ],
+     "plan": "modelled",
+     "how": "windowAt(): white surround with the pane 4 cm proud, one per storey",
+     "seenIn": "TMX7316010203-001788_pano_0001_001194"
+    },
+    {
+     "id": "shop-sign",
+     "kind": "sign",
+     "where": "FysioPlus shop sign in the right-hand shop window",
+     "approxSizeM": [
+      2,
+      0.6
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7316010203-001788_pano_0001_001194",
+     "skip": {
+      "reason": "temporary",
+      "note": "tenant sign"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "w05-258",
+   "bearing": 258,
+   "lengthM": 6,
+   "centre": [
+    4.9024795,
+    52.3459905
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001788_pano_0001_001209",
+   "capturedAt": "2020-07-06",
+   "checked": true,
+   "items": [
+    {
+     "id": "rear-windows",
+     "kind": "window-shape",
+     "where": "rear blocks: single white-framed windows in the brick, one column",
+     "approxSizeM": [
+      1.2,
+      1.6
+     ],
+     "plan": "modelled",
+     "how": "windowAt() per storey",
+     "seenIn": "TMX7316010203-001788_pano_0001_001209"
+    }
+   ]
+  },
+  {
+   "tag": "w06-257",
+   "bearing": 257,
+   "lengthM": 5.9,
+   "centre": [
+    4.902543,
+    52.345822
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002477_pano_0002_000306",
+   "capturedAt": "2022-03-24",
+   "checked": true,
+   "items": [
+    {
+     "id": "rear-balconies",
+     "kind": "balcony-ironwork",
+     "where": "rear centre: stacks of grey steel balconies either side of the brick centre pier",
+     "approxSizeM": [
+      6,
+      36
+     ],
+     "plan": "simplified",
+     "how": "per floor slab, grey parapet panel and glazed band on a grey recess",
+     "seenIn": "TMX7316010203-002477_pano_0002_000306"
+    }
+   ]
+  },
+  {
+   "tag": "w07-167",
+   "bearing": 167,
+   "lengthM": 5.5,
+   "centre": [
+    4.902528,
+    52.3459695
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002477_pano_0002_000757",
+   "capturedAt": "2022-03-24",
+   "checked": true,
+   "items": []
+  },
+  {
+   "tag": "w08-347",
+   "bearing": 347,
+   "lengthM": 5.4,
+   "centre": [
+    4.9025715,
+    52.3458535
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-07-15_08-32-06_02098",
+   "capturedAt": "2025-07-15",
+   "checked": true,
+   "items": []
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  },
+  {
+   "name": "Rijksmonument 532002 register text",
+   "url": "https://monumentenregister.cultureelerfgoed.nl/monumenten/532002",
+   "licence": "CC0 (RCE open data)"
+  },
+  {
+   "name": "Wikipedia nl:12-verdiepingenhuis",
+   "url": "https://nl.wikipedia.org/wiki/12-verdiepingenhuis",
+   "licence": "CC BY-SA 4.0"
+  },
+  {
+   "name": "3DBAG LoD2.2 NL.IMBAG.Pand.0363100012127007",
+   "url": "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012127007",
+   "licence": "CC BY 4.0"
+  },
+  {
+   "name": "BAG pand 0363100012127007",
+   "url": "https://api.data.amsterdam.nl/v1/bag/panden/0363100012127007/",
+   "licence": "CC0"
+  }
+ ]
+}

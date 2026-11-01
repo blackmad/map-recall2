@@ -1,0 +1,141 @@
+{
+ "street": "Museumplein",
+ "seed": "0363100012138066",
+ "members": [
+  "0363100012138066",
+  "0363100012114637"
+ ],
+ "ends": [
+  {
+   "side": "left",
+   "reason": "next fronting pand 0363100012089377 24.2 m on shares no party wall (cross street or gap)"
+  },
+  {
+   "side": "right",
+   "reason": "next fronting pand 0363100012214752 13.7 m on shares no party wall (cross street or gap)"
+  }
+ ],
+ "rejected": [
+  {
+   "pandId": "0363100012066812",
+   "reason": "frontage 91.6 m from Museumplein"
+  },
+  {
+   "pandId": "0363100012079894",
+   "reason": "frontage 127.7 m from Museumplein"
+  },
+  {
+   "pandId": "0363100012080690",
+   "reason": "frontage 82.5 m from Museumplein"
+  },
+  {
+   "pandId": "0363100012089728",
+   "reason": "frontage 128.8 m from Museumplein"
+  },
+  {
+   "pandId": "0363100012090747",
+   "reason": "frontage 121.9 m from Museumplein"
+  },
+  {
+   "pandId": "0363100012093534",
+   "reason": "no frontage on Museumplein: No footprint edge faces Museumplein"
+  },
+  {
+   "pandId": "0363100012099258",
+   "reason": "frontage 80.0 m from Museumplein"
+  },
+  {
+   "pandId": "0363100012099490",
+   "reason": "frontage 77.7 m from Museumplein"
+  },
+  {
+   "pandId": "0363100012114350",
+   "reason": "frontage 77.5 m from Museumplein"
+  },
+  {
+   "pandId": "0363100012116235",
+   "reason": "frontage 32.3 m from Museumplein"
+  },
+  {
+   "pandId": "0363100012116517",
+   "reason": "frontage 87.8 m from Museumplein"
+  },
+  {
+   "pandId": "0363100012118196",
+   "reason": "frontage 72.0 m from Museumplein"
+  },
+  {
+   "pandId": "0363100012121710",
+   "reason": "frontage 91.0 m from Museumplein"
+  },
+  {
+   "pandId": "0363100012122594",
+   "reason": "frontage 122.8 m from Museumplein"
+  },
+  {
+   "pandId": "0363100012135779",
+   "reason": "frontage 122.8 m from Museumplein"
+  },
+  {
+   "pandId": "0363100012136130",
+   "reason": "frontage 89.1 m from Museumplein"
+  },
+  {
+   "pandId": "0363100012138135",
+   "reason": "frontage 84.6 m from Museumplein"
+  },
+  {
+   "pandId": "0363100012150353",
+   "reason": "frontage 93.9 m from Museumplein"
+  },
+  {
+   "pandId": "0363100012154873",
+   "reason": "frontage 85.1 m from Museumplein"
+  },
+  {
+   "pandId": "0363100012166483",
+   "reason": "frontage 82.0 m from Museumplein"
+  },
+  {
+   "pandId": "0363100012232428",
+   "reason": "frontage 53.1 m from Museumplein"
+  },
+  {
+   "pandId": "0363100012232429",
+   "reason": "frontage 49.7 m from Museumplein"
+  },
+  {
+   "pandId": "0363100012233427",
+   "reason": "sightline to Museumplein crosses 0363100012571600"
+  },
+  {
+   "pandId": "0363100012246868",
+   "reason": "frontage 118.1 m from Museumplein"
+  }
+ ],
+ "areaHalfSizeM": 90,
+ "pands": [
+  {
+   "pandId": "0363100012138066",
+   "alongM": 0,
+   "widthM": 21.1,
+   "eavesM": 3.07,
+   "roofMaxM": 18.08,
+   "storeys3dbag": 0,
+   "builtYear": 1958,
+   "uncertainty": [
+    "Possible partial selected frontage: a near-parallel outward facade lies beyond a rejected native jog of at most 1m. Inspect sources and explicitly review a bounded jog-limit override."
+   ]
+  },
+  {
+   "pandId": "0363100012114637",
+   "alongM": 19.3,
+   "widthM": 17.49,
+   "eavesM": 2.79,
+   "roofMaxM": 20.49,
+   "storeys3dbag": 4,
+   "builtYear": 1958,
+   "uncertainty": []
+  }
+ ]
+}

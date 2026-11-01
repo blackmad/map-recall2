@@ -3,8 +3,8 @@
   "city": "amsterdam",
   "generator": "scripts/landing/content-stats.ts",
   "display": {
-    "buildingsModelled": "510+",
-    "landmarkModels": "310+",
+    "buildingsModelled": "520+",
+    "landmarkModels": "320+",
     "kitBuildings": "13,000+",
     "buildings3d": "340,000+",
     "placesToVisit": "380+",
@@ -20,15 +20,15 @@
   },
   "stats": {
     "buildingsModelled": {
-      "count": 519,
-      "note": "Buildings with their own individually modelled 3D model in the ride: 319 landmark models plus 200 individually modelled ordinary buildings and blocks (the game's draw list, manual + ordinary catalogues).",
+      "count": 529,
+      "note": "Buildings with their own individually modelled 3D model in the ride: 329 landmark models plus 200 individually modelled ordinary buildings and blocks (the game's draw list, manual + ordinary catalogues).",
       "sources": [
         "src/canalRecall/landmarks/manualCatalogue.json",
         "public/canal-drive/ordinary-buildings-data/catalogue.json"
       ]
     },
     "landmarkModels": {
-      "count": 319,
+      "count": 329,
       "note": "Of the individually modelled buildings, the ones in the landmark category (museums, churches, stations, monuments…).",
       "sources": [
         "src/canalRecall/landmarks/manualCatalogue.json"
@@ -49,7 +49,7 @@
       ]
     },
     "placesToVisit": {
-      "count": 384,
+      "count": 386,
       "note": "Destinations you can ride to and collect a stamp at: the ride's stamp pool (teachable landmarks within 4 km of the centre plus the individually modelled POIs, deduplicated).",
       "sources": [
         "public/data/extracts/amsterdam/landmarks.json",

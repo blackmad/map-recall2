@@ -1,0 +1,166 @@
+{
+ "face": "hondecoeter-2-12",
+ "street": "Hondecoeterstraat",
+ "library": "museumkwartier",
+ "stripDate": "2024-11-06",
+ "seconds": 1.77,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [],
+ "pands": [
+  {
+   "pandId": "0363100012249642",
+   "address": "Hondecoeterstraat 10",
+   "builtYear": 2018,
+   "widthM": 13.01,
+   "eavesM": 15.53,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#fff1a7",
+    "wallRaw": "#fcf8bf",
+    "skyline": {
+     "eavesM": 13.18,
+     "eavesRow": 312,
+     "confidence": 1,
+     "crown": {
+      "widthM": 4.78,
+      "riseM": 2.93,
+      "topWidthM": 0.57,
+      "centre": 0.8
+     }
+    },
+    "stucco": false,
+    "bands": 2,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.704,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 2.08 m at 0.4 (light 0): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 2.08,
+       "centre": 0.4,
+       "light": 0
+      },
+      {
+       "widthM": 2,
+       "centre": 0.58,
+       "light": 0
+      },
+      {
+       "widthM": 1.3,
+       "centre": 0.78,
+       "light": 0
+      },
+      {
+       "widthM": 1.25,
+       "centre": 0.92,
+       "light": 0
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0.55,
+    "foliageShare": 0.24
+   },
+   "status": "held",
+   "stage": "evidence",
+   "reason": "strip 55 % without panorama data",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012237179",
+   "address": "Hondecoeterstraat 4",
+   "builtYear": 1920,
+   "widthM": 36.92,
+   "eavesM": 13.48,
+   "storeys3dbag": 4,
+   "bagBay": {
+    "fromM": 10.93,
+    "toM": 25.97,
+    "depthM": 0.42,
+    "centre": 0.5
+   },
+   "strip": {
+    "wall": "#3c3520",
+    "wallRaw": "#464a2a",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 839,
+     "confidence": 0.17,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 8,
+    "frontClass": "blank",
+    "doorSide": null,
+    "accentSide": "left",
+    "accentShare": 0.012,
+    "structure": {
+     "bayWidthM": 2.05,
+     "bayCentre": 0.34,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.79
+   },
+   "status": "held",
+   "stage": "evidence",
+   "reason": "no front on the strip: sky over the roof in 59 % of columns (< 75 %): the strip shows a nearer wall, fence or tree, not the front",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012132447",
+   "address": "Hondecoeterstraat 2E",
+   "builtYear": 2007,
+   "widthM": 5.53,
+   "eavesM": 4.49,
+   "storeys3dbag": 0,
+   "bagBay": null,
+   "strip": {
+    "wall": "#21221e",
+    "wallRaw": null,
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 839,
+     "confidence": 0,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": null,
+    "voidShare": 1,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "evidence",
+   "reason": "strip 100 % without panorama data",
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

@@ -1,0 +1,571 @@
+{
+ "street": "Willemsparkweg",
+ "seed": "0363100012236904",
+ "members": [
+  "0363100012235930",
+  "0363100012236904"
+ ],
+ "ends": [
+  {
+   "side": "left",
+   "reason": "no further pand fronts the street in the fetched area"
+  },
+  {
+   "side": "right",
+   "reason": "no further pand fronts the street in the fetched area"
+  }
+ ],
+ "rejected": [
+  {
+   "pandId": "0363100012157061",
+   "reason": "frontage 46.4 m from Willemsparkweg"
+  },
+  {
+   "pandId": "0363100012066327",
+   "reason": "frontage 43.0 m from Willemsparkweg"
+  },
+  {
+   "pandId": "0363100012091335",
+   "reason": "frontage 46.4 m from Willemsparkweg"
+  },
+  {
+   "pandId": "0363100012152757",
+   "reason": "frontage 34.7 m from Willemsparkweg"
+  },
+  {
+   "pandId": "0363100012152927",
+   "reason": "frontage 44.2 m from Willemsparkweg"
+  },
+  {
+   "pandId": "0363100012152960",
+   "reason": "frontage 71.5 m from Willemsparkweg"
+  },
+  {
+   "pandId": "0363100012153061",
+   "reason": "frontage 44.4 m from Willemsparkweg"
+  },
+  {
+   "pandId": "0363100012153158",
+   "reason": "frontage 45.1 m from Willemsparkweg"
+  },
+  {
+   "pandId": "0363100012153606",
+   "reason": "sightline to Willemsparkweg crosses 0363100012164557"
+  },
+  {
+   "pandId": "0363100012155519",
+   "reason": "frontage 74.7 m from Willemsparkweg"
+  },
+  {
+   "pandId": "0363100012156412",
+   "reason": "frontage 40.4 m from Willemsparkweg"
+  },
+  {
+   "pandId": "0363100012156483",
+   "reason": "frontage 45.7 m from Willemsparkweg"
+  },
+  {
+   "pandId": "0363100012156562",
+   "reason": "frontage 78.0 m from Willemsparkweg"
+  },
+  {
+   "pandId": "0363100012156672",
+   "reason": "frontage 44.7 m from Willemsparkweg"
+  },
+  {
+   "pandId": "0363100012156820",
+   "reason": "sightline to Willemsparkweg crosses 0363100012159676"
+  },
+  {
+   "pandId": "0363100012156887",
+   "reason": "frontage 45.9 m from Willemsparkweg"
+  },
+  {
+   "pandId": "0363100012157152",
+   "reason": "frontage 45.7 m from Willemsparkweg"
+  },
+  {
+   "pandId": "0363100012157285",
+   "reason": "frontage 83.1 m from Willemsparkweg"
+  },
+  {
+   "pandId": "0363100012157305",
+   "reason": "frontage 41.9 m from Willemsparkweg"
+  },
+  {
+   "pandId": "0363100012157374",
+   "reason": "frontage 58.9 m from Willemsparkweg"
+  },
+  {
+   "pandId": "0363100012157759",
+   "reason": "frontage 44.7 m from Willemsparkweg"
+  },
+  {
+   "pandId": "0363100012157770",
+   "reason": "frontage 46.6 m from Willemsparkweg"
+  },
+  {
+   "pandId": "0363100012158071",
+   "reason": "frontage 42.6 m from Willemsparkweg"
+  },
+  {
+   "pandId": "0363100012158260",
+   "reason": "frontage 44.9 m from Willemsparkweg"
+  },
+  {
+   "pandId": "0363100012158436",
+   "reason": "sightline to Willemsparkweg crosses 0363100012156820"
+  },
+  {
+   "pandId": "0363100012158500",
+   "reason": "sightline to Willemsparkweg crosses 0363100012236119"
+  },
+  {
+   "pandId": "0363100012158526",
+   "reason": "frontage 84.4 m from Willemsparkweg"
+  },
+  {
+   "pandId": "0363100012158578",
+   "reason": "frontage 32.0 m from Willemsparkweg"
+  },
+  {
+   "pandId": "0363100012162826",
+   "reason": "frontage 46.5 m from Willemsparkweg"
+  },
+  {
+   "pandId": "0363100012159412",
+   "reason": "frontage 45.2 m from Willemsparkweg"
+  },
+  {
+   "pandId": "0363100012159419",
+   "reason": "frontage 80.3 m from Willemsparkweg"
+  },
+  {
+   "pandId": "0363100012159568",
+   "reason": "no frontage on Willemsparkweg: No footprint edge faces Willemsparkweg"
+  },
+  {
+   "pandId": "0363100012159676",
+   "reason": "no frontage on Willemsparkweg: No footprint edge faces Willemsparkweg"
+  },
+  {
+   "pandId": "0363100012159709",
+   "reason": "frontage 45.5 m from Willemsparkweg"
+  },
+  {
+   "pandId": "0363100012159803",
+   "reason": "frontage 82.4 m from Willemsparkweg"
+  },
+  {
+   "pandId": "0363100012159813",
+   "reason": "frontage 38.3 m from Willemsparkweg"
+  },
+  {
+   "pandId": "0363100012160133",
+   "reason": "frontage 84.8 m from Willemsparkweg"
+  },
+  {
+   "pandId": "0363100012160642",
+   "reason": "frontage 46.0 m from Willemsparkweg"
+  },
+  {
+   "pandId": "0363100012160695",
+   "reason": "no frontage on Willemsparkweg: No footprint edge faces Willemsparkweg"
+  },
+  {
+   "pandId": "0363100012160728",
+   "reason": "sightline to Willemsparkweg crosses 0363100012163293"
+  },
+  {
+   "pandId": "0363100012161170",
+   "reason": "frontage 81.9 m from Willemsparkweg"
+  },
+  {
+   "pandId": "0363100012161378",
+   "reason": "frontage 46.7 m from Willemsparkweg"
+  },
+  {
+   "pandId": "0363100012161390",
+   "reason": "frontage 37.2 m from Willemsparkweg"
+  },
+  {
+   "pandId": "0363100012161649",
+   "reason": "frontage 42.5 m from Willemsparkweg"
+  },
+  {
+   "pandId": "0363100012162110",
+   "reason": "frontage 50.0 m from Willemsparkweg"
+  },
+  {
+   "pandId": "0363100012162260",
+   "reason": "frontage 57.8 m from Willemsparkweg"
+  },
+  {
+   "pandId": "0363100012162422",
+   "reason": "frontage 45.0 m from Willemsparkweg"
+  },
+  {
+   "pandId": "0363100012162522",
+   "reason": "frontage 81.3 m from Willemsparkweg"
+  },
+  {
+   "pandId": "0363100012162741",
+   "reason": "frontage 82.2 m from Willemsparkweg"
+  },
+  {
+   "pandId": "0363100012162937",
+   "reason": "frontage 58.4 m from Willemsparkweg"
+  },
+  {
+   "pandId": "0363100012163293",
+   "reason": "sightline to Willemsparkweg crosses 0363100012163484"
+  },
+  {
+   "pandId": "0363100012163452",
+   "reason": "frontage 85.3 m from Willemsparkweg"
+  },
+  {
+   "pandId": "0363100012163484",
+   "reason": "no frontage on Willemsparkweg: No footprint edge faces Willemsparkweg"
+  },
+  {
+   "pandId": "0363100012163488",
+   "reason": "frontage 45.0 m from Willemsparkweg"
+  },
+  {
+   "pandId": "0363100012163535",
+   "reason": "frontage 43.8 m from Willemsparkweg"
+  },
+  {
+   "pandId": "0363100012163546",
+   "reason": "frontage 56.4 m from Willemsparkweg"
+  },
+  {
+   "pandId": "0363100012163757",
+   "reason": "frontage 40.1 m from Willemsparkweg"
+  },
+  {
+   "pandId": "0363100012163817",
+   "reason": "frontage 38.5 m from Willemsparkweg"
+  },
+  {
+   "pandId": "0363100012163871",
+   "reason": "frontage 46.2 m from Willemsparkweg"
+  },
+  {
+   "pandId": "0363100012163900",
+   "reason": "frontage 61.9 m from Willemsparkweg"
+  },
+  {
+   "pandId": "0363100012164204",
+   "reason": "no frontage on Willemsparkweg: No footprint edge faces Willemsparkweg"
+  },
+  {
+   "pandId": "0363100012164557",
+   "reason": "no frontage on Willemsparkweg: No footprint edge faces Willemsparkweg"
+  },
+  {
+   "pandId": "0363100012164601",
+   "reason": "frontage 69.5 m from Willemsparkweg"
+  },
+  {
+   "pandId": "0363100012236596",
+   "reason": "frontage 69.7 m from Willemsparkweg"
+  },
+  {
+   "pandId": "0363100012165160",
+   "reason": "frontage 44.9 m from Willemsparkweg"
+  },
+  {
+   "pandId": "0363100012165473",
+   "reason": "frontage 44.6 m from Willemsparkweg"
+  },
+  {
+   "pandId": "0363100012166069",
+   "reason": "frontage 60.0 m from Willemsparkweg"
+  },
+  {
+   "pandId": "0363100012166206",
+   "reason": "no frontage on Willemsparkweg: No footprint edge faces Willemsparkweg"
+  },
+  {
+   "pandId": "0363100012166564",
+   "reason": "frontage 43.5 m from Willemsparkweg"
+  },
+  {
+   "pandId": "0363100012166710",
+   "reason": "frontage 80.3 m from Willemsparkweg"
+  },
+  {
+   "pandId": "0363100012167008",
+   "reason": "frontage 31.3 m from Willemsparkweg"
+  },
+  {
+   "pandId": "0363100012167022",
+   "reason": "frontage 43.9 m from Willemsparkweg"
+  },
+  {
+   "pandId": "0363100012167040",
+   "reason": "frontage 55.3 m from Willemsparkweg"
+  },
+  {
+   "pandId": "0363100012167203",
+   "reason": "no frontage on Willemsparkweg: No footprint edge faces Willemsparkweg"
+  },
+  {
+   "pandId": "0363100012167420",
+   "reason": "frontage 34.3 m from Willemsparkweg"
+  },
+  {
+   "pandId": "0363100012204731",
+   "reason": "frontage 30.4 m from Willemsparkweg"
+  },
+  {
+   "pandId": "0363100012220245",
+   "reason": "frontage 34.4 m from Willemsparkweg"
+  },
+  {
+   "pandId": "0363100012233841",
+   "reason": "frontage 47.3 m from Willemsparkweg"
+  },
+  {
+   "pandId": "0363100012236069",
+   "reason": "no frontage on Willemsparkweg: No footprint edge faces Willemsparkweg"
+  },
+  {
+   "pandId": "0363100012236119",
+   "reason": "no frontage on Willemsparkweg: No footprint edge faces Willemsparkweg"
+  },
+  {
+   "pandId": "0363100012236236",
+   "reason": "frontage 40.1 m from Willemsparkweg"
+  },
+  {
+   "pandId": "0363100012236347",
+   "reason": "no frontage on Willemsparkweg: No footprint edge faces Willemsparkweg"
+  },
+  {
+   "pandId": "0363100012236472",
+   "reason": "no frontage on Willemsparkweg: No footprint edge faces Willemsparkweg"
+  },
+  {
+   "pandId": "0363100012236903",
+   "reason": "no frontage on Willemsparkweg: No footprint edge faces Willemsparkweg"
+  },
+  {
+   "pandId": "0363100012237103",
+   "reason": "frontage 45.9 m from Willemsparkweg"
+  },
+  {
+   "pandId": "0363100012098390",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012152325",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012152869",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012153337",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012153607",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012154268",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012154322",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012155651",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012155662",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012156064",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012156069",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012157060",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012157240",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012157545",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012157556",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012157586",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012157736",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012158319",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012158668",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012158726",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012159147",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012159184",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012160033",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012160059",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012160086",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012160404",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012160882",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012161355",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012161533",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012161826",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012161942",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012162463",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012162633",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012163036",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012163903",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012163913",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012164523",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012164684",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012164725",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012165895",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012166121",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012166754",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012167239",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012167288",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012196230",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012236186",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012236757",
+   "reason": "fronts the other side / another direction"
+  }
+ ],
+ "areaHalfSizeM": 90,
+ "pands": [
+  {
+   "pandId": "0363100012235930",
+   "alongM": -5.96,
+   "widthM": 6.12,
+   "eavesM": 10.32,
+   "roofMaxM": 12.99,
+   "storeys3dbag": 4,
+   "builtYear": 1895,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012236904",
+   "alongM": 0,
+   "widthM": 5.8,
+   "eavesM": 10.18,
+   "roofMaxM": 16.86,
+   "storeys3dbag": 4,
+   "builtYear": 1895,
+   "uncertainty": []
+  }
+ ]
+}

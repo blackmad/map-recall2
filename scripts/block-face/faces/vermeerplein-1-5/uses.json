@@ -1,0 +1,78 @@
+{
+ "street": "Johannes Vermeerplein",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-01T15:28:49.144Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012237313",
+   "addresses": [
+    "Johannes Vermeerplein 1"
+   ],
+   "groundUnits": [
+    {
+     "address": "Johannes Vermeerplein 1",
+     "use": "kantoorfunctie",
+     "areaM2": 371,
+     "bagId": "0363010001963348"
+    },
+    {
+     "address": "Johannes Vermeerstraat 55",
+     "use": "kantoorfunctie",
+     "areaM2": 343,
+     "bagId": "0363010012136223"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012079467",
+   "addresses": [
+    "Johannes Vermeerplein 3"
+   ],
+   "groundUnits": [
+    {
+     "address": "Johannes Vermeerplein 3",
+     "use": "kantoorfunctie",
+     "areaM2": 557,
+     "bagId": "0363010000694387"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012062389",
+   "addresses": [
+    "Johannes Vermeerplein 5"
+   ],
+   "groundUnits": [
+    {
+     "address": "Johannes Vermeerplein 5",
+     "use": "kantoorfunctie",
+     "areaM2": 482,
+     "bagId": "0363010000694389"
+    }
+   ],
+   "units": 1,
+   "osm": [
+    {
+     "type": "node",
+     "id": 4858603116,
+     "lngLat": [
+      4.8842537,
+      52.3556335
+     ],
+     "tags": {
+      "shop": "estate_agent"
+     },
+     "fetchedAt": "2026-11-01T15:28:49.144Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}

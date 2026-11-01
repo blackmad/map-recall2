@@ -1,0 +1,289 @@
+{
+ "street": "Van Baerlestraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-01T16:39:30.293Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012237149",
+   "addresses": [
+    "Van Baerlestraat 35",
+    "Van Baerlestraat 37"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Baerlestraat 35-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 164,
+     "bagId": "0363010000834782"
+    },
+    {
+     "address": "Van Baerlestraat 37",
+     "use": "woonfunctie",
+     "areaM2": 82,
+     "bagId": "0363010000834787"
+    }
+   ],
+   "units": 3,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2816520679,
+     "lngLat": [
+      4.8802999,
+      52.3560022
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "35-H",
+      "addr:postcode": "1071AP",
+      "addr:street": "Van Baerlestraat",
+      "amenity": "restaurant",
+      "cuisine": "pizza;italian",
+      "name": "Barpiazza",
+      "opening_hours": "Mo-Fr 16:00-22:00; Sa 13:00-22:00; Su 12:00-20:30",
+      "phone": "+31 20 6622655",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://www.barpiazza.nl"
+     },
+     "fetchedAt": "2026-11-01T16:39:30.293Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012163704",
+   "addresses": [
+    "Van Baerlestraat 39"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Baerlestraat 39-H",
+     "use": "winkelfunctie",
+     "areaM2": 180,
+     "bagId": "0363010000834790"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012163880",
+   "addresses": [
+    "Van Baerlestraat 41"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Baerlestraat 41-H",
+     "use": "winkelfunctie",
+     "areaM2": 116,
+     "bagId": "0363010000834794"
+    },
+    {
+     "address": "Van Baerlestraat 41-H",
+     "use": "winkelfunctie",
+     "areaM2": 494,
+     "bagId": "0363010012122794"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012165960",
+   "addresses": [
+    "Van Baerlestraat 43"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Baerlestraat 43-H",
+     "use": "winkelfunctie",
+     "areaM2": 41,
+     "bagId": "0363010000834800"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012160565",
+   "addresses": [
+    "Van Baerlestraat 45"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Baerlestraat 45-H",
+     "use": "kantoorfunctie",
+     "areaM2": 135,
+     "bagId": "0363010000834805"
+    }
+   ],
+   "units": 2,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2995644492,
+     "lngLat": [
+      4.8804516,
+      52.3557575
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "45",
+      "addr:street": "Van Baerlestraat",
+      "amenity": "cafe",
+      "check_date": "2026-10-01",
+      "check_date:opening_hours": "2026-10-01",
+      "contact:instagram": "https://www.instagram.com/bestbreadboba",
+      "cuisine": "bubble_tea;matcha",
+      "name": "Best Bread Boba",
+      "opening_hours": "Mo-Su 09:00-19:00",
+      "payment:cash": "no",
+      "wheelchair": "no"
+     },
+     "fetchedAt": "2026-11-01T16:39:30.293Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012165798",
+   "addresses": [
+    "Van Baerlestraat 47"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Baerlestraat 47-H",
+     "use": "winkelfunctie",
+     "areaM2": 101,
+     "bagId": "0363010000834810"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012159529",
+   "addresses": [
+    "Van Baerlestraat 49"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Baerlestraat 49-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 111,
+     "bagId": "0363010000834816"
+    }
+   ],
+   "units": 2,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2816521205,
+     "lngLat": [
+      4.8805177,
+      52.355664
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "49-H",
+      "addr:postcode": "1071AP",
+      "addr:street": "Van Baerlestraat",
+      "amenity": "restaurant",
+      "check_date": "2025-06-07",
+      "cuisine": "french",
+      "delivery": "no",
+      "name": "L'Entrecote et les dames",
+      "phone": "+31 20 6798888",
+      "smoking": "no",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "takeaway": "no",
+      "website": "https://www.entrecote-et-les-dames.nl/#lentrecote-et-les-dames"
+     },
+     "fetchedAt": "2026-11-01T16:39:30.293Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012236207",
+   "addresses": [
+    "Van Baerlestraat 51"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Baerlestraat 51-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 110,
+     "bagId": "0363010000834819"
+    },
+    {
+     "address": "Moreelsestraat 1D",
+     "use": "woonfunctie",
+     "areaM2": 75,
+     "bagId": "0363010012149168"
+    },
+    {
+     "address": "Van Baerlestraat 51-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 198,
+     "bagId": "0363010012568189"
+    },
+    {
+     "address": "Moreelsestraat 1C",
+     "use": "woonfunctie",
+     "areaM2": 173,
+     "bagId": "0363010012147861"
+    },
+    {
+     "address": "Moreelsestraat 1B",
+     "use": "woonfunctie",
+     "areaM2": 90,
+     "bagId": "0363010012147860"
+    },
+    {
+     "address": "Moreelsestraat 1",
+     "use": "woonfunctie",
+     "areaM2": 201,
+     "bagId": "0363010000746251"
+    }
+   ],
+   "units": 7,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2816521292,
+     "lngLat": [
+      4.8805499,
+      52.3556108
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "51-H",
+      "addr:postcode": "1071AP",
+      "addr:street": "Van Baerlestraat",
+      "amenity": "restaurant",
+      "check_date": "2025-06-07",
+      "contact:instagram": "https://www.instagram.com/eshpitabar",
+      "cuisine": "mediterranean",
+      "diet:vegetarian": "yes",
+      "name": "Esh Pitabar",
+      "phone": "+31 20 8543047",
+      "source": "survey",
+      "source:date": "2014-03-24",
+      "website": "https://esh.amsterdam"
+     },
+     "fetchedAt": "2026-11-01T16:39:30.293Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}

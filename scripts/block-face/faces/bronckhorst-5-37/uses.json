@@ -1,0 +1,195 @@
+{
+ "street": "Bronckhorststraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-01T13:21:44.045Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012082921",
+   "addresses": [
+    "Bronckhorststraat 5"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bronckhorststraat 5-H",
+     "use": "woonfunctie",
+     "areaM2": 94,
+     "bagId": "0363010000596559"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012086257",
+   "addresses": [
+    "Bronckhorststraat 7"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bronckhorststraat 7-H",
+     "use": "woonfunctie",
+     "areaM2": 80,
+     "bagId": "0363010000596567"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012128160",
+   "addresses": [
+    "Bronckhorststraat 9"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bronckhorststraat 9-H",
+     "use": "woonfunctie",
+     "areaM2": 94,
+     "bagId": "0363010000596575"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012148966",
+   "addresses": [
+    "Bronckhorststraat 11",
+    "Bronckhorststraat 13"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bronckhorststraat 11-H",
+     "use": "woonfunctie",
+     "areaM2": 76,
+     "bagId": "0363010000596583"
+    },
+    {
+     "address": "Bronckhorststraat 13-H",
+     "use": "woonfunctie",
+     "areaM2": 76,
+     "bagId": "0363010000596590"
+    }
+   ],
+   "units": 8,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012070981",
+   "addresses": [
+    "Bronckhorststraat 15",
+    "Bronckhorststraat 17"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bronckhorststraat 15-H",
+     "use": "woonfunctie",
+     "areaM2": 76,
+     "bagId": "0363010000596595"
+    },
+    {
+     "address": "Bronckhorststraat 17-H",
+     "use": "woonfunctie",
+     "areaM2": 76,
+     "bagId": "0363010000596599"
+    }
+   ],
+   "units": 8,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012112467",
+   "addresses": [
+    "Bronckhorststraat 19",
+    "Bronckhorststraat 21"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bronckhorststraat 19-H",
+     "use": "woonfunctie",
+     "areaM2": 76,
+     "bagId": "0363010000596605"
+    },
+    {
+     "address": "Bronckhorststraat 21-H",
+     "use": "woonfunctie",
+     "areaM2": 76,
+     "bagId": "0363010000596612"
+    }
+   ],
+   "units": 8,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012154007",
+   "addresses": [
+    "Bronckhorststraat 23",
+    "Bronckhorststraat 25"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bronckhorststraat 23-H",
+     "use": "woonfunctie",
+     "areaM2": 76,
+     "bagId": "0363010000596619"
+    },
+    {
+     "address": "Bronckhorststraat 25-H",
+     "use": "woonfunctie",
+     "areaM2": 76,
+     "bagId": "0363010000596626"
+    }
+   ],
+   "units": 8,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012075888",
+   "addresses": [
+    "Bronckhorststraat 27",
+    "Bronckhorststraat 29"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bronckhorststraat 27-H",
+     "use": "woonfunctie",
+     "areaM2": 76,
+     "bagId": "0363010000596633"
+    },
+    {
+     "address": "Bronckhorststraat 29-H",
+     "use": "woonfunctie",
+     "areaM2": 76,
+     "bagId": "0363010000596641"
+    }
+   ],
+   "units": 8,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012065812",
+   "addresses": [
+    "Bronckhorststraat 31",
+    "Bronckhorststraat 33"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bronckhorststraat 31-H",
+     "use": "woonfunctie",
+     "areaM2": 76,
+     "bagId": "0363010000596649"
+    },
+    {
+     "address": "Bronckhorststraat 33-H",
+     "use": "woonfunctie",
+     "areaM2": 76,
+     "bagId": "0363010000596657"
+    }
+   ],
+   "units": 8,
+   "osm": []
+  }
+ ]
+}

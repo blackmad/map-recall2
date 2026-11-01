@@ -1,0 +1,172 @@
+{
+ "street": "Emmastraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-01T13:06:26.911Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012235963",
+   "addresses": [
+    "Emmastraat 1"
+   ],
+   "groundUnits": [
+    {
+     "address": "Willemsparkweg 223",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 167,
+     "bagId": "0363010000873310"
+    },
+    {
+     "address": "Emmastraat 1-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 1,
+     "bagId": "0363010000632641"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2816318410,
+     "lngLat": [
+      4.8683772,
+      52.3552537
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "223",
+      "addr:postcode": "1071HC",
+      "addr:street": "Willemsparkweg",
+      "amenity": "restaurant",
+      "indoor_seating": "yes",
+      "name": "Le Petit George",
+      "outdoor_seating": "yes",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://www.lepetitgeorge.nl"
+     },
+     "fetchedAt": "2026-11-01T13:06:26.911Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012156024",
+   "addresses": [
+    "Emmastraat 3",
+    "Emmastraat 3B",
+    "Emmastraat 3A"
+   ],
+   "groundUnits": [
+    {
+     "address": "Emmastraat 3B",
+     "use": "woonfunctie",
+     "areaM2": 66,
+     "bagId": "0363010012067077"
+    },
+    {
+     "address": "Emmastraat 3A",
+     "use": "winkelfunctie",
+     "areaM2": 49,
+     "bagId": "0363010012067078"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2816318755,
+     "lngLat": [
+      4.8684751,
+      52.3551475
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "3A",
+      "addr:postcode": "1071JA",
+      "addr:street": "Emmastraat",
+      "name": "De Kaaswaag",
+      "shop": "deli",
+      "source": "BAG",
+      "source:date": "2014-03-24"
+     },
+     "fetchedAt": "2026-11-01T13:06:26.911Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012153668",
+   "addresses": [
+    "Emmastraat 5"
+   ],
+   "groundUnits": [
+    {
+     "address": "Emmastraat 5",
+     "use": "woonfunctie",
+     "areaM2": 120,
+     "bagId": "0363010000632649"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012163830",
+   "addresses": [
+    "Emmastraat 7"
+   ],
+   "groundUnits": [
+    {
+     "address": "Emmastraat 7-H",
+     "use": "woonfunctie",
+     "areaM2": 108,
+     "bagId": "0363010000632650"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012156082",
+   "addresses": [
+    "Emmastraat 9"
+   ],
+   "groundUnits": [
+    {
+     "address": "Emmastraat 9-H",
+     "use": "woonfunctie",
+     "areaM2": 174,
+     "bagId": "0363010000632655"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012156081",
+   "addresses": [
+    "Emmastraat 11"
+   ],
+   "groundUnits": [
+    {
+     "address": "Emmastraat 11-H",
+     "use": "winkelfunctie",
+     "areaM2": 151,
+     "bagId": "0363010012148324"
+    },
+    {
+     "address": "Emmastraat 11-H",
+     "use": "woonfunctie",
+     "areaM2": 174,
+     "bagId": "0363010001038898"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  }
+ ]
+}

@@ -1318,7 +1318,13 @@ export function dominantFacades(s: MaterialSoup, minArea = 60): FacadeInventory[
  * gable). Rows then chain together through the half-pitch offsets, so level, missing-column and column-alignment checks do
  * not apply; sizes still must match each other.
  */
-export function analyseRhythm(openings: Opening[], opts: {staggered?: boolean} = {}): Pick<RhythmFacade, 'rows' | 'mismatched' | 'missing' | 'misaligned'> {
+/**
+ * `symmetric`: the photo inventory declares a mirror-symmetric front. In a row with an odd count the centre opening is
+ * then the composition's axis (a door running to the ground under the perron, a wider centre window, the light over the
+ * bel-etage door: Academie van Bouwkunst risalit) and neither its size nor its level is an error; its column alignment
+ * is still checked, and every other opening is judged as usual.
+ */
+export function analyseRhythm(openings: Opening[], opts: {staggered?: boolean; symmetric?: boolean} = {}): Pick<RhythmFacade, 'rows' | 'mismatched' | 'missing' | 'misaligned'> {
   // Rows: cluster by vertical centre (half the median opening height, ≥ 0.9 m), as facadeCompare does.
   const medH = median(openings.map(o => o.y1 - o.y0)) || 1;
   const sorted = [...openings].sort((a, b) => (a.y0 + a.y1) - (b.y0 + b.y1));
@@ -1334,9 +1340,10 @@ export function analyseRhythm(openings: Opening[], opts: {staggered?: boolean} =
     r.sort((a, b) => a.t0 - b.t0);
     const mw = median(r.map(o => o.t1 - o.t0)), mh = median(r.map(o => o.y1 - o.y0)), ms = median(r.map(o => o.y0)), mt = median(r.map(o => o.y1));
     let odd = 0;
+    const axis = opts.symmetric && r.length % 2 === 1 ? r[(r.length - 1) / 2] : null;
     if (r.length >= 3) for (const o of r) {
       const dw = Math.abs(o.t1 - o.t0 - mw), dh = Math.abs(o.y1 - o.y0 - mh);
-      const bad = (dw > 0.3 && dw > 0.25 * mw) || (dh > 0.4 && dh > 0.25 * mh) || (!opts.staggered && (Math.abs(o.y0 - ms) > 0.35 || Math.abs(o.y1 - mt) > 0.35));
+      const bad = o !== axis && ((dw > 0.3 && dw > 0.25 * mw) || (dh > 0.4 && dh > 0.25 * mh) || (!opts.staggered && (Math.abs(o.y0 - ms) > 0.35 || Math.abs(o.y1 - mt) > 0.35)));
       if (bad) { odd++; mismatched.push(o); }
     }
     // Missing: a gap that is a whole multiple of the regular spacing, between two regular windows of the same size.
@@ -1347,7 +1354,16 @@ export function analyseRhythm(openings: Opening[], opts: {staggered?: boolean} =
       const sp = median(gaps);
       gaps.forEach((g, i) => {
         const k = Math.round(g / sp);
-        if (sp > 0.8 && k >= 2 && k <= 3 && Math.abs(g - k * sp) < 0.2 * sp) for (let j = 1; j < k; j++) missing.push({t: +(cs[i] + j * sp).toFixed(2), y0: +ms.toFixed(2), y1: +mt.toFixed(2)});
+        if (!(sp > 0.8 && k >= 2 && k <= 3 && Math.abs(g - k * sp) < 0.2 * sp)) return;
+        // Only between two regular windows: an odd-sized neighbour (a wide entrance bay) is not a gap in the rhythm.
+        if (mismatched.includes(r[i]) || mismatched.includes(r[i + 1])) return;
+        for (let j = 1; j < k; j++) {
+          const t = cs[i] + j * sp;
+          // Not missing when the wall there already carries an opening of any size at that level (a 17 m glazed bay
+          // between two regular windows, Olympisch Stadion w01).
+          if (openings.some(o => o !== r[i] && o !== r[i + 1] && o.t0 - 0.1 <= t && t <= o.t1 + 0.1 && o.y1 > ms && o.y0 < mt)) continue;
+          missing.push({t: +t.toFixed(2), y0: +ms.toFixed(2), y1: +mt.toFixed(2)});
+        }
       });
     }
     rowOut.push({y: +((ms + mt) / 2).toFixed(1), count: r.length, medianW: +mw.toFixed(2), medianH: +mh.toFixed(2), odd});
@@ -1367,7 +1383,7 @@ export function auditRhythm(s: MaterialSoup, facades: FacadeInventory[], fromSpe
   const out: RhythmFacade[] = [];
   for (const f of facades) {
     const m = measureFacade(s, f, 0.1);
-    const r = analyseRhythm(m.openings, {staggered: f.staggered});
+    const r = analyseRhythm(m.openings, {staggered: f.staggered, symmetric: f.symmetric});
     out.push({name: f.name, bearing: f.bearing, fromSpec, openings: m.openings.length, ...r, specRows: f.rows});
   }
   return out;

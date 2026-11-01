@@ -1,0 +1,555 @@
+{
+ "street": "Ruysdaelstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-01T14:45:55.201Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012127925",
+   "addresses": [
+    "Ruysdaelstraat 59"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ruysdaelstraat 59-H",
+     "use": "woonfunctie",
+     "areaM2": 84,
+     "bagId": "0363010000801632"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012154443",
+   "addresses": [
+    "Ruysdaelstraat 61"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ruysdaelstraat 61-H",
+     "use": "woonfunctie",
+     "areaM2": 200,
+     "bagId": "0363010000801641"
+    }
+   ],
+   "units": 6,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012078452",
+   "addresses": [
+    "Ruysdaelstraat 63"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ruysdaelstraat 63-H",
+     "use": "woonfunctie",
+     "areaM2": 333,
+     "bagId": "0363010012575961"
+    },
+    {
+     "address": "Ruysdaelstraat 63-H",
+     "use": "woonfunctie",
+     "areaM2": 206,
+     "bagId": "0363010000801650"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012146977",
+   "addresses": [
+    "Ruysdaelstraat 65"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ruysdaelstraat 65-H",
+     "use": "woonfunctie",
+     "areaM2": 112,
+     "bagId": "0363010000801657"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012200136",
+   "addresses": [],
+   "groundUnits": [],
+   "units": 0,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012167149",
+   "addresses": [
+    "Ruysdaelstraat 67"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ruysdaelstraat 67",
+     "use": "onderwijsfunctie",
+     "areaM2": 1844,
+     "bagId": "0363010000801664"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012167274",
+   "addresses": [
+    "Ruysdaelstraat 71A",
+    "Ruysdaelstraat 71B",
+    "Ruysdaelstraat 71D",
+    "Ruysdaelstraat 71E",
+    "Ruysdaelstraat 71C",
+    "Ruysdaelstraat 71F"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ruysdaelstraat 71A",
+     "use": "woonfunctie",
+     "areaM2": 139,
+     "bagId": "0363010000801673"
+    },
+    {
+     "address": "Ruysdaelstraat 71B",
+     "use": "woonfunctie",
+     "areaM2": 170,
+     "bagId": "0363010000801675"
+    },
+    {
+     "address": "Ruysdaelstraat 71D",
+     "use": "woonfunctie",
+     "areaM2": 141,
+     "bagId": "0363010000801677"
+    },
+    {
+     "address": "Ruysdaelstraat 71E",
+     "use": "woonfunctie",
+     "areaM2": 138,
+     "bagId": "0363010000801678"
+    },
+    {
+     "address": "Ruysdaelstraat 71C",
+     "use": "woonfunctie",
+     "areaM2": 128,
+     "bagId": "0363010000801676"
+    },
+    {
+     "address": "Ruysdaelstraat 71F",
+     "use": "woonfunctie",
+     "areaM2": 48,
+     "bagId": "0363010000801679"
+    }
+   ],
+   "units": 6,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012076109",
+   "addresses": [
+    "Ruysdaelstraat 73P",
+    "Ruysdaelstraat 73R",
+    "Ruysdaelstraat 73S",
+    "Ruysdaelstraat 73B",
+    "Ruysdaelstraat 73C",
+    "Ruysdaelstraat 73D",
+    "Ruysdaelstraat 73E",
+    "Ruysdaelstraat 73F",
+    "Ruysdaelstraat 73G",
+    "Ruysdaelstraat 73H",
+    "Ruysdaelstraat 73K",
+    "Ruysdaelstraat 73L",
+    "Ruysdaelstraat 73M",
+    "Ruysdaelstraat 73N",
+    "Ruysdaelstraat 73A",
+    "Ruysdaelstraat 75A",
+    "Ruysdaelstraat 75B",
+    "Ruysdaelstraat 75C",
+    "Ruysdaelstraat 75D",
+    "Ruysdaelstraat 75E",
+    "Ruysdaelstraat 75F",
+    "Ruysdaelstraat 75G",
+    "Ruysdaelstraat 75H",
+    "Ruysdaelstraat 75K",
+    "Ruysdaelstraat 75L",
+    "Ruysdaelstraat 75M",
+    "Ruysdaelstraat 75N"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ruysdaelstraat 73P",
+     "use": "woonfunctie",
+     "areaM2": 33,
+     "bagId": "0363010000801710"
+    },
+    {
+     "address": "Ruysdaelstraat 73R",
+     "use": "woonfunctie",
+     "areaM2": 38,
+     "bagId": "0363010000801711"
+    },
+    {
+     "address": "Ruysdaelstraat 73S",
+     "use": "woonfunctie",
+     "areaM2": 40,
+     "bagId": "0363010000801712"
+    },
+    {
+     "address": "Ruysdaelstraat 75A",
+     "use": "woonfunctie",
+     "areaM2": 49,
+     "bagId": "0363010000801713"
+    },
+    {
+     "address": "Ruysdaelstraat 75B",
+     "use": "woonfunctie",
+     "areaM2": 37,
+     "bagId": "0363010000801714"
+    },
+    {
+     "address": "Ruysdaelstraat 75C",
+     "use": "woonfunctie",
+     "areaM2": 41,
+     "bagId": "0363010000801715"
+    },
+    {
+     "address": "Ruysdaelstraat 75D",
+     "use": "woonfunctie",
+     "areaM2": 30,
+     "bagId": "0363010000801716"
+    },
+    {
+     "address": "Ruysdaelstraat 75E",
+     "use": "woonfunctie",
+     "areaM2": 41,
+     "bagId": "0363010000801717"
+    },
+    {
+     "address": "Ruysdaelstraat 75F",
+     "use": "woonfunctie",
+     "areaM2": 29,
+     "bagId": "0363010000801718"
+    },
+    {
+     "address": "Ruysdaelstraat 75G",
+     "use": "woonfunctie",
+     "areaM2": 41,
+     "bagId": "0363010000801719"
+    },
+    {
+     "address": "Ruysdaelstraat 75H",
+     "use": "woonfunctie",
+     "areaM2": 28,
+     "bagId": "0363010000801720"
+    },
+    {
+     "address": "Ruysdaelstraat 75K",
+     "use": "woonfunctie",
+     "areaM2": 41,
+     "bagId": "0363010000801721"
+    },
+    {
+     "address": "Ruysdaelstraat 75L",
+     "use": "woonfunctie",
+     "areaM2": 30,
+     "bagId": "0363010000801722"
+    },
+    {
+     "address": "Ruysdaelstraat 75M",
+     "use": "woonfunctie",
+     "areaM2": 41,
+     "bagId": "0363010000801723"
+    },
+    {
+     "address": "Ruysdaelstraat 75N",
+     "use": "woonfunctie",
+     "areaM2": 30,
+     "bagId": "0363010000801724"
+    },
+    {
+     "address": "Ruysdaelstraat 73B",
+     "use": "woonfunctie",
+     "areaM2": 33,
+     "bagId": "0363010000801681"
+    },
+    {
+     "address": "Ruysdaelstraat 73C",
+     "use": "woonfunctie",
+     "areaM2": 33,
+     "bagId": "0363010000801682"
+    },
+    {
+     "address": "Ruysdaelstraat 73D",
+     "use": "woonfunctie",
+     "areaM2": 33,
+     "bagId": "0363010000801683"
+    },
+    {
+     "address": "Ruysdaelstraat 73E",
+     "use": "woonfunctie",
+     "areaM2": 33,
+     "bagId": "0363010000801684"
+    },
+    {
+     "address": "Ruysdaelstraat 73F",
+     "use": "woonfunctie",
+     "areaM2": 33,
+     "bagId": "0363010000801685"
+    },
+    {
+     "address": "Ruysdaelstraat 73G",
+     "use": "woonfunctie",
+     "areaM2": 33,
+     "bagId": "0363010000801686"
+    },
+    {
+     "address": "Ruysdaelstraat 73H",
+     "use": "woonfunctie",
+     "areaM2": 33,
+     "bagId": "0363010000801687"
+    },
+    {
+     "address": "Ruysdaelstraat 73K",
+     "use": "woonfunctie",
+     "areaM2": 33,
+     "bagId": "0363010000801706"
+    },
+    {
+     "address": "Ruysdaelstraat 73L",
+     "use": "woonfunctie",
+     "areaM2": 33,
+     "bagId": "0363010000801707"
+    },
+    {
+     "address": "Ruysdaelstraat 73M",
+     "use": "woonfunctie",
+     "areaM2": 33,
+     "bagId": "0363010000801708"
+    },
+    {
+     "address": "Ruysdaelstraat 73N",
+     "use": "woonfunctie",
+     "areaM2": 33,
+     "bagId": "0363010000801709"
+    },
+    {
+     "address": "Ruysdaelstraat 73A",
+     "use": "woonfunctie",
+     "areaM2": 52,
+     "bagId": "0363010000801680"
+    }
+   ],
+   "units": 27,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012246038",
+   "addresses": [
+    "Ruysdaelstraat 77",
+    "Ruysdaelstraat 79",
+    "Ruysdaelstraat 79G",
+    "Ruysdaelstraat 79F",
+    "Ruysdaelstraat 79H",
+    "Ruysdaelstraat 79L",
+    "Ruysdaelstraat 79K",
+    "Ruysdaelstraat 79B",
+    "Ruysdaelstraat 79A",
+    "Ruysdaelstraat 79C",
+    "Ruysdaelstraat 79E",
+    "Ruysdaelstraat 79D",
+    "Ruysdaelstraat 81",
+    "Ruysdaelstraat 81A",
+    "Ruysdaelstraat 81B",
+    "Ruysdaelstraat 83",
+    "Ruysdaelstraat 83A",
+    "Ruysdaelstraat 83B",
+    "Ruysdaelstraat 85",
+    "Ruysdaelstraat 85A",
+    "Ruysdaelstraat 85B",
+    "Ruysdaelstraat 87",
+    "Ruysdaelstraat 87G",
+    "Ruysdaelstraat 87F",
+    "Ruysdaelstraat 87H",
+    "Ruysdaelstraat 87L",
+    "Ruysdaelstraat 87K",
+    "Ruysdaelstraat 87B",
+    "Ruysdaelstraat 87A",
+    "Ruysdaelstraat 87C",
+    "Ruysdaelstraat 87E",
+    "Ruysdaelstraat 87D",
+    "Ruysdaelstraat 89"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ruysdaelstraat 85-H",
+     "use": "woonfunctie",
+     "areaM2": 51,
+     "bagId": "0363010000801750"
+    },
+    {
+     "address": "Ruysdaelstraat 87-H",
+     "use": "industriefunctie",
+     "areaM2": 116,
+     "bagId": "0363010000801757"
+    },
+    {
+     "address": "Ruysdaelstraat 89-H",
+     "use": "industriefunctie,woonfunctie",
+     "areaM2": 51,
+     "bagId": "0363010000801768"
+    },
+    {
+     "address": "Ruysdaelstraat 79-H",
+     "use": "industriefunctie",
+     "areaM2": 570,
+     "bagId": "0363010001001986"
+    },
+    {
+     "address": "Ruysdaelstraat 81",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 572,
+     "bagId": "0363010012077210"
+    },
+    {
+     "address": "Ruysdaelstraat 79G",
+     "use": "woonfunctie",
+     "areaM2": 100,
+     "bagId": "0363010012077220"
+    },
+    {
+     "address": "Ruysdaelstraat 79F",
+     "use": "woonfunctie",
+     "areaM2": 126,
+     "bagId": "0363010012077221"
+    },
+    {
+     "address": "Ruysdaelstraat 79H",
+     "use": "woonfunctie",
+     "areaM2": 126,
+     "bagId": "0363010012077222"
+    },
+    {
+     "address": "Ruysdaelstraat 79L",
+     "use": "woonfunctie",
+     "areaM2": 121,
+     "bagId": "0363010012077223"
+    },
+    {
+     "address": "Ruysdaelstraat 79K",
+     "use": "woonfunctie",
+     "areaM2": 97,
+     "bagId": "0363010012077224"
+    },
+    {
+     "address": "Ruysdaelstraat 79E",
+     "use": "woonfunctie",
+     "areaM2": 100,
+     "bagId": "0363010012077228"
+    },
+    {
+     "address": "Ruysdaelstraat 79D",
+     "use": "woonfunctie",
+     "areaM2": 125,
+     "bagId": "0363010012077229"
+    },
+    {
+     "address": "Ruysdaelstraat 87G",
+     "use": "woonfunctie",
+     "areaM2": 125,
+     "bagId": "0363010012077232"
+    },
+    {
+     "address": "Ruysdaelstraat 87F",
+     "use": "woonfunctie",
+     "areaM2": 100,
+     "bagId": "0363010012077233"
+    },
+    {
+     "address": "Ruysdaelstraat 87H",
+     "use": "woonfunctie",
+     "areaM2": 100,
+     "bagId": "0363010012077234"
+    },
+    {
+     "address": "Ruysdaelstraat 87L",
+     "use": "woonfunctie",
+     "areaM2": 97,
+     "bagId": "0363010012077235"
+    },
+    {
+     "address": "Ruysdaelstraat 87K",
+     "use": "woonfunctie",
+     "areaM2": 121,
+     "bagId": "0363010012077236"
+    },
+    {
+     "address": "Ruysdaelstraat 87C",
+     "use": "woonfunctie",
+     "areaM2": 126,
+     "bagId": "0363010012077239"
+    },
+    {
+     "address": "Ruysdaelstraat 87E",
+     "use": "woonfunctie",
+     "areaM2": 126,
+     "bagId": "0363010012077240"
+    },
+    {
+     "address": "Ruysdaelstraat 87D",
+     "use": "woonfunctie",
+     "areaM2": 100,
+     "bagId": "0363010012077241"
+    },
+    {
+     "address": "Ruysdaelstraat 79C",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 644,
+     "bagId": "0363010012097709"
+    },
+    {
+     "address": "Ruysdaelstraat 81A",
+     "use": "woonfunctie",
+     "areaM2": 235,
+     "bagId": "0363010012097716"
+    },
+    {
+     "address": "Ruysdaelstraat 81B",
+     "use": "woonfunctie",
+     "areaM2": 248,
+     "bagId": "0363010012097717"
+    },
+    {
+     "address": "Ruysdaelstraat 83A",
+     "use": "woonfunctie",
+     "areaM2": 235,
+     "bagId": "0363010012097718"
+    },
+    {
+     "address": "Ruysdaelstraat 83B",
+     "use": "woonfunctie",
+     "areaM2": 248,
+     "bagId": "0363010012097719"
+    },
+    {
+     "address": "Ruysdaelstraat 85A",
+     "use": "woonfunctie",
+     "areaM2": 226,
+     "bagId": "0363010012097720"
+    },
+    {
+     "address": "Ruysdaelstraat 85B",
+     "use": "woonfunctie",
+     "areaM2": 236,
+     "bagId": "0363010012097721"
+    }
+   ],
+   "units": 81,
+   "osm": []
+  }
+ ]
+}

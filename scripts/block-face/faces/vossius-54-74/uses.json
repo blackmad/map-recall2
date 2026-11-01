@@ -1,0 +1,203 @@
+{
+ "street": "Vossiusstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched n/a (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012159248",
+   "addresses": [
+    "Vossiusstraat 54",
+    "Vossiusstraat 54A",
+    "Vossiusstraat 54B",
+    "Vossiusstraat 55"
+   ],
+   "groundUnits": [
+    {
+     "address": "Vossiusstraat 55",
+     "use": "woonfunctie",
+     "areaM2": 462,
+     "bagId": "0363010012121201"
+    },
+    {
+     "address": "Vossiusstraat 54A",
+     "use": "woonfunctie",
+     "areaM2": 44,
+     "bagId": "0363010012147225"
+    },
+    {
+     "address": "Vossiusstraat 54B",
+     "use": "woonfunctie",
+     "areaM2": 430,
+     "bagId": "0363010012147226"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012067476",
+   "addresses": [
+    "Vossiusstraat 56",
+    "Vossiusstraat 57",
+    "Vossiusstraat 58",
+    "Vossiusstraat 59",
+    "Vossiusstraat 60",
+    "Vossiusstraat 61",
+    "Vossiusstraat 62",
+    "Vossiusstraat 63",
+    "Vossiusstraat 64",
+    "Vossiusstraat 65",
+    "Vossiusstraat 66",
+    "Vossiusstraat 67",
+    "Vossiusstraat 68",
+    "Vossiusstraat 69",
+    "Vossiusstraat 70",
+    "Vossiusstraat 71",
+    "Vossiusstraat 72",
+    "Vossiusstraat 73",
+    "Vossiusstraat 74",
+    "Vossiusstraat 74A",
+    "Vossiusstraat 75",
+    "Vossiusstraat 76"
+   ],
+   "groundUnits": [
+    {
+     "address": "Vossiusstraat 56",
+     "use": "woonfunctie",
+     "areaM2": 185,
+     "bagId": "0363010000979825"
+    },
+    {
+     "address": "Vossiusstraat 57",
+     "use": "woonfunctie",
+     "areaM2": 141,
+     "bagId": "0363010000979826"
+    },
+    {
+     "address": "Vossiusstraat 58",
+     "use": "woonfunctie",
+     "areaM2": 103,
+     "bagId": "0363010000979827"
+    },
+    {
+     "address": "Vossiusstraat 59",
+     "use": "woonfunctie",
+     "areaM2": 206,
+     "bagId": "0363010000979828"
+    },
+    {
+     "address": "Vossiusstraat 60",
+     "use": "woonfunctie",
+     "areaM2": 218,
+     "bagId": "0363010000979829"
+    },
+    {
+     "address": "Vossiusstraat 61",
+     "use": "woonfunctie",
+     "areaM2": 101,
+     "bagId": "0363010000979830"
+    },
+    {
+     "address": "Vossiusstraat 62",
+     "use": "woonfunctie",
+     "areaM2": 223,
+     "bagId": "0363010000979831"
+    },
+    {
+     "address": "Vossiusstraat 63",
+     "use": "woonfunctie",
+     "areaM2": 267,
+     "bagId": "0363010000979832"
+    },
+    {
+     "address": "Vossiusstraat 64",
+     "use": "woonfunctie",
+     "areaM2": 215,
+     "bagId": "0363010000979833"
+    },
+    {
+     "address": "Vossiusstraat 65",
+     "use": "woonfunctie",
+     "areaM2": 150,
+     "bagId": "0363010000979836"
+    },
+    {
+     "address": "Vossiusstraat 66",
+     "use": "woonfunctie",
+     "areaM2": 277,
+     "bagId": "0363010000979837"
+    },
+    {
+     "address": "Vossiusstraat 68",
+     "use": "woonfunctie",
+     "areaM2": 112,
+     "bagId": "0363010000979839"
+    },
+    {
+     "address": "Vossiusstraat 69",
+     "use": "woonfunctie",
+     "areaM2": 113,
+     "bagId": "0363010000979840"
+    },
+    {
+     "address": "Vossiusstraat 70",
+     "use": "woonfunctie",
+     "areaM2": 226,
+     "bagId": "0363010000979841"
+    },
+    {
+     "address": "Vossiusstraat 71",
+     "use": "woonfunctie",
+     "areaM2": 206,
+     "bagId": "0363010000979843"
+    },
+    {
+     "address": "Vossiusstraat 72",
+     "use": "woonfunctie",
+     "areaM2": 103,
+     "bagId": "0363010000979844"
+    },
+    {
+     "address": "Vossiusstraat 73",
+     "use": "woonfunctie",
+     "areaM2": 98,
+     "bagId": "0363010000979846"
+    },
+    {
+     "address": "Vossiusstraat 74",
+     "use": "woonfunctie",
+     "areaM2": 225,
+     "bagId": "0363010000979848"
+    },
+    {
+     "address": "Vossiusstraat 75",
+     "use": "woonfunctie",
+     "areaM2": 160,
+     "bagId": "0363010000979852"
+    },
+    {
+     "address": "Vossiusstraat 76",
+     "use": "woonfunctie",
+     "areaM2": 155,
+     "bagId": "0363010000979853"
+    },
+    {
+     "address": "Vossiusstraat 74A",
+     "use": "woonfunctie",
+     "areaM2": 80,
+     "bagId": "0363010000997478"
+    },
+    {
+     "address": "Vossiusstraat 67",
+     "use": "woonfunctie",
+     "areaM2": 189,
+     "bagId": "0363010000979838"
+    }
+   ],
+   "units": 22,
+   "osm": []
+  }
+ ]
+}

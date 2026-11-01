@@ -1,0 +1,395 @@
+{
+ "street": "Willemsparkweg",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-01T15:17:55.695Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012161826",
+   "addresses": [
+    "Willemsparkweg 179"
+   ],
+   "groundUnits": [
+    {
+     "address": "Willemsparkweg 179-H",
+     "use": "winkelfunctie",
+     "areaM2": 51,
+     "bagId": "0363010000873215"
+    }
+   ],
+   "units": 3,
+   "osm": [
+    {
+     "type": "node",
+     "id": 9039115474,
+     "lngLat": [
+      4.8704603,
+      52.3558036
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "177A",
+      "addr:postcode": "1071GZ",
+      "addr:street": "Willemsparkweg",
+      "amenity": "restaurant",
+      "indoor_seating": "yes",
+      "name": "Batoni Khinkali",
+      "outdoor_seating": "yes",
+      "source": "BAG",
+      "source:date": "2021-08-08"
+     },
+     "fetchedAt": "2026-11-01T15:17:55.695Z",
+     "match": "frontage",
+     "distanceM": 4.8
+    },
+    {
+     "type": "node",
+     "id": 12672988569,
+     "lngLat": [
+      4.8703908,
+      52.3558079
+     ],
+     "tags": {
+      "shop": "clothes"
+     },
+     "fetchedAt": "2026-11-01T15:17:55.695Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012166121",
+   "addresses": [
+    "Willemsparkweg 181"
+   ],
+   "groundUnits": [
+    {
+     "address": "Willemsparkweg 181-H",
+     "use": "winkelfunctie,woonfunctie",
+     "areaM2": 65,
+     "bagId": "0363010000873219"
+    },
+    {
+     "address": "Willemsparkweg 181-H",
+     "use": "winkelfunctie",
+     "areaM2": 171,
+     "bagId": "0363010012578039"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 10020227719,
+     "lngLat": [
+      4.8702758,
+      52.3557847
+     ],
+     "tags": {
+      "check_date": "2025-03-15",
+      "name": "Van Wijk",
+      "shop": "bicycle"
+     },
+     "fetchedAt": "2026-11-01T15:17:55.695Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012156064",
+   "addresses": [
+    "Willemsparkweg 183",
+    "Willemsparkweg 183A",
+    "Willemsparkweg 183B",
+    "Willemsparkweg 183C",
+    "Willemsparkweg 183D"
+   ],
+   "groundUnits": [
+    {
+     "address": "Willemsparkweg 183-H",
+     "use": "woonfunctie",
+     "areaM2": 168,
+     "bagId": "0363010000873224"
+    },
+    {
+     "address": "Willemsparkweg 183A",
+     "use": "woonfunctie",
+     "areaM2": 202,
+     "bagId": "0363010012148000"
+    },
+    {
+     "address": "Willemsparkweg 183B",
+     "use": "woonfunctie",
+     "areaM2": 79,
+     "bagId": "0363010012148001"
+    },
+    {
+     "address": "Willemsparkweg 183C",
+     "use": "woonfunctie",
+     "areaM2": 79,
+     "bagId": "0363010012148002"
+    },
+    {
+     "address": "Willemsparkweg 183D",
+     "use": "woonfunctie",
+     "areaM2": 88,
+     "bagId": "0363010012148003"
+    }
+   ],
+   "units": 6,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012098390",
+   "addresses": [
+    "Willemsparkweg 185"
+   ],
+   "groundUnits": [
+    {
+     "address": "Willemsparkweg 185-H",
+     "use": "woonfunctie",
+     "areaM2": 195,
+     "bagId": "0363010000977192"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012154268",
+   "addresses": [
+    "Willemsparkweg 187"
+   ],
+   "groundUnits": [
+    {
+     "address": "Willemsparkweg 187-H",
+     "use": "woonfunctie",
+     "areaM2": 86,
+     "bagId": "0363010000991655"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012160059",
+   "addresses": [
+    "Willemsparkweg 189"
+   ],
+   "groundUnits": [
+    {
+     "address": "Willemsparkweg 189",
+     "use": "woonfunctie",
+     "areaM2": 319,
+     "bagId": "0363010000873238"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012160882",
+   "addresses": [
+    "Willemsparkweg 191"
+   ],
+   "groundUnits": [
+    {
+     "address": "Willemsparkweg 191",
+     "use": "kantoorfunctie",
+     "areaM2": 289,
+     "bagId": "0363010000873241"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012157736",
+   "addresses": [
+    "Willemsparkweg 193"
+   ],
+   "groundUnits": [
+    {
+     "address": "Willemsparkweg 193",
+     "use": "kantoorfunctie",
+     "areaM2": 330,
+     "bagId": "0363010000873244"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012158319",
+   "addresses": [
+    "Willemsparkweg 195"
+   ],
+   "groundUnits": [
+    {
+     "address": "Willemsparkweg 195-H",
+     "use": "woonfunctie",
+     "areaM2": 166,
+     "bagId": "0363010000873246"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012156069",
+   "addresses": [
+    "Willemsparkweg 197"
+   ],
+   "groundUnits": [
+    {
+     "address": "Willemsparkweg 197-H",
+     "use": "woonfunctie",
+     "areaM2": 184,
+     "bagId": "0363010012161631"
+    },
+    {
+     "address": "Willemsparkweg 197-H",
+     "use": "woonfunctie",
+     "areaM2": 219,
+     "bagId": "0363010000873250"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012159147",
+   "addresses": [
+    "Willemsparkweg 199"
+   ],
+   "groundUnits": [
+    {
+     "address": "Willemsparkweg 199-H",
+     "use": "woonfunctie",
+     "areaM2": 105,
+     "bagId": "0363010000873262"
+    },
+    {
+     "address": "Willemsparkweg 199-H",
+     "use": "woonfunctie",
+     "areaM2": 192,
+     "bagId": "0363010012145598"
+    }
+   ],
+   "units": 6,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012161942",
+   "addresses": [
+    "Willemsparkweg 201"
+   ],
+   "groundUnits": [
+    {
+     "address": "Willemsparkweg 201-H",
+     "use": "woonfunctie",
+     "areaM2": 139,
+     "bagId": "0363010000873265"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012157060",
+   "addresses": [
+    "Willemsparkweg 203"
+   ],
+   "groundUnits": [
+    {
+     "address": "Willemsparkweg 203",
+     "use": "woonfunctie",
+     "areaM2": 225,
+     "bagId": "0363010000873269"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012152325",
+   "addresses": [
+    "Willemsparkweg 205"
+   ],
+   "groundUnits": [
+    {
+     "address": "Willemsparkweg 205",
+     "use": "logiesfunctie",
+     "areaM2": 475,
+     "bagId": "0363010000873271"
+    }
+   ],
+   "units": 1,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2816318158,
+     "lngLat": [
+      4.8691381,
+      52.3554548
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "205",
+      "addr:postcode": "1071HB",
+      "addr:street": "Willemsparkweg",
+      "name": "The Neighbour's Magnolia",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "tourism": "hotel",
+      "website": "https://www.magnoliahotelamsterdam.com/"
+     },
+     "fetchedAt": "2026-11-01T15:17:55.695Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012160033",
+   "addresses": [
+    "Willemsparkweg 207"
+   ],
+   "groundUnits": [
+    {
+     "address": "Willemsparkweg 207-H",
+     "use": "woonfunctie",
+     "areaM2": 205,
+     "bagId": "0363010000873274"
+    },
+    {
+     "address": "Willemsparkweg 207-H",
+     "use": "woonfunctie",
+     "areaM2": 152,
+     "bagId": "0363010012593770"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012167239",
+   "addresses": [
+    "Willemsparkweg 209"
+   ],
+   "groundUnits": [
+    {
+     "address": "Willemsparkweg 209-H",
+     "use": "woonfunctie",
+     "areaM2": 148,
+     "bagId": "0363010000873277"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  }
+ ]
+}

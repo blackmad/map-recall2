@@ -1,0 +1,13 @@
+{
+  "id": "havengebouw",
+  "countedBy": "lane landmarks-ij-20261101 (opus) from artifacts/landmark-briefs/havengebouw/w02-121.jpg (seven lower office floors, right five bays) and commons/hg-main.jpg (all ten office floors, seven bays), 2026-11-01; not a blind count: the integrator may dispatch one",
+  "facades": [
+    {
+      "name": "SE (De Ruijterkade)",
+      "bearing": 121,
+      "photo": "artifacts/landmark-briefs/havengebouw/w02-121.jpg + commons/hg-main.jpg",
+      "rows": [null, null, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, null, null],
+      "note": "office floors: seven bays between the dark columns, three windows each. The plinth rows (shop windows, entrance glazing, square windows on two levels) are partly hidden by the sign post and cars in w02-121 and not counted; the two glazed top floors are continuous glazing behind the red columns and not counted."
+    }
+  ]
+}

@@ -1870,5 +1870,71 @@
   "buildVersion": 2,
   "bytes": 75072,
   "triangles": 3500
+ },
+ "huis-met-de-hoofden": {
+  "sourceHash": "6d7d0c5dbdfda371",
+  "buildVersion": 2,
+  "bytes": 54304,
+  "triangles": 2502
+ },
+ "lensbomen": {
+  "sourceHash": "84573bdb953f314b",
+  "buildVersion": 2,
+  "bytes": 15204,
+  "triangles": 508
+ },
+ "olympisch-stadion": {
+  "sourceHash": "234c41654ea98cca",
+  "buildVersion": 2,
+  "bytes": 100184,
+  "triangles": 5407
+ },
+ "het-nieuwe-huis": {
+  "sourceHash": "1dabed264c783f80",
+  "buildVersion": 2,
+  "bytes": 57852,
+  "triangles": 4041
+ },
+ "academie-van-bouwkunst": {
+  "sourceHash": "65954ae0ec76278e",
+  "buildVersion": 2,
+  "bytes": 83284,
+  "triangles": 4093
+ },
+ "hollandsche-manege": {
+  "sourceHash": "023c8ea79a32b66b",
+  "buildVersion": 2,
+  "bytes": 44372,
+  "triangles": 1777
+ },
+ "amstelstation": {
+  "sourceHash": "152f5c777a82421c",
+  "buildVersion": 2,
+  "bytes": 58528,
+  "triangles": 2438
+ },
+ "droogbak": {
+  "sourceHash": "0aeb60175612bc0d",
+  "buildVersion": 2,
+  "bytes": 104588,
+  "triangles": 5163
+ },
+ "havengebouw": {
+  "sourceHash": "dfd315d58de38070",
+  "buildVersion": 2,
+  "bytes": 63936,
+  "triangles": 2857
+ },
+ "abn-amro-hoofdkantoor": {
+  "sourceHash": "9a2b538531ac83a5",
+  "buildVersion": 2,
+  "bytes": 100296,
+  "triangles": 6465
+ },
+ "wolkenkrabber": {
+  "sourceHash": "1da18b6e8d540940",
+  "buildVersion": 2,
+  "bytes": 54100,
+  "triangles": 2285
  }
 }

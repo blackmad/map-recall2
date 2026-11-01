@@ -1,0 +1,94 @@
+{
+ "street": "Van Baerlestraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-01T13:13:08.071Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012071799",
+   "addresses": [
+    "Van Baerlestraat 97"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Baerlestraat 97-H",
+     "use": "winkelfunctie",
+     "areaM2": 121,
+     "bagId": "0363010001012579"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 13105643471,
+     "lngLat": [
+      4.8819329,
+      52.3536509
+     ],
+     "tags": {
+      "amenity": "vending_machine",
+      "vending": "parking_tickets"
+     },
+     "fetchedAt": "2026-11-01T13:13:08.071Z",
+     "match": "frontage",
+     "distanceM": 3.6
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012099544",
+   "addresses": [
+    "Van Baerlestraat 99"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Baerlestraat 99-H",
+     "use": "woonfunctie",
+     "areaM2": 94,
+     "bagId": "0363010000834920"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 11993668953,
+     "lngLat": [
+      4.8820985,
+      52.3536058
+     ],
+     "tags": {
+      "addr:housenumber": "97",
+      "addr:street": "Van Baerlestraat",
+      "check_date": "2024-06-20",
+      "name": "Kbal",
+      "phone": "+31 20 845 7667",
+      "shop": "hairdresser",
+      "website": "https://www.kbalhairstylist.com"
+     },
+     "fetchedAt": "2026-11-01T13:13:08.071Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012142916",
+   "addresses": [
+    "Van Baerlestraat 101"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Baerlestraat 101-H",
+     "use": "winkelfunctie",
+     "areaM2": 100,
+     "bagId": "0363010001004789"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  }
+ ]
+}

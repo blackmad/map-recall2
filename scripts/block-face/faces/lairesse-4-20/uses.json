@@ -1,0 +1,119 @@
+{
+ "street": "De Lairessestraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-01T15:28:07.123Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012122938",
+   "addresses": [
+    "De Lairessestraat 20"
+   ],
+   "groundUnits": [
+    {
+     "address": "De Lairessestraat 20",
+     "use": "kantoorfunctie",
+     "areaM2": 393,
+     "bagId": "0363010000617991"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012145619",
+   "addresses": [
+    "De Lairessestraat 16"
+   ],
+   "groundUnits": [
+    {
+     "address": "De Lairessestraat 16-H",
+     "use": "kantoorfunctie",
+     "areaM2": 306,
+     "bagId": "0363010000617987"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012090956",
+   "addresses": [
+    "De Lairessestraat 14"
+   ],
+   "groundUnits": [
+    {
+     "address": "De Lairessestraat 14-H",
+     "use": "woonfunctie",
+     "areaM2": 327,
+     "bagId": "0363010000617983"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012146221",
+   "addresses": [
+    "De Lairessestraat 12"
+   ],
+   "groundUnits": [
+    {
+     "address": "De Lairessestraat 12-H",
+     "use": "woonfunctie",
+     "areaM2": 327,
+     "bagId": "0363010000617979"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012141867",
+   "addresses": [
+    "De Lairessestraat 10"
+   ],
+   "groundUnits": [
+    {
+     "address": "De Lairessestraat 10-H",
+     "use": "woonfunctie",
+     "areaM2": 115,
+     "bagId": "0363010000617976"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012145693",
+   "addresses": [
+    "De Lairessestraat 4",
+    "De Lairessestraat 6",
+    "De Lairessestraat 8"
+   ],
+   "groundUnits": [
+    {
+     "address": "De Lairessestraat 4",
+     "use": "woonfunctie",
+     "areaM2": 189,
+     "bagId": "0363010000617960"
+    },
+    {
+     "address": "De Lairessestraat 6-H",
+     "use": "woonfunctie",
+     "areaM2": 36,
+     "bagId": "0363010000617962"
+    },
+    {
+     "address": "De Lairessestraat 8",
+     "use": "woonfunctie",
+     "areaM2": 255,
+     "bagId": "0363010000617974"
+    }
+   ],
+   "units": 15,
+   "osm": []
+  }
+ ]
+}

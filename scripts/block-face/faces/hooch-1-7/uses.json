@@ -1,0 +1,199 @@
+{
+ "street": "Pieter de Hoochstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-01T16:31:45.237Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012133770",
+   "addresses": [
+    "Pieter de Hoochstraat 1"
+   ],
+   "groundUnits": [
+    {
+     "address": "Pieter de Hoochstraat 1",
+     "use": "woonfunctie",
+     "areaM2": 386,
+     "bagId": "0363010000774983"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012064884",
+   "addresses": [
+    "Pieter de Hoochstraat 3"
+   ],
+   "groundUnits": [
+    {
+     "address": "Pieter de Hoochstraat 3-H",
+     "use": "woonfunctie",
+     "areaM2": 212,
+     "bagId": "0363010000774985"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012099680",
+   "addresses": [
+    "Pieter de Hoochstraat 5A",
+    "Pieter de Hoochstraat 5F",
+    "Pieter de Hoochstraat 5G",
+    "Pieter de Hoochstraat 5B",
+    "Pieter de Hoochstraat 5C",
+    "Pieter de Hoochstraat 5H",
+    "Pieter de Hoochstraat 5D",
+    "Pieter de Hoochstraat 5K",
+    "Pieter de Hoochstraat 5E",
+    "Pieter de Hoochstraat 5L"
+   ],
+   "groundUnits": [
+    {
+     "address": "Pieter de Hoochstraat 5A",
+     "use": "woonfunctie",
+     "areaM2": 114,
+     "bagId": "0363010000955291"
+    },
+    {
+     "address": "Pieter de Hoochstraat 5F",
+     "use": "woonfunctie",
+     "areaM2": 101,
+     "bagId": "0363010000955292"
+    },
+    {
+     "address": "Pieter de Hoochstraat 5G",
+     "use": "woonfunctie",
+     "areaM2": 105,
+     "bagId": "0363010000955297"
+    },
+    {
+     "address": "Pieter de Hoochstraat 5B",
+     "use": "woonfunctie",
+     "areaM2": 105,
+     "bagId": "0363010000955298"
+    },
+    {
+     "address": "Pieter de Hoochstraat 5C",
+     "use": "woonfunctie",
+     "areaM2": 105,
+     "bagId": "0363010000955299"
+    },
+    {
+     "address": "Pieter de Hoochstraat 5H",
+     "use": "woonfunctie",
+     "areaM2": 105,
+     "bagId": "0363010000955300"
+    },
+    {
+     "address": "Pieter de Hoochstraat 5D",
+     "use": "woonfunctie",
+     "areaM2": 105,
+     "bagId": "0363010000955303"
+    },
+    {
+     "address": "Pieter de Hoochstraat 5K",
+     "use": "woonfunctie",
+     "areaM2": 105,
+     "bagId": "0363010000955304"
+    },
+    {
+     "address": "Pieter de Hoochstraat 5E",
+     "use": "woonfunctie",
+     "areaM2": 175,
+     "bagId": "0363010000955308"
+    },
+    {
+     "address": "Pieter de Hoochstraat 5L",
+     "use": "woonfunctie",
+     "areaM2": 169,
+     "bagId": "0363010000955309"
+    }
+   ],
+   "units": 10,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012155190",
+   "addresses": [
+    "Pieter de Hoochstraat 7F",
+    "Pieter de Hoochstraat 7A",
+    "Pieter de Hoochstraat 7B",
+    "Pieter de Hoochstraat 7G",
+    "Pieter de Hoochstraat 7H",
+    "Pieter de Hoochstraat 7C",
+    "Pieter de Hoochstraat 7K",
+    "Pieter de Hoochstraat 7D",
+    "Pieter de Hoochstraat 7L",
+    "Pieter de Hoochstraat 7E"
+   ],
+   "groundUnits": [
+    {
+     "address": "Pieter de Hoochstraat 7F",
+     "use": "woonfunctie",
+     "areaM2": 114,
+     "bagId": "0363010000955293"
+    },
+    {
+     "address": "Pieter de Hoochstraat 7A",
+     "use": "woonfunctie",
+     "areaM2": 101,
+     "bagId": "0363010000955294"
+    },
+    {
+     "address": "Pieter de Hoochstraat 7B",
+     "use": "woonfunctie",
+     "areaM2": 105,
+     "bagId": "0363010000955295"
+    },
+    {
+     "address": "Pieter de Hoochstraat 7G",
+     "use": "woonfunctie",
+     "areaM2": 105,
+     "bagId": "0363010000955296"
+    },
+    {
+     "address": "Pieter de Hoochstraat 7H",
+     "use": "woonfunctie",
+     "areaM2": 105,
+     "bagId": "0363010000955301"
+    },
+    {
+     "address": "Pieter de Hoochstraat 7C",
+     "use": "woonfunctie",
+     "areaM2": 105,
+     "bagId": "0363010000955302"
+    },
+    {
+     "address": "Pieter de Hoochstraat 7K",
+     "use": "woonfunctie",
+     "areaM2": 105,
+     "bagId": "0363010000955305"
+    },
+    {
+     "address": "Pieter de Hoochstraat 7D",
+     "use": "woonfunctie",
+     "areaM2": 105,
+     "bagId": "0363010000955306"
+    },
+    {
+     "address": "Pieter de Hoochstraat 7L",
+     "use": "woonfunctie",
+     "areaM2": 175,
+     "bagId": "0363010000955307"
+    },
+    {
+     "address": "Pieter de Hoochstraat 7E",
+     "use": "woonfunctie",
+     "areaM2": 169,
+     "bagId": "0363010000955310"
+    }
+   ],
+   "units": 10,
+   "osm": []
+  }
+ ]
+}

@@ -1,0 +1,45 @@
+{
+ "name": "museumkwartier-b-duivelseiland-florisz",
+ "method": "install-reviewed (#160): batch judge steps per reviewed run, one row brick, cornice snapped to the type line",
+ "generatedAt": "2026-11-01T13:54:23.693Z",
+ "rows": [
+  {
+   "run": "florisz-2-10-r1",
+   "pands": 4,
+   "status": "installed",
+   "reasons": [],
+   "notes": [
+    "row brick #715045 from 8, 6, 4, 2A"
+   ],
+   "stripQuality": {
+    "badShare": 0,
+    "reasons": []
+   },
+   "nccMin": 0.192,
+   "stripOverDrawn": 1.158,
+   "triangles": 7725,
+   "audit": true,
+   "sheet": "staging/block-face/florisz-2-10-r1/review/strip-sheet.png"
+  },
+  {
+   "run": "florisz-12-38-r1",
+   "pands": 4,
+   "status": "installed",
+   "reasons": [],
+   "notes": [
+    "eaves 164388 14.07->13.4",
+    "eaves 156418 14.32->13.4",
+    "row brick #7e695f from 26, 24, 22, 20"
+   ],
+   "stripQuality": {
+    "badShare": 0,
+    "reasons": []
+   },
+   "nccMin": 0.356,
+   "stripOverDrawn": 1.074,
+   "triangles": 7051,
+   "audit": true,
+   "sheet": "staging/block-face/florisz-12-38-r1/review/strip-sheet.png"
+  }
+ ]
+}

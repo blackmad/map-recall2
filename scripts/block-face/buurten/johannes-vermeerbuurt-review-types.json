@@ -1,0 +1,22 @@
+{
+ "note": "Faces a reviewer restricted to some house types after reading the strip at gallery size (scripts/block-face/auto-place.ts, blockFace/reviewCrowns.ts typesForFace). Johannes Vermeerbuurt 1910 rows (#160).",
+ "pins": [
+  {
+   "face": "maes-31-71",
+   "types": [
+    "museum-jv-1910-lintel-parapet"
+   ],
+   "pands": [
+    "0363100012101245",
+    "0363100012064242",
+    "0363100012125531",
+    "0363100012161910",
+    "0363100012063128",
+    "0363100012111419",
+    "0363100012150328",
+    "0363100012095505"
+   ],
+   "reason": "Nicolaas Maesstraat 47-61 (2024-12-11 strip): flat roofs behind a panelled brick parapet, eared stone lintels, centre balconies on storeys 1-2; museum-hc-1910-glazed-oriel (same years and storey count) has a cornice at 15.3 m, an oriel and dormers this row does not have"
+  }
+ ]
+}

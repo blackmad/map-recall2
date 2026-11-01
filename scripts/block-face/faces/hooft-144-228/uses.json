@@ -1,0 +1,286 @@
+{
+ "street": "Pieter Cornelisz. Hooftstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-01T16:08:43.026Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012242115",
+   "addresses": [
+    "Pieter Cornelisz. Hooftstraat 170",
+    "Pieter Cornelisz. Hooftstraat 172",
+    "Pieter Cornelisz. Hooftstraat 174",
+    "Pieter Cornelisz. Hooftstraat 176"
+   ],
+   "groundUnits": [
+    {
+     "address": "Pieter Cornelisz. Hooftstraat 170",
+     "use": "woonfunctie",
+     "areaM2": 270,
+     "bagId": "0363010012078798"
+    },
+    {
+     "address": "Pieter Cornelisz. Hooftstraat 172",
+     "use": "woonfunctie",
+     "areaM2": 147,
+     "bagId": "0363010012078799"
+    },
+    {
+     "address": "Pieter Cornelisz. Hooftstraat 174",
+     "use": "woonfunctie",
+     "areaM2": 147,
+     "bagId": "0363010012078800"
+    },
+    {
+     "address": "Pieter Cornelisz. Hooftstraat 176",
+     "use": "woonfunctie",
+     "areaM2": 266,
+     "bagId": "0363010012090203"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012236862",
+   "addresses": [
+    "Pieter Cornelisz. Hooftstraat 162",
+    "Pieter Cornelisz. Hooftstraat 168"
+   ],
+   "groundUnits": [
+    {
+     "address": "Pieter Cornelisz. Hooftstraat 162",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 1715,
+     "bagId": "0363010000770217"
+    },
+    {
+     "address": "Pieter Cornelisz. Hooftstraat 168",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 1,
+     "bagId": "0363010000770226"
+    },
+    {
+     "address": "Pieter Cornelisz. Hooftstraat 162",
+     "use": "logiesfunctie",
+     "areaM2": 1921,
+     "bagId": "0363010012071169"
+    }
+   ],
+   "units": 3,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2816383268,
+     "lngLat": [
+      4.8763609,
+      52.3592071
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "162",
+      "addr:postcode": "1071CH",
+      "addr:street": "Pieter Cornelisz. Hooftstraat",
+      "brand": "WIN Hotels",
+      "email": "reservation@hotelcitygardenamsterdam.com",
+      "internet_access": "wlan",
+      "internet_access:fee": "no",
+      "name": "City Garden",
+      "phone": "+31 20 672 79 19",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "tourism": "hotel",
+      "website": "https://www.hotelcitygardenamsterdam.com/"
+     },
+     "fetchedAt": "2026-11-01T16:08:43.026Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012158238",
+   "addresses": [
+    "Pieter Cornelisz. Hooftstraat 160"
+   ],
+   "groundUnits": [
+    {
+     "address": "Pieter Cornelisz. Hooftstraat 160-H",
+     "use": "woonfunctie",
+     "areaM2": 162,
+     "bagId": "0363010001007517"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012149871",
+   "addresses": [
+    "Pieter Cornelisz. Hooftstraat 158"
+   ],
+   "groundUnits": [
+    {
+     "address": "Pieter Cornelisz. Hooftstraat 158-H",
+     "use": "woonfunctie",
+     "areaM2": 202,
+     "bagId": "0363010000956893"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012158926",
+   "addresses": [
+    "Pieter Cornelisz. Hooftstraat 156"
+   ],
+   "groundUnits": [
+    {
+     "address": "Pieter Cornelisz. Hooftstraat 156-H",
+     "use": "woonfunctie",
+     "areaM2": 219,
+     "bagId": "0363010000770204"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012156070",
+   "addresses": [
+    "Pieter Cornelisz. Hooftstraat 154"
+   ],
+   "groundUnits": [
+    {
+     "address": "Pieter Cornelisz. Hooftstraat 154-H",
+     "use": "kantoorfunctie",
+     "areaM2": 186,
+     "bagId": "0363010000770189"
+    },
+    {
+     "address": "Pieter Cornelisz. Hooftstraat 154-H",
+     "use": "kantoorfunctie",
+     "areaM2": 156,
+     "bagId": "0363010012131759"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012159859",
+   "addresses": [
+    "Pieter Cornelisz. Hooftstraat 152",
+    "Pieter Cornelisz. Hooftstraat 152A",
+    "Pieter Cornelisz. Hooftstraat 152C",
+    "Pieter Cornelisz. Hooftstraat 152D"
+   ],
+   "groundUnits": [
+    {
+     "address": "Pieter Cornelisz. Hooftstraat 152-H",
+     "use": "woonfunctie",
+     "areaM2": 219,
+     "bagId": "0363010000770183"
+    },
+    {
+     "address": "Pieter Cornelisz. Hooftstraat 152A",
+     "use": "woonfunctie",
+     "areaM2": 153,
+     "bagId": "0363010012567277"
+    },
+    {
+     "address": "Pieter Cornelisz. Hooftstraat 152C",
+     "use": "woonfunctie",
+     "areaM2": 70,
+     "bagId": "0363010012567278"
+    },
+    {
+     "address": "Pieter Cornelisz. Hooftstraat 152D",
+     "use": "woonfunctie",
+     "areaM2": 143,
+     "bagId": "0363010012567279"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012153152",
+   "addresses": [
+    "Pieter Cornelisz. Hooftstraat 150"
+   ],
+   "groundUnits": [
+    {
+     "address": "Pieter Cornelisz. Hooftstraat 150-H",
+     "use": "kantoorfunctie",
+     "areaM2": 233,
+     "bagId": "0363010000770177"
+    },
+    {
+     "address": "Pieter Cornelisz. Hooftstraat 150-O",
+     "use": "kantoorfunctie",
+     "areaM2": 1,
+     "bagId": "0363010000956896"
+    },
+    {
+     "address": "Pieter Cornelisz. Hooftstraat 150-H",
+     "use": "kantoorfunctie",
+     "areaM2": 223,
+     "bagId": "0363010012085242"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012164689",
+   "addresses": [
+    "Pieter Cornelisz. Hooftstraat 148"
+   ],
+   "groundUnits": [
+    {
+     "address": "Pieter Cornelisz. Hooftstraat 148-H",
+     "use": "woonfunctie",
+     "areaM2": 135,
+     "bagId": "0363010001958287"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012165153",
+   "addresses": [
+    "Pieter Cornelisz. Hooftstraat 146"
+   ],
+   "groundUnits": [
+    {
+     "address": "Pieter Cornelisz. Hooftstraat 146",
+     "use": "woonfunctie",
+     "areaM2": 374,
+     "bagId": "0363010000770171"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012159913",
+   "addresses": [
+    "Pieter Cornelisz. Hooftstraat 144"
+   ],
+   "groundUnits": [
+    {
+     "address": "Pieter Cornelisz. Hooftstraat 144-H",
+     "use": "woonfunctie",
+     "areaM2": 126,
+     "bagId": "0363010000770166"
+    }
+   ],
+   "units": 6,
+   "osm": []
+  }
+ ]
+}

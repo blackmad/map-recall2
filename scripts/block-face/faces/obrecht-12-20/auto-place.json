@@ -1,0 +1,457 @@
+{
+ "face": "obrecht-12-20",
+ "street": "Jacob Obrechtstraat",
+ "library": "museumkwartier",
+ "stripDate": "2024-11-12",
+ "seconds": 0.83,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [],
+ "pands": [
+  {
+   "pandId": "0363100012159380",
+   "address": "Jacob Obrechtstraat 20",
+   "builtYear": 1898,
+   "widthM": 6.51,
+   "eavesM": 13.27,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#854d27",
+    "wallRaw": "#614729",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 798,
+     "confidence": 0.17,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "columns",
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0.037,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 0.75 m at 0.33 (light 0.25): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.75,
+       "centre": 0.33,
+       "light": 0.25
+      },
+      {
+       "widthM": 0.72,
+       "centre": 0.45,
+       "light": 0.25
+      },
+      {
+       "widthM": 0.8,
+       "centre": 0.72,
+       "light": 0.18
+      },
+      {
+       "widthM": 0.93,
+       "centre": 0.92,
+       "light": 0.04
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 6.75,
+       "widthM": 1.2,
+       "centre": 0.39
+      },
+      {
+       "atM": 4.95,
+       "widthM": 0.95,
+       "centre": 0.92
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.25
+   },
+   "status": "held",
+   "stage": "evidence",
+   "reason": "no front on the strip: sky over the roof in 57 % of columns (< 75 %): the strip shows a nearer wall, fence or tree, not the front",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012159625",
+   "address": "Jacob Obrechtstraat 18",
+   "builtYear": 1898,
+   "widthM": 5.84,
+   "eavesM": 13.61,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#774528",
+    "wallRaw": "#6d553c",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 798,
+     "confidence": 0.11,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.184,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 0.8 m at 0.9 (light 0.05): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.8,
+       "centre": 0.9,
+       "light": 0.05
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 6.57,
+       "widthM": 0.82,
+       "centre": 0.56
+      },
+      {
+       "atM": 6.27,
+       "widthM": 1.1,
+       "centre": 0.7
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.31
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best museum-cs-1900-gable-balcony: built 1898, type 1900-1901)",
+   "best": {
+    "type": "museum-cs-1900-gable-balcony",
+    "score": 0,
+    "veto": [
+     "built 1898, type 1900-1901"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": null,
+      "note": "strip cornice unread (type line 10.4 m; 3DBAG 13.61 m not compared)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": null,
+      "note": "no strip"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012235899",
+   "address": "Jacob Obrechtstraat 16A",
+   "builtYear": 1898,
+   "widthM": 5.47,
+   "eavesM": 13.97,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#7d482e",
+    "wallRaw": "#6c5f4b",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 798,
+     "confidence": 0.24,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 6,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0.173,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 9.32,
+       "widthM": 0.97,
+       "centre": 0.1
+      },
+      {
+       "atM": 6.7,
+       "widthM": 1.8,
+       "centre": 0.38
+      },
+      {
+       "atM": 6.25,
+       "widthM": 1.2,
+       "centre": 0.76
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.43
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best museum-cs-1900-gable-balcony: built 1898, type 1900-1901)",
+   "best": {
+    "type": "museum-cs-1900-gable-balcony",
+    "score": 0,
+    "veto": [
+     "built 1898, type 1900-1901"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": null,
+      "note": "strip cornice unread (type line 10.4 m; 3DBAG 13.97 m not compared)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": null,
+      "note": "no strip"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012236714",
+   "address": "Jacob Obrechtstraat 14",
+   "builtYear": 1898,
+   "widthM": 7.71,
+   "eavesM": 14.7,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#824c33",
+    "wallRaw": "#785e49",
+    "skyline": {
+     "eavesM": 15.7,
+     "eavesRow": 170,
+     "confidence": 1,
+     "crown": {
+      "widthM": 3.98,
+      "riseM": 1.88,
+      "topWidthM": 1.02,
+      "centre": 0.43
+     }
+    },
+    "stucco": false,
+    "bands": 2,
+    "columns": 4,
+    "frontClass": "columns",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.259,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 6.45,
+       "widthM": 1.18,
+       "centre": 0.12
+      },
+      {
+       "atM": 5.63,
+       "widthM": 0.93,
+       "centre": 0.61
+      }
+     ]
+    },
+    "voidShare": 0.02,
+    "foliageShare": 0.24
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best museum-cs-1900-gable-balcony: built 1898, type 1900-1901; frontage 7.71 m, type 5.5-6.6 m)",
+   "best": {
+    "type": "museum-cs-1900-gable-balcony",
+    "score": 0,
+    "veto": [
+     "built 1898, type 1900-1901",
+     "frontage 7.71 m, type 5.5-6.6 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 15.7 m vs the type's 10.4 m (wall-dormer skyline 14.4 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.185 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0.4,
+      "note": "strip columns 4 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012164455",
+   "address": "Jacob Obrechtstraat 12",
+   "builtYear": 1898,
+   "widthM": 6.19,
+   "eavesM": 11.7,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#9aa0a3",
+    "wallRaw": "#5e503e",
+    "skyline": {
+     "eavesM": 11.4,
+     "eavesRow": 342,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.75,
+      "riseM": 0.97,
+      "topWidthM": 1.32,
+      "centre": 0.33
+     }
+    },
+    "stucco": false,
+    "bands": 2,
+    "columns": 3,
+    "frontClass": "curtain",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.161,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 2 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 10.57,
+       "widthM": 1.38,
+       "centre": 0.16
+      },
+      {
+       "atM": 9.07,
+       "widthM": 2.9,
+       "centre": 0.25
+      },
+      {
+       "atM": 8.47,
+       "widthM": 1.15,
+       "centre": 0.14
+      },
+      {
+       "atM": 5.17,
+       "widthM": 2.65,
+       "centre": 0.43
+      },
+      {
+       "atM": 4.88,
+       "widthM": 1.82,
+       "centre": 0.5
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.09
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best museum-cs-1900-gable-balcony: built 1898, type 1900-1901)",
+   "best": {
+    "type": "museum-cs-1900-gable-balcony",
+    "score": 0,
+    "veto": [
+     "built 1898, type 1900-1901"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0.5,
+      "note": "strip cornice 11.4 m vs the type's 10.4 m (wall-dormer skyline 14.4 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 4 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.118 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

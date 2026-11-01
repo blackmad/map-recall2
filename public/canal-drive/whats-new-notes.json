@@ -3,6 +3,42 @@
   "notes": [
     {
       "date": "2026-11-01",
+      "title": "The ride starts sooner after you read the briefing",
+      "text": "While the briefing is on screen the game now builds the city's streets and routing in the background, for the city and mode you have picked. If you read the briefing for a few seconds, the ride starts about twice as fast afterwards (on a phone, roughly three seconds instead of seven). Tapping Start the instant the briefing appears is unchanged for now; that case is next.",
+      "images": []
+    },
+    {
+      "date": "2026-11-01",
+      "title": "Eleven new landmarks, from the Olympic Stadium to the Lensbomen",
+      "text": "Six modelling lanes added eleven buildings and one sculpture today, each built from the city panoramas, Commons photographs and the BAG outline: the Olympisch Stadion with its Marathontoren and flame bowl, Het Nieuwe Huis on the Roelof Hartplein with its clock tower, the Academie van Bouwkunst on Waterlooplein (the pedimented Huiszittenhuis and the stepped-gable Turfpakhuizen), the Hollandsche Manege gateway on the Vondelstraat, Amstelstation with its glazed hall and clock, Droogbak by the rail viaduct west of Central Station with its glazed courtyard roof, the Havengebouw slab on the IJ, the ABN AMRO head office on the Zuidas, De Wolkenkrabber at the head of the Amstelkanaal, Huis met de Hoofden on the Keizersgracht with its six sculpted heads, and the Lensbomen, Thom Puckey’s three bronze trees with six lenses on the old Binnengasthuis grounds. Every model passed the geometry audit, the facade comparison against the photographs and the inventory check; the Lensbomen also got a fun fact.",
+      "images": [
+        "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/whats-new/2026-11-01-olympisch-stadion.jpg",
+        "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/whats-new/2026-11-01-het-nieuwe-huis.jpg",
+        "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/whats-new/2026-11-01-academie-van-bouwkunst.jpg",
+        "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/whats-new/2026-11-01-hollandsche-manege.jpg",
+        "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/whats-new/2026-11-01-amstelstation.jpg",
+        "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/whats-new/2026-11-01-droogbak.jpg",
+        "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/whats-new/2026-11-01-havengebouw.jpg",
+        "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/whats-new/2026-11-01-abn-amro-hoofdkantoor.jpg",
+        "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/whats-new/2026-11-01-wolkenkrabber.jpg",
+        "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/whats-new/2026-11-01-huis-met-de-hoofden.jpg",
+        "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/whats-new/2026-11-01-lensbomen.jpg"
+      ]
+    },
+    {
+      "date": "2026-11-01",
+      "title": "Museumkwartier: the first measured rows inside the ring",
+      "text": "Two survey lanes photographed every block face of the five Museumkwartier buurten (Cornelis Schuyt, Concertgebouw, Hondecoeter, Johannes Vermeer and Duivelseiland, 2,000 pands) and found that none of the existing type libraries fits their 1890–1910 designs. Six new measured types were written and thirty pands stand in six rows: Van Breestraat 123–129 (gable-and-balcony row with step and bell gables), Cornelis Anthoniszstraat 62–70 and Balthasar Floriszstraat 2A–8 and 20–26 (the 1899 corbel-cornice rows), Wouwermanstraat 10–18 (glazed oriels) and Nicolaas Maesstraat 47–61 (lintel-and-parapet row). The kit grew a corbel table, stepped stone courses under oriels and a flat cap on neck and bell gables. The strip-over-model sheets show the photo above the model at the same scale.",
+      "images": [
+        "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/whats-new/2026-11-01-museumkwartier-breestraat-ride.jpg",
+        "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/whats-new/2026-11-01-museumkwartier-breestraat-123-129.jpg",
+        "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/whats-new/2026-11-01-museumkwartier-maesstraat-47-61.jpg",
+        "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/whats-new/2026-11-01-museumkwartier-anthoniszstraat-62-70.jpg",
+        "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/whats-new/2026-11-01-museumkwartier-maesstraat-ride.jpg"
+      ]
+    },
+    {
+      "date": "2026-11-01",
       "title": "Amsterdam's buildings now load from compiled city cells",
       "text": "The ride used to download the city's buildings as map tiles and work out their roofs, colours and neighbours on your device while you rode. The whole city is now compiled in advance into 9.7 MB of cells; a ride fetches only the cells around it, and the game's workers unpack them off the main thread. The buildings themselves do not change: at the five check spots the picture is pixel-identical to the old path. Expect fewer hitches as new streets stream in. If anything looks wrong, add ?world=live to the address to ride the old path and tell us."
     },

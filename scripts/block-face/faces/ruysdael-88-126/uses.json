@@ -1,0 +1,339 @@
+{
+ "street": "Ruysdaelstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-01T14:44:09.337Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012161885",
+   "addresses": [
+    "Ruysdaelstraat 120"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ruysdaelstraat 120-H",
+     "use": "woonfunctie",
+     "areaM2": 74,
+     "bagId": "0363010000801838"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012157273",
+   "addresses": [
+    "Ruysdaelstraat 118B",
+    "Ruysdaelstraat 118A",
+    "Ruysdaelstraat 118C"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ruysdaelstraat 118B",
+     "use": "woonfunctie",
+     "areaM2": 94,
+     "bagId": "0363010001965014"
+    },
+    {
+     "address": "Ruysdaelstraat 118A",
+     "use": "woonfunctie",
+     "areaM2": 152,
+     "bagId": "0363010001965015"
+    },
+    {
+     "address": "Ruysdaelstraat 118C",
+     "use": "woonfunctie",
+     "areaM2": 104,
+     "bagId": "0363010001965016"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012166919",
+   "addresses": [
+    "Ruysdaelstraat 116"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ruysdaelstraat 116-H",
+     "use": "woonfunctie",
+     "areaM2": 81,
+     "bagId": "0363010000801830"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012158007",
+   "addresses": [
+    "Ruysdaelstraat 114"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ruysdaelstraat 114-H",
+     "use": "woonfunctie",
+     "areaM2": 58,
+     "bagId": "0363010000801826"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012166345",
+   "addresses": [
+    "Ruysdaelstraat 112"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ruysdaelstraat 112-H",
+     "use": "woonfunctie",
+     "areaM2": 58,
+     "bagId": "0363010000801822"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012161973",
+   "addresses": [
+    "Ruysdaelstraat 110"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ruysdaelstraat 110-H",
+     "use": "woonfunctie",
+     "areaM2": 94,
+     "bagId": "0363010001167248"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012152797",
+   "addresses": [
+    "Ruysdaelstraat 108A",
+    "Ruysdaelstraat 108B",
+    "Ruysdaelstraat 108C",
+    "Ruysdaelstraat 108D",
+    "Ruysdaelstraat 108E"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ruysdaelstraat 108A",
+     "use": "woonfunctie",
+     "areaM2": 385,
+     "bagId": "0363010003763935"
+    },
+    {
+     "address": "Ruysdaelstraat 108B",
+     "use": "woonfunctie",
+     "areaM2": 166,
+     "bagId": "0363010003763936"
+    },
+    {
+     "address": "Ruysdaelstraat 108C",
+     "use": "woonfunctie",
+     "areaM2": 165,
+     "bagId": "0363010003763937"
+    },
+    {
+     "address": "Ruysdaelstraat 108D",
+     "use": "woonfunctie",
+     "areaM2": 166,
+     "bagId": "0363010003763938"
+    },
+    {
+     "address": "Ruysdaelstraat 108E",
+     "use": "woonfunctie",
+     "areaM2": 205,
+     "bagId": "0363010003763939"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012159520",
+   "addresses": [
+    "Ruysdaelstraat 104",
+    "Ruysdaelstraat 106"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ruysdaelstraat 104-H",
+     "use": "industriefunctie",
+     "areaM2": 318,
+     "bagId": "0363010000801813"
+    },
+    {
+     "address": "Ruysdaelstraat 106-H",
+     "use": "woonfunctie",
+     "areaM2": 104,
+     "bagId": "0363010000801816"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012088552",
+   "addresses": [
+    "Ruysdaelstraat 96",
+    "Ruysdaelstraat 98",
+    "Ruysdaelstraat 100",
+    "Ruysdaelstraat 102"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ruysdaelstraat 98",
+     "use": "industriefunctie",
+     "areaM2": 559,
+     "bagId": "0363010000801802"
+    },
+    {
+     "address": "Ruysdaelstraat 96-H",
+     "use": "woonfunctie",
+     "areaM2": 67,
+     "bagId": "0363010012574147"
+    },
+    {
+     "address": "Ruysdaelstraat 98-H",
+     "use": "woonfunctie",
+     "areaM2": 73,
+     "bagId": "0363010012574148"
+    },
+    {
+     "address": "Ruysdaelstraat 102-H",
+     "use": "woonfunctie",
+     "areaM2": 78,
+     "bagId": "0363010012574149"
+    }
+   ],
+   "units": 13,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012236996",
+   "addresses": [
+    "Ruysdaelstraat 92",
+    "Ruysdaelstraat 92D",
+    "Ruysdaelstraat 92A",
+    "Ruysdaelstraat 92C",
+    "Ruysdaelstraat 92E",
+    "Ruysdaelstraat 92G",
+    "Ruysdaelstraat 92H",
+    "Ruysdaelstraat 92K",
+    "Ruysdaelstraat 92L",
+    "Ruysdaelstraat 92B",
+    "Ruysdaelstraat 92F",
+    "Ruysdaelstraat 94"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ruysdaelstraat 92",
+     "use": "industriefunctie",
+     "areaM2": 197,
+     "bagId": "0363010000801782"
+    },
+    {
+     "address": "Ruysdaelstraat 94",
+     "use": "kantoorfunctie",
+     "areaM2": 404,
+     "bagId": "0363010000801787"
+    },
+    {
+     "address": "Ruysdaelstraat 94",
+     "use": "kantoorfunctie",
+     "areaM2": 202,
+     "bagId": "0363010012098699"
+    },
+    {
+     "address": "Ruysdaelstraat 92",
+     "use": "kantoorfunctie",
+     "areaM2": 202,
+     "bagId": "0363010012098700"
+    },
+    {
+     "address": "Ruysdaelstraat 92A",
+     "use": "woonfunctie",
+     "areaM2": 27,
+     "bagId": "0363010012097346"
+    },
+    {
+     "address": "Ruysdaelstraat 92C",
+     "use": "woonfunctie",
+     "areaM2": 30,
+     "bagId": "0363010012097348"
+    },
+    {
+     "address": "Ruysdaelstraat 92E",
+     "use": "woonfunctie",
+     "areaM2": 23,
+     "bagId": "0363010012097350"
+    },
+    {
+     "address": "Ruysdaelstraat 92G",
+     "use": "woonfunctie",
+     "areaM2": 29,
+     "bagId": "0363010012097352"
+    },
+    {
+     "address": "Ruysdaelstraat 92H",
+     "use": "woonfunctie",
+     "areaM2": 20,
+     "bagId": "0363010012097353"
+    },
+    {
+     "address": "Ruysdaelstraat 92K",
+     "use": "woonfunctie",
+     "areaM2": 51,
+     "bagId": "0363010012097354"
+    },
+    {
+     "address": "Ruysdaelstraat 92L",
+     "use": "woonfunctie",
+     "areaM2": 49,
+     "bagId": "0363010012097355"
+    },
+    {
+     "address": "Ruysdaelstraat 92B",
+     "use": "woonfunctie",
+     "areaM2": 31,
+     "bagId": "0363010012097347"
+    },
+    {
+     "address": "Ruysdaelstraat 92F",
+     "use": "woonfunctie",
+     "areaM2": 31,
+     "bagId": "0363010012097351"
+    }
+   ],
+   "units": 17,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012119354",
+   "addresses": [
+    "Ruysdaelstraat 88",
+    "Ruysdaelstraat 90"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ruysdaelstraat 88-H",
+     "use": "bijeenkomstfunctie,gezondheidszorgfunctie,sportfunctie",
+     "areaM2": 578,
+     "bagId": "0363010001001866"
+    }
+   ],
+   "units": 7,
+   "osm": []
+  }
+ ]
+}

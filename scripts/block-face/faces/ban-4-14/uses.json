@@ -1,0 +1,128 @@
+{
+ "street": "Banstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-01T12:16:50.103Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012236553",
+   "addresses": [
+    "Banstraat 14"
+   ],
+   "groundUnits": [
+    {
+     "address": "Banstraat 14-H",
+     "use": "winkelfunctie",
+     "areaM2": 101,
+     "bagId": "0363010000577087"
+    }
+   ],
+   "units": 3,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2816316669,
+     "lngLat": [
+      4.873511,
+      52.3555456
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "14-H",
+      "addr:postcode": "1071JZ",
+      "addr:street": "Banstraat",
+      "amenity": "restaurant",
+      "name": "Schotsheuvel",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://schotsheuvel.nl"
+     },
+     "fetchedAt": "2026-11-01T12:16:50.103Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012156302",
+   "addresses": [
+    "Banstraat 12"
+   ],
+   "groundUnits": [
+    {
+     "address": "Banstraat 12",
+     "use": "woonfunctie",
+     "areaM2": 273,
+     "bagId": "0363010000577083"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012152498",
+   "addresses": [
+    "Banstraat 10"
+   ],
+   "groundUnits": [
+    {
+     "address": "Banstraat 10",
+     "use": "woonfunctie",
+     "areaM2": 187,
+     "bagId": "0363010000577082"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012154263",
+   "addresses": [
+    "Banstraat 8"
+   ],
+   "groundUnits": [
+    {
+     "address": "Banstraat 8",
+     "use": "woonfunctie",
+     "areaM2": 187,
+     "bagId": "0363010000577081"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012157998",
+   "addresses": [
+    "Banstraat 6"
+   ],
+   "groundUnits": [
+    {
+     "address": "Banstraat 6",
+     "use": "woonfunctie",
+     "areaM2": 187,
+     "bagId": "0363010000577080"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012157732",
+   "addresses": [
+    "Banstraat 4"
+   ],
+   "groundUnits": [
+    {
+     "address": "Banstraat 4",
+     "use": "woonfunctie",
+     "areaM2": 187,
+     "bagId": "0363010000577078"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  }
+ ]
+}

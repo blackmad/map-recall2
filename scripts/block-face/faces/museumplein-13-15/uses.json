@@ -1,0 +1,69 @@
+{
+ "street": "Museumplein",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-01T16:04:46.172Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012116189",
+   "addresses": [
+    "Museumplein 13"
+   ],
+   "groundUnits": [
+    {
+     "address": "Museumplein 13",
+     "use": "kantoorfunctie",
+     "areaM2": 1892,
+     "bagId": "0363010000746760"
+    }
+   ],
+   "units": 1,
+   "osm": [
+    {
+     "type": "node",
+     "id": 4362812606,
+     "lngLat": [
+      4.8825617,
+      52.3565975
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "13",
+      "addr:postcode": "1071DJ",
+      "addr:street": "Museumplein",
+      "country": "RU",
+      "diplomatic": "embassy",
+      "embassy": "branch_embassy",
+      "name": "Handelsvertegenwoordiging van de Russische Federatie in Nederland",
+      "name:en": "Russian Trade Representation in the Netherlands",
+      "name:ru": "Торговое представительство Российской Федерации в Нидерландах",
+      "note": "soort consulaat, maar alleen voor bedrijven.",
+      "office": "diplomatic",
+      "target": "NL",
+      "website": "http://netherlands.ved.gov.ru/"
+     },
+     "fetchedAt": "2026-11-01T16:04:46.172Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012111009",
+   "addresses": [
+    "Museumplein 15"
+   ],
+   "groundUnits": [
+    {
+     "address": "Museumplein 15",
+     "use": "kantoorfunctie",
+     "areaM2": 2878,
+     "bagId": "0363010000746761"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  }
+ ]
+}

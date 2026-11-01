@@ -185,6 +185,8 @@ import {buildDelamar} from './delamar-builder';
 import {buildEuroparkingMarnixstraat} from './europarking-marnixstraat-builder';
 import {buildHirschgebouw} from './hirschgebouw-builder';
 import {buildKalvertoren} from './kalvertoren-builder';
+import {buildAcademieVanBouwkunst} from './academie-van-bouwkunst-builder';
+import {buildHollandscheManege} from './hollandsche-manege-builder';
 import {buildTheaterLandmark} from './theater-builders';
 import {buildHouseMuseumLandmark} from './house-museum-builders';
 import {buildCivicLandmark} from './civic-builders';
@@ -327,9 +329,18 @@ import {buildDeSchreeuwOosterpark} from './de-schreeuw-oosterpark-builder';
 import {buildWaterdraagsterBellamyplein} from './waterdraagster-bellamyplein-builder';
 import {buildMamaBaranka} from './mama-baranka-builder';
 import {buildSpanjemonument} from './spanjemonument-builder';
+import {buildHuisMetDeHoofden} from './huis-met-de-hoofden-builder';
+import {buildLensbomen} from './lensbomen-builder';
+import {buildAbnAmroHoofdkantoor} from './abn-amro-hoofdkantoor-builder';
+import {buildWolkenkrabber} from './wolkenkrabber-builder';
 import {applyInstalledFigures} from './installed-figures';
 import {computeSourceHashes,ALWAYS_REBUILD,type SourceHashes} from './manual-source-hash';
 import {setSink} from './nearbar-kit';
+import {buildOlympischStadion} from './olympisch-stadion-builder';
+import {buildHetNieuweHuis} from './het-nieuwe-huis-builder';
+import {buildAmstelstation} from './amstelstation-builder';
+import {buildDroogbak} from './droogbak-builder';
+import {buildHavengebouw} from './havengebouw-builder';
 const out=path.resolve('public/canal-drive/models');
 const palette={brick:'#9a5240',stone:'#cfc2a6',sandstone:'#a09580',slate:'#4a525d',white:'#efe9db',gold:'#d9b24c',glass:'#527787',dark:'#303b43',frame:'#9daaa8',red:'#ac624e',blue:'#3f5f9a',pink:'#be9295',bronze:'#3d5148',copper:'#43888b',green:'#718b58',ochre:'#9f825c',concrete:'#d4d5d0',greyBrick:'#7d7871',
  // Light frit glass of the IJ bus-station canopy (centraal-complex-builder.ts): median of its sunlit north half on the PDOK 2023
@@ -660,6 +671,8 @@ for(const spec of MANUAL_LANDMARKS.filter(model => !selectedIds.length || select
     else if(id==='europarking-marnixstraat')buildEuroparkingMarnixstraat(w,d,helpers);
     else if(id==='hirschgebouw')buildHirschgebouw(w,d,helpers);
     else if(id==='kalvertoren')buildKalvertoren(w,d,helpers);
+    else if(id==='academie-van-bouwkunst')buildAcademieVanBouwkunst(w,d,helpers);
+    else if(id==='hollandsche-manege')buildHollandscheManege(w,d,helpers);
     else if(venueIds.has(id))buildVenueLandmark(id,w,d,helpers);
     else if(theaterIds.has(id))buildTheaterLandmark(id,w,d,helpers);
     else if(houseMuseumIds.has(id))buildHouseMuseumLandmark(id,w,d,helpers);
@@ -850,6 +863,15 @@ for(const spec of MANUAL_LANDMARKS.filter(model => !selectedIds.length || select
     else if(id==='waterdraagster-bellamyplein')buildWaterdraagsterBellamyplein(w,d,helpers);
     else if(id==='mama-baranka')buildMamaBaranka(w,d,helpers);
     else if(id==='spanjemonument')buildSpanjemonument(w,d,helpers);
+    else if(id==='huis-met-de-hoofden')buildHuisMetDeHoofden(w,d,helpers);
+    else if(id==='lensbomen')buildLensbomen(w,d,helpers);
+    else if(id==='olympisch-stadion')buildOlympischStadion(w,d,helpers);
+    else if(id==='het-nieuwe-huis')buildHetNieuweHuis(w,d,helpers);
+    else if(id==='amstelstation')buildAmstelstation(w,d,helpers);
+    else if(id==='droogbak')buildDroogbak(w,d,helpers);
+    else if(id==='havengebouw')buildHavengebouw(w,d,helpers);
+    else if(id==='abn-amro-hoofdkantoor')buildAbnAmroHoofdkantoor(w,d,helpers);
+    else if(id==='wolkenkrabber')buildWolkenkrabber(w,d,helpers);
     else buildCulturalLandmark(id,w,d,helpers);
   }
   }catch(e){

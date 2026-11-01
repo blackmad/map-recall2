@@ -1,0 +1,57 @@
+{
+ "street": "Bartholomeus Ruloffsstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-01T13:18:42.630Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012149421",
+   "addresses": [
+    "Bartholomeus Ruloffsstraat 15"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bartholomeus Ruloffsstraat 15-H",
+     "use": "woonfunctie",
+     "areaM2": 76,
+     "bagId": "0363010000578032"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012066928",
+   "addresses": [
+    "Bartholomeus Ruloffsstraat 17"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bartholomeus Ruloffsstraat 17-H",
+     "use": "woonfunctie",
+     "areaM2": 78,
+     "bagId": "0363010000578036"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012094340",
+   "addresses": [
+    "Bartholomeus Ruloffsstraat 19"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bartholomeus Ruloffsstraat 19-H",
+     "use": "woonfunctie",
+     "areaM2": 118,
+     "bagId": "0363010000578040"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  }
+ ]
+}

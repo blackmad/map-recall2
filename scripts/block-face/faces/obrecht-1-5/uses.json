@@ -1,0 +1,88 @@
+{
+ "street": "Jacob Obrechtstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-01T15:35:38.871Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012160835",
+   "addresses": [
+    "Jacob Obrechtstraat 1"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jacob Obrechtstraat 1-H",
+     "use": "woonfunctie",
+     "areaM2": 178,
+     "bagId": "0363010000679776"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012165313",
+   "addresses": [
+    "Jacob Obrechtstraat 3"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jacob Obrechtstraat 3-H",
+     "use": "woonfunctie",
+     "areaM2": 90,
+     "bagId": "0363010000679779"
+    },
+    {
+     "address": "Van Eeghenstraat 60",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 1,
+     "bagId": "0363010000838726"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012156383",
+   "addresses": [
+    "Jacob Obrechtstraat 5"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jacob Obrechtstraat 5-H",
+     "use": "winkelfunctie",
+     "areaM2": 116,
+     "bagId": "0363010000679785"
+    }
+   ],
+   "units": 3,
+   "osm": [
+    {
+     "type": "node",
+     "id": 5930027131,
+     "lngLat": [
+      4.874296,
+      52.3577656
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "5",
+      "addr:postcode": "1071KC",
+      "addr:street": "Jacob Obrechtstraat",
+      "amenity": "cafe",
+      "cuisine": "sandwich;brownies",
+      "name": "CoffeeConcepts",
+      "opening_hours": "Mo-Fr 08:00-17:00, Sa-Su 10:00-17:00",
+      "smoking": "outside",
+      "website": "https://www.coffeeconcepts.co",
+      "wheelchair": "limited"
+     },
+     "fetchedAt": "2026-11-01T15:35:38.871Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}
