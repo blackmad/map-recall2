@@ -15,6 +15,7 @@ import { asphaltGrain, herringboneBricks, KLINKER_TONES } from './streetTextures
 import { mouthMarking, sharkTeeth, TEETH } from './roadMarkings';
 import { inTouchRing, RADIUS_STEP_M, residentRadius, touchAheadMarginM, touchResidentRadius, viewCornerReachM, viewReachM, TOUCH_AHEAD_MAX_M, TOUCH_RADIUS_STEP_M } from '../engine/worldStreamer.js';
 import { cellTileGrid, layerTiles, splitIntoTiles, tileTransferables } from './cellTiles';
+import { groundReachFlag, REACH_M } from './gameGround';
 import { rawTiles } from '../rendererShared/tiledGeometry.js';
 import { compactCell } from './compactMesh';
 import { basemapGroundPatches } from './basemapPalette';
@@ -2520,4 +2521,15 @@ test('cellTileGrid: a LOD 0 full-detail cell is cut finer; every other cell, and
   assert.equal(cellTileGrid(3, 3, 0, 'full'), 3, '?groundNearTiles=3: the old grid');
   assert.equal(cellTileGrid(1, 6, 0, 'full'), 1, '?groundTiles=1: one mesh per layer stays one mesh');
   assert.equal(cellTileGrid(4, 2, 0, 'full'), 4, 'never coarser than the base grid');
+});
+
+test('groundReachFlag: a query without the key keeps the default; 0 and a distance are explicit', () => {
+  const g = globalThis as any, saved = g.location;
+  try {
+    g.location = { search: '?engine=own' }; assert.equal(groundReachFlag(), REACH_M);
+    g.location = { search: '' }; assert.equal(groundReachFlag(), REACH_M);
+    g.location = { search: '?groundReach=0' }; assert.equal(groundReachFlag(), 0);
+    g.location = { search: '?groundReach=220' }; assert.equal(groundReachFlag(), 220);
+    g.location = { search: '?groundReach=x' }; assert.equal(groundReachFlag(), REACH_M);
+  } finally { g.location = saved; }
 });
