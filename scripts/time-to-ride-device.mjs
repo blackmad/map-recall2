@@ -100,7 +100,7 @@ async function emulated() {
     const page = await context.newPage();
     const errors = [];
     page.on('pageerror', e => errors.push(e.message));
-    page.on('console', m => { if (m.type() === 'error' || /City world build failed/.test(m.text())) errors.push(m.text().slice(0, 200)); });
+    page.on('console', m => { if (m.type() === 'error' || /City world build failed|Road world cache refused/.test(m.text())) errors.push(m.text().slice(0, 200)); });
     if (process.env.BUNDLES_DIR) await page.route(/\/canal-drive\/js\/([\w-]+\.bundle\.js)(\?.*)?$/, route => {
       const file = path.join(process.env.BUNDLES_DIR, /\/([\w-]+\.bundle\.js)/.exec(route.request().url())[1]);
       return fs.existsSync(file) ? route.fulfill({ path: file, contentType: 'application/javascript' }) : route.continue();
@@ -114,11 +114,12 @@ async function emulated() {
       await page.evaluate(PICK_BIKE);
       await page.evaluate(() => document.querySelector('#route-card').requestSubmit());
       await page.waitForFunction(() => window.canalRecallGame.state === 4, null, { timeout: 180_000, polling: 200 });
-      // road-network.js storeWorld writes ~3 s into the ride, when idle.
+      // road-network.js storeWorld writes ~3 s into the ride, when idle. Wait for the bike world's record: the boat
+      // world the briefing started on before the bike was picked may have been stored first.
       const stored = await page.waitForFunction(() => new Promise(resolve => {
         try {
           const req = indexedDB.open('canal-recall-road-world');
-          req.onsuccess = () => { try { const c = req.result.transaction('worlds').objectStore('worlds').count(); c.onsuccess = () => resolve(c.result > 0); c.onerror = () => resolve(false); } catch (_) { resolve(false); } };
+          req.onsuccess = () => { try { const c = req.result.transaction('worlds').objectStore('worlds').getAllKeys(); c.onsuccess = () => resolve(c.result.some(k => String(k).includes('|car|'))); c.onerror = () => resolve(false); } catch (_) { resolve(false); } };
           req.onerror = () => resolve(false);
         } catch (_) { resolve(false); }
       }), null, { timeout: 60_000, polling: 1000 }).then(() => true, () => false);

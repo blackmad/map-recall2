@@ -124,6 +124,9 @@ export function packRoadWorld(graph: RoadGraph<unknown>, surface: RoadSpatialInd
 }
 
 class Invalid extends Error {}
+let refusal = '';
+/** Why the last `unpackRoadWorld` refused its record ('' after a restore): diagnostics and the console warning. */
+export function lastRoadWorldRefusal(): string { return refusal; }
 const need = (ok: boolean, what: string) => { if (!ok) throw new Invalid(what); };
 const isA = (v: unknown, T: { new (...a: never[]): unknown }) => v instanceof T;
 
@@ -221,9 +224,11 @@ export function unpackRoadWorld<TMetadata>(
       spanSeg: s.spanSeg, spanPt: s.spanPt, widths, segments: surfaceSegments, connectors,
       spanCache: new Array(spans),
     };
+    refusal = '';
     return { graph, surface };
-  } catch (_) {
+  } catch (error) {
     // Invalid (a failed check) or anything a malformed record throws on the way: build instead.
+    refusal = error instanceof Invalid ? error.message : `threw: ${String((error as Error)?.message ?? error)}`;
     return null;
   }
 }
@@ -240,8 +245,12 @@ export function packedRoadWorldBytes(record: PackedRoadWorld): number {
 
 const DB_NAME = 'canal-recall-road-world';
 const STORE = 'worlds';
-/** A store that has not opened by then is treated as missing (private windows can hang the open). */
-export const OPEN_TIMEOUT_MS = 1500;
+/**
+ * A store that has not opened by then is treated as missing (private windows can hang the open). Generous: the
+ * read runs alongside the build, so it only bounds a hung open; a short one lost to a busy boot (the open's
+ * success event queued behind seconds of main-thread work) and the session never read its cache.
+ */
+export const OPEN_TIMEOUT_MS = 10000;
 
 /** One record per city, mode and build options; the version and fingerprint live inside it. */
 export function roadWorldCacheKey(parts: Readonly<{ cityId: string; travelMode: string; extractVersion?: string; options: string }>): string {
@@ -289,7 +298,7 @@ export async function readRoadWorld(key: string): Promise<unknown> {
       request.onerror = () => resolve(null);
     } catch (_) { resolve(null); }
   });
-  return withTimeout(read, OPEN_TIMEOUT_MS * 2, null);
+  return withTimeout(read, OPEN_TIMEOUT_MS, null);
 }
 
 /**

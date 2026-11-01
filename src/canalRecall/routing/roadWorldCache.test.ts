@@ -4,7 +4,7 @@ import { createHash } from 'node:crypto';
 import { appendRoadGraph, buildRoadGraph, findRoadRoute, shortestRoadPaths, type RoadGraph } from './roadGraph.ts';
 import { buildRoadSpatialIndex, roadsNear } from './roadSurface.ts';
 import {
-  ROAD_WORLD_CACHE_VERSION, packRoadWorld, roadSegmentsFingerprint, unpackRoadWorld, type PackedRoadWorld,
+  ROAD_WORLD_CACHE_VERSION, lastRoadWorldRefusal, packRoadWorld, roadSegmentsFingerprint, unpackRoadWorld, type PackedRoadWorld,
 } from './roadWorldCache.ts';
 
 type Meta = { segmentIndex: number; name: string; wayId: string };
@@ -95,6 +95,7 @@ test('a record for other segments, another version or with broken arrays is refu
     const record = good();
     breakIt(record);
     assert.equal(unpackRoadWorld(record, fingerprint, metadata, segments), null, what);
+    assert.ok(lastRoadWorldRefusal(), `${what}: a reason`);
   }
 });
 

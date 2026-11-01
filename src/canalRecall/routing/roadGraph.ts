@@ -1154,5 +1154,5 @@ function planDirectLearningRoute<TMetadata>(
 // The device cache of the built graph and surface index rides in this bundle (window.CanalRecallRoadGraph).
 export {
   ROAD_WORLD_CACHE_VERSION, roadSegmentsFingerprint, packRoadWorld, unpackRoadWorld, packedRoadWorldBytes,
-  roadWorldCacheKey, readRoadWorld, writeRoadWorld, clearRoadWorlds,
+  roadWorldCacheKey, readRoadWorld, writeRoadWorld, clearRoadWorlds, lastRoadWorldRefusal,
 } from './roadWorldCache.ts';
