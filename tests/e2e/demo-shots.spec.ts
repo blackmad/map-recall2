@@ -55,6 +55,10 @@ const SPOTS: Spot[] = [
   { name: 'allotments-nut-en-genoegen', centre: [4.85995, 52.38705], standDeg: 180, standM: 70 },
   { name: 'allotments-sloterdijkermeer', centre: [4.85119, 52.38726], standDeg: 180, standM: 70 },
   { name: 'aerial-singelgracht', centre: [4.8795, 52.3715], standDeg: 0, standM: 0, faceDeg: 20, camZoom: 0.16 },
+  // Transvaalbuurt round 3 (#152): the first installed 1911 rows, seen from mid-street.
+  { name: 'transvaal3-retiefstraat-69-73', centre: [4.9218115, 52.3553544], standDeg: 333, standM: 8, view: 'cockpit' },
+  { name: 'transvaal3-pretoriusstraat-79-87', centre: [4.9211937, 52.3544948], standDeg: 334, standM: 7, view: 'cockpit' },
+  { name: 'transvaal3-pretoriusstraat-86-90', centre: [4.9209401, 52.3546185], standDeg: 154, standM: 7, view: 'cockpit' },
   { name: 'aerial-westerdok', centre: [4.8860, 52.3840], standDeg: 0, standM: 0, faceDeg: 20, camZoom: 0.16 },
 ];
 
