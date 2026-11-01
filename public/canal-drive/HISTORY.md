@@ -1,5 +1,22 @@
 # Canal Recall — what is built
 
+**The facade mask uploads as R8 with the accent tint in the colour alpha: the iPhone facade atlas drops from 26.0 to 21.67 MB with the 128 px bays kept (2026-11-01, P4).**
+Materials (f3f6ff157). The mask was an RG8 array (R wall, G accent) beside an
+RGBA colour array whose alpha was always 255 and read by nothing; at upload
+`look/maskPacking.ts` writes 255 − G into the colour alpha and uploads R alone
+as R8, so the same 8 bits, filtering and mips reach the shader with no extra
+fetch, while painting, the browser cache and the published extract keep the RG
+bytes. Shaders read the accent as mask.g + 1 − colour.a, which is G under either
+upload; `?maskFormat=rg` keeps the old upload. Five pins against `maskFormat=rg`
+differ by a single level (float rounding), 0 pixels over 30. The iPhone texture
+budget goes back to 22 MB (it was raised to 27 for the RG mask). Every bundle
+that carries the facade shaders was rebuilt in the same commit, because an old
+shader reading the packed atlas loses the accent tint. The stale spike pages
+`own-ground.bundle.js` and `renderer-spike.bundle.js` have no build script and
+read the tint as 0; they are dev pages only and are left as they are.
+Integrator: lint, test:engine 126/126, test:look 165/165; desktop smoke
+start-heading, open-squares, facade-tone, facade-appearance.
+
 **The flat map lines draw only the span on screen and trunks drop their bottom caps: the iPad triangle gate is met, p50 0.696 M against 0.70 M (2026-11-01, P4).**
 Materials lane (4d97ed9c5, 086f295b6). The flat lines (cycle tracks,
 transit, neighbourhood lines) draw only the part of their index on screen

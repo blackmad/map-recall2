@@ -271,8 +271,9 @@ only within 150 m": iPad ground 222k; trees culled to the view 2026-11-01,
 0.80 M; flat lines culled + trunk caps 2026-11-01, `4d97ed9c5`/`086f295b6`,
 HISTORY "The flat map lines draw only the span on screen": **iPad p50 0.696 M,
 target ≤ 0.70 M MET**, desktop 1.33 M; the shading flip was a harness
-elevation bug, fixed; materials next: facade mask format (iPhone atlas
-< 22 MB), too-white roofs #179, cartoon look #161); the 150/400 m
+elevation bug, fixed; facade mask R8 merged 2026-11-01 (`f3f6ff157`, HISTORY
+"The facade mask uploads as R8"): iPhone atlas 21.67 MB, budget back to 22;
+materials next: too-white roofs #179, cartoon look #161); the 150/400 m
 facade LOD is parked (60–100k, 5–8 %, not worth its likeness risk yet). In-frame
 shader links are 0. P5 follow-ups: delete
 `building-tiles/` and `bag-tiles/` after a week of Sentry quiet on the
@@ -317,10 +318,7 @@ probably the briefing world build or the tree cull), L1 bisecting; the
 bag-tiles pixel-share drift (both engines, open). Then L1 prepares the flip
 commit on its branch (engineFlag default + wantsMapLibre + query-table tests +
 `ENGINE=maplibre` spec switch); the integrator merges it once the Sentry tags
-have been live for a day, and watches the 48 h bar. P4 (materials, later): cut
-the facade mask format (RG8 → R8 or a lower mip policy for mask layers) to
-bring the iPhone atlas back under ~22 MB without shrinking the 128 px bays
-(26.0 MB today, both engines). Pin harness: the shading flip was an unpinned
+have been live for a day, and watches the 48 h bar. Pin harness: the shading flip was an unpinned
 camera elevation, fixed in the spec (d80ab4245); trees are pinnable. **User
 asks (2026-11-01):** a first-person riding camera (#171, small opus lane after
 the flip), the cartoon look mode (#161, materials queue), road gaps at bridges
