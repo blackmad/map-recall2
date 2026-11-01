@@ -9,6 +9,7 @@
 // profile started on a same-origin blank page before navigation (so the ~1.7 s Profiler.start stall is outside the
 // window), aligned to performance.now() with a busy-loop marker, then aggregated over the stalled frames by self
 // function, by category (gc, json, shader, upload, ...) and by owning app function.
+// INIT_JS=<file> adds an init script; DUMP_JS=<expression> stores its value at the end of the run as `dump`.
 // STALL_MS=16 attributes every frame over 16 ms (default 50). DPR=2 sets the desktop device scale, VIEWPORT=1800x1100
 // the desktop viewport, HEADED=1 runs a visible Chrome window (the real-GPU set-up of #129).
 // BUNDLES_DIR=<dir> serves *.bundle.js from a local build; WORLD_DIR=<dir> serves staged world-v1 cells. PROFILE=0 skips the profiler. KEEP_PROFILE=1 writes the raw
@@ -135,6 +136,9 @@ async function run(browser, kind, throttle, context) {
     const file = path.join(process.env.BUNDLES_DIR, /\/([\w-]+\.bundle\.js)/.exec(route.request().url())[1]);
     return fs.existsSync(file) ? route.fulfill({ path: file, contentType: 'application/javascript' }) : route.continue();
   });
+  // INIT_JS=<file>: an extra init script (e.g. the landmark request log / gate check, #129); DUMP_JS=<expression>: its
+  // value at the end of the run is the result's `dump`.
+  if (process.env.INIT_JS) await page.addInitScript({ path: process.env.INIT_JS });
   await page.addInitScript(() => {
     let s = 0x5eed1234; Math.random = () => { s = (s * 1664525 + 1013904223) >>> 0; return s / 2 ** 32; };
     if (!/^\/canal-drive\/?(index\.html)?$/.test(location.pathname)) return;
@@ -294,6 +298,7 @@ async function run(browser, kind, throttle, context) {
   } catch (e) { errors.push(`flow stopped after ${reached}: ${e.message.split('\n')[0]}`); }
   await page.waitForTimeout(Math.max(0, deadline - Date.now()));
   const sync1 = profiling ? await sync('sync1') : null;
+  const dump = process.env.DUMP_JS ? await page.evaluate(expr => (0, eval)(expr), process.env.DUMP_JS).catch(e => ({ error: String(e) })) : undefined;
   const raw = await page.evaluate(() => {
     const L = window.__ls; L.stop = true; const g = window.canalRecallGame, vm = g?.vectorMap;
     const og = vm?._ownGround?.status?.(); const mem = performance.memory;
@@ -384,7 +389,7 @@ async function run(browser, kind, throttle, context) {
     phases: { load: phase('sync0', 'racing'), ride: phase('racing') }, motion,
     longTasks: { n: raw.longtask.length, totalMs: Math.round(raw.longtask.reduce((a, b) => a + b.dur, 0)), over100: raw.longtask.filter(l => l.dur > 100).length, longestMs: Math.round(Math.max(0, ...raw.longtask.map(l => l.dur))) },
     loaf: { over50: raw.loaf.filter(l => l.dur > 50).length, renderMsInStalls: Math.round(loafRender), entries: [...entries].sort((a, b) => b[1] - a[1]).slice(0, 25).map(([k, v]) => ({ k, ms: Math.round(v) })) },
-    worst, attribution, alignErrMs, heapMB: raw.heapMB, heapAtStart, heapAtEnd, distanceM: raw.distancePx != null ? Math.round(raw.distancePx / 3) : null, railM: raw.railPx != null ? Math.round(raw.railPx / 3) : null, ownGround: raw.ownGround, lift: raw.lift, world: raw.world,
+    dump, worst, attribution, alignErrMs, heapMB: raw.heapMB, heapAtStart, heapAtEnd, distanceM: raw.distancePx != null ? Math.round(raw.distancePx / 3) : null, railM: raw.railPx != null ? Math.round(raw.railPx / 3) : null, ownGround: raw.ownGround, lift: raw.lift, world: raw.world,
   };
 }
 
