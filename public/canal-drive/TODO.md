@@ -1387,11 +1387,15 @@ Root `main` was cleaned on 2026-10-09 (see HISTORY). Live work, in order:
   installs within 150 m under both engines, nearest chunk 154 m, thin);
   `buildShadowStandIn` and own-ground `splitIntoTiles` are off the main
   thread; ARTIS is off the camera shim (B6 started). Streaming gate still
-  open: facade `cutMesh` tiles (444 ms at 4×, needs worker-cut tiles + a
-  height patch after the lift, L1), `setFeatures` 606 / `_applyChunkPandBases`
-  374 / `post` 219 ms at 4× (materials), one 1× frame a minute over 50 ms
-  unnamed. L1 next: facade tiles in the worker, signature-landmarks and
-  building-tiles off the shim.
+  open (HISTORY "Facade chunk tiles planned in the worker"): facade tiles
+  are off the main thread (436 → 0 ms at 4×) but the 4× totals did not move;
+  the 1× frame over 50 ms is the `prepareCell` yield continuation for the
+  cell entering the ring (45–57 ms; 117–128 ms at 4×; L1 next: into the
+  ground worker or yields inside, exactness-pinned); `setFeatures` 606 /
+  `_applyChunkPandBases` 374 / `post` 219 ms at 4× (materials);
+  signature-landmarks `_requestModels` 393 → 629 ms at 4× unproven (L1 paired
+  run). Shim callers left: three-buildings `getZoom` 82/s, player-vehicles
+  `getContainer` (L1).
   Idle rendering (fan) is fixed under own: render-on-change on main, 0
   renders per 5 s at rest; the default engine still renders every idle frame
   until the flip.
