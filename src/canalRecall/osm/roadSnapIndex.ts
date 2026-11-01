@@ -1,12 +1,21 @@
 import { finishBatchedBuild, type BuildScheduling } from '../buildScheduling.ts';
 import { closestPointOnSegment, type WorldPoint } from './roadProjection.ts';
 
-type Span = { a: WorldPoint; b: WorldPoint; order: number };
-type Node = { minX: number; minY: number; maxX: number; maxY: number; spans?: Span[]; left?: Node; right?: Node };
-const distanceTo = (point: WorldPoint, node: Node) => Math.hypot(
-  Math.max(node.minX - point.x, 0, point.x - node.maxX),
-  Math.max(node.minY - point.y, 0, point.y - node.maxY),
-);
+/**
+ * The tree, packed (#130): node bounds in Float64 arrays, a node's children (or, for a leaf, its range of the
+ * span permutation `ids`) in Int32 arrays, and each span as its way and point index into the ways it was built
+ * from. The object tree (a node object per box, a span object per centreline piece) was 6.7 MB on the
+ * ride-start heap; this is about 2.
+ */
+interface Packed {
+  segments: ReadonlyArray<{ points: WorldPoint[] }>;
+  spanSeg: Int32Array;
+  spanPt: Int32Array;
+  ids: Int32Array;
+  minX: Float64Array; minY: Float64Array; maxX: Float64Array; maxY: Float64Array;
+  /** Internal node: children. Leaf: left = −1 − lo, right = hi over `ids`. */
+  left: Int32Array; right: Int32Array;
+}
 
 /**
  * A median-split box tree over the spans. Built in place over one index
@@ -17,21 +26,24 @@ const distanceTo = (point: WorldPoint, node: Node) => Math.hypot(
  * the minimum by (distance, source order), so the tree's exact shape does not
  * change any answer.
  */
-function* roadSnapStages(segments: ReadonlyArray<{ points: WorldPoint[] }>): Generator<void, Node | undefined> {
-  const spans: Span[] = [];
-  for (const segment of segments) for (let i = 1; i < segment.points.length; i++) {
-    spans.push({ a: segment.points[i - 1], b: segment.points[i], order: spans.length });
-    if (spans.length % 4096 === 0) yield;
+function* roadSnapStages(segments: ReadonlyArray<{ points: WorldPoint[] }>): Generator<void, Packed | undefined> {
+  const segList: number[] = [], ptList: number[] = [];
+  for (let s = 0; s < segments.length; s++) for (let i = 1; i < segments[s].points.length; i++) {
+    segList.push(s); ptList.push(i);
+    if (segList.length % 4096 === 0) yield;
   }
-  const count = spans.length;
+  const count = segList.length;
   if (!count) return undefined;
   // A cancellation point before the tree, however few spans there are.
   yield;
+  const spanSeg = Int32Array.from(segList), spanPt = Int32Array.from(ptList);
+  const a = (id: number) => segments[spanSeg[id]].points[spanPt[id] - 1], b = (id: number) => segments[spanSeg[id]].points[spanPt[id]];
   // Twice the midpoint: the same key the old partition compared.
   const keyX = new Float64Array(count), keyY = new Float64Array(count);
   for (let i = 0; i < count; i++) {
-    keyX[i] = spans[i].a.x + spans[i].b.x;
-    keyY[i] = spans[i].a.y + spans[i].b.y;
+    const p = a(i), q = b(i);
+    keyX[i] = p.x + q.x;
+    keyY[i] = p.y + q.y;
   }
   const ids = new Int32Array(count);
   for (let i = 0; i < count; i++) ids[i] = i;
@@ -51,65 +63,79 @@ function* roadSnapStages(segments: ReadonlyArray<{ points: WorldPoint[] }>): Gen
       else break;
     }
   };
-  let work = 0;
-  function* build(lo: number, hi: number): Generator<void, Node> {
-    const node: Node = { minX: Infinity, minY: Infinity, maxX: -Infinity, maxY: -Infinity };
+  // At most 2·count/8 + 1 nodes for leaves of up to 8 spans; trimmed at the end.
+  const cap = Math.max(1, 2 * Math.ceil(count / 4));
+  const minX = new Float64Array(cap), minY = new Float64Array(cap), maxX = new Float64Array(cap), maxY = new Float64Array(cap);
+  const left = new Int32Array(cap), right = new Int32Array(cap);
+  let nodes = 0, work = 0;
+  function* build(lo: number, hi: number): Generator<void, number> {
+    const node = nodes++;
+    let x0 = Infinity, y0 = Infinity, x1 = -Infinity, y1 = -Infinity;
     for (let k = lo; k < hi; k++) {
-      const { a, b } = spans[ids[k]];
-      if (a.x < node.minX) node.minX = a.x; if (b.x < node.minX) node.minX = b.x;
-      if (a.y < node.minY) node.minY = a.y; if (b.y < node.minY) node.minY = b.y;
-      if (a.x > node.maxX) node.maxX = a.x; if (b.x > node.maxX) node.maxX = b.x;
-      if (a.y > node.maxY) node.maxY = a.y; if (b.y > node.maxY) node.maxY = b.y;
+      const p = a(ids[k]), q = b(ids[k]);
+      if (p.x < x0) x0 = p.x; if (q.x < x0) x0 = q.x;
+      if (p.y < y0) y0 = p.y; if (q.y < y0) y0 = q.y;
+      if (p.x > x1) x1 = p.x; if (q.x > x1) x1 = q.x;
+      if (p.y > y1) y1 = p.y; if (q.y > y1) y1 = q.y;
     }
+    minX[node] = x0; minY[node] = y0; maxX[node] = x1; maxY[node] = y1;
     work += hi - lo;
     if (work >= 8192) { work = 0; yield; }
     if (hi - lo <= 8) {
-      node.spans = [];
-      for (let k = lo; k < hi; k++) node.spans.push(spans[ids[k]]);
+      left[node] = -1 - lo; right[node] = hi;
     } else {
       const middle = lo + Math.floor((hi - lo) / 2);
-      select(lo, hi - 1, middle, node.maxX - node.minX >= node.maxY - node.minY ? keyX : keyY);
-      node.left = yield* build(lo, middle);
-      node.right = yield* build(middle, hi);
+      select(lo, hi - 1, middle, x1 - x0 >= y1 - y0 ? keyX : keyY);
+      left[node] = yield* build(lo, middle);
+      right[node] = yield* build(middle, hi);
     }
     return node;
   }
-  return yield* build(0, count);
+  yield* build(0, count);
+  return { segments, spanSeg, spanPt, ids, minX: minX.slice(0, nodes), minY: minY.slice(0, nodes), maxX: maxX.slice(0, nodes), maxY: maxY.slice(0, nodes), left: left.slice(0, nodes), right: right.slice(0, nodes) };
 }
 
 /** Exact nearest road span for one installed, immutable network. */
 export class RoadSnapIndex {
-  private root?: Node;
+  private tree?: Packed;
   constructor(segments: ReadonlyArray<{ points: WorldPoint[] }>) {
     const stages = roadSnapStages(segments);
     let step = stages.next();
     while (!step.done) step = stages.next();
-    this.root = step.value;
+    this.tree = step.value;
   }
   static async create(segments: ReadonlyArray<{ points: WorldPoint[] }>, scheduling: BuildScheduling = {}): Promise<RoadSnapIndex> {
     const index = new RoadSnapIndex([]);
-    index.root = await finishBatchedBuild(roadSnapStages(segments), scheduling);
+    index.tree = await finishBatchedBuild(roadSnapStages(segments), scheduling);
     return index;
   }
   nearest(point: WorldPoint): (WorldPoint & { distance: number }) | null {
+    const t = this.tree;
+    if (!t) return null;
     let best: (WorldPoint & { distance: number }) | null = null, order = Infinity;
-    const visit = (node: Node): void => {
-      if (best && distanceTo(point, node) > best.distance + 1e-8) return;
-      if (node.spans) {
-        for (const span of node.spans) {
-          const candidate = closestPointOnSegment(point, span.a, span.b);
+    const distanceTo = (node: number) => Math.hypot(
+      Math.max(t.minX[node] - point.x, 0, point.x - t.maxX[node]),
+      Math.max(t.minY[node] - point.y, 0, point.y - t.maxY[node]),
+    );
+    const visit = (node: number): void => {
+      if (best && distanceTo(node) > best.distance + 1e-8) return;
+      const l = t.left[node];
+      if (l < 0) {
+        for (let k = -1 - l, hi = t.right[node]; k < hi; k++) {
+          const id = t.ids[k], points = t.segments[t.spanSeg[id]].points, at = t.spanPt[id];
+          const candidate = closestPointOnSegment(point, points[at - 1], points[at]);
           // Keep the old source-order tie break, even when spatial traversal differs.
-          if (!best || candidate.distance < best.distance || candidate.distance === best.distance && span.order < order) {
-            best = candidate; order = span.order;
+          if (!best || candidate.distance < best.distance || candidate.distance === best.distance && id < order) {
+            best = candidate; order = id;
           }
         }
       } else {
-        const a = node.left!, b = node.right!;
-        if (distanceTo(point, a) <= distanceTo(point, b)) { visit(a); visit(b); }
-        else { visit(b); visit(a); }
+        const r = t.right[node];
+        if (distanceTo(l) <= distanceTo(r)) { visit(l); visit(r); }
+        else { visit(r); visit(l); }
       }
     };
-    if (this.root) visit(this.root);
+    visit(0);
     return best;
   }
 }

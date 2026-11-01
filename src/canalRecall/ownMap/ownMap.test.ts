@@ -5,7 +5,7 @@ import { readFileSync } from 'node:fs';
 import { gunzipSync } from 'node:zlib';
 import { toLocal, fromLocal, gameWorldToLngLat } from './frame';
 import { toLocal as galleryToLocal } from '../galleryPipeline';
-import { decodeLine, decodeOverview, encodeLine, streetClassOf, type OverviewFile } from './overviewFormat';
+import { decodeLine, decodeOverview, encodeLine, STREET_CLASSES, streetClassOf, type OverviewFile } from './overviewFormat';
 import { simplify, PolygonGrid } from './geometry';
 import { cameraFrame, cameraForPoints, easeCamera, metresPerPixel, project, unproject, visibleBounds, type CameraState } from './mapCamera';
 import { panBy, pinch, rotateAround, zoomAround, clampCamera } from './gestures';
@@ -188,4 +188,23 @@ test('footprints: the worker arrays match three.js colour management and extrude
   assert.equal(a.index.length, 2 * 3 + 8 * 3);
   assert.ok(a.index instanceof Uint16Array);
   assert.equal(Math.max(...Array.from(a.position).filter((_, i) => i % 3 === 2)), 12);
+});
+
+test('overview streets are packed (#130): the same classes, names and points as decodeLine, named ones kept', () => {
+  const file = JSON.parse(gunzipSync(readFileSync('public/data/extracts/amsterdam/own-map-v1/overview.json.gz')).toString()) as OverviewFile;
+  const synthetic: OverviewFile = { ...file, streets: [[0, -1, 10, 20, -3, 4, 0, 0, 7, -8], [1, 0, 5, 5], [2, 0]] };
+  for (const f of [synthetic, file]) {
+    const data = decodeOverview(f), name = (i: number) => (i >= 0 ? f.names[i] ?? '' : '');
+    assert.equal(data.streets.length, f.streets.length);
+    f.streets.forEach((row, i) => {
+      const s = data.streets[i];
+      assert.equal(s.name, name(row[1])); assert.equal(s.cls, STREET_CLASSES[row[0]]);
+      assert.deepEqual(s.points, decodeLine(row, f.unit, 2), `street ${i}`);
+      if (s.name) assert.equal(s.points, s.points, 'a named street keeps its decoded points (labels read them every rebuild)');
+    });
+  }
+  // Exactly the doubles decodeLine gives, not merely close.
+  const row = [0, -1, 123457, -98765, 1, -1], unit = file.unit;
+  const [p] = decodeOverview({ ...file, streets: [row] }).streets[0].points;
+  assert.ok(Object.is(p[0], decodeLine(row, unit, 2)[0][0]) && Object.is(p[1], decodeLine(row, unit, 2)[0][1]));
 });

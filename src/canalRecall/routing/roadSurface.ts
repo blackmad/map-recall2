@@ -37,10 +37,31 @@ export interface RoadSpan {
   width: number;
 }
 
+/**
+ * Spans bucketed by the cells they can be queried from, packed (#130): the buckets as one Int32 list of span ids
+ * per cell (`ids[offsets[c] .. offsets[c+1])`, cells by sorted numeric key) and every span as its way index and
+ * point index, its end points read from the ways it was built from. The Map of per-cell `RoadSpan` arrays was
+ * 22.9 MB on the ride-start heap (136,000 cells, 967,000 bucket entries, 167,000 spans); this is about 7.
+ * `roadsNear` gives the same spans in the same order, one object per span made on first use and reused.
+ */
 export interface RoadSpatialIndex {
   cellSize: number;
-  /** Buckets by cell key (see `cellKey`); read them through `roadsNear`. */
-  cells: Map<number | string, RoadSpan[]>;
+  /** Sorted numeric cell keys (see `cellKey`), one per non-empty cell. */
+  keys: Float64Array;
+  /** Cell c's span ids are `ids[offsets[c] .. offsets[c + 1])`, in insertion order. */
+  offsets: Int32Array;
+  ids: Int32Array;
+  /** Cells whose key fell back to a string (out of range): their span ids. */
+  stringCells: Map<string, Int32Array>;
+  /** Span id → way index; point index, or −1 − k for connector k. */
+  spanSeg: Int32Array;
+  spanPt: Int32Array;
+  /** Each way's half-width when the index was built. */
+  widths: Float64Array;
+  segments: readonly RoadSegmentLike[];
+  connectors: ReadonlyArray<Readonly<{ a: RoadPoint; b: RoadPoint; segmentIndex: number }>>;
+  /** Span objects made so far (sparse). */
+  spanCache: (RoadSpan | undefined)[];
 }
 
 /** px — the grid cell, matching `ROAD_GRID_CELL` in constants.js. */
@@ -95,9 +116,13 @@ function* roadSurfaceStages(
   cellSize: number = ROAD_GRID_CELL,
   connectors: ReadonlyArray<Readonly<{ a: RoadPoint; b: RoadPoint; segmentIndex: number }>> = [],
 ): Generator<void, RoadSpatialIndex> {
-  const cells = new Map<number | string, RoadSpan[]>();
-  const add = (span: RoadSpan) => {
-    const { a, b, width } = span;
+  // Growable (key, span id) pairs in insertion order; string keys apart.
+  let pairKeys = new Float64Array(1 << 16), pairIds = new Int32Array(1 << 16), pairs = 0;
+  const stringBuckets = new Map<string, number[]>();
+  const spanSegList: number[] = [], spanPtList: number[] = [];
+  const add = (a: RoadPoint, b: RoadPoint, segIdx: number, ptCode: number, width: number) => {
+    const id = spanSegList.length;
+    spanSegList.push(segIdx); spanPtList.push(ptCode);
     const pad = width + 10;
     const gx0 = Math.floor((Math.min(a.x, b.x) - pad) / cellSize);
     const gx1 = Math.floor((Math.max(a.x, b.x) + pad) / cellSize);
@@ -106,9 +131,16 @@ function* roadSurfaceStages(
     for (let gx = gx0; gx <= gx1; gx++) {
       for (let gy = gy0; gy <= gy1; gy++) {
         const key = cellKey(gx, gy);
-        const bucket = cells.get(key);
-        if (bucket) bucket.push(span);
-        else cells.set(key, [span]);
+        if (typeof key === 'string') {
+          const bucket = stringBuckets.get(key);
+          if (bucket) bucket.push(id); else stringBuckets.set(key, [id]);
+          continue;
+        }
+        if (pairs === pairKeys.length) {
+          const k = new Float64Array(pairs * 2); k.set(pairKeys); pairKeys = k;
+          const i = new Int32Array(pairs * 2); i.set(pairIds); pairIds = i;
+        }
+        pairKeys[pairs] = key; pairIds[pairs] = id; pairs++;
       }
     }
   };
@@ -116,7 +148,7 @@ function* roadSurfaceStages(
     if (segIdx % 32 === 0) yield;
     const segment = segments[segIdx];
     for (let ptIdx = 0; ptIdx < segment.points.length - 1; ptIdx++) {
-      add({ a: segment.points[ptIdx], b: segment.points[ptIdx + 1], segIdx, ptIdx, width: segment.width });
+      add(segment.points[ptIdx], segment.points[ptIdx + 1], segIdx, ptIdx, segment.width);
     }
   }
   // The routing graph joins ways whose ends are a few metres apart (merged
@@ -130,9 +162,66 @@ function* roadSurfaceStages(
     const connector = connectors[i];
     const segment = segments[connector.segmentIndex];
     if (!segment) continue;
-    add({ a: connector.a, b: connector.b, segIdx: connector.segmentIndex, ptIdx: -1, width: segment.width });
+    add(connector.a, connector.b, connector.segmentIndex, -1 - i, segment.width);
   }
-  return { cellSize, cells };
+  // Cells by key; each cell's ids in insertion order (a stable counting sort).
+  yield;
+  const cellOf = new Map<number, number>();
+  const counts: number[] = [];
+  for (let p = 0; p < pairs; p++) {
+    const c = cellOf.get(pairKeys[p]);
+    if (c === undefined) { cellOf.set(pairKeys[p], counts.length); counts.push(1); } else counts[c]++;
+    if ((p & 0xffff) === 0xffff) yield;
+  }
+  const order = Float64Array.from(cellOf.keys()).sort();
+  const keys = order, offsets = new Int32Array(keys.length + 1), slot = new Int32Array(counts.length);
+  for (let c = 0; c < keys.length; c++) {
+    const first = cellOf.get(keys[c])!;
+    offsets[c + 1] = offsets[c] + counts[first];
+    slot[first] = offsets[c];
+  }
+  yield;
+  const ids = new Int32Array(pairs);
+  for (let p = 0; p < pairs; p++) {
+    ids[slot[cellOf.get(pairKeys[p])!]++] = pairIds[p];
+    if ((p & 0xffff) === 0xffff) yield;
+  }
+  const stringCells = new Map<string, Int32Array>();
+  for (const [key, list] of stringBuckets) stringCells.set(key, Int32Array.from(list));
+  const widths = new Float64Array(segments.length);
+  for (let i = 0; i < segments.length; i++) widths[i] = segments[i].width;
+  return {
+    cellSize, keys, offsets, ids, stringCells,
+    spanSeg: Int32Array.from(spanSegList), spanPt: Int32Array.from(spanPtList), widths,
+    segments, connectors, spanCache: new Array(spanSegList.length),
+  };
+}
+
+/** Span `id` of a packed index, made once and reused. */
+function spanOf(index: RoadSpatialIndex, id: number): RoadSpan {
+  const cached = index.spanCache[id];
+  if (cached) return cached;
+  const segIdx = index.spanSeg[id], code = index.spanPt[id], width = index.widths[segIdx];
+  let span: RoadSpan;
+  if (code >= 0) {
+    const points = index.segments[segIdx].points;
+    span = { a: points[code], b: points[code + 1], segIdx, ptIdx: code, width };
+  } else {
+    const connector = index.connectors[-1 - code];
+    span = { a: connector.a, b: connector.b, segIdx, ptIdx: -1, width };
+  }
+  index.spanCache[id] = span;
+  return span;
+}
+
+/** The cell with numeric key `key`, or −1. */
+function cellIndex(keys: Float64Array, key: number): number {
+  let lo = 0, hi = keys.length - 1;
+  while (lo <= hi) {
+    const mid = (lo + hi) >>> 1, k = keys[mid];
+    if (k < key) lo = mid + 1; else if (k > key) hi = mid - 1; else return mid;
+  }
+  return -1;
 }
 
 export function buildRoadSpatialIndex(segments: readonly RoadSegmentLike[], cellSize = ROAD_GRID_CELL, connectors: ReadonlyArray<Readonly<{ a: RoadPoint; b: RoadPoint; segmentIndex: number }>> = []): RoadSpatialIndex {
@@ -158,8 +247,15 @@ export function roadsNear(
   const found: RoadSpan[] = [];
   for (let dx = -ring; dx <= ring; dx++) {
     for (let dy = -ring; dy <= ring; dy++) {
-      const bucket = index.cells.get(cellKey(gx + dx, gy + dy));
-      if (bucket) found.push(...bucket);
+      const key = cellKey(gx + dx, gy + dy);
+      if (typeof key === 'string') {
+        const list = index.stringCells.get(key);
+        if (list) for (let i = 0; i < list.length; i++) found.push(spanOf(index, list[i]));
+        continue;
+      }
+      const c = cellIndex(index.keys, key);
+      if (c < 0) continue;
+      for (let i = index.offsets[c], end = index.offsets[c + 1]; i < end; i++) found.push(spanOf(index, index.ids[i]));
     }
   }
   return found;
