@@ -1,0 +1,373 @@
+{
+ "schemaVersion": 1,
+ "id": "de-burcht",
+ "pand": "0363100012170603",
+ "brief": "scripts/landmarks/de-burcht-brief.md",
+ "signature": [
+  "w01-tower",
+  "w01-crenellation",
+  "w01-entrance-arch",
+  "w01-andb-letters",
+  "w01-entrance-stair",
+  "w01-window-groups"
+ ],
+ "walls": [
+  {
+   "tag": "w01-210",
+   "bearing": 210,
+   "lengthM": 22.6,
+   "centre": [
+    4.9108455,
+    52.367991
+   ],
+   "evidence": "photo",
+   "panoId": "b_20241210_1246_Track22_Sphere_00058",
+   "capturedAt": "2024-12-10",
+   "checked": true,
+   "items": [
+    {
+     "id": "w01-tower",
+     "kind": "tower",
+     "where": "left of centre, over the entrance: square brick tower 4.4 m wide (t 1.8-6.2 m from the north-west end), rising ~6 m over the crenellated parapet to a pale stone band at ~23-24 m pierced with cross-shaped vents, a projecting cornice and a flared, stepped dark-stone cap with a finial (3DBAG ridge 27.0 m NAP)",
+     "approxSizeM": [
+      4.4,
+      27
+     ],
+     "plan": "modelled",
+     "how": "tower(): brick box flush with the front (10 cm proud, so it never shares the facade plane), stone band with four cross vents a side, cornice, four tapering slate tiers and a finial",
+     "seenIn": "Vakbondsgebouw_De_Burcht_-_Amsterdam_-_20529082_-_RCE.jpg",
+     "note": "cap and band also on Commons 20529086, 20529090, 20529091, 20529092 (RCE, CC BY-SA 4.0)"
+    },
+    {
+     "id": "w01-tower-oculus",
+     "kind": "window-shape",
+     "where": "tower front, high: round window with a white rosette in a stone ring, ~1.3 m across, centre ~20.8 m",
+     "approxSizeM": [
+      1.4,
+      1.4
+     ],
+     "plan": "simplified",
+     "how": "stone ring, glass disc and four white bars crossing it (eight spokes); the rosette tracery is reduced to the spokes",
+     "seenIn": "Vakbondsgebouw_De_Burcht_-_Amsterdam_-_20529082_-_RCE.jpg"
+    },
+    {
+     "id": "w01-tower-lancets",
+     "kind": "window-shape",
+     "where": "tower front, top-floor level (~13.3-14.6 m): two narrow windows side by side",
+     "approxSizeM": [
+      0.9,
+      1.3
+     ],
+     "plan": "modelled",
+     "how": "two glass slabs in brown frames with stone sills",
+     "seenIn": "b_20241210_1246_Track22_Sphere_00058"
+    },
+    {
+     "id": "w01-crenellation",
+     "kind": "other",
+     "where": "whole front parapet: a row of ~22 grey stone merlons (0.5 m wide, ~0.9 m high, pointed tops, a round hole in each) on a stone coping at ~16.6-17.0 m, two left of the tower",
+     "approxSizeM": [
+      22.8,
+      1
+     ],
+     "plan": "modelled",
+     "how": "parapet(): brick parapet slab, stone coping, merlons as pointed polygons with a dark square for the hole, 0.83 m pitch",
+     "seenIn": "Vakbondsgebouw_De_Burcht_-_Amsterdam_-_20529082_-_RCE.jpg",
+     "note": "also Commons 20529087 (merlons from the roof) and 20529088"
+    },
+    {
+     "id": "w01-corner-turrets",
+     "kind": "tower",
+     "where": "both front corners at the parapet: a corbelled stone pinnacle carrying a merlon (~0.9 m wide, corbel at ~15 m)",
+     "approxSizeM": [
+      0.9,
+      3
+     ],
+     "plan": "simplified",
+     "how": "stone corbel block, stone pier and a merlon top at each end",
+     "seenIn": "Vakbondsgebouw_De_Burcht_-_Amsterdam_-_20529082_-_RCE.jpg"
+    },
+    {
+     "id": "w01-andb-letters",
+     "kind": "lettering",
+     "where": "parapet band above the four window groups (~15.1-15.85 m): the letters A N D B, one per group, red on a red panel in a stone frame",
+     "approxSizeM": [
+      0.95,
+      0.8
+     ],
+     "plan": "modelled",
+     "how": "stone frame, red-brown panel and pixel letters (nearbar letters) on each group axis",
+     "seenIn": "Vakbondsgebouw_De_Burcht_-_Amsterdam_-_20529082_-_RCE.jpg",
+     "note": "close-up of the N: Commons 20529088"
+    },
+    {
+     "id": "w01-entrance-arch",
+     "kind": "other",
+     "where": "tower foot: a big round-headed arch of pale dressed stone (outer ~2.9 m wide, apex ~7.9 m) around the wooden front door at the top of the stair, \"No\" and \"9\" carved on the impost blocks",
+     "approxSizeM": [
+      2.9,
+      4.7
+     ],
+     "plan": "modelled",
+     "how": "entrance(): stone arch band with impost blocks round a brown door slab; the No/9 carvings are too small and left out",
+     "seenIn": "b_20241210_1246_Track22_Sphere_00058",
+     "note": "Commons 20529085 close-up"
+    },
+    {
+     "id": "w01-entrance-stair",
+     "kind": "other",
+     "where": "in front of the arch: a straight stone stair of ~16 steps perpendicular to the front up to the door at ~3.2 m, between stone side walls with sloping copings ending in round stone pedestals at the pavement",
+     "approxSizeM": [
+      3.8,
+      6.5
+     ],
+     "plan": "modelled",
+     "how": "stair(): stepped extrusion between two sloping stone side walls and two cylindrical pedestals with domed tops",
+     "seenIn": "Vakbondsgebouw_De_Burcht_-_Amsterdam_-_20529085_-_RCE.jpg"
+    },
+    {
+     "id": "w01-monogram",
+     "kind": "crest",
+     "where": "tower front over the arch (~8.5-9.6 m): square stone tablet with the red ANDB monogram, an A in a ring",
+     "approxSizeM": [
+      1.1,
+      1.1
+     ],
+     "plan": "simplified",
+     "how": "stone tablet, red ring and a red pixel A",
+     "seenIn": "Vakbondsgebouw_De_Burcht_-_Amsterdam_-_20529085_-_RCE.jpg"
+    },
+    {
+     "id": "w01-window-groups",
+     "kind": "window-shape",
+     "where": "four bays right of the tower, each a group of three brown-framed windows per storey under one long pale stone lintel: ground 0.75-2.65 m, first 4.0-6.85 m, second 8.0-10.45 m; groups 2.7 m wide on a 3.45 m pitch",
+     "approxSizeM": [
+      2.7,
+      2.9
+     ],
+     "plan": "modelled",
+     "how": "windowGroup(): three framed panes with a transom, a stone lintel slab and a sill ledge per group and storey",
+     "seenIn": "b_20241210_1246_Track22_Sphere_00058"
+    },
+    {
+     "id": "w01-top-windows",
+     "kind": "window-shape",
+     "where": "top storey (13.3-14.5 m): groups of three small windows with pointed stone hoods carved with a cross, under a continuous stone band at ~14.75-15.0 m",
+     "approxSizeM": [
+      2.7,
+      1.5
+     ],
+     "plan": "simplified",
+     "how": "three small framed windows per group, a pointed stone hood polygon over each, the full-width stone band",
+     "seenIn": "b_20241210_1246_Track22_Sphere_00058"
+    },
+    {
+     "id": "w01-downpipes",
+     "kind": "other",
+     "where": "three tall ochre-painted downpipes: left of the tower, at its right edge and at the right end, ground to the parapet",
+     "approxSizeM": [
+      0.12,
+      15
+     ],
+     "plan": "modelled",
+     "how": "thin ochre slabs",
+     "seenIn": "b_20241210_1246_Track22_Sphere_00058"
+    },
+    {
+     "id": "w01-wall-anchors",
+     "kind": "balcony-ironwork",
+     "where": "decorative iron wall anchors between and over the window groups (~0.4 m tall), at ~7.4, ~11.6 and ~16 m",
+     "approxSizeM": [
+      0.1,
+      0.45
+     ],
+     "plan": "simplified",
+     "how": "thin dark bars between the groups at 7.4 and 11.6 m",
+     "seenIn": "b_20241210_1246_Track22_Sphere_00058"
+    },
+    {
+     "id": "w01-side-door",
+     "kind": "other",
+     "where": "right end, ground floor: a plain wooden door under a stone lintel",
+     "approxSizeM": [
+      0.8,
+      2.3
+     ],
+     "plan": "modelled",
+     "how": "brown door slab with a stone lintel",
+     "seenIn": "b_20241210_1246_Track22_Sphere_00058"
+    },
+    {
+     "id": "w01-plinth",
+     "kind": "other",
+     "where": "grey stone plinth along the front, ~0.45 m",
+     "approxSizeM": [
+      16.6,
+      0.45
+     ],
+     "plan": "modelled",
+     "how": "weathered-stone slab",
+     "seenIn": "b_20241210_1246_Track22_Sphere_00058"
+    },
+    {
+     "id": "w01-bollards",
+     "kind": "other",
+     "where": "stone bollards with iron rails along the pavement in front of the building",
+     "approxSizeM": [
+      0.6,
+      1.2
+     ],
+     "plan": "skipped",
+     "skip": {
+      "reason": "not-visible",
+      "note": "they stand on the pavement line 5-7 m off the front, outside the BAG footprint and the model; street furniture, not part of the building"
+     },
+     "seenIn": "b_20241210_1246_Track22_Sphere_00058"
+    }
+   ]
+  },
+  {
+   "tag": "w02-30",
+   "bearing": 30,
+   "lengthM": 12.3,
+   "centre": [
+    4.9110445,
+    52.368113
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "items": [
+    {
+     "id": "w02-rear-window-groups",
+     "kind": "window-shape",
+     "where": "rear of the main block: groups of three tall windows per storey in dark brick",
+     "approxSizeM": [
+      2.7,
+      3
+     ],
+     "plan": "simplified",
+     "how": "rear(): dark brick facing panel and the front storey grid of three-window groups without stone lintels",
+     "seenIn": "Vakbondsgebouw_De_Burcht_-_Amsterdam_-_20529084_-_RCE.jpg",
+     "note": "placement inferred"
+    },
+    {
+     "id": "roof-glass-light",
+     "kind": "other",
+     "where": "roof behind the tower (seen from the roof, Commons 20529089): a pitched glass roof light over the hall",
+     "approxSizeM": [
+      5,
+      6
+     ],
+     "plan": "simplified",
+     "how": "3DBAG roof planes 71 and 72 (17.1-18.9 m) drawn in roof glass",
+     "seenIn": "Vakbondsgebouw_De_Burcht_-_Amsterdam_-_20529089_-_RCE.jpg"
+    }
+   ],
+   "note": "No panorama. Commons 20529083 and 20529084 (RCE 2007, CC BY-SA 4.0) show the rear of the main block: dark grey-brown brick, groups of three tall leaded windows with dark brick surrounds over a storey of groups of three smaller windows and a top storey of small windows, plain parapet. Which stretch of the rear they show is not pinned, so the builder applies that pattern to the whole rear (inferred)."
+  },
+  {
+   "tag": "w03-120",
+   "bearing": 120,
+   "lengthM": 5.9,
+   "centre": [
+    4.910987,
+    52.368163
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "items": [],
+   "note": "No panorama, no photo: a short side wall towards the low rear annex; drawn as plain brick (inferred)."
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  },
+  {
+   "name": "Henri Polaklaan 9 foto 1.jpg",
+   "url": "https://commons.wikimedia.org/wiki/File:Henri_Polaklaan_9_foto_1.jpg",
+   "licence": "Public domain"
+  },
+  {
+   "name": "Vakbondsgebouw De Burcht - Amsterdam - 20529081 - RCE.jpg",
+   "url": "https://commons.wikimedia.org/wiki/File:Vakbondsgebouw_De_Burcht_-_Amsterdam_-_20529081_-_RCE.jpg",
+   "licence": "CC BY-SA 4.0"
+  },
+  {
+   "name": "Vakbondsgebouw De Burcht - Amsterdam - 20529082 - RCE.jpg",
+   "url": "https://commons.wikimedia.org/wiki/File:Vakbondsgebouw_De_Burcht_-_Amsterdam_-_20529082_-_RCE.jpg",
+   "licence": "CC BY-SA 4.0"
+  },
+  {
+   "name": "Vakbondsgebouw De Burcht - Amsterdam - 20529083 - RCE.jpg",
+   "url": "https://commons.wikimedia.org/wiki/File:Vakbondsgebouw_De_Burcht_-_Amsterdam_-_20529083_-_RCE.jpg",
+   "licence": "CC BY-SA 4.0"
+  },
+  {
+   "name": "Vakbondsgebouw De Burcht - Amsterdam - 20529084 - RCE.jpg",
+   "url": "https://commons.wikimedia.org/wiki/File:Vakbondsgebouw_De_Burcht_-_Amsterdam_-_20529084_-_RCE.jpg",
+   "licence": "CC BY-SA 4.0"
+  },
+  {
+   "name": "Vakbondsgebouw De Burcht - Amsterdam - 20529085 - RCE.jpg",
+   "url": "https://commons.wikimedia.org/wiki/File:Vakbondsgebouw_De_Burcht_-_Amsterdam_-_20529085_-_RCE.jpg",
+   "licence": "CC BY-SA 4.0"
+  },
+  {
+   "name": "Vakbondsgebouw De Burcht - Amsterdam - 20529086 - RCE.jpg",
+   "url": "https://commons.wikimedia.org/wiki/File:Vakbondsgebouw_De_Burcht_-_Amsterdam_-_20529086_-_RCE.jpg",
+   "licence": "CC BY-SA 4.0"
+  },
+  {
+   "name": "Vakbondsgebouw De Burcht - Amsterdam - 20529087 - RCE.jpg",
+   "url": "https://commons.wikimedia.org/wiki/File:Vakbondsgebouw_De_Burcht_-_Amsterdam_-_20529087_-_RCE.jpg",
+   "licence": "CC BY-SA 4.0"
+  },
+  {
+   "name": "Vakbondsgebouw De Burcht - Amsterdam - 20529088 - RCE.jpg",
+   "url": "https://commons.wikimedia.org/wiki/File:Vakbondsgebouw_De_Burcht_-_Amsterdam_-_20529088_-_RCE.jpg",
+   "licence": "CC BY-SA 4.0"
+  },
+  {
+   "name": "Vakbondsgebouw De Burcht - Amsterdam - 20529089 - RCE.jpg",
+   "url": "https://commons.wikimedia.org/wiki/File:Vakbondsgebouw_De_Burcht_-_Amsterdam_-_20529089_-_RCE.jpg",
+   "licence": "CC BY-SA 4.0"
+  },
+  {
+   "name": "Vakbondsgebouw De Burcht - Amsterdam - 20529090 - RCE.jpg",
+   "url": "https://commons.wikimedia.org/wiki/File:Vakbondsgebouw_De_Burcht_-_Amsterdam_-_20529090_-_RCE.jpg",
+   "licence": "CC BY-SA 4.0"
+  },
+  {
+   "name": "Vakbondsgebouw De Burcht - Amsterdam - 20529091 - RCE.jpg",
+   "url": "https://commons.wikimedia.org/wiki/File:Vakbondsgebouw_De_Burcht_-_Amsterdam_-_20529091_-_RCE.jpg",
+   "licence": "CC BY-SA 4.0"
+  },
+  {
+   "name": "Vakbondsgebouw De Burcht - Amsterdam - 20529092 - RCE.jpg",
+   "url": "https://commons.wikimedia.org/wiki/File:Vakbondsgebouw_De_Burcht_-_Amsterdam_-_20529092_-_RCE.jpg",
+   "licence": "CC BY-SA 4.0"
+  },
+  {
+   "name": "Burcht van Berlage (nl.wikipedia)",
+   "url": "https://nl.wikipedia.org/wiki/Burcht_van_Berlage",
+   "licence": "CC BY-SA 4.0"
+  },
+  {
+   "name": "BAG pand 0363100012170603",
+   "url": "https://service.pdok.nl/lv/bag/wfs/v2_0",
+   "licence": "CC0"
+  },
+  {
+   "name": "3DBAG NL.IMBAG.Pand.0363100012170603",
+   "url": "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012170603",
+   "licence": "CC BY 4.0"
+  }
+ ]
+}

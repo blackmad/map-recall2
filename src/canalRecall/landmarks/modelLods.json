@@ -1936,5 +1936,11 @@
   "buildVersion": 2,
   "bytes": 54100,
   "triangles": 2285
+ },
+ "de-burcht": {
+  "sourceHash": "1768ecdf65823a24",
+  "buildVersion": 2,
+  "bytes": 53620,
+  "triangles": 1985
  }
 }

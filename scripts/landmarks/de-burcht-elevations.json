@@ -1,0 +1,17 @@
+{
+ "id": "de-burcht",
+ "countedBy": "lane #176 (opus) from the rectified panorama crop b_20241210_1246_Track22_Sphere_00058 (artifacts/landmark-briefs/de-burcht/w01-210.jpg) and Commons 20529082 (RCE 2007, CC BY-SA 4.0), before the model was rendered; not a blind haiku count, integrator may re-count. Ribbon convention: each group of three windows (piers ~0.22 m) is one opening; wooden doors are not glazing and are not counted. Revised once after the first render: Commons 20529082 (full height) shows two glazed openings the crop-based count missed, the round light in the front door (first-floor band) and the tower oculus (a fifth band); no count was changed to match the model otherwise.",
+ "facades": [
+  {
+   "name": "Henri Polaklaan front",
+   "bearing": 210,
+   "photo": "artifacts/landmark-briefs/de-burcht/w01-210.jpg",
+   "rows": [4, 5, 4, 5, 1],
+   "columns": 5,
+   "symmetric": false,
+   "gables": 1,
+   "depthBand": 8,
+   "note": "Bands: ground (four groups), first floor (four groups and the round light in the entrance door), second floor (four groups), top storey (four groups of small windows plus the tower's twin lancets), tower oculus. The tower is the one silhouette peak; the merlons are crenellation, not gables."
+  }
+ ]
+}

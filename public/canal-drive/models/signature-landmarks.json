@@ -2892,7 +2892,8 @@
       },
       "triangles": 2812,
       "bytes": 35220,
-      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
+      "held": true
     },
     "the-movies": {
       "id": "the-movies",
@@ -61760,6 +61761,162 @@
         "buildVersion": 2,
         "bytes": 54100,
         "triangles": 2285
+      }
+    },
+    "de-burcht": {
+      "id": "de-burcht",
+      "name": "De Burcht (Burcht van Berlage)",
+      "modelUrl": "./models/de-burcht.glb",
+      "suppressOsmIds": [
+        "NL.IMBAG.Pand.0363100012170603",
+        "tower:NL.IMBAG.Pand.0363100012170603"
+      ],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.91086217,
+          52.3680999
+        ],
+        "headingDegrees": 0,
+        "lengthMetres": 32.5,
+        "widthMetres": 28.9
+      },
+      "surveyed": {
+        "anchor": [
+          4.91086217,
+          52.3680999
+        ],
+        "northOffsetDegrees": 0,
+        "source": "Vertex average of the BAG 0363100012170603 footprint; one closed prism per 3DBAG LoD2.2 roof plane except the tower, which is authored (scripts/landmarks/de-burcht-footprints.json, de-burcht-prepare.ts), native east/south metres. Front, tower, parapet, stair and windows read from the Gemeente Amsterdam panorama b_20241210_1246_Track22_Sphere_00058 and the RCE photographs on Wikimedia Commons (scripts/landmarks/de-burcht-inventory.json)."
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 0,
+      "heightMetres": 26.9,
+      "bagYear": 1900,
+      "materialOverrides": {
+        "brick": "#b5806a",
+        "stone": "#d6cab0",
+        "concrete": "#b2af99",
+        "slate": "#6f6d5c",
+        "frame": "#a76d3d",
+        "copper": "#9b652f",
+        "ochre": "#e0b46c",
+        "red": "#b8553a",
+        "pink": "#a5604c",
+        "bronze": "#3a3631",
+        "greyBrick": "#8a8178",
+        "glass": "#5a6064",
+        "white": "#e8e6df",
+        "canopyGlass": "#9fb2b8"
+      },
+      "attribution": {
+        "title": "De Burcht, vakbondsgebouw van de ANDB (H.P. Berlage, 1899-1900)",
+        "author": "Map Recall",
+        "sourceUrl": "https://nl.wikipedia.org/wiki/Burcht_van_Berlage",
+        "licence": "CC BY 4.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "modifications": "Original texture-free flat-colour geometry: tower, crenellated parapet, A N D B panels, entrance arch and stair, window groups from the Gemeente Amsterdam panoramas (CC BY 4.0) and RCE photographs on Wikimedia Commons (CC BY-SA 4.0), read for proportion only; massing is the 3DBAG LoD2.2 roof planes (CC BY 4.0) on the BAG footprint (CC0). No pixels or meshes imported."
+      },
+      "buildingFootprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.91100572,
+              52.36818423
+            ],
+            [
+              4.91087205,
+              52.36823025
+            ],
+            [
+              4.91087077,
+              52.3682288
+            ],
+            [
+              4.91084196,
+              52.36819747
+            ],
+            [
+              4.91082754,
+              52.3681818
+            ],
+            [
+              4.91069679,
+              52.36803949
+            ],
+            [
+              4.91069795,
+              52.3680389
+            ],
+            [
+              4.9107089,
+              52.36803513
+            ],
+            [
+              4.91080259,
+              52.36800283
+            ],
+            [
+              4.91081242,
+              52.36799944
+            ],
+            [
+              4.91098778,
+              52.36793896
+            ],
+            [
+              4.91112062,
+              52.36808355
+            ],
+            [
+              4.91096306,
+              52.3681378
+            ],
+            [
+              4.91100572,
+              52.36818423
+            ]
+          ]
+        ]
+      },
+      "buildingCategory": "landmark",
+      "bounds": {
+        "min": [
+          -13.050040245056152,
+          -2.3841858265427618e-8,
+          -14.512999534606934
+        ],
+        "max": [
+          17.590625762939453,
+          26.850000381469727,
+          18.293048858642578
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.91086217,
+          52.3680999
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 90,
+        "facadeBearingDegrees": 0,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 32.80604839324951,
+        "heightMetres": 26.850000405311583,
+        "depthMetres": 30.640666007995605,
+        "depthCoverage": 1.060230657716111
+      },
+      "triangles": 8268,
+      "bytes": 129960,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
+      "lod1": {
+        "sourceHash": "1768ecdf65823a24",
+        "buildVersion": 2,
+        "bytes": 53620,
+        "triangles": 1985
       }
     }
   }
