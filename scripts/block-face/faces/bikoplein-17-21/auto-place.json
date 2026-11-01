@@ -3,7 +3,7 @@
  "street": "Steve Bikoplein",
  "library": "transvaalbuurt",
  "stripDate": "2024-10-02",
- "seconds": 5.92,
+ "seconds": 5.3,
  "thresholds": {
   "minScore": 0.7,
   "margin": 0.05,
@@ -103,7 +103,8 @@
    },
    "challengers": {
     "transvaal-1911-five-storey-tall": 0.102,
-    "transvaal-1911-five-storey-tall~m": 0.102
+    "transvaal-1911-five-storey-tall~m": 0.102,
+    "transvaal-1921-five-storey-oriel": 0.169
    }
   },
   {
@@ -197,7 +198,8 @@
    },
    "challengers": {
     "transvaal-1911-five-storey-tall~m": 0.081,
-    "transvaal-1911-five-storey-tall": 0.081
+    "transvaal-1911-five-storey-tall": 0.081,
+    "transvaal-1921-five-storey-oriel": 0.164
    }
   },
   {

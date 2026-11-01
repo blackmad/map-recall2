@@ -3,7 +3,7 @@
  "street": "Ben Viljoenstraat",
  "library": "transvaalbuurt",
  "stripDate": "2023-01-02",
- "seconds": 2.46,
+ "seconds": 1.85,
  "thresholds": {
   "minScore": 0.7,
   "margin": 0.05,
@@ -109,25 +109,23 @@
    },
    "status": "held",
    "stage": "match",
-   "reason": "every type vetoed (best transvaal-1911-five-storey-tall: built 1929, type 1908-1914)",
+   "reason": "best transvaal-1926-band-row scores 0.6 < 0.7 (strip cornice 12.7 m vs the type's 13.9 m)",
    "best": {
-    "type": "transvaal-1911-five-storey-tall",
-    "score": 0,
-    "veto": [
-     "built 1929, type 1908-1914"
-    ],
+    "type": "transvaal-1926-band-row",
+    "score": 0.6,
+    "veto": [],
     "criteria": [
      {
       "key": "eaves",
       "weight": 2,
-      "score": 0.5,
-      "note": "3DBAG eaves 12.59 m = 4 storeys of 3.15 m vs the type's 3.55 m"
+      "score": 0,
+      "note": "strip cornice 12.7 m vs the type's 13.9 m"
      },
      {
       "key": "storeys",
       "weight": 1,
       "score": 1,
-      "note": "3DBAG bouwlagen 5 vs 5"
+      "note": "3DBAG bouwlagen 5 vs 4/5"
      },
      {
       "key": "stucco",
@@ -309,25 +307,23 @@
    },
    "status": "held",
    "stage": "match",
-   "reason": "every type vetoed (best transvaal-1911-five-storey-tall: built 1929, type 1908-1914)",
+   "reason": "best transvaal-1928-plain-row scores 0.4 < 0.7 (strip cornice 12.8 m vs the type's 13.8 m; strip accent share 0.547 (stucco))",
    "best": {
-    "type": "transvaal-1911-five-storey-tall",
-    "score": 0,
-    "veto": [
-     "built 1929, type 1908-1914"
-    ],
+    "type": "transvaal-1928-plain-row",
+    "score": 0.4,
+    "veto": [],
     "criteria": [
      {
       "key": "eaves",
       "weight": 2,
       "score": 0.5,
-      "note": "3DBAG eaves 12.56 m = 4 storeys of 3.14 m vs the type's 3.55 m"
+      "note": "strip cornice 12.8 m vs the type's 13.8 m"
      },
      {
       "key": "storeys",
       "weight": 1,
       "score": 1,
-      "note": "3DBAG bouwlagen 5 vs 5"
+      "note": "3DBAG bouwlagen 5 vs 4/5"
      },
      {
       "key": "stucco",
@@ -423,25 +419,23 @@
    },
    "status": "held",
    "stage": "match",
-   "reason": "every type vetoed (best transvaal-1911-five-storey-tall: built 1929, type 1908-1914)",
+   "reason": "best transvaal-1926-band-row scores 0.2 < 0.7 (strip cornice 12.63 m vs the type's 13.9 m; strip accent share 0.605 (stucco))",
    "best": {
-    "type": "transvaal-1911-five-storey-tall",
-    "score": 0,
-    "veto": [
-     "built 1929, type 1908-1914"
-    ],
+    "type": "transvaal-1926-band-row",
+    "score": 0.2,
+    "veto": [],
     "criteria": [
      {
       "key": "eaves",
       "weight": 2,
-      "score": 0.5,
-      "note": "3DBAG eaves 12.56 m = 4 storeys of 3.14 m vs the type's 3.55 m"
+      "score": 0,
+      "note": "strip cornice 12.63 m vs the type's 13.9 m"
      },
      {
       "key": "storeys",
       "weight": 1,
       "score": 1,
-      "note": "3DBAG bouwlagen 5 vs 5"
+      "note": "3DBAG bouwlagen 5 vs 4/5"
      },
      {
       "key": "stucco",

@@ -3,7 +3,7 @@
  "street": "Transvaalstraat",
  "library": "transvaalbuurt",
  "stripDate": "2020-04-29",
- "seconds": 6.79,
+ "seconds": 6.95,
  "thresholds": {
   "minScore": 0.7,
   "margin": 0.05,
@@ -1298,7 +1298,7 @@
    },
    "status": "held",
    "stage": "likeness",
-   "reason": "edge NCC 0.017 < 0.15 (photo vs model body; likeness.ts FAIL: glazing storey band off by 0.19; columns 4 vs photo 3)",
+   "reason": "edge NCC 0.017 < 0.15 (photo vs model body; likeness.ts FAIL: glazing storey band off by 0.19 mean 0.37 vs photo 0.47; columns 4 vs photo 3)",
    "likeness": {
     "pandId": "0363100012134756",
     "ncc": 0.017,
@@ -1311,7 +1311,7 @@
     "abstain": null,
     "verdict": "FAIL",
     "reasons": [
-     "glazing storey band off by 0.19",
+     "glazing storey band off by 0.19 mean 0.37 vs photo 0.47",
      "columns 4 vs photo 3"
     ],
     "wall": {
@@ -1321,13 +1321,13 @@
     },
     "glazing": {
      "photo": 0.47,
-     "model": 0.42
+     "model": 0.37
     },
     "columns": {
      "photo": 3,
      "model": 4
     },
-    "iou": 0.361
+    "iou": 0.335
    },
    "challengers": {
     "transvaal-1911-five-storey-tall": 0.017,

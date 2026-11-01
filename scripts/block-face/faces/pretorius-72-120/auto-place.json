@@ -3,7 +3,7 @@
  "street": "Pretoriusstraat",
  "library": "transvaalbuurt",
  "stripDate": "2023-01-02",
- "seconds": 34.54,
+ "seconds": 13.3,
  "thresholds": {
   "minScore": 0.7,
   "margin": 0.05,
@@ -21,8 +21,7 @@
     "0363100012142310",
     "0363100012076819"
    ],
-   "passed": true,
-   "triangles": 6877
+   "installed": true
   }
  ],
  "pands": [
@@ -189,11 +188,11 @@
    },
    "status": "held",
    "stage": "likeness",
-   "reason": "edge NCC 0.061 < 0.15 (photo vs model body; likeness.ts FAIL: glazing storey band off by 0.28 mean 0.36 vs photo 0.50; wall family unresolved (#3b2f2a is dark and neutral, brick courses not resolved): lightness and hue judged only)",
+   "reason": "edge NCC 0.053 < 0.15 (photo vs model body; likeness.ts FAIL: glazing storey band off by 0.28; wall family unresolved (#3c312b is dark and neutral, brick courses not resolved): lightness and hue judged only; columns 4 vs photo 2)",
    "likeness": {
     "pandId": "0363100012115710",
-    "ncc": 0.061,
-    "nccRaw": 0.061,
+    "ncc": 0.053,
+    "nccRaw": 0.053,
     "shiftM": [
      0.3,
      -0.4
@@ -202,27 +201,28 @@
     "abstain": null,
     "verdict": "FAIL",
     "reasons": [
-     "glazing storey band off by 0.28 mean 0.36 vs photo 0.50",
-     "wall family unresolved (#3b2f2a is dark and neutral, brick courses not resolved): lightness and hue judged only"
+     "glazing storey band off by 0.28",
+     "wall family unresolved (#3c312b is dark and neutral, brick courses not resolved): lightness and hue judged only",
+     "columns 4 vs photo 2"
     ],
     "wall": {
-     "photo": "#3b2f2a",
+     "photo": "#3c312b",
      "model": "#5a483f",
-     "dL": 0.102
+     "dL": 0.098
     },
     "glazing": {
-     "photo": 0.5,
+     "photo": 0.42,
      "model": 0.36
     },
     "columns": {
-     "photo": null,
+     "photo": 2,
      "model": 4
     },
-    "iou": 0.271
+    "iou": 0.281
    },
    "challengers": {
-    "transvaal-1911-five-storey-tall": 0.221,
-    "transvaal-1911-five-storey-tall~m": 0.167
+    "transvaal-1911-five-storey-tall": 0.053,
+    "transvaal-1911-five-storey-tall~m": 0.045
    }
   },
   {
@@ -278,41 +278,41 @@
    },
    "status": "held",
    "stage": "likeness",
-   "reason": "edge NCC 0.061 < 0.15 (photo vs model body; likeness.ts FAIL: glazing storey band off by 0.41 mean 0.41 vs photo 0.68)",
+   "reason": "edge NCC 0.061 < 0.15 (photo vs model body; likeness.ts FAIL: glazing storey band off by 0.32 mean 0.43 vs photo 0.65)",
    "likeness": {
     "pandId": "0363100012102414",
     "ncc": 0.061,
     "nccRaw": 0.061,
     "shiftM": [
-     0.05,
+     -0.4,
      -0.4
     ],
-    "usable": 0.98,
+    "usable": 0.97,
     "abstain": null,
     "verdict": "FAIL",
     "reasons": [
-     "glazing storey band off by 0.41 mean 0.41 vs photo 0.68"
+     "glazing storey band off by 0.32 mean 0.43 vs photo 0.65"
     ],
     "wall": {
-     "photo": "#40332d",
+     "photo": "#43362e",
      "model": "#634d42",
-     "dL": 0.11
+     "dL": 0.102
     },
     "glazing": {
-     "photo": 0.68,
-     "model": 0.41
+     "photo": 0.65,
+     "model": 0.43
     },
     "columns": {
      "photo": 4,
      "model": 4
     },
-    "iou": 0.38
+    "iou": 0.375
    },
    "challengers": {
-    "transvaal-1911-five-storey-tall": 0.125,
-    "transvaal-1911-five-storey-tall~m": 0.255,
-    "transvaal-1911-five-storey": 0.175,
-    "transvaal-1911-five-storey~m": 0.291
+    "transvaal-1911-five-storey-tall": 0.061,
+    "transvaal-1911-five-storey-tall~m": 0.04,
+    "transvaal-1911-five-storey": -0.011,
+    "transvaal-1911-five-storey~m": 0.041
    }
   },
   {
@@ -441,7 +441,8 @@
     "transvaal-1911-five-storey": 0.336,
     "transvaal-1911-five-storey~m": 0.256,
     "transvaal-1923-portiek-tower": 0.154
-   }
+   },
+   "installed": "pretorius-72-120-r1"
   },
   {
    "pandId": "0363100012142310",
@@ -561,7 +562,8 @@
     "transvaal-1911-five-storey~m": 0.313,
     "transvaal-1911-five-storey": 0.273,
     "transvaal-1923-portiek-tower": 0.034
-   }
+   },
+   "installed": "pretorius-72-120-r1"
   },
   {
    "pandId": "0363100012076819",
@@ -666,7 +668,8 @@
     "transvaal-1911-five-storey": 0.315,
     "transvaal-1911-five-storey~m": 0.267,
     "transvaal-1923-portiek-tower": 0.112
-   }
+   },
+   "installed": "pretorius-72-120-r1"
   },
   {
    "pandId": "0363100012154820",

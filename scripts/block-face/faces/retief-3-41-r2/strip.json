@@ -1,0 +1,93 @@
+{
+ "face": "retief-3-41-r2",
+ "image": "staging/block-face/retief-3-41-r2/strip.jpg",
+ "pixelsPerMetre": 40,
+ "width": 342,
+ "height": 864,
+ "groundNAP": 0.065,
+ "heightM": 21.61,
+ "frame": {
+  "midRD": [
+   123475.49687500001,
+   485458.71924999997
+  ],
+  "uRD": [
+   -0.9249926596089605,
+   -0.3799849729522762
+  ],
+  "nRD": [
+   -0.3799849729522762,
+   0.9249926596089605
+  ]
+ },
+ "x0M": -4.28,
+ "x1M": 4.27,
+ "date": "2023-01-02",
+ "coverage": 1,
+ "spans": [
+  {
+   "pandId": "0363100012085865",
+   "x0M": -4.28,
+   "x1M": 4.27,
+   "px": [
+    0,
+    342
+   ],
+   "date": "2023-01-02",
+   "fallbackDate": false,
+   "panoramas": [
+    {
+     "panoId": "TMX7316010203-002908_pano_0008_000028",
+     "timestamp": "2023-01-02T10:10:56.073570Z",
+     "distanceM": 8.4,
+     "obliquityDeg": 11.2,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "TMX7316010203-002908_pano_0008_000027",
+     "timestamp": "2023-01-02T10:10:55.203560Z",
+     "distanceM": 9,
+     "obliquityDeg": 22.6,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "TMX7316010203-002908_pano_0008_000029",
+     "timestamp": "2023-01-02T10:10:56.893530Z",
+     "distanceM": 10.5,
+     "obliquityDeg": 39.6,
+     "missingFraction": 0
+    }
+   ]
+  }
+ ],
+ "candidatesByDate": {
+  "2022-01-12": 13,
+  "2017-04-06": 13,
+  "2020-04-29": 13,
+  "2021-05-28": 13,
+  "2018-05-15": 13,
+  "2018-12-11": 11,
+  "2016-05-12": 13,
+  "2019-05-16": 13,
+  "2019-12-19": 13,
+  "2022-08-31": 13,
+  "2025-06-20": 13,
+  "2023-01-02": 13,
+  "2020-01-29": 13,
+  "2024-10-02": 13,
+  "2020-09-10": 13,
+  "2016-06-08": 13,
+  "2024-09-16": 0,
+  "2022-06-13": 0,
+  "2019-05-15": 0
+ },
+ "description": "Rectified orthographic elevation of the whole face on the frontage planes: x = chunk-frame metres along the face (left→right seen from the street) from x0M, y = metres above the shared ground (groundNAP) from the bottom; grey = no panorama data. Per-pand spans list the panoramas median-fused for that frontage.",
+ "attribution": "Gemeente Amsterdam, Panoramabeelden (CC BY 4.0; faces and number plates blurred by the publisher)",
+ "croppedFrom": {
+  "face": "retief-3-41",
+  "px": [
+   3753,
+   4095
+  ]
+ }
+}

@@ -3,7 +3,7 @@
  "street": "Transvaalstraat",
  "library": "transvaalbuurt",
  "stripDate": "2020-04-29",
- "seconds": 6.96,
+ "seconds": 11.4,
  "thresholds": {
   "minScore": 0.7,
   "margin": 0.05,
@@ -299,25 +299,23 @@
    },
    "status": "held",
    "stage": "match",
-   "reason": "every type vetoed (best transvaal-1911-five-storey-tall: built 1922, type 1908-1914)",
+   "reason": "best transvaal-1921-five-storey-flat scores 0.67 < 0.7 (3DBAG eaves 13.99 m = 4 storeys of 3.5 m vs the type's 3.21 m)",
    "best": {
-    "type": "transvaal-1911-five-storey-tall",
-    "score": 0,
-    "veto": [
-     "built 1922, type 1908-1914"
-    ],
+    "type": "transvaal-1921-five-storey-flat",
+    "score": 0.67,
+    "veto": [],
     "criteria": [
      {
       "key": "eaves",
       "weight": 2,
-      "score": 1,
-      "note": "3DBAG eaves 13.99 m = 4 storeys of 3.5 m vs the type's 3.55 m"
+      "score": 0.5,
+      "note": "3DBAG eaves 13.99 m = 4 storeys of 3.5 m vs the type's 3.21 m"
      },
      {
       "key": "storeys",
       "weight": 1,
       "score": 1,
-      "note": "3DBAG bouwlagen 5 vs 5"
+      "note": "3DBAG bouwlagen 5 vs 4/5"
      },
      {
       "key": "stucco",
@@ -509,37 +507,15 @@
     "foliageShare": 0.8
    },
    "status": "held",
-   "stage": "match",
-   "reason": "every type vetoed (best transvaal-1911-five-storey-tall: built 1922, type 1908-1914)",
-   "best": {
-    "type": "transvaal-1911-five-storey-tall",
-    "score": 0,
-    "veto": [
-     "built 1922, type 1908-1914"
-    ],
-    "criteria": [
-     {
-      "key": "eaves",
-      "weight": 2,
-      "score": 0.5,
-      "note": "3DBAG eaves 12.77 m = 4 storeys of 3.19 m vs the type's 3.55 m"
-     },
-     {
-      "key": "storeys",
-      "weight": 1,
-      "score": 1,
-      "note": "3DBAG bouwlagen 5 vs 5"
-     },
-     {
-      "key": "stucco",
-      "weight": 2,
-      "score": null,
-      "note": "no strip"
-     }
-    ]
-   },
+   "stage": "likeness",
+   "reason": "run did not compile",
    "likeness": null,
-   "challengers": {}
+   "challengers": {
+    "transvaal-1921-five-storey-flat": null,
+    "transvaal-1921-five-storey-flat~m": null,
+    "transvaal-1923-portiek": null,
+    "transvaal-1929-block": null
+   }
   },
   {
    "pandId": "0363100012233531",
@@ -604,39 +580,13 @@
    },
    "status": "held",
    "stage": "likeness",
-   "reason": "edge NCC 0.005 < 0.15 (photo vs model body; likeness.ts NO EVIDENCE: foliage 27 % > 25 %)",
-   "likeness": {
-    "pandId": "0363100012233531",
-    "ncc": 0.005,
-    "nccRaw": 0.005,
-    "shiftM": [
-     0.2,
-     0.1
-    ],
-    "usable": 0.55,
-    "abstain": null,
-    "verdict": "NO EVIDENCE",
-    "reasons": [
-     "foliage 27 % > 25 %"
-    ],
-    "wall": {
-     "photo": "#5d5248",
-     "model": "#985c4c",
-     "dL": 0.124
-    },
-    "glazing": {
-     "photo": 0.28,
-     "model": 0.22
-    },
-    "columns": {
-     "photo": 6,
-     "model": 3
-    },
-    "iou": 0.157
-   },
+   "reason": "run did not compile",
+   "likeness": null,
    "challengers": {
-    "transvaal-1923-portiek-tower": 0.005,
-    "transvaal-1923-portiek": null
+    "transvaal-1921-five-storey-flat~m": null,
+    "transvaal-1921-five-storey-flat": null,
+    "transvaal-1923-portiek": null,
+    "transvaal-1929-block": 0.024
    }
   },
   {

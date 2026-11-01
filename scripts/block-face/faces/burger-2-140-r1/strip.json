@@ -1,0 +1,95 @@
+{
+ "face": "burger-2-140-r1",
+ "image": "staging/block-face/burger-2-140-r1/strip.jpg",
+ "pixelsPerMetre": 40,
+ "width": 208,
+ "height": 750,
+ "groundNAP": 0.365,
+ "heightM": 18.75,
+ "frame": {
+  "midRD": [
+   123254.800875,
+   485053.16925000004
+  ],
+  "uRD": [
+   -0.6268728197124199,
+   0.7791216002048718
+  ],
+  "nRD": [
+   0.7791216002048718,
+   0.6268728197124199
+  ]
+ },
+ "x0M": -2.6,
+ "x1M": 2.6,
+ "date": "2020-04-30",
+ "coverage": 1,
+ "spans": [
+  {
+   "pandId": "0363100012112723",
+   "x0M": -2.6,
+   "x1M": 2.6,
+   "px": [
+    0,
+    208
+   ],
+   "date": "2020-04-30",
+   "fallbackDate": false,
+   "panoramas": [
+    {
+     "panoId": "TMX7316010203-001684_pano_0000_000352",
+     "timestamp": "2020-04-30T08:17:39.957560Z",
+     "distanceM": 8.5,
+     "obliquityDeg": 7.2,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "TMX7316010203-001684_pano_0000_000351",
+     "timestamp": "2020-04-30T08:17:39.507520Z",
+     "distanceM": 9.3,
+     "obliquityDeg": 24.7,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "TMX7316010203-001684_pano_0000_000353",
+     "timestamp": "2020-04-30T08:17:40.402560Z",
+     "distanceM": 10.3,
+     "obliquityDeg": 35.9,
+     "missingFraction": 0
+    }
+   ]
+  }
+ ],
+ "candidatesByDate": {
+  "2018-05-15": 9,
+  "2025-06-20": 9,
+  "2024-09-16": 4,
+  "2021-05-28": 9,
+  "2016-06-08": 9,
+  "2019-05-16": 8,
+  "2017-04-06": 9,
+  "2020-09-04": 4,
+  "2019-05-15": 6,
+  "2019-12-19": 7,
+  "2020-04-29": 9,
+  "2020-01-29": 9,
+  "2020-04-30": 9,
+  "2024-10-02": 9,
+  "2022-06-13": 9,
+  "2024-10-08": 1,
+  "2018-12-11": 3,
+  "2025-09-30": 5,
+  "2017-03-31": 1,
+  "2021-05-31": 1,
+  "2017-03-29": 0
+ },
+ "description": "Rectified orthographic elevation of the whole face on the frontage planes: x = chunk-frame metres along the face (left→right seen from the street) from x0M, y = metres above the shared ground (groundNAP) from the bottom; grey = no panorama data. Per-pand spans list the panoramas median-fused for that frontage.",
+ "attribution": "Gemeente Amsterdam, Panoramabeelden (CC BY 4.0; faces and number plates blurred by the publisher)",
+ "croppedFrom": {
+  "face": "burger-2-140",
+  "px": [
+   0,
+   208
+  ]
+ }
+}
