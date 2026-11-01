@@ -1,0 +1,149 @@
+{
+ "schemaVersion": 1,
+ "kind": "house-type",
+ "id": "vaalrivier-1931-row",
+ "district": "transvaalbuurt",
+ "description": "Transvaalbuurt 1931 two-storey rows (Vaalrivierstraat 2-22 and 3-9, Kraaipanstraat 50-52 and 63-65): 8 m brown brick fronts of a 3.3 m ground storey and a 3.0 m upper storey under a flat roof with a thin light eaves slab at about 6.3 m; three white box-framed windows with a top light per storey, and at one end the paired portiek doors (blue, double) under a flat canopy with a small window over them; pands mirror in pairs about the shared door group",
+ "fit": {
+  "widthM": [
+   7.5,
+   9.2
+  ],
+  "storeys": [
+   2
+  ]
+ },
+ "match": {
+  "years": [
+   1929,
+   1931
+  ],
+  "eavesM": [
+   5.5,
+   7.2
+  ],
+  "storeys3dbag": [
+   2,
+   3
+  ],
+  "stucco": false,
+  "mirrorForDoor": "left",
+  "crownFromType": "flat-overhang",
+  "note": "BAG 1931 on all five faces; 8.0-8.2 m pands, 3DBAG eaves 6.0-6.3 m, bouwlagen 3 (2 on 22: the roof slab counts), roof max 9.1-9.5 m (chimneys, roof plant). The five-storey heads of Vaalrivierstraat 2 and 3 (eaves 14.7-14.9 m) and 4 (roof max 14.9 m) are other buildings."
+ },
+ "body": {
+  "storeys": 2,
+  "bays": [
+   4,
+   4
+  ],
+  "axisGrid": 4,
+  "storeyHeights": [
+   3.3,
+   3.0
+  ],
+  "cornice": "none",
+  "windows": "casement-toplight",
+  "axisWindows": {
+   "0": "plain"
+  },
+  "windowHeights": [
+   0.62,
+   0.5
+  ],
+  "headLines": [
+   0.77,
+   0.75
+  ],
+  "bayWidths": [
+   2.6,
+   1.8,
+   1.8,
+   1.8
+  ],
+  "bayFill": [
+   0.38,
+   0.85,
+   0.85,
+   0.85
+  ]
+ },
+ "crowns": {
+  "flat-overhang": {
+   "gable": "flat",
+   "eavesOverhang": {
+    "projection": 0.35,
+    "fascia": 0.35,
+    "colour": "#bcbab2"
+   },
+   "note": "Vaalrivierstraat 6-12: a thin light grey eaves slab 8.0-8.4 m on the strip (foot at 1.8 m), about 0.35 m out"
+  }
+ },
+ "grounds": {
+  "door-left": {
+   "doorBay": 0,
+   "groundCanopy": {
+    "over": [
+     "door"
+    ],
+    "projection": 0.5,
+    "thickness": 0.2,
+    "overhang": 0.4,
+    "gap": 0.15,
+    "doorOverhang": 0.4,
+    "colour": "#3c3a36"
+   },
+   "note": "the portiek doors on the left axis (blue double doors, two per pand, a group of four with the mirrored neighbour) under a flat dark canopy at 4.1-4.4 m on the strip; mirrored when the strip reads them on the right"
+  }
+ },
+ "palettes": {
+  "brown": {
+   "brick": "#6a554a",
+   "frame": "white-painted",
+   "door": "#2c5a9a",
+   "stone": "#bcbab2"
+  }
+ },
+ "roof": {
+  "material": "bitumen"
+ },
+ "rhythm": {
+  "bays": "door group, three windows",
+  "identicalBays": "no: the door axis is wider and carries a small upper window",
+  "windowsPerStorey": "ground: doors + three windows | 1: small window + three windows",
+  "symmetry": "mirrored in pairs about the shared door group",
+  "groundFloor": "the portiek door pair under a flat canopy at one end, three windows",
+  "signage": "none",
+  "roofline": "flat, a thin light eaves slab",
+  "photoRows": [
+   1,
+   1
+  ],
+  "photoGroundRows": 1
+ },
+ "evidence": [
+  {
+   "face": "vaalrivier-2-14",
+   "pands": [
+    "120724",
+    "090866"
+   ],
+   "citation": "strip.jpg 2020-04-29 at 40 px/m, 1 m grid on 12 and 10 (8.0 m each; facade foot at 1.8 m on the strip): doors 1.8-4.1 m, four in a 4.5 m group across the party wall of 14/12 and of 10/8, a dark canopy 4.1-4.4 m; ground windows 2.3-4.35 m, upper windows 5.85-7.35 m, 1.4-1.6 m wide in deep white frames with a top light, a 0.9 m light over the doors at 6.0-6.9 m; eaves slab 8.0-8.4 m"
+  },
+  {
+   "face": "vaalrivier-16-22",
+   "pands": [
+    "076039",
+    "092908"
+   ],
+   "citation": "strip.jpg 2020-04-29: the same row, door groups at 20/22 and 16/18"
+  }
+ ],
+ "schemaLimits": [
+  "two doors per pand (a double portiek door pair); one door is drawn",
+  "the plant boxes on the door canopy are not drawn"
+ ],
+ "notes": [
+  "Palette: the type default is a mid brown; every placed pand takes its trim-normalised strip wall (auto-place measuredPalette)."
+ ]
+}

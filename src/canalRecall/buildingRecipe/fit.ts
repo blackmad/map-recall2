@@ -1050,6 +1050,8 @@ export function fitIntent(intent: CanalHouseIntent, surveyFacts: BuildingFacts):
     if (front.palette?.brick) elevation.bands.value.push({id: 'facing', leftM: 0, bottomM: round(plinthBand), widthM: Math.floor(width * 1000) / 1000, heightM: round(eaves - plinthBand - 0.02), depthM: 0.03, surface: 'wall'});
     // Storeys painted in a second colour (`paintedStoreys`): a wall facing per storey, recoloured and marked measured in oudWest.ts.
     if (front.paintedStoreys) elevation.bands.value.push(...paintedStoreyBands(front, layout, width, eaves));
+    // Its panels (`paintedStoreys.panels`): a second paint on a grid axis, 1 cm proud of the painted storeys.
+    if (front.paintedStoreys?.panels) elevation.bands.value.push(...paintedPanelBlocks(front, layout, width, eaves, flipX));
     // Horizontal brick stripes (`brickStripes`, brickStripes.ts): band-brick facings the library cuts around the openings.
     if (front.brickStripes) elevation.bands.value.push(...brickStripeBlocks(front.brickStripes, width, flipX));
     // A dark band of the parapet's top courses (`parapet.band`, parapetBand.ts), stopped at a tower and laid under its top.
@@ -1268,6 +1270,23 @@ function paintedStoreyBands(front: FrontIntent, layout: Layout, width: number, e
     const bottom = (s === 0 ? Math.max(bottoms[0], 0.3) : bottoms[s]) + lift, top = Math.min(bottoms[s] + heights[s], eaves - 0.02);
     return {id: paintedStoreyId(s), leftM: 0, bottomM: round(bottom), widthM: full, heightM: round(top - bottom), depthM: PAINTED_STOREY_DEPTH_M, surface: 'wall' as const};
   }).filter(b => b.heightM > 0.1);
+}
+
+/** Band id of a painted panel (oudWest.ts `paintStoreys` gives it the panel's colour). */
+export const paintedPanelId = (k: number) => `painted-panel-${k}`;
+
+/**
+ * Painted panels (`paintedStoreys.panels`): per panel a facing `breadth` wide centred on its grid axis, from the floor of
+ * the first painted storey (plus `from`) to the top of the painted storeys, 1 cm proud of them; cut around the openings.
+ */
+function paintedPanelBlocks(front: FrontIntent, layout: Layout, width: number, eaves: number, flipX: (x: number, w: number) => number): CanalhouseFacadeBlock[] {
+  const ps = front.paintedStoreys!, painted = paintedStoreyBands(front, layout, width, eaves);
+  if (!painted.length) return [];
+  const bottom = Math.min(...painted.map(b => b.bottomM)), top = Math.max(...painted.map(b => b.bottomM + b.heightM));
+  return ps.panels!.map((q, k) => {
+    const w = Math.min(q.breadth, width - 0.1), left = Math.min(Math.max(layout.axisCentres[q.axis] - w / 2, 0.05), width - w - 0.05);
+    return {id: paintedPanelId(k), leftM: round(flipX(left, w)), bottomM: round(bottom), widthM: round(w), heightM: round(top - bottom), depthM: PAINTED_STOREY_DEPTH_M + 0.01, surface: 'wall' as const};
+  });
 }
 
 /**
