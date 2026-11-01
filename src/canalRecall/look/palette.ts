@@ -436,7 +436,7 @@ export const GARDEN_ROOM_TONES = {
  * (2025 360geo missions, CC BY 4.0) with scripts/street-furniture/sample-colour.ts, then neutralised for the rig's
  * cyan cast (R x1.14, G x0.92, B x0.81, from the container body against NCS 7000 neutral grey). Crops and sheets:
  * staging/street-furniture/measure-*.jpg.
- *   - underground container column: NCS 7000 grey #585c5e (sunlit face #535d60 raw), stainless drum #b9bdba,
+ *   - underground container column: NCS 7000 grey #6c7173 (sunlit face #535d60 raw; lifted from #585c5e after the ride frame read near-black beside the photo, sheet-prinsengracht-containers.jpg), stainless drum #b9bdba,
  *     galvanised floor plate #9da3a4, insert slot #26292b; fraction lids glass yellow #e2c34e (raw #dbe579),
  *     paper blue #2f569e (raw #212c3a at dusk), rest grey with the dark chute, GFT green and textile red as priors;
  *   - canal lantern post: Amsterdam maroon #6e4038 (raw #655751), lantern glass #c9c7b4, roof #4a302b;
@@ -446,7 +446,7 @@ export const GARDEN_ROOM_TONES = {
  *   - bike hoop galvanised #9fa4a3; litter bin grey #6f7476 (abri photo).
  */
 export const STREET_FURNITURE_TONES = {
-  containerBody: '#585c5e',
+  containerBody: '#6c7173',
   containerDrum: '#b9bdba',
   containerPlate: '#9da3a4',
   containerSlot: '#26292b',

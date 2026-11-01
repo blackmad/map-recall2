@@ -28,6 +28,12 @@ async function teleport(page: Page, p: { lng: number; lat: number; bearing: numb
   }, p);
 }
 
+/** The rider stands SF_BACK metres (default 16) behind the object along the panorama's bearing: the chase camera sits behind the rider. */
+function standBack(spot: typeof SPOTS[number]) {
+  const back = Number(process.env.SF_BACK ?? 16), b = spot.stand.bearing * Math.PI / 180, [lng, lat] = spot.object;
+  return { lng: lng - back * Math.sin(b) / (111320 * Math.cos(lat * Math.PI / 180)), lat: lat - back * Math.cos(b) / 111320, bearing: spot.stand.bearing };
+}
+
 async function prepare(page: Page) {
   const dir = process.env.SF_BUNDLES_DIR;
   if (dir) {
@@ -47,9 +53,12 @@ for (const spot of SPOTS) {
       if (info.project.name === 'desktop') await page.setViewportSize({ width: 1440, height: 900 });
       await prepare(page);
       await openRoute(page, { travelMode: 'car', viewMode: 'chase', query: `?engine=own${variant === 'before' ? '&furniture=0' : ''}` });
-      await teleport(page, spot.stand);
+      await teleport(page, standBack(spot));
       await page.waitForTimeout(2500);
-      await teleport(page, spot.stand);
+      await teleport(page, standBack(spot));
+      // Closer than the chase default (1): furniture is a metre or two; SF_CAMZOOM=1 keeps the riding frame.
+      const camZoom = Number(process.env.SF_CAMZOOM ?? 3);
+      await page.evaluate(z => { (window as any).canalRecallGame.camera.zoom = z; }, camZoom);
       await expect.poll(() => page.evaluate(() => (window as any).canalRecallGame.vectorMap.pendingWork().length), { timeout: 150_000, intervals: [1000] }).toBe(0);
       if (variant === 'after') {
         await expect.poll(() => page.evaluate(() => (window as any).__canalStreetFurniture?.debug?.instances ?? 0), { timeout: 60_000, intervals: [500] }).toBeGreaterThan(0);
@@ -62,7 +71,7 @@ for (const spot of SPOTS) {
         expect(debug.triangles, 'furniture triangles on screen').toBeLessThanOrEqual(40_000);
       } else expect(debug, '?furniture=0 builds no layer').toBeNull();
       mkdirSync(OUT, { recursive: true });
-      await page.screenshot({ path: `${OUT}/${spot.name}-${variant}-${info.project.name}.png` });
+      await page.screenshot({ path: `${OUT}/${spot.name}-${variant}-${info.project.name}${camZoom === 3 ? '' : `-z${camZoom}`}.png` });
     });
   }
 }
