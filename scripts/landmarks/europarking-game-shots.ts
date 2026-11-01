@@ -39,11 +39,11 @@ try {
   // Hide the HUD cards so the frame shows the city.
   await page.addStyleTag({content: '#poi-card, .poi-card, .neighborhood-card, .trivia-card, [class*="card"] { visibility: hidden !important; }'});
   // Warm-up: the first jump streams the district in; frames taken before it settles miss the model.
-  await page.evaluate(c => (window as any).canalRecallGame.vectorMap.map.jumpTo({center: c.centre, zoom: c.zoom, pitch: c.pitch, bearing: c.bearing}), views[0]);
+  await page.evaluate(c => ((window as any).canalRecallGame.vectorMap.map ?? (window as any).canalRecallGame.vectorMap.cameraMap).jumpTo({center: c.centre, zoom: c.zoom, pitch: c.pitch, bearing: c.bearing}), views[0]);
   await page.waitForTimeout(15000);
   const files: string[] = [];
   for (const v of views) {
-    await page.evaluate(c => (window as any).canalRecallGame.vectorMap.map.jumpTo({center: c.centre, zoom: c.zoom, pitch: c.pitch, bearing: c.bearing}), v);
+    await page.evaluate(c => ((window as any).canalRecallGame.vectorMap.map ?? (window as any).canalRecallGame.vectorMap.cameraMap).jumpTo({center: c.centre, zoom: c.zoom, pitch: c.pitch, bearing: c.bearing}), v);
     await page.waitForFunction(() => (window as any).canalRecallGame.vectorMap._signatureLandmarks.shown.has('europarking-marnixstraat'), null, {timeout: 90000}).catch(() => console.log(v.name, 'model not shown'));
     await page.waitForTimeout(6000);
     const f = path.join(out, `${v.name}.png`);
