@@ -1,0 +1,69 @@
+{
+ "id": "bungehuis",
+ "source": "Counted 2026-11-01 (lane #172) from the landmark-brief.ts crops of the Gemeente Amsterdam panoramas (CC BY 4.0).",
+ "countedBy": "photo",
+ "facades": [
+  {
+   "name": "Singel front",
+   "bearing": 278,
+   "photo": "artifacts/landmark-briefs/bungehuis/w01-278.jpg",
+   "rows": [
+    null,
+    9,
+    9,
+    9,
+    9,
+    9,
+    9
+   ],
+   "note": "Nine bays between the piers in every storey (basement grilles in the plinth partly hidden by bicycles and a van: not counted). The banded south corner zone with its narrow single window per storey (about half a bay wide on Commons Bungehuis.jpg, modelled 1.1 m) is outside alongM: the rhythm audit reads a deliberately narrower corner window as off-size. Level cornice with a pinnacle on every pier; the stepped-down corner and its pinnacle read as two peaks to the counter, so no gable count is declared here (the Spuistraat faces keep gables 0). depthBand 2 (the Paleisstraat corner pier's pinnacle stands 2.6 m behind this plane).",
+   "depthBand": 2,
+   "alongM": [
+    0,
+    38.3
+   ]
+  },
+  {
+   "name": "Spuistraat north of the entrance",
+   "bearing": 96,
+   "photo": "artifacts/landmark-briefs/bungehuis/w04-96.jpg",
+   "rows": [
+    null,
+    3,
+    3,
+    3,
+    3,
+    3,
+    3
+   ],
+   "gables": 0,
+   "alongM": [
+    32.2,
+    45.8
+   ],
+   "note": "Three bays in every storey; the banded corner zone at the right has no window on this face. Basement grilles not counted.",
+   "depthBand": 3
+  },
+  {
+   "name": "Spuistraat south of the entrance",
+   "bearing": 96,
+   "photo": "artifacts/landmark-briefs/bungehuis/w03-96.jpg",
+   "rows": [
+    null,
+    6,
+    6,
+    6,
+    6,
+    6,
+    6
+   ],
+   "gables": 0,
+   "alongM": [
+    9.3,
+    28.0
+   ],
+   "note": "Six bays between the jog at the south wing and the entrance block (the sixth half-hidden by the entrance block at the right edge); basement grilles not counted.",
+   "depthBand": 3
+  }
+ ]
+}

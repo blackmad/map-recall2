@@ -1942,5 +1942,11 @@
   "buildVersion": 2,
   "bytes": 35048,
   "triangles": 1010
+ },
+ "bungehuis": {
+  "sourceHash": "0e987c34023206c1",
+  "buildVersion": 2,
+  "bytes": 96024,
+  "triangles": 4833
  }
 }
