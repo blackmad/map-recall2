@@ -1,0 +1,425 @@
+{
+ "face": "concertgebouwplein-21-29",
+ "street": "Concertgebouwplein",
+ "library": "museumkwartier",
+ "stripDate": "2024-11-12",
+ "seconds": 1.7,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [],
+ "pands": [
+  {
+   "pandId": "0363100012065378",
+   "address": "Concertgebouwplein 21",
+   "builtYear": 1915,
+   "widthM": 8.34,
+   "eavesM": 11.73,
+   "storeys3dbag": 0,
+   "bagBay": null,
+   "strip": {
+    "wall": "#423819",
+    "wallRaw": "#403c22",
+    "skyline": {
+     "eavesM": 13.45,
+     "eavesRow": 386,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.65,
+      "riseM": 3.75,
+      "topWidthM": 0.07,
+      "centre": 0.11
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "curtain",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 1.75 m at 0.89 (light 0.34): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 1.75,
+       "centre": 0.89,
+       "light": 0.34
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.73
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best museum-de-1899-corbel-cornice: built 1915, type 1898-1901; frontage 8.34 m, type 5-6 m)",
+   "best": {
+    "type": "museum-de-1899-corbel-cornice",
+    "score": 0,
+    "veto": [
+     "built 1915, type 1898-1901",
+     "frontage 8.34 m, type 5-6 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "strip cornice 13.45 m vs the type's 13.4 m (wall-dormer skyline 14.7 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": null,
+      "note": "3DBAG bouwlagen 0 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": null,
+      "note": "no strip"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012097766",
+   "address": "Concertgebouwplein 23",
+   "builtYear": 1915,
+   "widthM": 9.15,
+   "eavesM": 11.76,
+   "storeys3dbag": 3,
+   "bagBay": null,
+   "strip": {
+    "wall": "#57432f",
+    "wallRaw": "#403829",
+    "skyline": {
+     "eavesM": 14.7,
+     "eavesRow": 336,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.38,
+      "riseM": 1.23,
+      "topWidthM": 0.7,
+      "centre": 0.76
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 4,
+    "frontClass": "punched",
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 1,
+     "bayCentre": 0.2,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.2
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best museum-de-1899-corbel-cornice: built 1915, type 1898-1901; frontage 9.15 m, type 5-6 m)",
+   "best": {
+    "type": "museum-de-1899-corbel-cornice",
+    "score": 0,
+    "veto": [
+     "built 1915, type 1898-1901",
+     "frontage 9.15 m, type 5-6 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "strip cornice 14.7 m vs the type's 13.4 m (wall-dormer skyline 14.7 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 0,
+      "note": "3DBAG bouwlagen 3 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0.4,
+      "note": "strip columns 4 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012124673",
+   "address": "Concertgebouwplein 25",
+   "builtYear": 1915,
+   "widthM": 9.13,
+   "eavesM": 11.8,
+   "storeys3dbag": 0,
+   "bagBay": null,
+   "strip": {
+    "wall": "#4d3825",
+    "wallRaw": "#503d2c",
+    "skyline": {
+     "eavesM": 12.72,
+     "eavesRow": 415,
+     "confidence": 1,
+     "crown": {
+      "widthM": 3.88,
+      "riseM": 8.97,
+      "topWidthM": 0.78,
+      "centre": 0.77
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 4,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 2.23 m at 0.87 (light 0.01): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 2.23,
+       "centre": 0.87,
+       "light": 0.01
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.25
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best museum-de-1899-corbel-cornice: built 1915, type 1898-1901; frontage 9.13 m, type 5-6 m)",
+   "best": {
+    "type": "museum-de-1899-corbel-cornice",
+    "score": 0,
+    "veto": [
+     "built 1915, type 1898-1901",
+     "frontage 9.13 m, type 5-6 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0.5,
+      "note": "strip cornice 12.72 m vs the type's 13.4 m (wall-dormer skyline 14.7 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": null,
+      "note": "3DBAG bouwlagen 0 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0.4,
+      "note": "strip columns 4 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012102212",
+   "address": "Concertgebouwplein 27",
+   "builtYear": 1915,
+   "widthM": 8.94,
+   "eavesM": 11.77,
+   "storeys3dbag": 0,
+   "bagBay": null,
+   "strip": {
+    "wall": "#3f2c1a",
+    "wallRaw": "#433324",
+    "skyline": {
+     "eavesM": 21.43,
+     "eavesRow": 67,
+     "confidence": 0.79,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 5,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 1.5 m at 0.15 (light 0.01): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 1.5,
+       "centre": 0.15,
+       "light": 0.01
+      },
+      {
+       "widthM": 0.65,
+       "centre": 0.42,
+       "light": 0.02
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.35
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best museum-de-1899-corbel-cornice: built 1915, type 1898-1901; frontage 8.94 m, type 5-6 m)",
+   "best": {
+    "type": "museum-de-1899-corbel-cornice",
+    "score": 0,
+    "veto": [
+     "built 1915, type 1898-1901",
+     "frontage 8.94 m, type 5-6 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 21.43 m vs the type's 13.4 m (wall-dormer skyline 14.7 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": null,
+      "note": "3DBAG bouwlagen 0 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": null,
+      "note": "no strip"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012144118",
+   "address": "Concertgebouwplein 29",
+   "builtYear": 1915,
+   "widthM": 11.39,
+   "eavesM": 19.1,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#121b07",
+    "wallRaw": "#3d4231",
+    "skyline": {
+     "eavesM": 21.5,
+     "eavesRow": 64,
+     "confidence": 0.87,
+     "crown": {
+      "widthM": 2.25,
+      "riseM": 1.6,
+      "topWidthM": 0.17,
+      "centre": 0.6
+     }
+    },
+    "stucco": false,
+    "bands": 4,
+    "columns": 3,
+    "frontClass": "columns",
+    "doorSide": null,
+    "accentSide": "left",
+    "accentShare": 0.03,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 0.72 m at 0.03 (light 0.25): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.72,
+       "centre": 0.03,
+       "light": 0.25
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.73
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best museum-de-1899-corbel-cornice: built 1915, type 1898-1901; frontage 11.39 m, type 5-6 m)",
+   "best": {
+    "type": "museum-de-1899-corbel-cornice",
+    "score": 0,
+    "veto": [
+     "built 1915, type 1898-1901",
+     "frontage 11.39 m, type 5-6 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 21.5 m vs the type's 13.4 m (wall-dormer skyline 14.7 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 4 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": null,
+      "note": "no strip"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

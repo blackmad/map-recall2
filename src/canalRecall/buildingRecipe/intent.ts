@@ -169,7 +169,16 @@ export interface OrielIntent {
    * stair axis). Absent = one stack.
    */
   twin?: {from: number; to: number};
+  /**
+   * A corbelled stone console under the console slab (Wouwermanstraat 6-24, 1910-1911: the carved bracket mass under
+   * each glazed oriel, 7.0-8.2 m on the 2024-11-06 strip): `steps` courses (default 3) stacked `rise` metres down from
+   * the slab, each a shallower copy of the oriel plan (the top course the full plan, the lowest 1/steps of its depth),
+   * in `colour` (a measured tint; default the trim colour). Needs `console`. Absent = byte-identical.
+   */
+  consoleCorbel?: OrielConsoleCorbel;
 }
+export interface OrielConsoleCorbel { rise: number; steps?: number; colour?: string }
+export const ORIEL_CORBEL = {steps: 3, minRise: 0.2, maxRise: 2, maxSteps: 6} as const;
 export const ORIEL = {projection: 0.5, returns: 0.3, stallriser: 0.4, head: 0.35, frontLights: 3, consoleM: 0.15, consoleOverM: 0.06} as const;
 
 /**
@@ -1825,6 +1834,13 @@ export function orielProblems(f: FrontIntent, at: string): string[] {
   if (o.paintedStoreys !== undefined && (!Array.isArray(o.paintedStoreys) || o.paintedStoreys.some(s => !bw.storeys.includes(s)))) p.push(`${at}.bayWindows.oriel.paintedStoreys: storeys of bayWindows.storeys`);
   if (o.paintFrom !== undefined && (!num(o.paintFrom, 0.05, 2.4) || !o.paintedStoreys?.length)) p.push(`${at}.bayWindows.oriel.paintFrom: 0.05..2.4 m, with paintedStoreys`);
   if (o.console !== undefined && typeof o.console !== 'boolean') p.push(`${at}.bayWindows.oriel.console: boolean`);
+  if (o.consoleCorbel !== undefined) {
+    const c = o.consoleCorbel as unknown as Record<string, unknown>;
+    if (!c || typeof c !== 'object' || Object.keys(c).some(k => !['rise', 'steps', 'colour'].includes(k)) || !num(c.rise, ORIEL_CORBEL.minRise, ORIEL_CORBEL.maxRise)
+      || (c.steps !== undefined && !(Number.isInteger(c.steps) && (c.steps as number) >= 1 && (c.steps as number) <= ORIEL_CORBEL.maxSteps))
+      || (c.colour !== undefined && !(typeof c.colour === 'string' && /^#[0-9a-f]{6}$/i.test(c.colour)))) p.push(`${at}.bayWindows.oriel.consoleCorbel: {rise ${ORIEL_CORBEL.minRise}..${ORIEL_CORBEL.maxRise} m, steps? 1..${ORIEL_CORBEL.maxSteps}, colour? #rrggbb}`);
+    if (!o.console) p.push(`${at}.bayWindows.oriel.consoleCorbel: needs console`);
+  }
   if (o.topGap !== undefined && !num(o.topGap, 0.1, 2)) p.push(`${at}.bayWindows.oriel.topGap: 0.1..2 m of wall over the top module`);
   if (o.twin !== undefined) {
     const t = o.twin as {from: unknown; to: unknown}, b = bw.bays!;

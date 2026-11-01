@@ -1,0 +1,30 @@
+{
+ "note": "Crown variants pinned after reading the strips (blockFace/reviewCrowns.ts): museum-hc-1910-glazed-oriel draws the brick tower dormer by default (Wouwermanstraat 6-16); Wouwermanstraat 18-24 carry the white pediment dormer.",
+ "reviewed": "2026-11-01",
+ "pins": [
+  {
+   "pandId": "0363100012102603",
+   "type": "museum-hc-1910-glazed-oriel",
+   "crown": "pediment-dormer",
+   "reason": "strip 2024-11-06: Wouwermanstraat 24 carries a white timber pediment dormer over the centre axis, not the brick tower dormer of 6-16"
+  },
+  {
+   "pandId": "0363100012107749",
+   "type": "museum-hc-1910-glazed-oriel",
+   "crown": "pediment-dormer",
+   "reason": "strip 2024-11-06: Wouwermanstraat 22 carries a white timber pediment dormer over the centre axis, not the brick tower dormer of 6-16"
+  },
+  {
+   "pandId": "0363100012079390",
+   "type": "museum-hc-1910-glazed-oriel",
+   "crown": "pediment-dormer",
+   "reason": "strip 2024-11-06: Wouwermanstraat 20 carries a white timber pediment dormer over the centre axis, not the brick tower dormer of 6-16"
+  },
+  {
+   "pandId": "0363100012114665",
+   "type": "museum-hc-1910-glazed-oriel",
+   "crown": "pediment-dormer",
+   "reason": "strip 2024-11-06: Wouwermanstraat 18 carries a white timber pediment dormer over the centre axis, not the brick tower dormer of 6-16"
+  }
+ ]
+}

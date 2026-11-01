@@ -1,6 +1,6 @@
 {
  "version": 1,
- "generatedAt": "2026-11-01T13:54:22.103Z",
+ "generatedAt": "2026-11-01T15:41:29.546Z",
  "chunks": [
   {
    "id": "chunk-face-bilder-080336-090492",
@@ -78960,6 +78960,538 @@
        "primitive": 9,
        "firstTriangle": 15,
        "triangleCount": 4
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "chunk-face-wouwerman-2-44-r1",
+   "category": "street-survey",
+   "name": "face-wouwerman-2-44-r1",
+   "modelUrl": "./models/ordinary-buildings/chunks/chunk-face-wouwerman-2-44-r1.glb?asset=d2f8dbcc97d0e141",
+   "sha256": "d2f8dbcc97d0e141dcfa973d3d313a1f7427f3e27ce8a5ec3fb07f56ccc8e777",
+   "bytes": 943696,
+   "triangles": 14233,
+   "primitives": 11,
+   "instance": {
+    "anchor": [
+     4.879513693863143,
+     52.35513554046785
+    ],
+    "northOffsetDegrees": 338.4416,
+    "mirror": false
+   },
+   "bounds": {
+    "min": [
+     -15.664,
+     0,
+     -13.24
+    ],
+    "max": [
+     15.088,
+     18.623,
+     0.694
+    ]
+   },
+   "height": 18.623,
+   "suppress": [
+    "NL.IMBAG.Pand.0363100012114665",
+    "NL.IMBAG.Pand.0363100012108114",
+    "NL.IMBAG.Pand.0363100012138798",
+    "NL.IMBAG.Pand.0363100012083474",
+    "NL.IMBAG.Pand.0363100012078941"
+   ],
+   "replaces": [
+    "ordinary-0363100012114665",
+    "ordinary-0363100012108114",
+    "ordinary-0363100012138798",
+    "ordinary-0363100012083474",
+    "ordinary-0363100012078941"
+   ],
+   "footprint": {
+    "type": "MultiPolygon",
+    "coordinates": [
+     [
+      [
+       [
+        4.879319,
+        52.3552159
+       ],
+       [
+        4.8792289,
+        52.3551941
+       ],
+       [
+        4.8793008,
+        52.3550844
+       ],
+       [
+        4.8793915,
+        52.3551058
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.8794011,
+        52.3552357
+       ],
+       [
+        4.879319,
+        52.3552159
+       ],
+       [
+        4.8793915,
+        52.3551058
+       ],
+       [
+        4.8794736,
+        52.3551257
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.8794831,
+        52.3552556
+       ],
+       [
+        4.8794011,
+        52.3552358
+       ],
+       [
+        4.8794736,
+        52.3551257
+       ],
+       [
+        4.8795556,
+        52.3551457
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.8795652,
+        52.3552754
+       ],
+       [
+        4.8794831,
+        52.3552556
+       ],
+       [
+        4.8795556,
+        52.3551456
+       ],
+       [
+        4.8796376,
+        52.3551655
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.8796472,
+        52.3552953
+       ],
+       [
+        4.8795652,
+        52.3552754
+       ],
+       [
+        4.8796376,
+        52.3551655
+       ],
+       [
+        4.8797196,
+        52.3551854
+       ]
+      ]
+     ]
+    ]
+   },
+   "pands": [
+    {
+     "recipeId": "wouwerman-114665",
+     "pandId": "0363100012114665",
+     "buildingId": "NL.IMBAG.Pand.0363100012114665",
+     "address": "Wouwermanstraat 18",
+     "frontage": {
+      "x0": -15.583,
+      "x1": -8.954,
+      "widthM": 6.628
+     },
+     "bounds": {
+      "min": [
+       -15.664,
+       0,
+       -13.22
+      ],
+      "max": [
+       -8.954,
+       17.474,
+       0.679
+      ]
+     },
+     "triangles": 2811,
+     "ranges": [
+      {
+       "primitive": 1,
+       "firstTriangle": 0,
+       "triangleCount": 60
+      },
+      {
+       "primitive": 2,
+       "firstTriangle": 0,
+       "triangleCount": 32
+      },
+      {
+       "primitive": 3,
+       "firstTriangle": 0,
+       "triangleCount": 400
+      },
+      {
+       "primitive": 4,
+       "firstTriangle": 0,
+       "triangleCount": 16
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 0,
+       "triangleCount": 1752
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 0,
+       "triangleCount": 200
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 0,
+       "triangleCount": 332
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 0,
+       "triangleCount": 7
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 0,
+       "triangleCount": 6
+      },
+      {
+       "primitive": 10,
+       "firstTriangle": 0,
+       "triangleCount": 6
+      }
+     ]
+    },
+    {
+     "recipeId": "wouwerman-108114",
+     "pandId": "0363100012108114",
+     "buildingId": "NL.IMBAG.Pand.0363100012108114",
+     "address": "Wouwermanstraat 16",
+     "frontage": {
+      "x0": -8.954,
+      "x1": -2.943,
+      "widthM": 6.011
+     },
+     "bounds": {
+      "min": [
+       -9.061,
+       0,
+       -13.226
+      ],
+      "max": [
+       -2.943,
+       18.261,
+       0.694
+      ]
+     },
+     "triangles": 2829,
+     "ranges": [
+      {
+       "primitive": 0,
+       "firstTriangle": 0,
+       "triangleCount": 78
+      },
+      {
+       "primitive": 2,
+       "firstTriangle": 32,
+       "triangleCount": 32
+      },
+      {
+       "primitive": 3,
+       "firstTriangle": 400,
+       "triangleCount": 348
+      },
+      {
+       "primitive": 4,
+       "firstTriangle": 16,
+       "triangleCount": 16
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 1752,
+       "triangleCount": 1800
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 200,
+       "triangleCount": 200
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 332,
+       "triangleCount": 324
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 7,
+       "triangleCount": 23
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 6,
+       "triangleCount": 6
+      },
+      {
+       "primitive": 10,
+       "firstTriangle": 6,
+       "triangleCount": 2
+      }
+     ]
+    },
+    {
+     "recipeId": "wouwerman-138798",
+     "pandId": "0363100012138798",
+     "buildingId": "NL.IMBAG.Pand.0363100012138798",
+     "address": "Wouwermanstraat 14",
+     "frontage": {
+      "x0": -2.943,
+      "x1": 3.067,
+      "widthM": 6.01
+     },
+     "bounds": {
+      "min": [
+       -3.048,
+       0,
+       -13.232
+      ],
+      "max": [
+       3.068,
+       18.623,
+       0.683
+      ]
+     },
+     "triangles": 2868,
+     "ranges": [
+      {
+       "primitive": 0,
+       "firstTriangle": 78,
+       "triangleCount": 82
+      },
+      {
+       "primitive": 2,
+       "firstTriangle": 64,
+       "triangleCount": 32
+      },
+      {
+       "primitive": 3,
+       "firstTriangle": 748,
+       "triangleCount": 348
+      },
+      {
+       "primitive": 4,
+       "firstTriangle": 32,
+       "triangleCount": 16
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 3552,
+       "triangleCount": 1832
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 400,
+       "triangleCount": 200
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 656,
+       "triangleCount": 332
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 30,
+       "triangleCount": 20
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 12,
+       "triangleCount": 4
+      },
+      {
+       "primitive": 10,
+       "firstTriangle": 8,
+       "triangleCount": 2
+      }
+     ]
+    },
+    {
+     "recipeId": "wouwerman-083474",
+     "pandId": "0363100012083474",
+     "buildingId": "NL.IMBAG.Pand.0363100012083474",
+     "address": "Wouwermanstraat 12",
+     "frontage": {
+      "x0": 3.067,
+      "x1": 9.078,
+      "widthM": 6.011
+     },
+     "bounds": {
+      "min": [
+       2.961,
+       0,
+       -13.236
+      ],
+      "max": [
+       9.078,
+       18.503,
+       0.671
+      ]
+     },
+     "triangles": 2858,
+     "ranges": [
+      {
+       "primitive": 0,
+       "firstTriangle": 160,
+       "triangleCount": 72
+      },
+      {
+       "primitive": 2,
+       "firstTriangle": 96,
+       "triangleCount": 32
+      },
+      {
+       "primitive": 3,
+       "firstTriangle": 1096,
+       "triangleCount": 348
+      },
+      {
+       "primitive": 4,
+       "firstTriangle": 48,
+       "triangleCount": 16
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 5384,
+       "triangleCount": 1832
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 600,
+       "triangleCount": 200
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 988,
+       "triangleCount": 332
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 50,
+       "triangleCount": 19
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 16,
+       "triangleCount": 5
+      },
+      {
+       "primitive": 10,
+       "firstTriangle": 10,
+       "triangleCount": 2
+      }
+     ]
+    },
+    {
+     "recipeId": "wouwerman-078941",
+     "pandId": "0363100012078941",
+     "buildingId": "NL.IMBAG.Pand.0363100012078941",
+     "address": "Wouwermanstraat 10",
+     "frontage": {
+      "x0": 9.078,
+      "x1": 15.088,
+      "widthM": 6.01
+     },
+     "bounds": {
+      "min": [
+       8.972,
+       0,
+       -13.24
+      ],
+      "max": [
+       15.088,
+       18.503,
+       0.66
+      ]
+     },
+     "triangles": 2867,
+     "ranges": [
+      {
+       "primitive": 0,
+       "firstTriangle": 232,
+       "triangleCount": 76
+      },
+      {
+       "primitive": 2,
+       "firstTriangle": 128,
+       "triangleCount": 32
+      },
+      {
+       "primitive": 3,
+       "firstTriangle": 1444,
+       "triangleCount": 348
+      },
+      {
+       "primitive": 4,
+       "firstTriangle": 64,
+       "triangleCount": 16
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 7216,
+       "triangleCount": 1832
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 800,
+       "triangleCount": 200
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 1320,
+       "triangleCount": 332
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 69,
+       "triangleCount": 23
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 21,
+       "triangleCount": 6
+      },
+      {
+       "primitive": 10,
+       "firstTriangle": 12,
+       "triangleCount": 2
       }
      ]
     }

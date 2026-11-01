@@ -1,0 +1,1467 @@
+{
+ "face": "wouwerman-2-44",
+ "street": "Wouwermanstraat",
+ "library": "museumkwartier",
+ "stripDate": "2024-11-06",
+ "seconds": 28.98,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [
+  {
+   "face": "wouwerman-2-44-r1",
+   "pands": [
+    "0363100012114665",
+    "0363100012108114",
+    "0363100012138798",
+    "0363100012083474",
+    "0363100012078941"
+   ],
+   "passed": true,
+   "triangles": 14233
+  }
+ ],
+ "pands": [
+  {
+   "pandId": "0363100012138486",
+   "address": "Wouwermanstraat 34",
+   "builtYear": 1910,
+   "widthM": 6.59,
+   "eavesM": 14.01,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#645646",
+    "wallRaw": "#645b47",
+    "skyline": {
+     "eavesM": 15.43,
+     "eavesRow": 216,
+     "confidence": 0.97,
+     "crown": {
+      "widthM": 1.98,
+      "riseM": 5.4,
+      "topWidthM": 0.2,
+      "centre": 0.58
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": "right",
+    "accentShare": 0.238,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0.03,
+    "foliageShare": 0.2
+   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: strip 2024-11-06: another design (1910): a brick oriel on storey 2 with flat stone-lintel heads, square house doors with transoms and no arched portal; museum-hc-1910-glazed-oriel draws segmental heads, a white glazed oriel and an arched portal",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012099898",
+   "address": "Wouwermanstraat 32",
+   "builtYear": 1910,
+   "widthM": 6.38,
+   "eavesM": 14.1,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#86786c",
+    "wallRaw": "#6d6553",
+    "skyline": {
+     "eavesM": 14.85,
+     "eavesRow": 239,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.23,
+      "riseM": 3.03,
+      "topWidthM": 0.47,
+      "centre": 0.62
+     }
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": 3,
+    "frontClass": "columns",
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.239,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 10.2,
+       "widthM": 0.88,
+       "centre": 0.93
+      },
+      {
+       "atM": 8.1,
+       "widthM": 1.23,
+       "centre": 0.59
+      },
+      {
+       "atM": 6.67,
+       "widthM": 1.2,
+       "centre": 0.27
+      },
+      {
+       "atM": 6.07,
+       "widthM": 1.13,
+       "centre": 0.61
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.28
+   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: strip 2024-11-06: another design (1910): a brick oriel on storey 2 with flat stone-lintel heads, square house doors with transoms and no arched portal; museum-hc-1910-glazed-oriel draws segmental heads, a white glazed oriel and an arched portal",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012089720",
+   "address": "Wouwermanstraat 30",
+   "builtYear": 1910,
+   "widthM": 6.73,
+   "eavesM": 14.03,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#5d5344",
+    "wallRaw": "#665c4a",
+    "skyline": {
+     "eavesM": 15.38,
+     "eavesRow": 218,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2,
+      "riseM": 2.65,
+      "topWidthM": 0.42,
+      "centre": 0.61
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.234,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 6.07,
+       "widthM": 1.3,
+       "centre": 0.59
+      }
+     ]
+    },
+    "voidShare": 0.03,
+    "foliageShare": 0.13
+   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: strip 2024-11-06: another design (1910): a brick oriel on storey 2 with flat stone-lintel heads, square house doors with transoms and no arched portal; museum-hc-1910-glazed-oriel draws segmental heads, a white glazed oriel and an arched portal",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012126652",
+   "address": "Wouwermanstraat 28",
+   "builtYear": 1910,
+   "widthM": 6.56,
+   "eavesM": 14.09,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#695745",
+    "wallRaw": "#685f4c",
+    "skyline": {
+     "eavesM": 15.4,
+     "eavesRow": 217,
+     "confidence": 0.93,
+     "crown": {
+      "widthM": 1.18,
+      "riseM": 4.62,
+      "topWidthM": 0.23,
+      "centre": 0.5
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.241,
+    "structure": {
+     "bayWidthM": 1,
+     "bayCentre": 0.56,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 8.32,
+       "widthM": 1.05,
+       "centre": 0.55
+      },
+      {
+       "atM": 6.82,
+       "widthM": 1.23,
+       "centre": 0.22
+      },
+      {
+       "atM": 6.07,
+       "widthM": 1.2,
+       "centre": 0.54
+      }
+     ]
+    },
+    "voidShare": 0.03,
+    "foliageShare": 0.18
+   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: strip 2024-11-06: another design (1910): a brick oriel on storey 2 with flat stone-lintel heads, square house doors with transoms and no arched portal; museum-hc-1910-glazed-oriel draws segmental heads, a white glazed oriel and an arched portal",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012063908",
+   "address": "Wouwermanstraat 26",
+   "builtYear": 1910,
+   "widthM": 6.57,
+   "eavesM": 14.02,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#4e4333",
+    "wallRaw": "#5a5543",
+    "skyline": {
+     "eavesM": 15.53,
+     "eavesRow": 212,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.48,
+      "riseM": 4.92,
+      "topWidthM": 0.47,
+      "centre": 0.5
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.123,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 6.15,
+       "widthM": 1.65,
+       "centre": 0.59
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.24
+   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: strip 2024-11-06: another design (1910): a brick oriel on storey 2 with flat stone-lintel heads, square house doors with transoms and no arched portal; museum-hc-1910-glazed-oriel draws segmental heads, a white glazed oriel and an arched portal",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012102603",
+   "address": "Wouwermanstraat 24",
+   "builtYear": 1910,
+   "widthM": 6.17,
+   "eavesM": 14,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#bf9669",
+    "wallRaw": "#77684c",
+    "skyline": {
+     "eavesM": 15.53,
+     "eavesRow": 212,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.4,
+      "riseM": 2.12,
+      "topWidthM": 1.1,
+      "centre": 0.52
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "curtain",
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.263,
+    "structure": {
+     "bayWidthM": 1.18,
+     "bayCentre": 0.89,
+     "balconies": true,
+     "why": "dark open axis 1.05 m at 0.5 (light 0.33): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 1.05,
+       "centre": 0.5,
+       "light": 0.33
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 7.02,
+       "widthM": 1.02,
+       "centre": 0.89
+      }
+     ]
+    },
+    "voidShare": 0.09,
+    "foliageShare": 0.21
+   },
+   "status": "held",
+   "stage": "likeness",
+   "reason": "edge NCC 0.126 < 0.15 (photo vs model body; likeness.ts FAIL: wall dL +0.28; glazing storey band off by 0.53 mean 0.55 vs photo 0.12)",
+   "likeness": {
+    "pandId": "0363100012102603",
+    "ncc": 0.126,
+    "nccRaw": 0.126,
+    "shiftM": [
+     0.4,
+     0.25
+    ],
+    "usable": 0.53,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "wall dL +0.28",
+     "glazing storey band off by 0.53 mean 0.55 vs photo 0.12"
+    ],
+    "wall": {
+     "photo": "#6c5638",
+     "model": "#c29b70",
+     "dL": 0.278
+    },
+    "glazing": {
+     "photo": 0.12,
+     "model": 0.55
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.225
+   },
+   "challengers": {
+    "museum-hc-1910-glazed-oriel": 0.126
+   }
+  },
+  {
+   "pandId": "0363100012107749",
+   "address": "Wouwermanstraat 22",
+   "builtYear": 1910,
+   "widthM": 6.6,
+   "eavesM": 14.15,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#ae9367",
+    "wallRaw": "#7c6f52",
+    "skyline": {
+     "eavesM": 15.4,
+     "eavesRow": 217,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.42,
+      "riseM": 2.62,
+      "topWidthM": 0.8,
+      "centre": 0.58
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "curtain",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.287,
+    "structure": {
+     "bayWidthM": 1.1,
+     "bayCentre": 0.89,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 10.47,
+       "widthM": 1.3,
+       "centre": 0.21
+      },
+      {
+       "atM": 7.85,
+       "widthM": 1.07,
+       "centre": 0.88
+      }
+     ]
+    },
+    "voidShare": 0.03,
+    "foliageShare": 0.26
+   },
+   "status": "held",
+   "stage": "likeness",
+   "reason": "edge NCC 0.133 < 0.15 (photo vs model body; likeness.ts NO EVIDENCE: foliage 26 % > 25 %)",
+   "likeness": {
+    "pandId": "0363100012107749",
+    "ncc": 0.133,
+    "nccRaw": 0.133,
+    "shiftM": [
+     0.35,
+     0.2
+    ],
+    "usable": 0.58,
+    "abstain": null,
+    "verdict": "NO EVIDENCE",
+    "reasons": [
+     "foliage 26 % > 25 %"
+    ],
+    "wall": {
+     "photo": "#ab9167",
+     "model": "#b8a07a",
+     "dL": 0.063
+    },
+    "glazing": {
+     "photo": 0.18,
+     "model": 0.52
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.419
+   },
+   "challengers": {
+    "museum-hc-1910-glazed-oriel": 0.133
+   }
+  },
+  {
+   "pandId": "0363100012079390",
+   "address": "Wouwermanstraat 20",
+   "builtYear": 1910,
+   "widthM": 6.6,
+   "eavesM": 14.16,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#735f3e",
+    "wallRaw": "#766d4d",
+    "skyline": {
+     "eavesM": 15.55,
+     "eavesRow": 211,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.4,
+      "riseM": 3.68,
+      "topWidthM": 0.2,
+      "centre": 0.55
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.253,
+    "structure": {
+     "bayWidthM": 1.07,
+     "bayCentre": 0.2,
+     "balconies": true,
+     "why": "dark open axis 1.23 m at 0.55 (light 0.31): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 1.23,
+       "centre": 0.55,
+       "light": 0.31
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 10.5,
+       "widthM": 0.8,
+       "centre": 0.88
+      },
+      {
+       "atM": 7.05,
+       "widthM": 0.8,
+       "centre": 0.88
+      },
+      {
+       "atM": 6.22,
+       "widthM": 1.1,
+       "centre": 0.88
+      }
+     ]
+    },
+    "voidShare": 0.06,
+    "foliageShare": 0.25
+   },
+   "status": "held",
+   "stage": "likeness",
+   "reason": "edge NCC 0.135 < 0.15 (photo vs model body; likeness.ts NO EVIDENCE: foliage 26 % > 25 %)",
+   "likeness": {
+    "pandId": "0363100012079390",
+    "ncc": 0.135,
+    "nccRaw": 0.135,
+    "shiftM": [
+     0.35,
+     0.3
+    ],
+    "usable": 0.53,
+    "abstain": null,
+    "verdict": "NO EVIDENCE",
+    "reasons": [
+     "foliage 26 % > 25 %"
+    ],
+    "wall": {
+     "photo": "#75603f",
+     "model": "#8f764d",
+     "dL": 0.078
+    },
+    "glazing": {
+     "photo": 0.13,
+     "model": 0.52
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.301
+   },
+   "challengers": {
+    "museum-hc-1910-glazed-oriel": 0.135
+   }
+  },
+  {
+   "pandId": "0363100012114665",
+   "address": "Wouwermanstraat 18",
+   "builtYear": 1910,
+   "widthM": 6.63,
+   "eavesM": 14.24,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#765541",
+    "wallRaw": "#765b46",
+    "skyline": {
+     "eavesM": 15.22,
+     "eavesRow": 224,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.42,
+      "riseM": 2.42,
+      "topWidthM": 1.43,
+      "centre": 0.51
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.262,
+    "structure": {
+     "bayWidthM": 1.13,
+     "bayCentre": 0.18,
+     "balconies": true,
+     "why": "dark open axis 1.07 m at 0.53 (light 0.35): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 1.07,
+       "centre": 0.53,
+       "light": 0.35
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 10.5,
+       "widthM": 1.25,
+       "centre": 0.86
+      }
+     ]
+    },
+    "voidShare": 0.04,
+    "foliageShare": 0.15
+   },
+   "status": "placed",
+   "type": "museum-hc-1910-glazed-oriel",
+   "score": 1,
+   "runnerUp": {
+    "typeId": "museum-de-1899-corbel-cornice",
+    "score": 0
+   },
+   "placement": {
+    "type": "museum-hc-1910-glazed-oriel",
+    "ground": "door-left",
+    "measuredPalette": {
+     "brick": "#765541",
+     "evidence": "strip 2024-11-06 span 2088-2353: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "crown": "pediment-dormer"
+   },
+   "notes": [
+    "crown pediment-dormer: reviewer pin (strip 2024-11-06: Wouwermanstraat 18 carries a white timber pediment dormer over the centre axis, not the brick tower dormer of 6-16)"
+   ],
+   "likeness": {
+    "pandId": "0363100012114665",
+    "ncc": 0.177,
+    "nccRaw": 0.177,
+    "shiftM": [
+     0.15,
+     0
+    ],
+    "usable": 0.65,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.24 mean 0.52 vs photo 0.40"
+    ],
+    "wall": {
+     "photo": "#855d47",
+     "model": "#926950",
+     "dL": 0.043
+    },
+    "glazing": {
+     "photo": 0.4,
+     "model": 0.52
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.639
+   },
+   "challengers": {
+    "museum-hc-1910-glazed-oriel": 0.195
+   }
+  },
+  {
+   "pandId": "0363100012108114",
+   "address": "Wouwermanstraat 16",
+   "builtYear": 1911,
+   "widthM": 6.01,
+   "eavesM": 14.43,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#6b6152",
+    "wallRaw": "#6f6654",
+    "skyline": {
+     "eavesM": 15.18,
+     "eavesRow": 226,
+     "confidence": 0.96,
+     "crown": {
+      "widthM": 2.38,
+      "riseM": 5.65,
+      "topWidthM": 0.2,
+      "centre": 0.53
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "curtain",
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.314,
+    "structure": {
+     "bayWidthM": 0.95,
+     "bayCentre": 0.55,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 10.52,
+       "widthM": 1.2,
+       "centre": 0.17
+      },
+      {
+       "atM": 7.82,
+       "widthM": 1.05,
+       "centre": 0.15
+      },
+      {
+       "atM": 7.15,
+       "widthM": 1.27,
+       "centre": 0.17
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.26
+   },
+   "status": "placed",
+   "type": "museum-hc-1910-glazed-oriel",
+   "score": 1,
+   "runnerUp": {
+    "typeId": "museum-de-1899-corbel-cornice",
+    "score": 0
+   },
+   "placement": {
+    "type": "museum-hc-1910-glazed-oriel",
+    "ground": "door-left",
+    "measuredPalette": {
+     "brick": "#6b6152",
+     "evidence": "strip 2024-11-06 span 2353-2593: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "crown tower-dormer (type default)"
+   ],
+   "likeness": {
+    "pandId": "0363100012108114",
+    "ncc": 0.252,
+    "nccRaw": 0.252,
+    "shiftM": [
+     0.2,
+     0
+    ],
+    "usable": 0.54,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.47 mean 0.53 vs photo 0.15"
+    ],
+    "wall": {
+     "photo": "#6e6050",
+     "model": "#837764",
+     "dL": 0.08
+    },
+    "glazing": {
+     "photo": 0.15,
+     "model": 0.53
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.323
+   },
+   "challengers": {
+    "museum-hc-1910-glazed-oriel": 0.267
+   }
+  },
+  {
+   "pandId": "0363100012138798",
+   "address": "Wouwermanstraat 14",
+   "builtYear": 1911,
+   "widthM": 6.01,
+   "eavesM": 14.33,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#3c3628",
+    "wallRaw": "#635c4a",
+    "skyline": {
+     "eavesM": 15.47,
+     "eavesRow": 214,
+     "confidence": 0.93,
+     "crown": {
+      "widthM": 2.42,
+      "riseM": 5.35,
+      "topWidthM": 0.45,
+      "centre": 0.53
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": "left",
+    "accentSide": "right",
+    "accentShare": 0.247,
+    "structure": {
+     "bayWidthM": 0.7,
+     "bayCentre": 0.86,
+     "balconies": false,
+     "why": "no dark open axis, 2 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 10.5,
+       "widthM": 1.2,
+       "centre": 0.88
+      },
+      {
+       "atM": 7.13,
+       "widthM": 1.25,
+       "centre": 0.17
+      },
+      {
+       "atM": 6.22,
+       "widthM": 1.98,
+       "centre": 0.53
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.23
+   },
+   "status": "placed",
+   "type": "museum-hc-1910-glazed-oriel",
+   "score": 1,
+   "runnerUp": {
+    "typeId": "museum-de-1899-corbel-cornice",
+    "score": 0
+   },
+   "placement": {
+    "type": "museum-hc-1910-glazed-oriel",
+    "ground": "door-left",
+    "measuredPalette": {
+     "brick": "#3c3628",
+     "evidence": "strip 2024-11-06 span 2593-2833: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "crown tower-dormer (type default)"
+   ],
+   "likeness": {
+    "pandId": "0363100012138798",
+    "ncc": 0.172,
+    "nccRaw": 0.172,
+    "shiftM": [
+     0.15,
+     0.25
+    ],
+    "usable": 0.6,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "wall hue 14 deg",
+     "glazing storey band off by 0.33",
+     "columns 3 vs photo 4"
+    ],
+    "wall": {
+     "photo": "#736456",
+     "model": "#5c533d",
+     "dL": -0.094
+    },
+    "glazing": {
+     "photo": 0.48,
+     "model": 0.53
+    },
+    "columns": {
+     "photo": 4,
+     "model": 3
+    },
+    "iou": 0.549
+   },
+   "challengers": {
+    "museum-hc-1910-glazed-oriel": 0.189
+   }
+  },
+  {
+   "pandId": "0363100012083474",
+   "address": "Wouwermanstraat 12",
+   "builtYear": 1911,
+   "widthM": 6.01,
+   "eavesM": 14.21,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#796454",
+    "wallRaw": "#80735e",
+    "skyline": {
+     "eavesM": 15.38,
+     "eavesRow": 218,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.02,
+      "riseM": 3.05,
+      "topWidthM": 1.65,
+      "centre": 0.56
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "columns",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.287,
+    "structure": {
+     "bayWidthM": 0.78,
+     "bayCentre": 0.2,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 10.47,
+       "widthM": 1.2,
+       "centre": 0.2
+      },
+      {
+       "atM": 7.1,
+       "widthM": 1.18,
+       "centre": 0.89
+      }
+     ]
+    },
+    "voidShare": 0.07,
+    "foliageShare": 0.15
+   },
+   "status": "placed",
+   "type": "museum-hc-1910-glazed-oriel",
+   "score": 1,
+   "runnerUp": {
+    "typeId": "museum-de-1899-corbel-cornice",
+    "score": 0
+   },
+   "placement": {
+    "type": "museum-hc-1910-glazed-oriel",
+    "measuredPalette": {
+     "brick": "#796454",
+     "evidence": "strip 2024-11-06 span 2834-3074: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "crown tower-dormer (type default)"
+   ],
+   "likeness": {
+    "pandId": "0363100012083474",
+    "ncc": 0.24,
+    "nccRaw": 0.24,
+    "shiftM": [
+     0.25,
+     0.15
+    ],
+    "usable": 0.63,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.40 mean 0.53 vs photo 0.20"
+    ],
+    "wall": {
+     "photo": "#6d5d4e",
+     "model": "#917865",
+     "dL": 0.116
+    },
+    "glazing": {
+     "photo": 0.2,
+     "model": 0.53
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.388
+   },
+   "challengers": {
+    "museum-hc-1910-glazed-oriel": 0.238
+   }
+  },
+  {
+   "pandId": "0363100012078941",
+   "address": "Wouwermanstraat 10",
+   "builtYear": 1911,
+   "widthM": 6.01,
+   "eavesM": 14.14,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#685847",
+    "wallRaw": "#645e4c",
+    "skyline": {
+     "eavesM": 15.38,
+     "eavesRow": 218,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.4,
+      "riseM": 2.68,
+      "topWidthM": 2.33,
+      "centre": 0.53
+     }
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": "left",
+    "accentSide": "right",
+    "accentShare": 0.168,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 10.47,
+       "widthM": 1.18,
+       "centre": 0.85
+      },
+      {
+       "atM": 7.1,
+       "widthM": 1.23,
+       "centre": 0.85
+      }
+     ]
+    },
+    "voidShare": 0.01,
+    "foliageShare": 0.31
+   },
+   "status": "placed",
+   "type": "museum-hc-1910-glazed-oriel",
+   "score": 1,
+   "runnerUp": {
+    "typeId": "museum-de-1899-corbel-cornice",
+    "score": 0
+   },
+   "placement": {
+    "type": "museum-hc-1910-glazed-oriel",
+    "ground": "door-left"
+   },
+   "notes": [
+    "crown tower-dormer (type default)",
+    "no photo evidence of its own (usable photo 48 % < 50 %); placed on row evidence from 083474",
+    "no photo evidence of its own (usable photo 48 % < 50 %); placed on row evidence from 083474"
+   ],
+   "likeness": {
+    "pandId": "0363100012078941",
+    "ncc": null,
+    "nccRaw": 0.179,
+    "shiftM": [
+     0.05,
+     0.2
+    ],
+    "usable": 0.48,
+    "abstain": "usable photo 48 % < 50 %",
+    "verdict": "NO EVIDENCE",
+    "reasons": [
+     "foliage 27 % > 25 %"
+    ],
+    "wall": {
+     "photo": "#796754",
+     "model": "#866551",
+     "dL": 0.02
+    },
+    "glazing": {
+     "photo": 0.41,
+     "model": 0.53
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.671
+   },
+   "challengers": {
+    "museum-hc-1910-glazed-oriel": null
+   }
+  },
+  {
+   "pandId": "0363100012090555",
+   "address": "Wouwermanstraat 8",
+   "builtYear": 1911,
+   "widthM": 6.01,
+   "eavesM": 14.23,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#221e12",
+    "wallRaw": "#686351",
+    "skyline": {
+     "eavesM": 15.43,
+     "eavesRow": 216,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.42,
+      "riseM": 3.02,
+      "topWidthM": 1.4,
+      "centre": 0.52
+     }
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": 3,
+    "frontClass": "columns",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.276,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 10.55,
+       "widthM": 1.2,
+       "centre": 0.15
+      },
+      {
+       "atM": 7.1,
+       "widthM": 1.2,
+       "centre": 0.15
+      }
+     ]
+    },
+    "voidShare": 0.02,
+    "foliageShare": 0.36
+   },
+   "status": "held",
+   "stage": "likeness",
+   "reason": "no photo evidence (usable photo 41 % < 50 %) and no passing same-type neighbour",
+   "likeness": {
+    "pandId": "0363100012090555",
+    "ncc": null,
+    "nccRaw": 0.274,
+    "shiftM": [
+     0,
+     0.2
+    ],
+    "usable": 0.41,
+    "abstain": "usable photo 41 % < 50 %",
+    "verdict": "NO EVIDENCE",
+    "reasons": [
+     "foliage 31 % > 25 %"
+    ],
+    "wall": {
+     "photo": "#2a2619",
+     "model": "#866551",
+     "dL": 0.29
+    },
+    "glazing": {
+     "photo": 0.44,
+     "model": 0.53
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.361
+   },
+   "challengers": {
+    "museum-hc-1910-glazed-oriel": null
+   }
+  },
+  {
+   "pandId": "0363100012151501",
+   "address": "Wouwermanstraat 6",
+   "builtYear": 1911,
+   "widthM": 6.01,
+   "eavesM": 14.44,
+   "storeys3dbag": 0,
+   "bagBay": null,
+   "strip": {
+    "wall": "#3c3525",
+    "wallRaw": "#625c4c",
+    "skyline": {
+     "eavesM": 15.43,
+     "eavesRow": 216,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.27,
+      "riseM": 3.02,
+      "topWidthM": 1.6,
+      "centre": 0.49
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0.189,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 10.52,
+       "widthM": 1.18,
+       "centre": 0.13
+      },
+      {
+       "atM": 7.15,
+       "widthM": 1.35,
+       "centre": 0.83
+      },
+      {
+       "atM": 4.82,
+       "widthM": 1,
+       "centre": 0.85
+      }
+     ]
+    },
+    "voidShare": 0.05,
+    "foliageShare": 0.27
+   },
+   "status": "held",
+   "stage": "likeness",
+   "reason": "no photo evidence (usable photo 49 % < 50 %) and no passing same-type neighbour",
+   "likeness": {
+    "pandId": "0363100012151501",
+    "ncc": null,
+    "nccRaw": 0.134,
+    "shiftM": [
+     -0.15,
+     0.2
+    ],
+    "usable": 0.49,
+    "abstain": "usable photo 49 % < 50 %",
+    "verdict": "FAIL",
+    "reasons": [
+     "wall dL +0.17",
+     "glazing storey band off by 0.52 mean 0.53 vs photo 0.11",
+     "wall family unresolved (#2b2719 is dark and neutral, brick courses not resolved): lightness and hue judged only"
+    ],
+    "wall": {
+     "photo": "#2b2719",
+     "model": "#5f543a",
+     "dL": 0.167
+    },
+    "glazing": {
+     "photo": 0.11,
+     "model": 0.53
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.249
+   },
+   "challengers": {
+    "museum-hc-1910-glazed-oriel": null
+   }
+  },
+  {
+   "pandId": "0363100012145801",
+   "address": "Wouwermanstraat 4",
+   "builtYear": 1908,
+   "widthM": 6.01,
+   "eavesM": 14.55,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#5d4d40",
+    "wallRaw": "#645a49",
+    "skyline": {
+     "eavesM": 15.25,
+     "eavesRow": 223,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2,
+      "riseM": 3.18,
+      "topWidthM": 0.23,
+      "centre": 0.55
+     }
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": 3,
+    "frontClass": "columns",
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0.208,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 10.43,
+       "widthM": 1.23,
+       "centre": 0.22
+      },
+      {
+       "atM": 7.05,
+       "widthM": 0.93,
+       "centre": 0.51
+      }
+     ]
+    },
+    "voidShare": 0.03,
+    "foliageShare": 0.16
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best museum-de-1899-corbel-cornice: built 1908, type 1898-1901)",
+   "best": {
+    "type": "museum-de-1899-corbel-cornice",
+    "score": 0,
+    "veto": [
+     "built 1908, type 1898-1901"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0.5,
+      "note": "strip cornice 15.25 m vs the type's 13.4 m (wall-dormer skyline 14.7 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.159 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012137088",
+   "address": "Wouwermanstraat 2",
+   "builtYear": 1908,
+   "widthM": 6.09,
+   "eavesM": 14.53,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#605044",
+    "wallRaw": "#5d5343",
+    "skyline": {
+     "eavesM": 14.93,
+     "eavesRow": 236,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.38,
+      "riseM": 3.13,
+      "topWidthM": 0.4,
+      "centre": 0.58
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "columns",
+    "doorSide": "right",
+    "accentSide": "right",
+    "accentShare": 0.168,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 10.47,
+       "widthM": 1.13,
+       "centre": 0.6
+      },
+      {
+       "atM": 7.1,
+       "widthM": 1.43,
+       "centre": 0.62
+      }
+     ]
+    },
+    "voidShare": 0.01,
+    "foliageShare": 0.25
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best museum-de-1899-corbel-cornice: built 1908, type 1898-1901)",
+   "best": {
+    "type": "museum-de-1899-corbel-cornice",
+    "score": 0,
+    "veto": [
+     "built 1908, type 1898-1901"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "strip cornice 14.93 m vs the type's 13.4 m (wall-dormer skyline 14.7 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.138 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}
