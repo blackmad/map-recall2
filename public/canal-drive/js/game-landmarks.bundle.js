@@ -5465,6 +5465,106 @@ ${register}` : detail,
         52.3686724,
         4.8944688
       ]
+    },
+    {
+      modelId: "kiosk-dr-falafel",
+      landmarkId: "osm_food_6428422982",
+      name: "Dr. Falafel",
+      funFact: "Dr. Falafel sells falafel from a glass kiosk registered in 2016 on the Nassaukade corner at the Kinkerstraat bridge, takeaway only, with its name lettered on the glass.",
+      sourceUrl: "https://www.openstreetmap.org/node/6428422982",
+      additionalSources: [
+        "https://api.data.amsterdam.nl/v1/bag/panden/0363100012243757/",
+        "https://www.drfalafel.nl"
+      ],
+      center: [
+        52.3683327,
+        4.8766878
+      ]
+    },
+    {
+      modelId: "kiosk-mr-blou",
+      landmarkId: "osm_food_9039944077",
+      name: "Mr Blou I Love You",
+      funFact: "Mr Blou I Love You serves only vegan food, falafel, salads and juices, from a grey kiosk on the wide Elandsgracht pavement by the Marnixstraat, its name lettered on a cream board over the counter.",
+      sourceUrl: "https://www.openstreetmap.org/node/9039944077",
+      additionalSources: [
+        "https://www.instagram.com/mrblouiloveyou"
+      ],
+      center: [
+        52.3689948,
+        4.8775567
+      ]
+    },
+    {
+      modelId: "kiosk-dumplings-nassauplein",
+      landmarkId: "osm_food_6426744735",
+      name: "Dumplings (Nassauplein)",
+      funFact: "This 2016 glass kiosk on the Nassauplein, by the bridge into the Westerpark, sells Chinese dumplings and jianbing pancakes; red windscreens stand in front of its glass and grass grows on its roof.",
+      sourceUrl: "https://www.openstreetmap.org/node/6426744735",
+      additionalSources: [
+        "https://api.data.amsterdam.nl/v1/bag/panden/0363100012243758/"
+      ],
+      center: [
+        52.3854454,
+        4.880979
+      ]
+    },
+    {
+      modelId: "kiosk-frens-haringhandel",
+      landmarkId: "osm_food_2179747557",
+      name: "Frens Haringhandel",
+      funFact: "Frens Haringhandel has sold herring from its navy kiosk on the Koningsplein, at the head of the Leidsestraat by the Bloemenmarkt, since the kiosk was registered in 1983; at night diamond-lattice grilles close it up.",
+      sourceUrl: "https://www.openstreetmap.org/way/266907976",
+      additionalSources: [
+        "https://api.data.amsterdam.nl/v1/bag/panden/0363100012176251/"
+      ],
+      center: [
+        52.3672889,
+        4.889437
+      ]
+    },
+    {
+      modelId: "kiosk-stubbes-haring",
+      landmarkId: "osm_food_5203239222",
+      name: "Stubbe's Haring",
+      funFact: "Stubbe's Haring sells herring from a white stall on the Haarlemmersluis, the Singel lock bridge by Centraal Station; its pitch was registered as a BAG standplaats in 2016, and a STUBBE HARING board with two leaping fish rides its roof.",
+      sourceUrl: "https://www.openstreetmap.org/node/5203239222",
+      additionalSources: [
+        "https://api.data.amsterdam.nl/v1/bag/standplaatsen/0363030011957763/"
+      ],
+      center: [
+        52.3790639,
+        4.8942367
+      ]
+    },
+    {
+      modelId: "kiosk-haringhandel-jonk",
+      landmarkId: "osm_food_9860683033",
+      name: "Haringhandel Jonk",
+      funFact: "Haringhandel Jonk sells Volendam herring from a dark green kiosk on the Spui, registered with BAG in 2018; when it is shut, its roller shutters carry the JONK fish logo on three sides.",
+      sourceUrl: "https://www.openstreetmap.org/node/9860683033",
+      additionalSources: [
+        "https://api.data.amsterdam.nl/v1/bag/panden/0363100012247454/",
+        "https://haringhandeljonk.com/"
+      ],
+      center: [
+        52.368854,
+        4.890787
+      ]
+    },
+    {
+      modelId: "kiosk-museumplein",
+      landmarkId: "osm_cafe_6657813385",
+      name: "Kiosk Rembrandt Van Gogh",
+      funFact: "This dark kiosk on the Museumplein corner of the Paulus Potterstraat, registered in BAG in 2000, sells coffee to museum queues; its long side is a wall of posters, among them a Rembrandt portrait and a cup labelled Kiosk Rembrandt Museumplein Amsterdam.",
+      sourceUrl: "https://www.openstreetmap.org/node/6657813385",
+      additionalSources: [
+        "https://api.data.amsterdam.nl/v1/bag/panden/0363100012151388/"
+      ],
+      center: [
+        52.3592532,
+        4.8831423
+      ]
     }
   ];
 
