@@ -135,6 +135,14 @@ export interface TypeMatchRule {
    * `axisPitchM`). Absent = the house rule, byte-identical.
    */
   frontage?: StairBlockFrontage;
+  /**
+   * A placed pand of this type that is a run of one (held or unplaced neighbours, or the face end on both sides) stands
+   * on its own as a one-house face when its BAG frontage is at least `minWidthM` (`placedRuns`, `lonePandReason`). For
+   * stair-block rows, where a BAG pand is a whole stair block of one design (Transvaalbuurt 1908-1914 and 1921-1923:
+   * 57 pands held as lone runs in round 3, #156). Narrower pands keep the rule: a 4-5 m pand alone is more often a
+   * misread than a house. Absent = a run of one is held, byte-identical (Bellamy and every other library).
+   */
+  lonePand?: {minWidthM: number};
   note?: string;
 }
 
@@ -611,11 +619,32 @@ export function ribbonRowHolds(decisions: Decision[], types: MatchableType[], ev
   return held;
 }
 
-/** Contiguous runs of placed pands (street order); a run of one cannot be a face and is held. */
-export function placedRuns(decisions: Decision[]): {runs: Placed[][]; orphans: Held[]} {
+/**
+ * Why a placed pand may stand alone as a one-house face (`TypeMatchRule.lonePand`), or null: its type opts in and its
+ * BAG frontage reaches the type's `minWidthM`.
+ */
+export function lonePandReason(t: Pick<MatchableType, 'id' | 'match'> | undefined, widthM: number | undefined): string | null {
+  const min = t?.match?.lonePand?.minWidthM;
+  if (min === undefined || widthM === undefined || !(widthM >= min)) return null;
+  return `a stair block on its own: ${t!.id} opts in to one-house faces from ${min} m (frontage ${r2(widthM)} m)`;
+}
+
+/**
+ * Contiguous runs of placed pands (street order); a run of one cannot be a face and is held, unless `lone` gives a
+ * reason it stands on its own (`lonePandReason`; absent = every run of one is held, byte-identical).
+ */
+export function placedRuns(decisions: Decision[], lone?: (p: Placed) => string | null): {runs: Placed[][]; orphans: Held[]} {
   const runs: Placed[][] = [], orphans: Held[] = [];
   let cur: Placed[] = [];
-  const flush = () => { if (cur.length >= 2) runs.push(cur); else for (const p of cur) orphans.push({pandId: p.pandId, address: p.house.address, stage: 'run', reason: 'a single placed pand between held neighbours or the face end: a block face needs two houses'}); cur = []; };
+  const flush = () => {
+    if (cur.length >= 2) runs.push(cur);
+    else for (const p of cur) {
+      const why = lone?.(p);
+      if (why) { if (!p.notes.includes(`lone pand: ${why}`)) p.notes.push(`lone pand: ${why}`); runs.push([p]); }
+      else orphans.push({pandId: p.pandId, address: p.house.address, stage: 'run', reason: 'a single placed pand between held neighbours or the face end: a block face needs two houses'});
+    }
+    cur = [];
+  };
   for (const d of decisions) { if (d.kind === 'placed') cur.push(d); else flush(); }
   flush();
   return {runs, orphans};
@@ -630,5 +659,7 @@ export function runIntent(o: {id: string; street: string; stripDate: string; str
     types: o.types.filter(t => used.includes(t)),
     houses: o.run.map(p => p.house),
     continuity: {streetLevel: 'shared', corniceGroups: [], identical: [], partyClip: true,
-      roof: {source: 'recipe', pitchDeg: 30, evidence: 'auto-place: low attic behind the cornice; the strips show sky over the cornices of the type rows'}}};
+      roof: {source: 'recipe', pitchDeg: 30, evidence: 'auto-place: low attic behind the cornice; the strips show sky over the cornices of the type rows'},
+      // A run of one exists only when its type opted in (placedRuns `lone`); its note names why.
+      ...(o.run.length === 1 ? {lonePand: {evidence: o.run[0].notes.find(n => n.startsWith('lone pand: '))?.slice(11) ?? 'a stair block on its own'}} : {})}};
 }
