@@ -1,5 +1,20 @@
 # Canal Recall — what is built
 
+**Toon look step 1 behind `?look=toon`: the existing Cartoon buildings look plus one full-frame palette pass (2026-11-01, #161).**
+Materials (53d5299d8). `engine/toonLook.ts` starts the own engine on the Cartoon
+buildings look (an explicit `?buildings3d=` still wins) and adds a FrameHost
+`post` hook: one framebuffer copy, then one full-screen draw that pushes chroma
+away from each pixel's luma (×1.45) and pulls luma 70 % toward 8 bands. It runs
+last, so measured tints and the #179 roof cap are its input; the top band never
+rounds a capped white up to 255 (tested). Off, nothing is created and the host
+only checks for the hook. It is a flag only, so there is no What's New note
+yet. The look review accepted it as a first step; a uniform ×1.45 also
+saturates greys and whites, so step 2 makes the saturation chroma-aware (greys
+and whites stay neutral, brick gets the push, hue never rotates) before cel
+bands, outlines and a flat sky. Whether the colours feel invented is the
+question put to the user. Five default-vs-toon strips are on #161 for the user.
+Integrator: engine bundle rebuilt; test:engine 128/128.
+
 **Bright white flat roofs no longer clip to pure white: a measured flat roof is capped at tint luma 212, so the lit roof stays under its orthophoto (2026-11-01, #179).**
 Materials (bcc38403a, spec limit 4efb2a0e7). Da Costakade, pand
 0363100012143235, measured #e6e6ef: `roofSlotHex` kept it inside the white-membrane

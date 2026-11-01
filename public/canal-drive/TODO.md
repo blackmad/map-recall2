@@ -274,7 +274,8 @@ target ≤ 0.70 M MET**, desktop 1.33 M; the shading flip was a harness
 elevation bug, fixed; facade mask R8 merged 2026-11-01 (`f3f6ff157`, HISTORY
 "The facade mask uploads as R8"): iPhone atlas 21.67 MB, budget back to 22;
 too-white roofs #179 fixed 2026-11-01 (bcc38403a, HISTORY "Bright white flat
-roofs no longer clip"); materials next: cartoon look #161); the 150/400 m
+roofs no longer clip"); toon look step 1 merged 2026-11-01 behind `?look=toon`
+(53d5299d8, HISTORY "Toon look step 1"); materials next: toon step 2 (#161)); the 150/400 m
 facade LOD is parked (60–100k, 5–8 %, not worth its likeness risk yet). In-frame
 shader links are 0. P5 follow-ups: delete
 `building-tiles/` and `bag-tiles/` after a week of Sentry quiet on the
@@ -322,7 +323,10 @@ commit on its branch (engineFlag default + wantsMapLibre + query-table tests +
 have been live for a day, and watches the 48 h bar. Pin harness: the shading flip was an unpinned
 camera elevation, fixed in the spec (d80ab4245); trees are pinnable. **User
 asks (2026-11-01):** a first-person riding camera (#171, small opus lane after
-the flip), the cartoon look mode (#161, materials queue), road gaps at bridges
+the flip), the cartoon look mode (#161: step 1 merged behind `?look=toon`,
+strips on #161 for the user's verdict; step 2 = chroma-aware saturation so
+greys and whites stay neutral, brick gets the push and hue never rotates, band
+count as a flag, then cel bands, outlines and a flat sky), road gaps at bridges
 (#178, opus lane `road-bridge-gaps-20261101`: measurement merged 2026-11-01,
 96c951790, HISTORY "Road gaps on bridges measured city-wide"; 1,293 of 2,418
 canal-scale bridge ways show ≥ 5 m² of carriageway gap; fixes approved behind
@@ -488,8 +492,6 @@ kept after upload 27.1 MB (materials, after ground step 2); landmark CPU
 arrays 11.6 → 11.2 MB done (69544e547; the interleaved GLB buffers, ~3.8 MB
 on iPhone, are parked). The no-maplibre `package.json` diff loads
 clean and waits for the flip (lane scratch `no-maplibre-package.diff`).
-**Parked idea (user, 2026-11-01): a cartoon / low-fi high-colour look mode
-with no new models — issue #161, a materials lane after the own-ground steps.
 **Step 5b merged
 2026-10-31** (HISTORY "The road-graph build is 40 % faster"): number keys and
 a stamp dedupe in the build, `scripts/time-to-ride-phases.mjs` for the
