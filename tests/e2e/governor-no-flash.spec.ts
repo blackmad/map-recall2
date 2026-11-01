@@ -1,6 +1,7 @@
 import { test, expect } from '@playwright/test';
 import jpeg from 'jpeg-js';
 import { openRoute } from './helpers';
+import { OWN } from './worldCam';
 
 // White flashes while riding (issue #64, 2026-10-25). The render governor took its pixel-ratio steps inside the
 // map's `render` event, after the frame was drawn: resizing the canvas cleared it and the browser composited the
@@ -20,7 +21,10 @@ const meanLuma = (b64: string): number => {
 test('render-governor pixel-ratio steps never put an empty (white) canvas on screen', async ({ page }, info) => {
   test.skip(info.project.name !== 'desktop', 'desktop high-DPI governor path');
   test.setTimeout(300_000);
-  await openRoute(page, { travelMode: 'car', viewMode: 'chase', abortHeavyTiles: false, enterRacing: false, playerTimeoutMs: 180_000 });
+  // The own engine starts at its quality tier's pixel-ratio cap (renderGovernor.ts TIER_SETTINGS; headless desktop
+  // probes as mid, 1.5); `?tier=high` pins the uncapped tier so the governor's own 2 -> 1.5 -> 1.13 steps are what
+  // this spec exercises, as under MapLibre (#129 hand-back 18).
+  await openRoute(page, { travelMode: 'car', viewMode: 'chase', abortHeavyTiles: false, enterRacing: false, playerTimeoutMs: 180_000, ...(OWN ? { query: '?tier=high' } : {}) });
   await page.waitForFunction(() => (window as any).canalRecallGame.state === 4, null, { timeout: 180_000 });
   expect(await page.evaluate(() => ((window as any).canalRecallGame.vectorMap.map ?? (window as any).canalRecallGame.vectorMap.cameraMap).getPixelRatio())).toBe(2);
   const cdp = await page.context().newCDPSession(page);
