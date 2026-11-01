@@ -1,5 +1,41 @@
 # Canal Recall — what is built
 
+**Specs and scripts read the engine-neutral camera; the MapLibre oracles that remain are listed (2026-11-01, P0/P5).**
+Oracle-migration-2 lane (haiku, c392e578e; brief
+`docs/handoffs/lane-oracle-migration-2-20261031.md`). Across ~124 files under
+`tests/` and `scripts/`, `vectorMap.map` camera reads
+(getCenter/getZoom/getPitch/getBearing/getBounds/project/unproject) read
+`vectorMap.camera` (`tests/e2e/worldCam.ts`), `getCanvas` → `frameCanvas()`,
+the remaining MapLibre calls go through `vm.map ?? vm.cameraMap`, bare
+`map = vm.map` aliases get the fallback, setup code that hid style layers
+is guarded `if (vm.map) {…} else vm.setLabelsVisible(false)` (13 files),
+style-only tests are `test.skip(OWN, 'MapLibre style assertion: deleted
+with the default path at P5')`, and the four perf scripts
+(ride-perf-fixed-route, ride-perf-places, highlight-perf,
+perf-frozen-frames) report painter reads as n/a under own. Acceptance was
+that the rewrite is a no-op on the default engine: all 51 migrated specs,
+desktop, 211 passed / 3 failed / 35 skipped, the three failures
+pre-existing on main at the same code (`building-click-perf` "every kind of
+drawn building opens a card" 0.818 vs 0.95; `street-survey-retire` "shots:
+default" expected [] got 35 entries; `city-startup-lod` "mobile city shells
+remain" flaky); iphone P1 gate set 13 passed; ENGINE=own desktop P1 gate set
+16 passed / 6 skipped / 1 failed (`labels.spec` "hidden while the loading
+screen covers the map" reads the `.cr-map-labels` DOM element only the
+MapLibre label path creates). Oracles with no own equivalent yet, listed
+not skipped: `vectorMap._completeCityHasBuildings` (MapLibre-only flag,
+waited on in ~17 specs; `landmark-highlight` test 5 fails under own on it),
+`.cr-map-labels`, style reads (getLayer/getLayoutProperty/
+setLayoutProperty/getPaintProperty/getFeatureState/setFeatureState/
+querySourceFeatures/getFilter/getSource/painter/_render: `CameraMap`
+answers getStyle/getLayer/getSource/getLayersOrder/queryRenderedFeatures
+with empty values, the rest throw), and the C-group that needs an own
+assertion (`answered-street-name`, two `canal-recall` tests: own labels via
+`vm._labels.placed`, own lines via `vm._lines`; L1). Unchanged because they
+are not `vectorMap`: wall-material-demo, facade-recipe, explore specs. Not
+yet run: the other 44 specs under own, the other specs on iphone, the perf
+scripts for real (lane's next round). Integrator: the frozen-frames conflict
+with L1 (16) resolved to L1's version (own camera pin).
+
 **Engine frame owners at 4× named by `?framePhases=1`; label policy spikes gone; groundCrossing and the openings filter paced; frozen frames under own (2026-11-01, #129).**
 L1 hand-back (16). `?framePhases=1` times each phase of the engine frame
 (three render main / overlay / shadow, game frame with its sync sub-phases,

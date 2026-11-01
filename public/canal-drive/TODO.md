@@ -243,7 +243,17 @@ shadows through one merged stand-in per level"): shadow draws ÷3, no visible
 change; parts 2–3 measured only. Pre-existing red found: `building-click-perf`
 :228 (0.82 vs 0.95, Westermarkt clicks land on "Guy Olivier") and :146 (10-min
 timeout), same with and without the fix. Phone players who tap a turn at a
-T-junction instead of holding it stay stopped (routing lane). **Integrator
+T-junction instead of holding it stay stopped (routing lane). Oracle
+migration 2 merged 2026-11-01 (HISTORY "Specs and scripts read the
+engine-neutral camera"): default-engine smoke 28/28 green; the own gate set
+still fails `labels.spec` "hidden while the loading screen covers the map"
+(`.cr-map-labels` is MapLibre-only). Open oracles, listed in that entry: own
+equivalents for `_completeCityHasBuildings`, `.cr-map-labels`, the style reads
+and the C-group assertions (L1); the lane's next round runs the other 44
+specs under own, the rest on iphone and the four perf scripts for real.
+Pre-existing default red to own: `street-survey-retire` "shots: default" (35
+entries, expected none) and the flaky `city-startup-lod` "mobile city shells
+remain". **Integrator
 next:** `CanalRecallUi.stepSteer`
 in `car.js` through the frame host; drop the `leaflet`/`@types/leaflet`
 dependencies at the flip. L1 next: the remaining P1 items (camera parity ≤ 3.2
