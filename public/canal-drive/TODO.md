@@ -1410,8 +1410,14 @@ Root `main` was cleaned on 2026-10-09 (see HISTORY). Live work, in order:
   `scripts/heap-ride.mjs` is the measure.
 - **Time to ride under own ≈ 3.5 s median, three of six runs within 70 ms of
   the 4 s gate**: the settle hold waiting on facade chunks is the variance
-  (materials lane: spawn chunks first); boot → submit 0.9 s vs 0.53 default
-  is unprofiled (L1/road lane after). `compileAsync` "isReady of undefined"
+  (materials lane: spawn chunks first); boot → submit 0.84–1.03 s vs 0.48–0.57
+  default, owners named (HISTORY "Binary road extract is Amsterdam's
+  default"): engine overview build 184 ms after a first cut (rest off the
+  boot path: L1), three-buildings texture painting ≈ 117 ms, own-ground
+  procedural noise ≈ 110 ms, shader programs ≈ 75 ms (materials).
+- **`street-follow-tap` fails on iphone 3/3 on main** (binary, JSON and fresh
+  bundles alike): the seeded spawn is on Amsteldijk on a straight path, so
+  the "waiting for a side" premise is stale; the road lane re-pins the pose. `compileAsync` "isReady of undefined"
   after context loss, seen once (materials lane).
 - **Weak-GPU low tier cannot meet p95 ≤ 33 ms on SwiftShader** (HISTORY
   "Weak-GPU low tier"): its steady frame is ≈ 290 ms, triangle-bound, and no

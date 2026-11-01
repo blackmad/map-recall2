@@ -273,7 +273,9 @@ test('anonymous year-only buildings open their own year card, never "Unnamed bui
     game.quizPromptName = '';
     game._utilityOpen = false;
     game._landmarkNotice = { id: 'previous-museum', name: 'Previous museum' };
-    game._buildingFacts = { lookup: () => [1887, -1, 0] };
+    // The store is lazy since 2026-10-31 (cd5be8a55): a card asks `ensureAt`
+    // for its tile first, so the fake answers that too (nothing to fetch).
+    game._buildingFacts = { lookup: () => [1887, -1, 0], article: () => undefined, ensureAt: () => Promise.resolve() };
     let active: unknown = 'previous-museum';
     game.vectorMap.setActiveLandmark = (value: unknown) => { active = value; };
     game.vectorMap.inspectBuilding = () => ({ id: 'anonymous-footprint', name: '', lngLat: [4.9, 52.37] });
