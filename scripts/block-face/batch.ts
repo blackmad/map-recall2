@@ -18,6 +18,8 @@
  *   node --import tsx scripts/block-face/batch.ts --name=<batch> (--buurt=<slug> --district=<library> | --faces=<id>,...)
  *        [--install] [--ride[=<routes>]] [--limit=<n>] [--skip=<id>,...] [--strip-cache=<worktree>,...] [--redo] [--no-restrip]
  *        [--intake-only]   only intake + strip checks (network; safe beside a placing run: no browser, no manifest writes)
+ *        [--faces=<id>,... | --only=<id>,...] with --buurt: only those faces of the buurt (the list is printed before the run)
+ *        [--replace=<run>,...] passed to auto-place: re-place these installed runs (others with a chunk are never touched)
  *        [--photo-decides] passed to auto-place: where two library types of one row tie on the facts, the strip's edges pick
  *                          (Transvaalbuurt 1911 low/tall-ground twins; absent = the auto-place call is unchanged)
  *
@@ -43,7 +45,7 @@ import {houseIntents, validateBlockFace} from '../../src/canalRecall/blockFace/i
 import {fileTypeLoader} from '../../src/canalRecall/blockFace/typeLibrary.ts';
 import {toHex} from '../../src/canalRecall/blockFace/wallColour.ts';
 import {spanQuality, stripQuality, type StripQualityVerdict} from '../../src/canalRecall/blockFace/stripQuality.ts';
-import {BATCH_GATES, brickForDrawnLuma, coveredElsewhere, facingsToHousePalette, libraryYearMatches, installVerdict, restripDates, sampleShare, trimShared} from '../../src/canalRecall/blockFace/batchInstall.ts';
+import {BATCH_GATES, brickForDrawnLuma, coveredElsewhere, facingsToHousePalette, libraryYearMatches, installVerdict, restripDates, sampleShare, selectBatchFaces, autoPlaceArgs, trimShared} from '../../src/canalRecall/blockFace/batchInstall.ts';
 
 const arg = (n: string) => process.argv.find(a => a.startsWith(`--${n}=`))?.slice(n.length + 3);
 const flag = (n: string) => process.argv.includes(`--${n}`);
@@ -258,7 +260,9 @@ async function judgeRun(run: string, strip: {bad: boolean; reasons: string[]}) {
 
 async function main() {
   const name = arg('name'), buurt = arg('buurt'), district = arg('district');
-  if (!name || (!buurt && !arg('faces'))) throw Error('Use --name=<batch> (--buurt=<slug> --district=<library> | --faces=<id>,...) [--install]');
+  // --faces= (alias --only=): with --buurt it restricts the buurt run to those faces (batchInstall.ts selectBatchFaces).
+  const facesArg = arg('faces') ?? arg('only'), requested = facesArg ? facesArg.split(',').filter(Boolean) : null;
+  if (!name || (!buurt && !requested)) throw Error('Use --name=<batch> (--buurt=<slug> --district=<library> | --faces=<id>,...) [--install]');
   const caches = (arg('strip-cache') ?? '').split(',').filter(Boolean), skip = new Set((arg('skip') ?? '').split(',').filter(Boolean));
   const outDir = 'scripts/block-face/batch', reportFile = path.join(outDir, `${name}.json`);
   await fs.mkdir(outDir, {recursive: true}); await fs.mkdir(path.join(STAGING, 'batch', name), {recursive: true});
@@ -269,7 +273,14 @@ async function main() {
   const doc = buurt ? await readJson(path.join('scripts/block-face/buurten', `${buurt}.json`)) : null;
   let faces: {id: string; street: string; members: string[]; seed?: string}[] = doc
     ? doc.faces.filter((f: any) => !f.covered && f.members.length >= 2).map((f: any) => ({id: f.id, street: f.street, members: f.members, seed: f.seed}))
-    : await Promise.all(arg('faces')!.split(',').map(async id => { const d = await readJson(path.join(FACES, id, 'discovery.json')); return {id, street: d.street, members: d.members}; }));
+    : await Promise.all(requested!.map(async id => { const d = await readJson(path.join(FACES, id, 'discovery.json')); return {id, street: d.street, members: d.members}; }));
+  if (doc && requested) {
+    const sel = selectBatchFaces(faces, requested);
+    if (sel.missing.length) throw Error(`--faces not among ${buurt}'s uncovered faces of 2+ pands: ${sel.missing.join(', ')}`);
+    faces = sel.faces;
+  }
+  const replace = (arg('replace') ?? '').split(',').filter(Boolean);
+  console.log(`${name}: ${faces.length} face(s)${doc ? ` of ${buurt}` : ''}${requested ? ' (--faces)' : ''}${flag('photo-decides') ? ', --photo-decides' : ''}${replace.length ? `, --replace=${replace.join(',')}` : ''}: ${faces.map(f => f.id).join(' ')}`);
   const library: {match?: {years: [number, number]; yearSlack?: number}}[] = district ? await Promise.all((await fs.readdir(path.join('scripts/block-face/types', district))).filter(f => f.endsWith('.json')).map(f => readJson(path.join('scripts/block-face/types', district, f)))) : [];
   const rideArg = process.argv.find(a => a.startsWith('--ride'));
   const ride = rideArg ? await rideScores(name, [...new Set(faces.flatMap(f => f.members))], Number(arg('ride') ?? 300)) : null;
@@ -332,7 +343,7 @@ async function main() {
     else if (!doc || !district) { fail(f.id, mode, ['no-type: no authored intent and no --buurt/--district to auto-place from'], stripInfo); await save(); continue; }
     else {
       const log = path.join(STAGING, 'batch', name, `${f.id}-auto-place.log`);
-      try { await fs.writeFile(log, execFileSync(process.execPath, ['--import', 'tsx', 'scripts/block-face/auto-place.ts', `--buurt=${buurt}`, `--district=${district}`, `--only=${f.id}`, ...(flag('photo-decides') ? ['--photo-decides'] : [])], {encoding: 'utf8', maxBuffer: 64 << 20, stdio: ['ignore', 'pipe', 'pipe']})); }
+      try { await fs.writeFile(log, execFileSync(process.execPath, autoPlaceArgs({buurt: buurt!, district, face: f.id, photoDecides: flag('photo-decides'), replace}), {encoding: 'utf8', maxBuffer: 64 << 20, stdio: ['ignore', 'pipe', 'pipe']})); }
       catch (e: any) { await fs.writeFile(log, String(e.stdout ?? '') + String(e.stderr ?? '')); fail(f.id, mode, [`auto-place-error: ${String(e.stderr ?? e.message).trim().split('\n').at(-1)?.slice(0, 160)}`], stripInfo); await save(); continue; }
       const ap = await readJson(path.join(FACES, f.id, 'auto-place.json'));
       runs = ap.runs.map((r: any) => r.face);

@@ -139,3 +139,26 @@ export function brickForDrawnLuma(hueFrom: string, targetLuma: number, base: Omi
   const best = at((lo + hi) / 2);
   return {...best, luma: +best.luma.toFixed(2), reached: Math.abs(best.luma - targetLuma) <= Math.max(1, targetLuma * 0.03)};
 }
+
+/**
+ * The faces a batch run takes (#157 fix 1). With `--buurt` the run used to iterate every uncovered proposal of the buurt
+ * and ignore `--faces`; in Transvaalbuurt round 4 it re-auto-placed and installed kruger-32-40, a face another lane owned.
+ * `requested` (`--faces=` or its alias `--only=`) now restricts the buurt run to those faces, in the buurt's order; a
+ * requested id that is not one of the buurt's candidate faces is returned in `missing` so the caller can refuse to start.
+ */
+export function selectBatchFaces<F extends {id: string}>(candidates: readonly F[], requested: readonly string[] | null): {faces: F[]; missing: string[]} {
+  if (!requested) return {faces: [...candidates], missing: []};
+  const want = new Set(requested);
+  return {faces: candidates.filter(f => want.has(f.id)), missing: [...want].filter(id => !candidates.some(f => f.id === id))};
+}
+
+/**
+ * The batch's auto-place command line for one face (#157 fix 2): the buurt, the library, the face, and the switches a
+ * buurt run must carry through: `--photo-decides` (round 2 left it off and the 1911 low/tall-ground twins flipped) and
+ * `--replace=<run>` (auto-place keeps every run with an installed chunk unless it is named here).
+ */
+export function autoPlaceArgs(o: {buurt: string; district: string; face: string; photoDecides: boolean; replace?: readonly string[]}): string[] {
+  const replace = (o.replace ?? []).filter(r => r === o.face || r.startsWith(`${o.face}-`));
+  return ['--import', 'tsx', 'scripts/block-face/auto-place.ts', `--buurt=${o.buurt}`, `--district=${o.district}`, `--only=${o.face}`,
+    ...(o.photoDecides ? ['--photo-decides'] : []), ...(replace.length ? [`--replace=${replace.join(',')}`] : [])];
+}
