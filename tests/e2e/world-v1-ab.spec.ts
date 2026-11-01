@@ -4,6 +4,7 @@ import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import path from 'node:path';
 import sharp from 'sharp';
 import { openRoute } from './helpers';
+import { AB_SPOTS } from '../../scripts/world/abSpots';
 
 // `?world=v1` against the default tile path at the world-compiler sentinels (lane L3, issue #130).
 // Opt-in measurement until world-v1 is published:
@@ -27,13 +28,7 @@ test.skip(!process.env.WORLD_AB, 'set WORLD_AB=1 to measure');
 
 const OUT = process.env.AB_DIR || 'artifacts/world/ab';
 const WORLD_DIR = path.resolve(process.env.WORLD_DIR || 'artifacts/world/staging');
-const SPOTS = [
-  { name: 'westerkerk', at: [4.8826, 52.3741], face: [4.8843, 52.3746] },
-  { name: 'bloemgracht-80', at: [4.8798, 52.3752], face: [4.8809, 52.3750] },
-  { name: 'nassaukade', at: [4.8722, 52.3712], face: [4.8732, 52.3722] },
-  { name: 'leidsegracht-courtyard', at: [4.8868, 52.3676], face: [4.8884, 52.3686] },
-  { name: 'ijburg-edge', at: [5.0185, 52.3512], face: [5.0203, 52.3521] },
-] as const;
+const SPOTS = AB_SPOTS;
 // AB_SPOTS=westerkerk,nassaukade measures a subset (diagnosis runs).
 const SPOT_FILTER = (process.env.AB_SPOTS ?? '').split(',').filter(Boolean);
 const RUN_SPOTS = SPOT_FILTER.length ? SPOTS.filter(s => SPOT_FILTER.includes(s.name)) : SPOTS;
