@@ -1,11 +1,11 @@
 {
  "buurt": "transvaalbuurt-west",
  "library": "transvaalbuurt",
- "generatedAt": "2026-11-01T12:53:40.014Z",
- "seconds": 232.01,
+ "generatedAt": "2026-11-01T13:03:58.028Z",
+ "seconds": 0,
  "totals": {
-  "faces": 76,
-  "pands": 359,
+  "faces": 74,
+  "pands": 341,
   "placed": 58
  },
  "faces": [
@@ -80,20 +80,7 @@
   },
   {
    "face": "afrikanerplein-25-55",
-   "street": "Afrikanerplein",
-   "pands": 14,
-   "placed": 0,
-   "held": 14,
-   "runs": [],
-   "seconds": 3.74,
-   "byType": {},
-   "holds": {
-    "evidence": 0,
-    "match": 14,
-    "likeness": 0,
-    "run": 0,
-    "review": 0
-   }
+   "status": "no intake"
   },
   {
    "face": "brand-1-61",
@@ -1659,20 +1646,7 @@
   },
   {
    "face": "vaalrivier-15-21",
-   "street": "Vaalrivierstraat",
-   "pands": 4,
-   "placed": 0,
-   "held": 4,
-   "runs": [],
-   "seconds": 0.71,
-   "byType": {},
-   "holds": {
-    "evidence": 0,
-    "match": 4,
-    "likeness": 0,
-    "run": 0,
-    "review": 0
-   }
+   "status": "no intake"
   },
   {
    "face": "vaalrivier-16-22",

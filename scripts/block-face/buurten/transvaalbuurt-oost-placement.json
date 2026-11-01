@@ -1,11 +1,11 @@
 {
  "buurt": "transvaalbuurt-oost",
  "library": "transvaalbuurt",
- "generatedAt": "2026-11-01T12:49:47.221Z",
- "seconds": 640.78,
+ "generatedAt": "2026-11-01T13:03:58.469Z",
+ "seconds": 0,
  "totals": {
-  "faces": 82,
-  "pands": 489,
+  "faces": 78,
+  "pands": 465,
   "placed": 27
  },
  "faces": [
@@ -99,20 +99,7 @@
   },
   {
    "face": "burger-45-131",
-   "street": "Schalk Burgerstraat",
-   "pands": 9,
-   "placed": 0,
-   "held": 9,
-   "runs": [],
-   "seconds": 3.15,
-   "byType": {},
-   "holds": {
-    "evidence": 0,
-    "match": 9,
-    "likeness": 0,
-    "run": 0,
-    "review": 0
-   }
+   "status": "no intake"
   },
   {
    "face": "cilliers-12-42",
@@ -186,37 +173,11 @@
   },
   {
    "face": "colenso-13-25",
-   "street": "Colensostraat",
-   "pands": 4,
-   "placed": 0,
-   "held": 4,
-   "runs": [],
-   "seconds": 0.45,
-   "byType": {},
-   "holds": {
-    "evidence": 0,
-    "match": 4,
-    "likeness": 0,
-    "run": 0,
-    "review": 0
-   }
+   "status": "no intake"
   },
   {
    "face": "colenso-14-28",
-   "street": "Colensostraat",
-   "pands": 4,
-   "placed": 0,
-   "held": 4,
-   "runs": [],
-   "seconds": 0.52,
-   "byType": {},
-   "holds": {
-    "evidence": 0,
-    "match": 4,
-    "likeness": 0,
-    "run": 0,
-    "review": 0
-   }
+   "status": "no intake"
   },
   {
    "face": "colenso-2-12",
@@ -1202,20 +1163,7 @@
   },
   {
    "face": "transvaal-131-143",
-   "street": "Transvaalstraat",
-   "pands": 7,
-   "placed": 0,
-   "held": 7,
-   "runs": [],
-   "seconds": 0.49,
-   "byType": {},
-   "holds": {
-    "evidence": 0,
-    "match": 7,
-    "likeness": 0,
-    "run": 0,
-    "review": 0
-   }
+   "status": "no intake"
   },
   {
    "face": "transvaal-3-47",
