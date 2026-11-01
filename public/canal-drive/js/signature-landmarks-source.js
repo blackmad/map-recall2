@@ -23,6 +23,8 @@ import { freezeStaticMatrices } from '../../../src/canalRecall/landmarks/staticM
 import { SHADOW_STAND_IN_PENDING, disposeShadowStandIn, shadowStandInFor } from '../../../src/canalRecall/rendererShared/shadowStandIns.ts';
 // The page's worker pool (engine/workerPool.ts; started by the building and ground layers) welds the shadow stand-ins off the main thread (#129).
 import { existingWorkerPool } from '../../../src/canalRecall/engine/workerPool.ts';
+// The view comes from the WorldCamera (engine/worldCameraOf.ts, P5 B6), not the MapLibre-shaped map.
+import { onViewChange, worldCameraOf } from '../../../src/canalRecall/engine/worldCameraOf.ts';
 import { applyMeshHighlight, highlightRecipe, LANDMARK_WORLD_UP } from '../../../src/canalRecall/look/highlight.ts';
 const { THREE, GLTFLoader, MeshoptDecoder } = window.CanalRecallThree;
 const { SIGNATURE_MODELS, placementFor, basemapBuildingFilter } = window.CanalRecallSignatureLandmarks;
@@ -78,6 +80,7 @@ export class SignatureLandmarks {
    */
   constructor(map, maplibregl, options = {}) {
     this.map = map;
+    this.camera = options.camera || worldCameraOf(map);
     this.maplibregl = maplibregl;
     this.onModelShown = options.onModelShown || (() => {});
     this.onSuppressionChanged = options.onSuppressionChanged || (() => {});
@@ -201,7 +204,7 @@ export class SignatureLandmarks {
                 const dressed = await (this._dress(gltf) ?? gltf);
                 return this._shade(dressed).scene;
               };
-              built = await api.createBuildingTypes({ THREE, loadUnit, getCentre: () => this.map.getCenter?.() }, list);
+              built = await api.createBuildingTypes({ THREE, loadUnit, getCentre: () => this.camera.center() }, list);
               built.group.userData.recipeLook = true;
               window.__canalRecallBuildingTypes = Object.assign(window.__canalRecallBuildingTypes || {}, { [area]: built });
               return built.group;
@@ -263,8 +266,7 @@ export class SignatureLandmarks {
     this._generation++;
     this._hostOpeningRevision = '[]';
     this.onHostWallOpeningsChanged();
-    this.map.off('moveend', this._onMove);
-    for (const type of ['move', 'resize', 'render']) this.map.off(type, this._dropViewBounds);
+    this._offView?.(); this._offView = null;
     this._pending.clear();
     for (const entry of this._entries) { entry.holder?.parent?.remove(entry.holder); this._disposeModel(entry.group, entry.spec, entry.url); this._disposeSpare(entry); }
     this._entries = [];
@@ -282,8 +284,10 @@ export class SignatureLandmarks {
     // fails and every landmark silently falls back to its grey box.
     if (MeshoptDecoder) loader.setMeshoptDecoder(MeshoptDecoder);
     this._loader = loader;
-    map.on('moveend', this._onMove);
-    for (const type of ['move', 'resize', 'render']) map.on(type, this._dropViewBounds);
+    // moveend on WorldCamera; the view-bounds cache also lasts one frame (it is keyed by the view besides).
+    this._offView?.();
+    const offMove = onViewChange(this.camera, this._onMove), offFrame = this.camera.onFrame(this._dropViewBounds);
+    this._offView = () => { offMove(); offFrame(); };
     this._requestModels();
   }
 
@@ -589,7 +593,11 @@ export class SignatureLandmarks {
    * Kept until the camera moves, the map resizes or a frame has drawn.
    */
   _viewBounds() {
-    return this._viewBoundsCache ??= plainBounds(this.map.getBounds());
+    // Kept while the view (camera and window size) is the one it was measured for, and at most until a frame has drawn.
+    const c = this.camera.center(), key = `${this.camera.zoom()},${c.lng},${c.lat},${this.camera.bearing()},${this.camera.pitch()},${window.innerWidth}x${window.innerHeight}`;
+    if (this._viewBoundsCache && this._viewBoundsKey === key) return this._viewBoundsCache;
+    this._viewBoundsKey = key;
+    return this._viewBoundsCache = plainBounds(this.camera.bounds());
   }
 
   /**
@@ -603,7 +611,7 @@ export class SignatureLandmarks {
     const now = performance.now();
     if (now - this._lastEvictCheck < 500) return;
     this._lastEvictCheck = now;
-    const center = this.map.getCenter(), cos = Math.cos(center.lat * Math.PI / 180);
+    const center = this.camera.center(), cos = Math.cos(center.lat * Math.PI / 180);
     const models = this._entries.map(entry => {
       const anchor = entry.placement?.anchor || entry.spec.surveyed?.anchor || entry.spec.footprint?.centre;
       const highlighted = entry.highlighted || (this.activeLandmarkId && entry.spec.landmarkId === this.activeLandmarkId);
@@ -623,11 +631,10 @@ export class SignatureLandmarks {
 
   _requestModels() {
     if (this._removed || !this.enabled || this._suspended || !this._loader || this._pending.size >= 2) return;
-    if (this.loadVisibleOnly && this.map.getZoom() < this.minLoadZoom) return;
+    if (this.loadVisibleOnly && this.camera.zoom() < this.minLoadZoom) return;
     const candidates = this.models.filter(spec => !this.shown.has(spec.id) && !this._pending.has(spec.id) &&
       !this._failed.has(spec.id) && (!this.loadVisibleOnly || this._nearby(spec)));
-    const bounds = this.map.getBounds();
-    const center = this.map.getCenter?.() || {lng: (bounds.getWest() + bounds.getEast()) / 2, lat: (bounds.getSouth() + bounds.getNorth()) / 2};
+    const center = this.camera.center();
     const distance = spec => {
       const anchor = spec.surveyed?.anchor || spec.footprint?.centre;
       return anchor ? ((anchor[0] - center.lng) * Math.cos(center.lat * Math.PI / 180)) ** 2 + (anchor[1] - center.lat) ** 2 : Infinity;
@@ -1000,7 +1007,7 @@ export class SignatureLandmarks {
 
   /** Footprint radius of a model in screen pixels at the current zoom. */
   _radiusPixels(radiusMetres, anchor) {
-    return lodApi().footprintRadiusPixels(radiusMetres, this.map.getZoom(), anchor[1]);
+    return lodApi().footprintRadiusPixels(radiusMetres, this.camera.zoom(), anchor[1]);
   }
 
   /** Level to load first: lod1 for models that are small on screen. Unknown size or no lod1 means full. */
