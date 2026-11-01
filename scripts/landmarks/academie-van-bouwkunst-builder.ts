@@ -182,9 +182,9 @@ function warehouseFront(fr: Frame) {
   }
 }
 function win(fr: Frame, u: number, y: number, h: number, k: 'a' | 'n' | 'W') {
-  // w02-308: the shuttered picture windows are ~1.0 m of glass, the narrow arched ones ~0.65-0.7 m (95 px vs 62 px in the zoom)
+  // w02-308: the shuttered picture windows are ~1.0 m of glass, the narrow arched ones ~0.65-0.7 m (95 px vs 62 px in the zoom); 0.72 so the 0.1 m audit grid reads them alike in both side gables
   if (k === 'W') { sash(fr, {t: u, y, w: 1.0, h, arch: true, cols: 2, rows: 4}); boog(fr, u, y, 1.0, h); shutters(fr, u, y, 1.0, h); }
-  else if (k === 'a') { sash(fr, {t: u, y, w: 0.7, h, arch: true, cols: 2, rows: 3}); boog(fr, u, y, 0.7, h); shutters(fr, u, y, 0.7, h); }
+  else if (k === 'a') { sash(fr, {t: u, y, w: 0.72, h, arch: true, cols: 2, rows: 3}); boog(fr, u, y, 0.72, h); shutters(fr, u, y, 0.72, h); }
   else { sash(fr, {t: u, y, w: 0.7, h, cols: 2, rows: 3}); strek(fr, u, y, 0.7, h); }
 }
 

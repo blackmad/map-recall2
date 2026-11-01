@@ -58784,13 +58784,13 @@
         "depthCoverage": 1.0173129081726073
       },
       "triangles": 24741,
-      "bytes": 326660,
+      "bytes": 326712,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "lod1": {
-        "sourceHash": "2b17f566c8922653",
+        "sourceHash": "65954ae0ec76278e",
         "buildVersion": 2,
-        "bytes": 83368,
-        "triangles": 4091
+        "bytes": 83284,
+        "triangles": 4093
       }
     },
     "hollandsche-manege": {
