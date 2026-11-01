@@ -112,7 +112,21 @@ export const GROUND_CROSSING_PARALLEL = 0.9;
  * True near a mapped way at ground level (no bridge, no tunnel, no layer) running across the bridge axis: what a
  * viaduct crosses, not cut water. The approaches carry on along the axis and do not count.
  */
-export function groundCrossing(osms: readonly (OsmGroundExtract | null)[]): (x: number, y: number, ux: number, uy: number) => boolean {
+export function groundCrossing(osms: readonly (OsmGroundExtract | null)[]): GroundCrossingTest {
+  const steps = groundCrossingSteps(osms);
+  for (;;) { const r = steps.next(); if (r.done) return r.value; }
+}
+
+export type GroundCrossingTest = (x: number, y: number, ux: number, uy: number) => boolean;
+
+/** groundCrossing paced: a task ends every PACE_BUDGET_MS between ways and segments (#129: one 33-37 ms task at 4x). */
+export async function groundCrossingPaced(osms: readonly (OsmGroundExtract | null)[], pace: () => Promise<void>): Promise<GroundCrossingTest> {
+  const steps = groundCrossingSteps(osms);
+  for (;;) { const r = steps.next(); if (r.done) return r.value; await pace(); }
+}
+
+/** groundCrossing's work as steps (a way collected, a block of segments bucketed); the last returns the test. */
+export function* groundCrossingSteps(osms: readonly (OsmGroundExtract | null)[]): Generator<void, GroundCrossingTest, void> {
   const segs: [number, number, number, number][] = [];
   const seen = new Set<number>();
   for (const osm of osms) for (const w of osm?.ways ?? []) {
@@ -121,12 +135,14 @@ export function groundCrossing(osms: readonly (OsmGroundExtract | null)[]): (x: 
     const t = w.tags;
     if (!(t.highway || t.railway) || (t.bridge && t.bridge !== 'no') || (t.tunnel && t.tunnel !== 'no') || (t.layer && t.layer !== '0') || w.g.length < 2) continue;
     for (let i = 0; i + 1 < w.g.length; i++) { const a = toLocal(w.g[i][0], w.g[i][1]), b = toLocal(w.g[i + 1][0], w.g[i + 1][1]); segs.push([a[0], a[1], b[0], b[1]]); }
+    yield;
   }
   const R = GROUND_CROSSING_M;
   // Bucket each segment under every grid cell its R-padded box touches: a point outside that box cannot pass the
   // test below, so looking only at the point's own cell is exact (a linear scan made 200+ ms tasks, #129).
   const G = 32, buckets = new Map<number, [number, number, number, number][]>();
   const cellKey = (i: number, j: number) => i * 1_000_003 + j;
+  let n = 0;
   for (const s of segs) {
     const i0 = Math.floor((Math.min(s[0], s[2]) - R) / G), i1 = Math.floor((Math.max(s[0], s[2]) + R) / G);
     const j0 = Math.floor((Math.min(s[1], s[3]) - R) / G), j1 = Math.floor((Math.max(s[1], s[3]) + R) / G);
@@ -134,6 +150,7 @@ export function groundCrossing(osms: readonly (OsmGroundExtract | null)[]): (x: 
       const k = cellKey(i, j), b = buckets.get(k);
       if (b) b.push(s); else buckets.set(k, [s]);
     }
+    if (++n % 256 === 0) yield;
   }
   return (x, y, ux, uy) => (buckets.get(cellKey(Math.floor(x / G), Math.floor(y / G))) ?? []).some(([ax, ay, bx, by]) => {
     if (x < Math.min(ax, bx) - R || x > Math.max(ax, bx) + R || y < Math.min(ay, by) - R || y > Math.max(ay, by) + R) return false;
@@ -671,10 +688,20 @@ export class GroundStore {
       const claimed = this.claimedBy(around), m = 30;
       const ways = bridgeWayInputs(osms, () => false, [rect[0] - m, rect[1] - m, rect[2] + m, rect[3] + m]);
       // A way with any station a measured deck or footprint carries is that bridge's (its end nodes can lie past the deck span).
-      const free = bridgeWayBundles(ways.filter(w => { const d = wayOpeningDeck(w); for (let i = 0; i < d.x.length; i++) if (claimed(d.x[i], d.y[i])) return false; return true; }));
+      // Tested a way per step (#129 hand-back 16: the whole filter was one 18-32 ms task at 4x); same test, same order.
+      const unclaimed: typeof ways = [], paceWays = pacer(this.options.paceMs);
+      for (const w of ways) {
+        const d = wayOpeningDeck(w);
+        let free = true;
+        for (let i = 0; i < d.x.length && free; i++) if (claimed(d.x[i], d.y[i])) free = false;
+        if (free) unclaimed.push(w);
+        await paceWays();
+      }
+      const free = bridgeWayBundles(unclaimed);
       if (free.length) {
         await yieldToFrame();
-        const under = groundCrossing(osms);
+        // Paced like the planning (#129: groundCrossing alone was a 33-37 ms task at 4x); the same test either way.
+        const under = await groundCrossingPaced(osms, pacer(this.options.paceMs));
         await yieldToFrame();
         const w = openUnderFootbridges(r.geo, free.map(wayOpeningDeck), rect, WATER_Z, { maxWidth: Infinity, reach: WAY_OPENING_REACH_M, under });
         for (const [id, sd] of w.sides) this.wayOpeningSides.set(id, sd);

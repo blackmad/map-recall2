@@ -20,6 +20,8 @@
 //
 // THREE is injected (window.CanalRecallThree.THREE in the page).
 
+import { framePhases } from './framePhases';
+
 export type FrameListener = (event?: unknown) => void;
 
 export interface FrameHostHooks {
@@ -162,8 +164,11 @@ export class FrameHost {
   fire(type: string, event?: unknown): void {
     const set = this.listeners.get(type);
     if (!set) return;
+    const phases = type === 'render' ? framePhases() : null;
     for (const listener of [...set]) {
+      const t0 = phases ? performance.now() : 0;
       try { listener(event); } catch (error) { console.warn(`frame host: ${type} listener failed`, error); }
+      if (phases) phases.add(`render listener: ${(listener as { label?: string }).label ?? (listener.name || String(listener).slice(0, 60))}`, performance.now() - t0);
     }
   }
   getCanvas(): HTMLCanvasElement { return this.canvas; }
@@ -227,6 +232,7 @@ export class FrameHost {
     this.lastT = t;
     const { steps, alpha } = this.clock.advance(dt);
     const sim = this.sim;
+    const phases = framePhases(), f0 = phases ? performance.now() : 0;
     if (this.hooks.tick || sim?.tick) {
       for (let i = 0; i < steps; i++) {
         try { this.hooks.tick?.(this.clock.dt); sim?.tick?.(this.clock.dt); } catch (error) { console.warn('frame host: tick failed', error); }
@@ -234,14 +240,19 @@ export class FrameHost {
       }
       if (steps) this.dirty = true;
     }
+    const f1 = phases ? performance.now() : 0;
+    if (phases) phases.add('simulation steps', f1 - f0);
     this.alpha = alpha;
     if (sim?.frame) {
       try { sim.frame(Math.max(0, Math.min(dt, 0.25)), alpha); } catch (error) { console.warn('frame host: frame failed', error); }
       // What the frame changed reaches the host as triggerRepaint (the camera's jumpTo, the participants).
       if (this.renderOnChange === false) this.dirty = true;
     }
-    if (this.dirty || this.hooks.wantsFrame?.()) this._render();
+    if (phases) phases.add('game frame', performance.now() - f1);
+    const rendered = this.dirty || !!this.hooks.wantsFrame?.();
+    if (rendered) this._render();
     else this.stats.idleFrames++;
+    if (phases && rendered) phases.end(performance.now() - f0);
     this.schedule();
   }
   private alpha = 0;
@@ -269,6 +280,8 @@ export class FrameHost {
     renderer.setRenderTarget?.(null);
     renderer.setViewport?.(0, 0, this.canvas.width, this.canvas.height);
     renderer.clear?.(true, true, true);
+    const phases = framePhases();
+    if (phases) phases.add('clear', (this.options.now ?? (() => performance.now()))() - now);
     this.hooks.render(this.alpha, now);
     this.stats.renderMs = (this.options.now ?? (() => performance.now()))() - now;
     this.stats.frames++;

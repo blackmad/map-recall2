@@ -16,6 +16,7 @@
 // `UNIMPLEMENTED` and answers as a no-op until its step lands (overlays,
 // labels, landmarks, trees: steps 4–5, lane L5).
 
+import { framePhases } from './framePhases';
 import { chooseTier, TIER_SETTINGS, type QualityTier } from '../renderGovernor';
 import { tierProbe } from './tierProbe';
 import { SharedFrame } from '../rendererShared/sharedFrame';
@@ -34,6 +35,7 @@ import type { JumpOptions, ScreenPoint, WorldCamera } from './worldViewApi';
 import { FlatLines, type LngLatLine } from './overlays/flatLines';
 import { LabelLayer, type PointLabel } from './overlays/labelLayer';
 import { gameLabelContext, type LabelContext } from '../ownMap/labelPolicy';
+import { buildSpoilerIndex, type SpoilerIndex } from '../orientationPois';
 import { ownPoiFeatures, type OrientationPoiFile } from '../ownPois';
 import { cameraFrame } from '../ownMap/mapCamera';
 import { fromLocal, toLocal } from '../ownMap/frame';
@@ -408,8 +410,27 @@ export class OwnWorldView {
 
   // ---- the frame ----
   private renderFrame(): void {
-    this._sharedFrame.drive(this.cameraMap.camera.clipFromMercator());
+    const phases = framePhases(), t0 = phases ? performance.now() : 0;
+    const clip = this.cameraMap.camera.clipFromMercator();
+    if (phases) phases.add('camera matrix', performance.now() - t0);
+    this._sharedFrame.drive(clip);
+    const t1 = phases ? performance.now() : 0;
     this.drawLabels();
+    if (phases) phases.add('labels', performance.now() - t1);
+  }
+
+  /**
+   * The spoiler index of `names`, rebuilt only when the names change. The policy key also turns over when a street is
+   * learned (names/known sizes); rebuilding the same index then cost 60-75 ms at 4x and emptied poiNameSpoils' memo,
+   * so the label rebuild re-tested every POI (#129 hand-back 16). The index is a pure function of the names: exact.
+   */
+  private spoilerIndexCache: { names: string[]; index: SpoilerIndex } | null = null;
+  private spoilerIndexFor(names: readonly string[]): SpoilerIndex {
+    const c = this.spoilerIndexCache;
+    if (c && c.names.length === names.length && c.names.every((n, i) => n === names[i])) return c.index;
+    const index = buildSpoilerIndex(names);
+    this.spoilerIndexCache = { names: names.slice(), index };
+    return index;
   }
 
   /** The game's spoiler screen (labelPolicy.ts gameLabelContext) from the live game, cached by what it reads. */
@@ -425,7 +446,7 @@ export class OwnWorldView {
       const ctx = gameLabelContext({
         mapLabelNames: names, knownPlaces: known, knownRadius: 600 * 3,
         quizPromptName: g.quizPromptName, quizCandidateName: g.quizCandidateName,
-        spoilerNames: spoilers, quizQuiet: this.quizQuiet,
+        spoilerNames: spoilers, spoilerIndex: this.spoilerIndexFor(spoilers), quizQuiet: this.quizQuiet,
         toWorld: (x, y) => { const [lng, lat] = fromLocal(x, y); return loader && loader._lastCenterLat != null ? lngLatToWorld(lng, lat, loader) : { x: NaN, y: NaN }; },
       });
       // Street and water names on the map only with the labels toggle on (D), as the basemap's were.
@@ -453,11 +474,11 @@ export class OwnWorldView {
       const eye = cam.eye();
       let indexed = false;
       this._labels.setOcclusion(c => {
-        if (!indexed) { indexed = true; this.labelOcclusion.index(city.residentFeatures(), [eye.lng, eye.lat]); }
+        if (!indexed) { indexed = true; this.indexLabelOcclusion(city.residentFeatures(), [eye.lng, eye.lat]); }
         const [lng, lat] = fromLocal(c.at![0], c.at![1]);
         return this.labelOcclusion.occluded(c.id, [lng, lat], eye);
       }, id => { const f = this.labelOcclusion.front.get(id); return f ? toLocal(f[0], f[1]) : null; }, (id, anchors) => {
-        if (!indexed) { indexed = true; this.labelOcclusion.index(city.residentFeatures(), [eye.lng, eye.lat]); }
+        if (!indexed) { indexed = true; this.indexLabelOcclusion(city.residentFeatures(), [eye.lng, eye.lat]); }
         // Any blocked point hides the name (the default engine's street-name rule, labels/streetLabelOcclusion.ts).
         let blocked = false;
         anchors.forEach((a, k) => { if (this.labelOcclusion.occluded(`${id}#${k}`, fromLocal(a[0], a[1]), eye)) blocked = true; });
@@ -465,6 +486,12 @@ export class OwnWorldView {
       });
     } else this._labels.setOcclusion(null);
     this._labels.draw(frame, [x0, y0, x1, y1], zoom, this.host.getPixelRatio(), p => { const [lng, lat] = fromLocal(p[0], p[1]); return cam.project([lng, lat]); }, [lx, ly, zoom, cam.bearing, cam.pitch]);
+  }
+
+  private indexLabelOcclusion(features: Parameters<LabelOcclusion['index']>[0], centre: [number, number]): void {
+    const phases = framePhases(), t0 = phases ? performance.now() : 0;
+    this.labelOcclusion.index(features, centre);
+    if (phases) phases.add('labels: occlusion index (inside occlusion)', performance.now() - t0);
   }
 
   private async loadPois(): Promise<void> {
@@ -562,6 +589,9 @@ export class OwnWorldView {
   sync(camera: GameCamera & { projector?: unknown }, loader: LoaderFrame, canvas: HTMLCanvasElement): void {
     if (!this.ready || !camera || !loader || !canvas || loader._lastCenterLat == null) return;
     this.loader = loader;
+    const phases = framePhases();
+    let pt = phases ? performance.now() : 0;
+    const lap = (name: string) => { if (!phases) return; const t = performance.now(); phases.add(`sync: ${name}`, t - pt); pt = t; };
     const view = this.solver.request(camera, loader, {
       pitchForViewMode: m => this.pitchForViewMode(m), zoomOffsetForViewMode: m => this.zoomOffsetForViewMode(m),
       landmarkView: this.landmarkView, displayScale: canvas.getBoundingClientRect().width / CANVAS_W, now: performance.now(),
@@ -578,6 +608,7 @@ export class OwnWorldView {
       (this as any)._lastCameraClearance = result;
     }
     const pitch = this.solver.applyClearance(view, !!camera.reducedMotion);
+    lap('camera solve and clearance');
     const city = this._completeCity;
     if (view.introFlat > 0 && city?.setSuspended) {
       city.setSuspended(true);
@@ -587,17 +618,23 @@ export class OwnWorldView {
     if (view.introFlat > 0) this.extras.setSuspended(true);
     if (view.introFlat === 0) this.introLanding = false;
     if (this._ownGround) { this._ownGround.update(view.subject, view.introFlat > 0 ? 0 : view.zoom, pitch); this.syncGroundConsumers(); }
+    lap('ground update');
     this.cameraMap.jumpTo({ center: view.lngLat, zoom: view.zoom, bearing: view.bearing, pitch, elevation });
+    lap('jumpTo and move listeners');
     this.lastSubject = view.subject;
     this._threeBuildings?.setDetailCentre?.(view.subject[0], view.subject[1]);
+    lap('building detail centre');
     this.extras.tick();
+    lap('extras tick');
     this.updateRiderCover(view.subject, pitch > 0 && !view.detached && view.introFlat === 0);
+    lap('rider cover');
     if (view.introFlat === 0) this.extras.setSuspended(false);
     if (view.introFlat === 0 && city) {
       city.setSuspended?.(false);
       if (!view.detached) city.setRider?.(view.subject[0], view.subject[1]);
       city.followCamera?.();
     }
+    lap('city follow');
     camera.projector = pitch > 0 || view.introFlat > 0 ? (x: number, y: number) => this.projectWorld(x, y, loader, canvas) : null;
   }
 

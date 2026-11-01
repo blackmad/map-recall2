@@ -412,3 +412,14 @@ test('EngineCamera.bounds: the per-frame cache returns what a fresh camera compu
   vp = { width: 400, height: 900 };
   assert.deepEqual(cam.bounds(), fresh(), 'viewport change');
 });
+
+test('FramePhases: totals per phase, and the slowest frames keep their own phases', async () => {
+  const { FramePhases } = await import('./framePhases');
+  const p = new FramePhases(2);
+  for (const [ms, a, b] of [[10, 4, 6], [30, 25, 5], [20, 1, 19]] as const) { p.add('a', a); p.add('b', b); p.end(ms); }
+  const r = p.report();
+  assert.equal(r.frames, 3);
+  assert.deepEqual(r.totals, { b: 30, a: 30 });
+  assert.deepEqual(r.worst.map(w => w.ms), [30, 20]);
+  assert.deepEqual(r.worst[0].phases, { a: 25, b: 5 });
+});

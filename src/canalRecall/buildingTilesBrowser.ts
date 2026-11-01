@@ -20,6 +20,7 @@
  * a single request for the index rather than an assumption.
  */
 
+import { BoxGrid } from './engine/boxGrid.js';
 import { dropNestedDuplicates } from './buildingNesting.js';
 import {
   BuildingTileCache, BUILDING_TILE_ZOOM, buildingForLandmark, planTilesAhead, planSourceDiff, tileUrl,
@@ -839,13 +840,13 @@ export class BuildingTileStreamer {
 
   /** Resident buildings (styled) whose footprint box holds a point; callers test the footprint itself. */
   featuresAt(lng: number, lat: number): BuildingFeature[] {
-    const out: BuildingFeature[] = [];
-    for (const raw of this.cache.collection().features) {
-      const box = this.boxOf(raw);
-      if (box && lng >= box[0] && lng <= box[2] && lat >= box[1] && lat <= box[3]) out.push(this.styled(raw));
-    }
-    return out;
+    // Through a grid over the resident list (engine/boxGrid.ts), rebuilt when the list changes: the same features in
+    // the same order as scanning every resident (#129: the rider cover asks eight times a second).
+    const features = this.cache.collection().features;
+    if (this.atGrid?.of !== features) this.atGrid = { of: features, grid: new BoxGrid(features, f => this.boxOf(f)) };
+    return this.atGrid.grid.at(lng, lat, features).map(raw => this.styled(raw));
   }
+  private atGrid: { of: readonly BuildingFeature[]; grid: BoxGrid<BuildingFeature> } | null = null;
 
   /**
    * Every resident building as loaded (unstyled: footprint and heights). The array is the source's cached list, so
