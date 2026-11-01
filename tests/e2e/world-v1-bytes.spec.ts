@@ -188,5 +188,12 @@ for (const ride of RIDES) for (const variant of VARIANTS) {
     const total = (by: Record<string, { sent: number }>) => Object.values(by).reduce((s, c) => s + c.sent, 0);
     console.log(`${ride} ${variant.name}`, JSON.stringify({ allData: total(final), buildingTotal: result.buildingTotal, buildingBytes, metres: result.metres, decode: result.decode }));
     if (variant.name.startsWith('world')) expect(world.usingWorldCells, 'world-v1 index served').toBe(true);
+    // The fetch ring must not quietly grow back (#130 b74955c7c; #129 round 21 made a camera looking away from the
+    // rider read its own view): Free Ride read 27 cells (2.0 MB) before the ring, about 13 cells (1.2 MB) with it, and
+    // 11 cells (0.79 MB) on 2026-11-01 with and without the round-21 fix. Bound: 16 cells, 1.5 MB of cells.
+    if (ride === 'free' && variant.name.startsWith('world')) {
+      expect(result.decode?.cells ?? 0, 'Free Ride: world-v1 cells read (fetch ring)').toBeLessThanOrEqual(16);
+      expect(buildingBytes['world-v1 cells'] ?? 0, 'Free Ride: world-v1 cell bytes (fetch ring)').toBeLessThanOrEqual(1.5e6);
+    }
   });
 }
