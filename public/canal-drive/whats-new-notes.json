@@ -3,6 +3,15 @@
   "notes": [
     {
       "date": "2026-11-01",
+      "title": "No colour step at the edge of the detailed city",
+      "text": "The simplified ground beyond the detailed area now uses the same asphalt, klinker and pavement colours as the streets around you, so the roads no longer change colour in the distance, as they did by the RAI.",
+      "where": [
+        4.8905,
+        52.342
+      ]
+    },
+    {
+      "date": "2026-11-01",
       "title": "Surprise rides no longer finish next to the start",
       "text": "A surprise ride could draw a finish 45 metres from its start (Micropia and Artis share a street), fail with \"Start and finish are too close\" and drop you back at setup. The picker now draws again among places at least 200 metres away; rides that already worked start exactly as before."
     },
