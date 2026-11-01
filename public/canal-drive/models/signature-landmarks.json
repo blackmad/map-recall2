@@ -62312,16 +62312,16 @@
       "heightMetres": 3.4,
       "assetKind": "building",
       "materialOverrides": {
-        "slate": "#3f494f",
+        "slate": "#435056",
         "concrete": "#8c9290",
         "copper": "#d4d2c8",
         "stone": "#cfccc2",
         "glass": "#4a5258",
-        "red": "#796e6d",
-        "bronze": "#4a4a50",
-        "sandstone": "#5c5d64",
-        "ochre": "#857a55",
-        "blue": "#414860"
+        "red": "#9c8580",
+        "bronze": "#5a5a62",
+        "sandstone": "#75767e",
+        "ochre": "#a89a64",
+        "blue": "#4d5878"
       },
       "attribution": {
         "title": "Kiosk Rembrandt Van Gogh, Museumplein",
@@ -62329,7 +62329,7 @@
         "sourceUrl": "https://www.openstreetmap.org/node/6657813385",
         "licence": "CC BY 4.0",
         "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
-        "modifications": "Original low-poly reconstruction from the typed kiosk kit: dark slate box with six poster panels drawn as flat tinted glass (no images), a pale service door under a small awning, a door end and two roof units. Footprint and height from BAG/3DBAG (CC0); tints are panorama medians (Gemeente Amsterdam, CC BY 4.0), the yellow-tulip poster lifted by eye from the shade. No photo pixels or imported meshes."
+        "modifications": "Original low-poly reconstruction from the typed kiosk kit: dark slate box with six poster panels drawn as flat tinted glass (no images), a pale service door under a small awning, a door end and two roof units. Footprint and height from BAG/3DBAG (CC0); tints are panorama medians (Gemeente Amsterdam, CC BY 4.0) taken in tree shade and lifted about 25% to the sunlit 2024 view after the review sheet read too dark. No photo pixels or imported meshes."
       },
       "buildingCategory": "landmark",
       "bounds": {
@@ -62361,7 +62361,7 @@
         "depthCoverage": 1.804141322178627
       },
       "triangles": 564,
-      "bytes": 19232,
+      "bytes": 19228,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
     }
   }
