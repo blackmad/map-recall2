@@ -1,5 +1,32 @@
 # Canal Recall — what is built
 
+**P3 pop-in gate met under both engines; ground tiles cut and shadow stand-ins welded off the main thread; ARTIS off the camera shim (2026-11-01, #129).**
+L1 hand-back (11). `pop-in.mjs` now counts own-ground cell and facade chunk
+arrivals within 150 m of the rider: car route, 60 s, real GPU, DPR 2: 0 under
+MapLibre and 0 under `?engine=own`, with a thin margin (nearest facade chunk
+154.3 / 154.6 m; ground cells ≥ 1,189 m, LOD swaps ≥ 257 m, landmark models ≥
+539 m); the coarse shell under the rider is replaced in place 2–4 times a
+minute at 0 px charged. Own-ground `splitIntoTiles` runs in the ground worker
+(`ownGround/cellTiles.ts`, `groundWorker.ts`, `gameGround.ts`,
+`rendererShared/tiledGeometry.ts`) and `buildShadowStandIn` welds in the
+worker pool (`rendererShared/shadowStandIns.ts`, `threeBuildingsWorker.ts`,
+`signature-landmarks-source.js`; `existingWorkerPool` in `engine/workerPool.ts`
+never starts a pool of its own), both byte-identical with the old
+implementation kept as the test reference. Their time in frames over 16 ms:
+`buildShadowStandIn` 13 → 0 ms at 1× and 795 → 0 at 4×, `splitIntoTiles` 43 →
+0 and 387 → 0. Jordaan 1×: longest frame 74.8 → 58 ms, one frame a minute
+over 50 ms, p99 10.3; 4×: 34 → 36 long tasks, longest task 117 → 104 ms, p99
+65.4 → 59.2 (quieter machine for the after runs). P3 streaming gate still
+open: facade chunks also `splitIntoTiles` in three-buildings `cutMesh` (9 ms
+at 1×, 444 at 4×) and cannot move as is because the ground lift changes
+heights after the worker build (next: worker-cut tiles + a height patch);
+materials lane's `setFeatures` 606 ms, `_applyChunkPandBases` 374,
+`post` 219 at 4×. P5 B6: `engine/worldCameraOf.ts` gives a participant a
+`WorldCamera` under both engines (`onViewChange` stands in for `moveend` and
+fires only when the view moved); ARTIS (`artis-animals.js`, served unbundled)
+makes 0 shim calls (222.6/s before); `scripts/camera-shim-calls.mjs` counts
+per bundle; next by rate: signature-landmarks 416–871/s, building-tiles.
+
 **Phone heap cuts: packed road and snap indexes, interned tile strings, packed overview streets; iPhone 336 → 305 MB, desktop 467 → 436 (2026-11-01, #130).**
 Road lane, forced-GC reachable MB at start / end of a 60 s ride: desktop
 466.8 / 454.3 → 436.2 / 423.6, iPhone 335.9 / 336.6 → 305.3 / 305.9. Owners:
