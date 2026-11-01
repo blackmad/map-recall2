@@ -102,7 +102,7 @@ async function run(page: Page, query: string): Promise<Run> {
     near[view.name] = state.near;
     using = state.using; covers = state.covers;
     state.hidden.forEach(id => hidden.add(id)); state.legacy.forEach(id => legacy.add(id)); state.tileIds.forEach(id => tileIds.add(id));
-    shots[view.name] = await page.locator('canvas.maplibregl-canvas').first().screenshot();
+    shots[view.name] = await page.locator('canvas.maplibregl-canvas, canvas.engine-canvas').first().screenshot();
   }
   return { using, covers, hidden: [...hidden], legacyHidden: [...legacy], tileIds: [...tileIds], shots, near };
 }
