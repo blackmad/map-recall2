@@ -91,6 +91,13 @@ async function fixedShot(page: Page, at: readonly number[], face: readonly numbe
   }, pose);
   await settle(page);
   await page.evaluate(() => (window as any).canalRecallGame.vectorMap.camera?.whenIdle?.());
+  // The own ground re-plans its ring only after the centre moves RESIDENCY_STEP_M from where it last planned, so each
+  // cell's LOD is a function of the path that led to the pose (ijburg-edge: one far cell at lod1 in one variant, its
+  // neighbour at lod0 in the other, 141 px over 30, 2026-11-01). Re-plan at the held pose and wait for the builds.
+  await page.evaluate(() => { const g = (window as any).canalRecallGame.vectorMap._ownGround; if (g?.centre && g.ready) { g.residencyAt = null; g.updateResidency(); } });
+  // Builds done and every arrival's dissolve (a per-cell screen-door clone over FADE_MS) finished.
+  await expect.poll(() => page.evaluate(() => { const g = (window as any).canalRecallGame.vectorMap._ownGround; return g ? (g.loadingCells ?? 0) + [...(g.resident?.values?.() ?? [])].filter((r: any) => r.fade).length : 0; }), { timeout: 60_000, intervals: [250] }).toBe(0);
+  await settle(page);
   // The shadow map is redrawn only when its snapped box or the root-level caster signature changes, and between
   // redraws it is re-aimed at the moving origin: what it holds depends on when the last redraw happened. Its snap
   // grid (sharedFrame.ts absOf) is anchored at the first map centre the frame saw, which is wherever the boot
