@@ -1,6 +1,16 @@
 {
   "description": "Model asset update dates, not historical building construction dates.",
   "models": {
+    "abn-amro-hoofdkantoor": {
+      "updatedAt": "2026-11-01T18:18:06.022Z",
+      "version": "9a2b538531ac83a5",
+      "dateSource": "asset-update"
+    },
+    "abn-amro-hoofdkantoor.lod1": {
+      "updatedAt": "2026-11-01T18:18:03.406Z",
+      "version": "26cb8c36cbac4db6",
+      "dateSource": "asset-update"
+    },
     "academie-theater-dans": {
       "updatedAt": "2026-10-23T21:20:33.294Z",
       "version": "d8abfa92db6923d7",
@@ -3404,6 +3414,16 @@
     "winkler-prins-monument.lod1": {
       "updatedAt": "2026-10-14T02:54:28.497Z",
       "version": "8236f27a203f801c",
+      "dateSource": "asset-update"
+    },
+    "wolkenkrabber": {
+      "updatedAt": "2026-11-01T18:18:06.056Z",
+      "version": "1da18b6e8d540940",
+      "dateSource": "asset-update"
+    },
+    "wolkenkrabber.lod1": {
+      "updatedAt": "2026-11-01T18:18:03.413Z",
+      "version": "e8e73753798b4543",
       "dateSource": "asset-update"
     },
     "woongebouw-wladiwostok": {

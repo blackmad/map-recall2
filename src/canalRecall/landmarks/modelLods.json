@@ -1924,5 +1924,17 @@
   "buildVersion": 2,
   "bytes": 63936,
   "triangles": 2857
+ },
+ "abn-amro-hoofdkantoor": {
+  "sourceHash": "9a2b538531ac83a5",
+  "buildVersion": 2,
+  "bytes": 100296,
+  "triangles": 6465
+ },
+ "wolkenkrabber": {
+  "sourceHash": "1da18b6e8d540940",
+  "buildVersion": 2,
+  "bytes": 54100,
+  "triangles": 2285
  }
 }
