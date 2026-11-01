@@ -336,3 +336,30 @@ test('path join discs: none where the disc, not only its node, reaches over a su
   assert.equal(discOnSurvey([0, 0], 1.6, index, false), false, 'a disc 0.4 m short of the voetpad');
   assert.equal(discOnSurvey([1, 0], 1.6, index, false), true, 'its rim over the voetpad, the node off it');
 });
+
+// #129 hand-back 17: the way-deck planning builds its RoadIndex a step per task (RoadIndex.paced); same index.
+test('RoadIndex.paced: the same polygons in the same order as the one-task build (a real 3x3, within box)', async () => {
+  const { readFileSync, existsSync } = await import('node:fs');
+  const { gunzipSync } = await import('node:zlib');
+  const dir = 'public/data/extracts/amsterdam/roads-v1/cells';
+  const cellAt = (k: string): RoadCell | null => existsSync(`${dir}/${k}.json.gz`) ? JSON.parse(gunzipSync(readFileSync(`${dir}/${k}.json.gz`)).toString()) as RoadCell : null;
+  const around = [-1, 0, 1].flatMap(dx => [-1, 0, 1].map(dy => cellAt(`${dx}_${dy}`)));
+  if (!around.some(c => c?.surfaces.length)) return;
+  for (const within of [undefined, [-300, -300, 300, 300] as [number, number, number, number]]) {
+    const one = new RoadIndex([null, ...around], within);
+    assert.ok(one.size > 0, 'the 3x3 has road polygons');
+    let yields = 0;
+    const paced = await RoadIndex.paced([null, ...around], within, async () => { yields++; });
+    assert.ok(yields > 0, 'built in more than one step');
+    assert.equal(paced.size, one.size);
+    assert.equal(paced.own, one.own);
+    for (let k = 0; k < one.size; k++) assert.equal(paced.records[k], one.records[k], `record ${k}`);
+    const b = one.bounds();
+    if (!b) continue;
+    for (let i = 0; i <= 40; i++) for (let j = 0; j <= 40; j++) {
+      const x: number = b[0] + (b[2] - b[0]) * i / 40, y: number = b[1] + (b[3] - b[1]) * j / 40;
+      assert.equal(paced.find(x, y), one.find(x, y));
+      assert.deepEqual(paced.findAll(x, y), one.findAll(x, y));
+    }
+  }
+});

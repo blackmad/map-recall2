@@ -80,6 +80,7 @@ test('typed road guard bundle is loaded by Canal Recall', async ({ page }) => {
 });
 
 test('live MapLibre buildings use the OSM-aware color expression', async ({ page }) => {
+  test.skip(OWN, 'MapLibre style assertion: deleted with the default path at P5');
   await page.goto('/canal-drive/');
   await expect.poll(() => page.evaluate(() => Boolean(window.canalRecallGame?.vectorMap?.ready))).toBe(true);
   const paint = await page.evaluate(() => (window.canalRecallGame.vectorMap.map ?? window.canalRecallGame.vectorMap.cameraMap)

@@ -258,14 +258,19 @@ world"; `?world=live` is the tile path). P4 counters gate (budgets `p4Counters`,
 ≥ 1 MiB after warm-up (49 desktop / 32 iPad: facade chunk geometry, own-ground
 cell layers, one landmark), draws at 60° p95 399 / 589 vs ≤ 400 (roof caps ~25
 and bike parts ~35 are the cheap merges, legacy bundles), iPad triangles p50
-1.21 M vs ≤ 700 k after the `tileWhole` fix (811ff753c; owners: own ground
-306k, overview 279k, facades 259k, trees 183k, cycle overlay 108k). Materials
-lane takes the owners in size order (overview at ride zoom first); the 150/400 m
+1.02 M vs ≤ 700 k after the `tileWhole` fix (811ff753c) and the overview span
+grid (c415a1e1b, HISTORY "The overview draws only the tiles on screen": overview
+279k → 83k; owners now: own ground 306k, facades 259k, trees 183k, cycle
+overlay 108k, overview 83k). Materials lane takes the owners in size order
+(own ground step 1 merged 2026-11-01, `0a6cf030d`, HISTORY "The rider's ground
+cell is cut 6×6": iPad own ground 298k → 234k, frame p50 1.02 M → 0.95 M, draws
+p95 +7 %; desktop ground 504k → 397k, frame 1.97 M → 1.87 M; step 2 is distance
+LOD for kerbs/bollards beyond ~150 m with side-by-side PNGs); the 150/400 m
 facade LOD is parked (60–100k, 5–8 %, not worth its likeness risk yet). In-frame
 shader links are 0. P5 follow-ups: delete
 `building-tiles/` and `bag-tiles/` after a week of Sentry quiet on the
-default; measure `worldRideDownloadMB` (#130 part 2, gate 2 MB, still
-pending). closed on that lane 2026-11-01: the pre-painted atlas stays opt-in (atlas
+default; `worldRideDownloadMB` measured 2026-11-01 (seeded 1.13 MB, free 2.00 MB;
+fetch ring is the road lane's item). closed on that lane 2026-11-01: the pre-painted atlas stays opt-in (atlas
 ready ~1 s sooner locally but racing 0.7–1.2 s later, equal at 20 Mbit; the
 network is the bottleneck), shaders-off-at-boot (program calls cost 13 ms at
 boot, nothing to win). Parked: world-v1 A/B first load after a cold start
@@ -280,14 +285,33 @@ other-city extracts before the flip. Oracle round 3 merged 2026-11-01 (HISTORY
 "Oracle migration round 3"): four oracles (`_completeCityHasBuildings`,
 `_facadesActive()`, `_signatureSuppressOsmIds`, `.cr-map-labels`) and three own
 gaps (overview-transition blend, recipe-tiles settle stat, governor start ratio
-1.5 vs 2) are L1's; the lane runs the non-P1 specs on iphone under own next.
+1.5 vs 2) are L1's. Oracle round 4 merged 2026-11-01 (HISTORY "Oracle migration
+round 4"): the 48 non-P1 specs on iphone under own are 38 passed / 6 failed, all
+failures the four oracles plus one new own gap for L1, `city-startup-lod` iphone
+texture budget 26 MB against 22 MB; style-only and perf-probe tests skip under
+own; the MapLibre-only call audit is done (review/capture scripts left as
+MapLibre tools, listed in the entry). The oracle lane has no open items; it
+re-opens when L1 lands an oracle.
 **Integrator
 next:** `CanalRecallUi.stepSteer`
 in `car.js` through the frame host; drop the `leaflet`/`@types/leaflet`
-dependencies at the flip. L1 next: the remaining P1 items (camera parity ≤ 3.2
-px on the intro path and Anne Frank → Rijksmuseum, Utrecht/Rotterdam/Den Haag
-own-map extracts with water, `_waitForMapSettle` replacement) and a fair A/B
-after each.
+dependencies at the flip. **L1 hand-back 18 merged 2026-11-01** (`d6837280a`,
+HISTORY "The own view answers the four oracles"): the four oracles answered,
+camera parity < 1e-7 px on intro and Anne Frank → Rijksmuseum, `_waitForMapSettle`
+was already replaced (camera.whenIdle, hand-back 4), city-aware engine choice
+(`engineFlag(search, cityId)`, Amsterdam-only, `game.js` passes `this.cityId`).
+**Open before the Amsterdam flip (L1):** four own-engine spec failures now
+visible — `building-click-perf`:228 0.947 vs 0.95 (the Westerkerk click at
+Westermarkt resolves to the wrong pand: a learning-correctness bug, fix first),
+`building-look`:47 (URL look `cartoon` not honoured under own) and :58 (B-key
+look cycle not wired), `bag-tiles`:110 (`usingBagTiles` false with `?bagTiles=1`);
+overview blend 6.8 % vs 5 % (MapLibre 3.7 %): roofs and gardens over plain land
+because the own overview has no building footprints — needs footprints in the
+own-map data or an own-engine budget row; `city-startup-lod` iphone texture 26
+vs 22 MB (cause unknown); governor-no-flash under own should force `?tier=high`
+(own starts at the tier's cap). Note: shared-frame `register(..., {order})` has
+no effect for group-rooted participants (three.js takes the innermost group's
+order); fixed for the overview only.
 Steps 4–5 merged 2026-10-30 (`487cb157e`): `ENGINE=own` switch for the gate
 specs, ride-perf, phone-memory and `ride-perf-owners.mjs` (owner `engine`);
 overlays under the flag (cycle tracks, transit, neighbourhood lines solid not
@@ -321,8 +345,15 @@ centimetre height policy: cells are published `--no-policy` since
 at the far edge, materials pins the ground LOD per cell in the harness and
 re-runs on the published set; then the flag can default). Noted for a kit
 lane: a 4 mm eaves change flips a storey count, the storey/kit derivation
-needs hysteresis. Road lane: millimetre-integer heights to recover the
-0.78 MB gzip the exact values cost (gate ≤ 10 MB, 9.70 now). The earlier wording:
+needs hysteresis. Millimetre heights PARKED (integrator, 2026-11-01): the road
+lane measured all 604 cells; `height`/`minHeight` are already exact integers,
+the only float column is `roofEavesHeightM` (122,955 computed doubles, ~0.96 MB
+gzip), no lossless layout saves > 50 KB, and the real lever is rounding the
+eaves to the mm where it is computed (roofMesh/sourceVisualRoof/landmarkKits,
+a ≤ 0.5 mm runtime building change, city ~9.0 MB). Measured 2026-11-01
+(HISTORY "One ride downloads 1.1–2.0 MB"): seeded 1.13 MB, free ride 2.00 MB
+(27 cells for 202 m); the lever is the streamer's fetch ring, not cell
+bytes (road lane); mm heights stay parked. The earlier wording:
 `?world=v1` is identical to the default path in the browser (five spots,
 desktop and iPhone: same feature ids and styled features per tile; Node
 `world:verify` 295 tiles / 349,220 buildings / 0 differ). The four-tile
@@ -381,7 +412,35 @@ met with a GC-forced sample (303 MB main at ride start, world below default
 at ride end), `engine/workerPool.ts`, old queues deleted; the main own-ground
 cell build keeps its own worker. **Step 5 road CSR merged 2026-10-31**
 (`922496ea7`, HISTORY "The road graph is flat arrays"): road-graph heap
-50 → 8 MB (+7.3 MB typed arrays), routes identical. **Step 5b merged
+50 → 8 MB (+7.3 MB typed arrays), routes identical; `roadGraphMB` 15.5 (claimed
+at ride start after forced GC, gate ≤ 30) recorded in budgets 2026-11-01.
+**Other-city road binaries merged 2026-11-01** (`7d1c1b6c5`, HISTORY "Binary
+road extracts for Utrecht, Rotterdam and Den Haag"; way hashes identical on
+all four cities). **Road lane final hand-back merged 2026-11-01** (`5c9915cdf`,
+HISTORY "Road lane final hand-back"): spawn-pose premise pinned in the specs
+(Eerste Leliedwarsstraat / Bloemgracht T; Reestraat HUD withhold), six-tile
+cut dropped (never binds). **P0 — pop-in (user, 2026-11-01: "I'm not loving the
+pop-in"):** the pop-in gate is RED on the iPhone profile, default engine: 24
+building-chunk arrivals within 150 m at ride start (nearest 34.7 m) + 4
+ground-cell swaps vs zero; heap gate RED too, 300 MB vs 250 (`_canalSharedFrame`
+101 MB, `atGrid.grid` 34, facades CPU arrays 27, `roadIndex.segments` 20,
+landmarks CPU arrays 12). **Fetch ring merged 2026-11-01** (`b74955c7c`, HISTORY
+"The world streamer fetches the cells under the ride view"): free-ride cells
+halved, iPhone start heap 302 → 276 MB, 0 restyles; own-engine iPhone gates
+still red (heap 276 vs 250; 24 chunk arrivals at 35 m during the ride, with or
+without the ring). **The 150 m count is not what the player sees** (camera ~600 m
+deep): the gate moves to screen-space pop px/s per owner, desktop, both
+engines (road lane; earlier: MapLibre 1,480 vs own 1,846 px/s, landmark models
+and an unexplained bucket largest); the user is asked which pop-in they saw
+(#168 needs-david). Heap levers from the `_canalSharedFrame` breakdown:
+OverviewLayer keeps the decoded overview data + rebuild closures + prebuilt
+geometry, 45.6 MB (L1, after its flip blockers); facade geometry CPU arrays
+kept after upload 27.1 MB (materials, after ground step 2); landmark CPU
+arrays 11.6 MB (road lane, context-restore must still pass). The no-maplibre `package.json` diff loads
+clean and waits for the flip (lane scratch `no-maplibre-package.diff`).
+**Parked idea (user, 2026-11-01): a cartoon / low-fi high-colour look mode
+with no new models — issue #161, a materials lane after the own-ground steps.
+**Step 5b merged
 2026-10-31** (HISTORY "The road-graph build is 40 % faster"): number keys and
 a stamp dedupe in the build, `scripts/time-to-ride-phases.mjs` for the
 per-step table; navigation → racing 5.41 → 4.75 s. **Step 5c merged

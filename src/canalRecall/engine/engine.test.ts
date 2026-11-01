@@ -4,6 +4,8 @@ import { EngineCamera, mercatorX, mercatorY, unitsPerMetre } from './cameraMap';
 import { StepClock } from './frameHost';
 import { frameMatrices } from '../rendererShared/frameMath';
 import { engineFlag } from './worldViewApi';
+import { basemapGroundColour, overviewGroundColours } from '../ownGround/basemapPalette';
+import { LANDUSE_CLASSES } from '../ownMap/overviewFormat';
 
 const vp = { width: 1440, height: 900 };
 
@@ -75,6 +77,24 @@ test('engine flag', () => {
   assert.equal(engineFlag('?engine=own'), 'own');
   assert.equal(engineFlag('?engine=maplibre'), 'maplibre');
   assert.equal(engineFlag(''), 'maplibre');
+});
+
+test('engine choice is city-aware: own only in listed cities, each with the own map and the roads binary', async () => {
+  const { existsSync, readdirSync } = await import('node:fs');
+  const { OWN_ENGINE_CITIES, OWN_ENGINE_FILES, engineForCity } = await import('./worldViewApi');
+  const root = 'public/data/extracts';
+  // The flip is Amsterdam-only (user decision, 2026-11-01): a city with both files (Utrecht has roads-v2 since
+  // origin/main 2026-11-01) still draws with MapLibre until it is listed; a listed city must have both.
+  for (const city of OWN_ENGINE_CITIES) {
+    for (const f of OWN_ENGINE_FILES) assert.ok(existsSync(`${root}/${city}/${f}`), `${city}: listed for the own engine, has ${f}`);
+  }
+  for (const city of readdirSync(root)) {
+    assert.equal(engineFlag('?engine=own', city), OWN_ENGINE_CITIES.has(city) ? 'own' : 'maplibre', city);
+    assert.equal(engineFlag('', city), 'maplibre', `${city}: the default stays MapLibre`);
+  }
+  assert.deepEqual([...OWN_ENGINE_CITIES], ['amsterdam']);
+  for (const city of ['utrecht', 'rotterdam', 'den-haag']) assert.equal(engineForCity('own', city), 'maplibre', city);
+  assert.equal(engineForCity('own', null), 'own', 'no city yet: Amsterdam, the default');
 });
 
 test('FrameHost: fixed ticks, render on demand, context loss and restore, guarded', async () => {
@@ -460,4 +480,48 @@ test('FramePhases: totals per phase, and the slowest frames keep their own phase
   assert.deepEqual(r.totals, { b: 30, a: 30 });
   assert.deepEqual(r.worst.map(w => w.ms), [30, 20]);
   assert.deepEqual(r.worst[0].phases, { a: 25, b: 5 });
+});
+
+test('overview cover radius: a change inside the 500 ms throttle asks for the frame that applies it; unchanged inputs ask nothing', async () => {
+  const { decodeOverview } = await import('../ownMap/overviewFormat');
+  const { OverviewLayer } = await import('./overviewLayer');
+  const data = decodeOverview({ version: 1, frame: { origin: [4.9, 52.37], kx: 1, ky: 1 }, unit: 0.5, bounds: [-1000, -1000, 1000, 1000], names: [], water: [], parks: [], streets: [], waterLines: [], hoods: [], sources: [] } as never);
+  let covered = 0, revision = 0, repaints = 0;
+  const ground = { coversRect: (x0: number, _y0: number, x1: number) => (x1 - x0) / 2 <= covered, get coverRevision() { return revision; } };
+  const layer: any = new OverviewLayer(data, { center: () => ({ lng: 4.9, lat: 52.37 }), zoom: () => 17, rider: () => [4.9, 52.37], ground: () => ground, repaint: () => { repaints++; } });
+  const realNow = performance.now.bind(performance);
+  let now = 10_000;
+  (performance as any).now = () => now;
+  try {
+    const radius = () => { layer.beforeRender({} as never); return layer.near.uNearR.value as number; };
+    const first = radius();
+    assert.equal(repaints, 0, 'the first check runs at once');
+    // At rest with nothing changed: no check is due and nothing asks for frames.
+    now += 100; radius(); now += 100; radius();
+    assert.equal(repaints, 0, 'unchanged inputs: no repaint');
+    // A cell finishes dissolving 200 ms after the last check: the frame keeps the old radius but asks for another.
+    covered = 1e9; revision++;
+    now += 10; assert.equal(radius(), first, 'throttled: not yet');
+    assert.equal(repaints, 1, 'a skipped check asks for the frame that runs it');
+    now += 600;
+    const after = radius();
+    assert.ok(after > first, `the new radius applies (${first} -> ${after})`);
+    now += 100; radius(); now += 600; radius();
+    assert.equal(repaints, 1, 'settled: no more repaints');
+  } finally { (performance as any).now = realNow; }
+});
+
+test('the own overview takes the colours MapLibre\'s patched basemap draws under the own ground', () => {
+  const g = overviewGroundColours();
+  const base = (id: string, type: string, src?: string) => basemapGroundColour({ id, type, ...(src ? { 'source-layer': src } : {}) });
+  assert.equal(g.land, base('background', 'background'));
+  assert.equal(g.water, base('water', 'fill', 'water'));
+  assert.equal(g.park, base('park', 'fill', 'park'));
+  assert.equal(g.streetFill, base('road_minor', 'line', 'transportation'));
+  assert.equal(g.streetCasing, g.streetFill, 'one asphalt band, no white casing');
+  assert.equal(g.pathFill, base('road_path_pedestrian', 'line', 'transportation'));
+  assert.equal(g.rail, base('road_major_rail', 'line', 'transportation'));
+  assert.equal(g.landuse.wood, base('landcover_wood', 'fill', 'landcover'));
+  assert.equal(g.landuse.cemetery, base('landuse_cemetery', 'fill', 'landuse'));
+  for (const cls of LANDUSE_CLASSES) assert.ok(g.landuse[cls], `landuse ${cls} has a ground colour`);
 });

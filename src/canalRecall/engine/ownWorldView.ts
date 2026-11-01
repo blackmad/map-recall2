@@ -29,11 +29,12 @@ import { CameraMap, EngineCamera, unitsPerMetre, mercatorX, mercatorY } from './
 import { GameCameraSolver, lngLatToWorld, worldToLngLat, type GameCamera, type LoaderFrame } from './gameCamera';
 import { clearCamera, clearanceResidents } from './cameraClearance';
 import { RiderCoverTracker } from './riderCover';
-import { decodeOverviewBytes, fetchOverviewBytes, OverviewLayer, OVERVIEW_TILES, OVERVIEW_TILE_MIN_TRIANGLES } from './overviewLayer';
+import { decodeOverviewBytes, fetchOverviewBytes, OverviewLayer, overviewTileGrid, OVERVIEW_TILE_MIN_TRIANGLES } from './overviewLayer';
 import { overviewFromPool } from '../ownMap/overviewPool';
 import { awaitWorkerPool } from './workerPool';
-import type { JumpOptions, ScreenPoint, WorldCamera } from './worldViewApi';
+import type { JumpOptions, ScreenPoint, WorldCamera, WorldViewOracles } from './worldViewApi';
 import { FlatLines, type LngLatLine } from './overlays/flatLines';
+import { COVER_POLL_MS, isCoveredState } from '../labels/coveredState';
 import { LabelLayer, type PointLabel } from './overlays/labelLayer';
 import { gameLabelContext, type LabelContext } from '../ownMap/labelPolicy';
 import { buildSpoilerIndex, type SpoilerIndex } from '../orientationPois';
@@ -99,7 +100,7 @@ export const UNIMPLEMENTED = [
 
 type Vehicle = any;
 
-export class OwnWorldView {
+export class OwnWorldView implements WorldViewOracles {
   readonly engine = 'own' as const;
   ready = false;
   readonly container: HTMLElement;
@@ -124,6 +125,14 @@ export class OwnWorldView {
   /** Landmark models, trees, detailed buildings, pyramidal roofs, ARTIS (cityExtras.ts). */
   readonly extras: CityExtras;
   get _signatureLandmarks(): any { return this.extras.signature; }
+
+  // ---- spec oracles (worldViewApi.ts WorldViewOracles), the names vector-map.js answers to ----
+  /** Set by the streamer's first-buildings callback (loadBuildings), as vector-map.js's `_completeCity.attach`. */
+  _completeCityHasBuildings = false;
+  /** The three.js buildings draw with the facades library loaded (no theme or detail switch under own). */
+  _facadesActive(): boolean { return !!this.facadesLib() && !!this._threeBuildings && this.status.buildings === true; }
+  /** The building ids the shown signature models hide (cityExtras.ts suppressedIds: covers.json under ?bagTiles=1). */
+  _signatureSuppressOsmIds(): string[] { return this.extras.suppressedIds(); }
   get _inventoryTrees(): any { return this.extras.trees; }
   get _detailedBuildings(): any { return this.extras.detailed; }
   get _pyramidalRoofs(): any { return this.extras.roofs; }
@@ -293,6 +302,11 @@ export class OwnWorldView {
     this._sharedFrame.register('engine-transit', this._lines.transit, { order: -55 });
     this._sharedFrame.register('engine-cycle', this._lines.cycle, { order: -50 });
     this._labels = new LabelLayer(container, () => this.labelPolicy());
+    // Paper over the map (menu, setup, loading) hides the labels without waiting for a repaint: a state change need
+    // not move the map, so the check also runs on its own slow clock, as the MapLibre overlay's (labels/labelOverlay.ts).
+    const syncCovered = () => { if (this._labels.setCovered(isCoveredState(W().canalRecallGame?.state))) this.host.triggerRepaint(); };
+    syncCovered();
+    W().setInterval(syncCovered, COVER_POLL_MS);
     if (three.HighlightMarker && three.highlightStyle?.() !== 'yellow') {
       try {
         this._highlightMarker = new three.HighlightMarker(THREE, this.cameraMap, {
@@ -352,11 +366,11 @@ export class OwnWorldView {
       // the worker fails, it is built here as before.
       const bytes = await fetchOverviewBytes(this.absoluteExtractRoot());
       // The facades layer owns the pool's stamped URL and loads in parallel: wait for its decision instead of racing it.
-      const pooled = awaitWorkerPool().then(pool => overviewFromPool(pool, bytes, OVERVIEW_TILES, OVERVIEW_TILE_MIN_TRIANGLES));
+      const pooled = awaitWorkerPool().then(pool => overviewFromPool(pool, bytes, overviewTileGrid(), OVERVIEW_TILE_MIN_TRIANGLES));
       const data = await decodeOverviewBytes(bytes);
       const prebuilt = await pooled;
       this.status.overviewBuilt = prebuilt ? 'pool' : 'main';
-      this._overview = new OverviewLayer(data, { center: () => this.camera.center(), zoom: () => this.camera.zoom(), rider: () => this.lastSubject, ground: () => (this._ownGround?.ready && this._ownGround.coversRect ? this._ownGround : null) }, prebuilt);
+      this._overview = new OverviewLayer(data, { center: () => this.camera.center(), zoom: () => this.camera.zoom(), rider: () => this.lastSubject, ground: () => (this._ownGround?.ready && this._ownGround.coversRect ? this._ownGround : null), repaint: () => this.host.triggerRepaint() }, prebuilt);
       // First in the main pass, under every 3D participant.
       this._sharedFrame.register('engine-overview', this._overview, { order: -100 });
       this.status.overview = { water: data.water.length, parks: data.parks.length, streets: data.streets.length };
@@ -391,7 +405,7 @@ export class OwnWorldView {
       const base = api.exceptLandmarks ? api.exceptLandmarks(decorate, new Set(), undefined) : decorate;
       city.setFeatureDecorator(api.decorateKitRoof ? (f: any) => api.decorateShopfront(api.decorateFront(api.decorateKitRoof(base(f)))) : base);
       if (!(await city.probe())) { this.fail('buildings', 'tiles not published'); return; }
-      city.attach(() => { this.status.firstBuildingsAt = performance.now(); }, (features: any[]) => {
+      city.attach(() => { this._completeCityHasBuildings = true; this.status.firstBuildingsAt = performance.now(); }, (features: any[]) => {
         this._tileFeatures = features;
         this.extras.setBuildingFeatures(features);
         try { this._threeBuildings.setFeatures(features); } catch (error) { console.warn('[engine] facade sync failed', error); }
@@ -439,7 +453,7 @@ export class OwnWorldView {
     return this.riderSurfaceM;
   }
 
-  private syncGroundConsumers(): void {
+  private syncGroundConsumers(lap?: (name: string) => void): void {
     const ground = this._ownGround;
     if (!ground || !ground.ready) return;
     const tb = this._threeBuildings;
@@ -457,8 +471,11 @@ export class OwnWorldView {
     if (this.groundRefreshAt && now - this.groundRefreshAt < 400) return;
     this.groundRefreshAt = now;
     this.groundRevision = ground.surfaceRevision;
+    lap?.('ground update: consumers');
     tb?.refreshGroundBases?.();
+    lap?.('ground update: building bases');
     this.extras.refreshGroundBases();
+    lap?.('ground update: extras bases');
   }
 
   // ---- the frame ----
@@ -671,7 +688,11 @@ export class OwnWorldView {
     // Landmark models and trees hold what the driving view loaded: "visible" at city scale is all of Amsterdam.
     if (view.introFlat > 0) this.extras.setSuspended(true);
     if (view.introFlat === 0) this.introLanding = false;
-    if (this._ownGround) { this._ownGround.update(view.subject, view.introFlat > 0 ? 0 : view.zoom, pitch); this.syncGroundConsumers(); }
+    if (this._ownGround) {
+      this._ownGround.update(view.subject, view.introFlat > 0 ? 0 : view.zoom, pitch);
+      lap('ground update: own ground');
+      this.syncGroundConsumers(phases ? lap : undefined);
+    }
     lap('ground update');
     this.cameraMap.jumpTo({ center: view.lngLat, zoom: view.zoom, bearing: view.bearing, pitch, elevation });
     lap('jumpTo and move listeners');

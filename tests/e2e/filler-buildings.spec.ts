@@ -1,6 +1,7 @@
 import { test, expect, type Page } from '@playwright/test';
 import { mkdirSync, writeFileSync } from 'node:fs';
 import { openRoute } from './helpers';
+import { OWN } from './worldCam';
 
 // Named regressions for generic city-mesh "filler" buildings around landmarks:
 //  - Mövenpick Amsterdam City Centre (Piet Heinkade 11): the hotel tower was suppressed by the
@@ -79,6 +80,7 @@ async function parkAt(page: Page, at: number[]) {
 
 for (const place of PLACES.filter(p => !only || only.includes(p.id))) {
   test(`filler buildings: ${place.id}`, async ({ page }, info) => {
+    test.skip(OWN, 'MapLibre style assertion: deleted with the default path at P5');
     test.setTimeout(300_000);
     mkdirSync(OUT, { recursive: true });
     await page.addInitScript(() => { (window as any).PIXELS_PER_METER_VALUE = 3; });

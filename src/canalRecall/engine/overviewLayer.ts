@@ -17,6 +17,7 @@ import type { CellTile } from '../ownGround/cellTiles';
 import { interpolateStops, LANDUSE_STYLE, MIN_LINE_PX, PALETTE, PIER_STYLE, RAIL_STYLE, RAIL_TUNNEL_STYLE, STREET_STYLE, type Stops } from '../ownMap/style';
 import { LANDUSE_CLASSES } from '../ownMap/overviewFormat';
 import { overviewColours } from './themePalette';
+import { overviewGroundColours } from '../ownGround/basemapPalette';
 import { KX, KY, ORIGIN, toLocal, type Vec2 } from '../ownMap/frame';
 import { metresPerPixel } from '../ownMap/mapCamera';
 import { WaterIndex } from './waterIndex';
@@ -71,7 +72,7 @@ export const OVERVIEW_Z = -3;
 
 type Lines = { cls: StreetClass; fill: THREE.Mesh; casing: THREE.Mesh | null };
 /** v2 overview lines with their own width stops (rail by kind, pier walkways). */
-type ExtraLine = { mesh: THREE.Mesh; width: Stops; scale: number; opacity: number };
+type ExtraLine = { mesh: THREE.Mesh; width: Stops; scale: number; opacity: number; kind: 'pier' | 'rail'; base: string };
 
 export class OverviewLayer implements FrameParticipant {
   readonly root = new THREE.Group();
@@ -81,6 +82,8 @@ export class OverviewLayer implements FrameParticipant {
   private readonly land: THREE.Mesh;
   private readonly parks: THREE.Mesh;
   private readonly waterMesh: THREE.Mesh;
+  /** v2 flat fills with their class, for setTheme. */
+  private readonly fills: { mesh: THREE.Mesh; kind: 'pier' | string }[] = [];
   private centreLat: number = ORIGIN.lat;
   /** How to build each geometry again (a lost context): the CPU copies are freed once uploaded (heap gate, #130). */
   private readonly rebuild = new Map<THREE.BufferGeometry, () => THREE.BufferGeometry>();
@@ -113,6 +116,8 @@ export class OverviewLayer implements FrameParticipant {
    */
   private readonly near = { uRider: { value: new THREE.Vector2() }, uNearR: { value: 600 }, uNear: { value: 0 } };
   private coverCheckAt = -Infinity;
+  /** The inputs of the last cover check (rider metre, zoom, ground residency revision). */
+  private coverKey = '';
   private coveredR = 0;
   /** Span-culled geometries (cutSpans): the mesh that owns the spans and every mesh drawing that geometry. */
   private readonly spanned: { owner: THREE.Mesh; meshes: THREE.Mesh[]; line: boolean }[] = [];
@@ -121,9 +126,17 @@ export class OverviewLayer implements FrameParticipant {
   constructor(readonly data: OverviewData, private readonly view: {
     center(): { lng: number; lat: number }; zoom(): number; rider?(): [number, number] | null;
     /** The own ground (gameGround.ts coversRect), when there is one. */
-    ground?(): { coversRect(x0: number, y0: number, x1: number, y1: number): boolean } | null;
+    ground?(): { coversRect(x0: number, y0: number, x1: number, y1: number): boolean; coverRevision?: number } | null;
+    /** Ask the host for a frame (a cover check due later than this frame). */
+    repaint?(): void;
   }, prebuilt?: readonly BuiltOverviewGeometry[] | null) {
     this.root.name = 'engine-overview';
+    // First of every transparent draw. three takes a draw's group order from its innermost Group, so this root (not
+    // the shared frame's wrapper, `order: -100`) decides it. At group order 0 the dissolving own ground (transparent
+    // while presence < 1, renderOrder 0-2, writing depth above OVERVIEW_Z) drew before the overview's streets and
+    // water, which then failed the depth test: at zoom 14.2 (presence 0.11) the view showed the clear colour through
+    // a 10 % ground, ΔE>20 on 17.7 % of the frame (overview-transition:101 under ?engine=own).
+    this.root.renderOrder = -100;
     this.water = new WaterIndex(data.water);
     for (const r of overviewRecipes(data)) this.recipes.set(r.id, r.make);
     for (const g of prebuilt ?? []) if (this.recipes.has(g.id)) this.prebuilt.set(g.id, g);
@@ -171,7 +184,7 @@ export class OverviewLayer implements FrameParticipant {
     });
     for (const [geo, meshes] of byGeo) {
       const owner = meshes[0];
-      if (!cutMesh(THREE, owner, OVERVIEW_TILES, OVERVIEW_TILE_MIN_TRIANGLES, { draw: 'spans', tiles: this.preTiles.has(geo) ? this.preTiles.get(geo) : undefined })) continue;
+      if (!cutMesh(THREE, owner, overviewTileGrid(), OVERVIEW_TILE_MIN_TRIANGLES, { draw: 'spans', tiles: this.preTiles.has(geo) ? this.preTiles.get(geo) : undefined })) continue;
       const cull = owner.onBeforeRender;
       const whole = () => { geo.drawRange.start = 0; geo.drawRange.count = Infinity; };
       for (const m of meshes) {
@@ -195,33 +208,44 @@ export class OverviewLayer implements FrameParticipant {
     for (const cls of LANDUSE_CLASSES) {
       if (!this.recipes.has(`landuse:${cls}`)) continue;
       // Between the land (-1) and the parks (1), in the style's order.
-      add(new THREE.Mesh(this.built(`landuse:${cls}`), fillMaterial(LANDUSE_STYLE[cls].fill, OVERVIEW_Z)), LANDUSE_STYLE[cls].order / 10);
+      const mesh = add(new THREE.Mesh(this.built(`landuse:${cls}`), fillMaterial(LANDUSE_STYLE[cls].fill, OVERVIEW_Z)), LANDUSE_STYLE[cls].order / 10);
+      this.fills.push({ mesh, kind: cls });
     }
-    if (data.piers.length) add(new THREE.Mesh(this.built('piers'), fillMaterial(PIER_STYLE.fill, OVERVIEW_Z)), 3);
+    if (data.piers.length) this.fills.push({ mesh: add(new THREE.Mesh(this.built('piers'), fillMaterial(PIER_STYLE.fill, OVERVIEW_Z)), 3), kind: 'pier' });
     if (data.pierLines.length) {
       const mesh = add(new THREE.Mesh(this.built('pierLines'), lineMaterial(PIER_STYLE.fill, OVERVIEW_Z)), 4);
-      this.extraLines.push({ mesh, width: PIER_STYLE.width, scale: 1, opacity: 1 });
+      this.extraLines.push({ mesh, width: PIER_STYLE.width, scale: 1, opacity: 1, kind: 'pier', base: PIER_STYLE.fill });
     }
     for (const g of railGroups(data)) {
       const st = RAIL_STYLE[g.kind as keyof typeof RAIL_STYLE];
       // Tunnels under the streets, faint; surface track over the street fills.
       const mesh = add(new THREE.Mesh(this.built(`rail:${g.key}`), lineMaterial(st.fill, OVERVIEW_Z)), g.tunnel ? 9 : 30);
-      this.extraLines.push({ mesh, width: st.width, scale: g.service ? 0.6 : 1, opacity: g.tunnel ? RAIL_TUNNEL_STYLE.opacity : 1 });
+      this.extraLines.push({ mesh, width: st.width, scale: g.service ? 0.6 : 1, opacity: g.tunnel ? RAIL_TUNNEL_STYLE.opacity : 1, kind: 'rail', base: st.fill });
     }
   }
 
-  /** A palette theme (themePalette.ts) as the flat materials' colours; 'clean' restores the own map's. */
+  /**
+   * A palette theme (themePalette.ts) as the flat materials' colours. 'clean' draws the own ground's palette
+   * (ownGround/basemapPalette.ts overviewGroundColours), as MapLibre's patched basemap does under the own ground, so
+   * the overview -> city blend dissolves into ground of the same colour.
+   */
   setTheme(theme: string): void {
-    const t = overviewColours(theme);
+    const t = overviewColours(theme), g = t ? null : overviewGroundColours();
     const set = (m: THREE.Mesh, c: string) => { ((m.material as THREE.ShaderMaterial).uniforms.uColor.value as THREE.Color).setStyle(c, THREE.LinearSRGBColorSpace); };
-    set(this.land, t ? t.land : PALETTE.land);
-    set(this.parks, t ? t.park : PALETTE.park);
-    set(this.waterMesh, t ? t.water : PALETTE.water);
+    const flat = t ?? g;
+    set(this.land, flat ? flat.land : PALETTE.land);
+    set(this.parks, flat ? flat.park : PALETTE.park);
+    set(this.waterMesh, flat ? flat.water : PALETTE.water);
     for (const l of this.lines) {
       const st = STREET_STYLE[l.cls];
-      set(l.fill, t ? t.streetFill : st.fill);
-      if (l.casing && st.casing) set(l.casing, t ? t.streetCasing : st.casing);
+      set(l.fill, g && l.cls === 'path' ? g.pathFill : flat ? flat.streetFill : st.fill);
+      if (l.casing && st.casing) set(l.casing, g && l.cls === 'path' ? g.pathFill : flat ? flat.streetCasing : st.casing);
     }
+    for (const f of this.fills) {
+      const base = f.kind === 'pier' ? PIER_STYLE.fill : LANDUSE_STYLE[f.kind as keyof typeof LANDUSE_STYLE].fill;
+      set(f.mesh, g ? (f.kind === 'pier' ? g.pier : g.landuse[f.kind] ?? g.land) : base);
+    }
+    for (const e of this.extraLines) set(e.mesh, g ? (e.kind === 'pier' ? g.pier : g.rail) : e.base);
   }
 
   isWater(lng: number, lat: number): boolean { return this.water.isWater(lng, lat); }
@@ -284,8 +308,16 @@ export class OverviewLayer implements FrameParticipant {
       const [x, y] = toLocal(rider[0], rider[1]);
       this.near.uRider.value.set(x, y);
       const now = performance.now();
-      if (now - this.coverCheckAt > 500) { this.coverCheckAt = now; this.coveredR = coveredRadius(ground, x, y); }
-    } else this.coveredR = 0;
+      // The radius only changes with the rider's spot, the zoom or the ground's residency. Throttled while those
+      // change, a check skipped here asks for the frame that runs it: otherwise a rider who stops (or a cell that
+      // finishes dissolving) within 500 ms of the last check kept the old radius on screen until some unrelated
+      // repaint, and a still frame differed from a redraw at the far road edges (#129 render on change, iPhone).
+      const key = `${Math.round(x)},${Math.round(y)},${this.view.zoom().toFixed(2)},${ground.coverRevision ?? ''}`;
+      if (key !== this.coverKey) {
+        if (now - this.coverCheckAt > 500) { this.coverCheckAt = now; this.coverKey = key; this.coveredR = coveredRadius(ground, x, y); }
+        else this.view.repaint?.();
+      }
+    } else { this.coveredR = 0; this.coverKey = ''; }
     this.near.uNearR.value = this.coveredR;
     this.near.uNear.value = this.coveredR > 0 ? 1 : 0;
     void handover;
@@ -293,9 +325,24 @@ export class OverviewLayer implements FrameParticipant {
   }
 }
 
-/** Span grid per side over each overview geometry's extent, and the smallest geometry worth cutting. */
-export const OVERVIEW_TILES = 8;
+/**
+ * Span grid per side over each overview geometry's extent, and the smallest geometry worth cutting. 32, not 8: a span
+ * runs from the first to the last tile on screen in serpentine order, so with tiles ~3 km across one chase-zoom frame
+ * drew whole rows of the region (iPad Jordaan ride: 263 k overview triangles per frame, p50, of the frame's 1.2 M);
+ * at 32 the same frames draw ~81 k, same draws, same pixels (pure culling, #129 2026-11-01). Skipping the tiles
+ * inside the own ground's covered disc was measured too and saves ~1 k: the disc (≤ 960 m of discard) holds hardly a
+ * whole tile at any grid that keeps the per-frame span test cheap. `?overviewCull=0` keeps the old 8 (the A/B).
+ */
+export const OVERVIEW_TILES = 32;
+export const OVERVIEW_TILES_BEFORE = 8;
 export const OVERVIEW_TILE_MIN_TRIANGLES = 2000;
+
+/** The span grid in use: OVERVIEW_TILES, or the old 8 under `?overviewCull=0` / `__canalRecallOverviewCull = false`. */
+export function overviewTileGrid(): number {
+  const g = globalThis as { location?: { search?: string }; __canalRecallOverviewCull?: boolean };
+  const off = g.__canalRecallOverviewCull === false || new URLSearchParams(g.location?.search ?? '').get('overviewCull') === '0';
+  return off ? OVERVIEW_TILES_BEFORE : OVERVIEW_TILES;
+}
 /** three's `onUpload` callback (`this` is the attribute): drop the CPU copy. */
 function releaseArray(this: { array: unknown }): void { this.array = null; }
 

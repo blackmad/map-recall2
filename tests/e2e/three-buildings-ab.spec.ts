@@ -2,6 +2,7 @@ import { test, expect, type Page } from '@playwright/test';
 import { mkdirSync, writeFileSync } from 'node:fs';
 import sharp from 'sharp';
 import { openRoute } from './helpers';
+import { OWN } from './worldCam';
 
 // A/B for the three.js building layer against the fill-extrusion pattern layer
 // (spike, 2026-10-02). Opt-in, a measurement rather than a gate:
@@ -42,6 +43,7 @@ async function park(page: Page, at: readonly number[], face: readonly number[], 
 const results: Record<string, unknown>[] = [];
 for (const variant of VARIANTS) {
   test(`ab: ${variant.name}`, async ({ page }, testInfo) => {
+    test.skip(OWN, 'MapLibre style assertion: deleted with the default path at P5');
     test.setTimeout(1_500_000);
     await page.addInitScript((three) => { (window as any).__canalRecallFacades = true; (window as any).__canalRecallTrees3d = false; (window as any).__canalRecallBuildings3d = three; }, variant.three);
     await openRoute(page, { travelMode: 'car', viewMode: 'chase', abortHeavyTiles: true, enterRacing: false });

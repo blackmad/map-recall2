@@ -41,12 +41,12 @@ for (const [lng, lat, bearing] of places) {
   // map's labels and the HUD hidden, for pixel-exact before/after of one participant. Restored afterwards.
   if (process.env.SHOTS && process.env.ONLY) {
     await page.evaluate((only) => {
-      const vm = canalRecallGame.vectorMap, f = vm._sharedFrame, m = vm.map;
+      const vm = canalRecallGame.vectorMap, f = vm._sharedFrame, m = vm.map; // ENGINE=own: no MapLibre style to hide (n/a)
       window.__only = { roots: [], layers: [], els: [] };
       // Freeze the simulation (the chase camera's settle and the rider's bob move the view sub-pixel between shots).
       const g = canalRecallGame; window.__only.update = Object.prototype.hasOwnProperty.call(g, '_update') ? g._update : null; g._update = () => {};
       for (const e of f.registry.all()) { const root = e.participant?.participant?.root ?? e.participant?.root; if (root && only !== 'all' && e.id !== only && root.visible) { root.visible = false; window.__only.roots.push(root); } }
-      for (const l of m.getStyle().layers) if (l.type === 'symbol' && m.getLayoutProperty(l.id, 'visibility') !== 'none') { m.setLayoutProperty(l.id, 'visibility', 'none'); window.__only.layers.push(l.id); }
+      if (m) for (const l of m.getStyle().layers) if (l.type === 'symbol' && m.getLayoutProperty(l.id, 'visibility') !== 'none') { m.setLayoutProperty(l.id, 'visibility', 'none'); window.__only.layers.push(l.id); }
       for (const el of document.querySelectorAll('body *')) { window.__only.els.push([el, el.style.visibility]); el.style.visibility = 'hidden'; }
       let el = m.getCanvas(); while (el) { el.style.visibility = 'visible'; el = el.parentElement; }
       f.invalidateShadows?.(); m.triggerRepaint();
@@ -65,7 +65,7 @@ for (const [lng, lat, bearing] of places) {
     await page.evaluate(() => {
       const o = window.__only, m = canalRecallGame.vectorMap.map;
       if (o.update) canalRecallGame._update = o.update; else delete canalRecallGame._update;
-      for (const r of o.roots) r.visible = true; for (const id of o.layers) m.setLayoutProperty(id, 'visibility', 'visible'); for (const [el, v] of o.els) el.style.visibility = v;
+      for (const r of o.roots) r.visible = true; if (m) for (const id of o.layers) m.setLayoutProperty(id, 'visibility', 'visible'); for (const [el, v] of o.els) el.style.visibility = v;
       canalRecallGame.vectorMap._sharedFrame.invalidateShadows?.(); m.triggerRepaint();
     });
   }

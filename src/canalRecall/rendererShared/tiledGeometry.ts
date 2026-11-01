@@ -136,7 +136,11 @@ export function setTilesDrawn(owner: any, drawn: boolean): void {
 /** Grow every tile's sphere by `margin` metres over its install radius (vertices moved since, e.g. a ground lift). */
 export function growTileSpheres(owner: any, margin: number): void {
   for (const t of owner?.userData?.tiles ?? []) t.geometry.boundingSphere.radius = t.userData.radius0 + Math.max(0, margin);
-  for (const sp of owner?.userData?.spans ?? []) sp.radius = sp.radius0 + Math.max(0, margin);
+  const spans = owner?.userData?.spans;
+  if (!spans?.length) return;
+  let changed = false;
+  for (const sp of spans) { const r = sp.radius0 + Math.max(0, margin); if (sp.radius !== r) { sp.radius = r; changed = true; } }
+  if (changed) owner.userData.spanVersion = (owner.userData.spanVersion ?? 0) + 1;
 }
 
 /** Dispose the tiles' own geometry (their index); the shared attributes go with the owner's geometry. */
@@ -197,20 +201,33 @@ export function drawAsSpans(THREE: any, owner: any, tiles: readonly CellTile[], 
   const frustum = new THREE.Frustum(), sphere = new THREE.Sphere(), clip = new THREE.Matrix4();
   owner.userData.spans = spans;
   owner.onBeforeShadow = () => { geometry.drawRange.start = 0; geometry.drawRange.count = Infinity; };
+  // The last range chosen, for the clip ← local matrix and sphere version it was chosen under: meshes sharing this
+  // geometry (an overview fill and its casing) and an unchanged camera reuse it instead of testing every span again.
+  const memo = { m: new Float64Array(16).fill(NaN), version: -1, start: 0, count: 0 };
   owner.onBeforeRender = (_renderer: any, _scene: any, camera: any) => {
     geometry.drawRange.start = 0; geometry.drawRange.count = Infinity;
     if (tileRegistry().mode === 'whole') return;
-    frustum.setFromProjectionMatrix(clip.multiplyMatrices(camera.projectionMatrix, camera.matrixWorldInverse));
-    let first = -1, last = -1;
-    for (let k = 0; k < spans.length; k++) {
-      sphere.center.copy(spans[k].center); sphere.radius = spans[k].radius;
-      if (!frustum.intersectsSphere(sphere.applyMatrix4(owner.matrixWorld))) continue;
-      if (first < 0) first = k;
-      last = k;
+    // The frustum in the owner's local frame (clip ← local), so a span's sphere is tested as stored: the same planes
+    // as transforming every sphere to world, without the per-span matrix product (a fine span grid is ~1000 spans).
+    clip.multiplyMatrices(camera.projectionMatrix, camera.matrixWorldInverse).multiply(owner.matrixWorld);
+    const e = clip.elements, version = owner.userData.spanVersion ?? 0;
+    let same = memo.version === version;
+    for (let i = 0; same && i < 16; i++) same = memo.m[i] === e[i];
+    if (!same) {
+      memo.m.set(e); memo.version = version;
+      frustum.setFromProjectionMatrix(clip);
+      let first = -1, last = -1;
+      for (let k = 0; k < spans.length; k++) {
+        sphere.center.copy(spans[k].center); sphere.radius = spans[k].radius;
+        if (!frustum.intersectsSphere(sphere)) continue;
+        if (first < 0) first = k;
+        last = k;
+      }
+      memo.start = first < 0 ? 0 : spans[first].start;
+      memo.count = first < 0 ? 0 : spans[last].start + spans[last].count - spans[first].start;
     }
-    if (first < 0) { geometry.drawRange.count = 0; return; }
-    geometry.drawRange.start = spans[first].start;
-    geometry.drawRange.count = spans[last].start + spans[last].count - spans[first].start;
+    geometry.drawRange.start = memo.start;
+    geometry.drawRange.count = memo.count;
   };
   // Passes that share this geometry (highlight outline/rim, picking) draw the whole range, not the owner's span.
   owner.onAfterRender = () => { geometry.drawRange.start = 0; geometry.drawRange.count = Infinity; };

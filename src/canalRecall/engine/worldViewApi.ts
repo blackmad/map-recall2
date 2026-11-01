@@ -107,15 +107,45 @@ export interface WorldView extends VectorMap {
   _spoils?(name: string): boolean;
 }
 
+/**
+ * Spec oracles both implementations answer under the same names (#129 oracle migration round 3): not game API, read
+ * only by specs and review scripts through `canalRecallGame.vectorMap`. The label DOM root is `.cr-map-labels` under
+ * either engine (labels/labelOverlay.ts; engine/overlays/labelLayer.ts `root`).
+ */
+export interface WorldViewOracles {
+  /** True from the first streamed building collection on (vector-map.js sets it in `_completeCity.attach`). */
+  readonly _completeCityHasBuildings: boolean;
+  /** The facade layer draws (the three.js buildings with the facades library loaded). */
+  _facadesActive(): boolean;
+  /** Building ids the shown signature-landmark models hide (covers.json pands under `?bagTiles=1`). */
+  _signatureSuppressOsmIds(): string[];
+}
+
 /** Narrow a value to the world view's camera (both implementations). */
 export function hasWorldCamera(view: unknown): view is WorldView & { camera: WorldCamera } {
   const c = (view as { camera?: Partial<WorldCamera> } | null)?.camera;
   return !!c && typeof c.project === 'function' && typeof c.center === 'function';
 }
 
-/** `game.js`'s choice: `?engine=own` (or `window.__canalRecallEngine = 'own'`). */
-export function engineFlag(search = (globalThis as { location?: { search?: string } }).location?.search ?? ''): 'own' | 'maplibre' {
+/**
+ * The extract files the own engine cannot run without, per city (`public/data/extracts/<city>/`): the own map's
+ * overview and the routing roads binary. The flip is Amsterdam-only (user 2026-11-01: Utrecht, Rotterdam and Den Haag
+ * keep MapLibre, even where both files exist); engine.test.ts checks every listed city has both files.
+ */
+export const OWN_ENGINE_FILES = ['own-map-v1/overview.json.gz', 'roads-v2/streets-routing.bin.gz'] as const;
+export const OWN_ENGINE_CITIES: ReadonlySet<string> = new Set(['amsterdam']);
+
+/** The engine a city can run: what was asked, except that a city without the own engine's extracts stays on MapLibre. */
+export function engineForCity(asked: 'own' | 'maplibre', cityId: string | null | undefined): 'own' | 'maplibre' {
+  return asked === 'own' && OWN_ENGINE_CITIES.has(cityId || 'amsterdam') ? 'own' : 'maplibre';
+}
+
+/**
+ * `game.js`'s choice: `?engine=own` (or `window.__canalRecallEngine = 'own'`), for the city being loaded (default
+ * Amsterdam, the game's only city since 2026-10-22). A city without the own engine's extracts is MapLibre.
+ */
+export function engineFlag(search = (globalThis as { location?: { search?: string } }).location?.search ?? '', cityId?: string | null): 'own' | 'maplibre' {
   const g = globalThis as { __canalRecallEngine?: string };
   const asked = g.__canalRecallEngine ?? new URLSearchParams(search).get('engine');
-  return asked === 'own' ? 'own' : 'maplibre';
+  return engineForCity(asked === 'own' ? 'own' : 'maplibre', cityId);
 }
