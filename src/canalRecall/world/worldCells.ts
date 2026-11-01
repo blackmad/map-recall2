@@ -188,6 +188,19 @@ export function worldResidentCells(search: string = typeof location !== 'undefin
   return WORLD_RESIDENT_CELLS;
 }
 
+/** One cell's share of a z14 tile: tile ordinals, raw features and the baked styled copy (null: the raw is styled). */
+export type TilePart = { ordinals: number[]; raw: WorldFeature[]; styled: (WorldFeature | null)[] };
+/** A tile from its parts, in ordinal order (the default path's adopted order); throws on an ordinal held twice. */
+export function assembleTile(tileKey: string, parts: Iterable<TilePart>): WorldTile {
+  const picked: { ordinal: number; raw: WorldFeature; styled: WorldFeature | null }[] = [];
+  for (const p of parts) p.raw.forEach((raw, i) => picked.push({ ordinal: p.ordinals[i], raw, styled: p.styled[i] }));
+  picked.sort((a, b) => a.ordinal - b.ordinal);
+  for (let i = 1; i < picked.length; i++) if (picked[i].ordinal === picked[i - 1].ordinal) throw Error(`world tile ${tileKey}: ordinal ${picked[i].ordinal} twice`);
+  const styled = new Map<WorldFeature, WorldFeature>();
+  for (const p of picked) styled.set(p.raw, p.styled ?? p.raw);
+  return { features: picked.map(p => p.raw), styled };
+}
+
 export class WorldCellClient {
   private readonly reader: WorldCellReader;
   /** The page's worker pool (engine/workerPool.ts), shared with chunk builds and relief decodes; null: main thread. */
@@ -288,11 +301,11 @@ export class WorldCellClient {
   /**
    * The streamer's plan: `tiles` in priority order (view, then look-ahead). Their cells are read ahead, in that
    * order, ranked by `aheadRank` from `rider` within it; resident cells above the budget that the plan no longer
-   * needs are evicted, furthest first.
+   * needs are evicted, furthest first. `only` (the fetch ring, worldRing.ts) keeps just those cells of the tiles.
    */
-  plan(tiles: readonly string[], rider: LngLat | null, direction: readonly [number, number] | null): void {
+  plan(tiles: readonly string[], rider: LngLat | null, direction: readonly [number, number] | null, only: ReadonlySet<string> | null = null): void {
     const planned: string[] = [];
-    for (const t of tiles) for (const c of this.index.tileCells[t] ?? []) planned.push(c);
+    for (const t of tiles) for (const c of this.index.tileCells[t] ?? []) if (!only || only.has(c)) planned.push(c);
     const ranked = rankCells(planned, rider, direction);
     this.queue.want(ranked);
     const evict = this.queue.evictions(this.residentBudget, rider, key => ranked.has(key));
@@ -304,6 +317,23 @@ export class WorldCellClient {
       for (const k of evict) { const w = affinity(k, pool.size); let l = byWorker.get(w); if (!l) byWorker.set(w, l = []); l.push(k); }
       for (const [w, cells] of byWorker) if (!pool.post(w, { kind: 'world-evict', cells } satisfies WorldRequest)) this.reader.evict(cells);
     } else this.reader.evict(evict);
+  }
+
+  /**
+   * The parts of a z14 tile held in `cells` (a subset of its index cells, the fetch ring), one per cell. Parts in
+   * `held` are returned as they are (the same feature objects), so a tile topped up with a further cell keeps every
+   * building it already had; only the missing cells are read.
+   */
+  async tileParts(tileKey: string, cells: readonly string[], held: ReadonlyMap<string, TilePart> = new Map(), signal?: AbortSignal): Promise<Map<string, TilePart>> {
+    const out = new Map<string, TilePart>(), missing: string[] = [];
+    for (const c of cells) { const h = held.get(c); if (h) out.set(c, h); else missing.push(c); }
+    const shares = await Promise.all(missing.map(k => this.read(k, tileKey, signal)));
+    missing.forEach((k, i) => {
+      this.queue.noteResident(k);
+      const s = shares[i], styled: (WorldFeature | null)[] = s.raw.map((raw, n) => s.styled[n] ? { type: 'Feature', properties: s.styled[n]!, geometry: raw.geometry } : null);
+      out.set(k, { ordinals: s.ordinals, raw: s.raw, styled });
+    });
+    return out;
   }
 
   /**
