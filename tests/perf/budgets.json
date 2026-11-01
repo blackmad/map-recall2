@@ -124,23 +124,23 @@
             "max": 508
           },
           "ipad": {
-            "p50": 326,
-            "p95": 589,
-            "max": 858
+            "p50": 386,
+            "p95": 749
           }
         },
         "unit": "GL draw calls per frame at 60 deg chase pitch, every pass",
-        "owners": "mean per frame, iPad: own-ground 124, landmarks 59 (+18 shadow), overview 40, player bike 36, pyramidal roofs 26 (+3 shadow) for ~150 triangles, facades 15; desktop: own-ground 87, landmarks 75, overview 40, bike 36, roofs 22"
+        "owners": "mean per frame, iPad: own-ground 124, landmarks 59 (+18 shadow), overview 40, player bike 36, pyramidal roofs 26 (+3 shadow) for ~150 triangles, facades 15; desktop: own-ground 87, landmarks 75, overview 40, bike 36, roofs 22",
+        "note": "iPad re-recorded 2026-11-01 with 811ff753c (per-tile facade draws on touch are the designed trade: 326 / 589 before the fix drew whole chunks)"
       },
       "trianglesIpad": {
         "target": 700000,
         "measured": {
-          "p50": 1650253,
-          "p95": 2472407,
-          "max": 2882694
+          "p50": 1210000,
+          "p95": 1980000
         },
         "unit": "triangles per frame, iPad profile, every pass",
-        "owners": "mean per frame: facades 666k (+33k shadow), own-ground 306k, overview 279k, trees 183k (+19k shadow), cycle overlay 108k, landmarks 73k (+29k shadow), player bike 36k"
+        "owners": "mean per frame: facades 666k (+33k shadow), own-ground 306k, overview 279k, trees 183k (+19k shadow), cycle overlay 108k, landmarks 73k (+29k shadow), player bike 36k",
+        "note": "re-recorded 2026-11-01 with 811ff753c (tileWhole parse bug drew whole facade chunks on touch: 1.65 M / 2.47 M before); per-frame means after the fix: own ground 306k, overview 279k, facades 259k (far shells 91k, extras 80k, kits 49k, near walls/roofs 35k), trees 183k, cycle overlay 108k, landmarks 73k, bike 36k, shadows ~80k"
       }
     }
   }

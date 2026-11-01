@@ -1,5 +1,24 @@
 # Canal Recall — what is built
 
+**A query string drew every tiled mesh whole on touch; iPad baselines re-recorded; the facade LOD is parked for the bigger owners (2026-11-01, P4).**
+Materials lane (811ff753c). `sharedFrame.ts` `tileWholeShareFlag` did
+`Number(params.get('tileWhole'))`, and `Number(null)` is 0, so any page
+with a query string but no `tileWhole` (every `?engine=own` run, every
+measurement so far) forced every tiled mesh to draw whole; on touch that
+meant whole facade chunks instead of the tiles on screen. Typed
+`askedTileWhole()` with a test. iPad, Jordaan ride after warm-up: facade
+triangles 667k → 259k, frame p50/p95 1.65 M / 2.47 M → 1.21 M / 1.98 M,
+draws p50/p95 326 / 589 → 386 / 749 (per-tile draws are the designed touch
+trade); desktop unchanged (2.18 M, 289 draws). Fixed-camera frame, fix vs
+`tileWhole=0`: 0 px at Westerkerk, Nassaukade's 51,691 px equals two
+identical loads (noise). `p4Counters` iPad rows re-recorded. Decision
+(integrator): the 150/400 m facade LOD would cut 60–100k (5–8 %) and even
+no facades leaves ~950k, so it is parked; the lane takes the owners in
+size order instead: overview 279k at ride zoom (cull or coarsen what the
+near ground and facades cover), own ground 306k, trees 183k, cycle overlay
+108k, with frozen-frame pins per step. Integrator: `build:canal-engine`,
+`build:canal-three`; test:engine 110/110; tsc clean.
+
 **P4 counters gate measured and recorded; in-frame shader links after warm-up are 0 on desktop and iPad (2026-11-01, P4).**
 Materials lane hand-back (bb5c00bce): `engine/glCounters.ts` (opt-in
 `?glCounters=1`, `__canalPerf.gl` with `markWarm()`/`report()`) counts, from

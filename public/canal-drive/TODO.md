@@ -258,8 +258,11 @@ world"; `?world=live` is the tile path). P4 counters gate (budgets `p4Counters`,
 ≥ 1 MiB after warm-up (49 desktop / 32 iPad: facade chunk geometry, own-ground
 cell layers, one landmark), draws at 60° p95 399 / 589 vs ≤ 400 (roof caps ~25
 and bike parts ~35 are the cheap merges, legacy bundles), iPad triangles p50
-1.65 M vs ≤ 700 k (facades 666 k alone: materials lane is building a facade LOD
-at 150/400 m). In-frame shader links are 0. P5 follow-ups: delete
+1.21 M vs ≤ 700 k after the `tileWhole` fix (811ff753c; owners: own ground
+306k, overview 279k, facades 259k, trees 183k, cycle overlay 108k). Materials
+lane takes the owners in size order (overview at ride zoom first); the 150/400 m
+facade LOD is parked (60–100k, 5–8 %, not worth its likeness risk yet). In-frame
+shader links are 0. P5 follow-ups: delete
 `building-tiles/` and `bag-tiles/` after a week of Sentry quiet on the
 default; measure `worldRideDownloadMB` (#130 part 2, gate 2 MB, still
 pending). closed on that lane 2026-11-01: the pre-painted atlas stays opt-in (atlas
