@@ -2820,5 +2820,19 @@
       52.3672889,
       4.889437
     ]
+  },
+  {
+    "modelId": "kiosk-stubbes-haring",
+    "landmarkId": "osm_food_5203239222",
+    "name": "Stubbe's Haring",
+    "funFact": "Stubbe's Haring sells herring from a white stall on the Haarlemmersluis, the Singel lock bridge by Centraal Station; its pitch was registered as a BAG standplaats in 2016, and a STUBBE HARING board with two leaping fish rides its roof.",
+    "sourceUrl": "https://www.openstreetmap.org/node/5203239222",
+    "additionalSources": [
+      "https://api.data.amsterdam.nl/v1/bag/standplaatsen/0363030011957763/"
+    ],
+    "center": [
+      52.3790639,
+      4.8942367
+    ]
   }
 ]

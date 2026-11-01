@@ -1,0 +1,16 @@
+{
+ "id": "kiosk-stubbes-haring",
+ "countedBy": "kiosk lane (opus), 2026-11-01: shut kiosk, no glazing on any face",
+ "facades": [
+  {
+   "name": "north-east side",
+   "bearing": 44,
+   "photo": "artifacts/kiosks/stubbes/zoom.jpg",
+   "rows": [],
+   "columns": 0,
+   "symmetric": true,
+   "gables": 0,
+   "note": "Shut kiosk: no openings in any row. The hip roof reads as a trapezoid from the long side (no peak); the ridge board is a sign, not a gable."
+  }
+ ]
+}

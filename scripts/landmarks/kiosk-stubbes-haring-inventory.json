@@ -1,0 +1,138 @@
+{
+ "schemaVersion": 1,
+ "id": "kiosk-stubbes-haring",
+ "signature": [
+  "ridge-sign",
+  "leaping-fish",
+  "white-shutter-box",
+  "zinc-hip-roof"
+ ],
+ "walls": [
+  {
+   "tag": "v-044",
+   "bearing": 44,
+   "lengthM": 5.7,
+   "centre": [
+    4.8942388,
+    52.3790635
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-06-16_03-46-32_01055",
+   "capturedAt": "2025-06-16",
+   "checked": true,
+   "note": "North-east long side and the SE end from the east (artifacts/kiosks/stubbes/zoom.jpg left).",
+   "items": [
+    {
+     "id": "ridge-sign",
+     "kind": "sign",
+     "where": "white board on the roof ridge, toward the south-east end: STUBBE HARING in black serif capitals, both sides",
+     "approxSizeM": [
+      1.9,
+      0.45
+     ],
+     "plan": "simplified",
+     "how": "kioskKit ridge sign, 6 cm board, flat 5x7 pixel capitals on both faces (sans serif)",
+     "seenIn": "recording_2025-06-16_03-46-32_01055; recording_2025-06-16_03-46-32_01048; TMX7316010203-001979_pano_0001_000568"
+    },
+    {
+     "id": "leaping-fish",
+     "kind": "sculpture",
+     "where": "a blue leaping fish cut-out at each end of the ridge board, leaning outward",
+     "approxSizeM": [
+      0.3,
+      0.55
+     ],
+     "plan": "simplified",
+     "how": "kioskKit sign finials: blue lozenges 0.3 x 0.55 m leaning 25 degrees",
+     "seenIn": "recording_2025-06-16_03-46-32_01055"
+    },
+    {
+     "id": "white-shutter-box",
+     "kind": "other",
+     "where": "white closed shutter panels all round (three per long side), a white roller shutter on the SE end",
+     "approxSizeM": [
+      5.7,
+      2.35
+     ],
+     "plan": "modelled",
+     "how": "kioskKit solid panels; louvre panel (slats every 9 cm) for the roller shutter",
+     "seenIn": "recording_2025-06-16_03-46-32_01055; recording_2025-06-16_03-46-32_01048"
+    },
+    {
+     "id": "zinc-hip-roof",
+     "kind": "canopy",
+     "where": "low grey zinc hip roof overhanging about 12 cm",
+     "approxSizeM": [
+      5.9,
+      0.4
+     ],
+     "plan": "modelled",
+     "how": "kioskKit hip roof, rise 0.4 m",
+     "seenIn": "recording_2025-06-16_03-46-32_01055; recording_2025-06-16_03-46-32_01048"
+    },
+    {
+     "id": "graffiti",
+     "kind": "other",
+     "where": "tags and pieces sprayed over every closed panel",
+     "approxSizeM": [
+      5.7,
+      2.0
+     ],
+     "plan": "skipped",
+     "skip": {
+      "reason": "temporary",
+      "note": "spray paint that changes between captures (2021 vs 2025 differ); the panels are drawn white"
+     },
+     "seenIn": "recording_2025-06-16_03-46-32_01055; TMX7316010203-001979_pano_0001_000568"
+    }
+   ]
+  },
+  {
+   "tag": "v-314",
+   "bearing": 314,
+   "lengthM": 2.75,
+   "centre": [
+    4.8942388,
+    52.3790635
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-06-16_03-46-32_01048",
+   "capturedAt": "2025-06-16",
+   "checked": true,
+   "note": "North-west end (zoom.jpg right): two closed white panels.",
+   "items": []
+  },
+  {
+   "tag": "v-224",
+   "bearing": 224,
+   "lengthM": 5.7,
+   "centre": [
+    4.8942388,
+    52.3790635
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-06-16_03-46-32_01046",
+   "capturedAt": "2025-06-16",
+   "checked": true,
+   "note": "South-west side, seen behind the brown kiosk (contact.jpg): closed white panels; the 2021 canal view TMX7316010203-001979_pano_0001_000568 shows the same box from the water.",
+   "items": []
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  },
+  {
+   "name": "BAG standplaats 0363030011957763 (Singel 8 M)",
+   "url": "https://api.data.amsterdam.nl/v1/bag/standplaatsen/0363030011957763/",
+   "licence": "CC0"
+  },
+  {
+   "name": "OpenStreetMap node 5203239222 (Stubbe's Haring)",
+   "url": "https://www.openstreetmap.org/node/5203239222",
+   "licence": "ODbL"
+  }
+ ]
+}
