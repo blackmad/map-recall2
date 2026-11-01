@@ -38,10 +38,20 @@ test('render-governor pixel-ratio steps never put an empty (white) canvas on scr
     const w = window as any, map = w.canalRecallGame.vectorMap.map ?? w.canalRecallGame.vectorMap.cameraMap;
     w.canalRecallGame.maxAsksPerMinute = 0;
     w.__steps = [];
-    const setPixelRatio = map.setPixelRatio.bind(map);
-    map.setPixelRatio = (r: number) => { w.__steps.push({ t: Date.now(), r }); return setPixelRatio(r); };
+    // The governor steps its "map": MapLibre's map, or under own the frame host (engine/frameGuards.ts).
+    const governed = w.canalRecallGame.vectorMap.engine === 'own' ? w.canalRecallGame.vectorMap.host : map;
+    const setPixelRatio = governed.setPixelRatio.bind(governed);
+    governed.setPixelRatio = (r: number) => { w.__steps.push({ t: Date.now(), r }); return setPixelRatio(r); };
     // ~32 ms frames: past the governor's 26 ms p75, so it steps once the 12 s settle period is over.
-    map.on('render', () => { const s = performance.now(); while (performance.now() - s < 30) { /* slow GPU stand-in */ } });
+    // Under own the frame host draws only on change: a rider who stops (the chase car runs into the route's first
+    // corner) leaves gaps the governor reads as pauses, so its 12 s settle restarts and it never judges a window.
+    // Asking for the next frame from each frame stands in for a ride that keeps moving, as MapLibre's per-frame
+    // camera does.
+    const own = w.canalRecallGame.vectorMap.engine === 'own';
+    map.on('render', () => {
+      const s = performance.now(); while (performance.now() - s < 30) { /* slow GPU stand-in */ }
+      if (own) requestAnimationFrame(() => w.canalRecallGame.vectorMap.host.triggerRepaint());
+    });
   });
   await page.keyboard.down('ArrowUp');
   await expect.poll(() => page.evaluate(() => (window as any).__steps.length), { timeout: 90_000, intervals: [1000] }).toBeGreaterThanOrEqual(2);
