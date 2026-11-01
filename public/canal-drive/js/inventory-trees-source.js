@@ -139,33 +139,45 @@ export class InventoryTrees {
     } catch(error){if(error.name!=='AbortError')console.warn(`Tree tile ${key} unavailable`,error);}
     finally{if(this.pending.get(key)===controller)this.pending.delete(key);this.pump();}
   }
+  // A tree's scene position, typology and lobe colours depend only on the record and the allotment-canopy switch
+  // (treeTypology, scopeAllotmentCrown and foliageDisplayHex are pure): kept per record, so a rebuild for a ground
+  // revision or a residency step does not redo them for every resident tree (#129 hand-back 17: the trees' rebuild
+  // was the 33-74 ms moveend and ground-bases frames at 4x). The colours are copied into the instance buffer.
+  shapeOf(tree) {
+    const variant=this.allotmentCanopyEnabled?1:0;
+    let shapes=this.shapes?.get(tree);
+    if(!shapes){(this.shapes??=new WeakMap()).set(tree,shapes=[]);}
+    if(shapes[variant])return shapes[variant];
+    const point=this.maplibregl.MercatorCoordinate.fromLngLat([tree.lng,tree.lat],0);
+    const x=(point.x-this.origin.x)/this.scale,south=(point.y-this.origin.y)/this.scale;
+    const native=treeTypology({...tree,position:[x,south]});const t=variant?scopeAllotmentCrown(tree,native):native;
+    const lobeColours=t?t.lobes.map(l=>new THREE.Color().set(foliageDisplayHex(t.foliage)).multiplyScalar([1,1.10,.86][l.tone])):null;
+    return shapes[variant]={x,south,t,lobeColours,bark:t?new THREE.Color(t.bark):null};
+  }
   rebuild() {
     this.disposeMeshes();
     const b=this.residency.built(crownBounds(this.camera),this.buildKey()),groups=new Map();let trees=0,authoredTrees=0;
-    const archetypes=new Set(), color=new THREE.Color();
+    const archetypes=new Set();
     const append=(key,item)=>{if(!groups.has(key))groups.set(key,[]);groups.get(key).push(item);};
     for(const tile of [...this.tiles.values(),...(this.allotmentCanopyEnabled?[allotmentCanopyTrees]:[])])for(const tree of tile){
       if(!Number.isFinite(tree.lng)||!Number.isFinite(tree.lat)||tree.lng<b.west||tree.lng>b.east||tree.lat<b.south||tree.lat>b.north)continue;
-      const point=this.maplibregl.MercatorCoordinate.fromLngLat([tree.lng,tree.lat],0);
-      const x=(point.x-this.origin.x)/this.scale,south=(point.y-this.origin.y)/this.scale;
-      const native=treeTypology({...tree,position:[x,south]});const t=this.allotmentCanopyEnabled?scopeAllotmentCrown(tree,native):native;if(!t)continue;
+      const {x,south,t,lobeColours,bark}=this.shapeOf(tree);if(!t)continue;
       trees++;if(tree.source==='allotment-prior')authoredTrees++;archetypes.add(t.archetype);
       // A few centimetres into the relief, so a trunk never shows a gap on a slope.
       const z0=this.groundBase?(this.groundBase([tree.lng,tree.lat])??0)-.05:0;
-      append('wood',{p:[x,-south,z0+t.trunkHeight/2],s:[t.trunkWidth*2,t.trunkWidth*2,t.trunkHeight],color:t.bark});
+      append('wood',{p:[x,-south,z0+t.trunkHeight/2],s:[t.trunkWidth*2,t.trunkWidth*2,t.trunkHeight],color:bark});
       const co=Math.cos(t.rotation),si=Math.sin(t.rotation);
-      for(const l of t.lobes){
+      for(let li=0;li<t.lobes.length;li++){const l=t.lobes[li];
         const dx=l.offset[0]*co-l.offset[2]*si,dz=l.offset[0]*si+l.offset[2]*co;
-        color.set(foliageDisplayHex(t.foliage)).multiplyScalar([1,1.10,.86][l.tone]);
         // The map-to-scene south-axis flip also reverses crown yaw.
-        append(`${t.crownGeometry}-${l.tone}`,{p:[x+dx,-(south+dz),z0+l.offset[1]],s:[l.scale[0],l.scale[2],l.scale[1]],rotation:-(t.rotation+(l.rotation??0)),color:color.clone()});
+        append(`${t.crownGeometry}-${l.tone}`,{p:[x+dx,-(south+dz),z0+l.offset[1]],s:[l.scale[0],l.scale[2],l.scale[1]],rotation:-(t.rotation+(l.rotation??0)),color:lobeColours[li]});
         // A short fork connects each offset crown to the recorded trunk position.
         // All forks share the trunk draw call; no per-tree meshes or materials.
         if(t.crownGeometry==='faceted'&&t.archetype!=='fan-palm'&&Math.hypot(dx,dz)>.1){
           const from=new THREE.Vector3(x,-south,z0+t.trunkHeight*.72);
           const to=new THREE.Vector3(x+dx*.75,-(south+dz*.75),z0+l.offset[1]);
           const delta=to.clone().sub(from),length=delta.length();
-          append('wood',{p:from.add(to).multiplyScalar(.5).toArray(),s:[t.trunkWidth,t.trunkWidth,length],q:new THREE.Quaternion().setFromUnitVectors(new THREE.Vector3(0,0,1),delta.divideScalar(length)),color:t.bark});
+          append('wood',{p:from.add(to).multiplyScalar(.5).toArray(),s:[t.trunkWidth,t.trunkWidth,length],q:new THREE.Quaternion().setFromUnitVectors(new THREE.Vector3(0,0,1),delta.divideScalar(length)),color:bark});
         }
       }
     }
@@ -179,7 +191,7 @@ export class InventoryTrees {
       // An icosahedron sunk a third into the bed reads as a rounded shrub.
       append('rose-bush',{p:[x,north,z0+r.height*.3],s:[r.radius,r.radius*.92,r.height*.7],rotation:r.rotation,color:r.bloom});
     }
-    const dummy=new THREE.Object3D();
+    const dummy=new THREE.Object3D(),scratch=new THREE.Color();
     for(const [key,items] of groups){
       const wood=key==='wood',cone=key.startsWith('cone-'),rose=key.startsWith('rose-');
       const geometryKey=wood?'wood':cone?'cone':rose?key:this.camera.zoom()>=18?'faceted-detail':'faceted';
@@ -195,7 +207,7 @@ export class InventoryTrees {
       items.forEach((v,j)=>{
         dummy.position.set(...v.p);dummy.scale.set(...v.s);dummy.quaternion.identity();
         if(v.q)dummy.quaternion.copy(v.q);else if(v.rotation)dummy.rotation.z=v.rotation;
-        dummy.updateMatrix();m.setMatrixAt(j,dummy.matrix);m.setColorAt(j,new THREE.Color(v.color));
+        dummy.updateMatrix();m.setMatrixAt(j,dummy.matrix);m.setColorAt(j,v.color?.isColor?v.color:scratch.set(v.color));
       });
       m.instanceMatrix.needsUpdate=true;m.instanceColor.needsUpdate=true;m.frustumCulled=false;
       if(this.sharedFrame){m.castShadow=true;m.receiveShadow=true;}

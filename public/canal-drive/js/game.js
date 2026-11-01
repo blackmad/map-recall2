@@ -105,7 +105,7 @@ class Game {
     // Engine programme (2026-10-30): `?engine=own` picks the three.js-owned
     // world view (src/canalRecall/engine/ownWorldView.ts); default stays MapLibre.
     const engine = window.CanalRecallEngine;
-    this.vectorMap = engine && engine.engineFlag() === 'own'
+    this.vectorMap = engine && engine.engineFlag(undefined, this.cityId) === 'own'
       ? new engine.OwnWorldView(document.getElementById('vector-map'))
       : new VectorBasemap(document.getElementById('vector-map'));
     this.loadingMessage = '';

@@ -67,15 +67,28 @@ function facadeMeshCount(): number {
   return count;
 }
 
-async function ride(page: Page, ms: number): Promise<void> {
+/**
+ * Hold forward for at least `ms`, then on until the rider is `untilMovedPx` from the track start (simulated
+ * distance, not wall clock) or `ceilingMs` runs out. Under load (two lock slots, load 7-15) a 6 s wall-clock ride
+ * covered 33-45 px against 506-1437 px unloaded, and "the rider rode" failed with nothing wrong (#129, 2026-11-01).
+ */
+async function ride(page: Page, ms: number, untilMovedPx = 0, ceilingMs = 60_000): Promise<number> {
   await page.keyboard.down('ArrowUp');
-  const end = Date.now() + ms;
-  while (Date.now() < end) {
-    const p = await page.evaluate(() => { const p = (window as any).canalRecallGame.player; return { w: !!p?.streetFollowView?.awaitingChoice, q: p?.streetFollowView?.queuedTurn ?? 0, v: p.speed }; });
+  const start = Date.now();
+  let moved = 0;
+  while (true) {
+    const p = await page.evaluate(() => {
+      const g = (window as any).canalRecallGame, p = g.player;
+      return { w: !!p?.streetFollowView?.awaitingChoice, q: p?.streetFollowView?.queuedTurn ?? 0, v: p.speed, moved: Math.hypot(p.x - g.track.startPoint?.x || 0, p.y - g.track.startPoint?.y || 0) };
+    });
+    moved = p.moved;
+    const elapsed = Date.now() - start;
+    if (elapsed >= ms && (moved >= untilMovedPx || elapsed >= ceilingMs)) break;
     if (p.w || (p.q && Math.abs(p.v) < 1)) { await page.keyboard.down('ArrowRight'); await page.waitForTimeout(1200); await page.keyboard.up('ArrowRight'); }
     await page.waitForTimeout(250);
   }
   await page.keyboard.up('ArrowUp');
+  return moved;
 }
 
 // 2026-11-01 (#129, hand-back 14): with the overview built in the worker pool the boot drew 468 fewer Math.random
@@ -144,8 +157,8 @@ test('?engine=own rides with three.js owning the frame; maplibregl.Map is never 
     return { engine: vm.engine, hasCamera: typeof vm.camera?.project === 'function', canvas: !!vm.frameCanvas?.() };
   });
   expect(view).toEqual({ engine: 'own', hasCamera: true, canvas: true });
-  // Ride: hold forward for a few seconds.
-  await ride(page, 6000);
+  // Ride: hold forward for a few seconds and until the rider is well past the 50 px check below (load-independent).
+  console.log('ride', await ride(page, 6000, 150));
   await expect.poll(() => page.evaluate(() => {
     const vm = (window as any).canalRecallGame.vectorMap;
     return !!vm.status.booted && !!vm._ownGround?.ready;

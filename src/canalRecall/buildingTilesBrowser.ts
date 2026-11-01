@@ -33,7 +33,8 @@ import { onViewChange, worldCameraOf } from './engine/worldCameraOf.js';
 import type { WorldCamera } from './engine/worldViewApi.js';
 import { introLandingArea } from './game/introFlight.js';
 import { MotionEstimate, boxAround, lookAheadEnabled, lookAheadPoints } from './streamingLookAhead.js';
-import { WorldCellClient, readWorldIndex, worldV1Enabled } from './world/worldCells.js';
+import { WorldCellClient, assembleTile, readWorldIndex, worldV1Enabled, type TilePart } from './world/worldCells.js';
+import { rideBox, ringCells, worldRingEnabled } from './world/worldRing.js';
 import { citywideBuildingGroundPrior, citywideBuildingRoofPrior, citywideBuildingWallPrior, materialWallDisplayPrior } from './look/palette.js';
 
 type GeoJsonSource = {
@@ -179,6 +180,11 @@ export class BuildingTileStreamer {
   get usingBagTiles(): boolean { return this.tileDir === 'bag-tiles'; }
   /** `?world=v1` with a published world-v1 index: tiles come from baked cells (world/worldCells.ts). */
   private world: WorldCellClient | null = null;
+  /** world-v1 fetch ring (world/worldRing.ts): the cells the ride can show; null reads every cell of a tile. */
+  private ring: Set<string> | null = null;
+  private readonly ringOn = worldRingEnabled();
+  /** Per resident tile (key), the cell parts it was cut from: a top-up keeps these objects and adds the new cells'. */
+  private readonly worldParts = new Map<string, Map<string, TilePart>>();
   get usingWorldCells(): boolean { return !!this.world; }
   /** Baked styled copy of each world-v1 raw feature: the default decorator chain's output, computed at build time. */
   private baked = new WeakMap<BuildingFeature, BuildingFeature>();
@@ -552,7 +558,14 @@ export class BuildingTileStreamer {
     let changed = false;
     for (const key of plan.evict) {
       this.cache.drop(key);
+      this.worldParts.delete(key);
       changed = true;
+    }
+    if (this.world && this.ringOn) {
+      const base = this.preloadBounds ?? this.bounds();
+      // A landing preload is planned as it is; the camera view only at ride zoom (the intro overview is ~2x wider).
+      const ride = this.preloadBounds ? base : rideBox(base, this.camera.zoom(), this.riderAt ?? (() => { const c = this.camera.center(); return [c.lng, c.lat] as [number, number]; })());
+      this.ring = ringCells(ride, this.preloadBounds ? [] : this.lookAhead);
     }
 
     // Drop in-flight work the camera no longer needs so a Damrak prefetch
@@ -566,8 +579,15 @@ export class BuildingTileStreamer {
     const inFlightKeys = new Set(this.controllers.keys());
     this.queue = plan.load.filter((tile) => {
       const key = tileKey(tile);
-      return !this.empty.has(key) && !this.cache.has(key) && !inFlightKeys.has(key);
+      return !this.empty.has(key) && !this.cache.has(key) && !inFlightKeys.has(key) && (!this.ring || this.ringCellsOf(tile).length > 0);
     });
+    // The ring reached a further cell of a resident tile: top it up (after the new tiles).
+    if (this.ring) for (const key of plan.wanted) {
+      const m = /^(\d+)\/(\d+)\/(\d+)$/.exec(key);
+      if (!m || !this.cache.has(key) || inFlightKeys.has(key)) continue;
+      const tile = { z: Number(m[1]), x: Number(m[2]), y: Number(m[3]) };
+      if (this.missingRingCells(key, tile).length) this.queue.push(tile);
+    }
 
     // world-v1: the one cell queue reads every cell the plan needs ahead of its tile, in plan order (view, then
     // look-ahead), across the worker pool (engine/worldStreamer.ts), so a tile's adopt waits on no fetch.
@@ -575,7 +595,7 @@ export class BuildingTileStreamer {
       const order: string[] = [];
       for (const tile of this.queue) order.push(`${tile.x}/${tile.y}`);
       for (const key of plan.wanted) { const m = /(\d+)\/(\d+)$/.exec(key); if (m) order.push(`${m[1]}/${m[2]}`); }
-      this.world.plan(order, this.riderAt, this.motion.direction);
+      this.world.plan(order, this.riderAt, this.motion.direction, this.ring);
     }
     if (changed) this.scheduleFlush();
     this.pump();
@@ -595,9 +615,21 @@ export class BuildingTileStreamer {
     }
   }
 
+  /** The tile's index cells inside the ring (all of them without a ring). */
+  private ringCellsOf(tile: { x: number; y: number }): string[] {
+    const all = this.world?.index.tileCells[`${tile.x}/${tile.y}`] ?? [];
+    return this.ring ? all.filter(c => this.ring!.has(c)) : all;
+  }
+  /** Ring cells of a resident tile that it was not cut from yet. */
+  private missingRingCells(key: string, tile: { x: number; y: number }): string[] {
+    const held = this.worldParts.get(key);
+    return held ? this.ringCellsOf(tile).filter(c => !held.has(c)) : [];
+  }
+
   private async fetchTile(tile: ReturnType<typeof planTilesAhead>['load'][number]): Promise<void> {
     const key = tileKey(tile);
-    if (this.cache.has(key) || this.empty.has(key) || this.controllers.has(key)) return;
+    const topUp = !!this.world && this.cache.has(key) && this.missingRingCells(key, tile).length > 0;
+    if ((this.cache.has(key) && !topUp) || this.empty.has(key) || this.controllers.has(key)) return;
 
     const controller = new AbortController();
     this.controllers.set(key, controller);
@@ -615,10 +647,21 @@ export class BuildingTileStreamer {
     let retry = false;
     try {
       if (this.world) {
-        const { features, styled } = await this.world.tile(`${tile.x}/${tile.y}`, controller.signal);
+        const wk = `${tile.x}/${tile.y}`, all = this.world.index.tileCells[wk] ?? [];
+        if (!all.length) { this.empty.add(key); return; }
+        const cells = this.ringCellsOf(tile), held = this.worldParts.get(key);
+        if (!cells.length && !held) return; // none of it in the ring yet
+        const parts = await this.world.tileParts(wk, cells, held, controller.signal);
         if (controller.signal.aborted || this.disposed) return;
-        if (!features.length) { this.empty.add(key); return; }
-        for (const [raw, out] of styled) this.baked.set(raw as BuildingFeature, out as BuildingFeature);
+        // Cells the tile already had stay, inside the ring or not: a resident building is never taken away here.
+        if (held) for (const [c, part] of held) if (!parts.has(c)) parts.set(c, part);
+        this.worldParts.set(key, parts);
+        const { features, styled } = assembleTile(wk, parts.values());
+        if (!features.length) { if (parts.size === all.length) this.empty.add(key); return; }
+        // A top-up keeps every held building's raw and baked objects, so its three.js chunks see the same features.
+        for (const [raw, out] of styled) if (!this.baked.has(raw as BuildingFeature)) this.baked.set(raw as BuildingFeature, out as BuildingFeature);
+        const before = this.cache.entries().get(key);
+        if (before && before.length === features.length && before.every((f, i) => f === features[i])) return;
         this.cache.adopt(key, features as BuildingFeature[]);
         this.markTile(key, 'resident', features.length);
         this.failures.delete(key);

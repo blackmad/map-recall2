@@ -72,6 +72,16 @@ export function decodeLine(e: readonly number[]): Vec2[] {
 }
 
 /** decodeLine's bounding box [minX, minY, maxX, maxY] without decoding (Infinity/-Infinity: no point); the same values. */
+/** Surfaces looked at per SurfaceIndex step. */
+const SURFACE_STEP = 256;
+/** encodedLineBox per encoded ring (the same cell's rings are boxed by every planning index of its 3x3). */
+const lineBoxes = new WeakMap<readonly number[], [number, number, number, number]>();
+function cachedLineBox(e: readonly number[]): [number, number, number, number] {
+  let b = lineBoxes.get(e);
+  if (!b) { b = encodedLineBox(e); lineBoxes.set(e, b); }
+  return b;
+}
+
 export function encodedLineBox(e: readonly number[]): [number, number, number, number] {
   let x = 0, y = 0, a = Infinity, b = Infinity, c = -Infinity, d = -Infinity;
   for (let i = 0; i + 1 < e.length; i += 2) {
@@ -604,16 +614,33 @@ export class SurfaceIndex<S extends { r: EncodedLine[] } = ParksCell['surfaces']
   readonly own: number = 0;
   /** `keep`: which records are cover (parks: not ponds, which buildParks may skip and whose edge is a bank). */
   /** `within`: a box past which the other cells' polygons are left out (the first cell's are all kept). */
-  constructor(cells: readonly ({ surfaces: readonly S[] } | null | undefined)[], keep: (s: S) => boolean = s => (s as { k?: string }).k !== 'pond', within?: readonly [number, number, number, number]) {
+  /**
+   * `deferred`: leave the index empty; the caller drains `indexSteps()` (SurfaceIndex.paced: a task per few hundred
+   * surfaces instead of one 44 ms task at 4x in the way-deck planning, #129 hand-back 17). Same polygons, same order.
+   */
+  constructor(cells: readonly ({ surfaces: readonly S[] } | null | undefined)[], keep: (s: S) => boolean = s => (s as { k?: string }).k !== 'pond', within?: readonly [number, number, number, number], deferred = false) {
+    this.input = { cells, keep, within };
+    if (!deferred) { const steps = this.indexSteps(); while (!steps.next().done) { /* drained in one task */ } }
+  }
+  private input: { cells: readonly ({ surfaces: readonly S[] } | null | undefined)[]; keep: (s: S) => boolean; within?: readonly [number, number, number, number] } | null;
+
+  /** Index the constructor's cells, yielding every SURFACE_STEP surfaces looked at. Runs once. */
+  *indexSteps(): Generator<void, void, void> {
+    const input = this.input;
+    if (!input) return;
+    this.input = null;
+    const { cells, keep, within } = input;
     const seen = new Set<{ surfaces: readonly S[] }>();
+    let looked = 0;
     for (const c of cells) {
       if (!c || seen.has(c)) continue;
       seen.add(c);
       for (const s of c.surfaces) {
+        if (++looked % SURFACE_STEP === 0) yield;
         if (!keep(s)) continue;
         // Past `within`: skipped before decoding (a planning index over a 3x3 keeps a few dozen of its thousands, #129).
         if (within && c !== cells[0] && s.r.length) {
-          const b = encodedLineBox(s.r[0]);
+          const b = cachedLineBox(s.r[0]);
           if (b[2] < within[0] || b[0] > within[2] || b[3] < within[1] || b[1] > within[3]) continue;
         }
         const rings = s.r.map(decodeLine);
@@ -630,6 +657,12 @@ export class SurfaceIndex<S extends { r: EncodedLine[] } = ParksCell['surfaces']
       }
       if (c === cells[0]) (this as { own: number }).own = this.polys.length;
     }
+  }
+
+  /** Build an index as a sequence of tasks: `pace()` between steps (groundStore's pacer). */
+  static async pacedSteps<I extends SurfaceIndex<any>>(index: I, pace: () => Promise<void>): Promise<I> {
+    const steps = index.indexSteps();
+    for (;;) { if (steps.next().done) return index; await pace(); }
   }
   /** Decoded rings of polygon `k` (outer first). */
   ringsOf(k: number): readonly Vec2[][] { return this.polys[k].rings; }

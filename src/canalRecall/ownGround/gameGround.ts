@@ -539,6 +539,10 @@ export class OwnGround {
 
   coversRect(x0: number, y0: number, x1: number, y1: number): boolean {
     if (!this.ready || !this.visibleAtZoom(this.zoom) || !this.resident.size) return false;
+    // Dissolving in with the overview → city blend (presence < 1, a screen-door ground): what lies beneath still shows
+    // through. Counting it as covered let the engine overview discard its flat fill under a ground that was 4 % drawn
+    // (zoom 14.1 → 14.2: ΔE > 20 on 70 % of the view, mean luma −35; overview-transition.spec.ts under own).
+    if (this.presenceUniform.value < 1) return false;
     const step = 250, nx = Math.max(1, Math.ceil((x1 - x0) / step)), ny = Math.max(1, Math.ceil((y1 - y0) / step));
     for (let i = 0; i <= nx; i++) for (let j = 0; j <= ny; j++) {
       const key = this.store.cellAt(x0 + (x1 - x0) * i / nx, y0 + (y1 - y0) * j / ny);
@@ -687,8 +691,15 @@ export class OwnGround {
     this.far.delete(key);
   }
 
+  /**
+   * Bumped on every residency change (a cell installed, dropped, or done dissolving: each ends in syncFar), so a
+   * reader of coversRect (engine/overviewLayer.ts) knows when its answer may have changed.
+   */
+  coverRevision = 0;
+
   /** A far part hides once the resident ring draws its cell (after the cell's dissolve). */
   private syncFar(): void {
+    this.coverRevision++;
     for (const f of this.far.values()) for (const [key, mesh] of f.parts) {
       const r = this.resident.get(key);
       mesh.visible = !r || !!r.fade;
