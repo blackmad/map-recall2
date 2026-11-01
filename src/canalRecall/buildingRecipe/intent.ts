@@ -152,6 +152,11 @@ export interface OrielIntent {
   /** Metres over a painted module's foot where the paint starts: the stallriser under it stays brick (Hasebroekstraat 56-70: 0.75). */
   paintFrom?: number;
   console?: boolean;
+  /**
+   * Metres of wall between the top module and its storey's top (De la Reijstraat 25-42, 1920: the canted timber bay
+   * ends at 5.2 m, 0.9 m of brick under the eaves board at 6.1 m). Absent = the stack runs to the storey top.
+   */
+  topGap?: number;
 }
 export const ORIEL = {projection: 0.5, returns: 0.3, stallriser: 0.4, head: 0.35, frontLights: 3, consoleM: 0.15, consoleOverM: 0.06} as const;
 
@@ -1742,6 +1747,7 @@ export function orielProblems(f: FrontIntent, at: string): string[] {
   if (o.paintedStoreys !== undefined && (!Array.isArray(o.paintedStoreys) || o.paintedStoreys.some(s => !bw.storeys.includes(s)))) p.push(`${at}.bayWindows.oriel.paintedStoreys: storeys of bayWindows.storeys`);
   if (o.paintFrom !== undefined && (!num(o.paintFrom, 0.05, 2.4) || !o.paintedStoreys?.length)) p.push(`${at}.bayWindows.oriel.paintFrom: 0.05..2.4 m, with paintedStoreys`);
   if (o.console !== undefined && typeof o.console !== 'boolean') p.push(`${at}.bayWindows.oriel.console: boolean`);
+  if (o.topGap !== undefined && !num(o.topGap, 0.1, 2)) p.push(`${at}.bayWindows.oriel.topGap: 0.1..2 m of wall over the top module`);
   if (bw.cap !== undefined && bw.cap !== 'none') p.push(`${at}.bayWindows.oriel: cap is not drawn on an oriel (it stops under the cornice)`);
   return p;
 }

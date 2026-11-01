@@ -412,15 +412,17 @@ function layoutFront(f: FrontIntent, width: number, heightTop: number): Layout {
     // Timber oriel: a module per storey; brick (wall) panels unless painted (oudWest.ts paints `paintedStoreys`).
     const storeys = f.bayWindows!.storeys, w = round(erkerSpan[1] - erkerSpan[0]), ret = oriel.returns ?? ORIEL.returns, depth = oriel.projection ?? ORIEL.projection;
     const lights = oriel.frontLights ?? ORIEL.frontLights, bars = oriel.transom !== undefined ? [oriel.transom] : [];
+    // `topGap`: the top module stops that far under its storey's top (wall over the stack; absent = to the top).
+    const topGap = oriel.topGap ?? 0, moduleH = (s: number) => s === storeys.at(-1) ? heights[s] - topGap : heights[s];
     for (const s of storeys) {
       const own = oriel.panels?.[String(s)] ?? {}, lower = own.stallriser ?? oriel.stallriser ?? ORIEL.stallriser, upper = own.head ?? oriel.head ?? ORIEL.head;
-      if (lower + upper > heights[s] - 0.3) { warnings.push(`${f.id}: oriel storey ${s}: panels ${lower} + ${upper} m leave no light in ${round(heights[s])} m`); continue; }
-      glazedBays.push({id: `erker-s${s}`, leftM: round(erkerSpan[0]), bottomM: round(school.bottoms[s]), widthM: w, heightM: round(heights[s]), depthM: depth, frontWidthM: round(w - 2 * ret),
+      if (lower + upper > moduleH(s) - 0.3) { warnings.push(`${f.id}: oriel storey ${s}: panels ${lower} + ${upper} m leave no light in ${round(moduleH(s))} m`); continue; }
+      glazedBays.push({id: `erker-s${s}`, leftM: round(erkerSpan[0]), bottomM: round(school.bottoms[s]), widthM: w, heightM: round(moduleH(s)), depthM: depth, frontWidthM: round(w - 2 * ret),
         lowerPanelM: lower, upperPanelM: upper, frameWidthM: 0.06, frameDepthM: 0.07, glassDepthM: 0.02, capM: ERKER.closureM,
         faces: {front: {verticalBars: Array.from({length: lights - 1}, (_, k) => round((k + 1) / lights, 4)), horizontalBars: bars}, left: {verticalBars: [], horizontalBars: bars}, right: {verticalBars: [], horizontalBars: bars}}});
     }
     const top = storeys.at(-1)!;
-    school.erker = {leftM: round(erkerSpan[0]), widthM: w, storeys, topM: round(school.bottoms[top] + heights[top]),
+    school.erker = {leftM: round(erkerSpan[0]), widthM: w, storeys, topM: round(school.bottoms[top] + moduleH(top)),
       oriel: {depthM: depth, frontWidthM: round(w - 2 * ret), footM: round(school.bottoms[storeys[0] === 0 ? storeys.find(v => v > 0) ?? 0 : storeys[0]]), paintedStoreys: oriel.paintedStoreys ?? [], ...(oriel.paintFrom !== undefined ? {paintFrom: oriel.paintFrom} : {}), console: !!oriel.console}};
   } else if (school && erkerSpan && erkerBays) {
     const storeys = f.bayWindows!.storeys, w = round(erkerSpan[1] - erkerSpan[0]), lights = 2 * (erkerBays.to - erkerBays.from + 1);
