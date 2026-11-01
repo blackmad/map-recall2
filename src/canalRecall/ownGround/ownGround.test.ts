@@ -14,7 +14,9 @@ import { crossSection, parseMetres, areaKind, pavedAreaSurface, carriagewayClass
 import { asphaltGrain, herringboneBricks, KLINKER_TONES } from './streetTextures';
 import { mouthMarking, sharkTeeth, TEETH } from './roadMarkings';
 import { inTouchRing, RADIUS_STEP_M, residentRadius, touchAheadMarginM, touchResidentRadius, viewCornerReachM, viewReachM, TOUCH_AHEAD_MAX_M, TOUCH_RADIUS_STEP_M } from '../engine/worldStreamer.js';
-import { splitIntoTiles } from './cellTiles';
+import { layerTiles, splitIntoTiles, tileTransferables } from './cellTiles';
+import { rawTiles } from '../rendererShared/tiledGeometry.js';
+import { compactCell } from './compactMesh';
 import { basemapGroundPatches } from './basemapPalette';
 import { GROUND_LOOK_DEFAULT, groundPalette } from './groundLook';
 import { drawnGrey, flatGroundGain, flatGroundLuminance, FLAT_GROUND_GAIN } from './groundLight';
@@ -1184,6 +1186,49 @@ for (const [id, lng, lat] of [['BRU0166', 4.87445, 52.37286], ['BRU0044', 4.8875
     assert.ok(far.stats.triangles < cell.stats.triangles * 0.6, 'LOD 1 lighter');
   });
 }
+
+/**
+ * #129: the ground worker cuts each layer's tiles (cellTiles.ts layerTiles) so the install only wraps them. Exact:
+ * for every layer of real Jordaan/centre cells, packed and compact, the worker's tiles are byte-identical to what
+ * `cutMesh` computes on the main thread from the geometry `gameGround.packedGeometry` builds (rawTiles).
+ */
+test('worker-cut ground tiles are byte-identical to the main-thread cut (Jordaan + centre cells, packed and compact)', { skip: !haveCells }, async () => {
+  const store = fsStore();
+  await store.init();
+  const same = (a: ReturnType<typeof splitIntoTiles>, b: ReturnType<typeof splitIntoTiles>, what: string) => {
+    if (a === null || b === null) { assert.equal(a, b, what); return; }
+    assert.equal(a.length, b.length, `${what}: tile count`);
+    for (let i = 0; i < a.length; i++) {
+      assert.equal(a[i].cell, b[i].cell, `${what}: tile ${i} cell`);
+      assert.deepEqual(a[i].center, b[i].center, `${what}: tile ${i} centre`);
+      assert.equal(a[i].radius, b[i].radius, `${what}: tile ${i} radius`);
+      assert.equal(a[i].indices.constructor, b[i].indices.constructor, `${what}: tile ${i} index type`);
+      assert.ok(Buffer.from(a[i].indices.buffer, a[i].indices.byteOffset, a[i].indices.byteLength).equals(Buffer.from(b[i].indices.buffer, b[i].indices.byteOffset, b[i].indices.byteLength)), `${what}: tile ${i} indices`);
+    }
+  };
+  // Westerkerk / Jordaan (the stutter ride) and the Dam.
+  const keys = new Set([[4.8839, 52.3745], [4.8790, 52.3770], [4.8930, 52.3730]].map(([lng, lat]) => { const [x, y] = storeToLocal(lng, lat); return store.cellAt(x, y); }));
+  let layers = 0, cut = 0;
+  for (const key of keys) for (const lod of [0, 1] as const) {
+    const built = buildCell(await store.cellInput(key, lod));
+    for (const cell of [built, compactCell(built)]) {
+      const tiles = layerTiles(cell.layers, 3, 4000);
+      assert.equal(tileTransferables(tiles).length, Object.values(tiles).reduce((n, t) => n + (t?.length ?? 0), 0));
+      for (const [layer, m] of Object.entries(cell.layers)) {
+        if (!m) continue;
+        // gameGround.packedGeometry: a plain xyz attribute (packed) or an interleaved stride-3 buffer (compact).
+        const compact = m.normals instanceof Int8Array;
+        const position = compact ? { itemSize: 3, isInterleavedBufferAttribute: true, offset: 0, data: { array: m.positions, stride: 3 } } : { itemSize: 3, array: m.positions };
+        const base = { index: { array: m.indices, count: m.indices.length }, attributes: { position }, drawRange: { start: 0, count: Infinity } };
+        const main = rawTiles(base, 3, 4000);
+        same(tiles[layer], main, `${key}/lod${lod}/${compact ? 'compact' : 'packed'}/${layer}`);
+        assert.equal(rawTiles(base, 3, 4000, undefined, tiles[layer]), tiles[layer], 'cutMesh takes the worker tiles as given');
+        layers++; if (main) cut++;
+      }
+    }
+  }
+  assert.ok(layers > 60 && cut > 10, `${layers} layers, ${cut} cut`);
+});
 
 /**
  * CANAL-RECALL-7: a `touch` cell (a touch device, far from the rider) draws every layer a `full` one draws — the same

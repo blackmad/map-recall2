@@ -62,31 +62,31 @@ var CanalRecallRoadProjection = (() => {
   }
 
   // src/canalRecall/osm/roadSnapIndex.ts
-  var distanceTo = (point, node) => Math.hypot(
-    Math.max(node.minX - point.x, 0, point.x - node.maxX),
-    Math.max(node.minY - point.y, 0, point.y - node.maxY)
-  );
   function* roadSnapStages(segments) {
-    const spans = [];
-    for (const segment of segments) for (let i = 1; i < segment.points.length; i++) {
-      spans.push({ a: segment.points[i - 1], b: segment.points[i], order: spans.length });
-      if (spans.length % 4096 === 0) yield;
+    const segList = [], ptList = [];
+    for (let s = 0; s < segments.length; s++) for (let i = 1; i < segments[s].points.length; i++) {
+      segList.push(s);
+      ptList.push(i);
+      if (segList.length % 4096 === 0) yield;
     }
-    const count = spans.length;
+    const count = segList.length;
     if (!count) return void 0;
     yield;
+    const spanSeg = Int32Array.from(segList), spanPt = Int32Array.from(ptList);
+    const a = (id) => segments[spanSeg[id]].points[spanPt[id] - 1], b = (id) => segments[spanSeg[id]].points[spanPt[id]];
     const keyX = new Float64Array(count), keyY = new Float64Array(count);
     for (let i = 0; i < count; i++) {
-      keyX[i] = spans[i].a.x + spans[i].b.x;
-      keyY[i] = spans[i].a.y + spans[i].b.y;
+      const p = a(i), q = b(i);
+      keyX[i] = p.x + q.x;
+      keyY[i] = p.y + q.y;
     }
     const ids = new Int32Array(count);
     for (let i = 0; i < count; i++) ids[i] = i;
     const select = (lo, hi, middle, key) => {
-      let left = lo, right = hi;
-      while (left < right) {
-        const pivot = key[ids[left + right >>> 1]];
-        let i = left, j = right;
+      let left2 = lo, right2 = hi;
+      while (left2 < right2) {
+        const pivot = key[ids[left2 + right2 >>> 1]];
+        let i = left2, j = right2;
         while (i <= j) {
           while (key[ids[i]] < pivot) i++;
           while (key[ids[j]] > pivot) j--;
@@ -98,80 +98,97 @@ var CanalRecallRoadProjection = (() => {
             j--;
           }
         }
-        if (middle <= j) right = j;
-        else if (middle >= i) left = i;
+        if (middle <= j) right2 = j;
+        else if (middle >= i) left2 = i;
         else break;
       }
     };
-    let work = 0;
+    const cap = Math.max(1, 2 * Math.ceil(count / 4));
+    const minX = new Float64Array(cap), minY = new Float64Array(cap), maxX = new Float64Array(cap), maxY = new Float64Array(cap);
+    const left = new Int32Array(cap), right = new Int32Array(cap);
+    let nodes = 0, work = 0;
     function* build(lo, hi) {
-      const node = { minX: Infinity, minY: Infinity, maxX: -Infinity, maxY: -Infinity };
+      const node = nodes++;
+      let x0 = Infinity, y0 = Infinity, x1 = -Infinity, y1 = -Infinity;
       for (let k = lo; k < hi; k++) {
-        const { a, b } = spans[ids[k]];
-        if (a.x < node.minX) node.minX = a.x;
-        if (b.x < node.minX) node.minX = b.x;
-        if (a.y < node.minY) node.minY = a.y;
-        if (b.y < node.minY) node.minY = b.y;
-        if (a.x > node.maxX) node.maxX = a.x;
-        if (b.x > node.maxX) node.maxX = b.x;
-        if (a.y > node.maxY) node.maxY = a.y;
-        if (b.y > node.maxY) node.maxY = b.y;
+        const p = a(ids[k]), q = b(ids[k]);
+        if (p.x < x0) x0 = p.x;
+        if (q.x < x0) x0 = q.x;
+        if (p.y < y0) y0 = p.y;
+        if (q.y < y0) y0 = q.y;
+        if (p.x > x1) x1 = p.x;
+        if (q.x > x1) x1 = q.x;
+        if (p.y > y1) y1 = p.y;
+        if (q.y > y1) y1 = q.y;
       }
+      minX[node] = x0;
+      minY[node] = y0;
+      maxX[node] = x1;
+      maxY[node] = y1;
       work += hi - lo;
       if (work >= 8192) {
         work = 0;
         yield;
       }
       if (hi - lo <= 8) {
-        node.spans = [];
-        for (let k = lo; k < hi; k++) node.spans.push(spans[ids[k]]);
+        left[node] = -1 - lo;
+        right[node] = hi;
       } else {
         const middle = lo + Math.floor((hi - lo) / 2);
-        select(lo, hi - 1, middle, node.maxX - node.minX >= node.maxY - node.minY ? keyX : keyY);
-        node.left = yield* build(lo, middle);
-        node.right = yield* build(middle, hi);
+        select(lo, hi - 1, middle, x1 - x0 >= y1 - y0 ? keyX : keyY);
+        left[node] = yield* build(lo, middle);
+        right[node] = yield* build(middle, hi);
       }
       return node;
     }
-    return yield* build(0, count);
+    yield* build(0, count);
+    return { segments, spanSeg, spanPt, ids, minX: minX.slice(0, nodes), minY: minY.slice(0, nodes), maxX: maxX.slice(0, nodes), maxY: maxY.slice(0, nodes), left: left.slice(0, nodes), right: right.slice(0, nodes) };
   }
   var RoadSnapIndex = class _RoadSnapIndex {
-    root;
+    tree;
     constructor(segments) {
       const stages = roadSnapStages(segments);
       let step = stages.next();
       while (!step.done) step = stages.next();
-      this.root = step.value;
+      this.tree = step.value;
     }
     static async create(segments, scheduling = {}) {
       const index = new _RoadSnapIndex([]);
-      index.root = await finishBatchedBuild(roadSnapStages(segments), scheduling);
+      index.tree = await finishBatchedBuild(roadSnapStages(segments), scheduling);
       return index;
     }
     nearest(point) {
+      const t = this.tree;
+      if (!t) return null;
       let best = null, order = Infinity;
+      const distanceTo = (node) => Math.hypot(
+        Math.max(t.minX[node] - point.x, 0, point.x - t.maxX[node]),
+        Math.max(t.minY[node] - point.y, 0, point.y - t.maxY[node])
+      );
       const visit = (node) => {
-        if (best && distanceTo(point, node) > best.distance + 1e-8) return;
-        if (node.spans) {
-          for (const span of node.spans) {
-            const candidate = closestPointOnSegment(point, span.a, span.b);
-            if (!best || candidate.distance < best.distance || candidate.distance === best.distance && span.order < order) {
+        if (best && distanceTo(node) > best.distance + 1e-8) return;
+        const l = t.left[node];
+        if (l < 0) {
+          for (let k = -1 - l, hi = t.right[node]; k < hi; k++) {
+            const id = t.ids[k], points = t.segments[t.spanSeg[id]].points, at = t.spanPt[id];
+            const candidate = closestPointOnSegment(point, points[at - 1], points[at]);
+            if (!best || candidate.distance < best.distance || candidate.distance === best.distance && id < order) {
               best = candidate;
-              order = span.order;
+              order = id;
             }
           }
         } else {
-          const a = node.left, b = node.right;
-          if (distanceTo(point, a) <= distanceTo(point, b)) {
-            visit(a);
-            visit(b);
+          const r = t.right[node];
+          if (distanceTo(l) <= distanceTo(r)) {
+            visit(l);
+            visit(r);
           } else {
-            visit(b);
-            visit(a);
+            visit(r);
+            visit(l);
           }
         }
       };
-      if (this.root) visit(this.root);
+      visit(0);
       return best;
     }
   };

@@ -151,7 +151,10 @@ export class OwnWorldView {
   private readonly landmarkHighlight = new LandmarkHighlight();
   readonly labelOcclusion = new LabelOcclusion();
   /** `?labelOcclusion=0` (or flipping it at run time: specs compare on and off at one pose). */
-  labelOcclusionOn = flag('labelOcclusion', '__canalRecallLabelOcclusion', true);
+  private _labelOcclusionOn = flag('labelOcclusion', '__canalRecallLabelOcclusion', true);
+  get labelOcclusionOn(): boolean { return this._labelOcclusionOn; }
+  /** The A/B switch: a still frame is not redrawn (render-on-change), so the switch asks for the frame that re-places the labels. */
+  set labelOcclusionOn(on: boolean) { this._labelOcclusionOn = on; this.host?.triggerRepaint(); }
   private quizQuiet = false;
   private spoilersSuspended = false;
   private loader: LoaderFrame | null = null;

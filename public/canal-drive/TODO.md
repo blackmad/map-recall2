@@ -1383,21 +1383,30 @@ Root `main` was cleaned on 2026-10-09 (see HISTORY). Live work, in order:
   Re-summarised, car route 60 s: total pop MapLibre 1,480 vs own 1,846 px/s,
   unexplained 563 vs 1,263 (the slower tail of the same turn, parallax not
   pop), landmark-model 592 vs 452, trees 4 vs 131, ground cells / building
-  chunks 0 / 0 in both. Open: the within-150 m install count with
-  per-install cell geometry (the P3 pop-in gate), `buildShadowStandIn` and
-  `splitIntoTiles` to the worker pool with the Jordaan 1×/4× re-measure, P5
-  B6 (B3 satisfied under own, B4 applied); a fresh L1 session picks these up
-  (the previous one ran out of context after hand-back (10)).
+  chunks 0 / 0 in both. Hand-back (11): the P3 pop-in gate is met (0
+  installs within 150 m under both engines, nearest chunk 154 m, thin);
+  `buildShadowStandIn` and own-ground `splitIntoTiles` are off the main
+  thread; ARTIS is off the camera shim (B6 started). Streaming gate still
+  open (HISTORY "Facade chunk tiles planned in the worker"): facade tiles
+  are off the main thread (436 → 0 ms at 4×) but the 4× totals did not move;
+  the 1× frame over 50 ms is the `prepareCell` yield continuation for the
+  cell entering the ring (45–57 ms; 117–128 ms at 4×; L1 next: into the
+  ground worker or yields inside, exactness-pinned); `setFeatures` 606 /
+  `_applyChunkPandBases` 374 / `post` 219 ms at 4× (materials);
+  signature-landmarks `_requestModels` 393 → 629 ms at 4× unproven (L1 paired
+  run). Shim callers left: three-buildings `getZoom` 82/s, player-vehicles
+  `getContainer` (L1).
   Idle rendering (fan) is fixed under own: render-on-change on main, 0
   renders per 5 s at rest; the default engine still renders every idle frame
   until the flip.
-- **Heap gates** (HISTORY "Landmark chunk copies typed"): desktop 462 MB at
-  ride start / 469 at 60 s meets ≤ 500; iPhone 332 MB against ≤ 160 is not
-  reachable by trimming owners (city-wide data as JS objects); the road lane
-  builds, in order, roadIndex CSR + snap-index merge, columnar building tile
-  cache, overview polyline pack, phone ground radii (≈ 235–250 MB expected),
-  the materials lane releases the facade CPU arrays (33.9 MB). The gate stays
-  red with that reason. `engine-own.spec`'s `heapMB` is noise without a GC;
+- **Heap gates** (HISTORY "Phone heap cuts"): desktop 436 MB meets ≤ 500;
+  iPhone 305 MB against ≤ 160 stays red. Owners left on the phone: shared
+  frame 135 MB (88 MB buffers; materials/L1), own-ground store 43 (road lane
+  next: per-cell contents and never-read copies), building cache 33, track
+  24, overview 20, landmark CPU arrays 24–36, facades 14 (materials). Held
+  product option: 6 phone building tiles instead of 9 (user's call, a look
+  trade). `no-maplibre.bundle.js` has no npm build script (old overview
+  decoder inside, still works): add one before the flip. `engine-own.spec`'s `heapMB` is noise without a GC;
   `scripts/heap-ride.mjs` is the measure.
 - **Time to ride under own ≈ 3.5 s median, three of six runs within 70 ms of
   the 4 s gate**: the settle hold waiting on facade chunks is the variance
@@ -1416,11 +1425,13 @@ Root `main` was cleaned on 2026-10-09 (see HISTORY). Live work, in order:
   occlusion"). Round 2 on main (HISTORY "Label occlusion round 2"): 16 → 1
   at the user's pose, Dam 27 → 0, Westerkerk 14 → 0–1; street/water names
   occluded too; `street-label-occlusion.spec` passes under both engines.
-  Left: Cafe Kompleet at a row-house corner the frontage walk misses; names
-  ever drawn through a building while riding 6 s from the Westerkerk still
-  14 → 7 (between-pass re-tests cover 4 POIs per frame, not street names);
-  the occlusion step's own per-frame cost is not isolated against the ≤ 0.3
-  ms budget. The user looks at this next on the deployed `?engine=own`.
+  Round 3 (HISTORY "Label occlusion round 3"): street names re-tested per
+  copy while riding, budget 8 sightlines a frame (100–137 µs). Left: Cafe
+  Kompleet, a roof-height case (saltbox 17 m in front hit at 7.9 m on screen
+  while the sightline clears the walk's top): test at the glyph top or use
+  the ridge for occluders within ≈ 25 m (materials, after the facades
+  package); riding POI samples through buildings ECH 25/22, Westerkerk 62,
+  Dam 4 per 6 s. The user looks at this next on the deployed `?engine=own`.
 - **Extract refresh drift (found 2026-10-31, #147).** `scripts/
   refresh-amsterdam-extract.sh` from the same archived PBF no longer
   reproduces the committed extract: streets-routing 47,259 → 45,620 ways

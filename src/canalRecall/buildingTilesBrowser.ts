@@ -28,6 +28,8 @@ import {
 import { bagTilesEnabled, hiddenIdsFor, type CoversFile } from './bagTiles.js';
 import { tileFor, tileKey, tilesCovering } from './slippyTiles.js';
 import { mapHasStyle, mapRemoved } from './mapStyle.js';
+import { onViewChange, worldCameraOf } from './engine/worldCameraOf.js';
+import type { WorldCamera } from './engine/worldViewApi.js';
 import { introLandingArea } from './game/introFlight.js';
 import { MotionEstimate, boxAround, lookAheadEnabled, lookAheadPoints } from './streamingLookAhead.js';
 import { WorldCellClient, readWorldIndex, worldV1Enabled } from './world/worldCells.js';
@@ -47,6 +49,8 @@ type MapLike = {
   getCenter(): { lng: number; lat: number };
   getZoom(): number;
   on(event: string, handler: () => void): void;
+  off?(event: string, handler: () => void): void;
+  once?(event: string, handler: () => void): void;
 };
 
 /** How many building tiles may download at once. Two keeps the pipe busy
@@ -220,6 +224,10 @@ export class BuildingTileStreamer {
     private readonly zoom = BUILDING_TILE_ZOOM
   ) {}
 
+  /** The view, from the WorldCamera (engine/worldCameraOf.ts, P5 B6): `map.api` under the engine, MapLibre's getters otherwise. */
+  private cameraApi: WorldCamera | null = null;
+  private get camera(): WorldCamera { return this.cameraApi ??= worldCameraOf(this.map); }
+
   /** Resident z14 tile budget; 9 on touch, 12 on desktop (see residentTileBudget). */
   private readonly tileBudget = residentTileBudget();
 
@@ -307,7 +315,7 @@ export class BuildingTileStreamer {
     // Only a re-plan: MapLibre also fires `moveend` from `resize()`, and a WebGL context restore resizes. On the
     // briefing, where nothing has aimed the streamer yet, that moveend planned the style's Damrak default and
     // ~67-183 k facade triangles drew behind the card that had not drawn before the loss (#109).
-    this.map.on('moveend', () => { if (this.aimed) this.followCamera(); });
+    onViewChange(this.camera, () => { if (this.aimed) this.followCamera(); });
   }
 
   /** Planned once by an explicit `followCamera` (the game's camera sync, a lab page): `moveend` may then re-plan. */
@@ -502,9 +510,9 @@ export class BuildingTileStreamer {
     // source empty while the cache/signature incorrectly say it is current.
     if (!this.available || !this.attached || this.disposed) return;
     this.aimed = true;
-    const centre = this.map.getCenter();
+    const centre = this.camera.center();
     const tile = tileFor(centre.lng, centre.lat, this.zoom);
-    const zoomBucket = Math.round(this.map.getZoom() * 2) / 2;
+    const zoomBucket = Math.round(this.camera.zoom() * 2) / 2;
     // The tiles the view needs, not just the centre: tilting or turning the
     // camera widens the visible ground without moving the centre tile or the
     // zoom bucket, and those tiles used to stay unrequested (bare patches).
@@ -526,8 +534,8 @@ export class BuildingTileStreamer {
   }
 
   private bounds(): Bounds {
-    const bounds = this.map.getBounds();
-    return { west: bounds.getWest(), south: bounds.getSouth(), east: bounds.getEast(), north: bounds.getNorth() };
+    const b = this.camera.bounds()!;
+    return { west: b.west, south: b.south, east: b.east, north: b.north };
   }
 
   private update(): void {

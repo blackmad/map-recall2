@@ -2016,14 +2016,46 @@
     const cy = a.y + aby * t2;
     return { x: cx, y: cy, dist: Math.hypot(px - cx, py - cy) };
   }
+  function spanOf(index, id) {
+    const cached = index.spanCache[id];
+    if (cached) return cached;
+    const segIdx = index.spanSeg[id], code = index.spanPt[id], width = index.widths[segIdx];
+    let span;
+    if (code >= 0) {
+      const points = index.segments[segIdx].points;
+      span = { a: points[code], b: points[code + 1], segIdx, ptIdx: code, width };
+    } else {
+      const connector = index.connectors[-1 - code];
+      span = { a: connector.a, b: connector.b, segIdx, ptIdx: -1, width };
+    }
+    index.spanCache[id] = span;
+    return span;
+  }
+  function cellIndex(keys, key) {
+    let lo = 0, hi = keys.length - 1;
+    while (lo <= hi) {
+      const mid = lo + hi >>> 1, k = keys[mid];
+      if (k < key) lo = mid + 1;
+      else if (k > key) hi = mid - 1;
+      else return mid;
+    }
+    return -1;
+  }
   function roadsNear(index, x, y, ring = 1) {
     const gx = Math.floor(x / index.cellSize);
     const gy = Math.floor(y / index.cellSize);
     const found = [];
     for (let dx = -ring; dx <= ring; dx++) {
       for (let dy = -ring; dy <= ring; dy++) {
-        const bucket = index.cells.get(cellKey(gx + dx, gy + dy));
-        if (bucket) found.push(...bucket);
+        const key = cellKey(gx + dx, gy + dy);
+        if (typeof key === "string") {
+          const list = index.stringCells.get(key);
+          if (list) for (let i = 0; i < list.length; i++) found.push(spanOf(index, list[i]));
+          continue;
+        }
+        const c = cellIndex(index.keys, key);
+        if (c < 0) continue;
+        for (let i = index.offsets[c], end = index.offsets[c + 1]; i < end; i++) found.push(spanOf(index, index.ids[i]));
       }
     }
     return found;
