@@ -61895,6 +61895,33 @@
         "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
         "modifications": "Original low-poly reconstruction from the typed kiosk kit: grey louvred box with an open serving front, glass vitrine, yellow boarded counter base, menu chalkboard band and three cream fascia boards, the name board lettered MR BLOU I LOVE YOU / VEGAN in raised pixel capitals. Outline from OpenStreetMap (ODbL); proportions and tints read from Gemeente Amsterdam panoramas (CC BY 4.0); tints scaled out of tree shade. No photo pixels or imported meshes."
       },
+      "buildingFootprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.877518,
+              52.368996
+            ],
+            [
+              4.877581,
+              52.369013
+            ],
+            [
+              4.877594,
+              52.368995
+            ],
+            [
+              4.87753,
+              52.368979
+            ],
+            [
+              4.877518,
+              52.368996
+            ]
+          ]
+        ]
+      },
       "buildingCategory": "landmark",
       "bounds": {
         "min": [
