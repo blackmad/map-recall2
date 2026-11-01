@@ -1386,7 +1386,7 @@ Root `main` was cleaned on 2026-10-09 (see HISTORY). Live work, in order:
 
 ## P0 — Red, or actively teaching something false
 
-- **Tier probe thresholds are uncalibrated** (2026-10-31): mid > 8 ms and low
+- **Tier probe thresholds are uncalibrated** (2026-10-31): mid > 8 ms and low SwiftShader at DPR 1 probes 6.8–7.0 ms, under the 8 ms mid threshold, so the fill probe cannot detect a weak GPU limited by triangle count; only the renderer name sends it to low (materials 2026-11-01). M4 pin: auto vs `?tier=high` 0–11 px at westerkerk/nassaukade, rerun with `ENGINE=own WORLD_AB=1 WORLD_AB_STALE=1 AB_CAMERA=fixed AB_NOISE=1 AB_DPR=2 AB_SPOTS=westerkerk,nassaukade AB_QUERY=governor=0 AB_B_QUERY=tier=high npx playwright test world-v1-ab --project=desktop --headed`.
   > 25 ms on the ~1 s probe come from one M4 Pro (1.5 ms) and SwiftShader
   (13–14 ms); a real mid-class laptop and an Android phone have never run the
   probe. Until they do, `?tier=` forcing and the Sentry graphics-failure

@@ -1,5 +1,32 @@
 # Canal Recall — what is built
 
+**Quality tiers: the probe runs under a forced tier too; auto equals `?tier=high` to the pixel on the M4; the phone low-tier gate stays red (2026-11-01, P4).**
+Materials lane hand-back (46b9bbd4d). Most of the tiers item was already
+on main (dadb83eb6, 7c201b35c, 05c5e9550: `chooseTier`, `TIER_SETTINGS`,
+the startup fill probe at view construction — the tier must be known before
+the shadow map, stand-ins and ground are built — `?tier=low|mid|high`, the
+governor stepping down and back up to the tier's cap with a lock after a
+step down that follows a step up). This hand-back: `?tier=` no longer skips
+the probe (a forced tier left different coarse tiles resident: 64 /
+29,246 px from auto at Westerkerk / Nassaukade; now 0–11 px, and the 11 px
+also appears between two plain auto loads, so it is harness noise);
+`world-v1-ab.spec` takes `AB_B_QUERY` as the B side and `AB_DPR`, and
+records tier, pixel ratio and probe ms per row (integrator: the A side
+asks `world=live` since the cells are the default, a pin of another flag
+leaves both sides on the default world); `weak-gpu-perf.spec` gains a
+`tierLow` variant and `WEAK_GPU_DEVICE=phone` (iPhone 13 profile, DPR 3).
+Probe medians: M4 Pro headed Metal 1.4–2.8 ms (DPR 2) / 0.5–1.2 (DPR 1)
+→ high; SwiftShader 23.9–25.3 (DPR 2), 6.8–7.0 (DPR 1), 7.9–8.8 (phone
+profile) → low, but only by its software-renderer name at DPR 1: the fill
+probe cannot detect a weak GPU limited by triangle count, so the
+thresholds still need a real weak device. weak-gpu-perf phone profile p95:
+tierLow 401 ms (median 2.4), tierMid 641, tierHigh 620, auto 764; the 33 ms
+gate stays red, SwiftShader is triangle-bound (HISTORY "Weak-GPU low
+tier"), no budget raised. Process: `alarm` must sit inside
+`/tmp/canal-pw.sh`, or lock-wait time counts against it and orphaned runs
+are left behind (the lane reran every table). Integrator: `build:canal-engine`,
+test:engine 102/102, renderGovernor.test 14/14, tsc clean.
+
 **The compiled city cells are the default world; `?world=live` is the tile path (2026-11-01, P2 → P5 step).**
 Integrator decision after the materials lane's result on the published
 `--no-policy` cells (HISTORY "World-v1 is pixel-identical"): the P2 gate
