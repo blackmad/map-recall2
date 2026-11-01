@@ -1,0 +1,347 @@
+{
+ "street": "Ruysdaelstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-01T13:10:15.458Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012092835",
+   "addresses": [
+    "Ruysdaelstraat 1",
+    "Ruysdaelstraat 3",
+    "Ruysdaelstraat 5"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ruysdaelstraat 1-H",
+     "use": "industriefunctie",
+     "areaM2": 84,
+     "bagId": "0363010000801459"
+    },
+    {
+     "address": "Ruysdaelstraat 5",
+     "use": "winkelfunctie",
+     "areaM2": 124,
+     "bagId": "0363010000801466"
+    }
+   ],
+   "units": 8,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012138609",
+   "addresses": [
+    "Ruysdaelstraat 7"
+   ],
+   "groundUnits": [],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012072231",
+   "addresses": [
+    "Ruysdaelstraat 9"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ruysdaelstraat 9-H",
+     "use": "winkelfunctie",
+     "areaM2": 1,
+     "bagId": "0363010000801470"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2512958479,
+     "lngLat": [
+      4.8858654,
+      52.3543415
+     ],
+     "tags": {
+      "check_date": "2025-08-25",
+      "name": "Sacksioni Guitarshop",
+      "shop": "musical_instrument",
+      "wheelchair": "limited"
+     },
+     "fetchedAt": "2026-11-01T13:10:15.458Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012140478",
+   "addresses": [
+    "Ruysdaelstraat 11"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ruysdaelstraat 11-H",
+     "use": "winkelfunctie",
+     "areaM2": 200,
+     "bagId": "0363010000801474"
+    },
+    {
+     "address": "Ruysdaelstraat 11-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 250,
+     "bagId": "0363010012064431"
+    }
+   ],
+   "units": 7,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012073017",
+   "addresses": [
+    "Ruysdaelstraat 13",
+    "Ruysdaelstraat 15",
+    "Ruysdaelstraat 19",
+    "Ruysdaelstraat 21",
+    "Ruysdaelstraat 23",
+    "Ruysdaelstraat 25"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ruysdaelstraat 13-H",
+     "use": "winkelfunctie",
+     "areaM2": 68,
+     "bagId": "0363010000801478"
+    },
+    {
+     "address": "Ruysdaelstraat 15-H",
+     "use": "winkelfunctie",
+     "areaM2": 64,
+     "bagId": "0363010000801482"
+    },
+    {
+     "address": "Ruysdaelstraat 19-H",
+     "use": "winkelfunctie",
+     "areaM2": 59,
+     "bagId": "0363010000801486"
+    },
+    {
+     "address": "Ruysdaelstraat 25-H",
+     "use": "winkelfunctie,woonfunctie",
+     "areaM2": 22,
+     "bagId": "0363010000801506"
+    },
+    {
+     "address": "Ruysdaelstraat 21-H",
+     "use": "winkelfunctie",
+     "areaM2": 128,
+     "bagId": "0363010001001981"
+    },
+    {
+     "address": "Ruysdaelstraat 19-H",
+     "use": "winkelfunctie",
+     "areaM2": 194,
+     "bagId": "0363010012072007"
+    },
+    {
+     "address": "Ruysdaelstraat 25-H",
+     "use": "winkelfunctie",
+     "areaM2": 64,
+     "bagId": "0363010012123841"
+    }
+   ],
+   "units": 25,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2816519825,
+     "lngLat": [
+      4.885588,
+      52.354337
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "15-H",
+      "addr:postcode": "1071WX",
+      "addr:street": "Ruysdaelstraat",
+      "amenity": "cafe",
+      "check_date": "2026-02-19",
+      "check_date:currency:XBT": "2026-02-19",
+      "contact:instagram": "akhinfriends.amsterdam",
+      "cuisine": "coffee_shop",
+      "currency:XBT": "yes",
+      "name": "Akhi 'n Friends",
+      "payment:lightning": "yes",
+      "payment:lightning_contactless": "no",
+      "payment:onchain": "no",
+      "phone": "+31 6 417 53674",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "survey:date": "2025-12-12",
+      "website": "https://akhinfriends.amsterdam"
+     },
+     "fetchedAt": "2026-11-01T13:10:15.458Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012074316",
+   "addresses": [
+    "Ruysdaelstraat 27"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ruysdaelstraat 27-H",
+     "use": "winkelfunctie",
+     "areaM2": 100,
+     "bagId": "0363010001027039"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 10312081224,
+     "lngLat": [
+      4.8851352,
+      52.3542381
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "27",
+      "addr:postcode": "1071WZ",
+      "addr:street": "Ruysdaelstraat",
+      "check_date": "2025-06-19",
+      "craft": "glaziery",
+      "name": "Bizar GlassArt",
+      "opening_hours": "Tu-Fr 11:00-18:00; Sa 11:00-17:00",
+      "phone": "+31 20 676 7796",
+      "website": "https://www.bizarglassart.nl"
+     },
+     "fetchedAt": "2026-11-01T13:10:15.458Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012099950",
+   "addresses": [
+    "Ruysdaelstraat 29",
+    "Ruysdaelstraat 31"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ruysdaelstraat 31-H",
+     "use": "winkelfunctie",
+     "areaM2": 130,
+     "bagId": "0363010001001982"
+    }
+   ],
+   "units": 7,
+   "osm": [
+    {
+     "type": "node",
+     "id": 920527903,
+     "lngLat": [
+      4.8849047,
+      52.3541666
+     ],
+     "tags": {
+      "name": "Ciclo rijwielen",
+      "shop": "bicycle",
+      "wheelchair": "limited"
+     },
+     "fetchedAt": "2026-11-01T13:10:15.458Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012131267",
+   "addresses": [
+    "Ruysdaelstraat 33"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ruysdaelstraat 33-H",
+     "use": "winkelfunctie",
+     "areaM2": 97,
+     "bagId": "0363010000801535"
+    }
+   ],
+   "units": 6,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012070855",
+   "addresses": [
+    "Ruysdaelstraat 35"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ruysdaelstraat 35-H",
+     "use": "winkelfunctie",
+     "areaM2": 65,
+     "bagId": "0363010000801543"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012097854",
+   "addresses": [
+    "Ruysdaelstraat 37",
+    "Ruysdaelstraat 39"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ruysdaelstraat 37",
+     "use": "woonfunctie",
+     "areaM2": 227,
+     "bagId": "0363010000801551"
+    },
+    {
+     "address": "Ruysdaelstraat 39",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 355,
+     "bagId": "0363010000774238"
+    }
+   ],
+   "units": 2,
+   "osm": [
+    {
+     "type": "way",
+     "id": 1509507854,
+     "lngLat": [
+      4.8845707,
+      52.3540222
+     ],
+     "tags": {
+      "alt_name": "Oud-Katholieke Kerk",
+      "amenity": "place_of_worship",
+      "building:part": "church",
+      "check_date": "2025-06-19",
+      "denomination": "old_catholic",
+      "heritage": "2",
+      "heritage:operator": "rce",
+      "name": "Sint-Petrus-en-Pauluskerk",
+      "operator": "Oud-Katholieke Parochie van de H.H. Petrus en Paulus & H.H. Johannes en Willibrordus",
+      "operator:website": "https://amsterdam.oudkatholiek.nl",
+      "ref:rce": "504689",
+      "religion": "christian",
+      "website": "https://amsterdam.okkn.nl",
+      "wikidata": "Q17301706",
+      "wikimedia_commons": "Category:Sint-Petrus-en-Pauluskerk, Amsterdam",
+      "wikipedia": "nl:Sint-Petrus-en-Pauluskerk (Amsterdam)"
+     },
+     "fetchedAt": "2026-11-01T13:10:15.458Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,105 @@
+{
+ "street": "Roelof Hartplein",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-01T12:59:39.472Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012085825",
+   "addresses": [
+    "Roelof Hartplein 1",
+    "Roelof Hartplein 5"
+   ],
+   "groundUnits": [
+    {
+     "address": "Roelof Hartplein 1",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 428,
+     "bagId": "0363010000794659"
+    },
+    {
+     "address": "Van Baerlestraat 103-1",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 781,
+     "bagId": "0363010000834930"
+    }
+   ],
+   "units": 8,
+   "osm": [
+    {
+     "type": "node",
+     "id": 285165048,
+     "lngLat": [
+      4.8824008,
+      52.3534426
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:country": "NL",
+      "addr:housenumber": "1",
+      "addr:postcode": "1071TR",
+      "addr:street": "Roelof Hartplein",
+      "alt_name": "Café Wildschut",
+      "amenity": "pub",
+      "check_date": "2024-06-20",
+      "name": "Wildschut",
+      "website": "https://cafewildschut.nl",
+      "wheelchair": "limited"
+     },
+     "fetchedAt": "2026-11-01T12:59:39.472Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012094362",
+   "addresses": [
+    "Roelof Hartplein 7"
+   ],
+   "groundUnits": [
+    {
+     "address": "Roelof Hartplein 7-H",
+     "use": "woonfunctie",
+     "areaM2": 86,
+     "bagId": "0363010000794723"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012101742",
+   "addresses": [
+    "Roelof Hartplein 9"
+   ],
+   "groundUnits": [
+    {
+     "address": "Roelof Hartplein 9-H",
+     "use": "woonfunctie",
+     "areaM2": 86,
+     "bagId": "0363010000794727"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012115579",
+   "addresses": [
+    "Roelof Hartplein 11"
+   ],
+   "groundUnits": [
+    {
+     "address": "Roelof Hartplein 11-H",
+     "use": "woonfunctie",
+     "areaM2": 92,
+     "bagId": "0363010000589172"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  }
+ ]
+}

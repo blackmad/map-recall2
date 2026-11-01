@@ -1,0 +1,474 @@
+{
+ "face": "koninginneweg-5-13",
+ "street": "Koninginneweg",
+ "library": "museumkwartier",
+ "stripDate": "2024-11-12",
+ "seconds": 0.76,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [],
+ "pands": [
+  {
+   "pandId": "0363100012162397",
+   "address": "Koninginneweg 5",
+   "builtYear": 1896,
+   "widthM": 10.04,
+   "eavesM": 9.41,
+   "storeys3dbag": 4,
+   "bagBay": {
+    "fromM": 0.53,
+    "toM": 2.65,
+    "depthM": 0.57,
+    "centre": 0.158
+   },
+   "strip": {
+    "wall": "#a17758",
+    "wallRaw": "#76694d",
+    "skyline": {
+     "eavesM": 16.2,
+     "eavesRow": 77,
+     "confidence": 0.84,
+     "crown": {
+      "widthM": 2.7,
+      "riseM": 1.93,
+      "topWidthM": 0.57,
+      "centre": 0.25
+     }
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": 3,
+    "frontClass": "columns",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.04,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 1.77 m at 0.1 (light 0.1): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 1.77,
+       "centre": 0.1,
+       "light": 0.1
+      },
+      {
+       "widthM": 0.75,
+       "centre": 0.75,
+       "light": 0.02
+      },
+      {
+       "widthM": 0.78,
+       "centre": 0.96,
+       "light": 0.1
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.28
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best museum-cs-1900-gable-balcony: built 1896, type 1900-1901; frontage 10.04 m, type 5.5-6.6 m)",
+   "best": {
+    "type": "museum-cs-1900-gable-balcony",
+    "score": 0,
+    "veto": [
+     "built 1896, type 1900-1901",
+     "frontage 10.04 m, type 5.5-6.6 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 16.2 m vs the type's 10.4 m (wall-dormer skyline 14.4 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 4 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.063 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012156316",
+   "address": "Koninginneweg 7",
+   "builtYear": 1896,
+   "widthM": 6.07,
+   "eavesM": 10.77,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#625b47",
+    "wallRaw": "#736e58",
+    "skyline": {
+     "eavesM": 11.8,
+     "eavesRow": 253,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.58,
+      "riseM": 1,
+      "topWidthM": 2.58,
+      "centre": 0.51
+     }
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.07,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.32
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best museum-cs-1900-gable-balcony: built 1896, type 1900-1901)",
+   "best": {
+    "type": "museum-cs-1900-gable-balcony",
+    "score": 0,
+    "veto": [
+     "built 1896, type 1900-1901"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 11.8 m vs the type's 10.4 m (wall-dormer skyline 14.4 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 4 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": null,
+      "note": "no strip"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012159961",
+   "address": "Koninginneweg 9",
+   "builtYear": 1896,
+   "widthM": 6.24,
+   "eavesM": 13.34,
+   "storeys3dbag": 4,
+   "bagBay": {
+    "fromM": 4.56,
+    "toM": 4.56,
+    "depthM": 0.77,
+    "centre": 0.731
+   },
+   "strip": {
+    "wall": "#5e5040",
+    "wallRaw": "#61604a",
+    "skyline": {
+     "eavesM": 12.15,
+     "eavesRow": 239,
+     "confidence": 0.99,
+     "crown": {
+      "widthM": 3.9,
+      "riseM": 5.97,
+      "topWidthM": 0.17,
+      "centre": 0.65
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.038,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 2 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 10.43,
+       "widthM": 1.43,
+       "centre": 0.18
+      },
+      {
+       "atM": 5.17,
+       "widthM": 2.63,
+       "centre": 0.44
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.42
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best museum-cs-1900-gable-balcony: built 1896, type 1900-1901)",
+   "best": {
+    "type": "museum-cs-1900-gable-balcony",
+    "score": 0,
+    "veto": [
+     "built 1896, type 1900-1901"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 12.15 m vs the type's 10.4 m (wall-dormer skyline 14.4 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 4 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": null,
+      "note": "no strip"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012163144",
+   "address": "Koninginneweg 11",
+   "builtYear": 1896,
+   "widthM": 6.29,
+   "eavesM": 13.98,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#5a4e40",
+    "wallRaw": "#797158",
+    "skyline": {
+     "eavesM": 13.45,
+     "eavesRow": 187,
+     "confidence": 1,
+     "crown": {
+      "widthM": 0.57,
+      "riseM": 2.28,
+      "topWidthM": 0.03,
+      "centre": 0.05
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 6,
+    "frontClass": "columns",
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0.07,
+    "structure": {
+     "bayWidthM": 0.3,
+     "bayCentre": 0.06,
+     "balconies": true,
+     "why": "dark open axis 0.7 m at 0.85 (light 0.05): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.7,
+       "centre": 0.85,
+       "light": 0.05
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 5.57,
+       "widthM": 1,
+       "centre": 0.17
+      },
+      {
+       "atM": 4.9,
+       "widthM": 0.93,
+       "centre": 0.14
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.24
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best museum-cs-1900-gable-balcony: built 1896, type 1900-1901)",
+   "best": {
+    "type": "museum-cs-1900-gable-balcony",
+    "score": 0,
+    "veto": [
+     "built 1896, type 1900-1901"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0.5,
+      "note": "strip cornice 13.45 m vs the type's 10.4 m (wall-dormer skyline 14.4 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 4 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.05 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0,
+      "note": "strip columns 6 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012167359",
+   "address": "Koninginneweg 13",
+   "builtYear": 1896,
+   "widthM": 6.33,
+   "eavesM": 13.73,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#7f6d4f",
+    "wallRaw": "#605b48",
+    "skyline": {
+     "eavesM": 14.03,
+     "eavesRow": 164,
+     "confidence": 0.86,
+     "crown": {
+      "widthM": 2.1,
+      "riseM": 4.1,
+      "topWidthM": 0.1,
+      "centre": 0.34
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0.02,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 0.97 m at 0.15 (light 0.11): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.97,
+       "centre": 0.15,
+       "light": 0.11
+      },
+      {
+       "widthM": 0.7,
+       "centre": 0.53,
+       "light": 0.15
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 4.88,
+       "widthM": 1.05,
+       "centre": 0.16
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.21
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best museum-cs-1900-gable-balcony: built 1896, type 1900-1901)",
+   "best": {
+    "type": "museum-cs-1900-gable-balcony",
+    "score": 0,
+    "veto": [
+     "built 1896, type 1900-1901"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "strip cornice 14.03 m vs the type's 10.4 m (wall-dormer skyline 14.4 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 4 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.009 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

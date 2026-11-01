@@ -5,7 +5,8 @@
  *  - `paintOriels`: the modules of a timber oriel's `paintedStoreys` take the trim colour on their panels and closures
  *    (the white timber top storey of the oriel); the other storeys keep the wall brick of the stallrisers.
  *  - `addOrielConsoles`: `oriel.console`: a white slab under the oriel's foot, `ORIEL.consoleM` thick, `consoleOverM`
- *    past its plan on the front and sides (the bracketed shelf over the ground-floor window).
+ *    past its plan on the front and sides (the bracketed shelf over the ground-floor window); with `oriel.consoleCorbel`
+ *    stepped stone courses under it (Wouwermanstraat 6-24, the carved console of each glazed oriel).
  *  - `addHoistCaps`: `dormerCap`: the flared hood over a dormer that shelters the hoist beam: a trapezoid as wide as the
  *    dormer at its foot (3 cm over the dormer top) and `flare` wider on each side at the top, `rise` high, `DORMER_CAP.depthM`
  *    deep back from 3 cm before the dormer front, in the cap colour (a measured tint).
@@ -14,7 +15,7 @@
 import * as T from 'three';
 import type {CanalHouseRecipe} from '../canalhouseRecipes.ts';
 import type {FitReport} from './fit.ts';
-import {DORMER_CAP, ORIEL, type CanalHouseIntent} from './intent.ts';
+import {DORMER_CAP, ORIEL, ORIEL_CORBEL, type CanalHouseIntent} from './intent.ts';
 import {offsetConvex, prism} from './amsterdamSchool.ts';
 
 const material = (colour: string) => new T.MeshStandardMaterial({color: colour, roughness: 1});
@@ -68,6 +69,23 @@ export function addOrielConsoles(group: T.Group, intent: CanalHouseIntent, recip
     }
     facade.add(meshOf(values, material(trimOf(recipe, f.id)), `oriel-console/${f.id}`, 'erker', 'trim', intent.pandId));
     added++;
+    // `oriel.consoleCorbel`: stepped courses under the slab, each a shallower copy of the plan, down to `rise`.
+    const c = e.oriel.consoleCorbel;
+    if (c) {
+      const steps = c.steps ?? ORIEL_CORBEL.steps, h = c.rise / steps, top = e.oriel.footM - ORIEL.consoleM, corbel: number[] = [];
+      for (const l of [e.leftM, ...(e.oriel.twinLeftM !== undefined ? [e.oriel.twinLeftM] : [])]) {
+        for (let k = 0; k < steps; k++) {
+          const share = (steps - k) / steps, depth = out + e.depthM * share, inset = (e.widthM - e.frontWidthM) / 2 * share;
+          // Each course 1 cm narrower than the slab at each end so no face is coplanar with the slab or the next course.
+          const l0 = l + 0.01 * (k + 1), r0 = l + e.widthM - 0.01 * (k + 1);
+          const plan: [number, number][] = [[l0, -0.005], [l0 + inset, depth], [r0 - inset, depth], [r0, -0.005]];
+          prism(corbel, plan, top - (k + 1) * h, top - k * h - 0.002, {bottom: k === steps - 1});
+        }
+      }
+      const mat = material(c.colour ?? trimOf(recipe, f.id));
+      if (c.colour) mat.userData = {tintSource: 'measured'};
+      facade.add(meshOf(corbel, mat, `oriel-corbel/${f.id}`, 'erker', c.colour ? 'accent' : 'trim', intent.pandId));
+    }
   }
   return added;
 }

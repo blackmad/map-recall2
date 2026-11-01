@@ -1,0 +1,25 @@
+{
+ "name": "museumkwartier-b-hondecoeter-wouwerman",
+ "method": "install-reviewed (#160): batch judge steps per reviewed run, one row brick, cornice snapped to the type line",
+ "generatedAt": "2026-11-01T15:41:31.271Z",
+ "rows": [
+  {
+   "run": "wouwerman-2-44-r1",
+   "pands": 5,
+   "status": "installed",
+   "reasons": [],
+   "notes": [
+    "row brick #6b6152 from 16, 14, 12; own brick 114665"
+   ],
+   "stripQuality": {
+    "badShare": 0,
+    "reasons": []
+   },
+   "nccMin": 0.177,
+   "stripOverDrawn": 1.071,
+   "triangles": 14233,
+   "audit": true,
+   "sheet": "staging/block-face/wouwerman-2-44-r1/review/strip-sheet.png"
+  }
+ ]
+}

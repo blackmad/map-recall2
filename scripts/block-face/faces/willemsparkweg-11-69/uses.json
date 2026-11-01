@@ -1,0 +1,367 @@
+{
+ "street": "Willemsparkweg",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-01T16:55:24.462Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012161430",
+   "addresses": [
+    "Willemsparkweg 11"
+   ],
+   "groundUnits": [
+    {
+     "address": "Willemsparkweg 11-H",
+     "use": "winkelfunctie",
+     "areaM2": 172,
+     "bagId": "0363010000872936"
+    },
+    {
+     "address": "Alexander Boersstraat 25A",
+     "use": "winkelfunctie",
+     "areaM2": 40,
+     "bagId": "0363010000564856"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2816381798,
+     "lngLat": [
+      4.8777899,
+      52.3578199
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "11-1",
+      "addr:postcode": "1071GN",
+      "addr:street": "Willemsparkweg",
+      "check_date": "2025-09-25",
+      "name": "Pasteuning",
+      "shop": "wine",
+      "source": "BAG",
+      "source:date": "2014-03-24"
+     },
+     "fetchedAt": "2026-11-01T16:55:24.462Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012161081",
+   "addresses": [
+    "Willemsparkweg 13",
+    "Willemsparkweg 15"
+   ],
+   "groundUnits": [
+    {
+     "address": "Willemsparkweg 13-H",
+     "use": "winkelfunctie",
+     "areaM2": 126,
+     "bagId": "0363010000872943"
+    },
+    {
+     "address": "Willemsparkweg 15-H",
+     "use": "winkelfunctie",
+     "areaM2": 324,
+     "bagId": "0363010000872946"
+    }
+   ],
+   "units": 9,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2816382442,
+     "lngLat": [
+      4.8777151,
+      52.3578014
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "13-1",
+      "addr:postcode": "1071GN",
+      "addr:street": "Willemsparkweg",
+      "brand": "Oogwereld",
+      "brand:wikidata": "Q110066228",
+      "check_date": "2025-03-16",
+      "name": "Oogwereld Oud-Zuid",
+      "opening_hours": "Tu-Fr 09:30-18:00; Sa 09:30-17:30",
+      "phone": "+31 20 662 7061",
+      "shop": "optician",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://www.oogwereld.nl"
+     },
+     "fetchedAt": "2026-11-01T16:55:24.462Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012158640",
+   "addresses": [
+    "Willemsparkweg 17"
+   ],
+   "groundUnits": [
+    {
+     "address": "Willemsparkweg 17",
+     "use": "woonfunctie",
+     "areaM2": 367,
+     "bagId": "0363010001023827"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012156624",
+   "addresses": [
+    "Willemsparkweg 19"
+   ],
+   "groundUnits": [
+    {
+     "address": "Willemsparkweg 19",
+     "use": "woonfunctie",
+     "areaM2": 258,
+     "bagId": "0363010000872952"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012236000",
+   "addresses": [
+    "Willemsparkweg 21"
+   ],
+   "groundUnits": [
+    {
+     "address": "Willemsparkweg 21",
+     "use": "woonfunctie",
+     "areaM2": 280,
+     "bagId": "0363010000872955"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012167035",
+   "addresses": [
+    "Willemsparkweg 23",
+    "Willemsparkweg 23A",
+    "Willemsparkweg 23B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Willemsparkweg 23",
+     "use": "gezondheidszorgfunctie",
+     "areaM2": 593,
+     "bagId": "0363010000872958"
+    },
+    {
+     "address": "Willemsparkweg 23A",
+     "use": "kantoorfunctie",
+     "areaM2": 148,
+     "bagId": "0363010012090079"
+    },
+    {
+     "address": "Willemsparkweg 23B",
+     "use": "woonfunctie",
+     "areaM2": 302,
+     "bagId": "0363010012090080"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012162514",
+   "addresses": [
+    "Willemsparkweg 25"
+   ],
+   "groundUnits": [
+    {
+     "address": "Willemsparkweg 25",
+     "use": "woonfunctie",
+     "areaM2": 309,
+     "bagId": "0363010000872960"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012162438",
+   "addresses": [
+    "Willemsparkweg 27"
+   ],
+   "groundUnits": [
+    {
+     "address": "Willemsparkweg 27",
+     "use": "woonfunctie",
+     "areaM2": 304,
+     "bagId": "0363010000872963"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012159514",
+   "addresses": [
+    "Willemsparkweg 29"
+   ],
+   "groundUnits": [
+    {
+     "address": "Willemsparkweg 29",
+     "use": "woonfunctie",
+     "areaM2": 380,
+     "bagId": "0363010000872966"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012163917",
+   "addresses": [
+    "Willemsparkweg 31"
+   ],
+   "groundUnits": [
+    {
+     "address": "Willemsparkweg 31",
+     "use": "kantoorfunctie",
+     "areaM2": 425,
+     "bagId": "0363010000872969"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012163402",
+   "addresses": [
+    "Willemsparkweg 33"
+   ],
+   "groundUnits": [
+    {
+     "address": "Willemsparkweg 33-H",
+     "use": "woonfunctie",
+     "areaM2": 168,
+     "bagId": "0363010000872971"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012138215",
+   "addresses": [
+    "Willemsparkweg 35"
+   ],
+   "groundUnits": [
+    {
+     "address": "Willemsparkweg 35-H",
+     "use": "onderwijsfunctie",
+     "areaM2": 176,
+     "bagId": "0363010000946624"
+    },
+    {
+     "address": "Willemsparkweg 35-1",
+     "use": "onderwijsfunctie",
+     "areaM2": 346,
+     "bagId": "0363010000946625"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012157085",
+   "addresses": [
+    "Willemsparkweg 37"
+   ],
+   "groundUnits": [
+    {
+     "address": "Willemsparkweg 37-H",
+     "use": "winkelfunctie",
+     "areaM2": 157,
+     "bagId": "0363010000872976"
+    },
+    {
+     "address": "Willemsparkweg 37-H",
+     "use": "winkelfunctie",
+     "areaM2": 681,
+     "bagId": "0363010012065301"
+    }
+   ],
+   "units": 3,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2816384857,
+     "lngLat": [
+      4.876624,
+      52.3574973
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "37-41",
+      "addr:postcode": "1071GP",
+      "addr:street": "Willemsparkweg",
+      "branch": "Amsterdam",
+      "brand": "Suitsupply",
+      "brand:wikidata": "Q17149142",
+      "clothes": "suits",
+      "email": "amsterdam@suitsupply.com",
+      "name": "Suitsupply",
+      "opening_hours": "Mo-Fr 10:00-20:00; Sa,Su 10:00-18:00",
+      "phone": "+31 20 794 1159",
+      "shop": "clothes",
+      "website": "https://suitsupply.com/en-nl/stores/Amsterdam"
+     },
+     "fetchedAt": "2026-11-01T16:55:24.462Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012166025",
+   "addresses": [
+    "Willemsparkweg 39"
+   ],
+   "groundUnits": [
+    {
+     "address": "Willemsparkweg 39-H",
+     "use": "winkelfunctie",
+     "areaM2": 329,
+     "bagId": "0363010000872982"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012152836",
+   "addresses": [
+    "Willemsparkweg 41"
+   ],
+   "groundUnits": [
+    {
+     "address": "Willemsparkweg 41",
+     "use": "woonfunctie",
+     "areaM2": 172,
+     "bagId": "0363010000872985"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  }
+ ]
+}

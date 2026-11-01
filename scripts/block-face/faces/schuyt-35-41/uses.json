@@ -1,0 +1,92 @@
+{
+ "street": "Cornelis Schuytstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-01T12:51:30.082Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012236061",
+   "addresses": [
+    "Cornelis Schuytstraat 35"
+   ],
+   "groundUnits": [
+    {
+     "address": "Cornelis Schuytstraat 35-H",
+     "use": "winkelfunctie",
+     "areaM2": 90,
+     "bagId": "0363010000610136"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012236647",
+   "addresses": [
+    "Cornelis Schuytstraat 37"
+   ],
+   "groundUnits": [
+    {
+     "address": "Cornelis Schuytstraat 37-H",
+     "use": "winkelfunctie",
+     "areaM2": 174,
+     "bagId": "0363010001007968"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012236133",
+   "addresses": [
+    "Cornelis Schuytstraat 39"
+   ],
+   "groundUnits": [
+    {
+     "address": "Cornelis Schuytstraat 39-H",
+     "use": "winkelfunctie",
+     "areaM2": 81,
+     "bagId": "0363010011157196"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012236134",
+   "addresses": [
+    "Cornelis Schuytstraat 41"
+   ],
+   "groundUnits": [],
+   "units": 2,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2816318796,
+     "lngLat": [
+      4.8718777,
+      52.3546489
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "43-2",
+      "addr:postcode": "1071JE",
+      "addr:street": "Cornelis Schuytstraat",
+      "brand": "Claudia Sträter",
+      "brand:wikidata": "Q52903369",
+      "name": "Claudia Sträter",
+      "phone": "+31 20 673 6605",
+      "shop": "clothes",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://www.claudiastrater.com/over-ons/winkels/47/claudia-sträter-amsterdam-cornelis-schuytstraat.html"
+     },
+     "fetchedAt": "2026-11-01T12:51:30.082Z",
+     "match": "frontage",
+     "distanceM": 5.6
+    }
+   ]
+  }
+ ]
+}

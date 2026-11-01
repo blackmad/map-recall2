@@ -1,0 +1,323 @@
+{
+ "street": "Van Breestraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-01T14:07:23.552Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012236482",
+   "addresses": [
+    "Van Breestraat 182A",
+    "Van Breestraat 182B",
+    "Van Breestraat 182C",
+    "Van Breestraat 184"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Breestraat 182A",
+     "use": "woonfunctie",
+     "areaM2": 154,
+     "bagId": "0363010002005008"
+    },
+    {
+     "address": "Van Breestraat 182B",
+     "use": "woonfunctie",
+     "areaM2": 154,
+     "bagId": "0363010002005009"
+    },
+    {
+     "address": "Van Breestraat 182C",
+     "use": "woonfunctie",
+     "areaM2": 154,
+     "bagId": "0363010002005011"
+    },
+    {
+     "address": "Van Breestraat 184",
+     "use": "woonfunctie",
+     "areaM2": 302,
+     "bagId": "0363010002005013"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012156368",
+   "addresses": [
+    "Van Breestraat 180A"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Breestraat 180A-H",
+     "use": "woonfunctie",
+     "areaM2": 225,
+     "bagId": "0363010000837224"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012160425",
+   "addresses": [
+    "Van Breestraat 180"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Breestraat 180-H",
+     "use": "woonfunctie",
+     "areaM2": 214,
+     "bagId": "0363010000837221"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012157558",
+   "addresses": [
+    "Van Breestraat 178"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Breestraat 178",
+     "use": "woonfunctie",
+     "areaM2": 240,
+     "bagId": "0363010000837216"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012165528",
+   "addresses": [
+    "Van Breestraat 176"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Breestraat 176",
+     "use": "woonfunctie",
+     "areaM2": 265,
+     "bagId": "0363010000837214"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012160638",
+   "addresses": [
+    "Van Breestraat 174"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Breestraat 174",
+     "use": "woonfunctie",
+     "areaM2": 276,
+     "bagId": "0363010000837212"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012161050",
+   "addresses": [
+    "Van Breestraat 172"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Breestraat 172",
+     "use": "woonfunctie",
+     "areaM2": 263,
+     "bagId": "0363010000837210"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012164180",
+   "addresses": [
+    "Van Breestraat 170"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Breestraat 170",
+     "use": "woonfunctie",
+     "areaM2": 300,
+     "bagId": "0363010000837207"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012157061",
+   "addresses": [
+    "Van Breestraat 168",
+    "Van Breestraat 168A",
+    "Van Breestraat 168B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Breestraat 168",
+     "use": "woonfunctie",
+     "areaM2": 255,
+     "bagId": "0363010000837204"
+    },
+    {
+     "address": "Van Breestraat 168A",
+     "use": "woonfunctie",
+     "areaM2": 185,
+     "bagId": "0363010012140070"
+    },
+    {
+     "address": "Van Breestraat 168B",
+     "use": "woonfunctie",
+     "areaM2": 142,
+     "bagId": "0363010012140071"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012091335",
+   "addresses": [
+    "Van Breestraat 166"
+   ],
+   "groundUnits": [],
+   "units": 8,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012162826",
+   "addresses": [
+    "Van Breestraat 164"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Breestraat 164",
+     "use": "woonfunctie",
+     "areaM2": 432,
+     "bagId": "0363010000837191"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012157770",
+   "addresses": [
+    "Van Breestraat 162",
+    "Van Breestraat 162B",
+    "Van Breestraat 162A"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Breestraat 162",
+     "use": "woonfunctie",
+     "areaM2": 426,
+     "bagId": "0363010000837188"
+    },
+    {
+     "address": "Van Breestraat 162B",
+     "use": "woonfunctie",
+     "areaM2": 170,
+     "bagId": "0363010012595053"
+    },
+    {
+     "address": "Van Breestraat 162A",
+     "use": "woonfunctie",
+     "areaM2": 254,
+     "bagId": "0363010012595052"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012156887",
+   "addresses": [
+    "Van Breestraat 160"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Breestraat 160",
+     "use": "woonfunctie",
+     "areaM2": 428,
+     "bagId": "0363010000837184"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012161378",
+   "addresses": [
+    "Van Breestraat 158"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Breestraat 158",
+     "use": "woonfunctie",
+     "areaM2": 312,
+     "bagId": "0363010000837180"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012156672",
+   "addresses": [
+    "Van Breestraat 156"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Breestraat 156",
+     "use": "woonfunctie",
+     "areaM2": 340,
+     "bagId": "0363010000837177"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012158071",
+   "addresses": [
+    "Van Breestraat 154"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Breestraat 154",
+     "use": "woonfunctie",
+     "areaM2": 345,
+     "bagId": "0363010000837174"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012156412",
+   "addresses": [
+    "Van Breestraat 152"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Breestraat 152",
+     "use": "woonfunctie",
+     "areaM2": 385,
+     "bagId": "0363010000837171"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  }
+ ]
+}

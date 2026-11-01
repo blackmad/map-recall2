@@ -1,0 +1,150 @@
+{
+ "street": "Johannes Vermeerstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-01T15:36:21.293Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012237177",
+   "addresses": [
+    "Johannes Vermeerstraat 52"
+   ],
+   "groundUnits": [
+    {
+     "address": "Johannes Vermeerstraat 52-H",
+     "use": "bijeenkomstfunctie,woonfunctie",
+     "areaM2": 86,
+     "bagId": "0363010000694464"
+    },
+    {
+     "address": "Johannes Vermeerstraat 52-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 401,
+     "bagId": "0363010012088866"
+    }
+   ],
+   "units": 6,
+   "osm": [
+    {
+     "type": "node",
+     "id": 1712460739,
+     "lngLat": [
+      4.8842366,
+      52.3543672
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "52-H",
+      "addr:postcode": "1071DT",
+      "addr:street": "Johannes Vermeerstraat",
+      "amenity": "restaurant",
+      "branch": "Amsterdam Café",
+      "brand": "Loetje",
+      "brand:website": "https://www.loetje.nl",
+      "brand:wikidata": "Q60729740",
+      "check_date": "2025-12-05",
+      "cuisine": "steak_house",
+      "diet:gluten_free": "yes",
+      "diet:meat": "yes",
+      "diet:vegan": "no",
+      "diet:vegetarian": "limited",
+      "name": "Café Loetje",
+      "opening_hours": "Mo-Su 11:30-22:30",
+      "outdoor_seating": "yes",
+      "phone": "+31 20 662 8173",
+      "source": "BAG;survey",
+      "source:date": "2014-03-24",
+      "website": "https://www.loetje.nl/locaties/amsterdam-cafe/",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-11-01T15:36:21.293Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012107904",
+   "addresses": [
+    "Johannes Vermeerstraat 50"
+   ],
+   "groundUnits": [
+    {
+     "address": "Johannes Vermeerstraat 50-H",
+     "use": "woonfunctie",
+     "areaM2": 232,
+     "bagId": "0363010000694460"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012071920",
+   "addresses": [
+    "Johannes Vermeerstraat 48"
+   ],
+   "groundUnits": [
+    {
+     "address": "Johannes Vermeerstraat 48-H",
+     "use": "woonfunctie",
+     "areaM2": 240,
+     "bagId": "0363010000694455"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012126860",
+   "addresses": [
+    "Johannes Vermeerstraat 46"
+   ],
+   "groundUnits": [
+    {
+     "address": "Johannes Vermeerstraat 46-H",
+     "use": "woonfunctie",
+     "areaM2": 235,
+     "bagId": "0363010000694450"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012099837",
+   "addresses": [
+    "Johannes Vermeerstraat 44"
+   ],
+   "groundUnits": [
+    {
+     "address": "Johannes Vermeerstraat 44-H",
+     "use": "woonfunctie",
+     "areaM2": 182,
+     "bagId": "0363010003696163"
+    }
+   ],
+   "units": 3,
+   "osm": [
+    {
+     "type": "node",
+     "id": 12925713456,
+     "lngLat": [
+      4.8842174,
+      52.3546332
+     ],
+     "tags": {
+      "amenity": "bicycle_parking",
+      "bicycle_parking": "stands",
+      "capacity": "12",
+      "covered": "no"
+     },
+     "fetchedAt": "2026-11-01T15:36:21.293Z",
+     "match": "frontage",
+     "distanceM": 4.6
+    }
+   ]
+  }
+ ]
+}

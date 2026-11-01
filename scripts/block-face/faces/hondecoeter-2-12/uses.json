@@ -1,0 +1,123 @@
+{
+ "street": "Hondecoeterstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-01T13:52:48.162Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012249642",
+   "addresses": [
+    "Hondecoeterstraat 10",
+    "Hondecoeterstraat 10A",
+    "Hondecoeterstraat 10B",
+    "Hondecoeterstraat 12B",
+    "Hondecoeterstraat 12E",
+    "Hondecoeterstraat 12F",
+    "Hondecoeterstraat 12A",
+    "Hondecoeterstraat 12C",
+    "Hondecoeterstraat 12D",
+    "Hondecoeterstraat 12G",
+    "Hondecoeterstraat 12H"
+   ],
+   "groundUnits": [
+    {
+     "address": "Hondecoeterstraat 10",
+     "use": "industriefunctie",
+     "areaM2": 176,
+     "bagId": "0363010001963200"
+    },
+    {
+     "address": "Hondecoeterstraat 10",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 96,
+     "bagId": "0363010011048503"
+    },
+    {
+     "address": "Hondecoeterstraat 12F",
+     "use": "woonfunctie",
+     "areaM2": 77,
+     "bagId": "0363010011048506"
+    },
+    {
+     "address": "Hondecoeterstraat 12G",
+     "use": "woonfunctie",
+     "areaM2": 143,
+     "bagId": "0363010011048510"
+    },
+    {
+     "address": "Hondecoeterstraat 12H",
+     "use": "woonfunctie",
+     "areaM2": 143,
+     "bagId": "0363010011048511"
+    },
+    {
+     "address": "Hondecoeterstraat 10A",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 96,
+     "bagId": "0363010012120499"
+    },
+    {
+     "address": "Hondecoeterstraat 10B",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 208,
+     "bagId": "0363010012120500"
+    }
+   ],
+   "units": 17,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012237179",
+   "addresses": [
+    "Hondecoeterstraat 4",
+    "Hondecoeterstraat 8"
+   ],
+   "groundUnits": [
+    {
+     "address": "Hondecoeterstraat 8-H",
+     "use": "woonfunctie",
+     "areaM2": 148,
+     "bagId": "0363010000670174"
+    }
+   ],
+   "units": 9,
+   "osm": [
+    {
+     "type": "node",
+     "id": 5580799180,
+     "lngLat": [
+      4.8779376,
+      52.3548185
+     ],
+     "tags": {
+      "amenity": "drinking_water",
+      "fountain": "drinking",
+      "operator": "Waternet",
+      "operator:wikidata": "Q2137469",
+      "operator:wikipedia": "nl:Waternet (bedrijf)"
+     },
+     "fetchedAt": "2026-11-01T13:52:48.162Z",
+     "match": "frontage",
+     "distanceM": 1.1
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012132447",
+   "addresses": [
+    "Hondecoeterstraat 2E"
+   ],
+   "groundUnits": [
+    {
+     "address": "Hondecoeterstraat 2E",
+     "use": "kantoorfunctie",
+     "areaM2": 63,
+     "bagId": "0363010001964020"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  }
+ ]
+}

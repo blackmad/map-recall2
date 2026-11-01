@@ -1,0 +1,100 @@
+{
+ "street": "Willemsparkweg",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-01T16:54:14.367Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012158950",
+   "addresses": [
+    "Willemsparkweg 3"
+   ],
+   "groundUnits": [
+    {
+     "address": "Willemsparkweg 3-H",
+     "use": "bijeenkomstfunctie,woonfunctie",
+     "areaM2": 85,
+     "bagId": "0363010000872915"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012156329",
+   "addresses": [
+    "Willemsparkweg 5"
+   ],
+   "groundUnits": [
+    {
+     "address": "Willemsparkweg 5-H",
+     "use": "winkelfunctie",
+     "areaM2": 324,
+     "bagId": "0363010000872920"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012166553",
+   "addresses": [
+    "Willemsparkweg 7"
+   ],
+   "groundUnits": [
+    {
+     "address": "Willemsparkweg 7-H",
+     "use": "winkelfunctie,woonfunctie",
+     "areaM2": 85,
+     "bagId": "0363010000872924"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012157438",
+   "addresses": [
+    "Willemsparkweg 9"
+   ],
+   "groundUnits": [
+    {
+     "address": "Willemsparkweg 9-H",
+     "use": "winkelfunctie",
+     "areaM2": 185,
+     "bagId": "0363010000872930"
+    },
+    {
+     "address": "Willemsparkweg 9-H",
+     "use": "winkelfunctie",
+     "areaM2": 569,
+     "bagId": "0363010012095414"
+    }
+   ],
+   "units": 6,
+   "osm": [
+    {
+     "type": "node",
+     "id": 13171758127,
+     "lngLat": [
+      4.8780478,
+      52.357896
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "9-5",
+      "addr:postcode": "1071GN",
+      "addr:street": "Willemsparkweg",
+      "check_date": "2025-09-25",
+      "name": "Edha Interieur",
+      "shop": "furniture"
+     },
+     "fetchedAt": "2026-11-01T16:54:14.367Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,313 @@
+{
+ "street": "Valeriusstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-01T14:02:35.556Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012236587",
+   "addresses": [
+    "Valeriusstraat 3"
+   ],
+   "groundUnits": [
+    {
+     "address": "Banstraat 16",
+     "use": "winkelfunctie",
+     "areaM2": 113,
+     "bagId": "0363010000577092"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2586427798,
+     "lngLat": [
+      4.8736519,
+      52.3553469
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "16",
+      "addr:postcode": "1071JZ",
+      "addr:street": "Banstraat",
+      "name": "Landorette",
+      "opening_hours": "Mo-Fr 08:30-18:00; Sa 10:00-18:00",
+      "phone": "+31 20 750 0351",
+      "shop": "laundry"
+     },
+     "fetchedAt": "2026-11-01T14:02:35.556Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012161877",
+   "addresses": [
+    "Valeriusstraat 5"
+   ],
+   "groundUnits": [
+    {
+     "address": "Valeriusstraat 5-H",
+     "use": "woonfunctie",
+     "areaM2": 186,
+     "bagId": "0363010000850132"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012166718",
+   "addresses": [
+    "Valeriusstraat 7"
+   ],
+   "groundUnits": [
+    {
+     "address": "Valeriusstraat 7-H",
+     "use": "woonfunctie",
+     "areaM2": 87,
+     "bagId": "0363010000850139"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012152610",
+   "addresses": [
+    "Valeriusstraat 9"
+   ],
+   "groundUnits": [
+    {
+     "address": "Valeriusstraat 9-H",
+     "use": "woonfunctie",
+     "areaM2": 117,
+     "bagId": "0363010000850145"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012158233",
+   "addresses": [
+    "Valeriusstraat 11"
+   ],
+   "groundUnits": [
+    {
+     "address": "Valeriusstraat 11-H",
+     "use": "woonfunctie",
+     "areaM2": 160,
+     "bagId": "0363010000850150"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012161338",
+   "addresses": [
+    "Valeriusstraat 13"
+   ],
+   "groundUnits": [
+    {
+     "address": "Valeriusstraat 13-H",
+     "use": "woonfunctie",
+     "areaM2": 136,
+     "bagId": "0363010000850155"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012166199",
+   "addresses": [
+    "Valeriusstraat 15"
+   ],
+   "groundUnits": [
+    {
+     "address": "Valeriusstraat 15-H",
+     "use": "woonfunctie",
+     "areaM2": 134,
+     "bagId": "0363010000850160"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012164322",
+   "addresses": [
+    "Valeriusstraat 17"
+   ],
+   "groundUnits": [
+    {
+     "address": "Valeriusstraat 17-H",
+     "use": "woonfunctie",
+     "areaM2": 214,
+     "bagId": "0363010000850164"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012159902",
+   "addresses": [
+    "Valeriusstraat 19",
+    "Valeriusstraat 19D",
+    "Valeriusstraat 19B",
+    "Valeriusstraat 19A",
+    "Valeriusstraat 19C"
+   ],
+   "groundUnits": [
+    {
+     "address": "Valeriusstraat 19D",
+     "use": "woonfunctie",
+     "areaM2": 68,
+     "bagId": "0363010012590501"
+    },
+    {
+     "address": "Valeriusstraat 19B",
+     "use": "woonfunctie",
+     "areaM2": 61,
+     "bagId": "0363010012591644"
+    },
+    {
+     "address": "Valeriusstraat 19A",
+     "use": "woonfunctie",
+     "areaM2": 126,
+     "bagId": "0363010012591645"
+    },
+    {
+     "address": "Valeriusstraat 19C",
+     "use": "woonfunctie",
+     "areaM2": 62,
+     "bagId": "0363010012590500"
+    },
+    {
+     "address": "Valeriusstraat 19-H",
+     "use": "woonfunctie",
+     "areaM2": 201,
+     "bagId": "0363010000850168"
+    }
+   ],
+   "units": 6,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012161861",
+   "addresses": [
+    "Valeriusstraat 21"
+   ],
+   "groundUnits": [
+    {
+     "address": "Valeriusstraat 21-H",
+     "use": "woonfunctie",
+     "areaM2": 167,
+     "bagId": "0363010000850172"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012165300",
+   "addresses": [
+    "Valeriusstraat 23"
+   ],
+   "groundUnits": [
+    {
+     "address": "Valeriusstraat 23-H",
+     "use": "woonfunctie",
+     "areaM2": 116,
+     "bagId": "0363010000850177"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012159222",
+   "addresses": [
+    "Valeriusstraat 25"
+   ],
+   "groundUnits": [
+    {
+     "address": "Valeriusstraat 25-H",
+     "use": "woonfunctie",
+     "areaM2": 134,
+     "bagId": "0363010000850180"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012166594",
+   "addresses": [
+    "Valeriusstraat 27A",
+    "Valeriusstraat 27B",
+    "Valeriusstraat 27C"
+   ],
+   "groundUnits": [
+    {
+     "address": "Valeriusstraat 27A",
+     "use": "woonfunctie",
+     "areaM2": 54,
+     "bagId": "0363010000850184"
+    },
+    {
+     "address": "Valeriusstraat 27B",
+     "use": "woonfunctie",
+     "areaM2": 55,
+     "bagId": "0363010000850185"
+    },
+    {
+     "address": "Valeriusstraat 27C",
+     "use": "woonfunctie",
+     "areaM2": 113,
+     "bagId": "0363010000850186"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012153568",
+   "addresses": [
+    "Valeriusstraat 29"
+   ],
+   "groundUnits": [
+    {
+     "address": "Valeriusstraat 29-H",
+     "use": "woonfunctie",
+     "areaM2": 177,
+     "bagId": "0363010000850189"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012235975",
+   "addresses": [
+    "Valeriusstraat 31"
+   ],
+   "groundUnits": [
+    {
+     "address": "Valeriusstraat 31-H",
+     "use": "woonfunctie",
+     "areaM2": 199,
+     "bagId": "0363010000850193"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  }
+ ]
+}

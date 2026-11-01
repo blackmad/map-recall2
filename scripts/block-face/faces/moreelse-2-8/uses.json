@@ -1,0 +1,55 @@
+{
+ "street": "Moreelsestraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-01T15:57:33.173Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012099034",
+   "addresses": [
+    "Moreelsestraat 4",
+    "Moreelsestraat 6",
+    "Moreelsestraat 8"
+   ],
+   "groundUnits": [
+    {
+     "address": "Moreelsestraat 4",
+     "use": "woonfunctie",
+     "areaM2": 214,
+     "bagId": "0363010000746254"
+    },
+    {
+     "address": "Moreelsestraat 6",
+     "use": "woonfunctie",
+     "areaM2": 160,
+     "bagId": "0363010000746258"
+    },
+    {
+     "address": "Moreelsestraat 8-H",
+     "use": "woonfunctie",
+     "areaM2": 155,
+     "bagId": "0363010000746261"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012217232",
+   "addresses": [
+    "Moreelsestraat 2"
+   ],
+   "groundUnits": [
+    {
+     "address": "Moreelsestraat 2",
+     "use": "kantoorfunctie",
+     "areaM2": 119,
+     "bagId": "0363010001009819"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  }
+ ]
+}

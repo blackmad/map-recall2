@@ -1,0 +1,158 @@
+{
+ "street": "Cornelis Schuytstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-01T12:32:24.846Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012237103",
+   "addresses": [
+    "Cornelis Schuytstraat 16"
+   ],
+   "groundUnits": [
+    {
+     "address": "Cornelis Schuytstraat 16-H",
+     "use": "kantoorfunctie",
+     "areaM2": 168,
+     "bagId": "0363010000937854"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012163757",
+   "addresses": [
+    "Cornelis Schuytstraat 14"
+   ],
+   "groundUnits": [
+    {
+     "address": "Cornelis Schuytstraat 14-H",
+     "use": "winkelfunctie",
+     "areaM2": 122,
+     "bagId": "0363010001000792"
+    }
+   ],
+   "units": 3,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2816316670,
+     "lngLat": [
+      4.8707986,
+      52.3555297
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "14-H",
+      "addr:postcode": "1071JH",
+      "addr:street": "Cornelis Schuytstraat",
+      "brand:website": "https://libris.nl",
+      "name": "Boekhandel Mulder / Zwart op Wit",
+      "network": "Blz",
+      "shop": "books",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://libris.nl/boekhandel-mulder-zwartopwit"
+     },
+     "fetchedAt": "2026-11-01T12:32:24.846Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012167420",
+   "addresses": [
+    "Cornelis Schuytstraat 12"
+   ],
+   "groundUnits": [
+    {
+     "address": "Cornelis Schuytstraat 12-H",
+     "use": "winkelfunctie",
+     "areaM2": 89,
+     "bagId": "0363010000610083"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012160728",
+   "addresses": [
+    "Cornelis Schuytstraat 10"
+   ],
+   "groundUnits": [
+    {
+     "address": "Cornelis Schuytstraat 10-H",
+     "use": "winkelfunctie",
+     "areaM2": 1,
+     "bagId": "0363010000953717"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012163293",
+   "addresses": [
+    "Cornelis Schuytstraat 8",
+    "Cornelis Schuytstraat 8A",
+    "Cornelis Schuytstraat 8B",
+    "Cornelis Schuytstraat 8C"
+   ],
+   "groundUnits": [
+    {
+     "address": "Cornelis Schuytstraat 8-H",
+     "use": "winkelfunctie",
+     "areaM2": 297,
+     "bagId": "0363010000610073"
+    },
+    {
+     "address": "Cornelis Schuytstraat 8",
+     "use": "bijeenkomstfunctie,winkelfunctie",
+     "areaM2": 297,
+     "bagId": "0363010012073191"
+    },
+    {
+     "address": "Cornelis Schuytstraat 8A",
+     "use": "woonfunctie",
+     "areaM2": 62,
+     "bagId": "0363010012098085"
+    },
+    {
+     "address": "Cornelis Schuytstraat 8B",
+     "use": "woonfunctie",
+     "areaM2": 122,
+     "bagId": "0363010012098086"
+    },
+    {
+     "address": "Cornelis Schuytstraat 8C",
+     "use": "woonfunctie",
+     "areaM2": 59,
+     "bagId": "0363010012098087"
+    }
+   ],
+   "units": 6,
+   "osm": [
+    {
+     "type": "node",
+     "id": 500331309,
+     "lngLat": [
+      4.8707638,
+      52.3556729
+     ],
+     "tags": {
+      "amenity": "restaurant",
+      "check_date": "2024-04-24",
+      "name": "Van Dam"
+     },
+     "fetchedAt": "2026-11-01T12:32:24.846Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}

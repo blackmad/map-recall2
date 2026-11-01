@@ -268,6 +268,17 @@ for (const variant of VARIANTS) {
     await serve(page);
     await page.addInitScript((stable) => { (window as any).__canalRecallTrees3d = false; (window as any).__canalRecallChunkFade = false; (window as any).__abStableSort = stable; }, process.env.AB_SORT !== 'three');
     await openRoute(page, { travelMode: 'car', viewMode: 'chase', enterRacing: true, query: variant.query });
+    // The landmark card's highlight (lit building, marker beam) follows the ride's timing, not the variant: a card shown
+    // by capture time in one load and not the other moved 26 k px at the Westerkerk (#129, 2026-11-01). Once the route
+    // is open, no drive-by card comes up (the last one always reads as just shown) and any card already up is closed with its
+    // highlight, so A and B capture the same state. AB_HIGHLIGHT=1 keeps the cards.
+    if (process.env.AB_HIGHLIGHT !== '1') await page.evaluate(() => {
+      const g = (window as any).canalRecallGame;
+      if (!g) return;
+      Object.defineProperty(g, '_lastDriveByAt', { configurable: true, get: () => g.raceTime, set: () => {} });
+      if (g._landmarkNotice) g._clearLandmarkNotice?.();
+      g.vectorMap?.setActiveLandmark?.(null);
+    });
     mkdirSync(OUT, { recursive: true });
     if (variant.name === 'warmup') { await park(page, RUN_SPOTS[0].at, RUN_SPOTS[0].face); await settle(page); return; }
     const spots: Record<string, any> = {};

@@ -1,0 +1,150 @@
+{
+ "street": "Banstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-01T12:23:28.852Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012152866",
+   "addresses": [
+    "Banstraat 1"
+   ],
+   "groundUnits": [
+    {
+     "address": "Banstraat 1",
+     "use": "woonfunctie",
+     "areaM2": 167,
+     "bagId": "0363010000577075"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012159459",
+   "addresses": [
+    "Banstraat 3"
+   ],
+   "groundUnits": [
+    {
+     "address": "Banstraat 3",
+     "use": "woonfunctie",
+     "areaM2": 168,
+     "bagId": "0363010000577077"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012085898",
+   "addresses": [
+    "Banstraat 5",
+    "Banstraat 5M",
+    "Banstraat 5L",
+    "Banstraat 5K",
+    "Banstraat 5B",
+    "Banstraat 5D",
+    "Banstraat 5C",
+    "Banstraat 5F",
+    "Banstraat 5E",
+    "Banstraat 5G",
+    "Banstraat 5A",
+    "Banstraat 5H",
+    "Banstraat 7",
+    "Banstraat 9E",
+    "Banstraat 9D",
+    "Banstraat 9C"
+   ],
+   "groundUnits": [
+    {
+     "address": "Banstraat 5",
+     "use": "kantoorfunctie",
+     "areaM2": 5258,
+     "bagId": "0363010000577079"
+    },
+    {
+     "address": "Banstraat 9E",
+     "use": "woonfunctie",
+     "areaM2": 247,
+     "bagId": "0363010012061840"
+    },
+    {
+     "address": "Banstraat 9D",
+     "use": "woonfunctie",
+     "areaM2": 201,
+     "bagId": "0363010012061841"
+    },
+    {
+     "address": "Banstraat 5M",
+     "use": "woonfunctie",
+     "areaM2": 275,
+     "bagId": "0363010012061842"
+    },
+    {
+     "address": "Banstraat 5L",
+     "use": "woonfunctie",
+     "areaM2": 335,
+     "bagId": "0363010012061843"
+    },
+    {
+     "address": "Banstraat 5K",
+     "use": "woonfunctie",
+     "areaM2": 342,
+     "bagId": "0363010012061844"
+    },
+    {
+     "address": "Banstraat 5B",
+     "use": "woonfunctie",
+     "areaM2": 291,
+     "bagId": "0363010012061845"
+    },
+    {
+     "address": "Banstraat 7",
+     "use": "woonfunctie",
+     "areaM2": 292,
+     "bagId": "0363010012061846"
+    },
+    {
+     "address": "Banstraat 9C",
+     "use": "woonfunctie",
+     "areaM2": 285,
+     "bagId": "0363010012061848"
+    },
+    {
+     "address": "Banstraat 5D",
+     "use": "woonfunctie",
+     "areaM2": 345,
+     "bagId": "0363010012061849"
+    },
+    {
+     "address": "Banstraat 5C",
+     "use": "woonfunctie",
+     "areaM2": 398,
+     "bagId": "0363010012061850"
+    },
+    {
+     "address": "Banstraat 5G",
+     "use": "woonfunctie",
+     "areaM2": 247,
+     "bagId": "0363010012077275"
+    },
+    {
+     "address": "Banstraat 5A",
+     "use": "woonfunctie",
+     "areaM2": 420,
+     "bagId": "0363010012066250"
+    },
+    {
+     "address": "Banstraat 5H",
+     "use": "woonfunctie",
+     "areaM2": 402,
+     "bagId": "0363010012061839"
+    }
+   ],
+   "units": 19,
+   "osm": []
+  }
+ ]
+}

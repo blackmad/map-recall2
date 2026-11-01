@@ -1,0 +1,476 @@
+{
+ "street": "Roelof Hartplein",
+ "seed": "0363100012158280",
+ "members": [
+  "0363100012158280",
+  "0363100012159008",
+  "0363100012165388",
+  "0363100012164462",
+  "0363100012165285"
+ ],
+ "ends": [
+  {
+   "side": "left",
+   "reason": "no further pand fronts the street in the fetched area"
+  },
+  {
+   "side": "right",
+   "reason": "next fronting pand 0363100012159614 42.6 m on shares no party wall (cross street or gap)"
+  }
+ ],
+ "rejected": [
+  {
+   "pandId": "0363100012064913",
+   "reason": "frontage 54.0 m from Roelof Hartplein"
+  },
+  {
+   "pandId": "0363100012065856",
+   "reason": "sightline to Roelof Hartplein crosses 0363100012163041"
+  },
+  {
+   "pandId": "0363100012072123",
+   "reason": "frontage 87.6 m from Roelof Hartplein"
+  },
+  {
+   "pandId": "0363100012088998",
+   "reason": "frontage 70.9 m from Roelof Hartplein"
+  },
+  {
+   "pandId": "0363100012092787",
+   "reason": "frontage 101.1 m from Roelof Hartplein"
+  },
+  {
+   "pandId": "0363100012095198",
+   "reason": "frontage 86.6 m from Roelof Hartplein"
+  },
+  {
+   "pandId": "0363100012097854",
+   "reason": "frontage 135.8 m from Roelof Hartplein"
+  },
+  {
+   "pandId": "0363100012099544",
+   "reason": "frontage 36.8 m from Roelof Hartplein"
+  },
+  {
+   "pandId": "0363100012102195",
+   "reason": "frontage 104.6 m from Roelof Hartplein"
+  },
+  {
+   "pandId": "0363100012102526",
+   "reason": "frontage 71.6 m from Roelof Hartplein"
+  },
+  {
+   "pandId": "0363100012103410",
+   "reason": "frontage 113.8 m from Roelof Hartplein"
+  },
+  {
+   "pandId": "0363100012103528",
+   "reason": "frontage 43.3 m from Roelof Hartplein"
+  },
+  {
+   "pandId": "0363100012104191",
+   "reason": "frontage 102.3 m from Roelof Hartplein"
+  },
+  {
+   "pandId": "0363100012105172",
+   "reason": "frontage 70.6 m from Roelof Hartplein"
+  },
+  {
+   "pandId": "0363100012112615",
+   "reason": "frontage 108.9 m from Roelof Hartplein"
+  },
+  {
+   "pandId": "0363100012114124",
+   "reason": "frontage 38.2 m from Roelof Hartplein"
+  },
+  {
+   "pandId": "0363100012118275",
+   "reason": "no frontage on Roelof Hartplein: No footprint edge faces Roelof Hartplein"
+  },
+  {
+   "pandId": "0363100012122526",
+   "reason": "frontage 38.2 m from Roelof Hartplein"
+  },
+  {
+   "pandId": "0363100012136354",
+   "reason": "frontage 70.2 m from Roelof Hartplein"
+  },
+  {
+   "pandId": "0363100012139185",
+   "reason": "frontage 82.8 m from Roelof Hartplein"
+  },
+  {
+   "pandId": "0363100012142916",
+   "reason": "sightline to Roelof Hartplein crosses 0363100012085825"
+  },
+  {
+   "pandId": "0363100012143335",
+   "reason": "frontage 37.7 m from Roelof Hartplein"
+  },
+  {
+   "pandId": "0363100012147298",
+   "reason": "frontage 114.8 m from Roelof Hartplein"
+  },
+  {
+   "pandId": "0363100012152551",
+   "reason": "frontage 71.4 m from Roelof Hartplein"
+  },
+  {
+   "pandId": "0363100012152578",
+   "reason": "sightline to Roelof Hartplein crosses 0363100012160591"
+  },
+  {
+   "pandId": "0363100012152949",
+   "reason": "frontage 91.2 m from Roelof Hartplein"
+  },
+  {
+   "pandId": "0363100012152951",
+   "reason": "frontage 66.5 m from Roelof Hartplein"
+  },
+  {
+   "pandId": "0363100012153011",
+   "reason": "frontage 75.6 m from Roelof Hartplein"
+  },
+  {
+   "pandId": "0363100012153540",
+   "reason": "frontage 100.7 m from Roelof Hartplein"
+  },
+  {
+   "pandId": "0363100012156095",
+   "reason": "frontage 66.3 m from Roelof Hartplein"
+  },
+  {
+   "pandId": "0363100012157182",
+   "reason": "frontage 81.2 m from Roelof Hartplein"
+  },
+  {
+   "pandId": "0363100012157787",
+   "reason": "frontage 47.7 m from Roelof Hartplein"
+  },
+  {
+   "pandId": "0363100012157821",
+   "reason": "frontage 36.4 m from Roelof Hartplein"
+  },
+  {
+   "pandId": "0363100012157894",
+   "reason": "frontage 41.7 m from Roelof Hartplein"
+  },
+  {
+   "pandId": "0363100012158047",
+   "reason": "no frontage on Roelof Hartplein: No footprint edge faces Roelof Hartplein"
+  },
+  {
+   "pandId": "0363100012158184",
+   "reason": "frontage 81.5 m from Roelof Hartplein"
+  },
+  {
+   "pandId": "0363100012158479",
+   "reason": "frontage 60.6 m from Roelof Hartplein"
+  },
+  {
+   "pandId": "0363100012071799",
+   "reason": "frontage 45.6 m from Roelof Hartplein"
+  },
+  {
+   "pandId": "0363100012077874",
+   "reason": "frontage 86.4 m from Roelof Hartplein"
+  },
+  {
+   "pandId": "0363100012089211",
+   "reason": "frontage 80.5 m from Roelof Hartplein"
+  },
+  {
+   "pandId": "0363100012120761",
+   "reason": "frontage 71.9 m from Roelof Hartplein"
+  },
+  {
+   "pandId": "0363100012121676",
+   "reason": "frontage 64.5 m from Roelof Hartplein"
+  },
+  {
+   "pandId": "0363100012122829",
+   "reason": "frontage 68.2 m from Roelof Hartplein"
+  },
+  {
+   "pandId": "0363100012158761",
+   "reason": "frontage 87.0 m from Roelof Hartplein"
+  },
+  {
+   "pandId": "0363100012159228",
+   "reason": "frontage 60.7 m from Roelof Hartplein"
+  },
+  {
+   "pandId": "0363100012159969",
+   "reason": "frontage 52.9 m from Roelof Hartplein"
+  },
+  {
+   "pandId": "0363100012159970",
+   "reason": "frontage 30.8 m from Roelof Hartplein"
+  },
+  {
+   "pandId": "0363100012161406",
+   "reason": "no frontage on Roelof Hartplein: No footprint edge faces Roelof Hartplein"
+  },
+  {
+   "pandId": "0363100012161443",
+   "reason": "frontage 57.0 m from Roelof Hartplein"
+  },
+  {
+   "pandId": "0363100012161461",
+   "reason": "frontage 81.5 m from Roelof Hartplein"
+  },
+  {
+   "pandId": "0363100012161462",
+   "reason": "frontage 43.7 m from Roelof Hartplein"
+  },
+  {
+   "pandId": "0363100012161682",
+   "reason": "frontage 91.4 m from Roelof Hartplein"
+  },
+  {
+   "pandId": "0363100012162100",
+   "reason": "frontage 104.0 m from Roelof Hartplein"
+  },
+  {
+   "pandId": "0363100012162188",
+   "reason": "frontage 61.4 m from Roelof Hartplein"
+  },
+  {
+   "pandId": "0363100012162400",
+   "reason": "no frontage on Roelof Hartplein: No footprint edge faces Roelof Hartplein"
+  },
+  {
+   "pandId": "0363100012162853",
+   "reason": "frontage 52.2 m from Roelof Hartplein"
+  },
+  {
+   "pandId": "0363100012163005",
+   "reason": "frontage 91.8 m from Roelof Hartplein"
+  },
+  {
+   "pandId": "0363100012163041",
+   "reason": "sightline to Roelof Hartplein crosses 0363100012161406"
+  },
+  {
+   "pandId": "0363100012163132",
+   "reason": "frontage 32.4 m from Roelof Hartplein"
+  },
+  {
+   "pandId": "0363100012163921",
+   "reason": "frontage 58.1 m from Roelof Hartplein"
+  },
+  {
+   "pandId": "0363100012163957",
+   "reason": "frontage 98.4 m from Roelof Hartplein"
+  },
+  {
+   "pandId": "0363100012164000",
+   "reason": "frontage 66.8 m from Roelof Hartplein"
+  },
+  {
+   "pandId": "0363100012164048",
+   "reason": "frontage 55.0 m from Roelof Hartplein"
+  },
+  {
+   "pandId": "0363100012164356",
+   "reason": "sightline to Roelof Hartplein crosses 0363100012158280"
+  },
+  {
+   "pandId": "0363100012164466",
+   "reason": "frontage 31.2 m from Roelof Hartplein"
+  },
+  {
+   "pandId": "0363100012164691",
+   "reason": "frontage 72.2 m from Roelof Hartplein"
+  },
+  {
+   "pandId": "0363100012164703",
+   "reason": "no frontage on Roelof Hartplein: No footprint edge faces Roelof Hartplein"
+  },
+  {
+   "pandId": "0363100012164820",
+   "reason": "frontage 92.8 m from Roelof Hartplein"
+  },
+  {
+   "pandId": "0363100012165229",
+   "reason": "no frontage on Roelof Hartplein: No footprint edge faces Roelof Hartplein"
+  },
+  {
+   "pandId": "0363100012165310",
+   "reason": "frontage 49.3 m from Roelof Hartplein"
+  },
+  {
+   "pandId": "0363100012165484",
+   "reason": "frontage 47.1 m from Roelof Hartplein"
+  },
+  {
+   "pandId": "0363100012165513",
+   "reason": "frontage 86.1 m from Roelof Hartplein"
+  },
+  {
+   "pandId": "0363100012166412",
+   "reason": "frontage 62.0 m from Roelof Hartplein"
+  },
+  {
+   "pandId": "0363100012166458",
+   "reason": "frontage 76.6 m from Roelof Hartplein"
+  },
+  {
+   "pandId": "0363100012166637",
+   "reason": "frontage 43.2 m from Roelof Hartplein"
+  },
+  {
+   "pandId": "0363100012166868",
+   "reason": "frontage 63.8 m from Roelof Hartplein"
+  },
+  {
+   "pandId": "0363100012166939",
+   "reason": "frontage 96.9 m from Roelof Hartplein"
+  },
+  {
+   "pandId": "0363100012167012",
+   "reason": "frontage 38.0 m from Roelof Hartplein"
+  },
+  {
+   "pandId": "0363100012167342",
+   "reason": "frontage 71.9 m from Roelof Hartplein"
+  },
+  {
+   "pandId": "0363100012192181",
+   "reason": "frontage 43.0 m from Roelof Hartplein"
+  },
+  {
+   "pandId": "0363100012196867",
+   "reason": "frontage 34.4 m from Roelof Hartplein"
+  },
+  {
+   "pandId": "0363100012200899",
+   "reason": "no frontage on Roelof Hartplein: No footprint edge faces Roelof Hartplein"
+  },
+  {
+   "pandId": "0363100012207257",
+   "reason": "frontage 87.2 m from Roelof Hartplein"
+  },
+  {
+   "pandId": "0363100012214153",
+   "reason": "frontage 81.4 m from Roelof Hartplein"
+  },
+  {
+   "pandId": "0363100012221439",
+   "reason": "frontage 49.9 m from Roelof Hartplein"
+  },
+  {
+   "pandId": "0363100012236051",
+   "reason": "frontage 31.5 m from Roelof Hartplein"
+  },
+  {
+   "pandId": "0363100012236611",
+   "reason": "frontage 69.7 m from Roelof Hartplein"
+  },
+  {
+   "pandId": "0363100012236860",
+   "reason": "frontage 77.5 m from Roelof Hartplein"
+  },
+  {
+   "pandId": "0363100012236928",
+   "reason": "no frontage on Roelof Hartplein: No footprint edge faces Roelof Hartplein"
+  },
+  {
+   "pandId": "0363100012237204",
+   "reason": "frontage 69.8 m from Roelof Hartplein"
+  },
+  {
+   "pandId": "0363100012237248",
+   "reason": "frontage 51.8 m from Roelof Hartplein"
+  },
+  {
+   "pandId": "0363100012237324",
+   "reason": "no frontage on Roelof Hartplein: No footprint edge faces Roelof Hartplein"
+  },
+  {
+   "pandId": "0363100012570892",
+   "reason": "frontage 94.9 m from Roelof Hartplein"
+  },
+  {
+   "pandId": "0363100012085825",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012094362",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012101742",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012115579",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012148010",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012119530",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012160591",
+   "reason": "fronts the other side / another direction"
+  }
+ ],
+ "areaHalfSizeM": 90,
+ "pands": [
+  {
+   "pandId": "0363100012158280",
+   "alongM": 0,
+   "widthM": 6.25,
+   "eavesM": 17.48,
+   "roofMaxM": 20.25,
+   "storeys3dbag": 5,
+   "builtYear": 1899,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012159008",
+   "alongM": 6.05,
+   "widthM": 5.87,
+   "eavesM": 17.12,
+   "roofMaxM": 17.59,
+   "storeys3dbag": 5,
+   "builtYear": 1899,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012165388",
+   "alongM": 12.83,
+   "widthM": 3.96,
+   "eavesM": 17.11,
+   "roofMaxM": 19.77,
+   "storeys3dbag": 5,
+   "builtYear": 1899,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012164462",
+   "alongM": 18.68,
+   "widthM": 4.03,
+   "eavesM": 17.01,
+   "roofMaxM": 17.05,
+   "storeys3dbag": 5,
+   "builtYear": 1899,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012165285",
+   "alongM": 24.55,
+   "widthM": 4,
+   "eavesM": 17.04,
+   "roofMaxM": 17.07,
+   "storeys3dbag": 5,
+   "builtYear": 1899,
+   "uncertainty": []
+  }
+ ]
+}

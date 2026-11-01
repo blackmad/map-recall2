@@ -1,0 +1,2133 @@
+{
+ "street": "Johannes Verhulststraat",
+ "seed": "0363100012160721",
+ "members": [
+  "0363100012162555",
+  "0363100012162414",
+  "0363100012160916",
+  "0363100012157810",
+  "0363100012154225",
+  "0363100012161439",
+  "0363100012157695",
+  "0363100012162982",
+  "0363100012154361",
+  "0363100012159158",
+  "0363100012153472",
+  "0363100012157368",
+  "0363100012163183",
+  "0363100012161588",
+  "0363100012154264",
+  "0363100012160721"
+ ],
+ "ends": [
+  {
+   "side": "left",
+   "reason": "trimmed at 0363100012162555 (face continues: 165421 157399 157002 163692 153529)"
+  },
+  {
+   "side": "right",
+   "reason": "next fronting pand 0363100012160501 23.2 m on shares no party wall (cross street or gap)"
+  }
+ ],
+ "rejected": [
+  {
+   "pandId": "0363100012072072",
+   "reason": "frontage 149.3 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012076391",
+   "reason": "frontage 47.9 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012088169",
+   "reason": "frontage 47.8 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012062487",
+   "reason": "frontage 42.4 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012064873",
+   "reason": "frontage 36.2 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012071424",
+   "reason": "frontage 91.9 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012071825",
+   "reason": "frontage 92.2 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012072277",
+   "reason": "frontage 48.8 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012073181",
+   "reason": "sightline to Johannes Verhulststraat crosses 0363100012153305"
+  },
+  {
+   "pandId": "0363100012074448",
+   "reason": "no frontage on Johannes Verhulststraat: No footprint edge faces Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012074960",
+   "reason": "frontage 124.1 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012075246",
+   "reason": "frontage 48.7 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012076155",
+   "reason": "frontage 53.3 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012076329",
+   "reason": "frontage 49.1 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012076441",
+   "reason": "frontage 92.2 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012078857",
+   "reason": "frontage 54.4 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012080908",
+   "reason": "frontage 126.7 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012081746",
+   "reason": "frontage 156.4 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012083178",
+   "reason": "frontage 36.9 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012087585",
+   "reason": "frontage 53.1 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012087604",
+   "reason": "frontage 91.2 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012088073",
+   "reason": "frontage 92.2 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012088441",
+   "reason": "frontage 39.1 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012090597",
+   "reason": "frontage 53.2 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012091029",
+   "reason": "frontage 53.2 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012091696",
+   "reason": "frontage 161.0 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012092189",
+   "reason": "frontage 91.2 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012061429",
+   "reason": "frontage 136.6 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012066327",
+   "reason": "frontage 135.0 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012072748",
+   "reason": "frontage 106.6 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012085898",
+   "reason": "frontage 41.2 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012061252",
+   "reason": "frontage 126.9 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012061581",
+   "reason": "frontage 90.8 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012061747",
+   "reason": "frontage 47.3 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012061959",
+   "reason": "frontage 89.8 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012062427",
+   "reason": "frontage 154.3 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012065680",
+   "reason": "frontage 47.4 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012066610",
+   "reason": "frontage 36.6 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012068364",
+   "reason": "frontage 35.6 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012069054",
+   "reason": "frontage 121.1 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012074968",
+   "reason": "frontage 195.1 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012082599",
+   "reason": "frontage 195.6 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012085089",
+   "reason": "frontage 91.1 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012086333",
+   "reason": "frontage 156.4 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012086729",
+   "reason": "frontage 49.4 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012088619",
+   "reason": "frontage 48.5 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012090623",
+   "reason": "frontage 163.3 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012090861",
+   "reason": "frontage 163.5 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012091399",
+   "reason": "frontage 130.7 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012092421",
+   "reason": "frontage 50.9 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012115230",
+   "reason": "frontage 35.6 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012135596",
+   "reason": "frontage 47.6 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012096287",
+   "reason": "frontage 156.2 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012099747",
+   "reason": "frontage 91.2 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012101844",
+   "reason": "frontage 126.6 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012103357",
+   "reason": "frontage 48.6 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012105690",
+   "reason": "frontage 53.3 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012106417",
+   "reason": "frontage 161.0 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012107659",
+   "reason": "frontage 91.3 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012108730",
+   "reason": "frontage 91.1 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012110458",
+   "reason": "frontage 126.9 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012110856",
+   "reason": "frontage 158.5 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012117848",
+   "reason": "frontage 36.4 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012120769",
+   "reason": "frontage 53.3 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012124728",
+   "reason": "frontage 49.1 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012128012",
+   "reason": "frontage 124.6 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012129170",
+   "reason": "frontage 126.6 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012129826",
+   "reason": "frontage 48.9 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012130671",
+   "reason": "frontage 126.7 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012131152",
+   "reason": "frontage 126.7 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012133118",
+   "reason": "frontage 92.1 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012133383",
+   "reason": "frontage 91.3 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012134755",
+   "reason": "frontage 53.2 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012137910",
+   "reason": "frontage 161.0 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012138601",
+   "reason": "frontage 53.3 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012139184",
+   "reason": "frontage 126.4 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012124153",
+   "reason": "frontage 41.9 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012098952",
+   "reason": "frontage 90.2 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012105717",
+   "reason": "frontage 164.5 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012106312",
+   "reason": "frontage 90.0 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012106478",
+   "reason": "frontage 163.8 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012109214",
+   "reason": "frontage 91.2 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012110840",
+   "reason": "frontage 154.9 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012111065",
+   "reason": "frontage 172.8 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012118112",
+   "reason": "frontage 90.4 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012118867",
+   "reason": "frontage 48.0 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012122938",
+   "reason": "frontage 48.9 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012122962",
+   "reason": "frontage 137.9 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012123541",
+   "reason": "frontage 89.8 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012126879",
+   "reason": "frontage 171.7 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012127853",
+   "reason": "frontage 49.8 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012129710",
+   "reason": "frontage 165.0 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012129766",
+   "reason": "frontage 90.3 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012133086",
+   "reason": "frontage 48.0 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012134221",
+   "reason": "frontage 162.0 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012134433",
+   "reason": "frontage 164.5 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012135826",
+   "reason": "frontage 164.0 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012136080",
+   "reason": "frontage 47.8 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012137074",
+   "reason": "frontage 164.8 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012138291",
+   "reason": "frontage 50.1 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012150265",
+   "reason": "no frontage on Johannes Verhulststraat: No footprint edge faces Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012152486",
+   "reason": "frontage 107.8 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012152638",
+   "reason": "frontage 105.3 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012152774",
+   "reason": "frontage 52.5 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012153028",
+   "reason": "frontage 108.1 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012153364",
+   "reason": "frontage 76.0 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012153396",
+   "reason": "sightline to Johannes Verhulststraat crosses 0363100012161332"
+  },
+  {
+   "pandId": "0363100012141671",
+   "reason": "frontage 91.3 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012142706",
+   "reason": "frontage 49.0 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012142852",
+   "reason": "frontage 161.0 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012144642",
+   "reason": "frontage 126.6 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012144861",
+   "reason": "frontage 126.7 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012147794",
+   "reason": "frontage 46.7 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012151231",
+   "reason": "frontage 92.1 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012151288",
+   "reason": "frontage 92.0 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012151460",
+   "reason": "frontage 91.2 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012152291",
+   "reason": "frontage 83.9 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012152610",
+   "reason": "frontage 37.9 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012153094",
+   "reason": "frontage 30.7 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012153385",
+   "reason": "frontage 67.0 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012153568",
+   "reason": "frontage 42.3 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012154036",
+   "reason": "frontage 50.2 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012152275",
+   "reason": "frontage 135.1 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012152432",
+   "reason": "frontage 135.5 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012152498",
+   "reason": "frontage 78.3 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012152757",
+   "reason": "frontage 146.7 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012152866",
+   "reason": "frontage 94.3 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012152905",
+   "reason": "frontage 66.8 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012152918",
+   "reason": "frontage 206.4 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012152926",
+   "reason": "frontage 106.4 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012152960",
+   "reason": "frontage 104.1 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012153282",
+   "reason": "frontage 135.1 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012153422",
+   "reason": "frontage 66.8 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012153607",
+   "reason": "frontage 206.2 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012153824",
+   "reason": "frontage 135.5 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012142196",
+   "reason": "frontage 179.1 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012144785",
+   "reason": "frontage 91.5 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012145293",
+   "reason": "frontage 90.2 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012147677",
+   "reason": "frontage 146.0 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012152782",
+   "reason": "sightline to Johannes Verhulststraat crosses 0363100012163436"
+  },
+  {
+   "pandId": "0363100012154232",
+   "reason": "frontage 91.8 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012155374",
+   "reason": "frontage 76.2 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012155596",
+   "reason": "frontage 108.1 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012155748",
+   "reason": "frontage 48.5 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012155885",
+   "reason": "frontage 81.4 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012156363",
+   "reason": "frontage 108.1 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012156628",
+   "reason": "frontage 108.0 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012156696",
+   "reason": "frontage 96.7 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012154652",
+   "reason": "frontage 91.9 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012155655",
+   "reason": "frontage 40.4 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012155786",
+   "reason": "frontage 40.1 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012155790",
+   "reason": "frontage 39.0 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012155815",
+   "reason": "sightline to Johannes Verhulststraat crosses 0363100012074448"
+  },
+  {
+   "pandId": "0363100012155985",
+   "reason": "sightline to Johannes Verhulststraat crosses 0363100012156790"
+  },
+  {
+   "pandId": "0363100012156526",
+   "reason": "no frontage on Johannes Verhulststraat: No footprint edge faces Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012156613",
+   "reason": "frontage 91.3 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012156680",
+   "reason": "frontage 32.1 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012154120",
+   "reason": "frontage 67.1 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012154188",
+   "reason": "frontage 107.6 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012154263",
+   "reason": "frontage 83.4 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012154301",
+   "reason": "frontage 137.0 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012155490",
+   "reason": "frontage 107.1 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012155519",
+   "reason": "frontage 106.0 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012155618",
+   "reason": "frontage 135.7 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012155697",
+   "reason": "frontage 136.8 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012155809",
+   "reason": "frontage 176.3 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012155891",
+   "reason": "frontage 104.2 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012155916",
+   "reason": "frontage 104.9 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012156058",
+   "reason": "frontage 104.3 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012156063",
+   "reason": "frontage 99.5 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012156255",
+   "reason": "frontage 176.8 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012156302",
+   "reason": "frontage 73.3 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012156683",
+   "reason": "frontage 66.9 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012156733",
+   "reason": "frontage 106.3 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012156743",
+   "reason": "frontage 104.2 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012156817",
+   "reason": "frontage 138.8 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012156820",
+   "reason": "frontage 157.8 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012156890",
+   "reason": "frontage 137.7 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012156897",
+   "reason": "frontage 30.3 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012157721",
+   "reason": "frontage 75.1 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012158338",
+   "reason": "frontage 107.2 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012158442",
+   "reason": "frontage 107.7 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012158724",
+   "reason": "frontage 74.7 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012158992",
+   "reason": "frontage 75.8 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012159009",
+   "reason": "frontage 105.5 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012157198",
+   "reason": "sightline to Johannes Verhulststraat crosses 0363100012156526"
+  },
+  {
+   "pandId": "0363100012157345",
+   "reason": "frontage 83.6 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012157482",
+   "reason": "frontage 73.2 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012157483",
+   "reason": "frontage 67.1 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012157526",
+   "reason": "frontage 66.9 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012157547",
+   "reason": "sightline to Johannes Verhulststraat crosses 0363100012160721"
+  },
+  {
+   "pandId": "0363100012157548",
+   "reason": "frontage 34.5 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012158233",
+   "reason": "frontage 38.0 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012157147",
+   "reason": "frontage 104.4 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012157235",
+   "reason": "frontage 107.4 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012157240",
+   "reason": "frontage 206.2 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012157396",
+   "reason": "frontage 99.1 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012157478",
+   "reason": "frontage 104.2 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012157652",
+   "reason": "frontage 103.5 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012157732",
+   "reason": "frontage 93.5 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012157977",
+   "reason": "frontage 137.3 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012157998",
+   "reason": "frontage 88.5 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012158094",
+   "reason": "frontage 138.4 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012158436",
+   "reason": "frontage 152.2 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012158612",
+   "reason": "frontage 106.7 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012158648",
+   "reason": "frontage 103.4 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012158726",
+   "reason": "frontage 205.9 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012158738",
+   "reason": "frontage 136.1 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012158884",
+   "reason": "frontage 171.5 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012158954",
+   "reason": "frontage 99.0 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012157101",
+   "reason": "sightline to Johannes Verhulststraat crosses 0363100012150265"
+  },
+  {
+   "pandId": "0363100012157283",
+   "reason": "sightline to Johannes Verhulststraat crosses 0363100012152782"
+  },
+  {
+   "pandId": "0363100012159785",
+   "reason": "frontage 107.2 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012160186",
+   "reason": "frontage 107.7 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012160243",
+   "reason": "frontage 75.3 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012160416",
+   "reason": "frontage 88.4 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012160752",
+   "reason": "frontage 48.3 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012160779",
+   "reason": "frontage 103.5 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012159222",
+   "reason": "frontage 37.9 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012159902",
+   "reason": "frontage 36.8 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012160258",
+   "reason": "frontage 89.0 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012160599",
+   "reason": "frontage 78.9 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012159150",
+   "reason": "frontage 172.5 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012159165",
+   "reason": "frontage 135.5 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012159184",
+   "reason": "frontage 172.0 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012159380",
+   "reason": "frontage 139.2 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012159412",
+   "reason": "frontage 134.8 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012159459",
+   "reason": "frontage 89.6 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012159477",
+   "reason": "frontage 206.7 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012159568",
+   "reason": "no frontage on Johannes Verhulststraat: No footprint edge faces Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012159608",
+   "reason": "frontage 103.6 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012159625",
+   "reason": "frontage 145.6 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012159745",
+   "reason": "frontage 135.4 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012159771",
+   "reason": "frontage 172.1 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012159813",
+   "reason": "frontage 135.0 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012159828",
+   "reason": "frontage 206.5 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012159878",
+   "reason": "frontage 107.2 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012159882",
+   "reason": "frontage 135.7 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012160169",
+   "reason": "frontage 104.4 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012160172",
+   "reason": "frontage 66.7 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012160202",
+   "reason": "frontage 137.1 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012160307",
+   "reason": "frontage 66.7 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012160404",
+   "reason": "frontage 206.2 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012160424",
+   "reason": "frontage 172.7 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012160540",
+   "reason": "frontage 103.4 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012160695",
+   "reason": "no frontage on Johannes Verhulststraat: No footprint edge faces Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012160717",
+   "reason": "frontage 173.7 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012160745",
+   "reason": "frontage 172.5 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012160392",
+   "reason": "frontage 30.5 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012160927",
+   "reason": "frontage 75.6 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012161222",
+   "reason": "frontage 75.4 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012161332",
+   "reason": "no frontage on Johannes Verhulststraat: No footprint edge faces Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012161567",
+   "reason": "frontage 137.4 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012162023",
+   "reason": "frontage 137.6 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012162934",
+   "reason": "frontage 74.4 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012161338",
+   "reason": "frontage 37.9 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012161861",
+   "reason": "frontage 37.9 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012161877",
+   "reason": "frontage 38.0 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012161950",
+   "reason": "frontage 31.1 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012162193",
+   "reason": "frontage 95.4 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012160863",
+   "reason": "frontage 206.8 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012161182",
+   "reason": "frontage 104.3 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012161237",
+   "reason": "frontage 206.4 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012161533",
+   "reason": "frontage 171.6 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012161666",
+   "reason": "frontage 67.1 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012161681",
+   "reason": "frontage 135.6 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012161713",
+   "reason": "frontage 176.6 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012161806",
+   "reason": "frontage 101.5 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012162022",
+   "reason": "frontage 206.5 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012162074",
+   "reason": "frontage 31.2 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012162235",
+   "reason": "frontage 206.6 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012162250",
+   "reason": "frontage 206.6 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012162282",
+   "reason": "frontage 135.5 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012162309",
+   "reason": "frontage 107.9 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012162422",
+   "reason": "frontage 135.0 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012162429",
+   "reason": "frontage 172.4 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012162463",
+   "reason": "frontage 170.6 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012162510",
+   "reason": "frontage 171.7 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012162708",
+   "reason": "frontage 106.5 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012162759",
+   "reason": "frontage 104.9 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012162765",
+   "reason": "frontage 135.5 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012162767",
+   "reason": "frontage 171.5 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012162923",
+   "reason": "frontage 171.1 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012163068",
+   "reason": "frontage 104.4 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012163181",
+   "reason": "frontage 45.3 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012163687",
+   "reason": "frontage 79.7 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012163914",
+   "reason": "frontage 137.5 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012164193",
+   "reason": "frontage 105.8 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012164472",
+   "reason": "frontage 107.6 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012163240",
+   "reason": "frontage 38.4 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012163567",
+   "reason": "sightline to Johannes Verhulststraat crosses 0363100012160501"
+  },
+  {
+   "pandId": "0363100012164322",
+   "reason": "frontage 37.9 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012164649",
+   "reason": "frontage 67.0 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012165300",
+   "reason": "frontage 37.9 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012165324",
+   "reason": "sightline to Johannes Verhulststraat crosses 0363100012156790"
+  },
+  {
+   "pandId": "0363100012163074",
+   "reason": "frontage 206.7 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012163099",
+   "reason": "frontage 170.2 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012163186",
+   "reason": "frontage 175.6 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012163206",
+   "reason": "frontage 171.6 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012163379",
+   "reason": "frontage 66.7 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012163509",
+   "reason": "frontage 107.7 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012163546",
+   "reason": "frontage 252.5 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012163560",
+   "reason": "frontage 102.2 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012163680",
+   "reason": "frontage 104.3 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012163708",
+   "reason": "frontage 175.4 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012163766",
+   "reason": "frontage 206.3 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012163813",
+   "reason": "frontage 171.6 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012163903",
+   "reason": "frontage 206.1 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012163913",
+   "reason": "no frontage on Johannes Verhulststraat: No footprint edge faces Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012164175",
+   "reason": "frontage 173.9 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012164264",
+   "reason": "frontage 135.6 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012164365",
+   "reason": "frontage 107.8 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012164455",
+   "reason": "frontage 164.5 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012164532",
+   "reason": "frontage 206.4 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012164601",
+   "reason": "frontage 111.4 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012164640",
+   "reason": "frontage 135.3 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012164733",
+   "reason": "frontage 135.8 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012164739",
+   "reason": "frontage 135.4 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012164847",
+   "reason": "frontage 137.4 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012165267",
+   "reason": "frontage 206.3 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012165318",
+   "reason": "frontage 104.2 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012163436",
+   "reason": "no frontage on Johannes Verhulststraat: No footprint edge faces Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012163437",
+   "reason": "no frontage on Johannes Verhulststraat: No footprint edge faces Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012165339",
+   "reason": "frontage 48.5 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012165922",
+   "reason": "frontage 74.9 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012166253",
+   "reason": "frontage 76.4 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012166364",
+   "reason": "frontage 107.1 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012166597",
+   "reason": "frontage 143.3 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012167372",
+   "reason": "frontage 107.1 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012167422",
+   "reason": "frontage 108.1 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012185906",
+   "reason": "no frontage on Johannes Verhulststraat: No footprint edge faces Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012165584",
+   "reason": "frontage 89.6 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012166039",
+   "reason": "sightline to Johannes Verhulststraat crosses 0363100012074448"
+  },
+  {
+   "pandId": "0363100012166160",
+   "reason": "frontage 67.0 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012166199",
+   "reason": "frontage 37.9 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012166594",
+   "reason": "frontage 38.8 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012166718",
+   "reason": "frontage 37.9 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012166821",
+   "reason": "frontage 67.0 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012167177",
+   "reason": "frontage 33.6 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012183409",
+   "reason": "frontage 42.6 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012165409",
+   "reason": "frontage 175.2 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012165609",
+   "reason": "frontage 136.5 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012165811",
+   "reason": "frontage 135.3 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012165895",
+   "reason": "frontage 171.6 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012165961",
+   "reason": "frontage 135.6 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012165995",
+   "reason": "frontage 206.5 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012166003",
+   "reason": "frontage 107.6 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012166091",
+   "reason": "frontage 136.3 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012166283",
+   "reason": "frontage 135.5 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012166328",
+   "reason": "frontage 106.7 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012166540",
+   "reason": "frontage 66.8 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012166710",
+   "reason": "frontage 100.7 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012166881",
+   "reason": "frontage 105.5 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012166917",
+   "reason": "frontage 99.0 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012166952",
+   "reason": "frontage 138.6 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012167026",
+   "reason": "frontage 171.8 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012167075",
+   "reason": "frontage 177.1 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012167203",
+   "reason": "frontage 163.2 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012167244",
+   "reason": "frontage 66.8 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012167288",
+   "reason": "frontage 172.3 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012167324",
+   "reason": "frontage 135.8 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012167399",
+   "reason": "frontage 173.6 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012184929",
+   "reason": "frontage 231.4 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012185557",
+   "reason": "frontage 85.9 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012186892",
+   "reason": "frontage 230.4 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012184863",
+   "reason": "frontage 169.3 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012187115",
+   "reason": "frontage 99.7 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012197821",
+   "reason": "frontage 40.9 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012235940",
+   "reason": "frontage 32.2 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012189733",
+   "reason": "frontage 32.6 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012190007",
+   "reason": "frontage 42.4 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012190008",
+   "reason": "frontage 42.4 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012192955",
+   "reason": "sightline to Johannes Verhulststraat crosses 0363100012163440"
+  },
+  {
+   "pandId": "0363100012193151",
+   "reason": "frontage 132.0 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012196024",
+   "reason": "frontage 86.2 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012203778",
+   "reason": "frontage 42.5 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012207536",
+   "reason": "no frontage on Johannes Verhulststraat: No footprint edge faces Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012210347",
+   "reason": "frontage 42.5 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012210708",
+   "reason": "frontage 85.7 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012210743",
+   "reason": "frontage 46.2 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012211833",
+   "reason": "frontage 42.6 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012213694",
+   "reason": "frontage 46.2 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012215739",
+   "reason": "frontage 43.6 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012221213",
+   "reason": "frontage 43.7 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012221214",
+   "reason": "frontage 43.7 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012233086",
+   "reason": "frontage 43.0 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012233669",
+   "reason": "frontage 67.0 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012234000",
+   "reason": "frontage 127.7 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012235918",
+   "reason": "frontage 67.0 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012235975",
+   "reason": "frontage 38.3 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012236061",
+   "reason": "frontage 45.9 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012236107",
+   "reason": "sightline to Johannes Verhulststraat crosses 0363100012165421"
+  },
+  {
+   "pandId": "0363100012236133",
+   "reason": "frontage 34.4 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012236134",
+   "reason": "sightline to Johannes Verhulststraat crosses 0363100012165421"
+  },
+  {
+   "pandId": "0363100012192844",
+   "reason": "frontage 232.2 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012198806",
+   "reason": "frontage 85.6 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012199729",
+   "reason": "frontage 156.6 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012200138",
+   "reason": "frontage 85.7 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012200469",
+   "reason": "frontage 85.5 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012201298",
+   "reason": "frontage 91.1 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012202519",
+   "reason": "frontage 86.0 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012205413",
+   "reason": "frontage 85.6 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012209537",
+   "reason": "frontage 85.5 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012210145",
+   "reason": "frontage 85.4 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012211885",
+   "reason": "frontage 85.5 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012214625",
+   "reason": "frontage 85.6 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012231607",
+   "reason": "frontage 85.7 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012233841",
+   "reason": "frontage 134.9 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012235897",
+   "reason": "frontage 135.2 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012235899",
+   "reason": "frontage 151.4 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012235985",
+   "reason": "frontage 137.6 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012191157",
+   "reason": "sightline to Johannes Verhulststraat crosses 0363100012163157"
+  },
+  {
+   "pandId": "0363100012232260",
+   "reason": "frontage 157.7 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012233625",
+   "reason": "frontage 193.7 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012236385",
+   "reason": "frontage 50.3 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012236405",
+   "reason": "frontage 38.6 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012237239",
+   "reason": "frontage 107.0 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012236526",
+   "reason": "frontage 67.1 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012236647",
+   "reason": "frontage 40.1 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012236765",
+   "reason": "frontage 45.4 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012236783",
+   "reason": "frontage 43.9 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012237102",
+   "reason": "frontage 38.4 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012237369",
+   "reason": "frontage 38.3 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012237370",
+   "reason": "frontage 66.7 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012236185",
+   "reason": "frontage 138.0 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012236236",
+   "reason": "frontage 141.0 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012236239",
+   "reason": "frontage 171.8 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012236255",
+   "reason": "frontage 137.8 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012236342",
+   "reason": "frontage 66.7 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012236553",
+   "reason": "frontage 66.6 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012236587",
+   "reason": "frontage 46.1 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012236714",
+   "reason": "frontage 156.9 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012236757",
+   "reason": "frontage 206.0 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012236835",
+   "reason": "frontage 99.0 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012237089",
+   "reason": "frontage 135.2 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012237156",
+   "reason": "frontage 138.2 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012237307",
+   "reason": "frontage 169.3 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012237375",
+   "reason": "frontage 194.5 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012242648",
+   "reason": "frontage 123.2 m from Johannes Verhulststraat"
+  },
+  {
+   "pandId": "0363100012152307",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012152755",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012152982",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012153305",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012152452",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012156079",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012156232",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012156605",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012156705",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012155847",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012158385",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012157160",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012157575",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012157931",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012158517",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012158539",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012157226",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012159211",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012159080",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012159309",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012160696",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012160778",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012160782",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012159077",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012159697",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012160997",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012161210",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012161248",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012161771",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012161898",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012162304",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012162769",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012160954",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012162728",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012163590",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012163840",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012164336",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012163157",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012166171",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012166224",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012167252",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012167444",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012236062",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012236220",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012236445",
+   "reason": "fronts the other side / another direction"
+  }
+ ],
+ "areaHalfSizeM": 180,
+ "pands": [
+  {
+   "pandId": "0363100012162555",
+   "alongM": -98.56,
+   "widthM": 6.56,
+   "eavesM": 14.54,
+   "roofMaxM": 18.23,
+   "storeys3dbag": 4,
+   "builtYear": 1903,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012162414",
+   "alongM": -91.83,
+   "widthM": 6.9,
+   "eavesM": 13.88,
+   "roofMaxM": 15.72,
+   "storeys3dbag": 4,
+   "builtYear": 1905,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012160916",
+   "alongM": -84.66,
+   "widthM": 7.43,
+   "eavesM": 13.93,
+   "roofMaxM": 16.71,
+   "storeys3dbag": 4,
+   "builtYear": 1903,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012157810",
+   "alongM": -77.44,
+   "widthM": 7.02,
+   "eavesM": 12.93,
+   "roofMaxM": 15.64,
+   "storeys3dbag": 4,
+   "builtYear": 1902,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012154225",
+   "alongM": -70.5,
+   "widthM": 6.85,
+   "eavesM": 12.58,
+   "roofMaxM": 17.99,
+   "storeys3dbag": 4,
+   "builtYear": 1902,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012161439",
+   "alongM": -63.5,
+   "widthM": 7.14,
+   "eavesM": 12.75,
+   "roofMaxM": 18.18,
+   "storeys3dbag": 4,
+   "builtYear": 1902,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012157695",
+   "alongM": -56.58,
+   "widthM": 6.71,
+   "eavesM": 12.68,
+   "roofMaxM": 15.62,
+   "storeys3dbag": 4,
+   "builtYear": 1902,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012162982",
+   "alongM": -49.69,
+   "widthM": 7.06,
+   "eavesM": 0.84,
+   "roofMaxM": 18.16,
+   "storeys3dbag": 5,
+   "builtYear": 1902,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012154361",
+   "alongM": -42.55,
+   "widthM": 7.21,
+   "eavesM": 12.67,
+   "roofMaxM": 17.97,
+   "storeys3dbag": 4,
+   "builtYear": 1902,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012159158",
+   "alongM": -35.41,
+   "widthM": 7.08,
+   "eavesM": 12.74,
+   "roofMaxM": 17.8,
+   "storeys3dbag": 4,
+   "builtYear": 1902,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012153472",
+   "alongM": -28.42,
+   "widthM": 6.88,
+   "eavesM": 12.59,
+   "roofMaxM": 18.31,
+   "storeys3dbag": 4,
+   "builtYear": 1902,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012157368",
+   "alongM": -23.04,
+   "widthM": 3.9,
+   "eavesM": 12.56,
+   "roofMaxM": 16.86,
+   "storeys3dbag": 5,
+   "builtYear": 1906,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012163183",
+   "alongM": -18.21,
+   "widthM": 4.06,
+   "eavesM": 16.97,
+   "roofMaxM": 17.06,
+   "storeys3dbag": 5,
+   "builtYear": 1906,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012161588",
+   "alongM": -12.88,
+   "widthM": 6.61,
+   "eavesM": 17.31,
+   "roofMaxM": 17.56,
+   "storeys3dbag": 5,
+   "builtYear": 1904,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012154264",
+   "alongM": -6.15,
+   "widthM": 6.85,
+   "eavesM": 16.41,
+   "roofMaxM": 18.06,
+   "storeys3dbag": 5,
+   "builtYear": 1904,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012160721",
+   "alongM": 0,
+   "widthM": 5.44,
+   "eavesM": 11.64,
+   "roofMaxM": 14.85,
+   "storeys3dbag": 4,
+   "builtYear": 1904,
+   "uncertainty": []
+  }
+ ]
+}

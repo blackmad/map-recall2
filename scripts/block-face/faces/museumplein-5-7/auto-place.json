@@ -1,0 +1,188 @@
+{
+ "face": "museumplein-5-7",
+ "street": "Museumplein",
+ "library": "museumkwartier",
+ "stripDate": "2025-01-15",
+ "seconds": 1.25,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [],
+ "pands": [
+  {
+   "pandId": "0363100012138066",
+   "address": "Museumplein 5",
+   "builtYear": 1958,
+   "widthM": 21.1,
+   "eavesM": 17.97,
+   "storeys3dbag": 0,
+   "bagBay": null,
+   "strip": {
+    "wall": "#949b9f",
+    "wallRaw": "#626b62",
+    "skyline": {
+     "eavesM": 10.68,
+     "eavesRow": 472,
+     "confidence": 1,
+     "crown": {
+      "widthM": 10.28,
+      "riseM": 6.6,
+      "topWidthM": 0.88,
+      "centre": 0.74
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 14,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": "left",
+    "accentShare": 0.477,
+    "structure": {
+     "bayWidthM": 4.13,
+     "bayCentre": 0.22,
+     "balconies": false,
+     "why": "no dark open axis (light ones: 2.63 m @ 0.91, 2.05 m @ 0.89), 2 wide slab(s)",
+     "openAxes": [
+      {
+       "widthM": 2.63,
+       "centre": 0.25,
+       "light": 0.91
+      },
+      {
+       "widthM": 2.05,
+       "centre": 0.41,
+       "light": 0.89
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 7.97,
+       "widthM": 1.85,
+       "centre": 0.93
+      },
+      {
+       "atM": 6.92,
+       "widthM": 1.18,
+       "centre": 0.79
+      },
+      {
+       "atM": 6.4,
+       "widthM": 1.23,
+       "centre": 0.63
+      },
+      {
+       "atM": 5.88,
+       "widthM": 1.25,
+       "centre": 0.63
+      }
+     ]
+    },
+    "voidShare": 0.37,
+    "foliageShare": 0.02
+   },
+   "status": "held",
+   "stage": "evidence",
+   "reason": "strip 37 % without panorama data",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012114637",
+   "address": "Museumplein 7",
+   "builtYear": 1958,
+   "widthM": 17.49,
+   "eavesM": 17.83,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#8f9091",
+    "wallRaw": "#74745f",
+    "skyline": {
+     "eavesM": 15.45,
+     "eavesRow": 281,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.6,
+      "riseM": 1.45,
+      "topWidthM": 1.3,
+      "centre": 0.3
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 5,
+    "frontClass": "punched",
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.154,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 1.05 m at 0.03 (light 0.13): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 1.05,
+       "centre": 0.03,
+       "light": 0.13
+      },
+      {
+       "widthM": 3.75,
+       "centre": 0.88,
+       "light": 0.07
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 5.25,
+       "widthM": 3.25,
+       "centre": 0.9
+      }
+     ]
+    },
+    "voidShare": 0.09,
+    "foliageShare": 0.33
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best museum-de-1899-corbel-cornice: built 1958, type 1898-1901; frontage 17.49 m, type 5-6 m)",
+   "best": {
+    "type": "museum-de-1899-corbel-cornice",
+    "score": 0,
+    "veto": [
+     "built 1958, type 1898-1901",
+     "frontage 17.49 m, type 5-6 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0.5,
+      "note": "strip cornice 15.45 m vs the type's 13.4 m (wall-dormer skyline 14.7 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 4 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": null,
+      "note": "no strip"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

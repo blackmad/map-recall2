@@ -1,0 +1,187 @@
+{
+ "street": "Van Baerlestraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-01T16:41:28.515Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012236564",
+   "addresses": [
+    "Van Baerlestraat 69"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Baerlestraat 69-H",
+     "use": "woonfunctie",
+     "areaM2": 176,
+     "bagId": "0363010000834856"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 13105647352,
+     "lngLat": [
+      4.8812494,
+      52.354809
+     ],
+     "tags": {
+      "amenity": "charging_station",
+      "operator": "Equans",
+      "operator:wikidata": "Q118687687"
+     },
+     "fetchedAt": "2026-11-01T16:41:28.515Z",
+     "match": "frontage",
+     "distanceM": 6.3
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012163247",
+   "addresses": [
+    "Van Baerlestraat 71",
+    "Van Baerlestraat 71C",
+    "Van Baerlestraat 71B",
+    "Van Baerlestraat 71A",
+    "Van Baerlestraat 71E",
+    "Van Baerlestraat 71D",
+    "Van Baerlestraat 71F"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Baerlestraat 71-H",
+     "use": "woonfunctie",
+     "areaM2": 213,
+     "bagId": "0363010000834859"
+    },
+    {
+     "address": "Van Baerlestraat 71C",
+     "use": "woonfunctie",
+     "areaM2": 73,
+     "bagId": "0363010012585853"
+    },
+    {
+     "address": "Van Baerlestraat 71B",
+     "use": "woonfunctie",
+     "areaM2": 87,
+     "bagId": "0363010012585851"
+    },
+    {
+     "address": "Van Baerlestraat 71A",
+     "use": "woonfunctie",
+     "areaM2": 67,
+     "bagId": "0363010012585852"
+    },
+    {
+     "address": "Van Baerlestraat 71E",
+     "use": "woonfunctie",
+     "areaM2": 73,
+     "bagId": "0363010012585855"
+    },
+    {
+     "address": "Van Baerlestraat 71D",
+     "use": "woonfunctie",
+     "areaM2": 73,
+     "bagId": "0363010012585854"
+    },
+    {
+     "address": "Van Baerlestraat 71F",
+     "use": "woonfunctie",
+     "areaM2": 80,
+     "bagId": "0363010012585856"
+    }
+   ],
+   "units": 8,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012166179",
+   "addresses": [
+    "Van Baerlestraat 73"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Baerlestraat 73-H",
+     "use": "woonfunctie",
+     "areaM2": 240,
+     "bagId": "0363010000834865"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012161969",
+   "addresses": [
+    "Van Baerlestraat 75"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Baerlestraat 75-H",
+     "use": "woonfunctie",
+     "areaM2": 213,
+     "bagId": "0363010000834868"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012152421",
+   "addresses": [
+    "Van Baerlestraat 77"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Baerlestraat 77-H",
+     "use": "woonfunctie",
+     "areaM2": 183,
+     "bagId": "0363010000834870"
+    }
+   ],
+   "units": 2,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2816521808,
+     "lngLat": [
+      4.8814056,
+      52.3545229
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "77-H",
+      "addr:postcode": "1071AS",
+      "addr:street": "Van Baerlestraat",
+      "name": "Terra Incognita",
+      "opening_hours": "Tu-Sa 13:00-18:00; Su,Mo off",
+      "shop": "rocks_and_minerals",
+      "source": "BAG",
+      "source:date": "2014-03-24"
+     },
+     "fetchedAt": "2026-11-01T16:41:28.515Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012237303",
+   "addresses": [
+    "Van Baerlestraat 79"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Baerlestraat 79-H",
+     "use": "woonfunctie",
+     "areaM2": 240,
+     "bagId": "0363010000834874"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  }
+ ]
+}

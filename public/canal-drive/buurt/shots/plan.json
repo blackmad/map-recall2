@@ -534,6 +534,17 @@
      ]
     },
     {
+     "label": "Balthasar Floriszstraat 26 to 20 (4 houses)",
+     "lat": 52.353189787346096,
+     "lng": 4.885389971573355,
+     "view": "chase",
+     "at": [
+      4.884782,
+      52.353184,
+      89
+     ]
+    },
+    {
      "label": "Duivelseiland from above",
      "lat": 52.353247687499994,
      "lng": 4.8840834625,
@@ -1631,14 +1642,14 @@
      ]
     },
     {
-     "label": "Academie voor Theater en Dans",
-     "lat": 52.369651498023075,
-     "lng": 4.9020093656704535,
+     "label": "Academie van Bouwkunst",
+     "lat": 52.367566,
+     "lng": 4.9034502,
      "view": "chase",
      "at": [
-      4.901179,
-      52.370495,
-      149
+      4.904208,
+      52.366966,
+      322
      ]
     },
     {
@@ -2732,6 +2743,17 @@
    "name": "Stadionbuurt",
    "shots": [
     {
+     "label": "Olympisch Stadion",
+     "lat": 52.34345,
+     "lng": 4.8541112,
+     "view": "chase",
+     "at": [
+      4.855146,
+      52.344213,
+      220
+     ]
+    },
+    {
      "label": "Willem de Zwijgerkerk",
      "lat": 52.34957556270561,
      "lng": 4.862945631219777,
@@ -2751,17 +2773,6 @@
       4.854488,
       52.344635,
       104
-     ]
-    },
-    {
-     "label": "OBA Olympisch Kwartier, Laan der Hesperiden 18, Amsterdam (2005; library in the ground floor of a brick housing block, one pand)",
-     "lat": 52.3455746,
-     "lng": 4.8553631,
-     "view": "chase",
-     "at": [
-      4.856653,
-      52.344969,
-      308
      ]
     },
     {
@@ -3099,14 +3110,14 @@
      ]
     },
     {
-     "label": "IDFA Het Documentaire Paviljoen",
-     "lat": 52.36108,
-     "lng": 4.875,
+     "label": "Hollandsche Manege",
+     "lat": 52.3612231,
+     "lng": 4.8719366,
      "view": "chase",
      "at": [
-      4.875799,
-      52.360904,
-      290
+      4.873381,
+      52.361119,
+      277
      ]
     },
     {
@@ -3383,6 +3394,17 @@
    "name": "Zuidas",
    "shots": [
     {
+     "label": "ABN AMRO hoofdkantoor",
+     "lat": 52.33743644116271,
+     "lng": 4.8751607451871015,
+     "view": "chase",
+     "at": [
+      4.876379,
+      52.338088,
+      229
+     ]
+    },
+    {
      "label": "RAI Amsterdam",
      "lat": 52.341315,
      "lng": 4.88998,
@@ -3402,17 +3424,6 @@
       4.873918,
       52.336593,
       207
-     ]
-    },
-    {
-     "label": "The Rock",
-     "lat": 52.33761,
-     "lng": 4.87011,
-     "view": "chase",
-     "at": [
-      4.869147,
-      52.337869,
-      114
      ]
     },
     {

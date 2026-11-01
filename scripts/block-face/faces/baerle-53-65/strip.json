@@ -1,0 +1,263 @@
+{
+ "face": "baerle-53-65",
+ "image": "staging/block-face/baerle-53-65/strip.jpg",
+ "pixelsPerMetre": 40,
+ "width": 1735,
+ "height": 894,
+ "groundNAP": 0.259,
+ "heightM": 22.35,
+ "frame": {
+  "midRD": [
+   120511.12414583335,
+   485365.53108333325
+  ],
+  "uRD": [
+   0.3434717769389379,
+   -0.9391629988699558
+  ],
+  "nRD": [
+   -0.9391629988699558,
+   -0.3434717769389379
+  ]
+ },
+ "x0M": -23.47,
+ "x1M": 19.92,
+ "date": "2024-12-11",
+ "coverage": 1,
+ "spans": [
+  {
+   "pandId": "0363100012166538",
+   "x0M": -23.47,
+   "x1M": -16.82,
+   "px": [
+    0,
+    266
+   ],
+   "date": "2024-12-11",
+   "fallbackDate": false,
+   "panoramas": [
+    {
+     "panoId": "b_20241211_0838_Track03_Sphere_00076",
+     "timestamp": "2024-12-11T08:32:14Z",
+     "distanceM": 10.4,
+     "obliquityDeg": 0,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "b_20241211_0838_Track03_Sphere_00075",
+     "timestamp": "2024-12-11T08:32:12Z",
+     "distanceM": 11,
+     "obliquityDeg": 19.9,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "b_20241211_0838_Track03_Sphere_00077",
+     "timestamp": "2024-12-11T08:32:15Z",
+     "distanceM": 11.5,
+     "obliquityDeg": 23.7,
+     "missingFraction": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012237213",
+   "x0M": -16.82,
+   "x1M": -4.67,
+   "px": [
+    266,
+    752
+   ],
+   "date": "2024-12-11",
+   "fallbackDate": false,
+   "panoramas": [
+    {
+     "panoId": "b_20241211_0838_Track03_Sphere_00074",
+     "timestamp": "2024-12-11T08:32:07Z",
+     "distanceM": 9.9,
+     "obliquityDeg": 0.8,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "b_20241211_0838_Track03_Sphere_00075",
+     "timestamp": "2024-12-11T08:32:12Z",
+     "distanceM": 11.5,
+     "obliquityDeg": 29.4,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "b_20241211_0838_Track03_Sphere_00073",
+     "timestamp": "2024-12-11T08:32:04Z",
+     "distanceM": 11.7,
+     "obliquityDeg": 32.1,
+     "missingFraction": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012166495",
+   "x0M": -4.69,
+   "x1M": 1.52,
+   "px": [
+    751,
+    999
+   ],
+   "date": "2024-12-11",
+   "fallbackDate": false,
+   "panoramas": [
+    {
+     "panoId": "b_20241211_0838_Track03_Sphere_00073",
+     "timestamp": "2024-12-11T08:32:04Z",
+     "distanceM": 10.8,
+     "obliquityDeg": 16.8,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "b_20241211_0838_Track03_Sphere_00072",
+     "timestamp": "2024-12-11T08:32:03Z",
+     "distanceM": 10.8,
+     "obliquityDeg": 17.9,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "b_20241211_0838_Track03_Sphere_00071",
+     "timestamp": "2024-12-11T08:32:02Z",
+     "distanceM": 13.2,
+     "obliquityDeg": 39.5,
+     "missingFraction": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012161109",
+   "x0M": 1.49,
+   "x1M": 7.8,
+   "px": [
+    998,
+    1250
+   ],
+   "date": "2024-12-11",
+   "fallbackDate": false,
+   "panoramas": [
+    {
+     "panoId": "b_20241211_0838_Track03_Sphere_00072",
+     "timestamp": "2024-12-11T08:32:03Z",
+     "distanceM": 10.7,
+     "obliquityDeg": 13.8,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "b_20241211_0838_Track03_Sphere_00071",
+     "timestamp": "2024-12-11T08:32:02Z",
+     "distanceM": 10.4,
+     "obliquityDeg": 14.1,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "b_20241211_0838_Track03_Sphere_00070",
+     "timestamp": "2024-12-11T08:32:01Z",
+     "distanceM": 12.2,
+     "obliquityDeg": 37.5,
+     "missingFraction": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012156833",
+   "x0M": 7.8,
+   "x1M": 13.96,
+   "px": [
+    1251,
+    1498
+   ],
+   "date": "2024-12-11",
+   "fallbackDate": false,
+   "panoramas": [
+    {
+     "panoId": "b_20241211_0838_Track03_Sphere_00070",
+     "timestamp": "2024-12-11T08:32:01Z",
+     "distanceM": 10.2,
+     "obliquityDeg": 7.4,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "b_20241211_0838_Track03_Sphere_00071",
+     "timestamp": "2024-12-11T08:32:02Z",
+     "distanceM": 11.1,
+     "obliquityDeg": 18.8,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "b_20241211_0838_Track03_Sphere_00069",
+     "timestamp": "2024-12-11T08:32:00Z",
+     "distanceM": 11.2,
+     "obliquityDeg": 33.5,
+     "missingFraction": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012163472",
+   "x0M": 13.97,
+   "x1M": 19.92,
+   "px": [
+    1498,
+    1736
+   ],
+   "date": "2024-12-11",
+   "fallbackDate": false,
+   "panoramas": [
+    {
+     "panoId": "b_20241211_0838_Track03_Sphere_00069",
+     "timestamp": "2024-12-11T08:32:00Z",
+     "distanceM": 9.6,
+     "obliquityDeg": 0.6,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "b_20241211_0838_Track03_Sphere_00070",
+     "timestamp": "2024-12-11T08:32:01Z",
+     "distanceM": 11.3,
+     "obliquityDeg": 24.9,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "b_20241211_0838_Track03_Sphere_00068",
+     "timestamp": "2024-12-11T08:31:59Z",
+     "distanceM": 10,
+     "obliquityDeg": 30.4,
+     "missingFraction": 0
+    }
+   ]
+  }
+ ],
+ "candidatesByDate": {
+  "2022-03-21": 1,
+  "2022-01-11": 6,
+  "2020-01-29": 6,
+  "2018-07-29": 6,
+  "2024-12-11": 6,
+  "2018-06-07": 6,
+  "2019-12-04": 6,
+  "2022-09-06": 6,
+  "2023-01-03": 6,
+  "2017-04-13": 6,
+  "2025-07-30": 6,
+  "2020-08-27": 6,
+  "2019-05-03": 6,
+  "2021-07-08": 6,
+  "2021-04-26": 6,
+  "2020-05-11": 6,
+  "2020-05-13": 6,
+  "2019-01-17": 6,
+  "2019-05-02": 6,
+  "2017-04-12": 6,
+  "2024-11-06": 6,
+  "2016-08-03": 6,
+  "2017-04-19": 6,
+  "2018-06-11": 0,
+  "2019-12-06": 1,
+  "2018-06-06": 1
+ },
+ "description": "Rectified orthographic elevation of the whole face on the frontage planes: x = chunk-frame metres along the face (left→right seen from the street) from x0M, y = metres above the shared ground (groundNAP) from the bottom; grey = no panorama data. Per-pand spans list the panoramas median-fused for that frontage.",
+ "attribution": "Gemeente Amsterdam, Panoramabeelden (CC BY 4.0; faces and number plates blurred by the publisher)"
+}

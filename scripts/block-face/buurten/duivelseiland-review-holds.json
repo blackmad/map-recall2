@@ -1,0 +1,156 @@
+{
+ "note": "Pands held after reviewing the auto-place strip sheets at gallery size against the photo (scripts/block-face/auto-place.ts reads this file: a listed pand is held at stage 'review' with its reason, whatever its score and edge NCC). Remove an entry when a type or kit change makes the pand read right, and review the sheet again.",
+ "reviewed": "2026-11-01",
+ "holds": [
+  {
+   "pandId": "0363100012165635",
+   "address": "Balthasar Floriszstraat 28",
+   "reason": "Balthasar Floriszstraat 28 is another 1899 design: polychrome, white painted bands at every sill and impost line and white-block window heads; the corbel-cornice types (plain orange brick) passed the edge gate but draw none of it"
+  },
+  {
+   "pandId": "0363100012166353",
+   "address": "Cornelis Anthoniszstraat 58A",
+   "reason": "Cornelis Anthoniszstraat 58A: the arched-head corbel front over a white timber shop pui on the whole ground storey (the type draws a house door and two windows); with 56 held it would stand alone"
+  },
+  {
+   "pandId": "0363100012153235",
+   "address": "Cornelis Anthoniszstraat 56",
+   "reason": "Cornelis Anthoniszstraat 56 is the banded 1899 design: white painted sill and head bands across the front, flat heads, a timber shop pui; not the corbel-cornice row"
+  },
+  {
+   "pandId": "0363100012158008",
+   "address": "Cornelis Anthoniszstraat 52",
+   "reason": "Cornelis Anthoniszstraat 50-52 are a banded design with white keystones over segmental heads, white impost bands and round-arched paired doors; the corbel-cornice types draw plain brick"
+  },
+  {
+   "pandId": "0363100012161772",
+   "address": "Cornelis Anthoniszstraat 50",
+   "reason": "Cornelis Anthoniszstraat 50: as 52, white keystones and impost bands, paired round-arched doors"
+  },
+  {
+   "pandId": "0363100012160945",
+   "address": "Cornelis Anthoniszstraat 42",
+   "reason": "Cornelis Anthoniszstraat 40-42: polychrome fronts with white-block bands and heads (42 with a tall corner wall dormer), tree-occluded; not the corbel-cornice row"
+  },
+  {
+   "pandId": "0363100012063666",
+   "address": "Cornelis Anthoniszstraat 40",
+   "reason": "Cornelis Anthoniszstraat 40: polychrome white-block bands and a shop on the ground storey; not the corbel-cornice row"
+  },
+  {
+   "pandId": "0363100012155484",
+   "address": "Cornelis Anthoniszstraat 65",
+   "reason": "Cornelis Anthoniszstraat 65: a white rendered front with red brick arch bands; another design"
+  },
+  {
+   "pandId": "0363100012161040",
+   "address": "Cornelis Anthoniszstraat 67",
+   "reason": "Cornelis Anthoniszstraat 67-71: red brick with dark glazed-brick lintel bands and arch rings on every storey and a different cornice; the corbel-cornice types draw plain heads (kit could say it with band-brick arch rings, but no type is measured for it)"
+  },
+  {
+   "pandId": "0363100012156523",
+   "address": "Cornelis Anthoniszstraat 69",
+   "reason": "Cornelis Anthoniszstraat 69: as 67, dark glazed-brick lintel bands and arch rings"
+  },
+  {
+   "pandId": "0363100012165823",
+   "address": "Cornelis Anthoniszstraat 71",
+   "reason": "Cornelis Anthoniszstraat 71: as 67, dark glazed-brick lintel bands and arch rings"
+  },
+  {
+   "pandId": "0363100012158426",
+   "address": "Cornelis Anthoniszstraat 73",
+   "reason": "Cornelis Anthoniszstraat 73: white block heads and bands on brown brick, a tall wall dormer; another design"
+  },
+  {
+   "pandId": "0363100012166939",
+   "address": "Cornelis Anthoniszstraat 34",
+   "reason": "Cornelis Anthoniszstraat 34: dark brown brick with yellow lintel stripes; another design"
+  },
+  {
+   "pandId": "0363100012152949",
+   "address": "Cornelis Anthoniszstraat 32",
+   "reason": "Cornelis Anthoniszstraat 32: brown brick with light stripes at the lintel lines; another design"
+  },
+  {
+   "pandId": "0363100012159228",
+   "address": "Cornelis Anthoniszstraat 20",
+   "reason": "Cornelis Anthoniszstraat 20: dark brown plain front with grouped balconettes; another design"
+  },
+  {
+   "pandId": "0363100012164048",
+   "address": "Cornelis Anthoniszstraat 18",
+   "reason": "Cornelis Anthoniszstraat 12-18: red brick with white-block bands at every sill and head line and white quoins; another design"
+  },
+  {
+   "pandId": "0363100012165310",
+   "address": "Cornelis Anthoniszstraat 16",
+   "reason": "Cornelis Anthoniszstraat 16: as 18, white-block bands"
+  },
+  {
+   "pandId": "0363100012161462",
+   "address": "Cornelis Anthoniszstraat 14",
+   "reason": "Cornelis Anthoniszstraat 14: as 18, white-block bands"
+  },
+  {
+   "pandId": "0363100012167012",
+   "address": "Cornelis Anthoniszstraat 12",
+   "reason": "Cornelis Anthoniszstraat 12: as 18, white-block bands"
+  },
+  {
+   "pandId": "0363100012072123",
+   "address": "Pieter Baststraat 12",
+   "reason": "Pieter Baststraat 12: brown brick with a dark shop front and a different window rhythm; another design"
+  },
+  {
+   "pandId": "0363100012163005",
+   "address": "Pieter Baststraat 10",
+   "reason": "Pieter Baststraat 10: arched heads close to the corbel-cornice row, but alone between 12 and a scaffolded 14"
+  },
+  {
+   "pandId": "0363100012161339",
+   "address": "Pieter Baststraat 9",
+   "reason": "Pieter Baststraat 9: white banded front with a tall tower bay; another design"
+  },
+  {
+   "pandId": "0363100012159055",
+   "address": "Pieter Baststraat 11",
+   "reason": "Pieter Baststraat 11: white-block bands at every line; another design"
+  },
+  {
+   "pandId": "0363100012164412",
+   "address": "Balthasar Floriszstraat 49",
+   "reason": "Balthasar Floriszstraat 45-51: segmental-arched windows on every storey and tall neck-gable dormers; another design"
+  },
+  {
+   "pandId": "0363100012136165",
+   "address": "Balthasar Floriszstraat 51",
+   "reason": "Balthasar Floriszstraat 51: as 49, neck-gable dormer and arched windows"
+  },
+  {
+   "pandId": "0363100012161511",
+   "address": "Cornelis Anthoniszstraat 46",
+   "reason": "Cornelis Anthoniszstraat 46: polychrome white bands at every sill and head line under a tall stepped front gable over a shop; another design"
+  },
+  {
+   "pandId": "0363100012156630",
+   "address": "Cornelis Anthoniszstraat 44",
+   "reason": "Cornelis Anthoniszstraat 44: white-block bands and heads, tree-occluded, a wall dormer; another design"
+  },
+  {
+   "pandId": "0363100012163557",
+   "address": "Balthasar Floriszstraat 61",
+   "reason": "Balthasar Floriszstraat 61: the corner pand with a tall chimney stack, arched heads and a different cornice; another design"
+  },
+  {
+   "pandId": "0363100012158714",
+   "address": "Balthasar Floriszstraat 34",
+   "reason": "Balthasar Floriszstraat 32-34: a white rendered ground storey with paired round-arched portals under one stone arch, balconettes on storeys 1-3 and a white frieze under the cornice; the corbel-cornice types draw a brick ground storey and the corbel table"
+  },
+  {
+   "pandId": "0363100012152798",
+   "address": "Balthasar Floriszstraat 32",
+   "reason": "Balthasar Floriszstraat 32: as 34, the white rendered ground storey with the paired arched portals and a white frieze"
+  }
+ ]
+}

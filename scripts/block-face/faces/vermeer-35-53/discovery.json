@@ -1,0 +1,899 @@
+{
+ "street": "Johannes Vermeerstraat",
+ "seed": "0363100012121461",
+ "members": [
+  "0363100012121461",
+  "0363100012074509",
+  "0363100012103484",
+  "0363100012233573",
+  "0363100012062052",
+  "0363100012126885",
+  "0363100012089576",
+  "0363100012077834",
+  "0363100012076037",
+  "0363100012124449"
+ ],
+ "ends": [
+  {
+   "side": "left",
+   "reason": "next fronting pand 0363100012150353 32.8 m on shares no party wall (cross street or gap)"
+  },
+  {
+   "side": "right",
+   "reason": "trimmed at 0363100012124449 (face continues: 237313)"
+  }
+ ],
+ "rejected": [
+  {
+   "pandId": "0363100012063128",
+   "reason": "frontage 105.2 m from Johannes Vermeerstraat"
+  },
+  {
+   "pandId": "0363100012064242",
+   "reason": "frontage 87.0 m from Johannes Vermeerstraat"
+  },
+  {
+   "pandId": "0363100012068221",
+   "reason": "frontage 85.7 m from Johannes Vermeerstraat"
+  },
+  {
+   "pandId": "0363100012070627",
+   "reason": "sightline to Johannes Vermeerstraat crosses 0363100012108371"
+  },
+  {
+   "pandId": "0363100012076752",
+   "reason": "frontage 36.1 m from Johannes Vermeerstraat"
+  },
+  {
+   "pandId": "0363100012077283",
+   "reason": "frontage 68.0 m from Johannes Vermeerstraat"
+  },
+  {
+   "pandId": "0363100012079583",
+   "reason": "frontage 37.7 m from Johannes Vermeerstraat"
+  },
+  {
+   "pandId": "0363100012087825",
+   "reason": "frontage 115.5 m from Johannes Vermeerstraat"
+  },
+  {
+   "pandId": "0363100012089113",
+   "reason": "frontage 42.5 m from Johannes Vermeerstraat"
+  },
+  {
+   "pandId": "0363100012062357",
+   "reason": "frontage 199.1 m from Johannes Vermeerstraat"
+  },
+  {
+   "pandId": "0363100012062389",
+   "reason": "sightline to Johannes Vermeerstraat crosses 0363100012079467"
+  },
+  {
+   "pandId": "0363100012062753",
+   "reason": "frontage 49.8 m from Johannes Vermeerstraat"
+  },
+  {
+   "pandId": "0363100012063157",
+   "reason": "frontage 71.3 m from Johannes Vermeerstraat"
+  },
+  {
+   "pandId": "0363100012064884",
+   "reason": "frontage 76.3 m from Johannes Vermeerstraat"
+  },
+  {
+   "pandId": "0363100012065390",
+   "reason": "frontage 118.5 m from Johannes Vermeerstraat"
+  },
+  {
+   "pandId": "0363100012066812",
+   "reason": "sightline to Johannes Vermeerstraat crosses 0363100012114350"
+  },
+  {
+   "pandId": "0363100012067998",
+   "reason": "frontage 48.4 m from Johannes Vermeerstraat"
+  },
+  {
+   "pandId": "0363100012071827",
+   "reason": "frontage 81.5 m from Johannes Vermeerstraat"
+  },
+  {
+   "pandId": "0363100012072408",
+   "reason": "frontage 47.8 m from Johannes Vermeerstraat"
+  },
+  {
+   "pandId": "0363100012072599",
+   "reason": "frontage 64.5 m from Johannes Vermeerstraat"
+  },
+  {
+   "pandId": "0363100012074466",
+   "reason": "frontage 43.5 m from Johannes Vermeerstraat"
+  },
+  {
+   "pandId": "0363100012076064",
+   "reason": "sightline to Johannes Vermeerstraat crosses 0363100012237309"
+  },
+  {
+   "pandId": "0363100012077492",
+   "reason": "frontage 74.3 m from Johannes Vermeerstraat"
+  },
+  {
+   "pandId": "0363100012078655",
+   "reason": "frontage 209.0 m from Johannes Vermeerstraat"
+  },
+  {
+   "pandId": "0363100012079089",
+   "reason": "frontage 112.7 m from Johannes Vermeerstraat"
+  },
+  {
+   "pandId": "0363100012079467",
+   "reason": "no frontage on Johannes Vermeerstraat: No footprint edge faces Johannes Vermeerstraat"
+  },
+  {
+   "pandId": "0363100012079894",
+   "reason": "frontage 42.6 m from Johannes Vermeerstraat"
+  },
+  {
+   "pandId": "0363100012079951",
+   "reason": "sightline to Johannes Vermeerstraat crosses 0363100012083881"
+  },
+  {
+   "pandId": "0363100012079958",
+   "reason": "frontage 38.4 m from Johannes Vermeerstraat"
+  },
+  {
+   "pandId": "0363100012084204",
+   "reason": "frontage 44.3 m from Johannes Vermeerstraat"
+  },
+  {
+   "pandId": "0363100012085631",
+   "reason": "frontage 64.2 m from Johannes Vermeerstraat"
+  },
+  {
+   "pandId": "0363100012086273",
+   "reason": "frontage 35.1 m from Johannes Vermeerstraat"
+  },
+  {
+   "pandId": "0363100012086799",
+   "reason": "frontage 54.0 m from Johannes Vermeerstraat"
+  },
+  {
+   "pandId": "0363100012087328",
+   "reason": "frontage 95.2 m from Johannes Vermeerstraat"
+  },
+  {
+   "pandId": "0363100012087993",
+   "reason": "no frontage on Johannes Vermeerstraat: No footprint edge faces Johannes Vermeerstraat"
+  },
+  {
+   "pandId": "0363100012088937",
+   "reason": "frontage 43.1 m from Johannes Vermeerstraat"
+  },
+  {
+   "pandId": "0363100012089377",
+   "reason": "frontage 31.8 m from Johannes Vermeerstraat"
+  },
+  {
+   "pandId": "0363100012093896",
+   "reason": "frontage 55.4 m from Johannes Vermeerstraat"
+  },
+  {
+   "pandId": "0363100012094636",
+   "reason": "frontage 47.3 m from Johannes Vermeerstraat"
+  },
+  {
+   "pandId": "0363100012101245",
+   "reason": "frontage 80.1 m from Johannes Vermeerstraat"
+  },
+  {
+   "pandId": "0363100012108712",
+   "reason": "frontage 74.8 m from Johannes Vermeerstraat"
+  },
+  {
+   "pandId": "0363100012111240",
+   "reason": "frontage 30.3 m from Johannes Vermeerstraat"
+  },
+  {
+   "pandId": "0363100012111419",
+   "reason": "frontage 111.9 m from Johannes Vermeerstraat"
+  },
+  {
+   "pandId": "0363100012113503",
+   "reason": "sightline to Johannes Vermeerstraat crosses 0363100012070627"
+  },
+  {
+   "pandId": "0363100012089728",
+   "reason": "frontage 42.0 m from Johannes Vermeerstraat"
+  },
+  {
+   "pandId": "0363100012090747",
+   "reason": "frontage 43.2 m from Johannes Vermeerstraat"
+  },
+  {
+   "pandId": "0363100012093059",
+   "reason": "frontage 49.2 m from Johannes Vermeerstraat"
+  },
+  {
+   "pandId": "0363100012095224",
+   "reason": "frontage 42.3 m from Johannes Vermeerstraat"
+  },
+  {
+   "pandId": "0363100012096848",
+   "reason": "frontage 55.1 m from Johannes Vermeerstraat"
+  },
+  {
+   "pandId": "0363100012096849",
+   "reason": "frontage 52.6 m from Johannes Vermeerstraat"
+  },
+  {
+   "pandId": "0363100012098820",
+   "reason": "frontage 51.0 m from Johannes Vermeerstraat"
+  },
+  {
+   "pandId": "0363100012098847",
+   "reason": "frontage 196.7 m from Johannes Vermeerstraat"
+  },
+  {
+   "pandId": "0363100012099107",
+   "reason": "frontage 34.9 m from Johannes Vermeerstraat"
+  },
+  {
+   "pandId": "0363100012099680",
+   "reason": "frontage 77.0 m from Johannes Vermeerstraat"
+  },
+  {
+   "pandId": "0363100012099987",
+   "reason": "frontage 210.7 m from Johannes Vermeerstraat"
+  },
+  {
+   "pandId": "0363100012100351",
+   "reason": "frontage 81.3 m from Johannes Vermeerstraat"
+  },
+  {
+   "pandId": "0363100012103450",
+   "reason": "frontage 53.5 m from Johannes Vermeerstraat"
+  },
+  {
+   "pandId": "0363100012105881",
+   "reason": "frontage 108.1 m from Johannes Vermeerstraat"
+  },
+  {
+   "pandId": "0363100012107822",
+   "reason": "frontage 50.2 m from Johannes Vermeerstraat"
+  },
+  {
+   "pandId": "0363100012107845",
+   "reason": "frontage 43.6 m from Johannes Vermeerstraat"
+  },
+  {
+   "pandId": "0363100012109321",
+   "reason": "frontage 33.7 m from Johannes Vermeerstraat"
+  },
+  {
+   "pandId": "0363100012110232",
+   "reason": "frontage 43.2 m from Johannes Vermeerstraat"
+  },
+  {
+   "pandId": "0363100012110929",
+   "reason": "frontage 88.4 m from Johannes Vermeerstraat"
+  },
+  {
+   "pandId": "0363100012111009",
+   "reason": "no frontage on Johannes Vermeerstraat: No footprint edge faces Johannes Vermeerstraat"
+  },
+  {
+   "pandId": "0363100012111932",
+   "reason": "frontage 54.3 m from Johannes Vermeerstraat"
+  },
+  {
+   "pandId": "0363100012112954",
+   "reason": "no frontage on Johannes Vermeerstraat: No footprint edge faces Johannes Vermeerstraat"
+  },
+  {
+   "pandId": "0363100012113212",
+   "reason": "frontage 56.0 m from Johannes Vermeerstraat"
+  },
+  {
+   "pandId": "0363100012113999",
+   "reason": "frontage 38.8 m from Johannes Vermeerstraat"
+  },
+  {
+   "pandId": "0363100012114350",
+   "reason": "sightline to Johannes Vermeerstraat crosses 0363100012118196"
+  },
+  {
+   "pandId": "0363100012114637",
+   "reason": "frontage 37.3 m from Johannes Vermeerstraat"
+  },
+  {
+   "pandId": "0363100012114773",
+   "reason": "frontage 70.2 m from Johannes Vermeerstraat"
+  },
+  {
+   "pandId": "0363100012115557",
+   "reason": "frontage 35.4 m from Johannes Vermeerstraat"
+  },
+  {
+   "pandId": "0363100012116189",
+   "reason": "no frontage on Johannes Vermeerstraat: No footprint edge faces Johannes Vermeerstraat"
+  },
+  {
+   "pandId": "0363100012116862",
+   "reason": "frontage 44.4 m from Johannes Vermeerstraat"
+  },
+  {
+   "pandId": "0363100012117995",
+   "reason": "frontage 48.3 m from Johannes Vermeerstraat"
+  },
+  {
+   "pandId": "0363100012119364",
+   "reason": "sightline to Johannes Vermeerstraat crosses 0363100012070627"
+  },
+  {
+   "pandId": "0363100012125531",
+   "reason": "frontage 92.8 m from Johannes Vermeerstraat"
+  },
+  {
+   "pandId": "0363100012125930",
+   "reason": "frontage 48.8 m from Johannes Vermeerstraat"
+  },
+  {
+   "pandId": "0363100012128474",
+   "reason": "frontage 91.5 m from Johannes Vermeerstraat"
+  },
+  {
+   "pandId": "0363100012132153",
+   "reason": "frontage 51.4 m from Johannes Vermeerstraat"
+  },
+  {
+   "pandId": "0363100012136626",
+   "reason": "frontage 44.9 m from Johannes Vermeerstraat"
+  },
+  {
+   "pandId": "0363100012139901",
+   "reason": "frontage 46.9 m from Johannes Vermeerstraat"
+  },
+  {
+   "pandId": "0363100012140135",
+   "reason": "frontage 76.7 m from Johannes Vermeerstraat"
+  },
+  {
+   "pandId": "0363100012145815",
+   "reason": "frontage 44.2 m from Johannes Vermeerstraat"
+  },
+  {
+   "pandId": "0363100012150151",
+   "reason": "frontage 62.9 m from Johannes Vermeerstraat"
+  },
+  {
+   "pandId": "0363100012132812",
+   "reason": "frontage 97.6 m from Johannes Vermeerstraat"
+  },
+  {
+   "pandId": "0363100012142717",
+   "reason": "frontage 121.3 m from Johannes Vermeerstraat"
+  },
+  {
+   "pandId": "0363100012150328",
+   "reason": "frontage 117.5 m from Johannes Vermeerstraat"
+  },
+  {
+   "pandId": "0363100012118922",
+   "reason": "frontage 49.2 m from Johannes Vermeerstraat"
+  },
+  {
+   "pandId": "0363100012121498",
+   "reason": "frontage 57.7 m from Johannes Vermeerstraat"
+  },
+  {
+   "pandId": "0363100012121704",
+   "reason": "frontage 100.5 m from Johannes Vermeerstraat"
+  },
+  {
+   "pandId": "0363100012122272",
+   "reason": "frontage 112.9 m from Johannes Vermeerstraat"
+  },
+  {
+   "pandId": "0363100012122594",
+   "reason": "frontage 41.5 m from Johannes Vermeerstraat"
+  },
+  {
+   "pandId": "0363100012125850",
+   "reason": "frontage 84.5 m from Johannes Vermeerstraat"
+  },
+  {
+   "pandId": "0363100012126152",
+   "reason": "sightline to Johannes Vermeerstraat crosses 0363100012076064"
+  },
+  {
+   "pandId": "0363100012127734",
+   "reason": "frontage 48.3 m from Johannes Vermeerstraat"
+  },
+  {
+   "pandId": "0363100012129385",
+   "reason": "frontage 55.4 m from Johannes Vermeerstraat"
+  },
+  {
+   "pandId": "0363100012130367",
+   "reason": "frontage 52.9 m from Johannes Vermeerstraat"
+  },
+  {
+   "pandId": "0363100012130921",
+   "reason": "frontage 42.7 m from Johannes Vermeerstraat"
+  },
+  {
+   "pandId": "0363100012132848",
+   "reason": "sightline to Johannes Vermeerstraat crosses 0363100012083881"
+  },
+  {
+   "pandId": "0363100012133770",
+   "reason": "frontage 75.9 m from Johannes Vermeerstraat"
+  },
+  {
+   "pandId": "0363100012134159",
+   "reason": "frontage 52.4 m from Johannes Vermeerstraat"
+  },
+  {
+   "pandId": "0363100012134540",
+   "reason": "frontage 41.6 m from Johannes Vermeerstraat"
+  },
+  {
+   "pandId": "0363100012135779",
+   "reason": "frontage 43.4 m from Johannes Vermeerstraat"
+  },
+  {
+   "pandId": "0363100012138066",
+   "reason": "frontage 34.7 m from Johannes Vermeerstraat"
+  },
+  {
+   "pandId": "0363100012138135",
+   "reason": "sightline to Johannes Vermeerstraat crosses 0363100012114350"
+  },
+  {
+   "pandId": "0363100012138696",
+   "reason": "frontage 111.6 m from Johannes Vermeerstraat"
+  },
+  {
+   "pandId": "0363100012142048",
+   "reason": "frontage 78.1 m from Johannes Vermeerstraat"
+  },
+  {
+   "pandId": "0363100012142126",
+   "reason": "frontage 101.7 m from Johannes Vermeerstraat"
+  },
+  {
+   "pandId": "0363100012143481",
+   "reason": "frontage 211.7 m from Johannes Vermeerstraat"
+  },
+  {
+   "pandId": "0363100012145556",
+   "reason": "frontage 37.6 m from Johannes Vermeerstraat"
+  },
+  {
+   "pandId": "0363100012147731",
+   "reason": "frontage 42.6 m from Johannes Vermeerstraat"
+  },
+  {
+   "pandId": "0363100012149520",
+   "reason": "frontage 114.1 m from Johannes Vermeerstraat"
+  },
+  {
+   "pandId": "0363100012149721",
+   "reason": "frontage 42.5 m from Johannes Vermeerstraat"
+  },
+  {
+   "pandId": "0363100012150046",
+   "reason": "sightline to Johannes Vermeerstraat crosses 0363100012117845"
+  },
+  {
+   "pandId": "0363100012161910",
+   "reason": "frontage 99.4 m from Johannes Vermeerstraat"
+  },
+  {
+   "pandId": "0363100012213294",
+   "reason": "no frontage on Johannes Vermeerstraat: No footprint edge faces Johannes Vermeerstraat"
+  },
+  {
+   "pandId": "0363100012227684",
+   "reason": "frontage 36.1 m from Johannes Vermeerstraat"
+  },
+  {
+   "pandId": "0363100012233634",
+   "reason": "frontage 48.9 m from Johannes Vermeerstraat"
+  },
+  {
+   "pandId": "0363100012237182",
+   "reason": "frontage 50.2 m from Johannes Vermeerstraat"
+  },
+  {
+   "pandId": "0363100012233575",
+   "reason": "frontage 112.5 m from Johannes Vermeerstraat"
+  },
+  {
+   "pandId": "0363100012150854",
+   "reason": "frontage 128.0 m from Johannes Vermeerstraat"
+  },
+  {
+   "pandId": "0363100012151199",
+   "reason": "frontage 117.0 m from Johannes Vermeerstraat"
+  },
+  {
+   "pandId": "0363100012153321",
+   "reason": "frontage 182.7 m from Johannes Vermeerstraat"
+  },
+  {
+   "pandId": "0363100012153328",
+   "reason": "frontage 179.8 m from Johannes Vermeerstraat"
+  },
+  {
+   "pandId": "0363100012153592",
+   "reason": "frontage 173.4 m from Johannes Vermeerstraat"
+  },
+  {
+   "pandId": "0363100012154971",
+   "reason": "frontage 36.5 m from Johannes Vermeerstraat"
+  },
+  {
+   "pandId": "0363100012155190",
+   "reason": "frontage 77.7 m from Johannes Vermeerstraat"
+  },
+  {
+   "pandId": "0363100012155409",
+   "reason": "frontage 183.8 m from Johannes Vermeerstraat"
+  },
+  {
+   "pandId": "0363100012157446",
+   "reason": "frontage 208.8 m from Johannes Vermeerstraat"
+  },
+  {
+   "pandId": "0363100012157729",
+   "reason": "frontage 181.3 m from Johannes Vermeerstraat"
+  },
+  {
+   "pandId": "0363100012159178",
+   "reason": "frontage 208.6 m from Johannes Vermeerstraat"
+  },
+  {
+   "pandId": "0363100012160093",
+   "reason": "frontage 70.2 m from Johannes Vermeerstraat"
+  },
+  {
+   "pandId": "0363100012160200",
+   "reason": "frontage 171.9 m from Johannes Vermeerstraat"
+  },
+  {
+   "pandId": "0363100012160742",
+   "reason": "frontage 187.0 m from Johannes Vermeerstraat"
+  },
+  {
+   "pandId": "0363100012162222",
+   "reason": "no frontage on Johannes Vermeerstraat: No footprint edge faces Johannes Vermeerstraat"
+  },
+  {
+   "pandId": "0363100012162263",
+   "reason": "frontage 184.9 m from Johannes Vermeerstraat"
+  },
+  {
+   "pandId": "0363100012162885",
+   "reason": "frontage 208.9 m from Johannes Vermeerstraat"
+  },
+  {
+   "pandId": "0363100012163636",
+   "reason": "frontage 185.9 m from Johannes Vermeerstraat"
+  },
+  {
+   "pandId": "0363100012165275",
+   "reason": "frontage 170.8 m from Johannes Vermeerstraat"
+  },
+  {
+   "pandId": "0363100012166231",
+   "reason": "frontage 211.2 m from Johannes Vermeerstraat"
+  },
+  {
+   "pandId": "0363100012166549",
+   "reason": "frontage 208.7 m from Johannes Vermeerstraat"
+  },
+  {
+   "pandId": "0363100012190726",
+   "reason": "frontage 40.8 m from Johannes Vermeerstraat"
+  },
+  {
+   "pandId": "0363100012207262",
+   "reason": "no frontage on Johannes Vermeerstraat: No footprint edge faces Johannes Vermeerstraat"
+  },
+  {
+   "pandId": "0363100012209281",
+   "reason": "frontage 34.8 m from Johannes Vermeerstraat"
+  },
+  {
+   "pandId": "0363100012214752",
+   "reason": "frontage 46.2 m from Johannes Vermeerstraat"
+  },
+  {
+   "pandId": "0363100012217582",
+   "reason": "frontage 52.3 m from Johannes Vermeerstraat"
+  },
+  {
+   "pandId": "0363100012217595",
+   "reason": "sightline to Johannes Vermeerstraat crosses 0363100012088681"
+  },
+  {
+   "pandId": "0363100012220878",
+   "reason": "no frontage on Johannes Vermeerstraat: No footprint edge faces Johannes Vermeerstraat"
+  },
+  {
+   "pandId": "0363100012224122",
+   "reason": "frontage 103.9 m from Johannes Vermeerstraat"
+  },
+  {
+   "pandId": "0363100012233484",
+   "reason": "no frontage on Johannes Vermeerstraat: No footprint edge faces Johannes Vermeerstraat"
+  },
+  {
+   "pandId": "0363100012233523",
+   "reason": "frontage 72.5 m from Johannes Vermeerstraat"
+  },
+  {
+   "pandId": "0363100012233591",
+   "reason": "frontage 47.3 m from Johannes Vermeerstraat"
+  },
+  {
+   "pandId": "0363100012236293",
+   "reason": "frontage 37.1 m from Johannes Vermeerstraat"
+  },
+  {
+   "pandId": "0363100012236794",
+   "reason": "frontage 35.0 m from Johannes Vermeerstraat"
+  },
+  {
+   "pandId": "0363100012237018",
+   "reason": "frontage 175.3 m from Johannes Vermeerstraat"
+  },
+  {
+   "pandId": "0363100012237190",
+   "reason": "frontage 57.0 m from Johannes Vermeerstraat"
+  },
+  {
+   "pandId": "0363100012237203",
+   "reason": "frontage 83.7 m from Johannes Vermeerstraat"
+  },
+  {
+   "pandId": "0363100012237262",
+   "reason": "frontage 91.8 m from Johannes Vermeerstraat"
+  },
+  {
+   "pandId": "0363100012237352",
+   "reason": "no frontage on Johannes Vermeerstraat: No footprint edge faces Johannes Vermeerstraat"
+  },
+  {
+   "pandId": "0363100012237377",
+   "reason": "frontage 203.7 m from Johannes Vermeerstraat"
+  },
+  {
+   "pandId": "0363100012237381",
+   "reason": "frontage 208.4 m from Johannes Vermeerstraat"
+  },
+  {
+   "pandId": "0363100012240320",
+   "reason": "frontage 78.2 m from Johannes Vermeerstraat"
+  },
+  {
+   "pandId": "0363100012246868",
+   "reason": "frontage 31.3 m from Johannes Vermeerstraat"
+  },
+  {
+   "pandId": "0363100012250514",
+   "reason": "frontage 94.6 m from Johannes Vermeerstraat"
+  },
+  {
+   "pandId": "0363100012255082",
+   "reason": "frontage 79.7 m from Johannes Vermeerstraat"
+  },
+  {
+   "pandId": "0363100012571600",
+   "reason": "frontage 50.0 m from Johannes Vermeerstraat"
+  },
+  {
+   "pandId": "0363100012075537",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012083881",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012085468",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012089324",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012071285",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012074834",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012088681",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012089294",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012090437",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012092897",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012108371",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012116235",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012117556",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012117845",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012138489",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012142505",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012147036",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012134189",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012183422",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012232428",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012232429",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012233427",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012237309",
+   "reason": "fronts the other side / another direction"
+  }
+ ],
+ "areaHalfSizeM": 180,
+ "pands": [
+  {
+   "pandId": "0363100012121461",
+   "alongM": 0,
+   "widthM": 9.28,
+   "eavesM": 8.04,
+   "roofMaxM": 13.66,
+   "storeys3dbag": 4,
+   "builtYear": 1912,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012074509",
+   "alongM": 8.37,
+   "widthM": 7.47,
+   "eavesM": 13.46,
+   "roofMaxM": 16.64,
+   "storeys3dbag": 4,
+   "builtYear": 1912,
+   "uncertainty": [
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  },
+  {
+   "pandId": "0363100012103484",
+   "alongM": 15.84,
+   "widthM": 7.47,
+   "eavesM": 13.48,
+   "roofMaxM": 16.68,
+   "storeys3dbag": 5,
+   "builtYear": 1912,
+   "uncertainty": [
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  },
+  {
+   "pandId": "0363100012233573",
+   "alongM": 23.31,
+   "widthM": 7.47,
+   "eavesM": 13.46,
+   "roofMaxM": 16.62,
+   "storeys3dbag": 4,
+   "builtYear": 1912,
+   "uncertainty": [
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  },
+  {
+   "pandId": "0363100012062052",
+   "alongM": 30.69,
+   "widthM": 7.28,
+   "eavesM": 13.65,
+   "roofMaxM": 16.62,
+   "storeys3dbag": 4,
+   "builtYear": 1912,
+   "uncertainty": [
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  },
+  {
+   "pandId": "0363100012126885",
+   "alongM": 38.21,
+   "widthM": 7.76,
+   "eavesM": 10.4,
+   "roofMaxM": 13.32,
+   "storeys3dbag": 3,
+   "builtYear": 1912,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012089576",
+   "alongM": 46.8,
+   "widthM": 9.42,
+   "eavesM": 15.15,
+   "roofMaxM": 15.16,
+   "storeys3dbag": 4,
+   "builtYear": 1913,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012077834",
+   "alongM": 55.24,
+   "widthM": 7.46,
+   "eavesM": 14.25,
+   "roofMaxM": 19.32,
+   "storeys3dbag": 5,
+   "builtYear": 1912,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012076037",
+   "alongM": 62.65,
+   "widthM": 7.35,
+   "eavesM": 14.28,
+   "roofMaxM": 19.1,
+   "storeys3dbag": 5,
+   "builtYear": 1912,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012124449",
+   "alongM": 70.23,
+   "widthM": 7.82,
+   "eavesM": 14.27,
+   "roofMaxM": 19.23,
+   "storeys3dbag": 5,
+   "builtYear": 1912,
+   "uncertainty": []
+  }
+ ]
+}

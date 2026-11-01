@@ -1,0 +1,542 @@
+{
+ "face": "maes-32-42",
+ "street": "Nicolaas Maesstraat",
+ "library": "museumkwartier",
+ "stripDate": "2024-12-11",
+ "seconds": 4.41,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [],
+ "pands": [
+  {
+   "pandId": "0363100012114773",
+   "address": "Nicolaas Maesstraat 42",
+   "builtYear": 1910,
+   "widthM": 6.77,
+   "eavesM": 16.54,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#dfba99",
+    "wallRaw": "#dfbe9f",
+    "skyline": {
+     "eavesM": 15.75,
+     "eavesRow": 336,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.18,
+      "riseM": 1.6,
+      "topWidthM": 0.23,
+      "centre": 0.18
+     }
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": 4,
+    "frontClass": "columns",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.477,
+    "structure": {
+     "bayWidthM": 1.9,
+     "bayCentre": 0.15,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 13.88,
+       "widthM": 1.07,
+       "centre": 0.51
+      }
+     ]
+    },
+    "voidShare": 0.25,
+    "foliageShare": 0.08
+   },
+   "status": "held",
+   "stage": "likeness",
+   "reason": "edge NCC 0.072 < 0.15 (photo vs model body; likeness.ts FAIL: wall dL -0.17; glazing storey band off by 0.49 mean 0.53 vs photo 0.33)",
+   "likeness": {
+    "pandId": "0363100012114773",
+    "ncc": 0.072,
+    "nccRaw": 0.072,
+    "shiftM": [
+     0.1,
+     0.15
+    ],
+    "usable": 0.55,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "wall dL -0.17",
+     "glazing storey band off by 0.49 mean 0.53 vs photo 0.33"
+    ],
+    "wall": {
+     "photo": "#e3c2a4",
+     "model": "#cc9666",
+     "dL": -0.167
+    },
+    "glazing": {
+     "photo": 0.33,
+     "model": 0.53
+    },
+    "columns": {
+     "photo": null,
+     "model": 3
+    },
+    "iou": 0.318
+   },
+   "challengers": {
+    "museum-hc-1910-glazed-oriel": 0.072
+   }
+  },
+  {
+   "pandId": "0363100012085631",
+   "address": "Nicolaas Maesstraat 40",
+   "builtYear": 1910,
+   "widthM": 6.53,
+   "eavesM": 14.71,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#dfbea1",
+    "wallRaw": "#ddbfa2",
+    "skyline": {
+     "eavesM": 15.95,
+     "eavesRow": 328,
+     "confidence": 1,
+     "crown": {
+      "widthM": 0.88,
+      "riseM": 1.25,
+      "topWidthM": 0.28,
+      "centre": 0.16
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.429,
+    "structure": {
+     "bayWidthM": 2.13,
+     "bayCentre": 0.18,
+     "balconies": false,
+     "why": "no dark open axis (light ones: 0.65 m @ 0.66), 0 wide slab(s)",
+     "openAxes": [
+      {
+       "widthM": 0.65,
+       "centre": 0.05,
+       "light": 0.66
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 11.25,
+       "widthM": 0.95,
+       "centre": 0.32
+      },
+      {
+       "atM": 7.95,
+       "widthM": 1.2,
+       "centre": 0.12
+      }
+     ]
+    },
+    "voidShare": 0.22,
+    "foliageShare": 0.09
+   },
+   "status": "held",
+   "stage": "likeness",
+   "reason": "edge NCC 0.087 < 0.15 (photo vs model body; likeness.ts NO EVIDENCE: washed out 34 % > 30 %)",
+   "likeness": {
+    "pandId": "0363100012085631",
+    "ncc": 0.087,
+    "nccRaw": 0.087,
+    "shiftM": [
+     -0.4,
+     0.35
+    ],
+    "usable": 0.52,
+    "abstain": null,
+    "verdict": "NO EVIDENCE",
+    "reasons": [
+     "washed out 34 % > 30 %"
+    ],
+    "wall": {
+     "photo": "#e7c9ac",
+     "model": "#cb9667",
+     "dL": -0.19
+    },
+    "glazing": {
+     "photo": 0.42,
+     "model": 0.52
+    },
+    "columns": {
+     "photo": null,
+     "model": 3
+    },
+    "iou": 0.426
+   },
+   "challengers": {
+    "museum-hc-1910-glazed-oriel": 0.087
+   }
+  },
+  {
+   "pandId": "0363100012111932",
+   "address": "Nicolaas Maesstraat 38",
+   "builtYear": 1911,
+   "widthM": 10.04,
+   "eavesM": 17.43,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#e2926e",
+    "wallRaw": "#efb08f",
+    "skyline": {
+     "eavesM": 16.68,
+     "eavesRow": 299,
+     "confidence": 1,
+     "crown": {
+      "widthM": 3.75,
+      "riseM": 2.63,
+      "topWidthM": 1.68,
+      "centre": 0.8
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 4,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.293,
+    "structure": {
+     "bayWidthM": 1.65,
+     "bayCentre": 0.57,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0.17,
+    "foliageShare": 0.08
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best museum-de-1899-corbel-cornice: built 1911, type 1898-1901; frontage 10.04 m, type 5-6 m)",
+   "best": {
+    "type": "museum-de-1899-corbel-cornice",
+    "score": 0,
+    "veto": [
+     "built 1911, type 1898-1901",
+     "frontage 10.04 m, type 5-6 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 16.68 m vs the type's 13.4 m (wall-dormer skyline 14.7 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.107 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0.4,
+      "note": "strip columns 4 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012084204",
+   "address": "Nicolaas Maesstraat 36",
+   "builtYear": 1911,
+   "widthM": 10.79,
+   "eavesM": 14.5,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#f9c0a0",
+    "wallRaw": "#e69e7e",
+    "skyline": {
+     "eavesM": 15.78,
+     "eavesRow": 335,
+     "confidence": 1,
+     "crown": {
+      "widthM": 3.02,
+      "riseM": 4,
+      "topWidthM": 0.25,
+      "centre": 0.15
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 6,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.314,
+    "structure": {
+     "bayWidthM": 1.1,
+     "bayCentre": 0.52,
+     "balconies": true,
+     "why": "dark open axis 1.05 m at 0.05 (light 0.37): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 1.05,
+       "centre": 0.05,
+       "light": 0.37
+      },
+      {
+       "widthM": 1.3,
+       "centre": 0.27,
+       "light": 0.42
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 4.82,
+       "widthM": 0.85,
+       "centre": 0.91
+      }
+     ]
+    },
+    "voidShare": 0.19,
+    "foliageShare": 0.13
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best museum-de-1899-corbel-cornice: built 1911, type 1898-1901; frontage 10.79 m, type 5-6 m)",
+   "best": {
+    "type": "museum-de-1899-corbel-cornice",
+    "score": 0,
+    "veto": [
+     "built 1911, type 1898-1901",
+     "frontage 10.79 m, type 5-6 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 15.78 m vs the type's 13.4 m (wall-dormer skyline 14.7 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.117 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0,
+      "note": "strip columns 6 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012113999",
+   "address": "Nicolaas Maesstraat 34",
+   "builtYear": 1912,
+   "widthM": 6.9,
+   "eavesM": 16.06,
+   "storeys3dbag": 0,
+   "bagBay": null,
+   "strip": {
+    "wall": "#aa8d72",
+    "wallRaw": "#ba9b7c",
+    "skyline": {
+     "eavesM": 18.15,
+     "eavesRow": 240,
+     "confidence": 0.78,
+     "crown": {
+      "widthM": 1.6,
+      "riseM": 6,
+      "topWidthM": 0.35,
+      "centre": 0.81
+     }
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": 2,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.341,
+    "structure": {
+     "bayWidthM": 2.8,
+     "bayCentre": 0.26,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 14.03,
+       "widthM": 1.98,
+       "centre": 0.78
+      }
+     ]
+    },
+    "voidShare": 0.15,
+    "foliageShare": 0.14
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best museum-de-1899-corbel-cornice: built 1912, type 1898-1901; frontage 6.9 m, type 5-6 m)",
+   "best": {
+    "type": "museum-de-1899-corbel-cornice",
+    "score": 0,
+    "veto": [
+     "built 1912, type 1898-1901",
+     "frontage 6.9 m, type 5-6 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 18.15 m vs the type's 13.4 m (wall-dormer skyline 14.7 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": null,
+      "note": "3DBAG bouwlagen 0 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.163 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0.4,
+      "note": "strip columns 2 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012109321",
+   "address": "Nicolaas Maesstraat 32",
+   "builtYear": 1912,
+   "widthM": 6.2,
+   "eavesM": 15.94,
+   "storeys3dbag": 0,
+   "bagBay": {
+    "fromM": 6.07,
+    "toM": 6.07,
+    "depthM": 0.31,
+    "centre": 0.979
+   },
+   "strip": {
+    "wall": "#9e8673",
+    "wallRaw": "#9b846c",
+    "skyline": {
+     "eavesM": 20.75,
+     "eavesRow": 136,
+     "confidence": 1,
+     "crown": {
+      "widthM": 3.38,
+      "riseM": 3,
+      "topWidthM": 0.35,
+      "centre": 0.7
+     }
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": 2,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.336,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0.11,
+    "foliageShare": 0.11
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best museum-de-1899-corbel-cornice: built 1912, type 1898-1901)",
+   "best": {
+    "type": "museum-de-1899-corbel-cornice",
+    "score": 0,
+    "veto": [
+     "built 1912, type 1898-1901"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 20.75 m vs the type's 13.4 m (wall-dormer skyline 14.7 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": null,
+      "note": "3DBAG bouwlagen 0 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.209 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0.4,
+      "note": "strip columns 2 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

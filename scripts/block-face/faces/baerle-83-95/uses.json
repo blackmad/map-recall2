@@ -1,0 +1,284 @@
+{
+ "street": "Van Baerlestraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-01T16:42:30.308Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012153747",
+   "addresses": [
+    "Van Baerlestraat 83"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Baerlestraat 83-H",
+     "use": "winkelfunctie",
+     "areaM2": 79,
+     "bagId": "0363010000834881"
+    }
+   ],
+   "units": 3,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2816521867,
+     "lngLat": [
+      4.881629,
+      52.3542018
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "83-H",
+      "addr:postcode": "1071AS",
+      "addr:street": "Van Baerlestraat",
+      "amenity": "cafe",
+      "branch": "Van Baerlestraat",
+      "brand": "Cafecito",
+      "check_date": "2025-06-07",
+      "contact:instagram": "cafecito_nl",
+      "cuisine": "coffee",
+      "email": "coffee@cafecito.nl",
+      "name": "Cafecito",
+      "opening_hours": "Mo-Fr 07:00-18:00; Sa-Su 09:00-18:00",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://cafecito.nl"
+     },
+     "fetchedAt": "2026-11-01T16:42:30.308Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012157890",
+   "addresses": [
+    "Van Baerlestraat 85"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Baerlestraat 85-H",
+     "use": "woonfunctie",
+     "areaM2": 79,
+     "bagId": "0363010000834887"
+    },
+    {
+     "address": "Van Baerlestraat 85-H",
+     "use": "winkelfunctie",
+     "areaM2": 83,
+     "bagId": "0363010012074537"
+    }
+   ],
+   "units": 6,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012233447",
+   "addresses": [
+    "Van Baerlestraat 87"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Baerlestraat 87-H",
+     "use": "winkelfunctie",
+     "areaM2": 114,
+     "bagId": "0363010000834891"
+    },
+    {
+     "address": "Van Baerlestraat 87-1",
+     "use": "kantoorfunctie",
+     "areaM2": 85,
+     "bagId": "0363010000999188"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 483553118,
+     "lngLat": [
+      4.8817437,
+      52.3540864
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "85",
+      "addr:postcode": "1071AS",
+      "addr:street": "Van Baerlestraat",
+      "brand": "Gall & Gall",
+      "brand:wikidata": "Q13639185",
+      "brand:wikipedia": "nl:Gall & Gall",
+      "check_date": "2024-06-20",
+      "name": "Gall & Gall",
+      "opening_hours": "Mo-We 12:00-19:00; Th-Sa 10:00-20:00",
+      "phone": "+31 20 679 1122",
+      "ref": "6522",
+      "shop": "alcohol",
+      "website": "https://www.gall.nl/winkels/details/?storeId=6522",
+      "wheelchair": "limited"
+     },
+     "fetchedAt": "2026-11-01T16:42:30.308Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012077874",
+   "addresses": [
+    "Van Baerlestraat 89"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Baerlestraat 89-H",
+     "use": "woonfunctie",
+     "areaM2": 71,
+     "bagId": "0363010000834896"
+    },
+    {
+     "address": "Van Baerlestraat 89-H",
+     "use": "winkelfunctie",
+     "areaM2": 124,
+     "bagId": "0363010012075397"
+    }
+   ],
+   "units": 6,
+   "osm": [
+    {
+     "type": "node",
+     "id": 11993668951,
+     "lngLat": [
+      4.8817898,
+      52.3540176
+     ],
+     "tags": {
+      "addr:housenumber": "89-H",
+      "addr:street": "Van Baerlestraat",
+      "check_date": "2024-06-20",
+      "name": "Beauty Van Baerle",
+      "shop": "hairdresser",
+      "website": "https://beautyvanbaerle.com/"
+     },
+     "fetchedAt": "2026-11-01T16:42:30.308Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012089211",
+   "addresses": [
+    "Van Baerlestraat 91"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Baerlestraat 91-H",
+     "use": "winkelfunctie",
+     "areaM2": 161,
+     "bagId": "0363010000939495"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 11993668955,
+     "lngLat": [
+      4.8818338,
+      52.3539564
+     ],
+     "tags": {
+      "addr:housenumber": "91",
+      "addr:street": "Van Baerlestraat",
+      "check_date": "2024-06-20",
+      "name": "Kinki",
+      "shop": "hairdresser",
+      "website": "https://www.kinki.nl/"
+     },
+     "fetchedAt": "2026-11-01T16:42:30.308Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012120761",
+   "addresses": [
+    "Van Baerlestraat 93"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Baerlestraat 93-H",
+     "use": "winkelfunctie",
+     "areaM2": 224,
+     "bagId": "0363010000834905"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 3855419857,
+     "lngLat": [
+      4.881876,
+      52.3538866
+     ],
+     "tags": {
+      "addr:housenumber": "93",
+      "addr:street": "Van Baerlestraat",
+      "check_date": "2024-06-20",
+      "contact:instagram": "https://www.instagram.com/banketbakkerij.arnoldcornelis",
+      "name": "Arnold Cornelis",
+      "phone": "+31 20 662 1228",
+      "shop": "pastry",
+      "website": "https://cornelis.nl/"
+     },
+     "fetchedAt": "2026-11-01T16:42:30.308Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012121676",
+   "addresses": [
+    "Van Baerlestraat 95"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Baerlestraat 95-H",
+     "use": "winkelfunctie",
+     "areaM2": 140,
+     "bagId": "0363010000834909"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 11993668954,
+     "lngLat": [
+      4.8819223,
+      52.3538252
+     ],
+     "tags": {
+      "addr:housenumber": "95",
+      "addr:street": "Van Baerlestraat",
+      "check_date": "2026-10-01",
+      "check_date:opening_hours": "2026-10-01",
+      "contact:facebook": "https://www.facebook.com/ArnoldBooden/",
+      "contact:instagram": "https://www.instagram.com/arnoldboodenuniqueeyefashion",
+      "name": "Arnold Booden",
+      "opening_hours": "Tu-Fr 11:00-18:00; Sa 10:00-17:00; Su,Mo off",
+      "shop": "optician",
+      "website": "https://www.arnoldbooden.nl"
+     },
+     "fetchedAt": "2026-11-01T16:42:30.308Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}

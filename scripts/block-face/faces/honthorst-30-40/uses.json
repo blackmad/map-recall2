@@ -1,0 +1,125 @@
+{
+ "street": "Honthorststraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-01T15:26:41.527Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012118922",
+   "addresses": [
+    "Honthorststraat 40"
+   ],
+   "groundUnits": [
+    {
+     "address": "Pieter de Hoochstraat 2",
+     "use": "woonfunctie",
+     "areaM2": 140,
+     "bagId": "0363010000774984"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012236794",
+   "addresses": [
+    "Honthorststraat 36"
+   ],
+   "groundUnits": [
+    {
+     "address": "Honthorststraat 36",
+     "use": "kantoorfunctie",
+     "areaM2": 354,
+     "bagId": "0363010001005148"
+    }
+   ],
+   "units": 1,
+   "osm": [
+    {
+     "type": "node",
+     "id": 4905731782,
+     "lngLat": [
+      4.8850128,
+      52.3576405
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:country": "NL",
+      "addr:housenumber": "36",
+      "addr:postcode": "1071DG",
+      "addr:street": "Honthorststraat",
+      "check_date:opening_hours": "2026-10-01",
+      "consulate": "consulate_general",
+      "country": "DE",
+      "diplomatic": "consulate",
+      "name": "Consulaat-Generaal van Duitsland",
+      "name:de": "Deutsches Generalkonsulat Amsterdam",
+      "name:en": "Consulate General of Germany",
+      "name:nl": "Consulaat-Generaal van Duitsland",
+      "office": "diplomatic",
+      "official_name": "Consulaat-Generaal van de Bondsrepubliek Duitsland",
+      "official_name:en": "Consulate General of The Federal Republic of Germany",
+      "opening_hours:signed": "no",
+      "phone": "+31 20 574 7700",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "target": "AW;BQ;CW;NL;SX",
+      "website": "https://niederlande.diplo.de/"
+     },
+     "fetchedAt": "2026-11-01T15:26:41.527Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012066812",
+   "addresses": [
+    "Honthorststraat 34"
+   ],
+   "groundUnits": [
+    {
+     "address": "Honthorststraat 34-H",
+     "use": "woonfunctie",
+     "areaM2": 201,
+     "bagId": "0363010000670430"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012138135",
+   "addresses": [
+    "Honthorststraat 32"
+   ],
+   "groundUnits": [
+    {
+     "address": "Honthorststraat 32-H",
+     "use": "woonfunctie",
+     "areaM2": 167,
+     "bagId": "0363010000670427"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012114350",
+   "addresses": [
+    "Honthorststraat 30"
+   ],
+   "groundUnits": [
+    {
+     "address": "Honthorststraat 30",
+     "use": "kantoorfunctie",
+     "areaM2": 419,
+     "bagId": "0363010000670426"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  }
+ ]
+}

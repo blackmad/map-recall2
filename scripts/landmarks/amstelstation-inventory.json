@@ -1,0 +1,740 @@
+{
+ "schemaVersion": 1,
+ "id": "amstelstation",
+ "pand": "0363100012145715",
+ "brief": "scripts/landmarks/amstelstation-brief.md",
+ "signature": [
+  "s-hall-glazing",
+  "n-hall-glazing",
+  "e-gable",
+  "s-clock",
+  "n-canopy",
+  "n-lettering",
+  "e-lettering",
+  "n-ring-canopy"
+ ],
+ "walls": [
+  {
+   "tag": "w01-339",
+   "bearing": 339,
+   "lengthM": 62.2,
+   "centre": [
+    4.9184015,
+    52.3470377
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-06-20_12-01-53_02037",
+   "capturedAt": "2025-06-20",
+   "checked": true,
+   "items": [
+    {
+     "id": "n-hall-glazing",
+     "kind": "window-shape",
+     "where": "the ticket hall north wall above the low front: 18 tall glazed bays between brick corner piers, cream mullion grid",
+     "approxSizeM": [
+      42,
+      9
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-06-20_12-01-53_02037",
+     "how": "glazedWall(-1): 18 bays of 2.23 m, heavy mullions after bays 3/9/15, centre bars, 0.74 m transoms"
+    },
+    {
+     "id": "n-lettering",
+     "kind": "lettering",
+     "where": "white \"Amsterdam Amstel\" with the NS logo left and an M right, on the glazing just above the canopy",
+     "approxSizeM": [
+      20,
+      1.1
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-06-20_12-01-53_02037",
+     "how": "northSign(): raised stroke lettering 1.05 m, NS logo as bars, M"
+    },
+    {
+     "id": "n-canopy",
+     "kind": "canopy",
+     "where": "cantilevered half-elliptical entrance canopy, dark-wood underside, lamps, over the north doors",
+     "approxSizeM": [
+      21,
+      7
+     ],
+     "plan": "simplified",
+     "seenIn": "recording_2025-06-20_12-01-53_02037",
+     "how": "canopy(): half-ellipse slab 21 x 7 m, wood-red underside, dark rim, one round column; the lamps are left out"
+    },
+    {
+     "id": "n-steps",
+     "kind": "other",
+     "where": "broad flights of steps up to the north forecourt across its full width",
+     "approxSizeM": [
+      55,
+      1.2
+     ],
+     "plan": "simplified",
+     "seenIn": "recording_2025-06-20_12-01-53_02037",
+     "how": "podium(): 1.2 m deck with three steps in front of its north edge"
+    },
+    {
+     "id": "n-hall-roof",
+     "kind": "other",
+     "where": "shallow saddle roof with a dark overhanging edge over the glazing",
+     "approxSizeM": [
+      44,
+      2
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-06-20_12-01-53_02037",
+     "how": "hallBody(): two planes 16.8-18.7 m with 1 m eaves overhang and fascia"
+    },
+    {
+     "id": "n-tramlines",
+     "kind": "other",
+     "where": "tram overhead wires and masts in front",
+     "approxSizeM": [
+      60,
+      8
+     ],
+     "plan": "skipped",
+     "seenIn": "recording_2025-06-20_12-01-53_02037",
+     "skip": {
+      "reason": "temporary",
+      "note": "street furniture, not part of the building"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "w02-160",
+   "bearing": 160,
+   "lengthM": 30.5,
+   "centre": [
+    4.9169496,
+    52.3462602
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001920_pano_0008_001249",
+   "capturedAt": "2020-09-10",
+   "checked": true,
+   "items": [],
+   "note": "BAG ring edge of the underground passage / bicycle cellar; the crop shows the bike racks, the west passage exit or the Hogeschool van Amsterdam across the street, nothing of the station above ground"
+  },
+  {
+   "tag": "w03-250",
+   "bearing": 250,
+   "lengthM": 29.9,
+   "centre": [
+    4.9177172,
+    52.3467242
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": false,
+   "items": []
+  },
+  {
+   "tag": "w04-340",
+   "bearing": 340,
+   "lengthM": 29.7,
+   "centre": [
+    4.9166357,
+    52.3463326
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000250_pano_0000_000058",
+   "capturedAt": "2017-04-06",
+   "checked": true,
+   "items": [],
+   "note": "BAG ring edge of the underground passage / bicycle cellar; the crop shows the bike racks, the west passage exit or the Hogeschool van Amsterdam across the street, nothing of the station above ground"
+  },
+  {
+   "tag": "w05-70",
+   "bearing": 70,
+   "lengthM": 28.6,
+   "centre": [
+    4.9189027,
+    52.3470176
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002780_pano_0009_000097",
+   "capturedAt": "2022-08-31",
+   "checked": true,
+   "items": [
+    {
+     "id": "e-podium-wall",
+     "kind": "other",
+     "where": "long pale-brick podium wall with a railing on top, curving round the north-east corner",
+     "approxSizeM": [
+      28,
+      4.5
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002780_pano_0009_000097",
+     "how": "podium(): 4.2 m east block on the BAG ring, greyBrick walls, railing posts and two rails"
+    },
+    {
+     "id": "e-sculpture",
+     "kind": "sculpture",
+     "where": "dark figure sculpture on the podium at the north end of the east gable (Theo van Reijn, \"Terugblik en Toekomst der Spoorwegen\", 1939, per Wikipedia)",
+     "approxSizeM": [
+      1.5,
+      2.5
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-002780_pano_0009_000097",
+     "how": "sculpture(): stone plinth with a bronze-coloured figure mass; the second statue named by Wikipedia is not visible in the panoramas"
+    },
+    {
+     "id": "e-gable",
+     "kind": "other",
+     "where": "hall east gable: pale stone panels with vertical ribs between brick piers with white bands",
+     "approxSizeM": [
+      23,
+      18.7
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002780_pano_0009_000097",
+     "how": "gableEnd(1)"
+    },
+    {
+     "id": "e-vent",
+     "kind": "other",
+     "where": "ventilation grille low in the podium wall",
+     "approxSizeM": [
+      1.5,
+      1
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7316010203-002780_pano_0009_000097",
+     "skip": {
+      "reason": "too-small",
+      "note": "a 1.5 m grille, reads as wall at ride distance"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "w06-160",
+   "bearing": 160,
+   "lengthM": 26.3,
+   "centre": [
+    4.9189433,
+    52.3466184
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2024-10-08_12-29-10_01198",
+   "capturedAt": "2024-10-08",
+   "checked": true,
+   "items": [
+    {
+     "id": "se-pier",
+     "kind": "other",
+     "where": "banded brick corner pier of the hall: white stone courses about every 0.85 m",
+     "approxSizeM": [
+      2.6,
+      16.6
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2024-10-08_12-29-10_01198",
+     "how": "glazedWall/gableEnd corner piers with white courses"
+    }
+   ]
+  },
+  {
+   "tag": "w07-160",
+   "bearing": 160,
+   "lengthM": 22.7,
+   "centre": [
+    4.9184219,
+    52.3464972
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002584_pano_0001_000235",
+   "capturedAt": "2022-05-18",
+   "checked": true,
+   "items": [
+    {
+     "id": "s-hall-glazing",
+     "kind": "window-shape",
+     "where": "south glazing of the ticket hall, 18 bays, heavy mullions after bays 3, 9, 15",
+     "approxSizeM": [
+      42,
+      9
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002584_pano_0001_000235",
+     "how": "glazedWall(1)"
+    },
+    {
+     "id": "s-clock",
+     "kind": "clock",
+     "where": "skeleton clock with gold markers on the south glazing, about 12 bays from the west pier, 2.6 m across",
+     "approxSizeM": [
+      2.6,
+      2.6
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002584_pano_0001_000235",
+     "how": "hallClock(): dark ring, 12 gold markers, gold hands at 13.1 m"
+    },
+    {
+     "id": "s-low-front",
+     "kind": "window-shape",
+     "where": "one-storey brick front of 8 large windows between brick piers under a projecting flat canopy band",
+     "approxSizeM": [
+      22,
+      5.4
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002584_pano_0001_000235",
+     "how": "dressWalls(): windows on the 3DBAG wall at 3.75 m pitch, dark canopy band"
+    },
+    {
+     "id": "s-porthole",
+     "kind": "window-shape",
+     "where": "round window with a cross at the east end of the low front",
+     "approxSizeM": [
+      1.1,
+      1.1
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002584_pano_0001_000235",
+     "how": "roundWindow(): framed round window with spokes at the east end of the long low south front (and alone on the short low fronts)"
+    }
+   ]
+  },
+  {
+   "tag": "w08-250",
+   "bearing": 250,
+   "lengthM": 20.8,
+   "centre": [
+    4.9179191,
+    52.3463925
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": false,
+   "items": []
+  },
+  {
+   "tag": "w09-70",
+   "bearing": 70,
+   "lengthM": 14.4,
+   "centre": [
+    4.9167773,
+    52.3461518
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001920_pano_0008_001247",
+   "capturedAt": "2020-09-10",
+   "checked": true,
+   "items": [],
+   "note": "BAG ring edge of the underground passage / bicycle cellar; the crop shows the bike racks, the west passage exit or the Hogeschool van Amsterdam across the street, nothing of the station above ground"
+  },
+  {
+   "tag": "w10-250",
+   "bearing": 250,
+   "lengthM": 13.9,
+   "centre": [
+    4.9164811,
+    52.3462248
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001186_pano_0001_001773",
+   "capturedAt": "2019-05-15",
+   "checked": true,
+   "items": [],
+   "note": "BAG ring edge of the underground passage / bicycle cellar; the crop shows the bike racks, the west passage exit or the Hogeschool van Amsterdam across the street, nothing of the station above ground"
+  },
+  {
+   "tag": "w11-70",
+   "bearing": 70,
+   "lengthM": 11.6,
+   "centre": [
+    4.9182955,
+    52.3464129
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001525_pano_0000_001935",
+   "capturedAt": "2019-12-18",
+   "checked": true,
+   "items": [
+    {
+     "id": "w-wing-windows",
+     "kind": "window-shape",
+     "where": "two-storey brick wing with a rounded end: big shop windows below, punched windows above, overhanging roof",
+     "approxSizeM": [
+      30,
+      10
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001525_pano_0000_001935",
+     "how": "dressWalls(): ground and upper rows on the straight 3DBAG facets; the rounded end stays plain brick"
+    }
+   ]
+  },
+  {
+   "tag": "w12-70",
+   "bearing": 70,
+   "lengthM": 9.1,
+   "centre": [
+    4.9190998,
+    52.3466987
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001692_pano_0000_000053",
+   "capturedAt": "2020-05-07",
+   "checked": true,
+   "items": [
+    {
+     "id": "e-entrance-2",
+     "kind": "window-shape",
+     "where": "glazed shop entrance at the south end of the podium front",
+     "approxSizeM": [
+      6,
+      2.8
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7316010203-001692_pano_0000_000053",
+     "skip": {
+      "reason": "not-visible",
+      "note": "in shade behind trees in the only clear capture; the main entrance on w13 carries the glazing"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "w13-70",
+   "bearing": 70,
+   "lengthM": 9,
+   "centre": [
+    4.9190314,
+    52.3467698
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002422_pano_0008_000104",
+   "capturedAt": "2022-01-17",
+   "checked": true,
+   "items": [
+    {
+     "id": "e-lettering",
+     "kind": "lettering",
+     "where": "\"Amsterdam Amstel\" in white on the podium front above the entrance",
+     "approxSizeM": [
+      7,
+      0.55
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002422_pano_0008_000104",
+     "how": "podiumFront(): raised lettering 0.55 m"
+    },
+    {
+     "id": "e-entrance",
+     "kind": "window-shape",
+     "where": "glazed entrance screen under the lettering",
+     "approxSizeM": [
+      3.6,
+      2.7
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002422_pano_0008_000104",
+     "how": "podiumFront(): glass with frame bars"
+    }
+   ]
+  },
+  {
+   "tag": "w14-160",
+   "bearing": 160,
+   "lengthM": 8.7,
+   "centre": [
+    4.9180321,
+    52.3463182
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001525_pano_0000_001943",
+   "capturedAt": "2019-12-18",
+   "checked": true,
+   "items": [
+    {
+     "id": "s-rear-doors",
+     "kind": "window-shape",
+     "where": "service doors and small windows on the south rear of the wing, platform shed glazing above",
+     "approxSizeM": [
+      20,
+      3
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-001525_pano_0000_001943",
+     "how": "the 3DBAG wing walls carry generic window rows; the platform shed glazing is not modelled (rail-infra canopy w1302881959 draws the shed)"
+    }
+   ]
+  },
+  {
+   "tag": "w15-70",
+   "bearing": 70,
+   "lengthM": 7.2,
+   "centre": [
+    4.9168236,
+    52.3459205
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001920_pano_0008_001252",
+   "capturedAt": "2020-09-10",
+   "checked": true,
+   "items": [],
+   "note": "BAG ring edge of the underground passage / bicycle cellar; the crop shows the bike racks, the west passage exit or the Hogeschool van Amsterdam across the street, nothing of the station above ground"
+  },
+  {
+   "tag": "w16-70",
+   "bearing": 70,
+   "lengthM": 7.2,
+   "centre": [
+    4.9168053,
+    52.3460544
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001920_pano_0008_001249",
+   "capturedAt": "2020-09-10",
+   "checked": true,
+   "items": [],
+   "note": "BAG ring edge of the underground passage / bicycle cellar; the crop shows the bike racks, the west passage exit or the Hogeschool van Amsterdam across the street, nothing of the station above ground"
+  },
+  {
+   "tag": "w17-70",
+   "bearing": 70,
+   "lengthM": 7.2,
+   "centre": [
+    4.9168144,
+    52.3459876
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001920_pano_0008_001250",
+   "capturedAt": "2020-09-10",
+   "checked": true,
+   "items": [],
+   "note": "BAG ring edge of the underground passage / bicycle cellar; the crop shows the bike racks, the west passage exit or the Hogeschool van Amsterdam across the street, nothing of the station above ground"
+  },
+  {
+   "tag": "w18-160",
+   "bearing": 160,
+   "lengthM": 6.9,
+   "centre": [
+    4.9187165,
+    52.3465639
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2024-10-08_12-29-10_01201",
+   "capturedAt": "2024-10-08",
+   "checked": true,
+   "items": [
+    {
+     "id": "s-ns-sign",
+     "kind": "sign",
+     "where": "blue NS sign on the low front",
+     "approxSizeM": [
+      1.3,
+      0.6
+     ],
+     "plan": "skipped",
+     "seenIn": "recording_2024-10-08_12-29-10_01201",
+     "skip": {
+      "reason": "too-small",
+      "note": "1.3 m enamel sign"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "w19-340",
+   "bearing": 340,
+   "lengthM": 6.6,
+   "centre": [
+    4.9176861,
+    52.3468607
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2024-10-08_12-29-10_00715",
+   "capturedAt": "2024-10-08",
+   "checked": true,
+   "items": [
+    {
+     "id": "n-round-glazing",
+     "kind": "window-shape",
+     "where": "glazed upper storey round the north end of the long wing",
+     "approxSizeM": [
+      22,
+      3.2
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2024-10-08_12-29-10_00715",
+     "how": "northRound(): half-cylinder of glass with 11 mullions on the fitted BAG arc"
+    },
+    {
+     "id": "n-ring-canopy",
+     "kind": "canopy",
+     "where": "ring canopy on slim columns round the north end",
+     "approxSizeM": [
+      25,
+      2.6
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2024-10-08_12-29-10_00715",
+     "how": "northRound(): 2.6 m ring slab at 3.9-4.25 m on five columns"
+    },
+    {
+     "id": "platform-shed",
+     "kind": "other",
+     "where": "glazed platform shed on the viaduct behind (side glazing on a brick base)",
+     "approxSizeM": [
+      200,
+      10
+     ],
+     "plan": "skipped",
+     "seenIn": "recording_2024-10-08_12-29-10_00715",
+     "skip": {
+      "reason": "not-visible",
+      "note": "drawn by the game's rail-infra canopy (OSM w1302881959, building=roof); modelling it means suppressing that way along 216 m, an integrator call (see hand-back)"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "w20-160",
+   "bearing": 160,
+   "lengthM": 5.7,
+   "centre": [
+    4.9186327,
+    52.3465274
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002584_pano_0001_000232",
+   "capturedAt": "2022-05-18",
+   "checked": true,
+   "items": [
+    {
+     "id": "s-canopy",
+     "kind": "canopy",
+     "where": "cantilevered entrance canopy with a dark-wood underside on one round yellow column",
+     "approxSizeM": [
+      15,
+      6.5
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002584_pano_0001_000232",
+     "how": "canopy(): half-ellipse 15 x 6.5 m at 5.6 m, ochre column"
+    }
+   ]
+  },
+  {
+   "tag": "w21-70",
+   "bearing": 70,
+   "lengthM": 5.3,
+   "centre": [
+    4.9190036,
+    52.3468355
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-06-20_12-01-53_02089",
+   "capturedAt": "2025-06-20",
+   "checked": true,
+   "items": [
+    {
+     "id": "e-round-windows",
+     "kind": "window-shape",
+     "where": "two round windows with a spoked/cross frame between the entrances",
+     "approxSizeM": [
+      1.1,
+      1.1
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-06-20_12-01-53_02089",
+     "how": "roundWindow() x2"
+    },
+    {
+     "id": "e-clock",
+     "kind": "clock",
+     "where": "small round clock left of the lettering",
+     "approxSizeM": [
+      0.8,
+      0.8
+     ],
+     "plan": "simplified",
+     "seenIn": "recording_2025-06-20_12-01-53_02089",
+     "how": "white disc with dark ring"
+    },
+    {
+     "id": "e-ns-logo",
+     "kind": "sign",
+     "where": "NS logo on the podium front",
+     "approxSizeM": [
+      1.4,
+      0.7
+     ],
+     "plan": "simplified",
+     "seenIn": "recording_2025-06-20_12-01-53_02089",
+     "how": "nsLogo(): bars"
+    },
+    {
+     "id": "e-metro",
+     "kind": "sign",
+     "where": "metro entrance with the M sign at the right of the podium front",
+     "approxSizeM": [
+      3.4,
+      3.5
+     ],
+     "plan": "simplified",
+     "seenIn": "recording_2025-06-20_12-01-53_02089",
+     "how": "dark opening and raised M"
+    },
+    {
+     "id": "e-railing",
+     "kind": "other",
+     "where": "railing along the top of the podium",
+     "approxSizeM": [
+      40,
+      1
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-06-20_12-01-53_02089",
+     "how": "podium() railing"
+    }
+   ]
+  },
+  {
+   "tag": "w22-70",
+   "bearing": 70,
+   "lengthM": 4.1,
+   "centre": [
+    4.9189663,
+    52.3468748
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-06-20_12-01-53_02088",
+   "capturedAt": "2025-06-20",
+   "checked": true,
+   "items": [
+    {
+     "id": "e-gable-louvre",
+     "kind": "other",
+     "where": "louvre under the apex of the east gable",
+     "approxSizeM": [
+      2.5,
+      0.9
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-06-20_12-01-53_02088",
+     "how": "gableEnd(): dark panel with frame slats"
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  }
+ ]
+}

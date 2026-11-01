@@ -1,5 +1,117 @@
 # Canal Recall — what is built
 
+**Eleven landmarks and Museumkwartier round 1 (2026-11-01, #159 #160 #162–#167):**
+the user asked for ten landmark buildings by end of day and the Lensbomen sculpture. Six opus
+lanes (two landmarks each, Amstelstation alone) delivered `olympisch-stadion`, `het-nieuwe-huis`,
+`academie-van-bouwkunst`, `hollandsche-manege`, `amstelstation`, `droogbak`, `havengebouw`,
+`abn-amro-hoofdkantoor`, `wolkenkrabber`, `huis-met-de-hoofden` and `lensbomen` (catalogue 355 → 366).
+Two picks were dropped because they already existed under ids a catalogue grep missed
+(`muziekgebouw-bimhuis` in `manualModels.ts`, `barlaeus` as an installed large recipe); the user caught
+the first. Audit-rule fixes that came out of it (`geometryAudit.ts`, tested): a predicted missing window
+only between two regular windows and never where an opening already is (stadium entrance bay); a
+`symmetric` facade entry's odd-row centre axis is the composition, exempt from size and level
+(Academie risalit). Facade specs split at feature bays (`alongM` ranges) rather than baselines raised;
+first baseline rows recorded for `droogbak` (17 photo-true off-size windows, 4 solid piers) and
+`havengebouw` (6 plinth openings). `embassy-free-mind` and `levend-paardenmuseum` held (superseded on
+their pands). Droogbak's courtyard carries a glazed roof read from the 2024 orthophoto. Museumkwartier
+survey lanes: 105 + 92 faces intaked, four libraries tried on every family (oud-west placed 48/29
+before review on CS/CG but none survived gallery review), six types in `types/museumkwartier/`
+(`museum-cs-1900-gable-balcony`, `museum-de-1899-corbel-cornice/-flat/-flat-plain`,
+`museum-hc-1910-glazed-oriel`, `museum-jv-1910-lintel-parapet`), 30 pands in 6 rows installed
+(chunks 137 → 143), kit: `corbelTable`, `bayWindows.oriel.consoleCorbel`, `crownShoulderRise`, flat cap
+on neck/bell gables, V-notch fix in the crown-profile sort (`cw-heren-175702` and `kinker-334-374`
+goldens re-recorded). Integration: union merges per lane with a scripted catalogue/dispatcher union
+(one merge lost the `embassy-free-mind` held flag, caught by `test:building-taxonomy`), signature
+bundle, lods, covers, backlog, buurt pages, explorer looks, exposure rows; strips and landmark sources
+archived to map-recall2-source-data. The landmark lanes' in-game captures draw the model without the
+city around it (`ingame-capture.ts`), and the `demo-shots` cockpit spots do not face the model; the
+notes use the lanes' captures.
+
+**The Westerkerk miss was the spec aiming at open air; the own engine honours the building looks; governor-no-flash runs under own (2026-11-01, P1/P5).**
+L1 hand-back 19 (1baaf686c). building-click-perf's "every kind" sampler
+aimed a 3×3 grid at the model box's mid-height, and the Westerkerk's box is
+its 87 m tower, so at 43 m every aim point over the nave was open air and
+the click fell through to the Anne Frank museum block behind; both engines
+behave the same at those pixels and the model itself picks correctly on
+~300 pixels. The grid now also aims at 1/4 and 3/4 height, and a named
+regression "Westermarkt: a click on the drawn Westerkerk opens the
+Westerkerk" checks every drawn pixel (own 521/521, default 521/521). Gap
+found: under MapLibre a drawn POI label wins the click, own does not check
+labels (default's 228 fails "generic" at Westermarkt where 3 pands go to the
+"Guy Olivier" label); decision: own must hit-test labels before the prism
+pick (L1 next). Building looks under own: the URL look (`?buildings3d=` or
+the global) and the B-key / Settings cycle (photo, procedural, storybook,
+cartoon, untextured) switch the walls as on MapLibre, a URL look locks out
+the saved preference; building-look :47/:58 pass under own. governor-no-flash
+under own forces `?tier=high` (own starts at the tier's cap), wraps the frame
+host's `setPixelRatio`, and each slow frame asks for the next one (a stopped
+car left frame gaps that restarted the governor's 12 s settle): 2 → 1.5 →
+1.13 passes. bag-tiles is a dead path on both engines (the tile probe
+answers world-v1 before `?bagTiles=1` is read): the spec gets `&world=live`.
+iPhone texture 26 MB is the facade atlas on both engines (208 layers at 128
+px, 24.5 MB + 12 city-look slots 1.5 MB): re-baselined to 27 MB with the
+reason (`iphoneTextureMB` in budgets; 96 px bays would need a look review,
+the mask-format cut is a later materials item). Overview footprints gap:
+estimate 1 day for resident world-v1 FOOT cells drawn in roof tone and faded
+with the blend, 1–1.5 days (+0.35–0.6 MB) for a far coarse layer; resident
+cells first, then re-measure. Checks: lint, test:engine 120/120,
+test:own-ground 223/223; own desktop core + building-look +
+building-click-perf + governor 17 passed 3 skipped; own iPhone core 5 / 3;
+default desktop look-consistency, start-heading, building-look, Westermarkt,
+governor 22 passed 1 skipped. Integrator: engine bundle rebuilt,
+test:engine 121/121.
+
+**Kerbs and bollards of the rider's cell draw only within 150 m; the pin harness stops landmark cards (2026-11-01, P4).**
+Materials lane (c9f743361). `tiledGeometry.ts` `setTileReach`: a tile wholly
+beyond the distance from the rider is not drawn, with 25 m of hysteresis,
+on both the desktop and touch draw paths; `gameGround` applies it to the
+kerb and bollard layers of the LOD 0 full-detail cell only (bridge deck
+bodies stay at every distance, they are large and seen from far);
+`?groundReach=0` off, `?groundReach=<m>` moves the distance; the flag parser
+keeps the default when the key is absent (the `Number(null)` = 0 class of
+bug again, now with a test). Jordaan ride p50: desktop own ground 397k →
+362k, frame 1.87 M → 1.84 M, draws unchanged 288 / 399; iPad own ground
+234k → 222k, frame 0.95 M → 0.94 M, draws p95 800 → 789; in-frame links
+0 / 0. Frozen frame against `?groundReach=0`: Westerkerk 4,855 px,
+Bloemgracht 80 923, Nassaukade 5,347, Leidsegracht courtyard 3,079, IJburg
+edge 0 (its noise floor was 1.9 M px that run, so it proves nothing); every
+moved pixel is a thin far kerb edge in the top third of the frame; the
+integrator looked at the Nassaukade transition and densest-window strips at
+ride zoom and 60° pitch and could not tell A from B, no kerb line visibly
+ends. Harness: once the route is open `_lastDriveByAt` reads as the current
+race time so no drive-by card comes up, any card up is closed with its
+highlight (`AB_HIGHLIGHT=1` keeps them); the step-1 pin re-read 1 / 0 / 0 /
+0 / 0 px (noise ≤ 3), replacing the 26k px explained earlier. Integrator:
+engine, three, three-buildings and 3d bundles rebuilt; test:own-ground
+224/224, test:engine 120/120; `trianglesIpad` re-recorded p50 0.94 M.
+Next owner: trees (183k on iPad), then the cycle overlay (108k).
+
+**Time to ride by phase on the phone profile: the routing graph is the largest phase; its stitch pass reads one grid cell, build 754 → 473 ms (2026-11-01, P3).**
+Road lane (5f0fad294). `scripts/time-to-ride-device.mjs` times submit →
+racing by phase (fetchRoads, buildRoadSegments, loadLandmarks,
+routingGraph, surfaceIndex, planRoute, settle hold) on the emulated iPhone
+13 at 4× CPU, or on the real device through safaridriver (`--target
+safari`). Emulated, own engine, three runs: routingGraph 2.83–2.89 s of
+the ~4.8 s to the 0.92 step; settle hold 1.05–2.10 s, never timing out,
+always waiting on facades and building tiles; submit → racing 6.3 / 7.7 /
+11.9 s (one 4.6 s stall before prepareIntro). The cut: in the
+junction-stitch pass each endpoint reads its own grid cell instead of the
+3×3 block (0.57 M candidates instead of 5.1 M; safe because the span
+padding is at least the stitch radius), survivors kept in the 3×3 scan
+order so the graph is identical (`road-graph-route-identity.ts --compare`:
+identical structure, connectors, 3 full trees, 71 pairs × 4 planners).
+City graph build in node 754 → 473 ms; in emulation the span moved only
+2.85 → ~2.43 s because the build yields every 48 ms and SwiftShader frames
+between slices take the wall time; on a real GPU about 0.3 s is expected,
+unmeasured. The real device could not be timed (safaridriver: locked,
+then "not paired"); today's tier rides read navigation → racing 5.7 s. Two
+levers not taken yet: build the city world during the briefing
+(route-independent; removes ~4–5 s at 4× for anyone who reads the
+briefing, nothing for an immediate submit) and a prebuilt graph binary.
+Integrator decision: lever (a) first with two probes (immediate submit =
+the gate, 5 s briefing dwell = the player case), (b) if the gate is still
+red. `road-graph.bundle.js` rebuilt; `test:road-graph` and lint clean.
+
 **Pop-in measured the way the player sees it: near zero on the seeded ride on both engines, the "unexplained" bucket is Westerkerk parallax; the 35 m phone arrivals are a measurement artefact; landmarks free their vertex arrays after upload (2026-11-01, P3/#130).**
 Road lane (4013065e1 `pop-in.mjs --route seeded`; 69544e547). Screen-space
 pop, desktop, 1× CPU, 60 s, committed bundles: seeded Anne Frank →

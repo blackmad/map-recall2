@@ -1,0 +1,284 @@
+{
+ "schemaVersion": 1,
+ "id": "havengebouw",
+ "pand": "0363100012179689",
+ "brief": "scripts/landmarks/havengebouw-brief.md",
+ "signature": [
+  "red-columns",
+  "window-grid",
+  "dark-columns",
+  "balcony-bay",
+  "top-floors",
+  "slot-windows",
+  "grey-plinth"
+ ],
+ "walls": [
+  {
+   "tag": "w01-301",
+   "bearing": 301,
+   "lengthM": 35.6,
+   "centre": [
+    4.895379,
+    52.381587
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "items": [],
+   "note": "No municipal panorama of the NW (rail-yard) front. Wikimedia Commons Amsterdam_Havengebouw_001.JPG (CC BY 3.0, from the tracks) shows it: the same dark-column grid of seven bays and ten office floors, red columns and glazed top floors; its plinth is hidden by the platform wall, so the plinth windows are a guess."
+  },
+  {
+   "tag": "w02-121",
+   "bearing": 121,
+   "lengthM": 26.2,
+   "centre": [
+    4.895695,
+    52.3815225
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002037_pano_0000_002971",
+   "capturedAt": "2021-03-11",
+   "checked": true,
+   "items": [
+    {
+     "id": "dark-columns",
+     "kind": "other",
+     "where": "long fronts, dark-brown tiled columns on a 4.97 m pitch from the plinth to the slab top",
+     "approxSizeM": [
+      0.6,
+      37
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002037_pano_0000_002971",
+     "how": "havengebouw-builder.ts: 8 dark panels 0.15 m proud per long front"
+    },
+    {
+     "id": "window-grid",
+     "kind": "window-shape",
+     "where": "long fronts, three windows per bay per floor over cream-tiled spandrels and fins, ten office floors",
+     "approxSizeM": [
+      1.1,
+      1.6
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002037_pano_0000_002971",
+     "how": "glass panels 1.1 x 1.6 m per bay third per floor on the cream body"
+    },
+    {
+     "id": "grey-plinth",
+     "kind": "other",
+     "where": "plinth to 6.8 m, large grey square tiles",
+     "approxSizeM": [
+      35,
+      6.8
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002037_pano_0000_002971",
+     "how": "grey cladding panels with the shop windows and square windows on two levels"
+    },
+    {
+     "id": "shop-windows",
+     "kind": "window-shape",
+     "where": "plinth, two large glazed openings and the entrance glazing at the SW end",
+     "approxSizeM": [
+      4.5,
+      2.9
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002037_pano_0000_002971",
+     "how": "glass panels in the plinth"
+    },
+    {
+     "id": "entrance-lettering",
+     "kind": "lettering",
+     "where": "small name sign above the entrance glazing at the SW end",
+     "approxSizeM": [
+      1.8,
+      0.3
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7316010203-002037_pano_0000_002971",
+     "skip": {
+      "reason": "too-small",
+      "note": "about 1.8 m wide and illegible in the 2021 panorama; the map label names the building"
+     }
+    },
+    {
+     "id": "anchor-monument",
+     "kind": "sculpture",
+     "where": "ship anchor on a stone mound in front of the SE plinth",
+     "approxSizeM": [
+      4,
+      1.5
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7316010203-002037_pano_0000_002971",
+     "skip": {
+      "reason": "not-visible",
+      "note": "a free-standing object on the pavement, not part of the building or its pand"
+     }
+    },
+    {
+     "id": "red-columns",
+     "kind": "other",
+     "where": "steel columns outside the two set-back top floors, painted red, bent over the roof edge",
+     "approxSizeM": [
+      0.35,
+      7.5
+     ],
+     "plan": "modelled",
+     "seenIn": "commons:File:Havengebouw_Amsterdam.jpg",
+     "how": "red posts at each dark-column line and at the short-front bay edges, with a horizontal arm over the fascia"
+    },
+    {
+     "id": "top-floors",
+     "kind": "window-shape",
+     "where": "two set-back glazed top floors (canteen, restaurant) with a white spandrel band and a white fascia",
+     "approxSizeM": [
+      33,
+      7
+     ],
+     "plan": "modelled",
+     "seenIn": "commons:File:Havengebouw_Amsterdam.jpg",
+     "how": "glass box set back 1.2 m, white band and fascia, mullions on the bay lines"
+    },
+    {
+     "id": "penthouse",
+     "kind": "other",
+     "where": "blue machine-room penthouse on the roof with masts",
+     "approxSizeM": [
+      26,
+      2.9
+     ],
+     "plan": "simplified",
+     "seenIn": "commons:File:Havengebouw_Amsterdam.jpg",
+     "how": "blue box with a white cap and four mast rods"
+    }
+   ]
+  },
+  {
+   "tag": "w03-31",
+   "bearing": 31,
+   "lengthM": 22.2,
+   "centre": [
+    4.8956515,
+    52.3816745
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002032_pano_0000_000787",
+   "capturedAt": "2021-03-08",
+   "checked": true,
+   "items": [
+    {
+     "id": "balcony-bay",
+     "kind": "balcony-ironwork",
+     "where": "centre bay of the IJ front: a balcony per floor in a projecting white frame, white railings",
+     "approxSizeM": [
+      9.1,
+      37
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002032_pano_0000_000787",
+     "how": "white frame fins and lintel 1.3 m out, balcony slabs, rails and balusters, glazing behind"
+    },
+    {
+     "id": "slot-windows",
+     "kind": "window-shape",
+     "where": "dark-tiled flanks, one long horizontal window per floor each side",
+     "approxSizeM": [
+      3.85,
+      1.2
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002032_pano_0000_000787",
+     "how": "glass panels on the dark flank panels"
+    },
+    {
+     "id": "ij-plinth-window",
+     "kind": "window-shape",
+     "where": "plinth under the balconies, one wide window and square windows on two levels",
+     "approxSizeM": [
+      5.9,
+      2.6
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002032_pano_0000_000787",
+     "how": "glass panels in the plinth"
+    }
+   ]
+  },
+  {
+   "tag": "w04-121",
+   "bearing": 121,
+   "lengthM": 5.8,
+   "centre": [
+    4.895549,
+    52.3813705
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "items": [
+    {
+     "id": "drum",
+     "kind": "other",
+     "where": "semicircular projection of the BAG outline on the SE front, 1.7 m radius",
+     "approxSizeM": [
+      3.4,
+      6.4
+     ],
+     "plan": "simplified",
+     "seenIn": "bag:0363100012179689",
+     "how": "grey half-cylinder to plinth height; its use is not visible in the photos"
+    },
+    {
+     "id": "entrance-block",
+     "kind": "other",
+     "where": "low entrance block on the SW end (BAG 0363100012179691, 4 m), between the tower and the quay",
+     "approxSizeM": [
+      13.1,
+      4.2
+     ],
+     "plan": "simplified",
+     "seenIn": "bag:0363100012179691",
+     "how": "grey concrete walls from the BAG outline with a slate roof at 4.2 m and no openings: landmark-brief finds no panorama within 35 m of any of its five walls and the Commons photos show it only under scaffolding (De_Ruijterkade_7 OSIM00005005840, 1960s)"
+    }
+   ],
+   "note": "5.8 m stretch of the SE front between the SW corner and the drum; the entrance glazing seen at the left edge of w02-121."
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas w02-121, w03-31",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/",
+   "licence": "CC BY 4.0"
+  },
+  {
+   "name": "Commons File:Havengebouw Amsterdam.jpg",
+   "url": "https://commons.wikimedia.org/wiki/File:Havengebouw_Amsterdam.jpg",
+   "licence": "CC BY-SA 4.0"
+  },
+  {
+   "name": "Commons File:Amsterdam Havengebouw 001.JPG",
+   "url": "https://commons.wikimedia.org/wiki/File:Amsterdam_Havengebouw_001.JPG",
+   "licence": "CC BY 3.0"
+  },
+  {
+   "name": "Commons File:De Ruijterkade 7, Afbeeldingsbestand OSIM00005005840.jpg",
+   "url": "https://commons.wikimedia.org/wiki/File:De_Ruijterkade_7,_Afbeeldingsbestand_OSIM00005005840.jpg",
+   "licence": "CC BY 4.0"
+  },
+  {
+   "name": "Municipal monument 216001 register text",
+   "url": "https://api.data.amsterdam.nl/v1/monumenten/monumenten/1d71388d-5a55-44c3-b595-8c491d6d5189?_format=json",
+   "licence": "CC0"
+  },
+  {
+   "name": "3DBAG LoD2.2 0363100012179689, 0363100012179691",
+   "url": "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012179689",
+   "licence": "CC BY 4.0"
+  }
+ ]
+}

@@ -1,0 +1,101 @@
+{
+ "street": "Alexander Boersstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched n/a (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012152870",
+   "addresses": [
+    "Alexander Boersstraat 37"
+   ],
+   "groundUnits": [
+    {
+     "address": "Alexander Boersstraat 37-H",
+     "use": "woonfunctie",
+     "areaM2": 260,
+     "bagId": "0363010000564884"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012237277",
+   "addresses": [
+    "Alexander Boersstraat 39"
+   ],
+   "groundUnits": [
+    {
+     "address": "Alexander Boersstraat 39-H",
+     "use": "woonfunctie",
+     "areaM2": 197,
+     "bagId": "0363010000564886"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012163721",
+   "addresses": [
+    "Alexander Boersstraat 41",
+    "Alexander Boersstraat 41A",
+    "Alexander Boersstraat 41B",
+    "Alexander Boersstraat 41C",
+    "Alexander Boersstraat 41D"
+   ],
+   "groundUnits": [
+    {
+     "address": "Alexander Boersstraat 41",
+     "use": "woonfunctie",
+     "areaM2": 365,
+     "bagId": "0363010000564888"
+    },
+    {
+     "address": "Alexander Boersstraat 41A",
+     "use": "woonfunctie",
+     "areaM2": 145,
+     "bagId": "0363010012599696"
+    },
+    {
+     "address": "Alexander Boersstraat 41B",
+     "use": "woonfunctie",
+     "areaM2": 64,
+     "bagId": "0363010012599697"
+    },
+    {
+     "address": "Alexander Boersstraat 41C",
+     "use": "woonfunctie",
+     "areaM2": 64,
+     "bagId": "0363010012599698"
+    },
+    {
+     "address": "Alexander Boersstraat 41D",
+     "use": "woonfunctie",
+     "areaM2": 69,
+     "bagId": "0363010012605247"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012165504",
+   "addresses": [
+    "Alexander Boersstraat 43"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Eeghenlaan 1",
+     "use": "winkelfunctie",
+     "areaM2": 112,
+     "bagId": "0363010000838493"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  }
+ ]
+}

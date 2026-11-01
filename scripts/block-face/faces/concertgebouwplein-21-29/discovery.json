@@ -1,0 +1,500 @@
+{
+ "street": "Concertgebouwplein",
+ "seed": "0363100012065378",
+ "members": [
+  "0363100012065378",
+  "0363100012097766",
+  "0363100012124673",
+  "0363100012102212",
+  "0363100012144118"
+ ],
+ "ends": [
+  {
+   "side": "left",
+   "reason": "next fronting pand 0363100012127043 21.3 m on shares no party wall (cross street or gap)"
+  },
+  {
+   "side": "right",
+   "reason": "no further pand fronts the street in the fetched area"
+  }
+ ],
+ "rejected": [
+  {
+   "pandId": "0363100012069411",
+   "reason": "no frontage on Concertgebouwplein: No footprint edge faces Concertgebouwplein"
+  },
+  {
+   "pandId": "0363100012078695",
+   "reason": "frontage 36.7 m from Concertgebouwplein"
+  },
+  {
+   "pandId": "0363100012083440",
+   "reason": "no frontage on Concertgebouwplein: No footprint edge faces Concertgebouwplein"
+  },
+  {
+   "pandId": "0363100012112804",
+   "reason": "sightline to Concertgebouwplein crosses 0363100012083440"
+  },
+  {
+   "pandId": "0363100012125480",
+   "reason": "frontage 48.9 m from Concertgebouwplein"
+  },
+  {
+   "pandId": "0363100012063908",
+   "reason": "frontage 41.6 m from Concertgebouwplein"
+  },
+  {
+   "pandId": "0363100012068545",
+   "reason": "frontage 73.4 m from Concertgebouwplein"
+  },
+  {
+   "pandId": "0363100012070429",
+   "reason": "frontage 33.0 m from Concertgebouwplein"
+  },
+  {
+   "pandId": "0363100012070697",
+   "reason": "frontage 59.8 m from Concertgebouwplein"
+  },
+  {
+   "pandId": "0363100012073782",
+   "reason": "frontage 60.0 m from Concertgebouwplein"
+  },
+  {
+   "pandId": "0363100012074664",
+   "reason": "frontage 64.0 m from Concertgebouwplein"
+  },
+  {
+   "pandId": "0363100012077169",
+   "reason": "frontage 71.4 m from Concertgebouwplein"
+  },
+  {
+   "pandId": "0363100012077779",
+   "reason": "sightline to Concertgebouwplein crosses 0363100012092581"
+  },
+  {
+   "pandId": "0363100012078941",
+   "reason": "frontage 60.3 m from Concertgebouwplein"
+  },
+  {
+   "pandId": "0363100012079390",
+   "reason": "frontage 46.4 m from Concertgebouwplein"
+  },
+  {
+   "pandId": "0363100012083474",
+   "reason": "frontage 58.1 m from Concertgebouwplein"
+  },
+  {
+   "pandId": "0363100012084446",
+   "reason": "frontage 60.1 m from Concertgebouwplein"
+  },
+  {
+   "pandId": "0363100012086954",
+   "reason": "frontage 60.7 m from Concertgebouwplein"
+  },
+  {
+   "pandId": "0363100012089720",
+   "reason": "frontage 38.1 m from Concertgebouwplein"
+  },
+  {
+   "pandId": "0363100012090555",
+   "reason": "frontage 61.7 m from Concertgebouwplein"
+  },
+  {
+   "pandId": "0363100012090723",
+   "reason": "frontage 61.7 m from Concertgebouwplein"
+  },
+  {
+   "pandId": "0363100012091058",
+   "reason": "frontage 35.9 m from Concertgebouwplein"
+  },
+  {
+   "pandId": "0363100012092581",
+   "reason": "no frontage on Concertgebouwplein: No footprint edge faces Concertgebouwplein"
+  },
+  {
+   "pandId": "0363100012099898",
+   "reason": "frontage 36.4 m from Concertgebouwplein"
+  },
+  {
+   "pandId": "0363100012102603",
+   "reason": "frontage 42.2 m from Concertgebouwplein"
+  },
+  {
+   "pandId": "0363100012105454",
+   "reason": "frontage 65.7 m from Concertgebouwplein"
+  },
+  {
+   "pandId": "0363100012107749",
+   "reason": "frontage 44.3 m from Concertgebouwplein"
+  },
+  {
+   "pandId": "0363100012108114",
+   "reason": "frontage 51.7 m from Concertgebouwplein"
+  },
+  {
+   "pandId": "0363100012110888",
+   "reason": "frontage 112.7 m from Concertgebouwplein"
+  },
+  {
+   "pandId": "0363100012111893",
+   "reason": "frontage 62.8 m from Concertgebouwplein"
+  },
+  {
+   "pandId": "0363100012114665",
+   "reason": "frontage 48.8 m from Concertgebouwplein"
+  },
+  {
+   "pandId": "0363100012115169",
+   "reason": "sightline to Concertgebouwplein crosses 0363100012077779"
+  },
+  {
+   "pandId": "0363100012116424",
+   "reason": "frontage 69.3 m from Concertgebouwplein"
+  },
+  {
+   "pandId": "0363100012119761",
+   "reason": "frontage 33.4 m from Concertgebouwplein"
+  },
+  {
+   "pandId": "0363100012120011",
+   "reason": "frontage 77.0 m from Concertgebouwplein"
+  },
+  {
+   "pandId": "0363100012126652",
+   "reason": "frontage 37.5 m from Concertgebouwplein"
+  },
+  {
+   "pandId": "0363100012128629",
+   "reason": "frontage 83.8 m from Concertgebouwplein"
+  },
+  {
+   "pandId": "0363100012130657",
+   "reason": "frontage 59.7 m from Concertgebouwplein"
+  },
+  {
+   "pandId": "0363100012137088",
+   "reason": "frontage 52.2 m from Concertgebouwplein"
+  },
+  {
+   "pandId": "0363100012145693",
+   "reason": "no frontage on Concertgebouwplein: No footprint edge faces Concertgebouwplein"
+  },
+  {
+   "pandId": "0363100012145883",
+   "reason": "frontage 44.6 m from Concertgebouwplein"
+  },
+  {
+   "pandId": "0363100012152896",
+   "reason": "frontage 68.9 m from Concertgebouwplein"
+  },
+  {
+   "pandId": "0363100012161732",
+   "reason": "frontage 53.4 m from Concertgebouwplein"
+  },
+  {
+   "pandId": "0363100012161880",
+   "reason": "sightline to Concertgebouwplein crosses 0363100012237136"
+  },
+  {
+   "pandId": "0363100012162112",
+   "reason": "frontage 48.1 m from Concertgebouwplein"
+  },
+  {
+   "pandId": "0363100012163537",
+   "reason": "frontage 45.1 m from Concertgebouwplein"
+  },
+  {
+   "pandId": "0363100012132447",
+   "reason": "sightline to Concertgebouwplein crosses 0363100012092581"
+  },
+  {
+   "pandId": "0363100012136992",
+   "reason": "sightline to Concertgebouwplein crosses 0363100012144118"
+  },
+  {
+   "pandId": "0363100012138486",
+   "reason": "frontage 35.3 m from Concertgebouwplein"
+  },
+  {
+   "pandId": "0363100012138798",
+   "reason": "frontage 54.9 m from Concertgebouwplein"
+  },
+  {
+   "pandId": "0363100012139354",
+   "reason": "frontage 45.7 m from Concertgebouwplein"
+  },
+  {
+   "pandId": "0363100012142783",
+   "reason": "frontage 67.4 m from Concertgebouwplein"
+  },
+  {
+   "pandId": "0363100012145801",
+   "reason": "frontage 55.5 m from Concertgebouwplein"
+  },
+  {
+   "pandId": "0363100012147718",
+   "reason": "frontage 33.2 m from Concertgebouwplein"
+  },
+  {
+   "pandId": "0363100012151501",
+   "reason": "no frontage on Concertgebouwplein: No footprint edge faces Concertgebouwplein"
+  },
+  {
+   "pandId": "0363100012152284",
+   "reason": "frontage 134.9 m from Concertgebouwplein"
+  },
+  {
+   "pandId": "0363100012152362",
+   "reason": "frontage 94.1 m from Concertgebouwplein"
+  },
+  {
+   "pandId": "0363100012153148",
+   "reason": "frontage 85.4 m from Concertgebouwplein"
+  },
+  {
+   "pandId": "0363100012153904",
+   "reason": "frontage 75.5 m from Concertgebouwplein"
+  },
+  {
+   "pandId": "0363100012155183",
+   "reason": "frontage 34.3 m from Concertgebouwplein"
+  },
+  {
+   "pandId": "0363100012155779",
+   "reason": "frontage 82.4 m from Concertgebouwplein"
+  },
+  {
+   "pandId": "0363100012156358",
+   "reason": "frontage 96.6 m from Concertgebouwplein"
+  },
+  {
+   "pandId": "0363100012156419",
+   "reason": "frontage 92.0 m from Concertgebouwplein"
+  },
+  {
+   "pandId": "0363100012156478",
+   "reason": "frontage 79.8 m from Concertgebouwplein"
+  },
+  {
+   "pandId": "0363100012157088",
+   "reason": "frontage 139.4 m from Concertgebouwplein"
+  },
+  {
+   "pandId": "0363100012158132",
+   "reason": "frontage 94.6 m from Concertgebouwplein"
+  },
+  {
+   "pandId": "0363100012158182",
+   "reason": "frontage 86.8 m from Concertgebouwplein"
+  },
+  {
+   "pandId": "0363100012158521",
+   "reason": "frontage 133.0 m from Concertgebouwplein"
+  },
+  {
+   "pandId": "0363100012159254",
+   "reason": "frontage 77.5 m from Concertgebouwplein"
+  },
+  {
+   "pandId": "0363100012160058",
+   "reason": "frontage 99.8 m from Concertgebouwplein"
+  },
+  {
+   "pandId": "0363100012160354",
+   "reason": "frontage 91.1 m from Concertgebouwplein"
+  },
+  {
+   "pandId": "0363100012160611",
+   "reason": "frontage 108.2 m from Concertgebouwplein"
+  },
+  {
+   "pandId": "0363100012160736",
+   "reason": "frontage 101.7 m from Concertgebouwplein"
+  },
+  {
+   "pandId": "0363100012161545",
+   "reason": "frontage 98.4 m from Concertgebouwplein"
+  },
+  {
+   "pandId": "0363100012161636",
+   "reason": "frontage 91.7 m from Concertgebouwplein"
+  },
+  {
+   "pandId": "0363100012161919",
+   "reason": "frontage 91.4 m from Concertgebouwplein"
+  },
+  {
+   "pandId": "0363100012161951",
+   "reason": "frontage 137.1 m from Concertgebouwplein"
+  },
+  {
+   "pandId": "0363100012163118",
+   "reason": "frontage 103.7 m from Concertgebouwplein"
+  },
+  {
+   "pandId": "0363100012163219",
+   "reason": "frontage 105.9 m from Concertgebouwplein"
+  },
+  {
+   "pandId": "0363100012163646",
+   "reason": "frontage 92.7 m from Concertgebouwplein"
+  },
+  {
+   "pandId": "0363100012164318",
+   "reason": "frontage 110.4 m from Concertgebouwplein"
+  },
+  {
+   "pandId": "0363100012164333",
+   "reason": "frontage 45.3 m from Concertgebouwplein"
+  },
+  {
+   "pandId": "0363100012235394",
+   "reason": "sightline to Concertgebouwplein crosses 0363100012237136"
+  },
+  {
+   "pandId": "0363100012235927",
+   "reason": "frontage 34.0 m from Concertgebouwplein"
+  },
+  {
+   "pandId": "0363100012236415",
+   "reason": "frontage 40.6 m from Concertgebouwplein"
+  },
+  {
+   "pandId": "0363100012166032",
+   "reason": "frontage 115.1 m from Concertgebouwplein"
+  },
+  {
+   "pandId": "0363100012166607",
+   "reason": "frontage 84.0 m from Concertgebouwplein"
+  },
+  {
+   "pandId": "0363100012183440",
+   "reason": "no frontage on Concertgebouwplein: No footprint edge faces Concertgebouwplein"
+  },
+  {
+   "pandId": "0363100012187040",
+   "reason": "frontage 88.6 m from Concertgebouwplein"
+  },
+  {
+   "pandId": "0363100012191848",
+   "reason": "frontage 37.0 m from Concertgebouwplein"
+  },
+  {
+   "pandId": "0363100012196840",
+   "reason": "frontage 83.8 m from Concertgebouwplein"
+  },
+  {
+   "pandId": "0363100012204080",
+   "reason": "frontage 50.1 m from Concertgebouwplein"
+  },
+  {
+   "pandId": "0363100012211101",
+   "reason": "no frontage on Concertgebouwplein: No footprint edge faces Concertgebouwplein"
+  },
+  {
+   "pandId": "0363100012218010",
+   "reason": "no frontage on Concertgebouwplein: No footprint edge faces Concertgebouwplein"
+  },
+  {
+   "pandId": "0363100012227383",
+   "reason": "no frontage on Concertgebouwplein: No footprint edge faces Concertgebouwplein"
+  },
+  {
+   "pandId": "0363100012235968",
+   "reason": "frontage 84.2 m from Concertgebouwplein"
+  },
+  {
+   "pandId": "0363100012236344",
+   "reason": "frontage 131.1 m from Concertgebouwplein"
+  },
+  {
+   "pandId": "0363100012237179",
+   "reason": "frontage 35.9 m from Concertgebouwplein"
+  },
+  {
+   "pandId": "0363100012249642",
+   "reason": "frontage 71.5 m from Concertgebouwplein"
+  },
+  {
+   "pandId": "0363100012078650",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012094824",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012123673",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012138687",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012144606",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012233435",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012237136",
+   "reason": "fronts the other side / another direction"
+  }
+ ],
+ "areaHalfSizeM": 90,
+ "pands": [
+  {
+   "pandId": "0363100012065378",
+   "alongM": 0,
+   "widthM": 8.34,
+   "eavesM": 11.73,
+   "roofMaxM": 15.9,
+   "storeys3dbag": 0,
+   "builtYear": 1915,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012097766",
+   "alongM": 8.74,
+   "widthM": 9.15,
+   "eavesM": 11.76,
+   "roofMaxM": 14.35,
+   "storeys3dbag": 3,
+   "builtYear": 1915,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012124673",
+   "alongM": 17.89,
+   "widthM": 9.13,
+   "eavesM": 11.8,
+   "roofMaxM": 11.81,
+   "storeys3dbag": 0,
+   "builtYear": 1915,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012102212",
+   "alongM": 26.92,
+   "widthM": 8.94,
+   "eavesM": 11.77,
+   "roofMaxM": 19.22,
+   "storeys3dbag": 0,
+   "builtYear": 1915,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012144118",
+   "alongM": 37.09,
+   "widthM": 11.39,
+   "eavesM": 19.1,
+   "roofMaxM": 21.09,
+   "storeys3dbag": 4,
+   "builtYear": 1915,
+   "uncertainty": []
+  }
+ ]
+}

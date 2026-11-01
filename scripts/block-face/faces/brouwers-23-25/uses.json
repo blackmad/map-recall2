@@ -1,0 +1,84 @@
+{
+ "street": "Jan Willem Brouwersstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-01T15:44:19.503Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012078695",
+   "addresses": [
+    "Jan Willem Brouwersstraat 23"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jan Willem Brouwersstraat 23",
+     "use": "woonfunctie",
+     "areaM2": 284,
+     "bagId": "0363010000688381"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012112804",
+   "addresses": [
+    "Jan Willem Brouwersstraat 25",
+    "Jan Willem Brouwersstraat 27"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jan Willem Brouwersstraat 25",
+     "use": "logiesfunctie",
+     "areaM2": 319,
+     "bagId": "0363010000688384"
+    },
+    {
+     "address": "Jan Willem Brouwersstraat 27",
+     "use": "woonfunctie",
+     "areaM2": 148,
+     "bagId": "0363010012064209"
+    },
+    {
+     "address": "Jan Willem Brouwersstraat 25",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 155,
+     "bagId": "0363010012064210"
+    },
+    {
+     "address": "Jan Willem Brouwersstraat 25",
+     "use": "logiesfunctie",
+     "areaM2": 351,
+     "bagId": "0363010012118585"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2816384342,
+     "lngLat": [
+      4.8777723,
+      52.3558162
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "25",
+      "addr:postcode": "1071LH",
+      "addr:street": "Jan Willem Brouwersstraat",
+      "name": "De Bedstee",
+      "name:fr": "De Bedstee boutique capsule",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "tourism": "hostel",
+      "wheelchair": "no"
+     },
+     "fetchedAt": "2026-11-01T15:44:19.503Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}

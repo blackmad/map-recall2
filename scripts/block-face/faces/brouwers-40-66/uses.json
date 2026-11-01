@@ -1,0 +1,125 @@
+{
+ "street": "Jan Willem Brouwersstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-01T15:42:02.554Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012163537",
+   "addresses": [
+    "Jan Willem Brouwersstraat 50",
+    "Jan Willem Brouwersstraat 52",
+    "Jan Willem Brouwersstraat 54",
+    "Jan Willem Brouwersstraat 56",
+    "Jan Willem Brouwersstraat 58",
+    "Jan Willem Brouwersstraat 60",
+    "Jan Willem Brouwersstraat 62",
+    "Jan Willem Brouwersstraat 64",
+    "Jan Willem Brouwersstraat 66"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jan Willem Brouwersstraat 50",
+     "use": "woonfunctie",
+     "areaM2": 40,
+     "bagId": "0363010000688393"
+    },
+    {
+     "address": "Jan Willem Brouwersstraat 52",
+     "use": "woonfunctie",
+     "areaM2": 38,
+     "bagId": "0363010000990180"
+    },
+    {
+     "address": "Jan Willem Brouwersstraat 54",
+     "use": "woonfunctie",
+     "areaM2": 38,
+     "bagId": "0363010000990181"
+    },
+    {
+     "address": "Jan Willem Brouwersstraat 56",
+     "use": "woonfunctie",
+     "areaM2": 38,
+     "bagId": "0363010000990182"
+    },
+    {
+     "address": "Jan Willem Brouwersstraat 58",
+     "use": "woonfunctie",
+     "areaM2": 38,
+     "bagId": "0363010000990183"
+    },
+    {
+     "address": "Jan Willem Brouwersstraat 60",
+     "use": "woonfunctie",
+     "areaM2": 38,
+     "bagId": "0363010000990184"
+    },
+    {
+     "address": "Jan Willem Brouwersstraat 62",
+     "use": "woonfunctie",
+     "areaM2": 38,
+     "bagId": "0363010000990185"
+    },
+    {
+     "address": "Jan Willem Brouwersstraat 64",
+     "use": "woonfunctie",
+     "areaM2": 38,
+     "bagId": "0363010000990186"
+    },
+    {
+     "address": "Jan Willem Brouwersstraat 66",
+     "use": "woonfunctie",
+     "areaM2": 38,
+     "bagId": "0363010000990187"
+    }
+   ],
+   "units": 9,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012161732",
+   "addresses": [
+    "Jan Willem Brouwersstraat 40",
+    "Jan Willem Brouwersstraat 42",
+    "Jan Willem Brouwersstraat 44",
+    "Jan Willem Brouwersstraat 46",
+    "Jan Willem Brouwersstraat 48"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jan Willem Brouwersstraat 40",
+     "use": "woonfunctie",
+     "areaM2": 54,
+     "bagId": "0363010000688392"
+    },
+    {
+     "address": "Jan Willem Brouwersstraat 42",
+     "use": "woonfunctie",
+     "areaM2": 54,
+     "bagId": "0363010000990176"
+    },
+    {
+     "address": "Jan Willem Brouwersstraat 44",
+     "use": "woonfunctie",
+     "areaM2": 54,
+     "bagId": "0363010000990177"
+    },
+    {
+     "address": "Jan Willem Brouwersstraat 46",
+     "use": "woonfunctie",
+     "areaM2": 54,
+     "bagId": "0363010000990178"
+    },
+    {
+     "address": "Jan Willem Brouwersstraat 48",
+     "use": "woonfunctie",
+     "areaM2": 54,
+     "bagId": "0363010000990179"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  }
+ ]
+}

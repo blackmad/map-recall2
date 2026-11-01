@@ -1,0 +1,41 @@
+{
+ "street": "Hondecoeterstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched n/a (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012233672",
+   "addresses": [
+    "Hondecoeterstraat 7"
+   ],
+   "groundUnits": [
+    {
+     "address": "Hondecoeterstraat 7-H",
+     "use": "woonfunctie",
+     "areaM2": 90,
+     "bagId": "0363010000670170"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012236921",
+   "addresses": [
+    "Hondecoeterstraat 9"
+   ],
+   "groundUnits": [
+    {
+     "address": "Hondecoeterstraat 9-H",
+     "use": "woonfunctie",
+     "areaM2": 96,
+     "bagId": "0363010000670177"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  }
+ ]
+}

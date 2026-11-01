@@ -1,0 +1,196 @@
+{
+ "face": "hobbemakade-64-66",
+ "street": "Hobbemakade",
+ "library": "museumkwartier",
+ "stripDate": "2024-12-11",
+ "seconds": 0.36,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [],
+ "pands": [
+  {
+   "pandId": "0363100012165731",
+   "address": "Hobbemakade 66",
+   "builtYear": 1898,
+   "widthM": 5.56,
+   "eavesM": 14.99,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#715f44",
+    "wallRaw": "#635a47",
+    "skyline": {
+     "eavesM": 14.8,
+     "eavesRow": 230,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.38,
+      "riseM": 1.35,
+      "topWidthM": 1.15,
+      "centre": 0.42
+     }
+    },
+    "stucco": false,
+    "bands": 4,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.106,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 0.85 m at 0.77 (light 0.29): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.85,
+       "centre": 0.77,
+       "light": 0.29
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 11.95,
+       "widthM": 1.05,
+       "centre": 0.14
+      },
+      {
+       "atM": 6.02,
+       "widthM": 1.15,
+       "centre": 0.45
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.43
+   },
+   "status": "held",
+   "stage": "run",
+   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012237013",
+   "address": "Hobbemakade 64",
+   "builtYear": 1898,
+   "widthM": 8.07,
+   "eavesM": 15.42,
+   "storeys3dbag": 0,
+   "bagBay": {
+    "fromM": 1.25,
+    "toM": 1.25,
+    "depthM": 0.3,
+    "centre": 0.154,
+    "lineRD": [
+     [
+      120873.008375,
+      485221.0635
+     ],
+     [
+      120873.52937500001,
+      485228.1155
+     ]
+    ]
+   },
+   "strip": {
+    "wall": "#7b6244",
+    "wallRaw": "#605d47",
+    "skyline": {
+     "eavesM": 14.75,
+     "eavesRow": 232,
+     "confidence": 1,
+     "crown": {
+      "widthM": 3.13,
+      "riseM": 2.23,
+      "topWidthM": 1.05,
+      "centre": 0.21
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 5,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": "right",
+    "accentShare": 0.081,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 0.65 m at 0.04 (light 0.18): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.65,
+       "centre": 0.04,
+       "light": 0.18
+      },
+      {
+       "widthM": 0.75,
+       "centre": 0.24,
+       "light": 0.24
+      },
+      {
+       "widthM": 1.05,
+       "centre": 0.57,
+       "light": 0.08
+      },
+      {
+       "widthM": 0.88,
+       "centre": 0.7,
+       "light": 0.34
+      },
+      {
+       "widthM": 1.48,
+       "centre": 0.88,
+       "light": 0.29
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.46
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best museum-de-1899-corbel-cornice: frontage 8.07 m, type 5-6 m)",
+   "best": {
+    "type": "museum-de-1899-corbel-cornice",
+    "score": 0,
+    "veto": [
+     "frontage 8.07 m, type 5-6 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "strip cornice 14.75 m vs the type's 13.4 m (wall-dormer skyline 14.7 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": null,
+      "note": "3DBAG bouwlagen 0 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": null,
+      "note": "no strip"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

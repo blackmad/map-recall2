@@ -1,0 +1,728 @@
+{
+ "schemaVersion": 1,
+ "id": "abn-amro-hoofdkantoor",
+ "pand": "0363100012146659",
+ "brief": "scripts/landmarks/abn-amro-hoofdkantoor-brief.md",
+ "signature": [
+  "granite-slab",
+  "open-frame-crown",
+  "crown-shield",
+  "curved-glass",
+  "crown-lettering",
+  "se-curved-banded",
+  "pavilion-lettering"
+ ],
+ "walls": [
+  {
+   "tag": "w01-0",
+   "bearing": 0,
+   "lengthM": 84.3,
+   "centre": [
+    4.8756843,
+    52.3379729
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": false,
+   "items": []
+  },
+  {
+   "tag": "w02-0",
+   "bearing": 0,
+   "lengthM": 40.8,
+   "centre": [
+    4.8760082,
+    52.337817
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": false,
+   "items": []
+  },
+  {
+   "tag": "w03-180",
+   "bearing": 180,
+   "lengthM": 40.7,
+   "centre": [
+    4.8760069,
+    52.3379572
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": false,
+   "items": []
+  },
+  {
+   "tag": "w04-0",
+   "bearing": 0,
+   "lengthM": 33.1,
+   "centre": [
+    4.8762921,
+    52.3371379
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001479_pano_0002_000566",
+   "capturedAt": "2019-12-03",
+   "checked": true,
+   "items": [
+    {
+     "id": "se-granite-grid",
+     "kind": "window-shape",
+     "where": "dark polished granite with square punched windows on a regular grid (south-east tower and the wing below it)",
+     "approxSizeM": [
+      33,
+      30
+     ],
+     "plan": "modelled",
+     "how": "punchedFacade granite options: 1.3 x 2.0 m windows on 2.0 m axes, 3.9 m floors",
+     "seenIn": "TMX7316010203-001479_pano_0002_000566"
+    }
+   ]
+  },
+  {
+   "tag": "w05-180",
+   "bearing": 180,
+   "lengthM": 30.4,
+   "centre": [
+    4.8744583,
+    52.3376745
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "items": [
+    {
+     "id": "south-glass",
+     "kind": "tower",
+     "where": "straight glass volume on the south side of the granite slab, 96 m",
+     "approxSizeM": [
+      17,
+      96
+     ],
+     "plan": "modelled",
+     "how": "open-top prism with silver floor bands",
+     "seenIn": "Commons File:ABN AMRO Headquarters Amsterdam.jpg (Steven Lek, CC BY-SA 4.0)"
+    }
+   ]
+  },
+  {
+   "tag": "w06-1",
+   "bearing": 1,
+   "lengthM": 22.6,
+   "centre": [
+    4.874876,
+    52.3378165
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "items": [
+    {
+     "id": "granite-slab",
+     "kind": "tower",
+     "where": "main tower: polished dark granite slab, 107 m, square windows on a grid, standing above the two 96 m glass volumes",
+     "approxSizeM": [
+      48.8,
+      107
+     ],
+     "plan": "modelled",
+     "how": "granite boxes with punchedFacade on the exposed faces",
+     "seenIn": "Commons File:ABN AMRO Headquarters Amsterdam.jpg (Steven Lek, CC BY-SA 4.0)"
+    },
+    {
+     "id": "curved-glass",
+     "kind": "tower",
+     "where": "curved silver glass volume against the north side of the granite slab, 96 m",
+     "approxSizeM": [
+      40,
+      96
+     ],
+     "plan": "modelled",
+     "how": "open-top prism on the smoothed 3DBAG arc, canopyGlass with a silver spandrel band per floor",
+     "seenIn": "Commons File:ABN AMRO1.jpg (public domain)"
+    },
+    {
+     "id": "open-frame-crown",
+     "kind": "other",
+     "where": "open frame in the granite crown at the east end: sky visible through the slab above the glass volumes",
+     "approxSizeM": [
+      4.6,
+      10
+     ],
+     "plan": "modelled",
+     "how": "crown built as legs and lintel round a 4.6 x 10 m through-opening with glazed jambs",
+     "seenIn": "Commons File:ABN AMRO1.jpg (public domain)"
+    },
+    {
+     "id": "crown-lettering",
+     "kind": "lettering",
+     "where": "ABN AMRO lettering across the granite crown on the north face",
+     "approxSizeM": [
+      19.7,
+      2.9
+     ],
+     "plan": "simplified",
+     "how": "letters() 0.42 m pixel glyphs in white at 99.3 m",
+     "seenIn": "Commons File:ABN AMRO1.jpg (public domain)"
+    },
+    {
+     "id": "crown-shield",
+     "kind": "crest",
+     "where": "green and yellow shield logo on the crown, beside the lettering and at the top of the east end",
+     "approxSizeM": [
+      3.2,
+      3.2
+     ],
+     "plan": "simplified",
+     "how": "two-part extruded shield, green over yellow, 3.2 m",
+     "seenIn": "Commons File:ABN AMRO4.jpg (public domain)"
+    },
+    {
+     "id": "east-glazed-top",
+     "kind": "window-shape",
+     "where": "tall glazed panel high on the narrow east end under the crown",
+     "approxSizeM": [
+      6.6,
+      9.6
+     ],
+     "plan": "simplified",
+     "how": "canopyGlass slab 6.6 x 9.6 m, 10 cm proud",
+     "seenIn": "Commons File:ABN AMRO4.jpg (public domain)"
+    }
+   ]
+  },
+  {
+   "tag": "w07-276",
+   "bearing": 276,
+   "lengthM": 17.5,
+   "centre": [
+    4.875054,
+    52.3378937
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": false,
+   "items": []
+  },
+  {
+   "tag": "w08-270",
+   "bearing": 270,
+   "lengthM": 15.6,
+   "centre": [
+    4.8744625,
+    52.3370652
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001479_pano_0002_000618",
+   "capturedAt": "2019-12-03",
+   "checked": true,
+   "items": [
+    {
+     "id": "ribbon-windows",
+     "kind": "window-shape",
+     "where": "upper storeys of the low wings: aluminium panels with continuous ribbon windows, granite ground storey",
+     "approxSizeM": [
+      15,
+      25
+     ],
+     "plan": "simplified",
+     "how": "punchedFacade ribbon options on every outward 3DBAG wall under 40 m: 1.5 m glass on 1.8 m axes, aluminium spandrels, granite plinth",
+     "seenIn": "TMX7316010203-001479_pano_0002_000618"
+    }
+   ]
+  },
+  {
+   "tag": "w09-270",
+   "bearing": 270,
+   "lengthM": 15.6,
+   "centre": [
+    4.8742352,
+    52.3377442
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001789_pano_0002_003921",
+   "capturedAt": "2020-07-06",
+   "checked": true,
+   "items": [
+    {
+     "id": "west-canopy",
+     "kind": "canopy",
+     "where": "flat canopy at the foot of the granite tower west end, on slender columns",
+     "approxSizeM": [
+      11,
+      0.5
+     ],
+     "plan": "simplified",
+     "how": "frame-coloured slab 11 x 4.5 m at 6 m on two 0.18 m columns",
+     "seenIn": "TMX7316010203-001789_pano_0002_003921"
+    }
+   ]
+  },
+  {
+   "tag": "w10-351",
+   "bearing": 351,
+   "lengthM": 13.7,
+   "centre": [
+    4.8740828,
+    52.3379365
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001789_pano_0002_003930",
+   "capturedAt": "2020-07-06",
+   "checked": true,
+   "items": [
+    {
+     "id": "hoarding",
+     "kind": "sign",
+     "where": "history-photo hoarding and flagpoles along the north edge",
+     "approxSizeM": [
+      30,
+      2.5
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7316010203-001789_pano_0002_003930",
+     "skip": {
+      "reason": "temporary",
+      "note": "site hoarding and banner flags during works, 2020"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "w11-270",
+   "bearing": 270,
+   "lengthM": 11.4,
+   "centre": [
+    4.8746658,
+    52.3373645
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": false,
+   "items": []
+  },
+  {
+   "tag": "w12-90",
+   "bearing": 90,
+   "lengthM": 9.6,
+   "centre": [
+    4.8765017,
+    52.3369554
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002476_pano_0001_002656",
+   "capturedAt": "2022-03-24",
+   "checked": true,
+   "items": [
+    {
+     "id": "se-curved-banded",
+     "kind": "other",
+     "where": "curved pale stone volume of the south-east tower with continuous ribbon windows",
+     "approxSizeM": [
+      40,
+      69
+     ],
+     "plan": "modelled",
+     "how": "open-top prism on the 3DBAG arc with a 1.6 m stone band per 3.9 m floor round it",
+     "seenIn": "TMX7316010203-002476_pano_0001_002656"
+    },
+    {
+     "id": "se-canopy",
+     "kind": "canopy",
+     "where": "thin flat entrance canopy on a column at the foot of the curved volume",
+     "approxSizeM": [
+      6,
+      0.3
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7316010203-002476_pano_0001_002656",
+     "skip": {
+      "reason": "too-small",
+      "note": "0.3 m thick canopy, under the 6 m stone base band; reads as part of the base at ride distance"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "w13-8",
+   "bearing": 8,
+   "lengthM": 9,
+   "centre": [
+    4.8739184,
+    52.3379321
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001479_pano_0002_000694",
+   "capturedAt": "2019-12-03",
+   "checked": true,
+   "items": [
+    {
+     "id": "glass-entrance-box",
+     "kind": "window-shape",
+     "where": "glazed box of the entrance pavilion, full-height glass with thin mullions",
+     "approxSizeM": [
+      9,
+      8
+     ],
+     "plan": "simplified",
+     "how": "north-facing pavilion walls: canopyGlass panes 1.62 m on 1.8 m axes with frame mullions",
+     "seenIn": "TMX7316010203-001479_pano_0002_000694"
+    },
+    {
+     "id": "flags",
+     "kind": "other",
+     "where": "three flagpoles with bank flags in front of the glass box",
+     "approxSizeM": [
+      3,
+      9
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7316010203-001479_pano_0002_000694",
+     "skip": {
+      "reason": "temporary",
+      "note": "flags change with events; poles are street furniture"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "w14-168",
+   "bearing": 168,
+   "lengthM": 8.9,
+   "centre": [
+    4.8740636,
+    52.3378848
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000771_pano_0000_000482",
+   "capturedAt": "2018-06-04",
+   "checked": true,
+   "items": [
+    {
+     "id": "pavilion-lettering",
+     "kind": "lettering",
+     "where": "ABN AMRO lettering with the shield, in steel on the top of the blank polished-granite pavilion",
+     "approxSizeM": [
+      9,
+      1.4
+     ],
+     "plan": "simplified",
+     "how": "letters() 0.2 m pixel glyphs, white, with a white two-part shield to the left",
+     "seenIn": "TMX7316010203-000771_pano_0000_000482"
+    },
+    {
+     "id": "pavilion-granite",
+     "kind": "other",
+     "where": "blank polished black granite drum of the entrance pavilion, no windows",
+     "approxSizeM": [
+      25,
+      14
+     ],
+     "plan": "modelled",
+     "how": "3DBAG shell in granite tint, no openings",
+     "seenIn": "TMX7316010203-000771_pano_0000_000482"
+    }
+   ]
+  },
+  {
+   "tag": "w15-180",
+   "bearing": 180,
+   "lengthM": 8.9,
+   "centre": [
+    4.874193,
+    52.3378935
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": false,
+   "items": []
+  },
+  {
+   "tag": "w16-68",
+   "bearing": 68,
+   "lengthM": 8.4,
+   "centre": [
+    4.8760254,
+    52.3371725
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": false,
+   "items": []
+  },
+  {
+   "tag": "w17-276",
+   "bearing": 276,
+   "lengthM": 8,
+   "centre": [
+    4.8745136,
+    52.3371714
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": false,
+   "items": []
+  },
+  {
+   "tag": "w18-80",
+   "bearing": 80,
+   "lengthM": 8,
+   "centre": [
+    4.8759908,
+    52.3372427
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": false,
+   "items": []
+  },
+  {
+   "tag": "w19-91",
+   "bearing": 91,
+   "lengthM": 8,
+   "centre": [
+    4.8759802,
+    52.3373138
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": false,
+   "items": []
+  },
+  {
+   "tag": "w20-102",
+   "bearing": 102,
+   "lengthM": 8,
+   "centre": [
+    4.8759925,
+    52.3373847
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": false,
+   "items": []
+  },
+  {
+   "tag": "w21-113",
+   "bearing": 113,
+   "lengthM": 8,
+   "centre": [
+    4.876027,
+    52.3374527
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": false,
+   "items": []
+  },
+  {
+   "tag": "w22-246",
+   "bearing": 246,
+   "lengthM": 7.5,
+   "centre": [
+    4.8747042,
+    52.3376442
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": false,
+   "items": []
+  },
+  {
+   "tag": "w23-145",
+   "bearing": 145,
+   "lengthM": 7.4,
+   "centre": [
+    4.8762638,
+    52.3375826
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000770_pano_0000_001214",
+   "capturedAt": "2018-06-01",
+   "checked": true,
+   "items": [
+    {
+     "id": "pale-panels-colonnade",
+     "kind": "colonnade",
+     "where": "pale grey panelled wing on round columns at ground level (south-east corner)",
+     "approxSizeM": [
+      20,
+      4
+     ],
+     "plan": "simplified",
+     "how": "ribbon facade with granite ground storey; the column row is drawn as the plinth",
+     "seenIn": "TMX7316010203-000770_pano_0000_001214"
+    }
+   ]
+  },
+  {
+   "tag": "w24-134",
+   "bearing": 134,
+   "lengthM": 7.4,
+   "centre": [
+    4.8761817,
+    52.3375393
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000770_pano_0000_001216",
+   "capturedAt": "2018-06-01",
+   "checked": true,
+   "items": []
+  },
+  {
+   "tag": "w25-314",
+   "bearing": 314,
+   "lengthM": 7.2,
+   "centre": [
+    4.8745903,
+    52.3372741
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": false,
+   "items": []
+  },
+  {
+   "tag": "w26-325",
+   "bearing": 325,
+   "lengthM": 7,
+   "centre": [
+    4.8745125,
+    52.3372322
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": false,
+   "items": []
+  },
+  {
+   "tag": "w27-267",
+   "bearing": 267,
+   "lengthM": 6.7,
+   "centre": [
+    4.8737949,
+    52.3378408
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001479_pano_0002_000644",
+   "capturedAt": "2019-12-03",
+   "checked": true,
+   "items": [
+    {
+     "id": "pavilion-glazed-slot",
+     "kind": "window-shape",
+     "where": "tall glazed slot in the curved granite pavilion, west end",
+     "approxSizeM": [
+      3,
+      8
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7316010203-001479_pano_0002_000644",
+     "skip": {
+      "reason": "too-small",
+      "note": "3 m slot on a 6.7 m wall piece shorter than the facade threshold; pavilion reads as a blank granite drum"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "w28-271",
+   "bearing": 271,
+   "lengthM": 6.3,
+   "centre": [
+    4.8745884,
+    52.3369668
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001479_pano_0002_000617",
+   "capturedAt": "2019-12-03",
+   "checked": true,
+   "items": [
+    {
+     "id": "sloped-granite-base",
+     "kind": "other",
+     "where": "granite base wall leaning out under the aluminium upper storeys at the south-west",
+     "approxSizeM": [
+      20,
+      8
+     ],
+     "plan": "simplified",
+     "how": "upright granite ground storey from the punched-facade plinth; the lean is not drawn",
+     "seenIn": "TMX7316010203-001479_pano_0002_000617"
+    }
+   ]
+  },
+  {
+   "tag": "w29-256",
+   "bearing": 256,
+   "lengthM": 6,
+   "centre": [
+    4.8747383,
+    52.3375873
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": false,
+   "items": []
+  },
+  {
+   "tag": "w30-0",
+   "bearing": 0,
+   "lengthM": 5.7,
+   "centre": [
+    4.8747073,
+    52.3375508
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": false,
+   "items": []
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  },
+  {
+   "name": "Wikimedia Commons Category:ABN AMRO Headquarters (files ABN AMRO1-4.jpg public domain; ABN AMRO5.jpg CC BY-SA 3.0 SketchUp; ABN AMRO Headquarters Amsterdam.jpg and ABN AMRO headquarters.jpg CC BY-SA 4.0 Steven Lek)",
+   "url": "https://commons.wikimedia.org/wiki/Category:ABN_AMRO_Headquarters",
+   "licence": "CC BY-SA 4.0 / CC BY-SA 3.0 / public domain"
+  },
+  {
+   "name": "Wikipedia nl:ABN AMRO-hoofdkantoor (105 m, 24 storeys)",
+   "url": "https://nl.wikipedia.org/wiki/ABN_AMRO-hoofdkantoor",
+   "licence": "CC BY-SA 4.0"
+  },
+  {
+   "name": "3DBAG LoD2.2 NL.IMBAG.Pand.0363100012146659",
+   "url": "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012146659",
+   "licence": "CC BY 4.0"
+  },
+  {
+   "name": "BAG pand 0363100012146659",
+   "url": "https://api.data.amsterdam.nl/v1/bag/panden/0363100012146659/",
+   "licence": "CC0"
+  }
+ ]
+}

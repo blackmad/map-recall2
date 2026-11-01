@@ -1,0 +1,346 @@
+{
+ "face": "schuyt-35-41",
+ "street": "Cornelis Schuytstraat",
+ "library": "museumkwartier",
+ "stripDate": "2024-11-12",
+ "seconds": 4.53,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [],
+ "pands": [
+  {
+   "pandId": "0363100012236061",
+   "address": "Cornelis Schuytstraat 35",
+   "builtYear": 1900,
+   "widthM": 6.15,
+   "eavesM": 14.25,
+   "storeys3dbag": 5,
+   "bagBay": {
+    "fromM": 0.2,
+    "toM": 0.2,
+    "depthM": 0.28,
+    "centre": 0.033,
+    "lineRD": [
+     [
+      119877.3803125,
+      485342.51975
+     ],
+     [
+      119879.4183125,
+      485336.92675
+     ]
+    ]
+   },
+   "strip": {
+    "wall": "#7f6753",
+    "wallRaw": "#5e5a47",
+    "skyline": {
+     "eavesM": 14.65,
+     "eavesRow": 188,
+     "confidence": 0.63,
+     "crown": {
+      "widthM": 0.8,
+      "riseM": 4.7,
+      "topWidthM": 0.1,
+      "centre": 0.49
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": "left",
+    "accentSide": "left",
+    "accentShare": 0.088,
+    "structure": {
+     "bayWidthM": 0.3,
+     "bayCentre": 0.41,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 11.4,
+       "widthM": 1.32,
+       "centre": 0.66
+      },
+      {
+       "atM": 10.43,
+       "widthM": 0.97,
+       "centre": 0.8
+      },
+      {
+       "atM": 7.13,
+       "widthM": 1.13,
+       "centre": 0.79
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.38
+   },
+   "status": "held",
+   "stage": "likeness",
+   "reason": "no photo evidence (usable photo 37 % < 50 %) and no passing same-type neighbour",
+   "likeness": {
+    "pandId": "0363100012236061",
+    "ncc": null,
+    "nccRaw": 0.254,
+    "shiftM": [
+     -0.1,
+     -0.4
+    ],
+    "usable": 0.37,
+    "abstain": "usable photo 37 % < 50 %",
+    "verdict": "NO EVIDENCE",
+    "reasons": [
+     "foliage 44 % > 25 %"
+    ],
+    "wall": {
+     "photo": "#947862",
+     "model": "#624237",
+     "dL": -0.182
+    },
+    "glazing": {
+     "photo": 0.26,
+     "model": 0.55
+    },
+    "columns": {
+     "photo": null,
+     "model": 3
+    },
+    "iou": 0.334
+   },
+   "challengers": {
+    "museum-cs-1900-gable-balcony": null,
+    "museum-cs-1900-gable-balcony~m": null
+   }
+  },
+  {
+   "pandId": "0363100012236647",
+   "address": "Cornelis Schuytstraat 37",
+   "builtYear": 1900,
+   "widthM": 5.81,
+   "eavesM": 14.04,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#111108",
+    "wallRaw": "#56593e",
+    "skyline": {
+     "eavesM": 18.4,
+     "eavesRow": 38,
+     "confidence": 0.34,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.05,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 2 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 10.38,
+       "widthM": 1.02,
+       "centre": 0.62
+      },
+      {
+       "atM": 8.5,
+       "widthM": 1.75,
+       "centre": 0.79
+      },
+      {
+       "atM": 7.3,
+       "widthM": 1.45,
+       "centre": 0.42
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.66
+   },
+   "status": "held",
+   "stage": "likeness",
+   "reason": "no photo evidence (usable photo 12 % < 50 %) and no passing same-type neighbour",
+   "likeness": {
+    "pandId": "0363100012236647",
+    "ncc": null,
+    "nccRaw": 0.255,
+    "shiftM": [
+     0.15,
+     -0.25
+    ],
+    "usable": 0.12,
+    "abstain": "usable photo 12 % < 50 %",
+    "verdict": "NO EVIDENCE",
+    "reasons": [
+     "usable upper cells 29 % < 40 %",
+     "foliage 52 % > 25 %"
+    ],
+    "wall": {
+     "photo": "#15150a",
+     "model": "#624237",
+     "dL": 0.239
+    },
+    "glazing": {
+     "photo": 0.43,
+     "model": 0.55
+    },
+    "columns": {
+     "photo": null,
+     "model": 3
+    },
+    "iou": 0.36
+   },
+   "challengers": {
+    "museum-cs-1900-gable-balcony~m": null,
+    "museum-cs-1900-gable-balcony": null
+   }
+  },
+  {
+   "pandId": "0363100012236133",
+   "address": "Cornelis Schuytstraat 39",
+   "builtYear": 1900,
+   "widthM": 5.59,
+   "eavesM": 14.61,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#846c52",
+    "wallRaw": "#696443",
+    "skyline": {
+     "eavesM": 17.7,
+     "eavesRow": 66,
+     "confidence": 0.66,
+     "crown": {
+      "widthM": 1.3,
+      "riseM": 1.65,
+      "topWidthM": 0.35,
+      "centre": 0.54
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0.069,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 0.85 m at 0.16 (light 0.16): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.85,
+       "centre": 0.16,
+       "light": 0.16
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 10.32,
+       "widthM": 0.95,
+       "centre": 0.16
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.47
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "best museum-cs-1900-gable-balcony scores 0.33 < 0.7 (strip cornice 17.7 m vs the type's 10.4 m (wall-dormer skyline 14.4 m))",
+   "best": {
+    "type": "museum-cs-1900-gable-balcony",
+    "score": 0.33,
+    "veto": [],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 17.7 m vs the type's 10.4 m (wall-dormer skyline 14.4 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": null,
+      "note": "no strip"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012236134",
+   "address": "Cornelis Schuytstraat 41",
+   "builtYear": 1900,
+   "widthM": 6.88,
+   "eavesM": 11.76,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#3d3521",
+    "wallRaw": "#4c4c2b",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 774,
+     "confidence": 0.16,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 8,
+    "frontClass": "punched",
+    "doorSide": "left",
+    "accentSide": "right",
+    "accentShare": 0.001,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 6.95,
+       "widthM": 0.8,
+       "centre": 0.52
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.71
+   },
+   "status": "held",
+   "stage": "run",
+   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

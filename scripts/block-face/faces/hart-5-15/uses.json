@@ -1,0 +1,172 @@
+{
+ "street": "Roelof Hartstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-01T13:07:30.784Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012158479",
+   "addresses": [
+    "Roelof Hartstraat 5"
+   ],
+   "groundUnits": [
+    {
+     "address": "Roelof Hartstraat 5-H",
+     "use": "winkelfunctie",
+     "areaM2": 108,
+     "bagId": "0363010000794951"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012237161",
+   "addresses": [
+    "Roelof Hartstraat 7"
+   ],
+   "groundUnits": [
+    {
+     "address": "Roelof Hartstraat 7-H",
+     "use": "winkelfunctie",
+     "areaM2": 73,
+     "bagId": "0363010000794955"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2816521617,
+     "lngLat": [
+      4.8845844,
+      52.3525202
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "7-H",
+      "addr:postcode": "1071VE",
+      "addr:street": "Roelof Hartstraat",
+      "name": "Neeve",
+      "shop": "clothes",
+      "source": "BAG",
+      "source:date": "2014-03-24"
+     },
+     "fetchedAt": "2026-11-01T13:07:30.784Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012167452",
+   "addresses": [
+    "Roelof Hartstraat 9"
+   ],
+   "groundUnits": [
+    {
+     "address": "Roelof Hartstraat 9-H",
+     "use": "woonfunctie",
+     "areaM2": 129,
+     "bagId": "0363010003684652"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012161776",
+   "addresses": [
+    "Roelof Hartstraat 11"
+   ],
+   "groundUnits": [
+    {
+     "address": "Roelof Hartstraat 11-H",
+     "use": "winkelfunctie",
+     "areaM2": 53,
+     "bagId": "0363010000794964"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012165887",
+   "addresses": [
+    "Roelof Hartstraat 13"
+   ],
+   "groundUnits": [
+    {
+     "address": "Roelof Hartstraat 13-H",
+     "use": "winkelfunctie,woonfunctie",
+     "areaM2": 29,
+     "bagId": "0363010000794972"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012166699",
+   "addresses": [
+    "Roelof Hartstraat 15E",
+    "Roelof Hartstraat 15A",
+    "Roelof Hartstraat 15B",
+    "Roelof Hartstraat 15C",
+    "Roelof Hartstraat 15D"
+   ],
+   "groundUnits": [
+    {
+     "address": "Roelof Hartstraat 15E",
+     "use": "winkelfunctie",
+     "areaM2": 77,
+     "bagId": "0363010000713799"
+    },
+    {
+     "address": "Roelof Hartstraat 15A",
+     "use": "woonfunctie",
+     "areaM2": 67,
+     "bagId": "0363010000713919"
+    },
+    {
+     "address": "Roelof Hartstraat 15B",
+     "use": "woonfunctie",
+     "areaM2": 67,
+     "bagId": "0363010000713920"
+    },
+    {
+     "address": "Roelof Hartstraat 15C",
+     "use": "woonfunctie",
+     "areaM2": 67,
+     "bagId": "0363010000713951"
+    },
+    {
+     "address": "Roelof Hartstraat 15D",
+     "use": "woonfunctie",
+     "areaM2": 55,
+     "bagId": "0363010000713952"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 13105647745,
+     "lngLat": [
+      4.8848863,
+      52.3524061
+     ],
+     "tags": {
+      "amenity": "bicycle_parking",
+      "bicycle_parking": "stands",
+      "covered": "no"
+     },
+     "fetchedAt": "2026-11-01T13:07:30.784Z",
+     "match": "frontage",
+     "distanceM": 6.2
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,223 @@
+{
+ "street": "Roelof Hartstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-01T13:08:44.643Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012154126",
+   "addresses": [
+    "Roelof Hartstraat 17"
+   ],
+   "groundUnits": [
+    {
+     "address": "Roelof Hartstraat 17-H",
+     "use": "winkelfunctie",
+     "areaM2": 157,
+     "bagId": "0363010000794984"
+    },
+    {
+     "address": "Roelof Hartstraat 17-H",
+     "use": "kantoorfunctie",
+     "areaM2": 100,
+     "bagId": "0363010012061536"
+    },
+    {
+     "address": "Pieter Baststraat 35-H",
+     "use": "winkelfunctie",
+     "areaM2": 90,
+     "bagId": "0363010012061537"
+    }
+   ],
+   "units": 9,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012159048",
+   "addresses": [
+    "Roelof Hartstraat 19"
+   ],
+   "groundUnits": [
+    {
+     "address": "Roelof Hartstraat 19-H",
+     "use": "woonfunctie",
+     "areaM2": 135,
+     "bagId": "0363010000794995"
+    }
+   ],
+   "units": 7,
+   "osm": [
+    {
+     "type": "node",
+     "id": 12925715925,
+     "lngLat": [
+      4.8854173,
+      52.3523736
+     ],
+     "tags": {
+      "amenity": "charging_station",
+      "capacity": "2",
+      "operator": "Equans",
+      "operator:wikidata": "Q118687687"
+     },
+     "fetchedAt": "2026-11-01T13:08:44.643Z",
+     "match": "frontage",
+     "distanceM": 5.8
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012160803",
+   "addresses": [
+    "Roelof Hartstraat 21"
+   ],
+   "groundUnits": [
+    {
+     "address": "Roelof Hartstraat 21-H",
+     "use": "woonfunctie",
+     "areaM2": 162,
+     "bagId": "0363010000795003"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012154156",
+   "addresses": [
+    "Roelof Hartstraat 23"
+   ],
+   "groundUnits": [
+    {
+     "address": "Roelof Hartstraat 23-H",
+     "use": "woonfunctie",
+     "areaM2": 68,
+     "bagId": "0363010001003305"
+    }
+   ],
+   "units": 7,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012163058",
+   "addresses": [
+    "Roelof Hartstraat 25"
+   ],
+   "groundUnits": [
+    {
+     "address": "Roelof Hartstraat 25-H",
+     "use": "woonfunctie",
+     "areaM2": 180,
+     "bagId": "0363010000994131"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012166217",
+   "addresses": [
+    "Roelof Hartstraat 27"
+   ],
+   "groundUnits": [
+    {
+     "address": "Roelof Hartstraat 27-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 96,
+     "bagId": "0363010000795025"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2816520276,
+     "lngLat": [
+      4.8857519,
+      52.3524163
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "27-H",
+      "addr:postcode": "1071VG",
+      "addr:street": "Roelof Hartstraat",
+      "amenity": "restaurant",
+      "branch": "Amsterdam Roelof Hartstraat",
+      "brand": "Pizza Beppe",
+      "brand:website": "https://www.pizzabeppe.nl",
+      "brand:wikidata": "Q138975625",
+      "check_date": "2025-05-21",
+      "check_date:opening_hours": "2025-05-21",
+      "cuisine": "pizza",
+      "name": "Pizza Beppe",
+      "opening_hours": "Mo-Th,Su 17:00-21:30; Fr-Sa 17:00-22:00",
+      "phone": "+31 20 7740670",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://www.pizzabeppe.nl/locaties/amsterdam/roelof-hartstraat"
+     },
+     "fetchedAt": "2026-11-01T13:08:44.643Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012163763",
+   "addresses": [
+    "Roelof Hartstraat 29"
+   ],
+   "groundUnits": [
+    {
+     "address": "Roelof Hartstraat 29-H",
+     "use": "winkelfunctie",
+     "areaM2": 129,
+     "bagId": "0363010000979955"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012163670",
+   "addresses": [
+    "Roelof Hartstraat 31"
+   ],
+   "groundUnits": [
+    {
+     "address": "Roelof Hartstraat 31-H",
+     "use": "kantoorfunctie",
+     "areaM2": 273,
+     "bagId": "0363010000988047"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2623400514,
+     "lngLat": [
+      4.8859486,
+      52.3523982
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "31",
+      "addr:postcode": "1072VG",
+      "addr:street": "Roelof Hartstraat",
+      "check_date": "2025-08-25",
+      "name": "Plasman CS Advocaten",
+      "office": "lawyer",
+      "phone": "+31 20 673 1548",
+      "website": "https://www.plasmanadvocaten.com",
+      "wheelchair": "no"
+     },
+     "fetchedAt": "2026-11-01T13:08:44.643Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,1041 @@
+{
+ "face": "valerius-3-37",
+ "street": "Valeriusstraat",
+ "library": "museumkwartier",
+ "stripDate": "2024-11-12",
+ "seconds": 3.42,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [],
+ "pands": [
+  {
+   "pandId": "0363100012236587",
+   "address": "Valeriusstraat 3",
+   "builtYear": 1906,
+   "widthM": 19.26,
+   "eavesM": 16.67,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#534842",
+    "wallRaw": "#55534c",
+    "skyline": {
+     "eavesM": 14.5,
+     "eavesRow": 243,
+     "confidence": 1,
+     "crown": {
+      "widthM": 8.95,
+      "riseM": 3.02,
+      "topWidthM": 0.13,
+      "centre": 0.25
+     }
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": "right",
+    "accentSide": "right",
+    "accentShare": 0.16,
+    "structure": {
+     "bayWidthM": 2.02,
+     "bayCentre": 0.06,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0.07,
+    "foliageShare": 0.06
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best museum-cs-1900-gable-balcony: built 1906, type 1900-1901; frontage 19.26 m, type 5.5-6.6 m)",
+   "best": {
+    "type": "museum-cs-1900-gable-balcony",
+    "score": 0,
+    "veto": [
+     "built 1906, type 1900-1901",
+     "frontage 19.26 m, type 5.5-6.6 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "strip cornice 14.5 m vs the type's 10.4 m (wall-dormer skyline 14.4 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.047 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012161877",
+   "address": "Valeriusstraat 5",
+   "builtYear": 1906,
+   "widthM": 8.22,
+   "eavesM": 14.81,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#5e584f",
+    "wallRaw": "#5d5b53",
+    "skyline": {
+     "eavesM": 15.63,
+     "eavesRow": 198,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.6,
+      "riseM": 1.38,
+      "topWidthM": 1.2,
+      "centre": 0.53
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 4,
+    "frontClass": "columns",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.059,
+    "structure": {
+     "bayWidthM": 1.2,
+     "bayCentre": 0.85,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 6.7,
+       "widthM": 1.02,
+       "centre": 0.52
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.08
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best museum-cs-1900-gable-balcony: built 1906, type 1900-1901; frontage 8.22 m, type 5.5-6.6 m)",
+   "best": {
+    "type": "museum-cs-1900-gable-balcony",
+    "score": 0,
+    "veto": [
+     "built 1906, type 1900-1901",
+     "frontage 8.22 m, type 5.5-6.6 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 15.63 m vs the type's 10.4 m (wall-dormer skyline 14.4 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.064 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0.4,
+      "note": "strip columns 4 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012166718",
+   "address": "Valeriusstraat 7",
+   "builtYear": 1906,
+   "widthM": 6,
+   "eavesM": 15.08,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#6b6054",
+    "wallRaw": "#585349",
+    "skyline": {
+     "eavesM": 16.27,
+     "eavesRow": 172,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.064,
+    "structure": {
+     "bayWidthM": 0.93,
+     "bayCentre": 0.17,
+     "balconies": false,
+     "why": "no dark open axis, 2 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 13.95,
+       "widthM": 1.32,
+       "centre": 0.17
+      },
+      {
+       "atM": 10.65,
+       "widthM": 1.27,
+       "centre": 0.87
+      },
+      {
+       "atM": 7.05,
+       "widthM": 1.7,
+       "centre": 0.48
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.12
+   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: Valeriusstraat 7: valerius-3-37-r1 sheet (oud-west kinker-1902-balcony-axis, edge NCC 0.18-0.43, 2024-11-12 strip): Valeriusstraat 1905-06 fronts are wide two-light windows with transoms under segmental heads, balconettes on storeys 1-2, white timber oriel stacks on 9, 15 and 21, a flat corbel-frieze cornice without dormers on 7-11 and 19-23 and a mansard with dormers on 13-17; the Kinkerstraat type draws narrow windows, balconettes on three storeys, a dormer on every front and no ground doors",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012152610",
+   "address": "Valeriusstraat 9",
+   "builtYear": 1906,
+   "widthM": 5.97,
+   "eavesM": 15.09,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#5c5146",
+    "wallRaw": "#686255",
+    "skyline": {
+     "eavesM": 16.27,
+     "eavesRow": 172,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.182,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 13.9,
+       "widthM": 1.35,
+       "centre": 0.5
+      },
+      {
+       "atM": 11.27,
+       "widthM": 0.9,
+       "centre": 0.84
+      },
+      {
+       "atM": 10.6,
+       "widthM": 1.3,
+       "centre": 0.17
+      },
+      {
+       "atM": 7.07,
+       "widthM": 1.23,
+       "centre": 0.18
+      },
+      {
+       "atM": 4.75,
+       "widthM": 0.93,
+       "centre": 0.84
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.17
+   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: Valeriusstraat 9: valerius-3-37-r1 sheet (oud-west kinker-1902-balcony-axis, edge NCC 0.18-0.43, 2024-11-12 strip): Valeriusstraat 1905-06 fronts are wide two-light windows with transoms under segmental heads, balconettes on storeys 1-2, white timber oriel stacks on 9, 15 and 21, a flat corbel-frieze cornice without dormers on 7-11 and 19-23 and a mansard with dormers on 13-17; the Kinkerstraat type draws narrow windows, balconettes on three storeys, a dormer on every front and no ground doors",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012158233",
+   "address": "Valeriusstraat 11",
+   "builtYear": 1906,
+   "widthM": 6.01,
+   "eavesM": 15.35,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#66564a",
+    "wallRaw": "#645f53",
+    "skyline": {
+     "eavesM": 16.3,
+     "eavesRow": 171,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "columns",
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.068,
+    "structure": {
+     "bayWidthM": 0.5,
+     "bayCentre": 0.12,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 10.63,
+       "widthM": 1.35,
+       "centre": 0.16
+      },
+      {
+       "atM": 7.02,
+       "widthM": 1.2,
+       "centre": 0.5
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.16
+   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: Valeriusstraat 11: valerius-3-37-r1 sheet (oud-west kinker-1902-balcony-axis, edge NCC 0.18-0.43, 2024-11-12 strip): Valeriusstraat 1905-06 fronts are wide two-light windows with transoms under segmental heads, balconettes on storeys 1-2, white timber oriel stacks on 9, 15 and 21, a flat corbel-frieze cornice without dormers on 7-11 and 19-23 and a mansard with dormers on 13-17; the Kinkerstraat type draws narrow windows, balconettes on three storeys, a dormer on every front and no ground doors",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012161338",
+   "address": "Valeriusstraat 13",
+   "builtYear": 1906,
+   "widthM": 5.93,
+   "eavesM": 15.22,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#4e4235",
+    "wallRaw": "#66604f",
+    "skyline": {
+     "eavesM": 13.75,
+     "eavesRow": 273,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.2,
+      "riseM": 1.13,
+      "topWidthM": 0.7,
+      "centre": 0.46
+     }
+    },
+    "stucco": false,
+    "bands": 3,
+    "columns": 3,
+    "frontClass": "columns",
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.225,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 2 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 10.52,
+       "widthM": 1.25,
+       "centre": 0.14
+      },
+      {
+       "atM": 7,
+       "widthM": 1.6,
+       "centre": 0.8
+      }
+     ]
+    },
+    "voidShare": 0.06,
+    "foliageShare": 0.19
+   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: Valeriusstraat 13: valerius-3-37-r1 sheet (oud-west kinker-1902-balcony-axis, edge NCC 0.18-0.43, 2024-11-12 strip): Valeriusstraat 1905-06 fronts are wide two-light windows with transoms under segmental heads, balconettes on storeys 1-2, white timber oriel stacks on 9, 15 and 21, a flat corbel-frieze cornice without dormers on 7-11 and 19-23 and a mansard with dormers on 13-17; the Kinkerstraat type draws narrow windows, balconettes on three storeys, a dormer on every front and no ground doors",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012166199",
+   "address": "Valeriusstraat 15",
+   "builtYear": 1906,
+   "widthM": 5.96,
+   "eavesM": 15.08,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#6e6156",
+    "wallRaw": "#6e665a",
+    "skyline": {
+     "eavesM": 14.18,
+     "eavesRow": 256,
+     "confidence": 1,
+     "crown": {
+      "widthM": 3.15,
+      "riseM": 2,
+      "topWidthM": 0.2,
+      "centre": 0.43
+     }
+    },
+    "stucco": false,
+    "bands": 4,
+    "columns": 6,
+    "frontClass": "punched",
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.212,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 11.18,
+       "widthM": 1.32,
+       "centre": 0.82
+      },
+      {
+       "atM": 10.57,
+       "widthM": 1.1,
+       "centre": 0.17
+      }
+     ]
+    },
+    "voidShare": 0.02,
+    "foliageShare": 0.23
+   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: Valeriusstraat 15: valerius-3-37-r1 sheet (oud-west kinker-1902-balcony-axis, edge NCC 0.18-0.43, 2024-11-12 strip): Valeriusstraat 1905-06 fronts are wide two-light windows with transoms under segmental heads, balconettes on storeys 1-2, white timber oriel stacks on 9, 15 and 21, a flat corbel-frieze cornice without dormers on 7-11 and 19-23 and a mansard with dormers on 13-17; the Kinkerstraat type draws narrow windows, balconettes on three storeys, a dormer on every front and no ground doors",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012164322",
+   "address": "Valeriusstraat 17",
+   "builtYear": 1906,
+   "widthM": 5.88,
+   "eavesM": 15.27,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#695649",
+    "wallRaw": "#6b6356",
+    "skyline": {
+     "eavesM": 13.72,
+     "eavesRow": 274,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.18,
+      "riseM": 0.95,
+      "topWidthM": 1.02,
+      "centre": 0.48
+     }
+    },
+    "stucco": false,
+    "bands": 3,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.218,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 10.5,
+       "widthM": 1.27,
+       "centre": 0.49
+      },
+      {
+       "atM": 7.05,
+       "widthM": 0.95,
+       "centre": 0.81
+      }
+     ]
+    },
+    "voidShare": 0.06,
+    "foliageShare": 0.16
+   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: Valeriusstraat 17: valerius-3-37-r1 sheet (oud-west kinker-1902-balcony-axis, edge NCC 0.18-0.43, 2024-11-12 strip): Valeriusstraat 1905-06 fronts are wide two-light windows with transoms under segmental heads, balconettes on storeys 1-2, white timber oriel stacks on 9, 15 and 21, a flat corbel-frieze cornice without dormers on 7-11 and 19-23 and a mansard with dormers on 13-17; the Kinkerstraat type draws narrow windows, balconettes on three storeys, a dormer on every front and no ground doors",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012159902",
+   "address": "Valeriusstraat 19",
+   "builtYear": 1906,
+   "widthM": 6.02,
+   "eavesM": 15.23,
+   "storeys3dbag": 0,
+   "bagBay": null,
+   "strip": {
+    "wall": "#7d655a",
+    "wallRaw": "#676157",
+    "skyline": {
+     "eavesM": 16,
+     "eavesRow": 183,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.043,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 2 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 13.8,
+       "widthM": 1.3,
+       "centre": 0.49
+      },
+      {
+       "atM": 10.57,
+       "widthM": 1.32,
+       "centre": 0.15
+      },
+      {
+       "atM": 7.05,
+       "widthM": 1.7,
+       "centre": 0.78
+      },
+      {
+       "atM": 6.75,
+       "widthM": 1.23,
+       "centre": 0.46
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.1
+   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: Valeriusstraat 19: valerius-3-37-r1 sheet (oud-west kinker-1902-balcony-axis, edge NCC 0.18-0.43, 2024-11-12 strip): Valeriusstraat 1905-06 fronts are wide two-light windows with transoms under segmental heads, balconettes on storeys 1-2, white timber oriel stacks on 9, 15 and 21, a flat corbel-frieze cornice without dormers on 7-11 and 19-23 and a mansard with dormers on 13-17; the Kinkerstraat type draws narrow windows, balconettes on three storeys, a dormer on every front and no ground doors",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012161861",
+   "address": "Valeriusstraat 21",
+   "builtYear": 1906,
+   "widthM": 5.78,
+   "eavesM": 15.34,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#54463c",
+    "wallRaw": "#5d5a50",
+    "skyline": {
+     "eavesM": 16.07,
+     "eavesRow": 180,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "columns",
+    "doorSide": "right",
+    "accentSide": "right",
+    "accentShare": 0.137,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "balcony slabs stacked at 10.63 m (1.27 m wide), 7.02 m (1.25 m wide)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 13.78,
+       "widthM": 0.8,
+       "centre": 0.88
+      },
+      {
+       "atM": 10.63,
+       "widthM": 1.27,
+       "centre": 0.16
+      },
+      {
+       "atM": 7.02,
+       "widthM": 1.25,
+       "centre": 0.16
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.18
+   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: Valeriusstraat 21: valerius-3-37-r1 sheet (oud-west kinker-1902-balcony-axis, edge NCC 0.18-0.43, 2024-11-12 strip): Valeriusstraat 1905-06 fronts are wide two-light windows with transoms under segmental heads, balconettes on storeys 1-2, white timber oriel stacks on 9, 15 and 21, a flat corbel-frieze cornice without dormers on 7-11 and 19-23 and a mansard with dormers on 13-17; the Kinkerstraat type draws narrow windows, balconettes on three storeys, a dormer on every front and no ground doors",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012165300",
+   "address": "Valeriusstraat 23",
+   "builtYear": 1906,
+   "widthM": 6.18,
+   "eavesM": 15.44,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#55483f",
+    "wallRaw": "#535049",
+    "skyline": {
+     "eavesM": 16.07,
+     "eavesRow": 180,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "columns",
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.036,
+    "structure": {
+     "bayWidthM": 1,
+     "bayCentre": 0.81,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 10.72,
+       "widthM": 1.23,
+       "centre": 0.48
+      },
+      {
+       "atM": 7.27,
+       "widthM": 1.48,
+       "centre": 0.44
+      },
+      {
+       "atM": 6.97,
+       "widthM": 1.13,
+       "centre": 0.15
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.1
+   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: Valeriusstraat 23: valerius-3-37-r1 sheet (oud-west kinker-1902-balcony-axis, edge NCC 0.18-0.43, 2024-11-12 strip): Valeriusstraat 1905-06 fronts are wide two-light windows with transoms under segmental heads, balconettes on storeys 1-2, white timber oriel stacks on 9, 15 and 21, a flat corbel-frieze cornice without dormers on 7-11 and 19-23 and a mansard with dormers on 13-17; the Kinkerstraat type draws narrow windows, balconettes on three storeys, a dormer on every front and no ground doors",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012159222",
+   "address": "Valeriusstraat 25",
+   "builtYear": 1905,
+   "widthM": 6.28,
+   "eavesM": 14.97,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#785a4b",
+    "wallRaw": "#716052",
+    "skyline": {
+     "eavesM": 13.28,
+     "eavesRow": 292,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.8,
+      "riseM": 2.13,
+      "topWidthM": 0.97,
+      "centre": 0.47
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "columns",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.175,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "balcony slabs stacked at 11.32 m (1.27 m wide), 10.8 m (1.3 m wide), 7.05 m (1.5 m wide)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 11.32,
+       "widthM": 1.27,
+       "centre": 0.11
+      },
+      {
+       "atM": 10.8,
+       "widthM": 1.3,
+       "centre": 0.45
+      },
+      {
+       "atM": 7.05,
+       "widthM": 1.5,
+       "centre": 0.44
+      }
+     ]
+    },
+    "voidShare": 0.05,
+    "foliageShare": 0.12
+   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: Valeriusstraat 25: valerius-3-37-r1 sheet (oud-west kinker-1902-balcony-axis, edge NCC 0.18-0.43, 2024-11-12 strip): Valeriusstraat 1905-06 fronts are wide two-light windows with transoms under segmental heads, balconettes on storeys 1-2, white timber oriel stacks on 9, 15 and 21, a flat corbel-frieze cornice without dormers on 7-11 and 19-23 and a mansard with dormers on 13-17; the Kinkerstraat type draws narrow windows, balconettes on three storeys, a dormer on every front and no ground doors; 25-27A are lighter red gabled fronts, another design",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012166594",
+   "address": "Valeriusstraat 27A",
+   "builtYear": 1905,
+   "widthM": 5.93,
+   "eavesM": 14.05,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#678a96",
+    "wallRaw": "#5d5349",
+    "skyline": {
+     "eavesM": 13.25,
+     "eavesRow": 293,
+     "confidence": 1,
+     "crown": {
+      "widthM": 0.78,
+      "riseM": 0.93,
+      "topWidthM": 0.72,
+      "centre": 0.49
+     }
+    },
+    "stucco": false,
+    "bands": 2,
+    "columns": null,
+    "frontClass": "curtain",
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0.16,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "balcony slabs stacked at 11.3 m (5.47 m wide), 7.4 m (1.6 m wide)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 12.2,
+       "widthM": 1.43,
+       "centre": 0.87
+      },
+      {
+       "atM": 11.3,
+       "widthM": 5.47,
+       "centre": 0.5
+      },
+      {
+       "atM": 7.4,
+       "widthM": 1.6,
+       "centre": 0.6
+      },
+      {
+       "atM": 6.8,
+       "widthM": 1.05,
+       "centre": 0.84
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.1
+   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: Valeriusstraat 27A: valerius-3-37-r1 sheet (oud-west kinker-1902-balcony-axis, edge NCC 0.18-0.43, 2024-11-12 strip): Valeriusstraat 1905-06 fronts are wide two-light windows with transoms under segmental heads, balconettes on storeys 1-2, white timber oriel stacks on 9, 15 and 21, a flat corbel-frieze cornice without dormers on 7-11 and 19-23 and a mansard with dormers on 13-17; the Kinkerstraat type draws narrow windows, balconettes on three storeys, a dormer on every front and no ground doors; 27A drew a blue wall (palette misread); 25-27A are lighter red gabled fronts, another design",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012153568",
+   "address": "Valeriusstraat 29",
+   "builtYear": 1905,
+   "widthM": 11.67,
+   "eavesM": 15.03,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#5e4e42",
+    "wallRaw": "#685b4e",
+    "skyline": {
+     "eavesM": 15.35,
+     "eavesRow": 209,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 6,
+    "frontClass": "punched",
+    "doorSide": "left",
+    "accentSide": "right",
+    "accentShare": 0.188,
+    "structure": {
+     "bayWidthM": 1.23,
+     "bayCentre": 0.94,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 14.28,
+       "widthM": 1.07,
+       "centre": 0.26
+      },
+      {
+       "atM": 11.2,
+       "widthM": 0.8,
+       "centre": 0.35
+      },
+      {
+       "atM": 10.6,
+       "widthM": 1.1,
+       "centre": 0.3
+      },
+      {
+       "atM": 7.6,
+       "widthM": 1.07,
+       "centre": 0.55
+      },
+      {
+       "atM": 7.07,
+       "widthM": 1.35,
+       "centre": 0.57
+      }
+     ]
+    },
+    "voidShare": 0.02,
+    "foliageShare": 0.11
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best museum-cs-1900-gable-balcony: built 1905, type 1900-1901; frontage 11.67 m, type 5.5-6.6 m)",
+   "best": {
+    "type": "museum-cs-1900-gable-balcony",
+    "score": 0,
+    "veto": [
+     "built 1905, type 1900-1901",
+     "frontage 11.67 m, type 5.5-6.6 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0.5,
+      "note": "strip cornice 15.35 m vs the type's 10.4 m (wall-dormer skyline 14.4 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 4 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.182 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0,
+      "note": "strip columns 6 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012235975",
+   "address": "Valeriusstraat 31",
+   "builtYear": 1901,
+   "widthM": 6.22,
+   "eavesM": 14.89,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#8a705c",
+    "wallRaw": "#8b735e",
+    "skyline": {
+     "eavesM": 14.57,
+     "eavesRow": 240,
+     "confidence": 0.57,
+     "crown": {
+      "widthM": 0.75,
+      "riseM": 0.83,
+      "topWidthM": 0.7,
+      "centre": 0.32
+     }
+    },
+    "stucco": false,
+    "bands": 2,
+    "columns": 7,
+    "frontClass": "punched",
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.248,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "balcony slabs stacked at 12.02 m (1.45 m wide), 11.43 m (1.52 m wide), 10.52 m (1.52 m wide), 7.07 m (1.32 m wide)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 13.6,
+       "widthM": 1.48,
+       "centre": 0.16
+      },
+      {
+       "atM": 12.02,
+       "widthM": 1.45,
+       "centre": 0.87
+      },
+      {
+       "atM": 11.43,
+       "widthM": 1.52,
+       "centre": 0.16
+      },
+      {
+       "atM": 10.52,
+       "widthM": 1.52,
+       "centre": 0.16
+      },
+      {
+       "atM": 7.07,
+       "widthM": 1.32,
+       "centre": 0.81
+      }
+     ]
+    },
+    "voidShare": 0.05,
+    "foliageShare": 0.11
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "best museum-cs-1900-gable-balcony scores 0.67 < 0.7 (strip columns 7 vs 3 bays)",
+   "best": {
+    "type": "museum-cs-1900-gable-balcony",
+    "score": 0.67,
+    "veto": [],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": null,
+      "note": "strip cornice unread (type line 10.4 m; 3DBAG 14.89 m not compared)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 4 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.179 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0,
+      "note": "strip columns 7 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

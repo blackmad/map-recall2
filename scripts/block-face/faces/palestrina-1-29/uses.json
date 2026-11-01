@@ -1,0 +1,303 @@
+{
+ "street": "Palestrinastraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-01T16:03:14.585Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012153647",
+   "addresses": [
+    "Palestrinastraat 1",
+    "Palestrinastraat 1A",
+    "Palestrinastraat 1B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Palestrinastraat 1",
+     "use": "woonfunctie",
+     "areaM2": 93,
+     "bagId": "0363010000770643"
+    },
+    {
+     "address": "Palestrinastraat 1A",
+     "use": "kantoorfunctie",
+     "areaM2": 273,
+     "bagId": "0363010011211409"
+    },
+    {
+     "address": "Palestrinastraat 1B",
+     "use": "woonfunctie",
+     "areaM2": 152,
+     "bagId": "0363010011211410"
+    },
+    {
+     "address": "Palestrinastraat 1A",
+     "use": "kantoorfunctie",
+     "areaM2": 153,
+     "bagId": "0363010012067242"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012160974",
+   "addresses": [
+    "Palestrinastraat 3"
+   ],
+   "groundUnits": [
+    {
+     "address": "Palestrinastraat 3-H",
+     "use": "woonfunctie",
+     "areaM2": 265,
+     "bagId": "0363010000770646"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012152715",
+   "addresses": [
+    "Palestrinastraat 5"
+   ],
+   "groundUnits": [
+    {
+     "address": "Palestrinastraat 5-H",
+     "use": "woonfunctie",
+     "areaM2": 224,
+     "bagId": "0363010000770652"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012158394",
+   "addresses": [
+    "Palestrinastraat 7"
+   ],
+   "groundUnits": [
+    {
+     "address": "Palestrinastraat 7-H",
+     "use": "woonfunctie",
+     "areaM2": 215,
+     "bagId": "0363010000770657"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012131514",
+   "addresses": [
+    "Palestrinastraat 9"
+   ],
+   "groundUnits": [
+    {
+     "address": "Palestrinastraat 9-H",
+     "use": "woonfunctie",
+     "areaM2": 225,
+     "bagId": "0363010000835477"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012109934",
+   "addresses": [
+    "Palestrinastraat 11"
+   ],
+   "groundUnits": [
+    {
+     "address": "Palestrinastraat 11",
+     "use": "woonfunctie",
+     "areaM2": 362,
+     "bagId": "0363010003684166"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012119449",
+   "addresses": [
+    "Palestrinastraat 13"
+   ],
+   "groundUnits": [
+    {
+     "address": "Palestrinastraat 13-H",
+     "use": "woonfunctie",
+     "areaM2": 213,
+     "bagId": "0363010000770671"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012110342",
+   "addresses": [
+    "Palestrinastraat 15"
+   ],
+   "groundUnits": [
+    {
+     "address": "Palestrinastraat 15-H",
+     "use": "woonfunctie",
+     "areaM2": 203,
+     "bagId": "0363010000770675"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012088169",
+   "addresses": [
+    "Palestrinastraat 17"
+   ],
+   "groundUnits": [
+    {
+     "address": "Palestrinastraat 17-H",
+     "use": "woonfunctie",
+     "areaM2": 147,
+     "bagId": "0363010000770679"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012135596",
+   "addresses": [
+    "Palestrinastraat 19"
+   ],
+   "groundUnits": [
+    {
+     "address": "Palestrinastraat 19-H",
+     "use": "woonfunctie",
+     "areaM2": 205,
+     "bagId": "0363010000770685"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012076391",
+   "addresses": [
+    "Palestrinastraat 21"
+   ],
+   "groundUnits": [
+    {
+     "address": "Palestrinastraat 21-H",
+     "use": "woonfunctie",
+     "areaM2": 180,
+     "bagId": "0363010000770689"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012160752",
+   "addresses": [
+    "Palestrinastraat 23",
+    "Palestrinastraat 23A",
+    "Palestrinastraat 23B",
+    "Palestrinastraat 23C",
+    "Palestrinastraat 23D"
+   ],
+   "groundUnits": [
+    {
+     "address": "Palestrinastraat 23-H",
+     "use": "woonfunctie",
+     "areaM2": 195,
+     "bagId": "0363010000770693"
+    },
+    {
+     "address": "Palestrinastraat 23A",
+     "use": "woonfunctie",
+     "areaM2": 130,
+     "bagId": "0363010012119573"
+    },
+    {
+     "address": "Palestrinastraat 23B",
+     "use": "woonfunctie",
+     "areaM2": 61,
+     "bagId": "0363010012119574"
+    },
+    {
+     "address": "Palestrinastraat 23C",
+     "use": "woonfunctie",
+     "areaM2": 62,
+     "bagId": "0363010012119575"
+    },
+    {
+     "address": "Palestrinastraat 23D",
+     "use": "woonfunctie",
+     "areaM2": 66,
+     "bagId": "0363010012119576"
+    }
+   ],
+   "units": 6,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012165339",
+   "addresses": [
+    "Palestrinastraat 25"
+   ],
+   "groundUnits": [
+    {
+     "address": "Palestrinastraat 25-H",
+     "use": "woonfunctie",
+     "areaM2": 148,
+     "bagId": "0363010000770697"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012155748",
+   "addresses": [
+    "Palestrinastraat 27"
+   ],
+   "groundUnits": [
+    {
+     "address": "Palestrinastraat 27-H",
+     "use": "woonfunctie",
+     "areaM2": 195,
+     "bagId": "0363010000770701"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012236385",
+   "addresses": [
+    "Palestrinastraat 29"
+   ],
+   "groundUnits": [
+    {
+     "address": "Palestrinastraat 29-H",
+     "use": "woonfunctie",
+     "areaM2": 171,
+     "bagId": "0363010000770705"
+    },
+    {
+     "address": "Palestrinastraat 29-H",
+     "use": "woonfunctie",
+     "areaM2": 163,
+     "bagId": "0363010012172001"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  }
+ ]
+}

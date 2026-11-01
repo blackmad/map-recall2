@@ -1,0 +1,505 @@
+{
+ "street": "Hondecoeterstraat",
+ "seed": "0363100012233672",
+ "members": [
+  "0363100012233672",
+  "0363100012236921"
+ ],
+ "ends": [
+  {
+   "side": "left",
+   "reason": "no further pand fronts the street in the fetched area"
+  },
+  {
+   "side": "right",
+   "reason": "trimmed at 0363100012236921 (face continues: 233653)"
+  }
+ ],
+ "rejected": [
+  {
+   "pandId": "0363100012066027",
+   "reason": "sightline to Hondecoeterstraat crosses 0363100012075285"
+  },
+  {
+   "pandId": "0363100012069906",
+   "reason": "no frontage on Hondecoeterstraat: No footprint edge faces Hondecoeterstraat"
+  },
+  {
+   "pandId": "0363100012070981",
+   "reason": "no frontage on Hondecoeterstraat: No footprint edge faces Hondecoeterstraat"
+  },
+  {
+   "pandId": "0363100012076109",
+   "reason": "frontage 75.4 m from Hondecoeterstraat"
+  },
+  {
+   "pandId": "0363100012079291",
+   "reason": "sightline to Hondecoeterstraat crosses 0363100012080156"
+  },
+  {
+   "pandId": "0363100012079547",
+   "reason": "frontage 49.1 m from Hondecoeterstraat"
+  },
+  {
+   "pandId": "0363100012082767",
+   "reason": "frontage 59.7 m from Hondecoeterstraat"
+  },
+  {
+   "pandId": "0363100012088552",
+   "reason": "frontage 97.4 m from Hondecoeterstraat"
+  },
+  {
+   "pandId": "0363100012089090",
+   "reason": "sightline to Hondecoeterstraat crosses 0363100012075285"
+  },
+  {
+   "pandId": "0363100012089533",
+   "reason": "frontage 44.0 m from Hondecoeterstraat"
+  },
+  {
+   "pandId": "0363100012096687",
+   "reason": "frontage 36.8 m from Hondecoeterstraat"
+  },
+  {
+   "pandId": "0363100012097163",
+   "reason": "no frontage on Hondecoeterstraat: No footprint edge faces Hondecoeterstraat"
+  },
+  {
+   "pandId": "0363100012101217",
+   "reason": "frontage 42.2 m from Hondecoeterstraat"
+  },
+  {
+   "pandId": "0363100012101863",
+   "reason": "frontage 51.0 m from Hondecoeterstraat"
+  },
+  {
+   "pandId": "0363100012105468",
+   "reason": "frontage 42.4 m from Hondecoeterstraat"
+  },
+  {
+   "pandId": "0363100012107472",
+   "reason": "no frontage on Hondecoeterstraat: No footprint edge faces Hondecoeterstraat"
+  },
+  {
+   "pandId": "0363100012110320",
+   "reason": "frontage 32.3 m from Hondecoeterstraat"
+  },
+  {
+   "pandId": "0363100012113666",
+   "reason": "frontage 43.1 m from Hondecoeterstraat"
+  },
+  {
+   "pandId": "0363100012119516",
+   "reason": "frontage 62.6 m from Hondecoeterstraat"
+  },
+  {
+   "pandId": "0363100012122255",
+   "reason": "frontage 42.9 m from Hondecoeterstraat"
+  },
+  {
+   "pandId": "0363100012128092",
+   "reason": "no frontage on Hondecoeterstraat: No footprint edge faces Hondecoeterstraat"
+  },
+  {
+   "pandId": "0363100012129521",
+   "reason": "frontage 35.6 m from Hondecoeterstraat"
+  },
+  {
+   "pandId": "0363100012132021",
+   "reason": "frontage 68.9 m from Hondecoeterstraat"
+  },
+  {
+   "pandId": "0363100012132213",
+   "reason": "sightline to Hondecoeterstraat crosses 0363100012079291"
+  },
+  {
+   "pandId": "0363100012135196",
+   "reason": "sightline to Hondecoeterstraat crosses 0363100012061243"
+  },
+  {
+   "pandId": "0363100012138937",
+   "reason": "sightline to Hondecoeterstraat crosses 0363100012061243"
+  },
+  {
+   "pandId": "0363100012142671",
+   "reason": "sightline to Hondecoeterstraat crosses 0363100012236287"
+  },
+  {
+   "pandId": "0363100012149061",
+   "reason": "frontage 55.8 m from Hondecoeterstraat"
+  },
+  {
+   "pandId": "0363100012149470",
+   "reason": "no frontage on Hondecoeterstraat: No footprint edge faces Hondecoeterstraat"
+  },
+  {
+   "pandId": "0363100012152130",
+   "reason": "frontage 34.1 m from Hondecoeterstraat"
+  },
+  {
+   "pandId": "0363100012152723",
+   "reason": "frontage 108.1 m from Hondecoeterstraat"
+  },
+  {
+   "pandId": "0363100012152797",
+   "reason": "frontage 72.8 m from Hondecoeterstraat"
+  },
+  {
+   "pandId": "0363100012153563",
+   "reason": "sightline to Hondecoeterstraat crosses 0363100012159652"
+  },
+  {
+   "pandId": "0363100012154211",
+   "reason": "frontage 48.6 m from Hondecoeterstraat"
+  },
+  {
+   "pandId": "0363100012155320",
+   "reason": "no frontage on Hondecoeterstraat: No footprint edge faces Hondecoeterstraat"
+  },
+  {
+   "pandId": "0363100012155395",
+   "reason": "frontage 55.4 m from Hondecoeterstraat"
+  },
+  {
+   "pandId": "0363100012155755",
+   "reason": "frontage 41.3 m from Hondecoeterstraat"
+  },
+  {
+   "pandId": "0363100012156759",
+   "reason": "frontage 37.2 m from Hondecoeterstraat"
+  },
+  {
+   "pandId": "0363100012157273",
+   "reason": "frontage 43.4 m from Hondecoeterstraat"
+  },
+  {
+   "pandId": "0363100012157299",
+   "reason": "frontage 53.2 m from Hondecoeterstraat"
+  },
+  {
+   "pandId": "0363100012157703",
+   "reason": "frontage 120.9 m from Hondecoeterstraat"
+  },
+  {
+   "pandId": "0363100012158007",
+   "reason": "frontage 55.6 m from Hondecoeterstraat"
+  },
+  {
+   "pandId": "0363100012158207",
+   "reason": "sightline to Hondecoeterstraat crosses 0363100012061410"
+  },
+  {
+   "pandId": "0363100012158419",
+   "reason": "frontage 114.5 m from Hondecoeterstraat"
+  },
+  {
+   "pandId": "0363100012158521",
+   "reason": "frontage 83.3 m from Hondecoeterstraat"
+  },
+  {
+   "pandId": "0363100012158538",
+   "reason": "frontage 62.1 m from Hondecoeterstraat"
+  },
+  {
+   "pandId": "0363100012158591",
+   "reason": "frontage 115.9 m from Hondecoeterstraat"
+  },
+  {
+   "pandId": "0363100012158844",
+   "reason": "frontage 33.7 m from Hondecoeterstraat"
+  },
+  {
+   "pandId": "0363100012158932",
+   "reason": "frontage 32.2 m from Hondecoeterstraat"
+  },
+  {
+   "pandId": "0363100012159001",
+   "reason": "frontage 75.7 m from Hondecoeterstraat"
+  },
+  {
+   "pandId": "0363100012159034",
+   "reason": "frontage 72.4 m from Hondecoeterstraat"
+  },
+  {
+   "pandId": "0363100012159520",
+   "reason": "frontage 84.8 m from Hondecoeterstraat"
+  },
+  {
+   "pandId": "0363100012159652",
+   "reason": "sightline to Hondecoeterstraat crosses 0363100012161125"
+  },
+  {
+   "pandId": "0363100012159717",
+   "reason": "frontage 82.3 m from Hondecoeterstraat"
+  },
+  {
+   "pandId": "0363100012159835",
+   "reason": "frontage 88.9 m from Hondecoeterstraat"
+  },
+  {
+   "pandId": "0363100012160510",
+   "reason": "frontage 40.4 m from Hondecoeterstraat"
+  },
+  {
+   "pandId": "0363100012160844",
+   "reason": "frontage 46.5 m from Hondecoeterstraat"
+  },
+  {
+   "pandId": "0363100012161263",
+   "reason": "frontage 127.2 m from Hondecoeterstraat"
+  },
+  {
+   "pandId": "0363100012161607",
+   "reason": "frontage 66.1 m from Hondecoeterstraat"
+  },
+  {
+   "pandId": "0363100012161885",
+   "reason": "frontage 38.4 m from Hondecoeterstraat"
+  },
+  {
+   "pandId": "0363100012161927",
+   "reason": "sightline to Hondecoeterstraat crosses 0363100012159652"
+  },
+  {
+   "pandId": "0363100012161973",
+   "reason": "frontage 67.1 m from Hondecoeterstraat"
+  },
+  {
+   "pandId": "0363100012163146",
+   "reason": "frontage 78.9 m from Hondecoeterstraat"
+  },
+  {
+   "pandId": "0363100012163735",
+   "reason": "sightline to Hondecoeterstraat crosses 0363100012155320"
+  },
+  {
+   "pandId": "0363100012163788",
+   "reason": "frontage 32.7 m from Hondecoeterstraat"
+  },
+  {
+   "pandId": "0363100012164245",
+   "reason": "frontage 98.0 m from Hondecoeterstraat"
+  },
+  {
+   "pandId": "0363100012166345",
+   "reason": "frontage 61.3 m from Hondecoeterstraat"
+  },
+  {
+   "pandId": "0363100012166510",
+   "reason": "frontage 101.7 m from Hondecoeterstraat"
+  },
+  {
+   "pandId": "0363100012166919",
+   "reason": "frontage 50.0 m from Hondecoeterstraat"
+  },
+  {
+   "pandId": "0363100012167149",
+   "reason": "frontage 97.1 m from Hondecoeterstraat"
+  },
+  {
+   "pandId": "0363100012167193",
+   "reason": "frontage 95.3 m from Hondecoeterstraat"
+  },
+  {
+   "pandId": "0363100012167274",
+   "reason": "frontage 89.6 m from Hondecoeterstraat"
+  },
+  {
+   "pandId": "0363100012190884",
+   "reason": "frontage 31.2 m from Hondecoeterstraat"
+  },
+  {
+   "pandId": "0363100012206732",
+   "reason": "no frontage on Hondecoeterstraat: No footprint edge faces Hondecoeterstraat"
+  },
+  {
+   "pandId": "0363100012208002",
+   "reason": "no frontage on Hondecoeterstraat: No footprint edge faces Hondecoeterstraat"
+  },
+  {
+   "pandId": "0363100012211064",
+   "reason": "frontage 33.2 m from Hondecoeterstraat"
+  },
+  {
+   "pandId": "0363100012211065",
+   "reason": "frontage 43.2 m from Hondecoeterstraat"
+  },
+  {
+   "pandId": "0363100012211066",
+   "reason": "frontage 33.4 m from Hondecoeterstraat"
+  },
+  {
+   "pandId": "0363100012211067",
+   "reason": "no frontage on Hondecoeterstraat: No footprint edge faces Hondecoeterstraat"
+  },
+  {
+   "pandId": "0363100012213439",
+   "reason": "frontage 109.6 m from Hondecoeterstraat"
+  },
+  {
+   "pandId": "0363100012219147",
+   "reason": "sightline to Hondecoeterstraat crosses 0363100012233672"
+  },
+  {
+   "pandId": "0363100012230919",
+   "reason": "frontage 64.4 m from Hondecoeterstraat"
+  },
+  {
+   "pandId": "0363100012232413",
+   "reason": "frontage 97.6 m from Hondecoeterstraat"
+  },
+  {
+   "pandId": "0363100012233624",
+   "reason": "frontage 31.6 m from Hondecoeterstraat"
+  },
+  {
+   "pandId": "0363100012236025",
+   "reason": "frontage 104.0 m from Hondecoeterstraat"
+  },
+  {
+   "pandId": "0363100012236193",
+   "reason": "frontage 70.4 m from Hondecoeterstraat"
+  },
+  {
+   "pandId": "0363100012236201",
+   "reason": "frontage 85.4 m from Hondecoeterstraat"
+  },
+  {
+   "pandId": "0363100012236344",
+   "reason": "frontage 76.8 m from Hondecoeterstraat"
+  },
+  {
+   "pandId": "0363100012236509",
+   "reason": "frontage 109.9 m from Hondecoeterstraat"
+  },
+  {
+   "pandId": "0363100012236620",
+   "reason": "frontage 57.7 m from Hondecoeterstraat"
+  },
+  {
+   "pandId": "0363100012236672",
+   "reason": "frontage 64.0 m from Hondecoeterstraat"
+  },
+  {
+   "pandId": "0363100012236746",
+   "reason": "frontage 68.1 m from Hondecoeterstraat"
+  },
+  {
+   "pandId": "0363100012237032",
+   "reason": "frontage 91.7 m from Hondecoeterstraat"
+  },
+  {
+   "pandId": "0363100012237068",
+   "reason": "frontage 50.9 m from Hondecoeterstraat"
+  },
+  {
+   "pandId": "0363100012237088",
+   "reason": "frontage 51.5 m from Hondecoeterstraat"
+  },
+  {
+   "pandId": "0363100012237099",
+   "reason": "frontage 45.2 m from Hondecoeterstraat"
+  },
+  {
+   "pandId": "0363100012237244",
+   "reason": "frontage 59.3 m from Hondecoeterstraat"
+  },
+  {
+   "pandId": "0363100012246038",
+   "reason": "frontage 42.5 m from Hondecoeterstraat"
+  },
+  {
+   "pandId": "0363100012246039",
+   "reason": "frontage 45.0 m from Hondecoeterstraat"
+  },
+  {
+   "pandId": "0363100100092059",
+   "reason": "no frontage on Hondecoeterstraat: No footprint edge faces Hondecoeterstraat"
+  },
+  {
+   "pandId": "0363100100092060",
+   "reason": "no frontage on Hondecoeterstraat: No footprint edge faces Hondecoeterstraat"
+  },
+  {
+   "pandId": "0363100012061243",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012075285",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012080156",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012092203",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012093632",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012099485",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012134185",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012153370",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012158115",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012160067",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012161125",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012161158",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012235968",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012236287",
+   "reason": "fronts the other side / another direction"
+  }
+ ],
+ "areaHalfSizeM": 90,
+ "pands": [
+  {
+   "pandId": "0363100012233672",
+   "alongM": 0,
+   "widthM": 5.66,
+   "eavesM": 13.54,
+   "roofMaxM": 16.95,
+   "storeys3dbag": 5,
+   "builtYear": 1911,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012236921",
+   "alongM": 7.72,
+   "widthM": 9.79,
+   "eavesM": 13.36,
+   "roofMaxM": 19.12,
+   "storeys3dbag": 5,
+   "builtYear": 1911,
+   "uncertainty": [
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  }
+ ]
+}

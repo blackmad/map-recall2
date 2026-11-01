@@ -264,8 +264,10 @@ grid (c415a1e1b, HISTORY "The overview draws only the tiles on screen": overview
 overlay 108k, overview 83k). Materials lane takes the owners in size order
 (own ground step 1 merged 2026-11-01, `0a6cf030d`, HISTORY "The rider's ground
 cell is cut 6×6": iPad own ground 298k → 234k, frame p50 1.02 M → 0.95 M, draws
-p95 +7 %; desktop ground 504k → 397k, frame 1.97 M → 1.87 M; step 2 is distance
-LOD for kerbs/bollards beyond ~150 m with side-by-side PNGs); the 150/400 m
+p95 +7 %; desktop ground 504k → 397k, frame 1.97 M → 1.87 M; step 2 merged
+2026-11-01, `c9f743361`, HISTORY "Kerbs and bollards of the rider's cell draw
+only within 150 m": iPad ground 222k, frame p50 0.94 M vs ≤ 0.70 M, desktop
+1.84 M; trees 183k next, then the cycle overlay 108k); the 150/400 m
 facade LOD is parked (60–100k, 5–8 %, not worth its likeness risk yet). In-frame
 shader links are 0. P5 follow-ups: delete
 `building-tiles/` and `bag-tiles/` after a week of Sentry quiet on the
@@ -300,18 +302,21 @@ HISTORY "The own view answers the four oracles"): the four oracles answered,
 camera parity < 1e-7 px on intro and Anne Frank → Rijksmuseum, `_waitForMapSettle`
 was already replaced (camera.whenIdle, hand-back 4), city-aware engine choice
 (`engineFlag(search, cityId)`, Amsterdam-only, `game.js` passes `this.cityId`).
-**Open before the Amsterdam flip (L1):** four own-engine spec failures now
-visible — `building-click-perf`:228 0.947 vs 0.95 (the Westerkerk click at
-Westermarkt resolves to the wrong pand: a learning-correctness bug, fix first),
-`building-look`:47 (URL look `cartoon` not honoured under own) and :58 (B-key
-look cycle not wired), `bag-tiles`:110 (`usingBagTiles` false with `?bagTiles=1`);
-overview blend 6.8 % vs 5 % (MapLibre 3.7 %): roofs and gardens over plain land
-because the own overview has no building footprints — needs footprints in the
-own-map data or an own-engine budget row; `city-startup-lod` iphone texture 26
-vs 22 MB (cause unknown); governor-no-flash under own should force `?tier=high`
-(own starts at the tier's cap). Note: shared-frame `register(..., {order})` has
-no effect for group-rooted participants (three.js takes the innermost group's
-order); fixed for the overview only.
+**Open before the Amsterdam flip (L1), after hand-back 19 (`1baaf686c`, HISTORY
+"The Westerkerk miss was the spec aiming at open air"):** the Westerkerk click
+and the building looks under own are done; left: POI labels must win the click
+under own as under MapLibre (Westermarkt "Guy Olivier" label pixels; add to
+the named regression); bag-tiles spec gets `&world=live` (dead path otherwise);
+overview footprints (6.8 % vs 5 %, MapLibre 3.7 %): resident world-v1 FOOT
+cells drawn in roof tone and faded with the blend (~1 day), far coarse layer
+only if still over 5 %; then the flip checklist (default switch for
+cityId amsterdam, specs under default afterwards, Sentry watch for context
+loss / graphics failures, rollback flag forcing MapLibre). Re-baselined:
+iPhone texture budget 22 → 27 MB (`iphoneTextureMB`, facade atlas by design;
+96 px phone bays need a look review; mask-format cut is a later materials
+item). Note: shared-frame `register(..., {order})` has no effect for
+group-rooted participants (three.js takes the innermost group's order);
+fixed for the overview only.
 Steps 4–5 merged 2026-10-30 (`487cb157e`): `ENGINE=own` switch for the gate
 specs, ride-perf, phone-memory and `ride-perf-owners.mjs` (owner `engine`);
 overlays under the flag (cycle tracks, transit, neighbourhood lines solid not
@@ -435,9 +440,14 @@ Jordaan number is Westerkerk parallax (a detector false positive); the 24
 phone arrivals at 35 m are a measurement artefact with nil visible cost
 (closed). Blocked on the user's answer to #168 (what pops, where, when); then
 the detector becomes depth-aware (road lane, second item) and the owner is
-cut. Road lane now: time to ride on the real phone, navigation → racing 5.7 s
-vs the 4 s gate (per-phase table, largest phase first; #150 landing animation
-excluded). Heap levers from the `_canalSharedFrame` breakdown:
+cut. Road lane now: time to ride (HISTORY "Time to ride by phase on the phone
+profile"): routing graph is the largest phase (2.85 s emulated), stitch pass
+cut merged (5f0fad294, graph identical); next lever (a) build the city world
+during the briefing with two probes (immediate submit = gate ≤ 4 s, 5 s
+briefing dwell = player case), then (b) a prebuilt graph binary if still red;
+real-device timing owed once the phone is unlocked and re-trusted
+(`scripts/time-to-ride-device.mjs --target safari`); #150 landing animation
+excluded. Heap levers from the `_canalSharedFrame` breakdown:
 OverviewLayer keeps the decoded overview data + rebuild closures + prebuilt
 geometry, 45.6 MB (L1, after its flip blockers); facade geometry CPU arrays
 kept after upload 27.1 MB (materials, after ground step 2); landmark CPU
@@ -503,7 +513,15 @@ not run it.
 
 **Transvaalbuurt round 6, next (rounds 1–5 in HISTORY "Transvaalbuurt kit", "round 2" … "round 5"):** 79 pands installed in 27 runs, 17 types. Highest-value items: (1) a plinth or foot offset on the model (the Tugelaweg 1929 block's front stands 1.9 m above 3DBAG ground; the strip-foot read in `stripFoot.ts` only aligns the photo), then the grouped band windows and the stair panel position of `transvaal-1929-block`, which releases Tugelaweg 95–118 (7 pands over the gate, held at gallery size); (2) a porch projection beyond the 0.5 m grouped-frontage cap, which releases the 1922 loggia rows (12 pands, type and loggia kit part are in); (3) a patterned-brick material for diaper brick (Schalk Burgerstraat reads greyer than the photo) and canted blue-framed corner oriels; (4) the gateway arch with a raised centre bay (Schalk Burgerstraat 79–97) and the 1923 design's stair-only and window-only BAG pands (Schalk Burgerstraat 18, 28); (5) the remaining designs without a type: Transvaalstraat 131–143 (window pair + small window per storey, 7), Krugerstraat 5–27 (point gables with a tall tower), Afrikanerplein 1–23 (band windows, arched portieken), Christiaan de Wetstraat 116–272, the 1915–1919 (58) and post-1931 (99) pands, Hofmeyrstraat 24–44 (compressed strip). Ground-only patches for Eerste Jacob van Campenstraat 8 (bicycle rack → shop) and Bloemgracht 158A/162 (charging station, parking space) if wanted: the #157 pattern (HEAD intent + the one pand's groundFloor and type.ground). `bilder-157757-164549` still carries the rake overlap `roof.rakeClear` fixes. The 174 Transvaalbuurt faces without a usable strip need a second panorama pass (other capture dates, lower obliquity) before anything else can place there. The face split at bends (`buurtFaces.ts`) also changes faces that fail intake today in Bloemgrachtbuurt and Kinkerstraat; their survey JSONs were not regenerated.
 
-**Museumkwartier, first buurt lanes inside the ring (user 2026-11-01; #159 `lane/museumkwartier-museum-a-20261101` Cornelis Schuytbuurt + Concertgebouwbuurt, #160 `lane/museumkwartier-museum-b-20261101` Duivelseiland + Hondecoeterbuurt + Johannes Vermeerbuurt):** chosen over Staatsliedenbuurt and Oosterparkbuurt because it is the most-ridden uncovered wijk (2,892 pands, 1 % modelled, repetition 0.31, built 1890–1910, same stock as the Helmersbuurt and Oud-West libraries across the park). Order per the Transvaalbuurt lessons: survey with intake, cluster by build-year family, try `oud-west`, `helmersbuurt`, `de-pijp`, `bellamy` first and report the outcome split per library, author one measured type per family no library fits into the new `scripts/block-face/types/museumkwartier/`, gallery-size review, install. Next after these: P.C. Hooftbuurt (310), Banpleinbuurt (238, 1920s), Harmoniehofbuurt (146, 1920s, repetition 0.53); then Staatsliedenbuurt (1,792, 1910s, next to the Spaarndammerbuurt library).
+**Museumkwartier round 2, next (round 1 in HISTORY "Eleven landmarks and Museumkwartier round 1"):** 30 pands in 6 rows, 6 types; the five buurten hold about 2,000 pands and no existing library fits them. Highest-value next types: the orange banded two-axis wall-dormer row (Van Breestraat 39–45, 53–55, 71–77, ~12 pands), the Valeriusstraat 1903 keystone/speklaag rows (~30 pands, blocked: buff brick reads as foliage in `isLeaf`, so likeness abstains), the Valeriusstraat 1905–06 balcony/oriel rows (11), Nicolaas Maesstraat 35–45 voussoir-block cornice (6), Wouwermanstraat 34–26 brick-oriel design, Palestrinastraat 12–22 mansard row, CG Van Breestraat 21–31 banded fronts with white oriels. Kit gaps the lanes named: step gable on plumb shoulders, gable volutes and cartouches, attic dormers between gables, arched gable lights, moulded corbel friezes, carved dormer crests, a hood over a mid-front oriel, wide bracketed balconies (drawn as balconettes), open baluster parapets, alternating voussoir blocks, `frontEavesFor` adopting the parapet skyline as eaves. Check the Nicolaas Maesstraat 47–61 wall tone in the ride (it reads grey against the strip's brown brick; exposure gain 1.29). The Hondecoeterbuurt placement records predate `museum-jv-1910-lintel-parapet`; a re-run is safe now that #157's frozen runs are in. Then P.C. Hooftbuurt (310), Banpleinbuurt (238), Harmoniehofbuurt (146), Staatsliedenbuurt (1,792).
+
+**Landmark follow-ups (2026-11-01):** Barlaeus Gymnasium's 1885 sandstone front (pand 0363100012169565, "ANNO GYMNASIUM 1885" with its sculpture group) has no model; the installed `barlaeus` recipe is the 1866 building next door (facts in source-data `landmarks/barlaeus-gymnasium/`). Lensbomen: the glass-grid mullions and a measured lens tint. Droogbak: mansard tint (#4f5459 from panoramas vs #aeafab–#c3c3be on the orthophoto, probably sun on metal). Het Nieuwe Huis: curved bow windows and rounded balcony ends on faceted shells, patterned brick, the clock on the sloping 3DBAG plane. Amstelstation: curtain-wall mullion hierarchy (the rhythm gate splits a 0.29 m mullion into four runs), mixed-case sign lettering, sloped forecourt. ABN AMRO: curved cantilevered glass volume, leaning granite plinth, multi-pane window units in the pier grid. Wolkenkrabber: canopy-band corner wrap, the Deltastraat flanking blocks, the Berlage statue. Blind facade counts owed for all eleven (the lanes counted their own elevations). Tooling: `ingame-capture.ts` draws the model without the city (every lane's shot shows bare ground), and a `demo-shots` cockpit spot does not face its centre; fix one of them before the next landmark round. `roof-prism-kit.test.ts` is not in any npm test script.
+
+**Courtyard outbuildings (user 2026-11-01, #169 `lane/courtyard-outbuildings-20261101`, running):** a garden-room kit for the shed pands in canal-house back gardens (6,049 shed-sized pands in the centre box, 475 built since 2005): timber-slat and matte-black boxes with a glass front facing the house, classified by build year and orthophoto roof; integrator recompiles `world-v1` after the merge.
+
+**Street furniture from open data (user asked 2026-11-01, not started):** Amsterdam's container API has every underground container (30,839, with fraction, cluster location and container type/volume, RD coordinates); the BGT carries lamp posts (`paal` plus_type lichtmast, capped at 1,000 per query box), the container pads (`bak` "afval apart plaats"), shelters, advertising columns, art objects, phone boxes, memorials, toilets and bicycle racks (`straatmeubilair`); benches and bollards are not in the BGT for Amsterdam (OSM only). A lane would place instanced models from these points.
+
+**White roof near Nieuwe Westerdokstraat (user asked 2026-11-01, open):** not identified; every wedge pand around Haarlemmerplein and the Westerdok reads slate in roof-facts, no near-white `roof:colour` tag there, the two OSM-only wedges fall to the grey prior. Flat lids go white through the `white-membrane` slot (5,661 pands citywide, `palette.ts` band #d9d9d3, luma to 228) or a near-white tag (667 features); if that is the cause, cap the slot near #c4c4be and pin the pand. Needs the rider's position.
 
 **Next lane: large-recipe roof clean-up (#87, user yes 2026-10-26).** 3DBAG slivers and stray flat levels on the large models' roofs: 20 installed houses have many slivers and 77 have 6 or more flat levels. Warmoesstraat 157-163 and Van Eeghenstraat 97-101 were flagged. The plan is in the issue.
 

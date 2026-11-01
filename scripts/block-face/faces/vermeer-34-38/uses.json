@@ -1,0 +1,81 @@
+{
+ "street": "Johannes Vermeerstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-01T15:35:45.041Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012089324",
+   "addresses": [
+    "Johannes Vermeerstraat 38"
+   ],
+   "groundUnits": [
+    {
+     "address": "Johannes Vermeerstraat 38-H",
+     "use": "woonfunctie",
+     "areaM2": 123,
+     "bagId": "0363010000694429"
+    },
+    {
+     "address": "Johannes Vermeerstraat 38-H",
+     "use": "woonfunctie",
+     "areaM2": 237,
+     "bagId": "0363010012111624"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012075537",
+   "addresses": [
+    "Johannes Vermeerstraat 36"
+   ],
+   "groundUnits": [
+    {
+     "address": "Johannes Vermeerstraat 36-H",
+     "use": "woonfunctie",
+     "areaM2": 156,
+     "bagId": "0363010000694426"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012142505",
+   "addresses": [
+    "Johannes Vermeerstraat 34"
+   ],
+   "groundUnits": [
+    {
+     "address": "Johannes Vermeerstraat 34-H",
+     "use": "woonfunctie",
+     "areaM2": 201,
+     "bagId": "0363010000694423"
+    }
+   ],
+   "units": 3,
+   "osm": [
+    {
+     "type": "node",
+     "id": 13105643465,
+     "lngLat": [
+      4.8838124,
+      52.3552001
+     ],
+     "tags": {
+      "amenity": "bicycle_parking",
+      "bicycle_parking": "stands",
+      "capacity": "14",
+      "covered": "no"
+     },
+     "fetchedAt": "2026-11-01T15:35:45.041Z",
+     "match": "frontage",
+     "distanceM": 4.1
+    }
+   ]
+  }
+ ]
+}

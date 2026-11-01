@@ -1,0 +1,230 @@
+{
+ "face": "ban-17-19",
+ "street": "Banstraat",
+ "library": "museumkwartier",
+ "stripDate": "2024-11-12",
+ "seconds": 0.5,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [],
+ "pands": [
+  {
+   "pandId": "0363100012073181",
+   "address": "Banstraat 17",
+   "builtYear": 1911,
+   "widthM": 7.05,
+   "eavesM": 14.93,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#aa7a50",
+    "wallRaw": "#937e5d",
+    "skyline": {
+     "eavesM": 14.88,
+     "eavesRow": 295,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.2,
+      "riseM": 2.6,
+      "topWidthM": 0.2,
+      "centre": 0.47
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0.225,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 1.02 m at 0.14 (light 0.05): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 1.02,
+       "centre": 0.14,
+       "light": 0.05
+      },
+      {
+       "widthM": 1.13,
+       "centre": 0.44,
+       "light": 0.33
+      },
+      {
+       "widthM": 1.02,
+       "centre": 0.76,
+       "light": 0.21
+      },
+      {
+       "widthM": 0.85,
+       "centre": 0.93,
+       "light": 0.01
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 13.38,
+       "widthM": 1.18,
+       "centre": 0.44
+      },
+      {
+       "atM": 10.15,
+       "widthM": 1.18,
+       "centre": 0.77
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.2
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best museum-cs-1900-gable-balcony: built 1911, type 1900-1901; frontage 7.05 m, type 5.5-6.6 m)",
+   "best": {
+    "type": "museum-cs-1900-gable-balcony",
+    "score": 0,
+    "veto": [
+     "built 1911, type 1900-1901",
+     "frontage 7.05 m, type 5.5-6.6 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "strip cornice 14.88 m vs the type's 10.4 m (wall-dormer skyline 14.4 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.208 (brick)"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012083178",
+   "address": "Banstraat 19",
+   "builtYear": 1911,
+   "widthM": 5.98,
+   "eavesM": 14.49,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#797b79",
+    "wallRaw": "#84745c",
+    "skyline": {
+     "eavesM": 15.07,
+     "eavesRow": 287,
+     "confidence": 1,
+     "crown": {
+      "widthM": 3.9,
+      "riseM": 5.18,
+      "topWidthM": 0.25,
+      "centre": 0.5
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 2,
+    "frontClass": "punched",
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.174,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 13.38,
+       "widthM": 0.9,
+       "centre": 0.45
+      },
+      {
+       "atM": 10.07,
+       "widthM": 0.88,
+       "centre": 0.08
+      },
+      {
+       "atM": 8.05,
+       "widthM": 0.9,
+       "centre": 0.43
+      },
+      {
+       "atM": 6.85,
+       "widthM": 1.02,
+       "centre": 0.8
+      },
+      {
+       "atM": 6.17,
+       "widthM": 0.8,
+       "centre": 0.07
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.19
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best museum-cs-1900-gable-balcony: built 1911, type 1900-1901)",
+   "best": {
+    "type": "museum-cs-1900-gable-balcony",
+    "score": 0,
+    "veto": [
+     "built 1911, type 1900-1901"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0.5,
+      "note": "strip cornice 15.07 m vs the type's 10.4 m (wall-dormer skyline 14.4 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.16 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0.4,
+      "note": "strip columns 2 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

@@ -1,0 +1,127 @@
+{
+ "face": "eeghen-66-68",
+ "street": "Van Eeghenstraat",
+ "library": "museumkwartier",
+ "stripDate": "2024-11-12",
+ "seconds": 0.14,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [],
+ "pands": [
+  {
+   "pandId": "0363100012082975",
+   "address": "Van Eeghenstraat 68",
+   "builtYear": 1901,
+   "widthM": 7.96,
+   "eavesM": 10.78,
+   "storeys3dbag": 4,
+   "bagBay": {
+    "fromM": 5.13,
+    "toM": 7.83,
+    "depthM": 1.42,
+    "centre": 0.827,
+    "lineRD": [
+     [
+      119998.0903125,
+      485653.22325000004
+     ],
+     [
+      120002.7683125,
+      485655.33325
+     ]
+    ]
+   },
+   "strip": {
+    "wall": "#51493d",
+    "wallRaw": "#737262",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 857,
+     "confidence": 0.01,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": "left",
+    "accentSide": "left",
+    "accentShare": 0.678,
+    "structure": {
+     "bayWidthM": 5.58,
+     "bayCentre": 0.38,
+     "balconies": false,
+     "why": "no dark open axis (light ones: 0.82 m @ 0.71, 1.23 m @ 0.82), 0 wide slab(s)",
+     "openAxes": [
+      {
+       "widthM": 0.82,
+       "centre": 0.29,
+       "light": 0.71
+      },
+      {
+       "widthM": 1.23,
+       "centre": 0.56,
+       "light": 0.82
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0.41,
+    "foliageShare": 0.21
+   },
+   "status": "held",
+   "stage": "evidence",
+   "reason": "strip 41 % without panorama data",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012158108",
+   "address": "Van Eeghenstraat 66",
+   "builtYear": 1901,
+   "widthM": 2.61,
+   "eavesM": 6.68,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#756a5a",
+    "wallRaw": "#524c3d",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 857,
+     "confidence": 0,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.15
+   },
+   "status": "held",
+   "stage": "evidence",
+   "reason": "no front on the strip: sky over the roof in 48 % of columns (< 75 %): the strip shows a nearer wall, fence or tree, not the front",
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

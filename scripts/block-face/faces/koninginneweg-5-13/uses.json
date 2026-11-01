@@ -1,0 +1,109 @@
+{
+ "street": "Koninginneweg",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-01T13:56:23.707Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012162397",
+   "addresses": [
+    "Koninginneweg 5"
+   ],
+   "groundUnits": [
+    {
+     "address": "Koninginneweg 5",
+     "use": "woonfunctie",
+     "areaM2": 87,
+     "bagId": "0363010000709227"
+    },
+    {
+     "address": "Van Eeghenstraat 199",
+     "use": "woonfunctie",
+     "areaM2": 144,
+     "bagId": "0363010000838848"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012156316",
+   "addresses": [
+    "Koninginneweg 7"
+   ],
+   "groundUnits": [
+    {
+     "address": "Koninginneweg 7",
+     "use": "woonfunctie",
+     "areaM2": 212,
+     "bagId": "0363010000709229"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012159961",
+   "addresses": [
+    "Koninginneweg 9"
+   ],
+   "groundUnits": [
+    {
+     "address": "Koninginneweg 9-H",
+     "use": "woonfunctie",
+     "areaM2": 104,
+     "bagId": "0363010000709235"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012163144",
+   "addresses": [
+    "Koninginneweg 11"
+   ],
+   "groundUnits": [
+    {
+     "address": "Koninginneweg 11",
+     "use": "woonfunctie",
+     "areaM2": 285,
+     "bagId": "0363010000709237"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012167359",
+   "addresses": [
+    "Koninginneweg 13",
+    "Koninginneweg 13A",
+    "Koninginneweg 13B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Koninginneweg 13",
+     "use": "woonfunctie",
+     "areaM2": 280,
+     "bagId": "0363010000709238"
+    },
+    {
+     "address": "Koninginneweg 13A",
+     "use": "woonfunctie",
+     "areaM2": 127,
+     "bagId": "0363010012142133"
+    },
+    {
+     "address": "Koninginneweg 13B",
+     "use": "woonfunctie",
+     "areaM2": 144,
+     "bagId": "0363010012142134"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  }
+ ]
+}

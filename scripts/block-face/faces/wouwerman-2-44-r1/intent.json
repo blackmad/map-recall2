@@ -1,0 +1,199 @@
+{
+ "schemaVersion": 1,
+ "kind": "block-face",
+ "id": "wouwerman-2-44-r1",
+ "street": "Wouwermanstraat",
+ "sources": [
+  {
+   "id": "strip-2024-11-06",
+   "kind": "street-panorama",
+   "capturedAt": "2024-11-06",
+   "image": "staging/block-face/wouwerman-2-44-r1/strip.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "authoring": {
+  "author": "auto-place (blockFace/autoPlace.ts)",
+  "passes": 1,
+  "note": "auto-placed from the museumkwartier library (buurt Hondecoeterbuurt); scores and holds in scripts/block-face/faces/wouwerman-2-44/auto-place.json"
+ },
+ "types": [
+  "museum-hc-1910-glazed-oriel"
+ ],
+ "houses": [
+  {
+   "pandId": "0363100012114665",
+   "slug": "wouwerman-114665",
+   "address": "Wouwermanstraat 18",
+   "type": {
+    "type": "museum-hc-1910-glazed-oriel",
+    "ground": "door-left",
+    "measuredPalette": {
+     "brick": "#765541",
+     "evidence": "strip 2024-11-06 span 2088-2353: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "crown": "pediment-dormer",
+    "paletteOverrides": {
+     "brick": "#765541"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2024-11-06",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: museum-hc-1910-glazed-oriel scored 1 on eaves 1, storeys 1, stucco 1, columns 1; strip 2024-11-06 span 2088-2353"
+   }
+  },
+  {
+   "pandId": "0363100012108114",
+   "slug": "wouwerman-108114",
+   "address": "Wouwermanstraat 16",
+   "type": {
+    "type": "museum-hc-1910-glazed-oriel",
+    "ground": "door-left",
+    "measuredPalette": {
+     "brick": "#6b6152",
+     "evidence": "strip 2024-11-06 span 2353-2593: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "paletteOverrides": {
+     "brick": "#6b6152"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2024-11-06",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: museum-hc-1910-glazed-oriel scored 1 on eaves 1, storeys 1, stucco 1, columns 1; strip 2024-11-06 span 2353-2593"
+   }
+  },
+  {
+   "pandId": "0363100012138798",
+   "slug": "wouwerman-138798",
+   "address": "Wouwermanstraat 14",
+   "type": {
+    "type": "museum-hc-1910-glazed-oriel",
+    "ground": "door-left",
+    "measuredPalette": {
+     "brick": "#3c3628",
+     "evidence": "strip 2024-11-06 span 2593-2833: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "paletteOverrides": {
+     "brick": "#6b6152"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2024-11-06",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: museum-hc-1910-glazed-oriel scored 1 on eaves 1, storeys 1, stucco 1, columns 1; strip 2024-11-06 span 2593-2833"
+   }
+  },
+  {
+   "pandId": "0363100012083474",
+   "slug": "wouwerman-083474",
+   "address": "Wouwermanstraat 12",
+   "type": {
+    "type": "museum-hc-1910-glazed-oriel",
+    "measuredPalette": {
+     "brick": "#796454",
+     "evidence": "strip 2024-11-06 span 2834-3074: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "paletteOverrides": {
+     "brick": "#6b6152"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2024-11-06",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: museum-hc-1910-glazed-oriel scored 1 on eaves 1, storeys 1, stucco 1, columns 1; strip 2024-11-06 span 2834-3074"
+   }
+  },
+  {
+   "pandId": "0363100012078941",
+   "slug": "wouwerman-078941",
+   "address": "Wouwermanstraat 10",
+   "type": {
+    "type": "museum-hc-1910-glazed-oriel",
+    "ground": "door-left",
+    "paletteOverrides": {
+     "brick": "#6b6152"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2024-11-06",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: museum-hc-1910-glazed-oriel scored 1 on eaves 1, storeys 1, stucco -; strip 2024-11-06 span 3074-3314"
+   }
+  }
+ ],
+ "continuity": {
+  "streetLevel": "shared",
+  "corniceGroups": [],
+  "identical": [],
+  "partyClip": true,
+  "roof": {
+   "source": "recipe",
+   "pitchDeg": 30,
+   "evidence": "auto-place: low attic behind the cornice; the strips show sky over the cornices of the type rows"
+  },
+  "measuredEaves": [
+   {
+    "pand": "0363100012114665",
+    "stripRow": 224,
+    "evidence": "auto-place: strip skyline cornice 15.22 m within 1 m of the museum-hc-1910-glazed-oriel line 15.3 m; 3DBAG/PDOK eaves 14.24 m"
+   },
+   {
+    "pand": "0363100012108114",
+    "stripRow": 226,
+    "evidence": "auto-place: strip skyline cornice 15.18 m within 1 m of the museum-hc-1910-glazed-oriel line 15.3 m; 3DBAG/PDOK eaves 14.43 m"
+   },
+   {
+    "pand": "0363100012138798",
+    "stripRow": 214,
+    "evidence": "auto-place: strip skyline cornice 15.47 m within 1 m of the museum-hc-1910-glazed-oriel line 15.3 m; 3DBAG/PDOK eaves 14.33 m"
+   },
+   {
+    "pand": "0363100012083474",
+    "stripRow": 218,
+    "evidence": "auto-place: strip skyline cornice 15.38 m within 1 m of the museum-hc-1910-glazed-oriel line 15.3 m; 3DBAG/PDOK eaves 14.21 m"
+   },
+   {
+    "pand": "0363100012078941",
+    "stripRow": 218,
+    "evidence": "auto-place: strip skyline cornice 15.38 m within 1 m of the museum-hc-1910-glazed-oriel line 15.3 m; 3DBAG/PDOK eaves 14.14 m"
+   }
+  ]
+ }
+}

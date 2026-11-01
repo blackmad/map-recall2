@@ -1,0 +1,411 @@
+{
+ "face": "hooch-1-7",
+ "street": "Pieter de Hoochstraat",
+ "library": "museumkwartier",
+ "stripDate": "2024-12-11",
+ "seconds": 2.1,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [],
+ "pands": [
+  {
+   "pandId": "0363100012133770",
+   "address": "Pieter de Hoochstraat 1",
+   "builtYear": 1914,
+   "widthM": 7.18,
+   "eavesM": 12.04,
+   "storeys3dbag": 4,
+   "bagBay": {
+    "fromM": 1.07,
+    "toM": 6,
+    "depthM": 0.42,
+    "centre": 0.492
+   },
+   "strip": {
+    "wall": "#94735a",
+    "wallRaw": "#c69678",
+    "skyline": {
+     "eavesM": 15.55,
+     "eavesRow": 184,
+     "confidence": 1,
+     "crown": {
+      "widthM": 3.42,
+      "riseM": 2.22,
+      "topWidthM": 0.97,
+      "centre": 0.52
+     }
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": 2,
+    "frontClass": "columns",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.191,
+    "structure": {
+     "bayWidthM": 2.1,
+     "bayCentre": 0.25,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0.11,
+    "foliageShare": 0.14
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best museum-de-1899-corbel-cornice: built 1914, type 1898-1901; frontage 7.18 m, type 5-6 m)",
+   "best": {
+    "type": "museum-de-1899-corbel-cornice",
+    "score": 0,
+    "veto": [
+     "built 1914, type 1898-1901",
+     "frontage 7.18 m, type 5-6 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0.5,
+      "note": "strip cornice 15.55 m vs the type's 13.4 m (wall-dormer skyline 14.7 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 4 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.102 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0.4,
+      "note": "strip columns 2 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012064884",
+   "address": "Pieter de Hoochstraat 3",
+   "builtYear": 1914,
+   "widthM": 7.56,
+   "eavesM": 11.86,
+   "storeys3dbag": 5,
+   "bagBay": {
+    "fromM": 1.18,
+    "toM": 6.11,
+    "depthM": 0.42,
+    "centre": 0.482
+   },
+   "strip": {
+    "wall": "#a97d62",
+    "wallRaw": "#b5896c",
+    "skyline": {
+     "eavesM": 15.38,
+     "eavesRow": 191,
+     "confidence": 1,
+     "crown": {
+      "widthM": 3.38,
+      "riseM": 2.4,
+      "topWidthM": 0.93,
+      "centre": 0.43
+     }
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": 2,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.238,
+    "structure": {
+     "bayWidthM": 2.1,
+     "bayCentre": 0.23,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0.12,
+    "foliageShare": 0.18
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best museum-de-1899-corbel-cornice: built 1914, type 1898-1901; frontage 7.56 m, type 5-6 m)",
+   "best": {
+    "type": "museum-de-1899-corbel-cornice",
+    "score": 0,
+    "veto": [
+     "built 1914, type 1898-1901",
+     "frontage 7.56 m, type 5-6 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0.5,
+      "note": "strip cornice 15.38 m vs the type's 13.4 m (wall-dormer skyline 14.7 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.127 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0.4,
+      "note": "strip columns 2 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012099680",
+   "address": "Pieter de Hoochstraat 5A",
+   "builtYear": 1996,
+   "widthM": 17.27,
+   "eavesM": 14.93,
+   "storeys3dbag": 5,
+   "bagBay": {
+    "fromM": 0.34,
+    "toM": 17.26,
+    "depthM": 0.67,
+    "centre": 0.51,
+    "lineRD": [
+     [
+      120815.3660625,
+      485604.6645
+     ],
+     [
+      120812.8240625,
+      485591.6755
+     ]
+    ]
+   },
+   "strip": {
+    "wall": "#eea66a",
+    "wallRaw": "#f2b07b",
+    "skyline": {
+     "eavesM": 16.75,
+     "eavesRow": 136,
+     "confidence": 1,
+     "crown": {
+      "widthM": 6.4,
+      "riseM": 1.82,
+      "topWidthM": 2.83,
+      "centre": 0.56
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 6,
+    "frontClass": "columns",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.201,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 2 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 9.82,
+       "widthM": 1.57,
+       "centre": 0.2
+      },
+      {
+       "atM": 9.52,
+       "widthM": 1.45,
+       "centre": 0.94
+      },
+      {
+       "atM": 6.67,
+       "widthM": 1.2,
+       "centre": 0.18
+      }
+     ]
+    },
+    "voidShare": 0.09,
+    "foliageShare": 0.14
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best museum-de-1899-corbel-cornice: built 1996, type 1898-1901; frontage 17.27 m, type 5-6 m)",
+   "best": {
+    "type": "museum-de-1899-corbel-cornice",
+    "score": 0,
+    "veto": [
+     "built 1996, type 1898-1901",
+     "frontage 17.27 m, type 5-6 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 16.75 m vs the type's 13.4 m (wall-dormer skyline 14.7 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.066 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0,
+      "note": "strip columns 6 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012155190",
+   "address": "Pieter de Hoochstraat 7F",
+   "builtYear": 1996,
+   "widthM": 16.89,
+   "eavesM": 15.41,
+   "storeys3dbag": 5,
+   "bagBay": {
+    "fromM": 0,
+    "toM": 16.42,
+    "depthM": 0.66,
+    "centre": 0.486,
+    "lineRD": [
+     [
+      120811.1140625,
+      485580.4685
+     ],
+     [
+      120809.3710625,
+      485571.0565
+     ]
+    ]
+   },
+   "strip": {
+    "wall": "#faca8f",
+    "wallRaw": "#f2b17c",
+    "skyline": {
+     "eavesM": 16.55,
+     "eavesRow": 144,
+     "confidence": 1,
+     "crown": {
+      "widthM": 6.38,
+      "riseM": 1.7,
+      "topWidthM": 3.15,
+      "centre": 0.39
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 6,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.207,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "balcony slabs stacked at 9.77 m (1.32 m wide), 9.47 m (1.45 m wide), 6.47 m (1.4 m wide)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 9.77,
+       "widthM": 1.32,
+       "centre": 0.76
+      },
+      {
+       "atM": 9.47,
+       "widthM": 1.45,
+       "centre": 0.2
+      },
+      {
+       "atM": 6.47,
+       "widthM": 1.4,
+       "centre": 0.2
+      }
+     ]
+    },
+    "voidShare": 0.11,
+    "foliageShare": 0.17
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best museum-de-1899-corbel-cornice: built 1996, type 1898-1901; frontage 16.89 m, type 5-6 m)",
+   "best": {
+    "type": "museum-de-1899-corbel-cornice",
+    "score": 0,
+    "veto": [
+     "built 1996, type 1898-1901",
+     "frontage 16.89 m, type 5-6 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 16.55 m vs the type's 13.4 m (wall-dormer skyline 14.7 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.054 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0,
+      "note": "strip columns 6 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

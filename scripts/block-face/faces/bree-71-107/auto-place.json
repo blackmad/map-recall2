@@ -1,0 +1,1409 @@
+{
+ "face": "bree-71-107",
+ "street": "Van Breestraat",
+ "library": "museumkwartier",
+ "stripDate": "2024-11-12",
+ "seconds": 2.44,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [],
+ "pands": [
+  {
+   "pandId": "0363100012237239",
+   "address": "Van Breestraat 71",
+   "builtYear": 1899,
+   "widthM": 5.79,
+   "eavesM": 10.76,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#6b563b",
+    "wallRaw": "#4b4a37",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 842,
+     "confidence": 0.19,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 2,
+    "frontClass": "punched",
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.015,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 0.65 m at 0.44 (light 0.16): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.65,
+       "centre": 0.44,
+       "light": 0.16
+      },
+      {
+       "widthM": 0.7,
+       "centre": 0.81,
+       "light": 0.29
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.42
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best museum-cs-1900-gable-balcony: built 1899, type 1900-1901)",
+   "best": {
+    "type": "museum-cs-1900-gable-balcony",
+    "score": 0,
+    "veto": [
+     "built 1899, type 1900-1901"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": null,
+      "note": "strip cornice unread (type line 10.4 m; 3DBAG 10.76 m not compared)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 4 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": null,
+      "note": "no strip"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012153028",
+   "address": "Van Breestraat 73",
+   "builtYear": 1899,
+   "widthM": 5.79,
+   "eavesM": 13.79,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#654c33",
+    "wallRaw": "#70604a",
+    "skyline": {
+     "eavesM": 12.13,
+     "eavesRow": 357,
+     "confidence": 0.91,
+     "crown": {
+      "widthM": 2,
+      "riseM": 2.15,
+      "topWidthM": 0.82,
+      "centre": 0.7
+     }
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": 2,
+    "frontClass": "punched",
+    "doorSide": "right",
+    "accentSide": "left",
+    "accentShare": 0.16,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 1.27 m at 0.25 (light 0.26): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 1.27,
+       "centre": 0.25,
+       "light": 0.26
+      },
+      {
+       "widthM": 0.93,
+       "centre": 0.74,
+       "light": 0.19
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 6.2,
+       "widthM": 1.93,
+       "centre": 0.24
+      },
+      {
+       "atM": 5.3,
+       "widthM": 1.8,
+       "centre": 0.75
+      },
+      {
+       "atM": 5,
+       "widthM": 1.2,
+       "centre": 0.25
+      }
+     ]
+    },
+    "voidShare": 0.04,
+    "foliageShare": 0.17
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best museum-cs-1900-gable-balcony: built 1899, type 1900-1901)",
+   "best": {
+    "type": "museum-cs-1900-gable-balcony",
+    "score": 0,
+    "veto": [
+     "built 1899, type 1900-1901"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 12.13 m vs the type's 10.4 m (wall-dormer skyline 14.4 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 4 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.065 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0.4,
+      "note": "strip columns 2 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012162309",
+   "address": "Van Breestraat 75",
+   "builtYear": 1899,
+   "widthM": 5.79,
+   "eavesM": 11.07,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#92a2a7",
+    "wallRaw": "#625842",
+    "skyline": {
+     "eavesM": 14.95,
+     "eavesRow": 244,
+     "confidence": 0.93,
+     "crown": {
+      "widthM": 3.98,
+      "riseM": 6.1,
+      "topWidthM": 0.28,
+      "centre": 0.63
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 2,
+    "frontClass": "columns",
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.056,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 1.45 m at 0.21 (light 0.36): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 1.45,
+       "centre": 0.21,
+       "light": 0.36
+      },
+      {
+       "widthM": 0.8,
+       "centre": 0.67,
+       "light": 0.32
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 6.2,
+       "widthM": 0.95,
+       "centre": 0.25
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.23
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best museum-cs-1900-gable-balcony: built 1899, type 1900-1901)",
+   "best": {
+    "type": "museum-cs-1900-gable-balcony",
+    "score": 0,
+    "veto": [
+     "built 1899, type 1900-1901"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0.5,
+      "note": "strip cornice 14.95 m vs the type's 10.4 m (wall-dormer skyline 14.4 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 4 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.041 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0.4,
+      "note": "strip columns 2 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012164365",
+   "address": "Van Breestraat 77",
+   "builtYear": 1899,
+   "widthM": 5.79,
+   "eavesM": 10.79,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#5b4b38",
+    "wallRaw": "#56503e",
+    "skyline": {
+     "eavesM": 12,
+     "eavesRow": 362,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.75,
+      "riseM": 1.88,
+      "topWidthM": 1.3,
+      "centre": 0.63
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 2,
+    "frontClass": "columns",
+    "doorSide": null,
+    "accentSide": "left",
+    "accentShare": 0.092,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 0.9 m at 0.16 (light 0.39): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.9,
+       "centre": 0.16,
+       "light": 0.39
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 6.3,
+       "widthM": 1.73,
+       "centre": 0.16
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.23
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best museum-cs-1900-gable-balcony: built 1899, type 1900-1901)",
+   "best": {
+    "type": "museum-cs-1900-gable-balcony",
+    "score": 0,
+    "veto": [
+     "built 1899, type 1900-1901"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 12 m vs the type's 10.4 m (wall-dormer skyline 14.4 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 4 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.057 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0.4,
+      "note": "strip columns 2 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012154188",
+   "address": "Van Breestraat 79",
+   "builtYear": 1898,
+   "widthM": 5.79,
+   "eavesM": 13.81,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#947e71",
+    "wallRaw": "#5d5346",
+    "skyline": {
+     "eavesM": 13.25,
+     "eavesRow": 312,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.57,
+      "riseM": 1.2,
+      "topWidthM": 1.27,
+      "centre": 0.34
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 4,
+    "frontClass": "punched",
+    "doorSide": "left",
+    "accentSide": "right",
+    "accentShare": 0.103,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 9.43,
+       "widthM": 0.8,
+       "centre": 0.66
+      },
+      {
+       "atM": 6.2,
+       "widthM": 2.58,
+       "centre": 0.54
+      }
+     ]
+    },
+    "voidShare": 0.03,
+    "foliageShare": 0.13
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best museum-cs-1900-gable-balcony: built 1898, type 1900-1901)",
+   "best": {
+    "type": "museum-cs-1900-gable-balcony",
+    "score": 0,
+    "veto": [
+     "built 1898, type 1900-1901"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 13.25 m vs the type's 10.4 m (wall-dormer skyline 14.4 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.022 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0.4,
+      "note": "strip columns 4 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012155916",
+   "address": "Van Breestraat 81",
+   "builtYear": 1898,
+   "widthM": 5.53,
+   "eavesM": 15.59,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#7e4c39",
+    "wallRaw": "#655445",
+    "skyline": {
+     "eavesM": 14.9,
+     "eavesRow": 246,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 3,
+    "columns": 3,
+    "frontClass": "columns",
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.093,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.19
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best museum-cs-1900-gable-balcony: built 1898, type 1900-1901)",
+   "best": {
+    "type": "museum-cs-1900-gable-balcony",
+    "score": 0,
+    "veto": [
+     "built 1898, type 1900-1901"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "strip cornice 14.9 m vs the type's 10.4 m (wall-dormer skyline 14.4 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.05 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012163509",
+   "address": "Van Breestraat 83",
+   "builtYear": 1900,
+   "widthM": 5.86,
+   "eavesM": 13.82,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#454942",
+    "wallRaw": "#585b4f",
+    "skyline": {
+     "eavesM": 12.45,
+     "eavesRow": 344,
+     "confidence": 1,
+     "crown": {
+      "widthM": 0.88,
+      "riseM": 2.35,
+      "topWidthM": 0.1,
+      "centre": 0.08
+     }
+    },
+    "stucco": false,
+    "bands": 4,
+    "columns": null,
+    "frontClass": "curtain",
+    "doorSide": "right",
+    "accentSide": "right",
+    "accentShare": 0.248,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 5.47,
+       "widthM": 1.23,
+       "centre": 0.11
+      }
+     ]
+    },
+    "voidShare": 0.06,
+    "foliageShare": 0.43
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "best museum-cs-1900-gable-balcony scores 0.33 < 0.7 (strip cornice 12.45 m vs the type's 10.4 m (wall-dormer skyline 14.4 m))",
+   "best": {
+    "type": "museum-cs-1900-gable-balcony",
+    "score": 0.33,
+    "veto": [],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 12.45 m vs the type's 10.4 m (wall-dormer skyline 14.4 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": null,
+      "note": "no strip"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012166003",
+   "address": "Van Breestraat 85",
+   "builtYear": 1900,
+   "widthM": 5.86,
+   "eavesM": 13.81,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": null,
+    "wallRaw": "#678354",
+    "skyline": {
+     "eavesM": 13.28,
+     "eavesRow": 311,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 4,
+    "columns": 5,
+    "frontClass": "curtain",
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0.115,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 5.47,
+       "widthM": 1.25,
+       "centre": 0.21
+      },
+      {
+       "atM": 4.72,
+       "widthM": 0.93,
+       "centre": 0.34
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.98
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "best museum-cs-1900-gable-balcony scores 0.33 < 0.7 (strip cornice 13.28 m vs the type's 10.4 m (wall-dormer skyline 14.4 m))",
+   "best": {
+    "type": "museum-cs-1900-gable-balcony",
+    "score": 0.33,
+    "veto": [],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 13.28 m vs the type's 10.4 m (wall-dormer skyline 14.4 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": null,
+      "note": "no strip"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012157235",
+   "address": "Van Breestraat 87",
+   "builtYear": 1900,
+   "widthM": 5.86,
+   "eavesM": 13.72,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#0a0c04",
+    "wallRaw": "#587143",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 842,
+     "confidence": 0.22,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "blank",
+    "doorSide": "left",
+    "accentSide": "left",
+    "accentShare": 0.07,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 6.15,
+       "widthM": 1.13,
+       "centre": 0.1
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 1
+   },
+   "status": "held",
+   "stage": "run",
+   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012159878",
+   "address": "Van Breestraat 89",
+   "builtYear": 1900,
+   "widthM": 5.86,
+   "eavesM": 13.74,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#7c6b58",
+    "wallRaw": "#5c624f",
+    "skyline": {
+     "eavesM": 18.85,
+     "eavesRow": 88,
+     "confidence": 0.65,
+     "crown": {
+      "widthM": 1.13,
+      "riseM": 1.82,
+      "topWidthM": 0.65,
+      "centre": 0.88
+     }
+    },
+    "stucco": false,
+    "bands": 2,
+    "columns": 3,
+    "frontClass": "columns",
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.253,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 6.1,
+       "widthM": 1.05,
+       "centre": 0.45
+      },
+      {
+       "atM": 5.42,
+       "widthM": 1.05,
+       "centre": 0.48
+      }
+     ]
+    },
+    "voidShare": 0.07,
+    "foliageShare": 0.5
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "best museum-cs-1900-gable-balcony scores 0.33 < 0.7 (strip cornice 18.85 m vs the type's 10.4 m (wall-dormer skyline 14.4 m))",
+   "best": {
+    "type": "museum-cs-1900-gable-balcony",
+    "score": 0.33,
+    "veto": [],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 18.85 m vs the type's 10.4 m (wall-dormer skyline 14.4 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": null,
+      "note": "no strip"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012155490",
+   "address": "Van Breestraat 91",
+   "builtYear": 1900,
+   "widthM": 5.86,
+   "eavesM": 13.76,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#5b4d42",
+    "wallRaw": "#6c6c5d",
+    "skyline": {
+     "eavesM": 11.85,
+     "eavesRow": 368,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.2,
+      "riseM": 1.63,
+      "topWidthM": 0.38,
+      "centre": 0.68
+     }
+    },
+    "stucco": false,
+    "bands": 6,
+    "columns": 3,
+    "frontClass": "columns",
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0.293,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 5.4,
+       "widthM": 1.07,
+       "centre": 0.11
+      }
+     ]
+    },
+    "voidShare": 0.07,
+    "foliageShare": 0.46
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "best museum-cs-1900-gable-balcony scores 0.33 < 0.7 (strip cornice 11.85 m vs the type's 10.4 m (wall-dormer skyline 14.4 m))",
+   "best": {
+    "type": "museum-cs-1900-gable-balcony",
+    "score": 0.33,
+    "veto": [],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 11.85 m vs the type's 10.4 m (wall-dormer skyline 14.4 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": null,
+      "note": "no strip"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012162759",
+   "address": "Van Breestraat 93",
+   "builtYear": 1900,
+   "widthM": 5.86,
+   "eavesM": 13.93,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#6c5946",
+    "wallRaw": "#5d604c",
+    "skyline": {
+     "eavesM": 17.68,
+     "eavesRow": 135,
+     "confidence": 0.83,
+     "crown": {
+      "widthM": 1.6,
+      "riseM": 2.47,
+      "topWidthM": 0.72,
+      "centre": 0.59
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "columns",
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.063,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 6.88,
+       "widthM": 1.35,
+       "centre": 0.51
+      },
+      {
+       "atM": 5.75,
+       "widthM": 0.97,
+       "centre": 0.56
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.55
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "best museum-cs-1900-gable-balcony scores 0.33 < 0.7 (strip cornice 17.68 m vs the type's 10.4 m (wall-dormer skyline 14.4 m))",
+   "best": {
+    "type": "museum-cs-1900-gable-balcony",
+    "score": 0.33,
+    "veto": [],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 17.68 m vs the type's 10.4 m (wall-dormer skyline 14.4 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 4 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": null,
+      "note": "no strip"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012166328",
+   "address": "Van Breestraat 95",
+   "builtYear": 1900,
+   "widthM": 5.86,
+   "eavesM": 13.91,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#5e513e",
+    "wallRaw": "#505449",
+    "skyline": {
+     "eavesM": 13.15,
+     "eavesRow": 316,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.8,
+      "riseM": 7.1,
+      "topWidthM": 0.5,
+      "centre": 0.38
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0.167,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 5.13,
+       "widthM": 1,
+       "centre": 0.26
+      }
+     ]
+    },
+    "voidShare": 0.04,
+    "foliageShare": 0.35
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "best museum-cs-1900-gable-balcony scores 0.33 < 0.7 (strip cornice 13.15 m vs the type's 10.4 m (wall-dormer skyline 14.4 m))",
+   "best": {
+    "type": "museum-cs-1900-gable-balcony",
+    "score": 0.33,
+    "veto": [],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 13.15 m vs the type's 10.4 m (wall-dormer skyline 14.4 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": null,
+      "note": "no strip"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012072748",
+   "address": "Van Breestraat 97",
+   "builtYear": 1900,
+   "widthM": 5.86,
+   "eavesM": 13.74,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#655444",
+    "wallRaw": "#5d604e",
+    "skyline": {
+     "eavesM": 12.9,
+     "eavesRow": 326,
+     "confidence": 0.7,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 3,
+    "columns": 4,
+    "frontClass": "columns",
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.139,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 2 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 9.6,
+       "widthM": 1.27,
+       "centre": 0.5
+      },
+      {
+       "atM": 6.45,
+       "widthM": 1.25,
+       "centre": 0.83
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.56
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "best museum-cs-1900-gable-balcony scores 0.33 < 0.7 (strip cornice 12.9 m vs the type's 10.4 m (wall-dormer skyline 14.4 m))",
+   "best": {
+    "type": "museum-cs-1900-gable-balcony",
+    "score": 0.33,
+    "veto": [],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 12.9 m vs the type's 10.4 m (wall-dormer skyline 14.4 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 4 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": null,
+      "note": "no strip"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012152926",
+   "address": "Van Breestraat 99",
+   "builtYear": 1900,
+   "widthM": 5.86,
+   "eavesM": 13.83,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#484032",
+    "wallRaw": "#4b523b",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 842,
+     "confidence": 0.19,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0.143,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0.05,
+    "foliageShare": 0.75
+   },
+   "status": "held",
+   "stage": "evidence",
+   "reason": "no front on the strip: sky over the roof in 47 % of columns (< 75 %): the strip shows a nearer wall, fence or tree, not the front",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012158612",
+   "address": "Van Breestraat 101",
+   "builtYear": 1901,
+   "widthM": 5.86,
+   "eavesM": 13.81,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#1b1809",
+    "wallRaw": "#475034",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 842,
+     "confidence": 0.17,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 7,
+    "frontClass": "curtain",
+    "doorSide": "right",
+    "accentSide": "right",
+    "accentShare": 0.1,
+    "structure": {
+     "bayWidthM": 1.38,
+     "bayCentre": 0.87,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 6.07,
+       "widthM": 0.93,
+       "centre": 0.16
+      }
+     ]
+    },
+    "voidShare": 0.04,
+    "foliageShare": 0.73
+   },
+   "status": "held",
+   "stage": "run",
+   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012162708",
+   "address": "Van Breestraat 103",
+   "builtYear": 1901,
+   "widthM": 5.86,
+   "eavesM": 13.76,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#8a705f",
+    "wallRaw": "#726d5f",
+    "skyline": {
+     "eavesM": 11.85,
+     "eavesRow": 368,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.77,
+      "riseM": 1.6,
+      "topWidthM": 1.85,
+      "centre": 0.46
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 4,
+    "frontClass": "columns",
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0.202,
+    "structure": {
+     "bayWidthM": 0.97,
+     "bayCentre": 0.46,
+     "balconies": true,
+     "why": "dark open axis 0.68 m at 0.47 (light 0.4): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.68,
+       "centre": 0.47,
+       "light": 0.4
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 9.15,
+       "widthM": 1.07,
+       "centre": 0.47
+      },
+      {
+       "atM": 6.15,
+       "widthM": 1.35,
+       "centre": 0.14
+      },
+      {
+       "atM": 5.4,
+       "widthM": 1.23,
+       "centre": 0.16
+      }
+     ]
+    },
+    "voidShare": 0.07,
+    "foliageShare": 0.18
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "best museum-cs-1900-gable-balcony scores 0.55 < 0.7 (strip cornice 11.85 m vs the type's 10.4 m (wall-dormer skyline 14.4 m); strip columns 4 vs 3 bays)",
+   "best": {
+    "type": "museum-cs-1900-gable-balcony",
+    "score": 0.55,
+    "veto": [],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 11.85 m vs the type's 10.4 m (wall-dormer skyline 14.4 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 4 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.075 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0.4,
+      "note": "strip columns 4 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012156733",
+   "address": "Van Breestraat 105",
+   "builtYear": 1901,
+   "widthM": 5.87,
+   "eavesM": 13.77,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#584a3a",
+    "wallRaw": "#565749",
+    "skyline": {
+     "eavesM": 20.25,
+     "eavesRow": 32,
+     "confidence": 0.64,
+     "crown": {
+      "widthM": 0.63,
+      "riseM": 0.8,
+      "topWidthM": 0.63,
+      "centre": 0.8
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0.118,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0.03,
+    "foliageShare": 0.4
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "best museum-cs-1900-gable-balcony scores 0.33 < 0.7 (strip cornice 20.25 m vs the type's 10.4 m (wall-dormer skyline 14.4 m))",
+   "best": {
+    "type": "museum-cs-1900-gable-balcony",
+    "score": 0.33,
+    "veto": [],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 20.25 m vs the type's 10.4 m (wall-dormer skyline 14.4 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 4 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": null,
+      "note": "no strip"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

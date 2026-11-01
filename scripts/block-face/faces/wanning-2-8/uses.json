@@ -1,0 +1,94 @@
+{
+ "street": "Wanningstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-01T16:43:30.938Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012161393",
+   "addresses": [
+    "Wanningstraat 8"
+   ],
+   "groundUnits": [
+    {
+     "address": "Wanningstraat 8",
+     "use": "woonfunctie",
+     "areaM2": 383,
+     "bagId": "0363010000861845"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012155607",
+   "addresses": [
+    "Wanningstraat 4C",
+    "Wanningstraat 6"
+   ],
+   "groundUnits": [
+    {
+     "address": "Wanningstraat 4C",
+     "use": "woonfunctie",
+     "areaM2": 121,
+     "bagId": "0363010000861842"
+    },
+    {
+     "address": "Wanningstraat 6",
+     "use": "kantoorfunctie",
+     "areaM2": 391,
+     "bagId": "0363010000861844"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012167277",
+   "addresses": [
+    "Wanningstraat 4A",
+    "Wanningstraat 4B",
+    "Wanningstraat 4D"
+   ],
+   "groundUnits": [
+    {
+     "address": "Wanningstraat 4A",
+     "use": "woonfunctie",
+     "areaM2": 118,
+     "bagId": "0363010000861840"
+    },
+    {
+     "address": "Wanningstraat 4B",
+     "use": "woonfunctie",
+     "areaM2": 121,
+     "bagId": "0363010000861841"
+    },
+    {
+     "address": "Wanningstraat 4D",
+     "use": "woonfunctie",
+     "areaM2": 56,
+     "bagId": "0363010000861843"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012155965",
+   "addresses": [
+    "Wanningstraat 2"
+   ],
+   "groundUnits": [
+    {
+     "address": "Wanningstraat 2-H",
+     "use": "industriefunctie",
+     "areaM2": 158,
+     "bagId": "0363010000861836"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  }
+ ]
+}

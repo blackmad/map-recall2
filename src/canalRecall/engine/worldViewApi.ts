@@ -149,3 +149,19 @@ export function engineFlag(search = (globalThis as { location?: { search?: strin
   const asked = g.__canalRecallEngine ?? new URLSearchParams(search).get('engine');
   return engineForCity(asked === 'own' ? 'own' : 'maplibre', cityId);
 }
+
+/** The building looks a world view draws (vector-map.js setBuildingLook); 'default' is MapLibre's retired pattern layer. */
+export const BUILDING_LOOK_IDS = ['default', 'procedural', 'storybook', 'cartoon', 'photo', 'untextured'] as const;
+export type BuildingLookId = typeof BUILDING_LOOK_IDS[number];
+
+/**
+ * The look a URL or global asks for (`?buildings3d=` or `window.__canalRecallBuildings3d`), or null: the same values
+ * vector-map.js `canalRecallBuildings3dLook` reads, so both engines honour the same links. A URL look beats the saved
+ * preference (building-look.spec "a URL look is not overridden").
+ */
+export function urlBuildingLook(raw: unknown): BuildingLookId | null {
+  if (raw === true || raw === '1' || raw === 'true' || raw === 'on' || raw === 'procedural') return 'procedural';
+  if (raw === 'cartoon' || raw === 'photo' || raw === 'storybook' || raw === 'untextured') return raw;
+  if (raw === 'off' || raw === 'default') return 'default';
+  return null;
+}

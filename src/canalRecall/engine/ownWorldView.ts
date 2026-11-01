@@ -32,7 +32,8 @@ import { RiderCoverTracker } from './riderCover';
 import { decodeOverviewBytes, fetchOverviewBytes, OverviewLayer, overviewTileGrid, OVERVIEW_TILE_MIN_TRIANGLES } from './overviewLayer';
 import { overviewFromPool } from '../ownMap/overviewPool';
 import { awaitWorkerPool } from './workerPool';
-import type { JumpOptions, ScreenPoint, WorldCamera, WorldViewOracles } from './worldViewApi';
+import type { BuildingLookId, JumpOptions, ScreenPoint, WorldCamera, WorldViewOracles } from './worldViewApi';
+import { BUILDING_LOOK_IDS, urlBuildingLook } from './worldViewApi';
 import { FlatLines, type LngLatLine } from './overlays/flatLines';
 import { COVER_POLL_MS, isCoveredState } from '../labels/coveredState';
 import { LabelLayer, type PointLabel } from './overlays/labelLayer';
@@ -166,7 +167,9 @@ export class OwnWorldView implements WorldViewOracles {
   private groundRefreshAt = 0;
   private introLanding = false;
   private measuredColoursOnly = false;
-  private buildingLookPref = 'photo';
+  /** The building look in force (worldViewApi BUILDING_LOOK_IDS); a URL/global look locks out the saved preference. */
+  private buildingLookNow: BuildingLookId = 'photo';
+  private buildingLookLocked = false;
   /** Overlays (engine/overlays): flat lines over the ground, labels on a 2D canvas, the landmark marker. */
   readonly _lines: Record<'cycle' | 'transit' | 'hoods', FlatLines>;
   readonly _labels: LabelLayer;
@@ -191,6 +194,8 @@ export class OwnWorldView implements WorldViewOracles {
   constructor(container: HTMLElement | null) {
     if (!container) throw new Error('OwnWorldView needs its container');
     this.container = container;
+    const urlLook = urlBuildingLook(W().__canalRecallBuildings3d !== undefined ? W().__canalRecallBuildings3d : new URLSearchParams(W().location?.search ?? '').get('buildings3d'));
+    if (urlLook) { this.buildingLookNow = urlLook; this.buildingLookLocked = true; }
     const three = W().CanalRecallThree;
     if (!three?.THREE) throw new Error('OwnWorldView needs window.CanalRecallThree');
     const THREE = three.THREE;
@@ -388,7 +393,7 @@ export class OwnWorldView implements WorldViewOracles {
     const runtime = W().CanalRecallBuildingTiles, api = W().CanalRecallThreeBuildings, Facades = this.facadesLib();
     if (!runtime?.BuildingTileStreamer || !api?.ThreeBuildings || !Facades) { this.fail('buildings', 'bundles missing'); return; }
     try {
-      this._threeBuildings = new api.ThreeBuildings(this.cameraMap, MERCATOR, 'photo');
+      this._threeBuildings = new api.ThreeBuildings(this.cameraMap, MERCATOR, this.drawnLook());
       this._threeBuildings.attachToSharedFrame(this._sharedFrame);
       if (this.streetFronts && this._threeBuildings.setStreets) this._threeBuildings.setStreets(this.streetFronts);
       this.streetFronts = null;
@@ -859,10 +864,23 @@ export class OwnWorldView implements WorldViewOracles {
   setSpoilerNames(names: string[]): void { this.spoilerNames = names || []; }
   _spoils(name: string): boolean { return !!name && this.spoilerNames.includes(name); }
   setMeasuredColoursOnly(on: boolean): void { this.measuredColoursOnly = !!on; this.extras.syncEnabled(); }
-  setBuildingLookPreference(look: string): void { this.buildingLookPref = look || 'photo'; }
-  buildingLook(): string { return this.buildingLookPref; }
-  /** Read by the look specs; the own view draws one look until the look switch is ported. */
-  get _buildings3dLook(): string { return this.buildingLookPref; }
+  /** The look the saved preference asks for, unless a URL look is in force (vector-map.js, same rule). */
+  setBuildingLookPreference(look: string): void { if (!this.buildingLookLocked) this.setBuildingLook(look); }
+  buildingLook(): string { return this.buildingLookNow; }
+  /**
+   * Live switch between the three.js looks (the B key, Settings). 'default' names MapLibre's retired pattern layer,
+   * which the own engine does not have: it is reported as asked and the walls keep drawing in the photo look.
+   */
+  setBuildingLook(look: string): void {
+    if (!(BUILDING_LOOK_IDS as readonly string[]).includes(look) || look === this.buildingLookNow) return;
+    this.buildingLookNow = look as BuildingLookId;
+    void this._threeBuildings?.setLook?.(this.drawnLook());
+    this.host.triggerRepaint();
+  }
+  /** Console alias (vector-map.js setBuildingsLook). */
+  setBuildingsLook(look: string): void { this.setBuildingLook(look); }
+  private drawnLook(): Exclude<BuildingLookId, 'default'> { return this.buildingLookNow === 'default' ? 'photo' : this.buildingLookNow; }
+  get _buildings3dLook(): string { return this.buildingLookNow; }
   /** The streamed buildings' features (context-restore compares them across a restore). */
   _tileFeatures: unknown[] = [];
   applyTheme(theme: string): void {

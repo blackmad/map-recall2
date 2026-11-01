@@ -1,0 +1,189 @@
+{
+ "street": "De Lairessestraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-01T13:29:44.342Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012091058",
+   "addresses": [
+    "De Lairessestraat 7"
+   ],
+   "groundUnits": [
+    {
+     "address": "De Lairessestraat 7",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 750,
+     "bagId": "0363010011073793"
+    }
+   ],
+   "units": 1,
+   "osm": [
+    {
+     "type": "way",
+     "id": 277121073,
+     "lngLat": [
+      4.8773454,
+      52.3549025
+     ],
+     "tags": {
+      "building": "yes",
+      "height": "18.8",
+      "name": "Conscious Hotel Museum Square",
+      "ref:bag": "0363100012091058",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "source:height": "3DBAG",
+      "source:height:date": "2025-09-03",
+      "start_date": "1920",
+      "tourism": "hotel",
+      "website": "https://conscioushotels.com"
+     },
+     "fetchedAt": "2026-11-01T13:29:44.342Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012164333",
+   "addresses": [
+    "De Lairessestraat 9"
+   ],
+   "groundUnits": [
+    {
+     "address": "De Lairessestraat 9-H",
+     "use": "woonfunctie",
+     "areaM2": 304,
+     "bagId": "0363010000950608"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012105894",
+   "addresses": [
+    "De Lairessestraat 11"
+   ],
+   "groundUnits": [
+    {
+     "address": "De Lairessestraat 11",
+     "use": "logiesfunctie",
+     "areaM2": 630,
+     "bagId": "0363010011073794"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012122929",
+   "addresses": [
+    "De Lairessestraat 13",
+    "De Lairessestraat 13A",
+    "De Lairessestraat 13B",
+    "De Lairessestraat 13C",
+    "De Lairessestraat 13D"
+   ],
+   "groundUnits": [
+    {
+     "address": "De Lairessestraat 13",
+     "use": "kantoorfunctie",
+     "areaM2": 527,
+     "bagId": "0363010000617982"
+    },
+    {
+     "address": "De Lairessestraat 13B",
+     "use": "woonfunctie",
+     "areaM2": 105,
+     "bagId": "0363010001170625"
+    },
+    {
+     "address": "De Lairessestraat 13C",
+     "use": "woonfunctie",
+     "areaM2": 93,
+     "bagId": "0363010001170626"
+    },
+    {
+     "address": "De Lairessestraat 13D",
+     "use": "woonfunctie",
+     "areaM2": 208,
+     "bagId": "0363010001170628"
+    }
+   ],
+   "units": 6,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012105244",
+   "addresses": [
+    "De Lairessestraat 15",
+    "De Lairessestraat 17",
+    "De Lairessestraat 17A",
+    "De Lairessestraat 17C",
+    "De Lairessestraat 17B"
+   ],
+   "groundUnits": [
+    {
+     "address": "De Lairessestraat 17",
+     "use": "woonfunctie",
+     "areaM2": 331,
+     "bagId": "0363010000617990"
+    },
+    {
+     "address": "De Lairessestraat 17A",
+     "use": "woonfunctie",
+     "areaM2": 113,
+     "bagId": "0363010012145225"
+    },
+    {
+     "address": "De Lairessestraat 17C",
+     "use": "woonfunctie",
+     "areaM2": 111,
+     "bagId": "0363010012145227"
+    },
+    {
+     "address": "De Lairessestraat 17B",
+     "use": "woonfunctie",
+     "areaM2": 110,
+     "bagId": "0363010012145226"
+    }
+   ],
+   "units": 6,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012061581",
+   "addresses": [
+    "De Lairessestraat 19"
+   ],
+   "groundUnits": [
+    {
+     "address": "De Lairessestraat 19",
+     "use": "kantoorfunctie,woonfunctie",
+     "areaM2": 917,
+     "bagId": "0363010000946330"
+    }
+   ],
+   "units": 1,
+   "osm": [
+    {
+     "type": "node",
+     "id": 12853630901,
+     "lngLat": [
+      4.8765122,
+      52.3548202
+     ],
+     "tags": {
+      "amenity": "waste_basket"
+     },
+     "fetchedAt": "2026-11-01T13:29:44.342Z",
+     "match": "frontage",
+     "distanceM": 7.1
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,302 @@
+{
+ "street": "Frans van Mierisstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-01T13:38:38.506Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012148154",
+   "addresses": [
+    "Frans van Mierisstraat 106",
+    "Frans van Mierisstraat 108"
+   ],
+   "groundUnits": [
+    {
+     "address": "Frans van Mierisstraat 108-H",
+     "use": "woonfunctie",
+     "areaM2": 156,
+     "bagId": "0363010000638959"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012119516",
+   "addresses": [
+    "Frans van Mierisstraat 102",
+    "Frans van Mierisstraat 104"
+   ],
+   "groundUnits": [
+    {
+     "address": "Frans van Mierisstraat 102-H",
+     "use": "woonfunctie",
+     "areaM2": 156,
+     "bagId": "0363010000638952"
+    },
+    {
+     "address": "Frans van Mierisstraat 104",
+     "use": "woonfunctie",
+     "areaM2": 117,
+     "bagId": "0363010000638956"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012149061",
+   "addresses": [
+    "Frans van Mierisstraat 100"
+   ],
+   "groundUnits": [
+    {
+     "address": "Frans van Mierisstraat 100-H",
+     "use": "woonfunctie",
+     "areaM2": 161,
+     "bagId": "0363010000638947"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012079547",
+   "addresses": [
+    "Frans van Mierisstraat 98"
+   ],
+   "groundUnits": [
+    {
+     "address": "Frans van Mierisstraat 98-H",
+     "use": "woonfunctie",
+     "areaM2": 146,
+     "bagId": "0363010000638942"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012105468",
+   "addresses": [
+    "Frans van Mierisstraat 96"
+   ],
+   "groundUnits": [
+    {
+     "address": "Frans van Mierisstraat 96-H",
+     "use": "woonfunctie",
+     "areaM2": 141,
+     "bagId": "0363010000638937"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012161158",
+   "addresses": [
+    "Frans van Mierisstraat 90",
+    "Frans van Mierisstraat 90A",
+    "Frans van Mierisstraat 90B",
+    "Frans van Mierisstraat 92A",
+    "Frans van Mierisstraat 92B",
+    "Frans van Mierisstraat 92C",
+    "Frans van Mierisstraat 92D",
+    "Frans van Mierisstraat 92E",
+    "Frans van Mierisstraat 92F",
+    "Frans van Mierisstraat 94",
+    "Frans van Mierisstraat 94A",
+    "Frans van Mierisstraat 94B",
+    "Frans van Mierisstraat 94C",
+    "Frans van Mierisstraat 94D",
+    "Frans van Mierisstraat 94E",
+    "Frans van Mierisstraat 94F"
+   ],
+   "groundUnits": [
+    {
+     "address": "Frans van Mierisstraat 90",
+     "use": "kantoorfunctie",
+     "areaM2": 4310,
+     "bagId": "0363010000638927"
+    },
+    {
+     "address": "Frans van Mierisstraat 90",
+     "use": "kantoorfunctie",
+     "areaM2": 1244,
+     "bagId": "0363010012108629"
+    },
+    {
+     "address": "Frans van Mierisstraat 94A",
+     "use": "woonfunctie",
+     "areaM2": 519,
+     "bagId": "0363010012108630"
+    },
+    {
+     "address": "Frans van Mierisstraat 94B",
+     "use": "woonfunctie",
+     "areaM2": 597,
+     "bagId": "0363010012108631"
+    },
+    {
+     "address": "Frans van Mierisstraat 94C",
+     "use": "woonfunctie",
+     "areaM2": 519,
+     "bagId": "0363010012108632"
+    },
+    {
+     "address": "Frans van Mierisstraat 94D",
+     "use": "woonfunctie",
+     "areaM2": 597,
+     "bagId": "0363010012108633"
+    },
+    {
+     "address": "Frans van Mierisstraat 94E",
+     "use": "woonfunctie",
+     "areaM2": 513,
+     "bagId": "0363010012108634"
+    },
+    {
+     "address": "Frans van Mierisstraat 94F",
+     "use": "woonfunctie",
+     "areaM2": 577,
+     "bagId": "0363010012108635"
+    },
+    {
+     "address": "Frans van Mierisstraat 90A",
+     "use": "kantoorfunctie",
+     "areaM2": 108,
+     "bagId": "0363010012122494"
+    },
+    {
+     "address": "Frans van Mierisstraat 90B",
+     "use": "woonfunctie",
+     "areaM2": 260,
+     "bagId": "0363010012122495"
+    },
+    {
+     "address": "Frans van Mierisstraat 92A",
+     "use": "woonfunctie",
+     "areaM2": 227,
+     "bagId": "0363010012122496"
+    },
+    {
+     "address": "Frans van Mierisstraat 92B",
+     "use": "woonfunctie",
+     "areaM2": 206,
+     "bagId": "0363010012122497"
+    },
+    {
+     "address": "Frans van Mierisstraat 92C",
+     "use": "woonfunctie",
+     "areaM2": 227,
+     "bagId": "0363010012122498"
+    },
+    {
+     "address": "Frans van Mierisstraat 92D",
+     "use": "woonfunctie",
+     "areaM2": 206,
+     "bagId": "0363010012122499"
+    },
+    {
+     "address": "Frans van Mierisstraat 92E",
+     "use": "woonfunctie",
+     "areaM2": 223,
+     "bagId": "0363010012122500"
+    },
+    {
+     "address": "Frans van Mierisstraat 92F",
+     "use": "woonfunctie",
+     "areaM2": 206,
+     "bagId": "0363010012122501"
+    },
+    {
+     "address": "Hondecoeterstraat 14A",
+     "use": "woonfunctie",
+     "areaM2": 204,
+     "bagId": "0363010012122503"
+    },
+    {
+     "address": "Hondecoeterstraat 14B",
+     "use": "kantoorfunctie",
+     "areaM2": 115,
+     "bagId": "0363010012122504"
+    },
+    {
+     "address": "Hondecoeterstraat 14C",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 889,
+     "bagId": "0363010012122505"
+    },
+    {
+     "address": "Hondecoeterstraat 14D",
+     "use": "kantoorfunctie",
+     "areaM2": 115,
+     "bagId": "0363010012122506"
+    },
+    {
+     "address": "Hondecoeterstraat 14E",
+     "use": "woonfunctie",
+     "areaM2": 204,
+     "bagId": "0363010012122507"
+    },
+    {
+     "address": "Nicolaas Maesstraat 111A",
+     "use": "kantoorfunctie",
+     "areaM2": 108,
+     "bagId": "0363010012122508"
+    },
+    {
+     "address": "Nicolaas Maesstraat 111B",
+     "use": "woonfunctie",
+     "areaM2": 260,
+     "bagId": "0363010012122509"
+    },
+    {
+     "address": "Nicolaas Maesstraat 111C",
+     "use": "woonfunctie",
+     "areaM2": 227,
+     "bagId": "0363010012122510"
+    },
+    {
+     "address": "Nicolaas Maesstraat 111E",
+     "use": "woonfunctie",
+     "areaM2": 227,
+     "bagId": "0363010012122512"
+    },
+    {
+     "address": "Nicolaas Maesstraat 111G",
+     "use": "woonfunctie",
+     "areaM2": 223,
+     "bagId": "0363010012122514"
+    },
+    {
+     "address": "Nicolaas Maesstraat 111H",
+     "use": "woonfunctie",
+     "areaM2": 206,
+     "bagId": "0363010012122515"
+    },
+    {
+     "address": "Nicolaas Maesstraat 111K",
+     "use": "woonfunctie",
+     "areaM2": 381,
+     "bagId": "0363010012122516"
+    },
+    {
+     "address": "Nicolaas Maesstraat 111F",
+     "use": "woonfunctie",
+     "areaM2": 205,
+     "bagId": "0363010012122513"
+    },
+    {
+     "address": "Nicolaas Maesstraat 111D",
+     "use": "woonfunctie",
+     "areaM2": 205,
+     "bagId": "0363010012122511"
+    }
+   ],
+   "units": 32,
+   "osm": []
+  }
+ ]
+}

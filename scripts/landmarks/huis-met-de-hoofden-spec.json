@@ -1,0 +1,57 @@
+{
+ "id": "huis-met-de-hoofden",
+ "name": "Huis met de Hoofden",
+ "landmarkId": "extract_landmarks_554373448",
+ "relatedLandmarkIds": [
+  "extract_landmarks_740511540"
+ ],
+ "modelUrl": "./models/huis-met-de-hoofden.glb",
+ "suppressOsmIds": [
+  "w266604553",
+  "NL.IMBAG.Pand.0363100012177213"
+ ],
+ "spatialSuppression": false,
+ "footprint": {
+  "centre": [
+   4.8873964,
+   52.3763984
+  ],
+  "headingDegrees": 119.43055315122695,
+  "lengthMetres": 19.34692195663892,
+  "widthMetres": 17.000397123090277
+ },
+ "surveyed": {
+  "anchor": [
+   4.8873964,
+   52.3763984
+  ],
+  "northOffsetDegrees": 0,
+  "source": "Vertex average of the BAG 0363100012177213 ring (PDOK BAG WFS, CC0) as the anchor; local east/south metres at 111320 m per degree (cos-latitude in longitude). The builder's facade frame runs along the BAG front from its north corner (bearing 210, front facing 300); part heights from the 3DBAG LoD2.2 roof planes (CC BY 4.0, ground 0.854 m NAP); facade heights measured on the RCE photograph 20408929 (CC BY-SA 4.0) scaled to the 13.87 m BAG front of the main house. See huis-met-de-hoofden-footprints.json."
+ },
+ "groundAltitudeMetres": 0,
+ "facingOffsetDegrees": 0,
+ "materialOverrides": {
+  "brick": "#865e4a",
+  "red": "#9a6650",
+  "stone": "#cbc8bb",
+  "white": "#e6e2d6",
+  "glass": "#2c3331",
+  "frame": "#3a3e3c",
+  "slate": "#4f5154",
+  "dark": "#22261f"
+ },
+ "attribution": {
+  "title": "Huis met de Hoofden, Keizersgracht 123",
+  "author": "Map Recall",
+  "sourceUrl": "https://nl.wikipedia.org/wiki/Huis_met_de_Hoofden",
+  "licence": "CC BY 4.0",
+  "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+  "modifications": "Original texture-free flat-colour geometry on the BAG footprint (CC0) with 3DBAG heights (CC BY 4.0): the 1622 Amsterdam Renaissance canal front with its six sandstone busts (Apollo, Ceres, Mercury, Minerva, Bacchus, Diana), cross windows under relieving arches, sandstone bands and blocks, festoons, door portal on a double stoop, balustrades, three-stage stepped gable with volutes, obelisks, niches, columns, broken pediment and ball finial, and the gateway wing; read from the RCE photographs 20408929 and 20018060 (Sergé Technau, CC BY-SA 4.0), Wikimedia Commons photographs by Samuel Mudrík (CC BY-SA 4.0) and Michele Ahin (CC BY-SA 3.0 nl), and Gemeente Amsterdam panoramas (CC BY 4.0), for proportion only. No photo pixels or imported meshes."
+ },
+ "bagYear": 1622,
+ "partyWallBearings": [
+  30,
+  210
+ ],
+ "partyWallNote": "The north side (bearing 30) adjoins Keizersgracht 119-121 (pand 0363100012167694) and the south side (bearing 210) Keizersgracht 125-127 (pand 0363100012165029): both BAG rings share these walls."
+}

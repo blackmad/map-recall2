@@ -1,0 +1,46 @@
+{
+ "note": "Pands held after reviewing the auto-place strip sheets at gallery size against the photo (scripts/block-face/auto-place.ts reads this file: a listed pand is held at stage 'review' with its reason, whatever its score and edge NCC). Remove an entry when a type or kit change makes the pand read right, and review the sheet again.",
+ "reviewed": "2026-11-01",
+ "holds": [
+  {
+   "pandId": "0363100012089113",
+   "address": "Nicolaas Maesstraat 35",
+   "reason": "strip 2024-12-11: another 1910 design: flat heads under alternating white voussoir blocks, a white transom band, a bracketed cornice; no type for it (museum-hc-1910-glazed-oriel drew an oriel and tower dormers)"
+  },
+  {
+   "pandId": "0363100012125930",
+   "address": "Nicolaas Maesstraat 37",
+   "reason": "strip 2024-12-11: another 1910 design: flat heads under alternating white voussoir blocks, a white transom band, a bracketed cornice; no type for it (museum-hc-1910-glazed-oriel drew an oriel and tower dormers)"
+  },
+  {
+   "pandId": "0363100012093896",
+   "address": "Nicolaas Maesstraat 39",
+   "reason": "strip 2024-12-11: another 1910 design: flat heads under alternating white voussoir blocks, a white transom band, a bracketed cornice; no type for it (museum-hc-1910-glazed-oriel drew an oriel and tower dormers)"
+  },
+  {
+   "pandId": "0363100012150151",
+   "address": "Nicolaas Maesstraat 41",
+   "reason": "strip 2024-12-11: another 1910 design: flat heads under alternating white voussoir blocks, a white transom band, a bracketed cornice; no type for it (museum-hc-1910-glazed-oriel drew an oriel and tower dormers)"
+  },
+  {
+   "pandId": "0363100012077283",
+   "address": "Nicolaas Maesstraat 43",
+   "reason": "strip 2024-12-11: another 1910 design: flat heads under alternating white voussoir blocks, a white transom band, a bracketed cornice; no type for it (museum-hc-1910-glazed-oriel drew an oriel and tower dormers)"
+  },
+  {
+   "pandId": "0363100012108712",
+   "address": "Nicolaas Maesstraat 45",
+   "reason": "strip 2024-12-11: another 1910 design: flat heads under alternating white voussoir blocks, a white transom band, a bracketed cornice; no type for it (museum-hc-1910-glazed-oriel drew an oriel and tower dormers)"
+  },
+  {
+   "pandId": "0363100012113503",
+   "address": "Nicolaas Maesstraat 31",
+   "reason": "strip 2024-12-11: a 1911 corner block with white rendered bands, canted bays and a gabled roof; no type for it"
+  },
+  {
+   "pandId": "0363100012076752",
+   "address": "Nicolaas Maesstraat 33",
+   "reason": "strip 2024-12-11: a 1911 corner block with white rendered bands, canted bays and a gabled roof; no type for it"
+  }
+ ]
+}

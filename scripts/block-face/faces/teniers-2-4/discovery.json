@@ -1,0 +1,263 @@
+{
+ "street": "Teniersstraat",
+ "seed": "0363100012099107",
+ "members": [
+  "0363100012150046",
+  "0363100012099107"
+ ],
+ "ends": [
+  {
+   "side": "left",
+   "reason": "trimmed at 0363100012150046 (face continues: 117845)"
+  },
+  {
+   "side": "right",
+   "reason": "no further pand fronts the street in the fetched area"
+  }
+ ],
+ "rejected": [
+  {
+   "pandId": "0363100012062052",
+   "reason": "frontage 40.4 m from Teniersstraat"
+  },
+  {
+   "pandId": "0363100012062753",
+   "reason": "frontage 82.5 m from Teniersstraat"
+  },
+  {
+   "pandId": "0363100012071285",
+   "reason": "frontage 41.2 m from Teniersstraat"
+  },
+  {
+   "pandId": "0363100012074466",
+   "reason": "frontage 87.7 m from Teniersstraat"
+  },
+  {
+   "pandId": "0363100012074509",
+   "reason": "sightline to Teniersstraat crosses 0363100012121461"
+  },
+  {
+   "pandId": "0363100012074834",
+   "reason": "frontage 72.0 m from Teniersstraat"
+  },
+  {
+   "pandId": "0363100012076037",
+   "reason": "frontage 72.3 m from Teniersstraat"
+  },
+  {
+   "pandId": "0363100012076064",
+   "reason": "frontage 91.0 m from Teniersstraat"
+  },
+  {
+   "pandId": "0363100012077834",
+   "reason": "frontage 64.8 m from Teniersstraat"
+  },
+  {
+   "pandId": "0363100012079958",
+   "reason": "frontage 50.8 m from Teniersstraat"
+  },
+  {
+   "pandId": "0363100012080690",
+   "reason": "frontage 54.7 m from Teniersstraat"
+  },
+  {
+   "pandId": "0363100012088681",
+   "reason": "frontage 31.5 m from Teniersstraat"
+  },
+  {
+   "pandId": "0363100012089294",
+   "reason": "frontage 48.7 m from Teniersstraat"
+  },
+  {
+   "pandId": "0363100012089576",
+   "reason": "frontage 55.5 m from Teniersstraat"
+  },
+  {
+   "pandId": "0363100012099258",
+   "reason": "frontage 64.1 m from Teniersstraat"
+  },
+  {
+   "pandId": "0363100012099490",
+   "reason": "frontage 73.3 m from Teniersstraat"
+  },
+  {
+   "pandId": "0363100012100351",
+   "reason": "frontage 83.8 m from Teniersstraat"
+  },
+  {
+   "pandId": "0363100012103484",
+   "reason": "sightline to Teniersstraat crosses 0363100012074509"
+  },
+  {
+   "pandId": "0363100012107845",
+   "reason": "frontage 75.3 m from Teniersstraat"
+  },
+  {
+   "pandId": "0363100012110232",
+   "reason": "frontage 68.8 m from Teniersstraat"
+  },
+  {
+   "pandId": "0363100012111009",
+   "reason": "frontage 44.0 m from Teniersstraat"
+  },
+  {
+   "pandId": "0363100012112954",
+   "reason": "frontage 62.9 m from Teniersstraat"
+  },
+  {
+   "pandId": "0363100012114637",
+   "reason": "frontage 42.7 m from Teniersstraat"
+  },
+  {
+   "pandId": "0363100012115557",
+   "reason": "frontage 88.3 m from Teniersstraat"
+  },
+  {
+   "pandId": "0363100012116189",
+   "reason": "frontage 33.9 m from Teniersstraat"
+  },
+  {
+   "pandId": "0363100012116517",
+   "reason": "frontage 37.2 m from Teniersstraat"
+  },
+  {
+   "pandId": "0363100012117556",
+   "reason": "frontage 56.4 m from Teniersstraat"
+  },
+  {
+   "pandId": "0363100012124449",
+   "reason": "frontage 79.7 m from Teniersstraat"
+  },
+  {
+   "pandId": "0363100012126152",
+   "reason": "frontage 90.6 m from Teniersstraat"
+  },
+  {
+   "pandId": "0363100012126885",
+   "reason": "frontage 47.7 m from Teniersstraat"
+  },
+  {
+   "pandId": "0363100012134189",
+   "reason": "frontage 64.4 m from Teniersstraat"
+  },
+  {
+   "pandId": "0363100012136130",
+   "reason": "frontage 34.5 m from Teniersstraat"
+  },
+  {
+   "pandId": "0363100012138066",
+   "reason": "frontage 59.1 m from Teniersstraat"
+  },
+  {
+   "pandId": "0363100012145556",
+   "reason": "frontage 43.8 m from Teniersstraat"
+  },
+  {
+   "pandId": "0363100012147731",
+   "reason": "frontage 61.2 m from Teniersstraat"
+  },
+  {
+   "pandId": "0363100012154873",
+   "reason": "frontage 46.0 m from Teniersstraat"
+  },
+  {
+   "pandId": "0363100012154971",
+   "reason": "frontage 33.9 m from Teniersstraat"
+  },
+  {
+   "pandId": "0363100012183422",
+   "reason": "frontage 30.8 m from Teniersstraat"
+  },
+  {
+   "pandId": "0363100012207262",
+   "reason": "frontage 60.4 m from Teniersstraat"
+  },
+  {
+   "pandId": "0363100012214752",
+   "reason": "frontage 33.7 m from Teniersstraat"
+  },
+  {
+   "pandId": "0363100012217582",
+   "reason": "frontage 93.6 m from Teniersstraat"
+  },
+  {
+   "pandId": "0363100012217595",
+   "reason": "frontage 35.8 m from Teniersstraat"
+  },
+  {
+   "pandId": "0363100012220878",
+   "reason": "frontage 61.0 m from Teniersstraat"
+  },
+  {
+   "pandId": "0363100012233575",
+   "reason": "frontage 85.8 m from Teniersstraat"
+  },
+  {
+   "pandId": "0363100012232428",
+   "reason": "frontage 51.9 m from Teniersstraat"
+  },
+  {
+   "pandId": "0363100012232429",
+   "reason": "frontage 32.6 m from Teniersstraat"
+  },
+  {
+   "pandId": "0363100012233573",
+   "reason": "frontage 33.0 m from Teniersstraat"
+  },
+  {
+   "pandId": "0363100012237309",
+   "reason": "frontage 81.0 m from Teniersstraat"
+  },
+  {
+   "pandId": "0363100012237313",
+   "reason": "frontage 87.5 m from Teniersstraat"
+  },
+  {
+   "pandId": "0363100012121710",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012150353",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012233427",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012233484",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012246868",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012571600",
+   "reason": "fronts the other side / another direction"
+  }
+ ],
+ "areaHalfSizeM": 90,
+ "pands": [
+  {
+   "pandId": "0363100012150046",
+   "alongM": -10.06,
+   "widthM": 10.77,
+   "eavesM": 11.38,
+   "roofMaxM": 16.44,
+   "storeys3dbag": 5,
+   "builtYear": 1913,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012099107",
+   "alongM": 0,
+   "widthM": 9.36,
+   "eavesM": 13.73,
+   "roofMaxM": 17.43,
+   "storeys3dbag": 4,
+   "builtYear": 1912,
+   "uncertainty": []
+  }
+ ]
+}

@@ -1,0 +1,89 @@
+{
+ "street": "Cornelis Anthoniszstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-01T12:37:23.873Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012159956",
+   "addresses": [
+    "Cornelis Anthoniszstraat 70"
+   ],
+   "groundUnits": [
+    {
+     "address": "Cornelis Anthoniszstraat 70-H",
+     "use": "woonfunctie",
+     "areaM2": 94,
+     "bagId": "0363010001167838"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012158092",
+   "addresses": [
+    "Cornelis Anthoniszstraat 68"
+   ],
+   "groundUnits": [
+    {
+     "address": "Cornelis Anthoniszstraat 68-H",
+     "use": "woonfunctie",
+     "areaM2": 65,
+     "bagId": "0363010000609176"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012164470",
+   "addresses": [
+    "Cornelis Anthoniszstraat 66"
+   ],
+   "groundUnits": [
+    {
+     "address": "Cornelis Anthoniszstraat 66-H",
+     "use": "woonfunctie",
+     "areaM2": 92,
+     "bagId": "0363010001018015"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012159040",
+   "addresses": [
+    "Cornelis Anthoniszstraat 64"
+   ],
+   "groundUnits": [
+    {
+     "address": "Cornelis Anthoniszstraat 64-H",
+     "use": "woonfunctie",
+     "areaM2": 160,
+     "bagId": "0363010001015302"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012160204",
+   "addresses": [
+    "Cornelis Anthoniszstraat 62"
+   ],
+   "groundUnits": [
+    {
+     "address": "Cornelis Anthoniszstraat 62-H",
+     "use": "woonfunctie",
+     "areaM2": 47,
+     "bagId": "0363010000609152"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  }
+ ]
+}
