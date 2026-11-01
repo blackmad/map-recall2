@@ -164,6 +164,8 @@ test('fetch ring (#130): ride box at ride zoom, a ride-sized square around the r
   const intro = rideBox(view, 17, [4.882, 52.371]);
   assert.ok(Math.abs((intro.east - intro.west) * 67967.53053174692 - 2 * RIDE_HALF_M) < 1e-6 && Math.abs((intro.north - intro.south) * 111320 - 2 * RIDE_HALF_M) < 1e-6, 'intro: a square around the rider');
   assert.equal(rideBox(view, 17, null), view, 'no rider yet: the camera box');
+  assert.equal(rideBox(view, 17, [4.95, 52.40]), view, 'rider outside the view (the camera looks elsewhere): the camera box');
+  assert.equal(rideBox(view, 16.6, [4.889 + 1e-4, 52.371]), view, 'just east of the view: the camera box');
   const g = grow(view, WORLD_RING_MARGIN_M);
   assert.ok(Math.abs((g.west - view.west) * 67967.53053174692 + WORLD_RING_MARGIN_M) < 1e-6);
   // A cell just outside the view but within the margin is in the ring; one beyond it is not.

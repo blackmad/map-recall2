@@ -50,6 +50,8 @@ export class CityExtras {
   private treesVisible = false;
   private detailedVisible = false;
   private bagCovers: unknown = null;
+  /** covers.json once loaded under ?bagTiles=1 (vector-map.js `_bagCovers`), else null. */
+  get covers(): unknown { return this.bagCovers; }
   private hookedGround: unknown = null;
 
   constructor(private readonly host: CityExtrasHost) {}

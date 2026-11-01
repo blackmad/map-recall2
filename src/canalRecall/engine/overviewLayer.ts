@@ -18,6 +18,7 @@ import { interpolateStops, LANDUSE_STYLE, MIN_LINE_PX, PALETTE, PIER_STYLE, RAIL
 import { LANDUSE_CLASSES } from '../ownMap/overviewFormat';
 import { overviewColours } from './themePalette';
 import { overviewGroundColours } from '../ownGround/basemapPalette';
+import { OVERVIEW_GROUP_ORDER, OverviewFootprints, type FootprintFeatureLike } from './overviewFootprints';
 import { KX, KY, ORIGIN, toLocal, type Vec2 } from '../ownMap/frame';
 import { metresPerPixel } from '../ownMap/mapCamera';
 import { WaterIndex } from './waterIndex';
@@ -122,6 +123,10 @@ export class OverviewLayer implements FrameParticipant {
   /** Span-culled geometries (cutSpans): the mesh that owns the spans and every mesh drawing that geometry. */
   private readonly spanned: { owner: THREE.Mesh; meshes: THREE.Mesh[]; line: boolean }[] = [];
   private spansOn = true;
+  /** Building footprints in the roof tone (overviewFootprints.ts), from the streamed buildings. */
+  readonly footprints: OverviewFootprints;
+  /** The resident buildings, for the footprints (ownWorldView hands them over as the streamer does). */
+  setFootprints(features: readonly FootprintFeatureLike[]): void { this.footprints.setFeatures(features); this.view.repaint?.(); }
 
   constructor(readonly data: OverviewData, private readonly view: {
     center(): { lng: number; lat: number }; zoom(): number; rider?(): [number, number] | null;
@@ -136,7 +141,7 @@ export class OverviewLayer implements FrameParticipant {
     // while presence < 1, renderOrder 0-2, writing depth above OVERVIEW_Z) drew before the overview's streets and
     // water, which then failed the depth test: at zoom 14.2 (presence 0.11) the view showed the clear colour through
     // a 10 % ground, ΔE>20 on 17.7 % of the frame (overview-transition:101 under ?engine=own).
-    this.root.renderOrder = -100;
+    this.root.renderOrder = OVERVIEW_GROUP_ORDER;
     this.water = new WaterIndex(data.water);
     for (const r of overviewRecipes(data)) this.recipes.set(r.id, r.make);
     for (const g of prebuilt ?? []) if (this.recipes.has(g.id)) this.prebuilt.set(g.id, g);
@@ -165,6 +170,9 @@ export class OverviewLayer implements FrameParticipant {
     });
     this.root.traverse(o => { (o as THREE.Mesh).castShadow = false; (o as THREE.Mesh).receiveShadow = false; });
     this.cutSpans();
+    // Roof-tone footprints over the land and parks, under the streets (overviewFootprints.ts); never span-cut.
+    this.footprints = new OverviewFootprints(OVERVIEW_Z, this.near as unknown as Record<string, { value: unknown }>, 5);
+    this.root.add(this.footprints.root);
   }
 
   /**
@@ -273,6 +281,7 @@ export class OverviewLayer implements FrameParticipant {
     this.centreLat = c.lat;
     const zoom = this.view.zoom();
     const mpp = metresPerPixel(zoom, c.lat);
+    if (this.footprints.update(zoom)) this.view.repaint?.();
     for (const l of this.lines) {
       const st = STREET_STYLE[l.cls];
       const px = interpolateStops(st.width, zoom);

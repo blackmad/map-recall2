@@ -790,6 +790,13 @@ class CsrRoadGraph<TMetadata> implements RoadGraph<TMetadata> {
   }
 }
 
+/** A graph over existing flat storage (roadWorldCache.ts restores a stored build through this; it validates first). */
+export function roadGraphFromStorage<TMetadata>(
+  storage: Omit<RoadGraphStorage<TMetadata>, 'views' | 'keyTable'>, connectors: readonly RoadGraphConnector[],
+): RoadGraph<TMetadata> {
+  return new CsrRoadGraph<TMetadata>({ ...storage, views: new Map(), keyTable: null }, connectors);
+}
+
 // ---- Routing over the arrays ----
 
 /** Index of the node nearest `point` (first of equals), or -1 for an empty graph. */
@@ -1143,3 +1150,9 @@ function planDirectLearningRoute<TMetadata>(
     dueNamesOnPath: [...dueOnPath].sort(),
   };
 }
+
+// The device cache of the built graph and surface index rides in this bundle (window.CanalRecallRoadGraph).
+export {
+  ROAD_WORLD_CACHE_VERSION, roadSegmentsFingerprint, packRoadWorld, unpackRoadWorld, packedRoadWorldBytes,
+  roadWorldCacheKey, readRoadWorld, writeRoadWorld, clearRoadWorlds, lastRoadWorldRefusal,
+} from './roadWorldCache.ts';

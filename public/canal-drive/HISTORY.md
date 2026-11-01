@@ -2,6 +2,204 @@
 
 **Night of 1–2 November: nine landmarks, two bespoke bridges, seven kiosks, street furniture, door reveals (#170, #172–#176, #180, #181).** Round-2 landmark lanes (opus, two each): zuiderbad, marnixbad + bungehuis, cromhouthuizen + waldorf-astoria-herengracht, blauwbrug + magere-brug, de-burcht + eerste-openluchtschool; the Vondelparkpaviljoen was already installed as `idfa-pavilion` (registry check by pand id from now on). New kit parts: `holedWall.ts` (real openings through a wall, #172), `neck-gable.ts` (Vingboons neck gables, #174), `bridgeFrame.ts` + `bridge-parts.ts` + `bridge-deck-probe.ts` (#175). Bridges: `ownGround/bespokeBridges.ts` maps BRU0236/BRU0242 to the models, `groundCell.ts` skips the kit body and movable frame there, `check-ground-cells.ts` expects the bespoke model at both; `tests/e2e/bespoke-bridges.spec.ts` rides each bridge both ways on three lines (float ≤ 0.11 m, no sinking). Known: the Blauwbrug's south sidewalk strip beyond ~7 m from the centreline rides on relief height (TODO). Geometry-audit baseline first rows recorded for cromhouthuizen (7 off-spec: oculi and door transoms) and waldorf-astoria-herengracht (2). Kiosks (#180): `src/canalRecall/kiosks/kioskKit.ts` (glass/herring/trailer/flower-stall variants, hatches, awnings, lattice shutters, pixel lettering) and seven landmark-category kiosks; four held with reasons (Pat's unproven on standplaats 762, Ramon's unphotographed, Park Kiosk BEA is a 100 m² pavilion, Bloemenmarkt needs greenhouse roofs; its 14 stalls are BAG ligplaatsen). Street furniture (#170): extract `public/data/extracts/amsterdam/street-furniture/` (134,712 objects from the container register + BGT paal/bak/straatmeubilair, 444 z15 tiles, 4.3 MB), seven measured models ≤ 120 tris, instanced own-engine layer after the inventory-trees pattern (≤ 6 draws, +~17k tris/frame, one GL program), the fourth `street-furniture` category in `buildingCategory.ts`, whats-new.html, census and content stats, `street-furniture.html` gallery; litter bins unplaced (no register), benches and bollards in BGT but unmodelled. Door reveals (#181): `buildingRecipe/doorReveal.ts` (`{form: reveal|portiek, deep, steps, jamb, span, sideDoors}`), byte-identical when absent (fit golden 207/207 identical), set on eight types with photo-cited depths, five Helmersbuurt/Transvaalbuurt rows recompiled and installed; Duivelseiland portieken held (pale plaster reads as a slab at grazing angles), Steyn 1928 held (measured depth hides the door), arched portieken not expressible. Integration: union-merged in hand-back order, signature bundle, covers, backlog, buurt pages, looks, content stats, model-first-added, exposure rows (helmers-209-253-r1 has no archived strip, row kept), bundles; sources archived to map-recall2-source-data.
 
+**A camera looking away from the rider streams its own view, not the rider's square (2026-11-01, P1).**
+L1 hand-back 21b (6fc8d6004, 4bdf41c29, b191915b1). Below zoom 17.5 the fetch
+ring's `rideBox()` streamed only a 530 m square around the rider, so a camera
+panned elsewhere (building-click-perf :146/:228) looked at unstreamed cells.
+The rider square is now used only while the rider is in the camera's view.
+Free Ride is unchanged at 11 cells, 0.79–0.81 MB, and the new world-v1-bytes
+check caps it at 16 cells and 1.5 MB, so the ring cannot quietly grow back. The
+iPhone city-startup-lod spec now waits for a detailed building installed over a
+built shell before it checks; its thresholds are unchanged. Integrator:
+building-tiles bundle rebuilt; lint, test:engine 129/129, test:world-format
+36/36; desktop smoke building-click-perf, world-v1-bytes, start-heading.
+
+**Toon look step 2: the saturation push is chroma-aware, so greys and whites stay neutral; a busyness probe measures the frame (2026-11-01, #161).**
+Materials (9d64252cb). `?look=toon` remaps in OKLab: chroma ×(1 + 0.45 ·
+smoothstep(0.04, 0.15, |ab|)) with hue held, and lightness 70 % toward 8 bands
+(`?toonBands=6|8|10`). A CPU twin, `toonRemap()`, is tested: grey stays grey,
+brick gains chroma at the same hue, and a capped white stays under 252. The pass
+costs one full-screen draw: desktop draws p50 285 → 286, iPad tris unchanged at
+0.696 M. The lavender, teal and yellow fronts in the strips come from the
+existing Cartoon buildings palette, not the pass, so retuning them is a palette
+question. `look/busyness.ts` measures Sobel edge energy and colour variance per
+frame third. On the default look the far third is busier than the near one
+almost everywhere: far/near edge bloemgracht 1.72, ijburg 0.55, leidsegracht
+1.55, nassaukade 1.82, westerkerk 1.45, against a calming target of ≤ 0.5.
+Flag only, so no What's New. Integrator: engine bundle rebuilt; test:look
+166/166.
+
+**Toon look step 1 behind `?look=toon`: the existing Cartoon buildings look plus one full-frame palette pass (2026-11-01, #161).**
+Materials (53d5299d8). `engine/toonLook.ts` starts the own engine on the Cartoon
+buildings look (an explicit `?buildings3d=` still wins) and adds a FrameHost
+`post` hook: one framebuffer copy, then one full-screen draw that pushes chroma
+away from each pixel's luma (×1.45) and pulls luma 70 % toward 8 bands. It runs
+last, so measured tints and the #179 roof cap are its input; the top band never
+rounds a capped white up to 255 (tested). Off, nothing is created and the host
+only checks for the hook. It is a flag only, so there is no What's New note
+yet. The look review accepted it as a first step; a uniform ×1.45 also
+saturates greys and whites, so step 2 makes the saturation chroma-aware (greys
+and whites stay neutral, brick gets the push, hue never rotates) before cel
+bands, outlines and a flat sky. Whether the colours feel invented is the
+question put to the user. Five default-vs-toon strips are on #161 for the user.
+Integrator: engine bundle rebuilt; test:engine 128/128.
+
+**Bright white flat roofs no longer clip to pure white: a measured flat roof is capped at tint luma 212, so the lit roof stays under its orthophoto (2026-11-01, #179).**
+Materials (bcc38403a, spec limit 4efb2a0e7). Da Costakade, pand
+0363100012143235, measured #e6e6ef: `roofSlotHex` kept it inside the white-membrane
+band (luma 227), but a level roof lit by the rig reads about 1.17× its tint in
+linear light, so it drew at p50 254 with 35 k of 63 k pixels at 255, over an
+orthophoto median of 236. `FLAT_ROOF_LIT_TOP` = 212 caps measured flat roofs only;
+only white membranes reach it (every other flat slot tops out at 182), and
+unmeasured membrane roofs keep the slot base, so no palette golden moves. After:
+p50 237, p95 245, 7 px clipped. Named regression in `roofSlots.test.ts`. The
+roof-tint bundles were rebuilt, including the three-buildings worker. The world
+compiler imports `roofSlots.ts`, but the file is not on its hashed list, so the
+cells were recompiled by hand: all 604 cells are byte-identical, and nothing was
+republished. Integrator: lint, roof tests 14/14, test:look 165/165.
+
+**Road gaps on bridges measured city-wide: three quarters of what shows through is a surveyed bridge-level road polygon the game drops (2026-11-01, #178).**
+Road bridge-gaps lane, hand-back 1 of 3 (96c951790), probe only, no game change.
+`ownGround/bridgeGaps.ts` and `scripts/roads/probe-bridge-gaps.ts` walk all 5,434
+OSM highway bridge ways in the 294 own-ground cells as the game builds them and
+sample every 0.5 m at the centreline and ±0.45/±0.85 of the half-width, recording
+what a camera above sees, why the road is absent and what carries that spot.
+Of 2,418 canal-scale street and cycle bridge ways (80 m or less), 1,293 have
+5 m² or more of carriageway gap; motorway bridges are almost all affected (346
+of 362). The gaps sit on the span, not the approaches, and mostly show land.
+z-fight is negligible (511 samples city-wide). 74 % of the non-road samples lie
+inside a roads-v1 deck-level polygon (h ≥ 1) that `roadSurfaces.ts` drops
+because its interior point is neither inside a measured deck's half-width nor
+over water; the second cause is the deck and the road taking their widths from
+different sources. That is why the fix is systemic rather than per bridge:
+one width source for every consumer, then draw the survey's bridge polygon on
+every deck, both behind `?bridgeGaps=0`. Probe outputs and orthophoto strips
+(De Clercqstraat, Bilderdijkstraat, De Ruijterkade, Kraaienplein…) are in the
+lane worktree under `artifacts/roads/bridge-gaps/before`. Integrator:
+`bridgeGaps.test.ts` joins test:own-ground (227/227); the `bridgeGaps` store
+option is declared but has no effect yet.
+
+**The facade mask uploads as R8 with the accent tint in the colour alpha: the iPhone facade atlas drops from 26.0 to 21.67 MB with the 128 px bays kept (2026-11-01, P4).**
+Materials (f3f6ff157). The mask was an RG8 array (R wall, G accent) beside an
+RGBA colour array whose alpha was always 255 and read by nothing; at upload
+`look/maskPacking.ts` writes 255 − G into the colour alpha and uploads R alone
+as R8, so the same 8 bits, filtering and mips reach the shader with no extra
+fetch, while painting, the browser cache and the published extract keep the RG
+bytes. Shaders read the accent as mask.g + 1 − colour.a, which is G under either
+upload; `?maskFormat=rg` keeps the old upload. Five pins against `maskFormat=rg`
+differ by a single level (float rounding), 0 pixels over 30. The iPhone texture
+budget goes back to 22 MB (it was raised to 27 for the RG mask). Every bundle
+that carries the facade shaders was rebuilt in the same commit, because an old
+shader reading the packed atlas loses the accent tint. The stale spike pages
+`own-ground.bundle.js` and `renderer-spike.bundle.js` have no build script and
+read the tint as 0; they are dev pages only and are left as they are.
+Integrator: lint, test:engine 126/126, test:look 165/165; desktop smoke
+start-heading, open-squares, facade-tone, facade-appearance.
+
+**The flat map lines draw only the span on screen and trunks drop their bottom caps: the iPad triangle gate is met, p50 0.696 M against 0.70 M (2026-11-01, P4).**
+Materials lane (4d97ed9c5, 086f295b6). The flat lines (cycle tracks,
+transit, neighbourhood lines) draw only the part of their index on screen
+with the overview's culling, still one draw (`?lineCull=0` keeps the old
+behaviour; `engine/flatLines.test.ts`): engine-cycle 107.6k → 13.5k
+triangles; Jordaan ride p50 desktop frame 1.391 M → 1.326 M (p95 2.60 →
+2.52 M), iPad 0.789 M → 0.696 M (p95 1.51 → 1.42 M); pins against
+`lineCull=0` 0 / 1 / 0 / 0 / 1 px. Trunks: the wood cylinder drops only
+its bottom cap, which faces into the ground or the trunk below (28 → 21
+triangles per trunk or fork; top caps kept because a trunk top is not
+always inside a crown; `?treeCaps=1` keeps the old geometry;
+`rendererShared/trunkGeometry.ts` with a test): desktop trees 136.6k →
+129.5k, iPad 47.3k → 41.1k, 0 px at all five spots with 3D trees on.
+In-frame links 0 everywhere. The P4 iPad triangle target is met for the
+first time: 1.21 M at acceptance → 0.696 M (tileWhole fix, overview span
+grid, ground 6×6 and reach, tree cull, line cull, trunks). Remaining
+owners: facades 259k, own ground 222k, landmarks 73k, trees 41k.
+Integrator: engine and 3d bundles rebuilt; `trianglesIpad` re-recorded.
+
+**The built routing graph and surface index are cached on the device: on a return visit the world is ready ~3× sooner after submit (2026-11-01, P3).**
+Road lane (c0e02ebec, 9245cf0cf, 514e18c3d). `routing/roadWorldCache.ts`
+keys the record by version, city, mode, the roads-v2 source sha and the
+build options, guards it with a 64-bit fingerprint of every point, width,
+name, way id, type and ferry link the two builds read, and checks every
+length, offset run and index range before anything reads the arrays;
+missing, throwing or hung IndexedDB, a refused record (logged with its
+reason), too little quota (under 3× the ~17.6 MB record) or `?worldCache=0`
+fall through to the live build. The record is packed when the graph is
+built (a record packed mid-ride failed its checks, the ride adds to what it
+is handed) and written 3 s into the ride when the page is idle; the read
+gets a 400 ms head start and runs beside the build, which stops at its next
+slice if the read wins (the old 1.5 s open timeout lost to a busy boot and
+stayed null for the session; a 10 s timeout now guards only a hung open);
+on open a database without its store is repaired. A unit test pins a
+fixture's packed hash to `ROAD_WORLD_CACHE_VERSION` as a tripwire. Route
+identity on the restored whole-city graph against the 5f0fad294 snapshot:
+identical graph, connectors, 3 trees, 71 pairs × 4 planners; the surface
+index identical on 469,371 lattice queries; unpack plus checks 38 ms in
+node. Second visit, submit → introStart, world ready after submit: emulated
+iPhone 13 at 4× immediate submit 1.7–2.1 s vs 5.6–5.8 s cold (cache hit
+3/3; racing ~4.6 s on a quiet run), desktop 0.30–0.36 s vs 1.4 s (racing
+2.50–2.58 s); the machine was at load ~20 for the matrix so absolute times
+there are 1.5–2× the clean runs and only warm-vs-cold within a row counts.
+One warm desktop run still built (no refusal logged; probably the read lost
+even with the head start under load, unconfirmed). What is left on a warm
+immediate submit is the world-view settle hold, 1.5–2.6 s with nothing
+pending. Not started: the depth-aware pop-in detector (groundwork: own
+exposes `vectorMap._sharedFrame.{scene,camera,renderer}` and
+`window.CanalRecallThree.THREE`); b1 stays deferred until the real-iPhone
+phase table. Integrator: `road-graph.bundle.js` rebuilt; the two cache
+tests joined `test:city-startup` (28/28); test:road-graph and lint clean;
+default-desktop smoke of start-heading + open-squares in the commit
+message.
+
+**Under own a POI label wins the click; the own overview draws roof-tone footprints from the resident cells (zoom sweep 6.8 → 4.1 %); Sentry events carry engine and tier tags; the Amsterdam flip checklist is written (2026-11-01, P1/P5).**
+L1 hand-back 20 (040f36423). `inspectBuilding` hit-tests the LabelLayer
+before the prism pick and own POI ids match the MapLibre label overlay
+(orientation POIs, landmarks, branded POIs); the Westermarkt regression
+requires every drawn POI label pixel to open that POI (own 2420/2420,
+default 2954/2954, Westerkerk 521/521). bag-tiles: both runs on
+`&world=live` with a `_bagCovers` oracle for own; a pixel-share assertion
+(Westerkerk / Rijksmuseum, bag against legacy) still fails on both engines
+with main's committed bundles — data or default-path drift, thresholds
+untouched, open. city-startup-lod iPhone limit 27 MB with its reason.
+`engine/overviewFootprints.ts` draws the resident world-v1 FOOT cells in
+roof tone, one tile per frame while visible, faded with the blend: the
+zoom sweep's worst step 6.8 % → 4.1–4.2 % (MapLibre 3.9 %, bound 5 %), so
+the far coarse layer is not needed. Sentry: every event tagged engine
+(own / maplibre) and tier (`monitoring.bundle.js`). Flip checklist
+(#129 comment): `engineFlag` default `asked = global ?? ?engine ?? 'own'`
+through `engineForCity` (other cities stay MapLibre, `game.js` unchanged),
+`mapLibreLoader.wantsMapLibre` flipped in the same commit, both pinned on
+one query table; plain runs then exercise own and the 25 `test.skip(OWN)`
+spec files need a scheduled `ENGINE=maplibre` lane until P5; Sentry bar
+over 48 h of the cohort on the engine tag: own context-lost per session no
+worse than MapLibre, dead-gpu / webgl-unavailable not rising; rollback per
+user `?engine=maplibre` or `window.__canalRecallEngine='maplibre'`, global
+by reverting the two lines. Red on main, not from this branch (L1 takes
+them next, they gate the flip): building-click-perf :146 (residency wait
+timeout) and :228 ("kit sampled" 0) on both engines; iPhone
+city-startup-lod `checked > 0` = 0 on both engines; iPhone render-on-change
+"riding off draws at once" 2/2 fail under own with main's bundles —
+probably timing from the briefing world build or the tree cull. Checks:
+lint, test:engine 124/124, test:own-ground 224/224; own desktop engine-own,
+engine-parity, render-on-change, context-restore, overview-transition,
+building-look, governor-no-flash and Westermarkt pass; default desktop
+look-consistency and start-heading pass. Integrator: engine, 3d,
+building-tiles, three-buildings and monitoring bundles rebuilt.
+
+**The pin harness's whole-frame shading flip was an unpinned camera elevation, harness-only (2026-11-01, P4).**
+Materials lane (d80ab4245, spec only). The fixed shot's `jumpToLngLat` set
+centre, zoom, bearing and pitch but not elevation, so the camera kept the
+ride's eased rider-surface height from whenever sync was held (Westerkerk
+0.263 vs 0.295 m between loads, Leidsegracht 0.002 vs 0.127; Bloemgracht
+identical and 0 px): a 0.05–0.13 px vertical shift that reads as a 1–3-level
+emboss over 1.5–3.2 M px. Not tone mapping, the governor or the shadow
+pass. Not player-visible: 30 consecutive frames at a held pose hash
+identical at all five spots (`AB_FRAMES=N` probe); in play the elevation
+follows the rider every frame. Both jumps now pin the elevation to
+`_ownGround.heightAt(centre)` and each shot records its camera state.
+Three identical loads with trees on: Westerkerk 1.51 M → 135 px (scattered
+singles; default vs default2 is 122), Bloemgracht 0 → 2, Nassaukade 183k →
+1, Leidsegracht 0 → 3, IJburg 1.72 M → 1. Trees are pinnable now.
+
 **Garden rooms in the back gardens (2026-11-01, #169):** `src/canalRecall/gardenRooms.ts` turns a qualifying shed pand into a flat-roofed timber-slat (60 %) or matte-black (40 %) room with a glass front and door toward the house, anthracite frame, board joints, a lid with 0.25 m overhang and a 0.15 m fascia, at most 60 triangles over the plain box, walls chunk only, not in coarse/shell/extras. Qualifying: ≥ 6 m² and (BAG year ≥ 2005 or white-membrane/glass roof slot at confidence ≥ 0.6); 226 of 5,513 centre sheds. The brief's draft rule (any area, sedum counts) gave 710, but all 24 sampled pre-1990 "sedum" lids were tree canopy in the PDOK orthophoto and 172 of the 2005+ pands under 6 m² were bin and bike boxes, so the lane changed the rule with that evidence. Chunk hashes pinned in 5 looks × 4 LODs × 3 shed cases from the base commit; neighbours byte-identical. `roofFacts` now stamps `roofConfidence` (no mesh byte changes on its own). Palette in `look/palette.ts` `GARDEN_ROOM_TONES` (oiled larch #b8925a–#c9a46b greying toward #9a8f7e, warm charcoal #2a2a28–#3a3835, RAL 7016 frame). Integrator rebuilt three-buildings/worker and building-style bundles and recompiled world-v1 (`--no-policy`, as published). Evidence sheets in map-recall2-source-data `garden-rooms/20261101/`.
 
 **Only the trees on screen are drawn: desktop frame 1.84 M → 1.42 M triangles, iPad 0.94 M → 0.80 M (2026-11-01, P4).**

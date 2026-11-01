@@ -37,7 +37,9 @@ class OSMLoader {
     try {
       const response = await fetch(new URL(`${city.extractPath}/roads-v2/streets-routing.bin.gz`, window.location.href));
       if (!response.ok) throw new Error(`HTTP ${response.status}`);
-      const { features } = await PROJECT.loadRoadExtract(await response.arrayBuffer());
+      const { features, header } = await PROJECT.loadRoadExtract(await response.arrayBuffer());
+      // Names the streets in the device's cache of the built routing graph (road-network.js restoreWorld).
+      this.roadExtractVersion = header && header.sourceSha256 ? header.sourceSha256.slice(0, 16) : null;
       return features;
     } catch (error) {
       console.warn(`${city.name} binary road extract unavailable; reading streets-routing.json.`, error);
@@ -73,6 +75,7 @@ class OSMLoader {
             return response.json();
           }))
         : null;
+      this.roadExtractVersion = null;
       let features = travelMode === 'car' ? await this._fetchRoadExtract(city) : null;
       if (!features) {
         const dataUrl = new URL(`${city.extractPath}/${dataset}.json`, window.location.href);

@@ -295,6 +295,8 @@ test('every kind of drawn building opens a card when clicked', async ({ page }, 
         // Picking another building is right only when it stands in front.
         if (hit && s.own(hit)) o.own++;
         else if (hit && hit.depth != null && hit.depth <= s.z + 1e-6) o.occluded++;
+        // A drawn POI label stands in front of every building: it wins the click on both engines (#129 round 19).
+        else if (hit?.poi) o.occluded++;
         else if (o.misses.length < 5) o.misses.push(`wrong ${s.id}→${hit ? hit.id : 'no hit'}`);
       }
       g._clearLandmarkNotice();
@@ -329,7 +331,7 @@ test('Westermarkt: a click on the drawn Westerkerk opens the Westerkerk, not the
   }), { timeout: 120_000 }).toBeGreaterThan(0);
   await page.waitForTimeout(4000);
   const r = await page.evaluate(() => {
-    const vm = (window as any).canalRecallGame.vectorMap, sig = vm._signatureLandmarks;
+    const vm = (window as any).canalRecallGame.vectorMap, sig = vm._signatureLandmarks, labels = vm.engine === 'own' ? vm._labels : vm._labelOverlay;
     const canvas = vm.frameCanvas(), W = canvas.clientWidth, H = canvas.clientHeight;
     const e = sig._entries.find((x: any) => x.spec.id === 'westerkerk');
     let drawn = 0, right = 0;
@@ -339,8 +341,9 @@ test('Westermarkt: a click on the drawn Westerkerk opens the Westerkerk, not the
       if (!s || s.lngLat !== e.placement.anchor) continue;
       drawn++;
       const hit = vm.inspectBuilding(x, y, { width: W, height: H });
-      // The model itself, the Westerkerk's own POI label (MapLibre path: a drawn POI label wins the click), or a nearer surface.
-      if (hit && (hit.lngLat === e.placement.anchor || /^Westerkerk$/i.test(hit.name ?? '') || (hit.depth != null && hit.depth <= s.depth + 1e-6))) right++;
+      // The model itself, a POI label drawn over it (a drawn label wins the click on both engines), or a nearer surface.
+      const label = labels?.hitTest(x, y);
+      if (hit && (hit.lngLat === e.placement.anchor || (hit.poi && label && hit.name === label.name) || (hit.depth != null && hit.depth <= s.depth + 1e-6))) right++;
       else if (wrong.length < 5) wrong.push(`${x},${y}→${hit ? hit.id : 'no hit'}`);
     }
     return { drawn, right, wrong };
@@ -348,4 +351,26 @@ test('Westermarkt: a click on the drawn Westerkerk opens the Westerkerk, not the
   console.log('westermarkt westerkerk', JSON.stringify(r));
   expect(r.drawn, 'the Westerkerk draws in the Westermarkt view').toBeGreaterThan(50);
   expect(r.right, `every Westerkerk pixel answers the Westerkerk ${JSON.stringify(r)}`).toBe(r.drawn);
+
+  // A drawn POI label wins the click on both engines: every pixel of every POI label drawn in the view (the
+  // "Guy Olivier" label among them when it places, default 228 at Westermarkt, #129 round 19) opens that POI, not
+  // the building under it. The engine's label layer finds its own pixels.
+  const label = await page.evaluate(() => {
+    const vm = (window as any).canalRecallGame.vectorMap, layer = vm.engine === 'own' ? vm._labels : vm._labelOverlay;
+    const canvas = vm.frameCanvas(), W = canvas.clientWidth, H = canvas.clientHeight;
+    let drawn = 0, right = 0;
+    const names = new Set<string>(), wrong: string[] = [];
+    for (let y = 60; y < H * 0.85; y += 3) for (let x = 30; x < W - 30; x += 3) {
+      const l = layer.hitTest(x, y);
+      if (!l) continue;
+      drawn++; names.add(l.name);
+      const hit = vm.inspectBuilding(x, y, { width: W, height: H });
+      if (hit?.poi && hit.name === l.name) right++;
+      else if (wrong.length < 5) wrong.push(`${l.name} ${x},${y}→${hit ? hit.id : 'no hit'}`);
+    }
+    return { drawn, right, names: [...names], wrong };
+  });
+  console.log('westermarkt labels', JSON.stringify(label));
+  expect(label.drawn, 'POI labels draw in the Westermarkt view').toBeGreaterThan(0);
+  expect(label.right, `every POI label pixel opens that POI ${JSON.stringify(label)}`).toBe(label.drawn);
 });

@@ -122,7 +122,28 @@ export class LabelLayer {
   }
 
   setOverview(data: OverviewData): void { this.data = data; this.ctxKey = ''; this.rev++; }
-  setPois(pois: PointLabel[]): void { this.pois = pois; this.ctxKey = ''; this.rev++; }
+  setPois(pois: PointLabel[]): void { this.pois = pois; this.poiById = new Map(pois.map(q => [q.id, q])); this.ctxKey = ''; this.rev++; }
+  private poiById = new Map<string, PointLabel>();
+
+  /**
+   * The POI label drawn under a point (CSS px of the frame), as vector-map.js's label overlay answers a click: a drawn
+   * label wins over the building under it, so a player who clicks a place's name gets that place's card on either
+   * engine. The box is the one placement collided with (ownMap/labels.ts: text width x font size, 2 px padding).
+   */
+  hitTest(x: number, y: number): { id: string; landmarkId: string; name: string; lngLat: [number, number]; poi: true; featureTarget: null } | null {
+    for (let i = this.placed.length - 1; i >= 0; i--) {
+      const l = this.placed[i];
+      if (l.kind !== 'poi' || l.glyphs || l.x === undefined || l.y === undefined) continue;
+      const poi = this.poiById.get(l.id);
+      if (!poi) continue;
+      let w = 0;
+      for (const ch of l.text) w += this.advance(ch, l.kind);
+      const pad = 2;
+      if (Math.abs(x - l.x) > w / 2 + pad || Math.abs(y - l.y) > l.size / 2 + pad) continue;
+      return { id: poi.id, landmarkId: poi.id, name: poi.text, lngLat: [poi.lngLat[0], poi.lngLat[1]], poi: true, featureTarget: null };
+    }
+    return null;
+  }
   /** Game point labels by group (answered street name, ferry landings). */
   setPoints(group: string, points: PointLabel[]): void { this.extra.set(group, points); this.rev++; }
 

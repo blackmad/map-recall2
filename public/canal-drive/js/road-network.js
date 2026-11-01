@@ -47,6 +47,61 @@ class RoadNetwork {
     return SURFACE.buildRoadSpatialIndexAsync(landOnly(segments), ROAD_GRID_CELL, routingGraph.connectors || [], scheduling || { cancelled, budgetMs: ROAD_SETUP_SLICE_MS });
   }
 
+  /**
+   * The device cache of the built routing graph and surface index (roadWorldCache.ts). `worldCache(segments, parts)`
+   * names the record for these exact segments ({ key, fingerprint }), or null when the cache is off
+   * (`?worldCache=0`, an older bundle). `parts`: { cityId, travelMode, extractVersion }.
+   */
+  static worldCache(segments, parts) {
+    try {
+      if (!GRAPH.readRoadWorld || new URLSearchParams(window.location.search).get('worldCache') === '0') return null;
+      return {
+        key: GRAPH.roadWorldCacheKey({ ...parts, options: `m18|s${JUNCTION_STITCH_RADIUS}|g${ROAD_GRID_CELL}` }),
+        fingerprint: GRAPH.roadSegmentsFingerprint(segments),
+      };
+    } catch (error) {
+      console.warn('Road world cache unavailable; building.', error);
+      return null;
+    }
+  }
+
+  /**
+   * The cached graph and surface index for `cache` ({ routingGraph, surfaceIndex }), or null. The record must name
+   * exactly these segments and pass every array check; any mismatch, storage error or private window is null, never
+   * an error. Run alongside the build (game-route.js _prepareCityWorld): a slow store never delays the ride.
+   */
+  static async restoreWorld(segments, cache) {
+    if (!cache) return null;
+    try {
+      const record = await GRAPH.readRoadWorld(cache.key);
+      if (!record) return null;
+      const restored = GRAPH.unpackRoadWorld(record, cache.fingerprint, routingSegmentsOf(segments).map(s => s.metadata), landOnly(segments));
+      if (!restored) {
+        console.warn(`Road world cache refused (${GRAPH.lastRoadWorldRefusal ? GRAPH.lastRoadWorldRefusal() : '?'}); building.`);
+        return null;
+      }
+      return { routingGraph: restored.graph, surfaceIndex: restored.surface };
+    } catch (error) {
+      console.warn('Road world cache unreadable; building.', error);
+      return null;
+    }
+  }
+
+  /**
+   * Store a fresh build for the next visit. Packed now, as built: the ride adds to what it is handed (a record packed
+   * mid-ride failed its checks on restore). Written once the ride is under way (the structured clone is ~17 MB).
+   */
+  static storeWorld(cache, segments, routingGraph, surfaceIndex) {
+    if (!cache || !GRAPH.writeRoadWorld) return;
+    let record;
+    try { record = GRAPH.packRoadWorld(routingGraph, surfaceIndex, cache.fingerprint, landOnly(segments)); } catch (error) {
+      console.warn('Road world not cached.', error);
+      return;
+    }
+    const write = () => { GRAPH.writeRoadWorld(cache.key, record).catch(() => {}); };
+    setTimeout(() => (window.requestIdleCallback ? window.requestIdleCallback(write, { timeout: 5000 }) : write()), 3000);
+  }
+
   constructor(segments, startPoint, finishPoint, tiles, routingGraph = null, surfaceIndex = null) {
     this.isOpenTrack = true;
     this.segments = segments; // [{points, width, type, bounds}]

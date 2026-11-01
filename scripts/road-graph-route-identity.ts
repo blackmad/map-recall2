@@ -75,8 +75,34 @@ const routingSegments = segments.map((segment, segmentIndex) => ({
   metadata: { segmentIndex, name: segment.name || '', wayId: '' },
 }));
 const t0 = performance.now();
-const graph = F.connectFerryGraph(G.buildRoadGraph(routingSegments, { mergeSize: 18, junctionStitchRadius: 10 }), segments);
+const built0 = F.connectFerryGraph(G.buildRoadGraph(routingSegments, { mergeSize: 18, junctionStitchRadius: 10 }), segments);
 const buildMs = performance.now() - t0;
+// `--restored`: record the graph as a device restores it from its cache (roadWorldCache.ts): packed with the
+// surface index, through structuredClone (what IndexedDB does), unpacked against the same segments' fingerprint.
+const graph = await (async () => {
+  if (!process.argv.includes('--restored')) return built0;
+  const { buildRoadSpatialIndex, roadsNear } = await import('../src/canalRecall/routing/roadSurface.ts');
+  const C = await import('../src/canalRecall/routing/roadWorldCache.ts');
+  const surfaceSegments = segments.map(s => (s.type === 'ferry' ? { ...s, points: [] } : s));
+  const surface = buildRoadSpatialIndex(surfaceSegments, 100, built0.connectors);
+  const fingerprint = C.roadSegmentsFingerprint(segments);
+  const packed = structuredClone(C.packRoadWorld(built0, surface, fingerprint, surfaceSegments));
+  const p0 = performance.now();
+  const restored = C.unpackRoadWorld(packed, fingerprint, routingSegments.map(r => r.metadata), surfaceSegments);
+  if (!restored) throw new Error('restored: the packed whole-city world was refused');
+  console.log(`restored: unpack + checks ${Math.round(performance.now() - p0)} ms, ~${(C.packedRoadWorldBytes(packed) / 1e6).toFixed(1)} MB`);
+  // The surface index answers every query the same, over the whole city on a 37 px lattice.
+  let queries = 0;
+  for (let x = -40000; x <= 40000; x += 37) for (let y = -40000; y <= 40000; y += 370) {
+    const a = roadsNear(surface, x, y, 1), b = roadsNear(restored.surface, x, y, 1);
+    queries++;
+    if (a.length !== b.length || a.some((span, i) => span.segIdx !== b[i].segIdx || span.ptIdx !== b[i].ptIdx || span.a.x !== b[i].a.x || span.b.y !== b[i].b.y || span.width !== b[i].width)) {
+      throw new Error(`restored: surface query differs at ${x},${y}`);
+    }
+  }
+  console.log(`restored: surface index identical on ${queries} queries`);
+  return restored.graph;
+})();
 
 const hash = (value: unknown) => createHash('sha256').update(JSON.stringify(value)).digest('hex').slice(0, 16);
 const nodes = graph.allNodes as { key: string; x: number; y: number; edges: { node: Point & { key: string }; distance: number; kind: string; segmentIndexes: number[]; segmentMetadata: unknown[] }[] }[];

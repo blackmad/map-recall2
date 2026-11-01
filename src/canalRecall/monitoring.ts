@@ -33,6 +33,7 @@ interface CanalRecallGameGlobals {
   viewMode?: unknown;
   themeMode?: unknown;
   routeTo?: { id?: unknown };
+  vectorMap?: { engine?: unknown; qualityTier?: { tier?: unknown } | null } | null;
 }
 
 const config: CanalRuntimeConfig = window.CANAL_RUNTIME_CONFIG ?? {};
@@ -94,6 +95,10 @@ function routeTags(): Record<string, string> {
   if (game.viewMode) tags.viewMode = String(game.viewMode);
   if (game.themeMode) tags.themeMode = String(game.themeMode);
   if (game.routeTo?.id) tags.route = String(game.routeTo.id);
+  // Which world view drew the frame (`own` for ?engine=own, else MapLibre) and the own engine's quality tier: the
+  // Amsterdam flip's staged rollout splits graphics failures by these (#129 flip checklist).
+  tags.engine = game.vectorMap?.engine === 'own' ? 'own' : 'maplibre';
+  if (game.vectorMap?.qualityTier?.tier) tags.tier = String(game.vectorMap.qualityTier.tier);
   return tags;
 }
 
