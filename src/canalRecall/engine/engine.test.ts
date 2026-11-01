@@ -423,3 +423,48 @@ test('FramePhases: totals per phase, and the slowest frames keep their own phase
   assert.deepEqual(r.worst.map(w => w.ms), [30, 20]);
   assert.deepEqual(r.worst[0].phases, { a: 25, b: 5 });
 });
+
+test('label layer: a policy change re-screens the indexed candidates and shows exactly what a full rebuild showed', async () => {
+  const { LabelLayer } = await import('./overlays/labelLayer');
+  const { streetLabelVisible, poiLabelVisible, neighbourhoodLabelVisible } = await import('../ownMap/labelPolicy');
+  const { buildSpoilerIndex } = await import('../orientationPois');
+  const { toLocal } = await import('../ownMap/frame');
+  let seed = 7; const rnd = () => ((seed = (seed * 1103515245 + 12345) % 2147483648) / 2147483648);
+  const names = ['Prinsengracht', 'Herengracht', 'Damrak', 'Rokin', 'Spui', 'Kalverstraat', 'prinsengracht', ''];
+  const classes = ['major', 'secondary', 'tertiary', 'minor', 'service', 'cycle', 'path'] as const;
+  const line = () => { const x = rnd() * 4000 - 2000, y = rnd() * 4000 - 2000; return Array.from({ length: 2 + Math.floor(rnd() * 4) }, (_, k) => [x + k * 300 * rnd(), y + k * 300 * rnd()] as [number, number]); };
+  const data: any = {
+    streets: Array.from({ length: 400 }, () => ({ name: names[Math.floor(rnd() * names.length)], cls: classes[Math.floor(rnd() * classes.length)], points: line() })),
+    waterLines: Array.from({ length: 40 }, () => ({ name: names[Math.floor(rnd() * 7)], points: line() })),
+    hoods: Array.from({ length: 10 }, (_, i) => ({ name: `Buurt ${i}`, at: [rnd() * 4000 - 2000, rnd() * 4000 - 2000] })),
+  };
+  const pois = Array.from({ length: 60 }, (_, i) => ({ id: `p${i}`, text: rnd() < 0.3 ? `${names[i % 6]} Museum` : `Cafe ${i}`, kind: 'poi' as const, lngLat: [4.88 + rnd() * 0.02, 52.36 + rnd() * 0.02] as const, priority: i, aliases: rnd() < 0.2 ? [`Huis ${names[i % 6]}`] : undefined }));
+  const el: any = { style: {}, getContext: () => ({}) };
+  const container: any = { ownerDocument: { createElement: () => el }, appendChild() {} };
+  let ctx: any = null;
+  const layer: any = new LabelLayer(container, () => ctx);
+  layer.setOverview(data); layer.setPois(pois);
+  // The rule a full rebuild applied (before the index): the visible candidates per bucket, in build order.
+  const reference = (c: any) => {
+    const out = new Map<string, string[]>();
+    const put = (id: string, pts: readonly (readonly number[])[]) => { for (const k of [...new Set(pts.map(([x, y]) => `${Math.floor(x / 500)},${Math.floor(y / 500)}`))]) { const l = out.get(k); if (l) l.push(id); else out.set(k, [id]); } };
+    data.streets.forEach((s: any, i: number) => { if (!s.name) return; const m = s.points[s.points.length >> 1]; if (streetLabelVisible(c, s.name, m[0], m[1])) put(`s${i}`, s.points); });
+    data.waterLines.forEach((w: any, i: number) => { const m = w.points[w.points.length >> 1]; if (streetLabelVisible(c, w.name, m[0], m[1])) put(`w${i}`, w.points); });
+    if (neighbourhoodLabelVisible(c)) data.hoods.forEach((h: any, i: number) => put(`h${i}`, [h.at]));
+    for (const p of pois) if (poiLabelVisible(c, p.text) && (p.aliases ?? []).every(a => poiLabelVisible(c, a))) put(p.id, [toLocal(p.lngLat[0], p.lngLat[1])]);
+    return out;
+  };
+  const shownNow = () => { const out = new Map<string, string[]>(); for (const [k, list] of layer.buckets as Map<string, any[]>) { const ids = list.filter(c => layer.shown.has(c)).map(c => c.id); if (ids.length) out.set(k, ids); } return out; };
+  const indexes: unknown[] = [];
+  for (let round = 0; round < 30; round++) {
+    const learned = new Set(names.filter(() => rnd() < 0.4));
+    const hidden = rnd() < 0.5 ? names[Math.floor(rnd() * 6)] : '';
+    ctx = { isLabelled: (t: string) => learned.has(t), hiddenName: hidden, spoilerIndex: rnd() < 0.5 ? buildSpoilerIndex(names.filter(n => n && !learned.has(n))) : null, quizQuiet: rnd() < 0.3 };
+    layer.rebuild(ctx);
+    indexes.push(layer.screens[0].c);
+    assert.deepEqual(shownNow(), reference(ctx), `round ${round}`);
+  }
+  assert.ok(indexes.every(s => s === indexes[0]), 'the candidates are indexed once, not per policy change');
+  layer.setPois(pois.slice(0, 10)); ctx = { ...ctx }; layer.rebuild(ctx);
+  assert.equal(layer.screens.filter((s: any) => s.c.kind === 'poi').length, 10, 'new POIs re-index');
+});
