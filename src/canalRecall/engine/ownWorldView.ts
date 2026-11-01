@@ -27,9 +27,7 @@ import { CameraMap, EngineCamera, unitsPerMetre, mercatorX, mercatorY } from './
 import { GameCameraSolver, lngLatToWorld, worldToLngLat, type GameCamera, type LoaderFrame } from './gameCamera';
 import { clearCamera, clearanceResidents } from './cameraClearance';
 import { RiderCoverTracker } from './riderCover';
-import { decodeOverviewBytes, fetchOverviewBytes, OverviewLayer, OVERVIEW_TILES, OVERVIEW_TILE_MIN_TRIANGLES } from './overviewLayer';
-import { overviewFromPool } from '../ownMap/overviewPool';
-import { existingWorkerPool } from './workerPool';
+import { fetchOverview, OverviewLayer } from './overviewLayer';
 import type { JumpOptions, ScreenPoint, WorldCamera } from './worldViewApi';
 import { FlatLines, type LngLatLine } from './overlays/flatLines';
 import { LabelLayer, type PointLabel } from './overlays/labelLayer';
@@ -292,15 +290,8 @@ export class OwnWorldView {
 
   private async loadOverview(): Promise<void> {
     try {
-      // The geometry is built in the worker pool from a copy of the bytes while this thread decodes its own copy for
-      // the water index and the labels (ownMap/overviewPool.ts, #129: 184 ms of boot -> submit); without a pool, or if
-      // the worker fails, it is built here as before.
-      const bytes = await fetchOverviewBytes(this.absoluteExtractRoot());
-      const pooled = overviewFromPool(existingWorkerPool(), bytes, OVERVIEW_TILES, OVERVIEW_TILE_MIN_TRIANGLES);
-      const data = await decodeOverviewBytes(bytes);
-      const prebuilt = await pooled;
-      this.status.overviewBuilt = prebuilt ? 'pool' : 'main';
-      this._overview = new OverviewLayer(data, { center: () => this.camera.center(), zoom: () => this.camera.zoom(), rider: () => this.lastSubject, ground: () => (this._ownGround?.ready && this._ownGround.coversRect ? this._ownGround : null) }, prebuilt);
+      const data = await fetchOverview(this.absoluteExtractRoot());
+      this._overview = new OverviewLayer(data, { center: () => this.camera.center(), zoom: () => this.camera.zoom(), rider: () => this.lastSubject, ground: () => (this._ownGround?.ready && this._ownGround.coversRect ? this._ownGround : null) });
       // First in the main pass, under every 3D participant.
       this._sharedFrame.register('engine-overview', this._overview, { order: -100 });
       this.status.overview = { water: data.water.length, parks: data.parks.length, streets: data.streets.length };
@@ -610,8 +601,7 @@ export class OwnWorldView {
 
   projectWorld(worldX: number, worldY: number, loader: LoaderFrame, canvas: HTMLCanvasElement): ScreenPoint {
     const lngLat = worldToLngLat(worldX, worldY, loader);
-    // The engine's own camera (WorldCamera), not the MapLibre-shaped shim: the same projection (P5 B6, ~1,600 calls/s).
-    const p = this.camera.project(lngLat);
+    const p = this.cameraMap.project(lngLat);
     // Pins stand on the relief/deck there (own ground), not at z = 0.
     const lift = this._ownGround?.ready ? this._ownGround.screenLift(lngLat) : null;
     if (lift) { const vp = this.host.viewport(); p.x += lift[0] / 2 * vp.width; p.y -= lift[1] / 2 * vp.height; }
