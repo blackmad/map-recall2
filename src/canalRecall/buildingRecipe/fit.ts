@@ -11,6 +11,7 @@ import type {CanalHouseRecipe, CanalhouseDressing, CanalhouseElevation, Canalhou
 import type {CanalhouseGlazedBay} from '../canalhouseGlazedBay.ts';
 import {brickStripeBlocks} from './brickStripes.ts';
 import {parapetBandBlocks} from './parapetBand.ts';
+import {corbelTableBlocks} from './corbelTable.ts';
 import {stairLightOpenings} from './stairLight.ts';
 import {bargeboardOrnaments} from './bargeboards.ts';
 import {canalhouseCrownProfile} from '../canalhouseRecipes.ts';
@@ -1101,6 +1102,8 @@ export function fitIntent(intent: CanalHouseIntent, surveyFacts: BuildingFacts):
     if (front.brickStripes) elevation.bands.value.push(...brickStripeBlocks(front.brickStripes, width, flipX));
     // A dark band of the parapet's top courses (`parapet.band`, parapetBand.ts), stopped at a tower and laid under its top.
     if (parapetM !== null && front.parapet!.band) elevation.bands.value.push(...parapetBandBlocks(front.parapet!.band, {count, mw, eaves, copingM: front.parapet!.coping ? DE_BAARSJES.copingM : 0, tower: towerSpan ? {span: towerSpan, top: towerTop} : null, place, flipX}));
+    // The brick corbel table on the cornice foot (`corbelTable`, corbelTable.ts): under an entablature, on its cap's foot.
+    if (front.corbelTable && elevation.cornice) elevation.bands.value.push(...corbelTableBlocks(front.corbelTable, width, front.entablature ? round(eaves - front.entablature.cap) : elevation.cornice.value.bottomM));
     if (layout.groundBlocks?.length) elevation.blocks = seen([...(elevation.blocks?.value ?? []), ...Array.from({length: count}, (_, k) => layout.groundBlocks!.map(b => ({...b, id: idFor(k, b.id), leftM: round(flipX(place(k, b.leftM, b.widthM), b.widthM))}))).flat()]);
     if (front.shopfront && layout.shopGlass && layout.shopZone) {
       const g0 = layout.groundBase > 0 ? 1 : 0, floor = layout.groundBase + layout.storeyHeights[g0];

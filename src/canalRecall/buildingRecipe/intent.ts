@@ -17,6 +17,7 @@ import {brickStripeProblems, type BrickStripeZone} from './brickStripes.ts';
 import {stairLightProblems, type StairLightIntent} from './stairLight.ts';
 import type {ParapetBandIntent} from './parapetBand.ts';
 import {friezeVentProblems} from './friezeVents.ts';
+import {corbelTableProblems, type CorbelTableIntent} from './corbelTable.ts';
 import {wallAnchorProblems} from './wallAnchors.ts';
 import {entablatureProblems} from './entablature.ts';
 import {jambBlockProblems} from './jambBlocks.ts';
@@ -608,6 +609,13 @@ export interface FrontIntent {
    * `axes` = only those axes. Needs a cornice. Absent = byte-identical.
    */
   friezeVents?: {span: number; rise: number; drop: number; slot?: boolean; axes?: number[]};
+  /**
+   * Corbel table (Duivelseiland 1899-1900 rows, Cornelis Anthoniszstraat 50-72; buildingRecipe/corbelTable.ts): a band-brick
+   * course on the cornice foot (an entablature's cap foot) with `rows` rows of corbelled blocks hanging from it, half a
+   * `pitch` wide and `blockCourses` courses tall, odd rows shifted half a pitch (the diamond-lattice brick frieze). Needs
+   * a cornice and `palette.band`. Absent = byte-identical.
+   */
+  corbelTable?: CorbelTableIntent;
   /**
    * Entablature (Helmersbuurt 1893-1900 rows, Eerste Helmersstraat 116-122 and 42-56; buildingRecipe/entablature.ts): the
    * measured deep white crown band in place of the cornice style's fixed height: `rise` metres in all, a projecting
@@ -1551,6 +1559,7 @@ export function validateIntent(input: unknown): CanalHouseIntent {
     if (f.wallAnchors !== undefined) problems.push(...wallAnchorProblems(f, at));
     if (f.tilePanels !== undefined) problems.push(...tilePanelProblems(f, at));
     if (f.friezeVents !== undefined) problems.push(...friezeVentProblems(f, at));
+    if (f.corbelTable !== undefined) problems.push(...corbelTableProblems(f, at, f.palette?.band ?? intent.palette.band));
     if (f.entablature !== undefined) problems.push(...entablatureProblems(f, at));
     if (f.jambBlocks !== undefined) problems.push(...jambBlockProblems(f, at));
     if (f.axisHeads !== undefined) {
