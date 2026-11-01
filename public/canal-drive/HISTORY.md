@@ -1,5 +1,40 @@
 # Canal Recall — what is built
 
+**The built routing graph and surface index are cached on the device: on a return visit the world is ready ~3× sooner after submit (2026-11-01, P3).**
+Road lane (c0e02ebec, 9245cf0cf, 514e18c3d). `routing/roadWorldCache.ts`
+keys the record by version, city, mode, the roads-v2 source sha and the
+build options, guards it with a 64-bit fingerprint of every point, width,
+name, way id, type and ferry link the two builds read, and checks every
+length, offset run and index range before anything reads the arrays;
+missing, throwing or hung IndexedDB, a refused record (logged with its
+reason), too little quota (under 3× the ~17.6 MB record) or `?worldCache=0`
+fall through to the live build. The record is packed when the graph is
+built (a record packed mid-ride failed its checks, the ride adds to what it
+is handed) and written 3 s into the ride when the page is idle; the read
+gets a 400 ms head start and runs beside the build, which stops at its next
+slice if the read wins (the old 1.5 s open timeout lost to a busy boot and
+stayed null for the session; a 10 s timeout now guards only a hung open);
+on open a database without its store is repaired. A unit test pins a
+fixture's packed hash to `ROAD_WORLD_CACHE_VERSION` as a tripwire. Route
+identity on the restored whole-city graph against the 5f0fad294 snapshot:
+identical graph, connectors, 3 trees, 71 pairs × 4 planners; the surface
+index identical on 469,371 lattice queries; unpack plus checks 38 ms in
+node. Second visit, submit → introStart, world ready after submit: emulated
+iPhone 13 at 4× immediate submit 1.7–2.1 s vs 5.6–5.8 s cold (cache hit
+3/3; racing ~4.6 s on a quiet run), desktop 0.30–0.36 s vs 1.4 s (racing
+2.50–2.58 s); the machine was at load ~20 for the matrix so absolute times
+there are 1.5–2× the clean runs and only warm-vs-cold within a row counts.
+One warm desktop run still built (no refusal logged; probably the read lost
+even with the head start under load, unconfirmed). What is left on a warm
+immediate submit is the world-view settle hold, 1.5–2.6 s with nothing
+pending. Not started: the depth-aware pop-in detector (groundwork: own
+exposes `vectorMap._sharedFrame.{scene,camera,renderer}` and
+`window.CanalRecallThree.THREE`); b1 stays deferred until the real-iPhone
+phase table. Integrator: `road-graph.bundle.js` rebuilt; the two cache
+tests joined `test:city-startup` (28/28); test:road-graph and lint clean;
+default-desktop smoke of start-heading + open-squares in the commit
+message.
+
 **Under own a POI label wins the click; the own overview draws roof-tone footprints from the resident cells (zoom sweep 6.8 → 4.1 %); Sentry events carry engine and tier tags; the Amsterdam flip checklist is written (2026-11-01, P1/P5).**
 L1 hand-back 20 (040f36423). `inspectBuilding` hit-tests the LabelLayer
 before the prism pick and own POI ids match the MapLibre label overlay

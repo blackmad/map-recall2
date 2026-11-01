@@ -460,8 +460,14 @@ cut merged (5f0fad294, graph identical); lever (a) merged 2026-11-01
 (d15d66991/512a5782d, HISTORY "The city's roads, routing graph and surface
 index build while the player reads the briefing"): 5 s dwell → 3.0 s on the
 phone profile, 2.6 s desktop; immediate submit still 7.8 s on the phone (gate
-≤ 4 s RED) → lever (b) prebuilt graph binary next, then the depth-aware
-pop-in detector (tooling);
+≤ 4 s RED); lever b2 merged 2026-11-01 (c0e02ebec…514e18c3d, HISTORY "The
+built routing graph and surface index are cached on the device"): return
+visits have the world ready 1.7–2.1 s after submit on the phone profile vs
+5.6–5.8 cold, 0.3 s desktop; what is left warm is the settle hold 1.5–2.6 s
+with nothing pending (L1/materials: why does the hold wait that long when
+nothing is pending?); b1 prebuilt graph only if the real-iPhone phase table
+shows the graph build > ~1 s; depth-aware pop-in detector (tooling) still to
+do; the road lane is idle;
 real-device timing owed once the phone is unlocked and re-trusted
 (`scripts/time-to-ride-device.mjs --target safari`); #150 landing animation
 excluded. Heap levers from the `_canalSharedFrame` breakdown:

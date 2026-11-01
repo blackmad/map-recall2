@@ -3,6 +3,12 @@
   "notes": [
     {
       "date": "2026-11-01",
+      "title": "Your second ride starts faster",
+      "text": "The first time you ride, the game builds the city's street network on your device. It now keeps that build, so when you come back the ride is ready a few seconds sooner after you press Start, on phones most of all. Nothing is sent anywhere; the copy lives in your browser and is rebuilt if the city data changes.",
+      "images": []
+    },
+    {
+      "date": "2026-11-01",
       "title": "Back gardens get garden rooms",
       "text": "Inside the canal-ring courts and the Oud-Zuid and De Pijp blocks, the small outbuildings that were plain grey boxes now read as the garden rooms they usually are: a flat-roofed room in oiled larch slats or matte-black boards, with a glass front and door facing the house, an anthracite frame and a lid that overhangs the walls. Which sheds qualify is decided from open data only: a BAG build year from 2005 on, or a measured white-membrane or glass roof, and at least six square metres (the smaller boxes are bin and bike stores). That is 226 rooms in the centre so far; every other shed and every neighbour is byte-identical to before. You only see them at close zoom from the garden side, so the ride itself is unchanged. The first image is before, the second after, the third the glass front, the fourth the PDOK orthophoto of the same Herengracht/Keizersgracht court.",
       "images": [
