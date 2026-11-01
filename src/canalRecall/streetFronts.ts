@@ -39,28 +39,35 @@ export function streetSegments(paths: ReadonlyArray<{ highway?: string; points: 
 }
 
 /** A uniform grid over flat segments, so a ray only tests the segments near it. */
+const CELL_RANGE = 2 ** 20;
 export class SegmentGrid {
-  private readonly cells = new Map<string, number[]>();
+  private readonly cells = new Map<number | string, number[]>();
   constructor(readonly segs: ArrayLike<number>, readonly cellM = 25, readonly owners?: ArrayLike<number>) {
     for (let s = 0; s < segs.length / 4; s++) {
       const [x0, y0, x1, y1] = [segs[s * 4], segs[s * 4 + 1], segs[s * 4 + 2], segs[s * 4 + 3]];
-      for (const key of this.keysFor(Math.min(x0, x1), Math.min(y0, y1), Math.max(x0, x1), Math.max(y0, y1))) {
+      this.eachCell(Math.min(x0, x1), Math.min(y0, y1), Math.max(x0, x1), Math.max(y0, y1), key => {
         let list = this.cells.get(key);
         if (!list) this.cells.set(key, list = []);
         list.push(s);
-      }
+      });
     }
   }
 
-  private *keysFor(minX: number, minY: number, maxX: number, maxY: number): Generator<string> {
-    const c = this.cellM;
-    for (let gx = Math.floor(minX / c); gx <= Math.floor(maxX / c); gx++) for (let gy = Math.floor(minY / c); gy <= Math.floor(maxY / c); gy++) yield `${gx},${gy}`;
+  /**
+   * The cells over a box, column by column as before; a cell is one number (any |gx|, |gy| < 2^20 cells), else its
+   * old `gx,gy` string. No generator or key string per cell: `near` runs per chunk on the main thread (streetsFor,
+   * #129 4x profile) and per ray in the builder.
+   */
+  private eachCell(minX: number, minY: number, maxX: number, maxY: number, visit: (key: number | string) => void): void {
+    const c = this.cellM, gx1 = Math.floor(maxX / c), gy0 = Math.floor(minY / c), gy1 = Math.floor(maxY / c);
+    for (let gx = Math.floor(minX / c); gx <= gx1; gx++) for (let gy = gy0; gy <= gy1; gy++)
+      visit(Math.abs(gx) < CELL_RANGE && Math.abs(gy) < CELL_RANGE ? (gx + CELL_RANGE) * 2 * CELL_RANGE + (gy + CELL_RANGE) : `${gx},${gy}`);
   }
 
   /** Segment indices whose cells overlap the box. */
   near(minX: number, minY: number, maxX: number, maxY: number): Set<number> {
     const out = new Set<number>();
-    for (const key of this.keysFor(minX, minY, maxX, maxY)) for (const s of this.cells.get(key) ?? []) out.add(s);
+    this.eachCell(minX, minY, maxX, maxY, key => { const list = this.cells.get(key); if (list) for (const s of list) out.add(s); });
     return out;
   }
 

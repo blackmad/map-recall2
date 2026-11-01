@@ -169,8 +169,19 @@ export function buildSpoilerIndex(names: Iterable<string>): SpoilerIndex {
  *  "Keizersgrachtkerk" on the Keizersgracht said the answer while the n-grams
  *  passed it (spoiler audit 2026-10-22). Stems are not prefix-matched, or
  *  "Herenhuis" would count for the Herengracht. */
+/** Answers per index and label: the engine's label layer asks for every POI on every rebuild (#129 4x profile: the
+ *  name normalisation was ~140 ms of the load's label rebuilds). An index is built whole and never edited in place;
+ *  a new one (vector-map.js on a spoiler change) starts a new memo. */
+const spoilsMemo = new WeakMap<SpoilerIndex, Map<string, boolean>>();
 export function poiNameSpoils(label: string | null | undefined, index: SpoilerIndex | null): boolean {
   if (!label || !index || index.names.size === 0) return false;
+  let memo = spoilsMemo.get(index);
+  if (!memo) spoilsMemo.set(index, memo = new Map());
+  let spoils = memo.get(label);
+  if (spoils === undefined) memo.set(label, spoils = labelSpoils(label, index));
+  return spoils;
+}
+function labelSpoils(label: string, index: SpoilerIndex): boolean {
   const words = normaliseSpoilerName(label).split(' ').filter(Boolean);
   for (let size = 1; size <= Math.min(SPOILER_MAX_WORDS, words.length); size++) {
     for (let start = 0; start + size <= words.length; start++) {
