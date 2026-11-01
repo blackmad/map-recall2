@@ -32,7 +32,7 @@ function intArray(buf, at) {
   throw Error('unterminated array');
 }
 
-export function analyseSnapshot(file, { top = 40 } = {}) {
+export function analyseSnapshot(file, { top = 40, digits = 1 } = {}) {
   const buf = fs.readFileSync(file);
   const find = (s, from = 0) => { const i = buf.indexOf(s, from); if (i < 0) throw Error(`no ${s} in snapshot`); return i; };
   const nodesAt = find('"nodes":');
@@ -109,7 +109,7 @@ export function analyseSnapshot(file, { top = 40 } = {}) {
     for (let f = firstEdge[ref]; f < firstEdge[ref + 1]; f += ef) if (strings[edges[f + eName]] === 'target') { w = edges[f + eTo] / nf; break; }
     if (w < 0) continue;
     const k = order[w]; if (k < 0) continue;
-    marks.push({ k: key, constructor: nameOf(w), mb: +(retained[k] / 1048576).toFixed(1) });
+    marks.push({ k: key, constructor: nameOf(w), mb: +(retained[k] / 1048576).toFixed(digits) });
   }
   marks.sort((a, b) => b.mb - a.mb);
   // Claimed bytes: shared buffers (three.js geometry in the scene graph and in its owner) are dominated by neither, so
