@@ -1,6 +1,6 @@
 // Pop-in while riding: screen area that appears or changes abruptly between consecutive frames and that camera
 // motion does not explain, attributed to the streaming layer that changed.
-//   PORT=4562 node scripts/pop-in.mjs [out.json] [--route car|boat] [--warmup 10] [--measure 60] [--frames dir] [--qs '?x=1'] [--device iphone]
+//   PORT=4562 node scripts/pop-in.mjs [out.json] [--route car|boat|seeded] [--warmup 10] [--measure 60] [--frames dir] [--qs '?x=1'] [--device iphone]
 //
 // Ride: the car route is the motion-stutter route (Noorderkerk -> Westerstraat -> Leliegracht -> Westerkerk ->
 // Prinsengracht -> Rozengracht -> De Hallen -> Kinkerstraat -> Westermoskee -> Chassékerk), carried on rails at 120 px/s
@@ -44,6 +44,8 @@ const ROUTES = {
     via: ['lm-extract_landmarks_660242980', 'lm-extract_landmarks_238467800', 'westerkerk', 'lm-extract_landmarks_941219842',
       'lm-extract_landmarks_1997051448', 'lm-extract_landmarks_564717297', 'lm-extract_landmarks_155371643', 'lm-extract_landmarks_1632187034', 'lm-requested-chassekerk'] },
   boat: { mode: 'boat', start: 'westerkerk', dest: 'lm-amstel-hotel', speed: 60, via: [] },
+  // The seeded default ride (heap-ride.mjs, world-v1-bytes): Anne Frank House to the Rijksmuseum by the game's route.
+  seeded: { mode: 'car', start: 'anne-frank', dest: 'rijksmuseum', speed: 120, via: [] },
 };
 const R = ROUTES[route];
 if (!R) throw new Error(`unknown route ${route}`);

@@ -262,7 +262,10 @@ and bike parts ~35 are the cheap merges, legacy bundles), iPad triangles p50
 grid (c415a1e1b, HISTORY "The overview draws only the tiles on screen": overview
 279k → 83k; owners now: own ground 306k, facades 259k, trees 183k, cycle
 overlay 108k, overview 83k). Materials lane takes the owners in size order
-(own ground next: ~300k triangles, 120 draws on iPad); the 150/400 m
+(own ground step 1 merged 2026-11-01, `0a6cf030d`, HISTORY "The rider's ground
+cell is cut 6×6": iPad own ground 298k → 234k, frame p50 1.02 M → 0.95 M, draws
+p95 +7 %; desktop ground 504k → 397k, frame 1.97 M → 1.87 M; step 2 is distance
+LOD for kerbs/bollards beyond ~150 m with side-by-side PNGs); the 150/400 m
 facade LOD is parked (60–100k, 5–8 %, not worth its likeness risk yet). In-frame
 shader links are 0. P5 follow-ups: delete
 `building-tiles/` and `bag-tiles/` after a week of Sentry quiet on the
@@ -292,10 +295,23 @@ re-opens when L1 lands an oracle.
 **Integrator
 next:** `CanalRecallUi.stepSteer`
 in `car.js` through the frame host; drop the `leaflet`/`@types/leaflet`
-dependencies at the flip. L1 next: the remaining P1 items (camera parity ≤ 3.2
-px on the intro path and Anne Frank → Rijksmuseum, `_waitForMapSettle`
-replacement, city-aware engine choice; other-city own-map extracts are parked
-by the Amsterdam-only decision) and a fair A/B after each.
+dependencies at the flip. **L1 hand-back 18 merged 2026-11-01** (`d6837280a`,
+HISTORY "The own view answers the four oracles"): the four oracles answered,
+camera parity < 1e-7 px on intro and Anne Frank → Rijksmuseum, `_waitForMapSettle`
+was already replaced (camera.whenIdle, hand-back 4), city-aware engine choice
+(`engineFlag(search, cityId)`, Amsterdam-only, `game.js` passes `this.cityId`).
+**Open before the Amsterdam flip (L1):** four own-engine spec failures now
+visible — `building-click-perf`:228 0.947 vs 0.95 (the Westerkerk click at
+Westermarkt resolves to the wrong pand: a learning-correctness bug, fix first),
+`building-look`:47 (URL look `cartoon` not honoured under own) and :58 (B-key
+look cycle not wired), `bag-tiles`:110 (`usingBagTiles` false with `?bagTiles=1`);
+overview blend 6.8 % vs 5 % (MapLibre 3.7 %): roofs and gardens over plain land
+because the own overview has no building footprints — needs footprints in the
+own-map data or an own-engine budget row; `city-startup-lod` iphone texture 26
+vs 22 MB (cause unknown); governor-no-flash under own should force `?tier=high`
+(own starts at the tier's cap). Note: shared-frame `register(..., {order})` has
+no effect for group-rooted participants (three.js takes the innermost group's
+order); fixed for the overview only.
 Steps 4–5 merged 2026-10-30 (`487cb157e`): `ENGINE=own` switch for the gate
 specs, ride-perf, phone-memory and `ride-perf-owners.mjs` (owner `engine`);
 overlays under the flag (cycle tracks, transit, neighbourhood lines solid not
@@ -408,11 +424,25 @@ pop-in"):** the pop-in gate is RED on the iPhone profile, default engine: 24
 building-chunk arrivals within 150 m at ride start (nearest 34.7 m) + 4
 ground-cell swaps vs zero; heap gate RED too, 300 MB vs 250 (`_canalSharedFrame`
 101 MB, `atGrid.grid` 34, facades CPU arrays 27, `roadIndex.segments` 20,
-landmarks CPU arrays 12). Road lane next: rerun both under `ENGINE=own`, then
-the approved fetch-ring cap (cells under the ride-zoom view + 300 m plus
-look-ahead, not whole z14 tiles; pop-in pin desktop + iPhone, restyle check,
-bytes rerun), then a breakdown of the 101 MB in `_canalSharedFrame` (L1's
-file; fix routed after the report). The no-maplibre `package.json` diff loads
+landmarks CPU arrays 12). **Fetch ring merged 2026-11-01** (`b74955c7c`, HISTORY
+"The world streamer fetches the cells under the ride view"): free-ride cells
+halved, iPhone start heap 302 → 276 MB, 0 restyles; own-engine iPhone gates
+still red (heap 276 vs 250; 24 chunk arrivals at 35 m during the ride, with or
+without the ring). **Neither detector sees what the user reported** (HISTORY "Pop-in measured the
+way the player sees it"): the 150 m count reads 0 on desktop, the px/s
+detector reads 4–5 px/s on the seeded ride on both engines, and its big
+Jordaan number is Westerkerk parallax (a detector false positive); the 24
+phone arrivals at 35 m are a measurement artefact with nil visible cost
+(closed). Blocked on the user's answer to #168 (what pops, where, when); then
+the detector becomes depth-aware (road lane, second item) and the owner is
+cut. Road lane now: time to ride on the real phone, navigation → racing 5.7 s
+vs the 4 s gate (per-phase table, largest phase first; #150 landing animation
+excluded). Heap levers from the `_canalSharedFrame` breakdown:
+OverviewLayer keeps the decoded overview data + rebuild closures + prebuilt
+geometry, 45.6 MB (L1, after its flip blockers); facade geometry CPU arrays
+kept after upload 27.1 MB (materials, after ground step 2); landmark CPU
+arrays 11.6 → 11.2 MB done (69544e547; the interleaved GLB buffers, ~3.8 MB
+on iPhone, are parked). The no-maplibre `package.json` diff loads
 clean and waits for the flip (lane scratch `no-maplibre-package.diff`).
 **Parked idea (user, 2026-11-01): a cartoon / low-fi high-colour look mode
 with no new models — issue #161, a materials lane after the own-ground steps.
