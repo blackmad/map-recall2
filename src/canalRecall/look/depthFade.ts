@@ -10,10 +10,13 @@
 // (frameMath.ts), so three's stock fog depth (-mvPosition.z) would be height; fog_vertex measures eye distance. The
 // range scales with the eye-to-centre distance, so the high overview barely fades.
 //
-// `?depthFade=1` turns it on, `?depthFade=0` off (or `__canalRecallDepthFade` before load); default off until the
-// look review (DEPTH_FADE_DEFAULT). Off, nothing is installed and every program is as before.
+// Landmarks opt out entirely (depthFadeOptOut): orientation landmarks are what players steer by, so a catalogue
+// landmark's materials draw without fog at any distance (#161 look review: the Westerkerk tower lost its edge).
+//
+// On by default for every look after the #161 look review; `?depthFade=0` (or `__canalRecallDepthFade = false` before
+// load) turns it off, and then nothing is installed and every program is as before.
 
-export const DEPTH_FADE_DEFAULT = false;
+export const DEPTH_FADE_DEFAULT = true;
 /** The fade starts at this multiple of the eye-to-centre distance... */
 export const DEPTH_FADE_NEAR = 0.8;
 /** ...and is full at this multiple. */
@@ -118,4 +121,59 @@ export function installDepthFade(THREE: { ShaderChunk: Record<string, string> })
   THREE.ShaderChunk.fog_vertex = DEPTH_FADE_FOG_VERTEX;
   THREE.ShaderChunk.fog_fragment = DEPTH_FADE_FOG_FRAGMENT;
   THREE.ShaderChunk.fog_pars_fragment = DEPTH_FADE_FOG_PARS_FRAGMENT;
+}
+
+/** Material marker for a landmark's fog-free copy. */
+export const DEPTH_FADE_OPT_OUT = 'canalRecallDepthFadeOptOut';
+
+type FadeMaterial = {
+  fog?: boolean; isShaderMaterial?: boolean; uniforms?: unknown; defines?: unknown; userData?: Record<string, unknown>;
+  onBeforeCompile?: unknown; customProgramCacheKey?: unknown; clone(): FadeMaterial;
+};
+const optOutCopies = new WeakMap<object, FadeMaterial>();
+
+/**
+ * The fog-free twin of `material`, one per source material (landmarks sharing a material share its twin, and so
+ * its program). The twin keeps the source's uniforms, defines and shader hooks, so a shared atlas or city-look
+ * uniform still drives it. A material that already skips fog comes back as it is.
+ */
+export function depthFadeOptOutMaterial(material: FadeMaterial): FadeMaterial {
+  if (!material || material.fog === false) return material;
+  let copy = optOutCopies.get(material);
+  if (!copy) {
+    copy = material.clone();
+    copy.fog = false;
+    if (material.isShaderMaterial) copy.uniforms = material.uniforms;
+    if (material.defines) copy.defines = material.defines;
+    if (material.onBeforeCompile) copy.onBeforeCompile = material.onBeforeCompile;
+    if (material.customProgramCacheKey) copy.customProgramCacheKey = material.customProgramCacheKey;
+    copy.userData = { ...material.userData, [DEPTH_FADE_OPT_OUT]: true };
+    optOutCopies.set(material, copy);
+  }
+  return copy;
+}
+
+/**
+ * Give every mesh under `root` the fog-free twins of its materials. Returns the meshes changed. `variantOf` resolves a
+ * city-look material (shared per variant) to its `noFade` variant, so the highlight/dim swaps, which rebuild the
+ * material from its variant, keep the landmark fog-free; other materials get a cloned twin.
+ */
+export function depthFadeOptOut(root: { traverse(fn: (o: any) => void): void }, variantOf?: (material: any) => any): number {
+  const twin = (m: FadeMaterial): FadeMaterial => {
+    if (m?.fog === false) return m;
+    const v = variantOf && m?.userData?.cityLook ? variantOf(m) : null;
+    return v ?? depthFadeOptOutMaterial(m);
+  };
+  let meshes = 0;
+  root.traverse((o: any) => {
+    if (!o.isMesh || !o.material) return;
+    if (Array.isArray(o.material)) {
+      const next = o.material.map(twin);
+      if (next.some((m: FadeMaterial, i: number) => m !== o.material[i])) { o.material = next; meshes++; }
+    } else {
+      const next = twin(o.material);
+      if (next !== o.material) { o.material = next; meshes++; }
+    }
+  });
+  return meshes;
 }

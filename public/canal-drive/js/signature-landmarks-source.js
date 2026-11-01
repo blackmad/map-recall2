@@ -14,6 +14,8 @@
 import { createRecipeLook, RECIPE_LOOK_SHARED } from '../../../src/canalRecall/buildingRecipe/recipeLook.ts';
 import { plainBounds, withinView } from '../../../src/canalRecall/engine/worldStreamer.ts';
 import { normaliseLandmarkMaterials } from '../../../src/canalRecall/landmarks/landmarkShading.ts';
+import { depthFadeFlag, depthFadeOptOut } from '../../../src/canalRecall/look/depthFade.ts';
+import { countsAsLandmark } from '../../../src/canalRecall/buildingCategory.ts';
 import { cityLookEnabled } from '../../../src/canalRecall/look/cityLook.ts';
 import { INFERRED_SLOT_SOURCE } from '../../../src/canalRecall/look/materialSlotInference.ts';
 import { landmarkHighlightStates } from '../../../src/canalRecall/look/highlightLandmarks.ts';
@@ -745,6 +747,7 @@ export class SignatureLandmarks {
         };
         // Compile its programs before it joins the scene (off the frame where the driver allows): a landmark
         // that streams in mid-ride no longer links its shaders inside a draw.
+        this._fadeOptOut(spec, gltf.scene);
         this._precompile(gltf.scene).then(() => {
           if (this._removed || generation !== this._generation) { this._disposeModel(gltf.scene, spec, url); return; }
           if (!this.models.includes(spec)) { this._disposeModel(gltf.scene, spec, url); finish(); return; }
@@ -773,6 +776,17 @@ export class SignatureLandmarks {
     if (!this.sharedFrame?.compileAsync) return Promise.resolve();
     this.sharedFrame.constructor.setShadows(scene, true, true);
     return this.sharedFrame.compileAsync(scene);
+  }
+
+  /**
+   * Shared frame with the depth fade on (look/depthFade.ts): a catalogue landmark's materials draw without the fade,
+   * so the towers and bridges players steer by stay crisp against the faded field. Keyed on the landmark path, not
+   * on model kind: shared models (kiosks, street furniture), building types and street chunks fade like the city.
+   */
+  _fadeOptOut(spec, scene) {
+    if (!this.sharedFrame || !scene || spec.sharedModel || spec.sceneFactory || spec.chunkPands || !countsAsLandmark(spec)) return;
+    const city = this._recipeLook?.city;
+    if (depthFadeFlag()) depthFadeOptOut(scene, city ? m => city.material({ ...m.userData.cityVariant, noFade: true }) : undefined);
   }
 
   /**
@@ -1140,6 +1154,7 @@ export class SignatureLandmarks {
     this._loader.load(url, gltf => {
       if (this._removed || generation !== this._generation || !this._entries.includes(entry)) { this._disposeResources(gltf.scene); done(); return; }
       const scene = this._shade(this._dressLevel(gltf, spec)).scene;
+      this._fadeOptOut(spec, scene);
       // As for a first load: its programs compile before the swap, not inside the frame that shows it.
       this._precompile(scene).then(() => {
         if (this._removed || generation !== this._generation || !this._entries.includes(entry)) { this._disposeResources(scene); done(); return; }

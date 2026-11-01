@@ -163,6 +163,12 @@ async function fixedShot(page: Page, at: readonly number[], face: readonly numbe
       return { x, y, id: hit.id, lngLat: hit.lngLat, props };
     });
   }, process.env.AB_PICK.split(';').map(p => p.split(',').map(Number))));
+  // AB_EVAL='expr': a JavaScript expression evaluated in the page at the held pose (`vm` is the vector map); its JSON
+  // result lands in the spot's `eval`, for probing renderer state where the frame was taken.
+  if (process.env.AB_EVAL) shotEvals.push(await page.evaluate((expr: string) => {
+    const vm = (window as any).canalRecallGame.vectorMap;
+    try { return JSON.parse(JSON.stringify(new Function('vm', `return (${expr});`)(vm) ?? null)); } catch (error) { return { error: String(error) }; }
+  }, process.env.AB_EVAL));
   // AB_FRAMES=N: N more frames at the held pose, hashed, to tell a per-frame flicker from a per-load difference.
   if (Number(process.env.AB_FRAMES) > 0) frameRuns.push(await page.evaluate(async (n: number) => {
     const vm = (window as any).canalRecallGame.vectorMap, seen: string[] = [], seq: number[] = [];
@@ -285,6 +291,7 @@ const results: Record<string, any> = {};
 const frameRuns: { distinct: number; flips: number; seq: string }[] = [];
 const shotCameras: unknown[] = [];
 const shotPicks: unknown[] = [];
+const shotEvals: unknown[] = [];
 test.beforeAll(() => {
   if (process.env.WORLD_AB_STALE) return;
   mkdirSync(OUT, { recursive: true });
@@ -345,6 +352,7 @@ for (const variant of VARIANTS) {
       if (frameRuns.length) spots[spot.name].frames = frameRuns.pop();
       if (shotCameras.length) spots[spot.name].camera = shotCameras.pop();
       if (shotPicks.length) spots[spot.name].picks = shotPicks.pop();
+      if (shotEvals.length) spots[spot.name].eval = shotEvals.pop();
       if (owners) {
         for (const pass of ['noshadow', 'pand', 'mesh']) writeFileSync(`${OUT}/${spot.name}-${variant.name}-${pass}.png`, owners[pass]);
         writeFileSync(`${OUT}/owners-${spot.name}-${variant.name}.json`, JSON.stringify({ codes: owners.codes, camera: owners.camera, layers: JSON.parse(owners.layers.toString()) }));

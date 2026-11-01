@@ -2,7 +2,7 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { depthFadeColour, depthFadeDetail, depthFadeFlag, depthFadeRange, installDepthFade, DEPTH_FADE_DEFAULT, DEPTH_FADE_MIN_NEAR_M } from './depthFade.ts';
 
-test('depthFadeFlag: ?depthFade=1 on, 0 off, default until the look review', () => {
+test('depthFadeFlag: on by default, ?depthFade=0 off', () => {
   const gl = globalThis as { __canalRecallDepthFade?: unknown };
   assert.equal(depthFadeFlag(), DEPTH_FADE_DEFAULT);
   gl.__canalRecallDepthFade = '1'; assert.equal(depthFadeFlag(), true);
@@ -42,4 +42,53 @@ test('installDepthFade swaps both fog chunks, once', () => {
   THREE.ShaderChunk.fog_vertex = 'x';
   installDepthFade(THREE);
   assert.equal(THREE.ShaderChunk.fog_vertex, 'x');
+});
+
+test('a landmark fragment at the full fade range keeps its unfaded colour', async () => {
+  const THREE = await import('three');
+  const { depthFadeOptOut, DEPTH_FADE_OPT_OUT, DEPTH_FADE_FAR, depthFadeColour: fade } = await import('./depthFade.ts');
+  const hook = () => {};
+  const wall = new THREE.MeshLambertMaterial({ color: '#8a3b2a' });
+  wall.onBeforeCompile = hook;
+  wall.defines = { CITY_LOOK: '' };
+  const city = new THREE.Mesh(new THREE.BufferGeometry(), wall);
+  const tower = new THREE.Group(), spire = new THREE.Mesh(new THREE.BufferGeometry(), wall), nave = new THREE.Mesh(new THREE.BufferGeometry(), [wall, wall]);
+  tower.add(spire, nave);
+  assert.equal(depthFadeOptOut(tower), 2);
+  const twin = spire.material as InstanceType<typeof THREE.MeshLambertMaterial>;
+  assert.notEqual(twin, wall, 'the landmark draws a twin; the city material keeps fading');
+  assert.equal(city.material.fog, true);
+  assert.equal(twin.fog, false, 'three compiles a fog:false material without USE_FOG: no fade, no detail blend');
+  assert.equal(twin.onBeforeCompile, hook);
+  assert.equal(twin.defines, wall.defines);
+  assert.equal(twin.userData[DEPTH_FADE_OPT_OUT], true);
+  assert.equal((nave.material as unknown[])[0], twin, 'landmarks sharing a material share its twin');
+  assert.equal(depthFadeOptOut(tower), 0, 'idempotent');
+  // The colour a fragment gets at 3.5x the eye-to-centre distance: faded for the city, untouched for the landmark.
+  const range = depthFadeRange(200), dist = 200 * DEPTH_FADE_FAR, rgb: [number, number, number] = [0.54, 0.23, 0.16], haze: [number, number, number] = [0.63, 0.78, 0.9];
+  const drawn = (m: { fog?: boolean }) => (m.fog === false ? rgb : fade(rgb, haze, dist, range));
+  assert.deepEqual(drawn(twin), rgb);
+  assert.notDeepEqual(drawn(wall), rgb);
+});
+
+test('city-look landmark materials move to their noFade variant, which the highlight swaps keep', async () => {
+  const THREE = await import('three');
+  const { createCityLookMaterial, createCityUniforms, variantKey } = await import('./cityLook.ts');
+  const { depthFadeOptOut } = await import('./depthFade.ts');
+  const shared = new THREE.MeshLambertMaterial();
+  shared.userData = { cityLook: true, cityVariant: { lit: true, kind: 'slot', uv: 'box' } };
+  const noFade = new THREE.MeshLambertMaterial({ fog: false });
+  const seen: unknown[] = [];
+  const mesh = new THREE.Mesh(new THREE.BufferGeometry(), shared), root = new THREE.Group();
+  root.add(mesh);
+  assert.equal(depthFadeOptOut(root, m => { seen.push({ ...m.userData.cityVariant, noFade: true }); return noFade; }), 1);
+  assert.equal(mesh.material, noFade);
+  assert.deepEqual(seen, [{ lit: true, kind: 'slot', uv: 'box', noFade: true }]);
+  const v = { lit: true, kind: 'slot', uv: 'box' } as const;
+  assert.equal(variantKey(v), 'lit|slot|box|-|0', 'keys without noFade are unchanged');
+  const uniforms = createCityUniforms(THREE);
+  assert.equal(createCityLookMaterial(THREE, v, uniforms).fog, true);
+  const crisp = createCityLookMaterial(THREE, { ...v, noFade: true }, uniforms);
+  assert.equal(crisp.fog, false);
+  assert.equal(crisp.userData.cityVariant.noFade, true, 'highlighted()/dimmed() rebuild from the variant, keeping noFade');
 });

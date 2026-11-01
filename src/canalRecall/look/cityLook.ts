@@ -350,9 +350,11 @@ export type CityVariant = {
   dim?: boolean;
   /** three.js side (FrontSide 0, BackSide 1, DoubleSide 2). */
   side?: number;
+  /** Drawn without the depth fade (look/depthFade.ts): catalogue landmarks stay crisp at any distance. */
+  noFade?: boolean;
 };
 
-export const variantKey = (v: CityVariant) => `${v.lit ? 'lit' : 'unlit'}|${v.kind}|${v.kind === 'slot' ? v.uv ?? 'uv' : '-'}|${v.highlight ? 'hl' : v.dim ? 'dim' : '-'}|${v.side ?? 0}`;
+export const variantKey = (v: CityVariant) => `${v.lit ? 'lit' : 'unlit'}|${v.kind}|${v.kind === 'slot' ? v.uv ?? 'uv' : '-'}|${v.highlight ? 'hl' : v.dim ? 'dim' : '-'}|${v.side ?? 0}${v.noFade ? '|nofade' : ''}`;
 
 /** Shader defines for a variant (also what the program cache key is built from). */
 export function variantDefines(v: CityVariant): Record<string, string> {
@@ -649,6 +651,7 @@ else totalEmissiveRadiance += ${SKY_TINT} * (1.0 - smoothstep(0.06, 0.2, cityLum
     material.uniforms = uniforms;
   }
   material.defaultAttributeValues = { ...DEFAULT_ATTRIBUTES };
+  if (variant.noFade) material.fog = false;
   material.name = `city-look/${variantKey(variant)}`;
   material.userData = { cityLook: true, cityVariant: { ...variant }, [CITY_LOOK_SHARED]: true };
   return material;
