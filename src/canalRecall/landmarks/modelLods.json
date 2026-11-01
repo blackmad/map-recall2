@@ -1870,5 +1870,11 @@
   "buildVersion": 2,
   "bytes": 75072,
   "triangles": 3500
+ },
+ "olympisch-stadion": {
+  "sourceHash": "234c41654ea98cca",
+  "buildVersion": 2,
+  "bytes": 100184,
+  "triangles": 5407
  }
 }

@@ -1,0 +1,2266 @@
+{
+ "schemaVersion": 1,
+ "id": "olympisch-stadion",
+ "pand": "0363100012076088",
+ "brief": "scripts/landmarks/olympisch-stadion-brief.md",
+ "signature": [
+  "marathontoren",
+  "tower-bowl",
+  "w04-95-flagpoles",
+  "marathonpoort-balcony",
+  "marathonpoort-rings",
+  "w04-95-coping",
+  "w04-95-gallery",
+  "w05-117-floodlight-mast",
+  "w01-ribbons"
+ ],
+ "walls": [
+  {
+   "tag": "w01-258",
+   "bearing": 258,
+   "lengthM": 56.7,
+   "centre": [
+    4.8528286,
+    52.3433144
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316060226-000009_pano_0002_000181",
+   "capturedAt": "2016-07-29",
+   "checked": true,
+   "items": [
+    {
+     "id": "w01-258-flagpoles",
+     "kind": "other",
+     "where": "along the wall top, one every ~6.6 m on a grey stone bracket",
+     "approxSizeM": [
+      0.4,
+      5.6
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316060226-000009_pano_0002_000181",
+     "how": "crown(): bracket slab, 5.6 m pole, gilt finial, red pennant per 6.6 m of perimeter"
+    },
+    {
+     "id": "w01-258-coping",
+     "kind": "other",
+     "where": "top of the wall: thin grey coping with small grey blocks every ~1.3 m below it",
+     "approxSizeM": [
+      56.7,
+      0.6
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316060226-000009_pano_0002_000181",
+     "how": "crown(): coping slab per BAG edge and 0.26 m blocks every 1.3 m"
+    },
+    {
+     "id": "w01-ribbons",
+     "kind": "window-shape",
+     "where": "two long bands of red-framed ribbon windows at 5.3-6.5 m and 8.4-9.6 m under concrete bands",
+     "approxSizeM": [
+      56,
+      1.2
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316060226-000009_pano_0002_000181",
+     "how": "westFacade(): runs of ~4.6 m between brick piers, concrete bands over each"
+    },
+    {
+     "id": "w01-entrance-bay",
+     "kind": "window-shape",
+     "where": "centre: projecting glazed bay 18 m wide at 5.3-7.0 m between two concrete canopies",
+     "approxSizeM": [
+      18,
+      2.1
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316060226-000009_pano_0002_000181",
+     "how": "westEntrance()"
+    },
+    {
+     "id": "w01-porch",
+     "kind": "canopy",
+     "where": "centre, ground: flat canopy on two concrete piers over the entrance doors and steps",
+     "approxSizeM": [
+      9.5,
+      3.3
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316060226-000009_pano_0002_000181",
+     "how": "westEntrance(): slab on two piers, glazed red doors, three steps"
+    },
+    {
+     "id": "w01-roof",
+     "kind": "other",
+     "where": "above the brick: the stand roof on short steel posts, dark underside band",
+     "approxSizeM": [
+      56,
+      1.6
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316060226-000009_pano_0002_000181",
+     "how": "shell(): flat roof strip 22 m deep at 16.9 m on dark posts over the wall line"
+    },
+    {
+     "id": "w01-ground-windows",
+     "kind": "window-shape",
+     "where": "ground storey: tall red-framed windows and red doors",
+     "approxSizeM": [
+      1.0,
+      1.8
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316060226-000009_pano_0002_000181",
+     "how": "westFacade(): window every 1.75 m, every fourth a red door"
+    },
+    {
+     "id": "w01-banners",
+     "kind": "sign",
+     "where": "ground, left: fitness feather banners",
+     "approxSizeM": [
+      0.8,
+      3.0
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7316060226-000009_pano_0002_000181",
+     "skip": {
+      "reason": "temporary",
+      "note": "tenant feather flags"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "w02-348",
+   "bearing": 348,
+   "lengthM": 28.6,
+   "centre": [
+    4.8537323,
+    52.3445744
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002120_pano_0000_005442",
+   "capturedAt": "2021-04-28",
+   "checked": true,
+   "items": [
+    {
+     "id": "w02-348-flagpoles",
+     "kind": "other",
+     "where": "along the wall top, one every ~6.6 m on a grey stone bracket",
+     "approxSizeM": [
+      0.4,
+      5.6
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002120_pano_0000_005442",
+     "how": "crown(): bracket slab, 5.6 m pole, gilt finial, red pennant per 6.6 m of perimeter"
+    },
+    {
+     "id": "w02-348-coping",
+     "kind": "other",
+     "where": "top of the wall: thin grey coping with small grey blocks every ~1.3 m below it",
+     "approxSizeM": [
+      28.6,
+      0.6
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002120_pano_0000_005442",
+     "how": "crown(): coping slab per BAG edge and 0.26 m blocks every 1.3 m"
+    },
+    {
+     "id": "w02-348-ribbon",
+     "kind": "window-shape",
+     "where": "long red-framed ribbon window at 6.4-7.9 m in a concrete surround",
+     "approxSizeM": [
+      28.6,
+      1.5
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002120_pano_0000_005442",
+     "how": "endFacade()"
+    },
+    {
+     "id": "w02-348-canopies",
+     "kind": "canopy",
+     "where": "thin concrete canopies at 2.8 m and 5.0 m over the glazed ground storey and the window band",
+     "approxSizeM": [
+      28.6,
+      0.2
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002120_pano_0000_005442",
+     "how": "endFacade()"
+    }
+   ]
+  },
+  {
+   "tag": "w03-241",
+   "bearing": 241,
+   "lengthM": 19,
+   "centre": [
+    4.8532806,
+    52.3428056
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002120_pano_0000_004718",
+   "capturedAt": "2021-04-28",
+   "checked": true,
+   "items": [
+    {
+     "id": "w03-241-flagpoles",
+     "kind": "other",
+     "where": "along the wall top, one every ~6.6 m on a grey stone bracket",
+     "approxSizeM": [
+      0.4,
+      5.6
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002120_pano_0000_004718",
+     "how": "crown(): bracket slab, 5.6 m pole, gilt finial, red pennant per 6.6 m of perimeter"
+    },
+    {
+     "id": "w03-241-coping",
+     "kind": "other",
+     "where": "top of the wall: thin grey coping with small grey blocks every ~1.3 m below it",
+     "approxSizeM": [
+      19,
+      0.6
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002120_pano_0000_004718",
+     "how": "crown(): coping slab per BAG edge and 0.26 m blocks every 1.3 m"
+    },
+    {
+     "id": "w03-241-gallery",
+     "kind": "colonnade",
+     "where": "upper storey: open gallery slot under a concrete lintel with square piers",
+     "approxSizeM": [
+      7.5,
+      1.8
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002120_pano_0000_004718",
+     "how": "gallery(): dark slot, lintel slab, four piers"
+    },
+    {
+     "id": "w03-241-windows",
+     "kind": "window-shape",
+     "where": "red-framed square windows in rows at 1.2-2.6 m and 4.6-5.9 m",
+     "approxSizeM": [
+      1.2,
+      1.4
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002120_pano_0000_004718",
+     "how": "curveFacade() on the neighbouring edges"
+    }
+   ]
+  },
+  {
+   "tag": "w04-95",
+   "bearing": 95,
+   "lengthM": 18.1,
+   "centre": [
+    4.855361,
+    52.3430844
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001894_pano_0000_001757",
+   "capturedAt": "2020-08-27",
+   "checked": true,
+   "items": [
+    {
+     "id": "w04-95-flagpoles",
+     "kind": "other",
+     "where": "along the wall top, one every ~6.6 m on a grey stone bracket",
+     "approxSizeM": [
+      0.4,
+      5.6
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001894_pano_0000_001757",
+     "how": "crown(): bracket slab, 5.6 m pole, gilt finial, red pennant per 6.6 m of perimeter"
+    },
+    {
+     "id": "w04-95-coping",
+     "kind": "other",
+     "where": "top of the wall: thin grey coping with small grey blocks every ~1.3 m below it",
+     "approxSizeM": [
+      18.1,
+      0.6
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001894_pano_0000_001757",
+     "how": "crown(): coping slab per BAG edge and 0.26 m blocks every 1.3 m"
+    },
+    {
+     "id": "w04-95-gallery",
+     "kind": "colonnade",
+     "where": "upper storey: open gallery slot under a concrete lintel with square piers",
+     "approxSizeM": [
+      7.5,
+      1.8
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001894_pano_0000_001757",
+     "how": "gallery(): dark slot, lintel slab, four piers"
+    },
+    {
+     "id": "w04-95-windows",
+     "kind": "window-shape",
+     "where": "red-framed square windows in rows at 1.2-2.6 m and 4.6-5.9 m",
+     "approxSizeM": [
+      1.2,
+      1.4
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001894_pano_0000_001757",
+     "how": "curveFacade() on the neighbouring edges"
+    }
+   ]
+  },
+  {
+   "tag": "w05-117",
+   "bearing": 117,
+   "lengthM": 17.7,
+   "centre": [
+    4.8552348,
+    52.3428072
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002120_pano_0000_004759",
+   "capturedAt": "2021-04-28",
+   "checked": true,
+   "items": [
+    {
+     "id": "w05-117-flagpoles",
+     "kind": "other",
+     "where": "along the wall top, one every ~6.6 m on a grey stone bracket",
+     "approxSizeM": [
+      0.4,
+      5.6
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002120_pano_0000_004759",
+     "how": "crown(): bracket slab, 5.6 m pole, gilt finial, red pennant per 6.6 m of perimeter"
+    },
+    {
+     "id": "w05-117-coping",
+     "kind": "other",
+     "where": "top of the wall: thin grey coping with small grey blocks every ~1.3 m below it",
+     "approxSizeM": [
+      17.7,
+      0.6
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002120_pano_0000_004759",
+     "how": "crown(): coping slab per BAG edge and 0.26 m blocks every 1.3 m"
+    },
+    {
+     "id": "w05-117-floodlight-mast",
+     "kind": "tower",
+     "where": "white steel lattice floodlight mast standing against the wall, rising far above it",
+     "approxSizeM": [
+      1.6,
+      32
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-002120_pano_0000_004759",
+     "how": "mast(): two legs with X braces, semicircular lamp head facing the arena; height 32 m estimated from Commons photographs, not measured",
+     "note": "Wikipedia: \"Bij de renovatie werden de halfronde lichtmasten gereconstrueerd\""
+    },
+    {
+     "id": "w05-117-doors",
+     "kind": "other",
+     "where": "ground storey: red doors and small red-framed windows",
+     "approxSizeM": [
+      1.2,
+      2.4
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002120_pano_0000_004759",
+     "how": "curveFacade()"
+    }
+   ]
+  },
+  {
+   "tag": "w06-224",
+   "bearing": 224,
+   "lengthM": 17.7,
+   "centre": [
+    4.8535114,
+    52.3426243
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-07-29_13-17-11_02120",
+   "capturedAt": "2025-07-29",
+   "checked": true,
+   "items": [
+    {
+     "id": "w06-224-flagpoles",
+     "kind": "other",
+     "where": "along the wall top, one every ~6.6 m on a grey stone bracket",
+     "approxSizeM": [
+      0.4,
+      5.6
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-07-29_13-17-11_02120",
+     "how": "crown(): bracket slab, 5.6 m pole, gilt finial, red pennant per 6.6 m of perimeter"
+    },
+    {
+     "id": "w06-224-coping",
+     "kind": "other",
+     "where": "top of the wall: thin grey coping with small grey blocks every ~1.3 m below it",
+     "approxSizeM": [
+      17.7,
+      0.6
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-07-29_13-17-11_02120",
+     "how": "crown(): coping slab per BAG edge and 0.26 m blocks every 1.3 m"
+    },
+    {
+     "id": "w06-224-doors-windows",
+     "kind": "window-shape",
+     "where": "red doors, small red-framed windows at 1.2-2.6 m and a group of three at 4.6-5.9 m",
+     "approxSizeM": [
+      1.2,
+      1.4
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-07-29_13-17-11_02120",
+     "how": "curveFacade()"
+    },
+    {
+     "id": "w06-lift",
+     "kind": "other",
+     "where": "blue cherry-picker in front of the wall",
+     "approxSizeM": [
+      4,
+      8
+     ],
+     "plan": "skipped",
+     "seenIn": "recording_2025-07-29_13-17-11_02120",
+     "skip": {
+      "reason": "temporary",
+      "note": "construction lift"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "w07-276",
+   "bearing": 276,
+   "lengthM": 17.6,
+   "centre": [
+    4.8528867,
+    52.3438996
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002406_pano_0003_000030",
+   "capturedAt": "2022-01-10",
+   "checked": true,
+   "items": [
+    {
+     "id": "w07-276-flagpoles",
+     "kind": "other",
+     "where": "along the wall top, one every ~6.6 m on a grey stone bracket",
+     "approxSizeM": [
+      0.4,
+      5.6
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002406_pano_0003_000030",
+     "how": "crown(): bracket slab, 5.6 m pole, gilt finial, red pennant per 6.6 m of perimeter"
+    },
+    {
+     "id": "w07-276-coping",
+     "kind": "other",
+     "where": "top of the wall: thin grey coping with small grey blocks every ~1.3 m below it",
+     "approxSizeM": [
+      17.6,
+      0.6
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002406_pano_0003_000030",
+     "how": "crown(): coping slab per BAG edge and 0.26 m blocks every 1.3 m"
+    },
+    {
+     "id": "w07-276-stair-fins",
+     "kind": "window-shape",
+     "where": "tall recessed stair window filled with vertical concrete fins, 3-11 m",
+     "approxSizeM": [
+      5,
+      7.6
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-002406_pano_0003_000030",
+     "how": "stairFins(): dark recess panel with a fin every 0.62 m and a head slab"
+    },
+    {
+     "id": "w07-276-doors",
+     "kind": "other",
+     "where": "ground storey: red doors between white piers",
+     "approxSizeM": [
+      2,
+      2.4
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002406_pano_0003_000030",
+     "how": "curveFacade() on the neighbouring edges"
+    }
+   ]
+  },
+  {
+   "tag": "w08-44",
+   "bearing": 44,
+   "lengthM": 16.7,
+   "centre": [
+    4.8547421,
+    52.3443551
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002460_pano_0003_000219",
+   "capturedAt": "2022-03-21",
+   "checked": true,
+   "items": [
+    {
+     "id": "w08-44-flagpoles",
+     "kind": "other",
+     "where": "along the wall top, one every ~6.6 m on a grey stone bracket",
+     "approxSizeM": [
+      0.4,
+      5.6
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002460_pano_0003_000219",
+     "how": "crown(): bracket slab, 5.6 m pole, gilt finial, red pennant per 6.6 m of perimeter"
+    },
+    {
+     "id": "w08-44-coping",
+     "kind": "other",
+     "where": "top of the wall: thin grey coping with small grey blocks every ~1.3 m below it",
+     "approxSizeM": [
+      16.7,
+      0.6
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002460_pano_0003_000219",
+     "how": "crown(): coping slab per BAG edge and 0.26 m blocks every 1.3 m"
+    },
+    {
+     "id": "w08-44-gallery",
+     "kind": "colonnade",
+     "where": "upper storey: open gallery slot under a concrete lintel with square piers",
+     "approxSizeM": [
+      7.5,
+      1.8
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002460_pano_0003_000219",
+     "how": "gallery(): dark slot, lintel slab, four piers"
+    },
+    {
+     "id": "w08-44-windows",
+     "kind": "window-shape",
+     "where": "red-framed square windows in rows at 1.2-2.6 m and 4.6-5.9 m",
+     "approxSizeM": [
+      1.2,
+      1.4
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002460_pano_0003_000219",
+     "how": "curveFacade() on the neighbouring edges"
+    }
+   ]
+  },
+  {
+   "tag": "w09-27",
+   "bearing": 27,
+   "lengthM": 16.7,
+   "centre": [
+    4.8544655,
+    52.3444955
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316060226-000009_pano_0002_000123",
+   "capturedAt": "2016-07-29",
+   "checked": true,
+   "items": [
+    {
+     "id": "w09-27-flagpoles",
+     "kind": "other",
+     "where": "along the wall top, one every ~6.6 m on a grey stone bracket",
+     "approxSizeM": [
+      0.4,
+      5.6
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316060226-000009_pano_0002_000123",
+     "how": "crown(): bracket slab, 5.6 m pole, gilt finial, red pennant per 6.6 m of perimeter"
+    },
+    {
+     "id": "w09-27-coping",
+     "kind": "other",
+     "where": "top of the wall: thin grey coping with small grey blocks every ~1.3 m below it",
+     "approxSizeM": [
+      16.7,
+      0.6
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316060226-000009_pano_0002_000123",
+     "how": "crown(): coping slab per BAG edge and 0.26 m blocks every 1.3 m"
+    },
+    {
+     "id": "w09-27-ribbon",
+     "kind": "window-shape",
+     "where": "long red-framed ribbon window at 6.4-7.9 m in a concrete surround",
+     "approxSizeM": [
+      16.7,
+      1.5
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316060226-000009_pano_0002_000123",
+     "how": "endFacade()"
+    },
+    {
+     "id": "w09-27-canopies",
+     "kind": "canopy",
+     "where": "thin concrete canopies at 2.8 m and 5.0 m over the glazed ground storey and the window band",
+     "approxSizeM": [
+      16.7,
+      0.2
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316060226-000009_pano_0002_000123",
+     "how": "endFacade()"
+    }
+   ]
+  },
+  {
+   "tag": "w10-172",
+   "bearing": 172,
+   "lengthM": 16.6,
+   "centre": [
+    4.8544141,
+    52.3424252
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000771_pano_0000_003266",
+   "capturedAt": "2018-06-04",
+   "checked": true,
+   "items": [
+    {
+     "id": "w10-172-flagpoles",
+     "kind": "other",
+     "where": "along the wall top, one every ~6.6 m on a grey stone bracket",
+     "approxSizeM": [
+      0.4,
+      5.6
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-000771_pano_0000_003266",
+     "how": "crown(): bracket slab, 5.6 m pole, gilt finial, red pennant per 6.6 m of perimeter"
+    },
+    {
+     "id": "w10-172-coping",
+     "kind": "other",
+     "where": "top of the wall: thin grey coping with small grey blocks every ~1.3 m below it",
+     "approxSizeM": [
+      16.6,
+      0.6
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-000771_pano_0000_003266",
+     "how": "crown(): coping slab per BAG edge and 0.26 m blocks every 1.3 m"
+    },
+    {
+     "id": "w10-172-ribbon",
+     "kind": "window-shape",
+     "where": "long red-framed ribbon window at 6.4-7.9 m in a concrete surround",
+     "approxSizeM": [
+      16.6,
+      1.5
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-000771_pano_0000_003266",
+     "how": "endFacade()"
+    },
+    {
+     "id": "w10-172-canopies",
+     "kind": "canopy",
+     "where": "thin concrete canopies at 2.8 m and 5.0 m over the glazed ground storey and the window band",
+     "approxSizeM": [
+      16.6,
+      0.2
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-000771_pano_0000_003266",
+     "how": "endFacade()"
+    },
+    {
+     "id": "w10-mama-kelly",
+     "kind": "sign",
+     "where": "gold letters MAMA KELLY on the middle window band",
+     "approxSizeM": [
+      2.5,
+      0.3
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7316010203-000771_pano_0000_003266",
+     "skip": {
+      "reason": "temporary",
+      "note": "restaurant tenant lettering"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "w11-297",
+   "bearing": 297,
+   "lengthM": 16.5,
+   "centre": [
+    4.8530148,
+    52.3441785
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001894_pano_0000_001823",
+   "capturedAt": "2020-08-27",
+   "checked": true,
+   "items": [
+    {
+     "id": "w11-297-flagpoles",
+     "kind": "other",
+     "where": "along the wall top, one every ~6.6 m on a grey stone bracket",
+     "approxSizeM": [
+      0.4,
+      5.6
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001894_pano_0000_001823",
+     "how": "crown(): bracket slab, 5.6 m pole, gilt finial, red pennant per 6.6 m of perimeter"
+    },
+    {
+     "id": "w11-297-coping",
+     "kind": "other",
+     "where": "top of the wall: thin grey coping with small grey blocks every ~1.3 m below it",
+     "approxSizeM": [
+      16.5,
+      0.6
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001894_pano_0000_001823",
+     "how": "crown(): coping slab per BAG edge and 0.26 m blocks every 1.3 m"
+    },
+    {
+     "id": "w11-297-floodlight-mast",
+     "kind": "tower",
+     "where": "white steel lattice floodlight mast standing against the wall, rising far above it",
+     "approxSizeM": [
+      1.6,
+      32
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-001894_pano_0000_001823",
+     "how": "mast(): two legs with X braces, semicircular lamp head facing the arena; height 32 m estimated from Commons photographs, not measured",
+     "note": "Wikipedia: \"Bij de renovatie werden de halfronde lichtmasten gereconstrueerd\""
+    },
+    {
+     "id": "w11-297-doors",
+     "kind": "other",
+     "where": "ground storey: red doors and small red-framed windows",
+     "approxSizeM": [
+      1.2,
+      2.4
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001894_pano_0000_001823",
+     "how": "curveFacade()"
+    }
+   ]
+  },
+  {
+   "tag": "w12-130",
+   "bearing": 130,
+   "lengthM": 14.8,
+   "centre": [
+    4.8551172,
+    52.3426615
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002120_pano_0000_004755",
+   "capturedAt": "2021-04-28",
+   "checked": true,
+   "items": [
+    {
+     "id": "w12-130-flagpoles",
+     "kind": "other",
+     "where": "along the wall top, one every ~6.6 m on a grey stone bracket",
+     "approxSizeM": [
+      0.4,
+      5.6
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002120_pano_0000_004755",
+     "how": "crown(): bracket slab, 5.6 m pole, gilt finial, red pennant per 6.6 m of perimeter"
+    },
+    {
+     "id": "w12-130-coping",
+     "kind": "other",
+     "where": "top of the wall: thin grey coping with small grey blocks every ~1.3 m below it",
+     "approxSizeM": [
+      14.8,
+      0.6
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002120_pano_0000_004755",
+     "how": "crown(): coping slab per BAG edge and 0.26 m blocks every 1.3 m"
+    },
+    {
+     "id": "w12-130-doors-windows",
+     "kind": "window-shape",
+     "where": "red doors, small red-framed windows at 1.2-2.6 m and a group of three at 4.6-5.9 m",
+     "approxSizeM": [
+      1.2,
+      1.4
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002120_pano_0000_004755",
+     "how": "curveFacade()"
+    }
+   ]
+  },
+  {
+   "tag": "w13-310",
+   "bearing": 310,
+   "lengthM": 14.6,
+   "centre": [
+    4.8531315,
+    52.3443212
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002406_pano_0003_000017",
+   "capturedAt": "2022-01-10",
+   "checked": true,
+   "items": [
+    {
+     "id": "w13-310-flagpoles",
+     "kind": "other",
+     "where": "along the wall top, one every ~6.6 m on a grey stone bracket",
+     "approxSizeM": [
+      0.4,
+      5.6
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002406_pano_0003_000017",
+     "how": "crown(): bracket slab, 5.6 m pole, gilt finial, red pennant per 6.6 m of perimeter"
+    },
+    {
+     "id": "w13-310-coping",
+     "kind": "other",
+     "where": "top of the wall: thin grey coping with small grey blocks every ~1.3 m below it",
+     "approxSizeM": [
+      14.6,
+      0.6
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002406_pano_0003_000017",
+     "how": "crown(): coping slab per BAG edge and 0.26 m blocks every 1.3 m"
+    },
+    {
+     "id": "w13-310-gallery",
+     "kind": "colonnade",
+     "where": "upper storey: open gallery slot under a concrete lintel with square piers",
+     "approxSizeM": [
+      7.5,
+      1.8
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002406_pano_0003_000017",
+     "how": "gallery(): dark slot, lintel slab, four piers"
+    },
+    {
+     "id": "w13-310-windows",
+     "kind": "window-shape",
+     "where": "red-framed square windows in rows at 1.2-2.6 m and 4.6-5.9 m",
+     "approxSizeM": [
+      1.2,
+      1.4
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002406_pano_0003_000017",
+     "how": "curveFacade() on the neighbouring edges"
+    }
+   ]
+  },
+  {
+   "tag": "w14-60",
+   "bearing": 60,
+   "lengthM": 14.5,
+   "centre": [
+    4.8549553,
+    52.3441932
+   ],
+   "evidence": "photo",
+   "panoId": "b_20241105_0934_Track07_Sphere_00100",
+   "capturedAt": "2024-11-05",
+   "checked": true,
+   "items": [
+    {
+     "id": "w14-60-flagpoles",
+     "kind": "other",
+     "where": "along the wall top, one every ~6.6 m on a grey stone bracket",
+     "approxSizeM": [
+      0.4,
+      5.6
+     ],
+     "plan": "modelled",
+     "seenIn": "b_20241105_0934_Track07_Sphere_00100",
+     "how": "crown(): bracket slab, 5.6 m pole, gilt finial, red pennant per 6.6 m of perimeter"
+    },
+    {
+     "id": "w14-60-coping",
+     "kind": "other",
+     "where": "top of the wall: thin grey coping with small grey blocks every ~1.3 m below it",
+     "approxSizeM": [
+      14.5,
+      0.6
+     ],
+     "plan": "modelled",
+     "seenIn": "b_20241105_0934_Track07_Sphere_00100",
+     "how": "crown(): coping slab per BAG edge and 0.26 m blocks every 1.3 m"
+    },
+    {
+     "id": "w14-60-gallery",
+     "kind": "colonnade",
+     "where": "upper storey: open gallery slot under a concrete lintel with square piers",
+     "approxSizeM": [
+      7.5,
+      1.8
+     ],
+     "plan": "modelled",
+     "seenIn": "b_20241105_0934_Track07_Sphere_00100",
+     "how": "gallery(): dark slot, lintel slab, four piers"
+    },
+    {
+     "id": "w14-60-windows",
+     "kind": "window-shape",
+     "where": "red-framed square windows in rows at 1.2-2.6 m and 4.6-5.9 m",
+     "approxSizeM": [
+      1.2,
+      1.4
+     ],
+     "plan": "modelled",
+     "seenIn": "b_20241105_0934_Track07_Sphere_00100",
+     "how": "curveFacade() on the neighbouring edges"
+    }
+   ]
+  },
+  {
+   "tag": "w15-208",
+   "bearing": 208,
+   "lengthM": 13.8,
+   "centre": [
+    4.8537631,
+    52.3424912
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002406_pano_0003_000071",
+   "capturedAt": "2022-01-10",
+   "checked": true,
+   "items": [
+    {
+     "id": "w15-208-flagpoles",
+     "kind": "other",
+     "where": "along the wall top, one every ~6.6 m on a grey stone bracket",
+     "approxSizeM": [
+      0.4,
+      5.6
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002406_pano_0003_000071",
+     "how": "crown(): bracket slab, 5.6 m pole, gilt finial, red pennant per 6.6 m of perimeter"
+    },
+    {
+     "id": "w15-208-coping",
+     "kind": "other",
+     "where": "top of the wall: thin grey coping with small grey blocks every ~1.3 m below it",
+     "approxSizeM": [
+      13.8,
+      0.6
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002406_pano_0003_000071",
+     "how": "crown(): coping slab per BAG edge and 0.26 m blocks every 1.3 m"
+    },
+    {
+     "id": "w15-208-floodlight-mast",
+     "kind": "tower",
+     "where": "white steel lattice floodlight mast standing against the wall, rising far above it",
+     "approxSizeM": [
+      1.6,
+      32
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-002406_pano_0003_000071",
+     "how": "mast(): two legs with X braces, semicircular lamp head facing the arena; height 32 m estimated from Commons photographs, not measured",
+     "note": "Wikipedia: \"Bij de renovatie werden de halfronde lichtmasten gereconstrueerd\""
+    },
+    {
+     "id": "w15-208-doors",
+     "kind": "other",
+     "where": "ground storey: red doors and small red-framed windows",
+     "approxSizeM": [
+      1.2,
+      2.4
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002406_pano_0003_000071",
+     "how": "curveFacade()"
+    }
+   ]
+  },
+  {
+   "tag": "w16-162",
+   "bearing": 162,
+   "lengthM": 12.2,
+   "centre": [
+    4.8546195,
+    52.3424536
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001151_pano_0001_001542",
+   "capturedAt": "2019-04-30",
+   "checked": true,
+   "items": [
+    {
+     "id": "w16-162-flagpoles",
+     "kind": "other",
+     "where": "along the wall top, one every ~6.6 m on a grey stone bracket",
+     "approxSizeM": [
+      0.4,
+      5.6
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001151_pano_0001_001542",
+     "how": "crown(): bracket slab, 5.6 m pole, gilt finial, red pennant per 6.6 m of perimeter"
+    },
+    {
+     "id": "w16-162-coping",
+     "kind": "other",
+     "where": "top of the wall: thin grey coping with small grey blocks every ~1.3 m below it",
+     "approxSizeM": [
+      12.2,
+      0.6
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001151_pano_0001_001542",
+     "how": "crown(): coping slab per BAG edge and 0.26 m blocks every 1.3 m"
+    },
+    {
+     "id": "w16-162-ribbon",
+     "kind": "window-shape",
+     "where": "long red-framed ribbon window at 6.4-7.9 m in a concrete surround",
+     "approxSizeM": [
+      12.2,
+      1.5
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001151_pano_0001_001542",
+     "how": "endFacade()"
+    },
+    {
+     "id": "w16-162-canopies",
+     "kind": "canopy",
+     "where": "thin concrete canopies at 2.8 m and 5.0 m over the glazed ground storey and the window band",
+     "approxSizeM": [
+      12.2,
+      0.2
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001151_pano_0001_001542",
+     "how": "endFacade()"
+    }
+   ]
+  },
+  {
+   "tag": "w17-333",
+   "bearing": 333,
+   "lengthM": 12.1,
+   "centre": [
+    4.8534656,
+    52.34449
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002120_pano_0000_005437",
+   "capturedAt": "2021-04-28",
+   "checked": true,
+   "items": [
+    {
+     "id": "w17-333-flagpoles",
+     "kind": "other",
+     "where": "along the wall top, one every ~6.6 m on a grey stone bracket",
+     "approxSizeM": [
+      0.4,
+      5.6
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002120_pano_0000_005437",
+     "how": "crown(): bracket slab, 5.6 m pole, gilt finial, red pennant per 6.6 m of perimeter"
+    },
+    {
+     "id": "w17-333-coping",
+     "kind": "other",
+     "where": "top of the wall: thin grey coping with small grey blocks every ~1.3 m below it",
+     "approxSizeM": [
+      12.1,
+      0.6
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002120_pano_0000_005437",
+     "how": "crown(): coping slab per BAG edge and 0.26 m blocks every 1.3 m"
+    },
+    {
+     "id": "w17-333-gallery",
+     "kind": "colonnade",
+     "where": "upper storey: open gallery slot under a concrete lintel with square piers",
+     "approxSizeM": [
+      7.5,
+      1.8
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002120_pano_0000_005437",
+     "how": "gallery(): dark slot, lintel slab, four piers"
+    },
+    {
+     "id": "w17-333-windows",
+     "kind": "window-shape",
+     "where": "red-framed square windows in rows at 1.2-2.6 m and 4.6-5.9 m",
+     "approxSizeM": [
+      1.2,
+      1.4
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002120_pano_0000_005437",
+     "how": "curveFacade() on the neighbouring edges"
+    }
+   ]
+  },
+  {
+   "tag": "w18-183",
+   "bearing": 183,
+   "lengthM": 11.4,
+   "centre": [
+    4.8542101,
+    52.3424152
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002460_pano_0003_000128",
+   "capturedAt": "2022-03-21",
+   "checked": true,
+   "items": [
+    {
+     "id": "w18-183-flagpoles",
+     "kind": "other",
+     "where": "along the wall top, one every ~6.6 m on a grey stone bracket",
+     "approxSizeM": [
+      0.4,
+      5.6
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002460_pano_0003_000128",
+     "how": "crown(): bracket slab, 5.6 m pole, gilt finial, red pennant per 6.6 m of perimeter"
+    },
+    {
+     "id": "w18-183-coping",
+     "kind": "other",
+     "where": "top of the wall: thin grey coping with small grey blocks every ~1.3 m below it",
+     "approxSizeM": [
+      11.4,
+      0.6
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002460_pano_0003_000128",
+     "how": "crown(): coping slab per BAG edge and 0.26 m blocks every 1.3 m"
+    },
+    {
+     "id": "w18-183-ribbon",
+     "kind": "window-shape",
+     "where": "long red-framed ribbon window at 6.4-7.9 m in a concrete surround",
+     "approxSizeM": [
+      11.4,
+      1.5
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002460_pano_0003_000128",
+     "how": "endFacade()"
+    },
+    {
+     "id": "w18-183-canopies",
+     "kind": "canopy",
+     "where": "thin concrete canopies at 2.8 m and 5.0 m over the glazed ground storey and the window band",
+     "approxSizeM": [
+      11.4,
+      0.2
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002460_pano_0003_000128",
+     "how": "endFacade()"
+    }
+   ]
+  },
+  {
+   "tag": "w19-154",
+   "bearing": 154,
+   "lengthM": 10.5,
+   "centre": [
+    4.8547744,
+    52.3424913
+   ],
+   "evidence": "photo",
+   "panoId": "b_20241105_0934_Track07_Sphere_00054",
+   "capturedAt": "2024-11-05",
+   "checked": true,
+   "items": [
+    {
+     "id": "w19-154-flagpoles",
+     "kind": "other",
+     "where": "along the wall top, one every ~6.6 m on a grey stone bracket",
+     "approxSizeM": [
+      0.4,
+      5.6
+     ],
+     "plan": "modelled",
+     "seenIn": "b_20241105_0934_Track07_Sphere_00054",
+     "how": "crown(): bracket slab, 5.6 m pole, gilt finial, red pennant per 6.6 m of perimeter"
+    },
+    {
+     "id": "w19-154-coping",
+     "kind": "other",
+     "where": "top of the wall: thin grey coping with small grey blocks every ~1.3 m below it",
+     "approxSizeM": [
+      10.5,
+      0.6
+     ],
+     "plan": "modelled",
+     "seenIn": "b_20241105_0934_Track07_Sphere_00054",
+     "how": "crown(): coping slab per BAG edge and 0.26 m blocks every 1.3 m"
+    },
+    {
+     "id": "w19-154-ribbon",
+     "kind": "window-shape",
+     "where": "long red-framed ribbon window at 6.4-7.9 m in a concrete surround",
+     "approxSizeM": [
+      10.5,
+      1.5
+     ],
+     "plan": "modelled",
+     "seenIn": "b_20241105_0934_Track07_Sphere_00054",
+     "how": "endFacade()"
+    },
+    {
+     "id": "w19-154-canopies",
+     "kind": "canopy",
+     "where": "thin concrete canopies at 2.8 m and 5.0 m over the glazed ground storey and the window band",
+     "approxSizeM": [
+      10.5,
+      0.2
+     ],
+     "plan": "modelled",
+     "seenIn": "b_20241105_0934_Track07_Sphere_00054",
+     "how": "endFacade()"
+    }
+   ]
+  },
+  {
+   "tag": "w20-2",
+   "bearing": 2,
+   "lengthM": 8,
+   "centre": [
+    4.8540034,
+    52.344569
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001151_pano_0001_001660",
+   "capturedAt": "2019-04-30",
+   "checked": true,
+   "items": [
+    {
+     "id": "w20-2-flagpoles",
+     "kind": "other",
+     "where": "along the wall top, one every ~6.6 m on a grey stone bracket",
+     "approxSizeM": [
+      0.4,
+      5.6
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001151_pano_0001_001660",
+     "how": "crown(): bracket slab, 5.6 m pole, gilt finial, red pennant per 6.6 m of perimeter"
+    },
+    {
+     "id": "w20-2-coping",
+     "kind": "other",
+     "where": "top of the wall: thin grey coping with small grey blocks every ~1.3 m below it",
+     "approxSizeM": [
+      8,
+      0.6
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001151_pano_0001_001660",
+     "how": "crown(): coping slab per BAG edge and 0.26 m blocks every 1.3 m"
+    },
+    {
+     "id": "w20-2-ribbon",
+     "kind": "window-shape",
+     "where": "long red-framed ribbon window at 6.4-7.9 m in a concrete surround",
+     "approxSizeM": [
+      8,
+      1.5
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001151_pano_0001_001660",
+     "how": "endFacade()"
+    },
+    {
+     "id": "w20-2-canopies",
+     "kind": "canopy",
+     "where": "thin concrete canopies at 2.8 m and 5.0 m over the glazed ground storey and the window band",
+     "approxSizeM": [
+      8,
+      0.2
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001151_pano_0001_001660",
+     "how": "endFacade()"
+    }
+   ]
+  },
+  {
+   "tag": "w21-289",
+   "bearing": 289,
+   "lengthM": 7.9,
+   "centre": [
+    4.8529422,
+    52.3440789
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002120_pano_0000_004685",
+   "capturedAt": "2021-04-28",
+   "checked": true,
+   "items": [
+    {
+     "id": "w21-289-flagpoles",
+     "kind": "other",
+     "where": "along the wall top, one every ~6.6 m on a grey stone bracket",
+     "approxSizeM": [
+      0.4,
+      5.6
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002120_pano_0000_004685",
+     "how": "crown(): bracket slab, 5.6 m pole, gilt finial, red pennant per 6.6 m of perimeter"
+    },
+    {
+     "id": "w21-289-coping",
+     "kind": "other",
+     "where": "top of the wall: thin grey coping with small grey blocks every ~1.3 m below it",
+     "approxSizeM": [
+      7.9,
+      0.6
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002120_pano_0000_004685",
+     "how": "crown(): coping slab per BAG edge and 0.26 m blocks every 1.3 m"
+    },
+    {
+     "id": "w21-289-stair-fins",
+     "kind": "window-shape",
+     "where": "tall recessed stair window filled with vertical concrete fins, 3-11 m",
+     "approxSizeM": [
+      5,
+      7.6
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-002120_pano_0000_004685",
+     "how": "stairFins(): dark recess panel with a fin every 0.62 m and a head slab"
+    },
+    {
+     "id": "w21-289-doors",
+     "kind": "other",
+     "where": "ground storey: red doors between white piers",
+     "approxSizeM": [
+      2,
+      2.4
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002120_pano_0000_004685",
+     "how": "curveFacade() on the neighbouring edges"
+    }
+   ]
+  },
+  {
+   "tag": "w22-36",
+   "bearing": 36,
+   "lengthM": 7.7,
+   "centre": [
+    4.854607,
+    52.3444272
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002460_pano_0003_000222",
+   "capturedAt": "2022-03-21",
+   "checked": true,
+   "items": [
+    {
+     "id": "w22-36-flagpoles",
+     "kind": "other",
+     "where": "along the wall top, one every ~6.6 m on a grey stone bracket",
+     "approxSizeM": [
+      0.4,
+      5.6
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002460_pano_0003_000222",
+     "how": "crown(): bracket slab, 5.6 m pole, gilt finial, red pennant per 6.6 m of perimeter"
+    },
+    {
+     "id": "w22-36-coping",
+     "kind": "other",
+     "where": "top of the wall: thin grey coping with small grey blocks every ~1.3 m below it",
+     "approxSizeM": [
+      7.7,
+      0.6
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002460_pano_0003_000222",
+     "how": "crown(): coping slab per BAG edge and 0.26 m blocks every 1.3 m"
+    },
+    {
+     "id": "w22-36-floodlight-mast",
+     "kind": "tower",
+     "where": "white steel lattice floodlight mast standing against the wall, rising far above it",
+     "approxSizeM": [
+      1.6,
+      32
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-002460_pano_0003_000222",
+     "how": "mast(): two legs with X braces, semicircular lamp head facing the arena; height 32 m estimated from Commons photographs, not measured",
+     "note": "Wikipedia: \"Bij de renovatie werden de halfronde lichtmasten gereconstrueerd\""
+    },
+    {
+     "id": "w22-36-doors",
+     "kind": "other",
+     "where": "ground storey: red doors and small red-framed windows",
+     "approxSizeM": [
+      1.2,
+      2.4
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002460_pano_0003_000222",
+     "how": "curveFacade()"
+    },
+    {
+     "id": "w22-36-brick-pier",
+     "kind": "other",
+     "where": "tall brick pier beside the mast foot",
+     "approxSizeM": [
+      1.2,
+      9
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002460_pano_0003_000222",
+     "how": "mast(): brick pier slab beside the legs"
+    }
+   ]
+  },
+  {
+   "tag": "w23-319",
+   "bearing": 319,
+   "lengthM": 6.9,
+   "centre": [
+    4.8532367,
+    52.3443931
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001894_pano_0000_001816",
+   "capturedAt": "2020-08-27",
+   "checked": true,
+   "items": [
+    {
+     "id": "w23-319-flagpoles",
+     "kind": "other",
+     "where": "along the wall top, one every ~6.6 m on a grey stone bracket",
+     "approxSizeM": [
+      0.4,
+      5.6
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001894_pano_0000_001816",
+     "how": "crown(): bracket slab, 5.6 m pole, gilt finial, red pennant per 6.6 m of perimeter"
+    },
+    {
+     "id": "w23-319-coping",
+     "kind": "other",
+     "where": "top of the wall: thin grey coping with small grey blocks every ~1.3 m below it",
+     "approxSizeM": [
+      6.9,
+      0.6
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001894_pano_0000_001816",
+     "how": "crown(): coping slab per BAG edge and 0.26 m blocks every 1.3 m"
+    },
+    {
+     "id": "w23-319-stair-fins",
+     "kind": "window-shape",
+     "where": "tall recessed stair window filled with vertical concrete fins, 3-11 m",
+     "approxSizeM": [
+      5,
+      7.6
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-001894_pano_0000_001816",
+     "how": "stairFins(): dark recess panel with a fin every 0.62 m and a head slab"
+    },
+    {
+     "id": "w23-319-doors",
+     "kind": "other",
+     "where": "ground storey: red doors between white piers",
+     "approxSizeM": [
+      2,
+      2.4
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001894_pano_0000_001816",
+     "how": "curveFacade() on the neighbouring edges"
+    }
+   ]
+  },
+  {
+   "tag": "w24-18",
+   "bearing": 18,
+   "lengthM": 6.9,
+   "centre": [
+    4.8543082,
+    52.3445388
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000771_pano_0000_003335",
+   "capturedAt": "2018-06-04",
+   "checked": true,
+   "items": [
+    {
+     "id": "w24-18-flagpoles",
+     "kind": "other",
+     "where": "along the wall top, one every ~6.6 m on a grey stone bracket",
+     "approxSizeM": [
+      0.4,
+      5.6
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-000771_pano_0000_003335",
+     "how": "crown(): bracket slab, 5.6 m pole, gilt finial, red pennant per 6.6 m of perimeter"
+    },
+    {
+     "id": "w24-18-coping",
+     "kind": "other",
+     "where": "top of the wall: thin grey coping with small grey blocks every ~1.3 m below it",
+     "approxSizeM": [
+      6.9,
+      0.6
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-000771_pano_0000_003335",
+     "how": "crown(): coping slab per BAG edge and 0.26 m blocks every 1.3 m"
+    },
+    {
+     "id": "w24-18-ribbon",
+     "kind": "window-shape",
+     "where": "long red-framed ribbon window at 6.4-7.9 m in a concrete surround",
+     "approxSizeM": [
+      6.9,
+      1.5
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-000771_pano_0000_003335",
+     "how": "endFacade()"
+    },
+    {
+     "id": "w24-18-canopies",
+     "kind": "canopy",
+     "where": "thin concrete canopies at 2.8 m and 5.0 m over the glazed ground storey and the window band",
+     "approxSizeM": [
+      6.9,
+      0.2
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-000771_pano_0000_003335",
+     "how": "endFacade()"
+    }
+   ]
+  },
+  {
+   "tag": "w25-137",
+   "bearing": 137,
+   "lengthM": 6.9,
+   "centre": [
+    4.8550129,
+    52.3425883
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002406_pano_0003_000093",
+   "capturedAt": "2022-01-10",
+   "checked": true,
+   "items": [
+    {
+     "id": "w25-137-flagpoles",
+     "kind": "other",
+     "where": "along the wall top, one every ~6.6 m on a grey stone bracket",
+     "approxSizeM": [
+      0.4,
+      5.6
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002406_pano_0003_000093",
+     "how": "crown(): bracket slab, 5.6 m pole, gilt finial, red pennant per 6.6 m of perimeter"
+    },
+    {
+     "id": "w25-137-coping",
+     "kind": "other",
+     "where": "top of the wall: thin grey coping with small grey blocks every ~1.3 m below it",
+     "approxSizeM": [
+      6.9,
+      0.6
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002406_pano_0003_000093",
+     "how": "crown(): coping slab per BAG edge and 0.26 m blocks every 1.3 m"
+    },
+    {
+     "id": "w25-137-stair-fins",
+     "kind": "window-shape",
+     "where": "tall recessed stair window filled with vertical concrete fins, 3-11 m",
+     "approxSizeM": [
+      5,
+      7.6
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-002406_pano_0003_000093",
+     "how": "stairFins(): dark recess panel with a fin every 0.62 m and a head slab"
+    },
+    {
+     "id": "w25-137-doors",
+     "kind": "other",
+     "where": "ground storey: red doors between white piers",
+     "approxSizeM": [
+      2,
+      2.4
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002406_pano_0003_000093",
+     "how": "curveFacade() on the neighbouring edges"
+    }
+   ]
+  },
+  {
+   "tag": "w26-198",
+   "bearing": 198,
+   "lengthM": 6.8,
+   "centre": [
+    4.8539397,
+    52.342443
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000771_pano_0000_003258",
+   "capturedAt": "2018-06-04",
+   "checked": true,
+   "items": [
+    {
+     "id": "w26-198-flagpoles",
+     "kind": "other",
+     "where": "along the wall top, one every ~6.6 m on a grey stone bracket",
+     "approxSizeM": [
+      0.4,
+      5.6
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-000771_pano_0000_003258",
+     "how": "crown(): bracket slab, 5.6 m pole, gilt finial, red pennant per 6.6 m of perimeter"
+    },
+    {
+     "id": "w26-198-coping",
+     "kind": "other",
+     "where": "top of the wall: thin grey coping with small grey blocks every ~1.3 m below it",
+     "approxSizeM": [
+      6.8,
+      0.6
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-000771_pano_0000_003258",
+     "how": "crown(): coping slab per BAG edge and 0.26 m blocks every 1.3 m"
+    },
+    {
+     "id": "w26-198-stair-fins",
+     "kind": "window-shape",
+     "where": "tall recessed stair window filled with vertical concrete fins, 3-11 m",
+     "approxSizeM": [
+      5,
+      7.6
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-000771_pano_0000_003258",
+     "how": "stairFins(): dark recess panel with a fin every 0.62 m and a head slab"
+    },
+    {
+     "id": "w26-198-doors",
+     "kind": "other",
+     "where": "ground storey: red doors between white piers",
+     "approxSizeM": [
+      2,
+      2.4
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-000771_pano_0000_003258",
+     "how": "curveFacade() on the neighbouring edges"
+    }
+   ]
+  },
+  {
+   "tag": "w27-109",
+   "bearing": 109,
+   "lengthM": 6.8,
+   "centre": [
+    4.8553087,
+    52.3429074
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000259_pano_0008_001514",
+   "capturedAt": "2017-04-13",
+   "checked": true,
+   "items": [
+    {
+     "id": "w27-109-flagpoles",
+     "kind": "other",
+     "where": "along the wall top, one every ~6.6 m on a grey stone bracket",
+     "approxSizeM": [
+      0.4,
+      5.6
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-000259_pano_0008_001514",
+     "how": "crown(): bracket slab, 5.6 m pole, gilt finial, red pennant per 6.6 m of perimeter"
+    },
+    {
+     "id": "w27-109-coping",
+     "kind": "other",
+     "where": "top of the wall: thin grey coping with small grey blocks every ~1.3 m below it",
+     "approxSizeM": [
+      6.8,
+      0.6
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-000259_pano_0008_001514",
+     "how": "crown(): coping slab per BAG edge and 0.26 m blocks every 1.3 m"
+    },
+    {
+     "id": "w27-109-stair-fins",
+     "kind": "window-shape",
+     "where": "tall recessed stair window filled with vertical concrete fins, 3-11 m",
+     "approxSizeM": [
+      5,
+      7.6
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-000259_pano_0008_001514",
+     "how": "stairFins(): dark recess panel with a fin every 0.62 m and a head slab"
+    },
+    {
+     "id": "w27-109-doors",
+     "kind": "other",
+     "where": "ground storey: red doors between white piers",
+     "approxSizeM": [
+      2,
+      2.4
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-000259_pano_0008_001514",
+     "how": "curveFacade() on the neighbouring edges"
+    }
+   ]
+  },
+  {
+   "tag": "w28-216",
+   "bearing": 216,
+   "lengthM": 6.7,
+   "centre": [
+    4.8536462,
+    52.3425524
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002918_pano_0001_000002",
+   "capturedAt": "2023-01-05",
+   "checked": true,
+   "items": [
+    {
+     "id": "w28-216-flagpoles",
+     "kind": "other",
+     "where": "along the wall top, one every ~6.6 m on a grey stone bracket",
+     "approxSizeM": [
+      0.4,
+      5.6
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002918_pano_0001_000002",
+     "how": "crown(): bracket slab, 5.6 m pole, gilt finial, red pennant per 6.6 m of perimeter"
+    },
+    {
+     "id": "w28-216-coping",
+     "kind": "other",
+     "where": "top of the wall: thin grey coping with small grey blocks every ~1.3 m below it",
+     "approxSizeM": [
+      6.7,
+      0.6
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002918_pano_0001_000002",
+     "how": "crown(): coping slab per BAG edge and 0.26 m blocks every 1.3 m"
+    },
+    {
+     "id": "w28-216-floodlight-mast",
+     "kind": "tower",
+     "where": "white steel lattice floodlight mast standing against the wall, rising far above it",
+     "approxSizeM": [
+      1.6,
+      32
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-002918_pano_0001_000002",
+     "how": "mast(): two legs with X braces, semicircular lamp head facing the arena; height 32 m estimated from Commons photographs, not measured",
+     "note": "Wikipedia: \"Bij de renovatie werden de halfronde lichtmasten gereconstrueerd\""
+    },
+    {
+     "id": "w28-216-doors",
+     "kind": "other",
+     "where": "ground storey: red doors and small red-framed windows",
+     "approxSizeM": [
+      1.2,
+      2.4
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002918_pano_0001_000002",
+     "how": "curveFacade()"
+    },
+    {
+     "id": "w28-216-brick-pier",
+     "kind": "other",
+     "where": "tall brick pier beside the mast foot",
+     "approxSizeM": [
+      1.2,
+      9
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002918_pano_0001_000002",
+     "how": "mast(): brick pier slab beside the legs"
+    }
+   ]
+  },
+  {
+   "tag": "w29-258",
+   "bearing": 258,
+   "lengthM": 6.5,
+   "centre": [
+    4.8527196,
+    52.3436534
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002460_pano_0003_000027",
+   "capturedAt": "2022-03-21",
+   "checked": true,
+   "items": [
+    {
+     "id": "w29-258-flagpoles",
+     "kind": "other",
+     "where": "along the wall top, one every ~6.6 m on a grey stone bracket",
+     "approxSizeM": [
+      0.4,
+      5.6
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002460_pano_0003_000027",
+     "how": "crown(): bracket slab, 5.6 m pole, gilt finial, red pennant per 6.6 m of perimeter"
+    },
+    {
+     "id": "w29-258-coping",
+     "kind": "other",
+     "where": "top of the wall: thin grey coping with small grey blocks every ~1.3 m below it",
+     "approxSizeM": [
+      6.5,
+      0.6
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002460_pano_0003_000027",
+     "how": "crown(): coping slab per BAG edge and 0.26 m blocks every 1.3 m"
+    },
+    {
+     "id": "w29-258-doors-windows",
+     "kind": "window-shape",
+     "where": "red doors, small red-framed windows at 1.2-2.6 m and a group of three at 4.6-5.9 m",
+     "approxSizeM": [
+      1.2,
+      1.4
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002460_pano_0003_000027",
+     "how": "curveFacade()"
+    }
+   ]
+  },
+  {
+   "tag": "w30-258",
+   "bearing": 258,
+   "lengthM": 6.5,
+   "centre": [
+    4.852962,
+    52.3429816
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002460_pano_0003_000042",
+   "capturedAt": "2022-03-21",
+   "checked": true,
+   "items": [
+    {
+     "id": "w30-258-flagpoles",
+     "kind": "other",
+     "where": "along the wall top, one every ~6.6 m on a grey stone bracket",
+     "approxSizeM": [
+      0.4,
+      5.6
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002460_pano_0003_000042",
+     "how": "crown(): bracket slab, 5.6 m pole, gilt finial, red pennant per 6.6 m of perimeter"
+    },
+    {
+     "id": "w30-258-coping",
+     "kind": "other",
+     "where": "top of the wall: thin grey coping with small grey blocks every ~1.3 m below it",
+     "approxSizeM": [
+      6.5,
+      0.6
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002460_pano_0003_000042",
+     "how": "crown(): coping slab per BAG edge and 0.26 m blocks every 1.3 m"
+    },
+    {
+     "id": "w30-258-doors-windows",
+     "kind": "window-shape",
+     "where": "red doors, small red-framed windows at 1.2-2.6 m and a group of three at 4.6-5.9 m",
+     "approxSizeM": [
+      1.2,
+      1.4
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002460_pano_0003_000042",
+     "how": "curveFacade()"
+    }
+   ]
+  },
+  {
+   "tag": "east-marathon",
+   "bearing": 78,
+   "lengthM": 10.2,
+   "centre": [
+    4.8553,
+    52.3436
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001036_pano_0004_000126",
+   "capturedAt": "2019-01-04",
+   "checked": true,
+   "note": "East side with the Marathonpoort and the Marathontoren; the brief has no crop of this wall (it is split into short BAG edges); seen on staging/landmarks/olympisch-stadion/marathontoren-crops (w01-168, w04-77 thumbs) and Commons photographs listed in sources.",
+   "items": [
+    {
+     "id": "marathontoren",
+     "kind": "tower",
+     "where": "free-standing brick tower 46 m high in front of the east side, 13 m north of the gate",
+     "approxSizeM": [
+      5.4,
+      46
+     ],
+     "plan": "modelled",
+     "seenIn": "commons:Marathontoren 2018.jpg",
+     "how": "tower(): brick plinth on the BAG outline, shaft, slits, canopies, sound plates, bowl"
+    },
+    {
+     "id": "tower-bowl",
+     "kind": "other",
+     "where": "tower top: big shallow concrete bowl of the Olympic flame on a stem",
+     "approxSizeM": [
+      3.9,
+      1.8
+     ],
+     "plan": "modelled",
+     "seenIn": "commons:Marathontoren 2018.jpg",
+     "how": "tower(): lathe bowl on a stem"
+    },
+    {
+     "id": "tower-canopies",
+     "kind": "canopy",
+     "where": "tower top: four far-cantilevering concrete canopies over four balconies",
+     "approxSizeM": [
+      7.4,
+      0.35
+     ],
+     "plan": "modelled",
+     "seenIn": "commons:Marathontoren 2018.jpg",
+     "how": "tower(): crossed slabs, four balcony boxes"
+    },
+    {
+     "id": "tower-sound-plates",
+     "kind": "other",
+     "where": "above the canopies: stepped concrete block with diagonal sound plates",
+     "approxSizeM": [
+      2.6,
+      4
+     ],
+     "plan": "simplified",
+     "seenIn": "commons:Olympisch Stadion Amsterdam front 1.jpg",
+     "how": "tower(): stepped blocks and four diagonal plates, level rather than tilted"
+    },
+    {
+     "id": "tower-rings",
+     "kind": "crest",
+     "where": "Olympic rings on the tower east face at the canopy",
+     "approxSizeM": [
+      2.6,
+      1.2
+     ],
+     "plan": "modelled",
+     "seenIn": "commons:Marathontoren 2018.jpg",
+     "how": "rings(): five coloured tori"
+    },
+    {
+     "id": "tower-slits",
+     "kind": "window-shape",
+     "where": "red-framed glazing slit at both edges of every shaft face with concrete ledges every ~3.3 m",
+     "approxSizeM": [
+      0.5,
+      25
+     ],
+     "plan": "modelled",
+     "seenIn": "commons:Marathontoren 2018.jpg",
+     "how": "tower(): red frame, glass, ledges"
+    },
+    {
+     "id": "tower-tablets",
+     "kind": "gable-stone",
+     "where": "stone tablets on the plinth",
+     "approxSizeM": [
+      1.6,
+      1.0
+     ],
+     "plan": "skipped",
+     "seenIn": "commons:Marathontoren 2018.jpg",
+     "skip": {
+      "reason": "too-small",
+      "note": "commemorative plaques under 2 m2"
+     }
+    },
+    {
+     "id": "marathonpoort-gate",
+     "kind": "other",
+     "where": "main entrance gate in the projecting bay, open to the track",
+     "approxSizeM": [
+      5,
+      4
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001036_pano_0004_000126",
+     "how": "marathonpoort(): dark opening"
+    },
+    {
+     "id": "marathonpoort-reliefs",
+     "kind": "relief",
+     "where": "two hardstone reliefs by J.C. Altorf beside the gate",
+     "approxSizeM": [
+      1.3,
+      2.6
+     ],
+     "plan": "simplified",
+     "seenIn": "wikipedia nl:Olympisch Stadion (Amsterdam)",
+     "how": "marathonpoort(): pale stone panels either side of the gate"
+    },
+    {
+     "id": "marathonpoort-canopy",
+     "kind": "canopy",
+     "where": "flat concrete canopy over the gate",
+     "approxSizeM": [
+      11,
+      0.3
+     ],
+     "plan": "modelled",
+     "seenIn": "commons:Olympisch Stadion Amsterdam front 1.jpg",
+     "how": "marathonpoort()"
+    },
+    {
+     "id": "marathonpoort-rings",
+     "kind": "crest",
+     "where": "Olympic rings on the wall above the canopy",
+     "approxSizeM": [
+      3,
+      1.4
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001036_pano_0004_000126",
+     "how": "rings()"
+    },
+    {
+     "id": "marathonpoort-motto",
+     "kind": "lettering",
+     "where": "CITIUS ALTIUS FORTIUS under the rings",
+     "approxSizeM": [
+      7.6,
+      0.42
+     ],
+     "plan": "modelled",
+     "seenIn": "commons:Marathontoren 2018.jpg",
+     "how": "raisedLettering, blue"
+    },
+    {
+     "id": "marathonpoort-names",
+     "kind": "lettering",
+     "where": "names of Dutch Olympic winners cut beside the gate",
+     "approxSizeM": [
+      1,
+      1.6
+     ],
+     "plan": "simplified",
+     "seenIn": "wikipedia nl:Olympisch Stadion (Amsterdam)",
+     "how": "pale stone tablets, no text"
+    },
+    {
+     "id": "marathonpoort-balcony",
+     "kind": "colonnade",
+     "where": "balcony with six decorative concrete frames over the gate, rising above the wall top as a comb",
+     "approxSizeM": [
+      10,
+      5
+     ],
+     "plan": "modelled",
+     "seenIn": "commons:Olympisch Stadion Amsterdam front 1.jpg",
+     "how": "marathonpoort(): slab, six frames, head slab"
+    },
+    {
+     "id": "van-tuyll-monument",
+     "kind": "sculpture",
+     "where": "beside the tower: saluting bronze figure on a brick pedestal (Gra Rueb)",
+     "approxSizeM": [
+      1.5,
+      4.8
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-001036_pano_0004_000126",
+     "how": "tower(): pedestal with a block figure and raised arm"
+    },
+    {
+     "id": "east-canopies",
+     "kind": "canopy",
+     "where": "east side: flat ground-floor canopies on square columns",
+     "approxSizeM": [
+      40,
+      0.25
+     ],
+     "plan": "modelled",
+     "seenIn": "commons:Olympisch Stadion Amsterdam front 1.jpg",
+     "how": "eastFacade()"
+    },
+    {
+     "id": "east-roof",
+     "kind": "other",
+     "where": "Marathon stand roof showing over the wall on steel trusses",
+     "approxSizeM": [
+      90,
+      1.9
+     ],
+     "plan": "simplified",
+     "seenIn": "commons:Marathontoren 2018.jpg",
+     "how": "shell(): 12 m roof strip at 14.7 m on posts"
+    },
+    {
+     "id": "east-billboard",
+     "kind": "sign",
+     "where": "event billboard on the plinth wall",
+     "approxSizeM": [
+      3.5,
+      2.5
+     ],
+     "plan": "skipped",
+     "seenIn": "commons:Marathontoren 2018.jpg",
+     "skip": {
+      "reason": "temporary",
+      "note": "event poster"
+     }
+    },
+    {
+     "id": "stadion-name",
+     "kind": "lettering",
+     "where": "OLYMPISCH STADION name lettering",
+     "approxSizeM": [
+      6,
+      0.6
+     ],
+     "plan": "skipped",
+     "seenIn": "brief",
+     "skip": {
+      "reason": "not-visible",
+      "note": "named in the lane brief but on none of the 30 crops or the Commons photographs used"
+     }
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  },
+  {
+   "name": "Wikipedia nl:Olympisch Stadion (Amsterdam)",
+   "url": "https://nl.wikipedia.org/wiki/Olympisch_Stadion_(Amsterdam)",
+   "licence": "CC BY-SA 4.0"
+  },
+  {
+   "name": "Marathontoren-2018-jpg.jpg",
+   "url": "https://commons.wikimedia.org/wiki/File:Marathontoren_2018.jpg",
+   "licence": "CC BY-SA 4.0"
+  },
+  {
+   "name": "Olympisch-Stadion-Amsterdam-front-1-jpg.jpg",
+   "url": "https://commons.wikimedia.org/wiki/File:Olympisch_Stadion_Amsterdam_front_1.jpg",
+   "licence": "CC BY-SA 3.0"
+  },
+  {
+   "name": "Amsterdam-Olympisch-Stadion-jpg.jpg",
+   "url": "https://commons.wikimedia.org/wiki/File:Amsterdam_Olympisch_Stadion.jpg",
+   "licence": "CC BY-SA 3.0"
+  },
+  {
+   "name": "Olstadion-jpg.jpg",
+   "url": "https://commons.wikimedia.org/wiki/File:Olstadion.jpg",
+   "licence": "Attribution"
+  },
+  {
+   "name": "Overzicht-in-expressionistische-stijl-uitgevoerde-Marathonto.jpg",
+   "url": "https://commons.wikimedia.org/wiki/File:Overzicht,_in_expressionistische_stijl_uitgevoerde_Marathontoren_-_Amsterdam_-_20409335_-_RCE.jpg",
+   "licence": "CC BY-SA 4.0"
+  },
+  {
+   "name": "Amsterdam-Marathonturm-am-Olympiastadion-E-9074-201810-jpg.jpg",
+   "url": "https://commons.wikimedia.org/wiki/File:Amsterdam_Marathonturm_am_Olympiastadion_E_9074_201810.jpg",
+   "licence": "CC BY-SA 4.0"
+  }
+ ]
+}

@@ -1,0 +1,11 @@
+{
+ "id": "olympisch-stadion",
+ "name": "Olympisch Stadion",
+ "pands": ["0363100012076088", "0363100012250984"],
+ "builder": "scripts/landmarks/olympisch-stadion-builder.ts",
+ "footprints": "scripts/landmarks/olympisch-stadion-footprints.json",
+ "frame": "x east, z south, y up from the ground; origin = vertex average of the stadium outer BAG ring (RD)",
+ "detachedStructures": [
+  {"box": [83, -49, 97, -27], "evidence": "The Marathontoren (BAG pand 0363100012250984, 1928) stands free on the Stadionplein about 13 m in front of the stadium's east wall, with the Van Tuyll monument beside it (panoramas TMX7316010203-001036_pano_0004_000121/000126, Commons 'Olympisch Stadion Amsterdam front 1' and 'Marathontoren 2018'; Wikipedia nl:Olympisch Stadion (Amsterdam) 'Marathontoren')."}
+ ]
+}
