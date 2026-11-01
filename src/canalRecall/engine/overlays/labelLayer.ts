@@ -97,8 +97,8 @@ export class LabelLayer {
     this.ctx = this.canvas.getContext('2d')!;
   }
 
-  setOverview(data: OverviewData): void { this.data = data; this.indexed = false; this.ctxKey = ''; this.rev++; }
-  setPois(pois: PointLabel[]): void { this.pois = pois; this.indexed = false; this.ctxKey = ''; this.rev++; }
+  setOverview(data: OverviewData): void { this.data = data; this.ctxKey = ''; this.rev++; }
+  setPois(pois: PointLabel[]): void { this.pois = pois; this.ctxKey = ''; this.rev++; }
   /** Game point labels by group (answered street name, ferry landings). */
   setPoints(group: string, points: PointLabel[]): void { this.extra.set(group, points); this.rev++; }
 
@@ -112,18 +112,8 @@ export class LabelLayer {
     return l;
   }
 
-  /**
-   * Every candidate the overview and POIs can offer, bucketed once per input (setOverview / setPois); a policy
-   * change only re-screens which of them show (`shown`), it no longer rebuilds candidates and buckets (#129
-   * hand-back 17: 42-46 ms rebuild frames at 4x on every learned street). Bucket order is the old build order with
-   * the hidden candidates left in place, so the visible ones reach placement in the same order as before.
-   */
-  private indexed = false;
-  private readonly screens: { c: LabelCandidate; visible: (ctx: LabelContext) => boolean }[] = [];
-  private shown = new Set<LabelCandidate>();
-  private index(): void {
+  private rebuild(ctx: LabelContext): void {
     this.buckets.clear();
-    this.screens.length = 0;
     const keysOf = (c: LabelCandidate): Iterable<string> => {
       const key = ([x, y]: readonly number[]) => `${Math.floor(x / BUCKET)},${Math.floor(y / BUCKET)}`;
       if (!c.path) return [key(c.at!)];
@@ -131,35 +121,25 @@ export class LabelLayer {
       if (!keys) { keys = [...new Set(c.path.map(key))]; this.pathKeys.set(c.path, keys); }
       return keys;
     };
-    const add = (c: LabelCandidate, visible: (ctx: LabelContext) => boolean) => {
-      this.screens.push({ c, visible });
+    const add = (c: LabelCandidate) => {
       for (const k of keysOf(c)) { const l = this.buckets.get(k); if (l) l.push(c); else this.buckets.set(k, [c]); }
     };
     const d = this.data;
     if (d) {
       d.streets.forEach((s, i) => {
         if (!s.name) return;
-        const mid = s.points[s.points.length >> 1], name = s.name;
-        add({ id: `s${i}`, text: name, kind: 'street', priority: (STREET_STYLE[s.cls].order + 1) * 1000 + Math.min(999, this.lengthOf(s.points) / 10), path: s.points, minZoom: CLASS_LABEL_MINZOOM[s.cls] },
-          ctx => streetLabelVisible(ctx, name, mid[0], mid[1]));
+        const mid = s.points[s.points.length >> 1];
+        if (!streetLabelVisible(ctx, s.name, mid[0], mid[1])) return;
+        add({ id: `s${i}`, text: s.name, kind: 'street', priority: (STREET_STYLE[s.cls].order + 1) * 1000 + Math.min(999, this.lengthOf(s.points) / 10), path: s.points, minZoom: CLASS_LABEL_MINZOOM[s.cls] });
       });
       d.waterLines.forEach((w, i) => {
-        const mid = w.points[w.points.length >> 1], name = w.name;
-        add({ id: `w${i}`, text: name, kind: 'water', priority: 8000 + Math.min(999, this.lengthOf(w.points) / 10), path: w.points, minZoom: this.lengthOf(w.points) > 1500 ? 12.5 : 14.5 },
-          ctx => streetLabelVisible(ctx, name, mid[0], mid[1]));
+        const mid = w.points[w.points.length >> 1];
+        if (!streetLabelVisible(ctx, w.name, mid[0], mid[1])) return;
+        add({ id: `w${i}`, text: w.name, kind: 'water', priority: 8000 + Math.min(999, this.lengthOf(w.points) / 10), path: w.points, minZoom: this.lengthOf(w.points) > 1500 ? 12.5 : 14.5 });
       });
-      d.hoods.forEach((h, i) => add({ id: `h${i}`, text: h.name.toUpperCase(), kind: 'hood', priority: 9000, at: h.at, minZoom: 13, maxZoom: 18.5 }, neighbourhoodLabelVisible));
+      if (neighbourhoodLabelVisible(ctx)) d.hoods.forEach((h, i) => add({ id: `h${i}`, text: h.name.toUpperCase(), kind: 'hood', priority: 9000, at: h.at, minZoom: 13, maxZoom: 18.5 }));
     }
-    for (const p of this.pois) add({ id: p.id, text: p.text, kind: p.kind, priority: p.priority, at: toLocal(p.lngLat[0], p.lngLat[1]), minZoom: p.minZoom ?? 16.5 },
-      ctx => poiLabelVisible(ctx, p.text) && (p.aliases ?? []).every(a => poiLabelVisible(ctx, a)));
-    this.indexed = true;
-  }
-
-  private rebuild(ctx: LabelContext): void {
-    if (!this.indexed) this.index();
-    const shown = new Set<LabelCandidate>();
-    for (const { c, visible } of this.screens) if (visible(ctx)) shown.add(c);
-    this.shown = shown;
+    for (const p of this.pois) if (poiLabelVisible(ctx, p.text) && (p.aliases ?? []).every(a => poiLabelVisible(ctx, a))) add({ id: p.id, text: p.text, kind: p.kind, priority: p.priority, at: toLocal(p.lngLat[0], p.lngLat[1]), minZoom: p.minZoom ?? 16.5 });
   }
 
   private advance(ch: string, kind: LabelKind): number {
@@ -207,7 +187,7 @@ export class LabelLayer {
     const seen = new Set<LabelCandidate>();
     for (let x = Math.floor(bounds[0] / BUCKET); x <= Math.floor(bounds[2] / BUCKET); x++)
       for (let y = Math.floor(bounds[1] / BUCKET); y <= Math.floor(bounds[3] / BUCKET); y++)
-        for (const c of this.buckets.get(`${x},${y}`) ?? []) if (this.shown.has(c) && (c.minZoom ?? 0) <= zoom && zoom < (c.maxZoom ?? 99)) seen.add(c);
+        for (const c of this.buckets.get(`${x},${y}`) ?? []) if ((c.minZoom ?? 0) <= zoom && zoom < (c.maxZoom ?? 99)) seen.add(c);
     // Game point labels always compete first (priority above every map label).
     for (const points of this.extra.values()) for (const p of points) seen.add({ id: p.id, text: p.text, kind: p.kind, priority: 1e6 + p.priority, at: toLocal(p.lngLat[0], p.lngLat[1]), minZoom: p.minZoom ?? 0 });
     const options = {
