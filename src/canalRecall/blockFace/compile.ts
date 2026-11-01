@@ -28,7 +28,7 @@ import type {CanalHouseIntent} from '../buildingRecipe/intent.ts';
 import {addInferredRear, type RearReport} from './rear.ts';
 import {planInstancing, type FitSize, type InstancingPlan} from './instancing.ts';
 import {applyPhotoCrowns, facePhotoPatches, type PhotoCrownPatch, type PhotoGable} from './gableFromStrip.ts';
-import {CROSS_GABLE_BEHIND_M, recipeRoofFacts, saddleUnderProfile, type CrossGable, type FrontRoofSpec, type RecipeRoofReport} from './recipeRoof.ts';
+import {CROSS_GABLE_BEHIND_M, RAKE_CLEAR_M, recipeRoofFacts, saddleUnderProfile, type CrossGable, type FrontRoofSpec, type RecipeRoofReport} from './recipeRoof.ts';
 import {clampRoofVertices, findRows, rowClampFor, rowLines, ROW_COHERENCE, type RowClamp, type RowMember} from './rowCoherence.ts';
 import {roofHeightAt} from '../buildingRecipe/facts.ts';
 import type {CanalhousePoint} from '../canalhouseRecipes.ts';
@@ -213,7 +213,7 @@ export function frontRoofSpecs(intent: CanalHouseIntent, fit: {recipe: {elevatio
       // under the cornice: concave neck/bell flanks hug the eaves line and only rise at the neck (2026-10-16), and a
       // saddle under them drops its sides 1-2.5 m. A crown on part of the front, and a step/spout/point crown, keep the 1 m limit.
       const fullFront = CURVED_GABLES.has(fr.gable) && !fr.crownAt && !fr.crownBays && !fr.crownGroups;
-      const s = profile ? saddleUnderProfile(profile, rf.widthM, rf.eavesM, {...(pitchOpt !== undefined ? {pitchDeg: pitchOpt} : {}), ...(fullFront ? {maxDropM: SADDLE_FULL_FRONT_DROP_M} : {})}) : null;
+      const s = profile ? saddleUnderProfile(profile, rf.widthM, rf.eavesM, {...(pitchOpt !== undefined ? {pitchDeg: pitchOpt} : {}), ...(fullFront ? {maxDropM: SADDLE_FULL_FRONT_DROP_M} : {}), ...(intent.roof.rakeClear ? {clearM: RAKE_CLEAR_M} : {})}) : null;
       if (s) { out[fr.id] = {form: 'saddle', ridgeM: s.ridgeM, pitchDeg: s.pitchDeg, sideEavesM: s.sideEavesM, lineM: cm(Math.max(...profile!.map(p => p[1])))}; continue; }
       note = profile ? `saddle under the ${fr.gable} crown would drop its side eaves over ${fullFront ? SADDLE_FULL_FRONT_DROP_M + ' m' : 'a metre'} under the cornice (a crown on part of the front); attic face instead` : `no crown outline on the ${fr.gable} front; attic face instead`;
     }

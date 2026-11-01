@@ -1,0 +1,1647 @@
+{
+ "street": "Retiefstraat",
+ "seed": "0363100012068243",
+ "members": [
+  "0363100012112323",
+  "0363100012129491",
+  "0363100012067013"
+ ],
+ "ends": [
+  {
+   "side": "left",
+   "reason": "run of retief-45-75: 120175 held (auto-place.json)"
+  },
+  {
+   "side": "right",
+   "reason": "run of retief-45-75: 138910 held (auto-place.json)"
+  }
+ ],
+ "rejected": [
+  {
+   "pandId": "0363100012061274",
+   "reason": "frontage 72.9 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012061441",
+   "reason": "sightline to Retiefstraat crosses 0363100012136218"
+  },
+  {
+   "pandId": "0363100012061506",
+   "reason": "frontage 165.3 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012061648",
+   "reason": "frontage 135.6 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012061814",
+   "reason": "frontage 110.8 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012062150",
+   "reason": "frontage 42.2 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012062237",
+   "reason": "frontage 104.3 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012062310",
+   "reason": "frontage 153.1 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012062315",
+   "reason": "frontage 42.5 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012062960",
+   "reason": "frontage 35.1 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012063216",
+   "reason": "frontage 73.0 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012063275",
+   "reason": "frontage 129.0 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012063736",
+   "reason": "frontage 36.0 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012063951",
+   "reason": "frontage 167.3 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012064816",
+   "reason": "frontage 45.1 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012065205",
+   "reason": "frontage 73.1 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012066147",
+   "reason": "frontage 48.5 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012066211",
+   "reason": "frontage 100.5 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012066368",
+   "reason": "frontage 148.2 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012066961",
+   "reason": "frontage 73.3 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012068159",
+   "reason": "frontage 117.7 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012068336",
+   "reason": "frontage 72.9 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012069186",
+   "reason": "frontage 110.4 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012069344",
+   "reason": "frontage 102.7 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012069459",
+   "reason": "frontage 132.4 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012069586",
+   "reason": "frontage 178.2 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012069699",
+   "reason": "frontage 143.9 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012069809",
+   "reason": "frontage 153.6 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012070199",
+   "reason": "frontage 41.7 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012070208",
+   "reason": "frontage 189.8 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012071134",
+   "reason": "frontage 186.5 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012071217",
+   "reason": "frontage 128.6 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012071924",
+   "reason": "frontage 42.3 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012072390",
+   "reason": "frontage 35.3 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012072572",
+   "reason": "frontage 35.4 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012072896",
+   "reason": "frontage 35.3 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012072923",
+   "reason": "frontage 161.1 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012073177",
+   "reason": "frontage 37.2 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012073473",
+   "reason": "frontage 123.0 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012073938",
+   "reason": "frontage 149.6 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012074719",
+   "reason": "frontage 165.3 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012075049",
+   "reason": "frontage 74.8 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012075382",
+   "reason": "frontage 190.0 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012075600",
+   "reason": "frontage 164.7 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012075638",
+   "reason": "frontage 133.6 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012075886",
+   "reason": "frontage 123.6 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012076117",
+   "reason": "sightline to Retiefstraat crosses 0363100012083980"
+  },
+  {
+   "pandId": "0363100012076148",
+   "reason": "frontage 91.9 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012076819",
+   "reason": "frontage 34.9 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012076837",
+   "reason": "frontage 73.0 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012077155",
+   "reason": "frontage 166.2 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012077968",
+   "reason": "no frontage on Retiefstraat: No footprint edge faces Retiefstraat"
+  },
+  {
+   "pandId": "0363100012078226",
+   "reason": "no frontage on Retiefstraat: No footprint edge faces Retiefstraat"
+  },
+  {
+   "pandId": "0363100012078977",
+   "reason": "no frontage on Retiefstraat: No footprint edge faces Retiefstraat"
+  },
+  {
+   "pandId": "0363100012079185",
+   "reason": "frontage 31.3 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012079508",
+   "reason": "frontage 190.1 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012080020",
+   "reason": "no frontage on Retiefstraat: No footprint edge faces Retiefstraat"
+  },
+  {
+   "pandId": "0363100012080540",
+   "reason": "frontage 161.8 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012080889",
+   "reason": "frontage 102.2 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012081370",
+   "reason": "sightline to Retiefstraat crosses 0363100012095054"
+  },
+  {
+   "pandId": "0363100012082556",
+   "reason": "frontage 35.1 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012082846",
+   "reason": "frontage 34.6 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012083980",
+   "reason": "sightline to Retiefstraat crosses 0363100012105196"
+  },
+  {
+   "pandId": "0363100012084193",
+   "reason": "frontage 141.3 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012084324",
+   "reason": "sightline to Retiefstraat crosses 0363100012075910"
+  },
+  {
+   "pandId": "0363100012084499",
+   "reason": "frontage 132.3 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012084518",
+   "reason": "frontage 212.9 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012085405",
+   "reason": "frontage 104.4 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012085974",
+   "reason": "frontage 162.1 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012086038",
+   "reason": "frontage 104.8 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012086628",
+   "reason": "no frontage on Retiefstraat: No footprint edge faces Retiefstraat"
+  },
+  {
+   "pandId": "0363100012086922",
+   "reason": "frontage 165.1 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012086971",
+   "reason": "frontage 32.1 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012087223",
+   "reason": "frontage 72.9 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012087298",
+   "reason": "frontage 43.4 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012087381",
+   "reason": "frontage 161.7 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012087384",
+   "reason": "frontage 39.8 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012087836",
+   "reason": "frontage 73.8 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012087890",
+   "reason": "frontage 111.6 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012088106",
+   "reason": "frontage 155.6 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012088349",
+   "reason": "frontage 136.5 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012088417",
+   "reason": "frontage 74.8 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012089136",
+   "reason": "no frontage on Retiefstraat: No footprint edge faces Retiefstraat"
+  },
+  {
+   "pandId": "0363100012089528",
+   "reason": "frontage 41.5 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012090239",
+   "reason": "frontage 132.9 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012090964",
+   "reason": "frontage 135.3 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012091272",
+   "reason": "frontage 37.3 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012092816",
+   "reason": "frontage 43.1 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012092987",
+   "reason": "frontage 165.3 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012093100",
+   "reason": "frontage 43.1 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012093692",
+   "reason": "frontage 103.3 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012093743",
+   "reason": "frontage 47.2 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012093825",
+   "reason": "frontage 72.8 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012095458",
+   "reason": "frontage 75.0 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012096974",
+   "reason": "frontage 41.6 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012097625",
+   "reason": "frontage 135.7 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012097703",
+   "reason": "frontage 142.9 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012098505",
+   "reason": "frontage 74.4 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012098524",
+   "reason": "frontage 74.2 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012098835",
+   "reason": "frontage 146.9 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012099459",
+   "reason": "frontage 227.5 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012099620",
+   "reason": "frontage 74.0 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012099869",
+   "reason": "frontage 190.3 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012099888",
+   "reason": "frontage 87.5 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012100102",
+   "reason": "frontage 185.6 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012100898",
+   "reason": "frontage 132.5 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012102346",
+   "reason": "frontage 208.3 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012102414",
+   "reason": "frontage 34.8 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012102458",
+   "reason": "frontage 72.7 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012104385",
+   "reason": "frontage 136.6 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012104565",
+   "reason": "frontage 87.7 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012105544",
+   "reason": "sightline to Retiefstraat crosses 0363100012123913"
+  },
+  {
+   "pandId": "0363100012106537",
+   "reason": "frontage 72.8 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012106889",
+   "reason": "frontage 185.8 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012107351",
+   "reason": "frontage 41.7 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012107767",
+   "reason": "frontage 75.6 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012108133",
+   "reason": "frontage 44.7 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012108540",
+   "reason": "frontage 135.3 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012109151",
+   "reason": "frontage 185.0 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012109431",
+   "reason": "frontage 105.8 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012109508",
+   "reason": "frontage 74.6 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012109699",
+   "reason": "frontage 94.6 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012110214",
+   "reason": "frontage 162.3 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012112800",
+   "reason": "frontage 135.6 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012112805",
+   "reason": "frontage 73.7 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012112873",
+   "reason": "sightline to Retiefstraat crosses 0363100012081370"
+  },
+  {
+   "pandId": "0363100012113637",
+   "reason": "frontage 135.7 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012114180",
+   "reason": "frontage 108.6 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012114338",
+   "reason": "frontage 147.4 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012114474",
+   "reason": "frontage 143.9 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012114599",
+   "reason": "frontage 190.0 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012114656",
+   "reason": "frontage 167.1 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012114764",
+   "reason": "frontage 135.8 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012115710",
+   "reason": "frontage 34.8 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012115848",
+   "reason": "frontage 96.5 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012116585",
+   "reason": "frontage 48.9 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012116776",
+   "reason": "frontage 187.3 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012117340",
+   "reason": "frontage 74.2 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012117872",
+   "reason": "frontage 188.9 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012117935",
+   "reason": "frontage 186.7 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012118171",
+   "reason": "frontage 205.1 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012119456",
+   "reason": "frontage 189.1 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012119914",
+   "reason": "frontage 152.2 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012119923",
+   "reason": "frontage 100.5 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012119938",
+   "reason": "frontage 192.7 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012120280",
+   "reason": "frontage 165.1 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012120818",
+   "reason": "frontage 167.1 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012121521",
+   "reason": "frontage 34.6 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012121531",
+   "reason": "no frontage on Retiefstraat: No footprint edge faces Retiefstraat"
+  },
+  {
+   "pandId": "0363100012121873",
+   "reason": "frontage 134.4 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012122306",
+   "reason": "frontage 159.7 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012122747",
+   "reason": "frontage 186.2 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012124525",
+   "reason": "frontage 190.7 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012124615",
+   "reason": "frontage 73.6 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012125077",
+   "reason": "frontage 73.2 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012125612",
+   "reason": "frontage 189.3 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012126266",
+   "reason": "no frontage on Retiefstraat: No footprint edge faces Retiefstraat"
+  },
+  {
+   "pandId": "0363100012126391",
+   "reason": "sightline to Retiefstraat crosses 0363100012138910"
+  },
+  {
+   "pandId": "0363100012126719",
+   "reason": "frontage 161.1 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012126785",
+   "reason": "frontage 48.9 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012126873",
+   "reason": "frontage 37.2 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012127724",
+   "reason": "frontage 112.0 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012129296",
+   "reason": "frontage 42.5 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012129365",
+   "reason": "frontage 188.6 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012129869",
+   "reason": "frontage 162.2 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012130233",
+   "reason": "frontage 161.6 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012131128",
+   "reason": "frontage 73.4 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012131135",
+   "reason": "frontage 124.0 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012131136",
+   "reason": "frontage 117.9 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012131167",
+   "reason": "frontage 132.5 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012131309",
+   "reason": "sightline to Retiefstraat crosses 0363100012126391"
+  },
+  {
+   "pandId": "0363100012132273",
+   "reason": "frontage 165.5 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012132274",
+   "reason": "frontage 160.7 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012132650",
+   "reason": "frontage 156.0 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012132653",
+   "reason": "frontage 36.2 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012132989",
+   "reason": "frontage 181.8 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012133526",
+   "reason": "frontage 73.5 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012133749",
+   "reason": "frontage 87.2 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012133895",
+   "reason": "frontage 83.7 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012134096",
+   "reason": "frontage 30.3 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012134576",
+   "reason": "frontage 110.2 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012134756",
+   "reason": "frontage 165.6 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012135798",
+   "reason": "frontage 186.0 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012136018",
+   "reason": "frontage 105.2 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012136338",
+   "reason": "frontage 119.0 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012136413",
+   "reason": "frontage 159.7 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012136733",
+   "reason": "frontage 73.2 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012137011",
+   "reason": "frontage 79.0 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012137224",
+   "reason": "frontage 134.4 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012137237",
+   "reason": "frontage 134.7 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012137411",
+   "reason": "frontage 133.2 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012137617",
+   "reason": "frontage 110.9 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012137732",
+   "reason": "frontage 36.4 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012137762",
+   "reason": "frontage 189.6 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012137945",
+   "reason": "sightline to Retiefstraat crosses 0363100012094192"
+  },
+  {
+   "pandId": "0363100012138083",
+   "reason": "frontage 129.8 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012138121",
+   "reason": "frontage 135.6 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012138328",
+   "reason": "frontage 116.3 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012138748",
+   "reason": "frontage 137.8 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012139150",
+   "reason": "frontage 161.3 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012139205",
+   "reason": "frontage 74.9 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012139277",
+   "reason": "frontage 190.5 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012139936",
+   "reason": "frontage 104.1 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012140437",
+   "reason": "frontage 167.1 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012140529",
+   "reason": "frontage 129.4 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012141114",
+   "reason": "frontage 108.3 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012141435",
+   "reason": "frontage 30.8 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012141451",
+   "reason": "frontage 134.1 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012142310",
+   "reason": "frontage 34.9 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012142562",
+   "reason": "frontage 73.5 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012142932",
+   "reason": "no frontage on Retiefstraat: No footprint edge faces Retiefstraat"
+  },
+  {
+   "pandId": "0363100012142961",
+   "reason": "frontage 48.8 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012143322",
+   "reason": "frontage 190.4 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012143928",
+   "reason": "frontage 95.5 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012144337",
+   "reason": "frontage 74.4 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012144421",
+   "reason": "frontage 127.3 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012144997",
+   "reason": "frontage 88.3 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012145188",
+   "reason": "frontage 117.6 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012146593",
+   "reason": "frontage 40.9 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012147942",
+   "reason": "frontage 185.3 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012148341",
+   "reason": "frontage 94.7 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012149072",
+   "reason": "frontage 134.6 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012149374",
+   "reason": "no frontage on Retiefstraat: No footprint edge faces Retiefstraat"
+  },
+  {
+   "pandId": "0363100012149642",
+   "reason": "frontage 34.8 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012149663",
+   "reason": "no frontage on Retiefstraat: No footprint edge faces Retiefstraat"
+  },
+  {
+   "pandId": "0363100012149666",
+   "reason": "frontage 32.2 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012150483",
+   "reason": "sightline to Retiefstraat crosses 0363100012068243"
+  },
+  {
+   "pandId": "0363100012150822",
+   "reason": "no frontage on Retiefstraat: No footprint edge faces Retiefstraat"
+  },
+  {
+   "pandId": "0363100012151006",
+   "reason": "frontage 74.1 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012151174",
+   "reason": "frontage 132.2 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012151291",
+   "reason": "sightline to Retiefstraat crosses 0363100012141884"
+  },
+  {
+   "pandId": "0363100012151513",
+   "reason": "frontage 97.9 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012151934",
+   "reason": "frontage 48.8 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012152516",
+   "reason": "frontage 160.9 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012152685",
+   "reason": "frontage 163.3 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012152803",
+   "reason": "frontage 199.5 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012152832",
+   "reason": "frontage 163.2 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012153402",
+   "reason": "frontage 205.2 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012153535",
+   "reason": "frontage 162.8 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012153601",
+   "reason": "frontage 224.7 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012153820",
+   "reason": "frontage 207.0 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012153943",
+   "reason": "frontage 136.9 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012154820",
+   "reason": "frontage 34.9 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012155463",
+   "reason": "frontage 202.9 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012155469",
+   "reason": "frontage 210.8 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012155918",
+   "reason": "frontage 204.1 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012155931",
+   "reason": "frontage 32.2 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012156274",
+   "reason": "frontage 196.1 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012156344",
+   "reason": "frontage 218.6 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012156411",
+   "reason": "frontage 161.9 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012158374",
+   "reason": "frontage 162.9 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012158383",
+   "reason": "frontage 164.6 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012158393",
+   "reason": "frontage 163.4 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012158482",
+   "reason": "frontage 206.4 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012158527",
+   "reason": "frontage 162.5 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012158883",
+   "reason": "frontage 162.7 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012158995",
+   "reason": "frontage 163.1 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012159314",
+   "reason": "frontage 163.5 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012159444",
+   "reason": "frontage 213.3 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012159504",
+   "reason": "frontage 226.1 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012159605",
+   "reason": "frontage 160.6 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012160459",
+   "reason": "frontage 163.1 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012161047",
+   "reason": "frontage 213.1 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012161091",
+   "reason": "frontage 163.0 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012161365",
+   "reason": "frontage 160.5 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012161532",
+   "reason": "frontage 34.2 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012161796",
+   "reason": "frontage 214.2 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012162173",
+   "reason": "frontage 164.3 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012162269",
+   "reason": "frontage 163.3 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012162370",
+   "reason": "frontage 210.4 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012162652",
+   "reason": "frontage 207.6 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012163339",
+   "reason": "frontage 162.2 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012163563",
+   "reason": "frontage 224.2 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012163771",
+   "reason": "frontage 200.4 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012164042",
+   "reason": "frontage 208.7 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012164603",
+   "reason": "frontage 34.4 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012164767",
+   "reason": "frontage 163.2 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012165604",
+   "reason": "frontage 209.5 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012166076",
+   "reason": "frontage 164.0 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012166755",
+   "reason": "frontage 163.7 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012166879",
+   "reason": "frontage 162.8 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012167317",
+   "reason": "frontage 215.5 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012167400",
+   "reason": "frontage 223.2 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012184503",
+   "reason": "no frontage on Retiefstraat: No footprint edge faces Retiefstraat"
+  },
+  {
+   "pandId": "0363100012184989",
+   "reason": "frontage 123.8 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012187535",
+   "reason": "frontage 88.1 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012187682",
+   "reason": "frontage 117.7 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012187683",
+   "reason": "frontage 111.5 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012188354",
+   "reason": "frontage 154.3 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012190081",
+   "reason": "sightline to Retiefstraat crosses 0363100012123343"
+  },
+  {
+   "pandId": "0363100012190730",
+   "reason": "frontage 155.9 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012190910",
+   "reason": "frontage 95.7 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012191554",
+   "reason": "frontage 155.6 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012191612",
+   "reason": "frontage 92.3 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012192592",
+   "reason": "frontage 143.2 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012192593",
+   "reason": "frontage 149.4 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012196231",
+   "reason": "frontage 31.6 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012196312",
+   "reason": "frontage 96.4 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012196328",
+   "reason": "frontage 133.5 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012197578",
+   "reason": "frontage 100.8 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012198154",
+   "reason": "frontage 192.9 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012198226",
+   "reason": "frontage 196.8 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012198507",
+   "reason": "sightline to Retiefstraat crosses 0363100012076911"
+  },
+  {
+   "pandId": "0363100012198821",
+   "reason": "frontage 147.2 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012199775",
+   "reason": "frontage 114.5 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012200725",
+   "reason": "sightline to Retiefstraat crosses 0363100012080801"
+  },
+  {
+   "pandId": "0363100012200740",
+   "reason": "frontage 31.1 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012201282",
+   "reason": "no frontage on Retiefstraat: No footprint edge faces Retiefstraat"
+  },
+  {
+   "pandId": "0363100012201483",
+   "reason": "frontage 155.8 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012203111",
+   "reason": "frontage 96.2 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012203811",
+   "reason": "sightline to Retiefstraat crosses 0363100012135621"
+  },
+  {
+   "pandId": "0363100012204348",
+   "reason": "frontage 155.9 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012205672",
+   "reason": "no frontage on Retiefstraat: No footprint edge faces Retiefstraat"
+  },
+  {
+   "pandId": "0363100012205745",
+   "reason": "frontage 90.1 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012205787",
+   "reason": "frontage 143.9 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012205904",
+   "reason": "no frontage on Retiefstraat: No footprint edge faces Retiefstraat"
+  },
+  {
+   "pandId": "0363100012206043",
+   "reason": "frontage 119.0 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012206044",
+   "reason": "frontage 116.9 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012206364",
+   "reason": "frontage 89.1 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012207035",
+   "reason": "frontage 127.7 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012207244",
+   "reason": "frontage 30.8 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012208466",
+   "reason": "frontage 139.5 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012209092",
+   "reason": "frontage 135.4 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012209352",
+   "reason": "frontage 127.2 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012209709",
+   "reason": "no frontage on Retiefstraat: No footprint edge faces Retiefstraat"
+  },
+  {
+   "pandId": "0363100012211143",
+   "reason": "frontage 96.2 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012211649",
+   "reason": "frontage 154.7 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012212488",
+   "reason": "frontage 30.8 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012212712",
+   "reason": "frontage 30.4 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012212819",
+   "reason": "no frontage on Retiefstraat: No footprint edge faces Retiefstraat"
+  },
+  {
+   "pandId": "0363100012213083",
+   "reason": "sightline to Retiefstraat crosses 0363100012083997"
+  },
+  {
+   "pandId": "0363100012213859",
+   "reason": "frontage 105.8 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012213860",
+   "reason": "frontage 99.1 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012215081",
+   "reason": "sightline to Retiefstraat crosses 0363100012080801"
+  },
+  {
+   "pandId": "0363100012217250",
+   "reason": "sightline to Retiefstraat crosses 0363100012068730"
+  },
+  {
+   "pandId": "0363100012217361",
+   "reason": "frontage 154.8 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012217558",
+   "reason": "frontage 158.9 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012217816",
+   "reason": "sightline to Retiefstraat crosses 0363100012081061"
+  },
+  {
+   "pandId": "0363100012217926",
+   "reason": "frontage 150.1 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012218251",
+   "reason": "frontage 96.1 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012220774",
+   "reason": "frontage 154.2 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012221405",
+   "reason": "frontage 155.8 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012221962",
+   "reason": "frontage 137.1 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012221963",
+   "reason": "frontage 128.3 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012222976",
+   "reason": "sightline to Retiefstraat crosses 0363100012141977"
+  },
+  {
+   "pandId": "0363100012224774",
+   "reason": "frontage 145.3 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012225481",
+   "reason": "frontage 116.5 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012226495",
+   "reason": "frontage 90.9 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012227170",
+   "reason": "frontage 93.3 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012228689",
+   "reason": "frontage 155.7 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012230754",
+   "reason": "frontage 31.6 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012231210",
+   "reason": "sightline to Retiefstraat crosses 0363100012095538"
+  },
+  {
+   "pandId": "0363100012233455",
+   "reason": "frontage 73.6 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012233511",
+   "reason": "frontage 111.6 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012233525",
+   "reason": "frontage 188.4 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012233567",
+   "reason": "frontage 100.4 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012233572",
+   "reason": "frontage 149.3 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012233606",
+   "reason": "frontage 42.0 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012233640",
+   "reason": "frontage 99.0 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012233676",
+   "reason": "frontage 48.9 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012233692",
+   "reason": "sightline to Retiefstraat crosses 0363100012061441"
+  },
+  {
+   "pandId": "0363100012234548",
+   "reason": "sightline to Retiefstraat crosses 0363100012141204"
+  },
+  {
+   "pandId": "0363100012234654",
+   "reason": "frontage 104.1 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012235160",
+   "reason": "no frontage on Retiefstraat: No footprint edge faces Retiefstraat"
+  },
+  {
+   "pandId": "0363100012236318",
+   "reason": "frontage 122.5 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012236740",
+   "reason": "frontage 147.1 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012236751",
+   "reason": "frontage 47.4 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012236807",
+   "reason": "frontage 47.4 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012236877",
+   "reason": "frontage 130.6 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012236929",
+   "reason": "frontage 47.4 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012237041",
+   "reason": "frontage 47.4 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012237245",
+   "reason": "frontage 48.9 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012237322",
+   "reason": "frontage 143.1 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012237595",
+   "reason": "frontage 150.7 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012240693",
+   "reason": "frontage 67.3 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012250801",
+   "reason": "frontage 216.5 m from Retiefstraat"
+  },
+  {
+   "pandId": "0363100012063111",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012066390",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012066681",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012070004",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012072967",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012075910",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012082879",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012085212",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012096769",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012105196",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012136218",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012137027",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012141884",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012236732",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012236802",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012236810",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012236876",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012236977",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012236983",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012237243",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012241220",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012241221",
+   "reason": "fronts the other side / another direction"
+  }
+ ],
+ "areaHalfSizeM": 180,
+ "pands": [
+  {
+   "pandId": "0363100012112323",
+   "alongM": 81.88,
+   "widthM": 5.95,
+   "eavesM": 13.24,
+   "roofMaxM": 15.77,
+   "storeys3dbag": 5,
+   "builtYear": 1912,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012129491",
+   "alongM": 88.1,
+   "widthM": 6.49,
+   "eavesM": 13.4,
+   "roofMaxM": 16,
+   "storeys3dbag": 5,
+   "builtYear": 1914,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012067013",
+   "alongM": 94.35,
+   "widthM": 6.01,
+   "eavesM": 13.33,
+   "roofMaxM": 15.87,
+   "storeys3dbag": 5,
+   "builtYear": 1914,
+   "uncertainty": []
+  }
+ ],
+ "runOf": "retief-45-75"
+}

@@ -32,6 +32,40 @@ cause (an overview request on a worker mid-job, a reply the pool drops when
 it kills a worker, or the fallback not firing) and hands the commit back
 with a spec pin. Left on the shim meanwhile: engine `project`,
 inventory-trees and the per-frame getZoom/getCenter/getBounds/jumpTo.
+
+**Transvaalbuurt round 3 (2026-11-01, #152): the first 1911 rows installed, 10 pands on Retiefstraat and Pretoriusstraat.**
+Two opt-in kit fixes cleared round 2's blockers without changing an
+installed face (roof-golden 0; Albert Luthulistraat 21–41 and six Bellamy
+faces recompiled byte-identical). `roof.rakeClear` drops a point gable's
+saddle 4 cm square under the rakes: the 0.5–0.8 m² brick/tile overlap the
+GLB audit rejected was the saddle sitting 3 cm plumb under the raking crown
+wall, not the neighbour as the brief assumed (the installed
+`bilder-157757-164549` has the same overlap and could opt in).
+`match.crownFromType` gives a pand its type's crown unless the strip
+skyline is read with confidence and is sky-bounded (`stripSkyBound.ts`:
+under the 3DBAG roof max + 0.5 m, not ending on foliage, no narrow mass at
+a party wall); the 2023 strips read bare branches at 16.6–20.6 m over 13 m
+cornices. The ribbon era guard holds the pand that reads ribbon, and the
+whole row only when 20 % or more of it reads so (Gerard Doustraat and
+Govert Flinckstraat keep their row holds; Transvaalstraat 7–41 now holds 33
+and 35 only). Reviewer crown pins survive a `--photo-decides` twin switch
+(`transvaalbuurt-oost-review-crowns.json`). Outcome split, Oost: vetoed 147
+/ held 284 / placed and installed 10 (before review 147 / 270 / 24); West
+unchanged 263 / 36 / 0. Installed in ride order: Retiefstraat 69C (wall
+dormer), 71D, 73A; Pretoriusstraat 90B, 88, 86; 79–81; 85–87. Held with
+reasons in `transvaalbuurt-oost-review-holds.json`: Transvaalstraat 46
+(another design), 42–44 (one gable over two pands), 39–41 and 43B–45A (white
+timber dormer whose glass leaves the roof plane), Pretoriusstraat 83
+(stepped crenellated gable), 13–17 (3DBAG reads the rear block), Majubastraat
+7A and 29, Paardekraalstraat 13–15, 92A (likeness gate). What the kit still
+cannot say: a crown shared across two pands, the pointed gablet with an
+oculus over the centre of Pretoriusstraat 79–87, a dormer whose glass stays
+inside the roof plane, a stepped crenellated gable, a gable over part of a
+five-axis front, and the low shouldered gables of Retiefstraat 71D–73A (the
+kit's point gable is steeper and taller). Covers 601/634, exposure rows
+rebuilt, roof goldens recorded for the four runs, strips and sheets in
+source-data `block-face-strips/transvaalbuurt-round3/`.
+
 **A click on an ordinary building hung the page since the lazy facts store; one request per card (2026-11-01).**
 Integrator. `_cardForClickedBuilding` asks `_requestBuildingFacts` whenever the
 row has no article (most of the city); the refresh on arrival rebuilt the

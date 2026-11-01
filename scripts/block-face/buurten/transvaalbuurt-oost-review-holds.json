@@ -1,6 +1,6 @@
 {
  "note": "Pands held after reviewing the auto-place strip sheets at full size against the photo (scripts/block-face/auto-place.ts reads this file: a listed pand is held at stage 'review' with its reason, whatever its score and edge NCC). Remove an entry when a type or kit change makes the pand read right, and review the sheet again.",
- "reviewed": "2026-10-31",
+ "reviewed": "2026-11-01",
  "holds": [
   {
    "pandId": "0363100012093743",
@@ -91,6 +91,81 @@
    "pandId": "0363100012069186",
    "address": "Laing's Nekstraat 36",
    "reason": "Laing's Nekstraat 34-56 (BAG 1913-1915) is one long flat-roofed block under a straight cornice with small white roof dormers, wide windows, round-arched doors and a central gabled oriel, no balcony axis; transvaal-1911-five-storey-tall passed edge NCC 0.19-0.31 and the batch installed it, but it draws five pointed gables and iron balconies (strip over model ortho, 2026-10-31; install reverted)"
+  },
+  {
+   "pandId": "0363100012141451",
+   "address": "Transvaalstraat 46",
+   "reason": "another design: a taller narrow front with a stepped side gable, a balcony stack on the left axis and four axes; transvaal-1911-five-storey-tall draws the centre balcony axis under a flat cornice (transvaal-42-48-r1 sheet) (round 3 review at gallery size, 2026-11-01)"
+  },
+  {
+   "pandId": "0363100012140529",
+   "address": "Transvaalstraat 44",
+   "reason": "Transvaalstraat 42-44 share one large ornamented pointed gable (brick meander panel) over both fronts and brick-console balconies; the kit draws a crown per pand, so either a flat cornice or two gables, neither is the strip (transvaal-42-48-r1 sheet) (round 3 review at gallery size, 2026-11-01)"
+  },
+  {
+   "pandId": "0363100012071217",
+   "address": "Transvaalstraat 42",
+   "reason": "Transvaalstraat 42-44 share one large ornamented pointed gable (brick meander panel) over both fronts and brick-console balconies; the kit draws a crown per pand, so either a flat cornice or two gables, neither is the strip (transvaal-42-48-r1 sheet) (round 3 review at gallery size, 2026-11-01)"
+  },
+  {
+   "pandId": "0363100012063216",
+   "address": "Pretoriusstraat 83",
+   "reason": "a tall stepped and crenellated gable over the centre of the front, and the wall drawn +0.17 lighter than the strip; transvaal-1911-five-storey-tall has no stepped crown (pretorius-71-95-r1 sheet) (round 3 review at gallery size, 2026-11-01)"
+  },
+  {
+   "pandId": "0363100012158314",
+   "address": "Pretoriusstraat 13",
+   "reason": "the recipe attic rises 3-5 m over the strip cornice (3DBAG roof max 18-20.8 m reads the rear block), Pretoriusstraat 15 is drawn 1.1 m above its neighbours, a tree hides 15; the strip shows brick wall dormers and the walls read +0.11-0.14 too light (pretorius-1-33-r1 sheet) (round 3 review at gallery size, 2026-11-01)"
+  },
+  {
+   "pandId": "0363100012158418",
+   "address": "Pretoriusstraat 15",
+   "reason": "the recipe attic rises 3-5 m over the strip cornice (3DBAG roof max 18-20.8 m reads the rear block), Pretoriusstraat 15 is drawn 1.1 m above its neighbours, a tree hides 15; the strip shows brick wall dormers and the walls read +0.11-0.14 too light (pretorius-1-33-r1 sheet) (round 3 review at gallery size, 2026-11-01)"
+  },
+  {
+   "pandId": "0363100012162490",
+   "address": "Pretoriusstraat 17",
+   "reason": "the recipe attic rises 3-5 m over the strip cornice (3DBAG roof max 18-20.8 m reads the rear block), Pretoriusstraat 15 is drawn 1.1 m above its neighbours, a tree hides 15; the strip shows brick wall dormers and the walls read +0.11-0.14 too light (pretorius-1-33-r1 sheet) (round 3 review at gallery size, 2026-11-01)"
+  },
+  {
+   "pandId": "0363100012108540",
+   "address": "Majubastraat 7A",
+   "reason": "7A is mostly off the 2020-04-29 strip; 29 is a six-axis front with two wide balcony stacks and two brick wall dormers, drawn with five axes, one balcony axis and one dormer (majuba-1-151-r1 sheet) (round 3 review at gallery size, 2026-11-01)"
+  },
+  {
+   "pandId": "0363100012061648",
+   "address": "Majubastraat 29",
+   "reason": "7A is mostly off the 2020-04-29 strip; 29 is a six-axis front with two wide balcony stacks and two brick wall dormers, drawn with five axes, one balcony axis and one dormer (majuba-1-151-r1 sheet) (round 3 review at gallery size, 2026-11-01)"
+  },
+  {
+   "pandId": "0363100012063275",
+   "address": "Paardekraalstraat 15",
+   "reason": "five narrow axes with the pointed gable over the right three; drawn as three wide axes under a gable over the whole front (paardekraal-1-15-r1 sheet) (round 3 review at gallery size, 2026-11-01)"
+  },
+  {
+   "pandId": "0363100012073473",
+   "address": "Paardekraalstraat 13",
+   "reason": "reads right (white dormer, centre balcony axis, arched door left) but its only placed neighbour, 15, is held: a one-pand run (paardekraal-1-15-r1 sheet) (round 3 review at gallery size, 2026-11-01)"
+  },
+  {
+   "pandId": "0363100012093192",
+   "address": "Transvaalstraat 39",
+   "reason": "the strip shows one white timber dormer over the centre axis; with the dormer crown the run fails the GLB audit (opening-outside: the dormer glass reaches through the roof plane, 2.5 m2 over 3 parts), and without it the skyline of a dormer row is drawn bare (transvaal-3-47-r1 sheet; round 3 review at gallery size, 2026-11-01)"
+  },
+  {
+   "pandId": "0363100012146296",
+   "address": "Transvaalstraat 41",
+   "reason": "the strip shows one white timber dormer over the centre axis; with the dormer crown the run fails the GLB audit (opening-outside: the dormer glass reaches through the roof plane, 2.5 m2 over 3 parts), and without it the skyline of a dormer row is drawn bare (transvaal-3-47-r1 sheet; round 3 review at gallery size, 2026-11-01)"
+  },
+  {
+   "pandId": "0363100012096110",
+   "address": "Transvaalstraat 43B",
+   "reason": "as Transvaalstraat 39-41: the strip shows one white timber dormer over the centre axis, which the kit's dormer crown cannot place on this roof without the glass passing the roof plane (GLB audit opening-outside); drawn bare it misses the row's skyline, and 43B's wall reads +0.1 too light (transvaal-3-47-r1 sheet; round 3 review at gallery size, 2026-11-01)"
+  },
+  {
+   "pandId": "0363100012140329",
+   "address": "Transvaalstraat 45A",
+   "reason": "as Transvaalstraat 39-41: the strip shows one white timber dormer over the centre axis, which the kit's dormer crown cannot place on this roof without the glass passing the roof plane (GLB audit opening-outside); drawn bare it misses the row's skyline, and 43B's wall reads +0.1 too light (transvaal-3-47-r1 sheet; round 3 review at gallery size, 2026-11-01)"
   }
  ]
 }

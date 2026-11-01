@@ -3685,6 +3685,54 @@
     "hash": "63366c2b9fdb259e",
     "class": "recipe"
    }
+  },
+  "retief-45-75-r1": {
+   "112323": {
+    "hash": "d25ad18394724fe2",
+    "class": "recipe"
+   },
+   "129491": {
+    "hash": "fb3e909d4007dd3d",
+    "class": "front"
+   },
+   "067013": {
+    "hash": "8658be62bdc6db52",
+    "class": "front"
+   }
+  },
+  "pretorius-72-120-r1": {
+   "142310": {
+    "hash": "d60bf683b0c71b52",
+    "class": "front"
+   },
+   "149642": {
+    "hash": "5efadb67b6802b00",
+    "class": "front"
+   },
+   "076819": {
+    "hash": "734a5fa4cea91f41",
+    "class": "front"
+   }
+  },
+  "pretorius-71-95-r1": {
+   "065205": {
+    "hash": "8d757387cbbcaa06",
+    "class": "recipe"
+   },
+   "076837": {
+    "hash": "f830007808b61506",
+    "class": "recipe"
+   }
+  },
+  "pretorius-71-95-r2": {
+   "061274": {
+    "hash": "41dd46e1d5160456",
+    "class": "recipe"
+   },
+   "087223": {
+    "hash": "ca4ea6296451eaf7",
+    "class": "recipe"
+   }
   }
  },
  "intents": {
@@ -3822,6 +3870,10 @@
   "helst-56-62-r1": "ff3a2357bb2f593b",
   "helst-39-49-r1": "b26e6d26fdfd0dc6",
   "helst-51-67-r1": "76ae710e0d783a48",
-  "bloemgracht-138-300-r1": "93515b8e8f387545"
+  "bloemgracht-138-300-r1": "93515b8e8f387545",
+  "retief-45-75-r1": "800b37e5f4715f3b",
+  "pretorius-72-120-r1": "6197f41118405a42",
+  "pretorius-71-95-r1": "dc6acb502546aac5",
+  "pretorius-71-95-r2": "db0ca99ee5187286"
  }
 }
