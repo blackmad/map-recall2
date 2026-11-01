@@ -1876,5 +1876,11 @@
   "buildVersion": 2,
   "bytes": 83368,
   "triangles": 4091
+ },
+ "hollandsche-manege": {
+  "sourceHash": "023c8ea79a32b66b",
+  "buildVersion": 2,
+  "bytes": 44372,
+  "triangles": 1777
  }
 }

@@ -43119,5 +43119,140 @@
         ]
       ]
     }
+  },
+  {
+    "id": "hollandsche-manege",
+    "name": "Hollandsche Manege",
+    "landmarkId": "extract_landmarks_82936853",
+    "modelUrl": "./models/hollandsche-manege.glb",
+    "suppressOsmIds": [
+      "NL.IMBAG.Pand.0363100012074454"
+    ],
+    "spatialSuppression": false,
+    "footprint": {
+      "centre": [
+        4.8719366,
+        52.3612231
+      ],
+      "headingDegrees": 0,
+      "lengthMetres": 76.5,
+      "widthMetres": 50.6
+    },
+    "surveyed": {
+      "anchor": [
+        4.8719366,
+        52.3612231
+      ],
+      "northOffsetDegrees": 0,
+      "source": "BAG pand 0363100012074454 (Hollandsche Manege, Vondelstraat 140): exact ring and 3DBAG LoD2.2 walls/roofs in local east/south metres; anchor = vertex average of the BAG ring (RD)."
+    },
+    "groundAltitudeMetres": 0,
+    "facingOffsetDegrees": 0,
+    "heightMetres": 16.2,
+    "bagYear": 1882,
+    "materialOverrides": {
+      "brick": "#8a5646",
+      "concrete": "#e4ddcf",
+      "stone": "#ddd6c6",
+      "white": "#eeeae0",
+      "slate": "#5b6168",
+      "glass": "#3f4a50",
+      "dark": "#2c2a28",
+      "frame": "#5e3f2a",
+      "bronze": "#2a2c2c",
+      "blue": "#2d4f8e",
+      "ochre": "#b49a5c"
+    },
+    "attribution": {
+      "title": "Hollandsche Manege",
+      "author": "Map Recall",
+      "sourceUrl": "https://monumentenregister.cultureelerfgoed.nl/monumenten/5908",
+      "licence": "CC BY 4.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+      "modifications": "Original texture-free native-scale model: the BAG footprint and 3DBAG LoD2.2 walls and roofs (CC BY 4.0), with the Vondelstraat 140 gateway, the hall north gable and the rendered east wall authored from Gemeente Amsterdam panoramas (CC BY 4.0). No imported mesh or photograph pixels."
+    },
+    "buildingFootprint": {
+      "type": "Polygon",
+      "coordinates": [
+        [
+          [
+            4.8722103,
+            52.3612549
+          ],
+          [
+            4.8721661,
+            52.3612442
+          ],
+          [
+            4.8719204,
+            52.3616189
+          ],
+          [
+            4.8716556,
+            52.3615527
+          ],
+          [
+            4.8716952,
+            52.3614933
+          ],
+          [
+            4.8715661,
+            52.3614613
+          ],
+          [
+            4.8716844,
+            52.3612826
+          ],
+          [
+            4.8714317,
+            52.3612182
+          ],
+          [
+            4.8715237,
+            52.3610792
+          ],
+          [
+            4.871736,
+            52.3611334
+          ],
+          [
+            4.8717702,
+            52.3610789
+          ],
+          [
+            4.8720734,
+            52.3611562
+          ],
+          [
+            4.872223,
+            52.3609479
+          ],
+          [
+            4.8723127,
+            52.3609723
+          ],
+          [
+            4.8722411,
+            52.3610712
+          ],
+          [
+            4.8722398,
+            52.3610709
+          ],
+          [
+            4.8721625,
+            52.3611797
+          ],
+          [
+            4.8722461,
+            52.3612002
+          ],
+          [
+            4.8722103,
+            52.3612549
+          ]
+        ]
+      ]
+    }
   }
 ]
