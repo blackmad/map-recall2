@@ -159,9 +159,11 @@ export const HURRIED_STYLE_BUDGET_MS = 24;
 const LOOK_AHEAD_HALF_M = 150;
 
 /**
- * Resident z14 tiles: 12 on desktop, 9 on touch (2026-10-23). At street level
- * the viewport covers one tile; the rest is route look-ahead. The 3D city
- * chunks are per tile, so this is the main geometry-memory lever on phones.
+ * Resident z14 tiles: 12 on desktop, 6 on touch (9 from 2026-10-23; 6 since
+ * 2026-11-01, #130: the iPhone heap gate of 250 MB JS heap at ride start, with
+ * no near pop-in). At street level the viewport covers one tile; the rest is
+ * route look-ahead. The 3D city chunks are per tile, so this is the main
+ * geometry-memory lever on phones.
  * `?tileBudget=N` overrides it for before/after measurement.
  */
 function residentTileBudget(): number {
@@ -170,7 +172,7 @@ function residentTileBudget(): number {
     const asked = Number(new URLSearchParams(window.location.search).get('tileBudget'));
     if (Number.isFinite(asked) && asked >= 4) return Math.min(asked, 24);
   } catch (_) { /* no window */ }
-  return window.matchMedia?.('(pointer: coarse)')?.matches ? 9 : 12;
+  return window.matchMedia?.('(pointer: coarse)')?.matches ? 6 : 12;
 }
 
 export class BuildingTileStreamer {
@@ -231,7 +233,7 @@ export class BuildingTileStreamer {
   private cameraApi: WorldCamera | null = null;
   private get camera(): WorldCamera { return this.cameraApi ??= worldCameraOf(this.map); }
 
-  /** Resident z14 tile budget; 9 on touch, 12 on desktop (see residentTileBudget). */
+  /** Resident z14 tile budget; 6 on touch, 12 on desktop (see residentTileBudget). */
   private readonly tileBudget = residentTileBudget();
 
   /**
