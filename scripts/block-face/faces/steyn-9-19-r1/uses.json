@@ -1,0 +1,73 @@
+{
+ "street": "President Steynstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-31T17:17:29.901Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012063929",
+   "addresses": [
+    "President Steynstraat 9"
+   ],
+   "groundUnits": [
+    {
+     "address": "President Steynstraat 9-H",
+     "use": "woonfunctie",
+     "areaM2": 54,
+     "bagId": "0363010000782359"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012073365",
+   "addresses": [
+    "President Steynstraat 11"
+   ],
+   "groundUnits": [
+    {
+     "address": "President Steynstraat 11-H",
+     "use": "woonfunctie",
+     "areaM2": 58,
+     "bagId": "0363010000782367"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012145744",
+   "addresses": [
+    "President Steynstraat 13"
+   ],
+   "groundUnits": [
+    {
+     "address": "President Steynstraat 13-H",
+     "use": "woonfunctie",
+     "areaM2": 58,
+     "bagId": "0363010000782374"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012138134",
+   "addresses": [
+    "President Steynstraat 15"
+   ],
+   "groundUnits": [
+    {
+     "address": "President Steynstraat 15-H",
+     "use": "woonfunctie",
+     "areaM2": 53,
+     "bagId": "0363010000782383"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  }
+ ]
+}

@@ -59,6 +59,10 @@ const SPOTS: Spot[] = [
   { name: 'transvaal3-retiefstraat-69-73', centre: [4.9218115, 52.3553544], standDeg: 333, standM: 8, view: 'cockpit' },
   { name: 'transvaal3-pretoriusstraat-79-87', centre: [4.9211937, 52.3544948], standDeg: 334, standM: 7, view: 'cockpit' },
   { name: 'transvaal3-pretoriusstraat-86-90', centre: [4.9209401, 52.3546185], standDeg: 154, standM: 7, view: 'cockpit' },
+  // Transvaalbuurt 1926-1928 (#155): the Danie Theronstraat band rows and President Steynstraat 9-15, seen from mid-street.
+  { name: 'transvaal1926-theronstraat-25-31', centre: [4.9158006, 52.352054], standDeg: 283, standM: 8, view: 'cockpit' },
+  { name: 'transvaal1926-theronstraat-20-26', centre: [4.9154452, 52.3521013], standDeg: 103, standM: 8, view: 'cockpit' },
+  { name: 'transvaal1926-steynstraat-9-15', centre: [4.9161591, 52.3510951], standDeg: 299, standM: 7, view: 'cockpit' },
   { name: 'aerial-westerdok', centre: [4.8860, 52.3840], standDeg: 0, standM: 0, faceDeg: 20, camZoom: 0.16 },
 ];
 

@@ -1,0 +1,174 @@
+{
+ "schemaVersion": 1,
+ "kind": "block-face",
+ "id": "theron-2-36-r1",
+ "street": "Danie Theronstraat",
+ "sources": [
+  {
+   "id": "strip-2020-04-29",
+   "kind": "street-panorama",
+   "capturedAt": "2020-04-29",
+   "image": "staging/block-face/theron-2-36-r1/strip.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "authoring": {
+  "author": "auto-place (blockFace/autoPlace.ts)",
+  "passes": 1,
+  "note": "auto-placed from the transvaalbuurt library (buurt Transvaalbuurt-West); scores and holds in scripts/block-face/faces/theron-2-36/auto-place.json"
+ },
+ "types": [
+  "transvaal-1926-band-row"
+ ],
+ "houses": [
+  {
+   "pandId": "0363100012069116",
+   "slug": "theron-069116",
+   "address": "Danie Theronstraat 28",
+   "type": {
+    "type": "transvaal-1926-band-row",
+    "mirror": true
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2020-04-29",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: transvaal-1926-band-row scored 1 on eaves -, storeys 1, stucco -; strip 2020-04-29 span 610-1090"
+   }
+  },
+  {
+   "pandId": "0363100012116701",
+   "slug": "theron-116701",
+   "address": "Danie Theronstraat 24",
+   "type": {
+    "type": "transvaal-1926-band-row",
+    "measuredPalette": {
+     "brick": "#6f645e",
+     "evidence": "strip 2020-04-29 span 1090-1570: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2020-04-29",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: transvaal-1926-band-row scored 1 on eaves -, storeys 1, stucco 1, columns 1; strip 2020-04-29 span 1090-1570"
+   }
+  },
+  {
+   "pandId": "0363100012115092",
+   "slug": "theron-115092",
+   "address": "Danie Theronstraat 20",
+   "type": {
+    "type": "transvaal-1926-band-row",
+    "mirror": true,
+    "measuredPalette": {
+     "brick": "#7d6d64",
+     "evidence": "strip 2020-04-29 span 1570-2050: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2020-04-29",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: transvaal-1926-band-row scored 1 on eaves -, storeys 1, stucco 1, columns 1; strip 2020-04-29 span 1570-2050"
+   }
+  },
+  {
+   "pandId": "0363100012112858",
+   "slug": "theron-112858",
+   "address": "Danie Theronstraat 18A",
+   "type": {
+    "type": "transvaal-1926-band-row"
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2020-04-29",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: transvaal-1926-band-row scored 1 on eaves -, storeys 1, stucco -; strip 2020-04-29 span 2050-2290"
+   }
+  },
+  {
+   "pandId": "0363100012089089",
+   "slug": "theron-089089",
+   "address": "Danie Theronstraat 16A",
+   "type": {
+    "type": "transvaal-1926-band-row",
+    "mirror": true
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2020-04-29",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: transvaal-1926-band-row scored 1 on eaves -, storeys 1, stucco -; strip 2020-04-29 span 2290-2530"
+   }
+  }
+ ],
+ "continuity": {
+  "streetLevel": "shared",
+  "corniceGroups": [],
+  "identical": [],
+  "partyClip": true,
+  "roof": {
+   "source": "recipe",
+   "pitchDeg": 30,
+   "evidence": "auto-place: low attic behind the cornice; the strips show sky over the cornices of the type rows"
+  },
+  "measuredEaves": [
+   {
+    "pand": "0363100012069116",
+    "stripRow": 146,
+    "evidence": "auto-place: the transvaal-1926-band-row cornice line 13.9 m (measured on its exemplar strips; this pand's skyline unread); 3DBAG/PDOK eaves 12.92 m"
+   },
+   {
+    "pand": "0363100012116701",
+    "stripRow": 146,
+    "evidence": "auto-place: the transvaal-1926-band-row cornice line 13.9 m (measured on its exemplar strips; this pand's skyline unread); 3DBAG/PDOK eaves 12.91 m"
+   },
+   {
+    "pand": "0363100012115092",
+    "stripRow": 146,
+    "evidence": "auto-place: the transvaal-1926-band-row cornice line 13.9 m (measured on its exemplar strips; this pand's skyline unread); 3DBAG/PDOK eaves 12.97 m"
+   },
+   {
+    "pand": "0363100012112858",
+    "stripRow": 146,
+    "evidence": "auto-place: the transvaal-1926-band-row cornice line 13.9 m (measured on its exemplar strips; this pand's skyline unread); 3DBAG/PDOK eaves 12.85 m"
+   },
+   {
+    "pand": "0363100012089089",
+    "stripRow": 146,
+    "evidence": "auto-place: the transvaal-1926-band-row cornice line 13.9 m (measured on its exemplar strips; this pand's skyline unread); 3DBAG/PDOK eaves 12.81 m"
+   }
+  ]
+ }
+}

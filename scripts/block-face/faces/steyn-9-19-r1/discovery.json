@@ -1,0 +1,424 @@
+{
+ "street": "President Steynstraat",
+ "seed": "0363100012063929",
+ "members": [
+  "0363100012063929",
+  "0363100012073365",
+  "0363100012145744",
+  "0363100012138134"
+ ],
+ "ends": [
+  {
+   "side": "left",
+   "reason": "trimmed at 0363100012063929 (face continues: 074817 111423)"
+  },
+  {
+   "side": "right",
+   "reason": "run of steyn-9-19: 144655 held (auto-place.json)"
+  }
+ ],
+ "rejected": [
+  {
+   "pandId": "0363100012061566",
+   "reason": "frontage 61.4 m from President Steynstraat"
+  },
+  {
+   "pandId": "0363100012065134",
+   "reason": "frontage 49.3 m from President Steynstraat"
+  },
+  {
+   "pandId": "0363100012068401",
+   "reason": "frontage 66.4 m from President Steynstraat"
+  },
+  {
+   "pandId": "0363100012074773",
+   "reason": "frontage 43.2 m from President Steynstraat"
+  },
+  {
+   "pandId": "0363100012076615",
+   "reason": "frontage 55.6 m from President Steynstraat"
+  },
+  {
+   "pandId": "0363100012081211",
+   "reason": "frontage 90.9 m from President Steynstraat"
+  },
+  {
+   "pandId": "0363100012084768",
+   "reason": "frontage 80.1 m from President Steynstraat"
+  },
+  {
+   "pandId": "0363100012087691",
+   "reason": "frontage 76.2 m from President Steynstraat"
+  },
+  {
+   "pandId": "0363100012099797",
+   "reason": "frontage 82.9 m from President Steynstraat"
+  },
+  {
+   "pandId": "0363100012101555",
+   "reason": "frontage 84.5 m from President Steynstraat"
+  },
+  {
+   "pandId": "0363100012102524",
+   "reason": "sightline to President Steynstraat crosses 0363100012144655"
+  },
+  {
+   "pandId": "0363100012115391",
+   "reason": "frontage 78.0 m from President Steynstraat"
+  },
+  {
+   "pandId": "0363100012117095",
+   "reason": "frontage 82.3 m from President Steynstraat"
+  },
+  {
+   "pandId": "0363100012119583",
+   "reason": "frontage 72.2 m from President Steynstraat"
+  },
+  {
+   "pandId": "0363100012120470",
+   "reason": "frontage 59.9 m from President Steynstraat"
+  },
+  {
+   "pandId": "0363100012131566",
+   "reason": "frontage 82.2 m from President Steynstraat"
+  },
+  {
+   "pandId": "0363100012063471",
+   "reason": "frontage 42.8 m from President Steynstraat"
+  },
+  {
+   "pandId": "0363100012064549",
+   "reason": "no frontage on President Steynstraat: No footprint edge faces President Steynstraat"
+  },
+  {
+   "pandId": "0363100012067496",
+   "reason": "frontage 30.9 m from President Steynstraat"
+  },
+  {
+   "pandId": "0363100012068510",
+   "reason": "frontage 38.9 m from President Steynstraat"
+  },
+  {
+   "pandId": "0363100012069116",
+   "reason": "frontage 84.9 m from President Steynstraat"
+  },
+  {
+   "pandId": "0363100012069221",
+   "reason": "frontage 103.8 m from President Steynstraat"
+  },
+  {
+   "pandId": "0363100012070168",
+   "reason": "frontage 70.7 m from President Steynstraat"
+  },
+  {
+   "pandId": "0363100012073427",
+   "reason": "frontage 43.4 m from President Steynstraat"
+  },
+  {
+   "pandId": "0363100012074676",
+   "reason": "frontage 74.1 m from President Steynstraat"
+  },
+  {
+   "pandId": "0363100012077463",
+   "reason": "frontage 68.3 m from President Steynstraat"
+  },
+  {
+   "pandId": "0363100012079290",
+   "reason": "frontage 51.3 m from President Steynstraat"
+  },
+  {
+   "pandId": "0363100012084510",
+   "reason": "frontage 57.7 m from President Steynstraat"
+  },
+  {
+   "pandId": "0363100012086955",
+   "reason": "no frontage on President Steynstraat: No footprint edge faces President Steynstraat"
+  },
+  {
+   "pandId": "0363100012088780",
+   "reason": "no frontage on President Steynstraat: No footprint edge faces President Steynstraat"
+  },
+  {
+   "pandId": "0363100012097697",
+   "reason": "frontage 80.0 m from President Steynstraat"
+  },
+  {
+   "pandId": "0363100012097742",
+   "reason": "sightline to President Steynstraat crosses 0363100012138546"
+  },
+  {
+   "pandId": "0363100012098724",
+   "reason": "sightline to President Steynstraat crosses 0363100012074817"
+  },
+  {
+   "pandId": "0363100012105783",
+   "reason": "frontage 59.6 m from President Steynstraat"
+  },
+  {
+   "pandId": "0363100012105976",
+   "reason": "frontage 94.9 m from President Steynstraat"
+  },
+  {
+   "pandId": "0363100012108544",
+   "reason": "frontage 51.2 m from President Steynstraat"
+  },
+  {
+   "pandId": "0363100012108962",
+   "reason": "frontage 88.7 m from President Steynstraat"
+  },
+  {
+   "pandId": "0363100012114813",
+   "reason": "frontage 35.4 m from President Steynstraat"
+  },
+  {
+   "pandId": "0363100012124344",
+   "reason": "frontage 47.1 m from President Steynstraat"
+  },
+  {
+   "pandId": "0363100012125379",
+   "reason": "frontage 53.0 m from President Steynstraat"
+  },
+  {
+   "pandId": "0363100012125668",
+   "reason": "frontage 51.0 m from President Steynstraat"
+  },
+  {
+   "pandId": "0363100012125720",
+   "reason": "frontage 43.2 m from President Steynstraat"
+  },
+  {
+   "pandId": "0363100012125852",
+   "reason": "frontage 64.2 m from President Steynstraat"
+  },
+  {
+   "pandId": "0363100012138579",
+   "reason": "frontage 70.2 m from President Steynstraat"
+  },
+  {
+   "pandId": "0363100012139944",
+   "reason": "frontage 36.7 m from President Steynstraat"
+  },
+  {
+   "pandId": "0363100012140448",
+   "reason": "frontage 63.7 m from President Steynstraat"
+  },
+  {
+   "pandId": "0363100012144037",
+   "reason": "frontage 30.5 m from President Steynstraat"
+  },
+  {
+   "pandId": "0363100012147517",
+   "reason": "frontage 89.9 m from President Steynstraat"
+  },
+  {
+   "pandId": "0363100012240889",
+   "reason": "frontage 103.2 m from President Steynstraat"
+  },
+  {
+   "pandId": "0363100012133939",
+   "reason": "frontage 72.9 m from President Steynstraat"
+  },
+  {
+   "pandId": "0363100012134472",
+   "reason": "frontage 68.1 m from President Steynstraat"
+  },
+  {
+   "pandId": "0363100012135325",
+   "reason": "frontage 32.9 m from President Steynstraat"
+  },
+  {
+   "pandId": "0363100012135794",
+   "reason": "frontage 54.8 m from President Steynstraat"
+  },
+  {
+   "pandId": "0363100012136673",
+   "reason": "frontage 31.7 m from President Steynstraat"
+  },
+  {
+   "pandId": "0363100012137582",
+   "reason": "no frontage on President Steynstraat: No footprint edge faces President Steynstraat"
+  },
+  {
+   "pandId": "0363100012137886",
+   "reason": "frontage 49.0 m from President Steynstraat"
+  },
+  {
+   "pandId": "0363100012139446",
+   "reason": "frontage 57.6 m from President Steynstraat"
+  },
+  {
+   "pandId": "0363100012140487",
+   "reason": "frontage 53.4 m from President Steynstraat"
+  },
+  {
+   "pandId": "0363100012143471",
+   "reason": "frontage 45.0 m from President Steynstraat"
+  },
+  {
+   "pandId": "0363100012154803",
+   "reason": "frontage 51.7 m from President Steynstraat"
+  },
+  {
+   "pandId": "0363100012155546",
+   "reason": "frontage 60.6 m from President Steynstraat"
+  },
+  {
+   "pandId": "0363100012167300",
+   "reason": "frontage 78.7 m from President Steynstraat"
+  },
+  {
+   "pandId": "0363100012195496",
+   "reason": "frontage 97.0 m from President Steynstraat"
+  },
+  {
+   "pandId": "0363100012199219",
+   "reason": "sightline to President Steynstraat crosses 0363100012138546"
+  },
+  {
+   "pandId": "0363100012199220",
+   "reason": "frontage 30.0 m from President Steynstraat"
+  },
+  {
+   "pandId": "0363100012199306",
+   "reason": "no frontage on President Steynstraat: No footprint edge faces President Steynstraat"
+  },
+  {
+   "pandId": "0363100012199307",
+   "reason": "no frontage on President Steynstraat: No footprint edge faces President Steynstraat"
+  },
+  {
+   "pandId": "0363100012199312",
+   "reason": "no frontage on President Steynstraat: No footprint edge faces President Steynstraat"
+  },
+  {
+   "pandId": "0363100012199316",
+   "reason": "frontage 80.5 m from President Steynstraat"
+  },
+  {
+   "pandId": "0363100012199389",
+   "reason": "frontage 79.0 m from President Steynstraat"
+  },
+  {
+   "pandId": "0363100012199390",
+   "reason": "no frontage on President Steynstraat: No footprint edge faces President Steynstraat"
+  },
+  {
+   "pandId": "0363100012199391",
+   "reason": "no frontage on President Steynstraat: No footprint edge faces President Steynstraat"
+  },
+  {
+   "pandId": "0363100012199392",
+   "reason": "frontage 55.8 m from President Steynstraat"
+  },
+  {
+   "pandId": "0363100012199393",
+   "reason": "frontage 57.1 m from President Steynstraat"
+  },
+  {
+   "pandId": "0363100012199394",
+   "reason": "frontage 35.6 m from President Steynstraat"
+  },
+  {
+   "pandId": "0363100012199395",
+   "reason": "frontage 67.4 m from President Steynstraat"
+  },
+  {
+   "pandId": "0363100012199396",
+   "reason": "frontage 68.8 m from President Steynstraat"
+  },
+  {
+   "pandId": "0363100012213941",
+   "reason": "frontage 93.1 m from President Steynstraat"
+  },
+  {
+   "pandId": "0363100012240887",
+   "reason": "sightline to President Steynstraat crosses 0363100012141876"
+  },
+  {
+   "pandId": "0363100012240888",
+   "reason": "frontage 68.4 m from President Steynstraat"
+  },
+  {
+   "pandId": "0363100012243120",
+   "reason": "frontage 39.3 m from President Steynstraat"
+  },
+  {
+   "pandId": "0363100012243121",
+   "reason": "frontage 33.1 m from President Steynstraat"
+  },
+  {
+   "pandId": "0363100012243122",
+   "reason": "frontage 94.9 m from President Steynstraat"
+  },
+  {
+   "pandId": "0363100012243123",
+   "reason": "no frontage on President Steynstraat: No footprint edge faces President Steynstraat"
+  },
+  {
+   "pandId": "0363100012079037",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012091191",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012114683",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012141663",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012148898",
+   "reason": "fronts the other side / another direction"
+  }
+ ],
+ "areaHalfSizeM": 90,
+ "pands": [
+  {
+   "pandId": "0363100012063929",
+   "alongM": 0,
+   "widthM": 6.67,
+   "eavesM": 13.1,
+   "roofMaxM": 15.06,
+   "storeys3dbag": 5,
+   "builtYear": 1928,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012073365",
+   "alongM": 6.66,
+   "widthM": 6.65,
+   "eavesM": 13.17,
+   "roofMaxM": 15.09,
+   "storeys3dbag": 5,
+   "builtYear": 1928,
+   "uncertainty": [
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  },
+  {
+   "pandId": "0363100012145744",
+   "alongM": 13.3,
+   "widthM": 6.63,
+   "eavesM": 13.18,
+   "roofMaxM": 15.03,
+   "storeys3dbag": 5,
+   "builtYear": 1928,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012138134",
+   "alongM": 19.74,
+   "widthM": 6.25,
+   "eavesM": 13.21,
+   "roofMaxM": 15.03,
+   "storeys3dbag": 5,
+   "builtYear": 1928,
+   "uncertainty": []
+  }
+ ],
+ "runOf": "steyn-9-19"
+}

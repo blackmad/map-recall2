@@ -1,12 +1,12 @@
 {
  "buurt": "transvaalbuurt-west",
  "library": "transvaalbuurt",
- "generatedAt": "2026-11-01T05:15:58.528Z",
- "seconds": 112.6,
+ "generatedAt": "2026-11-01T08:43:17.606Z",
+ "seconds": 43.46,
  "totals": {
   "faces": 76,
   "pands": 359,
-  "placed": 3
+  "placed": 18
  },
  "faces": [
   {
@@ -37,7 +37,7 @@
    "placed": 0,
    "held": 5,
    "runs": [],
-   "seconds": 4.68,
+   "seconds": 6.19,
    "byType": {},
    "holds": {
     "evidence": 0,
@@ -181,13 +181,13 @@
    "placed": 0,
    "held": 10,
    "runs": [],
-   "seconds": 1.9,
+   "seconds": 2.1,
    "byType": {},
    "holds": {
     "evidence": 0,
-    "match": 10,
+    "match": 8,
     "likeness": 0,
-    "run": 0,
+    "run": 2,
     "review": 0
    }
   },
@@ -198,13 +198,13 @@
    "placed": 0,
    "held": 2,
    "runs": [],
-   "seconds": 0.35,
+   "seconds": 0.39,
    "byType": {},
    "holds": {
     "evidence": 0,
-    "match": 2,
+    "match": 1,
     "likeness": 0,
-    "run": 0,
+    "run": 1,
     "review": 0
    }
   },
@@ -926,14 +926,28 @@
    "face": "steyn-9-19",
    "street": "President Steynstraat",
    "pands": 5,
-   "placed": 0,
-   "held": 5,
-   "runs": [],
-   "seconds": 0.9,
-   "byType": {},
+   "placed": 4,
+   "held": 1,
+   "runs": [
+    {
+     "face": "steyn-9-19-r1",
+     "pands": [
+      "0363100012063929",
+      "0363100012073365",
+      "0363100012145744",
+      "0363100012138134"
+     ],
+     "passed": true,
+     "triangles": 5857
+    }
+   ],
+   "seconds": 4.61,
+   "byType": {
+    "transvaal-1928-plain-row": 4
+   },
    "holds": {
     "evidence": 1,
-    "match": 4,
+    "match": 0,
     "likeness": 0,
     "run": 0,
     "review": 0
@@ -983,34 +997,72 @@
    "face": "theron-2-36",
    "street": "Danie Theronstraat",
    "pands": 10,
-   "placed": 0,
-   "held": 10,
-   "runs": [],
-   "seconds": 2.02,
-   "byType": {},
+   "placed": 5,
+   "held": 5,
+   "runs": [
+    {
+     "face": "theron-2-36-r1",
+     "pands": [
+      "0363100012069116",
+      "0363100012116701",
+      "0363100012115092",
+      "0363100012112858",
+      "0363100012089089"
+     ],
+     "passed": true,
+     "triangles": 9187
+    }
+   ],
+   "seconds": 13.78,
+   "byType": {
+    "transvaal-1926-band-row": 5
+   },
    "holds": {
     "evidence": 1,
-    "match": 9,
-    "likeness": 0,
+    "match": 2,
+    "likeness": 1,
     "run": 0,
-    "review": 0
+    "review": 1
    }
   },
   {
    "face": "theron-9-37",
    "street": "Danie Theronstraat",
    "pands": 10,
-   "placed": 0,
-   "held": 10,
-   "runs": [],
-   "seconds": 2.56,
-   "byType": {},
+   "placed": 6,
+   "held": 4,
+   "runs": [
+    {
+     "face": "theron-9-37-r1",
+     "pands": [
+      "0363100012138289",
+      "0363100012148172"
+     ],
+     "passed": true,
+     "triangles": 4530
+    },
+    {
+     "face": "theron-9-37-r2",
+     "pands": [
+      "0363100012137971",
+      "0363100012139446",
+      "0363100012140487",
+      "0363100012125668"
+     ],
+     "passed": true,
+     "triangles": 5957
+    }
+   ],
+   "seconds": 14.39,
+   "byType": {
+    "transvaal-1926-band-row": 6
+   },
    "holds": {
     "evidence": 1,
-    "match": 9,
-    "likeness": 0,
+    "match": 0,
+    "likeness": 1,
     "run": 0,
-    "review": 0
+    "review": 2
    }
   },
   {
@@ -1105,7 +1157,7 @@
    "placed": 0,
    "held": 2,
    "runs": [],
-   "seconds": 0.55,
+   "seconds": 0.62,
    "byType": {},
    "holds": {
     "evidence": 0,
@@ -1497,7 +1549,7 @@
    "placed": 0,
    "held": 5,
    "runs": [],
-   "seconds": 1.12,
+   "seconds": 1.35,
    "byType": {},
    "holds": {
     "evidence": 0,
