@@ -1,0 +1,194 @@
+{
+ "face": "vermeer-85-87",
+ "street": "Johannes Vermeerstraat",
+ "library": "museumkwartier",
+ "stripDate": "2024-12-11",
+ "seconds": 0.89,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [],
+ "pands": [
+  {
+   "pandId": "0363100012133971",
+   "address": "Johannes Vermeerstraat 85",
+   "builtYear": 1923,
+   "widthM": 12.16,
+   "eavesM": 13.36,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#77674f",
+    "wallRaw": "#807058",
+    "skyline": {
+     "eavesM": 15.38,
+     "eavesRow": 129,
+     "confidence": 1,
+     "crown": {
+      "widthM": 0.8,
+      "riseM": 1.73,
+      "topWidthM": 0.38,
+      "centre": 0.21
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "columns",
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0.13,
+    "structure": {
+     "bayWidthM": 0.68,
+     "bayCentre": 0.43,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.25
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best museum-de-1899-corbel-cornice: built 1923, type 1898-1901; frontage 12.16 m, type 5-6 m)",
+   "best": {
+    "type": "museum-de-1899-corbel-cornice",
+    "score": 0,
+    "veto": [
+     "built 1923, type 1898-1901",
+     "frontage 12.16 m, type 5-6 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0.5,
+      "note": "strip cornice 15.38 m vs the type's 13.4 m (wall-dormer skyline 14.7 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.135 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012076833",
+   "address": "Johannes Vermeerstraat 87",
+   "builtYear": 1923,
+   "widthM": 8.75,
+   "eavesM": 13.7,
+   "storeys3dbag": 5,
+   "bagBay": {
+    "fromM": 3.57,
+    "toM": 8.72,
+    "depthM": 0.79,
+    "centre": 0.705,
+    "lineRD": [
+     [
+      120772.13737499999,
+      485296.0005
+     ],
+     [
+      120775.97437499999,
+      485294.59050000005
+     ]
+    ]
+   },
+   "strip": {
+    "wall": "#d9af87",
+    "wallRaw": "#dcb189",
+    "skyline": {
+     "eavesM": 14.4,
+     "eavesRow": 168,
+     "confidence": 1,
+     "crown": {
+      "widthM": 3.17,
+      "riseM": 1.5,
+      "topWidthM": 2.88,
+      "centre": 0.58
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "columns",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.17,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0.09,
+    "foliageShare": 0.09
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best museum-de-1899-corbel-cornice: built 1923, type 1898-1901; frontage 8.75 m, type 5-6 m)",
+   "best": {
+    "type": "museum-de-1899-corbel-cornice",
+    "score": 0,
+    "veto": [
+     "built 1923, type 1898-1901",
+     "frontage 8.75 m, type 5-6 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "strip cornice 14.4 m vs the type's 13.4 m (wall-dormer skyline 14.7 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.086 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

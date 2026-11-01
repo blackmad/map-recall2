@@ -1,0 +1,263 @@
+{
+ "face": "vermeerplein-1-5",
+ "street": "Johannes Vermeerplein",
+ "library": "museumkwartier",
+ "stripDate": "2024-12-11",
+ "seconds": 1.06,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [],
+ "pands": [
+  {
+   "pandId": "0363100012237313",
+   "address": "Johannes Vermeerplein 1",
+   "builtYear": 1913,
+   "widthM": 11.38,
+   "eavesM": 12.22,
+   "storeys3dbag": 0,
+   "bagBay": {
+    "fromM": 0.32,
+    "toM": 0.53,
+    "depthM": 0.26,
+    "centre": 0.037
+   },
+   "strip": {
+    "wall": "#3f2b1a",
+    "wallRaw": "#423525",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 729,
+     "confidence": 0.26,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": "right",
+    "accentSide": "left",
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 1.05 m at 0.61 (light 0.3): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 1.05,
+       "centre": 0.61,
+       "light": 0.3
+      },
+      {
+       "widthM": 1.35,
+       "centre": 0.81,
+       "light": 0.15
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.19
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best museum-de-1899-corbel-cornice: built 1913, type 1898-1901; frontage 11.38 m, type 5-6 m)",
+   "best": {
+    "type": "museum-de-1899-corbel-cornice",
+    "score": 0,
+    "veto": [
+     "built 1913, type 1898-1901",
+     "frontage 11.38 m, type 5-6 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": null,
+      "note": "strip cornice unread (type line 13.4 m; 3DBAG 12.22 m not compared)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": null,
+      "note": "3DBAG bouwlagen 0 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0 (brick)"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012079467",
+   "address": "Johannes Vermeerplein 3",
+   "builtYear": 1913,
+   "widthM": 7.7,
+   "eavesM": 13.11,
+   "storeys3dbag": 0,
+   "bagBay": null,
+   "strip": {
+    "wall": "#6d532c",
+    "wallRaw": "#664a2c",
+    "skyline": {
+     "eavesM": 17.02,
+     "eavesRow": 48,
+     "confidence": 0.49,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": "left",
+    "accentSide": "right",
+    "accentShare": 0.03,
+    "structure": {
+     "bayWidthM": 1.25,
+     "bayCentre": 0.89,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.12
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best museum-de-1899-corbel-cornice: built 1913, type 1898-1901; frontage 7.7 m, type 5-6 m)",
+   "best": {
+    "type": "museum-de-1899-corbel-cornice",
+    "score": 0,
+    "veto": [
+     "built 1913, type 1898-1901",
+     "frontage 7.7 m, type 5-6 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": null,
+      "note": "strip cornice unread (type line 13.4 m; 3DBAG 13.11 m not compared)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": null,
+      "note": "3DBAG bouwlagen 0 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.035 (brick)"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012062389",
+   "address": "Johannes Vermeerplein 5",
+   "builtYear": 1913,
+   "widthM": 7.74,
+   "eavesM": 12.35,
+   "storeys3dbag": 0,
+   "bagBay": null,
+   "strip": {
+    "wall": "#805337",
+    "wallRaw": "#81573c",
+    "skyline": {
+     "eavesM": 14.93,
+     "eavesRow": 132,
+     "confidence": 0.87,
+     "crown": {
+      "widthM": 1.77,
+      "riseM": 0.95,
+      "topWidthM": 1.65,
+      "centre": 0.21
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.108,
+    "structure": {
+     "bayWidthM": 1.35,
+     "bayCentre": 0.47,
+     "balconies": true,
+     "why": "dark open axis 1.07 m at 0.08 (light 0.45): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 1.07,
+       "centre": 0.08,
+       "light": 0.45
+      },
+      {
+       "widthM": 1.27,
+       "centre": 0.47,
+       "light": 0.52
+      },
+      {
+       "widthM": 1.23,
+       "centre": 0.72,
+       "light": 0.47
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.07
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best museum-de-1899-corbel-cornice: built 1913, type 1898-1901; frontage 7.74 m, type 5-6 m)",
+   "best": {
+    "type": "museum-de-1899-corbel-cornice",
+    "score": 0,
+    "veto": [
+     "built 1913, type 1898-1901",
+     "frontage 7.74 m, type 5-6 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "strip cornice 14.93 m vs the type's 13.4 m (wall-dormer skyline 14.7 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": null,
+      "note": "3DBAG bouwlagen 0 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.103 (brick)"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

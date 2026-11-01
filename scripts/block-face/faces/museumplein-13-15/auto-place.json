@@ -1,0 +1,273 @@
+{
+ "face": "museumplein-13-15",
+ "street": "Museumplein",
+ "library": "museumkwartier",
+ "stripDate": "2024-12-11",
+ "seconds": 0.7,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [],
+ "pands": [
+  {
+   "pandId": "0363100012116189",
+   "address": "Museumplein 13",
+   "builtYear": 1912,
+   "widthM": 11.03,
+   "eavesM": 12.1,
+   "storeys3dbag": 0,
+   "bagBay": {
+    "fromM": 5.93,
+    "toM": 11.02,
+    "depthM": 0.38,
+    "centre": 0.769,
+    "lineRD": [
+     [
+      120622.9251875,
+      485538.78275
+     ],
+     [
+      120619.41018749999,
+      485533.97775
+     ]
+    ]
+   },
+   "strip": {
+    "wall": "#2d2011",
+    "wallRaw": "#44453a",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 808,
+     "confidence": 0.1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 4,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0.55,
+     "bayCentre": 0.64,
+     "balconies": true,
+     "why": "dark open axis 1.4 m at 0.48 (light 0): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 1.4,
+       "centre": 0.48,
+       "light": 0
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 10.97,
+       "widthM": 1.65,
+       "centre": 0.85
+      },
+      {
+       "atM": 7.82,
+       "widthM": 0.82,
+       "centre": 0.32
+      },
+      {
+       "atM": 7.22,
+       "widthM": 1.65,
+       "centre": 0.32
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.21
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best museum-de-1899-corbel-cornice: built 1912, type 1898-1901; frontage 11.03 m, type 5-6 m)",
+   "best": {
+    "type": "museum-de-1899-corbel-cornice",
+    "score": 0,
+    "veto": [
+     "built 1912, type 1898-1901",
+     "frontage 11.03 m, type 5-6 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": null,
+      "note": "strip cornice unread (type line 13.4 m; 3DBAG 12.1 m not compared)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": null,
+      "note": "3DBAG bouwlagen 0 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0.4,
+      "note": "strip columns 4 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012111009",
+   "address": "Museumplein 15",
+   "builtYear": 1910,
+   "widthM": 11.14,
+   "eavesM": 12.13,
+   "storeys3dbag": 0,
+   "bagBay": {
+    "fromM": 0,
+    "toM": 5.36,
+    "depthM": 0.38,
+    "centre": 0.241,
+    "lineRD": [
+     [
+      120612.7351875,
+      485525.97275
+     ],
+     [
+      120608.74018749999,
+      485521.76475000003
+     ]
+    ]
+   },
+   "strip": {
+    "wall": "#2f2713",
+    "wallRaw": "#4a4e40",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 808,
+     "confidence": 0.09,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 2,
+    "frontClass": "punched",
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 0.63 m at 0.2 (light 0.02): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.63,
+       "centre": 0.2,
+       "light": 0.02
+      },
+      {
+       "widthM": 0.63,
+       "centre": 0.33,
+       "light": 0.38
+      },
+      {
+       "widthM": 1.55,
+       "centre": 0.46,
+       "light": 0.04
+      },
+      {
+       "widthM": 0.93,
+       "centre": 0.59,
+       "light": 0.39
+      },
+      {
+       "widthM": 0.65,
+       "centre": 0.72,
+       "light": 0.09
+      },
+      {
+       "widthM": 1.3,
+       "centre": 0.82,
+       "light": 0.65
+      },
+      {
+       "widthM": 0.97,
+       "centre": 0.95,
+       "light": 0.04
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 11.07,
+       "widthM": 1.63,
+       "centre": 0.08
+      },
+      {
+       "atM": 7.85,
+       "widthM": 1,
+       "centre": 0.3
+      },
+      {
+       "atM": 7.25,
+       "widthM": 1.65,
+       "centre": 0.6
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.28
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best museum-de-1899-corbel-cornice: built 1910, type 1898-1901; frontage 11.14 m, type 5-6 m)",
+   "best": {
+    "type": "museum-de-1899-corbel-cornice",
+    "score": 0,
+    "veto": [
+     "built 1910, type 1898-1901",
+     "frontage 11.14 m, type 5-6 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": null,
+      "note": "strip cornice unread (type line 13.4 m; 3DBAG 12.13 m not compared)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": null,
+      "note": "3DBAG bouwlagen 0 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0.4,
+      "note": "strip columns 2 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

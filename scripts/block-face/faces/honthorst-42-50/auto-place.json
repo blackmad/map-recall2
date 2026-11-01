@@ -1,0 +1,435 @@
+{
+ "face": "honthorst-42-50",
+ "street": "Honthorststraat",
+ "library": "museumkwartier",
+ "stripDate": "2024-12-11",
+ "seconds": 1.4,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [],
+ "pands": [
+  {
+   "pandId": "0363100012142126",
+   "address": "Honthorststraat 50",
+   "builtYear": 1913,
+   "widthM": 6.41,
+   "eavesM": 12.95,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#8f795c",
+    "wallRaw": "#6a6349",
+    "skyline": {
+     "eavesM": 17.13,
+     "eavesRow": 112,
+     "confidence": 0.41,
+     "crown": {
+      "widthM": 1.02,
+      "riseM": 2.8,
+      "topWidthM": 0.6,
+      "centre": 0.44
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "columns",
+    "doorSide": null,
+    "accentSide": "left",
+    "accentShare": 0.033,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.48
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best museum-de-1899-corbel-cornice: built 1913, type 1898-1901; frontage 6.41 m, type 5-6 m)",
+   "best": {
+    "type": "museum-de-1899-corbel-cornice",
+    "score": 0,
+    "veto": [
+     "built 1913, type 1898-1901",
+     "frontage 6.41 m, type 5-6 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": null,
+      "note": "strip cornice unread (type line 13.4 m; 3DBAG 12.95 m not compared)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 4 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": null,
+      "note": "no strip"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012087328",
+   "address": "Honthorststraat 48",
+   "builtYear": 1912,
+   "widthM": 6.47,
+   "eavesM": 14.42,
+   "storeys3dbag": 0,
+   "bagBay": null,
+   "strip": {
+    "wall": "#9e7b58",
+    "wallRaw": "#836c4f",
+    "skyline": {
+     "eavesM": 17.52,
+     "eavesRow": 96,
+     "confidence": 0.77,
+     "crown": {
+      "widthM": 0.9,
+      "riseM": 2.4,
+      "topWidthM": 0.35,
+      "centre": 0.21
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": "right",
+    "accentShare": 0.088,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 0.75 m at 0.77 (light 0.23): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.75,
+       "centre": 0.77,
+       "light": 0.23
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.2
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best museum-de-1899-corbel-cornice: built 1912, type 1898-1901; frontage 6.47 m, type 5-6 m)",
+   "best": {
+    "type": "museum-de-1899-corbel-cornice",
+    "score": 0,
+    "veto": [
+     "built 1912, type 1898-1901",
+     "frontage 6.47 m, type 5-6 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 17.52 m vs the type's 13.4 m (wall-dormer skyline 14.7 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": null,
+      "note": "3DBAG bouwlagen 0 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.101 (brick)"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012110929",
+   "address": "Honthorststraat 46",
+   "builtYear": 1912,
+   "widthM": 6.82,
+   "eavesM": 14.54,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#947456",
+    "wallRaw": "#ac8867",
+    "skyline": {
+     "eavesM": 16.52,
+     "eavesRow": 136,
+     "confidence": 0.98,
+     "crown": {
+      "widthM": 0.97,
+      "riseM": 1.83,
+      "topWidthM": 0.95,
+      "centre": 0.92
+     }
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": "right",
+    "accentShare": 0.21,
+    "structure": {
+     "bayWidthM": 1.02,
+     "bayCentre": 0.74,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 13.72,
+       "widthM": 1.15,
+       "centre": 0.42
+      }
+     ]
+    },
+    "voidShare": 0.04,
+    "foliageShare": 0.16
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best museum-de-1899-corbel-cornice: built 1912, type 1898-1901; frontage 6.82 m, type 5-6 m)",
+   "best": {
+    "type": "museum-de-1899-corbel-cornice",
+    "score": 0,
+    "veto": [
+     "built 1912, type 1898-1901",
+     "frontage 6.82 m, type 5-6 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 16.52 m vs the type's 13.4 m (wall-dormer skyline 14.7 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.165 (brick)"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012071827",
+   "address": "Honthorststraat 44",
+   "builtYear": 1912,
+   "widthM": 6.87,
+   "eavesM": 14.6,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#947354",
+    "wallRaw": "#a88564",
+    "skyline": {
+     "eavesM": 17.52,
+     "eavesRow": 96,
+     "confidence": 0.79,
+     "crown": {
+      "widthM": 1.02,
+      "riseM": 2.4,
+      "topWidthM": 0.17,
+      "centre": 0.65
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 2,
+    "frontClass": "columns",
+    "doorSide": null,
+    "accentSide": "right",
+    "accentShare": 0.233,
+    "structure": {
+     "bayWidthM": 1.07,
+     "bayCentre": 0.72,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0.05,
+    "foliageShare": 0.13
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best museum-de-1899-corbel-cornice: built 1912, type 1898-1901; frontage 6.87 m, type 5-6 m)",
+   "best": {
+    "type": "museum-de-1899-corbel-cornice",
+    "score": 0,
+    "veto": [
+     "built 1912, type 1898-1901",
+     "frontage 6.87 m, type 5-6 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 17.52 m vs the type's 13.4 m (wall-dormer skyline 14.7 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.187 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0.4,
+      "note": "strip columns 2 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012077492",
+   "address": "Honthorststraat 42",
+   "builtYear": 1912,
+   "widthM": 6.83,
+   "eavesM": 11.13,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#c3956e",
+    "wallRaw": "#bd936c",
+    "skyline": {
+     "eavesM": 13.13,
+     "eavesRow": 272,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.15,
+      "riseM": 2.78,
+      "topWidthM": 0.25,
+      "centre": 0.09
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": "right",
+    "accentShare": 0.066,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 0.65 m at 0.18 (light 0.26): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.65,
+       "centre": 0.18,
+       "light": 0.26
+      },
+      {
+       "widthM": 0.6,
+       "centre": 0.61,
+       "light": 0.2
+      },
+      {
+       "widthM": 1,
+       "centre": 0.92,
+       "light": 0.33
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 7.6,
+       "widthM": 1.15,
+       "centre": 0.57
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.14
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best museum-de-1899-corbel-cornice: built 1912, type 1898-1901; frontage 6.83 m, type 5-6 m)",
+   "best": {
+    "type": "museum-de-1899-corbel-cornice",
+    "score": 0,
+    "veto": [
+     "built 1912, type 1898-1901",
+     "frontage 6.83 m, type 5-6 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "strip cornice 13.13 m vs the type's 13.4 m (wall-dormer skyline 14.7 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 4 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.091 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}
