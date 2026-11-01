@@ -99,3 +99,15 @@ test('Amsterdam streets-routing.json round-trips with sentinel ways pinned by id
   pin('routing_4387', { name: 'Damrak', highway: 'cycleway', type: 'street', pathLengths: [6, 14, 4, 9, 10, 6, 17, 5, 3, 10, 3] });
   pin('routing_125', { name: 'Meester J.C.Bührmannlaan', highway: 'pedestrian', center: [52.300177, 5.052708], pathLengths: [3, 3, 5, 12, 2, 3, 3, 3, 3, 5, 2, 3, 2] });
 });
+
+// The binary is the game's default road source, so the published file must be
+// compiled from the JSON that ships beside it: an edit to streets-routing.json
+// without re-running scripts/roads/build-road-extract.ts fails here, not on
+// the road in the browser.
+test('the published Amsterdam binary is compiled from the shipped JSON', async () => {
+  const text = readFileSync('public/data/extracts/amsterdam/streets-routing.json', 'utf8');
+  const sha = createHash('sha256').update(text).digest('hex');
+  const { header, features } = await loadRoadExtract(readFileSync('public/data/extracts/amsterdam/roads-v2/streets-routing.bin.gz'));
+  assert.equal(header.sourceSha256, sha, 'roads-v2/streets-routing.bin.gz is stale: re-run scripts/roads/build-road-extract.ts and publish');
+  assert.ok(JSON.stringify(features) === text, 'the published binary decodes to the shipped JSON text');
+});

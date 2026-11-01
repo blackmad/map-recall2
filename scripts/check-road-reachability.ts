@@ -10,6 +10,7 @@
 import { readFile } from 'node:fs/promises';
 import path from 'node:path';
 import { isMotorOnlyHighway, motorOnlyNames } from '../src/canalRecall/routing/bikeAccess.ts';
+import { loadRoutingFeatures, routingSource } from './lib/routingFeatures.ts';
 
 const PIXELS_PER_METER = 3;
 const SIMPLIFICATION_TOLERANCE = 0.00003; // degrees, as constants.js
@@ -21,7 +22,7 @@ type Point = { x: number; y: number };
 type Segment = { name: string; wayId: string; points: Point[] };
 
 const directory = path.resolve('public/data/extracts/amsterdam');
-const features: Feature[] = JSON.parse(await readFile(path.join(directory, 'streets-routing.json'), 'utf8'));
+const features: Feature[] = await loadRoutingFeatures<Feature>(directory);
 
 // ---- osm-loader.js: fetchRoads (car) ----
 type Way = { id: string; name: string; nodes: LatLon[] };
@@ -137,7 +138,7 @@ const report = (label: string, segments: Segment[], mergeSize = MERGE_SIZE) => {
   return { nodes, groups, stranded, strandedWays: names };
 };
 
-console.log(`streets-routing.json: ${features.length} features, ${ways.length} open paths (${closedRings} closed rings skipped)`);
+console.log(`streets-routing (${routingSource()}): ${features.length} features, ${ways.length} open paths (${closedRings} closed rings skipped)`);
 const simplified = buildSegments(true);
 const raw = buildSegments(false);
 console.log(`geometry: ${raw.reduce((n, s) => n + s.points.length, 0)} points raw → ${simplified.reduce((n, s) => n + s.points.length, 0)} after simplification`);
