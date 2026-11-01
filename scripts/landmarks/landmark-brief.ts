@@ -3,6 +3,7 @@
  *
  *   node --import tsx scripts/landmarks/landmark-brief.ts --pand=<BAG pand id> [--id=<slug>] [--min-len=4] [--max=30]
  *        [--height=<m>] [--wiki=nl:Elandsgracht_117,en:...] [--address="Elandsgracht 117"] [--force-skeleton] [--offline]
+ *        [--ignore=<neighbour id>,...]
  *
  * Writes
  *  - artifacts/landmark-briefs/<id>/w<NN>-<bearing>.jpg (+ .alt.jpg from another year, .thumb.jpg aimed view) and
@@ -64,7 +65,10 @@ if (!fp) {
   console.log(`  ${pand}: BAG outline from PDOK WFS (${ring.length - 1} vertices)`);
 }
 const centre = {x: fp.ring.reduce((s, p) => s + p.x, 0) / fp.ring.length, y: fp.ring.reduce((s, p) => s + p.y, 0) / fp.ring.length};
-const allWalls = exposedWalls(fp, await neighbourhood(centre)).sort((a, b) => b.len - a.len);
+// --ignore=w1490152348,... drops the building's own OSM parts from the neighbours: the Carlton Hotel's OSM outline reaches past
+// the BAG line over the arcade and hid its whole Vijzelstraat front as a "party wall".
+const ignore = new Set(arg('ignore').split(',').filter(Boolean));
+const allWalls = exposedWalls(fp, (await neighbourhood(centre)).filter(o => !ignore.has(o.id))).sort((a, b) => b.len - a.len);
 const walls = allWalls.filter(w => w.len >= minLen).slice(0, maxWalls);
 const dropped = allWalls.length - walls.length;
 console.log(`${id}: ${allWalls.length} exposed walls, ${walls.length} in the brief (>= ${minLen} m, max ${maxWalls})`);

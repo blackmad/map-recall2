@@ -50436,5 +50436,837 @@
    "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
    "modifications": "Original low-poly reconstruction from the typed kiosk kit: dark slate box with six poster panels drawn as flat tinted glass (no images), a pale service door under a small awning, a door end and two roof units. Footprint and height from BAG/3DBAG (CC0); tints are panorama medians (Gemeente Amsterdam, CC BY 4.0) taken in tree shade and lifted about 25% to the sunlit 2024 view after the review sheet read too dark. No photo pixels or imported meshes."
   }
+ },
+ {
+  "id": "vijzelbank",
+  "name": "Prins en Keizer (Vijzelbank)",
+  "modelUrl": "./models/vijzelbank.glb",
+  "suppressOsmIds": [
+   "NL.IMBAG.Pand.0363100012165685",
+   "w1489746216",
+   "w1489746217",
+   "w1489746218",
+   "w1489746219",
+   "w1489746220",
+   "w1489746221",
+   "w1489746222",
+   "w1489746223",
+   "w1489746224",
+   "w1489746225"
+  ],
+  "spatialSuppression": false,
+  "footprint": {
+   "centre": [
+    4.8915872,
+    52.3630587
+   ],
+   "headingDegrees": 12.6,
+   "lengthMetres": 145.46,
+   "widthMetres": 48.14
+  },
+  "surveyed": {
+   "anchor": [
+    4.89155785,
+    52.36304834
+   ],
+   "northOffsetDegrees": 0,
+   "source": "Vertex average of the BAG 0363100012165685 ring (RD, PDOK BAG WFS, CC0); massing is one prism per 3DBAG LoD2.2 roof piece of that pand (CC BY 4.0), each snapped to the floor band that forms its roof edge, in native east/south metres (scripts/landmarks/vijzelstraat-prepare.ts). Band levels, bay axes, the colonnade, the Kerkstraat passage (OSM w34955694) and its void measured on the rectified Gemeente Amsterdam panorama recording_2025-06-16_06-42-40_01588 (20 px/m, CC BY 4.0); see scripts/landmarks/vijzelbank-inventory.json and vijzelbank-elevations.json."
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 0,
+  "heightMetres": 34.5,
+  "bagYear": 1973,
+  "materialOverrides": {
+   "bronze": "#9ea6a8",
+   "concrete": "#cdcec9",
+   "stone": "#878985",
+   "glass": "#c9ccc6",
+   "dark": "#363735",
+   "slate": "#5f6166"
+  },
+  "attribution": {
+   "title": "Prins en Keizer, the former ABN bank at Vijzelstraat 66-80 (M.F. Duintjer with J. Trapman, 1969-1973; municipal monument)",
+   "author": "Map Recall",
+   "sourceUrl": "https://nl.wikipedia.org/wiki/Vijzelbank",
+   "licence": "CC BY 4.0",
+   "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+   "modifications": "Original texture-free flat-colour geometry on 3DBAG LoD2.2 roof pieces (CC BY 4.0) and the BAG footprint (CC0): pale floor-edge bands round every terrace, white fins on the bay axes, the white colonnade, the Kerkstraat passage with its double-height void and walkway, fire escapes and terrace railings, read for proportion and tone from Gemeente Amsterdam panoramas (CC BY 4.0) and Wikimedia Commons photographs by Ceescamel (CC BY-SA 4.0) and Rudolphous (CC BY-SA 3.0 nl). Names and dates: Wikipedia nl 'Vijzelbank' (CC BY-SA 4.0) and the municipal monument register. No pixels or meshes imported."
+  },
+  "buildingFootprint": {
+   "type": "Polygon",
+   "coordinates": [
+    [
+     [
+      4.8913965,
+      52.3624666
+     ],
+     [
+      4.8913832,
+      52.3624289
+     ],
+     [
+      4.8914957,
+      52.3624142
+     ],
+     [
+      4.8914916,
+      52.3624026
+     ],
+     [
+      4.8917069,
+      52.3623743
+     ],
+     [
+      4.8921431,
+      52.3636127
+     ],
+     [
+      4.8920156,
+      52.3636297
+     ],
+     [
+      4.8920294,
+      52.3636688
+     ],
+     [
+      4.8918889,
+      52.3636875
+     ],
+     [
+      4.891887,
+      52.3636826
+     ],
+     [
+      4.8918776,
+      52.363684
+     ],
+     [
+      4.8918761,
+      52.3636803
+     ],
+     [
+      4.8917878,
+      52.3634335
+     ],
+     [
+      4.89176,
+      52.3633528
+     ],
+     [
+      4.8917562,
+      52.3633418
+     ],
+     [
+      4.8916143,
+      52.3633606
+     ],
+     [
+      4.8915719,
+      52.36324
+     ],
+     [
+      4.8915687,
+      52.3632312
+     ],
+     [
+      4.8915612,
+      52.3632097
+     ],
+     [
+      4.8915087,
+      52.3630606
+     ],
+     [
+      4.8915067,
+      52.3630551
+     ],
+     [
+      4.8914755,
+      52.3629666
+     ],
+     [
+      4.8913468,
+      52.3629836
+     ],
+     [
+      4.8912231,
+      52.3629999
+     ],
+     [
+      4.8912059,
+      52.3630027
+     ],
+     [
+      4.8911528,
+      52.3628514
+     ],
+     [
+      4.8911443,
+      52.3628273
+     ],
+     [
+      4.8912348,
+      52.3628154
+     ],
+     [
+      4.8912423,
+      52.3628368
+     ],
+     [
+      4.8913339,
+      52.3628248
+     ],
+     [
+      4.8914253,
+      52.3628128
+     ],
+     [
+      4.8915136,
+      52.3628012
+     ],
+     [
+      4.8915216,
+      52.3628002
+     ],
+     [
+      4.891443,
+      52.3625755
+     ],
+     [
+      4.891435,
+      52.3625765
+     ],
+     [
+      4.8913965,
+      52.3624666
+     ]
+    ]
+   ]
+  },
+  "throughPassages": [
+   {
+    "axisBearing": 282.6,
+    "corridor": [
+     [
+      26.851,
+      16.204
+     ],
+     [
+      29.069,
+      6.248
+     ],
+     [
+      -5.582,
+      -1.471
+     ],
+     [
+      -7.8,
+      8.485
+     ]
+    ],
+    "evidence": "Kerkstraat building passage (OSM w34955694, tunnel=building_passage) under the block from the Vijzelstraat to the west face, 10.2 m between the gallery piers, seen in panorama recording_2025-06-16_06-42-40_01588 (2025) and its aimed view; Wikipedia nl 'Vijzelbank' (the Kerkstraat was built over)."
+   },
+   {
+    "axisBearing": 12.6,
+    "corridor": [
+     [
+      12.351,
+      76.698
+     ],
+     [
+      43.436,
+      -62.845
+     ],
+     [
+      37.384,
+      -64.193
+     ],
+     [
+      6.299,
+      75.35
+     ]
+    ],
+    "evidence": "The public gallery ('voetgangersgalerij met winkels en horeca', Wikipedia nl 'Vijzelbank') runs the whole Vijzelstraat front behind the white piers and is open at both canal ends: panoramas recording_2025-06-16_06-42-40_01588 (front, 2025) and TMX7316010203-002619_pano_0015_000144 (Keizersgracht corner, 2022), Commons File:Vijzelstraat_66-80.jpg (Prinsengracht corner, 2019)."
+   }
+  ]
+ },
+ {
+  "id": "carlton-hotel",
+  "name": "Carlton Hotel",
+  "modelUrl": "./models/carlton-hotel.glb",
+  "suppressOsmIds": [
+   "NL.IMBAG.Pand.0363100012168111",
+   "w1490152344",
+   "w1490152345",
+   "w1490152346",
+   "w1490152347",
+   "w1490152348"
+  ],
+  "spatialSuppression": false,
+  "footprint": {
+   "centre": [
+    4.8928241,
+    52.3661608
+   ],
+   "headingDegrees": 8.6,
+   "lengthMetres": 112.93,
+   "widthMetres": 27.83
+  },
+  "surveyed": {
+   "anchor": [
+    4.89291034,
+    52.36614774
+   ],
+   "northOffsetDegrees": 0,
+   "source": "Vertex average of the BAG 0363100012168111 ring (RD, PDOK BAG WFS, CC0); massing is one prism per 3DBAG LoD2.2 roof piece of that pand (CC BY 4.0) on its roof plane, the mansard started at the photographed eave, in native east/south metres (scripts/landmarks/vijzelstraat-prepare.ts). Arcade piers, bay axes, storey lines and the eave measured on the rectified Gemeente Amsterdam panorama b_20241203_1333_Track15_Sphere_00264 (32.8 px/m, CC BY 4.0) and the Reguliersdwarsstraat bridge on TMX7316010203-002865_pano_0002_000305; see scripts/landmarks/carlton-hotel-inventory.json and carlton-hotel-elevations.json."
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 0,
+  "heightMetres": 39,
+  "bagYear": 1928,
+  "materialOverrides": {
+   "brick": "#8c5a4c",
+   "concrete": "#8a9496",
+   "stone": "#a9aca6",
+   "white": "#eef2f0",
+   "glass": "#9fb0b4",
+   "dark": "#2f3536",
+   "slate": "#66686c"
+  },
+  "attribution": {
+   "title": "Carlton Hotel (Grand Hotel Centraal), Vijzelstraat 4 at the Muntplein (G.J. Rutgers, 1925-1929, set-back top storey by G. van Arkel and H.J. Breman; rijksmonument 518381)",
+   "author": "Map Recall",
+   "sourceUrl": "https://monumentenregister.cultureelerfgoed.nl/monumenten/518381",
+   "licence": "CC BY 4.0",
+   "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+   "modifications": "Original texture-free flat-colour geometry on 3DBAG LoD2.2 roof pieces (CC BY 4.0) and the BAG footprint (CC0): the grey arcade with angular pointed arches, the high mezzanine with pointed windows, three storeys of canted brick oriels with stone fins, the mansard, the bridge over the Reguliersdwarsstraat and the annex south of it, the roof mast, read for proportion and tone from Gemeente Amsterdam panoramas (CC BY 4.0) and Wikimedia Commons photographs by Brbbl and Marion Golsteijn (CC BY-SA 3.0). Names and dates: the Rijksmonumentenregister and Wikipedia nl 'Carlton Hotel (Amsterdam)' (CC BY-SA 4.0). No pixels or meshes imported."
+  },
+  "buildingFootprint": {
+   "type": "Polygon",
+   "coordinates": [
+    [
+     [
+      4.8929258,
+      52.3658426
+     ],
+     [
+      4.8929267,
+      52.3658425
+     ],
+     [
+      4.8929282,
+      52.3658471
+     ],
+     [
+      4.8929273,
+      52.3658472
+     ],
+     [
+      4.8929468,
+      52.3659072
+     ],
+     [
+      4.8929494,
+      52.3659152
+     ],
+     [
+      4.8929579,
+      52.3659412
+     ],
+     [
+      4.8929602,
+      52.3659483
+     ],
+     [
+      4.8929793,
+      52.3660069
+     ],
+     [
+      4.8929819,
+      52.366015
+     ],
+     [
+      4.8929904,
+      52.3660411
+     ],
+     [
+      4.8929915,
+      52.3660443
+     ],
+     [
+      4.8929988,
+      52.3660469
+     ],
+     [
+      4.892999,
+      52.366048
+     ],
+     [
+      4.8929945,
+      52.3660522
+     ],
+     [
+      4.8929926,
+      52.3660527
+     ],
+     [
+      4.8930244,
+      52.3661672
+     ],
+     [
+      4.893026,
+      52.366167
+     ],
+     [
+      4.8930325,
+      52.3661699
+     ],
+     [
+      4.8930328,
+      52.3661708
+     ],
+     [
+      4.893029,
+      52.3661737
+     ],
+     [
+      4.8930299,
+      52.3661782
+     ],
+     [
+      4.8930361,
+      52.3662045
+     ],
+     [
+      4.8930379,
+      52.3662123
+     ],
+     [
+      4.8930516,
+      52.3662706
+     ],
+     [
+      4.8930534,
+      52.3662783
+     ],
+     [
+      4.893067,
+      52.3663363
+     ],
+     [
+      4.893069,
+      52.3663446
+     ],
+     [
+      4.8930825,
+      52.366402
+     ],
+     [
+      4.8930844,
+      52.3664104
+     ],
+     [
+      4.893098,
+      52.3664683
+     ],
+     [
+      4.8930999,
+      52.3664762
+     ],
+     [
+      4.8931135,
+      52.3665343
+     ],
+     [
+      4.8931155,
+      52.3665426
+     ],
+     [
+      4.893129,
+      52.3666004
+     ],
+     [
+      4.893131,
+      52.3666087
+     ],
+     [
+      4.893137,
+      52.3666343
+     ],
+     [
+      4.8931379,
+      52.3666383
+     ],
+     [
+      4.8931435,
+      52.3666404
+     ],
+     [
+      4.8931438,
+      52.3666417
+     ],
+     [
+      4.8931397,
+      52.3666457
+     ],
+     [
+      4.8931371,
+      52.3666459
+     ],
+     [
+      4.8931325,
+      52.3666429
+     ],
+     [
+      4.893126,
+      52.3666435
+     ],
+     [
+      4.8930882,
+      52.366647
+     ],
+     [
+      4.893074,
+      52.3666483
+     ],
+     [
+      4.8930722,
+      52.3666409
+     ],
+     [
+      4.8929789,
+      52.3666497
+     ],
+     [
+      4.8929807,
+      52.366657
+     ],
+     [
+      4.8929659,
+      52.3666584
+     ],
+     [
+      4.8929642,
+      52.3666517
+     ],
+     [
+      4.8929224,
+      52.3666556
+     ],
+     [
+      4.8929241,
+      52.3666623
+     ],
+     [
+      4.8928965,
+      52.3666649
+     ],
+     [
+      4.8928962,
+      52.3666637
+     ],
+     [
+      4.8928882,
+      52.3666645
+     ],
+     [
+      4.8928774,
+      52.3666287
+     ],
+     [
+      4.8927432,
+      52.3662068
+     ],
+     [
+      4.8927411,
+      52.3662
+     ],
+     [
+      4.8927692,
+      52.3661971
+     ],
+     [
+      4.8927383,
+      52.3660867
+     ],
+     [
+      4.8927352,
+      52.3660871
+     ],
+     [
+      4.8927183,
+      52.3660895
+     ],
+     [
+      4.8927092,
+      52.3660907
+     ],
+     [
+      4.8926926,
+      52.366093
+     ],
+     [
+      4.8926835,
+      52.3660943
+     ],
+     [
+      4.8926637,
+      52.366097
+     ],
+     [
+      4.8926544,
+      52.3660983
+     ],
+     [
+      4.8926349,
+      52.366101
+     ],
+     [
+      4.8926245,
+      52.3661024
+     ],
+     [
+      4.8926224,
+      52.3660968
+     ],
+     [
+      4.8926182,
+      52.3660854
+     ],
+     [
+      4.8926156,
+      52.3660858
+     ],
+     [
+      4.8925858,
+      52.3660082
+     ],
+     [
+      4.8925781,
+      52.3659876
+     ],
+     [
+      4.892574,
+      52.3659755
+     ],
+     [
+      4.8926535,
+      52.3659654
+     ],
+     [
+      4.8926259,
+      52.3658909
+     ],
+     [
+      4.8927538,
+      52.3658734
+     ],
+     [
+      4.8927915,
+      52.3658688
+     ],
+     [
+      4.8927964,
+      52.3658683
+     ],
+     [
+      4.8928394,
+      52.3658297
+     ],
+     [
+      4.8928516,
+      52.3658188
+     ],
+     [
+      4.8928032,
+      52.3656674
+     ],
+     [
+      4.8928021,
+      52.3656632
+     ],
+     [
+      4.8928019,
+      52.3656627
+     ],
+     [
+      4.8928529,
+      52.3656565
+     ],
+     [
+      4.8928508,
+      52.3656494
+     ],
+     [
+      4.8928574,
+      52.3656486
+     ],
+     [
+      4.8928598,
+      52.365645
+     ],
+     [
+      4.8928616,
+      52.3656448
+     ],
+     [
+      4.8928679,
+      52.3656473
+     ],
+     [
+      4.8928683,
+      52.3656483
+     ],
+     [
+      4.8928633,
+      52.3656508
+     ],
+     [
+      4.8928647,
+      52.3656551
+     ],
+     [
+      4.892885,
+      52.3657175
+     ],
+     [
+      4.8928855,
+      52.3657175
+     ],
+     [
+      4.892887,
+      52.3657221
+     ],
+     [
+      4.8928865,
+      52.3657221
+     ],
+     [
+      4.8929054,
+      52.3657801
+     ],
+     [
+      4.8929069,
+      52.3657847
+     ],
+     [
+      4.8929258,
+      52.3658426
+     ]
+    ]
+   ]
+  },
+  "throughPassages": [
+   {
+    "axisBearing": 8.6,
+    "corridor": [
+     [
+      2.522,
+      9.978
+     ],
+     [
+      12.462,
+      -55.995
+     ],
+     [
+      16.516,
+      -55.384
+     ],
+     [
+      6.577,
+      10.589
+     ]
+    ],
+    "evidence": "The gallery ('een begane grond achter een galerij met hoekig gelijnde bogen', Rijksmonument 518381) runs behind the arcade piers along the Vijzelstraat front: panorama b_20241203_1333_Track15_Sphere_00264 (2024) and Commons 'Vijzelstraat 4 Amsterdam' (2011)."
+   },
+   {
+    "axisBearing": 279,
+    "corridor": [
+     [
+      16.32,
+      -50.787
+     ],
+     [
+      -2.936,
+      -53.863
+     ],
+     [
+      -2.29,
+      -57.911
+     ],
+     [
+      16.966,
+      -54.836
+     ]
+    ],
+    "evidence": "The arcade turns the Muntplein corner: Commons File:Jolly Carlton Hotel Rutgers and panorama recording_2025-06-19_03-28-47_01484 (2025)."
+   },
+   {
+    "axisBearing": 279.3,
+    "corridor": [
+     [
+      9.8,
+      -2.5
+     ],
+     [
+      7.5,
+      11
+     ],
+     [
+      -13.8,
+      7.1
+     ],
+     [
+      -11.6,
+      -6
+     ]
+    ],
+    "evidence": "The Reguliersdwarsstraat runs under the hotel's bridge ('een grote feestzaal als brug over de Reguliersdwarsstraat', Rijksmonument 518381): panoramas TMX7316010203-002865_pano_0002_000305 (Vijzelstraat side) and recording_2025-06-19_03-28-47_01830 (Singel side)."
+   },
+   {
+    "axisBearing": 11.7,
+    "corridor": [
+     [
+      -2.909,
+      34.207
+     ],
+     [
+      4.753,
+      -2.889
+     ],
+     [
+      8.769,
+      -2.059
+     ],
+     [
+      1.106,
+      35.036
+     ]
+    ],
+    "evidence": "The gallery continues south of the bridge behind square piers (Carlton south tower and the annex): panoramas TMX7316060226-000019_pano_0000_005187 (2016) and b_20241203_1333_Track15_Sphere_00249 (2024)."
+   },
+   {
+    "axisBearing": 11.7,
+    "corridor": [
+     [
+      -7.513,
+      56.495
+     ],
+     [
+      -2.504,
+      32.248
+     ],
+     [
+      1.511,
+      33.078
+     ],
+     [
+      -3.498,
+      57.325
+     ]
+    ],
+    "evidence": "The gallery continues south of the bridge behind square piers (Carlton south tower and the annex): panoramas TMX7316060226-000019_pano_0000_005187 (2016) and b_20241203_1333_Track15_Sphere_00249 (2024)."
+   }
+  ]
  }
 ]

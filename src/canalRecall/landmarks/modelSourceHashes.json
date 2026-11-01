@@ -1,5 +1,5 @@
 {
-  "toolchain": "bcd00bc395723cb8ac64d8c06d127090a8790d051d07183e6835cb50cdb218a3",
+  "toolchain": "cfed32a3edf1a978f6eeb386da32e1669b4cb56382d0942038c0610e76667648",
   "models": {
     "abn-amro-hoofdkantoor": "90ff65a2d9f94e99b2ab33438567f147959a43f017d3d9cf9d2ae68b6dae7cbf",
     "academie-theater-dans": "503b3e8d59937cbf7ac8776eb644c11fd10b567e5ac1113e0caa55c83cb68cde",
@@ -49,6 +49,7 @@
     "bungehuis": "67a00cb9d2b90e7e3ae2d806f42c44e2b9df1e24d671adf54fdf07ae1889a828",
     "cafe-kobalt": "6c97be2b9463f7d97950108fda5e8a89b1fbaedf6aa09b2db1aaf694552f36ea",
     "canals-museum": "1cad0703d93ae47033f4960933198d0fac783e240bad6431cede7e6ad9c71d19",
+    "carlton-hotel": "843e0cc260c2b71c34d22cdf3b55ce0a882aea589cc90f8368b42d7bb5607aa7",
     "carmiggelt-borstbeeld": "204f7d94ba4ad0751b271ca0bdf7c61f17a497f6d952c8f8b8dd94d760092f65",
     "cavia": "cd17e14758875bc38c3fae61844fe69cf116f8060c130c019b4c19e5c5d6d1ac",
     "centraal-station": "0c72f72e54f0c9f1a3a92609a51ea764e8a8a9646d1a6d4f1b9de39eb49b0c9e",
@@ -345,6 +346,7 @@
     "van-gendt-hallen": "d36c0baf4548deb99cca3d7052d1c9044e89006c733acf9c0421bbf264fba2f0",
     "van-gogh-museum": "191560fbfdf886d50b7a3191344f2f53d4981f63c66302ce9e0fd76831b99eef",
     "victoria-hotel": "1f950ca2b836f1cb243f05f0607d08c9f858f0680c64916bd4e3013f3421e89c",
+    "vijzelbank": "3d4aa1b8bf772ea55a997b384fc4208a8e25b1e33e2dfa38249d3865dcd7d115",
     "vinoly": "9d1b59829c3791a89ea67ff892f7a73392e013649274f0becad7651fe1cc9076",
     "voc-kade-600": "43a0d9bf19fa5f387103e16f2927562abeac6d675873a51f53f535605851b753",
     "vondelkerk": "fa3a35748868b6952a443220a4e0d77b2984b1cddf0f9eefd302a881323dc1ff",

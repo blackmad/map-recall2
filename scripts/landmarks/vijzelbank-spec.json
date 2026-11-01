@@ -1,0 +1,253 @@
+{
+ "id": "vijzelbank",
+ "name": "Prins en Keizer (Vijzelbank)",
+ "modelUrl": "./models/vijzelbank.glb",
+ "suppressOsmIds": [
+  "NL.IMBAG.Pand.0363100012165685",
+  "w1489746216",
+  "w1489746217",
+  "w1489746218",
+  "w1489746219",
+  "w1489746220",
+  "w1489746221",
+  "w1489746222",
+  "w1489746223",
+  "w1489746224",
+  "w1489746225"
+ ],
+ "spatialSuppression": false,
+ "footprint": {
+  "centre": [
+   4.8915872,
+   52.3630587
+  ],
+  "headingDegrees": 12.6,
+  "lengthMetres": 145.46,
+  "widthMetres": 48.14
+ },
+ "surveyed": {
+  "anchor": [
+   4.89155785,
+   52.36304834
+  ],
+  "northOffsetDegrees": 0,
+  "source": "Vertex average of the BAG 0363100012165685 ring (RD, PDOK BAG WFS, CC0); massing is one prism per 3DBAG LoD2.2 roof piece of that pand (CC BY 4.0), each snapped to the floor band that forms its roof edge, in native east/south metres (scripts/landmarks/vijzelstraat-prepare.ts). Band levels, bay axes, the colonnade, the Kerkstraat passage (OSM w34955694) and its void measured on the rectified Gemeente Amsterdam panorama recording_2025-06-16_06-42-40_01588 (20 px/m, CC BY 4.0); see scripts/landmarks/vijzelbank-inventory.json and vijzelbank-elevations.json."
+ },
+ "groundAltitudeMetres": 0,
+ "facingOffsetDegrees": 0,
+ "heightMetres": 34.5,
+ "bagYear": 1973,
+ "materialOverrides": {
+  "bronze": "#9ea6a8",
+  "concrete": "#cdcec9",
+  "stone": "#878985",
+  "glass": "#c9ccc6",
+  "dark": "#363735",
+  "slate": "#5f6166"
+ },
+ "attribution": {
+  "title": "Prins en Keizer, the former ABN bank at Vijzelstraat 66-80 (M.F. Duintjer with J. Trapman, 1969-1973; municipal monument)",
+  "author": "Map Recall",
+  "sourceUrl": "https://nl.wikipedia.org/wiki/Vijzelbank",
+  "licence": "CC BY 4.0",
+  "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+  "modifications": "Original texture-free flat-colour geometry on 3DBAG LoD2.2 roof pieces (CC BY 4.0) and the BAG footprint (CC0): pale floor-edge bands round every terrace, white fins on the bay axes, the white colonnade, the Kerkstraat passage with its double-height void and walkway, fire escapes and terrace railings, read for proportion and tone from Gemeente Amsterdam panoramas (CC BY 4.0) and Wikimedia Commons photographs by Ceescamel (CC BY-SA 4.0) and Rudolphous (CC BY-SA 3.0 nl). Names and dates: Wikipedia nl 'Vijzelbank' (CC BY-SA 4.0) and the municipal monument register. No pixels or meshes imported."
+ },
+ "buildingFootprint": {
+  "type": "Polygon",
+  "coordinates": [
+   [
+    [
+     4.8913965,
+     52.3624666
+    ],
+    [
+     4.8913832,
+     52.3624289
+    ],
+    [
+     4.8914957,
+     52.3624142
+    ],
+    [
+     4.8914916,
+     52.3624026
+    ],
+    [
+     4.8917069,
+     52.3623743
+    ],
+    [
+     4.8921431,
+     52.3636127
+    ],
+    [
+     4.8920156,
+     52.3636297
+    ],
+    [
+     4.8920294,
+     52.3636688
+    ],
+    [
+     4.8918889,
+     52.3636875
+    ],
+    [
+     4.891887,
+     52.3636826
+    ],
+    [
+     4.8918776,
+     52.363684
+    ],
+    [
+     4.8918761,
+     52.3636803
+    ],
+    [
+     4.8917878,
+     52.3634335
+    ],
+    [
+     4.89176,
+     52.3633528
+    ],
+    [
+     4.8917562,
+     52.3633418
+    ],
+    [
+     4.8916143,
+     52.3633606
+    ],
+    [
+     4.8915719,
+     52.36324
+    ],
+    [
+     4.8915687,
+     52.3632312
+    ],
+    [
+     4.8915612,
+     52.3632097
+    ],
+    [
+     4.8915087,
+     52.3630606
+    ],
+    [
+     4.8915067,
+     52.3630551
+    ],
+    [
+     4.8914755,
+     52.3629666
+    ],
+    [
+     4.8913468,
+     52.3629836
+    ],
+    [
+     4.8912231,
+     52.3629999
+    ],
+    [
+     4.8912059,
+     52.3630027
+    ],
+    [
+     4.8911528,
+     52.3628514
+    ],
+    [
+     4.8911443,
+     52.3628273
+    ],
+    [
+     4.8912348,
+     52.3628154
+    ],
+    [
+     4.8912423,
+     52.3628368
+    ],
+    [
+     4.8913339,
+     52.3628248
+    ],
+    [
+     4.8914253,
+     52.3628128
+    ],
+    [
+     4.8915136,
+     52.3628012
+    ],
+    [
+     4.8915216,
+     52.3628002
+    ],
+    [
+     4.891443,
+     52.3625755
+    ],
+    [
+     4.891435,
+     52.3625765
+    ],
+    [
+     4.8913965,
+     52.3624666
+    ]
+   ]
+  ]
+ },
+ "throughPassages": [
+  {
+   "axisBearing": 282.6,
+   "corridor": [
+    [
+     26.851,
+     16.204
+    ],
+    [
+     29.069,
+     6.248
+    ],
+    [
+     -5.582,
+     -1.471
+    ],
+    [
+     -7.8,
+     8.485
+    ]
+   ],
+   "evidence": "Kerkstraat building passage (OSM w34955694, tunnel=building_passage) under the block from the Vijzelstraat to the west face, 10.2 m between the gallery piers, seen in panorama recording_2025-06-16_06-42-40_01588 (2025) and its aimed view; Wikipedia nl 'Vijzelbank' (the Kerkstraat was built over)."
+  },
+  {
+   "axisBearing": 12.6,
+   "corridor": [
+    [
+     12.351,
+     76.698
+    ],
+    [
+     43.436,
+     -62.845
+    ],
+    [
+     37.384,
+     -64.193
+    ],
+    [
+     6.299,
+     75.35
+    ]
+   ],
+   "evidence": "The public gallery ('voetgangersgalerij met winkels en horeca', Wikipedia nl 'Vijzelbank') runs the whole Vijzelstraat front behind the white piers and is open at both canal ends: panoramas recording_2025-06-16_06-42-40_01588 (front, 2025) and TMX7316010203-002619_pano_0015_000144 (Keizersgracht corner, 2022), Commons File:Vijzelstraat_66-80.jpg (Prinsengracht corner, 2019)."
+  }
+ ]
+}

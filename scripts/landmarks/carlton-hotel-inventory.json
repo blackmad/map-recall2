@@ -1,0 +1,493 @@
+{
+ "schemaVersion": 1,
+ "id": "carlton-hotel",
+ "pand": "0363100012168111",
+ "brief": "scripts/landmarks/carlton-hotel-brief.md",
+ "signature": [
+  "f-arcade",
+  "f-oriels",
+  "f-pointed-windows",
+  "b-bridge",
+  "n-tower",
+  "f-mansard"
+ ],
+ "walls": [
+  {
+   "tag": "w01-99",
+   "bearing": 99,
+   "lengthM": 52.2,
+   "centre": [
+    4.8930834,
+    52.366406
+   ],
+   "evidence": "photo",
+   "panoId": "b_20241203_1333_Track15_Sphere_00264",
+   "capturedAt": "2024-12-03",
+   "checked": true,
+   "items": [
+    {
+     "id": "f-arcade",
+     "kind": "colonnade",
+     "where": "grey concrete gallery: seven piers widening into angular pointed arches ('hoekig gelijnde bogen', Rijksmonument 518381), shops ~3 m behind, band over it to 7.9 m",
+     "approxSizeM": [
+      51.7,
+      7.9
+     ],
+     "plan": "modelled",
+     "seenIn": "b_20241203_1333_Track15_Sphere_00264",
+     "how": "carlton-hotel-builder.ts: one extruded face with five-sided holes between the measured piers, 0.6 m deep; ground prism cut back 3 m"
+    },
+    {
+     "id": "f-pointed-windows",
+     "kind": "window-shape",
+     "where": "twelve wide windows with a pointed (gabled) top and white sill on the high mezzanine, low window under each",
+     "approxSizeM": [
+      3.0,
+      2.65
+     ],
+     "plan": "modelled",
+     "seenIn": "b_20241203_1333_Track15_Sphere_00264",
+     "how": "five-sided white frame and glass extrusions on the 4.05 m bay axes, stone sill slab; low mezzanine window as frame + glass"
+    },
+    {
+     "id": "f-oriels",
+     "kind": "other",
+     "where": "twelve canted brick oriels over three storeys (14-24 m), front light plus a light in the north cheek, on stone consoles",
+     "approxSizeM": [
+      3.3,
+      10.2
+     ],
+     "plan": "modelled",
+     "seenIn": "b_20241203_1333_Track15_Sphere_00264",
+     "how": "big-kit bayPrism 3.3 m wide, 0.75 m out, 0.6 m bevel; windows on the front and on a frame laid on the north cheek; two stone consoles under each"
+    },
+    {
+     "id": "f-pendants",
+     "kind": "relief",
+     "where": "small pointed stone pendants between the bays above the mezzanine",
+     "approxSizeM": [
+      0.5,
+      0.6
+     ],
+     "plan": "simplified",
+     "seenIn": "b_20241203_1333_Track15_Sphere_00264",
+     "how": "0.5 x 0.6 m stone blocks, no point"
+    },
+    {
+     "id": "f-top-fins",
+     "kind": "other",
+     "where": "grey stone fins between the oriels rising to the coping",
+     "approxSizeM": [
+      0.45,
+      4.1
+     ],
+     "plan": "modelled",
+     "seenIn": "b_20241203_1333_Track15_Sphere_00264",
+     "how": "0.45 m stone slabs 0.55 m proud from 22.6 m to the coping"
+    },
+    {
+     "id": "f-coping",
+     "kind": "other",
+     "where": "stone coping at the eave, 26.3 m",
+     "approxSizeM": [
+      51.7,
+      0.35
+     ],
+     "plan": "modelled",
+     "seenIn": "b_20241203_1333_Track15_Sphere_00264",
+     "how": "one slab"
+    },
+    {
+     "id": "f-mansard",
+     "kind": "other",
+     "where": "the set-back top storey under a sloping roof behind the coping",
+     "approxSizeM": [
+      51.7,
+      6
+     ],
+     "plan": "modelled",
+     "seenIn": "b_20241203_1333_Track15_Sphere_00264",
+     "how": "3DBAG sloped roof piece kept on its plane, started at the photographed eave"
+    },
+    {
+     "id": "f-sign-nh",
+     "kind": "sign",
+     "where": "hotel-operator lettering on the arcade ('NH COLLECTION') and the shop names",
+     "approxSizeM": [
+      3,
+      0.5
+     ],
+     "plan": "skipped",
+     "seenIn": "b_20241203_1333_Track15_Sphere_00264",
+     "skip": {
+      "reason": "temporary",
+      "note": "operator and tenant signage, changed since 2011"
+     }
+    },
+    {
+     "id": "f-lamp",
+     "kind": "lamp",
+     "where": "street lamp on a span wire in front",
+     "approxSizeM": [
+      0.6,
+      0.3
+     ],
+     "plan": "skipped",
+     "seenIn": "b_20241203_1333_Track15_Sphere_00264",
+     "skip": {
+      "reason": "not-visible",
+      "note": "street furniture, not on the building"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "w02-102",
+   "bearing": 102,
+   "lengthM": 22.4,
+   "centre": [
+    4.8929594,
+    52.3659457
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316060226-000019_pano_0000_005187",
+   "capturedAt": "2016-08-15",
+   "checked": true,
+   "items": [
+    {
+     "id": "s-corner-tower",
+     "kind": "tower",
+     "where": "the Carlton south corner tower and two oriel bays south of the bridge, arcade arch under them",
+     "approxSizeM": [
+      15,
+      26
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316060226-000019_pano_0000_005187",
+     "how": "massing from 3DBAG; punched white-framed windows on the storey lines; gallery piers"
+    },
+    {
+     "id": "s-annex-bands",
+     "kind": "other",
+     "where": "post-war annex: pale bands and ribbon windows with brick spandrels",
+     "approxSizeM": [
+      7.5,
+      22
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316060226-000019_pano_0000_005187",
+     "how": "ribbon windows per storey split every ~4.2 m with a stone band over each"
+    },
+    {
+     "id": "s-carpark",
+     "kind": "other",
+     "where": "car-park entrance in the annex ground storey",
+     "approxSizeM": [
+      4,
+      4
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316060226-000019_pano_0000_005187",
+     "how": "dark shopfront glass on the ground walls"
+    }
+   ]
+  },
+  {
+   "tag": "w03-102",
+   "bearing": 102,
+   "lengthM": 21.8,
+   "centre": [
+    4.8928945,
+    52.3657467
+   ],
+   "evidence": "photo",
+   "panoId": "b_20241203_1333_Track15_Sphere_00249",
+   "capturedAt": "2024-12-03",
+   "checked": true,
+   "items": [
+    {
+     "id": "a-ribbons",
+     "kind": "other",
+     "where": "annex: ribbon windows between pale bands and brick spandrels, square piers in front of the shops",
+     "approxSizeM": [
+      21.8,
+      20
+     ],
+     "plan": "simplified",
+     "seenIn": "b_20241203_1333_Track15_Sphere_00249",
+     "how": "ribbon windows per storey, stone band, square concrete piers every ~7 m"
+    }
+   ]
+  },
+  {
+   "tag": "w04-100",
+   "bearing": 100,
+   "lengthM": 12.9,
+   "centre": [
+    4.8930085,
+    52.3661099
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002865_pano_0002_000305",
+   "capturedAt": "2022-12-15",
+   "checked": true,
+   "items": [
+    {
+     "id": "b-bridge",
+     "kind": "other",
+     "where": "the bridge over the Reguliersdwarsstraat: open street under a concrete soffit at ~6.2 m",
+     "approxSizeM": [
+      12.9,
+      6.2
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002865_pano_0002_000305",
+     "how": "ground prism cut along the street (PASSAGE polygon), roof pieces start at 6.3 m with a concrete soffit"
+    },
+    {
+     "id": "b-stone-bay",
+     "kind": "window-shape",
+     "where": "stone-framed bay window of the festival hall over the street, five lights in two rows",
+     "approxSizeM": [
+      10,
+      3.2
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-002865_pano_0002_000305",
+     "how": "punched windows on the storey lines of the lower 3DBAG piece"
+    },
+    {
+     "id": "b-figures",
+     "kind": "sculpture",
+     "where": "small standing figures (Theo Vos) between the lights of the stone bay",
+     "approxSizeM": [
+      0.4,
+      1.0
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7316010203-002865_pano_0002_000305",
+     "skip": {
+      "reason": "too-small",
+      "note": "0.4 m figures at 9 m, not readable at game distance"
+     }
+    },
+    {
+     "id": "b-oriels",
+     "kind": "other",
+     "where": "three oriels set back above the bridge front",
+     "approxSizeM": [
+      10,
+      10
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-002865_pano_0002_000305",
+     "how": "punched windows on the set-back piece"
+    }
+   ]
+  },
+  {
+   "tag": "w05-280",
+   "bearing": 280,
+   "lengthM": 12.5,
+   "centre": [
+    4.8927538,
+    52.3661419
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-06-19_03-28-47_01830",
+   "capturedAt": "2025-06-19",
+   "checked": true,
+   "items": [
+    {
+     "id": "b-singel-bridge",
+     "kind": "other",
+     "where": "bridge over the Reguliersdwarsstraat seen from the Singel side, windows in rows",
+     "approxSizeM": [
+      12.5,
+      25
+     ],
+     "plan": "simplified",
+     "seenIn": "recording_2025-06-19_03-28-47_01830",
+     "how": "street left open under the bridge, punched windows"
+    }
+   ]
+  },
+  {
+   "tag": "w06-283",
+   "bearing": 283,
+   "lengthM": 8.5,
+   "centre": [
+    4.8926397,
+    52.3659281
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001178_pano_0000_001632",
+   "capturedAt": "2019-05-13",
+   "checked": true,
+   "items": [
+    {
+     "id": "a-west",
+     "kind": "other",
+     "where": "annex west wall with ribbon windows",
+     "approxSizeM": [
+      8.5,
+      20
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-001178_pano_0000_001632",
+     "how": "ribbon windows"
+    }
+   ]
+  },
+  {
+   "tag": "w07-13",
+   "bearing": 13,
+   "lengthM": 8,
+   "centre": [
+    4.8926814,
+    52.3660946
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002359_pano_0003_000115",
+   "capturedAt": "2021-12-29",
+   "checked": true,
+   "items": [
+    {
+     "id": "c-court",
+     "kind": "other",
+     "where": "brick wall with punched windows above the Singel-side gallery",
+     "approxSizeM": [
+      8,
+      20
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-002359_pano_0003_000115",
+     "how": "punched windows"
+    }
+   ]
+  },
+  {
+   "tag": "w08-9",
+   "bearing": 9,
+   "lengthM": 6.4,
+   "centre": [
+    4.8930255,
+    52.3666453
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-06-19_03-28-47_01484",
+   "capturedAt": "2025-06-19",
+   "checked": true,
+   "items": [
+    {
+     "id": "n-arcade",
+     "kind": "colonnade",
+     "where": "the arcade turning the Muntplein corner with a pointed arch",
+     "approxSizeM": [
+      18,
+      7.9
+     ],
+     "plan": "simplified",
+     "seenIn": "recording_2025-06-19_03-28-47_01484",
+     "how": "three square piers and the band; no pointed arch face on this side"
+    },
+    {
+     "id": "n-caruso-sign",
+     "kind": "sign",
+     "where": "restaurant lettering on the north front",
+     "approxSizeM": [
+      6,
+      0.6
+     ],
+     "plan": "skipped",
+     "seenIn": "recording_2025-06-19_03-28-47_01484",
+     "skip": {
+      "reason": "temporary",
+      "note": "tenant signage"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "w09-192",
+   "bearing": 192,
+   "lengthM": 5.5,
+   "centre": [
+    4.8926137,
+    52.3659704
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001178_pano_0000_001650",
+   "capturedAt": "2019-05-13",
+   "checked": true,
+   "items": [
+    {
+     "id": "x-pier",
+     "kind": "colonnade",
+     "where": "gallery pier at the south end",
+     "approxSizeM": [
+      0.9,
+      6
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001178_pano_0000_001650",
+     "how": "square concrete pier"
+    }
+   ]
+  },
+  {
+   "tag": "w10-9",
+   "bearing": 9,
+   "lengthM": 4,
+   "centre": [
+    4.8931033,
+    52.3666456
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316060226-000019_pano_0000_004203",
+   "capturedAt": "2016-08-15",
+   "checked": true,
+   "items": [
+    {
+     "id": "n-tower",
+     "kind": "tower",
+     "where": "the Muntplein corner tower with the hotel name and a steel lattice mast with flags on top",
+     "approxSizeM": [
+      7,
+      39
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316060226-000019_pano_0000_004203",
+     "how": "3DBAG tower piece to 38.8 m and a four-post mast with three rings, 6 m"
+    },
+    {
+     "id": "n-hotel-sign",
+     "kind": "sign",
+     "where": "hotel name on the tower",
+     "approxSizeM": [
+      6,
+      1
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7316060226-000019_pano_0000_004203",
+     "skip": {
+      "reason": "temporary",
+      "note": "operator name, changed with each operator (Jolly, NH)"
+     }
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  },
+  {
+   "name": "Rijksmonument 518381",
+   "url": "https://monumentenregister.cultureelerfgoed.nl/monumenten/518381",
+   "licence": "public register"
+  }
+ ]
+}
