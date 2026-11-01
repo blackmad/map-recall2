@@ -314,7 +314,9 @@
    "modifications": "Original texture-free low-poly reconstruction guided by official venue imagery; approximate architectural details aligned to the OpenStreetMap building footprint."
   },
   "spatialSuppression": false,
-  "bagYear": 1622
+  "bagYear": 1622,
+  "status": "held",
+  "heldReason": "Superseded by the bespoke huis-met-de-hoofden model on the same pand (0363100012177213, #164); the venue-kit GLB stays in git."
  },
  {
   "id": "the-movies",
