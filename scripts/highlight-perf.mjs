@@ -48,7 +48,7 @@ for (const frame of framesArg.split(',')) for (const style of stylesArg.split(',
     await page.waitForTimeout(6000);
     if (device === 'touch') { const cdp = await page.context().newCDPSession(page); await cdp.send('Emulation.setCPUThrottlingRate', { rate: 4 }); }
     const measure = (on) => page.evaluate(async ({ on, landmark, N }) => {
-      const vm = window.canalRecallGame.vectorMap, map = vm.map;
+      const vm = window.canalRecallGame.vectorMap, map = vm.map ?? vm.cameraMap;
       vm.setActiveLandmark(on ? landmark : null);
       const t = { render: [], three: [], calls: [] };
       const wrap = (obj, key, bucket) => { if (!obj?.[key] || obj[key].__hl) return; const o = obj[key].bind(obj); const f = (...a) => { const s = performance.now(); try { return o(...a); } finally { window.__hlBucket?.[bucket].push(performance.now() - s); } }; f.__hl = true; obj[key] = f; };

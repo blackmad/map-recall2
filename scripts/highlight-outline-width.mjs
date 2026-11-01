@@ -114,7 +114,7 @@ for (const name of spotsArg.split(',')) for (const view of ['chase', 'saddle']) 
   if (status.boost) state.boost = status.boost;
   const canvas = page.locator('canvas.maplibregl-canvas').first();
   const onPng = await canvas.screenshot();
-  const before = await page.evaluate(() => { const v = window.__canalRecallHighlightOutlinePx; window.__canalRecallHighlightOutlinePx = 0; window.canalRecallGame.vectorMap.map.triggerRepaint(); return v; });
+  const before = await page.evaluate(() => { const v = window.__canalRecallHighlightOutlinePx; window.__canalRecallHighlightOutlinePx = 0; (window.canalRecallGame.vectorMap.map ?? window.canalRecallGame.vectorMap.cameraMap).triggerRepaint(); return v; });
   await page.waitForTimeout(1200);
   const offPng = await canvas.screenshot();
   await page.evaluate(v => { window.__canalRecallHighlightOutlinePx = v; window.canalRecallGame.vectorMap.setActiveLandmark(null); for (const e of document.body.querySelectorAll('*')) e.style.visibility = ''; }, before);
