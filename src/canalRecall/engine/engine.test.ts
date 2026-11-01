@@ -116,6 +116,26 @@ test('FrameHost: fixed ticks, render on demand, context loss and restore, guarde
   host.stop();
 });
 
+test('FrameHost: covered frames are throttled, and the first uncovered frame draws what is dirty', async () => {
+  const { FrameHost } = await import('./frameHost');
+  const canvas: any = { style: {}, width: 0, height: 0, addEventListener() {}, remove() {} };
+  const container: any = { clientWidth: 400, clientHeight: 300, ownerDocument: { createElement: () => canvas }, appendChild() {} };
+  const createRenderer = () => ({ getContext: () => ({ isContextLost: () => false }), clear() {}, setViewport() {}, setRenderTarget() {}, dispose() {} });
+  let frames: Array<(t: number) => void> = [], renders = 0, covered: number | null = 500, now = 0;
+  const host = new FrameHost({}, container, { render: () => { renders++; }, coveredFrameMs: () => covered }, { createRenderer, pixelRatio: 1, now: () => now, requestFrame: cb => { frames.push(cb); return frames.length; }, cancelFrame() {} });
+  host.start();
+  const step = (t: number) => { now = t; const f = frames; frames = []; for (const cb of f) cb(t); };
+  step(1000); assert.equal(renders, 1, 'the first covered frame draws');
+  for (const t of [1016, 1100, 1400]) { host.triggerRepaint(); step(t); }
+  assert.equal(renders, 1, 'covered: no render within 500 ms of the last');
+  assert.equal(host.stats.coveredSkips, 3);
+  step(1500); assert.equal(renders, 2, 'the dirty frame draws once 500 ms have passed');
+  host.triggerRepaint(); step(1510); assert.equal(renders, 2);
+  covered = null; step(1520); assert.equal(renders, 3, 'uncovered: the kept dirty frame draws at once');
+  step(1530); assert.equal(renders, 3, 'and only when dirty');
+  host.stop();
+});
+
 test('isWater over the overview water: Singelgracht at the Da Costagracht mouth (named regression)', async () => {
   const { readFileSync } = await import('node:fs');
   const { gunzipSync } = await import('node:zlib');
@@ -268,7 +288,7 @@ test('overview v2 layers: landuse, piers and rail add meshes on the shared flat 
 
 test('settled: whenIdle waits for every named loader check, polling while work finishes off-frame', async () => {
   const { CameraMap } = await import('./cameraMap');
-  const { settlePending } = await import('./settle');
+  const { settlePending, SETTLE_FACADE_RING_M } = await import('./settle');
   const listeners: Record<string, Array<() => void>> = {};
   let repaints = 0;
   const host: any = {
@@ -309,6 +329,24 @@ test('settled: whenIdle waits for every named loader check, polling while work f
   assert.equal(hurriedStyling, 1);
   styling = false;
   assert.deepEqual(settlePending(view), []);
+  // The facades hold on the ring the first racing frame shows, not on every shell of the resident tiles.
+  let asked: number | undefined;
+  view._threeBuildings = { loadingCount: 9, loadingWithin: (r: number) => { asked = r; return 0; }, hurryAtlas: () => {} };
+  assert.deepEqual(settlePending(view), [], 'far shells still queued do not hold the view');
+  assert.equal(asked, SETTLE_FACADE_RING_M);
+});
+
+test('chunkKeyDistanceM: detail block and kits are always wanted; coarse shells by their z14 tile', async () => {
+  const { chunkKeyDistanceM } = await import('../chunkKeyDistance');
+  const at: [number, number] = [4.8840, 52.3700]; // z14 tile 8414/5384 (Westerkerk)
+  assert.equal(chunkKeyDistanceM('near:33656/21537', at), 0);
+  assert.equal(chunkKeyDistanceM('extras:33656/21537', at), 0);
+  assert.equal(chunkKeyDistanceM('__kit', at), 0);
+  assert.equal(chunkKeyDistanceM('coarse:8414/5384', at), 0, 'the rider\'s own shell');
+  const east = chunkKeyDistanceM('coarse:8415/5384', at), far = chunkKeyDistanceM('coarse:8416/5384', at);
+  assert.ok(east > 0 && east < 1500, `the next tile east starts within a tile width (${east})`);
+  assert.ok(far > east + 1400, `two tiles east is a tile width further (${far})`);
+  assert.equal(chunkKeyDistanceM('coarse:8415/5384', null), 0, 'no rider yet: everything counts');
 });
 
 test('map shim getBounds is MapLibre LngLatBounds-shaped: contains (artis-animals.js), getWest… (park-landscape.js)', async () => {

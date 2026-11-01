@@ -38,6 +38,7 @@ import { boatForLandmark, houseboatGeometry, houseboatsByTile, type Houseboat } 
 import { buildKitChunk, type Chunk } from './threeBuildingMesh.js';
 import { FALLBACK_REACH_M, SegmentGrid, streetSegments } from './streetFronts.js';
 import { buildPrismGrid, buildPrismIndex, pickPrismGrid, type PrismEntry, type PrismGrid } from './prismPick.js';
+import { chunkKeyDistanceM } from './chunkKeyDistance.js';
 import { ORIGIN, asPolygons, cellSetOf, type BuildingLook, type Feature } from './threeBuildingFeatures.js';
 export { ORIGIN, type BuildingLook };
 import { FACADE_STYLES, type FacadeStyle } from './genericFacades.js';
@@ -1575,6 +1576,21 @@ export class ThreeBuildings {
   get loadingCount(): number {
     if (!this.visible || this.view.zoom() < MIN_ZOOM) return 0;
     return this.pending.length + this.inflight.size + this.staged.length + (!this.ready && this.textureSets.size ? 1 : 0);
+  }
+
+  /**
+   * What the settle hold waits for (#129, 2026-11-01): the chunks still to build or install that the first racing
+   * frame shows. Every detail-block chunk (`near:` / `extras:`, the block around the rider), the kits, and the z14
+   * coarse shells and houseboat chunks whose tile comes within `ringM` of the rider; plus the atlas while it binds.
+   * `loadingCount` also counts shells out to the far edge of the resident tiles (1.1-1.9 km), which the hold need not
+   * wait for: they install while riding, as before.
+   */
+  loadingWithin(ringM: number): number {
+    if (!this.visible || this.view.zoom() < MIN_ZOOM) return 0;
+    const keys = [...this.pending.keys(), ...this.inflight.keys(), ...this.staged.map(job => job.key)];
+    let n = !this.ready && this.textureSets.size ? 1 : 0;
+    for (const key of new Set(keys)) if (chunkKeyDistanceM(key, this.rider, TILE_ZOOM) <= ringM) n++;
+    return n;
   }
 
   /** Whether this layer draws through the shared frame. */

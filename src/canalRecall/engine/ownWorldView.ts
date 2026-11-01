@@ -49,6 +49,13 @@ declare const CANVAS_W: number;
 declare const CANVAS_H: number;
 
 const W = () => globalThis as any;
+/** GameState.LOADING (game/utilityTuck.ts UTILITY_STATES). */
+const LOADING_STATE = 2;
+/**
+ * Least ms between world renders while the loading screen covers them (FrameHost.coveredFrameMs): the GPU still
+ * uploads and compiles behind it, once a second, and the chunk builds the settle hold waits for get the main thread.
+ */
+export const COVERED_FRAME_MS = 1000;
 const flag = (param: string, global: string, fallback: boolean): boolean => {
   const g = W();
   if (typeof g[global] === 'boolean') return g[global];
@@ -186,6 +193,8 @@ export class OwnWorldView {
     const clear = typeof sky?.['sky-color'] === 'string' ? new THREE.Color(sky['sky-color']).getHex() : 0xbfd8ee;
     this.host = new FrameHost(THREE, container, {
       render: () => this.renderFrame(),
+      // The game's loading screen (GameState.LOADING, presentationRuntime.ts) paints over the world opaquely.
+      coveredFrameMs: () => (W().canalRecallGame?.state === LOADING_STATE ? COVERED_FRAME_MS : null),
     }, { antialias, pixelRatio: Math.min(dpr, cap), clearColor: clear, renderOnChange: flag('renderOnChange', '__canalRecallRenderOnChange', true) });
     // Quality tier (renderGovernor.ts): chosen once from a ~1 s fill probe and what the browser reports; it sets
     // the start and the ceiling of the knobs below, the governor steps inside it. `?tier=low|mid|high` forces one.
