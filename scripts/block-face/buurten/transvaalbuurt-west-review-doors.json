@@ -1,0 +1,78 @@
+{
+ "note": "Door sides pinned after reading the strip sheets at gallery size (blockFace/reviewDoors.ts): the door detector reads nothing on these rows.",
+ "reviewed": "2026-11-01",
+ "pins": [
+  {
+   "pandId": "0363100012109842",
+   "type": "vaalrivier-1931-row",
+   "side": "right",
+   "reason": "Vaalrivierstraat 14, strip 2020-04-29: the blue double portiek doors stand at the pand's right end, a group of four with the neighbour's across the party wall (#153)"
+  },
+  {
+   "pandId": "0363100012120724",
+   "type": "vaalrivier-1931-row",
+   "side": "left",
+   "reason": "Vaalrivierstraat 12, strip 2020-04-29: the blue double portiek doors stand at the pand's left end, a group of four with the neighbour's across the party wall (#153)"
+  },
+  {
+   "pandId": "0363100012090866",
+   "type": "vaalrivier-1931-row",
+   "side": "right",
+   "reason": "Vaalrivierstraat 10, strip 2020-04-29: the blue double portiek doors stand at the pand's right end, a group of four with the neighbour's across the party wall (#153)"
+  },
+  {
+   "pandId": "0363100012108545",
+   "type": "vaalrivier-1931-row",
+   "side": "left",
+   "reason": "Vaalrivierstraat 8, strip 2020-04-29: the blue double portiek doors stand at the pand's left end, a group of four with the neighbour's across the party wall (#153)"
+  },
+  {
+   "pandId": "0363100012090850",
+   "type": "vaalrivier-1931-row",
+   "side": "right",
+   "reason": "Vaalrivierstraat 6, strip 2020-04-29: the blue double portiek doors stand at the pand's right end, a group of four with the neighbour's across the party wall (#153)"
+  },
+  {
+   "pandId": "0363100012137594",
+   "type": "vaalrivier-1931-row",
+   "side": "left",
+   "reason": "Vaalrivierstraat 4, strip 2020-04-29: the blue double portiek doors stand at the pand's left end, a group of four with the neighbour's across the party wall (#153)"
+  },
+  {
+   "pandId": "0363100012131537",
+   "type": "vaalrivier-1931-row",
+   "side": "right",
+   "reason": "Vaalrivierstraat 22, strip 2020-04-29: the blue double portiek doors stand at the pand's right end, a group of four with the neighbour's across the party wall (#153)"
+  },
+  {
+   "pandId": "0363100012076039",
+   "type": "vaalrivier-1931-row",
+   "side": "left",
+   "reason": "Vaalrivierstraat 20, strip 2020-04-29: the blue double portiek doors stand at the pand's left end, a group of four with the neighbour's across the party wall (#153)"
+  },
+  {
+   "pandId": "0363100012092908",
+   "type": "vaalrivier-1931-row",
+   "side": "right",
+   "reason": "Vaalrivierstraat 18, strip 2020-04-29: the blue double portiek doors stand at the pand's right end, a group of four with the neighbour's across the party wall (#153)"
+  },
+  {
+   "pandId": "0363100012076608",
+   "type": "vaalrivier-1931-row",
+   "side": "left",
+   "reason": "Vaalrivierstraat 16, strip 2020-04-29: the blue double portiek doors stand at the pand's left end, a group of four with the neighbour's across the party wall (#153)"
+  },
+  {
+   "pandId": "0363100012108224",
+   "type": "vaalrivier-1931-row",
+   "side": "right",
+   "reason": "Kraaipanstraat 63, strip 2020-04-29: the blue double portiek doors stand at the pand's right end, a group of four with the neighbour's across the party wall (#153)"
+  },
+  {
+   "pandId": "0363100012145617",
+   "type": "vaalrivier-1931-row",
+   "side": "left",
+   "reason": "Kraaipanstraat 65, strip 2020-04-29: the blue double portiek doors stand at the pand's left end, a group of four with the neighbour's across the party wall (#153)"
+  }
+ ]
+}

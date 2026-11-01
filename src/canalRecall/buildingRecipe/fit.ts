@@ -1280,12 +1280,13 @@ export const paintedPanelId = (k: number) => `painted-panel-${k}`;
  * the first painted storey (plus `from`) to the top of the painted storeys, 1 cm proud of them; cut around the openings.
  */
 function paintedPanelBlocks(front: FrontIntent, layout: Layout, width: number, eaves: number, flipX: (x: number, w: number) => number): CanalhouseFacadeBlock[] {
-  const ps = front.paintedStoreys!, painted = paintedStoreyBands(front, layout, width, eaves);
-  if (!painted.length) return [];
-  const bottom = Math.min(...painted.map(b => b.bottomM)), top = Math.max(...painted.map(b => b.bottomM + b.heightM));
-  return ps.panels!.map((q, k) => {
+  const ps = front.paintedStoreys!, heights = layout.storeyHeights.slice(layout.groundBase > 0 ? 1 : 0);
+  const floor = (s: number) => layout.groundBase + heights.slice(0, s).reduce((a, h) => a + h, 0), top = eaves - 0.02;
+  return ps.panels!.flatMap((q, k) => {
+    const s = q.fromStorey ?? ps.storeys[0], bottom = (s === 0 ? Math.max(floor(0), 0.3) : floor(s)) + (q.fromStorey === undefined ? ps.from ?? 0 : 0);
+    if (s >= heights.length || top - bottom <= 0.1) return [];
     const w = Math.min(q.breadth, width - 0.1), left = Math.min(Math.max(layout.axisCentres[q.axis] - w / 2, 0.05), width - w - 0.05);
-    return {id: paintedPanelId(k), leftM: round(flipX(left, w)), bottomM: round(bottom), widthM: round(w), heightM: round(top - bottom), depthM: PAINTED_STOREY_DEPTH_M + 0.01, surface: 'wall' as const};
+    return [{id: paintedPanelId(k), leftM: round(flipX(left, w)), bottomM: round(bottom), widthM: round(w), heightM: round(top - bottom), depthM: PAINTED_STOREY_DEPTH_M + 0.01, surface: 'wall' as const}];
   });
 }
 

@@ -3,7 +3,7 @@
  "kind": "house-type",
  "id": "transvaal-1929-block",
  "district": "transvaalbuurt",
- "description": "Transvaalbuurt 1929 portiek blocks of Tugelaweg 91-120: 14 m stair blocks of a dark purple-brown brick ground storey (to 4.0 m) under three cream-rendered storeys and a flat roof run out as a deep white eaves slab (fascia 13.0-13.4 m); one grey rendered stair panel about 2 m wide over the portiek door on the block's middle axis, a small square stair light per storey in it; either side a narrow window and a wide white band window of four or five lights under a top-light row, and at both ends a balcony door with a projecting iron balcony on storeys 1-3",
+ "description": "Transvaalbuurt 1929 portiek blocks of Tugelaweg 91-120: 14 m stair blocks of a dark purple-brown brick ground storey (to 4.0 m) under three cream-rendered storeys and a flat roof run out as a deep white eaves slab; one grey rendered stair panel about 1.9 m wide over the portiek door on the block's middle axis, a small stair light per storey in it; either side a narrow window, a 1.6 m window with a small iron balcony on storeys 1-3, and at both ends half of a wide band window that the neighbour completes across the party wall",
  "fit": {
   "widthM": [
    13.5,
@@ -42,11 +42,11 @@
    ],
    "axisPitchM": [
     1.2,
-    3.5
+    5.0
    ]
   },
   "crownFromType": "flat-overhang",
-  "note": "BAG 1929 on both Tugelaweg faces (91-112, 113-120); every stair block 14.0-15.0 m, 3DBAG eaves 12.9-13.0 m and bouwlagen 5 (the eaves slab counts), roof max 17.2-18.3 m (roof plant and stair heads, not a pitched roof). The cream render reads stucco on the 2020-04-29 strip (wall #b2a98f-#bbb39c raw), which no brick 1928-1931 block of the buurt does (Schalk Burgerstraat 45-131, Afrikanerplein 1-55, Albert Luthulistraat 6-32 are brick): stucco and wall are the criteria that keep the type off them. The end pands 91-92 (15.7 m, eaves 9.9 m: the three-storey corner wing) and 119-120 (eaves 9.9 m) fall outside the storey count and stay with the city tier."
+  "note": "BAG 1929 on both Tugelaweg faces (91-112, 113-120); every stair block 14.0-15.0 m, 3DBAG eaves 12.9-13.0 m and bouwlagen 5 (the eaves slab counts), roof max 17.2-18.3 m (roof plant and stair heads, not a pitched roof). The cream render reads stucco on the 2020-04-29 strip (wall #b2a98f-#bbb39c raw), which no brick 1928-1931 block of the buurt does (Schalk Burgerstraat 45-131, Afrikanerplein 1-55, Albert Luthulistraat 6-32 are brick): stucco and wall are the criteria that keep the type off them. The end pands 91-92 (15.7 m, eaves 9.9 m: the three-storey corner wing) and 119-120 (eaves 9.9 m) fall outside the storey count and stay with the city tier. Axis pitch 1.2-5.0 m: the strip's window columns read 3 on the 14 m blocks (measureFacade groups each band window with its narrow neighbour; 95-96 reads 3 columns = 4.66 m)."
  },
  "body": {
   "storeys": 4,
@@ -66,7 +66,9 @@
   "cornice": "none",
   "windows": "casement-toplight",
   "axisWindows": {
-   "3": "plain"
+   "2": "plain",
+   "3": "plain",
+   "4": "plain"
   },
   "windowHeights": [
    0.41,
@@ -81,22 +83,22 @@
    0.69
   ],
   "bayWidths": [
+   1.6,
+   3.0,
+   2.0,
    1.9,
-   3.4,
-   1.5,
-   2.2,
-   1.5,
-   3.4,
-   1.9
+   2.0,
+   3.0,
+   1.6
   ],
   "bayFill": [
+   0.95,
    0.6,
-   0.9,
-   0.75,
-   0.35,
-   0.75,
-   0.9,
-   0.6
+   0.5,
+   0.3,
+   0.5,
+   0.6,
+   0.95
   ],
   "balconies": {
    "storeys": [
@@ -105,23 +107,21 @@
     3
    ],
    "bays": [
-    0,
-    6
-   ],
-   "projecting": true
+    1,
+    5
+   ]
   },
   "paintedStoreys": {
    "storeys": [
-    1,
-    2,
-    3
+    0
    ],
-   "colour": "#cdc4a8",
+   "colour": "#474443",
    "panels": [
     {
      "axis": 3,
-     "breadth": 2.0,
-     "colour": "#abaca5"
+     "breadth": 1.9,
+     "colour": "#abaca5",
+     "fromStorey": 1
     }
    ]
   }
@@ -157,19 +157,23 @@
  },
  "palettes": {
   "cream-render": {
-   "brick": "#474443",
+   "brick": "#b8b097",
    "frame": "white-painted",
    "door": "#7a3a24",
-   "stone": "#8e8c86"
+   "stone": "#8e8c86",
+   "wallMaterial": "stucco"
   }
  },
  "roof": {
-  "material": "bitumen"
+  "material": "bitumen",
+  "source": "front",
+  "form": "flat",
+  "evidence": "strip 2020-04-29: sky directly over the eaves slab along the whole of 93-118; no roof face shows from the street (3DBAG roof max 17.2-18.3 m reads roof plant and a set-back roof behind)"
  },
  "rhythm": {
-  "bays": "balcony door, band window, narrow window, stair panel, narrow window, band window, balcony door",
-  "identicalBays": "no: band windows 3 m, narrow windows 1.1 m, the stair axis a small light",
-  "windowsPerStorey": "ground: windows + portiek door | 1-3: balcony door + band window + window + stair light + window + band window + balcony door",
+  "bays": "half band window, balcony window, narrow window, stair panel, narrow window, balcony window, half band window",
+  "identicalBays": "no: the end band windows straddle the party walls, the stair axis a small light",
+  "windowsPerStorey": "ground: windows + portiek door | 1-3: band window (shared) + balcony window + narrow window + stair light + narrow window + balcony window + band window (shared)",
   "symmetry": "symmetric about the stair panel",
   "groundFloor": "dark brick, the portiek door under the stair panel, band windows either side",
   "signage": "none",
@@ -199,15 +203,25 @@
     "118471"
    ],
    "citation": "strip.jpg 2020-04-29: the same block on 113-118, grey stair panels at a 14 m pitch"
+  },
+  {
+   "face": "tugelaweg-91-112",
+   "pands": [
+    "102941"
+   ],
+   "citation": "strip.jpg 2020-04-29, 1 m grid on 105-106 (14.0 m): stair panel 5.3-7.2 m, narrow windows 4.1-5.1 and 7.2-7.7 m, 1.5-2 m windows with small projecting iron balconies (0.6-1 m rails) on storeys 1-3 at 1.1-2.6 and 9.2-11.0 m, slit lights at 0.4 and 11.3 m, wide windows at 12.3-14 m and 0-0.5 m running across the party walls"
   }
  ],
  "schemaLimits": [
   "the stair panel's paired slit lights per half landing are drawn as one small light per storey on the stair axis",
-  "the band windows' top-light rows of small panes and the narrow side lights are a plain top light",
-  "the ground storey's orange header specks in the dark brick are not drawn",
-  "BAG cuts the row so that the stair panel sits 1-1.8 m off the pand centre on some blocks (95-96 at 5.2 m of 13.9 m); the type draws it centred"
+  "the band windows' top-light rows of small panes and the slit lights beside the balcony windows are not drawn",
+  "the dark brick ground storey is a dark paint facing over the render (plaster grain, not brick; its orange header specks are not drawn)",
+  "BAG cuts the row so that the stair panel sits up to 1.8 m off the pand centre on some blocks (95-96 at 5.2 m of 13.9 m); the type draws it centred",
+  "the small iron balconies (0.3 m out) are drawn as flush guards, and the narrow windows either side of the stair panel without their top light: with both the stair block is 3,446 triangles against the 3,000 budget (flush guards 3,086, plain narrow windows 2,894)"
  ],
  "notes": [
-  "Kit (2026-11-01, #153): paintedStoreys.panels draws the grey stair panel over the cream render (fit.ts paintedPanelBlocks)."
+  "Kit (2026-11-01, #153): paintedStoreys.panels (fit.ts paintedPanelBlocks) draws the grey stair panel; the wall is the cream render (palette wallMaterial stucco) and the dark ground storey is paintedStoreys [0], one cut facing instead of three: the three painted upper storeys cost 790 triangles and put the stair block over the 3,000-triangle budget.",
+  "Roof: flat from the front (source front, form flat). The 3DBAG roof drew a 3-4 m red roof face over the slab that the strip never shows (tugelaweg-113-120-r1 sheet, 2026-11-01); only the end of the corner wing shows a roof face rising far behind.",
+  "Palette: the cream is the raw strip reading #b8b097 (the trim-normalised #cdc4a8 drew the stucco wall dL +0.16 lighter than the photo on 101-102 and 105-106)."
  ]
 }

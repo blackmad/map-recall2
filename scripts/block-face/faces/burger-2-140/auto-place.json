@@ -3,7 +3,7 @@
  "street": "Schalk Burgerstraat",
  "library": "transvaalbuurt",
  "stripDate": "2020-04-30",
- "seconds": 8.6,
+ "seconds": 6.11,
  "thresholds": {
   "minScore": 0.7,
   "margin": 0.05,
@@ -89,11 +89,8 @@
     "iou": 0.276
    },
    "challengers": {
-    "transvaal-1923-portiek-tower": 0.105,
     "transvaal-1911-five-storey-tall": 0.113,
-    "transvaal-1911-five-storey-tall~m": 0.063,
-    "transvaal-1911-five-storey": 0.164,
-    "transvaal-1911-five-storey~m": 0.073
+    "transvaal-1911-five-storey": 0.164
    }
   },
   {
@@ -200,11 +197,8 @@
     "iou": 0.115
    },
    "challengers": {
-    "transvaal-1923-portiek-tower": -0.069,
     "transvaal-1911-five-storey-tall": 0.055,
-    "transvaal-1911-five-storey-tall~m": 0.055,
-    "transvaal-1911-five-storey": 0.068,
-    "transvaal-1911-five-storey~m": 0.068
+    "transvaal-1911-five-storey": 0.068
    }
   },
   {

@@ -495,8 +495,8 @@ export interface FrontIntent {
    * over the floor; Zaanhof 1919: the render starts over the first-floor window heads, 3.3 m up a tall top storey; absent = from the floor).
    * `panels` (Transvaalbuurt 1929, Tugelaweg 91-120: a grey rendered stair panel over the portiek axis of a cream-rendered
    * block): a second paint `breadth` metres wide centred on grid `axis`, 1 cm proud of the painted storeys, from the floor
-   * of the first listed storey (plus `from`) to the top of the paint, cut around the openings like them, in its own
-   * measured `colour`. Absent = byte-identical.
+   * of storey `fromStorey` (default the first listed storey, plus `from`) to 2 cm under the eaves, cut around the openings
+   * like them, in its own measured `colour`. Absent = byte-identical.
    */
   paintedStoreys?: {storeys: number[]; colour: string; from?: number; panels?: PaintedPanel[]};
   /**
@@ -1804,7 +1804,7 @@ export function tilePanelProblems(f: FrontIntent, at: string): string[] {
 }
 
 /** A painted panel over the painted storeys (`paintedStoreys.panels`): centred on a grid axis, `breadth` metres wide. */
-export interface PaintedPanel { axis: number; breadth: number; colour: string }
+export interface PaintedPanel { axis: number; breadth: number; colour: string; fromStorey?: number }
 /** Validation range of a panel's breadth (m). */
 export const PAINTED_PANEL_BREADTH = [0.3, 4] as const;
 
@@ -1818,7 +1818,8 @@ export function paintedStoreyProblems(f: FrontIntent, at: string): string[] {
     if (!Array.isArray(panels) || !panels.length) p.push(`${at}.paintedStoreys.panels: a non-empty list of {axis, breadth, colour}`);
     else panels.forEach((q: unknown, k) => {
       const o = q as Record<string, unknown>, a = `${at}.paintedStoreys.panels[${k}]`;
-      if (!o || typeof o !== 'object' || Object.keys(o).some(x => !['axis', 'breadth', 'colour'].includes(x))) { p.push(`${a}: {axis, breadth, colour}`); return; }
+      if (!o || typeof o !== 'object' || Object.keys(o).some(x => !['axis', 'breadth', 'colour', 'fromStorey'].includes(x))) { p.push(`${a}: {axis, breadth, colour, fromStorey?}`); return; }
+      if (o.fromStorey !== undefined && !(Number.isInteger(o.fromStorey) && (o.fromStorey as number) >= 0 && (o.fromStorey as number) < f.storeys)) p.push(`${a}.fromStorey: a storey 0..${f.storeys - 1}`);
       if (!(Number.isInteger(o.axis) && (o.axis as number) >= 0 && (o.axis as number) < grid)) p.push(`${a}.axis: an axis of the shared grid, 0..${grid - 1}`);
       if (!(typeof o.breadth === 'number' && o.breadth >= PAINTED_PANEL_BREADTH[0] && o.breadth <= PAINTED_PANEL_BREADTH[1])) p.push(`${a}.breadth: ${PAINTED_PANEL_BREADTH.join('..')} m`);
       if (typeof o.colour !== 'string' || !/^#[0-9a-f]{6}$/i.test(o.colour)) p.push(`${a}.colour: a #rrggbb paint colour`);

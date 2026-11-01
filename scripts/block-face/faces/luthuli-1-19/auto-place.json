@@ -3,7 +3,7 @@
  "street": "Albert Luthulistraat",
  "library": "transvaalbuurt",
  "stripDate": "2020-04-29",
- "seconds": 5.04,
+ "seconds": 5.63,
  "thresholds": {
   "minScore": 0.7,
   "margin": 0.05,
@@ -102,9 +102,7 @@
     },
     "iou": 0.14
    },
-   "challengers": {
-    "transvaal-1923-portiek-tower": 0.013
-   }
+   "challengers": {}
   },
   {
    "pandId": "0363100012142304",
@@ -189,9 +187,7 @@
     },
     "iou": 0.234
    },
-   "challengers": {
-    "transvaal-1923-portiek-tower": 0.233
-   }
+   "challengers": {}
   },
   {
    "pandId": "0363100012110043",

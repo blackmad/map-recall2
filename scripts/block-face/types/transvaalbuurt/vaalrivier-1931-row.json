@@ -105,7 +105,7 @@
   }
  },
  "roof": {
-  "material": "bitumen"
+  "material": "red-tile"
  },
  "rhythm": {
   "bays": "door group, three windows",
@@ -144,6 +144,7 @@
   "the plant boxes on the door canopy are not drawn"
  ],
  "notes": [
-  "Palette: the type default is a mid brown; every placed pand takes its trim-normalised strip wall (auto-place measuredPalette)."
+  "Palette: the type default is a mid brown; every placed pand takes its trim-normalised strip wall (auto-place measuredPalette).",
+  "Roof: red-tile. Kraaipanstraat 63-65 (2020-04-29) shows the orange-red tile roof rising behind the eaves slab; 3DBAG roof max 9.1-9.5 m over 6.0-6.3 m eaves."
  ]
 }

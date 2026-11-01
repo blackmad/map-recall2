@@ -3,7 +3,7 @@
  "street": "Danie Theronstraat",
  "library": "transvaalbuurt",
  "stripDate": "2020-04-29",
- "seconds": 2.02,
+ "seconds": 1.92,
  "thresholds": {
   "minScore": 0.7,
   "margin": 0.05,
@@ -72,25 +72,23 @@
    },
    "status": "held",
    "stage": "match",
-   "reason": "every type vetoed (best transvaal-1911-five-storey-tall: built 1928, type 1908-1914)",
+   "reason": "best vaalrivier-1931-row scores 0.4 < 0.7 (3DBAG eaves 12.52 m = 2 storeys of 6.26 m vs the type's 3.17 m; 3DBAG bouwlagen 5 vs 2/3; strip columns 5 vs 4 bays)",
    "best": {
-    "type": "transvaal-1911-five-storey-tall",
-    "score": 0,
-    "veto": [
-     "built 1928, type 1908-1914"
-    ],
+    "type": "vaalrivier-1931-row",
+    "score": 0.4,
+    "veto": [],
     "criteria": [
      {
       "key": "eaves",
       "weight": 2,
-      "score": 0.5,
-      "note": "3DBAG eaves 12.52 m = 4 storeys of 3.13 m vs the type's 3.55 m"
+      "score": 0,
+      "note": "3DBAG eaves 12.52 m = 2 storeys of 6.26 m vs the type's 3.17 m"
      },
      {
       "key": "storeys",
       "weight": 1,
-      "score": 1,
-      "note": "3DBAG bouwlagen 5 vs 5"
+      "score": 0,
+      "note": "3DBAG bouwlagen 5 vs 2/3"
      },
      {
       "key": "stucco",
@@ -101,8 +99,8 @@
      {
       "key": "columns",
       "weight": 1.5,
-      "score": 0,
-      "note": "strip columns 5 vs 3 bays"
+      "score": 0.4,
+      "note": "strip columns 5 vs 4 bays"
      }
     ]
    },

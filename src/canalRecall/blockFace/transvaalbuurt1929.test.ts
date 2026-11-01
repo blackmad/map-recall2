@@ -22,11 +22,12 @@ function house(typeId: string, pand: string, street: string, mirror = false): Ca
 }
 const named = (g: T.Object3D, re: RegExp) => { const out: T.Mesh[] = []; g.traverse(o => { if (o instanceof T.Mesh && re.test(o.name)) out.push(o); }); return out; };
 
-test('1929 block: seven axes, cream upper storeys, the grey panel on the stair axis, a deep eaves slab', () => {
-  const f = house('transvaal-1929-block', '075050', 'Tugelaweg').fronts[0];
+test('1929 block: seven axes, a cream render wall over a dark ground storey, the grey panel on the stair axis, a deep eaves slab', () => {
+  const h = house('transvaal-1929-block', '075050', 'Tugelaweg'), f = h.fronts[0];
   assert.equal(f.axisGrid, 7);
-  assert.deepEqual(f.paintedStoreys?.storeys, [1, 2, 3]);
-  assert.deepEqual(f.paintedStoreys?.panels, [{axis: 3, breadth: 2.0, colour: '#abaca5'}]);
+  assert.equal(h.palette.wallMaterial, 'stucco');
+  assert.deepEqual(f.paintedStoreys?.storeys, [0]);
+  assert.deepEqual(f.paintedStoreys?.panels, [{axis: 3, breadth: 1.9, colour: '#abaca5', fromStorey: 1}]);
   assert.equal(f.doorBay, 3);
   assert.equal(f.eavesOverhang?.projection, 0.9);
   // a panel off the centre moves to the mirrored axis
@@ -40,16 +41,19 @@ test('paintedStoreys.panels validation: axis on the grid, breadth range, colour'
   assert.match(bad([{axis: 3, breadth: 9, colour: '#abaca5'}]), /panels\[0\]\.breadth/);
   assert.match(bad([{axis: 3, breadth: 2, colour: 'grey'}]), /panels\[0\]\.colour/);
   assert.match(bad([]), /non-empty/);
+  assert.match(bad([{axis: 3, breadth: 2, colour: '#abaca5', fromStorey: 4}]), /panels\[0\]\.fromStorey/);
 });
 
-test('compile: Tugelaweg 95-96 and 93-94 carry the panel in its colour over the cream storeys; 113-114 mirrored', async () => {
+test('compile: Tugelaweg 95-96 and 93-94 carry the panel in its colour from the first floor to the eaves, the dark ground storey; 113-114 mirrored', async () => {
   for (const [face, pand, mirror] of [['tugelaweg-91-112', '075050', false], ['tugelaweg-91-112', '144774', false], ['tugelaweg-113-120', '086731', true]] as const) {
     const built = await compileBuilding(house('transvaal-1929-block', pand, 'Tugelaweg', mirror), facts(face, pand));
-    const panels = named(built.group, /painted-panel-0\//), storeys = named(built.group, /painted-storey-s\d\//);
+    const panels = named(built.group, /painted-panel-0\//), storeys = named(built.group, /painted-storey-s0\//);
+    const box = new T.Box3(); for (const m of panels) box.expandByObject(m);
+    assert.ok(box.min.y > 3.5 && box.max.y > 12, `${pand}: panel ${box.min.y.toFixed(2)}-${box.max.y.toFixed(2)} m`);
     assert.ok(panels.length > 0, `${pand}: panel meshes`);
     assert.ok(storeys.length > 0, `${pand}: painted storeys`);
     assert.equal('#' + (panels[0].material as T.MeshStandardMaterial).color.getHexString(), '#abaca5');
-    assert.equal('#' + (storeys[0].material as T.MeshStandardMaterial).color.getHexString(), '#cdc4a8');
+    assert.equal('#' + (storeys[0].material as T.MeshStandardMaterial).color.getHexString(), '#474443');
   }
 });
 
