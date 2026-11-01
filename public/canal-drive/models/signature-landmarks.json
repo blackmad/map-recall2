@@ -56737,6 +56737,275 @@
         "bytes": 103148,
         "triangles": 5139
       }
+    },
+    "havengebouw": {
+      "id": "havengebouw",
+      "name": "Havengebouw",
+      "modelUrl": "./models/havengebouw.glb",
+      "suppressOsmIds": [
+        "NL.IMBAG.Pand.0363100012179689",
+        "NL.IMBAG.Pand.0363100012179691"
+      ],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.89558337,
+          52.38142166
+        ],
+        "headingDegrees": 0,
+        "lengthMetres": 42.8,
+        "widthMetres": 59.6
+      },
+      "surveyed": {
+        "anchor": [
+          4.89558337,
+          52.38142166
+        ],
+        "northOffsetDegrees": 0,
+        "source": "Vertex average of the BAG 0363100012179689 outline (RD); tower and entrance-block (BAG 0363100012179691) outlines in native east/south metres (scripts/landmarks/havengebouw-prepare.ts). Storey lines, bays and openings measured on rectified Gemeente Amsterdam panoramas w02-121 and w03-31; slab, top floors and penthouse heights from 3DBAG; top floors and red columns from Wikimedia Commons photographs (scripts/landmarks/havengebouw-inventory.json)."
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 0,
+      "heightMetres": 53.9,
+      "bagYear": 1960,
+      "materialOverrides": {
+        "stone": "#d3cab0",
+        "brick": "#4e3d35",
+        "concrete": "#6f7478",
+        "glass": "#566a72",
+        "white": "#e3e2da",
+        "red": "#c2472f",
+        "blue": "#2e6688",
+        "frame": "#a3a9aa",
+        "slate": "#55595e"
+      },
+      "attribution": {
+        "title": "Havengebouw (W.M. Dudok and R.M.H. Magnée, 1960; municipal monument 216001)",
+        "author": "Map Recall",
+        "sourceUrl": "https://nl.wikipedia.org/wiki/Havengebouw_(Amsterdam)",
+        "licence": "CC BY 4.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "modifications": "Original texture-free flat-colour geometry: tiled plinth, dark-tiled columns and cream spandrels of the long fronts, balcony bays in white frames on the short fronts, set-back glazed top floors with the red steel columns, and the roof penthouse, from rectified Gemeente Amsterdam panoramas (CC BY 4.0) and Wikimedia Commons photographs (CC BY 3.0 / CC BY-SA 4.0 / CC0, read for proportion only); outlines from BAG (CC0), heights from 3DBAG (CC BY 4.0). No pixels or meshes imported."
+      },
+      "buildingFootprint": {
+        "type": "MultiPolygon",
+        "coordinates": [
+          [
+            [
+              [
+                4.8952446,
+                52.3814473
+              ],
+              [
+                4.8955247,
+                52.3813464
+              ],
+              [
+                4.8955686,
+                52.381391
+              ],
+              [
+                4.8955728,
+                52.3813899
+              ],
+              [
+                4.8955773,
+                52.3813892
+              ],
+              [
+                4.8955796,
+                52.381389
+              ],
+              [
+                4.8955842,
+                52.381389
+              ],
+              [
+                4.8955888,
+                52.3813895
+              ],
+              [
+                4.8955931,
+                52.3813905
+              ],
+              [
+                4.8955971,
+                52.3813919
+              ],
+              [
+                4.8956006,
+                52.3813938
+              ],
+              [
+                4.8956036,
+                52.3813959
+              ],
+              [
+                4.8956048,
+                52.3813971
+              ],
+              [
+                4.8956059,
+                52.3813984
+              ],
+              [
+                4.8956075,
+                52.381401
+              ],
+              [
+                4.8956083,
+                52.3814038
+              ],
+              [
+                4.8956083,
+                52.3814066
+              ],
+              [
+                4.8956076,
+                52.3814094
+              ],
+              [
+                4.8956069,
+                52.3814107
+              ],
+              [
+                4.895605,
+                52.3814133
+              ],
+              [
+                4.8956024,
+                52.3814156
+              ],
+              [
+                4.8955992,
+                52.3814176
+              ],
+              [
+                4.8955955,
+                52.3814193
+              ],
+              [
+                4.8957894,
+                52.381622
+              ],
+              [
+                4.8955085,
+                52.3817231
+              ],
+              [
+                4.8952446,
+                52.3814473
+              ]
+            ]
+          ],
+          [
+            [
+              [
+                4.8955247,
+                52.3813464
+              ],
+              [
+                4.8952446,
+                52.3814473
+              ],
+              [
+                4.8951689,
+                52.3813686
+              ],
+              [
+                4.8951736,
+                52.381367
+              ],
+              [
+                4.8951633,
+                52.3813563
+              ],
+              [
+                4.8952571,
+                52.381287
+              ],
+              [
+                4.8952906,
+                52.3812671
+              ],
+              [
+                4.8953904,
+                52.3812191
+              ],
+              [
+                4.8953775,
+                52.3812091
+              ],
+              [
+                4.8954228,
+                52.3811873
+              ],
+              [
+                4.8954791,
+                52.3812336
+              ],
+              [
+                4.8954316,
+                52.3812574
+              ],
+              [
+                4.895444,
+                52.3812696
+              ],
+              [
+                4.8954492,
+                52.3812678
+              ],
+              [
+                4.8954542,
+                52.3812725
+              ],
+              [
+                4.8955247,
+                52.3813464
+              ]
+            ]
+          ]
+        ]
+      },
+      "buildingCategory": "landmark",
+      "bounds": {
+        "min": [
+          -28.64900016784668,
+          -9.536743306171047e-8,
+          -33.955074310302734
+        ],
+        "max": [
+          14.58010482788086,
+          60.04999923706055,
+          25.996000289916992
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.89558337,
+          52.38142166
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 90,
+        "facadeBearingDegrees": 0,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 59.95107460021973,
+        "heightMetres": 60.04999933242798,
+        "depthMetres": 43.22910499572754,
+        "depthCoverage": 0.7253205536195896
+      },
+      "triangles": 10288,
+      "bytes": 164228,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
+      "lod1": {
+        "sourceHash": "dfd315d58de38070",
+        "buildVersion": 2,
+        "bytes": 63936,
+        "triangles": 2857
+      }
     }
   }
 }
