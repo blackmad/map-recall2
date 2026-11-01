@@ -1,5 +1,18 @@
 # Canal Recall — what is built
 
+**A click on an ordinary building hung the page since the lazy facts store; one request per card (2026-11-01).**
+Integrator. `_cardForClickedBuilding` asks `_requestBuildingFacts` whenever the
+row has no article (most of the city); the refresh on arrival rebuilt the
+card through the same path, which asked again, and a resident tile's
+`ensureAt` resolves at once, so the microtasks chained forever and the page
+stopped responding (on main since cd5be8a55, deployed in 6a0131868; the
+`check-poi-click-selection` fake stubs `_requestBuildingFacts` and the
+canal-recall year-card spec's fake threw before the loop, which is why no
+check caught it). `_factsInFlight` holds the card ids being asked for and the
+refresh never re-asks; `buildingFactsRequest.test.ts` (in `test:prism-pick`)
+fails against the unguarded code with "facts requested in a loop" and passes
+with the guard. What's New "Clicking an ordinary building no longer freezes
+the ride".
 **Ground planning paced on the page under `?engine=own`; three-buildings zoom and vehicle container off the camera shim (2026-11-01, #129).**
 L1 hand-back (13). The `prepareCell` continuation that owned the one 1× frame
 over 50 ms (the cell entering the ring: way-deck grouping, road-edge search,

@@ -29,7 +29,7 @@
     "check:stale-installs": "node --import tsx scripts/building-recipes/stale-installs.ts --strict",
     "audit:landmark-filler": "node --max-old-space-size=8192 --import tsx scripts/audit-landmark-filler.ts --check",
     "test:geometry-audit": "node --import tsx --test src/canalRecall/landmarks/geometryAudit.test.ts",
-    "test:prism-pick": "node --import tsx --test src/canalRecall/prismPick.test.ts && tsx scripts/check-poi-click-selection.ts",
+    "test:prism-pick": "node --import tsx --test src/canalRecall/prismPick.test.ts src/canalRecall/game/buildingFactsRequest.test.ts && tsx scripts/check-poi-click-selection.ts",
     "test:block-face": "node --import tsx --test src/canalRecall/blockFace/*.test.ts",
     "block-face:intake": "node --import tsx scripts/block-face/intake.ts",
     "block-face:compile": "node --import tsx scripts/block-face/compile.ts",

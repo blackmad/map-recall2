@@ -3,6 +3,11 @@
   "notes": [
     {
       "date": "2026-11-01",
+      "title": "Clicking an ordinary building no longer freezes the ride",
+      "text": "Since building facts started loading on the first click (31 October), a click on a house with a register year but no article asked for its facts again from inside its own refresh, forever, and the page stopped responding. One request per card now; the year card opens and the rest fills in once."
+    },
+    {
+      "date": "2026-11-01",
       "title": "Amsterdam's streets load three times faster",
       "text": "The Amsterdam street network now arrives as a compact binary file instead of a 14 MB JSON document: the same streets, decoded bit for bit (a test pins the published file to the shipped data), fetched and parsed in about 60 ms where it took 200. Routes, turn names and the reachability of every named spot are byte-identical. Other cities keep their JSON until their binaries are published.",
       "where": [
