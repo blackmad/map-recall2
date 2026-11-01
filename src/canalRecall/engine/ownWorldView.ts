@@ -303,7 +303,7 @@ export class OwnWorldView {
       const data = await decodeOverviewBytes(bytes);
       const prebuilt = await pooled;
       this.status.overviewBuilt = prebuilt ? 'pool' : 'main';
-      this._overview = new OverviewLayer(data, { center: () => this.camera.center(), zoom: () => this.camera.zoom(), rider: () => this.lastSubject, ground: () => (this._ownGround?.ready && this._ownGround.coversRect ? this._ownGround : null) }, prebuilt);
+      this._overview = new OverviewLayer(data, { center: () => this.camera.center(), zoom: () => this.camera.zoom(), rider: () => this.lastSubject, ground: () => (this._ownGround?.ready && this._ownGround.coversRect ? this._ownGround : null), repaint: () => this.host.triggerRepaint() }, prebuilt);
       // First in the main pass, under every 3D participant.
       this._sharedFrame.register('engine-overview', this._overview, { order: -100 });
       this.status.overview = { water: data.water.length, parks: data.parks.length, streets: data.streets.length };

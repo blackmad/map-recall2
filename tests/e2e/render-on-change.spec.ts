@@ -51,7 +51,15 @@ test('standing still draws nothing, the still frame equals a redraw, and riding 
       }
       return r;
     };
-    w.__captureRestore = () => { host.triggerRepaint = own; host.resize = ownResize; };
+    // A vehicle's repaint names the pose key that changed (player-vehicles-source.js _poseKey: lng, lat, angle, visible,
+    // altitude, surface pitch, zoom scale, ready | steer, lean, wheel spin).
+    const vehicles = Object.values(w.canalRecallGame.vectorMap).filter((v: any) => v && typeof v._repaintOnChange === 'function') as any[];
+    const ownRepaints = vehicles.map(v => v._repaintOnChange);
+    vehicles.forEach(v => {
+      const o = v._repaintOnChange;
+      v._repaintOnChange = function () { const before = this._drawnKey; o.call(this); if (this._drawnKey !== before) { const k = `pose ${before} -> ${this._drawnKey}`; w.__captureCallers[k] = (w.__captureCallers[k] ?? 0) + 1; } };
+    });
+    w.__captureRestore = () => { host.triggerRepaint = own; host.resize = ownResize; vehicles.forEach((v, i) => { v._repaintOnChange = ownRepaints[i]; }); };
     return host.stats.frames;
   });
   const still = await canvas.screenshot({ animations: 'disabled' });

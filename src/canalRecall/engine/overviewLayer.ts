@@ -113,6 +113,8 @@ export class OverviewLayer implements FrameParticipant {
    */
   private readonly near = { uRider: { value: new THREE.Vector2() }, uNearR: { value: 600 }, uNear: { value: 0 } };
   private coverCheckAt = -Infinity;
+  /** The inputs of the last cover check (rider metre, zoom, ground residency revision). */
+  private coverKey = '';
   private coveredR = 0;
   /** Span-culled geometries (cutSpans): the mesh that owns the spans and every mesh drawing that geometry. */
   private readonly spanned: { owner: THREE.Mesh; meshes: THREE.Mesh[]; line: boolean }[] = [];
@@ -121,7 +123,9 @@ export class OverviewLayer implements FrameParticipant {
   constructor(readonly data: OverviewData, private readonly view: {
     center(): { lng: number; lat: number }; zoom(): number; rider?(): [number, number] | null;
     /** The own ground (gameGround.ts coversRect), when there is one. */
-    ground?(): { coversRect(x0: number, y0: number, x1: number, y1: number): boolean } | null;
+    ground?(): { coversRect(x0: number, y0: number, x1: number, y1: number): boolean; coverRevision?: number } | null;
+    /** Ask the host for a frame (a cover check due later than this frame). */
+    repaint?(): void;
   }, prebuilt?: readonly BuiltOverviewGeometry[] | null) {
     this.root.name = 'engine-overview';
     this.water = new WaterIndex(data.water);
@@ -284,8 +288,16 @@ export class OverviewLayer implements FrameParticipant {
       const [x, y] = toLocal(rider[0], rider[1]);
       this.near.uRider.value.set(x, y);
       const now = performance.now();
-      if (now - this.coverCheckAt > 500) { this.coverCheckAt = now; this.coveredR = coveredRadius(ground, x, y); }
-    } else this.coveredR = 0;
+      // The radius only changes with the rider's spot, the zoom or the ground's residency. Throttled while those
+      // change, a check skipped here asks for the frame that runs it: otherwise a rider who stops (or a cell that
+      // finishes dissolving) within 500 ms of the last check kept the old radius on screen until some unrelated
+      // repaint, and a still frame differed from a redraw at the far road edges (#129 render on change, iPhone).
+      const key = `${Math.round(x)},${Math.round(y)},${this.view.zoom().toFixed(2)},${ground.coverRevision ?? ''}`;
+      if (key !== this.coverKey) {
+        if (now - this.coverCheckAt > 500) { this.coverCheckAt = now; this.coverKey = key; this.coveredR = coveredRadius(ground, x, y); }
+        else this.view.repaint?.();
+      }
+    } else { this.coveredR = 0; this.coverKey = ''; }
     this.near.uNearR.value = this.coveredR;
     this.near.uNear.value = this.coveredR > 0 ? 1 : 0;
     void handover;

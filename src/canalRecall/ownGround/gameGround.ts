@@ -647,8 +647,15 @@ export class OwnGround {
     this.far.delete(key);
   }
 
+  /**
+   * Bumped on every residency change (a cell installed, dropped, or done dissolving: each ends in syncFar), so a
+   * reader of coversRect (engine/overviewLayer.ts) knows when its answer may have changed.
+   */
+  coverRevision = 0;
+
   /** A far part hides once the resident ring draws its cell (after the cell's dissolve). */
   private syncFar(): void {
+    this.coverRevision++;
     for (const f of this.far.values()) for (const [key, mesh] of f.parts) {
       const r = this.resident.get(key);
       mesh.visible = !r || !!r.fade;

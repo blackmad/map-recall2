@@ -468,3 +468,32 @@ test('label layer: a policy change re-screens the indexed candidates and shows e
   layer.setPois(pois.slice(0, 10)); ctx = { ...ctx }; layer.rebuild(ctx);
   assert.equal(layer.screens.filter((s: any) => s.c.kind === 'poi').length, 10, 'new POIs re-index');
 });
+
+test('overview cover radius: a change inside the 500 ms throttle asks for the frame that applies it; unchanged inputs ask nothing', async () => {
+  const { decodeOverview } = await import('../ownMap/overviewFormat');
+  const { OverviewLayer } = await import('./overviewLayer');
+  const data = decodeOverview({ version: 1, frame: { origin: [4.9, 52.37], kx: 1, ky: 1 }, unit: 0.5, bounds: [-1000, -1000, 1000, 1000], names: [], water: [], parks: [], streets: [], waterLines: [], hoods: [], sources: [] } as never);
+  let covered = 0, revision = 0, repaints = 0;
+  const ground = { coversRect: (x0: number, _y0: number, x1: number) => (x1 - x0) / 2 <= covered, get coverRevision() { return revision; } };
+  const layer: any = new OverviewLayer(data, { center: () => ({ lng: 4.9, lat: 52.37 }), zoom: () => 17, rider: () => [4.9, 52.37], ground: () => ground, repaint: () => { repaints++; } });
+  const realNow = performance.now.bind(performance);
+  let now = 10_000;
+  (performance as any).now = () => now;
+  try {
+    const radius = () => { layer.beforeRender({} as never); return layer.near.uNearR.value as number; };
+    const first = radius();
+    assert.equal(repaints, 0, 'the first check runs at once');
+    // At rest with nothing changed: no check is due and nothing asks for frames.
+    now += 100; radius(); now += 100; radius();
+    assert.equal(repaints, 0, 'unchanged inputs: no repaint');
+    // A cell finishes dissolving 200 ms after the last check: the frame keeps the old radius but asks for another.
+    covered = 1e9; revision++;
+    now += 10; assert.equal(radius(), first, 'throttled: not yet');
+    assert.equal(repaints, 1, 'a skipped check asks for the frame that runs it');
+    now += 600;
+    const after = radius();
+    assert.ok(after > first, `the new radius applies (${first} -> ${after})`);
+    now += 100; radius(); now += 600; radius();
+    assert.equal(repaints, 1, 'settled: no more repaints');
+  } finally { (performance as any).now = realNow; }
+});
