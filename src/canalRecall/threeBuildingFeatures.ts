@@ -22,8 +22,10 @@ import { bayVariantOpenings, proceduralOpenings } from './facadeOpenings.js';
 import type { StreetAppearanceProfile } from './streetAppearance.js';
 import { SUPERMARKET_CHAINS } from './shopfronts.js';
 import { appendAllotmentHouses, isAllotmentHouse } from './allotmentHouses.js';
-import { SHED_LID_HEX, isGardenShed, shedHeightM, shedWallHex } from './gardenSheds.js';
+import { SHED_LID_HEX, isGardenShed, ringAreaM2, shedHeightM, shedWallHex } from './gardenSheds.js';
 import { SegmentGrid } from './streetFronts.js';
+import { ccwRing, designInLook, gardenRoomDesign, gardenRoomGlassHex, gardenRoomLidHex, gardenRoomRule, gardenRoomTriangles, glassEdge, mainHouse, partyWalls, HOUSE_REACH_M, type Neighbour, type Pt } from './gardenRooms.js';
+import { GARDEN_ROOM_TONES } from './look/palette.js';
 import { buurtProfileAt } from './buurtProfiles/data.js';
 import { profileWallBeatsMaterial } from './buurtProfiles/profiles.js';
 
@@ -152,6 +154,14 @@ export function meshBuildingFor(feature: Feature, look: BuildingLook, coarse = f
     // A back-garden shed (gardenSheds.ts): bare walls in a weathered muted colour, a tarred flat lid, nothing else.
     building.bare = true; building.wallHex = shedWallHex(id); building.lid = { hex: SHED_LID_HEX, flatLayer: roofBase + 3 };
     building.shop = false; building.shopfront = false; building.signature = undefined; building.chain = undefined;
+    if (p.gardenRoom) {
+      // A garden room (gardenRooms.ts): flat-colour slat or black walls, the measured (or EPDM) lid. The glass,
+      // joints and fascia come from buildFeatureChunk, which knows the neighbours.
+      const year = p.constructionYear === null || p.constructionYear === undefined || !Number.isFinite(Number(p.constructionYear)) ? null : Number(p.constructionYear);
+      building.wallHex = designInLook(gardenRoomDesign(id, year), look).wallHex;
+      building.plainLayer = roofBase + 3;
+      building.lid = { hex: gardenRoomLidHex(p, measured?.hex ?? null, look), flatLayer: roofBase + 3 };
+    }
   }
   if (p.kitWall) {
     // A landmark kit's walls: its own stone or brick colour, bare or in a window grid.
@@ -191,6 +201,43 @@ export function meshBuildingFor(feature: Feature, look: BuildingLook, coarse = f
 }
 
 
+/** `gardenRoom: rule` for a shed that is a garden room (gardenRooms.ts), nothing otherwise. */
+const gardenRoomMark = (f: Feature): { gardenRoom?: string } => {
+  const ring = asPolygons(f.geometry)[0]?.[0], rule = ring ? gardenRoomRule(f.properties, ringAreaM2(ring)) : null;
+  return rule ? { gardenRoom: rule } : {};
+};
+type RoomContext = { items: Array<{ id: string; ring: Pt[]; areaM2: number; box: [number, number, number, number] }> };
+const KX_ORIGIN = 111_320 * Math.cos(ORIGIN.lat * Math.PI / 180), KY_ORIGIN = 110_540;
+const localRing = (ring: number[][]): Pt[] => ccwRing(ring.map(([lng, lat]) => [(lng - ORIGIN.lng) * KX_ORIGIN, (lat - ORIGIN.lat) * KY_ORIGIN] as Pt));
+const ringArea = (r: readonly Pt[]) => Math.abs(r.reduce((s, a, i) => { const b = r[(i + 1) % r.length]; return s + a[0] * b[1] - b[0] * a[1]; }, 0) / 2);
+
+/** Every pand's outer rings in local metres, for the garden rooms' party walls and main house. */
+function gardenRoomContext(features: readonly Feature[]): RoomContext {
+  const items: RoomContext['items'] = [];
+  for (const f of features) for (const polygon of asPolygons(f.geometry)) {
+    if (!polygon[0] || polygon[0].length < 4) continue;
+    const ring = localRing(polygon[0]);
+    const xs = ring.map(p => p[0]), ys = ring.map(p => p[1]);
+    items.push({ id: String(f.properties.id ?? ''), ring, areaM2: ringArea(ring), box: [Math.min(...xs), Math.min(...ys), Math.max(...xs), Math.max(...ys)] });
+  }
+  return { items };
+}
+
+/** One garden room's extra triangles (gardenRooms.ts), from its outline, its neighbours and the chunk's streets. */
+function gardenRoomTrisFor(f: Feature, building: MeshBuilding, look: BuildingLook, ctx: RoomContext, streets: SegmentGrid | null) {
+  const polygons = asPolygons(f.geometry);
+  if (polygons.length !== 1 || !polygons[0][0] || polygons[0][0].length < 4) return [];
+  const id = String(f.properties.id ?? ''), ring = localRing(polygons[0][0]);
+  const xs = ring.map(p => p[0]), ys = ring.map(p => p[1]), r = HOUSE_REACH_M;
+  const box = [Math.min(...xs) - r, Math.min(...ys) - r, Math.max(...xs) + r, Math.max(...ys) + r];
+  const neighbours: Neighbour[] = ctx.items.filter(n => n.id !== id && n.box[0] <= box[2] && n.box[2] >= box[0] && n.box[1] <= box[3] && n.box[3] >= box[1]);
+  const party = partyWalls(ring, neighbours);
+  const house = mainHouse(ring, ringArea(ring), neighbours, streets);
+  const year = f.properties.constructionYear === null || f.properties.constructionYear === undefined || !Number.isFinite(Number(f.properties.constructionYear)) ? null : Number(f.properties.constructionYear);
+  const tone = (hex: string) => cellSetOf(look) === 'procedural' ? hex : lookHex(hex, look);
+  return gardenRoomTriangles({ ring, heightM: building.heightM, glass: glassEdge(ring, party, house), party, design: designInLook(gardenRoomDesign(id, year), look), lidHex: building.lid?.hex ?? GARDEN_ROOM_TONES.lidEpdm, frameHex: tone(GARDEN_ROOM_TONES.frame), fasciaHex: tone(GARDEN_ROOM_TONES.fascia), glassHex: gardenRoomGlassHex(look) });
+}
+
 /** A chunk for a group of streamed features in one look. */
 /** `streets`: flat street segments near the chunk, metres from ORIGIN (streetFronts.ts); doors then go only on the street side. */
 export function buildFeatureChunk(features: readonly Feature[], look: BuildingLook, mode: 'walls' | 'extras' | 'coarse' | 'shell' = 'walls', streets?: Float32Array, profiles: readonly StreetAppearanceProfile[] = [], contextFeatures: readonly Feature[] = [], hostOpenings: readonly ChunkHostOpeningConfig[] = [], surveyedEnvelopes: ReadonlyMap<string,SurveyedMeshBinding> = new Map()): Chunk {
@@ -198,11 +245,14 @@ export function buildFeatureChunk(features: readonly Feature[], look: BuildingLo
   // Garden sheds draw as low muted boxes in the near tier and not at all beyond it (gardenSheds.ts). Without the
   // chunk's streets nothing is classified, so a street kiosk is never dropped for want of a street file.
   const shedStreets = streets?.length ? new SegmentGrid(streets) : null;
-  const marked = features.filter(f => !isAllotmentHouse(f)).map(f => isGardenShed(f, shedStreets, ORIGIN) ? { ...f, properties: { ...f.properties, gardenShed: true, height: shedHeightM(f.properties) } } : f);
+  const marked = features.filter(f => !isAllotmentHouse(f)).map(f => isGardenShed(f, shedStreets, ORIGIN) ? { ...f, properties: { ...f.properties, gardenShed: true, height: shedHeightM(f.properties), ...gardenRoomMark(f) } } : f);
+  // Garden rooms need their neighbours (party walls, the main house): only built when the chunk has one.
+  const roomContext = mode === 'walls' && marked.some(f => f.properties.gardenRoom) ? gardenRoomContext([...marked, ...contextFeatures]) : null;
   const chunk = buildChunk(marked.filter(f => !(mode === 'coarse' && f.properties.gardenShed)).map(f => {
     const flat = mode === 'coarse' || mode === 'shell';
     const visualRoof = !flat && profiles.length ? sourceVisualRoof(f, profiles) : undefined;
     const building = meshBuildingFor(visualRoof?.feature ?? f, look, flat, visualRoof?.plan);
+    if (building && roomContext && f.properties.gardenRoom) building.gardenRoom = { tris: gardenRoomTrisFor(f, building, look, roomContext, shedStreets) };
     if(building){
       const binding=surveyedEnvelopes.get(building.id),geometry=f.geometry as {type?:string;coordinates?:number[][][]};
       if(binding&&binding.nativeParentId===building.id&&geometry.type==='Polygon'&&binding.installedFootprintFingerprint===envelopeFootprintFingerprint(geometry as {type:'Polygon';coordinates:number[][][]})&&binding.nativeMetadata.aggregateHeightM===Number(f.properties.height)&&binding.nativeMetadata.constructionYear===Number(f.properties.constructionYear)&&binding.meshOrigin.lng===ORIGIN.lng&&binding.meshOrigin.lat===ORIGIN.lat)building.surveyedEnvelope=binding;
