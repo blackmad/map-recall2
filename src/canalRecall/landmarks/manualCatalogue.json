@@ -50059,5 +50059,382 @@
    "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
    "modifications": "Original texture-free geometry authored from Gemeente Amsterdam panoramas (CC BY 4.0) and Wikimedia Commons photographs \"Magere brug amsterdam.jpg\" (Jvhertum, CC BY-SA 3.0, https://commons.wikimedia.org/wiki/File:Magere_brug_amsterdam.jpg) and \"Magerebrug.jpg\" (CC BY-SA 3.0, https://commons.wikimedia.org/wiki/File:Magerebrug.jpg) as visual reference only; no photo pixels or imported meshes."
   }
+ },
+ {
+  "id": "kiosk-dr-falafel",
+  "name": "Dr. Falafel kiosk",
+  "landmarkId": "osm_food_6428422982",
+  "modelUrl": "./models/kiosk-dr-falafel.glb",
+  "suppressOsmIds": [
+   "NL.IMBAG.Pand.0363100012243757",
+   "w685877394"
+  ],
+  "spatialSuppression": false,
+  "footprint": {
+   "centre": [
+    4.8766915,
+    52.3683325
+   ],
+   "headingDegrees": 285.85,
+   "lengthMetres": 5.035,
+   "widthMetres": 3.055
+  },
+  "surveyed": {
+   "anchor": [
+    4.8766915,
+    52.3683325
+   ],
+   "northOffsetDegrees": 0,
+   "source": "bag-pand: BAG pand 0363100012243757 (2016) outline, vertex average as the anchor; the outline is the roof slab, the glazed walls (4.5 x 2.5 m) stand 0.27 m inside it. Native east/south metres; panel order, heights and lettering from Gemeente Amsterdam panoramas recording_2025-06-30_05-16-46_00533 / _00537 and recording_2025-07-31_10-53-44_00800 (CC BY 4.0). See scripts/landmarks/kiosk-dr-falafel-footprints.json and -inventory.json."
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 0,
+  "heightMetres": 3.1,
+  "bagYear": 2016,
+  "assetKind": "building",
+  "materialOverrides": {
+   "copper": "#e2e5e2",
+   "concrete": "#a3aaab",
+   "slate": "#474d52",
+   "glass": "#4f5d60",
+   "dark": "#2e3236",
+   "gold": "#f2f2ee",
+   "frame": "#b9bdbb",
+   "green": "#6f7f4c"
+  },
+  "attribution": {
+   "title": "Dr. Falafel kiosk, Nassaukade 900",
+   "author": "Map Recall",
+   "sourceUrl": "https://www.openstreetmap.org/node/6428422982",
+   "licence": "CC BY 4.0",
+   "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+   "modifications": "Original low-poly reconstruction from the typed kiosk kit (glass variant): white-framed glazed and grey panels with black corner posts, glazed door, steel bar gate, a dark overhanging roof slab with a metal edge band and a planted roof with grass tufts, and the Dr. Falafel lettering as raised pixel capitals. Footprint from BAG (CC0); proportions, panel order and tints read from Gemeente Amsterdam panoramas (CC BY 4.0). No photo pixels or imported meshes."
+  }
+ },
+ {
+  "id": "kiosk-mr-blou",
+  "name": "Mr Blou I Love You kiosk",
+  "landmarkId": "osm_food_9039944077",
+  "modelUrl": "./models/kiosk-mr-blou.glb",
+  "suppressOsmIds": [
+   "w1311060949"
+  ],
+  "spatialSuppression": false,
+  "footprint": {
+   "centre": [
+    4.8775558,
+    52.3689958
+   ],
+   "headingDegrees": 336.19,
+   "lengthMetres": 4.699,
+   "widthMetres": 2.189
+  },
+  "surveyed": {
+   "anchor": [
+    4.8775558,
+    52.3689958
+   ],
+   "northOffsetDegrees": 0,
+   "source": "osm-way (measured outline): no BAG pand or standplaats; OSM building way w1311060949 (4.70 x 2.19 m) under shop node 9039944077, vertex average as the anchor, checked against Gemeente Amsterdam panoramas recording_2025-07-03_10-31-52_00262 and TMX7316010203-002637_pano_0000_000002 / _000005 (CC BY 4.0). Heights approximate (scaled on a 0.95 m counter). See scripts/landmarks/kiosk-mr-blou-footprints.json."
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 0,
+  "heightMetres": 2.94,
+  "assetKind": "building",
+  "materialOverrides": {
+   "copper": "#7d8380",
+   "concrete": "#8d918c",
+   "ochre": "#c9b26a",
+   "dark": "#26292a",
+   "glass": "#5d6b6c",
+   "stone": "#e3dcc0",
+   "gold": "#23272a",
+   "green": "#3f6b4a",
+   "slate": "#2e332e"
+  },
+  "attribution": {
+   "title": "Mr Blou I Love You, Elandsgracht 150",
+   "author": "Map Recall",
+   "sourceUrl": "https://www.openstreetmap.org/node/9039944077",
+   "licence": "CC BY 4.0",
+   "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+   "modifications": "Original low-poly reconstruction from the typed kiosk kit: grey louvred box with an open serving front, glass vitrine, yellow boarded counter base, menu chalkboard band and three cream fascia boards, the name board lettered MR BLOU I LOVE YOU / VEGAN in raised pixel capitals. Outline from OpenStreetMap (ODbL); proportions and tints read from Gemeente Amsterdam panoramas (CC BY 4.0); tints scaled out of tree shade. No photo pixels or imported meshes."
+  },
+  "buildingFootprint": {
+   "type": "Polygon",
+   "coordinates": [
+    [
+     [
+      4.877518,
+      52.368996
+     ],
+     [
+      4.877581,
+      52.369013
+     ],
+     [
+      4.877594,
+      52.368995
+     ],
+     [
+      4.87753,
+      52.368979
+     ],
+     [
+      4.877518,
+      52.368996
+     ]
+    ]
+   ]
+  }
+ },
+ {
+  "id": "kiosk-dumplings-nassauplein",
+  "name": "Dumplings kiosk, Nassauplein",
+  "landmarkId": "osm_food_6426744735",
+  "modelUrl": "./models/kiosk-dumplings-nassauplein.glb",
+  "suppressOsmIds": [
+   "NL.IMBAG.Pand.0363100012243758",
+   "w685669039"
+  ],
+  "spatialSuppression": false,
+  "footprint": {
+   "centre": [
+    4.8809795,
+    52.3854477
+   ],
+   "headingDegrees": 135.11,
+   "lengthMetres": 5.017,
+   "widthMetres": 3.064
+  },
+  "surveyed": {
+   "anchor": [
+    4.8809795,
+    52.3854477
+   ],
+   "northOffsetDegrees": 0,
+   "source": "bag-pand: BAG pand 0363100012243758 (2016) outline, vertex average as the anchor; the outline is the roof slab, walls 4.45 x 2.5 m inside it. Bays, screens, awning and tints from Gemeente Amsterdam panoramas recording_2024-09-09_11-28-19_00254, recording_2025-06-17_10-48-55_00795 and 2025_09_29_05_45_16_00793 (CC BY 4.0). See scripts/landmarks/kiosk-dumplings-nassauplein-footprints.json."
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 0,
+  "heightMetres": 3.1,
+  "bagYear": 2016,
+  "assetKind": "building",
+  "materialOverrides": {
+   "copper": "#e0e3df",
+   "glass": "#4c5a5f",
+   "concrete": "#d2d0c7",
+   "dark": "#3f4549",
+   "slate": "#434a4f",
+   "frame": "#c3c8c7",
+   "green": "#6a7a52",
+   "red": "#8a3a36",
+   "stone": "#8a8f8f"
+  },
+  "attribution": {
+   "title": "Dumplings kiosk, Nassauplein 60",
+   "author": "Map Recall",
+   "sourceUrl": "https://www.openstreetmap.org/node/6426744735",
+   "licence": "CC BY 4.0",
+   "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+   "modifications": "Original low-poly reconstruction from the typed kiosk kit (glass variant): white-framed glazed bays and double door, dark corner posts, two red windscreen leaves, a grey retractable awning, a dark slab with a metal band, a planted roof with grass tufts and a flue. Footprint from BAG (CC0); bays, proportions and tints read from Gemeente Amsterdam panoramas (CC BY 4.0). No photo pixels or imported meshes."
+  }
+ },
+ {
+  "id": "kiosk-frens-haringhandel",
+  "name": "Frens Haringhandel",
+  "landmarkId": "osm_food_2179747557",
+  "modelUrl": "./models/kiosk-frens-haringhandel.glb",
+  "suppressOsmIds": [
+   "NL.IMBAG.Pand.0363100012176251",
+   "w266907976"
+  ],
+  "spatialSuppression": false,
+  "footprint": {
+   "centre": [
+    4.8894325,
+    52.3672947
+   ],
+   "headingDegrees": 230.84,
+   "lengthMetres": 4.306,
+   "widthMetres": 3.461
+  },
+  "surveyed": {
+   "anchor": [
+    4.8894325,
+    52.3672947
+   ],
+   "northOffsetDegrees": 0,
+   "source": "bag-pand: BAG pand 0363100012176251 (1983) outline, vertex average as the anchor; walls 4.2 x 3.35 m inside it, top 2.79 m (BAG tile). Panels, grilles, fascia and tints from Gemeente Amsterdam panoramas recording_2025-06-16_06-42-40_00636 / _00632, recording_2025-06-19_03-28-47_01535 and b_20250120_0926_Track17_Sphere_00005 (CC BY 4.0). See scripts/landmarks/kiosk-frens-haringhandel-footprints.json."
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 0,
+  "heightMetres": 2.79,
+  "bagYear": 1983,
+  "assetKind": "building",
+  "materialOverrides": {
+   "blue": "#2b3a5c",
+   "ochre": "#c98f45",
+   "bronze": "#b98f5a",
+   "glass": "#4a5858",
+   "stone": "#c4c6c0",
+   "copper": "#d6dbd6",
+   "gold": "#ece4c8",
+   "concrete": "#9a9c98",
+   "greyBrick": "#4a5056",
+   "sandstone": "#a9b2b2"
+  },
+  "attribution": {
+   "title": "Frens Haringhandel, Koningsplein",
+   "author": "Map Recall",
+   "sourceUrl": "https://www.openstreetmap.org/way/266907976",
+   "licence": "CC BY 4.0",
+   "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+   "modifications": "Original low-poly reconstruction from the typed kiosk kit, drawn shut as in the panoramas: navy frame, base and fascia lettered FRENS HARINGHANDEL AMSTERDAM, timber corners, wood-and-glass bays behind diamond-lattice roll grilles, the serving front behind a square grille and roller shutter, roof plant, on a concrete platform. Footprint from BAG (CC0); tints and proportions from Gemeente Amsterdam panoramas (CC BY 4.0). No photo pixels or imported meshes."
+  }
+ },
+ {
+  "id": "kiosk-stubbes-haring",
+  "name": "Stubbe's Haring",
+  "landmarkId": "osm_food_5203239222",
+  "modelUrl": "./models/kiosk-stubbes-haring.glb",
+  "suppressOsmIds": [
+   "NL.IMBAG.Pand.0363100012179484",
+   "w266621072"
+  ],
+  "spatialSuppression": false,
+  "footprint": {
+   "centre": [
+    4.8942388,
+    52.3790635
+   ],
+   "headingDegrees": 224.15,
+   "lengthMetres": 5.986,
+   "widthMetres": 2.978
+  },
+  "surveyed": {
+   "anchor": [
+    4.8942388,
+    52.3790635
+   ],
+   "northOffsetDegrees": 0,
+   "source": "bag-standplaats: BAG standplaats 0363030011957763 (Singel 8 M, registered 2016) polygon, vertex average as the anchor, which is OSM node 5203239222 (Stubbe's Haring); walls 5.7 x 2.75 m inside it; heights from 3DBAG pand 0363100012179484 (eaves 2.7 m, top 2.95 m), which sits 99% inside the standplaats. Panels, roof and sign from Gemeente Amsterdam panoramas recording_2025-06-16_03-46-32_01055 / _01048 (CC BY 4.0). See scripts/landmarks/kiosk-stubbes-haring-footprints.json."
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 0,
+  "heightMetres": 3.45,
+  "assetKind": "building",
+  "materialOverrides": {
+   "stone": "#e8e6df",
+   "bronze": "#6b5137",
+   "slate": "#8e9396",
+   "gold": "#2a2a2a",
+   "blue": "#3c6fa8"
+  },
+  "attribution": {
+   "title": "Stubbe's Haring, Haarlemmersluis",
+   "author": "Map Recall",
+   "sourceUrl": "https://www.openstreetmap.org/node/5203239222",
+   "licence": "CC BY 4.0",
+   "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+   "modifications": "Original low-poly reconstruction from the typed kiosk kit, drawn shut as in the panoramas: white shutter box with a roller-shuttered end under a grey zinc hip roof, the STUBBE HARING ridge board with two blue leaping fish. Graffiti not drawn. Footprint from the BAG standplaats (CC0); proportions and tints from Gemeente Amsterdam panoramas (CC BY 4.0). No photo pixels or imported meshes."
+  }
+ },
+ {
+  "id": "kiosk-haringhandel-jonk",
+  "name": "Haringhandel Jonk",
+  "landmarkId": "osm_food_9860683033",
+  "modelUrl": "./models/kiosk-haringhandel-jonk.glb",
+  "suppressOsmIds": [
+   "NL.IMBAG.Pand.0363100012247454",
+   "w1381187931"
+  ],
+  "spatialSuppression": false,
+  "footprint": {
+   "centre": [
+    4.890787,
+    52.368854
+   ],
+   "headingDegrees": 338.48,
+   "lengthMetres": 3.991,
+   "widthMetres": 3.453
+  },
+  "surveyed": {
+   "anchor": [
+    4.890787,
+    52.368854
+   ],
+   "northOffsetDegrees": 0,
+   "source": "bag-pand: BAG pand 0363100012247454 (2018) outline, vertex average as the anchor (OSM node 9860683033 Haringhandel Jonk is 0.6 m away); shutter walls 3.75 x 3.21 m inside it; heights from 3DBAG (eaves 3.0 m, top 3.12 m). Shutters, logo and slab from Gemeente Amsterdam panoramas recording_2025-06-30_05-16-46_00991 / _00992 / _00994 (CC BY 4.0). See scripts/landmarks/kiosk-haringhandel-jonk-footprints.json."
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 0,
+  "heightMetres": 3.12,
+  "assetKind": "building",
+  "materialOverrides": {
+   "slate": "#3a4641",
+   "bronze": "#2c3533",
+   "gold": "#a8946e"
+  },
+  "attribution": {
+   "title": "Haringhandel Jonk, Spui",
+   "author": "Map Recall",
+   "sourceUrl": "https://www.openstreetmap.org/node/9860683033",
+   "licence": "CC BY 4.0",
+   "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+   "modifications": "Original low-poly reconstruction from the typed kiosk kit, drawn shut as in the panoramas: dark green roller shutters on all four faces under a thick dark roof slab, the JONK / Volendammer Haringhandel lettering on three faces (fish outline not drawn). Footprint and heights from BAG/3DBAG (CC0); tints from Gemeente Amsterdam panoramas (CC BY 4.0), lettering tan estimated by eye. No photo pixels or imported meshes."
+  }
+ },
+ {
+  "id": "kiosk-museumplein",
+  "name": "Kiosk Rembrandt Van Gogh",
+  "landmarkId": "osm_cafe_6657813385",
+  "modelUrl": "./models/kiosk-museumplein.glb",
+  "suppressOsmIds": [
+   "NL.IMBAG.Pand.0363100012151388",
+   "w277104686"
+  ],
+  "spatialSuppression": false,
+  "footprint": {
+   "centre": [
+    4.8831423,
+    52.3592532
+   ],
+   "headingDegrees": 336.25,
+   "lengthMetres": 6.027,
+   "widthMetres": 2.68
+  },
+  "surveyed": {
+   "anchor": [
+    4.8831423,
+    52.3592532
+   ],
+   "northOffsetDegrees": 0,
+   "source": "bag-pand: BAG pand 0363100012151388 (2000) outline, vertex average as the anchor (OSM node 6657813385 is 0.9 m away); walls 5.9 x 2.6 m; height from 3DBAG (eaves 3.0 m, top 3.16 m). Posters, ends and roof units from Gemeente Amsterdam panoramas recording_2025-09-29_08-09-56_01192 / _01190 / _01195 (CC BY 4.0). See scripts/landmarks/kiosk-museumplein-footprints.json."
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 0,
+  "heightMetres": 3.4,
+  "assetKind": "building",
+  "materialOverrides": {
+   "slate": "#435056",
+   "concrete": "#8c9290",
+   "copper": "#d4d2c8",
+   "stone": "#cfccc2",
+   "glass": "#4a5258",
+   "red": "#9c8580",
+   "bronze": "#5a5a62",
+   "sandstone": "#75767e",
+   "ochre": "#a89a64",
+   "blue": "#4d5878"
+  },
+  "attribution": {
+   "title": "Kiosk Rembrandt Van Gogh, Museumplein",
+   "author": "Map Recall",
+   "sourceUrl": "https://www.openstreetmap.org/node/6657813385",
+   "licence": "CC BY 4.0",
+   "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+   "modifications": "Original low-poly reconstruction from the typed kiosk kit: dark slate box with six poster panels drawn as flat tinted glass (no images), a pale service door under a small awning, a door end and two roof units. Footprint and height from BAG/3DBAG (CC0); tints are panorama medians (Gemeente Amsterdam, CC BY 4.0) taken in tree shade and lifted about 25% to the sunlit 2024 view after the review sheet read too dark. No photo pixels or imported meshes."
+  }
  }
 ]

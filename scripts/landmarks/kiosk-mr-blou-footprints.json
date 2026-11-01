@@ -1,0 +1,76 @@
+{
+ "id": "kiosk-mr-blou",
+ "generatedBy": "node --import tsx scripts/landmarks/kiosk-footprint.ts --id=kiosk-mr-blou --osm=w1311060949 --near=52.3689948,4.8775567 --front-near=336",
+ "source": {
+  "kind": "osm-way",
+  "id": "w1311060949",
+  "url": "https://www.openstreetmap.org/way/1311060949",
+  "licence": "ODbL (OpenStreetMap contributors)",
+  "properties": {
+   "id": "w1311060949",
+   "tier": 4,
+   "minHeight": 0,
+   "height": 3.2,
+   "building": "yes"
+  }
+ },
+ "anchor": [
+  4.8775558,
+  52.3689958
+ ],
+ "ringLngLat": [
+  [
+   4.877518,
+   52.368996
+  ],
+  [
+   4.877581,
+   52.369013
+  ],
+  [
+   4.877594,
+   52.368995
+  ],
+  [
+   4.87753,
+   52.368979
+  ],
+  [
+   4.877518,
+   52.368996
+  ]
+ ],
+ "localEastSouthMetres": [
+  [
+   -2.566,
+   -0.028
+  ],
+  [
+   1.716,
+   -1.92
+  ],
+  [
+   2.6,
+   0.083
+  ],
+  [
+   -1.75,
+   1.865
+  ]
+ ],
+ "areaM2": 9.97,
+ "rect": {
+  "centre": [
+   0.008,
+   0.03
+  ],
+  "widthM": 4.699,
+  "depthM": 2.189,
+  "frontBearing": 336.19
+ },
+ "notes": [
+  "No BAG pand or standplaats covers the kiosk (nearest standplaats 0363030011957708 is 429 m away): footprint source (3) by the brief, taken from the mapped OSM outline w1311060949, which carries the shop node 9039944077 at its centre. The panoramas agree with its 4.7 m front facing 336 (the fascia is read face-on from bearing 34 and the 2022 north-west view).",
+  "Walls 4.6 x 2.1 m inside the 4.70 x 2.19 m outline; heights from the 2025 front view (fascia 2.27-2.81 m, roof edge 2.94 m), scaled on an assumed 0.95 m counter: approximate.",
+  "The neighbouring dark graffiti-covered box 7 m north-west (OSM w1520602872) is a separate shed, not part of the kiosk."
+ ]
+}

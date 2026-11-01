@@ -1,0 +1,188 @@
+{
+ "schemaVersion": 1,
+ "id": "kiosk-mr-blou",
+ "signature": [
+  "fascia-name-board",
+  "serving-front",
+  "yellow-counter-base",
+  "fascia-side-boards"
+ ],
+ "walls": [
+  {
+   "tag": "v-336",
+   "bearing": 336,
+   "lengthM": 4.6,
+   "centre": [
+    4.8775558,
+    52.3689958
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-07-03_10-31-52_00262",
+   "capturedAt": "2025-07-03",
+   "checked": true,
+   "note": "Front, seen at about 50 degrees from the north-east in deep tree shade (artifacts/kiosks/mr-blou/p-2025-07-03-b34-d14.jpg, crop artifacts/kiosks/mr-blou/front-crop.png); parasols, plants and a parked three-wheeler hide the lower left.",
+   "items": [
+    {
+     "id": "fascia-name-board",
+     "kind": "sign",
+     "where": "centre fascia board 2.27-2.81 m: \"MR BLOU I LOVE YOU\" in black between two stars, \"VEGAN\" in green below",
+     "approxSizeM": [
+      2.4,
+      0.54
+     ],
+     "plan": "simplified",
+     "how": "cream board 7 cm proud with raised 5x7 pixel capitals MR BLOU I LOVE YOU (black) and VEGAN (green); the stars and the small sponsor mark are left out",
+     "seenIn": "recording_2025-07-03_10-31-52_00262"
+    },
+    {
+     "id": "fascia-side-boards",
+     "kind": "sign",
+     "where": "left board (blue eye logo, \"BREAKFAST LUNCH DINNER COFFEE\") and right board (\"SALAD BAR TAKE AWAY CATERING SANDWICH\") either side of the name board",
+     "approxSizeM": [
+      1.0,
+      0.54
+     ],
+     "plan": "simplified",
+     "how": "two plain cream boards in line with the name board; their 9 cm red lettering and the eye logo are not drawn",
+     "seenIn": "recording_2025-07-03_10-31-52_00262"
+    },
+    {
+     "id": "menu-chalkboards",
+     "kind": "sign",
+     "where": "row of black menu chalkboards between the fascia and the serving opening, 1.8-2.2 m",
+     "approxSizeM": [
+      4.4,
+      0.45
+     ],
+     "plan": "simplified",
+     "how": "dark band above the hatch head (hatch aboveRole void)",
+     "seenIn": "recording_2025-07-03_10-31-52_00262"
+    },
+    {
+     "id": "serving-front",
+     "kind": "window-shape",
+     "where": "open serving front across the kiosk, counter at 0.95 m, glass vitrine on it",
+     "approxSizeM": [
+      4.4,
+      0.85
+     ],
+     "plan": "modelled",
+     "how": "kioskKit hatch (cover none) with a 0.5 m glass vitrine on the counter and a dark interior",
+     "seenIn": "recording_2025-07-03_10-31-52_00262"
+    },
+    {
+     "id": "yellow-counter-base",
+     "kind": "other",
+     "where": "yellow vertical-boarded counter base below the serving front",
+     "approxSizeM": [
+      4.4,
+      0.95
+     ],
+     "plan": "modelled",
+     "how": "kioskKit board panel below the hatch with battens every 0.3 m",
+     "seenIn": "recording_2025-07-03_10-31-52_00262"
+    },
+    {
+     "id": "eye-logo",
+     "kind": "sign",
+     "where": "blue eye logo at the left end of the fascia",
+     "approxSizeM": [
+      0.25,
+      0.25
+     ],
+     "plan": "skipped",
+     "skip": {
+      "reason": "too-small",
+      "note": "25 cm painted logo on the left board"
+     },
+     "seenIn": "recording_2025-07-03_10-31-52_00262"
+    },
+    {
+     "id": "parasols",
+     "kind": "other",
+     "where": "white market parasols and folding tables on the pavement in front",
+     "approxSizeM": [
+      2.5,
+      2.3
+     ],
+     "plan": "skipped",
+     "skip": {
+      "reason": "temporary",
+      "note": "terrace furniture, put out by the day"
+     },
+     "seenIn": "recording_2025-07-03_10-31-52_00262; TMX7316010203-002306_pano_0001_000838"
+    }
+   ]
+  },
+  {
+   "tag": "v-246",
+   "bearing": 246,
+   "lengthM": 2.1,
+   "centre": [
+    4.8775558,
+    52.3689958
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002637_pano_0000_000002",
+   "capturedAt": "2022-06-28",
+   "checked": true,
+   "note": "South-west end (artifacts/kiosks/mr-blou/p-2022-06-28-b246-d8.jpg): grey box, vent louvres in the upper band, sunflowers painted on the lower part in 2022.",
+   "items": [
+    {
+     "id": "vent-louvres",
+     "kind": "other",
+     "where": "horizontal vent louvres across the upper band of the ends and back, above about 1.9 m",
+     "approxSizeM": [
+      2.0,
+      0.8
+     ],
+     "plan": "modelled",
+     "how": "kioskKit louvre panel: slats every 9 cm, 5 cm proud, above 1.9 m",
+     "seenIn": "TMX7316010203-002637_pano_0000_000002; TMX7316010203-002637_pano_0000_000005; recording_2025-07-03_10-31-52_00264"
+    },
+    {
+     "id": "sunflower-mural",
+     "kind": "other",
+     "where": "painted sunflowers on the lower grey panels (2022)",
+     "approxSizeM": [
+      2.0,
+      1.6
+     ],
+     "plan": "skipped",
+     "skip": {
+      "reason": "temporary",
+      "note": "a 2022 paint job; the 2025 views of the ends are hidden by plants and parasols, so its current state is unknown"
+     },
+     "seenIn": "TMX7316010203-002637_pano_0000_000002"
+    }
+   ]
+  },
+  {
+   "tag": "v-156",
+   "bearing": 156,
+   "lengthM": 4.6,
+   "centre": [
+    4.8775558,
+    52.3689958
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-07-03_10-31-52_00264",
+   "capturedAt": "2025-07-03",
+   "checked": true,
+   "note": "Back, towards the bus station: mostly hidden by the graffiti shed (OSM w1520602872) and trees; the visible upper corner shows the same grey louvred panels (artifacts/kiosks/mr-blou/p-2025-07-03-b77-d12.jpg, right edge).",
+   "items": []
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  },
+  {
+   "name": "OpenStreetMap way 1311060949 and node 9039944077",
+   "url": "https://www.openstreetmap.org/way/1311060949",
+   "licence": "ODbL"
+  }
+ ]
+}

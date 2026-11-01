@@ -1,0 +1,16 @@
+{
+ "id": "kiosk-museumplein",
+ "countedBy": "kiosk lane (opus), 2026-11-01: the long side is six opaque poster cases, not windows; no opening shows the interior",
+ "facades": [
+  {
+   "name": "north-north-west (poster face)",
+   "bearing": 336,
+   "photo": "artifacts/kiosks/museumplein/p-2025-09-29-b342-d11.jpg",
+   "rows": [],
+   "columns": 0,
+   "symmetric": true,
+   "gables": 0,
+   "note": "six poster cases behind glass (opaque printed posters, no view inside) are counted as wall, not openings; the model draws them as tinted panels, not glass"
+  }
+ ]
+}

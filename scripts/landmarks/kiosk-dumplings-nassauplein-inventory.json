@@ -1,0 +1,195 @@
+{
+ "schemaVersion": 1,
+ "id": "kiosk-dumplings-nassauplein",
+ "pand": "0363100012243758",
+ "signature": [
+  "red-windscreens",
+  "glazed-front",
+  "grey-awning",
+  "green-roof",
+  "dark-roof-slab"
+ ],
+ "walls": [
+  {
+   "tag": "v-135",
+   "bearing": 135,
+   "lengthM": 4.45,
+   "centre": [
+    4.8809795,
+    52.3854477
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2024-09-09_11-28-19_00254",
+   "capturedAt": "2024-09-09",
+   "checked": true,
+   "note": "Front to the Nassauplein, face-on at 19 m (artifacts/kiosks/dumplings/p-2024-09-09-b146-d19.jpg, crop front-crop.png); 2025 state from recording_2025-06-17_10-48-55_00795 (artifacts/kiosks/dumplings/sides-zoom.jpg, left).",
+   "items": [
+    {
+     "id": "glazed-front",
+     "kind": "window-shape",
+     "where": "five white-framed glazed bays, glazed double door left of centre, menus on the glass",
+     "approxSizeM": [
+      4.2,
+      2.4
+     ],
+     "plan": "modelled",
+     "how": "kioskKit glass/door panels at the measured bay widths (175/130/115/110/155 px)",
+     "seenIn": "recording_2024-09-09_11-28-19_00254"
+    },
+    {
+     "id": "red-windscreens",
+     "kind": "other",
+     "where": "two red windscreen leaves standing in front of the side bays: solid lower 0.9 m, red frame round clear glass above, 1.9 m tall",
+     "approxSizeM": [
+      1.85,
+      1.9
+     ],
+     "plan": "modelled",
+     "how": "kioskKit screens 0.45 m in front of the face, turned 4 degrees",
+     "seenIn": "recording_2024-09-09_11-28-19_00254; recording_2025-06-17_10-48-55_00795"
+    },
+    {
+     "id": "grey-awning",
+     "kind": "canopy",
+     "where": "grey retractable awning over the left two thirds of the front (2025)",
+     "approxSizeM": [
+      3.0,
+      1.2
+     ],
+     "plan": "modelled",
+     "how": "kioskKit awning with roller box, plain grey",
+     "seenIn": "recording_2025-06-17_10-48-55_00795; 2025_09_29_05_45_16_00793"
+    },
+    {
+     "id": "door-sign",
+     "kind": "sign",
+     "where": "brown name board over the door (2024), lettering not legible at 19 m",
+     "approxSizeM": [
+      1.5,
+      0.36
+     ],
+     "plan": "skipped",
+     "skip": {
+      "reason": "not-visible",
+      "note": "behind the 2025 awning roller; its lettering is not legible in any panorama"
+     },
+     "seenIn": "recording_2024-09-09_11-28-19_00254"
+    },
+    {
+     "id": "lanterns",
+     "kind": "lamp",
+     "where": "red Chinese lanterns hanging under the slab at both front corners",
+     "approxSizeM": [
+      0.3,
+      0.35
+     ],
+     "plan": "skipped",
+     "skip": {
+      "reason": "too-small",
+      "note": "30 cm paper lanterns"
+     },
+     "seenIn": "recording_2024-09-09_11-28-19_00254; 2025_09_29_05_45_16_00793"
+    },
+    {
+     "id": "dark-roof-slab",
+     "kind": "canopy",
+     "where": "dark roof slab 0.36 m thick overhanging 0.28 m, a stainless band along its edge",
+     "approxSizeM": [
+      5.0,
+      0.36
+     ],
+     "plan": "modelled",
+     "how": "kioskKit flat roof with band",
+     "seenIn": "recording_2024-09-09_11-28-19_00254"
+    },
+    {
+     "id": "green-roof",
+     "kind": "other",
+     "where": "planted roof with tall grass, a stainless flue cap right of centre",
+     "approxSizeM": [
+      4.6,
+      0.6
+     ],
+     "plan": "simplified",
+     "how": "kioskKit green layer with 14 grass tufts; flue as an 8-sided cylinder",
+     "seenIn": "recording_2024-09-09_11-28-19_00254; recording_2025-06-17_10-48-55_00795"
+    }
+   ]
+  },
+  {
+   "tag": "v-045",
+   "bearing": 45,
+   "lengthM": 2.5,
+   "centre": [
+    4.8809795,
+    52.3854477
+   ],
+   "evidence": "photo",
+   "panoId": "2025_09_29_05_45_16_00793",
+   "capturedAt": "2025-09-29",
+   "checked": true,
+   "note": "North-east end (artifacts/kiosks/dumplings/sides-zoom.jpg, right): two glazed bays with menu posters, dark corner posts.",
+   "items": [
+    {
+     "id": "ne-glazing",
+     "kind": "window-shape",
+     "where": "two glazed bays with menu posters",
+     "approxSizeM": [
+      2.2,
+      2.4
+     ],
+     "plan": "modelled",
+     "how": "kioskKit glass panels",
+     "seenIn": "2025_09_29_05_45_16_00793"
+    }
+   ]
+  },
+  {
+   "tag": "v-315",
+   "bearing": 315,
+   "lengthM": 4.45,
+   "centre": [
+    4.8809795,
+    52.3854477
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001951_pano_0000_000468",
+   "capturedAt": "2021-01-14",
+   "checked": true,
+   "note": "Back to the canal, seen from below the quay wall (artifacts/kiosks/dumplings/p-2021-01-14-b324-d9.jpg): pale closed panels between grey posts; only the upper half shows.",
+   "items": []
+  },
+  {
+   "tag": "v-225",
+   "bearing": 225,
+   "lengthM": 2.5,
+   "centre": [
+    4.8809795,
+    52.3854477
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "note": "South-west end: hidden by shrubs in every panorama (recording_2025-06-18_10-57-50_00478); modelled as one closed panel like the back.",
+   "items": []
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  },
+  {
+   "name": "BAG pand 0363100012243758",
+   "url": "https://api.data.amsterdam.nl/v1/bag/panden/0363100012243758/",
+   "licence": "CC0"
+  },
+  {
+   "name": "OpenStreetMap node 6426744735 (Dumplings)",
+   "url": "https://www.openstreetmap.org/node/6426744735",
+   "licence": "ODbL"
+  }
+ ]
+}

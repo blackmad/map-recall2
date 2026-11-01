@@ -1,0 +1,75 @@
+{
+ "id": "kiosk-stubbes-haring",
+ "generatedBy": "node --import tsx scripts/landmarks/kiosk-footprint.ts --id=kiosk-stubbes-haring --standplaats=0363030011957763",
+ "source": {
+  "kind": "bag-standplaats",
+  "id": "0363030011957763",
+  "url": "https://api.data.amsterdam.nl/v1/bag/standplaatsen/0363030011957763/",
+  "licence": "CC0 (BAG)",
+  "properties": {
+   "status": "Plaats aangewezen",
+   "gebruiksdoel": [],
+   "registratiedatum": "2016-11-14T14:46:05",
+   "documentdatum": "2016-11-10",
+   "documentnummer": "TM00022329_TM00NB"
+  }
+ },
+ "anchor": [
+  4.8942388,
+  52.3790635
+ ],
+ "ringLngLat": [
+  [
+   4.894222412263027,
+   52.37909180984886
+  ],
+  [
+   4.894191960544079,
+   52.379072575230225
+  ],
+  [
+   4.89425510270701,
+   52.37903516166941
+  ],
+  [
+   4.8942855396419995,
+   52.3790544051981
+  ],
+  [
+   4.894222412263027,
+   52.37909180984886
+  ]
+ ],
+ "localEastSouthMetres": [
+  [
+   -1.11,
+   -3.153
+  ],
+  [
+   -3.18,
+   -1.012
+  ],
+  [
+   1.111,
+   3.153
+  ],
+  [
+   3.179,
+   1.011
+  ]
+ ],
+ "areaM2": 17.8,
+ "rect": {
+  "centre": [
+   0,
+   0
+  ],
+  "widthM": 5.986,
+  "depthM": 2.978,
+  "frontBearing": 224.15
+ },
+ "notes": [
+  "The brief named standplaats 0363030011957762 for Stubbe's; OSM node 5203239222 \"Stubbe's Haring\" sits on the centroid of 0363030011957763 (Singel 8 M, 6.0 x 3.0 m), and the panoramas show the STUBBE HARING board on that 6 m white box. 0363030011957762 (Singel 8 N, 4.0 x 3.3 m) carries the brown glazed wooden kiosk, whose name no source gives (held, see the lane report).",
+  "Walls 5.7 x 2.75 m inside the standplaats. BAG also registers pand 0363100012179484 (17 m2, OSM w266621072) 99% inside it; its 3DBAG eaves 2.7 m and top 2.95 m set the wall height 2.6 m and hip rise 0.32 m (the panorama scaling had walls about 2.35 m). Both are suppressed."
+ ]
+}

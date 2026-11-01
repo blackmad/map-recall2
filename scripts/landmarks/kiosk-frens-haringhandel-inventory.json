@@ -1,0 +1,167 @@
+{
+ "schemaVersion": 1,
+ "id": "kiosk-frens-haringhandel",
+ "pand": "0363100012176251",
+ "signature": [
+  "name-fascia",
+  "lattice-grilles",
+  "navy-frame",
+  "serving-front-shutter"
+ ],
+ "walls": [
+  {
+   "tag": "v-231",
+   "bearing": 231,
+   "lengthM": 4.2,
+   "centre": [
+    4.8894325,
+    52.3672947
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-06-16_06-42-40_00636",
+   "capturedAt": "2025-06-16",
+   "checked": true,
+   "note": "Serving front, shut (artifacts/kiosks/frens/b183-crop.png left; artifacts/kiosks/frens/contact.jpg bottom right).",
+   "items": [
+    {
+     "id": "name-fascia",
+     "kind": "lettering",
+     "where": "navy fascia 2.47-2.79 m on all four sides: FRENS HARINGHANDEL AMSTERDAM in cream serif capitals, a gold fish emblem at the right end",
+     "approxSizeM": [
+      3.6,
+      0.16
+     ],
+     "plan": "simplified",
+     "how": "navy sign board 6 cm proud on each face, the name as flat 5x7 pixel capitals 5 cm off it (sans serif)",
+     "seenIn": "recording_2025-06-16_06-42-40_00636; recording_2025-06-16_06-42-40_00632; recording_2025-06-19_03-28-47_01535; b_20250120_0926_Track17_Sphere_00005"
+    },
+    {
+     "id": "fish-emblem",
+     "kind": "sign",
+     "where": "small gold herring outline at the right end of each fascia",
+     "approxSizeM": [
+      0.3,
+      0.15
+     ],
+     "plan": "skipped",
+     "skip": {
+      "reason": "too-small",
+      "note": "30 cm gold line drawing"
+     },
+     "seenIn": "recording_2025-06-16_06-42-40_00636"
+    },
+    {
+     "id": "serving-front-shutter",
+     "kind": "other",
+     "where": "white square-grid roll grille over glass, a white roller shutter below 0.9 m (the closed counter)",
+     "approxSizeM": [
+      4.0,
+      2.2
+     ],
+     "plan": "simplified",
+     "how": "kioskKit shuttered panels: square lattice strips (pale grey, not pure white) over glass, roller shutter as the lower part",
+     "seenIn": "recording_2025-06-16_06-42-40_00636; b_20250120_0926_Track17_Sphere_00005"
+    },
+    {
+     "id": "navy-frame",
+     "kind": "other",
+     "where": "navy-painted frame, base (0.24 m) and fascia; one timber corner post at the south corner",
+     "approxSizeM": [
+      4.2,
+      2.79
+     ],
+     "plan": "modelled",
+     "how": "frame/plinth/sign navy; corner posts timber (the other corners read navy in the 2025-01 view: simplified to timber on all four)",
+     "seenIn": "recording_2025-06-16_06-42-40_00636"
+    },
+    {
+     "id": "roof-plant",
+     "kind": "other",
+     "where": "grey plant box and a steel extraction duct on the roof along the front",
+     "approxSizeM": [
+      1.5,
+      0.36
+     ],
+     "plan": "simplified",
+     "how": "two roof boxes (grey, steel)",
+     "seenIn": "recording_2025-06-16_06-42-40_00636; recording_2025-06-19_03-28-47_01535"
+    }
+   ]
+  },
+  {
+   "tag": "v-141",
+   "bearing": 141,
+   "lengthM": 3.35,
+   "centre": [
+    4.8894325,
+    52.3672947
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-06-16_06-42-40_00636",
+   "capturedAt": "2025-06-16",
+   "checked": true,
+   "note": "South-east end (b183-crop.png right).",
+   "items": [
+    {
+     "id": "lattice-grilles",
+     "kind": "balcony-ironwork",
+     "where": "diamond-lattice roll grilles over every side bay: wood below 1.41 m, glass above",
+     "approxSizeM": [
+      1.5,
+      2.2
+     ],
+     "plan": "simplified",
+     "how": "kioskKit shuttered panels, diamond lattice of flat 25 mm strips at 0.32 m pitch (the real mesh is finer)",
+     "seenIn": "recording_2025-06-16_06-42-40_00636; recording_2025-06-16_06-42-40_00632; recording_2025-06-19_03-28-47_01535"
+    }
+   ]
+  },
+  {
+   "tag": "v-051",
+   "bearing": 51,
+   "lengthM": 4.2,
+   "centre": [
+    4.8894325,
+    52.3672947
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-06-16_06-42-40_00632",
+   "capturedAt": "2025-06-16",
+   "checked": true,
+   "note": "Back to the Singel side: three latticed bays (contact.jpg top right).",
+   "items": []
+  },
+  {
+   "tag": "v-321",
+   "bearing": 321,
+   "lengthM": 3.35,
+   "centre": [
+    4.8894325,
+    52.3672947
+   ],
+   "evidence": "photo",
+   "panoId": "b_20250120_0926_Track17_Sphere_00005",
+   "capturedAt": "2025-01-20",
+   "checked": true,
+   "note": "North-west end: latticed bays (contact.jpg bottom right).",
+   "items": []
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  },
+  {
+   "name": "BAG pand 0363100012176251",
+   "url": "https://api.data.amsterdam.nl/v1/bag/panden/0363100012176251/",
+   "licence": "CC0"
+  },
+  {
+   "name": "OpenStreetMap way 266907976 / node 2179747557",
+   "url": "https://www.openstreetmap.org/way/266907976",
+   "licence": "ODbL"
+  }
+ ]
+}

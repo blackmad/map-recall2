@@ -1,5 +1,5 @@
 {
-  "toolchain": "70fdb260ba61c39b90126193ca31127e0e45b7baf62d7a140b915866e136e805",
+  "toolchain": "bcd00bc395723cb8ac64d8c06d127090a8790d051d07183e6835cb50cdb218a3",
   "models": {
     "abn-amro-hoofdkantoor": "90ff65a2d9f94e99b2ab33438567f147959a43f017d3d9cf9d2ae68b6dae7cbf",
     "academie-theater-dans": "503b3e8d59937cbf7ac8776eb644c11fd10b567e5ac1113e0caa55c83cb68cde",
@@ -186,6 +186,13 @@
     "kinderbrug-jongen-konijnen": "25186190e0efd4c1f7410f2bbc843486ac9ae5034f4b631b4caadef0551c3d40",
     "kinderbrug-meisje-eekhoorns": "198fa0777357d8885a7beb08ac49fffcaa7731bf77195ede0968916039e560b9",
     "kinderkookkafe": "2e89427f335356fd5d8ab3795dd2b0af487c074dd7aaf9400ff1c0f4b7c4c70a",
+    "kiosk-dr-falafel": "f4ae127a62e6657d8abbebe7576563f51405ad50cca519d10f7d94d5609beee4",
+    "kiosk-dumplings-nassauplein": "423cc761093460dbdbdb4345990ccca1819d1d0f9f142d92b8762642fe143798",
+    "kiosk-frens-haringhandel": "fb23a24b82fd676c0f3719c826315089c0b6248577b7c4cb4bbeaa7262b54fd6",
+    "kiosk-haringhandel-jonk": "f06e017a62481e5531a16616365e2ca9fcb37ac0457e0f09a310acc302219444",
+    "kiosk-mr-blou": "913001ac212423912425904b1f8f1bf64088f83e1096afb4dd3183a6199b5efd",
+    "kiosk-museumplein": "7e217d99d86f691d8ab1b3cf186d0d9f572f64f42813f1c3ed72ef58f917516e",
+    "kiosk-stubbes-haring": "312831a964ea99fcca72be370f04c7dd46189b91946cb2edceb71f35b5152824",
     "kleine-komedie": "f0dca73ee8727c2485a8d768e5a1842a6846a4a0f6a5123a17bb6492f9d1a6a5",
     "klimhal": "126be658c5814ea5e90b7bf40ec55c8e6d1d5a98cef781ba060fb8bd177ccba7",
     "klimmuur-centraal": "5d640bdae283a53f98c7d68df551f08857ad6b8a0922336a62d2e230c282a06d",
