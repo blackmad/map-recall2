@@ -80,6 +80,7 @@ test('typed road guard bundle is loaded by Canal Recall', async ({ page }) => {
 });
 
 test('live MapLibre buildings use the OSM-aware color expression', async ({ page }) => {
+  test.skip(OWN, 'MapLibre style assertion: deleted with the default path at P5');
   await page.goto('/canal-drive/');
   await expect.poll(() => page.evaluate(() => Boolean(window.canalRecallGame?.vectorMap?.ready))).toBe(true);
   const paint = await page.evaluate(() => (window.canalRecallGame.vectorMap.map ?? window.canalRecallGame.vectorMap.cameraMap)
@@ -171,12 +172,26 @@ test('HUD hides a new street before the delayed question opens', async ({ page }
 // Named regression (2026-09-30, "DE WITTENKADE" / "TUINSTRAAT" in the plaque
 // of a fresh profile). Turned more than 45° off the road — pivoting at a
 // junction, crossing a street — the candidate is cleared, and the old rule
-// then printed the unanswered name.
+// then printed the unanswered name. Pinned (2026-11-01, #130): mid-block on
+// Reestraat, then turned 90° across it. The seeded spawn used to be the
+// premise, and on the iPhone profile it is a nameless cycle path beside the
+// Amstel (Amsteldijk), where there is no street name to withhold.
 test('HUD withholds an unanswered street even when the bike is turned across it', async ({ page }) => {
   await openCarRoute(page);
   const hudCall = await page.evaluate(() => {
-    const game = window.canalRecallGame;
+    const game = window.canalRecallGame as any;
+    const spans = (game.track.segments as Array<{ name?: string; points: Array<{ x: number; y: number }> }>)
+      .filter(seg => seg.name === 'Reestraat' && seg.points.length >= 2);
+    const length = (pts: Array<{ x: number; y: number }>) => pts.slice(1)
+      .reduce((sum, p, i) => sum + Math.hypot(p.x - pts[i].x, p.y - pts[i].y), 0);
+    const span = spans.sort((a, b) => length(b.points) - length(a.points))[0];
+    if (!span) return null;
+    const pts = span.points, i = Math.floor((pts.length - 1) / 2);
+    const at = game.track.getNearestRoad((pts[i].x + pts[i + 1].x) / 2, (pts[i].y + pts[i + 1].y) / 2);
+    game.maxAsksPerMinute = 0;
+    Object.assign(game.player, { x: at.x, y: at.y, vx: 0, vy: 0, speed: 0, angle: at.angle });
     const road = game.track.getRoadName(game.player.x, game.player.y, game.player.angle);
+    game.player.angle = at.angle + Math.PI / 2; // turned across the street
     game.quizCurrentName = 'Previous Street';
     game.quizCandidateName = '';
     game.quizPromptName = '';
@@ -189,8 +204,9 @@ test('HUD withholds an unanswered street even when the bike is turned across it'
     game._render();
     return { road, captured };
   });
-  expect(hudCall.road).toBeTruthy();
-  expect(hudCall.captured).toEqual({ routeName: '', answerHidden: true });
+  expect(hudCall, 'Reestraat is in the street extract').not.toBeNull();
+  expect(hudCall!.road).toBe('Reestraat');
+  expect(hudCall!.captured).toEqual({ routeName: '', answerHidden: true });
 });
 
 // The corridor is the union of every mapped road, the surface the road guard

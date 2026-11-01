@@ -3,6 +3,7 @@
 //   PORT=4543 node scripts/heap-ride.mjs <out.json> [--device desktop|iphone] [--qs '?engine=own&world=v1&roads=bin']
 //     [--ride 60] [--snapshot start,end] [--throttle 1]
 // BUNDLES_DIR=<dir> serves *.bundle.js from a local (unminified) build; WORLD_DIR=<dir> serves staged world-v1 cells.
+// HEAP_SHOT=<png> saves a screenshot of the settled ride start.
 // Per sample: main-thread used/total heap and ArrayBuffer backing (Runtime.getHeapUsage), each worker's heap,
 // performance.memory.usedJSHeapSize (what the engine-own spec reports as heapMB), and with --snapshot the retained
 // size of every own property of the game and its world view (two levels: `vm._threeBuildings.chunks`) plus self size
@@ -58,6 +59,8 @@ const settleMs = await page.evaluate(async () => {
   return Math.round(performance.now() - t);
 });
 await page.waitForTimeout(3000);
+// HEAP_SHOT=<png>: a screenshot of the settled ride start (before/after shots of a budget change).
+if (process.env.HEAP_SHOT) await page.screenshot({ path: process.env.HEAP_SHOT });
 
 const markOwners = () => page.evaluate(async deep => {
   const g = window.canalRecallGame, vm = g.vectorMap, marks = {};

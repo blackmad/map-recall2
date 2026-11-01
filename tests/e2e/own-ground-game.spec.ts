@@ -1,6 +1,7 @@
 import { test, expect, type Page } from '@playwright/test';
 import { mkdirSync, writeFileSync } from 'node:fs';
 import { openRoute } from './helpers';
+import { OWN } from './worldCam';
 
 // Own ground in the game (on by default since 2026-10-14; `?ownGround=0` opts out;
 // docs/research/own-ground-20261009.md). The tests pin it on or off with the window global.
@@ -119,6 +120,7 @@ test('start flight: overview shows the flat basemap, the ground takes over on la
 });
 
 test('question street is draped without its name; nothing on screen spells it', async ({ page }, info) => {
+  test.skip(OWN, 'MapLibre style assertion: deleted with the default path at P5');
   test.setTimeout(600_000);
   mkdirSync(OUT, { recursive: true });
   const errors = await boot(page, true);

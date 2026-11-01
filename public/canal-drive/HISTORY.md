@@ -1,5 +1,118 @@
 # Canal Recall — what is built
 
+**Road lane final hand-back: other-city binaries verified, the spawn-pose premise pinned, the six-tile cut dropped, the iPhone heap and pop-in gates measured red (2026-11-01, P3/#130).**
+Road lane (5c9915cdf; c91bdd0bc `heap-ride.mjs HEAP_SHOT=<png>`). Other-city
+binaries: way hash identical between binary and `?roads=json` on the
+default engine for all four cities (Amsterdam 68,127 ways, Utrecht 30,516,
+Rotterdam 42,199, Den Haag 26,716); the quiet-run Amsterdam timing stands
+(62–64 ms binary vs 200–214 ms JSON), the other-city timings ran under load
+13 and are not recorded. Spawn pose: the seeded spawn is not a stable
+premise, a bisect names 1e3c26fbe (landmarks compile before they join the
+scene) because `compileAsync` placement changes how many seeded
+`Math.random` calls precede the route pick; own-engine spawns vary with load
+timing. The side-pick freeze had three causes (a teleport beside a new
+street asks a question and an open question holds the bike, `keyboard.press`
+is shorter than a frame, `openRoute` enters racing during the intro
+overview). Specs pinned instead, no game change: street-follow-tap rides
+into the Eerste Leliedwarsstraat / Bloemgracht T (maxAsksPerMinute 0,
+ArrowUp 200 ms, after introOverview === 0; iPhone 10/10), and the
+canal-recall HUD-withhold test is pinned mid-block on Reestraat turned 90°
+(desktop 3/3, iPhone 3/3). Six phone tiles (662e918c6) dropped by the
+integrator on the lane's advice: only 1 tile is held at ride start so the
+budget never binds, and the frames are identical; `pop-in.mjs --device
+iphone` kept. **Gates red, measured on the default engine, iPhone profile:**
+JS heap at ride start 300 MB (main 187, buffers 112, workers ~100) against
+250, owners claimed `_canalSharedFrame` 101.4 MB, `atGrid.grid` 33.6,
+facades CPU arrays 27.1, `roadIndex.segments` 19.6, landmarks CPU arrays
+11.5; pop-in 24 building-chunk arrivals within 150 m of the rider at ride
+start (nearest 34.7 m) plus 4 ground-cell swaps against zero. Both rerun
+under the own engine next (the engine Amsterdam ships). The 27 Free Ride
+cells: `world.plan` wants every 1 km cell under every planned z14 tile
+(~1.5 km, not grid-aligned, 1–9 cells each) and the first plan uses the
+intro camera at zoom 17; the cap (cells intersecting the ride-zoom view
+bounds + 300 m plus the look-ahead boxes) is approved with a pop-in pin and
+a restyle check. The no-maplibre `package.json` diff loads clean and waits
+for the flip. Integrator: roadExtract 10/10, lint clean.
+
+**The overview draws only the tiles on screen: iPad overview triangles 279k → 83k (2026-11-01, P4).**
+Materials lane (c415a1e1b). The overview spans used an 8-per-side grid, so
+each span ran from the first to the last ~3 km tile on screen and a chase
+frame drew whole rows of the region; the grid is 32 per side now and
+`drawAsSpans` tests each span against the frustum in the mesh's own local
+frame, reusing the chosen range for meshes that share a geometry (a fill and
+its casing; `growTileSpheres` invalidates the reuse). iPad per frame:
+overview 279k → 83k, whole frame p50/p95 1.21 M / 1.98 M → 1.02 M / 1.78 M;
+desktop p50 2.18 M → 1.97 M; draws unchanged (385 iPad, 287 desktop);
+in-frame links still 0. Frozen frame against `?overviewCull=0` (the old 8):
+0 px at all five spots, noise floor 0. Not built: a covered-disc cull (the
+0.8 × 600–1200 m disc holds hardly a whole tile, ~1k triangles over 40
+sampled iPad frames) and a two-run split per mesh (54k but more draws
+while iPad draws p95 is 746). Facades on desktop use `drawAsSpans` too and
+are covered by the 0 px pins. Integrator: engine, three-buildings and
+own-ground-game bundles rebuilt (`tiledGeometry` is in all three);
+test:engine 113/113; lint clean; `trianglesIpad` re-recorded. Next owner:
+own ground (~300k triangles, 120 draws on iPad).
+
+**One ride downloads 1.1–2.0 MB of compiled cells; the per-ride gate is measured (2026-11-01, P2/#130 part 2).**
+Integrator, `tests/e2e/world-v1-bytes.spec.ts` (`WORLD_BYTES=1`) on the
+published cells, desktop, 4× CPU, 90 s rides. Seeded Anne Frank →
+Rijksmuseum replay: `?world=v1` 1.13 MB of building data (692 m, 16 cells,
+index 14 KB) against 1.58 MB on the `?world=live` tile path (646 m,
+building tiles 1.27 MB + building and roof facts 0.31 MB). Free Ride:
+`?world=v1` 2.00 MB (202 m, 27 cells) against 0.22 MB live (68 m; the live
+free ride barely moved, so only the world side is a fair reading). Cell
+decode in the worker pool, median 5–6 ms, p95 16–26 ms. The gate
+`worldRideDownloadMB` ≤ 2 is met on the seeded ride and sits on the line
+on the free ride; the lever is not bytes per cell but the fetch ring: 27
+cells for 202 m of riding means the streamer fetches far beyond what the
+ride camera can show, road lane's item (streamer owner). Millimetre eaves
+heights stay parked (they would cut ~7 % of a cell). Whole-ride data on
+either path is 22–29 MB, dominated by the shared extracts (roads binary
+1.47 MB gz, park landscape 0.99 MB, streets 0.30 MB, landmarks 0.18 MB…);
+numbers and per-step tables in `artifacts/world/bytes/*.json`.
+
+**Binary road extracts for Utrecht, Rotterdam and Den Haag, read by default (2026-11-01, P3).**
+Road lane (7d1c1b6c5). `scripts/roads/build-road-extract.ts --city <c>`
+staged each city from its shipped `streets-routing.json` (round trip exact)
+and published `roads-v2/streets-routing.bin.gz` + `report.json`: gzip
+Utrecht 0.67 MB (JSON 1.26), Rotterdam 0.96 (1.79), Den Haag 0.56 (1.04).
+`BINARY_ROAD_CITIES` lists all four cities; `roadExtract.test.ts` gates
+every published binary against its JSON (sha256 of the decoded text) and
+the loader's list against the published files, so the other cities get the
+same features on either engine (they keep MapLibre under the Amsterdam-only
+decision); `?roads=json` forces the old path. The lane's `roadGraphMB`
+reading, 15.5 MB claimed at ride start after a forced GC (graph storage
+9.3 + connectors 6.2, gate ≤ 30), is recorded in `budgets.json`. The
+lane's six-phone-tiles change is held until its heap and pop-in numbers
+land. Integrator: roadExtract 10/10 on the merged tip.
+
+**Oracle migration round 4: the non-P1 specs run under the own engine on the iphone project; the MapLibre-only call audit is done (2026-11-01, P0/P5).**
+Oracle-migration-2 lane (haiku, 9fa8dc49b). `ENGINE=own`, iphone project, the
+48 migrated non-P1 specs in six batches under the lock: 38 passed, 6 failed,
+217 skipped. Five failures are the four known oracles
+(`_completeCityHasBuildings` in building-article-card:80,
+building-click-perf:146, street-art-landmark-cards:78; `_facadesActive()` in
+building-look:47/:58); the sixth is a new own-engine gap, `city-startup-lod`:4
+on iphone: 26 MB of texture against the 22 MB budget (the own city shells use
+more texture memory), threshold left as is, L1's. No new rewrite bugs. Audit
+of direct MapLibre-only calls (`getStyle/getLayer/getSource/get*Property/
+querySourceFeatures/queryRenderedFeatures/_render`) in tests and scripts:
+style-only and perf-probe tests now skip under own (filler-buildings,
+labels:98 which passed vacuously under own on an empty layer list,
+canal-recall's colour-expression test, centre-feedback, own-ground-game's
+draped-street test, own-ground-route-line, three-buildings-ab,
+facade-trees-perf, world-v1-ab variants); `gpu-load-ipad.mjs` guards its
+layer hide/restore; motion-stutter and pop-in already read `vm.host` under
+own. Left as MapLibre tools, not on the perf path: the parkReview
+landmark checks, the review/capture scripts under scripts/look,
+scripts/review, scripts/facade-rebuild, and ride-perf-owners' painter read
+(already inside `if (map)`). Integrator: tsc and lint clean; default-desktop
+smoke of labels, canal-recall, centre-feedback and own-ground-game after the
+skips: 19 passed, 4 skipped, 4 lost their dev server when another run on the
+same port ended (harness); rerun on a private port 3/3, including the
+HUD-withholds test that had read an empty road name at spawn (the open
+spawn-pose item, road lane).
+
 **Oracle migration round 3: the remaining 48 specs ran under the own engine; the oracle list is four items (2026-11-01, P0/P5).**
 Oracle-migration-2 lane (haiku, 42a661282). The remaining 48 migrated
 specs under `ENGINE=own` desktop, in six batches: one rewrite bug found and

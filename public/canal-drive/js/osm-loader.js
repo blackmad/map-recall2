@@ -22,11 +22,12 @@ class OSMLoader {
   // instead of the 14 MB JSON. It decodes to the same features, bit for bit
   // (roadExtract.test.ts pins the published file to the shipped JSON), so
   // everything after this point is unchanged. `?roads=json` forces the JSON.
-  // Only cities in BINARY_ROAD_CITIES have a published binary; the others read
-  // the JSON without a 404 first (`?roads=bin` still tries theirs). Any
+  // Only cities in BINARY_ROAD_CITIES have a published binary (roadExtract.test.ts
+  // checks the list against the files); others read the JSON without a 404
+  // first (`?roads=bin` still tries theirs). Any
   // failure — no file, a stale bundle, a damaged file — returns null and the
   // JSON path runs.
-  static BINARY_ROAD_CITIES = new Set(['amsterdam']);
+  static BINARY_ROAD_CITIES = new Set(['amsterdam', 'utrecht', 'rotterdam', 'den-haag']);
 
   async _fetchRoadExtract(city) {
     const roads = new URLSearchParams(window.location.search).get('roads');

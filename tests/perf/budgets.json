@@ -65,11 +65,18 @@
       "source": "integrator decision 2026-11-01 (user: use your judgement): every lossless cut is spent (v5 8.92 MB), the lossy ones (decimetre heights, collinear removal) change facades, and no ride downloads the city; worldRideDownloadMB is the binding gate; restated again the same day to 10: the cells are published WITHOUT the centimetre height policy (9.70 MB) because the policy changed facades against the default path (a 4 mm eaves change flips a storey count); a lossless millimetre-integer height encoding is the road lane's item to win the bytes back. History: v3 10.4 MB, the 4 MB figure was a density estimate without styles",
       "date": "2026-11-01"
     },
+    "roadGraphMB": {
+      "value": 15.5,
+      "unit": "MB claimed at ride start after forced GC (vm.ferryTrack._graphCache storage 9.3 + connectors 6.2), gate <= 30",
+      "source": "#130 road-csr heap-gs desktop+iphone (lane interim hand-back 2026-11-01)",
+      "date": "2026-11-01"
+    },
     "worldRideDownloadMB": {
       "value": 2,
-      "unit": "MB gzip fetched for one ride under ?world=v1 (seeded Anne Frank → Rijksmuseum and one free ride), from the lane's browser table",
-      "source": "#130 part 2 (pending)",
-      "date": "2026-10-31"
+      "measured": { "seededWorld": 1.13, "seededLive": 1.58, "freeWorld": 2.00, "freeLive": 0.22, "note": "MB gzip of building data for one ride: seeded Anne Frank -> Rijksmuseum replay 90 s (692 m, 16 cells, worker decode median 5 ms p95 16) and 90 s Free Ride (202 m, 27 cells, decode median 5.9 p95 25.9); live = ?world=live tile path (building-tiles + facts). The free ride's 27 cells for 202 m is the lever (fetch ring), road lane item." },
+      "unit": "MB gzip fetched for one ride under ?world=v1 (seeded Anne Frank -> Rijksmuesum and one free ride), tests/e2e/world-v1-bytes.spec.ts WORLD_BYTES=1 on the published cells, desktop, 4x CPU",
+      "source": "#130 part 2, integrator measurement 2026-11-01 (artifacts/world/bytes/*.json on the integrator-engine checkout)",
+      "date": "2026-11-01"
     }
   },
   "_desktopPerfViewport": {
@@ -135,12 +142,12 @@
       "trianglesIpad": {
         "target": 700000,
         "measured": {
-          "p50": 1210000,
-          "p95": 1980000
+          "p50": 1020000,
+          "p95": 1780000
         },
         "unit": "triangles per frame, iPad profile, every pass",
         "owners": "mean per frame: facades 666k (+33k shadow), own-ground 306k, overview 279k, trees 183k (+19k shadow), cycle overlay 108k, landmarks 73k (+29k shadow), player bike 36k",
-        "note": "re-recorded 2026-11-01 with 811ff753c (tileWhole parse bug drew whole facade chunks on touch: 1.65 M / 2.47 M before); per-frame means after the fix: own ground 306k, overview 279k, facades 259k (far shells 91k, extras 80k, kits 49k, near walls/roofs 35k), trees 183k, cycle overlay 108k, landmarks 73k, bike 36k, shadows ~80k"
+        "note": "re-recorded 2026-11-01 with c415a1e1b (overview span grid 32: overview 279k -> 83k per frame on iPad; iPad p50/p95 1.21 M / 1.98 M -> 1.02 M / 1.78 M, desktop p50 2.18 M -> 1.97 M, draws unchanged 385 / 287, 0 px at five spots against ?overviewCull=0); earlier re-record with 811ff753c (tileWhole parse bug drew whole facade chunks on touch: 1.65 M / 2.47 M before); per-frame means after the fix: own ground 306k, overview 279k, facades 259k (far shells 91k, extras 80k, kits 49k, near walls/roofs 35k), trees 183k, cycle overlay 108k, landmarks 73k, bike 36k, shadows ~80k"
       }
     }
   }

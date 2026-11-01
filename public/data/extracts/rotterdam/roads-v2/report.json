@@ -1,0 +1,38 @@
+{
+  "city": "rotterdam",
+  "source": "public/data/extracts/rotterdam/streets-routing.json",
+  "sourceSha256": "35b7c367f1445b059c263e6e4237cc9811c3e9a0e6a20a0fc4eee3f2153f39dc",
+  "output": "artifacts/roads/staging/rotterdam/streets-routing.bin",
+  "publish": "artifacts/roads/staging/rotterdam/streets-routing.bin.gz",
+  "header": {
+    "version": 1,
+    "byteLength": 1319864,
+    "featureCount": 31810,
+    "pathCount": 45489,
+    "pointCount": 232937,
+    "stringCount": 5447,
+    "exactCount": 0,
+    "stringsOffset": 88,
+    "stringsLength": 77979,
+    "featuresOffset": 78067,
+    "featuresLength": 1241797,
+    "exactOffset": 1319864,
+    "exactLength": 0,
+    "sourceSha256": "35b7c367f1445b059c263e6e4237cc9811c3e9a0e6a20a0fc4eee3f2153f39dc"
+  },
+  "bytes": {
+    "json": {
+      "raw": 9728568,
+      "gzip": 1787090,
+      "brotli": 1109593
+    },
+    "binary": {
+      "raw": 1319864,
+      "gzip": 960937,
+      "brotli": 788326
+    }
+  },
+  "encodeMs": 46,
+  "nodeDecodeMs": 16,
+  "roundTrip": "JSON.stringify(decoded) === source"
+}

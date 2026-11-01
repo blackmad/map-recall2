@@ -1,7 +1,7 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { createHash } from 'node:crypto';
-import { readFileSync } from 'node:fs';
+import { existsSync, readdirSync, readFileSync } from 'node:fs';
 import { gzipSync } from 'node:zlib';
 import { decodeRoadExtract, encodeRoadExtract, HEADER_BYTES, loadRoadExtract, readRoadExtractHeader, type RoadExtractFeature } from './roadExtract.ts';
 
@@ -104,10 +104,22 @@ test('Amsterdam streets-routing.json round-trips with sentinel ways pinned by id
 // compiled from the JSON that ships beside it: an edit to streets-routing.json
 // without re-running scripts/roads/build-road-extract.ts fails here, not on
 // the road in the browser.
-test('the published Amsterdam binary is compiled from the shipped JSON', async () => {
-  const text = readFileSync('public/data/extracts/amsterdam/streets-routing.json', 'utf8');
-  const sha = createHash('sha256').update(text).digest('hex');
-  const { header, features } = await loadRoadExtract(readFileSync('public/data/extracts/amsterdam/roads-v2/streets-routing.bin.gz'));
-  assert.equal(header.sourceSha256, sha, 'roads-v2/streets-routing.bin.gz is stale: re-run scripts/roads/build-road-extract.ts and publish');
-  assert.ok(JSON.stringify(features) === text, 'the published binary decodes to the shipped JSON text');
+// Every city that ships one (osm-loader.js BINARY_ROAD_CITIES reads it by default).
+for (const city of ['amsterdam', 'utrecht', 'rotterdam', 'den-haag']) {
+  test(`the published ${city} binary is compiled from the shipped JSON`, async () => {
+    const text = readFileSync(`public/data/extracts/${city}/streets-routing.json`, 'utf8');
+    const sha = createHash('sha256').update(text).digest('hex');
+    const { header, features } = await loadRoadExtract(readFileSync(`public/data/extracts/${city}/roads-v2/streets-routing.bin.gz`));
+    assert.equal(header.sourceSha256, sha, `${city} roads-v2/streets-routing.bin.gz is stale: re-run scripts/roads/build-road-extract.ts --city ${city} and publish`);
+    assert.ok(JSON.stringify(features) === text, `the published ${city} binary decodes to the shipped JSON text`);
+  });
+}
+
+// The loader's list and the published files agree: a city in BINARY_ROAD_CITIES has its binary, and a published
+// binary is read by default.
+test('osm-loader BINARY_ROAD_CITIES is exactly the cities with a published binary', () => {
+  const loader = readFileSync('public/canal-drive/js/osm-loader.js', 'utf8');
+  const listed = JSON.parse(/BINARY_ROAD_CITIES = new Set\((\[[^\]]*\])\)/.exec(loader)![1].replace(/'/g, '"')) as string[];
+  const published = readdirSync('public/data/extracts').filter(c => existsSync(`public/data/extracts/${c}/roads-v2/streets-routing.bin.gz`));
+  assert.deepEqual([...listed].sort(), published.sort());
 });
