@@ -513,6 +513,35 @@ test('shared frame, host driver: no custom layers, drive() draws both passes, a 
   assert.deepEqual(calls, ['attach', 'restore']);
 });
 
+test('shared frame, host driver: one camera read per frame, shared by both passes and every participant (#129)', () => {
+  const map = fakeMap();
+  const reads = { zoom: 0, center: 0, bounds: 0 };
+  map.getZoom = () => { reads.zoom++; return 18; };
+  map.getCenter = () => { reads.center++; return { lng: 4.884, lat: 52.3745 }; };
+  map.getBounds = () => { reads.bounds++; return { getWest: () => 4.88, getEast: () => 4.89, getSouth: () => 52.37, getNorth: () => 52.38 }; };
+  const log: string[] = [];
+  let current: any = null;
+  const frame = new SharedFrame(THREE, map, { host: { renderer: () => current } });
+  const gl = { isContextLost: () => false, drawingBufferWidth: 800, drawingBufferHeight: 600 };
+  current = { ...fakeRenderer(log, frame), getContext: () => gl };
+  frame.attach();
+  const seen: { pass: string; zoom: number; bounds: unknown }[] = [];
+  const reader = { beforeRender: (ctx: any) => { seen.push({ pass: ctx.pass, zoom: ctx.zoom, bounds: ctx.bounds() }); } };
+  frame.register('ground', { root: new THREE.Group(), ...reader });
+  frame.register('trees', { root: new THREE.Group(), ...reader });
+  frame.register('bike', { root: new THREE.Group(), ...reader }, { pass: 'overlay' });
+  frame.drive(amsterdamClip().clip);
+  assert.deepEqual(seen.map(s => s.pass), ['main', 'main', 'overlay']);
+  assert.equal(reads.zoom, 1, 'one zoom read for the frame');
+  assert.equal(reads.bounds, 1, 'one bounds read for the frame');
+  assert.ok(reads.center <= 1, 'at most one centre read (the shadow focus)');
+  assert.ok(seen.every(s => s.zoom === 18 && s.bounds === seen[0].bounds), 'every participant sees the same view');
+  assert.deepEqual(seen[0].bounds, { west: 4.88, east: 4.89, south: 52.37, north: 52.38 });
+  frame.drive(amsterdamClip().clip);
+  assert.equal(reads.zoom, 2, 'the next frame reads the camera again');
+  assert.notEqual(seen[3].bounds, seen[0].bounds);
+});
+
 test('lit facade: every instance shares one program (fixed key, same source; uniforms carry the per-layer state)', () => {
   const compiled = (m: any, lib: any) => {
     const shader = { vertexShader: lib.vertexShader, fragmentShader: lib.fragmentShader, uniforms: THREE.UniformsUtils.clone(lib.uniforms) };

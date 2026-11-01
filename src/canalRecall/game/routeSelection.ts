@@ -59,6 +59,11 @@ export const HOME_MIN_TRIP_KM = 0.2;
 export const RECENT_NEAR_KM = 0.35;
 /** The next home ride starts where the last one ended and must leave it. */
 export const HOME_NEXT_MIN_KM = 0.5;
+/**
+ * A surprise destination closer than this is re-drawn: Micropia and Artis are 45 m apart, both snap to Plantage
+ * Kerklaan, and the ride ended "Start and finish are too close" (MIN_START_FINISH_DIST, 67 m) instead of starting.
+ */
+export const SURPRISE_MIN_PAIR_KM = HOME_MIN_TRIP_KM;
 
 export interface MasterySample {
   lat: number;
@@ -128,7 +133,12 @@ export function pickDestinationNear(
     item: poi,
     weight: notabilityWeight(notabilityScore(poi)),
   }));
-  return pickWeighted(scored, chooseUnit);
+  const pick = pickWeighted(scored, chooseUnit);
+  // A neighbour is drawn again from the places far enough away. A pick that is far enough is returned as it was,
+  // after the same draws, so every ride that started before starts the same.
+  if (!pick || kmBetween(pick, from) >= SURPRISE_MIN_PAIR_KM) return pick;
+  const apart = scored.filter(entry => kmBetween(entry.item, from) >= SURPRISE_MIN_PAIR_KM);
+  return apart.length ? pickWeighted(apart, chooseUnit) ?? pick : pick;
 }
 
 /**

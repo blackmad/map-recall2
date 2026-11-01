@@ -383,3 +383,19 @@ test('sightlineBlocker through the resident grid finds the blocker the linear wa
   }
   assert.ok(blocked > 30, `the queries exercise blocking (${blocked})`);
 });
+
+test('EngineCamera.bounds: the per-frame cache returns what a fresh camera computes, after every kind of change', () => {
+  let vp = { width: 800, height: 600 };
+  const cam = new EngineCamera(() => vp, { center: [4.9, 52.37], zoom: 17, pitch: 50, bearing: 20 });
+  const fresh = () => new EngineCamera(() => vp, { center: [cam.lng, cam.lat], zoom: cam.zoom, pitch: cam.pitch, bearing: cam.bearing, elevation: cam.elevation }).bounds();
+  const a = cam.bounds();
+  assert.deepEqual(a, fresh());
+  a.west = 0;
+  assert.deepEqual(cam.bounds(), fresh(), 'a caller mutating its copy does not touch the cache');
+  for (const step of [{ center: [4.91, 52.371] as [number, number] }, { zoom: 18.2 }, { pitch: 10 }, { bearing: -90 }, { elevation: 3 }]) {
+    cam.set(step);
+    assert.deepEqual(cam.bounds(), fresh(), JSON.stringify(step));
+  }
+  vp = { width: 400, height: 900 };
+  assert.deepEqual(cam.bounds(), fresh(), 'viewport change');
+});

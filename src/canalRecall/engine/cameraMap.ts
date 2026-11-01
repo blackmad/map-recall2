@@ -150,11 +150,17 @@ export class EngineCamera {
     const [lng, lat] = this.lngLatOf(hit[0], hit[1]);
     return { lng, lat };
   }
+  /** The view box. Kept per camera frame (every field it depends on is in the frame's key), so repeat reads in a frame are free. */
   bounds(): ViewBounds {
-    const [x0, y0, x1, y1] = visibleBounds(this.frame());
-    const [west, south] = this.lngLatOf(x0, y0), [east, north] = this.lngLatOf(x1, y1);
-    return { west, south, east, north };
+    const f = this.frame();
+    if (this.cachedBounds?.frame !== f) {
+      const [x0, y0, x1, y1] = visibleBounds(f);
+      const [west, south] = this.lngLatOf(x0, y0), [east, north] = this.lngLatOf(x1, y1);
+      this.cachedBounds = { frame: f, box: { west, south, east, north } };
+    }
+    return { ...this.cachedBounds.box };
   }
+  private cachedBounds: { frame: CameraFrame; box: ViewBounds } | null = null;
 
   /** The eye: lng/lat and altitude (MapLibre `transform.getCameraLngLat` / `getCameraAltitude`). */
   eye(): { lng: number; lat: number; altitudeM: number } {

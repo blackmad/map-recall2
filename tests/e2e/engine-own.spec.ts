@@ -75,6 +75,24 @@ async function ride(page: Page, ms: number): Promise<void> {
   await page.keyboard.up('ArrowUp');
 }
 
+// 2026-11-01 (#129, hand-back 14): with the overview built in the worker pool the boot drew 468 fewer Math.random
+// values (three's geometry ids) before the route card, the seeded surprise ride drew Micropia -> Artis (45 m apart)
+// and stopped at "Start and finish are too close": the desktop ride never started. The picker now re-draws a
+// neighbour (routeSelection.ts SURPRISE_MIN_PAIR_KM); this pins the seeded desktop ride with the pooled overview.
+test('?engine=own: the overview is built in the worker pool and the seeded ride starts', async ({ page }, info) => {
+  test.skip(info.project.name !== 'desktop', 'the desktop seed was the one that drew the neighbour');
+  test.setTimeout(150_000);
+  await openRoute(page, { query: '?engine=own', viewMode: 'chase' });
+  const state = await page.evaluate(() => {
+    const g = (window as any).canalRecallGame, vm = g.vectorMap;
+    return { engine: vm.engine, built: vm.status?.overviewBuilt, overview: !!vm._overview, from: g.routeFrom?.name, to: g.routeTo?.name };
+  });
+  console.log('overview pool', JSON.stringify(state));
+  expect(state.engine).toBe('own');
+  expect(state.overview, 'the overview layer is up').toBe(true);
+  expect(state.built, 'the overview geometry came from the pool worker').toBe('pool');
+});
+
 test('?engine=own rides with three.js owning the frame; maplibregl.Map is never constructed', async ({ page }) => {
   test.setTimeout(180_000);
   const errors: string[] = [];
