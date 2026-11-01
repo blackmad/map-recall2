@@ -47,7 +47,7 @@ import { gpuMeshBytes, isCompact, type GpuMesh } from './compactMesh.js';
 import { groundParticipant, GROUND_ORDER, ndcOf } from './sharedFrameGround.js';
 import { footprintBase } from './placement.js';
 import { cutMesh, disposeTiles } from '../rendererShared/tiledGeometry.js';
-import type { CellTile } from './cellTiles.js';
+import { cellTileGrid, type CellTile } from './cellTiles.js';
 import { inTouchRing, residentRadius, touchAheadMarginM, touchResidentRadius, viewCornerReachM, viewReachM } from '../engine/worldStreamer.js';
 import { farBlockCells, farBlocksWithin, farRadiusM, FAR_KEEP_M, type BuiltFar } from './farRing.js';
 import { routeRibbon } from './streets.js';
@@ -130,6 +130,8 @@ export interface OwnGroundOptions {
    * default: from the page, `groundTilesFlag()` below, 3; 1 = one mesh per layer). Display only.
    */
   tiles?: number;
+  /** Tiles per side for a LOD 0, full-detail cell (cellTiles.ts cellTileGrid; default `groundNearTilesFlag()`, 6). */
+  nearTiles?: number;
   /**
    * New programs the ground warm-up links per frame (rendererShared/compileBudget.ts; default: from the page,
    * `precompileBudget()`: 2 on a touch device, `Infinity` = all in the first frame on a desktop). CANAL-RECALL-7/-N.
@@ -143,6 +145,20 @@ export interface OwnGroundOptions {
  * Leidseplein with drawn ground triangles 1.04–1.44 M → 0.35–0.47 M. `?groundTiles=1..4` (or
  * `window.__canalRecallGroundTiles`) overrides it; `?groundTiles=1` is the one-mesh-per-layer opt-out.
  */
+/**
+ * Tiles per side for a cell built at LOD 0 and full detail (cellTiles.ts cellTileGrid): 6, so the rider's own cell on
+ * a touch device (its 1 km of kerbs, paving and bollards was ~190 k of ~285 k ground triangles per iPad frame, #129)
+ * draws only the sixth-of-a-cell strips on screen. Pure culling: same pixels. `?groundNearTiles=1..8` (or
+ * `window.__canalRecallGroundNearTiles`) overrides it; `?groundNearTiles=3` is the old grid (the A/B).
+ */
+export const NEAR_CELL_TILES = 6;
+export function groundNearTilesFlag(): number {
+  const g = globalThis as { __canalRecallGroundNearTiles?: number | string; location?: { search?: string } };
+  const asked = Number(g.__canalRecallGroundNearTiles ?? (g.location?.search ? new URLSearchParams(g.location.search).get('groundNearTiles') : NaN));
+  if (Number.isInteger(asked) && asked >= 1 && asked <= 8) return asked;
+  return NEAR_CELL_TILES;
+}
+
 function groundTilesFlag(): number {
   const g = globalThis as { __canalRecallGroundTiles?: number | string; matchMedia?: (query: string) => { matches: boolean }; location?: { search?: string } };
   const asked = Number(g.__canalRecallGroundTiles ?? (g.location?.search ? new URLSearchParams(g.location.search).get('groundTiles') : NaN));
@@ -339,7 +355,7 @@ export class OwnGround {
     this.THREE = THREE;
     this.frame = frame;
     this.host = host;
-    this.opts = { radiusM: RADIUS_M, aerialRadiusM: AERIAL_RADIUS_M, fadeMs: FADE_MS, nearM: NEAR_M, minZoom: 15, parks: parksFlag(), rails: railsFlag(), roads: roadsFlag(), groundLook: GROUND_LOOK_DEFAULT, transition: transitionOn(), far: true, releaseArrays: false, detail: detailFlag(), groundNear: groundNearFlag(), ring: groundRingFlag(), tiles: groundTilesFlag(), precompilePerFrame: precompileBudget(), ...options, tilesOnly: options.tilesOnly ?? !!options.releaseArrays };
+    this.opts = { radiusM: RADIUS_M, aerialRadiusM: AERIAL_RADIUS_M, fadeMs: FADE_MS, nearM: NEAR_M, minZoom: 15, parks: parksFlag(), rails: railsFlag(), roads: roadsFlag(), groundLook: GROUND_LOOK_DEFAULT, transition: transitionOn(), far: true, releaseArrays: false, detail: detailFlag(), groundNear: groundNearFlag(), ring: groundRingFlag(), tiles: groundTilesFlag(), nearTiles: groundNearTilesFlag(), precompilePerFrame: precompileBudget(), ...options, tilesOnly: options.tilesOnly ?? !!options.releaseArrays };
     this.radiusM = this.opts.radiusM;
     this.root = new THREE.Group();
     this.root.name = 'own-ground';
@@ -361,7 +377,7 @@ export class OwnGround {
       this.worker.onmessage = event => this.onWorker(event.data);
       this.worker.onerror = event => { this.stats.errors.push(`worker: ${event.message}`); };
       // Compact meshes: the same geometry in ~half the bytes (compactMesh.ts).
-      this.worker.postMessage({ type: 'init', root, parks: this.opts.parks, rails: this.opts.rails, roads: this.opts.roads, groundLook: this.opts.groundLook, compact: compactFlag(), detail: this.opts.detail, roadLook: roadLookFlag(), tiles: this.opts.tiles, tileMin: TILE_MIN_TRIANGLES });
+      this.worker.postMessage({ type: 'init', root, parks: this.opts.parks, rails: this.opts.rails, roads: this.opts.roads, groundLook: this.opts.groundLook, compact: compactFlag(), detail: this.opts.detail, roadLook: roadLookFlag(), tiles: this.opts.tiles, nearTiles: this.opts.nearTiles, tileMin: TILE_MIN_TRIANGLES });
     } catch (error) {
       this.stats.errors.push(`worker unavailable: ${String(error)}`);
     }
@@ -970,12 +986,12 @@ export class OwnGround {
    * shared frame draws it whole or through the tiles per frame. With `releaseArrays` (phones) the tiles are the only
    * draw: the mesh's own index is dropped instead of kept on the CPU for a whole draw.
    */
-  private tile(mesh: any, tiles?: CellTile[] | null): void {
-    if (this.opts.tiles <= 1) return;
+  private tile(mesh: any, tiles?: CellTile[] | null, n = this.opts.tiles): void {
+    if (n <= 1) return;
     const tilesOnly = this.opts.tilesOnly;
     // A phone keeps no CPU copy of a whole index (`tilesOnly`); spans rewrite the index in place and need none.
     // `tiles`: cut in the worker (cellTiles.ts layerTiles, the same partition), so only the wrapping runs here.
-    if (cutMesh(this.THREE, mesh, this.opts.tiles, TILE_MIN_TRIANGLES, { release: !!this.opts.releaseArrays, tilesOnly, tiles }) && tilesOnly && mesh.userData.tiles?.length) mesh.geometry.setIndex(null);
+    if (cutMesh(this.THREE, mesh, n, TILE_MIN_TRIANGLES, { release: !!this.opts.releaseArrays, tilesOnly, tiles }) && tilesOnly && mesh.userData.tiles?.length) mesh.geometry.setIndex(null);
   }
 
   private packedGeometry(p: GpuMesh): any {
@@ -1044,7 +1060,7 @@ export class OwnGround {
       // Deck bodies, hedges and park furniture stand up; the rest is ground.
       mesh.castShadow = layer === 'deckBody' || layer === 'hedge' || layer === 'furniture';
       mesh.renderOrder = layer === 'water' || layer === 'quay' ? 0 : layer === 'land' ? 1 : 2;
-      this.tile(mesh, cell.tiles ? cell.tiles[layer] ?? null : undefined);
+      this.tile(mesh, cell.tiles ? cell.tiles[layer] ?? null : undefined, cellTileGrid(this.opts.tiles, this.opts.nearTiles, cell.lod, cell.detail));
       group.add(mesh);
       triangles += p.indices.length / 3;
       bytes += gpuMeshBytes(p as GpuMesh);

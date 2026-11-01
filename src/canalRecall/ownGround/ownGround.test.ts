@@ -14,7 +14,7 @@ import { crossSection, parseMetres, areaKind, pavedAreaSurface, carriagewayClass
 import { asphaltGrain, herringboneBricks, KLINKER_TONES } from './streetTextures';
 import { mouthMarking, sharkTeeth, TEETH } from './roadMarkings';
 import { inTouchRing, RADIUS_STEP_M, residentRadius, touchAheadMarginM, touchResidentRadius, viewCornerReachM, viewReachM, TOUCH_AHEAD_MAX_M, TOUCH_RADIUS_STEP_M } from '../engine/worldStreamer.js';
-import { layerTiles, splitIntoTiles, tileTransferables } from './cellTiles';
+import { cellTileGrid, layerTiles, splitIntoTiles, tileTransferables } from './cellTiles';
 import { rawTiles } from '../rendererShared/tiledGeometry.js';
 import { compactCell } from './compactMesh';
 import { basemapGroundPatches } from './basemapPalette';
@@ -2511,4 +2511,13 @@ test('GroundStore: paced planning on the page places the same decks, cuts and wa
   assert.equal(paced.cuts, once.cuts);
   assert.ok(once.water.length > 100000 && /OSM/.test(once.water), 'the places hold water with way openings');
   assert.equal(paced.water, once.water);
+});
+
+test('cellTileGrid: a LOD 0 full-detail cell is cut finer; every other cell, and a one-mesh page, keeps the base grid', () => {
+  assert.equal(cellTileGrid(3, 6, 0, 'full'), 6, 'the rider\'s own cell (touch) / the near ring (desktop)');
+  assert.equal(cellTileGrid(3, 6, 0, 'touch'), 3, 'a touch-detail neighbour');
+  assert.equal(cellTileGrid(3, 6, 1, 'full'), 3, 'a LOD 1 cell');
+  assert.equal(cellTileGrid(3, 3, 0, 'full'), 3, '?groundNearTiles=3: the old grid');
+  assert.equal(cellTileGrid(1, 6, 0, 'full'), 1, '?groundTiles=1: one mesh per layer stays one mesh');
+  assert.equal(cellTileGrid(4, 2, 0, 'full'), 4, 'never coarser than the base grid');
 });

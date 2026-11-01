@@ -23,11 +23,11 @@ import { buildFarBlock, farColours, farTransferables, type FarColours } from './
 import { groundPalette, isRoadLookId, type GroundLook } from './groundLook.js';
 import { setKerbShadowRoadLook } from './roadSurfaces.js';
 import { GroundBuildQueue } from './buildQueue.js';
-import { layerTiles, tileTransferables } from './cellTiles.js';
+import { cellTileGrid, layerTiles, tileTransferables } from './cellTiles.js';
 import { cellGpuTransferables, compactCell, compactFar, farGpuTransferables } from './compactMesh.js';
 
 type In =
-  | { type: 'init'; root: string; parks?: boolean; rails?: boolean; roads?: boolean; groundLook?: GroundLook; compact?: boolean; detail?: CellDetail; tiles?: number; tileMin?: number; /** The road look under review (gameGround roadLookFlag), for the kerb shadows' ramp ends. */ roadLook?: string | null }
+  | { type: 'init'; root: string; parks?: boolean; rails?: boolean; roads?: boolean; groundLook?: GroundLook; compact?: boolean; detail?: CellDetail; tiles?: number; /** Tiles per side for a LOD 0, full-detail cell (cellTiles.ts cellTileGrid). */ nearTiles?: number; tileMin?: number; /** The road look under review (gameGround roadLookFlag), for the kerb shadows' ramp ends. */ roadLook?: string | null }
   | { type: 'build'; key: string; lod: 0 | 1; gen: number; detail?: CellDetail }
   | { type: 'far'; key: string; gen: number }
   | { type: 'evict'; x: number; y: number; keepM: number; keep: string[] }
@@ -39,7 +39,7 @@ let ready: Promise<void> | null = null;
 let colours: FarColours | undefined;
 let compact = false;
 /** Tiles per side and the smallest layer worth cutting (init `tiles`, `tileMin`); 0: the main thread cuts (or nobody). */
-let tiles = 0, tileMin = 0;
+let tiles = 0, nearTiles = 0, tileMin = 0;
 /** The device's far-cell level (init `detail`): `touch` on a coarse-pointer device, `full` on a desktop. */
 let detail: CellDetail = 'full';
 // One build at a time: cells are big and the order matters (nearest ahead first, buildQueue.ts).
@@ -61,7 +61,7 @@ async function pump(s: GroundStore): Promise<void> {
           const input = await s.cellInput(job.key, job.lod, job.detail);
           const built = buildCell(input), cell = compact ? compactCell(built) : built;
           // The tiles of the meshes exactly as sent (compact or not): the main thread's install only wraps them.
-          if (tiles > 1) cell.tiles = layerTiles(cell.layers, tiles, tileMin);
+          if (tiles > 1) cell.tiles = layerTiles(cell.layers, cellTileGrid(tiles, nearTiles, cell.lod, cell.detail), tileMin);
           ctx.postMessage({ type: 'cell', gen: job.gen, cell }, [...(compact ? cellGpuTransferables(cell) : cellTransferables(cell)), ...tileTransferables(cell.tiles)]);
         } catch (error) {
           ctx.postMessage({ type: 'error', key: job.key, gen: job.gen, message: String((error as Error)?.stack ?? error) });
@@ -87,7 +87,7 @@ ctx.onmessage = event => {
     store = new GroundStore(httpFetchBytes(msg.root), { parks: msg.parks !== false, roads: msg.roads === true, rails: msg.rails !== false });
     compact = msg.compact === true;
     detail = msg.detail === 'touch' ? 'touch' : 'full';
-    tiles = Math.max(0, Math.floor(msg.tiles ?? 0)); tileMin = Math.max(0, msg.tileMin ?? 0);
+    tiles = Math.max(0, Math.floor(msg.tiles ?? 0)); nearTiles = Math.max(0, Math.floor(msg.nearTiles ?? 0)); tileMin = Math.max(0, msg.tileMin ?? 0);
     const look = isRoadLookId(msg.roadLook) ? msg.roadLook : null;
     setKerbShadowRoadLook(look);
     colours = farColours(groundPalette(msg.groundLook || 'default'), look);

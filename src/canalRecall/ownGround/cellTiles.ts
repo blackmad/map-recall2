@@ -122,6 +122,15 @@ export function layerTiles(layers: Readonly<Record<string, { positions: ArrayLik
   return out;
 }
 
+/**
+ * Tiles per side for one cell: `near` for a cell built at LOD 0 and full detail (the rider's own cell on a touch
+ * device, the near ring on a desktop), whose 1 km of kerbs, paving and bollards is most of the ground drawn; `base`
+ * for every other cell. The worker cuts and the main thread wraps with this same call, so both agree on the grid.
+ */
+export function cellTileGrid(base: number, near: number, lod: 0 | 1, detail: 'full' | 'touch'): number {
+  return base > 1 && lod === 0 && detail === 'full' ? Math.max(base, near) : base;
+}
+
 /** The tiles' index buffers, to transfer with the cell. */
 export function tileTransferables(tiles: Readonly<Record<string, CellTile[] | null>> | undefined): ArrayBuffer[] {
   const out: ArrayBuffer[] = [];
