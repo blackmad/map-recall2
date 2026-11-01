@@ -1972,5 +1972,11 @@
   "buildVersion": 2,
   "bytes": 32264,
   "triangles": 1344
+ },
+ "doelen-hotel": {
+  "sourceHash": "b3224d1258c39c12",
+  "buildVersion": 2,
+  "bytes": 98032,
+  "triangles": 4405
  }
 }

@@ -63709,6 +63709,409 @@
         "bytes": 32264,
         "triangles": 1344
       }
+    },
+    "doelen-hotel": {
+      "id": "doelen-hotel",
+      "name": "Doelen Hotel",
+      "modelUrl": "./models/doelen-hotel.glb",
+      "suppressOsmIds": [
+        "NL.IMBAG.Pand.0363100012180410"
+      ],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.895909,
+          52.368252
+        ],
+        "headingDegrees": 302.2,
+        "lengthMetres": 47.4,
+        "widthMetres": 26.3
+      },
+      "surveyed": {
+        "anchor": [
+          4.895909,
+          52.368252
+        ],
+        "northOffsetDegrees": 0,
+        "source": "Anchor and front frame from the BAG ring of Nieuwe Doelenstraat 24 (pand 0363100012180410; PDOK BAG WFS, CC0); native east/south metres at 111320 m per degree (cos-latitude in longitude). The builder frame runs along the Kloveniersburgwal front from the Amstel corner (front facing 122.2); heights and openings of the tower and north wing measured on the Gemeente Amsterdam panorama recording_2025-07-03_03-29-47_03471 (CC BY 4.0) rectified onto the front plane; tower, clock, figures and dome from Wikimedia Commons photographs (Jvhertum, public domain; Tuxyso, CC BY-SA 3.0; C messier, CC BY-SA 4.0); massing from the 3DBAG LoD2.2 roof planes (CC BY 4.0). See doelen-hotel-footprints.json."
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 0,
+      "heightMetres": 31.6,
+      "bagYear": 1883,
+      "materialOverrides": {
+        "brick": "#a06a5a",
+        "stone": "#e3d3a8",
+        "white": "#eadfc4",
+        "ochre": "#ddd0b0",
+        "red": "#8e3b30",
+        "greyBrick": "#5e4438",
+        "concrete": "#a8a59d",
+        "slate": "#4d5156",
+        "glass": "#2b3238",
+        "frame": "#2f3631",
+        "dark": "#2a2522",
+        "gold": "#c9a64a"
+      },
+      "attribution": {
+        "title": "Doelen Hotel, Nieuwe Doelenstraat 24",
+        "author": "Map Recall",
+        "sourceUrl": "https://nl.wikipedia.org/wiki/Doelen_Hotel",
+        "licence": "CC BY 4.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "modifications": "Original texture-free flat-colour geometry on the BAG footprint (CC0) with 3DBAG massing (CC BY 4.0): the 1882-83 hotel on the Kloveniersburgwal, red brick striped with cream stone, the central tower with its carved cartouches, DOELEN HOTEL lettering, clock between two stone militiamen, segmental gable, slate dome and open lantern, the glazed pavilion with striped awnings, the pilastered balcony bay, console frieze, gablet parapet, mansards and the corner pavilion; read from Gemeente Amsterdam panoramas (CC BY 4.0) and Wikimedia Commons photographs (public domain, CC BY 3.0, CC BY-SA 3.0/4.0) for proportion only. No photo pixels or imported meshes."
+      },
+      "buildingFootprint": {
+        "type": "MultiPolygon",
+        "coordinates": [
+          [
+            [
+              [
+                4.8960309,
+                52.3682723
+              ],
+              [
+                4.8960317,
+                52.3682734
+              ],
+              [
+                4.8960324,
+                52.3682745
+              ],
+              [
+                4.8960331,
+                52.3682756
+              ],
+              [
+                4.8960337,
+                52.3682768
+              ],
+              [
+                4.8960343,
+                52.3682779
+              ],
+              [
+                4.8960348,
+                52.368279
+              ],
+              [
+                4.8960352,
+                52.3682802
+              ],
+              [
+                4.8960356,
+                52.3682814
+              ],
+              [
+                4.8960359,
+                52.3682825
+              ],
+              [
+                4.8960361,
+                52.3682837
+              ],
+              [
+                4.8960363,
+                52.3682849
+              ],
+              [
+                4.8960364,
+                52.3682861
+              ],
+              [
+                4.8960364,
+                52.3682892
+              ],
+              [
+                4.8960359,
+                52.3682922
+              ],
+              [
+                4.896035,
+                52.3682953
+              ],
+              [
+                4.8960336,
+                52.3682983
+              ],
+              [
+                4.8960319,
+                52.3683011
+              ],
+              [
+                4.8960297,
+                52.3683039
+              ],
+              [
+                4.8960272,
+                52.3683066
+              ],
+              [
+                4.8960242,
+                52.3683091
+              ],
+              [
+                4.896021,
+                52.3683115
+              ],
+              [
+                4.8960174,
+                52.3683136
+              ],
+              [
+                4.8960135,
+                52.3683156
+              ],
+              [
+                4.8960093,
+                52.3683174
+              ],
+              [
+                4.8960051,
+                52.3683188
+              ],
+              [
+                4.8960007,
+                52.3683201
+              ],
+              [
+                4.8959961,
+                52.3683211
+              ],
+              [
+                4.8959914,
+                52.3683219
+              ],
+              [
+                4.8959866,
+                52.3683224
+              ],
+              [
+                4.8959818,
+                52.3683227
+              ],
+              [
+                4.8959769,
+                52.3683227
+              ],
+              [
+                4.8959721,
+                52.3683225
+              ],
+              [
+                4.8959673,
+                52.368322
+              ],
+              [
+                4.8959626,
+                52.3683213
+              ],
+              [
+                4.895958,
+                52.3683203
+              ],
+              [
+                4.8959535,
+                52.3683192
+              ],
+              [
+                4.8959492,
+                52.3683177
+              ],
+              [
+                4.8959452,
+                52.3683161
+              ],
+              [
+                4.8959414,
+                52.3683143
+              ],
+              [
+                4.8959378,
+                52.3683123
+              ],
+              [
+                4.8959364,
+                52.3683135
+              ],
+              [
+                4.8959284,
+                52.3683105
+              ],
+              [
+                4.8959036,
+                52.3683013
+              ],
+              [
+                4.8958807,
+                52.3682928
+              ],
+              [
+                4.8958575,
+                52.3682842
+              ],
+              [
+                4.8958325,
+                52.3682749
+              ],
+              [
+                4.8958217,
+                52.3682709
+              ],
+              [
+                4.8957968,
+                52.3682616
+              ],
+              [
+                4.8957518,
+                52.3682449
+              ],
+              [
+                4.895751,
+                52.3682452
+              ],
+              [
+                4.8956676,
+                52.3682139
+              ],
+              [
+                4.8956681,
+                52.3682135
+              ],
+              [
+                4.8956582,
+                52.3682098
+              ],
+              [
+                4.8956334,
+                52.3682004
+              ],
+              [
+                4.8956219,
+                52.3681961
+              ],
+              [
+                4.8955972,
+                52.3681868
+              ],
+              [
+                4.8955856,
+                52.3681824
+              ],
+              [
+                4.895561,
+                52.3681731
+              ],
+              [
+                4.8954386,
+                52.368127
+              ],
+              [
+                4.8955968,
+                52.3679992
+              ],
+              [
+                4.8956028,
+                52.368002
+              ],
+              [
+                4.8956912,
+                52.3679372
+              ],
+              [
+                4.8958422,
+                52.3681053
+              ],
+              [
+                4.8958454,
+                52.3681054
+              ],
+              [
+                4.8958494,
+                52.3681032
+              ],
+              [
+                4.8958892,
+                52.3681244
+              ],
+              [
+                4.8958846,
+                52.3681321
+              ],
+              [
+                4.8958928,
+                52.3681459
+              ],
+              [
+                4.8959197,
+                52.3681687
+              ],
+              [
+                4.8959245,
+                52.3681667
+              ],
+              [
+                4.8959998,
+                52.3682326
+              ],
+              [
+                4.895995,
+                52.3682347
+              ],
+              [
+                4.8960293,
+                52.3682704
+              ],
+              [
+                4.8960309,
+                52.3682723
+              ]
+            ]
+          ]
+        ]
+      },
+      "partyWallBearings": [
+        233
+      ],
+      "partyWallNote": "The south-west flank behind the café (x 2.5-8.9 along the Amstel side) adjoins Nieuwe Doelenstraat 20-22 (Café de Jaren); the BAG rings share it.",
+      "buildingCategory": "landmark",
+      "bounds": {
+        "min": [
+          -31.897371292114258,
+          -9.536743306171047e-8,
+          -7.7310380935668945
+        ],
+        "max": [
+          8.970953941345215,
+          31.799999237060547,
+          35.047000885009766
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.895909,
+          52.368252
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 90,
+        "facadeBearingDegrees": 302.20000000000005,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 42.77803897857666,
+        "heightMetres": 31.79999933242798,
+        "depthMetres": 40.86832523345947,
+        "depthCoverage": 1.5539287161011206
+      },
+      "triangles": 27418,
+      "bytes": 365952,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
+      "lod1": {
+        "sourceHash": "b3224d1258c39c12",
+        "buildVersion": 2,
+        "bytes": 98032,
+        "triangles": 4405
+      }
     }
   }
 }
