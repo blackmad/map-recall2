@@ -27,7 +27,8 @@ test('mobile city shells remain until detailed buildings install', async ({ page
   if (status.touch) {
     expect(status.detailZoom).toBe(17);
     expect(status.pixelRatio).toBeLessThanOrEqual(1.5);
-    expect(status.stats.textureMB).toBeLessThanOrEqual(22);
+    // 27 MB: the facade atlas is 208 layers at 128 px by design (191 bays, 4 roofs, 1, 12 city-look slots); a smaller bay size needs a look review.
+    expect(status.stats.textureMB).toBeLessThanOrEqual(27);
   }
   await page.screenshot({ path: testInfo.outputPath('city-lod.png') });
   console.log('city LOD:', JSON.stringify(status));
