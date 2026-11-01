@@ -274,15 +274,24 @@ function openDb(): Promise<IDBDatabase | null> {
   if (dbPromise) return dbPromise;
   const factory = idb();
   if (!factory) return Promise.resolve(null);
-  const opening = new Promise<IDBDatabase | null>(resolve => {
+  // A database that exists without the store (opened elsewhere without an upgrade, an interrupted first open) is
+  // reopened one version up to create it; otherwise every read and write would fail quietly for good.
+  const openAt = (version: number | undefined, retry: boolean): Promise<IDBDatabase | null> => new Promise(resolve => {
     try {
-      const request = factory.open(DB_NAME, 1);
+      const request = version === undefined ? factory.open(DB_NAME) : factory.open(DB_NAME, version);
       request.onupgradeneeded = () => { try { request.result.createObjectStore(STORE); } catch (_) { /* exists */ } };
-      request.onsuccess = () => resolve(request.result);
+      request.onsuccess = () => {
+        const db = request.result;
+        if (db.objectStoreNames.contains(STORE)) { resolve(db); return; }
+        const next = db.version + 1;
+        db.close();
+        resolve(retry ? openAt(next, false) : null);
+      };
       request.onerror = () => resolve(null);
       request.onblocked = () => resolve(null);
     } catch (_) { resolve(null); }
   });
+  const opening = openAt(undefined, true);
   dbPromise = withTimeout(opening, OPEN_TIMEOUT_MS, null);
   return dbPromise;
 }

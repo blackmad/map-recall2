@@ -119,11 +119,13 @@ async function emulated() {
       const stored = await page.waitForFunction(() => new Promise(resolve => {
         try {
           const req = indexedDB.open('canal-recall-road-world');
-          req.onsuccess = () => { try { const c = req.result.transaction('worlds').objectStore('worlds').getAllKeys(); c.onsuccess = () => resolve(c.result.some(k => String(k).includes('|car|'))); c.onerror = () => resolve(false); } catch (_) { resolve(false); } };
+          req.onsuccess = () => { try { const store = req.result.transaction('worlds').objectStore('worlds'); const c = store.getAllKeys(); c.onsuccess = () => { const key = c.result.find(k => String(k).includes('|car|')); if (!key) { req.result.close(); resolve(false); return; } const g = store.get(key); g.onsuccess = () => { req.result.close(); resolve(!!(g.result && typeof g.result.fingerprint === 'string')); }; g.onerror = () => resolve(false); }; c.onerror = () => resolve(false); } catch (_) { resolve(false); } };
           req.onerror = () => resolve(false);
         } catch (_) { resolve(false); }
       }), null, { timeout: 60_000, polling: 1000 }).then(() => true, () => false);
       if (!stored) errors.push('warm: the first visit did not cache its world');
+      // A reload straight after the key shows up still found no record (the put not yet durable); give it 3 s.
+      await page.waitForTimeout(Number(process.env.WARM_EXTRA_MS || 3000));
     }
     const t0 = Date.now();
     await page.goto(base + qs);
