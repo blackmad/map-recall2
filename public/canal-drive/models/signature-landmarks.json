@@ -61845,6 +61845,88 @@
       "triangles": 2076,
       "bytes": 39684,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+    },
+    "kiosk-mr-blou": {
+      "id": "kiosk-mr-blou",
+      "name": "Mr Blou I Love You kiosk",
+      "landmarkId": "osm_food_9039944077",
+      "modelUrl": "./models/kiosk-mr-blou.glb",
+      "suppressOsmIds": [
+        "w1311060949"
+      ],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.8775558,
+          52.3689958
+        ],
+        "headingDegrees": 336.19,
+        "lengthMetres": 4.699,
+        "widthMetres": 2.189
+      },
+      "surveyed": {
+        "anchor": [
+          4.8775558,
+          52.3689958
+        ],
+        "northOffsetDegrees": 0,
+        "source": "osm-way (measured outline): no BAG pand or standplaats; OSM building way w1311060949 (4.70 x 2.19 m) under shop node 9039944077, vertex average as the anchor, checked against Gemeente Amsterdam panoramas recording_2025-07-03_10-31-52_00262 and TMX7316010203-002637_pano_0000_000002 / _000005 (CC BY 4.0). Heights approximate (scaled on a 0.95 m counter). See scripts/landmarks/kiosk-mr-blou-footprints.json."
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 0,
+      "heightMetres": 2.94,
+      "assetKind": "building",
+      "materialOverrides": {
+        "copper": "#7d8380",
+        "concrete": "#8d918c",
+        "ochre": "#c9b26a",
+        "dark": "#26292a",
+        "glass": "#5d6b6c",
+        "stone": "#e3dcc0",
+        "gold": "#23272a",
+        "green": "#3f6b4a",
+        "slate": "#2e332e"
+      },
+      "attribution": {
+        "title": "Mr Blou I Love You, Elandsgracht 150",
+        "author": "Map Recall",
+        "sourceUrl": "https://www.openstreetmap.org/node/9039944077",
+        "licence": "CC BY 4.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "modifications": "Original low-poly reconstruction from the typed kiosk kit: grey louvred box with an open serving front, glass vitrine, yellow boarded counter base, menu chalkboard band and three cream fascia boards, the name board lettered MR BLOU I LOVE YOU / VEGAN in raised pixel capitals. Outline from OpenStreetMap (ODbL); proportions and tints read from Gemeente Amsterdam panoramas (CC BY 4.0); tints scaled out of tree shade. No photo pixels or imported meshes."
+      },
+      "buildingCategory": "landmark",
+      "bounds": {
+        "min": [
+          -2.5992510318756104,
+          6.705522803684971e-10,
+          -2.0044493675231934
+        ],
+        "max": [
+          2.615251064300537,
+          2.940000057220459,
+          1.9982707500457764
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.8775558,
+          52.3689958
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 90,
+        "facadeBearingDegrees": 336.19000000000005,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 5.2145020961761475,
+        "heightMetres": 2.9400000565499065,
+        "depthMetres": 4.00272011756897,
+        "depthCoverage": 1.8285610404609272
+      },
+      "triangles": 1740,
+      "bytes": 36640,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
     }
   }
 }

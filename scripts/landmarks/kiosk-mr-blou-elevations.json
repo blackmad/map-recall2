@@ -1,0 +1,17 @@
+{
+ "id": "kiosk-mr-blou",
+ "countedBy": "kiosk lane (opus) from the 2025 oblique front view, 2026-11-01; NOT a blind count",
+ "facades": [
+  {
+   "name": "front (Elandsgracht pavement)",
+   "bearing": 336,
+   "photo": "artifacts/kiosks/mr-blou/front-crop.png",
+   "rows": [
+    1
+   ],
+   "columns": 1,
+   "symmetric": true,
+   "gables": 0
+  }
+ ]
+}

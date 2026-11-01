@@ -2778,5 +2778,19 @@
       52.3683327,
       4.8766878
     ]
+  },
+  {
+    "modelId": "kiosk-mr-blou",
+    "landmarkId": "osm_food_9039944077",
+    "name": "Mr Blou I Love You",
+    "funFact": "Mr Blou I Love You serves only vegan food, falafel, salads and juices, from a grey kiosk on the wide Elandsgracht pavement by the Marnixstraat, its name lettered on a cream board over the counter.",
+    "sourceUrl": "https://www.openstreetmap.org/node/9039944077",
+    "additionalSources": [
+      "https://www.instagram.com/mrblouiloveyou"
+    ],
+    "center": [
+      52.3689948,
+      4.8775567
+    ]
   }
 ]
