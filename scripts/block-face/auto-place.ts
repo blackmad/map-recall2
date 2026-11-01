@@ -32,6 +32,7 @@ import type {BuildingFacts} from '../../src/canalRecall/buildingRecipe/facts.ts'
 import {loadMaterialSoup} from '../landmarks/material-soup.ts';
 import {renderModels, closeRenderer} from '../building-recipes/render.ts';
 import {STRIP_LIKENESS, spanLikeness} from '../../src/canalRecall/blockFace/stripLikeness.ts';
+import {runFootOffset} from '../../src/canalRecall/blockFace/stripFoot.ts';
 import {applyCrownPins, applyMirrorPins, crownPinProblems, holdBrokenPairs, mirrorPinProblems, typePinProblems, typesForFace, typesForPand, type CrownPin, type MirrorPin, type TypePin} from '../../src/canalRecall/blockFace/reviewCrowns.ts';
 import {applyDoorPins, doorPinProblems, type DoorPin} from '../../src/canalRecall/blockFace/reviewDoors.ts';
 import {acceptFloorFor, acceptPinProblems, applyPalettePins, palettePinProblems, type AcceptPin, type PalettePin} from '../../src/canalRecall/blockFace/reviewPalettes.ts';
@@ -230,7 +231,10 @@ async function debugMasks(runId: string, pand: string, photo: any, model: any, L
 
 export interface PandLikeness { pandId: string; ncc: number | null; nccRaw: number; shiftM: [number, number]; usable: number; abstain: string | null;
   /** buildingRecipe/likeness.ts on the same span: reported, not gated (its colour clustering fails on dark overcast strips). */
-  verdict: LikenessResult['verdict']; reasons: string[]; wall: {photo: string; model: string | null; dL: number | null}; glazing: {photo: number; model: number}; columns: {photo: number | null; model: number | null}; iou: number | null }
+  verdict: LikenessResult['verdict']; reasons: string[]; wall: {photo: string; model: string | null; dL: number | null}; glazing: {photo: number; model: number}; columns: {photo: number | null; model: number | null}; iou: number | null;
+  /** The strip's facade foot above its bottom row (stripFoot.ts), when the edge NCC was read with it (#157). */
+  footOffsetM?: number }
+
 
 /** Likeness of each pand of a compiled run face: the strip span vs the model elevation of the chunk (buildingRecipe/likeness.ts). */
 export async function runLikeness(runId: string): Promise<PandLikeness[]> {
@@ -241,7 +245,8 @@ export async function runLikeness(runId: string): Promise<PandLikeness[]> {
   const [png] = await renderModels([{file: path.join(STAGING, runId, 'chunk.glb')}], [{eye: [(x0M + x1M) / 2, top / 2, 200], target: [(x0M + x1M) / 2, top / 2, 0], fov: 30, width: W, height: H,
     ortho: [-(x1M - x0M) / 2, (x1M - x0M) / 2, top / 2, -top / 2], background: '#9fb8cf', noGround: true}]);
   const modelRgb = new Uint8Array(await sharp(png).resize(W, H, {fit: 'fill'}).removeAlpha().raw().toBuffer());
-  const P = soup.positions;
+  const P = soup.positions, foot = runFootOffset(raw, strip, !process.argv.includes('--no-foot'));
+  if (foot.offsetM) console.log(`${runId}: facade foot ${foot.offsetM} m above the strip's bottom row (${foot.read}/${foot.spans} spans read, spread ${foot.spreadM} m)`);
   return report.perPand.map((pp: any, i: number) => {
     const s = strip.spans[i], w = (s.px[1] - s.px[0]) / strip.pixelsPerMetre, x0 = s.x0M;
     // the front plane: the 98th percentile of z of the vertices over the span
@@ -256,8 +261,8 @@ export async function runLikeness(runId: string): Promise<PandLikeness[]> {
     const model = modelElevation(soup, {o: [x0, 0, zFront - 1], r: [1, 0, 0], n: [0, 0, 1], uMin: 0, uMax: w}, box, lines, 0.1);
     const L = compareLikeness({photo, padCells: Math.round(PAD_M / photo.cell), model, lines});
     if (process.env.AUTO_PLACE_DEBUG) debugMasks(runId, pp.pand, photo, model, L);
-    const sl = spanLikeness({photoRgb: raw.rgb, modelRgb, width: W, height: H, px: s.px, eavesM: pp.eavesM, pixelsPerMetre: strip.pixelsPerMetre});
-    return {pandId: pp.pand, ncc: sl.ncc, nccRaw: sl.nccRaw ?? 0, shiftM: [sl.dx, sl.dy], usable: sl.usable, abstain: sl.abstain, verdict: L.verdict, reasons: L.reasons, wall: {photo: L.wall.photo, model: L.wall.model, dL: L.wall.dL}, glazing: {photo: r2(L.glazing.photoMean), model: r2(L.glazing.modelMean)}, columns: {photo: L.columns.photo, model: L.columns.model}, iou: L.iou};
+    const sl = spanLikeness({photoRgb: raw.rgb, modelRgb, width: W, height: H, px: s.px, eavesM: pp.eavesM, pixelsPerMetre: strip.pixelsPerMetre, ...(foot.offsetM ? {footOffsetM: foot.offsetM} : {})});
+    return {pandId: pp.pand, ncc: sl.ncc, nccRaw: sl.nccRaw ?? 0, shiftM: [sl.dx, sl.dy], usable: sl.usable, abstain: sl.abstain, verdict: L.verdict, reasons: L.reasons, wall: {photo: L.wall.photo, model: L.wall.model, dL: L.wall.dL}, glazing: {photo: r2(L.glazing.photoMean), model: r2(L.glazing.modelMean)}, columns: {photo: L.columns.photo, model: L.columns.model}, iou: L.iou, ...(foot.offsetM ? {footOffsetM: foot.offsetM} : {})};
   });
 }
 

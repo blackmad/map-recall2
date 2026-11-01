@@ -106,3 +106,44 @@ test('fix 4: pavement furniture never makes a shopfront (Hasebroekstraat 28, Vaa
   assert.equal(osmCategory({amenity: 'public_bookcase', name: undefined}), 'amenity=public_bookcase');
   assert.equal(osmCategory({shop: 'bakery', amenity: 'cafe'}), 'shop=bakery');
 });
+
+// --- fix 5: the facade foot (fixtures/strip-foot: the bottom 3 m of strip spans) ---
+import {measureFacadeFoot, stripFootOffset, type FootReading} from './stripFoot.ts';
+import {spanLikeness} from './stripLikeness.ts';
+
+const FOOT = path.join(path.dirname(fileURLToPath(import.meta.url)), 'fixtures', 'strip-foot');
+async function footOf(file: string) {
+  const ix = json(path.join(FOOT, 'index.json')).spans.find((s: any) => s.file === file);
+  const {data, info} = await sharp(path.join(FOOT, file)).removeAlpha().raw().toBuffer({resolveWithObject: true});
+  return measureFacadeFoot({rgb: new Uint8Array(data), width: info.width, height: info.height, x0: 0, x1: info.width, pixelsPerMetre: ix.pixelsPerMetre});
+}
+
+test('fix 5: the Tugelaweg 1929 blocks stand 1.6-1.9 m up their 2020-04-29 strips; other rows read no foot', async () => {
+  for (const f of ['tugelaweg-113-120--118471.jpg', 'tugelaweg-91-112--144774.jpg', 'tugelaweg-91-112--083727.jpg']) {
+    const r = await footOf(f);
+    assert.ok(r.offsetM >= 1.5 && r.offsetM <= 2.0, `${f}: foot ${r.offsetM} m`);
+  }
+  for (const f of ['theron-9-37--148172.jpg', 'luthuli-21-41--109924.jpg', 'retief-45-75--123300.jpg']) assert.equal((await footOf(f)).offsetM, 0, f);
+});
+
+test('fix 5: one offset per strip only when most spans agree', () => {
+  const r = (offsetM: number): FootReading => ({offsetM, row: null, step: 20, pavingIqr: 8});
+  // tugelaweg-91-112: ten spans, three hidden by parked cars
+  assert.equal(stripFootOffset([1.6, 1.63, 0, 0, 0, 1.88, 1.9, 1.88, 1.9, 1.88].map(r)).offsetM, 1.88);
+  assert.equal(stripFootOffset([0, 0, 0, 0, 1.1, 0].map(r)).offsetM, 0); // a lone reading
+  assert.equal(stripFootOffset([0.5, 2.3, 0.6, 2.2].map(r)).offsetM, 0); // readings disagree
+  assert.equal(stripFootOffset([0, 0, 0].map(r)).offsetM, 0);
+});
+
+test('fix 5: spanLikeness reads the photo band from the foot; without an offset it is unchanged', () => {
+  // A synthetic facade: window rows every 3 m up to 16 m eaves; the photo stands it on a foot 1.9 m up the strip with
+  // its cornice at the same 16 m (Tugelaweg: the pavement above the 3DBAG ground, the eaves on the 3DBAG line).
+  const W = 200, H = 800, ppm = 40, E = 16, foot = 1.9, k = (E - foot) / E;
+  const draw = (toModel: (h: number) => number) => { const a = new Uint8Array(W * H * 3).fill(150); for (let y = 0; y < H; y++) for (let x = 0; x < W; x++) { const h = toModel((H - y) / ppm); if (h > 0 && h % 3 > 1.2 && h % 3 < 2.4 && x % 50 > 15 && x % 50 < 40) a.fill(40, (y * W + x) * 3, (y * W + x) * 3 + 3); } return a; };
+  const model = draw(h => h), photo = draw(h => (h - foot) / k);
+  const base = {photoRgb: photo, modelRgb: model, width: W, height: H, px: [0, W] as [number, number], eavesM: E, pixelsPerMetre: ppm};
+  const off = spanLikeness(base), on = spanLikeness({...base, footOffsetM: foot});
+  assert.ok(on.ncc! > 0.9, `aligned NCC ${on.ncc}`);
+  assert.ok(on.ncc! > off.ncc! + 0.3, `aligned ${on.ncc} vs unaligned ${off.ncc}`);
+  assert.deepEqual(spanLikeness({...base, footOffsetM: 0}), off);
+});
