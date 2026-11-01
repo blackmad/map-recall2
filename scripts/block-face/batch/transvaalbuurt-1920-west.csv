@@ -1,0 +1,8 @@
+face,run,street,pands,mode,ride,stripDate,restriped,status,reasons,nccMin,nccMedian,stripOverDrawn,wallFits,droppedCorners,triangles,seconds
+reij-25-39,reij-25-39-r1,De la Reijstraat,5,auto-place,0,2020-04-29,,installed,,0.15,0.224,0.999,10,,5420,28.3
+kraaipan-41-45,kraaipan-41-45-r1,Kraaipanstraat,2,auto-place,0,2017-04-06,,installed,,0.28,0.28,1.028,2,,2185,9.1
+transvaalkade-103-105,transvaalkade-103-105,Transvaalkade,2,auto-place,0,2020-04-29,,installed,,0.208,0.261,1.003,4,,2118,12.2
+kraaipan-2-38,kraaipan-2-38-r1,Kraaipanstraat,3,auto-place,0,2019-05-16,,failed,strip-quality: cold cast rb,0.164,0.216,1.156,1,,3176,8
+kraaipan-2-38,kraaipan-2-38-r2,Kraaipanstraat,6,auto-place,0,2019-05-16,,failed,strip-quality: cold cast rb,0.179,0.206,1.166,1,,6391,10.9
+kraaipan-17-21,kraaipan-17-21-r1,Kraaipanstraat,2,auto-place,0,2017-04-06,,failed,strip-quality: blown,0.25,0.25,1.058,2,,2129,5.5
+kraaipan-31-33,kraaipan-31-33,Kraaipanstraat,2,auto-place,0,2017-04-06,,failed,strip-quality: blown,0.298,0.298,1.173,2,,2128,4.3

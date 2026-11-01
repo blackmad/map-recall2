@@ -1,6 +1,6 @@
 {
  "note": "Pands held after reviewing the auto-place strip sheets at full size against the photo (scripts/block-face/auto-place.ts reads this file: a listed pand is held at stage 'review' with its reason, whatever its score and edge NCC). Remove an entry when a type or kit change makes the pand read right, and review the sheet again.",
- "reviewed": "2026-10-31",
+ "reviewed": "2026-11-01",
  "holds": [
   {
    "pandId": "0363100012117142",
@@ -41,6 +41,86 @@
    "pandId": "0363100012251277",
    "address": "Maritzstraat 24",
    "reason": "Maritzstraat 24-26: brick wall dormers over both pands and a residential ground; transvaal-1911-five-storey-tall passed edge NCC but draws a pointed gable, a roof dormer and a shopfront (review at gallery size, strip over model ortho, 2026-10-31)"
+  },
+  {
+   "pandId": "0363100012109842",
+   "address": "Vaalrivierstraat 14A",
+   "reason": "vaalrivier-2-14-r1 sheet (#153): auto-place draws a shopfront from OSM amenity=bicycle_parking; the 2020-04-29 strip shows the row's residential front (three windows per storey, the door group at the right end)"
+  },
+  {
+   "pandId": "0363100012131537",
+   "address": "Vaalrivierstraat 22",
+   "reason": "vaalrivier-16-22 sheet (#153): auto-place draws a shopfront from OSM amenity=waste_disposal (a street container); the 2020-04-29 strip shows the row's residential front (three windows per storey, the door group at the pand's end)"
+  },
+  {
+   "pandId": "0363100012076608",
+   "address": "Vaalrivierstraat 16A",
+   "reason": "vaalrivier-16-22 sheet (#153): auto-place draws a shopfront from OSM amenity=bicycle_parking (street racks); the 2020-04-29 strip shows the row's residential front (three windows per storey, the door group at the pand's end)"
+  },
+  {
+   "pandId": "0363100012076039",
+   "address": "Vaalrivierstraat 20A",
+   "reason": "vaalrivier-16-22-r1 sheet (#153): auto-place draws a shopfront from OSM amenity=waste_disposal (a street container); the 2020-04-29 strip shows the row's residential front, the door group at the left end"
+  },
+  {
+   "pandId": "0363100012149403",
+   "address": "Kraaipanstraat 34",
+   "reason": "a flat front with a small window over two plain windows and no canted bay (kraaipan-2-38-r1 sheet, 2019-05-16 strip): transvaal-1920-three-storey draws the bay (#154, 2026-11-01)"
+  },
+  {
+   "pandId": "0363100012138010",
+   "address": "Albert Luthulistraat 1C",
+   "reason": "the corner block with a tall stair tower and a parapet over its own window grid (luthuli-1-19-r1 sheet, 2020-04-29 strip): the plain flat 1921 row type draws a low gutter front (#154, 2026-11-01)"
+  },
+  {
+   "pandId": "0363100012133939",
+   "address": "Danie Theronstraat 32",
+   "reason": "Danie Theronstraat 32-36 (BAG 1928, 9 m) is the corner block's own front: four storeys of wide single windows without the white top bands, a sloping parapet; transvaal-1926-band-row draws the band row's pairs and stair window (theron-2-36-r1 sheet, 2026-11-01; NCC 0.19)"
+  },
+  {
+   "pandId": "0363100012108544",
+   "address": "Danie Theronstraat 33",
+   "reason": "Danie Theronstraat 33-35 (BAG 1928, 8.7 m) is the end block's own front: three wide windows and a narrow one per storey, no white bands, a taller parapet; transvaal-1926-band-row draws the band row (theron-9-37-r1 sheet, 2026-11-01; NCC 0.20)"
+  },
+  {
+   "pandId": "0363100012119062",
+   "address": "Danie Theronstraat 21",
+   "reason": "Danie Theronstraat 21 is under yellow scaffold netting on the 2020-04-29 strip: the measured wall #56481f is the netting, and the model draws an olive front (theron-9-37-r1 sheet, 2026-11-01); the front itself is the band row, so a palette pin or a later strip would release it"
+  },
+  {
+   "pandId": "0363100012131556",
+   "address": "Joubertstraat 11",
+   "reason": "an Amsterdam School flat-roofed front: a vertical ribbed stair shaft over a white concrete door canopy, angled white bay windows and trapezoid attic lights; transvaal-1923-portiek-tower draws a brick tower block over a slate roof with plain punched windows (lone pand released by the #156 opt-in; joubert-3-17-r1 sheet, 2026-11-01)"
+  },
+  {
+   "pandId": "0363100012085617",
+   "address": "Krugerstraat 22",
+   "reason": "an Amsterdam School flat-roofed front: a ribbed stair shaft rising through the parapet over a stepped white canopy, a white corner bay and trapezoid attic lights; transvaal-1923-portiek-tower draws a brick tower block over a slate roof with plain punched windows (lone pand released by the #156 opt-in; kruger-4-28-r1 sheet, 2026-11-01)"
+  },
+  {
+   "pandId": "0363100012063602",
+   "address": "Krugerstraat 14",
+   "reason": "the twin of Krugerstraat 22 (ribbed stair shaft, white canopy, trapezoid attic lights, flat roof); transvaal-1923-portiek-tower draws a brick tower block over a slate roof with plain punched windows, and a shop front the photo does not show (lone pand released by the #156 opt-in; kruger-4-28-r2 sheet, 2026-11-01)"
+  },
+  {
+   "pandId": "0363100012142304",
+   "address": "Albert Luthulistraat 5A",
+   "reason": "a flat-roofed front with a raised stair bay carrying a patterned tile strip and narrow stair lights, white-framed windows in pairs and a railing on the roof; transvaal-1923-portiek-tower draws a brick tower block over a slate roof with plain punched windows (lone pand released by the #156 opt-in; luthuli-1-19-r1 sheet, 2026-11-01)"
+  },
+  {
+   "pandId": "0363100012091006",
+   "address": "Reitzstraat 147",
+   "reason": "a flat-roofed buff-brick front with white flower-box balconettes under the windows and a white door surround; transvaal-1923-portiek-tower draws a brick tower block over a slate roof with plain punched windows (lone pand released by the #156 opt-in; reitz-147-175-r1 sheet, 2026-11-01)"
+  },
+  {
+   "pandId": "0363100012108935",
+   "address": "Ben Viljoenstraat 24",
+   "reason": "a flat-roofed front with a chimney stack at the left, paired windows and an arched entrance; transvaal-1923-portiek draws a slate roof with a raised parapet block and a red door (lone pand released by the #156 opt-in; viljoen-16-24-r1 sheet, 2026-11-01)"
+  },
+  {
+   "pandId": "0363100012065386",
+   "address": "Ben Viljoenstraat 16",
+   "reason": "a flat-roofed front with paired and triple windows and no stair panel; transvaal-1923-portiek draws a slate roof with a raised parapet block (lone pand released by the #156 opt-in; viljoen-16-24-r2 sheet, 2026-11-01)"
   }
  ]
 }

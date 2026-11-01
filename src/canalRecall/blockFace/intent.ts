@@ -151,6 +151,12 @@ export interface BlockFaceIntent {
      * its own piece (pandRanges). Absent = every canopy on its own, byte-identical. `evidence`: what on the strip shows it.
      */
     canopy?: {pands: string[]; evidence: string}[];
+    /**
+     * A one-house face: an auto-placed pand that stands on its own (autoPlace.ts `TypeMatchRule.lonePand`: a stair block
+     * of a type that opts in, its neighbours held). `evidence` says why it is a face of one. Only valid with exactly one
+     * house; every other face needs two or more. Absent = byte-identical.
+     */
+    lonePand?: {evidence: string};
     notes?: string[];
   };
   authoring?: {author: string; startedAt?: string; finishedAt?: string; passes: number; note?: string};
@@ -220,7 +226,9 @@ export function resolveFaceTypes(face: BlockFaceIntent, load: TypeLoader = defau
 export function validateBlockFace(input: unknown, order?: string[], load: TypeLoader = defaultTypeLoader): BlockFaceIntent {
   const face = input as BlockFaceIntent, problems: string[] = [];
   if (face?.kind !== 'block-face' || face.schemaVersion !== 1) problems.push('kind must be "block-face", schemaVersion 1');
-  if (!Array.isArray(face?.houses) || face.houses.length < 2) problems.push('a block face needs at least two houses');
+  const lone = face?.continuity?.lonePand;
+  if (lone !== undefined && (!lone?.evidence || !Array.isArray(face?.houses) || face.houses.length !== 1)) problems.push('continuity.lonePand: one house and an evidence string');
+  if (!Array.isArray(face?.houses) || face.houses.length < (lone ? 1 : 2)) problems.push('a block face needs at least two houses');
   const pands = new Set(face?.houses?.map(h => h.pandId) ?? []);
   // House types: definitions, then placements; a typed house's rhythm is its type's plus what the house states.
   if (face?.types !== undefined && !Array.isArray(face.types)) problems.push('types must be a list of house types');

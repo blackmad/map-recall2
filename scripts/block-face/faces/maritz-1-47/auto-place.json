@@ -3,7 +3,7 @@
  "street": "Maritzstraat",
  "library": "transvaalbuurt",
  "stripDate": "2020-04-30",
- "seconds": 1.42,
+ "seconds": 1.61,
  "thresholds": {
   "minScore": 0.7,
   "margin": 0.05,
@@ -331,8 +331,8 @@
     "foliageShare": 0.01
    },
    "status": "held",
-   "stage": "run",
-   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
+   "stage": "review",
+   "reason": "review: a hipped red-tile roof with one white dormer over a three-storey front with a small centre stair light; transvaal-1923-portiek draws a slate roof with a raised brick parapet block and a red door (lone pand released by the #156 opt-in; maritz-1-47-r1 sheet, 2026-11-01)",
    "likeness": null,
    "challengers": {}
   }

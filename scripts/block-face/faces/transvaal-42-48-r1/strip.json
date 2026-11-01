@@ -1,0 +1,109 @@
+{
+ "face": "transvaal-42-48-r1",
+ "image": "staging/block-face/transvaal-42-48-r1/strip.jpg",
+ "pixelsPerMetre": 40,
+ "width": 502,
+ "height": 723,
+ "groundNAP": 0.208,
+ "heightM": 18.07,
+ "frame": {
+  "midRD": [
+   123558.386375,
+   485348.0675
+  ],
+  "uRD": [
+   0.7457311056592081,
+   0.666247039807529
+  ],
+  "nRD": [
+   0.666247039807529,
+   -0.7457311056592081
+  ]
+ },
+ "x0M": -6.27,
+ "x1M": 6.28,
+ "date": "2023-01-02",
+ "coverage": 1,
+ "spans": [
+  {
+   "pandId": "0363100012140529",
+   "x0M": -6.27,
+   "x1M": 0.01,
+   "px": [
+    0,
+    251
+   ],
+   "date": "2023-01-02",
+   "fallbackDate": false,
+   "panoramas": [
+    {
+     "panoId": "TMX7316010203-002908_pano_0006_000036",
+     "timestamp": "2023-01-02T10:05:32.066320Z",
+     "distanceM": 6.3,
+     "obliquityDeg": 16.8,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "TMX7316010203-002908_pano_0006_000035",
+     "timestamp": "2023-01-02T10:05:31.186390Z",
+     "distanceM": 6.7,
+     "obliquityDeg": 27.7,
+     "missingFraction": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012071217",
+   "x0M": 0.01,
+   "x1M": 6.28,
+   "px": [
+    251,
+    502
+   ],
+   "date": "2023-01-02",
+   "fallbackDate": false,
+   "panoramas": [
+    {
+     "panoId": "TMX7316010203-002908_pano_0006_000034",
+     "timestamp": "2023-01-02T10:05:30.346330Z",
+     "distanceM": 6.2,
+     "obliquityDeg": 16.4,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "TMX7316010203-002908_pano_0006_000035",
+     "timestamp": "2023-01-02T10:05:31.186390Z",
+     "distanceM": 6.7,
+     "obliquityDeg": 27.7,
+     "missingFraction": 0
+    }
+   ]
+  }
+ ],
+ "candidatesByDate": {
+  "2022-06-13": 4,
+  "2021-05-28": 4,
+  "2024-09-16": 4,
+  "2023-01-02": 4,
+  "2019-05-16": 4,
+  "2018-05-15": 4,
+  "2020-04-29": 4,
+  "2019-12-19": 4,
+  "2022-01-12": 4,
+  "2017-04-06": 4,
+  "2016-06-08": 4,
+  "2025-06-20": 4,
+  "2024-10-02": 0,
+  "2018-12-11": 2,
+  "2020-09-10": 0
+ },
+ "description": "Rectified orthographic elevation of the whole face on the frontage planes: x = chunk-frame metres along the face (left→right seen from the street) from x0M, y = metres above the shared ground (groundNAP) from the bottom; grey = no panorama data. Per-pand spans list the panoramas median-fused for that frontage.",
+ "attribution": "Gemeente Amsterdam, Panoramabeelden (CC BY 4.0; faces and number plates blurred by the publisher)",
+ "croppedFrom": {
+  "face": "transvaal-42-48",
+  "px": [
+   541,
+   1043
+  ]
+ }
+}

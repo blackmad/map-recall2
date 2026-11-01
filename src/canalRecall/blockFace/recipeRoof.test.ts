@@ -11,6 +11,8 @@
  *    bays take the neighbour's roof;
  *  - dormer gables 5 mm under steep dormer roofs counted as z-fight in the geometry audit (1.1 m2 on 166802), which
  *    blocked --install for recipe and survey roofs alike; now 1.5 cm along the roof normal.
+ *  - De la Reijstraat 25-39 140934 (1922 oriel bump, #154): a cut point the outline projection left 0.92 mm off a
+ *    footprint corner folded its piece (+0.8 dm2); a fold now snaps that point in every piece sharing it.
  *   node --import tsx --test src/canalRecall/blockFace/recipeRoof.test.ts
  */
 import assert from 'node:assert/strict';

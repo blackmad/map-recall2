@@ -69,6 +69,50 @@ user's 14-inch MacBook Pro is 1512×982 at DPR 2 (5.9 Mpx), so the fill cost
 was a third over the real screen; `motion-stutter.mjs` defaults to
 1512×982 at DPR 2 now (`_desktopPerfViewport` in budgets.json) and the e2e
 desktop project stays at 1440×900 DPR 1 for layout, not perf.
+
+**Transvaalbuurt round 4 (2026-11-01, #153–#156): four family lanes at once, 44 pands installed, 57 in the buurt.**
+After round 3 the funnel read 380 of 848 photographed pands vetoed on build
+year alone (two of seven families had a type), so four Opus lanes ran in
+parallel, one worktree each, sharing only the holds and chunk lists.
+Installed per lane: #153 1929–1931: no single design (about eight), so two
+types, `transvaal-1929-block` (Tugelaweg cream-render stair block, held by
+likeness: the strips put the facade foot 0.6–1.8 m above the strip ground)
+and `vaalrivier-1931-row` (two-storey), plus `paintedStoreys.panels`;
+installed Vaalrivierstraat 4–12 and Kraaipanstraat 63–65 (7 pands; family
+West 81 vetoed / 48 held / 7 placed). #154 1920–1922: `transvaal-1920-three-storey`
+(oriel rows), `transvaal-1921-five-storey-flat`, and `-oriel` authored but
+held (NCC 0.01–0.13, 3.3k tris); kit `bayWindows.oriel.twin`, oriel
+`topGap`, street furniture no longer a business, a `recipeRoof` fold fix;
+installed Retiefstraat 194–268 (5), De la Reijstraat 29A–37 (5),
+Kraaipanstraat 43A–45 (2), Transvaalkade 103–105 (2) (three-storey family 54
+/ 22 / 22 placed, 9 installed; five-storey 25 / 31 / 5). #155 1926–1928:
+`transvaal-1926-band-row` and `transvaal-1928-plain-row`; kit
+`repeat.mirrored`, `bandHeights.headLift`, canopies on repeated fronts,
+`groundTransomOnly`; installed Danie Theronstraat 2–36 and 9–37 (11) and
+President Steynstraat 9–15 (4) with one measured brick per row instead of
+the batch's per-pand refit, which read hedge green (West 22 / 14 / 15).
+#156 1911 variants: `gable: "shouldered"`, one gable over two pands
+(`crownHalf`, pair pins), `dormerBody: "timber"` with the glass in the
+dormer's own front wall, and `TypeMatchRule.lonePand {minWidthM: 5}` on the
+four stair-block types (Bellamy unchanged, frozen-record test); installed
+Transvaalstraat 39–41 and 42–44, Retiefstraat 57 and 65A, Pretoriusstraat
+23, Paardekraalstraat 13 (8), and Retiefstraat 71D–73A re-installed as
+shouldered gables with 71D pinned unmirrored (family Oost 19 / 238 / 17;
+lone pands released 27, installed 4, the rest fail likeness honestly).
+Integration: lists united (chunks 115→132, holds, door/type/crown pins),
+placement and per-face auto-place records taken from each lane in merge
+order (they are per-lane snapshots, not regenerated: a buurt-wide re-run
+renumbers runs and overwrites installed intents, which every lane had to
+restore from HEAD), 18 roof goldens recorded, exposure rows measured for all
+runs, covers 618/651, signature-placement bundle rebuilt, strips and sheets
+in source-data `block-face-strips/transvaalbuurt-round4/` and every intaked
+strip now archived. Pipeline findings, not fixed: `batch.ts --faces` is
+ignored with `--buurt` and the whole buurt runs (it installed another lane's
+face once, reverted); the batch's per-pand wall refit reads tree green off
+the strip; auto-place `groundUse` turns OSM street furniture (waste_disposal,
+bicycle_parking, public_bookcase) into a shopfront; the buurt batch skips
+faces with an installed chunk or marked `covered`.
+
 **The own engine never races without facades around the rider; world-v1 structural gate in node; the A/B harness is an instrument (2026-11-01, #129).**
 Materials lane (6a29f4724). The deployed build f840fb6 started racing with
 only the station and two blocks drawn (HISTORY "Facades package" named the
