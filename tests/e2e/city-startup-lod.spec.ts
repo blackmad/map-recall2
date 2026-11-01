@@ -10,6 +10,18 @@ test('mobile city shells remain until detailed buildings install', async ({ page
     const t = (window as any).canalRecallGame.vectorMap._threeBuildings;
     return t && [...t.chunks.keys()].some((k: any) => k.startsWith('near:')) && [...t.chunks.keys()].some((k: any) => k.startsWith('coarse:'));
   }), { timeout: 90_000 }).toBe(true);
+  // Then wait until a detailed building has installed over a built shell. Both chunks existing is not enough: the
+  // near chunks can still be fading in (not installed yet), or a near chunk can install before its tile's shell is
+  // built. Since the city world builds during the briefing (3f2dd8684) the ride starts sooner and the check above
+  // often caught one of those moments (2026-11-01: 0 installed with 16 fading; 184 installed, 2 shells, none shared).
+  await expect.poll(() => page.evaluate(() => {
+    const t = (window as any).canalRecallGame.vectorMap._threeBuildings;
+    for (const [key, chunk] of t.chunks) {
+      if (!key.startsWith('coarse:') || !chunk.mesh) continue;
+      for (const id of chunk.ranges.keys()) if (t.installedDetailIds.has(id)) return true;
+    }
+    return false;
+  }), { timeout: 90_000, message: 'a detailed building installs over a built shell' }).toBe(true);
   const status = await page.evaluate(() => {
     const vm = (window as any).canalRecallGame.vectorMap, t = vm._threeBuildings;
     let checked = 0;
