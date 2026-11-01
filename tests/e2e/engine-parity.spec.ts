@@ -67,7 +67,7 @@ test('?engine=own camera matches MapLibre along the start flight and the Anne Fr
   await oracle.goto('/canal-drive/');
   await oracle.waitForFunction(() => (window as any).canalRecallGame?.vectorMap?.map?.loaded?.(), null, { timeout: 90_000 });
   const misfits = await oracle.evaluate((poses: Pose[]) => {
-    const map = (window as any).canalRecallGame.vectorMap.map;
+    const map = (window as any).canalRecallGame.vectorMap.map ?? (window as any).canalRecallGame.vectorMap.cameraMap;
     map.setMaxPitch(85);
     const el = map.getCanvas();
     return poses.map(p => {

@@ -23,10 +23,10 @@ await page.evaluate(() => {
 const cam = {center: [+lng, +lat], zoom: +zoom, pitch: +pitch, bearing: +bearing};
 await page.evaluate(async camera => {
   const v = canalRecallGame.vectorMap;
-  v.map.jumpTo(camera);
+  (v.map ?? v.cameraMap).jumpTo(camera);
   v._facadesOutOfZoom = false; v._applyFacadeState(); v._syncFacadeZoom(camera.zoom);
   v._completeCity.setSuspended(false); v._threeBuildings.setDetailCentre(...camera.center); v._completeCity.followCamera();
-  v.map.triggerRepaint();
+  (v.map ?? v.cameraMap).triggerRepaint();
 }, cam);
 await page.waitForFunction(() => {
   const v = window.canalRecallGame.vectorMap, t = v._threeBuildings, c = v._completeCity.status();

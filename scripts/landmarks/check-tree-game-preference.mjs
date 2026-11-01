@@ -17,7 +17,7 @@ try{
   }
   if(name==='fresh-mobile')await page.screenshot({path:'artifacts/tree-models/game-mobile-tree-settings.png'});
   await page.evaluate(()=>canalRecallGame._overlay.store.setSettingsOpen(false));await page.screenshot({path:`artifacts/tree-models/game-${name}-trees.png`});
-  await page.evaluate(()=>{const v=canalRecallGame.vectorMap;v.sync=()=>{};v.map.jumpTo({zoom:14});v._inventoryTrees.update();});assert.equal(await page.evaluate(()=>canalRecallGame.vectorMap._inventoryTrees.meshes.length),0,'existing low-zoom cutoff retained');
+  await page.evaluate(()=>{const v=canalRecallGame.vectorMap;v.sync=()=>{};(v.map ?? v.cameraMap).jumpTo({zoom:14});v._inventoryTrees.update();});assert.equal(await page.evaluate(()=>canalRecallGame.vectorMap._inventoryTrees.meshes.length),0,'existing low-zoom cutoff retained');
   await page.evaluate(()=>canalRecallGame.vectorMap.setExtractRoot('../data/extracts/utrecht'));assert.equal(await page.evaluate(()=>canalRecallGame.vectorMap._inventoryTrees.ready),false);assert.equal(await page.evaluate(()=>canalRecallGame.vectorMap._inventoryTrees.meshes.length),0);assert.deepEqual(errors,[]);await context.close();
  }
  console.log(JSON.stringify({reports,errors:[]}));

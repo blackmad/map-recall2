@@ -72,7 +72,7 @@ await cdp.send('Emulation.setCPUThrottlingRate', {rate: device === 'touch' ? 4 :
 if (process.env.LAYER_TIMES) await page.evaluate(mode => { window.__layerTimes = mode === 'gpu' ? 'gpu' : true; }, process.env.LAYER_TIMES);
 const tStart = await page.evaluate((noWrap) => {
   // Under ?engine=own there is no MapLibre map: the frame host's render is the frame owner.
-  const w = window, game = canalRecallGame, vm = game.vectorMap, map = vm.map;
+  const w = window, game = canalRecallGame, vm = game.vectorMap, map = vm.map ?? vm.cameraMap;
   const P = w.__own = {frames: [], methods: {}, loaf: [], heap: []};
   let cur = {owners: {}, calls: {}, gl: {draws: 0, tris: 0, tex: 0, texMB: 0, bufMB: 0, compile: 0, link: 0}};
   const stack = [];
@@ -275,7 +275,7 @@ const ab = !(process.env.AB_ON && process.env.AB_OFF) ? null : Object.fromEntrie
 }));
 let layerTimes = null;
 if (process.env.LAYER_TIMES) {
-  const style = await page.evaluate(() => Object.fromEntries((canalRecallGame.vectorMap.map?.getStyle().layers ?? []).map(l => [l.id, {type: l.type, source: l.source, sourceLayer: l['source-layer'], minzoom: l.minzoom}])));
+  const style = await page.evaluate(() => Object.fromEntries(((canalRecallGame.vectorMap.map ?? canalRecallGame.vectorMap.cameraMap)?.getStyle().layers ?? []).map(l => [l.id, {type: l.type, source: l.source, sourceLayer: l['source-layer'], minzoom: l.minzoom}])));
   const acc = {};
   for (const f of frames) for (const [id, [ms, draws]] of Object.entries(f.layers || {})) { const e = acc[id] || (acc[id] = {ms: 0, draws: 0, frames: 0}); e.ms += ms; e.draws += draws; e.frames++; }
   const gpu = raw.P.gpu || {};

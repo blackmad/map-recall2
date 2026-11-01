@@ -37,7 +37,7 @@ type Box = { x: number; y: number; width: number; height: number };
 /** Every label a rider can read right now, in CSS pixels. */
 async function readableLabels(page: Page): Promise<Seen[]> {
   return page.evaluate(() => {
-    const vm = (window as any).canalRecallGame.vectorMap, map = vm.map;
+    const vm = (window as any).canalRecallGame.vectorMap, map = vm.map ?? vm.cameraMap;
     const symbolIds = map.getStyle().layers
       .filter((l: any) => l.type === 'symbol' && map.getLayoutProperty(l.id, 'visibility') !== 'none')
       .map((l: any) => l.id);
@@ -81,7 +81,7 @@ async function hudRects(page: Page): Promise<Record<string, Box>> {
 async function pose(page: Page, view: View): Promise<void> {
   const eye = ahead(view.target, view.bearing, view.distM);
   await page.evaluate(({ eye, view }) => {
-    const g = (window as any).canalRecallGame, vm = g.vectorMap, map = vm.map;
+    const g = (window as any).canalRecallGame, vm = g.vectorMap, map = vm.map ?? vm.cameraMap;
     g._updateCanalQuiz = () => {}; g._updateBridgeQuiz = () => {};
     g.player.speed = 0; g.player.vx = 0; g.player.vy = 0;
     vm.sync = () => {}; map.stop(); map.setMaxPitch(85); map.setVerticalFieldOfView?.(50);
@@ -113,7 +113,7 @@ test('labels: shots and counts at the review viewpoints', async ({ page }, info)
       const o = (window as any).canalRecallGame.vectorMap._labelOverlay;
       if (!o) return null;
       // Projection check: the overlay's ground projection against MapLibre's own.
-      const map = (window as any).canalRecallGame.vectorMap.map, c = (window as any).canalRecallGame.vectorMap.camera.center();
+      const map = (window as any).canalRecallGame.vectorMap.map ?? (window as any).canalRecallGame.vectorMap.cameraMap, c = (window as any).canalRecallGame.vectorMap.camera.center();
       const p = (o as any).projector(map)(c.lng, c.lat, 0), q = (window as any).canalRecallGame.vectorMap.camera.project(c);
       return { ...o.stats, projectionErrorPx: Math.hypot(p.x - q.x, p.y - q.y) };
     });

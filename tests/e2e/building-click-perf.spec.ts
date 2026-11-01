@@ -48,7 +48,7 @@ async function boot(page: Page) {
     return vm._completeCityHasBuildings && vm._threeBuildings?.ready && vm._threeBuildings.chunks.size > 3;
   }, null, { timeout: 120_000 });
   await page.evaluate((cam) => {
-    const w = window as any, g = w.canalRecallGame, map = g.vectorMap.map;
+    const w = window as any, g = w.canalRecallGame, map = g.vectorMap.map ?? g.vectorMap.cameraMap;
     // Freeze the game camera so the map stays where the test puts it.
     for (const k of cam) { map['__' + k] = map[k]; map[k] = () => map; }
     g.vectorMap._signatureLandmarks?.setSuspended?.(false);
@@ -62,7 +62,7 @@ async function boot(page: Page) {
         const vm = this.vectorMap, sig = vm._signatureLandmarks;
         c.highlight = vm._threeBuildings?.highlighted?.size ? 'mesh'
           : (sig?._entries || []).some((e: any) => e.highlighted) ? 'model'
-          : (vm.map.getSource('active-landmark')?._data?.features?.length ? 'dot' : 'none');
+          : ((vm.map ?? vm.cameraMap).getSource('active-landmark')?._data?.features?.length ? 'dot' : 'none');
       }
       return r;
     };
@@ -72,7 +72,7 @@ async function boot(page: Page) {
 
 async function lookAt(page: Page, center: [number, number], zoom = 17.2, pitch = 50) {
   await page.evaluate(({ center, zoom, pitch }) => {
-    const g = (window as any).canalRecallGame, map = g.vectorMap.map;
+    const g = (window as any).canalRecallGame, map = g.vectorMap.map ?? g.vectorMap.cameraMap;
     g._clearLandmarkNotice();
     map.__jumpTo.call(map, { center, zoom, pitch, bearing: 0 });
   }, { center, zoom, pitch });
@@ -83,7 +83,7 @@ async function lookAt(page: Page, center: [number, number], zoom = 17.2, pitch =
 async function roofPoint(page: Page, id: string) {
   return page.evaluate((id) => {
     const w = window as any, vm = w.canalRecallGame.vectorMap, tb = vm._threeBuildings, T = w.CanalRecallThree.THREE;
-    const canvas = vm.map.getCanvas(), W = canvas.clientWidth, H = canvas.clientHeight;
+    const canvas = vm.frameCanvas(), W = canvas.clientWidth, H = canvas.clientHeight;
     for (const [key, chunk] of tb.chunks) {
       if (key.startsWith('extras:') || !chunk.mesh) continue;
       const f = chunk.source.find((x: any) => String(x.properties.id) === id);
@@ -100,7 +100,7 @@ async function roofPoint(page: Page, id: string) {
 }
 
 async function click(page: Page, point: { x: number; y: number }) {
-  const box = await page.evaluate(() => { const r = (window as any).canalRecallGame.vectorMap.map.getCanvas().getBoundingClientRect(); return { x: r.left, y: r.top }; });
+  const box = await page.evaluate(() => { const r = (window as any).canalRecallGame.vectorMap.frameCanvas().getBoundingClientRect(); return { x: r.left, y: r.top }; });
   await page.mouse.click(box.x + point.x, box.y + point.y);
   await page.waitForFunction(() => (window as any).__click?.cardMs != null, null, { timeout: 8000 }).catch(() => {});
   return page.evaluate(() => {
@@ -122,7 +122,7 @@ async function resident(page: Page, id: string) {
 /** A loaded building of this kind near the view centre. */
 async function featureOfKind(page: Page, kind: 'ordinary' | 'generic') {
   return page.evaluate((kind) => {
-    const g = (window as any).canalRecallGame, vm = g.vectorMap, map = vm.map, tb = vm._threeBuildings;
+    const g = (window as any).canalRecallGame, vm = g.vectorMap, map = vm.map ?? vm.cameraMap, tb = vm._threeBuildings;
     const c = map.getCenter();
     // Not a landmark's own building: those open the landmark card instead.
     const owned = new Set(g.landmarks.flatMap((l: any) => l.buildingIds ?? []).map(String));
@@ -197,11 +197,11 @@ test('a clicked building opens its card and lights up within budget, every kind'
     const anchor = spec?.anchor ?? (label === 'landmark' ? [4.88406, 52.37448] : [4.8975709552643085, 52.37297156134601]);
     await lookAt(page, anchor as [number, number], 17.4, 45);
     await expect.poll(() => page.evaluate(() => {
-      const w = window as any, vm = w.canalRecallGame.vectorMap, sig = vm._signatureLandmarks, map = vm.map;
+      const w = window as any, vm = w.canalRecallGame.vectorMap, sig = vm._signatureLandmarks, map = vm.map ?? vm.cameraMap;
       const c = map.getCanvas();
       return !!sig?.inspectAtScreen(c.clientWidth / 2, c.clientHeight / 2, c.clientWidth, c.clientHeight);
     }), { timeout: 120_000 }).toBe(true);
-    const point = await page.evaluate(() => { const c = (window as any).canalRecallGame.vectorMap.map.getCanvas(); return { x: c.clientWidth / 2, y: c.clientHeight / 2 }; });
+    const point = await page.evaluate(() => { const c = (window as any).canalRecallGame.vectorMap.frameCanvas(); return { x: c.clientWidth / 2, y: c.clientHeight / 2 }; });
     if (info.project.name === 'iphone') await cdp.send('Emulation.setCPUThrottlingRate', { rate: 4 });
     const r = await click(page, point);
     await cdp.send('Emulation.setCPUThrottlingRate', { rate: 1 });
@@ -235,7 +235,7 @@ test('every kind of drawn building opens a card when clicked', async ({ page }, 
     await page.waitForTimeout(8000);
     const r = await page.evaluate(() => {
       const w = window as any, g = w.canalRecallGame, vm = g.vectorMap, tb = vm._threeBuildings, sig = vm._signatureLandmarks, T = w.CanalRecallThree.THREE;
-      const canvas = vm.map.getCanvas(), rect = g.canvas.getBoundingClientRect(), W = canvas.clientWidth, H = canvas.clientHeight;
+      const canvas = vm.frameCanvas(), rect = g.canvas.getBoundingClientRect(), W = canvas.clientWidth, H = canvas.clientHeight;
       const kx = 111_320 * Math.cos(52.37 * Math.PI / 180);
       const samples: { kind: string; id: string; x: number; y: number; z: number; own: (hit: any) => boolean }[] = [];
       const onScreen = (x: number, y: number) => x > 30 && y > 60 && x < W - 30 && y < H * 0.6;

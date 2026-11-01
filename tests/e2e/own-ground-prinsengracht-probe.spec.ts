@@ -41,7 +41,7 @@ async function look(page: Page, from: [number, number], up: number, to: [number,
   }, { timeout: 120_000, intervals: [1000] }).toBe(true);
   await page.waitForTimeout(3000);
   await page.evaluate(({ from, up, to }) => {
-    const vm = (window as any).canalRecallGame.vectorMap, map = vm.map, ground = vm._ownGround;
+    const vm = (window as any).canalRecallGame.vectorMap, map = vm.map ?? vm.cameraMap, ground = vm._ownGround;
     vm.__syncOriginal = vm.__syncOriginal || vm.sync;
     vm.sync = () => {};
     map.setMaxPitch?.(85);

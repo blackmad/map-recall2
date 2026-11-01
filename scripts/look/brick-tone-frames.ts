@@ -75,19 +75,19 @@ try {
   const rigSun = await page.evaluate(() => { const o = (window as any).canalRecallGame.vectorMap._sharedFrame?.rig?.options; return o ? [o.sunAzimuthDeg, o.sunElevationDeg] : null; });
   // Warm-up: the first jump after the route starts can land while the overview still draws flat.
   const first = await wallFor(views[0]);
-  await page.evaluate(({c, b}) => (window as any).canalRecallGame.vectorMap.map.jumpTo({center: c, zoom: 19, pitch: 70, bearing: b}), {c: first.centre, b: (first.facing + 180) % 360});
+  await page.evaluate(({c, b}) => ((window as any).canalRecallGame.vectorMap.map ?? (window as any).canalRecallGame.vectorMap.cameraMap).jumpTo({center: c, zoom: 19, pitch: 70, bearing: b}), {c: first.centre, b: (first.facing + 180) % 360});
   await page.waitForTimeout(25000);
   for (const v of views) {
     const {facing, centre} = await wallFor(v);
     // Visit the view first and let its cells stream in (the route can start kilometres away; until the detailed tiles
     // arrive, coarse fallback blocks stand in front of the model).
-    await page.evaluate(({c, b, z, p}) => (window as any).canalRecallGame.vectorMap.map.jumpTo({center: c, zoom: z, pitch: p, bearing: b}), {c: centre, b: (facing + 180) % 360, z: v.zoom ?? 19.2, p: v.pitch ?? 70});
+    await page.evaluate(({c, b, z, p}) => ((window as any).canalRecallGame.vectorMap.map ?? (window as any).canalRecallGame.vectorMap.cameraMap).jumpTo({center: c, zoom: z, pitch: p, bearing: b}), {c: centre, b: (facing + 180) % 360, z: v.zoom ?? 19.2, p: v.pitch ?? 70});
     await page.waitForTimeout(20000);
     for (const sun of suns.length ? suns : [rigSun ?? [215, 40]]) {
       await page.evaluate(([az, el]) => { const f = (window as any).canalRecallGame.vectorMap._sharedFrame; f?.rig?.setSun(az, el); }, sun);
-      await page.evaluate(({c, b, z, p}) => (window as any).canalRecallGame.vectorMap.map.jumpTo({center: c, zoom: z, pitch: p, bearing: b}), {c: centre, b: (facing + 180) % 360, z: v.zoom ?? 19.2, p: v.pitch ?? 70});
+      await page.evaluate(({c, b, z, p}) => ((window as any).canalRecallGame.vectorMap.map ?? (window as any).canalRecallGame.vectorMap.cameraMap).jumpTo({center: c, zoom: z, pitch: p, bearing: b}), {c: centre, b: (facing + 180) % 360, z: v.zoom ?? 19.2, p: v.pitch ?? 70});
       await page.waitForTimeout(10000);
-      await page.evaluate(() => (window as any).canalRecallGame.vectorMap.map.triggerRepaint());
+      await page.evaluate(() => ((window as any).canalRecallGame.vectorMap.map ?? (window as any).canalRecallGame.vectorMap.cameraMap).triggerRepaint());
       await page.waitForTimeout(1500);
       const file = path.join(out, `${v.name}-sun${sun[0]}-${sun[1]}.png`);
       await page.screenshot({path: file});

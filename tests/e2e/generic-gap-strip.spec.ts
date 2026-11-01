@@ -13,7 +13,7 @@ const SPOTS: { slug: string; lng: number; lat: number; bearing: number }[] = pro
 async function settle(page: Page): Promise<void> {
   await page.waitForFunction(() => {
     const vm = (window as any).canalRecallGame.vectorMap, t = vm._threeBuildings, l = vm._signatureLandmarks;
-    const c = vm.map.getCenter(); vm.map.jumpTo({ center: [c.lng + 1e-9, c.lat] });
+    const c = vm.camera.center(); (vm.map ?? vm.cameraMap).jumpTo({ center: [c.lng + 1e-9, c.lat] });
     const idle = !t || (t.ready && !t.pending.length && !t.inflight.size);
     const landmarksIdle = !l || !l._pending || !l._pending.size;
     const w = window as any, key = `${t?.stats?.().buildings ?? 0}|${t?.chunks?.size ?? 0}|${l?.shown?.size ?? 0}`;
@@ -21,7 +21,7 @@ async function settle(page: Page): Promise<void> {
     w.__gapKey = key;
     return w.__gapIdle >= 5;
   }, null, { timeout: 180_000, polling: 1000 });
-  await page.evaluate(() => { const w = window as any; w.canalRecallGame.vectorMap.map.jumpTo(w.__gapCamera); });
+  await page.evaluate(() => { const w = window as any; (w.canalRecallGame.vectorMap.map ?? w.canalRecallGame.vectorMap.cameraMap).jumpTo(w.__gapCamera); });
   await page.waitForTimeout(3000);
 }
 
@@ -36,7 +36,7 @@ test('generic gap strip', async ({ page }, info) => {
   for (const s of SPOTS) {
     const cam = { eye: move([s.lng, s.lat], s.bearing + 180, 6), target: move([s.lng, s.lat], s.bearing, 40) };
     await page.evaluate(({ cam }) => {
-      const g = (window as any).canalRecallGame, vm = g.vectorMap, map = vm.map;
+      const g = (window as any).canalRecallGame, vm = g.vectorMap, map = vm.map ?? vm.cameraMap;
       g._updateCanalQuiz = () => {}; g._updateBridgeQuiz = () => {}; (window as any).__gapIdle = 0;
       g.player.speed = 0; g.player.vx = 0; g.player.vy = 0;
       vm.sync = () => {}; map.stop(); map.setMaxPitch(85); map.setVerticalFieldOfView(55); map.setPadding({ top: 0, bottom: 0, left: 0, right: 0 });
@@ -45,8 +45,8 @@ test('generic gap strip', async ({ page }, info) => {
     }, { cam });
     await settle(page);
     await page.evaluate(() => {
-      const map = (window as any).canalRecallGame.vectorMap.map;
-      for (const layer of map.getStyle().layers) if (layer.type === 'symbol' && map.getLayoutProperty(layer.id, 'visibility') !== 'none') map.setLayoutProperty(layer.id, 'visibility', 'none');
+      const map = (window as any).canalRecallGame.vectorMap.map ?? (window as any).canalRecallGame.vectorMap.cameraMap;
+      if ((window as any).canalRecallGame.vectorMap.map) { for (const layer of map.getStyle().layers) if (layer.type === 'symbol' && map.getLayoutProperty(layer.id, 'visibility') !== 'none') map.setLayoutProperty(layer.id, 'visibility', 'none'); } else (window as any).canalRecallGame.vectorMap.setLabelsVisible(false);
       const canvas = map.getCanvas() as HTMLCanvasElement;
       for (const e of Array.from(document.body.querySelectorAll('*'))) if (e !== canvas && !e.contains(canvas)) (e as HTMLElement).style.visibility = 'hidden';
     });

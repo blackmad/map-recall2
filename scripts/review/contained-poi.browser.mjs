@@ -19,13 +19,13 @@ try {
   await page.evaluate(row => {
     const g = canalRecallGame, v = g.vectorMap;
     v.sync = () => {};
-    v.map.jumpTo({ center: [row[2], row[3]], zoom: 19, pitch: 60, bearing: 60 });
+    (v.map ?? v.cameraMap).jumpTo({ center: [row[2], row[3]], zoom: 19, pitch: 60, bearing: 60 });
     v._completeCity.setSuspended(false); v._completeCity.followCamera();
   }, row);
   await page.waitForTimeout(8500);
   await page.waitForFunction(() => { const b = canalRecallGame.vectorMap._threeBuildings; return b?.ready && b.chunks.size && !b.pending.length && !b.inflight.size; }, null, { timeout: 90000 });
   const proof = await page.evaluate(row => {
-    const g = canalRecallGame, v = g.vectorMap, b = v._threeBuildings, T = CanalRecallThree.THREE, canvas = v.map.getCanvas(), rect = g.canvas.getBoundingClientRect();
+    const g = canalRecallGame, v = g.vectorMap, b = v._threeBuildings, T = CanalRecallThree.THREE, canvas = v.frameCanvas(), rect = g.canvas.getBoundingClientRect();
     const owners = b.lastFeatures.filter(f => !b.hidden.has(String(f.properties.id)) && g._clickPoiInfo.contained(f.geometry).some(p => p[4] === 'food' && p[7] && Math.abs(p[2]-row[2])<.001 && Math.abs(p[3]-row[3])<.001));
     for (const f of owners) {
       const place=g._clickPoiInfo.contained(f.geometry).find(p=>p[4]==='food'&&p[7]);

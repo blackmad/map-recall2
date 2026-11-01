@@ -48,7 +48,7 @@ async function askQuestion(page: Page): Promise<string> {
 }
 
 const state = (page: Page) => page.evaluate(() => {
-  const vm = (window as any).canalRecallGame.vectorMap, map = vm.map;
+  const vm = (window as any).canalRecallGame.vectorMap, map = vm.map ?? vm.cameraMap;
   const op = (id: string) => map.getLayer(id) ? { vis: map.getLayoutProperty(id, 'visibility'), lineOpacity: map.getPaintProperty(id, 'line-opacity') } : null;
   return {
     status: vm.ownGroundStatus(),

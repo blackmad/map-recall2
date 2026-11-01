@@ -49,7 +49,7 @@ test('a trackpad twist orbits the chase camera', async ({ page }, testInfo) => {
   });
   // MapLibre's bearing grows as the map turns anticlockwise. It only syncs
   // once its style loads, which needs the network.
-  const mapBearing = () => page.evaluate(() => { const v = (window as any).canalRecallGame.vectorMap; return v?.ready ? v.map.getBearing() as number : null; });
+  const mapBearing = () => page.evaluate(() => { const v = (window as any).canalRecallGame.vectorMap; return v?.ready ? v.camera.bearing() as number : null; });
   const beforeNorth = await northAngle();
   const beforeMap = await mapBearing();
   await twist([10, 20, 40]);

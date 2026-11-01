@@ -46,8 +46,8 @@ const ahead = ([lng, lat]: number[], bearingDeg: number, metres: number): [numbe
 
 async function quiet(page: Page): Promise<void> {
   await page.evaluate(() => {
-    const map = (window as any).canalRecallGame.vectorMap.map;
-    for (const layer of map.getStyle().layers) if (layer.type === 'symbol' && map.getLayoutProperty(layer.id, 'visibility') !== 'none') map.setLayoutProperty(layer.id, 'visibility', 'none');
+    const map = (window as any).canalRecallGame.vectorMap.map ?? (window as any).canalRecallGame.vectorMap.cameraMap;
+    if ((window as any).canalRecallGame.vectorMap.map) { for (const layer of map.getStyle().layers) if (layer.type === 'symbol' && map.getLayoutProperty(layer.id, 'visibility') !== 'none') map.setLayoutProperty(layer.id, 'visibility', 'none'); } else (window as any).canalRecallGame.vectorMap.setLabelsVisible(false);
     const canvas = map.getCanvas() as HTMLCanvasElement;
     for (const e of Array.from(document.body.querySelectorAll('*'))) if (e !== canvas && !e.contains(canvas)) (e as HTMLElement).style.visibility = 'hidden';
   });
@@ -56,7 +56,7 @@ async function quiet(page: Page): Promise<void> {
 async function settle(page: Page): Promise<void> {
   await page.waitForFunction(() => {
     const w = window as any, vm = w.canalRecallGame.vectorMap, t = vm._threeBuildings, l = vm._signatureLandmarks, r = vm._tileBuildings;
-    const c = vm.map.getCenter(); vm.map.jumpTo({ center: [c.lng + 1e-9, c.lat] });
+    const c = vm.camera.center(); (vm.map ?? vm.cameraMap).jumpTo({ center: [c.lng + 1e-9, c.lat] });
     const idle = !t || (t.ready && !t.pending.length && !t.inflight.size);
     const landmarksIdle = !l || !l._pending || !l._pending.size;
     const rs = r?.stats();
@@ -66,14 +66,14 @@ async function settle(page: Page): Promise<void> {
     w.__rtKey = key;
     return w.__rtIdle >= 5;
   }, null, { timeout: 180_000, polling: 1000 });
-  await page.evaluate(() => { const w = window as any; w.canalRecallGame.vectorMap.map.jumpTo(w.__rtCamera); });
+  await page.evaluate(() => { const w = window as any; (w.canalRecallGame.vectorMap.map ?? w.canalRecallGame.vectorMap.cameraMap).jumpTo(w.__rtCamera); });
   await page.waitForTimeout(4000);
 }
 
 /** Draw calls and triangles inside the shared frame's main pass, whole-page draws, frame time, resident counts. */
 async function measure(page: Page, ms: number) {
   await page.evaluate(() => {
-    const w = window as any, vm = w.canalRecallGame.vectorMap, map = vm.map, f = vm._sharedFrame;
+    const w = window as any, vm = w.canalRecallGame.vectorMap, map = vm.map ?? vm.cameraMap, f = vm._sharedFrame;
     const t: Record<string, number[]> = { frame: [], frameCalls: [], frameTri: [], allCalls: [], mainMs: [] };
     w.__rtPerf = t; w.__rtStop = false;
     let tri = 0, calls = 0, all = 0, inMain = false;
@@ -156,7 +156,7 @@ for (const mode of MODES) test(`recipe tiles: ${mode.label}`, async ({ page }, i
     if (ONLY && !ONLY.includes(view.name)) continue;
     const eye = ahead(view.target, view.bearing, view.distM);
     await page.evaluate(({ eye, view }) => {
-      const g = (window as any).canalRecallGame, vm = g.vectorMap, map = vm.map;
+      const g = (window as any).canalRecallGame, vm = g.vectorMap, map = vm.map ?? vm.cameraMap;
       g._updateCanalQuiz = () => {}; g._updateBridgeQuiz = () => {}; (window as any).__rtIdle = 0;
       g.player.speed = 0; g.player.vx = 0; g.player.vy = 0;
       vm.sync = () => {}; map.stop(); map.setMaxPitch(85); map.setVerticalFieldOfView(50); map.setPadding({ top: 0, bottom: 0, left: 0, right: 0 });
@@ -172,7 +172,7 @@ for (const mode of MODES) test(`recipe tiles: ${mode.label}`, async ({ page }, i
     if (on) {
       // Picking through the game's own inspector on a 16x10 grid: how many points resolve to a recipe-tile pand.
       pick = await page.evaluate(() => {
-        const vm = (window as any).canalRecallGame.vectorMap, rect = vm.map.getCanvas().getBoundingClientRect(), pands = new Set<string>();
+        const vm = (window as any).canalRecallGame.vectorMap, rect = vm.frameCanvas().getBoundingClientRect(), pands = new Set<string>();
         let hits = 0, tileHits = 0;
         for (let i = 0; i < 16; i++) for (let j = 0; j < 10; j++) {
           const r = vm.inspectBuilding((i + 0.5) * rect.width / 16, (j + 0.5) * rect.height / 10, rect);

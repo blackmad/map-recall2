@@ -34,7 +34,7 @@ test('trace intro building work', async ({ page }, info) => {
           wrap(vm, '_syncPyramidalRoofs', 'vm.syncRoofs', a => a[0]?.length);
           const cc = vm._completeCity;
           if (cc) {
-            wrap(cc, 'update', 'cc.update', () => `${cc.preloadBounds ? 'preload' : 'camera'} pitch=${vm.map.getPitch().toFixed(0)} z=${vm.map.getZoom().toFixed(1)}`);
+            wrap(cc, 'update', 'cc.update', () => `${cc.preloadBounds ? 'preload' : 'camera'} pitch=${vm.camera.pitch().toFixed(0)} z=${vm.camera.zoom().toFixed(1)}`);
             wrap(cc, 'flush', 'cc.flush');
             wrap(cc, 'sendToSource', 'cc.send', a => a[1]?.length);
             wrap(cc, 'fetchTile', 'cc.fetch', a => `${a[0].z}/${a[0].x}/${a[0].y}`);
@@ -50,7 +50,7 @@ test('trace intro building work', async ({ page }, info) => {
             wrap(tb, 'rebuild', 'tb.rebuild', a => `${a[0]}:${a[1]?.length}`);
             wrap(tb, 'install', 'tb.install', a => a[0]);
           }
-          const map = vm.map;
+          const map = vm.map ?? vm.cameraMap;
           if (map && !map.__traced) {
             map.__traced = true;
             map.on('dataloading', (e: any) => { if (e.tile) ev('ml.tileLoading', `${e.sourceId}@${e.tile.tileID?.canonical?.z}`); });

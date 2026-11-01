@@ -34,7 +34,7 @@ test(`roof facts ${label}`, async ({ page }, info) => {
   await openRoute(page, { travelMode: 'car', abortHeavyTiles: true, enterRacing: false, query: on ? '' : '?roofFacts=0' });
   await page.waitForFunction(() => (window as any).canalRecallGame.state === 4, null, { timeout: 90_000 }).catch(() => {});
   await page.evaluate((cam) => {
-    const map = (window as any).canalRecallGame.vectorMap.map;
+    const map = (window as any).canalRecallGame.vectorMap.map ?? (window as any).canalRecallGame.vectorMap.cameraMap;
     for (const k of cam) { map['__' + k] = map[k]; map[k] = () => map; }
   }, CAM);
   const cdp = await page.context().newCDPSession(page);
@@ -43,7 +43,7 @@ test(`roof facts ${label}`, async ({ page }, info) => {
   mkdirSync(out, { recursive: true });
   for (const [name, cam] of Object.entries(VIEWS)) {
     if (ONLY && !ONLY.includes(name)) continue;
-    await page.evaluate((c) => { const map = (window as any).canalRecallGame.vectorMap.map; map.__jumpTo.call(map, { center: c.center, zoom: c.zoom, pitch: c.pitch, bearing: c.bearing }); }, cam);
+    await page.evaluate((c) => { const map = (window as any).canalRecallGame.vectorMap.map ?? (window as any).canalRecallGame.vectorMap.cameraMap; map.__jumpTo.call(map, { center: c.center, zoom: c.zoom, pitch: c.pitch, bearing: c.bearing }); }, cam);
     await page.waitForFunction(() => { const t = (window as any).canalRecallGame.vectorMap._threeBuildings; return t?.ready && t.chunks.size && !t.pending.length && !t.inflight.size; }, null, { timeout: 180_000 }).catch(() => {});
     await page.waitForTimeout(5000);
     await page.waitForFunction(() => { const t = (window as any).canalRecallGame.vectorMap._threeBuildings; return !t.pending.length && !t.inflight.size; }, null, { timeout: 60_000 }).catch(() => {});
@@ -55,7 +55,7 @@ test(`roof facts ${label}`, async ({ page }, info) => {
     });
     await cdp.send('Emulation.setCPUThrottlingRate', { rate: info.project.name === 'iphone' ? 4 : 1 });
     await page.evaluate(() => {
-      const w = window as any, vm = w.canalRecallGame.vectorMap, map = vm.map, t: number[] = [], layerMs: number[] = [];
+      const w = window as any, vm = w.canalRecallGame.vectorMap, map = vm.map ?? vm.cameraMap, t: number[] = [], layerMs: number[] = [];
       w.__frames = t; w.__layer = layerMs; w.__stop = false;
       // The facades' own CPU cost per frame (their shared-frame prepareFrame), where the roof work lands.
       const facades = vm._threeBuildings, orig = facades.prepareFrame;

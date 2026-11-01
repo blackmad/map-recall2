@@ -16,13 +16,13 @@ try {
  await page.selectOption('#poi-destination','lm-osm_theatre_2724220323');
  await page.locator('#route-card').evaluate(f=>f.requestSubmit());
  await page.waitForFunction(()=>canalRecallGame.state===4&&canalRecallGame.camera.introOverview===0,null,{timeout:90000});
- await page.evaluate(()=>{const g=canalRecallGame,v=g.vectorMap;v.sync=()=>{};g._landmarkNotice=null;v.map.jumpTo({center:[4.893913835356087,52.37036795599974],zoom:18.5,pitch:60,bearing:95});v._completeCity.setSuspended(false);v._completeCity.followCamera();});
+ await page.evaluate(()=>{const g=canalRecallGame,v=g.vectorMap;v.sync=()=>{};g._landmarkNotice=null;(v.map ?? v.cameraMap).jumpTo({center:[4.893913835356087,52.37036795599974],zoom:18.5,pitch:60,bearing:95});v._completeCity.setSuspended(false);v._completeCity.followCamera();});
  await page.waitForTimeout(8500);
  await page.waitForFunction(()=>{const v=canalRecallGame.vectorMap,b=v._threeBuildings;return v._signatureLandmarks.shown.has('frascati')&&b?.ready&&b.chunks.size&&!b.pending.length&&!b.inflight.size},null,{timeout:90000});
  const result=await page.evaluate(async()=>{
   const g=canalRecallGame,v=g.vectorMap,layer=v._signatureLandmarks,b=v._threeBuildings,T=CanalRecallThree.THREE;
-  const lm=g.landmarks.find(l=>l.id==='osm_theatre_2724220323'),pin=(await v.map.getSource('amsterdam-pois').getData()).features.find(f=>f.properties.id===lm.id),finish=g._finishLandmark();
-  const e=layer._entries.find(e=>e.spec.id==='frascati'),c=v.map.getCanvas();let target=null;
+  const lm=g.landmarks.find(l=>l.id==='osm_theatre_2724220323'),pin=(await (v.map ?? v.cameraMap).getSource('amsterdam-pois').getData()).features.find(f=>f.properties.id===lm.id),finish=g._finishLandmark();
+  const e=layer._entries.find(e=>e.spec.id==='frascati'),c=v.frameCanvas();let target=null;
   e.group.updateWorldMatrix(true,true);
   e.group.traverse(o=>{if(target||!o.isMesh)return;const a=o.geometry.getAttribute('position');for(let i=0;i<Math.min(a.count,36);i+=3){const p=new T.Vector3().fromBufferAttribute(a,i).applyMatrix4(o.matrixWorld).applyMatrix4(e.pickProjection),x=(p.x+1)/2*c.clientWidth,y=(1-p.y)/2*c.clientHeight;if(x<0||y<0||x>c.clientWidth||y>c.clientHeight)continue;const hit=v.inspectBuilding(x,y,{width:c.clientWidth,height:c.clientHeight});if(hit?.landmarkId===lm.id){target={x,y,hit};break;}}});
   if(!target)return {error:'No actual Frascati visible mesh sample picked',pin:!!pin,card:lm,finish:finish?.id};

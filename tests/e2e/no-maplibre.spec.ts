@@ -27,7 +27,7 @@ const camParam = (c: MapCam) => `cam=${c.lng},${c.lat},${c.zoom},${c.pitch},${c.
 type Probe = { lng: number; lat: number; x: number; y: number };
 async function readCam(page: Page): Promise<MapCam & { probes: Probe[]; padding: unknown; canvas: { w: number; h: number; left: number; top: number } }> {
   return page.evaluate(() => {
-    const map = (window as any).canalRecallGame.vectorMap.map, c = (window as any).canalRecallGame.vectorMap.camera.center();
+    const map = (window as any).canalRecallGame.vectorMap.map ?? (window as any).canalRecallGame.vectorMap.cameraMap, c = (window as any).canalRecallGame.vectorMap.camera.center();
     const r = map.getCanvas().getBoundingClientRect();
     // Ground points where MapLibre itself says they are, to check the own camera against.
     const probes = [[0.25, 0.3], [0.75, 0.3], [0.5, 0.5], [0.25, 0.8], [0.75, 0.8]].map(([fx, fy]) => {
@@ -41,7 +41,7 @@ async function readCam(page: Page): Promise<MapCam & { probes: Probe[]; padding:
 }
 async function settle(page: Page): Promise<void> {
   await page.waitForTimeout(1500);
-  await expect.poll(() => page.evaluate(() => (window as any).canalRecallGame.vectorMap.map.areTilesLoaded()), { timeout: 30_000 }).toBe(true);
+  await expect.poll(() => page.evaluate(() => ((window as any).canalRecallGame.vectorMap.map ?? (window as any).canalRecallGame.vectorMap.cameraMap).areTilesLoaded()), { timeout: 30_000 }).toBe(true);
   await page.waitForTimeout(1200);
 }
 

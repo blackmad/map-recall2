@@ -15,7 +15,7 @@ try {
   await page.waitForFunction(() => canalRecallGame.state === 4 && canalRecallGame.camera?.introOverview === 0, null, {timeout: 90000});
   await page.evaluate(() => { canalRecallGame.vectorMap.sync = () => {}; });
   for (const b of bearings.split(',')) {
-    await page.evaluate(({c, z, p, b}) => canalRecallGame.vectorMap.map.jumpTo({center: c, zoom: z, pitch: p, bearing: b}), {c: [+lng, +lat], z: +zoom, p: +pitch, b: +b});
+    await page.evaluate(({c, z, p, b}) => (canalRecallGame.vectorMap.map ?? canalRecallGame.vectorMap.cameraMap).jumpTo({center: c, zoom: z, pitch: p, bearing: b}), {c: [+lng, +lat], z: +zoom, p: +pitch, b: +b});
     await page.waitForFunction(id => canalRecallGame.vectorMap._signatureLandmarks.shown.has(id) && canalRecallGame.vectorMap._completeCityHasBuildings, id, {timeout: 90000});
     await page.waitForTimeout(7000);
     await page.screenshot({path: `${out}-${b}.png`});

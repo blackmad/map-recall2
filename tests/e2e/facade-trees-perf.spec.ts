@@ -40,7 +40,7 @@ for (const variant of variants) {
       const w = window as any;
       w.__frames = [];
       w.__mapRender = [];
-      const map = w.canalRecallGame.vectorMap.map;
+      const map = w.canalRecallGame.vectorMap.map ?? w.canalRecallGame.vectorMap.cameraMap;
       const original = map._render.bind(map);
       map._render = (...args: unknown[]) => { const t = performance.now(); const out = original(...args); w.__mapRender.push(performance.now() - t); return out; };
       let last = performance.now();

@@ -48,15 +48,15 @@ for (const frame of framesArg.split(',')) for (const style of stylesArg.split(',
     await page.waitForTimeout(6000);
     if (device === 'touch') { const cdp = await page.context().newCDPSession(page); await cdp.send('Emulation.setCPUThrottlingRate', { rate: 4 }); }
     const measure = (on) => page.evaluate(async ({ on, landmark, N }) => {
-      const vm = window.canalRecallGame.vectorMap, map = vm.map;
+      const vm = window.canalRecallGame.vectorMap, map = vm.map ?? vm.cameraMap;
       vm.setActiveLandmark(on ? landmark : null);
       const t = { render: [], three: [], calls: [] };
       const wrap = (obj, key, bucket) => { if (!obj?.[key] || obj[key].__hl) return; const o = obj[key].bind(obj); const f = (...a) => { const s = performance.now(); try { return o(...a); } finally { window.__hlBucket?.[bucket].push(performance.now() - s); } }; f.__hl = true; obj[key] = f; };
       wrap(map, '_render', 'render');
       const own = vm._sharedFrame ? [vm._sharedFrame.mainLayer, vm._sharedFrame.overlayLayer]
-        : [vm._threeBuildings?.layer, vm._signatureLandmarks?.layer, vm._inventoryTrees?.layer, vm._pyramidalRoofs?.layer, vm._playerBike?.layer, map.getLayer('highlight-marker')?.implementation];
+        : [vm._threeBuildings?.layer, vm._signatureLandmarks?.layer, vm._inventoryTrees?.layer, vm._pyramidalRoofs?.layer, vm._playerBike?.layer, map.getLayer?.('highlight-marker')?.implementation];
       for (const l of own) if (l?.render) wrap(l, 'render', 'three');
-      const gl = map.painter.context.gl;
+      const gl = map.painter?.context.gl ?? {}; // ENGINE=own: no painter (n/a)
       if (!gl.__hlCount) { gl.__hlCount = { n: 0 }; for (const fn of ['drawArrays', 'drawElements', 'drawElementsInstanced', 'drawArraysInstanced', 'drawRangeElements']) { const o = gl[fn]?.bind(gl); if (o) gl[fn] = (...a) => { gl.__hlCount.n++; return o(...a); }; } }
       await new Promise(r => setTimeout(r, 1500));
       window.__hlBucket = t;

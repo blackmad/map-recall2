@@ -11,7 +11,7 @@
 // the same way (HIDDEN_DISCARD), or the hidden generic prism comes back in the mask and covers the walls drawn in its
 // place (chunk-look lane 2026-10-16: Bilderdijkstraat chunk walls were counted as generic walls).
 (() => {
-  const vm = canalRecallGame.vectorMap, frame = vm._sharedFrame, map = vm.map, THREE = frame.THREE;
+  const vm = canalRecallGame.vectorMap, frame = vm._sharedFrame, map = vm.map ?? vm.cameraMap, THREE = frame.THREE;
   const normal = new THREE.MeshNormalMaterial({ flatShading: true });
   const flat = c => new THREE.MeshBasicMaterial({ color: new THREE.Color(c[0] / 255, c[1] / 255, c[2] / 255), toneMapped: false });
   const ground = flat([255, 0, 0]), tree = flat([0, 255, 0]), other = flat([255, 255, 0]);

@@ -50,7 +50,7 @@ async function drawnLabels(page: Page) {
     const g = (window as any).canalRecallGame;
     const markers = (g._freeRideMarkers || []).map((m: any) => ({ key: m.key, name: g._freeRideNearby?.find((p: any) => p.key === m.key)?.name, x: Math.round(m.anchorX), y: Math.round(m.anchorY) }));
     // MapLibre symbols its collision pass placed (station and transit names are not the overlay's).
-    const map = g.vectorMap.map;
+    const map = g.vectorMap.map ?? g.vectorMap.cameraMap;
     const symbolIds = map.getStyle().layers.filter((l: any) => l.type === 'symbol' && map.getLayoutProperty(l.id, 'visibility') !== 'none').map((l: any) => l.id);
     const symbols = map.queryRenderedFeatures(undefined, { layers: symbolIds })
       .filter((f: any) => !/street|road|water|transportation_name|place|neighborhood|answered/.test(f.layer.id))
@@ -88,7 +88,7 @@ test('centre feedback poses: frames and drawn labels', async ({ page }, info) =>
     await page.screenshot({ path: `${OUT}/${pose.id}.png` });
     // CENTRE_FB_PICK="x,y;x,y" (CSS px): which model each pixel shows, for naming the pand in a screenshot.
     const picks = process.env.CENTRE_FB_PICK ? await page.evaluate((spec) => {
-      const vm = (window as any).canalRecallGame.vectorMap, canvas = vm.map.getCanvas() as HTMLCanvasElement;
+      const vm = (window as any).canalRecallGame.vectorMap, canvas = vm.frameCanvas() as HTMLCanvasElement;
       return spec.split(';').map(pair => {
         const [x, y] = pair.split(',').map(Number);
         const hits: Record<string, unknown> = {};

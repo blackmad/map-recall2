@@ -21,7 +21,7 @@ test('mobile city shells remain until detailed buildings install', async ({ page
         checked++;
       }
     }
-    return { checked, detailZoom: t.detailZoom, pixelRatio: vm.map.getPixelRatio(), touch: matchMedia('(pointer: coarse)').matches, stats: t.stats() };
+    return { checked, detailZoom: t.detailZoom, pixelRatio: (vm.map ?? vm.cameraMap).getPixelRatio(), touch: matchMedia('(pointer: coarse)').matches, stats: t.stats() };
   });
   expect(status.checked).toBeGreaterThan(0);
   if (status.touch) {

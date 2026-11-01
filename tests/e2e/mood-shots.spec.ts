@@ -114,8 +114,8 @@ for (const query of QUERIES) for (const view of ['chase', 'cockpit', 'aerial'] a
         });
       }
       await page.evaluate(() => {
-        const map = (window as any).canalRecallGame.vectorMap.map;
-        for (const layer of map.getStyle().layers) if (layer.type === 'symbol') map.setLayoutProperty(layer.id, 'visibility', 'none');
+        const map = (window as any).canalRecallGame.vectorMap.map ?? (window as any).canalRecallGame.vectorMap.cameraMap;
+        if ((window as any).canalRecallGame.vectorMap.map) { for (const layer of map.getStyle().layers) if (layer.type === 'symbol') map.setLayoutProperty(layer.id, 'visibility', 'none'); } else (window as any).canalRecallGame.vectorMap.setLabelsVisible(false);
       });
       for (const spot of spots) {
         // Sun side: stand toward the sun from the target, face away from it. Shade side: the opposite.
@@ -131,7 +131,7 @@ for (const query of QUERIES) for (const view of ['chase', 'cockpit', 'aerial'] a
           if (view === 'aerial') {
             // A fixed camera 200 m up, standM back from the target (the rider stands under it).
             await page.evaluate(({ eye, target }) => {
-              const vm = (window as any).canalRecallGame.vectorMap, map = vm.map;
+              const vm = (window as any).canalRecallGame.vectorMap, map = vm.map ?? vm.cameraMap;
               vm.sync = () => {}; map.stop(); map.setMaxPitch(85); map.setPadding({ top: 0, bottom: 0, left: 0, right: 0 });
               map.jumpTo(map.calculateCameraOptionsFromTo({ lng: eye[0], lat: eye[1] }, 200, { lng: target[0], lat: target[1] }, 0));
             }, { eye: [p.lng, p.lat], target: c });
@@ -139,7 +139,7 @@ for (const query of QUERIES) for (const view of ['chase', 'cockpit', 'aerial'] a
           await settle(page);
           await page.waitForTimeout(2500);
           await page.evaluate(() => {
-            const map = (window as any).canalRecallGame.vectorMap.map, canvas = map.getCanvas();
+            const map = (window as any).canalRecallGame.vectorMap.map ?? (window as any).canalRecallGame.vectorMap.cameraMap, canvas = map.getCanvas();
             for (const e of Array.from(document.body.querySelectorAll('*'))) if (e !== canvas && !e.contains(canvas)) (e as HTMLElement).style.visibility = 'hidden';
           });
           await page.waitForTimeout(600);
@@ -149,7 +149,7 @@ for (const query of QUERIES) for (const view of ['chase', 'cockpit', 'aerial'] a
             const vm = (window as any).canalRecallGame.vectorMap;
             vm._threeBuildings?.setVisible(false); vm.__moodLandmarks = vm._signatureLandmarks?.enabled;
             if (vm._signatureLandmarks) vm._signatureLandmarks.enabled = false;
-            vm.map.triggerRepaint();
+            (vm.map ?? vm.cameraMap).triggerRepaint();
           });
           await page.waitForTimeout(600);
           const bare = await page.screenshot();
@@ -158,7 +158,7 @@ for (const query of QUERIES) for (const view of ['chase', 'cockpit', 'aerial'] a
             vm._threeBuildings?.setVisible(true);
             if (vm._signatureLandmarks) vm._signatureLandmarks.enabled = vm.__moodLandmarks;
             for (const e of Array.from(document.body.querySelectorAll('*'))) (e as HTMLElement).style.visibility = '';
-            vm.map.triggerRepaint();
+            (vm.map ?? vm.cameraMap).triggerRepaint();
           });
           results[`${spot.name}-${side}`] = stats(await raw(shot), await raw(bare));
         }
