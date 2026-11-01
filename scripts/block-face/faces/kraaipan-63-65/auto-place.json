@@ -3,7 +3,7 @@
  "street": "Kraaipanstraat",
  "library": "transvaalbuurt",
  "stripDate": "2020-04-29",
- "seconds": 0.09,
+ "seconds": 3.19,
  "thresholds": {
   "minScore": 0.7,
   "margin": 0.05,
@@ -13,7 +13,17 @@
   "widthSlackM": 0.4,
   "flatRoofRiseM": 1.5
  },
- "runs": [],
+ "runs": [
+  {
+   "face": "kraaipan-63-65",
+   "pands": [
+    "0363100012108224",
+    "0363100012145617"
+   ],
+   "passed": true,
+   "triangles": 1493
+  }
+ ],
  "pands": [
   {
    "pandId": "0363100012108224",
@@ -58,43 +68,54 @@
     "voidShare": 0,
     "foliageShare": 0
    },
-   "status": "held",
-   "stage": "match",
-   "reason": "every type vetoed (best transvaal-1911-five-storey-tall: built 1931, type 1908-1914)",
-   "best": {
-    "type": "transvaal-1911-five-storey-tall",
-    "score": 0,
-    "veto": [
-     "built 1931, type 1908-1914"
-    ],
-    "criteria": [
-     {
-      "key": "eaves",
-      "weight": 2,
-      "score": 0,
-      "note": "3DBAG eaves 6.03 m = 4 storeys of 1.51 m vs the type's 3.55 m"
-     },
-     {
-      "key": "storeys",
-      "weight": 1,
-      "score": 0,
-      "note": "3DBAG bouwlagen 3 vs 5"
-     },
-     {
-      "key": "stucco",
-      "weight": 2,
-      "score": 1,
-      "note": "strip accent share 0.001 (brick)"
-     },
-     {
-      "key": "columns",
-      "weight": 1.5,
-      "score": 0,
-      "note": "strip columns 5 vs 3 bays"
-     }
-    ]
+   "status": "placed",
+   "type": "vaalrivier-1931-row",
+   "score": 0.86,
+   "runnerUp": {
+    "typeId": "transvaal-1911-five-storey-tall",
+    "score": 0
    },
-   "likeness": null,
+   "placement": {
+    "type": "vaalrivier-1931-row",
+    "measuredPalette": {
+     "brick": "#5d4a40",
+     "evidence": "strip 2020-04-29 span 0-328: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "mirror": true
+   },
+   "notes": [
+    "crown flat-overhang (type default)",
+    "door right: mirrored: reviewer pin (Kraaipanstraat 63, strip 2020-04-29: the blue double portiek doors stand at the pand's right end, a group of four with the neighbour's across the party wall (#153))"
+   ],
+   "likeness": {
+    "pandId": "0363100012108224",
+    "ncc": 0.223,
+    "nccRaw": 0.223,
+    "shiftM": [
+     -0.4,
+     -0.1
+    ],
+    "usable": 0.95,
+    "abstain": null,
+    "verdict": "WARN",
+    "reasons": [
+     "mask IoU 0.225 < 0.45"
+    ],
+    "wall": {
+     "photo": "#5f4d42",
+     "model": "#785f53",
+     "dL": 0.082
+    },
+    "glazing": {
+     "photo": 0.47,
+     "model": 0.42
+    },
+    "columns": {
+     "photo": null,
+     "model": 4
+    },
+    "iou": 0.225
+   },
    "challengers": {}
   },
   {
@@ -140,43 +161,54 @@
     "voidShare": 0,
     "foliageShare": 0
    },
-   "status": "held",
-   "stage": "match",
-   "reason": "every type vetoed (best transvaal-1911-five-storey-tall: built 1931, type 1908-1914)",
-   "best": {
-    "type": "transvaal-1911-five-storey-tall",
-    "score": 0,
-    "veto": [
-     "built 1931, type 1908-1914"
-    ],
-    "criteria": [
-     {
-      "key": "eaves",
-      "weight": 2,
-      "score": 0,
-      "note": "3DBAG eaves 6.07 m = 4 storeys of 1.52 m vs the type's 3.55 m"
-     },
-     {
-      "key": "storeys",
-      "weight": 1,
-      "score": 0,
-      "note": "3DBAG bouwlagen 3 vs 5"
-     },
-     {
-      "key": "stucco",
-      "weight": 2,
-      "score": 1,
-      "note": "strip accent share 0.002 (brick)"
-     },
-     {
-      "key": "columns",
-      "weight": 1.5,
-      "score": 0,
-      "note": "strip columns 5 vs 3 bays"
-     }
-    ]
+   "status": "placed",
+   "type": "vaalrivier-1931-row",
+   "score": 0.86,
+   "runnerUp": {
+    "typeId": "transvaal-1911-five-storey-tall",
+    "score": 0
    },
-   "likeness": null,
+   "placement": {
+    "type": "vaalrivier-1931-row",
+    "measuredPalette": {
+     "brick": "#5e4d42",
+     "evidence": "strip 2020-04-29 span 328-654: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "crown flat-overhang (type default)",
+    "door left: reviewer pin (Kraaipanstraat 65, strip 2020-04-29: the blue double portiek doors stand at the pand's left end, a group of four with the neighbour's across the party wall (#153))"
+   ],
+   "likeness": {
+    "pandId": "0363100012145617",
+    "ncc": 0.282,
+    "nccRaw": 0.282,
+    "shiftM": [
+     0,
+     0.15
+    ],
+    "usable": 0.97,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing  mean 0.40 vs photo 0.57",
+     "window shape square vs photo tall"
+    ],
+    "wall": {
+     "photo": "#5e4d42",
+     "model": "#796355",
+     "dL": 0.09
+    },
+    "glazing": {
+     "photo": 0.57,
+     "model": 0.4
+    },
+    "columns": {
+     "photo": 5,
+     "model": 4
+    },
+    "iou": 0.295
+   },
    "challengers": {}
   }
  ]

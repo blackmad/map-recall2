@@ -41,6 +41,26 @@
    "pandId": "0363100012251277",
    "address": "Maritzstraat 24",
    "reason": "Maritzstraat 24-26: brick wall dormers over both pands and a residential ground; transvaal-1911-five-storey-tall passed edge NCC but draws a pointed gable, a roof dormer and a shopfront (review at gallery size, strip over model ortho, 2026-10-31)"
+  },
+  {
+   "pandId": "0363100012109842",
+   "address": "Vaalrivierstraat 14A",
+   "reason": "vaalrivier-2-14-r1 sheet (#153): auto-place draws a shopfront from OSM amenity=bicycle_parking; the 2020-04-29 strip shows the row's residential front (three windows per storey, the door group at the right end)"
+  },
+  {
+   "pandId": "0363100012131537",
+   "address": "Vaalrivierstraat 22",
+   "reason": "vaalrivier-16-22 sheet (#153): auto-place draws a shopfront from OSM amenity=waste_disposal (a street container); the 2020-04-29 strip shows the row's residential front (three windows per storey, the door group at the pand's end)"
+  },
+  {
+   "pandId": "0363100012076608",
+   "address": "Vaalrivierstraat 16A",
+   "reason": "vaalrivier-16-22 sheet (#153): auto-place draws a shopfront from OSM amenity=bicycle_parking (street racks); the 2020-04-29 strip shows the row's residential front (three windows per storey, the door group at the pand's end)"
+  },
+  {
+   "pandId": "0363100012076039",
+   "address": "Vaalrivierstraat 20A",
+   "reason": "vaalrivier-16-22-r1 sheet (#153): auto-place draws a shopfront from OSM amenity=waste_disposal (a street container); the 2020-04-29 strip shows the row's residential front, the door group at the left end"
   }
  ]
 }

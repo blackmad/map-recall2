@@ -493,8 +493,12 @@ export interface FrontIntent {
    * into the city brick range). Absent = byte-identical. `from` (m, 0.05..4): the paint starts that far over each listed
    * storey's floor, brick below it (Gorontalostraat 25-45, 1926: the white top storey begins at its window sills, 0.45 m
    * over the floor; Zaanhof 1919: the render starts over the first-floor window heads, 3.3 m up a tall top storey; absent = from the floor).
+   * `panels` (Transvaalbuurt 1929, Tugelaweg 91-120: a grey rendered stair panel over the portiek axis of a cream-rendered
+   * block): a second paint `breadth` metres wide centred on grid `axis`, 1 cm proud of the painted storeys, from the floor
+   * of storey `fromStorey` (default the first listed storey, plus `from`) to 2 cm under the eaves, cut around the openings
+   * like them, in its own measured `colour`. Absent = byte-identical.
    */
-  paintedStoreys?: {storeys: number[]; colour: string; from?: number};
+  paintedStoreys?: {storeys: number[]; colour: string; from?: number; panels?: PaintedPanel[]};
   /**
    * Brick lisenes (Amsterdam School pilasters) at the front's viewer-left (`leftEnd`) / right (`rightEnd`) end, from the top of the ground storey
    * to 0.3 m under the eaves, 0.1 m proud, with a 0.15 m corbel cap 0.16 m proud. `half` (0.25 m wide) is the house's half
@@ -1799,10 +1803,29 @@ export function tilePanelProblems(f: FrontIntent, at: string): string[] {
   return p;
 }
 
+/** A painted panel over the painted storeys (`paintedStoreys.panels`): centred on a grid axis, `breadth` metres wide. */
+export interface PaintedPanel { axis: number; breadth: number; colour: string; fromStorey?: number }
+/** Validation range of a panel's breadth (m). */
+export const PAINTED_PANEL_BREADTH = [0.3, 4] as const;
+
 /** Problems with `paintedStoreys` (one or more storeys painted in a second colour). */
 export function paintedStoreyProblems(f: FrontIntent, at: string): string[] {
   const p: string[] = [], ps = f.paintedStoreys as {storeys?: unknown; colour?: unknown; from?: unknown} | undefined;
-  if (!ps || typeof ps !== 'object' || Object.keys(ps).some(k => !['storeys', 'colour', 'from'].includes(k))) return [`${at}.paintedStoreys: {storeys, colour, from?}`];
+  if (!ps || typeof ps !== 'object' || Object.keys(ps).some(k => !['storeys', 'colour', 'from', 'panels'].includes(k))) return [`${at}.paintedStoreys: {storeys, colour, from?} (and panels?)`];
+  const panels = (ps as {panels?: unknown}).panels;
+  if (panels !== undefined) {
+    const grid = frontGrid(f);
+    if (!Array.isArray(panels) || !panels.length) p.push(`${at}.paintedStoreys.panels: a non-empty list of {axis, breadth, colour}`);
+    else panels.forEach((q: unknown, k) => {
+      const o = q as Record<string, unknown>, a = `${at}.paintedStoreys.panels[${k}]`;
+      if (!o || typeof o !== 'object' || Object.keys(o).some(x => !['axis', 'breadth', 'colour', 'fromStorey'].includes(x))) { p.push(`${a}: {axis, breadth, colour, fromStorey?}`); return; }
+      if (o.fromStorey !== undefined && !(Number.isInteger(o.fromStorey) && (o.fromStorey as number) >= 0 && (o.fromStorey as number) < f.storeys)) p.push(`${a}.fromStorey: a storey 0..${f.storeys - 1}`);
+      if (!(Number.isInteger(o.axis) && (o.axis as number) >= 0 && (o.axis as number) < grid)) p.push(`${a}.axis: an axis of the shared grid, 0..${grid - 1}`);
+      if (!(typeof o.breadth === 'number' && o.breadth >= PAINTED_PANEL_BREADTH[0] && o.breadth <= PAINTED_PANEL_BREADTH[1])) p.push(`${a}.breadth: ${PAINTED_PANEL_BREADTH.join('..')} m`);
+      if (typeof o.colour !== 'string' || !/^#[0-9a-f]{6}$/i.test(o.colour)) p.push(`${a}.colour: a #rrggbb paint colour`);
+    });
+    if (f.repeat) p.push(`${at}.paintedStoreys.panels: not on a repeated front`);
+  }
   if (ps.from !== undefined && !(typeof ps.from === 'number' && ps.from >= 0.05 && ps.from <= 4)) p.push(`${at}.paintedStoreys.from: 0.05..4 m over the storey floor`);
   const l = ps.storeys as number[];
   if (!Array.isArray(l) || !l.length || l.some((s, i) => !Number.isInteger(s) || s < 0 || s >= f.storeys || (i > 0 && s <= l[i - 1]))) p.push(`${at}.paintedStoreys.storeys: ascending storey indices within 0..${f.storeys - 1}`);

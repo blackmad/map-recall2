@@ -1,6 +1,6 @@
 {
  "version": 1,
- "generatedAt": "2026-11-01T05:26:00.737Z",
+ "generatedAt": "2026-11-01T08:39:35.165Z",
  "chunks": [
   {
    "id": "chunk-face-bilder-080336-090492",
@@ -72396,6 +72396,780 @@
        "primitive": 9,
        "firstTriangle": 6,
        "triangleCount": 19
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "chunk-face-vaalrivier-2-14-r1",
+   "category": "street-survey",
+   "name": "face-vaalrivier-2-14-r1",
+   "modelUrl": "./models/ordinary-buildings/chunks/chunk-face-vaalrivier-2-14-r1.glb?asset=270768b0291ba869",
+   "sha256": "270768b0291ba869c74cb609c60cf575802221cc13e0fc1c33d5ffdb5f598123",
+   "bytes": 254836,
+   "triangles": 3672,
+   "primitives": 12,
+   "instance": {
+    "anchor": [
+     4.918120795326608,
+     52.352073603532446
+    ],
+    "northOffsetDegrees": 232.8994,
+    "mirror": false
+   },
+   "bounds": {
+    "min": [
+     -20.113,
+     0,
+     -8.678
+    ],
+    "max": [
+     21.009,
+     8.797,
+     1.045
+    ]
+   },
+   "height": 8.797,
+   "suppress": [
+    "NL.IMBAG.Pand.0363100012120724",
+    "NL.IMBAG.Pand.0363100012090866",
+    "NL.IMBAG.Pand.0363100012108545",
+    "NL.IMBAG.Pand.0363100012090850",
+    "NL.IMBAG.Pand.0363100012137594"
+   ],
+   "replaces": [
+    "ordinary-0363100012120724",
+    "ordinary-0363100012090866",
+    "ordinary-0363100012108545",
+    "ordinary-0363100012090850",
+    "ordinary-0363100012137594"
+   ],
+   "footprint": {
+    "type": "MultiPolygon",
+    "coordinates": [
+     [
+      [
+       [
+        4.918222,
+        52.3519842
+       ],
+       [
+        4.9181273,
+        52.3519416
+       ],
+       [
+        4.9181968,
+        52.3518836
+       ],
+       [
+        4.9182994,
+        52.3519298
+       ],
+       [
+        4.9182794,
+        52.3519464
+       ],
+       [
+        4.9182716,
+        52.3519429
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.9181603,
+        52.3520457
+       ],
+       [
+        4.9180578,
+        52.3519995
+       ],
+       [
+        4.9181273,
+        52.3519416
+       ],
+       [
+        4.918222,
+        52.3519842
+       ],
+       [
+        4.9181725,
+        52.3520255
+       ],
+       [
+        4.9181803,
+        52.352029
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.918083,
+        52.3521001
+       ],
+       [
+        4.9179883,
+        52.3520575
+       ],
+       [
+        4.9180578,
+        52.3519995
+       ],
+       [
+        4.9181603,
+        52.3520457
+       ],
+       [
+        4.9181403,
+        52.3520623
+       ],
+       [
+        4.9181325,
+        52.3520588
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.9180216,
+        52.3521613
+       ],
+       [
+        4.917919,
+        52.3521152
+       ],
+       [
+        4.9179883,
+        52.3520575
+       ],
+       [
+        4.918083,
+        52.3521001
+       ],
+       [
+        4.9180335,
+        52.3521414
+       ],
+       [
+        4.9180413,
+        52.3521449
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.9179072,
+        52.3522114
+       ],
+       [
+        4.9179158,
+        52.3522041
+       ],
+       [
+        4.9178487,
+        52.3521739
+       ],
+       [
+        4.917919,
+        52.3521152
+       ],
+       [
+        4.9180216,
+        52.3521613
+       ],
+       [
+        4.9180013,
+        52.3521782
+       ],
+       [
+        4.9179935,
+        52.3521747
+       ],
+       [
+        4.9179346,
+        52.3522238
+       ]
+      ]
+     ]
+    ]
+   },
+   "pands": [
+    {
+     "recipeId": "vaalrivier-120724",
+     "pandId": "0363100012120724",
+     "buildingId": "NL.IMBAG.Pand.0363100012120724",
+     "address": "Vaalrivierstraat 12A",
+     "frontage": {
+      "x0": -20.105,
+      "x1": -12.096,
+      "widthM": 8.008
+     },
+     "bounds": {
+      "min": [
+       -20.113,
+       0,
+       -8.678
+      ],
+      "max": [
+       -11.975,
+       8.795,
+       0.565
+      ]
+     },
+     "triangles": 739,
+     "ranges": [
+      {
+       "primitive": 0,
+       "firstTriangle": 0,
+       "triangleCount": 72
+      },
+      {
+       "primitive": 4,
+       "firstTriangle": 0,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 0,
+       "triangleCount": 10
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 0,
+       "triangleCount": 504
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 0,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 0,
+       "triangleCount": 108
+      },
+      {
+       "primitive": 10,
+       "firstTriangle": 0,
+       "triangleCount": 2
+      },
+      {
+       "primitive": 11,
+       "firstTriangle": 0,
+       "triangleCount": 7
+      }
+     ]
+    },
+    {
+     "recipeId": "vaalrivier-090866",
+     "pandId": "0363100012090866",
+     "buildingId": "NL.IMBAG.Pand.0363100012090866",
+     "address": "Vaalrivierstraat 10A",
+     "frontage": {
+      "x0": -12.096,
+      "x1": -4.106,
+      "widthM": 7.991
+     },
+     "bounds": {
+      "min": [
+       -12.115,
+       0,
+       -8.523
+      ],
+      "max": [
+       -3.975,
+       8.585,
+       0.809
+      ]
+     },
+     "triangles": 734,
+     "ranges": [
+      {
+       "primitive": 0,
+       "firstTriangle": 72,
+       "triangleCount": 64
+      },
+      {
+       "primitive": 4,
+       "firstTriangle": 24,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 10,
+       "triangleCount": 10
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 504,
+       "triangleCount": 504
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 12,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 108,
+       "triangleCount": 108
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 0,
+       "triangleCount": 2
+      },
+      {
+       "primitive": 10,
+       "firstTriangle": 2,
+       "triangleCount": 8
+      },
+      {
+       "primitive": 11,
+       "firstTriangle": 7,
+       "triangleCount": 2
+      }
+     ]
+    },
+    {
+     "recipeId": "vaalrivier-108545",
+     "pandId": "0363100012108545",
+     "buildingId": "NL.IMBAG.Pand.0363100012108545",
+     "address": "Vaalrivierstraat 8A",
+     "frontage": {
+      "x0": -4.106,
+      "x1": 3.901,
+      "widthM": 8.007
+     },
+     "bounds": {
+      "min": [
+       -4.114,
+       0,
+       -8.434
+      ],
+      "max": [
+       4.023,
+       8.797,
+       0.809
+      ]
+     },
+     "triangles": 730,
+     "ranges": [
+      {
+       "primitive": 2,
+       "firstTriangle": 0,
+       "triangleCount": 62
+      },
+      {
+       "primitive": 4,
+       "firstTriangle": 48,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 20,
+       "triangleCount": 10
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 1008,
+       "triangleCount": 504
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 24,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 216,
+       "triangleCount": 108
+      },
+      {
+       "primitive": 10,
+       "firstTriangle": 10,
+       "triangleCount": 4
+      },
+      {
+       "primitive": 11,
+       "firstTriangle": 9,
+       "triangleCount": 6
+      }
+     ]
+    },
+    {
+     "recipeId": "vaalrivier-090850",
+     "pandId": "0363100012090850",
+     "buildingId": "NL.IMBAG.Pand.0363100012090850",
+     "address": "Vaalrivierstraat 6A",
+     "frontage": {
+      "x0": 3.901,
+      "x1": 11.863,
+      "widthM": 7.961
+     },
+     "bounds": {
+      "min": [
+       3.882,
+       0,
+       -8.312
+      ],
+      "max": [
+       11.995,
+       8.584,
+       1.045
+      ]
+     },
+     "triangles": 719,
+     "ranges": [
+      {
+       "primitive": 3,
+       "firstTriangle": 0,
+       "triangleCount": 52
+      },
+      {
+       "primitive": 4,
+       "firstTriangle": 72,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 30,
+       "triangleCount": 10
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 1512,
+       "triangleCount": 504
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 36,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 324,
+       "triangleCount": 108
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 2,
+       "triangleCount": 2
+      },
+      {
+       "primitive": 10,
+       "firstTriangle": 14,
+       "triangleCount": 5
+      },
+      {
+       "primitive": 11,
+       "firstTriangle": 15,
+       "triangleCount": 2
+      }
+     ]
+    },
+    {
+     "recipeId": "vaalrivier-137594",
+     "pandId": "0363100012137594",
+     "buildingId": "NL.IMBAG.Pand.0363100012137594",
+     "address": "Vaalrivierstraat 4A",
+     "frontage": {
+      "x0": 11.863,
+      "x1": 20.981,
+      "widthM": 9.119
+     },
+     "bounds": {
+      "min": [
+       11.855,
+       0,
+       -8.191
+      ],
+      "max": [
+       21.009,
+       8.767,
+       1.034
+      ]
+     },
+     "triangles": 750,
+     "ranges": [
+      {
+       "primitive": 1,
+       "firstTriangle": 0,
+       "triangleCount": 78
+      },
+      {
+       "primitive": 4,
+       "firstTriangle": 96,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 40,
+       "triangleCount": 10
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 2016,
+       "triangleCount": 504
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 48,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 432,
+       "triangleCount": 108
+      },
+      {
+       "primitive": 10,
+       "firstTriangle": 19,
+       "triangleCount": 7
+      },
+      {
+       "primitive": 11,
+       "firstTriangle": 17,
+       "triangleCount": 7
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "chunk-face-kraaipan-63-65",
+   "category": "street-survey",
+   "name": "face-kraaipan-63-65",
+   "modelUrl": "./models/ordinary-buildings/chunks/chunk-face-kraaipan-63-65.glb?asset=711045125f7f4d67",
+   "sha256": "711045125f7f4d67b683539ab1d217e40e0e261591ddf9894d913f68437fc16e",
+   "bytes": 109232,
+   "triangles": 1493,
+   "primitives": 10,
+   "instance": {
+    "anchor": [
+     4.918214740762408,
+     52.35163353243166
+    ],
+    "northOffsetDegrees": 143.3578,
+    "mirror": false
+   },
+   "bounds": {
+    "min": [
+     -8.201,
+     0,
+     -8.38
+    ],
+    "max": [
+     8.198,
+     8.557,
+     0.868
+    ]
+   },
+   "height": 8.557,
+   "suppress": [
+    "NL.IMBAG.Pand.0363100012108224",
+    "NL.IMBAG.Pand.0363100012145617"
+   ],
+   "replaces": [
+    "ordinary-0363100012108224",
+    "ordinary-0363100012145617"
+   ],
+   "footprint": {
+    "type": "MultiPolygon",
+    "coordinates": [
+     [
+      [
+       [
+        4.9183141,
+        52.351675
+       ],
+       [
+        4.9182451,
+        52.3516436
+       ],
+       [
+        4.9182393,
+        52.3516484
+       ],
+       [
+        4.9182118,
+        52.3516359
+       ],
+       [
+        4.9182876,
+        52.3515733
+       ],
+       [
+        4.9183841,
+        52.3516172
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.9182118,
+        52.3516359
+       ],
+       [
+        4.9181849,
+        52.3516237
+       ],
+       [
+        4.9181907,
+        52.3516189
+       ],
+       [
+        4.9181213,
+        52.3515874
+       ],
+       [
+        4.918191,
+        52.3515294
+       ],
+       [
+        4.9182876,
+        52.3515733
+       ]
+      ]
+     ]
+    ]
+   },
+   "pands": [
+    {
+     "recipeId": "kraaipan-108224",
+     "pandId": "0363100012108224",
+     "buildingId": "NL.IMBAG.Pand.0363100012108224",
+     "address": "Kraaipanstraat 63A",
+     "frontage": {
+      "x0": -8.185,
+      "x1": 0.006,
+      "widthM": 8.192
+     },
+     "bounds": {
+      "min": [
+       -8.201,
+       0,
+       -8.38
+      ],
+      "max": [
+       0.007,
+       8.36,
+       0.868
+      ]
+     },
+     "triangles": 744,
+     "ranges": [
+      {
+       "primitive": 1,
+       "firstTriangle": 0,
+       "triangleCount": 58
+      },
+      {
+       "primitive": 2,
+       "firstTriangle": 0,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 3,
+       "firstTriangle": 0,
+       "triangleCount": 10
+      },
+      {
+       "primitive": 4,
+       "firstTriangle": 0,
+       "triangleCount": 520
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 0,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 0,
+       "triangleCount": 112
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 0,
+       "triangleCount": 2
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 0,
+       "triangleCount": 6
+      }
+     ]
+    },
+    {
+     "recipeId": "kraaipan-145617",
+     "pandId": "0363100012145617",
+     "buildingId": "NL.IMBAG.Pand.0363100012145617",
+     "address": "Kraaipanstraat 65A",
+     "frontage": {
+      "x0": 0.006,
+      "x1": 8.173,
+      "widthM": 8.166
+     },
+     "bounds": {
+      "min": [
+       0.006,
+       0,
+       -8.38
+      ],
+      "max": [
+       8.198,
+       8.557,
+       0.864
+      ]
+     },
+     "triangles": 749,
+     "ranges": [
+      {
+       "primitive": 0,
+       "firstTriangle": 0,
+       "triangleCount": 79
+      },
+      {
+       "primitive": 2,
+       "firstTriangle": 24,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 3,
+       "firstTriangle": 10,
+       "triangleCount": 10
+      },
+      {
+       "primitive": 4,
+       "firstTriangle": 520,
+       "triangleCount": 504
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 12,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 112,
+       "triangleCount": 108
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 6,
+       "triangleCount": 1
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 0,
+       "triangleCount": 11
       }
      ]
     }
