@@ -1,0 +1,423 @@
+{
+ "note": "Round-3 auto-place records (commit 4b321579f, before the #156 lone-pand opt-in), trimmed to the fields lonePand.test.ts replays. The live records under scripts/block-face/faces/ now carry the opt-in.",
+ "faces": {
+  "transvaal-3-47": [
+   {
+    "pandId": "0363100012106051",
+    "address": "Transvaalstraat 3",
+    "widthM": 6.49,
+    "status": "held",
+    "stage": "likeness"
+   },
+   {
+    "pandId": "0363100012119703",
+    "address": "Transvaalstraat 5",
+    "widthM": 6.69,
+    "status": "held",
+    "stage": "likeness"
+   },
+   {
+    "pandId": "0363100012237385",
+    "address": "Transvaalstraat 7",
+    "widthM": 10.02,
+    "status": "held",
+    "stage": "likeness"
+   },
+   {
+    "pandId": "0363100012237327",
+    "address": "Transvaalstraat 11",
+    "widthM": 10.02,
+    "status": "held",
+    "stage": "likeness"
+   },
+   {
+    "pandId": "0363100012233613",
+    "address": "Transvaalstraat 15",
+    "widthM": 10.02,
+    "status": "held",
+    "stage": "likeness"
+   },
+   {
+    "pandId": "0363100012237070",
+    "address": "Transvaalstraat 19",
+    "widthM": 10.02,
+    "status": "held",
+    "stage": "likeness"
+   },
+   {
+    "pandId": "0363100012072312",
+    "address": "Transvaalstraat 25",
+    "widthM": 4.98,
+    "status": "held",
+    "stage": "match",
+    "bestType": "transvaal-1911-five-storey-tall"
+   },
+   {
+    "pandId": "0363100012084571",
+    "address": "Transvaalstraat 27",
+    "widthM": 5.03,
+    "status": "held",
+    "stage": "likeness"
+   },
+   {
+    "pandId": "0363100012149583",
+    "address": "Transvaalstraat 29",
+    "widthM": 4.98,
+    "status": "held",
+    "stage": "run"
+   },
+   {
+    "pandId": "0363100012108858",
+    "address": "Transvaalstraat 31",
+    "widthM": 5.03,
+    "status": "held",
+    "stage": "match",
+    "bestType": "transvaal-1911-five-storey-tall"
+   },
+   {
+    "pandId": "0363100012121884",
+    "address": "Transvaalstraat 33",
+    "widthM": 4.96,
+    "status": "held",
+    "stage": "match"
+   },
+   {
+    "pandId": "0363100012109266",
+    "address": "Transvaalstraat 35",
+    "widthM": 4.94,
+    "status": "held",
+    "stage": "match"
+   },
+   {
+    "pandId": "0363100012128319",
+    "address": "Transvaalstraat 37",
+    "widthM": 5.11,
+    "status": "held",
+    "stage": "run"
+   },
+   {
+    "pandId": "0363100012093192",
+    "address": "Transvaalstraat 39",
+    "widthM": 6.07,
+    "status": "held",
+    "stage": "review"
+   },
+   {
+    "pandId": "0363100012146296",
+    "address": "Transvaalstraat 41",
+    "widthM": 5.97,
+    "status": "held",
+    "stage": "review"
+   },
+   {
+    "pandId": "0363100012096110",
+    "address": "Transvaalstraat 43B",
+    "widthM": 5.97,
+    "status": "held",
+    "stage": "review"
+   },
+   {
+    "pandId": "0363100012140329",
+    "address": "Transvaalstraat 45A",
+    "widthM": 6.03,
+    "status": "held",
+    "stage": "review"
+   }
+  ],
+  "retief-45-75": [
+   {
+    "pandId": "0363100012068243",
+    "address": "Retiefstraat 45",
+    "widthM": 13.35,
+    "status": "held",
+    "stage": "match",
+    "bestType": "transvaal-1911-five-storey-tall"
+   },
+   {
+    "pandId": "0363100012123300",
+    "address": "Retiefstraat 47",
+    "widthM": 10.1,
+    "status": "held",
+    "stage": "likeness"
+   },
+   {
+    "pandId": "0363100012080801",
+    "address": "Retiefstraat 49",
+    "widthM": 7.39,
+    "status": "held",
+    "stage": "likeness"
+   },
+   {
+    "pandId": "0363100012133126",
+    "address": "Retiefstraat 51",
+    "widthM": 6.42,
+    "status": "held",
+    "stage": "review"
+   },
+   {
+    "pandId": "0363100012119451",
+    "address": "Retiefstraat 53",
+    "widthM": 6.2,
+    "status": "held",
+    "stage": "review"
+   },
+   {
+    "pandId": "0363100012105469",
+    "address": "Retiefstraat 55",
+    "widthM": 6.42,
+    "status": "held",
+    "stage": "likeness"
+   },
+   {
+    "pandId": "0363100012154435",
+    "address": "Retiefstraat 57",
+    "widthM": 5.95,
+    "status": "held",
+    "stage": "run"
+   },
+   {
+    "pandId": "0363100012136245",
+    "address": "Retiefstraat 59",
+    "widthM": 5.95,
+    "status": "held",
+    "stage": "likeness"
+   },
+   {
+    "pandId": "0363100012144201",
+    "address": "Retiefstraat 61",
+    "widthM": 5.95,
+    "status": "held",
+    "stage": "run"
+   },
+   {
+    "pandId": "0363100012092019",
+    "address": "Retiefstraat 63",
+    "widthM": 5.95,
+    "status": "held",
+    "stage": "likeness"
+   },
+   {
+    "pandId": "0363100012074312",
+    "address": "Retiefstraat 65A",
+    "widthM": 5.95,
+    "status": "held",
+    "stage": "likeness"
+   },
+   {
+    "pandId": "0363100012120175",
+    "address": "Retiefstraat 67B",
+    "widthM": 5.95,
+    "status": "held",
+    "stage": "likeness"
+   },
+   {
+    "pandId": "0363100012112323",
+    "address": "Retiefstraat 69C",
+    "widthM": 5.95,
+    "status": "placed",
+    "type": "transvaal-1911-five-storey",
+    "placementType": "transvaal-1911-five-storey"
+   },
+   {
+    "pandId": "0363100012129491",
+    "address": "Retiefstraat 71D",
+    "widthM": 6.49,
+    "status": "placed",
+    "type": "transvaal-1911-five-storey",
+    "placementType": "transvaal-1911-five-storey"
+   },
+   {
+    "pandId": "0363100012067013",
+    "address": "Retiefstraat 73A",
+    "widthM": 6.01,
+    "status": "placed",
+    "type": "transvaal-1911-five-storey-tall",
+    "placementType": "transvaal-1911-five-storey-tall"
+   },
+   {
+    "pandId": "0363100012138910",
+    "address": "Retiefstraat 75A",
+    "widthM": 5.5,
+    "status": "held",
+    "stage": "review"
+   }
+  ],
+  "hasebroek-1-41": [
+   {
+    "pandId": "0363100012165485",
+    "address": "Hasebroekstraat 1",
+    "widthM": 4.76,
+    "status": "placed",
+    "type": "bellamy-1904-balcony-axis",
+    "placementType": "bellamy-1904-balcony-axis"
+   },
+   {
+    "pandId": "0363100012152706",
+    "address": "Hasebroekstraat 3",
+    "widthM": 5.39,
+    "status": "placed",
+    "type": "bellamy-1904-balcony-axis",
+    "placementType": "bellamy-1904-balcony-axis"
+   },
+   {
+    "pandId": "0363100012153109",
+    "address": "Hasebroekstraat 5",
+    "widthM": 5.42,
+    "status": "placed",
+    "type": "bellamy-1904-balcony-axis",
+    "placementType": "bellamy-1904-balcony-axis"
+   },
+   {
+    "pandId": "0363100012160213",
+    "address": "Hasebroekstraat 7",
+    "widthM": 5.41,
+    "status": "placed",
+    "type": "bellamy-1904-balcony-axis",
+    "placementType": "bellamy-1904-balcony-axis"
+   },
+   {
+    "pandId": "0363100012153022",
+    "address": "Hasebroekstraat 9",
+    "widthM": 5.47,
+    "status": "held",
+    "stage": "likeness"
+   },
+   {
+    "pandId": "0363100012164250",
+    "address": "Hasebroekstraat 11",
+    "widthM": 5.43,
+    "status": "placed",
+    "type": "bellamy-1904-balcony-axis",
+    "placementType": "bellamy-1904-balcony-axis"
+   },
+   {
+    "pandId": "0363100012153107",
+    "address": "Hasebroekstraat 13",
+    "widthM": 5.51,
+    "status": "placed",
+    "type": "bellamy-1904-balcony-axis",
+    "placementType": "bellamy-1904-balcony-axis"
+   },
+   {
+    "pandId": "0363100012166233",
+    "address": "Hasebroekstraat 15",
+    "widthM": 5.39,
+    "status": "placed",
+    "type": "bellamy-1904-balcony-axis",
+    "placementType": "bellamy-1904-balcony-axis"
+   },
+   {
+    "pandId": "0363100012165183",
+    "address": "Hasebroekstraat 17",
+    "widthM": 5.4,
+    "status": "placed",
+    "type": "bellamy-1904-balcony-axis",
+    "placementType": "bellamy-1904-balcony-axis"
+   },
+   {
+    "pandId": "0363100012157271",
+    "address": "Hasebroekstraat 19",
+    "widthM": 5.41,
+    "status": "placed",
+    "type": "bellamy-1904-balcony-axis",
+    "placementType": "bellamy-1904-balcony-axis"
+   },
+   {
+    "pandId": "0363100012163274",
+    "address": "Hasebroekstraat 21",
+    "widthM": 5.28,
+    "status": "held",
+    "stage": "review"
+   },
+   {
+    "pandId": "0363100012157261",
+    "address": "Hasebroekstraat 23",
+    "widthM": 5.41,
+    "status": "held",
+    "stage": "review"
+   },
+   {
+    "pandId": "0363100012158415",
+    "address": "Hasebroekstraat 25",
+    "widthM": 5.36,
+    "status": "held",
+    "stage": "review"
+   },
+   {
+    "pandId": "0363100012159474",
+    "address": "Hasebroekstraat 27",
+    "widthM": 5.39,
+    "status": "held",
+    "stage": "run"
+   },
+   {
+    "pandId": "0363100012063580",
+    "address": "Hasebroekstraat 29",
+    "widthM": 5.48,
+    "status": "held",
+    "stage": "review"
+   },
+   {
+    "pandId": "0363100012161035",
+    "address": "Hasebroekstraat 31",
+    "widthM": 5.51,
+    "status": "held",
+    "stage": "review"
+   },
+   {
+    "pandId": "0363100012166561",
+    "address": "Hasebroekstraat 33",
+    "widthM": 5.47,
+    "status": "held",
+    "stage": "run"
+   },
+   {
+    "pandId": "0363100012157844",
+    "address": "Hasebroekstraat 35",
+    "widthM": 5.45,
+    "status": "held",
+    "stage": "review"
+   },
+   {
+    "pandId": "0363100012163671",
+    "address": "Hasebroekstraat 37",
+    "widthM": 5.56,
+    "status": "held",
+    "stage": "review"
+   }
+  ],
+  "bellamy-113-121": [
+   {
+    "pandId": "0363100012073911",
+    "address": "Bellamystraat 113",
+    "widthM": 16.68,
+    "status": "held",
+    "stage": "match",
+    "bestType": "bellamy-1895-plain-three-axis"
+   },
+   {
+    "pandId": "0363100012146466",
+    "address": "Bellamystraat 117",
+    "widthM": 6.86,
+    "status": "held",
+    "stage": "run"
+   },
+   {
+    "pandId": "0363100012115607",
+    "address": "Bellamystraat 119",
+    "widthM": 6.86,
+    "status": "held",
+    "stage": "match",
+    "bestType": "bellamy-1915-tile-bay"
+   },
+   {
+    "pandId": "0363100012069215",
+    "address": "Bellamystraat 121",
+    "widthM": 9.18,
+    "status": "held",
+    "stage": "match",
+    "bestType": "bellamy-1895-plain-three-axis"
+   }
+  ]
+ }
+}

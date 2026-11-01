@@ -1,7 +1,7 @@
 /**
  * The lone-pand opt-in (autoPlace.ts `TypeMatchRule.lonePand`, `lonePandReason`, `placedRuns`; #156): a placed pand
  * that is a run of one stands as a one-house face when its type opts in and its BAG frontage is 5 m or more. Replayed
- * on the committed auto-place records of two Bellamy faces (no type opts in: the same runs and holds as before) and two
+ * on the round-3 auto-place records (fixtures/lone-pand-round3-records.json) of two Bellamy faces (no type opts in: the same runs and holds as before) and two
  * Transvaalbuurt faces (Transvaalstraat 3-47: 37 at 5.11 m released, 29 at 4.98 m still held; Retiefstraat 45-75: 57
  * and 61 at 5.95 m released, the 69C-73A run unchanged).
  *   node --import tsx --test src/canalRecall/blockFace/lonePand.test.ts
@@ -13,8 +13,10 @@ import {lonePandReason, placedRuns, runIntent, type Decision, type MatchableType
 import {defaultTypeLoader} from './typeLibrary.ts';
 import {validateBlockFace} from './intent.ts';
 
-interface Rec { pandId: string; address: string; widthM: number; status: string; stage?: string; type?: string; placement?: {type: string}; best?: {type: string} }
-const records = (face: string): Rec[] => JSON.parse(fs.readFileSync(`scripts/block-face/faces/${face}/auto-place.json`, 'utf8')).pands;
+interface Rec { pandId: string; address: string; widthM: number; status: string; stage?: string; type?: string; placementType?: string; bestType?: string }
+// The round-3 records (before the opt-in): the live auto-place.json files now carry its placements.
+const FIXTURE = JSON.parse(fs.readFileSync(new URL('./fixtures/lone-pand-round3-records.json', import.meta.url), 'utf8'));
+const records = (face: string): Rec[] => FIXTURE.faces[face];
 const load = (id: string) => defaultTypeLoader(id) as MatchableType;
 
 /** The face's decisions before the run rule: placed pands and pands the run rule held are placed (with `typeId`), the rest held. */
@@ -23,7 +25,7 @@ function decisions(face: string, fallbackType: string): {ds: Decision[]; width: 
   const ds = records(face).map((r): Decision => {
     width.set(r.pandId, r.widthM);
     if (r.status === 'placed' || r.stage === 'run') {
-      const typeId = r.type ?? r.placement?.type ?? r.best?.type ?? fallbackType;
+      const typeId = r.type ?? r.placementType ?? r.bestType ?? fallbackType;
       return {kind: 'placed', pandId: r.pandId, typeId, score: 1, notes: [], house: {pandId: r.pandId, slug: `x-${r.pandId.slice(-6)}`, address: r.address, type: {type: typeId}, groundFloor: {use: 'residential', photoDate: '2023-01-02', agreement: 'bag-only'}, rhythm: {} as never}};
     }
     return {kind: 'held', pandId: r.pandId, address: r.address, stage: (r.stage ?? 'match') as 'match', reason: 'x'};
