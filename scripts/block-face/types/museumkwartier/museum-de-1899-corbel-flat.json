@@ -101,12 +101,22 @@
   "door-left": {
    "doorBay": 0,
    "basement": "none",
-   "note": "Cornelis Anthoniszstraat 66, Balthasar Floriszstraat 24: the house door with a transom on the left axis, two windows"
+   "note": "Cornelis Anthoniszstraat 66, Balthasar Floriszstraat 24: the house door with a transom on the left axis, two windows. Door reveal: Frans van Mierisstraat side of Anthonisz (160204) at -37/+43 deg: the door stands at the back of a plastered (cream-painted) vestibule, side wall 60 of 190 px at 37 deg and 85 of 205 px at 43 deg -> 0.5 m to the leaf on a 1.2 m opening; 158092 the same with a lit vestibule ceiling; no step.",
+   "doorReveal": {
+    "form": "portiek",
+    "deep": 0.6,
+    "jamb": "plaster"
+   }
   },
   "door-right": {
    "doorBay": 2,
    "basement": "none",
-   "note": "Cornelis Anthoniszstraat 64 and 68, Balthasar Floriszstraat 18: mirrored, the door on the right axis"
+   "note": "Cornelis Anthoniszstraat 64 and 68, Balthasar Floriszstraat 18: mirrored, the door on the right axis. Door reveal: Frans van Mierisstraat side of Anthonisz (160204) at -37/+43 deg: the door stands at the back of a plastered (cream-painted) vestibule, side wall 60 of 190 px at 37 deg and 85 of 205 px at 43 deg -> 0.5 m to the leaf on a 1.2 m opening; 158092 the same with a lit vestibule ceiling; no step.",
+   "doorReveal": {
+    "form": "portiek",
+    "deep": 0.6,
+    "jamb": "plaster"
+   }
   }
  },
  "palettes": {
@@ -162,6 +172,7 @@
   "the carved crest on the dormer pediment is not drawn"
  ],
  "notes": [
-  "Palette: placed pands take their own measured wall (auto-place measuredPalette); one brick per row from tree-free columns at install (lesson 10)."
+  "Palette: placed pands take their own measured wall (auto-place measuredPalette); one brick per row from tree-free columns at install (lesson 10).",
+  "Door reveal (#181, scripts/block-face/door-reveal-sheet.ts --photos: the panorama either side of the door, depth = visible jamb return / opening width x span / tan(view angle)): Frans van Mierisstraat side of Anthonisz (160204) at -37/+43 deg: the door stands at the back of a plastered (cream-painted) vestibule, side wall 60 of 190 px at 37 deg and 85 of 205 px at 43 deg -> 0.5 m to the leaf on a 1.2 m opening; 158092 the same with a lit vestibule ceiling; no step."
  ]
 }
