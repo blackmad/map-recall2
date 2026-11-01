@@ -176,7 +176,20 @@ export function offsetLine(points: readonly Vec2[], d: number): Vec2[] {
  */
 export const WAY_DECK_GROUP_M = 25;
 export function wayDeckGroups(ways: readonly WayDeckInput[], wet: (x: number, y: number) => boolean, claimed: (x: number, y: number) => boolean, ground?: (x: number, y: number) => number): { profiles: DeckProfile[]; covered: number[] } {
-  const crossing = ways.map(w => ({ w, p: wayDeckProfile(`OSM${w.id}`, w.name, w.points, w.halfWidth, wet, claimed, ground) })).filter(c => !!c.p) as { w: WayDeckInput; p: DeckProfile }[];
+  return groupWayDecks(ways.map(w => wayDeckCrossing(w, wet, claimed, ground)), wet, ground);
+}
+
+/** One way's deck profile for wayDeckGroups (null: it crosses no water, or a measured deck carries it). */
+export function wayDeckCrossing(w: WayDeckInput, wet: (x: number, y: number) => boolean, claimed: (x: number, y: number) => boolean, ground?: (x: number, y: number) => number): { w: WayDeckInput; p: DeckProfile | null } {
+  return { w, p: wayDeckProfile(`OSM${w.id}`, w.name, w.points, w.halfWidth, wet, claimed, ground) };
+}
+
+/**
+ * wayDeckGroups from the ways' profiles (wayDeckCrossing, in the ways' order): the page makes them one task each
+ * (groundStore placeWayDecks, #129) and groups them here.
+ */
+export function groupWayDecks(crossings: readonly { w: WayDeckInput; p: DeckProfile | null }[], wet: (x: number, y: number) => boolean, ground?: (x: number, y: number) => number): { profiles: DeckProfile[]; covered: number[] } {
+  const crossing = crossings.filter(c => !!c.p) as { w: WayDeckInput; p: DeckProfile }[];
   const mid = (p: DeckProfile): Vec2 => { const s = (p.water![0] + p.water![1]) / 2; const i = Math.max(0, p.s.findIndex(v => v >= s)); return [p.x[i], p.y[i]]; };
   const dir = (p: DeckProfile): Vec2 => { const n = p.x.length - 1, l = Math.hypot(p.x[n] - p.x[0], p.y[n] - p.y[0]) || 1; return [(p.x[n] - p.x[0]) / l, (p.y[n] - p.y[0]) / l]; };
   const used = new Set<number>(), profiles: DeckProfile[] = [], covered: number[] = [];

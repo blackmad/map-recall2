@@ -53,6 +53,8 @@ import { cutMesh, disposeTiles, growTileSpheres } from './rendererShared/tiledGe
 import { finishTiles, type PlannedTile } from './ownGround/cellTiles.js';
 import { MotionEstimate, aheadRank, lookAheadEnabled } from './streamingLookAhead.js';
 import { detailBlock, type DetailBlock } from './detailRing.js';
+import { worldCameraOf } from './engine/worldCameraOf.js';
+import type { WorldCamera } from './engine/worldViewApi.js';
 
 type BuildOptions = { surveyedEnvelopeData: EnvelopeTransport["envelopes"]; surveyedEnvelopeRevision: string; look: BuildingLook; streets?: Float32Array; profiles: readonly StreetAppearanceProfile[]; contextFeatures?: readonly Feature[]; appearanceRevision: string; hostOpenings: readonly ChunkHostOpeningConfig[]; hostOpeningRevision: string };
 
@@ -403,6 +405,9 @@ export class ThreeBuildings {
   private material: any;
   private renderer: any;
   private camera: any;
+  /** The view's zoom through the WorldCamera, not the CameraMap shim (P5 B6: getZoom was 82 calls/s). */
+  private worldCamera: WorldCamera | null = null;
+  private get view(): WorldCamera { return this.worldCamera ??= worldCameraOf(this.map); }
   private readonly chunks = new Map<string, { source: Feature[]; mesh: any; info: ChunkInfo; ranges: Map<string, { start: number; count: number }>; lift?: GroundLift }>();
   /** Click index per installed chunk, built on its first click (`prismPick.ts`). */
   private readonly pickIndex = new WeakMap<object, PrismEntry[]>();
@@ -764,7 +769,7 @@ export class ThreeBuildings {
   /** Only expose an attached gate after every resident host shell has its exact cut.
    * Source validation failure, pending work, lost context and inactive modes withhold it. */
   hostWallOpeningsVisible(configs: readonly Pick<ChunkHostOpeningConfig, 'hostIdentity'>[]): boolean {
-    if (!this.visible || !this.ready || this.look !== this.requestedLook || this.map.getZoom() < MIN_ZOOM || !configs.length) return false;
+    if (!this.visible || !this.ready || this.look !== this.requestedLook || this.view.zoom() < MIN_ZOOM || !configs.length) return false;
     for (const config of configs) {
       if (!this.hostWallOpenings.some(c => c.hostIdentity === config.hostIdentity)) return false;
       let resident = false;
@@ -1469,7 +1474,7 @@ export class ThreeBuildings {
 
   private refreshSurveyedRoofOwnership(): void {
     const ids = new Set<string>();
-    if (this.visible && this.ready && this.map.getZoom() > MIN_ZOOM) for (const entry of this.chunks.values()) if (entry.mesh)
+    if (this.visible && this.ready && this.view.zoom() > MIN_ZOOM) for (const entry of this.chunks.values()) if (entry.mesh)
       for (const id of entry.mesh.userData.boundParentIds ?? []) ids.add(id);
     const previous = this.map._surveyedEnvelopeRoofIds;
     if (previous && previous.length === ids.size && previous.every(id => ids.has(id))) return;
@@ -1572,9 +1577,9 @@ export class ThreeBuildings {
   /** Per-frame state shared by both paths; false when nothing should draw. */
   private prepareFrame(): boolean {
     this.refreshSurveyedRoofOwnership();
-    if (!this.visible || !this.ready || !this.scene || !this.chunks.size || this.map.getZoom() < MIN_ZOOM) return false;
+    if (!this.visible || !this.ready || !this.scene || !this.chunks.size || this.view.zoom() < MIN_ZOOM) return false;
     // One curve with the own ground and the shadows (overviewTransition/blend.ts); `?transition=0` keeps the old linear ramp.
-    const zoom = this.map.getZoom();
+    const zoom = this.view.zoom();
     // With the transition the buildings are present early (a short dither while they are still the footprint's
     // colour) and their colour comes in from the flat footprint tone over the whole window.
     const b = TRANSITION ? blendAtZoom(zoom) : 1;
@@ -1618,7 +1623,7 @@ export class ThreeBuildings {
   }
 
   /** Chunks still queued, building in the worker or staged for install; 0 when settled or not drawn at this zoom. */
-  get loadingCount(): number { return this.visible && this.map.getZoom() >= MIN_ZOOM ? this.pending.length + this.inflight.size + this.staged.length : 0; }
+  get loadingCount(): number { return this.visible && this.view.zoom() >= MIN_ZOOM ? this.pending.length + this.inflight.size + this.staged.length : 0; }
 
   /** Whether this layer draws through the shared frame. */
   get inSharedFrame(): boolean { return !!this.sharedFrame; }
