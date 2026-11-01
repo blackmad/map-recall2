@@ -3,6 +3,27 @@
   "notes": [
     {
       "date": "2026-11-02",
+      "title": "Roads now run across bridges",
+      "text": "Streets no longer break into a gap or a bare deck where they cross a canal; the road surface carries straight across the bridge, as on the aerial photo.",
+      "where": [
+        4.87202,
+        52.37132
+      ],
+      "images": [
+        {
+          "src": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/whats-new/2026-11-02-bridge-roads-de-clercqstraat.jpg",
+          "alt": "De Clercqstraat bridge: aerial photo, the road broken before, continuous after",
+          "caption": "Aerial photo | before | after. Luchtfoto: Beeldmateriaal Nederland (PDOK), CC BY 4.0"
+        },
+        {
+          "src": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/whats-new/2026-11-02-bridge-roads-strip.jpg",
+          "alt": "Six more bridges, photo, before and after",
+          "caption": "More bridges: photo | before | after"
+        }
+      ]
+    },
+    {
+      "date": "2026-11-02",
       "title": "The far city fades into haze",
       "text": "Distant streets now lose colour and detail toward the horizon, so the corridor ahead stands out, while landmarks such as the Westerkerk stay crisp.",
       "images": [

@@ -1,5 +1,27 @@
 # Canal Recall — what is built
 
+**Roads now run across bridges: the surveyed bridge-level road polygons are drawn on the deck and decks take their edges from the survey (2026-11-02, #178).**
+Road bridge-gaps lane (6625a6805, 74ec86c80, dc44ce4af). The measurement found
+two causes. First, 74 % of the non-road samples on bridges lay inside a roads-v1
+polygon at deck level that `roadSurfaces.ts` dropped, because its interior point
+was neither within a measured deck's half-width nor over water. Second, decks
+and roads took their widths from different sources. Step 1 draws a bridge-level
+survey polygon when at least 25 % of its area is on a deck; step 2 widens decks
+to the survey's deck-level edges. Both are on by default, with `?bridgeGaps=0`
+for the old build. City-wide carriageway gap over 2,919 bridge ways falls from
+237,068 to 205,941 m², and from 8,227 to 6,890 m² in the canal-belt box; De
+Clercqstraat, Bilderdijkstraat, Nauernaseweg, Kraaienplein and Van der Madeweg
+are continuous over the water on the orthophoto strips. Step 3 builds dry way
+decks for bridge ways over land and would take the gap to ~139,000 m², but the
+review rejected it as a default: slivers and hairline edges at Centraal bus
+station and the De Ruijterkade ramp, a narrow viaduct on Nieuwe Leeuwarderweg,
+the IJtunnel trench height, 58 regressions. It stays behind `?dryWayDecks=1`
+while the lane polishes it. Twelve named pins live in
+`scripts/roads/check-bridge-gaps.ts`, now `check:bridge-gaps` inside
+`check:canal` (~6 min). Own-ground triangles +0.1–0.5 % at the ride spots.
+Integrator: own-ground bundles rebuilt; lint, test:own-ground 231/231,
+test:engine 129/129. What's New note with the De Clercqstraat strip.
+
 **The far city fades into haze by default; catalogue landmarks stay crisp (2026-11-02, #161 lever 1).**
 Materials (9083203ff, on top of a37f977bc). The user asked how to make the chase-cam
 frame less busy; the busyness probe showed the far third of the frame carrying

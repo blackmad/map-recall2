@@ -334,13 +334,14 @@ strips on #161 for the user's verdict; open question: the lavender, teal and
 yellow fronts come from the Cartoon buildings palette itself and read random at
 chase-cam distance, a palette retune rather than a post-pass fix; then cel
 bands, outlines and a flat sky), road gaps at bridges
-(#178, opus lane `road-bridge-gaps-20261101`: measurement merged 2026-11-01,
-96c951790, HISTORY "Road gaps on bridges measured city-wide"; 1,293 of 2,418
-canal-scale bridge ways show ≥ 5 m² of carriageway gap; fixes approved behind
-`?bridgeGaps=0`: (1) one set of per-side, per-station deck widths for every
-consumer, (2) draw the bridge-level survey polygon on every deck, then (3) way
-decks over land under a survey bridge polygon once 1–2 are pinned; polder water
-levels out of scope),
+(#178, opus lane `road-bridge-gaps-20261101`: steps 1–2 merged on by default
+2026-11-02, dc44ce4af, HISTORY "Roads now run across bridges", city gap m²
+237,068 → 205,941; step 3, dry way decks over land, is behind `?dryWayDecks=1`
+until the lane fixes hairlines and slivers at Centraal bus station and the De
+Ruijterkade ramp, the narrow Nieuwe Leeuwarderweg viaduct, the IJtunnel trench
+height, deck ends and Westrandweg (with it the gap falls to ~139,000 m²); the
+five-spot world-v1-ab pins for steps 1–2 are owed from the integrator checkout;
+polder water levels out of scope),
 bumpy ground at Stationsplein / Centraal forecourt (AHN has no ground over the
 metro box and under the shed; fix = flatten the own ground to road level under
 road and plaza polygons; small lane after the flip). World compiler (#130,
