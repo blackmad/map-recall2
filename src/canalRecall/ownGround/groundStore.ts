@@ -559,7 +559,7 @@ export class GroundStore {
         Math.min(...profiles.map(p => p.bbox[0])) - reach, Math.min(...profiles.map(p => p.bbox[1])) - reach,
         Math.max(...profiles.map(p => p.bbox[2])) + reach, Math.max(...profiles.map(p => p.bbox[3])) + reach,
       ];
-      const index = new RoadIndex([null, ...cells], within);
+      const index = await RoadIndex.paced([null, ...cells], within, pace);
       await yieldToFrame();
       const onRoad = (x: number, y: number) => index.classAt(x, y, true) !== null;
       for (const profile of profiles) {
@@ -590,7 +590,7 @@ export class GroundStore {
       if (!open) continue;
       // The survey's deck-level polygons outline the bridge (wayDecks.ts deckEdgeSides); the opening's water is the cap.
       if (this.options.roads === true) {
-        if (!deckIndex) { deckIndex = new RoadIndex([null, ...await Promise.all(around.map(k => this.roadCell(k)))], deckWithin ?? undefined); await yieldToFrame(); }
+        if (!deckIndex) { deckIndex = await RoadIndex.paced([null, ...await Promise.all(around.map(k => this.roadCell(k)))], deckWithin ?? undefined, pace); await yieldToFrame(); }
         const idx = deckIndex, e = deckEdgeSides(profile, (x, y) => idx.onDeck(x, y), Math.max(...profile.halfWidth, ...open) + ROAD_EDGE_REACH_MAX_M);
         if (e[0] !== undefined || e[1] !== undefined) setDeckSides(profile, [e[0] ?? open[0], e[1] ?? open[1]]);
         else capDeckSides(profile, open);

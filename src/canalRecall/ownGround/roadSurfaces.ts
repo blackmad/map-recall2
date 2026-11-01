@@ -234,7 +234,11 @@ export const CROSSING_STRIP_MAX_M2 = 120;
 export const CROSS_EDGE_DEG = 30;
 export class RoadIndex extends SurfaceIndex<RoadSurface> {
   /** `within`: the neighbours' polygons only where the build can ask (the cell, its own ways' reach): earcut of the full 3×3 was a fifth of the roads cost. */
-  constructor(cells: readonly (RoadCell | null | undefined)[], within?: readonly [number, number, number, number]) { super(cells, () => true, within); }
+  constructor(cells: readonly (RoadCell | null | undefined)[], within?: readonly [number, number, number, number], deferred = false) { super(cells, () => true, within, deferred); }
+  /** The same index built a step per task (`pace` between steps). */
+  static paced(cells: readonly (RoadCell | null | undefined)[], within: readonly [number, number, number, number] | undefined, pace: () => Promise<void>): Promise<RoadIndex> {
+    return SurfaceIndex.pacedSteps(new RoadIndex(cells, within, true), pace);
+  }
 
   /** Meshes the runtime overrides (parkingIslands): polygon id → mesh. */
   private readonly meshOver = new Map<number, RoadMesh>();
