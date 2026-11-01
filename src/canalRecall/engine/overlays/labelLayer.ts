@@ -9,6 +9,7 @@
 // Plus the game's own point labels: the just-answered street name (drawn on
 // the road ahead, as answeredStreetNameLayer did) and the ferry landings.
 
+import { framePhases } from '../framePhases';
 import { placeLabels, drawPlacedLabels, type LabelCandidate, type LabelKind, type LabelPaint, type PlacedLabel } from '../../ownMap/labels';
 import { neighbourhoodLabelVisible, poiLabelVisible, streetLabelVisible, type LabelContext } from '../../ownMap/labelPolicy';
 import { interpolateStops, STREET_STYLE } from '../../ownMap/style';
@@ -143,11 +144,15 @@ export class LabelLayer {
     let resized = false;
     if (this.canvas.width !== w) { this.canvas.width = w; resized = true; }
     if (this.canvas.height !== h) { this.canvas.height = h; resized = true; }
+    const phases = framePhases();
+    let pt = phases ? performance.now() : 0;
+    const lap = (name: string) => { if (!phases) return; const t = performance.now(); phases.add(`labels: ${name}`, t - pt); pt = t; };
     const policy = this.visible ? this.policy() : null;
     if (policy) {
       const key = `${policy.hiddenName}|${policy.quizQuiet}|${(policy as { revision?: unknown }).revision ?? ''}|${this.pois.length}|${!!this.data}`;
       if (key !== this.ctxKey) { this.ctxKey = key; this.rebuild(policy); this.rev++; }
     }
+    lap('policy and rebuild');
     const rev = this.visible ? this.rev : -2;
     // A still camera and unchanged inputs: the canvas already holds this frame.
     if (!resized && pose && this.drawnPose && rev === this.drawnRev && samePose(pose, this.drawnPose)) { this.stats.skipped++; return; }
@@ -175,7 +180,9 @@ export class LabelLayer {
     let candidates = full ? [...seen] : [...seen].filter(c => this.winners.has(c.id));
     const original = new Map(candidates.map(c => [c.id, c] as const));
     const shifted = (list: LabelCandidate[]) => list.map(c => { const at = this.drawAt.get(c.id); return at && c.at ? { ...c, at } : c; });
+    lap(full ? 'collect (full)' : 'collect');
     this.placed = placeLabels(this.occludedTest ? shifted(candidates) : candidates, options);
+    lap(full ? 'place (full)' : 'place');
     // Occlusion (full placements only): test the POIs that won, drop the hidden ones and place again, so the tests
     // cost a few dozen sightlines, not every candidate in view. Only POI points from the map are tested: the
     // game's own points (priority >= 1e6: the answered street, ferry landings, the destination) and the draped
@@ -240,6 +247,7 @@ export class LabelLayer {
       this.stats.betweenMs += performance.now() - t0; this.stats.betweenSightlines += spent;
       if (due.length) this.placed = this.placed.filter(l => this.winners.has(l.id) && !this.hiddenCopies.has(keys.get(l)!));
     }
+    lap(full ? 'occlusion (full)' : 'occlusion (between)');
     if (full) {
       const ms = performance.now() - now;
       this.stats.fullMs += ms; this.stats.lastFullMs = ms; this.stats.occluded = occluded;
@@ -249,6 +257,7 @@ export class LabelLayer {
     } else this.stats.winnersOnly++;
     this.ctx.setTransform(ratio, 0, 0, ratio, 0, 0);
     drawPlacedLabels(this.ctx, this.placed, LABEL_PAINT);
+    lap('paint');
   }
 }
 
