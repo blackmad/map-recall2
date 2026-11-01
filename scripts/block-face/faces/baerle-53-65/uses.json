@@ -1,0 +1,164 @@
+{
+ "street": "Van Baerlestraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-01T16:40:28.353Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012166538",
+   "addresses": [
+    "Van Baerlestraat 53"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Baerlestraat 53-H",
+     "use": "winkelfunctie",
+     "areaM2": 108,
+     "bagId": "0363010000834823"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012237213",
+   "addresses": [
+    "Van Baerlestraat 55",
+    "Van Baerlestraat 57"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Baerlestraat 55-H",
+     "use": "winkelfunctie",
+     "areaM2": 145,
+     "bagId": "0363010000834827"
+    },
+    {
+     "address": "Van Baerlestraat 57-H",
+     "use": "woonfunctie",
+     "areaM2": 144,
+     "bagId": "0363010000979773"
+    },
+    {
+     "address": "Van Baerlestraat 57-O",
+     "use": "gezondheidszorgfunctie",
+     "areaM2": 122,
+     "bagId": "0363010000979774"
+    }
+   ],
+   "units": 9,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012166495",
+   "addresses": [
+    "Van Baerlestraat 59"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Baerlestraat 59-H",
+     "use": "woonfunctie",
+     "areaM2": 159,
+     "bagId": "0363010000834838"
+    },
+    {
+     "address": "Van Baerlestraat 59-O",
+     "use": "kantoorfunctie",
+     "areaM2": 39,
+     "bagId": "0363010000834839"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012161109",
+   "addresses": [
+    "Van Baerlestraat 61"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Baerlestraat 61-H",
+     "use": "bijeenkomstfunctie,woonfunctie",
+     "areaM2": 66,
+     "bagId": "0363010000834841"
+    }
+   ],
+   "units": 2,
+   "osm": [
+    {
+     "type": "node",
+     "id": 14214526101,
+     "lngLat": [
+      4.8810398,
+      52.355072
+     ],
+     "tags": {
+      "addr:housenumber": "61-HS",
+      "addr:postcode": "1071AR",
+      "addr:street": "Van Baerlestraat",
+      "amenity": "restaurant",
+      "name": "Sita Indiaas en Nepalees"
+     },
+     "fetchedAt": "2026-11-01T16:40:28.353Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012156833",
+   "addresses": [
+    "Van Baerlestraat 63"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Baerlestraat 63-H",
+     "use": "winkelfunctie",
+     "areaM2": 148,
+     "bagId": "0363010000834846"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012163472",
+   "addresses": [
+    "Van Baerlestraat 65",
+    "Van Baerlestraat 65A",
+    "Van Baerlestraat 65B",
+    "Van Baerlestraat 65C"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Baerlestraat 65-H",
+     "use": "winkelfunctie",
+     "areaM2": 138,
+     "bagId": "0363010000834850"
+    },
+    {
+     "address": "Van Baerlestraat 65A",
+     "use": "woonfunctie",
+     "areaM2": 79,
+     "bagId": "0363010012119071"
+    },
+    {
+     "address": "Van Baerlestraat 65B",
+     "use": "woonfunctie",
+     "areaM2": 70,
+     "bagId": "0363010012119072"
+    },
+    {
+     "address": "Van Baerlestraat 65C",
+     "use": "woonfunctie",
+     "areaM2": 145,
+     "bagId": "0363010012119073"
+    }
+   ],
+   "units": 8,
+   "osm": []
+  }
+ ]
+}

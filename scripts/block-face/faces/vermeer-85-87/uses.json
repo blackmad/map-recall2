@@ -1,0 +1,61 @@
+{
+ "street": "Johannes Vermeerstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-01T15:56:36.602Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012133971",
+   "addresses": [
+    "Johannes Vermeerstraat 85"
+   ],
+   "groundUnits": [
+    {
+     "address": "Johannes Vermeerstraat 85-H",
+     "use": "woonfunctie",
+     "areaM2": 118,
+     "bagId": "0363010000694496"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012076833",
+   "addresses": [
+    "Johannes Vermeerstraat 87"
+   ],
+   "groundUnits": [
+    {
+     "address": "Johannes Vermeerstraat 87-H",
+     "use": "woonfunctie",
+     "areaM2": 223,
+     "bagId": "0363010000694500"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 4742191874,
+     "lngLat": [
+      4.8849884,
+      52.3544248
+     ],
+     "tags": {
+      "amenity": "charging_station",
+      "capacity": "2",
+      "operator": "NUON",
+      "operator:wikidata": "Q513830",
+      "operator:wikipedia": "nl:Vattenfall Nederland",
+      "socket:type2": "2"
+     },
+     "fetchedAt": "2026-11-01T15:56:36.602Z",
+     "match": "frontage",
+     "distanceM": 6.7
+    }
+   ]
+  }
+ ]
+}

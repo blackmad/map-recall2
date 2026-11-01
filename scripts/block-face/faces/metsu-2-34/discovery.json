@@ -1,0 +1,1384 @@
+{
+ "street": "Gabriël Metsustraat",
+ "seed": "0363100012166937",
+ "members": [
+  "0363100012237262",
+  "0363100012142717",
+  "0363100012100160",
+  "0363100012233633",
+  "0363100012236941",
+  "0363100012166937"
+ ],
+ "ends": [
+  {
+   "side": "left",
+   "reason": "trimmed at 0363100012237262 (face continues: 087993 107822 121498 072599 063157 142048 125850)"
+  },
+  {
+   "side": "right",
+   "reason": "no further pand fronts the street in the fetched area"
+  }
+ ],
+ "rejected": [
+  {
+   "pandId": "0363100012062764",
+   "reason": "frontage 123.4 m from Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012063128",
+   "reason": "no frontage on Gabriël Metsustraat: No footprint edge faces Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012064242",
+   "reason": "no frontage on Gabriël Metsustraat: No footprint edge faces Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012068221",
+   "reason": "frontage 47.1 m from Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012075211",
+   "reason": "no frontage on Gabriël Metsustraat: No footprint edge faces Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012076752",
+   "reason": "frontage 47.6 m from Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012077283",
+   "reason": "no frontage on Gabriël Metsustraat: No footprint edge faces Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012078861",
+   "reason": "frontage 133.4 m from Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012079583",
+   "reason": "frontage 73.3 m from Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012089113",
+   "reason": "no frontage on Gabriël Metsustraat: No footprint edge faces Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012091903",
+   "reason": "frontage 115.6 m from Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012092773",
+   "reason": "frontage 77.3 m from Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012093896",
+   "reason": "no frontage on Gabriël Metsustraat: No footprint edge faces Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012094774",
+   "reason": "frontage 109.7 m from Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012094867",
+   "reason": "no frontage on Gabriël Metsustraat: No footprint edge faces Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012069411",
+   "reason": "frontage 113.3 m from Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012070992",
+   "reason": "frontage 46.7 m from Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012076024",
+   "reason": "frontage 67.9 m from Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012078650",
+   "reason": "frontage 122.4 m from Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012080119",
+   "reason": "frontage 60.2 m from Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012082824",
+   "reason": "no frontage on Gabriël Metsustraat: No footprint edge faces Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012094824",
+   "reason": "frontage 131.5 m from Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012063908",
+   "reason": "frontage 134.1 m from Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012064720",
+   "reason": "no frontage on Gabriël Metsustraat: No footprint edge faces Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012065378",
+   "reason": "frontage 136.3 m from Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012068043",
+   "reason": "no frontage on Gabriël Metsustraat: No footprint edge faces Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012068545",
+   "reason": "no frontage on Gabriël Metsustraat: No footprint edge faces Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012070429",
+   "reason": "frontage 179.0 m from Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012070697",
+   "reason": "frontage 192.5 m from Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012073782",
+   "reason": "frontage 186.6 m from Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012074664",
+   "reason": "no frontage on Gabriël Metsustraat: No footprint edge faces Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012077169",
+   "reason": "no frontage on Gabriël Metsustraat: No footprint edge faces Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012077408",
+   "reason": "no frontage on Gabriël Metsustraat: No footprint edge faces Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012078941",
+   "reason": "no frontage on Gabriël Metsustraat: No footprint edge faces Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012079390",
+   "reason": "no frontage on Gabriël Metsustraat: No footprint edge faces Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012083474",
+   "reason": "no frontage on Gabriël Metsustraat: No footprint edge faces Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012084446",
+   "reason": "frontage 181.5 m from Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012086954",
+   "reason": "no frontage on Gabriël Metsustraat: No footprint edge faces Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012089720",
+   "reason": "frontage 145.1 m from Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012090555",
+   "reason": "no frontage on Gabriël Metsustraat: No footprint edge faces Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012090723",
+   "reason": "no frontage on Gabriël Metsustraat: No footprint edge faces Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012062753",
+   "reason": "sightline to Gabriël Metsustraat crosses 0363100012217582"
+  },
+  {
+   "pandId": "0363100012079958",
+   "reason": "frontage 55.9 m from Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012084204",
+   "reason": "no frontage on Gabriël Metsustraat: No footprint edge faces Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012085631",
+   "reason": "no frontage on Gabriël Metsustraat: No footprint edge faces Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012098227",
+   "reason": "frontage 105.2 m from Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012100965",
+   "reason": "frontage 111.7 m from Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012101245",
+   "reason": "no frontage on Gabriël Metsustraat: No footprint edge faces Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012102526",
+   "reason": "frontage 158.4 m from Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012105580",
+   "reason": "frontage 91.9 m from Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012106456",
+   "reason": "frontage 133.0 m from Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012108712",
+   "reason": "no frontage on Gabriël Metsustraat: No footprint edge faces Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012109324",
+   "reason": "no frontage on Gabriël Metsustraat: No footprint edge faces Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012109538",
+   "reason": "frontage 97.3 m from Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012111240",
+   "reason": "frontage 70.3 m from Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012111419",
+   "reason": "no frontage on Gabriël Metsustraat: No footprint edge faces Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012113503",
+   "reason": "frontage 44.5 m from Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012118275",
+   "reason": "frontage 152.2 m from Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012119364",
+   "reason": "frontage 41.8 m from Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012096166",
+   "reason": "no frontage on Gabriël Metsustraat: No footprint edge faces Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012099460",
+   "reason": "frontage 47.2 m from Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012108862",
+   "reason": "no frontage on Gabriël Metsustraat: No footprint edge faces Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012111241",
+   "reason": "frontage 47.2 m from Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012111913",
+   "reason": "frontage 48.6 m from Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012113779",
+   "reason": "frontage 48.7 m from Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012095505",
+   "reason": "no frontage on Gabriël Metsustraat: No footprint edge faces Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012097766",
+   "reason": "frontage 144.0 m from Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012099034",
+   "reason": "frontage 82.3 m from Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012099898",
+   "reason": "frontage 150.9 m from Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012102212",
+   "reason": "frontage 160.9 m from Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012102603",
+   "reason": "frontage 128.6 m from Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012105454",
+   "reason": "no frontage on Gabriël Metsustraat: No footprint edge faces Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012107749",
+   "reason": "no frontage on Gabriël Metsustraat: No footprint edge faces Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012108114",
+   "reason": "no frontage on Gabriël Metsustraat: No footprint edge faces Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012110888",
+   "reason": "frontage 148.7 m from Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012111893",
+   "reason": "no frontage on Gabriël Metsustraat: No footprint edge faces Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012113371",
+   "reason": "frontage 105.3 m from Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012114665",
+   "reason": "no frontage on Gabriël Metsustraat: No footprint edge faces Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012116072",
+   "reason": "frontage 121.8 m from Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012116424",
+   "reason": "no frontage on Gabriël Metsustraat: No footprint edge faces Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012099107",
+   "reason": "frontage 90.9 m from Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012107845",
+   "reason": "frontage 34.7 m from Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012109321",
+   "reason": "no frontage on Gabriël Metsustraat: No footprint edge faces Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012110232",
+   "reason": "frontage 42.0 m from Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012111009",
+   "reason": "frontage 57.4 m from Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012111932",
+   "reason": "no frontage on Gabriël Metsustraat: No footprint edge faces Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012112954",
+   "reason": "frontage 38.5 m from Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012113999",
+   "reason": "no frontage on Gabriël Metsustraat: No footprint edge faces Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012114637",
+   "reason": "frontage 172.6 m from Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012114773",
+   "reason": "no frontage on Gabriël Metsustraat: No footprint edge faces Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012116189",
+   "reason": "frontage 71.1 m from Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012121101",
+   "reason": "frontage 98.9 m from Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012124029",
+   "reason": "frontage 139.2 m from Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012125531",
+   "reason": "no frontage on Gabriël Metsustraat: No footprint edge faces Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012125734",
+   "reason": "frontage 104.5 m from Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012125930",
+   "reason": "no frontage on Gabriël Metsustraat: No footprint edge faces Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012127220",
+   "reason": "frontage 106.7 m from Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012128474",
+   "reason": "frontage 47.2 m from Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012132153",
+   "reason": "frontage 76.0 m from Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012136011",
+   "reason": "frontage 112.3 m from Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012136626",
+   "reason": "frontage 71.6 m from Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012140135",
+   "reason": "frontage 47.2 m from Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012142362",
+   "reason": "frontage 117.8 m from Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012142608",
+   "reason": "frontage 84.6 m from Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012149513",
+   "reason": "frontage 119.4 m from Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012150151",
+   "reason": "no frontage on Gabriël Metsustraat: No footprint edge faces Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012120516",
+   "reason": "frontage 47.1 m from Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012123673",
+   "reason": "frontage 125.6 m from Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012127043",
+   "reason": "frontage 114.4 m from Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012129366",
+   "reason": "frontage 67.2 m from Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012131367",
+   "reason": "frontage 86.0 m from Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012132257",
+   "reason": "frontage 77.5 m from Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012132314",
+   "reason": "frontage 96.0 m from Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012132812",
+   "reason": "frontage 44.8 m from Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012137088",
+   "reason": "frontage 77.6 m from Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012138332",
+   "reason": "frontage 48.9 m from Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012138687",
+   "reason": "frontage 95.5 m from Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012143018",
+   "reason": "frontage 167.6 m from Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012144606",
+   "reason": "frontage 104.5 m from Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012119761",
+   "reason": "frontage 167.6 m from Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012124673",
+   "reason": "frontage 152.4 m from Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012126652",
+   "reason": "frontage 138.9 m from Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012129521",
+   "reason": "no frontage on Gabriël Metsustraat: No footprint edge faces Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012130657",
+   "reason": "frontage 198.7 m from Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012136992",
+   "reason": "frontage 179.7 m from Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012138486",
+   "reason": "frontage 156.4 m from Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012138798",
+   "reason": "no frontage on Gabriël Metsustraat: No footprint edge faces Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012142783",
+   "reason": "no frontage on Gabriël Metsustraat: No footprint edge faces Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012144118",
+   "reason": "frontage 170.4 m from Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012145801",
+   "reason": "frontage 80.9 m from Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012147718",
+   "reason": "frontage 173.4 m from Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012150328",
+   "reason": "no frontage on Gabriël Metsustraat: No footprint edge faces Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012138066",
+   "reason": "frontage 189.5 m from Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012145556",
+   "reason": "frontage 66.4 m from Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012147731",
+   "reason": "frontage 48.5 m from Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012150046",
+   "reason": "frontage 93.0 m from Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012154818",
+   "reason": "frontage 149.6 m from Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012155921",
+   "reason": "no frontage on Gabriël Metsustraat: No footprint edge faces Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012151883",
+   "reason": "frontage 106.2 m from Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012152369",
+   "reason": "frontage 73.0 m from Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012152419",
+   "reason": "frontage 118.3 m from Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012152420",
+   "reason": "frontage 112.6 m from Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012152528",
+   "reason": "frontage 50.9 m from Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012152809",
+   "reason": "frontage 179.9 m from Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012153603",
+   "reason": "frontage 55.5 m from Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012155644",
+   "reason": "frontage 165.5 m from Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012155817",
+   "reason": "frontage 140.4 m from Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012156011",
+   "reason": "frontage 131.9 m from Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012156247",
+   "reason": "frontage 155.1 m from Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012156464",
+   "reason": "frontage 184.7 m from Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012156524",
+   "reason": "no frontage on Gabriël Metsustraat: No footprint edge faces Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012157795",
+   "reason": "frontage 159.6 m from Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012150854",
+   "reason": "frontage 82.1 m from Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012151501",
+   "reason": "no frontage on Gabriël Metsustraat: No footprint edge faces Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012151751",
+   "reason": "no frontage on Gabriël Metsustraat: No footprint edge faces Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012152284",
+   "reason": "frontage 182.8 m from Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012152362",
+   "reason": "no frontage on Gabriël Metsustraat: No footprint edge faces Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012152421",
+   "reason": "no frontage on Gabriël Metsustraat: No footprint edge faces Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012152723",
+   "reason": "frontage 198.5 m from Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012152818",
+   "reason": "frontage 106.0 m from Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012152819",
+   "reason": "frontage 111.8 m from Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012153148",
+   "reason": "frontage 115.4 m from Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012153747",
+   "reason": "no frontage on Gabriël Metsustraat: No footprint edge faces Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012153904",
+   "reason": "no frontage on Gabriël Metsustraat: No footprint edge faces Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012154402",
+   "reason": "no frontage on Gabriël Metsustraat: No footprint edge faces Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012155183",
+   "reason": "frontage 162.2 m from Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012155454",
+   "reason": "no frontage on Gabriël Metsustraat: No footprint edge faces Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012155779",
+   "reason": "frontage 118.8 m from Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012155888",
+   "reason": "frontage 165.3 m from Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012155939",
+   "reason": "no frontage on Gabriël Metsustraat: No footprint edge faces Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012156358",
+   "reason": "no frontage on Gabriël Metsustraat: No footprint edge faces Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012156419",
+   "reason": "no frontage on Gabriël Metsustraat: No footprint edge faces Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012156478",
+   "reason": "no frontage on Gabriël Metsustraat: No footprint edge faces Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012156566",
+   "reason": "frontage 145.0 m from Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012156622",
+   "reason": "frontage 99.9 m from Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012156757",
+   "reason": "frontage 168.3 m from Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012156833",
+   "reason": "no frontage on Gabriël Metsustraat: No footprint edge faces Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012156834",
+   "reason": "frontage 172.2 m from Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012157088",
+   "reason": "frontage 177.4 m from Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012157229",
+   "reason": "no frontage on Gabriël Metsustraat: No footprint edge faces Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012157286",
+   "reason": "no frontage on Gabriël Metsustraat: No footprint edge faces Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012157533",
+   "reason": "no frontage on Gabriël Metsustraat: No footprint edge faces Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012157703",
+   "reason": "frontage 195.1 m from Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012157775",
+   "reason": "frontage 142.5 m from Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012158132",
+   "reason": "no frontage on Gabriël Metsustraat: No footprint edge faces Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012154971",
+   "reason": "frontage 73.4 m from Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012161910",
+   "reason": "no frontage on Gabriël Metsustraat: No footprint edge faces Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012158336",
+   "reason": "frontage 129.2 m from Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012158337",
+   "reason": "frontage 123.7 m from Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012158647",
+   "reason": "frontage 134.2 m from Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012158803",
+   "reason": "frontage 103.5 m from Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012158807",
+   "reason": "frontage 154.0 m from Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012159344",
+   "reason": "no frontage on Gabriël Metsustraat: No footprint edge faces Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012159529",
+   "reason": "frontage 47.7 m from Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012159779",
+   "reason": "frontage 46.6 m from Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012160266",
+   "reason": "frontage 136.4 m from Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012160565",
+   "reason": "frontage 38.5 m from Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012160790",
+   "reason": "frontage 97.8 m from Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012160817",
+   "reason": "frontage 148.8 m from Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012163593",
+   "reason": "frontage 108.1 m from Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012163704",
+   "reason": "sightline to Gabriël Metsustraat crosses 0363100012237149"
+  },
+  {
+   "pandId": "0363100012163789",
+   "reason": "frontage 61.3 m from Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012163880",
+   "reason": "sightline to Gabriël Metsustraat crosses 0363100012163704"
+  },
+  {
+   "pandId": "0363100012158182",
+   "reason": "frontage 112.2 m from Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012158222",
+   "reason": "no frontage on Gabriël Metsustraat: No footprint edge faces Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012158419",
+   "reason": "frontage 196.5 m from Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012158521",
+   "reason": "frontage 185.9 m from Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012158546",
+   "reason": "frontage 138.6 m from Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012158828",
+   "reason": "frontage 140.0 m from Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012159254",
+   "reason": "no frontage on Gabriël Metsustraat: No footprint edge faces Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012159337",
+   "reason": "no frontage on Gabriël Metsustraat: No footprint edge faces Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012160058",
+   "reason": "no frontage on Gabriël Metsustraat: No footprint edge faces Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012160354",
+   "reason": "no frontage on Gabriël Metsustraat: No footprint edge faces Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012160362",
+   "reason": "no frontage on Gabriël Metsustraat: No footprint edge faces Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012160498",
+   "reason": "frontage 130.7 m from Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012160611",
+   "reason": "frontage 154.9 m from Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012160621",
+   "reason": "no frontage on Gabriël Metsustraat: No footprint edge faces Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012160657",
+   "reason": "frontage 166.6 m from Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012160736",
+   "reason": "no frontage on Gabriël Metsustraat: No footprint edge faces Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012160976",
+   "reason": "no frontage on Gabriël Metsustraat: No footprint edge faces Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012161109",
+   "reason": "no frontage on Gabriël Metsustraat: No footprint edge faces Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012161263",
+   "reason": "frontage 193.5 m from Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012161495",
+   "reason": "frontage 136.2 m from Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012161545",
+   "reason": "no frontage on Gabriël Metsustraat: No footprint edge faces Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012161636",
+   "reason": "no frontage on Gabriël Metsustraat: No footprint edge faces Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012161919",
+   "reason": "no frontage on Gabriël Metsustraat: No footprint edge faces Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012161951",
+   "reason": "frontage 179.9 m from Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012161969",
+   "reason": "no frontage on Gabriël Metsustraat: No footprint edge faces Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012162581",
+   "reason": "no frontage on Gabriël Metsustraat: No footprint edge faces Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012162777",
+   "reason": "no frontage on Gabriël Metsustraat: No footprint edge faces Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012163118",
+   "reason": "no frontage on Gabriël Metsustraat: No footprint edge faces Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012163219",
+   "reason": "frontage 158.2 m from Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012163247",
+   "reason": "no frontage on Gabriël Metsustraat: No footprint edge faces Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012163345",
+   "reason": "frontage 174.7 m from Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012163472",
+   "reason": "no frontage on Gabriël Metsustraat: No footprint edge faces Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012163646",
+   "reason": "no frontage on Gabriël Metsustraat: No footprint edge faces Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012207258",
+   "reason": "frontage 131.5 m from Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012164237",
+   "reason": "no frontage on Gabriël Metsustraat: No footprint edge faces Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012164458",
+   "reason": "frontage 175.6 m from Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012164612",
+   "reason": "no frontage on Gabriël Metsustraat: No footprint edge faces Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012164614",
+   "reason": "frontage 132.7 m from Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012164633",
+   "reason": "frontage 170.3 m from Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012164862",
+   "reason": "no frontage on Gabriël Metsustraat: No footprint edge faces Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012164883",
+   "reason": "frontage 88.4 m from Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012165479",
+   "reason": "frontage 93.3 m from Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012165797",
+   "reason": "frontage 125.6 m from Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012165798",
+   "reason": "no frontage on Gabriël Metsustraat: No footprint edge faces Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012165890",
+   "reason": "frontage 160.0 m from Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012165960",
+   "reason": "frontage 32.4 m from Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012166010",
+   "reason": "frontage 119.2 m from Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012166099",
+   "reason": "frontage 147.5 m from Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012166436",
+   "reason": "frontage 104.6 m from Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012166880",
+   "reason": "frontage 142.2 m from Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012166994",
+   "reason": "frontage 113.1 m from Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012167023",
+   "reason": "frontage 162.5 m from Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012167076",
+   "reason": "no frontage on Gabriël Metsustraat: No footprint edge faces Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012167167",
+   "reason": "frontage 174.2 m from Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012194430",
+   "reason": "frontage 37.0 m from Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012205068",
+   "reason": "frontage 36.9 m from Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012207314",
+   "reason": "frontage 36.8 m from Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012164318",
+   "reason": "frontage 151.7 m from Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012164391",
+   "reason": "no frontage on Gabriël Metsustraat: No footprint edge faces Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012164394",
+   "reason": "frontage 118.5 m from Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012164431",
+   "reason": "frontage 79.4 m from Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012165301",
+   "reason": "frontage 192.0 m from Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012165520",
+   "reason": "frontage 142.8 m from Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012166032",
+   "reason": "frontage 145.8 m from Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012166179",
+   "reason": "no frontage on Gabriël Metsustraat: No footprint edge faces Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012166495",
+   "reason": "no frontage on Gabriël Metsustraat: No footprint edge faces Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012166510",
+   "reason": "frontage 200.7 m from Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012166538",
+   "reason": "frontage 82.6 m from Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012166563",
+   "reason": "no frontage on Gabriël Metsustraat: No footprint edge faces Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012166607",
+   "reason": "frontage 109.2 m from Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012167007",
+   "reason": "no frontage on Gabriël Metsustraat: No footprint edge faces Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012167160",
+   "reason": "frontage 170.3 m from Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012187040",
+   "reason": "frontage 164.7 m from Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012191238",
+   "reason": "no frontage on Gabriël Metsustraat: No footprint edge faces Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012196840",
+   "reason": "no frontage on Gabriël Metsustraat: No footprint edge faces Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012217232",
+   "reason": "frontage 82.5 m from Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012219640",
+   "reason": "frontage 125.7 m from Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012220484",
+   "reason": "no frontage on Gabriël Metsustraat: No footprint edge faces Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012207262",
+   "reason": "frontage 51.0 m from Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012214752",
+   "reason": "frontage 163.8 m from Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012220878",
+   "reason": "frontage 52.0 m from Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012236724",
+   "reason": "frontage 145.0 m from Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012228575",
+   "reason": "frontage 169.9 m from Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012228732",
+   "reason": "no frontage on Gabriël Metsustraat: No footprint edge faces Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012233435",
+   "reason": "frontage 37.0 m from Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012233618",
+   "reason": "frontage 138.9 m from Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012234991",
+   "reason": "no frontage on Gabriël Metsustraat: No footprint edge faces Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012235978",
+   "reason": "no frontage on Gabriël Metsustraat: No footprint edge faces Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012236205",
+   "reason": "frontage 155.9 m from Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012236207",
+   "reason": "frontage 51.7 m from Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012236579",
+   "reason": "frontage 49.6 m from Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012236923",
+   "reason": "frontage 181.8 m from Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012237012",
+   "reason": "frontage 106.2 m from Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012237228",
+   "reason": "frontage 189.7 m from Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012251805",
+   "reason": "frontage 133.5 m from Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012233691",
+   "reason": "frontage 159.9 m from Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012235968",
+   "reason": "frontage 231.0 m from Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012236106",
+   "reason": "no frontage on Gabriël Metsustraat: No footprint edge faces Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012236193",
+   "reason": "frontage 192.6 m from Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012236344",
+   "reason": "frontage 189.2 m from Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012236564",
+   "reason": "no frontage on Gabriël Metsustraat: No footprint edge faces Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012236620",
+   "reason": "no frontage on Gabriël Metsustraat: No footprint edge faces Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012236672",
+   "reason": "frontage 196.1 m from Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012236781",
+   "reason": "frontage 124.1 m from Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012237088",
+   "reason": "no frontage on Gabriël Metsustraat: No footprint edge faces Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012237099",
+   "reason": "no frontage on Gabriël Metsustraat: No footprint edge faces Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012237213",
+   "reason": "frontage 82.6 m from Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012237303",
+   "reason": "no frontage on Gabriël Metsustraat: No footprint edge faces Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012249642",
+   "reason": "frontage 221.5 m from Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012233427",
+   "reason": "frontage 137.6 m from Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012233484",
+   "reason": "frontage 86.4 m from Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012571600",
+   "reason": "frontage 137.4 m from Gabriël Metsustraat"
+  },
+  {
+   "pandId": "0363100012074466",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012076064",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012100351",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012115557",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012126152",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012217582",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012233575",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012237149",
+   "reason": "fronts the other side / another direction"
+  }
+ ],
+ "areaHalfSizeM": 180,
+ "pands": [
+  {
+   "pandId": "0363100012237262",
+   "alongM": -114.54,
+   "widthM": 9.46,
+   "eavesM": 7.27,
+   "roofMaxM": 18.13,
+   "storeys3dbag": 3,
+   "builtYear": 1913,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012142717",
+   "alongM": -74.92,
+   "widthM": 28.55,
+   "eavesM": 12.46,
+   "roofMaxM": 19.55,
+   "storeys3dbag": 0,
+   "builtYear": 1909,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012100160",
+   "alongM": -57,
+   "widthM": 7.29,
+   "eavesM": 14.59,
+   "roofMaxM": 18.67,
+   "storeys3dbag": 5,
+   "builtYear": 1911,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012233633",
+   "alongM": -49.71,
+   "widthM": 7.29,
+   "eavesM": 14.36,
+   "roofMaxM": 17.74,
+   "storeys3dbag": 5,
+   "builtYear": 1911,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012236941",
+   "alongM": -30.39,
+   "widthM": 31.34,
+   "eavesM": 8.35,
+   "roofMaxM": 17.46,
+   "storeys3dbag": 0,
+   "builtYear": 1907,
+   "uncertainty": [
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  },
+  {
+   "pandId": "0363100012166937",
+   "alongM": 0,
+   "widthM": 29.44,
+   "eavesM": 11.19,
+   "roofMaxM": 15.68,
+   "storeys3dbag": 0,
+   "builtYear": 1900,
+   "uncertainty": [
+    "Other ground polygons were not joined; disconnected or separately surveyed frontage may remain.",
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  }
+ ]
+}

@@ -1,0 +1,1538 @@
+{
+ "street": "Moreelsestraat",
+ "seed": "0363100012236579",
+ "members": [
+  "0363100012236579",
+  "0363100012070992",
+  "0363100012113779",
+  "0363100012111913",
+  "0363100012138332",
+  "0363100012111241",
+  "0363100012099460",
+  "0363100012120516",
+  "0363100012159779",
+  "0363100012132812"
+ ],
+ "ends": [
+  {
+   "side": "left",
+   "reason": "trimmed at 0363100012236579 (face continues: 236207)"
+  },
+  {
+   "side": "right",
+   "reason": "trimmed at 0363100012132812 (face continues: 128474)"
+  }
+ ],
+ "rejected": [
+  {
+   "pandId": "0363100012062764",
+   "reason": "frontage 71.5 m from Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012064242",
+   "reason": "no frontage on Moreelsestraat: No footprint edge faces Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012068221",
+   "reason": "no frontage on Moreelsestraat: No footprint edge faces Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012075211",
+   "reason": "no frontage on Moreelsestraat: No footprint edge faces Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012076752",
+   "reason": "frontage 65.4 m from Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012077283",
+   "reason": "frontage 35.5 m from Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012078861",
+   "reason": "frontage 68.6 m from Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012079583",
+   "reason": "frontage 76.0 m from Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012089113",
+   "reason": "frontage 59.1 m from Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012069411",
+   "reason": "no frontage on Moreelsestraat: No footprint edge faces Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012072116",
+   "reason": "no frontage on Moreelsestraat: No footprint edge faces Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012076024",
+   "reason": "frontage 74.4 m from Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012078650",
+   "reason": "no frontage on Moreelsestraat: No footprint edge faces Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012080119",
+   "reason": "no frontage on Moreelsestraat: No footprint edge faces Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012082824",
+   "reason": "no frontage on Moreelsestraat: No footprint edge faces Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012061243",
+   "reason": "frontage 186.6 m from Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012063908",
+   "reason": "frontage 112.9 m from Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012064720",
+   "reason": "sightline to Moreelsestraat crosses 0363100012095505"
+  },
+  {
+   "pandId": "0363100012065378",
+   "reason": "frontage 134.1 m from Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012066027",
+   "reason": "frontage 187.3 m from Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012068043",
+   "reason": "no frontage on Moreelsestraat: No footprint edge faces Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012068545",
+   "reason": "frontage 95.2 m from Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012070429",
+   "reason": "frontage 164.4 m from Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012070697",
+   "reason": "frontage 165.4 m from Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012073782",
+   "reason": "frontage 159.0 m from Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012074664",
+   "reason": "frontage 127.0 m from Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012075285",
+   "reason": "frontage 201.2 m from Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012077169",
+   "reason": "frontage 101.4 m from Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012077408",
+   "reason": "frontage 35.8 m from Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012077874",
+   "reason": "frontage 115.1 m from Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012078941",
+   "reason": "frontage 63.1 m from Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012079390",
+   "reason": "frontage 93.7 m from Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012083474",
+   "reason": "frontage 69.1 m from Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012084446",
+   "reason": "frontage 152.9 m from Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012086954",
+   "reason": "frontage 146.4 m from Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012089090",
+   "reason": "frontage 195.5 m from Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012089211",
+   "reason": "frontage 120.4 m from Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012089720",
+   "reason": "frontage 126.0 m from Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012090555",
+   "reason": "frontage 57.2 m from Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012062753",
+   "reason": "frontage 110.0 m from Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012063157",
+   "reason": "frontage 55.4 m from Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012072599",
+   "reason": "frontage 57.9 m from Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012074466",
+   "reason": "frontage 102.6 m from Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012076064",
+   "reason": "frontage 112.9 m from Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012079958",
+   "reason": "frontage 142.0 m from Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012084204",
+   "reason": "frontage 55.0 m from Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012085631",
+   "reason": "frontage 39.2 m from Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012087993",
+   "reason": "frontage 70.8 m from Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012091903",
+   "reason": "frontage 77.7 m from Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012092773",
+   "reason": "no frontage on Moreelsestraat: No footprint edge faces Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012093896",
+   "reason": "frontage 46.6 m from Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012094774",
+   "reason": "no frontage on Moreelsestraat: No footprint edge faces Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012094867",
+   "reason": "frontage 69.7 m from Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012098227",
+   "reason": "frontage 31.3 m from Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012100965",
+   "reason": "frontage 33.8 m from Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012101245",
+   "reason": "sightline to Moreelsestraat crosses 0363100012064242"
+  },
+  {
+   "pandId": "0363100012102526",
+   "reason": "frontage 93.1 m from Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012105172",
+   "reason": "frontage 123.3 m from Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012105580",
+   "reason": "frontage 41.8 m from Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012106456",
+   "reason": "frontage 108.6 m from Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012108712",
+   "reason": "sightline to Moreelsestraat crosses 0363100012064242"
+  },
+  {
+   "pandId": "0363100012109324",
+   "reason": "no frontage on Moreelsestraat: No footprint edge faces Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012109538",
+   "reason": "frontage 34.6 m from Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012111419",
+   "reason": "no frontage on Moreelsestraat: No footprint edge faces Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012113503",
+   "reason": "frontage 71.3 m from Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012094824",
+   "reason": "frontage 175.8 m from Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012096166",
+   "reason": "no frontage on Moreelsestraat: No footprint edge faces Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012100160",
+   "reason": "frontage 43.0 m from Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012108862",
+   "reason": "no frontage on Moreelsestraat: No footprint edge faces Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012090723",
+   "reason": "frontage 139.9 m from Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012095505",
+   "reason": "sightline to Moreelsestraat crosses 0363100012111419"
+  },
+  {
+   "pandId": "0363100012097766",
+   "reason": "frontage 142.3 m from Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012099898",
+   "reason": "frontage 132.8 m from Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012102212",
+   "reason": "frontage 160.0 m from Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012102603",
+   "reason": "frontage 106.9 m from Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012105454",
+   "reason": "frontage 120.6 m from Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012107749",
+   "reason": "frontage 100.3 m from Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012108114",
+   "reason": "frontage 81.1 m from Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012110320",
+   "reason": "no frontage on Moreelsestraat: No footprint edge faces Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012110888",
+   "reason": "no frontage on Moreelsestraat: No footprint edge faces Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012111893",
+   "reason": "frontage 133.5 m from Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012113371",
+   "reason": "frontage 43.7 m from Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012114665",
+   "reason": "frontage 87.1 m from Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012099107",
+   "reason": "frontage 176.6 m from Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012100351",
+   "reason": "frontage 94.0 m from Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012107822",
+   "reason": "no frontage on Moreelsestraat: No footprint edge faces Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012107845",
+   "reason": "frontage 121.1 m from Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012109321",
+   "reason": "frontage 72.4 m from Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012110232",
+   "reason": "frontage 128.2 m from Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012111009",
+   "reason": "frontage 139.9 m from Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012111932",
+   "reason": "frontage 45.4 m from Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012112954",
+   "reason": "frontage 121.4 m from Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012113999",
+   "reason": "frontage 65.7 m from Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012118275",
+   "reason": "frontage 105.8 m from Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012121101",
+   "reason": "frontage 33.5 m from Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012124029",
+   "reason": "frontage 68.6 m from Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012125531",
+   "reason": "no frontage on Moreelsestraat: No footprint edge faces Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012125734",
+   "reason": "sightline to Moreelsestraat crosses 0363100012063128"
+  },
+  {
+   "pandId": "0363100012125930",
+   "reason": "frontage 51.3 m from Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012132153",
+   "reason": "frontage 64.4 m from Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012136011",
+   "reason": "frontage 81.8 m from Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012136354",
+   "reason": "frontage 121.6 m from Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012136626",
+   "reason": "frontage 71.0 m from Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012139185",
+   "reason": "frontage 104.3 m from Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012140135",
+   "reason": "no frontage on Moreelsestraat: No footprint edge faces Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012142362",
+   "reason": "frontage 37.2 m from Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012142608",
+   "reason": "no frontage on Moreelsestraat: No footprint edge faces Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012123673",
+   "reason": "frontage 122.1 m from Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012127043",
+   "reason": "frontage 118.9 m from Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012129366",
+   "reason": "no frontage on Moreelsestraat: No footprint edge faces Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012131367",
+   "reason": "frontage 92.9 m from Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012132257",
+   "reason": "frontage 83.7 m from Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012132314",
+   "reason": "frontage 101.0 m from Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012137088",
+   "reason": "frontage 39.4 m from Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012138687",
+   "reason": "no frontage on Moreelsestraat: No footprint edge faces Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012142717",
+   "reason": "frontage 40.5 m from Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012116072",
+   "reason": "frontage 41.5 m from Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012116424",
+   "reason": "frontage 107.5 m from Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012119761",
+   "reason": "frontage 151.8 m from Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012120761",
+   "reason": "frontage 126.6 m from Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012124673",
+   "reason": "frontage 151.1 m from Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012126652",
+   "reason": "frontage 119.5 m from Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012129521",
+   "reason": "frontage 162.3 m from Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012130657",
+   "reason": "frontage 171.6 m from Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012132021",
+   "reason": "no frontage on Moreelsestraat: No footprint edge faces Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012135196",
+   "reason": "frontage 170.2 m from Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012136992",
+   "reason": "frontage 170.4 m from Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012138486",
+   "reason": "frontage 139.1 m from Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012138798",
+   "reason": "frontage 75.1 m from Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012138937",
+   "reason": "frontage 178.6 m from Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012142783",
+   "reason": "frontage 114.0 m from Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012144118",
+   "reason": "frontage 168.3 m from Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012114773",
+   "reason": "frontage 32.7 m from Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012115557",
+   "reason": "frontage 105.5 m from Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012116189",
+   "reason": "frontage 153.7 m from Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012121498",
+   "reason": "frontage 61.1 m from Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012125850",
+   "reason": "frontage 51.8 m from Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012126152",
+   "reason": "frontage 109.0 m from Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012142048",
+   "reason": "frontage 53.5 m from Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012149513",
+   "reason": "frontage 74.2 m from Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012150151",
+   "reason": "frontage 39.1 m from Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012154818",
+   "reason": "frontage 72.0 m from Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012155921",
+   "reason": "frontage 75.4 m from Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012144606",
+   "reason": "no frontage on Moreelsestraat: No footprint edge faces Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012151883",
+   "reason": "frontage 109.0 m from Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012152419",
+   "reason": "frontage 209.6 m from Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012152420",
+   "reason": "frontage 204.0 m from Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012152528",
+   "reason": "no frontage on Moreelsestraat: No footprint edge faces Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012153603",
+   "reason": "no frontage on Moreelsestraat: No footprint edge faces Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012155817",
+   "reason": "frontage 231.9 m from Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012156011",
+   "reason": "frontage 221.8 m from Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012156247",
+   "reason": "frontage 244.2 m from Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012156524",
+   "reason": "frontage 198.9 m from Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012145801",
+   "reason": "frontage 45.4 m from Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012147718",
+   "reason": "frontage 158.2 m from Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012150328",
+   "reason": "sightline to Moreelsestraat crosses 0363100012063128"
+  },
+  {
+   "pandId": "0363100012151501",
+   "reason": "frontage 51.2 m from Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012151751",
+   "reason": "frontage 40.8 m from Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012152284",
+   "reason": "no frontage on Moreelsestraat: No footprint edge faces Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012152362",
+   "reason": "frontage 146.6 m from Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012152421",
+   "reason": "frontage 75.0 m from Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012152723",
+   "reason": "frontage 126.9 m from Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012152818",
+   "reason": "no frontage on Moreelsestraat: No footprint edge faces Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012152819",
+   "reason": "frontage 37.5 m from Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012153148",
+   "reason": "frontage 66.6 m from Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012153747",
+   "reason": "no frontage on Moreelsestraat: No footprint edge faces Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012153904",
+   "reason": "frontage 88.9 m from Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012154211",
+   "reason": "no frontage on Moreelsestraat: No footprint edge faces Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012154402",
+   "reason": "no frontage on Moreelsestraat: No footprint edge faces Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012155183",
+   "reason": "frontage 145.7 m from Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012155395",
+   "reason": "no frontage on Moreelsestraat: No footprint edge faces Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012155454",
+   "reason": "no frontage on Moreelsestraat: No footprint edge faces Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012155476",
+   "reason": "no frontage on Moreelsestraat: No footprint edge faces Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012155755",
+   "reason": "no frontage on Moreelsestraat: No footprint edge faces Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012155779",
+   "reason": "frontage 72.3 m from Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012155888",
+   "reason": "frontage 88.8 m from Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012155939",
+   "reason": "no frontage on Moreelsestraat: No footprint edge faces Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012156358",
+   "reason": "frontage 134.3 m from Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012156419",
+   "reason": "frontage 159.7 m from Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012156478",
+   "reason": "frontage 78.0 m from Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012156566",
+   "reason": "no frontage on Moreelsestraat: No footprint edge faces Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012156622",
+   "reason": "no frontage on Moreelsestraat: No footprint edge faces Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012156757",
+   "reason": "frontage 94.9 m from Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012145556",
+   "reason": "frontage 152.3 m from Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012147731",
+   "reason": "frontage 134.8 m from Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012150046",
+   "reason": "frontage 180.5 m from Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012154971",
+   "reason": "frontage 159.1 m from Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012157795",
+   "reason": "frontage 249.1 m from Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012158336",
+   "reason": "frontage 220.7 m from Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012158337",
+   "reason": "frontage 215.2 m from Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012158647",
+   "reason": "frontage 225.7 m from Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012158803",
+   "reason": "frontage 192.2 m from Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012159344",
+   "reason": "frontage 202.0 m from Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012159529",
+   "reason": "sightline to Moreelsestraat crosses 0363100012236207"
+  },
+  {
+   "pandId": "0363100012160266",
+   "reason": "frontage 221.7 m from Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012160565",
+   "reason": "frontage 40.0 m from Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012160790",
+   "reason": "frontage 188.9 m from Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012160817",
+   "reason": "frontage 233.7 m from Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012156833",
+   "reason": "no frontage on Moreelsestraat: No footprint edge faces Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012156834",
+   "reason": "frontage 103.9 m from Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012156856",
+   "reason": "frontage 128.6 m from Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012156857",
+   "reason": "frontage 131.8 m from Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012157088",
+   "reason": "no frontage on Moreelsestraat: No footprint edge faces Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012157229",
+   "reason": "no frontage on Moreelsestraat: No footprint edge faces Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012157286",
+   "reason": "frontage 96.1 m from Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012157533",
+   "reason": "no frontage on Moreelsestraat: No footprint edge faces Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012157703",
+   "reason": "frontage 120.8 m from Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012157775",
+   "reason": "no frontage on Moreelsestraat: No footprint edge faces Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012157890",
+   "reason": "no frontage on Moreelsestraat: No footprint edge faces Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012158132",
+   "reason": "frontage 140.8 m from Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012158182",
+   "reason": "frontage 61.0 m from Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012158222",
+   "reason": "frontage 47.5 m from Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012158419",
+   "reason": "frontage 123.5 m from Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012158521",
+   "reason": "no frontage on Moreelsestraat: No footprint edge faces Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012158538",
+   "reason": "no frontage on Moreelsestraat: No footprint edge faces Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012158546",
+   "reason": "no frontage on Moreelsestraat: No footprint edge faces Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012158591",
+   "reason": "frontage 153.3 m from Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012158828",
+   "reason": "no frontage on Moreelsestraat: No footprint edge faces Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012159001",
+   "reason": "no frontage on Moreelsestraat: No footprint edge faces Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012159254",
+   "reason": "frontage 83.5 m from Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012159337",
+   "reason": "frontage 52.0 m from Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012159717",
+   "reason": "no frontage on Moreelsestraat: No footprint edge faces Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012159835",
+   "reason": "no frontage on Moreelsestraat: No footprint edge faces Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012160058",
+   "reason": "frontage 122.2 m from Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012160354",
+   "reason": "frontage 178.3 m from Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012160362",
+   "reason": "frontage 78.5 m from Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012160498",
+   "reason": "frontage 53.7 m from Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012160611",
+   "reason": "frontage 100.6 m from Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012160621",
+   "reason": "no frontage on Moreelsestraat: No footprint edge faces Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012160657",
+   "reason": "frontage 91.6 m from Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012160736",
+   "reason": "frontage 116.3 m from Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012160741",
+   "reason": "no frontage on Moreelsestraat: No footprint edge faces Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012160830",
+   "reason": "frontage 148.6 m from Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012160976",
+   "reason": "frontage 89.9 m from Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012161109",
+   "reason": "no frontage on Moreelsestraat: No footprint edge faces Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012161158",
+   "reason": "frontage 214.6 m from Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012161477",
+   "reason": "frontage 212.2 m from Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012163593",
+   "reason": "frontage 199.4 m from Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012163704",
+   "reason": "frontage 58.8 m from Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012163789",
+   "reason": "no frontage on Moreelsestraat: No footprint edge faces Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012163880",
+   "reason": "frontage 52.4 m from Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012163884",
+   "reason": "frontage 253.3 m from Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012164237",
+   "reason": "frontage 193.2 m from Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012164612",
+   "reason": "frontage 190.7 m from Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012164614",
+   "reason": "frontage 217.3 m from Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012164862",
+   "reason": "frontage 196.0 m from Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012164883",
+   "reason": "frontage 178.9 m from Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012165479",
+   "reason": "frontage 181.6 m from Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012165797",
+   "reason": "frontage 215.4 m from Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012165798",
+   "reason": "frontage 34.2 m from Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012165960",
+   "reason": "frontage 46.1 m from Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012166010",
+   "reason": "frontage 208.9 m from Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012166436",
+   "reason": "frontage 188.2 m from Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012161263",
+   "reason": "frontage 117.8 m from Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012161495",
+   "reason": "frontage 58.0 m from Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012161545",
+   "reason": "frontage 128.2 m from Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012161636",
+   "reason": "frontage 165.8 m from Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012161919",
+   "reason": "frontage 171.8 m from Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012161951",
+   "reason": "no frontage on Moreelsestraat: No footprint edge faces Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012161969",
+   "reason": "frontage 70.6 m from Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012162581",
+   "reason": "no frontage on Moreelsestraat: No footprint edge faces Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012162777",
+   "reason": "no frontage on Moreelsestraat: No footprint edge faces Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012163118",
+   "reason": "frontage 111.0 m from Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012163219",
+   "reason": "frontage 105.6 m from Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012163247",
+   "reason": "no frontage on Moreelsestraat: No footprint edge faces Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012163345",
+   "reason": "no frontage on Moreelsestraat: No footprint edge faces Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012163472",
+   "reason": "no frontage on Moreelsestraat: No footprint edge faces Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012163646",
+   "reason": "frontage 152.9 m from Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012164245",
+   "reason": "frontage 161.5 m from Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012164318",
+   "reason": "no frontage on Moreelsestraat: No footprint edge faces Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012164391",
+   "reason": "frontage 82.0 m from Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012164394",
+   "reason": "frontage 42.8 m from Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012165301",
+   "reason": "frontage 115.1 m from Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012165520",
+   "reason": "frontage 64.8 m from Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012165662",
+   "reason": "no frontage on Moreelsestraat: No footprint edge faces Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012166032",
+   "reason": "no frontage on Moreelsestraat: No footprint edge faces Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012166167",
+   "reason": "frontage 150.7 m from Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012166179",
+   "reason": "no frontage on Moreelsestraat: No footprint edge faces Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012166268",
+   "reason": "no frontage on Moreelsestraat: No footprint edge faces Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012166495",
+   "reason": "no frontage on Moreelsestraat: No footprint edge faces Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012166510",
+   "reason": "no frontage on Moreelsestraat: No footprint edge faces Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012166563",
+   "reason": "no frontage on Moreelsestraat: No footprint edge faces Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012166607",
+   "reason": "frontage 55.5 m from Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012207258",
+   "reason": "frontage 107.2 m from Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012236724",
+   "reason": "frontage 70.0 m from Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012236860",
+   "reason": "frontage 111.5 m from Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012236928",
+   "reason": "frontage 119.7 m from Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012166880",
+   "reason": "frontage 227.4 m from Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012166937",
+   "reason": "frontage 31.0 m from Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012166994",
+   "reason": "frontage 202.4 m from Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012167023",
+   "reason": "frontage 247.0 m from Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012167076",
+   "reason": "frontage 205.4 m from Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012194430",
+   "reason": "frontage 32.1 m from Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012205068",
+   "reason": "frontage 32.1 m from Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012207314",
+   "reason": "frontage 32.1 m from Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012228732",
+   "reason": "frontage 223.7 m from Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012233435",
+   "reason": "frontage 113.2 m from Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012233575",
+   "reason": "frontage 90.9 m from Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012233618",
+   "reason": "frontage 228.8 m from Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012233633",
+   "reason": "frontage 42.2 m from Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012234991",
+   "reason": "frontage 174.9 m from Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012235978",
+   "reason": "frontage 46.2 m from Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012236205",
+   "reason": "frontage 240.4 m from Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012236941",
+   "reason": "frontage 35.8 m from Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012166772",
+   "reason": "no frontage on Moreelsestraat: No footprint edge faces Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012167007",
+   "reason": "frontage 101.1 m from Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012167160",
+   "reason": "frontage 98.7 m from Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012167193",
+   "reason": "no frontage on Moreelsestraat: No footprint edge faces Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012187040",
+   "reason": "frontage 121.0 m from Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012191238",
+   "reason": "no frontage on Moreelsestraat: No footprint edge faces Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012196840",
+   "reason": "frontage 174.6 m from Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012219640",
+   "reason": "no frontage on Moreelsestraat: No footprint edge faces Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012220484",
+   "reason": "no frontage on Moreelsestraat: No footprint edge faces Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012233447",
+   "reason": "frontage 109.4 m from Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012233691",
+   "reason": "frontage 84.1 m from Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012235968",
+   "reason": "frontage 198.4 m from Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012236025",
+   "reason": "frontage 158.7 m from Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012236106",
+   "reason": "frontage 115.3 m from Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012236193",
+   "reason": "no frontage on Moreelsestraat: No footprint edge faces Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012236344",
+   "reason": "no frontage on Moreelsestraat: No footprint edge faces Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012236509",
+   "reason": "frontage 156.0 m from Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012236564",
+   "reason": "no frontage on Moreelsestraat: No footprint edge faces Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012236620",
+   "reason": "frontage 147.1 m from Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012236672",
+   "reason": "no frontage on Moreelsestraat: No footprint edge faces Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012236781",
+   "reason": "frontage 47.1 m from Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012207262",
+   "reason": "frontage 133.5 m from Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012217582",
+   "reason": "frontage 99.7 m from Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012220878",
+   "reason": "frontage 134.6 m from Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012233427",
+   "reason": "frontage 221.7 m from Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012233484",
+   "reason": "frontage 168.8 m from Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012237204",
+   "reason": "frontage 117.9 m from Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012237324",
+   "reason": "frontage 120.3 m from Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012237012",
+   "reason": "frontage 173.3 m from Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012237149",
+   "reason": "frontage 65.3 m from Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012237262",
+   "reason": "frontage 35.7 m from Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012237088",
+   "reason": "frontage 152.2 m from Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012237099",
+   "reason": "frontage 157.3 m from Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012237179",
+   "reason": "frontage 192.0 m from Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012237303",
+   "reason": "frontage 77.5 m from Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012249642",
+   "reason": "frontage 194.7 m from Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012571600",
+   "reason": "frontage 219.8 m from Moreelsestraat"
+  },
+  {
+   "pandId": "0363100012063128",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012099034",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012152369",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012150854",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012161910",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012164431",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012166538",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012217232",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012237213",
+   "reason": "fronts the other side / another direction"
+  }
+ ],
+ "areaHalfSizeM": 180,
+ "pands": [
+  {
+   "pandId": "0363100012236579",
+   "alongM": 0,
+   "widthM": 4.63,
+   "eavesM": 2.84,
+   "roofMaxM": 15.15,
+   "storeys3dbag": 4,
+   "builtYear": 1904,
+   "uncertainty": [
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  },
+  {
+   "pandId": "0363100012070992",
+   "alongM": 6.96,
+   "widthM": 6.38,
+   "eavesM": 14.55,
+   "roofMaxM": 16.96,
+   "storeys3dbag": 0,
+   "builtYear": 1907,
+   "uncertainty": [
+    "Frontage extended across a native jog of up to 1 m (possible partial front at the default 0.35 m).",
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  },
+  {
+   "pandId": "0363100012113779",
+   "alongM": 13.39,
+   "widthM": 6.41,
+   "eavesM": 14.34,
+   "roofMaxM": 16.99,
+   "storeys3dbag": 0,
+   "builtYear": 1907,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012111913",
+   "alongM": 19.8,
+   "widthM": 6.41,
+   "eavesM": 14.41,
+   "roofMaxM": 19.55,
+   "storeys3dbag": 5,
+   "builtYear": 1907,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012138332",
+   "alongM": 26.21,
+   "widthM": 6.41,
+   "eavesM": 9.81,
+   "roofMaxM": 14.36,
+   "storeys3dbag": 4,
+   "builtYear": 1907,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012111241",
+   "alongM": 32.62,
+   "widthM": 6.42,
+   "eavesM": 13.69,
+   "roofMaxM": 16.52,
+   "storeys3dbag": 5,
+   "builtYear": 1910,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012099460",
+   "alongM": 39.04,
+   "widthM": 6.42,
+   "eavesM": 13.69,
+   "roofMaxM": 16.56,
+   "storeys3dbag": 5,
+   "builtYear": 1910,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012120516",
+   "alongM": 45.49,
+   "widthM": 6.47,
+   "eavesM": 13.75,
+   "roofMaxM": 16.56,
+   "storeys3dbag": 5,
+   "builtYear": 1910,
+   "uncertainty": [
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  },
+  {
+   "pandId": "0363100012159779",
+   "alongM": 59.75,
+   "widthM": 22.05,
+   "eavesM": 16.06,
+   "roofMaxM": 21.98,
+   "storeys3dbag": 0,
+   "builtYear": 1910,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012132812",
+   "alongM": 74.5,
+   "widthM": 7.46,
+   "eavesM": 22.06,
+   "roofMaxM": 27.01,
+   "storeys3dbag": 0,
+   "builtYear": 1913,
+   "uncertainty": []
+  }
+ ]
+}

@@ -1,0 +1,253 @@
+{
+ "street": "Pieter de Hoochstraat",
+ "seed": "0363100012133770",
+ "members": [
+  "0363100012133770",
+  "0363100012064884",
+  "0363100012099680",
+  "0363100012155190"
+ ],
+ "ends": [
+  {
+   "side": "left",
+   "reason": "next fronting pand 0363100012077492 18.8 m on shares no party wall (cross street or gap)"
+  },
+  {
+   "side": "right",
+   "reason": "trimmed at 0363100012155190 (face continues: 240320 255082 250514)"
+  }
+ ],
+ "rejected": [
+  {
+   "pandId": "0363100012065390",
+   "reason": "frontage 49.4 m from Pieter de Hoochstraat"
+  },
+  {
+   "pandId": "0363100012066812",
+   "reason": "frontage 31.4 m from Pieter de Hoochstraat"
+  },
+  {
+   "pandId": "0363100012071827",
+   "reason": "sightline to Pieter de Hoochstraat crosses 0363100012077492"
+  },
+  {
+   "pandId": "0363100012079089",
+   "reason": "frontage 45.4 m from Pieter de Hoochstraat"
+  },
+  {
+   "pandId": "0363100012080690",
+   "reason": "frontage 44.3 m from Pieter de Hoochstraat"
+  },
+  {
+   "pandId": "0363100012087328",
+   "reason": "sightline to Pieter de Hoochstraat crosses 0363100012071827"
+  },
+  {
+   "pandId": "0363100012099258",
+   "reason": "frontage 45.6 m from Pieter de Hoochstraat"
+  },
+  {
+   "pandId": "0363100012099490",
+   "reason": "frontage 45.2 m from Pieter de Hoochstraat"
+  },
+  {
+   "pandId": "0363100012105881",
+   "reason": "frontage 42.1 m from Pieter de Hoochstraat"
+  },
+  {
+   "pandId": "0363100012110929",
+   "reason": "sightline to Pieter de Hoochstraat crosses 0363100012071827"
+  },
+  {
+   "pandId": "0363100012114350",
+   "reason": "frontage 45.6 m from Pieter de Hoochstraat"
+  },
+  {
+   "pandId": "0363100012116517",
+   "reason": "frontage 45.4 m from Pieter de Hoochstraat"
+  },
+  {
+   "pandId": "0363100012118196",
+   "reason": "frontage 52.9 m from Pieter de Hoochstraat"
+  },
+  {
+   "pandId": "0363100012121461",
+   "reason": "frontage 44.9 m from Pieter de Hoochstraat"
+  },
+  {
+   "pandId": "0363100012121710",
+   "reason": "frontage 43.5 m from Pieter de Hoochstraat"
+  },
+  {
+   "pandId": "0363100012122272",
+   "reason": "frontage 44.5 m from Pieter de Hoochstraat"
+  },
+  {
+   "pandId": "0363100012136130",
+   "reason": "frontage 44.8 m from Pieter de Hoochstraat"
+  },
+  {
+   "pandId": "0363100012138135",
+   "reason": "frontage 38.4 m from Pieter de Hoochstraat"
+  },
+  {
+   "pandId": "0363100012138696",
+   "reason": "frontage 44.7 m from Pieter de Hoochstraat"
+  },
+  {
+   "pandId": "0363100012142126",
+   "reason": "frontage 35.6 m from Pieter de Hoochstraat"
+  },
+  {
+   "pandId": "0363100012149520",
+   "reason": "frontage 46.4 m from Pieter de Hoochstraat"
+  },
+  {
+   "pandId": "0363100012150353",
+   "reason": "frontage 53.0 m from Pieter de Hoochstraat"
+  },
+  {
+   "pandId": "0363100012151199",
+   "reason": "frontage 48.4 m from Pieter de Hoochstraat"
+  },
+  {
+   "pandId": "0363100012154873",
+   "reason": "frontage 45.1 m from Pieter de Hoochstraat"
+  },
+  {
+   "pandId": "0363100012160093",
+   "reason": "frontage 38.2 m from Pieter de Hoochstraat"
+  },
+  {
+   "pandId": "0363100012162222",
+   "reason": "frontage 30.0 m from Pieter de Hoochstraat"
+  },
+  {
+   "pandId": "0363100012166483",
+   "reason": "no frontage on Pieter de Hoochstraat: No footprint edge faces Pieter de Hoochstraat"
+  },
+  {
+   "pandId": "0363100012209281",
+   "reason": "frontage 34.0 m from Pieter de Hoochstraat"
+  },
+  {
+   "pandId": "0363100012224122",
+   "reason": "frontage 34.9 m from Pieter de Hoochstraat"
+  },
+  {
+   "pandId": "0363100012233523",
+   "reason": "frontage 67.4 m from Pieter de Hoochstraat"
+  },
+  {
+   "pandId": "0363100012236794",
+   "reason": "sightline to Pieter de Hoochstraat crosses 0363100012118922"
+  },
+  {
+   "pandId": "0363100012246868",
+   "reason": "frontage 36.5 m from Pieter de Hoochstraat"
+  },
+  {
+   "pandId": "0363100012079894",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012089728",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012090747",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012095224",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012116862",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012118922",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012122594",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012134540",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012135779",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012149721",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012233591",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012236293",
+   "reason": "fronts the other side / another direction"
+  }
+ ],
+ "areaHalfSizeM": 90,
+ "pands": [
+  {
+   "pandId": "0363100012133770",
+   "alongM": 0,
+   "widthM": 7.18,
+   "eavesM": 12.04,
+   "roofMaxM": 16.45,
+   "storeys3dbag": 4,
+   "builtYear": 1914,
+   "uncertainty": [
+    "Frontage extended across a native jog of up to 1 m (possible partial front at the default 0.35 m).",
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  },
+  {
+   "pandId": "0363100012064884",
+   "alongM": 7.37,
+   "widthM": 7.56,
+   "eavesM": 11.86,
+   "roofMaxM": 18.14,
+   "storeys3dbag": 5,
+   "builtYear": 1914,
+   "uncertainty": [
+    "Frontage extended across a native jog of up to 1 m (possible partial front at the default 0.35 m).",
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  },
+  {
+   "pandId": "0363100012099680",
+   "alongM": 19.78,
+   "widthM": 17.27,
+   "eavesM": 14.93,
+   "roofMaxM": 18.16,
+   "storeys3dbag": 5,
+   "builtYear": 1996,
+   "uncertainty": [
+    "Frontage extended across a native jog of up to 1 m (possible partial front at the default 0.35 m).",
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  },
+  {
+   "pandId": "0363100012155190",
+   "alongM": 36.84,
+   "widthM": 16.89,
+   "eavesM": 15.41,
+   "roofMaxM": 18.11,
+   "storeys3dbag": 5,
+   "builtYear": 1996,
+   "uncertainty": [
+    "Frontage extended across a native jog of up to 1 m (possible partial front at the default 0.35 m).",
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  }
+ ]
+}

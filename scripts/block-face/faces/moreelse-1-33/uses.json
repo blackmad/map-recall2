@@ -1,0 +1,214 @@
+{
+ "street": "Moreelsestraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-01T15:58:44.725Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012236579",
+   "addresses": [
+    "Moreelsestraat 1A",
+    "Moreelsestraat 3"
+   ],
+   "groundUnits": [
+    {
+     "address": "Moreelsestraat 3-H",
+     "use": "bijeenkomstfunctie,kantoorfunctie",
+     "areaM2": 97,
+     "bagId": "0363010000746252"
+    },
+    {
+     "address": "Moreelsestraat 1A",
+     "use": "woonfunctie",
+     "areaM2": 62,
+     "bagId": "0363010012568979"
+    }
+   ],
+   "units": 3,
+   "osm": [
+    {
+     "type": "node",
+     "id": 4401294508,
+     "lngLat": [
+      4.8806877,
+      52.3555304
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "3",
+      "addr:postcode": "1071BJ",
+      "addr:street": "Moreelsestraat",
+      "amenity": "restaurant",
+      "cuisine": "lunch",
+      "name": "Martinot",
+      "note": "no website",
+      "smoking": "no",
+      "wheelchair": "limited"
+     },
+     "fetchedAt": "2026-11-01T15:58:44.725Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012070992",
+   "addresses": [
+    "Moreelsestraat 5"
+   ],
+   "groundUnits": [
+    {
+     "address": "Moreelsestraat 5-H",
+     "use": "winkelfunctie,woonfunctie",
+     "areaM2": 250,
+     "bagId": "0363010000746256"
+    },
+    {
+     "address": "Moreelsestraat 5-H",
+     "use": "winkelfunctie",
+     "areaM2": 163,
+     "bagId": "0363010012596826"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012113779",
+   "addresses": [
+    "Moreelsestraat 7",
+    "Moreelsestraat 7B",
+    "Moreelsestraat 7A"
+   ],
+   "groundUnits": [
+    {
+     "address": "Moreelsestraat 7-H",
+     "use": "woonfunctie",
+     "areaM2": 248,
+     "bagId": "0363010000746259"
+    },
+    {
+     "address": "Moreelsestraat 7-H",
+     "use": "woonfunctie",
+     "areaM2": 157,
+     "bagId": "0363010012596827"
+    }
+   ],
+   "units": 7,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012111913",
+   "addresses": [
+    "Moreelsestraat 9"
+   ],
+   "groundUnits": [
+    {
+     "address": "Moreelsestraat 9-H",
+     "use": "woonfunctie",
+     "areaM2": 206,
+     "bagId": "0363010000746263"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012138332",
+   "addresses": [
+    "Moreelsestraat 11"
+   ],
+   "groundUnits": [
+    {
+     "address": "Moreelsestraat 11-H",
+     "use": "woonfunctie",
+     "areaM2": 304,
+     "bagId": "0363010000746266"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012111241",
+   "addresses": [
+    "Moreelsestraat 13"
+   ],
+   "groundUnits": [
+    {
+     "address": "Moreelsestraat 13-H",
+     "use": "woonfunctie",
+     "areaM2": 216,
+     "bagId": "0363010000746268"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012099460",
+   "addresses": [
+    "Moreelsestraat 15"
+   ],
+   "groundUnits": [
+    {
+     "address": "Moreelsestraat 15-H",
+     "use": "woonfunctie",
+     "areaM2": 170,
+     "bagId": "0363010000746271"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012120516",
+   "addresses": [
+    "Moreelsestraat 17"
+   ],
+   "groundUnits": [
+    {
+     "address": "Moreelsestraat 17-H",
+     "use": "woonfunctie",
+     "areaM2": 215,
+     "bagId": "0363010000746274"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012159779",
+   "addresses": [
+    "Moreelsestraat 19"
+   ],
+   "groundUnits": [
+    {
+     "address": "Moreelsestraat 19",
+     "use": "onderwijsfunctie",
+     "areaM2": 934,
+     "bagId": "0363010000746277"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012132812",
+   "addresses": [
+    "Moreelsestraat 21"
+   ],
+   "groundUnits": [
+    {
+     "address": "Moreelsestraat 21",
+     "use": "onderwijsfunctie",
+     "areaM2": 2971,
+     "bagId": "0363010000746278"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  }
+ ]
+}

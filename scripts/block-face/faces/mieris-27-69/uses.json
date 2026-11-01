@@ -1,0 +1,277 @@
+{
+ "street": "Frans van Mierisstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-01T15:24:03.016Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012147177",
+   "addresses": [
+    "Frans van Mierisstraat 27"
+   ],
+   "groundUnits": [
+    {
+     "address": "Johannes Vermeerstraat 40",
+     "use": "kantoorfunctie",
+     "areaM2": 141,
+     "bagId": "0363010000694434"
+    },
+    {
+     "address": "Johannes Vermeerstraat 42",
+     "use": "woonfunctie",
+     "areaM2": 55,
+     "bagId": "0363010000694443"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 4528931491,
+     "lngLat": [
+      4.8840259,
+      52.3547327
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "40",
+      "addr:postcode": "1071DS",
+      "addr:street": "Johannes Vermeerstraat",
+      "amenity": "cafe",
+      "check_date": "2026-08-26",
+      "check_date:opening_hours": "2026-08-26",
+      "indoor_seating": "yes",
+      "name": "Corner Bakery Amsterdam",
+      "opening_hours": "Mo-Fr 09:00-16:00; Sa,Su 09:00-17:00",
+      "outdoor_seating": "yes",
+      "wheelchair": "limited"
+     },
+     "fetchedAt": "2026-11-01T15:24:03.016Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012129013",
+   "addresses": [
+    "Frans van Mierisstraat 29"
+   ],
+   "groundUnits": [
+    {
+     "address": "Frans van Mierisstraat 29-H",
+     "use": "woonfunctie",
+     "areaM2": 282,
+     "bagId": "0363010000638780"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012129511",
+   "addresses": [
+    "Frans van Mierisstraat 31"
+   ],
+   "groundUnits": [
+    {
+     "address": "Frans van Mierisstraat 31-H",
+     "use": "woonfunctie",
+     "areaM2": 175,
+     "bagId": "0363010000638785"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012120629",
+   "addresses": [
+    "Frans van Mierisstraat 33"
+   ],
+   "groundUnits": [
+    {
+     "address": "Frans van Mierisstraat 33-H",
+     "use": "woonfunctie",
+     "areaM2": 168,
+     "bagId": "0363010000638792"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012132525",
+   "addresses": [
+    "Frans van Mierisstraat 35"
+   ],
+   "groundUnits": [
+    {
+     "address": "Frans van Mierisstraat 35-H",
+     "use": "woonfunctie",
+     "areaM2": 258,
+     "bagId": "0363010000638796"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012127220",
+   "addresses": [
+    "Frans van Mierisstraat 37"
+   ],
+   "groundUnits": [
+    {
+     "address": "Frans van Mierisstraat 37-H",
+     "use": "woonfunctie",
+     "areaM2": 241,
+     "bagId": "0363010000994639"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012094774",
+   "addresses": [
+    "Frans van Mierisstraat 39"
+   ],
+   "groundUnits": [
+    {
+     "address": "Frans van Mierisstraat 39-H",
+     "use": "woonfunctie",
+     "areaM2": 175,
+     "bagId": "0363010000638808"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012136011",
+   "addresses": [
+    "Frans van Mierisstraat 41"
+   ],
+   "groundUnits": [
+    {
+     "address": "Frans van Mierisstraat 41-H",
+     "use": "woonfunctie",
+     "areaM2": 316,
+     "bagId": "0363010000638815"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012091903",
+   "addresses": [
+    "Frans van Mierisstraat 43"
+   ],
+   "groundUnits": [
+    {
+     "address": "Frans van Mierisstraat 43-H",
+     "use": "woonfunctie",
+     "areaM2": 319,
+     "bagId": "0363010000638819"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012149513",
+   "addresses": [
+    "Frans van Mierisstraat 45"
+   ],
+   "groundUnits": [
+    {
+     "address": "Frans van Mierisstraat 45-H",
+     "use": "woonfunctie",
+     "areaM2": 260,
+     "bagId": "0363010000638824"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012062764",
+   "addresses": [
+    "Frans van Mierisstraat 47",
+    "Frans van Mierisstraat 47A",
+    "Frans van Mierisstraat 47B",
+    "Frans van Mierisstraat 47C",
+    "Frans van Mierisstraat 47D"
+   ],
+   "groundUnits": [
+    {
+     "address": "Frans van Mierisstraat 47-H",
+     "use": "woonfunctie",
+     "areaM2": 315,
+     "bagId": "0363010000638829"
+    },
+    {
+     "address": "Frans van Mierisstraat 47A",
+     "use": "woonfunctie",
+     "areaM2": 215,
+     "bagId": "0363010011211435"
+    },
+    {
+     "address": "Frans van Mierisstraat 47B",
+     "use": "woonfunctie",
+     "areaM2": 96,
+     "bagId": "0363010011211436"
+    },
+    {
+     "address": "Frans van Mierisstraat 47C",
+     "use": "woonfunctie",
+     "areaM2": 96,
+     "bagId": "0363010011211438"
+    },
+    {
+     "address": "Frans van Mierisstraat 47D",
+     "use": "woonfunctie",
+     "areaM2": 151,
+     "bagId": "0363010011211439"
+    }
+   ],
+   "units": 6,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012094867",
+   "addresses": [
+    "Frans van Mierisstraat 49"
+   ],
+   "groundUnits": [
+    {
+     "address": "Frans van Mierisstraat 49-H",
+     "use": "woonfunctie",
+     "areaM2": 299,
+     "bagId": "0363010000638834"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012078861",
+   "addresses": [
+    "Frans van Mierisstraat 55"
+   ],
+   "groundUnits": [
+    {
+     "address": "Frans van Mierisstraat 55-H",
+     "use": "woonfunctie",
+     "areaM2": 223,
+     "bagId": "0363010000638845"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  }
+ ]
+}

@@ -1,0 +1,73 @@
+{
+ "street": "Frans van Mierisstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-01T15:16:22.228Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012121101",
+   "addresses": [
+    "Frans van Mierisstraat 30"
+   ],
+   "groundUnits": [
+    {
+     "address": "Frans van Mierisstraat 30-H",
+     "use": "woonfunctie",
+     "areaM2": 137,
+     "bagId": "0363010000638783"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012109538",
+   "addresses": [
+    "Frans van Mierisstraat 28"
+   ],
+   "groundUnits": [
+    {
+     "address": "Frans van Mierisstraat 28-H",
+     "use": "woonfunctie",
+     "areaM2": 68,
+     "bagId": "0363010000638777"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012105580",
+   "addresses": [
+    "Frans van Mierisstraat 26"
+   ],
+   "groundUnits": [
+    {
+     "address": "Frans van Mierisstraat 26-H",
+     "use": "woonfunctie",
+     "areaM2": 137,
+     "bagId": "0363010000638772"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012075211",
+   "addresses": [
+    "Frans van Mierisstraat 24"
+   ],
+   "groundUnits": [
+    {
+     "address": "Frans van Mierisstraat 24-H",
+     "use": "woonfunctie",
+     "areaM2": 213,
+     "bagId": "0363010000638770"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  }
+ ]
+}
