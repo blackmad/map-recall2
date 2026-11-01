@@ -1942,5 +1942,11 @@
   "buildVersion": 2,
   "bytes": 75900,
   "triangles": 3910
+ },
+ "magere-brug": {
+  "sourceHash": "e8c99d8e2714c970",
+  "buildVersion": 2,
+  "bytes": 46764,
+  "triangles": 2275
  }
 }

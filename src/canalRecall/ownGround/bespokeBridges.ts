@@ -5,6 +5,7 @@
 // held or missing model never leaves a bare deck over the water.
 export const BESPOKE_BRIDGES: Readonly<Record<string, string>> = {
   BRU0236: 'blauwbrug',
+  BRU0242: 'magere-brug',
 };
 
 /** The catalogue id of the landmark that draws this bridge's body, or null when the kit draws it. */

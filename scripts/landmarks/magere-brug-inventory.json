@@ -1,0 +1,321 @@
+{
+ "schemaVersion": 1,
+ "id": "magere-brug",
+ "signature": [
+  "s-163-balance-beams",
+  "s-163-portals",
+  "s-163-arches",
+  "s-163-rods",
+  "s-163-leaf-railing"
+ ],
+ "walls": [
+  {
+   "tag": "s-163",
+   "bearing": 163.0,
+   "lengthM": 74.0,
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000355_pano_0000_000633",
+   "capturedAt": "2017",
+   "note": "South (upstream) face from the boat panorama, rectified at 20 px/m (artifacts/bridges/BRU0242/photo-p.jpg).",
+   "items": [
+    {
+     "id": "s-163-balance-beams",
+     "kind": "other",
+     "where": "two white balance-beam frames (hameien) on the portal posts, sloping up over the leaf tips, cross-braced, the counterweight box at the outer end over the fixed span",
+     "approxSizeM": [
+      10.0,
+      1.5
+     ],
+     "plan": "simplified",
+     "how": "builder: two sloped white beams per leaf with a dark top edge, four cross beams, a dark counterweight box",
+     "seenIn": "commons:Magere_brug_amsterdam.jpg; commons:Magerebrug.jpg; TMX7316010203-000355_pano_0000_000633"
+    },
+    {
+     "id": "s-163-portals",
+     "kind": "other",
+     "where": "two white timber portals: posts beside the narrow deck, an arched crossbeam and a top beam",
+     "approxSizeM": [
+      5.5,
+      6.4
+     ],
+     "plan": "simplified",
+     "how": "builder: square posts, segmental arch of beam segments, top beam and corbels",
+     "seenIn": "commons:Magerebrug.jpg; TMX7316010203-000355_pano_0000_000633"
+    },
+    {
+     "id": "s-163-rods",
+     "kind": "other",
+     "where": "dark iron rods from the beams down to the leaf tips and middles; diagonal struts from the posts down to the fixed span",
+     "approxSizeM": [
+      6.0,
+      6.5
+     ],
+     "plan": "simplified",
+     "how": "builder: thin dark bars, three per beam side, one strut per post",
+     "seenIn": "commons:Magere_brug_amsterdam.jpg; TMX7316010203-000355_pano_0000_000633"
+    },
+    {
+     "id": "s-163-arches",
+     "kind": "other",
+     "where": "eight segmental arches in the white fixed spans (four each side of the bascule) with pilaster piers; the ninth passage is the bascule opening",
+     "approxSizeM": [
+      6.4,
+      1.4
+     ],
+     "plan": "modelled",
+     "how": "builder: segmental spandrel walls, ring band 6 cm proud, pilasters 15 cm proud, barrel soffits",
+     "seenIn": "commons:Magere_brug_amsterdam.jpg; TMX7316010203-000355_pano_0000_000633"
+    },
+    {
+     "id": "s-163-leaf-railing",
+     "kind": "balcony-ironwork",
+     "where": "white lattice railing on the two leaves",
+     "approxSizeM": [
+      4.4,
+      1.05
+     ],
+     "plan": "simplified",
+     "how": "builder: white posts, top rail and X lattice per bay",
+     "seenIn": "commons:Magerebrug.jpg; TMX7316010203-000355_pano_0000_000633"
+    },
+    {
+     "id": "s-163-fixed-railing",
+     "kind": "balcony-ironwork",
+     "where": "dark iron railing along the fixed spans",
+     "approxSizeM": [
+      31.0,
+      1.0
+     ],
+     "plan": "modelled",
+     "how": "builder: posts every 1.8 m, three rails and bars every 0.3 m following the deck",
+     "seenIn": "commons:Magere_brug_amsterdam.jpg; TMX7316010203-000355_pano_0000_000633"
+    },
+    {
+     "id": "s-163-lanterns",
+     "kind": "lamp",
+     "where": "replica Jan van der Heyden lantern posts with two lanterns near each bank",
+     "approxSizeM": [
+      1.1,
+      4.2
+     ],
+     "plan": "simplified",
+     "how": "builder: dark lathe post, cross arm, two ochre lantern boxes with dark caps",
+     "seenIn": "commons:Magere_brug_amsterdam.jpg"
+    },
+    {
+     "id": "s-163-signals",
+     "kind": "sign",
+     "where": "red bridge signals and barrier boxes at the leaf ends",
+     "approxSizeM": [
+      0.4,
+      1.5
+     ],
+     "plan": "simplified",
+     "how": "builder: dark posts with a red lamp, dark barrier boxes",
+     "seenIn": "TMX7316010203-000355_pano_0000_000633"
+    },
+    {
+     "id": "s-163-bascule-piers",
+     "kind": "other",
+     "where": "dark tarred timber bascule piers with fender piles flanking the opening",
+     "approxSizeM": [
+      2.1,
+      2.0
+     ],
+     "plan": "simplified",
+     "how": "builder: dark pier block and three dark piles each side",
+     "seenIn": "commons:Magere_brug_amsterdam.jpg; TMX7316010203-000355_pano_0000_000633"
+    },
+    {
+     "id": "s-163-light-strings",
+     "kind": "lamp",
+     "where": "strings of small LED bulbs outlining the arches, beams and portals (1,800 bulbs, lit at night)",
+     "approxSizeM": [
+      70.0,
+      0.05
+     ],
+     "plan": "skipped",
+     "skip": {
+      "reason": "too-small",
+      "note": "individual bulbs are a few centimetres; unlit by day, not readable from the ride"
+     },
+     "seenIn": "commons:Magere_brug_amsterdam.jpg"
+    },
+    {
+     "id": "s-163-keeper-hut",
+     "kind": "other",
+     "where": "bridge-keeper hut",
+     "approxSizeM": [
+      2.0,
+      2.5
+     ],
+     "plan": "skipped",
+     "skip": {
+      "reason": "not-visible",
+      "note": "no hut on the bridge in the panoramas or the Commons photographs; the bridge is operated remotely since 1994"
+     },
+     "seenIn": "TMX7316010203-000355_pano_0000_000633"
+    }
+   ],
+   "centre": [
+    4.9023713,
+    52.3635814
+   ],
+   "checked": true
+  },
+  {
+   "tag": "n-343",
+   "bearing": 343.0,
+   "lengthM": 74.0,
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000355_pano_0000_000625",
+   "capturedAt": "2017",
+   "note": "North (downstream) face from the boat panorama (artifacts/bridges/BRU0242/photo-m.jpg): the same composition.",
+   "items": [
+    {
+     "id": "n-343-balance-beams",
+     "kind": "other",
+     "where": "two white balance-beam frames (hameien) on the portal posts, sloping up over the leaf tips, cross-braced, the counterweight box at the outer end over the fixed span",
+     "approxSizeM": [
+      10.0,
+      1.5
+     ],
+     "plan": "simplified",
+     "how": "builder: two sloped white beams per leaf with a dark top edge, four cross beams, a dark counterweight box",
+     "seenIn": "commons:Magere_brug_amsterdam.jpg; commons:Magerebrug.jpg; TMX7316010203-000355_pano_0000_000625"
+    },
+    {
+     "id": "n-343-portals",
+     "kind": "other",
+     "where": "two white timber portals: posts beside the narrow deck, an arched crossbeam and a top beam",
+     "approxSizeM": [
+      5.5,
+      6.4
+     ],
+     "plan": "simplified",
+     "how": "builder: square posts, segmental arch of beam segments, top beam and corbels",
+     "seenIn": "commons:Magerebrug.jpg; TMX7316010203-000355_pano_0000_000625"
+    },
+    {
+     "id": "n-343-rods",
+     "kind": "other",
+     "where": "dark iron rods from the beams down to the leaf tips and middles; diagonal struts from the posts down to the fixed span",
+     "approxSizeM": [
+      6.0,
+      6.5
+     ],
+     "plan": "simplified",
+     "how": "builder: thin dark bars, three per beam side, one strut per post",
+     "seenIn": "commons:Magere_brug_amsterdam.jpg; TMX7316010203-000355_pano_0000_000625"
+    },
+    {
+     "id": "n-343-arches",
+     "kind": "other",
+     "where": "eight segmental arches in the white fixed spans (four each side of the bascule) with pilaster piers; the ninth passage is the bascule opening",
+     "approxSizeM": [
+      6.4,
+      1.4
+     ],
+     "plan": "modelled",
+     "how": "builder: segmental spandrel walls, ring band 6 cm proud, pilasters 15 cm proud, barrel soffits",
+     "seenIn": "commons:Magere_brug_amsterdam.jpg; TMX7316010203-000355_pano_0000_000625"
+    },
+    {
+     "id": "n-343-leaf-railing",
+     "kind": "balcony-ironwork",
+     "where": "white lattice railing on the two leaves",
+     "approxSizeM": [
+      4.4,
+      1.05
+     ],
+     "plan": "simplified",
+     "how": "builder: white posts, top rail and X lattice per bay",
+     "seenIn": "commons:Magerebrug.jpg; TMX7316010203-000355_pano_0000_000625"
+    },
+    {
+     "id": "n-343-fixed-railing",
+     "kind": "balcony-ironwork",
+     "where": "dark iron railing along the fixed spans",
+     "approxSizeM": [
+      31.0,
+      1.0
+     ],
+     "plan": "modelled",
+     "how": "builder: posts every 1.8 m, three rails and bars every 0.3 m following the deck",
+     "seenIn": "commons:Magere_brug_amsterdam.jpg; TMX7316010203-000355_pano_0000_000625"
+    },
+    {
+     "id": "n-343-lanterns",
+     "kind": "lamp",
+     "where": "replica Jan van der Heyden lantern posts with two lanterns near each bank",
+     "approxSizeM": [
+      1.1,
+      4.2
+     ],
+     "plan": "simplified",
+     "how": "builder: dark lathe post, cross arm, two ochre lantern boxes with dark caps",
+     "seenIn": "commons:Magere_brug_amsterdam.jpg"
+    },
+    {
+     "id": "n-343-signals",
+     "kind": "sign",
+     "where": "red bridge signals and barrier boxes at the leaf ends",
+     "approxSizeM": [
+      0.4,
+      1.5
+     ],
+     "plan": "simplified",
+     "how": "builder: dark posts with a red lamp, dark barrier boxes",
+     "seenIn": "TMX7316010203-000355_pano_0000_000625"
+    },
+    {
+     "id": "n-343-bascule-piers",
+     "kind": "other",
+     "where": "dark tarred timber bascule piers with fender piles flanking the opening",
+     "approxSizeM": [
+      2.1,
+      2.0
+     ],
+     "plan": "simplified",
+     "how": "builder: dark pier block and three dark piles each side",
+     "seenIn": "commons:Magere_brug_amsterdam.jpg; TMX7316010203-000355_pano_0000_000625"
+    },
+    {
+     "id": "n-343-light-strings",
+     "kind": "lamp",
+     "where": "strings of small LED bulbs outlining the arches, beams and portals (1,800 bulbs, lit at night)",
+     "approxSizeM": [
+      70.0,
+      0.05
+     ],
+     "plan": "skipped",
+     "skip": {
+      "reason": "too-small",
+      "note": "individual bulbs are a few centimetres; unlit by day, not readable from the ride"
+     },
+     "seenIn": "commons:Magere_brug_amsterdam.jpg"
+    },
+    {
+     "id": "n-343-keeper-hut",
+     "kind": "other",
+     "where": "bridge-keeper hut",
+     "approxSizeM": [
+      2.0,
+      2.5
+     ],
+     "plan": "skipped",
+     "skip": {
+      "reason": "not-visible",
+      "note": "no hut on the bridge in the panoramas or the Commons photographs; the bridge is operated remotely since 1994"
+     },
+     "seenIn": "TMX7316010203-000355_pano_0000_000625"
+    }
+   ],
+   "centre": [
+    4.9023713,
+    52.3635814
+   ],
+   "checked": true
+  }
+ ]
+}
