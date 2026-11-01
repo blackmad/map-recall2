@@ -1369,10 +1369,14 @@ Root `main` was cleaned on 2026-10-09 (see HISTORY). Live work, in order:
   named per task by `motion-stutter.mjs` under own at DPR 2 (HISTORY "Stutter
   owners under `?engine=own` named", "Seeded-route stutter owners fixed").
   Seeded route meets the P3 gate at 1× (long tasks 10 → 0, longest 600 → 68
-  ms). Jordaan: 2 tasks of 50–55 ms left (`_applyChunkPandBases` on a new
-  street chunk, three-buildings `setFeatures`/`t4`, main-thread
-  `splitIntoTiles`/`cutMesh`, render + shadow pass, GC); 4× throttle not yet
-  measured (L1 next, then `pop-in.mjs` under both engines and the P5 steps).
+  ms). Jordaan after the 4× round (HISTORY "Per-frame CPU under
+  `?engine=own` at 4×"): 1× no task > 50 ms, longest 34 ms, but streaming
+  tasks > 16 ms remain (`splitIntoTiles` in ground `cutMesh` 48 ms, chunk pand
+  bases 57 ms); 4× owners per 60 s: three-buildings `t4`/`setFeatures`/`post`
+  ≈ 1.8 s, `_applyChunkPandBases` ≈ 1.2 s, `buildShadowStandIn` on landmark
+  `_add` 1.1 s, `splitIntoTiles` 0.4 s; render pass 13 s sets p99. L1 next:
+  `buildShadowStandIn` and `splitIntoTiles` to the worker pool, then
+  `pop-in.mjs` under both engines and P5 B6.
   Idle rendering (fan) is fixed under own: render-on-change on main, 0
   renders per 5 s at rest; the default engine still renders every idle frame
   until the flip.

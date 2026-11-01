@@ -1,5 +1,27 @@
 # Canal Recall — what is built
 
+**Per-frame CPU under `?engine=own` at 4×: water level, view-mode constants, clearance walk; Jordaan 1× longest frame 68 → 34 ms (2026-11-01, #129).**
+L1 interim, all exact: `waterZAt` gets a per-polygon box plus y-banded edges
+cached per polygon list (200,000 random points over 12 central cells give
+identical levels, 6.9 → 0.33 s; the hidden ferry no longer asks for a water
+level every frame; it owned 1.46 s per 60 s at 4×); the `constants.js`
+view-mode numbers are cached as `const` (an indirect eval compiled a script
+several times a frame, 0.6 s); the camera-clearance `sightlineBlocker` puts
+the ~34,000 residents in a 0.002° grid built once per resident list (300
+random sightlines over 5,000 houses give the same blocker as the linear walk,
+0.52 s). Jordaan, real GPU, DPR 2, 60 s: 1× longest frame 67.8 → 33.9 ms, > 50
+ms per minute 1 → 0, p99 10.3; 4× long tasks 67 (4,646 ms) → 56 (3,852 ms),
+p99 84.4 → 81.8 (the after run started under load 14.2 from another lane).
+P3 gate still not met: at 1× streaming tasks over 16 ms remain from
+`splitIntoTiles` in the ground `cutMesh` (48 ms) and the chunk pand bases (57
+ms); at 4× the owners per 60 s are `buildShadowStandIn` on landmark `_add`
+(1,086 ms), `_applyChunkPandBases` (≈ 1,240 ms), three-buildings `t4` /
+`setFeatures` / `post` (≈ 1,840 ms), `splitIntoTiles` (370 ms); the render
+pass at 4× is 13 s and sets p99 but is not streaming work. Next: move
+`buildShadowStandIn` and `splitIntoTiles` to the worker pool (pure array
+functions). P5 B3 is already answered under own (`game-route.js` finishes on
+idle with no 450 ms pause; only the MapLibre branch deletion remains for P5).
+
 **Seeded-route stutter owners fixed (long tasks 10 → 0, longest frame 600 → 68 ms); render-on-change green under `?engine=own` (idle renders 755 → 0) (2026-11-01, #129).**
 L1 hand-back (7), measured on the real GPU (DPR 2, 1800×1100, headed, 60 s
 motion window). Four exact fixes in the own-ground preparation, each with
