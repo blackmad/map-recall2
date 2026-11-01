@@ -102,7 +102,11 @@ async function fixedShot(page: Page, at: readonly number[], face: readonly numbe
       if (!/(^|\/)player-/.test(`${top.userData?.participant ?? ''} ${top.name ?? ''}`)) continue;
       top.traverse((o: any) => o.layers?.disableAll?.());
     }
-    vm.jumpToLngLat({ ...pose, pitch: vm.pitchForViewMode('chase') });
+    // The camera's elevation is the rider's eased surface height, which a jump keeps: whatever the ride left behind
+    // when sync was held (0.26 m in one load, 0.29 m in the next at the Westerkerk: a 0.05–0.13 px vertical shift over
+    // the whole frame, 1.5–3.2 M px of 1–3 level emboss, #129 2026-11-01). Pin it to the ground under the pose.
+    const g = vm._ownGround;
+    vm.jumpToLngLat({ ...pose, pitch: vm.pitchForViewMode('chase'), elevation: g?.ready ? g.heightAt(pose.center) : 0 });
   }, pose);
   await settle(page);
   await page.evaluate(() => (window as any).canalRecallGame.vectorMap.camera?.whenIdle?.());
@@ -114,7 +118,7 @@ async function fixedShot(page: Page, at: readonly number[], face: readonly numbe
   await expect.poll(() => page.evaluate(() => { const g = (window as any).canalRecallGame.vectorMap._ownGround; return g ? (g.loadingCells ?? 0) + [...(g.resident?.values?.() ?? [])].filter((r: any) => r.fade).length : 0; }), { timeout: 60_000, intervals: [250] }).toBe(0);
   // Jump again now the ground is in, so the pose is set over the same ground in every load (the camera's matrices are
   // recorded with the owner frames: identical in every load measured, 2026-11-01).
-  await page.evaluate((pose) => { const vm = (window as any).canalRecallGame.vectorMap; vm.jumpToLngLat({ ...pose, pitch: vm.pitchForViewMode('chase') }); }, pose);
+  await page.evaluate((pose) => { const vm = (window as any).canalRecallGame.vectorMap, g = vm._ownGround; vm.jumpToLngLat({ ...pose, pitch: vm.pitchForViewMode('chase'), elevation: g?.ready ? g.heightAt(pose.center) : 0 }); }, pose);
   await settle(page);
   await page.evaluate(() => (window as any).canalRecallGame.vectorMap.camera?.whenIdle?.());
   // The shadow map is redrawn only when its snapped box or the root-level caster signature changes, and between
@@ -143,6 +147,18 @@ async function fixedShot(page: Page, at: readonly number[], face: readonly numbe
     frame.invalidateShadows?.();
   });
   const url: string = await page.evaluate(() => (window as any).canalRecallGame.vectorMap.captureFrame().then((c: HTMLCanvasElement | null) => c?.toDataURL('image/png') ?? ''));
+  // The camera at capture (before the held sync is restored): a whole-frame emboss between loads is a sub-pixel pose.
+  shotCameras.push(await page.evaluate(() => {
+    const vm = (window as any).canalRecallGame.vectorMap, f = vm._sharedFrame, cm = vm.cameraMap?.camera ?? vm.cameraMap;
+    return { clip: f ? Array.from(f.camera.projectionMatrix.elements as number[]) : null, state: cm ? { lng: cm.lng, lat: cm.lat, zoom: cm.zoom, bearing: cm.bearing, pitch: cm.pitch, elevation: cm.elevation, fovDeg: cm.fovDeg } : null };
+  }));
+  // AB_FRAMES=N: N more frames at the held pose, hashed, to tell a per-frame flicker from a per-load difference.
+  if (Number(process.env.AB_FRAMES) > 0) frameRuns.push(await page.evaluate(async (n: number) => {
+    const vm = (window as any).canalRecallGame.vectorMap, seen: string[] = [], seq: number[] = [];
+    const fnv = (s: string) => { let h = 0x811c9dc5; for (let i = 0; i < s.length; i += 7) { h ^= s.charCodeAt(i); h = Math.imul(h, 0x01000193) >>> 0; } return h.toString(16); };
+    for (let i = 0; i < n; i++) { const c = await vm.captureFrame(); const h = fnv(c?.toDataURL('image/png') ?? ''); let k = seen.indexOf(h); if (k < 0) { k = seen.length; seen.push(h); } seq.push(k); }
+    return { distinct: seen.length, flips: seq.filter((v, i) => i && v !== seq[i - 1]).length, seq: seq.join('') };
+  }, Number(process.env.AB_FRAMES)));
   if (owners) owners.camera = await page.evaluate(() => { const f = (window as any).canalRecallGame.vectorMap._sharedFrame; return f ? { clip: Array.from(f.camera.projectionMatrix.elements as number[]), anchor: f.anchor ?? null } : null; });
   if (owners) Object.assign(owners, await ownerPasses(page));
   await page.evaluate(() => { const vm = (window as any).canalRecallGame.vectorMap; if (vm.__abHeld) { Object.assign(vm, vm.__abHeld); delete vm.__abHeld; } });
@@ -255,6 +271,8 @@ async function settle(page: Page) {
 }
 
 const results: Record<string, any> = {};
+const frameRuns: { distinct: number; flips: number; seq: string }[] = [];
+const shotCameras: unknown[] = [];
 test.beforeAll(() => {
   if (process.env.WORLD_AB_STALE) return;
   mkdirSync(OUT, { recursive: true });
@@ -312,6 +330,8 @@ for (const variant of VARIANTS) {
           decodeMs: city.world ? Object.fromEntries(city.world.decodeMs) : null, inflateMs: city.world?.inflateMs ? Object.fromEntries(city.world.inflateMs) : null, decodeThread: city.world?.decodeThread ?? null, worldMessages: city.world?.messages ?? null, longestMessageMs: city.world?.longestMessageMs ?? null, dumped };
       }, (process.env.AB_DUMP_IDS ?? '').split(',').filter(Boolean));
       spots[spot.name].shot = shot;
+      if (frameRuns.length) spots[spot.name].frames = frameRuns.pop();
+      if (shotCameras.length) spots[spot.name].camera = shotCameras.pop();
       if (owners) {
         for (const pass of ['noshadow', 'pand', 'mesh']) writeFileSync(`${OUT}/${spot.name}-${variant.name}-${pass}.png`, owners[pass]);
         writeFileSync(`${OUT}/owners-${spot.name}-${variant.name}.json`, JSON.stringify({ codes: owners.codes, camera: owners.camera, layers: JSON.parse(owners.layers.toString()) }));
