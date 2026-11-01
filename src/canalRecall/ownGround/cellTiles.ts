@@ -56,19 +56,26 @@ export function splitIntoTiles(positions: ArrayLike<number>, indices: Uint16Arra
   }
   const out: CellTile[] = [];
   const Ctor = indices instanceof Uint16Array ? Uint16Array : Uint32Array;
+  // One pass scatters every triangle into its tile, in triangle order (each tile used to rescan all triangles: n² passes).
+  // A NaN centroid's tile is stored as 0 but never counted (as before): its writes past a tile's end are dropped.
+  const tileIdx: (Uint16Array | Uint32Array)[] = [], fill = new Uint32Array(n * n);
+  const box = new Float64Array(n * n * 6);
+  for (let k = 0; k < n * n; k++) { tileIdx.push(new Ctor(counts[k] * 3)); box.fill(Infinity, k * 6, k * 6 + 3); box.fill(-Infinity, k * 6 + 3, k * 6 + 6); }
+  for (let t = 0; t < triangles; t++) {
+    const k = tileOf[t], idx = tileIdx[k], b = k * 6;
+    for (let v = 0; v < 3; v++) {
+      const vi = indices[3 * t + v], o = vi * stride;
+      idx[fill[k]++] = vi;
+      const x = positions[o], y = positions[o + 1], z = positions[o + 2];
+      if (x < box[b]) box[b] = x; if (x > box[b + 3]) box[b + 3] = x;
+      if (y < box[b + 1]) box[b + 1] = y; if (y > box[b + 4]) box[b + 4] = y;
+      if (z < box[b + 2]) box[b + 2] = z; if (z > box[b + 5]) box[b + 5] = z;
+    }
+  }
   for (let k = 0; k < n * n; k++) {
     if (!counts[k]) continue;
-    const idx = new Ctor(counts[k] * 3);
-    let m = 0, bx0 = Infinity, by0 = Infinity, bz0 = Infinity, bx1 = -Infinity, by1 = -Infinity, bz1 = -Infinity;
-    for (let t = 0; t < triangles; t++) {
-      if (tileOf[t] !== k) continue;
-      for (let v = 0; v < 3; v++) {
-        const vi = indices[3 * t + v], o = vi * stride;
-        idx[m++] = vi;
-        const x = positions[o], y = positions[o + 1], z = positions[o + 2];
-        if (x < bx0) bx0 = x; if (x > bx1) bx1 = x; if (y < by0) by0 = y; if (y > by1) by1 = y; if (z < bz0) bz0 = z; if (z > bz1) bz1 = z;
-      }
-    }
+    const idx = tileIdx[k], b = k * 6;
+    const bx0 = box[b], by0 = box[b + 1], bz0 = box[b + 2], bx1 = box[b + 3], by1 = box[b + 4], bz1 = box[b + 5];
     const center: [number, number, number] = [(bx0 + bx1) / 2, (by0 + by1) / 2, (bz0 + bz1) / 2];
     // The box's half-diagonal: a sphere round every vertex the tile uses (looser than the tightest, never smaller).
     out.push({ indices: idx, center, radius: Math.hypot(bx1 - bx0, by1 - by0, bz1 - bz0) / 2, cell: k });
