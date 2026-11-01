@@ -72,6 +72,13 @@ const SPOTS: Spot[] = [
   { name: 'transvaal1926-theronstraat-25-31', centre: [4.9158006, 52.352054], standDeg: 283, standM: 8, view: 'cockpit' },
   { name: 'transvaal1926-theronstraat-20-26', centre: [4.9154452, 52.3521013], standDeg: 103, standM: 8, view: 'cockpit' },
   { name: 'transvaal1926-steynstraat-9-15', centre: [4.9161591, 52.3510951], standDeg: 299, standM: 7, view: 'cockpit' },
+  // Duivelseiland 1899 corbel-cornice rows (#160): Cornelis Anthoniszstraat 62-70, Balthasar Floriszstraat 2A-8 and 20-26.
+  { name: 'museum-de-anthoniszstraat-62-70', centre: [4.8857712, 52.3538079], standDeg: 343, standM: 8, view: 'cockpit' },
+  { name: 'museum-de-floriszstraat-2a-8', centre: [4.8844596, 52.3530517], standDeg: 345, standM: 8, view: 'cockpit' },
+  { name: 'museum-de-floriszstraat-20-26', centre: [4.8853927, 52.3531919], standDeg: 348, standM: 8, view: 'cockpit' },
+  // Hondecoeterbuurt glazed-oriel row and Johannes Vermeerbuurt lintel-parapet row (#160).
+  { name: 'museum-hc-wouwermanstraat-18-10', centre: [4.8795164, 52.3551376], standDeg: 159, standM: 8, view: 'cockpit' },
+  { name: 'museum-jv-maesstraat-47-61', centre: [4.8822975, 52.3550121], standDeg: 340, standM: 8, view: 'cockpit' },
   // Transvaalbuurt 1911 variants (#156): flat white dormers, a shared gable, lone stair blocks with wall dormers.
   { name: 'transvaal1911b-transvaalstraat-39-41', centre: [4.9263594, 52.3552451], standDeg: 333, standM: 8, view: 'cockpit' },
   { name: 'transvaal1911b-transvaalstraat-42-44', centre: [4.9256896, 52.3551322], standDeg: 138, standM: 8, view: 'cockpit' },
