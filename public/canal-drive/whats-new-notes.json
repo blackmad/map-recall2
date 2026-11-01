@@ -3,6 +3,42 @@
   "notes": [
     {
       "date": "2026-11-01",
+      "title": "Transvaalbuurt: five more designs, 44 more fronts",
+      "text": "Four lanes ran at once on the buurt's remaining families. Danie Theronstraat and President Steynstraat (1926–1928) now draw their band-window rows with the top ribbon of windows between white bands and the portiek canopies; De la Reijstraat 29–37 and Kraaipanstraat get the 1920 three-storey oriel rows with cream bays and dark blue doors; Retiefstraat 194–268 and Transvaalkade the plain 1921 five-storey row; Vaalrivierstraat 4–12 and Kraaipanstraat 63–65 the 1931 two-storey rows with blue door pairs. The 1911 rows gained their low shouldered gable, a gable shared by two houses (Transvaalstraat 42–44) and a white timber dormer that keeps its glass inside the roof (Transvaalstraat 39–41), and Retiefstraat 71D–73A were redrawn with the shouldered gables the photo shows. A stair block of five metres or more may now stand alone, which released four single pands. 44 new pands, 57 in the buurt so far; the rest are held with a reason each until the kit can draw them.",
+      "where": [
+        4.9156,
+        52.35205
+      ],
+      "images": [
+        {
+          "src": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/whats-new/2026-11-01-transvaalbuurt-theronstraat-before.jpg",
+          "alt": "Danie Theronstraat 25-31 before: generic gabled city-tier houses",
+          "caption": "Danie Theronstraat 25–31 before."
+        },
+        {
+          "src": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/whats-new/2026-11-01-transvaalbuurt-theronstraat-after.jpg",
+          "alt": "Danie Theronstraat 25-31 after: the flat-roofed 1926 band-window row",
+          "caption": "After: the 1926 band-window row."
+        },
+        {
+          "src": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/whats-new/2026-11-01-transvaalbuurt-theronstraat-strip.jpg",
+          "alt": "Panorama strip of Danie Theronstraat 2-36 over the model at the same scale",
+          "caption": "The 2020 panorama strip over the model, same frame and scale."
+        },
+        {
+          "src": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/whats-new/2026-11-01-transvaalbuurt-de-la-reijstraat.jpg",
+          "alt": "De la Reijstraat 29-37 from the street: three-storey oriel row with cream bays",
+          "caption": "De la Reijstraat 29–37, the 1920 oriel row."
+        },
+        {
+          "src": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/whats-new/2026-11-01-transvaalbuurt-vaalrivierstraat-strip.jpg",
+          "alt": "Vaalrivierstraat 4-12 strip over the model: two-storey row with blue door pairs",
+          "caption": "Vaalrivierstraat 4–12, strip over model."
+        }
+      ]
+    },
+    {
+      "date": "2026-11-01",
       "title": "Under the new engine, the ride starts with the street around you drawn",
       "text": "On the new engine (?engine=own) the ride could begin with only a couple of blocks drawn and the rest arriving over the next seconds, because behind the loading screen the buildings were styled far too slowly. The hold now finishes styling first and waits for the facades around you to be in place."
     },
