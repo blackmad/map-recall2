@@ -7,6 +7,7 @@ import roseGardens from './rose-garden-data.js';
 // The view comes from the WorldCamera (engine/worldCameraOf.ts, P5 B6), not the CameraMap shim (#129: ~220 calls/s).
 import {worldCameraOf} from '../../../src/canalRecall/engine/worldCameraOf.ts';
 import {InstanceCull,treeCullFlag} from '../../../src/canalRecall/rendererShared/instanceCull.ts';
+import {trunkGeometry,treeCapsFlag} from '../../../src/canalRecall/rendererShared/trunkGeometry.ts';
 const {THREE} = window.CanalRecallThree;
 const MIN_ZOOM = 15.5;
 const BUDGET = 12;
@@ -206,7 +207,7 @@ export class InventoryTrees {
       const wood=key==='wood',cone=key.startsWith('cone-'),rose=key.startsWith('rose-');
       const geometryKey=wood?'wood':cone?'cone':rose?key:this.camera.zoom()>=18?'faceted-detail':'faceted';
       if(!this.geometries.has(geometryKey))this.geometries.set(geometryKey,
-        wood?new THREE.CylinderGeometry(.22,.28,1,7).rotateX(Math.PI/2)
+        wood?trunkGeometry(THREE,{bottomCap:treeCapsFlag()})
           :cone?new THREE.ConeGeometry(1,2,8).rotateX(Math.PI/2)
           :rose?roseBushGeometry()
           :new THREE.IcosahedronGeometry(1,this.camera.zoom()>=18?1:0));
