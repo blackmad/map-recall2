@@ -30,7 +30,7 @@
  * of a seeded random 10 % of the installs at thumbnail size.
  */
 import fs from 'node:fs/promises';
-import {existsSync} from 'node:fs';
+import {existsSync, readFileSync} from 'node:fs';
 import path from 'node:path';
 import {execFileSync} from 'node:child_process';
 import sharp from 'sharp';
@@ -43,9 +43,12 @@ import {faceWallExposure} from '../look/face-wall-exposure.ts';
 import {closeRenderer} from '../building-recipes/render.ts';
 import {houseIntents, validateBlockFace} from '../../src/canalRecall/blockFace/intent.ts';
 import {fileTypeLoader} from '../../src/canalRecall/blockFace/typeLibrary.ts';
-import {toHex} from '../../src/canalRecall/blockFace/wallColour.ts';
+import {measureWallColour, toHex, type Rgb} from '../../src/canalRecall/blockFace/wallColour.ts';
+import {measureStripPalette} from '../../src/canalRecall/blockFace/stripPalette.ts';
+import {isLeaf} from '../../src/canalRecall/buildingRecipe/measureFacade.ts';
+import {hexToRgb} from '../../src/canalRecall/look/palette.ts';
 import {spanQuality, stripQuality, type StripQualityVerdict} from '../../src/canalRecall/blockFace/stripQuality.ts';
-import {BATCH_GATES, brickForDrawnLuma, coveredElsewhere, facingsToHousePalette, libraryYearMatches, installVerdict, restripDates, sampleShare, selectBatchFaces, autoPlaceArgs, trimShared} from '../../src/canalRecall/blockFace/batchInstall.ts';
+import {BATCH_GATES, brickForDrawnLuma, coveredElsewhere, facingsToHousePalette, libraryYearMatches, installVerdict, restripDates, sampleShare, selectBatchFaces, autoPlaceArgs, trimShared, foliageColumns, maskColumns, cleanWallVerdict, rowMedianRgb, type PixelBox} from '../../src/canalRecall/blockFace/batchInstall.ts';
 
 const arg = (n: string) => process.argv.find(a => a.startsWith(`--${n}=`))?.slice(n.length + 3);
 const flag = (n: string) => process.argv.includes(`--${n}`);
@@ -183,18 +186,59 @@ async function trimmedFace(face: string, keep: string[], dropped: string[]): Pro
 }
 
 /**
+ * Wall readings from tree-free columns only (#157 fix 3, batchInstall.ts WALL_REFIT): per pand, the columns of its wall
+ * box where street trees or hedges cover the brick are dropped before the photo/model wall colour (review.ts box) and the
+ * strip wall luma (face-wall-exposure.ts) are read. A pand left with too few clean columns takes the row median of the
+ * clean pands; a row without one keeps its bricks. A pand without foliage keeps the review's reading unchanged.
+ */
+interface CleanWall { pandId: string; mode: 'unmasked' | 'own' | 'row' | 'none'; wallColour: any | null; wallLuma: number | null; cleanShare: number }
+async function cleanWalls(run: string, fc: any[]): Promise<{walls: CleanWall[]; note: string | null}> {
+  const strip = await readJson(path.join(FACES, run, 'strip.json')), report = await readJson(path.join(STAGING, run, 'report.json'));
+  const W = strip.width, H = strip.height, ppm = strip.pixelsPerMetre;
+  const photo = new Uint8Array(await sharp(strip.image).resize(W, H, {fit: 'fill'}).removeAlpha().raw().toBuffer());
+  const modelPng = path.join(STAGING, run, 'review', 'model-ortho.png');
+  const model = existsSync(modelPng) ? new Uint8Array(await sharp(modelPng).resize(W, H, {fit: 'fill'}).removeAlpha().raw().toBuffer()) : null;
+  const luma = (c: readonly number[]) => 0.2126 * c[0] + 0.7152 * c[1] + 0.0722 * c[2];
+  const walls: CleanWall[] = strip.spans.map((s: any, i: number) => {
+    const eaves = report.perPand[i].eavesM, box: PixelBox = {x0: Math.round(s.px[0] + 8), x1: Math.round(s.px[1] - 8), y0: Math.max(0, Math.round(H - (eaves - 1) * ppm)), y1: Math.round(H - 3.8 * ppm)};
+    const own = fc.find(f => f.pand === s.pandId)?.wallColour ?? null;
+    const facts = path.join(FACES, run, 'pands', s.pandId, 'facts.json'), h = existsSync(facts) ? JSON.parse(readFileSync(facts, 'utf8')).heights : null;
+    const palette = (rgb: Uint8Array) => measureStripPalette({rgb, width: W, height: H, x0: s.px[0], x1: s.px[1], pixelsPerMetre: ppm, eavesM: h?.eavesM ?? h?.dak70pM ?? 14});
+    const lumaOf = (p: ReturnType<typeof palette>) => p.wall && !p.stucco && p.shares.wall >= 0.3 ? luma(hexToRgb(p.wall)) : null;
+    if (box.x1 <= box.x0 || box.y1 <= box.y0) return {pandId: s.pandId, mode: 'unmasked', wallColour: own, wallLuma: lumaOf(palette(photo)), cleanShare: 1};
+    const masked = foliageColumns(photo, W, box, isLeaf), v = cleanWallVerdict(masked, ppm);
+    if (!masked.some(Boolean)) return {pandId: s.pandId, mode: 'unmasked', wallColour: own, wallLuma: lumaOf(palette(photo)), cleanShare: 1};
+    if (!v.own) return {pandId: s.pandId, mode: 'row', wallColour: null, wallLuma: null, cleanShare: v.share};
+    const wc = model ? measureWallColour({photo, model: maskColumns(model, W, H, box, masked, [159, 184, 207]), width: W, height: H, box}) : null;
+    return {pandId: s.pandId, mode: 'own', wallColour: wc, wallLuma: lumaOf(palette(maskColumns(photo, W, H, box, masked, [128, 128, 128]))), cleanShare: v.share};
+  });
+  const clean = walls.filter(w => w.mode !== 'row' && w.wallColour), rowRgb = rowMedianRgb(clean.map(w => w.wallColour.photo as Rgb));
+  const lumas = walls.filter(w => w.mode !== 'row' && w.wallLuma !== null).map(w => w.wallLuma!).sort((a, b) => a - b), rowLuma = lumas.length ? lumas[lumas.length >> 1] : null;
+  const rowPands = walls.filter(w => w.mode === 'row');
+  for (const w of rowPands) {
+    const m = fc.find(f => f.pand === w.pandId)?.wallColour?.model ?? null;
+    if (!rowRgb || !m) { w.mode = 'none'; continue; }
+    w.wallColour = {photo: rowRgb, model: m, pass: false, note: 'row median of the tree-free walls'};
+    w.wallLuma = rowLuma;
+  }
+  const short = (ws: CleanWall[]) => ws.map(w => w.pandId.slice(-6)).join(', ');
+  const note = rowPands.length ? `[batch.ts: foliage over the wall of ${short(rowPands)}; ${rowRgb ? `wall from the row median of ${clean.length} tree-free pand(s) ${toHex(rowRgb)}` : 'no tree-free pand in the row, bricks kept'}]` : null;
+  return {walls, note};
+}
+
+/**
  * Brick pands whose review wall check fails: refit their brick through the city tint (paletteOverrides.brick). With
  * `all` (the face's stripOverDrawn is out of range), every brick pand with a wall reading is refitted: a row can pass
  * the per-pand hue/saturation/lightness tolerance while drawing 0.7x the photo's linear wall light (Kinkerstraat
  * 109-161, 112-116, 120-138, 142-178 on the first batch run, #98's 56-84 at 0.705 before its bricks were fitted).
  */
-async function fitWalls(run: string, fc: any[], all = false): Promise<number> {
+async function fitWalls(run: string, fc: any[], clean: CleanWall[], note: string | null, all = false): Promise<number> {
   const file = path.join(FACES, run, 'intent.json'), intent = await readJson(file);
   const discovery = await readJson(path.join(FACES, run, 'discovery.json'));
   const resolved = houseIntents(validateBlockFace(intent, discovery.members, fileTypeLoader()));
   let n = 0;
   for (const f of fc) {
-    const w = f.wallColour, h = intent.houses.find((x: any) => x.pandId === f.pand), r = resolved.find(x => x.pandId === f.pand);
+    const c = clean.find(x => x.pandId === f.pand), w = c ? c.wallColour : f.wallColour, h = intent.houses.find((x: any) => x.pandId === f.pand), r = resolved.find(x => x.pandId === f.pand);
     if (!w || (w.pass && !all) || !h?.type || !r || (r.palette.wallMaterial ?? 'brick') === 'stucco') continue;
     const brick = typeof r.palette.brick === 'string' ? r.palette.brick : null;
     if (!brick) continue;
@@ -203,6 +247,7 @@ async function fitWalls(run: string, fc: any[], all = false): Promise<number> {
     h.type.paletteOverrides = {...(h.type.paletteOverrides ?? {}), brick: fit.brick};
     n++;
   }
+  if (n && note && !String(intent.note ?? '').includes(note)) intent.note = `${intent.note ?? ''} ${note}`.trim();
   if (n) await writeJson(file, intent);
   return n;
 }
@@ -212,19 +257,24 @@ async function fitWalls(run: string, fc: any[], all = false): Promise<number> {
  * (batchInstall.ts brickForDrawnLuma), in the hue the review fit reads off the photo. Pands the city tint cannot reach
  * keep the nearest brick it can draw (the verdict then fails on stripOverDrawn).
  */
-async function matchExposure(run: string, e: NonNullable<Awaited<ReturnType<typeof faceWallExposure>>>, fc: any[]): Promise<number> {
+async function matchExposure(run: string, e: NonNullable<Awaited<ReturnType<typeof faceWallExposure>>>, fc: any[], clean: CleanWall[], note: string | null): Promise<number> {
   const file = path.join(FACES, run, 'intent.json'), intent = await readJson(file);
   const discovery = await readJson(path.join(FACES, run, 'discovery.json'));
   const resolved = houseIntents(validateBlockFace(intent, discovery.members, fileTypeLoader()));
   let n = 0;
-  for (const p of e.pands) {
-    const h = intent.houses.find((x: any) => x.pandId === p.pandId), r = resolved.find(x => x.pandId === p.pandId), w = fc.find(f => f.pand === p.pandId)?.wallColour;
+  for (const p0 of e.pands) {
+    // Tree-free wall luma (cleanWalls): a pand under foliage takes the row's, a row without a clean pand keeps its brick.
+    const c = clean.find(x => x.pandId === p0.pandId);
+    if (c && (c.mode === 'none' || (c.mode !== 'unmasked' && c.wallLuma === null))) continue;
+    const p = c && c.mode !== 'unmasked' ? {...p0, wallLuma: c.wallLuma!} : p0;
+    const h = intent.houses.find((x: any) => x.pandId === p.pandId), r = resolved.find(x => x.pandId === p.pandId), w = c ? c.wallColour : fc.find(f => f.pand === p.pandId)?.wallColour;
     if (!h?.type || !r || typeof r.palette.brick !== 'string') continue;
     const hue = w ? fitWallBrick(r.palette.brick, toHex(w.model), toHex(w.photo)).brick : r.palette.brick;
     const m = brickForDrawnLuma(hue, p.wallLuma, {wallMaterial: r.palette.wallMaterial, wallTint: r.palette.wallTint});
     h.type.paletteOverrides = {...(h.type.paletteOverrides ?? {}), brick: m.brick};
     n++;
   }
+  if (n && note && !String(intent.note ?? '').includes(note)) intent.note = `${intent.note ?? ''} ${note}`.trim();
   if (n) await writeJson(file, intent);
   return n;
 }
@@ -239,12 +289,14 @@ async function judgeRun(run: string, strip: {bad: boolean; reasons: string[]}) {
   };
   try {
     const fc = await compileAndReview();
-    wallFits = await fitWalls(run, fc);
-    let fc2 = fc;
-    if (wallFits) fc2 = await compileAndReview();
+    const cw = await cleanWalls(run, fc);
+    if (cw.note) console.log(`  ${run}: ${cw.note}`);
+    wallFits = await fitWalls(run, fc, cw.walls, cw.note);
+    let fc2 = fc, cw2 = cw;
+    if (wallFits) { fc2 = await compileAndReview(); cw2 = await cleanWalls(run, fc2); }
     const e = await faceWallExposure(run).catch(() => null), [lo, hi] = BATCH_GATES.stripOverDrawn;
     if (e?.stripOverDrawn != null && (e.stripOverDrawn < lo || e.stripOverDrawn > hi)) {
-      const n = await matchExposure(run, e, fc2);
+      const n = await matchExposure(run, e, fc2, cw2.walls, cw2.note);
       if (n) { wallFits += n; await compileAndReview(); }
     }
   } catch (e) { error = (e as Error).message; }

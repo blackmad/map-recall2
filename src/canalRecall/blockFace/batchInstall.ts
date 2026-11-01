@@ -162,3 +162,54 @@ export function autoPlaceArgs(o: {buurt: string; district: string; face: string;
   return ['--import', 'tsx', 'scripts/block-face/auto-place.ts', `--buurt=${o.buurt}`, `--district=${o.district}`, `--only=${o.face}`,
     ...(o.photoDecides ? ['--photo-decides'] : []), ...(replace.length ? [`--replace=${replace.join(',')}`] : [])];
 }
+
+/**
+ * The batch's per-pand wall refit measures the wall from tree-free columns only (#157 fix 3). On Danie Theronstraat
+ * (2020-04-29 strips) the refit read the street trees and hedges in front of 13A, 16A, 23A and 28 as wall and drew them
+ * near-black and olive (#0e0d09, #1f1e15); lane #155 installed one measured brick per row instead.
+ *   leafColumnShare: a column of the wall box with more leaf pixels (measureFacade.ts isLeaf) than this is foliage;
+ *   minCleanShare / minCleanM: a pand with fewer clean columns than this share of its box, or this width, is not
+ *     measured on its own: it takes the row median of the clean pands' walls (with a note).
+ */
+export const WALL_REFIT = {leafColumnShare: 0.08, minCleanShare: 0.4, minCleanM: 1.2} as const;
+
+export interface PixelBox { x0: number; x1: number; y0: number; y1: number }
+
+/** Per column of `box` (x0..x1): true where the column is foliage (leaf share of its non-placeholder pixels over the limit). */
+export function foliageColumns(rgb: Uint8Array, width: number, box: PixelBox, isLeaf: (r: number, g: number, b: number) => boolean, share: number = WALL_REFIT.leafColumnShare): boolean[] {
+  const out: boolean[] = [];
+  for (let x = box.x0; x < box.x1; x++) {
+    let n = 0, leaf = 0;
+    for (let y = box.y0; y < box.y1; y++) {
+      const i = (y * width + x) * 3, r = rgb[i], g = rgb[i + 1], b = rgb[i + 2];
+      if (Math.abs(r - 128) <= 2 && Math.abs(g - 128) <= 2 && Math.abs(b - 128) <= 2) continue; // strip placeholder
+      n++; if (isLeaf(r, g, b)) leaf++;
+    }
+    out.push(n > 0 && leaf / n > share);
+  }
+  return out;
+}
+
+/** A copy of `rgb` with the given columns of `box` set to `fill` (the strip placeholder grey or the render background). */
+export function maskColumns(rgb: Uint8Array, width: number, height: number, box: PixelBox, masked: readonly boolean[], fill: readonly [number, number, number]): Uint8Array {
+  const out = Uint8Array.from(rgb);
+  for (let k = 0; k < masked.length; k++) {
+    if (!masked[k]) continue;
+    const x = box.x0 + k;
+    for (let y = 0; y < height; y++) out.set(fill, (y * width + x) * 3);
+  }
+  return out;
+}
+
+/** Whether a pand keeps its own wall reading: enough clean columns left after the foliage columns are dropped. */
+export function cleanWallVerdict(masked: readonly boolean[], pixelsPerMetre: number): {own: boolean; cleanColumns: number; share: number} {
+  const clean = masked.filter(m => !m).length, share = masked.length ? clean / masked.length : 0;
+  return {own: share >= WALL_REFIT.minCleanShare && clean >= WALL_REFIT.minCleanM * pixelsPerMetre, cleanColumns: clean, share: +share.toFixed(2)};
+}
+
+/** Channel-wise median of the clean pands' wall colours (null when no pand is clean). */
+export function rowMedianRgb(colours: readonly (readonly [number, number, number])[]): [number, number, number] | null {
+  if (!colours.length) return null;
+  const m = (c: number) => { const s = colours.map(x => x[c]).sort((a, b) => a - b); return s[s.length >> 1]; };
+  return [m(0), m(1), m(2)];
+}
