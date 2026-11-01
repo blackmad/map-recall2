@@ -166,8 +166,10 @@ test('tier choice: only a missed probe budget or a software GPU lowers it; ?tier
   assert.equal(chooseTier({ ...fast, coarse: true, deviceMemory: 2, hardwareConcurrency: 2 }).tier, 'high');
   assert.equal(chooseTier({ ...fast, frameMs: null }).tier, 'high');
   assert.deepEqual(chooseTier({ ...fast, gpu: 'llvmpipe' }, 'high'), { tier: 'high', reasons: ['asked'] });
-  // high is the frame before tiers: native ratio, 2048² ceiling, device facade level.
-  assert.deepEqual({ ...TIER_SETTINGS.high }, { shadows: true, shadowMapSize: 2048, standIns: true, facadeDetail: null, dprCap: Infinity });
+  // high is the frame before tiers: native ratio, 2048² ceiling, device facade and ground levels.
+  assert.deepEqual({ ...TIER_SETTINGS.high }, { shadows: true, shadowMapSize: 2048, standIns: true, facadeDetail: null, dprCap: Infinity, ground: null });
+  assert.equal(TIER_SETTINGS.mid.ground, null);
+  assert.deepEqual(TIER_SETTINGS.low.ground, { detail: 'touch', near: 'all', ring: 'view' });
   assert.equal(TIER_SETTINGS.mid.dprCap, 1.5);
   assert.equal(TIER_SETTINGS.low.dprCap, 1);
 });

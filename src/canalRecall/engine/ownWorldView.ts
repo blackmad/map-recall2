@@ -192,6 +192,12 @@ export class OwnWorldView {
     const explicitDpr = Number.isFinite(askedDpr) && askedDpr > 0;
     if (!explicitDpr && this.host.getPixelRatio() > settings.dprCap) this.host.setPixelRatio(settings.dprCap);
     if (settings.facadeDetail && W().__canalRecallFacadeDetail === undefined && !search.has('facadeDetail')) W().__canalRecallFacadeDetail = settings.facadeDetail;
+    // The ground reads these once, when it is built below; an explicit query or global still wins.
+    if (settings.ground) {
+      if (W().__canalRecallGroundDetail === undefined && !search.has('groundDetail')) W().__canalRecallGroundDetail = settings.ground.detail;
+      if (W().__canalRecallGroundNear === undefined && !search.has('groundNear')) W().__canalRecallGroundNear = settings.ground.near;
+      if (W().__canalRecallGroundRing === undefined && !search.has('groundRing')) W().__canalRecallGroundRing = settings.ground.ring;
+    }
     this.qualityTier = { tier, reasons, settings: { ...settings, dprCap: Number.isFinite(settings.dprCap) ? settings.dprCap : null }, probe };
     W().__canalPerf = { ...(W().__canalPerf ?? {}), tier, tierReasons: reasons, tierSettings: this.qualityTier.settings, tierProbe: probe };
     console.info('[canal-recall] quality tier', tier, reasons.join(', ') || '-', probe ? `probe ${probe.frameMs} ms @${probe.fill.width}x${probe.fill.height}` : '');
@@ -339,7 +345,9 @@ export class OwnWorldView {
         });
       }
       const api = W().CanalRecallOwnGround;
-      const budget: Record<string, unknown> = { releaseArrays: coarse() && W().__canalRecallKeepGroundArrays !== true };
+      // Every device frees the ground's CPU arrays once uploaded (81 MB on the desktop ride start, heap gate #130);
+      // a lost context rebuilds the resident cells from the worker. Phones also draw through the tiles only.
+      const budget: Record<string, unknown> = { releaseArrays: W().__canalRecallKeepGroundArrays !== true, tilesOnly: coarse() };
       if (coarse()) budget.radiusM = 400;
       this._ownGround = new api.OwnGround(three.THREE, this._sharedFrame, {
         repaint: () => this.host.triggerRepaint(),

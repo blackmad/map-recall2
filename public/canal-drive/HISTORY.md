@@ -1,5 +1,49 @@
 # Canal Recall — what is built
 
+**Heap at ride start under `?engine=own&world=v1&roads=bin`: desktop 562–581 → 493 MB, the P3 gate (≤ 500 MB) met; iPhone 384 → 359 MB (2026-11-01, #130).**
+Measured with forced GC by `scripts/heap-ride.mjs` (the `engine-own.spec`
+`heapMB` reads without a GC and swings 443–1,341 MB between identical runs, so
+it cannot judge the gate). Cuts (road lane), all CPU copies never read after
+upload: the own ground releases its arrays on desktop too (≈ 40 MB, the rest
+as meshes first draw); the overview drops its CPU arrays via three's
+`onUpload` (34 MB) and rebuilds from its data on context restore; cycle,
+transit and neighbourhood lines (`overlays/flatLines.ts`, 7 MB) rebuild from
+the last `set()` on restore. Left as live data: ground store 90 MB, road graph
+39 MB, streetFronts 25 MB, facts. ArrayBuffer data in the snapshot 293 → 213
+MB; 60 s in 587–613 → 506–522 MB, the growth being landmark GLB arrays (+17
+MB, next cut). A context-loss probe caught that overview casings share their
+fill's geometry and were not rebuilt (three threw on null arrays); fixed in
+the same commit, re-run 0 stale attributes and 0 page errors. Merged over the
+materials lane's overview spans (both add helpers at the same spot in
+`overviewLayer.ts`; kept both).
+
+**Weak-GPU low tier: coarse ground on low, overview drawn over its on-screen spans on every tier; SwiftShader is triangle-bound (2026-11-01, #129).**
+The materials lane measured what SwiftShader is bound by with synchronous
+frames (redraw + 1 px readPixels, low tier, DPR 1.5, layers toggled in one
+page): triangles, not fill (DPR 0.5 moves 450 → 445 ms) and not draws (≈ 200
+calls in every configuration). Per layer: overview 1.0 M triangles ≈ 175 ms
+(0.7 M never culled because every overview mesh had `frustumCulled = false`),
+own ground 90–150 ms, trees 65–75 ms, landmarks 40–45 ms. Two changes: (1) the
+low tier builds the own ground at the coarse level (`TierSettings.ground` in
+`renderGovernor.ts`: detail touch, groundNear all, ring view; mid and high
+unchanged; an explicit query or global still wins), Dam ground triangles 2.21
+→ 1.78 M, low-tier pixel diff 5.8 % of px (drape tone on squares and paving,
+missing bollards); (2) the overview is drawn over its on-screen index span on
+every tier (`engine/overviewLayer.ts`: each geometry cut 8×8 through
+`cutMesh`/`drawAsSpans`, one draw per mesh, tile spheres grown by draw depth
+and line extrusion, `?overviewSpans=0` turns it off): 0 px diff at the high
+tier at the rider pose and the Dam, ≈ 0.65 M fewer triangles, SwiftShader
+low-tier frame 394 → 293 ms at the rider and 492 → 367 at the Dam, desktop
+GPU time unchanged (4–5 ms). SwiftShader p95 per tier (ENGINE=own, DPR 1.5):
+main low 1.8 fps / 244 / 2,904 ms → this low 2.8 / 123 / 1,082; mid 2.3 /
+224 / 985; high 2.1 / 129 / 1,406. The P4 gate (low tier p95 ≤ 33 ms) is not
+met and cannot be on SwiftShader: its steady frame is ≈ 290 ms and removing
+any one of ground, overview, trees or landmarks still leaves 195–220 ms.
+Integrator decision: the gate stays as written and red, no layer is dropped
+from the low tier on a proxy's numbers; it needs a real weak device, which
+the user has deferred. Culling overview triangles inside the ground's discard
+disc was pixel-exact but removed 1 %, dropped.
+
 **World cell format v5 published, lossless: 9.13 → 8.92 MB; decimetre heights built and held (2026-11-01, #130).**
 v5 (road lane) stores `roofFurniture` as a typed integer-list column and adds
 a run symbol to the FOOT shared-vertex back-references; the decoder reads

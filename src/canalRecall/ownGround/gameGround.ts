@@ -92,6 +92,12 @@ export interface OwnGroundOptions {
    * on beside their GPU copy; only `layersAt`, a diagnostics walk, reads them.
    */
   releaseArrays?: boolean;
+  /**
+   * Draw the cut layers through their tiles only and drop the whole-mesh index (phones). Defaults to
+   * `releaseArrays`; `?engine=own` on desktop releases the arrays but keeps the whole draw (spans there rewrite the
+   * index once before upload and need no CPU copy after it).
+   */
+  tilesOnly?: boolean;
   /** Ground palette (groundLook.ts; GROUND_LOOK_DEFAULT unless given). Colour only. */
   groundLook?: GroundLook;
   /** The surveyed road partition from roads-v1 (roadSurfaces.ts). On by default (2026-10-16); `?roads=0` draws the OSM bands. */
@@ -331,7 +337,7 @@ export class OwnGround {
     this.THREE = THREE;
     this.frame = frame;
     this.host = host;
-    this.opts = { radiusM: RADIUS_M, aerialRadiusM: AERIAL_RADIUS_M, fadeMs: FADE_MS, nearM: NEAR_M, minZoom: 15, parks: parksFlag(), rails: railsFlag(), roads: roadsFlag(), groundLook: GROUND_LOOK_DEFAULT, transition: transitionOn(), far: true, releaseArrays: false, detail: detailFlag(), groundNear: groundNearFlag(), ring: groundRingFlag(), tiles: groundTilesFlag(), precompilePerFrame: precompileBudget(), ...options };
+    this.opts = { radiusM: RADIUS_M, aerialRadiusM: AERIAL_RADIUS_M, fadeMs: FADE_MS, nearM: NEAR_M, minZoom: 15, parks: parksFlag(), rails: railsFlag(), roads: roadsFlag(), groundLook: GROUND_LOOK_DEFAULT, transition: transitionOn(), far: true, releaseArrays: false, detail: detailFlag(), groundNear: groundNearFlag(), ring: groundRingFlag(), tiles: groundTilesFlag(), precompilePerFrame: precompileBudget(), ...options, tilesOnly: options.tilesOnly ?? !!options.releaseArrays };
     this.radiusM = this.opts.radiusM;
     this.root = new THREE.Group();
     this.root.name = 'own-ground';
@@ -968,9 +974,9 @@ export class OwnGround {
    */
   private tile(mesh: any): void {
     if (this.opts.tiles <= 1) return;
-    const tilesOnly = !!this.opts.releaseArrays;
+    const tilesOnly = this.opts.tilesOnly;
     // A phone keeps no CPU copy of a whole index (`tilesOnly`); spans rewrite the index in place and need none.
-    if (cutMesh(this.THREE, mesh, this.opts.tiles, TILE_MIN_TRIANGLES, { release: tilesOnly, tilesOnly }) && tilesOnly && mesh.userData.tiles?.length) mesh.geometry.setIndex(null);
+    if (cutMesh(this.THREE, mesh, this.opts.tiles, TILE_MIN_TRIANGLES, { release: !!this.opts.releaseArrays, tilesOnly }) && tilesOnly && mesh.userData.tiles?.length) mesh.geometry.setIndex(null);
   }
 
   private packedGeometry(p: GpuMesh): any {

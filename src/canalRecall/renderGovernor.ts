@@ -275,12 +275,18 @@ export interface TierSettings {
   facadeDetail: 'full' | 'touch' | null;
   /** Pixel ratio cap (also the governor's ceiling); Infinity = the device's own ratio. */
   dprCap: number;
+  /**
+   * Own-ground level (ownGround/gameGround.ts detail/groundNear/groundRing); null keeps the device default.
+   * `low` builds every cell at the coarse `touch` level (no bollards or furniture, coarser drapes) with the
+   * ring fitted to the viewport, which is what a CPU rasteriser is bound by (hand-back on #129).
+   */
+  ground: { detail: 'full' | 'touch'; near: 'block' | 'cell' | 'all'; ring: 'steps' | 'view' } | null;
 }
 
 export const TIER_SETTINGS: Readonly<Record<QualityTier, Readonly<TierSettings>>> = {
-  high: { shadows: true, shadowMapSize: 2048, standIns: true, facadeDetail: null, dprCap: Infinity },
-  mid: { shadows: true, shadowMapSize: 1024, standIns: true, facadeDetail: 'touch', dprCap: 1.5 },
-  low: { shadows: false, shadowMapSize: 1024, standIns: false, facadeDetail: 'touch', dprCap: 1 },
+  high: { shadows: true, shadowMapSize: 2048, standIns: true, facadeDetail: null, dprCap: Infinity, ground: null },
+  mid: { shadows: true, shadowMapSize: 1024, standIns: true, facadeDetail: 'touch', dprCap: 1.5, ground: null },
+  low: { shadows: false, shadowMapSize: 1024, standIns: false, facadeDetail: 'touch', dprCap: 1, ground: { detail: 'touch', near: 'all', ring: 'view' } },
 };
 
 export interface TierProbe {
