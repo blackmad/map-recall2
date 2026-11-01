@@ -1394,8 +1394,12 @@ Root `main` was cleaned on 2026-10-09 (see HISTORY). Live work, in order:
   continuation 115–171 → 19–22 ms; the 4× worst frames are now the engine
   render callback and cell-decode continuations (next split: `withOpenings`
   → `groundCrossing` ~11 ms, L1); `setFeatures` 606 / `_applyChunkPandBases`
-  374 / `post` 219 ms at 4× (materials; its facades package df2fc4959 is
-  next to merge); signature-landmarks `_requestModels` is gated since
+  374 / `post` 219 ms at 4× before the materials facades package (on main
+  2026-11-01, HISTORY "Facades package"): exact single-pass tiles, 2× context
+  index, 2.7× segment grid; headed 4× frames over 50 ms 4 → 1 per minute,
+  longest 100 → 59 ms, `setFeatures` max 167 → 90 ms; materials next: the
+  pre-painted atlas (settle hold + texture painting), then procedural noise
+  and shader programs off the boot path; signature-landmarks `_requestModels` is gated since
   hand-back (14) (skipped only while the request revision, models,
   generation and view-within-slack are unchanged; shadow check 0 misses in
   6,8xx skips; 4× stall 1124 → 196 ms/min; `?landmarkGate=0` turns it off);
@@ -1419,8 +1423,13 @@ Root `main` was cleaned on 2026-10-09 (see HISTORY). Live work, in order:
   decoder inside, still works): add one before the flip. `engine-own.spec`'s `heapMB` is noise without a GC;
   `scripts/heap-ride.mjs` is the measure.
 - **Time to ride under own ≈ 3.5 s median, three of six runs within 70 ms of
-  the 4 s gate**: the settle hold waiting on facade chunks is the variance
-  (materials lane: spawn chunks first); boot → submit 0.84–1.03 s vs 0.48–0.57
+  the 4 s gate**: the settle hold waited on facade chunks that could not
+  build until the atlas (painted on the main thread in 6 ms slices) was
+  bound; chunks now build while it paints (settle 850–1160 → 661–716 ms,
+  racing after submit 2055–2459 → 1885–1967 ms), the ≤ 0.3 s hold target
+  needs the pre-painted atlas (materials), and the 2.8 s hold timeout must
+  wait on the atlas bind so racing never starts without facades (materials,
+  before the flip); boot → submit 0.84–1.03 s vs 0.48–0.57
   default, owners named (HISTORY "Binary road extract is Amsterdam's
   default"): engine overview build 184 ms (the worker-pool build, ~250 ms
   off boot → submit, is held with f8e79ee5e until L1 fixes the desktop
