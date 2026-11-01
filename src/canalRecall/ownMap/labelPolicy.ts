@@ -79,6 +79,8 @@ export function gameLabelContext(game: {
   quizPromptName?: string | null;
   quizCandidateName?: string | null;
   spoilerNames: Iterable<string>;
+  /** A prebuilt index of `spoilerNames` (the caller keeps it while the names are unchanged). */
+  spoilerIndex?: SpoilerIndex;
   quizQuiet: boolean;
   /** Own-map local metres → the game's world units, for the place test. */
   toWorld: (x: number, y: number) => WorldPoint;
@@ -90,7 +92,7 @@ export function gameLabelContext(game: {
       return isPlaceKnown(game.knownPlaces.get(text), w.x, w.y, game.knownRadius);
     },
     hiddenName: game.quizPromptName || game.quizCandidateName || '',
-    spoilerIndex: buildSpoilerIndex(game.spoilerNames),
+    spoilerIndex: game.spoilerIndex ?? buildSpoilerIndex(game.spoilerNames),
     quizQuiet: game.quizQuiet,
   };
 }

@@ -35,6 +35,7 @@ import type { JumpOptions, ScreenPoint, WorldCamera } from './worldViewApi';
 import { FlatLines, type LngLatLine } from './overlays/flatLines';
 import { LabelLayer, type PointLabel } from './overlays/labelLayer';
 import { gameLabelContext, type LabelContext } from '../ownMap/labelPolicy';
+import { buildSpoilerIndex, type SpoilerIndex } from '../orientationPois';
 import { ownPoiFeatures, type OrientationPoiFile } from '../ownPois';
 import { cameraFrame } from '../ownMap/mapCamera';
 import { fromLocal, toLocal } from '../ownMap/frame';
@@ -417,6 +418,20 @@ export class OwnWorldView {
     if (phases) phases.add('labels', performance.now() - t1);
   }
 
+  /**
+   * The spoiler index of `names`, rebuilt only when the names change. The policy key also turns over when a street is
+   * learned (names/known sizes); rebuilding the same index then cost 60-75 ms at 4x and emptied poiNameSpoils' memo,
+   * so the label rebuild re-tested every POI (#129 hand-back 16). The index is a pure function of the names: exact.
+   */
+  private spoilerIndexCache: { names: string[]; index: SpoilerIndex } | null = null;
+  private spoilerIndexFor(names: readonly string[]): SpoilerIndex {
+    const c = this.spoilerIndexCache;
+    if (c && c.names.length === names.length && c.names.every((n, i) => n === names[i])) return c.index;
+    const index = buildSpoilerIndex(names);
+    this.spoilerIndexCache = { names: names.slice(), index };
+    return index;
+  }
+
   /** The game's spoiler screen (labelPolicy.ts gameLabelContext) from the live game, cached by what it reads. */
   private policyCache: { key: string; ctx: LabelContext } | null = null;
   private labelPolicy(): LabelContext & { revision?: string } {
@@ -430,7 +445,7 @@ export class OwnWorldView {
       const ctx = gameLabelContext({
         mapLabelNames: names, knownPlaces: known, knownRadius: 600 * 3,
         quizPromptName: g.quizPromptName, quizCandidateName: g.quizCandidateName,
-        spoilerNames: spoilers, quizQuiet: this.quizQuiet,
+        spoilerNames: spoilers, spoilerIndex: this.spoilerIndexFor(spoilers), quizQuiet: this.quizQuiet,
         toWorld: (x, y) => { const [lng, lat] = fromLocal(x, y); return loader && loader._lastCenterLat != null ? lngLatToWorld(lng, lat, loader) : { x: NaN, y: NaN }; },
       });
       // Street and water names on the map only with the labels toggle on (D), as the basemap's were.
