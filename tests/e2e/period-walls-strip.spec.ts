@@ -56,11 +56,11 @@ test('period walls strip', async ({ page }, info) => {
       for (const e of Array.from(document.body.querySelectorAll('*'))) if (e !== canvas && !e.contains(canvas)) (e as HTMLElement).style.visibility = 'hidden';
     });
     await page.waitForTimeout(1200);
-    await page.locator('canvas.maplibregl-canvas').first().screenshot({ path: `${OUT}/${place.name}-${kind}.png` });
+    await page.locator('canvas.maplibregl-canvas, canvas.engine-canvas').first().screenshot({ path: `${OUT}/${place.name}-${kind}.png` });
     if (MASK) {
       await page.evaluate(src => (0, eval)(src), readFileSync('scripts/look/region-mask.js', 'utf8'));
       await page.waitForTimeout(800);
-      await page.locator('canvas.maplibregl-canvas').first().screenshot({ path: `${OUT}/${place.name}-${kind}.mask.png` });
+      await page.locator('canvas.maplibregl-canvas, canvas.engine-canvas').first().screenshot({ path: `${OUT}/${place.name}-${kind}.mask.png` });
       await page.evaluate(() => (window as any).__regionMaskRestore());
       await page.waitForTimeout(600);
     }

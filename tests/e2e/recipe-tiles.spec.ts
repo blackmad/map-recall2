@@ -166,7 +166,7 @@ for (const mode of MODES) test(`recipe tiles: ${mode.label}`, async ({ page }, i
     await settle(page);
     await quiet(page);
     await page.waitForTimeout(1500);
-    await page.locator('canvas.maplibregl-canvas').first().screenshot({ path: join(dir, `${view.name}.png`) });
+    await page.locator('canvas.maplibregl-canvas, canvas.engine-canvas').first().screenshot({ path: join(dir, `${view.name}.png`) });
     const perf = await measure(page, PERF_MS);
     let pick: unknown = null;
     if (on) {

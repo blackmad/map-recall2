@@ -51,7 +51,7 @@ test('generic gap strip', async ({ page }, info) => {
       for (const e of Array.from(document.body.querySelectorAll('*'))) if (e !== canvas && !e.contains(canvas)) (e as HTMLElement).style.visibility = 'hidden';
     });
     await page.waitForTimeout(1000);
-    await page.locator('canvas.maplibregl-canvas').first().screenshot({ path: `${OUT}/${s.slug}.png` });
+    await page.locator('canvas.maplibregl-canvas, canvas.engine-canvas').first().screenshot({ path: `${OUT}/${s.slug}.png` });
     stats[s.slug] = await page.evaluate(() => (window as any).canalRecallGame.vectorMap._threeBuildings?.stats?.() ?? null);
     // GAP_PROBE=1: the decorated properties of the buildings under a row of screen points (what drew each wall).
     if (process.env.GAP_PROBE) stats[`${s.slug}:probe`] = await page.evaluate(() => {

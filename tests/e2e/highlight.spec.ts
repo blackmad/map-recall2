@@ -69,7 +69,7 @@ for (const frame of FRAMES) {
     await openRoute(page, { travelMode: 'car', viewMode: 'chase', query: frame.query, abortHeavyTiles: true });
     const fallback = frame.name === 'MapLibre fallback';
     const landmark = await park(page, !fallback);
-    const canvas = page.locator('canvas.maplibregl-canvas').first();
+    const canvas = page.locator('canvas.maplibregl-canvas, canvas.engine-canvas').first();
     const scale = await page.evaluate(() => window.devicePixelRatio);
     const before = await colourPixels(await canvas.screenshot(), CORAL, scale);
     const state: any = await page.evaluate((l) => {
@@ -148,7 +148,7 @@ test('highlight (default a): a terrace house from the chase camera carries ≥ 0
     if (g.vectorMap.map) { for (const layer of map.getStyle().layers) if (layer.type === 'symbol') map.setLayoutProperty(layer.id, 'visibility', 'none'); } else g.vectorMap.setLabelsVisible(false);
     for (const e of Array.from(document.body.querySelectorAll('*'))) if (e !== canvas && !e.contains(canvas)) (e as HTMLElement).style.visibility = 'hidden';
   });
-  const canvas = page.locator('canvas.maplibregl-canvas').first();
+  const canvas = page.locator('canvas.maplibregl-canvas, canvas.engine-canvas').first();
   const scale = await page.evaluate(() => window.devicePixelRatio);
   const before = await colourPixels(await canvas.screenshot(), CORAL, scale, 60);
   await page.evaluate(({ pand, pick }) => (window as any).canalRecallGame.vectorMap.setActiveLandmark({
@@ -177,7 +177,7 @@ test('highlight=yellow: the old yellow comparison still paints the destination',
   test.setTimeout(240_000);
   await openRoute(page, { travelMode: 'car', viewMode: 'chase', query: '?highlight=yellow', abortHeavyTiles: true });
   const landmark = await park(page);
-  const canvas = page.locator('canvas.maplibregl-canvas').first();
+  const canvas = page.locator('canvas.maplibregl-canvas, canvas.engine-canvas').first();
   const scale = await page.evaluate(() => window.devicePixelRatio);
   const before = await colourPixels(await canvas.screenshot(), YELLOW, scale, 40);
   const marker = await page.evaluate((l) => { const vm = (window as any).canalRecallGame.vectorMap; vm.setActiveLandmark(l); return !!vm._highlightMarker; }, landmark);

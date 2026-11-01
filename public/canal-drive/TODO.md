@@ -273,7 +273,15 @@ sometimes differs by ~1000 px at Westerkerk (not camera/lifts/styled/install
 order); the harness warm-up hides it; find the cause before trusting
 cold-load pixel A/Bs. Pre-existing default red to own: `street-survey-retire` "shots: default" (35
 entries, expected none) and the flaky `city-startup-lod` "mobile city shells
-remain". **Integrator
+remain". **Decision (user, 2026-11-01): the `?engine=own` flip is Amsterdam-only;** Utrecht,
+Rotterdam and Den Haag keep MapLibre until their own-map extracts (with water)
+exist, so the engine choice becomes city-aware (L1) and no lane spends time on
+other-city extracts before the flip. Oracle round 3 merged 2026-11-01 (HISTORY
+"Oracle migration round 3"): four oracles (`_completeCityHasBuildings`,
+`_facadesActive()`, `_signatureSuppressOsmIds`, `.cr-map-labels`) and three own
+gaps (overview-transition blend, recipe-tiles settle stat, governor start ratio
+1.5 vs 2) are L1's; the lane runs the non-P1 specs on iphone under own next.
+**Integrator
 next:** `CanalRecallUi.stepSteer`
 in `car.js` through the frame host; drop the `leaflet`/`@types/leaflet`
 dependencies at the flip. L1 next: the remaining P1 items (camera parity ≤ 3.2

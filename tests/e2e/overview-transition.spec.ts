@@ -3,6 +3,7 @@ import { mkdirSync, writeFileSync } from 'node:fs';
 import sharp from 'sharp';
 import { openRoute } from './helpers';
 import { jump, lab, zoomWarp, VIEW_REGION, GROUND_REGION, type Frame, type JumpStats } from '../../src/canalRecall/overviewTransition/frameMetrics';
+import { OWN } from './worldCam';
 
 // The flat overview → shaded city transition (src/canalRecall/overviewTransition/). A plan-view zoom sweep over the
 // Westerstraat through the blend window in 0.1-zoom steps; each frame is compared with the previous one magnified
@@ -127,6 +128,7 @@ const LAWN = { lng: 4.868106, lat: 52.357296 }, PARK_RIDER = { lng: 4.8689, lat:
 const MAX_LAWN_DE = 8;
 
 test('overview tiles: the Vondelpark lawn is the tiles\' lawn below the blend, nothing flat over it', async ({ page }, info) => {
+  test.skip(OWN, 'MapLibre style assertion: deleted with the default path at P5');
   test.skip(info.project.name !== 'desktop', 'desktop probe');
   test.setTimeout(240_000);
   await page.setViewportSize({ width: 1280, height: 800 });

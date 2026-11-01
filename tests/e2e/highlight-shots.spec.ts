@@ -128,7 +128,7 @@ for (const frame of FRAMES) for (const style of STYLES) {
       await quiet(page);
       await page.waitForTimeout(500);
       const file = `${OUT}/${frame.name}-${style}-${spot.name}-${view}.png`;
-      const png = await page.locator('canvas.maplibregl-canvas').first().screenshot({ path: file });
+      const png = await page.locator('canvas.maplibregl-canvas, canvas.engine-canvas').first().screenshot({ path: file });
       const share = await colourShare(png, ACCENT[base === 'yellow' ? 'yellow' : accent ?? 'coral']);
       records.push({ spot: spot.name, view, file, share, state, landmark: { id: landmark.id, name: landmark.name, lngLat: landmark.lngLat } });
       await page.evaluate(() => {
