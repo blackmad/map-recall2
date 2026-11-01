@@ -30,7 +30,7 @@ export const FACES: readonly FaceName[] = ['front', 'right', 'back', 'left'];
 export type KioskRole =
   | 'plinth' | 'frame' | 'glass' | 'solid' | 'door' | 'board' | 'void' | 'counter' | 'flap' | 'strut'
   | 'awning' | 'awningStripe' | 'roof' | 'fascia' | 'sign' | 'lettering' | 'chassis' | 'wheel' | 'hull' | 'deck'
-  | 'display' | 'bloomA' | 'bloomB' | 'bloomC' | 'bloomD' | 'foliage' | 'pole';
+  | 'display' | 'bloomA' | 'bloomB' | 'bloomC' | 'bloomD' | 'foliage' | 'pole' | 'trim' | 'corner' | 'screen' | 'green';
 export interface KioskPart { role: KioskRole; geometry: BufferGeometry }
 
 /**
@@ -40,11 +40,16 @@ export interface KioskPart { role: KioskRole; geometry: BufferGeometry }
  *   door   glazed door (a mid rail and a handle bar)  board  vertical-boarded timber panel (herring kiosks)
  *   hatch  serving hatch: board below the counter, open (dark) above it, board above the hatch head; see `KioskHatch`
  *   grille steel bar gate: vertical bars (role strut) every ~0.11 m in the frame plane, dark recess behind
+ *   shuttered  closed for the night: board below `sill`, glass above, a diamond-lattice roll grille (role screen) over
+ *          the whole panel as flat diagonal strips 5 cm proud
  *   louvre solid panel whose part above `louvreFrom` (metres above ground) carries horizontal vent slats (role frame)
  *          every ~0.09 m, standing 5 cm proud of the panel
  */
 export interface KioskPanel {
-  kind: 'glass' | 'solid' | 'door' | 'board' | 'hatch' | 'grille' | 'louvre'; width: number;
+  kind: 'glass' | 'solid' | 'door' | 'board' | 'hatch' | 'grille' | 'louvre' | 'shuttered'; width: number;
+  /** shuttered: top of the boarded lower part (metres above ground), the lower part's role (default board: a white roller
+   *  shutter is 'counter' or any role) and the grille pattern (default diamond) */
+  sill?: number; lowerRole?: KioskRole; lattice?: 'diamond' | 'square';
   lettering?: KioskLettering | KioskLettering[];
   louvreFrom?: number;
 }
@@ -66,18 +71,30 @@ export interface KioskHatch {
   aboveRole?: KioskRole;
 }
 export type KioskRoof =
-  | {kind: 'flat'; thickness: number; overhang: number; /** a second, inset slab on top (upstand/roof light) */ upstand?: {inset: number; height: number}}
+  | {kind: 'flat'; thickness: number; overhang: number; /** a second, inset slab on top (upstand/roof light) */ upstand?: {inset: number; height: number};
+     /** planted (sedum/grass) roof: a vegetation layer `height` tall inset from the slab edge, tufts of taller grass */
+     green?: {inset: number; height: number; tufts?: number};
+     /** metal band round the slab edge, standing 5 cm proud: bottom above the slab underside and height */
+     band?: {bottom: number; height: number};
+     /** a round flue/vent cap on the roof at (along, across) from the plan centre */
+     flue?: {along: number; across: number; height: number; radius: number}}
   | {kind: 'gable' | 'hip'; rise: number; overhang: number; eaveThickness: number; ridge: 'width' | 'depth'}
   | {kind: 'barrel'; rise: number; overhang: number; segments?: number};
 /** Text in the 5x7 pixel face, uppercase A-Z, 0-9, space and . ' & -; centred on (along, bottom) of its face/panel. */
-export interface KioskLettering { text: string; height: number; maxWidth?: number; bottom: number; along?: number; role?: KioskRole }
+export interface KioskLettering { text: string; height: number; maxWidth?: number; bottom: number; along?: number; role?: KioskRole;
+  /** painted lettering: one flat quad per glyph rectangle 5 cm off the board (2 triangles instead of a 12-triangle block) */
+  flat?: boolean }
 export interface KioskSign {
   face: FaceName; along: number; bottom: number; width: number; height: number;
   /** how far the board's front stands proud of the wall plane (>= 0.05) */
   proud: number;
   lettering?: KioskLettering | KioskLettering[];
-  /** 'wall' fixed to the face; 'roof' standing on the roof edge above the face (a top board) */
-  mount?: 'wall' | 'roof';
+  /** 'wall' fixed to the face; 'roof' standing on the roof edge above the face (a top board); 'ridge' standing on the
+   *  plan centre line (a board on the roof ridge), 6 cm thick and lettered on both sides */
+  mount?: 'wall' | 'roof' | 'ridge';
+  /** a flat ornament at each end of the board (leaping fish, emblems): a lozenge `width` x `height`, 6 cm thick, leaning
+   *  outward by `leanDeg` */
+  finials?: {role: KioskRole; width: number; height: number; leanDeg: number};
 }
 export interface KioskSpec {
   variant: KioskVariant;
@@ -96,6 +113,18 @@ export interface KioskSpec {
   signs?: KioskSign[];
   /** trailer: chassis height (body floor), wheel radius, wheel positions along the width, drawbar length (towards -X) */
   trailer?: {floor: number; wheelRadius: number; wheelsAt: number[]; drawbar: number};
+  /** role of the four corner posts (default 'frame'; the 2016 city kiosks have dark corners on white frames) */
+  cornerRole?: KioskRole;
+  /** freestanding framed screens in front of a face (windbreaks / swung-out shutter leaves): centred `along`, standing
+   *  `out` metres in front of the wall plane, turned `angleDeg` about their centre (0 = parallel to the face); the lower
+   *  `solidHeight` is a closed panel (role screen), above it a frame (role screen) round clear glass */
+  screens?: {face: FaceName; along: number; width: number; height: number; solidHeight: number; out: number; angleDeg?: number}[];
+  /** a stone platform under the kiosk, `margin` wider on every side and `height` tall */
+  platform?: {margin: number; height: number};
+  /** boxes on the roof (plant, cooling units, planters): centre along/across from the plan centre, size, height */
+  roofBoxes?: {along: number; across: number; width: number; depth: number; height: number; role?: KioskRole}[];
+  /** canvas awnings on the faces (shop awnings, retractable sunshades) */
+  awnings?: KioskAwning[];
   /** flower stall: hull below the deck, and tiered displays across the open front */
   stall?: {hullDepth: number; hullOverhang: number; tiers: number; tierDepth: number; tierRise: number; openFace: FaceName};
 }
@@ -155,6 +184,11 @@ function faceBox(s: KioskSpec, f: FaceName, along: number, width: number, y0: nu
   g.translate(along, (y0 + y1) / 2, faceOffset(s, f) + (out0 + out1) / 2);
   g.rotateY(FACE_ANGLE[f]);
   return g;
+}
+
+/** One flat quad facing out of a face, from along a0..a1 and y0..y1, at `out` metres off the wall plane. */
+function faceQuad(s: KioskSpec, f: FaceName, a0: number, a1: number, y0: number, y1: number, out: number): BufferGeometry {
+  return faceSolid(s, f, [[a0, y0, out], [a1, y0, out], [a1, y1, out], [a0, y0, out], [a1, y1, out], [a0, y1, out]]);
 }
 
 /** A quad strip / closed solid from face-local points (along, y, out) per triangle: used for the sloped flap and awning. */
@@ -261,7 +295,8 @@ function letteringParts(s: KioskSpec, f: FaceName, l: KioskLettering, surfaceOut
     for (const [cx, cy, cw, chh] of glyphRects(rows)) {
       const a0 = u + cx * px, y1 = l.bottom + (7 - cy) * px;
       // the block starts 1 cm inside the surface so its back never shows a gap; front stands `relief` proud
-      out.push(faceBox(s, f, a0 + cw * px / 2, cw * px * 0.94, y1 - chh * px + px * 0.03, y1 - px * 0.03, surfaceOut - 0.01, surfaceOut + relief));
+      if (l.flat) out.push(faceQuad(s, f, a0 + cw * px * 0.03, a0 + cw * px * 0.97, y1 - chh * px + px * 0.03, y1 - px * 0.03, surfaceOut + relief));
+      else out.push(faceBox(s, f, a0 + cw * px / 2, cw * px * 0.94, y1 - chh * px + px * 0.03, y1 - px * 0.03, surfaceOut - 0.01, surfaceOut + relief));
     }
     u += (rows[0].length + 1) * px;
   }
@@ -297,6 +332,8 @@ export function buildKiosk(s: KioskSpec): KioskPart[] {
   const recess = 0.06, infill = 0.03;
 
   // base: plinth (glass/herring), deck + hull (flower stall), chassis + wheels + drawbar (trailer)
+  // the platform's underside sits 2 cm below ground so it never shares the plinth's bottom plane
+  if (s.platform) add('deck', new BoxGeometry(W + 2 * s.platform.margin, s.platform.height + 0.02, D + 2 * s.platform.margin).translate(0, (s.platform.height - 0.02) / 2, 0));
   if (s.plinth > 0) add('plinth', new BoxGeometry(W, s.plinth, D).translate(0, s.plinth / 2, 0));
   const base = Math.max(s.plinth, floor);
   if (s.trailer) {
@@ -319,7 +356,7 @@ export function buildKiosk(s: KioskSpec): KioskPart[] {
 
   // corner posts
   for (const sx of [-1, 1]) for (const sz of [-1, 1])
-    add('frame', new BoxGeometry(s.post, H - base, s.post).translate(sx * (W / 2 - s.post / 2), (base + H) / 2, sz * (D / 2 - s.post / 2)));
+    add(s.cornerRole ?? 'frame', new BoxGeometry(s.post, H - base, s.post).translate(sx * (W / 2 - s.post / 2), (base + H) / 2, sz * (D / 2 - s.post / 2)));
 
   for (const f of FACES) {
     const face = s.faces[f];
@@ -346,6 +383,11 @@ export function buildKiosk(s: KioskSpec): KioskPart[] {
         // vertical battens every ~0.3 m, 5 cm proud of the boards
         const n = Math.max(1, Math.round(w / 0.3));
         for (let k = 1; k < n; k++) add('frame', faceBox(s, f, c - w / 2 + w * k / n, 0.035, y0, y1, front, front + 0.05));
+      } else if (p.kind === 'shuttered') {
+        const sill = Math.max(y0, Math.min(y1, p.sill ?? y0));
+        if (sill > y0) add(p.lowerRole ?? 'board', faceBox(s, f, c, w, y0, sill, back, front));
+        if (sill < y1) add('glass', faceBox(s, f, c, w, sill, y1, back, front));
+        add('screen', latticeStrips(s, f, c, w, y0, y1, front + 0.05, p.lattice === 'square' ? 0.12 : 0.32, 0.025, p.lattice === 'square'));
       } else if (p.kind === 'louvre') {
         add('solid', faceBox(s, f, c, w, y0, y1, back, front));
         const from = Math.max(y0, Math.min(y1, p.louvreFrom ?? y0));
@@ -372,11 +414,40 @@ export function buildKiosk(s: KioskSpec): KioskPart[] {
   }
 
   if (s.stall) stallFront(s, add);
+  for (const sc of s.screens ?? []) screen(s, sc, add);
+  for (const aw of s.awnings ?? []) awning(s, aw, add);
+  const roofTop = s.wallHeight + (s.roof.kind === 'flat' ? s.roof.thickness : 0);
+  for (const r of s.roofBoxes ?? []) add(r.role ?? 'trim', new BoxGeometry(r.width, r.height, r.depth).translate(r.along, roofTop + r.height / 2, -r.across));
   roof(s, add);
   for (const sign of s.signs ?? []) {
     const f = sign.face;
     if (sign.proud < 0.05) throw Error('sign boards stand at least 5 cm proud');
     const top = sign.bottom + sign.height;
+    if (sign.mount === 'ridge') {
+      const mid = -faceOffset(s, f), opp: FaceName = ({front: 'back', back: 'front', left: 'right', right: 'left'} as const)[f];
+      add('sign', faceBox(s, f, sign.along, sign.width, sign.bottom, top, mid - 0.03, mid + 0.03));
+      for (const l of lines(sign.lettering)) {
+        for (const g of letteringParts(s, f, {...l, along: sign.along + (l.along ?? 0)}, mid + 0.03)) add(l.role ?? 'lettering', g);
+        // the back of the board, read from the opposite side: along mirrors, the surface is the other side of the board
+        for (const g of letteringParts(s, opp, {...l, along: -(sign.along + (l.along ?? 0))}, -faceOffset(s, opp) + 0.03)) add(l.role ?? 'lettering', g);
+      }
+      if (sign.finials) for (const side of [-1, 1]) {
+        const fi = sign.finials, g = new BufferGeometry();
+        const P: [number, number, number][] = [[0, 0, 0.03], [fi.width / 2, fi.height / 2, 0.03], [0, fi.height, 0.03], [-fi.width / 2, fi.height / 2, 0.03]];
+        const Q = P.map(([x, y]) => [x, y, -0.03] as [number, number, number]);
+        const tri: number[] = [];
+        const push = (...v: [number, number, number][]) => {for (const p of v) tri.push(...p);};
+        push(P[0], P[1], P[2], P[0], P[2], P[3], Q[0], Q[2], Q[1], Q[0], Q[3], Q[2]);
+        for (let i = 0; i < 4; i++) {const j = (i + 1) % 4; push(P[i], Q[i], Q[j], P[i], Q[j], P[j]);}
+        g.setAttribute('position', new Float32BufferAttribute(tri, 3));
+        fixWinding(g);
+        g.rotateZ(-side * fi.leanDeg * Math.PI / 180);
+        g.translate(sign.along + side * (sign.width / 2 + fi.width * 0.35), sign.bottom, faceOffset(s, f) + mid);
+        g.rotateY(FACE_ANGLE[f]);
+        add(fi.role, g);
+      }
+      continue;
+    }
     const front = sign.mount === 'roof' ? overhangOf(s) : sign.proud;
     add('sign', faceBox(s, f, sign.along, sign.width, sign.bottom, top, front - 0.04, front));
     for (const l of lines(sign.lettering)) for (const g of letteringParts(s, f, {...l, along: sign.along + (l.along ?? 0)}, front)) add(l.role ?? 'lettering', g);
@@ -400,15 +471,23 @@ function hatchCover(s: KioskSpec, f: FaceName, c: number, w: number, h: KioskHat
       add('strut', g);
     }
   } else if (h.cover === 'awning') {
-    const d = h.awningDepth ?? 0.8, drop = h.awningDrop ?? 0.35, val = h.valance ?? 0.18, n = Math.max(1, h.stripes ?? 1);
-    const top = h.head + 0.15;
-    for (let k = 0; k < n; k++) {
-      const a0 = c - w / 2 - 0.05 + (w + 0.1) * k / n, a1 = c - w / 2 - 0.05 + (w + 0.1) * (k + 1) / n;
-      const role: KioskRole = k % 2 ? 'awningStripe' : 'awning';
-      add(role, slab(s, f, [[a0, top, 0.06], [a1, top, 0.06], [a1, top - drop, 0.06 + d], [a0, top - drop, 0.06 + d]], 0.02, [0, 1, 0]));
-      add(role, faceBox(s, f, (a0 + a1) / 2, a1 - a0, top - drop - val, top - drop + 0.01, d + 0.04, d + 0.08));
-    }
+    awning(s, {face: f, along: c, width: w + 0.1, top: h.head + 0.15, depth: h.awningDepth ?? 0.8, drop: h.awningDrop ?? 0.35, valance: h.valance ?? 0.18, stripes: h.stripes}, add);
   }
+}
+
+/** A sloped canvas awning on a face: from the wall at `top` out `depth` metres falling `drop`, with a valance; striped
+ *  across its width in `stripes` bands alternating awning / awningStripe. */
+export interface KioskAwning { face: FaceName; along: number; width: number; top: number; depth: number; drop: number; valance: number; stripes?: number }
+function awning(s: KioskSpec, a: KioskAwning, add: (r: KioskRole, g: BufferGeometry) => void) {
+  const n = Math.max(1, a.stripes ?? 1), f = a.face;
+  for (let k = 0; k < n; k++) {
+    const a0 = a.along - a.width / 2 + a.width * k / n, a1 = a.along - a.width / 2 + a.width * (k + 1) / n;
+    const role: KioskRole = k % 2 ? 'awningStripe' : 'awning';
+    add(role, slab(s, f, [[a0, a.top, 0.06], [a1, a.top, 0.06], [a1, a.top - a.drop, 0.06 + a.depth], [a0, a.top - a.drop, 0.06 + a.depth]], 0.02, [0, 1, 0]));
+    if (a.valance > 0) add(role, faceBox(s, f, (a0 + a1) / 2, a1 - a0, a.top - a.drop - a.valance, a.top - a.drop + 0.01, a.depth + 0.04, a.depth + 0.08));
+  }
+  // the roller box on the wall the canvas comes out of
+  add('trim', faceBox(s, f, a.along, a.width + 0.04, a.top - 0.06, a.top + 0.1, 0, 0.14));
 }
 
 function stallFront(s: KioskSpec, add: (r: KioskRole, g: BufferGeometry) => void) {
@@ -430,6 +509,59 @@ function stallFront(s: KioskSpec, add: (r: KioskRole, g: BufferGeometry) => void
     const a = -clear / 2 + (k + 0.5) * clear / n;
     add('display', faceBox(s, f, a, 0.32, 0.04, 0.34, 0.05, 0.37));
     add(blooms[(k + 2) % 4], faceBox(s, f, a, 0.4, 0.34, 0.62, 0.01, 0.41));
+  }
+}
+
+/** Diamond lattice as flat strips (two triangles each) in a plane `out` metres off the wall, clipped to the panel. */
+function latticeStrips(s: KioskSpec, f: FaceName, c: number, w: number, y0: number, y1: number, out: number, pitch = 0.32, bar = 0.025, square = false): BufferGeometry {
+  // keep the strips' edges inside the panel: inset by the bar width
+  w -= 2 * bar; y0 += bar; y1 -= bar;
+  const pos: number[] = [], h = y1 - y0;
+  const seg = (a0: number, b0: number, a1: number, b1: number) => {
+    // a strip from (a0,b0) to (a1,b1) in (along, y), `bar` wide across its direction
+    const dx = a1 - a0, dy = b1 - b0, l = Math.hypot(dx, dy), nx = -dy / l * bar / 2, ny = dx / l * bar / 2;
+    const P = [[a0 + nx, b0 + ny], [a1 + nx, b1 + ny], [a1 - nx, b1 - ny], [a0 - nx, b0 - ny]];
+    for (const i of [0, 2, 1, 0, 3, 2]) pos.push(P[i][0], P[i][1], faceOffset(s, f) + out);
+  };
+  // lines along +45 and -45 degrees through the panel rectangle, clipped (Liang-Barsky on the box)
+  const clip = (px: number, py: number, dx: number, dy: number) => {
+    let t0 = -Infinity, t1 = Infinity;
+    for (const [p, q] of [[-dx, px - (c - w / 2)], [dx, (c + w / 2) - px], [-dy, py - y0], [dy, y1 - py]]) {
+      if (Math.abs(p) < 1e-12) { if (q < 0) return null; continue; }
+      const t = q / p;
+      if (p < 0) t0 = Math.max(t0, t); else t1 = Math.min(t1, t);
+    }
+    return t1 - t0 > 0.05 ? [px + dx * t0, py + dy * t0, px + dx * t1, py + dy * t1] : null;
+  };
+  if (square) {
+    // a square grid: verticals and horizontals; the crossings overlap in one plane (same material, no fight between colours)
+    for (let a = c - w / 2 + pitch / 2; a < c + w / 2; a += pitch) seg(a, y0, a, y1);
+    for (let y = y0 + pitch / 2; y < y1; y += pitch) seg(c - w / 2, y, c + w / 2, y);
+  } else for (const dir of [1, -1]) for (let k = -Math.ceil((w + h) / pitch); k <= Math.ceil((w + h) / pitch); k++) {
+    const r = clip(c + k * pitch, y0, dir, 1);
+    if (r) seg(r[0], r[1], r[2], r[3]);
+  }
+  const g = new BufferGeometry();
+  g.setAttribute('position', new Float32BufferAttribute(pos, 3));
+  g.rotateY(FACE_ANGLE[f]);
+  g.computeVertexNormals();
+  return g;
+}
+
+function screen(s: KioskSpec, sc: NonNullable<KioskSpec['screens']>[number], add: (r: KioskRole, g: BufferGeometry) => void) {
+  const t = 0.05, bar = 0.06, f = sc.face, parts: [KioskRole, BufferGeometry][] = [];
+  // authored about the screen's own centre on the face, then turned and moved out
+  const at = (g: BufferGeometry) => g;
+  parts.push(['screen', at(new BoxGeometry(sc.width, sc.solidHeight, t).translate(0, sc.solidHeight / 2, 0))]);
+  parts.push(['screen', new BoxGeometry(bar, sc.height - sc.solidHeight, t).translate(-sc.width / 2 + bar / 2, (sc.height + sc.solidHeight) / 2, 0)]);
+  parts.push(['screen', new BoxGeometry(bar, sc.height - sc.solidHeight, t).translate(sc.width / 2 - bar / 2, (sc.height + sc.solidHeight) / 2, 0)]);
+  parts.push(['screen', new BoxGeometry(sc.width, bar, t).translate(0, sc.height - bar / 2, 0)]);
+  parts.push(['glass', new BoxGeometry(sc.width - 2 * bar, sc.height - sc.solidHeight - bar, 0.012).translate(0, (sc.height - bar + sc.solidHeight) / 2, 0)]);
+  for (const [role, g] of parts) {
+    g.rotateY(-(sc.angleDeg ?? 0) * Math.PI / 180);
+    g.translate(sc.along, 0, faceOffset(s, f) + sc.out);
+    g.rotateY(FACE_ANGLE[f]);
+    add(role, g);
   }
 }
 
@@ -459,6 +591,24 @@ function roof(s: KioskSpec, add: (r: KioskRole, g: BufferGeometry) => void) {
   const r = s.roof, W = s.width, D = s.depth, H = s.wallHeight;
   if (r.kind === 'flat') {
     add('fascia', new BoxGeometry(W + 2 * r.overhang, r.thickness, D + 2 * r.overhang).translate(0, H + r.thickness / 2, 0));
+    if (r.band) {
+      const w2 = W / 2 + r.overhang, d2 = D / 2 + r.overhang, y0 = H + r.band.bottom, y1 = y0 + r.band.height;
+      for (const sz of [-1, 1]) add('trim', new BoxGeometry(2 * w2 + 0.1, y1 - y0, 0.05).translate(0, (y0 + y1) / 2, sz * (d2 + 0.025)));
+      for (const sx of [-1, 1]) add('trim', new BoxGeometry(0.05, y1 - y0, 2 * d2).translate(sx * (w2 + 0.025), (y0 + y1) / 2, 0));
+    }
+    const top = H + r.thickness;
+    if (r.green) {
+      const gw = W + 2 * r.overhang - 2 * r.green.inset, gd = D + 2 * r.overhang - 2 * r.green.inset;
+      add('green', new BoxGeometry(gw, r.green.height, gd).translate(0, top + r.green.height / 2, 0));
+      // tufts of taller grass: low pyramids scattered on a fixed lattice (deterministic)
+      const n = r.green.tufts ?? 0;
+      for (let k = 0; k < n; k++) {
+        const fx = ((k * 0.618034) % 1) - 0.5, fz = ((k * 0.381966 + 0.27) % 1) - 0.5, h = 0.16 + 0.18 * ((k * 0.7548777) % 1);
+        const tuft = new CylinderGeometry(0.06, 0.34, h, 6).translate(fx * (gw - 0.6), top + r.green.height + h / 2, fz * (gd - 0.6));
+        add('foliage', tuft);
+      }
+    }
+    if (r.flue) add('pole', new CylinderGeometry(r.flue.radius, r.flue.radius, r.flue.height, 8).translate(r.flue.along, top + r.flue.height / 2, -r.flue.across));
     if (r.upstand) add('roof', new BoxGeometry(W + 2 * r.overhang - 2 * r.upstand.inset, r.upstand.height, D + 2 * r.overhang - 2 * r.upstand.inset).translate(0, H + r.thickness + r.upstand.height / 2, 0));
     return;
   }

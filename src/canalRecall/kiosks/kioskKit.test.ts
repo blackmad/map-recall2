@@ -137,3 +137,49 @@ test('placedKiosk keeps the plan centre and bearing', () => {
   const l = bounds(parts.filter(p => p.role === 'lettering')).getCenter(new Vector3());
   assert.ok(l.x < c.x - 1, `lettering at ${l.x} vs centre ${c.x}`);
 });
+
+test('green roof, slab band, flue and screens: tufts stand on the planting, screens stand in front of their face', () => {
+  const s: KioskSpec = {...glass, cornerRole: 'corner',
+    roof: {kind: 'flat', thickness: 0.3, overhang: 0.27, green: {inset: 0.15, height: 0.12, tufts: 8}, band: {bottom: 0.08, height: 0.12}, flue: {along: 1, across: 0.5, height: 0.4, radius: 0.1}},
+    screens: [{face: 'front', along: -1.2, width: 2, height: 1.9, solidHeight: 0.9, out: 0.6, angleDeg: 8}]};
+  const parts = buildKiosk(s);
+  const roofTop = s.wallHeight + 0.3;
+  const green = bounds(parts.filter(p => p.role === 'green')), tufts = bounds(parts.filter(p => p.role === 'foliage'));
+  assert.ok(Math.abs(green.min.y - roofTop) < 1e-6 && tufts.min.y >= roofTop + 0.12 - 1e-6);
+  assert.equal(parts.filter(p => p.role === 'corner').length, 4);
+  const band = bounds(parts.filter(p => p.role === 'trim'));
+  assert.ok(band.max.z > s.depth / 2 + 0.27 + 0.049 && band.min.y > s.wallHeight);
+  const sc = bounds(parts.filter(p => p.role === 'screen'));
+  assert.ok(sc.min.z > s.depth / 2 + 0.4 && sc.max.y <= 1.9 + 1e-6, `screen z ${sc.min.z}..${sc.max.z}`);
+  assert.ok(triangleCount(parts) < 3000);
+});
+
+test('flat lettering costs two triangles per glyph rectangle and faces out; lattice strips stay on their panel', () => {
+  const sign = (flat: boolean): KioskSpec => ({...glass, faces: {...glass.faces, front: {panels: [{kind: 'glass', width: 1}]}}, signs: [{face: 'front', along: 0, bottom: 2.5, width: 4, height: 0.3, proud: 0.06, lettering: {text: 'FRENS', height: 0.2, bottom: 2.55, flat}}]});
+  const n = (flat: boolean) => triangleCount(buildKiosk(sign(flat)).filter(p => p.role === 'lettering'));
+  const quads = n(true) / 2;
+  assert.ok(quads >= 5 && n(false) === quads * 12, `${quads} rects, ${n(false)} block triangles`);
+  const flat = buildKiosk(sign(true)).filter(p => p.role === 'lettering');
+  const nz = flat[0].geometry.getAttribute('normal').getZ(0);
+  assert.ok(nz > 0.99, 'front lettering faces +Z');
+  const sh: KioskSpec = {...glass, faces: {...glass.faces, front: {panels: [{kind: 'shuttered', width: 1, sill: 1.2}, {kind: 'shuttered', width: 1, sill: 0.6, lattice: 'square', lowerRole: 'counter'}]}}};
+  const parts = buildKiosk(sh), lat = bounds(parts.filter(p => p.role === 'screen'));
+  assert.ok(lat.min.x >= -sh.width / 2 && lat.max.x <= sh.width / 2 && lat.min.y >= sh.plinth + sh.baseRail - 1e-6 && lat.max.y <= sh.wallHeight - sh.headRail + 1e-6);
+  assert.ok(parts.some(p => p.role === 'counter') && triangleCount(parts) < 3000);
+});
+
+test('a ridge sign stands on the centre line, lettered on both sides, with a finial at each end', () => {
+  const s: KioskSpec = {...herring, faces: {...herring.faces, front: {panels: [{kind: 'board', width: 1}]}}, hatch: undefined,
+    signs: [{face: 'front', along: 0, bottom: 3.0, width: 1.9, height: 0.5, proud: 0.06, mount: 'ridge', lettering: {text: 'HARING', height: 0.2, bottom: 3.12, flat: true}, finials: {role: 'awning', width: 0.3, height: 0.6, leanDeg: 20}}]};
+  const parts = buildKiosk(s);
+  const board = bounds(parts.filter(p => p.role === 'sign'));
+  assert.ok(Math.abs(board.min.z + 0.03) < 1e-6 && Math.abs(board.max.z - 0.03) < 1e-6);
+  const letters = parts.filter(p => p.role === 'lettering');
+  const zs = letters.map(p => {p.geometry.computeBoundingBox(); return p.geometry.boundingBox!.min.z;});
+  assert.ok(zs.some(z => z > 0.05) && zs.some(z => z < -0.05), 'lettering on both faces of the board');
+  // the back lettering faces -Z
+  const back = letters.find(p => p.geometry.boundingBox!.min.z < -0.05)!;
+  assert.ok(back.geometry.getAttribute('normal').getZ(0) < -0.99);
+  const fin = bounds(parts.filter(p => p.role === 'awning'));
+  assert.ok(fin.min.x < -0.95 && fin.max.x > 0.95 && fin.min.y >= 3.0 - 0.2);
+});

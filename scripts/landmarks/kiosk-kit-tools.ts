@@ -13,7 +13,7 @@ export type RoleColours = Record<KioskRole, Colour>;
 export const DEFAULT_ROLE_COLOURS: RoleColours = {
   plinth: 'dark', frame: 'copper', glass: 'glass', solid: 'concrete', door: 'copper', board: 'green', void: 'dark',
   counter: 'copper', flap: 'green', strut: 'dark', awning: 'red', awningStripe: 'white', roof: 'slate', fascia: 'slate',
-  sign: 'white', lettering: 'gold', chassis: 'dark', wheel: 'dark', hull: 'dark', deck: 'ochre', display: 'bronze',
+  sign: 'white', lettering: 'gold', chassis: 'dark', wheel: 'dark', hull: 'dark', deck: 'ochre', display: 'bronze', trim: 'frame', corner: 'dark', screen: 'red', green: 'green',
   bloomA: 'red', bloomB: 'gold', bloomC: 'pink', bloomD: 'white', foliage: 'green', pole: 'dark',
 };
 
