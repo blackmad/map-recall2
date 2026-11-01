@@ -1418,9 +1418,13 @@ Root `main` was cleaned on 2026-10-09 (see HISTORY). Live work, in order:
   default"): engine overview build 184 ms after a first cut (rest off the
   boot path: L1), three-buildings texture painting ≈ 117 ms, own-ground
   procedural noise ≈ 110 ms, shader programs ≈ 75 ms (materials).
-- **`street-follow-tap` fails on iphone 3/3 on main** (binary, JSON and fresh
-  bundles alike): the seeded spawn is on Amsteldijk on a straight path, so
-  the "waiting for a side" premise is stale; the road lane re-pins the pose. `compileAsync` "isReady of undefined"
+- **Two iphone spawn-pose failures on main** (road lane): `street-follow-tap`
+  3/3 (binary, JSON and fresh bundles alike; the seeded spawn is on
+  Amsteldijk on a straight path, so the "waiting for a side" premise is
+  stale) and canal-recall "HUD withholds an unanswered street" (on dec13c446
+  `track.getRoadName` returns "" right after `openCarRoute` on iphone, desktop
+  passes). Isolate JSON vs binary and before/after c1ddabe3c, then re-pin
+  the pose; neither is called a regression until that bisect says so. `compileAsync` "isReady of undefined"
   after context loss, seen once (materials lane).
 - **Weak-GPU low tier cannot meet p95 ≤ 33 ms on SwiftShader** (HISTORY
   "Weak-GPU low tier"): its steady frame is ≈ 290 ms, triangle-bound, and no
