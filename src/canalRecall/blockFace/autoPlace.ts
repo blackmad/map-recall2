@@ -332,9 +332,16 @@ export function scoreType(t: MatchableType, ev: PandEvidence): TypeScore {
   return {typeId: t.id, score: r2(score), veto, criteria};
 }
 
+/**
+ * OSM street furniture matched to a frontage: a bench or a litter bin on the pavement is not a business in the pand.
+ * De la Reijstraat 28B (2026-11-01, #154): an `amenity=bench` 5.6 m out made the house `services` and gave it a shop
+ * front, which a type with a ground-storey oriel cannot carry.
+ */
+export const STREET_FURNITURE = /^amenity=(bench|waste_basket|waste_disposal|recycling|bicycle_parking|motorcycle_parking|parking|parking_entrance|post_box|vending_machine|drinking_water|telephone|clock|charging_station|bicycle_rental|shelter|toilets|grit_bin|letter_box)$/;
 /** Ground use of a pand from BAG and OSM (no photo reading: the agreement says so). */
 export function groundUse(ev: PandEvidence, photoDate: string): GroundFloorUse {
-  const biz = ev.osm.find(o => o.category && !/^office=/.test(o.category)) ?? ev.osm[0];
+  const osm = ev.osm.filter(o => !o.category || !STREET_FURNITURE.test(o.category));
+  const biz = osm.find(o => o.category && !/^office=/.test(o.category)) ?? osm[0];
   const bagTrade = ev.groundUses.some(u => /winkel|bijeenkomst|horeca/.test(u));
   const use: GroundFloorUse['use'] = biz?.category ? (/^amenity=(restaurant|fast_food)/.test(biz.category) ? 'restaurant' : /^amenity=cafe/.test(biz.category) ? 'cafe' : /^amenity=(bar|pub)/.test(biz.category) ? 'bar' : /^shop=/.test(biz.category) ? 'shop' : /^office=/.test(biz.category) ? 'office' : 'services')
     : bagTrade ? 'shop' : ev.groundUses.some(u => /kantoor/.test(u)) ? 'office' : 'residential';

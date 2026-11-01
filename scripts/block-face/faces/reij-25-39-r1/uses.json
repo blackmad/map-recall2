@@ -1,0 +1,124 @@
+{
+ "street": "De la Reijstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-31T14:49:27.866Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012140934",
+   "addresses": [
+    "De la Reijstraat 29A",
+    "De la Reijstraat 29B"
+   ],
+   "groundUnits": [
+    {
+     "address": "De la Reijstraat 29A",
+     "use": "woonfunctie",
+     "areaM2": 65,
+     "bagId": "0363010000617907"
+    },
+    {
+     "address": "De la Reijstraat 29B",
+     "use": "woonfunctie",
+     "areaM2": 82,
+     "bagId": "0363010000617908"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012140132",
+   "addresses": [
+    "De la Reijstraat 31A",
+    "De la Reijstraat 31B"
+   ],
+   "groundUnits": [
+    {
+     "address": "De la Reijstraat 31A",
+     "use": "woonfunctie",
+     "areaM2": 77,
+     "bagId": "0363010000617910"
+    },
+    {
+     "address": "De la Reijstraat 31B",
+     "use": "woonfunctie",
+     "areaM2": 40,
+     "bagId": "0363010000617911"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012098320",
+   "addresses": [
+    "De la Reijstraat 33A",
+    "De la Reijstraat 33B"
+   ],
+   "groundUnits": [
+    {
+     "address": "De la Reijstraat 33A",
+     "use": "woonfunctie",
+     "areaM2": 40,
+     "bagId": "0363010000617913"
+    },
+    {
+     "address": "De la Reijstraat 33B",
+     "use": "woonfunctie",
+     "areaM2": 75,
+     "bagId": "0363010000617914"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012134611",
+   "addresses": [
+    "De la Reijstraat 35A",
+    "De la Reijstraat 35B"
+   ],
+   "groundUnits": [
+    {
+     "address": "De la Reijstraat 35A",
+     "use": "woonfunctie",
+     "areaM2": 81,
+     "bagId": "0363010000943319"
+    },
+    {
+     "address": "De la Reijstraat 35B",
+     "use": "woonfunctie",
+     "areaM2": 42,
+     "bagId": "0363010000943320"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012123796",
+   "addresses": [
+    "De la Reijstraat 37",
+    "De la Reijstraat 39"
+   ],
+   "groundUnits": [
+    {
+     "address": "De la Reijstraat 37",
+     "use": "woonfunctie",
+     "areaM2": 48,
+     "bagId": "0363010000617919"
+    },
+    {
+     "address": "De la Reijstraat 39",
+     "use": "woonfunctie",
+     "areaM2": 78,
+     "bagId": "0363010000617922"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  }
+ ]
+}

@@ -1,12 +1,12 @@
 {
  "buurt": "transvaalbuurt-west",
  "library": "transvaalbuurt",
- "generatedAt": "2026-11-01T08:42:58.678Z",
- "seconds": 24.17,
+ "generatedAt": "2026-11-01T09:15:55.818Z",
+ "seconds": 4.32,
  "totals": {
   "faces": 76,
   "pands": 359,
-  "placed": 10
+  "placed": 25
  },
  "faces": [
   {
@@ -16,7 +16,7 @@
    "placed": 0,
    "held": 7,
    "runs": [],
-   "seconds": 2.23,
+   "seconds": 2.16,
    "byType": {},
    "holds": {
     "evidence": 0,
@@ -37,7 +37,7 @@
    "placed": 0,
    "held": 5,
    "runs": [],
-   "seconds": 7,
+   "seconds": 5.16,
    "byType": {},
    "holds": {
     "evidence": 0,
@@ -54,7 +54,7 @@
    "placed": 0,
    "held": 3,
    "runs": [],
-   "seconds": 0.93,
+   "seconds": 1.26,
    "byType": {},
    "holds": {
     "evidence": 1,
@@ -71,7 +71,7 @@
    "placed": 0,
    "held": 14,
    "runs": [],
-   "seconds": 6.6,
+   "seconds": 5.11,
    "byType": {},
    "holds": {
     "evidence": 0,
@@ -88,7 +88,7 @@
    "placed": 0,
    "held": 3,
    "runs": [],
-   "seconds": 1.4,
+   "seconds": 1.33,
    "byType": {},
    "holds": {
     "evidence": 2,
@@ -105,7 +105,7 @@
    "placed": 0,
    "held": 8,
    "runs": [],
-   "seconds": 3.92,
+   "seconds": 4.64,
    "byType": {},
    "holds": {
     "evidence": 4,
@@ -122,7 +122,7 @@
    "placed": 0,
    "held": 4,
    "runs": [],
-   "seconds": 1.25,
+   "seconds": 1.26,
    "byType": {},
    "holds": {
     "evidence": 0,
@@ -143,13 +143,13 @@
    "placed": 0,
    "held": 9,
    "runs": [],
-   "seconds": 6.11,
+   "seconds": 12.03,
    "byType": {},
    "holds": {
     "evidence": 1,
-    "match": 2,
+    "match": 1,
     "likeness": 2,
-    "run": 2,
+    "run": 3,
     "review": 2
    }
   },
@@ -160,7 +160,7 @@
    "placed": 0,
    "held": 5,
    "runs": [],
-   "seconds": 1.55,
+   "seconds": 1.59,
    "byType": {},
    "holds": {
     "evidence": 0,
@@ -181,7 +181,7 @@
    "placed": 0,
    "held": 10,
    "runs": [],
-   "seconds": 1.86,
+   "seconds": 2.05,
    "byType": {},
    "holds": {
     "evidence": 0,
@@ -219,7 +219,7 @@
    "placed": 0,
    "held": 3,
    "runs": [],
-   "seconds": 0.55,
+   "seconds": 0.52,
    "byType": {},
    "holds": {
     "evidence": 0,
@@ -236,7 +236,7 @@
    "placed": 0,
    "held": 4,
    "runs": [],
-   "seconds": 0.63,
+   "seconds": 0.71,
    "byType": {},
    "holds": {
     "evidence": 1,
@@ -253,7 +253,7 @@
    "placed": 0,
    "held": 5,
    "runs": [],
-   "seconds": 2.91,
+   "seconds": 3.46,
    "byType": {},
    "holds": {
     "evidence": 0,
@@ -308,13 +308,13 @@
    "placed": 0,
    "held": 3,
    "runs": [],
-   "seconds": 0.35,
+   "seconds": 0.48,
    "byType": {},
    "holds": {
     "evidence": 0,
-    "match": 3,
+    "match": 2,
     "likeness": 0,
-    "run": 0,
+    "run": 1,
     "review": 0
    }
   },
@@ -322,15 +322,27 @@
    "face": "kraaipan-17-21",
    "street": "Kraaipanstraat",
    "pands": 3,
-   "placed": 0,
-   "held": 3,
-   "runs": [],
-   "seconds": 0.13,
-   "byType": {},
+   "placed": 2,
+   "held": 1,
+   "runs": [
+    {
+     "face": "kraaipan-17-21-r1",
+     "pands": [
+      "0363100012121091",
+      "0363100012126013"
+     ],
+     "passed": true,
+     "triangles": 2129
+    }
+   ],
+   "seconds": 5.92,
+   "byType": {
+    "transvaal-1920-three-storey": 2
+   },
    "holds": {
     "evidence": 0,
-    "match": 3,
-    "likeness": 0,
+    "match": 0,
+    "likeness": 1,
     "run": 0,
     "review": 0
    }
@@ -339,17 +351,43 @@
    "face": "kraaipan-2-38",
    "street": "Kraaipanstraat",
    "pands": 19,
-   "placed": 0,
-   "held": 19,
-   "runs": [],
-   "seconds": 1.3,
-   "byType": {},
+   "placed": 9,
+   "held": 10,
+   "runs": [
+    {
+     "face": "kraaipan-2-38-r1",
+     "pands": [
+      "0363100012073809",
+      "0363100012092315",
+      "0363100012119532"
+     ],
+     "passed": true,
+     "triangles": 3176
+    },
+    {
+     "face": "kraaipan-2-38-r2",
+     "pands": [
+      "0363100012074901",
+      "0363100012149786",
+      "0363100012101968",
+      "0363100012111001",
+      "0363100012061769",
+      "0363100012069468"
+     ],
+     "passed": true,
+     "triangles": 6391
+    }
+   ],
+   "seconds": 22.17,
+   "byType": {
+    "transvaal-1920-three-storey": 9
+   },
    "holds": {
     "evidence": 0,
-    "match": 19,
-    "likeness": 0,
-    "run": 0,
-    "review": 0
+    "match": 2,
+    "likeness": 4,
+    "run": 3,
+    "review": 1
    }
   },
   {
@@ -359,13 +397,13 @@
    "placed": 0,
    "held": 4,
    "runs": [],
-   "seconds": 0.13,
+   "seconds": 0.23,
    "byType": {},
    "holds": {
     "evidence": 3,
-    "match": 1,
+    "match": 0,
     "likeness": 0,
-    "run": 0,
+    "run": 1,
     "review": 0
    }
   },
@@ -373,14 +411,26 @@
    "face": "kraaipan-31-33",
    "street": "Kraaipanstraat",
    "pands": 2,
-   "placed": 0,
-   "held": 2,
-   "runs": [],
-   "seconds": 0.1,
-   "byType": {},
+   "placed": 2,
+   "held": 0,
+   "runs": [
+    {
+     "face": "kraaipan-31-33",
+     "pands": [
+      "0363100012154076",
+      "0363100012127519"
+     ],
+     "passed": true,
+     "triangles": 2128
+    }
+   ],
+   "seconds": 4.31,
+   "byType": {
+    "transvaal-1920-three-storey": 2
+   },
    "holds": {
     "evidence": 0,
-    "match": 2,
+    "match": 0,
     "likeness": 0,
     "run": 0,
     "review": 0
@@ -393,7 +443,7 @@
    "placed": 0,
    "held": 3,
    "runs": [],
-   "seconds": 0.33,
+   "seconds": 0.39,
    "byType": {},
    "holds": {
     "evidence": 0,
@@ -407,14 +457,26 @@
    "face": "kraaipan-41-45",
    "street": "Kraaipanstraat",
    "pands": 3,
-   "placed": 0,
-   "held": 3,
-   "runs": [],
-   "seconds": 0.19,
-   "byType": {},
+   "placed": 2,
+   "held": 1,
+   "runs": [
+    {
+     "face": "kraaipan-41-45-r1",
+     "pands": [
+      "0363100012133518",
+      "0363100012061600"
+     ],
+     "passed": true,
+     "triangles": 2185
+    }
+   ],
+   "seconds": 5.12,
+   "byType": {
+    "transvaal-1920-three-storey": 2
+   },
    "holds": {
     "evidence": 0,
-    "match": 3,
+    "match": 1,
     "likeness": 0,
     "run": 0,
     "review": 0
@@ -427,7 +489,7 @@
    "placed": 0,
    "held": 4,
    "runs": [],
-   "seconds": 0.23,
+   "seconds": 0.37,
    "byType": {},
    "holds": {
     "evidence": 4,
@@ -444,13 +506,13 @@
    "placed": 0,
    "held": 3,
    "runs": [],
-   "seconds": 0.1,
+   "seconds": 0.11,
    "byType": {},
    "holds": {
     "evidence": 2,
-    "match": 1,
+    "match": 0,
     "likeness": 0,
-    "run": 0,
+    "run": 1,
     "review": 0
    }
   },
@@ -461,13 +523,13 @@
    "placed": 0,
    "held": 3,
    "runs": [],
-   "seconds": 0.21,
+   "seconds": 0.28,
    "byType": {},
    "holds": {
     "evidence": 1,
-    "match": 2,
+    "match": 0,
     "likeness": 0,
-    "run": 0,
+    "run": 2,
     "review": 0
    }
   },
@@ -478,13 +540,13 @@
    "placed": 0,
    "held": 2,
    "runs": [],
-   "seconds": 0.29,
+   "seconds": 0.17,
    "byType": {},
    "holds": {
     "evidence": 1,
-    "match": 0,
+    "match": 1,
     "likeness": 0,
-    "run": 1,
+    "run": 0,
     "review": 0
    }
   },
@@ -495,13 +557,13 @@
    "placed": 0,
    "held": 5,
    "runs": [],
-   "seconds": 0.27,
+   "seconds": 0.26,
    "byType": {},
    "holds": {
     "evidence": 4,
-    "match": 1,
+    "match": 0,
     "likeness": 0,
-    "run": 0,
+    "run": 1,
     "review": 0
    }
   },
@@ -521,26 +583,14 @@
    "face": "kraaipan-63-65",
    "street": "Kraaipanstraat",
    "pands": 2,
-   "placed": 2,
-   "held": 0,
-   "runs": [
-    {
-     "face": "kraaipan-63-65",
-     "pands": [
-      "0363100012108224",
-      "0363100012145617"
-     ],
-     "passed": true,
-     "triangles": 1493
-    }
-   ],
-   "seconds": 3.19,
-   "byType": {
-    "vaalrivier-1931-row": 2
-   },
+   "placed": 0,
+   "held": 2,
+   "runs": [],
+   "seconds": 0.1,
+   "byType": {},
    "holds": {
     "evidence": 0,
-    "match": 0,
+    "match": 2,
     "likeness": 0,
     "run": 0,
     "review": 0
@@ -553,7 +603,7 @@
    "placed": 0,
    "held": 4,
    "runs": [],
-   "seconds": 0.48,
+   "seconds": 0.55,
    "byType": {},
    "holds": {
     "evidence": 0,
@@ -570,7 +620,7 @@
    "placed": 0,
    "held": 4,
    "runs": [],
-   "seconds": 1.1,
+   "seconds": 1.28,
    "byType": {},
    "holds": {
     "evidence": 0,
@@ -587,7 +637,7 @@
    "placed": 0,
    "held": 4,
    "runs": [],
-   "seconds": 0.76,
+   "seconds": 0.97,
    "byType": {},
    "holds": {
     "evidence": 0,
@@ -604,7 +654,7 @@
    "placed": 0,
    "held": 6,
    "runs": [],
-   "seconds": 2.71,
+   "seconds": 4.22,
    "byType": {},
    "holds": {
     "evidence": 1,
@@ -621,7 +671,7 @@
    "placed": 0,
    "held": 6,
    "runs": [],
-   "seconds": 2.1,
+   "seconds": 2.54,
    "byType": {},
    "holds": {
     "evidence": 0,
@@ -646,7 +696,7 @@
    "placed": 0,
    "held": 5,
    "runs": [],
-   "seconds": 7.62,
+   "seconds": 18.11,
    "byType": {},
    "holds": {
     "evidence": 1,
@@ -663,14 +713,14 @@
    "placed": 0,
    "held": 5,
    "runs": [],
-   "seconds": 5.63,
+   "seconds": 2.79,
    "byType": {},
    "holds": {
     "evidence": 1,
     "match": 1,
-    "likeness": 1,
+    "likeness": 0,
     "run": 2,
-    "review": 0
+    "review": 1
    }
   },
   {
@@ -688,7 +738,7 @@
    "placed": 0,
    "held": 3,
    "runs": [],
-   "seconds": 2.2,
+   "seconds": 1.79,
    "byType": {},
    "holds": {
     "evidence": 2,
@@ -705,7 +755,7 @@
    "placed": 0,
    "held": 4,
    "runs": [],
-   "seconds": 2.42,
+   "seconds": 1.94,
    "byType": {},
    "holds": {
     "evidence": 2,
@@ -734,7 +784,7 @@
    "placed": 0,
    "held": 2,
    "runs": [],
-   "seconds": 0.32,
+   "seconds": 0.42,
    "byType": {},
    "holds": {
     "evidence": 0,
@@ -751,7 +801,7 @@
    "placed": 0,
    "held": 3,
    "runs": [],
-   "seconds": 1.01,
+   "seconds": 1.27,
    "byType": {},
    "holds": {
     "evidence": 1,
@@ -782,14 +832,29 @@
    "face": "reij-25-39",
    "street": "De la Reijstraat",
    "pands": 6,
-   "placed": 0,
-   "held": 6,
-   "runs": [],
-   "seconds": 0.64,
-   "byType": {},
+   "placed": 5,
+   "held": 1,
+   "runs": [
+    {
+     "face": "reij-25-39-r1",
+     "pands": [
+      "0363100012140934",
+      "0363100012140132",
+      "0363100012098320",
+      "0363100012134611",
+      "0363100012123796"
+     ],
+     "passed": true,
+     "triangles": 5420
+    }
+   ],
+   "seconds": 10.35,
+   "byType": {
+    "transvaal-1920-three-storey": 5
+   },
    "holds": {
     "evidence": 0,
-    "match": 6,
+    "match": 1,
     "likeness": 0,
     "run": 0,
     "review": 0
@@ -806,13 +871,13 @@
    "placed": 0,
    "held": 6,
    "runs": [],
-   "seconds": 0.43,
+   "seconds": 9.09,
    "byType": {},
    "holds": {
     "evidence": 0,
-    "match": 6,
-    "likeness": 0,
-    "run": 0,
+    "match": 2,
+    "likeness": 2,
+    "run": 2,
     "review": 0
    }
   },
@@ -823,7 +888,7 @@
    "placed": 0,
    "held": 7,
    "runs": [],
-   "seconds": 1.47,
+   "seconds": 1.53,
    "byType": {},
    "holds": {
     "evidence": 2,
@@ -861,7 +926,7 @@
    "placed": 0,
    "held": 2,
    "runs": [],
-   "seconds": 1.11,
+   "seconds": 1.17,
    "byType": {},
    "holds": {
     "evidence": 0,
@@ -878,7 +943,7 @@
    "placed": 0,
    "held": 2,
    "runs": [],
-   "seconds": 1.31,
+   "seconds": 0.63,
    "byType": {},
    "holds": {
     "evidence": 0,
@@ -895,7 +960,7 @@
    "placed": 0,
    "held": 3,
    "runs": [],
-   "seconds": 2.83,
+   "seconds": 1.43,
    "byType": {},
    "holds": {
     "evidence": 0,
@@ -916,7 +981,7 @@
    "placed": 0,
    "held": 3,
    "runs": [],
-   "seconds": 2.88,
+   "seconds": 1.22,
    "byType": {},
    "holds": {
     "evidence": 0,
@@ -941,7 +1006,7 @@
    "placed": 0,
    "held": 5,
    "runs": [],
-   "seconds": 2.44,
+   "seconds": 0.92,
    "byType": {},
    "holds": {
     "evidence": 1,
@@ -998,7 +1063,7 @@
    "placed": 0,
    "held": 10,
    "runs": [],
-   "seconds": 1.92,
+   "seconds": 1.94,
    "byType": {},
    "holds": {
     "evidence": 1,
@@ -1015,7 +1080,7 @@
    "placed": 0,
    "held": 10,
    "runs": [],
-   "seconds": 2.31,
+   "seconds": 2.37,
    "byType": {},
    "holds": {
     "evidence": 1,
@@ -1037,14 +1102,26 @@
    "face": "transvaalkade-103-105",
    "street": "Transvaalkade",
    "pands": 2,
-   "placed": 0,
-   "held": 2,
-   "runs": [],
-   "seconds": 0.16,
-   "byType": {},
+   "placed": 2,
+   "held": 0,
+   "runs": [
+    {
+     "face": "transvaalkade-103-105",
+     "pands": [
+      "0363100012095089",
+      "0363100012115223"
+     ],
+     "passed": true,
+     "triangles": 2118
+    }
+   ],
+   "seconds": 6.57,
+   "byType": {
+    "transvaal-1920-three-storey": 2
+   },
    "holds": {
     "evidence": 0,
-    "match": 2,
+    "match": 0,
     "likeness": 0,
     "run": 0,
     "review": 0
@@ -1117,7 +1194,7 @@
    "placed": 0,
    "held": 2,
    "runs": [],
-   "seconds": 0.52,
+   "seconds": 0.53,
    "byType": {},
    "holds": {
     "evidence": 0,
@@ -1214,12 +1291,12 @@
    "placed": 0,
    "held": 4,
    "runs": [],
-   "seconds": 9.77,
+   "seconds": 1.78,
    "byType": {},
    "holds": {
     "evidence": 0,
-    "match": 2,
-    "likeness": 2,
+    "match": 4,
+    "likeness": 0,
     "run": 0,
     "review": 0
    }
@@ -1239,7 +1316,7 @@
    "placed": 0,
    "held": 2,
    "runs": [],
-   "seconds": 0.65,
+   "seconds": 0.73,
    "byType": {},
    "holds": {
     "evidence": 0,
@@ -1256,7 +1333,7 @@
    "placed": 0,
    "held": 2,
    "runs": [],
-   "seconds": 0.58,
+   "seconds": 0.88,
    "byType": {},
    "holds": {
     "evidence": 0,
@@ -1273,7 +1350,7 @@
    "placed": 0,
    "held": 2,
    "runs": [],
-   "seconds": 0.57,
+   "seconds": 0.7,
    "byType": {},
    "holds": {
     "evidence": 0,
@@ -1290,7 +1367,7 @@
    "placed": 0,
    "held": 2,
    "runs": [],
-   "seconds": 0.39,
+   "seconds": 0.66,
    "byType": {},
    "holds": {
     "evidence": 0,
@@ -1307,7 +1384,7 @@
    "placed": 0,
    "held": 2,
    "runs": [],
-   "seconds": 0.45,
+   "seconds": 0.51,
    "byType": {},
    "holds": {
     "evidence": 0,
@@ -1332,7 +1409,7 @@
    "placed": 0,
    "held": 2,
    "runs": [],
-   "seconds": 0.73,
+   "seconds": 0.92,
    "byType": {},
    "holds": {
     "evidence": 2,
@@ -1373,7 +1450,7 @@
    "placed": 0,
    "held": 2,
    "runs": [],
-   "seconds": 1.82,
+   "seconds": 2.4,
    "byType": {},
    "holds": {
     "evidence": 0,
@@ -1390,13 +1467,13 @@
    "placed": 0,
    "held": 10,
    "runs": [],
-   "seconds": 14.38,
+   "seconds": 4.73,
    "byType": {},
    "holds": {
     "evidence": 2,
-    "match": 2,
-    "likeness": 4,
-    "run": 2,
+    "match": 8,
+    "likeness": 0,
+    "run": 0,
     "review": 0
    }
   },
@@ -1424,12 +1501,12 @@
    "placed": 0,
    "held": 4,
    "runs": [],
-   "seconds": 0.51,
+   "seconds": 0.55,
    "byType": {},
    "holds": {
     "evidence": 0,
-    "match": 4,
-    "likeness": 0,
+    "match": 2,
+    "likeness": 2,
     "run": 0,
     "review": 0
    }
@@ -1441,46 +1518,31 @@
    "placed": 0,
    "held": 4,
    "runs": [],
-   "seconds": 0.43,
+   "seconds": 0.41,
    "byType": {},
    "holds": {
     "evidence": 0,
-    "match": 0,
+    "match": 4,
     "likeness": 0,
-    "run": 1,
-    "review": 3
+    "run": 0,
+    "review": 0
    }
   },
   {
    "face": "vaalrivier-2-14",
    "street": "Vaalrivierstraat",
    "pands": 7,
-   "placed": 5,
-   "held": 2,
-   "runs": [
-    {
-     "face": "vaalrivier-2-14-r1",
-     "pands": [
-      "0363100012120724",
-      "0363100012090866",
-      "0363100012108545",
-      "0363100012090850",
-      "0363100012137594"
-     ],
-     "passed": true,
-     "triangles": 3672
-    }
-   ],
-   "seconds": 5.72,
-   "byType": {
-    "vaalrivier-1931-row": 5
-   },
+   "placed": 0,
+   "held": 7,
+   "runs": [],
+   "seconds": 1.28,
+   "byType": {},
    "holds": {
     "evidence": 1,
-    "match": 0,
+    "match": 6,
     "likeness": 0,
     "run": 0,
-    "review": 1
+    "review": 0
    }
   },
   {
@@ -1490,13 +1552,13 @@
    "placed": 0,
    "held": 6,
    "runs": [],
-   "seconds": 3.11,
+   "seconds": 1.15,
    "byType": {},
    "holds": {
     "evidence": 0,
-    "match": 3,
-    "likeness": 2,
-    "run": 1,
+    "match": 6,
+    "likeness": 0,
+    "run": 0,
     "review": 0
    }
   },
@@ -1507,7 +1569,7 @@
    "placed": 0,
    "held": 10,
    "runs": [],
-   "seconds": 2.34,
+   "seconds": 1.96,
    "byType": {},
    "holds": {
     "evidence": 0,
@@ -1524,7 +1586,7 @@
    "placed": 0,
    "held": 5,
    "runs": [],
-   "seconds": 1.58,
+   "seconds": 1.02,
    "byType": {},
    "holds": {
     "evidence": 0,
@@ -1541,7 +1603,7 @@
    "placed": 0,
    "held": 3,
    "runs": [],
-   "seconds": 1.08,
+   "seconds": 0.68,
    "byType": {},
    "holds": {
     "evidence": 0,
@@ -1558,7 +1620,7 @@
    "placed": 0,
    "held": 7,
    "runs": [],
-   "seconds": 3.03,
+   "seconds": 3.11,
    "byType": {},
    "holds": {
     "evidence": 0,
@@ -1579,7 +1641,7 @@
    "placed": 0,
    "held": 4,
    "runs": [],
-   "seconds": 0.81,
+   "seconds": 0.8,
    "byType": {},
    "holds": {
     "evidence": 0,
@@ -1596,7 +1658,7 @@
    "placed": 0,
    "held": 3,
    "runs": [],
-   "seconds": 0.78,
+   "seconds": 0.95,
    "byType": {},
    "holds": {
     "evidence": 3,
@@ -1613,7 +1675,7 @@
    "placed": 0,
    "held": 5,
    "runs": [],
-   "seconds": 2.31,
+   "seconds": 2.5,
    "byType": {},
    "holds": {
     "evidence": 0,
@@ -1630,7 +1692,7 @@
    "placed": 0,
    "held": 5,
    "runs": [],
-   "seconds": 1.74,
+   "seconds": 1.67,
    "byType": {},
    "holds": {
     "evidence": 1,
@@ -1651,7 +1713,7 @@
    "placed": 0,
    "held": 3,
    "runs": [],
-   "seconds": 7.23,
+   "seconds": 14.2,
    "byType": {},
    "holds": {
     "evidence": 0,

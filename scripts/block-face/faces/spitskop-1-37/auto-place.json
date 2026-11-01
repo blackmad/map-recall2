@@ -3,7 +3,7 @@
  "street": "Spitskopstraat",
  "library": "transvaalbuurt",
  "stripDate": "2017-04-06",
- "seconds": 0.99,
+ "seconds": 1.06,
  "thresholds": {
   "minScore": 0.7,
   "margin": 0.05,
@@ -210,20 +210,17 @@
    },
    "status": "held",
    "stage": "match",
-   "reason": "every type vetoed (best transvaal-1911-five-storey-tall: built 1919, type 1908-1914; frontage 18.04 m, type 4.8-11 m)",
+   "reason": "best transvaal-1921-five-storey-oriel scores 0.31 < 0.7 (3DBAG eaves 9.24 m = 4 storeys of 2.31 m vs the type's 3.41 m; 3DBAG bouwlagen 4 vs 5; strip columns 3 vs 5 bays)",
    "best": {
-    "type": "transvaal-1911-five-storey-tall",
-    "score": 0,
-    "veto": [
-     "built 1919, type 1908-1914",
-     "frontage 18.04 m, type 4.8-11 m"
-    ],
+    "type": "transvaal-1921-five-storey-oriel",
+    "score": 0.31,
+    "veto": [],
     "criteria": [
      {
       "key": "eaves",
       "weight": 2,
       "score": 0,
-      "note": "3DBAG eaves 9.24 m = 4 storeys of 2.31 m vs the type's 3.55 m"
+      "note": "3DBAG eaves 9.24 m = 4 storeys of 2.31 m vs the type's 3.41 m"
      },
      {
       "key": "storeys",
@@ -240,8 +237,8 @@
      {
       "key": "columns",
       "weight": 1.5,
-      "score": 0.4,
-      "note": "strip columns 3 vs 4 bays"
+      "score": 0,
+      "note": "strip columns 3 vs 5 bays"
      }
     ]
    },

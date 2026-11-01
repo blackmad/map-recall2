@@ -3,7 +3,7 @@
  "street": "Krugerstraat",
  "library": "transvaalbuurt",
  "stripDate": "2022-01-17",
- "seconds": 1.1,
+ "seconds": 1.28,
  "thresholds": {
   "minScore": 0.7,
   "margin": 0.05,
@@ -62,23 +62,25 @@
    },
    "status": "held",
    "stage": "match",
-   "reason": "best vaalrivier-1931-row scores 0.54 < 0.7 (3DBAG eaves 14.9 m = 2 storeys of 7.45 m vs the type's 3.17 m; 3DBAG bouwlagen 5 vs 2/3)",
+   "reason": "every type vetoed (best transvaal-1911-five-storey-tall: built 1930, type 1908-1914)",
    "best": {
-    "type": "vaalrivier-1931-row",
-    "score": 0.54,
-    "veto": [],
+    "type": "transvaal-1911-five-storey-tall",
+    "score": 0,
+    "veto": [
+     "built 1930, type 1908-1914"
+    ],
     "criteria": [
      {
       "key": "eaves",
       "weight": 2,
-      "score": 0,
-      "note": "3DBAG eaves 14.9 m = 2 storeys of 7.45 m vs the type's 3.17 m"
+      "score": 1,
+      "note": "3DBAG eaves 14.9 m = 4 storeys of 3.73 m vs the type's 3.55 m"
      },
      {
       "key": "storeys",
       "weight": 1,
-      "score": 0,
-      "note": "3DBAG bouwlagen 5 vs 2/3"
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 5"
      },
      {
       "key": "stucco",
@@ -89,8 +91,8 @@
      {
       "key": "columns",
       "weight": 1.5,
-      "score": 1,
-      "note": "strip columns 4 vs 4 bays"
+      "score": 0.4,
+      "note": "strip columns 4 vs 3 bays"
      }
     ]
    },

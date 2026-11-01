@@ -3,7 +3,7 @@
  "street": "Pretoriusstraat",
  "library": "transvaalbuurt",
  "stripDate": "2023-01-02",
- "seconds": 28.84,
+ "seconds": 41.99,
  "thresholds": {
   "minScore": 0.7,
   "margin": 0.05,
@@ -440,6 +440,7 @@
     "transvaal-1911-five-storey-tall~m": 0.219,
     "transvaal-1911-five-storey": 0.336,
     "transvaal-1911-five-storey~m": 0.256,
+    "transvaal-1921-five-storey-oriel": 0.208,
     "transvaal-1923-portiek-tower": 0.154
    }
   },
@@ -560,6 +561,7 @@
     "transvaal-1911-five-storey-tall": 0.222,
     "transvaal-1911-five-storey~m": 0.313,
     "transvaal-1911-five-storey": 0.273,
+    "transvaal-1921-five-storey-oriel": 0.159,
     "transvaal-1923-portiek-tower": 0.034
    }
   },
@@ -665,6 +667,7 @@
     "transvaal-1911-five-storey-tall~m": 0.292,
     "transvaal-1911-five-storey": 0.315,
     "transvaal-1911-five-storey~m": 0.267,
+    "transvaal-1921-five-storey-oriel": 0.185,
     "transvaal-1923-portiek-tower": 0.112
    }
   },
@@ -1100,6 +1103,7 @@
     "transvaal-1911-five-storey-tall~m": 0.304,
     "transvaal-1911-five-storey": 0.256,
     "transvaal-1911-five-storey~m": 0.284,
+    "transvaal-1921-five-storey-oriel": 0.184,
     "transvaal-1923-portiek": 0.127
    }
   },
@@ -1197,6 +1201,7 @@
     "transvaal-1911-five-storey-tall": 0.147,
     "transvaal-1911-five-storey~m": 0.134,
     "transvaal-1911-five-storey": 0.134,
+    "transvaal-1921-five-storey-oriel": 0.106,
     "transvaal-1923-portiek": 0.067
    }
   },

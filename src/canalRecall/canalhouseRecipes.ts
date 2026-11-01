@@ -163,6 +163,12 @@ export interface CompiledCanalHouseRecipe {
   stats: { triangles: number; meshes: number; bounds: { min: number[]; max: number[] } };
 }
 const EPS = 1e-5;
+/**
+ * Survey slack over the 0.5 m outset cap: BAG digitises the 0.5 m oriel bays of Retiefstraat 2-28 and Tugelaweg 19-31
+ * (1921-1922) at 0.498-0.502 m, and a 2 mm overshoot of the capped plan threw for every pand (#154). Only a plan at the
+ * cap gets it; every frontage that passed before passes unchanged.
+ */
+const OUTSET_CAP_SLACK_M = 0.005;
 /** Minimum projected polygon area admitted by the geometry compiler. Survey
  * converters must report fragments beneath this threshold, never silently fit
  * their unstable plane or change the source footprint to make them compile. */
@@ -454,7 +460,7 @@ export function compileCanalHouseRecipe(recipe: CanalHouseRecipe): CompiledCanal
       for(let i=(elevation.edgeIndex+1)%ring.length;i!==end;i=(i+1)%ring.length){
         const p=ring[i],distance=Math.abs((p[0]-a[0])*dz-(p[1]-a[1])*dx)/length;
         const outwardDistance=(p[0]-a[0])*nx+(p[1]-a[1])*nz;
-        if(distance>tolerance&&(!plan||outwardDistance>Math.max(tolerance,plan.maxOutsetM??0)+EPS||-outwardDistance>plan.maxInsetM+EPS))throw new Error('Grouped frontage is not a straight surveyed wall');
+        if(distance>tolerance&&(!plan||outwardDistance>Math.max(tolerance,plan.maxOutsetM??0)+(plan.maxOutsetM===.5?OUTSET_CAP_SLACK_M:EPS)||-outwardDistance>plan.maxInsetM+EPS))throw new Error('Grouped frontage is not a straight surveyed wall');
       }
     }
     // Details on a grouped frontage must sit outside every surveyed segment,

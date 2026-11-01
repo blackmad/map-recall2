@@ -617,11 +617,22 @@ export function recipeRoofFacts(facts: BuildingFacts, input: RecipeRoofInput, op
   };
   // Pieces are collected per plane and merged before they become surfaces (mergeCoplanar).
   const planes = new Map<string, {h: (p: number[]) => number; pieces: number[][][]}>();
+  const folded = (ring: number[][]) => {
+    if (ring.length < 4) return false;
+    const whole = Math.abs(planArea(ring)), sum = (ts: number[][][]) => ts.reduce((a, t) => a + Math.abs(planArea(t)), 0);
+    return Math.abs(sum(triangles([ring])) - whole) > 1e-7 && Math.abs(sum(ring.slice(2).map((p, i) => [ring[0], ring[i + 1], p])) - whole) > 1e-7;
+  };
+  const foldSnaps: [number[], number[]][] = [];
   const push = (raw: number[][], h: (p: number[]) => number, key: string) => {
     if (raw.length < 3) return;
     // surveyRecipe moves a point within 0.5 mm of the outline onto it; doing it here, before pieces merge and shed
     // collinear vertices, keeps neighbours consistent (a T-junction moved on one side only overlaps by mm2).
     const r = snapRing(raw).map(onOutline), sign = Math.sign(planArea(raw));
+    // The outline projection can bring a cut point within the corner snap of a footprint corner it missed before (Reij
+    // 25-39 140934, 1922 oriel bump: 1.1 mm -> 0.92 mm), leaving a folded ring that neither earcut nor a fan covers
+    // exactly (0.8 dm2 twice over). That point is snapped in every piece sharing it (a T-junction moved on one side only
+    // overlaps), and only when such a fold exists: every face that triangulated before is unchanged.
+    if (folded(r)) for (const p of r) { const c = corners.find(q => Math.hypot(q[0] - p[0], q[1] - p[1]) < 1e-3); if (c && c !== p) foldSnaps.push([p, c]); }
     // A sliver the corner snap turned inside out is dropped (its area would count twice).
     if (Math.sign(planArea(r)) !== sign) { droppedM2 += Math.abs(planArea(r)); return; }
     if (!planes.has(key)) planes.set(key, {h, pieces: []});
@@ -812,6 +823,10 @@ export function recipeRoofFacts(facts: BuildingFacts, input: RecipeRoofInput, op
     if (lines.length) notes.push(`${lines.length} rear step line(s) from 3DBAG`);
   }
   const isCorner = (p: number[]) => corners.some(c => c === p || (Math.abs(c[0] - p[0]) < 1e-9 && Math.abs(c[1] - p[1]) < 1e-9));
+  if (foldSnaps.length) for (const plane of planes.values()) plane.pieces = plane.pieces.map(r => {
+    const out = r.map(p => foldSnaps.find(([q]) => Math.hypot(q[0] - p[0], q[1] - p[1]) < 1e-9)?.[1] ?? p);
+    return out.filter((p, i) => Math.hypot(p[0] - out[(i + 1) % out.length][0], p[1] - out[(i + 1) % out.length][1]) > 1e-9);
+  }).filter(r => r.length >= 3);
   for (const {h, pieces} of planes.values()) for (const m of mergeCoplanar(pieces, isCorner)) emit(m.ring, h, m.parts);
   if (droppedM2 > 1e-4) notes.push(`${droppedM2.toExponential(1)} m2 of sub-0.1-dm2 slivers dropped`);
   if (!input.forms) {

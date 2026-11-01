@@ -166,6 +166,11 @@
    "pandId": "0363100012140329",
    "address": "Transvaalstraat 45A",
    "reason": "as Transvaalstraat 39-41: the strip shows one white timber dormer over the centre axis, which the kit's dormer crown cannot place on this roof without the glass passing the roof plane (GLB audit opening-outside); drawn bare it misses the row's skyline, and 43B's wall reads +0.1 too light (transvaal-3-47-r1 sheet; round 3 review at gallery size, 2026-11-01)"
+  },
+  {
+   "pandId": "0363100012070004",
+   "address": "Retiefstraat 212",
+   "reason": "the 8.7 m corner pand's BAG front is not one straight surveyed wall: the run compile fails ('Grouped frontage is not a straight surveyed wall') and takes Retiefstraat 194-262 with it (#154, 2026-11-01)"
   }
  ]
 }

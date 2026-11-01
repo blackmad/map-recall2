@@ -132,7 +132,9 @@ export interface FitReport {
     /** Multi-bay erker (facade x): its stack's top, plan and cap. */
     erker?: {leftM: number; widthM: number; frontWidthM: number; depthM: number; topM: number; cap: 'hip' | 'flat' | 'none'; finish?: 'painted';
       /** A timber oriel (`bayWindows.oriel`): the storeys painted in the trim colour, the console under its foot. */
-      oriel?: {paintedStoreys: number[]; paintFrom?: number; console: boolean; footM: number; storeys: number[]};
+      oriel?: {paintedStoreys: number[]; paintFrom?: number; console: boolean; footM: number; storeys: number[];
+        /** `oriel.twin`: the second stack's left edge (facade x), same width, plan and storeys. */
+        twinLeftM?: number};
       /** Box frames (`bayWindows.hood`): one hood slab over each box, at the box tops (elevation metres). */
       hoods?: {topM: number}[]};
     /** Hood slabs over the top `slab-hood` balconettes (facade x). */
@@ -210,7 +212,7 @@ interface Layout { openings: CanalhouseOpening[]; glazedBays: CanalhouseGlazedBa
   /** Amsterdam School set only (absent otherwise): storey bottoms and window heads (index = storey from the ground), and the multi-bay erker span (viewer-left metres). */
   school?: {bottoms: number[]; heads: (number | null)[]; erker?: {leftM: number; widthM: number; storeys: number[]; topM: number; hoods?: {topM: number}[];
     /** A timber oriel (`bayWindows.oriel`): its plan, the painted storeys, a console under its foot (elevation metres). */
-    oriel?: {depthM: number; frontWidthM: number; footM: number; paintedStoreys: number[]; paintFrom?: number; console: boolean}}} }
+    oriel?: {depthM: number; frontWidthM: number; footM: number; paintedStoreys: number[]; paintFrom?: number; console: boolean; twinLeftM?: number}}} }
 
 /** Shopfront proportions: pier width, stall riser top, fascia depth below the ground-storey top. */
 const SHOP = {pierM: 0.3, glassBottomM: 0.55, fasciaM: 0.62, fasciaGapM: 0.08};
@@ -324,6 +326,8 @@ function layoutFront(f: FrontIntent, width: number, heightTop: number): Layout {
     : f.bayFill && sharedWeighted && f.bayWindows!.hood
       ? [round(sharedWeighted.centre(erkerBays.from) - sharedWeighted.w(erkerBays.from) / 2), round(sharedWeighted.centre(erkerBays.to) + sharedWeighted.w(erkerBays.to) / 2)]
       : [bayEdges[erkerBays.from] + ERKER.insetM, bayEdges[erkerBays.to + 1] - ERKER.insetM];
+  // `oriel.twin`: a second identical stack centred on other axes (Retiefstraat 2-28: two canted bays per stair block).
+  const twinSpan: [number, number] | null = oriel?.twin && erkerSpan ? (() => { const c = (axisCentres[oriel.twin.from] + axisCentres[oriel.twin.to]) / 2; return [c - oriel.span / 2, c + oriel.span / 2] as [number, number]; })() : null;
   const boxRows = new Map<number, {bottom: number; height: number}>();
   let y = basement;
   for (let s = 0; s < n; s++) {
@@ -353,7 +357,7 @@ function layoutFront(f: FrontIntent, width: number, heightTop: number): Layout {
       if (s === 0 && f.shopfront && (!shopEdge || (centre > shopEdge[0] && centre < shopEdge[1]))) continue;
       if (s === 1 && twoStorey && (shopEdge ? centre > shopEdge[0] && centre < shopEdge[1] : !rd)) continue;
       // Windows inside a multi-bay erker's span become its glazing (built after the storeys).
-      if (erkerSpan && f.bayWindows!.storeys.includes(s) && centre > erkerSpan[0] && centre < erkerSpan[1]) {
+      if (erkerSpan && f.bayWindows!.storeys.includes(s) && ((centre > erkerSpan[0] && centre < erkerSpan[1]) || (twinSpan && centre > twinSpan[0] && centre < twinSpan[1]))) {
         // A box frame (`hood`) keeps the window's sill and head (the plain window of its storey).
         if (f.bayWindows!.hood) boxRows.set(s, {bottom: y + Math.min(sill, h - 0.12 - winH), height: winH});
         continue;
@@ -412,16 +416,19 @@ function layoutFront(f: FrontIntent, width: number, heightTop: number): Layout {
     // Timber oriel: a module per storey; brick (wall) panels unless painted (oudWest.ts paints `paintedStoreys`).
     const storeys = f.bayWindows!.storeys, w = round(erkerSpan[1] - erkerSpan[0]), ret = oriel.returns ?? ORIEL.returns, depth = oriel.projection ?? ORIEL.projection;
     const lights = oriel.frontLights ?? ORIEL.frontLights, bars = oriel.transom !== undefined ? [oriel.transom] : [];
+    // `topGap`: the top module stops that far under its storey's top (wall over the stack; absent = to the top).
+    const topGap = oriel.topGap ?? 0, moduleH = (s: number) => s === storeys.at(-1) ? heights[s] - topGap : heights[s];
     for (const s of storeys) {
       const own = oriel.panels?.[String(s)] ?? {}, lower = own.stallriser ?? oriel.stallriser ?? ORIEL.stallriser, upper = own.head ?? oriel.head ?? ORIEL.head;
-      if (lower + upper > heights[s] - 0.3) { warnings.push(`${f.id}: oriel storey ${s}: panels ${lower} + ${upper} m leave no light in ${round(heights[s])} m`); continue; }
-      glazedBays.push({id: `erker-s${s}`, leftM: round(erkerSpan[0]), bottomM: round(school.bottoms[s]), widthM: w, heightM: round(heights[s]), depthM: depth, frontWidthM: round(w - 2 * ret),
+      if (lower + upper > moduleH(s) - 0.3) { warnings.push(`${f.id}: oriel storey ${s}: panels ${lower} + ${upper} m leave no light in ${round(moduleH(s))} m`); continue; }
+      for (const [id, left] of [[`erker-s${s}`, erkerSpan[0]], ...(twinSpan ? [[`twin-erker-s${s}`, twinSpan[0]]] : [])] as [string, number][])
+      glazedBays.push({id, leftM: round(left), bottomM: round(school.bottoms[s]), widthM: w, heightM: round(moduleH(s)), depthM: depth, frontWidthM: round(w - 2 * ret),
         lowerPanelM: lower, upperPanelM: upper, frameWidthM: 0.06, frameDepthM: 0.07, glassDepthM: 0.02, capM: ERKER.closureM,
         faces: {front: {verticalBars: Array.from({length: lights - 1}, (_, k) => round((k + 1) / lights, 4)), horizontalBars: bars}, left: {verticalBars: [], horizontalBars: bars}, right: {verticalBars: [], horizontalBars: bars}}});
     }
     const top = storeys.at(-1)!;
-    school.erker = {leftM: round(erkerSpan[0]), widthM: w, storeys, topM: round(school.bottoms[top] + heights[top]),
-      oriel: {depthM: depth, frontWidthM: round(w - 2 * ret), footM: round(school.bottoms[storeys[0] === 0 ? storeys.find(v => v > 0) ?? 0 : storeys[0]]), paintedStoreys: oriel.paintedStoreys ?? [], ...(oriel.paintFrom !== undefined ? {paintFrom: oriel.paintFrom} : {}), console: !!oriel.console}};
+    school.erker = {leftM: round(erkerSpan[0]), widthM: w, storeys, topM: round(school.bottoms[top] + moduleH(top)),
+      oriel: {depthM: depth, frontWidthM: round(w - 2 * ret), footM: round(school.bottoms[storeys[0] === 0 ? storeys.find(v => v > 0) ?? 0 : storeys[0]]), paintedStoreys: oriel.paintedStoreys ?? [], ...(oriel.paintFrom !== undefined ? {paintFrom: oriel.paintFrom} : {}), console: !!oriel.console, ...(twinSpan ? {twinLeftM: round(twinSpan[0])} : {})}};
   } else if (school && erkerSpan && erkerBays) {
     const storeys = f.bayWindows!.storeys, w = round(erkerSpan[1] - erkerSpan[0]), lights = 2 * (erkerBays.to - erkerBays.from + 1);
     for (const s of storeys) {
@@ -1194,7 +1201,7 @@ export function fitIntent(intent: CanalHouseIntent, surveyFacts: BuildingFacts):
       ...(canopy ? {canopy} : {}),
       ...(lisenes ? {lisenes} : {}),
       ...(erker?.oriel ? {erker: {leftM: round(flipX(erker.leftM, erker.widthM)), widthM: erker.widthM, frontWidthM: erker.oriel.frontWidthM, depthM: erker.oriel.depthM, topM: erker.topM, cap: 'none' as const,
-        oriel: {paintedStoreys: erker.oriel.paintedStoreys, ...(erker.oriel.paintFrom !== undefined ? {paintFrom: erker.oriel.paintFrom} : {}), console: erker.oriel.console, footM: erker.oriel.footM, storeys: erker.storeys}}}
+        oriel: {paintedStoreys: erker.oriel.paintedStoreys, ...(erker.oriel.paintFrom !== undefined ? {paintFrom: erker.oriel.paintFrom} : {}), console: erker.oriel.console, footM: erker.oriel.footM, storeys: erker.storeys, ...(erker.oriel.twinLeftM !== undefined ? {twinLeftM: round(flipX(erker.oriel.twinLeftM, erker.widthM))} : {})}}}
       : erker ? {erker: erker.hoods ? {leftM: round(flipX(erker.leftM, erker.widthM)), widthM: erker.widthM, frontWidthM: erker.widthM, depthM: DE_BAARSJES.boxDepthM, topM: erker.topM, cap: 'none' as const, finish: 'painted' as const, hoods: erker.hoods}
         : {leftM: round(flipX(erker.leftM, erker.widthM)), widthM: erker.widthM, frontWidthM: round(erker.widthM - 2 * ERKER.returnM), depthM: ERKER.depthM, topM: erker.topM, cap: front.bayWindows!.cap ?? 'none', ...(front.bayWindows!.finish ? {finish: front.bayWindows!.finish} : {})}} : {}),
       ...(timberBalconies ? {timberBalconies} : {}), ...(balconyHoods.length ? {balconyHoods} : {}), ...(front.balconyRun ? {balconyRun: balconyRunFor(front.balconyRun, layout, width)} : {})});

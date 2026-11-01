@@ -61,6 +61,16 @@
    "pandId": "0363100012076039",
    "address": "Vaalrivierstraat 20A",
    "reason": "vaalrivier-16-22-r1 sheet (#153): auto-place draws a shopfront from OSM amenity=waste_disposal (a street container); the 2020-04-29 strip shows the row's residential front, the door group at the left end"
+  },
+  {
+   "pandId": "0363100012149403",
+   "address": "Kraaipanstraat 34",
+   "reason": "a flat front with a small window over two plain windows and no canted bay (kraaipan-2-38-r1 sheet, 2019-05-16 strip): transvaal-1920-three-storey draws the bay (#154, 2026-11-01)"
+  },
+  {
+   "pandId": "0363100012138010",
+   "address": "Albert Luthulistraat 1C",
+   "reason": "the corner block with a tall stair tower and a parapet over its own window grid (luthuli-1-19-r1 sheet, 2020-04-29 strip): the plain flat 1921 row type draws a low gutter front (#154, 2026-11-01)"
   }
  ]
 }

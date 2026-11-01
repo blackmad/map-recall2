@@ -3,7 +3,7 @@
  "street": "Colensostraat",
  "library": "transvaalbuurt",
  "stripDate": "2019-12-19",
- "seconds": 0.42,
+ "seconds": 0.39,
  "thresholds": {
   "minScore": 0.7,
   "margin": 0.05,
@@ -62,25 +62,23 @@
    },
    "status": "held",
    "stage": "match",
-   "reason": "every type vetoed (best transvaal-1911-five-storey-tall: built 1922, type 1908-1914)",
+   "reason": "best transvaal-1921-five-storey-flat scores 0.31 < 0.7 (3DBAG eaves 10.81 m = 4 storeys of 2.7 m vs the type's 3.21 m; 3DBAG bouwlagen 3 vs 4/5; strip columns 5 vs 2 bays)",
    "best": {
-    "type": "transvaal-1911-five-storey-tall",
-    "score": 0,
-    "veto": [
-     "built 1922, type 1908-1914"
-    ],
+    "type": "transvaal-1921-five-storey-flat",
+    "score": 0.31,
+    "veto": [],
     "criteria": [
      {
       "key": "eaves",
       "weight": 2,
       "score": 0,
-      "note": "3DBAG eaves 10.81 m = 4 storeys of 2.7 m vs the type's 3.55 m"
+      "note": "3DBAG eaves 10.81 m = 4 storeys of 2.7 m vs the type's 3.21 m"
      },
      {
       "key": "storeys",
       "weight": 1,
       "score": 0,
-      "note": "3DBAG bouwlagen 3 vs 5"
+      "note": "3DBAG bouwlagen 3 vs 4/5"
      },
      {
       "key": "stucco",
@@ -92,7 +90,7 @@
       "key": "columns",
       "weight": 1.5,
       "score": 0,
-      "note": "strip columns 5 vs 3 bays"
+      "note": "strip columns 5 vs 2 bays"
      }
     ]
    },
@@ -141,25 +139,23 @@
    },
    "status": "held",
    "stage": "match",
-   "reason": "every type vetoed (best transvaal-1911-five-storey-tall: built 1922, type 1908-1914)",
+   "reason": "best transvaal-1921-five-storey-flat scores 0.31 < 0.7 (3DBAG eaves 10.77 m = 4 storeys of 2.69 m vs the type's 3.21 m; 3DBAG bouwlagen 3 vs 4/5; strip columns 4 vs 2 bays)",
    "best": {
-    "type": "transvaal-1911-five-storey-tall",
-    "score": 0,
-    "veto": [
-     "built 1922, type 1908-1914"
-    ],
+    "type": "transvaal-1921-five-storey-flat",
+    "score": 0.31,
+    "veto": [],
     "criteria": [
      {
       "key": "eaves",
       "weight": 2,
       "score": 0,
-      "note": "3DBAG eaves 10.77 m = 4 storeys of 2.69 m vs the type's 3.55 m"
+      "note": "3DBAG eaves 10.77 m = 4 storeys of 2.69 m vs the type's 3.21 m"
      },
      {
       "key": "storeys",
       "weight": 1,
       "score": 0,
-      "note": "3DBAG bouwlagen 3 vs 5"
+      "note": "3DBAG bouwlagen 3 vs 4/5"
      },
      {
       "key": "stucco",
@@ -170,8 +166,8 @@
      {
       "key": "columns",
       "weight": 1.5,
-      "score": 0.4,
-      "note": "strip columns 4 vs 3 bays"
+      "score": 0,
+      "note": "strip columns 4 vs 2 bays"
      }
     ]
    },
@@ -220,25 +216,23 @@
    },
    "status": "held",
    "stage": "match",
-   "reason": "every type vetoed (best transvaal-1911-five-storey-tall: built 1922, type 1908-1914)",
+   "reason": "best transvaal-1921-five-storey-flat scores 0.54 < 0.7 (3DBAG eaves 10.8 m = 4 storeys of 2.7 m vs the type's 3.21 m; 3DBAG bouwlagen 3 vs 4/5)",
    "best": {
-    "type": "transvaal-1911-five-storey-tall",
-    "score": 0,
-    "veto": [
-     "built 1922, type 1908-1914"
-    ],
+    "type": "transvaal-1921-five-storey-flat",
+    "score": 0.54,
+    "veto": [],
     "criteria": [
      {
       "key": "eaves",
       "weight": 2,
       "score": 0,
-      "note": "3DBAG eaves 10.8 m = 4 storeys of 2.7 m vs the type's 3.55 m"
+      "note": "3DBAG eaves 10.8 m = 4 storeys of 2.7 m vs the type's 3.21 m"
      },
      {
       "key": "storeys",
       "weight": 1,
       "score": 0,
-      "note": "3DBAG bouwlagen 3 vs 5"
+      "note": "3DBAG bouwlagen 3 vs 4/5"
      },
      {
       "key": "stucco",
@@ -249,8 +243,8 @@
      {
       "key": "columns",
       "weight": 1.5,
-      "score": 0.4,
-      "note": "strip columns 2 vs 3 bays"
+      "score": 1,
+      "note": "strip columns 2 vs 2 bays"
      }
     ]
    },
@@ -304,25 +298,23 @@
    },
    "status": "held",
    "stage": "match",
-   "reason": "every type vetoed (best transvaal-1911-five-storey-tall: built 1922, type 1908-1914)",
+   "reason": "best transvaal-1921-five-storey-flat scores 0.4 < 0.7 (3DBAG eaves 10.71 m = 4 storeys of 2.68 m vs the type's 3.21 m; 3DBAG bouwlagen 3 vs 4/5)",
    "best": {
-    "type": "transvaal-1911-five-storey-tall",
-    "score": 0,
-    "veto": [
-     "built 1922, type 1908-1914"
-    ],
+    "type": "transvaal-1921-five-storey-flat",
+    "score": 0.4,
+    "veto": [],
     "criteria": [
      {
       "key": "eaves",
       "weight": 2,
       "score": 0,
-      "note": "3DBAG eaves 10.71 m = 4 storeys of 2.68 m vs the type's 3.55 m"
+      "note": "3DBAG eaves 10.71 m = 4 storeys of 2.68 m vs the type's 3.21 m"
      },
      {
       "key": "storeys",
       "weight": 1,
       "score": 0,
-      "note": "3DBAG bouwlagen 3 vs 5"
+      "note": "3DBAG bouwlagen 3 vs 4/5"
      },
      {
       "key": "stucco",
