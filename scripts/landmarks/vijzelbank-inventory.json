@@ -1,0 +1,434 @@
+{
+ "schemaVersion": 1,
+ "id": "vijzelbank",
+ "pand": "0363100012165685",
+ "brief": "scripts/landmarks/vijzelbank-brief.md",
+ "signature": [
+  "f-floor-bands",
+  "f-white-fins",
+  "p-terraces",
+  "f-colonnade",
+  "f-kerkstraat-passage",
+  "f-top-canopy"
+ ],
+ "walls": [
+  {
+   "tag": "w01-103",
+   "bearing": 103,
+   "lengthM": 141,
+   "centre": [
+    4.891925,
+    52.3629935
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-06-16_06-42-40_01588",
+   "capturedAt": "2025-06-16",
+   "checked": true,
+   "items": [
+    {
+     "id": "f-floor-bands",
+     "kind": "other",
+     "where": "dark projecting floor edge at every storey, 0.55 m deep, centres 8.93-29.21 m every 3.38 m, running round every terrace",
+     "approxSizeM": [
+      141,
+      0.55
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-06-16_06-42-40_01588",
+     "how": "vijzelbank-builder.ts bandAt(): one slab per exposed run of each 3DBAG roof piece (terraceBands.exposedRuns), 0.65 m proud, corner blocks at convex corners"
+    },
+    {
+     "id": "f-white-fins",
+     "kind": "other",
+     "where": "white fins between the bands on the 30 bay axes (13 x 4.71 m south of the passage, 2 x 5.1 m over it, 15 x 4.64 m north) and at every corner",
+     "approxSizeM": [
+      0.4,
+      2.8
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-06-16_06-42-40_01588",
+     "how": "0.4 m slabs 0.5 m proud between the bands on the measured axes; ~4.7 m axes on the other faces"
+    },
+    {
+     "id": "f-colonnade",
+     "kind": "colonnade",
+     "where": "white square piers of the ground-storey gallery on the bay axes, dark shopfronts about 3 m behind them",
+     "approxSizeM": [
+      0.9,
+      4.45
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-06-16_06-42-40_01588",
+     "how": "0.9 m square piers on the BAG line, ground prism cut back 3 m (polygon-clipping difference)"
+    },
+    {
+     "id": "f-fascia",
+     "kind": "canopy",
+     "where": "dark fascia over the gallery, 4.45-5.6 m, round the whole block",
+     "approxSizeM": [
+      141,
+      1.15
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-06-16_06-42-40_01588",
+     "how": "first band level, bronze slot"
+    },
+    {
+     "id": "f-kerkstraat-passage",
+     "kind": "other",
+     "where": "the Kerkstraat building passage through the ground storey at 61.2-71.4 m from the south corner, under a double-height void at the front up to the third band",
+     "approxSizeM": [
+      10.2,
+      11.9
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-06-16_06-42-40_01588",
+     "how": "ground prism cut along OSM w34955694; roof pieces over the first 6.5 m lifted to 12.03 m"
+    },
+    {
+     "id": "f-void-walkway",
+     "kind": "other",
+     "where": "glazed walkway crossing the void at the first floor",
+     "approxSizeM": [
+      10,
+      1.1
+     ],
+     "plan": "simplified",
+     "seenIn": "recording_2025-06-16_06-42-40_01588",
+     "how": "a dark slab with a glass balustrade 3 m inside the void"
+    },
+    {
+     "id": "f-fire-escapes",
+     "kind": "balcony-ironwork",
+     "where": "steel fire-escape platforms with cage ladders: a full stack at 51.6 m, two at 72.4 m, single ones at 17 m and 99.3 m",
+     "approxSizeM": [
+      1.8,
+      3.0
+     ],
+     "plan": "simplified",
+     "seenIn": "recording_2025-06-16_06-42-40_01588",
+     "how": "platform slab, front rail and two ladder stiles per storey"
+    },
+    {
+     "id": "f-blind-glazing",
+     "kind": "window-shape",
+     "where": "recessed glazing, two panes per bay, mostly with pale grey blinds",
+     "approxSizeM": [
+      4.3,
+      2.8
+     ],
+     "plan": "simplified",
+     "seenIn": "recording_2025-06-16_06-42-40_01588",
+     "how": "one grey glass pane 0.15 m proud of the wall per bay between fins and bands; the pane mullion is narrower than 0.3 m and left out"
+    },
+    {
+     "id": "f-top-canopy",
+     "kind": "canopy",
+     "where": "the front blocks of the two highest tiers (to 26.1 m over 106-122 m and to 29.5 m over 47-85 m) carry roof plates overhanging their bands",
+     "approxSizeM": [
+      34,
+      0.55
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-06-16_06-42-40_01588",
+     "how": "top band of the 26.1/29.5 m pieces that reach the front, 1.6 m proud, no railing"
+    },
+    {
+     "id": "f-terrace-railings",
+     "kind": "balcony-ironwork",
+     "where": "thin black railings round every terrace where the block steps back",
+     "approxSizeM": [
+      1,
+      1
+     ],
+     "plan": "modelled",
+     "seenIn": "https://commons.wikimedia.org/wiki/File:Vijzelstraat_66-80.jpg",
+     "how": "posts every 2.4 m and a top rail 0.35 m behind each terrace edge"
+    },
+    {
+     "id": "f-sign-randstad",
+     "kind": "sign",
+     "where": "tenant lettering 'randstad' on the fascia near the Prinsengracht corner",
+     "approxSizeM": [
+      5,
+      0.6
+     ],
+     "plan": "skipped",
+     "seenIn": "recording_2025-06-16_06-42-40_01588",
+     "skip": {
+      "reason": "temporary",
+      "note": "tenant signage, changed with the 2014 re-letting and again since"
+     }
+    },
+    {
+     "id": "f-sign-spaces",
+     "kind": "sign",
+     "where": "tenant lettering 'SPACES.' on the fascia north of the passage",
+     "approxSizeM": [
+      3,
+      0.5
+     ],
+     "plan": "skipped",
+     "seenIn": "recording_2025-06-16_06-42-40_01588",
+     "skip": {
+      "reason": "temporary",
+      "note": "tenant signage"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "w02-283",
+   "bearing": 283,
+   "lengthM": 44.8,
+   "centre": [
+    4.8915449,
+    52.3631636
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000714_pano_0001_002327",
+   "capturedAt": "2018-05-11",
+   "checked": true,
+   "items": [
+    {
+     "id": "w-bands-west",
+     "kind": "other",
+     "where": "the west face onto the Kerkstraat gardens: the same dark bands and white fins over a dark ground storey",
+     "approxSizeM": [
+      44.8,
+      25
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-000714_pano_0001_002327",
+     "how": "same band/fin system on the exposed runs"
+    }
+   ]
+  },
+  {
+   "tag": "w03-192",
+   "bearing": 192,
+   "lengthM": 19.5,
+   "centre": [
+    4.891382,
+    52.3628185
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316060226-000022_pano_0000_000226",
+   "capturedAt": "2016-08-16",
+   "checked": true,
+   "items": [
+    {
+     "id": "k-wing-south",
+     "kind": "other",
+     "where": "the Kerkstraat wing's south face: bands and fins, terraces",
+     "approxSizeM": [
+      19.5,
+      20
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316060226-000022_pano_0000_000226",
+     "how": "band/fin system"
+    }
+   ]
+  },
+  {
+   "tag": "w04-13",
+   "bearing": 13,
+   "lengthM": 18.8,
+   "centre": [
+    4.8913407,
+    52.3629847
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316060226-000022_pano_0000_000239",
+   "capturedAt": "2016-08-16",
+   "checked": true,
+   "items": [
+    {
+     "id": "k-wing-north",
+     "kind": "other",
+     "where": "the Kerkstraat wing's north face along the Kerkstraat: bands and fins",
+     "approxSizeM": [
+      18.8,
+      20
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316060226-000022_pano_0000_000239",
+     "how": "band/fin system"
+    }
+   ]
+  },
+  {
+   "tag": "w05-193",
+   "bearing": 193,
+   "lengthM": 15,
+   "centre": [
+    4.8915992,
+    52.3623884
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000355_pano_0000_000368",
+   "capturedAt": "2017-07-07",
+   "checked": true,
+   "items": [
+    {
+     "id": "p-terraces",
+     "kind": "other",
+     "where": "the Prinsengracht end steps back storey by storey ('vertrappende ... terugspringende gevels'), railings on each step",
+     "approxSizeM": [
+      15,
+      23
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-000355_pano_0000_000368",
+     "how": "3DBAG roof pieces snapped to their bands; bands run round each step"
+    },
+    {
+     "id": "p-parking-sign",
+     "kind": "sign",
+     "where": "blue parking sign at the ground storey",
+     "approxSizeM": [
+      1.5,
+      0.6
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7316010203-000355_pano_0000_000368",
+     "skip": {
+      "reason": "too-small",
+      "note": "street sign, not architecture"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "w06-13",
+   "bearing": 13,
+   "lengthM": 9.8,
+   "centre": [
+    4.8919591,
+    52.3636781
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001975_pano_0000_000081",
+   "capturedAt": "2021-01-22",
+   "checked": true,
+   "items": [
+    {
+     "id": "k-terraces",
+     "kind": "other",
+     "where": "the Keizersgracht end steps back like the Prinsengracht end",
+     "approxSizeM": [
+      9.8,
+      20
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001975_pano_0000_000081",
+     "how": "3DBAG roof pieces snapped to their bands"
+    },
+    {
+     "id": "k-site-fence",
+     "kind": "other",
+     "where": "site fence along the Keizersgracht end (2021 capture)",
+     "approxSizeM": [
+      10,
+      2
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7316010203-001975_pano_0000_000081",
+     "skip": {
+      "reason": "temporary",
+      "note": "building site of 2021"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "w07-192",
+   "bearing": 192,
+   "lengthM": 7.8,
+   "centre": [
+    4.8914394,
+    52.3624215
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000355_pano_0000_000367",
+   "capturedAt": "2017-07-07",
+   "checked": true,
+   "items": [
+    {
+     "id": "p-end-bands",
+     "kind": "other",
+     "where": "short Prinsengracht face of the west strip: bands and fins",
+     "approxSizeM": [
+      7.8,
+      16
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-000355_pano_0000_000367",
+     "how": "band/fin system"
+    }
+   ]
+  },
+  {
+   "tag": "w08-192",
+   "bearing": 192,
+   "lengthM": 6.3,
+   "centre": [
+    4.8911896,
+    52.3628214
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316060226-000022_pano_0000_000227",
+   "capturedAt": "2016-08-16",
+   "checked": true,
+   "items": [
+    {
+     "id": "w08-bands",
+     "kind": "other",
+     "where": "short south face of the Kerkstraat wing: bands and fins",
+     "approxSizeM": [
+      6.3,
+      16
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316060226-000022_pano_0000_000227",
+     "how": "band/fin system"
+    }
+   ]
+  },
+  {
+   "tag": "w09-103",
+   "bearing": 103,
+   "lengthM": 4.4,
+   "centre": [
+    4.8920225,
+    52.3636492
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002619_pano_0015_000144",
+   "capturedAt": "2022-06-22",
+   "checked": true,
+   "items": [
+    {
+     "id": "n-corner-pier",
+     "kind": "colonnade",
+     "where": "the Keizersgracht corner pier of the gallery, the fascia and the stepped bands over it",
+     "approxSizeM": [
+      0.9,
+      4.45
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002619_pano_0015_000144",
+     "how": "corner pier at t = len, fascia and band corner blocks"
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  }
+ ]
+}

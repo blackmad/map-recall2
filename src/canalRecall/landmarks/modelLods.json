@@ -1990,5 +1990,47 @@
   "buildVersion": 2,
   "bytes": 46764,
   "triangles": 2275
+ },
+ "vijzelbank": {
+  "sourceHash": "1310fc65cf2a62ae",
+  "buildVersion": 2,
+  "bytes": 78468,
+  "triangles": 4147
+ },
+ "carlton-hotel": {
+  "sourceHash": "2085964f78c2f01c",
+  "buildVersion": 2,
+  "bytes": 52916,
+  "triangles": 2426
+ },
+ "citroen-zuid": {
+  "sourceHash": "16254d5bcc24e408",
+  "buildVersion": 2,
+  "bytes": 35736,
+  "triangles": 1459
+ },
+ "odeon-singel": {
+  "sourceHash": "f45795786dc7c4de",
+  "buildVersion": 2,
+  "bytes": 32264,
+  "triangles": 1344
+ },
+ "doelen-hotel": {
+  "sourceHash": "b3224d1258c39c12",
+  "buildVersion": 2,
+  "bytes": 98032,
+  "triangles": 4405
+ },
+ "telefooncentrale-spuistraat": {
+  "sourceHash": "a1d6702c7f4cb824",
+  "buildVersion": 2,
+  "bytes": 82488,
+  "triangles": 3696
+ },
+ "telegraaf-gebouw": {
+  "sourceHash": "ca99fc45b4e0fec0",
+  "buildVersion": 2,
+  "bytes": 59492,
+  "triangles": 2506
  }
 }

@@ -1,0 +1,49 @@
+{
+ "id": "citroen-zuid",
+ "countedBy": "lane #186 (opus) from the rectified panorama crops listed per facade, counted from the photos with the ribbon convention (steel windows divided only by glazing bars count once); not a blind haiku count, the integrator may re-count. The west front is left out: the only current view (2024-11-05) is 23% foliage. The two south faces (yard side, not principal) were counted too and matched the model (curved wall rows 4,4 at alongM 36.1-48.9 / heightM 4-10.5; extension ribbon 4 at alongM 9-29 / heightM 4-7.6), but are not declared: their photo-true small corner window and narrower fourth window read as off-size to the photo-spec rhythm gate (lane report #186).",
+ "facades": [
+  {
+   "name": "east front, first floor and shop windows",
+   "bearing": 78,
+   "photo": "artifacts/landmark-lanes/citroen-zuid/ref-east.jpg",
+   "alongM": [
+    7.6,
+    27.8
+   ],
+   "heightM": [
+    0,
+    8.1
+   ],
+   "openings": [
+    "glass"
+   ],
+   "rows": [
+    4,
+    4
+   ],
+   "note": "Counted on w05-78 (TMX7316010203-002475_pano_0000_000039: three shop windows and three first-floor windows between dark tile piers) and w03-78 (TMX7316010203-002120_pano_0000_004476: the fourth of each at its south end). Crop between the stair block and the fifth first-floor window."
+  },
+  {
+   "name": "north front (MOVE)",
+   "bearing": 348,
+   "photo": "artifacts/landmark-lanes/citroen-zuid/ref-north.jpg",
+   "alongM": [
+    4.6,
+    29.2
+   ],
+   "heightM": [
+    0,
+    12.0
+   ],
+   "openings": [
+    "glass"
+   ],
+   "rows": [
+    2,
+    6,
+    6
+   ],
+   "note": "w04-348 (TMX7316010203-002460_pano_0003_000188): glazed plinth as a narrow east bay plus one long run; two storeys of one small and five large steel windows. Lettering above 12 m is out of the crop."
+  }
+ ]
+}

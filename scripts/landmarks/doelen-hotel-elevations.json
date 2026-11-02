@@ -1,0 +1,7 @@
+{"id": "doelen-hotel", "countedBy": "lane landmarks-singel-20261101 (#184, opus) from the Gemeente Amsterdam panorama recording_2025-07-03_03-29-47_03471 rectified onto the BAG Kloveniersburgwal front (artifacts/landmark-lanes/doelen-hotel/rect/), north wing and tower only (a tree hides the south wing), counted before the model was built; cross-checked on Commons 'Doelen Hotel Amsterdam 2014.jpg'; not a blind count, 2026-11-01", "facades": [
+ {"name": "Kloveniersburgwal front, tower and north wing", "bearing": 122, "photo": "artifacts/landmark-lanes/doelen-hotel/rect/rect-b122-recording_2025-07-03_03-29-47_03471.jpg", "alongM": [20.0, 47.5],
+  "rows": [7, 6, 7, 7, 6, 6],
+  "rowsNote": "bottom up: ground floor (tower arched window + five arched windows + the corner window), first floor (five bay windows + the corner window; the tower oculus at this height is a round leaded disc in a carved cartouche, recorded as ornament, not as a window opening), second (tower + six), third (tower + six), top storey (six), dormers in the mansard (five + corner pavilion dormer)",
+  "columns": 7, "symmetric": false, "gables": 2,
+  "gablesNote": "the tower's segmental gable and the corner mansard pavilion"}
+]}

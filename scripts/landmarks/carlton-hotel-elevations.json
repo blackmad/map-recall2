@@ -1,0 +1,25 @@
+{
+  "id": "carlton-hotel",
+  "source": "Counted 2026-11-02 (lane #182) from the landmark-brief.ts crop (--height=38, --ignore of the hotel's own OSM parts) of the Gemeente Amsterdam panorama b_20241203_1333_Track15_Sphere_00264 (2024, CC BY 4.0), 32.8 px/m.",
+  "countedBy": "photo (lane, not blind)",
+  "facades": [
+    {
+      "name": "Vijzelstraat front (hotel)",
+      "bearing": 99,
+      "photo": "artifacts/landmark-briefs/carlton-hotel/w01-99.jpg",
+      "rows": [
+        null,
+        12,
+        12,
+        null,
+        null,
+        null
+      ],
+      "note": "Bottom to top: the gallery (shops behind the seven arcade piers: one shopfront per arch, partly behind street furniture, not countable as openings: null); the low mezzanine windows 8.0-9.2 m (12, one per bay at 4.05 m); the wide pointed-top windows 9.6-12.4 m (12); then three storeys of canted oriels. Each oriel has a front light and a narrow light in each cheek, but the panorama camera stands mid-front, so it sees only the cheek facing it (24 openings a row on the crop where the model, drawn true, has 36): the oriel rows are null rather than a count of the camera's view. The top silhouette is the mansard between the two corner towers, cut by the crop at both ends: no peak count. alongM keeps ring edge 7 only (the hotel front, 51.7 m), cutting off the bridge, the south tower and the annex, which face the same way (the silhouette starts at the annex's south end, 55.5 m before the front).",
+      "alongM": [
+        60.0,
+        111.4
+      ]
+    }
+  ]
+}

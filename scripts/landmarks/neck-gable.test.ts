@@ -44,3 +44,23 @@ test('the silhouette rises from the shoulders to the pediment apex and ends at t
   assert.equal(ped.length, 3);
   assert.ok(Math.abs(ped[2][1] - (g.apexY - g.corniceY - g.corniceH)) < 1e-9);
 });
+
+test('a segmental crown is an arc from the cornice ends to the apex, counter-clockwise, and tops the silhouette', () => {
+  const s: NeckGableSpec = {...g, crown: 'segment'};
+  const ped = pedimentOutline(s);
+  assert.ok(signedArea(ped) > 0, 'counter-clockwise');
+  const top = s.apexY - s.corniceY - s.corniceH;
+  assert.ok(Math.abs(Math.max(...ped.map(p => p[1])) - top) < 1e-9);
+  for (const [x, y] of ped) { assert.ok(Math.abs(x) <= s.corniceHalf + 1e-9); assert.ok(y >= -1e-9 && y <= top + 1e-9); }
+  const sil = gableSilhouette(s);
+  assert.equal(Math.max(...sil.map(p => p[1])), s.apexY);
+  assert.equal(sil[0][0], s.x0);
+  assert.equal(sil[sil.length - 1][0], s.x1);
+});
+
+test('the default crown is unchanged: a triangle', () => {
+  const ped = pedimentOutline(g);
+  assert.equal(ped.length, 3);
+  assert.deepEqual(ped.slice(0, 2), [[-g.corniceHalf, 0], [g.corniceHalf, 0]]);
+  assert.deepEqual(ped[2], [0, g.apexY - (g.corniceY + g.corniceH)]);
+});
