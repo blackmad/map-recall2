@@ -221,6 +221,16 @@
       "version": "85f75bfdf3de1e70",
       "dateSource": "asset-update"
     },
+    "artis-planetarium": {
+      "updatedAt": "2026-11-02T00:42:21.377Z",
+      "version": "60c250f25986c0ac",
+      "dateSource": "asset-update"
+    },
+    "artis-planetarium.lod1": {
+      "updatedAt": "2026-11-02T01:03:36.388Z",
+      "version": "d966d584cb54645e",
+      "dateSource": "asset-update"
+    },
     "asterweg-23": {
       "updatedAt": "2026-10-20T10:16:57.905Z",
       "version": "2001cd89e4af86b9",
@@ -1901,6 +1911,16 @@
       "version": "95ca6a0d158c91fb",
       "dateSource": "asset-update"
     },
+    "kraanspoor": {
+      "updatedAt": "2026-11-02T00:11:11.000Z",
+      "version": "79a0a5443847149e",
+      "dateSource": "asset-update"
+    },
+    "kraanspoor.lod1": {
+      "updatedAt": "2026-11-02T00:11:12.331Z",
+      "version": "c2ea701cf12f39a1",
+      "dateSource": "asset-update"
+    },
     "krasnapolsky": {
       "updatedAt": "2026-10-13T14:30:49.774Z",
       "version": "ae8f0cf664772dbe",
@@ -3076,6 +3096,16 @@
       "version": "f131fdf8a7410a0e",
       "dateSource": "asset-update"
     },
+    "sportfondsenbad-oost": {
+      "updatedAt": "2026-11-02T00:15:49.856Z",
+      "version": "b9a4c1fc5a00a0d5",
+      "dateSource": "asset-update"
+    },
+    "sportfondsenbad-oost.lod1": {
+      "updatedAt": "2026-11-02T00:17:58.025Z",
+      "version": "ce6527aeff403672",
+      "dateSource": "asset-update"
+    },
     "stadhuis": {
       "updatedAt": "2026-10-13T19:23:50.441Z",
       "version": "a3168550ec318afd",
@@ -3649,6 +3679,16 @@
     "zevenlandenhuizen.lod1": {
       "updatedAt": "2026-10-23T20:23:30.757Z",
       "version": "51e658d84a7670f1",
+      "dateSource": "asset-update"
+    },
+    "zonnehuis": {
+      "updatedAt": "2026-11-02T00:43:09.303Z",
+      "version": "ea88956c3d920fae",
+      "dateSource": "asset-update"
+    },
+    "zonnehuis.lod1": {
+      "updatedAt": "2026-11-02T00:45:08.446Z",
+      "version": "163c4dc044bcc8c7",
       "dateSource": "asset-update"
     },
     "zuiderbad": {

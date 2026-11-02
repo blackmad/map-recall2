@@ -1,0 +1,450 @@
+{
+ "schemaVersion": 1,
+ "id": "artis-planetarium",
+ "pand": "0363100012164980",
+ "brief": "scripts/landmarks/artis-planetarium-brief.md",
+ "signature": [
+  "dome",
+  "drum",
+  "hall-glazing",
+  "drum-piers",
+  "block-curtain-wall"
+ ],
+ "walls": [
+  {
+   "tag": "w01-300",
+   "bearing": 300,
+   "lengthM": 16.6,
+   "centre": [
+    4.913032,
+    52.3674233
+   ],
+   "evidence": "photo",
+   "panoId": "b_20241210_1246_Track22_Sphere_00093",
+   "capturedAt": "2024-12-10",
+   "checked": true,
+   "items": [
+    {
+     "id": "w01-link-glazing",
+     "kind": "window-shape",
+     "where": "floor-to-fascia glazing of the link, slim pale mullions ~1.45 m, pale fascia",
+     "approxSizeM": [
+      16.6,
+      3.4
+     ],
+     "plan": "modelled",
+     "seenIn": "b_20241210_1246_Track22_Sphere_00093",
+     "how": "hall(): glazedRun() along the link edges"
+    }
+   ],
+   "note": "North-west face of the glazed link (u 4.8, v 29-45.6), set back behind the hall; dome above and behind. Crops artifacts/landmark-briefs/artis-planetarium/w01-300*.jpg"
+  },
+  {
+   "tag": "w02-120",
+   "bearing": 120,
+   "lengthM": 13.4,
+   "centre": [
+    4.9135629,
+    52.3675552
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": false,
+   "items": [
+    {
+     "id": "w02-120-glazing",
+     "kind": "window-shape",
+     "where": "glazed hall continuing on the garden side",
+     "approxSizeM": [
+      13.4,
+      3.4
+     ],
+     "plan": "modelled",
+     "seenIn": "commons:File:Weesperbuurt en Plantage, Amsterdam, Netherlands - panoramio (26).jpg (CC BY-SA 3.0)",
+     "how": "hall(): glazedRun()"
+    }
+   ],
+   "note": "South-east face inside the ARTIS gardens; no panorama. Panoramio 26 (Commons) shows the glazed hall continuing on this side under the dome."
+  },
+  {
+   "tag": "w03-120",
+   "bearing": 120,
+   "lengthM": 13.4,
+   "centre": [
+    4.9134495,
+    52.3674333
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": false,
+   "items": [
+    {
+     "id": "w03-120-glazing",
+     "kind": "window-shape",
+     "where": "glazed hall continuing on the garden side",
+     "approxSizeM": [
+      13.4,
+      3.4
+     ],
+     "plan": "modelled",
+     "seenIn": "commons:File:Weesperbuurt en Plantage, Amsterdam, Netherlands - panoramio (26).jpg (CC BY-SA 3.0)",
+     "how": "hall(): glazedRun()"
+    }
+   ],
+   "note": "South-east face inside the ARTIS gardens; no panorama. Panoramio 26 (Commons) shows the glazed hall continuing on this side under the dome."
+  },
+  {
+   "tag": "w04-300",
+   "bearing": 300,
+   "lengthM": 13.4,
+   "centre": [
+    4.9131921,
+    52.3676839
+   ],
+   "evidence": "photo",
+   "panoId": "b_20241210_1246_Track22_Sphere_00099",
+   "capturedAt": "2024-12-10",
+   "checked": true,
+   "items": [
+    {
+     "id": "dome",
+     "kind": "dome",
+     "where": "near-hemispherical metal dome, 26 m across, top 15.6 m, brown-grey standing-seam sheet with vertical seams and horizontal courses",
+     "approxSizeM": [
+      26,
+      10.7
+     ],
+     "plan": "modelled",
+     "seenIn": "b_20241210_1246_Track22_Sphere_00099",
+     "how": "domeAndDrum(): sphere cap R 13.0 m centred 2.6 m up (fitted to the 3DBAG facets), 36 raised meridian seams and three horizontal courses, apex hatch"
+    },
+    {
+     "id": "drum",
+     "kind": "other",
+     "where": "short pale-brick drum between the hall roof and the dome with a white cornice ring",
+     "approxSizeM": [
+      25.5,
+      1.6
+     ],
+     "plan": "modelled",
+     "seenIn": "commons:File:A young man is walking in front of the facade of the Planetarium building of Artis Zoo (Fons Heijnsbroek 2008, CC0)",
+     "how": "domeAndDrum(): open cylinder r 12.72 m, 3.4-4.6 m, pale brick; white cornice ring with closed annuli to 4.96 m"
+    },
+    {
+     "id": "drum-piers",
+     "kind": "other",
+     "where": "white rectangular piers in the drum band breaking the cornice line",
+     "approxSizeM": [
+      0.75,
+      1.2
+     ],
+     "plan": "simplified",
+     "seenIn": "commons:File:A young man is walking in front of the facade of the Planetarium building of Artis Zoo (Fons Heijnsbroek 2008, CC0)",
+     "how": "16 white boxes evenly round the drum; the photos show one per visible bay, the count is inferred"
+    },
+    {
+     "id": "hall-glazing",
+     "kind": "window-shape",
+     "where": "one-storey all-glass hall: tall panes ~1.45 m between slim pale mullions, no transom, pale fascia ~0.4 m, low plinth",
+     "approxSizeM": [
+      29,
+      3.4
+     ],
+     "plan": "modelled",
+     "seenIn": "commons:File:A young man is walking in front of the facade of the Planetarium building of Artis Zoo (Fons Heijnsbroek 2008, CC0)",
+     "how": "hall(): glazedRun() on every hall edge, 3DBAG roof 3.4 m"
+    },
+    {
+     "id": "hall-prow",
+     "kind": "other",
+     "where": "small glazed prow in the middle of the north-west side (BAG ring, 2.3 m wide, 1.1 m out)",
+     "approxSizeM": [
+      2.3,
+      3.4
+     ],
+     "plan": "modelled",
+     "seenIn": "BAG ring 0363100012164980",
+     "how": "the glazed run follows the BAG prow edges"
+    }
+   ],
+   "note": "North-west face of the square hall (Plantage Kerklaan), the main view of the planetarium: dome on its drum over the glazed hall. Crops w04-300*.jpg; Heijnsbroek 2008 shows the same face close up"
+  },
+  {
+   "tag": "w05-30",
+   "bearing": 30,
+   "lengthM": 13.3,
+   "centre": [
+    4.9133256,
+    52.3677065
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001903_pano_0000_000526",
+   "capturedAt": "2020-09-01",
+   "checked": true,
+   "items": [
+    {
+     "id": "ne-glazing",
+     "kind": "window-shape",
+     "where": "hall glazing continues round the north-east side, with the mid-side prow",
+     "approxSizeM": [
+      29,
+      3.4
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001903_pano_0000_000526",
+     "how": "hall(): glazedRun()"
+    },
+    {
+     "id": "aviary",
+     "kind": "other",
+     "where": "white wire aviary dome in the garden in front",
+     "approxSizeM": [
+      6,
+      5
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7316010203-001903_pano_0000_000526",
+     "skip": {
+      "reason": "not-visible",
+      "note": "a separate garden structure outside this BAG pand; not part of the building"
+     }
+    }
+   ],
+   "note": "North-east face of the hall seen at 42 deg (2020): the same glazing; the white wire aviary dome in front belongs to ARTIS gardens, not this pand. Crops w05-30*.jpg"
+  },
+  {
+   "tag": "w06-300",
+   "bearing": 300,
+   "lengthM": 13.3,
+   "centre": [
+    4.9130789,
+    52.3675617
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-06-19_06-21-49_01139",
+   "capturedAt": "2025-06-19",
+   "checked": true,
+   "items": [
+    {
+     "id": "nw-glazing-s",
+     "kind": "window-shape",
+     "where": "glazed hall with pale fascia, drum and dome above",
+     "approxSizeM": [
+      13.3,
+      3.4
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-06-19_06-21-49_01139",
+     "how": "hall(): glazedRun(); domeAndDrum()"
+    }
+   ],
+   "note": "North-west face of the hall, southern half (2025), behind chestnuts. Crops w06-300*.jpg"
+  },
+  {
+   "tag": "w07-30",
+   "bearing": 30,
+   "lengthM": 13.3,
+   "centre": [
+    4.9135266,
+    52.367637
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-06-19_06-21-49_01310",
+   "capturedAt": "2025-06-19",
+   "checked": true,
+   "items": [],
+   "note": "The panorama aimed here shows the brick rotunda of the neighbouring Micropia / Ledenlokalen building (pale brick, slate roof with skylights, louvred vents), not this pand: the planetarium NE wall itself faces the ARTIS gardens. Crops w07-30*.jpg"
+  },
+  {
+   "tag": "w08-300",
+   "bearing": 300,
+   "lengthM": 6.2,
+   "centre": [
+    4.9128879,
+    52.3673554
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-06-19_06-21-49_01280",
+   "capturedAt": "2025-06-19",
+   "checked": true,
+   "items": [
+    {
+     "id": "block-curtain-wall",
+     "kind": "window-shape",
+     "where": "two storeys of curtain wall, ~1.5 m grid, floor band at ~3.3 m, transom high in the upper storey, pale fascia",
+     "approxSizeM": [
+      6.2,
+      6.8
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-06-19_06-21-49_01280",
+     "how": "block(): curtain wall per edge with mullions, floor band, transom and fascia; 3DBAG roof 6.8 m"
+    },
+    {
+     "id": "ad-column",
+     "kind": "sign",
+     "where": "advertising column on the pavement",
+     "approxSizeM": [
+      1.2,
+      3
+     ],
+     "plan": "skipped",
+     "seenIn": "recording_2025-06-19_06-21-49_01280",
+     "skip": {
+      "reason": "temporary",
+      "note": "street furniture on the public pavement, not part of the building"
+     }
+    }
+   ],
+   "note": "North-west face of the two-storey entrance/office block (Plantage Kerklaan), 2025: curtain wall in a ~1.5 m grid, floor band, pale fascia; an advertising column stands in front. Crops w08-300*.jpg"
+  },
+  {
+   "tag": "w09-300",
+   "bearing": 300,
+   "lengthM": 6,
+   "centre": [
+    4.9129054,
+    52.3672864
+   ],
+   "evidence": "photo",
+   "panoId": "b_20241210_1246_Track24_Sphere_00064",
+   "capturedAt": "2024-12-10",
+   "checked": true,
+   "items": [
+    {
+     "id": "block-blue-panels",
+     "kind": "other",
+     "where": "dark-blue opaque panels in the curtain wall, lower storey left and one upper bay",
+     "approxSizeM": [
+      3,
+      3
+     ],
+     "plan": "simplified",
+     "seenIn": "b_20241210_1246_Track24_Sphere_00064",
+     "how": "block(): the two ground bays and the first upper bay of the street face are dark-blue panels"
+    },
+    {
+     "id": "timber-drum",
+     "kind": "other",
+     "where": "timber-clad round volume to the right of the block",
+     "approxSizeM": [
+      4,
+      5
+     ],
+     "plan": "skipped",
+     "seenIn": "b_20241210_1246_Track24_Sphere_00064",
+     "skip": {
+      "reason": "not-visible",
+      "note": "it stands in the notch outside BAG ring 0363100012164980 (u 0-4.8, v 51.8-58.5); another pand"
+     }
+    },
+    {
+     "id": "artis-banner",
+     "kind": "sign",
+     "where": "ARTIS banner on a mast",
+     "approxSizeM": [
+      0.8,
+      2.5
+     ],
+     "plan": "skipped",
+     "seenIn": "b_20241210_1246_Track24_Sphere_00064",
+     "skip": {
+      "reason": "temporary",
+      "note": "a banner on a separate mast"
+     }
+    }
+   ],
+   "note": "Entrance/office block seen from the Plantage Kerklaan (2024): dark-blue spandrel panels in the lower left bays and one upper bay, glazed doors, a lower glazed bay and a timber-clad round volume to the right (outside this BAG ring), the ARTIS banner and the entrance kiosk (modelled separately as artis-entrance). Crops w09-300*.jpg"
+  },
+  {
+   "tag": "w10-210",
+   "bearing": 210,
+   "lengthM": 4.8,
+   "centre": [
+    4.9130613,
+    52.3674988
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000711_pano_0000_000960",
+   "capturedAt": "2018-05-08",
+   "checked": true,
+   "items": [
+    {
+     "id": "sw-glazing",
+     "kind": "window-shape",
+     "where": "glazed two-storey end",
+     "approxSizeM": [
+      4.8,
+      6.8
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-000711_pano_0000_000960",
+     "how": "block(): curtain wall"
+    }
+   ],
+   "note": "South-west end of the block towards the Plantage Middenlaan (2018), mostly hidden by trees, bicycles and an advertising column. Crops w10-210*.jpg"
+  },
+  {
+   "tag": "w11-30",
+   "bearing": 30,
+   "lengthM": 4.8,
+   "centre": [
+    4.9129412,
+    52.3673691
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002047_pano_0000_000306",
+   "capturedAt": "2021-03-18",
+   "checked": true,
+   "items": [
+    {
+     "id": "ne-block-glazing",
+     "kind": "window-shape",
+     "where": "two-storey glazing in a ~1.5 m grid",
+     "approxSizeM": [
+      4.8,
+      6.8
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002047_pano_0000_000306",
+     "how": "block(): curtain wall; above the link only from 3.4 m"
+    }
+   ],
+   "note": "North-east side of the block seen from the Plantage Kerklaan (2021): two storeys of glazing above the link roof. Crops w11-30*.jpg"
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  },
+  {
+   "name": "Wikimedia Commons, Fons Heijnsbroek 2008",
+   "url": "https://commons.wikimedia.org/wiki/File:A_young_man_is_walking_in_front_of_the_facade_of_the_Planetarium_building_of_Artis_Zoo_at_the_Plantage_Kerklaan_street_in_Amsterdam;_free_photo,_Fons_Heijnsbroek,_Autumn_2008.tif",
+   "licence": "CC0"
+  },
+  {
+   "name": "Wikimedia Commons, panoramio (26)",
+   "url": "https://commons.wikimedia.org/wiki/File:Weesperbuurt_en_Plantage,_Amsterdam,_Netherlands_-_panoramio_(26).jpg",
+   "licence": "CC BY-SA 3.0"
+  },
+  {
+   "name": "Wikimedia Commons, Anefo 1988 construction photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Bouw_Zeiss_Planetarium_Artis,_Bestanddeelnr_934-1813.jpg",
+   "licence": "CC0"
+  },
+  {
+   "name": "PDOK Luchtfoto RGB (actueel)",
+   "url": "https://service.pdok.nl/hwh/luchtfotorgb/wms/v1_0",
+   "licence": "CC BY 4.0"
+  },
+  {
+   "name": "3DBAG",
+   "url": "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012164980",
+   "licence": "CC BY 4.0"
+  }
+ ]
+}

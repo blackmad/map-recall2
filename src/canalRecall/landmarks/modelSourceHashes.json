@@ -1,5 +1,5 @@
 {
-  "toolchain": "ea0f86fa33bba4cb76e70f596b1925b7b304515b9295e3d472fe2ad90f8f1315",
+  "toolchain": "d3d81b87c1806137d739107531494a359be41ff551561621be5a152323d6b35e",
   "models": {
     "abn-amro-hoofdkantoor": "90ff65a2d9f94e99b2ab33438567f147959a43f017d3d9cf9d2ae68b6dae7cbf",
     "academie-theater-dans": "503b3e8d59937cbf7ac8776eb644c11fd10b567e5ac1113e0caa55c83cb68cde",
@@ -25,6 +25,7 @@
     "artis-aquarium": "24f6500535d4f68e66d230e2973053a4d3adc25044e1db3084b46d1d85e7c32b",
     "artis-entrance": "af6e420f6d7518657b0da30dfd8c538f8cffd75104cb8aee126c9a0fc529aa6f",
     "artis-library": "1feef17e0b58ef35d5e3508e90d93fa8971a8c20fd6bda69c83b37309c93e96a",
+    "artis-planetarium": "4ed75a4b5c31e5197d9b252a7c26dd05e362e24b52ab9071ed85293241db5a94",
     "asterweg-23": "ac60054b0e09a055b07d89bc9852fc39b009e01c4cd7428d98bdeda3666aa7e4",
     "athenaeum": "04333046f1bf8946753eb42280e04db3e0daadba9afcd18f34719ee20d7c80ab",
     "auschwitz-monument": "b425e91c67c90ec1d1a10b997ecb7399d6b00a7448c65407e7ad2474de62e1e6",
@@ -202,6 +203,7 @@
     "klimmuur-centraal": "5d640bdae283a53f98c7d68df551f08857ad6b8a0922336a62d2e230c282a06d",
     "kohnstammhuis": "3652628fe0d6f6e31970b4ca3348e02df2a2956467838a1f576f15704ffb63dd",
     "koningskerk": "185bf81f9422180f3ea7a8f3c24f1c82ce7077f31124ec3f581806ceb54c936b",
+    "kraanspoor": "1dfb96926915079d958ad481e32d4045bd83b43f4a8d06b40aa5586b4c6d7aee",
     "krasnapolsky": "fc6905032839e71c1b4b02d7d22a31f4371b37e937122ea70f6212e08d6dd8a9",
     "krijtberg": "052c44bfc9251021c593dc01ee5c5246a02ede51fb51daeddacebd0891619c91",
     "kriterion": "6875557c5e2581efb657861e45287a7ab148c04163cd993ec44ad558155b2af1",
@@ -324,6 +326,7 @@
     "social-history": "1b28c0f25c1012e8c77fd1ff08df166c668a4067c75f178cb7348467d404e027",
     "spanjemonument": "ca1a73074dfc897b85abcec30e2bf64ea6263096cdb1296eb9997706b7590a69",
     "spinoza-standbeeld": "0aefe6b6c324105f27fb67aa4fa34dea26252a5c3cd1269e2638ca8e5c9611b1",
+    "sportfondsenbad-oost": "2ae31b8e9545071f72d3d2bd9ce88f640b64a4a101e6b35409882acd2c56947f",
     "stadhuis": "66b0cf3fec017cf27a3df8efb39ae9ba31996f8853407f0e3b8c12d53574e0f5",
     "stadsschouwburg": "69e1aa111afe782394e77a45a9ca3988f8c544271d7b4a59669b84a8d99d39f9",
     "stationsplein-paviljoens": "85fccd3f1b13d39cfc2625b0b0482eacd6a031e4e5ec461f9dd3d5ba8d418e8e",
@@ -385,6 +388,7 @@
     "wolkenkrabber": "32353cbf2c2e45f30e7a187f559bb998f6fbcc4504f9a821c2b3304fcd17efc1",
     "woongebouw-wladiwostok": "dd3fd4130cf6493bc7e957ad7b30b960a96f1ecf664fe48f51cb21278cd8b65b",
     "zevenlandenhuizen": "346d2b35dc78a8e8b20dfb0269b9787dbafd57878513bd541c3b13239a61ee09",
+    "zonnehuis": "c324cc93e88978c9e758a0f84f75f86a82ea7e3613402601725ffa4275137534",
     "zuiderbad": "bf9721951bce64c61440a6909bd217051ed1f24b173dc8b8913b1134f580b74c",
     "zuiderkerk": "05ce9ba70a0887900179aded16c45a587e935b933191365ade06777d30d284de",
     "zuiveringshal-west": "be465eaaeac61fa477e74c4c46b515997c99dc5f2e06ad8e8460c60b19669ede"

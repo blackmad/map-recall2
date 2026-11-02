@@ -1,0 +1,469 @@
+{
+ "schemaVersion": 1,
+ "id": "sportfondsenbad-oost",
+ "pand": "0363100012236677",
+ "brief": "scripts/landmarks/sportfondsenbad-oost-brief.md",
+ "signature": [
+  "n-apex-pilasters",
+  "w-chimney",
+  "n-twin-gables",
+  "s-light-groups",
+  "w-rail-arch",
+  "n-blind-light-groups",
+  "s-star-anchors",
+  "roof-glazing"
+ ],
+ "walls": [
+  {
+   "tag": "n-341",
+   "bearing": 341,
+   "lengthM": 37.9,
+   "centre": [
+    4.9287445,
+    52.3567741
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002591_pano_0000_006022",
+   "capturedAt": "2022-06-13",
+   "checked": true,
+   "note": "Land van Cocagneplein side. The ground storey up to ~6 m is enclosed by the separate 2014 one-storey shop block (BAG 0363100012240381, not modelled here); crops: artifacts/landmark-briefs/sportfondsenbad-oost/walls/north-0/1.jpg",
+   "items": [
+    {
+     "id": "n-twin-gables",
+     "kind": "other",
+     "where": "the two hall gables, eaves 13.5 m to ridges 19.6 m, coping along the rakes",
+     "approxSizeM": [
+      37.9,
+      6.1
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002591_pano_0000_006022",
+     "how": "gableEnd(): pentagon gable walls per hall, slate-grey coping strip on each rake, brick band 0.7 m below"
+    },
+    {
+     "id": "n-apex-pilasters",
+     "kind": "tower",
+     "where": "pilaster at each gable apex running past the ridge to ~21.3 m (3DBAG 21.3-21.4) with a stone cover and a pointed stone top",
+     "approxSizeM": [
+      1.5,
+      21.5
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002591_pano_0000_006022",
+     "how": "gableEnd(): brick pilaster, stone cap plate, brick neck, stone cover and a tapered stone top"
+    },
+    {
+     "id": "n-corner-valley-pilasters",
+     "kind": "other",
+     "where": "corner pilasters to ~16 m and the valley pilaster to ~16.7 m, each with a stone cap",
+     "approxSizeM": [
+      1.2,
+      16.5
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002591_pano_0000_006022",
+     "how": "gableEnd(): pilaster boxes with stone caps"
+    },
+    {
+     "id": "n-blind-light-groups",
+     "kind": "window-shape",
+     "where": "per half-hall a group of three round-headed lights (centre taller, 11.75-14 m) bricked up, with three panels below (9.9-11.3 m) of which the centre one is glazed",
+     "approxSizeM": [
+      5.0,
+      4.2
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002591_pano_0000_006022",
+     "how": "gableEnd() side N: archLight blind (pale infill, brick arch band, stone sill), glazed white-framed centre panel"
+    },
+    {
+     "id": "n-keperboog",
+     "kind": "other",
+     "where": "pointed (keperboog) brick band with dentils over each light group, 13.3-15 m",
+     "approxSizeM": [
+      7.4,
+      1.7
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-002591_pano_0000_006022",
+     "how": "two sloped brick strips with six dentil blocks per side"
+    },
+    {
+     "id": "n-rake-dentil",
+     "kind": "other",
+     "where": "brick dentil band following each gable rake 0.7 m below the coping",
+     "approxSizeM": [
+      18.0,
+      0.25
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-002591_pano_0000_006022",
+     "how": "sloped brick strip without individual dentils"
+    },
+    {
+     "id": "n-fleur-anchors",
+     "kind": "other",
+     "where": "iron fleur-de-lis wall anchors on the apex pilasters (~19 m) and the valley/corner pilasters (~12 m)",
+     "approxSizeM": [
+      0.5,
+      1.4
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-002591_pano_0000_006022",
+     "how": "fleurAnchor(): dark iron bars (stem, crossbar, four curled leaves as straight arms) and a small diamond tip"
+    },
+    {
+     "id": "n-stone-blocks",
+     "kind": "other",
+     "where": "pale stone blocks where the bands cross the pilasters (8.3 m, 13.2 m)",
+     "approxSizeM": [
+      1.5,
+      0.45
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002591_pano_0000_006022",
+     "how": "stone slabs on each pilaster"
+    },
+    {
+     "id": "n-band",
+     "kind": "other",
+     "where": "the stokerij-floor band at ~8.3 m: brick course with a dentil row",
+     "approxSizeM": [
+      37.9,
+      0.4
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001007_pano_0004_000860",
+     "how": "dentils() full width"
+    },
+    {
+     "id": "n-ground-arches",
+     "kind": "window-shape",
+     "where": "ground-storey round arches, bricked up as recessed panels (register: rondbogen dichtgezet als spaarvelden)",
+     "approxSizeM": [
+      2.0,
+      6.6
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-001007_pano_0004_000860",
+     "how": "brick arch outlines between the 3.1 m piers; hidden behind the shop block in the game"
+    },
+    {
+     "id": "n-shop-signs",
+     "kind": "sign",
+     "where": "BAKKERIJ BALVERT panels on the shop block in front",
+     "approxSizeM": [
+      3.0,
+      1.5
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7316010203-002591_pano_0000_006022",
+     "skip": {
+      "reason": "temporary",
+      "note": "tenant signs on the separate 2014 shop block"
+     }
+    },
+    {
+     "id": "roof-glazing",
+     "kind": "other",
+     "where": "roof: a glazed strip either side of each ridge over the pool, ~2.5 m down each slope, v ~0-31 m (orthophoto blue strips)",
+     "approxSizeM": [
+      5.0,
+      31.0
+     ],
+     "plan": "modelled",
+     "seenIn": "PDOK Luchtfoto RGB actueel",
+     "how": "shell(): glass slabs 11 cm proud of each slope with white glazing bars every 1.8 m"
+    },
+    {
+     "id": "roof-plant",
+     "kind": "other",
+     "where": "roof: the gym's plant boxes and ducts over the valley at the south part",
+     "approxSizeM": [
+      8.0,
+      7.0
+     ],
+     "plan": "simplified",
+     "seenIn": "PDOK Luchtfoto RGB actueel",
+     "how": "roofPlant(): two grey boxes, one horizontal and one vertical duct"
+    },
+    {
+     "id": "roof-solar",
+     "kind": "other",
+     "where": "roof: solar panels across the slopes beside the glazing",
+     "approxSizeM": [
+      8.0,
+      30.0
+     ],
+     "plan": "skipped",
+     "seenIn": "PDOK Luchtfoto RGB actueel",
+     "skip": {
+      "reason": "temporary",
+      "note": "rooftop installation, dark on dark sheets; kept off the model"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "s-161",
+   "bearing": 161,
+   "lengthM": 37.9,
+   "centre": [
+    4.9290677,
+    52.3561823
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002142_pano_0000_000680",
+   "capturedAt": "2021-05-28",
+   "checked": true,
+   "note": "Square side (gym entrance, pand 236879). The panoramas stand ~8 m off and do not reach the gable tops; the gables follow the north end (register: the detailing is alike on the three remaining walls). Views: walls2/view-s4.jpg, walls/view-s1/s3.jpg",
+   "items": [
+    {
+     "id": "s-light-groups",
+     "kind": "window-shape",
+     "where": "per half-hall three round-headed iron windows with light frames (centre taller), 9.4-13 m",
+     "approxSizeM": [
+      5.0,
+      3.6
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002142_pano_0000_000680",
+     "how": "gableEnd() side S: archLight glazed, white frame, mullion and transoms, brick arch band, stone sill"
+    },
+    {
+     "id": "s-gables",
+     "kind": "other",
+     "where": "the two hall gables with apex pilasters",
+     "approxSizeM": [
+      37.9,
+      8.0
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-002142_pano_0000_000680",
+     "how": "same gableEnd() as the north: only the lower part is photographed",
+     "note": "tops out of frame"
+    },
+    {
+     "id": "s-star-anchors",
+     "kind": "other",
+     "where": "iron star anchors (vertical bar with crossed forked arms) on the ground piers at ~2.7 m",
+     "approxSizeM": [
+      0.9,
+      1.2
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-002591_pano_0000_005770",
+     "how": "starAnchor(): three dark bars"
+    },
+    {
+     "id": "s-fleur-anchors",
+     "kind": "other",
+     "where": "fleur-de-lis anchors on the big pilasters at ~11 m and near the apex",
+     "approxSizeM": [
+      0.5,
+      1.3
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-002142_pano_0000_000680",
+     "how": "fleurAnchor()"
+    },
+    {
+     "id": "s-square-windows",
+     "kind": "window-shape",
+     "where": "modern dark-framed square windows in the 3.1 m pier grid: a tall lower row (1-4 m) and an upper row (5-7 m), the middle bay's upper one bricked",
+     "approxSizeM": [
+      1.6,
+      3.0
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002142_pano_0000_000680",
+     "how": "gableEnd() side S: frame + glass slabs per sub-bay"
+    },
+    {
+     "id": "s-band",
+     "kind": "other",
+     "where": "rich dentil band at ~8.3 m (bloktandlijst) with stone blocks on the pilasters",
+     "approxSizeM": [
+      37.9,
+      0.45
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002142_pano_0000_000680",
+     "how": "dentils()"
+    },
+    {
+     "id": "s-gym-posters",
+     "kind": "sign",
+     "where": "TRAINMORE posters and an A-board",
+     "approxSizeM": [
+      1.5,
+      2.5
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7316010203-002591_pano_0000_005770",
+     "skip": {
+      "reason": "temporary",
+      "note": "tenant advertising"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "w-251",
+   "bearing": 251,
+   "lengthM": 69.0,
+   "centre": [
+    4.9286423,
+    52.3564237
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001205_pano_0000_000259",
+   "capturedAt": "2019-05-23",
+   "checked": true,
+   "note": "Courtyard at the north (v -6..13), behind the 16 m house BAG 0363100012233504 in the middle (v 13..44, hidden), the square at the south (v 44..63). Crops: walls2/westS-*.jpg, w01-251*.jpg, walls/view-chim1.jpg",
+   "items": [
+    {
+     "id": "w-chimney",
+     "kind": "tower",
+     "where": "free-standing round tapering brick chimney of the pool boilers (1929) at the south-west, ~30.6 m (AHN4 31.6 m NAP), dark bands, corbelled crown",
+     "approxSizeM": [
+      2.9,
+      30.6
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-09-26_11-33-06_00046",
+     "how": "chimney(): open tapered cylinder r 1.45-1.0 m on a plinth, five dark bands, corbelled crown, low link to the wall"
+    },
+    {
+     "id": "w-rail-arch",
+     "kind": "window-shape",
+     "where": "the one surviving large round-arched railway opening, southernmost bay, 3.4 m wide, 7.45-11.1 m, glazed with radial bars",
+     "approxSizeM": [
+      3.4,
+      3.7
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001205_pano_0000_000259",
+     "how": "westSide() bay 10: arch glass, white frame, radial and vertical bars, brick arch band"
+    },
+    {
+     "id": "w-torentje",
+     "kind": "tower",
+     "where": "the corner pilaster at the south-west rising past the eaves (register: klein uitgemetseld torentje)",
+     "approxSizeM": [
+      1.2,
+      15.6
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-001205_pano_0000_000259",
+     "how": "corner pilaster to 14.8 m with a stone cap, brick neck and cover"
+    },
+    {
+     "id": "w-clerestory-triplets",
+     "kind": "window-shape",
+     "where": "a triplet of round-headed clerestory windows (9.4-11.1 m) in every bay",
+     "approxSizeM": [
+      3.3,
+      1.7
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002908_pano_0010_000008",
+     "how": "westSide(): archLight x3 per bay"
+    },
+    {
+     "id": "w-lower-windows",
+     "kind": "window-shape",
+     "where": "bay 9 from the north: three smaller round-headed windows at 5.4-7 m; arched ground doors in bays 9-11",
+     "approxSizeM": [
+      3.0,
+      1.6
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001205_pano_0000_000259",
+     "how": "westSide(): archLight and dark arched door slabs"
+    },
+    {
+     "id": "w-pilasters-bands",
+     "kind": "other",
+     "where": "pilasters at the eleven bay lines with stone blocks at the bands, dentil cornice and band at 12.2 m",
+     "approxSizeM": [
+      69.0,
+      13.5
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7315120208-000029_pano_0000_006727",
+     "how": "westSide(): pilaster boxes, stone blocks, dentils()"
+    },
+    {
+     "id": "w-fleur-anchors",
+     "kind": "other",
+     "where": "iron anchors on the pilasters below the eaves",
+     "approxSizeM": [
+      0.4,
+      1.0
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-001205_pano_0000_000259",
+     "how": "fleurAnchor() at 11.3 m"
+    },
+    {
+     "id": "w-banner",
+     "kind": "sign",
+     "where": "TRAINMORE banner and poster across the south bay",
+     "approxSizeM": [
+      7.3,
+      1.7
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7316010203-001205_pano_0000_000259",
+     "skip": {
+      "reason": "temporary",
+      "note": "tenant advertising"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "e-71",
+   "bearing": 71,
+   "lengthM": 69.0,
+   "centre": [
+    4.9291701,
+    52.3565327
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "note": "Hidden behind the 2014 HEMA block (BAG 0363100012240376, 15.5 m) along its whole length; plain brick with pilasters at the bay lines (register: oostwand ongeleed).",
+   "items": []
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  },
+  {
+   "name": "PDOK Luchtfoto RGB (actueel)",
+   "url": "https://service.pdok.nl/hwh/luchtfotorgb/wms/v1_0",
+   "licence": "CC BY 4.0"
+  },
+  {
+   "name": "3DBAG",
+   "url": "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012236677",
+   "licence": "CC BY 4.0"
+  },
+  {
+   "name": "AHN4 DSM 0.5 m (PDOK)",
+   "url": "https://service.pdok.nl/rws/ahn/wms/v1_0",
+   "licence": "CC0"
+  },
+  {
+   "name": "Gemeentelijk monument 200525 (register description)",
+   "url": "https://api.data.amsterdam.nl/v1/monumenten/monumenten/9a32d662-086c-4b80-9046-bf218b99f24f",
+   "licence": "CC0"
+  }
+ ]
+}

@@ -1,0 +1,25 @@
+{
+ "id": "zonnehuis",
+ "countedBy": "lane #187 (opus) from the head-on Commons photo Zonnehuis 2023.jpg (Marion Golsteijn, CC BY-SA 4.0) and the rectified panorama crop w06-130 (Gemeente Amsterdam, CC BY 4.0); ribbon convention. Not a blind haiku count; the integrator may re-count.",
+ "facades": [
+  {
+   "name": "Hall front, centre bay between the four piers",
+   "bearing": 218,
+   "photo": "artifacts/landmark-briefs/zonnehuis/commons/Zonnehuis_2023.jpg",
+   "alongM": [35.9, 42.4],
+   "heightM": [5.2, 10.3],
+   "openings": ["glass"],
+   "rows": [3, 3],
+   "note": "Three windows over the canopy and three under the lettering, one per bay between the four brick piers."
+  },
+  {
+   "name": "SE wing end gable",
+   "bearing": 130,
+   "photo": "artifacts/landmark-briefs/zonnehuis/w06-130.jpg",
+   "heightM": [1.2, 2.9],
+   "openings": ["glass"],
+   "rows": [5],
+   "note": "Five yellow-framed windows in one row under the fascia."
+  }
+ ]
+}

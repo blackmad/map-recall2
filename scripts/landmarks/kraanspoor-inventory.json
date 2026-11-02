@@ -1,0 +1,365 @@
+{
+ "schemaVersion": 1,
+ "id": "kraanspoor",
+ "pand": "0363100012115127",
+ "brief": "scripts/landmarks/kraanspoor-brief.md",
+ "signature": [
+  "se-crane-track-beam",
+  "se-glass-box",
+  "se-louvre-skin",
+  "se-portal-legs",
+  "sw-head-corbels",
+  "se-stair-cores",
+  "sw-head-panels",
+  "se-core-numerals",
+  "se-steel-posts"
+ ],
+ "walls": [
+  {
+   "tag": "w01-308",
+   "bearing": 308,
+   "lengthM": 261.9,
+   "centre": [
+    4.8873585,
+    52.404708
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "items": [
+    {
+     "id": "nw-escape-walkway",
+     "kind": "balcony-ironwork",
+     "where": "water side: the steel escape walkway hung from the legs at about 4 m, railed, seen through the openings in every SE panorama and in Commons Kraanspoor.JPG",
+     "approxSizeM": [
+      254,
+      1.2
+     ],
+     "plan": "simplified",
+     "seenIn": "commons:File:Kraanspoor.JPG",
+     "how": "walkway(): 1.4 m steel deck at 4.0 m along the NW side outside the legs, top rail and posts"
+    },
+    {
+     "id": "nw-legs-beam",
+     "kind": "colonnade",
+     "where": "water side legs and beam, same rhythm as the SE side (seen through the openings)",
+     "approxSizeM": [
+      254,
+      11.3
+     ],
+     "plan": "modelled",
+     "seenIn": "commons:File:Kraanspoor.JPG",
+     "how": "legs()/trackBeams() are symmetric about the track axis"
+    },
+    {
+     "id": "nw-core-numerals",
+     "kind": "lettering",
+     "where": "core numerals on the water side",
+     "approxSizeM": [
+      2.4,
+      3.8
+     ],
+     "plan": "simplified",
+     "seenIn": "recording_2024-10-23_07-33-22_00814",
+     "how": "assumed to mirror the SE numerals (both faces of each core glass get the digit)"
+    }
+   ],
+   "note": "No panorama on the water side; the NW legs, beam and walkway are seen through the openings from the SE panoramas and Commons Kraanspoor.JPG. The box face is assumed to match the SE face (inferred)."
+  },
+  {
+   "tag": "w02-128",
+   "bearing": 128,
+   "lengthM": 261.9,
+   "centre": [
+    4.887509,
+    52.404637
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2024-10-23_07-33-22_00814",
+   "capturedAt": "2024-10-23",
+   "checked": true,
+   "items": [
+    {
+     "id": "se-crane-track-beam",
+     "kind": "other",
+     "where": "the whole SE face, 7.4-11.3 m: the 1952 board-marked concrete crane-track beam running the full length under the glass box",
+     "approxSizeM": [
+      254,
+      3.9
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002193_pano_0000_004912",
+     "how": "trackBeams(): two longitudinal concrete beams 7.4-11.3 m on the leg rhythm, deck slab and transverse ribs between them"
+    },
+    {
+     "id": "se-portal-legs",
+     "kind": "colonnade",
+     "where": "SE face below the beam: concrete legs on a fixed rhythm (end blocks, then 2 legs, core pier, mid leg, core pier, ...), openings 11-19 m wide with chamfered haunches at the beam",
+     "approxSizeM": [
+      254,
+      7.4
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002193_pano_0000_004912",
+     "how": "legs(): 1.6 m legs at s 22/34/78.5/131.35/183.7/227.9/239.9 m, core piers of two 2.4 m legs, chamfered haunches 1.6 x 1.65 m both sides of each leg, a low tie between each pair"
+    },
+    {
+     "id": "se-stair-cores",
+     "kind": "tower",
+     "where": "four glazed stair/lift cores set in wide piers at 51.8/105.2/157.5/209.9 m from the SW end (3DBAG lift overruns on the roof at the same stations), dark glass with a round-arched head cut up into the beam",
+     "approxSizeM": [
+      6.8,
+      9.6
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002193_pano_0000_004912",
+     "how": "cores(): glass box between the 2.4 m pier legs, 5.2 m arch-headed glass panel on both beam faces to 9.0 m, mullions and transoms"
+    },
+    {
+     "id": "se-core-numerals",
+     "kind": "lettering",
+     "where": "white numerals 1-4 (2 and 3 legible) on the dark core glass, 5.1-8.9 m",
+     "approxSizeM": [
+      2.4,
+      3.8
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002193_pano_0000_004912",
+     "how": "sign() digits 1-4 in white, 3.2 m tall at 4.7 m, on both faces of each core glass"
+    },
+    {
+     "id": "se-steel-posts",
+     "kind": "other",
+     "where": "recessed band 11.3-13.7 m between the concrete deck and the glass box: slender steel columns and diagonal braces carrying the box",
+     "approxSizeM": [
+      262,
+      2.4
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002193_pano_0000_004912",
+     "how": "posts(): steel columns every 10.8 m on both beams, V braces either side of each core"
+    },
+    {
+     "id": "se-box-soffit",
+     "kind": "other",
+     "where": "light grey underside slab of the cantilevered glass box, 13.7-14.3 m, wider than the track",
+     "approxSizeM": [
+      262,
+      0.6
+     ],
+     "plan": "modelled",
+     "seenIn": "commons:File:Amsterdam_-_Kraanspoor_(29670102564).jpg",
+     "how": "box(): slab 13.7-14.3 m over the full BAG footprint"
+    },
+    {
+     "id": "se-glass-box",
+     "kind": "window-shape",
+     "where": "three-storey glass office box 14.3-25.0 m (storey lines 17.4 and 21.1 m), dark curtain wall on a 1.8 m mullion grid",
+     "approxSizeM": [
+      262,
+      10.7
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2024-10-23_07-33-22_00814",
+     "how": "curtain(): inner glass wall with mullions every 1.8 m and floor bands"
+    },
+    {
+     "id": "se-louvre-skin",
+     "kind": "other",
+     "where": "second skin of horizontal glass louvres on a steel bracket grid about 0.7 m outside the curtain wall, crown of brackets above the roof edge",
+     "approxSizeM": [
+      262,
+      11.2
+     ],
+     "plan": "simplified",
+     "seenIn": "commons:File:Amsterdam_-_Kraanspoor_(29670102564).jpg",
+     "how": "louvreSkin(): steel posts every 1.8 m and thin pale glass blades every 0.9 m in height, 0.7 m proud; crown rail on top"
+    },
+    {
+     "id": "se-entrance-lobbies",
+     "kind": "window-shape",
+     "where": "glazed lobby fronts at ground level inside some openings next to the cores (dark glass with transoms)",
+     "approxSizeM": [
+      10,
+      7
+     ],
+     "plan": "simplified",
+     "seenIn": "commons:File:Amsterdam_-_Kraanspoor_(29670102564).jpg",
+     "how": "glazed lobby boxes 10 m long either side of core 1 only, set 1 m behind the SE face (the bays beside cores 2-4 are open in the 2021 crop)"
+    }
+   ],
+   "note": "Rectified crops at 16.1 px/m (2024 fog, 2021 clear); trees hide 175-262 m from the SW end in both, read from the symmetric 3DBAG roof parts and Commons 29670102564 instead."
+  },
+  {
+   "tag": "w03-218",
+   "bearing": 218,
+   "lengthM": 13,
+   "centre": [
+    4.8862585,
+    52.4037405
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7315120208-000105_pano_0001_003044",
+   "capturedAt": "2016-07-08",
+   "checked": true,
+   "items": [
+    {
+     "id": "sw-end-portal",
+     "kind": "colonnade",
+     "where": "SW end of the crane track: four-legged end block 6 m long, two transverse ties (1.0-1.8 m and 4.2-5.0 m) on the end face and the side faces",
+     "approxSizeM": [
+      8.7,
+      13.6
+     ],
+     "plan": "modelled",
+     "seenIn": "commons:File:Amsterdam_-_Kraanspoor_(29670110014).jpg",
+     "how": "endBlock(): four 1.8 m legs, tie beams on all four faces"
+    },
+    {
+     "id": "sw-head-panels",
+     "kind": "window-shape",
+     "where": "end head 7.7-11.3 m: three panels at 8.0-10.1 m, two blank inset concrete panels flanking one rounded window with light blue glass",
+     "approxSizeM": [
+      6.6,
+      2.1
+     ],
+     "plan": "modelled",
+     "seenIn": "commons:File:Amsterdam_-_Kraanspoor_(29670110014).jpg",
+     "how": "endBlock(): inset panels and a glazed window on the head face"
+    },
+    {
+     "id": "sw-head-corbels",
+     "kind": "other",
+     "where": "the head cap cantilevers about 1.2 m over the end face and the sides on curved haunch brackets",
+     "approxSizeM": [
+      9.9,
+      1.5
+     ],
+     "plan": "modelled",
+     "seenIn": "commons:File:Amsterdam_-_Kraanspoor_(29670093954).jpg",
+     "how": "endBlock(): cap slab 10.7-11.3 m, quarter-curve brackets extruded under it at both legs"
+    },
+    {
+     "id": "sw-box-cantilever",
+     "kind": "other",
+     "where": "the glass box cantilevers about 4 m past the concrete head, its light grey soffit and steel posts/diagonals visible",
+     "approxSizeM": [
+      12.9,
+      4
+     ],
+     "plan": "modelled",
+     "seenIn": "commons:File:Amsterdam_-_Kraanspoor_(29670110014).jpg",
+     "how": "box spans the BAG footprint, track stops 4 m short of each end"
+    },
+    {
+     "id": "sw-box-end-face",
+     "kind": "window-shape",
+     "where": "end face of the glass box: three storeys of blue-glass windows, louvres over the left (NW) half, clear glass panels without louvres stepping across the right half",
+     "approxSizeM": [
+      12.9,
+      10.7
+     ],
+     "plan": "simplified",
+     "seenIn": "commons:File:Amsterdam_-_Kraanspoor_(29670110014).jpg",
+     "how": "curtain on the end face, louvre skin over the NW 55 %"
+    },
+    {
+     "id": "sw-escape-stair",
+     "kind": "balcony-ironwork",
+     "where": "steel escape stair with two railed landings (about 4 and 7.5 m) on the NW side of the SW end block",
+     "approxSizeM": [
+      2.5,
+      8
+     ],
+     "plan": "simplified",
+     "seenIn": "commons:File:Amsterdam_-_Kraanspoor_(30214778541).jpg",
+     "how": "escapeStair(): two landings with railings and two steel posts"
+    },
+    {
+     "id": "sw-bollard-block",
+     "kind": "other",
+     "where": "concrete mooring block in the water off the SW end, about 3 x 3 m, 2.5 m high, with two rusty bollards on top",
+     "approxSizeM": [
+      3,
+      3
+     ],
+     "plan": "simplified",
+     "seenIn": "commons:File:Amsterdam_-_Kraanspoor_(30214778541).jpg",
+     "how": "bollards(): concrete block with two bronze bollards"
+    }
+   ],
+   "note": "The 2016 panorama is rectified on the box end plane; the concrete head stands 4 m behind it, so heights are read from the head-on Commons photo 29670110014 scaled to the 8.7 m track width."
+  },
+  {
+   "tag": "w04-38",
+   "bearing": 38,
+   "lengthM": 12.9,
+   "centre": [
+    4.888609,
+    52.4056045
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-09-22_07-53-54_00663",
+   "capturedAt": "2025-09-22",
+   "checked": true,
+   "items": [
+    {
+     "id": "ne-end-portal",
+     "kind": "colonnade",
+     "where": "NE end block, same four-legged frame with two tie levels as the SW end",
+     "approxSizeM": [
+      8.7,
+      13.6
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-09-22_07-53-54_00663",
+     "how": "endBlock() mirrored"
+    },
+    {
+     "id": "ne-head-panels",
+     "kind": "window-shape",
+     "where": "NE head: two blank inset panels and one window as at the SW end",
+     "approxSizeM": [
+      6.6,
+      2.1
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-09-22_07-53-54_00663",
+     "how": "endBlock() mirrored"
+    },
+    {
+     "id": "ne-head-corbels",
+     "kind": "other",
+     "where": "haunched cap cantilevering over the NE end",
+     "approxSizeM": [
+      9.9,
+      1.5
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-09-22_07-53-54_00663",
+     "how": "endBlock() mirrored"
+    },
+    {
+     "id": "ne-escape-stair",
+     "kind": "balcony-ironwork",
+     "where": "railed steel landings on the NW side of the NE end block",
+     "approxSizeM": [
+      2.5,
+      8
+     ],
+     "plan": "simplified",
+     "seenIn": "recording_2025-09-22_07-53-54_00663",
+     "how": "escapeStair() mirrored"
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  }
+ ]
+}
