@@ -1,0 +1,50 @@
+{
+ "id": "oranje-nassau-kazerne",
+ "countedBy": "lane landmarks-sarphati-leidseplein-20261101 (opus) from the lane's ruled rectified Gemeente Amsterdam panorama crops (oranje-nassau-kazerne-crops.ts): nw--164_-142 (recording_2025-06-19_09-55-15_00488) and nw--126_-102 (TMX7316010203-001903_pano_0000_000331); counted from the photos before the model was compared, not a blind count, 2026-11-02",
+ "facades": [
+  {
+   "name": "SW pavilion, Sarphatistraat face",
+   "bearing": 315,
+   "photo": "artifacts/landmark-lanes/oranje-nassau-kazerne/crops/nw--164_-142.jpg",
+   "alongM": [
+    0,
+    22
+   ],
+   "openings": [
+    "glass"
+   ],
+   "rows": [
+    7,
+    7,
+    7,
+    2
+   ],
+   "rowsNote": "glazed openings bottom up: ground = narrow, sash, narrow in the left bay, sash, the door's fanlight, two sashes; first and second floor = narrow, sash, narrow, three sashes over the risalit, one sash right; two dormers beside the pediment; the pavilion pediment is the one peak",
+   "symmetric": false,
+   "gables": 1,
+   "depthBand": 3
+  },
+  {
+   "name": "Sarphatistraat front, u -103.3 to -124.5",
+   "bearing": 315,
+   "photo": "artifacts/landmark-lanes/oranje-nassau-kazerne/crops/nw--126_-102.jpg",
+   "alongM": [
+    219.3,
+    240.5
+   ],
+   "openings": [
+    "glass"
+   ],
+   "rows": [
+    7,
+    8,
+    8,
+    2
+   ],
+   "rowsNote": "glazed openings bottom up between u -103.3 and -124.5 (alongM is measured from the NE end, u 116): ground = the narrow door's top light, cross window, narrow, narrow, cross window, narrow, the stair door's fanlight (no ground windows under the narrow ones at u -103.9 and -107.5); first and second floor = narrow, narrow, cross, narrow, narrow, cross, narrow, cross (the stair window has no narrow flanks); two dormers at u -109.6 and -120.6. The courtyard front cannot be counted by this tool: the pavilion courtyard faces stand 11 m in front of it",
+   "symmetric": false,
+   "gables": 0,
+   "depthBand": 3
+  }
+ ]
+}
