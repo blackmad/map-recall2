@@ -1,0 +1,94 @@
+{
+ "id": "kpn-teleport",
+ "countedBy": "lane #203 (opus) from the rectified panorama crops of the brief (w03-180 recording_2025-07-01_09-03-48_02446 at 31.4 px/m; w04-360, w05-360, w06-360 at 50 px/m); ribbon convention (a glazed storey divided only by mullions counts once); loggia glass behind round columns counts once per gap between columns. Not a blind haiku count; the integrator may re-count.",
+ "facades": [
+  {
+   "name": "south (Teleportboulevard, entrance)",
+   "bearing": 180,
+   "photo": "artifacts/landmark-briefs/kpn-teleport/w03-180.jpg",
+   "rows": [
+    2,
+    5,
+    5,
+    11,
+    1,
+    17,
+    5,
+    1
+   ],
+   "columns": 22,
+   "symmetric": false,
+   "gables": 0,
+   "note": "Bands from the bottom: car park (dark strips either side of the steps), ground storey (west ribbon, three gaps between the hall's four columns, east ribbon), L1 (the same; louvres in front of the hall), L2 (west loggia: seven gaps between six columns; the hall; the east ribbon), L3 ribbon, L4 loggia along the whole face (about seventeen gaps), L5 (ribbon, then the south-east void's four gaps), L6 ribbon. Axes: the L4 loggia's gaps (about seventeen, the L2 gaps on the same axes), the hall's three, the ribbons' centres; an estimate."
+  },
+  {
+   "name": "north, east third (w04)",
+   "bearing": 0,
+   "photo": "artifacts/landmark-briefs/kpn-teleport/w04-360.jpg",
+   "alongM": [
+    0,
+    20.6
+   ],
+   "rows": [
+    6,
+    1,
+    1,
+    7,
+    1,
+    7,
+    1,
+    1
+   ],
+   "columns": 7,
+   "symmetric": false,
+   "gables": 0,
+   "note": "Car park: six glazed bays of the bicycle store between the columns (a door at the west end); L0 one tall ribbon with a transom; L2 and L4 recessed behind six columns over the whole width; L1, L3, L5, L6 ribbons. Axes: the six column gaps shared by the car park, L2 and L4, and the ribbons' centre."
+  },
+  {
+   "name": "north, middle third (w06)",
+   "bearing": 0,
+   "photo": "artifacts/landmark-briefs/kpn-teleport/w06-360.jpg",
+   "alongM": [
+    20.6,
+    39.6
+   ],
+   "rows": [
+    null,
+    5,
+    1,
+    3,
+    1,
+    5,
+    1,
+    null
+   ],
+   "columns": 6,
+   "symmetric": false,
+   "gables": 0,
+   "note": "Car park and ground storey behind one colonnade of four tall columns (five gaps at the ground storey: glass, the entrance screen, a roller door); L2 recessed at the east end behind one column (two gaps) beside the ribbon; L4 recessed over the full width (five gaps between four irregular columns); the top storey is cut by the crop. Axes: the five column gaps and the ribbons' centre."
+  },
+  {
+   "name": "north, west third (w05)",
+   "bearing": 0,
+   "photo": "artifacts/landmark-briefs/kpn-teleport/w05-360.jpg",
+   "alongM": [
+    39.6,
+    60.1
+   ],
+   "rows": [
+    null,
+    7,
+    1,
+    1,
+    1,
+    7,
+    5,
+    1
+   ],
+   "columns": 8,
+   "symmetric": false,
+   "gables": 0,
+   "note": "Car park (garage entry, grilles) and ground storey behind a colonnade of six tall columns (seven glazed gaps, the edge ones partial); L1 ribbon with SIMYO; L2, L3 ribbons; L4 recessed over the full width (seven gaps); L5 ribbon over its east 8 m, then four gaps of the north-west void; L6 ribbon. Axes: the seven gaps and the ribbons' centre."
+  }
+ ]
+}

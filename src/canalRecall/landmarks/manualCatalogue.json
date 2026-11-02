@@ -63934,5 +63934,147 @@
     ]
    ]
   }
+ },
+ {
+  "id": "kpn-teleport",
+  "name": "KPN Teleport",
+  "modelUrl": "./models/kpn-teleport.glb",
+  "suppressOsmIds": [
+   "NL.IMBAG.Pand.0363100012165158"
+  ],
+  "spatialSuppression": false,
+  "footprint": {
+   "centre": [
+    4.8417134,
+    52.38822906
+   ],
+   "headingDegrees": 0,
+   "lengthMetres": 60.3,
+   "widthMetres": 84.5
+  },
+  "surveyed": {
+   "anchor": [
+    4.8417134,
+    52.38822906
+   ],
+   "northOffsetDegrees": 0,
+   "source": "Vertex average of the BAG 0363100012165158 ring (RD, PDOK BAG WFS, CC0) in native east/south metres above the 3DBAG ground 0.856 m NAP (scripts/landmarks/kpn-teleport-footprints.json, written by sarphati-plaza-prepare.ts --id=kpn-teleport --pand=0363100012165158). Plan: the BAG rectangle 60.1 x 84.15 m turned 0.23 degrees, the 1.08 m set-back middle third of the north face from the BAG ring, the courtyard deck (3.1 m) and roof (28.85 m) from the 3DBAG LoD2.2 roof parts (CC BY 4.0). Storey section, mullion module, loggias, corner voids, louvres, entrance hall and steps and the SIMYO, XS4ALL and kpn signs measured on rectified Gemeente Amsterdam panorama crops (CC BY 4.0) and two Wikimedia Commons photographs by Vloeibaar (CC BY-SA 4.0), per face in scripts/landmarks/kpn-teleport-inventory.json. The west face (railway side, no panorama) beyond its first 25 m and the courtyard faces are inferred."
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 0,
+  "heightMetres": 30.3,
+  "bagYear": 2014,
+  "materialOverrides": {
+   "glass": "#6a8798",
+   "frame": "#4e5560",
+   "pink": "#8c8ea4",
+   "concrete": "#9a9e9f",
+   "dark": "#2a2f35",
+   "slate": "#a9a7a1",
+   "stone": "#8e9290",
+   "white": "#cdb2bb",
+   "gold": "#e39a2c",
+   "green": "#4fcf3f",
+   "bronze": "#3a3d42"
+  },
+  "attribution": {
+   "title": "KPN office, Teleportboulevard 121-135, Sloterdijk (de Jong Gortemaker Algra, built 2010-2014)",
+   "author": "Map Recall",
+   "sourceUrl": "https://api.data.amsterdam.nl/v1/bag/panden/0363100012165158",
+   "licence": "CC BY 4.0",
+   "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+   "modifications": "Original texture-free flat-colour geometry on the BAG footprint (CC0) with 3DBAG LoD2.2 heights (CC BY 4.0): seven glazed storeys of lavender spandrels, ribbon glazing on a 3.6 m mullion module and anthracite slab edges over a half-sunken car park behind round columns; loggias on round columns on different storeys of every face, the north-west and south-east corners open two storeys high behind louvres, the three-storey entrance hall up its steps under two louvre banks, the SIMYO lettering, the XS4ALL box sign and the kpn roof sign; read for proportion and tone from Gemeente Amsterdam panoramas (CC BY 4.0) and Wikimedia Commons photographs \"KPN Teleportboulevard.jpg\" and \"KPN Teleportboulevard 1.jpg\" by Vloeibaar (CC BY-SA 4.0). No pixels or meshes imported."
+  },
+  "buildingFootprint": {
+   "type": "Polygon",
+   "coordinates": [
+    [
+     [
+      4.84222396,
+      52.3880134
+     ],
+     [
+      4.84222243,
+      52.3881888
+     ],
+     [
+      4.84221652,
+      52.38850002
+     ],
+     [
+      4.84221629,
+      52.38850003
+     ],
+     [
+      4.84191377,
+      52.38849759
+     ],
+     [
+      4.84191397,
+      52.38848789
+     ],
+     [
+      4.84163418,
+      52.38848565
+     ],
+     [
+      4.84163397,
+      52.38849535
+     ],
+     [
+      4.84133389,
+      52.38849296
+     ],
+     [
+      4.84133484,
+      52.38844064
+     ],
+     [
+      4.84133504,
+      52.38842944
+     ],
+     [
+      4.84133602,
+      52.38837561
+     ],
+     [
+      4.84133622,
+      52.38836446
+     ],
+     [
+      4.84133723,
+      52.38830888
+     ],
+     [
+      4.84133737,
+      52.38830078
+     ],
+     [
+      4.8413476,
+      52.38773677
+     ],
+     [
+      4.84167466,
+      52.38773924
+     ],
+     [
+      4.8417886,
+      52.38773994
+     ],
+     [
+      4.84190255,
+      52.38774063
+     ],
+     [
+      4.84222892,
+      52.38774307
+     ],
+     [
+      4.84222396,
+      52.3880134
+     ]
+    ]
+   ]
+  }
  }
 ]
