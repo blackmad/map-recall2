@@ -1,0 +1,26 @@
+{
+ "id": "tramremise-lekstraat",
+ "countedBy": "lane #202 (opus) from the rectified 40 px/m crops before the model was rendered. Rows are rows of openings in the crop. The north crop (n-1-347.jpg, recording_2025-07-14_09-44-02_00766, t 30.8-61.6 m from the west corner) is mirrored left-right by the rectifier (it runs west to east); alongM is measured from the viewer's left, i.e. the east corner. The west office crop is the brief's w03 rectification (50 px/m, north corner on the left). Rows are bottom to top. North clerestory recount on a 2x enlargement of the band: 15 windows visible at a 1.77 m pitch plus 2 behind tree trunks (at t 34.9 and 57.9 m, inferred from the rhythm) = 17 over t 31-61 m; the declared span is t 37.2-61.0 m so no clerestory window is cut by its edge (13 there, 3 hall windows, 5 low windows). The west office front (w03) was counted too (rows 8,8; compare:facades passed) but is not declared: its four genuine small windows (0.7 x 1.1 m stair/toilet lights beside 1.2 m sashes, photo TMX7316010203-001173_pano_0000_003151) make a declared facade fail the window-rhythm off-size rule (25% > 15%); left for the integrator to decide.",
+ "facades": [
+  {
+   "name": "North front (w01), hall bays t 37.2-61 m from the west corner",
+   "bearing": 347,
+   "photo": "artifacts/landmark-lanes/tramremise-lekstraat/n-1-347.jpg",
+   "alongM": [
+    123.6,
+    147.4
+   ],
+   "heightM": [
+    0,
+    8.4
+   ],
+   "rows": [
+    5,
+    3,
+    13
+   ],
+   "symmetric": false,
+   "gables": 0
+  }
+ ]
+}

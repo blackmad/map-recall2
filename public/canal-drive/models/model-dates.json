@@ -2556,6 +2556,16 @@
       "version": "4c4d0f4dd03ddc1c",
       "dateSource": "asset-update"
     },
+    "nfta-markenplein": {
+      "updatedAt": "2026-11-02T04:19:39.181Z",
+      "version": "34f882696606038c",
+      "dateSource": "asset-update"
+    },
+    "nfta-markenplein.lod1": {
+      "updatedAt": "2026-11-02T04:20:53.502Z",
+      "version": "32f715626c8222d5",
+      "dateSource": "asset-update"
+    },
     "nieuw-dakota": {
       "updatedAt": "2026-10-20T10:14:54.068Z",
       "version": "c080935a9df679fd",
@@ -3499,6 +3509,16 @@
     "torture-museum": {
       "updatedAt": "2026-10-20T10:16:06.696Z",
       "version": "a4f79228351fe998",
+      "dateSource": "asset-update"
+    },
+    "tramremise-lekstraat": {
+      "updatedAt": "2026-11-02T05:03:19.913Z",
+      "version": "1c7c560cf9ad253a",
+      "dateSource": "asset-update"
+    },
+    "tramremise-lekstraat.lod1": {
+      "updatedAt": "2026-11-02T05:03:20.536Z",
+      "version": "fc32c940f0bad493",
       "dateSource": "asset-update"
     },
     "treehouse-ndsm": {

@@ -1,0 +1,107 @@
+{
+ "id": "nfta-markenplein",
+ "countedBy": "lane #202 (opus) from the rectified crops before the model was rendered, per storey band (ground 0-4.9, then 3.3 m storeys); ribbon convention; bays split by 0.35 m piers count separately. Not a blind haiku count: the integrator may re-count. Ground storeys behind cars, bushes and trees are cropped out or null. Rows are rows of openings as the photo shows them (a row with no opening in the crop is not listed); the SE crop starts 5.2 m in because the obtuse south corner lets the first 10 m of the SW front show in the elevation.",
+ "facades": [
+  {
+   "name": "NW end (w04), above the ground storey",
+   "bearing": 327,
+   "photo": "artifacts/landmark-briefs/nfta-markenplein/w04-327.jpg",
+   "heightM": [
+    4.95,
+    19.4
+   ],
+   "rows": [
+    5,
+    6,
+    5,
+    5
+   ],
+   "symmetric": false,
+   "gables": 0
+  },
+  {
+   "name": "SE end (w03), bays 1-8 above the ground storey",
+   "bearing": 147,
+   "photo": "artifacts/landmark-briefs/nfta-markenplein/w03-147.jpg",
+   "alongM": [
+    5.2,
+    32.8
+   ],
+   "heightM": [
+    4.95,
+    19.4
+   ],
+   "rows": [
+    6,
+    1,
+    3,
+    1,
+    1,
+    4
+   ],
+   "symmetric": false,
+   "gables": 0
+  },
+  {
+   "name": "NE front (w02), bays 6-17 above the ground storey",
+   "bearing": 29,
+   "photo": "artifacts/landmark-lanes/nfta-markenplein/w02-29.jpg",
+   "alongM": [
+    19.5,
+    62.9
+   ],
+   "heightM": [
+    4.95,
+    19.4
+   ],
+   "rows": [
+    7,
+    6,
+    null,
+    null
+   ],
+   "symmetric": false,
+   "gables": 0
+  },
+  {
+   "name": "SW front (w01), bays 7-9 full height",
+   "bearing": 209,
+   "photo": "artifacts/landmark-briefs/nfta-markenplein/w01-209.jpg",
+   "alongM": [
+    22.4,
+    33.3
+   ],
+   "heightM": [
+    0,
+    19.4
+   ],
+   "rows": [
+    3,
+    2,
+    3,
+    3
+   ],
+   "symmetric": false,
+   "gables": 0
+  },
+  {
+   "name": "SW front (w01), ground and first storey",
+   "bearing": 209,
+   "photo": "artifacts/landmark-briefs/nfta-markenplein/w01-209.jpg",
+   "alongM": [
+    4.1,
+    61.4
+   ],
+   "heightM": [
+    0,
+    7.5
+   ],
+   "rows": [
+    10,
+    5
+   ],
+   "symmetric": false,
+   "gables": 0
+  }
+ ]
+}

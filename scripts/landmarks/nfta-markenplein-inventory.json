@@ -1,0 +1,428 @@
+{
+ "schemaVersion": 1,
+ "id": "nfta-markenplein",
+ "pand": "0363100012170259",
+ "brief": "scripts/landmarks/nfta-markenplein-brief.md",
+ "signature": [
+  "ne-loggia",
+  "sw-lettering",
+  "sw-concrete-frame",
+  "sw-channel-glass",
+  "sw-ribbons",
+  "nw-top-glazing"
+ ],
+ "walls": [
+  {
+   "tag": "w01-209",
+   "bearing": 209,
+   "lengthM": 62.9,
+   "centre": [
+    4.9048555,
+    52.3683025
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002310_pano_0001_001370",
+   "capturedAt": "2021-09-15",
+   "checked": true,
+   "items": [
+    {
+     "id": "sw-concrete-frame",
+     "kind": "window-shape",
+     "where": "whole wall: pale fair-faced concrete frame, solid corner piers about 1.5-2 m wide, slender piers about 0.35 m wide at every bay, a 0.8 m top beam and a low plinth, standing proud of the glass infill",
+     "approxSizeM": [
+      62.9,
+      19.4
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002310_pano_0001_001370",
+     "how": "corner piers as mitred L prisms, bay piers 0.35 m wide 0.4 m deep, a mitred plinth and top beam round the outline (ringBand)"
+    },
+    {
+     "id": "sw-channel-glass",
+     "kind": "window-shape",
+     "where": "every bay between the piers: translucent green channel-glass (U-profile) infill in horizontal bands about 1.1 m high with dark transom lines",
+     "approxSizeM": [
+      62.9,
+      18
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002310_pano_0001_001370",
+     "how": "infill quads 0.25 m behind the pier fronts in the measured sea-green, band lines every 1.1 m 6 cm proud, broken behind windows and vents"
+    },
+    {
+     "id": "sw-ribbons",
+     "kind": "window-shape",
+     "where": "17 bays: clear ribbon windows (about 2.7 x 1.1 m, dark frames, vertical mullions about 0.45 m) placed irregularly per bay at the five measured levels 1.0, 5.0, 8.4, 11.7 and 15.0 m; small white vent grilles above many",
+     "approxSizeM": [
+      2.7,
+      1.1
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002310_pano_0001_001370",
+     "how": "ribbon(): dark glass box 6 cm proud of the channel glass with head/sill rails and mullions 5 cm in front, per-bay table WALLS in the builder (from the rectified crops)"
+    },
+    {
+     "id": "sw-lettering",
+     "kind": "lettering",
+     "where": "west end, bays 1-6 at about 9.7-10.7 m: white \"Nederlandse Filmacademie\" lettering with the round purple-and-white AHK logo at its left end, on the channel glass",
+     "approxSizeM": [
+      21,
+      1.1
+     ],
+     "plan": "modelled",
+     "seenIn": "commons:File:Nederlandse Filmacademie (14668750312).jpg",
+     "how": "glyphRuns() (mixed-case-glyphs.ts, new: the shared GL table lacks F, a, d, r, s) as 6 cm deep white blocks on the glass, plus the round logo: a white disc with a purple half 6 cm in front; from the 2014 Commons photo, the 2021 panorama still shows the closing \"e\" at the same height",
+     "note": "2025 panoramas: hidden by a tree"
+    },
+    {
+     "id": "sw-entrance-glazing",
+     "kind": "window-shape",
+     "where": "bay 1 ground storey at the west corner: full-height clear shop window of the entrance hall",
+     "approxSizeM": [
+      2.6,
+      4.5
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002310_pano_0001_001370",
+     "how": "clear glass panel 0.35-4.9 m in bay 1"
+    },
+    {
+     "id": "sw-window-posters",
+     "kind": "sign",
+     "where": "entrance window posters and festival lettering behind the glass at the west corner",
+     "approxSizeM": [
+      3,
+      3
+     ],
+     "plan": "skipped",
+     "seenIn": "recording_2025-06-19_06-21-49_00904",
+     "skip": {
+      "reason": "temporary",
+      "note": "changes per year: 2021 graduation lettering, 2025 FILM FEST posters"
+     }
+    },
+    {
+     "id": "sw-vents",
+     "kind": "other",
+     "where": "small white louvred vent grilles above windows (0.6 x 0.35 m) and one louvre panel in bay 13",
+     "approxSizeM": [
+      0.6,
+      0.35
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002310_pano_0001_001370",
+     "how": "white boxes 6 cm proud above the windows the table lists; the bay 13 louvre as a white panel with dark slats"
+    }
+   ]
+  },
+  {
+   "tag": "w02-29",
+   "bearing": 29,
+   "lengthM": 62.9,
+   "centre": [
+    4.9053305,
+    52.3684945
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-06-19_06-21-49_00946",
+   "capturedAt": "2025-06-19",
+   "checked": true,
+   "items": [
+    {
+     "id": "ne-concrete-frame",
+     "kind": "window-shape",
+     "where": "whole wall: pale fair-faced concrete frame, solid corner piers about 1.5-2 m wide, slender piers about 0.35 m wide at every bay, a 0.8 m top beam and a low plinth, standing proud of the glass infill",
+     "approxSizeM": [
+      62.9,
+      19.4
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-06-19_06-21-49_00946",
+     "how": "corner piers as mitred L prisms, bay piers 0.35 m wide 0.4 m deep, a mitred plinth and top beam round the outline (ringBand)"
+    },
+    {
+     "id": "ne-channel-glass",
+     "kind": "window-shape",
+     "where": "every bay between the piers: translucent green channel-glass (U-profile) infill in horizontal bands about 1.1 m high with dark transom lines",
+     "approxSizeM": [
+      62.9,
+      18
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-06-19_06-21-49_00946",
+     "how": "infill quads 0.25 m behind the pier fronts in the measured sea-green, band lines every 1.1 m 6 cm proud, broken behind windows and vents"
+    },
+    {
+     "id": "ne-ribbons",
+     "kind": "window-shape",
+     "where": "bays 6-17: clear ribbon windows at the measured levels with vent grilles above",
+     "approxSizeM": [
+      2.7,
+      1.1
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-06-19_06-21-49_00946",
+     "how": "ribbon() from the spec table"
+    },
+    {
+     "id": "ne-loggia",
+     "kind": "other",
+     "where": "east end, bays 1-5 above about 11.7 m: the infill stops and the frame stands free in front of a recessed roof terrace; grey slatted screens and a railing behind the piers, the roof slab oversailing it; the sky shows through",
+     "approxSizeM": [
+      18,
+      7.7
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-06-19_06-21-49_00731",
+     "how": "east-corner terrace: infill stops at 11.5 m under a slab edge flush with the piers, the piers stand free (closed boxes) with a railing between them; behind them a triangular terrace (floor 11.7 m, soffit 18.6 m) closed by a diagonal glass wall with grey slatted screens and a handrail"
+    },
+    {
+     "id": "ne-undercroft",
+     "kind": "other",
+     "where": "ground storey bays 11-15: dark recessed openings with dark slatted gates (bicycle and container store) under a dark-green glass band",
+     "approxSizeM": [
+      18,
+      3.3
+     ],
+     "plan": "simplified",
+     "seenIn": "recording_2025-06-19_06-21-49_00946",
+     "how": "dark panels in the infill plane over bays 11-15 to 3.3 m under a dark-green band 3.3-5.0 m over bays 8-16; the gates are not slatted in the model"
+    },
+    {
+     "id": "ne-container-sign",
+     "kind": "sign",
+     "where": "small CONTAINERBERGING sign over bay 16",
+     "approxSizeM": [
+      1.5,
+      0.2
+     ],
+     "plan": "skipped",
+     "seenIn": "recording_2025-06-19_06-21-49_00946",
+     "skip": {
+      "reason": "too-small",
+      "note": "0.2 m letters"
+     }
+    }
+   ],
+   "note": "landmark-brief found no panorama within 35 m; rectified from recording_2025-06-19_06-21-49_00946 on the Valkenburgerstraat side (about 40 m away)"
+  },
+  {
+   "tag": "w03-147",
+   "bearing": 147,
+   "lengthM": 38.8,
+   "centre": [
+    4.9054965,
+    52.368261
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001665_pano_0000_002037",
+   "capturedAt": "2020-04-22",
+   "checked": true,
+   "items": [
+    {
+     "id": "se-concrete-frame",
+     "kind": "window-shape",
+     "where": "whole wall: pale fair-faced concrete frame, solid corner piers about 1.5-2 m wide, slender piers about 0.35 m wide at every bay, a 0.8 m top beam and a low plinth, standing proud of the glass infill",
+     "approxSizeM": [
+      38.8,
+      19.4
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001665_pano_0000_002037",
+     "how": "corner piers as mitred L prisms, bay piers 0.35 m wide 0.4 m deep, a mitred plinth and top beam round the outline (ringBand)"
+    },
+    {
+     "id": "se-channel-glass",
+     "kind": "window-shape",
+     "where": "every bay between the piers: translucent green channel-glass (U-profile) infill in horizontal bands about 1.1 m high with dark transom lines",
+     "approxSizeM": [
+      38.8,
+      18
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001665_pano_0000_002037",
+     "how": "infill quads 0.25 m behind the pier fronts in the measured sea-green, band lines every 1.1 m 6 cm proud, broken behind windows and vents"
+    },
+    {
+     "id": "se-ribbons",
+     "kind": "window-shape",
+     "where": "11 bays: ribbon windows at the measured levels, a nearly continuous row at 5.1 m, vent grilles above",
+     "approxSizeM": [
+      2.7,
+      1.1
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001665_pano_0000_002037",
+     "how": "ribbon() from the spec table"
+    },
+    {
+     "id": "se-loggia",
+     "kind": "other",
+     "where": "east end, bays 9-11 above about 11.7 m: the same recessed roof terrace as the NE end, free piers and the white soffit of the oversailing roof",
+     "approxSizeM": [
+      11,
+      7.7
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-06-19_06-21-49_00727",
+     "how": "the same east-corner terrace seen from the SE end (bays 9-11)"
+    },
+    {
+     "id": "se-louvres",
+     "kind": "other",
+     "where": "bays 7-8 top storey (14.7-17.7 m): grey timber-coloured slatted louvre panels instead of channel glass",
+     "approxSizeM": [
+      7,
+      3
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001665_pano_0000_002037",
+     "how": "louvre panels with horizontal slat strips"
+    },
+    {
+     "id": "se-stair-glazing",
+     "kind": "window-shape",
+     "where": "bay 1 (south end): tall clear glazing 3-9.5 m of the stair, plus windows at 11.8 and 14.9 m",
+     "approxSizeM": [
+      2.3,
+      6.5
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001665_pano_0000_002037",
+     "how": "clear glass panel in bay 1"
+    },
+    {
+     "id": "se-goods-entrance",
+     "kind": "other",
+     "where": "south corner ground: concrete corner block with a louvred air grille and the goods-entrance door with a small GOEDERENINGANG sign",
+     "approxSizeM": [
+      2.5,
+      4
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-001665_pano_0000_002037",
+     "how": "grey louvre panel on the corner pier and a dark door in bay 1; the small sign is too small to letter"
+    },
+    {
+     "id": "se-ground-band",
+     "kind": "window-shape",
+     "where": "ground storey bays 2-11: darker clear glazing band 0.4-3.3 m",
+     "approxSizeM": [
+      33,
+      2.9
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001665_pano_0000_002037",
+     "how": "dark glass ribbon per bay"
+    }
+   ]
+  },
+  {
+   "tag": "w04-327",
+   "bearing": 327,
+   "lengthM": 38.8,
+   "centre": [
+    4.9046895,
+    52.368536
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-06-17_08-04-10_03524",
+   "capturedAt": "2025-06-17",
+   "checked": true,
+   "items": [
+    {
+     "id": "nw-concrete-frame",
+     "kind": "window-shape",
+     "where": "whole wall: pale fair-faced concrete frame, solid corner piers about 1.5-2 m wide, slender piers about 0.35 m wide at every bay, a 0.8 m top beam and a low plinth, standing proud of the glass infill",
+     "approxSizeM": [
+      38.8,
+      19.4
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-06-17_08-04-10_03524",
+     "how": "corner piers as mitred L prisms, bay piers 0.35 m wide 0.4 m deep, a mitred plinth and top beam round the outline (ringBand)"
+    },
+    {
+     "id": "nw-channel-glass",
+     "kind": "window-shape",
+     "where": "every bay between the piers: translucent green channel-glass (U-profile) infill in horizontal bands about 1.1 m high with dark transom lines",
+     "approxSizeM": [
+      38.8,
+      18
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-06-17_08-04-10_03524",
+     "how": "infill quads 0.25 m behind the pier fronts in the measured sea-green, band lines every 1.1 m 6 cm proud, broken behind windows and vents"
+    },
+    {
+     "id": "nw-ribbons",
+     "kind": "window-shape",
+     "where": "11 bays: ribbon windows at the measured levels, vent grilles above",
+     "approxSizeM": [
+      2.7,
+      1.1
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-06-17_08-04-10_03524",
+     "how": "ribbon() from the spec table"
+    },
+    {
+     "id": "nw-top-glazing",
+     "kind": "window-shape",
+     "where": "bays 2-4 top storey: tall clear glazing 14.8-18.0 m with a transom grid (studio windows)",
+     "approxSizeM": [
+      10,
+      3.2
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-06-17_08-04-10_03524",
+     "how": "tall dark glass panels with mullions and a transom"
+    },
+    {
+     "id": "nw-ground",
+     "kind": "window-shape",
+     "where": "ground storey: grey frosted channel-glass band 1.1-4.9 m over a low clear strip 0.3-1.1 m; bays 10-11 at the west corner fully glazed (entrance)",
+     "approxSizeM": [
+      38,
+      4.9
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-06-17_08-04-10_03524",
+     "how": "grey-tinted infill band, dark clear strip, clear bays 10-11"
+    },
+    {
+     "id": "nw-hoofdingang",
+     "kind": "sign",
+     "where": "small HOOFDINGANG arrow sign on the glass, bay 8 at 2.5 m",
+     "approxSizeM": [
+      1.6,
+      0.2
+     ],
+     "plan": "skipped",
+     "seenIn": "recording_2025-06-17_08-04-10_03524",
+     "skip": {
+      "reason": "too-small",
+      "note": "0.2 m letters"
+     }
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  },
+  {
+   "name": "Wikimedia Commons, Nederlandse Filmacademie (14668750312).jpg, FaceMePLS 2014-06-25",
+   "url": "https://commons.wikimedia.org/wiki/File:Nederlandse_Filmacademie_(14668750312).jpg",
+   "licence": "CC BY 2.0"
+  },
+  {
+   "name": "PDOK orthophoto (Actueel_orthoHR)",
+   "url": "https://service.pdok.nl/hwh/luchtfotorgb/wms/v1_0",
+   "licence": "CC BY 4.0"
+  }
+ ]
+}

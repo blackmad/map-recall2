@@ -1,0 +1,870 @@
+{
+ "schemaVersion": 1,
+ "id": "tramremise-lekstraat",
+ "pand": "0363100012106929",
+ "brief": "scripts/landmarks/tramremise-lekstraat-brief.md",
+ "signature": [
+  "roof-lanterns",
+  "w-tram-front",
+  "n-hall-windows",
+  "n-tower",
+  "e-tram-doors",
+  "n-parapet-coping",
+  "n-1927-plaque"
+ ],
+ "walls": [
+  {
+   "tag": "w01-347",
+   "bearing": 347,
+   "lengthM": 184.8,
+   "centre": [
+    4.910048,
+    52.3460985
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316060226-000004_pano_0005_000099",
+   "capturedAt": "2016-07-26",
+   "checked": true,
+   "items": [
+    {
+     "id": "n-hall-windows",
+     "kind": "window-shape",
+     "where": "north front, hall: 16 large white steel windows about 5.0 x 2.4 m (8 x 4 panes, a few open hoppers) at an 8 m pitch, sill 2.9 m, concrete sills; the last bay a 4.5 m window between two 0.9 m narrow ones",
+     "approxSizeM": [
+      5.0,
+      2.4
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-07-14_09-44-02_00766",
+     "how": "steelWindow(): white frame sheet, glass, 7 mullions and 3 transoms 3-7 cm proud, concrete sill; left edges per bay from the rectified 40 px/m crops (t from the west corner)"
+    },
+    {
+     "id": "n-clerestory",
+     "kind": "window-shape",
+     "where": "north front, t 19-63 m: a row of 25 small windows (1.25 x 0.8 m, 1.8 m pitch) in the upper band above the lower hall wall",
+     "approxSizeM": [
+      1.25,
+      0.8
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-07-14_09-44-02_00766",
+     "how": "steelWindow() on the 3DBAG upper-band wall at 6.45 m"
+    },
+    {
+     "id": "n-parapet-coping",
+     "kind": "other",
+     "where": "north front: brown brick parapet standing 0.8-0.9 m above the hall roof edge with a light concrete coping; lower-wall ledge under the clerestory band; grey stone plinth along the whole front",
+     "approxSizeM": [
+      184.6,
+      0.9
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2024-09-05_05-59-45_04250",
+     "how": "brick parapet slabs on the 3DBAG wall top to the panorama height (7.05 / 7.3 m), concrete coping slabs on every wall top, stone plinth 0.45 m"
+    },
+    {
+     "id": "n-risalits",
+     "kind": "window-shape",
+     "where": "two brick risalits (t 63.5-68.9 and 96.2-102.4 m) rising to 8.5 m with paired narrow 0.74 x 2.2 m windows, small low windows below and a small high window",
+     "approxSizeM": [
+      5.4,
+      8.5
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-07-14_09-44-02_00766",
+     "how": "projecting brick prisms with stone base and concrete coping, steelWindow() pairs"
+    },
+    {
+     "id": "n-consoles",
+     "kind": "relief",
+     "where": "stepped grey stone consoles (Amsterdam School corbels) at about 2.3-3.3 m beside the tower, both risalits and the house block",
+     "approxSizeM": [
+      0.6,
+      0.95
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-07-14_09-44-02_00772",
+     "how": "console2(): two stacked stone blocks"
+    },
+    {
+     "id": "n-low-windows",
+     "kind": "window-shape",
+     "where": "small square low windows (0.6 x 0.65 m) at 1.7 m under some hall windows",
+     "approxSizeM": [
+      0.6,
+      0.65
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-07-14_09-44-02_00766",
+     "how": "steelWindow()"
+    },
+    {
+     "id": "n-office-windows",
+     "kind": "window-shape",
+     "where": "office at the Waverstraat corner: two storeys of white multi-pane windows (1.05 x 2.45 m) under dark green drip boards with concrete sills",
+     "approxSizeM": [
+      1.05,
+      2.45
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-07-14_09-44-02_00772",
+     "how": "officeWindow(): steelWindow() plus a green drip board 0.4 m wider than the window"
+    },
+    {
+     "id": "n-tower",
+     "kind": "tower",
+     "where": "entrance tower (t 12-19 m, 15 m high) with four storeys of white windows under green drip boards and a projecting concrete roof slab; the steep lantern roof above it from 3DBAG",
+     "approxSizeM": [
+      7.3,
+      15.0
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-07-14_09-44-02_00766",
+     "how": "3DBAG shell for the mass and lantern roof, windows and a concrete roof slab on the north face"
+    },
+    {
+     "id": "n-tower-door",
+     "kind": "window-shape",
+     "where": "round-arched brown timber door in a brick arch at the foot of the tower",
+     "approxSizeM": [
+      1.2,
+      2.9
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-07-14_09-44-02_00772",
+     "how": "archSlab() brick surround and red-brown door leaf"
+    },
+    {
+     "id": "n-1927-plaque",
+     "kind": "gable-stone",
+     "where": "stone plaque with the year \"1927\" in gilt figures above the tower door, about 0.6 x 0.3 m",
+     "approxSizeM": [
+      0.6,
+      0.3
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-07-14_09-44-02_00772",
+     "how": "stone slab with letters(\"1927\") in gold glyph blocks"
+    },
+    {
+     "id": "n-house-oriel",
+     "kind": "balcony-ironwork",
+     "where": "Amsteldijk house block (t 175-185 m, 15 m): a brick oriel on stone corbels at 5.9-10.75 m with a glazed band, a recessed loggia window above",
+     "approxSizeM": [
+      2.5,
+      4.85
+     ],
+     "plan": "simplified",
+     "seenIn": "recording_2025-07-14_09-44-02_00772",
+     "how": "bayPrism() canted brick bay (the photo shows a rounded bay) with a glazed band, concrete sill and cap bands, stone corbel"
+    },
+    {
+     "id": "n-house-door",
+     "kind": "canopy",
+     "where": "green door with white frame and a concrete hood, louvred vents beside and above, grey stone base to 2.25 m, an arched passage at the west end",
+     "approxSizeM": [
+      2.7,
+      3.2
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2024-09-05_05-59-45_04261",
+     "how": "slabs: stone base, white frame, green leaf, concrete hood, dark louvre panels; archSlab() passage"
+    },
+    {
+     "id": "n-wall-lamps",
+     "kind": "lamp",
+     "where": "small wall lamps under the coping at about 8 m intervals",
+     "approxSizeM": [
+      0.3,
+      0.3
+     ],
+     "plan": "skipped",
+     "seenIn": "recording_2024-09-05_05-59-45_04250",
+     "skip": {
+      "reason": "too-small",
+      "note": "about 0.3 m fittings, sub-pixel at gallery size"
+     }
+    },
+    {
+     "id": "n-traffic-signs",
+     "kind": "sign",
+     "where": "parking and no-parking signs on poles in front of the hall",
+     "approxSizeM": [
+      0.6,
+      0.6
+     ],
+     "plan": "skipped",
+     "seenIn": "recording_2024-09-05_05-59-45_04250",
+     "skip": {
+      "reason": "temporary",
+      "note": "street furniture on poles, not part of the building"
+     }
+    },
+    {
+     "id": "roof-lanterns",
+     "kind": "other",
+     "where": "eight long east-west roof lanterns over the hall: white glazed north slopes and solar-panelled south slopes between flat bitumen valleys (PDOK orthophoto 2025)",
+     "approxSizeM": [
+      150,
+      7
+     ],
+     "plan": "modelled",
+     "seenIn": "PDOK Actueel_orthoHR",
+     "how": "3DBAG LoD2.2 roof planes coloured by slope: north canopyGlass, south blue, flat slate"
+    }
+   ]
+  },
+  {
+   "tag": "w02-190",
+   "bearing": 190,
+   "lengthM": 156.6,
+   "centre": [
+    4.9103795,
+    52.345234
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2024-09-05_05-59-45_03962",
+   "capturedAt": "2024-09-05",
+   "checked": true,
+   "items": [],
+   "note": "south wall: hidden behind the Lekstraat housing; only the neighbours are in the panorama"
+  },
+  {
+   "tag": "w03-258",
+   "bearing": 258,
+   "lengthM": 23,
+   "centre": [
+    4.9087635,
+    52.345812
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001173_pano_0000_003151",
+   "capturedAt": "2019-05-09",
+   "checked": true,
+   "items": [
+    {
+     "id": "w-office-windows",
+     "kind": "window-shape",
+     "where": "Waverstraat office front: two storeys of six white multi-pane windows (1.2 x 2.0/2.4 m) and two small windows per storey, green drip boards, a vent grille, stone plinth",
+     "approxSizeM": [
+      1.2,
+      2.4
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001173_pano_0000_003151",
+     "how": "officeWindow() at the measured sills 1.76 and 5.96 m (50 px/m crop from the north corner)"
+    },
+    {
+     "id": "w-office-downpipe",
+     "kind": "other",
+     "where": "zinc downpipes on the office front",
+     "approxSizeM": [
+      0.12,
+      9.0
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7316010203-001173_pano_0000_003151",
+     "skip": {
+      "reason": "too-small",
+      "note": "12 cm pipes"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "w04-78",
+   "bearing": 78,
+   "lengthM": 19.6,
+   "centre": [
+    4.911535,
+    52.3452
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": false,
+   "items": []
+  },
+  {
+   "tag": "w05-168",
+   "bearing": 168,
+   "lengthM": 16.7,
+   "centre": [
+    4.9116225,
+    52.345302
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": false,
+   "items": []
+  },
+  {
+   "tag": "w06-167",
+   "bearing": 167,
+   "lengthM": 14.4,
+   "centre": [
+    4.908987,
+    52.345736
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002113_pano_0000_001790",
+   "capturedAt": "2021-04-22",
+   "checked": true,
+   "items": [
+    {
+     "id": "s-office-windows",
+     "kind": "window-shape",
+     "where": "office south face over the yard wing: upper storey of white multi-pane windows under green drip boards, one a door to the fire stair",
+     "approxSizeM": [
+      1.3,
+      2.5
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002113_pano_0000_001790",
+     "how": "officeWindow() at 6.36 m"
+    },
+    {
+     "id": "s-fire-stair",
+     "kind": "balcony-ironwork",
+     "where": "galvanised steel fire stair from the upper-storey door down to the yard-wing roof",
+     "approxSizeM": [
+      3.2,
+      2.6
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-002113_pano_0000_001790",
+     "how": "a landing slab and one sloping flight box; no treads or railings"
+    },
+    {
+     "id": "yard-coping",
+     "kind": "other",
+     "where": "low 3.5 m yard-wing wall with a heavy light-concrete coping band about 0.6 m deep",
+     "approxSizeM": [
+      14.4,
+      0.6
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002113_pano_0000_001790",
+     "how": "concrete band on every <=4 m 3DBAG wall west of the hall"
+    }
+   ]
+  },
+  {
+   "tag": "w07-347",
+   "bearing": 347,
+   "lengthM": 13.4,
+   "centre": [
+    4.911533,
+    52.3461225
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2024-09-05_05-59-45_04261",
+   "capturedAt": "2024-09-05",
+   "checked": true,
+   "items": [
+    {
+     "id": "shop-front",
+     "kind": "window-shape",
+     "where": "ground-floor unit under the Amsteldijk houses: white-framed shop windows, pairs of red-brown panelled doors, a white cantilevered band at about 3 m",
+     "approxSizeM": [
+      13.1,
+      3.4
+     ],
+     "plan": "simplified",
+     "seenIn": "recording_2024-09-05_05-59-45_04261",
+     "how": "steelWindow() shop windows, red door leaves in white frames, white band slab; door panelling not modelled"
+    },
+    {
+     "id": "shop-fence",
+     "kind": "other",
+     "where": "construction fencing in front of the shop",
+     "approxSizeM": [
+      13,
+      2
+     ],
+     "plan": "skipped",
+     "seenIn": "recording_2024-09-05_05-59-45_04261",
+     "skip": {
+      "reason": "temporary",
+      "note": "construction fencing"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "w08-78",
+   "bearing": 78,
+   "lengthM": 12.9,
+   "centre": [
+    4.91176,
+    52.3454865
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-07-14_09-44-02_00947",
+   "capturedAt": "2025-07-14",
+   "checked": true,
+   "items": [
+    {
+     "id": "e-tram-doors",
+     "kind": "window-shape",
+     "where": "east tram front (Amsteldijk yard): six bays of white folding tram doors with glass above blue lower panels under a navy fascia with white track numbers, between 1.4 m brick piers",
+     "approxSizeM": [
+      3.6,
+      4.9
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-07-14_09-44-02_00947",
+     "how": "tramDoors(): white frame sheet, four leaves with glass and blue panels, navy fascia; piers as brick slabs"
+    },
+    {
+     "id": "e-track-numbers",
+     "kind": "lettering",
+     "where": "white track numbers (22, 24, 25-29 ...) on the navy fascia, about 0.3 m high",
+     "approxSizeM": [
+      0.3,
+      0.3
+     ],
+     "plan": "skipped",
+     "seenIn": "recording_2025-07-14_09-44-02_00943",
+     "skip": {
+      "reason": "too-small",
+      "note": "0.3 m figures, illegible beyond 20 m and the gate keeps riders 30 m away"
+     }
+    },
+    {
+     "id": "e-canopy",
+     "kind": "canopy",
+     "where": "deep brick canopy over the door bays at about 6.1-6.9 m with a dark soffit and concrete edge",
+     "approxSizeM": [
+      33.1,
+      0.8
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-07-14_09-44-02_00947",
+     "how": "brick slab 1.5 m deep, dark soffit sheet, concrete edge"
+    },
+    {
+     "id": "e-gate",
+     "kind": "other",
+     "where": "grey steel sliding gates and fence across the yard entrance with the INGANG sign",
+     "approxSizeM": [
+      12,
+      2.2
+     ],
+     "plan": "skipped",
+     "seenIn": "recording_2025-07-14_09-44-02_00947",
+     "skip": {
+      "reason": "not-visible",
+      "note": "free-standing yard gates in front of the building, not on the pand; they would hide the tram doors the model shows"
+     }
+    },
+    {
+     "id": "e-roof-rail",
+     "kind": "other",
+     "where": "steel safety rail along the roof edge",
+     "approxSizeM": [
+      33,
+      1.0
+     ],
+     "plan": "skipped",
+     "seenIn": "recording_2025-07-14_09-44-02_00943",
+     "skip": {
+      "reason": "too-small",
+      "note": "thin tubular rail, a line at any viewing distance"
+     }
+    },
+    {
+     "id": "e-catenary",
+     "kind": "other",
+     "where": "tram overhead wires and poles over the yard",
+     "approxSizeM": [
+      30,
+      0.1
+     ],
+     "plan": "skipped",
+     "seenIn": "recording_2025-07-14_09-44-02_00947",
+     "skip": {
+      "reason": "too-small",
+      "note": "overhead wires belong to the tram network, not the building"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "w09-78",
+   "bearing": 78,
+   "lengthM": 12.8,
+   "centre": [
+    4.9116955,
+    52.345665
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-07-14_09-44-02_00943",
+   "capturedAt": "2025-07-14",
+   "checked": true,
+   "items": [
+    {
+     "id": "e-small-window",
+     "kind": "window-shape",
+     "where": "small white-framed window in the brick wall above the canopy",
+     "approxSizeM": [
+      0.55,
+      0.7
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-07-14_09-44-02_00943",
+     "how": "white frame and glass slabs"
+    }
+   ]
+  },
+  {
+   "tag": "w10-257",
+   "bearing": 257,
+   "lengthM": 12.2,
+   "centre": [
+    4.908826,
+    52.3456575
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000774_pano_0000_004499",
+   "capturedAt": "2018-06-05",
+   "checked": true,
+   "items": [
+    {
+     "id": "w-yard-wall",
+     "kind": "other",
+     "where": "low curved yard-wing wall in brown brick with a heavy light-concrete coping",
+     "approxSizeM": [
+      12.2,
+      3.5
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-000774_pano_0000_004499",
+     "how": "3DBAG wall with a 0.6 m concrete coping band"
+    },
+    {
+     "id": "w-street-sign",
+     "kind": "sign",
+     "where": "street-name plate on the wall",
+     "approxSizeM": [
+      0.7,
+      0.2
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7316010203-000774_pano_0000_004499",
+     "skip": {
+      "reason": "too-small",
+      "note": "small enamel plate"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "w11-257",
+   "bearing": 257,
+   "lengthM": 11.9,
+   "centre": [
+    4.9091755,
+    52.345708
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002113_pano_0000_001624",
+   "capturedAt": "2021-04-22",
+   "checked": true,
+   "items": [
+    {
+     "id": "w-ghost-lettering",
+     "kind": "lettering",
+     "where": "faded painted lettering on the yard wall, no longer legible",
+     "approxSizeM": [
+      10,
+      1.2
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7316010203-002113_pano_0000_001624",
+     "skip": {
+      "reason": "gone",
+      "note": "the painted letters have faded to an illegible stain in the 2018-2021 panoramas"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "w12-77",
+   "bearing": 77,
+   "lengthM": 10.2,
+   "centre": [
+    4.9118015,
+    52.3453775
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-07-14_09-44-02_00949",
+   "capturedAt": "2025-07-14",
+   "checked": true,
+   "items": [
+    {
+     "id": "e-pavilion-windows",
+     "kind": "window-shape",
+     "where": "brick pavilion beside the east tram front: white sash windows and a curved white cantilevered eave",
+     "approxSizeM": [
+      1.0,
+      1.8
+     ],
+     "plan": "skipped",
+     "seenIn": "recording_2025-07-14_09-44-02_00949",
+     "skip": {
+      "reason": "not-visible",
+      "note": "the pavilion faces are hidden behind the gatehouse and fence from every public panorama; only a corner of the eave shows"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "w13-77",
+   "bearing": 77,
+   "lengthM": 10.1,
+   "centre": [
+    4.911655,
+    52.345774
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-07-14_09-44-02_00940",
+   "capturedAt": "2025-07-14",
+   "checked": true,
+   "items": [
+    {
+     "id": "e-gatehouse",
+     "kind": "other",
+     "where": "Amsteldijk 153 gatehouse with house number and timber door: a separate BAG pand (0363100012127165), not part of this model",
+     "approxSizeM": [
+      10,
+      4
+     ],
+     "plan": "skipped",
+     "seenIn": "recording_2025-07-14_09-44-02_00940",
+     "skip": {
+      "reason": "not-visible",
+      "note": "Amsteldijk 153 is BAG pand 0363100012127165, outside this model"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "w14-168",
+   "bearing": 168,
+   "lengthM": 9,
+   "centre": [
+    4.9115825,
+    52.346078
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": false,
+   "items": []
+  },
+  {
+   "tag": "w15-77",
+   "bearing": 77,
+   "lengthM": 8.1,
+   "centre": [
+    4.9088975,
+    52.3456855
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": false,
+   "items": []
+  },
+  {
+   "tag": "w16-78",
+   "bearing": 78,
+   "lengthM": 6.8,
+   "centre": [
+    4.911548,
+    52.345838
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": false,
+   "items": []
+  },
+  {
+   "tag": "w17-78",
+   "bearing": 78,
+   "lengthM": 6.2,
+   "centre": [
+    4.911528,
+    52.346042
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-07-14_09-44-02_00934",
+   "capturedAt": "2025-07-14",
+   "checked": true,
+   "items": [
+    {
+     "id": "e-shop-doors",
+     "kind": "window-shape",
+     "where": "red-brown panelled doors in white frames with a granite pier under a white curved band",
+     "approxSizeM": [
+      1.0,
+      2.5
+     ],
+     "plan": "simplified",
+     "seenIn": "recording_2025-07-14_09-44-02_00934",
+     "how": "covered by the shop-front doors on the north face; the curved band is a straight white slab"
+    }
+   ]
+  },
+  {
+   "tag": "w18-349",
+   "bearing": 349,
+   "lengthM": 5.5,
+   "centre": [
+    4.9115985,
+    52.345813
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": false,
+   "items": []
+  },
+  {
+   "tag": "w19-167",
+   "bearing": 167,
+   "lengthM": 5.5,
+   "centre": [
+    4.91178,
+    52.3453275
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": false,
+   "items": []
+  },
+  {
+   "tag": "w20-77",
+   "bearing": 77,
+   "lengthM": 4.5,
+   "centre": [
+    4.9114835,
+    52.3459865
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": false,
+   "items": []
+  },
+  {
+   "tag": "w21-325",
+   "bearing": 325,
+   "lengthM": 4.4,
+   "centre": [
+    4.909169,
+    52.3456445
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002113_pano_0000_001795",
+   "capturedAt": "2021-04-22",
+   "checked": true,
+   "items": [
+    {
+     "id": "yw-office-windows",
+     "kind": "window-shape",
+     "where": "two-storey brick wing at the north end of the west tram front with white multi-pane windows",
+     "approxSizeM": [
+      1.2,
+      1.8
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7316010203-002113_pano_0000_001795",
+     "skip": {
+      "reason": "not-visible",
+      "note": "this wing face is seen only obliquely across the yard at 34 m; the windows cannot be counted"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "w22-167",
+   "bearing": 167,
+   "lengthM": 4.3,
+   "centre": [
+    4.911507,
+    52.3460105
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": false,
+   "items": []
+  },
+  {
+   "tag": "w23-167",
+   "bearing": 167,
+   "lengthM": 4.3,
+   "centre": [
+    4.9088765,
+    52.3456085
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316060226-000004_pano_0005_000154",
+   "capturedAt": "2016-07-26",
+   "checked": true,
+   "items": [
+    {
+     "id": "w-pavilion",
+     "kind": "canopy",
+     "where": "glazed yard pavilion with a white flat fascia roof and low white base",
+     "approxSizeM": [
+      4.2,
+      3.5
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316060226-000004_pano_0005_000154",
+     "how": "glass sheet with two white mullions, white base; the fascia is the 3DBAG wall plus coping"
+    },
+    {
+     "id": "w-tram-front",
+     "kind": "colonnade",
+     "where": "curved west tram front facing the yard: nine bays between brick piers under a continuous projecting brick canopy band at 4.4-5.4 m: tram doors with blue panels, one open bay and one bay of large steel windows",
+     "approxSizeM": [
+      34,
+      10
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-07-14_09-44-02_00849",
+     "how": "polyline frames along the 3DBAG curve: brick piers, tramDoors(), an open dark bay, steelWindow() bay, canopy and coping segments per bay"
+    },
+    {
+     "id": "w-tram-poles",
+     "kind": "other",
+     "where": "catenary poles with cast bases in the yard",
+     "approxSizeM": [
+      0.5,
+      8
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7316060226-000004_pano_0005_000154",
+     "skip": {
+      "reason": "too-small",
+      "note": "catenary poles belong to the tram network"
+     }
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  }
+ ]
+}
