@@ -2092,5 +2092,17 @@
   "buildVersion": 2,
   "bytes": 118948,
   "triangles": 5671
+ },
+ "ziggo-dome": {
+  "sourceHash": "908a767f62e448a4",
+  "buildVersion": 2,
+  "bytes": 32664,
+  "triangles": 1182
+ },
+ "vu-hoofdgebouw": {
+  "sourceHash": "417e542696fdda6d",
+  "buildVersion": 2,
+  "bytes": 52288,
+  "triangles": 2520
  }
 }

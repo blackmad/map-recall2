@@ -1,0 +1,48 @@
+{
+ "id": "ziggo-dome",
+ "countedBy": "lane #191 (opus) from the rectified SW panorama crop recording_2025-09-23_14-31-54_00019 (artifacts/landmark-briefs/ziggo-dome/w03-241.jpg; right half hidden by coaches) and the Commons photo 2020 Ziggodome.jpg (whole SW face, oblique), and the rectified NE crop TMX7316010203-002157_pano_0000_004507 (w04-61.alt.jpg, 2025); ribbon convention. Not a blind haiku count; the integrator may re-count. NW and SE are blank skin (w01-331, w02-151) and are not declared.",
+ "facades": [
+  {
+   "name": "SW (loading docks), windows behind the LED skin",
+   "bearing": 241,
+   "photo": "artifacts/landmark-briefs/ziggo-dome/commons/2020_Ziggodome.jpg",
+   "heightM": [
+    9.0,
+    31.0
+   ],
+   "openings": [
+    "glass"
+   ],
+   "rows": [
+    12,
+    12,
+    12,
+    1
+   ],
+   "note": "Rows from the bottom: three rows of 4 m window groups (12 per row in the Commons photo; 7 visible left of the coach in w03 on the same 5.9 m pitch) and the top ribbon."
+  },
+  {
+   "name": "NE (deck side), right of the bridges",
+   "bearing": 61,
+   "photo": "artifacts/landmark-briefs/ziggo-dome/w04-61.alt.jpg",
+   "alongM": [
+    49.5,
+    69.0
+   ],
+   "heightM": [
+    9.0,
+    31.0
+   ],
+   "openings": [
+    "glass"
+   ],
+   "rows": [
+    2,
+    2,
+    2,
+    1
+   ],
+   "note": "alongM is measured from the model's NE silhouette edge (the E sawtooth, 6.5 m before the straight 66.9 m wall the crop shows): crop px 1250-1815 of w04-61.alt.jpg (29 px/m), right of bridge B where the left ribbon run ends (px 1225). Two window groups per row at px 1335-1450 and 1500-1615, the right ribbon run px 1440-1810."
+  }
+ ]
+}

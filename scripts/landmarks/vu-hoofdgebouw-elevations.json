@@ -1,0 +1,50 @@
+{
+ "id": "vu-hoofdgebouw",
+ "countedBy": "lane #191 (opus) from the rectified E panorama crop recording_2025-07-29_10-13-06_01026 (artifacts/landmark-briefs/vu-hoofdgebouw/w01-90.jpg, 24 px/m) and the Commons photo VU Amsterdam.jpg (north face of the east tower block, oblique); ribbon convention (two-pane windows between 0.4-0.5 m concrete piers count once each). Not a blind haiku count; the integrator may re-count.",
+ "facades": [
+  {
+   "name": "east low wing on the Buitenveldertselaan side",
+   "bearing": 90,
+   "photo": "artifacts/landmark-briefs/vu-hoofdgebouw/w01-90.jpg",
+   "heightM": [
+    1.3,
+    12.0
+   ],
+   "depthBand": 4,
+   "openings": [
+    "canopyGlass"
+   ],
+   "rows": [
+    19,
+    19,
+    19
+   ],
+   "note": "Three storeys of two-pane windows between concrete piers, 19 per storey across the 82.6 m face (the right-hand end bay is an open passage at ground level in the photo, counted as a window bay above). The setback fourth storey and the tower behind are outside the crop height. The 2.4 m stub between the two roof-height sections is a closed bay (not counted)."
+  },
+  {
+   "name": "north face of the east tower block (griffin block)",
+   "bearing": 0,
+   "photo": "artifacts/landmark-briefs/vu-hoofdgebouw/commons/VU_Amsterdam.jpg",
+   "alongM": [
+    32.0,
+    67.3
+   ],
+   "heightM": [
+    20.0,
+    56.5
+   ],
+   "depthBand": 25,
+   "openings": [
+    "glass"
+   ],
+   "rows": [
+    9,
+    9,
+    9,
+    9,
+    9
+   ],
+   "note": "Glazed every second storey: window bands above the low wing, each nine two-pane windows between concrete posts; blank exposed concrete between the bands. The crop stops at 56.5 m, below the top band: in the photo the griffin and its frame stand in front of its eastern windows, so it cannot be counted."
+  }
+ ]
+}

@@ -3526,6 +3526,16 @@
       "version": "121d371502ce2320",
       "dateSource": "asset-update"
     },
+    "vu-hoofdgebouw": {
+      "updatedAt": "2026-11-02T01:35:38.595Z",
+      "version": "417e542696fdda6d",
+      "dateSource": "asset-update"
+    },
+    "vu-hoofdgebouw.lod1": {
+      "updatedAt": "2026-11-02T01:40:53.562Z",
+      "version": "2e5007dedc5556ff",
+      "dateSource": "asset-update"
+    },
     "w139": {
       "updatedAt": "2026-10-20T10:13:42.697Z",
       "version": "5a1c77850473e6e8",
@@ -3719,6 +3729,16 @@
     "zevenlandenhuizen.lod1": {
       "updatedAt": "2026-10-23T20:23:30.757Z",
       "version": "51e658d84a7670f1",
+      "dateSource": "asset-update"
+    },
+    "ziggo-dome": {
+      "updatedAt": "2026-11-02T01:12:59.127Z",
+      "version": "908a767f62e448a4",
+      "dateSource": "asset-update"
+    },
+    "ziggo-dome.lod1": {
+      "updatedAt": "2026-11-02T01:13:00.053Z",
+      "version": "490b996717781775",
       "dateSource": "asset-update"
     },
     "zonnehuis": {

@@ -1,0 +1,57 @@
+{
+  "id": "ziggo-dome",
+  "note": "Audit thresholds for the Ziggo Dome GLB (scripts/audit-glb-quality.ts reads <id>-spec.json); the builder's data is ziggo-dome-footprints.json. The two glazed bridges on the NE face run 24.9 m to the neighbouring pand 0363100012239295 (panorama TMX7316010203-002157_pano_0000_004507, artifacts/landmark-briefs/ziggo-dome/w04-61*.jpg).",
+  "throughPassages": [
+    {
+      "axisBearing": 151,
+      "corridor": [
+        [
+          36.9,
+          -0.5
+        ],
+        [
+          20.5,
+          -30.2
+        ],
+        [
+          42.9,
+          -42.6
+        ],
+        [
+          59.3,
+          -12.8
+        ]
+      ],
+      "evidence": "Open deck under the two glazed bridges between the NE face and the neighbouring pand 0363100012239295: the rectified panorama TMX7316010203-002157_pano_0000_004507 (and its 2025 alt, artifacts/landmark-briefs/ziggo-dome/w04-61*.jpg) shows the bridges at 11-18.4 m and 21-24.2 m above the street with the deck, the base band and its service doors visible beneath them; nothing stands under either bridge."
+    },
+    {
+      "axisBearing": 61,
+      "corridor": [
+        [
+          36.9,
+          -0.5
+        ],
+        [
+          20.5,
+          -30.2
+        ],
+        [
+          42.9,
+          -42.6
+        ],
+        [
+          59.3,
+          -12.8
+        ]
+      ],
+      "evidence": "Open deck under the two glazed bridges between the NE face and the neighbouring pand 0363100012239295: the rectified panorama TMX7316010203-002157_pano_0000_004507 (and its 2025 alt, artifacts/landmark-briefs/ziggo-dome/w04-61*.jpg) shows the bridges at 11-18.4 m and 21-24.2 m above the street with the deck, the base band and its service doors visible beneath them; nothing stands under either bridge."
+    }
+  ],
+  "partyWallBearings": [
+    331
+  ],
+  "blankWallNotes": {
+    "why": "audit:glb reads partyWallBearings as blank-wall exemptions (bearings within 15 degrees). Not a party wall: a genuinely blank retaining wall.",
+    "331": "NW: the 0-6 m podium is the pale concrete retaining wall of the raised deck along the street, 103 m without an opening (rectified panorama recording_2025-09-23_13-57-40_00061, artifacts/landmark-briefs/ziggo-dome/w01-331.jpg, and its 2021 alt; w06-331 at the N corner). The skin above it is the LED screen, also without windows on this face."
+  }
+}
