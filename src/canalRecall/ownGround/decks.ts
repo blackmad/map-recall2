@@ -337,7 +337,9 @@ export function measuredDeckTop(deck: DeckSurface, height: HeightFn, across = 4,
       // Past the measured span (a reach to the bank) the top stays on the riding surface too: the street bands drawn on it
       // must stay on top (BRU0077 in the belt audit, a top on the profile's z rose 2 cm over the klinker band).
       // Past the road's half-width on a wider outline: the deck's own level (the surface there is the canal).
-      const z = Math.abs(t) > hw + 0.01 ? Math.max(deck.z[i], height(x, y)) : height(x, y);
+      // With survey edges (bridgeGaps) the riding surface reaches the outline: the top follows it there too, so the
+      // deck-level road drawn on that surface stays on top (Leidsestraat on BRU0043: the deck's z stood 2-5 cm over it).
+      const z = Math.abs(t) > hw + 0.01 && !p.edges ? Math.max(deck.z[i], height(x, y)) : height(x, y);
       const sink = p.s[i] < p.deck[0] || p.s[i] > p.deck[1] ? sinkPastSpan : 0;
       vertex(m, x, y, z + DECK_TOP_LIFT - sink, DECK_TOP);
     }

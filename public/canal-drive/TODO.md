@@ -337,15 +337,17 @@ chase-cam distance, a palette retune rather than a post-pass fix; then cel
 bands, outlines and a flat sky), road gaps at bridges
 (#178, opus lane `road-bridge-gaps-20261101`: steps 1–2 merged on by default
 2026-11-02, dc44ce4af, HISTORY "Roads now run across bridges", city gap m²
-237,068 → 205,941; step 3, dry way decks over land, is behind `?dryWayDecks=1`
-until the lane fixes hairlines and slivers at Centraal bus station and the De
-Ruijterkade ramp, the narrow Nieuwe Leeuwarderweg viaduct, the IJtunnel trench
-height, deck ends and Westrandweg (with it the gap falls to ~139,000 m²); the
-five-spot world-v1-ab pins for steps 1–2 are owed from the integrator checkout;
-polder water levels out of scope),
+237,068 → 205,941; step 3, dry way decks over land, is behind `?dryWayDecks=1`,
+polished 2026-11-02 (e51ef17d7) and handed to the Centraal forecourt lane below
+as its tool (with it the gap falls to 136,337 m²); the lane is idle; the
+five-spot world-v1-ab pins for steps 1–2 are owed from the integrator checkout
+(headless whenIdle stalls on the default engine); polder water levels out of
+scope),
 bumpy ground at Stationsplein / Centraal forecourt (AHN has no ground over the
 metro box and under the shed; fix = flatten the own ground to road level under
-road and plaza polygons; small lane after the flip). World compiler (#130,
+road and plaza polygons; small lane after the flip; it takes the station area
+as one piece, bus deck, glass roof, metro box and ground, and owns turning on
+bridge-gaps step 3 `?dryWayDecks=1` there). World compiler (#130,
 P3): `scripts/world/pipeline.ts` CODE hashes 18 files, but the compiler also
 imports `roofs/roofSlots.ts`, `look/palette.ts` and `threeBuildingMesh.ts`
 (esbuild metafile, 127 inputs), so a change there would not mark the cells
