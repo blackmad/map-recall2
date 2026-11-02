@@ -72283,6 +72283,276 @@
         "bytes": 124576,
         "triangles": 7255
       }
+    },
+    "de-makroon": {
+      "id": "de-makroon",
+      "name": "De Makroon",
+      "modelUrl": "./models/de-makroon.glb",
+      "suppressOsmIds": [
+        "NL.IMBAG.Pand.0363100012242951"
+      ],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.87804563,
+          52.36679106
+        ],
+        "headingDegrees": 0,
+        "lengthMetres": 114.8,
+        "widthMetres": 91.8
+      },
+      "surveyed": {
+        "anchor": [
+          4.87804563,
+          52.36679106
+        ],
+        "northOffsetDegrees": 0,
+        "source": "Vertex average of the BAG 0363100012242951 outline (RD, 3DBAG LoD0); volumes from the 3DBAG LoD2.2 roof and wall planes of that pand (CC BY 4.0): main roof 21.3 m, corner pieces to 23.8 m, courtyard deck 4.7 / 8.0 m, in native east/south metres (scripts/landmarks/de-makroon-prepare.ts). Storeys, window columns, bands, the slate entrance tower and the canopy measured on rectified Gemeente Amsterdam panorama crops (CC BY 4.0); palette and notes cross-checked with the uninstalled recipe scripts/building-recipes/houses/passeerdersstraat-242951 (scripts/landmarks/de-makroon-inventory.json)."
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 0,
+      "heightMetres": 23.8,
+      "bagYear": 2015,
+      "materialOverrides": {
+        "red": "#8d4a38",
+        "ochre": "#d2b48a",
+        "concrete": "#7a7c7a",
+        "stone": "#9a9792",
+        "glass": "#4f6570",
+        "frame": "#e8e6df",
+        "dark": "#2e3133",
+        "bronze": "#4a4c4e",
+        "slate": "#8a8782"
+      },
+      "attribution": {
+        "title": "De Makroon, Nieuwe Passeerdersstraat / Marnixstraat (2015-16, Architekten Cie. with Pi de Bruijn)",
+        "author": "Map Recall",
+        "sourceUrl": "https://nl.wikipedia.org/wiki/Nieuwe_Passeerdersstraat",
+        "licence": "CC BY 4.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "modifications": "Original texture-free flat-colour geometry on the BAG outline (CC0) and 3DBAG LoD2.2 volumes (CC BY 4.0): the U-shaped red-brown brick block with its yellow-brick top storeys, stone bands, French windows with balconettes, top-floor balcony boxes, shopfronts on Nieuwe Passeerdersstraat and Marnixstraat, and the slate-clad entrance tower with its canopy lettered 'de MAKROON'; read for proportion only from Gemeente Amsterdam panoramas (CC BY 4.0)."
+      },
+      "buildingFootprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.87762,
+              52.3670581
+            ],
+            [
+              4.8776262,
+              52.3670439
+            ],
+            [
+              4.8776395,
+              52.3670157
+            ],
+            [
+              4.8776466,
+              52.3670017
+            ],
+            [
+              4.8776616,
+              52.3669739
+            ],
+            [
+              4.8776777,
+              52.3669463
+            ],
+            [
+              4.8776861,
+              52.3669325
+            ],
+            [
+              4.8777039,
+              52.3669053
+            ],
+            [
+              4.8777132,
+              52.3668918
+            ],
+            [
+              4.8777228,
+              52.3668784
+            ],
+            [
+              4.8777427,
+              52.3668517
+            ],
+            [
+              4.8777531,
+              52.3668385
+            ],
+            [
+              4.8777638,
+              52.3668254
+            ],
+            [
+              4.8777747,
+              52.3668123
+            ],
+            [
+              4.8777858,
+              52.3667994
+            ],
+            [
+              4.877809,
+              52.3667737
+            ],
+            [
+              4.8778209,
+              52.366761
+            ],
+            [
+              4.8778456,
+              52.3667358
+            ],
+            [
+              4.8778713,
+              52.3667111
+            ],
+            [
+              4.8778845,
+              52.3666989
+            ],
+            [
+              4.8779116,
+              52.3666747
+            ],
+            [
+              4.8779256,
+              52.3666628
+            ],
+            [
+              4.8779542,
+              52.3666393
+            ],
+            [
+              4.8779837,
+              52.3666162
+            ],
+            [
+              4.8779988,
+              52.3666048
+            ],
+            [
+              4.8780297,
+              52.3665825
+            ],
+            [
+              4.8780455,
+              52.3665715
+            ],
+            [
+              4.8780777,
+              52.3665499
+            ],
+            [
+              4.8780942,
+              52.3665392
+            ],
+            [
+              4.8781108,
+              52.3665287
+            ],
+            [
+              4.8781447,
+              52.3665081
+            ],
+            [
+              4.878162,
+              52.3664979
+            ],
+            [
+              4.8781972,
+              52.3664781
+            ],
+            [
+              4.8782331,
+              52.3664588
+            ],
+            [
+              4.8782698,
+              52.36644
+            ],
+            [
+              4.8789197,
+              52.3666314
+            ],
+            [
+              4.8793094,
+              52.3667461
+            ],
+            [
+              4.8789961,
+              52.3671951
+            ],
+            [
+              4.8787069,
+              52.3671193
+            ],
+            [
+              4.8786619,
+              52.3671068
+            ],
+            [
+              4.878668,
+              52.3670981
+            ],
+            [
+              4.8784919,
+              52.3670463
+            ],
+            [
+              4.8783202,
+              52.3672648
+            ],
+            [
+              4.87762,
+              52.3670581
+            ]
+          ]
+        ]
+      },
+      "buildingCategory": "landmark",
+      "bounds": {
+        "min": [
+          -19.009624481201172,
+          -9.536743306171047e-8,
+          -45.0629997253418
+        ],
+        "max": [
+          86.21391296386719,
+          23.816999435424805,
+          39.61881637573242
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.87804563,
+          52.36679106
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 90,
+        "facadeBearingDegrees": 0,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 105.22353744506836,
+        "heightMetres": 23.816999530792238,
+        "depthMetres": 84.68181610107422,
+        "depthCoverage": 0.9224598703820721
+      },
+      "triangles": 8610,
+      "bytes": 130912,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
+      "lod1": {
+        "sourceHash": "dec21658543084fe",
+        "buildVersion": 2,
+        "bytes": 65568,
+        "triangles": 3237
+      }
     }
   }
 }

@@ -1,5 +1,5 @@
 {
-  "toolchain": "0ab7d0edc74cd5ed2119d312e0a4dfbbc8e58d0462bd87d5aa61721155e87d31",
+  "toolchain": "a73f65aae497e5a208bf6902744207db139441a89fbc6fa025d7e499b09b26c2",
   "models": {
     "abn-amro-hoofdkantoor": "90ff65a2d9f94e99b2ab33438567f147959a43f017d3d9cf9d2ae68b6dae7cbf",
     "academie-theater-dans": "503b3e8d59937cbf7ac8776eb644c11fd10b567e5ac1113e0caa55c83cb68cde",
@@ -85,6 +85,7 @@
     "de-gooyer": "f6abb3727e064d48ec7d709e42187f6cef1e6adc28c0eec641935fed9f6c22a9",
     "de-hallen": "9697d44cc5619a42338fe31ab29bb2c9fe372d7dd5d21e38e15ff47a2e821889",
     "de-krakeling": "18d5de5cc3b1a27b0570dbc88ac72945fa4a45f59521f11d756793f9347eb3d7",
+    "de-makroon": "e16d1ed3b23eb96dfee8c21c1523108724315f9a2bf1a53612214d7f0bf0b323",
     "de-nederlandsche-bank": "a04c104860775bdef5b1f75bf6a445a2ab0fd97acd347ccb906fcc5977129879",
     "de-otter": "31c9c210c7447934feff12a42d71f563d61819f9ab7365de0524263e6acd8e2a",
     "de-papegaai": "edea86d4a4476c44f0d515ac7e1909274678c84d732ddc19f188311dad3ba5d8",
