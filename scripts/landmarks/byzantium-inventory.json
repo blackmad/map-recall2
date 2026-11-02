@@ -1,0 +1,485 @@
+{
+ "schemaVersion": 1,
+ "id": "byzantium",
+ "pand": "0363100012135250",
+ "brief": "scripts/landmarks/byzantium-brief.md",
+ "signature": [
+  "s-drum-penthouse",
+  "s-gold-canopy",
+  "t-grid",
+  "s-window-pattern",
+  "s-lettering",
+  "t-cream-flank"
+ ],
+ "walls": [
+  {
+   "tag": "w01-156",
+   "bearing": 156,
+   "lengthM": 64,
+   "centre": [
+    4.8801104,
+    52.361551
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001702_pano_0000_009899",
+   "capturedAt": "2020-05-11",
+   "checked": true,
+   "items": [
+    {
+     "id": "p-balcony-bands",
+     "kind": "balcony-ironwork",
+     "where": "park ends and long sides of the three white housing wings and the slab behind: continuous white balcony slabs with dark railings on every storey",
+     "approxSizeM": [
+      60,
+      11
+     ],
+     "plan": "simplified",
+     "how": "terraceBand(): a white balcony slab 1.2 m deep with a dark top rail on every storey of every exposed run of the 11.5 m wings and the park face of the slab; window ribbons behind",
+     "seenIn": "TMX7316010203-002461_pano_0000_001558"
+    },
+    {
+     "id": "p-garden-wall",
+     "kind": "other",
+     "where": "along the Zandpad, the full length: dark brick wall ~2.5 m high enclosing the garden courts",
+     "approxSizeM": [
+      64,
+      2.5
+     ],
+     "plan": "modelled",
+     "how": "the 3DBAG low roof pieces (0.3-3 m) on the Zandpad edge built as dark brick prisms",
+     "seenIn": "TMX7316010203-001702_pano_0000_009899"
+    },
+    {
+     "id": "p-awnings",
+     "kind": "canopy",
+     "where": "a few balconies of the park wings: orange roll-down awnings",
+     "approxSizeM": [
+      3,
+      1
+     ],
+     "plan": "skipped",
+     "skip": {
+      "reason": "temporary",
+      "note": "roll-down awnings, out on some dates only"
+     },
+     "seenIn": "TMX7316010203-002461_pano_0000_001558"
+    }
+   ],
+   "note": "Vondelpark/Zandpad side: the white terraced housing wings (11.5 m) stepping down to the park between garden courts, the higher slab (19.9-25.4 m) behind, a dark anthracite brick garden wall along the Zandpad; also TMX7316010203-002461_pano_0000_001558 (2022, from the park)"
+  },
+  {
+   "tag": "w02-246",
+   "bearing": 246,
+   "lengthM": 42.6,
+   "centre": [
+    4.8795543,
+    52.3616093
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316060226-000022_pano_0006_001298",
+   "capturedAt": "2016-08-16",
+   "checked": true,
+   "items": [],
+   "note": "The crop shows the 19th-century houses on the Zandpad corner (neighbour pand 0363100012156199) in front of this wall; only the white wing heads show above them"
+  },
+  {
+   "tag": "w03-156",
+   "bearing": 156,
+   "lengthM": 17.2,
+   "centre": [
+    4.880652,
+    52.3617274
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316060226-000022_pano_0006_001277",
+   "capturedAt": "2016-08-16",
+   "checked": true,
+   "items": [
+    {
+     "id": "g-arcade-columns",
+     "kind": "colonnade",
+     "where": "park end of the shop gallery, under the canopy: three round grey steel columns ~0.5 m across on the walk edge",
+     "approxSizeM": [
+      12,
+      4.5
+     ],
+     "plan": "modelled",
+     "how": "cylinders under the canopy roof on the park-end walk",
+     "seenIn": "TMX7316010203-001156_pano_0000_001505"
+    }
+   ],
+   "note": "Park end of the shop gallery: the gold canopy with its curved slatted soffit sweeping over the walk, round grey columns, shop glazing set back under it; also TMX7316010203-001156_pano_0000_001505 (2019)"
+  },
+  {
+   "tag": "w04-157",
+   "bearing": 157,
+   "lengthM": 12.4,
+   "centre": [
+    4.8808453,
+    52.3617891
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002463_pano_0000_000080",
+   "capturedAt": "2022-03-22",
+   "checked": true,
+   "items": [
+    {
+     "id": "g-shop-signs",
+     "kind": "sign",
+     "where": "shop fascias under the canopy (SPAR, ASICS, Loewe)",
+     "approxSizeM": [
+      3,
+      0.6
+     ],
+     "plan": "skipped",
+     "skip": {
+      "reason": "temporary",
+      "note": "tenant signs change; the glazing they sit on is modelled"
+     },
+     "seenIn": "TMX7316010203-002463_pano_0000_000080"
+    },
+    {
+     "id": "e-fire-escape",
+     "kind": "other",
+     "where": "slab end wall at the park end, above the canopy: a steel zig-zag escape stair with a landing at every storey, left of three small square windows",
+     "approxSizeM": [
+      3.5,
+      14
+     ],
+     "plan": "simplified",
+     "how": "four concrete landings 1.3 m deep with bronze railings at the storey levels; the stair flights between them are not modelled",
+     "seenIn": "TMX7316010203-002463_pano_0000_000080"
+    }
+   ],
+   "note": "Same park-end gallery from the east: the gold canopy edge, the SPAR shopfront behind the columns"
+  },
+  {
+   "tag": "w05-67",
+   "bearing": 67,
+   "lengthM": 9.3,
+   "centre": [
+    4.8796701,
+    52.361949
+   ],
+   "evidence": "photo",
+   "panoId": "b_20241211_0838_Track05_Sphere_00014",
+   "capturedAt": "2024-12-11",
+   "checked": true,
+   "items": [
+    {
+     "id": "q-garage-sign",
+     "kind": "sign",
+     "where": "over the garage entrance: white Q-Park Byzantium sign panel",
+     "approxSizeM": [
+      3.5,
+      0.6
+     ],
+     "plan": "skipped",
+     "skip": {
+      "reason": "too-small",
+      "note": "operator sign 0.6 m high on an inner entrance, not legible from the street at riding distance"
+     },
+     "seenIn": "b_20241211_0838_Track05_Sphere_00014"
+    }
+   ],
+   "note": "Garage entrance (Q-Park Byzantium) under a grey canopy at the Leidseplein end of the courtyard block, barrier and sign"
+  },
+  {
+   "tag": "w06-336",
+   "bearing": 336,
+   "lengthM": 9.1,
+   "centre": [
+    4.8794828,
+    52.3619287
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002619_pano_0017_000161",
+   "capturedAt": "2022-06-22",
+   "checked": true,
+   "items": [
+    {
+     "id": "t-garage-door",
+     "kind": "other",
+     "where": "ground storey, centre: the garage entrance with a red/white barrier and roller door",
+     "approxSizeM": [
+      5,
+      2.6
+     ],
+     "plan": "simplified",
+     "how": "a dark recessed panel in the ground storey of the Tesselschadestraat wing",
+     "seenIn": "TMX7316010203-002619_pano_0017_000161"
+    }
+   ],
+   "note": "West end on the Tesselschadestraat: four-storey dark grey block with a red-and-white garage door, the pale slab storeys above"
+  },
+  {
+   "tag": "w07-336",
+   "bearing": 336,
+   "lengthM": 8,
+   "centre": [
+    4.8795887,
+    52.3619726
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-07-31_08-46-40_00495",
+   "capturedAt": "2025-07-31",
+   "checked": true,
+   "items": [],
+   "note": "Same block from the 2025 recording: square windows in four rows on the grey part, ribbon rows above"
+  },
+  {
+   "tag": "sk-front-67",
+   "bearing": 67,
+   "lengthM": 36,
+   "centre": [
+    4.88082,
+    52.36189
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002117_pano_0000_002134",
+   "capturedAt": "2021-04-26",
+   "checked": true,
+   "note": "Stadhouderskade front (the main face; the brief tool drops it because the shop pand 0363100012233595 stands in front). Also Commons File:ByzantiumStadhouderskade-1a.jpg (Milliped, 2015, CC BY-SA 4.0), Commons File:Amsterdam - Byzantium (29670468754).jpg (Fred Romero, 2016, CC BY 2.0), TMX7316010203-001631_pano_0002_000022 (2020) and TMX7316010203-002548_pano_0000_000372 (2022)",
+   "items": [
+    {
+     "id": "s-drum-penthouse",
+     "kind": "tower",
+     "where": "top of the park end, cantilevered past the slab end and over the street: the round gold penthouse, a saucer underside, a closed gold band, a glazed storey with a railing, a gold roof fascia",
+     "approxSizeM": [
+      10,
+      6.2
+     ],
+     "plan": "modelled",
+     "how": "drum(): centre measured on the PDOK orthophoto 3 m in front of the slab line at its park end, radius 5.2 m; a lathe saucer from 19.8 m to the 21.4 m rim, a closed gold band to 22.8 m, the glazed storey to 25.2 m set 0.35 m in with 20 thin gold mullions and a railing behind the glass, a gold fascia to 26.0 m and a flat roof",
+     "seenIn": "Commons File:ByzantiumStadhouderskade-1a.jpg (Milliped, 2015, CC BY-SA 4.0)"
+    },
+    {
+     "id": "s-drum-supports",
+     "kind": "other",
+     "where": "under the drum: one slender vertical column to the pavement and a diagonal strut back to the slab end",
+     "approxSizeM": [
+      0.5,
+      20
+     ],
+     "plan": "simplified",
+     "how": "one bronze column 0.44 m across from the pavement to the saucer at the drum's outer edge, and a 0.32 m diagonal bronze strut from under the saucer back to the slab front at 14.5 m",
+     "seenIn": "Commons File:Amsterdam - Byzantium (29670468754).jpg (Fred Romero, 2016, CC BY 2.0)"
+    },
+    {
+     "id": "s-window-pattern",
+     "kind": "window-shape",
+     "where": "six storeys of the blue-grey tiled slab between the gold canopy and the set-back top storey: four columns of large white-framed windows, each with a small square window beside it, the pairs alternately narrow and wide so the rows stagger",
+     "approxSizeM": [
+      29,
+      17
+     ],
+     "plan": "modelled",
+     "how": "slabWindows(): per storey row A (2.2 m + 0.6 m windows) or B (2.6 m + 0.75 m), left edges of the large windows at 4.5, 11.8, 18.4 and 24.5 m from the park end, measured on the Commons crop (0.039 m/px)",
+     "seenIn": "Commons File:ByzantiumStadhouderskade-1a.jpg (Milliped, 2015, CC BY-SA 4.0)"
+    },
+    {
+     "id": "s-setback-storey",
+     "kind": "other",
+     "where": "top storey of the slab set back behind a railing on the parapet, with wide window pairs",
+     "approxSizeM": [
+      29,
+      2.9
+     ],
+     "plan": "modelled",
+     "how": "the 25.4 m roof piece built 2 m behind the 22.5 m parapet, windows on its front, a dark railing on the parapet",
+     "seenIn": "Commons File:ByzantiumStadhouderskade-1a.jpg (Milliped, 2015, CC BY-SA 4.0)"
+    },
+    {
+     "id": "s-gold-canopy",
+     "kind": "canopy",
+     "where": "full length of the shop gallery in front of the slab: the gold fascia band over the shopfronts, rising to a wedge at the park end",
+     "approxSizeM": [
+      33,
+      1
+     ],
+     "plan": "modelled",
+     "how": "gallery(): 3DBAG sloped roof of the shop pand with a gold fascia on its street edge; a 1.5 m arcade strip along the park-side shops; at the park end the canopy widens into the drum circle and a 3 m strip along the end wall, on round columns, over a public walk (declared as a throughPassage)",
+     "seenIn": "Commons File:ByzantiumStadhouderskade-1a.jpg (Milliped, 2015, CC BY-SA 4.0)"
+    },
+    {
+     "id": "s-lettering",
+     "kind": "lettering",
+     "where": "fascia of the entrance canopy between the shop gallery and the tower: BYZANTIUM in widely spaced chrome capitals",
+     "approxSizeM": [
+      11,
+      0.7
+     ],
+     "plan": "modelled",
+     "how": "letters() pixel glyphs in frame (light) colour 0.1 m proud of the gold fascia, spaced over the 11 m fascia",
+     "seenIn": "Commons File:Amsterdam - Byzantium (30214768781).jpg (Fred Romero, 2016, CC BY 2.0)"
+    },
+    {
+     "id": "s-shopfronts",
+     "kind": "other",
+     "where": "ground storey under the canopy: dark shop glazing with a clerestory band",
+     "approxSizeM": [
+      33,
+      4
+     ],
+     "plan": "modelled",
+     "how": "glass panels with mullions on the street face of the gallery prism",
+     "seenIn": "TMX7316010203-002117_pano_0000_002134"
+    },
+    {
+     "id": "s-glazed-link",
+     "kind": "window-shape",
+     "where": "between the slab and the tower: a two-bay strip of the tower grid, six storeys and a set-back top",
+     "approxSizeM": [
+      6.4,
+      22
+     ],
+     "plan": "modelled",
+     "how": "towerGrid() on the 6.4 m kink of the front up to 22.5 m",
+     "seenIn": "Commons File:ByzantiumStadhouderskade-1a.jpg (Milliped, 2015, CC BY-SA 4.0)"
+    }
+   ]
+  },
+  {
+   "tag": "tw-front-67",
+   "bearing": 67,
+   "lengthM": 20,
+   "centre": [
+    4.88063,
+    52.36218
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-07-14_06-43-08_00406",
+   "capturedAt": "2025-07-14",
+   "checked": true,
+   "note": "The office tower at the Leidseplein end (pand 0363100012236811, 39 m): front, Tesselschadestraat side and the flank over the slab. Also Commons File:ByzantiumStadhouderskade-1a.jpg (Milliped, 2015, CC BY-SA 4.0), Commons File:Amsterdam - Byzantium (29670468754).jpg (Fred Romero, 2016, CC BY 2.0)",
+   "items": [
+    {
+     "id": "t-grid",
+     "kind": "window-shape",
+     "where": "all street faces of the tower, ground to roof: a dark grey frame grid of square cells, five bays on the front, four on the side, twelve storeys over the shop storey, each cell a recessed window over a white spandrel band",
+     "approxSizeM": [
+      20,
+      39
+     ],
+     "plan": "modelled",
+     "how": "towerGrid(): frame piers and floor beams 0.35 m proud, glass and white spandrel recessed per cell",
+     "seenIn": "recording_2025-07-14_06-43-08_00406"
+    },
+    {
+     "id": "t-cream-flank",
+     "kind": "other",
+     "where": "south-east flank of the tower above the slab roof: blank cream panel wall with joint lines",
+     "approxSizeM": [
+      16,
+      14
+     ],
+     "plan": "modelled",
+     "how": "cream panel cladding with horizontal joint strips on that face above 22.5 m",
+     "seenIn": "Commons File:ByzantiumStadhouderskade-1a.jpg (Milliped, 2015, CC BY-SA 4.0)"
+    },
+    {
+     "id": "t-roof-plant",
+     "kind": "other",
+     "where": "roof: plant housings and masts",
+     "approxSizeM": [
+      6,
+      2
+     ],
+     "plan": "simplified",
+     "how": "the 3DBAG plant pieces (40.4-41.3 m) as grey boxes",
+     "seenIn": "Commons File:Amsterdam - Byzantium (29670468754).jpg (Fred Romero, 2016, CC BY 2.0)"
+    }
+   ]
+  },
+  {
+   "tag": "ts-front-337",
+   "bearing": 337,
+   "lengthM": 35,
+   "centre": [
+    4.88016,
+    52.36212
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002059_pano_0000_003239",
+   "capturedAt": "2021-03-24",
+   "checked": true,
+   "note": "Tesselschadestraat front: the low shop block (pand 0363100012073194) with a black portal frame and a brown brick upper storey; the slab above it in pale grey bands with dark window ribbons. Also TMX7316010203-002059_pano_0000_003242",
+   "items": [
+    {
+     "id": "ts-portal-frame",
+     "kind": "colonnade",
+     "where": "in front of the low block: a black steel frame of square posts and a deep top beam over the whole front",
+     "approxSizeM": [
+      32,
+      6
+     ],
+     "plan": "modelled",
+     "how": "black posts every ~8 m and a top beam slab on the low block front",
+     "seenIn": "TMX7316010203-002059_pano_0000_003239"
+    },
+    {
+     "id": "ts-ribbons",
+     "kind": "window-shape",
+     "where": "every storey of the slab above: dark-framed window ribbons between pale grey spandrel bands",
+     "approxSizeM": [
+      35,
+      19
+     ],
+     "plan": "modelled",
+     "how": "ribbon rows (glass + mullions every 1.3 m) on the exposed north-west runs of the slab pieces, pale bands between",
+     "seenIn": "TMX7316010203-002059_pano_0000_003239"
+    },
+    {
+     "id": "ts-brick",
+     "kind": "other",
+     "where": "upper storey of the low block behind the frame: brown brick with square windows",
+     "approxSizeM": [
+      32,
+      2.5
+     ],
+     "plan": "modelled",
+     "how": "brick-coloured low block prism, a row of windows and shop glazing below",
+     "seenIn": "TMX7316010203-002059_pano_0000_003239"
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas (listed per wall)",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/",
+   "licence": "CC BY 4.0"
+  },
+  {
+   "name": "ByzantiumStadhouderskade-1a.jpg (Milliped)",
+   "url": "https://commons.wikimedia.org/wiki/File:ByzantiumStadhouderskade-1a.jpg",
+   "licence": "CC BY-SA 4.0"
+  },
+  {
+   "name": "Amsterdam - Byzantium (29670468754).jpg (Fred Romero)",
+   "url": "https://commons.wikimedia.org/wiki/File:Amsterdam_-_Byzantium_(29670468754).jpg",
+   "licence": "CC BY 2.0"
+  },
+  {
+   "name": "Amsterdam - Byzantium (30214768781).jpg (Fred Romero)",
+   "url": "https://commons.wikimedia.org/wiki/File:Amsterdam_-_Byzantium_(30214768781).jpg",
+   "licence": "CC BY 2.0"
+  },
+  {
+   "name": "nl.wikipedia Byzantium (gebouw)",
+   "url": "https://nl.wikipedia.org/wiki/Byzantium_(gebouw)",
+   "licence": "CC BY-SA 4.0"
+  },
+  {
+   "name": "PDOK luchtfoto Actueel_orthoHR",
+   "url": "https://service.pdok.nl/hwh/luchtfotorgb/wms/v1_0",
+   "licence": "CC BY 4.0"
+  }
+ ],
+ "pands": [
+  "0363100012135250",
+  "0363100012236811",
+  "0363100012073194",
+  "0363100012233595"
+ ]
+}

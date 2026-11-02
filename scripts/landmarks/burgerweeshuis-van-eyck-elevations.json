@@ -1,0 +1,26 @@
+{
+ "id": "burgerweeshuis-van-eyck",
+ "countedBy": "lane landmarks-koolhaas-vaneyck-20261101 (opus) from the panorama crop before comparing with the elevation render; not a blind haiku count, the integrator may re-count.",
+ "facades": [
+  {
+   "name": "entrance front on the IJsbaanpad (w04-8)",
+   "bearing": 7.7,
+   "photo": "artifacts/landmark-lanes/burgerweeshuis-van-eyck/ref-w04.jpg",
+   "rows": [
+    5,
+    6
+   ],
+   "alongM": [
+    33.9,
+    54.4
+   ],
+   "heightM": [
+    0,
+    3.6
+   ],
+   "symmetric": false,
+   "gables": 0,
+   "note": "TMX7316010203-002125_pano_0000_000162 (2021). Five glazed modules between round concrete columns (columns 0.34 m, wider than the ribbon gap: five openings), a blank brick module at the west end; above them the concrete lintel with one long slot per module (six). The domes stand behind the gutter and are cut by heightM."
+  }
+ ]
+}

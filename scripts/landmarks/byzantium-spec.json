@@ -1,0 +1,332 @@
+{
+  "id": "byzantium",
+  "name": "Byzantium",
+  "modelUrl": "./models/byzantium.glb",
+  "suppressOsmIds": [
+    "NL.IMBAG.Pand.0363100012135250",
+    "NL.IMBAG.Pand.0363100012236811",
+    "NL.IMBAG.Pand.0363100012073194",
+    "NL.IMBAG.Pand.0363100012233595",
+    "r20168389",
+    "w276328367",
+    "w276329240",
+    "w276329447",
+    "w276329603",
+    "w1000058617"
+  ],
+  "spatialSuppression": false,
+  "footprint": {
+    "centre": [
+      4.8802402,
+      52.3618796
+    ],
+    "headingDegrees": 66.5,
+    "lengthMetres": 109.91,
+    "widthMetres": 59.83
+  },
+  "surveyed": {
+    "anchor": [
+      4.88003636,
+      52.36184149
+    ],
+    "northOffsetDegrees": 0,
+    "source": "Vertex average of the BAG 0363100012135250 ring (RD, PDOK BAG WFS, CC0); the complex is four BAG pands of 1991 (main block 0363100012135250, tower 0363100012236811, Tesselschadestraat block 0363100012073194, shop gallery and drum 0363100012233595) and the massing is one prism per 3DBAG LoD2.2 roof piece of those pands (CC BY 4.0) in native east/south metres above the street at 0.30 m NAP (scripts/landmarks/byzantium-prepare.ts). Window pattern, tower grid, drum and gallery read from Wikimedia Commons photographs (Milliped CC BY-SA 4.0, Fred Romero CC BY 2.0) and Gemeente Amsterdam panoramas (CC BY 4.0); see scripts/landmarks/byzantium-inventory.json and byzantium-elevations.json."
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 0,
+  "heightMetres": 40.8,
+  "bagYear": 1991,
+  "materialOverrides": {
+    "greyBrick": "#9da2ad",
+    "concrete": "#c6c8c8",
+    "white": "#dcdcd7",
+    "glass": "#43545f",
+    "gold": "#b49b62",
+    "stone": "#ddd5c4",
+    "sandstone": "#b9b09f",
+    "frame": "#e6e6e2",
+    "brick": "#8b6a52",
+    "slate": "#5d6064",
+    "green": "#6f8a55",
+    "blue": "#2a2b2f",
+    "bronze": "#53575f",
+    "pink": "#dcdcd7"
+  },
+  "attribution": {
+    "title": "Byzantium, Stadhouderskade / Tesselschadestraat (OMA: Rem Koolhaas with Kees Christiaanse and Ron Steiner, 1985-1991)",
+    "author": "Map Recall",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Byzantium_(gebouw)",
+    "licence": "CC BY 4.0",
+    "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+    "modifications": "Original texture-free flat-colour geometry on 3DBAG LoD2.2 roof pieces (CC BY 4.0) and BAG footprints (CC0): the tiled slab with its staggered window pairs and set-back top storey, the tower's frame grid and cream flank, the gold-edged shop gallery and arcade, the BYZANTIUM entrance lettering, the cantilevered gold drum penthouse with its column and strut, the Tesselschadestraat portal frame and window ribbons, the balconied courtyard wings; read for proportion and tone from Wikimedia Commons photographs by Milliped (CC BY-SA 4.0) and Fred Romero (CC BY 2.0), Gemeente Amsterdam panoramas (CC BY 4.0) and the PDOK orthophoto (CC BY 4.0). Names and dates: Wikipedia nl 'Byzantium (gebouw)' (CC BY-SA 4.0). No pixels or meshes imported."
+  },
+  "buildingFootprint": {
+    "type": "MultiPolygon",
+    "coordinates": [
+      [
+        [
+          [
+            4.8807534,
+            52.362053
+          ],
+          [
+            4.880715,
+            52.3621061
+          ],
+          [
+            4.8804992,
+            52.3620476
+          ],
+          [
+            4.8804508,
+            52.3621143
+          ],
+          [
+            4.8799835,
+            52.3619872
+          ],
+          [
+            4.8796977,
+            52.3619101
+          ],
+          [
+            4.8796422,
+            52.3619868
+          ],
+          [
+            4.8795348,
+            52.3619574
+          ],
+          [
+            4.8795435,
+            52.3619449
+          ],
+          [
+            4.8795054,
+            52.3619345
+          ],
+          [
+            4.8794954,
+            52.3619318
+          ],
+          [
+            4.8794639,
+            52.3619232
+          ],
+          [
+            4.8794592,
+            52.3619219
+          ],
+          [
+            4.8794264,
+            52.361913
+          ],
+          [
+            4.8794218,
+            52.3619117
+          ],
+          [
+            4.8794219,
+            52.3619047
+          ],
+          [
+            4.8794271,
+            52.3617838
+          ],
+          [
+            4.8794803,
+            52.3617106
+          ],
+          [
+            4.8796812,
+            52.3614339
+          ],
+          [
+            4.8797865,
+            52.3614625
+          ],
+          [
+            4.8805394,
+            52.3616673
+          ],
+          [
+            4.8805334,
+            52.3616755
+          ],
+          [
+            4.88052,
+            52.361694
+          ],
+          [
+            4.8805346,
+            52.361698
+          ],
+          [
+            4.8805363,
+            52.3616956
+          ],
+          [
+            4.8805439,
+            52.3616977
+          ],
+          [
+            4.8807673,
+            52.3617584
+          ],
+          [
+            4.8807617,
+            52.3617661
+          ],
+          [
+            4.8809285,
+            52.3618113
+          ],
+          [
+            4.8807534,
+            52.362053
+          ]
+        ]
+      ],
+      [
+        [
+          [
+            4.8805961,
+            52.3622703
+          ],
+          [
+            4.8803803,
+            52.3622117
+          ],
+          [
+            4.8804508,
+            52.3621143
+          ],
+          [
+            4.8804992,
+            52.3620476
+          ],
+          [
+            4.880715,
+            52.3621061
+          ],
+          [
+            4.8806723,
+            52.3621659
+          ],
+          [
+            4.8806718,
+            52.3621658
+          ],
+          [
+            4.8805961,
+            52.3622703
+          ]
+        ]
+      ],
+      [
+        [
+          [
+            4.8804508,
+            52.3621143
+          ],
+          [
+            4.8803803,
+            52.3622117
+          ],
+          [
+            4.8799105,
+            52.3620842
+          ],
+          [
+            4.8799624,
+            52.3620125
+          ],
+          [
+            4.8799647,
+            52.3620132
+          ],
+          [
+            4.8799835,
+            52.3619872
+          ],
+          [
+            4.8804508,
+            52.3621143
+          ]
+        ]
+      ],
+      [
+        [
+          [
+            4.8811274,
+            52.3618559
+          ],
+          [
+            4.8811378,
+            52.3618587
+          ],
+          [
+            4.880834,
+            52.3620874
+          ],
+          [
+            4.8808355,
+            52.3620881
+          ],
+          [
+            4.8808313,
+            52.3620914
+          ],
+          [
+            4.8807534,
+            52.362053
+          ],
+          [
+            4.8809285,
+            52.3618113
+          ],
+          [
+            4.8810522,
+            52.3618448
+          ],
+          [
+            4.8810578,
+            52.3618371
+          ],
+          [
+            4.8811103,
+            52.3618513
+          ],
+          [
+            4.8811274,
+            52.3618559
+          ]
+        ]
+      ]
+    ]
+  },
+  "throughPassages": [
+    {
+      "axisBearing": 66.6,
+      "corridor": [
+        [
+          50.083,
+          14.507
+        ],
+        [
+          47.776,
+          9.186
+        ],
+        [
+          66.584,
+          1.031
+        ],
+        [
+          68.891,
+          6.352
+        ]
+      ],
+      "evidence": "Public walk under the gold canopy along the slab's park-end wall, from the Stadhouderskade pavement to the Vondelpark path, open at both ends with round columns on its outer edge: Gemeente Amsterdam panoramas TMX7316060226-000022_pano_0006_001277 (2016), TMX7316010203-002463_pano_0000_000080 (2022), TMX7316010203-001156_pano_0000_001503 and _001505 (2019)."
+    }
+  ]
+}

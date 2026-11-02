@@ -164,6 +164,16 @@ test('rhythm: a staggered lattice is judged on size only', () => {
   assert.equal(analyseRhythm([...lattice, {t0: 3, t1: 4.5, y0: 9, y1: 10.5, area: 2}], {staggered: true}).mismatched.length, 1, 'an odd-sized window still counts');
 });
 
+test('rhythm: an alternating row (wide pair, small square) is judged per class', () => {
+  // Four 2.1 x 1.4 m windows alternating with four 0.6 m squares centred on the same level (Byzantium slab front).
+  const r: Opening[] = [];
+  for (let k = 0; k < 4; k++) { r.push({t0: k * 7, t1: k * 7 + 2.1, y0: 10, y1: 11.4, area: 2.94}); r.push({t0: k * 7 + 3.5, t1: k * 7 + 4.1, y0: 10.4, y1: 11.0, area: 0.36}); }
+  assert.ok(analyseRhythm(r).mismatched.length >= 4, 'the row median misreads the small squares');
+  assert.equal(analyseRhythm(r, {alternating: true}).mismatched.length, 0);
+  r[2] = {...r[2], t1: r[2].t0 + 3.4};
+  assert.equal(analyseRhythm(r, {alternating: true}).mismatched.length, 1, 'an odd-sized wide window still counts');
+});
+
 test('baseline gate: only growth past the recorded counts fails', () => {
   assert.deepEqual(regressions({'opening-floating-fail': 2, 'zfight-m2': 30}, {'opening-floating-fail': 2, 'zfight-m2': 30}), []);
   assert.equal(regressions({'opening-floating-fail': 3, 'zfight-m2': 30}, {'opening-floating-fail': 2, 'zfight-m2': 30}).length, 1);
