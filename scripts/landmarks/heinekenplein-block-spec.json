@@ -1,0 +1,32 @@
+{
+ "id": "heinekenplein-block",
+ "pand": "0363100012130580",
+ "alsoSuppressed": ["0363100012232488", "0363100012080460", "0363100012139518"],
+ "identity": {
+  "addresses": "Stadhouderskade 79 (kantoorfunctie, 6302 m2) and Marie Heinekenplein 25 (winkelfunctie, 2300 m2, the Dirk supermarket)",
+  "bouwjaar": 1995,
+  "bouwlagen": 9,
+  "architect": "not named by nl.wikipedia, the BAG or the monument registers (no monument record); unconfirmed",
+  "sources": ["https://api.data.amsterdam.nl/v1/bag/panden/0363100012130580", "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/?ligtInPanden.identificatie=0363100012130580", "https://nl.wikipedia.org/wiki/Marie_Heinekenplein"]
+ },
+ "frame": {
+  "axes": "e east, n north along the Eerste Van der Helststraat front; E=(0.9945,0.1051), N=(0.1051,-0.9945) (bearing 6); origin the front's south-east BAG vertex (9.264, 60.462) in native metres; A(e,n) in heinekenplein-block-builder.ts"
+ },
+ "partyWallBearings": [276, 186],
+ "partyWallEvidence": "West (276): the deck's west wall adjoins the Marie Heinekenplein flats (BAG 0363100012191582-5, 25.9 m) and the court's west wall and the office block's lower west wall adjoin the former brewery (0363100012166152, 24.7 m, the Heineken Experience). South (186): the bar and deck adjoin the Quellijnstraat houses (0363100012064912, 0363100012120518, 0363100012115820 and others, 15.0-15.2 m), as tall as the bar.",
+ "streetNAP": 0.333,
+ "volumes": {
+  "bar": {"e": [-15, 0], "n": [0, 99.34], "top": 15.3, "recess": {"n": [41.43, 48.39], "e": -1.9}, "gateway": {"n": [70.2, 76.1], "height": 4.1}},
+  "deck": {"e": [-40.17, -15], "n": [0, 66.9], "top": "13.0 (e < -23), 11.6 (e > -23)"},
+  "pavilion": {"e": [-15, -6.5], "n": [73.5, 90.8], "top": 18.8},
+  "court": {"e": [-31.17, -15], "n": [76.9, 90.8], "top": 4.5},
+  "office": {"e": [-24.8, -1.73], "n": [90.8, 106.56], "top": 32.3, "floors": "ground 4.3, then 3.1 m to 32.2"},
+  "plantRoom": {"e": [-11, -5], "n": [91, 99], "top": 35.1},
+  "beigeFront": {"e": [-24.8, -8.36], "n": [106.56, 108.07], "top": 23.0}
+ },
+ "storeys": {
+  "bar": "ground 0-4.4 (shop glass 0.15-2.8, steel canopy 2.9), square windows sills 5.2 and 8.7 (1.08 x 1.2), top ribbons 11.9-13.2, stone plates 14.0, coping 15.3",
+  "beigeFront": "ground windows 0.7-3.3 in stone frames, six storeys of 1.2 m square windows (sills floor + 0.9), coping 23.0",
+  "office": "four-light windows 2.4 x 2.0 at floor + 0.6; deep glazed bays 0.15-3.75 and 4.8-7.0 on the corner"
+ }
+}

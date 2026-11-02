@@ -65052,5 +65052,304 @@
     ]
    ]
   }
+ },
+ {
+  "id": "heinekenplein-block",
+  "name": "Heinekenplein block (Stadhouderskade 79)",
+  "modelUrl": "./models/heinekenplein-block.glb",
+  "suppressOsmIds": [
+   "NL.IMBAG.Pand.0363100012130580",
+   "NL.IMBAG.Pand.0363100012232488",
+   "NL.IMBAG.Pand.0363100012080460",
+   "NL.IMBAG.Pand.0363100012139518"
+  ],
+  "spatialSuppression": false,
+  "footprint": {
+   "centre": [
+    4.89241917,
+    52.35740181
+   ],
+   "headingDegrees": 0,
+   "lengthMetres": 50.4,
+   "widthMetres": 110.1
+  },
+  "surveyed": {
+   "anchor": [
+    4.89241917,
+    52.35740181
+   ],
+   "northOffsetDegrees": 0,
+   "source": "Vertex average of the BAG 0363100012130580 ring (RD, PDOK BAG WFS, CC0) in native east/south metres above the 3DBAG ground 0.333 m NAP (scripts/landmarks/heinekenplein-block-footprints.json, written by sarphati-plaza-prepare.ts --id=heinekenplein-block --pand=0363100012130580). Bar, deck, court, roof pavilion, office block, plant room and beige front heights from the 3DBAG LoD2.2 roof parts (CC BY 4.0); storeys, window axes, ribbons, shop fronts, the gateway, the HEINEKEN sign and the passage recess measured on rectified Gemeente Amsterdam panorama crops (CC BY 4.0), per wall in scripts/landmarks/heinekenplein-block-inventory.json. The office block's south and west faces, the court and the deck's yard face carry no photograph and are inferred. Also suppresses the three 1994 BAG pands that overlap this one (0363100012232488, 0363100012080460, 0363100012139518; the large recipe's aliases)."
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 0,
+  "heightMetres": 35.1,
+  "bagYear": 1995,
+  "materialOverrides": {
+   "brick": "#a3634f",
+   "stone": "#a59d8a",
+   "greyBrick": "#aca89b",
+   "concrete": "#c8c3b6",
+   "white": "#d2d0c8",
+   "glass": "#56707e",
+   "frame": "#33373b",
+   "dark": "#2c2e31",
+   "slate": "#87898d",
+   "green": "#2f7a45",
+   "red": "#c3262f",
+   "blue": "#1f6fb5",
+   "bronze": "#34383b"
+  },
+  "attribution": {
+   "title": "Heinekenplein block, Stadhouderskade 79 / Marie Heinekenplein 25 (offices, supermarket and car park, 1995)",
+   "author": "Map Recall",
+   "sourceUrl": "https://api.data.amsterdam.nl/v1/bag/panden/0363100012130580",
+   "licence": "CC BY 4.0",
+   "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+   "modifications": "Original texture-free flat-colour geometry on the BAG footprint (CC0) with 3DBAG LoD2.2 heights (CC BY 4.0): the four-storey red-brick bar on the Eerste Van der Helststraat with its square windows, top-storey ribbons and parapet stone blocks, the Dirk shop fronts, car-park entrance and the gateway with the green HEINEKEN sign and red star, the rendered passage recess, the ten-storey office block on the Stadhouderskade with its four-light windows and deep glazed corner bays, and the beige seven-storey front with stone-framed ground windows; read for proportion and tone from Gemeente Amsterdam panoramas (CC BY 4.0). No pixels or meshes imported."
+  },
+  "buildingFootprint": {
+   "type": "Polygon",
+   "coordinates": [
+    [
+     [
+      4.8919744,
+      52.35689447
+     ],
+     [
+      4.89204745,
+      52.35689006
+     ],
+     [
+      4.8921278,
+      52.3568852
+     ],
+     [
+      4.89220815,
+      52.35688034
+     ],
+     [
+      4.89229242,
+      52.35687523
+     ],
+     [
+      4.89237219,
+      52.35687042
+     ],
+     [
+      4.89246157,
+      52.35686501
+     ],
+     [
+      4.89256121,
+      52.35685898
+     ],
+     [
+      4.89260488,
+      52.35712963
+     ],
+     [
+      4.89261042,
+      52.3571639
+     ],
+     [
+      4.89261474,
+      52.35719073
+     ],
+     [
+      4.89262129,
+      52.3572313
+     ],
+     [
+      4.89261499,
+      52.35723169
+     ],
+     [
+      4.89261469,
+      52.35722989
+     ],
+     [
+      4.89259329,
+      52.3572312
+     ],
+     [
+      4.89260345,
+      52.35729342
+     ],
+     [
+      4.89262471,
+      52.35729213
+     ],
+     [
+      4.89262442,
+      52.35729033
+     ],
+     [
+      4.89263072,
+      52.35728996
+     ],
+     [
+      4.89263723,
+      52.35733083
+     ],
+     [
+      4.89264717,
+      52.35739345
+     ],
+     [
+      4.89265598,
+      52.35744892
+     ],
+     [
+      4.89267196,
+      52.35754659
+     ],
+     [
+      4.89270407,
+      52.35774752
+     ],
+     [
+      4.8926978,
+      52.35774791
+     ],
+     [
+      4.89269719,
+      52.35774443
+     ],
+     [
+      4.89267883,
+      52.35774563
+     ],
+     [
+      4.89267938,
+      52.35774902
+     ],
+     [
+      4.89268996,
+      52.35781354
+     ],
+     [
+      4.89263717,
+      52.35781669
+     ],
+     [
+      4.89258468,
+      52.35781981
+     ],
+     [
+      4.89257898,
+      52.35782015
+     ],
+     [
+      4.89258058,
+      52.35782999
+     ],
+     [
+      4.89259446,
+      52.35782915
+     ],
+     [
+      4.89259502,
+      52.357833
+     ],
+     [
+      4.89243101,
+      52.35784289
+     ],
+     [
+      4.89235567,
+      52.35784742
+     ],
+     [
+      4.8923555,
+      52.35784646
+     ],
+     [
+      4.89235481,
+      52.3578465
+     ],
+     [
+      4.89233141,
+      52.35769297
+     ],
+     [
+      4.892237,
+      52.35769864
+     ],
+     [
+      4.89221697,
+      52.35757443
+     ],
+     [
+      4.89243358,
+      52.35756114
+     ],
+     [
+      4.89245213,
+      52.35756
+     ],
+     [
+      4.89245209,
+      52.35755998
+     ],
+     [
+      4.89244173,
+      52.35749549
+     ],
+     [
+      4.89243812,
+      52.35747302
+     ],
+     [
+      4.89243775,
+      52.35747025
+     ],
+     [
+      4.89207107,
+      52.35749306
+     ],
+     [
+      4.89206543,
+      52.35745908
+     ],
+     [
+      4.89204449,
+      52.35732922
+     ],
+     [
+      4.8920344,
+      52.35726661
+     ],
+     [
+      4.89202814,
+      52.3572278
+     ],
+     [
+      4.89201725,
+      52.35716028
+     ],
+     [
+      4.8920114,
+      52.35712395
+     ],
+     [
+      4.89199891,
+      52.35704653
+     ],
+     [
+      4.89198955,
+      52.35698839
+     ],
+     [
+      4.89198017,
+      52.35693025
+     ],
+     [
+      4.8919744,
+      52.35689447
+     ]
+    ]
+   ]
+  }
  }
 ]

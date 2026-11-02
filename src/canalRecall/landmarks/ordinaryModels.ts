@@ -42,6 +42,8 @@ export const SHADOWED_BY_LANDMARK: Readonly<Record<string, string>> = {
   'ordinary-0363100012238052': 'ziggo-dome',
   // Rietveld building (2026-10-17 large recipe): one 39 m curtain ribbon against the photo's 2.1 m square modules; the bespoke model (#205) draws them.
   'ordinary-0363100012077325': 'gerrit-rietveld-academie',
+  // Heinekenplein block (large recipe failed the likeness judge on its east wall and drew the office tower blank; bespoke #207).
+  'ordinary-0363100012130580': 'heinekenplein-block',
 };
 /** Every catalogue model (both categories) that no landmark shadows: what the game draws. */
 export const ORDINARY_BUILDINGS: readonly SignatureModelSpec[] = models.filter(m => !SHADOWED_BY_LANDMARK[m.id]).map(ordinarySpecFor);

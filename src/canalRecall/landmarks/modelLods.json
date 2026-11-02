@@ -2236,5 +2236,11 @@
   "buildVersion": 2,
   "bytes": 25692,
   "triangles": 810
+ },
+ "heinekenplein-block": {
+  "sourceHash": "b396d1331d2c97e8",
+  "buildVersion": 2,
+  "bytes": 75832,
+  "triangles": 4421
  }
 }

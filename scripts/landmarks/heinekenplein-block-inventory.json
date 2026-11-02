@@ -1,0 +1,501 @@
+{
+ "schemaVersion": 1,
+ "id": "heinekenplein-block",
+ "pand": "0363100012130580",
+ "brief": "scripts/landmarks/heinekenplein-block-brief.md",
+ "signature": [
+  "heineken-sign",
+  "tower-corner",
+  "beige-grid",
+  "bar-ribbons",
+  "bar-square-windows",
+  "gateway",
+  "dirk-shopfronts"
+ ],
+ "walls": [
+  {
+   "tag": "w01-96",
+   "bearing": 96,
+   "lengthM": 51.2,
+   "centre": [
+    4.89267,
+    52.357521
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001793_pano_0000_007313",
+   "capturedAt": "2020-07-07",
+   "checked": true,
+   "items": [
+    {
+     "id": "heineken-sign",
+     "kind": "lettering",
+     "where": "north half of the street front, over the gateway at ground level: green \"Heineken\" letters with the red star on a dark fascia",
+     "approxSizeM": [
+      5.0,
+      0.9
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001793_pano_0000_007313",
+     "how": "heinekenSign(): letters() in green on a dark fascia slab, a ten-point red star poly(); 5x7 pixel glyphs approximate the brand script (approximate font match)"
+    },
+    {
+     "id": "gateway",
+     "kind": "other",
+     "where": "north half, ground centre: drive-through gateway into the brewery yard, 5.9 m wide and 4.1 m tall, with a storey-2 ribbon window over it",
+     "approxSizeM": [
+      5.9,
+      4.1
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001793_pano_0000_007313",
+     "how": "opening() cut 3 m deep with a dark back; ribbon() on storey 2"
+    },
+    {
+     "id": "bar-ribbons",
+     "kind": "window-shape",
+     "where": "top storey along the whole street front: horizontal ribbon windows in groups of 3-7 lights, one group per brick panel",
+     "approxSizeM": [
+      51,
+      1.3
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001793_pano_0000_007313",
+     "how": "ribbon() per measured group, lights about 1 m"
+    },
+    {
+     "id": "bar-square-windows",
+     "kind": "window-shape",
+     "where": "storeys 2 and 3: deep-set square windows on a 1.84 m pitch (26 axes)",
+     "approxSizeM": [
+      1.1,
+      1.2
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001793_pano_0000_007313",
+     "how": "squareWin() cut 0.2 m deep with dark frames"
+    },
+    {
+     "id": "parapet-blocks",
+     "kind": "other",
+     "where": "top of the brick front, above the ribbons: small light stone plates every second window axis",
+     "approxSizeM": [
+      0.25,
+      0.25
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001793_pano_0000_007313",
+     "how": "block() 6 cm proud at 14.0 m"
+    },
+    {
+     "id": "carpark-entrance",
+     "kind": "other",
+     "where": "north half, left of the gateway: car-park entrance under a blue canopy with the blue P sign box over it",
+     "approxSizeM": [
+      7.4,
+      3.1
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-001793_pano_0000_007313",
+     "how": "dark 2 m deep opening, blue canopy slab, blue box with a white P"
+    },
+    {
+     "id": "carpark-sign-text",
+     "kind": "sign",
+     "where": "the small white text and the free-spaces counter on the P sign box",
+     "approxSizeM": [
+      3.0,
+      0.6
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7316010203-001793_pano_0000_007313",
+     "skip": {
+      "reason": "too-small",
+      "note": "under 15 cm lettering"
+     }
+    },
+    {
+     "id": "steel-windows",
+     "kind": "window-shape",
+     "where": "north half, right of the gateway: three large steel-framed ground windows, 4 x 3 lights",
+     "approxSizeM": [
+      6.2,
+      2.8
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001793_pano_0000_007313",
+     "how": "opening() with a 4 x 3 grid"
+    },
+    {
+     "id": "totem-4",
+     "kind": "sign",
+     "where": "white totem with the number 4 beside the gateway",
+     "approxSizeM": [
+      0.9,
+      3.0
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-001793_pano_0000_007313",
+     "how": "white slab, number omitted"
+    }
+   ]
+  },
+  {
+   "tag": "w02-96",
+   "bearing": 96,
+   "lengthM": 41.6,
+   "centre": [
+    4.892594,
+    52.357047
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002411_pano_0006_000209",
+   "capturedAt": "2022-01-11",
+   "checked": true,
+   "items": [
+    {
+     "id": "dirk-shopfronts",
+     "kind": "other",
+     "where": "south half, ground: four Dirk supermarket windows between brick piers under a thin steel canopy, the goods entrance and the shop entrance",
+     "approxSizeM": [
+      36,
+      2.9
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002411_pano_0006_000209",
+     "how": "shopfront() glazed openings with mullions and transom, dark canopy slab; goods entrance as a dark recessed opening"
+    },
+    {
+     "id": "dirk-drum-sign",
+     "kind": "sign",
+     "where": "south half right end at the passage corner: the red-and-white Dirk drum sign on a bracket, 4-7 m up",
+     "approxSizeM": [
+      1.4,
+      3.0
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-002411_pano_0006_000209",
+     "how": "dirkDrum(): red cylinder with a white band on two dark arms, lettering omitted"
+    },
+    {
+     "id": "dirk-awning",
+     "kind": "canopy",
+     "where": "south end of the front: the red awning over the corner shop",
+     "approxSizeM": [
+      2.4,
+      0.7
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-002411_pano_0006_000209",
+     "how": "awning() in red"
+    },
+    {
+     "id": "dirk-flags",
+     "kind": "sign",
+     "where": "red Dirk flags on poles over the shop windows",
+     "approxSizeM": [
+      0.6,
+      1.8
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7316010203-002411_pano_0006_000209",
+     "skip": {
+      "reason": "temporary",
+      "note": "promotional flags"
+     }
+    },
+    {
+     "id": "dirk-window-decals",
+     "kind": "sign",
+     "where": "red Dirk panels and lettering on the lower shop glass",
+     "approxSizeM": [
+      30,
+      0.6
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7316010203-002411_pano_0006_000209",
+     "skip": {
+      "reason": "temporary",
+      "note": "window stickers"
+     }
+    },
+    {
+     "id": "bar-ribbons-south",
+     "kind": "window-shape",
+     "where": "top storey: six ribbon groups, one per brick panel",
+     "approxSizeM": [
+      36,
+      1.3
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002411_pano_0006_000209",
+     "how": "ribbon() per measured group"
+    },
+    {
+     "id": "bar-square-windows-south",
+     "kind": "window-shape",
+     "where": "storeys 2 and 3: twenty deep-set square windows on a 1.76 m pitch",
+     "approxSizeM": [
+      1.08,
+      1.2
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002411_pano_0006_000209",
+     "how": "squareWin()"
+    }
+   ]
+  },
+  {
+   "tag": "w03-6",
+   "bearing": 6,
+   "lengthM": 25.1,
+   "centre": [
+    4.892257,
+    52.3574835
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": false,
+   "items": [],
+   "note": "Faces the Heineken Experience yard; no panorama within 35 m. Drawn plain brick with one row of square windows (inferred)."
+  },
+  {
+   "tag": "w04-6",
+   "bearing": 6,
+   "lengthM": 16.4,
+   "centre": [
+    4.892478,
+    52.3578425
+   ],
+   "evidence": "photo",
+   "panoId": "b_20241121_0951_Track23_Sphere_00028",
+   "capturedAt": "2024-11-21",
+   "checked": true,
+   "items": [
+    {
+     "id": "beige-grid",
+     "kind": "window-shape",
+     "where": "Stadhouderskade front: six storeys of eight square windows in beige brick",
+     "approxSizeM": [
+      16.4,
+      18
+     ],
+     "plan": "modelled",
+     "seenIn": "b_20241121_0951_Track23_Sphere_00028",
+     "how": "beigeFront(): 1.2 m square openings, dark frames, measured columns"
+    },
+    {
+     "id": "beige-ground-windows",
+     "kind": "window-shape",
+     "where": "ground floor: four large windows in light stone frames",
+     "approxSizeM": [
+      2.6,
+      2.8
+     ],
+     "plan": "modelled",
+     "seenIn": "b_20241121_0951_Track23_Sphere_00028",
+     "how": "opening() plus four stone frame slabs 8 cm proud"
+    },
+    {
+     "id": "anchor-plates",
+     "kind": "other",
+     "where": "small stone plates between the storeys at every other column gap",
+     "approxSizeM": [
+      0.22,
+      0.22
+     ],
+     "plan": "modelled",
+     "seenIn": "b_20241121_0951_Track23_Sphere_00028",
+     "how": "block() at each storey, four per row"
+    },
+    {
+     "id": "office-upper-grid",
+     "kind": "window-shape",
+     "where": "above the beige front, set back: the office block's top three storeys of large four-light windows",
+     "approxSizeM": [
+      16,
+      9
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002411_pano_0000_000083",
+     "how": "office(): northUp face, four windows per storey"
+    },
+    {
+     "id": "parking-route-sign",
+     "kind": "sign",
+     "where": "the blue P-route sign on a pole in front of the wall",
+     "approxSizeM": [
+      1.6,
+      0.5
+     ],
+     "plan": "skipped",
+     "seenIn": "b_20241121_0951_Track23_Sphere_00028",
+     "skip": {
+      "reason": "not-visible",
+      "note": "street furniture on the pavement, not part of the building"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "w05-186",
+   "bearing": 186,
+   "lengthM": 16.1,
+   "centre": [
+    4.8923375,
+    52.3575695
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000879_pano_0000_000629",
+   "capturedAt": "2018-07-29",
+   "checked": true,
+   "items": [],
+   "note": "A 54 deg oblique close-up (2018, camera 34 m away) that actually shows the car-park entrance of the east front (the blue canopy with \"Uitrit / No entrance\" and the APCOA P sign box), item carpark-entrance on w01-96; the BAG south edge of this pand is a party wall with the 15.2 m Quellijnstraat neighbours (0363100012064912, 0363100012120518) and is drawn plain."
+  },
+  {
+   "tag": "w06-276",
+   "bearing": 276,
+   "lengthM": 10.1,
+   "centre": [
+    4.8924475,
+    52.357517
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": false,
+   "items": [],
+   "note": "Party wall to the brewery; no panorama. Drawn plain (inferred)."
+  },
+  {
+   "tag": "w07-96",
+   "bearing": 96,
+   "lengthM": 7.6,
+   "centre": [
+    4.8926875,
+    52.357782
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-09-29_09-14-27_01666",
+   "capturedAt": "2025-09-29",
+   "checked": true,
+   "items": [
+    {
+     "id": "tower-corner",
+     "kind": "tower",
+     "where": "north-east corner of the office block on the Stadhouderskade / Eerste Van der Helststraat corner: ten storeys of light grey brick, two four-light windows per storey on each face",
+     "approxSizeM": [
+      7.6,
+      32.3
+     ],
+     "plan": "modelled",
+     "seenIn": "b_20241121_0951_Track23_Sphere_00037",
+     "how": "office(): towerE and towerN faces, officeWin() per storey"
+    },
+    {
+     "id": "tower-deep-bays",
+     "kind": "window-shape",
+     "where": "corner ground and first floor: deep-set glazed bays under a brick lintel",
+     "approxSizeM": [
+      2.8,
+      3.6
+     ],
+     "plan": "modelled",
+     "seenIn": "b_20241121_0951_Track23_Sphere_00037",
+     "how": "opening() 0.6 m and 0.5 m deep, dark frames"
+    }
+   ]
+  },
+  {
+   "tag": "w08-5",
+   "bearing": 5,
+   "lengthM": 7.6,
+   "centre": [
+    4.8926375,
+    52.357819
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002470_pano_0001_000406",
+   "capturedAt": "2022-03-23",
+   "checked": true,
+   "items": [
+    {
+     "id": "entrance-79",
+     "kind": "other",
+     "where": "north face of the corner: revolving door entrance, house number 79 on the pier",
+     "approxSizeM": [
+      2.8,
+      3.6
+     ],
+     "plan": "simplified",
+     "seenIn": "b_20241121_0951_Track23_Sphere_00028",
+     "how": "glass cylinder in the deep bay, 79 in 7 cm pixel digits"
+    },
+    {
+     "id": "heineken-office-decal",
+     "kind": "sign",
+     "where": "HEINEKEN lettering on the glass beside the entrance",
+     "approxSizeM": [
+      1.5,
+      0.3
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7316010203-002470_pano_0001_000406",
+     "skip": {
+      "reason": "too-small",
+      "note": "glass decal"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "w09-96",
+   "bearing": 96,
+   "lengthM": 7,
+   "centre": [
+    4.892601,
+    52.3572645
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-09-29_09-14-27_01652",
+   "capturedAt": "2025-09-29",
+   "checked": true,
+   "items": [
+    {
+     "id": "passage-recess",
+     "kind": "other",
+     "where": "between the two halves of the street front: the shopping-passage entrance recess, rendered grey-white bands with a ribbon window per storey, glazed entrance under a canopy",
+     "approxSizeM": [
+      6.9,
+      15.3
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-09-29_09-14-27_01652",
+     "how": "bar(): recess face 1.9 m back, white render slabs, ribbons, glazed entrance, dark canopy"
+    },
+    {
+     "id": "passage-ladder",
+     "kind": "other",
+     "where": "steel access ladder on the left flank of the recess",
+     "approxSizeM": [
+      0.4,
+      8
+     ],
+     "plan": "skipped",
+     "seenIn": "recording_2025-09-29_09-14-27_01652",
+     "skip": {
+      "reason": "too-small",
+      "note": "thin steel ladder"
+     }
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  }
+ ]
+}
