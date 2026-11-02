@@ -982,8 +982,8 @@
       "dateSource": "asset-update"
     },
     "effectenbeurs.lod1": {
-      "updatedAt": "2026-11-02T04:09:04.658Z",
-      "version": "e4f432a4f72ae5d7",
+      "updatedAt": "2026-11-02T04:13:42.380Z",
+      "version": "fac630b07fb0d05c",
       "dateSource": "asset-update"
     },
     "el-tawheed": {
@@ -1504,6 +1504,11 @@
     "het-schip.lod1": {
       "updatedAt": "2026-10-23T20:23:30.374Z",
       "version": "4937f26c48120d70",
+      "dateSource": "asset-update"
+    },
+    "het-sieraad": {
+      "updatedAt": "2026-11-02T04:43:39.446Z",
+      "version": "3df1476210829363",
       "dateSource": "asset-update"
     },
     "het-veem": {

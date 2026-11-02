@@ -1,0 +1,523 @@
+{
+ "schemaVersion": 1,
+ "id": "het-sieraad",
+ "pand": "0363100012154874",
+ "brief": "scripts/landmarks/het-sieraad-brief.md",
+ "signature": [
+  "krop-piers",
+  "het-sieraad-lettering",
+  "mansard-dormer-band",
+  "window-group",
+  "toothed-coping",
+  "triangle-hoods",
+  "school-windows-n",
+  "nw-tower"
+ ],
+ "walls": [
+  {
+   "tag": "w01-118",
+   "bearing": 118,
+   "lengthM": 53.3,
+   "centre": [
+    4.8593002,
+    52.3642676
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000362_pano_0000_000264",
+   "capturedAt": "2017-07-10",
+   "checked": true,
+   "items": [
+    {
+     "id": "school-windows-se",
+     "kind": "window-shape",
+     "where": "Kostverlorenvaart wing: nine axes of wide cream timber windows (5x3 ground, 5x4 first floor, 5x3 second floor) over small basement lights, stone sills",
+     "approxSizeM": [
+      3.0,
+      3.1
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-000362_pano_0000_000264"
+    },
+    {
+     "id": "corbel-coping",
+     "kind": "other",
+     "where": "corbelled stone coping on the roof edge of both school wings, blocks every ~2 m",
+     "approxSizeM": [
+      53,
+      0.85
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-000362_pano_0000_000264"
+    },
+    {
+     "id": "krop-relief-se",
+     "kind": "relief",
+     "where": "square Hildo Krop relief beside the south door: a ship under a crown of rays between two figures",
+     "approxSizeM": [
+      1.6,
+      1.45
+     ],
+     "plan": "simplified",
+     "how": "raised stone panel with a hull, seven rays and two figure-kit figures flattened to relief",
+     "seenIn": "Commons \"Het Sieraad Hildo Krop.JPG\" (Marion Golsteijn, CC BY-SA 4.0)"
+    },
+    {
+     "id": "se-side-door",
+     "kind": "other",
+     "where": "side door with a stone hood at the south-west end",
+     "approxSizeM": [
+      1.9,
+      2.7
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-000362_pano_0000_000264"
+    },
+    {
+     "id": "erker-se",
+     "kind": "balcony-ironwork",
+     "where": "rectangular stone-capped bay windows on consoles at the second floor at both ends of the wing",
+     "approxSizeM": [
+      3.0,
+      3.0
+     ],
+     "plan": "simplified",
+     "how": "brick box on a stone console slab with a five-by-three pane window and a flat stone cap",
+     "seenIn": "Commons \"2019 Het Sieraad (3).jpg\" (Ceescamel, CC BY-SA 4.0)"
+    }
+   ]
+  },
+  {
+   "tag": "w02-354",
+   "bearing": 354,
+   "lengthM": 40.3,
+   "centre": [
+    4.8588484,
+    52.3646557
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002554_pano_0000_001462",
+   "capturedAt": "2022-05-02",
+   "checked": true,
+   "items": [
+    {
+     "id": "school-windows-n",
+     "kind": "window-shape",
+     "where": "Postjesweg wing: eight axes of wide cream multi-pane windows on three floors over basement lights, stone string course",
+     "approxSizeM": [
+      3.0,
+      3.1
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002554_pano_0000_001462"
+    },
+    {
+     "id": "erker-n",
+     "kind": "balcony-ironwork",
+     "where": "bay windows on consoles at the second floor at both ends of the Postjesweg wing",
+     "approxSizeM": [
+      3.0,
+      3.0
+     ],
+     "plan": "simplified",
+     "how": "brick box on a stone console slab with a pane-grid window and a flat stone cap",
+     "seenIn": "Commons \"2019 Het Sieraad (4).jpg\" (Ceescamel, CC BY-SA 4.0)"
+    },
+    {
+     "id": "west-end-block",
+     "kind": "other",
+     "where": "west end block a metre above the wing coping, one axis",
+     "approxSizeM": [
+      6.2,
+      16.4
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002554_pano_0000_001462"
+    }
+   ]
+  },
+  {
+   "tag": "w03-263",
+   "bearing": 263,
+   "lengthM": 21.2,
+   "centre": [
+    4.8584568,
+    52.3643643
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001953_pano_0000_000870",
+   "capturedAt": "2021-01-14",
+   "checked": true,
+   "items": [
+    {
+     "id": "mansard-dormer-band",
+     "kind": "window-shape",
+     "where": "slate mansard over the water fronts with a continuous band of grey-green framed dormer lights, two per axis",
+     "approxSizeM": [
+      21,
+      2.7
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001953_pano_0000_000870"
+    },
+    {
+     "id": "water-windows",
+     "kind": "window-shape",
+     "where": "three brick storeys with stone courses: low basement windows, first floor with a low row of panes under a transom, second floor",
+     "approxSizeM": [
+      3.0,
+      3.0
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001953_pano_0000_000870"
+    },
+    {
+     "id": "triangle-roof-dormer",
+     "kind": "window-shape",
+     "where": "small triangular dormer on the upper slate slope at the bend of the water front",
+     "approxSizeM": [
+      1.2,
+      1.0
+     ],
+     "plan": "simplified",
+     "seenIn": "Commons \"Postjesweg 1.JPG\" (BoH, CC BY-SA 3.0)",
+     "how": "triangular slate-cheeked dormer with a white frame and a dark light on the upper slope at the bend (edges 26/27)"
+    }
+   ]
+  },
+  {
+   "tag": "w04-209",
+   "bearing": 209,
+   "lengthM": 20.6,
+   "centre": [
+    4.8587112,
+    52.3641405
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001953_pano_0000_000875",
+   "capturedAt": "2021-01-14",
+   "checked": true,
+   "items": [
+    {
+     "id": "water-cornice",
+     "kind": "other",
+     "where": "white stone cornice under the mansard",
+     "approxSizeM": [
+      21,
+      0.6
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001953_pano_0000_000875"
+    }
+   ]
+  },
+  {
+   "tag": "w05-264",
+   "bearing": 264,
+   "lengthM": 12.9,
+   "centre": [
+    4.8584376,
+    52.3645341
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000199_pano_0002_000515",
+   "capturedAt": "2017-03-10",
+   "checked": true,
+   "items": [
+    {
+     "id": "nw-tower",
+     "kind": "tower",
+     "where": "brick tower rising above the mansard with a triangle-headed window high up, a window below and a green door",
+     "approxSizeM": [
+      3.4,
+      20
+     ],
+     "plan": "simplified",
+     "how": "brick skin to 20.0 m over the 3DBAG tower prism, stone triangle head, cap course",
+     "seenIn": "TMX7316010203-000199_pano_0002_000515"
+    },
+    {
+     "id": "oriel-w",
+     "kind": "window-shape",
+     "where": "three-sided oriel over two storeys next to the tower, with a dormer above",
+     "approxSizeM": [
+      3.4,
+      8
+     ],
+     "plan": "simplified",
+     "how": "extruded trapezoid in brick with stone base and cap, pane-grid windows on its face",
+     "seenIn": "TMX7316010203-000199_pano_0002_000515"
+    },
+    {
+     "id": "console-figure-w",
+     "kind": "sculpture",
+     "where": "Krop figure standing on a stone console with a half-round basin on the north-west corner block",
+     "approxSizeM": [
+      1.0,
+      2.6
+     ],
+     "plan": "simplified",
+     "how": "stone console block, half-sphere basin and a figure-kit standing figure under a small stone canopy",
+     "seenIn": "Commons \"2019 Het Sieraad (7).jpg\" (Ceescamel, CC BY-SA 4.0)"
+    },
+    {
+     "id": "roof-railing",
+     "kind": "balcony-ironwork",
+     "where": "iron railing on the flat roof of the north-west corner block",
+     "approxSizeM": [
+      10,
+      0.6
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-000199_pano_0002_000515",
+     "how": "dark rail and balusters on the corner block's stone coping"
+    }
+   ]
+  },
+  {
+   "tag": "w06-208",
+   "bearing": 208,
+   "lengthM": 12.8,
+   "centre": [
+    4.8589578,
+    52.3640693
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001960_pano_0000_000010",
+   "capturedAt": "2021-01-15",
+   "checked": true,
+   "items": [
+    {
+     "id": "sw-tower",
+     "kind": "tower",
+     "where": "brick tower on the south-west water front with a triangle-headed window",
+     "approxSizeM": [
+      3.3,
+      20
+     ],
+     "plan": "simplified",
+     "how": "brick skin to 20.0 m, stone triangle head and cap course",
+     "seenIn": "TMX7316010203-001960_pano_0000_000010"
+    },
+    {
+     "id": "oriel-sw",
+     "kind": "window-shape",
+     "where": "three-sided oriel over two storeys at the south end of the mansard front",
+     "approxSizeM": [
+      3.4,
+      8
+     ],
+     "plan": "simplified",
+     "how": "extruded trapezoid in brick with pane-grid windows",
+     "seenIn": "TMX7316010203-001960_pano_0000_000010"
+    },
+    {
+     "id": "console-figure-sw",
+     "kind": "sculpture",
+     "where": "figure on a console with a half-round basin on the south corner block",
+     "approxSizeM": [
+      1.0,
+      2.6
+     ],
+     "plan": "simplified",
+     "how": "console block, basin and a figure-kit figure",
+     "seenIn": "TMX7316010203-001960_pano_0000_000010"
+    }
+   ]
+  },
+  {
+   "tag": "w07-51",
+   "bearing": 51,
+   "lengthM": 6.5,
+   "centre": [
+    4.8593338,
+    52.3645505
+   ],
+   "evidence": "photo",
+   "panoId": "2025_09_26_10_36_44_00893",
+   "capturedAt": "2025-09-26",
+   "checked": true,
+   "items": [
+    {
+     "id": "krop-piers",
+     "kind": "sculpture",
+     "where": "Hildo Krop's two cream tufa piers flanking the main door, each carved with a standing figure for the trades, tapering to a point at the foot",
+     "approxSizeM": [
+      1.0,
+      4.2
+     ],
+     "plan": "simplified",
+     "how": "stone pier (rectangle and pointed foot) with a capital, a figure-kit standing figure flattened onto its face",
+     "seenIn": "Commons \"2020 Het Sieraad (2).jpg\" (Ceescamel, CC BY-SA 4.0)"
+    },
+    {
+     "id": "het-sieraad-lettering",
+     "kind": "lettering",
+     "where": "HET SIERAAD in dark letters over the main door",
+     "approxSizeM": [
+      2.4,
+      0.32
+     ],
+     "plan": "modelled",
+     "seenIn": "2025_09_26_10_36_44_00893"
+    },
+    {
+     "id": "window-group",
+     "kind": "window-shape",
+     "where": "five-axis two-storey window group over the door with dark recessed spandrels and a stone sill band on corbels",
+     "approxSizeM": [
+      9.3,
+      7.3
+     ],
+     "plan": "modelled",
+     "seenIn": "2025_09_26_10_36_44_00893"
+    },
+    {
+     "id": "main-door",
+     "kind": "other",
+     "where": "glazed main entrance with a green frame between the piers",
+     "approxSizeM": [
+      3.0,
+      3.0
+     ],
+     "plan": "modelled",
+     "seenIn": "2025_09_26_10_36_44_00893"
+    }
+   ]
+  },
+  {
+   "tag": "w08-354",
+   "bearing": 354,
+   "lengthM": 6.2,
+   "centre": [
+    4.8592082,
+    52.3646811
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002554_pano_0000_001467",
+   "capturedAt": "2022-05-02",
+   "checked": true,
+   "items": [
+    {
+     "id": "round-bay",
+     "kind": "balcony-ironwork",
+     "where": "half-round brick bay over two storeys on a carved console on the north side of the entrance block",
+     "approxSizeM": [
+      2.6,
+      4.7
+     ],
+     "plan": "simplified",
+     "how": "half cylinder in brick with a ring of five lights per storey, conical stone console and cap",
+     "seenIn": "Commons \"2019 Het Sieraad (4).jpg\" (Ceescamel, CC BY-SA 4.0)"
+    }
+   ]
+  },
+  {
+   "tag": "w09-28",
+   "bearing": 28,
+   "lengthM": 4.9,
+   "centre": [
+    4.8594517,
+    52.3644897
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002787_pano_0000_001804",
+   "capturedAt": "2022-09-02",
+   "checked": true,
+   "items": [
+    {
+     "id": "iron-balconies",
+     "kind": "balcony-ironwork",
+     "where": "small wrought-iron balconies on stone slabs either side of the window group",
+     "approxSizeM": [
+      1.6,
+      0.8
+     ],
+     "plan": "simplified",
+     "how": "stone slab and console with a dark rail and balusters",
+     "seenIn": "TMX7316010203-002024_pano_0000_000988"
+    }
+   ]
+  },
+  {
+   "tag": "w10-39",
+   "bearing": 39,
+   "lengthM": 4.9,
+   "centre": [
+    4.8593921,
+    52.3645139
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002024_pano_0000_000988",
+   "capturedAt": "2021-02-22",
+   "checked": true,
+   "items": [
+    {
+     "id": "triangle-hoods",
+     "kind": "window-shape",
+     "where": "small square attic lights under white triangular stone hoods in the brick attic of the entrance block",
+     "approxSizeM": [
+      1.0,
+      1.0
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002024_pano_0000_000988"
+    },
+    {
+     "id": "toothed-coping",
+     "kind": "other",
+     "where": "toothed (crenellated) stone coping on the entrance block",
+     "approxSizeM": [
+      30,
+      0.5
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002024_pano_0000_000988"
+    },
+    {
+     "id": "flagpole-chimneys",
+     "kind": "other",
+     "where": "broad chimneys with flagpole holders at the ends of the entrance front",
+     "approxSizeM": [
+      1.5,
+      2.5
+     ],
+     "plan": "simplified",
+     "how": "3DBAG chimney prisms in brick; the flagpole holders are not modelled",
+     "seenIn": "TMX7316010203-002024_pano_0000_000988"
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  },
+  {
+   "name": "Rijksmonumentenregister 527153",
+   "url": "https://monumentenregister.cultureelerfgoed.nl/monumenten/527153",
+   "licence": "public record"
+  },
+  {
+   "name": "nl.wikipedia Het Sieraad",
+   "url": "https://nl.wikipedia.org/wiki/Het_Sieraad",
+   "licence": "CC BY-SA 4.0"
+  },
+  {
+   "name": "Het Sieraad 2019/2020 series (Ceescamel)",
+   "url": "https://commons.wikimedia.org/wiki/File:2020_Het_Sieraad_(2).jpg",
+   "licence": "CC BY-SA 4.0"
+  },
+  {
+   "name": "Het Sieraad Hildo Krop (Marion Golsteijn)",
+   "url": "https://commons.wikimedia.org/wiki/File:Het_Sieraad_Hildo_Krop.JPG",
+   "licence": "CC BY-SA 4.0"
+  },
+  {
+   "name": "Postjesweg 1 (BoH)",
+   "url": "https://commons.wikimedia.org/wiki/File:Postjesweg_1.JPG",
+   "licence": "CC BY-SA 3.0"
+  }
+ ]
+}

@@ -1,0 +1,50 @@
+{
+ "id": "het-sieraad",
+ "countedBy": "lane #201 (opus) from the rectified Gemeente Amsterdam panorama crops (CC BY 4.0) before the model was rendered; the integrator may re-count. One window is one opening (a multi-pane frame with a heavy transom is one window); the bay windows on consoles are left out of the crops; the dormer band counts each framed light.",
+ "facades": [
+  {
+   "name": "Postjesweg school wing (eight axes between the end bays)",
+   "bearing": 354,
+   "photo": "artifacts/landmark-briefs/het-sieraad/w02-354.jpg",
+   "rows": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "columns": 8,
+   "symmetric": true,
+   "heightM": [
+    0,
+    14.9
+   ],
+   "note": "w02-354 x 180-1715: basement lights under every axis, then three floors of wide cream multi-pane windows (5x3, 5x4, 5x3 panes); the end bays with their erkers are cropped off.",
+   "alongM": [
+    15.1,
+    48.1
+   ]
+  },
+  {
+   "name": "Postjeswetering water front (south-west, five axes)",
+   "bearing": 209,
+   "photo": "artifacts/landmark-briefs/het-sieraad/w04-209.jpg",
+   "rows": [
+    5,
+    5,
+    5,
+    10
+   ],
+   "symmetric": true,
+   "heightM": [
+    0,
+    16.0
+   ],
+   "note": "w04-209: five axes: basement row, first floor with its low row of panes under a heavy transom (one window), second floor, and two dormer lights per axis in the mansard band. No 'columns' count: the two dormer lights per axis sit between the window axes below.",
+   "alongM": [
+    9.8,
+    31.2
+   ]
+  }
+ ],
+ "calibration": "alongM crops placed by the model's mirror-symmetry optimum (sweep of +-1.2 m) after matching the photo crop's ends; the photo counts were written before the model existed and were not changed."
+}
