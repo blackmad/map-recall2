@@ -2278,5 +2278,11 @@
   "buildVersion": 2,
   "bytes": 40180,
   "triangles": 1897
+ },
+ "kinkerstraat-32": {
+  "sourceHash": "cd54ba0e04ccc98e",
+  "buildVersion": 2,
+  "bytes": 104980,
+  "triangles": 6606
  }
 }

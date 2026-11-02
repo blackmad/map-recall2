@@ -1,0 +1,33 @@
+{
+ "id": "kinkerstraat-32",
+ "pand": "0363100012137280",
+ "replaces": "ordinary-0363100012137280 (large recipe scripts/building-recipes/houses/kinkerstraat-32-137280), shadowed in src/canalRecall/landmarks/ordinaryModels.ts",
+ "identity": {
+  "addresses": "Kinkerstraat 32-54 (even), Da Costakade 157-165 (odd), Da Costastraat 66-70 (even): 66 verblijfsobjecten, woon-, winkel-, bijeenkomst- and industriefunctie; the Vomar supermarket on the Kinkerstraat ground floor",
+  "bouwjaar": 1999,
+  "bouwlagen": 6,
+  "architect": "not named by nl.wikipedia (articles Kinkerstraat, Kinkerbuurt), the BAG or the monument registers (no monument record); unconfirmed",
+  "correctionsToBrief": "The block is not at the De Hallen end: it stands at the east end of the Kinkerstraat between the Da Costakade and the Da Costastraat (De Hallen is about 350 m west). One BAG pand covers three volumes: light grey-beige brick corner blocks at both Kinkerstraat corners and the red-brick bar and side wings; the red bar has three brick storeys over a glazed shop ground and a glazed mezzanine of loggias, and the top is a zinc mansard with dormers (not a set-back top floor); only the west corner block has a set-back top storey.",
+  "sources": ["https://api.data.amsterdam.nl/v1/bag/panden/0363100012137280", "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/?ligtInPanden.identificatie=0363100012137280", "https://nl.wikipedia.org/wiki/Kinkerstraat", "https://nl.wikipedia.org/wiki/Kinkerbuurt"]
+ },
+ "frame": {
+  "axes": "u along the Kinkerstraat front from the Da Costakade corner, v into the block; U = (0.92333, -0.38401), V = (-0.38401, -0.92333) in native (x east, z south); origin the BAG vertex (-20.806, 24.783); A(u, v) in kinkerstraat-32-builder.ts"
+ },
+ "partyWallBearings": [337],
+ "partyWallEvidence": "North (337): the Da Costakade wing's north wall adjoins BAG 0363100012067309 (1999, 22.2 m) and the Da Costastraat wing's and the courtyard deck's north walls adjoin BAG 0363100012236603 (1892, 19.1 m).",
+ "streetNAP": 0.796,
+ "volumes": {
+  "westBlock": {"u": [-1.36, 13.8], "v": [0, 15.0], "cornice": 18.75, "setbackTop": 21.4, "setback": 1.2, "core": {"u": [8.1, 14.5], "v": [15.25, 25.1]}, "liftHead": {"u": [2.6, 8.0], "v": [11.5, 15.0], "top": 25.2}},
+  "redBar": {"u": [13.8, 50.6], "v": [0, 15.25], "cornice": [15.0, 15.75], "mansardTop": 18.75, "dormers": 5},
+  "eastBlock": {"u": [50.6, 58.2], "v": [0, 14.6], "cornice": 18.75},
+  "westWing": {"u": [-1.36, 13.2], "v": [15.0, 33.1], "dormers": 2},
+  "eastWing": {"u": [39.6, 58.2], "v": [15.3, 25.1], "dormers": 1},
+  "deck": {"top": 5.0}
+ },
+ "storeys": {
+  "redBar": "shop ground 0.1-4.3 in ten 3.68 m steel bays, mezzanine loggias 4.95-7.3 (spandrel 4.95-5.95), brick storeys with window sills 8.05, 10.65, 13.3 (0.95 x 1.5), cornice 15.0-15.75, mansard to 18.75, dormer tops 18.45",
+  "wings": "ground 0-4.9, sills 5.4, 8.05, 10.65, 13.3",
+  "beigeBlocks": "ground 0-4.9 (tall windows 0.4-4.6), sills 5.4, 8.05, 10.65, 13.3, top row 16.05 (1.3 tall), cornice 18.0-18.75",
+  "verticalScale": "the w01 crops read about 3.5 % tall against the 3DBAG roof edges (red cornice at 16.4 on the crop vs 15.8 in 3DBAG); crop heights were scaled by 0.965"
+ }
+}

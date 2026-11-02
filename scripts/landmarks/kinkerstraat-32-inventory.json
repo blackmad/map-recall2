@@ -1,0 +1,328 @@
+{
+ "schemaVersion": 1,
+ "id": "kinkerstraat-32",
+ "pand": "0363100012137280",
+ "brief": "scripts/landmarks/kinkerstraat-32-brief.md",
+ "signature": [
+  "red-bar-window-grid",
+  "mezzanine-loggias",
+  "zinc-mansard-dormers",
+  "beige-west-block",
+  "vomar-fascia",
+  "plant-holders"
+ ],
+ "walls": [
+  {
+   "tag": "w01-157",
+   "bearing": 157,
+   "lengthM": 59.6,
+   "centre": [
+    4.874242,
+    52.3679315
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002059_pano_0000_000714",
+   "capturedAt": "2021-03-24",
+   "checked": true,
+   "items": [
+    {
+     "id": "red-bar-window-grid",
+     "kind": "window-shape",
+     "where": "Kinkerstraat front, red-brick bar u 13.8-50.6: three brick storeys of deep-set 0.95 x 1.5 m windows, twenty axes in five groups of four on a 1.72 m pitch, grey frames and sills",
+     "approxSizeM": [
+      36.8,
+      7.5
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002059_pano_0000_000714",
+     "how": "win() cut 0.22 m deep with a grey frame and sill, axes KB_AXES measured on both captures"
+    },
+    {
+     "id": "mezzanine-loggias",
+     "kind": "window-shape",
+     "where": "Kinkerstraat front, red bar first floor: a continuous band of glazed loggias in a grey steel frame, ten bays of 3.7 m, light green-grey spandrel glass below clear glazing, two lights per bay",
+     "approxSizeM": [
+      36.8,
+      2.5
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002059_pano_0000_000714",
+     "how": "per bay a spandrel opening with a green back and a two-light glazed opening in the steel-grey lower face"
+    },
+    {
+     "id": "shop-ground",
+     "kind": "window-shape",
+     "where": "Kinkerstraat front, red bar and east block ground: shop glazing in the same ten steel bays; the two western bays plain glass with a transom",
+     "approxSizeM": [
+      44.4,
+      4.3
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002059_pano_0000_000714",
+     "how": "one opening per bay, two lights, transom on the western bays"
+    },
+    {
+     "id": "vomar-fascia",
+     "kind": "sign",
+     "where": "Kinkerstraat front ground, bays 3-10 and the east block: red supermarket fascia and red frames (Vomar)",
+     "approxSizeM": [
+      36,
+      1.1
+     ],
+     "plan": "simplified",
+     "seenIn": "recording_2025-06-30_05-16-46_00501",
+     "how": "red fascia panel inside each shop opening and red frames; the Vomar word marks and blade signs are a tenant's and are not drawn"
+    },
+    {
+     "id": "vomar-lettering",
+     "kind": "lettering",
+     "where": "two white Vomar Voordeelmarkt word marks on the red fascia and red blade signs on the posts",
+     "approxSizeM": [
+      3,
+      0.8
+     ],
+     "plan": "skipped",
+     "seenIn": "recording_2025-06-30_05-16-46_00501",
+     "skip": {
+      "reason": "temporary",
+      "note": "tenant signage of the supermarket, changes with the tenant"
+     }
+    },
+    {
+     "id": "plant-holders",
+     "kind": "other",
+     "where": "Kinkerstraat front, red bar: a small cast plant holder under every window of the three brick storeys (60)",
+     "approxSizeM": [
+      0.3,
+      0.22
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002059_pano_0000_000714",
+     "how": "pot(): 0.3 x 0.22 x 0.2 m dark metal block 0.2 m under each sill"
+    },
+    {
+     "id": "red-cornice",
+     "kind": "other",
+     "where": "grey projecting cornice band over the red bar at 15.0-15.75 m, 0.45 m deep",
+     "approxSizeM": [
+      36.8,
+      0.75
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002059_pano_0000_000714",
+     "how": "cornice(): front, top and soffit quads"
+    },
+    {
+     "id": "zinc-mansard-dormers",
+     "kind": "other",
+     "where": "zinc standing-seam mansard over the red bar, about 1 m deep and 3 m high, with five flat-topped zinc dormers, each a two-light window",
+     "approxSizeM": [
+      36.8,
+      3
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-06-30_05-16-46_00501",
+     "how": "mansardDormers.ts (new kit component): slope cut round the dormers, cheeks, caps with fascia; dormer fronts holed with a two-light window"
+    },
+    {
+     "id": "beige-west-block",
+     "kind": "window-shape",
+     "where": "west corner block in light grey-beige brick: eight axes on five storeys over a tall-windowed ground, a top row of two five-light ribbons and two singles, cornice at 18.75 m",
+     "approxSizeM": [
+      15.2,
+      18.75
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002059_pano_0000_000714",
+     "how": "face of greyBrick with win()/ribbon() at the measured axes"
+    },
+    {
+     "id": "setback-top-storey",
+     "kind": "other",
+     "where": "west corner block: a zinc-clad top storey set back about 1.2 m behind the cornice, to 21.4 m, with a lift head to 25.2 m (3DBAG)",
+     "approxSizeM": [
+      14,
+      2.7
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-002059_pano_0000_000714",
+     "how": "slate-clad set-back walls with two-light windows on a 2.6 m pitch (lights only partly visible at the crop top: spacing inferred); lift head box"
+    },
+    {
+     "id": "beige-east-block",
+     "kind": "window-shape",
+     "where": "east corner block in the same beige brick: four axes, a mezzanine row, two wide top windows, cornice at 18.75 m",
+     "approxSizeM": [
+      7.6,
+      18.75
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002059_pano_0000_000714",
+     "how": "greyBrick face, win() and two ribbon() top windows"
+    },
+    {
+     "id": "downpipes",
+     "kind": "other",
+     "where": "two grey downpipes on the red bar between window groups",
+     "approxSizeM": [
+      0.12,
+      15
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002059_pano_0000_000714",
+     "how": "pipe(): thin metal box"
+    }
+   ]
+  },
+  {
+   "tag": "w02-247",
+   "bearing": 247,
+   "lengthM": 31.8,
+   "centre": [
+    4.8737405,
+    52.3679695
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001147_pano_0000_001639",
+   "capturedAt": "2019-04-29",
+   "checked": true,
+   "items": [
+    {
+     "id": "red-wing-grid-west",
+     "kind": "window-shape",
+     "where": "Da Costakade, red wing: nine axes on four storeys, the southernmost a recessed loggia",
+     "approxSizeM": [
+      18.1,
+      15
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001147_pano_0000_001639",
+     "how": "win() at the measured axes, loggia openings cut 0.9 m deep"
+    },
+    {
+     "id": "entrance-west",
+     "kind": "other",
+     "where": "Da Costakade, red wing ground: the housing entrance, a 4.7 m steel-framed glazed bay with letterboxes and a perforated panel above the door",
+     "approxSizeM": [
+      4.7,
+      4.2
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-001147_pano_0000_001639",
+     "how": "opening cut 0.6 m deep, dark back, three steel uprights and a transom; letterboxes not drawn"
+    },
+    {
+     "id": "dormers-west",
+     "kind": "other",
+     "where": "two zinc dormers on the Da Costakade mansard",
+     "approxSizeM": [
+      4,
+      2.7
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001147_pano_0000_001639",
+     "how": "mansardDormers.ts"
+    },
+    {
+     "id": "beige-west-side",
+     "kind": "window-shape",
+     "where": "Da Costakade side of the beige corner block: five axes on five storeys and the top row, a glazed door and a wide corner window on the ground",
+     "approxSizeM": [
+      13.7,
+      18.75
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001147_pano_0000_001639",
+     "how": "win() at the measured axes"
+    },
+    {
+     "id": "parking-sign",
+     "kind": "sign",
+     "where": "blue disabled-parking sign on a post in front of the wing",
+     "approxSizeM": [
+      0.5,
+      0.5
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7316010203-001147_pano_0000_001639",
+     "skip": {
+      "reason": "temporary",
+      "note": "street furniture, not part of the building"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "w03-67",
+   "bearing": 67,
+   "lengthM": 25.1,
+   "centre": [
+    4.874573,
+    52.36814
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002550_pano_0000_002397",
+   "capturedAt": "2022-04-29",
+   "checked": true,
+   "items": [
+    {
+     "id": "beige-east-side",
+     "kind": "window-shape",
+     "where": "Da Costastraat side of the beige east block: five axes on four storeys, a single and a four-light ribbon on top, the supermarket's three red-framed doors on the ground",
+     "approxSizeM": [
+      14.6,
+      18.75
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002059_pano_0000_001751",
+     "how": "win()/ribbon() at the measured axes; red-framed three-light ground opening"
+    },
+    {
+     "id": "glazed-joint",
+     "kind": "other",
+     "where": "Da Costastraat: a narrow dark glazed joint, about 0.7 m, between the beige block and the red wing, with a steel gate at the street",
+     "approxSizeM": [
+      0.7,
+      18.75
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-002059_pano_0000_001751",
+     "how": "a 1.0 m deep recess with a dark steel full-height back; the gate is not drawn"
+    },
+    {
+     "id": "red-wing-east",
+     "kind": "window-shape",
+     "where": "Da Costastraat red wing: four axes on three storeys, two wide three-light windows on the top storey, a service door and a grey roller door on the ground, one dormer",
+     "approxSizeM": [
+      9.8,
+      18.75
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002059_pano_0000_001751",
+     "how": "win()/ribbon(), bronze door panels, mansardDormers.ts"
+    }
+   ]
+  },
+  {
+   "tag": "w04-67",
+   "bearing": 67,
+   "lengthM": 8,
+   "centre": [
+    4.873869,
+    52.368119
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "items": []
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  }
+ ]
+}
