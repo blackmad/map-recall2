@@ -5789,6 +5789,28 @@
    "opening-outside-parts": 24,
    "opening-outside-m2": 20.01
   },
+  "wtc-amsterdam": {
+   "normals-inward-permille": 0,
+   "normals-bad-permille": 0,
+   "material-slot-untagged-permille": 0,
+   "opening-floating": 0,
+   "opening-floating-fail": 0,
+   "opening-overhang": 23,
+   "opening-overhang-fail": 17,
+   "opening-buried": 19,
+   "opening-outside-parts": 2,
+   "opening-outside-m2": 1.62,
+   "zfight-m2": 0,
+   "zfight-near-m2": 105,
+   "zfight-tight-m2": 0.1,
+   "zfight-same-m2": 14.8,
+   "window-mismatch": 4,
+   "window-missing": 0,
+   "window-misaligned": 0,
+   "window-rhythm-fail": 1,
+   "window-mismatch-spec": 4,
+   "window-missing-spec": 0
+  },
   "zevenlandenhuizen": {
    "opening-floating": 0,
    "opening-floating-fail": 0,
