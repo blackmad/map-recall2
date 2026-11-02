@@ -69,6 +69,8 @@ export type FacadeInventory = {
   frontDepth?: number;
   /** The openings form a deliberately staggered pattern (a diamond lattice): the rhythm audit then checks sizes only, not levels, missing columns or alignment. */
   staggered?: boolean;
+  /** Each row alternates two opening sizes (a wide window pair, then a small square: Byzantium's Stadhouderskade front): the rhythm audit judges every other opening against its own class, not the row median. */
+  alternating?: boolean;
   /** Allowed per-row count difference (default 0; rows with ≥ 12 openings allow 1). */
   tolerance?: number;
   photo?: string;

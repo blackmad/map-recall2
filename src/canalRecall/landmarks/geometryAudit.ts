@@ -1319,12 +1319,17 @@ export function dominantFacades(s: MaterialSoup, minArea = 60): FacadeInventory[
  * not apply; sizes still must match each other.
  */
 /**
+ * `alternating`: every row alternates two opening sizes (a wide window pair, then a small square window, Byzantium's
+ * Stadhouderskade front). Size and level are then judged against the median of the opening's own class (even or odd index
+ * along the row) instead of the whole row, and the missing-window check uses the spacing between same-class openings.
+ */
+/**
  * `symmetric`: the photo inventory declares a mirror-symmetric front. In a row with an odd count the centre opening is
  * then the composition's axis (a door running to the ground under the perron, a wider centre window, the light over the
  * bel-etage door: Academie van Bouwkunst risalit) and neither its size nor its level is an error; its column alignment
  * is still checked, and every other opening is judged as usual.
  */
-export function analyseRhythm(openings: Opening[], opts: {staggered?: boolean; symmetric?: boolean} = {}): Pick<RhythmFacade, 'rows' | 'mismatched' | 'missing' | 'misaligned'> {
+export function analyseRhythm(openings: Opening[], opts: {staggered?: boolean; symmetric?: boolean; alternating?: boolean} = {}): Pick<RhythmFacade, 'rows' | 'mismatched' | 'missing' | 'misaligned'> {
   // Rows: cluster by vertical centre (half the median opening height, ≥ 0.9 m), as facadeCompare does.
   const medH = median(openings.map(o => o.y1 - o.y0)) || 1;
   const sorted = [...openings].sort((a, b) => (a.y0 + a.y1) - (b.y0 + b.y1));
@@ -1341,15 +1346,19 @@ export function analyseRhythm(openings: Opening[], opts: {staggered?: boolean; s
     const mw = median(r.map(o => o.t1 - o.t0)), mh = median(r.map(o => o.y1 - o.y0)), ms = median(r.map(o => o.y0)), mt = median(r.map(o => o.y1));
     let odd = 0;
     const axis = opts.symmetric && r.length % 2 === 1 ? r[(r.length - 1) / 2] : null;
-    if (r.length >= 3) for (const o of r) {
-      const dw = Math.abs(o.t1 - o.t0 - mw), dh = Math.abs(o.y1 - o.y0 - mh);
-      const bad = o !== axis && ((dw > 0.3 && dw > 0.25 * mw) || (dh > 0.4 && dh > 0.25 * mh) || (!opts.staggered && (Math.abs(o.y0 - ms) > 0.35 || Math.abs(o.y1 - mt) > 0.35)));
+    // Reference size and level per opening: the whole row, or under `alternating` the openings of the same parity.
+    const cls = (i: number) => opts.alternating ? r.filter((_, j) => j % 2 === i % 2) : r;
+    const ref = r.map((_, i) => { const c = cls(i); return {w: median(c.map(o => o.t1 - o.t0)), h: median(c.map(o => o.y1 - o.y0)), s: median(c.map(o => o.y0)), t: median(c.map(o => o.y1))}; });
+    if (r.length >= 3) r.forEach((o, i) => {
+      const {w: cw, h: ch, s: cs0, t: ct} = ref[i];
+      const dw = Math.abs(o.t1 - o.t0 - cw), dh = Math.abs(o.y1 - o.y0 - ch);
+      const bad = o !== axis && ((dw > 0.3 && dw > 0.25 * cw) || (dh > 0.4 && dh > 0.25 * ch) || (!opts.staggered && (Math.abs(o.y0 - cs0) > 0.35 || Math.abs(o.y1 - ct) > 0.35)));
       if (bad) { odd++; mismatched.push(o); }
-    }
+    });
     // Missing: a gap that is a whole multiple of the regular spacing, between two regular windows of the same size.
     const cs = r.map(o => (o.t0 + o.t1) / 2);
     rowCentres.push(cs);
-    if (r.length >= 3 && !opts.staggered) {
+    if (r.length >= 3 && !opts.staggered && !opts.alternating) {
       const gaps = cs.slice(1).map((c, i) => c - cs[i]);
       const sp = median(gaps);
       gaps.forEach((g, i) => {
@@ -1383,7 +1392,7 @@ export function auditRhythm(s: MaterialSoup, facades: FacadeInventory[], fromSpe
   const out: RhythmFacade[] = [];
   for (const f of facades) {
     const m = measureFacade(s, f, 0.1);
-    const r = analyseRhythm(m.openings, {staggered: f.staggered, symmetric: f.symmetric});
+    const r = analyseRhythm(m.openings, {staggered: f.staggered, symmetric: f.symmetric, alternating: f.alternating});
     out.push({name: f.name, bearing: f.bearing, fromSpec, openings: m.openings.length, ...r, specRows: f.rows});
   }
   return out;

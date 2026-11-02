@@ -2068,5 +2068,11 @@
   "buildVersion": 2,
   "bytes": 60908,
   "triangles": 2618
+ },
+ "byzantium": {
+  "sourceHash": "a822e4ba8235da70",
+  "buildVersion": 2,
+  "bytes": 81196,
+  "triangles": 3695
  }
 }

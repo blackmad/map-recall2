@@ -1,0 +1,64 @@
+{
+ "id": "byzantium",
+ "countedBy": "lane landmarks-koolhaas-vaneyck-20261101 (opus) from the Commons photo and the 2021/2022 city panoramas before comparing with the elevation render; not a blind haiku count, the integrator may re-count.",
+ "facades": [
+  {
+   "name": "Stadhouderskade slab front (tile-clad, punched windows)",
+   "bearing": 67.5,
+   "photo": "artifacts/landmark-lanes/byzantium/ref-front-slab.jpg",
+   "rows": [
+    null,
+    8,
+    8,
+    8,
+    8,
+    8,
+    8,
+    5
+   ],
+   "heightM": [
+    0,
+    25.4
+   ],
+   "alongM": [
+    0,
+    33.2
+   ],
+   "alternating": true,
+   "symmetric": false,
+   "gables": 0,
+   "note": "Commons Milliped 2013 (CC BY-SA 4.0). Above the gold-edged gallery roof: six storeys of four wide window pairs alternating with four small square windows (8 openings per band, rows staggered), then the set-back top storey with five wide windows. The ground band is the gallery shopfront under the canopy and is not counted. The fifth set-back window stands over the two-bay tower link, outside the crop (alongM starts at the gallery canopy's park-end edge, the slab ends at ~33.3 m). Top band: four set-back windows plus the drum penthouse's glazed storey (one ribbon: its panes are divided by thin gold mullions) = 5."
+  },
+  {
+   "name": "tower north-west flank on the Tesselschadestraat",
+   "bearing": 337.5,
+   "photo": "artifacts/landmark-lanes/byzantium/ref-tower-nw.jpg",
+   "rows": [
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4
+   ],
+   "symmetric": true,
+   "gables": 0,
+   "note": "Panorama 2021 at 13 m. Four bays between dark piers 0.5 m wide (wider than the ribbon gap, so four openings per band): the glazed shop plinth, then twelve office storeys. Cropped to the tower; the rooftop plant box is not visible from the street and is cut by heightM.",
+   "alongM": [
+    0,
+    16.2
+   ],
+   "heightM": [
+    0,
+    39.2
+   ]
+  }
+ ]
+}
