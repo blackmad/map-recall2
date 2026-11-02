@@ -2070,6 +2070,17 @@
    "name": "Overtoomse Sluis",
    "shots": [
     {
+     "label": "Autopon (Ben Ingwersen, 1961)",
+     "lat": 52.35747014,
+     "lng": 4.85605999,
+     "view": "chase",
+     "at": [
+      4.854743,
+      52.357882,
+      117
+     ]
+    },
+    {
      "label": "Kinderkookkafé",
      "lat": 52.359184,
      "lng": 4.864856,
@@ -2089,17 +2100,6 @@
       4.862054,
       52.36246,
       87
-     ]
-    },
-    {
-     "label": "Overtoomse Sluis centre",
-     "lat": 52.358591559999994,
-     "lng": 4.8584639733333335,
-     "view": "chase",
-     "at": [
-      4.858867,
-      52.358512,
-      288
      ]
     },
     {
