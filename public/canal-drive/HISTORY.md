@@ -1,5 +1,22 @@
 # Canal Recall — what is built
 
+**The five-spot world-v1 A/B runs again on both engines: it waits in four named phases instead of on camera.whenIdle (2026-11-02, P1).**
+L1 hand-back 22 (bd58c59e8). MapLibre's idle fires once after a frame with
+nothing to do; with the camera held, nothing requested another frame, so
+`whenIdle` never fired and the A/B hung to its 15-minute timeout three times.
+The spec now waits for map idle, ground resident, cells fresh and frame settled,
+each with a 60 s guard that names the stuck phase, and `worldCameraOf.whenIdle`
+requests a frame after registering (unit test). Under own the skip is gone: the
+compare allows the fetch ring's cut, and own's live path fetches shopfronts,
+monument gables and landmark ids as vector-map.js does. Lane results on the
+published cells: MapLibre 4/4, own 3/4 with 0 px over 30 at every spot. The
+one own failure is real and named: world-v1 cells skip the rail-infra treatment
+(b5b918212) because the cell path bypasses the tile enricher, so viaduct and
+deck pands draw and platform canopies are not cut
+(NL.IMBAG.Pand.0363100012173021); L1 fixes it in the compiler next.
+Integrator: engine, building-tiles, three-buildings and 3d bundles rebuilt;
+lint, test:engine 131/131.
+
 **Sportfondsenbad Oost and the Artis Planetarium (2026-11-02, #188).** The brief's facts were wrong and the lane corrected them: there is no 1929 Eibink & Snellebrand pool at Fronemanstraat 4; `sportfondsenbad-oost` is the 1886–87 Oostergasfabriek retort house (stokerij), Land van Cocagneplein 44, gemeentelijk monument 200525, pands 0363100012236677 + 0363100012236879 (33,252 tris; only two walls exposed, the rest attached to the 2014 shop block and the HEMA block; south gable tops inferred from the north end). Plantage Kerklaan 38 is Micropia, already modelled; `artis-planetarium` is pand 0363100012164980 (17,416 tris; sphere r 13 m fitted to the 3DBAG facets, 36 standing seams, 16 drum piers inferred, glazed hall with three prows). Both pass `audit:glb` with no baseline rows. `compare:facades` fails on the planetarium's notch face: five panes split by 9 cm mullions read as one opening because the detector closes gaps under ~0.3 m; the mullions were not widened to pass (TODO: curtain-wall counting). Kit cannot say: curtain walls and domes (both hand-built). World-v1 recompiled (`--no-policy`): 2 of 604 cells changed. Lesson: lane briefs must not state identity facts from memory; "confirm from BAG/nl.wikipedia" is now in every brief.
 
 **Kraanspoor and Het Zonnehuis (2026-11-02, #187).** `kraanspoor` (pand 0363100012115127; 15,558 tris; the undercroft declared as through-passages on axes 128° and 38°, photo-true) and `zonnehuis` (pands 0363100012092742 + 0363100012132683 as a MultiPolygon footprint; 10,954 tris; facade frames sit on the hall box, not the 4 cm-skewed BAG ring, which removed 74 m² of z-fighting; wing surfaces clamped to the hall walls). Both pass `audit:glb` with no baseline rows. Not photographed and therefore inferred: the water-side face of the Kraanspoor box, the core numerals on the NW face, the leg count between the end blocks and core 1; the Zonnehuis wings' NE backs are hidden behind houses in every panorama and have no openings. Kit cannot say: a pale translucent louvre skin (the box is a blue glass grid), patterned brick panels, the four sculpted figures (low-poly stand-ins that read as white pegs). World-v1 recompiled (`--no-policy`): 2 of 604 cells changed.

@@ -340,15 +340,19 @@ bands, outlines and a flat sky), road gaps at bridges
 237,068 → 205,941; step 3, dry way decks over land, is behind `?dryWayDecks=1`,
 polished 2026-11-02 (e51ef17d7) and handed to the Centraal forecourt lane below
 as its tool (with it the gap falls to 136,337 m²); the lane is idle; the
-five-spot world-v1-ab pins for steps 1–2 are owed from the integrator checkout
-(headless whenIdle stalls on the default engine); polder water levels out of
+five-spot world-v1-ab runs again since L1 hand-back 22 (phased waits); polder water levels out of
 scope),
 bumpy ground at Stationsplein / Centraal forecourt (AHN has no ground over the
 metro box and under the shed; fix = flatten the own ground to road level under
 road and plaza polygons; small lane after the flip; it takes the station area
 as one piece, bus deck, glass roof, metro box and ground, and owns turning on
 bridge-gaps step 3 `?dryWayDecks=1` there). World compiler (#130,
-P3): `scripts/world/pipeline.ts` CODE hashes 18 files, but the compiler also
+P1, L1 next): world-v1 cells skip the rail-infra treatment (b5b918212), the cell
+path bypasses the tile enricher, so viaduct/deck pands draw and platform
+canopies are not cut on the default world; NL.IMBAG.Pand.0363100012173021 is
+the failing own A/B compare; the fix changes a hashed input, so its merge
+recompiles and republishes the cells, then the own five spots should go 4/4.
+P3: `scripts/world/pipeline.ts` CODE hashes 18 files, but the compiler also
 imports `roofs/roofSlots.ts`, `look/palette.ts` and `threeBuildingMesh.ts`
 (esbuild metafile, 127 inputs), so a change there would not mark the cells
 stale; the roof cap of 2026-11-01 was checked by hand (recompiled, 604 of 604
