@@ -2104,5 +2104,11 @@
   "buildVersion": 2,
   "bytes": 52288,
   "triangles": 2520
+ },
+ "autopon": {
+  "sourceHash": "8573f2d81ea38430",
+  "buildVersion": 2,
+  "bytes": 98380,
+  "triangles": 4808
  }
 }

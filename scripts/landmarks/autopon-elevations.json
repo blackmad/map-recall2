@@ -1,0 +1,52 @@
+{
+ "id": "autopon",
+ "countedBy": "lane #195 (opus) from the rectified NW panorama crop TMX7316010203-002374_pano_0003_000141 (artifacts/landmark-briefs/autopon/w01-330.jpg, 30.5 m wide, 48 px/m; the NE half of the curved front) and the Zocherstraat crop w02-158; ribbon convention (the 0.18 m fins and the red mullions merge, the 0.36 m thick piers do not separate cells either since every cell has its own framed window). Not a blind haiku count; the integrator may re-count.",
+ "facades": [
+  {
+   "name": "front (Overtoom, curved loggia grid), NE half",
+   "bearing": 330,
+   "photo": "artifacts/landmark-briefs/autopon/w01-330.jpg",
+   "alongM": [
+    4.3,
+    29.9
+   ],
+   "heightM": [
+    8.4,
+    24.0
+   ],
+   "openings": [
+    "glass"
+   ],
+   "rows": [
+    15,
+    15,
+    15,
+    15,
+    15
+   ],
+   "note": "Five loggia storeys (balustrades at photo y 740/590/445/295/150), 15 cells between the grid's NE end (x 210) and the 6th thick pier (x 1450), one red-framed window per cell. On the 2nd and 4th storeys the cells either side of every other thick pier (x 210, 705, 1210) are enclosed rooms with a forward window and no balustrade; they still hold one window each. The ground floor (two glazing tiers between the pilotis, the David Lloyd entrance) is not declared: its tiers are cut by the pilotis and the van, and are not countable to the row."
+  },
+  {
+   "name": "Zocherstraat (south block), entrance and vitrine",
+   "bearing": 158,
+   "photo": "artifacts/landmark-briefs/autopon/w02-158.jpg",
+   "alongM": [
+    9.8,
+    23.7
+   ],
+   "heightM": [
+    0.0,
+    8.5
+   ],
+   "openings": [
+    "glass"
+   ],
+   "rows": [
+    1,
+    1,
+    1
+   ],
+   "note": "w02-158 (13.9 m, 50 px/m) starts at the glazed entrance at the west end of the second south run (9.8 m from the model's viewer-left silhouette edge, the stair tower). Bottom two rows: the entrance (photo x 0-45), a glazed door to about 2.4 m and a glazed transom panel above it behind a 0.3 m frame; the rest of the ground floor is closed white panels. Third row: the floating vitrine, one ribbon (its 0.24 m mullions merge under the ribbon convention). The balcony storeys above are not declared: the photo shows their back walls only as dark shadow, no countable glazing."
+  }
+ ]
+}

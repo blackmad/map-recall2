@@ -71319,6 +71319,291 @@
         "bytes": 52288,
         "triangles": 2520
       }
+    },
+    "autopon": {
+      "id": "autopon",
+      "name": "Autopon (Ben Ingwersen, 1961)",
+      "modelUrl": "./models/autopon.glb",
+      "suppressOsmIds": [
+        "NL.IMBAG.Pand.0363100012236735"
+      ],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.85605999,
+          52.35747014
+        ],
+        "headingDegrees": 0,
+        "lengthMetres": 77,
+        "widthMetres": 70.4
+      },
+      "surveyed": {
+        "anchor": [
+          4.85605999,
+          52.35747014
+        ],
+        "northOffsetDegrees": 0,
+        "source": "Vertex average of the BAG 0363100012236735 ring (RD, PDOK BAG WFS, CC0) in native east/south metres (scripts/landmarks/autopon-footprints.json, citroen-zuid-prepare.ts --id=autopon --pand=0363100012236735). The Overtoom front is the circular arc the nine BAG front vertices fit (R 166.45 m, within 3 cm); slab depth, roof parts and the hall, south block, stair tower and rooftop heights from the 3DBAG LoD2.2 roof parts (CC BY 4.0); storeys, loggia grid, pilotis, showroom glazing, the vitrine and the Zocherstraat balconies measured on rectified Gemeente Amsterdam panorama crops (CC BY 4.0) and Wikimedia Commons Autopon.jpg (CC BY-SA 3.0 nl) and Zocherstraat 42 (5).jpg (CC BY-SA 4.0); per wall in scripts/landmarks/autopon-inventory.json. The annex pavilion is 6.6 m from the photos where 3DBAG gives 23 m."
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 0,
+      "heightMetres": 32.4,
+      "bagYear": 1961,
+      "materialOverrides": {
+        "concrete": "#c9c2b4",
+        "stone": "#bdb8ae",
+        "red": "#8a3f3c",
+        "glass": "#4d5a62",
+        "dark": "#3d3f3e",
+        "white": "#e4e2da",
+        "slate": "#8c8880",
+        "gold": "#d9b24c",
+        "brick": "#8e4a38",
+        "frame": "#8f9396",
+        "pink": "#e6e4dc",
+        "bronze": "#4a4b4c"
+      },
+      "attribution": {
+        "title": "Autopon, Overtoom 527-557 (Ben Ingwersen for Commer de Geus, 1955-1961; Rijksmonument 532201)",
+        "author": "Map Recall",
+        "sourceUrl": "https://monumentenregister.cultureelerfgoed.nl/monumenten/532201",
+        "licence": "CC BY 4.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "modifications": "Original texture-free flat-colour geometry: the curved galerijflat slab with its loggia grid, slatted balustrades and red-framed windows, the tapered pilotis and two-tier showroom glazing under the soffit, the red curtain-wall head with its stone base and blade, the set-back top storey with chimneys, the south-west penthouse with its cantilevered balcony, the rooftop boxes, the annex pavilion, the sawtooth garage hall, and the Zocherstraat block with its floating vitrine, balcony storeys, white external stair and red-framed stair tower. Read for proportion only from the Gemeente Amsterdam panoramas (CC BY 4.0) and Wikimedia Commons photographs (Autopon.jpg, Erik Swierstra, CC BY-SA 3.0 nl; Zocherstraat 42 (5).jpg, Ceescamel, CC BY-SA 4.0); footprint BAG (CC0), roof parts 3DBAG (CC BY 4.0); register text RCE (CC0). No pixels or meshes imported."
+      },
+      "buildingFootprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.85637534,
+              52.35783753
+            ],
+            [
+              4.85630262,
+              52.35781552
+            ],
+            [
+              4.85623101,
+              52.35779219
+            ],
+            [
+              4.85616058,
+              52.35776756
+            ],
+            [
+              4.85610246,
+              52.35774589
+            ],
+            [
+              4.85604538,
+              52.35772323
+            ],
+            [
+              4.85598935,
+              52.35769959
+            ],
+            [
+              4.85596931,
+              52.35773802
+            ],
+            [
+              4.85583839,
+              52.35770297
+            ],
+            [
+              4.85591987,
+              52.3576681
+            ],
+            [
+              4.85587573,
+              52.3576468
+            ],
+            [
+              4.85583247,
+              52.35762487
+            ],
+            [
+              4.8557901,
+              52.35760228
+            ],
+            [
+              4.85568771,
+              52.35754312
+            ],
+            [
+              4.85559068,
+              52.35748067
+            ],
+            [
+              4.85549931,
+              52.3574151
+            ],
+            [
+              4.85549488,
+              52.35741723
+            ],
+            [
+              4.85549112,
+              52.35741437
+            ],
+            [
+              4.85549629,
+              52.3574117
+            ],
+            [
+              4.85563577,
+              52.35734407
+            ],
+            [
+              4.85566843,
+              52.35732824
+            ],
+            [
+              4.85575458,
+              52.35735179
+            ],
+            [
+              4.85577222,
+              52.35732657
+            ],
+            [
+              4.8558992,
+              52.35715024
+            ],
+            [
+              4.85590049,
+              52.35714846
+            ],
+            [
+              4.85590488,
+              52.35714959
+            ],
+            [
+              4.85590427,
+              52.35715049
+            ],
+            [
+              4.85603138,
+              52.35718289
+            ],
+            [
+              4.85602328,
+              52.35719482
+            ],
+            [
+              4.85621181,
+              52.35724281
+            ],
+            [
+              4.85621989,
+              52.35723093
+            ],
+            [
+              4.85627599,
+              52.35724524
+            ],
+            [
+              4.85626793,
+              52.3572571
+            ],
+            [
+              4.85636091,
+              52.35728077
+            ],
+            [
+              4.8563595,
+              52.35728285
+            ],
+            [
+              4.85647754,
+              52.35731271
+            ],
+            [
+              4.85648762,
+              52.35729777
+            ],
+            [
+              4.85649159,
+              52.35729878
+            ],
+            [
+              4.85649111,
+              52.35729945
+            ],
+            [
+              4.85641021,
+              52.35746127
+            ],
+            [
+              4.85639444,
+              52.35749157
+            ],
+            [
+              4.85646496,
+              52.35750744
+            ],
+            [
+              4.85652283,
+              52.35752046
+            ],
+            [
+              4.85638133,
+              52.35784016
+            ],
+            [
+              4.85638027,
+              52.3578424
+            ],
+            [
+              4.85637454,
+              52.35784092
+            ],
+            [
+              4.85637534,
+              52.35783753
+            ]
+          ]
+        ]
+      },
+      "buildingCategory": "landmark",
+      "bounds": {
+        "min": [
+          -38.44046401977539,
+          -7.629394644936838e-7,
+          -40.85720443725586
+        ],
+        "max": [
+          31.570999145507812,
+          32.400001525878906,
+          35.868125915527344
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.85605999,
+          52.35747014
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 90,
+        "facadeBearingDegrees": 0,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 76.7253303527832,
+        "heightMetres": 32.40000228881837,
+        "depthMetres": 70.0114631652832,
+        "depthCoverage": 0.9944810108705
+      },
+      "triangles": 25786,
+      "bytes": 388852,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
+      "lod1": {
+        "sourceHash": "8573f2d81ea38430",
+        "buildVersion": 2,
+        "bytes": 98380,
+        "triangles": 4808
+      }
     }
   }
 }
