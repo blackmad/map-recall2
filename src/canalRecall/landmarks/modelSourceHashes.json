@@ -1,5 +1,5 @@
 {
-  "toolchain": "34f8b0b9a1f0060bc5c4ed364c66f685c0298cb5274754ab08e7ca06fb8f51d1",
+  "toolchain": "6fa9580006d04fe416dbd1a30e9abb953862aafeaf48a217e641a0fe3ce86d7b",
   "models": {
     "abn-amro-hoofdkantoor": "90ff65a2d9f94e99b2ab33438567f147959a43f017d3d9cf9d2ae68b6dae7cbf",
     "academie-theater-dans": "503b3e8d59937cbf7ac8776eb644c11fd10b567e5ac1113e0caa55c83cb68cde",
@@ -29,7 +29,7 @@
     "athenaeum": "04333046f1bf8946753eb42280e04db3e0daadba9afcd18f34719ee20d7c80ab",
     "auschwitz-monument": "b425e91c67c90ec1d1a10b997ecb7399d6b00a7448c65407e7ad2474de62e1e6",
     "badhuistheater": "15049df413704352efccf10043d8c2c37b328eb814f674ab1b93759cc1889c42",
-    "barbizon-palace": "bdcff49d6b8fdbfcaa7745a0ef7f63282e2eb96ea25e77caeffd576bda935e5d",
+    "barbizon-palace": "b71f138c24afdd0b60c65f1d091aad97095b55ff951bfa2a045c296627142463",
     "beest-boulders": "82f2eb0cc0151664325052ee7ed8b6e91cf5e321150ee8013884045acb7bafe6",
     "beest-het-lab": "028ce990910433c23d86815f48386943a8cb073ff1721d47c1b0b075910aec08",
     "begijnhof": "77b5bf216a76dd49732734141fb45c725b9a64a0f2c2fd0cec58d8b5131fee16",
@@ -210,6 +210,7 @@
     "magere-brug": "6a6e6678d98c40836104552075b514f3424ad6bff96e5dbaeb58ca1407122726",
     "magna-plaza": "8661669614a2a007b593ff441bff9f38f4327a6218fa949eb0d263770973cbf6",
     "mama-baranka": "c759564786c45d33ebd52027cd4f1f9972851b014b73314d3cb38557a4f744a7",
+    "marinekazerne-kattenburgerstraat": "f06703eb3176cec082d115a320523f2dff111fb534138d77548c8be404cd5e4e",
     "marnixbad": "5a34e9d0e5502ab90869cda32bf33e3a7a3b1bab5f8b56d484ceda30383b4421",
     "max-euwe-centrum": "6c902df3e6af541032b45f5e98df51a28365fb3b035df5936b9112b98a526df3",
     "mediamatic": "2c0e489bf6c2eee701f198ef4d21080c42ab0cba563bf7bcd1ad5d50c11a3e8a",

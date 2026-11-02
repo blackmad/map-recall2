@@ -1,0 +1,565 @@
+{
+ "schemaVersion": 1,
+ "id": "marinekazerne-kattenburgerstraat",
+ "pand": "0363100012165822",
+ "brief": "scripts/landmarks/marinekazerne-kattenburgerstraat-brief.md",
+ "signature": [
+  "gate-frontispiece",
+  "blind-niches",
+  "arched-niches",
+  "pediment-relief",
+  "dormers"
+ ],
+ "walls": [
+  {
+   "tag": "w01-134",
+   "bearing": 134,
+   "lengthM": 74.4,
+   "centre": [
+    4.91745,
+    52.372288
+   ],
+   "evidence": "photo",
+   "panoId": "b_20250130_0915_Track06_Sphere_00020",
+   "capturedAt": "2025-01-30",
+   "checked": true,
+   "items": [
+    {
+     "id": "blind-oculi",
+     "kind": "window-shape",
+     "where": "upper row t 34.6 and 37.9",
+     "approxSizeM": [
+      0.9,
+      0.9
+     ],
+     "plan": "modelled",
+     "seenIn": "b_20250130_0915_Track06_Sphere_00020",
+     "how": "round recesses cut into the brick face"
+    },
+    {
+     "id": "corner-small-windows",
+     "kind": "window-shape",
+     "where": "two rows of small cream-framed windows",
+     "approxSizeM": [
+      0.9,
+      0.6
+     ],
+     "plan": "modelled",
+     "seenIn": "b_20250130_0915_Track06_Sphere_00020",
+     "how": "cream frames, no bars"
+    },
+    {
+     "id": "ne-block-windows",
+     "kind": "window-shape",
+     "where": "taller NE block, t 70-72.5",
+     "approxSizeM": [
+      2.3,
+      3.0
+     ],
+     "plan": "simplified",
+     "seenIn": "b_20250130_0915_Track06_Sphere_00020",
+     "how": "two large dark-framed windows on the 3DBAG wall"
+    },
+    {
+     "id": "corner-dormers",
+     "kind": "window-shape",
+     "where": "roof t 2.4, 8.2, 18.2, 36.6, 56.9",
+     "approxSizeM": [
+      1.4,
+      2.2
+     ],
+     "plan": "modelled",
+     "seenIn": "b_20250130_0915_Track06_Sphere_00020",
+     "how": "as on w03-152"
+    }
+   ],
+   "note": "The 74 m front past the corner at BAG vertex 4 (45 px/m). From t 0 to 11.2, an older part with two dormers and a tall window at t 8.9. To t 61.7, the low range: small windows in two rows, blind oculi at t 34.6 and 37.9, and two tall upper niches at t 44.0 and 46.4. From t 61.7, a taller brick block (3DBAG walls to 11.9 m) with two large windows at t 70-72.5."
+  },
+  {
+   "tag": "w02-314",
+   "bearing": 314,
+   "lengthM": 62.3,
+   "centre": [
+    4.9173475,
+    52.3722955
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7315120208-000054_pano_0002_000302",
+   "capturedAt": "2016-05-19",
+   "checked": true,
+   "items": [
+    {
+     "id": "w02-windows",
+     "kind": "window-shape",
+     "where": "two storeys",
+     "approxSizeM": [
+      1.0,
+      2.1
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7315120208-000054_pano_0002_000302",
+     "how": "cream-framed sash windows on the measured pitch and rows; doors as dark leaves in a stone frame"
+    }
+   ],
+   "note": "Terrain-side front of the corner wing (BAG edge 11): two storeys of cream-framed sash windows on a 1.84 m pitch (31 bays), four doors and nine dormers (28.9 px/m crop)."
+  },
+  {
+   "tag": "w03-152",
+   "bearing": 152,
+   "lengthM": 51.1,
+   "centre": [
+    4.916033,
+    52.371715
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2024-10-23_11-21-30_02538",
+   "capturedAt": "2024-10-23",
+   "checked": true,
+   "items": [
+    {
+     "id": "gate-frontispiece",
+     "kind": "other",
+     "where": "long front middle, t 48.9-55.7 m (BAG edges 0-2)",
+     "approxSizeM": [
+      6.8,
+      9.1
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001536_pano_0000_001597",
+     "how": "two pairs of brick pilasters on sandstone pedestals with sandstone capitals, frieze, cornice and pediment up to 9.1 m"
+    },
+    {
+     "id": "gate-frieze",
+     "kind": "relief",
+     "where": "over the gate pilasters, 6.1-6.95 m",
+     "approxSizeM": [
+      7.0,
+      0.85
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-001536_pano_0000_001597",
+     "how": "sandstone band with a row of raised blocks for the carved triglyph frieze"
+    },
+    {
+     "id": "pediment-relief",
+     "kind": "relief",
+     "where": "tympanum of the gate pediment",
+     "approxSizeM": [
+      5.0,
+      1.6
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-001181_pano_0000_001385",
+     "how": "oval crest boss in the middle with low trophy wedges and bosses either side (the carved arms and trophies are not cut)"
+    },
+    {
+     "id": "gate-arch",
+     "kind": "window-shape",
+     "where": "gateway, 3.0 x 5.4 m",
+     "approxSizeM": [
+      3.5,
+      5.65
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001536_pano_0000_001597",
+     "how": "round-arched opening cut through the face, sandstone arch ring, keystone and imposts, dark gate leaves set back"
+    },
+    {
+     "id": "blind-niches",
+     "kind": "window-shape",
+     "where": "upper row alternating with windows, ground-row blanks, corner pavilion",
+     "approxSizeM": [
+      0.85,
+      0.75
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2024-10-23_11-21-30_02538",
+     "how": "rectangular recesses cut 0.14 m into the brick face, as the register describes (rijen blinde nissen)"
+    },
+    {
+     "id": "arched-niches",
+     "kind": "window-shape",
+     "where": "three either side of the gate, 1.45-4.9 m",
+     "approxSizeM": [
+      1.3,
+      3.45
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2024-10-23_11-21-30_02538",
+     "how": "round-headed recesses cut 0.14 m into the brick face"
+    },
+    {
+     "id": "dormers",
+     "kind": "window-shape",
+     "where": "roof, 4.07 m pitch west of the gate, a pair either side of the gate",
+     "approxSizeM": [
+      1.4,
+      2.2
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2024-10-23_11-21-30_02538",
+     "how": "cream dormer fronts with small pediments, slate cheeks and roofs, sash window"
+    },
+    {
+     "id": "cornice",
+     "kind": "other",
+     "where": "eaves, 6.95-7.5 m",
+     "approxSizeM": [
+      105,
+      0.55
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2024-10-23_11-21-30_02538",
+     "how": "cream fascia and projecting corona over both street fronts"
+    },
+    {
+     "id": "plinth",
+     "kind": "other",
+     "where": "0-1.4 m",
+     "approxSizeM": [
+      105,
+      1.4
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2024-10-23_11-21-30_02538",
+     "how": "grey plinth with a sandstone top course"
+    }
+   ],
+   "note": "Kattenburgerstraat front, SW half (BAG vertex 30 to 1, t 0-51 m of the long front), rectified at 50 px/m. From the SW corner: the corner pavilion (t 0-5.6) with blind niches. Then 13 bays on a 2.035 m pitch (t 8.84-33.26): an upper row alternating small square windows and blind niches, and a ground row of cream-framed windows with blank bays between. Then three round-headed blind niches (t 37.4, 41.4, 45.4) up to the gate frontispiece at t 48.9."
+  },
+  {
+   "tag": "w04-153",
+   "bearing": 153,
+   "lengthM": 51.1,
+   "centre": [
+    4.916737,
+    52.3719425
+   ],
+   "evidence": "photo",
+   "panoId": "b_20250130_0915_Track06_Sphere_00254",
+   "capturedAt": "2025-01-30",
+   "checked": true,
+   "items": [
+    {
+     "id": "ne-niches",
+     "kind": "window-shape",
+     "where": "ground row t 93.8-104 and upper-row niches",
+     "approxSizeM": [
+      0.95,
+      1.85
+     ],
+     "plan": "modelled",
+     "seenIn": "b_20250130_0915_Track06_Sphere_00254",
+     "how": "rectangular recesses cut 0.14 m into the brick face"
+    },
+    {
+     "id": "ne-dormers",
+     "kind": "window-shape",
+     "where": "roof, 4.1 m pitch",
+     "approxSizeM": [
+      1.4,
+      2.2
+     ],
+     "plan": "modelled",
+     "seenIn": "b_20250130_0915_Track06_Sphere_00254",
+     "how": "as on w03-152"
+    },
+    {
+     "id": "downpipes",
+     "kind": "other",
+     "where": "t 5.5, 21.9, 34.7, 82.7, 99.1",
+     "approxSizeM": [
+      0.11,
+      7.0
+     ],
+     "plan": "modelled",
+     "seenIn": "b_20250130_0915_Track06_Sphere_00254",
+     "how": "grey square pipes"
+    }
+   ],
+   "note": "Kattenburgerstraat front, NE half (BAG vertex 2 to 4; global t = 54.24 + crop t), 50 px/m. Three round-headed niches after the gate (t 59.2, 63.2, 67.2). Then the same 2.03 m rhythm from t 71.5 to 104: windows and niches in the upper row; windows, then recessed niches only, in the ground row. Dormers on a 4.1 m pitch."
+  },
+  {
+   "tag": "w05-332",
+   "bearing": 332,
+   "lengthM": 45.2,
+   "centre": [
+    4.9160225,
+    52.3717705
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7315120208-000054_pano_0002_000353",
+   "capturedAt": "2016-05-19",
+   "checked": true,
+   "items": [
+    {
+     "id": "w05-windows",
+     "kind": "window-shape",
+     "where": "two storeys",
+     "approxSizeM": [
+      1.0,
+      2.1
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7315120208-000054_pano_0002_000353",
+     "how": "cream-framed sash windows on the measured pitch and rows; doors as dark leaves in a stone frame"
+    }
+   ],
+   "note": "Terrain-side front of the long wing (BAG edge 23): an irregular front of lower and upper windows and a door; drawn as 16 bays on 2.75 m (39.8 px/m crop)."
+  },
+  {
+   "tag": "w06-332",
+   "bearing": 332,
+   "lengthM": 25,
+   "centre": [
+    4.916537,
+    52.3719375
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000248_pano_0000_000091",
+   "capturedAt": "2017-04-06",
+   "checked": true,
+   "items": [
+    {
+     "id": "w06-windows",
+     "kind": "window-shape",
+     "where": "two storeys",
+     "approxSizeM": [
+      1.0,
+      2.1
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-000248_pano_0000_000091",
+     "how": "cream-framed sash windows on the measured pitch and rows; doors as dark leaves in a stone frame"
+    }
+   ],
+   "note": "Terrain-side front (BAG edge 19): 12 bays on 2.0 m of large cross windows in two storeys, a door in a sandstone frame at t 16.3 and three dormers (72 px/m crop)."
+  },
+  {
+   "tag": "w07-244",
+   "bearing": 244,
+   "lengthM": 22.6,
+   "centre": [
+    4.9155875,
+    52.3717445
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "items": [],
+   "note": "SW end wall of the corner pavilion towards the neighbouring yard (no panorama within 35 m): the 3DBAG shell only."
+  },
+  {
+   "tag": "w08-64",
+   "bearing": 64,
+   "lengthM": 22.5,
+   "centre": [
+    4.915657,
+    52.3717655
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001475_pano_0005_001141",
+   "capturedAt": "2019-11-29",
+   "checked": true,
+   "items": [
+    {
+     "id": "w08-windows",
+     "kind": "window-shape",
+     "where": "two storeys",
+     "approxSizeM": [
+      1.0,
+      2.1
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-001475_pano_0005_001141",
+     "how": "cream-framed sash windows on the measured pitch and rows; doors as dark leaves in a stone frame"
+    }
+   ],
+   "note": "Side of the SW corner pavilion (BAG edge 24): six bays of windows in two storeys, a door and four dormers."
+  },
+  {
+   "tag": "w09-45",
+   "bearing": 45,
+   "lengthM": 16.5,
+   "centre": [
+    4.9177435,
+    52.37258
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002049_pano_0000_000088",
+   "capturedAt": "2021-03-19",
+   "checked": true,
+   "items": [],
+   "note": "Blank brick wall of the taller block at the north-east end (one dark door group at the foot of w09-45): the 3DBAG shell in brick."
+  },
+  {
+   "tag": "w10-334",
+   "bearing": 334,
+   "lengthM": 14.3,
+   "centre": [
+    4.916936,
+    52.3720655
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7315120208-000054_pano_0002_000309",
+   "capturedAt": "2016-05-19",
+   "checked": true,
+   "items": [
+    {
+     "id": "w10-windows",
+     "kind": "window-shape",
+     "where": "two storeys",
+     "approxSizeM": [
+      1.0,
+      2.1
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7315120208-000054_pano_0002_000309",
+     "how": "cream-framed sash windows on the measured pitch and rows; doors as dark leaves in a stone frame"
+    }
+   ],
+   "note": "Terrain-side front (BAG edge 13): six bays, a door with a frame and a chimney."
+  },
+  {
+   "tag": "w11-243",
+   "bearing": 243,
+   "lengthM": 13.6,
+   "centre": [
+    4.917619,
+    52.372551
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7315120208-000054_pano_0002_000300",
+   "capturedAt": "2016-05-19",
+   "checked": true,
+   "items": [],
+   "note": "Blank brick wall of the taller block at the north-east end (one dark door group at the foot of w09-45): the 3DBAG shell in brick."
+  },
+  {
+   "tag": "w12-332",
+   "bearing": 332,
+   "lengthM": 8.4,
+   "centre": [
+    4.9167225,
+    52.372069
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001475_pano_0005_001127",
+   "capturedAt": "2019-11-29",
+   "checked": true,
+   "items": [
+    {
+     "id": "w12-windows",
+     "kind": "window-shape",
+     "where": "two storeys",
+     "approxSizeM": [
+      1.0,
+      2.1
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-001475_pano_0005_001127",
+     "how": "cream-framed sash windows on the measured pitch and rows; doors as dark leaves in a stone frame"
+    }
+   ],
+   "note": "Terrain-side front (BAG edge 16): two bays and a door."
+  },
+  {
+   "tag": "w13-333",
+   "bearing": 333,
+   "lengthM": 6.5,
+   "centre": [
+    4.917615,
+    52.3726185
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002049_pano_0000_000120",
+   "capturedAt": "2021-03-19",
+   "checked": true,
+   "items": [],
+   "note": "Blank brick wall of the taller block at the north-east end (one dark door group at the foot of w09-45): the 3DBAG shell in brick."
+  },
+  {
+   "tag": "w14-242",
+   "bearing": 242,
+   "lengthM": 5.8,
+   "centre": [
+    4.9156815,
+    52.37163
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000711_pano_0000_002614",
+   "capturedAt": "2018-05-08",
+   "checked": true,
+   "items": [],
+   "note": "Short jog or end wall of the range, plain brick in the crop: the 3DBAG shell."
+  },
+  {
+   "tag": "w15-242",
+   "bearing": 242,
+   "lengthM": 5.7,
+   "centre": [
+    4.9166795,
+    52.3720125
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001475_pano_0005_001134",
+   "capturedAt": "2019-11-29",
+   "checked": true,
+   "items": [],
+   "note": "Short jog or end wall of the range, plain brick in the crop: the 3DBAG shell."
+  },
+  {
+   "tag": "w16-62",
+   "bearing": 62,
+   "lengthM": 5.7,
+   "centre": [
+    4.9168225,
+    52.3720595
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7315120208-000054_pano_0002_000307",
+   "capturedAt": "2016-05-19",
+   "checked": true,
+   "items": [],
+   "note": "Short jog or end wall of the range, plain brick in the crop: the 3DBAG shell."
+  },
+  {
+   "tag": "w17-335",
+   "bearing": 335,
+   "lengthM": 5.4,
+   "centre": [
+    4.9155485,
+    52.3718455
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7315120208-000054_pano_0002_000344",
+   "capturedAt": "2016-05-19",
+   "checked": true,
+   "items": [],
+   "note": "Short jog or end wall of the range, plain brick in the crop: the 3DBAG shell."
+  },
+  {
+   "tag": "w18-332",
+   "bearing": 332,
+   "lengthM": 4.7,
+   "centre": [
+    4.916322,
+    52.371902
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7315120208-000054_pano_0002_000317",
+   "capturedAt": "2016-05-19",
+   "checked": true,
+   "items": [],
+   "note": "Short jog or end wall of the range, plain brick in the crop: the 3DBAG shell."
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  }
+ ]
+}

@@ -1,0 +1,49 @@
+{
+ "id": "marinekazerne-kattenburgerstraat",
+ "countedBy": "lane landmarks-oosterdok-20261101 (opus) from the brief's Gemeente Amsterdam panorama crops w03-152.jpg (Kattenburgerstraat long front, SW end to the gate) and w01-134.jpg (the corner front to the NE block); not a blind count, 2026-11-02",
+ "facades": [
+  {
+   "name": "long front, SW end to the gate",
+   "bearing": 153,
+   "photo": "artifacts/landmark-briefs/marinekazerne-kattenburgerstraat/w03-152.jpg",
+   "alongM": [
+    0,
+    50
+   ],
+   "openings": [
+    "glass"
+   ],
+   "rows": [
+    9,
+    7,
+    9
+   ],
+   "rowsNote": "glazed openings bottom up: nine tall cream-framed ground windows (blind niches at the SW end and between the right-hand ones), seven small upper windows alternating with blind niches, nine dormers; the three arched niches before the gate are blind; the dormers stand off the window axes, so no axis count is given",
+   "symmetric": false,
+   "gables": 0,
+   "depthBand": 3
+  },
+  {
+   "name": "corner front",
+   "bearing": 134,
+   "photo": "artifacts/landmark-briefs/marinekazerne-kattenburgerstraat/w01-134.jpg",
+   "openings": [
+    "glass"
+   ],
+   "rows": [
+    8,
+    2,
+    8,
+    5
+   ],
+   "rowsNote": "bottom up from the left pavilion up to the NE block, whose two large dark windows are left out of the count ( the elevation starts at the B corner, so alongM begins at about 9.5 m): eight small ground windows, the two tall windows (left pavilion and under the third dormer), eight small upper windows, five dormers; the two blind oculi and the blind niches are not glazed. Photo x mapped to the front at 45 px/m from the five dormers",
+   "symmetric": false,
+   "gables": 0,
+   "depthBand": 3,
+   "alongM": [
+    9.5,
+    77
+   ]
+  }
+ ]
+}
