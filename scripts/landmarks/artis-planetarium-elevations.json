@@ -1,0 +1,16 @@
+{
+ "id": "artis-planetarium",
+ "countedBy": "lane landmarks-oost-20261101 (opus) from the rectified panorama crop before the elevation render was looked at; not a blind haiku count, the integrator may re-count.",
+ "facades": [
+  {
+   "name": "entrance block, north-west face into the notch by the Plantage Kerklaan",
+   "bearing": 300,
+   "photo": "artifacts/landmark-lanes/artis-planetarium/ref-w09.jpg",
+   "rows": [5],
+   "heightM": [4.3, 6.4],
+   "alongM": [52.6, 59.73],
+   "symmetric": false,
+   "note": "w09-300 (b_20241210_1246_Track24_Sphere_00064, 2024, rectified). Upper storey above the dark spandrel band: five glazed panes between pale mullions at about 0.12, 0.34, 0.63 and 0.79 of the face (0.66, 1.26, 1.6, 0.95, 1.2 m wide in the 6 m crop; the BAG edge is 6.74 m and the panes are scaled to it). alongM is measured from the silhouette's viewer-left edge, the hall's north-east prow at v -1.19, so the face runs ~52.99-59.73 (crop starts 0.4 m early to keep the first pane whole). The model has the five panes with 9 cm mullions as photographed; the detector closes gaps under ~0.3 m (0.15 m closing radius) and reads the band as one opening: this row FAILs on the detector, not on the count. Flagged for the integrator. Only the upper row is counted: the ground storey is doors and glass behind a fence and a parked banner. The right-hand ~2.3 m of the block is ~1 m lower in the photo; the model keeps the 3DBAG 6.8 m roof over all of it."
+  }
+ ]
+}

@@ -221,6 +221,11 @@
       "version": "85f75bfdf3de1e70",
       "dateSource": "asset-update"
     },
+    "artis-planetarium": {
+      "updatedAt": "2026-11-02T00:42:21.377Z",
+      "version": "60c250f25986c0ac",
+      "dateSource": "asset-update"
+    },
     "asterweg-23": {
       "updatedAt": "2026-10-20T10:16:57.905Z",
       "version": "2001cd89e4af86b9",
@@ -3019,6 +3024,11 @@
     "sportfondsenbad-oost": {
       "updatedAt": "2026-11-02T00:15:49.856Z",
       "version": "b9a4c1fc5a00a0d5",
+      "dateSource": "asset-update"
+    },
+    "sportfondsenbad-oost.lod1": {
+      "updatedAt": "2026-11-02T00:17:58.025Z",
+      "version": "ce6527aeff403672",
       "dateSource": "asset-update"
     },
     "stadhuis": {

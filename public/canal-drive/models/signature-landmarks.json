@@ -65587,6 +65587,200 @@
         "bytes": 99916,
         "triangles": 5068
       }
+    },
+    "artis-planetarium": {
+      "id": "artis-planetarium",
+      "name": "ARTIS Planetarium",
+      "modelUrl": "./models/artis-planetarium.glb",
+      "suppressOsmIds": [
+        "w57861184",
+        "w1080815602",
+        "w1080815603",
+        "w1080815604",
+        "NL.IMBAG.Pand.0363100012164980"
+      ],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.9132182,
+          52.3674475
+        ],
+        "headingDegrees": 29.93,
+        "lengthMetres": 59.73,
+        "widthMetres": 31.31
+      },
+      "surveyed": {
+        "anchor": [
+          4.9131973,
+          52.3674706
+        ],
+        "northOffsetDegrees": 0,
+        "source": "BAG pand 0363100012164980 (ARTIS Planetarium, Plantage Kerklaan): exact ring and 3DBAG LoD2.2 roofs in local east/south metres (scripts/landmarks/artis-planetarium-footprints.json, artis-planetarium-prepare.ts); anchor = vertex average of the BAG ring (RD). Dome sphere fitted to the 3DBAG dome facets; drum, glazed hall and entrance block read from Gemeente Amsterdam panoramas and Wikimedia Commons photographs (scripts/landmarks/artis-planetarium-inventory.json); lantern and roof plant from the PDOK orthophoto."
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 0,
+      "heightMetres": 15.9,
+      "bagYear": 1988,
+      "materialOverrides": {
+        "copper": "#6f6559",
+        "bronze": "#5a5148",
+        "greyBrick": "#b8b1a5",
+        "white": "#e1e2de",
+        "frame": "#c4c7c6",
+        "glass": "#2f3a44",
+        "canopyGlass": "#4f6577",
+        "blue": "#27405f",
+        "concrete": "#a6a6a2"
+      },
+      "attribution": {
+        "title": "ARTIS Planetarium",
+        "author": "Map Recall",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/Category:Artis_Planetarium",
+        "licence": "CC BY 4.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "modifications": "Original texture-free native-scale model of the 1988 Zeiss planetarium in ARTIS: BAG footprint (CC0) and 3DBAG LoD2.2 heights (CC BY 4.0), the metal dome, drum, glazed hall and entrance block authored from Gemeente Amsterdam panoramas (CC BY 4.0), Wikimedia Commons photographs by Fons Heijnsbroek (CC0), Rob Bogaerts / Anefo (CC0) and a Panoramio user (CC BY-SA 3.0), and the PDOK orthophoto (CC BY 4.0). No imported mesh or photograph pixels."
+      },
+      "buildingFootprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.9128782,
+              52.367257
+            ],
+            [
+              4.913003,
+              52.3672137
+            ],
+            [
+              4.9130258,
+              52.3672383
+            ],
+            [
+              4.9130873,
+              52.3672169
+            ],
+            [
+              4.9132818,
+              52.3674227
+            ],
+            [
+              4.9134008,
+              52.3673811
+            ],
+            [
+              4.913498,
+              52.3674854
+            ],
+            [
+              4.9135207,
+              52.3674891
+            ],
+            [
+              4.9135143,
+              52.367503
+            ],
+            [
+              4.9136114,
+              52.3676073
+            ],
+            [
+              4.9134416,
+              52.3676667
+            ],
+            [
+              4.9134348,
+              52.3676809
+            ],
+            [
+              4.9134107,
+              52.367677
+            ],
+            [
+              4.9132404,
+              52.3677361
+            ],
+            [
+              4.9131437,
+              52.3676317
+            ],
+            [
+              4.9131208,
+              52.3676278
+            ],
+            [
+              4.9131271,
+              52.3676138
+            ],
+            [
+              4.9130306,
+              52.3675095
+            ],
+            [
+              4.913092,
+              52.3674882
+            ],
+            [
+              4.9129719,
+              52.3673584
+            ],
+            [
+              4.9129104,
+              52.3673797
+            ],
+            [
+              4.9128654,
+              52.367331
+            ],
+            [
+              4.9129269,
+              52.3673097
+            ],
+            [
+              4.9128782,
+              52.367257
+            ]
+          ]
+        ]
+      },
+      "buildingCategory": "landmark",
+      "bounds": {
+        "min": [
+          -22.874845504760742,
+          -1.9073486612342094e-7,
+          -29.69567108154297
+        ],
+        "max": [
+          28.491256713867188,
+          15.694999694824219,
+          28.67573356628418
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.9131973,
+          52.3674706
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 90,
+        "facadeBearingDegrees": 29.930000000000007,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 58.37140464782715,
+        "heightMetres": 15.694999885559085,
+        "depthMetres": 51.36610221862793,
+        "depthCoverage": 1.6405653854560183
+      },
+      "triangles": 17560,
+      "bytes": 188456,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
+      "lod1": {
+        "sourceHash": "60c250f25986c0ac",
+        "buildVersion": 2,
+        "bytes": 60908,
+        "triangles": 2618
+      }
     }
   }
 }

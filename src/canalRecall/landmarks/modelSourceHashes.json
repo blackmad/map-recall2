@@ -1,5 +1,5 @@
 {
-  "toolchain": "ce82abd2caab6b084fb6ceba58947dc4a978eb614dd39d79f54aaf2586e8f616",
+  "toolchain": "d275aa5d7d86939b5c69f85dc1da405615666d8970fbbb003bc1b87b18ca4eee",
   "models": {
     "abn-amro-hoofdkantoor": "90ff65a2d9f94e99b2ab33438567f147959a43f017d3d9cf9d2ae68b6dae7cbf",
     "academie-theater-dans": "503b3e8d59937cbf7ac8776eb644c11fd10b567e5ac1113e0caa55c83cb68cde",
@@ -25,6 +25,7 @@
     "artis-aquarium": "24f6500535d4f68e66d230e2973053a4d3adc25044e1db3084b46d1d85e7c32b",
     "artis-entrance": "af6e420f6d7518657b0da30dfd8c538f8cffd75104cb8aee126c9a0fc529aa6f",
     "artis-library": "1feef17e0b58ef35d5e3508e90d93fa8971a8c20fd6bda69c83b37309c93e96a",
+    "artis-planetarium": "e7b7558fb9b1eebdbd1fa912ed24ed4c24435e4b993e19a0233c04703d5f4758",
     "asterweg-23": "ac60054b0e09a055b07d89bc9852fc39b009e01c4cd7428d98bdeda3666aa7e4",
     "athenaeum": "04333046f1bf8946753eb42280e04db3e0daadba9afcd18f34719ee20d7c80ab",
     "auschwitz-monument": "b425e91c67c90ec1d1a10b997ecb7399d6b00a7448c65407e7ad2474de62e1e6",
