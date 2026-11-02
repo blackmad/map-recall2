@@ -77847,6 +77847,208 @@
         "bytes": 154452,
         "triangles": 9970
       }
+    },
+    "graansilo-korthals-altes": {
+      "id": "graansilo-korthals-altes",
+      "name": "Graansilo Korthals Altes",
+      "modelUrl": "./models/graansilo-korthals-altes.glb",
+      "suppressOsmIds": [
+        "NL.IMBAG.Pand.0363100012233585",
+        "tower:NL.IMBAG.Pand.0363100012233585"
+      ],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.89122647,
+          52.39076755
+        ],
+        "headingDegrees": 0,
+        "lengthMetres": 52.2,
+        "widthMetres": 121.3
+      },
+      "surveyed": {
+        "anchor": [
+          4.89122647,
+          52.39076755
+        ],
+        "northOffsetDegrees": 0,
+        "source": "Vertex average of the BAG 0363100012233585 outline (RD, 3DBAG LoD0); volumes from the 3DBAG LoD2.2 roof and wall planes of that pand (CC BY 4.0): wing walls 17.4 m at the gutter, end bays 20.9 m, tower 24.4 m, roof storey 24-25 m, tent roof 34.5 m, north buildings 7-10 m and the white box 22.8 m, in native east/south metres (scripts/landmarks/silodam-silos-prepare.ts). Bays, storeys, friezes and the tower measured on Wikimedia Commons 'Silodam, Stenen graansilo foto 2-5' (Alf van Beem, public domain) and rectified Gemeente Amsterdam panorama crops (CC BY 4.0); wall facts cross-checked with the uninstalled recipe scripts/building-recipes/houses/pand-233585 (scripts/landmarks/graansilo-korthals-altes-inventory.json)."
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 0,
+      "heightMetres": 34.5,
+      "bagYear": 1898,
+      "materialOverrides": {
+        "brick": "#8a6250",
+        "red": "#8c4a3a",
+        "stone": "#c4b498",
+        "ochre": "#b89a72",
+        "white": "#e4e0d6",
+        "glass": "#3f4b52",
+        "frame": "#6f7375",
+        "dark": "#2f3133",
+        "slate": "#4d4a48",
+        "bronze": "#3e434b",
+        "copper": "#a3a6a5",
+        "concrete": "#cfccc4"
+      },
+      "attribution": {
+        "title": "Graansilo Korthals Altes (De Stenen Silo), Silodam (1896-98, J.F. Klinkhamer and A.L. van Gendt; converted to housing c. 2000)",
+        "author": "Map Recall",
+        "sourceUrl": "https://monumentenregister.cultureelerfgoed.nl/monumenten/422518",
+        "licence": "CC BY 4.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "modifications": "Original texture-free flat-colour geometry on the BAG outline (CC0) and 3DBAG LoD2.2 heights (CC BY 4.0): the two twelve-bay brick silo wings with their glazed recessed panels, corbel arcades, rosette anchors, segmental-arched plinth doors, attic windows and stone cornice, the slate roofs with zinc dormers and the converted roof storey, the centre tower with its crenellated arcaded parapet, corbel turrets, three round-arched lights and slate tent roof, the set-back end bays under mansards, and at the IJ end the boiler house, the service house with its dormered mansard and the white residential box; read for proportion only from Gemeente Amsterdam panoramas (CC BY 4.0) and Wikimedia Commons photographs by Alf van Beem (public domain) and Fred Romero (CC BY 2.0). Facts: Rijksmonumentenregister 422518 and nl.wikipedia 'Stenen Silo' (CC BY-SA 4.0). No pixels or meshes imported."
+      },
+      "buildingFootprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.8910706,
+              52.3914628
+            ],
+            [
+              4.890779,
+              52.3914146
+            ],
+            [
+              4.8908417,
+              52.3912729
+            ],
+            [
+              4.890865,
+              52.3912769
+            ],
+            [
+              4.8908934,
+              52.3912127
+            ],
+            [
+              4.8908702,
+              52.3912087
+            ],
+            [
+              4.8910182,
+              52.3908728
+            ],
+            [
+              4.8910167,
+              52.3908724
+            ],
+            [
+              4.8910586,
+              52.3907744
+            ],
+            [
+              4.8910608,
+              52.3907747
+            ],
+            [
+              4.8912094,
+              52.3904386
+            ],
+            [
+              4.8912325,
+              52.3904426
+            ],
+            [
+              4.8912633,
+              52.3903731
+            ],
+            [
+              4.8914713,
+              52.3904077
+            ],
+            [
+              4.891475,
+              52.3903986
+            ],
+            [
+              4.8915019,
+              52.3903892
+            ],
+            [
+              4.8915195,
+              52.3903924
+            ],
+            [
+              4.8915282,
+              52.3903893
+            ],
+            [
+              4.8915357,
+              52.3903911
+            ],
+            [
+              4.8915567,
+              52.3904127
+            ],
+            [
+              4.8915437,
+              52.3904174
+            ],
+            [
+              4.8915399,
+              52.3904286
+            ],
+            [
+              4.8915489,
+              52.390443
+            ],
+            [
+              4.8911446,
+              52.3913628
+            ],
+            [
+              4.8911169,
+              52.3913587
+            ],
+            [
+              4.8910706,
+              52.3914628
+            ]
+          ]
+        ]
+      },
+      "buildingCategory": "landmark",
+      "bounds": {
+        "min": [
+          -30.442968368530273,
+          -4.7683716530855236e-8,
+          -77.59490203857422
+        ],
+        "max": [
+          22.44622039794922,
+          36.20000076293945,
+          44.408836364746094
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.89122647,
+          52.39076755
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 90,
+        "facadeBearingDegrees": 0,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 122.00373840332031,
+        "heightMetres": 36.200000810623166,
+        "depthMetres": 52.88918876647949,
+        "depthCoverage": 0.43601969304599747
+      },
+      "triangles": 26545,
+      "bytes": 328548,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
+      "lod1": {
+        "sourceHash": "62eba8d4912398f1",
+        "buildVersion": 2,
+        "bytes": 114320,
+        "triangles": 6800
+      }
     }
   }
 }

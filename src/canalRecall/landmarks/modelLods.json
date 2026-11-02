@@ -2188,5 +2188,11 @@
   "buildVersion": 2,
   "bytes": 154452,
   "triangles": 9970
+ },
+ "graansilo-korthals-altes": {
+  "sourceHash": "62eba8d4912398f1",
+  "buildVersion": 2,
+  "bytes": 114320,
+  "triangles": 6800
  }
 }
