@@ -1,0 +1,28 @@
+{
+ "id": "apollo-hotel",
+ "countedBy": "lane #199 (opus) from the rectified panorama crops w07-321 (b_20241217_0841_Track47_Sphere_00023, 2024-12-17, 50 px/m, and its 2022 second view) and w01-141 (TMX7316010203-001968_pano_0000_000590, 2021-01-18, 50 px/m); ribbon convention (a continuous glazed storey counts once); applied portholes and boards are not openings. Not a blind haiku count; the integrator may re-count.",
+ "facades": [
+  {
+   "name": "NW slab street end (Apollolaan)",
+   "bearing": 321,
+   "photo": "artifacts/landmark-briefs/apollo-hotel/w07-321.jpg",
+   "alongM": [0, 11.8],
+   "heightM": [0.5, 23.0],
+   "rows": [1, 1, 1, 1, 1, 1, 1],
+   "columns": 1,
+   "symmetric": false,
+   "note": "The 12.5 m end wall: one narrow stair window per level in a vertical strip 7.6-8.2 m from the viewer-left (north-east) corner, seven levels from the street to the top storey; the HARBOUR CLUB and LIVING ROOM boards, APOLLO HOTEL and the red A are applied, not openings. The crop stops short of the set-back 6.8 m wall to the right (w13)."
+  },
+  {
+   "name": "Boeken pavilion canal front",
+   "bearing": 141,
+   "photo": "artifacts/landmark-briefs/apollo-hotel/w01-141.jpg",
+   "alongM": [0, 26.2],
+   "heightM": [0.3, 9.9],
+   "rows": [5, 1],
+   "columns": 6,
+   "symmetric": false,
+   "note": "Ground storey: five window bays 2.1-18.2 m under the gallery, then solid white wall with two portholes (applied discs, not openings); upper storey: one continuous glazed band behind the gallery rail. Columns: the five bay axes plus the band's own axis."
+  }
+ ]
+}
