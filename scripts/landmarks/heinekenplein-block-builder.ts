@@ -94,9 +94,11 @@ function opening(b: BuildingTools, F: Face, t: number, y: number, w: number, h: 
   const depth = o.depth ?? 0.18, frame = o.frame ?? 'frame', back = o.back ?? 'glass', fw = o.edge ?? 0.06, d = Math.min(0.09, depth - 0.03), out = -depth;
   F.holes.push({t0: t - w / 2, t1: t + w / 2, y0: y, y1: y + h, depth, back});
   if (fw > 0) {
-    ledgeStrip(b, F.f, t, y, w, fw, d, frame, out);
+    // The bottom rail is at least 10 cm tall: its top face then stands clear of the sill below it (z-fight-near at 6 cm).
+    const fb = Math.max(fw, 0.1);
+    ledgeStrip(b, F.f, t, y, w, fb, d, frame, out);
     ledgeStrip(b, F.f, t, y + h - fw, w, fw, d, frame, out);
-    for (const s of [-1, 1]) ledgeStrip(b, F.f, t + s * (w - fw) / 2, y + fw, fw, h - 2 * fw, d, frame, out);
+    for (const s of [-1, 1]) ledgeStrip(b, F.f, t + s * (w - fw) / 2, y + fb, fw, h - fw - fb, d, frame, out);
   }
   const cols = o.cols ?? 1, rows = o.rows ?? 1;
   for (let k = 1; k < cols; k++) ledgeStrip(b, F.f, t - w / 2 + w * k / cols, y + fw, 0.06, h - 2 * fw, d, frame, out);
@@ -143,7 +145,7 @@ function bar(b: BuildingTools) {
   // ground: Dirk corner shop under its red awning, the goods entrance, three Dirk windows, the entrance bay
   shopfront(b, south, 0.3, 2.3, false);
   awning(b, south.f, 1.3, 2.75, 2.4, 0.7, 1.1, 'red');
-  opening(b, south, 6.15, 0.12, 6.1, 3.2, {depth: 0.6, back: 'dark', cols: 2, frame: 'dark'});   // goods entrance, roller doors
+  opening(b, south, 6.15, 0.12, 6.1, 2.65, {depth: 0.6, back: 'dark', cols: 2, frame: 'dark'});  // goods entrance, roller doors; head on the shopfronts' line (w02-96)
   for (const [t0, t1] of [[9.8, 16.0], [16.7, 23.1], [23.9, 30.1]]) shopfront(b, south, t0, t1);
   opening(b, south, 33.5, 0.12, 4.8, 2.7, {depth: 0.6, back: 'glass', cols: 3, frame: 'dark'});  // shop entrance
   slab(b, south.f, 33.5, 2.9, 5.1, 0.12, 0.55, 'bronze');
