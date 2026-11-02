@@ -1,0 +1,431 @@
+{
+ "schemaVersion": 1,
+ "id": "atlanta-stadhouderskade",
+ "pand": "0363100012080492",
+ "brief": "scripts/landmarks/atlanta-stadhouderskade-brief.md",
+ "signature": [
+  "f-tower",
+  "f-oriels",
+  "f-office-windows",
+  "f-attic-ribs",
+  "f-tower-slit",
+  "f-first-floor",
+  "f-portal",
+  "f-glass-storey"
+ ],
+ "walls": [
+  {
+   "tag": "w01-52",
+   "bearing": 52,
+   "lengthM": 31.5,
+   "centre": [
+    4.879324,
+    52.3632265
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002921_pano_0006_000128",
+   "capturedAt": "2023-01-10",
+   "checked": true,
+   "items": [
+    {
+     "id": "f-tower",
+     "kind": "tower",
+     "where": "brick tower turned a quarter from the front over the entrance bay at the SE party wall, to 42.9 m (3DBAG); Commons 'Amsterdam Stadhouderskade 5.jpg'",
+     "approxSizeM": [
+      3,
+      42.9
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002921_pano_0006_000128",
+     "how": "3DBAG LoD2.2 shell tower mass; tower(): the glazed slit on its street face"
+    },
+    {
+     "id": "f-tower-slit",
+     "kind": "window-shape",
+     "where": "one tall glazed slit with white bars on the tower's narrow street face, c. 26-39.5 m",
+     "approxSizeM": [
+      0.6,
+      13.4
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002921_pano_0006_000128",
+     "how": "tower(): glass strip, white jambs and 14 bars"
+    },
+    {
+     "id": "f-oriels",
+     "kind": "window-shape",
+     "where": "two half-round oriels framing the office storeys, 8.5-25.4 m, curved white-framed lights on every floor, stone base and cap",
+     "approxSizeM": [
+      3,
+      17
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002921_pano_0006_000128",
+     "how": "oriel(): brick bow (chord 3.0 m, rise 1.0 m), three curved lights per floor, white mullions, head, sill and transom arcs"
+    },
+    {
+     "id": "f-oriels-l1",
+     "kind": "window-shape",
+     "where": "shallow first-floor oriels at both ends on a stone console",
+     "approxSizeM": [
+      2.5,
+      2.3
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002921_pano_0006_000128",
+     "how": "oriel() chord 2.5 m rise 0.55 m with four lights; stone console block"
+    },
+    {
+     "id": "f-office-windows",
+     "kind": "window-shape",
+     "where": "office windows 1.8 m at 2.28 m, eight per storey on five storeys; the transom frame boxed out from the wall, the lower light flush (register 224005)",
+     "approxSizeM": [
+      1.8,
+      1.9
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002921_pano_0006_000128",
+     "how": "officeWindow(): flush lower light, boxed transom light 0.22 m proud, white frames"
+    },
+    {
+     "id": "f-first-floor",
+     "kind": "window-shape",
+     "where": "18 narrow first-floor windows at 1.125 m with transoms",
+     "approxSizeM": [
+      0.72,
+      2.2
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002921_pano_0006_000128",
+     "how": "plainWindow() per axis"
+    },
+    {
+     "id": "f-reliefs",
+     "kind": "relief",
+     "where": "ceramic figurative reliefs on the piers between the first-floor windows (L.S.W. van der Noordaa, register 224005)",
+     "approxSizeM": [
+      0.3,
+      0.75
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-002921_pano_0006_000128",
+     "how": "one terracotta-coloured raised panel per pier; the figures are below the model's resolution"
+    },
+    {
+     "id": "f-breastwork",
+     "kind": "other",
+     "where": "breastwork of decorative brick under the first-floor windows",
+     "approxSizeM": [
+      20,
+      1.2
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-002921_pano_0006_000128",
+     "how": "darker brick panel with horizontal courses"
+    },
+    {
+     "id": "f-louvre-fascia",
+     "kind": "other",
+     "where": "dark louvred fascia band over the shop floor",
+     "approxSizeM": [
+      17.6,
+      0.75
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002921_pano_0006_000128",
+     "how": "steel panel with five louvre strips"
+    },
+    {
+     "id": "f-canopy-stub",
+     "kind": "canopy",
+     "where": "thin dark band where the lost canopy met the front (register: the canopy has gone)",
+     "approxSizeM": [
+      26,
+      0.17
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002921_pano_0006_000128",
+     "how": "steel slab 0.32 m proud at 2.45 m"
+    },
+    {
+     "id": "f-shopfront",
+     "kind": "window-shape",
+     "where": "steel-and-glass shop floor, 0-2.5 m, with the wooden entrance doors near the NW end",
+     "approxSizeM": [
+      26,
+      2.5
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002921_pano_0006_000128",
+     "how": "glass skin, steel posts every 2.16 m, wooden door panel"
+    },
+    {
+     "id": "f-shop-sign",
+     "kind": "sign",
+     "where": "'miro' tenant sign on the fascia",
+     "approxSizeM": [
+      3.5,
+      0.6
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7316010203-002921_pano_0006_000128",
+     "skip": {
+      "reason": "temporary",
+      "note": "tenant lettering of the current occupant, changes with the lease"
+     }
+    },
+    {
+     "id": "f-portal",
+     "kind": "other",
+     "where": "granite portal round the main entrance at the SE party wall: tall glazed screen over the doors, steps, door canopy (register: altered)",
+     "approxSizeM": [
+      2.6,
+      7.35
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002921_pano_0006_000128",
+     "how": "granite jambs and head, steel-barred screen, door canopy, two steps"
+    },
+    {
+     "id": "f-inscription",
+     "kind": "lettering",
+     "where": "inscription in the granite entrance surround naming the architect and the foundation stone (register)",
+     "approxSizeM": [
+      1,
+      0.3
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7316010203-002921_pano_0006_000128",
+     "skip": {
+      "reason": "too-small",
+      "note": "incised letters in the granite surround, a few cm high"
+     }
+    },
+    {
+     "id": "f-entrance-windows",
+     "kind": "window-shape",
+     "where": "paired narrow windows on five storeys over the entrance",
+     "approxSizeM": [
+      0.8,
+      1.85
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002921_pano_0006_000128",
+     "how": "plainWindow() pairs at t 2.1 and 3.35"
+    },
+    {
+     "id": "f-brackets",
+     "kind": "other",
+     "where": "row of small brick brackets under the parapet coping",
+     "approxSizeM": [
+      17.4,
+      0.42
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002921_pano_0006_000128",
+     "how": "42 brick blocks at 0.42 m"
+    },
+    {
+     "id": "f-corner-blocks",
+     "kind": "other",
+     "where": "corner blocks above the parapet with one small window each",
+     "approxSizeM": [
+      2.4,
+      2.9
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002921_pano_0006_000128",
+     "how": "brick blocks to the 28 m corner masses, stone copings, two-light windows"
+    },
+    {
+     "id": "f-railings",
+     "kind": "balcony-ironwork",
+     "where": "railings on the corner-block roofs either side of the glass storey",
+     "approxSizeM": [
+      3.5,
+      1
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-002921_pano_0006_000128",
+     "how": "five posts and a top rail per side"
+    },
+    {
+     "id": "f-attic-ribs",
+     "kind": "other",
+     "where": "setback attic with vertical strips of decorative brickwork (register)",
+     "approxSizeM": [
+      23,
+      5.4
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002921_pano_0006_000128",
+     "how": "brick ribs at 0.42 m on the 3DBAG attic plane"
+    },
+    {
+     "id": "f-glass-storey",
+     "kind": "window-shape",
+     "where": "1955 setback storey, glazed between thin posts under a white slab roof edge",
+     "approxSizeM": [
+      23,
+      3
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-002921_pano_0006_000128",
+     "how": "glass skin and concrete posts on the attic plane with a 0.85 m slab overhang; the extra setback of the 1955 storey is not in the 3DBAG shell"
+    },
+    {
+     "id": "f-flagpoles",
+     "kind": "other",
+     "where": "flagpoles on the roof (Commons photo)",
+     "approxSizeM": [
+      0.1,
+      6
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7316010203-002921_pano_0006_000128",
+     "skip": {
+      "reason": "temporary",
+      "note": "flags and poles come and go (Commons 2010 photo only)"
+     }
+    },
+    {
+     "id": "f-tram-wires",
+     "kind": "other",
+     "where": "tram overhead wires in front",
+     "approxSizeM": [
+      30,
+      0.1
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7316010203-002921_pano_0006_000128",
+     "skip": {
+      "reason": "not-visible",
+      "note": "street furniture in front of the building, not part of it"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "w02-154",
+   "bearing": 154,
+   "lengthM": 8.6,
+   "centre": [
+    4.8791105,
+    52.3630135
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002059_pano_0000_003206",
+   "capturedAt": "2021-03-24",
+   "checked": true,
+   "items": [
+    {
+     "id": "r-granite-ground",
+     "kind": "other",
+     "where": "granite ground storey with a shop window under transom lights and a blue door",
+     "approxSizeM": [
+      8.6,
+      3.5
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002059_pano_0000_003206",
+     "how": "stone facing, glazed shop window with bronze-brown transom bars, blue door"
+    },
+    {
+     "id": "r-cornice",
+     "kind": "other",
+     "where": "stone cornice over the ground storey",
+     "approxSizeM": [
+      8.6,
+      0.25
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002059_pano_0000_003206",
+     "how": "stone slab 0.25 m proud"
+    },
+    {
+     "id": "r-windows",
+     "kind": "window-shape",
+     "where": "white-framed two-light windows on the low wing and on the rear front rising behind its curved parapet",
+     "approxSizeM": [
+      1.3,
+      2.1
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-002059_pano_0000_003206",
+     "how": "three windows on the low wing; rearCurve(): 7 + 1 windows per storey (12-31 m) on the straight 3DBAG runs of the rear front; the curves of the parapet and of the rear front's NE end are not modelled"
+    }
+   ]
+  },
+  {
+   "tag": "w03-232",
+   "bearing": 232,
+   "lengthM": 4.6,
+   "centre": [
+    4.879188,
+    52.363015
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002059_pano_0000_003205",
+   "capturedAt": "2021-03-24",
+   "checked": true,
+   "items": [
+    {
+     "id": "r3-windows",
+     "kind": "window-shape",
+     "where": "white-framed window per storey on the tall rear wall",
+     "approxSizeM": [
+      1.6,
+      1.9
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-002059_pano_0000_003205",
+     "how": "one window per storey at the office floor lines"
+    },
+    {
+     "id": "r3-ground",
+     "kind": "other",
+     "where": "granite ground storey with glazing",
+     "approxSizeM": [
+      4.6,
+      3.5
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002059_pano_0000_003205",
+     "how": "stone facing and shop glazing"
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas (w01-52, w02-154, w03-232)",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/",
+   "licence": "CC BY 4.0"
+  },
+  {
+   "name": "3DBAG LoD2.2 NL.IMBAG.Pand.0363100012080492",
+   "url": "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012080492",
+   "licence": "CC BY 4.0"
+  },
+  {
+   "name": "BAG pand 0363100012080492",
+   "url": "https://service.pdok.nl/lv/bag/wfs/v2_0",
+   "licence": "CC0"
+  },
+  {
+   "name": "Gemeentelijk monument 224005 (municipal register)",
+   "url": "https://api.data.amsterdam.nl/v1/monumenten/monumenten/1d93cfa2-3705-4f4e-8d6e-698ff1fa14e4?_format=json",
+   "licence": "CC0"
+  },
+  {
+   "name": "nl.wikipedia Stadhouderskade 5",
+   "url": "https://nl.wikipedia.org/wiki/Stadhouderskade_5",
+   "licence": "CC BY-SA 4.0"
+  },
+  {
+   "name": "Wikimedia Commons File:Amsterdam Stadhouderskade 5.jpg (Michiel1972)",
+   "url": "https://commons.wikimedia.org/wiki/File:Amsterdam_Stadhouderskade_5.jpg",
+   "licence": "CC BY-SA 3.0"
+  }
+ ]
+}

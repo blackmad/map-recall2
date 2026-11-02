@@ -194,7 +194,7 @@
  },
  {
   "slug": "grachtengordel",
-  "buildings": 55,
+  "buildings": 56,
   "kits": 0,
   "facts": 151,
   "origins": 91,
@@ -352,7 +352,7 @@
  },
  {
   "slug": "knsm-eiland",
-  "buildings": 0,
+  "buildings": 1,
   "kits": 0,
   "facts": 21,
   "origins": 14,
@@ -360,7 +360,6 @@
   "shots": 2,
   "plan": 2,
   "lacks": [
-   "buildings",
    "bridges"
   ]
  },
@@ -494,7 +493,7 @@
  },
  {
   "slug": "oostelijk-havengebied",
-  "buildings": 15,
+  "buildings": 16,
   "kits": 29,
   "facts": 69,
   "origins": 117,
@@ -597,7 +596,7 @@
  },
  {
   "slug": "prinses-irenebuurt-e-o",
-  "buildings": 2,
+  "buildings": 3,
   "kits": 0,
   "facts": 30,
   "origins": 31,
@@ -861,7 +860,7 @@
  },
  {
   "slug": "vondelparkbuurt",
-  "buildings": 8,
+  "buildings": 9,
   "kits": 0,
   "facts": 21,
   "origins": 14,

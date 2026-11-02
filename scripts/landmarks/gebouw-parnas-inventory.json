@@ -1,0 +1,523 @@
+{
+ "schemaVersion": 1,
+ "id": "gebouw-parnas",
+ "pand": "0363100012110783",
+ "brief": "scripts/landmarks/gebouw-parnas-brief.md",
+ "signature": [
+  "bridge-over-road",
+  "a-frame-trestles",
+  "tower-curtain",
+  "band-curtain-grid",
+  "east-slab-loggias"
+ ],
+ "walls": [
+  {
+   "tag": "w01-87",
+   "bearing": 87,
+   "lengthM": 105.3,
+   "centre": [
+    4.868853,
+    52.3431517
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "items": [
+    {
+     "id": "east-front-inferred",
+     "kind": "window-shape",
+     "where": "outer east front of the east wing (no panorama): assumed the same band, ground ribbon and loggias as the road side",
+     "approxSizeM": [
+      105,
+      31
+     ],
+     "plan": "simplified",
+     "seenIn": "inferred from w05-267",
+     "how": "bandFace, ground ribbon and loggiaFace as on the road side"
+    }
+   ]
+  },
+  {
+   "tag": "w02-267",
+   "bearing": 267,
+   "lengthM": 80.1,
+   "centre": [
+    4.8675584,
+    52.3429906
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "items": [
+    {
+     "id": "west-front-inferred",
+     "kind": "window-shape",
+     "where": "outer west front of the west wing (no panorama; ref-south.jpg shows its south end: band and loggias)",
+     "approxSizeM": [
+      80,
+      31
+     ],
+     "plan": "simplified",
+     "seenIn": "recording_2025-09-29_14-53-32_02231 (ref-south.jpg)",
+     "how": "bandFace, ground ribbon and loggiaFace"
+    }
+   ]
+  },
+  {
+   "tag": "w03-357",
+   "bearing": 357,
+   "lengthM": 56.8,
+   "centre": [
+    4.8682032,
+    52.3431024
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-07-15_13-02-15_00901",
+   "capturedAt": "2025-07-15",
+   "checked": true,
+   "items": [
+    {
+     "id": "bridge-over-road",
+     "kind": "other",
+     "where": "the glazed bridge building spanning the Parnassusweg, underside 4.3 m, top 14.1 m, the whole 56.8 m front",
+     "approxSizeM": [
+      56.8,
+      9.8
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-07-15_13-02-15_00901",
+     "how": "vol BRIDGE 4.3-14.05 m in frame colour with bandFace curtain grid"
+    },
+    {
+     "id": "a-frame-trestles",
+     "kind": "other",
+     "where": "two black splayed A-frame trestles under the bridge, one at each kerb, ~11-16 m and 39-44 m from the west end",
+     "approxSizeM": [
+      4.6,
+      4.3
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-07-15_13-02-15_00901",
+     "how": "trestle(): two splayed 0.55 x 0.7 m legs at each bridge face and a head beam, dark"
+    },
+    {
+     "id": "band-curtain-grid",
+     "kind": "window-shape",
+     "where": "aluminium curtain grid on 1.8 m mullions over the bridge and both wings, floors at 4.5/8.4/12.3 m, transoms 6.1/10.0, a low top light",
+     "approxSizeM": [
+      56.8,
+      9.8
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-07-15_13-02-15_00901",
+     "how": "gridFacade BAND_GRID + transom and top-light slabs (bandFace)"
+    },
+    {
+     "id": "soffit",
+     "kind": "other",
+     "where": "pale grey bridge soffit band 4.3-4.6 m",
+     "approxSizeM": [
+      56.8,
+      0.3
+     ],
+     "plan": "simplified",
+     "seenIn": "recording_2025-07-15_13-02-15_00901",
+     "how": "the bridge volume soffit in frame colour"
+    },
+    {
+     "id": "under-bridge-rooms",
+     "kind": "other",
+     "where": "low enclosed rooms with grey panels and windows under both bridge ends behind the trestles",
+     "approxSizeM": [
+      10,
+      4.2
+     ],
+     "plan": "simplified",
+     "seenIn": "recording_2025-07-15_13-02-15_00901",
+     "how": "two concrete boxes 0-4.25 m set 1.6 m back from the bridge faces"
+    }
+   ]
+  },
+  {
+   "tag": "w04-177",
+   "bearing": 177,
+   "lengthM": 56.5,
+   "centre": [
+    4.8682122,
+    52.3429905
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-09-29_14-53-32_02289",
+   "capturedAt": "2025-09-29",
+   "checked": true,
+   "items": [
+    {
+     "id": "bridge-south",
+     "kind": "other",
+     "where": "south front of the bridge: same grid as the north front, trestles at both kerbs",
+     "approxSizeM": [
+      56.5,
+      9.8
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-09-29_14-53-32_02289",
+     "how": "bandFace on the bridge south face; trestles shared with w03"
+    }
+   ]
+  },
+  {
+   "tag": "w05-267",
+   "bearing": 267,
+   "lengthM": 55.5,
+   "centre": [
+    4.8685943,
+    52.3433663
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2024-09-02_09-15-33_00695",
+   "capturedAt": "2024-09-02",
+   "checked": true,
+   "items": [
+    {
+     "id": "east-wing-band",
+     "kind": "window-shape",
+     "where": "road-side front of the east wing north of the bridge: two-storey curtain grid over a set-back ground storey",
+     "approxSizeM": [
+      55.5,
+      9.6
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2024-09-02_09-15-33_00695",
+     "how": "bandFace"
+    },
+    {
+     "id": "east-wing-clerestory",
+     "kind": "window-shape",
+     "where": "ground-storey ribbon window 1.5-3.9 m over a grey panel base, set back under the band",
+     "approxSizeM": [
+      45,
+      2.3
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2024-09-02_09-15-33_00695",
+     "how": "gridFacade ground options on the inset ground volume"
+    },
+    {
+     "id": "house-number",
+     "kind": "sign",
+     "where": "large house number 101 on the ground storey at the north end",
+     "approxSizeM": [
+      0.8,
+      0.6
+     ],
+     "plan": "skipped",
+     "seenIn": "recording_2024-09-02_09-15-33_00695",
+     "skip": {
+      "reason": "too-small",
+      "note": "0.8 m numerals in the shade of the band"
+     }
+    },
+    {
+     "id": "east-slab-loggias",
+     "kind": "balcony-ironwork",
+     "where": "residential slab above the band: loggias with white floor edges and rails",
+     "approxSizeM": [
+      71,
+      17
+     ],
+     "plan": "simplified",
+     "seenIn": "recording_2024-09-02_09-15-33_00695",
+     "how": "loggiaFace: white piers on 3.6 m, glass, floor edge and rail per 2.9 m storey"
+    }
+   ]
+  },
+  {
+   "tag": "w06-87",
+   "bearing": 87,
+   "lengthM": 55.3,
+   "centre": [
+    4.8677618,
+    52.3433354
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001894_pano_0000_002865",
+   "capturedAt": "2020-08-27",
+   "checked": true,
+   "items": [
+    {
+     "id": "west-wing-band",
+     "kind": "window-shape",
+     "where": "road-side front of the west wing north of the bridge, same grid",
+     "approxSizeM": [
+      55.3,
+      9.6
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001894_pano_0000_002865",
+     "how": "bandFace"
+    }
+   ]
+  },
+  {
+   "tag": "w07-267",
+   "bearing": 267,
+   "lengthM": 37.4,
+   "centre": [
+    4.8686427,
+    52.342838
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001789_pano_0002_002296",
+   "capturedAt": "2020-07-06",
+   "checked": true,
+   "items": [
+    {
+     "id": "east-wing-south",
+     "kind": "window-shape",
+     "where": "east wing road front south of the bridge, same band and ground ribbon",
+     "approxSizeM": [
+      37.4,
+      14
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001789_pano_0002_002296",
+     "how": "bandFace + ground gridFacade"
+    }
+   ]
+  },
+  {
+   "tag": "w08-87",
+   "bearing": 87,
+   "lengthM": 37.4,
+   "centre": [
+    4.8678155,
+    52.3428079
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-09-29_14-53-32_02288",
+   "capturedAt": "2025-09-29",
+   "checked": true,
+   "items": [
+    {
+     "id": "west-wing-south",
+     "kind": "window-shape",
+     "where": "west wing road front south of the bridge; a pale tile-clad ground block at the south end and a dark glazed entrance",
+     "approxSizeM": [
+      37.4,
+      14
+     ],
+     "plan": "simplified",
+     "seenIn": "recording_2025-09-29_14-53-32_02288",
+     "how": "bandFace + ground ribbon; the entrance is part of the ribbon"
+    }
+   ]
+  },
+  {
+   "tag": "w09-357",
+   "bearing": 357,
+   "lengthM": 35.9,
+   "centre": [
+    4.8674741,
+    52.3435734
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001894_pano_0000_002581",
+   "capturedAt": "2020-08-27",
+   "checked": true,
+   "items": [
+    {
+     "id": "tower-glass-base",
+     "kind": "window-shape",
+     "where": "tower foot: full-height black-framed glazed ground storey, rounded at the corner",
+     "approxSizeM": [
+      22,
+      4.2
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-001894_pano_0000_002581",
+     "how": "towerFace base: glass 0.15-4.1 m, dark mullions on 2.4 m and a dark head band; the corner kept square"
+    },
+    {
+     "id": "cantilever-soffit",
+     "kind": "other",
+     "where": "dark metal soffit of the oversailing first floor above the glazed foot",
+     "approxSizeM": [
+      22,
+      0.6
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-001894_pano_0000_002581",
+     "how": "dark head band 4.1-4.5 m, 0.24 m proud"
+    }
+   ]
+  },
+  {
+   "tag": "w10-267",
+   "bearing": 267,
+   "lengthM": 25,
+   "centre": [
+    4.8672229,
+    52.343451
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000255_pano_0000_003441",
+   "capturedAt": "2017-04-11",
+   "checked": true,
+   "items": [
+    {
+     "id": "w10-trees",
+     "kind": "other",
+     "where": "wall behind dense trees (2017 capture shows the tower stripped to its frame during renovation)",
+     "approxSizeM": [
+      25,
+      14
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7316010203-000255_pano_0000_003441",
+     "skip": {
+      "reason": "not-visible",
+      "note": "trees and the 2017 renovation scaffold hide the wall"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "w11-177",
+   "bearing": 177,
+   "lengthM": 19.6,
+   "centre": [
+    4.8673779,
+    52.3433442
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2024-09-02_09-15-33_00783",
+   "capturedAt": "2024-09-02",
+   "checked": true,
+   "items": [
+    {
+     "id": "tower-curtain",
+     "kind": "tower",
+     "where": "the 57 m tower: blue glass in black frames, a dark spandrel each storey, heavy piers at the thirds and corners",
+     "approxSizeM": [
+      23,
+      57
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-09-29_14-53-32_02052 (ref-tower-nne.jpg)",
+     "how": "towerFace on all four faces"
+    },
+    {
+     "id": "entrance-canopy",
+     "kind": "canopy",
+     "where": "flat dark canopy over the glazed tower entrance on the south side",
+     "approxSizeM": [
+      6,
+      0.35
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2024-09-02_09-15-33_00783",
+     "how": "slab 6.2 x 2.0 m at 4.0 m"
+    }
+   ]
+  },
+  {
+   "tag": "w12-177",
+   "bearing": 177,
+   "lengthM": 16.5,
+   "centre": [
+    4.8687802,
+    52.3426749
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001894_pano_0000_002890",
+   "capturedAt": "2020-08-27",
+   "checked": true,
+   "items": [
+    {
+     "id": "east-wing-end",
+     "kind": "other",
+     "where": "south end of the east wing: tile-clad ground storey with two service doors under the glazed band",
+     "approxSizeM": [
+      16.5,
+      14
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-001894_pano_0000_002890",
+     "how": "ground end wall with door, small window and tile panel joints; bandFace above"
+    }
+   ]
+  },
+  {
+   "tag": "w13-177",
+   "bearing": 177,
+   "lengthM": 16.2,
+   "centre": [
+    4.867714,
+    52.3426358
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001034_pano_0007_001507",
+   "capturedAt": "2019-01-03",
+   "checked": true,
+   "items": [
+    {
+     "id": "west-slab-end",
+     "kind": "other",
+     "where": "south end of the west wing: tile ground storey, cantilevered three-row glazed band, blank pale slab end above with stacked balconies at its west edge",
+     "approxSizeM": [
+      16.2,
+      31
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-001034_pano_0007_001507",
+     "how": "band oversails the ground by 0.8 m; slab end with panel courses; loggia rails on the long face reach the corner"
+    },
+    {
+     "id": "slab-end-window",
+     "kind": "window-shape",
+     "where": "single small window in the tile ground storey",
+     "approxSizeM": [
+      1.6,
+      0.9
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001034_pano_0007_001507",
+     "how": "glass slab 1.6 x 0.9 m"
+    }
+   ]
+  },
+  {
+   "tag": "w14-357",
+   "bearing": 357,
+   "lengthM": 16.1,
+   "centre": [
+    4.8686873,
+    52.3436195
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002800_pano_0032_000047",
+   "capturedAt": "2022-09-06",
+   "checked": true,
+   "items": [
+    {
+     "id": "north-end-west-wing",
+     "kind": "other",
+     "where": "north end of the west wing: tile ground storey with a service door under the glazed band",
+     "approxSizeM": [
+      16,
+      14
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-002800_pano_0032_000047",
+     "how": "band face on the north end east of the tower; ground ribbon on the long faces only"
+    }
+   ]
+  }
+ ],
+ "sources": {
+  "panoramas": "Gemeente Amsterdam panoramas, CC BY 4.0 (ids per wall); pitched views ref-tower-nne.jpg, ref-tower-n.jpg, ref-south.jpg, ref-ne.jpg from recording_2025-09-29_14-53-32_02052, recording_2025-07-30_06-07-02_00796, recording_2025-09-29_14-53-32_02231, recording_2025-07-29_10-56-07_01864 (scripts/landmarks/pano-look.ts)",
+  "commons": "File:Parnassusweg Amsterdam.jpg (DennisM, CC0, 2017-04-30; tower during renovation, read for context only)"
+ }
+}

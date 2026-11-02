@@ -1,0 +1,345 @@
+{
+ "schemaVersion": 1,
+ "id": "andaz-prinsengracht",
+ "pand": "0363100012253957",
+ "brief": "scripts/landmarks/andaz-prinsengracht-brief.md",
+ "signature": [
+  "four-brick-planes",
+  "recessed-glazed-strips",
+  "varied-window-order",
+  "puilijst",
+  "concrete-copings"
+ ],
+ "walls": [
+  {
+   "tag": "w01-273",
+   "bearing": 273,
+   "lengthM": 33.2,
+   "centre": [
+    4.8828405,
+    52.367855
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001974_pano_0000_000924",
+   "capturedAt": "2021-01-22",
+   "checked": true,
+   "items": [
+    {
+     "id": "four-brick-planes",
+     "kind": "other",
+     "where": "the front is four dark brown brick planes, each about a canal house wide (6.7-7.5 m), A and C 21.3 m, B 18.0 m, D 17.7 m",
+     "approxSizeM": [
+      34,
+      21
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001974_pano_0000_000924",
+     "how": "one brick volume per plane at its measured width and height (PLANES)"
+    },
+    {
+     "id": "recessed-glazed-strips",
+     "kind": "window-shape",
+     "where": "three narrow recessed strips of wood and glass between the planes, storey-high glazing with dark spandrels, glass roofs",
+     "approxSizeM": [
+      2.6,
+      17.8
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001974_pano_0000_000924",
+     "how": "canopyGlass-roofed volumes set 0.5 m back, glass per storey, frame mullions (STRIPS)"
+    },
+    {
+     "id": "varied-window-order",
+     "kind": "window-shape",
+     "where": "window sizes and positions change storey by storey: two-light and narrow single windows swap sides between floors",
+     "approxSizeM": [
+      34,
+      16
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001974_pano_0000_000924",
+     "how": "WINDOWS table per plane per storey from the rectified crop at 48.8 px/m"
+    },
+    {
+     "id": "puilijst",
+     "kind": "other",
+     "where": "continuous dark grey natural stone band over the ground storey, 2.9-3.8 m, framing the ground-floor openings",
+     "approxSizeM": [
+      34,
+      0.9
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001974_pano_0000_000924",
+     "how": "stone slab 0.16 m proud across planes and strips"
+    },
+    {
+     "id": "concrete-copings",
+     "kind": "other",
+     "where": "crisp light concrete coping ending each brick plane",
+     "approxSizeM": [
+      34,
+      0.38
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001974_pano_0000_000924",
+     "how": "concrete slab 0.38 m at each plane top"
+    },
+    {
+     "id": "a-first-floor-glazing",
+     "kind": "window-shape",
+     "where": "wide glazed first floor of plane A running into strip 1, under a dark stone band",
+     "approxSizeM": [
+      7.4,
+      2.45
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001974_pano_0000_000924",
+     "how": "glass band with mullions on 0.88 m and a stone band 6.25-6.85 m"
+    },
+    {
+     "id": "a-ground-loggia",
+     "kind": "other",
+     "where": "the ground storey of plane A is open: a dark recessed loggia/passage behind the stone band",
+     "approxSizeM": [
+      5.4,
+      2.85
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-001974_pano_0000_000924",
+     "how": "dark opening slab 5.4 x 2.85 m on the plane A ground"
+    },
+    {
+     "id": "hotel-entrance",
+     "kind": "other",
+     "where": "hotel entrance doors in the ground of strip 3 between C and D",
+     "approxSizeM": [
+      1.5,
+      2.6
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-001974_pano_0000_000924",
+     "how": "dark door slab in the strip 3 ground storey"
+    },
+    {
+     "id": "d-shoulder",
+     "kind": "other",
+     "where": "sloped shoulder at the south top corner of plane D",
+     "approxSizeM": [
+      1.0,
+      1.6
+     ],
+     "plan": "modelled",
+     "seenIn": "ref-front-2021.jpg (TMX7316010203-001974_pano_0000_000924)",
+     "how": "profileVol: D extruded with a 1.0 x 1.6 m chamfer"
+    },
+    {
+     "id": "house-number",
+     "kind": "sign",
+     "where": "house number 587 on the stone plinth by the entrance",
+     "approxSizeM": [
+      0.4,
+      0.25
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7316010203-001974_pano_0000_000924",
+     "skip": {
+      "reason": "too-small",
+      "note": "0.25 m numerals"
+     }
+    },
+    {
+     "id": "flags",
+     "kind": "sign",
+     "where": "two hotel flags on poles over the entrance",
+     "approxSizeM": [
+      0.8,
+      1.5
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7316010203-001974_pano_0000_000924",
+     "skip": {
+      "reason": "temporary",
+      "note": "fabric flags"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "w02-94",
+   "bearing": 94,
+   "lengthM": 19.8,
+   "centre": [
+    4.883242,
+    52.36791
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "items": [
+    {
+     "id": "courtyard-front",
+     "kind": "window-shape",
+     "where": "courtyard front of the main block (no panorama; register: brick narrowed to strips with large wooden glazed frames)",
+     "approxSizeM": [
+      34,
+      16
+     ],
+     "plan": "simplified",
+     "seenIn": "municipal register 200611 text",
+     "how": "gridFacade with 0.9 m brick piers and 2.4 m glazing per 3.17 m storey"
+    }
+   ]
+  },
+  {
+   "tag": "w03-184",
+   "bearing": 184,
+   "lengthM": 17.9,
+   "centre": [
+    4.8833615,
+    52.367781
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": false,
+   "items": []
+  },
+  {
+   "tag": "w04-4",
+   "bearing": 4,
+   "lengthM": 12.1,
+   "centre": [
+    4.8833225,
+    52.367818
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": false,
+   "items": []
+  },
+  {
+   "tag": "w05-93",
+   "bearing": 93,
+   "lengthM": 10.3,
+   "centre": [
+    4.883226,
+    52.36774
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": false,
+   "items": []
+  },
+  {
+   "tag": "w06-273",
+   "bearing": 273,
+   "lengthM": 10.2,
+   "centre": [
+    4.8830705,
+    52.36765
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-06-16_04-42-37_02236",
+   "capturedAt": "2025-06-16",
+   "checked": true,
+   "items": [
+    {
+     "id": "w06-273-occluded",
+     "kind": "other",
+     "where": "the panorama shows the neighbouring canal house in front of this inner wall, not the hotel",
+     "approxSizeM": [
+      10.2,
+      10
+     ],
+     "plan": "skipped",
+     "seenIn": "recording_2025-06-16_04-42-37_02236",
+     "skip": {
+      "reason": "not-visible",
+      "note": "occluded by the neighbouring Prinsengracht/Klaverbladsgang houses"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "w07-4",
+   "bearing": 4,
+   "lengthM": 9.6,
+   "centre": [
+    4.8834825,
+    52.3678195
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": false,
+   "items": []
+  },
+  {
+   "tag": "w08-183",
+   "bearing": 183,
+   "lengthM": 8.5,
+   "centre": [
+    4.883129,
+    52.367602
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002306_pano_0001_002469",
+   "capturedAt": "2021-09-09",
+   "checked": true,
+   "items": [
+    {
+     "id": "w08-183-occluded",
+     "kind": "other",
+     "where": "the panorama shows the neighbouring canal house in front of this inner wall, not the hotel",
+     "approxSizeM": [
+      8.5,
+      10
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7316010203-002306_pano_0001_002469",
+     "skip": {
+      "reason": "not-visible",
+      "note": "occluded by the neighbouring Prinsengracht/Klaverbladsgang houses"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "w09-184",
+   "bearing": 184,
+   "lengthM": 5.3,
+   "centre": [
+    4.883035,
+    52.3676975
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002976_pano_0007_000303",
+   "capturedAt": "2023-02-20",
+   "checked": true,
+   "items": [
+    {
+     "id": "w09-184-occluded",
+     "kind": "other",
+     "where": "the panorama shows the neighbouring canal house in front of this inner wall, not the hotel",
+     "approxSizeM": [
+      5.3,
+      10
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7316010203-002976_pano_0007_000303",
+     "skip": {
+      "reason": "not-visible",
+      "note": "occluded by the neighbouring Prinsengracht/Klaverbladsgang houses"
+     }
+    }
+   ]
+  }
+ ],
+ "sources": {
+  "panoramas": "Gemeente Amsterdam panoramas CC BY 4.0: TMX7316010203-001974_pano_0000_000924 (w01-273 rectified, ref-front-2021.jpg pitched); recording_2025-06-16_04-42-37_02247 (ref-nw-2025.jpg), recording_2025-06-16_04-42-37_02235 (ref-sw-2025.jpg)",
+  "register": "Gemeentelijk monument 200611 redengevende omschrijving (api.data.amsterdam.nl, CC0)"
+ }
+}

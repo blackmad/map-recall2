@@ -1,0 +1,942 @@
+{
+ "schemaVersion": 1,
+ "id": "loods-6",
+ "pand": "0363100012142095",
+ "brief": "scripts/landmarks/loods-6-brief.md",
+ "signature": [
+  "w-louvre-canopy",
+  "n-lettering",
+  "s-bay-order",
+  "w-serre",
+  "sw-ribbons",
+  "n-quay-bays",
+  "s-kompaszaal-windows",
+  "n-loading-platform"
+ ],
+ "walls": [
+  {
+   "tag": "w01-5",
+   "bearing": 5,
+   "lengthM": 156.1,
+   "centre": [
+    4.9388955,
+    52.3775425
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001908_pano_0000_000938",
+   "capturedAt": "2020-09-07",
+   "checked": true,
+   "items": [
+    {
+     "id": "n-lettering",
+     "kind": "lettering",
+     "where": "standing letters LOODS 6 on the terrace parapet, 0.44 of the front from the east end",
+     "approxSizeM": [
+      11,
+      1.7
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001908_pano_0000_000938",
+     "how": "northTerrace(): raisedLettering 1.7 m on a steel base rail at the 10.9 m parapet"
+    },
+    {
+     "id": "n-loading-platform",
+     "kind": "other",
+     "where": "raised concrete loading platform along the whole Surinamekade front",
+     "approxSizeM": [
+      150,
+      1.0
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-001908_pano_0000_000938",
+     "how": "northQuay(): 0.45 m x 2.6 m stone slab (the quay street lies below the 3DBAG ground)"
+    },
+    {
+     "id": "n-quay-bays",
+     "kind": "window-shape",
+     "where": "3.9 m bays of steel glazing, 3x3 lights, between concrete piers",
+     "approxSizeM": [
+      3.4,
+      4.1
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001908_pano_0000_000938",
+     "how": "northQuay(): glazed() 3 cols x 3 rows per bay"
+    },
+    {
+     "id": "n-roller-shutters",
+     "kind": "other",
+     "where": "pairs of roller shutters and steel doors in some quay bays",
+     "approxSizeM": [
+      3.4,
+      3.4
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-001908_pano_0000_000938",
+     "how": "northQuay(): every ninth-step bay gets shutters or a door; the exact bay order is not reproduced"
+    },
+    {
+     "id": "n-canopy-band",
+     "kind": "canopy",
+     "where": "thin dark canopy band over the quay bays",
+     "approxSizeM": [
+      150,
+      0.2
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001908_pano_0000_000938",
+     "how": "northQuay(): frame slab 0.7 m deep at 4.65 m"
+    },
+    {
+     "id": "n-terrace-railing",
+     "kind": "balcony-ironwork",
+     "where": "steel railing along the terrace edge over the quay storey",
+     "approxSizeM": [
+      140,
+      1.0
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001908_pano_0000_000938",
+     "how": "northQuay(): posts every 2 m and a top rail"
+    },
+    {
+     "id": "n-terrace-windows",
+     "kind": "window-shape",
+     "where": "tall steel windows in rendered piers on the terrace storey (Commons (47) terrace view)",
+     "approxSizeM": [
+      3.0,
+      3.6
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001908_pano_0000_000938",
+     "how": "northTerrace(): glazed() 3x2 per 3.9 m bay"
+    }
+   ]
+  },
+  {
+   "tag": "w02-185",
+   "bearing": 185,
+   "lengthM": 41.9,
+   "centre": [
+    4.9384265,
+    52.3772045
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001194_pano_0000_002161",
+   "capturedAt": "2019-05-21",
+   "checked": true,
+   "items": [
+    {
+     "id": "s-arcade",
+     "kind": "colonnade",
+     "where": "square columns before the shop fronts at the west end of the KNSM-laan, with a broad stair",
+     "approxSizeM": [
+      42,
+      5.5
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-001194_pano_0000_002161",
+     "how": "arcade(): columns 0.65 m proud of the glazing (the shell cannot be recessed), floor band on them, four steps"
+    },
+    {
+     "id": "s-balconettes",
+     "kind": "balcony-ironwork",
+     "where": "railings across the first-floor windows",
+     "approxSizeM": [
+      1.85,
+      0.1
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-001194_pano_0000_002161",
+     "how": "southPanel(arcade): one rail bar"
+    }
+   ]
+  },
+  {
+   "tag": "w03-185",
+   "bearing": 185,
+   "lengthM": 27.9,
+   "centre": [
+    4.940017,
+    52.3771175
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-06-16_09-52-43_00035",
+   "capturedAt": "2025-06-16",
+   "checked": true,
+   "items": [
+    {
+     "id": "s-kompaszaal-windows",
+     "kind": "window-shape",
+     "where": "tall brown-framed windows of the 1956 Kompaszaal over brown-framed ground glazing",
+     "approxSizeM": [
+      5.7,
+      3.9
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-06-16_09-52-43_00035",
+     "how": "kompasPanel(): bronze-barred glazing in stone surrounds"
+    },
+    {
+     "id": "s-kompaszaal-canopy",
+     "kind": "canopy",
+     "where": "flat canopy over the Kompaszaal entrance, about 8 m wide",
+     "approxSizeM": [
+      8,
+      0.2
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-06-16_09-52-43_00035",
+     "how": "kompasPanel(entrance): steel slab 2.6 m deep with a glass underside"
+    },
+    {
+     "id": "s-kompaszaal-stair",
+     "kind": "other",
+     "where": "stone stair with cheeks up to the Kompaszaal doors",
+     "approxSizeM": [
+      5,
+      1.5
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-06-16_09-52-43_00035",
+     "how": "kompasPanel(entrance): five steps and two cheeks"
+    },
+    {
+     "id": "s-kompaszaal-lettering",
+     "kind": "lettering",
+     "where": "KOMPASZAAL letters behind the entrance glazing",
+     "approxSizeM": [
+      3,
+      0.4
+     ],
+     "plan": "skipped",
+     "seenIn": "recording_2025-06-16_09-52-43_00035",
+     "skip": {
+      "reason": "too-small",
+      "note": "0.4 m letters behind glass in the entrance recess"
+     }
+    },
+    {
+     "id": "s-shop-signs",
+     "kind": "sign",
+     "where": "tenant signs (SBK amsterdam, KUNST) on the shop glass",
+     "approxSizeM": [
+      2,
+      0.6
+     ],
+     "plan": "skipped",
+     "seenIn": "recording_2025-06-16_09-52-43_00035",
+     "skip": {
+      "reason": "temporary",
+      "note": "tenant signage changes"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "w04-216",
+   "bearing": 216,
+   "lengthM": 27.2,
+   "centre": [
+    4.9377765,
+    52.3773685
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-06-16_09-52-43_00068",
+   "capturedAt": "2025-06-16",
+   "checked": true,
+   "items": [
+    {
+     "id": "sw-ribbons",
+     "kind": "window-shape",
+     "where": "three rows of steel ribbon windows in three 6.5 m bays on the SW chamfer",
+     "approxSizeM": [
+      6.3,
+      3.1
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-06-16_09-52-43_00068",
+     "how": "chamfer(): ribbon() 4 cols x 2 rows, three rows per bay"
+    },
+    {
+     "id": "sw-loggia",
+     "kind": "other",
+     "where": "loggia bay at the KNSM-laan end of the chamfer: recessed glazing, balcony slab, columns",
+     "approxSizeM": [
+      6,
+      10
+     ],
+     "plan": "simplified",
+     "seenIn": "recording_2025-06-16_09-52-43_00068",
+     "how": "chamfer(): dark recess slab, glazing, slab and two columns"
+    }
+   ]
+  },
+  {
+   "tag": "w05-87",
+   "bearing": 87,
+   "lengthM": 19.9,
+   "centre": [
+    4.9402895,
+    52.3772945
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002134_pano_0000_002162",
+   "capturedAt": "2021-05-10",
+   "checked": true,
+   "items": [
+    {
+     "id": "e-annex-brick",
+     "kind": "other",
+     "where": "buff-brick annex with a dark brick fascia along the Messinastraat",
+     "approxSizeM": [
+      27,
+      5.3
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002134_pano_0000_002162",
+     "how": "east(): ochre brick slab, greyBrick fascia"
+    },
+    {
+     "id": "e-red-doors",
+     "kind": "other",
+     "where": "red-painted timber doors in the annex",
+     "approxSizeM": [
+      1.0,
+      2.3
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002134_pano_0000_002162",
+     "how": "east(): red slabs under concrete lintels"
+    },
+    {
+     "id": "e-slit-windows",
+     "kind": "window-shape",
+     "where": "small slit windows high in the annex wall",
+     "approxSizeM": [
+      0.22,
+      0.65
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002134_pano_0000_002162",
+     "how": "east(): dark slits"
+    },
+    {
+     "id": "e-fire-escape",
+     "kind": "balcony-ironwork",
+     "where": "steel fire escape on the upper east wall",
+     "approxSizeM": [
+      3,
+      4
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7316010203-002134_pano_0000_002162",
+     "skip": {
+      "reason": "too-small",
+      "note": "thin steel stair behind the annex, read as a line at gallery size"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "w06-6",
+   "bearing": 6,
+   "lengthM": 16.1,
+   "centre": [
+    4.940155,
+    52.377473
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7315120208-000052_pano_0000_004419",
+   "capturedAt": "2016-05-17",
+   "checked": true,
+   "items": [
+    {
+     "id": "ne-stair-house",
+     "kind": "tower",
+     "where": "beige rendered stair house over the NE end of the quay storey",
+     "approxSizeM": [
+      4,
+      4
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7315120208-000052_pano_0000_004419",
+     "how": "shell massing (3DBAG) in the wall render colour"
+    }
+   ]
+  },
+  {
+   "tag": "w07-186",
+   "bearing": 186,
+   "lengthM": 15.6,
+   "centre": [
+    4.938847,
+    52.3771815
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-06-16_08-26-12_03102",
+   "capturedAt": "2025-06-16",
+   "checked": true,
+   "items": [
+    {
+     "id": "s-banner",
+     "kind": "sign",
+     "where": "vertical banner on a post at the KNSM-laan",
+     "approxSizeM": [
+      0.6,
+      3
+     ],
+     "plan": "skipped",
+     "seenIn": "recording_2025-06-16_08-26-12_03102",
+     "skip": {
+      "reason": "temporary",
+      "note": "free-standing tenant banner"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "w08-275",
+   "bearing": 275,
+   "lengthM": 14.9,
+   "centre": [
+    4.9376225,
+    52.3775055
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-06-16_08-26-12_01822",
+   "capturedAt": "2025-06-16",
+   "checked": true,
+   "items": [
+    {
+     "id": "w-steel-windows",
+     "kind": "window-shape",
+     "where": "three rows of large steel windows across the west head",
+     "approxSizeM": [
+      4.5,
+      3
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-06-16_08-26-12_01822",
+     "how": "westHead(): ribbon() 4x2 in three bays, three rows"
+    },
+    {
+     "id": "w-serre",
+     "kind": "window-shape",
+     "where": "glazed serre storey on the west head with a railing",
+     "approxSizeM": [
+      15,
+      3.1
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-06-16_08-26-12_01822",
+     "how": "serre(): glazed() strip on the west and north faces, railing"
+    },
+    {
+     "id": "w-louvre-canopy",
+     "kind": "canopy",
+     "where": "large louvred steel canopy over the serre, overhanging west and north",
+     "approxSizeM": [
+      24,
+      16
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-06-16_08-26-12_01822",
+     "how": "serre(): 0.25 m slats on 0.6 m over two beams and four posts"
+    }
+   ]
+  },
+  {
+   "tag": "w09-185",
+   "bearing": 185,
+   "lengthM": 13.8,
+   "centre": [
+    4.93965,
+    52.3771375
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-06-16_08-26-12_03113",
+   "capturedAt": "2025-06-16",
+   "checked": true,
+   "items": [
+    {
+     "id": "s-shop-signs-2",
+     "kind": "sign",
+     "where": "tenant names (KLEUR GAMMA, SBK) on the glass",
+     "approxSizeM": [
+      2,
+      0.5
+     ],
+     "plan": "skipped",
+     "seenIn": "recording_2025-06-16_08-26-12_03113",
+     "skip": {
+      "reason": "temporary",
+      "note": "tenant signage"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "w10-185",
+   "bearing": 185,
+   "lengthM": 13.7,
+   "centre": [
+    4.9393865,
+    52.3771515
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001194_pano_0000_002148",
+   "capturedAt": "2019-05-21",
+   "checked": true,
+   "items": [
+    {
+     "id": "s-wanrooij",
+     "kind": "sign",
+     "where": "WANROOIJ letters and coloured vinyl on a shop front",
+     "approxSizeM": [
+      3,
+      0.6
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7316010203-001194_pano_0000_002148",
+     "skip": {
+      "reason": "temporary",
+      "note": "tenant signage"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "w11-185",
+   "bearing": 185,
+   "lengthM": 13.7,
+   "centre": [
+    4.9391235,
+    52.3771665
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2024-10-23_11-21-30_03546",
+   "capturedAt": "2024-10-23",
+   "checked": true,
+   "items": [
+    {
+     "id": "s-bay-order",
+     "kind": "window-shape",
+     "where": "per 6.24 m bay: steel shop front, centred first-floor window, dark ribbon window, two white-framed second-floor windows",
+     "approxSizeM": [
+      6,
+      16
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2024-10-23_11-21-30_03546",
+     "how": "southPanel()"
+    },
+    {
+     "id": "s-pilasters",
+     "kind": "other",
+     "where": "flat pilasters between the bays from the floor band to the cornice",
+     "approxSizeM": [
+      0.28,
+      9.7
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2024-10-23_11-21-30_03546",
+     "how": "pilaster()"
+    },
+    {
+     "id": "s-cornice",
+     "kind": "other",
+     "where": "cornice band at 15.7-16.4 m",
+     "approxSizeM": [
+      140,
+      0.7
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2024-10-23_11-21-30_03546",
+     "how": "bands()"
+    }
+   ]
+  },
+  {
+   "tag": "w12-88",
+   "bearing": 88,
+   "lengthM": 9.1,
+   "centre": [
+    4.940276,
+    52.377425
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002134_pano_0000_002023",
+   "capturedAt": "2021-05-10",
+   "checked": true,
+   "items": [
+    {
+     "id": "ne-beige-wall",
+     "kind": "window-shape",
+     "where": "beige-rendered NE wing with paired windows",
+     "approxSizeM": [
+      9,
+      15
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-002134_pano_0000_002023",
+     "how": "east(): white-framed windows on the rendered upper walls"
+    }
+   ]
+  },
+  {
+   "tag": "w13-337",
+   "bearing": 337,
+   "lengthM": 9.1,
+   "centre": [
+    4.937693,
+    52.3775885
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2024-10-23_11-21-30_03150",
+   "capturedAt": "2024-10-23",
+   "checked": true,
+   "items": [
+    {
+     "id": "nw-corrugated-drum",
+     "kind": "other",
+     "where": "corrugated-metal cladding round the NW corner up to about 6.8 m",
+     "approxSizeM": [
+      9,
+      6.8
+     ],
+     "plan": "simplified",
+     "seenIn": "recording_2024-10-23_11-21-30_03150",
+     "how": "drum(): flat clad panel on the chamfer with horizontal ribs every 0.3 m (the drum curve is drawn as the straight BAG chamfer)"
+    }
+   ]
+  },
+  {
+   "tag": "w14-215",
+   "bearing": 215,
+   "lengthM": 6.3,
+   "centre": [
+    4.938069,
+    52.377243
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002134_pano_0000_002201",
+   "capturedAt": "2021-05-10",
+   "checked": true,
+   "items": [
+    {
+     "id": "sw-corner-stair",
+     "kind": "other",
+     "where": "stair and railing to the corner shop (SISSY-BOY HOMELAND)",
+     "approxSizeM": [
+      6,
+      1.2
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002134_pano_0000_002201",
+     "how": "chamfer(): four steps and a rail on the corner runs"
+    }
+   ]
+  },
+  {
+   "tag": "w15-215",
+   "bearing": 215,
+   "lengthM": 6.2,
+   "centre": [
+    4.9379855,
+    52.377279
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2024-10-23_11-21-30_03563",
+   "capturedAt": "2024-10-23",
+   "checked": true,
+   "items": [
+    {
+     "id": "sw-flag",
+     "kind": "sign",
+     "where": "tall flag on a mast at the corner",
+     "approxSizeM": [
+      0.8,
+      3
+     ],
+     "plan": "skipped",
+     "seenIn": "recording_2024-10-23_11-21-30_03563",
+     "skip": {
+      "reason": "temporary",
+      "note": "flag"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "w16-177",
+   "bearing": 177,
+   "lengthM": 5.7,
+   "centre": [
+    4.9402625,
+    52.3771155
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2024-10-23_11-21-30_03530",
+   "capturedAt": "2024-10-23",
+   "checked": true,
+   "items": [
+    {
+     "id": "se-stair-tower",
+     "kind": "tower",
+     "where": "stair tower at the SE end with a tall window",
+     "approxSizeM": [
+      5.7,
+      15
+     ],
+     "plan": "simplified",
+     "seenIn": "recording_2024-10-23_11-21-30_03530",
+     "how": "shell massing; east() windows on the upper east wall"
+    }
+   ]
+  },
+  {
+   "tag": "w17-88",
+   "bearing": 88,
+   "lengthM": 4.6,
+   "centre": [
+    4.9402965,
+    52.3771845
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-06-16_08-26-12_03126",
+   "capturedAt": "2025-06-16",
+   "checked": true,
+   "items": [
+    {
+     "id": "w17-annex-gap",
+     "kind": "other",
+     "where": "yard gate between the annex and the stair tower",
+     "approxSizeM": [
+      4,
+      2.5
+     ],
+     "plan": "skipped",
+     "seenIn": "recording_2025-06-16_08-26-12_03126",
+     "skip": {
+      "reason": "not-visible",
+      "note": "behind the street furniture and parked cars"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "w18-88",
+   "bearing": 88,
+   "lengthM": 4.5,
+   "centre": [
+    4.9402995,
+    52.377141
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-06-16_08-26-12_03127",
+   "capturedAt": "2025-06-16",
+   "checked": true,
+   "items": [
+    {
+     "id": "w18-annex-gap",
+     "kind": "other",
+     "where": "yard gate between the annex and the stair tower",
+     "approxSizeM": [
+      4,
+      2.5
+     ],
+     "plan": "skipped",
+     "seenIn": "recording_2025-06-16_08-26-12_03127",
+     "skip": {
+      "reason": "not-visible",
+      "note": "behind the street furniture and parked cars"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "w19-186",
+   "bearing": 186,
+   "lengthM": 4.3,
+   "centre": [
+    4.9389905,
+    52.377164
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-06-16_08-26-12_03104",
+   "capturedAt": "2025-06-16",
+   "checked": true,
+   "items": [
+    {
+     "id": "s-risalit-2",
+     "kind": "other",
+     "where": "entrance risalit hidden by a tree",
+     "approxSizeM": [
+      4.3,
+      15
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-06-16_08-26-12_03104",
+     "how": "risalit() as w22-185"
+    }
+   ]
+  },
+  {
+   "tag": "w20-185",
+   "bearing": 185,
+   "lengthM": 4.2,
+   "centre": [
+    4.939781,
+    52.3771205
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-06-16_08-26-12_03115",
+   "capturedAt": "2025-06-16",
+   "checked": true,
+   "items": [
+    {
+     "id": "s-kunstuitleen-sign",
+     "kind": "sign",
+     "where": "kunstuitleen sign on the risalit lintel",
+     "approxSizeM": [
+      2.2,
+      0.4
+     ],
+     "plan": "skipped",
+     "seenIn": "recording_2025-06-16_08-26-12_03115",
+     "skip": {
+      "reason": "temporary",
+      "note": "tenant sign"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "w21-185",
+   "bearing": 185,
+   "lengthM": 4.2,
+   "centre": [
+    4.939517,
+    52.3771355
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2024-10-23_11-21-30_03601",
+   "capturedAt": "2024-10-23",
+   "checked": true,
+   "items": [
+    {
+     "id": "s-risalit-3",
+     "kind": "other",
+     "where": "entrance risalit with wooden doors (LUNAR)",
+     "approxSizeM": [
+      4.3,
+      15
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2024-10-23_11-21-30_03601",
+     "how": "risalit() as w22-185"
+    }
+   ]
+  },
+  {
+   "tag": "w22-185",
+   "bearing": 185,
+   "lengthM": 4.2,
+   "centre": [
+    4.939254,
+    52.3771495
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002134_pano_0000_002184",
+   "capturedAt": "2021-05-10",
+   "checked": true,
+   "items": [
+    {
+     "id": "s-risalit-doors",
+     "kind": "other",
+     "where": "wooden four-leaf doors under a concrete lintel in each entrance risalit",
+     "approxSizeM": [
+      3.9,
+      2.6
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002134_pano_0000_002184",
+     "how": "risalit(): bronze-coloured timber doors, lintel slab"
+    },
+    {
+     "id": "s-house-number",
+     "kind": "lettering",
+     "where": "house number 299 over the doors",
+     "approxSizeM": [
+      0.6,
+      0.3
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7316010203-002134_pano_0000_002184",
+     "skip": {
+      "reason": "too-small",
+      "note": "0.3 m numerals"
+     }
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas (all walls)",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/",
+   "licence": "CC BY 4.0"
+  },
+  {
+   "name": "3DBAG LoD2.2 NL.IMBAG.Pand.0363100012142095",
+   "url": "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012142095",
+   "licence": "CC BY 4.0"
+  },
+  {
+   "name": "BAG pand 0363100012142095",
+   "url": "https://service.pdok.nl/lv/bag/wfs/v2_0",
+   "licence": "CC0"
+  },
+  {
+   "name": "Gemeentelijk monument 200635 (municipal register)",
+   "url": "https://api.data.amsterdam.nl/v1/monumenten/monumenten/ba09f5fa-9d8c-4712-99f4-d8f34a3c8efc?_format=json",
+   "licence": "CC0"
+  },
+  {
+   "name": "nl.wikipedia Loods 6",
+   "url": "https://nl.wikipedia.org/wiki/Loods_6",
+   "licence": "CC BY-SA 4.0"
+  },
+  {
+   "name": "Wikimedia Commons File:2013AmsterdamKNSMisland06.jpg (Kleon3)",
+   "url": "https://commons.wikimedia.org/wiki/File:2013AmsterdamKNSMisland06.jpg",
+   "licence": "CC BY-SA 3.0"
+  },
+  {
+   "name": "Wikimedia Commons File:2023 Amsterdam, KNSM-eiland, Loods 6 (01a) (cropped).jpg (Kleon3)",
+   "url": "https://commons.wikimedia.org/wiki/File:2023_Amsterdam,_KNSM-eiland,_Loods_6_(01a)_(cropped).jpg",
+   "licence": "CC BY-SA 4.0"
+  },
+  {
+   "name": "Wikimedia Commons File:2023 Amsterdam, KNSM-eiland, Loods 6 (06).jpg (Kleon3)",
+   "url": "https://commons.wikimedia.org/wiki/File:2023_Amsterdam,_KNSM-eiland,_Loods_6_(06).jpg",
+   "licence": "CC BY-SA 4.0"
+  },
+  {
+   "name": "Wikimedia Commons File:2023 Amsterdam, KNSM-eiland, Loods 6 (10a) (cropped).jpg (Kleon3)",
+   "url": "https://commons.wikimedia.org/wiki/File:2023_Amsterdam,_KNSM-eiland,_Loods_6_(10a)_(cropped).jpg",
+   "licence": "CC BY-SA 4.0"
+  },
+  {
+   "name": "Wikimedia Commons File:2023 Amsterdam, KNSM-eiland, Loods 6 (13).jpg (Kleon3)",
+   "url": "https://commons.wikimedia.org/wiki/File:2023_Amsterdam,_KNSM-eiland,_Loods_6_(13).jpg",
+   "licence": "CC BY-SA 4.0"
+  },
+  {
+   "name": "Wikimedia Commons File:2023 Amsterdam, KNSM-eiland, Loods 6 (47).jpg (Kleon3)",
+   "url": "https://commons.wikimedia.org/wiki/File:2023_Amsterdam,_KNSM-eiland,_Loods_6_(47).jpg",
+   "licence": "CC BY-SA 4.0"
+  }
+ ]
+}

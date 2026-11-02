@@ -69949,6 +69949,785 @@
         "bytes": 60908,
         "triangles": 2618
       }
+    },
+    "gebouw-parnas": {
+      "id": "gebouw-parnas",
+      "name": "Parnassustoren (Gebouw Parnas)",
+      "modelUrl": "./models/gebouw-parnas.glb",
+      "suppressOsmIds": [
+        "NL.IMBAG.Pand.0363100012110783",
+        "w439960824",
+        "w1120971879",
+        "w1120971880",
+        "w1120971881",
+        "w1120971882",
+        "w1120971883",
+        "w1120971884",
+        "w1120971885",
+        "w1120971886",
+        "w1120971888",
+        "w277170895"
+      ],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.86806412,
+          52.34313439
+        ],
+        "headingDegrees": 0,
+        "lengthMetres": 114.4,
+        "widthMetres": 109.9
+      },
+      "surveyed": {
+        "anchor": [
+          4.86806412,
+          52.34313439
+        ],
+        "northOffsetDegrees": 0,
+        "source": "Vertex average of the BAG 0363100012110783 ring (RD, PDOK BAG WFS); wings, bridge, residential slabs and tower are boxes on the BAG ring and the 3DBAG LoD2.2 roof planes of that pand (CC BY 4.0), authored in the building frame turned 2.93 deg from the RD grid (scripts/landmarks/gebouw-parnas-footprints.json, bag-shell-prepare.ts), native east/south metres. Curtain-wall grids, storey heights, the A-frame trestles and the tower crown read from rectified and pitched Gemeente Amsterdam panorama views (scripts/landmarks/gebouw-parnas-inventory.json)."
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 0,
+      "heightMetres": 59.5,
+      "bagYear": 1967,
+      "materialOverrides": {
+        "bronze": "#24272c",
+        "dark": "#2e3135",
+        "glass": "#3e6487",
+        "canopyGlass": "#5f7884",
+        "frame": "#b4b9bc",
+        "concrete": "#bdb8ad",
+        "white": "#e3e2dc",
+        "stone": "#cfcdc6",
+        "slate": "#66696c"
+      },
+      "attribution": {
+        "title": "Parnassustoren and the Parnassusweg bridge building, Locatellikade 1 (complex 1967; tower Herman Bakker, 1975; renovated 2021)",
+        "author": "Map Recall",
+        "sourceUrl": "https://nl.wikipedia.org/wiki/Parnassusweg",
+        "licence": "CC BY 4.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "modifications": "Original texture-free flat-colour geometry: the glazed band of the two wings and the bridge over the Parnassusweg with its black A-frame trestles, the white residential slabs with loggias, the tile-clad ground storey and the dark-framed blue glass tower with its top-storey notches, from Gemeente Amsterdam panoramas (CC BY 4.0) and a Wikimedia Commons photograph by DennisM (CC0), read for proportion only; plan and heights from BAG (CC0) and 3DBAG LoD2.2 (CC BY 4.0). Names and dates: Wikipedia nl 'Parnassusweg' and 'Herman Bakker' (CC BY-SA 4.0). No pixels or meshes imported."
+      },
+      "buildingFootprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.8688048,
+              52.3436241
+            ],
+            [
+              4.8685687,
+              52.3436152
+            ],
+            [
+              4.8686189,
+              52.3431176
+            ],
+            [
+              4.8677864,
+              52.3430873
+            ],
+            [
+              4.8677362,
+              52.3435838
+            ],
+            [
+              4.8672108,
+              52.3435634
+            ],
+            [
+              4.867234,
+              52.3433388
+            ],
+            [
+              4.8675207,
+              52.3433499
+            ],
+            [
+              4.867595,
+              52.3426315
+            ],
+            [
+              4.867832,
+              52.3426404
+            ],
+            [
+              4.867798,
+              52.3429756
+            ],
+            [
+              4.8686253,
+              52.3430057
+            ],
+            [
+              4.8686591,
+              52.3426705
+            ],
+            [
+              4.8689001,
+              52.3426795
+            ],
+            [
+              4.8688048,
+              52.3436241
+            ]
+          ]
+        ]
+      },
+      "buildingCategory": "landmark",
+      "bounds": {
+        "min": [
+          -56.971439361572266,
+          0,
+          -54.178070068359375
+        ],
+        "max": [
+          56.580047607421875,
+          59.5,
+          55.83992004394531
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.86806412,
+          52.34313439
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 90,
+        "facadeBearingDegrees": 0,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 113.55148696899414,
+        "heightMetres": 59.5,
+        "depthMetres": 110.01799011230469,
+        "depthCoverage": 1.0010736133967668
+      },
+      "triangles": 10724,
+      "bytes": 164376,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
+      "lod1": {
+        "sourceHash": "bc0f100cd8b0cea7",
+        "buildVersion": 2,
+        "bytes": 42128,
+        "triangles": 1704
+      }
+    },
+    "andaz-prinsengracht": {
+      "id": "andaz-prinsengracht",
+      "name": "Andaz Amsterdam Prinsengracht (former Openbare Bibliotheek)",
+      "modelUrl": "./models/andaz-prinsengracht.glb",
+      "suppressOsmIds": [
+        "NL.IMBAG.Pand.0363100012253957",
+        "w266678976"
+      ],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.8831707,
+          52.36776962
+        ],
+        "headingDegrees": 0,
+        "lengthMetres": 49.5,
+        "widthMetres": 46.4
+      },
+      "surveyed": {
+        "anchor": [
+          4.8831707,
+          52.36776962
+        ],
+        "northOffsetDegrees": 0,
+        "source": "Vertex average of the BAG 0363100012253957 ring (RD, PDOK BAG WFS); massing on the BAG ring and the 3DBAG LoD2.2 roof planes of that pand (CC BY 4.0) in the building frame turned 3.67 deg from the RD grid (scripts/landmarks/andaz-prinsengracht-footprints.json, bag-shell-prepare.ts), native east/south metres. Plane widths and heights, window order per storey, the stone band and the strips measured on the rectified Gemeente Amsterdam panorama crop w01-273 at 48.8 px/m (scripts/landmarks/andaz-prinsengracht-inventory.json)."
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 0,
+      "heightMetres": 23.7,
+      "bagYear": 1974,
+      "materialOverrides": {
+        "brick": "#4d3d3a",
+        "glass": "#3b4248",
+        "canopyGlass": "#7d8c93",
+        "frame": "#c9c8c2",
+        "stone": "#45474a",
+        "concrete": "#b5b2aa",
+        "bronze": "#2f3134",
+        "dark": "#26272a",
+        "slate": "#5d5f62"
+      },
+      "attribution": {
+        "title": "Andaz Amsterdam Prinsengracht, former Centrale Openbare Bibliotheek (Rob Nord, bureau G. de Klerk, 1973-1977; municipal monument 200611)",
+        "author": "Map Recall",
+        "sourceUrl": "https://nl.wikipedia.org/wiki/Prinsengracht_587",
+        "licence": "CC BY 4.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "modifications": "Original texture-free flat-colour geometry: the four brick planes of different heights with their concrete copings, the recessed glazed strips, the per-storey window order, the dark stone puilijst and plane D's shoulder, from a rectified Gemeente Amsterdam panorama (CC BY 4.0) read for proportion only and the municipal monument 200611 description (CC0); plan and heights from BAG (CC0) and 3DBAG LoD2.2 (CC BY 4.0). Architect and dates: Wikipedia nl 'Prinsengracht 587' (CC BY-SA 4.0) and the register. No pixels or meshes imported."
+      },
+      "buildingFootprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.8828533,
+              52.3680129
+            ],
+            [
+              4.8828525,
+              52.3680024
+            ],
+            [
+              4.88285,
+              52.3680025
+            ],
+            [
+              4.8828242,
+              52.3677044
+            ],
+            [
+              4.8828247,
+              52.3677037
+            ],
+            [
+              4.8829923,
+              52.3676979
+            ],
+            [
+              4.8829922,
+              52.3676969
+            ],
+            [
+              4.8830707,
+              52.3676944
+            ],
+            [
+              4.8830633,
+              52.3676017
+            ],
+            [
+              4.8831881,
+              52.3675977
+            ],
+            [
+              4.8831891,
+              52.3676095
+            ],
+            [
+              4.883195,
+              52.3676093
+            ],
+            [
+              4.8832022,
+              52.3676932
+            ],
+            [
+              4.8832185,
+              52.3676926
+            ],
+            [
+              4.883227,
+              52.3677841
+            ],
+            [
+              4.8834894,
+              52.3677744
+            ],
+            [
+              4.8834901,
+              52.3677819
+            ],
+            [
+              4.8835458,
+              52.3677798
+            ],
+            [
+              4.8835492,
+              52.367815
+            ],
+            [
+              4.8834084,
+              52.3678202
+            ],
+            [
+              4.8834077,
+              52.3678127
+            ],
+            [
+              4.8832302,
+              52.3678193
+            ],
+            [
+              4.8832466,
+              52.3679974
+            ],
+            [
+              4.8828533,
+              52.3680129
+            ]
+          ]
+        ]
+      },
+      "buildingCategory": "landmark",
+      "bounds": {
+        "min": [
+          -23.764055252075195,
+          -7.629394644936838e-7,
+          -27.22568702697754
+        ],
+        "max": [
+          25.8637638092041,
+          23.700000762939453,
+          19.23365592956543
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.8831707,
+          52.36776962
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 90,
+        "facadeBearingDegrees": 0,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 49.6278190612793,
+        "heightMetres": 23.700001525878918,
+        "depthMetres": 46.45934295654297,
+        "depthCoverage": 1.0012789430289433
+      },
+      "triangles": 4660,
+      "bytes": 78416,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
+      "lod1": {
+        "sourceHash": "a2128c7efc5f9712",
+        "buildVersion": 2,
+        "bytes": 30004,
+        "triangles": 976
+      }
+    },
+    "loods-6": {
+      "id": "loods-6",
+      "name": "Loods 6",
+      "modelUrl": "./models/loods-6.glb",
+      "suppressOsmIds": [
+        "NL.IMBAG.Pand.0363100012142095"
+      ],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.93917721,
+          52.37722371
+        ],
+        "headingDegrees": 0,
+        "lengthMetres": 183,
+        "widthMetres": 56.5
+      },
+      "surveyed": {
+        "anchor": [
+          4.93917721,
+          52.37722371
+        ],
+        "northOffsetDegrees": 0,
+        "source": "Vertex average of the BAG 0363100012142095 outline (RD, 3DBAG LoD0); massing is the 3DBAG LoD2.2 shell of that pand (CC BY 4.0) in native east/south metres (scripts/landmarks/loods-6-prepare.ts). Bay grid, storey lines, risalits, Kompaszaal bays, chamfer ribbons, quay bays, serre and lettering measured on rectified Gemeente Amsterdam panorama crops at 50 px/m and Commons photographs (scripts/landmarks/loods-6-inventory.json)."
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 0,
+      "heightMetres": 16.4,
+      "bagYear": 1924,
+      "materialOverrides": {
+        "concrete": "#d3d5d1",
+        "white": "#e9e8e2",
+        "frame": "#3b4045",
+        "glass": "#4e6572",
+        "canopyGlass": "#8fa3a8",
+        "slate": "#5d6166",
+        "greyBrick": "#6f6e6b",
+        "ochre": "#cbbb90",
+        "red": "#7a3b2a",
+        "bronze": "#8a5a32",
+        "stone": "#b9b9b2",
+        "dark": "#53575a",
+        "sandstone": "#e4e3dc"
+      },
+      "attribution": {
+        "title": "Loods 6, KNSM-laan 143-311 (KNSM warehouse and passenger terminal, J.G. and A.D. van Gendt, c. 1920-1924; gemeentelijk monument)",
+        "author": "Map Recall",
+        "sourceUrl": "https://nl.wikipedia.org/wiki/Loods_6",
+        "licence": "CC BY 4.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "modifications": "Original texture-free flat-colour geometry on the 3DBAG LoD2.2 shell (CC BY 4.0) and BAG outline (CC0): pilastered KNSM-laan front with steel shop fronts, ribbon windows and white-framed upper windows, four entrance risalits, the west arcade, the 1956 Kompaszaal bays and canopy, the SW chamfer ribbons, the NW serre under its louvred canopy, the corrugated drum, the Surinamekade loading platform and quay bays, the terrace storey and the standing LOODS 6 letters, the Messinastraat brick annex; read for proportion only from Gemeente Amsterdam panoramas (CC BY 4.0) and Wikimedia Commons photographs (CC BY-SA 3.0/4.0, see scripts/landmarks/loods-6-inventory.json). No pixels or meshes imported."
+      },
+      "buildingFootprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.9387305,
+              52.3771855
+            ],
+            [
+              4.9389579,
+              52.3771728
+            ],
+            [
+              4.9389566,
+              52.3771637
+            ],
+            [
+              4.9390189,
+              52.3771604
+            ],
+            [
+              4.9390202,
+              52.3771695
+            ],
+            [
+              4.9392214,
+              52.3771584
+            ],
+            [
+              4.9392201,
+              52.3771491
+            ],
+            [
+              4.9392823,
+              52.3771459
+            ],
+            [
+              4.9392836,
+              52.3771552
+            ],
+            [
+              4.9394843,
+              52.3771441
+            ],
+            [
+              4.939483,
+              52.3771349
+            ],
+            [
+              4.9395453,
+              52.3771315
+            ],
+            [
+              4.9395467,
+              52.3771407
+            ],
+            [
+              4.9397483,
+              52.3771296
+            ],
+            [
+              4.9397469,
+              52.3771203
+            ],
+            [
+              4.9398093,
+              52.3771169
+            ],
+            [
+              4.9398107,
+              52.3771262
+            ],
+            [
+              4.9402183,
+              52.3771048
+            ],
+            [
+              4.9402188,
+              52.3771118
+            ],
+            [
+              4.9403012,
+              52.3771145
+            ],
+            [
+              4.9403008,
+              52.3771191
+            ],
+            [
+              4.9402985,
+              52.3771191
+            ],
+            [
+              4.9402954,
+              52.3771588
+            ],
+            [
+              4.9402977,
+              52.3771588
+            ],
+            [
+              4.9402974,
+              52.3771621
+            ],
+            [
+              4.9402951,
+              52.377162
+            ],
+            [
+              4.9402919,
+              52.377203
+            ],
+            [
+              4.9402944,
+              52.3772031
+            ],
+            [
+              4.940279,
+              52.3773818
+            ],
+            [
+              4.9402763,
+              52.3773817
+            ],
+            [
+              4.9402703,
+              52.3774642
+            ],
+            [
+              4.9400339,
+              52.3774777
+            ],
+            [
+              4.9377516,
+              52.377603
+            ],
+            [
+              4.9376295,
+              52.3775694
+            ],
+            [
+              4.9376106,
+              52.3774365
+            ],
+            [
+              4.9379372,
+              52.3772963
+            ],
+            [
+              4.9379361,
+              52.3772953
+            ],
+            [
+              4.937944,
+              52.3772921
+            ],
+            [
+              4.9379449,
+              52.377293
+            ],
+            [
+              4.9380206,
+              52.3772605
+            ],
+            [
+              4.9380198,
+              52.3772597
+            ],
+            [
+              4.9380275,
+              52.3772564
+            ],
+            [
+              4.9380284,
+              52.3772572
+            ],
+            [
+              4.9381046,
+              52.3772244
+            ],
+            [
+              4.9381036,
+              52.3772236
+            ],
+            [
+              4.9381176,
+              52.3772191
+            ],
+            [
+              4.9382037,
+              52.3772147
+            ],
+            [
+              4.9382913,
+              52.3772096
+            ],
+            [
+              4.9387305,
+              52.3771855
+            ]
+          ]
+        ]
+      },
+      "buildingCategory": "landmark",
+      "bounds": {
+        "min": [
+          -107.78886413574219,
+          -1.9073486612342094e-7,
+          -45.718868255615234
+        ],
+        "max": [
+          76.45999908447266,
+          17.448999404907227,
+          16.14914894104004
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.93917721,
+          52.37722371
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 90,
+        "facadeBearingDegrees": 0,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 184.24886322021484,
+        "heightMetres": 17.448999595642093,
+        "depthMetres": 61.86801719665527,
+        "depthCoverage": 1.0950091539231022
+      },
+      "triangles": 32611,
+      "bytes": 456088,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
+      "lod1": {
+        "sourceHash": "aac8e27524281277",
+        "buildVersion": 2,
+        "bytes": 100720,
+        "triangles": 5020
+      }
+    },
+    "atlanta-stadhouderskade": {
+      "id": "atlanta-stadhouderskade",
+      "name": "Atlanta",
+      "modelUrl": "./models/atlanta-stadhouderskade.glb",
+      "suppressOsmIds": [
+        "NL.IMBAG.Pand.0363100012080492"
+      ],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.87911872,
+          52.36313299
+        ],
+        "headingDegrees": 0,
+        "lengthMetres": 41,
+        "widthMetres": 38
+      },
+      "surveyed": {
+        "anchor": [
+          4.87911872,
+          52.36313299
+        ],
+        "northOffsetDegrees": 0,
+        "source": "Vertex average of the BAG 0363100012080492 outline (RD, 3DBAG LoD0); massing is the 3DBAG LoD2.2 shell of that pand (CC BY 4.0) in native east/south metres (scripts/landmarks/atlanta-stadhouderskade-prepare.ts). Storey lines, window axes, oriels, entrance portal, attic and tower slit measured on the rectified Gemeente Amsterdam panorama crop w01-52 at 42.2 px/m and the Commons photograph 'Amsterdam Stadhouderskade 5.jpg' (scripts/landmarks/atlanta-stadhouderskade-inventory.json)."
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 0,
+      "heightMetres": 42.9,
+      "bagYear": 1929,
+      "materialOverrides": {
+        "brick": "#71392f",
+        "red": "#6a2f26",
+        "stone": "#8f8c87",
+        "white": "#e8e6df",
+        "glass": "#4b5a64",
+        "frame": "#3a3d40",
+        "dark": "#5a3e2a",
+        "ochre": "#b9774a",
+        "concrete": "#dcdcd8",
+        "slate": "#5a5d61",
+        "blue": "#2f4e8a",
+        "bronze": "#5b3a2a"
+      },
+      "attribution": {
+        "title": "Atlanta, Stadhouderskade 5-6 (office building, F.A. Warners, 1927-1928, attic storey 1955; gemeentelijk monument)",
+        "author": "Map Recall",
+        "sourceUrl": "https://nl.wikipedia.org/wiki/Stadhouderskade_5",
+        "licence": "CC BY 4.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "modifications": "Original texture-free flat-colour geometry on the 3DBAG LoD2.2 shell (CC BY 4.0) and BAG outline (CC0): the shop floor with its louvred fascia, the first floor of narrow windows with relief piers, the office storeys with boxed-out transom lights, the two half-round oriels, the bracket course, corner blocks, the ribbed attic and the 1955 glass storey, the granite entrance portal and the tower's glazed slit; read for proportion only from Gemeente Amsterdam panoramas (CC BY 4.0) and Wikimedia Commons photographs (CC BY-SA 3.0, see scripts/landmarks/atlanta-stadhouderskade-inventory.json). No pixels or meshes imported."
+      },
+      "buildingFootprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.8791772,
+              52.3633353
+            ],
+            [
+              4.8788995,
+              52.3632355
+            ],
+            [
+              4.8788677,
+              52.3632258
+            ],
+            [
+              4.8790516,
+              52.3629942
+            ],
+            [
+              4.8791638,
+              52.363029
+            ],
+            [
+              4.8792063,
+              52.3629971
+            ],
+            [
+              4.879465,
+              52.3631141
+            ],
+            [
+              4.8791772,
+              52.3633353
+            ]
+          ]
+        ]
+      },
+      "buildingCategory": "landmark",
+      "bounds": {
+        "min": [
+          -17.02400016784668,
+          -5.9604645663569045e-9,
+          -22.482999801635742
+        ],
+        "max": [
+          23.569000244140625,
+          42.93299865722656,
+          15.627138137817383
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.87911872,
+          52.36313299
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 90,
+        "facadeBearingDegrees": 0,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 40.593000411987305,
+        "heightMetres": 42.93299866318703,
+        "depthMetres": 38.110137939453125,
+        "depthCoverage": 1.0028983668277138
+      },
+      "triangles": 35209,
+      "bytes": 432500,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
+      "lod1": {
+        "sourceHash": "71e0a14ab60dd9fa",
+        "buildVersion": 2,
+        "bytes": 118948,
+        "triangles": 5671
+      }
     }
   }
 }
