@@ -1616,6 +1616,16 @@
       "version": "d20654687b22c16a",
       "dateSource": "asset-update"
     },
+    "hofkerk": {
+      "updatedAt": "2026-11-02T05:48:11.867Z",
+      "version": "40e41ffe3add2dd9",
+      "dateSource": "asset-update"
+    },
+    "hofkerk.lod1": {
+      "updatedAt": "2026-11-02T05:48:12.690Z",
+      "version": "08cc2590aab242e9",
+      "dateSource": "asset-update"
+    },
     "hollandsche-manege": {
       "updatedAt": "2026-11-01T18:01:03.941Z",
       "version": "023c8ea79a32b66b",
@@ -3804,6 +3814,16 @@
     "waterdraagster-bellamyplein.lod1": {
       "updatedAt": "2026-10-14T04:55:06.681Z",
       "version": "22e5f635227ed222",
+      "dateSource": "asset-update"
+    },
+    "watertoren-amstelveenseweg": {
+      "updatedAt": "2026-11-02T06:02:59.514Z",
+      "version": "2293803e634b9235",
+      "dateSource": "asset-update"
+    },
+    "watertoren-amstelveenseweg.lod1": {
+      "updatedAt": "2026-11-02T06:06:44.131Z",
+      "version": "b275c3f05368732d",
       "dateSource": "asset-update"
     },
     "wereldmuseum-amsterdam": {

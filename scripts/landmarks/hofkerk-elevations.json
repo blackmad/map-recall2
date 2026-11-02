@@ -1,0 +1,24 @@
+{
+ "id": "hofkerk",
+ "source": "Counted 2026-11-02 (lane #204) from the landmark-brief.ts crops of the Gemeente Amsterdam panoramas (CC BY 4.0) w01-271 (west front), cross-checked on Wikimedia Commons photographs (CC BY-SA; staging/landmarks/hofkerk/sources.md). Bearings in the model frame (the catalogue turns it 1.2 degrees onto the ring).",
+ "countedBy": "photo",
+ "facades": [
+  {
+   "name": "West front above the portals: tower, gable, clock block",
+   "bearing": 270,
+   "frontDepth": 34.55,
+   "depthBand": 1.0,
+   "heightM": [
+    4.5,
+    26
+   ],
+   "photo": "artifacts/landmark-briefs/hofkerk/w01-271.jpg",
+   "rows": [
+    2
+   ],
+   "gables": 1,
+   "note": "Above the portals the closed front has one opening row, the twin belfry openings high on the tower (w01 thumb; Commons 'H.H. Martelaren van Gorcum kerk 2/3'); the pelican medallion and the clock are not openings. One gable peak, the nave gable. Below 4.5 m the photo shows three portals with timber doors (the centre one 2.4 m wide, the side ones 1.3 m) and two narrow round-headed lights between them; the model matches (elevation png of 2026-11-02), but the rhythm audit reads the wider centre door as off-size, so that band is left out of the spec."
+  }
+ ],
+ "note": "The pastorie south-west front (w03) counts 6/5/3 on the photo and the model matches it (artifacts/landmark-lanes/hofkerk/elevations, 2026-11-02 run), but its windows are grouped irregularly (1 + 2 + 3 on the ground floor) and the rhythm audit reads the gaps as missing windows, so it is not declared here."
+}

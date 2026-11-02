@@ -1,0 +1,894 @@
+{
+ "schemaVersion": 1,
+ "id": "hofkerk",
+ "pand": "0363100012123068",
+ "brief": "scripts/landmarks/hofkerk-brief.md",
+ "signature": [
+  "w-tower",
+  "w-gable",
+  "w-portal-centre",
+  "x-crossing",
+  "w-clock",
+  "w-pelican",
+  "w-belfry",
+  "n-aisle",
+  "e-apse",
+  "p-roof"
+ ],
+ "walls": [
+  {
+   "tag": "w01-271",
+   "bearing": 271,
+   "lengthM": 27.5,
+   "centre": [
+    4.9333678,
+    52.3530905
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2024-09-17_09-46-52_01528",
+   "capturedAt": "2024-09-17",
+   "checked": true,
+   "items": [
+    {
+     "id": "w-tower",
+     "kind": "tower",
+     "where": "left (north) third: the square west tower to its white-coped parapet at 26 m, the narrow tiled pyramid and cross to 32-33.6 m",
+     "approxSizeM": [
+      9.75,
+      33.6
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2024-09-17_09-46-52_01528",
+     "how": "tower(): walls, white coping, flat leads, pyramid ridgeRoof, cross blocks (3DBAG 25.7-26.1 / 32.0 m)"
+    },
+    {
+     "id": "w-belfry",
+     "kind": "window-shape",
+     "where": "top of the tower: two round-headed belfry openings on a white sill band, a white colonnette between them",
+     "approxSizeM": [
+      3.9,
+      3.7
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2024-09-17_09-46-52_01528",
+     "how": "archOpeningWall round heads, stone colonnette slab and sill band (same on the north face, Commons H.H. Martelaren van Gorcum kerk 2/3)"
+    },
+    {
+     "id": "w-pelican",
+     "kind": "relief",
+     "where": "tower face at about 8 m: J. Mendes da Costa's pelican roundel in grey-white stone in a brick ring",
+     "approxSizeM": [
+      2.3,
+      2.3
+     ],
+     "plan": "simplified",
+     "seenIn": "recording_2024-09-17_09-46-52_01528",
+     "how": "stone disc in a brick ring with the body and two wing lobes in higher relief; the feather carving is not modelled",
+     "note": "Commons 011205MvG Beeldhouwwerk Pelikaan J. Mendes da Costa"
+    },
+    {
+     "id": "w-gable",
+     "kind": "other",
+     "where": "centre: the steep closed nave gable rising above the roof, stone kneelers at its shoulders (12.9 m) and a stone finial block at the apex",
+     "approxSizeM": [
+      12.8,
+      7.5
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2024-09-17_09-46-52_01528",
+     "how": "extruded gable prism 0.45 m above the roof, kneeler slabs, stacked stone finial"
+    },
+    {
+     "id": "w-portal-centre",
+     "kind": "window-shape",
+     "where": "bottom centre: the main pointed portal, three stepped brick archivolts, white sculpted impost blocks, timber double door under a stone lintel, tympanum with the mosaic of Christ",
+     "approxSizeM": [
+      4.4,
+      7.0
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2024-09-17_09-46-52_01528",
+     "how": "archOpeningWall pointed opening 0.85 m deep, three archRing orders, stone impost slabs, brick tympanum panel with a gold mosaic roundel, dark (timber) door, stone steps"
+    },
+    {
+     "id": "w-portals-side",
+     "kind": "window-shape",
+     "where": "either side of the main portal: smaller pointed portals with two archivolts, impost blocks, mosaic tympana and timber doors",
+     "approxSizeM": [
+      2.9,
+      5.0
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2024-09-17_09-46-52_01528",
+     "how": "as the main portal, smaller, two orders"
+    },
+    {
+     "id": "w-mosaics",
+     "kind": "other",
+     "where": "in the three tympana: the mosaics (Christ in the centre, saints either side)",
+     "approxSizeM": [
+      1.3,
+      1.3
+     ],
+     "plan": "simplified",
+     "seenIn": "recording_2024-09-17_09-46-52_01528",
+     "how": "gold roundel inside each tympanum; the figures are not drawn",
+     "note": "Commons 2020 Mozaiek Hofkerk (1-4)"
+    },
+    {
+     "id": "w-lancets",
+     "kind": "window-shape",
+     "where": "between the portals: two small round-headed lights",
+     "approxSizeM": [
+      0.45,
+      1.9
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2024-09-17_09-46-52_01528",
+     "how": "archOpeningWall round heads"
+    },
+    {
+     "id": "w-clock",
+     "kind": "clock",
+     "where": "right, on the clock block at 12.5 m: a dark dial with white numerals and hands in a white ring",
+     "approxSizeM": [
+      1.65,
+      1.65
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2024-09-17_09-46-52_01528",
+     "how": "white ring, dark dial, twelve white marks and two hands as reliefs"
+    },
+    {
+     "id": "w-clockblock",
+     "kind": "tower",
+     "where": "right: the clock block to its white coping at 14.4 m under a small tiled hip",
+     "approxSizeM": [
+      5.0,
+      16.4
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2024-09-17_09-46-52_01528",
+     "how": "clockBlock(): walls, white coping, pyramid roof (3DBAG 14.3-16.4 m)"
+    },
+    {
+     "id": "w-steps",
+     "kind": "other",
+     "where": "before the portals: stone steps",
+     "approxSizeM": [
+      4.8,
+      0.3
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2024-09-17_09-46-52_01528",
+     "how": "two stone slabs per portal"
+    },
+    {
+     "id": "w-sign",
+     "kind": "sign",
+     "where": "right of the right portal: small blue street-name plate",
+     "approxSizeM": [
+      0.4,
+      0.25
+     ],
+     "plan": "skipped",
+     "seenIn": "recording_2024-09-17_09-46-52_01528",
+     "skip": {
+      "reason": "too-small",
+      "note": "a street-name plate, 0.4 m"
+     }
+    },
+    {
+     "id": "w-containers",
+     "kind": "other",
+     "where": "before the tower: two white utility containers",
+     "approxSizeM": [
+      6.0,
+      2.6
+     ],
+     "plan": "skipped",
+     "seenIn": "recording_2024-09-17_09-46-52_01528",
+     "skip": {
+      "reason": "temporary",
+      "note": "Liander site containers (2024), not part of the building"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "w02-1",
+   "bearing": 1,
+   "lengthM": 21.5,
+   "centre": [
+    4.933728,
+    52.3531719
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002586_pano_0002_003066",
+   "capturedAt": "2022-05-18",
+   "checked": true,
+   "items": [
+    {
+     "id": "n-bays",
+     "kind": "window-shape",
+     "where": "behind the beech: the buttressed north aisle bays (triples of round-headed clerestory lights, four small lights per bay below a lean-to, white eaves bands)",
+     "approxSizeM": [
+      21.5,
+      13
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002586_pano_0002_003066",
+     "how": "nave() clerestory lights and northAisle(): lean-tos, aisle lights, square windows, stepped buttresses with stone caps",
+     "note": "mostly hidden by the tree; counted on Commons Overzicht noordgevel - 20368611 - RCE and 130330Exterieur noordzijde"
+    }
+   ]
+  },
+  {
+   "tag": "w03-226",
+   "bearing": 226,
+   "lengthM": 18.9,
+   "centre": [
+    4.9335173,
+    52.3528392
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001685_pano_0001_000108",
+   "capturedAt": "2020-04-30",
+   "checked": true,
+   "items": [
+    {
+     "id": "p-sash",
+     "kind": "window-shape",
+     "where": "pastorie south-west front: white-framed sash windows in three storeys (1 + 2 pairs + 3 at the top... per row: ground 1, 2, 3; first floor 2 pairs; top 3 single), smaller at the top",
+     "approxSizeM": [
+      16,
+      9
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001685_pano_0001_000108",
+     "how": "flat-head cuts with white reveals and white glazing bars, positions from the rectified crop"
+    },
+    {
+     "id": "p-lintels",
+     "kind": "other",
+     "where": "white stone blocks at the ends of the brick lintel courses over each window group",
+     "approxSizeM": [
+      0.22,
+      0.22
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001685_pano_0001_000108",
+     "how": "lintelBlocks() stone slabs 6 cm proud"
+    },
+    {
+     "id": "p-cornice",
+     "kind": "other",
+     "where": "white cornice at the eaves",
+     "approxSizeM": [
+      19,
+      0.3
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001685_pano_0001_000108",
+     "how": "white slab"
+    },
+    {
+     "id": "p-chimneys",
+     "kind": "other",
+     "where": "two broad chimneys with projecting caps on the roof",
+     "approxSizeM": [
+      1.2,
+      1.6
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001685_pano_0001_000108",
+     "how": "brick chimney blocks with stone caps on the ridge"
+    },
+    {
+     "id": "p-pipe",
+     "kind": "other",
+     "where": "a flue pipe on the wall top",
+     "approxSizeM": [
+      0.2,
+      1.5
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7316010203-001685_pano_0001_000108",
+     "skip": {
+      "reason": "too-small",
+      "note": "a 20 cm flue"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "w04-136",
+   "bearing": 136,
+   "lengthM": 11.7,
+   "centre": [
+    4.9336757,
+    52.3528148
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-06-26_11-50-11_00748",
+   "capturedAt": "2025-06-26",
+   "checked": true,
+   "items": [
+    {
+     "id": "p-roof",
+     "kind": "other",
+     "where": "pastorie: the steep hipped tiled roof with a chimney at its top",
+     "approxSizeM": [
+      11.7,
+      6.2
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-06-26_11-50-11_00748",
+     "how": "ridgeRoof hip to 16.8 m with two chimneys"
+    },
+    {
+     "id": "p-se-windows",
+     "kind": "window-shape",
+     "where": "south-east front: white sash windows, a wide double window with a small iron balcony on the first floor, an arched door below",
+     "approxSizeM": [
+      11.7,
+      9
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-06-26_11-50-11_00748",
+     "how": "flat-head cuts, a round-headed door cut, a thin iron balcony slab"
+    },
+    {
+     "id": "p-tent",
+     "kind": "other",
+     "where": "green market umbrella in the garden",
+     "approxSizeM": [
+      3,
+      2.5
+     ],
+     "plan": "skipped",
+     "seenIn": "recording_2025-06-26_11-50-11_00748",
+     "skip": {
+      "reason": "temporary",
+      "note": "garden parasol"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "w05-1",
+   "bearing": 1,
+   "lengthM": 11.5,
+   "centre": [
+    4.9334548,
+    52.3532129
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2024-09-17_09-46-52_01520",
+   "capturedAt": "2024-09-17",
+   "checked": true,
+   "items": [
+    {
+     "id": "t-north",
+     "kind": "window-shape",
+     "where": "tower north face: plain brick to the parapet; a small round-headed light mid-height and a pair low down",
+     "approxSizeM": [
+      9.75,
+      26
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2024-09-17_09-46-52_01520",
+     "how": "archOpeningWall lights"
+    },
+    {
+     "id": "n-gate",
+     "kind": "window-shape",
+     "where": "porch bay east of the tower: the big round-arched gate with its dark iron grille, a brick archivolt, a lean-to and three lights above",
+     "approxSizeM": [
+      3.0,
+      3.0
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2024-09-17_09-46-52_01520",
+     "how": "round-headed cut with a dark back and an archRing"
+    },
+    {
+     "id": "n-aisle",
+     "kind": "window-shape",
+     "where": "north aisle: buttresses with white sloped caps, lean-tos, triples of clerestory lights, quadruple small aisle lights",
+     "approxSizeM": [
+      21,
+      13
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2024-09-17_09-46-52_01520",
+     "how": "northAisle(), buttress()"
+    }
+   ]
+  },
+  {
+   "tag": "w06-271",
+   "bearing": 271,
+   "lengthM": 10.7,
+   "centre": [
+    4.9338868,
+    52.3532183
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-06-26_11-50-11_00779",
+   "capturedAt": "2025-06-26",
+   "checked": true,
+   "items": [
+    {
+     "id": "x-crossing",
+     "kind": "tower",
+     "where": "behind: the crossing tower, white coping at 21 m, the tiled pyramid and the cross to 31 m",
+     "approxSizeM": [
+      13.7,
+      31
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-06-26_11-50-11_00779",
+     "how": "crossing(): walls, skirt, pyramid ridgeRoof, stone cross"
+    },
+    {
+     "id": "x-lancets",
+     "kind": "window-shape",
+     "where": "crossing tower face above the transept: an oculus over graded round-headed lancets",
+     "approxSizeM": [
+      6.3,
+      8.5
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-06-26_11-50-11_00779",
+     "how": "six graded archOpeningWall lancets and oculus() on the north and south faces",
+     "note": "Commons 011205MvG Exterieur Hofkerk Noordzijde shows five plus a short one, graded"
+    },
+    {
+     "id": "tr-west",
+     "kind": "window-shape",
+     "where": "north transept long west wall: five round-headed lights under the white eaves band",
+     "approxSizeM": [
+      5.6,
+      2.4
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-06-26_11-50-11_00779",
+     "how": "archOpeningWall lights"
+    },
+    {
+     "id": "tr-gable-n",
+     "kind": "other",
+     "where": "north transept gable seen end on, with its oculus",
+     "approxSizeM": [
+      13,
+      7.6
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-06-26_11-50-11_00779",
+     "how": "transept() gable prism"
+    },
+    {
+     "id": "tr-door",
+     "kind": "window-shape",
+     "where": "low annex before the gable: a round-headed door in a white stone surround",
+     "approxSizeM": [
+      1.4,
+      2.7
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-06-26_11-50-11_00779",
+     "how": "round-headed cut and a stone archRing"
+    },
+    {
+     "id": "sacred-heart",
+     "kind": "sculpture",
+     "where": "on the lawn north of the church: Van der Meij's Sacred Heart statue (1955) on a pedestal with two stone posts",
+     "approxSizeM": [
+      1.5,
+      4.5
+     ],
+     "plan": "skipped",
+     "seenIn": "recording_2025-06-26_11-50-11_00779",
+     "skip": {
+      "reason": "not-visible",
+      "note": "a free-standing statue on the lawn about 12 m north of the BAG outline, not part of this pand; belongs to the sculpture/impostor track (docs/sculptures.md); Commons 2020 Heilig Hartbeeld"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "w07-316",
+   "bearing": 316,
+   "lengthM": 7.4,
+   "centre": [
+    4.9334588,
+    52.3529236
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2024-09-17_09-46-52_01476",
+   "capturedAt": "2024-09-17",
+   "checked": true,
+   "items": [
+    {
+     "id": "p-porch",
+     "kind": "window-shape",
+     "where": "pastorie north-west: the deep round-arched porch with a timber door",
+     "approxSizeM": [
+      1.4,
+      3.9
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2024-09-17_09-46-52_01476",
+     "how": "round-headed cut 0.9 m deep with a dark back"
+    },
+    {
+     "id": "p-madonna",
+     "kind": "relief",
+     "where": "between the paired windows: a square relief tile (Madonna and Child)",
+     "approxSizeM": [
+      0.8,
+      0.8
+     ],
+     "plan": "simplified",
+     "seenIn": "recording_2024-09-17_09-46-52_01476",
+     "how": "stone square with a dark inset; the figures are not drawn"
+    },
+    {
+     "id": "p-nw-windows",
+     "kind": "window-shape",
+     "where": "paired white sash windows in two storeys, white lintel blocks; a small oculus in the top storey",
+     "approxSizeM": [
+      2.4,
+      6
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2024-09-17_09-46-52_01476",
+     "how": "flat cuts, lintelBlocks, oculus()"
+    },
+    {
+     "id": "p-plate",
+     "kind": "sign",
+     "where": "blue name plate by the church door",
+     "approxSizeM": [
+      0.5,
+      0.3
+     ],
+     "plan": "skipped",
+     "seenIn": "recording_2024-09-17_09-46-52_01476",
+     "skip": {
+      "reason": "too-small",
+      "note": "small name plate"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "w08-181",
+   "bearing": 181,
+   "lengthM": 6.5,
+   "centre": [
+    4.93383,
+    52.3528416
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-06-26_12-24-02_00082",
+   "capturedAt": "2025-06-26",
+   "checked": true,
+   "items": [
+    {
+     "id": "s-transept",
+     "kind": "window-shape",
+     "where": "through the trees: four tall round-headed lancets in the crossing tower's south face, the south transept roof, the tall chimney",
+     "approxSizeM": [
+      4,
+      6
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-06-26_12-24-02_00082",
+     "how": "crossing() lancets on the south face, nave() chimney block"
+    }
+   ]
+  },
+  {
+   "tag": "w09-91",
+   "bearing": 91,
+   "lengthM": 5.9,
+   "centre": [
+    4.9341978,
+    52.3530595
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000752_pano_0000_003317",
+   "capturedAt": "2018-05-25",
+   "checked": true,
+   "items": [
+    {
+     "id": "e-apse",
+     "kind": "other",
+     "where": "east end: the three-sided apse with stepped buttresses at the angles and a white coping, its hip apex just above",
+     "approxSizeM": [
+      12.4,
+      15
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-000752_pano_0000_003317",
+     "how": "apse(): walls, coping, ridgeRoof hip, two-stage buttresses with stone caps"
+    },
+    {
+     "id": "e-chapels",
+     "kind": "other",
+     "where": "either side of the apse: small polygonal chapels with pointed tiled roofs and small round-headed lights",
+     "approxSizeM": [
+      4.5,
+      8.4
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-000752_pano_0000_003317",
+     "how": "chapels(): walls, white eaves band, pyramid ridgeRoof"
+    },
+    {
+     "id": "e-plaque",
+     "kind": "sign",
+     "where": "at the foot of the apse: a stone plaque",
+     "approxSizeM": [
+      1.2,
+      0.8
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7316010203-000752_pano_0000_003317",
+     "skip": {
+      "reason": "too-small",
+      "note": "low plaque behind the railings"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "w10-271",
+   "bearing": 271,
+   "lengthM": 5.8,
+   "centre": [
+    4.9337832,
+    52.3528682
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002143_pano_0000_003997",
+   "capturedAt": "2021-05-31",
+   "checked": true,
+   "items": [
+    {
+     "id": "k-windows",
+     "kind": "window-shape",
+     "where": "sacristy house west wall: white sash windows in two storeys",
+     "approxSizeM": [
+      3,
+      5
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002143_pano_0000_003997",
+     "how": "flat cuts with white reveals and bars"
+    }
+   ]
+  },
+  {
+   "tag": "w11-181",
+   "bearing": 181,
+   "lengthM": 5.7,
+   "centre": [
+    4.9339199,
+    52.3528575
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-06-26_11-50-11_00748",
+   "capturedAt": "2025-06-26",
+   "checked": true,
+   "items": [],
+   "note": "Trees hide the south transept annex; nothing notable visible."
+  },
+  {
+   "tag": "w12-1",
+   "bearing": 1,
+   "lengthM": 5.7,
+   "centre": [
+    4.9339299,
+    52.3532659
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-06-26_11-50-11_00770",
+   "capturedAt": "2025-06-26",
+   "checked": true,
+   "items": [
+    {
+     "id": "tr-oculus",
+     "kind": "window-shape",
+     "where": "north transept gable: a round window with tracery",
+     "approxSizeM": [
+      1.6,
+      1.6
+     ],
+     "plan": "simplified",
+     "seenIn": "recording_2025-06-26_11-50-11_00770",
+     "how": "oculus(): stone disc, glass disc and a stone cross of bars"
+    },
+    {
+     "id": "tr-kneelers",
+     "kind": "other",
+     "where": "stone kneelers at the gable feet and a stone apex block",
+     "approxSizeM": [
+      1.2,
+      0.5
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-06-26_11-50-11_00770",
+     "how": "stone slabs"
+    },
+    {
+     "id": "tr-annex",
+     "kind": "window-shape",
+     "where": "the low hipped annex before the gable: paired round-headed lights with stone imposts, white fascia",
+     "approxSizeM": [
+      7.5,
+      3.7
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-06-26_11-50-11_00770",
+     "how": "transept() annex walls, lights and ridgeRoof"
+    },
+    {
+     "id": "tr-stair",
+     "kind": "other",
+     "where": "a sunken stair with low walls at the aisle corner",
+     "approxSizeM": [
+      2.5,
+      1.2
+     ],
+     "plan": "skipped",
+     "seenIn": "recording_2025-06-26_11-50-11_00770",
+     "skip": {
+      "reason": "too-small",
+      "note": "a basement stair below ground level"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "w13-91",
+   "bearing": 91,
+   "lengthM": 5.5,
+   "centre": [
+    4.9335321,
+    52.3531826
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": false,
+   "items": [],
+   "note": "No panorama; an inner face between the tower annex and the aisle, built plain."
+  },
+  {
+   "tag": "w14-182",
+   "bearing": 182,
+   "lengthM": 5.4,
+   "centre": [
+    4.9334048,
+    52.3529666
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-06-26_12-24-02_00075",
+   "capturedAt": "2025-06-26",
+   "checked": true,
+   "items": [
+    {
+     "id": "c-south",
+     "kind": "window-shape",
+     "where": "clock block south face: paired round-headed lights at two levels; white coping",
+     "approxSizeM": [
+      1.2,
+      1.4
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-06-26_12-24-02_00075",
+     "how": "archOpeningWall lights"
+    },
+    {
+     "id": "c-board",
+     "kind": "sign",
+     "where": "a notice board and a letter box at the foot",
+     "approxSizeM": [
+      1.0,
+      0.7
+     ],
+     "plan": "skipped",
+     "seenIn": "recording_2025-06-26_12-24-02_00075",
+     "skip": {
+      "reason": "too-small",
+      "note": "parish notice board"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "w15-136",
+   "bearing": 136,
+   "lengthM": 4.7,
+   "centre": [
+    4.9341725,
+    52.3530184
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001205_pano_0000_000037",
+   "capturedAt": "2019-05-23",
+   "checked": true,
+   "items": [
+    {
+     "id": "e-diag-s",
+     "kind": "window-shape",
+     "where": "apse south-east face: two tall narrow round-headed windows high up between the buttresses",
+     "approxSizeM": [
+      2,
+      4
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001205_pano_0000_000037",
+     "how": "archOpeningWall lancets on both diagonal faces"
+    }
+   ]
+  },
+  {
+   "tag": "w16-46",
+   "bearing": 46,
+   "lengthM": 4.6,
+   "centre": [
+    4.9341746,
+    52.3531007
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-06-26_11-50-11_00763",
+   "capturedAt": "2025-06-26",
+   "checked": true,
+   "items": [
+    {
+     "id": "e-diag-n",
+     "kind": "window-shape",
+     "where": "apse north-east face: tall narrow round-headed window high up",
+     "approxSizeM": [
+      0.6,
+      4
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-06-26_11-50-11_00763",
+     "how": "as w15"
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas (the brief's wall crops)",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/",
+   "licence": "CC BY 4.0"
+  },
+  {
+   "name": "nl.wikipedia Hofkerk (Amsterdam)",
+   "url": "https://nl.wikipedia.org/wiki/Hofkerk_(Amsterdam)",
+   "licence": "CC BY-SA 4.0"
+  },
+  {
+   "name": "Wikimedia Commons Category:Martelaren van Gorcumkerk (Amsterdam)",
+   "url": "https://commons.wikimedia.org/wiki/Category:Martelaren_van_Gorcumkerk_(Amsterdam)",
+   "licence": "CC BY-SA 3.0 nl / 4.0 per file"
+  },
+  {
+   "name": "BAG pand 0363100012123068 (PDOK WFS)",
+   "url": "https://service.pdok.nl/lv/bag/wfs/v2_0",
+   "licence": "CC0"
+  },
+  {
+   "name": "3DBAG NL.IMBAG.Pand.0363100012123068",
+   "url": "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012123068",
+   "licence": "CC BY 4.0"
+  }
+ ]
+}

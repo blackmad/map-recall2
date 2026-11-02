@@ -2242,5 +2242,17 @@
   "buildVersion": 2,
   "bytes": 73060,
   "triangles": 4431
+ },
+ "hofkerk": {
+  "sourceHash": "40e41ffe3add2dd9",
+  "buildVersion": 2,
+  "bytes": 59040,
+  "triangles": 3187
+ },
+ "watertoren-amstelveenseweg": {
+  "sourceHash": "2293803e634b9235",
+  "buildVersion": 2,
+  "bytes": 17796,
+  "triangles": 740
  }
 }
