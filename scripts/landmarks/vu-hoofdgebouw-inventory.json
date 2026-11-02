@@ -1,0 +1,436 @@
+{
+ "schemaVersion": 1,
+ "id": "vu-hoofdgebouw",
+ "pand": "0363100012136232",
+ "brief": "scripts/landmarks/vu-hoofdgebouw-brief.md",
+ "signature": [
+  "griffin",
+  "tower-ledges",
+  "tower-lettering",
+  "wing-grid",
+  "entrance-hall",
+  "lamp-box"
+ ],
+ "walls": [
+  {
+   "tag": "w01-90",
+   "bearing": 90,
+   "lengthM": 82.6,
+   "centre": [
+    4.8681969,
+    52.3343096
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-07-29_10-13-06_01026",
+   "capturedAt": "2025-07-29",
+   "checked": true,
+   "items": [
+    {
+     "id": "wing-grid",
+     "kind": "window-shape",
+     "where": "east low wing: basement window band, three storeys of two-pane windows between concrete piers (4.1 m pitch), a concrete ledge at every floor, deep fascia; the setback fourth storey with corbels in the middle",
+     "approxSizeM": [
+      82.6,
+      13
+     ],
+     "seenIn": "recording_2025-07-29_10-13-06_01026",
+     "plan": "simplified",
+     "how": "glass ribbon per storey behind concrete piers on a 4.1 m pitch, a 0.6 m ledge per floor, fascia and basement band on every low-wing ring face; the corbels under the ledges are not drawn"
+    },
+    {
+     "id": "ledge-brackets",
+     "kind": "other",
+     "where": "small concrete brackets under every ledge at each pier",
+     "approxSizeM": [
+      0.3,
+      0.4
+     ],
+     "seenIn": "recording_2025-07-29_10-13-06_01026",
+     "plan": "skipped",
+     "skip": {
+      "reason": "too-small",
+      "note": "0.3 m blocks under the ledges, a pixel at gallery size"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "w02-180",
+   "bearing": 180,
+   "lengthM": 77.8,
+   "centre": [
+    4.8676288,
+    52.3339379
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "items": []
+  },
+  {
+   "tag": "w03-0",
+   "bearing": 0,
+   "lengthM": 76.7,
+   "centre": [
+    4.8671474,
+    52.3346808
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-07-29_10-13-06_01742",
+   "capturedAt": "2025-07-29",
+   "checked": true,
+   "items": [
+    {
+     "id": "griffin",
+     "kind": "sculpture",
+     "where": "the blue VU griffin on a steel frame at the NE corner of the east tower block, rising above the roof",
+     "approxSizeM": [
+      10,
+      13
+     ],
+     "seenIn": "recording_2025-07-29_10-13-06_01742 + Commons VU_Amsterdam.jpg (CC BY-SA 4.0)",
+     "plan": "simplified",
+     "how": "flat blue silhouette (raised wing fan, body, beaked head) on a four-post steel frame with rails"
+    },
+    {
+     "id": "tower-lettering",
+     "kind": "lettering",
+     "where": "\"vrije Universiteit\" beside the griffin under the roof of the east block, north face",
+     "approxSizeM": [
+      19,
+      1.3
+     ],
+     "seenIn": "recording_2025-07-29_10-13-06_01742 + Commons VU_Amsterdam.jpg (CC BY-SA 4.0)",
+     "plan": "simplified",
+     "how": "kit block capitals VRIJE UNIVERSITEIT (the original is lower-case serif)"
+    },
+    {
+     "id": "tower-ledges",
+     "kind": "balcony-ironwork",
+     "where": "projecting concrete ledges with upstands at every storey round the tower, ribbon windows behind; the east block glazed only every second storey on its long faces",
+     "approxSizeM": [
+      70,
+      46
+     ],
+     "seenIn": "Commons VU_Amsterdam.jpg (CC BY-SA 4.0) + Commons Gebouw_van_de_Vrije_Universiteit_in_Amsterdam.jpg (CC BY-SA 4.0)",
+     "plan": "simplified",
+     "how": "1.1 m ledge and 0.85 m upstand per storey run, glass ribbon, wall piers; brackets not drawn"
+    },
+    {
+     "id": "stair-slot",
+     "kind": "window-shape",
+     "where": "recessed vertical slot between the east block and the connector with a small window per storey",
+     "approxSizeM": [
+      3.5,
+      46
+     ],
+     "seenIn": "Commons VU_Amsterdam.jpg (CC BY-SA 4.0)",
+     "plan": "modelled"
+    },
+    {
+     "id": "head-window",
+     "kind": "window-shape",
+     "where": "large four-pane window in the chamfered top storey of the west slab head",
+     "approxSizeM": [
+      3.2,
+      4.4
+     ],
+     "seenIn": "Commons VU_Amsterdam.jpg (CC BY-SA 4.0)",
+     "plan": "modelled"
+    },
+    {
+     "id": "lamp-box",
+     "kind": "tower",
+     "where": "steel lattice box on the roof of the west slab head",
+     "approxSizeM": [
+      3,
+      5
+     ],
+     "seenIn": "Commons VU_Amsterdam.jpg (CC BY-SA 4.0) + Commons Gebouw_van_de_Vrije_Universiteit_in_Amsterdam.jpg (CC BY-SA 4.0)",
+     "plan": "modelled"
+    }
+   ]
+  },
+  {
+   "tag": "w04-180",
+   "bearing": 180,
+   "lengthM": 53.3,
+   "centre": [
+    4.8663536,
+    52.3339354
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "items": []
+  },
+  {
+   "tag": "w05-271",
+   "bearing": 271,
+   "lengthM": 42,
+   "centre": [
+    4.8653608,
+    52.334491
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "items": []
+  },
+  {
+   "tag": "w06-180",
+   "bearing": 180,
+   "lengthM": 41,
+   "centre": [
+    4.8656607,
+    52.3343024
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "items": []
+  },
+  {
+   "tag": "w07-270",
+   "bearing": 270,
+   "lengthM": 40.9,
+   "centre": [
+    4.8659621,
+    52.3341189
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "items": []
+  },
+  {
+   "tag": "w08-1",
+   "bearing": 1,
+   "lengthM": 36.6,
+   "centre": [
+    4.8656306,
+    52.3346795
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001923_pano_0000_000110",
+   "capturedAt": "2020-09-11",
+   "checked": true,
+   "items": []
+  },
+  {
+   "tag": "w09-1",
+   "bearing": 1,
+   "lengthM": 33,
+   "centre": [
+    4.8679522,
+    52.3346813
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-07-29_10-13-06_01753",
+   "capturedAt": "2025-07-29",
+   "checked": true,
+   "items": [
+    {
+     "id": "flagpoles",
+     "kind": "other",
+     "where": "flagpoles in front of the north wing",
+     "approxSizeM": [
+      0.2,
+      10
+     ],
+     "seenIn": "recording_2025-07-29_10-13-06_01753",
+     "plan": "skipped",
+     "skip": {
+      "reason": "too-small",
+      "note": "0.2 m poles"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "w10-90",
+   "bearing": 90,
+   "lengthM": 28.7,
+   "centre": [
+    4.8670581,
+    52.3338084
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "items": []
+  },
+  {
+   "tag": "w11-270",
+   "bearing": 270,
+   "lengthM": 28.6,
+   "centre": [
+    4.8667449,
+    52.3338073
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "items": []
+  },
+  {
+   "tag": "w12-180",
+   "bearing": 180,
+   "lengthM": 21.3,
+   "centre": [
+    4.8669019,
+    52.3336791
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "items": []
+  },
+  {
+   "tag": "w13-0",
+   "bearing": 0,
+   "lengthM": 19.2,
+   "centre": [
+    4.8661676,
+    52.3346791
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002477_pano_0000_000228",
+   "capturedAt": "2022-03-24",
+   "checked": true,
+   "items": []
+  },
+  {
+   "tag": "w14-0",
+   "bearing": 0,
+   "lengthM": 16.1,
+   "centre": [
+    4.866447,
+    52.3347521
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002477_pano_0000_000232",
+   "capturedAt": "2022-03-24",
+   "checked": true,
+   "items": [
+    {
+     "id": "entrance-hall",
+     "kind": "canopy",
+     "where": "main entrance on De Boelelaan: glazed hall front with revolving doors under a deep dark canopy, the frosted glass box with \"vrije Universiteit\" above",
+     "approxSizeM": [
+      16,
+      20
+     ],
+     "seenIn": "TMX7316010203-002477_pano_0000_000232 + Commons De_Boelelaan_VU_-_panoramio.jpg (CC BY 3.0)",
+     "plan": "simplified",
+     "how": "glass curtain with mullions and a transom, 6.5 m deep canopy slab, frosted glass box with kit block-capital lettering"
+    }
+   ]
+  },
+  {
+   "tag": "w15-90",
+   "bearing": 90,
+   "lengthM": 9,
+   "centre": [
+    4.8665843,
+    52.3347201
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "items": []
+  },
+  {
+   "tag": "w16-270",
+   "bearing": 270,
+   "lengthM": 9,
+   "centre": [
+    4.8663086,
+    52.3347197
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "items": []
+  },
+  {
+   "tag": "w17-1",
+   "bearing": 1,
+   "lengthM": 8.6,
+   "centre": [
+    4.8659628,
+    52.3347156
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2024-09-05_05-15-58_01104",
+   "capturedAt": "2024-09-05",
+   "checked": true,
+   "items": []
+  },
+  {
+   "tag": "w18-90",
+   "bearing": 90,
+   "lengthM": 4.1,
+   "centre": [
+    4.8660263,
+    52.3346972
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "items": []
+  },
+  {
+   "tag": "w19-271",
+   "bearing": 271,
+   "lengthM": 4.1,
+   "centre": [
+    4.8658994,
+    52.3346975
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "items": []
+  },
+  {
+   "tag": "roof",
+   "bearing": 0,
+   "lengthM": 100,
+   "evidence": "inferred",
+   "checked": true,
+   "items": [
+    {
+     "id": "roof-plant",
+     "kind": "other",
+     "where": "plant floors on the connector and on the west slab (3DBAG roof parts at 66.1 m)",
+     "approxSizeM": [
+      20,
+      5
+     ],
+     "seenIn": "3DBAG NL.IMBAG.Pand.0363100012136232",
+     "plan": "modelled"
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  }
+ ]
+}

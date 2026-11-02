@@ -2062,5 +2062,11 @@
   "buildVersion": 2,
   "bytes": 32664,
   "triangles": 1182
+ },
+ "vu-hoofdgebouw": {
+  "sourceHash": "417e542696fdda6d",
+  "buildVersion": 2,
+  "bytes": 52288,
+  "triangles": 2520
  }
 }

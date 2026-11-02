@@ -1,0 +1,50 @@
+{
+  "id": "vu-hoofdgebouw",
+  "note": "Audit thresholds for the VU hoofdgebouw GLB (scripts/audit-glb-quality.ts reads <id>-spec.json); the builder's data is vu-hoofdgebouw-footprints.json.",
+  "throughPassages": [
+    {
+      "axisBearing": 0,
+      "corridor": [
+        [
+          -41.0,
+          -54.6
+        ],
+        [
+          -16.0,
+          -54.6
+        ],
+        [
+          -16.0,
+          -45.9
+        ],
+        [
+          -41.0,
+          -45.9
+        ]
+      ],
+      "evidence": "Open forecourt under the entrance canopy on De Boelelaan: the rectified panorama TMX7316010203-002477_pano_0000_000232 (artifacts/landmark-briefs/vu-hoofdgebouw/w14-0.jpg, 25 m camera) shows the glazed hall front under a dark soffit at about 10.9 m that projects to 15.5 m on the wall plane, i.e. about 8.8 m deep; Commons De_Boelelaan_VU_-_panoramio.jpg (CC BY 3.0) shows the cantilever with no columns and the forecourt open beneath it."
+    },
+    {
+      "axisBearing": 90,
+      "corridor": [
+        [
+          -41.0,
+          -54.6
+        ],
+        [
+          -16.0,
+          -54.6
+        ],
+        [
+          -16.0,
+          -45.9
+        ],
+        [
+          -41.0,
+          -45.9
+        ]
+      ],
+      "evidence": "Open forecourt under the entrance canopy on De Boelelaan: the rectified panorama TMX7316010203-002477_pano_0000_000232 (artifacts/landmark-briefs/vu-hoofdgebouw/w14-0.jpg, 25 m camera) shows the glazed hall front under a dark soffit at about 10.9 m that projects to 15.5 m on the wall plane, i.e. about 8.8 m deep; Commons De_Boelelaan_VU_-_panoramio.jpg (CC BY 3.0) shows the cantilever with no columns and the forecourt open beneath it."
+    }
+  ]
+}
