@@ -1,0 +1,462 @@
+{
+ "schemaVersion": 1,
+ "id": "politie-nieuwezijds-voorburgwal",
+ "pand": "0363100012171032",
+ "brief": "scripts/landmarks/politie-nieuwezijds-voorburgwal-brief.md",
+ "signature": [
+  "prow-politie",
+  "prow-glass",
+  "nzv-slit-windows",
+  "nzv-glass-box",
+  "prow-emblem",
+  "nzv-pier",
+  "prow-canopy"
+ ],
+ "walls": [
+  {
+   "tag": "w01-315",
+   "bearing": 315,
+   "lengthM": 18.2,
+   "centre": [
+    4.894384,
+    52.376514
+   ],
+   "evidence": "photo",
+   "panoId": "b_20250109_1300_Track02_Sphere_00258",
+   "capturedAt": "2025-01-09",
+   "checked": true,
+   "items": [
+    {
+     "id": "nzv-slit-windows",
+     "kind": "window-shape",
+     "where": "brick block, north 10 m of the front: nine full-height slit windows in white frames, 0.36 m wide on a 1.035 m pitch, transoms of neighbouring slits staggered by half a storey (whole-storey bars on one, small vent boxes on the next)",
+     "approxSizeM": [
+      10.0,
+      17.3
+     ],
+     "plan": "modelled",
+     "seenIn": "b_20250109_1300_Track02_Sphere_00258",
+     "how": "builder brick block: 0.25 m deep cuts with white reveals, white transom bars at the staggered heights"
+    },
+    {
+     "id": "nzv-brick-block",
+     "kind": "other",
+     "where": "grey-taupe brick block to 19.3 m with a granite plinth, its parapet in front of the set-back glass top storey",
+     "approxSizeM": [
+      10.1,
+      19.3
+     ],
+     "plan": "modelled",
+     "seenIn": "b_20250109_1300_Track02_Sphere_00258",
+     "how": "authored volume cut from the 3DBAG tiers, 1 m deep, stone plinth 0-0.45 m, cap at 19.3 m"
+    },
+    {
+     "id": "nzv-block-fold",
+     "kind": "other",
+     "where": "the right edge of the brick block leans (a fold: 9.5 m at the top, 10.8 m at 7 m) where it meets the glass box",
+     "approxSizeM": [
+      1.3,
+      15.0
+     ],
+     "plan": "simplified",
+     "seenIn": "b_20250109_1300_Track02_Sphere_00258",
+     "how": "straight vertical edge at 10.1 m, the mean of the measured lean"
+    },
+    {
+     "id": "nzv-glass-box",
+     "kind": "window-shape",
+     "where": "glass box 7.3-22.4 m: teal spandrel bands, one light glass ribbon per 3.5 m storey, three white-framed top-hung windows per storey, grey vertical fins",
+     "approxSizeM": [
+      7.3,
+      15.1
+     ],
+     "plan": "modelled",
+     "seenIn": "b_20250109_1300_Track02_Sphere_00258",
+     "how": "holed wall: bronze face, glass ribbon cuts, framed window cuts with white reveals and sill bars, two stone fins"
+    },
+    {
+     "id": "nzv-lower-storeys",
+     "kind": "window-shape",
+     "where": "two brick storeys under the glass box: a row of nine narrow windows (3.2-4.9 m) and four taller ones beside a glazed 3x2 bay (5.0-7.1 m)",
+     "approxSizeM": [
+      7.3,
+      4.0
+     ],
+     "plan": "modelled",
+     "seenIn": "b_20250109_1300_Track02_Sphere_00258",
+     "how": "cuts with white reveals; the bay as one cut with a frame cross; the row under the street sign is assumed regular"
+    },
+    {
+     "id": "nzv-garage",
+     "kind": "other",
+     "where": "recessed dark double garage door under the brick block, with a sloped brick cut at its left edge",
+     "approxSizeM": [
+      4.1,
+      3.0
+     ],
+     "plan": "simplified",
+     "seenIn": "b_20250109_1300_Track02_Sphere_00258",
+     "how": "0.55 m deep dark cut with a centre mullion; the sloped edge left straight"
+    },
+    {
+     "id": "nzv-station-front",
+     "kind": "window-shape",
+     "where": "glazed station front on the ground storey (9.4-17.2 m)",
+     "approxSizeM": [
+      7.8,
+      3.0
+     ],
+     "plan": "modelled",
+     "seenIn": "b_20250109_1300_Track02_Sphere_00258",
+     "how": "0.3 m deep glass cut with frame mullions every 1.6 m and a transom"
+    },
+    {
+     "id": "nzv-pier",
+     "kind": "other",
+     "where": "pale concrete pier with a pointed plan between the glass box and the prow, full height",
+     "approxSizeM": [
+      3.0,
+      22.4
+     ],
+     "plan": "modelled",
+     "seenIn": "b_20250109_1300_Track02_Sphere_00258",
+     "how": "concrete walls on the triangular BAG jog and the bands either side"
+    },
+    {
+     "id": "nzv-police-lozenge",
+     "kind": "sign",
+     "where": "the blue police lozenge sign on the pier at about 6.7 m",
+     "approxSizeM": [
+      0.85,
+      1.0
+     ],
+     "plan": "modelled",
+     "seenIn": "b_20250109_1300_Track02_Sphere_00258",
+     "how": "blue extruded lozenge 8 cm off the pier"
+    },
+    {
+     "id": "nzv-flagpole",
+     "kind": "other",
+     "where": "flagpole with the police flag on the roof behind the front",
+     "approxSizeM": [
+      1.6,
+      6.0
+     ],
+     "plan": "simplified",
+     "seenIn": "b_20250109_1300_Track02_Sphere_00258",
+     "how": "pole 6 m and a flat blue flag panel"
+    },
+    {
+     "id": "nzv-roof-masts",
+     "kind": "other",
+     "where": "two thin antenna masts on the roof",
+     "approxSizeM": [
+      0.2,
+      3.0
+     ],
+     "plan": "skipped",
+     "seenIn": "b_20250109_1300_Track02_Sphere_00258",
+     "skip": {
+      "reason": "too-small",
+      "note": "under 0.2 m thick, read as sky at street distance"
+     }
+    },
+    {
+     "id": "nzv-cameras",
+     "kind": "other",
+     "where": "security cameras on the brick block and pier",
+     "approxSizeM": [
+      0.3,
+      0.3
+     ],
+     "plan": "skipped",
+     "seenIn": "b_20250109_1300_Track02_Sphere_00258",
+     "skip": {
+      "reason": "too-small",
+      "note": "camera housings 0.3 m"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "w02-188",
+   "bearing": 188,
+   "lengthM": 11.3,
+   "centre": [
+    4.894412,
+    52.3763455
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-06-16_06-42-40_02513",
+   "capturedAt": "2025-06-16",
+   "checked": true,
+   "items": [
+    {
+     "id": "s-curtain",
+     "kind": "window-shape",
+     "where": "south face beyond the south pier: grey-framed gridded glass over a glazed ground storey, mostly behind the birches of the Nieuwezijds Kolk (seen obliquely only)",
+     "approxSizeM": [
+      11.3,
+      22.4
+     ],
+     "plan": "simplified",
+     "seenIn": "recording_2025-06-16_06-42-40_02513",
+     "how": "frame face with 1.2 m pane grid per storey and a glazed ground cut"
+    }
+   ],
+   "note": "no panorama faces the Nieuwezijds Kolk; seen obliquely from the NZ Voorburgwal (aimed view heading 75-105 from recording_2025-06-16_06-42-40_02513)"
+  },
+  {
+   "tag": "w03-316",
+   "bearing": 316,
+   "lengthM": 10.1,
+   "centre": [
+    4.894216,
+    52.37641
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002537_pano_0001_000946",
+   "capturedAt": "2022-04-22",
+   "checked": true,
+   "items": [
+    {
+     "id": "prow-glass",
+     "kind": "window-shape",
+     "where": "the pointed glass prow at the Nieuwezijds Kolk corner: blue-grey glass bands with two light ribbons per storey, silver horizontal frames, white-framed windows",
+     "approxSizeM": [
+      10.1,
+      19.0
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002537_pano_0001_000946",
+     "how": "holed walls on w03, the tip and w04 from 3.4 m: copper face, ribbon cuts, frame bars at the band lines"
+    },
+    {
+     "id": "prow-politie",
+     "kind": "lettering",
+     "where": "POLITIE in police-blue capitals across the prow at 5.2-5.8 m, the O replaced by the emblem",
+     "approxSizeM": [
+      4.5,
+      0.6
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002537_pano_0001_000946",
+     "how": "raisedLettering P + LITIE, 0.6 m, 5 cm proud, on both prow faces"
+    },
+    {
+     "id": "prow-emblem",
+     "kind": "crest",
+     "where": "the police emblem: gold lozenge with a white flame, over the O of POLITIE",
+     "approxSizeM": [
+      1.0,
+      1.2
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002537_pano_0001_000946",
+     "how": "gold extruded lozenge and white flame shape"
+    },
+    {
+     "id": "prow-canopy",
+     "kind": "canopy",
+     "where": "the prow cantilevers over the recessed glass entrance; concrete soffit edge at 3.4 m",
+     "approxSizeM": [
+      10.0,
+      0.35
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002537_pano_0001_000946",
+     "how": "lobby glass 2.2 m behind the prow faces, concrete soffit and edge band, column at the tip"
+    },
+    {
+     "id": "prow-pier",
+     "kind": "other",
+     "where": "pale concrete pier at the left end of the prow (shared with the NZV pier)",
+     "approxSizeM": [
+      1.9,
+      22.4
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002537_pano_0001_000946",
+     "how": "concrete zone 0-1.9 m of w03"
+    }
+   ]
+  },
+  {
+   "tag": "w04-187",
+   "bearing": 187,
+   "lengthM": 9.2,
+   "centre": [
+    4.894232,
+    52.3763585
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-06-16_06-42-40_02513",
+   "capturedAt": "2025-06-16",
+   "checked": true,
+   "items": [
+    {
+     "id": "s-prow-politie",
+     "kind": "lettering",
+     "where": "the second POLITIE with emblem on the south face of the prow",
+     "approxSizeM": [
+      4.5,
+      1.2
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-06-16_06-42-40_02513",
+     "how": "as prow-politie, on w04 1.8-6.3 m"
+    },
+    {
+     "id": "s-pier",
+     "kind": "other",
+     "where": "pale concrete pier with a pointed plan at the east end of the prow (south side)",
+     "approxSizeM": [
+      1.9,
+      22.4
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-06-16_06-42-40_02513",
+     "how": "concrete walls on the triangular jog and w04 7.3-9.2 m"
+    }
+   ],
+   "note": "no panorama faces the Nieuwezijds Kolk; seen obliquely from the NZ Voorburgwal (aimed view heading 75-105 from recording_2025-06-16_06-42-40_02513)"
+  },
+  {
+   "tag": "w05-6",
+   "bearing": 6,
+   "lengthM": 7,
+   "centre": [
+    4.894539,
+    52.376572
+   ],
+   "evidence": "photo",
+   "panoId": "b_20250109_1300_Track02_Sphere_00264",
+   "capturedAt": "2025-01-09",
+   "checked": true,
+   "items": [
+    {
+     "id": "n-curtain-wall",
+     "kind": "window-shape",
+     "where": "north end: white-framed glass curtain wall of nine columns over four storeys, a dark spandrel row per storey, 4.8-19 m",
+     "approxSizeM": [
+      7.0,
+      14.2
+     ],
+     "plan": "modelled",
+     "seenIn": "b_20250109_1300_Track02_Sphere_00264",
+     "how": "white face with 72 pane cuts and four spandrel-row cuts"
+    },
+    {
+     "id": "n-band-shutters",
+     "kind": "other",
+     "where": "pale band 3.2-4.8 m over dark roller shutters on the ground storey",
+     "approxSizeM": [
+      7.0,
+      4.8
+     ],
+     "plan": "modelled",
+     "seenIn": "b_20250109_1300_Track02_Sphere_00264",
+     "how": "concrete band, 0.15 m deep dark shutter cut"
+    },
+    {
+     "id": "n-roof-railing",
+     "kind": "balcony-ironwork",
+     "where": "railing along the roof edge of the north glass box",
+     "approxSizeM": [
+      7.0,
+      1.0
+     ],
+     "plan": "modelled",
+     "seenIn": "b_20250109_1300_Track02_Sphere_00264",
+     "how": "posts every 1.75 m and a top rail in grey"
+    }
+   ]
+  },
+  {
+   "tag": "w06-175",
+   "bearing": 175,
+   "lengthM": 4.4,
+   "centre": [
+    4.894595,
+    52.376337
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": false,
+   "items": [],
+   "note": "south side of the SE lower parts: no panorama, behind trees; banded glass skin inferred from w02"
+  },
+  {
+   "tag": "w07-6",
+   "bearing": 6,
+   "lengthM": 4.3,
+   "centre": [
+    4.8946125,
+    52.376436
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-06-16_06-42-40_02524",
+   "capturedAt": "2025-06-16",
+   "checked": true,
+   "items": [
+    {
+     "id": "sj-shutters",
+     "kind": "other",
+     "where": "roller shutters at the end of the Sint Jacobsstraat under a pale concrete band",
+     "approxSizeM": [
+      4.3,
+      3.2
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-06-16_06-42-40_02524",
+     "how": "dark shutter cut, concrete band to the 4.7 m roof"
+    },
+    {
+     "id": "sj-glass-bay",
+     "kind": "window-shape",
+     "where": "glazed bay with white frames above the band, seen obliquely; 3DBAG puts a 4.7 m roof right behind this face, so its plane is uncertain",
+     "approxSizeM": [
+      4.3,
+      4.0
+     ],
+     "plan": "simplified",
+     "seenIn": "recording_2025-06-16_06-42-40_02524",
+     "how": "banded glass skin on the higher tier walls behind the 4.7 m roof"
+    }
+   ]
+  },
+  {
+   "tag": "w08-186",
+   "bearing": 186,
+   "lengthM": 4.2,
+   "centre": [
+    4.894532,
+    52.376342
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": false,
+   "items": [],
+   "note": "south side of the SE lower parts: no panorama, behind trees; banded glass skin inferred from w02"
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas (w01 b_20250109_1300_Track02_Sphere_00258, w03 TMX7316010203-002537_pano_0001_000946, w05 b_20250109_1300_Track02_Sphere_00264, w07 recording_2025-06-16_06-42-40_02524, recording_2025-06-16_06-42-40_02513)",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/",
+   "licence": "CC BY 4.0"
+  },
+  {
+   "name": "BAG pand 0363100012171032",
+   "url": "https://bagviewer.kadaster.nl/lvbag/bag-viewer/?objectId=0363100012171032",
+   "licence": "CC0"
+  },
+  {
+   "name": "3DBAG pand 0363100012171032",
+   "url": "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012171032",
+   "licence": "CC BY 4.0"
+  }
+ ]
+}

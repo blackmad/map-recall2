@@ -1,0 +1,77 @@
+{
+ "id": "politie-nieuwezijds-voorburgwal",
+ "countedBy": "lane #206 (opus) from the city panoramas before tuning: brick block and lower storeys from artifacts/landmark-lanes/politie-nieuwezijds-voorburgwal/alt-lower.jpg (2022, TMX7316010203-002310_pano_0000_001371) and w01-ribbed.jpg; glass box from w01-glass.jpg (2025). Render frame: w01 t=0 sits at 3.4 m (measured off the slit pitch in the render) from the elevation's left edge (the north curtain wall shows obliquely to its left).",
+ "facades": [
+  {
+   "name": "w01 brick block slits above the lower row (ten)",
+   "bearing": 315,
+   "photo": "artifacts/landmark-lanes/politie-nieuwezijds-voorburgwal/alt-lower.jpg",
+   "depthBand": 4,
+   "alongM": [
+    3.8,
+    13.7
+   ],
+   "heightM": [
+    5.0,
+    19.3
+   ],
+   "rows": [
+    10
+   ],
+   "openings": [
+    "glass",
+    "dark"
+   ]
+  },
+  {
+   "name": "w01 glass box (four storeys of three windows under a light ribbon)",
+   "bearing": 315,
+   "photo": "artifacts/landmark-lanes/politie-nieuwezijds-voorburgwal/w01-glass.jpg",
+   "depthBand": 4,
+   "alongM": [
+    13.9,
+    21.1
+   ],
+   "heightM": [
+    7.3,
+    22.4
+   ],
+   "rows": [
+    3,
+    1,
+    3,
+    1,
+    3,
+    1,
+    3,
+    1
+   ],
+   "openings": [
+    "glass",
+    "dark"
+   ]
+  },
+  {
+   "name": "w01 lower window row (slit foot at 6.9 m and ten windows, 3.2-4.7 m)",
+   "bearing": 315,
+   "photo": "artifacts/landmark-lanes/politie-nieuwezijds-voorburgwal/alt-lower.jpg",
+   "depthBand": 4,
+   "alongM": [
+    9.6,
+    21.0
+   ],
+   "heightM": [
+    3.1,
+    4.8
+   ],
+   "rows": [
+    11
+   ],
+   "openings": [
+    "glass",
+    "dark"
+   ]
+  }
+ ],
+ "note": "Ribbons count 1 per storey (continuous glazing convention). The prow faces are not counted: their ribbon cuts and lettering would be counted against an oblique photo only. The ground storey (garage door and station glazing, split by a 0.1 m post) is not counted: the 0.15 m opening closing merges them, and the window row 0.2 m above."
+}

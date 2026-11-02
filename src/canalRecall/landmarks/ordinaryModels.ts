@@ -44,6 +44,12 @@ export const SHADOWED_BY_LANDMARK: Readonly<Record<string, string>> = {
   'ordinary-0363100012077325': 'gerrit-rietveld-academie',
   // Heinekenplein block (large recipe failed the likeness judge on its east wall and drew the office tower blank; bespoke #207).
   'ordinary-0363100012130580': 'heinekenplein-block',
+  // Politiebureau Nieuwezijds Voorburgwal 35 (2026-10-25 large recipe): its own audit failed the front (wall not drawn, no slit
+  // columns) and it has no POLITIE prow or lobby; the bespoke model (#206, 2026-11-02) draws them.
+  'ordinary-0363100012171032': 'politie-nieuwezijds-voorburgwal',
+  // Politiebureau Lijnbaansgracht 219 (2026-10-25 large recipe): its front was not confirmed by the photo and it has no
+  // first-storey band, notch, vehicle openings or shaft; the bespoke model (#206, 2026-11-02) draws them.
+  'ordinary-0363100012169471': 'politie-lijnbaansgracht',
 };
 /** Every catalogue model (both categories) that no landmark shadows: what the game draws. */
 export const ORDINARY_BUILDINGS: readonly SignatureModelSpec[] = models.filter(m => !SHADOWED_BY_LANDMARK[m.id]).map(ordinarySpecFor);
