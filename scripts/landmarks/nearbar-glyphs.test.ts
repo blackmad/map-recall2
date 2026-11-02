@@ -21,3 +21,8 @@ test('the AkzoNobel wordmark has every glyph it needs and draws one solid per pi
   assert.equal(solids, runs);
   assert.ok(Math.abs(width - (9 * 6 - 1) * 0.2) < 1e-9);
 });
+
+test('the XS4ALL sign and the kpn wordmark (kpn-teleport) have every glyph they need', () => {
+  for (const ch of 'XS4ALLkpn') assert.ok(GL[ch], `missing glyph ${ch}`);
+  assert.equal(GL.p.length, 9);
+});

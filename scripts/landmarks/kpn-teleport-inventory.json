@@ -1,0 +1,459 @@
+{
+ "schemaVersion": 1,
+ "id": "kpn-teleport",
+ "pand": "0363100012165158",
+ "brief": "scripts/landmarks/kpn-teleport-brief.md",
+ "signature": [
+  "e-ribbons",
+  "s-entrance-hall",
+  "n-nw-void",
+  "s-l4-loggia",
+  "w-xs4all",
+  "n-simyo",
+  "n-kpn-roof-sign",
+  "s-entrance-louvres"
+ ],
+ "walls": [
+  {
+   "tag": "w01-90",
+   "bearing": 90,
+   "lengthM": 84.2,
+   "centre": [
+    4.8422227,
+    52.3881216
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-07-01_11-45-33_00561",
+   "capturedAt": "2025-07-01",
+   "checked": true,
+   "items": [
+    {
+     "id": "e-ribbons",
+     "kind": "window-shape",
+     "where": "east face (Kingsfordweg): seven glazed storeys, each a lavender spandrel panel, a glazed ribbon on a 3.6 m module of a wide light, a narrow vent light and a wide light, and a dark anthracite slab-edge band",
+     "approxSizeM": [
+      84.2,
+      26
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-07-01_11-45-33_00561",
+     "how": "trayStack outline walls: spandrel quad, ribbon 12 cm in with sill/head, mullion fins on the module, 10 cm proud slab-edge band loops"
+    },
+    {
+     "id": "e-l2-loggia",
+     "kind": "colonnade",
+     "where": "east face L2 (third office storey) pulled 3 m back behind the slab edge 18-60 m from the south corner, round columns on the slab edge every 3.6 m",
+     "approxSizeM": [
+      42,
+      3.6
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-07-01_11-45-33_00561",
+     "how": "trayStack recess, columns on the 3.6 m pitch"
+    },
+    {
+     "id": "e-ne-l4",
+     "kind": "colonnade",
+     "where": "east face L4 recessed over its north 18 m, the north face L4 loggia turning the corner",
+     "approxSizeM": [
+      18,
+      3.6
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-07-01_11-45-33_00561",
+     "how": "trayStack recess"
+    },
+    {
+     "id": "e-se-void",
+     "kind": "other",
+     "where": "south-east corner: L4 and L5 open two storeys high for the south 15 m, a louvre band across the void at the L4 slab line",
+     "approxSizeM": [
+      15,
+      7.2
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-07-01_11-45-33_00561",
+     "how": "open trayStack recess, six louvre slats"
+    },
+    {
+     "id": "e-carpark",
+     "kind": "colonnade",
+     "where": "half-sunken car park under the ground storey: dark openings and grilles behind a row of round columns",
+     "approxSizeM": [
+      84,
+      2.2
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-07-01_11-45-33_00561",
+     "how": "car-park storey recessed 1.5 m, columns on the 3.6 m pitch, dark back wall"
+    },
+    {
+     "id": "e-roof-sign-tip",
+     "kind": "sign",
+     "where": "the green top of the kpn roof sign just shows above the parapet near the north end",
+     "approxSizeM": [
+      1,
+      0.3
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-07-01_11-45-33_00561",
+     "how": "see roof sign (n-kpn-roof-sign)"
+    }
+   ]
+  },
+  {
+   "tag": "w02-270",
+   "bearing": 270,
+   "lengthM": 84.1,
+   "centre": [
+    4.8413408,
+    52.3881149
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "items": [
+    {
+     "id": "w-nw-void",
+     "kind": "other",
+     "where": "west face (railway side), first 25 m from the north-west corner: L4 and L5 open two storeys high behind round columns, a band of horizontal louvres across the void at the L4 slab line",
+     "approxSizeM": [
+      25,
+      7.2
+     ],
+     "plan": "modelled",
+     "seenIn": "commons:KPN_Teleportboulevard.jpg (2021-10-19)",
+     "how": "open trayStack recess, six louvre slats"
+    },
+    {
+     "id": "w-xs4all",
+     "kind": "sign",
+     "where": "XS4ALL box sign: orange capitals in an orange frame on a dark box hung on the north-west corner louvres, about 3.3 x 1 m",
+     "approxSizeM": [
+      3.4,
+      1.05
+     ],
+     "plan": "modelled",
+     "seenIn": "commons:KPN_Teleportboulevard.jpg (2021-10-19)",
+     "how": "dark box, gold border strips and XS4ALL pixel letters (nearbar-kit glyphs, X added); 2021 evidence, the west face has no 2025 panorama"
+    },
+    {
+     "id": "w-simyo",
+     "kind": "lettering",
+     "where": "SIMYO in tall pale capitals behind the L1 glass near the north-west corner",
+     "approxSizeM": [
+      6.7,
+      1.6
+     ],
+     "plan": "modelled",
+     "seenIn": "commons:KPN_Teleportboulevard.jpg (2021-10-19)",
+     "how": "pixel letters 5 cm behind the glass line"
+    },
+    {
+     "id": "w-colonnade",
+     "kind": "colonnade",
+     "where": "ground storey and car park of the first 25 m behind one colonnade of storey-and-a-half columns",
+     "approxSizeM": [
+      25,
+      6.2
+     ],
+     "plan": "modelled",
+     "seenIn": "commons:KPN_Teleportboulevard.jpg (2021-10-19)",
+     "how": "open trayStack recess over P and L0"
+    }
+   ]
+  },
+  {
+   "tag": "w03-180",
+   "bearing": 180,
+   "lengthM": 60,
+   "centre": [
+    4.8417883,
+    52.38774
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-07-01_09-03-48_02446",
+   "capturedAt": "2025-07-01",
+   "checked": true,
+   "items": [
+    {
+     "id": "s-entrance-hall",
+     "kind": "other",
+     "where": "main entrance (Teleportboulevard): a three-storey glazed hall 4 m behind the slab edge, 12.6 m wide, four tall round columns on the edge",
+     "approxSizeM": [
+      12.6,
+      12.4
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-07-01_09-03-48_02446",
+     "how": "open trayStack recess P-L2 with explicit column positions"
+    },
+    {
+     "id": "s-entrance-louvres",
+     "kind": "canopy",
+     "where": "two banks of five horizontal louvre slats across the entrance hall at L1 and L2, 15.4 m wide",
+     "approxSizeM": [
+      15.4,
+      1.4
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-07-01_09-03-48_02446",
+     "how": "louvres() 0.2-0.55 m proud"
+    },
+    {
+     "id": "s-steps",
+     "kind": "other",
+     "where": "broad flight of granite steps from the pavement up to the hall floor",
+     "approxSizeM": [
+      12.6,
+      2
+     ],
+     "plan": "simplified",
+     "seenIn": "recording_2025-07-01_09-03-48_02446",
+     "how": "one extruded stair of fifteen risers to the 3.0 m hall floor (the photo shows about eleven: the model ground is the 3DBAG average, the street here is higher)"
+    },
+    {
+     "id": "s-l4-loggia",
+     "kind": "colonnade",
+     "where": "L4 loggia on round columns along the whole south face",
+     "approxSizeM": [
+      60,
+      3.6
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-07-01_09-03-48_02446",
+     "how": "trayStack recess"
+    },
+    {
+     "id": "s-l2-loggia",
+     "kind": "colonnade",
+     "where": "L2 loggia on round columns over the west 22.3 m",
+     "approxSizeM": [
+      22.3,
+      3.6
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-07-01_09-03-48_02446",
+     "how": "trayStack recess"
+    },
+    {
+     "id": "s-se-void",
+     "kind": "other",
+     "where": "south-east corner L4-L5 void with its louvre band at the L4 slab line",
+     "approxSizeM": [
+      12.6,
+      7.2
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-07-01_09-03-48_02446",
+     "how": "open trayStack recess, louvres"
+    },
+    {
+     "id": "s-traffic-signs",
+     "kind": "sign",
+     "where": "parking and traffic signs on posts in front of the entrance",
+     "approxSizeM": [
+      0.6,
+      3
+     ],
+     "plan": "skipped",
+     "seenIn": "recording_2025-07-01_09-03-48_02446",
+     "skip": {
+      "reason": "temporary",
+      "note": "street furniture on the pavement, not part of the building"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "w04-360",
+   "bearing": 0,
+   "lengthM": 20.6,
+   "centre": [
+    4.8420652,
+    52.3884988
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002382_pano_0002_000001",
+   "capturedAt": "2022-01-03",
+   "checked": true,
+   "items": [
+    {
+     "id": "n-east-loggias",
+     "kind": "colonnade",
+     "where": "north face, east third: L2 and L4 both pulled back behind columns over the full width (alternating trays)",
+     "approxSizeM": [
+      20.6,
+      10.8
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002382_pano_0002_000001",
+     "how": "trayStack recesses"
+    },
+    {
+     "id": "n-bike-store",
+     "kind": "other",
+     "where": "car-park storey: glazed bicycle store behind the columns, a door at the east end",
+     "approxSizeM": [
+      20,
+      2.2
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-002382_pano_0002_000001",
+     "how": "dark car-park back wall behind the columns"
+    },
+    {
+     "id": "n-l0-transom",
+     "kind": "window-shape",
+     "where": "the tall ground-storey glazing with a transom about 1 m above its sill",
+     "approxSizeM": [
+      20,
+      3.2
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002382_pano_0002_000001",
+     "how": "transom bar on every L0 ribbon"
+    }
+   ]
+  },
+  {
+   "tag": "w05-360",
+   "bearing": 0,
+   "lengthM": 20.4,
+   "centre": [
+    4.841484,
+    52.3884942
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-07-01_11-45-33_00537",
+   "capturedAt": "2025-07-01",
+   "checked": true,
+   "items": [
+    {
+     "id": "n-simyo",
+     "kind": "lettering",
+     "where": "SIMYO in tall pale pink capitals behind the L1 glass at the west end of the north face",
+     "approxSizeM": [
+      6.7,
+      1.6
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-07-01_11-45-33_00537",
+     "how": "pixel letters 5 cm behind the glass line"
+    },
+    {
+     "id": "n-nw-void",
+     "kind": "other",
+     "where": "north-west corner: L5 recessed over the west 12.3 m above the full-width L4 loggia, the corner open two storeys high",
+     "approxSizeM": [
+      12.3,
+      7.2
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-07-01_11-45-33_00537",
+     "how": "open trayStack recess, louvres"
+    },
+    {
+     "id": "n-colonnade",
+     "kind": "colonnade",
+     "where": "ground storey and car park behind a colonnade of tall round columns (west two thirds)",
+     "approxSizeM": [
+      39.5,
+      6.2
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-07-01_11-45-33_00537",
+     "how": "open trayStack recess over P and L0"
+    },
+    {
+     "id": "n-garage-entry",
+     "kind": "other",
+     "where": "car-park entrance with grilles and a 1.9 m height sign under a small KPN welcome board",
+     "approxSizeM": [
+      4,
+      2.2
+     ],
+     "plan": "simplified",
+     "seenIn": "recording_2025-07-01_11-45-33_00537",
+     "how": "part of the dark car-park back wall"
+    },
+    {
+     "id": "n-kpn-roof-sign",
+     "kind": "sign",
+     "where": "lower-case kpn wordmark and the green KPN logo on a steel frame on the roof, at the north-east corner, facing east (seen from behind across the tracks)",
+     "approxSizeM": [
+      6.5,
+      3
+     ],
+     "plan": "simplified",
+     "seenIn": "commons:KPN_Teleportboulevard_1.jpg (2021-10-12)",
+     "how": "two posts and a rail, pixel letters kpn (p added to the glyphs) and a square green logo; the logo shape is a square"
+    }
+   ]
+  },
+  {
+   "tag": "w06-360",
+   "bearing": 0,
+   "lengthM": 19,
+   "centre": [
+    4.8417742,
+    52.3884868
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002057_pano_0001_003481",
+   "capturedAt": "2021-03-24",
+   "checked": true,
+   "items": [
+    {
+     "id": "n-mid-setback",
+     "kind": "other",
+     "where": "the middle third of the north face stands 1.08 m behind the other two (BAG ring)",
+     "approxSizeM": [
+      19,
+      28.8
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002057_pano_0001_003481",
+     "how": "plan notch in KPN_TELEPORT_PLAN.outer"
+    },
+    {
+     "id": "n-side-entrance",
+     "kind": "other",
+     "where": "side entrance: glazed screen with a door and a steel roller door behind the colonnade",
+     "approxSizeM": [
+      12,
+      6
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-002057_pano_0001_003481",
+     "how": "the L0 glass and dark car-park wall behind the colonnade; no roller door"
+    },
+    {
+     "id": "n-roof-plant",
+     "kind": "other",
+     "where": "roof plant boxes behind the parapet",
+     "approxSizeM": [
+      4,
+      1.4
+     ],
+     "plan": "modelled",
+     "seenIn": "3DBAG LoD2.2",
+     "how": "eight boxes from the 3DBAG roof parts"
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  },
+  {
+   "name": "Wikimedia Commons, \"KPN Teleportboulevard.jpg\" and \"KPN Teleportboulevard 1.jpg\" by Vloeibaar",
+   "url": "https://commons.wikimedia.org/wiki/File:KPN_Teleportboulevard.jpg",
+   "licence": "CC BY-SA 4.0"
+  }
+ ]
+}

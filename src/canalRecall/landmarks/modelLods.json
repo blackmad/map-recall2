@@ -2188,5 +2188,11 @@
   "buildVersion": 2,
   "bytes": 154452,
   "triangles": 9970
+ },
+ "kpn-teleport": {
+  "sourceHash": "4b34d4d29a6fc6d9",
+  "buildVersion": 2,
+  "bytes": 84256,
+  "triangles": 4646
  }
 }
