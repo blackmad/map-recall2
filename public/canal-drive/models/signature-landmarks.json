@@ -80899,6 +80899,218 @@
         "bytes": 71356,
         "triangles": 3417
       }
+    },
+    "gerrit-rietveld-academie": {
+      "id": "gerrit-rietveld-academie",
+      "name": "Gerrit Rietveld Academie",
+      "modelUrl": "./models/gerrit-rietveld-academie.glb",
+      "suppressOsmIds": [
+        "NL.IMBAG.Pand.0363100012077325"
+      ],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.8598734,
+          52.34185608
+        ],
+        "headingDegrees": 0,
+        "lengthMetres": 80.3,
+        "widthMetres": 62.8
+      },
+      "surveyed": {
+        "anchor": [
+          4.8598734,
+          52.34185608
+        ],
+        "northOffsetDegrees": 0,
+        "source": "Vertex average of the BAG 0363100012077325 ring (RD, PDOK BAG WFS, CC0) in native east/south metres above the 3DBAG ground 0.692 m NAP (scripts/landmarks/gerrit-rietveld-academie-footprints.json, written by sarphati-plaza-prepare.ts --id=gerrit-rietveld-academie --pand=0363100012077325). The building is drawn on its own axis (bearing 86.9, the BAG edges): the curtain-wall block 75.2 x 20.9 m on the 2.09 m module (36 x 10 modules, the register's 2.10 m raster), the white glazed-brick wall 0.35 m proud round the west head, the one-storey workshop wing and transverse block from the BAG ring; roof 18.2 m, the rear set-back at 16.1 m, lift tower and plant decks and the wing's 3.6 and 4.68 m roofs from the 3DBAG LoD2.2 roof parts (CC BY 4.0); the sheds counted on the PDOK orthophoto (CC BY 4.0). Band section measured on the rectified Gemeente Amsterdam panorama TMX7316010203-001151_pano_0001_002208 (CC BY 4.0, 38.1 px/m); the south front, lettering, entrance, black wall and fire stair from Wikimedia Commons photographs by Alf van Beem (CC0) and Paul Berendsen (CC BY-SA 4.0); the canal front's basement band and stair bay from Rietveldacademie.jpg (bureau Monumenten & Archeologie, attribution). Register text: gemeentelijk monument 200479. The wing's outer faces (east, south, west of the transverse block) have no photograph and are inferred."
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 0,
+      "heightMetres": 21.1,
+      "bagYear": 1967,
+      "materialOverrides": {
+        "glass": "#5b6665",
+        "pink": "#9fa9a8",
+        "frame": "#8e9694",
+        "white": "#e4e0da",
+        "greyBrick": "#2e2c2f",
+        "green": "#71292c",
+        "stone": "#6e726f",
+        "concrete": "#9a9c97",
+        "slate": "#cfcdc2",
+        "bronze": "#3a4048",
+        "copper": "#b2b8b5"
+      },
+      "attribution": {
+        "title": "Gerrit Rietveld Academie, Rietveld building, Fred. Roeskestraat 96 (G. Rietveld with J. van Dillen and J. van Tricht, 1959-1967)",
+        "author": "Map Recall",
+        "sourceUrl": "https://api.data.amsterdam.nl/v1/bag/panden/0363100012077325",
+        "licence": "CC BY 4.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "modifications": "Original texture-free flat-colour geometry on the BAG footprint (CC0) with 3DBAG LoD2.2 heights (CC BY 4.0): the four-storey curtain-wall block on the 2.09 m module with clear vision bands between frosted bands over a recessed sokkel with basement windows, the main-stair bay on the canal front, the rear roof set-back, lift tower and plant deck with its round fans, the white glazed-brick wall round the west head with the GERRIT RIETVELD ACADEMIE lettering, the entrance landing, steps, detached canopy and black glazed-brick wall, the steel fire stair on the west head and the one-storey workshop wing and transverse block with north-light sheds; read for proportion and tone from Gemeente Amsterdam panoramas (CC BY 4.0), the PDOK orthophoto (CC BY 4.0), Wikimedia Commons photographs 'Frederik Roeskestraat 96, Gerrit Rietmieveld Academie pic1-pic4' by Alf van Beem (CC0), 'Rietveld Academie, ingang, 2011.jpg' by Paul Berendsen (CC BY-SA 4.0), 'GRA bijgebouw.jpg' by Ceescamel (CC BY-SA 4.0) and 'Rietveldacademie.jpg' by bureau Monumenten & Archeologie (attribution), and the municipal monument register text 200479. No pixels or meshes imported."
+      },
+      "buildingFootprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.86038558,
+              52.34211127
+            ],
+            [
+              4.86038529,
+              52.34211416
+            ],
+            [
+              4.85946342,
+              52.34207968
+            ],
+            [
+              4.85946307,
+              52.34208273
+            ],
+            [
+              4.85927807,
+              52.34207583
+            ],
+            [
+              4.85927833,
+              52.34207327
+            ],
+            [
+              4.85929806,
+              52.34188444
+            ],
+            [
+              4.85929834,
+              52.34188158
+            ],
+            [
+              4.85941619,
+              52.34188617
+            ],
+            [
+              4.85951285,
+              52.34188993
+            ],
+            [
+              4.85954358,
+              52.34189112
+            ],
+            [
+              4.85954331,
+              52.3418939
+            ],
+            [
+              4.85978863,
+              52.34190345
+            ],
+            [
+              4.85980843,
+              52.34190423
+            ],
+            [
+              4.85996644,
+              52.34191037
+            ],
+            [
+              4.85997329,
+              52.34191063
+            ],
+            [
+              4.8600042,
+              52.34191184
+            ],
+            [
+              4.86009403,
+              52.34191533
+            ],
+            [
+              4.86015809,
+              52.34191783
+            ],
+            [
+              4.86016,
+              52.34189855
+            ],
+            [
+              4.86018057,
+              52.34169155
+            ],
+            [
+              4.85993434,
+              52.34168237
+            ],
+            [
+              4.85994768,
+              52.34154814
+            ],
+            [
+              4.86013213,
+              52.34155433
+            ],
+            [
+              4.8601319,
+              52.34155675
+            ],
+            [
+              4.86043959,
+              52.34156822
+            ],
+            [
+              4.86043805,
+              52.34158372
+            ],
+            [
+              4.86043158,
+              52.34164885
+            ],
+            [
+              4.86038558,
+              52.34211127
+            ]
+          ]
+        ]
+      },
+      "buildingCategory": "landmark",
+      "bounds": {
+        "min": [
+          -41.16116714477539,
+          -0.30000001192092896,
+          -28.5665340423584
+        ],
+        "max": [
+          38.48006057739258,
+          21.059999465942383,
+          34.390132904052734
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.8598734,
+          52.34185608
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 90,
+        "facadeBearingDegrees": 0,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 79.64122772216797,
+        "heightMetres": 21.35999947786331,
+        "depthMetres": 62.95666694641113,
+        "depthCoverage": 1.0024946965989034
+      },
+      "triangles": 4250,
+      "bytes": 68700,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
+      "lod1": {
+        "sourceHash": "ebf32f1166d5c4d5",
+        "buildVersion": 2,
+        "bytes": 25692,
+        "triangles": 810
+      }
     }
   }
 }

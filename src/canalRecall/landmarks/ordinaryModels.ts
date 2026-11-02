@@ -40,6 +40,8 @@ export const SHADOWED_BY_LANDMARK: Readonly<Record<string, string>> = {
   // Ziggo Dome (2026-10-06 ordinary tall-box recipe): one ribbed box without the window rows, docks, roof plant or bridges;
   // the bespoke model (#191, 2026-11-02) draws them.
   'ordinary-0363100012238052': 'ziggo-dome',
+  // Rietveld building (2026-10-17 large recipe): one 39 m curtain ribbon against the photo's 2.1 m square modules; the bespoke model (#205) draws them.
+  'ordinary-0363100012077325': 'gerrit-rietveld-academie',
 };
 /** Every catalogue model (both categories) that no landmark shadows: what the game draws. */
 export const ORDINARY_BUILDINGS: readonly SignatureModelSpec[] = models.filter(m => !SHADOWED_BY_LANDMARK[m.id]).map(ordinarySpecFor);

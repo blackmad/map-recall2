@@ -1,0 +1,47 @@
+{
+ "id": "gerrit-rietveld-academie",
+ "source": "Gemeente Amsterdam panorama TMX7316010203-001151_pano_0001_002208 (2019-04-30, CC BY 4.0), rectified crop artifacts/landmark-briefs/gerrit-rietveld-academie/w01-357.jpg; Wikimedia Commons 'Frederik Roeskestraat 96, Gerrit Rietmieveld Academie pic3.JPG' (Alf van Beem, CC0)",
+ "countedBy": "lane (opus) from the photos, 2026-11-02, before comparing with the model; ribbon convention: each clear vision band of the curtain wall is one opening (mullions 9 cm); frosted bands are not openings. Blind recount welcome.",
+ "facades": [
+  {
+   "name": "north (canal front)",
+   "bearing": 357,
+   "photo": "artifacts/landmark-briefs/gerrit-rietveld-academie/w01-357.jpg",
+   "rows": [
+    null,
+    1,
+    1,
+    1,
+    1
+   ],
+   "symmetric": true,
+   "gables": 0,
+   "alongM": [
+    0,
+    33
+   ],
+   "note": "Rectified panorama, the east 33 m left of the tree (38.1 px/m: photo x 0-1260 px). Bottom band: basement windows hidden behind parked bicycles (null). Four clear vision bands, one ribbon each. Depth band 3 m: the roof plant stands 9-11 m behind the face and does not show from the street.",
+   "depthBand": 3
+  },
+  {
+   "name": "south (entrance front)",
+   "bearing": 177,
+   "photo": "staging/landmarks/gerrit-rietveld-academie/commons/Frederik_Roeskestraat_96,_Gerrit_Rietmieveld_Academie_pic3.1600.jpg",
+   "rows": [
+    null,
+    1,
+    1,
+    1,
+    1
+   ],
+   "gables": 0,
+   "note": "Main block front west of the transverse workshop block (span: native T ~ u, -42..2.9 m; the transverse block stands 40 m further south and would otherwise sit in front of the lower front east of u 2.9; pic3 does not show it). Front plane pinned to the white wall (v 5.25). Oblique Commons view: the sokkel band is hidden by the black wall and the white wall (null); four clear vision bands, one ribbon each (the entrance doors join the ground-storey band).",
+   "frontDepth": -5.25,
+   "depthBand": 3,
+   "span": [
+    -42,
+    2.9
+   ]
+  }
+ ]
+}
