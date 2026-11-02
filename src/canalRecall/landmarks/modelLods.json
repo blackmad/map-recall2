@@ -2032,5 +2032,17 @@
   "buildVersion": 2,
   "bytes": 59492,
   "triangles": 2506
+ },
+ "barbizon-palace": {
+  "sourceHash": "64ab583f1cbe374b",
+  "buildVersion": 2,
+  "bytes": 86824,
+  "triangles": 3976
+ },
+ "marinekazerne-kattenburgerstraat": {
+  "sourceHash": "e776cce0235357e5",
+  "buildVersion": 2,
+  "bytes": 81628,
+  "triangles": 3996
  }
 }
