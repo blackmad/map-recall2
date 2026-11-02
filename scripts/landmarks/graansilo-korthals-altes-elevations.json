@@ -1,0 +1,52 @@
+{
+  "id": "graansilo-korthals-altes",
+  "countedBy": "lane landmarks-silodam-silos-20261101 (opus) from the Commons photos named per facade, 2026-11-02; not a blind count",
+  "facades": [
+    {
+      "name": "west, north wing (WN + its 2-bay end block)",
+      "bearing": 255,
+      "photo": "artifacts/landmark-lanes/silos-commons/c15.jpg",
+      "alongM": [
+        16.3,
+        62.2
+      ],
+      "heightM": [
+        0,
+        18.4
+      ],
+      "rows": [
+        12,
+        12,
+        12,
+        12,
+        12,
+        12
+      ],
+      "symmetric": false,
+      "note": "Commons 'Silodam, Stenen graansilo foto 2' (Alf van Beem 2017, public domain), wall below the cornice (heightM 0-18.4). Left half of the photo, between the white box and the tower. Rows from the quay: plinth = one segmental-arched opening per bay (2 end-block bays + 10 wing bays); then the four stacked lights of each recessed panel (the conversion's floors show as grey bands across the panel), one per bay per row; attic = one window per bay under the cornice. The tower is judged on the review sheet, not here: its door, flank columns and triple lights are a different opening order and the yacht masts cross it in this photo."
+    },
+    {
+      "name": "west, south wing (WS + its 2-bay end block)",
+      "bearing": 255,
+      "photo": "artifacts/landmark-lanes/silos-commons/c15.jpg",
+      "alongM": [
+        74.0,
+        121.4
+      ],
+      "heightM": [
+        0,
+        18.4
+      ],
+      "rows": [
+        12,
+        12,
+        12,
+        12,
+        12,
+        12
+      ],
+      "symmetric": false,
+      "note": "Commons 'Silodam, Stenen graansilo foto 2' (Alf van Beem 2017, public domain), wall below the cornice (heightM 0-18.4). Right half of the photo, tower to the south end. Same rows as the north wing: 12 plinth openings, 4 rows of 12 panel lights, 12 attic windows (counted on the crop x 880-1840; the plinth is partly behind bikes but every arch shows)."
+    }
+  ]
+}

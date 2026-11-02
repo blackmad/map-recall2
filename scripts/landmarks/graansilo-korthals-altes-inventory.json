@@ -1,0 +1,675 @@
+{
+ "schemaVersion": 1,
+ "id": "graansilo-korthals-altes",
+ "pand": "0363100012233585",
+ "brief": "scripts/landmarks/graansilo-korthals-altes-brief.md",
+ "signature": [
+  "t-tent-roof",
+  "t-parapet",
+  "wn-panels",
+  "wn-arcade",
+  "t-turrets",
+  "t-three-lights",
+  "wn-roof-storey",
+  "wn-dormers",
+  "wn-anchors",
+  "n-white-box"
+ ],
+ "walls": [
+  {
+   "tag": "w01-75",
+   "bearing": 75,
+   "lengthM": 106,
+   "centre": [
+    4.8913495,
+    52.390905
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000172_pano_0000_000610",
+   "capturedAt": "2016-11-01",
+   "checked": true,
+   "items": [
+    {
+     "id": "e-panels",
+     "kind": "window-shape",
+     "where": "ten recessed panels (spaarvelden) between lesenes per wing face, glazed in the c. 2000 conversion: two lights, grey frames, four storeys behind",
+     "approxSizeM": [
+      2.75,
+      9.1
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-000172_pano_0000_000610",
+     "how": "bayFace(): 0.32 m deep cut per bay, grey mullion, frame and three floor edges"
+    },
+    {
+     "id": "e-arcade",
+     "kind": "other",
+     "where": "corbel arcade (rondboogfries) of five small round arches closing every panel head, buff corbels",
+     "approxSizeM": [
+      2.9,
+      0.6
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-000172_pano_0000_000610",
+     "how": "bayFace(): corbelArcadeOutline (new kit component crenellation.ts) extruded 0.12 m in buff"
+    },
+    {
+     "id": "e-anchors",
+     "kind": "other",
+     "where": "iron rosette anchors on the lesenes, two per lesene between the panel storeys (register: rozet-ankers mark the panels)",
+     "approxSizeM": [
+      0.35,
+      0.35
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-000172_pano_0000_000610",
+     "how": "bayFace(): 8-sided discs 8 cm proud, two per lesene"
+    },
+    {
+     "id": "e-plinth-doors",
+     "kind": "window-shape",
+     "where": "segmental-arched glazed doors in the brick plinth, one per bay, buff arch heads",
+     "approxSizeM": [
+      1.25,
+      2.6
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-000172_pano_0000_000610",
+     "how": "bayFace(): holed door with segBand head and mullion"
+    },
+    {
+     "id": "e-attic",
+     "kind": "window-shape",
+     "where": "attic storey: one small window per bay in a white frame under a white segmental hood",
+     "approxSizeM": [
+      1.5,
+      2.2
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-000172_pano_0000_000610",
+     "how": "bayFace(): white-reveal cut, white sill and hood"
+    },
+    {
+     "id": "e-cornice",
+     "kind": "other",
+     "where": "pale stone cornice on brackets, frieze courses below it and over the panel arcades",
+     "approxSizeM": [
+      38.7,
+      0.9
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-000172_pano_0000_000610",
+     "how": "bayFace(): stone slab 0.5 m proud on one bracket per lesene; buff and brick courses"
+    },
+    {
+     "id": "e-dormers",
+     "kind": "other",
+     "where": "zinc dormers with white window frames on the slate roof slope, one per bay",
+     "approxSizeM": [
+      1.5,
+      1.6
+     ],
+     "plan": "modelled",
+     "seenIn": "Commons: Silodam,_Stenen_graansilo_foto_2.jpg (Alf van Beem, public domain)",
+     "how": "wingRoof(): zinc box with white frame and glass sheets"
+    },
+    {
+     "id": "e-roof-storey",
+     "kind": "other",
+     "where": "converted roof storey behind a roof terrace with mesh railings, white ventilation stacks in pairs",
+     "approxSizeM": [
+      38,
+      3.5
+     ],
+     "plan": "modelled",
+     "seenIn": "Commons: Silodam,_Stenen_graansilo_foto_2.jpg (Alf van Beem, public domain)",
+     "how": "wingRoof(): glazed aluminium box, terrace, 4 cm railing sheet, white stacks"
+    },
+    {
+     "id": "e-tower",
+     "kind": "tower",
+     "where": "centre tower on the water side, same front as the street side: crenellated arcaded parapet, corbel turrets, slate tent roof",
+     "approxSizeM": [
+      11.3,
+      34.5
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-000172_pano_0000_000610",
+     "how": "towerFront() on both long fronts"
+    },
+    {
+     "id": "e-winter-gardens",
+     "kind": "other",
+     "where": "glazed winter-garden boxes along the foot of the east front on the lower quay",
+     "approxSizeM": [
+      100,
+      2.5
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-000172_pano_0000_000610",
+     "how": "east terrace strip (v 10.0-11.9) with a 1 m glazed front and white posts above the street datum; the part below the street level to the lower quay is not drawn (model ground is the street)"
+    },
+    {
+     "id": "e-end-canopies",
+     "kind": "canopy",
+     "where": "white bracketed eaves canopies on the end bays, which rise a storey above the wing cornice",
+     "approxSizeM": [
+      8,
+      0.8
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-000172_pano_0000_000610",
+     "how": "end-bay walls to 20.9 m (3DBAG) with an upper window row and a white eaves board"
+    }
+   ]
+  },
+  {
+   "tag": "w02-255",
+   "bearing": 255,
+   "lengthM": 38.7,
+   "centre": [
+    4.8911375,
+    52.390609
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000702_pano_0000_002058",
+   "capturedAt": "2018-05-02",
+   "checked": true,
+   "items": [
+    {
+     "id": "wn-panels",
+     "kind": "window-shape",
+     "where": "ten recessed panels (spaarvelden) between lesenes per wing face, glazed in the c. 2000 conversion: two lights, grey frames, four storeys behind",
+     "approxSizeM": [
+      2.75,
+      9.1
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-000702_pano_0000_002058",
+     "how": "bayFace(): 0.32 m deep cut per bay, grey mullion, frame and three floor edges"
+    },
+    {
+     "id": "wn-arcade",
+     "kind": "other",
+     "where": "corbel arcade (rondboogfries) of five small round arches closing every panel head, buff corbels",
+     "approxSizeM": [
+      2.9,
+      0.6
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-000702_pano_0000_002058",
+     "how": "bayFace(): corbelArcadeOutline (new kit component crenellation.ts) extruded 0.12 m in buff"
+    },
+    {
+     "id": "wn-anchors",
+     "kind": "other",
+     "where": "iron rosette anchors on the lesenes, two per lesene between the panel storeys (register: rozet-ankers mark the panels)",
+     "approxSizeM": [
+      0.35,
+      0.35
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-000702_pano_0000_002058",
+     "how": "bayFace(): 8-sided discs 8 cm proud, two per lesene"
+    },
+    {
+     "id": "wn-plinth-doors",
+     "kind": "window-shape",
+     "where": "segmental-arched glazed doors in the brick plinth, one per bay, buff arch heads",
+     "approxSizeM": [
+      1.25,
+      2.6
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-000702_pano_0000_002058",
+     "how": "bayFace(): holed door with segBand head and mullion"
+    },
+    {
+     "id": "wn-attic",
+     "kind": "window-shape",
+     "where": "attic storey: one small window per bay in a white frame under a white segmental hood",
+     "approxSizeM": [
+      1.5,
+      2.2
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-000702_pano_0000_002058",
+     "how": "bayFace(): white-reveal cut, white sill and hood"
+    },
+    {
+     "id": "wn-cornice",
+     "kind": "other",
+     "where": "pale stone cornice on brackets, frieze courses below it and over the panel arcades",
+     "approxSizeM": [
+      38.7,
+      0.9
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-000702_pano_0000_002058",
+     "how": "bayFace(): stone slab 0.5 m proud on one bracket per lesene; buff and brick courses"
+    },
+    {
+     "id": "wn-dormers",
+     "kind": "other",
+     "where": "zinc dormers with white window frames on the slate roof slope, one per bay",
+     "approxSizeM": [
+      1.5,
+      1.6
+     ],
+     "plan": "modelled",
+     "seenIn": "Commons: Silodam,_Stenen_graansilo_foto_2.jpg (Alf van Beem, public domain)",
+     "how": "wingRoof(): zinc box with white frame and glass sheets"
+    },
+    {
+     "id": "wn-roof-storey",
+     "kind": "other",
+     "where": "converted roof storey behind a roof terrace with mesh railings, white ventilation stacks in pairs",
+     "approxSizeM": [
+      38,
+      3.5
+     ],
+     "plan": "modelled",
+     "seenIn": "Commons: Silodam,_Stenen_graansilo_foto_2.jpg (Alf van Beem, public domain)",
+     "how": "wingRoof(): glazed aluminium box, terrace, 4 cm railing sheet, white stacks"
+    }
+   ]
+  },
+  {
+   "tag": "w03-255",
+   "bearing": 255,
+   "lengthM": 38.7,
+   "centre": [
+    4.890947,
+    52.391043
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000702_pano_0000_002048",
+   "capturedAt": "2018-05-02",
+   "checked": true,
+   "items": [
+    {
+     "id": "ws-panels",
+     "kind": "window-shape",
+     "where": "ten recessed panels (spaarvelden) between lesenes per wing face, glazed in the c. 2000 conversion: two lights, grey frames, four storeys behind",
+     "approxSizeM": [
+      2.75,
+      9.1
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-000702_pano_0000_002048",
+     "how": "bayFace(): 0.32 m deep cut per bay, grey mullion, frame and three floor edges"
+    },
+    {
+     "id": "ws-arcade",
+     "kind": "other",
+     "where": "corbel arcade (rondboogfries) of five small round arches closing every panel head, buff corbels",
+     "approxSizeM": [
+      2.9,
+      0.6
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-000702_pano_0000_002048",
+     "how": "bayFace(): corbelArcadeOutline (new kit component crenellation.ts) extruded 0.12 m in buff"
+    },
+    {
+     "id": "ws-anchors",
+     "kind": "other",
+     "where": "iron rosette anchors on the lesenes, two per lesene between the panel storeys (register: rozet-ankers mark the panels)",
+     "approxSizeM": [
+      0.35,
+      0.35
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-000702_pano_0000_002048",
+     "how": "bayFace(): 8-sided discs 8 cm proud, two per lesene"
+    },
+    {
+     "id": "ws-plinth-doors",
+     "kind": "window-shape",
+     "where": "segmental-arched glazed doors in the brick plinth, one per bay, buff arch heads",
+     "approxSizeM": [
+      1.25,
+      2.6
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-000702_pano_0000_002048",
+     "how": "bayFace(): holed door with segBand head and mullion"
+    },
+    {
+     "id": "ws-attic",
+     "kind": "window-shape",
+     "where": "attic storey: one small window per bay in a white frame under a white segmental hood",
+     "approxSizeM": [
+      1.5,
+      2.2
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-000702_pano_0000_002048",
+     "how": "bayFace(): white-reveal cut, white sill and hood"
+    },
+    {
+     "id": "ws-cornice",
+     "kind": "other",
+     "where": "pale stone cornice on brackets, frieze courses below it and over the panel arcades",
+     "approxSizeM": [
+      38.7,
+      0.9
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-000702_pano_0000_002048",
+     "how": "bayFace(): stone slab 0.5 m proud on one bracket per lesene; buff and brick courses"
+    },
+    {
+     "id": "ws-dormers",
+     "kind": "other",
+     "where": "zinc dormers with white window frames on the slate roof slope, one per bay",
+     "approxSizeM": [
+      1.5,
+      1.6
+     ],
+     "plan": "modelled",
+     "seenIn": "Commons: Silodam,_Stenen_graansilo_foto_2.jpg (Alf van Beem, public domain)",
+     "how": "wingRoof(): zinc box with white frame and glass sheets"
+    },
+    {
+     "id": "ws-roof-storey",
+     "kind": "other",
+     "where": "converted roof storey behind a roof terrace with mesh railings, white ventilation stacks in pairs",
+     "approxSizeM": [
+      38,
+      3.5
+     ],
+     "plan": "modelled",
+     "seenIn": "Commons: Silodam,_Stenen_graansilo_foto_2.jpg (Alf van Beem, public domain)",
+     "how": "wingRoof(): glazed aluminium box, terrace, 4 cm railing sheet, white stacks"
+    }
+   ]
+  },
+  {
+   "tag": "w04-345",
+   "bearing": 345,
+   "lengthM": 20.5,
+   "centre": [
+    4.8909275,
+    52.391441
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-06-17_09-10-34_02065",
+   "capturedAt": "2025-06-17",
+   "checked": true,
+   "items": [
+    {
+     "id": "n-white-box",
+     "kind": "other",
+     "where": "white rendered residential box (conversion) on the former elevator tower, five rows of paired windows, roof railing",
+     "approxSizeM": [
+      12,
+      12.8
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-06-17_09-10-34_02065",
+     "how": "northComplex(): BOX to 22.8 m (3DBAG), window grid with mullions, railing"
+    },
+    {
+     "id": "n-boiler-house",
+     "kind": "window-shape",
+     "where": "former boiler house: one tall brick storey with three round-arched windows, corbel arcade, roof terrace with glass railing",
+     "approxSizeM": [
+      11,
+      6.8
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-06-17_09-10-34_02065",
+     "how": "northComplex(): KETEL edge 3, arched cuts with buff heads, corbel arcade, pilasters, glass rail"
+    },
+    {
+     "id": "n-service-house",
+     "kind": "other",
+     "where": "service house: two brick storeys, white eaves cornice, tiled mansard with two white pedimented dormers on the north",
+     "approxSizeM": [
+      9.6,
+      10
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-06-17_09-10-34_02065",
+     "how": "northComplex(): DIENST walls, white cornice, mansard ring, pedimented dormers"
+    },
+    {
+     "id": "n-elevator-tower",
+     "kind": "tower",
+     "where": "octagonal crenellated unloading tower with elevator on the IJ corner (register); the 1994 RCE photograph shows a tall square tower at this end",
+     "approxSizeM": [
+      8,
+      30
+     ],
+     "plan": "skipped",
+     "seenIn": "RCE 20287023 (1994) vs recording_2025-06-17_09-10-34_02065",
+     "skip": {
+      "reason": "gone",
+      "note": "not identifiable in the 2016-2025 panoramas and Commons photographs; the corner now carries the white residential box (w04-345, Commons Fred Romero 2016)"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "w05-255",
+   "bearing": 255,
+   "lengthM": 16.4,
+   "centre": [
+    4.890813,
+    52.391346
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002050_pano_0001_001910",
+   "capturedAt": "2021-03-19",
+   "checked": true,
+   "items": [
+    {
+     "id": "w-service-house-dormers",
+     "kind": "other",
+     "where": "service house west front: two storeys of windows and doors, five white pedimented dormers on the tiled mansard",
+     "approxSizeM": [
+      16.4,
+      10
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-002050_pano_0001_001910",
+     "how": "four dormers on the mansard over DIENST (10.6 m long) and the flat short wing in front (register: the short wing is flat-roofed); ground openings alternate doors and windows"
+    }
+   ]
+  },
+  {
+   "tag": "w06-165",
+   "bearing": 165,
+   "lengthM": 14.7,
+   "centre": [
+    4.89137,
+    52.3903925
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001074_pano_0000_000790",
+   "capturedAt": "2019-01-24",
+   "checked": true,
+   "items": [
+    {
+     "id": "s-end-front",
+     "kind": "window-shape",
+     "where": "south end of the silo; the panorama shows mostly the concrete silo in front of it",
+     "approxSizeM": [
+      14.7,
+      20.9
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-001074_pano_0000_000790",
+     "how": "four bays of the wing system (panels, arcades, attic) up to the stair annex; the face itself is barely visible in the photo, so its openings are the wing system, not counted from it"
+    }
+   ]
+  },
+  {
+   "tag": "w07-75",
+   "bearing": 75,
+   "lengthM": 12,
+   "centre": [
+    4.8910965,
+    52.391413
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "items": []
+  },
+  {
+   "tag": "w08-256",
+   "bearing": 256,
+   "lengthM": 11.4,
+   "centre": [
+    4.89104,
+    52.3908255
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002050_pano_0001_001922",
+   "capturedAt": "2021-03-19",
+   "checked": true,
+   "items": [
+    {
+     "id": "t-parapet",
+     "kind": "tower",
+     "where": "crenellated parapet over a corbel arcade of seven arches on the tower front",
+     "approxSizeM": [
+      5.8,
+      4.0
+     ],
+     "plan": "modelled",
+     "seenIn": "Commons: Silodam,_Stenen_graansilo_foto_3.jpg (Alf van Beem, public domain)",
+     "how": "towerFront(): corbelArcadeOutline + crenellationOutline (crenellation.ts) on the 0.4 m projection"
+    },
+    {
+     "id": "t-turrets",
+     "kind": "tower",
+     "where": "four corbel turrets (arkeltorentjes): round brick shafts on stone corbels with stone caps, two at the parapet corners, two on the flank lesenes at the cornice",
+     "approxSizeM": [
+      0.8,
+      4.5
+     ],
+     "plan": "modelled",
+     "seenIn": "Commons: Silodam,_Stenen_graansilo_foto_3.jpg (Alf van Beem, public domain)",
+     "how": "towerFront(): 8-sided cylinders, corbel and cone caps"
+    },
+    {
+     "id": "t-three-lights",
+     "kind": "window-shape",
+     "where": "three tall round-arched lights in a recessed field on the upper tower front",
+     "approxSizeM": [
+      3.3,
+      3.8
+     ],
+     "plan": "modelled",
+     "seenIn": "Commons: Silodam,_Stenen_graansilo_foto_3.jpg (Alf van Beem, public domain)",
+     "how": "towerFront(): 0.45 m recess, brick piers, round-headed brick horns, glazing bars"
+    },
+    {
+     "id": "t-tent-roof",
+     "kind": "dome",
+     "where": "slate tent roof (pyramid) over the tower with dormers and a small apex lantern with two finials",
+     "approxSizeM": [
+      11.3,
+      11.3
+     ],
+     "plan": "modelled",
+     "seenIn": "Commons: Silodam,_Stenen_graansilo_foto_4.jpg (Alf van Beem, public domain)",
+     "how": "tower(): pyramid to 33.6 m, white lantern, two finials to 36 m, four pedimented dormers"
+    },
+    {
+     "id": "t-windows",
+     "kind": "window-shape",
+     "where": "triple narrow windows on two storeys, an arched window and the arched door on the tower axis",
+     "approxSizeM": [
+      2.6,
+      1.8
+     ],
+     "plan": "modelled",
+     "seenIn": "Commons: Silodam,_Stenen_graansilo_foto_3.jpg (Alf van Beem, public domain)",
+     "how": "towerFront(): holed cuts with buff heads"
+    },
+    {
+     "id": "t-memorial-stone",
+     "kind": "gable-stone",
+     "where": "memorial stone laid 1897 at the city-side entrance (register)",
+     "approxSizeM": [
+      0.6,
+      0.4
+     ],
+     "plan": "skipped",
+     "seenIn": "Rijksmonument 422518",
+     "skip": {
+      "reason": "too-small",
+      "note": "not legible in any photograph at the door; under 0.5 m"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "w09-255",
+   "bearing": 255,
+   "lengthM": 8.1,
+   "centre": [
+    4.8912505,
+    52.39041
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001710_pano_0000_002506",
+   "capturedAt": "2020-05-14",
+   "checked": true,
+   "items": [
+    {
+     "id": "ws-end-bays",
+     "kind": "window-shape",
+     "where": "south end bays set back 1.6 m: two panels, attic windows and an upper storey under the white eaves",
+     "approxSizeM": [
+      8,
+      20.9
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001710_pano_0000_002506",
+     "how": "bayFace(ES, 2 bays, 20.9 m) with mansard"
+    }
+   ]
+  },
+  {
+   "tag": "w10-255",
+   "bearing": 255,
+   "lengthM": 7.4,
+   "centre": [
+    4.890882,
+    52.391247
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002050_pano_0001_001913",
+   "capturedAt": "2021-03-19",
+   "checked": true,
+   "items": [
+    {
+     "id": "wn-end-bays",
+     "kind": "window-shape",
+     "where": "north end bays set back 1.6 m, same system as the south end bays",
+     "approxSizeM": [
+      7.4,
+      20.9
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002050_pano_0001_001913",
+     "how": "bayFace(EN, 2 bays, 20.9 m) with mansard"
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  }
+ ],
+ "register": "Rijksmonument 422518 (RCE register text in scripts/data/amsterdam-monument-register): Klinkhamer and Van Gendt, 1896-98; centre cleaning building of six storeys under a slate tent roof; twelve-bay wings under saddle roofs with roof light and dormers, end two bays set back under a mansard; rosette anchors; segmental-arched ground openings; corbel turrets; boiler house and service house at the IJ end."
+}
