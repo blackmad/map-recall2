@@ -1,5 +1,5 @@
 {
-  "toolchain": "d3d81b87c1806137d739107531494a359be41ff551561621be5a152323d6b35e",
+  "toolchain": "6d97a545527cca5ec37d2bb69be76c9441d2f1aba6089718b309b523d3eddad5",
   "models": {
     "abn-amro-hoofdkantoor": "90ff65a2d9f94e99b2ab33438567f147959a43f017d3d9cf9d2ae68b6dae7cbf",
     "academie-theater-dans": "503b3e8d59937cbf7ac8776eb644c11fd10b567e5ac1113e0caa55c83cb68cde",
@@ -18,6 +18,7 @@
     "amsterdam-museum": "c828e1ca8a961e8ab5ab750a8c798d6b68ebced4e009ce0fe04f6a28c59219e4",
     "amsterdam-pipe-museum": "4add888383ee59c68faa552dd59f9f33bc10c58b6c2bda9b9a45d482aea6ce4b",
     "amsterdam-tulip-museum": "35bbe584a5f2034c7f33f2fbcea287df68feb951c4ab6cb916fc7f179a5a344c",
+    "andaz-prinsengracht": "a81b1bbb822a78907df6e2e25416f1709c2fb3dacb8884e2561e911b7c94b13f",
     "anne-frank-house": "269e29b4dffa55d24d1366123b288289c11cc6fc6f7b3b46571a787619bcd207",
     "anne-frank-merwedeplein": "d5dae573ddbca44cfa23085e3251aeb0e68b0835b725f7e346e4c83aab279f37",
     "arcam": "7da40fd245bd1348af1844f166bc3fceeb3d03cb45407a2afa67e7ac8b1a9564",
@@ -28,6 +29,7 @@
     "artis-planetarium": "4ed75a4b5c31e5197d9b252a7c26dd05e362e24b52ab9071ed85293241db5a94",
     "asterweg-23": "ac60054b0e09a055b07d89bc9852fc39b009e01c4cd7428d98bdeda3666aa7e4",
     "athenaeum": "04333046f1bf8946753eb42280e04db3e0daadba9afcd18f34719ee20d7c80ab",
+    "atlanta-stadhouderskade": "c64cc840ea6687b82c178d7266aab3ac7944aa1174420298afd7fa8c10682bc2",
     "auschwitz-monument": "b425e91c67c90ec1d1a10b997ecb7399d6b00a7448c65407e7ad2474de62e1e6",
     "badhuistheater": "15049df413704352efccf10043d8c2c37b328eb814f674ab1b93759cc1889c42",
     "barbizon-palace": "db9cf2af15aa787ec64186fbd90ac6cf738481320e636fabe39c2dcbb1e06fbe",
@@ -125,6 +127,7 @@
     "frascati": "409bf770d1e57034d1fb1d07d0e30a0501ffce6cfdc394618b98945540b1380e",
     "gandhi-churchill-laan": "642fa06a85f11d0db93dddf5d59d004939f325716f3c1fc9ca6895b35d7cdb4e",
     "gashouder": "de554d64ef4c8e439dfc39a6d82b35ad300779faf9f20eb6218e4b3aa56c5f53",
+    "gebouw-parnas": "fc27f9fb6145a96237498df54d2f54060eecc1656e1ed68a9d0248f323fba7df",
     "gerard-dou-synagogue": "7d51aba52c2bd1cb7af7bc41f0f1381526b97340556abdfe7d35e6ca8e60b29a",
     "grasweg-116": "5adde9cb545b272c2f7bab3484d02e035bd2246307edb57169647dce8ab514fb",
     "groot-melkhuis": "9eaca55f4135f6e0889a946bc0c6f11ae7e4dd1612070295e7ef2c48b16e54a2",
@@ -214,6 +217,7 @@
     "lieverdje": "b170427e0d94fbf622c190e3e105bbc0f06b993128d231653f2987e6c67f23f1",
     "ljg-synagoge": "5755e3429b3db7b2b7111ec3ae39e1159a33023876cf16d2f9df26869b193b96",
     "lloyd-hotel": "d9925b81239abf0c14a1137f67d92e93eb1d8828862d44589e68e45758b25604",
+    "loods-6": "41a012c39c1563d09c91f5a0fa509a61c2bb0be454ad1bfbdea87ebf16caf202",
     "luther-museum": "02ba08d24acc89fa8c8bfa6deca9b74a570a3430330d8c405a169bc9dcf66b25",
     "maagdenhuis": "674cf70cd339daead57c068d75364bc5af5a2746991a5df648e22ec23a526589",
     "maarten-lutherkerk": "b1aedb7acfcd70eb6f04759214205ace61741a926d9711dc86aebc23090b50a6",
