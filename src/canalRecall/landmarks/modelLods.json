@@ -2206,5 +2206,11 @@
   "buildVersion": 2,
   "bytes": 62660,
   "triangles": 3366
+ },
+ "politie-lijnbaansgracht": {
+  "sourceHash": "b5e3f79e0df15fde",
+  "buildVersion": 2,
+  "bytes": 40956,
+  "triangles": 2182
  }
 }

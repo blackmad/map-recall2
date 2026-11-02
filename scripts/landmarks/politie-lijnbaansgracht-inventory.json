@@ -1,0 +1,283 @@
+{
+ "schemaVersion": 1,
+ "id": "politie-lijnbaansgracht",
+ "pand": "0363100012169471",
+ "brief": "scripts/landmarks/politie-lijnbaansgracht-brief.md",
+ "signature": [
+  "lb-window-grid",
+  "lb-bay",
+  "lb-setback",
+  "lb-notch",
+  "lb-garage-doors",
+  "lb-shaft"
+ ],
+ "walls": [
+  {
+   "tag": "w01-232",
+   "bearing": 232,
+   "lengthM": 45.5,
+   "centre": [
+    4.8812845,
+    52.365215
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001974_pano_0000_000980",
+   "capturedAt": "2021-01-22",
+   "checked": true,
+   "items": [
+    {
+     "id": "lb-window-grid",
+     "kind": "window-shape",
+     "where": "whole canal front: square-ish dark-framed windows 1.7 x 2.3 m (a mullion and a transom) on a 2.41 m pitch, a pale shutter-box strip over each head; five rows on the tall north-west block, four plus the set-back top storey on the lower south-east part, short high windows (2.0-3.6 m) in the ground storey",
+     "approxSizeM": [
+      45.5,
+      17.8
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001974_pano_0000_000980",
+     "how": "0.15 m cuts with dark reveals, mullion and transom bars 7 cm proud of the glass, a proud pale head strip; columns carried onto the set-back storey walls in the same t frame"
+    },
+    {
+     "id": "lb-bay",
+     "kind": "other",
+     "where": "first storey of the north-west block, t 2.3-18.1 m: a band storey projecting over the quay, white bands top and bottom (5.0-5.2 and 7.6-7.8 m), six larger windows on a 2.51 m pitch",
+     "approxSizeM": [
+      15.8,
+      2.8
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001974_pano_0000_000980",
+     "how": "box 0.6 m proud: holed front, side returns, white band bars whose undersides form the soffit"
+    },
+    {
+     "id": "lb-corner-canopy",
+     "kind": "canopy",
+     "where": "north-west corner, t 0.3-2.3 m: a thin white canopy at 7.0 m over the corner entrance",
+     "approxSizeM": [
+      2.0,
+      0.3
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001974_pano_0000_000980",
+     "how": "white slab 0.7 m proud"
+    },
+    {
+     "id": "lb-notch",
+     "kind": "other",
+     "where": "t 17.3-20.8 m between the two parts: upper storeys recessed about 2 m above a terrace at 12.2 m with a white slab edge and windows in the recessed wall",
+     "approxSizeM": [
+      3.5,
+      7.6
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001974_pano_0000_000980",
+     "how": "3DBAG tiers (12.2 m roof) with the window grid on the recessed walls and a white slab edge"
+    },
+    {
+     "id": "lb-setback",
+     "kind": "other",
+     "where": "south-east part: front parapet at 15.7 m, the top storey set back about 2.2 m, its window heads showing over the parapet",
+     "approxSizeM": [
+      24.7,
+      4.2
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001974_pano_0000_000980",
+     "how": "3DBAG tiers 15.67/19.85 m; the set-back wall carries the grid"
+    },
+    {
+     "id": "lb-garage-doors",
+     "kind": "other",
+     "where": "ground storey t 27.2-41.0 m: three wide dark vehicle openings with white lintels at 3.6 m",
+     "approxSizeM": [
+      13.8,
+      3.6
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001974_pano_0000_000980",
+     "how": "0.4 m deep dark cuts with proud white lintel bars"
+    },
+    {
+     "id": "lb-shaft",
+     "kind": "other",
+     "where": "t 40.2-43.5 m: a pale grey panelled shaft rising from the first-storey canopy to about 17.5 m, above the front parapet",
+     "approxSizeM": [
+      3.3,
+      11.8
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-001974_pano_0000_000980",
+     "how": "proud stone box with three dark vertical joints; panel pattern not drawn"
+    },
+    {
+     "id": "lb-canopy-se",
+     "kind": "canopy",
+     "where": "t 38.5-45.5 m: a white canopy band at 4.8-5.7 m over the south-east ground storey",
+     "approxSizeM": [
+      7.0,
+      0.9
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001974_pano_0000_000980",
+     "how": "white bar 1.0 m proud"
+    },
+    {
+     "id": "lb-karssen",
+     "kind": "sculpture",
+     "where": "Harry Karssen plastiek, metres high on the facade (nl.wikipedia Lijnbaansgracht 219)",
+     "approxSizeM": [
+      2,
+      6
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7316010203-001974_pano_0000_000980",
+     "skip": {
+      "reason": "gone",
+      "note": "removed around 2017 (nl.wikipedia Harry Karssen); no sculpture on the 2021 or 2022 panoramas"
+     }
+    },
+    {
+     "id": "lb-plaques",
+     "kind": "sign",
+     "where": "small red plaque and a post sign by the north-west entrance",
+     "approxSizeM": [
+      0.6,
+      0.3
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7316010203-001974_pano_0000_000980",
+     "skip": {
+      "reason": "too-small",
+      "note": "0.6 x 0.25 m plaque; the round sign stands on a street post, not the building"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "w02-329",
+   "bearing": 329,
+   "lengthM": 7.3,
+   "centre": [
+    4.8811225,
+    52.365392
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001974_pano_0000_000983",
+   "capturedAt": "2021-01-22",
+   "checked": true,
+   "items": [
+    {
+     "id": "lb-nw-end",
+     "kind": "window-shape",
+     "where": "north-west end over the bridge: three columns of the same dark-framed windows per storey (centres 1.7, 3.9, 6.1 m), brown brick like the front",
+     "approxSizeM": [
+      7.3,
+      15
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001974_pano_0000_000983",
+     "how": "same window cut as the front, three columns"
+    },
+    {
+     "id": "lb-nw-rails",
+     "kind": "balcony-ironwork",
+     "where": "white horizontal rails across a recessed first storey (2022 view)",
+     "approxSizeM": [
+      7.3,
+      0.5
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-002985_pano_0000_000196",
+     "how": "the bay band storey returns on this end as white band bars; the rail bars are not separate"
+    }
+   ]
+  },
+  {
+   "tag": "w03-52",
+   "bearing": 52,
+   "lengthM": 5.9,
+   "centre": [
+    4.881335,
+    52.365331
+   ],
+   "evidence": "inferred",
+   "panoId": "TMX7316010203-002860_pano_0001_000071",
+   "capturedAt": "2022-12-15",
+   "checked": true,
+   "items": [],
+   "note": "The brief panorama looks at a neighbouring building, not this wall: a camera-matched overlay (artifacts/review/politie-lijnbaansgracht/sheet.png) puts its windows at about three times the model storey scale, and the aimed view shows single bricks from a few metres away (red brick, cream two-light windows, yellow-header lozenges). This back wall stands behind those houses; drawn in the front's brown brick with its dark-framed window grid."
+  },
+  {
+   "tag": "w04-52",
+   "bearing": 52,
+   "lengthM": 4.8,
+   "centre": [
+    4.881246,
+    52.365348
+   ],
+   "evidence": "inferred",
+   "panoId": "TMX7316010203-002860_pano_0001_000034",
+   "capturedAt": "2022-12-15",
+   "checked": true,
+   "items": [],
+   "note": "The brief panorama looks at a neighbouring building, not this wall: a camera-matched overlay (artifacts/review/politie-lijnbaansgracht/sheet.png) puts its windows at about three times the model storey scale, and the aimed view shows single bricks from a few metres away (red brick, cream two-light windows, yellow-header lozenges). This back wall stands behind those houses; drawn in the front's brown brick with its dark-framed window grid."
+  },
+  {
+   "tag": "w05-53",
+   "bearing": 53,
+   "lengthM": 4.8,
+   "centre": [
+    4.8814015,
+    52.365301
+   ],
+   "evidence": "inferred",
+   "panoId": "TMX7316010203-000714_pano_0001_001358",
+   "capturedAt": "2018-05-11",
+   "checked": true,
+   "items": [],
+   "note": "The brief panorama looks at a neighbouring building, not this wall: a camera-matched overlay (artifacts/review/politie-lijnbaansgracht/sheet.png) puts its windows at about three times the model storey scale, and the aimed view shows single bricks from a few metres away (red brick, cream two-light windows, yellow-header lozenges). This back wall stands behind those houses; drawn in the front's brown brick with its dark-framed window grid."
+  },
+  {
+   "tag": "w06-141",
+   "bearing": 141,
+   "lengthM": 4.7,
+   "centre": [
+    4.881628,
+    52.3651375
+   ],
+   "evidence": "inferred",
+   "panoId": "TMX7316010203-002542_pano_0001_000438",
+   "capturedAt": "2022-04-25",
+   "checked": true,
+   "items": [],
+   "note": "The brief panorama looks at a neighbouring building, not this wall: a camera-matched overlay (artifacts/review/politie-lijnbaansgracht/sheet.png) puts its windows at about three times the model storey scale, and the aimed view shows single bricks from a few metres away (red brick, cream two-light windows, yellow-header lozenges, a cinema canopy). This back wall stands behind those houses; drawn in the front's brown brick with its dark-framed window grid."
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas (w01 TMX7316010203-001974_pano_0000_000980, w02 TMX7316010203-001974_pano_0000_000983 and TMX7316010203-002985_pano_0000_000196, w03/w04 TMX7316010203-002860_pano_0001_000071/000034, w05 TMX7316010203-000714_pano_0001_001358, w06 TMX7316010203-002542_pano_0001_000438)",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/",
+   "licence": "CC BY 4.0"
+  },
+  {
+   "name": "BAG pand 0363100012169471",
+   "url": "https://bagviewer.kadaster.nl/lvbag/bag-viewer/?objectId=0363100012169471",
+   "licence": "CC0"
+  },
+  {
+   "name": "3DBAG pand 0363100012169471",
+   "url": "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012169471",
+   "licence": "CC BY 4.0"
+  },
+  {
+   "name": "nl.wikipedia: Lijnbaansgracht 219",
+   "url": "https://nl.wikipedia.org/wiki/Lijnbaansgracht_219",
+   "licence": "CC BY-SA 4.0 (facts only)"
+  },
+  {
+   "name": "nl.wikipedia: Harry Karssen",
+   "url": "https://nl.wikipedia.org/wiki/Harry_Karssen",
+   "licence": "CC BY-SA 4.0 (facts only)"
+  }
+ ]
+}

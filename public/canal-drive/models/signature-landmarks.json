@@ -78442,6 +78442,175 @@
         "bytes": 62660,
         "triangles": 3366
       }
+    },
+    "politie-lijnbaansgracht": {
+      "id": "politie-lijnbaansgracht",
+      "name": "Politiebureau Lijnbaansgracht",
+      "modelUrl": "./models/politie-lijnbaansgracht.glb",
+      "suppressOsmIds": [
+        "NL.IMBAG.Pand.0363100012169471"
+      ],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.88139088,
+          52.36527021
+        ],
+        "headingDegrees": 0,
+        "lengthMetres": 39.2,
+        "widthMetres": 39.5
+      },
+      "surveyed": {
+        "anchor": [
+          4.88139088,
+          52.36527021
+        ],
+        "northOffsetDegrees": 0,
+        "source": "Vertex average of the BAG 0363100012169471 outline (RD, 3DBAG LoD0); volumes from the 3DBAG LoD2.2 roof planes of that pand (CC BY 4.0) snapped to 12.2/15.7/19.85/21.0/21.5 m and stacked as tiers (roofTiers), in native east/south metres (scripts/landmarks/silodam-silos-prepare.ts 0363100012169471 politie-lijnbaansgracht). Window grid, band storey, vehicle openings, canopy and shaft measured on the rectified Gemeente Amsterdam panorama crop w01-232 (2021-01-22) and the w02-w06 crops (2018-2022, CC BY 4.0)."
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 0,
+      "heightMetres": 21.5,
+      "bagYear": 1977,
+      "materialOverrides": {
+        "brick": "#6b5a4e",
+        "white": "#d9d9d0",
+        "frame": "#3b3f42",
+        "glass": "#5d7479",
+        "dark": "#2b2d30",
+        "green": "#56716f",
+        "stone": "#9a9e9b",
+        "slate": "#5f5d5a"
+      },
+      "attribution": {
+        "title": "Politiebureau Lijnbaansgracht, Lijnbaansgracht 219 (1977)",
+        "author": "Map Recall",
+        "sourceUrl": "https://bagviewer.kadaster.nl/lvbag/bag-viewer/?objectId=0363100012169471",
+        "licence": "CC BY 4.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "modifications": "Original texture-free flat-colour geometry on the BAG outline (CC0) and 3DBAG LoD2.2 heights (CC BY 4.0): the dark brown brick canal front with its dark-framed window grid, the white-banded first-storey band on the north-west block, the notch and set-back top storey, three vehicle openings with white lintels and the canopy band and pale shaft; back walls (hidden behind neighbouring houses) repeat the front's brick and window grid. Gemeente Amsterdam panoramas (CC BY 4.0) guided the detail; no pixels or meshes imported."
+      },
+      "buildingFootprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.8811653,
+              52.3654064
+            ],
+            [
+              4.8810739,
+              52.3653729
+            ],
+            [
+              4.8814895,
+              52.3650526
+            ],
+            [
+              4.8816113,
+              52.365112
+            ],
+            [
+              4.8815987,
+              52.3651217
+            ],
+            [
+              4.8816526,
+              52.3651492
+            ],
+            [
+              4.8816175,
+              52.3651766
+            ],
+            [
+              4.8816147,
+              52.3651756
+            ],
+            [
+              4.881453,
+              52.3652981
+            ],
+            [
+              4.8814206,
+              52.3652818
+            ],
+            [
+              4.8813769,
+              52.3653163
+            ],
+            [
+              4.8813595,
+              52.365308
+            ],
+            [
+              4.8813051,
+              52.36535
+            ],
+            [
+              4.8812995,
+              52.365347
+            ],
+            [
+              4.8813008,
+              52.3653461
+            ],
+            [
+              4.8812649,
+              52.3653287
+            ],
+            [
+              4.8812214,
+              52.3653628
+            ],
+            [
+              4.8812104,
+              52.3653578
+            ],
+            [
+              4.8811653,
+              52.3654064
+            ]
+          ]
+        ]
+      },
+      "buildingCategory": "landmark",
+      "bounds": {
+        "min": [
+          -21.91459083557129,
+          0,
+          -15.349176406860352
+        ],
+        "max": [
+          17.729999542236328,
+          21.5,
+          24.820716857910156
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.88139088,
+          52.36527021
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 90,
+        "facadeBearingDegrees": 0,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 40.16989326477051,
+        "heightMetres": 21.5,
+        "depthMetres": 39.64459037780762,
+        "depthCoverage": 1.0036605158938636
+      },
+      "triangles": 4048,
+      "bytes": 67684,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
+      "lod1": {
+        "sourceHash": "b5e3f79e0df15fde",
+        "buildVersion": 2,
+        "bytes": 40956,
+        "triangles": 2182
+      }
     }
   }
 }
