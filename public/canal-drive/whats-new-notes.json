@@ -3,6 +3,18 @@
   "notes": [
     {
       "date": "2026-11-02",
+      "title": "Far road paint settles into the road",
+      "text": "Lane lines, zebra crossings and the red of cycle paths now soften into the road surface in the distance, so the horizon reads calmer while the paint near you stays sharp.",
+      "images": [
+        {
+          "src": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/whats-new/2026-11-02-marking-fade-ijburg.jpg",
+          "alt": "The IJburg edge without and with the far marking fade",
+          "caption": "Before | after | changed pixels in red"
+        }
+      ]
+    },
+    {
+      "date": "2026-11-02",
       "title": "Roads now run across bridges",
       "text": "Streets no longer break into a gap or a bare deck where they cross a canal; the road surface carries straight across the bridge, as on the aerial photo.",
       "where": [

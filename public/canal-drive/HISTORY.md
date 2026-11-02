@@ -2,6 +2,21 @@
 
 **Landmark round 3, early 2026-11-02: seven landmarks (#182, #183, #184, #186).** Lanes (opus): vijzelbank + carlton-hotel (#182; Vijzelstraat 66–80 is the Vijzelbank itself, one pand), telefooncentrale-spuistraat + telegraaf-gebouw (#183), odeon-singel + doelen-hotel (#184), citroen-zuid (#186; the 1962 Citroën building is already `beta-boulders`, Kraanspoor handed to #187). New kit parts: `landmarks/terraceBands.ts` (floor bands and fins round stepped terraces), `landmarks/wrapBand.ts`, `scripts/landmarks/plan-prism.ts` (prism, run-frame and `slopedPrism` helpers; vijzelbank byte-identical after the move), `neck-gable.ts` `crown: 'segment'` and a separate neck colour (cromhouthuizen byte-identical), nearbar-kit letters gain digits and `V`; `landmark-brief.ts --ignore=` drops OSM parts that cross the BAG line. `test:landmark-kits` now runs the neck-gable, terrace-band and wrap-band tests (52). Geometry-audit baseline first rows: vijzelbank (missing 2 = the Kerkstraat passage bays, mismatch 1, rhythm 1), carlton-hotel (mismatch 48 = the oriels' narrow side windows, rhythm 1), citroen-zuid (mismatch 2 = the 2 m north windows), telefooncentrale-spuistraat (mismatch 2 = the Paleisstraat door bay); odeon, doelen and telegraaf pass with no rows. Decisions worth knowing: the Doelen's tower oculus is a slate disc (counted as a window it failed the rhythm gate), its south wing follows the photo's attic storey not the 3DBAG roof, and the Telegraaf lettering is gone from every panorama since 2017 so it is not drawn. Disk hit 167 MB free during the gate (two lanes' `audit:glb --only=` runs wrote 1.5–1.7 GB of whole-catalogue audit output each; the flag is `--id=`): merged lane worktrees are now pruned as soon as they are merged locally, see the memory note. Integration: union merges, signature bundle, covers, backlog, buurt pages, looks, content stats, model-first-added; sources archived.
 
+**Far road paint settles into the road: centre and lane lines, zebras and cycle red blend toward the asphalt beyond ~120 m (2026-11-02, #161 lever 2).**
+Materials (9bb6a6dff, 6f972429b). Paint blends fully into the asphalt colour and
+the red cycle surface 70 % of the way, starting at the later of 120 m and the
+depth-fade start and complete 100 m on; the near field is pixel-identical and
+kerbs and bollards are untouched (already culled at 150 m). On for every look,
+`?markingFade=0` off; off, the shaders are byte-identical, and on, one shared
+program source and key, pinned by `look/markingFade.test.ts`. On the busyness
+probe it is a quiet lever (≤ 0.02 on the luma ratio; the new OKLab chroma term
+moves only where far red strands are in frame, ijburg iPhone 0.97 → 0.90). It
+ships anyway because the far red and white strands read as chroma spaghetti at
+the horizon, which the luma ratio does not see. Cost: desktop draws 285 → 293
+(within run spread), iPad unchanged. Integrator: engine, own-ground and three
+bundles rebuilt; lint, test:look 176/176, test:engine 130/130, test:own-ground
+231/231. What's New note with the IJburg strip.
+
 **Roads now run across bridges: the surveyed bridge-level road polygons are drawn on the deck and decks take their edges from the survey (2026-11-02, #178).**
 Road bridge-gaps lane (6625a6805, 74ec86c80, dc44ce4af). The measurement found
 two causes. First, 74 % of the non-road samples on bridges lay inside a roads-v1
