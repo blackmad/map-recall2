@@ -1,0 +1,202 @@
+{
+ "id": "politie-oost-watergraafsmeer",
+ "countedBy": "lane #207 (opus) from the rectified panorama crops of the brief; zones follow the photo's split levels; a door, a louvre and an entrance bay count.",
+ "facades": [
+  {
+   "name": "Linnaeusstraat front, north zone",
+   "bearing": 250,
+   "photo": "artifacts/landmark-briefs/politie-oost-watergraafsmeer/w02-250.jpg",
+   "alongM": [
+    0,
+    11.06
+   ],
+   "heightM": [
+    0,
+    19.65
+   ],
+   "rows": [
+    6,
+    6,
+    6,
+    6,
+    6
+   ],
+   "symmetric": false,
+   "note": "w02-250 (recording_2025-06-19_10-17-35_00977, 49.8 px/m). The glazed corner bay and columns 1-5: low windows with blinds, short timber windows, tall timber windows with a transom, then two aluminium storeys. A zone of its own because its floors sit at other levels than the middle and south zones (split-level plan)."
+  },
+  {
+   "name": "Linnaeusstraat front, middle zone",
+   "bearing": 250,
+   "photo": "artifacts/landmark-briefs/politie-oost-watergraafsmeer/w02-250.jpg",
+   "alongM": [
+    11.06,
+    20.69
+   ],
+   "heightM": [
+    0,
+    19.65
+   ],
+   "rows": [
+    5,
+    5,
+    5,
+    5,
+    5
+   ],
+   "symmetric": false,
+   "note": "w02-250: columns 6-10: low windows with blinds, tall timber windows 3.8-7.3, three aluminium storeys."
+  },
+  {
+   "name": "Linnaeusstraat front, south zone and entrance",
+   "bearing": 250,
+   "photo": "artifacts/landmark-briefs/politie-oost-watergraafsmeer/w02-250.jpg",
+   "alongM": [
+    20.69,
+    34.21
+   ],
+   "heightM": [
+    0,
+    19.65
+   ],
+   "rows": [
+    6,
+    7,
+    7,
+    7,
+    7
+   ],
+   "symmetric": false,
+   "note": "w02-250 columns 11-14 and w05-249 (TMX7316010203-001679_pano_0000_001268, 2020) columns 15-16 and the corner bay: four tall ground windows and the two entrance bays, short timber windows, three aluminium storeys; the corner bay has no ground window."
+  },
+  {
+   "name": "south face",
+   "bearing": 161,
+   "photo": "artifacts/landmark-briefs/politie-oost-watergraafsmeer/w04-161.jpg",
+   "alongM": [
+    0,
+    18.0
+   ],
+   "heightM": [
+    0,
+    19.65
+   ],
+   "rows": [
+    8,
+    9,
+    9,
+    9,
+    9
+   ],
+   "symmetric": false,
+   "note": "w04-161 (TMX7316010203-001679_pano_0000_001262, 44.9 px/m): the corner bay and columns 1-8; the entrance porch under column 1 and seven tall timber ground windows; short timber windows; three aluminium storeys."
+  },
+  {
+   "name": "south face, garage bay",
+   "bearing": 161,
+   "photo": "artifacts/landmark-briefs/politie-oost-watergraafsmeer/w04-161.jpg",
+   "alongM": [
+    18.0,
+    24.9
+   ],
+   "heightM": [
+    0,
+    19.65
+   ],
+   "rows": [
+    1,
+    3,
+    3,
+    3,
+    3
+   ],
+   "symmetric": false,
+   "note": "w04-161: the garage door in its grey stone frame under columns 9-11, then columns 9-11 and the corner bay on every storey. Cropped apart because the roller door is one 4.4 m opening, not a window of the row. The 0.45 m of corner glass at the right edge (the wrap of the east face's corner bay) is not counted: the model draws that corner bay on the east face only."
+  },
+  {
+   "name": "east face, south zone",
+   "bearing": 71,
+   "photo": "artifacts/landmark-briefs/politie-oost-watergraafsmeer/w01-71.jpg",
+   "alongM": [
+    0,
+    12.62
+   ],
+   "heightM": [
+    0,
+    19.65
+   ],
+   "rows": [
+    7,
+    7,
+    7,
+    7
+   ],
+   "symmetric": false,
+   "note": "w01-71 (TMX7316010203-001679_pano_0000_001255, 49.9 px/m, 48 deg oblique): the corner bay and columns 1-6 over blank brick panels (no ground openings): short timber windows, three aluminium storeys."
+  },
+  {
+   "name": "east face, middle zone",
+   "bearing": 71,
+   "photo": "artifacts/landmark-briefs/politie-oost-watergraafsmeer/w01-71.jpg",
+   "alongM": [
+    12.62,
+    25.5
+   ],
+   "heightM": [
+    0,
+    19.65
+   ],
+   "rows": [
+    6,
+    7,
+    7,
+    7,
+    7
+   ],
+   "symmetric": false,
+   "note": "w01-71: columns 7-13: six steel doors under 7-12, tall timber windows 3.8-7.3, three aluminium storeys."
+  },
+  {
+   "name": "east face, north zone",
+   "bearing": 71,
+   "photo": "artifacts/landmark-briefs/politie-oost-watergraafsmeer/w01-71.jpg",
+   "alongM": [
+    25.5,
+    34.22
+   ],
+   "heightM": [
+    0,
+    19.65
+   ],
+   "rows": [
+    5,
+    5,
+    5,
+    5
+   ],
+   "symmetric": false,
+   "note": "w01-71: columns 14-17 and the corner bay over blank brick: short timber windows, tall timber windows, two aluminium storeys."
+  },
+  {
+   "name": "north face",
+   "bearing": 341,
+   "photo": "artifacts/landmark-briefs/politie-oost-watergraafsmeer/w03-341.jpg",
+   "alongM": [
+    0,
+    24.2
+   ],
+   "heightM": [
+    0,
+    19.65
+   ],
+   "rows": [
+    4,
+    13,
+    13,
+    13,
+    13
+   ],
+   "symmetric": false,
+   "note": "w03-341 (recording_2024-09-16_10-54-06_01928, 48.6 px/m): twelve columns and both corner bays: ground has the door under column 5, three louvres under 10-12 and the glazed west corner bay; short timber windows, tall timber windows, two aluminium storeys; POLITIE between the top two storeys at the west end. The 0.45 m of corner glass at the right edge (the wrap of the Linnaeusstraat corner bay) is not counted: the model draws that corner bay on the Linnaeusstraat face only."
+  }
+ ]
+}
