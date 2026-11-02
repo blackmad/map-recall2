@@ -3,8 +3,8 @@ import polygonClipping from 'polygon-clipping';
 import type {BuildingTools} from './cultural-builders';
 import {upwardRoofPlane} from './house-geometry';
 import {raisedLettering} from './ornament-kit';
-import {holedWall, type HoledOpening, type WallQuad} from '../../src/canalRecall/landmarks/holedWall';
-import {edgeNormal, roofTiers, type PlanPoint, type RoofPlane} from '../../src/canalRecall/landmarks/roofTiers';
+import {edgeNormal, roofTiers, type RoofPlane} from '../../src/canalRecall/landmarks/roofTiers';
+import {at, bagFrame as kitBagFrame, frameFor, inside, ringOut, onBagEdge as kitOnBagEdge, shift, yaw, ZoneMesh, type C, type Cut, type Frame, type P, type Pad, type Zone} from './zone-wall-kit';
 import plan from './politie-nieuwezijds-voorburgwal-footprints.json';
 
 /**
@@ -29,8 +29,6 @@ import plan from './politie-nieuwezijds-voorburgwal-footprints.json';
  * brick block is authored on its own and cut from the tiers. Frame: x east, z south, y up from the 3DBAG ground
  * (1.0 m NAP), origin = vertex average of the BAG outline (the catalogue anchor).
  */
-type C = Parameters<BuildingTools['add']>[1];
-type P = PlanPoint;
 let b: BuildingTools;
 
 const RING = plan.nativeRing as P[];
@@ -38,88 +36,10 @@ const LEVELS = [4.7, 9.6, 11.8, 15.2, 18.9, 22.4, 25.0];
 const TOP = 22.4, RIB_TOP = 19.3, RIB_END = 10.5, RIB_DEPTH = 1.0;
 const CANOPY = 3.4, BOX_BASE = 7.3, STOREY = 3.5;
 
-/* ------------------------------------------------------------------ frames and mesh */
-type Frame = {o: P; t: P; n: P};
-const ringArea = (r: P[]) => r.reduce((a, p, i) => { const q = r[(i + 1) % r.length]; return a + p[0] * q[1] - q[0] * p[1]; }, 0) / 2;
-/** Frame of a wall whose outward normal is n: t runs viewer-left to viewer-right seen from outside, (t, y, o) right-handed. */
-function frameFor(a: P, c: P, n: P): {f: Frame; len: number} {
-  const t: P = [n[1], -n[0]], len = Math.hypot(c[0] - a[0], c[1] - a[1]);
-  const fwd = (c[0] - a[0]) * t[0] + (c[1] - a[1]) * t[1] > 0;
-  return {f: {o: fwd ? a : c, t, n}, len};
-}
-function ringOut(ring: P[], i: number): P {
-  const a = ring[i], c = ring[(i + 1) % ring.length], L = Math.hypot(c[0] - a[0], c[1] - a[1]), s = ringArea(ring) > 0 ? 1 : -1;
-  return [s * (c[1] - a[1]) / L, -s * (c[0] - a[0]) / L];
-}
-const bagFrame = (i: number) => frameFor(RING[i], RING[(i + 1) % RING.length], ringOut(RING, i));
-const at = (f: Frame, t: number, o = 0): P => [f.o[0] + f.t[0] * t + f.n[0] * o, f.o[1] + f.t[1] * t + f.n[1] * o];
-const shift = (f: Frame, t: number): Frame => ({...f, o: at(f, t)});
-const yaw = (n: P) => Math.atan2(n[0], n[1]);
-
-class Mesh {
-  private tris = new Map<C, number[]>();
-  private push(c: C, ...v: number[]) { let a = this.tris.get(c); if (!a) this.tris.set(c, a = []); a.push(...v); }
-  quad(f: Frame, q: WallQuad, c: C) {
-    const w = q.pts.map(([t, y, o]) => { const p = at(f, t, o); return [p[0], y, p[1]]; });
-    this.push(c, ...w[0], ...w[1], ...w[2], ...w[0], ...w[2], ...w[3]);
-  }
-  rect(f: Frame, t0: number, t1: number, y0: number, y1: number, o: number, c: C) {
-    this.quad(f, {pts: [[t0, y0, o], [t1, y0, o], [t1, y1, o], [t0, y1, o]], normal: [0, 0, 1]}, c);
-  }
-  /** Proud bar: front face plus the four sides, back at o = 0. */
-  bar(f: Frame, t0: number, t1: number, y0: number, y1: number, d: number, c: C, back = 0) {
-    this.rect(f, t0, t1, y0, y1, d, c);
-    this.quad(f, {pts: [[t0, y1, back], [t0, y1, d], [t1, y1, d], [t1, y1, back]], normal: [0, 1, 0]}, c);
-    this.quad(f, {pts: [[t0, y0, back], [t1, y0, back], [t1, y0, d], [t0, y0, d]], normal: [0, -1, 0]}, c);
-    this.quad(f, {pts: [[t0, y0, back], [t0, y0, d], [t0, y1, d], [t0, y1, back]], normal: [-1, 0, 0]}, c);
-    this.quad(f, {pts: [[t1, y0, back], [t1, y1, back], [t1, y1, d], [t1, y0, d]], normal: [1, 0, 0]}, c);
-  }
-  /** Horizontal polygon at height y facing up or down. */
-  flat(ring: P[], y: number, c: C, up: boolean) {
-    const g = new T.ShapeGeometry(new T.Shape(ring.map(p => new T.Vector2(p[0], p[1]))));
-    const pos = g.getAttribute('position'), idx = g.index!;
-    for (let i = 0; i < idx.count; i += 3) {
-      const ids = [idx.getX(i), idx.getX(i + 1), idx.getX(i + 2)];
-      const v = ids.map(k => [pos.getX(k), y, pos.getY(k)]);
-      const nY = (v[1][2] - v[0][2]) * (v[2][0] - v[0][0]) - (v[1][0] - v[0][0]) * (v[2][2] - v[0][2]);
-      if ((nY > 0) === up) this.push(c, ...v[0], ...v[1], ...v[2]); else this.push(c, ...v[0], ...v[2], ...v[1]);
-    }
-  }
-  flush() {
-    for (const [c, pos] of this.tris) {
-      const g = new T.BufferGeometry();
-      g.setAttribute('position', new T.Float32BufferAttribute(pos, 3));
-      g.computeVertexNormals();
-      b.add(g, c);
-    }
-    this.tris.clear();
-  }
-}
-let m: Mesh;
-
-/* ------------------------------------------------------------------ facade zones */
-type Cut = HoledOpening & {back: C; reveal?: C};
-/** A rectangle of one wall in its own t (viewer-left origin), with its face material and the openings cut through it. */
-type Zone = {t0: number; t1: number; y0: number; y1: number; face: C; cuts: Cut[]};
-/** Holed wall for the part of zone z inside t in [ra, rb], y in [ya, yb] (t in the zone's frame f). */
-/**
- * `pad`: keep openings this far inside a run edge that has no wall beyond it in the same plane (a roof below or above, the
- * run's ends at a corner), so every pane has wall round it (the opening-outside audit judges a pane against its wall's
- * silhouette; a ribbon cut flush to a roof line reads as glass standing past the wall).
- */
-type Pad = {b: number; t: number; ends: number};
-function emitZone(f: Frame, z: Zone, ra: number, rb: number, ya: number, yb: number, pad: Pad = {b: 0, t: 0, ends: 0}) {
-  const t0 = Math.max(z.t0, ra), t1 = Math.min(z.t1, rb), y0 = Math.max(z.y0, ya), y1 = Math.min(z.y1, yb);
-  if (t1 - t0 < 0.02 || y1 - y0 < 0.02) return;
-  const lo = y0 <= ya + 1e-3 ? y0 + pad.b : y0, hi = y1 >= yb - 1e-3 ? y1 - pad.t : y1;
-  const L = t1 - t0, left = t0 <= ra + 1e-3 ? pad.ends : 0, right = t1 >= rb - 1e-3 ? pad.ends : 0;
-  const g = shift(f, t0), cuts = z.cuts.map(c => ({...c, t0: Math.max(c.t0 - t0, Math.min(left, c.t1 - t0 - 0.05)), t1: Math.min(c.t1 - t0, Math.max(L - right, c.t0 - t0 + 0.05)), y0: Math.max(c.y0, Math.min(lo, c.y1 - 0.05)), y1: Math.min(c.y1, Math.max(hi, c.y0 + 0.05))}))
-    .filter(c => c.t1 > 1e-3 && c.t0 < L - 1e-3 && c.y1 > y0 + 1e-3 && c.y0 < y1 - 1e-3 && c.t1 - c.t0 > 0.04 && c.y1 - c.y0 > 0.04);
-  const hw = holedWall(t1 - t0, y0, y1, cuts);
-  for (const q of hw.face) m.quad(g, q, z.face);
-  hw.reveals.forEach((qs, k) => qs.forEach(q => m.quad(g, q, cuts[k].reveal ?? z.face)));
-  hw.backs.forEach((q, k) => m.quad(g, q, cuts[k].back));
-}
+/* ------------------------------------------------------------------ frames, mesh and zones (zone-wall-kit) */
+const bagFrame = (i: number) => kitBagFrame(RING, i);
+let m: ZoneMesh;
+const emitZone = (f: Frame, z: Zone, ra: number, rb: number, ya: number, yb: number, pad?: Pad) => m.emitZone(f, z, ra, rb, ya, yb, pad);
 
 /** Storey bands of the glass box and prow: storey bases from 7.3 m on a 3.5 m pitch (w01-315.alt, w03-316). */
 const storeyBases = (y0: number, y1: number) => { const out: number[] = []; for (let s = BOX_BASE; s < y1; s += STOREY) if (s + STOREY > y0) out.push(s); return out; };
@@ -236,22 +156,12 @@ function designs(): Map<number, Zone[]> {
   return d;
 }
 
-/** The BAG ring edge a plan segment lies on (within 0.25 m), with the segment's t range on that edge. */
-function onBagEdge(a: P, c: P): {i: number; ta: number; tb: number} | null {
-  for (let i = 0; i < RING.length; i++) {
-    const {f, len} = bagFrame(i);
-    const loc = (p: P) => [(p[0] - f.o[0]) * f.t[0] + (p[1] - f.o[1]) * f.t[1], (p[0] - f.o[0]) * f.n[0] + (p[1] - f.o[1]) * f.n[1]];
-    const [ta, oa] = loc(a), [tb, ob] = loc(c);
-    if (Math.abs(oa) < 0.25 && Math.abs(ob) < 0.25 && Math.min(ta, tb) > -0.3 && Math.max(ta, tb) < len + 0.3 && Math.abs(tb - ta) > 0.01) return {i, ta: Math.min(ta, tb), tb: Math.max(ta, tb)};
-  }
-  return null;
-}
-const inside = (p: P, r: P[]) => { let c = false; for (let i = 0, j = r.length - 1; i < r.length; j = i++) if ((r[i][1] > p[1]) !== (r[j][1] > p[1]) && p[0] < (r[j][0] - r[i][0]) * (p[1] - r[i][1]) / (r[j][1] - r[i][1]) + r[i][0]) c = !c; return c; };
+const onBagEdge = (a: P, c: P) => kitOnBagEdge(RING, a, c);
 
 /* ------------------------------------------------------------------ build */
 export function buildPolitieNieuwezijdsVoorburgwal(_w: number, _d: number, tools: BuildingTools) {
   b = tools;
-  m = new Mesh();
+  m = new ZoneMesh(tools);
   const D = designs();
   const {f: F1} = bagFrame(E_W01);
 
