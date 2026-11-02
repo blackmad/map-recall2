@@ -4756,6 +4756,28 @@
    "opening-outside-parts": 27,
    "opening-outside-m2": 161.6
   },
+  "sarphati-plaza": {
+   "normals-inward-permille": 0,
+   "normals-bad-permille": 0,
+   "material-slot-untagged-permille": 0,
+   "opening-floating": 0,
+   "opening-floating-fail": 0,
+   "opening-overhang": 0,
+   "opening-overhang-fail": 0,
+   "opening-buried": 0,
+   "opening-outside-parts": 0,
+   "opening-outside-m2": 0,
+   "zfight-m2": 0.1,
+   "zfight-near-m2": 108,
+   "zfight-tight-m2": 0,
+   "zfight-same-m2": 0,
+   "window-mismatch": 10,
+   "window-missing": 0,
+   "window-misaligned": 0,
+   "window-rhythm-fail": 0,
+   "window-mismatch-spec": 10,
+   "window-missing-spec": 0
+  },
   "scheepvaarthuis": {
    "opening-floating": 0,
    "opening-floating-fail": 0,
