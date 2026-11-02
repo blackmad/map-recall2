@@ -45,7 +45,7 @@ import { cameraFrame } from '../ownMap/mapCamera';
 import { fromLocal, toLocal } from '../ownMap/frame';
 import { placeAliases } from './placeNames';
 import { CityExtras } from './cityExtras';
-import { composeTileEnrichers, railInfraEnricher } from '../railInfraBuildings';
+import { gameTileEnricher } from '../gameTileEnricher';
 import { LandmarkHighlight } from './landmarkHighlight';
 import { LabelOcclusion } from './labelOcclusion';
 
@@ -411,11 +411,9 @@ export class OwnWorldView implements WorldViewOracles {
       const city = this._completeCity = new runtime.BuildingTileStreamer(this.cameraMap, 'osm-building-appearance', this.extractPath);
       // No MapLibre source to feed: the streamer answers featuresAt / sampleFeatures itself.
       city.setPublishing?.(false);
-      const years = Facades.constructionYearEnricher(this.extractPath);
-      const facts = Facades.composeEnrichers && Facades.roofFactsEnabled() ? Facades.composeEnrichers(years, Facades.roofFactsEnricher(this.extractPath)) : years;
-      // Railway infrastructure registered as buildings (railInfraBuildings.ts, rail-infra-buildings.json): viaduct pands
-      // dropped for the track's own structure, platform canopies as open canopies over the platforms. After the facts.
-      city.setTileEnricher(composeTileEnrichers(facts, railInfraEnricher(this.extractPath)) as any);
+      // Years, roof facts, then the rail infrastructure table (viaduct pands dropped, platform canopies cut): the one
+      // composition the world compiler bakes into world-v1 cells too (gameTileEnricher.ts).
+      city.setTileEnricher(gameTileEnricher(Facades, this.extractPath) as any);
       this.decorateCity();
       void this.loadDecorationExtracts();
       if (!(await city.probe())) { this.fail('buildings', 'tiles not published'); return; }
