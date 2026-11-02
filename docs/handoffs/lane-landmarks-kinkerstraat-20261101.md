@@ -1,4 +1,4 @@
-# Lane: landmarks round 6, two Kinkerstraat blocks by De Hallen (2026-11-02, #NNN)
+# Lane: landmarks round 6, two Kinkerstraat blocks by De Hallen (2026-11-02, #211)
 
 Branch `lane/landmarks-kinkerstraat-20261101`, worktree
 `/Users/blackmad/Code/map-recall2-worktrees/landmarks-kinkerstraat-20261101`, dev port 4857.
