@@ -4121,6 +4121,28 @@
    "opening-outside-parts": 2,
    "opening-outside-m2": 8.33
   },
+  "oranje-nassau-kazerne": {
+   "normals-inward-permille": 3,
+   "normals-bad-permille": 0,
+   "material-slot-untagged-permille": 0,
+   "opening-floating": 0,
+   "opening-floating-fail": 0,
+   "opening-overhang": 0,
+   "opening-overhang-fail": 0,
+   "opening-buried": 0,
+   "opening-outside-parts": 0,
+   "opening-outside-m2": 0,
+   "zfight-m2": 0,
+   "zfight-near-m2": 39.7,
+   "zfight-tight-m2": 0,
+   "zfight-same-m2": 1.2,
+   "window-mismatch": 20,
+   "window-missing": 4,
+   "window-misaligned": 0,
+   "window-rhythm-fail": 2,
+   "window-mismatch-spec": 20,
+   "window-missing-spec": 4
+  },
   "orgelpark": {
    "opening-floating": 17,
    "opening-floating-fail": 2,
