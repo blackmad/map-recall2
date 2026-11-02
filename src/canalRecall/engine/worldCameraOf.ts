@@ -12,6 +12,7 @@ type MapLibreLike = {
   project(p: LngLatLike): { x: number; y: number };
   unproject(p: unknown): { lng: number; lat: number } | null;
   on(type: string, f: () => void): unknown; off(type: string, f: () => void): unknown; once(type: string, f: () => void): unknown;
+  triggerRepaint?(): void;
 };
 
 /** `map.api` when `map` is the engine's CameraMap, else a WorldCamera over a MapLibre map's own getters. */
@@ -28,7 +29,10 @@ export function worldCameraOf(map: unknown): WorldCamera {
     pitch: () => m.getPitch(),
     bearing: () => m.getBearing(),
     onFrame(cb) { const f = () => cb(); m.on('render', f); return () => { m.off('render', f); }; },
-    whenIdle: () => new Promise<void>(resolve => { m.once('idle', () => resolve()); }),
+    // MapLibre's `idle` fires after a frame that leaves nothing to do: an edge, not a state. A map already idle draws
+    // no further frame on its own (render on demand), so a bare once('idle') waited for ever (world-v1-ab, #129
+    // 2026-11-02). Asking for one frame makes the next idle come, now or after the work in flight.
+    whenIdle: () => new Promise<void>(resolve => { m.once('idle', () => resolve()); m.triggerRepaint?.(); }),
   };
 }
 

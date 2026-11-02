@@ -585,3 +585,19 @@ test('overview footprints: MapLibre\'s zoom range and fade, one tile built per f
   assert.equal(fp.stats().tiles, 1, 'a tile that left the resident set is dropped');
   assert.equal(fp.stats().triangles, 4);
 });
+
+test('worldCameraOf (MapLibre): whenIdle asks for a frame, so an already idle map still resolves', async () => {
+  const { worldCameraOf } = await import('./worldCameraOf');
+  const handlers: Record<string, Array<() => void>> = {};
+  let repaints = 0;
+  // A render-on-demand map: idle fires only after a frame it was asked for.
+  const map: any = {
+    once: (t: string, f: () => void) => { (handlers[t] ??= []).push(f); },
+    on() {}, off() {},
+    triggerRepaint: () => { repaints++; queueMicrotask(() => { const idle = handlers.idle ?? []; handlers.idle = []; idle.forEach(f => f()); }); },
+  };
+  let resolved = false;
+  await Promise.race([worldCameraOf(map).whenIdle().then(() => { resolved = true; }), new Promise(r => setTimeout(r, 50))]);
+  assert.equal(resolved, true, 'resolves without an outside frame');
+  assert.equal(repaints, 1);
+});
