@@ -78233,6 +78233,426 @@
         "bytes": 94952,
         "triangles": 5954
       }
+    },
+    "hofkerk": {
+      "id": "hofkerk",
+      "name": "Hofkerk (H.H. Martelaren van Gorcum)",
+      "landmarkId": "extract_landmarks_1448080990",
+      "modelUrl": "./models/hofkerk.glb",
+      "suppressOsmIds": [
+        "NL.IMBAG.Pand.0363100012123068",
+        "tower:NL.IMBAG.Pand.0363100012123068"
+      ],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.93387345,
+          52.35304224
+        ],
+        "headingDegrees": 0,
+        "lengthMetres": 57,
+        "widthMetres": 54.6
+      },
+      "surveyed": {
+        "anchor": [
+          4.93387345,
+          52.35304224
+        ],
+        "northOffsetDegrees": 1.2,
+        "source": "Vertex average of the BAG 0363100012123068 ring (RD, PDOK BAG WFS, CC0) in native east/south metres (scripts/landmarks/hofkerk-footprints.json, bag-shell-prepare.ts). The model is authored square to the church and turned 1.2 degrees clockwise onto the ring (northOffsetDegrees). Heights from the 3DBAG LoD2.2 roof parts (CC BY 4.0): west tower parapet 25.7-26.1 m and pyramid to 32.0 m, nave ridge 19.8 m, crossing tower 20.3-22.8 m with its pyramid to 29.3 m, transept ridges 13.9 m, aisle lean-tos 2.8-7.5 m, clock block 14.3-16.4 m, pastorie eaves 10.3-11.4 m and ridge 16.7 m. Portals, belfry, clock, medallion, bays, lancets and pastorie windows measured on rectified Gemeente Amsterdam panorama crops (CC BY 4.0) and Wikimedia Commons photographs (CC BY-SA); per wall in scripts/landmarks/hofkerk-inventory.json."
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 0,
+      "heightMetres": 33.8,
+      "bagYear": 1929,
+      "materialOverrides": {
+        "brick": "#9a6654",
+        "stone": "#d8d4c8",
+        "white": "#e8e6df",
+        "slate": "#94604e",
+        "glass": "#3f4a52",
+        "dark": "#6a4a34",
+        "gold": "#b8924a",
+        "blue": "#2c3238",
+        "bronze": "#5f5e5c"
+      },
+      "attribution": {
+        "title": "Hofkerk, parish church of the Holy Martyrs of Gorcum, Linnaeushof (A.J. Kropholler, 1927-1929)",
+        "author": "Map Recall",
+        "sourceUrl": "https://nl.wikipedia.org/wiki/Hofkerk_(Amsterdam)",
+        "licence": "CC BY 4.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "modifications": "Original texture-free flat-colour geometry on the BAG outline (CC0) and 3DBAG LoD2.2 heights (CC BY 4.0): the closed west front with its square tower, belfry, pelican medallion, nave gable, three pointed portals with archivolts, impost blocks and mosaic tympana, and the clock block; the buttressed north and south aisles with their lean-tos and rows of round-headed lights; the crossing tower with its pyramid, oculi and graded lancets; the transepts with their gables and annexes; the apse and its two chapels; and the pastorie with its white sash windows, hipped roof and chimneys. Reference photographs (Gemeente Amsterdam panoramas, CC BY 4.0; Wikimedia Commons, CC BY-SA) guided the detail; no pixels or meshes imported."
+      },
+      "buildingFootprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.9341917,
+              52.3530294
+            ],
+            [
+              4.9341972,
+              52.3530326
+            ],
+            [
+              4.9341972,
+              52.3530363
+            ],
+            [
+              4.9341981,
+              52.3530823
+            ],
+            [
+              4.9341982,
+              52.3530854
+            ],
+            [
+              4.9341939,
+              52.3530881
+            ],
+            [
+              4.9341553,
+              52.3531121
+            ],
+            [
+              4.9341507,
+              52.353115
+            ],
+            [
+              4.9341453,
+              52.353115
+            ],
+            [
+              4.9341093,
+              52.3531153
+            ],
+            [
+              4.9341099,
+              52.3531298
+            ],
+            [
+              4.9341299,
+              52.3531415
+            ],
+            [
+              4.9341339,
+              52.3531438
+            ],
+            [
+              4.9341338,
+              52.3531468
+            ],
+            [
+              4.9341331,
+              52.3531609
+            ],
+            [
+              4.9341329,
+              52.3531644
+            ],
+            [
+              4.9341304,
+              52.353166
+            ],
+            [
+              4.9341147,
+              52.3531757
+            ],
+            [
+              4.934111,
+              52.3531781
+            ],
+            [
+              4.9341059,
+              52.3531781
+            ],
+            [
+              4.934068,
+              52.3531784
+            ],
+            [
+              4.9340692,
+              52.3532128
+            ],
+            [
+              4.9340433,
+              52.3532288
+            ],
+            [
+              4.9339964,
+              52.3532294
+            ],
+            [
+              4.9339972,
+              52.3532488
+            ],
+            [
+              4.9339716,
+              52.3532651
+            ],
+            [
+              4.9338878,
+              52.3532658
+            ],
+            [
+              4.9338855,
+              52.35317
+            ],
+            [
+              4.9335703,
+              52.3531728
+            ],
+            [
+              4.9335698,
+              52.353157
+            ],
+            [
+              4.9335312,
+              52.3531576
+            ],
+            [
+              4.9335327,
+              52.3532067
+            ],
+            [
+              4.9335392,
+              52.3532066
+            ],
+            [
+              4.9335393,
+              52.3532115
+            ],
+            [
+              4.9333813,
+              52.3532133
+            ],
+            [
+              4.9333701,
+              52.3532134
+            ],
+            [
+              4.9333686,
+              52.353136
+            ],
+            [
+              4.9333679,
+              52.3531031
+            ],
+            [
+              4.9333677,
+              52.353091
+            ],
+            [
+              4.9333668,
+              52.3530419
+            ],
+            [
+              4.9333665,
+              52.3530293
+            ],
+            [
+              4.9333659,
+              52.3529964
+            ],
+            [
+              4.9333653,
+              52.3529667
+            ],
+            [
+              4.9334441,
+              52.3529656
+            ],
+            [
+              4.9334443,
+              52.3529726
+            ],
+            [
+              4.9334905,
+              52.352972
+            ],
+            [
+              4.93349,
+              52.3529582
+            ],
+            [
+              4.9334982,
+              52.3529581
+            ],
+            [
+              4.9334975,
+              52.3529465
+            ],
+            [
+              4.9334201,
+              52.3529003
+            ],
+            [
+              4.9334204,
+              52.3529001
+            ],
+            [
+              4.9336141,
+              52.3527778
+            ],
+            [
+              4.9337369,
+              52.352851
+            ],
+            [
+              4.9337025,
+              52.3528728
+            ],
+            [
+              4.9337325,
+              52.3528906
+            ],
+            [
+              4.9337326,
+              52.3528944
+            ],
+            [
+              4.9337837,
+              52.3528939
+            ],
+            [
+              4.9337823,
+              52.3528417
+            ],
+            [
+              4.9338774,
+              52.3528407
+            ],
+            [
+              4.9338779,
+              52.3528575
+            ],
+            [
+              4.9339616,
+              52.3528566
+            ],
+            [
+              4.9339878,
+              52.3528722
+            ],
+            [
+              4.9339884,
+              52.3528921
+            ],
+            [
+              4.9340353,
+              52.3528916
+            ],
+            [
+              4.9340617,
+              52.3529072
+            ],
+            [
+              4.9340622,
+              52.3529417
+            ],
+            [
+              4.9341008,
+              52.3529416
+            ],
+            [
+              4.9341058,
+              52.3529416
+            ],
+            [
+              4.9341093,
+              52.3529437
+            ],
+            [
+              4.9341252,
+              52.3529531
+            ],
+            [
+              4.9341287,
+              52.3529552
+            ],
+            [
+              4.9341288,
+              52.3529584
+            ],
+            [
+              4.9341294,
+              52.352972
+            ],
+            [
+              4.9341295,
+              52.3529754
+            ],
+            [
+              4.9341261,
+              52.3529775
+            ],
+            [
+              4.9341068,
+              52.3529897
+            ],
+            [
+              4.9341068,
+              52.3530041
+            ],
+            [
+              4.9341425,
+              52.3530034
+            ],
+            [
+              4.9341476,
+              52.3530033
+            ],
+            [
+              4.9341525,
+              52.3530062
+            ],
+            [
+              4.9341917,
+              52.3530294
+            ]
+          ]
+        ]
+      },
+      "buildingCategory": "landmark",
+      "bounds": {
+        "min": [
+          -35.45000076293945,
+          -2.9802322831784522e-9,
+          -25.139999389648438
+        ],
+        "max": [
+          23.736650466918945,
+          33.79999923706055,
+          30.114885330200195
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.93387345,
+          52.35304224
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 91.19999999999999,
+        "facadeBearingDegrees": 0,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 59.1866512298584,
+        "heightMetres": 33.799999240040776,
+        "depthMetres": 55.25488471984863,
+        "depthCoverage": 1.0119942256382533
+      },
+      "triangles": 16110,
+      "bytes": 185552,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
+      "lod1": {
+        "sourceHash": "40e41ffe3add2dd9",
+        "buildVersion": 2,
+        "bytes": 59040,
+        "triangles": 3187
+      }
     }
   }
 }

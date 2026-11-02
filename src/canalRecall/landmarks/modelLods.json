@@ -2200,5 +2200,11 @@
   "buildVersion": 2,
   "bytes": 94952,
   "triangles": 5954
+ },
+ "hofkerk": {
+  "sourceHash": "40e41ffe3add2dd9",
+  "buildVersion": 2,
+  "bytes": 59040,
+  "triangles": 3187
  }
 }
