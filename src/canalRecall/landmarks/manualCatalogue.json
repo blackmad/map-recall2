@@ -56871,5 +56871,318 @@
     ]
    ]
   }
+ },
+ {
+  "id": "oranje-nassau-kazerne",
+  "name": "Oranje-Nassau Kazerne",
+  "modelUrl": "./models/oranje-nassau-kazerne.glb",
+  "suppressOsmIds": [
+   "NL.IMBAG.Pand.0363100012180523",
+   "NL.IMBAG.Pand.0363100012180524",
+   "NL.IMBAG.Pand.0363100012180521",
+   "NL.IMBAG.Pand.0363100012169164",
+   "NL.IMBAG.Pand.0363100012170400",
+   "NL.IMBAG.Pand.0363100012170399",
+   "NL.IMBAG.Pand.0363100012169165",
+   "NL.IMBAG.Pand.0363100012181498",
+   "NL.IMBAG.Pand.0363100012181499",
+   "NL.IMBAG.Pand.0363100012181497",
+   "NL.IMBAG.Pand.0363100012170462",
+   "NL.IMBAG.Pand.0363100012170463",
+   "NL.IMBAG.Pand.0363100012170464",
+   "NL.IMBAG.Pand.0363100012181501",
+   "NL.IMBAG.Pand.0363100012181500",
+   "NL.IMBAG.Pand.0363100012170524"
+  ],
+  "spatialSuppression": false,
+  "footprint": {
+   "centre": [
+    4.92265621,
+    52.36539115
+   ],
+   "headingDegrees": 315.2,
+   "lengthMetres": 279.7,
+   "widthMetres": 27.2
+  },
+  "surveyed": {
+   "anchor": [
+    4.92291347,
+    52.36553684
+   ],
+   "northOffsetDegrees": 0,
+   "source": "Vertex average of the union of the 16 BAG rings (PDOK BAG WFS, CC0; pands listed in oranje-nassau-kazerne-footprints.json) in RD as the anchor; native east/south metres. Heights are the 3DBAG LoD2.2 attributes (CC BY 4.0) over its 1.45 m NAP maaiveld; every front (Sarphatistraat, courtyard, both end and pavilion faces, the central risalit) was measured on rectified Gemeente Amsterdam panoramas (CC BY 4.0) listed in oranje-nassau-kazerne-inventory.json. See scripts/landmarks/oranje-nassau-kazerne-prepare.ts and -crops.ts."
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 0,
+  "heightMetres": 19.1,
+  "bagYear": 1813,
+  "materialOverrides": {
+   "brick": "#735a51",
+   "greyBrick": "#5c4842",
+   "white": "#ebe5d6",
+   "frame": "#e3dccb",
+   "glass": "#33404a",
+   "dark": "#263231",
+   "slate": "#4b4f50",
+   "stone": "#e2ddd2",
+   "red": "#b0342b",
+   "gold": "#c8a23e",
+   "blue": "#345a96",
+   "concrete": "#8e8a7f"
+  },
+  "attribution": {
+   "title": "Oranje-Nassau Kazerne, Sarphatistraat (Rijksmonument 5140)",
+   "author": "Map Recall",
+   "sourceUrl": "https://monumentenregister.cultureelerfgoed.nl/monumenten/5140",
+   "licence": "CC BY 4.0",
+   "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+   "modifications": "Original texture-free flat-colour geometry on the BAG outline (CC0) at the 3DBAG LoD2.2 heights (CC BY 4.0). The 1810-1813 barracks range by Abraham van der Hart and Picot de Moras has every window, door and dormer at its measured position; the rusticated lisenes, string courses and white cornice; the central risalit with the Orange-Nassau arms, oculi and the 1990 passage on the Sarphatistraat and the wheel window on the courtyard; the end pavilions with pediments, trophy reliefs and the 1990 Timpaan by Wendela Gevers Deynoot (simplified). Read from Gemeente Amsterdam panoramas (CC BY 4.0) for proportion only. No photo pixels or imported meshes."
+  },
+  "partyWallNote": "One free-standing range of 16 BAG panden (all bouwjaar 1813); the 1990 towers of the Oranje-Nassau housing (Atelier PRO) in the courtyard are separate panden and are not modelled.",
+  "buildingFootprint": {
+   "type": "MultiPolygon",
+   "coordinates": [
+    [
+     [
+      [
+       4.92106732,
+       52.36458532
+      ],
+      [
+       4.92107692,
+       52.36457951
+      ],
+      [
+       4.92107787,
+       52.36458009
+      ],
+      [
+       4.92113143,
+       52.36454772
+      ],
+      [
+       4.92113027,
+       52.364547
+      ],
+      [
+       4.92128735,
+       52.36445182
+      ],
+      [
+       4.9212885,
+       52.36445253
+      ],
+      [
+       4.92135145,
+       52.36441395
+      ],
+      [
+       4.92140124,
+       52.36444557
+      ],
+      [
+       4.92140229,
+       52.36444495
+      ],
+      [
+       4.92141196,
+       52.36445096
+      ],
+      [
+       4.92141144,
+       52.36445128
+      ],
+      [
+       4.92152721,
+       52.36452265
+      ],
+      [
+       4.92152616,
+       52.36452328
+      ],
+      [
+       4.9215671,
+       52.36454875
+      ],
+      [
+       4.92156763,
+       52.36454843
+      ],
+      [
+       4.92157739,
+       52.36455451
+      ],
+      [
+       4.92146132,
+       52.36462464
+      ],
+      [
+       4.92254064,
+       52.36529018
+      ],
+      [
+       4.9225459,
+       52.36528698
+      ],
+      [
+       4.92282548,
+       52.36545964
+      ],
+      [
+       4.92282053,
+       52.36546266
+      ],
+      [
+       4.92390184,
+       52.36612687
+      ],
+      [
+       4.92401707,
+       52.36605621
+      ],
+      [
+       4.92406724,
+       52.36608773
+      ],
+      [
+       4.92406839,
+       52.36608703
+      ],
+      [
+       4.92418359,
+       52.3661587
+      ],
+      [
+       4.92418412,
+       52.36615838
+      ],
+      [
+       4.92419399,
+       52.36616447
+      ],
+      [
+       4.92419296,
+       52.36616511
+      ],
+      [
+       4.92423417,
+       52.36619039
+      ],
+      [
+       4.92423469,
+       52.36619007
+      ],
+      [
+       4.92424455,
+       52.36619611
+      ],
+      [
+       4.92423458,
+       52.36620225
+      ],
+      [
+       4.92423407,
+       52.36620192
+      ],
+      [
+       4.92417919,
+       52.36623554
+      ],
+      [
+       4.92418051,
+       52.36623635
+      ],
+      [
+       4.92417375,
+       52.36624049
+      ],
+      [
+       4.92417315,
+       52.36624012
+      ],
+      [
+       4.92402632,
+       52.36633063
+      ],
+      [
+       4.92402517,
+       52.36632993
+      ],
+      [
+       4.92397228,
+       52.3663622
+      ],
+      [
+       4.92397281,
+       52.36636252
+      ],
+      [
+       4.92396347,
+       52.36636842
+      ],
+      [
+       4.92391276,
+       52.36633693
+      ],
+      [
+       4.92391161,
+       52.36633763
+      ],
+      [
+       4.92390169,
+       52.36633156
+      ],
+      [
+       4.9239022,
+       52.36633123
+      ],
+      [
+       4.92378568,
+       52.36626028
+      ],
+      [
+       4.92378682,
+       52.36625958
+      ],
+      [
+       4.92373531,
+       52.3662284
+      ],
+      [
+       4.9237384,
+       52.36622653
+      ],
+      [
+       4.92265733,
+       52.36556237
+      ],
+      [
+       4.92265282,
+       52.36556509
+      ],
+      [
+       4.92237332,
+       52.36539243
+      ],
+      [
+       4.92237762,
+       52.36538983
+      ],
+      [
+       4.92129754,
+       52.36472436
+      ],
+      [
+       4.92129414,
+       52.36472632
+      ],
+      [
+       4.92106732,
+       52.36458532
+      ]
+     ]
+    ]
+   ]
+  }
  }
 ]

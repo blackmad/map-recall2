@@ -1,0 +1,560 @@
+{
+ "schemaVersion": 1,
+ "id": "oranje-nassau-kazerne",
+ "pand": "0363100012170399",
+ "brief": "scripts/landmarks/oranje-nassau-kazerne-brief.md",
+ "signature": [
+  "nw-centre-pediment",
+  "nw-arms",
+  "nw-passage",
+  "pav-pediment-trophies",
+  "se-rosette",
+  "nw-risalit-lisenes",
+  "sw-timpaan"
+ ],
+ "walls": [
+  {
+   "tag": "nw-centre",
+   "bearing": 315,
+   "lengthM": 27.1,
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002541_pano_0002_000027",
+   "capturedAt": "2022-04-25",
+   "checked": true,
+   "items": [
+    {
+     "id": "nw-arms",
+     "kind": "crest",
+     "where": "NW central pediment, tympanum centre over the passage: crowned helm, red mantling, gold-bordered quartered shield, motto band, banners and sunburst behind",
+     "approxSizeM": [
+      5.5,
+      4.4
+     ],
+     "plan": "simplified",
+     "seenIn": "nw--26_-2",
+     "how": "solid flat-faced pieces in the tympanum: red mantling tent, gold shield border with blue/red quarters and inescutcheon, gold helm and crown, white motto band with a dark line for the lettering, blue banner, gold sunburst (oranje-nassau-kazerne-builder.ts, \"NW centre\")"
+    },
+    {
+     "id": "nw-oculi",
+     "kind": "window-shape",
+     "where": "NW central pediment, either side of the arms",
+     "approxSizeM": [
+      1.9,
+      1.9
+     ],
+     "plan": "modelled",
+     "seenIn": "nw--26_-2",
+     "how": "white ring, glass disc, cross bars"
+    },
+    {
+     "id": "nw-passage",
+     "kind": "other",
+     "where": "centre bay of the NW risalit, ground floor: the 1990 onderdoorgang with a fanlight arch, white stone surround with frieze and cornice",
+     "approxSizeM": [
+      3.1,
+      4.95
+     ],
+     "plan": "modelled",
+     "seenIn": "nw--26_-2",
+     "how": "opening cut 16 m through the range to the courtyard recess; white pilasters, frieze, cornice; fanlight in a brick spandrel"
+    },
+    {
+     "id": "nw-passage-lettering",
+     "kind": "lettering",
+     "where": "frieze over the NW passage: ORANJE-NASSAU",
+     "approxSizeM": [
+      2.6,
+      0.25
+     ],
+     "plan": "simplified",
+     "seenIn": "nw--26_-2",
+     "how": "pixel lettering (nearbar letters, 9 cm solids) in dark on the white frieze"
+    },
+    {
+     "id": "nw-risalit-lisenes",
+     "kind": "other",
+     "where": "six rusticated lisenes dividing the five risalit bays",
+     "approxSizeM": [
+      1.0,
+      12.5
+     ],
+     "plan": "modelled",
+     "seenIn": "nw--26_-2",
+     "how": "blocked lisenes: 0.5 m courses, blocks 20 cm proud with 11 cm joints"
+    },
+    {
+     "id": "nw-centre-pediment",
+     "kind": "other",
+     "where": "full-width pediment over the risalit with white raking cornices",
+     "approxSizeM": [
+      27.1,
+      5.35
+     ],
+     "plan": "modelled",
+     "seenIn": "nw--26_-2",
+     "how": "tympanum triangle in the wall plane, white chevron raking cornice, cross gable roof behind"
+    },
+    {
+     "id": "nw-grilles",
+     "kind": "other",
+     "where": "basement grilles under the risalit ground windows",
+     "approxSizeM": [
+      1.2,
+      0.55
+     ],
+     "plan": "simplified",
+     "seenIn": "nw--26_-2",
+     "how": "dark recessed openings"
+    }
+   ]
+  },
+  {
+   "tag": "nw-range",
+   "bearing": 315,
+   "lengthM": 208.7,
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002050_pano_0000_000244",
+   "capturedAt": "2021-03-19",
+   "checked": true,
+   "items": [
+    {
+     "id": "nw-windows",
+     "kind": "window-shape",
+     "where": "three storeys of cream cross windows, flanked since 1990 by narrow windows",
+     "approxSizeM": [
+      1.72,
+      2.55
+     ],
+     "plan": "modelled",
+     "seenIn": "nw--106_-82",
+     "how": "openings cut per window with a cream frame ring, glazing bars and a white sill, at the measured axes"
+    },
+    {
+     "id": "nw-fanlight-doors",
+     "kind": "window-shape",
+     "where": "stair doors with a semicircular fanlight in a brick spandrel, ten along the front",
+     "approxSizeM": [
+      1.45,
+      3.6
+     ],
+     "plan": "modelled",
+     "seenIn": "nw--66_-42",
+     "how": "door opening with two leaves, transom, fanlight opening with spandrels, white hood ledge"
+    },
+    {
+     "id": "nw-narrow-doors",
+     "kind": "other",
+     "where": "four narrow 1990 doors with transom lights",
+     "approxSizeM": [
+      0.95,
+      3.05
+     ],
+     "plan": "modelled",
+     "seenIn": "nw--106_-82",
+     "how": "cut openings with a dark leaf and transom glass"
+    },
+    {
+     "id": "nw-dormers",
+     "kind": "window-shape",
+     "where": "dormers with white segmental hoods along the roof",
+     "approxSizeM": [
+      2.1,
+      1.6
+     ],
+     "plan": "modelled",
+     "seenIn": "nw-14_38",
+     "how": "slate cheeks, recessed glazing in a white frame with mullion, white segmental hood (dormer())"
+    },
+    {
+     "id": "nw-chimneys",
+     "kind": "other",
+     "where": "brick chimney stacks at the wall line",
+     "approxSizeM": [
+      0.95,
+      1.9
+     ],
+     "plan": "modelled",
+     "seenIn": "nw--126_-102",
+     "how": "brick stacks with a cap"
+    },
+    {
+     "id": "nw-cornice",
+     "kind": "other",
+     "where": "white cornice and architrave the full length, two brick string courses",
+     "approxSizeM": [
+      279.7,
+      0.65
+     ],
+     "plan": "modelled",
+     "seenIn": "nw-34_58",
+     "how": "one offset ring round the outline; architrave and string strips per face"
+    },
+    {
+     "id": "nw-downpipes",
+     "kind": "other",
+     "where": "zinc downpipes between bays",
+     "approxSizeM": [
+      0.1,
+      13
+     ],
+     "plan": "skipped",
+     "seenIn": "nw-34_58",
+     "skip": {
+      "reason": "too-small",
+      "note": "10 cm pipes; invisible at ride distance"
+     }
+    },
+    {
+     "id": "roof-pots",
+     "kind": "other",
+     "where": "small vent pots on the roof",
+     "approxSizeM": [
+      0.3,
+      0.4
+     ],
+     "plan": "skipped",
+     "seenIn": "nw-54_78",
+     "skip": {
+      "reason": "too-small",
+      "note": "under 0.5 m"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "nw-pavilions",
+   "bearing": 315,
+   "lengthM": 44.0,
+   "evidence": "photo",
+   "panoId": "recording_2025-06-19_09-55-15_00488",
+   "capturedAt": "2025-06-19",
+   "checked": true,
+   "items": [
+    {
+     "id": "pav-pediment-trophies",
+     "kind": "relief",
+     "where": "Sarphatistraat pediments of both pavilions: white trophy relief, a head between banners and arms",
+     "approxSizeM": [
+      5.0,
+      2.4
+     ],
+     "plan": "simplified",
+     "seenIn": "nw--164_-142",
+     "how": "stone-white solid pieces: oval head with crest, fanned banner wedges and three spears per side"
+    },
+    {
+     "id": "pav-lisenes",
+     "kind": "other",
+     "where": "rusticated corner and risalit lisenes",
+     "approxSizeM": [
+      1.0,
+      12.5
+     ],
+     "plan": "modelled",
+     "seenIn": "nw-94_116",
+     "how": "blocked lisenes as on the risalit"
+    },
+    {
+     "id": "pav-doors",
+     "kind": "other",
+     "where": "central door in a white stone surround with entablature",
+     "approxSizeM": [
+      2.6,
+      4.75
+     ],
+     "plan": "modelled",
+     "seenIn": "nw-94_116",
+     "how": "cut door and fanlight, white pilasters, frieze and cornice"
+    },
+    {
+     "id": "pav-sashes",
+     "kind": "window-shape",
+     "where": "six-over-six sashes and narrow windows",
+     "approxSizeM": [
+      1.28,
+      2.55
+     ],
+     "plan": "modelled",
+     "seenIn": "nw--164_-142",
+     "how": "cut openings with frame and bars"
+    }
+   ]
+  },
+  {
+   "tag": "sw-end",
+   "bearing": 225,
+   "lengthM": 27.2,
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001675_pano_0000_000574",
+   "capturedAt": "2020-04-24",
+   "checked": true,
+   "items": [
+    {
+     "id": "sw-timpaan",
+     "kind": "sculpture",
+     "where": "SW end pediment: the 1990 \"Timpaan\" by Wendela Gevers Deynoot, a white oval with gilded zig-zag forms",
+     "approxSizeM": [
+      4.2,
+      2.2
+     ],
+     "plan": "simplified",
+     "seenIn": "sw-end--13_15",
+     "how": "white oval relief with one gold zig-zag solid"
+    },
+    {
+     "id": "sw-door-lettering",
+     "kind": "lettering",
+     "where": "frieze over the SW end door: ORANJE-NASSAU",
+     "approxSizeM": [
+      2.0,
+      0.2
+     ],
+     "plan": "simplified",
+     "seenIn": "sw-end--13_15",
+     "how": "pixel lettering (nearbar letters, 9 cm solids) in dark on the white frieze"
+    },
+    {
+     "id": "sw-door",
+     "kind": "other",
+     "where": "central door in a white stone surround",
+     "approxSizeM": [
+      2.4,
+      4.75
+     ],
+     "plan": "modelled",
+     "seenIn": "sw-end--13_15",
+     "how": "as the pavilion doors"
+    },
+    {
+     "id": "sw-lisenes",
+     "kind": "other",
+     "where": "rusticated lisenes",
+     "approxSizeM": [
+      1.0,
+      12.5
+     ],
+     "plan": "modelled",
+     "seenIn": "sw-end--13_15",
+     "how": "blocked lisenes"
+    }
+   ]
+  },
+  {
+   "tag": "ne-end",
+   "bearing": 45,
+   "lengthM": 27.2,
+   "evidence": "photo",
+   "panoId": "recording_2025-06-19_10-17-35_00696",
+   "capturedAt": "2025-06-19",
+   "checked": true,
+   "items": [
+    {
+     "id": "ne-pediment-relief",
+     "kind": "relief",
+     "where": "NE end pediment: white relief with an oval shield between two ships and banners",
+     "approxSizeM": [
+      5.3,
+      2.9
+     ],
+     "plan": "simplified",
+     "seenIn": "ne-end--13_15",
+     "how": "stone-white solids: oval shield, two hulls with mast and sail, two banners"
+    },
+    {
+     "id": "ne-door-lettering",
+     "kind": "lettering",
+     "where": "frieze over the NE end door: ORANJE-NASSAU",
+     "approxSizeM": [
+      2.0,
+      0.2
+     ],
+     "plan": "simplified",
+     "seenIn": "ne-end--13_15",
+     "how": "pixel lettering (nearbar letters, 9 cm solids) in dark on the white frieze"
+    },
+    {
+     "id": "ne-dormers",
+     "kind": "window-shape",
+     "where": "two dormers side by side on the hip",
+     "approxSizeM": [
+      2.0,
+      1.6
+     ],
+     "plan": "modelled",
+     "seenIn": "ne-end--13_15",
+     "how": "dormer()"
+    }
+   ]
+  },
+  {
+   "tag": "se-centre",
+   "bearing": 135,
+   "lengthM": 27.1,
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000191_pano_0001_000582",
+   "capturedAt": "2016-11-24",
+   "checked": true,
+   "items": [
+    {
+     "id": "se-rosette",
+     "kind": "window-shape",
+     "where": "SE central pediment: large white wheel window round a small red Amsterdam shield",
+     "approxSizeM": [
+      4.0,
+      4.0
+     ],
+     "plan": "simplified",
+     "seenIn": "se--24_0",
+     "how": "white ring, dark disc, twelve white spokes, white hub with a red shield"
+    },
+    {
+     "id": "se-oculi",
+     "kind": "window-shape",
+     "where": "SE pediment, either side of the wheel",
+     "approxSizeM": [
+      1.75,
+      1.75
+     ],
+     "plan": "modelled",
+     "seenIn": "se--44_-20",
+     "how": "white ring, glass, cross bars"
+    },
+    {
+     "id": "se-passage",
+     "kind": "other",
+     "where": "square passage mouth in a white surround, the tunnel to the Sarphatistraat",
+     "approxSizeM": [
+      4.5,
+      4.25
+     ],
+     "plan": "modelled",
+     "seenIn": "se--24_0",
+     "how": "0.6 m recess with the 1.6 m tunnel mouth in its back wall; white pilasters, lintel and entablature"
+    },
+    {
+     "id": "se-lisenes",
+     "kind": "other",
+     "where": "rusticated lisenes of the risalit",
+     "approxSizeM": [
+      1.0,
+      12.5
+     ],
+     "plan": "modelled",
+     "seenIn": "se--24_0",
+     "how": "blocked lisenes"
+    }
+   ]
+  },
+  {
+   "tag": "se-range",
+   "bearing": 135,
+   "lengthM": 208.7,
+   "evidence": "photo",
+   "panoId": "b_20241204_1003_Track20_Sphere_00001",
+   "capturedAt": "2024-12-04",
+   "checked": true,
+   "items": [
+    {
+     "id": "se-windows",
+     "kind": "window-shape",
+     "where": "pairs of wide sashes on the room grid, three triples, stair units with fanlit doors",
+     "approxSizeM": [
+      1.65,
+      2.55
+     ],
+     "plan": "modelled",
+     "seenIn": "se--84_-60",
+     "how": "cut openings with frames and bars"
+    },
+    {
+     "id": "se-dormers",
+     "kind": "window-shape",
+     "where": "dormers with white hoods",
+     "approxSizeM": [
+      2.1,
+      1.6
+     ],
+     "plan": "modelled",
+     "seenIn": "se-16_40",
+     "how": "dormer()"
+    },
+    {
+     "id": "se-grilles",
+     "kind": "other",
+     "where": "basement grilles under the ground windows",
+     "approxSizeM": [
+      1.2,
+      0.55
+     ],
+     "plan": "simplified",
+     "seenIn": "se--64_-40",
+     "how": "dark recessed openings"
+    }
+   ]
+  },
+  {
+   "tag": "pavilion-courtyard",
+   "bearing": 135,
+   "lengthM": 44.0,
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001675_pano_0000_000433",
+   "capturedAt": "2020-04-24",
+   "checked": true,
+   "items": [
+    {
+     "id": "pav-se-sashes",
+     "kind": "window-shape",
+     "where": "five sashes per storey on each pavilion courtyard face",
+     "approxSizeM": [
+      1.25,
+      2.55
+     ],
+     "plan": "modelled",
+     "seenIn": "pav-sw-se--164_-142",
+     "how": "cut openings"
+    }
+   ],
+   "note": "the NE pavilion courtyard face shows no dormers in pav-ne-se-94_116; none are modelled there"
+  },
+  {
+   "tag": "pavilion-inner",
+   "bearing": 45,
+   "lengthM": 11.2,
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000191_pano_0001_000135",
+   "capturedAt": "2016-11-24",
+   "checked": true,
+   "items": [
+    {
+     "id": "pav-inner-windows",
+     "kind": "window-shape",
+     "where": "window, two narrow ones, window on each inner flank",
+     "approxSizeM": [
+      1.28,
+      2.55
+     ],
+     "plan": "modelled",
+     "seenIn": "pav-sw-ne--13_-1",
+     "how": "cut openings"
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  },
+  {
+   "name": "Rijksmonument 5140 register text",
+   "url": "https://monumentenregister.cultureelerfgoed.nl/monumenten/5140",
+   "licence": "CC0"
+  },
+  {
+   "name": "Wikipedia (nl): Oranje-Nassau Kazerne",
+   "url": "https://nl.wikipedia.org/wiki/Oranje-Nassau_Kazerne",
+   "licence": "CC BY-SA 4.0"
+  }
+ ]
+}
