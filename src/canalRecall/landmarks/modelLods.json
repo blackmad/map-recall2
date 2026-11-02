@@ -1990,5 +1990,11 @@
   "buildVersion": 2,
   "bytes": 46764,
   "triangles": 2275
+ },
+ "kraanspoor": {
+  "sourceHash": "79a0a5443847149e",
+  "buildVersion": 2,
+  "bytes": 49232,
+  "triangles": 2443
  }
 }

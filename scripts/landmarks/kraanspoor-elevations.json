@@ -1,0 +1,25 @@
+{
+ "id": "kraanspoor",
+ "countedBy": "lane #187 (opus) from the rectified SE panorama crop TMX7316010203-002193_pano_0000_004912 (2021, 16.1 px/m, artifacts/landmark-briefs/kraanspoor/w02-128.alt.jpg) and the SW head-on Commons photo; ribbon convention. Not a blind haiku count; the integrator may re-count. The glass box above the track is not declared: its glass louvre skin breaks the curtain wall into 0.9 m strips in any elevation, so storey counts there measure the louvres, not windows.",
+ "facades": [
+  {
+   "name": "SE quay side under the track, core 1 lobby to core 2",
+   "bearing": 128,
+   "photo": "artifacts/landmark-briefs/kraanspoor/w02-128.alt.jpg",
+   "alongM": [57.0, 109.0],
+   "heightM": [0.3, 7.2],
+   "openings": ["glass"],
+   "rows": [2],
+   "note": "Crop px 920-1760: the glazed lobby NE of core 1 (px 950-1100) and the glazed stair core 2 (px 1650-1730); the bays between are open to the water and count nothing."
+  },
+  {
+   "name": "SW head of the crane track",
+   "bearing": 218,
+   "photo": "artifacts/landmark-briefs/kraanspoor/commons/Amsterdam_-_Kraanspoor_(29670110014).jpg",
+   "heightM": [7.8, 10.4],
+   "openings": ["glass"],
+   "rows": [1],
+   "note": "The head's one window between two blank panels (photo px 785-833 x 562-637)."
+  }
+ ]
+}
