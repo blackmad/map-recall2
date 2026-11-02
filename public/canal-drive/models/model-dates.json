@@ -191,6 +191,11 @@
       "version": "7ded7387513e8eca",
       "dateSource": "asset-update"
     },
+    "apollo-hotel": {
+      "updatedAt": "2026-11-02T04:06:55.073Z",
+      "version": "35a83b0b7632bef3",
+      "dateSource": "asset-update"
+    },
     "arcam": {
       "updatedAt": "2026-10-20T10:12:36.508Z",
       "version": "14011d4bd844b10e",
@@ -3004,6 +3009,11 @@
     "sarphati-plaza": {
       "updatedAt": "2026-11-02T03:34:24.521Z",
       "version": "dcdb0a2580365d32",
+      "dateSource": "asset-update"
+    },
+    "sarphati-plaza.lod1": {
+      "updatedAt": "2026-11-02T03:35:52.833Z",
+      "version": "780e2ccf7e67a109",
       "dateSource": "asset-update"
     },
     "sarphatimonument": {

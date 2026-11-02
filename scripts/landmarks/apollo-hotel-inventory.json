@@ -1,0 +1,660 @@
+{
+ "schemaVersion": 1,
+ "id": "apollo-hotel",
+ "pand": "0363100012148632",
+ "brief": "scripts/landmarks/apollo-hotel-brief.md",
+ "signature": [
+  "pav-gallery-struts",
+  "pav-portholes",
+  "slab-bays",
+  "lift-tower",
+  "nw-logo-a",
+  "curve-bands",
+  "pav-upper-glass",
+  "stair-tower"
+ ],
+ "walls": [
+  {
+   "tag": "w01-141",
+   "bearing": 141,
+   "lengthM": 26.2,
+   "centre": [
+    4.8851851,
+    52.3481266
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001968_pano_0000_000590",
+   "capturedAt": "2021-01-18",
+   "checked": true,
+   "items": [
+    {
+     "id": "pav-portholes",
+     "kind": "window-shape",
+     "where": "Boeken pavilion, canal front, ground storey: two round porthole windows (about 1.6 m) in the solid white wall right of the window bays",
+     "approxSizeM": [
+      4.9,
+      1.6
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001968_pano_0000_000590",
+     "how": "porthole(): glass discs with white torus rims on the pavilion front"
+    },
+    {
+     "id": "pav-gallery-struts",
+     "kind": "balcony-ironwork",
+     "where": "pavilion: the upper-floor gallery cantilevered over the ground-floor windows on raking white struts, with a thin white rail",
+     "approxSizeM": [
+      26.2,
+      2.6
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001968_pano_0000_000590",
+     "how": "pavFace(): strut() per pier, closed gallery deck slab, rail and posts"
+    },
+    {
+     "id": "pav-upper-glass",
+     "kind": "window-shape",
+     "where": "pavilion upper storey: continuous glazing with slim dark mullions and a transom, under the white fascia",
+     "approxSizeM": [
+      26,
+      4
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001968_pano_0000_000590",
+     "how": "pavFace(): one cut opening per face with bars and a transom"
+    },
+    {
+     "id": "pav-roof",
+     "kind": "canopy",
+     "where": "pavilion: thin flat roof overhanging the gallery by about 1.2 m",
+     "approxSizeM": [
+      26.2,
+      0.3
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001968_pano_0000_000590",
+     "how": "pavFace(): closed roof slab projecting PAV.galleryD"
+    },
+    {
+     "id": "pav-ground-windows",
+     "kind": "window-shape",
+     "where": "pavilion ground storey: five wide window bays with dark frames over a white plinth",
+     "approxSizeM": [
+      16,
+      2.3
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001968_pano_0000_000590",
+     "how": "pavFace(): cut bays 1.8-4.1 m, bars"
+    },
+    {
+     "id": "pav-flags",
+     "kind": "other",
+     "where": "flagpoles and hotel flags on the quay in front of the pavilion",
+     "approxSizeM": [
+      0.2,
+      12
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7316010203-001968_pano_0000_000590",
+     "skip": {
+      "reason": "temporary",
+      "note": "flags and masts stand on the quay outside the BAG footprint and change; not part of the building"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "w02-141",
+   "bearing": 141,
+   "lengthM": 17.2,
+   "centre": [
+    4.885409,
+    52.3482666
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001968_pano_0000_000588",
+   "capturedAt": "2021-01-18",
+   "checked": true,
+   "items": [
+    {
+     "id": "rest-glazing",
+     "kind": "window-shape",
+     "where": "glazed restaurant ground storey east of the pavilion: tall window bays between a white plinth and a white fascia, a rail on the roof terrace",
+     "approxSizeM": [
+      17,
+      4.5
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001968_pano_0000_000588",
+     "how": "restFace(): cut bays 0.9-4.4 m, rail posts on the roof"
+    },
+    {
+     "id": "brick-block-s",
+     "kind": "other",
+     "where": "brown-brick block behind the pavilion, rising above it with white bands and a narrow window strip",
+     "approxSizeM": [
+      14,
+      13
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001968_pano_0000_000588",
+     "how": "brickBlock() on the 3DBAG piece 32 (13.3 m)"
+    }
+   ]
+  },
+  {
+   "tag": "w03-321",
+   "bearing": 321,
+   "lengthM": 14.4,
+   "centre": [
+    4.8849523,
+    52.3483661
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "items": [],
+   "note": "No panorama within 35 m (the low wings on the Apollohal side and the slab garden faces). Inferred: brick with a glass band (low wings) or the slab bay system (slabs), labelled inferred in the builder."
+  },
+  {
+   "tag": "w04-51",
+   "bearing": 51,
+   "lengthM": 14,
+   "centre": [
+    4.8854432,
+    52.3487502
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001967_pano_0000_000096",
+   "capturedAt": "2021-01-18",
+   "checked": true,
+   "items": [
+    {
+     "id": "curve-n-block",
+     "kind": "other",
+     "where": "north end of the curved canal wing: a three-storey brown-brick block with two white bands and a central strip of stair windows",
+     "approxSizeM": [
+      14,
+      11
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001967_pano_0000_000096",
+     "how": "curveFace() -> brickBlock() for straight runs over 6.5 m"
+    },
+    {
+     "id": "glass-link",
+     "kind": "window-shape",
+     "where": "three-storey glass link between the curved wing and the slab, slim mullions",
+     "approxSizeM": [
+      7,
+      10.7
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001967_pano_0000_000096",
+     "how": "linkFace(): one cut opening per storey with bars"
+    },
+    {
+     "id": "curve-bands",
+     "kind": "window-shape",
+     "where": "the curved canal wing: three storeys of window bands (cream frames, dark spandrels) under a brown-brick parapet, glazed lounge with a dark fascia in the southern ground storey",
+     "approxSizeM": [
+      60,
+      11
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001967_pano_0000_000089",
+     "how": "curveFace(): spandrel and glass openings per facet, lounge glazing where z > 30"
+    }
+   ]
+  },
+  {
+   "tag": "w05-141",
+   "bearing": 141,
+   "lengthM": 13.4,
+   "centre": [
+    4.8847971,
+    52.3480945
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001968_pano_0000_000592",
+   "capturedAt": "2021-01-18",
+   "checked": true,
+   "items": [],
+   "note": "Photographed; carries the elements listed on the neighbouring walls of the same part (same slab end / same bay system)."
+  },
+  {
+   "tag": "w06-231",
+   "bearing": 231,
+   "lengthM": 13.3,
+   "centre": [
+    4.8849715,
+    52.3484536
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "items": [],
+   "note": "No panorama within 35 m (the low wings on the Apollohal side and the slab garden faces). Inferred: brick with a glass band (low wings) or the slab bay system (slabs), labelled inferred in the builder."
+  },
+  {
+   "tag": "w07-321",
+   "bearing": 321,
+   "lengthM": 12.5,
+   "centre": [
+    4.8846626,
+    52.3491849
+   ],
+   "evidence": "photo",
+   "panoId": "b_20241217_0841_Track47_Sphere_00023",
+   "capturedAt": "2024-12-17",
+   "checked": true,
+   "items": [
+    {
+     "id": "nw-signs",
+     "kind": "sign",
+     "where": "street end of the NW slab: black HARBOUR CLUB board and teal THE LIVING ROOM board either side of the stair slit",
+     "approxSizeM": [
+      11,
+      2.3
+     ],
+     "plan": "modelled",
+     "seenIn": "b_20241217_0841_Track47_Sphere_00023",
+     "how": "streetSigns(): bronze and blue boards, HARBOUR CLUB in kit glyphs; the Living Room logo too small"
+    },
+    {
+     "id": "nw-lettering",
+     "kind": "lettering",
+     "where": "APOLLO HOTEL in silver capitals on the street end",
+     "approxSizeM": [
+      6.7,
+      0.5
+     ],
+     "plan": "modelled",
+     "seenIn": "b_20241217_0841_Track47_Sphere_00023",
+     "how": "streetSigns(): letters() px 0.08"
+    },
+    {
+     "id": "nw-logo-a",
+     "kind": "sign",
+     "where": "the hotel's red A logo, about 1.5 m, on the street end",
+     "approxSizeM": [
+      1.5,
+      1.6
+     ],
+     "plan": "modelled",
+     "seenIn": "b_20241217_0841_Track47_Sphere_00023",
+     "how": "streetSigns(): letters('A') in pink tinted red"
+    },
+    {
+     "id": "nw-slit",
+     "kind": "window-shape",
+     "where": "the vertical strip of narrow stair windows up the street end",
+     "approxSizeM": [
+      0.55,
+      18
+     ],
+     "plan": "modelled",
+     "seenIn": "b_20241217_0841_Track47_Sphere_00023",
+     "how": "slabFace() end rule: one narrow cut window per storey at t 7.85"
+    },
+    {
+     "id": "nw-bands",
+     "kind": "other",
+     "where": "cream floor bands across the buff brick of the end wall",
+     "approxSizeM": [
+      12.5,
+      0.14
+     ],
+     "plan": "modelled",
+     "seenIn": "b_20241217_0841_Track47_Sphere_00023",
+     "how": "slabFace(): band() per storey"
+    }
+   ]
+  },
+  {
+   "tag": "w08-231",
+   "bearing": 231,
+   "lengthM": 12.2,
+   "centre": [
+    4.8849801,
+    52.3480937
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000199_pano_0002_001259",
+   "capturedAt": "2017-03-10",
+   "checked": true,
+   "items": [],
+   "note": "Photographed; carries the elements listed on the neighbouring walls of the same part (same slab end / same bay system)."
+  },
+  {
+   "tag": "w09-321",
+   "bearing": 321,
+   "lengthM": 12,
+   "centre": [
+    4.8850014,
+    52.3490543
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000199_pano_0002_001415",
+   "capturedAt": "2017-03-10",
+   "checked": true,
+   "items": [
+    {
+     "id": "slab-bays",
+     "kind": "window-shape",
+     "where": "both room slabs: shallow glazed bays (2.3 m fronts, glazed cheeks) one per room per storey, a cream panel under each window, dark frames, between plain buff-brick piers",
+     "approxSizeM": [
+      50,
+      18
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-000199_pano_0002_001415",
+     "how": "slabFace(): the BAG saw-tooth runs as bays (cut panel + glass, border, transom, mullion) and cheeks"
+    },
+    {
+     "id": "slab-top-storey",
+     "kind": "window-shape",
+     "where": "glazed top storey of both slabs under a white fascia",
+     "approxSizeM": [
+      50,
+      3
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001967_pano_0000_000100",
+     "how": "pentFace(): continuous cut glazing with bars, fascia band"
+    },
+    {
+     "id": "slab-red-base",
+     "kind": "other",
+     "where": "red-brown brick base storey of the slabs along the quay, with small windows under the bays",
+     "approxSizeM": [
+      50,
+      2
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001967_pano_0000_000100",
+     "how": "slabFace(): red face 0-2 m, basement windows on bay fronts"
+    }
+   ]
+  },
+  {
+   "tag": "w10-53",
+   "bearing": 53,
+   "lengthM": 9.7,
+   "centre": [
+    4.8854631,
+    52.3483505
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "items": [],
+   "note": "No panorama within 35 m (short facets of the curved canal wing or the slab saw-tooth). Inferred from the neighbouring photographed facets: the same window bands or bays."
+  },
+  {
+   "tag": "w11-51",
+   "bearing": 51,
+   "lengthM": 7.7,
+   "centre": [
+    4.885319,
+    52.3488129
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001967_pano_0000_000097",
+   "capturedAt": "2021-01-18",
+   "checked": true,
+   "items": [
+    {
+     "id": "lift-tower",
+     "kind": "tower",
+     "where": "dark ribbed lift tower at the slab's south-east end, the red A near its top",
+     "approxSizeM": [
+      5,
+      27
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001967_pano_0000_000094",
+     "how": "towerFace(): dark walls, 0.75 m ribs, letters('A')"
+    },
+    {
+     "id": "stair-tower",
+     "kind": "tower",
+     "where": "beige stair tower in front of the lift tower: small square windows per storey, paired cream bands",
+     "approxSizeM": [
+      7,
+      24.8
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001967_pano_0000_000094",
+     "how": "stairFace()"
+    }
+   ]
+  },
+  {
+   "tag": "w12-141",
+   "bearing": 141,
+   "lengthM": 6.8,
+   "centre": [
+    4.884858,
+    52.3489511
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "items": [],
+   "note": "No panorama within 35 m (short facets of the curved canal wing or the slab saw-tooth). Inferred from the neighbouring photographed facets: the same window bands or bays."
+  },
+  {
+   "tag": "w13-321",
+   "bearing": 321,
+   "lengthM": 6.8,
+   "centre": [
+    4.8846291,
+    52.3491214
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001704_pano_0000_001395",
+   "capturedAt": "2020-05-13",
+   "checked": true,
+   "items": [],
+   "note": "Photographed; carries the elements listed on the neighbouring walls of the same part (same slab end / same bay system)."
+  },
+  {
+   "tag": "w14-126",
+   "bearing": 126,
+   "lengthM": 5.2,
+   "centre": [
+    4.8854379,
+    52.3486543
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "items": [],
+   "note": "No panorama within 35 m (short facets of the curved canal wing or the slab saw-tooth). Inferred from the neighbouring photographed facets: the same window bands or bays."
+  },
+  {
+   "tag": "w15-104",
+   "bearing": 104,
+   "lengthM": 5.2,
+   "centre": [
+    4.8853745,
+    52.34857
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "items": [],
+   "note": "No panorama within 35 m (short facets of the curved canal wing or the slab saw-tooth). Inferred from the neighbouring photographed facets: the same window bands or bays."
+  },
+  {
+   "tag": "w16-115",
+   "bearing": 115,
+   "lengthM": 5.2,
+   "centre": [
+    4.8853996,
+    52.348614
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "items": [],
+   "note": "No panorama within 35 m (short facets of the curved canal wing or the slab saw-tooth). Inferred from the neighbouring photographed facets: the same window bands or bays."
+  },
+  {
+   "tag": "w17-75",
+   "bearing": 75,
+   "lengthM": 5.2,
+   "centre": [
+    4.8853769,
+    52.3484494
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "items": [],
+   "note": "No panorama within 35 m (short facets of the curved canal wing or the slab saw-tooth). Inferred from the neighbouring photographed facets: the same window bands or bays."
+  },
+  {
+   "tag": "w18-64",
+   "bearing": 64,
+   "lengthM": 5.2,
+   "centre": [
+    4.8854034,
+    52.3484061
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "items": [],
+   "note": "No panorama within 35 m (short facets of the curved canal wing or the slab saw-tooth). Inferred from the neighbouring photographed facets: the same window bands or bays."
+  },
+  {
+   "tag": "w19-137",
+   "bearing": 137,
+   "lengthM": 4.6,
+   "centre": [
+    4.8854844,
+    52.3486875
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "items": [],
+   "note": "No panorama within 35 m (short facets of the curved canal wing or the slab saw-tooth). Inferred from the neighbouring photographed facets: the same window bands or bays."
+  },
+  {
+   "tag": "w20-94",
+   "bearing": 94,
+   "lengthM": 4.5,
+   "centre": [
+    4.8853634,
+    52.3485269
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "items": [],
+   "note": "No panorama within 35 m (short facets of the curved canal wing or the slab saw-tooth). Inferred from the neighbouring photographed facets: the same window bands or bays."
+  },
+  {
+   "tag": "w21-267",
+   "bearing": 267,
+   "lengthM": 4.3,
+   "centre": [
+    4.8848296,
+    52.3485103
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "items": [],
+   "note": "No panorama within 35 m (the low wings on the Apollohal side and the slab garden faces). Inferred: brick with a glass band (low wings) or the slab bay system (slabs), labelled inferred in the builder."
+  },
+  {
+   "tag": "w22-231",
+   "bearing": 231,
+   "lengthM": 4.3,
+   "centre": [
+    4.8847993,
+    52.3489465
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "items": [],
+   "note": "No panorama within 35 m (the low wings on the Apollohal side and the slab garden faces). Inferred: brick with a glass band (low wings) or the slab bay system (slabs), labelled inferred in the builder."
+  },
+  {
+   "tag": "w23-141",
+   "bearing": 141,
+   "lengthM": 4.2,
+   "centre": [
+    4.885307,
+    52.3488515
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "items": [],
+   "note": "No panorama within 35 m (short facets of the curved canal wing or the slab saw-tooth). Inferred from the neighbouring photographed facets: the same window bands or bays."
+  },
+  {
+   "tag": "w24-231",
+   "bearing": 231,
+   "lengthM": 4.1,
+   "centre": [
+    4.8847022,
+    52.3480702
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "items": [],
+   "note": "No panorama within 35 m (the low wings on the Apollohal side and the slab garden faces). Inferred: brick with a glass band (low wings) or the slab bay system (slabs), labelled inferred in the builder."
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas (brief crops and aimed views listed in staging/landmarks/apollo-hotel/sources.md)",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  },
+  {
+   "name": "BAG pand 0363100012148632 (Apollolaan 2, logiesfunctie)",
+   "url": "https://api.data.amsterdam.nl/v1/bag/panden/0363100012148632",
+   "licence": "CC0"
+  },
+  {
+   "name": "3DBAG NL.IMBAG.Pand.0363100012148632",
+   "url": "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012148632",
+   "licence": "CC BY 4.0"
+  },
+  {
+   "name": "en.wikipedia Apollo Hotel Amsterdam (history and architects)",
+   "url": "https://en.wikipedia.org/wiki/Apollo_Hotel_Amsterdam",
+   "licence": "CC BY-SA 4.0"
+  },
+  {
+   "name": "Rijksmonument 527829 (Apollohal ensemble incl. the café-restaurant)",
+   "url": "https://monumentenregister.cultureelerfgoed.nl/monumenten/527829",
+   "licence": "CC0"
+  }
+ ]
+}

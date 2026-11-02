@@ -2146,5 +2146,11 @@
   "buildVersion": 2,
   "bytes": 86660,
   "triangles": 5070
+ },
+ "apollo-hotel": {
+  "sourceHash": "35a83b0b7632bef3",
+  "buildVersion": 2,
+  "bytes": 154452,
+  "triangles": 9970
  }
 }
