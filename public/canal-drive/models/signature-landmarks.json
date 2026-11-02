@@ -80349,14 +80349,14 @@
         "depthMetres": 50.46984672546387,
         "depthCoverage": 0.45840006108504877
       },
-      "triangles": 11852,
-      "bytes": 161036,
+      "triangles": 11858,
+      "bytes": 160068,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "lod1": {
-        "sourceHash": "b396d1331d2c97e8",
+        "sourceHash": "532e08d38304f1c0",
         "buildVersion": 2,
-        "bytes": 75832,
-        "triangles": 4421
+        "bytes": 73060,
+        "triangles": 4431
       }
     }
   }
