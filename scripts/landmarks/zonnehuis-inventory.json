@@ -1,0 +1,422 @@
+{
+ "schemaVersion": 1,
+ "id": "zonnehuis",
+ "pand": "0363100012092742",
+ "brief": "scripts/landmarks/zonnehuis-brief.md",
+ "signature": [
+  "front-lettering",
+  "front-centre-bay",
+  "front-steps-canopy",
+  "rear-statues",
+  "front-gable",
+  "se-wing-front"
+ ],
+ "walls": [
+  {
+   "tag": "w01-308",
+   "bearing": 308,
+   "lengthM": 32.4,
+   "centre": [
+    4.8912535,
+    52.413549
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2024-10-03_07-45-45_01440",
+   "capturedAt": "2024-10-03",
+   "checked": true,
+   "items": [
+    {
+     "id": "nw-wing-front",
+     "kind": "window-shape",
+     "where": "NW wing (BAG 0363100012132683) plaza face seen obliquely: sixteen yellow-framed sash windows under a deep yellow eaves fascia, a door and a narrow window, tiled hipped roof with ridge chimneys",
+     "approxSizeM": [
+      23,
+      4
+     ],
+     "plan": "simplified",
+     "seenIn": "recording_2024-10-03_07-45-45_01440",
+     "how": "wings(): mirror of the SE wing face on the NW pand front line; 3DBAG shell for the mass"
+    },
+    {
+     "id": "hall-nw-side",
+     "kind": "colonnade",
+     "where": "hall NW side above and behind the wing: buttress piers every 3 m with stepped tops and tall multi-pane windows between them, a side door bay at the rear",
+     "approxSizeM": [
+      18,
+      6.5
+     ],
+     "plan": "simplified",
+     "seenIn": "commons:File:Zijgevel__Zonnehuis_(Amsterdam-Noord).jpg",
+     "how": "sideWalls(): six 0.8 m piers at 14.5-29.5 m behind the front with stepped caps, twin 0.7 x 4.0 m windows per bay, a white double door with transom in the rear bay (mirrored from the SE side photo)"
+    },
+    {
+     "id": "hall-roof-chimneys",
+     "kind": "other",
+     "where": "hall roof: four brick chimneys on the slopes and small hipped vent dormers, ventilator caps on both gable apexes",
+     "approxSizeM": [
+      32,
+      2
+     ],
+     "plan": "simplified",
+     "seenIn": "recording_2024-10-03_07-45-45_01440",
+     "how": "hallMass(): 4 chimneys with stone caps, 6 hipped vent dormers, apex caps and a ridge chimney near the front"
+    }
+   ],
+   "note": "Camera 35 m away at 42 deg; the NW wing stands in front of the hall side. Hall side bays mirrored from the SE side Commons photo."
+  },
+  {
+   "tag": "w02-218",
+   "bearing": 218,
+   "lengthM": 23.3,
+   "centre": [
+    4.8914985,
+    52.413272
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2024-10-03_07-45-45_01046",
+   "capturedAt": "2024-10-03",
+   "checked": true,
+   "items": [
+    {
+     "id": "se-wing-front",
+     "kind": "window-shape",
+     "where": "SE wing plaza face: yellow-framed sash windows in groups (4, then 12), white glazing bars, a door and a narrow window, red brick, deep yellow eaves fascia",
+     "approxSizeM": [
+      23.3,
+      4
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2024-10-03_07-45-45_01046",
+     "how": "wings(): 16 windows 0.75 x 1.55 m at sill 1.1 m on the measured stations, door at 7.15 m, narrow window at 8.8 m, ochre fascia 3.1-3.75 m"
+    },
+    {
+     "id": "se-wing-roof",
+     "kind": "other",
+     "where": "tiled hipped roof of the wing with four ridge chimneys",
+     "approxSizeM": [
+      23,
+      5
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2024-10-03_07-45-45_01046",
+     "how": "3DBAG LoD2.2 shell (slate) plus four brick chimneys with stone caps at 7.0/10.3/13.7/17.0 m"
+    }
+   ],
+   "note": "Frontal, 12 m, 2 deg obliquity; trees hide two window groups, read from the 2025 alt crop."
+  },
+  {
+   "tag": "w03-128",
+   "bearing": 128,
+   "lengthM": 20,
+   "centre": [
+    4.891545,
+    52.413481
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-09-15_13-25-45_00799",
+   "capturedAt": "2025-09-15",
+   "checked": true,
+   "items": [],
+   "note": "The panorama sees neighbouring houses in front of the hall SE side; the side itself (buttress piers, tall windows, side door) is taken from the Commons photo Zijgevel Zonnehuis (Agaath, CC BY-SA 4.0) and listed under w01-308 (sideWalls() builds both sides)."
+  },
+  {
+   "tag": "w04-39",
+   "bearing": 39,
+   "lengthM": 13.7,
+   "centre": [
+    4.8915565,
+    52.4135905
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001292_pano_0000_004179",
+   "capturedAt": "2019-07-05",
+   "checked": true,
+   "items": [
+    {
+     "id": "rear-statues",
+     "kind": "sculpture",
+     "where": "rear gable: four standing figures (father, mother and two children, Willem IJzerdraat and Marinus Vreugde) on brick piers in front of the hall, against pale backing panels",
+     "approxSizeM": [
+      8,
+      2.2
+     ],
+     "plan": "simplified",
+     "seenIn": "commons:File:Gevelbeelden_Zonnehuis_2023.jpg",
+     "how": "rearFacade(): four brick piers with concrete plinth slabs and a pale backing panel, a simplified 1.9 m figure (legs, body, shoulders, head) on each"
+    },
+    {
+     "id": "rear-pilasters",
+     "kind": "colonnade",
+     "where": "brick pilasters rising above the statues to the gable, recessed patterned brick panels between them",
+     "approxSizeM": [
+      8,
+      4.6
+     ],
+     "plan": "simplified",
+     "seenIn": "commons:File:Zonnehuis_achterzijde.jpg",
+     "how": "rearFacade(): pilasters 4.5-9.1 m and pink panels 3.0-7.2 m between the piers"
+    },
+    {
+     "id": "rear-windows",
+     "kind": "window-shape",
+     "where": "one window pair (upper and lower) either side of the statue group",
+     "approxSizeM": [
+      2,
+      4
+     ],
+     "plan": "simplified",
+     "seenIn": "commons:File:2023_Zonnehuis__achtergevel__Asd_(7).jpg",
+     "how": "rearFacade(): two windows each side at 7.5 m from the axis"
+    },
+    {
+     "id": "rear-planter",
+     "kind": "other",
+     "where": "low brick planter wall in front of the statues",
+     "approxSizeM": [
+      9.6,
+      0.8
+     ],
+     "plan": "simplified",
+     "seenIn": "commons:File:Zonnehuis_achterzijde.jpg",
+     "how": "1.2 m deep, 0.8 m brick wall on the axis"
+    }
+   ],
+   "note": "2019 panorama is dark under trees; the statues and gable are read from the Commons rear photos."
+  },
+  {
+   "tag": "w05-38",
+   "bearing": 38,
+   "lengthM": 13.6,
+   "centre": [
+    4.8916485,
+    52.4133185
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-09-15_13-25-45_00797",
+   "capturedAt": "2025-09-15",
+   "checked": true,
+   "items": [],
+   "note": "Rear (NE) face of the SE wing; the 31 m camera sees the houses of the next street in front of it. No windows modelled on that face (not visible in any photo)."
+  },
+  {
+   "tag": "w06-130",
+   "bearing": 130,
+   "lengthM": 9,
+   "centre": [
+    4.89174,
+    52.4132155
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7315120208-000103_pano_0000_001430",
+   "capturedAt": "2016-07-06",
+   "checked": true,
+   "items": [
+    {
+     "id": "se-wing-end-gable",
+     "kind": "window-shape",
+     "where": "SE end gable of the SE wing: five yellow-framed windows in a row, brick gable with a chimney on the apex, yellow fascia returning round the corner",
+     "approxSizeM": [
+      9,
+      6
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7315120208-000103_pano_0000_001430",
+     "how": "wings(): five 0.62 x 1.25 m windows at 0.98 m pitch with brick between, short ochre fascia returns at the corners, apex chimney; gable from the 3DBAG shell"
+    }
+   ]
+  },
+  {
+   "tag": "w07-219",
+   "bearing": 219,
+   "lengthM": 6.7,
+   "centre": [
+    4.8911465,
+    52.4134155
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-09-15_13-25-45_00273",
+   "capturedAt": "2025-09-15",
+   "checked": true,
+   "items": [
+    {
+     "id": "front-centre-bay",
+     "kind": "colonnade",
+     "where": "hall front: four brick piers with stepped caps rising to about 10.5 m, between them two rows of yellow-framed windows over patterned brick panels",
+     "approxSizeM": [
+      7,
+      10.5
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-09-15_13-25-45_00273",
+     "how": "frontFacade(): piers at +-1.1/+-3.25 m from the axis, windows at 5.8 and 9.0 m, pink panels"
+    },
+    {
+     "id": "front-lettering",
+     "kind": "lettering",
+     "where": "'t ZONNEHUIS in gilt capitals across the top of the centre bay, about 10.7-11.2 m",
+     "approxSizeM": [
+      3.6,
+      0.5
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-09-15_13-25-45_00273",
+     "how": "sign(): ZONNEHUIS in gold at 10.72 m, 3.6 m wide, a small T to the left"
+    },
+    {
+     "id": "front-steps-canopy",
+     "kind": "canopy",
+     "where": "wide granite steps (seven risers) narrowing up to three double doors under a flat dark canopy",
+     "approxSizeM": [
+      14,
+      1.6
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-09-15_13-25-45_00273",
+     "how": "frontFacade(): seven stone steps 14.2 to 9.6 m wide, canopy 7.75 m at 4.45 m, three dark doors with glass panes"
+    },
+    {
+     "id": "front-strip-windows",
+     "kind": "window-shape",
+     "where": "tall twin strip windows either side of the centre bay, then a large window over a ground-floor window in each side bay",
+     "approxSizeM": [
+      2,
+      4.6
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-09-15_13-25-45_00273",
+     "how": "frontFacade(): twin 0.45 x 4.6 m strips, 2.0 m windows at 2.45 and 5.6 m"
+    },
+    {
+     "id": "front-gable",
+     "kind": "other",
+     "where": "straight triangular brick gable with stone-coped rakes and short level shoulders, a small square window under the apex",
+     "approxSizeM": [
+      20.35,
+      6.5
+     ],
+     "plan": "modelled",
+     "seenIn": "commons:File:Zonnehuis_2023.jpg",
+     "how": "hallMass(): 0.3 m brick gable from the 8.1 m shoulders to the 14.6 m apex, stone rake coping, apex ventilator cap; frontFacade(): square window at 11.6 m"
+    },
+    {
+     "id": "front-banner",
+     "kind": "sign",
+     "where": "temporary fabric banners on the front (programme posters)",
+     "approxSizeM": [
+      1.2,
+      4
+     ],
+     "plan": "skipped",
+     "seenIn": "recording_2025-09-15_13-25-45_00273",
+     "skip": {
+      "reason": "temporary",
+      "note": "programme banners change with the season (different in 2024 and 2025 panoramas)"
+     }
+    }
+   ],
+   "note": "Panorama barrel distortion makes the gable look curved; the head-on Commons photo Zonnehuis 2023.jpg shows straight rakes."
+  },
+  {
+   "tag": "w08-39",
+   "bearing": 39,
+   "lengthM": 6.6,
+   "centre": [
+    4.891437,
+    52.4136455
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2024-10-03_07-45-45_01554",
+   "capturedAt": "2024-10-03",
+   "checked": true,
+   "items": [],
+   "note": "Rear, NW half; trees. Same statue group as w04-39 (the four figures are modelled once, across both halves)."
+  },
+  {
+   "tag": "w09-218",
+   "bearing": 218,
+   "lengthM": 6.6,
+   "centre": [
+    4.8913055,
+    52.41334
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2024-10-03_07-45-45_01049",
+   "capturedAt": "2024-10-03",
+   "checked": true,
+   "items": [],
+   "note": "Hall front, SE half: same items as w07-219 (frontFacade() is symmetric about the axis; the photo confirms the symmetry)."
+  },
+  {
+   "tag": "w10-38",
+   "bearing": 38,
+   "lengthM": 5.1,
+   "centre": [
+    4.8915505,
+    52.413378
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-09-15_13-25-45_00795",
+   "capturedAt": "2025-09-15",
+   "checked": true,
+   "items": [],
+   "note": "NE face at the SE wing junction; the camera sees a neighbouring house (no. 23) in front. Not visible, nothing modelled."
+  },
+  {
+   "tag": "w11-38",
+   "bearing": 38,
+   "lengthM": 4.2,
+   "centre": [
+    4.8914855,
+    52.4133945
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001292_pano_0000_004177",
+   "capturedAt": "2019-07-05",
+   "checked": true,
+   "items": [],
+   "note": "NE face at the hall/SE wing corner; hedge and neighbouring house in the panorama. Not visible, nothing modelled."
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  },
+  {
+   "name": "Wikimedia Commons: Zonnehuis 2023.jpg (Marion Golsteijn)",
+   "url": "https://commons.wikimedia.org/wiki/File:Zonnehuis_2023.jpg",
+   "licence": "CC BY-SA 4.0"
+  },
+  {
+   "name": "Wikimedia Commons: Voorgevel Zonnehuis (Amsterdam-Noord).jpg (Agaath)",
+   "url": "https://commons.wikimedia.org/wiki/File:Voorgevel__Zonnehuis_(Amsterdam-Noord).jpg",
+   "licence": "CC BY-SA 4.0"
+  },
+  {
+   "name": "Wikimedia Commons: Zijgevel Zonnehuis (Amsterdam-Noord).jpg (Agaath)",
+   "url": "https://commons.wikimedia.org/wiki/File:Zijgevel__Zonnehuis_(Amsterdam-Noord).jpg",
+   "licence": "CC BY-SA 4.0"
+  },
+  {
+   "name": "Wikimedia Commons: Zonnehuis achterzijde.jpg (Marion Golsteijn)",
+   "url": "https://commons.wikimedia.org/wiki/File:Zonnehuis_achterzijde.jpg",
+   "licence": "CC BY-SA 3.0"
+  },
+  {
+   "name": "Wikimedia Commons: Gevelbeelden Zonnehuis 2023.jpg (Ceescamel)",
+   "url": "https://commons.wikimedia.org/wiki/File:Gevelbeelden_Zonnehuis_2023.jpg",
+   "licence": "CC0"
+  },
+  {
+   "name": "Wikimedia Commons: 2023 Zonnehuis (achtergevel) Asd (7).jpg (Ceescamel)",
+   "url": "https://commons.wikimedia.org/wiki/File:2023_Zonnehuis__achtergevel__Asd_(7).jpg",
+   "licence": "CC0"
+  },
+  {
+   "name": "Wikipedia nl: Zonnehuis",
+   "url": "https://nl.wikipedia.org/wiki/Zonnehuis",
+   "licence": "CC BY-SA 4.0"
+  }
+ ]
+}

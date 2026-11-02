@@ -1,0 +1,63 @@
+{
+  "id": "kraanspoor",
+  "note": "Audit thresholds for the Kraanspoor GLB (scripts/audit-glb-quality.ts reads <id>-spec.json); the builder's data is kraanspoor-footprints.json.",
+  "belowGroundMetres": -1.05,
+  "belowGroundEvidence": "The crane-track legs and the mooring block stand in the IJ harbour water about 2 m below the quay (Commons 29670110014, w03 panorama); the legs continue 1.0 m below the street datum so they never hang over the water surface.",
+  "throughPassages": [
+    {
+      "axisBearing": 128,
+      "corridor": [
+        [
+          -74.6,
+          109.2
+        ],
+        [
+          88.0,
+          -98.7
+        ],
+        [
+          74.7,
+          -109.2
+        ],
+        [
+          -88.0,
+          98.7
+        ]
+      ],
+      "evidence": "The 1952 crane track is open underneath: between its legs the quay looks straight through to the marina and the water-side escape walkway (rectified panoramas recording_2024-10-23_07-33-22_00814 and TMX7316010203-002193_pano_0000_004912, artifacts/landmark-briefs/kraanspoor/w02-128*.jpg; Commons Kraanspoor.JPG). Only the four glazed stair cores and the lobbies beside them close it; the BAG ring is the glass box 11 m overhead."
+    },
+    {
+      "axisBearing": 38,
+      "corridor": [
+        [
+          -74.6,
+          109.2
+        ],
+        [
+          88.0,
+          -98.7
+        ],
+        [
+          74.7,
+          -109.2
+        ],
+        [
+          -88.0,
+          98.7
+        ]
+      ],
+      "evidence": "The end blocks are four-legged open frames with two tie beams; the view along the track runs through them under the deck (Commons Amsterdam_-_Kraanspoor_(29670110014).jpg, head-on from the SW quay; w03-218 and w04-38 panoramas)."
+    }
+  ],
+  "detachedStructures": [
+    {
+      "box": [
+        -83.9,
+        96.0,
+        -82.3,
+        101.3
+      ],
+      "evidence": "Concrete mooring block with two bollards standing in the water off the SW head of the crane track (Commons Amsterdam_-_Kraanspoor_(30214778541).jpg and (29670110014).jpg)."
+    }
+  ]
+}

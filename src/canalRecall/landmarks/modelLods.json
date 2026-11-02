@@ -2044,5 +2044,17 @@
   "buildVersion": 2,
   "bytes": 81628,
   "triangles": 3996
+ },
+ "kraanspoor": {
+  "sourceHash": "79a0a5443847149e",
+  "buildVersion": 2,
+  "bytes": 49232,
+  "triangles": 2443
+ },
+ "zonnehuis": {
+  "sourceHash": "ea88956c3d920fae",
+  "buildVersion": 2,
+  "bytes": 52708,
+  "triangles": 2230
  }
 }
