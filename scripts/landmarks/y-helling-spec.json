@@ -1,0 +1,58 @@
+{
+ "id": "y-helling",
+ "name": "Y-Helling",
+ "modelUrl": "./models/y-helling.glb",
+ "suppressOsmIds": [
+  "NL.IMBAG.Pand.0363100012238702",
+  "w280619702"
+ ],
+ "spatialSuppression": false,
+ "footprint": {
+  "centre": [
+   4.895439155796976,
+   52.39973464239876
+  ],
+  "headingDegrees": 0,
+  "lengthMetres": 98.4,
+  "widthMetres": 65.6
+ },
+ "surveyed": {
+  "anchor": [
+   4.895439155796976,
+   52.39973464239876
+  ],
+  "northOffsetDegrees": 0,
+  "source": "BAG 0363100012238702 ring (PDOK BAG, CC0) in native east/south metres from a point 36 m down the slipway axis (12.3 deg) from the ring's vertex average, on the open apron, so the game bases the model on the apron and not on the -0.35 m NAP reading of the ground field under the deck (scripts/landmarks/y-helling-footprints.json, y-helling-builder.ts). Deck plane from the 3DBAG LoD2.2 roof (AHN, 1:20); keel-block rows and the dark strip from the PDOK 2025 orthophoto; walls, openings, stair and railings from the Gemeente Amsterdam panoramas (scripts/landmarks/y-helling-inventory.json)."
+ },
+ "groundAltitudeMetres": 0,
+ "facingOffsetDegrees": 0,
+ "attribution": {
+  "title": "Y-Helling (NDSM eastern slipway, c. 1920 and 1950s, G.J. Langhout / J.D. Postma; studios under the deck 2006)",
+  "author": "Map Recall",
+  "sourceUrl": "https://monumentenregister.cultureelerfgoed.nl/monumenten/528255",
+  "licence": "CC BY 4.0",
+  "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+  "modifications": "Original texture-free flat-colour geometry: the slipway deck falling 1:20 to the IJ, the rows of truncated-pyramid keel blocks in the outline of the last hull, the concrete and brick walls of the studios under the deck with red-framed doors and windows and grey roller doors, the red steel stair and deck railings, on the BAG footprint (CC0) with 3DBAG heights (CC BY 4.0), read for proportion only from the Gemeente Amsterdam panoramas (CC BY 4.0) and the PDOK orthophoto (CC BY 4.0). No pixels or meshes imported."
+ },
+ "bag": {
+  "pand": "0363100012238702",
+  "address": "NDSM-plein 82A-92E, 1033WB Amsterdam (35 verblijfsobjecten, 9-117 m2)",
+  "bouwjaar": 2006,
+  "gebruiksdoel": "industriefunctie",
+  "status": "Pand in gebruik",
+  "source": "PDOK BAG OGC API v2 and api.data.amsterdam.nl (CC0), retrieved 2026-11-02"
+ },
+ "identity": {
+  "built": "slipways II and III c. 1920 under G.J. Langhout, joined into the Grote Hellingbaan in the 1950s under J.D. Postma; studios and workshops built under the deck, registered 2006",
+  "architect": "G.J. Langhout; altered under J.D. Postma (rijksmonument 528255 text)",
+  "monument": "rijksmonument 528255 (2007, both NDSM slipways and the crane track; the register links only the western slipway, pand 0363100012238701)",
+  "today": "ateliers and workshops of the NDSM broedplaats under the deck; the deck is an events square",
+  "name": "Y-Helling (OSM w280619702 name tag); nl.wikipedia has no article on it",
+  "sources": [
+   "https://monumentenregister.cultureelerfgoed.nl/monumenten/528255",
+   "https://nl.wikipedia.org/wiki/NDSM-terrein",
+   "https://www.openstreetmap.org/way/280619702"
+  ]
+ },
+ "note": "The eastern of the two NDSM slipways (the Faralda crane stands between them, 90 m south-west of this anchor). The anchor is moved 36 m down the slipway axis onto the apron; see the builder header."
+}

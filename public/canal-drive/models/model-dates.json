@@ -3342,8 +3342,8 @@
       "dateSource": "asset-update"
     },
     "tolhuis-paviljoen.lod1": {
-      "updatedAt": "2026-11-02T02:46:27.233Z",
-      "version": "fcd15531d89280bb",
+      "updatedAt": "2026-11-02T02:52:19.612Z",
+      "version": "c801bbdeab706e01",
       "dateSource": "asset-update"
     },
     "torture-museum": {
@@ -3754,6 +3754,16 @@
     "wtc-amsterdam.lod1": {
       "updatedAt": "2026-11-02T01:45:02.433Z",
       "version": "7e3afa42855fff29",
+      "dateSource": "asset-update"
+    },
+    "y-helling": {
+      "updatedAt": "2026-11-02T03:15:44.947Z",
+      "version": "985bd1f99ee9da64",
+      "dateSource": "asset-update"
+    },
+    "y-helling.lod1": {
+      "updatedAt": "2026-11-02T03:15:02.804Z",
+      "version": "29c058d38a0a9676",
       "dateSource": "asset-update"
     },
     "zevenlandenhuizen": {
