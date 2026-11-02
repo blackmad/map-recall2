@@ -1,0 +1,534 @@
+{
+ "schemaVersion": 1,
+ "id": "binnengasthuis-kloveniersburgwal",
+ "pand": "0363100012171179",
+ "brief": "scripts/landmarks/binnengasthuis-kloveniersburgwal-brief.md",
+ "signature": [
+  "skate-band",
+  "schaats-glazed-bands",
+  "chimney-stack",
+  "h1-neck-gable",
+  "oza-stone-tablet"
+ ],
+ "walls": [
+  {
+   "tag": "w01-16",
+   "bearing": 16,
+   "lengthM": 89.7,
+   "centre": [
+    4.8963218,
+    52.3698599
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002862_pano_0004_000104",
+   "capturedAt": "2022-12-15",
+   "checked": true,
+   "items": [
+    {
+     "id": "rusland-rooflight-boxes",
+     "kind": "other",
+     "where": "five concrete-framed glazed boxes standing on the eaves line, flush with the front (s 14-17, 29-31, 45-47, 72-75 m from the Kloveniersburgwal corner)",
+     "approxSizeM": [
+      2.5,
+      1.9
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002862_pano_0004_000104",
+     "how": "concrete slabs 1.5 m deep with a glass pane 5 cm proud"
+    },
+    {
+     "id": "rusland-hall-panel",
+     "kind": "other",
+     "where": "11 m stone-clad panel of the lecture hall, horizontal joints every ~1.2 m, two steel cover strips (s 56-67 m)",
+     "approxSizeM": [
+      11.2,
+      13
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-002862_pano_0004_000104",
+     "how": "stone face with steel strips at both edges and on the two joints, joint lines as 4 cm ledges"
+    },
+    {
+     "id": "rusland-plant-front",
+     "kind": "other",
+     "where": "louvred plant front at the west end: black base, louvre band, pale concrete band, top ribbon window (s 88-96 m)",
+     "approxSizeM": [
+      8,
+      7.8
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002862_pano_0004_000104",
+     "how": "bronze base and louvre slabs with 13 louvre ledges, concrete face with a six-light ribbon"
+    },
+    {
+     "id": "rusland-louvre-doors",
+     "kind": "window-shape",
+     "where": "doors and double doors with louvred transoms in the brick rear",
+     "approxSizeM": [
+      3,
+      2.6
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-002862_pano_0004_000104",
+     "how": "dark door openings with a transom bar; louvre slats not drawn"
+    },
+    {
+     "id": "rusland-climbing-plant",
+     "kind": "other",
+     "where": "climbing plant over the brick between s 76 and 87 m",
+     "approxSizeM": [
+      10,
+      8
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7316010203-002862_pano_0004_000104",
+     "skip": {
+      "reason": "temporary",
+      "note": "seasonal growth, bare in December"
+     }
+    }
+   ],
+   "note": "The brief crop (TMX7316010203-002862_pano_0004_000074, 25 m off) shows the row houses on the NORTH side of Rusland; the recipe modelled those on this wall. This pand's Rusland wall is the plain 1960s-70s brick rear of the lecture halls, measured on the rectified strip artifacts/landmark-refs/binnengasthuis-kloveniersburgwal/strip-rusland.jpg (panoramas 002862_pano_0004_000092..000113, 1.6 m off the wall; heights scaled to the 3DBAG 9.4 m eaves)."
+  },
+  {
+   "tag": "w02-122",
+   "bearing": 122,
+   "lengthM": 21.8,
+   "centre": [
+    4.8969215,
+    52.3695099
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001975_pano_0000_001256",
+   "capturedAt": "2021-01-22",
+   "checked": true,
+   "items": [
+    {
+     "id": "beige-recessed-top",
+     "kind": "window-shape",
+     "where": "beige post-war office front, nine axes of brown-framed windows, recessed top storey with a continuous window band behind a concrete fascia",
+     "approxSizeM": [
+      15.5,
+      18.5
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001975_pano_0000_001256",
+     "how": "concrete face with nine axes per storey, brick ground storey, top storey 1 m back with a nine-light ribbon"
+    },
+    {
+     "id": "brick-front-dormers",
+     "kind": "other",
+     "where": "four-storey brick front under a dark tiled roof with two dormers and a white cornice; door with stoop at the fifth axis",
+     "approxSizeM": [
+      10.4,
+      18
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001975_pano_0000_001256",
+     "how": "six axes, white cornice, slate-coloured roof wedge 4 m deep, two dormer boxes with glass, stone stoop"
+    }
+   ]
+  },
+  {
+   "tag": "w03-300",
+   "bearing": 300,
+   "lengthM": 20.4,
+   "centre": [
+    4.8956137,
+    52.3698877
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-06-30_05-16-46_01394",
+   "capturedAt": "2025-06-30",
+   "checked": true,
+   "items": [
+    {
+     "id": "oza-stone-tablet",
+     "kind": "relief",
+     "where": "cross-shaped light stone tablet with a carved emblem on the blank fourth axis, between ground and first floor",
+     "approxSizeM": [
+      1.8,
+      1.5
+     ],
+     "plan": "simplified",
+     "seenIn": "recording_2025-06-30_05-16-46_01394",
+     "how": "cross-shaped stone tablet 8 cm proud; the carved emblem inside is not cut"
+    },
+    {
+     "id": "oza-zinc-edge",
+     "kind": "other",
+     "where": "pale green zinc/copper roof edge band over the fourth storey",
+     "approxSizeM": [
+      20.4,
+      1.2
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-06-30_05-16-46_01394",
+     "how": "copper-tinted band 1.3 m high, 0.35 m proud"
+    },
+    {
+     "id": "oza-balconettes",
+     "kind": "balcony-ironwork",
+     "where": "iron balconette rails across three tall first-floor windows",
+     "approxSizeM": [
+      1.7,
+      0.5
+     ],
+     "plan": "simplified",
+     "seenIn": "recording_2025-06-30_05-16-46_01394",
+     "how": "bronze rail slab across the lower 0.55 m of each window"
+    },
+    {
+     "id": "oza-curved-corner",
+     "kind": "window-shape",
+     "where": "the front turns round the Rusland corner in a curve",
+     "approxSizeM": [
+      3,
+      16
+     ],
+     "plan": "simplified",
+     "seenIn": "recording_2025-06-30_05-16-46_01394",
+     "how": "square corner post; the curve is not drawn"
+    }
+   ]
+  },
+  {
+   "tag": "w04-121",
+   "bearing": 121,
+   "lengthM": 18.1,
+   "centre": [
+    4.8967355,
+    52.36932
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001975_pano_0000_001260",
+   "capturedAt": "2021-01-22",
+   "checked": true,
+   "items": [
+    {
+     "id": "skate-band",
+     "kind": "window-shape",
+     "where": "white ground-floor window band whose left end sweeps down in a quarter circle like the toe of a skate (de schaats)",
+     "approxSizeM": [
+      13.8,
+      2.0
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001975_pano_0000_001260",
+     "how": "roundedBand.ts outline (bottom-left radius 1.6 m), white, 0.3 m proud, seven glass lights 5 cm proud"
+    },
+    {
+     "id": "glass-block-oriel",
+     "kind": "window-shape",
+     "where": "glass-block oriel of eight horizontal courses over the rounded end of the skate band",
+     "approxSizeM": [
+      3.3,
+      1.7
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-001975_pano_0000_001260",
+     "how": "white box 0.75 m proud with seven glass courses; drawn square in plan, the real oriel is rounded"
+    },
+    {
+     "id": "schaats-glazed-bands",
+     "kind": "window-shape",
+     "where": "two white-framed glazed bands of five windows each (8x4 and 5x6 small panes) on the third and fourth storeys",
+     "approxSizeM": [
+      11,
+      8
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001975_pano_0000_001260",
+     "how": "white face with ten cut openings and pane bars"
+    },
+    {
+     "id": "schaats-triple-ledge",
+     "kind": "other",
+     "where": "three stacked white ledges between the two glazed bands, running past the band to the right",
+     "approxSizeM": [
+      11.4,
+      1.1
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001975_pano_0000_001260",
+     "how": "three white slabs stepping 0.32/0.24/0.16 m proud"
+    },
+    {
+     "id": "chimney-stack",
+     "kind": "tower",
+     "where": "tall brick chimney stack at the south end of the 1927 wing, 23.4 m",
+     "approxSizeM": [
+      2.8,
+      23.4
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001975_pano_0000_001260",
+     "how": "brick slab 1.7 m deep to 23.4 m with a concrete cap"
+    },
+    {
+     "id": "schaats-slate-roof",
+     "kind": "other",
+     "where": "dark slate slope behind the top glazed band",
+     "approxSizeM": [
+      11,
+      3
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001975_pano_0000_001260",
+     "how": "slate wedge from the 14.7 m eaves to 17.6 m, 2 m back; the 3DBAG piece capped under it (frontZones.ts)"
+    }
+   ]
+  },
+  {
+   "tag": "w05-121",
+   "bearing": 121,
+   "lengthM": 16.6,
+   "centre": [
+    4.8970687,
+    52.3696573
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001975_pano_0000_001256",
+   "capturedAt": "2021-01-22",
+   "checked": true,
+   "items": [
+    {
+     "id": "h1-neck-gable",
+     "kind": "other",
+     "where": "neck gable of the first canal house (rijksmonument 72, natural-stone parts first half 18th c.): white sandstone claw pieces with vases, segmental crown with a cartouche, hoist window in the neck",
+     "approxSizeM": [
+      6.4,
+      4.1
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-001975_pano_0000_001256",
+     "how": "neck-gable.ts with a segmental crown, white trim, dark hoist window; vases and cartouche not carved"
+    },
+    {
+     "id": "h2-h3-scroll-gables",
+     "kind": "other",
+     "where": "two neck gables with white Louis XIV scroll shoulders and arched crowns",
+     "approxSizeM": [
+      9.3,
+      3.4
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-001975_pano_0000_001256",
+     "how": "neck-gable.ts segmental crowns with white claw rims; the scroll carving is not cut"
+    },
+    {
+     "id": "house-stoops",
+     "kind": "balcony-ironwork",
+     "where": "stone stoops with iron railings before the doors of the first and third house",
+     "approxSizeM": [
+      2.5,
+      1.0
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-001975_pano_0000_001256",
+     "how": "stone stoop blocks; the railings are skipped (bars under 3 cm)"
+    },
+    {
+     "id": "house-fanlights",
+     "kind": "window-shape",
+     "where": "doors with fanlights (bovenlicht) over them",
+     "approxSizeM": [
+      1.2,
+      3.5
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-001975_pano_0000_001256",
+     "how": "dark door opening with a transom bar"
+    }
+   ]
+  },
+  {
+   "tag": "w06-192",
+   "bearing": 192,
+   "lengthM": 16.2,
+   "centre": [
+    4.8965508,
+    52.3692653
+   ],
+   "evidence": "inferred",
+   "checked": true,
+   "items": [],
+   "note": "This 15.6 m face looks south into the Oudemanhuispoort passage at its east gate and is not visible from a street. The brief crop shows the next building south of the gate (the GASTHUIS APOTHEEK portal, not part of this pand); the old recipe drew that portal on this pand by mistake."
+  },
+  {
+   "tag": "w07-286",
+   "bearing": 286,
+   "lengthM": 10.1,
+   "centre": [
+    4.8956079,
+    52.3695706
+   ],
+   "evidence": "inferred",
+   "checked": true,
+   "items": [],
+   "note": "Yard face behind the Oudezijds Achterburgwal houses; the brief crop shows a neighbour's stoop. Drawn as the plain 3DBAG massing wall."
+  },
+  {
+   "tag": "w08-286",
+   "bearing": 286,
+   "lengthM": 9.3,
+   "centre": [
+    4.8957376,
+    52.3696407
+   ],
+   "evidence": "inferred",
+   "checked": true,
+   "items": [],
+   "note": "Yard face behind the Oudezijds Achterburgwal houses; the brief crop shows a neighbour's door. Drawn as the plain 3DBAG massing wall."
+  },
+  {
+   "tag": "w09-191",
+   "bearing": 191,
+   "lengthM": 8.6,
+   "centre": [
+    4.8955524,
+    52.3693907
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "items": [],
+   "note": "Passage side, no panorama; plain massing wall."
+  },
+  {
+   "tag": "w10-16",
+   "bearing": 16,
+   "lengthM": 8.2,
+   "centre": [
+    4.8970687,
+    52.369733
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002862_pano_0004_000104",
+   "capturedAt": "2022-12-15",
+   "checked": true,
+   "items": [
+    {
+     "id": "corner-house-side",
+     "kind": "window-shape",
+     "where": "Rusland side of the third canal house: white plinth, white cornice, a tall barred window axis and a small window axis",
+     "approxSizeM": [
+      7.2,
+      11
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-002862_pano_0004_000104",
+     "how": "brown-grey brick face with two window axes, white plinth slabs and cornice"
+    }
+   ]
+  },
+  {
+   "tag": "w11-287",
+   "bearing": 287,
+   "lengthM": 7.4,
+   "centre": [
+    4.8956205,
+    52.3694781
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-06-30_05-16-46_01404",
+   "capturedAt": "2025-06-30",
+   "checked": true,
+   "items": [
+    {
+     "id": "painted-house",
+     "kind": "window-shape",
+     "where": "pale painted three-storey house by the passage's west gate, two axes, shop window below, white cornice",
+     "approxSizeM": [
+      7,
+      14
+     ],
+     "plan": "simplified",
+     "seenIn": "recording_2025-06-30_05-16-46_01394",
+     "how": "pink-slot (pale grey paint) face with two axes per storey and a white cornice"
+    }
+   ]
+  },
+  {
+   "tag": "w12-299",
+   "bearing": 299,
+   "lengthM": 6.7,
+   "centre": [
+    4.8955121,
+    52.3697767
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-06-30_05-16-46_01394",
+   "capturedAt": "2025-06-30",
+   "checked": true,
+   "items": [
+    {
+     "id": "oza-house-cornice",
+     "kind": "other",
+     "where": "wide white wooden cornice on four consoles over a two-bay house, hipped slate roof behind (rijksmonument 68: gevel onder rechte lijst met vier consoles)",
+     "approxSizeM": [
+      7,
+      1.6
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-06-30_05-16-46_01394",
+     "how": "white cornice slab 1.6 m high with four console blocks and a slate wedge roof"
+    }
+   ]
+  },
+  {
+   "tag": "w13-14",
+   "bearing": 14,
+   "lengthM": 6.4,
+   "centre": [
+    4.8956735,
+    52.3696072
+   ],
+   "evidence": "inferred",
+   "checked": true,
+   "items": [],
+   "note": "Yard face north of the Oudezijds Achterburgwal yard; the crop shows a window close up. Plain massing wall."
+  },
+  {
+   "tag": "w14-122",
+   "bearing": 122,
+   "lengthM": 4.7,
+   "centre": [
+    4.8968191,
+    52.3694087
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001975_pano_0000_001193",
+   "capturedAt": "2021-01-22",
+   "checked": true,
+   "items": [],
+   "note": "Brick pier and stair strip between the 1927 wing and the beige front; brick face with a door, modelled."
+  },
+  {
+   "tag": "w15-11",
+   "bearing": 11,
+   "lengthM": 4.4,
+   "centre": [
+    4.8955439,
+    52.3694553
+   ],
+   "evidence": "inferred",
+   "checked": true,
+   "items": [],
+   "note": "North face of the painted house, against the yard; plain massing wall."
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  },
+  {
+   "name": "nl.wikipedia Oudemanhuispoort",
+   "url": "https://nl.wikipedia.org/wiki/Oudemanhuispoort",
+   "licence": "CC BY-SA 4.0"
+  }
+ ]
+}

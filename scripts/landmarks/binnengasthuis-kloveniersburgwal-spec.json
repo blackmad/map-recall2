@@ -1,0 +1,25 @@
+{
+ "id": "binnengasthuis-kloveniersburgwal",
+ "pand": "0363100012171179",
+ "identity": {
+  "addresses": "Oudemanhuispoort 2 (H, 1), 3 (H, 1), 4 and Oudezijds Achterburgwal 217 (BAG verblijfsobjecten); the lane brief's 'Kloveniersburgwal 72 range' is wrong as an address: Kloveniersburgwal 68-72 (rijksmonumenten) are canal houses on this pand's Kloveniersburgwal front, but they have no BAG address of their own",
+  "bouwjaar": 1757,
+  "what": "north and west wings of the Oude Mannen- en Vrouwengasthuis carre (1601, rebuilt 1754-57 by city architect G.F. Maybaum, University of Amsterdam since 1880), between the Kloveniersburgwal, Rusland, the Oudezijds Achterburgwal and the covered book-market passage, round an enclosed courtyard (the BAG holes); on the Kloveniersburgwal the 1927 wing by P.L. Marnette ('de schaats') and three canal houses",
+  "notThis": "the GASTHUIS APOTHEEK portal of the old recipe stands on the next building south of the passage's east gate (pand 0363100012177827); the row houses in the brief's Rusland crop are on the north side of Rusland",
+  "sources": [
+   "https://api.data.amsterdam.nl/v1/bag/panden/0363100012171179",
+   "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/?ligtInPanden.identificatie=0363100012171179",
+   "https://nl.wikipedia.org/wiki/Oudemanhuispoort",
+   "https://nl.wikipedia.org/wiki/Lijst_van_rijksmonumenten_aan_de_Kloveniersburgwal"
+  ]
+ },
+ "frame": "native metres of binnengasthuis-kloveniersburgwal-footprints.json (x east, z south, y up from the 0.56 m NAP street); chords KBW (35.421,23.046)->(67.371,-29.206), RUS (67.371,-29.206)->(-30.808,-57.257), OZA (-30.808,-57.257)->(-44.486,-33.167), OZA2 (-43.108,-0.74)->(-44.621,6.049) in the builder",
+ "partyWallBearings": [192],
+ "partyWallEvidence": "South (192): the whole south side of the pand adjoins the Oudemanhuispoort range south of it (BAG 0363100012180203, 180204, 180207, 180208, 177828, 177832, 177829 within 0.05-0.24 m, 13.5-14.6 m tall) and, at the Kloveniersburgwal end, the covered passage under its roof (nl.wikipedia: 'overdekte doorgang'); the panoramas show no face of it from a street.",
+ "fronts": {
+  "kloveniersburgwal": "s from the passage gate: south bay and chimney stack 0-5.8 (stack to 23.4), de schaats 5.8-17 (skate band 1.9-3.9, glass-block oriel 3.9-5.6, glazed bands 7.05-10.55 and 12.15-14.25, triple ledge 10.85-11.83, eaves 14.7, slate to 17.6), pier 17-19.7, beige front 19.7-35.2 (nine axes, fascia 15.8, recessed top storey to 18.5), brick front 35.2-45.6 (six axes, cornice 14.3, two dormers), canal houses 45.6-52 (shoulder 15.2, apex 19.3), 52-57 and 57-61.25 (shoulder 12, apex 15.4)",
+  "rusland": "s from the Kloveniersburgwal corner: corner house side 0-7.2 (cornice 10.75), vent bay 7.2-11.5 (8.6), brick rear 11.5-56 (9.4), stone hall panel 56-67.2 (13.0), brick 67.2-87.4 (10.0), louvre front 88-96 (7.8), Achterburgwal return 96-102.1 (15.6)",
+  "achterburgwal": "s from the Rusland corner: dark-brick front 0-20.4 (eight axes, tablet on the fourth, zinc edge 15.5-16.8), two-bay house 20.4-27.7 (cornice 11.5-13.1 on four consoles); the painted house by the west gate on its own 6.96 m chord (13.9)"
+ },
+ "heightsFrom": "rectified panorama strips scaled to 3DBAG eaves (Rusland 9.4 m, Kloveniersburgwal 14.7 m) and BAG neighbour heights"
+}

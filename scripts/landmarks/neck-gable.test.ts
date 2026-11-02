@@ -1,6 +1,7 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
-import {clawOutline, gableSilhouette, pedimentOutline, signedArea, type NeckGableSpec} from './neck-gable';
+import {clawOutline, footScrollFits, gableSilhouette, neckGable, pedimentOutline, signedArea, type NeckGableSpec} from './neck-gable';
+import type {BuildingTools} from './cultural-builders';
 
 // Herengracht 366 as measured on the rectified 2021 panorama (cromhouthuizen-builder.ts)
 const g: NeckGableSpec = {x0: 11.9, x1: 20.0, axis: 15.95, neckHalf: 1.85, shoulderY: 16.6, clawTopY: 17.4, corniceY: 20.9, corniceH: 0.6, corniceHalf: 2.05, apexY: 22.5};
@@ -63,4 +64,16 @@ test('the default crown is unchanged: a triangle', () => {
   assert.equal(ped.length, 3);
   assert.deepEqual(ped.slice(0, 2), [[-g.corniceHalf, 0], [g.corniceHalf, 0]]);
   assert.deepEqual(ped[2], [0, g.apexY - (g.corniceY + g.corniceH)]);
+});
+
+test('foot scrolls: kept by default, dropped with footScroll false, and footScrollFits tells a low wide claw from a tall one', () => {
+  const frame = {origin: [0, 0] as [number, number], tangent: [1, 0] as [number, number], n: [0, 1] as [number, number]};
+  const count = (spec: NeckGableSpec) => { let n = 0; neckGable({add: () => { n++; }} as unknown as BuildingTools, frame, spec); return n; };
+  const withScroll = count(g), without = count({...g, footScroll: false});
+  assert.equal(withScroll - without, 4, 'a disc and a ring at each foot');
+  assert.equal(count({...g, footScroll: true}), withScroll);
+  // Binnengasthuis, Kloveniersburgwal house 1: shoulder 15.2, claw top 16.9 over 1.55 m - the disc would stand above the curve
+  assert.equal(footScrollFits({x0: 45.65, x1: 51.95, axis: 48.7, neckHalf: 1.5, shoulderY: 15.2, clawTopY: 16.9, corniceY: 18.3, corniceH: 0.28, corniceHalf: 1.75, apexY: 19.3}), false);
+  // a tall narrow claw (Vingboons type, 3 m over 1.2 m) holds it
+  assert.equal(footScrollFits({...g, x0: 12.9, clawTopY: 19.6}), true);
 });

@@ -40,6 +40,22 @@ export interface NeckGableSpec {
    * pediment whose arc rises from the cornice ends to apexY (Odeon, Singel 460, Vingboons 1662).
    */
   crown?: 'triangle' | 'segment';
+  /**
+   * Scroll (volute disc and ring) at each claw foot; default true. Low, wide claws (a Louis XIV shoulder rising under
+   * 2 m over 1.5 m or more) have no room for it: the disc stands above the claw curve, outside the gable silhouette, and
+   * the opening audit reads it as trim off the wall. `footScrollFits` says whether it fits.
+   */
+  footScroll?: boolean;
+}
+/** Foot scroll centre offset from the house edge, height over the shoulder line, and radius (see `neckGable`). */
+export const FOOT_SCROLL = {inset: 0.45, rise: 0.32, r: 0.28};
+/** Whether the foot scrolls lie inside the claw outline (their top under the claw curve at the scroll's inner edge). */
+export function footScrollFits(g: NeckGableSpec): boolean {
+  const dx = Math.abs(g.axis - g.neckHalf - g.x0), dy = g.clawTopY - g.shoulderY;
+  const reach = FOOT_SCROLL.inset + FOOT_SCROLL.r;
+  if (reach >= dx) return false;
+  const a = Math.asin(reach / dx), curveY = dy * (1 - Math.cos(a));
+  return curveY >= FOOT_SCROLL.rise + FOOT_SCROLL.r;
 }
 
 /** Concave claw outline on one side, closed polygon in (t, y): foot at the house edge, top against the neck side. */
@@ -127,6 +143,7 @@ export function neckGable(b: BuildingTools, f: Frame, g: NeckGableSpec, o: {wall
       const blk = new T.BoxGeometry(L + 0.04, 0.16, 0.16).translate(0, -0.08, 0.04).rotateZ(Math.atan2(c[1] - a[1], c[0] - a[0]));
       put(b, f, blk, (a[0] + c[0]) / 2, (a[1] + c[1]) / 2, 0, trim);
     }
+    if (g.footScroll === false) continue;
     const edge = side < 0 ? g.x0 : g.x1, foot = edge - side * 0.45;
     put(b, f, new T.CylinderGeometry(0.28, 0.28, 0.2, 12).rotateX(Math.PI / 2).translate(0, 0, 0.06), foot, g.shoulderY + 0.32, 0, trim);
     ringSlab(b, f, foot, g.shoulderY + 0.32, 0.12, 0.2, 0.3, trim, -0.04, 10);
