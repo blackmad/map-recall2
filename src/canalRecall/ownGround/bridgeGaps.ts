@@ -225,11 +225,11 @@ export function deckRelation(decks: readonly DeckSurface[], flats: readonly (rea
     if (x < x0 - reach || x > x1 + reach || y < y0 - reach || y > y1 + reach) continue;
     const at = signedLocate(d, x, y);
     if (at.s < d.span[0] - 1 || at.s > d.span[1] + 1) continue;
-    const id = p.family === 'way-deck' ? `way:${p.id}` : p.id, hw = at.halfWidth, abs = Math.abs(at.lateral);
+    const id = p.family === 'way-deck' || p.family === 'dry-way-deck' ? `way:${p.id}` : p.id, hw = at.halfWidth, abs = Math.abs(at.lateral);
     if (abs <= hw && at.s >= d.span[0] && at.s <= d.span[1]) return id;
     const sideHw = p.sides ? p.sides[at.lateral >= 0 ? 0 : 1] : hw;
     if (abs <= Math.max(hw, sideHw)) side ??= `side:${id}`;
-    else if (p.family !== 'way-deck' && abs <= Math.max(hw, ...(p.sides ?? [])) + CLAIM_CLEAR_M) claim ??= `claim:${id}`;
+    else if (p.family !== 'way-deck' && p.family !== 'dry-way-deck' && abs <= Math.max(hw, ...(p.sides ?? [])) + CLAIM_CLEAR_M) claim ??= `claim:${id}`;
   }
   for (const r of flats) if (inRing(r, x, y)) return 'flat';
   return side ?? claim;
@@ -269,6 +269,8 @@ export const EDGE_MIN_WIDEN_M = 0.3;
 export const EDGE_NO_OUTLINE_M = 2;
 /** Along the deck a station takes the widest edge within this (one skewed polygon corner does not notch the parapet). */
 export const EDGE_SPREAD_M = 1;
+/** How far a dry way deck's edges may reach for the survey's deck polygon (polish 2026-11-02: Nieuwe Leeuwarderweg 7042467 was a strip on a wide viaduct). */
+export const DRY_EDGE_M = 20;
 
 /**
  * The riding half-widths left and right of a deck's road line from the road survey's deck-level polygons (h ≥ 1,
@@ -277,7 +279,14 @@ export const EDGE_SPREAD_M = 1;
  * plus a step, or the half-width plus EDGE_NO_OUTLINE_M. Never narrower than the half-width; outside the span the
  * half-width. Null when no station widens by EDGE_MIN_WIDEN_M (the deck is left as it was).
  */
-export function surveyDeckEdges(p: Pick<DeckProfile, 'x' | 'y' | 's' | 'halfWidth' | 'deck' | 'sides'>, onDeckPoly: (x: number, y: number) => boolean): { left: Float64Array; right: Float64Array } | null {
+/**
+ * `groundRoad` (polish 2026-11-02, integrator: the widened deck covered road past the deck, Leidsestraat BRU0043,
+ * Gooiseweg): past the half-width a point where `groundRoad` holds (the survey draws it at ground level and not at
+ * deck level; for a dry way deck also nearer another one) stops the walk, so a widened deck never reaches over
+ * ground-level street, path or quay. `capM`: the walk reaches at least this far (a dry way deck takes the
+ * survey's whole deck polygon, DRY_EDGE_M).
+ */
+export function surveyDeckEdges(p: Pick<DeckProfile, 'x' | 'y' | 's' | 'halfWidth' | 'deck' | 'sides'>, onDeckPoly: (x: number, y: number) => boolean, groundRoad?: (x: number, y: number) => boolean, capM = 0): { left: Float64Array; right: Float64Array } | null {
   const n = p.s.length, raw = [new Float64Array(n), new Float64Array(n)], hwMax = Math.max(...p.halfWidth);
   let widened = false;
   for (let i = 0; i < n; i++) {
@@ -286,9 +295,13 @@ export function surveyDeckEdges(p: Pick<DeckProfile, 'x' | 'y' | 's' | 'halfWidt
     if (p.s[i] < p.deck[0] || p.s[i] > p.deck[1]) continue;
     const a = Math.max(0, i - 1), b = Math.min(n - 1, i + 1), dx = p.x[b] - p.x[a], dy = p.y[b] - p.y[a], l = Math.hypot(dx, dy) || 1, nx = -dy / l, ny = dx / l;
     for (const side of [0, 1] as const) {
-      const sg = side === 0 ? 1 : -1, cap = p.sides ? Math.max(hw, p.sides[side]) + EDGE_STEP_M : hwMax + EDGE_NO_OUTLINE_M;
+      const sg = side === 0 ? 1 : -1, cap = Math.max(capM, p.sides ? Math.max(hw, p.sides[side]) + EDGE_STEP_M : hwMax + EDGE_NO_OUTLINE_M);
       let last = -1;
-      for (let t = 0; t <= cap + 1e-9 && t - Math.max(0, last) <= EDGE_GAP_M; t += EDGE_STEP_M) if (onDeckPoly(p.x[i] + nx * sg * t, p.y[i] + ny * sg * t)) last = t;
+      for (let t = 0; t <= cap + 1e-9 && t - Math.max(0, last) <= EDGE_GAP_M; t += EDGE_STEP_M) {
+        const x = p.x[i] + nx * sg * t, y = p.y[i] + ny * sg * t;
+        if (groundRoad && t > hw && groundRoad(x, y)) break;
+        if (onDeckPoly(x, y)) last = t;
+      }
       if (last >= 0) raw[side][i] = Math.max(hw, Math.min(cap, last + EDGE_STEP_M / 2));
     }
   }

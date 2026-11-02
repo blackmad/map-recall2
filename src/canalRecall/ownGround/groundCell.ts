@@ -604,7 +604,8 @@ export function buildCell(input: CellInput): BuiltCell {
     const xs = deck.profile.x, ys = deck.profile.y, mid = xs.length >> 1;
     const { reach } = deckReach(deck, overWater);
     for (const f of floatingEnds(deck, overWater, surface.height, surface.ground)) bridges.floating.push(`${deck.profile.id}:${f.end}:${f.reason}`);
-    add('deckBody', measuredDeckBody(deck, surface.ground, openWater, waterZAt(input.waterAround, xs[mid], ys[mid], CANAL_WATER_Z), surface.height, bridges.decks, lod === 0, reach, clip ? deckWidths(deck, overWater) : undefined, crossing), 'deck');
+    // A dry way deck (bridgeGaps step 3) has no kit: the survey draws its surface, the structure under it is not modelled.
+    if (deck.profile.family !== 'dry-way-deck') add('deckBody', measuredDeckBody(deck, surface.ground, openWater, waterZAt(input.waterAround, xs[mid], ys[mid], CANAL_WATER_Z), surface.height, bridges.decks, lod === 0, reach, clip ? deckWidths(deck, overWater) : undefined, crossing), 'deck');
     const covered = roadsOnDeck(deck);
     if (covered && roads) roads.decksCovered++;
     const top = measuredDeckTop(deck, surface.height, lod === 0 ? 4 : 2, lod === 0 ? 2 : 4, reach, covered ? (deck.profile.edges ? deckWidths(deck, overWater) : { left: deck.profile.halfWidth, right: deck.profile.halfWidth }) : clip ? deckWidths(deck, overWater, onBridgeBand) : undefined, covered && input.deckEnds !== false ? COVERED_TOP_SINK_M : 0);

@@ -403,5 +403,10 @@ export function dryWayDeckProfile(w: WayDeckInput, dry: (x: number, y: number) =
   const p = wayDeckProfile(`OSM${w.id}`, w.name, w.points, w.halfWidth, dry, claimed, undefined, true);
   if (!p) return null;
   p.water = null;
+  p.family = DRY_WAY_DECK;
   return p;
 }
+/** A dry way deck's family: no kit body or parapets (the survey draws its surface; the structure under it is not modelled, polish 2026-11-02: the pieces' parapets read as hairlines at the bus station). */
+export const DRY_WAY_DECK = 'dry-way-deck';
+/** A way deck of either kind (over water, or dry). */
+export const isWayDeckFamily = (f: string): boolean => f === 'way-deck' || f === DRY_WAY_DECK;

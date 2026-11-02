@@ -403,6 +403,8 @@ export class RoadIndex extends SurfaceIndex<RoadSurface> {
   onRoad(x: number, y: number, bridge = false): boolean { const c = this.classAt(x, y, bridge); return c === null || c === 'carriage' || c === 'parking'; }
   /** Is any deck polygon (h ≥ 1) under the point? */
   onDeck(x: number, y: number): boolean { return this.findAll(x, y).some(k => this.records[k].h >= 1); }
+  /** A ground-level (h 0) polygon (of one of `classes`, when given) here (bridgeGaps: a widened deck or a dry way deck stops at it). */
+  onGround(x: number, y: number, classes?: ReadonlySet<string>): boolean { return this.findAll(x, y).some(k => this.records[k].h === 0 && (!classes || classes.has(this.drawClass(k)))); }
   /**
    * Is a band's station covered by the survey: any polygon under the point is the surface there (a footway band over
    * a rijbaan, a carriageway band over a voetpad: the survey wins), except a cycle band over a rijbaan or parkeervlak,
