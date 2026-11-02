@@ -1,0 +1,125 @@
+{
+ "schemaVersion": 1,
+ "id": "kiosk-haringhandel-jonk",
+ "signature": [
+  "jonk-logo",
+  "roller-shutters",
+  "dark-roof-slab"
+ ],
+ "walls": [
+  {
+   "tag": "v-338",
+   "bearing": 338,
+   "lengthM": 3.75,
+   "centre": [
+    4.890787,
+    52.368854
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-06-30_05-16-46_00991",
+   "capturedAt": "2025-06-30",
+   "checked": true,
+   "note": "North (front) shutter face, 6 m (artifacts/kiosks/jonk/contact.jpg top right).",
+   "items": [
+    {
+     "id": "jonk-logo",
+     "kind": "sign",
+     "where": "painted on the shutters of the north, east and west faces: a fish outline over JONK in tan capitals, Volendammer / Haringhandel below",
+     "approxSizeM": [
+      1.1,
+      0.9
+     ],
+     "plan": "simplified",
+     "how": "flat 5x7 pixel capitals JONK / VOLENDAMMER / HARINGHANDEL in tan on each logo face; the fish outline is not drawn (the kit has no curved line art)",
+     "seenIn": "recording_2025-06-30_05-16-46_00991; recording_2025-06-30_05-16-46_00992; recording_2025-06-30_05-16-46_00994; recording_2025-06-30_05-16-46_00987"
+    },
+    {
+     "id": "roller-shutters",
+     "kind": "other",
+     "where": "full-height dark green roller shutters on every face, closed",
+     "approxSizeM": [
+      3.75,
+      2.7
+     ],
+     "plan": "modelled",
+     "how": "kioskKit louvre panels from the ground (slats every 9 cm)",
+     "seenIn": "recording_2025-06-30_05-16-46_00991; recording_2025-06-30_05-16-46_00994"
+    },
+    {
+     "id": "dark-roof-slab",
+     "kind": "canopy",
+     "where": "thick dark flat roof slab overhanging about 12 cm all round",
+     "approxSizeM": [
+      3.99,
+      0.36
+     ],
+     "plan": "modelled",
+     "how": "kioskKit flat roof, 0.36 m slab, 3DBAG top 3.12 m",
+     "seenIn": "recording_2025-06-30_05-16-46_00991; recording_2025-06-30_05-16-46_00992"
+    },
+    {
+     "id": "waste-bins",
+     "kind": "other",
+     "where": "two grey wheelie bins against the south-east corner",
+     "approxSizeM": [
+      0.6,
+      1.1
+     ],
+     "plan": "skipped",
+     "skip": {
+      "reason": "temporary",
+      "note": "movable bins, not part of the kiosk"
+     },
+     "seenIn": "recording_2025-06-30_05-16-46_00994"
+    }
+   ]
+  },
+  {
+   "tag": "v-068",
+   "bearing": 68,
+   "lengthM": 3.21,
+   "centre": [
+    4.890787,
+    52.368854
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-06-30_05-16-46_00994",
+   "capturedAt": "2025-06-30",
+   "checked": true,
+   "note": "East face from the north-east (zoom.jpg middle): shutter with the logo.",
+   "items": []
+  },
+  {
+   "tag": "v-248",
+   "bearing": 248,
+   "lengthM": 3.21,
+   "centre": [
+    4.890787,
+    52.368854
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-06-30_05-16-46_00987",
+   "capturedAt": "2025-06-30",
+   "checked": true,
+   "note": "West face from 24 m (zoom.jpg bottom): shutter with the logo.",
+   "items": []
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  },
+  {
+   "name": "BAG pand 0363100012247454",
+   "url": "https://api.data.amsterdam.nl/v1/bag/panden/0363100012247454/",
+   "licence": "CC0"
+  },
+  {
+   "name": "OpenStreetMap node 9860683033 (Haringhandel Jonk)",
+   "url": "https://www.openstreetmap.org/node/9860683033",
+   "licence": "ODbL"
+  }
+ ]
+}

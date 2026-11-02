@@ -316,6 +316,16 @@
       "version": "574b157a352ab8cc",
       "dateSource": "asset-update"
     },
+    "blauwbrug": {
+      "updatedAt": "2026-11-01T20:56:18.057Z",
+      "version": "5d46d293ff21dc52",
+      "dateSource": "asset-update"
+    },
+    "blauwbrug.lod1": {
+      "updatedAt": "2026-11-01T20:56:19.427Z",
+      "version": "fa9c29077159076e",
+      "dateSource": "asset-update"
+    },
     "blauwe-theehuis": {
       "updatedAt": "2026-10-20T10:14:46.834Z",
       "version": "2c76f7ae7905c362",
@@ -399,6 +409,16 @@
     "buiksloterkerk.lod1": {
       "updatedAt": "2026-10-23T20:23:30.325Z",
       "version": "139940f7c6a7248d",
+      "dateSource": "asset-update"
+    },
+    "bungehuis": {
+      "updatedAt": "2026-11-01T20:55:51.081Z",
+      "version": "0e987c34023206c1",
+      "dateSource": "asset-update"
+    },
+    "bungehuis.lod1": {
+      "updatedAt": "2026-11-01T21:31:01.002Z",
+      "version": "ccb85dabb0e05652",
       "dateSource": "asset-update"
     },
     "cafe-kobalt": {
@@ -561,6 +581,16 @@
       "version": "cd736700f02d6b29",
       "dateSource": "asset-update"
     },
+    "cromhouthuizen": {
+      "updatedAt": "2026-11-01T20:52:52.814Z",
+      "version": "7bc87d5fa8600fd2",
+      "dateSource": "asset-update"
+    },
+    "cromhouthuizen.lod1": {
+      "updatedAt": "2026-11-01T20:52:54.109Z",
+      "version": "57dbd0f58be3afde",
+      "dateSource": "asset-update"
+    },
     "d-admiraal": {
       "updatedAt": "2026-10-25T08:03:40.844Z",
       "version": "a75d487e29023373",
@@ -639,6 +669,16 @@
     "de-bloem.lod1": {
       "updatedAt": "2026-10-25T08:13:16.642Z",
       "version": "e859596fb2b3e791",
+      "dateSource": "asset-update"
+    },
+    "de-burcht": {
+      "updatedAt": "2026-11-01T20:52:40.722Z",
+      "version": "1768ecdf65823a24",
+      "dateSource": "asset-update"
+    },
+    "de-burcht.lod1": {
+      "updatedAt": "2026-11-01T20:35:02.389Z",
+      "version": "dcb25bb849589b00",
       "dateSource": "asset-update"
     },
     "de-dokwerker": {
@@ -814,6 +854,16 @@
     "dutch-resistance-museum.lod1": {
       "updatedAt": "2026-10-23T20:23:30.348Z",
       "version": "d449449e8618816a",
+      "dateSource": "asset-update"
+    },
+    "eerste-openluchtschool": {
+      "updatedAt": "2026-11-01T21:17:32.733Z",
+      "version": "8ae0d4a333f2b7e6",
+      "dateSource": "asset-update"
+    },
+    "eerste-openluchtschool.lod1": {
+      "updatedAt": "2026-11-01T22:03:30.753Z",
+      "version": "665e65871775af0d",
       "dateSource": "asset-update"
     },
     "el-tawheed": {
@@ -1736,6 +1786,41 @@
       "version": "945c9cd79d323a1b",
       "dateSource": "asset-update"
     },
+    "kiosk-dr-falafel": {
+      "updatedAt": "2026-11-01T21:02:03.507Z",
+      "version": "17f2e42d4e64d442",
+      "dateSource": "asset-update"
+    },
+    "kiosk-dumplings-nassauplein": {
+      "updatedAt": "2026-11-01T21:02:12.833Z",
+      "version": "36adbd968bd4343c",
+      "dateSource": "asset-update"
+    },
+    "kiosk-frens-haringhandel": {
+      "updatedAt": "2026-11-01T20:58:00.530Z",
+      "version": "db74db64ab26dd66",
+      "dateSource": "asset-update"
+    },
+    "kiosk-haringhandel-jonk": {
+      "updatedAt": "2026-11-01T21:52:31.347Z",
+      "version": "b68028f1297758a3",
+      "dateSource": "asset-update"
+    },
+    "kiosk-mr-blou": {
+      "updatedAt": "2026-11-01T20:46:16.390Z",
+      "version": "0ea91558d1c12314",
+      "dateSource": "asset-update"
+    },
+    "kiosk-museumplein": {
+      "updatedAt": "2026-11-01T22:05:47.503Z",
+      "version": "3e9f09f39cf1c3ad",
+      "dateSource": "asset-update"
+    },
+    "kiosk-stubbes-haring": {
+      "updatedAt": "2026-11-01T21:06:39.078Z",
+      "version": "cc9757ac107752de",
+      "dateSource": "asset-update"
+    },
     "kleine-komedie": {
       "updatedAt": "2026-10-20T10:11:50.547Z",
       "version": "d525f9e9ea4b80ec",
@@ -1921,6 +2006,16 @@
       "version": "26e7b51bf6d57c1f",
       "dateSource": "asset-update"
     },
+    "magere-brug": {
+      "updatedAt": "2026-11-01T20:58:47.721Z",
+      "version": "e8c99d8e2714c970",
+      "dateSource": "asset-update"
+    },
+    "magere-brug.lod1": {
+      "updatedAt": "2026-11-01T22:06:06.666Z",
+      "version": "85ae1fb5509363ca",
+      "dateSource": "asset-update"
+    },
     "magna-plaza": {
       "updatedAt": "2026-10-20T10:11:50.528Z",
       "version": "01f1b99a123fc64a",
@@ -1939,6 +2034,16 @@
     "mama-baranka.lod1": {
       "updatedAt": "2026-10-14T04:53:42.587Z",
       "version": "24c26183d26c021a",
+      "dateSource": "asset-update"
+    },
+    "marnixbad": {
+      "updatedAt": "2026-11-01T20:34:47.982Z",
+      "version": "109f06ad4434b460",
+      "dateSource": "asset-update"
+    },
+    "marnixbad.lod1": {
+      "updatedAt": "2026-11-01T20:34:48.948Z",
+      "version": "16dbb78af2d9e023",
       "dateSource": "asset-update"
     },
     "max-euwe-centrum": {
@@ -3281,6 +3386,16 @@
       "version": "b2b06e539545f012",
       "dateSource": "asset-update"
     },
+    "waldorf-astoria-herengracht": {
+      "updatedAt": "2026-11-01T21:09:17.238Z",
+      "version": "761e8a608fc3a710",
+      "dateSource": "asset-update"
+    },
+    "waldorf-astoria-herengracht.lod1": {
+      "updatedAt": "2026-11-01T21:12:01.141Z",
+      "version": "b02257761c40db73",
+      "dateSource": "asset-update"
+    },
     "walloon-church": {
       "updatedAt": "2026-10-20T10:13:04.908Z",
       "version": "990963ba8d8f3d92",
@@ -3444,6 +3559,16 @@
     "zevenlandenhuizen.lod1": {
       "updatedAt": "2026-10-23T20:23:30.757Z",
       "version": "51e658d84a7670f1",
+      "dateSource": "asset-update"
+    },
+    "zuiderbad": {
+      "updatedAt": "2026-11-01T21:08:47.407Z",
+      "version": "a7c82c954243af02",
+      "dateSource": "asset-update"
+    },
+    "zuiderbad.lod1": {
+      "updatedAt": "2026-11-01T21:08:43.845Z",
+      "version": "881a91c9c88d0d2a",
       "dateSource": "asset-update"
     },
     "zuiderkerk": {

@@ -43,6 +43,8 @@ export interface Stat {
   note: string;
   /** Files it was counted from. */
   sources: string[];
+  /** Distinct models behind the count, where the count is of placed instances (street furniture). */
+  models?: number;
 }
 
 /**
@@ -92,6 +94,9 @@ export function countStats(): Record<string, Stat> {
     .filter(a => POSTCARD_KINDS.has(a.kind ?? '') && a.geometry);
   const tours = readJson<{ tours: unknown[] }>(`${EXTRACT}/tours.json`).tours.length;
   const animals = readJson<{ animals: { name: string }[] }>('public/canal-drive/models/artis-animals/index.json').animals;
+  // Street furniture (lane #170): instances the ride places, from the catalogue the export script writes.
+  const furniture = existsSync(path.join(ROOT, 'public/canal-drive/street-furniture/catalogue.json'))
+    ? readJson<{ instances: number; models: unknown[] }>('public/canal-drive/street-furniture/catalogue.json') : { instances: 0, models: [] };
 
   return {
     buildingsModelled: {
@@ -139,6 +144,12 @@ export function countStats(): Record<string, Stat> {
       sources: [`${EXTRACT}/boundaries.json`],
     },
     tours: { count: tours, note: 'Themed tours with a tour stamp for finishing.', sources: [`${EXTRACT}/tours.json`] },
+    streetFurniture: {
+      count: furniture.instances,
+      models: furniture.models.length,
+      note: 'Street furniture placed in the ride from the open registers (underground-container tops, lamp posts, abris, advertising columns, bike hoops), one instance per object; `models` is how many furniture models draw them.',
+      sources: ['public/canal-drive/street-furniture/catalogue.json', `${EXTRACT}/street-furniture/index.json`],
+    },
     zooAnimals: {
       count: animals.length,
       note: 'ARTIS zoo animals placed in the ride, one miniature per species at its enclosure.',

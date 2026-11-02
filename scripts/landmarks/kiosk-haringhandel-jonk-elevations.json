@@ -1,0 +1,15 @@
+{
+ "id": "kiosk-haringhandel-jonk",
+ "countedBy": "kiosk lane (opus), 2026-11-01: shut kiosk, no glazing",
+ "facades": [
+  {
+   "name": "north (front)",
+   "bearing": 338,
+   "photo": "artifacts/kiosks/jonk/p-2025-06-30-b306-d6.jpg",
+   "rows": [],
+   "columns": 0,
+   "symmetric": true,
+   "gables": 0
+  }
+ ]
+}

@@ -72,7 +72,7 @@
     "check:osm-under-models": "node --import tsx scripts/check-osm-under-models.ts",
     "test:osm-under-models": "node --import tsx --test src/canalRecall/landmarks/osmUnderModels.test.ts src/canalRecall/landmarks/surveyedFrame.test.ts",
     "check:landmark-abutters": "node --import tsx scripts/check-landmark-abutters.ts",
-    "test:landmark-kits": "node --import tsx --test scripts/landmarks/pavilion-kit.test.ts scripts/landmarks/centraal-ij-canopy.test.ts",
+    "test:landmark-kits": "node --import tsx --test scripts/landmarks/pavilion-kit.test.ts scripts/landmarks/centraal-ij-canopy.test.ts src/canalRecall/landmarks/holedWall.test.ts src/canalRecall/landmarks/bridgeFrame.test.ts src/canalRecall/kiosks/kioskKit.test.ts src/canalRecall/ownGround/bespokeBridges.test.ts",
     "test:landmark-abutters": "node --import tsx --test src/canalRecall/landmarks/landmarkAbutters.test.ts",
     "check:noorderkerk-corner-houses": "node --import tsx scripts/check-noorderkerk-corner-houses.ts",
     "build:canal-building-types": "esbuild src/canalRecall/buildingTypes/browser.ts --bundle --format=iife --global-name=CanalRecallBuildingTypes --outfile=public/canal-drive/js/building-types.bundle.js --sourcemap=external --minify",

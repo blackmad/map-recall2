@@ -1936,5 +1936,59 @@
   "buildVersion": 2,
   "bytes": 54100,
   "triangles": 2285
+ },
+ "zuiderbad": {
+  "sourceHash": "a7c82c954243af02",
+  "buildVersion": 2,
+  "bytes": 83392,
+  "triangles": 4389
+ },
+ "marnixbad": {
+  "sourceHash": "109f06ad4434b460",
+  "buildVersion": 2,
+  "bytes": 35048,
+  "triangles": 1010
+ },
+ "bungehuis": {
+  "sourceHash": "0e987c34023206c1",
+  "buildVersion": 2,
+  "bytes": 96024,
+  "triangles": 4833
+ },
+ "cromhouthuizen": {
+  "sourceHash": "7bc87d5fa8600fd2",
+  "buildVersion": 2,
+  "bytes": 65408,
+  "triangles": 3130
+ },
+ "waldorf-astoria-herengracht": {
+  "sourceHash": "761e8a608fc3a710",
+  "buildVersion": 2,
+  "bytes": 86320,
+  "triangles": 4325
+ },
+ "de-burcht": {
+  "sourceHash": "1768ecdf65823a24",
+  "buildVersion": 2,
+  "bytes": 53620,
+  "triangles": 1985
+ },
+ "eerste-openluchtschool": {
+  "sourceHash": "8ae0d4a333f2b7e6",
+  "buildVersion": 2,
+  "bytes": 29304,
+  "triangles": 1221
+ },
+ "blauwbrug": {
+  "sourceHash": "5d46d293ff21dc52",
+  "buildVersion": 2,
+  "bytes": 75900,
+  "triangles": 3910
+ },
+ "magere-brug": {
+  "sourceHash": "e8c99d8e2714c970",
+  "buildVersion": 2,
+  "bytes": 46764,
+  "triangles": 2275
  }
 }

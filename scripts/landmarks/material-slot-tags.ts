@@ -56,6 +56,11 @@ export const MATERIAL_SLOT_TAGS: Readonly<Record<string, Readonly<Record<string,
     canopyGlass: {slot: 'glass', why: 'glass balustrades, the lattice canopies and the cafe storey'},
     dark: {slot: 'frame', why: 'dark window frames, rails, mullions and door leaves'},
   },
+  'magere-brug': {
+    green: {slot: 'paint', why: 'white-painted timber leaves, portals and balance beams (Magere brug amsterdam.jpg, Magerebrug.jpg); palette name only, the override colour is the measured white'},
+    copper: {slot: 'paint', why: 'dark-painted iron rods, struts, railings and lantern posts'},
+    bronze: {slot: 'paint', why: 'tarred timber bascule piers, fender piles and the counterweight box'},
+  },
 };
 
 /** The declared slot for a palette name in a model, if any. */

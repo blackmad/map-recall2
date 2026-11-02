@@ -1,0 +1,82 @@
+{
+ "id": "kiosk-dr-falafel",
+ "generatedBy": "node --import tsx scripts/landmarks/kiosk-footprint.ts --id=kiosk-dr-falafel --pand=0363100012243757 --near=52.3683327,4.8766878 --front-near=286",
+ "source": {
+  "kind": "bag-pand",
+  "id": "0363100012243757",
+  "url": "https://api.data.amsterdam.nl/v1/bag/panden/0363100012243757/",
+  "licence": "CC0 (BAG)",
+  "properties": {
+   "id": "NL.IMBAG.Pand.0363100012243757",
+   "tier": 3,
+   "minHeight": 0,
+   "height": 3.73,
+   "roofShape": "flat",
+   "eaves": 3.6,
+   "roof": 1,
+   "year": 2016,
+   "osm": [
+    "w685877394"
+   ]
+  }
+ },
+ "anchor": [
+  4.8766915,
+  52.3683325
+ ],
+ "ringLngLat": [
+  [
+   4.876723,
+   52.36835
+  ],
+  [
+   4.87668,
+   52.368358
+  ],
+  [
+   4.87666,
+   52.368315
+  ],
+  [
+   4.876703,
+   52.368307
+  ],
+  [
+   4.876723,
+   52.36835
+  ]
+ ],
+ "localEastSouthMetres": [
+  [
+   2.141,
+   -1.948
+  ],
+  [
+   -0.782,
+   -2.839
+  ],
+  [
+   -2.141,
+   1.948
+  ],
+  [
+   0.782,
+   2.839
+  ]
+ ],
+ "areaM2": 15.2,
+ "rect": {
+  "centre": [
+   0,
+   0
+  ],
+  "widthM": 5.035,
+  "depthM": 3.055,
+  "frontBearing": 285.85
+ },
+ "notes": [
+  "The BAG pand outline is the roof slab seen from above (BAG records the top-view outline): the west panorama shows the slab overhanging the glazed walls at both ends, so the walls (4.5 x 2.5 m) stand 0.27 m inside it.",
+  "Heights from the west wall rectified at 50 px/m (recording_2025-06-30_05-16-46_00533): frame 2.63 m, slab underside 2.77 m, top 3.1 m. 3DBAG gives 3.73 m above its 1.8 m NAP ground; the photo wins (3DBAG roof points here include the overhanging tree canopy).",
+  "OSM: node 6428422982 (Dr. Falafel, Nassaukade 900, source BAG) and building way w685877394 on the same pand."
+ ]
+}

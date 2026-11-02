@@ -1,0 +1,145 @@
+{
+ "id": "kiosk-museumplein",
+ "generatedBy": "node --import tsx scripts/landmarks/kiosk-footprint.ts --id=kiosk-museumplein --pand=0363100012151388 --near=52.3592452,4.8831427",
+ "source": {
+  "kind": "bag-pand",
+  "id": "0363100012151388",
+  "url": "https://api.data.amsterdam.nl/v1/bag/panden/0363100012151388/",
+  "licence": "CC0 (BAG)",
+  "properties": {
+   "id": "NL.IMBAG.Pand.0363100012151388",
+   "tier": 3,
+   "minHeight": 0,
+   "height": 3.16,
+   "eaves": 3,
+   "roof": 3,
+   "year": 2000,
+   "osm": [
+    "w277104686"
+   ]
+  }
+ },
+ "anchor": [
+  4.8831423,
+  52.3592532
+ ],
+ "ringLngLat": [
+  [
+   4.883178,
+   52.359271
+  ],
+  [
+   4.883171,
+   52.359269
+  ],
+  [
+   4.883168,
+   52.359273
+  ],
+  [
+   4.883101,
+   52.359255
+  ],
+  [
+   4.883104,
+   52.359251
+  ],
+  [
+   4.883097,
+   52.359249
+  ],
+  [
+   4.883107,
+   52.359236
+  ],
+  [
+   4.883113,
+   52.359237
+  ],
+  [
+   4.883117,
+   52.359233
+  ],
+  [
+   4.883184,
+   52.359251
+  ],
+  [
+   4.883181,
+   52.359256
+  ],
+  [
+   4.883187,
+   52.359257
+  ],
+  [
+   4.883178,
+   52.359271
+  ]
+ ],
+ "localEastSouthMetres": [
+  [
+   2.425,
+   -1.985
+  ],
+  [
+   1.949,
+   -1.763
+  ],
+  [
+   1.745,
+   -2.208
+  ],
+  [
+   -2.81,
+   -0.204
+  ],
+  [
+   -2.606,
+   0.241
+  ],
+  [
+   -3.082,
+   0.464
+  ],
+  [
+   -2.402,
+   1.911
+  ],
+  [
+   -1.994,
+   1.8
+  ],
+  [
+   -1.722,
+   2.245
+  ],
+  [
+   2.833,
+   0.241
+  ],
+  [
+   2.629,
+   -0.315
+  ],
+  [
+   3.037,
+   -0.427
+  ]
+ ],
+ "areaM2": 15,
+ "rect": {
+  "centre": [
+   0.014,
+   0.017
+  ],
+  "widthM": 6.027,
+  "depthM": 2.68,
+  "frontBearing": 336.25
+ },
+ "notes": [
+  "OSM node 6657813385 \"Kiosk:Rembrandt Van Gogh\" sits 0.9 m from the centre of BAG pand 0363100012151388 (2000, 15 m2, 3DBAG eaves 3.0 m, top 3.16 m, OSM w277104686); a poster on the kiosk reads KIOSK REMBRANDT MUSEUMPLEIN AMSTERDAM.",
+  "The BAG ring has small corner notches (12 vertices); walls 5.9 x 2.6 m fill the minimum rectangle, flush (no roof overhang in the panoramas).",
+  "The caf\u00e9 terrace with the red awning 15-20 m east (seen in _00735/_00727) is a different business."
+ ]
+}

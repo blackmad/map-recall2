@@ -1,0 +1,29 @@
+{
+ "id": "magere-brug",
+ "countedBy": "lane landmarks-bridges-20261101 (#175, opus) from the rectified city boat panoramas before the model was rendered: south face TMX7316010203-000355_pano_0000_000633 (artifacts/bridges/BRU0242/photo-p.jpg), north face TMX7316010203-000355_pano_0000_000625 (photo-m.jpg). No glazed openings, so rows and window axes are null; both faces read symmetric about the bascule (four arches a side, one portal pair) with no gable. Gables are the silhouette peaks: the two lantern posts near the banks and the two bascule portal frames, which meet with a notch of sky between the balance-beam tips. A tall striped signal pole near each bank end stands behind the railing; whether it is on the bridge or the quay cannot be told from the photo, so it is not counted.",
+ "facades": [
+  {
+   "name": "south",
+   "bearing": 163,
+   "photo": "artifacts/bridges/BRU0242/photo-p.jpg",
+   "rows": [],
+   "symmetric": true,
+   "gables": 4,
+   "openings": [
+    "glass"
+   ]
+  },
+  {
+   "name": "north",
+   "bearing": 343,
+   "photo": "artifacts/bridges/BRU0242/photo-m.jpg",
+   "rows": [],
+   "symmetric": true,
+   "gables": 4,
+   "openings": [
+    "glass"
+   ]
+  }
+ ],
+ "note": "openings are 'glass' only: a bridge face has no windows. On these models 'dark' is the spandrel slot and roundel recesses, the shield pales and the iron work, which the photos show as ornament, not openings."
+}

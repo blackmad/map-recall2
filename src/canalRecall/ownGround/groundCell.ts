@@ -48,6 +48,7 @@ import { sourceTracing, triangleSources, type GroundSource } from './sourceTrace
 import type { Rect } from './groundStore.js';
 import { RAIL_VIADUCTS, viaductMesh, type ViaductBuild } from './railViaducts.js';
 import { cutMedianQuads, cutMeshes, cutRing, type Cut } from './tunnels.js';
+import { bespokeBridge } from './bespokeBridges.js';
 
 export type GroundLayer =
   | 'land' | 'park' | 'wood' | 'square' | 'parking'
@@ -91,7 +92,7 @@ export interface BuiltCell {
 }
 
 /** What the cell's bridges drew: deck tops, railing posts, piers, arches, abutments, movable frames (lane report, named regressions). */
-export interface BridgeStats { tops: number; railed: number; railingPosts: number; piers: number; arches: number; abutments: number; frames: number; decks: DeckBuildInfo[]; flat: { id: string; railingPosts: number; frames: number }[]; /** Deck ends that float (decks.ts floatingEnds; flat footprints still over water past the reach): "id:end:reason". */ floating: string[] }
+export interface BridgeStats { tops: number; railed: number; railingPosts: number; piers: number; arches: number; abutments: number; frames: number; decks: DeckBuildInfo[]; flat: { id: string; railingPosts: number; frames: number }[]; /** Deck ends that float (decks.ts floatingEnds; flat footprints still over water past the reach): "id:end:reason". */ floating: string[]; /** Decks whose body a bespoke landmark model draws (bespokeBridges.ts): the kit drew only their top. */ bespoke?: string[] }
 
 export interface CellInput {
   key: string;
@@ -604,10 +605,14 @@ export function buildCell(input: CellInput): BuiltCell {
     const xs = deck.profile.x, ys = deck.profile.y, mid = xs.length >> 1;
     const { reach } = deckReach(deck, overWater);
     for (const f of floatingEnds(deck, overWater, surface.height, surface.ground)) bridges.floating.push(`${deck.profile.id}:${f.end}:${f.reason}`);
-    add('deckBody', measuredDeckBody(deck, surface.ground, openWater, waterZAt(input.waterAround, xs[mid], ys[mid], CANAL_WATER_Z), surface.height, bridges.decks, lod === 0, reach, clip ? deckWidths(deck, overWater) : undefined, crossing), 'deck');
+    const bespoke = !!bespokeBridge(deck.profile.id);
+    if (bespoke) (bridges.bespoke ??= []).push(deck.profile.id);
+    else add('deckBody', measuredDeckBody(deck, surface.ground, openWater, waterZAt(input.waterAround, xs[mid], ys[mid], CANAL_WATER_Z), surface.height, bridges.decks, lod === 0, reach, clip ? deckWidths(deck, overWater) : undefined, crossing), 'deck');
+    // A bespoke model (bespokeBridges.ts) carries its own deck slab to its parapets: the top keeps to the road's half-width,
+    // so the register outline's sides (BRU0236: 4 m north of the OSM/BGT bridge) never overhang the model's face.
     const covered = roadsOnDeck(deck);
     if (covered && roads) roads.decksCovered++;
-    const top = measuredDeckTop(deck, surface.height, lod === 0 ? 4 : 2, lod === 0 ? 2 : 4, reach, covered ? (deck.profile.edges ? deckWidths(deck, overWater) : { left: deck.profile.halfWidth, right: deck.profile.halfWidth }) : clip ? deckWidths(deck, overWater, onBridgeBand) : undefined, covered && input.deckEnds !== false ? COVERED_TOP_SINK_M : 0);
+    const top = measuredDeckTop(deck, surface.height, lod === 0 ? 4 : 2, lod === 0 ? 2 : 4, reach, bespoke ? { left: deck.profile.halfWidth, right: deck.profile.halfWidth } : covered ? (deck.profile.edges ? deckWidths(deck, overWater) : { left: deck.profile.halfWidth, right: deck.profile.halfWidth }) : clip ? deckWidths(deck, overWater, onBridgeBand) : undefined, covered && input.deckEnds !== false ? COVERED_TOP_SINK_M : 0);
     if (top.indices.length) { add('deckTop', top, 'deck'); bridges.tops++; }
   }
   for (const d of bridges.decks) { bridges.railingPosts += d.railingPosts; bridges.piers += d.piers; bridges.arches += d.arches; bridges.abutments += d.abutments; if (d.railingPosts) bridges.railed++; }
@@ -620,14 +625,17 @@ export function buildCell(input: CellInput): BuiltCell {
     const axis = footprintAxis(ring, through).u, movingThrough = movableLines.filter(l => through.includes(l));
     const { top, body, railingPosts, floating } = flatDeckBody(ring, surface.height, overWater, 0.02, 0.45, { railings: lod === 0, axis, movableWays: movingThrough, crossing });
     if (floating) bridges.floating.push(`${input.flatDeckMeta?.[k]?.id ?? 'flat'}:${floating} end(s) over water past ${DECK_REACH_MAX_M} m`);
-    add('deckTop', top, 'deck'); add('deckBody', body, 'deck');
-    bridges.tops++; bridges.railingPosts += railingPosts; if (railingPosts) bridges.railed++;
+    const bespoke = bespokeBridge(input.flatDeckMeta?.[k]?.id);
+    if (bespoke) (bridges.bespoke ??= []).push(input.flatDeckMeta![k].id);
+    add('deckTop', top, 'deck'); if (!bespoke) add('deckBody', body, 'deck');
+    const posts = bespoke ? 0 : railingPosts;
+    bridges.tops++; bridges.railingPosts += posts; if (posts) bridges.railed++;
     let frames = 0;
-    if (input.flatDeckMeta?.[k]?.movable) {
+    if (input.flatDeckMeta?.[k]?.movable && !bespoke) {
       const frame = movableFrame(ring, surface.height, through, 0.02, lod === 0, movableLeaves(ring, axis, movingThrough));
       add('deckBody', frame.mesh, 'deck'); frames = frame.units; bridges.frames += frames;
     }
-    bridges.flat.push({ id: input.flatDeckMeta?.[k]?.id ?? '', railingPosts, frames });
+    bridges.flat.push({ id: input.flatDeckMeta?.[k]?.id ?? '', railingPosts: posts, frames });
   });
 
   // Rail viaducts over streets (railViaducts.ts, issue #57): the deck over the passage, the abutment walls and their

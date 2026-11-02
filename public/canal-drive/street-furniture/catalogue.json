@@ -1,0 +1,202 @@
+{
+ "version": 1,
+ "category": "street-furniture",
+ "generator": "scripts/street-furniture/export-models.ts",
+ "extract": "public/data/extracts/amsterdam/street-furniture",
+ "extractRetrievedAt": "2026-11-01T20:10:17.348Z",
+ "instances": 135140,
+ "models": [
+  {
+   "id": "container",
+   "name": "Underground container top",
+   "kind": "container",
+   "category": "street-furniture",
+   "subtypes": "rest, papier, glas, textiel, gft; BGT afvalbak columns as unknown",
+   "modelUrl": "./models/street-furniture/container.glb",
+   "triangles": 52,
+   "glbBytes": 6516,
+   "instances": 13259,
+   "source": "Gemeente Amsterdam huishoudelijkafval register (active, UNDERGROUND) + BGT bak/afvalbak",
+   "measured": [
+    "column 1.22 m high (1.25 m rest, 1.19 m papier)",
+    "column faces 0.66 x 0.76 m",
+    "floor plate 1.45 m square",
+    "lift handle 0.30 m",
+    "body NCS 7000 grey, glass lid yellow, paper lid blue"
+   ],
+   "prior": [
+    "GFT green and textile red lids",
+    "column set 0.15 m behind the plate centre"
+   ],
+   "photo": {
+    "panoId": "recording_2025-06-18_08-56-14_01425",
+    "heading": 338,
+    "distanceM": 6.74,
+    "recordId": "afval-102570",
+    "thumbnail": "https://api.data.amsterdam.nl/panorama/thumbnail/recording_2025-06-18_08-56-14_01425/?heading=338&width=600&aspect=1.25&horizon=0.4",
+    "licence": "Gemeente Amsterdam panoramas, CC BY 4.0"
+   }
+  },
+  {
+   "id": "lamp-lantern",
+   "name": "Canal lantern",
+   "kind": "lamp",
+   "category": "street-furniture",
+   "subtypes": "lantern (Centrum quiet streets and quays)",
+   "modelUrl": "./models/street-furniture/lamp-lantern.glb",
+   "triangles": 74,
+   "glbBytes": 8876,
+   "instances": 6311,
+   "source": "BGT paal/lichtmast; style by stadsdeel Centrum and road class (a prior)",
+   "measured": [
+    "4.09 m to the finial",
+    "lantern 0.70 x 0.45 m, its bottom at 3.16 m",
+    "shaft 0.11 m",
+    "Amsterdam maroon post"
+   ],
+   "prior": [
+    "base flutes and ladder bar simplified"
+   ],
+   "photo": {
+    "panoId": "recording_2025-06-16_04-42-37_03213",
+    "heading": 321,
+    "distanceM": 7.79,
+    "recordId": "bgt-G0363.332362d06b3648abbece87d34bc4ab9b",
+    "thumbnail": "https://api.data.amsterdam.nl/panorama/thumbnail/recording_2025-06-16_04-42-37_03213/?heading=321&width=600&aspect=1.25&horizon=0.4",
+    "licence": "Gemeente Amsterdam panoramas, CC BY 4.0"
+   }
+  },
+  {
+   "id": "lamp-pole",
+   "name": "Hooked lamp pole",
+   "kind": "lamp",
+   "category": "street-furniture",
+   "subtypes": "pole (everywhere else; height by road class)",
+   "modelUrl": "./models/street-furniture/lamp-pole.glb",
+   "triangles": 92,
+   "glbBytes": 10836,
+   "instances": 113661,
+   "source": "BGT paal/lichtmast",
+   "measured": [
+    "7.6 m to the curl on a residential Pijp street",
+    "arm reach 1.0 m",
+    "bowl 0.36 m",
+    "light grey"
+   ],
+   "prior": [
+    "height by road class: 5 m paths to 10 m primary roads",
+    "straight-arm modern poles drawn as the hook"
+   ],
+   "photo": {
+    "panoId": "recording_2025-09-29_07-24-00_00797",
+    "heading": 284,
+    "distanceM": 7.76,
+    "recordId": "bgt-G0363.3976ec9ccc8549d7ad9f679605241811",
+    "thumbnail": "https://api.data.amsterdam.nl/panorama/thumbnail/recording_2025-09-29_07-24-00_00797/?heading=284&width=600&aspect=1.25&horizon=0.4",
+    "licence": "Gemeente Amsterdam panoramas, CC BY 4.0"
+   }
+  },
+  {
+   "id": "bin",
+   "name": "Litter bin",
+   "kind": "bin",
+   "category": "street-furniture",
+   "subtypes": "-",
+   "modelUrl": "./models/street-furniture/bin.glb",
+   "triangles": 56,
+   "glbBytes": 6932,
+   "instances": 0,
+   "source": "none: no open register places Amsterdam litter bins (BGT afvalbak rows are container columns)",
+   "measured": [
+    "1.11 x 0.57 m beside the Nassaukade abri"
+   ],
+   "prior": [
+    "octagonal drum, domed lid"
+   ],
+   "photo": {
+    "panoId": "2025_10_02_06_52_49_00943",
+    "heading": 88,
+    "distanceM": 7.75,
+    "recordId": "bgt-G0363.1a551ad5ace6464cacf11049a76751d4",
+    "thumbnail": "https://api.data.amsterdam.nl/panorama/thumbnail/2025_10_02_06_52_49_00943/?heading=88&width=600&aspect=1.25&horizon=0.4",
+    "licence": "Gemeente Amsterdam panoramas, CC BY 4.0"
+   }
+  },
+  {
+   "id": "bike-rack",
+   "name": "Bike hoop (nietje)",
+   "kind": "bike-rack",
+   "category": "street-furniture",
+   "subtypes": "fietsenrek",
+   "modelUrl": "./models/street-furniture/bike-rack.glb",
+   "triangles": 40,
+   "glbBytes": 5196,
+   "instances": 535,
+   "source": "BGT straatmeubilair/fietsenrek (107 points city-wide)",
+   "measured": [],
+   "prior": [
+    "0.75 x 0.70 m hoop",
+    "five hoops 0.9 m apart per point"
+   ],
+   "photo": null
+  },
+  {
+   "id": "abri",
+   "name": "Tram and bus shelter (abri)",
+   "kind": "abri",
+   "category": "street-furniture",
+   "subtypes": "abri",
+   "modelUrl": "./models/street-furniture/abri.glb",
+   "triangles": 86,
+   "glbBytes": 10160,
+   "instances": 1133,
+   "source": "BGT straatmeubilair/abri",
+   "measured": [
+    "2.47 m high",
+    "4.11 m long (two bays)",
+    "ad panel 1.27 x 1.78 m"
+   ],
+   "prior": [
+    "depth 1.4 m",
+    "glass left open (rails only)"
+   ],
+   "photo": {
+    "panoId": "2025_10_02_06_52_49_00943",
+    "heading": 88,
+    "distanceM": 7.75,
+    "recordId": "bgt-G0363.1a551ad5ace6464cacf11049a76751d4",
+    "thumbnail": "https://api.data.amsterdam.nl/panorama/thumbnail/2025_10_02_06_52_49_00943/?heading=88&width=600&aspect=1.25&horizon=0.4",
+    "licence": "Gemeente Amsterdam panoramas, CC BY 4.0"
+   }
+  },
+  {
+   "id": "ad-column",
+   "name": "Advertising column (reclamezuil)",
+   "kind": "ad-column",
+   "category": "street-furniture",
+   "subtypes": "reclamezuil",
+   "modelUrl": "./models/street-furniture/ad-column.glb",
+   "triangles": 90,
+   "glbBytes": 10584,
+   "instances": 241,
+   "source": "BGT straatmeubilair/reclamezuil",
+   "measured": [
+    "4.6-4.8 m to the finial",
+    "body 1.9-2.0 m across",
+    "cornice band and roof 0.87 m",
+    "grey-green roof"
+   ],
+   "prior": [
+    "poster tone per column from six sampled posters"
+   ],
+   "photo": {
+    "panoId": "recording_2025-06-16_03-46-32_00582",
+    "heading": 6,
+    "distanceM": 6.63,
+    "recordId": "bgt-G0363.36dae26f0b4143d19e2e55b0b92045b3",
+    "thumbnail": "https://api.data.amsterdam.nl/panorama/thumbnail/recording_2025-06-16_03-46-32_00582/?heading=6&width=600&aspect=1.25&horizon=0.4",
+    "licence": "Gemeente Amsterdam panoramas, CC BY 4.0"
+   }
+  }
+ ]
+}

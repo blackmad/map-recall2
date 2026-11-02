@@ -6,7 +6,7 @@
  *
  * Rows: live bespoke landmarks (manualModels, held ones excluded), ordinary-catalogue models (hand-built and
  * `kind: large` recipes; street-survey rows are not landmarks), landmark kits (landmarkKits.ts, minus kits whose name a
- * bespoke model already carries), and factory-queue rows. Review kinds, strictest first:
+ * bespoke model already carries), factory-queue rows, and street-furniture models (listed, never counted). Review kinds, strictest first:
  *   strip-review      a verdict in the factory queue or landmark-reviews.json (this programme's record)
  *   likeness-gate     installed through install-large.ts with reviewState likeness-pass | likeness-inferred
  *   legacy-gallery    bespoke landmarks and hand-built ordinary models installed after the integrator's gallery look
@@ -26,7 +26,7 @@ const norm = (s: string) => s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,
 
 export type ReviewKind = 'strip-review' | 'likeness-gate' | 'legacy-gallery' | 'none';
 export interface CensusRow {
-  key: string; name: string | null; tier: 'bespoke' | 'ordinary' | 'largeRecipe' | 'landmarkKit'; pands: string[];
+  key: string; name: string | null; tier: 'bespoke' | 'ordinary' | 'largeRecipe' | 'landmarkKit' | 'streetFurniture'; pands: string[];
   namedPoi: boolean; rideVisible: boolean; held: boolean; review: ReviewKind; reviewDate?: string; counts: boolean; countsStrict: boolean;
 }
 
@@ -88,6 +88,12 @@ export function census(): {headline: number; strict: number; rows: CensusRow[]; 
     const review: ReviewKind = sr ? 'strip-review' : 'none';
     rows.push({key: `kit:${k.name}`, name: k.name, tier: 'landmarkKit', pands: [], namedPoi: true, rideVisible: false, held: false, review, reviewDate: sr?.date, counts: review !== 'none', countsStrict: review !== 'none', ...(hand.has(k.name) ? {} : {})});
   }
+  // 4. street furniture (buildingCategory 'street-furniture', lane #170): listed so the table shows the category, never
+  // a building: no pands, not a named POI, never counted in the headline.
+  try {
+    for (const m of read('public/canal-drive/street-furniture/catalogue.json').models ?? [])
+      rows.push({key: `furniture:${m.id}`, name: m.name ?? m.id, tier: 'streetFurniture', pands: [], namedPoi: false, rideVisible: false, held: false, review: 'none', counts: false, countsStrict: false});
+  } catch { /* no furniture catalogue */ }
   const byTier: Record<string, {models: number; counts: number; strict: number; unreviewed: number}> = {};
   const byReview: Record<string, number> = {};
   for (const r of rows) {
@@ -101,8 +107,8 @@ export function census(): {headline: number; strict: number; rows: CensusRow[]; 
 if (process.argv[1]?.endsWith('landmarks/census.ts')) {
   const c = census();
   console.log(`census: ${c.headline} reviewed named-or-visible buildings (strict, this programme's reviews + likeness gate only: ${c.strict}); target 1000`);
-  console.log('  tier          models  counts  strict  unreviewed');
-  for (const [t, v] of Object.entries(c.byTier)) console.log(`  ${t.padEnd(13)} ${String(v.models).padStart(6)} ${String(v.counts).padStart(7)} ${String(v.strict).padStart(7)} ${String(v.unreviewed).padStart(11)}`);
+  console.log('  tier            models  counts  strict  unreviewed');
+  for (const [t, v] of Object.entries(c.byTier)) console.log(`  ${t.padEnd(15)} ${String(v.models).padStart(6)} ${String(v.counts).padStart(7)} ${String(v.strict).padStart(7)} ${String(v.unreviewed).padStart(11)}`);
   console.log(`  by review ${JSON.stringify(c.byReview)}`);
   const cost = censusCost(read('public/canal-drive/landmark-factory-queue.json').items);
   console.log(`factory cost: ${cost.turnsPerReviewed === null ? 'no rows with turns yet' : `${cost.turnsPerReviewed} turns per reviewed building (${cost.turnsReviewed} turns over ${cost.reviewedWithTurns} reviewed rows)`}; ${cost.reviewed} rows with a verdict, ${cost.turnsAllRows} turns in all; by model ${JSON.stringify(cost.byModel)}`);

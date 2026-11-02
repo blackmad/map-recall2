@@ -1,7 +1,7 @@
 [
  {
   "slug": "apollobuurt",
-  "buildings": 5,
+  "buildings": 6,
   "kits": 0,
   "facts": 25,
   "origins": 64,
@@ -194,7 +194,7 @@
  },
  {
   "slug": "grachtengordel",
-  "buildings": 50,
+  "buildings": 52,
   "kits": 0,
   "facts": 151,
   "origins": 91,
@@ -293,7 +293,7 @@
  },
  {
   "slug": "jordaan",
-  "buildings": 20,
+  "buildings": 22,
   "kits": 0,
   "facts": 96,
   "origins": 140,
@@ -433,7 +433,7 @@
  },
  {
   "slug": "museumkwartier",
-  "buildings": 34,
+  "buildings": 36,
   "kits": 0,
   "facts": 69,
   "origins": 84,
@@ -540,7 +540,7 @@
  },
  {
   "slug": "oud-zuid",
-  "buildings": 49,
+  "buildings": 52,
   "kits": 0,
   "facts": 158,
   "origins": 286,
@@ -586,7 +586,7 @@
  },
  {
   "slug": "plantage",
-  "buildings": 10,
+  "buildings": 11,
   "kits": 0,
   "facts": 50,
   "origins": 18,
@@ -835,7 +835,7 @@
  },
  {
   "slug": "van-lennepbuurt",
-  "buildings": 7,
+  "buildings": 8,
   "kits": 0,
   "facts": 22,
   "origins": 32,
@@ -888,7 +888,7 @@
  },
  {
   "slug": "weesperbuurt",
-  "buildings": 14,
+  "buildings": 15,
   "kits": 0,
   "facts": 63,
   "origins": 42,

@@ -45,7 +45,10 @@ export interface CanalhouseOpening {
    * frameDepthM+.015 and be <=1.5m; excludes shaped heads and projections. */
   recessM?:number;
   /** Source-observed loggia glazing on lateral cavity faces and ceiling finish. */
-  recessReturns?:{glazedSides:('left'|'right')[];soffitSurface?:'wall'|'door'|'trim'};
+  recessReturns?:{glazedSides:('left'|'right')[];soffitSurface?:'wall'|'door'|'trim';
+    /** Door reveal (buildingRecipe/doorReveal.ts): linings two stacked openings share, the cavity's jamb/sill finish,
+     * the steps on its floor and a portiek's side-wall doors. Absent = byte-identical (canalhouseOpeningRecess.ts). */
+    omit?:('sill'|'soffit')[];jambSurface?:'wall'|'stone'|'trim';sillSurface?:'wall'|'stone';steps?:{count:number;riseM:number};sideDoors?:{widthM:number;heightM:number}};
   /** Source-selected narrow sash bars can differ from the outer jamb width. */
   mullionWidthM?: number;
   /** Explicit observed grille segments in opening-relative coordinates. */
@@ -526,7 +529,9 @@ export function compileCanalHouseRecipe(recipe: CanalHouseRecipe): CompiledCanal
         // Work in the facade plane, honoring bounded existing frontage returns.
         const inverse=facade.matrix.clone().invert(),start=outward+(plan?.maxInsetM??0)+EPS,back=recess.cutDepthM;
         if(back<=start)throw Error('Opening recess does not reach its native host');
-        for(const x of [o.leftM,o.leftM+o.widthM/2,o.leftM+o.widthM])for(const depth of [start,back]){
+        // A grouped frontage is straight only within its tolerance: the cavity's mouth is sampled that far behind the chord.
+        const slack=elevation.endEdgeIndex!==undefined?Math.min((back-start)/2,elevation.frontageToleranceM?read(elevation.frontageToleranceM,`${elevation.id}/frontageToleranceM`):.03):0;
+        for(const x of [o.leftM,o.leftM+o.widthM/2,o.leftM+o.widthM])for(const depth of [start+slack,back]){
           const p=new T.Vector3(x,0,-depth).applyMatrix4(facade.matrix);
           if(!contains([p.x,p.z]))throw Error('Opening recess escapes native footprint or courtyard');
         }
@@ -535,7 +540,7 @@ export function compileCanalHouseRecipe(recipe: CanalHouseRecipe): CompiledCanal
           // Clip boundary segments against the strict cavity interior. This
           // also catches small courtyards missed by corner-only containment.
           let lo=0,hi=1;
-          for(const [v,d,min,max] of [[p.x,q.x-p.x,o.leftM+EPS,o.leftM+o.widthM-EPS],[p.z,q.z-p.z,-back+EPS,-start-EPS]]){
+          for(const [v,d,min,max] of [[p.x,q.x-p.x,o.leftM+EPS,o.leftM+o.widthM-EPS],[p.z,q.z-p.z,-back+EPS,-start-slack-EPS]]){
             if(Math.abs(d)<EPS){if(v<min||v>max){hi=-1;break;}}
             else{const a=(min-v)/d,b=(max-v)/d;lo=Math.max(lo,Math.min(a,b));hi=Math.min(hi,Math.max(a,b));}
           }
@@ -652,7 +657,7 @@ export function compileCanalHouseRecipe(recipe: CanalHouseRecipe): CompiledCanal
       if(recess){
         for(const child of facade.children.slice(firstOpeningChild))if(child instanceof T.Mesh)child.geometry.translate(0,0,-recess.depthM);
         for(const r of recess.returns){
-          box(r.x,r.y,r.w,r.h,recess.depthM,-recess.depthM/2,r.surface,`${name}/recess/${r.id}`);
+          box(r.x,r.y,r.w,r.h,r.d??recess.depthM,r.z??-recess.depthM/2,r.surface,`${name}/recess/${r.id}`);
           if(r.surface==='glass'){
             const f=Math.min(o.trimWidthM,.07),d=recess.depthM;
             for(const y of [r.y,r.y+r.h-f])box(r.x,y,r.w,f,d,-d/2,frameSurface,`${name}/recess/${r.id}/horizontal-frame`);
@@ -1184,7 +1189,7 @@ export function compileCanalHouseRecipe(recipe: CanalHouseRecipe): CompiledCanal
         const native=child.parent===group&&child.userData.surface==='wall'&&(child.name.startsWith('shell/')||child.name.startsWith('roof/step-wall'));
         const crown=child.parent===facade&&child.name===`crown/${recipe.house.gable.value}`;
         if(!native&&!crown)return;
-        const cut=cutNativeFacadeAperture(child.geometry,inverse.clone().multiply(child.matrixWorld),{leftM:o.leftM,bottomM:o.bottomM,widthM:o.widthM,heightM:o.heightM,depthM});
+        const cut=cutNativeFacadeAperture(child.geometry,inverse.clone().multiply(child.matrixWorld),{leftM:o.leftM,bottomM:o.bottomM,widthM:o.widthM,heightM:o.heightM,depthM},o.recessReturns?.sillSurface!==undefined||o.recessReturns?.omit!==undefined);
         if(cut.geometry!==child.geometry){child.geometry.dispose();child.geometry=cut.geometry;}removed+=cut.removedAreaM2;
       });
       if(removed<.001)throw Error('Declared opening recess has no matching native host wall');

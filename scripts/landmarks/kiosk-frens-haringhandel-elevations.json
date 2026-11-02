@@ -1,0 +1,18 @@
+{
+ "id": "kiosk-frens-haringhandel",
+ "countedBy": "kiosk lane (opus) from b183-crop.png, 2026-11-01; NOT a blind count. Ribbon rule: each latticed face is glazing above board divided by mullions under 0.3 m = one opening",
+ "facades": [
+  {
+   "name": "south-east end",
+   "bearing": 141,
+   "photo": "artifacts/kiosks/frens/b183-crop.png",
+   "rows": [
+    1
+   ],
+   "columns": 1,
+   "symmetric": true,
+   "gables": 1,
+   "note": "gables 1: the grey roof plant box and steel duct stand above the flat roof line in the photo (b183-crop.png top left); first written 0 by mistake."
+  }
+ ]
+}

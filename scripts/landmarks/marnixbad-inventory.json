@@ -1,0 +1,517 @@
+{
+ "schemaVersion": 1,
+ "id": "marnixbad",
+ "pand": "0363100012169393",
+ "brief": "scripts/landmarks/marnixbad-brief.md",
+ "signature": [
+  "w-aluminium-box",
+  "e-logo-wave",
+  "w-pool-glazing",
+  "e-ribbon-window",
+  "n-curtain-wall",
+  "l-curtain-grid"
+ ],
+ "walls": [
+  {
+   "tag": "w01-22",
+   "bearing": 22,
+   "lengthM": 32.4,
+   "centre": [
+    4.8784655,
+    52.3781625
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000790_pano_0000_003856",
+   "capturedAt": "2018-06-13",
+   "checked": true,
+   "items": [
+    {
+     "id": "n-curtain-wall",
+     "kind": "window-shape",
+     "where": "lower half of the whole front, 0-8.6 m, from 0.8 m in from each corner",
+     "approxSizeM": [
+      30.2,
+      8.6
+     ],
+     "plan": "modelled",
+     "how": "marnixbad-builder.ts curtainWall(): glass field with vertical mullions on a 1.25-1.6 m irregular rhythm (photo px read) and transoms at 4.7 and 6.4 m",
+     "seenIn": "TMX7316010203-000790_pano_0000_003856"
+    },
+    {
+     "id": "n-entrance-recess",
+     "kind": "canopy",
+     "where": "east (Marnixstraat) end of the curtain wall, ground storey",
+     "approxSizeM": [
+      3.2,
+      3.6
+     ],
+     "plan": "simplified",
+     "how": "dark recessed box behind the curtain-wall line at the west end, glass doors in it",
+     "seenIn": "TMX7316010203-000790_pano_0000_003856"
+    },
+    {
+     "id": "n-window-graphics",
+     "kind": "lettering",
+     "where": "frosted letters on the glazing: fysiotherapie, sauna, beauty, jacuzzi, fitness, dakterras, massage, sento",
+     "approxSizeM": [
+      28,
+      0.5
+     ],
+     "plan": "skipped",
+     "skip": {
+      "reason": "temporary",
+      "note": "tenant (Sento spa) window film, changes with the tenant"
+     },
+     "seenIn": "TMX7316010203-000790_pano_0000_003856"
+    }
+   ],
+   "note": "North block, Marnixplein front (facade-ring edge 17). 14.0 m brick box; the lower half is one curtain wall."
+  },
+  {
+   "tag": "w02-112",
+   "bearing": 112,
+   "lengthM": 31.4,
+   "centre": [
+    4.8784875,
+    52.3777985
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-06-17_08-04-10_02201",
+   "capturedAt": "2025-06-17",
+   "checked": true,
+   "items": [
+    {
+     "id": "e-logo-wave",
+     "kind": "sign",
+     "where": "upper right (north end), 12.0-14.0 m, 24.6-30.0 m from the south end",
+     "approxSizeM": [
+      5.4,
+      2.0
+     ],
+     "plan": "modelled",
+     "how": "marnixbad-builder.ts logo(): four overlapping ribbon waves (orange, pink, blue, green) as extruded S-curves standing 8 cm off the brick",
+     "seenIn": "recording_2025-06-17_08-04-10_02201"
+    },
+    {
+     "id": "e-logo-lettering",
+     "kind": "lettering",
+     "where": "\"hetmarnix\" under the wave, 10.6-11.6 m",
+     "approxSizeM": [
+      5.2,
+      1.0
+     ],
+     "plan": "modelled",
+     "how": "raisedLettering \"hetmarnix\", \"het\" orange and \"marnix\" dark grey",
+     "seenIn": "recording_2025-06-17_08-04-10_02201"
+    },
+    {
+     "id": "e-ribbon-window",
+     "kind": "window-shape",
+     "where": "one long ribbon window 6.0-8.4 m, 1.35-29.6 m from the south end",
+     "approxSizeM": [
+      28.3,
+      2.4
+     ],
+     "plan": "modelled",
+     "how": "glass field in a dark frame with 13 thin mullions",
+     "seenIn": "recording_2025-06-17_08-04-10_02201"
+    },
+    {
+     "id": "e-cantilever-soffit",
+     "kind": "canopy",
+     "where": "brick volume oversails the ground storey, soffit at 5.0 m with downlights",
+     "approxSizeM": [
+      31.4,
+      1.2
+     ],
+     "plan": "modelled",
+     "how": "ground-storey glazing set 1.2 m back under the brick; soffit is the underside of the upper box",
+     "seenIn": "recording_2025-06-17_08-04-10_02201"
+    },
+    {
+     "id": "e-frosted-ground",
+     "kind": "window-shape",
+     "where": "ground storey 0-5.0 m: frosted white glass on a 1.6 m mullion grid",
+     "approxSizeM": [
+      30,
+      5
+     ],
+     "plan": "modelled",
+     "how": "pale frosted glass panels with frame mullions, recessed 1.2 m",
+     "seenIn": "recording_2025-06-17_08-04-10_02201"
+    },
+    {
+     "id": "e-brick-joint",
+     "kind": "other",
+     "where": "one horizontal joint line in the brick at 11.9 m",
+     "approxSizeM": [
+      31.4,
+      0.05
+     ],
+     "plan": "skipped",
+     "skip": {
+      "reason": "too-small",
+      "note": "a mortar movement joint, invisible at ride distance"
+     },
+     "seenIn": "recording_2025-06-17_08-04-10_02201"
+    },
+    {
+     "id": "e-ramp",
+     "kind": "other",
+     "where": "access ramp with steel railing climbing north along the base, low brick plinth",
+     "approxSizeM": [
+      28,
+      1.2
+     ],
+     "plan": "simplified",
+     "how": "low brick plinth strip 0.7 m along the glazing",
+     "seenIn": "recording_2025-06-17_08-04-10_02201"
+    }
+   ],
+   "note": "Big block, Marnixstraat front (facade-ring edge 7). Brick box cantilevered over a recessed frosted-glass ground storey; one ribbon window; the logo. Commons \"Amsterdam - Het Marnix II.JPG\" (Picasdre, CC BY 3.0, 2012) shows the whole front."
+  },
+  {
+   "tag": "w03-292",
+   "bearing": 292,
+   "lengthM": 31.4,
+   "centre": [
+    4.8779905,
+    52.3779185
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000199_pano_0001_000171",
+   "capturedAt": "2017-03-10",
+   "checked": true,
+   "items": [
+    {
+     "id": "w-aluminium-box",
+     "kind": "other",
+     "where": "upper volume 5.0-14.6 m, whole front, silver vertical-ribbed cladding in three bands",
+     "approxSizeM": [
+      31.4,
+      9.6
+     ],
+     "plan": "modelled",
+     "how": "marnixbad-builder.ts ribbed(): pale cladding with vertical ribs on 0.6 m, two horizontal joint strips at 8.2 and 11.4 m",
+     "seenIn": "TMX7316010203-000199_pano_0001_000171"
+    },
+    {
+     "id": "w-pool-glazing",
+     "kind": "window-shape",
+     "where": "ground storey 0-5.0 m, full width, clear glass with slim mullions on an irregular 1.2-2.0 m rhythm",
+     "approxSizeM": [
+      30,
+      5
+     ],
+     "plan": "modelled",
+     "how": "glass curtain set 1.5 m back under the box, steel mullions",
+     "seenIn": "TMX7316010203-000199_pano_0001_000171"
+    },
+    {
+     "id": "w-cantilever",
+     "kind": "canopy",
+     "where": "the box oversails the glazing by about 1.5 m, thin soffit edge",
+     "approxSizeM": [
+      31.4,
+      0.3
+     ],
+     "plan": "modelled",
+     "how": "glazing recessed under the full-footprint box",
+     "seenIn": "TMX7316010203-000199_pano_0001_000171"
+    }
+   ],
+   "note": "Big block, Singelgracht front (facade-ring edge 5). The cantilever over the water: a silver ribbed-aluminium box over a fully glazed pool storey (Wikipedia nl Marnixbad: \"de karakteristieke uitkraging over de Singelgracht\")."
+  },
+  {
+   "tag": "w04-202",
+   "bearing": 202,
+   "lengthM": 23.4,
+   "centre": [
+    4.878243,
+    52.3777055
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002050_pano_0001_000306",
+   "capturedAt": "2021-03-19",
+   "checked": true,
+   "items": [
+    {
+     "id": "s-dark-band",
+     "kind": "window-shape",
+     "where": "dark louvred/glazed band 5.9-8.5 m, 3.7-18.9 m of the crop",
+     "approxSizeM": [
+      15.2,
+      2.6
+     ],
+     "plan": "modelled",
+     "how": "dark recessed panel band",
+     "seenIn": "TMX7316010203-002050_pano_0001_000306"
+    },
+    {
+     "id": "s-service-doors",
+     "kind": "other",
+     "where": "dark steel service doors/louvres 0-2.7 m under the band",
+     "approxSizeM": [
+      15.2,
+      2.7
+     ],
+     "plan": "simplified",
+     "how": "dark panel 0-2.7 m",
+     "seenIn": "TMX7316010203-002050_pano_0001_000306"
+    },
+    {
+     "id": "s-cage",
+     "kind": "other",
+     "where": "steel mesh bin cage left of the doors",
+     "approxSizeM": [
+      8,
+      2
+     ],
+     "plan": "skipped",
+     "skip": {
+      "reason": "temporary",
+      "note": "free-standing bin enclosure, not the building"
+     },
+     "seenIn": "TMX7316010203-002050_pano_0001_000306"
+    }
+   ],
+   "note": "Big block, south front east part (facade-ring edge 6, 13-36 m from the west end). Plain brick."
+  },
+  {
+   "tag": "w05-112",
+   "bearing": 112,
+   "lengthM": 11.4,
+   "centre": [
+    4.8786565,
+    52.3780615
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001179_pano_0000_004500",
+   "capturedAt": "2019-05-13",
+   "checked": true,
+   "items": [
+    {
+     "id": "ne-stair-window",
+     "kind": "window-shape",
+     "where": "lower right (north), 1.0-4.1 m, 5.7-9.8 m from the south end, white reveal",
+     "approxSizeM": [
+      4.1,
+      3.1
+     ],
+     "plan": "modelled",
+     "how": "white-framed window with glass sunk into the brick",
+     "seenIn": "TMX7316010203-001179_pano_0000_004500"
+    },
+    {
+     "id": "ne-poster",
+     "kind": "sign",
+     "where": "banner frame at 3.6 m left of the window",
+     "approxSizeM": [
+      2.7,
+      2.2
+     ],
+     "plan": "skipped",
+     "skip": {
+      "reason": "temporary",
+      "note": "advertising poster"
+     },
+     "seenIn": "TMX7316010203-001179_pano_0000_004500"
+    }
+   ],
+   "note": "North block, Marnixstraat end (facade-ring edge 16). Brick with one deep stair window."
+  },
+  {
+   "tag": "w06-292",
+   "bearing": 292,
+   "lengthM": 11.4,
+   "centre": [
+    4.8782135,
+    52.3781685
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000199_pano_0001_000167",
+   "capturedAt": "2017-03-10",
+   "checked": true,
+   "items": [
+    {
+     "id": "nw-terrace-wall",
+     "kind": "other",
+     "where": "dark brick wall 0-2.8 m along the canal with round portholes, steel railing on top",
+     "approxSizeM": [
+      11.4,
+      3.9
+     ],
+     "plan": "modelled",
+     "how": "dark plinth band with porthole discs and a railing (posts + rails) on a 1.6 m deep terrace platform in front of the brick wall",
+     "seenIn": "TMX7316010203-000199_pano_0001_000167"
+    },
+    {
+     "id": "nw-gezond-sign",
+     "kind": "sign",
+     "where": "\"gezond\" grand café lettering at 4.5 m on the brick",
+     "approxSizeM": [
+      3.5,
+      0.6
+     ],
+     "plan": "skipped",
+     "skip": {
+      "reason": "temporary",
+      "note": "tenant sign (Grand Café Gezond)"
+     },
+     "seenIn": "TMX7316010203-000199_pano_0001_000167"
+    }
+   ],
+   "note": "North block, canal side (facade-ring edge 1). Brick above a dark brick canal-side terrace wall with portholes and a railing."
+  },
+  {
+   "tag": "w07-202",
+   "bearing": 202,
+   "lengthM": 11.3,
+   "centre": [
+    4.8780065,
+    52.3777635
+   ],
+   "evidence": "photo",
+   "panoId": "b_20241217_0841_Track12_Sphere_00018",
+   "capturedAt": "2024-12-17",
+   "checked": true,
+   "items": [
+    {
+     "id": "sw-glazing",
+     "kind": "window-shape",
+     "where": "ground storey 0-4.5 m, 0-13 m from the west corner, slim mullions",
+     "approxSizeM": [
+      13,
+      4.5
+     ],
+     "plan": "modelled",
+     "how": "glass field sunk into the brick, mullions on 1.3 m",
+     "seenIn": "TMX7316010203-002923_pano_0005_000069"
+    },
+    {
+     "id": "sw-site-cabin",
+     "kind": "other",
+     "where": "timber-clad cabin in front of the wall",
+     "approxSizeM": [
+      6,
+      3
+     ],
+     "plan": "skipped",
+     "skip": {
+      "reason": "temporary",
+      "note": "2024 site cabin, absent in 2022"
+     },
+     "seenIn": "b_20241217_0841_Track12_Sphere_00018"
+    }
+   ],
+   "note": "Big block, south front west part (facade-ring edge 6, 0-13 m from the west end). Brick above a glazed ground storey (2022 view; a 2024 site cabin stands in front)."
+  },
+  {
+   "tag": "w08-292",
+   "bearing": 292,
+   "lengthM": 10.1,
+   "centre": [
+    4.878174,
+    52.3780745
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000199_pano_0001_000169",
+   "capturedAt": "2017-03-10",
+   "checked": true,
+   "items": [
+    {
+     "id": "l-curtain-grid",
+     "kind": "window-shape",
+     "where": "whole front above the terrace wall, 2.8-11.3 m: curtain wall on a 2.4 m x 1.3 m grid",
+     "approxSizeM": [
+      10.1,
+      8.5
+     ],
+     "plan": "modelled",
+     "how": "glass with mullions on 2.4 m and transoms on 1.3 m",
+     "seenIn": "TMX7316010203-000199_pano_0001_000169"
+    },
+    {
+     "id": "l-terrace-wall",
+     "kind": "other",
+     "where": "dark brick terrace wall 0-2.8 m with portholes, railing",
+     "approxSizeM": [
+      10.1,
+      3.9
+     ],
+     "plan": "modelled",
+     "how": "same plinth as nw-terrace-wall",
+     "seenIn": "TMX7316010203-000199_pano_0001_000169"
+    }
+   ],
+   "note": "Glass link between the north block and the big block, canal side (facade-ring edge 3)."
+  },
+  {
+   "tag": "w09-23",
+   "bearing": 23,
+   "lengthM": 5.3,
+   "centre": [
+    4.878111,
+    52.378041
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000199_pano_0001_000167",
+   "capturedAt": "2017-03-10",
+   "checked": true,
+   "items": [
+    {
+     "id": "nn-white-panels",
+     "kind": "other",
+     "where": "white flat cladding panels, 1.2 x 1.5 m grid",
+     "approxSizeM": [
+      5.3,
+      14.6
+     ],
+     "plan": "simplified",
+     "how": "white wall face with recessed joint lines on the stub and above the link roof",
+     "seenIn": "TMX7316010203-000199_pano_0001_000167"
+    },
+    {
+     "id": "roof-plant",
+     "kind": "other",
+     "where": "roof plant boxes and louvre housing on the big-block roof",
+     "approxSizeM": [
+      3,
+      1.8
+     ],
+     "plan": "simplified",
+     "how": "two plant boxes at the 3DBAG 15.9-16.5 m patches",
+     "seenIn": "TMX7316010203-000199_pano_0001_000167"
+    }
+   ],
+   "note": "Big block north stub west of the link (facade-ring edge 4), seen obliquely: white flat-panel cladding, plant louvres on the roof edge."
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  },
+  {
+   "name": "Wikimedia Commons: Amsterdam - Het Marnix II.JPG (Picasdre, 2012-03-28)",
+   "url": "https://commons.wikimedia.org/wiki/File:Amsterdam_-_Het_Marnix_II.JPG",
+   "licence": "CC BY 3.0"
+  },
+  {
+   "name": "Wikipedia nl: Marnixbad (Mecanoo, 2006; cantilever over the Singelgracht)",
+   "url": "https://nl.wikipedia.org/wiki/Marnixbad",
+   "licence": "CC BY-SA 4.0"
+  },
+  {
+   "name": "BAG pand 0363100012169393 (PDOK BAG WFS)",
+   "url": "https://service.pdok.nl/lv/bag/wfs/v2_0",
+   "licence": "CC0"
+  },
+  {
+   "name": "3DBAG LoD2.2 NL.IMBAG.Pand.0363100012169393",
+   "url": "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012169393",
+   "licence": "CC BY 4.0"
+  }
+ ]
+}

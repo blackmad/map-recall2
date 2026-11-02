@@ -113,12 +113,22 @@
   "door-left": {
    "doorBay": 0,
    "basement": "none",
-   "note": "Cornelis Anthoniszstraat 66, Balthasar Floriszstraat 24: the house door with a transom on the left axis, two windows"
+   "note": "Cornelis Anthoniszstraat 66, Balthasar Floriszstraat 24: the house door with a transom on the left axis, two windows. Door reveal: Anthonisz row (164470) at -40 deg: a lit plastered vestibule, the right side wall 50 of 125 px -> about 0.5 m to the leaf, a flat's brown door on that side wall (not drawn: sideDoors needs 0.9 m); white-painted left wall.",
+   "doorReveal": {
+    "form": "portiek",
+    "deep": 0.6,
+    "jamb": "plaster"
+   }
   },
   "door-right": {
    "doorBay": 2,
    "basement": "none",
-   "note": "Cornelis Anthoniszstraat 64 and 68, Balthasar Floriszstraat 18: mirrored, the door on the right axis"
+   "note": "Cornelis Anthoniszstraat 64 and 68, Balthasar Floriszstraat 18: mirrored, the door on the right axis. Door reveal: Anthonisz row (164470) at -40 deg: a lit plastered vestibule, the right side wall 50 of 125 px -> about 0.5 m to the leaf, a flat's brown door on that side wall (not drawn: sideDoors needs 0.9 m); white-painted left wall.",
+   "doorReveal": {
+    "form": "portiek",
+    "deep": 0.6,
+    "jamb": "plaster"
+   }
   }
  },
  "palettes": {
@@ -188,6 +198,7 @@
   "the brick arch rings are the band brick, a shade darker than the wall; the photo's rings are the same brick laid as rowlocks"
  ],
  "notes": [
-  "Palette: placed pands take their own measured wall (auto-place measuredPalette); one brick per row from tree-free columns at install (lesson 10)."
+  "Palette: placed pands take their own measured wall (auto-place measuredPalette); one brick per row from tree-free columns at install (lesson 10).",
+  "Door reveal (#181, scripts/block-face/door-reveal-sheet.ts --photos: the panorama either side of the door, depth = visible jamb return / opening width x span / tan(view angle)): Anthonisz row (164470) at -40 deg: a lit plastered vestibule, the right side wall 50 of 125 px -> about 0.5 m to the leaf, a flat's brown door on that side wall (not drawn: sideDoors needs 0.9 m); white-painted left wall."
  ]
 }

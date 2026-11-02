@@ -16,6 +16,7 @@ import type {LargeGround, LargeSystemName, LargeWindow} from '../blockBuilding/s
 import {brickStripeProblems, type BrickStripeZone} from './brickStripes.ts';
 import {stairLightProblems, type StairLightIntent} from './stairLight.ts';
 import {frontLoggiaProblems, type FrontLoggiaIntent} from './frontLoggia.ts';
+import {doorRevealProblems, type DoorRevealIntent} from './doorReveal.ts';
 import type {ParapetBandIntent} from './parapetBand.ts';
 import {friezeVentProblems} from './friezeVents.ts';
 import {corbelTableProblems, type CorbelTableIntent} from './corbelTable.ts';
@@ -400,6 +401,8 @@ export interface FrontIntent {
    * span / 2 + 1.2), a dark leaf with no transom. Absent = the square door with its transom, byte-identical.
    */
   doorArch?: {span: number; apex: number};
+  /** The door stands back in the wall: a shallow reveal or a deep portiek (doorReveal.ts, #181). Absent = byte-identical. */
+  doorReveal?: DoorRevealIntent;
   /** Ground storey noticeably taller than upper storeys (bel-etage / shop level). */
   tallGround?: boolean;
   basement: typeof BASEMENTS[number];
@@ -1540,6 +1543,7 @@ export function validateIntent(input: unknown): CanalHouseIntent {
       if (!d || typeof d !== 'object' || Object.keys(d).some(k => k !== 'span' && k !== 'apex') || !n(d.span, 0.8, 2.6) || !n(d.apex, 1.8, 4) || (d.apex as number) < (d.span as number) / 2 + 1.2) problems.push(`${at}.doorArch: {span 0.8..2.6 m, apex 1.8..4 m and at least span / 2 + 1.2}`);
       if (f.doorBay === null || f.shopfront?.residentialDoor || f.groundFront) problems.push(`${at}.doorArch: needs a doorBay (not a shop's residential door or a ground front)`);
     }
+    if (f.doorReveal !== undefined) problems.push(...doorRevealProblems(f.doorReveal, f, at));
     oneOf(f.basement, BASEMENTS, `${at}.basement`);
     oneOf(f.cornice, CORNICES, `${at}.cornice`);
     oneOf(f.windows, WINDOWS, `${at}.windows`);

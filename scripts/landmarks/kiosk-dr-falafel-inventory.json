@@ -1,0 +1,281 @@
+{
+ "schemaVersion": 1,
+ "id": "kiosk-dr-falafel",
+ "pand": "0363100012243757",
+ "brief": "scripts/landmarks/kiosk-dr-falafel-brief.md",
+ "signature": [
+  "glazed-front",
+  "dark-roof-slab",
+  "falafel-lettering-west",
+  "white-frame"
+ ],
+ "walls": [
+  {
+   "tag": "w01-106",
+   "bearing": 106,
+   "lengthM": 5,
+   "centre": [
+    4.876713,
+    52.3683285
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001979_pano_0001_000187",
+   "capturedAt": "2021-01-25",
+   "checked": true,
+   "items": [
+    {
+     "id": "back-panels",
+     "kind": "other",
+     "where": "two pale grey closed panels filling the canal-side wall",
+     "approxSizeM": [
+      4.4,
+      2.4
+     ],
+     "plan": "modelled",
+     "how": "kioskKit solid panels",
+     "seenIn": "TMX7316010203-001979_pano_0001_000187"
+    },
+    {
+     "id": "vent-grille",
+     "kind": "other",
+     "where": "small dark vent at the top left of the canal-side wall",
+     "approxSizeM": [
+      0.25,
+      0.2
+     ],
+     "plan": "skipped",
+     "skip": {
+      "reason": "too-small",
+      "note": "0.25 m dark square seen only from the far bank"
+     },
+     "seenIn": "TMX7316010203-001979_pano_0001_000187"
+    }
+   ],
+   "note": "Back, facing the Singelgracht (2021 crop artifacts/landmark-briefs/kiosk-dr-falafel/w01-106.thumb.jpg): two pale grey closed panels in the white frame under the dark slab."
+  },
+  {
+   "tag": "w02-286",
+   "bearing": 286,
+   "lengthM": 5,
+   "centre": [
+    4.87667,
+    52.3683365
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-06-30_05-16-46_00533",
+   "capturedAt": "2025-06-30",
+   "checked": true,
+   "items": [
+    {
+     "id": "glazed-front",
+     "kind": "window-shape",
+     "where": "the whole west wall: four equal floor-to-head glazed panels about 1.07 m wide",
+     "approxSizeM": [
+      4.4,
+      2.4
+     ],
+     "plan": "modelled",
+     "how": "kioskKit glass variant: four glass panels recessed 6 cm in the frame",
+     "seenIn": "recording_2025-06-30_05-16-46_00533"
+    },
+    {
+     "id": "white-frame",
+     "kind": "other",
+     "where": "white aluminium frame round and between the panels (posts ~0.1 m, mullions ~0.07 m, base rail ~0.1 m, head rail ~0.16 m)",
+     "approxSizeM": [
+      4.5,
+      2.77
+     ],
+     "plan": "modelled",
+     "how": "kioskKit corner posts, mullions and rails in the frame colour",
+     "seenIn": "recording_2025-06-30_05-16-46_00533"
+    },
+    {
+     "id": "dark-roof-slab",
+     "kind": "canopy",
+     "where": "dark flat roof slab about 0.33 m thick overhanging the walls on every side (the BAG outline)",
+     "approxSizeM": [
+      5.04,
+      0.33
+     ],
+     "plan": "modelled",
+     "how": "kioskKit flat roof, overhang 0.27 m",
+     "seenIn": "recording_2025-06-30_05-16-46_00533; recording_2025-07-31_10-53-44_00800"
+    },
+    {
+     "id": "falafel-lettering-west",
+     "kind": "lettering",
+     "where": "on the north glazed panel at 1.7-2.0 m: \"Dr.\" above \"Falafel\" in white",
+     "approxSizeM": [
+      0.62,
+      0.3
+     ],
+     "plan": "simplified",
+     "how": "raised 5x7 pixel capitals DR. / FALAFEL (the sign is mixed-case script); kioskKit lettering, 5 cm relief",
+     "seenIn": "recording_2025-06-30_05-16-46_00533"
+    },
+    {
+     "id": "tram-pole",
+     "kind": "other",
+     "where": "tram overhead-wire pole with traffic signs in front of the third panel",
+     "approxSizeM": [
+      0.25,
+      8
+     ],
+     "plan": "skipped",
+     "skip": {
+      "reason": "not-visible",
+      "note": "street furniture in front of the kiosk, not part of it; the ride draws its own poles"
+     },
+     "seenIn": "recording_2025-06-30_05-16-46_00533"
+    },
+    {
+     "id": "green-roof",
+     "kind": "other",
+     "where": "planted roof: tall grass tufts showing over the slab edge",
+     "approxSizeM": [
+      4.6,
+      0.5
+     ],
+     "plan": "simplified",
+     "how": "kioskKit flat roof green layer 0.1 m with 14 grass tufts (low pentagonal cones)",
+     "seenIn": "recording_2025-07-31_10-53-44_00797; recording_2025-07-31_10-53-44_00800"
+    },
+    {
+     "id": "slab-band",
+     "kind": "canopy",
+     "where": "light metal band along the slab edge",
+     "approxSizeM": [
+      5.0,
+      0.12
+     ],
+     "plan": "modelled",
+     "how": "kioskKit flat roof band 5 cm proud of the slab",
+     "seenIn": "recording_2025-07-31_10-53-44_00797"
+    },
+    {
+     "id": "black-corners",
+     "kind": "other",
+     "where": "black corner posts at the ends of the white-framed walls",
+     "approxSizeM": [
+      0.1,
+      2.77
+     ],
+     "plan": "modelled",
+     "how": "kioskKit cornerRole corner (dark)",
+     "seenIn": "recording_2025-07-31_10-53-44_00797"
+    }
+   ],
+   "note": "Front, facing the Nassaukade pavement and the tram stop (rectified crop artifacts/landmark-briefs/kiosk-dr-falafel/w02-286.jpg at 50 px/m; aimed view artifacts/kiosks/dr-falafel2/p-2025-06-30-b287-d13.jpg)."
+  },
+  {
+   "tag": "v-196",
+   "bearing": 196,
+   "lengthM": 2.5,
+   "centre": [
+    4.876713,
+    52.368322
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-07-31_10-53-44_00800",
+   "capturedAt": "2025-07-31",
+   "checked": true,
+   "note": "South end, towards the Kinkerstraat bridge (artifacts/kiosks/drf-n/s-2025-07-31-b198-d26.jpg; also recording_2025-07-31_10-53-44_00797).",
+   "items": [
+    {
+     "id": "falafel-lettering-south",
+     "kind": "lettering",
+     "where": "top of the glazed west half of the south end: \"Dr.\" over \"Falafel\" in white",
+     "approxSizeM": [
+      0.62,
+      0.3
+     ],
+     "plan": "simplified",
+     "how": "raised 5x7 pixel capitals DR. / FALAFEL",
+     "seenIn": "recording_2025-07-31_10-53-44_00800"
+    },
+    {
+     "id": "grey-panel-south",
+     "kind": "other",
+     "where": "grey closed panel, east half of the south end",
+     "approxSizeM": [
+      1.0,
+      2.4
+     ],
+     "plan": "modelled",
+     "how": "kioskKit solid panel",
+     "seenIn": "recording_2025-07-31_10-53-44_00800"
+    },
+    {
+     "id": "steel-gate",
+     "kind": "balcony-ironwork",
+     "where": "black vertical-bar steel gate at the east end of the south side, under the slab",
+     "approxSizeM": [
+      0.45,
+      2.4
+     ],
+     "plan": "simplified",
+     "how": "kioskKit grille panel: 25 mm bars every ~0.11 m over a dark recess, in the face plane",
+     "seenIn": "recording_2025-07-31_10-53-44_00800; recording_2025-07-31_10-53-44_00797"
+    }
+   ]
+  },
+  {
+   "tag": "v-016",
+   "bearing": 16,
+   "lengthM": 2.5,
+   "centre": [
+    4.876667,
+    52.368347
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-06-30_05-16-46_00537",
+   "capturedAt": "2025-06-30",
+   "checked": true,
+   "note": "North end, towards Elandsgracht (artifacts/kiosks/dr-falafel2/p-2025-06-30-b25-d13.jpg; partly behind a parking sign and a cargo bike).",
+   "items": [
+    {
+     "id": "glazed-door",
+     "kind": "window-shape",
+     "where": "glazed door at the west half of the north end, \"...el\" of the lettering visible at the top",
+     "approxSizeM": [
+      1.0,
+      2.4
+     ],
+     "plan": "modelled",
+     "how": "kioskKit door panel (glass, mid rail, handle) with DR. / FALAFEL lettering",
+     "seenIn": "recording_2025-06-30_05-16-46_00537"
+    },
+    {
+     "id": "grey-panel-north",
+     "kind": "other",
+     "where": "grey closed panel at the east half of the north end",
+     "approxSizeM": [
+      1.1,
+      2.4
+     ],
+     "plan": "modelled",
+     "how": "kioskKit solid panel",
+     "seenIn": "recording_2025-06-30_05-16-46_00537"
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  },
+  {
+   "name": "BAG pand 0363100012243757",
+   "url": "https://api.data.amsterdam.nl/v1/bag/panden/0363100012243757/",
+   "licence": "CC0"
+  },
+  {
+   "name": "OpenStreetMap node 6428422982 (Dr. Falafel)",
+   "url": "https://www.openstreetmap.org/node/6428422982",
+   "licence": "ODbL"
+  }
+ ]
+}

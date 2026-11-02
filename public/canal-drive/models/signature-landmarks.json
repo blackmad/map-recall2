@@ -2892,7 +2892,8 @@
       },
       "triangles": 2812,
       "bytes": 35220,
-      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
+      "held": true
     },
     "the-movies": {
       "id": "the-movies",
@@ -61761,6 +61762,3149 @@
         "bytes": 54100,
         "triangles": 2285
       }
+    },
+    "zuiderbad": {
+      "id": "zuiderbad",
+      "name": "Zuiderbad",
+      "modelUrl": "./models/zuiderbad.glb",
+      "suppressOsmIds": [
+        "NL.IMBAG.Pand.0363100012233523"
+      ],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.886167,
+          52.3584736
+        ],
+        "headingDegrees": 0,
+        "lengthMetres": 64.6,
+        "widthMetres": 34.5
+      },
+      "surveyed": {
+        "anchor": [
+          4.886167,
+          52.3584736
+        ],
+        "northOffsetDegrees": 0,
+        "source": "BAG pand 0363100012233523 (Zuiderbad, Hobbemastraat 26): exact ring and 3DBAG LoD2.2 walls/roofs in local east/south metres (scripts/landmarks/zuiderbad-footprints.json, zuiderbad-prepare.ts); anchor = vertex average of the BAG ring (RD). Fronts, gables, tower, chimney and ornament read from Gemeente Amsterdam panoramas (scripts/landmarks/zuiderbad-inventory.json); roof colour and solar field from the PDOK orthophoto."
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 0,
+      "heightMetres": 21.9,
+      "bagYear": 1912,
+      "materialOverrides": {
+        "brick": "#a25a3c",
+        "ochre": "#c99d5e",
+        "frame": "#7d2a32",
+        "slate": "#a3abaf",
+        "greyBrick": "#3d2f2a",
+        "dark": "#2f3a4c",
+        "stone": "#d8cdb4",
+        "white": "#efebe2"
+      },
+      "attribution": {
+        "title": "Zuiderbad",
+        "author": "Map Recall",
+        "sourceUrl": "https://monumentenregister.cultureelerfgoed.nl/monumenten/505901",
+        "licence": "CC BY 4.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "modifications": "Original texture-free native-scale model: the BAG footprint (CC0) and 3DBAG LoD2.2 walls and roofs (CC BY 4.0), with the Hobbemakade bays and stepped gables, the north front and its lantern tower, the crow-stepped hall gables, the rounded corner and the chimney authored from Gemeente Amsterdam panoramas (CC BY 4.0) and the PDOK orthophoto (CC BY 4.0). No imported mesh or photograph pixels."
+      },
+      "buildingFootprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.8862235,
+              52.3584618
+            ],
+            [
+              4.8862277,
+              52.3584616
+            ],
+            [
+              4.8862283,
+              52.3584685
+            ],
+            [
+              4.8862241,
+              52.3584686
+            ],
+            [
+              4.8862279,
+              52.3585121
+            ],
+            [
+              4.8862321,
+              52.358512
+            ],
+            [
+              4.8862327,
+              52.3585188
+            ],
+            [
+              4.8862285,
+              52.3585189
+            ],
+            [
+              4.8862322,
+              52.3585625
+            ],
+            [
+              4.8862365,
+              52.3585624
+            ],
+            [
+              4.8862371,
+              52.3585692
+            ],
+            [
+              4.8862328,
+              52.3585694
+            ],
+            [
+              4.8862367,
+              52.358613
+            ],
+            [
+              4.8862381,
+              52.3586129
+            ],
+            [
+              4.8862385,
+              52.3586178
+            ],
+            [
+              4.8862315,
+              52.3586179
+            ],
+            [
+              4.8862322,
+              52.3586231
+            ],
+            [
+              4.8862322,
+              52.3586283
+            ],
+            [
+              4.8862313,
+              52.3586335
+            ],
+            [
+              4.8862296,
+              52.3586385
+            ],
+            [
+              4.8862271,
+              52.3586435
+            ],
+            [
+              4.8862239,
+              52.3586483
+            ],
+            [
+              4.8862208,
+              52.3586521
+            ],
+            [
+              4.8862172,
+              52.3586557
+            ],
+            [
+              4.8862131,
+              52.3586591
+            ],
+            [
+              4.8862082,
+              52.3586626
+            ],
+            [
+              4.8862029,
+              52.3586658
+            ],
+            [
+              4.8861971,
+              52.3586688
+            ],
+            [
+              4.8861909,
+              52.3586715
+            ],
+            [
+              4.8861844,
+              52.3586738
+            ],
+            [
+              4.8861776,
+              52.3586757
+            ],
+            [
+              4.8861705,
+              52.3586774
+            ],
+            [
+              4.8861633,
+              52.3586786
+            ],
+            [
+              4.8861559,
+              52.3586795
+            ],
+            [
+              4.8861484,
+              52.35868
+            ],
+            [
+              4.8861485,
+              52.3586873
+            ],
+            [
+              4.8858881,
+              52.3587232
+            ],
+            [
+              4.8858873,
+              52.3587211
+            ],
+            [
+              4.8858015,
+              52.3587332
+            ],
+            [
+              4.885796,
+              52.3586581
+            ],
+            [
+              4.8857663,
+              52.3583864
+            ],
+            [
+              4.8857477,
+              52.3581753
+            ],
+            [
+              4.8860214,
+              52.3581664
+            ],
+            [
+              4.8860212,
+              52.3581644
+            ],
+            [
+              4.8860309,
+              52.3581642
+            ],
+            [
+              4.8860311,
+              52.358166
+            ],
+            [
+              4.8861986,
+              52.3581605
+            ],
+            [
+              4.8861991,
+              52.3581655
+            ],
+            [
+              4.8861976,
+              52.3581655
+            ],
+            [
+              4.8862015,
+              52.3582097
+            ],
+            [
+              4.8862057,
+              52.3582095
+            ],
+            [
+              4.8862063,
+              52.3582163
+            ],
+            [
+              4.8862021,
+              52.3582165
+            ],
+            [
+              4.8862059,
+              52.3582601
+            ],
+            [
+              4.8862101,
+              52.35826
+            ],
+            [
+              4.8862107,
+              52.3582668
+            ],
+            [
+              4.8862065,
+              52.3582669
+            ],
+            [
+              4.8862103,
+              52.3583105
+            ],
+            [
+              4.8862145,
+              52.3583104
+            ],
+            [
+              4.8862151,
+              52.3583172
+            ],
+            [
+              4.8862109,
+              52.3583174
+            ],
+            [
+              4.8862147,
+              52.3583609
+            ],
+            [
+              4.8862189,
+              52.3583607
+            ],
+            [
+              4.8862195,
+              52.3583676
+            ],
+            [
+              4.8862152,
+              52.3583677
+            ],
+            [
+              4.8862191,
+              52.3584113
+            ],
+            [
+              4.8862233,
+              52.3584112
+            ],
+            [
+              4.8862239,
+              52.358418
+            ],
+            [
+              4.8862197,
+              52.3584181
+            ],
+            [
+              4.8862235,
+              52.3584618
+            ]
+          ]
+        ]
+      },
+      "buildingCategory": "landmark",
+      "bounds": {
+        "min": [
+          -28.789562225341797,
+          -5.9604645663569045e-9,
+          -29.482479095458984
+        ],
+        "max": [
+          5.31005859375,
+          26.299999237060547,
+          35.243133544921875
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.886167,
+          52.3584736
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 90,
+        "facadeBearingDegrees": 0,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 64.72561264038086,
+        "heightMetres": 26.299999243021013,
+        "depthMetres": 34.0996208190918,
+        "depthCoverage": 0.9883948063504868
+      },
+      "triangles": 26261,
+      "bytes": 355640,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
+      "lod1": {
+        "sourceHash": "a7c82c954243af02",
+        "buildVersion": 2,
+        "bytes": 83392,
+        "triangles": 4389
+      }
+    },
+    "marnixbad": {
+      "id": "marnixbad",
+      "name": "Zwembad Het Marnix",
+      "modelUrl": "./models/marnixbad.glb",
+      "suppressOsmIds": [
+        "NL.IMBAG.Pand.0363100012169393",
+        "w221058014"
+      ],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.87842138,
+          52.37795928
+        ],
+        "headingDegrees": 0,
+        "lengthMetres": 61.1,
+        "widthMetres": 53.4
+      },
+      "surveyed": {
+        "anchor": [
+          4.87842138,
+          52.37795928
+        ],
+        "northOffsetDegrees": 0,
+        "source": "Vertex average of the BAG 0363100012169393 ring (RD, PDOK BAG WFS); volumes from the 3DBAG LoD2.2 roof planes of that pand (CC BY 4.0) clustered by height and snapped to the BAG ring in native east/south metres (scripts/landmarks/marnixbad-prepare.ts). Soffit, ribbon window, curtain walls and the logo measured on rectified Gemeente Amsterdam panorama crops at 50 px/m (scripts/landmarks/marnixbad-inventory.json)."
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 0,
+      "heightMetres": 16.5,
+      "bagYear": 2006,
+      "materialOverrides": {
+        "brick": "#7a4636",
+        "concrete": "#a9b0ac",
+        "white": "#d6d9d4",
+        "glass": "#4f6468",
+        "canopyGlass": "#c5ccc9",
+        "dark": "#2c2b29",
+        "frame": "#8e9696",
+        "slate": "#9e9281",
+        "gold": "#e39a3b",
+        "pink": "#e58fa6",
+        "blue": "#4f9fd6",
+        "green": "#8cc55a",
+        "stone": "#b7bbb8",
+        "greyBrick": "#3b3734",
+        "bronze": "#3f4144"
+      },
+      "attribution": {
+        "title": "Zwembad Het Marnix (Mecanoo, 2006)",
+        "author": "Map Recall",
+        "sourceUrl": "https://nl.wikipedia.org/wiki/Marnixbad",
+        "licence": "CC BY 4.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "modifications": "Original texture-free flat-colour geometry on the BAG footprint (CC0) and 3DBAG LoD2.2 roof heights (CC BY 4.0): the brick sports-hall box on the Marnixstraat with its ribbon window and the het marnix logo over a recessed frosted ground storey, the ribbed aluminium box cantilevered over the glazed pool storey on the Singelgracht, the glass link with its curved café front, the brick Marnixplein block with its curtain wall and the canal terrace, from rectified Gemeente Amsterdam panoramas (CC BY 4.0) and the Wikimedia Commons photograph 'Amsterdam - Het Marnix II' by Picasdre (CC BY 3.0), read for proportion only. Architect and year: Wikipedia nl 'Marnixbad' (CC BY-SA 4.0). No pixels or meshes imported."
+      },
+      "buildingFootprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.8782499,
+              52.3782112
+            ],
+            [
+              4.8782404,
+              52.3782135
+            ],
+            [
+              4.8782109,
+              52.3781676
+            ],
+            [
+              4.8781797,
+              52.3781188
+            ],
+            [
+              4.878198,
+              52.3781146
+            ],
+            [
+              4.878144,
+              52.3780305
+            ],
+            [
+              4.8780944,
+              52.3780424
+            ],
+            [
+              4.878072,
+              52.378048
+            ],
+            [
+              4.8779024,
+              52.3777848
+            ],
+            [
+              4.8779249,
+              52.3777793
+            ],
+            [
+              4.8779254,
+              52.37778
+            ],
+            [
+              4.8780802,
+              52.3777429
+            ],
+            [
+              4.8780797,
+              52.3777421
+            ],
+            [
+              4.8781337,
+              52.3777291
+            ],
+            [
+              4.8781359,
+              52.3777286
+            ],
+            [
+              4.8782207,
+              52.3777081
+            ],
+            [
+              4.8783595,
+              52.3776746
+            ],
+            [
+              4.8783995,
+              52.3776652
+            ],
+            [
+              4.8785685,
+              52.3779284
+            ],
+            [
+              4.8785279,
+              52.3779385
+            ],
+            [
+              4.8785156,
+              52.3779412
+            ],
+            [
+              4.8785343,
+              52.3779699
+            ],
+            [
+              4.8785366,
+              52.37797
+            ],
+            [
+              4.878539,
+              52.3779704
+            ],
+            [
+              4.8785412,
+              52.3779708
+            ],
+            [
+              4.8785434,
+              52.3779714
+            ],
+            [
+              4.8785455,
+              52.3779721
+            ],
+            [
+              4.8785475,
+              52.3779729
+            ],
+            [
+              4.8785491,
+              52.3779737
+            ],
+            [
+              4.8785506,
+              52.3779745
+            ],
+            [
+              4.8785519,
+              52.3779755
+            ],
+            [
+              4.8785532,
+              52.3779765
+            ],
+            [
+              4.8785543,
+              52.3779775
+            ],
+            [
+              4.8785553,
+              52.3779786
+            ],
+            [
+              4.8785562,
+              52.3779797
+            ],
+            [
+              4.8785569,
+              52.3779807
+            ],
+            [
+              4.8785575,
+              52.3779819
+            ],
+            [
+              4.878558,
+              52.377983
+            ],
+            [
+              4.8785583,
+              52.3779842
+            ],
+            [
+              4.8785584,
+              52.3779854
+            ],
+            [
+              4.8785584,
+              52.3779866
+            ],
+            [
+              4.8785582,
+              52.3779877
+            ],
+            [
+              4.8785579,
+              52.3779889
+            ],
+            [
+              4.8785573,
+              52.3779901
+            ],
+            [
+              4.8785567,
+              52.3779912
+            ],
+            [
+              4.8785558,
+              52.3779923
+            ],
+            [
+              4.8785549,
+              52.3779933
+            ],
+            [
+              4.8785538,
+              52.3779943
+            ],
+            [
+              4.8785525,
+              52.3779952
+            ],
+            [
+              4.8785512,
+              52.377996
+            ],
+            [
+              4.8785697,
+              52.3780251
+            ],
+            [
+              4.8786225,
+              52.3780124
+            ],
+            [
+              4.8786833,
+              52.3781071
+            ],
+            [
+              4.8786743,
+              52.3781092
+            ],
+            [
+              4.8782499,
+              52.3782112
+            ]
+          ]
+        ]
+      },
+      "buildingCategory": "landmark",
+      "bounds": {
+        "min": [
+          -35.59220886230469,
+          -4.7683716530855236e-8,
+          -28.95622444152832
+        ],
+        "max": [
+          18.127031326293945,
+          16.5,
+          32.85204315185547
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.87842138,
+          52.37795928
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 90,
+        "facadeBearingDegrees": 0,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 61.80826759338379,
+        "heightMetres": 16.500000047683717,
+        "depthMetres": 53.71924018859863,
+        "depthCoverage": 1.0059782806853677
+      },
+      "triangles": 3839,
+      "bytes": 73540,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
+      "lod1": {
+        "sourceHash": "109f06ad4434b460",
+        "buildVersion": 2,
+        "bytes": 35048,
+        "triangles": 1010
+      }
+    },
+    "bungehuis": {
+      "id": "bungehuis",
+      "name": "Bungehuis",
+      "modelUrl": "./models/bungehuis.glb",
+      "suppressOsmIds": [
+        "NL.IMBAG.Pand.0363100012167624",
+        "w158634246"
+      ],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.88915783,
+          52.37200969
+        ],
+        "headingDegrees": 0,
+        "lengthMetres": 49.8,
+        "widthMetres": 36.6
+      },
+      "surveyed": {
+        "anchor": [
+          4.88915783,
+          52.37200969
+        ],
+        "northOffsetDegrees": 0,
+        "source": "Vertex average of the BAG 0363100012167624 ring (RD, PDOK BAG WFS); massing is the 3DBAG LoD2.2 shell of that pand (CC BY 4.0) in native east/south metres (scripts/landmarks/bungehuis-prepare.ts). Bays, piers, storey and band heights measured on rectified Gemeente Amsterdam panorama crops at 39-50 px/m (scripts/landmarks/bungehuis-inventory.json)."
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 0,
+      "heightMetres": 34,
+      "bagYear": 1934,
+      "materialOverrides": {
+        "stone": "#9a8e7b",
+        "sandstone": "#7a7264",
+        "glass": "#4e5e66",
+        "frame": "#3c4540",
+        "dark": "#2e2c29",
+        "bronze": "#4a4a3c",
+        "slate": "#5f6166",
+        "canopyGlass": "#4e5e66"
+      },
+      "attribution": {
+        "title": "Bungehuis (A.D.N. van Gendt and W.J. Klok, 1932-1934; Rijksmonument 518486)",
+        "author": "Map Recall",
+        "sourceUrl": "https://nl.wikipedia.org/wiki/Bungehuis",
+        "licence": "CC BY 4.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "modifications": "Original texture-free flat-colour geometry on the 3DBAG LoD2.2 shell (CC BY 4.0) and BAG footprint (CC0): stone piers with pinnacles, canted steel bay windows, Greek-key panels, banded corners, the stone plinth and the Spuistraat entrance with BUNGE-HUIS, from rectified Gemeente Amsterdam panoramas (CC BY 4.0) and Wikimedia Commons photographs by Jane023 (CC BY 3.0), Ceescamel (CC BY-SA 4.0) and Alf van Beem (CC0/public domain), read for proportion only. Architects and dates: Wikipedia nl 'Bungehuis' (CC BY-SA 4.0). No pixels or meshes imported."
+      },
+      "buildingFootprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.8892926,
+              52.3720109
+            ],
+            [
+              4.889291,
+              52.372011
+            ],
+            [
+              4.8892915,
+              52.3720146
+            ],
+            [
+              4.8892898,
+              52.3720147
+            ],
+            [
+              4.8892899,
+              52.3720158
+            ],
+            [
+              4.8892882,
+              52.3720159
+            ],
+            [
+              4.8892884,
+              52.372017
+            ],
+            [
+              4.8892866,
+              52.3720171
+            ],
+            [
+              4.8892867,
+              52.3720181
+            ],
+            [
+              4.8892832,
+              52.3720183
+            ],
+            [
+              4.8892875,
+              52.372047
+            ],
+            [
+              4.889291,
+              52.3720468
+            ],
+            [
+              4.8892912,
+              52.3720478
+            ],
+            [
+              4.8892929,
+              52.3720477
+            ],
+            [
+              4.8892931,
+              52.3720488
+            ],
+            [
+              4.8892949,
+              52.3720487
+            ],
+            [
+              4.889295,
+              52.3720498
+            ],
+            [
+              4.8892968,
+              52.3720497
+            ],
+            [
+              4.8892973,
+              52.3720533
+            ],
+            [
+              4.8892989,
+              52.3720532
+            ],
+            [
+              4.8893171,
+              52.3721757
+            ],
+            [
+              4.8893128,
+              52.3721782
+            ],
+            [
+              4.8893086,
+              52.3721783
+            ],
+            [
+              4.8893081,
+              52.3721809
+            ],
+            [
+              4.8893039,
+              52.3721811
+            ],
+            [
+              4.8893034,
+              52.3721836
+            ],
+            [
+              4.8892992,
+              52.3721838
+            ],
+            [
+              4.8892987,
+              52.3721863
+            ],
+            [
+              4.8892944,
+              52.3721888
+            ],
+            [
+              4.8888829,
+              52.3721491
+            ],
+            [
+              4.888878,
+              52.3721459
+            ],
+            [
+              4.8888777,
+              52.3721433
+            ],
+            [
+              4.8888735,
+              52.3721431
+            ],
+            [
+              4.8888732,
+              52.3721405
+            ],
+            [
+              4.888869,
+              52.3721402
+            ],
+            [
+              4.8888687,
+              52.3721377
+            ],
+            [
+              4.8888645,
+              52.3721374
+            ],
+            [
+              4.8888595,
+              52.3721344
+            ],
+            [
+              4.8888579,
+              52.3721273
+            ],
+            [
+              4.8887834,
+              52.3717848
+            ],
+            [
+              4.8887849,
+              52.3717847
+            ],
+            [
+              4.8888754,
+              52.3717854
+            ],
+            [
+              4.8888782,
+              52.3717987
+            ],
+            [
+              4.8890392,
+              52.3718402
+            ],
+            [
+              4.8890435,
+              52.3718598
+            ],
+            [
+              4.889102,
+              52.371855
+            ],
+            [
+              4.8890921,
+              52.3718097
+            ],
+            [
+              4.8891001,
+              52.3717811
+            ],
+            [
+              4.8891115,
+              52.3717401
+            ],
+            [
+              4.8892547,
+              52.3717637
+            ],
+            [
+              4.8892557,
+              52.3717636
+            ],
+            [
+              4.8892628,
+              52.3718112
+            ],
+            [
+              4.8892552,
+              52.3718116
+            ],
+            [
+              4.8892585,
+              52.3718336
+            ],
+            [
+              4.8892661,
+              52.3718332
+            ],
+            [
+              4.8892926,
+              52.3720109
+            ]
+          ]
+        ]
+      },
+      "buildingCategory": "landmark",
+      "bounds": {
+        "min": [
+          -26.112051010131836,
+          -8.940696516468449e-10,
+          -20.35638999938965
+        ],
+        "max": [
+          11.517046928405762,
+          34.539493560791016,
+          29.972000122070312
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.88915783,
+          52.37200969
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 90,
+        "facadeBearingDegrees": 0,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 50.32839012145996,
+        "heightMetres": 34.539493561685084,
+        "depthMetres": 37.6290979385376,
+        "depthCoverage": 1.0281174300146885
+      },
+      "triangles": 28656,
+      "bytes": 414592,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
+      "lod1": {
+        "sourceHash": "0e987c34023206c1",
+        "buildVersion": 2,
+        "bytes": 96024,
+        "triangles": 4833
+      }
+    },
+    "cromhouthuizen": {
+      "id": "cromhouthuizen",
+      "name": "Cromhouthuizen",
+      "modelUrl": "./models/cromhouthuizen.glb",
+      "suppressOsmIds": [
+        "NL.IMBAG.Pand.0363100012176599",
+        "NL.IMBAG.Pand.0363100012169510",
+        "NL.IMBAG.Pand.0363100012176534"
+      ],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.8860661,
+          52.3684818
+        ],
+        "headingDegrees": 272.9,
+        "lengthMetres": 37.3,
+        "widthMetres": 32.97
+      },
+      "surveyed": {
+        "anchor": [
+          4.8860661,
+          52.3684818
+        ],
+        "northOffsetDegrees": 0,
+        "source": "Vertex average of the three BAG rings (Herengracht 362-364 0363100012176599, 366-368 0363100012169510, 370 0363100012176534; PDOK BAG WFS, CC0) as the anchor; native east/south metres at 111320 m per degree (cos-latitude in longitude). The builder's front frame runs along the BAG front from the 370/372 corner (bearing 2.9, front facing 92.9); facade heights and openings measured on the Gemeente Amsterdam panorama TMX7316010203-001975_pano_0000_000497 (2021, CC BY 4.0) rectified onto the front plane; massing behind the front from the 3DBAG LoD2.2 roof planes (CC BY 4.0). See cromhouthuizen-footprints.json."
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 0,
+      "heightMetres": 22.6,
+      "bagYear": 1662,
+      "materialOverrides": {
+        "stone": "#c4bca9",
+        "white": "#e8e3d6",
+        "glass": "#2b3238",
+        "frame": "#2f3631",
+        "dark": "#23272a",
+        "slate": "#4d5156",
+        "brick": "#7e5b49",
+        "ochre": "#cdbb95",
+        "bronze": "#2c302e"
+      },
+      "attribution": {
+        "title": "Cromhouthuizen, Herengracht 362-370",
+        "author": "Map Recall",
+        "sourceUrl": "https://nl.wikipedia.org/wiki/Cromhouthuizen",
+        "licence": "CC BY 4.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "modifications": "Original texture-free flat-colour geometry on the BAG footprints (CC0) with 3DBAG massing (CC BY 4.0): Philips Vingboons' four sandstone fronts of 1660-62 (Herengracht 364, 366, 368, 370), each with a neck gable, claw pieces, two oeil-de-boeuf windows, a crowning cornice with a triangular pediment and a hoist beam, pedimented bel-etage windows, festoons, relief tablets, stoops with iron railings and wall lanterns, plus the later stucco front of 362 with its balcony; read from Gemeente Amsterdam panoramas (CC BY 4.0) for proportion only. No photo pixels or imported meshes."
+      },
+      "buildingFootprint": {
+        "type": "MultiPolygon",
+        "coordinates": [
+          [
+            [
+              [
+                4.8859318,
+                52.3685784
+              ],
+              [
+                4.8863956,
+                52.3685633
+              ],
+              [
+                4.886405,
+                52.3686788
+              ],
+              [
+                4.8861798,
+                52.3686841
+              ],
+              [
+                4.8861764,
+                52.3686543
+              ],
+              [
+                4.8861671,
+                52.3686455
+              ],
+              [
+                4.8861449,
+                52.3686462
+              ],
+              [
+                4.886025,
+                52.3686499
+              ],
+              [
+                4.8859385,
+                52.3686526
+              ],
+              [
+                4.8859318,
+                52.3685784
+              ]
+            ]
+          ],
+          [
+            [
+              [
+                4.8863915,
+                52.3685131
+              ],
+              [
+                4.886393,
+                52.368531
+              ],
+              [
+                4.8863956,
+                52.3685633
+              ],
+              [
+                4.8859318,
+                52.3685784
+              ],
+              [
+                4.8858479,
+                52.368581
+              ],
+              [
+                4.8858469,
+                52.3685682
+              ],
+              [
+                4.8858652,
+                52.3685677
+              ],
+              [
+                4.8858706,
+                52.3685617
+              ],
+              [
+                4.8858988,
+                52.3685609
+              ],
+              [
+                4.8859052,
+                52.3685664
+              ],
+              [
+                4.8859237,
+                52.3685659
+              ],
+              [
+                4.8859139,
+                52.3684589
+              ],
+              [
+                4.8859032,
+                52.3684587
+              ],
+              [
+                4.8858952,
+                52.3684675
+              ],
+              [
+                4.8858683,
+                52.368469
+              ],
+              [
+                4.8858561,
+                52.3684611
+              ],
+              [
+                4.8858379,
+                52.3684611
+              ],
+              [
+                4.8858365,
+                52.368447
+              ],
+              [
+                4.8858542,
+                52.3684464
+              ],
+              [
+                4.8860977,
+                52.3684409
+              ],
+              [
+                4.886159,
+                52.3684396
+              ],
+              [
+                4.8863852,
+                52.3684352
+              ],
+              [
+                4.8863867,
+                52.3684532
+              ],
+              [
+                4.8863881,
+                52.3684711
+              ],
+              [
+                4.8863895,
+                52.3684879
+              ],
+              [
+                4.8863915,
+                52.3685131
+              ]
+            ]
+          ],
+          [
+            [
+              [
+                4.8863825,
+                52.3684009
+              ],
+              [
+                4.8863839,
+                52.3684188
+              ],
+              [
+                4.8863852,
+                52.3684352
+              ],
+              [
+                4.886159,
+                52.3684396
+              ],
+              [
+                4.8861541,
+                52.3684088
+              ],
+              [
+                4.8860936,
+                52.3684103
+              ],
+              [
+                4.8860977,
+                52.3684409
+              ],
+              [
+                4.8858542,
+                52.3684464
+              ],
+              [
+                4.885853,
+                52.3684394
+              ],
+              [
+                4.8859173,
+                52.3684375
+              ],
+              [
+                4.8859131,
+                52.3683549
+              ],
+              [
+                4.8858465,
+                52.3683566
+              ],
+              [
+                4.8858458,
+                52.3683496
+              ],
+              [
+                4.8858451,
+                52.3683435
+              ],
+              [
+                4.8859116,
+                52.3683412
+              ],
+              [
+                4.8859123,
+                52.368347
+              ],
+              [
+                4.8860618,
+                52.3683424
+              ],
+              [
+                4.8860628,
+                52.3683511
+              ],
+              [
+                4.8860833,
+                52.3683505
+              ],
+              [
+                4.8860879,
+                52.3683911
+              ],
+              [
+                4.886381,
+                52.3683829
+              ],
+              [
+                4.8863825,
+                52.3684009
+              ]
+            ]
+          ]
+        ]
+      },
+      "partyWallBearings": [
+        183,
+        3
+      ],
+      "partyWallNote": "The south side (370) adjoins Herengracht 372-376 (pand 0363100012176533) and the north side (362) Herengracht 360 / Huidenstraat 1 (pand 0363100012176540); both BAG rings share these walls.",
+      "buildingCategory": "landmark",
+      "bounds": {
+        "min": [
+          -15.609140396118164,
+          -1.9073486612342094e-7,
+          -22.643512725830078
+        ],
+        "max": [
+          24.01194190979004,
+          22.686315536499023,
+          15.641899108886719
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.8860661,
+          52.3684818
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 90,
+        "facadeBearingDegrees": 272.9,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 39.6210823059082,
+        "heightMetres": 22.68631572723389,
+        "depthMetres": 38.2854118347168,
+        "depthCoverage": 1.1612196492179798
+      },
+      "triangles": 18914,
+      "bytes": 215656,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
+      "lod1": {
+        "sourceHash": "7bc87d5fa8600fd2",
+        "buildVersion": 2,
+        "bytes": 65408,
+        "triangles": 3130
+      }
+    },
+    "waldorf-astoria-herengracht": {
+      "id": "waldorf-astoria-herengracht",
+      "name": "Waldorf Astoria Amsterdam",
+      "modelUrl": "./models/waldorf-astoria-herengracht.glb",
+      "suppressOsmIds": [
+        "NL.IMBAG.Pand.0363100012171090",
+        "NL.IMBAG.Pand.0363100012178774",
+        "NL.IMBAG.Pand.0363100012253806"
+      ],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.8970971,
+          52.3647182
+        ],
+        "headingDegrees": 162.7,
+        "lengthMetres": 28.4,
+        "widthMetres": 91.36
+      },
+      "surveyed": {
+        "anchor": [
+          4.8970971,
+          52.3647182
+        ],
+        "northOffsetDegrees": 0,
+        "source": "Vertex average of the three BAG rings (Herengracht 556 0363100012171090, 546-554 0363100012178774, 542-544 0363100012253806; PDOK BAG WFS, CC0) as the anchor; native east/south metres at 111320 m per degree (cos-latitude in longitude). The builder front frame runs along the BAG front from the 556/558 party line (bearing 252.7, front facing 342.7); facade heights and openings measured on Gemeente Amsterdam panorama TMX7316010203-001975_pano_0000_000032 (CC BY 4.0) rectified onto the front plane; roof heights from 3DBAG (CC BY 4.0). See waldorf-astoria-herengracht-footprints.json."
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 0,
+      "heightMetres": 21.6,
+      "bagYear": 1900,
+      "materialOverrides": {
+        "stone": "#e6e0d1",
+        "white": "#eeebe3",
+        "glass": "#2b3238",
+        "frame": "#2c302e",
+        "dark": "#2a2422",
+        "slate": "#45484d",
+        "brick": "#6e4a3e",
+        "bronze": "#262a28",
+        "red": "#9c2f2a",
+        "green": "#3d6b4a",
+        "pink": "#4a2530"
+      },
+      "attribution": {
+        "title": "Waldorf Astoria Amsterdam, Herengracht 542-556",
+        "author": "Map Recall",
+        "sourceUrl": "https://nl.wikipedia.org/wiki/Waldorf_Astoria_Amsterdam",
+        "licence": "CC BY 4.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "modifications": "Original texture-free flat-colour geometry on the BAG footprints (CC0) with 3DBAG roof heights (CC BY 4.0): six canal houses joined as the hotel (556 brick with a stone door portal and double stoop; the white stucco Louis XIV front with festoons, a balcony, balustrade, sculpture group and urn; the seven-bay brick double house with two neck dormers; 548 with its white frontispiece, round-headed door, balcony, hotel flag, balustrade and crested cartouche; 546 with segment-headed windows, an oculus over the door and a balustraded stoop; 542-544 under a hipped roof with dormers and chimneys); read from Gemeente Amsterdam panoramas (CC BY 4.0) for proportion only. No photo pixels or imported meshes."
+      },
+      "buildingFootprint": {
+        "type": "MultiPolygon",
+        "coordinates": [
+          [
+            [
+              [
+                4.8977574,
+                52.3647774
+              ],
+              [
+                4.8977425,
+                52.3648055
+              ],
+              [
+                4.8976935,
+                52.3648978
+              ],
+              [
+                4.897645,
+                52.3648885
+              ],
+              [
+                4.8976084,
+                52.3648815
+              ],
+              [
+                4.8976028,
+                52.3648924
+              ],
+              [
+                4.8975602,
+                52.3648842
+              ],
+              [
+                4.8975657,
+                52.3648734
+              ],
+              [
+                4.8975293,
+                52.3648665
+              ],
+              [
+                4.8974807,
+                52.3648571
+              ],
+              [
+                4.8975521,
+                52.3647193
+              ],
+              [
+                4.8976033,
+                52.3646174
+              ],
+              [
+                4.8978188,
+                52.3646579
+              ],
+              [
+                4.8978144,
+                52.3646665
+              ],
+              [
+                4.897779,
+                52.3647353
+              ],
+              [
+                4.8977723,
+                52.3647485
+              ],
+              [
+                4.8977574,
+                52.3647774
+              ]
+            ]
+          ],
+          [
+            [
+              [
+                4.8966176,
+                52.3646926
+              ],
+              [
+                4.896741,
+                52.3644514
+              ],
+              [
+                4.8969507,
+                52.3644925
+              ],
+              [
+                4.8969522,
+                52.3644897
+              ],
+              [
+                4.8971593,
+                52.3645302
+              ],
+              [
+                4.8974542,
+                52.3645878
+              ],
+              [
+                4.8974176,
+                52.3646621
+              ],
+              [
+                4.8973688,
+                52.3646524
+              ],
+              [
+                4.8973538,
+                52.364679
+              ],
+              [
+                4.8975521,
+                52.3647193
+              ],
+              [
+                4.8974807,
+                52.3648571
+              ],
+              [
+                4.8974354,
+                52.3648483
+              ],
+              [
+                4.8974013,
+                52.3648416
+              ],
+              [
+                4.8973955,
+                52.3648528
+              ],
+              [
+                4.8973889,
+                52.3648515
+              ],
+              [
+                4.8973549,
+                52.3648451
+              ],
+              [
+                4.8973474,
+                52.3648436
+              ],
+              [
+                4.8973533,
+                52.3648322
+              ],
+              [
+                4.8973193,
+                52.3648256
+              ],
+              [
+                4.8972812,
+                52.3648181
+              ],
+              [
+                4.8972742,
+                52.3648166
+              ],
+              [
+                4.8972429,
+                52.3648106
+              ],
+              [
+                4.8972426,
+                52.3648111
+              ],
+              [
+                4.89717,
+                52.3647975
+              ],
+              [
+                4.8971436,
+                52.3647926
+              ],
+              [
+                4.8971331,
+                52.3647906
+              ],
+              [
+                4.8971067,
+                52.3647857
+              ],
+              [
+                4.8970343,
+                52.3647722
+              ],
+              [
+                4.8970273,
+                52.3647709
+              ],
+              [
+                4.8969895,
+                52.3647637
+              ],
+              [
+                4.8969521,
+                52.3647565
+              ],
+              [
+                4.8969464,
+                52.3647677
+              ],
+              [
+                4.8969419,
+                52.3647668
+              ],
+              [
+                4.8969085,
+                52.3647604
+              ],
+              [
+                4.8969035,
+                52.3647594
+              ],
+              [
+                4.8969092,
+                52.3647483
+              ],
+              [
+                4.8968719,
+                52.3647412
+              ],
+              [
+                4.8968331,
+                52.3647338
+              ],
+              [
+                4.8968256,
+                52.3647324
+              ],
+              [
+                4.8968152,
+                52.3647306
+              ],
+              [
+                4.8967838,
+                52.3647245
+              ],
+              [
+                4.896743,
+                52.3647167
+              ],
+              [
+                4.8967376,
+                52.3647272
+              ],
+              [
+                4.8966954,
+                52.3647192
+              ],
+              [
+                4.8967008,
+                52.3647086
+              ],
+              [
+                4.89666,
+                52.3647008
+              ],
+              [
+                4.8966283,
+                52.3646947
+              ],
+              [
+                4.8966176,
+                52.3646926
+              ]
+            ]
+          ],
+          [
+            [
+              [
+                4.8964106,
+                52.3646541
+              ],
+              [
+                4.8964566,
+                52.3645619
+              ],
+              [
+                4.8965218,
+                52.3645735
+              ],
+              [
+                4.8965273,
+                52.3645615
+              ],
+              [
+                4.8965019,
+                52.3645567
+              ],
+              [
+                4.8964959,
+                52.3645473
+              ],
+              [
+                4.896523,
+                52.3644964
+              ],
+              [
+                4.8964924,
+                52.36449
+              ],
+              [
+                4.8965314,
+                52.364411
+              ],
+              [
+                4.8965625,
+                52.364417
+              ],
+              [
+                4.896741,
+                52.3644514
+              ],
+              [
+                4.8966176,
+                52.3646926
+              ],
+              [
+                4.896531,
+                52.3646765
+              ],
+              [
+                4.8964962,
+                52.36467
+              ],
+              [
+                4.8964106,
+                52.3646541
+              ]
+            ]
+          ]
+        ]
+      },
+      "partyWallBearings": [
+        73,
+        253
+      ],
+      "partyWallNote": "The east side (556) adjoins Herengracht 558 and the west side (542) Herengracht 540 (pand 0363100012171082, also hotel floor space, not modelled); both BAG rings share these walls.",
+      "buildingCategory": "landmark",
+      "bounds": {
+        "min": [
+          -46.804893493652344,
+          -0.009999997913837433,
+          -20.43548583984375
+        ],
+        "max": [
+          49.05204772949219,
+          21.7450008392334,
+          34.20335388183594
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.8970971,
+          52.3647182
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 90,
+        "facadeBearingDegrees": 162.70000000000005,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 95.85694122314453,
+        "heightMetres": 21.755000837147236,
+        "depthMetres": 54.63883972167969,
+        "depthCoverage": 0.5980608550971945
+      },
+      "triangles": 27898,
+      "bytes": 331252,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
+      "lod1": {
+        "sourceHash": "761e8a608fc3a710",
+        "buildVersion": 2,
+        "bytes": 86320,
+        "triangles": 4325
+      }
+    },
+    "de-burcht": {
+      "id": "de-burcht",
+      "name": "De Burcht (Burcht van Berlage)",
+      "modelUrl": "./models/de-burcht.glb",
+      "suppressOsmIds": [
+        "NL.IMBAG.Pand.0363100012170603",
+        "tower:NL.IMBAG.Pand.0363100012170603"
+      ],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.91086217,
+          52.3680999
+        ],
+        "headingDegrees": 0,
+        "lengthMetres": 32.5,
+        "widthMetres": 28.9
+      },
+      "surveyed": {
+        "anchor": [
+          4.91086217,
+          52.3680999
+        ],
+        "northOffsetDegrees": 0,
+        "source": "Vertex average of the BAG 0363100012170603 footprint; one closed prism per 3DBAG LoD2.2 roof plane except the tower, which is authored (scripts/landmarks/de-burcht-footprints.json, de-burcht-prepare.ts), native east/south metres. Front, tower, parapet, stair and windows read from the Gemeente Amsterdam panorama b_20241210_1246_Track22_Sphere_00058 and the RCE photographs on Wikimedia Commons (scripts/landmarks/de-burcht-inventory.json)."
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 0,
+      "heightMetres": 26.9,
+      "bagYear": 1900,
+      "materialOverrides": {
+        "brick": "#b5806a",
+        "stone": "#d6cab0",
+        "concrete": "#b2af99",
+        "slate": "#6f6d5c",
+        "frame": "#a76d3d",
+        "copper": "#9b652f",
+        "ochre": "#e0b46c",
+        "red": "#b8553a",
+        "pink": "#a5604c",
+        "bronze": "#3a3631",
+        "greyBrick": "#8a8178",
+        "glass": "#5a6064",
+        "white": "#e8e6df",
+        "canopyGlass": "#9fb2b8"
+      },
+      "attribution": {
+        "title": "De Burcht, vakbondsgebouw van de ANDB (H.P. Berlage, 1899-1900)",
+        "author": "Map Recall",
+        "sourceUrl": "https://nl.wikipedia.org/wiki/Burcht_van_Berlage",
+        "licence": "CC BY 4.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "modifications": "Original texture-free flat-colour geometry: tower, crenellated parapet, A N D B panels, entrance arch and stair, window groups from the Gemeente Amsterdam panoramas (CC BY 4.0) and RCE photographs on Wikimedia Commons (CC BY-SA 4.0), read for proportion only; massing is the 3DBAG LoD2.2 roof planes (CC BY 4.0) on the BAG footprint (CC0). No pixels or meshes imported."
+      },
+      "buildingFootprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.91100572,
+              52.36818423
+            ],
+            [
+              4.91087205,
+              52.36823025
+            ],
+            [
+              4.91087077,
+              52.3682288
+            ],
+            [
+              4.91084196,
+              52.36819747
+            ],
+            [
+              4.91082754,
+              52.3681818
+            ],
+            [
+              4.91069679,
+              52.36803949
+            ],
+            [
+              4.91069795,
+              52.3680389
+            ],
+            [
+              4.9107089,
+              52.36803513
+            ],
+            [
+              4.91080259,
+              52.36800283
+            ],
+            [
+              4.91081242,
+              52.36799944
+            ],
+            [
+              4.91098778,
+              52.36793896
+            ],
+            [
+              4.91112062,
+              52.36808355
+            ],
+            [
+              4.91096306,
+              52.3681378
+            ],
+            [
+              4.91100572,
+              52.36818423
+            ]
+          ]
+        ]
+      },
+      "buildingCategory": "landmark",
+      "bounds": {
+        "min": [
+          -13.050040245056152,
+          -2.3841858265427618e-8,
+          -14.512999534606934
+        ],
+        "max": [
+          17.590625762939453,
+          26.850000381469727,
+          18.293048858642578
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.91086217,
+          52.3680999
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 90,
+        "facadeBearingDegrees": 0,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 32.80604839324951,
+        "heightMetres": 26.850000405311583,
+        "depthMetres": 30.640666007995605,
+        "depthCoverage": 1.060230657716111
+      },
+      "triangles": 8268,
+      "bytes": 129960,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
+      "lod1": {
+        "sourceHash": "1768ecdf65823a24",
+        "buildVersion": 2,
+        "bytes": 53620,
+        "triangles": 1985
+      }
+    },
+    "eerste-openluchtschool": {
+      "id": "eerste-openluchtschool",
+      "name": "Eerste Openluchtschool voor het Gezonde Kind",
+      "modelUrl": "./models/eerste-openluchtschool.glb",
+      "suppressOsmIds": [
+        "NL.IMBAG.Pand.0363100012090993",
+        "NL.IMBAG.Pand.0363100012098627"
+      ],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.87442135,
+          52.34795184
+        ],
+        "headingDegrees": 0,
+        "lengthMetres": 64.5,
+        "widthMetres": 30
+      },
+      "surveyed": {
+        "anchor": [
+          4.87442135,
+          52.34795184
+        ],
+        "northOffsetDegrees": 0,
+        "source": "Vertex average of the BAG 0363100012090993 (school) footprint; the gatehouse BAG 0363100012098627 shifted into the same frame (scripts/landmarks/eerste-openluchtschool-footprints.json, eerste-openluchtschool-prepare.ts), native east/south metres. Diamond plan from the 3DBAG LoD2.2 roof planes and the PDOK orthophoto; loggias, slab bands, window walls, stair hall and gate front read from the Rijksmonument 46504 register text, Commons photographs and the Gemeente Amsterdam panorama of the gate (scripts/landmarks/eerste-openluchtschool-inventory.json)."
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 0,
+      "heightMetres": 18.1,
+      "bagYear": 1932,
+      "materialOverrides": {
+        "white": "#e6e4dc",
+        "glass": "#4d5f6a",
+        "blue": "#2e4a78",
+        "red": "#d65a2c",
+        "concrete": "#c9cdcc",
+        "slate": "#707270"
+      },
+      "attribution": {
+        "title": "Eerste Openluchtschool voor het Gezonde Kind (J. Duiker, 1929-30)",
+        "author": "Map Recall",
+        "sourceUrl": "https://monumentenregister.cultureelerfgoed.nl/monumenten/46504",
+        "licence": "CC BY 4.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "modifications": "Original texture-free flat-colour geometry: loggias, slab bands, window walls, stair hall, gymnasium and gatehouse front from the Rijksmonument 46504 register text (CC0), photographs on Wikimedia Commons (RCE CC BY-SA 4.0, Nationaal Archief public domain, Flickr no known restrictions, CC BY-SA 2.0) and the Gemeente Amsterdam panorama of the gate (CC BY 4.0), read for proportion only; plan from 3DBAG LoD2.2 (CC BY 4.0), BAG (CC0) and the PDOK orthophoto (CC BY 4.0). No pixels or meshes imported."
+      },
+      "buildingFootprint": {
+        "type": "MultiPolygon",
+        "coordinates": [
+          [
+            [
+              [
+                4.87447254,
+                52.34798061
+              ],
+              [
+                4.87445694,
+                52.34798909
+              ],
+              [
+                4.87447064,
+                52.34799847
+              ],
+              [
+                4.87448655,
+                52.34799018
+              ],
+              [
+                4.87449649,
+                52.34799698
+              ],
+              [
+                4.8744011,
+                52.34804886
+              ],
+              [
+                4.87434842,
+                52.34804707
+              ],
+              [
+                4.87427502,
+                52.34799736
+              ],
+              [
+                4.87429339,
+                52.34798678
+              ],
+              [
+                4.87421247,
+                52.34793135
+              ],
+              [
+                4.8743077,
+                52.34787869
+              ],
+              [
+                4.87439502,
+                52.34783183
+              ],
+              [
+                4.87447533,
+                52.34788737
+              ],
+              [
+                4.87457722,
+                52.34783125
+              ],
+              [
+                4.87465145,
+                52.34788179
+              ],
+              [
+                4.87447254,
+                52.34798061
+              ]
+            ]
+          ],
+          [
+            [
+              [
+                4.87456986,
+                52.34760198
+              ],
+              [
+                4.87456837,
+                52.34760192
+              ],
+              [
+                4.87456888,
+                52.34759618
+              ],
+              [
+                4.8745673,
+                52.34759613
+              ],
+              [
+                4.87456742,
+                52.34759471
+              ],
+              [
+                4.87446901,
+                52.34759145
+              ],
+              [
+                4.87446603,
+                52.34762503
+              ],
+              [
+                4.87446588,
+                52.3476261
+              ],
+              [
+                4.87446556,
+                52.34762715
+              ],
+              [
+                4.87446509,
+                52.34762818
+              ],
+              [
+                4.87446447,
+                52.34762919
+              ],
+              [
+                4.87446373,
+                52.34763016
+              ],
+              [
+                4.87446284,
+                52.34763108
+              ],
+              [
+                4.87446182,
+                52.34763196
+              ],
+              [
+                4.87446068,
+                52.34763277
+              ],
+              [
+                4.87445943,
+                52.34763352
+              ],
+              [
+                4.87445809,
+                52.34763421
+              ],
+              [
+                4.87445665,
+                52.34763481
+              ],
+              [
+                4.87445511,
+                52.34763534
+              ],
+              [
+                4.87445352,
+                52.34763579
+              ],
+              [
+                4.87445188,
+                52.34763614
+              ],
+              [
+                4.87445018,
+                52.34763641
+              ],
+              [
+                4.87444845,
+                52.34763658
+              ],
+              [
+                4.8744467,
+                52.34763666
+              ],
+              [
+                4.87444496,
+                52.34763666
+              ],
+              [
+                4.8744432,
+                52.34763655
+              ],
+              [
+                4.87444145,
+                52.34763635
+              ],
+              [
+                4.87443974,
+                52.34763606
+              ],
+              [
+                4.87443809,
+                52.34763567
+              ],
+              [
+                4.87443649,
+                52.3476352
+              ],
+              [
+                4.87443497,
+                52.34763464
+              ],
+              [
+                4.87443354,
+                52.347634
+              ],
+              [
+                4.8744322,
+                52.34763329
+              ],
+              [
+                4.87443097,
+                52.3476325
+              ],
+              [
+                4.87442985,
+                52.34763166
+              ],
+              [
+                4.87442888,
+                52.34763075
+              ],
+              [
+                4.87442803,
+                52.3476298
+              ],
+              [
+                4.87442732,
+                52.34762881
+              ],
+              [
+                4.87442676,
+                52.34762777
+              ],
+              [
+                4.87442635,
+                52.34762672
+              ],
+              [
+                4.87442609,
+                52.34762564
+              ],
+              [
+                4.87442599,
+                52.34762456
+              ],
+              [
+                4.87442605,
+                52.34762347
+              ],
+              [
+                4.87443516,
+                52.34752945
+              ],
+              [
+                4.87447273,
+                52.34753082
+              ],
+              [
+                4.87447403,
+                52.34751726
+              ],
+              [
+                4.87447578,
+                52.34749914
+              ],
+              [
+                4.8745757,
+                52.3475028
+              ],
+              [
+                4.87458016,
+                52.34750297
+              ],
+              [
+                4.87456986,
+                52.34760198
+              ]
+            ]
+          ]
+        ]
+      },
+      "buildingCategory": "landmark",
+      "bounds": {
+        "min": [
+          -13.985078811645508,
+          0,
+          -10.800999641418457
+        ],
+        "max": [
+          15.694875717163086,
+          18.14900016784668,
+          51.511962890625
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.87442135,
+          52.34795184
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 90,
+        "facadeBearingDegrees": 0,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 62.31296253204346,
+        "heightMetres": 18.14900016784668,
+        "depthMetres": 29.679954528808594,
+        "depthCoverage": 0.9893318176269531
+      },
+      "triangles": 6328,
+      "bytes": 99220,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
+      "lod1": {
+        "sourceHash": "8ae0d4a333f2b7e6",
+        "buildVersion": 2,
+        "bytes": 29304,
+        "triangles": 1221
+      }
+    },
+    "blauwbrug": {
+      "id": "blauwbrug",
+      "name": "Blauwbrug",
+      "modelUrl": "./models/blauwbrug.glb",
+      "suppressOsmIds": [],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.9008813,
+          52.3663569
+        ],
+        "headingDegrees": 69.1,
+        "lengthMetres": 48.9,
+        "widthMetres": 25
+      },
+      "surveyed": {
+        "anchor": [
+          4.9008813,
+          52.3663569
+        ],
+        "northOffsetDegrees": 0,
+        "source": "Bridge frame along bearing 69.1 deg from the OSM man_made=bridge outline (48.9 x 21.2 m) and the Gemeente Amsterdam register outline BRU0236 (pier notches at 16.1 and 32.8 m); deck kept 6 cm under the game's ride surface (scripts/landmarks/blauwbrug-footprints.json rideProfile, bridge-deck-probe.ts). Native X east, Z south, y = scene z; groundAltitudeMetres puts the pier feet (-2.4) on the runtime's anchor base (0.486). Faces read from the Gemeente Amsterdam boat panoramas TMX7316010203-000355_pano_0001_001567 and -000354_pano_0001_001572 (CC BY 4.0) and Wikimedia Commons photographs; Rijksmonument 518352 register text (three passages, ship-bow piers, eight red granite columns with sixteen lanterns and imperial crowns, white limestone vase balustrade)."
+      },
+      "groundAltitudeMetres": -2.886,
+      "facingOffsetDegrees": 0,
+      "bagYear": 1883,
+      "materialOverrides": {
+        "stone": "#8f9493",
+        "slate": "#5d6262",
+        "white": "#c9bfae",
+        "red": "#7c4b42",
+        "gold": "#c8a24a",
+        "dark": "#2e3437",
+        "ochre": "#d9cf9c",
+        "brick": "#985846",
+        "concrete": "#8a8b86",
+        "frame": "#2e3437"
+      },
+      "attribution": {
+        "title": "Blauwbrug (brug 236, 1883)",
+        "author": "Map Recall; bridge by W. Springer and B. de Greef, ornament J. Springer",
+        "sourceUrl": "https://monumentenregister.cultureelerfgoed.nl/monumenten/518352",
+        "licence": "CC BY 4.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "modifications": "Original texture-free geometry authored from Gemeente Amsterdam panoramas (CC BY 4.0) and Wikimedia Commons photographs \"Blauwbrug.jpg\" (M.Minderhoud, CC BY-SA 3.0, https://commons.wikimedia.org/wiki/File:Blauwbrug.jpg) and \"Blauwbrug amsterdam.jpg\" (Jvhertum, CC BY-SA 3.0, https://commons.wikimedia.org/wiki/File:Blauwbrug_amsterdam.jpg) as visual reference only; no photo pixels or imported meshes."
+      },
+      "throughPassages": [
+        {
+          "axisBearing": 159.1,
+          "corridor": [
+            [
+              -26.79,
+              -5.4
+            ],
+            [
+              -14.41,
+              -10.13
+            ],
+            [
+              -3.99,
+              17.15
+            ],
+            [
+              -16.37,
+              21.88
+            ]
+          ],
+          "evidence": "Blauwbrug west side arch: one of the three navigable passages of the Amstel under the bridge (Rijksmonument 518352: 'drie doorvaarten'; boat panoramas TMX7316010203-000355_pano_0001_001567 and -000354_pano_0001_001572 look through it). Corridor = the opening along the bridge axis (bridge frame along -23.1..-9.85 m) across the whole deck width plus 4 m each side, in model-local east/south metres; the water runs at bearing 159.1/339.1."
+        },
+        {
+          "axisBearing": 159.1,
+          "corridor": [
+            [
+              -11.61,
+              -11.2
+            ],
+            [
+              1.19,
+              -16.08
+            ],
+            [
+              11.61,
+              11.2
+            ],
+            [
+              -1.19,
+              16.08
+            ]
+          ],
+          "evidence": "Blauwbrug flat central span: one of the three navigable passages of the Amstel under the bridge (Rijksmonument 518352: 'drie doorvaarten'; boat panoramas TMX7316010203-000355_pano_0001_001567 and -000354_pano_0001_001572 look through it). Corridor = the opening along the bridge axis (bridge frame along -6.85..6.85 m) across the whole deck width plus 4 m each side, in model-local east/south metres; the water runs at bearing 159.1/339.1."
+        },
+        {
+          "axisBearing": 159.1,
+          "corridor": [
+            [
+              3.99,
+              -17.15
+            ],
+            [
+              16.37,
+              -21.88
+            ],
+            [
+              26.79,
+              5.4
+            ],
+            [
+              14.41,
+              10.13
+            ]
+          ],
+          "evidence": "Blauwbrug east side arch: one of the three navigable passages of the Amstel under the bridge (Rijksmonument 518352: 'drie doorvaarten'; boat panoramas TMX7316010203-000355_pano_0001_001567 and -000354_pano_0001_001572 look through it). Corridor = the opening along the bridge axis (bridge frame along 9.85..23.1 m) across the whole deck width plus 4 m each side, in model-local east/south metres; the water runs at bearing 159.1/339.1."
+        }
+      ],
+      "buildingCategory": "landmark",
+      "bounds": {
+        "min": [
+          -27.359106063842773,
+          -9.536743306171047e-8,
+          -20.08302879333496
+        ],
+        "max": [
+          27.359106063842773,
+          11.421649932861328,
+          20.08302879333496
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.9008813,
+          52.3663569
+        ],
+        "altitudeMetres": -2.886,
+        "modelRotationDegrees": 90,
+        "facadeBearingDegrees": 69.10000000000002,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 54.71821212768555,
+        "heightMetres": 11.421650028228761,
+        "depthMetres": 40.16605758666992,
+        "depthCoverage": 1.606642303466797
+      },
+      "triangles": 25992,
+      "bytes": 401448,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
+      "lod1": {
+        "sourceHash": "5d46d293ff21dc52",
+        "buildVersion": 2,
+        "bytes": 75900,
+        "triangles": 3910
+      }
+    },
+    "magere-brug": {
+      "id": "magere-brug",
+      "name": "Magere Brug",
+      "modelUrl": "./models/magere-brug.glb",
+      "suppressOsmIds": [],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.9023713,
+          52.3635814
+        ],
+        "headingDegrees": 73,
+        "lengthMetres": 74,
+        "widthMetres": 11
+      },
+      "surveyed": {
+        "anchor": [
+          4.9023713,
+          52.3635814
+        ],
+        "northOffsetDegrees": 0,
+        "source": "Bridge frame along bearing 73 deg from the Gemeente Amsterdam register footprint BRU0242 (fixed spans 32 m x 9.9 m either side of the 4.75 m bascule section); deck kept 6 cm under the game's ride surface (scripts/landmarks/magere-brug-footprints.json rideProfile, bridge-deck-probe.ts), which over this unmeasured footprint is the relief, about 1 m under the real deck. Native X east, Z south, y = scene z; groundAltitudeMetres puts the pier feet (-2.3) on the runtime's anchor base (-0.252). Faces read from the boat panoramas TMX7316010203-000355_pano_0000_000633 and _000625 (CC BY 4.0) and Wikimedia Commons photographs; Rijksmonument 518383."
+      },
+      "groundAltitudeMetres": -2.048,
+      "facingOffsetDegrees": 0,
+      "bagYear": 1934,
+      "materialOverrides": {
+        "slate": "#77766f",
+        "concrete": "#8e8d87",
+        "ochre": "#d9cf9c",
+        "red": "#c0392b",
+        "bronze": "#2f2b27",
+        "stone": "#e0dccf",
+        "copper": "#2b2f30",
+        "green": "#e6e2d6"
+      },
+      "attribution": {
+        "title": "Magere Brug (brug 242, 1934)",
+        "author": "Map Recall",
+        "sourceUrl": "https://monumentenregister.cultureelerfgoed.nl/monumenten/518383",
+        "licence": "CC BY 4.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "modifications": "Original texture-free geometry authored from Gemeente Amsterdam panoramas (CC BY 4.0) and Wikimedia Commons photographs \"Magere brug amsterdam.jpg\" (Jvhertum, CC BY-SA 3.0, https://commons.wikimedia.org/wiki/File:Magere_brug_amsterdam.jpg) and \"Magerebrug.jpg\" (CC BY-SA 3.0, https://commons.wikimedia.org/wiki/File:Magerebrug.jpg) as visual reference only; no photo pixels or imported meshes."
+      },
+      "buildingCategory": "landmark",
+      "bounds": {
+        "min": [
+          -36.87833023071289,
+          4.7683716530855236e-8,
+          -15.651599884033203
+        ],
+        "max": [
+          36.87833023071289,
+          9.408527374267578,
+          15.651599884033203
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.9023713,
+          52.3635814
+        ],
+        "altitudeMetres": -2.048,
+        "modelRotationDegrees": 90,
+        "facadeBearingDegrees": 73,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 73.75666046142578,
+        "heightMetres": 9.408527326583862,
+        "depthMetres": 31.303199768066406,
+        "depthCoverage": 2.8457454334605825
+      },
+      "triangles": 15088,
+      "bytes": 237764,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
+      "lod1": {
+        "sourceHash": "e8c99d8e2714c970",
+        "buildVersion": 2,
+        "bytes": 46764,
+        "triangles": 2275
+      }
+    },
+    "kiosk-dr-falafel": {
+      "id": "kiosk-dr-falafel",
+      "name": "Dr. Falafel kiosk",
+      "landmarkId": "osm_food_6428422982",
+      "modelUrl": "./models/kiosk-dr-falafel.glb",
+      "suppressOsmIds": [
+        "NL.IMBAG.Pand.0363100012243757",
+        "w685877394"
+      ],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.8766915,
+          52.3683325
+        ],
+        "headingDegrees": 285.85,
+        "lengthMetres": 5.035,
+        "widthMetres": 3.055
+      },
+      "surveyed": {
+        "anchor": [
+          4.8766915,
+          52.3683325
+        ],
+        "northOffsetDegrees": 0,
+        "source": "bag-pand: BAG pand 0363100012243757 (2016) outline, vertex average as the anchor; the outline is the roof slab, the glazed walls (4.5 x 2.5 m) stand 0.27 m inside it. Native east/south metres; panel order, heights and lettering from Gemeente Amsterdam panoramas recording_2025-06-30_05-16-46_00533 / _00537 and recording_2025-07-31_10-53-44_00800 (CC BY 4.0). See scripts/landmarks/kiosk-dr-falafel-footprints.json and -inventory.json."
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 0,
+      "heightMetres": 3.1,
+      "bagYear": 2016,
+      "assetKind": "building",
+      "materialOverrides": {
+        "copper": "#e2e5e2",
+        "concrete": "#a3aaab",
+        "slate": "#474d52",
+        "glass": "#4f5d60",
+        "dark": "#2e3236",
+        "gold": "#f2f2ee",
+        "frame": "#b9bdbb",
+        "green": "#6f7f4c"
+      },
+      "attribution": {
+        "title": "Dr. Falafel kiosk, Nassaukade 900",
+        "author": "Map Recall",
+        "sourceUrl": "https://www.openstreetmap.org/node/6428422982",
+        "licence": "CC BY 4.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "modifications": "Original low-poly reconstruction from the typed kiosk kit (glass variant): white-framed glazed and grey panels with black corner posts, glazed door, steel bar gate, a dark overhanging roof slab with a metal edge band and a planted roof with grass tufts, and the Dr. Falafel lettering as raised pixel capitals. Footprint from BAG (CC0); proportions, panel order and tints read from Gemeente Amsterdam panoramas (CC BY 4.0). No photo pixels or imported meshes."
+      },
+      "buildingCategory": "landmark",
+      "bounds": {
+        "min": [
+          -2.212226629257202,
+          6.705522803684971e-10,
+          -2.9010868072509766
+        ],
+        "max": [
+          2.212226629257202,
+          3.5064139366149902,
+          2.9010868072509766
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.8766915,
+          52.3683325
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 90,
+        "facadeBearingDegrees": 285.85,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 5.802173614501953,
+        "heightMetres": 3.5064139359444377,
+        "depthMetres": 4.424453258514404,
+        "depthCoverage": 1.448266205733029
+      },
+      "triangles": 2076,
+      "bytes": 39684,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+    },
+    "kiosk-mr-blou": {
+      "id": "kiosk-mr-blou",
+      "name": "Mr Blou I Love You kiosk",
+      "landmarkId": "osm_food_9039944077",
+      "modelUrl": "./models/kiosk-mr-blou.glb",
+      "suppressOsmIds": [
+        "w1311060949"
+      ],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.8775558,
+          52.3689958
+        ],
+        "headingDegrees": 336.19,
+        "lengthMetres": 4.699,
+        "widthMetres": 2.189
+      },
+      "surveyed": {
+        "anchor": [
+          4.8775558,
+          52.3689958
+        ],
+        "northOffsetDegrees": 0,
+        "source": "osm-way (measured outline): no BAG pand or standplaats; OSM building way w1311060949 (4.70 x 2.19 m) under shop node 9039944077, vertex average as the anchor, checked against Gemeente Amsterdam panoramas recording_2025-07-03_10-31-52_00262 and TMX7316010203-002637_pano_0000_000002 / _000005 (CC BY 4.0). Heights approximate (scaled on a 0.95 m counter). See scripts/landmarks/kiosk-mr-blou-footprints.json."
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 0,
+      "heightMetres": 2.94,
+      "assetKind": "building",
+      "materialOverrides": {
+        "copper": "#7d8380",
+        "concrete": "#8d918c",
+        "ochre": "#c9b26a",
+        "dark": "#26292a",
+        "glass": "#5d6b6c",
+        "stone": "#e3dcc0",
+        "gold": "#23272a",
+        "green": "#3f6b4a",
+        "slate": "#2e332e"
+      },
+      "attribution": {
+        "title": "Mr Blou I Love You, Elandsgracht 150",
+        "author": "Map Recall",
+        "sourceUrl": "https://www.openstreetmap.org/node/9039944077",
+        "licence": "CC BY 4.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "modifications": "Original low-poly reconstruction from the typed kiosk kit: grey louvred box with an open serving front, glass vitrine, yellow boarded counter base, menu chalkboard band and three cream fascia boards, the name board lettered MR BLOU I LOVE YOU / VEGAN in raised pixel capitals. Outline from OpenStreetMap (ODbL); proportions and tints read from Gemeente Amsterdam panoramas (CC BY 4.0); tints scaled out of tree shade. No photo pixels or imported meshes."
+      },
+      "buildingFootprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.877518,
+              52.368996
+            ],
+            [
+              4.877581,
+              52.369013
+            ],
+            [
+              4.877594,
+              52.368995
+            ],
+            [
+              4.87753,
+              52.368979
+            ],
+            [
+              4.877518,
+              52.368996
+            ]
+          ]
+        ]
+      },
+      "buildingCategory": "landmark",
+      "bounds": {
+        "min": [
+          -2.5992510318756104,
+          6.705522803684971e-10,
+          -2.0044493675231934
+        ],
+        "max": [
+          2.615251064300537,
+          2.940000057220459,
+          1.9982707500457764
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.8775558,
+          52.3689958
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 90,
+        "facadeBearingDegrees": 336.19000000000005,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 5.2145020961761475,
+        "heightMetres": 2.9400000565499065,
+        "depthMetres": 4.00272011756897,
+        "depthCoverage": 1.8285610404609272
+      },
+      "triangles": 1740,
+      "bytes": 36640,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+    },
+    "kiosk-dumplings-nassauplein": {
+      "id": "kiosk-dumplings-nassauplein",
+      "name": "Dumplings kiosk, Nassauplein",
+      "landmarkId": "osm_food_6426744735",
+      "modelUrl": "./models/kiosk-dumplings-nassauplein.glb",
+      "suppressOsmIds": [
+        "NL.IMBAG.Pand.0363100012243758",
+        "w685669039"
+      ],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.8809795,
+          52.3854477
+        ],
+        "headingDegrees": 135.11,
+        "lengthMetres": 5.017,
+        "widthMetres": 3.064
+      },
+      "surveyed": {
+        "anchor": [
+          4.8809795,
+          52.3854477
+        ],
+        "northOffsetDegrees": 0,
+        "source": "bag-pand: BAG pand 0363100012243758 (2016) outline, vertex average as the anchor; the outline is the roof slab, walls 4.45 x 2.5 m inside it. Bays, screens, awning and tints from Gemeente Amsterdam panoramas recording_2024-09-09_11-28-19_00254, recording_2025-06-17_10-48-55_00795 and 2025_09_29_05_45_16_00793 (CC BY 4.0). See scripts/landmarks/kiosk-dumplings-nassauplein-footprints.json."
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 0,
+      "heightMetres": 3.1,
+      "bagYear": 2016,
+      "assetKind": "building",
+      "materialOverrides": {
+        "copper": "#e0e3df",
+        "glass": "#4c5a5f",
+        "concrete": "#d2d0c7",
+        "dark": "#3f4549",
+        "slate": "#434a4f",
+        "frame": "#c3c8c7",
+        "green": "#6a7a52",
+        "red": "#8a3a36",
+        "stone": "#8a8f8f"
+      },
+      "attribution": {
+        "title": "Dumplings kiosk, Nassauplein 60",
+        "author": "Map Recall",
+        "sourceUrl": "https://www.openstreetmap.org/node/6426744735",
+        "licence": "CC BY 4.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "modifications": "Original low-poly reconstruction from the typed kiosk kit (glass variant): white-framed glazed bays and double door, dark corner posts, two red windscreen leaves, a grey retractable awning, a dark slab with a metal band, a planted roof with grass tufts and a flue. Footprint from BAG (CC0); bays, proportions and tints read from Gemeente Amsterdam panoramas (CC BY 4.0). No photo pixels or imported meshes."
+      },
+      "buildingCategory": "landmark",
+      "bounds": {
+        "min": [
+          -2.9422049522399902,
+          6.705522803684971e-10,
+          -2.912557601928711
+        ],
+        "max": [
+          2.9082047939300537,
+          3.559999942779541,
+          3.3550570011138916
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.8809795,
+          52.3854477
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 90,
+        "facadeBearingDegrees": 135.11,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 6.2676146030426025,
+        "heightMetres": 3.5599999421089885,
+        "depthMetres": 5.850409746170044,
+        "depthCoverage": 1.9094026586716852
+      },
+      "triangles": 992,
+      "bytes": 24924,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+    },
+    "kiosk-frens-haringhandel": {
+      "id": "kiosk-frens-haringhandel",
+      "name": "Frens Haringhandel",
+      "landmarkId": "osm_food_2179747557",
+      "modelUrl": "./models/kiosk-frens-haringhandel.glb",
+      "suppressOsmIds": [
+        "NL.IMBAG.Pand.0363100012176251",
+        "w266907976"
+      ],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.8894325,
+          52.3672947
+        ],
+        "headingDegrees": 230.84,
+        "lengthMetres": 4.306,
+        "widthMetres": 3.461
+      },
+      "surveyed": {
+        "anchor": [
+          4.8894325,
+          52.3672947
+        ],
+        "northOffsetDegrees": 0,
+        "source": "bag-pand: BAG pand 0363100012176251 (1983) outline, vertex average as the anchor; walls 4.2 x 3.35 m inside it, top 2.79 m (BAG tile). Panels, grilles, fascia and tints from Gemeente Amsterdam panoramas recording_2025-06-16_06-42-40_00636 / _00632, recording_2025-06-19_03-28-47_01535 and b_20250120_0926_Track17_Sphere_00005 (CC BY 4.0). See scripts/landmarks/kiosk-frens-haringhandel-footprints.json."
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 0,
+      "heightMetres": 2.79,
+      "bagYear": 1983,
+      "assetKind": "building",
+      "materialOverrides": {
+        "blue": "#2b3a5c",
+        "ochre": "#c98f45",
+        "bronze": "#b98f5a",
+        "glass": "#4a5858",
+        "stone": "#c4c6c0",
+        "copper": "#d6dbd6",
+        "gold": "#ece4c8",
+        "concrete": "#9a9c98",
+        "greyBrick": "#4a5056",
+        "sandstone": "#a9b2b2"
+      },
+      "attribution": {
+        "title": "Frens Haringhandel, Koningsplein",
+        "author": "Map Recall",
+        "sourceUrl": "https://www.openstreetmap.org/way/266907976",
+        "licence": "CC BY 4.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "modifications": "Original low-poly reconstruction from the typed kiosk kit, drawn shut as in the panoramas: navy frame, base and fascia lettered FRENS HARINGHANDEL AMSTERDAM, timber corners, wood-and-glass bays behind diamond-lattice roll grilles, the serving front behind a square grille and roller shutter, roof plant, on a concrete platform. Footprint from BAG (CC0); tints and proportions from Gemeente Amsterdam panoramas (CC BY 4.0). No photo pixels or imported meshes."
+      },
+      "buildingCategory": "landmark",
+      "bounds": {
+        "min": [
+          -3.101301670074463,
+          -0.020000001415610313,
+          -3.185458183288574
+        ],
+        "max": [
+          3.1333017349243164,
+          3.1500000953674316,
+          3.1714582443237305
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.8894325,
+          52.3672947
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 90,
+        "facadeBearingDegrees": 230.84000000000003,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 6.356916427612305,
+        "heightMetres": 3.170000096783042,
+        "depthMetres": 6.234603404998779,
+        "depthCoverage": 1.801387866223282
+      },
+      "triangles": 1868,
+      "bytes": 34636,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+    },
+    "kiosk-stubbes-haring": {
+      "id": "kiosk-stubbes-haring",
+      "name": "Stubbe's Haring",
+      "landmarkId": "osm_food_5203239222",
+      "modelUrl": "./models/kiosk-stubbes-haring.glb",
+      "suppressOsmIds": [
+        "NL.IMBAG.Pand.0363100012179484",
+        "w266621072"
+      ],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.8942388,
+          52.3790635
+        ],
+        "headingDegrees": 224.15,
+        "lengthMetres": 5.986,
+        "widthMetres": 2.978
+      },
+      "surveyed": {
+        "anchor": [
+          4.8942388,
+          52.3790635
+        ],
+        "northOffsetDegrees": 0,
+        "source": "bag-standplaats: BAG standplaats 0363030011957763 (Singel 8 M, registered 2016) polygon, vertex average as the anchor, which is OSM node 5203239222 (Stubbe's Haring); walls 5.7 x 2.75 m inside it; heights from 3DBAG pand 0363100012179484 (eaves 2.7 m, top 2.95 m), which sits 99% inside the standplaats. Panels, roof and sign from Gemeente Amsterdam panoramas recording_2025-06-16_03-46-32_01055 / _01048 (CC BY 4.0). See scripts/landmarks/kiosk-stubbes-haring-footprints.json."
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 0,
+      "heightMetres": 3.45,
+      "assetKind": "building",
+      "materialOverrides": {
+        "stone": "#e8e6df",
+        "bronze": "#6b5137",
+        "slate": "#8e9396",
+        "gold": "#2a2a2a",
+        "blue": "#3c6fa8"
+      },
+      "attribution": {
+        "title": "Stubbe's Haring, Haarlemmersluis",
+        "author": "Map Recall",
+        "sourceUrl": "https://www.openstreetmap.org/node/5203239222",
+        "licence": "CC BY 4.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "modifications": "Original low-poly reconstruction from the typed kiosk kit, drawn shut as in the panoramas: white shutter box with a roller-shuttered end under a grey zinc hip roof, the STUBBE HARING ridge board with two blue leaping fish. Graffiti not drawn. Footprint from the BAG standplaats (CC0); proportions and tints from Gemeente Amsterdam panoramas (CC BY 4.0). No photo pixels or imported meshes."
+      },
+      "buildingCategory": "landmark",
+      "bounds": {
+        "min": [
+          -3.1723568439483643,
+          -7.450580707946131e-10,
+          -3.1414120197296143
+        ],
+        "max": [
+          3.1723568439483643,
+          3.4784693717956543,
+          3.1414120197296143
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.8942388,
+          52.3790635
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 90,
+        "facadeBearingDegrees": 224.14999999999998,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 6.3447136878967285,
+        "heightMetres": 3.4784693725407125,
+        "depthMetres": 6.2828240394592285,
+        "depthCoverage": 2.109746151598129
+      },
+      "triangles": 908,
+      "bytes": 19364,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+    },
+    "kiosk-haringhandel-jonk": {
+      "id": "kiosk-haringhandel-jonk",
+      "name": "Haringhandel Jonk",
+      "landmarkId": "osm_food_9860683033",
+      "modelUrl": "./models/kiosk-haringhandel-jonk.glb",
+      "suppressOsmIds": [
+        "NL.IMBAG.Pand.0363100012247454",
+        "w1381187931"
+      ],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.890787,
+          52.368854
+        ],
+        "headingDegrees": 338.48,
+        "lengthMetres": 3.991,
+        "widthMetres": 3.453
+      },
+      "surveyed": {
+        "anchor": [
+          4.890787,
+          52.368854
+        ],
+        "northOffsetDegrees": 0,
+        "source": "bag-pand: BAG pand 0363100012247454 (2018) outline, vertex average as the anchor (OSM node 9860683033 Haringhandel Jonk is 0.6 m away); shutter walls 3.75 x 3.21 m inside it; heights from 3DBAG (eaves 3.0 m, top 3.12 m). Shutters, logo and slab from Gemeente Amsterdam panoramas recording_2025-06-30_05-16-46_00991 / _00992 / _00994 (CC BY 4.0). See scripts/landmarks/kiosk-haringhandel-jonk-footprints.json."
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 0,
+      "heightMetres": 3.12,
+      "assetKind": "building",
+      "materialOverrides": {
+        "slate": "#3a4641",
+        "bronze": "#2c3533",
+        "gold": "#a8946e"
+      },
+      "attribution": {
+        "title": "Haringhandel Jonk, Spui",
+        "author": "Map Recall",
+        "sourceUrl": "https://www.openstreetmap.org/node/9860683033",
+        "licence": "CC BY 4.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "modifications": "Original low-poly reconstruction from the typed kiosk kit, drawn shut as in the panoramas: dark green roller shutters on all four faces under a thick dark roof slab, the JONK / Volendammer Haringhandel lettering on three faces (fish outline not drawn). Footprint and heights from BAG/3DBAG (CC0); tints from Gemeente Amsterdam panoramas (CC BY 4.0), lettering tan estimated by eye. No photo pixels or imported meshes."
+      },
+      "buildingCategory": "landmark",
+      "bounds": {
+        "min": [
+          -2.4887025356292725,
+          -1.4305114426349519e-8,
+          -2.3365674018859863
+        ],
+        "max": [
+          2.4887025356292725,
+          3.119999885559082,
+          2.3365674018859863
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.890787,
+          52.368854
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 90,
+        "facadeBearingDegrees": 338.48,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 4.977405071258545,
+        "heightMetres": 3.1199998998641965,
+        "depthMetres": 4.673134803771973,
+        "depthCoverage": 1.353354996748327
+      },
+      "triangles": 2280,
+      "bytes": 35860,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+    },
+    "kiosk-museumplein": {
+      "id": "kiosk-museumplein",
+      "name": "Kiosk Rembrandt Van Gogh",
+      "landmarkId": "osm_cafe_6657813385",
+      "modelUrl": "./models/kiosk-museumplein.glb",
+      "suppressOsmIds": [
+        "NL.IMBAG.Pand.0363100012151388",
+        "w277104686"
+      ],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.8831423,
+          52.3592532
+        ],
+        "headingDegrees": 336.25,
+        "lengthMetres": 6.027,
+        "widthMetres": 2.68
+      },
+      "surveyed": {
+        "anchor": [
+          4.8831423,
+          52.3592532
+        ],
+        "northOffsetDegrees": 0,
+        "source": "bag-pand: BAG pand 0363100012151388 (2000) outline, vertex average as the anchor (OSM node 6657813385 is 0.9 m away); walls 5.9 x 2.6 m; height from 3DBAG (eaves 3.0 m, top 3.16 m). Posters, ends and roof units from Gemeente Amsterdam panoramas recording_2025-09-29_08-09-56_01192 / _01190 / _01195 (CC BY 4.0). See scripts/landmarks/kiosk-museumplein-footprints.json."
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 0,
+      "heightMetres": 3.4,
+      "assetKind": "building",
+      "materialOverrides": {
+        "slate": "#435056",
+        "concrete": "#8c9290",
+        "copper": "#d4d2c8",
+        "stone": "#cfccc2",
+        "glass": "#4a5258",
+        "red": "#9c8580",
+        "bronze": "#5a5a62",
+        "sandstone": "#75767e",
+        "ochre": "#a89a64",
+        "blue": "#4d5878"
+      },
+      "attribution": {
+        "title": "Kiosk Rembrandt Van Gogh, Museumplein",
+        "author": "Map Recall",
+        "sourceUrl": "https://www.openstreetmap.org/node/6657813385",
+        "licence": "CC BY 4.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "modifications": "Original low-poly reconstruction from the typed kiosk kit: dark slate box with six poster panels drawn as flat tinted glass (no images), a pale service door under a small awning, a door end and two roof units. Footprint and height from BAG/3DBAG (CC0); tints are panorama medians (Gemeente Amsterdam, CC BY 4.0) taken in tree shade and lifted about 25% to the sunlit 2024 view after the review sheet read too dark. No photo pixels or imported meshes."
+      },
+      "buildingCategory": "landmark",
+      "bounds": {
+        "min": [
+          -3.249281406402588,
+          8.940696516468449e-10,
+          -2.4005494117736816
+        ],
+        "max": [
+          3.2772812843322754,
+          3.319999933242798,
+          2.434549331665039
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.8831423,
+          52.3592532
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 90,
+        "facadeBearingDegrees": 336.25,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 6.526562690734863,
+        "heightMetres": 3.319999932348728,
+        "depthMetres": 4.835098743438721,
+        "depthCoverage": 1.804141322178627
+      },
+      "triangles": 564,
+      "bytes": 19228,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
     }
   }
 }

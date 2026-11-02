@@ -1,0 +1,81 @@
+{
+ "id": "kiosk-frens-haringhandel",
+ "generatedBy": "node --import tsx scripts/landmarks/kiosk-footprint.ts --id=kiosk-frens-haringhandel --pand=0363100012176251 --near=52.3672889,4.889437",
+ "source": {
+  "kind": "bag-pand",
+  "id": "0363100012176251",
+  "url": "https://api.data.amsterdam.nl/v1/bag/panden/0363100012176251/",
+  "licence": "CC0 (BAG)",
+  "properties": {
+   "id": "NL.IMBAG.Pand.0363100012176251",
+   "tier": 3,
+   "minHeight": 0,
+   "height": 2.79,
+   "eaves": 2.6,
+   "roof": 3,
+   "year": 1983,
+   "osm": [
+    "w266907976"
+   ]
+  }
+ },
+ "anchor": [
+  4.8894325,
+  52.3672947
+ ],
+ "ringLngLat": [
+  [
+   4.889432,
+   52.367319
+  ],
+  [
+   4.889393,
+   52.3673
+  ],
+  [
+   4.889433,
+   52.36727
+  ],
+  [
+   4.889472,
+   52.36729
+  ],
+  [
+   4.889432,
+   52.367319
+  ]
+ ],
+ "localEastSouthMetres": [
+  [
+   -0.034,
+   -2.7
+  ],
+  [
+   -2.685,
+   -0.584
+  ],
+  [
+   0.034,
+   2.755
+  ],
+  [
+   2.685,
+   0.529
+  ]
+ ],
+ "areaM2": 14.61,
+ "rect": {
+  "centre": [
+   0.016,
+   -0.007
+  ],
+  "widthM": 4.306,
+  "depthM": 3.461,
+  "frontBearing": 230.84
+ },
+ "notes": [
+  "BAG pand 0363100012176251 (1983, OSM w266907976 ref:bag) is the kiosk; walls 4.2 x 3.35 m inside the 4.31 x 3.46 m outline. Front = the serving side with the roller shutter (bearing 231).",
+  "Heights: BAG tile 2.79 m (3DBAG eaves 2.6 m) as the top; storey divisions scaled from the SE end in recording_2025-06-16_06-42-40_00636.",
+  "The concrete platform (0.35 m margin) is outside the BAG outline."
+ ]
+}

@@ -1,0 +1,39 @@
+{
+ "id": "kiosk-dr-falafel",
+ "countedBy": "kiosk lane (opus) from the rectified west crop and the aimed south/north panoramas, 2026-11-01; NOT a blind count, integrator may re-count",
+ "facades": [
+  {
+   "name": "west (front, Nassaukade)",
+   "bearing": 286,
+   "photo": "artifacts/landmark-briefs/kiosk-dr-falafel/w02-286.jpg",
+   "rows": [
+    1
+   ],
+   "columns": 1,
+   "symmetric": true,
+   "gables": 0
+  },
+  {
+   "name": "south (bridge end)",
+   "bearing": 196,
+   "photo": "artifacts/kiosks/drf-n/s-2025-07-31-b198-d26.jpg",
+   "rows": [
+    1
+   ],
+   "columns": 1,
+   "symmetric": false,
+   "gables": 0
+  },
+  {
+   "name": "north (door end)",
+   "bearing": 16,
+   "photo": "artifacts/kiosks/dr-falafel2/p-2025-06-30-b25-d13.jpg",
+   "rows": [
+    1
+   ],
+   "columns": 1,
+   "symmetric": false,
+   "gables": 0
+  }
+ ]
+}

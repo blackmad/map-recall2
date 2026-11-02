@@ -241,6 +241,33 @@ test('landmark ground re-bases are throttled with a trailing pass; trees re-base
   extras.tick(LANDMARK_REBASE_MS * 3); assert.equal(landmark, 2, 'nothing due');
 });
 
+test('street furniture (#170): built with the extras, suspended with the flight, re-based on the relief; absent without its bundle', async () => {
+  const { CityExtras } = await import('./cityExtras');
+  const host = { cameraMap: { api: {} }, sharedFrame: {}, mercator: {}, extractPath: () => '/data/extracts/amsterdam', threeBuildings: () => null, completeCity: () => null,
+    measuredColoursOnly: () => false, trees3d: false, repaint: () => {}, relight: () => {}, fail: (what: string, e: unknown) => { throw new Error(`${what}: ${String(e)}`); } };
+  const g = globalThis as any, log: string[] = [];
+  class StreetFurniture {
+    constructor(_m: unknown, _mc: unknown, o: { sharedFrame: unknown }) { log.push(`new:${o.sharedFrame === host.sharedFrame}`); }
+    load(root: string) { log.push(`load:${root}`); }
+    setSuspended(v: boolean) { log.push(`suspended:${v}`); }
+    setGroundBase(fn: unknown) { log.push(`ground:${typeof fn}`); }
+    refreshGroundBases() { log.push('rebase'); }
+  }
+  try {
+    new CityExtras(host).start();
+    assert.equal(g.__canalStreetFurniture, undefined, 'no bundle, no layer');
+    g.CanalRecallStreetFurniture = { StreetFurniture, furnitureFlag: () => false };
+    assert.equal(new CityExtras(host).furniture, null);
+    const off = new CityExtras(host); off.start(); assert.equal(off.furniture, null, '?furniture=0');
+    g.CanalRecallStreetFurniture.furnitureFlag = () => true;
+    const extras = new CityExtras(host); extras.start();
+    extras.setSuspended(true);
+    extras.hookGround({ ready: true, pointBase: () => 0 });
+    extras.refreshGroundBases(0);
+    assert.deepEqual(log, ['new:true', 'load:/data/extracts/amsterdam', 'suspended:true', 'ground:function', 'rebase']);
+  } finally { delete g.CanalRecallStreetFurniture; delete g.__canalStreetFurniture; }
+});
+
 test('labels: full placement only after real camera movement', async () => {
   const { movedEnough, samePose } = await import('./overlays/labelLayer');
   const a = [0, 0, 18, 30, 60] as const;

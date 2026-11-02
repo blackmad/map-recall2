@@ -1,0 +1,589 @@
+{
+ "schemaVersion": 1,
+ "id": "zuiderbad",
+ "pand": "0363100012233523",
+ "brief": "scripts/landmarks/zuiderbad-brief.md",
+ "signature": [
+  "e-stepped-gables",
+  "n-tower-lunette",
+  "e-balustrade",
+  "s-chimney",
+  "e-speklagen",
+  "n-lettering",
+  "e-pinnacles"
+ ],
+ "walls": [
+  {
+   "tag": "w01-274",
+   "bearing": 274,
+   "lengthM": 53.8,
+   "centre": [
+    4.8857745,
+    52.3584185
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": false,
+   "items": [],
+   "note": "courtyard side (bicycle parking), no panorama; left as the plain 3DBAG wall"
+  },
+  {
+   "tag": "w02-183",
+   "bearing": 183,
+   "lengthM": 18.7,
+   "centre": [
+    4.885887,
+    52.3581725
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001709_pano_0000_000046",
+   "capturedAt": "2020-05-14",
+   "checked": true,
+   "items": [],
+   "note": "the crop is mostly the neighbouring fire station; the Zuiderbad south wall shows only the window and courses already listed under w04-183"
+  },
+  {
+   "tag": "w03-13",
+   "bearing": 13,
+   "lengthM": 18.2,
+   "centre": [
+    4.886021,
+    52.358707
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000781_pano_0000_005904",
+   "capturedAt": "2018-06-07",
+   "checked": true,
+   "items": [
+    {
+     "id": "n-lettering",
+     "kind": "lettering",
+     "where": "north front, over the centre door: ZUIDERBAD in a stone panel with a curved top inside the entrance surround",
+     "approxSizeM": [
+      1.6,
+      0.35
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316060226-000012_pano_0000_004072",
+     "how": "raisedLettering on a stone panel, 0.3 m letters"
+    },
+    {
+     "id": "n-entrance-surround",
+     "kind": "other",
+     "where": "north front centre, ground storey: pale stone surround around the door and two narrow side lights, segmental hood with the name panel",
+     "approxSizeM": [
+      3.8,
+      4.4
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316060226-000012_pano_0000_004072",
+     "how": "northFront(): stone jambs, lintel and hood"
+    },
+    {
+     "id": "n-tower-lunette",
+     "kind": "window-shape",
+     "where": "hall-gable tower behind the north front: large semicircular window with white mullions",
+     "approxSizeM": [
+      5.0,
+      2.5
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-000781_pano_0000_005904",
+     "how": "tower(): half-disc glazing, yellow arch band, white frame and radial-ish bars"
+    },
+    {
+     "id": "n-tower-crown",
+     "kind": "tower",
+     "where": "top of the hall-gable tower: balustrade between corner piers with pinnacles and a stepped central crest",
+     "approxSizeM": [
+      8.0,
+      1.6
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-000781_pano_0000_005904",
+     "how": "tower()"
+    },
+    {
+     "id": "n-front-balustrade",
+     "kind": "other",
+     "where": "north front parapet 9.75-10.7 m with four piers",
+     "approxSizeM": [
+      18.2,
+      1.0
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-000781_pano_0000_005904",
+     "how": "balustrade()"
+    },
+    {
+     "id": "n-arched-window-groups",
+     "kind": "window-shape",
+     "where": "north front first floor: three-light round-arched groups in the side bays, a two-light group in the centre",
+     "approxSizeM": [
+      2.7,
+      3.6
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-000781_pano_0000_005904",
+     "how": "arched lights with yellow arch bands"
+    },
+    {
+     "id": "n-crow-steps",
+     "kind": "other",
+     "where": "north hall gable shoulders, stepped down from the tower to the eaves, seen over the front parapet",
+     "approxSizeM": [
+      10,
+      5.7
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-000781_pano_0000_005904",
+     "how": "crowSteps() along the 3DBAG gable walls"
+    },
+    {
+     "id": "n-flagpoles",
+     "kind": "other",
+     "where": "two flagpoles on the tower roof",
+     "approxSizeM": [
+      0.1,
+      7
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-000781_pano_0000_005904",
+     "how": "two thin poles, 6 m"
+    }
+   ]
+  },
+  {
+   "tag": "w04-183",
+   "bearing": 183,
+   "lengthM": 11.4,
+   "centre": [
+    4.8861175,
+    52.3581655
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316060226-000012_pano_0000_004125",
+   "capturedAt": "2016-08-03",
+   "checked": true,
+   "items": [
+    {
+     "id": "s-chimney",
+     "kind": "tower",
+     "where": "round tapering brick chimney with dark bands at the south-east corner, top about 21 m (triangulated from panoramas TMX7316010203-000783_pano_0000_002359 and TMX7316060226-000012_pano_0000_004125)",
+     "approxSizeM": [
+      2.0,
+      21
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316060226-000012_pano_0000_004125",
+     "how": "chimney(): tapered 12-sided shaft with bands and a corbelled cap"
+    },
+    {
+     "id": "s-crow-steps",
+     "kind": "other",
+     "where": "south hall gable: crow-stepped raking parapet with a yellow corbel band, east of the lantern end",
+     "approxSizeM": [
+      11,
+      5.7
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316060226-000012_pano_0000_004125",
+     "how": "crowSteps() with a raking yellow band"
+    },
+    {
+     "id": "s-lantern-end",
+     "kind": "tower",
+     "where": "south end of the roof lantern: paired round-arched windows under a balustrade with corner piers",
+     "approxSizeM": [
+      8,
+      4.5
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316060226-000012_pano_0000_004125",
+     "how": "tower(south)"
+    },
+    {
+     "id": "s-window",
+     "kind": "window-shape",
+     "where": "south wall east part: one large three-light window at first-floor level over a segmental-arched ground opening",
+     "approxSizeM": [
+      2.6,
+      3.2
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316060226-000012_pano_0000_004125",
+     "how": "upperWindow()"
+    }
+   ]
+  },
+  {
+   "tag": "w05-273",
+   "bearing": 273,
+   "lengthM": 8.4,
+   "centre": [
+    4.8858015,
+    52.3586975
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002453_pano_0000_000626",
+   "capturedAt": "2022-03-21",
+   "checked": true,
+   "items": [
+    {
+     "id": "w-lantern-glazing",
+     "kind": "window-shape",
+     "where": "glazed clerestory band along the hall roof lantern, seen from the north-west",
+     "approxSizeM": [
+      50,
+      2.4
+     ],
+     "plan": "modelled",
+     "seenIn": "b_20241211_0838_Track20_Sphere_00034",
+     "how": "lantern side walls glazed with frame mullions every 1.2 m"
+    },
+    {
+     "id": "w-north-block-windows",
+     "kind": "window-shape",
+     "where": "west side of the north block over the annex: two three-light round-arched groups and a balustrade",
+     "approxSizeM": [
+      2.3,
+      2.8
+     ],
+     "plan": "modelled",
+     "seenIn": "b_20241211_0838_Track20_Sphere_00034",
+     "how": "arched lights"
+    }
+   ]
+  },
+  {
+   "tag": "w06-13",
+   "bearing": 13,
+   "lengthM": 6,
+   "centre": [
+    4.885847,
+    52.358729
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000785_pano_0000_000001",
+   "capturedAt": "2018-06-12",
+   "checked": true,
+   "items": [
+    {
+     "id": "nw-annex-window",
+     "kind": "window-shape",
+     "where": "one-storey north-west annex: three-light window under three round arches",
+     "approxSizeM": [
+      3.1,
+      2.9
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-000785_pano_0000_000001",
+     "how": "arched lights"
+    },
+    {
+     "id": "nw-annex-balustrade",
+     "kind": "other",
+     "where": "annex parapet 4.3-5.1 m",
+     "approxSizeM": [
+      6,
+      0.8
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-000785_pano_0000_000001",
+     "how": "balustrade()"
+    },
+    {
+     "id": "nw-banner",
+     "kind": "sign",
+     "where": "printed banner on the north block wall above the annex",
+     "approxSizeM": [
+      2,
+      1.5
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7316010203-000785_pano_0000_000001",
+     "skip": {
+      "reason": "temporary",
+      "note": "event banner, changes between captures"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "w07-94",
+   "bearing": 94,
+   "lengthM": 4.9,
+   "centre": [
+    4.886233,
+    52.358543
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-09-29_08-09-56_01876",
+   "capturedAt": "2025-09-29",
+   "checked": true,
+   "items": [
+    {
+     "id": "e-balustrade",
+     "kind": "other",
+     "where": "parapet over the seven non-gable bays, 10.05-10.95 m: brick balusters under a rail, over a corbel frieze",
+     "approxSizeM": [
+      4.9,
+      0.9
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-09-29_08-09-56_01876",
+     "how": "balustrade(): base course, balusters at 0.32 m, rail; corbel frieze as a yellow band with corbel blocks under a projecting cornice"
+    },
+    {
+     "id": "e-pinnacles",
+     "kind": "tower",
+     "where": "every pilaster (10 on the Hobbemakade front) rises 1.2 m above the parapet with a capped pyramid pinnacle",
+     "approxSizeM": [
+      0.8,
+      1.9
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-09-29_08-09-56_01876",
+     "how": "pilasterTop()"
+    },
+    {
+     "id": "e-speklagen",
+     "kind": "other",
+     "where": "yellow brick courses about every metre across walls and pilasters, broken by the window surrounds",
+     "approxSizeM": [
+      50,
+      0.12
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-09-29_08-09-56_01876",
+     "how": "bands(): yellow ledge strips per bay segment, gapped at openings"
+    },
+    {
+     "id": "e-segmental-tympana",
+     "kind": "window-shape",
+     "where": "every first-floor and ground-floor opening: segmental yellow arch over a brick tympanum with yellow lozenges",
+     "approxSizeM": [
+      3.0,
+      0.5
+     ],
+     "plan": "simplified",
+     "seenIn": "recording_2025-09-29_08-09-56_01876",
+     "how": "segmental yellow band plus three raised lozenges in the tympanum"
+    },
+    {
+     "id": "e-first-floor-windows",
+     "kind": "window-shape",
+     "where": "one large white three-light window with transom per bay, 5.1-8.3 m",
+     "approxSizeM": [
+      2.6,
+      3.2
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-09-29_08-09-56_01876",
+     "how": "upperWindow()"
+    }
+   ]
+  },
+  {
+   "tag": "w08-94",
+   "bearing": 94,
+   "lengthM": 4.9,
+   "centre": [
+    4.886224,
+    52.358442
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-09-29_08-09-56_01874",
+   "capturedAt": "2025-09-29",
+   "checked": true,
+   "items": [],
+   "note": "same bay vocabulary as w07/w13 (balustrade or stepped gable, one large first-floor window, one ground opening); ground opening per bay recorded in zuiderbad-elevations.json"
+  },
+  {
+   "tag": "w09-94",
+   "bearing": 94,
+   "lengthM": 4.9,
+   "centre": [
+    4.886211,
+    52.358291
+   ],
+   "evidence": "photo",
+   "panoId": "b_20241211_0838_Track01_Sphere_00154",
+   "capturedAt": "2024-12-11",
+   "checked": true,
+   "items": [],
+   "note": "same bay vocabulary as w07/w13 (balustrade or stepped gable, one large first-floor window, one ground opening); ground opening per bay recorded in zuiderbad-elevations.json"
+  },
+  {
+   "tag": "w10-94",
+   "bearing": 94,
+   "lengthM": 4.9,
+   "centre": [
+    4.886202,
+    52.35819
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000783_pano_0000_002359",
+   "capturedAt": "2018-06-11",
+   "checked": true,
+   "items": [],
+   "note": "same bay vocabulary as w07/w13 (balustrade or stepped gable, one large first-floor window, one ground opening); ground opening per bay recorded in zuiderbad-elevations.json"
+  },
+  {
+   "tag": "w11-93",
+   "bearing": 93,
+   "lengthM": 4.9,
+   "centre": [
+    4.8862375,
+    52.358593
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000783_pano_0000_002368",
+   "capturedAt": "2018-06-11",
+   "checked": true,
+   "items": [
+    {
+     "id": "e-rounded-corner",
+     "kind": "other",
+     "where": "north end of the Hobbemakade front: one-storey quarter-round corner with large windows under paired arches and a curved balustrade at 4.8 m",
+     "approxSizeM": [
+      9,
+      5.5
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-000783_pano_0000_002368",
+     "how": "3DBAG curved wall kept; curved balustrade, yellow courses and three windows placed on the arc segments"
+    },
+    {
+     "id": "e-street-sign",
+     "kind": "sign",
+     "where": "blue Hobbemakade street-name plate beside the ground window of bay 9",
+     "approxSizeM": [
+      0.5,
+      0.2
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7316010203-000783_pano_0000_002368",
+     "skip": {
+      "reason": "too-small",
+      "note": "street-name plate, under 0.2 m tall"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "w12-93",
+   "bearing": 93,
+   "lengthM": 4.9,
+   "centre": [
+    4.8862155,
+    52.358341
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000258_pano_0002_004230",
+   "capturedAt": "2017-04-12",
+   "checked": true,
+   "items": [],
+   "note": "same bay vocabulary as w07/w13 (balustrade or stepped gable, one large first-floor window, one ground opening); ground opening per bay recorded in zuiderbad-elevations.json"
+  },
+  {
+   "tag": "w13-94",
+   "bearing": 94,
+   "lengthM": 4.8,
+   "centre": [
+    4.886229,
+    52.3584925
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-09-29_08-09-56_01875",
+   "capturedAt": "2025-09-29",
+   "checked": true,
+   "items": [
+    {
+     "id": "e-stepped-gables",
+     "kind": "other",
+     "where": "bays 3 and 7 of the nine Hobbemakade bays (counted from the south), above the parapet line",
+     "approxSizeM": [
+      4.9,
+      6.0
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-09-29_08-09-56_01875",
+     "how": "zuiderbad-builder.ts eastGable(): stepped-shoulder gable wall 10-15.2 m with a finial to 16 m, five round-headed blind niches with yellow outlines, yellow coping"
+    },
+    {
+     "id": "e-diamond-band",
+     "kind": "relief",
+     "where": "gable bays, 10.0-11.1 m, under the niches: yellow lozenges on red brick between yellow courses",
+     "approxSizeM": [
+      4.9,
+      1.1
+     ],
+     "plan": "simplified",
+     "seenIn": "recording_2025-09-29_08-09-56_01875",
+     "how": "one row of raised yellow lozenges between two yellow courses"
+    },
+    {
+     "id": "e-triple-doors",
+     "kind": "other",
+     "where": "ground storey of bays 5 and 7: three glazed red doors under one transom in a yellow segmental arch",
+     "approxSizeM": [
+      2.8,
+      3.4
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-09-29_08-09-56_01875",
+     "how": "groundOpening(door3)"
+    }
+   ]
+  },
+  {
+   "tag": "w14-94",
+   "bearing": 94,
+   "lengthM": 4.8,
+   "centre": [
+    4.88622,
+    52.3583915
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-09-29_08-09-56_01873",
+   "capturedAt": "2025-09-29",
+   "checked": true,
+   "items": [],
+   "note": "same bay vocabulary as w07/w13 (balustrade or stepped gable, one large first-floor window, one ground opening); ground opening per bay recorded in zuiderbad-elevations.json"
+  },
+  {
+   "tag": "w15-94",
+   "bearing": 94,
+   "lengthM": 4.8,
+   "centre": [
+    4.886207,
+    52.3582405
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002117_pano_0000_004389",
+   "capturedAt": "2021-04-26",
+   "checked": true,
+   "items": [],
+   "note": "same bay vocabulary as w07/w13 (balustrade or stepped gable, one large first-floor window, one ground opening); ground opening per bay recorded in zuiderbad-elevations.json"
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  },
+  {
+   "name": "PDOK Luchtfoto RGB (actueel)",
+   "url": "https://service.pdok.nl/hwh/luchtfotorgb/wms/v1_0",
+   "licence": "CC BY 4.0"
+  },
+  {
+   "name": "3DBAG",
+   "url": "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012233523",
+   "licence": "CC BY 4.0"
+  }
+ ]
+}

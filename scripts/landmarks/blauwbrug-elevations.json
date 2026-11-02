@@ -1,0 +1,29 @@
+{
+ "id": "blauwbrug",
+ "countedBy": "lane landmarks-bridges-20261101 (#175, opus) from the rectified city boat panoramas before the model was rendered: north face TMX7316010203-000355_pano_0001_001567 (artifacts/bridges/BRU0236/photo-m.jpg), south face TMX7316010203-000354_pano_0001_001572 (photo-p.jpg). A bridge has no glazed openings, so rows and window axes are left null; both faces read symmetric about the centre span (three openings, two prow piers, four pylons a side) with no gable. Gables are the silhouette peaks: the four near-side pylons stand clear above the balustrade in both panoramas (the far-side four hide behind them).",
+ "facades": [
+  {
+   "name": "north",
+   "bearing": 339.1,
+   "photo": "artifacts/bridges/BRU0236/photo-m.jpg",
+   "rows": [],
+   "symmetric": true,
+   "gables": 4,
+   "openings": [
+    "glass"
+   ]
+  },
+  {
+   "name": "south",
+   "bearing": 159.1,
+   "photo": "artifacts/bridges/BRU0236/photo-p.jpg",
+   "rows": [],
+   "symmetric": true,
+   "gables": 4,
+   "openings": [
+    "glass"
+   ]
+  }
+ ],
+ "note": "openings are 'glass' only: a bridge face has no windows. On these models 'dark' is the spandrel slot and roundel recesses, the shield pales and the iron work, which the photos show as ornament, not openings."
+}

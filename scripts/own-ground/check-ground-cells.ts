@@ -20,6 +20,7 @@ import { buildCell, compareHits, layersAt, type BuiltCell } from '../../src/cana
 import { GroundSurface } from '../../src/canalRecall/ownGround/surface.ts';
 import { buildFarBlock, farBlockOf, FAR_BLOCK_BUDGET } from '../../src/canalRecall/ownGround/farRing.ts';
 import { bridgeFacts, flatHintAt, kitTrace, KIT_BUDGET, parapetTrace, registerHint, type KitInput, type KitRow } from '../../src/canalRecall/ownGround/bridgeKit.ts';
+import { bespokeBridge } from '../../src/canalRecall/ownGround/bespokeBridges.ts';
 import { parapetCrossings, type ParapetPoint } from '../../src/canalRecall/ownGround/railingRuns.ts';
 // Named canal-belt bridges (bridgeHints BRIDGE_FACTS, lane bridge-fidelity 2026-10-14) take the named tier.
 const budgetOf = (id: string) => (bridgeFacts(id)?.named ? { near: KIT_BUDGET.named, far: KIT_BUDGET.namedFar } : { near: KIT_BUDGET.near, far: KIT_BUDGET.far });
@@ -342,6 +343,13 @@ async function main(): Promise<void> {
       // The bridge kit (lane bridge-kit 2026-10-13): these are all canal-belt arch bridges (masonry, or pre-1940 humped iron
       // decks behind brick arch faces), each within the kit's budget at both rings, pillars and railing on both edges.
       const info = near.stats.bridges.decks.find(d => d.id === id), farInfo = far.stats.bridges.decks.find(d => d.id === id);
+      // A bespoke landmark draws this bridge's body (bespokeBridges.ts, #175): the kit leaves it to the model at both
+      // rings, and the model is a placed, exported catalogue entry (bespokeBridges.test.ts holds the same).
+      const model = bespokeBridge(id);
+      if (model) {
+        check(!info && !farInfo && !!near.stats.bridges.bespoke?.includes(id) && !!far.stats.bridges.bespoke?.includes(id), `${id}: kit body left to the bespoke model ${model} (kit ${info ? 'drawn' : 'not drawn'})`);
+        check(existsSync(`public/canal-drive/models/${model}.glb`), `${id}: ${model}.glb exported`);
+      } else {
       check(!!info && info.kind === 'arch' && info.arches >= 1, `${id}: drawn as an arch bridge (${info?.kind}, ${info?.arches} arches)`);
       const B = budgetOf(id);
       check(!!info && info.triangles <= B.near && !!farInfo && farInfo.triangles <= B.far, `${id}: ${info?.triangles} triangles near (≤ ${B.near}), ${farInfo?.triangles} far (≤ ${B.far})`);
@@ -352,6 +360,7 @@ async function main(): Promise<void> {
       const f = bridgeFacts(id);
       if (f?.arches) check(!!info && info.arches === f.arches, `${id}: ${info?.arches} openings (measured ${f.arches})`);
       else check(!!info && (waterM > 13 ? info.piers >= 1 : waterM < 11 ? info.piers === 0 : true), `${id}: ${info?.piers} piers for ${waterM.toFixed(1)} m of water`);
+      }
     }
     check(!!near.layers.deckBody && (near.layers.deckBody.indices.length > 0), `${id}: deck body built`);
     check(!!near.layers.quay && !!near.layers.water, `${id}: quay walls and water in the cell`);
@@ -371,8 +380,15 @@ async function main(): Promise<void> {
     const cx = ring.reduce((s, q) => s + q[0], 0) / ring.length, cy = ring.reduce((s, q) => s + q[1], 0) / ring.length;
     const r = layersAt(cell, cx, cy), info = cell.stats.bridges.flat.find(f => f.id === id);
     check(r.hits.some(h => h.layer === 'deckTop') && r.top !== 'water', `${id}: deck top at the footprint centre (top ${r.top})`);
+    const model = bespokeBridge(id);
+    if (model) {
+      // A bespoke landmark draws the railings and the bascule frames (bespokeBridges.ts, #175): the kit draws only the top.
+      check(!!info && info.railingPosts === 0 && info.frames === 0 && !!cell.stats.bridges.bespoke?.includes(id), `${id}: railings and ${frames} frame units left to the bespoke model ${model} (kit ${info?.railingPosts} posts, ${info?.frames} frames)`);
+      check(existsSync(`public/canal-drive/models/${model}.glb`), `${id}: ${model}.glb exported`);
+    } else {
     check(!!info && info.railingPosts >= 8, `${id}: railings along the water (${info?.railingPosts} posts)`);
     check(!!info && info.frames === frames, `${id}: ${info?.frames} movable-bridge frame units (want ${frames})`);
+    }
   }
   // Bridge kit (lane bridge-kit 2026-10-13): the user's spots. Shot 1, a Prinsengracht-class bridge (Reesluis); shot 2, the
   // Brouwersgracht/Herengracht junction: the West-Indische Huisbrug and the Melkmeisjesbrug footbridge beside it, whose

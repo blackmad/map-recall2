@@ -1,0 +1,33 @@
+{
+ "id": "kiosk-dumplings-nassauplein",
+ "countedBy": "kiosk lane (opus) from front-crop.png and sides-zoom.jpg, 2026-11-01; NOT a blind count",
+ "facades": [
+  {
+   "name": "front (Nassauplein)",
+   "bearing": 135,
+   "photo": "artifacts/kiosks/dumplings/front-crop.png",
+   "rows": [
+    1
+   ],
+   "columns": 1,
+   "symmetric": false,
+   "gables": 0
+  },
+  {
+   "name": "north-east end",
+   "bearing": 45,
+   "photo": "artifacts/kiosks/dumplings/sides-zoom.jpg",
+   "rows": [
+    1
+   ],
+   "columns": 1,
+   "symmetric": true,
+   "gables": 0,
+   "alongM": [
+    1.0,
+    4.06
+   ],
+   "note": "alongM crops to the end wall and its roof slab: the front awning (1.28 m out) and the red windscreen project past the corner on the viewer-left and are not bays of this end."
+  }
+ ]
+}
