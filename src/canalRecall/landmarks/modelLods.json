@@ -2206,5 +2206,11 @@
   "buildVersion": 2,
   "bytes": 25692,
   "triangles": 810
+ },
+ "rietveld-academie-2006": {
+  "sourceHash": "799ca908d0e8a9cc",
+  "buildVersion": 2,
+  "bytes": 40180,
+  "triangles": 1897
  }
 }
