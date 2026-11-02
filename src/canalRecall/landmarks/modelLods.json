@@ -2164,5 +2164,17 @@
   "buildVersion": 2,
   "bytes": 20336,
   "triangles": 615
+ },
+ "the-edge": {
+  "sourceHash": "480562ef9015bc8e",
+  "buildVersion": 2,
+  "bytes": 44236,
+  "triangles": 2437
+ },
+ "akzonobel-center": {
+  "sourceHash": "754638560554e56d",
+  "buildVersion": 2,
+  "bytes": 41528,
+  "triangles": 2230
  }
 }

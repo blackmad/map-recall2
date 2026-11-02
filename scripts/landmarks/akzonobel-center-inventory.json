@@ -1,0 +1,263 @@
+{
+ "schemaVersion": 1,
+ "id": "akzonobel-center",
+ "pand": "0363100012240149",
+ "brief": "scripts/landmarks/akzonobel-center-brief.md",
+ "signature": [
+  "lean-glass",
+  "w-akzonobel",
+  "two-volumes",
+  "s-curtain",
+  "se-earth"
+ ],
+ "walls": [
+  {
+   "tag": "w01-177",
+   "bearing": 177,
+   "lengthM": 27.4,
+   "centre": [
+    4.878003,
+    52.3399885
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2024-09-03_05-21-23_00280",
+   "capturedAt": "2024-09-03",
+   "checked": true,
+   "items": [
+    {
+     "id": "s-curtain",
+     "kind": "window-shape",
+     "where": "south front of the east volume above the plinth: a pale outer glass skin, full-height panes between thin mullions, perforated-metal strips every second joint, faint floor lines, the inner windows showing through",
+     "approxSizeM": [
+      60,
+      33
+     ],
+     "plan": "simplified",
+     "seenIn": "recording_2024-09-03_05-21-23_00280",
+     "how": "curtain() skin 'skin': pale glass wall, frame mullions every ~1.8 m, 0.3 m stone-coloured strips 14 cm proud over every plinth mullion, 6 cm floor lines; the inner windows behind the skin are not drawn"
+    },
+    {
+     "id": "s-plinth",
+     "kind": "window-shape",
+     "where": "two-storey glazed plinth: white mullions, a white first-floor band, thin timber-brown fins on the first floor, doors",
+     "approxSizeM": [
+      60,
+      8.6
+     ],
+     "plan": "simplified",
+     "seenIn": "recording_2024-09-03_05-21-23_00280",
+     "how": "plinth(): glass on a dark base, white mullions 0.32 m every ~3.6 m, white band at 4.3-4.9 m, white louvre band under the plinth top, a bronze (timber) fin midway between the mullions on the east volume; doors not cut"
+    },
+    {
+     "id": "s-lean-edge",
+     "kind": "other",
+     "where": "west end of the south front: the white diagonal edge where the leaning blue glass meets the front, the front stepping up beside it",
+     "approxSizeM": [
+      7,
+      33
+     ],
+     "plan": "modelled",
+     "seenIn": "commons:Akzo_Nobel_Headquarters_(1).jpg (Ceescamel, CC BY-SA 4.0)",
+     "how": "the south-front walls under the slope take their top from the slope; a 0.3 m white rim bar on the slope side edge"
+    },
+    {
+     "id": "roof-pv",
+     "kind": "other",
+     "where": "solar panel fields over both roofs (orthophoto)",
+     "approxSizeM": [
+      60,
+      15
+     ],
+     "plan": "simplified",
+     "seenIn": "PDOK orthophoto (Actueel_orthoHR)",
+     "how": "dark slate roof colour; panels not drawn"
+    }
+   ]
+  },
+  {
+   "tag": "w02-147",
+   "bearing": 147,
+   "lengthM": 19.1,
+   "centre": [
+    4.877473,
+    52.340056
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2024-09-03_05-21-23_00275",
+   "capturedAt": "2024-09-03",
+   "checked": true,
+   "items": [
+    {
+     "id": "lean-glass",
+     "kind": "window-shape",
+     "where": "between the two volumes over the entrance: a plane of blue glass leaning back from the plinth top to the roof, gridded, with white edges",
+     "approxSizeM": [
+      17.5,
+      33
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2024-09-03_05-21-23_00275",
+     "how": "canopyGlass plane from the entrance front at 8.6 m to the roof 5.5 m back (orthophoto patch), frame transoms every storey and mullions every 3 m, white rims on both side edges and the foot"
+    },
+    {
+     "id": "se-earth",
+     "kind": "lettering",
+     "where": "first floor of the west wedge plinth: the word EARTH in large white letters, repeated round the nose",
+     "approxSizeM": [
+      5.2,
+      1.4
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2024-09-03_05-21-23_00275",
+     "how": "EARTH in 0.2 m pixel letters 6 cm proud, once per 8 m of plinth on the wedge"
+    },
+    {
+     "id": "se-steps",
+     "kind": "other",
+     "where": "broad steps up to the entrance terrace and a black stone planter wall",
+     "approxSizeM": [
+      9,
+      0.7
+     ],
+     "plan": "simplified",
+     "seenIn": "recording_2024-09-03_05-21-23_00275",
+     "how": "four concrete steps 8.5 m wide in front of the entrance front; the black stone planter wall is left out (it chained with the plinth trims in the audit)"
+    },
+    {
+     "id": "two-volumes",
+     "kind": "other",
+     "where": "the west wedge rises about 3 m above the east volume (3DBAG 45.2 vs 41.8 m NAP)",
+     "approxSizeM": [
+      30,
+      3
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2024-09-03_05-21-23_00275",
+     "how": "west wedge roof at 44.3 m, east volume 41.2 m; the wedge faces above the east roof are frit"
+    },
+    {
+     "id": "se-akzonobel",
+     "kind": "lettering",
+     "where": "crown of the west wedge SE face toward the nose: AkzoNobel in blue letters over the entrance square",
+     "approxSizeM": [
+      9,
+      1.2
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2024-09-03_05-21-23_00275",
+     "how": "letters() as w-akzonobel, a third of the way along the face from the nose"
+    }
+   ]
+  },
+  {
+   "tag": "w03-286",
+   "bearing": 286,
+   "lengthM": 16.8,
+   "centre": [
+    4.8773475,
+    52.3400965
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2024-12-20_09-04-31_03850",
+   "capturedAt": "2024-12-20",
+   "checked": true,
+   "items": [
+    {
+     "id": "w-akzonobel",
+     "kind": "lettering",
+     "where": "crown of the west wedge, W face toward the nose: AkzoNobel in blue letters",
+     "approxSizeM": [
+      9,
+      1.2
+     ],
+     "plan": "modelled",
+     "seenIn": "commons:Akzo_Nobel_Headquarters_(5).jpg (Ceescamel, CC BY-SA 4.0)",
+     "how": "letters() 0.17 m pixels, 0.3 m deep, blue, on the frit crown above the top floor (lower-case z, e, l added to the kit glyphs)"
+    },
+    {
+     "id": "w-nose",
+     "kind": "window-shape",
+     "where": "the rounded south-west nose of the west wedge, plinth and curtain wall both following the curve",
+     "approxSizeM": [
+      8,
+      44
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2024-12-20_09-04-31_03850",
+     "how": "fillet of radius 3.2 m in four segments; curtain and plinth follow it (trims stop short of the facets)"
+    }
+   ]
+  },
+  {
+   "tag": "w04-177",
+   "bearing": 177,
+   "lengthM": 16.5,
+   "centre": [
+    4.8784835,
+    52.3400065
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-09-29_14-53-32_01319",
+   "capturedAt": "2025-09-29",
+   "checked": true,
+   "items": [
+    {
+     "id": "e-end",
+     "kind": "window-shape",
+     "where": "the rounded east end of the east volume",
+     "approxSizeM": [
+      12,
+      41
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-09-29_14-53-32_01319",
+     "how": "fillet radius 3.5 m in five segments, curtain and plinth as the south front"
+    }
+   ]
+  },
+  {
+   "tag": "w05-177",
+   "bearing": 177,
+   "lengthM": 10.9,
+   "centre": [
+    4.8782845,
+    52.339992
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2024-09-03_05-21-23_00284",
+   "capturedAt": "2024-09-03",
+   "checked": true,
+   "items": [
+    {
+     "id": "s-clear-shaft",
+     "kind": "window-shape",
+     "where": "a full-height band of clear glass in the south front (stair or lift shaft), about 6 m wide",
+     "approxSizeM": [
+      6,
+      33
+     ],
+     "plan": "simplified",
+     "seenIn": "recording_2024-09-03_05-21-23_00284",
+     "how": "drawn with the same pale skin as the rest of the front; the clearer band is not separated"
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  },
+  {
+   "name": "Wikimedia Commons, Category:AkzoNobel Headquarters (Ceescamel; MrAronymous)",
+   "url": "https://commons.wikimedia.org/wiki/Category:AkzoNobel_Headquarters",
+   "licence": "CC BY-SA 4.0"
+  },
+  {
+   "name": "PDOK Luchtfoto RGB",
+   "url": "https://service.pdok.nl/hwh/luchtfotorgb/wms/v1_0",
+   "licence": "CC BY 4.0"
+  }
+ ]
+}

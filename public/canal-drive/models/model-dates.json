@@ -56,6 +56,16 @@
       "version": "0105a37aacfc4f0c",
       "dateSource": "asset-update"
     },
+    "akzonobel-center": {
+      "updatedAt": "2026-11-02T03:46:58.427Z",
+      "version": "754638560554e56d",
+      "dateSource": "asset-update"
+    },
+    "akzonobel-center.lod1": {
+      "updatedAt": "2026-11-02T03:53:37.034Z",
+      "version": "bffbcd228304c333",
+      "dateSource": "asset-update"
+    },
     "allard-pierson": {
       "updatedAt": "2026-10-24T17:37:27.100Z",
       "version": "31b73111328ad4d2",
@@ -3314,6 +3324,16 @@
     "teun-de-jager.lod1": {
       "updatedAt": "2026-10-17T13:15:07.148Z",
       "version": "4224a9983491df6a",
+      "dateSource": "asset-update"
+    },
+    "the-edge": {
+      "updatedAt": "2026-11-02T03:15:10.112Z",
+      "version": "480562ef9015bc8e",
+      "dateSource": "asset-update"
+    },
+    "the-edge.lod1": {
+      "updatedAt": "2026-11-02T03:15:18.931Z",
+      "version": "d1c9ac11c1bb0818",
       "dateSource": "asset-update"
     },
     "the-movies": {
