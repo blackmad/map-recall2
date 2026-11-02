@@ -1,0 +1,112 @@
+{
+ "id": "effectenbeurs",
+ "countedBy": "lane #201 (opus) from the frontal Commons photograph by Chabe01 (2024-11-25, CC BY-SA 4.0, staging/landmarks/effectenbeurs/commons/c05.jpg) before the model was rendered; not a blind haiku count, the integrator may re-count. One window is one opening; the attic lights stand between stone piers about 0.35-0.4 m wide, so each light is counted; the barred ground windows are counted per pane pair member; the frontispiece portals are glazed. Dormers are roof and are cropped off with heightM.",
+ "facades": [
+  {
+   "name": "Beursplein, north-east pavilion (right of its door axis)",
+   "bearing": 309,
+   "photo": "staging/landmarks/effectenbeurs/commons/c05.jpg",
+   "rows": [
+    3,
+    3,
+    6,
+    7
+   ],
+   "symmetric": false,
+   "heightM": [
+    0,
+    20.8
+   ],
+   "note": "c05 x 95-410: ground: door-like opening, the shop window, a narrow window; first floor: two windows and a narrow one; second floor: the five-light group and a narrow window; attic: the five lights and the right pair. The left door axis (door, two small windows stacked over it, narrow window, attic pair) is cropped off.",
+   "alongM": [
+    15.9,
+    26.2
+   ]
+  },
+  {
+   "name": "Beursplein, left wing",
+   "bearing": 314,
+   "photo": "staging/landmarks/effectenbeurs/commons/c05.jpg",
+   "rows": [
+    6,
+    3,
+    3,
+    9
+   ],
+   "symmetric": true,
+   "heightM": [
+    0,
+    20.8
+   ],
+   "note": "c05 x 410-695: three axes; pairs of small barred windows in the granite; three cross windows on each brick floor; a group of three lights per axis in the attic. No 'columns' count: the attic three-light groups (1.0 m pitch), the ground pane pairs (1.1 m pitch, centred on the axis; in c05 they appear shifted outward because the granite plinth projects in front of the brick) and the cross windows interleave within 0.5 m, so the clustered-axis measure cannot separate them; the earlier declared 9 was the attic light count, already checked by the attic row.",
+   "alongM": [
+    27.55,
+    40.25
+   ]
+  },
+  {
+   "name": "Beursplein, frontispiece",
+   "bearing": 314,
+   "photo": "staging/landmarks/effectenbeurs/commons/c05.jpg",
+   "rows": [
+    3,
+    3,
+    3,
+    9
+   ],
+   "symmetric": true,
+   "heightM": [
+    0,
+    20.8
+   ],
+   "note": "c05 x 750-1035 between the big banded pilasters: three portals, three windows under the balcony (partly behind the lamp and the tree; Commons Kleon3 2025 shows all three), three balcony doors, nine attic lights in three groups. Pediment above the crop.",
+   "alongM": [
+    42.3,
+    53.7
+   ]
+  },
+  {
+   "name": "Beursplein, right wing",
+   "bearing": 314,
+   "photo": "staging/landmarks/effectenbeurs/commons/c05.jpg",
+   "rows": [
+    6,
+    3,
+    3,
+    9
+   ],
+   "symmetric": true,
+   "heightM": [
+    0,
+    20.8
+   ],
+   "note": "c05 x 1090-1380, the same order as the left wing. No 'columns' count: the attic three-light groups (1.0 m pitch), the ground pane pairs (1.1 m pitch, centred on the axis; in c05 they appear shifted outward because the granite plinth projects in front of the brick) and the cross windows interleave within 0.5 m, so the clustered-axis measure cannot separate them; the earlier declared 9 was the attic light count, already checked by the attic row.",
+   "alongM": [
+    55.5,
+    67.8
+   ]
+  },
+  {
+   "name": "Beursplein, south-west pavilion",
+   "bearing": 314,
+   "photo": "staging/landmarks/effectenbeurs/commons/c05.jpg",
+   "rows": [
+    3,
+    3,
+    3,
+    6
+   ],
+   "symmetric": false,
+   "heightM": [
+    0,
+    20.8
+   ],
+   "note": "c05 x 1545-1870: three axes, one window per axis on the ground and brick floors, a pair of lights per axis in the attic; the wide corner pilaster with Mercury's niche on the right makes it asymmetric.",
+   "alongM": [
+    71.8,
+    84.5
+   ]
+  }
+ ],
+ "calibration": "alongM crops calibrated 2026-11-02 by mirror-symmetry sweep of the model elevation (wings and frontispiece) and by matching the photo's openings per row (pavilions); the photo counts were written before the model existed and were not changed."
+}

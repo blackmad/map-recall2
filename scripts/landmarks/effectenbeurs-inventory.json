@@ -1,0 +1,672 @@
+{
+ "schemaVersion": 1,
+ "id": "effectenbeurs",
+ "pand": "0363100012165051",
+ "brief": "scripts/landmarks/effectenbeurs-brief.md",
+ "signature": [
+  "pediment-relief",
+  "central-tower",
+  "tower-dome",
+  "banded-pilasters",
+  "pavilion-turret",
+  "beursplein-5-lettering",
+  "balcony-ironwork",
+  "clock",
+  "mercurius"
+ ],
+ "walls": [
+  {
+   "tag": "w01-309",
+   "bearing": 309,
+   "lengthM": 13.5,
+   "centre": [
+    4.8959335,
+    52.3743994
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001054_pano_0000_000047",
+   "capturedAt": "2019-01-15",
+   "checked": true,
+   "items": [
+    {
+     "id": "five-light-window",
+     "kind": "window-shape",
+     "where": "north-east pavilion: a five-light window group on the second floor and in the attic, single narrow axes either side",
+     "approxSizeM": [
+      4.8,
+      3.8
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001054_pano_0000_000047"
+    },
+    {
+     "id": "ne-door",
+     "kind": "other",
+     "where": "entrance door with a low window over it in the left axis of the north-east pavilion",
+     "approxSizeM": [
+      1.2,
+      6.0
+     ],
+     "plan": "modelled",
+     "seenIn": "Commons \"Bâtiment Euronext Amsterdam - Amsterdam (NL32) - 2024-11-25 - 4.jpg\" (Chabe01, CC BY-SA 4.0)"
+    }
+   ]
+  },
+  {
+   "tag": "w02-314",
+   "bearing": 314,
+   "lengthM": 13,
+   "centre": [
+    4.8958026,
+    52.3743114
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001054_pano_0000_000047",
+   "capturedAt": "2019-01-15",
+   "checked": true,
+   "items": [
+    {
+     "id": "wing-axes-left",
+     "kind": "window-shape",
+     "where": "left wing, same order as the right wing",
+     "approxSizeM": [
+      13.0,
+      15.0
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001054_pano_0000_000047"
+    }
+   ]
+  },
+  {
+   "tag": "w03-314",
+   "bearing": 314,
+   "lengthM": 12.6,
+   "centre": [
+    4.8953425,
+    52.3740192
+   ],
+   "evidence": "photo",
+   "panoId": "b_20250108_1349_Track26_Sphere_00050",
+   "capturedAt": "2025-01-08",
+   "checked": true,
+   "items": [
+    {
+     "id": "mercurius",
+     "kind": "sculpture",
+     "where": "statue of Mercury in a shallow niche on the corner pilaster at Beursplein/Papenbrugsteeg, first floor",
+     "approxSizeM": [
+      1.2,
+      2.6
+     ],
+     "plan": "simplified",
+     "how": "figure-kit standing figure (draped, winged-cap simplified to a cap) in a stone niche with a pedestal and hood",
+     "seenIn": "Commons \"Mercurius Beursplein 5 Papenbrugsteeg Amsterdam.jpg\" (Brbbl, CC BY-SA 3.0)"
+    },
+    {
+     "id": "banded-pilasters",
+     "kind": "other",
+     "where": "two-tone banded stone pilasters at every pavilion and wing edge, first floor to cornice",
+     "approxSizeM": [
+      1.5,
+      15.6
+     ],
+     "plan": "modelled",
+     "how": "alternating pale and grey stone courses, 0.45 m each",
+     "seenIn": "b_20250108_1349_Track26_Sphere_00050"
+    },
+    {
+     "id": "granite-base",
+     "kind": "other",
+     "where": "rusticated grey granite ground storey round the whole front",
+     "approxSizeM": [
+      83.0,
+      4.4
+     ],
+     "plan": "simplified",
+     "how": "granite skin with projecting rusticated courses",
+     "seenIn": "b_20250108_1349_Track26_Sphere_00050"
+    },
+    {
+     "id": "cross-windows",
+     "kind": "window-shape",
+     "where": "tall cross-framed windows in white stone surrounds, first and second floor",
+     "approxSizeM": [
+      1.8,
+      3.6
+     ],
+     "plan": "modelled",
+     "seenIn": "b_20250108_1349_Track26_Sphere_00050"
+    },
+    {
+     "id": "attic-paired-windows",
+     "kind": "window-shape",
+     "where": "paired attic windows per axis in the pale stone attic storey",
+     "approxSizeM": [
+      1.8,
+      2.8
+     ],
+     "plan": "modelled",
+     "seenIn": "b_20250108_1349_Track26_Sphere_00050"
+    },
+    {
+     "id": "pavilion-turret",
+     "kind": "tower",
+     "where": "louvred roof turret with a copper ogee cap on each pavilion and wing roof (four in all)",
+     "approxSizeM": [
+      2.2,
+      4.0
+     ],
+     "plan": "modelled",
+     "seenIn": "Commons \"Bâtiment Euronext Amsterdam - Amsterdam (NL32) - 2024-11-25 - 4.jpg\" (Chabe01, CC BY-SA 4.0)"
+    },
+    {
+     "id": "dormers",
+     "kind": "window-shape",
+     "where": "small copper-hooded dormers in two rows on the slate mansard",
+     "approxSizeM": [
+      1.0,
+      1.2
+     ],
+     "plan": "simplified",
+     "how": "box dormers with a dark light and copper hipped hood, placed per axis",
+     "seenIn": "Commons \"Bâtiment Euronext Amsterdam - Amsterdam (NL32) - 2024-11-25 - 4.jpg\" (Chabe01, CC BY-SA 4.0)"
+    }
+   ]
+  },
+  {
+   "tag": "w04-314",
+   "bearing": 314,
+   "lengthM": 12.5,
+   "centre": [
+    4.8955191,
+    52.3741299
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-07-03_03-29-47_02707",
+   "capturedAt": "2025-07-03",
+   "checked": true,
+   "items": [
+    {
+     "id": "wing-axes",
+     "kind": "window-shape",
+     "where": "three-axis brick wings: cross windows in stone surrounds, attic groups of three lights",
+     "approxSizeM": [
+      12.5,
+      15.0
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-07-03_03-29-47_02707"
+    },
+    {
+     "id": "barred-windows",
+     "kind": "balcony-ironwork",
+     "where": "pairs of small windows with iron bars in the granite base",
+     "approxSizeM": [
+      0.6,
+      1.6
+     ],
+     "plan": "simplified",
+     "how": "white vertical bars over each pane",
+     "seenIn": "recording_2025-07-03_03-29-47_02707"
+    },
+    {
+     "id": "attic-brick-panels",
+     "kind": "other",
+     "where": "red and cream patterned brick panels between the attic window groups",
+     "approxSizeM": [
+      0.5,
+      2.4
+     ],
+     "plan": "simplified",
+     "how": "raised red panel with a stone diamond inlay",
+     "seenIn": "Commons \"Bâtiment Euronext Amsterdam - Amsterdam (NL32) - 2024-11-25 - 4.jpg\" (Chabe01, CC BY-SA 4.0)"
+    }
+   ]
+  },
+  {
+   "tag": "w05-312",
+   "bearing": 312,
+   "lengthM": 12,
+   "centre": [
+    4.8960565,
+    52.3744859
+   ],
+   "evidence": "photo",
+   "panoId": "b_20250108_1349_Track28_Sphere_00020",
+   "capturedAt": "2025-01-08",
+   "checked": true,
+   "items": [
+    {
+     "id": "annex-stone-front",
+     "kind": "other",
+     "where": "north corner block: pale ashlar front, ground windows in stepped granite surrounds with iron bars, large windows above, balcony rail on the top storey",
+     "approxSizeM": [
+      12.0,
+      20.5
+     ],
+     "plan": "simplified",
+     "how": "stone skin with three axes per storey, stepped surround blocks, bars and a top rail",
+     "seenIn": "b_20250108_1349_Track28_Sphere_00020"
+    }
+   ]
+  },
+  {
+   "tag": "w06-314",
+   "bearing": 314,
+   "lengthM": 11.6,
+   "centre": [
+    4.8956473,
+    52.3742269
+   ],
+   "evidence": "photo",
+   "panoId": "b_20250108_1349_Track28_Sphere_00013",
+   "capturedAt": "2025-01-08",
+   "checked": true,
+   "items": [
+    {
+     "id": "pediment-relief",
+     "kind": "relief",
+     "where": "central frontispiece, triangular pediment over the cornice, the whole tympanum",
+     "approxSizeM": [
+      15.6,
+      5.0
+     ],
+     "plan": "simplified",
+     "how": "recessed tympanum with raking cornices and dentil course; the C.A. Smout (1924) group as low-relief figure-kit figures (standing, seated and reclining, flattened to 35 % depth) left and right of a central shield, two reclining river gods with urns at the shield",
+     "seenIn": "Commons \"Pediment CA Smout Effectenbeurs Beursplein Amsterdam.jpg\" (Brbbl, CC BY-SA 3.0)"
+    },
+    {
+     "id": "pediment-shield",
+     "kind": "crest",
+     "where": "bottom centre of the tympanum between the river gods",
+     "approxSizeM": [
+      1.4,
+      1.8
+     ],
+     "plan": "simplified",
+     "how": "raised shield with a border; its charge is not legible on the photos and is not invented",
+     "seenIn": "Commons \"Pediment CA Smout Effectenbeurs Beursplein Amsterdam.jpg\" (Brbbl, CC BY-SA 3.0)"
+    },
+    {
+     "id": "beursplein-5-lettering",
+     "kind": "lettering",
+     "where": "gilt capitals BEURSPLEIN 5 on the granite entablature over the middle portal",
+     "approxSizeM": [
+      3.6,
+      0.4
+     ],
+     "plan": "modelled",
+     "how": "raised gold capitals (ornament-kit raisedLettering)",
+     "seenIn": "b_20250108_1349_Track28_Sphere_00013"
+    },
+    {
+     "id": "portals",
+     "kind": "other",
+     "where": "ground storey of the frontispiece: three tall granite-framed portals, revolving door in the left one",
+     "approxSizeM": [
+      11.0,
+      4.2
+     ],
+     "plan": "modelled",
+     "how": "three cut openings with glazed doors and transoms, granite piers between",
+     "seenIn": "b_20250108_1349_Track28_Sphere_00013"
+    },
+    {
+     "id": "ticker-boards",
+     "kind": "sign",
+     "where": "LED share-price boards across the top of each portal",
+     "approxSizeM": [
+      2.4,
+      0.5
+     ],
+     "plan": "simplified",
+     "how": "black board with a green text strip inside each portal head",
+     "seenIn": "b_20250108_1349_Track28_Sphere_00013"
+    },
+    {
+     "id": "portal-cartouches",
+     "kind": "relief",
+     "where": "carved stone roundels/cartouches over the portal piers under the entablature",
+     "approxSizeM": [
+      0.9,
+      0.9
+     ],
+     "plan": "simplified",
+     "how": "raised stone ring and boss on each pier head",
+     "seenIn": "b_20250108_1349_Track28_Sphere_00013"
+    },
+    {
+     "id": "balcony-consoles",
+     "kind": "relief",
+     "where": "four carved stone consoles carrying the balcony at second-floor level",
+     "approxSizeM": [
+      0.7,
+      1.4
+     ],
+     "plan": "simplified",
+     "how": "stepped corbel blocks (three tiers) under the balcony slab",
+     "seenIn": "Commons \"Bâtiment Euronext Amsterdam - Amsterdam (NL32) - 2024-11-25 - 4.jpg\" (Chabe01, CC BY-SA 4.0)"
+    },
+    {
+     "id": "balcony-ironwork",
+     "kind": "balcony-ironwork",
+     "where": "pale ornamental balustrade on the stone balcony, second floor, full width of the central bay",
+     "approxSizeM": [
+      11.0,
+      1.0
+     ],
+     "plan": "simplified",
+     "how": "white rail, plinth and balusters with a pierced lattice panel between posts",
+     "seenIn": "Commons \"Bâtiment Euronext Amsterdam - Amsterdam (NL32) - 2024-11-25 - 3.jpg\" (Chabe01, CC BY-SA 4.0)"
+    },
+    {
+     "id": "attic-frieze",
+     "kind": "relief",
+     "where": "band of carved scrollwork over the nine attic windows, under the pediment",
+     "approxSizeM": [
+      11.5,
+      0.7
+     ],
+     "plan": "simplified",
+     "how": "projecting stone band with a row of raised rosette blocks",
+     "seenIn": "Commons \"Pediment CA Smout Effectenbeurs Beursplein Amsterdam.jpg\" (Brbbl, CC BY-SA 3.0)"
+    },
+    {
+     "id": "pilaster-scroll-panels",
+     "kind": "relief",
+     "where": "carved scroll panels on the two big frontispiece pilasters at attic level",
+     "approxSizeM": [
+      1.2,
+      2.2
+     ],
+     "plan": "simplified",
+     "how": "raised stone panel with two stacked ring bosses",
+     "seenIn": "Commons \"Pediment CA Smout Effectenbeurs Beursplein Amsterdam.jpg\" (Brbbl, CC BY-SA 3.0)"
+    },
+    {
+     "id": "attic-window-order",
+     "kind": "window-shape",
+     "where": "nine tall attic windows in three groups of three between carved piers",
+     "approxSizeM": [
+      11.0,
+      3.2
+     ],
+     "plan": "modelled",
+     "seenIn": "Commons \"Pediment CA Smout Effectenbeurs Beursplein Amsterdam.jpg\" (Brbbl, CC BY-SA 3.0)"
+    },
+    {
+     "id": "central-tower",
+     "kind": "tower",
+     "where": "copper lantern tower on the ridge behind the pediment: slate base, louvred square stage with four corner turrets",
+     "approxSizeM": [
+      5.0,
+      7.0
+     ],
+     "plan": "modelled",
+     "seenIn": "Commons \"Bâtiment Euronext Amsterdam - Amsterdam (NL32) - 2024-11-25 - 3.jpg\" (Chabe01, CC BY-SA 4.0)"
+    },
+    {
+     "id": "tower-dome",
+     "kind": "dome",
+     "where": "ribbed copper ogee dome over the lantern with a small lantern and a gilt ship weather vane",
+     "approxSizeM": [
+      3.4,
+      4.5
+     ],
+     "plan": "simplified",
+     "how": "eight-sided lathe dome, small lantern, rod and a flat gold ship vane",
+     "seenIn": "Commons \"Bâtiment Euronext Amsterdam - Amsterdam (NL32) - 2024-11-25 - 3.jpg\" (Chabe01, CC BY-SA 4.0)"
+    }
+   ]
+  },
+  {
+   "tag": "w07-132",
+   "bearing": 132,
+   "lengthM": 9.4,
+   "centre": [
+    4.8965902,
+    52.374299
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002793_pano_0000_000136",
+   "capturedAt": "2022-09-05",
+   "checked": true,
+   "items": [
+    {
+     "id": "warmoesstraat-front",
+     "kind": "other",
+     "where": "Warmoesstraat entrance block: granite ground storey with large windows between stone piers, brick and stone storeys over it",
+     "approxSizeM": [
+      9.4,
+      20.0
+     ],
+     "plan": "simplified",
+     "how": "granite base with three large windows, three storeys of windows above",
+     "seenIn": "TMX7316010203-002793_pano_0000_000136"
+    }
+   ]
+  },
+  {
+   "tag": "w08-29",
+   "bearing": 29,
+   "lengthM": 8.9,
+   "centre": [
+    4.8964047,
+    52.3744284
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001055_pano_0000_000799",
+   "capturedAt": "2019-01-15",
+   "checked": true,
+   "items": [],
+   "note": "Crop at 35 m shows the neighbouring dark-brick houses on the Beursstraat; the Effectenbeurs wall here is mostly party wall behind them. Nothing notable of this building."
+  },
+  {
+   "tag": "w09-134",
+   "bearing": 134,
+   "lengthM": 5.4,
+   "centre": [
+    4.8964305,
+    52.3741887
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002793_pano_0000_000132",
+   "capturedAt": "2022-09-05",
+   "checked": true,
+   "items": [
+    {
+     "id": "warmoes-bay-a",
+     "kind": "window-shape",
+     "where": "narrow brick bay with stone bands and a big ground window",
+     "approxSizeM": [
+      5.4,
+      20.0
+     ],
+     "plan": "simplified",
+     "how": "stone-banded brick with one window per storey",
+     "seenIn": "TMX7316010203-002793_pano_0000_000132"
+    }
+   ]
+  },
+  {
+   "tag": "w10-224",
+   "bearing": 224,
+   "lengthM": 5.2,
+   "centre": [
+    4.8957399,
+    52.3737974
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002357_pano_0004_000061",
+   "capturedAt": "2021-12-27",
+   "checked": true,
+   "items": [
+    {
+     "id": "papenbrugsteeg-side",
+     "kind": "window-shape",
+     "where": "Papenbrugsteeg side: granite base, brick with banded pilasters, tall windows in carved stone surrounds, a canted bay at the corner",
+     "approxSizeM": [
+      41.0,
+      20.0
+     ],
+     "plan": "simplified",
+     "how": "same storey order as the front pavilions on each facet, one window per facet over 1.8 m",
+     "seenIn": "recording_2025-07-03_03-29-47_02687",
+     "note": "also Commons RCE 1984 photographs 20011124/20011125"
+    }
+   ]
+  },
+  {
+   "tag": "w11-134",
+   "bearing": 134,
+   "lengthM": 4.7,
+   "centre": [
+    4.8964898,
+    52.3742314
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001055_pano_0000_000985",
+   "capturedAt": "2019-01-15",
+   "checked": true,
+   "items": [
+    {
+     "id": "warmoes-bay-b",
+     "kind": "window-shape",
+     "where": "narrow brick bay with stone bands and a big ground window",
+     "approxSizeM": [
+      4.7,
+      20.0
+     ],
+     "plan": "simplified",
+     "how": "stone-banded brick with one window per storey",
+     "seenIn": "TMX7316010203-001055_pano_0000_000985"
+    }
+   ]
+  },
+  {
+   "tag": "w12-314",
+   "bearing": 314,
+   "lengthM": 4.7,
+   "centre": [
+    4.8954281,
+    52.3740765
+   ],
+   "evidence": "photo",
+   "panoId": "b_20250108_1349_Track26_Sphere_00051",
+   "capturedAt": "2025-01-08",
+   "checked": true,
+   "items": [
+    {
+     "id": "clock",
+     "kind": "clock",
+     "where": "round clock in a moulded stone ring over the side entrance, first floor of the narrow bay next to the south-west pavilion",
+     "approxSizeM": [
+      1.8,
+      1.8
+     ],
+     "plan": "modelled",
+     "how": "stone ring, pale dial, bronze hands (ornament-kit clockHands)",
+     "seenIn": "b_20250108_1349_Track26_Sphere_00051"
+    },
+    {
+     "id": "side-portal",
+     "kind": "other",
+     "where": "stone-framed entrance with glazed door and transom lights at the foot of the clock bay",
+     "approxSizeM": [
+      3.0,
+      6.2
+     ],
+     "plan": "modelled",
+     "seenIn": "b_20250108_1349_Track26_Sphere_00051"
+    },
+    {
+     "id": "clock-bay-loggia",
+     "kind": "window-shape",
+     "where": "open dark loggia in the attic of the clock bay",
+     "approxSizeM": [
+      3.2,
+      2.8
+     ],
+     "plan": "modelled",
+     "seenIn": "Commons \"Bâtiment Euronext Amsterdam - Amsterdam (NL32) - 2024-11-25 - 4.jpg\" (Chabe01, CC BY-SA 4.0)"
+    },
+    {
+     "id": "clock-bay-windows",
+     "kind": "window-shape",
+     "where": "two three-light windows stacked over the clock",
+     "approxSizeM": [
+      2.2,
+      4.5
+     ],
+     "plan": "modelled",
+     "seenIn": "Commons \"Bâtiment Euronext Amsterdam - Amsterdam (NL32) - 2024-11-25 - 4.jpg\" (Chabe01, CC BY-SA 4.0)"
+    }
+   ]
+  },
+  {
+   "tag": "w13-134",
+   "bearing": 134,
+   "lengthM": 4.6,
+   "centre": [
+    4.8963648,
+    52.3741512
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001055_pano_0000_000986",
+   "capturedAt": "2019-01-15",
+   "checked": true,
+   "items": [
+    {
+     "id": "warmoes-bay-c",
+     "kind": "window-shape",
+     "where": "narrow brick bay with stone bands, big ground window and stone carved band",
+     "approxSizeM": [
+      4.6,
+      20.0
+     ],
+     "plan": "simplified",
+     "how": "stone-banded brick with one window per storey",
+     "seenIn": "TMX7316010203-001055_pano_0000_000986"
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  },
+  {
+   "name": "Bâtiment Euronext Amsterdam 2024-11-25 1-4 (Chabe01)",
+   "url": "https://commons.wikimedia.org/wiki/File:B%C3%A2timent_Euronext_Amsterdam_-_Amsterdam_(NL32)_-_2024-11-25_-_4.jpg",
+   "licence": "CC BY-SA 4.0"
+  },
+  {
+   "name": "Pediment CA Smout Effectenbeurs (Brbbl)",
+   "url": "https://commons.wikimedia.org/wiki/File:Pediment_CA_Smout_Effectenbeurs_Beursplein_Amsterdam.jpg",
+   "licence": "CC BY-SA 3.0"
+  },
+  {
+   "name": "Mercurius Beursplein 5 Papenbrugsteeg (Brbbl)",
+   "url": "https://commons.wikimedia.org/wiki/File:Mercurius_Beursplein_5_Papenbrugsteeg_Amsterdam.jpg",
+   "licence": "CC BY-SA 3.0"
+  },
+  {
+   "name": "2025 Amsterdam, Beursplein, Euronext (Kleon3)",
+   "url": "https://commons.wikimedia.org/wiki/File:2025_Amsterdam,_Beursplein,_Euronext.jpg",
+   "licence": "CC BY-SA 4.0"
+  },
+  {
+   "name": "RCE photographs 20011123-20011126 (G. Dukker, 1984)",
+   "url": "https://commons.wikimedia.org/wiki/File:Voorgevel_-_Amsterdam_-_20011123_-_RCE.jpg",
+   "licence": "CC BY-SA 4.0"
+  },
+  {
+   "name": "Rijksmonumentenregister 518417 (Effectenbeurs, Jos Th.J. Cuypers, 1911-1913)",
+   "url": "https://monumentenregister.cultureelerfgoed.nl/monumenten/518417",
+   "licence": "CC0"
+  }
+ ]
+}

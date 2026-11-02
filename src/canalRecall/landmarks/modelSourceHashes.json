@@ -1,5 +1,5 @@
 {
-  "toolchain": "338e952ea316700133bc2839db2fd6ee45a5dc8b7a11cc3b2028d03622d5b8bc",
+  "toolchain": "6b4ca164961705e2771b4437e6f411fda72a261fb641531bd6090bb2f1d73998",
   "models": {
     "abn-amro-hoofdkantoor": "90ff65a2d9f94e99b2ab33438567f147959a43f017d3d9cf9d2ae68b6dae7cbf",
     "academie-theater-dans": "503b3e8d59937cbf7ac8776eb644c11fd10b567e5ac1113e0caa55c83cb68cde",
@@ -107,6 +107,7 @@
     "droogbak": "224e07c8e31c35d7e1f8900f7dac03103dd0d33f5afa6d10c9844c3189cf077e",
     "dutch-resistance-museum": "1020d48638d428186a382eaeae5ef319646dc286348ef2c0b45f4bc2799b1ff2",
     "eerste-openluchtschool": "1e9cfcd3a700db8db0187a5afd5bc880bfa13f6d06d3d2cb23b3c59bcd64effd",
+    "effectenbeurs": "8e7facdf1f24094ad1225775993ece0b9107860fd50803a56e3f8538e2802b25",
     "el-tawheed": "c5750d5d1d712cdb548f7bd1ab13c30bc2ec271f8af539d77a5e212ae2f6f603",
     "electric-ladyland": "00e798e2b651a89da8d33e5d5059b40cc9c641e745d8ba1718576f61d3cea1e1",
     "embassy-free-mind": "e20c93449265684654af1b4936a0a64800576f128f1c33a21839fd7fccd6906d",
@@ -159,6 +160,7 @@
     "herepoort-bergpoort": "c19ab7eada7a60bb4ba76465bff0469a8db84436180db0182c9bd37ca259fc16",
     "het-nieuwe-huis": "5f3181efe8e4c97241a169b9cdab033e9ef064b6d7a582d99dd5edc2b0d9f246",
     "het-schip": "709304d65ee6277ca9aa9cc7559c213b25a26e91cd1cae0df16b9253a3abf522",
+    "het-sieraad": "17588e15e955ff727d222892ec0d55149c34d9ca1956a667f1a51e49adf6d18c",
     "het-veem": "3a9bdd5152b885322d61415415d0dd1085c2beb6cb6ddbe9d736d411e2489385",
     "hilton-amsterdam": "e2bf9e41f934769448537902152bbf719ce743d9371af5b51e6b0e2f88ec7917",
     "hirschgebouw": "a8db735aff824cc1e1f61720beea883ff969574dfd7d0f95baa6e31794f43d87",
