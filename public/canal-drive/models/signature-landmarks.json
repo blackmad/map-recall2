@@ -73778,6 +73778,258 @@
         "bytes": 102536,
         "triangles": 5427
       }
+    },
+    "the-edge": {
+      "id": "the-edge",
+      "name": "The Edge",
+      "modelUrl": "./models/the-edge.glb",
+      "suppressOsmIds": [
+        "NL.IMBAG.Pand.0363100012239633",
+        "w277380271",
+        "tower:NL.IMBAG.Pand.0363100012239633"
+      ],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.8618209320601204,
+          52.33722878529977
+        ],
+        "headingDegrees": 0,
+        "lengthMetres": 107.2,
+        "widthMetres": 78.5
+      },
+      "surveyed": {
+        "anchor": [
+          4.8618209320601204,
+          52.33722878529977
+        ],
+        "northOffsetDegrees": 0,
+        "source": "Vertex average of the BAG 0363100012239633 ring (PDOK BAG, CC0) in native east/south metres (scripts/landmarks/the-edge-footprints.json, modern-prepare.mjs). The BAG ring includes the basement under the east service road and the A10 verge; the walls above ground follow the 3DBAG LoD2.2 walls (AHN4) and the PDOK orthophoto roof (three office wings round a glass-roofed atrium). The leaning north glass face, the low block, the fronts, the glass bay and the signs from the Gemeente Amsterdam panoramas and Wikimedia Commons photographs (scripts/landmarks/the-edge-inventory.json)."
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 0,
+      "heightMetres": 55.5,
+      "bagYear": 2013,
+      "materialOverrides": {
+        "glass": "#6f8da0",
+        "canopyGlass": "#9bb9c8",
+        "frame": "#a7b0b2",
+        "white": "#e6e8e4",
+        "concrete": "#cfd0cb",
+        "slate": "#46505f",
+        "bronze": "#5b6273",
+        "green": "#86bc25",
+        "blue": "#2f4f8f"
+      },
+      "attribution": {
+        "title": "The Edge (2013-14, PLP Architecture for OVG; Deloitte and AKD offices)",
+        "author": "Map Recall",
+        "sourceUrl": "https://nl.wikipedia.org/wiki/The_Edge_(Amsterdam)",
+        "licence": "CC BY 4.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "modifications": "Original texture-free flat-colour geometry: the three office wings with white floor bands, tilted solar panels on the south fronts and piers on the east front, the leaning glass atrium face to the A10, the low block, the cantilevered glass bay, the columns of the recessed ground storey and the Deloitte and AKD signs, on the BAG footprint (CC0) with 3DBAG walls and heights (CC BY 4.0), read for proportion only from the Gemeente Amsterdam panoramas (CC BY 4.0), the PDOK orthophoto (CC BY 4.0) and Wikimedia Commons photographs by AValečka and MrAronymous (CC BY-SA 4.0) and Panoramio contributors (CC BY 3.0). No pixels or meshes imported."
+      },
+      "buildingFootprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.862736644819404,
+              52.3375002102103
+            ],
+            [
+              4.862267062250443,
+              52.33745744037231
+            ],
+            [
+              4.862129397845184,
+              52.33743916861127
+            ],
+            [
+              4.862131338359054,
+              52.3374338924005
+            ],
+            [
+              4.862113686289221,
+              52.337431468261826
+            ],
+            [
+              4.862040485543194,
+              52.337421382688575
+            ],
+            [
+              4.862040013044157,
+              52.337414190358885
+            ],
+            [
+              4.8619687416097594,
+              52.33740474244847
+            ],
+            [
+              4.861968923832779,
+              52.33739429944401
+            ],
+            [
+              4.86189681039961,
+              52.337384092778414
+            ],
+            [
+              4.861897584198663,
+              52.33737325693721
+            ],
+            [
+              4.861824075166774,
+              52.337363196824384
+            ],
+            [
+              4.861828243216385,
+              52.33735195362673
+            ],
+            [
+              4.861808262386897,
+              52.33734917756732
+            ],
+            [
+              4.861753300526506,
+              52.3373415365809
+            ],
+            [
+              4.861757620305761,
+              52.337331111948345
+            ],
+            [
+              4.861703943131032,
+              52.33732278458326
+            ],
+            [
+              4.861680817308881,
+              52.33731919462272
+            ],
+            [
+              4.8616852170648395,
+              52.337306972789634
+            ],
+            [
+              4.861656943828043,
+              52.3373031532461
+            ],
+            [
+              4.861609304324549,
+              52.33729670413672
+            ],
+            [
+              4.861613044806804,
+              52.33728563880312
+            ],
+            [
+              4.861564199246407,
+              52.33727943597698
+            ],
+            [
+              4.861542574777947,
+              52.337276688522785
+            ],
+            [
+              4.861543902047395,
+              52.33726620566581
+            ],
+            [
+              4.861543391499162,
+              52.33725479789035
+            ],
+            [
+              4.8614435236134605,
+              52.337241600550946
+            ],
+            [
+              4.861266180962104,
+              52.337136967550556
+            ],
+            [
+              4.861253764249045,
+              52.33712983897237
+            ],
+            [
+              4.861164301312208,
+              52.33707687172126
+            ],
+            [
+              4.86136810016441,
+              52.336818335879585
+            ],
+            [
+              4.861498974862156,
+              52.33681875558039
+            ],
+            [
+              4.861653647601939,
+              52.33681925386674
+            ],
+            [
+              4.8616654557086205,
+              52.33679474267153
+            ],
+            [
+              4.861802730375761,
+              52.33681972713198
+            ],
+            [
+              4.861850033869336,
+              52.33681981131692
+            ],
+            [
+              4.86226642585184,
+              52.33682121876102
+            ],
+            [
+              4.862741039125589,
+              52.33682259518015
+            ],
+            [
+              4.862736644819404,
+              52.3375002102103
+            ]
+          ]
+        ]
+      },
+      "buildingCategory": "landmark",
+      "bounds": {
+        "min": [
+          -37.83806610107422,
+          -2.288818308215923e-7,
+          -25.597618103027344
+        ],
+        "max": [
+          48.220001220703125,
+          55.5,
+          48.17669677734375
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.8618209320601204,
+          52.33722878529977
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 90,
+        "facadeBearingDegrees": 0,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 86.05806732177734,
+        "heightMetres": 55.50000022888183,
+        "depthMetres": 73.7743148803711,
+        "depthCoverage": 0.9398001895588675
+      },
+      "triangles": 13428,
+      "bytes": 196492,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
+      "lod1": {
+        "sourceHash": "480562ef9015bc8e",
+        "buildVersion": 2,
+        "bytes": 44236,
+        "triangles": 2437
+      }
     }
   }
 }

@@ -2128,5 +2128,11 @@
   "buildVersion": 2,
   "bytes": 102536,
   "triangles": 5427
+ },
+ "the-edge": {
+  "sourceHash": "480562ef9015bc8e",
+  "buildVersion": 2,
+  "bytes": 44236,
+  "triangles": 2437
  }
 }

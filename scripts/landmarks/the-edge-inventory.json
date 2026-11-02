@@ -1,0 +1,585 @@
+{
+ "schemaVersion": 1,
+ "id": "the-edge",
+ "pand": "0363100012239633",
+ "brief": "scripts/landmarks/the-edge-brief.md",
+ "signature": [
+  "n-atrium-lean",
+  "s-solar-panels",
+  "s-glass-bay",
+  "nw-deloitte",
+  "e-piers"
+ ],
+ "walls": [
+  {
+   "tag": "w01-90",
+   "bearing": 90,
+   "lengthM": 75.3,
+   "centre": [
+    4.8627415,
+    52.3371635
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316060226-000009_pano_0000_002105",
+   "capturedAt": "2016-07-29",
+   "checked": true,
+   "items": [
+    {
+     "id": "e-piers",
+     "kind": "window-shape",
+     "where": "the whole east front above the plinth: narrow windows between white piers, about 26 per storey, under white floor bands",
+     "approxSizeM": [
+      47,
+      45
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316060226-000009_pano_0000_002105",
+     "how": "officeFront skin \"piers\": 0.8 m white piers every 1.8 m, 10 cm proud, white spandrel bands 0.95 m on every floor"
+    },
+    {
+     "id": "e-lean-end",
+     "kind": "window-shape",
+     "where": "north end of the east front: the sloping edge of the atrium glass, with the floor bands running on behind it to the slope",
+     "approxSizeM": [
+      15.6,
+      46
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316060226-000009_pano_0000_002105",
+     "how": "glass triangle at x 48 under the lean, white bands cut by the slope, frame fins every 1.8 m, a frame rim on the slope edge"
+    },
+    {
+     "id": "e-plinth",
+     "kind": "window-shape",
+     "where": "double-height glazed ground storey, flush with the front, doors and a garage door",
+     "approxSizeM": [
+      64,
+      8
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316060226-000009_pano_0000_002105",
+     "how": "flush glass to 8 m with a mezzanine transom and mullions every 3.6 m; doors not cut"
+    },
+    {
+     "id": "e-akd",
+     "kind": "lettering",
+     "where": "AKD logo (blue emblem and lower-case akd) in the top storey at the north end of the east front",
+     "approxSizeM": [
+      5.5,
+      1.7
+     ],
+     "plan": "simplified",
+     "seenIn": "commons:Zuidas_20210512_160238.jpg (MrAronymous, CC BY-SA 4.0)",
+     "how": "blue disc emblem and bold lower-case akd in 0.24 m pixel bars on the top storey band"
+    },
+    {
+     "id": "e-gantry",
+     "kind": "other",
+     "where": "window-cleaning gantry with a boom on the east wing roof, about mid-length",
+     "approxSizeM": [
+      9,
+      2.5
+     ],
+     "plan": "simplified",
+     "seenIn": "commons:Zuidas_20210512_160238.jpg (MrAronymous, CC BY-SA 4.0)",
+     "how": "a white box on the roof and a 9 m boom to the east edge"
+    }
+   ]
+  },
+  {
+   "tag": "w02-180",
+   "bearing": 180,
+   "lengthM": 64,
+   "centre": [
+    4.8622745,
+    52.3368235
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2024-09-04_05-35-54_00142",
+   "capturedAt": "2024-09-04",
+   "checked": true,
+   "items": [
+    {
+     "id": "s-solar-panels",
+     "kind": "window-shape",
+     "where": "every storey of the south front: dark solar/louvre panels canted out beside each window, one per 1.8 m bay, white frames",
+     "approxSizeM": [
+      70,
+      44
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2024-09-04_05-35-54_00142",
+     "how": "officeFront skin \"panels\": a 0.84 x 2.36 m panel in the left half of each 1.8 m bay, canted 14 deg about its vertical axis, 5-26 cm off the glass; white fins at the bay edges"
+    },
+    {
+     "id": "s-glass-bay",
+     "kind": "window-shape",
+     "where": "four-storey glass bay cantilevered from the upper south front, west of the middle, wedge-shaped (deepest at its west side)",
+     "approxSizeM": [
+      10,
+      15
+     ],
+     "plan": "modelled",
+     "seenIn": "commons:Zuidas_20210512_154826.jpg (MrAronymous, CC BY-SA 4.0)",
+     "how": "glassBay(): wedge on the BAG bump x -11.4..-1.5, 33.2-48.2 m, frame grid, white soffit and top"
+    },
+    {
+     "id": "s-roof-step",
+     "kind": "other",
+     "where": "roof line steps down one storey east of the west wing (x about 3)",
+     "approxSizeM": [
+      70,
+      3
+     ],
+     "plan": "modelled",
+     "seenIn": "commons:Zuidas_20210512_154826.jpg (MrAronymous, CC BY-SA 4.0)",
+     "how": "west wing to 55.5 m, south-east wing to 52.5 m (3DBAG 54-59 / 49-52 m planes)"
+    },
+    {
+     "id": "s-colonnade",
+     "kind": "colonnade",
+     "where": "round concrete columns carrying the overhang over the recessed double-height ground storey",
+     "approxSizeM": [
+      70,
+      8
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2024-09-04_05-35-54_00142",
+     "how": "10-sided tubes r 0.36 m every ~7 m, 0.6 m inside the front; glazing 2.8 m back; concrete soffit at 8 m"
+    },
+    {
+     "id": "s-mahler",
+     "kind": "other",
+     "where": "Mahler cafe terrace fence with lettering and umbrellas",
+     "approxSizeM": [
+      30,
+      1.2
+     ],
+     "plan": "skipped",
+     "seenIn": "recording_2024-09-04_05-35-54_00142",
+     "skip": {
+      "reason": "temporary",
+      "note": "terrace furniture and a fence in front of the building, not part of it"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "w03-352",
+   "bearing": 352,
+   "lengthM": 32.3,
+   "centre": [
+    4.8625045,
+    52.3374805
+   ],
+   "evidence": "photo",
+   "panoId": "commons:TheEdge_03-2024.jpg (AValečka, CC BY-SA 4.0)",
+   "capturedAt": "2024-03-14",
+   "checked": true,
+   "items": [
+    {
+     "id": "n-atrium-lean",
+     "kind": "window-shape",
+     "where": "the whole north side: one glass face from the 52.5 m top edge down to the low block, vertical at the west wing tip, leaning out 15.6 m at the east front; folded along the diagonal",
+     "approxSizeM": [
+      73.5,
+      46
+     ],
+     "plan": "modelled",
+     "seenIn": "commons:TheEdge_03-2024.jpg (AValečka, CC BY-SA 4.0)",
+     "how": "incline(): a vertical triangle on the foot line and a leaning triangle, fold bar, rims, glazing bars on every floor and mullions every 3 m"
+    },
+    {
+     "id": "n-fold",
+     "kind": "other",
+     "where": "the crease running from the top of the west wing tip down to the foot at the east",
+     "approxSizeM": [
+      85,
+      1
+     ],
+     "plan": "modelled",
+     "seenIn": "commons:TheEdge_03-2024.jpg (AValečka, CC BY-SA 4.0)",
+     "how": "incline(): fold bar 0.3 m"
+    },
+    {
+     "id": "n-atrium-roof",
+     "kind": "window-shape",
+     "where": "glass atrium roof with a diagonal grid between the wings (orthophoto)",
+     "approxSizeM": [
+      58,
+      33
+     ],
+     "plan": "modelled",
+     "seenIn": "PDOK orthophoto (Actueel_orthoHR)",
+     "how": "canopyGlass roof at 52.5 m with a diamond grid of frame bars every 4.5 m"
+    }
+   ],
+   "note": "No panorama within 35 m; the Commons photograph from the railway (north) shows this side. The BAG edge here is the basement apron: the glass face stands on the foot line 3-10 m south of it."
+  },
+  {
+   "tag": "w04-245",
+   "bearing": 245,
+   "lengthM": 32,
+   "centre": [
+    4.861269,
+    52.3369495
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316060226-000013_pano_0001_002956",
+   "capturedAt": "2016-08-04",
+   "checked": true,
+   "items": [
+    {
+     "id": "sw-panels",
+     "kind": "window-shape",
+     "where": "south-west front: the same canted solar/louvre panels beside each window and white floor bands",
+     "approxSizeM": [
+      38,
+      47
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316060226-000013_pano_0001_002956",
+     "how": "officeFront skin \"panels\""
+    },
+    {
+     "id": "sw-colonnade",
+     "kind": "colonnade",
+     "where": "columns under the overhang at the recessed glazed ground storey",
+     "approxSizeM": [
+      38,
+      8
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316060226-000013_pano_0001_002956",
+     "how": "as s-colonnade"
+    }
+   ]
+  },
+  {
+   "tag": "w05-316",
+   "bearing": 316,
+   "lengthM": 26.4,
+   "centre": [
+    4.8613065,
+    52.3371615
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002492_pano_0003_001808",
+   "capturedAt": "2022-03-30",
+   "checked": true,
+   "items": [
+    {
+     "id": "nw-ribbon",
+     "kind": "window-shape",
+     "where": "north-west front: ribbon windows with slim mullions between white floor bands (no panels on the north light side)",
+     "approxSizeM": [
+      17,
+      47
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002492_pano_0003_001808",
+     "how": "officeFront skin \"ribbon\": frame mullions every 1.8 m"
+    },
+    {
+     "id": "nw-deloitte",
+     "kind": "lettering",
+     "where": "Deloitte word mark (white, lower case, green full stop) across the top storey of the north-west front next to the atrium glass",
+     "approxSizeM": [
+      8,
+      2
+     ],
+     "plan": "simplified",
+     "seenIn": "commons:TheEdge_03-2024.jpg (AValečka, CC BY-SA 4.0)",
+     "how": "bold lower-case Deloitte in 0.3 m pixel bars, 22 cm proud, and a green square full stop"
+    },
+    {
+     "id": "nw-colonnade",
+     "kind": "colonnade",
+     "where": "columns at the recessed ground storey",
+     "approxSizeM": [
+      17,
+      8
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002492_pano_0003_001808",
+     "how": "as s-colonnade"
+    }
+   ]
+  },
+  {
+   "tag": "w06-180",
+   "bearing": 180,
+   "lengthM": 19.4,
+   "centre": [
+    4.8615135,
+    52.3368205
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001163_pano_0000_004319",
+   "capturedAt": "2019-05-06",
+   "checked": true,
+   "items": [
+    {
+     "id": "s-entrance",
+     "kind": "other",
+     "where": "main entrance in the recess: a white wall panel beside the doors and three broad steps",
+     "approxSizeM": [
+      23,
+      7.4
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-001163_pano_0000_004319",
+     "how": "a white 5 m panel 7.4 m tall in the recess and three concrete steps"
+    },
+    {
+     "id": "s-corner-columns",
+     "kind": "colonnade",
+     "where": "columns round the south-west corner under the overhang",
+     "approxSizeM": [
+      19,
+      8
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001163_pano_0000_004319",
+     "how": "as s-colonnade"
+    }
+   ]
+  },
+  {
+   "tag": "w07-164",
+   "bearing": 164,
+   "lengthM": 9.7,
+   "centre": [
+    4.8617365,
+    52.3368095
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002406_pano_0012_000186",
+   "capturedAt": "2022-01-10",
+   "checked": true,
+   "items": [
+    {
+     "id": "s-entrance-signs",
+     "kind": "sign",
+     "where": "small Deloitte and Henkel signs over the entrance doors",
+     "approxSizeM": [
+      2,
+      0.5
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7316010203-002406_pano_0012_000186",
+     "skip": {
+      "reason": "too-small",
+      "note": "2 m tenant signs over the doors under the overhang"
+     }
+    }
+   ],
+   "note": "The BAG bump here (to z 48.3) is the footprint of the cantilevered glass bay above (s-glass-bay); at street level the front is the recessed entrance."
+  },
+  {
+   "tag": "w08-348",
+   "bearing": 348,
+   "lengthM": 9.6,
+   "centre": [
+    4.862201,
+    52.33745
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "items": [],
+   "note": "No panorama; the same stepped low block as the photographed steps w09/w11/w12/w17, seen whole from the north in commons:TheEdge_03-2024.jpg (AValečka, CC BY-SA 4.0)"
+  },
+  {
+   "tag": "w09-348",
+   "bearing": 348,
+   "lengthM": 7,
+   "centre": [
+    4.861496,
+    52.3372505
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002492_pano_0003_001815",
+   "capturedAt": "2022-03-30",
+   "checked": true,
+   "items": [
+    {
+     "id": "lb-ribbon-w09",
+     "kind": "window-shape",
+     "where": "two-storey low block along the A10 verge: ribbon windows between three white bands, stepped in plan",
+     "approxSizeM": [
+      5,
+      6.2
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002492_pano_0003_001815",
+     "how": "lowBlock(): glass with white bands at 0, 2.75 and 5.5 m, mullions every 1.8 m, roof at 6.2 m (3DBAG plane 678)"
+    }
+   ]
+  },
+  {
+   "tag": "w10-347",
+   "bearing": 347,
+   "lengthM": 6.4,
+   "centre": [
+    4.8620885,
+    52.3374295
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "items": [],
+   "note": "No panorama; the same stepped low block as the photographed steps w09/w11/w12/w17, seen whole from the north in commons:TheEdge_03-2024.jpg (AValečka, CC BY-SA 4.0)"
+  },
+  {
+   "tag": "w11-346",
+   "bearing": 346,
+   "lengthM": 5.3,
+   "centre": [
+    4.861722,
+    52.337327
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002492_pano_0003_001816",
+   "capturedAt": "2022-03-30",
+   "checked": true,
+   "items": [
+    {
+     "id": "lb-ribbon-w11",
+     "kind": "window-shape",
+     "where": "two-storey low block along the A10 verge: ribbon windows between three white bands, stepped in plan",
+     "approxSizeM": [
+      5,
+      6.2
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002492_pano_0003_001816",
+     "how": "lowBlock(): glass with white bands at 0, 2.75 and 5.5 m, mullions every 1.8 m, roof at 6.2 m (3DBAG plane 678)"
+    }
+   ]
+  },
+  {
+   "tag": "w12-348",
+   "bearing": 348,
+   "lengthM": 5.3,
+   "centre": [
+    4.86165,
+    52.337304
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002492_pano_0003_001816",
+   "capturedAt": "2022-03-30",
+   "checked": true,
+   "items": [
+    {
+     "id": "lb-ribbon-w12",
+     "kind": "window-shape",
+     "where": "two-storey low block along the A10 verge: ribbon windows between three white bands, stepped in plan",
+     "approxSizeM": [
+      5,
+      6.2
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002492_pano_0003_001816",
+     "how": "lowBlock(): glass with white bands at 0, 2.75 and 5.5 m, mullions every 1.8 m, roof at 6.2 m (3DBAG plane 678)"
+    }
+   ]
+  },
+  {
+   "tag": "w13-348",
+   "bearing": 348,
+   "lengthM": 5.2,
+   "centre": [
+    4.8617935,
+    52.337349
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "items": [],
+   "note": "No panorama; the same stepped low block as the photographed steps w09/w11/w12/w17, seen whole from the north in commons:TheEdge_03-2024.jpg (AValečka, CC BY-SA 4.0)"
+  },
+  {
+   "tag": "w14-348",
+   "bearing": 348,
+   "lengthM": 5.1,
+   "centre": [
+    4.8618635,
+    52.33737
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "items": [],
+   "note": "No panorama; the same stepped low block as the photographed steps w09/w11/w12/w17, seen whole from the north in commons:TheEdge_03-2024.jpg (AValečka, CC BY-SA 4.0)"
+  },
+  {
+   "tag": "w15-348",
+   "bearing": 348,
+   "lengthM": 5,
+   "centre": [
+    4.861936,
+    52.337391
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "items": [],
+   "note": "No panorama; the same stepped low block as the photographed steps w09/w11/w12/w17, seen whole from the north in commons:TheEdge_03-2024.jpg (AValečka, CC BY-SA 4.0)"
+  },
+  {
+   "tag": "w16-349",
+   "bearing": 349,
+   "lengthM": 5,
+   "centre": [
+    4.862007,
+    52.3374115
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "items": [],
+   "note": "No panorama; the same stepped low block as the photographed steps w09/w11/w12/w17, seen whole from the north in commons:TheEdge_03-2024.jpg (AValečka, CC BY-SA 4.0)"
+  },
+  {
+   "tag": "w17-349",
+   "bearing": 349,
+   "lengthM": 4.9,
+   "centre": [
+    4.8615805,
+    52.3372835
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000085_pano_0006_016200",
+   "capturedAt": "2016-08-28",
+   "checked": true,
+   "items": [
+    {
+     "id": "lb-ribbon-w17",
+     "kind": "window-shape",
+     "where": "two-storey low block along the A10 verge: ribbon windows between three white bands, stepped in plan",
+     "approxSizeM": [
+      5,
+      6.2
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-000085_pano_0006_016200",
+     "how": "lowBlock(): glass with white bands at 0, 2.75 and 5.5 m, mullions every 1.8 m, roof at 6.2 m (3DBAG plane 678)"
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  }
+ ]
+}

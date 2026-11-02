@@ -1,0 +1,28 @@
+{
+ "id": "the-edge",
+ "countedBy": "lane #198 (opus) from the brief crops and Commons photographs before the model was rendered; the fronts are banded ribbons and piers whose per-storey counts the rectified crops do not resolve reliably (w01 rectification is 7 % short, w02 is cropped at the top), so only silhouette facts are recorded. Not a blind haiku count: integrator may re-count.",
+ "facades": [
+  {
+   "name": "east front (w01): white piers and floor bands, the atrium lean at its north end",
+   "bearing": 90,
+   "photo": "artifacts/landmark-briefs/the-edge/w01-90.jpg",
+   "symmetric": false,
+   "gables": 0,
+   "heightM": [
+    0,
+    52
+   ]
+  },
+  {
+   "name": "south front (w02, Commons 154826): solar panels, the glass bay, cropped below the roof step",
+   "bearing": 180,
+   "photo": "staging/landmarks/the-edge/commons/Zuidas_20210512_154826.jpg",
+   "symmetric": false,
+   "gables": 0,
+   "heightM": [
+    0,
+    52
+   ]
+  }
+ ]
+}
