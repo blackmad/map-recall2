@@ -1,0 +1,79 @@
+{
+ "id": "sportfondsenbad-oost",
+ "countedBy": "lane landmarks-oost-20261101 (opus) from the rectified panorama crops before the elevation renders were looked at; not a blind haiku count, the integrator may re-count. Each round-headed light of a triplet is its own opening (brick piers ~0.7 m between them).",
+ "facades": [
+  {
+   "name": "north gable end (Land van Cocagneplein)",
+   "bearing": 341,
+   "photo": "artifacts/landmark-lanes/sportfondsenbad-oost/ref-north.jpg",
+   "rows": [
+    4
+   ],
+   "heightM": [
+    9.0,
+    15.5
+   ],
+   "symmetric": false,
+   "note": "north-1 (TMX7316010203-002591_pano_0000_006022, 2022, rectified 40 px/m). Cropped to the clerestory zone above the 2014 shop block: four light groups of three round-headed arches, all bricked up except one panel under each centre arch (glazed, white frame; the east one dark). Blind arches are not openings. Below 9 m the wall is hidden by the shop block's fascia. alongM starts 0.61 m in: the face silhouette's viewer-left edge is the eaves gutter outside the corner. symmetric=false: the two halls differ in width (BAG/3DBAG: east 18.45 m, west 19.35 m; valley pilaster at 18.5 m from the east corner on north-1), so the glazed panels measured on north-1 at 4.9, 13.9, 23.0, 32.25 m from the east corner do not mirror within IoU 0.70 about the facade centre (the photo's own pattern scores ~0.5). Flagged for the integrator's blind re-count.",
+   "alongM": [
+    0.61,
+    38.46
+   ]
+  },
+  {
+   "name": "south gable end, west hall, west half (square)",
+   "bearing": 161,
+   "photo": "artifacts/landmark-lanes/sportfondsenbad-oost/ref-south.jpg",
+   "rows": [
+    3
+   ],
+   "heightM": [
+    9.0,
+    14.0
+   ],
+   "alongM": [
+    0.61,
+    10.285
+   ],
+   "symmetric": true,
+   "note": "view-s4 (TMX7316010203-002142_pano_0000_000680, 2021, aimed thumbnail, not rectified). The west hall's clerestory, one entry per half-hall (the two light groups either side of the apex pilaster; both are counted, split only so that each triplet's taller centre light is read as its axis): three glazed round-headed iron windows, the centre one taller. Light spacing 2.05 m measured on the rectified north end (north-1), where the same openings are bricked up. The pier-grid storey below (two rows of modern square windows) is real but the panoramas stand ~8 m off and the rows are partly hidden by bicycles, posters and a lamp post; not counted. alongM starts 0.61 m in: the face silhouette's viewer-left edge is the eaves gutter outside the corner."
+  },
+  {
+   "name": "south gable end, west hall, east half (square)",
+   "bearing": 161,
+   "photo": "artifacts/landmark-lanes/sportfondsenbad-oost/ref-south.jpg",
+   "rows": [
+    3
+   ],
+   "heightM": [
+    9.0,
+    14.0
+   ],
+   "alongM": [
+    10.285,
+    19.96
+   ],
+   "symmetric": true,
+   "note": "view-s4 (TMX7316010203-002142_pano_0000_000680, 2021, aimed thumbnail, not rectified). The west hall's clerestory, one entry per half-hall (the two light groups either side of the apex pilaster; both are counted, split only so that each triplet's taller centre light is read as its axis): three glazed round-headed iron windows, the centre one taller. Light spacing 2.05 m measured on the rectified north end (north-1), where the same openings are bricked up. The pier-grid storey below (two rows of modern square windows) is real but the panoramas stand ~8 m off and the rows are partly hidden by bicycles, posters and a lamp post; not counted. alongM starts 0.61 m in: the face silhouette's viewer-left edge is the eaves gutter outside the corner."
+  },
+  {
+   "name": "west side, southern two bays (square, chimney)",
+   "bearing": 251,
+   "photo": "artifacts/landmark-lanes/sportfondsenbad-oost/ref-west.jpg",
+   "rows": [
+    1,
+    3
+   ],
+   "heightM": [
+    7.0,
+    12.0
+   ],
+   "alongM": [
+    56.45,
+    69.0
+   ],
+   "symmetric": false,
+   "note": "westS-1 (TMX7316010203-001205_pano_0000_000259, 2019, rectified 40 px/m). Cropped from the pilaster north of the clerestory triplet to the south-west corner: one triplet of round-headed lights and the large round-arched railway opening. The rest of the west side is behind the 16 m house BAG 0363100012233504 or the chimney. Rows by the centre-band rule: the railway arch (7.45-11.1 m, centre 9.3) sits in its own band below the triplet (9.4-11.1 m, centre 10.25)."
+  }
+ ]
+}

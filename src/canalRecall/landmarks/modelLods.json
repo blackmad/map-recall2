@@ -2056,5 +2056,17 @@
   "buildVersion": 2,
   "bytes": 52708,
   "triangles": 2230
+ },
+ "sportfondsenbad-oost": {
+  "sourceHash": "b9a4c1fc5a00a0d5",
+  "buildVersion": 2,
+  "bytes": 99916,
+  "triangles": 5068
+ },
+ "artis-planetarium": {
+  "sourceHash": "60c250f25986c0ac",
+  "buildVersion": 2,
+  "bytes": 60908,
+  "triangles": 2618
  }
 }

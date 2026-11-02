@@ -1,5 +1,5 @@
 {
-  "toolchain": "f8a9075383afb88122322c492b12be31710b87368849301c4f0b3ea860b61fd7",
+  "toolchain": "d3d81b87c1806137d739107531494a359be41ff551561621be5a152323d6b35e",
   "models": {
     "abn-amro-hoofdkantoor": "90ff65a2d9f94e99b2ab33438567f147959a43f017d3d9cf9d2ae68b6dae7cbf",
     "academie-theater-dans": "503b3e8d59937cbf7ac8776eb644c11fd10b567e5ac1113e0caa55c83cb68cde",
@@ -25,6 +25,7 @@
     "artis-aquarium": "24f6500535d4f68e66d230e2973053a4d3adc25044e1db3084b46d1d85e7c32b",
     "artis-entrance": "af6e420f6d7518657b0da30dfd8c538f8cffd75104cb8aee126c9a0fc529aa6f",
     "artis-library": "1feef17e0b58ef35d5e3508e90d93fa8971a8c20fd6bda69c83b37309c93e96a",
+    "artis-planetarium": "4ed75a4b5c31e5197d9b252a7c26dd05e362e24b52ab9071ed85293241db5a94",
     "asterweg-23": "ac60054b0e09a055b07d89bc9852fc39b009e01c4cd7428d98bdeda3666aa7e4",
     "athenaeum": "04333046f1bf8946753eb42280e04db3e0daadba9afcd18f34719ee20d7c80ab",
     "auschwitz-monument": "b425e91c67c90ec1d1a10b997ecb7399d6b00a7448c65407e7ad2474de62e1e6",
@@ -325,6 +326,7 @@
     "social-history": "1b28c0f25c1012e8c77fd1ff08df166c668a4067c75f178cb7348467d404e027",
     "spanjemonument": "ca1a73074dfc897b85abcec30e2bf64ea6263096cdb1296eb9997706b7590a69",
     "spinoza-standbeeld": "0aefe6b6c324105f27fb67aa4fa34dea26252a5c3cd1269e2638ca8e5c9611b1",
+    "sportfondsenbad-oost": "2ae31b8e9545071f72d3d2bd9ce88f640b64a4a101e6b35409882acd2c56947f",
     "stadhuis": "66b0cf3fec017cf27a3df8efb39ae9ba31996f8853407f0e3b8c12d53574e0f5",
     "stadsschouwburg": "69e1aa111afe782394e77a45a9ca3988f8c544271d7b4a59669b84a8d99d39f9",
     "stationsplein-paviljoens": "85fccd3f1b13d39cfc2625b0b0482eacd6a031e4e5ec461f9dd3d5ba8d418e8e",
