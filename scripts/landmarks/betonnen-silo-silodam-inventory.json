@@ -1,0 +1,438 @@
+{
+ "schemaVersion": 1,
+ "id": "betonnen-silo-silodam",
+ "pand": "0363100012237143",
+ "brief": "scripts/landmarks/betonnen-silo-silodam-brief.md",
+ "signature": [
+  "t-blocks",
+  "s-spiral-stair",
+  "e-windows",
+  "e-roof-storey",
+  "t-portholes",
+  "w-strips",
+  "e-railing",
+  "t-windows"
+ ],
+ "walls": [
+  {
+   "tag": "w01-75",
+   "bearing": 75,
+   "lengthM": 44.8,
+   "centre": [
+    4.891633,
+    52.3901785
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000172_pano_0000_000617",
+   "capturedAt": "2016-11-01",
+   "checked": true,
+   "items": [
+    {
+     "id": "e-windows",
+     "kind": "window-shape",
+     "where": "eleven columns of tall narrow windows with glass balustrades (French balconies) over nine storeys, about a third with grey roller blinds closed",
+     "approxSizeM": [
+      1.7,
+      1.9
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-000172_pano_0000_000617",
+     "how": "longFront(): 0.22 m deep cuts per column and storey, balustrade rail and mullion; a fixed third backed by grey blind panels"
+    },
+    {
+     "id": "e-ground",
+     "kind": "window-shape",
+     "where": "glazed ground storey: large windows in white frames between white piers under the white slab edge",
+     "approxSizeM": [
+      3.4,
+      4.2
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-000172_pano_0000_000617",
+     "how": "groundFace(): white wall with framed glass cuts, white fascia slab at 5.3-5.6 m"
+    },
+    {
+     "id": "e-cornice",
+     "kind": "other",
+     "where": "concrete cornice band at the slab top",
+     "approxSizeM": [
+      44.8,
+      1.5
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-000172_pano_0000_000617",
+     "how": "slab 0.15 m proud, 27.3-28.85 m"
+    },
+    {
+     "id": "e-railing",
+     "kind": "balcony-ironwork",
+     "where": "maroon railings at the slab edge in front of the roof storey",
+     "approxSizeM": [
+      44.8,
+      1.1
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-000172_pano_0000_000617",
+     "how": "railing(): posts every 2 m, top and mid rail"
+    },
+    {
+     "id": "e-roof-storey",
+     "kind": "other",
+     "where": "set-back glazed roof storey under a shallow gabled zinc roof",
+     "approxSizeM": [
+      34,
+      4.2
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-000172_pano_0000_000617",
+     "how": "penthouse(): aluminium wall with glazed bays, gabled roof planks with glazed strips"
+    },
+    {
+     "id": "e-piles",
+     "kind": "other",
+     "where": "the building stands on the IJ: white piles under the quay deck, below the street level",
+     "approxSizeM": [
+      44.8,
+      2.0
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7316010203-000172_pano_0000_000617",
+     "skip": {
+      "reason": "not-visible",
+      "note": "below the quay level (y < 0), which the game does not draw; the deck and the white piles show only from the water"
+     }
+    },
+    {
+     "id": "t-blocks",
+     "kind": "tower",
+     "where": "head tower at the north end: two concrete blocks either side of the white core, to 46.4 m",
+     "approxSizeM": [
+      11.8,
+      17.7
+     ],
+     "plan": "modelled",
+     "seenIn": "Commons: Silodam, Betonnen graansilo foto 2 (Alf van Beem 2017, public domain)",
+     "how": "tower(): stone-tinted walls on the BAG/3DBAG plan"
+    },
+    {
+     "id": "t-windows",
+     "kind": "window-shape",
+     "where": "west/east faces of the tower: two bays of large gridded windows, two pairs of storeys",
+     "approxSizeM": [
+      4.4,
+      2.3
+     ],
+     "plan": "modelled",
+     "seenIn": "Commons: Silodam, Betonnen graansilo foto 3 (Alf van Beem 2017, public domain)",
+     "how": "tower(): cuts with a 4x2 frame grid"
+    },
+    {
+     "id": "t-canopy",
+     "kind": "canopy",
+     "where": "perforated-metal eave canopy with a railing round each tower block",
+     "approxSizeM": [
+      13,
+      0.8
+     ],
+     "plan": "modelled",
+     "seenIn": "Commons: Silodam, Betonnen graansilo foto 3 (Alf van Beem 2017, public domain)",
+     "how": "plank() canopies and railing()"
+    },
+    {
+     "id": "t-flue",
+     "kind": "other",
+     "where": "stainless flue drum on a pipe at the tower corner",
+     "approxSizeM": [
+      0.6,
+      2.3
+     ],
+     "plan": "modelled",
+     "seenIn": "Commons: Silodam, Betonnen graansilo foto 4 (Alf van Beem 2017, public domain)",
+     "how": "two cylinders"
+    }
+   ]
+  },
+  {
+   "tag": "w02-165",
+   "bearing": 165,
+   "lengthM": 20,
+   "centre": [
+    4.891576,
+    52.3899605
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001074_pano_0000_000798",
+   "capturedAt": "2019-01-24",
+   "checked": true,
+   "items": [
+    {
+     "id": "s-spiral-stair",
+     "kind": "other",
+     "where": "external spiral fire stair in a round steel cage up the middle of the south end, from the first floor to the roof, a straight flight down to the quay",
+     "approxSizeM": [
+      2.6,
+      23.0
+     ],
+     "plan": "modelled",
+     "seenIn": "Commons: Silodam, Betonnen graansilo foto 1 (Alf van Beem 2017, public domain)",
+     "how": "spiralStair(): eight posts, central column, landing discs and guard rings per storey, bridges to the doors, straight flight plank"
+    },
+    {
+     "id": "s-windows",
+     "kind": "window-shape",
+     "where": "two columns of windows in the top six storeys",
+     "approxSizeM": [
+      1.7,
+      1.2
+     ],
+     "plan": "modelled",
+     "seenIn": "Commons: Silodam, Betonnen graansilo foto 1 (Alf van Beem 2017, public domain)",
+     "how": "southFront(): cuts with mullion"
+    },
+    {
+     "id": "s-gable",
+     "kind": "window-shape",
+     "where": "glazed gable of the roof storey with a framed grid",
+     "approxSizeM": [
+      15.9,
+      4.4
+     ],
+     "plan": "modelled",
+     "seenIn": "Commons: Silodam, Betonnen graansilo foto 1 (Alf van Beem 2017, public domain)",
+     "how": "penthouse(): frame wall with six glazed cuts and a glazed gable triangle"
+    },
+    {
+     "id": "s-ground",
+     "kind": "window-shape",
+     "where": "glazed ground storey in white frames",
+     "approxSizeM": [
+      4.0,
+      4.2
+     ],
+     "plan": "modelled",
+     "seenIn": "Commons: Silodam, Betonnen graansilo foto 1 (Alf van Beem 2017, public domain)",
+     "how": "groundFace()"
+    },
+    {
+     "id": "t-portholes",
+     "kind": "window-shape",
+     "where": "south faces of the tower blocks: buff textured square panels with round porthole windows, two columns",
+     "approxSizeM": [
+      1.0,
+      1.0
+     ],
+     "plan": "modelled",
+     "seenIn": "Commons: Silodam, Betonnen graansilo foto 4 (Alf van Beem 2017, public domain)",
+     "how": "tower(): ochre panels with dark ring and glass disc"
+    },
+    {
+     "id": "t-core-top",
+     "kind": "other",
+     "where": "the white core rising above the blocks with flues on top",
+     "approxSizeM": [
+      3.8,
+      2.2
+     ],
+     "plan": "modelled",
+     "seenIn": "Commons: Silodam, Betonnen graansilo foto 1 (Alf van Beem 2017, public domain)",
+     "how": "core walls to 48.6 m and three flue cylinders"
+    }
+   ]
+  },
+  {
+   "tag": "w03-255",
+   "bearing": 255,
+   "lengthM": 18.9,
+   "centre": [
+    4.8913515,
+    52.390125
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001182_pano_0000_002312",
+   "capturedAt": "2019-05-14",
+   "checked": true,
+   "items": [
+    {
+     "id": "w-windows",
+     "kind": "window-shape",
+     "where": "eleven columns of French-balcony windows like the east front",
+     "approxSizeM": [
+      1.7,
+      1.9
+     ],
+     "plan": "modelled",
+     "seenIn": "Commons: Silodam, Betonnen graansilo foto 6 (Alf van Beem 2017, public domain)",
+     "how": "longFront()"
+    },
+    {
+     "id": "w-strips",
+     "kind": "other",
+     "where": "flat vertical concrete panel strips between the window columns",
+     "approxSizeM": [
+      0.9,
+      21.7
+     ],
+     "plan": "modelled",
+     "seenIn": "Commons: Silodam, Betonnen graansilo foto 6 (Alf van Beem 2017, public domain)",
+     "how": "slab 6 cm proud per strip"
+    },
+    {
+     "id": "w-canopy",
+     "kind": "canopy",
+     "where": "cantilevered white canopies with rounded corners over the glazed ground storey that steps out 1.5 m",
+     "approxSizeM": [
+      5.8,
+      0.3
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-001182_pano_0000_002312",
+     "how": "block() white slab 0.6 m past the glass front; corners square, not rounded"
+    },
+    {
+     "id": "w-entrance-stair",
+     "kind": "other",
+     "where": "short entrance stairs with maroon railings to the raised ground floor",
+     "approxSizeM": [
+      1.5,
+      1.2
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7316010203-001182_pano_0000_002312",
+     "skip": {
+      "reason": "too-small",
+      "note": "five steps with maroon rails, under 1.5 m, beside the projection"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "w04-255",
+   "bearing": 255,
+   "lengthM": 11.9,
+   "centre": [
+    4.8912715,
+    52.3902555
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002026_pano_0000_003312",
+   "capturedAt": "2021-02-24",
+   "checked": true,
+   "items": [
+    {
+     "id": "w-service",
+     "kind": "other",
+     "where": "white louvred service doors in a low block at the north-west corner",
+     "approxSizeM": [
+      3.1,
+      5.3
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002026_pano_0000_003312",
+     "how": "service block: white walls with two dark louvre cuts"
+    }
+   ]
+  },
+  {
+   "tag": "w05-345",
+   "bearing": 345,
+   "lengthM": 7.6,
+   "centre": [
+    4.891319,
+    52.390348
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001074_pano_0000_000785",
+   "capturedAt": "2019-01-24",
+   "checked": true,
+   "items": [
+    {
+     "id": "n-core",
+     "kind": "tower",
+     "where": "white rendered core running up the north side to the top of the tower, louvres",
+     "approxSizeM": [
+      3.8,
+      48.6
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001074_pano_0000_000785",
+     "how": "core walls in white with dark louvre cuts"
+    },
+    {
+     "id": "n-glass-shaft",
+     "kind": "other",
+     "where": "glazed lift/stair shaft between the two silos rising to the tower top (foto 6)",
+     "approxSizeM": [
+      4.0,
+      46.0
+     ],
+     "plan": "simplified",
+     "seenIn": "Commons: Silodam, Betonnen graansilo foto 6 (Alf van Beem 2017, public domain)",
+     "how": "glassShaft(): frame wall with a 1.3 x 3 m glazed grid on its three open faces, flat top at 44 m; stands just north of this pand outline (no other pand or model draws it)"
+    }
+   ]
+  },
+  {
+   "tag": "w06-256",
+   "bearing": 256,
+   "lengthM": 6.4,
+   "centre": [
+    4.891422,
+    52.389965
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001182_pano_0000_002314",
+   "capturedAt": "2019-05-14",
+   "checked": true,
+   "items": [
+    {
+     "id": "w-canopy-n",
+     "kind": "canopy",
+     "where": "second ground-storey projection under a cantilevered canopy",
+     "approxSizeM": [
+      11.9,
+      5.6
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-001182_pano_0000_002314",
+     "how": "as w-canopy"
+    }
+   ]
+  },
+  {
+   "tag": "w07-255",
+   "bearing": 255,
+   "lengthM": 5.8,
+   "centre": [
+    4.891377,
+    52.390015
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001710_pano_0000_002516",
+   "capturedAt": "2020-05-14",
+   "checked": true,
+   "items": [
+    {
+     "id": "w-ground",
+     "kind": "window-shape",
+     "where": "glazed ground storey between the projections",
+     "approxSizeM": [
+      4.0,
+      4.2
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001710_pano_0000_002516",
+     "how": "groundFace()"
+    }
+   ]
+  }
+ ],
+ "sources": [
+  "Commons: Silodam, Betonnen graansilo foto 1 (Alf van Beem 2017, public domain)",
+  "Commons: Silodam, Betonnen graansilo foto 2 (Alf van Beem 2017, public domain)",
+  "Commons: Silodam, Betonnen graansilo foto 3 (Alf van Beem 2017, public domain)",
+  "Commons: Silodam, Betonnen graansilo foto 4 (Alf van Beem 2017, public domain)",
+  "Commons: Silodam, Betonnen graansilo foto 6 (Alf van Beem 2017, public domain)",
+  "Gemeente Amsterdam panoramas (CC BY 4.0) as listed per wall",
+  "BAG 0363100012237143; 3DBAG LoD2.2"
+ ]
+}

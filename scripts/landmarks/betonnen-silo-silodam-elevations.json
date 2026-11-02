@@ -1,0 +1,65 @@
+{
+  "id": "betonnen-silo-silodam",
+  "countedBy": "lane landmarks-silodam-silos-20261101 (opus) from the photos named per facade, 2026-11-02; not a blind count: the integrator may dispatch one",
+  "facades": [
+    {
+      "name": "east (IJ): the slab below the cornice",
+      "bearing": 75,
+      "photo": "artifacts/landmark-briefs/betonnen-silo-silodam/w01-75.jpg",
+      "heightM": [
+        0,
+        27.3
+      ],
+      "openings": [
+        "glass",
+        "dark",
+        "frame"
+      ],
+      "rows": [
+        11,
+        11,
+        11,
+        11,
+        11,
+        11,
+        11,
+        11,
+        11,
+        11
+      ],
+      "symmetric": false,
+      "note": "Rectified panorama TMX7316010203-000172_pano_0000_000617 (2016, Gemeente Amsterdam, CC BY 4.0). Ground storey: eleven large windows in white frames between white piers. Then nine storeys of eleven tall narrow windows (French balconies), about a third with grey roller blinds down: a closed blind is still the window opening, so frame-backed openings count. The tower is above the crop (heightM)."
+    },
+    {
+      "name": "west (Silodam street): the slab between the ground storey and the cornice",
+      "bearing": 255,
+      "photo": "artifacts/landmark-lanes/silos-commons/c13.jpg",
+      "heightM": [
+        5.6,
+        27.3
+      ],
+      "openings": [
+        "glass",
+        "dark",
+        "frame"
+      ],
+      "rows": [
+        11,
+        11,
+        11,
+        11,
+        11,
+        11,
+        11,
+        11,
+        11
+      ],
+      "symmetric": false,
+      "note": "Commons 'Silodam, Betonnen graansilo foto 6' (Alf van Beem 2017, public domain). Nine storeys of eleven window columns between flat vertical panel strips. The ground storey (white louvred service doors, glazed fronts stepping out under canopies, entrance stairs) is cropped off: its openings are a different order and parked bikes hide them. alongM crops the slab only: the glazed shaft between the silos (north of the slab, at the viewer's left) is not part of this count.",
+      "alongM": [
+        3.5,
+        49.8
+      ]
+    }
+  ]
+}

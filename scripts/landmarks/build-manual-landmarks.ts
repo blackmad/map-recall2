@@ -392,6 +392,7 @@ import {buildAkzoNobelCenter} from './akzonobel-center-builder';
 import {buildSarphatiPlaza} from './sarphati-plaza-builder';
 import {buildApolloHotel} from './apollo-hotel-builder';
 import {buildGraansiloKorthalsAltes} from './graansilo-korthals-altes-builder';
+import {buildBetonnenSiloSilodam} from './betonnen-silo-silodam-builder';
 const out=path.resolve('public/canal-drive/models');
 const palette={brick:'#9a5240',stone:'#cfc2a6',sandstone:'#a09580',slate:'#4a525d',white:'#efe9db',gold:'#d9b24c',glass:'#527787',dark:'#303b43',frame:'#9daaa8',red:'#ac624e',blue:'#3f5f9a',pink:'#be9295',bronze:'#3d5148',copper:'#43888b',green:'#718b58',ochre:'#9f825c',concrete:'#d4d5d0',greyBrick:'#7d7871',
  // Light frit glass of the IJ bus-station canopy (centraal-complex-builder.ts): median of its sunlit north half on the PDOK 2023
@@ -974,6 +975,7 @@ for(const spec of MANUAL_LANDMARKS.filter(model => !selectedIds.length || select
     else if(id==='sarphati-plaza')buildSarphatiPlaza(w,d,helpers);
     else if(id==='apollo-hotel')buildApolloHotel(w,d,helpers);
     else if(id==='graansilo-korthals-altes')buildGraansiloKorthalsAltes(w,d,helpers);
+    else if(id==='betonnen-silo-silodam')buildBetonnenSiloSilodam(w,d,helpers);
     else buildCulturalLandmark(id,w,d,helpers);
   }
   }catch(e){
