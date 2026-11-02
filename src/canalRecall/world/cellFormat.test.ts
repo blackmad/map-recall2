@@ -13,6 +13,7 @@ import path from 'node:path';
 import zlib from 'node:zlib';
 import { gameChain, loadTile, type Row } from '../../../scripts/world/pipeline.js';
 import { buildFeatureChunk } from '../threeBuildingFeatures.js';
+import { RAIL_INFRA_FILE } from '../railInfraBuildings.js';
 
 const TILES = ['8413/5384', '8414/5384', '8420/5385'];
 let rowsPromise: Promise<Row[]> | null = null;
@@ -431,5 +432,34 @@ test('v5: shared wall runs in both directions, a T-junction and a multipolygon r
     if (b5[at] === v) continue;
     const c = b5.slice(); c[at] = v;
     try { decodeCell(c); } catch (e) { assert.ok(e instanceof Error && /^world cell/.test(e.message), `byte ${at}=${v}: ${String(e)}`); }
+  }
+});
+
+// The rail infrastructure table (railInfraBuildings.ts) is applied by the compiler's tile enricher (gameTileEnricher.ts),
+// as on the own engine's live path: the runtime adopts world-v1 cells without enriching, and cells baked without it
+// drew the viaduct pands as houses on the default world (#129 round 23; the world A/B under own, 2026-11-02).
+test('rail infrastructure is baked: viaduct pands gone, the Amstel canopy cut to its platform pieces, and those cells round-trip', async () => {
+  const table = JSON.parse(fs.readFileSync(path.join('public/data/extracts/amsterdam', RAIL_INFRA_FILE), 'utf8'));
+  assert.equal(table.ids['NL.IMBAG.Pand.0363100012173021'], 'viaduct', 'the pinned pand is a viaduct in the published table');
+  const chain = gameChain();
+  const west = await loadTile('8414/5383', chain), amstel = await loadTile('8415/5386', chain);
+  const ids = (list: Row[]) => new Set(list.map(r => String(r.raw.properties.id)));
+  assert.ok(west.length > 1000, 'tile 8414/5383 loaded');
+  assert.equal(ids(west).has('NL.IMBAG.Pand.0363100012173021'), false, 'viaduct pand 0363100012173021 is not in its cell');
+  for (const [id, kind] of Object.entries<string>(table.ids)) if (kind === 'viaduct') { assert.equal(ids(west).has(id), false, id); assert.equal(ids(amstel).has(id), false, id); }
+  const a = ids(amstel);
+  assert.equal(a.has('w1302881959'), false, 'the Amstel canopy outline is replaced');
+  const pieces = amstel.filter(r => String(r.raw.properties.id).startsWith('w1302881959:canopy:'));
+  assert.equal(pieces.length, table.canopies.w1302881959.length, 'one building per platform piece');
+  for (const p of pieces) assert.equal(p.raw.properties.railInfra, 'canopy');
+  // The pieces' new keys (railInfra, kitWallHex, …) survive the cell format, runtime and DEBUG cells alike.
+  for (const [key, list] of cellsOf(pieces.length ? amstel.filter(r => pieces.some(p => p.cell === r.cell)) : [])) for (const debug of [true, false]) {
+    const cell = cellFrom(key, list, debug), back = decodeCell(encodeCell(cell).bytes);
+    assert.equal(back.buildings.length, list.length);
+    back.buildings.forEach((b, k) => {
+      assert.equal(b.id, String(list[k].raw.properties.id));
+      assert.ok(sameValue(styledFeature(b).properties, list[k].styled.properties), `${b.id} styled bag`);
+      if (debug) assert.ok(sameValue(b.attr, list[k].raw.properties), `${b.id} attr bag`);
+    });
   }
 });
