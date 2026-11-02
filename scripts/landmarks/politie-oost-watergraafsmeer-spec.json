@@ -1,0 +1,41 @@
+{
+ "id": "politie-oost-watergraafsmeer",
+ "pand": "0363100012131469",
+ "identity": {
+  "addresses": "Linnaeusstraat 111, 1093EN (one kantoorfunctie VBO, 4070 m2)",
+  "bouwjaar": 2003,
+  "use": "police station of the neighbourhood team Oost/Watergraafsmeer (Staatscourant stcrt-2015-31737 traffic decision: the Ruyschstraat station merged into Linnaeusstraat 111)",
+  "architect": "not named by the BAG, the monument registers (no record) or nl.wikipedia; unconfirmed",
+  "sources": [
+   "https://api.data.amsterdam.nl/v1/bag/panden/0363100012131469",
+   "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/?ligtInPanden.identificatie=0363100012131469",
+   "https://zoek.officielebekendmakingen.nl/stcrt-2015-31737.html"
+  ]
+ },
+ "frame": {
+  "corners": "BAG corners in native x east, z south: NW (-12.753,-20.36), SW (-0.77,11.683), SE (21.334,3.98), NE (10.093,-28.339); the ring's other vertices are collinear",
+  "faces": "west 34.21 m (Linnaeusstraat, t from the north), south 23.41 (t from the west), east 34.22 (t from the south), north 24.2 (t from the east)"
+ },
+ "partyWallBearings": [],
+ "streetNAP": 0.396,
+ "volumes": {
+  "block": {
+   "top": 19.65
+  },
+  "roofBoxes": [
+   {
+    "top": 22.15
+   },
+   {
+    "top": 20.17,
+    "note": "3DBAG roof parts, not seen from the street"
+   }
+  ]
+ },
+ "storeys": {
+  "south": "tall timber ground windows 0.15-4.3 (transom 1.6), short timber 5.6-7.3, aluminium 8.6-11.0, 12.2-14.6, 15.8-18.2",
+  "middle": "low ground openings 0.15-2.5, tall timber 3.8-7.3 (transom 5.6), aluminium 8.6-11.0, 12.2-14.6, 15.8-18.2",
+  "north": "low ground openings 0.15-2.5, short timber 3.8-5.6, tall timber 6.85-10.9 (transom 8.9), aluminium 12.2-14.6, 15.8-18.2",
+  "pitch": "1.84-1.93 m per face"
+ }
+}

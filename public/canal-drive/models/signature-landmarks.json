@@ -82597,6 +82597,174 @@
         "bytes": 40956,
         "triangles": 2182
       }
+    },
+    "politie-oost-watergraafsmeer": {
+      "id": "politie-oost-watergraafsmeer",
+      "name": "Politiebureau Oost (Linnaeusstraat 111)",
+      "modelUrl": "./models/politie-oost-watergraafsmeer.glb",
+      "suppressOsmIds": [
+        "NL.IMBAG.Pand.0363100012131469"
+      ],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.92723907,
+          52.35747848
+        ],
+        "headingDegrees": 0,
+        "lengthMetres": 34.1,
+        "widthMetres": 40
+      },
+      "surveyed": {
+        "anchor": [
+          4.92723907,
+          52.35747848
+        ],
+        "northOffsetDegrees": 0,
+        "source": "Vertex average of the BAG 0363100012131469 ring (RD, PDOK BAG WFS, CC0) in native east/south metres above the 3DBAG ground 0.396 m NAP (scripts/landmarks/politie-oost-watergraafsmeer-footprints.json, written by sarphati-plaza-prepare.ts --id=politie-oost-watergraafsmeer --pand=0363100012131469). Flat roof 19.65 m and the two roof boxes (22.15 and 20.17 m) from the 3DBAG LoD2.2 roof parts (CC BY 4.0); window columns, storey levels per zone, the entrance, garage door, POLITIE shields and lettering and the flagpole measured on rectified Gemeente Amsterdam panorama crops (CC BY 4.0), per wall in scripts/landmarks/politie-oost-watergraafsmeer-inventory.json. Every face is photographed."
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 0,
+      "heightMetres": 22.15,
+      "bagYear": 2003,
+      "materialOverrides": {
+        "brick": "#5a4643",
+        "stone": "#8a8a88",
+        "concrete": "#c9ccce",
+        "white": "#8baeba",
+        "glass": "#62899e",
+        "frame": "#6b4a35",
+        "dark": "#2d373a",
+        "slate": "#7e8082",
+        "greyBrick": "#6d6461",
+        "blue": "#233f86",
+        "gold": "#d6dade"
+      },
+      "attribution": {
+        "title": "Politiebureau Oost, Linnaeusstraat 111 (police station, 2003)",
+        "author": "Map Recall",
+        "sourceUrl": "https://api.data.amsterdam.nl/v1/bag/panden/0363100012131469",
+        "licence": "CC BY 4.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "modifications": "Original texture-free flat-colour geometry on the BAG footprint (CC0) with 3DBAG LoD2.2 heights (CC BY 4.0): the five-storey dark brick block with its punched window grid in three storey zones, timber lower windows and aluminium upper windows, glazed corner bays, the Linnaeusstraat entrance bays and stone pier, the garage door, the blue POLITIE lozenges, the POLITIE lettering on the north face and the bracketed flagpole; read for proportion and tone from Gemeente Amsterdam panoramas (CC BY 4.0). No pixels or meshes imported."
+      },
+      "buildingFootprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.92719525,
+              52.35742775
+            ],
+            [
+              4.92720159,
+              52.35741749
+            ],
+            [
+              4.92720498,
+              52.35741203
+            ],
+            [
+              4.92721133,
+              52.35740177
+            ],
+            [
+              4.92721433,
+              52.3573969
+            ],
+            [
+              4.92722105,
+              52.35738605
+            ],
+            [
+              4.92722442,
+              52.35738059
+            ],
+            [
+              4.92722885,
+              52.35737344
+            ],
+            [
+              4.92725134,
+              52.35737831
+            ],
+            [
+              4.92726034,
+              52.35738026
+            ],
+            [
+              4.92727725,
+              52.35738392
+            ],
+            [
+              4.9275526,
+              52.35744393
+            ],
+            [
+              4.9274464,
+              52.35762712
+            ],
+            [
+              4.92738458,
+              52.35773375
+            ],
+            [
+              4.92708874,
+              52.35766919
+            ],
+            [
+              4.92705123,
+              52.35766101
+            ],
+            [
+              4.92704997,
+              52.35766074
+            ],
+            [
+              4.92719525,
+              52.35742775
+            ]
+          ]
+        ]
+      },
+      "buildingCategory": "landmark",
+      "bounds": {
+        "min": [
+          -12.881691932678223,
+          0,
+          -28.466379165649414
+        ],
+        "max": [
+          21.46133804321289,
+          25,
+          11.811690330505371
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.92723907,
+          52.35747848
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 90,
+        "facadeBearingDegrees": 0,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 40.278069496154785,
+        "heightMetres": 25,
+        "depthMetres": 34.34302997589111,
+        "depthCoverage": 0.8585757493972779
+      },
+      "triangles": 10403,
+      "bytes": 139744,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
+      "lod1": {
+        "sourceHash": "07f9066b0a9b510e",
+        "buildVersion": 2,
+        "bytes": 70796,
+        "triangles": 4274
+      }
     }
   }
 }

@@ -2266,5 +2266,11 @@
   "buildVersion": 2,
   "bytes": 40956,
   "triangles": 2182
+ },
+ "politie-oost-watergraafsmeer": {
+  "sourceHash": "07f9066b0a9b510e",
+  "buildVersion": 2,
+  "bytes": 70796,
+  "triangles": 4274
  }
 }
