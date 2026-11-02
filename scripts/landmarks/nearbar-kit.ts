@@ -121,7 +121,8 @@ export function archWindows(b: BuildingTools, f: Frame, ts: number[], o: {y: num
 }
 
 /** 5x7 capitals; rows are merged into runs so the sign stays cheap. */
-const GL: Record<string, string[]> = {
+export const GL: Record<string, string[]> = {
+  W: ['10001', '10001', '10001', '10101', '10101', '10101', '01010'],
   P: ['11110', '10001', '10001', '11110', '10000', '10000', '10000'],
   A: ['01110', '10001', '10001', '11111', '10001', '10001', '10001'],
   N: ['10001', '11001', '10101', '10011', '10001', '10001', '10001'],

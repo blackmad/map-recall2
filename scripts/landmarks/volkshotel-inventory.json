@@ -1,0 +1,306 @@
+{
+ "schemaVersion": 1,
+ "id": "volkshotel",
+ "pand": "0363100012149232",
+ "brief": "scripts/landmarks/volkshotel-brief.md",
+ "signature": [
+  "e-ribbon-bands",
+  "e-roof-oversail",
+  "e-roof-letters",
+  "e-ground-colonnade",
+  "e-red-canopies"
+ ],
+ "walls": [
+  {
+   "tag": "w01-340",
+   "bearing": 340,
+   "lengthM": 43,
+   "centre": [
+    4.9112856,
+    52.3538247
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "items": []
+  },
+  {
+   "tag": "w02-160",
+   "bearing": 160,
+   "lengthM": 43,
+   "centre": [
+    4.9113868,
+    52.3536558
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "items": []
+  },
+  {
+   "tag": "w03-70",
+   "bearing": 70,
+   "lengthM": 34.9,
+   "centre": [
+    4.9120238,
+    52.3537245
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2024-10-02_11-14-57_01149",
+   "capturedAt": "2024-10-02",
+   "checked": true,
+   "items": [
+    {
+     "id": "e-ribbon-bands",
+     "kind": "window-shape",
+     "where": "whole Wibautstraat front and both end faces: eight light grey concrete spandrel bands (about 1.5 m, proud with a dark shadow line under each) alternating with seven ribbon windows of reflective glass between dark grey mullions about 3.1 m apart",
+     "approxSizeM": [
+      52,
+      23
+     ],
+     "plan": "modelled",
+     "how": "ribbon(): glass wall on the slab outline, a 0.3 m proud concrete strip per band, dark mullion fins every 3.1 m behind the bands",
+     "seenIn": "recording_2024-10-02_11-14-57_01149"
+    },
+    {
+     "id": "e-ground-colonnade",
+     "kind": "colonnade",
+     "where": "ground storey: full-height glazing set back behind square concrete columns about 6.2 m apart under the first band",
+     "approxSizeM": [
+      52,
+      4.3
+     ],
+     "plan": "modelled",
+     "how": "ground glass wall 0.6 m behind the slab line, 0.6 m concrete columns at 6.2 m, soffit under the first band",
+     "seenIn": "recording_2024-10-02_11-14-57_01149"
+    },
+    {
+     "id": "e-red-canopies",
+     "kind": "canopy",
+     "where": "two red entrance canopies on the ground storey: a long flat one at the south entrance and a rounded one over the hotel door carrying a small Volks HOTEL sign",
+     "approxSizeM": [
+      9,
+      2
+     ],
+     "plan": "modelled",
+     "how": "thin red slabs on the colonnade line, the north one with a dark sign panel; sign text too small to letter at ride distance",
+     "seenIn": "recording_2024-10-02_11-14-57_01149"
+    },
+    {
+     "id": "e-canopy-artwork",
+     "kind": "sculpture",
+     "where": "a tall colourful artwork standing on the hotel-door canopy (a different piece in the 2021 capture and the 2024 capture)",
+     "approxSizeM": [
+      1.5,
+      4
+     ],
+     "plan": "skipped",
+     "seenIn": "recording_2024-10-02_11-14-57_01149",
+     "skip": {
+      "reason": "temporary",
+      "note": "the piece changed between the 2021 and 2024 captures, so no one shape is the building"
+     }
+    },
+    {
+     "id": "e-roof-oversail",
+     "kind": "canopy",
+     "where": "top storey: a glazed storey set back from the slab under a thick flat roof slab that oversails it, downlights in the soffit (w03 aimed view)",
+     "approxSizeM": [
+      42,
+      4
+     ],
+     "plan": "modelled",
+     "how": "recessed glass storey 27.6-31 m with dark mullions, 1.2 m white roof slab oversailing 1.8 m with a soffit",
+     "seenIn": "recording_2024-10-02_11-14-57_01149"
+    },
+    {
+     "id": "e-roof-letters",
+     "kind": "lettering",
+     "where": "free-standing dark letters on the roof edge at the north end of the front, read ...HOTEL (the left part hidden by the tree)",
+     "approxSizeM": [
+      9,
+      1.4
+     ],
+     "plan": "modelled",
+     "how": "VOLKSHOTEL in pixel letters on a dark rail on the roof slab: the name is the building's (nl.wikipedia) and the canopy sign reads Volks HOTEL",
+     "seenIn": "recording_2024-10-02_11-14-57_01149"
+    }
+   ]
+  },
+  {
+   "tag": "w04-250",
+   "bearing": 250,
+   "lengthM": 20.2,
+   "centre": [
+    4.9110401,
+    52.3536732
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "items": []
+  },
+  {
+   "tag": "w05-340",
+   "bearing": 340,
+   "lengthM": 15.2,
+   "centre": [
+    4.9117522,
+    52.3539824
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2024-10-02_08-12-25_02675",
+   "capturedAt": "2024-10-02",
+   "checked": true,
+   "items": [
+    {
+     "id": "n-end-bands",
+     "kind": "window-shape",
+     "where": "north end face: the same bands and ribbons, four panes across; ground storey glazed behind a column",
+     "approxSizeM": [
+      15,
+      27.6
+     ],
+     "plan": "modelled",
+     "how": "ribbon() on the end edge",
+     "seenIn": "recording_2024-10-02_08-12-25_02675"
+    }
+   ]
+  },
+  {
+   "tag": "w06-241",
+   "bearing": 241,
+   "lengthM": 14.9,
+   "centre": [
+    4.9117356,
+    52.3536648
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "items": []
+  },
+  {
+   "tag": "w07-160",
+   "bearing": 160,
+   "lengthM": 14.7,
+   "centre": [
+    4.9120148,
+    52.3535461
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002417_pano_0015_000027",
+   "capturedAt": "2022-01-12",
+   "checked": true,
+   "items": [
+    {
+     "id": "s-end-bands",
+     "kind": "window-shape",
+     "where": "south end face: bands and ribbons four panes across over a glazed restaurant ground storey",
+     "approxSizeM": [
+      15,
+      27.6
+     ],
+     "plan": "modelled",
+     "how": "ribbon() on the end edge",
+     "seenIn": "TMX7316010203-002417_pano_0015_000027"
+    }
+   ]
+  },
+  {
+   "tag": "w08-70",
+   "bearing": 70,
+   "lengthM": 13.5,
+   "centre": [
+    4.9119035,
+    52.3539347
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2024-10-02_11-14-57_01144",
+   "capturedAt": "2024-10-02",
+   "checked": true,
+   "items": [
+    {
+     "id": "e-north-entrance",
+     "kind": "window-shape",
+     "where": "north part of the front: ground storey glazing behind columns, bicycle parking in front",
+     "approxSizeM": [
+      13.5,
+      4.3
+     ],
+     "plan": "modelled",
+     "how": "part of e-ground-colonnade",
+     "seenIn": "recording_2024-10-02_11-14-57_01144"
+    }
+   ]
+  },
+  {
+   "tag": "w09-250",
+   "bearing": 250,
+   "lengthM": 10.7,
+   "centre": [
+    4.9118736,
+    52.3535743
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001184_pano_0000_002584",
+   "capturedAt": "2019-05-15",
+   "checked": true,
+   "items": [
+    {
+     "id": "w-wing-ribbons",
+     "kind": "window-shape",
+     "where": "the low rear wing behind the neighbouring houses: white bands and ribbon windows like the slab, 4 storeys",
+     "approxSizeM": [
+      10.7,
+      14.4
+     ],
+     "plan": "modelled",
+     "how": "ribbon() on every wing edge, three bands over a glazed ground storey",
+     "seenIn": "TMX7316010203-001184_pano_0000_002584"
+    }
+   ]
+  },
+  {
+   "tag": "w10-160",
+   "bearing": 160,
+   "lengthM": 4.2,
+   "centre": [
+    4.9118177,
+    52.3536126
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7315120208-000050_pano_0001_002124",
+   "capturedAt": "2016-05-17",
+   "checked": true,
+   "items": [
+    {
+     "id": "s-terrace-column",
+     "kind": "other",
+     "where": "a painted advertising column and terrace tables in the south yard",
+     "approxSizeM": [
+      1.2,
+      3.5
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7315120208-000050_pano_0001_002124",
+     "skip": {
+      "reason": "temporary",
+      "note": "a free-standing painted advertising column on the public yard, not part of the pand, moved and repainted over the years"
+     }
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  }
+ ]
+}

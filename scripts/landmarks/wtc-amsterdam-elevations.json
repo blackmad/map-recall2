@@ -1,0 +1,37 @@
+{
+ "id": "wtc-amsterdam",
+ "countedBy": "lane #192 (opus) from the city panoramas before the model was rendered (tt-ne: recording_2025-07-29_10-56-07_00938; w01: brief crop w01-357). Curtain walls follow the ribbon convention, so only silhouette facts are recorded; not a blind haiku count: integrator may re-count. heightM crops stop below the roof-edge wing blades, which the peak counter would read as gables.",
+ "facades": [
+  {
+   "name": "north front on the Strawinskylaan: glass hall under the wing canopy (w01), cropped below the canopy blades",
+   "bearing": 357.5,
+   "photo": "artifacts/landmark-briefs/wtc-amsterdam/w01-357.jpg",
+   "symmetric": false,
+   "gables": 0,
+   "alongM": [
+    98,
+    142
+   ],
+   "heightM": [
+    0,
+    19.5
+   ],
+   "depthBand": 20
+  },
+  {
+   "name": "north-east block with brown piers (tt-ne), cropped to the block below its roof-edge blades",
+   "bearing": 2.5,
+   "photo": "artifacts/landmark-lanes/wtc-amsterdam/tt-ne.jpg",
+   "symmetric": false,
+   "gables": 0,
+   "alongM": [
+    0,
+    32
+   ],
+   "heightM": [
+    0,
+    41
+   ]
+  }
+ ]
+}
