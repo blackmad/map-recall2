@@ -279,8 +279,9 @@ roofs no longer clip"); toon look step 1 merged 2026-11-01 behind `?look=toon`
 depth fade, merged flag-off 2026-11-02 (a37f977bc, `?depthFade=1`, HISTORY "Depth
 fade"): far/near edge 1.45–1.82 → 0.84–1.06 desktop, target ≤ 0.5 not yet met;
 landmark opt-out and default-on merged 2026-11-02 (9083203ff, HISTORY "The far
-city fades into haze"); materials next: lever 2 (ground markings fade beyond
-~120 m), then levers 3–5 of #161 comment 6564393499 (the label budget may conflict with L1's
+city fades into haze"); marking fade (lever 2) merged on by default 2026-11-02 (6f972429b, HISTORY "Far
+road paint settles into the road"); materials next: lever 3 (label budget; may
+conflict with L1's labelPolicy.ts), then levers 4–5 of #161 comment 6564393499 (the label budget may conflict with L1's
 labelPolicy.ts)); the 150/400 m
 facade LOD is parked (60–100k, 5–8 %, not worth its likeness risk yet). In-frame
 shader links are 0. P5 follow-ups: delete

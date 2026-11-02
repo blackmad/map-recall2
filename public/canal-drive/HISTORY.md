@@ -1,5 +1,20 @@
 # Canal Recall — what is built
 
+**Far road paint settles into the road: centre and lane lines, zebras and cycle red blend toward the asphalt beyond ~120 m (2026-11-02, #161 lever 2).**
+Materials (9bb6a6dff, 6f972429b). Paint blends fully into the asphalt colour and
+the red cycle surface 70 % of the way, starting at the later of 120 m and the
+depth-fade start and complete 100 m on; the near field is pixel-identical and
+kerbs and bollards are untouched (already culled at 150 m). On for every look,
+`?markingFade=0` off; off, the shaders are byte-identical, and on, one shared
+program source and key, pinned by `look/markingFade.test.ts`. On the busyness
+probe it is a quiet lever (≤ 0.02 on the luma ratio; the new OKLab chroma term
+moves only where far red strands are in frame, ijburg iPhone 0.97 → 0.90). It
+ships anyway because the far red and white strands read as chroma spaghetti at
+the horizon, which the luma ratio does not see. Cost: desktop draws 285 → 293
+(within run spread), iPad unchanged. Integrator: engine, own-ground and three
+bundles rebuilt; lint, test:look 176/176, test:engine 130/130, test:own-ground
+231/231. What's New note with the IJburg strip.
+
 **Roads now run across bridges: the surveyed bridge-level road polygons are drawn on the deck and decks take their edges from the survey (2026-11-02, #178).**
 Road bridge-gaps lane (6625a6805, 74ec86c80, dc44ce4af). The measurement found
 two causes. First, 74 % of the non-road samples on bridges lay inside a roads-v1
