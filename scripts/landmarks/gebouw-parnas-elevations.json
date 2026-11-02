@@ -1,0 +1,67 @@
+{
+ "id": "gebouw-parnas",
+ "countedBy": "lane #190 (opus) from the rectified panorama w03-357 (recording_2025-07-15_13-02-15_00901) and the pitched view ref-tower-nne.jpg (recording_2025-09-29_14-53-32_02052) before the model was rendered. Not a blind haiku count: integrator may re-count. Tower rows recounted on a 1.5x crop of ref-tower-nne.jpg: 13 storey bands of three glazed sections visible from the crown down to the tree line; the lowest band above the wing roof is hidden by the tree (null).",
+ "facades": [
+  {
+   "name": "bridge north front over the Parnassusweg",
+   "bearing": 357,
+   "photo": "artifacts/landmark-briefs/gebouw-parnas/w03-357.jpg",
+   "depthBand": 60,
+   "alongM": [
+    17.5,
+    72
+   ],
+   "heightM": [
+    4.3,
+    14.1
+   ],
+   "rows": [
+    1,
+    1,
+    1
+   ],
+   "columns": 1,
+   "symmetric": true,
+   "gables": 0,
+   "openings": [
+    "glass",
+    "canopyGlass"
+   ]
+  },
+  {
+   "name": "tower north face above the wing roof",
+   "bearing": 357,
+   "photo": "artifacts/landmark-lanes/gebouw-parnas/ref-tower-nne.jpg",
+   "alongM": [
+    85.4,
+    107.8
+   ],
+   "heightM": [
+    14.1,
+    57.0
+   ],
+   "rows": [
+    null,
+    3,
+    3,
+    3,
+    3,
+    3,
+    3,
+    3,
+    3,
+    3,
+    3,
+    3,
+    3,
+    3
+   ],
+   "columns": 3,
+   "symmetric": true,
+   "gables": 0,
+   "openings": [
+    "glass"
+   ]
+  }
+ ]
+}

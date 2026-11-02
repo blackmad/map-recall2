@@ -166,6 +166,16 @@
       "version": "53873ee53bed2715",
       "dateSource": "asset-update"
     },
+    "andaz-prinsengracht": {
+      "updatedAt": "2026-11-02T01:00:21.581Z",
+      "version": "a2128c7efc5f9712",
+      "dateSource": "asset-update"
+    },
+    "andaz-prinsengracht.lod1": {
+      "updatedAt": "2026-11-02T01:18:48.364Z",
+      "version": "48f17e8cdd38ee10",
+      "dateSource": "asset-update"
+    },
     "anne-frank-house": {
       "updatedAt": "2026-10-20T10:11:50.561Z",
       "version": "d626cc976cdc33bc",
@@ -1164,6 +1174,16 @@
     "gashouder.lod1": {
       "updatedAt": "2026-10-23T20:23:30.361Z",
       "version": "a57f655f135dcb3f",
+      "dateSource": "asset-update"
+    },
+    "gebouw-parnas": {
+      "updatedAt": "2026-11-02T00:46:46.782Z",
+      "version": "bc0f100cd8b0cea7",
+      "dateSource": "asset-update"
+    },
+    "gebouw-parnas.lod1": {
+      "updatedAt": "2026-11-02T00:46:47.435Z",
+      "version": "42247c0be468038c",
       "dateSource": "asset-update"
     },
     "gerard-dou-synagogue": {

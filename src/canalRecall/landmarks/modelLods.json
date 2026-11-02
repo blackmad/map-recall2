@@ -2068,5 +2068,17 @@
   "buildVersion": 2,
   "bytes": 60908,
   "triangles": 2618
+ },
+ "gebouw-parnas": {
+  "sourceHash": "bc0f100cd8b0cea7",
+  "buildVersion": 2,
+  "bytes": 42128,
+  "triangles": 1704
+ },
+ "andaz-prinsengracht": {
+  "sourceHash": "a2128c7efc5f9712",
+  "buildVersion": 2,
+  "bytes": 30004,
+  "triangles": 976
  }
 }

@@ -54986,5 +54986,285 @@
     ]
    ]
   }
+ },
+ {
+  "id": "gebouw-parnas",
+  "name": "Parnassustoren (Gebouw Parnas)",
+  "modelUrl": "./models/gebouw-parnas.glb",
+  "suppressOsmIds": [
+   "NL.IMBAG.Pand.0363100012110783",
+   "w439960824",
+   "w1120971879",
+   "w1120971880",
+   "w1120971881",
+   "w1120971882",
+   "w1120971883",
+   "w1120971884",
+   "w1120971885",
+   "w1120971886",
+   "w1120971888",
+   "w277170895"
+  ],
+  "spatialSuppression": false,
+  "footprint": {
+   "centre": [
+    4.86806412,
+    52.34313439
+   ],
+   "headingDegrees": 0,
+   "lengthMetres": 114.4,
+   "widthMetres": 109.9
+  },
+  "surveyed": {
+   "anchor": [
+    4.86806412,
+    52.34313439
+   ],
+   "northOffsetDegrees": 0,
+   "source": "Vertex average of the BAG 0363100012110783 ring (RD, PDOK BAG WFS); wings, bridge, residential slabs and tower are boxes on the BAG ring and the 3DBAG LoD2.2 roof planes of that pand (CC BY 4.0), authored in the building frame turned 2.93 deg from the RD grid (scripts/landmarks/gebouw-parnas-footprints.json, bag-shell-prepare.ts), native east/south metres. Curtain-wall grids, storey heights, the A-frame trestles and the tower crown read from rectified and pitched Gemeente Amsterdam panorama views (scripts/landmarks/gebouw-parnas-inventory.json)."
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 0,
+  "heightMetres": 59.5,
+  "bagYear": 1967,
+  "materialOverrides": {
+   "bronze": "#24272c",
+   "dark": "#2e3135",
+   "glass": "#3e6487",
+   "canopyGlass": "#5f7884",
+   "frame": "#b4b9bc",
+   "concrete": "#bdb8ad",
+   "white": "#e3e2dc",
+   "stone": "#cfcdc6",
+   "slate": "#66696c"
+  },
+  "attribution": {
+   "title": "Parnassustoren and the Parnassusweg bridge building, Locatellikade 1 (complex 1967; tower Herman Bakker, 1975; renovated 2021)",
+   "author": "Map Recall",
+   "sourceUrl": "https://nl.wikipedia.org/wiki/Parnassusweg",
+   "licence": "CC BY 4.0",
+   "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+   "modifications": "Original texture-free flat-colour geometry: the glazed band of the two wings and the bridge over the Parnassusweg with its black A-frame trestles, the white residential slabs with loggias, the tile-clad ground storey and the dark-framed blue glass tower with its top-storey notches, from Gemeente Amsterdam panoramas (CC BY 4.0) and a Wikimedia Commons photograph by DennisM (CC0), read for proportion only; plan and heights from BAG (CC0) and 3DBAG LoD2.2 (CC BY 4.0). Names and dates: Wikipedia nl 'Parnassusweg' and 'Herman Bakker' (CC BY-SA 4.0). No pixels or meshes imported."
+  },
+  "buildingFootprint": {
+   "type": "Polygon",
+   "coordinates": [
+    [
+     [
+      4.8688048,
+      52.3436241
+     ],
+     [
+      4.8685687,
+      52.3436152
+     ],
+     [
+      4.8686189,
+      52.3431176
+     ],
+     [
+      4.8677864,
+      52.3430873
+     ],
+     [
+      4.8677362,
+      52.3435838
+     ],
+     [
+      4.8672108,
+      52.3435634
+     ],
+     [
+      4.867234,
+      52.3433388
+     ],
+     [
+      4.8675207,
+      52.3433499
+     ],
+     [
+      4.867595,
+      52.3426315
+     ],
+     [
+      4.867832,
+      52.3426404
+     ],
+     [
+      4.867798,
+      52.3429756
+     ],
+     [
+      4.8686253,
+      52.3430057
+     ],
+     [
+      4.8686591,
+      52.3426705
+     ],
+     [
+      4.8689001,
+      52.3426795
+     ],
+     [
+      4.8688048,
+      52.3436241
+     ]
+    ]
+   ]
+  }
+ },
+ {
+  "id": "andaz-prinsengracht",
+  "name": "Andaz Amsterdam Prinsengracht (former Openbare Bibliotheek)",
+  "modelUrl": "./models/andaz-prinsengracht.glb",
+  "suppressOsmIds": [
+   "NL.IMBAG.Pand.0363100012253957",
+   "w266678976"
+  ],
+  "spatialSuppression": false,
+  "footprint": {
+   "centre": [
+    4.8831707,
+    52.36776962
+   ],
+   "headingDegrees": 0,
+   "lengthMetres": 49.5,
+   "widthMetres": 46.4
+  },
+  "surveyed": {
+   "anchor": [
+    4.8831707,
+    52.36776962
+   ],
+   "northOffsetDegrees": 0,
+   "source": "Vertex average of the BAG 0363100012253957 ring (RD, PDOK BAG WFS); massing on the BAG ring and the 3DBAG LoD2.2 roof planes of that pand (CC BY 4.0) in the building frame turned 3.67 deg from the RD grid (scripts/landmarks/andaz-prinsengracht-footprints.json, bag-shell-prepare.ts), native east/south metres. Plane widths and heights, window order per storey, the stone band and the strips measured on the rectified Gemeente Amsterdam panorama crop w01-273 at 48.8 px/m (scripts/landmarks/andaz-prinsengracht-inventory.json)."
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 0,
+  "heightMetres": 23.7,
+  "bagYear": 1974,
+  "materialOverrides": {
+   "brick": "#4d3d3a",
+   "glass": "#3b4248",
+   "canopyGlass": "#7d8c93",
+   "frame": "#c9c8c2",
+   "stone": "#45474a",
+   "concrete": "#b5b2aa",
+   "bronze": "#2f3134",
+   "dark": "#26272a",
+   "slate": "#5d5f62"
+  },
+  "attribution": {
+   "title": "Andaz Amsterdam Prinsengracht, former Centrale Openbare Bibliotheek (Rob Nord, bureau G. de Klerk, 1973-1977; municipal monument 200611)",
+   "author": "Map Recall",
+   "sourceUrl": "https://nl.wikipedia.org/wiki/Prinsengracht_587",
+   "licence": "CC BY 4.0",
+   "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+   "modifications": "Original texture-free flat-colour geometry: the four brick planes of different heights with their concrete copings, the recessed glazed strips, the per-storey window order, the dark stone puilijst and plane D's shoulder, from a rectified Gemeente Amsterdam panorama (CC BY 4.0) read for proportion only and the municipal monument 200611 description (CC0); plan and heights from BAG (CC0) and 3DBAG LoD2.2 (CC BY 4.0). Architect and dates: Wikipedia nl 'Prinsengracht 587' (CC BY-SA 4.0) and the register. No pixels or meshes imported."
+  },
+  "buildingFootprint": {
+   "type": "Polygon",
+   "coordinates": [
+    [
+     [
+      4.8828533,
+      52.3680129
+     ],
+     [
+      4.8828525,
+      52.3680024
+     ],
+     [
+      4.88285,
+      52.3680025
+     ],
+     [
+      4.8828242,
+      52.3677044
+     ],
+     [
+      4.8828247,
+      52.3677037
+     ],
+     [
+      4.8829923,
+      52.3676979
+     ],
+     [
+      4.8829922,
+      52.3676969
+     ],
+     [
+      4.8830707,
+      52.3676944
+     ],
+     [
+      4.8830633,
+      52.3676017
+     ],
+     [
+      4.8831881,
+      52.3675977
+     ],
+     [
+      4.8831891,
+      52.3676095
+     ],
+     [
+      4.883195,
+      52.3676093
+     ],
+     [
+      4.8832022,
+      52.3676932
+     ],
+     [
+      4.8832185,
+      52.3676926
+     ],
+     [
+      4.883227,
+      52.3677841
+     ],
+     [
+      4.8834894,
+      52.3677744
+     ],
+     [
+      4.8834901,
+      52.3677819
+     ],
+     [
+      4.8835458,
+      52.3677798
+     ],
+     [
+      4.8835492,
+      52.367815
+     ],
+     [
+      4.8834084,
+      52.3678202
+     ],
+     [
+      4.8834077,
+      52.3678127
+     ],
+     [
+      4.8832302,
+      52.3678193
+     ],
+     [
+      4.8832466,
+      52.3679974
+     ],
+     [
+      4.8828533,
+      52.3680129
+     ]
+    ]
+   ]
+  }
  }
 ]
