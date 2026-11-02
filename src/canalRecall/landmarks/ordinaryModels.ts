@@ -40,6 +40,8 @@ export const SHADOWED_BY_LANDMARK: Readonly<Record<string, string>> = {
   // Ziggo Dome (2026-10-06 ordinary tall-box recipe): one ribbed box without the window rows, docks, roof plant or bridges;
   // the bespoke model (#191, 2026-11-02) draws them.
   'ordinary-0363100012238052': 'ziggo-dome',
+  // Heinekenplein block (large recipe failed the likeness judge on its east wall and drew the office tower blank; bespoke #207).
+  'ordinary-0363100012130580': 'heinekenplein-block',
 };
 /** Every catalogue model (both categories) that no landmark shadows: what the game draws. */
 export const ORDINARY_BUILDINGS: readonly SignatureModelSpec[] = models.filter(m => !SHADOWED_BY_LANDMARK[m.id]).map(ordinarySpecFor);

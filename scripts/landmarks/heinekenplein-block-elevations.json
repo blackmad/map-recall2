@@ -1,0 +1,174 @@
+{
+ "id": "heinekenplein-block",
+ "countedBy": "lane #207 (opus) from the rectified panorama crops of the brief and the aimed views listed per facade; ribbon convention; a door and a shop window count. Not a blind count; the integrator may re-count.",
+ "facades": [
+  {
+   "name": "bar street front, south half (Dirk)",
+   "bearing": 96,
+   "photo": "artifacts/landmark-briefs/heinekenplein-block/w02-96.jpg",
+   "alongM": [
+    0,
+    41.43
+   ],
+   "heightM": [
+    0,
+    15.3
+   ],
+   "rows": [
+    6,
+    20,
+    20,
+    6
+   ],
+   "symmetric": false,
+   "note": "w02-96 (TMX7316010203-002411_pano_0006_000209, 2022-01-11, 50 px/m, 8 deg oblique). Bottom up: the corner shop under its awning, the goods entrance, three Dirk windows and the entrance bay; twenty square windows on each of storeys 2 and 3 (1.76 m pitch); six ribbon groups on storey 4, one per brick panel (the first at the crop edge). Axes not given: the shop bays and ribbon groups follow the brick panels, not the square-window axes, so the axis count is not a single rhythm."
+  },
+  {
+   "name": "passage recess",
+   "bearing": 96,
+   "photo": "artifacts/landmark-briefs/heinekenplein-block/w09-96.alt.jpg",
+   "alongM": [
+    41.43,
+    48.39
+   ],
+   "heightM": [
+    0,
+    15.3
+   ],
+   "rows": [
+    1,
+    1,
+    1,
+    1
+   ],
+   "columns": 1,
+   "symmetric": true,
+   "note": "w09-96 second view (TMX7316010203-002913_pano_0004_000122, 2022): the glazed passage entrance under its canopy and one ribbon per storey between rendered bands; ribbon convention."
+  },
+  {
+   "name": "bar street front, north half (gateway, HEINEKEN)",
+   "bearing": 96,
+   "photo": "artifacts/landmark-briefs/heinekenplein-block/w01-96.jpg",
+   "alongM": [
+    48.39,
+    99.34
+   ],
+   "heightM": [
+    0,
+    15.3
+   ],
+   "rows": [
+    8,
+    23,
+    26,
+    8
+   ],
+   "symmetric": false,
+   "note": "w01-96 (TMX7316010203-001793_pano_0000_007313, 2020-07-07, 45.8 px/m). Bottom up: shop, door, car-park entrance, door, gateway, three steel-framed windows (8); storey 2: 22 square windows and the ribbon over the gateway (23); storey 3: 26 square windows; storey 4: eight ribbon groups. Axes not given: the shop bays and ribbon groups follow the brick panels, not the square-window axes, so the axis count is not a single rhythm."
+  },
+  {
+   "name": "office corner, east face",
+   "bearing": 96,
+   "photo": "artifacts/landmark-briefs/heinekenplein-block/w07-96.thumb.jpg",
+   "alongM": [
+    99.34,
+    106.56
+   ],
+   "heightM": [
+    0,
+    32.3
+   ],
+   "rows": [
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2
+   ],
+   "columns": 2,
+   "symmetric": true,
+   "note": "w07-96 (recording_2025-09-29_09-14-27_01666) for the two deep glazed bays on the ground and first floors; the ten storeys of two four-light windows from the aimed views b_20241121_0951_Track23_Sphere_00037 and TMX7316010203-002411_pano_0000_000065."
+  },
+  {
+   "name": "office corner, north face (entrance 79)",
+   "bearing": 6,
+   "photo": "artifacts/landmark-briefs/heinekenplein-block/w08-5.thumb.jpg",
+   "depthBand": 3.0,
+   "alongM": [
+    0,
+    6.63
+   ],
+   "heightM": [
+    0,
+    32.3
+   ],
+   "rows": [
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2
+   ],
+   "columns": 2,
+   "symmetric": false,
+   "note": "w08-5 (TMX7316010203-002470_pano_0001_000406, 2022-03-23): revolving-door bay and glazed bay, two deep windows on the first floor, then two four-light windows per storey (TMX7316010203-002411_pano_0000_000083). depthBand 3 keeps the bar end 8.7 m behind out of this elevation. Not mirror-symmetric on the ground: revolving door in the east bay, a fixed glazed bay with the 79 pier in the west."
+  },
+  {
+   "name": "beige front on the Stadhouderskade",
+   "bearing": 6,
+   "photo": "artifacts/landmark-briefs/heinekenplein-block/w04-6.jpg",
+   "depthBand": 3.0,
+   "alongM": [
+    7.0,
+    23.07
+   ],
+   "heightM": [
+    0,
+    23.0
+   ],
+   "rows": [
+    4,
+    8,
+    8,
+    8,
+    8,
+    8,
+    8
+   ],
+   "symmetric": false,
+   "note": "w04-6 (b_20241121_0951_Track23_Sphere_00028, 2024-11-21, 50 px/m) for the ground and four lower storeys, TMX7316010203-002411_pano_0000_000083 (2022-01-11) for all six: four stone-framed ground windows, six storeys of eight square windows. Axes not given: the four ground windows sit between the upper columns (photo), so the axes are not one rhythm. Near-symmetric only: on the crop the window columns sit 2.2 m from the east edge and 2.06 m from the west, and the ground windows are centred 0.15 m east of the front centre."
+  },
+  {
+   "name": "office block above the beige front",
+   "bearing": 6,
+   "photo": "artifacts/hp/nn-2022-01-11-b336-d28.jpg",
+   "depthBand": 3.0,
+   "alongM": [
+    7.0,
+    23.07
+   ],
+   "heightM": [
+    23.0,
+    32.3
+   ],
+   "rows": [
+    4,
+    4,
+    4
+   ],
+   "columns": 4,
+   "symmetric": false,
+   "note": "TMX7316010203-002411_pano_0000_000083 (2022-01-11, aimed 156 deg, pitch 32): three storeys of large four-light windows above the beige front, four over its width (six counting the two on the corner strip). Near-symmetric only: the crop starts at the beige front edge, the windows run on the office face behind it (1.5 m back) with the parapet hiding the lowest row in the photo."
+  }
+ ]
+}
