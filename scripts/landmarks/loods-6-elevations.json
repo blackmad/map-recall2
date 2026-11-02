@@ -1,0 +1,70 @@
+{
+  "id": "loods-6",
+  "countedBy": "lane landmarks-oostelijk-20261101 (opus) from the rectified brief crops named per facade, 2026-11-02; not a blind count: the integrator may dispatch one",
+  "facades": [
+    {
+      "name": "south arcade (KNSM-laan west end)",
+      "bearing": 185,
+      "photo": "artifacts/landmark-briefs/loods-6/w02-185.alt.jpg",
+      "rows": [
+        8,
+        14,
+        null
+      ],
+      "alongM": [
+        15.9,
+        57.8
+      ],
+      "symmetric": false,
+      "note": "w02-185 2019 view of BAG edges 45-47 (41.9 m), counted per storey band. Ground: 8 glazed runs between the arcade columns (one narrow run at 23.3-25.1 m). First floor: 6 windows, 7 ribbon windows at the storey head (the narrow bay has its own) and the tall steel window of the east bay = 14. Second floor: a tree hides two windows at the east end."
+    },
+    {
+      "name": "SW chamfer",
+      "bearing": 216,
+      "photo": "artifacts/landmark-briefs/loods-6/w04-216.jpg",
+      "rows": [
+        4,
+        4,
+        4,
+        8
+      ],
+      "alongM": [
+        8.0,
+        35.2
+      ],
+      "symmetric": false,
+      "note": "w04-216 (2025): three bays of steel ribbon windows in three rows plus the loggia bay at the KNSM-laan end (ground ribbon, recessed glazing on the two upper bands), two second-floor windows per bay."
+    },
+    {
+      "name": "north quay east end",
+      "bearing": 5,
+      "photo": "artifacts/landmark-briefs/loods-6/w06-6.jpg",
+      "rows": [
+        4
+      ],
+      "alongM": [
+        0,
+        16.2
+      ],
+      "heightM": [
+        0,
+        6.3
+      ],
+      "symmetric": false,
+      "note": "w06-6: BAG edge 30, four 3.9 m quay bays (glazing and a pair of doors) under the canopy band; the terrace storeys are out of frame."
+    },
+    {
+      "name": "west head",
+      "bearing": 275,
+      "photo": "artifacts/landmark-briefs/loods-6/w08-275.alt.jpg",
+      "rows": [
+        null,
+        3,
+        3,
+        2
+      ],
+      "symmetric": false,
+      "note": "w08-275: three bays of steel windows on two upper rows; the ground row is hidden behind the annex wall and the tree; top band: the serre glazing and the tower bay's window."
+    }
+  ]
+}

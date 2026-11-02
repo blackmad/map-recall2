@@ -2080,5 +2080,17 @@
   "buildVersion": 2,
   "bytes": 30004,
   "triangles": 976
+ },
+ "loods-6": {
+  "sourceHash": "aac8e27524281277",
+  "buildVersion": 2,
+  "bytes": 100720,
+  "triangles": 5020
+ },
+ "atlanta-stadhouderskade": {
+  "sourceHash": "71e0a14ab60dd9fa",
+  "buildVersion": 2,
+  "bytes": 118948,
+  "triangles": 5671
  }
 }
