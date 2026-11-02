@@ -2110,5 +2110,11 @@
   "buildVersion": 2,
   "bytes": 92460,
   "triangles": 5663
+ },
+ "pakhuis-australie": {
+  "sourceHash": "e082cdcf1ffaffb7",
+  "buildVersion": 2,
+  "bytes": 124576,
+  "triangles": 7255
  }
 }

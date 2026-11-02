@@ -72132,6 +72132,157 @@
       "triangles": 1980,
       "bytes": 34268,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+    },
+    "pakhuis-australie": {
+      "id": "pakhuis-australie",
+      "name": "Pakhuis Australië",
+      "modelUrl": "./models/pakhuis-australie.glb",
+      "suppressOsmIds": [
+        "NL.IMBAG.Pand.0363100012139498"
+      ],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.9263344,
+          52.37599246
+        ],
+        "headingDegrees": 0,
+        "lengthMetres": 75.1,
+        "widthMetres": 66.7
+      },
+      "surveyed": {
+        "anchor": [
+          4.9263344,
+          52.37599246
+        ],
+        "northOffsetDegrees": 0,
+        "source": "Vertex average of the BAG 0363100012139498 outline (RD, 3DBAG LoD0); volumes from the 3DBAG LoD2.2 roof planes of that pand (CC BY 4.0): warehouse and wings 17.85 m, the bar and the arms of the U 34.0 m, in native east/south metres (scripts/landmarks/pakhuis-australie-prepare.ts). Storeys, bays, loggias, bands, anchors and the name board measured on rectified Gemeente Amsterdam panorama crops (CC BY 4.0) and the 2007 Commons photograph from the Java-eiland (public domain); garden deck from the PDOK 2023 orthophoto (scripts/landmarks/pakhuis-australie-inventory.json)."
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 0,
+      "heightMetres": 34,
+      "bagYear": 2006,
+      "materialOverrides": {
+        "brick": "#8e7a70",
+        "red": "#7e3f35",
+        "ochre": "#bba582",
+        "concrete": "#e2ded6",
+        "stone": "#b9b4aa",
+        "glass": "#4f6570",
+        "canopyGlass": "#9fb0b0",
+        "frame": "#3b3f42",
+        "bronze": "#2f3233",
+        "pink": "#e9e7e0",
+        "slate": "#9e9281",
+        "green": "#6f8a4f",
+        "dark": "#4a4d4f",
+        "greyBrick": "#8c8d8a"
+      },
+      "attribution": {
+        "title": "Pakhuis Australië and Boston, Purperhoedenveem / Piet Heinkade (warehouse 1893-95 by H. Moen, rebuilt 2002-2006 with the Boston block by DKV architecten)",
+        "author": "Map Recall",
+        "sourceUrl": "https://nl.wikipedia.org/wiki/Pakhuis_Australi%C3%AB",
+        "licence": "CC BY 4.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "modifications": "Original texture-free flat-colour geometry on the BAG outline (CC0) and 3DBAG LoD2.2 roof heights (CC BY 4.0): the brick warehouse front on the IJhaven with its twin round-headed windows, buff bands, corbelled cornice, four loggias with steel balconies, cast-iron wall anchors and the AUSTRALIE name board, the dark red brick end wings, the concrete bar floating over the warehouse on a recessed glass storey, and the U-shaped Boston block with its courtyard galleries, shop storey and garden deck on the Piet Heinkade; read for proportion only from Gemeente Amsterdam panoramas (CC BY 4.0) and the Wikimedia Commons photograph 'Pakhuis Australië Amsterdam 2007 gezien vanaf het Java-eiland' by KuifjeNL (public domain). History: nl.wikipedia 'Pakhuis Australië' (CC BY-SA 4.0). No pixels or meshes imported."
+      },
+      "buildingFootprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.9269298,
+              52.3761284
+            ],
+            [
+              4.9259445,
+              52.3762996
+            ],
+            [
+              4.9258547,
+              52.3761064
+            ],
+            [
+              4.9259872,
+              52.376083
+            ],
+            [
+              4.9259604,
+              52.3760254
+            ],
+            [
+              4.9259185,
+              52.3760328
+            ],
+            [
+              4.9258304,
+              52.375843
+            ],
+            [
+              4.9266355,
+              52.3757032
+            ],
+            [
+              4.9267236,
+              52.3758929
+            ],
+            [
+              4.9266805,
+              52.3759004
+            ],
+            [
+              4.9267076,
+              52.3759587
+            ],
+            [
+              4.92684,
+              52.3759356
+            ],
+            [
+              4.9269298,
+              52.3761284
+            ]
+          ]
+        ]
+      },
+      "buildingCategory": "landmark",
+      "bounds": {
+        "min": [
+          -34.54594802856445,
+          0,
+          -34.443023681640625
+        ],
+        "max": [
+          41.28865051269531,
+          35.900001525878906,
+          32.432960510253906
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.9263344,
+          52.37599246
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 90,
+        "facadeBearingDegrees": 0,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 75.83459854125977,
+        "heightMetres": 35.900001525878906,
+        "depthMetres": 66.87598419189453,
+        "depthCoverage": 1.0026384436565896
+      },
+      "triangles": 20946,
+      "bytes": 273644,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
+      "lod1": {
+        "sourceHash": "e082cdcf1ffaffb7",
+        "buildVersion": 2,
+        "bytes": 124576,
+        "triangles": 7255
+      }
     }
   }
 }

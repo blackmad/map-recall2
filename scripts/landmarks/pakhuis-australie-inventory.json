@@ -1,0 +1,495 @@
+{
+ "schemaVersion": 1,
+ "id": "pakhuis-australie",
+ "pand": "0363100012139498",
+ "brief": "scripts/landmarks/pakhuis-australie-brief.md",
+ "signature": [
+  "n-floating-bar",
+  "n-name-board",
+  "n-twin-windows",
+  "n-loggias",
+  "n-buff-bands",
+  "n-wall-anchors",
+  "n-wings",
+  "s-courtyard-galleries"
+ ],
+ "walls": [
+  {
+   "tag": "w01-16",
+   "bearing": 16,
+   "lengthM": 69.7,
+   "centre": [
+    4.9264395,
+    52.3762165
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002136_pano_0000_003053",
+   "capturedAt": "2021-05-10",
+   "checked": true,
+   "items": [
+    {
+     "id": "n-floating-bar",
+     "kind": "other",
+     "where": "four-storey concrete bar of the Boston block over the warehouse, set back 7 m from the quay front, oversailing the wings, on a recessed glass storey",
+     "approxSizeM": [
+      56.4,
+      16
+     ],
+     "plan": "modelled",
+     "seenIn": "Commons: Pakhuis_Australië_Amsterdam_2007_gezien_vanaf_het_Java-eiland.jpg",
+     "how": "bar_(): 3DBAG 34.0 m roof north of ring line 3-10, soffit 20.4 m, recessed glass storey inset 2.5-3 m, seven measured bays of ribbon windows"
+    },
+    {
+     "id": "n-twin-windows",
+     "kind": "window-shape",
+     "where": "five window pairs per storey, tall round-headed lights 0.81 m wide, five storeys",
+     "approxSizeM": [
+      2.0,
+      1.9
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002136_pano_0000_003053",
+     "how": "warehouseFront(): holed openings with brick arch horns, mullion and transom"
+    },
+    {
+     "id": "n-loggias",
+     "kind": "window-shape",
+     "where": "four former loading-door bays as full-height loggias with a round head at the top storey and arched glazed doors on the quay",
+     "approxSizeM": [
+      2.3,
+      11
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002136_pano_0000_003053",
+     "how": "warehouseFront(): 1.2 m deep cut with arch horns, glazed doors per storey, arched ground door"
+    },
+    {
+     "id": "n-balconies",
+     "kind": "balcony-ironwork",
+     "where": "steel balcony trays with vertical-bar railings in the loggias, four per loggia",
+     "approxSizeM": [
+      2.7,
+      1.3
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002136_pano_0000_003053",
+     "how": "balcony(): slab, rails and balusters"
+    },
+    {
+     "id": "n-buff-bands",
+     "kind": "other",
+     "where": "buff brick sill and head courses on every storey",
+     "approxSizeM": [
+      50.9,
+      0.12
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002136_pano_0000_003053",
+     "how": "ledgeStrip ochre courses broken at the loggias"
+    },
+    {
+     "id": "n-cornice-frieze",
+     "kind": "other",
+     "where": "corbelled buff brick frieze with consoles under a projecting cornice",
+     "approxSizeM": [
+      50.9,
+      1.8
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-002136_pano_0000_003053",
+     "how": "buff course, corbel blocks every 0.55 m, consoles at the pilasters, stone cap 0.35 m proud"
+    },
+    {
+     "id": "n-wall-anchors",
+     "kind": "other",
+     "where": "cast-iron ornamental wall anchors either side of each loggia, four rows",
+     "approxSizeM": [
+      0.5,
+      0.9
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002136_pano_0000_003053",
+     "how": "cross-shaped anchor plates 6 cm proud"
+    },
+    {
+     "id": "n-name-board",
+     "kind": "lettering",
+     "where": "white enamel board with black letters AUSTRALIE on the fourth storey left of centre",
+     "approxSizeM": [
+      2.4,
+      0.72
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002136_pano_0000_003053",
+     "how": "slab + raisedLettering"
+    },
+    {
+     "id": "n-pilasters",
+     "kind": "other",
+     "where": "shallow pilasters framing each window pair, arched together over the top storey pair",
+     "approxSizeM": [
+      0.3,
+      15.8
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-002136_pano_0000_003053",
+     "how": "0.07 m pilasters, segmental buff arch band over the top pair"
+    },
+    {
+     "id": "n-wings",
+     "kind": "window-shape",
+     "where": "dark red brick end wings, two window columns, steel balconies on the column next to the warehouse",
+     "approxSizeM": [
+      9.4,
+      17.8
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002136_pano_0000_003053",
+     "how": "wingCuts()/wingDetails()"
+    },
+    {
+     "id": "n-street-lamps",
+     "kind": "lamp",
+     "where": "quay lamp posts in front of the building",
+     "approxSizeM": [
+      0.3,
+      6
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7316010203-002136_pano_0000_003053",
+     "skip": {
+      "reason": "not-visible",
+      "note": "street furniture on the quay, not part of the building"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "w02-196",
+   "bearing": 196,
+   "lengthM": 57,
+   "centre": [
+    4.9262355,
+    52.375775
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001667_pano_0000_000478",
+   "capturedAt": "2020-04-22",
+   "checked": true,
+   "items": [
+    {
+     "id": "s-concrete-grid",
+     "kind": "window-shape",
+     "where": "Boston block on the Piet Heinkade: light precast grid, ribbon windows per bay, eleven storeys with a shop storey",
+     "approxSizeM": [
+      57,
+      34
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001667_pano_0000_000478",
+     "how": "gridFace(): ~7.2 m bays, 2.0 m ribbon windows on a 2.95 m pitch, shop piers every 3.6 m"
+    },
+    {
+     "id": "s-courtyard-galleries",
+     "kind": "balcony-ironwork",
+     "where": "continuous balcony and gallery slabs with glass balustrades on the courtyard faces",
+     "approxSizeM": [
+      28,
+      0.3
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001667_pano_0000_000478",
+     "how": "galleries(): 1.6 m slabs, glass balustrades"
+    },
+    {
+     "id": "s-plinth-frame",
+     "kind": "colonnade",
+     "where": "two-storey concrete frame across the courtyard opening, glass screen before the garden",
+     "approxSizeM": [
+      20,
+      7.4
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001667_pano_0000_000478",
+     "how": "courtyard(): posts, beam at 7.4 m, glass screen"
+    },
+    {
+     "id": "s-sliding-screens",
+     "kind": "window-shape",
+     "where": "perforated sliding screens closing some ribbon windows",
+     "approxSizeM": [
+      6.5,
+      2
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-001667_pano_0000_000478",
+     "how": "about one opening in five has a dark screen back"
+    },
+    {
+     "id": "s-orange-panels",
+     "kind": "other",
+     "where": "orange-red panels at the back of some courtyard balconies",
+     "approxSizeM": [
+      1,
+      2.5
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7316010203-001667_pano_0000_000478",
+     "skip": {
+      "reason": "too-small",
+      "note": "small panels deep behind the gallery slabs"
+     }
+    },
+    {
+     "id": "s-shop-signs",
+     "kind": "sign",
+     "where": "shop fascia signs (Dentalab, Univé)",
+     "approxSizeM": [
+      3,
+      0.5
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7316010203-001667_pano_0000_000478",
+     "skip": {
+      "reason": "temporary",
+      "note": "tenant signs"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "w03-286",
+   "bearing": 286,
+   "lengthM": 22.4,
+   "centre": [
+    4.925902,
+    52.376205
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002136_pano_0000_003065",
+   "capturedAt": "2021-05-10",
+   "checked": true,
+   "items": [
+    {
+     "id": "w-wing-end",
+     "kind": "window-shape",
+     "where": "west wing end: dark red brick, window columns, stacked steel balconies",
+     "approxSizeM": [
+      22.4,
+      17.8
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-002136_pano_0000_003065",
+     "how": "four window columns, balconies on two (oblique 44 deg view)"
+    }
+   ]
+  },
+  {
+   "tag": "w04-106",
+   "bearing": 106,
+   "lengthM": 22.3,
+   "centre": [
+    4.9268875,
+    52.3760345
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002900_pano_0011_000007",
+   "capturedAt": "2022-12-28",
+   "checked": true,
+   "items": [
+    {
+     "id": "e-wing-end",
+     "kind": "window-shape",
+     "where": "east wing end: dark red brick with windows; view blurred by rain drops",
+     "approxSizeM": [
+      22.3,
+      17.8
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-002900_pano_0011_000007",
+     "how": "mirrored west end order"
+    }
+   ]
+  },
+  {
+   "tag": "w05-106",
+   "bearing": 106,
+   "lengthM": 22,
+   "centre": [
+    4.926682,
+    52.3758
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-06-16_08-26-12_01390",
+   "capturedAt": "2025-06-16",
+   "checked": true,
+   "items": [
+    {
+     "id": "e-arm-grid",
+     "kind": "window-shape",
+     "where": "east arm face: three bays of ribbon windows on ten storeys over shop doors between posts",
+     "approxSizeM": [
+      22,
+      34
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-06-16_08-26-12_01390",
+     "how": "gridFace() with ground piers"
+    }
+   ]
+  },
+  {
+   "tag": "w06-286",
+   "bearing": 286,
+   "lengthM": 22,
+   "centre": [
+    4.925877,
+    52.37594
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-06-16_08-26-12_01409",
+   "capturedAt": "2025-06-16",
+   "checked": true,
+   "items": [
+    {
+     "id": "w-arm-grid",
+     "kind": "window-shape",
+     "where": "west arm face: concrete grid as the east arm",
+     "approxSizeM": [
+      22,
+      34
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-06-16_08-26-12_01409",
+     "how": "gridFace()"
+    }
+   ]
+  },
+  {
+   "tag": "w07-196",
+   "bearing": 196,
+   "lengthM": 9.4,
+   "centre": [
+    4.9267765,
+    52.3759495
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2024-10-23_12-42-53_01136",
+   "capturedAt": "2024-10-23",
+   "checked": true,
+   "items": [
+    {
+     "id": "se-wing-balconies",
+     "kind": "balcony-ironwork",
+     "where": "east wing south face: stacked balconies over a glazed door",
+     "approxSizeM": [
+      4.2,
+      1.2
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2024-10-23_12-42-53_01136",
+     "how": "balcony() per storey"
+    }
+   ]
+  },
+  {
+   "tag": "w08-196",
+   "bearing": 196,
+   "lengthM": 9.4,
+   "centre": [
+    4.9259235,
+    52.3760965
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2024-10-23_12-42-53_01148",
+   "capturedAt": "2024-10-23",
+   "checked": true,
+   "items": [
+    {
+     "id": "sw-wing-balconies",
+     "kind": "balcony-ironwork",
+     "where": "west wing south face: stacked balconies",
+     "approxSizeM": [
+      4.2,
+      1.2
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2024-10-23_12-42-53_01148",
+     "how": "balcony() per storey"
+    }
+   ]
+  },
+  {
+   "tag": "w09-106",
+   "bearing": 106,
+   "lengthM": 6.7,
+   "centre": [
+    4.9266965,
+    52.375932
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": false,
+   "items": [],
+   "note": "no panorama: short return wall of the arm beside the wing (6.6-6.7 m), plain concrete grid inferred from the arm faces"
+  },
+  {
+   "tag": "w10-287",
+   "bearing": 287,
+   "lengthM": 6.6,
+   "centre": [
+    4.9259765,
+    52.3760565
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": false,
+   "items": [],
+   "note": "no panorama: short return wall of the arm beside the wing (6.6-6.7 m), plain concrete grid inferred from the arm faces"
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas (all walls)",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/",
+   "licence": "CC BY 4.0"
+  },
+  {
+   "name": "3DBAG LoD2.2 NL.IMBAG.Pand.0363100012139498",
+   "url": "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012139498",
+   "licence": "CC BY 4.0"
+  },
+  {
+   "name": "BAG pand 0363100012139498 (bouwjaar 2006; 146 verblijfsobjecten: 129 woon, 9 kantoor, 8 winkel)",
+   "url": "https://api.data.amsterdam.nl/v1/bag/panden/0363100012139498/",
+   "licence": "CC0"
+  },
+  {
+   "name": "nl.wikipedia Pakhuis Australië",
+   "url": "https://nl.wikipedia.org/wiki/Pakhuis_Australi%C3%AB",
+   "licence": "CC BY-SA 4.0"
+  },
+  {
+   "name": "Wikimedia Commons File:Pakhuis Australië Amsterdam 2007 gezien vanaf het Java-eiland.jpg (KuifjeNL, 2007-04-22)",
+   "url": "https://commons.wikimedia.org/wiki/File:Pakhuis_Australi%C3%AB_Amsterdam_2007_gezien_vanaf_het_Java-eiland.jpg",
+   "licence": "public domain"
+  },
+  {
+   "name": "Wikimedia Commons File:Australie.jpg (Bureau Monumenten & Archeologie; pre-2002 state, history only)",
+   "url": "https://commons.wikimedia.org/wiki/File:Australie.jpg",
+   "licence": "CC BY-SA 3.0 nl"
+  },
+  {
+   "name": "PDOK Luchtfoto RGB Actueel_orthoHR (garden deck, roofs)",
+   "url": "https://service.pdok.nl/hwh/luchtfotorgb/wms/v1_0",
+   "licence": "CC BY 4.0"
+  },
+  {
+   "name": "Stadsarchief Beeldbank search 'pakhuis australië' (22 records, historic warehouse, not used for the rebuilt state)",
+   "url": "https://archief.amsterdam/api/opensearch/?q=pakhuis%20australi%C3%AB",
+   "licence": "per record"
+  }
+ ]
+}

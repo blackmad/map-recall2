@@ -1,0 +1,47 @@
+{
+  "id": "pakhuis-australie",
+  "countedBy": "lane landmarks-havens-makroon-20261101 (opus) from the photos named per facade, 2026-11-02; not a blind count: the integrator may dispatch one",
+  "facades": [
+    {
+      "name": "north (IJhaven quay): warehouse, wings and the bar",
+      "bearing": 16,
+      "photo": "artifacts/landmark-briefs/pakhuis-australie/commons-2007-java.jpg",
+      "rows": [
+        18,
+        18,
+        18,
+        18,
+        18,
+        1,
+        7,
+        7,
+        7,
+        7
+      ],
+      "symmetric": true,
+      "gables": 1,
+      "note": "Commons 2007 view from the Java-eiland (public domain), checked against w01-16 (2021) and w01-16.alt (2020). Bands from the quay: ground = 5 window pairs (10) + 4 arched loggia doors + 2 windows on each wing; storeys 1-4 = 10 twin windows + 4 loggia doors + 4 wing windows; the recessed glass storey under the bar is one ribbon; the bar has 4 rows of 7 ribbon bays (narrower end bays). One small plant box shows on the bar's roof (gables 1). depthBand 13 m: the recessed storey stands 10 m behind the quay front.",
+      "depthBand": 13
+    },
+    {
+      "name": "south (Piet Heinkade): the two arms of the U and the courtyard frame",
+      "bearing": 196,
+      "photo": "artifacts/landmark-briefs/pakhuis-australie/w02-196.jpg",
+      "rows": [
+        null,
+        11,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4
+      ],
+      "symmetric": true,
+      "note": "w02-196 (2020-04-22). Ground storey hidden by cars, trees and the van: null. Storey 1: two ribbon bays per arm plus the seven glass panes of the courtyard frame between its 0.5 m posts (separate openings by the ribbon convention); storeys 2-10: two ribbon bays on each arm's 14.8 m street face (the deep courtyard balconies are not counted)."
+    }
+  ]
+}
