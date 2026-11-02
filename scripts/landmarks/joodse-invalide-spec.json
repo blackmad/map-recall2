@@ -1,0 +1,204 @@
+{
+ "id": "joodse-invalide",
+ "pand": "0363100012170299",
+ "frame": {
+  "axes": "a along the canal front e=(0.955,-0.296), b along the Weesperplein front s=(0.340,0.940), origin the BAG ring's north-west vertex (-35.9,-5.5) in native metres; A(a,b) in joodse-invalide-builder.ts"
+ },
+ "partyWallBearings": [
+  73
+ ],
+ "partyWallEvidence": "The east face (bearing 73, a = 56 to 54.2 m) adjoins Elte's 1925 wing on the Nieuwe Achtergracht (BAG pand 0363100012170300, Commons RM518494 ... (vleugel).jpg); the RCE text calls the east part 'nagenoeg blinde gevels'.",
+ "volumes": {
+  "main": {
+   "a": [
+    1.2,
+    48.6
+   ],
+   "b": [
+    0.4,
+    33.4
+   ],
+   "top": 31.45,
+   "note": "L: Weesperplein wing a 1.2-11.8 and canal wing b 0.4-17.0 (3DBAG 31.2-31.5)"
+  },
+  "cornerBox": {
+   "a": [
+    0,
+    11.4
+   ],
+   "b": [
+    -0.3,
+    10.7
+   ],
+   "y": [
+    6.0,
+    27.2
+   ]
+  },
+  "cornerGround": {
+   "a": [
+    0.6,
+    11.4
+   ],
+   "b": [
+    0.3,
+    10.7
+   ],
+   "y": [
+    0,
+    6.1
+   ]
+  },
+  "boardRoom": {
+   "centreAB": [
+    5.4,
+    4.7
+   ],
+   "radius": 3.3,
+   "y": [
+    27.2,
+    29.45
+   ],
+   "shell": {
+    "planRadius": 5.0,
+    "rim": 29.8,
+    "crown": 31.3
+   }
+  },
+  "brickPart": {
+   "a": [
+    31.6,
+    48.6
+   ],
+   "b": [
+    0.4,
+    8.3
+   ],
+   "tileTo": 7.0,
+   "brickTo": 21.5,
+   "setbackStorey": {
+    "b": [
+     2.4,
+     8.3
+    ],
+    "top": 26.0
+   }
+  },
+  "erker": {
+   "a": [
+    49.6,
+    52.5
+   ],
+   "b": [
+    -0.3,
+    0.7
+   ],
+   "y": [
+    3.3,
+    27.4
+   ]
+  },
+  "eastBlock": {
+   "a": [
+    48.6,
+    56.0
+   ],
+   "b": [
+    0.4,
+    17.0
+   ],
+   "top": 27.4,
+   "upper": {
+    "b": [
+     1.8,
+     17.0
+    ],
+    "top": 31.45
+   }
+  },
+  "courtyardBlocks": [
+   {
+    "a": [
+     43.5,
+     47.0
+    ],
+    "b": [
+     17.0,
+     29.7
+    ],
+    "top": 22.7
+   },
+   {
+    "a": [
+     47.0,
+     55.2
+    ],
+    "b": [
+     17.0,
+     28.9
+    ],
+    "top": 27.2
+   },
+   {
+    "a": [
+     47.0,
+     54.7
+    ],
+    "b": [
+     28.9,
+     31.7
+    ],
+    "top": 15.0
+   }
+  ],
+  "lowBrickSouth": {
+   "a": [
+    1.3,
+    12.4
+   ],
+   "b": [
+    33.1,
+    39.1
+   ],
+   "top": 13.5
+  }
+ },
+ "storeys": {
+  "canalWing": {
+   "ground": "windows 1.0-2.6",
+   "floors": [
+    3.3,
+    7.3,
+    11.3,
+    15.3,
+    19.3,
+    23.3,
+    27.3
+   ],
+   "window": "sill +0.5, 2.75 high"
+  },
+  "weesperpleinWing": {
+   "ground": "windows 1.7-5.0 (former synagogue)",
+   "rows": [
+    6.5,
+    10.55,
+    14.6,
+    18.65,
+    22.7,
+    26.75
+   ],
+   "window": "2.65 high, hood above"
+  },
+  "cornerBox": {
+   "floors": [
+    6.0,
+    10.2,
+    14.4,
+    18.6,
+    22.8
+   ],
+   "top": 27.2
+  }
+ },
+ "evidence": "w02-343 (31 px/m), w04-250 (44 px/m), w11-340 and w12-250 (50 px/m) rectified Gemeente Amsterdam panorama crops; Commons Voormalige Joodsche Invalide Ziekenhuis.JPG; 3DBAG LoD2.2 roof parts; RCE 518494 register text."
+}

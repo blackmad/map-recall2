@@ -1,0 +1,26 @@
+{
+ "id": "joodse-invalide",
+ "countedBy": "lane #195 (opus) from the rectified panorama crops w04-250 (b_20250120_1330_Track01_Sphere_00008 and its 2017 second view w04-250.alt.jpg, 44 px/m) and w02-343 (TMX7316010203-000354_pano_0002_000194, 31 px/m), checked against Commons Voormalige Joodsche Invalide Ziekenhuis.JPG; ribbon convention. Not a blind haiku count; the integrator may re-count.",
+ "facades": [
+  {
+   "name": "Weesperplein wing, upper storeys",
+   "bearing": 250,
+   "photo": "artifacts/landmark-briefs/joodse-invalide/w04-250.alt.jpg",
+   "alongM": [17.0, 34.0],
+   "heightM": [6.0, 30.5],
+   "openings": ["glass"],
+   "rows": [9, 9, 9, 9, 9, 9],
+   "note": "From the narrow window column (photo x 265) to the south end of the wing (x 1000): per upper storey one narrow window and eight axes 1.93 m apart, six storeys over the tall ground floor. The round stair windows (x 40-120) and the ground floor (tall windows, the Weesperplein 11 door, the narrow window) are left out of the window: the round windows sit between storey levels and the ground floor mixes three heights."
+  },
+  {
+   "name": "canal wing, grey tiled block",
+   "bearing": 343,
+   "photo": "artifacts/landmark-briefs/joodse-invalide/w02-343.jpg",
+   "alongM": [25.2, 44.4],
+   "heightM": [0.5, 31.0],
+   "openings": ["glass"],
+   "rows": [5, 5, 5, 5, 5, 5, 5, 5],
+   "note": "Grey block between the brick part (photo x 680) and the glass corner (x 1310): eight rows, each one narrow window at its east end and four wide windows; the ground row has small low windows on the same axes. alongM is measured from the model's east silhouette edge (the east block, a = 56 m)."
+  }
+ ]
+}

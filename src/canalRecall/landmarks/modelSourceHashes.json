@@ -1,5 +1,5 @@
 {
-  "toolchain": "4c499dba5b11f52311849a2c04af0480885e0534c16e3df83e0e466c8cfea38a",
+  "toolchain": "58dd4e0babb89032bae2d9c1312180ff6578be92c58184dc9a74d1101622c3ea",
   "models": {
     "abn-amro-hoofdkantoor": "90ff65a2d9f94e99b2ab33438567f147959a43f017d3d9cf9d2ae68b6dae7cbf",
     "academie-theater-dans": "503b3e8d59937cbf7ac8776eb644c11fd10b567e5ac1113e0caa55c83cb68cde",
@@ -31,6 +31,7 @@
     "athenaeum": "04333046f1bf8946753eb42280e04db3e0daadba9afcd18f34719ee20d7c80ab",
     "atlanta-stadhouderskade": "c64cc840ea6687b82c178d7266aab3ac7944aa1174420298afd7fa8c10682bc2",
     "auschwitz-monument": "b425e91c67c90ec1d1a10b997ecb7399d6b00a7448c65407e7ad2474de62e1e6",
+    "autopon": "d04fb2fe4852abdc6af2f52d67df65b9f6838b588746ce35160976580f6052b9",
     "badhuistheater": "15049df413704352efccf10043d8c2c37b328eb814f674ab1b93759cc1889c42",
     "barbizon-palace": "db9cf2af15aa787ec64186fbd90ac6cf738481320e636fabe39c2dcbb1e06fbe",
     "beest-boulders": "82f2eb0cc0151664325052ee7ed8b6e91cf5e321150ee8013884045acb7bafe6",
@@ -186,6 +187,7 @@
     "jodenbreestraat-11": "e6933efb89809785a4946f0d3b590878a82620dd3a11b1c58f07849f10404a7c",
     "johnny-jordaan-groep": "c47045e599b5c1096df4174edac64c670616c1bb4c39e44c1a1626917b356b34",
     "joods-verzetsmonument": "0f4c6e7b4317327b0d67ae49ce018048f6536067d7e86995a894b9fd940a1526",
+    "joodse-invalide": "52ff97bec65ae5c00f59814d38597fc2f2791be9f042e1e248bb6776552d3719",
     "kalvertoren": "a000b0a27590256f71e701ec534119c596f068b81caa9e2dbf2ab56c3a97b002",
     "kattenkabinet": "0e9fb0338e153ce24365cd8a4e952ae0ce5dd84d6989af7bf0098feaf680bf41",
     "keith-haring-mural": "b9acf73eb6b40162c944e771a15f9cdf8cf01198ee847972c6e9161d02f59b4c",

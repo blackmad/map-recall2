@@ -1,0 +1,547 @@
+{
+ "schemaVersion": 1,
+ "id": "joodse-invalide",
+ "pand": "0363100012170299",
+ "brief": "scripts/landmarks/joodse-invalide-brief.md",
+ "signature": [
+  "corner-glass-box",
+  "corner-board-room",
+  "w-round-stair-windows",
+  "n-grey-tile-windows",
+  "corner-entrance-canopy",
+  "stauthamer-plaque",
+  "w-window-axes"
+ ],
+ "walls": [
+  {
+   "tag": "w01-343",
+   "bearing": 343,
+   "lengthM": 49,
+   "centre": [
+    4.9089765,
+    52.3625567
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001975_pano_0000_000911",
+   "capturedAt": "2021-01-22",
+   "checked": true,
+   "items": [],
+   "note": "The brief tool aimed this crop past the BAG ring: the wall is the curved brick wing of Elte's 1925 building on the Nieuwe Achtergracht (BAG pand 0363100012170300, Commons RM518494 ... (vleugel).jpg); not part of pand 0363100012170299."
+  },
+  {
+   "tag": "w02-343",
+   "bearing": 343,
+   "lengthM": 38.2,
+   "centre": [
+    4.9083271,
+    52.3624308
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000354_pano_0002_000194",
+   "capturedAt": "2017-07-06",
+   "checked": true,
+   "items": [
+    {
+     "id": "n-grey-tile-windows",
+     "kind": "window-shape",
+     "where": "canal wing west of the brick part (a 11-32 m): grey glazed tile wall, eight rows on a 4.0 m pitch, per row one narrow (1.8 m) and four wide (3.4 m) white steel windows of many lights; low small windows on the ground floor",
+     "approxSizeM": [
+      20.2,
+      31.5
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-000354_pano_0002_000194",
+     "how": "canalWing(): steelWindow per axis and row, 4 x 3 lights"
+    },
+    {
+     "id": "n-brick-part",
+     "kind": "window-shape",
+     "where": "lower brown brick part further east (a 32-49 m): tiled two-storey base with eight small and three wide windows, five windows per brick storey (double-tier on the 4th and 5th), a row of eight small windows under the parapet",
+     "approxSizeM": [
+      17,
+      21.5
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-000354_pano_0002_000194",
+     "how": "brickPart(): tile base and brick walls as separate solids, steelWindow rows"
+    },
+    {
+     "id": "n-steel-gallery",
+     "kind": "balcony-ironwork",
+     "where": "continuous steel gallery with a light railing along the brick part at about 7 m, over the tiled base",
+     "approxSizeM": [
+      16.6,
+      1.0
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-000354_pano_0002_000194",
+     "how": "concrete slab 1.1 m deep, posts every 1.4 m and a top rail in frame grey"
+    },
+    {
+     "id": "n-setback-glazed-storey",
+     "kind": "window-shape",
+     "where": "recent glazed storey set back above the brick parapet (to 3DBAG 26 m)",
+     "approxSizeM": [
+      16.7,
+      4.5
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-000354_pano_0002_000194",
+     "how": "white solid set back 2 m with a glass ribbon, ten mullions and a fascia"
+    },
+    {
+     "id": "n-glass-erker",
+     "kind": "window-shape",
+     "where": "shallow rectangular glass erker running up most of the height at the east end, an entrance under it (RCE text)",
+     "approxSizeM": [
+      2.9,
+      24
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-000354_pano_0002_000194",
+     "how": "glass solid 0.7 m proud from 3.3 to 27.4 m with floor bands, three mullions, dark door below"
+    },
+    {
+     "id": "n-round-windows",
+     "kind": "window-shape",
+     "where": "two small round windows at the junction of the brick part and the grey block",
+     "approxSizeM": [
+      0.66,
+      0.66
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-000354_pano_0002_000194",
+     "how": "white ring frame with a glass disc"
+    },
+    {
+     "id": "n-glass-corner-return",
+     "kind": "window-shape",
+     "where": "the glass corner box seen end-on at the west end of the crop",
+     "approxSizeM": [
+      4,
+      21
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-000354_pano_0002_000194",
+     "how": "see w11-340 corner-glass-box"
+    }
+   ]
+  },
+  {
+   "tag": "w03-163",
+   "bearing": 163,
+   "lengthM": 32.3,
+   "centre": [
+    4.9091594,
+    52.3622873
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "items": [],
+   "note": "The brief tool aimed this crop past the BAG ring: the wall is a courtyard face of the neighbouring Elte wing (pand 0363100012170300), inferred; not part of pand 0363100012170299."
+  },
+  {
+   "tag": "w04-250",
+   "bearing": 250,
+   "lengthM": 28.5,
+   "centre": [
+    4.9080421,
+    52.3621449
+   ],
+   "evidence": "photo",
+   "panoId": "b_20250120_1330_Track01_Sphere_00008",
+   "capturedAt": "2025-01-20",
+   "checked": true,
+   "items": [
+    {
+     "id": "w-window-axes",
+     "kind": "window-shape",
+     "where": "Weesperplein wing: eight window axes 1.93 m apart, tall ground-floor windows (the former synagogue) and six upper rows of 2 x 3 light steel windows",
+     "approxSizeM": [
+      16,
+      29
+     ],
+     "plan": "modelled",
+     "seenIn": "b_20250120_1330_Track01_Sphere_00008",
+     "how": "weesperpleinWing(): steelWindow per axis and row"
+    },
+    {
+     "id": "w-window-hoods",
+     "kind": "window-shape",
+     "where": "small projecting hoods over every upper window",
+     "approxSizeM": [
+      1.6,
+      0.12
+     ],
+     "plan": "modelled",
+     "seenIn": "b_20250120_1330_Track01_Sphere_00008",
+     "how": "concrete slab 0.2 m deep over each window"
+    },
+    {
+     "id": "w-round-stair-windows",
+     "kind": "window-shape",
+     "where": "column of seven round windows (about 1.5 m) with cross bars at the stair, north end of the wing",
+     "approxSizeM": [
+      1.5,
+      24
+     ],
+     "plan": "modelled",
+     "seenIn": "b_20250120_1330_Track01_Sphere_00008",
+     "how": "ringSlab frame, glass disc, cross of glazing bars, centres 2.9 + 3.9 k m"
+    },
+    {
+     "id": "w-narrow-window-column",
+     "kind": "window-shape",
+     "where": "one narrow window column between the round windows and the eight axes",
+     "approxSizeM": [
+      0.62,
+      27
+     ],
+     "plan": "modelled",
+     "seenIn": "b_20250120_1330_Track01_Sphere_00008",
+     "how": "steelWindow 0.62 m wide per row"
+    },
+    {
+     "id": "w-entrance-11",
+     "kind": "canopy",
+     "where": "Weesperplein 11 entrance at the south end of the wing with a small curved canopy",
+     "approxSizeM": [
+      2.0,
+      3.0
+     ],
+     "plan": "simplified",
+     "seenIn": "b_20250120_1330_Track01_Sphere_00008",
+     "how": "glazed door and a flat white canopy slab"
+    },
+    {
+     "id": "w-low-brick-building",
+     "kind": "other",
+     "where": "lower brick building at the south end (same BAG pand) with the passage to the courtyard",
+     "approxSizeM": [
+      5.7,
+      13.5
+     ],
+     "plan": "simplified",
+     "seenIn": "b_20250120_1330_Track01_Sphere_00008",
+     "how": "brick solid to 13.5 m (3DBAG), dark passage opening, two windows per storey"
+    },
+    {
+     "id": "w-parking-sign",
+     "kind": "sign",
+     "where": "parking sign on a pole at the kerb",
+     "approxSizeM": [
+      0.4,
+      2.5
+     ],
+     "plan": "skipped",
+     "seenIn": "b_20250120_1330_Track01_Sphere_00008",
+     "skip": {
+      "reason": "temporary",
+      "note": "street furniture on the pavement, not the building"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "w05-73",
+   "bearing": 73,
+   "lengthM": 20.8,
+   "centre": [
+    4.9088063,
+    52.3622624
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "items": [],
+   "note": "The brief tool aimed this crop past the BAG ring: the wall is a neighbouring wall east of the ring, inferred; not part of pand 0363100012170299."
+  },
+  {
+   "tag": "w06-163",
+   "bearing": 163,
+   "lengthM": 18.4,
+   "centre": [
+    4.9092669,
+    52.3624495
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "items": [],
+   "note": "The brief tool aimed this crop past the BAG ring: the wall is a neighbouring wall east of the ring, inferred; not part of pand 0363100012170299."
+  },
+  {
+   "tag": "w07-163",
+   "bearing": 163,
+   "lengthM": 18.1,
+   "centre": [
+    4.9088869,
+    52.3623759
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "items": [],
+   "note": "The brief tool aimed this crop past the BAG ring: the wall is a neighbouring wall east of the ring, inferred; not part of pand 0363100012170299."
+  },
+  {
+   "tag": "w08-73",
+   "bearing": 73,
+   "lengthM": 17.3,
+   "centre": [
+    4.9093576,
+    52.3625488
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002542_pano_0000_000533",
+   "capturedAt": "2022-04-25",
+   "checked": true,
+   "items": [],
+   "note": "The brief tool aimed this crop past the BAG ring: the wall is a neighbouring black brick building east of the ring; not part of pand 0363100012170299."
+  },
+  {
+   "tag": "w09-163",
+   "bearing": 163,
+   "lengthM": 12.5,
+   "centre": [
+    4.9087649,
+    52.3621564
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-06-19_04-38-42_02680",
+   "capturedAt": "2025-06-19",
+   "checked": true,
+   "items": [],
+   "note": "The brief tool aimed this crop past the BAG ring: the wall is a brick garage building on the far side of the courtyard boundary (camera 34 m away, across the block); not part of pand 0363100012170299."
+  },
+  {
+   "tag": "w10-343",
+   "bearing": 343,
+   "lengthM": 11.9,
+   "centre": [
+    4.9092672,
+    52.362383
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-06-19_04-38-42_02287",
+   "capturedAt": "2025-06-19",
+   "checked": true,
+   "items": [],
+   "note": "The brief tool aimed this crop past the BAG ring: the wall is the Elte wing (pand 0363100012170300); not part of pand 0363100012170299."
+  },
+  {
+   "tag": "w11-340",
+   "bearing": 340,
+   "lengthM": 11.5,
+   "centre": [
+    4.9079772,
+    52.3623696
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001975_pano_0000_000918",
+   "capturedAt": "2021-01-22",
+   "checked": true,
+   "items": [
+    {
+     "id": "corner-glass-box",
+     "kind": "window-shape",
+     "where": "the corner (hoekpartij): five glazed storeys wrapping the corner, mullions about 1.43 m apart, a rail and a pale floor band per storey, cantilevered slightly over the ground floor",
+     "approxSizeM": [
+      11.5,
+      21.2
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001975_pano_0000_000918",
+     "how": "corner(): glass solid 6.0-27.2 m, 0.7 m proud of the canal wing and 1.2 m of the Weesperplein wing, frame mullions, concrete floor bands, rails"
+    },
+    {
+     "id": "corner-board-room",
+     "kind": "dome",
+     "where": "on the terrace: the board room (Staalzaal) with a rounded glass front under a shallow curved shell roof on two thin columns, terrace railing (RCE: gebogen kap, Groep 32)",
+     "approxSizeM": [
+      10,
+      4.1
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001975_pano_0000_000918",
+     "how": "boardRoom(): glass room with a half-round front and mullions, lathed spherical-cap shell (rim 29.8, crown 31.3 m), two columns; railing posts and rail"
+    },
+    {
+     "id": "corner-ground-floor",
+     "kind": "colonnade",
+     "where": "recessed tiled ground floor under the box with a glazed band between white piers and slender columns under the box edge",
+     "approxSizeM": [
+      11,
+      6
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001975_pano_0000_000918",
+     "how": "tile solid set back 0.6 m, steelWindow bands, white cylinders under the box faces"
+    },
+    {
+     "id": "n-street-sign",
+     "kind": "sign",
+     "where": "street-name sign on the corner ground floor",
+     "approxSizeM": [
+      0.6,
+      0.2
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7316010203-001975_pano_0000_000918",
+     "skip": {
+      "reason": "too-small",
+      "note": "0.6 m sign"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "w12-250",
+   "bearing": 250,
+   "lengthM": 10.7,
+   "centre": [
+    4.9079254,
+    52.3623064
+   ],
+   "evidence": "photo",
+   "panoId": "b_20241218_1119_Track06_Sphere_00043",
+   "capturedAt": "2024-12-18",
+   "checked": true,
+   "items": [
+    {
+     "id": "corner-entrance-canopy",
+     "kind": "canopy",
+     "where": "main entrance on the Weesperplein side of the corner under a curved canopy (RCE: gebogen luifel)",
+     "approxSizeM": [
+      3.6,
+      1.8
+     ],
+     "plan": "modelled",
+     "seenIn": "b_20241218_1119_Track06_Sphere_00043",
+     "how": "canopy(): curved-front white slab 1.8 m out at 3.1 m over a glazed door"
+    },
+    {
+     "id": "stauthamer-plaque",
+     "kind": "relief",
+     "where": "bronze memorial plaque by C. Stauthamer (1950) beside the entrance: arched top, three kneeling chained men over the inscription (RCE text, Commons RCE photo 20357612)",
+     "approxSizeM": [
+      1.1,
+      1.45
+     ],
+     "plan": "simplified",
+     "seenIn": "b_20241218_1119_Track06_Sphere_00043",
+     "how": "plaque(): arched bronze panel, ledge with three figure blocks with heads, low bronze lettering bands"
+    },
+    {
+     "id": "corner-glazed-ground",
+     "kind": "window-shape",
+     "where": "two glazed bays over a tiled sill beside the entrance",
+     "approxSizeM": [
+      7,
+      2.1
+     ],
+     "plan": "modelled",
+     "seenIn": "b_20241218_1119_Track06_Sphere_00043",
+     "how": "steelWindow 4 x 2 lights"
+    }
+   ]
+  },
+  {
+   "tag": "w13-343",
+   "bearing": 343,
+   "lengthM": 10.5,
+   "centre": [
+    4.9089715,
+    52.3623257
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-06-19_04-38-42_02283",
+   "capturedAt": "2025-06-19",
+   "checked": true,
+   "items": [],
+   "note": "The brief tool aimed this crop past the BAG ring: the wall is the Elte wing (pand 0363100012170300); not part of pand 0363100012170299."
+  },
+  {
+   "tag": "w14-163",
+   "bearing": 163,
+   "lengthM": 9.5,
+   "centre": [
+    4.9086083,
+    52.3621316
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-06-19_04-38-42_02682",
+   "capturedAt": "2025-06-19",
+   "checked": true,
+   "items": [],
+   "note": "The brief tool aimed this crop past the BAG ring: the wall is a brick garage building on the far side of the courtyard boundary; not part of pand 0363100012170299."
+  },
+  {
+   "tag": "w15-253",
+   "bearing": 253,
+   "lengthM": 7.1,
+   "centre": [
+    4.9090292,
+    52.3623702
+   ],
+   "evidence": "photo",
+   "panoId": "b_20241210_1246_Track32_Sphere_00132",
+   "capturedAt": "2024-12-10",
+   "checked": true,
+   "items": [],
+   "note": "The brief tool aimed this crop past the BAG ring: the wall is the GGD entrance of the Elte wing (pand 0363100012170300); not part of pand 0363100012170299."
+  },
+  {
+   "tag": "w16-73",
+   "bearing": 73,
+   "lengthM": 6.1,
+   "centre": [
+    4.9091706,
+    52.3623931
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002542_pano_0000_000530",
+   "capturedAt": "2022-04-25",
+   "checked": true,
+   "items": [],
+   "note": "The brief tool aimed this crop past the BAG ring: the wall is the gate of a neighbour east of the ring; not part of pand 0363100012170299."
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  },
+  {
+   "name": "Voormalige Joodsche Invalide Ziekenhuis.JPG, Marcelmulder68, 2013-12-12 (whole corner, both wings, the board room and its roof)",
+   "url": "https://commons.wikimedia.org/wiki/File:Voormalige_Joodsche_Invalide_Ziekenhuis.JPG",
+   "licence": "CC BY-SA 3.0 nl"
+  },
+  {
+   "name": "Herdenkingsplaat (plaquette) ... Joodsche Invalide - Amsterdam - 20357612 - RCE.jpg (the Stauthamer plaque)",
+   "url": "https://commons.wikimedia.org/wiki/File:Herdenkingsplaat_(plaquette)_tegen_de_gevel_van_het_gebouw_de_Joodsche_Invalide_-_Amsterdam_-_20357612_-_RCE.jpg",
+   "licence": "CC BY-SA 4.0"
+  },
+  {
+   "name": "RM518494 Amsterdam - Nieuwe Achtergracht (vleugel).jpg, Michiel1972, 2011 (Elte's wing, the neighbouring pand; identifies w01)",
+   "url": "https://commons.wikimedia.org/wiki/File:RM518494_Amsterdam_-_Nieuwe_Achtergracht_(vleugel).jpg",
+   "licence": "CC BY-SA 3.0"
+  },
+  {
+   "name": "Rijksmonument 518494 register text",
+   "url": "https://monumentenregister.cultureelerfgoed.nl/monumenten/518494",
+   "licence": "CC0"
+  },
+  {
+   "name": "nl.wikipedia De Joodse Invalide",
+   "url": "https://nl.wikipedia.org/wiki/De_Joodse_Invalide",
+   "licence": "CC BY-SA 4.0"
+  }
+ ]
+}

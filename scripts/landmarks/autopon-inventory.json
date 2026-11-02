@@ -1,0 +1,598 @@
+{
+ "schemaVersion": 1,
+ "id": "autopon",
+ "pand": "0363100012236735",
+ "brief": "scripts/landmarks/autopon-brief.md",
+ "signature": [
+  "front-loggia-grid",
+  "front-pilotis",
+  "front-showroom-glazing",
+  "front-slatted-balustrades",
+  "s-vitrine",
+  "ne-head-curtain-wall",
+  "sw-penthouse",
+  "s-external-stair",
+  "s-red-stair-tower"
+ ],
+ "walls": [
+  {
+   "tag": "w01-330",
+   "bearing": 330,
+   "lengthM": 30.5,
+   "centre": [
+    4.856185,
+    52.357771
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002374_pano_0003_000141",
+   "capturedAt": "2021-12-31",
+   "checked": true,
+   "items": [
+    {
+     "id": "front-loggia-grid",
+     "kind": "window-shape",
+     "where": "whole curved Overtoom front above the showroom: five storeys of recessed loggias in a light concrete grid, 1.72 m sub-bays with a thicker pier every third, floor slabs at about 3.06 m pitch, red-framed windows at the back of each loggia",
+     "approxSizeM": [
+      72,
+      15.3
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002374_pano_0003_000141",
+     "how": "autoponFront(): one chord per 1.72 m sub-bay on the R 166.45 m arc; radial fins (thick every third), floor slab edges, loggia back wall 1.85 m behind with red-framed glazing"
+    },
+    {
+     "id": "front-slatted-balustrades",
+     "kind": "balcony-ironwork",
+     "where": "every loggia storey: a 0.9 m concrete balustrade with close vertical slats (alternate storeys run as continuous bands)",
+     "approxSizeM": [
+      72,
+      0.9
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-002374_pano_0003_000141",
+     "how": "concrete balustrade panel per sub-bay with four dark vertical slits on its face"
+    },
+    {
+     "id": "front-pilotis",
+     "kind": "colonnade",
+     "where": "showroom level: tapered wedge pilotis, about 0.7 m at the foot widening to about 2.6 m where they flare into the slab soffit at about 8 m, on a pitch of about 9.2 m",
+     "approxSizeM": [
+      2.6,
+      8
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002374_pano_0003_000141",
+     "how": "piloti(): extruded tapered profile with a flared head, eight on the arc 3.85 m behind the slab front"
+    },
+    {
+     "id": "front-showroom-glazing",
+     "kind": "window-shape",
+     "where": "double-height showroom glazing set back under the slab: lower tier of shop glass and doors, a dark transom band with lamps, upper glass tier",
+     "approxSizeM": [
+      70,
+      6.6
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002374_pano_0003_000141",
+     "how": "showroom(): two glass tiers with mullions every 1.7 m and a dark transom band, 4.65 m behind the slab front"
+    },
+    {
+     "id": "front-soffit",
+     "kind": "canopy",
+     "where": "the deep slab soffit over the showroom colonnade, slab edge with the lowest balustrade band at about 8-9.4 m",
+     "approxSizeM": [
+      72,
+      1.4
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002374_pano_0003_000141",
+     "how": "soffit slab 8.0-8.6 m spanning to the front face"
+    },
+    {
+     "id": "ne-head-curtain-wall",
+     "kind": "window-shape",
+     "where": "north-east end of the front: a flush block with red-framed ribbon/curtain glazing over a stone-clad ground-floor wall",
+     "approxSizeM": [
+      4.3,
+      19
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002374_pano_0003_000141",
+     "how": "headBlock(): red frame grid over glass on the 4.3 m end of the arc, stone-clad base to 8.3 m"
+    },
+    {
+     "id": "ne-stone-cladding",
+     "kind": "other",
+     "where": "ground floor of the north-east head: light square stone panels from pavement to the slab",
+     "approxSizeM": [
+      3.4,
+      8.3
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-002374_pano_0003_000141",
+     "how": "stone slab with joint lines"
+    },
+    {
+     "id": "tenant-sign-david-lloyd",
+     "kind": "sign",
+     "where": "fascia sign of the gym over the showroom entrance",
+     "approxSizeM": [
+      3.6,
+      1
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7316010203-002374_pano_0003_000141",
+     "skip": {
+      "reason": "temporary",
+      "note": "tenant signage (David Lloyd Clubs), not architecture"
+     }
+    },
+    {
+     "id": "setback-top-storey",
+     "kind": "window-shape",
+     "where": "south-west two-thirds of the roof: a set-back top storey (to about 26.7 m) with a row of small folded canopies over its windows and brick chimney pots",
+     "approxSizeM": [
+      48,
+      2.8
+     ],
+     "plan": "simplified",
+     "seenIn": "commons:Autopon.jpg",
+     "how": "set-back box with a window band, a canopy strip and five chimneys"
+    },
+    {
+     "id": "ne-corner-blade",
+     "kind": "tower",
+     "where": "north-east end: a slim concrete blade/pier rising from the pavement past the roof to about 32 m",
+     "approxSizeM": [
+      0.6,
+      32
+     ],
+     "plan": "modelled",
+     "seenIn": "commons:Autopon.jpg",
+     "how": "slab at the head block end, 3DBAG 32.4 m part"
+    }
+   ]
+  },
+  {
+   "tag": "w02-158",
+   "bearing": 158,
+   "lengthM": 13.9,
+   "centre": [
+    4.8561205,
+    52.357221
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001702_pano_0000_008837",
+   "capturedAt": "2020-05-11",
+   "checked": true,
+   "items": [
+    {
+     "id": "s-vitrine",
+     "kind": "window-shape",
+     "where": "Zocherstraat back: the \"floating vitrine\", a continuous glass band with narrow concrete mullions about every 0.87 m on a concrete sill band, over a closed ground floor",
+     "approxSizeM": [
+      44,
+      4.2
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001702_pano_0000_008837",
+     "how": "southBlock(): sill band, glass 5.4-8.3 m, mullion fins every 0.87 m, head band, dark shadow gap"
+    },
+    {
+     "id": "s-balcony-grid",
+     "kind": "window-shape",
+     "where": "three storeys of open balconies above the vitrine: concrete grid with fins about every 1.76 m and slatted balustrades, dark recesses",
+     "approxSizeM": [
+      44,
+      8.9
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001702_pano_0000_008837",
+     "how": "southBlock(): fins, floor slab edges, slatted balustrades, recessed back wall 1.6 m behind"
+    },
+    {
+     "id": "s-white-panels",
+     "kind": "other",
+     "where": "ground floor clad in white vertical panels",
+     "approxSizeM": [
+      14,
+      4.1
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-001702_pano_0000_008837",
+     "how": "white panel wall with joint lines every 0.9 m"
+    },
+    {
+     "id": "s-sign-te-huur",
+     "kind": "sign",
+     "where": "letting sign",
+     "approxSizeM": [
+      1,
+      0.6
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7316010203-001702_pano_0000_008837",
+     "skip": {
+      "reason": "temporary",
+      "note": "estate agent board"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "w03-321",
+   "bearing": 321,
+   "lengthM": 11.5,
+   "centre": [
+    4.855858,
+    52.357637
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002928_pano_0002_000010",
+   "capturedAt": "2023-01-12",
+   "checked": true,
+   "items": [
+    {
+     "id": "front-entrance-door",
+     "kind": "window-shape",
+     "where": "glazed entrance door in the lower glazing tier between two pilotis",
+     "approxSizeM": [
+      1.2,
+      2.4
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-002928_pano_0002_000010",
+     "how": "door is part of the lower glass tier (frame mullions)"
+    }
+   ],
+   "note": "Same curved front as w01-330: loggia grid, slatted balustrades, pilotis and the two-tier showroom glazing (items listed under w01-330)."
+  },
+  {
+   "tag": "w04-337",
+   "bearing": 337,
+   "lengthM": 9.7,
+   "centre": [
+    4.8559065,
+    52.3577225
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002928_pano_0005_000266",
+   "capturedAt": "2023-01-12",
+   "checked": true,
+   "items": [
+    {
+     "id": "annex-pavilion",
+     "kind": "other",
+     "where": "two-level pavilion in front of the showroom (BAG notch, 9.7 m front): dark ground floor with poster panels, dark fascia, a glazed upper box with yellow posts on top",
+     "approxSizeM": [
+      9.7,
+      6.6
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002928_pano_0005_000266",
+     "how": "annex(): dark box 0-3.7 m, fascia, glazed upper box with yellow posts to 6.6 m (photo height; 3DBAG gives 23 m there, which the photos contradict)"
+    },
+    {
+     "id": "ne-rooftop-box",
+     "kind": "tower",
+     "where": "white rooftop box over the north-east half of the slab, about 30 m",
+     "approxSizeM": [
+      10,
+      6.4
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002928_pano_0005_000266",
+     "how": "box on the 23.9 m roof, 3DBAG 30.3 m part"
+    },
+    {
+     "id": "sw-roof-pergola",
+     "kind": "canopy",
+     "where": "rooftop pergola / cantilevered frame at the south-west end of the roof",
+     "approxSizeM": [
+      6,
+      3
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-002928_pano_0005_000266",
+     "how": "part of the south-west penthouse with its cantilevered roof slab and balcony (sw-penthouse)"
+    }
+   ]
+  },
+  {
+   "tag": "w05-311",
+   "bearing": 311,
+   "lengthM": 9.6,
+   "centre": [
+    4.8555475,
+    52.35745
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-07-15_13-02-15_01307",
+   "capturedAt": "2025-07-15",
+   "checked": true,
+   "items": [],
+   "note": "Same curved front as w01-330: loggia grid, slatted balustrades, pilotis and the two-tier showroom glazing (items listed under w01-330)."
+  },
+  {
+   "tag": "w06-317",
+   "bearing": 317,
+   "lengthM": 9.6,
+   "centre": [
+    4.8557415,
+    52.3575745
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-06-30_05-16-46_00072",
+   "capturedAt": "2025-06-30",
+   "checked": true,
+   "items": [],
+   "note": "Same curved front as w01-330: loggia grid, slatted balustrades, pilotis and the two-tier showroom glazing (items listed under w01-330)."
+  },
+  {
+   "tag": "w07-314",
+   "bearing": 314,
+   "lengthM": 9.6,
+   "centre": [
+    4.8556415,
+    52.357514
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002228_pano_0002_001589",
+   "capturedAt": "2021-07-12",
+   "checked": true,
+   "items": [],
+   "note": "Same curved front as w01-330: loggia grid, slatted balustrades, pilotis and the two-tier showroom glazing (items listed under w01-330)."
+  },
+  {
+   "tag": "w08-158",
+   "bearing": 158,
+   "lengthM": 9.4,
+   "centre": [
+    4.8559705,
+    52.357169
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-07-31_06-59-14_01096",
+   "capturedAt": "2025-07-31",
+   "checked": true,
+   "items": [
+    {
+     "id": "s-external-stair",
+     "kind": "other",
+     "where": "west end of the Zocherstraat front: a white concrete stair rising along the facade from the pavement to the vitrine level, solid white stringer/balustrade",
+     "approxSizeM": [
+      11,
+      5.4
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-07-31_06-59-14_01096",
+     "how": "externalStair(): stepped white stair with solid sloped balustrades and a landing"
+    },
+    {
+     "id": "s-red-stair-tower",
+     "kind": "window-shape",
+     "where": "west end: a glazed stair tower with red frames rising above the balconies to about 20.8 m",
+     "approxSizeM": [
+      3.6,
+      15
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-07-31_06-59-14_01096",
+     "how": "stairTower(): glass box with red frame grid, 3DBAG 19.6-20.8 m part"
+    },
+    {
+     "id": "s-mesh-grille",
+     "kind": "other",
+     "where": "ground floor under the stair: dark steel mesh grille panels",
+     "approxSizeM": [
+      9,
+      4
+     ],
+     "plan": "simplified",
+     "seenIn": "recording_2025-07-31_06-59-14_01096",
+     "how": "dark panel wall with frame posts"
+    }
+   ]
+  },
+  {
+   "tag": "w09-161",
+   "bearing": 161,
+   "lengthM": 9.3,
+   "centre": [
+    4.8564615,
+    52.357508
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-07-31_06-59-14_01087",
+   "capturedAt": "2025-07-31",
+   "checked": true,
+   "items": [],
+   "note": "The crop shows the brick neighbours (bay windows) in front: this wall is a courtyard face behind them, not visible from the street."
+  },
+  {
+   "tag": "w10-158",
+   "bearing": 158,
+   "lengthM": 8.7,
+   "centre": [
+    4.856421,
+    52.3573
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-07-31_06-59-14_01089",
+   "capturedAt": "2025-07-31",
+   "checked": true,
+   "items": [
+    {
+     "id": "s-garage-doors",
+     "kind": "other",
+     "where": "east end of the Zocherstraat ground floor: dark grey wall with a dark garage door and a door",
+     "approxSizeM": [
+      8.7,
+      4.1
+     ],
+     "plan": "simplified",
+     "seenIn": "recording_2025-07-31_06-59-14_01089",
+     "how": "dark panel wall with a door slab and garage door slab"
+    },
+    {
+     "id": "s-vitrine-louvres",
+     "kind": "window-shape",
+     "where": "some vitrine bays closed with dark panels or louvres",
+     "approxSizeM": [
+      3,
+      3
+     ],
+     "plan": "simplified",
+     "seenIn": "recording_2025-07-31_06-59-14_01089",
+     "how": "the vitrine glass reads dark; bays stay glass"
+    }
+   ]
+  },
+  {
+   "tag": "w11-158",
+   "bearing": 158,
+   "lengthM": 6.9,
+   "centre": [
+    4.8563175,
+    52.357271
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002789_pano_0000_000053",
+   "capturedAt": "2022-09-02",
+   "checked": true,
+   "items": [],
+   "note": "Zocherstraat back: vitrine, balcony grid and white panel ground floor as on w02-158."
+  },
+  {
+   "tag": "w12-215",
+   "bearing": 215,
+   "lengthM": 6.8,
+   "centre": [
+    4.855882,
+    52.3576875
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002921_pano_0007_000097",
+   "capturedAt": "2023-01-10",
+   "checked": true,
+   "items": [
+    {
+     "id": "sw-penthouse",
+     "kind": "tower",
+     "where": "south-west end of the roof: a penthouse with a cantilevered balcony and a flat roof slab projecting past the slab end, about 30.8 m",
+     "approxSizeM": [
+      4.5,
+      4
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002921_pano_0007_000097",
+     "how": "swPenthouse(): box 26.7-29.9 m, cantilevered balcony slab with rail and an overhanging roof slab"
+    },
+    {
+     "id": "sw-annex-side",
+     "kind": "other",
+     "where": "annex pavilion side wall with its glazed upper box",
+     "approxSizeM": [
+      6.8,
+      6.6
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002921_pano_0007_000097",
+     "how": "annex()"
+    }
+   ]
+  },
+  {
+   "tag": "w13-156",
+   "bearing": 156,
+   "lengthM": 6.4,
+   "centre": [
+    4.855714,
+    52.357342
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": false,
+   "items": []
+  },
+  {
+   "tag": "w14-73",
+   "bearing": 73,
+   "lengthM": 4.4,
+   "centre": [
+    4.855982,
+    52.357721
+   ],
+   "evidence": "photo",
+   "panoId": "b_20241129_0829_Track01_Sphere_00044",
+   "capturedAt": "2024-11-29",
+   "checked": true,
+   "items": [
+    {
+     "id": "pole-sign-gymbase",
+     "kind": "sign",
+     "where": "advertising sign on a street pole in front of the pilotis",
+     "approxSizeM": [
+      1.2,
+      1.6
+     ],
+     "plan": "skipped",
+     "seenIn": "b_20241129_0829_Track01_Sphere_00044",
+     "skip": {
+      "reason": "not-visible",
+      "note": "street furniture, not part of the building"
+     }
+    }
+   ],
+   "note": "Close view of the pilotis flaring into the soffit (front-pilotis) and the annex in the distance."
+  },
+  {
+   "tag": "w15-158",
+   "bearing": 158,
+   "lengthM": 4.1,
+   "centre": [
+    4.856251,
+    52.35724
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002928_pano_0002_000070",
+   "capturedAt": "2023-01-12",
+   "checked": true,
+   "items": [],
+   "note": "Zocherstraat back: vitrine, balcony grid and white panel ground floor as on w02-158."
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas (all walls in this file)",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/",
+   "licence": "CC BY 4.0"
+  },
+  {
+   "name": "Autopon.jpg, Erik Swierstra, 2013-08-11 (whole Overtoom front: rooftop penthouse, setback top storey with chimneys, head block, corner blade)",
+   "url": "https://commons.wikimedia.org/wiki/File:Autopon.jpg",
+   "licence": "CC BY-SA 3.0 nl"
+  },
+  {
+   "name": "Zocherstraat 42 (5).jpg, Ceescamel, 2019-01-15 (Zocherstraat back: vitrine, balconies, stair, red stair tower)",
+   "url": "https://commons.wikimedia.org/wiki/File:Zocherstraat_42_(5).jpg",
+   "licence": "CC BY-SA 4.0"
+  },
+  {
+   "name": "Rijksmonumentenregister 532201",
+   "url": "https://monumentenregister.cultureelerfgoed.nl/monumenten/532201",
+   "licence": "CC0"
+  },
+  {
+   "name": "nl.wikipedia Zocherstraat (Amsterdam): Ingwersen for Commer de Geus, Pon Automobielen",
+   "url": "https://nl.wikipedia.org/wiki/Zocherstraat_(Amsterdam)",
+   "licence": "CC BY-SA 4.0"
+  },
+  {
+   "name": "PDOK Luchtfoto Actueel orthoHR (roof: slab, sawtooth hall, south block)",
+   "url": "https://service.pdok.nl/hwh/luchtfotorgb/wms/v1_0",
+   "licence": "CC BY 4.0"
+  }
+ ]
+}
