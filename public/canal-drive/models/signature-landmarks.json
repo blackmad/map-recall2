@@ -74650,6 +74650,453 @@
         "bytes": 65568,
         "triangles": 3237
       }
+    },
+    "tolhuis-paviljoen": {
+      "id": "tolhuis-paviljoen",
+      "name": "Paviljoen Tolhuistuin",
+      "modelUrl": "./models/tolhuis-paviljoen.glb",
+      "suppressOsmIds": [
+        "NL.IMBAG.Pand.0363100012119827",
+        "w44824402"
+      ],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.903493175423395,
+          52.383241316275985
+        ],
+        "headingDegrees": 0,
+        "lengthMetres": 92.7,
+        "widthMetres": 53.8
+      },
+      "surveyed": {
+        "anchor": [
+          4.903493175423395,
+          52.383241316275985
+        ],
+        "northOffsetDegrees": 0,
+        "source": "Vertex average of the BAG 0363100012119827 ring (PDOK BAG, CC0) in native east/south metres (scripts/landmarks/tolhuis-paviljoen-footprints.json, modern-prepare.mjs). Module grid (7.2 m and 15.9 m squares turned to 53.5 deg) on the BAG corners and the PDOK 2025 orthophoto roof hips; heights from the 3DBAG LoD2.2 roof planes (AHN5); storey split, parapet bands, hexagon windows, struts and fascia from the Gemeente Amsterdam panoramas (scripts/landmarks/tolhuis-paviljoen-inventory.json)."
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 0,
+      "heightMetres": 11,
+      "bagYear": 1979,
+      "materialOverrides": {
+        "stone": "#4a4542",
+        "white": "#dcddd3",
+        "glass": "#4f5b62",
+        "slate": "#80878c",
+        "brick": "#5e4a42",
+        "concrete": "#b8b8b0",
+        "frame": "#9a9e9c",
+        "greyBrick": "#8a9094",
+        "blue": "#3d4a63",
+        "dark": "#2f2c2a",
+        "red": "#b8392e"
+      },
+      "attribution": {
+        "title": "Paviljoen Tolhuistuin (c. 1975, former Shell canteen, Arthur Staal)",
+        "author": "Map Recall",
+        "sourceUrl": "https://nl.wikipedia.org/wiki/IJpromenade_2",
+        "licence": "CC BY 4.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "modifications": "Original texture-free flat-colour geometry: the grid of pyramid-roofed modules round the raised flat-roofed hall, the cantilevered modules on V struts over recessed glazing, the dark parapet bands with the canal row's hexagon windows, the white fascia and piers, the brick ground floor with diamond windows, on the BAG footprint (CC0) with 3DBAG heights (CC BY 4.0), read for proportion only from the Gemeente Amsterdam panoramas (CC BY 4.0) and the PDOK orthophoto (CC BY 4.0). No pixels or meshes imported."
+      },
+      "buildingFootprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.903694172614445,
+              52.38316533644746
+            ],
+            [
+              4.9037793098376,
+              52.38320384571535
+            ],
+            [
+              4.903716776999155,
+              52.38325562013548
+            ],
+            [
+              4.903768195729725,
+              52.38327886547667
+            ],
+            [
+              4.903770699907615,
+              52.38327954977529
+            ],
+            [
+              4.903772706677341,
+              52.3832800522897
+            ],
+            [
+              4.903774773470007,
+              52.3832804382092
+            ],
+            [
+              4.903776885598306,
+              52.383280707473844
+            ],
+            [
+              4.903779043258186,
+              52.38328084210907
+            ],
+            [
+              4.903781202191796,
+              52.38328085990961
+            ],
+            [
+              4.903783112617218,
+              52.38328076884346
+            ],
+            [
+              4.903785009433095,
+              52.38328057885726
+            ],
+            [
+              4.903786863166863,
+              52.383280298818306
+            ],
+            [
+              4.903788673916483,
+              52.38327991973936
+            ],
+            [
+              4.903790426994652,
+              52.38327944156045
+            ],
+            [
+              4.903792107518128,
+              52.38327888219618
+            ],
+            [
+              4.903793715486898,
+              52.3832782416466
+            ],
+            [
+              4.903846702769664,
+              52.38323440030167
+            ],
+            [
+              4.904034355016709,
+              52.38331938962743
+            ],
+            [
+              4.903895788714394,
+              52.38343394744243
+            ],
+            [
+              4.903725938086865,
+              52.38335703860137
+            ],
+            [
+              4.9036630954574845,
+              52.383408910592124
+            ],
+            [
+              4.903578061537692,
+              52.38337032976353
+            ],
+            [
+              4.903515188949829,
+              52.3834222375046
+            ],
+            [
+              4.903430827416762,
+              52.38338396489742
+            ],
+            [
+              4.90336756923625,
+              52.383436194541936
+            ],
+            [
+              4.9032825213251705,
+              52.38339756850508
+            ],
+            [
+              4.903220342581912,
+              52.383449119418245
+            ],
+            [
+              4.902947901372132,
+              52.38332613271908
+            ],
+            [
+              4.903010065571486,
+              52.38327458188785
+            ],
+            [
+              4.902924869544754,
+              52.38323612575142
+            ],
+            [
+              4.902987228209768,
+              52.383184243182455
+            ],
+            [
+              4.902919564840556,
+              52.38315295899631
+            ],
+            [
+              4.902857191453334,
+              52.38320484146987
+            ],
+            [
+              4.902669668148259,
+              52.383120399044685
+            ],
+            [
+              4.902808251515274,
+              52.38300582474565
+            ],
+            [
+              4.902978376297011,
+              52.38308291579185
+            ],
+            [
+              4.903104080595567,
+              52.38297882205312
+            ],
+            [
+              4.903189131374347,
+              52.383017097716234
+            ],
+            [
+              4.9032521189107126,
+              52.38296540631877
+            ],
+            [
+              4.903421274171294,
+              52.38304256466694
+            ],
+            [
+              4.9034846667532115,
+              52.38299007489744
+            ],
+            [
+              4.903757090747017,
+              52.38311324005486
+            ],
+            [
+              4.903694172614445,
+              52.38316533644746
+            ]
+          ]
+        ]
+      },
+      "buildingCategory": "landmark",
+      "bounds": {
+        "min": [
+          -56.71322250366211,
+          -4.7683716530855236e-8,
+          -23.759939193725586
+        ],
+        "max": [
+          37.532405853271484,
+          9.600500106811523,
+          31.40064811706543
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.903493175423395,
+          52.383241316275985
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 90,
+        "facadeBearingDegrees": 0,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 94.2456283569336,
+        "heightMetres": 9.60050015449524,
+        "depthMetres": 55.160587310791016,
+        "depthCoverage": 1.0252897269663759
+      },
+      "triangles": 6736,
+      "bytes": 108360,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
+      "lod1": {
+        "sourceHash": "4d90cd344bc794b3",
+        "buildVersion": 2,
+        "bytes": 43592,
+        "triangles": 1914
+      }
+    },
+    "y-helling": {
+      "id": "y-helling",
+      "name": "Y-Helling",
+      "modelUrl": "./models/y-helling.glb",
+      "suppressOsmIds": [
+        "NL.IMBAG.Pand.0363100012238702",
+        "w280619702"
+      ],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.895439155796976,
+          52.39973464239876
+        ],
+        "headingDegrees": 0,
+        "lengthMetres": 98.4,
+        "widthMetres": 65.6
+      },
+      "surveyed": {
+        "anchor": [
+          4.895439155796976,
+          52.39973464239876
+        ],
+        "northOffsetDegrees": 0,
+        "source": "BAG 0363100012238702 ring (PDOK BAG, CC0) in native east/south metres from a point 36 m down the slipway axis (12.3 deg) from the ring's vertex average, on the open apron, so the game bases the model on the apron and not on the -0.35 m NAP reading of the ground field under the deck (scripts/landmarks/y-helling-footprints.json, y-helling-builder.ts). Deck plane from the 3DBAG LoD2.2 roof (AHN, 1:20); keel-block rows and the dark strip from the PDOK 2025 orthophoto; walls, openings, stair and railings from the Gemeente Amsterdam panoramas (scripts/landmarks/y-helling-inventory.json)."
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 0,
+      "heightMetres": 5.7,
+      "bagYear": 2006,
+      "materialOverrides": {
+        "stone": "#9d9a93",
+        "concrete": "#8e8c87",
+        "slate": "#7f7b74",
+        "brick": "#6b4a3c",
+        "red": "#b5332b",
+        "glass": "#3f474b",
+        "frame": "#a8acab",
+        "dark": "#5a5f63"
+      },
+      "attribution": {
+        "title": "Y-Helling (NDSM eastern slipway, c. 1920 and 1950s, G.J. Langhout / J.D. Postma; studios under the deck 2006)",
+        "author": "Map Recall",
+        "sourceUrl": "https://monumentenregister.cultureelerfgoed.nl/monumenten/528255",
+        "licence": "CC BY 4.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "modifications": "Original texture-free flat-colour geometry: the slipway deck falling 1:20 to the IJ, the rows of truncated-pyramid keel blocks in the outline of the last hull, the concrete and brick walls of the studios under the deck with red-framed doors and windows and grey roller doors, the red steel stair and deck railings, on the BAG footprint (CC0) with 3DBAG heights (CC BY 4.0), read for proportion only from the Gemeente Amsterdam panoramas (CC BY 4.0) and the PDOK orthophoto (CC BY 4.0). No pixels or meshes imported."
+      },
+      "buildingFootprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.8950752395807635,
+              52.39982601825161
+            ],
+            [
+              4.895846961913736,
+              52.399724533595986
+            ],
+            [
+              4.895864008207227,
+              52.39977339829374
+            ],
+            [
+              4.8958554104493235,
+              52.39977889004084
+            ],
+            [
+              4.895871335891481,
+              52.39982680638375
+            ],
+            [
+              4.895880023447937,
+              52.39985297852423
+            ],
+            [
+              4.895931468052717,
+              52.40000781553866
+            ],
+            [
+              4.895912845333611,
+              52.400045477475636
+            ],
+            [
+              4.89596989812521,
+              52.40020209930593
+            ],
+            [
+              4.895943693962069,
+              52.40025960151507
+            ],
+            [
+              4.8960404808172715,
+              52.4005287337762
+            ],
+            [
+              4.8954362771023865,
+              52.4006081944698
+            ],
+            [
+              4.8953680733805855,
+              52.4004211028772
+            ],
+            [
+              4.895289718177499,
+              52.40043115826756
+            ],
+            [
+              4.89523902080776,
+              52.400268729516135
+            ],
+            [
+              4.895127253663248,
+              52.39994915852278
+            ],
+            [
+              4.895118096064323,
+              52.39992301133678
+            ],
+            [
+              4.895102743994679,
+              52.39987910576843
+            ],
+            [
+              4.8950935574172405,
+              52.39987939116063
+            ],
+            [
+              4.8950752395807635,
+              52.39982601825161
+            ]
+          ]
+        ]
+      },
+      "buildingCategory": "landmark",
+      "bounds": {
+        "min": [
+          -24.72098731994629,
+          0,
+          -97.25276947021484
+        ],
+        "max": [
+          40.848079681396484,
+          5.699273109436035,
+          1.125910758972168
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.895439155796976,
+          52.39973464239876
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 90,
+        "facadeBearingDegrees": 0,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 98.37868022918701,
+        "heightMetres": 5.699273109436035,
+        "depthMetres": 65.56906700134277,
+        "depthCoverage": 0.9995284603863228
+      },
+      "triangles": 3401,
+      "bytes": 61364,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
+      "lod1": {
+        "sourceHash": "985bd1f99ee9da64",
+        "buildVersion": 2,
+        "bytes": 20336,
+        "triangles": 615
+      }
     }
   }
 }

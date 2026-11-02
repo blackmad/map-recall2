@@ -1,0 +1,27 @@
+{
+ "id": "y-helling",
+ "countedBy": "lane #197 (opus) from the rectified crop w06-283 (recording_2025-09-22_07-34-23_00148, 2025-09-22) before the model was rendered; ribbon convention. Not a blind haiku count: the integrator may re-count.",
+ "note": "Only the west face of the head block carries a regular row: three equal red-framed windows between two solid red doors (doors are leaves, not glazing, and are not counted). The head (w03) mixes nine doors, glazed doors and windows of different widths and heights as photographed, and the wing (w07) is grey roller doors; neither is a window rhythm, so neither is declared here.",
+ "facades": [
+  {
+   "name": "west face of the head block (w06): three windows between red doors, north of the stair",
+   "bearing": 282.3,
+   "photo": "artifacts/landmark-briefs/y-helling/w06-283.jpg",
+   "alongM": [
+    0,
+    14.3
+   ],
+   "depthBand": 0.6,
+   "rows": [
+    3
+   ],
+   "symmetric": false,
+   "span": [
+    -95.2,
+    -80.9
+   ],
+   "frontDepth": 20.95,
+   "note": "span and frontDepth pick the head block's west wall, 5.4 m behind the wing face; alongM stops at the stair foot (u 44.8), so the photo count is the three windows north of the stair"
+  }
+ ]
+}

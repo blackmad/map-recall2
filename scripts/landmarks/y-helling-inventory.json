@@ -1,0 +1,383 @@
+{
+ "schemaVersion": 1,
+ "id": "y-helling",
+ "pand": "0363100012238702",
+ "brief": "scripts/landmarks/y-helling-brief.md",
+ "signature": [
+  "keel-blocks",
+  "n-studio-openings",
+  "w-red-stair",
+  "deck-railing"
+ ],
+ "walls": [
+  {
+   "tag": "w01-192",
+   "bearing": 192,
+   "lengthM": 53.7,
+   "centre": [
+    4.895464,
+    52.3997775
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7315120208-000105_pano_0001_004206",
+   "capturedAt": "2016-07-08",
+   "checked": true,
+   "items": [
+    {
+     "id": "s-deck-foot",
+     "kind": "other",
+     "where": "the slipway foot: the deck runs out level with the concrete apron towards the IJ, no wall",
+     "approxSizeM": [
+      53,
+      0.1
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7315120208-000105_pano_0001_004206",
+     "how": "deck plane clamped to 0.1 m at the BAG foot edge; walls fall to nothing"
+    }
+   ]
+  },
+  {
+   "tag": "w02-283",
+   "bearing": 283,
+   "lengthM": 44.4,
+   "centre": [
+    4.8951735,
+    52.400076
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001071_pano_0001_001480",
+   "capturedAt": "2019-01-24",
+   "checked": true,
+   "items": [
+    {
+     "id": "keel-blocks",
+     "kind": "other",
+     "where": "rows of truncated-pyramid concrete keel and bilge blocks on the deck, standing above the wall top along both sides like a crenellation, in the outline of the last hull (orthophoto)",
+     "approxSizeM": [
+      1,
+      1.2
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001071_pano_0001_001480",
+     "how": "slipwayDeck (new kit component): frustumBlock spots 1.5 m apart along seven polylines read off the PDOK 2025 orthophoto"
+    },
+    {
+     "id": "deck-railing",
+     "kind": "balcony-ironwork",
+     "where": "red steel railing on posts round the raised deck edges",
+     "approxSizeM": [
+      90,
+      1.1
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-001071_pano_0001_001480",
+     "how": "posts about 2 m apart with top and middle rails following the 1:20 slope; the mesh infill panels of w07 are not drawn"
+    },
+    {
+     "id": "w-graffiti",
+     "kind": "other",
+     "where": "dense, frequently repainted graffiti and murals over almost every wall",
+     "approxSizeM": [
+      44,
+      3
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7316010203-001071_pano_0001_001480",
+     "skip": {
+      "reason": "temporary",
+      "note": "street art repainted between every panorama year (2016, 2019, 2025 differ); walls carry the mid-grey concrete tone under it"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "w03-12",
+   "bearing": 12,
+   "lengthM": 42,
+   "centre": [
+    4.895741,
+    52.4005705
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-09-22_07-34-23_00161",
+   "capturedAt": "2025-09-22",
+   "checked": true,
+   "items": [
+    {
+     "id": "n-studio-openings",
+     "kind": "window-shape",
+     "where": "head of the slipway: red-framed studio doors and windows, two concrete ends and a brick middle",
+     "approxSizeM": [
+      42,
+      3.3
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-09-22_07-34-23_00161",
+     "how": "holedWall openings with red reveals, red door panels and glass backs at measured t; brick material on t 12.3-29.6"
+    },
+    {
+     "id": "n-red-canopy",
+     "kind": "canopy",
+     "where": "flat red canopy over the first door of the brick middle",
+     "approxSizeM": [
+      3,
+      0.15
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-09-22_07-34-23_00161",
+     "how": "red edge box 1 m deep at 3.9 m"
+    },
+    {
+     "id": "n-graffiti",
+     "kind": "other",
+     "where": "graffiti and murals on the concrete ends and the parapet",
+     "approxSizeM": [
+      42,
+      4
+     ],
+     "plan": "skipped",
+     "seenIn": "recording_2025-09-22_07-34-23_00161",
+     "skip": {
+      "reason": "temporary",
+      "note": "repainted continually; the 2020 and 2025 panoramas show different pieces"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "w04-103",
+   "bearing": 103,
+   "lengthM": 30.7,
+   "centre": [
+    4.8959945,
+    52.4003965
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-09-22_07-53-54_00172",
+   "capturedAt": "2025-09-22",
+   "checked": true,
+   "items": [
+    {
+     "id": "e-head-openings",
+     "kind": "window-shape",
+     "where": "east face of the head block: red-framed windows and a red door behind the willows",
+     "approxSizeM": [
+      12,
+      2.6
+     ],
+     "plan": "simplified",
+     "seenIn": "recording_2025-09-22_07-53-54_00172",
+     "how": "the four openings visible between the trees, at measured t; the trees hide the southern 9 m"
+    }
+   ]
+  },
+  {
+   "tag": "w05-102",
+   "bearing": 102,
+   "lengthM": 26,
+   "centre": [
+    4.895896,
+    52.3998955
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001735_pano_0000_005188",
+   "capturedAt": "2020-06-03",
+   "checked": true,
+   "items": [
+    {
+     "id": "e-wing-railing",
+     "kind": "balcony-ironwork",
+     "where": "railing and keel blocks along the lower east edge",
+     "approxSizeM": [
+      26,
+      1.1
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001735_pano_0000_005188",
+     "how": "same deck railing and keel-block row as the west side"
+    }
+   ]
+  },
+  {
+   "tag": "w06-283",
+   "bearing": 283,
+   "lengthM": 21.3,
+   "centre": [
+    4.895405,
+    52.4005165
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-09-22_07-34-23_00148",
+   "capturedAt": "2025-09-22",
+   "checked": true,
+   "items": [
+    {
+     "id": "w-head-openings",
+     "kind": "window-shape",
+     "where": "west face of the head block: red double door, three red-framed windows, red door",
+     "approxSizeM": [
+      15,
+      2.5
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-09-22_07-34-23_00148",
+     "how": "holedWall openings at measured t from the north end"
+    },
+    {
+     "id": "w-red-stair",
+     "kind": "other",
+     "where": "red steel stair from the street up to the wing deck in the west notch",
+     "approxSizeM": [
+      7,
+      3.5
+     ],
+     "plan": "simplified",
+     "seenIn": "recording_2025-09-22_07-34-23_00148",
+     "how": "two red stringers, 0.19 m treads, handrails on three posts each side; the photo shows two side-by-side flights with mesh cheeks"
+    }
+   ]
+  },
+  {
+   "tag": "w07-281",
+   "bearing": 281,
+   "lengthM": 18.3,
+   "centre": [
+    4.895267,
+    52.400352
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001071_pano_0001_001474",
+   "capturedAt": "2019-01-24",
+   "checked": true,
+   "items": [
+    {
+     "id": "w-wing-roller-doors",
+     "kind": "window-shape",
+     "where": "west wing: glazed red door and three grey roller doors between concrete piers, mesh railing panels above",
+     "approxSizeM": [
+      18,
+      2.4
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001071_pano_0001_001474",
+     "how": "holedWall openings (glass, frame-grey roller backs) and proud concrete fins between them"
+    }
+   ]
+  },
+  {
+   "tag": "w08-103",
+   "bearing": 103,
+   "lengthM": 17.8,
+   "centre": [
+    4.8959445,
+    52.400126
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000857_pano_0000_002211",
+   "capturedAt": "2018-07-24",
+   "checked": true,
+   "items": [
+    {
+     "id": "e-red-cabinets",
+     "kind": "other",
+     "where": "two red utility cabinets against the east wall",
+     "approxSizeM": [
+      0.8,
+      1.6
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-000857_pano_0000_002211",
+     "how": "red boxes at u 19.6 and 21.0"
+    }
+   ]
+  },
+  {
+   "tag": "w09-74",
+   "bearing": 74,
+   "lengthM": 6.7,
+   "centre": [
+    4.8959595,
+    52.400233
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-09-22_07-53-54_00173",
+   "capturedAt": "2025-09-22",
+   "checked": true,
+   "items": []
+  },
+  {
+   "tag": "w10-282",
+   "bearing": 282,
+   "lengthM": 6,
+   "centre": [
+    4.895087,
+    52.3998545
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001071_pano_0001_001485",
+   "capturedAt": "2019-01-24",
+   "checked": true,
+   "items": []
+  },
+  {
+   "tag": "w11-12",
+   "bearing": 12,
+   "lengthM": 5.5,
+   "centre": [
+    4.8953315,
+    52.400428
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-09-22_07-34-23_00150",
+   "capturedAt": "2025-09-22",
+   "checked": true,
+   "items": []
+  },
+  {
+   "tag": "w12-103",
+   "bearing": 103,
+   "lengthM": 5.5,
+   "centre": [
+    4.8958585,
+    52.399751
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000857_pano_0000_002219",
+   "capturedAt": "2018-07-24",
+   "checked": true,
+   "items": []
+  },
+  {
+   "tag": "w13-74",
+   "bearing": 74,
+   "lengthM": 4.4,
+   "centre": [
+    4.895925,
+    52.400029
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7315120208-000105_pano_0001_004147",
+   "capturedAt": "2016-07-08",
+   "checked": true,
+   "items": []
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  },
+  {
+   "name": "PDOK luchtfoto Actueel_orthoHR",
+   "url": "https://service.pdok.nl/hwh/luchtfotorgb/wms/v1_0",
+   "licence": "CC BY 4.0"
+  },
+  {
+   "name": "Rijksmonument 528255",
+   "url": "https://monumentenregister.cultureelerfgoed.nl/monumenten/528255",
+   "licence": "CC0"
+  }
+ ]
+}

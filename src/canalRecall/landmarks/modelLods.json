@@ -2152,5 +2152,17 @@
   "buildVersion": 2,
   "bytes": 65568,
   "triangles": 3237
+ },
+ "tolhuis-paviljoen": {
+  "sourceHash": "4d90cd344bc794b3",
+  "buildVersion": 2,
+  "bytes": 43592,
+  "triangles": 1914
+ },
+ "y-helling": {
+  "sourceHash": "985bd1f99ee9da64",
+  "buildVersion": 2,
+  "bytes": 20336,
+  "triangles": 615
  }
 }
