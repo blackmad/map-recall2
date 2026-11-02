@@ -272,8 +272,13 @@
       "dateSource": "asset-update"
     },
     "autopon": {
-      "updatedAt": "2026-11-02T02:22:27.081Z",
-      "version": "8573f2d81ea38430",
+      "updatedAt": "2026-11-02T02:50:48.113Z",
+      "version": "9c1cf931b8f43533",
+      "dateSource": "asset-update"
+    },
+    "autopon.lod1": {
+      "updatedAt": "2026-11-02T02:25:40.187Z",
+      "version": "3896b1fb96ff387f",
       "dateSource": "asset-update"
     },
     "badhuistheater": {
@@ -1769,6 +1774,11 @@
     "joods-verzetsmonument": {
       "updatedAt": "2026-10-30T18:19:58.781Z",
       "version": "68b174d90bf04162",
+      "dateSource": "asset-update"
+    },
+    "joodse-invalide": {
+      "updatedAt": "2026-11-02T02:49:19.118Z",
+      "version": "73038bf31ceb930f",
       "dateSource": "asset-update"
     },
     "kalvertoren": {

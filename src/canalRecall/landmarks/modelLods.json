@@ -2106,9 +2106,15 @@
   "triangles": 2520
  },
  "autopon": {
-  "sourceHash": "8573f2d81ea38430",
+  "sourceHash": "9c1cf931b8f43533",
   "buildVersion": 2,
-  "bytes": 98380,
+  "bytes": 98448,
   "triangles": 4808
+ },
+ "joodse-invalide": {
+  "sourceHash": "73038bf31ceb930f",
+  "buildVersion": 2,
+  "bytes": 59080,
+  "triangles": 2668
  }
 }

@@ -135,7 +135,7 @@ function loggiaGrid(b: BuildingTools) {
       if (enclosed(j, k)) {
         // room pulled forward into the loggia zone (w01-330: the cells either side of every other thick pier on the
         // 2nd and 4th loggia storeys): a front wall 0.6 m behind the fins with one red-framed window, no balustrade
-        const F = -0.65, fy = y + 0.25, fh = next - 0.85 - fy;
+        const F = -0.65, fy = y + 1.02, fh = next - 0.42 - fy;
         slab(b, f, c, y - 0.1, w, next - 0.2 - y + 0.1, depth + F, 'concrete', -depth - 0.05);
         slab(b, f, c, fy - 0.07, w - 0.3, fh + 0.14, 0.045, 'red', F);
         pane(b, f, c, fy, w - 0.44, fh, 'glass', F + 0.045);
