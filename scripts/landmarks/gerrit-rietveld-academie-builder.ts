@@ -3,6 +3,7 @@ import type {BuildingTools} from './cultural-builders';
 import type {Frame} from './nearbar-kit';
 import {Acc, edgeBox, fin, flatLetters, roof, soffit, strip, tube, wallQuad, type C} from './tier-kit';
 import {edgeNormal, type PlanPoint} from '../../src/canalRecall/landmarks/roofTiers';
+import {shedRoof} from '../../src/canalRecall/landmarks/shedRoof';
 
 /**
  * Gerrit Rietveld Academie, the Rietveld building, Fred. Roeskestraat 96 (BAG pand 0363100012077325, bouwjaar 1967;
@@ -158,27 +159,13 @@ function triOut(acc: Acc, c: C, p: V3, q: V3, r: V3, out: V3) {
   const cx = e1[1] * e2[2] - e1[2] * e2[1], cy = e1[2] * e2[0] - e1[0] * e2[2], cz = e1[0] * e2[1] - e1[1] * e2[0];
   if (cx * out[0] + cy * out[1] + cz * out[2] >= 0) acc.tri(c, p, q, r); else acc.tri(c, p, r, q);
 }
-const outV = (uv: UV, y: number): V3 => { const p = N(uv); return [p[0], y, p[1]]; };
 
-/**
- * North-light sheds on a flat roof: `count` teeth of `pitch` along v from v0, between u0 and u1. Each tooth: an opaque
- * slope rising northwards over two thirds of the pitch, a glazed face falling to the next tooth, gable triangles at both
- * ends (orthophoto: light slopes and dark glazed faces in 2.1 m stripes).
- */
+/** North-light sheds from the kit (shedRoof.ts), mapped from its (u, v, y) frame onto the building frame. */
 function sheds(acc: Acc, u0: number, u1: number, v0: number, count: number, pitch: number, y: number, rise: number, slope: C) {
-  for (let k = 0; k < count; k++) {
-    const vs = v0 + k * pitch, vh = vs + pitch * 0.67, ve = vs + pitch, yt = y + rise;
-    const up: V3 = outV([0, 0], 1);
-    const sOut = (dir: UV): V3 => { const d = N(dir); return [d[0], 0.6, d[1]]; };
-    triOut(acc, slope, P3([u0, vs], y), P3([u1, vs], y), P3([u1, vh], yt), sOut(DIR.S));
-    triOut(acc, slope, P3([u0, vs], y), P3([u1, vh], yt), P3([u0, vh], yt), sOut(DIR.S));
-    triOut(acc, 'glass', P3([u0, vh], yt), P3([u1, vh], yt), P3([u1, ve], y), sOut(DIR.N));
-    triOut(acc, 'glass', P3([u0, vh], yt), P3([u1, ve], y), P3([u0, ve], y), sOut(DIR.N));
-    void up;
-    for (const [u, side] of [[u0, DIR.W], [u1, DIR.E]] as [number, UV][]) {
-      const d = N(side);
-      triOut(acc, 'stone', P3([u, vs], y), P3([u, vh], yt), P3([u, ve], y), [d[0], 0, d[1]]);
-    }
+  for (const t of shedRoof({u0, u1, v0, count, pitch, y, rise})) {
+    const [p, q, r] = t.points.map(([u, v, h]) => P3([u, v], h));
+    const o = N([t.out[0], t.out[1]]);
+    triOut(acc, t.part === 'slope' ? slope : t.part === 'glazing' ? 'glass' : 'stone', p, q, r, [o[0], t.out[2], o[1]]);
   }
 }
 
