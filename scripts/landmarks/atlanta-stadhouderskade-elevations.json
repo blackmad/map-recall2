@@ -1,0 +1,29 @@
+{
+  "id": "atlanta-stadhouderskade",
+  "countedBy": "lane landmarks-oostelijk-20261101 (opus) from the rectified brief crop w01-52, 2026-11-02; not a blind count: the integrator may dispatch one",
+  "facades": [
+    {
+      "name": "Stadhouderskade front between the oriels",
+      "bearing": 52,
+      "photo": "artifacts/landmark-briefs/atlanta-stadhouderskade/w01-52.jpg",
+      "rows": [
+        18,
+        8,
+        8,
+        8,
+        8,
+        8
+      ],
+      "alongM": [
+        7.45,
+        27.35
+      ],
+      "heightM": [
+        4.5,
+        25.5
+      ],
+      "symmetric": true,
+      "note": "w01-52 (2023, 42.2 px/m), the main front between the two half-round oriels (t 7.45-27.35 m from the SE end), counted per storey band from the first floor up: 18 narrow first-floor windows, then 8 office windows on each of five storeys. The oriels (curved multi-light bays, inventory f-oriels / f-oriels-l1) and the entrance bay are outside the crop; the shop floor below 4.5 m (one continuous steel-and-glass front) is excluded."
+    }
+  ]
+}

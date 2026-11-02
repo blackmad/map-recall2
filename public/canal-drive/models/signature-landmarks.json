@@ -67873,6 +67873,135 @@
         "bytes": 100720,
         "triangles": 5020
       }
+    },
+    "atlanta-stadhouderskade": {
+      "id": "atlanta-stadhouderskade",
+      "name": "Atlanta",
+      "modelUrl": "./models/atlanta-stadhouderskade.glb",
+      "suppressOsmIds": [
+        "NL.IMBAG.Pand.0363100012080492"
+      ],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.87911872,
+          52.36313299
+        ],
+        "headingDegrees": 0,
+        "lengthMetres": 41,
+        "widthMetres": 38
+      },
+      "surveyed": {
+        "anchor": [
+          4.87911872,
+          52.36313299
+        ],
+        "northOffsetDegrees": 0,
+        "source": "Vertex average of the BAG 0363100012080492 outline (RD, 3DBAG LoD0); massing is the 3DBAG LoD2.2 shell of that pand (CC BY 4.0) in native east/south metres (scripts/landmarks/atlanta-stadhouderskade-prepare.ts). Storey lines, window axes, oriels, entrance portal, attic and tower slit measured on the rectified Gemeente Amsterdam panorama crop w01-52 at 42.2 px/m and the Commons photograph 'Amsterdam Stadhouderskade 5.jpg' (scripts/landmarks/atlanta-stadhouderskade-inventory.json)."
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 0,
+      "heightMetres": 42.9,
+      "bagYear": 1929,
+      "materialOverrides": {
+        "brick": "#71392f",
+        "red": "#6a2f26",
+        "stone": "#8f8c87",
+        "white": "#e8e6df",
+        "glass": "#4b5a64",
+        "frame": "#3a3d40",
+        "dark": "#5a3e2a",
+        "ochre": "#b9774a",
+        "concrete": "#dcdcd8",
+        "slate": "#5a5d61",
+        "blue": "#2f4e8a",
+        "bronze": "#5b3a2a"
+      },
+      "attribution": {
+        "title": "Atlanta, Stadhouderskade 5-6 (office building, F.A. Warners, 1927-1928, attic storey 1955; gemeentelijk monument)",
+        "author": "Map Recall",
+        "sourceUrl": "https://nl.wikipedia.org/wiki/Stadhouderskade_5",
+        "licence": "CC BY 4.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "modifications": "Original texture-free flat-colour geometry on the 3DBAG LoD2.2 shell (CC BY 4.0) and BAG outline (CC0): the shop floor with its louvred fascia, the first floor of narrow windows with relief piers, the office storeys with boxed-out transom lights, the two half-round oriels, the bracket course, corner blocks, the ribbed attic and the 1955 glass storey, the granite entrance portal and the tower's glazed slit; read for proportion only from Gemeente Amsterdam panoramas (CC BY 4.0) and Wikimedia Commons photographs (CC BY-SA 3.0, see scripts/landmarks/atlanta-stadhouderskade-inventory.json). No pixels or meshes imported."
+      },
+      "buildingFootprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.8791772,
+              52.3633353
+            ],
+            [
+              4.8788995,
+              52.3632355
+            ],
+            [
+              4.8788677,
+              52.3632258
+            ],
+            [
+              4.8790516,
+              52.3629942
+            ],
+            [
+              4.8791638,
+              52.363029
+            ],
+            [
+              4.8792063,
+              52.3629971
+            ],
+            [
+              4.879465,
+              52.3631141
+            ],
+            [
+              4.8791772,
+              52.3633353
+            ]
+          ]
+        ]
+      },
+      "buildingCategory": "landmark",
+      "bounds": {
+        "min": [
+          -17.02400016784668,
+          -5.9604645663569045e-9,
+          -22.482999801635742
+        ],
+        "max": [
+          23.569000244140625,
+          42.93299865722656,
+          15.627138137817383
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.87911872,
+          52.36313299
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 90,
+        "facadeBearingDegrees": 0,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 40.593000411987305,
+        "heightMetres": 42.93299866318703,
+        "depthMetres": 38.110137939453125,
+        "depthCoverage": 1.0028983668277138
+      },
+      "triangles": 35209,
+      "bytes": 432500,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
+      "lod1": {
+        "sourceHash": "71e0a14ab60dd9fa",
+        "buildVersion": 2,
+        "bytes": 118948,
+        "triangles": 5671
+      }
     }
   }
 }
