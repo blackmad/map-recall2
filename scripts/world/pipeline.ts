@@ -1,7 +1,8 @@
 /**
  * The default runtime's building path, run in Node from the extract directory: what the compiler bakes
  * and what the tests compare against. Every step is the runtime's own function, in the runtime's order:
- *   BuildingTileStreamer.fetchTile: clone, dropNestedDuplicates, tile enricher (years + roof facts)
+ *   BuildingTileStreamer.fetchTile: clone, dropNestedDuplicates, tile enricher (gameTileEnricher: years + roof facts
+ *                                   + the rail infrastructure table)
  *   BuildingTileStreamer.styled:    decorateBuildingFeature + vector-map's feature decorator
  *                                   (galleryPipeline.gameDecorator repeats _applyFeatureDecorator).
  */
@@ -17,12 +18,13 @@ import { dropNestedDuplicates } from '../../src/canalRecall/buildingNesting.js';
 import { constructionYearEnricher, roofFactsEnricher, composeEnrichers, roofFactsEnabled } from '../../src/canalRecall/genericFacades.js';
 import { gameDecorator, gameFeatureDecorator } from '../../src/canalRecall/galleryPipeline.js';
 import { setShopfronts } from '../../src/canalRecall/shopfronts.js';
+import { gameTileEnricher } from '../../src/canalRecall/gameTileEnricher.js';
 import { buildingCell } from '../../src/canalRecall/world/cellGrid.js';
 
 export const ROOT = path.resolve(path.dirname(new URL(import.meta.url).pathname), '../..');
 export const EXTRACT = path.join(ROOT, 'public/data/extracts/amsterdam');
 export const COVERS = path.join(ROOT, 'public/canal-drive/models/covers.json');
-export const GLOBAL_INPUTS = ['monument-gables.json', 'landmark-buildings.json', 'shopfronts.json'].map(f => path.join(EXTRACT, f)).concat([COVERS]);
+export const GLOBAL_INPUTS = ['monument-gables.json', 'landmark-buildings.json', 'shopfronts.json', 'rail-infra-buildings.json'].map(f => path.join(EXTRACT, f)).concat([COVERS]);
 export type Feature = { type: 'Feature'; properties: Record<string, unknown>; geometry: any };
 export type Row = { tile: string; ordinal: number; raw: Feature; styled: Feature; cell: string };
 
@@ -34,7 +36,7 @@ export function inputHash(files: string[]): string {
 }
 /** Source files whose code decides the baked output: a change to any of them invalidates every cell. */
 export const CODE = ['src/canalRecall/buildingNesting.ts', 'src/canalRecall/genericFacades.ts', 'src/canalRecall/galleryPipeline.ts', 'src/canalRecall/buildingTilesBrowser.ts',
-  'src/canalRecall/roofMesh.ts', 'src/canalRecall/landmarkKits.ts', 'src/canalRecall/landmarkFrontData.ts', 'src/canalRecall/shopfronts.ts', 'src/canalRecall/monumentGables.ts',
+  'src/canalRecall/roofMesh.ts', 'src/canalRecall/landmarkKits.ts', 'src/canalRecall/landmarkFrontData.ts', 'src/canalRecall/shopfronts.ts', 'src/canalRecall/monumentGables.ts', 'src/canalRecall/gameTileEnricher.ts', 'src/canalRecall/railInfraBuildings.ts',
   'src/canalRecall/roofs/roofFacts.ts', 'src/canalRecall/buildingContextIndex.ts', 'src/canalRecall/world/cellFormat.ts', 'src/canalRecall/world/cellGrid.ts', 'src/canalRecall/world/cellPolicy.ts', 'scripts/world/compile.ts', 'scripts/world/pipeline.ts', 'scripts/world/browserMath.ts', 'scripts/world/useBrowserMath.ts'].map(f => path.join(ROOT, f));
 
 export const readJson = (p: string) => JSON.parse(fs.readFileSync(p, 'utf8'));
@@ -61,8 +63,9 @@ export function gameChain() {
   const decorate = gameDecorator({ gables, landmarkIds, listed }) as (f: Feature) => Feature;
   /** What vector-map installs with setFeatureDecorator (the streamer applies decorateBuildingFeature itself). */
   const featureDecorator = gameFeatureDecorator({ gables, landmarkIds, listed }) as (f: Feature) => Feature;
-  const years = constructionYearEnricher(FILE_BASE, fileFetch);
-  const enricher = roofFactsEnabled('') ? composeEnrichers(years, roofFactsEnricher(FILE_BASE, fileFetch)) : years;
+  // Years, roof facts and the rail infrastructure table: the own engine's live path calls the same function
+  // (gameTileEnricher.ts), and the runtime adopts cells without enriching, so the rail table must be baked here.
+  const enricher = gameTileEnricher({ constructionYearEnricher, roofFactsEnricher, composeEnrichers, roofFactsEnabled }, FILE_BASE, { fetch: fileFetch, search: '' });
   return { decorate, featureDecorator, enricher, fileFetch, fileBase: FILE_BASE };
 }
 

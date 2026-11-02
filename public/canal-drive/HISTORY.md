@@ -2,6 +2,39 @@
 
 **Ziggo Dome and the VU hoofdgebouw (2026-11-02, #191).** `ziggo-dome` (pand 0363100012238052, 2012; 6,038 tris; `throughPassages` for the open deck under the NE bridges and a party-wall exemption at bearing 331 for the podium retaining wall, both with photo evidence; a SHADOWED_BY_LANDMARK line in `ordinaryModels.ts` retires `ordinary-0363100012238052`; the roof reads tan in game, a measured-tint question) and `vu-hoofdgebouw` (pand 0363100012136232, 1973; 15,818 tris; slab towers, ledges, blue griffin, lamp lattice, canopy passage; sections shorter than 5 m are now closed bays, which removed a 2.4 m stub the photo lacks; south and west faces inferred from the east-wing grid). Both pass `audit:glb` and `compare:facades` with no baseline rows. Kit cannot say: lowercase or serif lettering (5x7 uppercase only), LED screen content, raised decks and terrain steps under a model (the Ziggo NE deck is ~6 m up on flat game ground), brackets under ledges. World-v1 recompiled (`--no-policy`): string table +1 (1292 to 1293), all 604 cells re-encoded, reference check decoded equal.
 
+**World cells get the rail-infra treatment: viaduct and deck pands are gone and platform canopies are cut, as on the tile path (2026-11-02, #130).**
+L1 hand-back 23 (856fb88d7). The rail-infra treatment of b5b918212 lived in the
+tile enricher, which the world-cell path never called, so the own engine on the
+default world drew viaduct and deck pands as blocks over the tracks and kept
+whole platform canopies (the one failing own A/B compare,
+NL.IMBAG.Pand.0363100012173021). `gameTileEnricher.ts` is now the one typed
+chain (years, roof facts, rail infra) that OwnWorldView and the compiler's
+gameChain both call; `rail-infra-buildings.json` joined GLOBAL_INPUTS and both
+modules joined CODE, so every cell rehashed. Content diff checked by the
+integrator, decoding both sets and ignoring the ordinal and neighbour indices
+that shift when a building drops out: 19 of 604 cells change, 35 ids dropped (16
+viaducts, 19 canopies), 18 canopy pieces added, 0 other buildings change, which
+is the lane's prediction exactly. City 9.76 MB; verify fresh; test:world-format
+37/37, test:engine 131/131, railInfra 4/4; five-spot world-v1-ab on the
+republished cells: own 4/4 (was 3/4), MapLibre 4/4. What's New note.
+
+**The five-spot world-v1 A/B runs again on both engines: it waits in four named phases instead of on camera.whenIdle (2026-11-02, P1).**
+L1 hand-back 22 (bd58c59e8). MapLibre's idle fires once after a frame with
+nothing to do; with the camera held, nothing requested another frame, so
+`whenIdle` never fired and the A/B hung to its 15-minute timeout three times.
+The spec now waits for map idle, ground resident, cells fresh and frame settled,
+each with a 60 s guard that names the stuck phase, and `worldCameraOf.whenIdle`
+requests a frame after registering (unit test). Under own the skip is gone: the
+compare allows the fetch ring's cut, and own's live path fetches shopfronts,
+monument gables and landmark ids as vector-map.js does. Lane results on the
+published cells: MapLibre 4/4, own 3/4 with 0 px over 30 at every spot. The
+one own failure is real and named: world-v1 cells skip the rail-infra treatment
+(b5b918212) because the cell path bypasses the tile enricher, so viaduct and
+deck pands draw and platform canopies are not cut
+(NL.IMBAG.Pand.0363100012173021); L1 fixes it in the compiler next.
+Integrator: engine, building-tiles, three-buildings and 3d bundles rebuilt;
+lint, test:engine 131/131.
+
 **Loods 6, Atlanta, Gebouw Parnas, Andaz (2026-11-02, #189, #190).** `loods-6` (pand 0363100012142095; 32,611 tris; grey-white render, not brick as the brief said), `atlanta-stadhouderskade` (pand 0363100012080492; 35,209 tris; local arcPrism/oriel helpers; the oriels project 0.68 m because the audit's 0.8 m host reach rules out deeper bays; the Van der Noordaa reliefs are plain panels), `gebouw-parnas` (pand 0363100012110783, Bakker 1975; 10,724 tris; the brief's coordinate was ~1 km off, the lane geocoded Locatellikade 1; bridge building and A-frame trestles over the Parnassusweg) and `andaz-prinsengracht` (pand 0363100012253957, 1974, Rob Nord / bureau G. de Klerk, not Publieke Werken; 4,660 tris; four brick planes with recessed glazed strips and glass roofs, hand-built because `gridFacade` puts glass tops level with pier tops). New tool `scripts/landmarks/bag-shell-prepare.ts <id> <pand>` (generic BAG/3DBAG footprint prep). Baseline first rows: loods-6 mismatch 17 + rhythm 1 (first-floor windows, steel ribbons and the tall east-bay window share one storey band), andaz-prinsengracht mismatch 20 + rhythm 1 (single 0.85 m lights, paired 1.75 m lights and 1.7–2.5 m strips in one row); parnas and atlanta pass. Kit cannot say: curved oriels, chamfered glass corners on curtain-wall feet, a recessed glazed strip with a sloping glass roof between brick planes (worth a component), windows recessed behind the wall plane. `check-landmark-attachment.ts` crashes on a pre-existing american-hotel below-ground assertion (TODO). World-v1 recompiled (`--no-policy`): the string table grew by two (1290 → 1292), all 604 cells re-encoded, reference check decoded equal.
 
 **Sportfondsenbad Oost and the Artis Planetarium (2026-11-02, #188).** The brief's facts were wrong and the lane corrected them: there is no 1929 Eibink & Snellebrand pool at Fronemanstraat 4; `sportfondsenbad-oost` is the 1886–87 Oostergasfabriek retort house (stokerij), Land van Cocagneplein 44, gemeentelijk monument 200525, pands 0363100012236677 + 0363100012236879 (33,252 tris; only two walls exposed, the rest attached to the 2014 shop block and the HEMA block; south gable tops inferred from the north end). Plantage Kerklaan 38 is Micropia, already modelled; `artis-planetarium` is pand 0363100012164980 (17,416 tris; sphere r 13 m fitted to the 3DBAG facets, 36 standing seams, 16 drum piers inferred, glazed hall with three prows). Both pass `audit:glb` with no baseline rows. `compare:facades` fails on the planetarium's notch face: five panes split by 9 cm mullions read as one opening because the detector closes gaps under ~0.3 m; the mullions were not widened to pass (TODO: curtain-wall counting). Kit cannot say: curtain walls and domes (both hand-built). World-v1 recompiled (`--no-policy`): 2 of 604 cells changed. Lesson: lane briefs must not state identity facts from memory; "confirm from BAG/nl.wikipedia" is now in every brief.

@@ -5,7 +5,6 @@ import path from 'node:path';
 import sharp from 'sharp';
 import { openRoute } from './helpers';
 import { AB_SPOTS } from '../../scripts/world/abSpots';
-import { OWN } from './worldCam';
 
 // `?world=v1` (the default since 2026-11-01) against the live tile path (`?world=live`) at the world-compiler sentinels (lane L3, issue #130).
 // Opt-in measurement until world-v1 is published:
@@ -109,19 +108,17 @@ async function fixedShot(page: Page, at: readonly number[], face: readonly numbe
     const g = vm._ownGround;
     vm.jumpToLngLat({ ...pose, pitch: vm.pitchForViewMode('chase'), elevation: g?.ready ? g.heightAt(pose.center) : 0 });
   }, pose);
-  await settle(page);
-  await page.evaluate(() => (window as any).canalRecallGame.vectorMap.camera?.whenIdle?.());
+  await settled(page, 'fixed shot, first jump');
   // The own ground re-plans its ring only after the centre moves RESIDENCY_STEP_M from where it last planned, so each
   // cell's LOD is a function of the path that led to the pose (ijburg-edge: one far cell at lod1 in one variant, its
   // neighbour at lod0 in the other, 141 px over 30, 2026-11-01). Re-plan at the held pose and wait for the builds.
+  // Builds done and every arrival's dissolve (a per-cell screen-door clone over FADE_MS) finished: `settled`'s ground phase.
   await page.evaluate(() => { const g = (window as any).canalRecallGame.vectorMap._ownGround; if (g?.centre && g.ready) { g.residencyAt = null; g.updateResidency(); } });
-  // Builds done and every arrival's dissolve (a per-cell screen-door clone over FADE_MS) finished.
-  await expect.poll(() => page.evaluate(() => { const g = (window as any).canalRecallGame.vectorMap._ownGround; return g ? (g.loadingCells ?? 0) + [...(g.resident?.values?.() ?? [])].filter((r: any) => r.fade).length : 0; }), { timeout: 60_000, intervals: [250] }).toBe(0);
+  await settled(page, 'fixed shot, ground re-planned');
   // Jump again now the ground is in, so the pose is set over the same ground in every load (the camera's matrices are
   // recorded with the owner frames: identical in every load measured, 2026-11-01).
   await page.evaluate((pose) => { const vm = (window as any).canalRecallGame.vectorMap, g = vm._ownGround; vm.jumpToLngLat({ ...pose, pitch: vm.pitchForViewMode('chase'), elevation: g?.ready ? g.heightAt(pose.center) : 0 }); }, pose);
-  await settle(page);
-  await page.evaluate(() => (window as any).canalRecallGame.vectorMap.camera?.whenIdle?.());
+  await settled(page, 'fixed shot, second jump');
   // The shadow map is redrawn only when its snapped box or the root-level caster signature changes, and between
   // redraws it is re-aimed at the moving origin: what it holds depends on when the last redraw happened. Its snap
   // grid (sharedFrame.ts absOf) is anchored at the first map centre the frame saw, which is wherever the boot
@@ -274,18 +271,80 @@ async function ownerPasses(page: Page): Promise<Record<string, any>> {
   return { ...out, codes };
 }
 
-/** Streamer idle and the three.js layer done building for two consecutive polls. */
-async function settle(page: Page) {
-  let last = '';
-  await expect.poll(async () => {
+/** Each phase of `settled` must finish within this, or the test fails naming the phase (it used to hang to 15 min). */
+const PHASE_MS = 60_000;
+
+/**
+ * The view is settled, in four phases, each guarded by PHASE_MS and named in the failure with what it still saw:
+ * - `map idle`: MapLibre loaded, not moving, its tiles in (polled, not its `idle` event); under the own engine the
+ *   camera's pending work other than the ground and the buildings, which the next phases wait on.
+ *   `camera.whenIdle()` was the wait here and is what hung every variant (#129 round 22, 2026-11-02): MapLibre's
+ *   `idle` is an edge, fired after a frame that leaves nothing to do. With the world camera held and the rider parked,
+ *   nothing asks MapLibre for another frame once the ground's fades end (0 renders in 2 s, measured), so a
+ *   `once('idle')` added after that waits for ever.
+ * - `ground resident`: the own ground's builds done at this pose and every arrival's dissolve finished.
+ * - `cells fresh`: the building streamer idle (nothing in flight, queued or styling) and the three.js layer done
+ *   building, unchanged over two polls 1.5 s apart.
+ * - `frame settled`: a frame drawn after all of that.
+ */
+async function settled(page: Page, where: string) {
+  const phase = async (name: string, probe: () => Promise<{ ok: boolean; detail: unknown }>, intervalMs = 250) => {
+    const start = Date.now();
+    let last: { ok: boolean; detail: unknown } = { ok: false, detail: null };
+    while (Date.now() - start < PHASE_MS) {
+      last = await probe();
+      if (last.ok) return;
+      await page.waitForTimeout(intervalMs);
+    }
+    throw new Error(`${where}: not settled after ${PHASE_MS / 1000} s, stuck in "${name}": ${JSON.stringify(last.detail)}`);
+  };
+  await phase('map idle', () => page.evaluate(() => {
+    const vm = (window as any).canalRecallGame.vectorMap, map = vm.map;
+    if (map) {
+      const style = map.style, caches = style?.tileManagers ?? style?.sourceCaches ?? {};
+      const detail = { loaded: map.loaded(), moving: map.isMoving(), tiles: map.areTilesLoaded(), styleLoaded: map.isStyleLoaded(),
+        styleDirty: !!map._styleDirty, sourcesDirty: !!map._sourcesDirty, styleChanged: !!style?._changed, images: style?.imageManager?.isLoaded?.() ?? null,
+        sourcesLoading: Object.entries<any>(caches).filter(([, c]) => !c.loaded?.()).map(([id]) => id) };
+      // Not map.loaded(): it is false while `_sourcesDirty`, which every frame sets again here (a GeoJSON source fed
+      // per frame), so a poll that asks for frames never sees it true (2 full runs stuck 60 s, 2026-11-02). What the
+      // shot needs is the style and every source's tiles in and the camera still.
+      const ok = detail.styleLoaded && !detail.moving && detail.tiles && !detail.sourcesLoading.length && detail.images !== false;
+      if (!ok) map.triggerRepaint();
+      return { ok, detail };
+    }
+    const pending = (vm.pendingWork?.() ?? []).filter((n: string) => !['ownGround', 'buildingTiles', 'facades'].includes(n));
+    if (pending.length) vm.host?.triggerRepaint?.();
+    return { ok: !pending.length, detail: { pending } };
+  }));
+  await phase('ground resident', () => page.evaluate(() => {
+    const g = (window as any).canalRecallGame.vectorMap._ownGround;
+    if (!g) return { ok: true, detail: 'no own ground' };
+    const fading = [...(g.resident?.values?.() ?? [])].filter((r: any) => r.fade).length;
+    const detail = { ready: !!g.ready, loadingCells: g.loadingCells ?? 0, fading };
+    return { ok: detail.ready && detail.loadingCells === 0 && fading === 0, detail };
+  }));
+  let previous = '';
+  await phase('cells fresh', async () => {
     const now = await page.evaluate(() => {
       const vm = (window as any).canalRecallGame.vectorMap, s = vm._completeCity?.status?.(), t = vm._threeBuildings?.stats?.();
-      return JSON.stringify([s?.inFlight, s?.queued, s?.tiles, s?.features, t?.chunks, t?.vertices, vm._threeBuildings?.pending?.length ?? 0]);
+      return { inFlight: s?.inFlight ?? 0, queued: s?.queued ?? 0, styling: !!s?.styling, tiles: s?.tiles, features: s?.features, chunks: t?.chunks, vertices: t?.vertices, pending: vm._threeBuildings?.pending?.length ?? 0 };
     });
-    const ok = now === last && JSON.parse(now)[0] === 0 && JSON.parse(now)[1] === 0;
-    last = now;
-    return ok;
-  }, { timeout: 120_000, intervals: [1500] }).toBe(true);
+    const key = JSON.stringify(now), ok = key === previous && now.inFlight === 0 && now.queued === 0 && !now.styling;
+    previous = key;
+    return { ok, detail: now };
+  }, 1500);
+  const before = await page.evaluate(() => {
+    const vm = (window as any).canalRecallGame.vectorMap, w = window as any;
+    w.__abFrames = 0;
+    if (vm.map) vm.map.once('render', () => { w.__abFrames++; });
+    return vm.host?.stats?.frames ?? 0;
+  });
+  await phase('frame settled', () => page.evaluate((before) => {
+    const vm = (window as any).canalRecallGame.vectorMap, w = window as any;
+    const drawn = vm.map ? w.__abFrames : (vm.host?.stats?.frames ?? 0) - before;
+    if (!drawn) (vm.map ?? vm.host)?.triggerRepaint?.();
+    return { ok: drawn > 0, detail: { framesSinceSettle: drawn } };
+  }, before));
 }
 
 const results: Record<string, any> = {};
@@ -301,7 +360,6 @@ test.beforeAll(() => {
 });
 for (const variant of VARIANTS) {
   test(`world ab: ${variant.name}`, async ({ page }) => {
-    test.skip(OWN, 'MapLibre style assertion: deleted with the default path at P5');
     test.setTimeout(900_000);
     await serve(page);
     // AB_TREES3D=1 keeps the 3D trees (a tree A/B); by default they are off, as the world-cell comparison needs.
@@ -319,13 +377,13 @@ for (const variant of VARIANTS) {
       g.vectorMap?.setActiveLandmark?.(null);
     });
     mkdirSync(OUT, { recursive: true });
-    if (variant.name === 'warmup') { await park(page, RUN_SPOTS[0].at, RUN_SPOTS[0].face); await settle(page); return; }
+    if (variant.name === 'warmup') { await park(page, RUN_SPOTS[0].at, RUN_SPOTS[0].face); await settled(page, 'warmup'); return; }
     const spots: Record<string, any> = {};
     for (const spot of RUN_SPOTS) {
       await park(page, spot.at, spot.face);
       await page.waitForTimeout(3000);
       await park(page, spot.at, spot.face);
-      await settle(page);
+      await settled(page, `${variant.name} ${spot.name}`);
       await park(page, spot.at, spot.face);
       await page.waitForTimeout(800);
       const shot = `${OUT}/${spot.name}-${variant.name}.png`;
@@ -394,5 +452,13 @@ test('world ab: compare', async () => {
   writeFileSync(`${OUT}/compare.json`, JSON.stringify(rows, null, 2));
   const brief = (r: any) => ({ ...r, perTile: Object.fromEntries(Object.entries<any>(r.perTile).map(([k, t]) => [k, { ...t, onlyWorld: t.onlyWorld.length, onlyDefault: t.onlyDefault.length, styledDiffer: t.styledDiffer.length }])) });
   console.log(JSON.stringify(Object.fromEntries(Object.entries(rows).map(([k, r]) => [k, brief(r)])), null, 2));
-  for (const [name, r] of Object.entries(rows)) expect(r.tilesWithDifferentFeatures, `${name}: styled features per tile`).toEqual([]);
+  // The fetch ring (world/worldRing.ts, #130) cuts a world-v1 tile from the cells round the ride only, so a world tile
+  // holds a subset of the live tile's buildings: ids only on the live side are the ring's cut, not a difference. Every
+  // building the world side has must be there on the live side and styled identically, in any order. `worldRing=0`
+  // reads whole tiles, and then the tiles must be equal outright.
+  const ringOn = !/(^|[?&])worldRing=0(&|$)/.test(withQuery(B_QUERY));
+  for (const [name, r] of Object.entries(rows)) {
+    const wrong = Object.entries<any>(r.perTile).filter(([, t]) => t.onlyWorld.length || t.styledDiffer.length || (!ringOn && (t.onlyDefault.length || t.orderDiffers))).map(([k]) => k);
+    expect(wrong, `${name}: styled features per tile (${ringOn ? 'ring on: world a subset of live' : 'ring off: equal'})`).toEqual([]);
+  }
 });

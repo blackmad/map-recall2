@@ -45,7 +45,7 @@ import { cameraFrame } from '../ownMap/mapCamera';
 import { fromLocal, toLocal } from '../ownMap/frame';
 import { placeAliases } from './placeNames';
 import { CityExtras } from './cityExtras';
-import { composeTileEnrichers, railInfraEnricher } from '../railInfraBuildings';
+import { gameTileEnricher } from '../gameTileEnricher';
 import { LandmarkHighlight } from './landmarkHighlight';
 import { LabelOcclusion } from './labelOcclusion';
 
@@ -411,14 +411,11 @@ export class OwnWorldView implements WorldViewOracles {
       const city = this._completeCity = new runtime.BuildingTileStreamer(this.cameraMap, 'osm-building-appearance', this.extractPath);
       // No MapLibre source to feed: the streamer answers featuresAt / sampleFeatures itself.
       city.setPublishing?.(false);
-      const years = Facades.constructionYearEnricher(this.extractPath);
-      const facts = Facades.composeEnrichers && Facades.roofFactsEnabled() ? Facades.composeEnrichers(years, Facades.roofFactsEnricher(this.extractPath)) : years;
-      // Railway infrastructure registered as buildings (railInfraBuildings.ts, rail-infra-buildings.json): viaduct pands
-      // dropped for the track's own structure, platform canopies as open canopies over the platforms. After the facts.
-      city.setTileEnricher(composeTileEnrichers(facts, railInfraEnricher(this.extractPath)) as any);
-      const decorate = api.decorateRoof ? (f: any) => api.decorateRoof(Facades.decorateFacade(f)) : Facades.decorateFacade;
-      const base = api.exceptLandmarks ? api.exceptLandmarks(decorate, new Set(), undefined) : decorate;
-      city.setFeatureDecorator(api.decorateKitRoof ? (f: any) => api.decorateShopfront(api.decorateFront(api.decorateKitRoof(base(f)))) : base);
+      // Years, roof facts, then the rail infrastructure table (viaduct pands dropped, platform canopies cut): the one
+      // composition the world compiler bakes into world-v1 cells too (gameTileEnricher.ts).
+      city.setTileEnricher(gameTileEnricher(Facades, this.extractPath) as any);
+      this.decorateCity();
+      void this.loadDecorationExtracts();
       if (!(await city.probe())) { this.fail('buildings', 'tiles not published'); return; }
       city.attach(() => { this._completeCityHasBuildings = true; this.status.firstBuildingsAt = performance.now(); }, (features: any[]) => {
         this._tileFeatures = features;
@@ -429,6 +426,45 @@ export class OwnWorldView implements WorldViewOracles {
       this.applyPendingAim();
       this.status.buildings = true;
     } catch (error) { this.fail('buildings', error); }
+  }
+
+  /** Monument gables, listed landmarks, landmark building ids: what the live tile path decorates with (vector-map.js). */
+  private decoration: { gables: Map<string, unknown> | null; listed: Set<string> | undefined; landmarks: Set<string> } = { gables: null, listed: undefined, landmarks: new Set() };
+
+  /**
+   * The building decorator, as vector-map.js `_applyFeatureDecorator` builds it: facade, monument gable, roof, landmark
+   * exceptions, kit roof, measured front, shopfront. Re-set when an extract arrives, which re-decorates the resident
+   * tiles. Compiled world-v1 cells carry these already; the live tile path (`?world=live`) needs them here, or the
+   * world A/B compared cells against undecorated tiles (every feature's `shopQuiet` differed, #129 round 22).
+   */
+  private decorateCity(): void {
+    const api = W().CanalRecallThreeBuildings, Facades = this.facadesLib(), city = this._completeCity;
+    if (!api || !Facades || !city) return;
+    const { gables, listed, landmarks } = this.decoration;
+    const named = gables?.size && api.withMonumentGable ? (f: any) => api.withMonumentGable(f, gables) : (f: any) => f;
+    const decorate = api.decorateRoof ? (f: any) => api.decorateRoof(named(Facades.decorateFacade(f))) : Facades.decorateFacade;
+    const base = api.exceptLandmarks ? api.exceptLandmarks(decorate, landmarks, listed) : decorate;
+    city.setFeatureDecorator(api.decorateKitRoof ? (f: any) => api.decorateShopfront(api.decorateFront(api.decorateKitRoof(base(f)))) : base);
+  }
+
+  /** Shopfronts, monument gables and landmark building ids, fetched once each (as vector-map.js does); each re-decorates. */
+  private async loadDecorationExtracts(): Promise<void> {
+    const api = W().CanalRecallThreeBuildings;
+    const json = async (file: string) => { try { const r = await fetch(`${this.extractPath}/${file}`); return r.ok ? await r.json() : null; } catch (_) { return null; } };
+    await Promise.all([
+      json('shopfronts.json').then(data => { if (data && api?.setShopfronts) { api.setShopfronts(data); this.decorateCity(); } }),
+      json('monument-gables.json').then(data => {
+        if (!data) return;
+        this.decoration.gables = new Map(Object.entries(data.buildings || {}));
+        this.decoration.listed = new Set(data.listedLandmarks || []);
+        this.decorateCity();
+      }),
+      json('landmark-buildings.json').then(data => {
+        if (!data) return;
+        for (const list of Object.values<string[]>(data.buildings || {})) for (const id of list) this.decoration.landmarks.add(String(id));
+        this.decorateCity();
+      }),
+    ]);
   }
 
   private async loadOwnGround(): Promise<void> {
