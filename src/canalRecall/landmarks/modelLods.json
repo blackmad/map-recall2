@@ -2200,5 +2200,11 @@
   "buildVersion": 2,
   "bytes": 94952,
   "triangles": 5954
+ },
+ "gerrit-rietveld-academie": {
+  "sourceHash": "ebf32f1166d5c4d5",
+  "buildVersion": 2,
+  "bytes": 25692,
+  "triangles": 810
  }
 }

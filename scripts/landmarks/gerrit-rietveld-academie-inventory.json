@@ -1,0 +1,484 @@
+{
+ "schemaVersion": 1,
+ "id": "gerrit-rietveld-academie",
+ "pand": "0363100012077325",
+ "brief": "scripts/landmarks/gerrit-rietveld-academie-brief.md",
+ "signature": [
+  "n-module-grid",
+  "s-white-wall",
+  "s-lettering",
+  "s-entrance-canopy",
+  "n-sokkel",
+  "roof-sheds"
+ ],
+ "walls": [
+  {
+   "tag": "w01-357",
+   "bearing": 357,
+   "lengthM": 62.9,
+   "centre": [
+    4.859927,
+    52.342099
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001151_pano_0001_002208",
+   "capturedAt": "2019-04-30",
+   "checked": true,
+   "items": [
+    {
+     "id": "n-module-grid",
+     "kind": "window-shape",
+     "where": "whole front, every storey",
+     "approxSizeM": [
+      62.9,
+      16.4
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001151_pano_0001_002208",
+     "how": "curtain(): 2.09 m mullions on the global module grid, bottom to top a 1.05 m frosted sill band, four clear 2.1 m vision bands alternating with three frosted 2.1 m bands (floor transom in each) and a 0.65 m frosted band under the deck plate"
+    },
+    {
+     "id": "n-sokkel",
+     "kind": "other",
+     "where": "below the curtain wall, full length",
+     "approxSizeM": [
+      62.9,
+      1.8
+     ],
+     "plan": "modelled",
+     "seenIn": "commons:Rietveldacademie.jpg",
+     "how": "sokkel(): back wall 0.6 m behind the curtain line, a concrete pier on every module line and a basement window between each pair; soffit under the overhang"
+    },
+    {
+     "id": "n-stair-bay",
+     "kind": "window-shape",
+     "where": "three modules opposite the entrance (u modules 10-13)",
+     "approxSizeM": [
+      6.3,
+      16.4
+     ],
+     "plan": "simplified",
+     "seenIn": "commons:Rietveldacademie.jpg",
+     "how": "clear glass in every band, transoms and mullions kept",
+     "note": "Rietveldacademie.jpg shows a bay without frosted bands; the register puts the main stair straight opposite the entrance, so the bay is placed on the entrance modules"
+    },
+    {
+     "id": "n-roof-setback",
+     "kind": "other",
+     "where": "top storey, modules 11-17 from the west end",
+     "approxSizeM": [
+      12.5,
+      2.1
+     ],
+     "plan": "modelled",
+     "seenIn": "pdok:Actueel_orthoHR (2025)",
+     "how": "roof terrace at 16.1 m (3DBAG), the north curtain stops there, glazed back and side walls to the roof"
+    },
+    {
+     "id": "n-deck-edge",
+     "kind": "other",
+     "where": "roof edge",
+     "approxSizeM": [
+      62.9,
+      0.1
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001151_pano_0001_002208",
+     "how": "curtain wall runs straight to the deck plate with only the top transom (no gutter or coping, per the register)"
+    }
+   ],
+   "note": "Canal (north) front east of the white head, 62.9 m = 30 modules; tree covers the western third in the panorama, Rietveldacademie.jpg (bMA 2007) shows the whole front."
+  },
+  {
+   "tag": "w02-87",
+   "bearing": 87,
+   "lengthM": 60.9,
+   "centre": [
+    4.860415,
+    52.341843
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "items": [
+    {
+     "id": "roof-sheds",
+     "kind": "other",
+     "where": "wing roof (10 teeth) and transverse block (two groups of 6)",
+     "approxSizeM": [
+      10.0,
+      21.0
+     ],
+     "plan": "modelled",
+     "seenIn": "pdok:Actueel_orthoHR (2025)",
+     "how": "sheds(): opaque slope rising north over two thirds of the 2.1 m pitch, glazed face, gable triangles; light slopes on the wing, dark on the transverse block, as on the orthophoto"
+    },
+    {
+     "id": "roof-plant-fans",
+     "kind": "other",
+     "where": "plant deck behind the south front",
+     "approxSizeM": [
+      12.7,
+      2.2
+     ],
+     "plan": "modelled",
+     "seenIn": "pdok:Actueel_orthoHR (2025)",
+     "how": "plant box at 19.7 m with six round white fans"
+    },
+    {
+     "id": "roof-lift-tower",
+     "kind": "tower",
+     "where": "over the main stair",
+     "approxSizeM": [
+      4.9,
+      6.5
+     ],
+     "plan": "modelled",
+     "seenIn": "pdok:Actueel_orthoHR (2025)",
+     "how": "concrete box to 20.3 m with its 21.1 m head (3DBAG)"
+    }
+   ],
+   "note": "East face (main block head and the wing/transverse block): no panorama or open photo; the main block head is drawn as the canal front, the wing as the courtyard face. Roof items are listed here."
+  },
+  {
+   "tag": "w03-177",
+   "bearing": 177,
+   "lengthM": 42,
+   "centre": [
+    4.8598535,
+    52.341908
+   ],
+   "evidence": "photo",
+   "panoId": "commons:Frederik_Roeskestraat_96,_Gerrit_Rietmieveld_Academie_pic3.JPG",
+   "capturedAt": "2016-04-17",
+   "checked": true,
+   "items": [
+    {
+     "id": "s-module-grid",
+     "kind": "window-shape",
+     "where": "whole front",
+     "approxSizeM": [
+      42.0,
+      16.4
+     ],
+     "plan": "modelled",
+     "seenIn": "commons:Frederik_Roeskestraat_96,_Gerrit_Rietmieveld_Academie_pic3.JPG",
+     "how": "curtain() as on the canal front"
+    },
+    {
+     "id": "s-entrance-steps",
+     "kind": "other",
+     "where": "in front of the landing, beside the white wall",
+     "approxSizeM": [
+      6.4,
+      1.8
+     ],
+     "plan": "modelled",
+     "seenIn": "commons:Frederik_Roeskestraat_96,_Gerrit_Rietmieveld_Academie_pic2.JPG",
+     "how": "eight risers to a concrete landing at the ground-floor level, a steel handrail on the plaza side"
+    },
+    {
+     "id": "s-entrance-canopy",
+     "kind": "canopy",
+     "where": "over the landing, held off the facade",
+     "approxSizeM": [
+      12.5,
+      4.1
+     ],
+     "plan": "modelled",
+     "seenIn": "commons:Frederik_Roeskestraat_96,_Gerrit_Rietmieveld_Academie_pic2.JPG",
+     "how": "thin concrete slab at 4.4 m, 0.3 m clear of the curtain wall, three slim steel posts"
+    },
+    {
+     "id": "s-black-wall",
+     "kind": "other",
+     "where": "along the landing and turning south",
+     "approxSizeM": [
+      8.7,
+      2.75
+     ],
+     "plan": "modelled",
+     "seenIn": "commons:Frederik_Roeskestraat_96,_Gerrit_Rietmieveld_Academie_pic3.JPG",
+     "how": "black glazed-brick wall (greyBrick slot, #2e2c2f measured) along the landing front and its east side"
+    },
+    {
+     "id": "s-entrance-doors",
+     "kind": "window-shape",
+     "where": "three modules behind the canopy",
+     "approxSizeM": [
+      6.3,
+      1.05
+     ],
+     "plan": "simplified",
+     "seenIn": "commons:Frederik_Roeskestraat_96,_Gerrit_Rietmieveld_Academie_pic3.JPG",
+     "how": "the sill band of the entrance modules is clear glass"
+    },
+    {
+     "id": "s-ventilators",
+     "kind": "other",
+     "where": "front, register: round white ventilators",
+     "approxSizeM": [
+      0.8,
+      0.8
+     ],
+     "plan": "skipped",
+     "seenIn": "commons:Frederik_Roeskestraat_96,_Gerrit_Rietmieveld_Academie_pic3.JPG",
+     "skip": {
+      "reason": "not-visible",
+      "note": "the register (2002) mentions round white ventilators on the front; none show on the 2016 Commons photographs; the six round white fans on the roof plant deck (orthophoto) are modelled"
+     }
+    },
+    {
+     "id": "s-flag",
+     "kind": "sign",
+     "where": "blue banner, 2011",
+     "approxSizeM": [
+      1.5,
+      0.8
+     ],
+     "plan": "skipped",
+     "seenIn": "commons:Rietveld_Academie,_ingang,_2011.jpg",
+     "skip": {
+      "reason": "temporary",
+      "note": "event banner in the 2011 photo"
+     }
+    }
+   ],
+   "note": "Main south front (Commons pic1-4, ingang 2011): curtain wall, entrance landing (bordes), steps, detached canopy, black glazed-brick wall."
+  },
+  {
+   "tag": "w04-267",
+   "bearing": 267,
+   "lengthM": 25.2,
+   "centre": [
+    4.860172,
+    52.341807
+   ],
+   "evidence": "photo",
+   "panoId": "commons:GRA_bijgebouw.jpg",
+   "capturedAt": "2019-08-20",
+   "checked": true,
+   "items": [
+    {
+     "id": "wing-glazing",
+     "kind": "window-shape",
+     "where": "courtyard face of the wing",
+     "approxSizeM": [
+      25.0,
+      3.6
+     ],
+     "plan": "modelled",
+     "seenIn": "commons:GRA_bijgebouw.jpg",
+     "how": "wingWall(): grey sill panel, glazing between, fascia, mullions on the 2.09 m module"
+    }
+   ],
+   "note": "Courtyard face of the workshop wing, behind the transformer pavilion (Commons GRA bijgebouw.jpg, background)."
+  },
+  {
+   "tag": "w05-267",
+   "bearing": 267,
+   "lengthM": 21.6,
+   "centre": [
+    4.859291,
+    52.341981
+   ],
+   "evidence": "photo",
+   "panoId": "commons:Frederik_Roeskestraat_96,_Gerrit_Rietmieveld_Academie_pic1.JPG",
+   "capturedAt": "2016-04-17",
+   "checked": true,
+   "items": [
+    {
+     "id": "w-white-wall",
+     "kind": "other",
+     "where": "lower 7 m, whole west end",
+     "approxSizeM": [
+      21.6,
+      7.05
+     ],
+     "plan": "modelled",
+     "seenIn": "commons:Frederik_Roeskestraat_96,_Gerrit_Rietmieveld_Academie_pic1.JPG",
+     "how": "white glazed-brick face 0.35 m proud of the curtain line"
+    },
+    {
+     "id": "w-fire-stair",
+     "kind": "balcony-ironwork",
+     "where": "in front of the west end, full height",
+     "approxSizeM": [
+      2.0,
+      19.0
+     ],
+     "plan": "simplified",
+     "seenIn": "commons:Frederik_Roeskestraat_96,_Gerrit_Rietmieveld_Academie_pic1.JPG",
+     "how": "landings at every floor and half-floor, two inclined stringer flights per storey, corner posts and a top rail in dark steel (bronze slot)"
+    }
+   ],
+   "note": "West head (Commons pic1, oblique): the white wall wraps the whole end, the steel fire stair stands in front of it."
+  },
+  {
+   "tag": "w06-177",
+   "bearing": 177,
+   "lengthM": 21,
+   "centre": [
+    4.8602885,
+    52.3415645
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "items": [],
+   "note": "Transverse workshop block face, no panorama or open photo; drawn as the courtyard face of the wing."
+  },
+  {
+   "tag": "w07-357",
+   "bearing": 357,
+   "lengthM": 16.8,
+   "centre": [
+    4.86006,
+    52.3416895
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "items": [],
+   "note": "Transverse workshop block face, no panorama or open photo; drawn as the courtyard face of the wing."
+  },
+  {
+   "tag": "w08-177",
+   "bearing": 177,
+   "lengthM": 16.7,
+   "centre": [
+    4.8594235,
+    52.3418885
+   ],
+   "evidence": "photo",
+   "panoId": "commons:Frederik_Roeskestraat_96,_Gerrit_Rietmieveld_Academie_pic3.JPG",
+   "capturedAt": "2016-04-17",
+   "checked": true,
+   "items": [
+    {
+     "id": "s-white-wall",
+     "kind": "other",
+     "where": "lower 7 m",
+     "approxSizeM": [
+      16.8,
+      7.05
+     ],
+     "plan": "modelled",
+     "seenIn": "commons:Frederik_Roeskestraat_96,_Gerrit_Rietmieveld_Academie_pic3.JPG",
+     "how": "white glazed-brick face 0.35 m proud, curtain above"
+    },
+    {
+     "id": "s-lettering",
+     "kind": "lettering",
+     "where": "right part of the white wall, about 4 m up, ending 0.7 m before the east end",
+     "approxSizeM": [
+      6.4,
+      0.32
+     ],
+     "plan": "modelled",
+     "seenIn": "commons:Frederik_Roeskestraat_96,_Gerrit_Rietmieveld_Academie_pic2.JPG",
+     "how": "flatLetters, 0.046 m pixels, dark red #71292c measured on pic3, 6 cm proud"
+    },
+    {
+     "id": "s-wall-lamps",
+     "kind": "lamp",
+     "where": "two small fittings on the white wall",
+     "approxSizeM": [
+      0.3,
+      0.2
+     ],
+     "plan": "skipped",
+     "seenIn": "commons:Frederik_Roeskestraat_96,_Gerrit_Rietmieveld_Academie_pic3.JPG",
+     "skip": {
+      "reason": "too-small",
+      "note": "two camera/lamp boxes about 30 cm"
+     }
+    },
+    {
+     "id": "s-banner",
+     "kind": "other",
+     "where": "painted panel at the foot of the wall",
+     "approxSizeM": [
+      4.0,
+      1.3
+     ],
+     "plan": "skipped",
+     "seenIn": "commons:Frederik_Roeskestraat_96,_Gerrit_Rietmieveld_Academie_pic3.JPG",
+     "skip": {
+      "reason": "temporary",
+      "note": "student artwork panel, changes"
+     }
+    }
+   ],
+   "note": "South face of the west head (Commons pic2/pic3): white glazed brick, lettering, two small wall lamps, a painted banner."
+  },
+  {
+   "tag": "w09-267",
+   "bearing": 267,
+   "lengthM": 15,
+   "centre": [
+    4.8599435,
+    52.3416175
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "items": [],
+   "note": "Transverse workshop block face, no panorama or open photo; drawn as the courtyard face of the wing."
+  },
+  {
+   "tag": "w10-177",
+   "bearing": 177,
+   "lengthM": 12.6,
+   "centre": [
+    4.8600425,
+    52.3415535
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "items": [],
+   "note": "Transverse workshop block face, no panorama or open photo; drawn as the courtyard face of the wing."
+  },
+  {
+   "tag": "w11-357",
+   "bearing": 357,
+   "lengthM": 12.6,
+   "centre": [
+    4.8593735,
+    52.3420815
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001151_pano_0001_002201",
+   "capturedAt": "2019-04-30",
+   "checked": true,
+   "items": [
+    {
+     "id": "n-white-wall",
+     "kind": "other",
+     "where": "lower 7 m, 0.35 m proud of the curtain",
+     "approxSizeM": [
+      12.6,
+      7.05
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001151_pano_0001_002201",
+     "how": "white glazed-brick face, end cap carried back into the sokkel recess, cap ring at 7.05 m"
+    }
+   ],
+   "note": "North end of the west head: the white wall (6.9 m measured, 50 px/m) with curtain glazing above."
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  }
+ ]
+}
