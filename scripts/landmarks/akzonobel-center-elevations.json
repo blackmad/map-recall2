@@ -1,0 +1,36 @@
+{
+ "id": "akzonobel-center",
+ "countedBy": "lane #198 (opus) from the brief crops and the Commons photographs before the model was rendered; the fronts are fritted curtain walls whose clear panes the panorama crops do not separate reliably from the frit, so only silhouette facts are recorded. Not a blind haiku count: integrator may re-count.",
+ "facades": [
+  {
+   "name": "west face (w03-286): the wedge's W face to Beethovenstraat up to the rounded nose, AkzoNobel on the crown (alongM crops off the east volume's north part seen behind on the left)",
+   "bearing": 286,
+   "photo": "artifacts/landmark-briefs/akzonobel-center/w03-286.jpg",
+   "symmetric": false,
+   "gables": 0,
+   "heightM": [
+    0,
+    44
+   ],
+   "alongM": [
+    12.2,
+    31.8
+   ]
+  },
+  {
+   "name": "south front (w01-177): the east volume along Christian Neefestraat, six plinth bays of the 27 m the panorama frames (plinth and five storeys)",
+   "bearing": 177,
+   "photo": "artifacts/landmark-briefs/akzonobel-center/w01-177.jpg",
+   "symmetric": false,
+   "gables": 0,
+   "heightM": [
+    0,
+    26
+   ],
+   "alongM": [
+    36.5,
+    57.5
+   ]
+  }
+ ]
+}
