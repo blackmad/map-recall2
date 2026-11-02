@@ -1,0 +1,835 @@
+{
+ "schemaVersion": 1,
+ "id": "wtc-amsterdam",
+ "pand": "0363100012096613",
+ "brief": "scripts/landmarks/wtc-amsterdam-brief.md",
+ "signature": [
+  "n-wing-canopy",
+  "tt-fins",
+  "n-brick-drum",
+  "s-central-tower",
+  "n-name-wall"
+ ],
+ "walls": [
+  {
+   "tag": "w01-357",
+   "bearing": 357,
+   "lengthM": 51.8,
+   "centre": [
+    4.874445,
+    52.3405905
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2024-09-02_09-15-33_01153",
+   "capturedAt": "2024-09-02",
+   "checked": true,
+   "items": [
+    {
+     "id": "n-wing-canopy",
+     "kind": "canopy",
+     "where": "the Strawinskylaan front: a steel lattice canopy over the atrium front whose rim carries a row of tilted aluminium wings, about 52 m long at 19-21 m",
+     "approxSizeM": [
+      52,
+      6
+     ],
+     "plan": "modelled",
+     "how": "wingRow() on the atrium north wall: square ring beam, one wing 6.5 x 1.5 m every 3.4 m leaning out 43 deg, each on a strut",
+     "seenIn": "recording_2024-09-02_09-15-33_01153"
+    },
+    {
+     "id": "n-v-columns",
+     "kind": "colonnade",
+     "where": "steel tree columns in the forecourt that fork into a V under the canopy beam",
+     "approxSizeM": [
+      0.6,
+      20
+     ],
+     "plan": "simplified",
+     "how": "wingRow colPitch: a tube to 55 % of the beam height, then two struts to the beam 3.2 m either side, every 13 m",
+     "seenIn": "recording_2024-09-02_09-15-33_01153"
+    },
+    {
+     "id": "n-glass-hall",
+     "kind": "window-shape",
+     "where": "the glazed atrium wall under the canopy: a pale grey floor band over the ground storey, glass above",
+     "approxSizeM": [
+      52,
+      14
+     ],
+     "plan": "simplified",
+     "how": "3DBAG atrium tier wall in glass with aluminium transoms per storey and mullions every 5.4 m; the slight curve in plan is not followed (the 3DBAG plan is straight there)",
+     "seenIn": "recording_2024-09-02_09-15-33_01153"
+    },
+    {
+     "id": "n-tower-curtain",
+     "kind": "window-shape",
+     "where": "the 66 m central tower behind (left): a square-grid glass curtain wall with a rounded corner",
+     "approxSizeM": [
+      30,
+      66
+     ],
+     "plan": "simplified",
+     "how": "tower tiers in glass with transoms every storey and mullions every 2.7 m",
+     "seenIn": "recording_2024-09-02_09-15-33_01153"
+    },
+    {
+     "id": "n-flags",
+     "kind": "other",
+     "where": "three flag poles at the forecourt kerb",
+     "approxSizeM": [
+      0.2,
+      10
+     ],
+     "plan": "skipped",
+     "skip": {
+      "reason": "too-small",
+      "note": "thin poles under 0.2 m; banners change"
+     },
+     "seenIn": "recording_2024-09-02_09-15-33_01153"
+    }
+   ]
+  },
+  {
+   "tag": "w02-177",
+   "bearing": 177,
+   "lengthM": 44.6,
+   "centre": [
+    4.8761405,
+    52.3399085
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001789_pano_0002_003459",
+   "capturedAt": "2020-07-06",
+   "checked": true,
+   "items": [
+    {
+     "id": "se-tower-curved",
+     "kind": "tower",
+     "where": "the south-east tower (67 m): a glass curtain wall over a brick-coloured inner wall, bowed in plan",
+     "approxSizeM": [
+      44,
+      67
+     ],
+     "plan": "simplified",
+     "how": "3DBAG tiers 62-68 m in glass with transoms and mullions; the bow follows the 3DBAG facets",
+     "seenIn": "TMX7316010203-001789_pano_0002_003459"
+    },
+    {
+     "id": "se-colonnade",
+     "kind": "colonnade",
+     "where": "round white columns about 8 m apart under the tower overhang, in front of the glazed ground storey",
+     "approxSizeM": [
+      44,
+      7.5
+     ],
+     "plan": "modelled",
+     "how": "colonnade(): white tubes 1.1 m proud under a white soffit band at 7.2 m",
+     "seenIn": "TMX7316010203-001789_pano_0002_003459"
+    }
+   ]
+  },
+  {
+   "tag": "w03-177",
+   "bearing": 177,
+   "lengthM": 43.9,
+   "centre": [
+    4.8752125,
+    52.3399285
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002476_pano_0001_002572",
+   "capturedAt": "2022-03-24",
+   "checked": true,
+   "items": [
+    {
+     "id": "s-central-tower",
+     "kind": "tower",
+     "where": "the central south tower (66 m): curved glass curtain wall, the square glazing grid seen head-on",
+     "approxSizeM": [
+      44,
+      66
+     ],
+     "plan": "simplified",
+     "how": "tower tiers in glass with transoms every storey and mullions every 2.7 m",
+     "seenIn": "TMX7316010203-002476_pano_0001_002572"
+    },
+    {
+     "id": "s-hotel-portal",
+     "kind": "sign",
+     "where": "pink steel portal of the Qbic hotel entrance at the foot of the tower",
+     "approxSizeM": [
+      4,
+      3.5
+     ],
+     "plan": "skipped",
+     "skip": {
+      "reason": "temporary",
+      "note": "tenant entrance dressing (Qbic Hotels), not part of the architecture"
+     },
+     "seenIn": "TMX7316010203-002476_pano_0001_002572"
+    }
+   ]
+  },
+  {
+   "tag": "w04-177",
+   "bearing": 177,
+   "lengthM": 43.4,
+   "centre": [
+    4.874268,
+    52.339865
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002406_pano_0009_000055",
+   "capturedAt": "2022-01-10",
+   "checked": true,
+   "items": [
+    {
+     "id": "w-tower-curved",
+     "kind": "tower",
+     "where": "the west tower (45-51 m): rounded glass curtain wall over a curved two-storey glazed podium with a terrace rail",
+     "approxSizeM": [
+      43,
+      51
+     ],
+     "plan": "simplified",
+     "how": "3DBAG tiers in glass with transoms and mullions; the podium is the 6.8 m tier",
+     "seenIn": "TMX7316010203-002406_pano_0009_000055"
+    },
+    {
+     "id": "sw-wing-canopy",
+     "kind": "canopy",
+     "where": "a canopy of wings climbing from the podium terrace at the west to about 20 m against the tower at the east",
+     "approxSizeM": [
+      43,
+      8
+     ],
+     "plan": "modelled",
+     "how": "wingRow() with a rising beam height, 8 m at the west end to 20 m at the east",
+     "seenIn": "TMX7316010203-002406_pano_0009_000055"
+    }
+   ]
+  },
+  {
+   "tag": "w05-267",
+   "bearing": 267,
+   "lengthM": 43.3,
+   "centre": [
+    4.8735425,
+    52.340421
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001894_pano_0000_003204",
+   "capturedAt": "2020-08-27",
+   "checked": true,
+   "items": [
+    {
+     "id": "w-glass-hall",
+     "kind": "window-shape",
+     "where": "the Zuidplein hall: a glass wall that curves over into the roof, ribbed by steel arches, over a glazed ground storey with a cafe terrace",
+     "approxSizeM": [
+      43,
+      28
+     ],
+     "plan": "simplified",
+     "how": "glass hall box to 28.2 m, curtain transoms, vertical rib fins every 6.5 m; the curve into the roof is not modelled",
+     "seenIn": "TMX7316010203-001894_pano_0000_003204"
+    },
+    {
+     "id": "w-terrace",
+     "kind": "other",
+     "where": "cafe tables and parasols",
+     "approxSizeM": [
+      20,
+      3
+     ],
+     "plan": "skipped",
+     "skip": {
+      "reason": "temporary",
+      "note": "terrace furniture"
+     },
+     "seenIn": "TMX7316010203-001894_pano_0000_003204"
+    }
+   ]
+  },
+  {
+   "tag": "w06-267",
+   "bearing": 267,
+   "lengthM": 36.1,
+   "centre": [
+    4.8735815,
+    52.340033
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002406_pano_0009_000072",
+   "capturedAt": "2022-01-10",
+   "checked": true,
+   "items": [],
+   "note": "same hall as w05 (glass curving into the roof); covered by w-glass-hall"
+  },
+  {
+   "tag": "w07-357",
+   "bearing": 357,
+   "lengthM": 29.5,
+   "centre": [
+    4.87504,
+    52.340611
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001789_pano_0002_002712",
+   "capturedAt": "2020-07-06",
+   "checked": true,
+   "items": [],
+   "note": "plain glass curtain wall of the north tower base; covered by n-tower-curtain"
+  },
+  {
+   "tag": "w08-357",
+   "bearing": 357,
+   "lengthM": 28.6,
+   "centre": [
+    4.8757805,
+    52.3405265
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002918_pano_0013_000473",
+   "capturedAt": "2023-01-05",
+   "checked": true,
+   "items": [],
+   "note": "2023: under refit behind construction hoarding (temporary); the curved glass corner of the north-east block"
+  },
+  {
+   "tag": "w09-357",
+   "bearing": 357,
+   "lengthM": 27.8,
+   "centre": [
+    4.8753715,
+    52.3404505
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "items": [],
+   "note": "no panorama (inferred): an inner face of the north-east block"
+  },
+  {
+   "tag": "w10-87",
+   "bearing": 87,
+   "lengthM": 20.8,
+   "centre": [
+    4.8762265,
+    52.3401755
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "items": [],
+   "note": "no panorama (inferred): Tower Ten construction pit edge in 2020; Tower Ten now"
+  },
+  {
+   "tag": "w11-177",
+   "bearing": 177,
+   "lengthM": 20.7,
+   "centre": [
+    4.8747255,
+    52.340025
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-07-29_10-56-07_00347",
+   "capturedAt": "2025-07-29",
+   "checked": true,
+   "items": [
+    {
+     "id": "s-court-canopy",
+     "kind": "canopy",
+     "where": "the atrium south end over the service court: the same wing canopy on tree columns",
+     "approxSizeM": [
+      21,
+      6
+     ],
+     "plan": "modelled",
+     "how": "wingRow() on the atrium south wall with V-columns every 10 m",
+     "seenIn": "recording_2025-07-29_10-56-07_00347"
+    },
+    {
+     "id": "s-logo-panel",
+     "kind": "sign",
+     "where": "navy panel with the WTC globes and WORLD TRADE CENTER AMSTERDAM over the service entrance",
+     "approxSizeM": [
+      3.6,
+      2.4
+     ],
+     "plan": "modelled",
+     "how": "logoSign(): navy panel, two white globe discs, white pixel lettering",
+     "seenIn": "recording_2025-07-29_10-56-07_00347"
+    },
+    {
+     "id": "s-deliveries-sign",
+     "kind": "sign",
+     "where": "grey deliveries direction board",
+     "approxSizeM": [
+      5,
+      0.8
+     ],
+     "plan": "skipped",
+     "skip": {
+      "reason": "too-small",
+      "note": "small wayfinding text"
+     },
+     "seenIn": "recording_2025-07-29_10-56-07_00347"
+    }
+   ]
+  },
+  {
+   "tag": "w12-177",
+   "bearing": 177,
+   "lengthM": 18.6,
+   "centre": [
+    4.875671,
+    52.339951
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-07-29_10-56-07_00333",
+   "capturedAt": "2025-07-29",
+   "checked": true,
+   "items": [
+    {
+     "id": "s-bridge",
+     "kind": "other",
+     "where": "a glazed two-to-three-storey bridge volume between the central and south-east towers over the service drive, on columns, wings on its rim",
+     "approxSizeM": [
+      18,
+      10
+     ],
+     "plan": "modelled",
+     "how": "cut from the 3DBAG tiers and authored: glass box 8-18.6 m with transoms, soffit, four columns, wing rim",
+     "seenIn": "recording_2025-07-29_10-56-07_00333"
+    }
+   ]
+  },
+  {
+   "tag": "w13-87",
+   "bearing": 87,
+   "lengthM": 17.6,
+   "centre": [
+    4.876459,
+    52.34
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2024-09-03_06-13-33_00109",
+   "capturedAt": "2024-09-03",
+   "checked": true,
+   "items": [
+    {
+     "id": "se-tower-east",
+     "kind": "tower",
+     "where": "the south-east tower end: curved glass over brick-coloured inner wall, cantilevered over the entrance on round columns",
+     "approxSizeM": [
+      18,
+      67
+     ],
+     "plan": "simplified",
+     "how": "tower tiers in glass; colonnade() on the east face",
+     "seenIn": "recording_2024-09-03_06-13-33_00109"
+    },
+    {
+     "id": "e-tenant-letters",
+     "kind": "sign",
+     "where": "VAN LANSCHOT KEMPEN tenant lettering at the entrance",
+     "approxSizeM": [
+      3,
+      0.6
+     ],
+     "plan": "skipped",
+     "skip": {
+      "reason": "temporary",
+      "note": "tenant name"
+     },
+     "seenIn": "recording_2024-09-03_06-13-33_00109"
+    },
+    {
+     "id": "e-tower-ten-fins",
+     "kind": "window-shape",
+     "where": "Tower Ten behind (right): white vertical fins over the glass",
+     "approxSizeM": [
+      35,
+      78
+     ],
+     "plan": "modelled",
+     "how": "Tower Ten: fin() every 1.5 m, 0.55 m deep, from 9.2 m to the crown band",
+     "seenIn": "recording_2024-09-03_06-13-33_00109"
+    }
+   ]
+  },
+  {
+   "tag": "w14-87",
+   "bearing": 87,
+   "lengthM": 15.8,
+   "centre": [
+    4.874579,
+    52.339948
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001789_pano_0002_003440",
+   "capturedAt": "2020-07-06",
+   "checked": true,
+   "items": [],
+   "note": "the east side of the south service court under the wing canopy; covered by s-court-canopy"
+  },
+  {
+   "tag": "w15-357",
+   "bearing": 357,
+   "lengthM": 15.5,
+   "centre": [
+    4.8763375,
+    52.3400745
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "items": [],
+   "note": "no panorama (inferred)"
+  },
+  {
+   "tag": "w16-87",
+   "bearing": 87,
+   "lengthM": 15.1,
+   "centre": [
+    4.876302,
+    52.3404765
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000255_pano_0000_003178",
+   "capturedAt": "2017-04-11",
+   "checked": true,
+   "items": [],
+   "note": "2017 view, before Tower Ten; superseded by recording_2025-07-29_10-56-07_00938"
+  },
+  {
+   "tag": "w17-357",
+   "bearing": 357,
+   "lengthM": 14.7,
+   "centre": [
+    4.873648,
+    52.340669
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002918_pano_0013_000673",
+   "capturedAt": "2023-01-05",
+   "checked": true,
+   "items": [
+    {
+     "id": "n-brick-drum",
+     "kind": "tower",
+     "where": "the north end of the Zuidplein wing: a brick drum of four storeys of tall windows between red-brown piers, on pilotis over a recessed glazed ground floor",
+     "approxSizeM": [
+      15,
+      21
+     ],
+     "plan": "modelled",
+     "how": "drum(): 14-facet arc bulging 4.6 m, brick wall, window strips per storey, pale floor bands, pilotis, glazed recessed ground storey",
+     "seenIn": "TMX7316010203-002918_pano_0013_000673"
+    },
+    {
+     "id": "n-drum-wings",
+     "kind": "canopy",
+     "where": "wings round the drum rim",
+     "approxSizeM": [
+      18,
+      2.5
+     ],
+     "plan": "modelled",
+     "how": "wingRow() on the drum rim",
+     "seenIn": "TMX7316010203-002918_pano_0013_000673"
+    }
+   ]
+  },
+  {
+   "tag": "w18-176",
+   "bearing": 176,
+   "lengthM": 14.7,
+   "centre": [
+    4.8737335,
+    52.3398265
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002406_pano_0009_000063",
+   "capturedAt": "2022-01-10",
+   "checked": true,
+   "items": [
+    {
+     "id": "s-brick-drum",
+     "kind": "tower",
+     "where": "the south end of the Zuidplein wing: the twin brick drum on pilotis with wings on the rim",
+     "approxSizeM": [
+      15,
+      21
+     ],
+     "plan": "modelled",
+     "how": "drum() as n-brick-drum",
+     "seenIn": "TMX7316010203-002406_pano_0009_000063"
+    }
+   ]
+  },
+  {
+   "tag": "w19-357",
+   "bearing": 357,
+   "lengthM": 13.7,
+   "centre": [
+    4.876309,
+    52.340358
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "items": [],
+   "note": "no panorama (inferred)"
+  },
+  {
+   "tag": "w20-177",
+   "bearing": 177,
+   "lengthM": 13.7,
+   "centre": [
+    4.876317,
+    52.3402725
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "items": [],
+   "note": "no panorama (inferred)"
+  },
+  {
+   "tag": "w21-357",
+   "bearing": 357,
+   "lengthM": 13.3,
+   "centre": [
+    4.8760835,
+    52.3406025
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-07-29_10-56-07_00288",
+   "capturedAt": "2025-07-29",
+   "checked": true,
+   "items": [
+    {
+     "id": "ne-glass-corner",
+     "kind": "window-shape",
+     "where": "curved full-height glazing of the north-east block ground storey with a double door",
+     "approxSizeM": [
+      13,
+      8
+     ],
+     "plan": "simplified",
+     "how": "3DBAG tier wall in glass with transoms; the curve follows the 3DBAG facets",
+     "seenIn": "recording_2025-07-29_10-56-07_00288"
+    }
+   ]
+  },
+  {
+   "tag": "w22-87",
+   "bearing": 87,
+   "lengthM": 13.3,
+   "centre": [
+    4.875262,
+    52.3405585
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002918_pano_0013_000471",
+   "capturedAt": "2023-01-05",
+   "checked": true,
+   "items": [],
+   "note": "the dark curtain wall of the north tower over construction hoarding (temporary)"
+  },
+  {
+   "tag": "w23-87",
+   "bearing": 87,
+   "lengthM": 13,
+   "centre": [
+    4.8737615,
+    52.3406145
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002918_pano_0013_000449",
+   "capturedAt": "2023-01-05",
+   "checked": true,
+   "items": [
+    {
+     "id": "nw-brick-block",
+     "kind": "window-shape",
+     "where": "the north-west block: red-brown brick piers between tall windows, pale floor bands, wings on the roof edge",
+     "approxSizeM": [
+      13,
+      24
+     ],
+     "plan": "modelled",
+     "how": "pierFacade(): brick fins 0.8 m every 2.7 m, stone floor bands; wingRow() on its east edge",
+     "seenIn": "TMX7316010203-002918_pano_0013_000449"
+    }
+   ]
+  },
+  {
+   "tag": "w24-267",
+   "bearing": 267,
+   "lengthM": 12.6,
+   "centre": [
+    4.8748825,
+    52.3399745
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001163_pano_0000_002669",
+   "capturedAt": "2019-05-06",
+   "checked": true,
+   "items": [],
+   "note": "the west side of the service court canopy; covered by s-court-canopy"
+  },
+  {
+   "tag": "w25-357",
+   "bearing": 357,
+   "lengthM": 10.9,
+   "centre": [
+    4.8738465,
+    52.340559
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002476_pano_0001_002410",
+   "capturedAt": "2022-03-24",
+   "checked": true,
+   "items": [
+    {
+     "id": "nw-hall-canopy",
+     "kind": "canopy",
+     "where": "the glazed hall north of the west tower under its wing canopy",
+     "approxSizeM": [
+      11,
+      20
+     ],
+     "plan": "simplified",
+     "how": "covered by the atrium tier and n-wing-canopy; the pavilion west of x -46 is the 3DBAG 9 m tier",
+     "seenIn": "TMX7316010203-002476_pano_0001_002410"
+    }
+   ]
+  },
+  {
+   "tag": "w26-87",
+   "bearing": 87,
+   "lengthM": 10.5,
+   "centre": [
+    4.8738365,
+    52.339878
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316060226-000009_pano_0000_001286",
+   "capturedAt": "2016-07-29",
+   "checked": true,
+   "items": [],
+   "note": "trees hide most of it: the south brick block with the glass hall behind; covered by s-brick-drum and the pier facade"
+  },
+  {
+   "tag": "w27-267",
+   "bearing": 267,
+   "lengthM": 10.3,
+   "centre": [
+    4.8739215,
+    52.340608
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002918_pano_0013_000443",
+   "capturedAt": "2023-01-05",
+   "checked": true,
+   "items": [],
+   "note": "west face of the forecourt pavilion under the canopy; covered by n-wing-canopy"
+  },
+  {
+   "tag": "w28-357",
+   "bearing": 357,
+   "lengthM": 9.6,
+   "centre": [
+    4.8739875,
+    52.3406565
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2024-09-02_09-15-33_01147",
+   "capturedAt": "2024-09-02",
+   "checked": true,
+   "items": [
+    {
+     "id": "n-name-wall",
+     "kind": "sign",
+     "where": "free-standing dark name wall in the forecourt with the WTC globes and WORLD TRADE CENTER AMSTERDAM in white",
+     "approxSizeM": [
+      9,
+      2.6
+     ],
+     "plan": "modelled",
+     "how": "dark box 9 x 2.6 m with logoSign() lettering",
+     "seenIn": "recording_2024-09-02_09-15-33_01147"
+    }
+   ]
+  },
+  {
+   "tag": "w29-87",
+   "bearing": 87,
+   "lengthM": 9.6,
+   "centre": [
+    4.876413,
+    52.340319
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-07-29_10-56-07_00309",
+   "capturedAt": "2025-07-29",
+   "checked": true,
+   "items": [
+    {
+     "id": "tt-lobby-logo",
+     "kind": "sign",
+     "where": "WTC globes and WORLD TRADE CENTER AMSTERDAM on Tower Ten lobby glass",
+     "approxSizeM": [
+      4.5,
+      1
+     ],
+     "plan": "modelled",
+     "how": "logoSign() on the east lobby face",
+     "seenIn": "recording_2025-07-29_10-56-07_00309"
+    },
+    {
+     "id": "tt-fins",
+     "kind": "window-shape",
+     "where": "white vertical fins over the whole Tower Ten shaft above a double-height glazed lobby under a white soffit",
+     "approxSizeM": [
+      35,
+      70
+     ],
+     "plan": "modelled",
+     "how": "fin() every 1.5 m; white soffit band at 8.4-9.2 m; crown band",
+     "seenIn": "recording_2025-07-29_10-56-07_00309"
+    }
+   ]
+  },
+  {
+   "tag": "w30-87",
+   "bearing": 87,
+   "lengthM": 9.3,
+   "centre": [
+    4.874062,
+    52.3406175
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002918_pano_0013_000453",
+   "capturedAt": "2023-01-05",
+   "checked": true,
+   "items": [],
+   "note": "the north-west corner: canopy wings over the brick block; covered by nw-brick-block and n-wing-canopy"
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  }
+ ]
+}

@@ -2056,5 +2056,11 @@
   "buildVersion": 2,
   "bytes": 52708,
   "triangles": 2230
+ },
+ "wtc-amsterdam": {
+  "sourceHash": "e4b09cd91bd03199",
+  "buildVersion": 2,
+  "bytes": 92460,
+  "triangles": 5663
  }
 }
