@@ -571,6 +571,6 @@ export const BRIDGE_GAPS: BridgeGapRegression[] = [
   { id: 'de-ruijterkade-busway-ramp', label: 'De Ruijterkade busway ramp up to the bus station (dry way deck): 175 → 7.4 m²', way: 326971930, at: [4.89912, 52.38015], maxGapM2: 15, pinMin: 150, dry: true },
   { id: 'centraal-busstation-platform', label: 'Centraal bus station IJzijde platform lane (dry way deck): 425 → 0 m²', way: 328208284, at: [4.89945, 52.38003], maxGapM2: 5, pinMin: 380, dry: true },
   { id: 'nieuwe-leeuwarderweg-viaduct', label: 'Nieuwe Leeuwarderweg viaduct over the metro, Noord (dry way deck): 1364 → 13.5 m²', way: 1275368974, at: [4.93098, 52.40118], maxGapM2: 30, pinMin: 1200, dry: true },
-  { id: 'nieuwe-leeuwarderweg-7042467', label: 'Nieuwe Leeuwarderweg at the Buikslotermeerplein ramps (dry way deck): 477 → 359 m²', way: 7042467, at: [4.93883, 52.40721], maxGapM2: 380, pinMin: 450, dry: true },
+  { id: 'nieuwe-leeuwarderweg-7042467', label: 'Nieuwe Leeuwarderweg at the Buikslotermeerplein ramps (dry way deck, survey-wide): 477 → 128 m²', way: 7042467, at: [4.93883, 52.40721], maxGapM2: 160, pinMin: 450, dry: true },
   { id: 'langbroekdreef-way-deck', label: 'Langbroekdreef way deck, Gaasperdam: 224 → 96 m²', way: 9538865, at: [4.97474, 52.30606], maxGapM2: 120, pinMin: 190 },
 ];

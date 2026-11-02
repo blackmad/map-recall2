@@ -62,9 +62,9 @@ export const pacer = (budgetMs = PACE_BUDGET_MS): (() => Promise<void>) => {
 export const CUT_REACH_M = 600;
 import { deckReach, movableApproaches, pointInRing } from './decks.js';
 import { prepareWays, isBridgeWay } from './streets.js';
-import { WAY_DECK_CLEAR_M, WAY_OPENING_REACH_M, bridgeWayBundles, capDeckSides, deckEdgeSides, setDeckSides, ROAD_EDGE_REACH_MAX_M, roadEdgeSides, joinChains, groupWayDecks, wayDeckCrossing, dryWayDeckProfile, wayDeckHighway, wayOpeningDeck, type WayDeckInput } from './wayDecks.js';
+import { WAY_DECK_CLEAR_M, WAY_OPENING_REACH_M, bridgeWayBundles, capDeckSides, deckEdgeSides, setDeckSides, ROAD_EDGE_REACH_MAX_M, roadEdgeSides, joinChains, groupWayDecks, wayDeckCrossing, dryWayDeckProfile, isWayDeckFamily, wayDeckHighway, wayOpeningDeck, type WayDeckInput } from './wayDecks.js';
 import { RoadIndex } from './roadSurfaces.js';
-import { edgesBox, surveyDeckEdges } from './bridgeGaps.js';
+import { DRY_EDGE_M, edgesBox, surveyDeckEdges } from './bridgeGaps.js';
 import { landedPlatformRings } from './landedPlatforms.js';
 
 /** The game's local frame (galleryPipeline.toLocal), duplicated so the worker bundle stays small. */
@@ -103,6 +103,26 @@ export function bridgeWayInputs(osms: readonly (OsmGroundExtract | null)[], skip
     ways.push({ id: w.id, name: w.tags.name ?? '', points: w.points, halfWidth: w.section.halfWidth });
   }
   return ways;
+}
+
+/**
+ * A dry way deck lies on the chord between its ends' ground: steeper than this, one end has landed in a trench or a
+ * tunnel ramp (Nieuwe Leeuwarderweg 1221605945 at the IJtunnel, 22 %: the deck dove to the trench floor at −4.8 m).
+ */
+export const DRY_DECK_MAX_GRADE = 0.12;
+/** Distance from (x, y) to a deck's nearest station inside its span (Infinity outside its box, grown by DRY_EDGE_M). */
+export function stationDistance(p: DeckProfile, x: number, y: number): number {
+  const [x0, y0, x1, y1] = p.bbox;
+  if (x < x0 - DRY_EDGE_M || x > x1 + DRY_EDGE_M || y < y0 - DRY_EDGE_M || y > y1 + DRY_EDGE_M) return Infinity;
+  let d = Infinity;
+  for (let i = 0; i < p.x.length; i++) if (p.s[i] >= p.deck[0] && p.s[i] <= p.deck[1]) d = Math.min(d, Math.hypot(p.x[i] - x, p.y[i] - y));
+  return d;
+}
+/** The chord grade of a deck between its ends' ground heights. */
+export function dryDeckGrade(p: DeckProfile, ground: (x: number, y: number) => number): number {
+  // The ends the surface lays the deck between (surface.ts: the profile's first and last stations).
+  const n = p.s.length - 1, len = p.s[n] - p.s[0];
+  return len > 0 ? Math.abs(ground(p.x[n], p.y[n]) - ground(p.x[0], p.y[0])) / len : 0;
 }
 
 /** Survey classes on the ground that keep a dry way deck out (bridgeGaps step 3): a road, cycle path or parking under it. */
@@ -439,7 +459,7 @@ export class GroundStore {
     await yieldToFrame();
     // One width per deck side (bridgeGaps, issue #178): the measured decks around take the survey's deck-level edges
     // before anything here reads them (each deck once, from its owner cell's roads, so every store agrees).
-    if (this.bridgeGapsOn) await Promise.all(GroundStore.neighbours(key).flatMap(n => this.decks(n).filter(d => d.profile.family !== 'way-deck').map(d => this.deckEdges(n, d))));
+    if (this.bridgeGapsOn) await Promise.all(GroundStore.neighbours(key).flatMap(n => this.decks(n).filter(d => !isWayDeckFamily(d.profile.family)).map(d => this.deckEdges(n, d))));
     if (this.options.wayDecks !== false) await this.placeWayDecks(key);
     await yieldToFrame();
     if (this.options.tunnels !== false) await Promise.all(GroundStore.neighbours(key).map(n => this.planCutsFor(n)));
@@ -552,7 +572,7 @@ export class GroundStore {
     await pace();
     const crossings: ReturnType<typeof wayDeckCrossing>[] = [];
     for (const w of chained) { crossings.push(wayDeckCrossing(w, wet, claimed, ground)); await pace(); }
-    const { profiles, covered } = groupWayDecks(crossings, wet, ground);
+    const { profiles, covered } = groupWayDecks(crossings, wet, ground), dry = new Set<DeckProfile>();
     // bridgeGaps step 3 (issue #178): bridge ways over land the survey draws as a deck with no road under it.
     if (this.bridgeGapsOn && this.options.dryWayDecks === true) {
       // Piece by piece (not the joined chains): a bus station's platform ways chain into one long line that bends.
@@ -562,8 +582,8 @@ export class GroundStore {
         const pad = Math.max(...rest.map(w => w.halfWidth)) + 12;
         const box: Rect = [Math.min(...rest.flatMap(w => w.points.map(q => q[0]))) - pad, Math.min(...rest.flatMap(w => w.points.map(q => q[1]))) - pad, Math.max(...rest.flatMap(w => w.points.map(q => q[0]))) + pad, Math.max(...rest.flatMap(w => w.points.map(q => q[1]))) + pad];
         const idx = await RoadIndex.paced([null, ...await Promise.all(around.map(k => this.roadCell(k)))], box, pace);
-        const roadBelow = (x: number, y: number) => idx.findAll(x, y).some(k => idx.records[k].h === 0 && DRY_DECK_BLOCKERS.has(idx.drawClass(k)));
-        const dry = (x: number, y: number) => !wet(x, y) && idx.onDeck(x, y) && !roadBelow(x, y);
+        const roadBelow = (x: number, y: number) => idx.onGround(x, y, DRY_DECK_BLOCKERS);
+        const dryAt = (x: number, y: number) => !wet(x, y) && idx.onDeck(x, y) && !roadBelow(x, y);
         // On another deck's carriageway (no clearance: a bus station's platform lanes run side by side on one structure).
         const near = (p: DeckProfile, x: number, y: number) => {
           const [a0, b0, a1, b1] = p.bbox;
@@ -574,8 +594,8 @@ export class GroundStore {
         for (const w of rest) {
           // A claimed end (the deck of the lane it merges into) trims the run; a claim inside it keeps the way off.
           const taken = (x: number, y: number) => claimed(x, y) || profiles.some(q => near(q, x, y));
-          const p = dryWayDeckProfile(w, (x, y) => dry(x, y) && !taken(x, y), taken);
-          if (p) profiles.push(p);
+          const p = dryWayDeckProfile(w, (x, y) => dryAt(x, y) && !taken(x, y), taken);
+          if (p && dryDeckGrade(p, (x, y) => this.surface.ground(x, y)) <= DRY_DECK_MAX_GRADE) { profiles.push(p); dry.add(p); }
           await pace();
         }
       }
@@ -633,11 +653,19 @@ export class GroundStore {
     }
     // One width per deck side (bridgeGaps): the way decks too reach the survey's deck-level edges.
     if (profiles.length && this.bridgeGapsOn) {
-      const reach = Math.max(...profiles.map(p => Math.max(...p.halfWidth, ...(p.sides ?? [])))) + 4;
+      const reach = Math.max(...profiles.map(p => Math.max(...p.halfWidth, ...(p.sides ?? []), dry.has(p) ? DRY_EDGE_M : 0))) + 4;
       const within: Rect = [Math.min(...profiles.map(p => p.bbox[0])) - reach, Math.min(...profiles.map(p => p.bbox[1])) - reach, Math.max(...profiles.map(p => p.bbox[2])) + reach, Math.max(...profiles.map(p => p.bbox[3])) + reach];
       const idx = await RoadIndex.paced([null, ...await Promise.all(around.map(k => this.roadCell(k)))], within, pace);
       for (const profile of profiles) {
-        const edges = surveyDeckEdges(profile, (x, y) => idx.onDeck(x, y));
+        // A dry way deck's edge also stops halfway to the next dry way deck (the bus station's lanes share one structure:
+        // each takes its own half of the survey polygon, so the pieces meet edge to edge instead of overlapping).
+        const others = dry.has(profile) ? [...dry].filter(q => q !== profile) : [];
+        const nearer = (x: number, y: number) => {
+          if (!others.length) return false;
+          const own = stationDistance(profile, x, y);
+          return others.some(q => stationDistance(q, x, y) < own);
+        };
+        const edges = surveyDeckEdges(profile, (x, y) => idx.onDeck(x, y), (x, y) => (idx.onGround(x, y) && !idx.onDeck(x, y)) || nearer(x, y), dry.has(profile) ? DRY_EDGE_M : 0);
         if (edges) { profile.edges = edges; profile.bbox = edgesBox(profile, edges); }
         await pace();
       }
@@ -665,7 +693,7 @@ export class GroundStore {
         const p = deck.profile, reach = Math.max(...p.halfWidth, ...(p.sides ?? [])) + 4, [x0, y0, x1, y1] = p.bbox;
         // A null first cell: SurfaceIndex keeps every polygon of its first cell (only the deck's box is wanted).
         const index = await RoadIndex.paced([null, ...cells], [x0 - reach, y0 - reach, x1 + reach, y1 + reach], pacer(this.options.paceMs));
-        const edges = surveyDeckEdges(p, (x, y) => index.onDeck(x, y));
+        const edges = surveyDeckEdges(p, (x, y) => index.onDeck(x, y), (x, y) => index.onGround(x, y) && !index.onDeck(x, y));
         if (edges) this.surface.widenDeck(deck, edges, edgesBox(p, edges));
       })();
       this.edgePlans.set(deck.profile.id, plan);

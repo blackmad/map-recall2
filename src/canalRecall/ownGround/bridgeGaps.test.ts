@@ -100,3 +100,11 @@ test('dryWayDeckProfile: a deck over the dry run, ends open, no water, a claim i
   assert.ok(p!.deck[1] >= 59, `deck to the end: ${p!.deck}`);
   assert.equal(dryWayDeckProfile(w, dry, (x) => x > 30 && x < 32), null);
 });
+
+test('survey edges stop at ground-level survey and reach farther with capM (dry way decks)', () => {
+  const onDeck = (x: number, y: number) => x >= 3 && x <= 17 && y >= -2 && y <= 15;
+  const stopped = surveyDeckEdges(deck([12, 3]), onDeck, (x, y) => y > 5)!;
+  assert.equal(stopped.left[20], 5.25, 'the walk stops where the survey says ground');
+  assert.equal(surveyDeckEdges(deck(), onDeck)!.left[20], 3 + EDGE_NO_OUTLINE_M, 'no outline: capped at half-width + 2 m');
+  assert.equal(surveyDeckEdges(deck(), onDeck, undefined, 20)!.left[20], 15.25, 'capM: out to the polygon');
+});

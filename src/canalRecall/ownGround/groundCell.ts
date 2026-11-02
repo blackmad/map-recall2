@@ -607,7 +607,8 @@ export function buildCell(input: CellInput): BuiltCell {
     for (const f of floatingEnds(deck, overWater, surface.height, surface.ground)) bridges.floating.push(`${deck.profile.id}:${f.end}:${f.reason}`);
     const bespoke = !!bespokeBridge(deck.profile.id);
     if (bespoke) (bridges.bespoke ??= []).push(deck.profile.id);
-    else add('deckBody', measuredDeckBody(deck, surface.ground, openWater, waterZAt(input.waterAround, xs[mid], ys[mid], CANAL_WATER_Z), surface.height, bridges.decks, lod === 0, reach, clip ? deckWidths(deck, overWater) : undefined, crossing), 'deck');
+    // A dry way deck (bridgeGaps step 3) has no kit: the survey draws its surface, the structure under it is not modelled.
+    else if (deck.profile.family !== 'dry-way-deck') add('deckBody', measuredDeckBody(deck, surface.ground, openWater, waterZAt(input.waterAround, xs[mid], ys[mid], CANAL_WATER_Z), surface.height, bridges.decks, lod === 0, reach, clip ? deckWidths(deck, overWater) : undefined, crossing), 'deck');
     // A bespoke model (bespokeBridges.ts) carries its own deck slab to its parapets: the top keeps to the road's half-width,
     // so the register outline's sides (BRU0236: 4 m north of the OSM/BGT bridge) never overhang the model's face.
     const covered = roadsOnDeck(deck);

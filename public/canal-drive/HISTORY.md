@@ -1,5 +1,20 @@
 # Canal Recall — what is built
 
+**Bridge gaps step 3 polished but kept off; the step 1–2 edge walk stops at ground-level survey (2026-11-02, #178).**
+Road bridge-gaps lane (e51ef17d7). Dry way decks now draw no body or parapets,
+split shared survey polygons halfway (no hairlines), widen to the survey deck
+polygon up to 20 m and are dropped when steeper than 12 % (the IJtunnel trench
+deck is gone). In the default build the edge walk of steps 1–2 stops at
+ground-level survey and widened deck tops follow the riding surface, so road
+regressions fall from 43 to 29 and the city gap is 205,858 m² (canal-belt box
+6,863 m²); cells with no decks are byte-identical. Step 3 would take the gap to
+136,337 m² (box 2,378) but stays behind `?dryWayDecks=1`: after the orthophoto
+review of the station area it is left as the tool of a Centraal forecourt lane
+that handles the bus deck, the glass roof, the metro box and the bumpy ground
+as one piece. Integrator: merged with main's bespoke Blauwbrug (bespoke decks
+skip the kit and keep the road half-width; dry decks skip the kit);
+own-ground bundles rebuilt; lint, test:own-ground 232/232, check:canal.
+
 **Far road paint settles into the road: centre and lane lines, zebras and cycle red blend toward the asphalt beyond ~120 m (2026-11-02, #161 lever 2).**
 Materials (9bb6a6dff, 6f972429b). Paint blends fully into the asphalt colour and
 the red cycle surface 70 % of the way, starting at the later of 120 m and the
