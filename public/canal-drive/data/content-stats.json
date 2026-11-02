@@ -3,7 +3,7 @@
   "city": "amsterdam",
   "generator": "scripts/landing/content-stats.ts",
   "display": {
-    "buildingsModelled": "570",
+    "buildingsModelled": "570+",
     "landmarkModels": "370+",
     "kitBuildings": "13,000+",
     "buildings3d": "340,000+",
@@ -21,15 +21,15 @@
   },
   "stats": {
     "buildingsModelled": {
-      "count": 570,
-      "note": "Buildings with their own individually modelled 3D model in the ride: 371 landmark models plus 199 individually modelled ordinary buildings and blocks (the game's draw list, manual + ordinary catalogues).",
+      "count": 574,
+      "note": "Buildings with their own individually modelled 3D model in the ride: 375 landmark models plus 199 individually modelled ordinary buildings and blocks (the game's draw list, manual + ordinary catalogues).",
       "sources": [
         "src/canalRecall/landmarks/manualCatalogue.json",
         "public/canal-drive/ordinary-buildings-data/catalogue.json"
       ]
     },
     "landmarkModels": {
-      "count": 371,
+      "count": 375,
       "note": "Of the individually modelled buildings, the ones in the landmark category (museums, churches, stations, monuments…).",
       "sources": [
         "src/canalRecall/landmarks/manualCatalogue.json"
