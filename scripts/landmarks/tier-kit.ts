@@ -43,12 +43,13 @@ export function wallQuad(acc: Acc, c: C, a: PlanPoint, b: PlanPoint, y0: number,
 }
 /**
  * A strip proud of a wall edge: front face plus top and bottom (6 tris), its back on the wall plane. `t0`/`t1` trim the
- * strip along the edge (metres from a).
+ * strip along the edge (metres from a); `back` is where its top and bottom stop (0 = on the wall plane, where a
+ * roof or soffit meets the wall at the strip's edge).
  */
-export function strip(acc: Acc, c: C, a: PlanPoint, b: PlanPoint, t0: number, t1: number, y0: number, y1: number, d: number) {
+export function strip(acc: Acc, c: C, a: PlanPoint, b: PlanPoint, t0: number, t1: number, y0: number, y1: number, d: number, back = -0.02) {
   const dx = b[0] - a[0], dz = b[1] - a[1], L = Math.hypot(dx, dz), u = [dx / L, dz / L], n = edgeNormal(a, b);
   const P = (t: number, o: number) => [a[0] + u[0] * t + n[0] * o, a[1] + u[1] * t + n[1] * o];
-  const [p0, p1, q0, q1] = [P(t0, d), P(t1, d), P(t0, -0.02), P(t1, -0.02)];
+  const [p0, p1, q0, q1] = [P(t0, d), P(t1, d), P(t0, back), P(t1, back)];
   acc.quad(c, [p0[0], y0, p0[1]], [p1[0], y0, p1[1]], [p1[0], y1, p1[1]], [p0[0], y1, p0[1]]);   // front
   acc.quad(c, [q0[0], y1, q0[1]], [p0[0], y1, p0[1]], [p1[0], y1, p1[1]], [q1[0], y1, q1[1]]);   // top
   acc.quad(c, [q0[0], y0, q0[1]], [q1[0], y0, q1[1]], [p1[0], y0, p1[1]], [p0[0], y0, p0[1]]);   // bottom
@@ -105,4 +106,20 @@ export function flatLetters(acc: Acc, f: Frame, text: string, t: number, y: numb
     });
     u += 6 * px;
   }
+}
+/** A downward-facing horizontal plane (soffit, underside of an overhang) over plan polygons at height y. */
+export function soffit(b: BuildingTools, polys: PlanPolygon[], y: number, c: C) {
+  for (const [outer, ...holes] of polys) {
+    const s = new T.Shape(outer.map(([x, z]) => new T.Vector2(x, z)));
+    for (const h of holes) s.holes.push(new T.Path(h.map(([x, z]) => new T.Vector2(x, z))));
+    const g = upwardRoofPlane(s, y), ix = g.index!;
+    for (let i = 0; i < ix.count; i += 3) { const j = ix.getX(i + 1); ix.setX(i + 1, ix.getX(i + 2)); ix.setX(i + 2, j); }
+    g.computeVertexNormals();
+    b.add(g, c);
+  }
+}
+/** Counter-clockwise copy of a plan ring (positive shoelace in x, z), the winding edgeNormal expects of an outer ring. */
+export function ccw(r: PlanPoint[]): PlanPoint[] {
+  const a = r.reduce((s, p, i) => { const q = r[(i + 1) % r.length]; return s + p[0] * q[1] - q[0] * p[1]; }, 0);
+  return a > 0 ? r : [...r].reverse();
 }

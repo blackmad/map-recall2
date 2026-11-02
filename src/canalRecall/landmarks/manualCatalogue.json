@@ -54720,5 +54720,214 @@
     ]
    ]
   }
+ },
+ {
+  "id": "volkshotel",
+  "name": "Volkshotel",
+  "modelUrl": "./models/volkshotel.glb",
+  "suppressOsmIds": [
+   "NL.IMBAG.Pand.0363100012149232",
+   "w1368138665",
+   "w1368138667",
+   "w1368138669",
+   "w1368138670",
+   "w1368493416",
+   "w1371368765",
+   "w1454927322"
+  ],
+  "spatialSuppression": false,
+  "footprint": {
+   "centre": [
+    4.911704557332246,
+    52.3537872259906
+   ],
+   "headingDegrees": 0,
+   "lengthMetres": 76.6,
+   "widthMetres": 53.7
+  },
+  "surveyed": {
+   "anchor": [
+    4.911704557332246,
+    52.3537872259906
+   ],
+   "northOffsetDegrees": 0,
+   "source": "Vertex average of the BAG 0363100012149232 ring (PDOK BAG, CC0) in native east/south metres (scripts/landmarks/volkshotel-footprints.json, modern-prepare.mjs). Slab rectangle on the BAG corners of the Wibautstraat front; heights from the 3DBAG LoD2.2 roof planes (AHN4); facade bands, top storey, letters and canopies from the Gemeente Amsterdam panoramas (scripts/landmarks/volkshotel-inventory.json)."
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 0,
+  "heightMetres": 34.4,
+  "bagYear": 1965,
+  "materialOverrides": {
+   "concrete": "#d0d3cc",
+   "glass": "#6f8ea3",
+   "frame": "#4e5a62",
+   "white": "#e2e4df",
+   "slate": "#5d6166",
+   "dark": "#2b2e31",
+   "red": "#c23a2c"
+  },
+  "attribution": {
+   "title": "Volkshotel (1965, former Volkskrant building)",
+   "author": "Map Recall",
+   "sourceUrl": "https://nl.wikipedia.org/wiki/Volkshotel",
+   "licence": "CC BY 4.0",
+   "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+   "modifications": "Original texture-free flat-colour geometry: the banded office slab with ribbon windows, the set-back top storey under its oversailing roof, the roof letters, the ground colonnade and red canopies, and the rear wing, on the BAG footprint (CC0) with 3DBAG heights (CC BY 4.0), read for proportion only from the Gemeente Amsterdam panoramas (CC BY 4.0). No pixels or meshes imported."
+  },
+  "buildingFootprint": {
+   "type": "Polygon",
+   "coordinates": [
+    [
+     [
+      4.9109890079397385,
+      52.353758396216854
+     ],
+     [
+      4.911016462341834,
+      52.35371266922748
+     ],
+     [
+      4.911026729966603,
+      52.35369554396232
+     ],
+     [
+      4.911091248465063,
+      52.35358806753253
+     ],
+     [
+      4.911682411148019,
+      52.353723507195845
+     ],
+     [
+      4.911688100234249,
+      52.353717220661764
+     ],
+     [
+      4.911693789318865,
+      52.35371093412735
+     ],
+     [
+      4.911746490283741,
+      52.35365278847405
+     ],
+     [
+      4.911788808424259,
+      52.353606096406786
+     ],
+     [
+      4.911846631946845,
+      52.353619199061
+     ],
+     [
+      4.911897593548947,
+      52.35353429886358
+     ],
+     [
+      4.911900597327817,
+      52.35352930475787
+     ],
+     [
+      4.911908665644438,
+      52.353531107737915
+     ],
+     [
+      4.911913239428108,
+      52.353523423616146
+     ],
+     [
+      4.912116294101992,
+      52.35356885385774
+     ],
+     [
+      4.912111496242272,
+      52.35357690558492
+     ],
+     [
+      4.912112755522339,
+      52.353577189258786
+     ],
+     [
+      4.911934946195989,
+      52.35387177640416
+     ],
+     [
+      4.911942282911381,
+      52.35387336972642
+     ],
+     [
+      4.911939396630579,
+      52.35387835531689
+     ],
+     [
+      4.911937771173779,
+      52.35387799826916
+     ],
+     [
+      4.911869315017751,
+      52.35399147213026
+     ],
+     [
+      4.911870808764711,
+      52.35399179269912
+     ],
+     [
+      4.911867716307822,
+      52.353996840374016
+     ],
+     [
+      4.911863133189621,
+      52.35399579736861
+     ],
+     [
+      4.911856961121533,
+      52.354006063536396
+     ],
+     [
+      4.911819211766118,
+      52.35399755335053
+     ],
+     [
+      4.911647465832847,
+      52.353958809437536
+     ],
+     [
+      4.91167597305619,
+      52.35391203496358
+     ],
+     [
+      4.911667699675223,
+      52.35391018620547
+     ],
+     [
+      4.911664621782247,
+      52.35391524292145
+     ],
+     [
+      4.911623957866569,
+      52.35390614574925
+     ],
+     [
+      4.911611511573061,
+      52.3539266147356
+     ],
+     [
+      4.9116075725483315,
+      52.35392573608723
+     ],
+     [
+      4.911566703630251,
+      52.35391659313303
+     ],
+     [
+      4.9115822424242275,
+      52.35389107648392
+     ],
+     [
+      4.9109890079397385,
+      52.353758396216854
+     ]
+    ]
+   ]
+  }
  }
 ]

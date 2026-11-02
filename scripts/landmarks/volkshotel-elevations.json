@@ -1,0 +1,16 @@
+{
+ "id": "volkshotel",
+ "countedBy": "lane #192 (opus) from the w03 crop (recording_2024-10-02_11-14-57_01149) before the model was rendered; ribbon convention (one opening per ribbon storey, mullions under 0.3 m). Not a blind haiku count: integrator may re-count.",
+ "facades": [
+  {
+   "name": "Wibautstraat front, south 35 m (w03), ground storey and six ribbons",
+   "bearing": 70,
+   "photo": "artifacts/landmark-briefs/volkshotel/w03-70.jpg",
+   "alongM": [0, 35],
+   "heightM": [0, 24],
+   "rows": [5, 1, 1, 1, 1, 1, 1],
+   "symmetric": false,
+   "gables": 0
+  }
+ ]
+}

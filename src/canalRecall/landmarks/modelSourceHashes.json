@@ -1,5 +1,5 @@
 {
-  "toolchain": "600e24893711e633e0937d0d1cd9b0c9f9ee005a180aac8ab1e2f414823db4fc",
+  "toolchain": "a084f1555e742a07647fad97c3e2c82b8bbcf2f83bdcef3ce8b15ba301fc5b2d",
   "models": {
     "abn-amro-hoofdkantoor": "90ff65a2d9f94e99b2ab33438567f147959a43f017d3d9cf9d2ae68b6dae7cbf",
     "academie-theater-dans": "503b3e8d59937cbf7ac8776eb644c11fd10b567e5ac1113e0caa55c83cb68cde",
@@ -357,6 +357,7 @@
     "vijzelbank": "3d4aa1b8bf772ea55a997b384fc4208a8e25b1e33e2dfa38249d3865dcd7d115",
     "vinoly": "9d1b59829c3791a89ea67ff892f7a73392e013649274f0becad7651fe1cc9076",
     "voc-kade-600": "43a0d9bf19fa5f387103e16f2927562abeac6d675873a51f53f535605851b753",
+    "volkshotel": "33e186c7e743928fe2bb7e8def86816dcc8640d09be9901c8d55c4494706611f",
     "vondelkerk": "fa3a35748868b6952a443220a4e0d77b2984b1cddf0f9eefd302a881323dc1ff",
     "vondelmonument": "9c7545420fba0fbdfa8b7417e0b4d5981caa952cf91ce758b34a70bea78fd4db",
     "vondelpark-bandstand": "50fa230cbdb36b0301f0cdb66da85ed5a310e87cd97db9d94c5a77812831f1e0",
@@ -385,7 +386,7 @@
     "winkler-prins-monument": "a16399ef7aebb5f8ed5ccc0b67c9e8c312b685797693e9016c8333c0d05cd955",
     "wolkenkrabber": "32353cbf2c2e45f30e7a187f559bb998f6fbcc4504f9a821c2b3304fcd17efc1",
     "woongebouw-wladiwostok": "dd3fd4130cf6493bc7e957ad7b30b960a96f1ecf664fe48f51cb21278cd8b65b",
-    "wtc-amsterdam": "be4da0cdc6159c08e293f687082ab942dc5a157b681666b6da8c2d976c93e4e5",
+    "wtc-amsterdam": "01257a44c6dc71aa0a9c201bbbc21e37e7bdccaf7d3398f2a1f8afadecffc18c",
     "zevenlandenhuizen": "346d2b35dc78a8e8b20dfb0269b9787dbafd57878513bd541c3b13239a61ee09",
     "zonnehuis": "c324cc93e88978c9e758a0f84f75f86a82ea7e3613402601725ffa4275137534",
     "zuiderbad": "bf9721951bce64c61440a6909bd217051ed1f24b173dc8b8913b1134f580b74c",
