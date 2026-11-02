@@ -5149,6 +5149,28 @@
    "window-mismatch-spec": 2,
    "window-missing-spec": 0
   },
+  "the-edge": {
+   "normals-inward-permille": 0,
+   "normals-bad-permille": 0,
+   "material-slot-untagged-permille": 0,
+   "opening-floating": 0,
+   "opening-floating-fail": 0,
+   "opening-overhang": 0,
+   "opening-overhang-fail": 0,
+   "opening-buried": 0,
+   "opening-outside-parts": 0,
+   "opening-outside-m2": 0,
+   "zfight-m2": 0.1,
+   "zfight-near-m2": 314.4,
+   "zfight-tight-m2": 0,
+   "zfight-same-m2": 0,
+   "window-mismatch": 5,
+   "window-missing": 0,
+   "window-misaligned": 0,
+   "window-rhythm-fail": 0,
+   "window-mismatch-spec": 5,
+   "window-missing-spec": 0
+  },
   "the-movies": {
    "opening-floating": 0,
    "opening-floating-fail": 0,
