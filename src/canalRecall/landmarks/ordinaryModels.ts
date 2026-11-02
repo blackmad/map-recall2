@@ -40,6 +40,9 @@ export const SHADOWED_BY_LANDMARK: Readonly<Record<string, string>> = {
   // Ziggo Dome (2026-10-06 ordinary tall-box recipe): one ribbed box without the window rows, docks, roof plant or bridges;
   // the bespoke model (#191, 2026-11-02) draws them.
   'ordinary-0363100012238052': 'ziggo-dome',
+  // Politiebureau Nieuwezijds Voorburgwal 35 (2026-10-25 large recipe): its own audit failed the front (wall not drawn, no slit
+  // columns) and it has no POLITIE prow or lobby; the bespoke model (#206, 2026-11-02) draws them.
+  'ordinary-0363100012171032': 'politie-nieuwezijds-voorburgwal',
 };
 /** Every catalogue model (both categories) that no landmark shadows: what the game draws. */
 export const ORDINARY_BUILDINGS: readonly SignatureModelSpec[] = models.filter(m => !SHADOWED_BY_LANDMARK[m.id]).map(ordinarySpecFor);

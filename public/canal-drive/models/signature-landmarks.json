@@ -78233,6 +78233,215 @@
         "bytes": 94952,
         "triangles": 5954
       }
+    },
+    "politie-nieuwezijds-voorburgwal": {
+      "id": "politie-nieuwezijds-voorburgwal",
+      "name": "Politiebureau Nieuwezijds Voorburgwal",
+      "modelUrl": "./models/politie-nieuwezijds-voorburgwal.glb",
+      "suppressOsmIds": [
+        "NL.IMBAG.Pand.0363100012171032"
+      ],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.89447217,
+          52.37644058
+        ],
+        "headingDegrees": 0,
+        "lengthMetres": 32.8,
+        "widthMetres": 26.7
+      },
+      "surveyed": {
+        "anchor": [
+          4.89447217,
+          52.37644058
+        ],
+        "northOffsetDegrees": 0,
+        "source": "Vertex average of the BAG 0363100012171032 outline (RD, 3DBAG LoD0); volumes from the 3DBAG LoD2.2 roof planes of that pand (CC BY 4.0) snapped to 4.7/9.6/11.8/15.2/18.9/22.4/25.0 m and stacked as tiers (roofTiers), in native east/south metres (scripts/landmarks/silodam-silos-prepare.ts 0363100012171032 politie-nieuwezijds-voorburgwal). Brick block, slit windows, glass-box bands, prow, lettering and storey levels measured on the rectified Gemeente Amsterdam panorama crops w01-315 (2025-01-09, 2022), w03-316 (2022-04-22), w05-6, w07-6 and aimed views from recording_2025-06-16_06-42-40_02513 (CC BY 4.0)."
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 0,
+      "heightMetres": 25.2,
+      "bagYear": 1996,
+      "materialOverrides": {
+        "greyBrick": "#948d83",
+        "stone": "#84857f",
+        "concrete": "#c6c8c1",
+        "white": "#dfe2df",
+        "glass": "#6f9a9a",
+        "bronze": "#5a7d7c",
+        "copper": "#627f93",
+        "frame": "#9aa2a4",
+        "dark": "#2b2d30",
+        "slate": "#9e9281",
+        "blue": "#22378a",
+        "gold": "#c9a043"
+      },
+      "attribution": {
+        "title": "Politiebureau Nieuwezijds Voorburgwal, Nieuwezijds Voorburgwal 35 (1996)",
+        "author": "Map Recall",
+        "sourceUrl": "https://bagviewer.kadaster.nl/lvbag/bag-viewer/?objectId=0363100012171032",
+        "licence": "CC BY 4.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "modifications": "Original texture-free flat-colour geometry on the BAG outline (CC0) and 3DBAG LoD2.2 heights (CC BY 4.0): the grey brick block with nine staggered slit windows and the garage door, the teal banded glass box with white-framed windows and fins over two brick storeys and the glazed station front, the pointed concrete piers, the banded glass prow over the recessed entrance with POLITIE and the flame emblem on both faces, the north curtain wall, flagpole and roof railing. Gemeente Amsterdam panoramas (CC BY 4.0) guided the detail; no pixels or meshes imported."
+      },
+      "buildingFootprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.8943274,
+              52.3763494
+            ],
+            [
+              4.8944909,
+              52.3763367
+            ],
+            [
+              4.8944987,
+              52.3763423
+            ],
+            [
+              4.8945607,
+              52.3763379
+            ],
+            [
+              4.8945599,
+              52.3763334
+            ],
+            [
+              4.8946244,
+              52.3763366
+            ],
+            [
+              4.8946244,
+              52.3763356
+            ],
+            [
+              4.8946283,
+              52.3763355
+            ],
+            [
+              4.8946411,
+              52.3764321
+            ],
+            [
+              4.894578,
+              52.3764362
+            ],
+            [
+              4.8945791,
+              52.3764423
+            ],
+            [
+              4.894595,
+              52.3765635
+            ],
+            [
+              4.8945926,
+              52.3765636
+            ],
+            [
+              4.8945927,
+              52.3765645
+            ],
+            [
+              4.8945865,
+              52.3765648
+            ],
+            [
+              4.8945873,
+              52.3765668
+            ],
+            [
+              4.8944855,
+              52.3765729
+            ],
+            [
+              4.8944845,
+              52.3765668
+            ],
+            [
+              4.8944804,
+              52.3765669
+            ],
+            [
+              4.8944756,
+              52.3765697
+            ],
+            [
+              4.8942871,
+              52.3764534
+            ],
+            [
+              4.8942689,
+              52.3764547
+            ],
+            [
+              4.8942664,
+              52.3764399
+            ],
+            [
+              4.8941601,
+              52.3763758
+            ],
+            [
+              4.8941626,
+              52.3763614
+            ],
+            [
+              4.8942963,
+              52.3763521
+            ],
+            [
+              4.8943144,
+              52.376341
+            ],
+            [
+              4.8943274,
+              52.3763494
+            ]
+          ]
+        ]
+      },
+      "buildingCategory": "landmark",
+      "bounds": {
+        "min": [
+          -21.400493621826172,
+          -4.7683716530855236e-8,
+          -14.717000007629395
+        ],
+        "max": [
+          11.494000434875488,
+          28.399999618530273,
+          11.927000045776367
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.89447217,
+          52.37644058
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 90,
+        "facadeBearingDegrees": 0,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 32.89449405670166,
+        "heightMetres": 28.39999966621399,
+        "depthMetres": 26.64400005340576,
+        "depthCoverage": 0.9979026237230623
+      },
+      "triangles": 7646,
+      "bytes": 112648,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
+      "lod1": {
+        "sourceHash": "efcc0f64fb7c38b2",
+        "buildVersion": 2,
+        "bytes": 62660,
+        "triangles": 3366
+      }
     }
   }
 }

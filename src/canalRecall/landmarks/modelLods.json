@@ -2200,5 +2200,11 @@
   "buildVersion": 2,
   "bytes": 94952,
   "triangles": 5954
+ },
+ "politie-nieuwezijds-voorburgwal": {
+  "sourceHash": "efcc0f64fb7c38b2",
+  "buildVersion": 2,
+  "bytes": 62660,
+  "triangles": 3366
  }
 }
