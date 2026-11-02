@@ -2038,5 +2038,11 @@
   "buildVersion": 2,
   "bytes": 42128,
   "triangles": 1704
+ },
+ "andaz-prinsengracht": {
+  "sourceHash": "a2128c7efc5f9712",
+  "buildVersion": 2,
+  "bytes": 30004,
+  "triangles": 976
  }
 }

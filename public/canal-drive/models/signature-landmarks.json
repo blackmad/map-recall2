@@ -67744,6 +67744,197 @@
         "bytes": 42128,
         "triangles": 1704
       }
+    },
+    "andaz-prinsengracht": {
+      "id": "andaz-prinsengracht",
+      "name": "Andaz Amsterdam Prinsengracht (former Openbare Bibliotheek)",
+      "modelUrl": "./models/andaz-prinsengracht.glb",
+      "suppressOsmIds": [
+        "NL.IMBAG.Pand.0363100012253957",
+        "w266678976"
+      ],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.8831707,
+          52.36776962
+        ],
+        "headingDegrees": 0,
+        "lengthMetres": 49.5,
+        "widthMetres": 46.4
+      },
+      "surveyed": {
+        "anchor": [
+          4.8831707,
+          52.36776962
+        ],
+        "northOffsetDegrees": 0,
+        "source": "Vertex average of the BAG 0363100012253957 ring (RD, PDOK BAG WFS); massing on the BAG ring and the 3DBAG LoD2.2 roof planes of that pand (CC BY 4.0) in the building frame turned 3.67 deg from the RD grid (scripts/landmarks/andaz-prinsengracht-footprints.json, bag-shell-prepare.ts), native east/south metres. Plane widths and heights, window order per storey, the stone band and the strips measured on the rectified Gemeente Amsterdam panorama crop w01-273 at 48.8 px/m (scripts/landmarks/andaz-prinsengracht-inventory.json)."
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 0,
+      "heightMetres": 23.7,
+      "bagYear": 1974,
+      "materialOverrides": {
+        "brick": "#4d3d3a",
+        "glass": "#3b4248",
+        "canopyGlass": "#7d8c93",
+        "frame": "#c9c8c2",
+        "stone": "#45474a",
+        "concrete": "#b5b2aa",
+        "bronze": "#2f3134",
+        "dark": "#26272a",
+        "slate": "#5d5f62"
+      },
+      "attribution": {
+        "title": "Andaz Amsterdam Prinsengracht, former Centrale Openbare Bibliotheek (Rob Nord, bureau G. de Klerk, 1973-1977; municipal monument 200611)",
+        "author": "Map Recall",
+        "sourceUrl": "https://nl.wikipedia.org/wiki/Prinsengracht_587",
+        "licence": "CC BY 4.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "modifications": "Original texture-free flat-colour geometry: the four brick planes of different heights with their concrete copings, the recessed glazed strips, the per-storey window order, the dark stone puilijst and plane D's shoulder, from a rectified Gemeente Amsterdam panorama (CC BY 4.0) read for proportion only and the municipal monument 200611 description (CC0); plan and heights from BAG (CC0) and 3DBAG LoD2.2 (CC BY 4.0). Architect and dates: Wikipedia nl 'Prinsengracht 587' (CC BY-SA 4.0) and the register. No pixels or meshes imported."
+      },
+      "buildingFootprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.8828533,
+              52.3680129
+            ],
+            [
+              4.8828525,
+              52.3680024
+            ],
+            [
+              4.88285,
+              52.3680025
+            ],
+            [
+              4.8828242,
+              52.3677044
+            ],
+            [
+              4.8828247,
+              52.3677037
+            ],
+            [
+              4.8829923,
+              52.3676979
+            ],
+            [
+              4.8829922,
+              52.3676969
+            ],
+            [
+              4.8830707,
+              52.3676944
+            ],
+            [
+              4.8830633,
+              52.3676017
+            ],
+            [
+              4.8831881,
+              52.3675977
+            ],
+            [
+              4.8831891,
+              52.3676095
+            ],
+            [
+              4.883195,
+              52.3676093
+            ],
+            [
+              4.8832022,
+              52.3676932
+            ],
+            [
+              4.8832185,
+              52.3676926
+            ],
+            [
+              4.883227,
+              52.3677841
+            ],
+            [
+              4.8834894,
+              52.3677744
+            ],
+            [
+              4.8834901,
+              52.3677819
+            ],
+            [
+              4.8835458,
+              52.3677798
+            ],
+            [
+              4.8835492,
+              52.367815
+            ],
+            [
+              4.8834084,
+              52.3678202
+            ],
+            [
+              4.8834077,
+              52.3678127
+            ],
+            [
+              4.8832302,
+              52.3678193
+            ],
+            [
+              4.8832466,
+              52.3679974
+            ],
+            [
+              4.8828533,
+              52.3680129
+            ]
+          ]
+        ]
+      },
+      "buildingCategory": "landmark",
+      "bounds": {
+        "min": [
+          -23.764055252075195,
+          -7.629394644936838e-7,
+          -27.22568702697754
+        ],
+        "max": [
+          25.8637638092041,
+          23.700000762939453,
+          19.23365592956543
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.8831707,
+          52.36776962
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 90,
+        "facadeBearingDegrees": 0,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 49.6278190612793,
+        "heightMetres": 23.700001525878918,
+        "depthMetres": 46.45934295654297,
+        "depthCoverage": 1.0012789430289433
+      },
+      "triangles": 4660,
+      "bytes": 78416,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
+      "lod1": {
+        "sourceHash": "a2128c7efc5f9712",
+        "buildVersion": 2,
+        "bytes": 30004,
+        "triangles": 976
+      }
     }
   }
 }

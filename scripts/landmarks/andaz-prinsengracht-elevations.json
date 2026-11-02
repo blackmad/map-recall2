@@ -1,0 +1,29 @@
+{
+ "id": "andaz-prinsengracht",
+ "countedBy": "lane #190 (opus) from the rectified 2021 panorama w01-273 before the model was rendered. Not a blind haiku count: integrator may re-count. Counted per storey above the puilijst, each window unit (single or paired lights in one frame) as one opening and each recessed glazed strip as one opening; the ground storey is left out (bicycles, car and the hotel entrance block it). Recount after the first comparison (stated, not hidden): on the first floor the recessed strip between planes A and B is its own glazed bay behind a pier, not part of plane A's window wall (10, not 9); plane A's first-floor window wall is centred about 1 m from either window column above it, so it is its own axis under the 0.5 m clustering rule (12 axes, not 11).",
+ "facades": [
+  {
+   "name": "Prinsengracht front, four brick planes with three glazed strips",
+   "bearing": 274,
+   "photo": "artifacts/landmark-briefs/andaz-prinsengracht/w01-273.jpg",
+   "heightM": [
+    3.8,
+    21.3
+   ],
+   "rows": [
+    10,
+    11,
+    11,
+    11,
+    6
+   ],
+   "columns": 12,
+   "symmetric": false,
+   "gables": 0,
+   "openings": [
+    "glass",
+    "canopyGlass"
+   ]
+  }
+ ]
+}
