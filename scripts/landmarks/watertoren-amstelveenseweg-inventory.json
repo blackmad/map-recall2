@@ -1,0 +1,361 @@
+{
+ "schemaVersion": 1,
+ "id": "watertoren-amstelveenseweg",
+ "pand": "0363100012216977",
+ "brief": "scripts/landmarks/watertoren-amstelveenseweg-brief.md",
+ "signature": [
+  "e-reservoir",
+  "e-columns",
+  "e-shaft",
+  "se-cabin",
+  "ne-rim",
+  "e-door"
+ ],
+ "walls": [
+  {
+   "tag": "r03-90",
+   "bearing": 90,
+   "lengthM": 17.5,
+   "centre": [
+    4.85644852,
+    52.3361771
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002126_pano_0000_000156",
+   "capturedAt": "2021-05-03",
+   "checked": true,
+   "items": [
+    {
+     "id": "e-reservoir",
+     "kind": "tower",
+     "where": "top half: the inverted-cone aluminium casing with vertical standing seams and two faint horizontal joints, 19.4-36.1 m",
+     "approxSizeM": [
+      17.5,
+      16.7
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002126_pano_0000_000156",
+     "how": "reservoir(): ribbed frustum r 6.7-8.73 m, 120 seam ridges 8 cm proud"
+    },
+    {
+     "id": "e-beam",
+     "kind": "other",
+     "where": "the concrete ring beam under the cone",
+     "approxSizeM": [
+      12.0,
+      1.0
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002126_pano_0000_000156",
+     "how": "BEAM drum r 6.0, 18.6-19.6 m"
+    },
+    {
+     "id": "e-columns",
+     "kind": "colonnade",
+     "where": "the concrete columns in a ring round the shaft, two in view either side",
+     "approxSizeM": [
+      1.2,
+      18.7
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002126_pano_0000_000156",
+     "how": "six round columns r 0.58 on a 5.2 m ring"
+    },
+    {
+     "id": "e-shaft",
+     "kind": "tower",
+     "where": "the central concrete shaft",
+     "approxSizeM": [
+      4.8,
+      18.6
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002126_pano_0000_000156",
+     "how": "twelve-sided shaft via archOpeningWall faces"
+    },
+    {
+     "id": "e-door",
+     "kind": "other",
+     "where": "red door at the foot of the shaft, east side",
+     "approxSizeM": [
+      0.96,
+      2.17
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002126_pano_0000_000156",
+     "how": "flat-headed recessed opening, dark (red) back"
+    },
+    {
+     "id": "e-window",
+     "kind": "window-shape",
+     "where": "small window high in the shaft (strip under the beam)",
+     "approxSizeM": [
+      0.6,
+      0.85
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-002126_pano_0000_000156",
+     "how": "one glass strip on the north face at 15.6-16.45 m; position on the shaft read loosely"
+    },
+    {
+     "id": "e-fence",
+     "kind": "other",
+     "where": "steel railing fence round the plot",
+     "approxSizeM": [
+      40,
+      1.8
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7316010203-002126_pano_0000_000156",
+     "skip": {
+      "reason": "not-visible",
+      "note": "site fence outside the pand footprint; street furniture"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "r02-45",
+   "bearing": 45,
+   "lengthM": 17.5,
+   "centre": [
+    4.85644852,
+    52.3361771
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001489_pano_0000_000746",
+   "capturedAt": "2019-12-04",
+   "checked": true,
+   "items": [
+    {
+     "id": "ne-rim",
+     "kind": "other",
+     "where": "dark rim round the top of the casing",
+     "approxSizeM": [
+      17.8,
+      0.25
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001489_pano_0000_000746",
+     "how": "RIM drum r 8.88, 36.0-36.25 m, dark slate"
+    },
+    {
+     "id": "ne-hatches",
+     "kind": "other",
+     "where": "small dark hatches just under the rim (Commons 2009 telephoto)",
+     "approxSizeM": [
+      0.34,
+      0.72
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001489_pano_0000_000746",
+     "how": "eight tilted dark boxes at 35.0 m"
+    }
+   ]
+  },
+  {
+   "tag": "r04-135",
+   "bearing": 135,
+   "lengthM": 17.5,
+   "centre": [
+    4.85644852,
+    52.3361771
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000521_pano_0000_002552",
+   "capturedAt": "2017-12-20",
+   "checked": true,
+   "items": [
+    {
+     "id": "se-cabin",
+     "kind": "tower",
+     "where": "octagonal glazed control cabin set back on the reservoir roof",
+     "approxSizeM": [
+      6.0,
+      2.5
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-000521_pano_0000_002552",
+     "how": "cabin(): eight faces with glass band 37.25-38.5 m"
+    },
+    {
+     "id": "se-cabin-roof",
+     "kind": "other",
+     "where": "dark flat overhanging cabin roof",
+     "approxSizeM": [
+      7.3,
+      0.4
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-000521_pano_0000_002552",
+     "how": "octagonal slate drum to 39.1 m"
+    },
+    {
+     "id": "se-railing",
+     "kind": "balcony-ironwork",
+     "where": "railing round the reservoir roof",
+     "approxSizeM": [
+      8.0,
+      1.0
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-000521_pano_0000_002552",
+     "how": "16 posts and two rails at r 4.0"
+    },
+    {
+     "id": "se-mast",
+     "kind": "other",
+     "where": "small antennas/lightning rod on the cabin roof",
+     "approxSizeM": [
+      0.1,
+      2.0
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7316010203-000521_pano_0000_002552",
+     "skip": {
+      "reason": "too-small",
+      "note": "thin masts under 10 cm"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "r01-0",
+   "bearing": 0,
+   "lengthM": 17.5,
+   "centre": [
+    4.85644852,
+    52.3361771
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2024-09-02_05-55-18_02021",
+   "capturedAt": "2024-09-02",
+   "checked": true,
+   "items": [
+    {
+     "id": "n-casing",
+     "kind": "tower",
+     "where": "north side of the casing above the trees, same as east",
+     "approxSizeM": [
+      17.5,
+      16.7
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2024-09-02_05-55-18_02021",
+     "how": "same ribbed frustum"
+    }
+   ]
+  },
+  {
+   "tag": "r08-315",
+   "bearing": 315,
+   "lengthM": 17.5,
+   "centre": [
+    4.85644852,
+    52.3361771
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2024-09-02_05-55-18_02001",
+   "capturedAt": "2024-09-02",
+   "checked": true,
+   "items": [
+    {
+     "id": "nw-pumphall",
+     "kind": "other",
+     "where": "pumping-station hall to the north-west (separate pand)",
+     "approxSizeM": [
+      20,
+      8
+     ],
+     "plan": "skipped",
+     "seenIn": "recording_2024-09-02_05-55-18_02001",
+     "skip": {
+      "reason": "not-visible",
+      "note": "separate BAG pand, not part of this model"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "r05-180",
+   "bearing": 180,
+   "lengthM": 17.5,
+   "centre": [
+    4.85644852,
+    52.3361771
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2024-09-02_05-55-18_01213",
+   "capturedAt": "2024-09-02",
+   "checked": true,
+   "items": [
+    {
+     "id": "s-casing",
+     "kind": "tower",
+     "where": "south side seen distant, same casing and cabin",
+     "approxSizeM": [
+      17.5,
+      16.7
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2024-09-02_05-55-18_01213",
+     "how": "same ribbed frustum"
+    }
+   ]
+  },
+  {
+   "tag": "r07-270",
+   "bearing": 270,
+   "lengthM": 17.5,
+   "centre": [
+    4.85644852,
+    52.3361771
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002020_pano_0000_000393",
+   "capturedAt": "2021-02-19",
+   "checked": true,
+   "items": [
+    {
+     "id": "w-casing",
+     "kind": "tower",
+     "where": "west side seen distant over the trees",
+     "approxSizeM": [
+      17.5,
+      16.7
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002020_pano_0000_000393",
+     "how": "same ribbed frustum"
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  },
+  {
+   "name": "Amsterdam Watertoren Amstelveenseweg.jpg (Wikimedia Commons, 2009)",
+   "url": "https://commons.wikimedia.org/wiki/File:Amsterdam_Watertoren_Amstelveenseweg.jpg",
+   "licence": "CC BY-SA 3.0"
+  },
+  {
+   "name": "Watertoren Amstelveenseweg - panoramio.jpg (Wikimedia Commons, 2007)",
+   "url": "https://commons.wikimedia.org/wiki/File:Watertoren_Amstelveenseweg_-_panoramio.jpg",
+   "licence": "CC BY 3.0"
+  },
+  {
+   "name": "1964 Watertoren in aanbouw Amsterdam Amstelveenseweg.jpg (Wikimedia Commons)",
+   "url": "https://commons.wikimedia.org/wiki/File:1964_Watertoren_in_aanbouw_Amsterdam_Amstelveenseweg.jpg",
+   "licence": "CC0"
+  },
+  {
+   "name": "nl.wikipedia Watertoren Amstelveenseweg",
+   "url": "https://nl.wikipedia.org/wiki/Watertoren_Amstelveenseweg",
+   "licence": "CC BY-SA 4.0"
+  }
+ ]
+}
