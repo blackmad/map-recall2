@@ -441,9 +441,19 @@
       "version": "ccb85dabb0e05652",
       "dateSource": "asset-update"
     },
+    "burgerweeshuis-van-eyck": {
+      "updatedAt": "2026-11-02T02:30:22.250Z",
+      "version": "5ca0f3c89e7623f3",
+      "dateSource": "asset-update"
+    },
     "byzantium": {
       "updatedAt": "2026-11-02T01:56:47.655Z",
       "version": "a822e4ba8235da70",
+      "dateSource": "asset-update"
+    },
+    "byzantium.lod1": {
+      "updatedAt": "2026-11-02T02:00:48.502Z",
+      "version": "afb509aa24719a72",
       "dateSource": "asset-update"
     },
     "cafe-kobalt": {

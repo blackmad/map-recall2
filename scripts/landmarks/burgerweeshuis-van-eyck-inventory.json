@@ -1,0 +1,618 @@
+{
+ "schemaVersion": 1,
+ "id": "burgerweeshuis-van-eyck",
+ "pand": "0363100012080770",
+ "brief": "scripts/landmarks/burgerweeshuis-van-eyck-brief.md",
+ "signature": [
+  "m-module-domes",
+  "p-large-domes",
+  "m-lintel",
+  "m-glazed-bays",
+  "m-brick-bays",
+  "p-upper-storeys"
+ ],
+ "walls": [
+  {
+   "tag": "w01-8",
+   "bearing": 8,
+   "lengthM": 43.3,
+   "centre": [
+    4.8566775,
+    52.3408224
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": false,
+   "items": []
+  },
+  {
+   "tag": "w02-8",
+   "bearing": 8,
+   "lengthM": 33.9,
+   "centre": [
+    4.8563062,
+    52.3410652
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002020_pano_0000_000901",
+   "capturedAt": "2021-02-19",
+   "checked": true,
+   "items": [
+    {
+     "id": "m-brick-bays",
+     "kind": "window-shape",
+     "where": "brick modules: dark brown clinker brick with one narrow steel window (about 1.0 x 1.6 m) per module",
+     "approxSizeM": [
+      3.36,
+      2.55
+     ],
+     "plan": "simplified",
+     "how": "brick wall with a 1.0 x 1.56 m dark glass window centred in every brick module (frame bars and sill left out for the triangle budget)",
+     "seenIn": "TMX7316010203-002020_pano_0000_000901"
+    },
+    {
+     "id": "m-doors",
+     "kind": "other",
+     "where": "timber entrance doors in some modules (w02, w11, w15)",
+     "approxSizeM": [
+      1.0,
+      2.3
+     ],
+     "plan": "skipped",
+     "skip": {
+      "reason": "too-small",
+      "note": "single doors among the module windows; the brick module carries a window instead"
+     },
+     "seenIn": "TMX7316010203-002020_pano_0000_000901"
+    }
+   ],
+   "note": "North face of the north-east wing on the IJsbaanpad parking: ten modules of dark brown brick, one narrow steel window per module (two blank, one timber door), the concrete lintel with one long slot per module and the gutter, the low module domes above, some with a round roof light"
+  },
+  {
+   "tag": "w03-8",
+   "bearing": 8,
+   "lengthM": 23.8,
+   "centre": [
+    4.855614,
+    52.3409674
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-07-30_07-40-42_00540",
+   "capturedAt": "2025-07-30",
+   "checked": true,
+   "items": [
+    {
+     "id": "p-upper-storeys",
+     "kind": "other",
+     "where": "the four pavilions of the north-west arm: an upper storey of plain concrete panels with a small square window, the slotted lintel at its top",
+     "approxSizeM": [
+      10.1,
+      2.2
+     ],
+     "plan": "modelled",
+     "how": "a concrete-panel prism from 3.6 to 5.8 m over the 3 x 3 module square, the lintel and gutter at the top, one 1.0 m square window in the centre module of each face",
+     "seenIn": "recording_2025-07-30_07-40-42_00540"
+    },
+    {
+     "id": "p-large-domes",
+     "kind": "dome",
+     "where": "eight large domes three modules square over the living rooms, each with a ring of round lights (counted on the orthophoto: four on the two-storey pavilions, four on single-storey ones)",
+     "approxSizeM": [
+      10.1,
+      2.0
+     ],
+     "plan": "modelled",
+     "how": "one larger cloister-vault dome instanced eight times (at 5.8 m on the two-storey pavilions, at 3.6 m on the others), ten round lights in a ring on each",
+     "seenIn": "recording_2025-07-30_07-40-42_00540"
+    }
+   ],
+   "note": "North-west arm from the IJsbaanpad entrance drive: brick modules with narrow windows under the slotted lintel, module domes (freshly painted pale, some with round roof lights), the concrete-panel upper storeys of the pavilions behind with a small square window"
+  },
+  {
+   "tag": "w04-8",
+   "bearing": 8,
+   "lengthM": 20.1,
+   "centre": [
+    4.8559063,
+    52.3410659
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002125_pano_0000_000162",
+   "capturedAt": "2021-04-30",
+   "checked": true,
+   "items": [
+    {
+     "id": "m-module-domes",
+     "kind": "dome",
+     "where": "the whole roof: one low square concrete dome on every 3.36 m module, with the gutter between them; some carry a round roof light",
+     "approxSizeM": [
+      3.36,
+      0.6
+     ],
+     "plan": "modelled",
+     "how": "one cloister-vault dome with a round profile (0.85 m rise) instanced on every lattice module of the single-storey roof: 309 modules (wiki: 328 small units; the staff block, whose roof the orthophoto shows flat, and the part-modules at the jogs carry none); a round roof light on every third module (deterministic; the orthophoto shows lights on many but not all)",
+     "seenIn": "TMX7316010203-002125_pano_0000_000162"
+    },
+    {
+     "id": "m-lintel",
+     "kind": "window-shape",
+     "where": "the top of every wall: a high concrete lintel with one long rectangular slot per module, a gutter on top",
+     "approxSizeM": [
+      3.36,
+      1.05
+     ],
+     "plan": "modelled",
+     "how": "a concrete band from 2.55 to 3.45 m on every exposed wall, a dark glass slot 2.1 x 0.24 m per module (left out on one-module stubs facing another wall across a notch), a 0.24 m deep gutter to 3.7 m",
+     "seenIn": "TMX7316010203-002125_pano_0000_000162"
+    },
+    {
+     "id": "m-glazed-bays",
+     "kind": "colonnade",
+     "where": "glazed modules: round concrete columns on a concrete plinth, steel window frames with a mullion and transom between them",
+     "approxSizeM": [
+      3.36,
+      2.55
+     ],
+     "plan": "modelled",
+     "how": "per glazed module a 0.3 m plinth, glass, a steel mullion and transom; a round 0.34 m column at each glazed module boundary; glazed where a panorama shows it (w04 entrance, w11), on the patio faces and on the south, east and west faces of the eight living rooms (their north faces are brick on w03-8); one-module wall stubs stay brick",
+     "seenIn": "TMX7316010203-002125_pano_0000_000162"
+    }
+   ],
+   "note": "Entrance side on the IJsbaanpad: six glazed modules between round concrete columns on a concrete plinth, steel frames with a transom, the slotted lintel and gutter, module domes; brick at the right end"
+  },
+  {
+   "tag": "w05-7",
+   "bearing": 7,
+   "lengthM": 16.8,
+   "centre": [
+    4.8570132,
+    52.3405219
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000257_pano_0000_000540",
+   "capturedAt": "2017-04-11",
+   "checked": true,
+   "items": [],
+   "note": "Seen obliquely from the Amstelveenseweg side over a fence (2017 building works): brick modules, lintel, domes"
+  },
+  {
+   "tag": "w06-278",
+   "bearing": 278,
+   "lengthM": 16.8,
+   "centre": [
+    4.8556545,
+    52.3408246
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": false,
+   "items": []
+  },
+  {
+   "tag": "w07-8",
+   "bearing": 8,
+   "lengthM": 16.8,
+   "centre": [
+    4.8567381,
+    52.3403914
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": false,
+   "items": []
+  },
+  {
+   "tag": "w08-7",
+   "bearing": 7,
+   "lengthM": 16.8,
+   "centre": [
+    4.8565089,
+    52.3402583
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": false,
+   "items": []
+  },
+  {
+   "tag": "w09-278",
+   "bearing": 278,
+   "lengthM": 16.8,
+   "centre": [
+    4.8560939,
+    52.3405468
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": false,
+   "items": []
+  },
+  {
+   "tag": "w10-98",
+   "bearing": 98,
+   "lengthM": 15.2,
+   "centre": [
+    4.8562353,
+    52.3400106
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": false,
+   "items": []
+  },
+  {
+   "tag": "w11-98",
+   "bearing": 98,
+   "lengthM": 13.8,
+   "centre": [
+    4.8571195,
+    52.3406649
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002918_pano_0000_000052",
+   "capturedAt": "2023-01-05",
+   "checked": true,
+   "items": [],
+   "note": "Amstelveenseweg (east) end of the north-east wing: two glazed modules between columns, a white panel, the timber entrance door, brick; lintel slots, module domes, the brick boiler chimney behind"
+  },
+  {
+   "tag": "w12-97",
+   "bearing": 97,
+   "lengthM": 13.5,
+   "centre": [
+    4.8569027,
+    52.3405912
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000257_pano_0000_000538",
+   "capturedAt": "2017-04-11",
+   "checked": true,
+   "items": [],
+   "note": "East face in the 2017 works: brick modules with narrow windows, the lintel and domes; the glazed corner of a two-storey part at the right with the lintel band at its top"
+  },
+  {
+   "tag": "w13-188",
+   "bearing": 188,
+   "lengthM": 13.5,
+   "centre": [
+    4.8560349,
+    52.3402618
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": false,
+   "items": []
+  },
+  {
+   "tag": "w14-188",
+   "bearing": 188,
+   "lengthM": 13.4,
+   "centre": [
+    4.8558383,
+    52.3409777
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": false,
+   "items": []
+  },
+  {
+   "tag": "w15-188",
+   "bearing": 188,
+   "lengthM": 13.4,
+   "centre": [
+    4.8570253,
+    52.3404574
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002918_pano_0000_000060",
+   "capturedAt": "2023-01-05",
+   "checked": true,
+   "items": [
+    {
+     "id": "h-hall",
+     "kind": "other",
+     "where": "the low semicircular hall on the south side (3DBAG flat roof 2.4 m) with round roof lights",
+     "approxSizeM": [
+      15,
+      2.4
+     ],
+     "plan": "simplified",
+     "how": "brick prism on the 3DBAG roof piece to 2.4 m with a lowered lintel and gutter; its roof lights are not modelled",
+     "seenIn": "TMX7316010203-002918_pano_0000_000060"
+    }
+   ],
+   "note": "South face of a south-east pavilion: glazed modules between columns with a timber door, brick at the corner, the large low dome over the living room behind the module domes"
+  },
+  {
+   "tag": "w16-277",
+   "bearing": 277,
+   "lengthM": 13.4,
+   "centre": [
+    4.856965,
+    52.3406753
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": false,
+   "items": []
+  },
+  {
+   "tag": "w17-98",
+   "bearing": 98,
+   "lengthM": 13.3,
+   "centre": [
+    4.8566283,
+    52.3404604
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": false,
+   "items": []
+  },
+  {
+   "tag": "w18-97",
+   "bearing": 97,
+   "lengthM": 13.3,
+   "centre": [
+    4.8563984,
+    52.3403266
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": false,
+   "items": []
+  },
+  {
+   "tag": "w19-278",
+   "bearing": 278,
+   "lengthM": 13.2,
+   "centre": [
+    4.8563656,
+    52.3404203
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": false,
+   "items": []
+  },
+  {
+   "tag": "w20-278",
+   "bearing": 278,
+   "lengthM": 13.1,
+   "centre": [
+    4.8559237,
+    52.3409115
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": false,
+   "items": []
+  },
+  {
+   "tag": "w21-98",
+   "bearing": 98,
+   "lengthM": 13.1,
+   "centre": [
+    4.8563751,
+    52.3409062
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": false,
+   "items": []
+  },
+  {
+   "tag": "w22-188",
+   "bearing": 188,
+   "lengthM": 10.6,
+   "centre": [
+    4.85703,
+    52.3406096
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002918_pano_0000_000059",
+   "capturedAt": "2023-01-05",
+   "checked": true,
+   "items": [],
+   "note": "South-east wing from the Amstelveenseweg path: brick and glazed modules under the slotted lintel, the module domes; a stainless steel column sculpture on the lawn (not part of the pand)"
+  },
+  {
+   "tag": "w23-278",
+   "bearing": 278,
+   "lengthM": 10.5,
+   "centre": [
+    4.8558688,
+    52.3406572
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": false,
+   "items": []
+  },
+  {
+   "tag": "w24-188",
+   "bearing": 188,
+   "lengthM": 10.4,
+   "centre": [
+    4.8561544,
+    52.3404662
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": false,
+   "items": []
+  },
+  {
+   "tag": "w25-188",
+   "bearing": 188,
+   "lengthM": 10.4,
+   "centre": [
+    4.8559348,
+    52.3406044
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": false,
+   "items": []
+  },
+  {
+   "tag": "w26-188",
+   "bearing": 188,
+   "lengthM": 10.4,
+   "centre": [
+    4.8557148,
+    52.3407439
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": false,
+   "items": []
+  },
+  {
+   "tag": "w27-278",
+   "bearing": 278,
+   "lengthM": 10.4,
+   "centre": [
+    4.8559463,
+    52.3403159
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": false,
+   "items": []
+  },
+  {
+   "tag": "w28-187",
+   "bearing": 187,
+   "lengthM": 10.4,
+   "centre": [
+    4.8554978,
+    52.340883
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": false,
+   "items": []
+  },
+  {
+   "tag": "w29-8",
+   "bearing": 8,
+   "lengthM": 10.4,
+   "centre": [
+    4.8570809,
+    52.3408516
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000257_pano_0000_000543",
+   "capturedAt": "2017-04-11",
+   "checked": true,
+   "items": [
+    {
+     "id": "s-staff-block",
+     "kind": "other",
+     "where": "the long two-storey staff block across the north (3DBAG flat roof 6.06 m) in concrete panels with the lintel at its top; a white rooftop box at its west end",
+     "approxSizeM": [
+      64,
+      6.1
+     ],
+     "plan": "modelled",
+     "how": "a concrete-panel prism over the 3DBAG roof piece from 3.6 to 6.06 m, windows per module on the upper storey, the lintel and gutter, the rooftop box (3DBAG 6.58 m)",
+     "seenIn": "TMX7316010203-000257_pano_0000_000543"
+    },
+    {
+     "id": "s-chimney",
+     "kind": "tower",
+     "where": "the tall brick boiler chimney in front of the staff block, seen above the roofs from the IJsbaanpad and the Amstelveenseweg",
+     "approxSizeM": [
+      3.0,
+      11.5
+     ],
+     "plan": "simplified",
+     "how": "a brick shaft 1.8 x 3.0 m (top measured on the orthophoto) to 11.5 m with a concrete cap; height estimated from w29-8 against the 6 m block",
+     "seenIn": "TMX7316010203-000257_pano_0000_000543"
+    },
+    {
+     "id": "s-gateway",
+     "kind": "other",
+     "where": "the staff block stands partly on columns over a gateway into the front court with the ramp to the bicycle cellar (register text)",
+     "approxSizeM": [
+      7,
+      3
+     ],
+     "plan": "skipped",
+     "skip": {
+      "reason": "not-visible",
+      "note": "no panorama or Commons photograph shows the gateway from a public street; the block is modelled closed"
+     },
+     "seenIn": "rijksmonument register 532189"
+    }
+   ],
+   "note": "North side of the staff block from the parking: the long two-storey block with the slotted lintel at its top, the tall brick boiler chimney in front of it; module domes of the wing in front"
+  },
+  {
+   "tag": "w30-278",
+   "bearing": 278,
+   "lengthM": 10.4,
+   "centre": [
+    4.8554315,
+    52.3409349
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": false,
+   "items": []
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas (listed per wall)",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/",
+   "licence": "CC BY 4.0"
+  },
+  {
+   "name": "PDOK Luchtfoto Actueel_orthoHR",
+   "url": "https://service.pdok.nl/hwh/luchtfotorgb/wms/v1_0",
+   "licence": "CC BY 4.0"
+  },
+  {
+   "name": "Rijksmonument 532189 register text (Gemeente Amsterdam monumenten API)",
+   "url": "https://api.data.amsterdam.nl/v1/monumenten/monumenten/71394cf6-5ebf-40c1-9364-a8456f065f06",
+   "licence": "CC0"
+  },
+  {
+   "name": "nl.wikipedia Burgerweeshuis (Amsterdam, IJsbaanpad)",
+   "url": "https://nl.wikipedia.org/wiki/Burgerweeshuis_(Amsterdam,_IJsbaanpad)",
+   "licence": "CC BY-SA 4.0"
+  },
+  {
+   "name": "3DBAG LoD2.2 NL.IMBAG.Pand.0363100012080770",
+   "url": "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012080770",
+   "licence": "CC BY 4.0"
+  }
+ ],
+ "pands": [
+  "0363100012080770"
+ ]
+}
