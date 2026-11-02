@@ -2164,5 +2164,11 @@
   "buildVersion": 2,
   "bytes": 20336,
   "triangles": 615
+ },
+ "effectenbeurs": {
+  "sourceHash": "0a56eba4908e9e33",
+  "buildVersion": 2,
+  "bytes": 129476,
+  "triangles": 6915
  }
 }
