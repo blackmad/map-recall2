@@ -52844,5 +52844,671 @@
     ]
    ]
   }
+ },
+ {
+  "id": "barbizon-palace",
+  "name": "NH Collection Barbizon Palace",
+  "modelUrl": "./models/barbizon-palace.glb",
+  "suppressOsmIds": [
+   "NL.IMBAG.Pand.0363100012165693",
+   "NL.IMBAG.Pand.0363100012171455",
+   "NL.IMBAG.Pand.0363100012182718",
+   "NL.IMBAG.Pand.0363100012182720",
+   "NL.IMBAG.Pand.0363100012182719",
+   "NL.IMBAG.Pand.0363100012182721",
+   "NL.IMBAG.Pand.0363100012249789",
+   "w266944036",
+   "w266944034",
+   "w266944042"
+  ],
+  "spatialSuppression": false,
+  "footprint": {
+   "centre": [
+    4.90058698,
+    52.376355
+   ],
+   "headingDegrees": 154.4,
+   "lengthMetres": 63.2,
+   "widthMetres": 49.3
+  },
+  "surveyed": {
+   "anchor": [
+    4.90058698,
+    52.376355
+   ],
+   "northOffsetDegrees": 0,
+   "source": "Vertex average of the six BAG rings (Prins Hendrikkade 59 hotel 0363100012165693, 66 0363100012171455, 67 0363100012182718, 68 0363100012182720, 69 0363100012182719, 72 0363100012182721; PDOK BAG WFS, CC0) in RD as the anchor; native east/south metres. The builder's front frame runs along the Prins Hendrikkade front from the PH 72 / 73 corner (bearing 244.4, front facing 334.4); fronts, openings, cornices and gables measured on the rectified strip of the 2025-01-14 Gemeente Amsterdam panoramas b_20250114_1026_Track01_Sphere_00060-00068 (40 px/m, CC BY 4.0) and the 2025-06-17 view recording_2025-06-17_08-04-10_03792; the 1988 hotel massing is its 3DBAG LoD2.2 shell (CC BY 4.0) on a 2.29 m NAP street datum. See barbizon-palace-footprints.json (scripts/landmarks/barbizon-palace-prepare.ts)."
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 0,
+  "heightMetres": 22.4,
+  "bagYear": 1988,
+  "materialOverrides": {
+   "brick": "#6a4639",
+   "greyBrick": "#5a4440",
+   "stone": "#cbc6ba",
+   "white": "#e8e4da",
+   "slate": "#4b4e54",
+   "glass": "#323c42",
+   "frame": "#25292a",
+   "dark": "#232628",
+   "concrete": "#a7a69f",
+   "blue": "#36414b",
+   "red": "#a3343a",
+   "bronze": "#2c302e"
+  },
+  "attribution": {
+   "title": "NH Collection Barbizon Palace, Prins Hendrikkade 59 and 66-72",
+   "author": "Map Recall",
+   "sourceUrl": "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000783023/",
+   "licence": "CC BY 4.0",
+   "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+   "modifications": "Original texture-free flat-colour geometry: the 1988 hotel front (projecting window stacks with stone sills and caps, stone floor bands, round columns, the entrance canopy with its lettering, BARBIZON PALACE roof lettering, the round logo and flags) on the 3DBAG LoD2.2 shell (CC BY 4.0), the Zeedijk side front, and the five historic fronts on the BAG rings (CC0): PH 72 with its neck gable, claw pieces, segmental crown, oeil-de-boeuf windows and gable stone, PH 69 and 68 with their cornices, PH 67 with its hipped roof and PH 66 with its small neck gable; read from Gemeente Amsterdam panoramas (CC BY 4.0) for proportion only. No photo pixels or imported meshes."
+  },
+  "partyWallNote": "PH 72 adjoins Prins Hendrikkade 73 (pand 0363100012182894, Sint-Nicolaas side); the hotel adjoins PH 58 (0363100012177879), Zeedijk 1-7 and the hotel's own Zeedijk panden (165688, 171654, 177880, 182723, 182724, 182820, 182821), which keep their fronts and are not modelled. The enclosed 1741 back house 249789 (hotel use only, no front) is in the model as its 3DBAG shell.",
+  "buildingFootprint": {
+   "type": "MultiPolygon",
+   "coordinates": [
+    [
+     [
+      [
+       4.9006321,
+       52.37656545
+      ],
+      [
+       4.90073314,
+       52.37646674
+      ],
+      [
+       4.90073616,
+       52.37646332
+      ],
+      [
+       4.90080702,
+       52.37648976
+      ],
+      [
+       4.90070882,
+       52.37658702
+      ],
+      [
+       4.90070822,
+       52.37658782
+      ],
+      [
+       4.90068333,
+       52.37658098
+      ],
+      [
+       4.90068402,
+       52.37658007
+      ],
+      [
+       4.90063356,
+       52.3765664
+      ],
+      [
+       4.9006321,
+       52.37656545
+      ]
+     ]
+    ],
+    [
+     [
+      [
+       4.9006321,
+       52.37656545
+      ],
+      [
+       4.90063064,
+       52.3765645
+      ],
+      [
+       4.90055736,
+       52.37654501
+      ],
+      [
+       4.9006531,
+       52.37644027
+      ],
+      [
+       4.90073314,
+       52.37646674
+      ],
+      [
+       4.9006321,
+       52.37656545
+      ]
+     ]
+    ],
+    [
+     [
+      [
+       4.90059235,
+       52.37641665
+      ],
+      [
+       4.90058992,
+       52.37641574
+      ],
+      [
+       4.90060268,
+       52.37640316
+      ],
+      [
+       4.90066704,
+       52.3764276
+      ],
+      [
+       4.9006531,
+       52.37644027
+      ],
+      [
+       4.90055736,
+       52.37654501
+      ],
+      [
+       4.90055465,
+       52.37654432
+      ],
+      [
+       4.90048183,
+       52.37652471
+      ],
+      [
+       4.90059235,
+       52.37641665
+      ]
+     ]
+    ],
+    [
+     [
+      [
+       4.90041498,
+       52.37650483
+      ],
+      [
+       4.9005266,
+       52.37639168
+      ],
+      [
+       4.90052862,
+       52.37639245
+      ],
+      [
+       4.90058992,
+       52.37641574
+      ],
+      [
+       4.90059235,
+       52.37641665
+      ],
+      [
+       4.90048183,
+       52.37652471
+      ],
+      [
+       4.90047704,
+       52.37652342
+      ],
+      [
+       4.90047631,
+       52.37652324
+      ],
+      [
+       4.90041498,
+       52.37650483
+      ]
+     ]
+    ],
+    [
+     [
+      [
+       4.90036308,
+       52.37648902
+      ],
+      [
+       4.90049196,
+       52.37636851
+      ],
+      [
+       4.90053595,
+       52.37638522
+      ],
+      [
+       4.90052862,
+       52.37639245
+      ],
+      [
+       4.9005266,
+       52.37639168
+      ],
+      [
+       4.90041498,
+       52.37650483
+      ],
+      [
+       4.90036308,
+       52.37648902
+      ]
+     ]
+    ],
+    [
+     [
+      [
+       4.90007273,
+       52.37640175
+      ],
+      [
+       4.90014016,
+       52.37634456
+      ],
+      [
+       4.90015133,
+       52.37634948
+      ],
+      [
+       4.90021572,
+       52.37630172
+      ],
+      [
+       4.90029517,
+       52.37623528
+      ],
+      [
+       4.90030052,
+       52.37623078
+      ],
+      [
+       4.90032739,
+       52.37624332
+      ],
+      [
+       4.90033295,
+       52.37627651
+      ],
+      [
+       4.90037972,
+       52.37629417
+      ],
+      [
+       4.90042481,
+       52.37625025
+      ],
+      [
+       4.90042212,
+       52.37624386
+      ],
+      [
+       4.90046903,
+       52.37620585
+      ],
+      [
+       4.90029417,
+       52.3761322
+      ],
+      [
+       4.90029542,
+       52.37613144
+      ],
+      [
+       4.90038275,
+       52.37605639
+      ],
+      [
+       4.90038468,
+       52.37605424
+      ],
+      [
+       4.90049678,
+       52.37610296
+      ],
+      [
+       4.90054047,
+       52.37606466
+      ],
+      [
+       4.90057844,
+       52.37608113
+      ],
+      [
+       4.90065899,
+       52.37611607
+      ],
+      [
+       4.9008526,
+       52.37600499
+      ],
+      [
+       4.90093579,
+       52.37604455
+      ],
+      [
+       4.90093754,
+       52.37604546
+      ],
+      [
+       4.90097786,
+       52.37606432
+      ],
+      [
+       4.90097961,
+       52.37606567
+      ],
+      [
+       4.90107614,
+       52.37611496
+      ],
+      [
+       4.9010756,
+       52.37611537
+      ],
+      [
+       4.9010785,
+       52.37611683
+      ],
+      [
+       4.90108141,
+       52.37611828
+      ],
+      [
+       4.90108258,
+       52.37611742
+      ],
+      [
+       4.90114866,
+       52.37615235
+      ],
+      [
+       4.90096483,
+       52.37633326
+      ],
+      [
+       4.90090744,
+       52.3763903
+      ],
+      [
+       4.90080702,
+       52.37648976
+      ],
+      [
+       4.90073616,
+       52.37646332
+      ],
+      [
+       4.90073314,
+       52.37646674
+      ],
+      [
+       4.9006531,
+       52.37644027
+      ],
+      [
+       4.90066704,
+       52.3764276
+      ],
+      [
+       4.90060268,
+       52.37640316
+      ],
+      [
+       4.90058992,
+       52.37641574
+      ],
+      [
+       4.90052862,
+       52.37639245
+      ],
+      [
+       4.90053595,
+       52.37638522
+      ],
+      [
+       4.90049196,
+       52.37636851
+      ],
+      [
+       4.90036308,
+       52.37648902
+      ],
+      [
+       4.90036082,
+       52.37648834
+      ],
+      [
+       4.90036002,
+       52.37648816
+      ],
+      [
+       4.90035921,
+       52.37648797
+      ],
+      [
+       4.90007548,
+       52.37640233
+      ],
+      [
+       4.90007273,
+       52.37640175
+      ]
+     ]
+    ],
+    [
+     [
+      [
+       4.90038468,
+       52.37605424
+      ],
+      [
+       4.90042925,
+       52.37601643
+      ],
+      [
+       4.90054047,
+       52.37606466
+      ],
+      [
+       4.90049678,
+       52.37610296
+      ],
+      [
+       4.90038452,
+       52.37605442
+      ],
+      [
+       4.90038468,
+       52.37605424
+      ]
+     ]
+    ]
+   ]
+  }
+ },
+ {
+  "id": "marinekazerne-kattenburgerstraat",
+  "name": "Marinekazerne ('s Lands Werf, Kattenburgerstraat)",
+  "modelUrl": "./models/marinekazerne-kattenburgerstraat.glb",
+  "suppressOsmIds": [
+   "NL.IMBAG.Pand.0363100012165822"
+  ],
+  "spatialSuppression": false,
+  "footprint": {
+   "centre": [
+    4.91664191,
+    52.37203972
+   ],
+   "headingDegrees": 332.6,
+   "lengthMetres": 176.1,
+   "widthMetres": 39
+  },
+  "surveyed": {
+   "anchor": [
+    4.91664191,
+    52.37203972
+   ],
+   "northOffsetDegrees": 0,
+   "source": "Vertex average of the BAG ring of pand 0363100012165822 (PDOK BAG WFS, CC0) in RD as the anchor; native east/south metres. Massing is the 3DBAG LoD2.2 shell (CC BY 4.0) on its 1.84 m NAP maaiveld; the street fronts (long front from BAG vertex 30, corner front from vertex 4) and the gate frontispiece are measured on rectified Gemeente Amsterdam panoramas (CC BY 4.0): recording_2024-10-23_11-21-30_02538 and b_20250130_0915_Track06_Sphere_00254 (50 px/m), b_20250130_0915_Track06_Sphere_00020 (45 px/m), and the aimed gate views TMX7316010203-001181_pano_0000_001385 and TMX7316010203-001536_pano_0000_001597. See marinekazerne-kattenburgerstraat-footprints.json (scripts/landmarks/marinekazerne-kattenburgerstraat-prepare.ts)."
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 0,
+  "heightMetres": 12.5,
+  "bagYear": 1657,
+  "materialOverrides": {
+   "brick": "#6b4537",
+   "greyBrick": "#523a31",
+   "stone": "#d3c08c",
+   "white": "#e6dcc2",
+   "slate": "#43464b",
+   "glass": "#2f383d",
+   "frame": "#262a2a",
+   "dark": "#24282a",
+   "concrete": "#8e8a7f"
+  },
+  "attribution": {
+   "title": "Marinekazerne, 's Lands Werf street range, Kattenburgerstraat 5-7",
+   "author": "Map Recall",
+   "sourceUrl": "https://monumentenregister.cultureelerfgoed.nl/monumenten/2206",
+   "licence": "CC BY 4.0",
+   "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+   "modifications": "Original texture-free flat-colour geometry on the 3DBAG LoD2.2 shell (CC BY 4.0) and the BAG ring (CC0). The Kattenburgerstraat fronts have their rows of windows and blind niches cut into the brick, round-headed niches, plinth, cornice and pedimented dormers. The gate frontispiece has two pairs of pilasters, a frieze, a pediment with a simplified crest relief, and the arched gateway. The terrain-side fronts have windows and doors at the measured pitch. All of it was read from Gemeente Amsterdam panoramas (CC BY 4.0), for proportion only. No photo pixels or imported meshes."
+  },
+  "partyWallNote": "A free-standing range along the Kattenburgerstraat; the other Marineterrein buildings (170237, 170240, 181341, 164934, the De Weger buildings 230002-230004) are separate panden and are not modelled.",
+  "buildingFootprint": {
+   "type": "MultiPolygon",
+   "coordinates": [
+    [
+     [
+      [
+       4.91633159,
+       52.37181126
+      ],
+      [
+       4.91636144,
+       52.37182103
+      ],
+      [
+       4.91640134,
+       52.37183439
+      ],
+      [
+       4.91641457,
+       52.3718386
+      ],
+      [
+       4.91706753,
+       52.37204536
+      ],
+      [
+       4.91782754,
+       52.37252629
+      ],
+      [
+       4.91781349,
+       52.37253452
+      ],
+      [
+       4.91776772,
+       52.37256199
+      ],
+      [
+       4.91765405,
+       52.37262956
+      ],
+      [
+       4.91762963,
+       52.37262183
+      ],
+      [
+       4.91757031,
+       52.37260296
+      ],
+      [
+       4.91766219,
+       52.37249454
+      ],
+      [
+       4.91708201,
+       52.37213078
+      ],
+      [
+       4.91702706,
+       52.37209195
+      ],
+      [
+       4.91683948,
+       52.37203451
+      ],
+      [
+       4.91680055,
+       52.37207975
+      ],
+      [
+       4.91677384,
+       52.37208454
+      ],
+      [
+       4.91666494,
+       52.3720487
+      ],
+      [
+       4.91665702,
+       52.3720324
+      ],
+      [
+       4.91669613,
+       52.37198733
+      ],
+      [
+       4.91637264,
+       52.37188297
+      ],
+      [
+       4.91634938,
+       52.37191001
+      ],
+      [
+       4.91628963,
+       52.37188994
+      ],
+      [
+       4.91631257,
+       52.37186343
+      ],
+      [
+       4.91572688,
+       52.37167283
+      ],
+      [
+       4.91558154,
+       52.37185344
+      ],
+      [
+       4.91551046,
+       52.37183242
+      ],
+      [
+       4.91565978,
+       52.37165172
+      ],
+      [
+       4.91565785,
+       52.37165107
+      ],
+      [
+       4.9156971,
+       52.37160674
+      ],
+      [
+       4.91569909,
+       52.37160446
+      ],
+      [
+       4.91633159,
+       52.37181126
+      ]
+     ]
+    ]
+   ]
+  }
  }
 ]

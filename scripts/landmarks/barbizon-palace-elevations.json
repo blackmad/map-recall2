@@ -1,0 +1,171 @@
+{
+ "id": "barbizon-palace",
+ "countedBy": "lane landmarks-oosterdok-20261101 (opus) from ref-front-strip.jpg = rectified strip of the Gemeente Amsterdam panoramas b_20250114_1026_Track01_Sphere_00060-00068 (2025-01-14, 40 px/m) and ref-hotel.jpg = recording_2025-06-17_08-04-10_03792; not a blind count, 2026-11-01",
+ "facades": [
+  {
+   "name": "PH 72 (neck gable)",
+   "bearing": 335,
+   "photo": "artifacts/landmark-lanes/barbizon-palace/ref-front-strip.jpg",
+   "alongM": [
+    0.84,
+    5.86
+   ],
+   "openings": [
+    "glass"
+   ],
+   "rows": [
+    3,
+    3,
+    3,
+    3
+   ],
+   "rowsNote": "glazed openings bottom up: first, second and third floor three sashes each; shoulder storey the middle window and two oeil-de-boeuf; the ground-floor doorways are dark leaves and the neck has a dark loft door",
+   "columns": 3,
+   "symmetric": true,
+   "gables": 1,
+   "cropNote": "cropped to the symmetric gable front about the middle window axis (photo t 2.48); the brick pier right of it runs to the PH 69 party line"
+  },
+  {
+   "name": "PH 69 (white cornice)",
+   "bearing": 335,
+   "photo": "artifacts/landmark-lanes/barbizon-palace/ref-front-strip.jpg",
+   "alongM": [
+    6.59,
+    11.92
+   ],
+   "openings": [
+    "glass"
+   ],
+   "rows": [
+    4,
+    3,
+    3,
+    3,
+    3
+   ],
+   "rowsNote": "ground: two transom lights over the doors and two shop windows; then four storeys of three sashes; the ground-floor doors and shop windows stand on two axes of their own beside the three upper ones (5 axes)",
+   "columns": 5,
+   "symmetric": false,
+   "gables": 0
+  },
+  {
+   "name": "PH 68 (dentil cornice)",
+   "bearing": 335,
+   "photo": "artifacts/landmark-lanes/barbizon-palace/ref-front-strip.jpg",
+   "alongM": [
+    12.16,
+    17.54
+   ],
+   "openings": [
+    "glass"
+   ],
+   "rows": [
+    3,
+    3,
+    3,
+    3
+   ],
+   "rowsNote": "ground: the transom light over the door and two shop windows; then three storeys of three windows",
+   "columns": 3,
+   "symmetric": false,
+   "gables": 0
+  },
+  {
+   "name": "PH 67 (tent roof)",
+   "bearing": 335,
+   "photo": "artifacts/landmark-lanes/barbizon-palace/ref-front-strip.jpg",
+   "alongM": [
+    17.78,
+    22.6
+   ],
+   "openings": [
+    "glass"
+   ],
+   "rows": [
+    3,
+    3,
+    3
+   ],
+   "rowsNote": "three storeys of three windows; the ground-floor openings are dark",
+   "columns": 3,
+   "symmetric": true,
+   "gables": 1
+  },
+  {
+   "name": "PH 66 (small neck gable)",
+   "bearing": 335,
+   "photo": "artifacts/landmark-lanes/barbizon-palace/ref-front-strip.jpg",
+   "alongM": [
+    23.14,
+    26.19
+   ],
+   "openings": [
+    "glass"
+   ],
+   "rows": [
+    1,
+    3,
+    3,
+    3,
+    3,
+    1
+   ],
+   "rowsNote": "ground: one glazed shopfront (ribbon); four storeys of three windows; the neck window",
+   "columns": 3,
+   "symmetric": true,
+   "gables": 1,
+   "cropNote": "inset 0.3 m each side: the 1988 hotel party wall rises dark beside the neck gable on the right, as on the photo"
+  },
+  {
+   "name": "PH 59 hotel front (1988)",
+   "bearing": 335,
+   "photo": "artifacts/landmark-lanes/barbizon-palace/ref-hotel.jpg",
+   "alongM": [
+    26.78,
+    48.57
+   ],
+   "heightM": [
+    0,
+    18.2
+   ],
+   "openings": [
+    "glass"
+   ],
+   "rows": [
+    5,
+    10,
+    10,
+    10,
+    10,
+    10
+   ],
+   "rowsNote": "ground: the recessed glazing in five bays between the round columns; five storeys of five window pairs (the top row inside the stack caps on the oriels)",
+   "columns": 10,
+   "symmetric": false,
+   "gables": 0
+  },
+  {
+   "name": "Zeedijk 9-11 side front",
+   "bearing": 240,
+   "photo": "artifacts/landmark-lanes/barbizon-palace/ref-zeedijk.jpg",
+   "openings": [
+    "glass"
+   ],
+   "rows": [
+    2,
+    2,
+    6,
+    6,
+    6,
+    6
+   ],
+   "rowsNote": "Zeedijk 9 and 11 mirror about the drainpipe: ground floor two shop windows under louvres (0.3-2.1 m) and two glazed transoms over the red doors (2.45-3.2 m), the doors not counted; four storeys of small window, red French window with balconette, small window per house (the photo shows the lower three; the fourth is in the 3DBAG wall height). Axes not declared: the doors stand outward of the French windows",
+   "symmetric": true,
+   "gables": 0,
+   "alongM": [
+    34.2,
+    44.3
+   ]
+  }
+ ]
+}
