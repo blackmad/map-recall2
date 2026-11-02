@@ -1,0 +1,587 @@
+{
+ "schemaVersion": 1,
+ "id": "rietveld-academie-2006",
+ "pand": "0363100012091838",
+ "brief": "scripts/landmarks/rietveld-academie-2006-brief.md",
+ "signature": [
+  "t-dimpled-cladding",
+  "t-s-high-ribbons",
+  "f-screen-storey",
+  "f-v-pylon-stair",
+  "b-footbridge",
+  "t-roof-step",
+  "f-alphabet"
+ ],
+ "walls": [
+  {
+   "tag": "w01-267",
+   "bearing": 267,
+   "lengthM": 42.9,
+   "centre": [
+    4.8593155,
+    52.3414085
+   ],
+   "evidence": "photo",
+   "panoId": "commons:Fedlev-vleugel_(2).jpg",
+   "capturedAt": "2019-08-20",
+   "checked": true,
+   "items": [],
+   "note": "seen obliquely in Fedlev-vleugel (1) and (2): mesh panels all along over glazing, a fence in front"
+  },
+  {
+   "tag": "w02-357",
+   "bearing": 357,
+   "lengthM": 40.3,
+   "centre": [
+    4.86016,
+    52.34141
+   ],
+   "evidence": "photo",
+   "panoId": "commons:Fedlev-vleugel_(5).jpg",
+   "capturedAt": "2019-08-20",
+   "checked": true,
+   "items": [
+    {
+     "id": "t-n-studio-glazing",
+     "kind": "window-shape",
+     "where": "north face, every storey above the ground",
+     "approxSizeM": [
+      40.3,
+      24.3
+     ],
+     "plan": "simplified",
+     "seenIn": "commons:Fedlev-vleugel_(5).jpg",
+     "how": "bandedCurtain.ts + storeyBands(): vision glass per storey (floors 4.5 m then every 3.45 m), black 0.85 m spandrels, mullions on 1.25 m",
+     "note": "only the upper storeys over the wing's roof are photographed (Fedlev-vleugel 5); the lower storeys behind the courtyard are inferred to carry on"
+    }
+   ],
+   "note": "Fedlev-vleugel (5) shows the upper storeys from the north-west; the rest is inferred"
+  },
+  {
+   "tag": "w03-177",
+   "bearing": 177,
+   "lengthM": 40.2,
+   "centre": [
+    4.8601745,
+    52.3412585
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316060226-000009_pano_0002_001188",
+   "capturedAt": "2016",
+   "checked": true,
+   "items": [
+    {
+     "id": "t-dimpled-cladding",
+     "kind": "other",
+     "where": "all four faces above the ground storey",
+     "approxSizeM": [
+      40.2,
+      28.3
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316060226-000009_pano_0002_001188",
+     "how": "pressedMetalGrid.ts: the dark grey field with a horizontal shadow line under every dimple row and a vertical line between columns, drawn at twice the measured 0.36 x 0.30 m pitch, cut round every ribbon"
+    },
+    {
+     "id": "t-s-low-ribbons",
+     "kind": "window-shape",
+     "where": "first floor, three ribbons (t 0-4.3, 11.45-28.0, 36.3 to the east corner)",
+     "approxSizeM": [
+      16.6,
+      1.36
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316060226-000009_pano_0002_001188",
+     "how": "holedWall.ts openings 0.25 m deep at 4.86-6.22 m, dark reveals, glass back, mullions on about 1.35 m; the corner ribbons wrap 2.5 m onto the east and west faces (pic2, circa-2005 photo)"
+    },
+    {
+     "id": "t-s-high-ribbons",
+     "kind": "window-shape",
+     "where": "two ribbons stacked near the top over the middle third",
+     "approxSizeM": [
+      16.6,
+      1.1
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316060226-000009_pano_0002_001188",
+     "how": "holedWall.ts openings at 22.7-23.8 and 26.2-27.3 m, t 11.45-28.0"
+    },
+    {
+     "id": "t-ground-storey",
+     "kind": "window-shape",
+     "where": "glazed ground storey under the cladding",
+     "approxSizeM": [
+      40.2,
+      4.06
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316060226-000009_pano_0002_001188",
+     "how": "bandedCurtain.ts glass 0.5 m behind the cladding, 1.6 m mullions and a 3.0 m transom; grey-green panels on the 3 m at each end (pic2); doors not drawn"
+    },
+    {
+     "id": "t-s-lettering",
+     "kind": "lettering",
+     "where": "alphabet block and the names on the ground-floor glass",
+     "approxSizeM": [
+      1.4,
+      1.2
+     ],
+     "plan": "skipped",
+     "seenIn": "recording_2024-09-02_06-51-56_00461",
+     "skip": {
+      "reason": "too-small",
+      "note": "white letters about 0.15 m tall behind street trees; the wing next door carries the same block at entrance height and is drawn"
+     }
+    },
+    {
+     "id": "t-house-number",
+     "kind": "sign",
+     "where": "96 / 98 on the glass at the west end",
+     "approxSizeM": [
+      0.4,
+      0.3
+     ],
+     "plan": "skipped",
+     "seenIn": "recording_2024-09-02_06-51-56_00461",
+     "skip": {
+      "reason": "too-small",
+      "note": "two small numerals"
+     }
+    },
+    {
+     "id": "t-construction-banner",
+     "kind": "other",
+     "where": "printed hoarding along the pavement in 2016",
+     "approxSizeM": [
+      38,
+      1.5
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7316060226-000009_pano_0002_001188",
+     "skip": {
+      "reason": "temporary",
+      "note": "site hoarding, gone in the 2024 panorama"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "w04-87",
+   "bearing": 87,
+   "lengthM": 32.5,
+   "centre": [
+    4.85973,
+    52.34147
+   ],
+   "evidence": "photo",
+   "panoId": "commons:Fedlev-vleugel_(4).jpg",
+   "capturedAt": "2019-08-20",
+   "checked": true,
+   "items": [
+    {
+     "id": "f-e-shutter",
+     "kind": "other",
+     "where": "a folded mesh shutter near the north end of the east face",
+     "approxSizeM": [
+      1.5,
+      4.05
+     ],
+     "plan": "modelled",
+     "seenIn": "commons:Fedlev-vleugel_(4).jpg",
+     "how": "as on the south front"
+    }
+   ]
+  },
+  {
+   "tag": "w05-177",
+   "bearing": 177,
+   "lengthM": 28.6,
+   "centre": [
+    4.8595435,
+    52.3412235
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002476_pano_0001_000908",
+   "capturedAt": "2022-03-24",
+   "checked": true,
+   "items": [
+    {
+     "id": "f-screen-storey",
+     "kind": "other",
+     "where": "the whole upper storey, all four faces",
+     "approxSizeM": [
+      28.6,
+      4.05
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002476_pano_0001_000908",
+     "how": "expanded-metal panels on the screen line with white frames on a 2.0 m rhythm, between a white slab band (4.55-5.35 m) and roof band (9.4-10.1 m) standing 0.25 m proud"
+    },
+    {
+     "id": "f-ground-glazing",
+     "kind": "window-shape",
+     "where": "glazed ground storey under the overhang, all faces",
+     "approxSizeM": [
+      28.6,
+      4.55
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002476_pano_0001_000908",
+     "how": "bandedCurtain.ts glass 1.5 m behind the screen line, 1.5 m mullions, transom at 2.8 m; white soffit"
+    },
+    {
+     "id": "f-s-shutter",
+     "kind": "other",
+     "where": "a folded mesh shutter beside the one glazed bay (t 17.9-20.1)",
+     "approxSizeM": [
+      2.2,
+      4.05
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002476_pano_0001_000908",
+     "how": "glazing with four shutter leaves standing 0.6 m out of the face"
+    },
+    {
+     "id": "f-alphabet",
+     "kind": "lettering",
+     "where": "ABCDE / FGHIJK / LMNOP / QRSTU / VWXYZ on the glass west of the doors",
+     "approxSizeM": [
+      1.4,
+      1.25
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002476_pano_0001_000908",
+     "how": "pixel capitals 0.22 m tall in five lines, 0.13 m proud of the glass (F, Q and X added to the builder's glyphs)"
+    },
+    {
+     "id": "f-names",
+     "kind": "lettering",
+     "where": "GERRIT RIETVELD ACADEMIE / SANDBERG INSTITUUT on the glass east of the doors",
+     "approxSizeM": [
+      1.5,
+      1.3
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002476_pano_0001_000908",
+     "how": "pixel capitals in five lines"
+    },
+    {
+     "id": "f-roof-railing",
+     "kind": "balcony-ironwork",
+     "where": "railing round the roof edge",
+     "approxSizeM": [
+      28.6,
+      1.1
+     ],
+     "plan": "simplified",
+     "seenIn": "commons:Fedlev-vleugel_(1).jpg",
+     "how": "a top rail and posts every 3.6 m, 0.35 m in from the edge; the mesh infill not drawn"
+    },
+    {
+     "id": "f-doors",
+     "kind": "window-shape",
+     "where": "glazed double doors in the ground storey",
+     "approxSizeM": [
+      2.4,
+      2.8
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-002476_pano_0001_000908",
+     "how": "part of the 1.5 m mullion grid with the 2.8 m transom; no separate leaves"
+    },
+    {
+     "id": "f-lamp-post",
+     "kind": "lamp",
+     "where": "street lamp in front of the wing",
+     "approxSizeM": [
+      0.3,
+      6
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7316010203-002476_pano_0001_000908",
+     "skip": {
+      "reason": "not-visible",
+      "note": "street furniture, not part of the building"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "w06-357",
+   "bearing": 357,
+   "lengthM": 28.6,
+   "centre": [
+    4.8595065,
+    52.3416085
+   ],
+   "evidence": "photo",
+   "panoId": "commons:Fedlev-vleugel_(5).jpg",
+   "capturedAt": "2019-08-20",
+   "checked": true,
+   "items": [
+    {
+     "id": "f-v-pylon-stair",
+     "kind": "other",
+     "where": "the landing on a V-shaped concrete pylon in front of the north front",
+     "approxSizeM": [
+      7.3,
+      4.5
+     ],
+     "plan": "modelled",
+     "seenIn": "commons:Fedlev-vleugel_(5).jpg",
+     "how": "concrete slab 2.65-3.07 m on two legs from one foot (vertex 19.0 m from the east end), mesh balustrade with a white rail on three sides"
+    },
+    {
+     "id": "f-stair-slot",
+     "kind": "other",
+     "where": "the stair from the landing up through the screen storey to the roof",
+     "approxSizeM": [
+      3.1,
+      8.6
+     ],
+     "plan": "modelled",
+     "seenIn": "commons:Fedlev-vleugel_(5).jpg",
+     "how": "an open slot 3.1 m wide and 8.6 m deep with white sides, an inclined white flight from the landing to the roof and two rails; the roof band runs across its mouth",
+     "note": "depth from the 3DBAG sloping roof part"
+    },
+    {
+     "id": "f-n-loggias",
+     "kind": "balcony-ironwork",
+     "where": "two glazed loggias with mesh balustrades (t 5.1-12.75 and 15.5-18.2 from the east end)",
+     "approxSizeM": [
+      7.6,
+      4.05
+     ],
+     "plan": "modelled",
+     "seenIn": "commons:Fedlev-vleugel_(5).jpg",
+     "how": "glazing 1.2 m back with white sides, ceiling and floor, a 1.1 m mesh balustrade with a white rail on the screen line"
+    },
+    {
+     "id": "f-n-shutters",
+     "kind": "other",
+     "where": "two folded mesh shutters either side of the long loggia",
+     "approxSizeM": [
+      1.9,
+      4.05
+     ],
+     "plan": "modelled",
+     "seenIn": "commons:Fedlev-vleugel_(5).jpg",
+     "how": "as on the south front"
+    },
+    {
+     "id": "f-landing-wall",
+     "kind": "other",
+     "where": "the concrete wall under the landing's east end",
+     "approxSizeM": [
+      2,
+      2.6
+     ],
+     "plan": "simplified",
+     "seenIn": "commons:Fedlev-vleugel_(6).jpg",
+     "how": "a plain concrete slab; its taper (wider at the top) not drawn"
+    },
+    {
+     "id": "f-n-sign",
+     "kind": "sign",
+     "where": "GERRIT RIETVELD ACADEMIE on a dark fascia over the ground-floor glazing",
+     "approxSizeM": [
+      3.4,
+      0.65
+     ],
+     "plan": "modelled",
+     "seenIn": "commons:Fedlev-vleugel_(5).jpg",
+     "how": "dark panel with white pixel capitals 0.14 m tall"
+    },
+    {
+     "id": "f-roof-head",
+     "kind": "tower",
+     "where": "the dark roof head over the middle of the roof",
+     "approxSizeM": [
+      5.4,
+      4.6
+     ],
+     "plan": "modelled",
+     "seenIn": "commons:Fedlev-vleugel_(5).jpg",
+     "how": "3DBAG box 5.4 x 15.5 m to 14.7 m, near-black, a glazed skylight strip beside it (orthophoto)"
+    }
+   ]
+  },
+  {
+   "tag": "w07-87",
+   "bearing": 87,
+   "lengthM": 16.8,
+   "centre": [
+    4.860462,
+    52.3413445
+   ],
+   "evidence": "photo",
+   "panoId": "commons:Sandberg_instituut.jpg",
+   "capturedAt": "2008-04-13",
+   "checked": true,
+   "items": [
+    {
+     "id": "t-roof-step",
+     "kind": "tower",
+     "where": "the south slab stands 4 m above the rest of the box",
+     "approxSizeM": [
+      16.9,
+      4.05
+     ],
+     "plan": "modelled",
+     "seenIn": "commons:Sandberg_instituut.jpg",
+     "how": "3DBAG LoD2.2: south 9.3 m at 32.4 m, the rest at 28.35 m; the step face clad and gridded like the walls"
+    },
+    {
+     "id": "t-e-high-ribbons",
+     "kind": "window-shape",
+     "where": "two ribbons on the lower (north) part of the east face",
+     "approxSizeM": [
+      6.1,
+      1.1
+     ],
+     "plan": "modelled",
+     "seenIn": "commons:Sandberg_instituut.jpg",
+     "how": "holedWall.ts openings at the south front's high-ribbon storeys, 0.76 m from the step to 0.7 m from the north corner"
+    }
+   ]
+  },
+  {
+   "tag": "w08-267",
+   "bearing": 267,
+   "lengthM": 8.8,
+   "centre": [
+    4.859869,
+    52.3413605
+   ],
+   "evidence": "photo",
+   "panoId": "commons:Fedlev-vleugel_(1).jpg",
+   "capturedAt": "2019-08-20",
+   "checked": true,
+   "items": [
+    {
+     "id": "t-w-high-ribbons",
+     "kind": "window-shape",
+     "where": "two ribbons on the lower (north) part of the west face",
+     "approxSizeM": [
+      6.1,
+      1.1
+     ],
+     "plan": "modelled",
+     "seenIn": "commons:Fedlev-vleugel_(1).jpg",
+     "how": "holedWall.ts openings, as on the east face (Fedlev-vleugel 1 shows both, and the roof step above them)"
+    }
+   ]
+  },
+  {
+   "tag": "w09-3",
+   "bearing": 3,
+   "lengthM": 8.8,
+   "centre": [
+    4.8598085,
+    52.3413225
+   ],
+   "evidence": "photo",
+   "panoId": "commons:Fedlev-vleugel_(1).jpg",
+   "capturedAt": "2019-08-20",
+   "checked": true,
+   "items": [],
+   "note": "the bridge's north side, the same mesh as its south side (Fedlev-vleugel 1)"
+  },
+  {
+   "tag": "w10-179",
+   "bearing": 179,
+   "lengthM": 8.7,
+   "centre": [
+    4.859811,
+    52.341299
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2024-09-02_06-51-56_00456",
+   "capturedAt": "2024-09-02",
+   "checked": true,
+   "items": [
+    {
+     "id": "b-footbridge",
+     "kind": "other",
+     "where": "the sloping footbridge from the wing's screen storey up to the tower",
+     "approxSizeM": [
+      8.7,
+      3.2
+     ],
+     "plan": "simplified",
+     "seenIn": "commons:Fedlev-vleugel_(3).jpg",
+     "how": "a sloping box from the wing's screen-storey floor (5.35 m) to 9.8 m at the tower, 3.2 m tall: mesh sides and top, dark underside; its mesh panel joints not drawn"
+    }
+   ]
+  },
+  {
+   "tag": "w11-87",
+   "bearing": 87,
+   "lengthM": 7.5,
+   "centre": [
+    4.85975,
+    52.3412645
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2024-09-02_06-51-56_00460",
+   "capturedAt": "2024-09-02",
+   "checked": true,
+   "items": [],
+   "note": "screen storey over the overhang; the bridge leaves the face just north of it (Fedlev-vleugel 3)"
+  },
+  {
+   "tag": "w12-267",
+   "bearing": 267,
+   "lengthM": 5.8,
+   "centre": [
+    4.8598775,
+    52.341274
+   ],
+   "evidence": "photo",
+   "panoId": "commons:Exterior_Benthem_Crouwel_Building_circa_2005.jpg",
+   "capturedAt": "2005",
+   "checked": true,
+   "items": [
+    {
+     "id": "t-w-corner-ribbon",
+     "kind": "window-shape",
+     "where": "the first-floor ribbon wrapping the south-west corner",
+     "approxSizeM": [
+      2.5,
+      1.36
+     ],
+     "plan": "modelled",
+     "seenIn": "commons:Exterior_Benthem_Crouwel_Building_circa_2005.jpg",
+     "how": "holedWall.ts opening 2.5 m back from the corner"
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  },
+  {
+   "name": "Wikimedia Commons, Category:Fedlev-building (Ceescamel 2019)",
+   "url": "https://commons.wikimedia.org/wiki/Category:Fedlev-building",
+   "licence": "CC BY-SA 4.0"
+  },
+  {
+   "name": "Wikimedia Commons, Category:Gerrit Rietveld Academie, Benthem Crouwel building",
+   "url": "https://commons.wikimedia.org/wiki/Category:Gerrit_Rietveld_Academie,_Benthem_Crouwel_building",
+   "licence": "CC0 / CC BY-SA 4.0 / public domain (per file)"
+  },
+  {
+   "name": "3DBAG",
+   "url": "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012091838",
+   "licence": "CC BY 4.0"
+  },
+  {
+   "name": "PDOK orthophoto Actueel_orthoHR",
+   "url": "https://service.pdok.nl/hwh/luchtfotorgb/wms/v1_0",
+   "licence": "CC BY 4.0"
+  }
+ ]
+}

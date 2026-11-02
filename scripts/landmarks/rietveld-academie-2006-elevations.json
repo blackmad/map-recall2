@@ -1,0 +1,57 @@
+{
+ "id": "rietveld-academie-2006",
+ "source": "Gemeente Amsterdam panoramas TMX7316060226-000009_pano_0002_001188 (2016, tower street front) and TMX7316010203-002476_pano_0001_000908 (2022-03-24, Fedlev street front), CC BY 4.0, rectified crops artifacts/landmark-briefs/rietveld-academie-2006/w03-177.alt.jpg and w05-177.alt.jpg; Wikimedia Commons 'Fedlev-vleugel (5).jpg' (Ceescamel 2019, CC BY-SA 4.0) for the Fedlev north front",
+ "countedBy": "lane (opus) from the photos, 2026-11-02, before comparing with the model; ribbon convention: each ribbon window or glazed loggia is one opening; the expanded-metal screens and the folded shutter leaves are wall. Blind recount welcome.",
+ "facades": [
+  {
+   "name": "tower street front",
+   "bearing": 177,
+   "photo": "artifacts/landmark-briefs/rietveld-academie-2006/w03-177.alt.jpg",
+   "rows": [
+    null,
+    3,
+    1,
+    1
+   ],
+   "gables": 0,
+   "span": [
+    3.0,
+    44.5
+   ],
+   "depthBand": 2,
+   "note": "Rectified 2016 panorama, 38.8 px/m. Ground storey glazed behind the 2016 hoarding (null). First floor: three ribbons (west corner 0-4.3 m, middle 11.45-28.0 m, east corner 36.3 m to the corner). Two ribbons stacked near the top over the middle one. Span: native T ~ u over the tower only (the Fedlev front stands 1.45 m further south west of u -5.5)."
+  },
+  {
+   "name": "Fedlev street front",
+   "bearing": 177,
+   "photo": "artifacts/landmark-briefs/rietveld-academie-2006/w05-177.alt.jpg",
+   "rows": [
+    null,
+    1
+   ],
+   "gables": 0,
+   "span": [
+    -35.0,
+    -5.0
+   ],
+   "depthBand": 2,
+   "note": "Rectified 2022 panorama, 45.9 px/m. Ground storey glazed all along (null: one continuous curtain behind trees and bicycles). Screen storey: one glazed bay with its folded shutter (17.9-20.1 m from the west end); the rest is expanded-metal screen."
+  },
+  {
+   "name": "Fedlev north front",
+   "bearing": 357,
+   "photo": "staging/landmarks/rietveld-fedlev/commons/Fedlev-vleugel_(5).1600.jpg",
+   "rows": [
+    null,
+    2
+   ],
+   "gables": 0,
+   "span": [
+    5.0,
+    35.0
+   ],
+   "depthBand": 2,
+   "note": "Fedlev-vleugel (5), nearly frontal from the courtyard. Ground storey glazed (null; the landing stands in front of it). Screen storey from the east end: the long loggia between its two folded shutters (3.2-14.2 m) and the short recessed loggia west of it (15.5-18.2 m); the stair slot (18.2-21.3 m) shows the white flight, not glass. Depth band 2 m: the landing (4.5 m out) is excluded by the front plane on the screen line. Span in the north elevation's own axis (T ~ -u: 5..35 m is the wing, u -35..-5)."
+  }
+ ]
+}

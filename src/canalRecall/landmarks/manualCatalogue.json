@@ -62404,6 +62404,180 @@
   }
  },
  {
+  "id": "gerrit-rietveld-academie",
+  "name": "Gerrit Rietveld Academie",
+  "modelUrl": "./models/gerrit-rietveld-academie.glb",
+  "suppressOsmIds": [
+   "NL.IMBAG.Pand.0363100012077325"
+  ],
+  "spatialSuppression": false,
+  "footprint": {
+   "centre": [
+    4.8598734,
+    52.34185608
+   ],
+   "headingDegrees": 0,
+   "lengthMetres": 80.3,
+   "widthMetres": 62.8
+  },
+  "surveyed": {
+   "anchor": [
+    4.8598734,
+    52.34185608
+   ],
+   "northOffsetDegrees": 0,
+   "source": "Vertex average of the BAG 0363100012077325 ring (RD, PDOK BAG WFS, CC0) in native east/south metres above the 3DBAG ground 0.692 m NAP (scripts/landmarks/gerrit-rietveld-academie-footprints.json, written by sarphati-plaza-prepare.ts --id=gerrit-rietveld-academie --pand=0363100012077325). The building is drawn on its own axis (bearing 86.9, the BAG edges): the curtain-wall block 75.2 x 20.9 m on the 2.09 m module (36 x 10 modules, the register's 2.10 m raster), the white glazed-brick wall 0.35 m proud round the west head, the one-storey workshop wing and transverse block from the BAG ring; roof 18.2 m, the rear set-back at 16.1 m, lift tower and plant decks and the wing's 3.6 and 4.68 m roofs from the 3DBAG LoD2.2 roof parts (CC BY 4.0); the sheds counted on the PDOK orthophoto (CC BY 4.0). Band section measured on the rectified Gemeente Amsterdam panorama TMX7316010203-001151_pano_0001_002208 (CC BY 4.0, 38.1 px/m); the south front, lettering, entrance, black wall and fire stair from Wikimedia Commons photographs by Alf van Beem (CC0) and Paul Berendsen (CC BY-SA 4.0); the canal front's basement band and stair bay from Rietveldacademie.jpg (bureau Monumenten & Archeologie, attribution). Register text: gemeentelijk monument 200479. The wing's outer faces (east, south, west of the transverse block) have no photograph and are inferred."
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 0,
+  "heightMetres": 21.1,
+  "bagYear": 1967,
+  "materialOverrides": {
+   "glass": "#5b6665",
+   "pink": "#9fa9a8",
+   "frame": "#8e9694",
+   "white": "#e4e0da",
+   "greyBrick": "#2e2c2f",
+   "green": "#71292c",
+   "stone": "#6e726f",
+   "concrete": "#9a9c97",
+   "slate": "#cfcdc2",
+   "bronze": "#3a4048",
+   "copper": "#b2b8b5"
+  },
+  "attribution": {
+   "title": "Gerrit Rietveld Academie, Rietveld building, Fred. Roeskestraat 96 (G. Rietveld with J. van Dillen and J. van Tricht, 1959-1967)",
+   "author": "Map Recall",
+   "sourceUrl": "https://api.data.amsterdam.nl/v1/bag/panden/0363100012077325",
+   "licence": "CC BY 4.0",
+   "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+   "modifications": "Original texture-free flat-colour geometry on the BAG footprint (CC0) with 3DBAG LoD2.2 heights (CC BY 4.0): the four-storey curtain-wall block on the 2.09 m module with clear vision bands between frosted bands over a recessed sokkel with basement windows, the main-stair bay on the canal front, the rear roof set-back, lift tower and plant deck with its round fans, the white glazed-brick wall round the west head with the GERRIT RIETVELD ACADEMIE lettering, the entrance landing, steps, detached canopy and black glazed-brick wall, the steel fire stair on the west head and the one-storey workshop wing and transverse block with north-light sheds; read for proportion and tone from Gemeente Amsterdam panoramas (CC BY 4.0), the PDOK orthophoto (CC BY 4.0), Wikimedia Commons photographs 'Frederik Roeskestraat 96, Gerrit Rietmieveld Academie pic1-pic4' by Alf van Beem (CC0), 'Rietveld Academie, ingang, 2011.jpg' by Paul Berendsen (CC BY-SA 4.0), 'GRA bijgebouw.jpg' by Ceescamel (CC BY-SA 4.0) and 'Rietveldacademie.jpg' by bureau Monumenten & Archeologie (attribution), and the municipal monument register text 200479. No pixels or meshes imported."
+  },
+  "buildingFootprint": {
+   "type": "Polygon",
+   "coordinates": [
+    [
+     [
+      4.86038558,
+      52.34211127
+     ],
+     [
+      4.86038529,
+      52.34211416
+     ],
+     [
+      4.85946342,
+      52.34207968
+     ],
+     [
+      4.85946307,
+      52.34208273
+     ],
+     [
+      4.85927807,
+      52.34207583
+     ],
+     [
+      4.85927833,
+      52.34207327
+     ],
+     [
+      4.85929806,
+      52.34188444
+     ],
+     [
+      4.85929834,
+      52.34188158
+     ],
+     [
+      4.85941619,
+      52.34188617
+     ],
+     [
+      4.85951285,
+      52.34188993
+     ],
+     [
+      4.85954358,
+      52.34189112
+     ],
+     [
+      4.85954331,
+      52.3418939
+     ],
+     [
+      4.85978863,
+      52.34190345
+     ],
+     [
+      4.85980843,
+      52.34190423
+     ],
+     [
+      4.85996644,
+      52.34191037
+     ],
+     [
+      4.85997329,
+      52.34191063
+     ],
+     [
+      4.8600042,
+      52.34191184
+     ],
+     [
+      4.86009403,
+      52.34191533
+     ],
+     [
+      4.86015809,
+      52.34191783
+     ],
+     [
+      4.86016,
+      52.34189855
+     ],
+     [
+      4.86018057,
+      52.34169155
+     ],
+     [
+      4.85993434,
+      52.34168237
+     ],
+     [
+      4.85994768,
+      52.34154814
+     ],
+     [
+      4.86013213,
+      52.34155433
+     ],
+     [
+      4.8601319,
+      52.34155675
+     ],
+     [
+      4.86043959,
+      52.34156822
+     ],
+     [
+      4.86043805,
+      52.34158372
+     ],
+     [
+      4.86043158,
+      52.34164885
+     ],
+     [
+      4.86038558,
+      52.34211127
+     ]
+    ]
+   ]
+  }
+ },
+ {
   "id": "effectenbeurs",
   "name": "Effectenbeurs (Beursplein 5)",
   "modelUrl": "./models/effectenbeurs.glb",
@@ -65179,180 +65353,6 @@
   }
  },
  {
-  "id": "gerrit-rietveld-academie",
-  "name": "Gerrit Rietveld Academie",
-  "modelUrl": "./models/gerrit-rietveld-academie.glb",
-  "suppressOsmIds": [
-   "NL.IMBAG.Pand.0363100012077325"
-  ],
-  "spatialSuppression": false,
-  "footprint": {
-   "centre": [
-    4.8598734,
-    52.34185608
-   ],
-   "headingDegrees": 0,
-   "lengthMetres": 80.3,
-   "widthMetres": 62.8
-  },
-  "surveyed": {
-   "anchor": [
-    4.8598734,
-    52.34185608
-   ],
-   "northOffsetDegrees": 0,
-   "source": "Vertex average of the BAG 0363100012077325 ring (RD, PDOK BAG WFS, CC0) in native east/south metres above the 3DBAG ground 0.692 m NAP (scripts/landmarks/gerrit-rietveld-academie-footprints.json, written by sarphati-plaza-prepare.ts --id=gerrit-rietveld-academie --pand=0363100012077325). The building is drawn on its own axis (bearing 86.9, the BAG edges): the curtain-wall block 75.2 x 20.9 m on the 2.09 m module (36 x 10 modules, the register's 2.10 m raster), the white glazed-brick wall 0.35 m proud round the west head, the one-storey workshop wing and transverse block from the BAG ring; roof 18.2 m, the rear set-back at 16.1 m, lift tower and plant decks and the wing's 3.6 and 4.68 m roofs from the 3DBAG LoD2.2 roof parts (CC BY 4.0); the sheds counted on the PDOK orthophoto (CC BY 4.0). Band section measured on the rectified Gemeente Amsterdam panorama TMX7316010203-001151_pano_0001_002208 (CC BY 4.0, 38.1 px/m); the south front, lettering, entrance, black wall and fire stair from Wikimedia Commons photographs by Alf van Beem (CC0) and Paul Berendsen (CC BY-SA 4.0); the canal front's basement band and stair bay from Rietveldacademie.jpg (bureau Monumenten & Archeologie, attribution). Register text: gemeentelijk monument 200479. The wing's outer faces (east, south, west of the transverse block) have no photograph and are inferred."
-  },
-  "groundAltitudeMetres": 0,
-  "facingOffsetDegrees": 0,
-  "heightMetres": 21.1,
-  "bagYear": 1967,
-  "materialOverrides": {
-   "glass": "#5b6665",
-   "pink": "#9fa9a8",
-   "frame": "#8e9694",
-   "white": "#e4e0da",
-   "greyBrick": "#2e2c2f",
-   "green": "#71292c",
-   "stone": "#6e726f",
-   "concrete": "#9a9c97",
-   "slate": "#cfcdc2",
-   "bronze": "#3a4048",
-   "copper": "#b2b8b5"
-  },
-  "attribution": {
-   "title": "Gerrit Rietveld Academie, Rietveld building, Fred. Roeskestraat 96 (G. Rietveld with J. van Dillen and J. van Tricht, 1959-1967)",
-   "author": "Map Recall",
-   "sourceUrl": "https://api.data.amsterdam.nl/v1/bag/panden/0363100012077325",
-   "licence": "CC BY 4.0",
-   "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
-   "modifications": "Original texture-free flat-colour geometry on the BAG footprint (CC0) with 3DBAG LoD2.2 heights (CC BY 4.0): the four-storey curtain-wall block on the 2.09 m module with clear vision bands between frosted bands over a recessed sokkel with basement windows, the main-stair bay on the canal front, the rear roof set-back, lift tower and plant deck with its round fans, the white glazed-brick wall round the west head with the GERRIT RIETVELD ACADEMIE lettering, the entrance landing, steps, detached canopy and black glazed-brick wall, the steel fire stair on the west head and the one-storey workshop wing and transverse block with north-light sheds; read for proportion and tone from Gemeente Amsterdam panoramas (CC BY 4.0), the PDOK orthophoto (CC BY 4.0), Wikimedia Commons photographs 'Frederik Roeskestraat 96, Gerrit Rietmieveld Academie pic1-pic4' by Alf van Beem (CC0), 'Rietveld Academie, ingang, 2011.jpg' by Paul Berendsen (CC BY-SA 4.0), 'GRA bijgebouw.jpg' by Ceescamel (CC BY-SA 4.0) and 'Rietveldacademie.jpg' by bureau Monumenten & Archeologie (attribution), and the municipal monument register text 200479. No pixels or meshes imported."
-  },
-  "buildingFootprint": {
-   "type": "Polygon",
-   "coordinates": [
-    [
-     [
-      4.86038558,
-      52.34211127
-     ],
-     [
-      4.86038529,
-      52.34211416
-     ],
-     [
-      4.85946342,
-      52.34207968
-     ],
-     [
-      4.85946307,
-      52.34208273
-     ],
-     [
-      4.85927807,
-      52.34207583
-     ],
-     [
-      4.85927833,
-      52.34207327
-     ],
-     [
-      4.85929806,
-      52.34188444
-     ],
-     [
-      4.85929834,
-      52.34188158
-     ],
-     [
-      4.85941619,
-      52.34188617
-     ],
-     [
-      4.85951285,
-      52.34188993
-     ],
-     [
-      4.85954358,
-      52.34189112
-     ],
-     [
-      4.85954331,
-      52.3418939
-     ],
-     [
-      4.85978863,
-      52.34190345
-     ],
-     [
-      4.85980843,
-      52.34190423
-     ],
-     [
-      4.85996644,
-      52.34191037
-     ],
-     [
-      4.85997329,
-      52.34191063
-     ],
-     [
-      4.8600042,
-      52.34191184
-     ],
-     [
-      4.86009403,
-      52.34191533
-     ],
-     [
-      4.86015809,
-      52.34191783
-     ],
-     [
-      4.86016,
-      52.34189855
-     ],
-     [
-      4.86018057,
-      52.34169155
-     ],
-     [
-      4.85993434,
-      52.34168237
-     ],
-     [
-      4.85994768,
-      52.34154814
-     ],
-     [
-      4.86013213,
-      52.34155433
-     ],
-     [
-      4.8601319,
-      52.34155675
-     ],
-     [
-      4.86043959,
-      52.34156822
-     ],
-     [
-      4.86043805,
-      52.34158372
-     ],
-     [
-      4.86043158,
-      52.34164885
-     ],
-     [
-      4.86038558,
-      52.34211127
-     ]
-    ]
-   ]
-  }
- },
- {
   "id": "hofkerk",
   "name": "Hofkerk (H.H. Martelaren van Gorcum)",
   "landmarkId": "extract_landmarks_1448080990",
@@ -66474,6 +66474,126 @@
      [
       4.92719525,
       52.35742775
+     ]
+    ]
+   ]
+  }
+ },
+ {
+  "id": "rietveld-academie-2006",
+  "name": "Gerrit Rietveld Academie, Benthem Crouwel building and Fedlev wing",
+  "modelUrl": "./models/rietveld-academie-2006.glb",
+  "suppressOsmIds": [
+   "NL.IMBAG.Pand.0363100012091838",
+   "w57860150"
+  ],
+  "spatialSuppression": false,
+  "footprint": {
+   "centre": [
+    4.85982031,
+    52.34134554
+   ],
+   "headingDegrees": 0,
+   "lengthMetres": 77.7,
+   "widthMetres": 43.1
+  },
+  "surveyed": {
+   "anchor": [
+    4.85982031,
+    52.34134554
+   ],
+   "northOffsetDegrees": 0,
+   "source": "Vertex average of the BAG 0363100012091838 ring (RD, PDOK BAG WFS, CC0) in native east/south metres above the 3DBAG ground 0.535 m NAP (scripts/landmarks/rietveld-academie-2006-footprints.json, written by sarphati-plaza-prepare.ts --id=rietveld-academie-2006 --pand=0363100012091838). Drawn on its own axis (bearing 87.1, the BAG edges): the Benthem Crouwel tower 40.25 x 16.86 m with its 32.4 m south slab and 28.35 m rest from the 3DBAG LoD2.2 roof parts (CC BY 4.0); its ribbons, ground storey and dimple pitch measured on the rectified Gemeente Amsterdam panorama TMX7316060226-000009_pano_0002_001188 (CC BY 4.0, 38.8 px/m); the Fedlev wing 28.63 x 42.93 m, its section and the south front's screens and lettering on the rectified panorama TMX7316010203-002476_pano_0001_000908 (CC BY 4.0, 45.9 px/m) scaled to the 3DBAG roof (9.9 m), its roof head (14.7 m) from 3DBAG; the north front, landing, V-pylon, stair and footbridge from Wikimedia Commons Fedlev-vleugel (1)-(6) by Ceescamel (CC BY-SA 4.0); the tower's east, west and north faces from Commons photographs by Alf van Beem (CC0), Branko Collin (public domain) and the Gerrit Rietveld Academie (CC BY-SA 4.0). The tower's north studio glazing below the wing's roof and the wing's west face are inferred."
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 0,
+  "heightMetres": 32.4,
+  "bagYear": 2006,
+  "materialOverrides": {
+   "slate": "#858784",
+   "bronze": "#5a5c59",
+   "copper": "#5f615e",
+   "pink": "#cfd0cb",
+   "white": "#e9e9e6",
+   "concrete": "#d9d8d3",
+   "glass": "#454b4c",
+   "frame": "#2a2d30",
+   "dark": "#1f2124",
+   "stone": "#5b6b66",
+   "ochre": "#555757",
+   "gold": "#f0f0ee"
+  },
+  "attribution": {
+   "title": "Gerrit Rietveld Academie and Sandberg Instituut, Fred. Roeskestraat 96-98: the Benthem Crouwel building (2004-2006) and the Fedlev wing (Studio Fedlev / Paulien Bremmer with Rob Hootsmans, 2018)",
+   "author": "Map Recall",
+   "sourceUrl": "https://api.data.amsterdam.nl/v1/bag/panden/0363100012091838",
+   "licence": "CC BY 4.0",
+   "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+   "modifications": "Original texture-free flat-colour geometry on the BAG footprint (CC0) with 3DBAG LoD2.2 heights (CC BY 4.0): the dark grey pressed-metal tower drawn as a field with a grid of shadow lines at twice the dimple pitch, its three low and two high ribbon windows on the street front and the two high ribbons on the east and west faces, the step in its roof, the glazed studio storeys of its north face and its recessed glazed ground storey; the Fedlev wing's glazed ground storey under the white slab band, the expanded-metal screen storey with folding shutters and loggias, the roof band and railing, the dark roof head, the alphabet and the academy's names on the glass, the landing on its V-shaped pylon and the stair up through the screen storey, and the sloping mesh-clad footbridge to the tower; read for proportion and tone from Gemeente Amsterdam panoramas (CC BY 4.0), the PDOK orthophoto (CC BY 4.0) and Wikimedia Commons photographs 'Fedlev-vleugel (1)-(6)' by Ceescamel (CC BY-SA 4.0), 'Frederik Roeskestraat pic2' by Alf van Beem (CC0), 'Sandberg instituut.jpg' by Branko Collin (public domain) and 'Exterior Benthem Crouwel Building circa 2005.jpg' by the Gerrit Rietveld Academie (CC BY-SA 4.0). No pixels or meshes imported."
+  },
+  "buildingFootprint": {
+   "type": "Polygon",
+   "coordinates": [
+    [
+     [
+      4.86045232,
+      52.34141833
+     ],
+     [
+      4.85986278,
+      52.34139755
+     ],
+     [
+      4.85987018,
+      52.34131862
+     ],
+     [
+      4.85975349,
+      52.34132231
+     ],
+     [
+      4.85974154,
+      52.34132186
+     ],
+     [
+      4.85971333,
+      52.3416138
+     ],
+     [
+      4.85929419,
+      52.3415987
+     ],
+     [
+      4.85933113,
+      52.34121351
+     ],
+     [
+      4.85975057,
+      52.34122849
+     ],
+     [
+      4.85974406,
+      52.34129568
+     ],
+     [
+      4.8597561,
+      52.34129612
+     ],
+     [
+      4.85987213,
+      52.34129795
+     ],
+     [
+      4.85987698,
+      52.34124623
+     ],
+     [
+      4.86046653,
+      52.34126701
+     ],
+     [
+      4.86045232,
+      52.34141833
      ]
     ]
    ]
