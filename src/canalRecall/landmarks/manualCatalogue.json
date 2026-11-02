@@ -59658,5 +59658,151 @@
     ]
    ]
   }
+ },
+ {
+  "id": "betonnen-silo-silodam",
+  "name": "Betonnen Silo (Silodam)",
+  "modelUrl": "./models/betonnen-silo-silodam.glb",
+  "suppressOsmIds": [
+   "NL.IMBAG.Pand.0363100012237143",
+   "tower:NL.IMBAG.Pand.0363100012237143"
+  ],
+  "spatialSuppression": false,
+  "footprint": {
+   "centre": [
+    4.89141343,
+    52.39023995
+   ],
+   "headingDegrees": 0,
+   "lengthMetres": 31.7,
+   "widthMetres": 50.0
+  },
+  "surveyed": {
+   "anchor": [
+    4.89141343,
+    52.39023995
+   ],
+   "northOffsetDegrees": 0,
+   "source": "Vertex average of the BAG 0363100012237143 outline (RD, 3DBAG LoD0); volumes from the 3DBAG LoD2.2 roof planes of that pand (CC BY 4.0): ground-storey canopies 5.3-5.6 m, slab roof 28.7 m, roof storey eaves 32.7 m and ridge 35.2 m, head tower 46.4 m, core 48.4-48.7 m, in native east/south metres (scripts/landmarks/silodam-silos-prepare.ts). Storeys, window columns, the spiral stair, porthole panels and tower windows measured on Wikimedia Commons 'Silodam, Betonnen graansilo foto 1-6' (Alf van Beem, public domain) and the rectified Gemeente Amsterdam panorama crops w01-w07 (CC BY 4.0)."
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 0,
+  "heightMetres": 48.6,
+  "bagYear": 1952,
+  "materialOverrides": {
+   "red": "#8c2f3c",
+   "stone": "#a7a39b",
+   "ochre": "#b9a98c",
+   "white": "#e3e2dd",
+   "glass": "#4a5560",
+   "frame": "#a2a6a9",
+   "dark": "#3a3c3e",
+   "slate": "#8e9496",
+   "bronze": "#7f8183",
+   "concrete": "#b2b1ac"
+  },
+  "attribution": {
+   "title": "Betonnen Silo, Silodam (1952; converted to housing 1999)",
+   "author": "Map Recall",
+   "sourceUrl": "https://nl.wikipedia.org/wiki/Silodam",
+   "licence": "CC BY 4.0",
+   "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+   "modifications": "Original texture-free flat-colour geometry on the BAG outline (CC0) and 3DBAG LoD2.2 heights (CC BY 4.0): the concrete slab with its glazed ground storey, eleven columns of French-balcony windows on both long fronts, the south end with the spiral fire stair, the set-back glazed roof storey under its shallow gabled roof, maroon railings, and the head tower with gridded windows, porthole panels, eave canopies and the white core. Reference photographs (Wikimedia Commons, Alf van Beem, public domain; Gemeente Amsterdam panoramas) guided the detail; no pixels or meshes imported."
+  },
+  "buildingFootprint": {
+   "type": "Polygon",
+   "coordinates": [
+    [
+     [
+      4.8915449,
+      52.3903708
+     ],
+     [
+      4.8915303,
+      52.3903684
+     ],
+     [
+      4.8915263,
+      52.3903784
+     ],
+     [
+      4.8914986,
+      52.3903742
+     ],
+     [
+      4.8914663,
+      52.3903849
+     ],
+     [
+      4.8914726,
+      52.3903714
+     ],
+     [
+      4.8914246,
+      52.3903631
+     ],
+     [
+      4.8914187,
+      52.3903758
+     ],
+     [
+      4.8913649,
+      52.390367
+     ],
+     [
+      4.89137,
+      52.3903545
+     ],
+     [
+      4.8912628,
+      52.3903368
+     ],
+     [
+      4.8912653,
+      52.3903082
+     ],
+     [
+      4.8912461,
+      52.3903051
+     ],
+     [
+      4.891291,
+      52.3902019
+     ],
+     [
+      4.8913123,
+      52.3902053
+     ],
+     [
+      4.8913849,
+      52.3900409
+     ],
+     [
+      4.8913633,
+      52.3900374
+     ],
+     [
+      4.8913853,
+      52.3899874
+     ],
+     [
+      4.8914069,
+      52.389991
+     ],
+     [
+      4.8914314,
+      52.3899351
+     ],
+     [
+      4.8917156,
+      52.3899816
+     ],
+     [
+      4.8915449,
+      52.3903708
+     ]
+    ]
+   ]
+  }
  }
 ]

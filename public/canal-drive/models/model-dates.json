@@ -356,6 +356,11 @@
       "version": "83f0cf4a3e7af3dc",
       "dateSource": "asset-update"
     },
+    "betonnen-silo-silodam": {
+      "updatedAt": "2026-11-02T04:30:41.202Z",
+      "version": "fc808da77c981955",
+      "dateSource": "asset-update"
+    },
     "blankenstraat-15": {
       "updatedAt": "2026-10-20T10:16:58.124Z",
       "version": "631eace09fd06d0d",
@@ -1249,6 +1254,11 @@
     "graansilo-korthals-altes": {
       "updatedAt": "2026-11-02T04:07:39.405Z",
       "version": "62eba8d4912398f1",
+      "dateSource": "asset-update"
+    },
+    "graansilo-korthals-altes.lod1": {
+      "updatedAt": "2026-11-02T04:08:40.053Z",
+      "version": "230ace160db7f2a6",
       "dateSource": "asset-update"
     },
     "grasweg-116": {

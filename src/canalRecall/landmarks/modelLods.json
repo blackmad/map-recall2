@@ -2170,5 +2170,11 @@
   "buildVersion": 2,
   "bytes": 114320,
   "triangles": 6800
+ },
+ "betonnen-silo-silodam": {
+  "sourceHash": "fc808da77c981955",
+  "buildVersion": 2,
+  "bytes": 94952,
+  "triangles": 5954
  }
 }
