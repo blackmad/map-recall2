@@ -54186,5 +54186,203 @@
     ]
    ]
   }
+ },
+ {
+  "id": "ziggo-dome",
+  "name": "Ziggo Dome",
+  "modelUrl": "./models/ziggo-dome.glb",
+  "suppressOsmIds": [
+   "NL.IMBAG.Pand.0363100012238052"
+  ],
+  "spatialSuppression": false,
+  "footprint": {
+   "centre": [
+    4.93749253,
+    52.31355647
+   ],
+   "headingDegrees": 0,
+   "lengthMetres": 143.6,
+   "widthMetres": 131.7
+  },
+  "surveyed": {
+   "anchor": [
+    4.93749253,
+    52.31355647
+   ],
+   "northOffsetDegrees": 0,
+   "source": "Vertex average of the BAG 0363100012238052 ring (RD, PDOK BAG WFS, CC0) in native east/south metres (scripts/landmarks/ziggo-dome-footprints.json, citroen-zuid-prepare.ts --id=ziggo-dome). Box roof, SW dock canopy and the four roof plant housings from the 3DBAG LoD2.2 roof parts (CC BY 4.0); skin, window rows, podium and docks measured on rectified Gemeente Amsterdam panorama crops (CC BY 4.0) and the Wikimedia Commons photograph 2020 Ziggodome.jpg (scripts/landmarks/ziggo-dome-inventory.json)."
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 0,
+  "heightMetres": 34.0,
+  "bagYear": 2012,
+  "materialOverrides": {
+   "greyBrick": "#34363a",
+   "bronze": "#46484d",
+   "concrete": "#b8b6ae",
+   "stone": "#5f6266",
+   "glass": "#4a5866",
+   "dark": "#232528",
+   "slate": "#6f7173",
+   "frame": "#4d5054",
+   "gold": "#d9a920",
+   "white": "#e4e4df",
+   "canopyGlass": "#8fa6b3"
+  },
+  "attribution": {
+   "title": "Ziggo Dome (2012, Benthem Crouwel Architekten)",
+   "author": "Map Recall",
+   "sourceUrl": "https://nl.wikipedia.org/wiki/Ziggo_Dome",
+   "licence": "CC BY 4.0",
+   "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+   "modifications": "Original texture-free flat-colour geometry: the black box with its LED-rod skin, the window rows behind the perforated skin on the SW and NE faces, the podium and base bands with service doors, the SW loading docks with striped piers, the four roof plant housings and the two glazed bridges on the NE face. Read for proportion only from the Gemeente Amsterdam panoramas (CC BY 4.0) and Wikimedia Commons photographs (2020 Ziggodome.jpg, CC BY-SA 4.0; Ziggo Dome.JPG, CC BY-SA 3.0; Ziggodome Amsterdam - panoramio.jpg, CC BY 3.0; ZiggoDome2012.jpg, CC BY-SA 3.0); footprint BAG (CC0), roof parts 3DBAG (CC BY 4.0). No pixels or meshes imported."
+  },
+  "buildingFootprint": {
+   "type": "Polygon",
+   "coordinates": [
+    [
+     [
+      4.93807957,
+      52.31329008
+     ],
+     [
+      4.93807975,
+      52.31329051
+     ],
+     [
+      4.93807616,
+      52.31329448
+     ],
+     [
+      4.9380597,
+      52.31331271
+     ],
+     [
+      4.93805436,
+      52.31331863
+     ],
+     [
+      4.93806792,
+      52.31334692
+     ],
+     [
+      4.93811565,
+      52.31336327
+     ],
+     [
+      4.9380885,
+      52.31339285
+     ],
+     [
+      4.93810213,
+      52.3134211
+     ],
+     [
+      4.9381115,
+      52.31342433
+     ],
+     [
+      4.93814086,
+      52.31343446
+     ],
+     [
+      4.93814758,
+      52.31343679
+     ],
+     [
+      4.93814798,
+      52.31343738
+     ],
+     [
+      4.9376699,
+      52.31396171
+     ],
+     [
+      4.93766942,
+      52.31396187
+     ],
+     [
+      4.93766271,
+      52.31395958
+     ],
+     [
+      4.93763301,
+      52.31394946
+     ],
+     [
+      4.93762399,
+      52.31394638
+     ],
+     [
+      4.93757802,
+      52.31395405
+     ],
+     [
+      4.93755091,
+      52.31398361
+     ],
+     [
+      4.93750334,
+      52.31396774
+     ],
+     [
+      4.93745642,
+      52.31397543
+     ],
+     [
+      4.93745123,
+      52.31398107
+     ],
+     [
+      4.9374345,
+      52.31399919
+     ],
+     [
+      4.93743077,
+      52.31400323
+     ],
+     [
+      4.93742967,
+      52.31400338
+     ],
+     [
+      4.93611301,
+      52.31355294
+     ],
+     [
+      4.93611273,
+      52.31355213
+     ],
+     [
+      4.93611453,
+      52.31355015
+     ],
+     [
+      4.93604161,
+      52.3135252
+     ],
+     [
+      4.93668761,
+      52.31281622
+     ],
+     [
+      4.9367607,
+      52.31284125
+     ],
+     [
+      4.93676256,
+      52.31283922
+     ],
+     [
+      4.93676326,
+      52.31283908
+     ],
+     [
+      4.93807957,
+      52.31329008
+     ]
+    ]
+   ]
+  }
  }
 ]

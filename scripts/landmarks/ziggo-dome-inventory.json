@@ -1,0 +1,270 @@
+{
+ "schemaVersion": 1,
+ "id": "ziggo-dome",
+ "pand": "0363100012238052",
+ "brief": "scripts/landmarks/ziggo-dome-brief.md",
+ "signature": [
+  "led-skin",
+  "window-rows-sw",
+  "loading-docks",
+  "skybridges",
+  "podium",
+  "roof-plant"
+ ],
+ "walls": [
+  {
+   "tag": "w01-331",
+   "bearing": 331,
+   "lengthM": 102.8,
+   "centre": [
+    4.9367745,
+    52.31378
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-09-23_13-57-40_00061",
+   "capturedAt": "2025-09-23",
+   "checked": true,
+   "items": [
+    {
+     "id": "led-skin",
+     "kind": "other",
+     "where": "all four faces 8.2-31.4 m: charcoal perforated panels carrying the vertical LED rods (85 panels on the 102.8 m NW face)",
+     "approxSizeM": [
+      102.8,
+      23.2
+     ],
+     "seenIn": "recording_2025-09-23_13-57-40_00061",
+     "plan": "simplified",
+     "how": "charcoal skin wall with a 0.12 m fin per 1.2 m panel joint (the LED rods) and a coping rim; no LED image"
+    },
+    {
+     "id": "podium",
+     "kind": "other",
+     "where": "pale concrete deck wall 0-6.0 m under the skin, with the dark base band and deck railing 6.0-8.2 m",
+     "approxSizeM": [
+      102.8,
+      8.2
+     ],
+     "seenIn": "recording_2025-09-23_13-57-40_00061",
+     "plan": "simplified",
+     "how": "pale concrete band 0.3 m proud 0-6.0 m and a grey base band 6.0-8.2 m round the whole box"
+    },
+    {
+     "id": "screen-content",
+     "kind": "lettering",
+     "where": "Ziggo / ziggo dome logos and video shown on the LED skin at night",
+     "approxSizeM": [
+      30,
+      12
+     ],
+     "seenIn": "Ziggo Dome.JPG and Ziggodome Amsterdam - panoramio.jpg (Wikimedia Commons)",
+     "plan": "skipped",
+     "skip": {
+      "reason": "temporary",
+      "note": "LED screen content changes with every event; the 2012 welcome banner (ZiggoDome2012.jpg) is gone"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "w02-151",
+   "bearing": 151,
+   "lengthM": 102.8,
+   "centre": [
+    4.937425,
+    52.3130665
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002157_pano_0000_004531",
+   "capturedAt": "2021-06-04",
+   "checked": true,
+   "items": [
+    {
+     "id": "se-doors",
+     "kind": "other",
+     "where": "14 service doors in the base band under the skin, SE face",
+     "approxSizeM": [
+      1.6,
+      2.1
+     ],
+     "seenIn": "TMX7316010203-002157_pano_0000_004531",
+     "plan": "modelled",
+     "note": "dark door slabs in the grey base band on a 6.6 m pitch"
+    }
+   ]
+  },
+  {
+   "tag": "w03-241",
+   "bearing": 241,
+   "lengthM": 90.4,
+   "centre": [
+    4.936368,
+    52.3131725
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-09-23_14-31-54_00019",
+   "capturedAt": "2025-09-23",
+   "checked": true,
+   "items": [
+    {
+     "id": "window-rows-sw",
+     "kind": "window-shape",
+     "where": "windows behind the perforated skin: a top ribbon 26.5-28.9 m and three rows of 12 window groups (4 m wide, 5.9 m pitch) at 22.1, 16.9 and 11.8 m",
+     "approxSizeM": [
+      75,
+      17
+     ],
+     "seenIn": "recording_2025-09-23_14-31-54_00019 + commons/2020_Ziggodome.jpg (Wikimedia Commons, CC BY-SA 4.0)",
+     "plan": "modelled",
+     "note": "glass slabs 6 cm proud of the skin, crossed by the LED-rod fins as in the photo"
+    },
+    {
+     "id": "loading-docks",
+     "kind": "canopy",
+     "where": "loading docks under a 5.7 m deep concrete canopy at 5.3 m (3DBAG roof part), piers striped yellow and black",
+     "approxSizeM": [
+      90,
+      5.3
+     ],
+     "seenIn": "commons/2020_Ziggodome.jpg (Wikimedia Commons, CC BY-SA 4.0)",
+     "plan": "modelled",
+     "note": "canopy slab, 14 piers with three black diagonal stripes each, dark dock doors between"
+    },
+    {
+     "id": "dock-floodlights",
+     "kind": "lamp",
+     "where": "a row of floodlights along the skin bottom over the docks",
+     "approxSizeM": [
+      85,
+      0.4
+     ],
+     "seenIn": "commons/2020_Ziggodome.jpg (Wikimedia Commons, CC BY-SA 4.0)",
+     "plan": "skipped",
+     "skip": {
+      "reason": "too-small",
+      "note": "0.4 m fittings at 8 m height, under a pixel at gallery size"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "w04-61",
+   "bearing": 61,
+   "lengthM": 66.9,
+   "centre": [
+    4.937912,
+    52.3137015
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002157_pano_0000_004507",
+   "capturedAt": "2021-06-04",
+   "checked": true,
+   "items": [
+    {
+     "id": "window-rows-ne",
+     "kind": "window-shape",
+     "where": "NE face: top ribbon in two runs and window groups behind the skin at the same heights as the SW face",
+     "approxSizeM": [
+      45,
+      17
+     ],
+     "seenIn": "TMX7316010203-002157_pano_0000_004507",
+     "plan": "modelled",
+     "note": "only the groups the crop shows; the left third is hidden by the bridges"
+    },
+    {
+     "id": "skybridges",
+     "kind": "other",
+     "where": "two glazed bridges with white decks from the NE face to the neighbouring pand 0363100012239295 (24.9 m): a two-level one at 11-18.4 m and a single-level one at 21-24.2 m",
+     "approxSizeM": [
+      25,
+      7.4
+     ],
+     "seenIn": "TMX7316010203-002157_pano_0000_004507",
+     "plan": "simplified",
+     "how": "white deck and roof slabs with a glass box between, a white mid band on the two-level bridge; heights from the rectified crop with the deck at ~6.5 m"
+    },
+    {
+     "id": "ne-doors",
+     "kind": "other",
+     "where": "two pairs of service doors on the deck in the dark base band",
+     "approxSizeM": [
+      1.8,
+      2.1
+     ],
+     "seenIn": "TMX7316010203-002157_pano_0000_004507",
+     "plan": "modelled"
+    }
+   ]
+  },
+  {
+   "tag": "w05-151",
+   "bearing": 151,
+   "lengthM": 5.7,
+   "centre": [
+    4.9367275,
+    52.3128305
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2024-09-13_11-26-33_00899",
+   "capturedAt": "2024-09-13",
+   "checked": true,
+   "items": []
+  },
+  {
+   "tag": "w06-331",
+   "bearing": 331,
+   "lengthM": 5.7,
+   "centre": [
+    4.9360815,
+    52.3135395
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-09-23_14-31-54_00035",
+   "capturedAt": "2025-09-23",
+   "checked": true,
+   "items": [
+    {
+     "id": "corner-deck-wall",
+     "kind": "other",
+     "where": "curved concrete deck wall with a glass railing at the N corner sawtooth",
+     "approxSizeM": [
+      6,
+      6
+     ],
+     "seenIn": "recording_2025-09-23_14-31-54_00035",
+     "plan": "simplified",
+     "how": "the podium band follows the BAG sawtooth; the railing is not modelled"
+    }
+   ]
+  },
+  {
+   "tag": "roof",
+   "bearing": 0,
+   "lengthM": 100,
+   "evidence": "inferred",
+   "checked": true,
+   "items": [
+    {
+     "id": "roof-plant",
+     "kind": "other",
+     "where": "four plant housings on the roof, 12 x 6.8 m flat tops at 34.0 m with sloped ends (3DBAG LoD2.2 roof parts)",
+     "approxSizeM": [
+      19,
+      2.6
+     ],
+     "seenIn": "3DBAG NL.IMBAG.Pand.0363100012238052",
+     "plan": "modelled",
+     "note": "convex hulls of the 3DBAG roof parts"
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  }
+ ]
+}

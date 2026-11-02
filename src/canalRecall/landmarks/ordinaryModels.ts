@@ -37,6 +37,9 @@ export const SHADOWED_BY_LANDMARK: Readonly<Record<string, string>> = {
   // Marnixstraat car park (2026-10-13 large recipe): its ribbon windows were 18 cm holes in the 3DBAG shell and the ramp
   // drums plain cylinders; the bespoke Europarking model (2026-10-17) draws the banded drums, deck block and Waterkant.
   'ordinary-0363100012185422': 'europarking-marnixstraat',
+  // Ziggo Dome (2026-10-06 ordinary tall-box recipe): one ribbed box without the window rows, docks, roof plant or bridges;
+  // the bespoke model (#191, 2026-11-02) draws them.
+  'ordinary-0363100012238052': 'ziggo-dome',
 };
 /** Every catalogue model (both categories) that no landmark shadows: what the game draws. */
 export const ORDINARY_BUILDINGS: readonly SignatureModelSpec[] = models.filter(m => !SHADOWED_BY_LANDMARK[m.id]).map(ordinarySpecFor);

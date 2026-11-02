@@ -2056,5 +2056,11 @@
   "buildVersion": 2,
   "bytes": 52708,
   "triangles": 2230
+ },
+ "ziggo-dome": {
+  "sourceHash": "908a767f62e448a4",
+  "buildVersion": 2,
+  "bytes": 32664,
+  "triangles": 1182
  }
 }
