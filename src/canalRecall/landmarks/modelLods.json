@@ -2140,5 +2140,11 @@
   "buildVersion": 2,
   "bytes": 59080,
   "triangles": 2668
+ },
+ "sarphati-plaza": {
+  "sourceHash": "dcdb0a2580365d32",
+  "buildVersion": 2,
+  "bytes": 86660,
+  "triangles": 5070
  }
 }

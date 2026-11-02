@@ -1,0 +1,373 @@
+{
+ "schemaVersion": 1,
+ "id": "sarphati-plaza",
+ "pand": "0363100012182840",
+ "brief": "scripts/landmarks/sarphati-plaza-brief.md",
+ "signature": [
+  "t-vault-cap",
+  "drum-ring-canopies",
+  "t-crown-steps",
+  "drum-lettering",
+  "t-glass-strip-n",
+  "drum-columns",
+  "e-window-bays"
+ ],
+ "walls": [
+  {
+   "tag": "w01-342",
+   "bearing": 342,
+   "lengthM": 39.3,
+   "centre": [
+    4.907428,
+    52.3609115
+   ],
+   "evidence": "photo",
+   "panoId": "b_20241211_0954_Track03_Sphere_00013",
+   "capturedAt": "2024-12-11",
+   "checked": true,
+   "items": [
+    {
+     "id": "drum-ring-canopies",
+     "kind": "canopy",
+     "where": "east end of the front, the corner to the Rhijnspoorplein: the round brick drum whose two upper storeys cantilever out over the entrance on two navy round columns, white panelled soffits, a lower ring with the lettering band and a ring of windows set back under it",
+     "approxSizeM": [
+      15.2,
+      16.3
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002825_pano_0003_001362",
+     "how": "drum(): circular segment prisms per level (ground wall r 5.4, lettering band and storey-2 wall r 5.7-6.3, upper ring r 7.6 to the BAG arc), white soffits, navy columns"
+    },
+    {
+     "id": "drum-lettering",
+     "kind": "lettering",
+     "where": "on the drum: SARPHATI PLAZA in raised silver capitals on the lettering band over the entrance, following the curve",
+     "approxSizeM": [
+      7.0,
+      0.7
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002825_pano_0003_001362",
+     "how": "arcGlyphPlacements (src/canalRecall/landmarks/arcLettering.ts) + letters() per glyph on its own tangent frame"
+    },
+    {
+     "id": "drum-entrance",
+     "kind": "other",
+     "where": "drum ground floor: two-storey glazed entrance with navy mullions and transoms between brick piers, granite podium and three curved granite steps",
+     "approxSizeM": [
+      5.0,
+      7.4
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-06-19_03-28-47_03191",
+     "how": "drum(): glass bay with navy mullions/transoms in the drum wall, curved step slabs"
+    },
+    {
+     "id": "drum-banners",
+     "kind": "sign",
+     "where": "either side of the entrance: two tall navy banners, the tenant list and RHIJNSPOORPLEIN 10 38",
+     "approxSizeM": [
+      0.9,
+      3.0
+     ],
+     "plan": "simplified",
+     "seenIn": "recording_2025-06-19_03-28-47_03191",
+     "how": "navy panels with the digits 10 / 38 in white kit glyphs; the tenant list is too small to letter"
+    },
+    {
+     "id": "drum-columns",
+     "kind": "colonnade",
+     "where": "two navy round columns, about 0.5 m, standing under the edge of the upper ring either side of the entrance",
+     "approxSizeM": [
+      0.5,
+      11.5
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002825_pano_0003_001362",
+     "how": "CylinderGeometry columns at r 7.1, from the pavement to the upper ring soffit"
+    },
+    {
+     "id": "drum-window-rings",
+     "kind": "window-shape",
+     "where": "drum storeys 2 and 3: a ring of square navy-framed windows on each, about 1.3 m apart",
+     "approxSizeM": [
+      15,
+      1.6
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002825_pano_0003_001362",
+     "how": "windows on short tangent frames around each ring"
+    },
+    {
+     "id": "n-shop-fronts",
+     "kind": "window-shape",
+     "where": "brick east part ground floor: three wide shop windows (America Today and two more) under a dark fascia band, brick piers between",
+     "approxSizeM": [
+      6.0,
+      4.0
+     ],
+     "plan": "modelled",
+     "seenIn": "b_20241211_0954_Track03_Sphere_00013",
+     "how": "northFront(): glass in the wall under a dark fascia ledge"
+    },
+    {
+     "id": "n-window-pairs",
+     "kind": "window-shape",
+     "where": "brick east part: seven axes of paired windows on storeys 1 and 2, shorter pairs on storey 3 above a light stone band; the two axes by the drum have two-storey tall window pairs over the ground floor",
+     "approxSizeM": [
+      27,
+      12
+     ],
+     "plan": "modelled",
+     "seenIn": "b_20241211_0954_Track03_Sphere_00013",
+     "how": "northFront(): pairs per axis on a 3.5 m pitch"
+    },
+    {
+     "id": "n-west-wing",
+     "kind": "window-shape",
+     "where": "five-storey west part (a -23.9..-11.9): three axes of window pairs, storeys 2-3 one tall window pair per axis, a projecting light cornice band at 14 m and a top storey of six small windows; ground floor entrance and a glazed shop",
+     "approxSizeM": [
+      12,
+      17.6
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002373_pano_0006_000230",
+     "how": "westWing(): pairs, tall pairs, cornice ledge"
+    },
+    {
+     "id": "n-stone-bands",
+     "kind": "other",
+     "where": "light stone bands across the brick: the shop fascia at 4.4 m, the band under the top storey at 12.6 m, the coping",
+     "approxSizeM": [
+      39,
+      0.3
+     ],
+     "plan": "modelled",
+     "seenIn": "b_20241211_0954_Track03_Sphere_00013",
+     "how": "ledgeStrip bands"
+    },
+    {
+     "id": "n-sale-sign",
+     "kind": "sign",
+     "where": "TE HUUR letting banner on the east part",
+     "approxSizeM": [
+      4,
+      3.7
+     ],
+     "plan": "skipped",
+     "seenIn": "b_20241211_0954_Track03_Sphere_00013",
+     "skip": {
+      "reason": "temporary",
+      "note": "letting banner, absent on the 2021 capture"
+     }
+    },
+    {
+     "id": "n-shop-names",
+     "kind": "sign",
+     "where": "shop fascia names (AMERICA TODAY)",
+     "approxSizeM": [
+      2.5,
+      0.3
+     ],
+     "plan": "skipped",
+     "seenIn": "b_20241211_0954_Track03_Sphere_00013",
+     "skip": {
+      "reason": "temporary",
+      "note": "tenant shop name on the fascia; changes with the tenant"
+     }
+    },
+    {
+     "id": "t-crown-steps",
+     "kind": "tower",
+     "where": "tower crown: stepped silhouette, 2.4 m shoulders at 36.1 m either side, the upper block to 39.6 m, a slightly raised panel over the glass strip",
+     "approxSizeM": [
+      15.2,
+      3.5
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002373_pano_0006_000230",
+     "how": "towerCrown(): shoulders/upper block from the 3DBAG LoD2.2 strips"
+    },
+    {
+     "id": "t-vault-cap",
+     "kind": "dome",
+     "where": "on the tower top: a dark shallow barrel-vault cap with an overhanging curved end, running north-south over the full depth (3DBAG ridge 42.5 m, edges 41.4 m), on a dark recessed band",
+     "approxSizeM": [
+      6.9,
+      2.9
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002373_pano_0006_000230",
+     "how": "towerCrown(): segmental vault shell from a Shape extrusion, dark recess band under it"
+    },
+    {
+     "id": "t-glass-strip-n",
+     "kind": "window-shape",
+     "where": "tower north face: a full-height glazed strip in the middle (about 3.2 m, four lights wide, many transoms), one column of window pairs at the east end, the west part blank granite",
+     "approxSizeM": [
+      3.2,
+      20
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-06-19_03-28-47_03532",
+     "how": "towerFace(): strip glass with navy grid, pairs per storey"
+    },
+    {
+     "id": "t-granite",
+     "kind": "other",
+     "where": "tower clad in light warm granite panels with fine joints",
+     "approxSizeM": [
+      15,
+      36
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002591_pano_0000_000992",
+     "how": "stone tint measured on w04-72"
+    }
+   ],
+   "note": "The 39.3 m BAG wall is the brick front on the Sarphatistraat (Weesperplein end): a four-storey east part (a -11.9..15.4 m) and the five-storey west part (a -23.9..-11.9). The tower stands 7.6 m behind it (its north face at b -7.2 rises above the 16.3 m brick roof) and is listed here too, from the same crops and far view recording_2025-06-19_03-28-47_03532 (2025-06-19). The curved entrance drum at the east end of this front has no brief wall (its BAG facets are < 4 m); it is listed here from TMX7316010203-002825_pano_0003_001362 (2022-10-07) and recording_2025-06-19_03-28-47_03191 (2025-06-19)."
+  },
+  {
+   "tag": "w02-162",
+   "bearing": 162,
+   "lengthM": 15.2,
+   "centre": [
+    4.9077315,
+    52.360694
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-06-19_03-28-47_03197",
+   "capturedAt": "2025-06-19",
+   "checked": true,
+   "items": [
+    {
+     "id": "s-glass-strip",
+     "kind": "window-shape",
+     "where": "full-height glazed strip in the middle (a 5.6-8.9 m), to the ground",
+     "approxSizeM": [
+      3.3,
+      36
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-06-19_03-28-47_03197",
+     "how": "towerFace()"
+    },
+    {
+     "id": "s-window-pairs",
+     "kind": "window-shape",
+     "where": "one column of paired windows (0.9 x 2.3 m each, two transoms) at each end on a 3.3 m storey pitch; tall ground-storey windows below them",
+     "approxSizeM": [
+      2.3,
+      33
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-06-19_03-28-47_03197",
+     "how": "towerFace()"
+    }
+   ],
+   "note": "Tower south face over the garden: symmetric, one column of window pairs at each end, the full-height glazed strip in the middle; the ground storey has tall windows in the pair columns. The garden fence and the Hildo Krop Weesperpoort monument in front are separate objects."
+  },
+  {
+   "tag": "w03-252",
+   "bearing": 252,
+   "lengthM": 14.8,
+   "centre": [
+    4.9075915,
+    52.360735
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "items": [],
+   "note": "No panorama within 35 m (garden side). Inferred: the east face pattern (four bays of four-light windows, tall ground-storey windows), labelled inferred in the builder."
+  },
+  {
+   "tag": "w04-72",
+   "bearing": 72,
+   "lengthM": 14.8,
+   "centre": [
+    4.9078025,
+    52.360779
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002591_pano_0000_000992",
+   "capturedAt": "2022-06-13",
+   "checked": true,
+   "items": [
+    {
+     "id": "e-window-bays",
+     "kind": "window-shape",
+     "where": "four (six above the drum) bays of four-light windows per storey, nine storeys",
+     "approxSizeM": [
+      22,
+      30
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002591_pano_0000_000992",
+     "how": "towerFace()"
+    },
+    {
+     "id": "e-tall-ground",
+     "kind": "window-shape",
+     "where": "two-storey ground floor of four tall windows with navy frames and transoms",
+     "approxSizeM": [
+      13,
+      5.6
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002591_pano_0000_000992",
+     "how": "towerFace()"
+    }
+   ],
+   "note": "Tower east face on the Rhijnspoorplein: four bays of wide four-light windows (2.3 x 2.3 m, mullion and two transoms) on a 3.5 m pitch, nine storeys over a two-storey ground floor of tall windows (1.1-6.7 m); above the drum (b -7.2..0) the face runs on with two more bays (w04 thumb). Brick plinth."
+  },
+  {
+   "tag": "w05-161",
+   "bearing": 161,
+   "lengthM": 12,
+   "centre": [
+    4.9073175,
+    52.3607295
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "items": [],
+   "note": "No panorama within 35 m (the south faces of the brick wing over the garden, behind trees). Inferred: brick with window pairs on the north front axes."
+  },
+  {
+   "tag": "w06-162",
+   "bearing": 162,
+   "lengthM": 11.9,
+   "centre": [
+    4.907474,
+    52.360781
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "items": [],
+   "note": "No panorama within 35 m (the south faces of the brick wing over the garden, behind trees). Inferred: brick with window pairs on the north front axes."
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas (brief crops and aimed views listed in staging/landmarks/sarphati-plaza/sources.md)",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  },
+  {
+   "name": "BAG pand 0363100012182840 and its verblijfsobjecten (Rhijnspoorplein 10, Sarphatistraat 44A-K, 48)",
+   "url": "https://api.data.amsterdam.nl/v1/bag/panden/0363100012182840",
+   "licence": "CC0"
+  },
+  {
+   "name": "3DBAG NL.IMBAG.Pand.0363100012182840",
+   "url": "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012182840",
+   "licence": "CC BY 4.0"
+  }
+ ]
+}

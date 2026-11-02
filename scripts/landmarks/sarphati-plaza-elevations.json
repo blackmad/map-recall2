@@ -1,0 +1,84 @@
+{
+ "id": "sarphati-plaza",
+ "countedBy": "lane #199 (opus) from the rectified panorama crops w04-72 (TMX7316010203-002591_pano_0000_000992, 2022-06-13, 50 px/m), w02-162 (recording_2025-06-19_03-28-47_03197, 50 px/m) and w01-342 (b_20241211_0954_Track03_Sphere_00013 and its 2021 second view, 37.8 px/m); ribbon convention; a door and a shop window count. Not a blind haiku count; the integrator may re-count.",
+ "facades": [
+  {
+   "name": "tower east face (Rhijnspoorplein)",
+   "bearing": 72,
+   "photo": "artifacts/landmark-briefs/sarphati-plaza/w04-72.jpg",
+   "alongM": [
+    0.5,
+    15.3
+   ],
+   "heightM": [
+    0.5,
+    32.4
+   ],
+   "rows": [
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4
+   ],
+   "columns": 4,
+   "symmetric": true,
+   "note": "The 14.8 m BAG wall from the tower's south corner to the drum: four bays of wide four-light windows, a two-storey ground floor of four tall windows (1.1-6.7 m) and eight storeys of four windows inside the crop (the crop ends at 32 m; the ninth storey and the two bays over the drum are outside it)."
+  },
+  {
+   "name": "tower south face (garden)",
+   "bearing": 162,
+   "photo": "artifacts/landmark-briefs/sarphati-plaza/w02-162.jpg",
+   "alongM": [
+    0,
+    15.15
+   ],
+   "heightM": [
+    0.5,
+    32.0
+   ],
+   "rows": [
+    2,
+    4,
+    4,
+    4,
+    1,
+    4,
+    4,
+    4,
+    4,
+    4
+   ],
+   "columns": 7,
+   "symmetric": true,
+   "note": "The tower's 15.2 m garden face: a column of window pairs at each end (four windows, four axes per storey), the glazed strip in the middle running from the ground through the whole crop (one opening; its centre, about 16 m, falls between the storey bands, so it is its own band), two tall ground-storey windows centred under the pair columns (two more axes): seven axes."
+  },
+  {
+   "name": "brick front on the Sarphatistraat",
+   "bearing": 342,
+   "photo": "artifacts/landmark-briefs/sarphati-plaza/w01-342.jpg",
+   "alongM": [
+    5.8,
+    45.06
+   ],
+   "heightM": [
+    0.3,
+    16.0
+   ],
+   "rows": [
+    5,
+    4,
+    17,
+    21,
+    15,
+    6
+   ],
+   "symmetric": false,
+   "note": "The 39.3 m BAG wall from the drum to the party wall (the drum is cropped off the left). Bottom up: three shop fronts, the door and the glazed ground floor of the west part; the two tall window pairs by the drum (centre about 4.3 m); storey 1 (seven pair axes and a single window in the east part, three pairs in the west part); storey 2 (east pairs and single, the west part's tall pairs); the short storey-3 windows of the east part; the west part's top storey, cut at 16 m by the crop."
+  }
+ ]
+}

@@ -1,0 +1,20 @@
+{
+ "id": "sarphati-plaza",
+ "pand": "0363100012182840",
+ "frame": {
+  "axes": "a along the Sarphatistraat front e=(0.949,-0.315) (bearing 72), b towards the garden s=(0.315,0.949), origin the tower's north-west BAG vertex (-9.096, 8.655) in native metres; A(a,b) in sarphati-plaza-builder.ts"
+ },
+ "partyWallBearings": [252],
+ "partyWallEvidence": "The west end of the brick wing (a = -23.9, bearing 252, 17.2 x 17.6 m) adjoins Sarphatistraat 40-42, BAG pand 0363100012182841 (bouwjaar 1997, 3DBAG roof 19.3 m NAP, 5 bouwlagen), which is taller; the wall is blind and hidden. The tower's west face (also bearing 252) carries windows (inferred) and is not blank.",
+ "streetNAP": 0.05,
+ "volumes": {
+  "brickEast": {"a": [-11.9, 15.36], "b": [-14.84, 0], "top": 16.3},
+  "brickWest": {"a": [-23.9, -11.9], "b": [-14.84, 0.2], "top": 17.65, "gardenStrip": {"b": [0.2, 1.98], "top": 14.7}},
+  "towerLow": {"a": [0, 15.15], "b": [0, 14.8], "top": 16.3},
+  "tower": {"a": [0, 15.15], "b": [-7.2, 14.8], "parapet": 36.1},
+  "upperBlock": {"a": [2.5, 12.9], "top": 39.55},
+  "vault": {"a": [4.4, 11.3], "spring": 41.0, "ridge": 42.45, "b": [-7.7, 15.3]},
+  "drum": {"centre": [13.53, -7.42], "radius": 7.63, "levels": "ground wall r 5.4 to 7.5 m; lettering band r 6.3 7.5-9.0 m; storey-2 ring r 5.8 9.0-11.5 m; upper ring r 7.63 11.5-16.3 m"}
+ },
+ "storeys": {"towerGround": [1.1, 6.7], "towerRowSills": "7.6 + 3.2 k, k = 0..8, windows 2.3 m", "brickFront": "shops 0.3-3.8, fascia 3.9-4.4, storey 1 4.95-7.6, storey 2 8.5-11.2, band 12.45, storey 3 12.9-14.6, coping 16.0"}
+}
