@@ -9,6 +9,8 @@ The user: "keep running landmark lanes through the night". Two recognisable mode
 
 ## The landmarks, in order
 
+**Correction (integrator, 2026-11-02):** the facts below were wrong. The Sportfondsenbad Oost is the 1886–87 Oostergasfabriek retort house, Land van Cocagneplein 44 (pands 0363100012236677 + 0363100012236879), and the planetarium is pand 0363100012164980; Plantage Kerklaan 38 is Micropia. The lane found and modelled the right buildings.
+
 1. **Sportfondsenbad Amsterdam-Oost**, Fronemanstraat 4 (the 1929 Amsterdam School swimming pool by Eibink & Snellebrand, Rijksmonument; the long brick hall with the tall glazed front, round-headed windows and the expressionist entrance), approx. 52.3592 N, 4.9245 E. Id `sportfondsenbad-oost`. Confirm the pand(s) by footprint and pand id; check nothing is installed within 35 m. Inventory: the entrance bay with its lettering and sculpture, the window order of the hall, the chimney, the roof form (measured from the orthophoto and photos, not 3DBAG planes). Similar builders: `zuiderbad-builder.ts`, `marnixbad-builder.ts` (both landed 2026-11-01).
 2. **Artis Planetarium**, Plantage Kerklaan 38–40 inside Artis (the 1988 planetarium: the dome on its drum beside the Artis entrance), approx. 52.3659 N, 4.9140 E. Id `artis-planetarium`. Check what Artis models are installed (`grep -in artis src/canalRecall/landmarks/manualCatalogue.json`) and the pand by footprint; the Plantage Kerklaan is ridden. Inventory: the dome and its drum, the entrance glazing, the lettering, the brick plinth. Similar builders: any dome builder in `scripts/landmarks` (`grep -il dome scripts/landmarks/*-builder.ts`), `holedWall.ts`.
 
