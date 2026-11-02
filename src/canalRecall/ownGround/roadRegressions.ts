@@ -545,3 +545,32 @@ export function spotViewpoint(s: RoadSpot): { lng: number; lat: number; bearing:
   const b = s.bearing * Math.PI / 180, mLat = 111320, mLng = 111320 * Math.cos(s.at[1] * Math.PI / 180);
   return { lng: s.at[0] - Math.sin(b) * s.backM / mLng, lat: s.at[1] - Math.cos(b) * s.backM / mLat, bearing: s.bearing };
 }
+
+/**
+ * Road continuity across bridges (lane road-bridge-gaps 2026-11-01, issue #178; user: "there are probably some systemic
+ * issues with gaps in drawing roads, especially across bridges", a shot of the Da Costakade bridges). Per OSM bridge
+ * way, the carriageway area (m²) that does not read as road from above along the way and 8 m past its ends
+ * (bridgeGaps.ts probeWay / summarise; scripts/roads/check-bridge-gaps.ts), at most `maxGapM2` with the fix and at
+ * least `pinMin` without it (`bridgeGaps: false`, the pin is live). `at` is the way's middle (its cell).
+ */
+export interface BridgeGapRegression { id: string; label: string; way: number; at: [number, number]; maxGapM2: number; pinMin: number; /** Step 3: measured with `dryWayDecks: true` (off by default). */ dry?: boolean }
+/**
+ * maxGapM2: carriageway m² off the road with bridgeGaps on (scripts/roads/probe-bridge-gaps.ts measure, 0.5 m stations,
+ * LOD 0); pinMin: at least this with `bridgeGaps: false`, so the pin still sees the gap it guards. Measured 2026-11-01
+ * (before → after): the user's Da Costakade report first, then the worst canal-scale ways steps 1-2 moved.
+ */
+export const BRIDGE_GAPS: BridgeGapRegression[] = [
+  { id: 'de-clercqstraat-bru0108', label: 'De Clercqstraat over the Kostverlorenvaart, Da Costakade (BRU0108): 114 → 4.5 m²', way: 813878646, at: [4.87202, 52.37132], maxGapM2: 10, pinMin: 80 },
+  { id: 'frederik-hendrikstraat-bru0007', label: 'Frederik Hendrikstraat side of the Bilderdijkstraat bridge (BRU0007): 21.5 → 0.5 m²', way: 1182829302, at: [4.87153, 52.37268], maxGapM2: 5, pinMin: 15 },
+  { id: 'bilderdijkstraat-bru0007', label: 'Bilderdijkstraat over the Kostverlorenvaart (BRU0007): 21 → 2.6 m²', way: 221975314, at: [4.8715, 52.37262], maxGapM2: 6, pinMin: 15 },
+  { id: 'nauernaseweg-way-deck', label: 'Nauernaseweg way deck, Westzaan side: 634 → 126 m²', way: 6609978, at: [4.75092, 52.43258], maxGapM2: 160, pinMin: 500 },
+  { id: 'ijdoornlaan-way-deck', label: 'IJdoornlaan way deck, Nieuwendam: 358 → 287 m²', way: 1136499565, at: [4.93847, 52.39994], maxGapM2: 310, pinMin: 330 },
+  { id: 'kraaienplein-way-deck', label: 'Kraaienplein way deck over the Noordhollandsch Kanaal: 296 → 176 m²', way: 7375199, at: [4.9138, 52.38683], maxGapM2: 200, pinMin: 250 },
+  { id: 'van-der-madeweg-way-deck', label: 'Van der Madeweg way deck, Duivendrecht: 266 → 122 m²', way: 1251743255, at: [4.93766, 52.32951], maxGapM2: 150, pinMin: 220 },
+  // Step 3, dry way decks (integrator 2026-11-01; off by default since 2026-11-02, pinned with dryWayDecks on): bridge ways over land with a survey deck polygon and no road under it.
+  { id: 'de-ruijterkade-busway-ramp', label: 'De Ruijterkade busway ramp up to the bus station (dry way deck): 175 → 7.4 m²', way: 326971930, at: [4.89912, 52.38015], maxGapM2: 15, pinMin: 150, dry: true },
+  { id: 'centraal-busstation-platform', label: 'Centraal bus station IJzijde platform lane (dry way deck): 425 → 0 m²', way: 328208284, at: [4.89945, 52.38003], maxGapM2: 5, pinMin: 380, dry: true },
+  { id: 'nieuwe-leeuwarderweg-viaduct', label: 'Nieuwe Leeuwarderweg viaduct over the metro, Noord (dry way deck): 1364 → 13.5 m²', way: 1275368974, at: [4.93098, 52.40118], maxGapM2: 30, pinMin: 1200, dry: true },
+  { id: 'nieuwe-leeuwarderweg-7042467', label: 'Nieuwe Leeuwarderweg at the Buikslotermeerplein ramps (dry way deck): 477 → 359 m²', way: 7042467, at: [4.93883, 52.40721], maxGapM2: 380, pinMin: 450, dry: true },
+  { id: 'langbroekdreef-way-deck', label: 'Langbroekdreef way deck, Gaasperdam: 224 → 96 m²', way: 9538865, at: [4.97474, 52.30606], maxGapM2: 120, pinMin: 190 },
+];

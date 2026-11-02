@@ -112,6 +112,8 @@ export interface CellInput {
   /** The cell's BGT ground polygons standing over water as a deck (wetGround.ts; also in deckRingsAround). */
   wetGround?: readonly Vec2[][];
   flatDecks: readonly Vec2[][];
+  /** The flat footprints of the cell and its neighbours (bridgeGaps: deck polygons are drawn on them). */
+  flatDecksAround?: readonly Vec2[][];
   /** Per flat deck (same order): register id and whether it is movable ('Beweegbare brug'). */
   flatDeckMeta?: readonly { id: string; movable: boolean }[];
   /** Landed platforms (landedPlatforms.ts, game frame): the quay wall leaves out shore segments inside them. */
@@ -128,6 +130,8 @@ export interface CellInput {
   surveyGaps?: boolean;
   /** Clip measured deck tops and faces to the water and the street bands (decks.ts deckWidths); default on. */
   clipDecks?: boolean;
+  /** One width per deck side and the survey's deck polygons on every deck drawn (bridgeGaps.ts, issue #178); default on, false: the pre-fix build (`?bridgeGaps=0`). */
+  bridgeGaps?: boolean;
   /** Sink a covered deck's top past its span under the survey's ground polygons (decks.ts COVERED_TOP_SINK_M); default on. */
   deckEnds?: boolean;
   /** The cell's surveyed road partition (roads-v1, roadSurfaces.ts), null when it has none or roads are off. */
@@ -346,7 +350,7 @@ export function buildCell(input: CellInput): BuiltCell {
   let roadCover: SurfaceRaster | null = null, roadSkipped: ReadonlySet<number> = new Set();
   const canalSide = fine && mask ? (x: number, y: number) => { const d = maskDistance(mask, x, y); return d > 0 && d < MASK_RANGE_M - 0.2; } : undefined;
   if (roadIndex && input.roads) {
-    const built = buildRoadSurfaces(input.roads, roadIndex, { height: onLand, deckHeight: deckLevelHeight(surface, rect), deckWeight: surface.deckWeight, overWater, lod, canalSide, dataStep: (x, y) => surface.dataStepAt(x, y), ...(touch ? { detail: 'touch' as const } : {}), ...(input.drape ?? {}) });
+    const built = buildRoadSurfaces(input.roads, roadIndex, { height: onLand, deckHeight: deckLevelHeight(surface, rect), deckWeight: surface.deckWeight, overWater, lod, ...(input.bridgeGaps !== false && input.flatDecksAround?.length ? { onFlatDeck: flatDeckTest(input.flatDecksAround) } : {}), ...(input.bridgeGaps !== false ? { bridgeGaps: true } : {}), canalSide, dataStep: (x, y) => surface.dataStepAt(x, y), ...(touch ? { detail: 'touch' as const } : {}), ...(input.drape ?? {}) });
     for (const [layer, m] of Object.entries(built.layers)) add(layer as GroundLayer, m!, 'bgtCarriage');
     roadSkipped = built.skipped;
     roads = { ...built.stats, landCulled: 0, coveredWays: input.coverWays?.length ?? 0, decksCovered: 0, parkingIslands, crossingStrips, greyFiets, markings: null };
@@ -608,7 +612,7 @@ export function buildCell(input: CellInput): BuiltCell {
     // so the register outline's sides (BRU0236: 4 m north of the OSM/BGT bridge) never overhang the model's face.
     const covered = roadsOnDeck(deck);
     if (covered && roads) roads.decksCovered++;
-    const top = measuredDeckTop(deck, surface.height, lod === 0 ? 4 : 2, lod === 0 ? 2 : 4, reach, covered || bespoke ? { left: deck.profile.halfWidth, right: deck.profile.halfWidth } : clip ? deckWidths(deck, overWater, onBridgeBand) : undefined, covered && input.deckEnds !== false ? COVERED_TOP_SINK_M : 0);
+    const top = measuredDeckTop(deck, surface.height, lod === 0 ? 4 : 2, lod === 0 ? 2 : 4, reach, bespoke ? { left: deck.profile.halfWidth, right: deck.profile.halfWidth } : covered ? (deck.profile.edges ? deckWidths(deck, overWater) : { left: deck.profile.halfWidth, right: deck.profile.halfWidth }) : clip ? deckWidths(deck, overWater, onBridgeBand) : undefined, covered && input.deckEnds !== false ? COVERED_TOP_SINK_M : 0);
     if (top.indices.length) { add('deckTop', top, 'deck'); bridges.tops++; }
   }
   for (const d of bridges.decks) { bridges.railingPosts += d.railingPosts; bridges.piers += d.piers; bridges.arches += d.arches; bridges.abutments += d.abutments; if (d.railingPosts) bridges.railed++; }
@@ -708,6 +712,12 @@ export function buildCell(input: CellInput): BuiltCell {
     key, lod, detail, rect, layers: packed, mask: maskOut, ...(tracing ? { sources } : {}),
     stats: { triangles, byLayer, ways: [...own].length, areas: areas.length, decks: input.decks.length, flatDecks: input.flatDecks.length, buildMs: Date.now() - t0, bytes, bridges, parks: parkStats ? { ...parkStats, fillCulled: parkFillCulled, landCulled } : null, pockets, greenLandCulled: greenCulled, greenCut, courtyardGreens, roads, phases, courtyards, ...(viaducts.length ? { viaducts } : {}), ...(railStats ? { rails: railStats } : {}) },
   };
+}
+
+/** Inside one of the unmeasured (flat) deck footprints (bridgeGaps: the survey's deck polygons are drawn on them). */
+function flatDeckTest(rings: readonly (readonly Vec2[])[]): (x: number, y: number) => boolean {
+  const boxed = rings.map(r => ({ r, b: r.reduce((b, [x, y]) => [Math.min(b[0], x), Math.min(b[1], y), Math.max(b[2], x), Math.max(b[3], y)], [Infinity, Infinity, -Infinity, -Infinity]) }));
+  return (x, y) => boxed.some(({ r, b }) => x >= b[0] && x <= b[2] && y >= b[1] && y <= b[3] && pointInRing(r as Vec2[], x, y));
 }
 
 /** Layers that do not hide the land from above (vertical faces, thin marks on bands, the land itself). */

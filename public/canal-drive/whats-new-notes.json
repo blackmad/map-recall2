@@ -3,6 +3,27 @@
   "notes": [
     {
       "date": "2026-11-02",
+      "title": "Roads now run across bridges",
+      "text": "Streets no longer break into a gap or a bare deck where they cross a canal; the road surface carries straight across the bridge, as on the aerial photo.",
+      "where": [
+        4.87202,
+        52.37132
+      ],
+      "images": [
+        {
+          "src": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/whats-new/2026-11-02-bridge-roads-de-clercqstraat.jpg",
+          "alt": "De Clercqstraat bridge: aerial photo, the road broken before, continuous after",
+          "caption": "Aerial photo | before | after. Luchtfoto: Beeldmateriaal Nederland (PDOK), CC BY 4.0"
+        },
+        {
+          "src": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/whats-new/2026-11-02-bridge-roads-strip.jpg",
+          "alt": "Six more bridges, photo, before and after",
+          "caption": "More bridges: photo | before | after"
+        }
+      ]
+    },
+    {
+      "date": "2026-11-02",
       "title": "Seven more landmarks: Vijzelbank, the Carlton, Jan Wils' Citroën garage, Odeon, the Doelen, the W Hotel exchange and the Telegraaf",
       "text": "Round three of the bespoke landmark lanes, all measured from the city panoramas and open photographs. The Vijzelbank (the former ABN AMRO block, now Prins en Keizer) with its stacked terraces, pale floor bands, white fins, colonnade and the Kerkstraat passage; the Carlton Hotel on the Vijzelstraat with its pointed-arch arcade, twelve bays of oriels on stone consoles, the bridge over the Reguliersdwarsstraat and the mansard. Jan Wils' white 1931 Citroën garage on the Stadionplein, ribbon windows, glazed stair tower and the lettering ring on the roof. Odeon on the Singel, Vingboons' 1662 front with its arched neck gable and claw pieces, and the Doelen Hotel on the Amstel corner (1883) in red brick and cream stone with its clock tower, dome, militiamen and striped awnings. The former telephone exchange on the Spuistraat (Crouwel 1927, now the W Hotel) with the gold W and the glass box on the roof, and Staal's Telegraaf building on the Nieuwezijds Voorburgwal with its six groups of white-framed windows, glass-block panels and tower. New kit parts came with them: terrace bands, a wrap band, arched neck-gable crowns and digits for the pixel lettering.",
       "images": [
