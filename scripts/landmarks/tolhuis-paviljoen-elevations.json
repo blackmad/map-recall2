@@ -1,0 +1,26 @@
+{
+ "id": "tolhuis-paviljoen",
+ "countedBy": "lane #197 (opus) from the rectified crops w02-324 (TMX7316010203-000353_pano_0000_001026, 2017-07-05) and w03-234 (TMX7316010203-002569_pano_0000_002486, 2022-05-10) before the model was rendered; ribbon convention. Not a blind haiku count: the integrator may re-count.",
+ "facades": [
+  {
+   "name": "canal row, north-west (w02): six hexagon windows over the cantilever, clerestory ribbon above",
+   "bearing": 323.5,
+   "photo": "artifacts/landmark-briefs/tolhuis-paviljoen/w02-324.jpg",
+   "alongM": [0, 24.2],
+   "depthBand": 3,
+   "rows": [null, 6, 1],
+   "symmetric": true,
+   "note": "ground row null: bushes on the bank hide the lower half of the recessed glazing and the struts stand in front of it"
+  },
+  {
+   "name": "south-west end square, garden face (w03): four tall bays between white piers",
+   "bearing": 233.5,
+   "photo": "artifacts/landmark-briefs/tolhuis-paviljoen/w03-234.jpg",
+   "alongM": [0, 17.1],
+   "depthBand": 3,
+   "rows": [null, 4],
+   "symmetric": true,
+   "note": "ground row null: the recessed ground floor is cluttered by the stair, bicycles and the V strut"
+  }
+ ]
+}

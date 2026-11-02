@@ -1,0 +1,57 @@
+{
+ "id": "tolhuis-paviljoen",
+ "name": "Paviljoen Tolhuistuin",
+ "modelUrl": "./models/tolhuis-paviljoen.glb",
+ "suppressOsmIds": [
+  "NL.IMBAG.Pand.0363100012119827",
+  "w44824402"
+ ],
+ "spatialSuppression": false,
+ "footprint": {
+  "centre": [
+   4.903493175423395,
+   52.383241316275985
+  ],
+  "headingDegrees": 0,
+  "lengthMetres": 92.7,
+  "widthMetres": 53.8
+ },
+ "groundAltitudeMetres": 0,
+ "facingOffsetDegrees": 0,
+ "surveyed": {
+  "anchor": [
+   4.903493175423395,
+   52.383241316275985
+  ],
+  "northOffsetDegrees": 0,
+  "source": "Vertex average of the BAG 0363100012119827 ring (PDOK BAG, CC0) in native east/south metres (scripts/landmarks/tolhuis-paviljoen-footprints.json, modern-prepare.mjs). Module grid (7.2 m and 15.9 m squares turned to 53.5 deg) on the BAG corners and the PDOK 2025 orthophoto roof hips; heights from the 3DBAG LoD2.2 roof planes (AHN5); storey split, parapet bands, hexagon windows, struts and fascia from the Gemeente Amsterdam panoramas (scripts/landmarks/tolhuis-paviljoen-inventory.json)."
+ },
+ "attribution": {
+  "title": "Paviljoen Tolhuistuin (c. 1975, former Shell canteen, Arthur Staal)",
+  "author": "Map Recall",
+  "sourceUrl": "https://nl.wikipedia.org/wiki/IJpromenade_2",
+  "licence": "CC BY 4.0",
+  "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+  "modifications": "Original texture-free flat-colour geometry: the grid of pyramid-roofed modules round the raised flat-roofed hall, the cantilevered modules on V struts over recessed glazing, the dark parapet bands with the canal row's hexagon windows, the white fascia and piers, the brick ground floor with diamond windows, on the BAG footprint (CC0) with 3DBAG heights (CC BY 4.0), read for proportion only from the Gemeente Amsterdam panoramas (CC BY 4.0) and the PDOK orthophoto (CC BY 4.0). No pixels or meshes imported."
+ },
+ "bag": {
+  "pand": "0363100012119827",
+  "address": "IJpromenade 2, 1031KT Amsterdam",
+  "verblijfsobject": "0363010000597953",
+  "bouwjaar": 1979,
+  "gebruiksdoel": "bijeenkomstfunctie",
+  "status": "Pand in gebruik",
+  "source": "PDOK BAG WFS v2 (CC0), retrieved 2026-11-02"
+ },
+ "identity": {
+  "built": "c. 1975 (designed 1963) as the Koninklijke Shell staff canteen",
+  "architect": "Arthur Staal (wikidata Q2344624), garden with Mien Ruys",
+  "monument": "gemeentelijk monument 200957 since 2022-01-25",
+  "today": "Paviljoen Tolhuistuin, events and café venue; refurbished by VASD with a terrace on the IJpromenade side",
+  "sources": [
+   "https://nl.wikipedia.org/wiki/IJpromenade_2",
+   "https://www.wikidata.org/wiki/Q112115638"
+  ]
+ },
+ "note": "The brief named Buiksloterweg 5c; the BAG verblijfsobject on this pand is IJpromenade 2."
+}

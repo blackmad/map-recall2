@@ -57184,5 +57184,240 @@
     ]
    ]
   }
+ },
+ {
+  "id": "tolhuis-paviljoen",
+  "name": "Paviljoen Tolhuistuin",
+  "modelUrl": "./models/tolhuis-paviljoen.glb",
+  "suppressOsmIds": [
+   "NL.IMBAG.Pand.0363100012119827",
+   "w44824402"
+  ],
+  "spatialSuppression": false,
+  "footprint": {
+   "centre": [
+    4.903493175423395,
+    52.383241316275985
+   ],
+   "headingDegrees": 0,
+   "lengthMetres": 92.7,
+   "widthMetres": 53.8
+  },
+  "surveyed": {
+   "anchor": [
+    4.903493175423395,
+    52.383241316275985
+   ],
+   "northOffsetDegrees": 0,
+   "source": "Vertex average of the BAG 0363100012119827 ring (PDOK BAG, CC0) in native east/south metres (scripts/landmarks/tolhuis-paviljoen-footprints.json, modern-prepare.mjs). Module grid (7.2 m and 15.9 m squares turned to 53.5 deg) on the BAG corners and the PDOK 2025 orthophoto roof hips; heights from the 3DBAG LoD2.2 roof planes (AHN5); storey split, parapet bands, hexagon windows, struts and fascia from the Gemeente Amsterdam panoramas (scripts/landmarks/tolhuis-paviljoen-inventory.json)."
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 0,
+  "heightMetres": 11.0,
+  "bagYear": 1979,
+  "materialOverrides": {
+   "stone": "#4a4542",
+   "white": "#dcddd3",
+   "glass": "#4f5b62",
+   "slate": "#80878c",
+   "brick": "#5e4a42",
+   "concrete": "#b8b8b0",
+   "frame": "#9a9e9c",
+   "greyBrick": "#8a9094",
+   "blue": "#3d4a63",
+   "dark": "#2f2c2a",
+   "red": "#b8392e"
+  },
+  "attribution": {
+   "title": "Paviljoen Tolhuistuin (c. 1975, former Shell canteen, Arthur Staal)",
+   "author": "Map Recall",
+   "sourceUrl": "https://nl.wikipedia.org/wiki/IJpromenade_2",
+   "licence": "CC BY 4.0",
+   "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+   "modifications": "Original texture-free flat-colour geometry: the grid of pyramid-roofed modules round the raised flat-roofed hall, the cantilevered modules on V struts over recessed glazing, the dark parapet bands with the canal row's hexagon windows, the white fascia and piers, the brick ground floor with diamond windows, on the BAG footprint (CC0) with 3DBAG heights (CC BY 4.0), read for proportion only from the Gemeente Amsterdam panoramas (CC BY 4.0) and the PDOK orthophoto (CC BY 4.0). No pixels or meshes imported."
+  },
+  "buildingFootprint": {
+   "type": "Polygon",
+   "coordinates": [
+    [
+     [
+      4.903694172614445,
+      52.38316533644746
+     ],
+     [
+      4.9037793098376,
+      52.38320384571535
+     ],
+     [
+      4.903716776999155,
+      52.38325562013548
+     ],
+     [
+      4.903768195729725,
+      52.38327886547667
+     ],
+     [
+      4.903770699907615,
+      52.38327954977529
+     ],
+     [
+      4.903772706677341,
+      52.3832800522897
+     ],
+     [
+      4.903774773470007,
+      52.3832804382092
+     ],
+     [
+      4.903776885598306,
+      52.383280707473844
+     ],
+     [
+      4.903779043258186,
+      52.38328084210907
+     ],
+     [
+      4.903781202191796,
+      52.38328085990961
+     ],
+     [
+      4.903783112617218,
+      52.38328076884346
+     ],
+     [
+      4.903785009433095,
+      52.38328057885726
+     ],
+     [
+      4.903786863166863,
+      52.383280298818306
+     ],
+     [
+      4.903788673916483,
+      52.38327991973936
+     ],
+     [
+      4.903790426994652,
+      52.38327944156045
+     ],
+     [
+      4.903792107518128,
+      52.38327888219618
+     ],
+     [
+      4.903793715486898,
+      52.3832782416466
+     ],
+     [
+      4.903846702769664,
+      52.38323440030167
+     ],
+     [
+      4.904034355016709,
+      52.38331938962743
+     ],
+     [
+      4.903895788714394,
+      52.38343394744243
+     ],
+     [
+      4.903725938086865,
+      52.38335703860137
+     ],
+     [
+      4.9036630954574845,
+      52.383408910592124
+     ],
+     [
+      4.903578061537692,
+      52.38337032976353
+     ],
+     [
+      4.903515188949829,
+      52.3834222375046
+     ],
+     [
+      4.903430827416762,
+      52.38338396489742
+     ],
+     [
+      4.90336756923625,
+      52.383436194541936
+     ],
+     [
+      4.9032825213251705,
+      52.38339756850508
+     ],
+     [
+      4.903220342581912,
+      52.383449119418245
+     ],
+     [
+      4.902947901372132,
+      52.38332613271908
+     ],
+     [
+      4.903010065571486,
+      52.38327458188785
+     ],
+     [
+      4.902924869544754,
+      52.38323612575142
+     ],
+     [
+      4.902987228209768,
+      52.383184243182455
+     ],
+     [
+      4.902919564840556,
+      52.38315295899631
+     ],
+     [
+      4.902857191453334,
+      52.38320484146987
+     ],
+     [
+      4.902669668148259,
+      52.383120399044685
+     ],
+     [
+      4.902808251515274,
+      52.38300582474565
+     ],
+     [
+      4.902978376297011,
+      52.38308291579185
+     ],
+     [
+      4.903104080595567,
+      52.38297882205312
+     ],
+     [
+      4.903189131374347,
+      52.383017097716234
+     ],
+     [
+      4.9032521189107126,
+      52.38296540631877
+     ],
+     [
+      4.903421274171294,
+      52.38304256466694
+     ],
+     [
+      4.9034846667532115,
+      52.38299007489744
+     ],
+     [
+      4.903757090747017,
+      52.38311324005486
+     ],
+     [
+      4.903694172614445,
+      52.38316533644746
+     ]
+    ]
+   ]
+  }
  }
 ]

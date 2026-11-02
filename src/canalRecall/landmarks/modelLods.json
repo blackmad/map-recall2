@@ -2116,5 +2116,11 @@
   "buildVersion": 2,
   "bytes": 155800,
   "triangles": 10698
+ },
+ "tolhuis-paviljoen": {
+  "sourceHash": "4d90cd344bc794b3",
+  "buildVersion": 2,
+  "bytes": 43592,
+  "triangles": 1914
  }
 }

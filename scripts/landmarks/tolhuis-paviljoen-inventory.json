@@ -1,0 +1,728 @@
+{
+ "schemaVersion": 1,
+ "id": "tolhuis-paviljoen",
+ "pand": "0363100012119827",
+ "brief": "scripts/landmarks/tolhuis-paviljoen-brief.md",
+ "signature": [
+  "nw-hexagon-windows",
+  "nw-v-struts",
+  "sw-glass-module",
+  "nw-fascia",
+  "se-hall-cladding"
+ ],
+ "walls": [
+  {
+   "tag": "w01-144",
+   "bearing": 144,
+   "lengthM": 23.1,
+   "centre": [
+    4.9036235,
+    52.3830535
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316060226-000015_pano_0005_001495",
+   "capturedAt": "2016-08-08",
+   "checked": true,
+   "items": [],
+   "note": "trees and shrubs hide the wall; A'DAM tower behind"
+  },
+  {
+   "tag": "w02-324",
+   "bearing": 324,
+   "lengthM": 23,
+   "centre": [
+    4.903087,
+    52.3833895
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000353_pano_0000_001026",
+   "capturedAt": "2017-07-05",
+   "checked": true,
+   "items": [
+    {
+     "id": "nw-hexagon-windows",
+     "kind": "window-shape",
+     "where": "canal row (three modules, 23 m): six stretched-hexagon windows, pointed left and right, in the upper half of the dark exposed-aggregate parapet",
+     "approxSizeM": [
+      2.45,
+      0.96
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-000353_pano_0000_001026",
+     "how": "hexOpeningWall (new kit component): hexagons cut through the parapet band with 0.25 m reveals and recessed glass, 3.85 m apart"
+    },
+    {
+     "id": "nw-v-struts",
+     "kind": "colonnade",
+     "where": "under the canal row: inclined light concrete struts carrying the cantilevered upper floor over the recessed glazed ground floor",
+     "approxSizeM": [
+      0.7,
+      3.5
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-000353_pano_0000_001026",
+     "how": "single light concrete posts leaning out from the foot of the recessed glazing to the parapet underside, about 5.2 m apart (two to three per module run); the photo shows them about 1.5 m deep, the model 1.15 m (see-through gate)"
+    },
+    {
+     "id": "nw-clerestory",
+     "kind": "window-shape",
+     "where": "strip of clerestory glazing with white mullions and grey vent panels between the parapet and the fascia",
+     "approxSizeM": [
+      23,
+      0.9
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-000353_pano_0000_001026",
+     "how": "glass band 5.1-5.7 m with white mullions every ~1.9 m and a white sill strip"
+    },
+    {
+     "id": "nw-fascia",
+     "kind": "other",
+     "where": "deep white roof fascia over the whole canal row, standing out from the wall",
+     "approxSizeM": [
+      23,
+      0.85
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-000353_pano_0000_001026",
+     "how": "white fascia ring 0.45 m out round the whole roof edge, 5.7-6.5 m, closed top and soffit"
+    },
+    {
+     "id": "nw-floor-beam",
+     "kind": "other",
+     "where": "the floor-edge beam under the hexagons, a little proud, running past the module ends",
+     "approxSizeM": [
+      23,
+      0.85
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-000353_pano_0000_001026",
+     "how": "stone strip 2.9-3.65 m, 0.12 m proud"
+    },
+    {
+     "id": "nw-diamond-windows",
+     "kind": "window-shape",
+     "where": "two diamond (45-degree square) windows in the brick wall right of the canal row",
+     "approxSizeM": [
+      0.9,
+      0.9
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-000353_pano_0000_001026",
+     "how": "white diamond 6 cm proud with a glass diamond 12 cm proud, about 3.6 m apart on every brick ground-floor wall"
+    }
+   ]
+  },
+  {
+   "tag": "w03-234",
+   "bearing": 234,
+   "lengthM": 15.9,
+   "centre": [
+    4.9027415,
+    52.3830655
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002569_pano_0000_002486",
+   "capturedAt": "2022-05-10",
+   "checked": true,
+   "items": [
+    {
+     "id": "sw-glass-module",
+     "kind": "window-shape",
+     "where": "south-west end square (15.9 m): tall glazing in four bays between white piers above a thin dark parapet band, under the deep white fascia",
+     "approxSizeM": [
+      15.9,
+      2.5
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002569_pano_0000_002486",
+     "how": "glass 3.9-5.7 m with 0.45 m white piers about 4 m apart, dark band 2.9-3.9 m, white transom at 5.1 m"
+    },
+    {
+     "id": "sw-v-strut",
+     "kind": "colonnade",
+     "where": "a single V of two inclined concrete legs under the middle of the end square, over the recessed ground floor",
+     "approxSizeM": [
+      3.5,
+      3.5
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002569_pano_0000_002486",
+     "how": "one V of two leaning legs from a single foot under the middle of the garden face, 1.15 m in"
+    },
+    {
+     "id": "sw-louvres",
+     "kind": "canopy",
+     "where": "grey metal sun louvres projecting under the fascia over the glazing",
+     "approxSizeM": [
+      15.9,
+      1.1
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-002569_pano_0000_002486",
+     "how": "one thin grey slab 1.0 m out at 5.45 m on every glass-type run not facing the canal"
+    }
+   ]
+  },
+  {
+   "tag": "w04-144",
+   "bearing": 144,
+   "lengthM": 15.9,
+   "centre": [
+    4.903943,
+    52.3832795
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316060226-000015_pano_0005_001497",
+   "capturedAt": "2016-08-08",
+   "checked": true,
+   "items": [],
+   "note": "garden gate arch and trees in front; cantilevered glass module visible behind"
+  },
+  {
+   "tag": "w05-324",
+   "bearing": 324,
+   "lengthM": 15.8,
+   "centre": [
+    4.902766,
+    52.383165
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000353_pano_0000_001030",
+   "capturedAt": "2017-07-05",
+   "checked": true,
+   "items": [
+    {
+     "id": "w05-glass-module",
+     "kind": "window-shape",
+     "where": "north-west face of the south-west end square: four tall panes between white piers, timber-clad ground floor recessed under the cantilever",
+     "approxSizeM": [
+      15.8,
+      2.5
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-000353_pano_0000_001030",
+     "how": "glass-type upper storey; recessed ground floor glazing (timber cladding drawn as glazing)",
+     "note": "the timber cladding of the recessed ground floor is drawn as glazing with white mullions"
+    }
+   ]
+  },
+  {
+   "tag": "w06-54",
+   "bearing": 54,
+   "lengthM": 15.8,
+   "centre": [
+    4.9039675,
+    52.383379
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316060226-000015_pano_0005_001514",
+   "capturedAt": "2016-08-08",
+   "checked": true,
+   "items": [],
+   "note": "trees hide the wall"
+  },
+  {
+   "tag": "w07-234",
+   "bearing": 234,
+   "lengthM": 14.4,
+   "centre": [
+    4.903044,
+    52.383033
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002569_pano_0000_002483",
+   "capturedAt": "2022-05-10",
+   "checked": true,
+   "items": [],
+   "note": "garden terrace: dark band and glazing behind the tree; picnic tables in front"
+  },
+  {
+   "tag": "w08-144",
+   "bearing": 144,
+   "lengthM": 14.4,
+   "centre": [
+    4.902896,
+    52.3830465
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000876_pano_0000_004523",
+   "capturedAt": "2018-07-27",
+   "checked": true,
+   "items": [],
+   "note": "tree hides most of the wall; pyramid roofs and fascia visible"
+  },
+  {
+   "tag": "w09-144",
+   "bearing": 144,
+   "lengthM": 14.3,
+   "centre": [
+    4.9033395,
+    52.3830065
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000876_pano_0000_004512",
+   "capturedAt": "2018-07-27",
+   "checked": true,
+   "items": [],
+   "note": "bike parking and a tree; red terrace roof at left"
+  },
+  {
+   "tag": "w10-324",
+   "bearing": 324,
+   "lengthM": 14.3,
+   "centre": [
+    4.9038135,
+    52.3833975
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": false,
+   "items": []
+  },
+  {
+   "tag": "w11-234",
+   "bearing": 234,
+   "lengthM": 7.3,
+   "centre": [
+    4.9034555,
+    52.3830185
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2024-10-21_08-31-01_02079",
+   "capturedAt": "2024-10-21",
+   "checked": true,
+   "items": [
+    {
+     "id": "sw-terrace-canopy",
+     "kind": "canopy",
+     "where": "red-and-white terrace canopy over the café terrace on the IJpromenade side",
+     "approxSizeM": [
+      10,
+      1
+     ],
+     "plan": "skipped",
+     "seenIn": "recording_2024-10-21_08-31-01_02079",
+     "skip": {
+      "reason": "temporary",
+      "note": "seasonal café canopy outside the BAG pand"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "w12-53",
+   "bearing": 53,
+   "lengthM": 7.2,
+   "centre": [
+    4.903402,
+    52.383412
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000353_pano_0000_001022",
+   "capturedAt": "2017-07-05",
+   "checked": true,
+   "items": [
+    {
+     "id": "ne-droogloper",
+     "kind": "other",
+     "where": "covered footbridge (Galgenveldbrug) on a concrete V pier over the Buiksloterkanaal, part of the monument but a separate structure",
+     "approxSizeM": [
+      30,
+      4
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7316010203-000353_pano_0000_001022",
+     "skip": {
+      "reason": "not-visible",
+      "note": "the bridge lies outside this BAG pand and is not part of this model; the camera of this wall looks at the bridge, not the pavilion wall, which trees hide"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "w13-144",
+   "bearing": 144,
+   "lengthM": 7.2,
+   "centre": [
+    4.9037395,
+    52.3831865
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316060226-000015_pano_0005_001497",
+   "capturedAt": "2016-08-08",
+   "checked": true,
+   "items": [],
+   "note": "fence and hedge; fascia and glazing of the SE modules"
+  },
+  {
+   "tag": "w14-324",
+   "bearing": 324,
+   "lengthM": 7.2,
+   "centre": [
+    4.9029705,
+    52.3832575
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000353_pano_0000_001028",
+   "capturedAt": "2017-07-05",
+   "checked": true,
+   "items": [
+    {
+     "id": "w14-vent-beam",
+     "kind": "other",
+     "where": "white beam with a row of round vent holes under the dark parapet of the brick-based modules",
+     "approxSizeM": [
+      7.2,
+      0.35
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-000353_pano_0000_001028",
+     "how": "white strip 2.55-2.9 m, 12 cm proud, with small dark blocks every ~0.7 m standing 6 cm in front"
+    },
+    {
+     "id": "w14-diamonds",
+     "kind": "window-shape",
+     "where": "diamond windows in the brick ground floor",
+     "approxSizeM": [
+      0.9,
+      0.9
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-000353_pano_0000_001028",
+     "how": "as nw-diamond-windows"
+    },
+    {
+     "id": "w14-chimney",
+     "kind": "other",
+     "where": "round flue on the roof behind the canal row",
+     "approxSizeM": [
+      0.7,
+      1.5
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-000353_pano_0000_001028",
+     "how": "8-sided dark cylinder on the inner canal module roof"
+    }
+   ]
+  },
+  {
+   "tag": "w15-324",
+   "bearing": 324,
+   "lengthM": 7.2,
+   "centre": [
+    4.9036235,
+    52.3833915
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000353_pano_0000_001024",
+   "capturedAt": "2017-07-05",
+   "checked": true,
+   "items": [],
+   "note": "trees and a moored boat hide the wall"
+  },
+  {
+   "tag": "w16-54",
+   "bearing": 54,
+   "lengthM": 7.2,
+   "centre": [
+    4.9037285,
+    52.383141
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316060226-000015_pano_0005_001500",
+   "capturedAt": "2016-08-08",
+   "checked": true,
+   "items": [
+    {
+     "id": "ne-glass-module",
+     "kind": "window-shape",
+     "where": "upper storey of the 7.2 m modules: large dark panes in white frames with small top lights, over the dark band and the vent beam",
+     "approxSizeM": [
+      7.2,
+      2.5
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316060226-000015_pano_0005_001500",
+     "how": "glass-type run: piers about 4 m apart, white transom at 6.3 m"
+    },
+    {
+     "id": "ne-louvres",
+     "kind": "canopy",
+     "where": "grey sun louvres projecting under the fascia",
+     "approxSizeM": [
+      7.2,
+      1.2
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316060226-000015_pano_0005_001500",
+     "how": "as sw-louvres"
+    }
+   ]
+  },
+  {
+   "tag": "w17-54",
+   "bearing": 54,
+   "lengthM": 7.2,
+   "centre": [
+    4.9037505,
+    52.383232
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": false,
+   "items": []
+  },
+  {
+   "tag": "w18-54",
+   "bearing": 54,
+   "lengthM": 7.2,
+   "centre": [
+    4.9036975,
+    52.383385
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": false,
+   "items": []
+  },
+  {
+   "tag": "w19-54",
+   "bearing": 54,
+   "lengthM": 7.2,
+   "centre": [
+    4.9035495,
+    52.383398
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": false,
+   "items": []
+  },
+  {
+   "tag": "w20-144",
+   "bearing": 144,
+   "lengthM": 7.2,
+   "centre": [
+    4.9031495,
+    52.383
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2024-10-21_08-31-01_02077",
+   "capturedAt": "2024-10-21",
+   "checked": true,
+   "items": [
+    {
+     "id": "se-red-terrace",
+     "kind": "canopy",
+     "where": "red slatted raised terrace with string lights against the south-east front (2024), outside the BAG pand",
+     "approxSizeM": [
+      16,
+      3
+     ],
+     "plan": "skipped",
+     "seenIn": "recording_2024-10-21_08-31-01_02077",
+     "skip": {
+      "reason": "temporary",
+      "note": "a café terrace structure added after the 2020s refurbishment, standing outside the BAG pand outline; not part of the monument"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "w21-324",
+   "bearing": 324,
+   "lengthM": 7.2,
+   "centre": [
+    4.9033275,
+    52.383419
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000353_pano_0000_001025",
+   "capturedAt": "2017-07-05",
+   "checked": true,
+   "items": [],
+   "note": "tree hides the left; hexagon windows on the corner module at right, vent-hole beam over brick"
+  },
+  {
+   "tag": "w22-54",
+   "bearing": 54,
+   "lengthM": 7.2,
+   "centre": [
+    4.902891,
+    52.383181
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000353_pano_0000_001027",
+   "capturedAt": "2017-07-05",
+   "checked": true,
+   "items": [],
+   "note": "canal-side, partly hidden; hexagon module with struts"
+  },
+  {
+   "tag": "w23-234",
+   "bearing": 234,
+   "lengthM": 7.2,
+   "centre": [
+    4.902959,
+    52.383212
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": false,
+   "items": []
+  },
+  {
+   "tag": "w24-233",
+   "bearing": 233,
+   "lengthM": 7.1,
+   "centre": [
+    4.9032235,
+    52.3829935
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316060226-000501_pano_0001_000604",
+   "capturedAt": "2020-09-16",
+   "checked": true,
+   "items": [],
+   "note": "red terrace and bike parking in front"
+  },
+  {
+   "tag": "w25-324",
+   "bearing": 324,
+   "lengthM": 7.1,
+   "centre": [
+    4.903476,
+    52.383405
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000353_pano_0000_001024",
+   "capturedAt": "2017-07-05",
+   "checked": true,
+   "items": [],
+   "note": "trees and a boat hide the wall"
+  },
+  {
+   "tag": "w26-234",
+   "bearing": 234,
+   "lengthM": 7.1,
+   "centre": [
+    4.902982,
+    52.3833025
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000353_pano_0000_001029",
+   "capturedAt": "2017-07-05",
+   "checked": true,
+   "items": [],
+   "note": "hexagon module with struts wraps round the canal corner; glass modules behind"
+  },
+  {
+   "tag": "w27-54",
+   "bearing": 54,
+   "lengthM": 7.1,
+   "centre": [
+    4.903254,
+    52.3834255
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000353_pano_0000_001024",
+   "capturedAt": "2017-07-05",
+   "checked": true,
+   "items": [],
+   "note": "hexagon module, as w02"
+  },
+  {
+   "tag": "w28-233",
+   "bearing": 233,
+   "lengthM": 6,
+   "centre": [
+    4.9038225,
+    52.3832585
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": false,
+   "items": []
+  },
+  {
+   "tag": "w29-324",
+   "bearing": 324,
+   "lengthM": 5.8,
+   "centre": [
+    4.902956,
+    52.3831705
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000353_pano_0000_001029",
+   "capturedAt": "2017-07-05",
+   "checked": true,
+   "items": [],
+   "note": "glass modules over the canal bank, chimney"
+  },
+  {
+   "tag": "w30-145",
+   "bearing": 145,
+   "lengthM": 4.4,
+   "centre": [
+    4.903745,
+    52.3832695
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316060226-000015_pano_0005_001499",
+   "capturedAt": "2016-08-08",
+   "checked": true,
+   "items": [
+    {
+     "id": "se-hall-cladding",
+     "kind": "other",
+     "where": "raised central hall above the pyramid roofs, clad in grey panels with a diamond pattern",
+     "approxSizeM": [
+      30,
+      2.7
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316060226-000015_pano_0005_001499",
+     "how": "grey cladding wall from the eaves to 8.75 m with a white coping to 9.2 m; the diamond pattern is not drawn"
+    },
+    {
+     "id": "se-red-stair",
+     "kind": "other",
+     "where": "red steel entrance stair to the upper floor in the north-east notch, with a red V strut under the landing",
+     "approxSizeM": [
+      1.3,
+      6
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316060226-000015_pano_0005_001499",
+     "how": "one inclined red slab from the pavement to the upper floor"
+    },
+    {
+     "id": "se-ne-cantilever",
+     "kind": "colonnade",
+     "where": "north-east end square cantilevered over the path on posts, louvres and tall glazing above the dark band",
+     "approxSizeM": [
+      15.9,
+      4
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316060226-000015_pano_0005_001499",
+     "how": "lifted glass-type module over a recessed ground floor, square concrete posts at its corners (w30 shows one beside the notch)"
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  }
+ ]
+}
