@@ -2422,6 +2422,28 @@
    "opening-outside-parts": 5,
    "opening-outside-m2": 2.16
   },
+  "heinekenplein-block": {
+   "normals-inward-permille": 0,
+   "normals-bad-permille": 0,
+   "material-slot-untagged-permille": 0,
+   "opening-floating": 0,
+   "opening-floating-fail": 0,
+   "opening-overhang": 0,
+   "opening-overhang-fail": 0,
+   "opening-buried": 0,
+   "opening-outside-parts": 0,
+   "opening-outside-m2": 0,
+   "zfight-m2": 0,
+   "zfight-near-m2": 2.8,
+   "zfight-tight-m2": 0,
+   "zfight-same-m2": 0,
+   "window-mismatch": 11,
+   "window-missing": 0,
+   "window-misaligned": 0,
+   "window-rhythm-fail": 0,
+   "window-mismatch-spec": 11,
+   "window-missing-spec": 0
+  },
   "hemp-gallery": {
    "opening-floating": 0,
    "opening-floating-fail": 0,
