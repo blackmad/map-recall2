@@ -2176,5 +2176,11 @@
   "buildVersion": 2,
   "bytes": 41528,
   "triangles": 2230
+ },
+ "nfta-markenplein": {
+  "sourceHash": "34f882696606038c",
+  "buildVersion": 2,
+  "bytes": 50112,
+  "triangles": 2361
  }
 }

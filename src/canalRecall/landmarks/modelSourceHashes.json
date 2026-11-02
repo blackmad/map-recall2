@@ -1,5 +1,5 @@
 {
-  "toolchain": "06ddd50525dd4f4edd015d46636d1c0f728e33cfde343863ca6433050c5475e8",
+  "toolchain": "9248aefa6a4931759bb2171e1b5a16885952db39ec19d907941beb0bf9760cf9",
   "models": {
     "abn-amro-hoofdkantoor": "90ff65a2d9f94e99b2ab33438567f147959a43f017d3d9cf9d2ae68b6dae7cbf",
     "academie-theater-dans": "503b3e8d59937cbf7ac8776eb644c11fd10b567e5ac1113e0caa55c83cb68cde",
@@ -264,6 +264,7 @@
     "ndsm-container-arch": "98de9b703e17b20f710e6e497e7a7a2dfcee33c48cf69cfb60d9c73d557eb767",
     "ndsm-warehouse-complex": "225add20f312729b1136a721049bc2eca12e903a04286463b3a7751c9d36efc2",
     "nemo": "c12bd1dab14194d5dbe8fc2cd2617d49d738486f66683e5a81b9a0d7e9fcff1b",
+    "nfta-markenplein": "03c605abf2e81ca9de6d951b697275bd42fdd7ac72fe781f3aba00169de51735",
     "nieuw-dakota": "952519694140f9dd34aa566a4ab966a826b50acac3709b4b5984661856d0a72e",
     "nieuwe-kerk": "b2f70fed5c419b4aba1c0a4979a4094049028a2daf5b6c52f6e353b64d5adb1f",
     "nieuwendammerkerk": "f1cdc341b4fcc6dad3d0e21a3ac0dfcf784a91b4ef50b050a28efc050227b1b3",

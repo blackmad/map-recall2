@@ -76709,6 +76709,138 @@
         "bytes": 41528,
         "triangles": 2230
       }
+    },
+    "nfta-markenplein": {
+      "id": "nfta-markenplein",
+      "name": "Nederlandse Filmacademie",
+      "landmarkId": "extract_landmarks_1149389771",
+      "modelUrl": "./models/nfta-markenplein.glb",
+      "suppressOsmIds": [
+        "NL.IMBAG.Pand.0363100012170259"
+      ],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.905098392121798,
+          52.368481990565236
+        ],
+        "headingDegrees": 0,
+        "lengthMetres": 87.1,
+        "widthMetres": 51.9
+      },
+      "surveyed": {
+        "anchor": [
+          4.905098392121798,
+          52.368481990565236
+        ],
+        "northOffsetDegrees": 0,
+        "source": "Vertex average of the BAG 0363100012170259 ring (PDOK BAG, CC0) in native east/south metres (scripts/landmarks/nfta-markenplein-footprints.json, modern-prepare.mjs): a parallelogram, 62.9 m fronts and 38.8 m ends. Roof height 19.4 m and the inner courtyard from the 3DBAG LoD2.2 roof planes (AHN4) and the PDOK orthophoto; the concrete frame, channel-glass bands, per-bay ribbon windows, the open east-corner roof terrace and the lettering from the Gemeente Amsterdam panoramas and Wikimedia Commons photographs (scripts/landmarks/nfta-markenplein-inventory.json)."
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 0,
+      "heightMetres": 19.4,
+      "bagYear": 1999,
+      "materialOverrides": {
+        "concrete": "#c8cbc5",
+        "green": "#6f9f96",
+        "glass": "#33505a",
+        "frame": "#3e4648",
+        "white": "#dcdfdb",
+        "greyBrick": "#7d8f8b",
+        "copper": "#4a6d65",
+        "dark": "#2e3434",
+        "bronze": "#9d968a",
+        "stone": "#c2baad",
+        "canopyGlass": "#9fb8bc",
+        "slate": "#5b5e64",
+        "blue": "#33435c",
+        "pink": "#6b4a8a"
+      },
+      "attribution": {
+        "title": "Nederlandse Filmacademie (1999, Koen van Velsen)",
+        "author": "Map Recall",
+        "sourceUrl": "https://nl.wikipedia.org/wiki/Nederlandse_Filmacademie",
+        "licence": "CC BY 4.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "modifications": "Original texture-free flat-colour geometry: the fair-faced concrete frame with its corner piers, bay piers and top beam, the green channel-glass bands with ribbon windows and vent grilles placed per bay, the open roof terrace in the east corner, the studio glazing and louvres of the top storey, the Nederlandse Filmacademie lettering with the round logo, the inner courtyard with its glass roof and the solar panels, on the BAG footprint (CC0) with 3DBAG heights (CC BY 4.0), read for proportion only from the Gemeente Amsterdam panoramas (CC BY 4.0), the PDOK orthophoto (CC BY 4.0) and Wikimedia Commons photographs by FaceMePLS (CC BY 2.0) and Iijjccoo (CC BY-SA 3.0). No pixels or meshes imported."
+      },
+      "buildingFootprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.9052359367182765,
+              52.36852364510372
+            ],
+            [
+              4.905028860310451,
+              52.368594011598596
+            ],
+            [
+              4.904924651220269,
+              52.36862943015202
+            ],
+            [
+              4.904924154166838,
+              52.36862923039778
+            ],
+            [
+              4.90444956903891,
+              52.368437475881095
+            ],
+            [
+              4.905256473025254,
+              52.368163267620794
+            ],
+            [
+              4.905731555776106,
+              52.36835521866421
+            ],
+            [
+              4.9052359367182765,
+              52.36852364510372
+            ]
+          ]
+        ]
+      },
+      "buildingCategory": "landmark",
+      "bounds": {
+        "min": [
+          -44.099998474121094,
+          0,
+          -16.413000106811523
+        ],
+        "max": [
+          43.0359992980957,
+          19.6200008392334,
+          35.47999954223633
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.905098392121798,
+          52.368481990565236
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 90,
+        "facadeBearingDegrees": 0,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 87.1359977722168,
+        "heightMetres": 19.6200008392334,
+        "depthMetres": 51.89299964904785,
+        "depthCoverage": 0.999865118478764
+      },
+      "triangles": 14568,
+      "bytes": 223548,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
+      "lod1": {
+        "sourceHash": "34f882696606038c",
+        "buildVersion": 2,
+        "bytes": 50112,
+        "triangles": 2361
+      }
     }
   }
 }
