@@ -347,12 +347,7 @@ metro box and under the shed; fix = flatten the own ground to road level under
 road and plaza polygons; small lane after the flip; it takes the station area
 as one piece, bus deck, glass roof, metro box and ground, and owns turning on
 bridge-gaps step 3 `?dryWayDecks=1` there). World compiler (#130,
-P1, L1 next): world-v1 cells skip the rail-infra treatment (b5b918212), the cell
-path bypasses the tile enricher, so viaduct/deck pands draw and platform
-canopies are not cut on the default world; NL.IMBAG.Pand.0363100012173021 is
-the failing own A/B compare; the fix changes a hashed input, so its merge
-recompiles and republishes the cells, then the own five spots should go 4/4.
-P3: `scripts/world/pipeline.ts` CODE hashes 18 files, but the compiler also
+P3): `scripts/world/pipeline.ts` CODE hashes 20 files (rail-infra added 2026-11-02), but the compiler also
 imports `roofs/roofSlots.ts`, `look/palette.ts` and `threeBuildingMesh.ts`
 (esbuild metafile, 127 inputs), so a change there would not mark the cells
 stale; the roof cap of 2026-11-01 was checked by hand (recompiled, 604 of 604

@@ -1,5 +1,21 @@
 # Canal Recall — what is built
 
+**World cells get the rail-infra treatment: viaduct and deck pands are gone and platform canopies are cut, as on the tile path (2026-11-02, #130).**
+L1 hand-back 23 (856fb88d7). The rail-infra treatment of b5b918212 lived in the
+tile enricher, which the world-cell path never called, so the own engine on the
+default world drew viaduct and deck pands as blocks over the tracks and kept
+whole platform canopies (the one failing own A/B compare,
+NL.IMBAG.Pand.0363100012173021). `gameTileEnricher.ts` is now the one typed
+chain (years, roof facts, rail infra) that OwnWorldView and the compiler's
+gameChain both call; `rail-infra-buildings.json` joined GLOBAL_INPUTS and both
+modules joined CODE, so every cell rehashed. Content diff checked by the
+integrator, decoding both sets and ignoring the ordinal and neighbour indices
+that shift when a building drops out: 19 of 604 cells change, 35 ids dropped (16
+viaducts, 19 canopies), 18 canopy pieces added, 0 other buildings change, which
+is the lane's prediction exactly. City 9.76 MB; verify fresh; test:world-format
+37/37, test:engine 131/131, railInfra 4/4; five-spot world-v1-ab on the
+republished cells: own 4/4 (was 3/4), MapLibre 4/4. What's New note.
+
 **The five-spot world-v1 A/B runs again on both engines: it waits in four named phases instead of on camera.whenIdle (2026-11-02, P1).**
 L1 hand-back 22 (bd58c59e8). MapLibre's idle fires once after a frame with
 nothing to do; with the camera held, nothing requested another frame, so
