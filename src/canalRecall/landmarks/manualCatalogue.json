@@ -58778,5 +58778,350 @@
     ]
    ]
   }
+ },
+ {
+  "id": "pakhuis-australie",
+  "name": "Pakhuis Australië",
+  "modelUrl": "./models/pakhuis-australie.glb",
+  "suppressOsmIds": [
+   "NL.IMBAG.Pand.0363100012139498"
+  ],
+  "spatialSuppression": false,
+  "footprint": {
+   "centre": [
+    4.9263344,
+    52.37599246
+   ],
+   "headingDegrees": 0,
+   "lengthMetres": 75.1,
+   "widthMetres": 66.7
+  },
+  "surveyed": {
+   "anchor": [
+    4.9263344,
+    52.37599246
+   ],
+   "northOffsetDegrees": 0,
+   "source": "Vertex average of the BAG 0363100012139498 outline (RD, 3DBAG LoD0); volumes from the 3DBAG LoD2.2 roof planes of that pand (CC BY 4.0): warehouse and wings 17.85 m, the bar and the arms of the U 34.0 m, in native east/south metres (scripts/landmarks/pakhuis-australie-prepare.ts). Storeys, bays, loggias, bands, anchors and the name board measured on rectified Gemeente Amsterdam panorama crops (CC BY 4.0) and the 2007 Commons photograph from the Java-eiland (public domain); garden deck from the PDOK 2023 orthophoto (scripts/landmarks/pakhuis-australie-inventory.json)."
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 0,
+  "heightMetres": 34.0,
+  "bagYear": 2006,
+  "materialOverrides": {
+   "brick": "#8e7a70",
+   "red": "#7e3f35",
+   "ochre": "#bba582",
+   "concrete": "#e2ded6",
+   "stone": "#b9b4aa",
+   "glass": "#4f6570",
+   "canopyGlass": "#9fb0b0",
+   "frame": "#3b3f42",
+   "bronze": "#2f3233",
+   "pink": "#e9e7e0",
+   "slate": "#9e9281",
+   "green": "#6f8a4f",
+   "dark": "#4a4d4f",
+   "greyBrick": "#8c8d8a"
+  },
+  "attribution": {
+   "title": "Pakhuis Australië and Boston, Purperhoedenveem / Piet Heinkade (warehouse 1893-95 by H. Moen, rebuilt 2002-2006 with the Boston block by DKV architecten)",
+   "author": "Map Recall",
+   "sourceUrl": "https://nl.wikipedia.org/wiki/Pakhuis_Australi%C3%AB",
+   "licence": "CC BY 4.0",
+   "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+   "modifications": "Original texture-free flat-colour geometry on the BAG outline (CC0) and 3DBAG LoD2.2 roof heights (CC BY 4.0): the brick warehouse front on the IJhaven with its twin round-headed windows, buff bands, corbelled cornice, four loggias with steel balconies, cast-iron wall anchors and the AUSTRALIE name board, the dark red brick end wings, the concrete bar floating over the warehouse on a recessed glass storey, and the U-shaped Boston block with its courtyard galleries, shop storey and garden deck on the Piet Heinkade; read for proportion only from Gemeente Amsterdam panoramas (CC BY 4.0) and the Wikimedia Commons photograph 'Pakhuis Australië Amsterdam 2007 gezien vanaf het Java-eiland' by KuifjeNL (public domain). History: nl.wikipedia 'Pakhuis Australië' (CC BY-SA 4.0). No pixels or meshes imported."
+  },
+  "buildingFootprint": {
+   "type": "Polygon",
+   "coordinates": [
+    [
+     [
+      4.9269298,
+      52.3761284
+     ],
+     [
+      4.9259445,
+      52.3762996
+     ],
+     [
+      4.9258547,
+      52.3761064
+     ],
+     [
+      4.9259872,
+      52.376083
+     ],
+     [
+      4.9259604,
+      52.3760254
+     ],
+     [
+      4.9259185,
+      52.3760328
+     ],
+     [
+      4.9258304,
+      52.375843
+     ],
+     [
+      4.9266355,
+      52.3757032
+     ],
+     [
+      4.9267236,
+      52.3758929
+     ],
+     [
+      4.9266805,
+      52.3759004
+     ],
+     [
+      4.9267076,
+      52.3759587
+     ],
+     [
+      4.92684,
+      52.3759356
+     ],
+     [
+      4.9269298,
+      52.3761284
+     ]
+    ]
+   ]
+  }
+ },
+ {
+  "id": "de-makroon",
+  "name": "De Makroon",
+  "modelUrl": "./models/de-makroon.glb",
+  "suppressOsmIds": [
+   "NL.IMBAG.Pand.0363100012242951"
+  ],
+  "spatialSuppression": false,
+  "footprint": {
+   "centre": [
+    4.87804563,
+    52.36679106
+   ],
+   "headingDegrees": 0,
+   "lengthMetres": 114.8,
+   "widthMetres": 91.8
+  },
+  "surveyed": {
+   "anchor": [
+    4.87804563,
+    52.36679106
+   ],
+   "northOffsetDegrees": 0,
+   "source": "Vertex average of the BAG 0363100012242951 outline (RD, 3DBAG LoD0); volumes from the 3DBAG LoD2.2 roof and wall planes of that pand (CC BY 4.0): main roof 21.3 m, corner pieces to 23.8 m, courtyard deck 4.7 / 8.0 m, in native east/south metres (scripts/landmarks/de-makroon-prepare.ts). Storeys, window columns, bands, the slate entrance tower and the canopy measured on rectified Gemeente Amsterdam panorama crops (CC BY 4.0); palette and notes cross-checked with the uninstalled recipe scripts/building-recipes/houses/passeerdersstraat-242951 (scripts/landmarks/de-makroon-inventory.json)."
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 0,
+  "heightMetres": 23.8,
+  "bagYear": 2015,
+  "materialOverrides": {
+   "red": "#8d4a38",
+   "ochre": "#d2b48a",
+   "concrete": "#7a7c7a",
+   "stone": "#9a9792",
+   "glass": "#4f6570",
+   "frame": "#e8e6df",
+   "dark": "#2e3133",
+   "bronze": "#4a4c4e",
+   "slate": "#8a8782"
+  },
+  "attribution": {
+   "title": "De Makroon, Nieuwe Passeerdersstraat / Marnixstraat (2015-16, Architekten Cie. with Pi de Bruijn)",
+   "author": "Map Recall",
+   "sourceUrl": "https://nl.wikipedia.org/wiki/Nieuwe_Passeerdersstraat",
+   "licence": "CC BY 4.0",
+   "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+   "modifications": "Original texture-free flat-colour geometry on the BAG outline (CC0) and 3DBAG LoD2.2 volumes (CC BY 4.0): the U-shaped red-brown brick block with its yellow-brick top storeys, stone bands, French windows with balconettes, top-floor balcony boxes, shopfronts on Nieuwe Passeerdersstraat and Marnixstraat, and the slate-clad entrance tower with its canopy lettered 'de MAKROON'; read for proportion only from Gemeente Amsterdam panoramas (CC BY 4.0)."
+  },
+  "buildingFootprint": {
+   "type": "Polygon",
+   "coordinates": [
+    [
+     [
+      4.87762,
+      52.3670581
+     ],
+     [
+      4.8776262,
+      52.3670439
+     ],
+     [
+      4.8776395,
+      52.3670157
+     ],
+     [
+      4.8776466,
+      52.3670017
+     ],
+     [
+      4.8776616,
+      52.3669739
+     ],
+     [
+      4.8776777,
+      52.3669463
+     ],
+     [
+      4.8776861,
+      52.3669325
+     ],
+     [
+      4.8777039,
+      52.3669053
+     ],
+     [
+      4.8777132,
+      52.3668918
+     ],
+     [
+      4.8777228,
+      52.3668784
+     ],
+     [
+      4.8777427,
+      52.3668517
+     ],
+     [
+      4.8777531,
+      52.3668385
+     ],
+     [
+      4.8777638,
+      52.3668254
+     ],
+     [
+      4.8777747,
+      52.3668123
+     ],
+     [
+      4.8777858,
+      52.3667994
+     ],
+     [
+      4.877809,
+      52.3667737
+     ],
+     [
+      4.8778209,
+      52.366761
+     ],
+     [
+      4.8778456,
+      52.3667358
+     ],
+     [
+      4.8778713,
+      52.3667111
+     ],
+     [
+      4.8778845,
+      52.3666989
+     ],
+     [
+      4.8779116,
+      52.3666747
+     ],
+     [
+      4.8779256,
+      52.3666628
+     ],
+     [
+      4.8779542,
+      52.3666393
+     ],
+     [
+      4.8779837,
+      52.3666162
+     ],
+     [
+      4.8779988,
+      52.3666048
+     ],
+     [
+      4.8780297,
+      52.3665825
+     ],
+     [
+      4.8780455,
+      52.3665715
+     ],
+     [
+      4.8780777,
+      52.3665499
+     ],
+     [
+      4.8780942,
+      52.3665392
+     ],
+     [
+      4.8781108,
+      52.3665287
+     ],
+     [
+      4.8781447,
+      52.3665081
+     ],
+     [
+      4.878162,
+      52.3664979
+     ],
+     [
+      4.8781972,
+      52.3664781
+     ],
+     [
+      4.8782331,
+      52.3664588
+     ],
+     [
+      4.8782698,
+      52.36644
+     ],
+     [
+      4.8789197,
+      52.3666314
+     ],
+     [
+      4.8793094,
+      52.3667461
+     ],
+     [
+      4.8789961,
+      52.3671951
+     ],
+     [
+      4.8787069,
+      52.3671193
+     ],
+     [
+      4.8786619,
+      52.3671068
+     ],
+     [
+      4.878668,
+      52.3670981
+     ],
+     [
+      4.8784919,
+      52.3670463
+     ],
+     [
+      4.8783202,
+      52.3672648
+     ],
+     [
+      4.87762,
+      52.3670581
+     ]
+    ]
+   ]
+  }
  }
 ]

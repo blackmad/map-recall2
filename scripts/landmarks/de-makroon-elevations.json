@@ -1,0 +1,24 @@
+{
+  "id": "de-makroon",
+  "countedBy": "lane landmarks-havens-makroon-20261101 (opus) from the photo named per facade, 2026-11-02; not a blind count: the integrator may dispatch one",
+  "facades": [
+    {
+      "name": "south-south-east front on Nieuwe Passeerdersstraat with the slate entrance tower",
+      "bearing": 155,
+      "photo": "artifacts/landmark-briefs/de-makroon/w01-155.jpg",
+      "rows": [
+        15,
+        14,
+        16,
+        16,
+        16,
+        16,
+        2
+      ],
+      "symmetric": false,
+      "gables": 1,
+      "note": "Gemeente Amsterdam panorama 2023-03-06 (CC BY 4.0). Bands from the street: ground = 14 shopfronts + the glazed entrance under the canopy; storey 1 = 14 French windows (the tower is behind the canopy); storeys 2-3 (brick) and 4-5 (yellow brick) = 7 + 2 tower + 7; the tower carries one more pair above the parapet. Rooftop: only the slate tower rises over the parapet (the yellow corner blocks look higher only in perspective; 3DBAG has them at the 21.3 m main roof). depthBand 6 m: the canopy stands 4 m proud of the front.",
+      "depthBand": 6
+    }
+  ]
+}

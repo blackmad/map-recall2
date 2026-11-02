@@ -1,5 +1,5 @@
 {
-  "toolchain": "58dd4e0babb89032bae2d9c1312180ff6578be92c58184dc9a74d1101622c3ea",
+  "toolchain": "1d89dc6a66e2e5fe2cf2984a95ccf3f537035f8b29abdcd3fe8daa343a09f9ee",
   "models": {
     "abn-amro-hoofdkantoor": "90ff65a2d9f94e99b2ab33438567f147959a43f017d3d9cf9d2ae68b6dae7cbf",
     "academie-theater-dans": "503b3e8d59937cbf7ac8776eb644c11fd10b567e5ac1113e0caa55c83cb68cde",
@@ -88,6 +88,7 @@
     "de-gooyer": "f6abb3727e064d48ec7d709e42187f6cef1e6adc28c0eec641935fed9f6c22a9",
     "de-hallen": "9697d44cc5619a42338fe31ab29bb2c9fe372d7dd5d21e38e15ff47a2e821889",
     "de-krakeling": "18d5de5cc3b1a27b0570dbc88ac72945fa4a45f59521f11d756793f9347eb3d7",
+    "de-makroon": "efe1620bea988e1ee8032ec195670987ccbdf73467e590e94793a396da0bd166",
     "de-nederlandsche-bank": "a04c104860775bdef5b1f75bf6a445a2ab0fd97acd347ccb906fcc5977129879",
     "de-otter": "31c9c210c7447934feff12a42d71f563d61819f9ab7365de0524263e6acd8e2a",
     "de-papegaai": "edea86d4a4476c44f0d515ac7e1909274678c84d732ddc19f188311dad3ba5d8",
@@ -289,6 +290,7 @@
     "oude-lutherse-kerk": "c58a4ab0aa30ed24d5ea854ba533840576d1e2971f4abd8a168d4c89fa3d680f",
     "oudemanhuispoort": "9cd9261abc67b63096f86c3b0dfdb883f7dcefc3f13f87ea104a0dc91906c25f",
     "overtoom-197": "dd5822a5f47bc370ed9ac28a9489d762fd5c908727d73a220195011a323a3811",
+    "pakhuis-australie": "d6a1b01d1502f4310ec3dafc9dd2fce87ccb971219f9688fbc87e37dc9919a8a",
     "pakhuis-de-zwijger": "b54156488dcabde82797a3d25e913d53d05a2ef0b92e5fe8daf4ef0555013c1f",
     "palace-on-the-dam": "c6eddc92fad69d3c99eb218d1115426c2de58132364f6ef6594bf9af422b54e3",
     "paradiso": "684f291e7c30e295875eb32484de5428e7c08313c204d7edc3d4dd225751f939",

@@ -1,0 +1,435 @@
+{
+ "schemaVersion": 1,
+ "id": "de-makroon",
+ "pand": "0363100012242951",
+ "brief": "scripts/landmarks/de-makroon-brief.md",
+ "signature": [
+  "f-slate-tower",
+  "f-canopy-lettering",
+  "f-yellow-top",
+  "f-french-windows",
+  "f-balcony-boxes",
+  "f-shopfronts"
+ ],
+ "walls": [
+  {
+   "tag": "w01-155",
+   "bearing": 155,
+   "lengthM": 78.5,
+   "centre": [
+    4.8787925,
+    52.366595
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002989_pano_0008_000045",
+   "capturedAt": "2023-03-06",
+   "checked": true,
+   "items": [
+    {
+     "id": "f-slate-tower",
+     "kind": "other",
+     "where": "slate-shingle entrance tower at mid front, proud of the brick, rising above the parapet, two columns of paired windows",
+     "approxSizeM": [
+      12.1,
+      23.4
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002989_pano_0008_000045",
+     "how": "entranceTower(): slate slab t 34.8-46.9 m, 0.6 m proud, to 23.4 m, two columns of French windows, collar at the band; the slice behind it slate to the 23.4 m roofs"
+    },
+    {
+     "id": "f-canopy-lettering",
+     "kind": "lettering",
+     "where": "metal entrance canopy with raised letters \"de MAKROON\" standing on it",
+     "approxSizeM": [
+      14.7,
+      1.5
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002989_pano_0008_000045",
+     "how": "entranceTower(): stone slab 3.2 m deep at 4.25 m, raisedLettering 0.95 m"
+    },
+    {
+     "id": "f-yellow-top",
+     "kind": "other",
+     "where": "yellow brick top two storeys above a grey band, taller yellow corner pieces at both ends",
+     "approxSizeM": [
+      78.5,
+      6.5
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002989_pano_0008_000045",
+     "how": "frontSkin(): 0.3 m brick skin red to 14.8 m, yellow above; other walls split at 14.8 m"
+    },
+    {
+     "id": "f-french-windows",
+     "kind": "window-shape",
+     "where": "white-framed French windows on a 4.76 m pitch, five storeys, black balconettes",
+     "approxSizeM": [
+      2.4,
+      2.8
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002989_pano_0008_000045",
+     "how": "frontSkin()/french(): 5 cm frame plate, glass, balconette sheet; 14 columns + 2 tower columns measured on w01"
+    },
+    {
+     "id": "f-balcony-boxes",
+     "kind": "balcony-ironwork",
+     "where": "dark grey balcony boxes on the top storey",
+     "approxSizeM": [
+      2.9,
+      1.25
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002989_pano_0008_000045",
+     "how": "french(box): bronze-slot slab 0.95 m deep"
+    },
+    {
+     "id": "f-shopfronts",
+     "kind": "window-shape",
+     "where": "glazed shopfronts in brick piers on the plinth",
+     "approxSizeM": [
+      3.9,
+      3.45
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002989_pano_0008_000045",
+     "how": "frontSkin(): dark frame plate and glass 3.3 x 3.45 m per column; ground shop bays on Marnixstraat"
+    },
+    {
+     "id": "f-stone-bands",
+     "kind": "other",
+     "where": "grey stone bands over the plinth, over the first storey and at the yellow brick",
+     "approxSizeM": [
+      78.5,
+      0.4
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002989_pano_0008_000045",
+     "how": "slabs at 4.15, 7.75 and 14.5 m"
+    },
+    {
+     "id": "f-slate-panels",
+     "kind": "other",
+     "where": "grey slate panels between some shopfronts",
+     "approxSizeM": [
+      2.5,
+      1.5
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7316010203-002989_pano_0008_000045",
+     "skip": {
+      "reason": "too-small",
+      "note": "panels inside the shop bays, under 2 m"
+     }
+    },
+    {
+     "id": "f-awnings",
+     "kind": "other",
+     "where": "striped sun awnings over some windows",
+     "approxSizeM": [
+      2.2,
+      0.8
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7316010203-002989_pano_0008_000045",
+     "skip": {
+      "reason": "temporary",
+      "note": "retractable awnings"
+     }
+    },
+    {
+     "id": "f-shop-signs",
+     "kind": "sign",
+     "where": "tenant signs and window foils",
+     "approxSizeM": [
+      2,
+      1
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7316010203-002989_pano_0008_000045",
+     "skip": {
+      "reason": "temporary",
+      "note": "tenant signage"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "w02-67",
+   "bearing": 67,
+   "lengthM": 54.3,
+   "centre": [
+    4.8791555,
+    52.3669725
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-003023_pano_0005_000072",
+   "capturedAt": "2023-04-03",
+   "checked": true,
+   "items": [
+    {
+     "id": "m-marnix-grid",
+     "kind": "window-shape",
+     "where": "Marnixstraat face: brick and yellow storeys over shopfronts (panorama crop unusable, grid inferred from the front)",
+     "approxSizeM": [
+      54.3,
+      21.3
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-003023_pano_0005_000072",
+     "how": "generic dressWall() with street shopfronts"
+    }
+   ]
+  },
+  {
+   "tag": "w03-335",
+   "bearing": 335,
+   "lengthM": 52.9,
+   "centre": [
+    4.877973,
+    52.3671635
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": false,
+   "items": [],
+   "note": "no panorama: courtyard / north-west faces, same grid inferred"
+  },
+  {
+   "tag": "w04-240",
+   "bearing": 240,
+   "lengthM": 27.6,
+   "centre": [
+    4.8778265,
+    52.3667725
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000199_pano_0002_000334",
+   "capturedAt": "2017-03-10",
+   "checked": true,
+   "items": [
+    {
+     "id": "w04-canal-grid",
+     "kind": "window-shape",
+     "where": "canal side: red brick with yellow top storeys, French windows with balconettes, glazed ground floor behind the garden",
+     "approxSizeM": [
+      27.6,
+      21.3
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-000199_pano_0002_000334",
+     "how": "generic dressWall(): centred 4.76 m columns, same storeys"
+    },
+    {
+     "id": "w04-slate-bays",
+     "kind": "other",
+     "where": "slate-clad slice on the canal face, two columns of paired windows, rising above the parapet",
+     "approxSizeM": [
+      9.2,
+      23.4
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-000199_pano_0002_000334",
+     "how": "SLICES: 3DBAG wall 457 and the walls behind it to the raised 23.4 m top clad in slate, two window columns"
+    }
+   ]
+  },
+  {
+   "tag": "w05-65",
+   "bearing": 65,
+   "lengthM": 27,
+   "centre": [
+    4.878409,
+    52.3671575
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": false,
+   "items": [],
+   "note": "no panorama: courtyard / north-west faces, same grid inferred"
+  },
+  {
+   "tag": "w06-337",
+   "bearing": 337,
+   "lengthM": 24.8,
+   "centre": [
+    4.878832,
+    52.367153
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000705_pano_0001_000740",
+   "capturedAt": "2018-05-03",
+   "checked": true,
+   "items": [],
+   "note": "panorama shows the older brick neighbour (former Sint Bernardus annex), not De Makroon"
+  },
+  {
+   "tag": "w07-251",
+   "bearing": 251,
+   "lengthM": 21.2,
+   "centre": [
+    4.877674,
+    52.36697
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001979_pano_0001_000172",
+   "capturedAt": "2021-01-25",
+   "checked": true,
+   "items": [
+    {
+     "id": "w07-canal-grid",
+     "kind": "window-shape",
+     "where": "canal side: red brick with yellow top storeys, French windows with balconettes, glazed ground floor behind the garden",
+     "approxSizeM": [
+      21.2,
+      21.3
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-001979_pano_0001_000172",
+     "how": "generic dressWall(): centred 4.76 m columns, same storeys"
+    },
+    {
+     "id": "w07-slate-bays",
+     "kind": "other",
+     "where": "slate-clad bay sections with paired windows on the curved canal face",
+     "approxSizeM": [
+      8,
+      21
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-001979_pano_0001_000172",
+     "how": "the one canal slice measured on w04 (3DBAG wall 457); other slate sections on the curve not separately located"
+    }
+   ]
+  },
+  {
+   "tag": "w08-231",
+   "bearing": 231,
+   "lengthM": 18,
+   "centre": [
+    4.8780125,
+    52.366603
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001967_pano_0000_000751",
+   "capturedAt": "2021-01-18",
+   "checked": true,
+   "items": [
+    {
+     "id": "w08-canal-grid",
+     "kind": "window-shape",
+     "where": "canal side: red brick with yellow top storeys, French windows with balconettes, glazed ground floor behind the garden",
+     "approxSizeM": [
+      18,
+      21.3
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-001967_pano_0000_000751",
+     "how": "generic dressWall(): centred 4.76 m columns, same storeys"
+    },
+    {
+     "id": "w08-slate-bays",
+     "kind": "other",
+     "where": "slate-clad bay sections with paired windows on the curved canal face",
+     "approxSizeM": [
+      8,
+      21
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-001967_pano_0000_000751",
+     "how": "the one canal slice measured on w04 (3DBAG wall 457); other slate sections on the curve not separately located"
+    }
+   ]
+  },
+  {
+   "tag": "w09-223",
+   "bearing": 223,
+   "lengthM": 16.3,
+   "centre": [
+    4.878185,
+    52.3664915
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001967_pano_0000_000749",
+   "capturedAt": "2021-01-18",
+   "checked": true,
+   "items": [
+    {
+     "id": "w09-canal-grid",
+     "kind": "window-shape",
+     "where": "canal side: red brick with yellow top storeys, French windows with balconettes, glazed ground floor behind the garden",
+     "approxSizeM": [
+      16.3,
+      21.3
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-001967_pano_0000_000749",
+     "how": "generic dressWall(): centred 4.76 m columns, same storeys"
+    },
+    {
+     "id": "w09-slate-bays",
+     "kind": "other",
+     "where": "slate-clad bay sections with paired windows on the curved canal face",
+     "approxSizeM": [
+      8,
+      21
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-001967_pano_0000_000749",
+     "how": "the one canal slice measured on w04 (3DBAG wall 457); other slate sections on the curve not separately located"
+    }
+   ]
+  },
+  {
+   "tag": "w10-335",
+   "bearing": 335,
+   "lengthM": 13.3,
+   "centre": [
+    4.878583,
+    52.367074
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": false,
+   "items": [],
+   "note": "no panorama: courtyard / north-west faces, same grid inferred"
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas (w01, w02, w04, w07-w09)",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/",
+   "licence": "CC BY 4.0"
+  },
+  {
+   "name": "3DBAG LoD2.2 NL.IMBAG.Pand.0363100012242951",
+   "url": "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012242951",
+   "licence": "CC BY 4.0"
+  },
+  {
+   "name": "BAG pand 0363100012242951 (bouwjaar 2015; 165 verblijfsobjecten)",
+   "url": "https://api.data.amsterdam.nl/v1/bag/panden/0363100012242951/",
+   "licence": "CC0"
+  },
+  {
+   "name": "nl.wikipedia Nieuwe Passeerdersstraat (De Makroon, Architekten Cie. / Pi de Bruijn, 2016)",
+   "url": "https://nl.wikipedia.org/wiki/Nieuwe_Passeerdersstraat",
+   "licence": "CC BY-SA 4.0"
+  },
+  {
+   "name": "Uninstalled recipe scripts/building-recipes/houses/passeerdersstraat-242951 and scripts/landmarks/passeerdersstraat-242951-inventory.json (palette brick #8d4a38, frame #e8e6df, stone #6e6a66; U-block, French balconies, yellow top, slate tower over metal canopy)",
+   "url": "scripts/building-recipes/houses/passeerdersstraat-242951",
+   "licence": "project"
+  },
+  {
+   "name": "PDOK Luchtfoto RGB Actueel_orthoHR (courtyard, roofs)",
+   "url": "https://service.pdok.nl/hwh/luchtfotorgb/wms/v1_0",
+   "licence": "CC BY 4.0"
+  }
+ ]
+}
