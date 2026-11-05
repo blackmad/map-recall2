@@ -1675,7 +1675,8 @@ test('houseboat berths: the polygon-box prefilter (lane E6 #219) gives the same 
   const polygons: Vec2[][][] = [], shores: Vec2[][] = [];
   for (let k = 0; k < 40; k++) {
     const x = rnd() * 900, y = rnd() * 900, w = 20 + rnd() * 60, h = 8 + rnd() * 12;
-    const outer: Vec2[] = [[x, y], [x + w, y], [x + w, y + h], [x, y + h]];
+    // Every fourth canal has a wiggly south bank of 100+ vertices (the banded test's case).
+    const outer: Vec2[] = k % 4 ? [[x, y], [x + w, y], [x + w, y + h], [x, y + h]] : [...Array.from({ length: 120 }, (_, i) => [x + w * i / 119, y + Math.sin(i) * 0.7] as Vec2), [x + w, y + h], [x, y + h]];
     polygons.push(k % 5 ? [outer] : [outer, [[x + 2, y + 2], [x + 6, y + 2], [x + 6, y + 5], [x + 2, y + 5]]]);
     shores.push([[x, y + h], [x + w, y + h]], [[x + w, y], [x, y]]);
   }
