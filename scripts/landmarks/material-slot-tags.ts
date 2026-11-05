@@ -13,7 +13,13 @@
  */
 import type {MaterialSlot} from '../../src/canalRecall/look/palette';
 
-export type SlotTag = {readonly slot: MaterialSlot; readonly why: string};
+/**
+ * `measured`: the surface colour was measured from open imagery (an orthophoto for a roof). The tag then writes
+ * `tint: measured` and `tintSource: 'measured'`, so the city look draws that colour as is instead of mapping the palette
+ * colour into its range: a light flat roof otherwise takes the warm-gravel tone whatever its colour (cityRoofTint has
+ * gravel and bitumen for flat roofs, never the pale membrane; the Ziggo Dome's white membrane read tan, lane #226).
+ */
+export type SlotTag = {readonly slot: MaterialSlot; readonly why: string; readonly measured?: string};
 
 export const MATERIAL_SLOT_TAG = 'builder';
 
@@ -61,6 +67,9 @@ export const MATERIAL_SLOT_TAGS: Readonly<Record<string, Readonly<Record<string,
     copper: {slot: 'paint', why: 'dark-painted iron rods, struts, railings and lantern posts'},
     bronze: {slot: 'paint', why: 'tarred timber bascule piers, fender piles and the counterweight box'},
   },
+  'ziggo-dome': {
+    slate: {slot: 'bitumen', measured: '#e8e7e3', why: 'flat roof of white membrane: PDOK luchtfoto Actueel_orthoHR over the roof, four 100 x 70 px samples #e6e6e2-#eae9e5 (median #e8e7e3); the roof-facts sidecar reads the same pand white-membrane #e6e6de at confidence 0.8. Not slate, and not the gravel the look gave it'},
+  },
   'da-costakade-146': {
     ochre: {slot: 'brick', why: 'ochre brick of the 1902 Tetterode factory front (monument register 524828 "okerkleurige bakstenen"; w01-248, Commons Bilderdijkstraat 163.jpg)'},
     pink: {slot: 'brick', why: 'brown brick of the 1898 dairy front (register 524830 "bruine steen"; w01-248, Commons Bilderdijkstraat 159.jpg)'},
@@ -69,6 +78,15 @@ export const MATERIAL_SLOT_TAGS: Readonly<Record<string, Readonly<Record<string,
     copper: {slot: 'roofTile', why: 'red-brown pantiles on the dairy gable and its short roof (register 524830 "zadeldak met pannen", "dakschild met pannen")'},
   },
 };
+
+/**
+ * The glTF extras a declared tag writes over the inferred ones (`base`: inferredSlotExtras of the palette name and colour).
+ * Without `measured` this is exactly the pre-#226 tag: slot and tag mark over the inferred extras.
+ */
+export function tagExtras<B extends {tint: string}>(base: B, tag: SlotTag): B & {materialSlot: MaterialSlot; materialSlotTag: string; tintSource?: 'measured'} {
+  if (tag.measured !== undefined && !/^#[0-9a-f]{6}$/.test(tag.measured)) throw Error(`measured tint must be #rrggbb lower case: ${tag.measured}`);
+  return {...base, materialSlot: tag.slot, materialSlotTag: MATERIAL_SLOT_TAG, ...(tag.measured ? {tint: tag.measured, tintSource: 'measured' as const} : {})};
+}
 
 /** The declared slot for a palette name in a model, if any. */
 export const slotTagFor = (id: string, materialName: string): SlotTag | undefined => MATERIAL_SLOT_TAGS[id]?.[materialName];

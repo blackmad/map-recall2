@@ -2,7 +2,7 @@ import {slotExtras} from '../../src/canalRecall/landmarks/materialSlots';
 import {snapDetachedParts,snapOpenings} from '../../src/canalRecall/landmarks/snapOpenings';
 import {buildWaag} from './waag-builder';
 import {inferredSlotExtras} from '../../src/canalRecall/look/materialSlotInference';
-import {MATERIAL_SLOT_TAG, slotTagFor} from './material-slot-tags';
+import {slotTagFor, tagExtras} from './material-slot-tags';
 import {buildScheepvaartmuseum} from './scheepvaartmuseum-builder';
 import {buildOdessa} from './odessa-builder';
 import {buildHotelJakarta} from './hotel-jakarta-builder';
@@ -544,7 +544,7 @@ async function save(id:string){
   if(group.unlit)material.setExtension('KHR_materials_unlit',unlitExtension!.createUnlit());
   // Shared look (`?cityLook=1`, look/cityLook.ts): the slot follows from the palette name; audit:glb gates new exports at 100 %.
   // Builder-declared slots (material-slot-tags.ts) win over inference; absent a tag the export is unchanged.
-  else{const tag=slotTagFor(id,name);material.setExtras(tag?{...inferredSlotExtras(name,group.hex),materialSlot:tag.slot,materialSlotTag:MATERIAL_SLOT_TAG}:inferredSlotExtras(name,group.hex));}
+  else{const tag=slotTagFor(id,name);material.setExtras(tag?tagExtras(inferredSlotExtras(name,group.hex),tag):inferredSlotExtras(name,group.hex));}
   if(id==='conservatorium'&&!name.startsWith('decal-')&&group.colour==='glass')material.setBaseColorFactor([rgb.r,rgb.g,rgb.b,.28]).setAlphaMode('BLEND');
   const opacity=(spec as {materialOpacity?:Record<string,number>}).materialOpacity?.[group.colour];
   if(opacity!==undefined&&id!=='conservatorium'&&!name.startsWith('decal-'))material.setBaseColorFactor([rgb.r,rgb.g,rgb.b,opacity]).setAlphaMode('BLEND');
