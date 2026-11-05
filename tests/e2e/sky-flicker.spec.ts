@@ -79,7 +79,9 @@ for (const engine of ['own', 'maplibre'] as const) {
     if (engine === 'own') await watchClears(page);
 
     // Standing still: the sky band is pixel-identical frame to frame.
-    const still = await nonSkyBandPixels(await screencast(page, 3000));
+    const stillFrames = await screencast(page, 3000);
+    const still = await nonSkyBandPixels(stillFrames);
+    if (Math.max(0, ...still) > 0) await test.info().attach('worst still frame', { body: stillFrames[still.indexOf(Math.max(...still))], contentType: 'image/png' });
     expect(Math.max(...still), 'standing still: the sky band is all sky').toBe(0);
 
     await page.keyboard.down('ArrowUp');
@@ -87,6 +89,7 @@ for (const engine of ['own', 'maplibre'] as const) {
     await page.keyboard.up('ArrowUp');
     const bad = await nonSkyBandPixels(frames);
     const badFrames = bad.filter(n => n > 0).length;
+    if (badFrames) await test.info().attach('worst ride frame', { body: frames[bad.indexOf(Math.max(...bad))], contentType: 'image/png' });
     const clears = engine === 'own' ? await page.evaluate(() => (window as any).__skyClears) : null;
     console.log(`[sky-flicker] ${engine}: ${frames.length} frames, ${badFrames} with a non-sky band (max ${Math.max(0, ...bad)} px)`, clears ? JSON.stringify(clears) : '');
     expect(frames.length, 'the screencast saw the ride').toBeGreaterThan(60);
