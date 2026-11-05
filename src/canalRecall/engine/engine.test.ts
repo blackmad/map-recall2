@@ -612,3 +612,32 @@ test('worldCameraOf (MapLibre): whenIdle asks for a frame, so an already idle ma
   assert.equal(resolved, true, 'resolves without an outside frame');
   assert.equal(repaints, 1);
 });
+
+test('FrameHost clear guard (#216): every frame clears with the sky at alpha 1 and a full colour mask, whatever GL was left with', async () => {
+  const { FrameHost } = await import('./frameHost');
+  const make = (clearGuard?: boolean) => {
+    const canvas: any = { style: {}, width: 0, height: 0, addEventListener() {}, remove() {} };
+    const container: any = { clientWidth: 400, clientHeight: 300, ownerDocument: { createElement: () => canvas }, appendChild() {} };
+    // A fake GL clear state: what three's resetState() leaves (clearColor 0,0,0,0) until the next renderer.render().
+    const gl = { clear: [0, 0, 0, 0] as number[], mask: true, isContextLost: () => false };
+    const clears: Array<{ colour: number[]; mask: boolean }> = [];
+    const renderer: any = {
+      getContext: () => gl, setViewport() {}, setRenderTarget() {}, dispose() {},
+      setClearColor(hex: number, alpha: number) { gl.clear = [(hex >> 16) & 255, (hex >> 8) & 255, hex & 255, alpha]; },
+      state: { buffers: { color: { setMask(m: boolean) { gl.mask = m; } } } },
+      clear() { clears.push({ colour: gl.clear.slice(), mask: gl.mask }); },
+      // Between frames: a precompile ends in resetState, and a colorWrite:false draw left the mask off.
+      resetState() { gl.clear = [0, 0, 0, 0]; },
+    };
+    const host = new FrameHost({}, container, { render: () => {} }, { createRenderer: () => renderer, clearColor: 0x9ec3ed, clearGuard, requestFrame: () => 1, cancelFrame() {} });
+    return { host, renderer, gl, clears };
+  };
+  const on = make();
+  on.renderer.resetState(); on.gl.mask = false;
+  on.host.redraw();
+  assert.deepEqual(on.clears.at(-1), { colour: [0x9e, 0xc3, 0xed, 1], mask: true }, 'the guard: sky colour, alpha 1, full mask');
+  const off = make(false);
+  off.renderer.resetState();
+  off.host.redraw();
+  assert.deepEqual(off.clears.at(-1)!.colour, [0, 0, 0, 0], '?skyClear=0: the old behaviour clears to transparent after a reset');
+});

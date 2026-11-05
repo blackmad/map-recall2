@@ -225,7 +225,7 @@ export class OwnWorldView implements WorldViewOracles {
       // The game's loading screen (GameState.LOADING, presentationRuntime.ts) paints over the world opaquely.
       coveredFrameMs: () => (W().canalRecallGame?.state === LOADING_STATE ? COVERED_FRAME_MS : null),
       ...(toon ? { post: (renderer: any, width: number, height: number) => (this.toonPost ??= new ToonPost(THREE)).apply(renderer, width, height) } : {}),
-    }, { antialias, pixelRatio: Math.min(dpr, cap), clearColor: clear, renderOnChange: flag('renderOnChange', '__canalRecallRenderOnChange', true) });
+    }, { antialias, pixelRatio: Math.min(dpr, cap), clearColor: clear, renderOnChange: flag('renderOnChange', '__canalRecallRenderOnChange', true), clearGuard: flag('skyClear', '__canalRecallSkyClear', true) });
     // GL work counters (engine/glCounters.ts, the P4 counters gate): opt-in, on window.__canalPerf.gl.
     if (flag('glCounters', '__canalRecallGlCounters', false)) {
       // three uploads geometry and links programs lazily inside its draw of an object: name that object as the owner.
