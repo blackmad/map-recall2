@@ -6,7 +6,7 @@
 // footprints come from (MapLibre's rendered extrusions, the streamer's tiles)
 // is the caller's `query`.
 
-import { coveringBuilding, initialCoverState, updateCoverState, type CoverState, type FootprintFeature } from '../coveredPassage';
+import { coveringBuilding, coveringBuildingOnPath, initialCoverState, updateCoverState, type CoverState, type FootprintFeature, type LngLat } from '../coveredPassage';
 
 /** Seconds between footprint queries: plenty against the enter/leave holds. */
 export const COVER_QUERY_S = 0.12;
@@ -20,14 +20,19 @@ export class RiderCoverTracker {
   private checkedAt: number | null = null;
   private raw = false;
 
-  update(rider: readonly [number, number], active: boolean, nowS: number, query: () => FootprintFeature[]): CoverUpdate {
+  /**
+   * `ahead`, when given, makes the decision route-aware (coveredPassage.ts `coveringBuildingOnPath`): the points of
+   * the path ahead (route or heading) the covering footprint must also hold. Omitted: the old rule (any ground-based
+   * footprint holding the rider point), which `?coverRoute=0` restores.
+   */
+  update(rider: readonly [number, number], active: boolean, nowS: number, query: () => FootprintFeature[], ahead?: () => readonly LngLat[]): CoverUpdate {
     let coveredNow = false;
     if (active) {
       if (this.checkedAt != null && nowS - this.checkedAt < COVER_QUERY_S) coveredNow = this.raw;
       else {
         this.checkedAt = nowS;
         try {
-          const cover = coveringBuilding(query(), rider);
+          const cover = ahead ? coveringBuildingOnPath(query(), rider, ahead()) : coveringBuilding(query(), rider);
           coveredNow = !!cover;
           if (cover) {
             const c = cover as FootprintFeature & { id?: unknown };

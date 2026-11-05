@@ -235,7 +235,7 @@
     "audit:building-coplanar": "node --import tsx scripts/audit-building-coplanar.ts --all",
     "build:canal-engine": "node scripts/build-canal-engine.mjs",
     "test:stamps": "node --import tsx --test scripts/stamp-canal-assets.test.ts",
-    "test:engine": "node --import tsx --test src/canalRecall/engine/*.test.ts src/canalRecall/rendererShared/*.test.ts src/canalRecall/detailRing.test.ts src/canalRecall/streamingLookAhead.test.ts",
+    "test:engine": "node --import tsx --test src/canalRecall/engine/*.test.ts src/canalRecall/rendererShared/*.test.ts src/canalRecall/detailRing.test.ts src/canalRecall/streamingLookAhead.test.ts src/canalRecall/coveredPassage.test.ts",
     "test:steer-model": "node --import tsx --test src/canalRecall/drive/steerModel.test.ts src/canalRecall/drive/cameraFollow.test.ts src/canalRecall/drive/inputBlend.test.ts",
     "check:site-imports": "node scripts/sentry/collect-canal-bundles.mjs --source=public/canal-drive --imports-only",
     "world:compile": "node --max-old-space-size=12000 --import tsx scripts/world/compile.ts",

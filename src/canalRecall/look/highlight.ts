@@ -30,6 +30,7 @@
  * facade stays the building's own from the saddle.
  */
 import { HIGHLIGHT_CORAL, HIGHLIGHT_YELLOW, HUD_ACCENT, hexToRgb, type RGB } from './palette.ts';
+import { COVERED_BUILDING_OPACITY } from '../coveredPassage.ts';
 
 export type HighlightStyle = 'yellow' | 'a' | 'b' | 'c';
 export const HIGHLIGHT_PARAM = 'highlight';
@@ -210,8 +211,14 @@ export const RIM_PULSE_S = 2.4;
 export const RIM_STRENGTH = 0.9;
 export const RIM_POWER = 2.2;
 
-/** `hidden` attribute values (one protocol for every merged pipeline). */
-export const HIDDEN = { drawn: 0, hide: 1, highlight: 2, dim: 3 } as const;
+/**
+ * `hidden` attribute values (one protocol for every merged pipeline). `ghost` (lane E1 2026-11-05): the building over
+ * the rider (riderCover.ts) draws at COVERED_BUILDING_OPACITY as a screen door (`HL_GHOST`), so depth stays opaque
+ * and no sort is needed: the MapLibre path's 0.28 extrusion opacity, per building, instead of the facade vanishing.
+ */
+export const HIDDEN = { drawn: 0, hide: 1, highlight: 2, dim: 3, ghost: 4 } as const;
+/** Share of a ghosted building's pixels that still draw. */
+export const GHOST_COVERAGE = COVERED_BUILDING_OPACITY;
 
 function parseStyle(raw: unknown): HighlightStyle | null {
   if (typeof raw !== 'string') return null;
@@ -260,7 +267,9 @@ export function highlightDefines(style: HighlightStyle = highlightStyle()): Reco
 
 /**
  * GLSL shared by every building shader that reads `hidden`.
- * `hlState(hidden)`: 0 plain, 1 highlighted, 2 dimmed. `HL_PAINT(state)`: today's yellow branch.
+ * `hlState(hidden)`: 0 plain, 1 highlighted, 2 dimmed, 3 ghosted. `HL_PAINT(state)`: today's yellow branch.
+ * `HL_GHOST(state)` (fragment only: a macro, so the vertex stage never expands gl_FragCoord): this pixel of a
+ * ghosted building is dropped (screen door at GHOST_COVERAGE).
  */
 export const HIGHLIGHT_GLSL = /* glsl */ `
 #ifdef HL_KEEP
@@ -268,8 +277,9 @@ export const HIGHLIGHT_GLSL = /* glsl */ `
 #else
 #define HL_PAINT(h) ((h) > 0.5 && (h) < 1.5)
 #endif
-float hlState(float hidden) { return hidden > 2.5 ? 2.0 : (hidden > 1.5 ? 1.0 : 0.0); }
-vec3 hlDesat(vec3 c, float h) { return h > 1.5 ? mix(c, vec3(dot(c, vec3(0.2126, 0.7152, 0.0722))), ${DESATURATE_AMOUNT.toFixed(2)}) : c; }`;
+#define HL_GHOST(h) ((h) > 2.5 && fract(dot(floor(gl_FragCoord.xy), vec2(0.569840296, 0.754877666))) >= ${GHOST_COVERAGE.toFixed(3)})
+float hlState(float hidden) { return hidden > 3.5 ? 3.0 : (hidden > 2.5 ? 2.0 : (hidden > 1.5 ? 1.0 : 0.0)); }
+vec3 hlDesat(vec3 c, float h) { return h > 1.5 && h < 2.5 ? mix(c, vec3(dot(c, vec3(0.2126, 0.7152, 0.0722))), ${DESATURATE_AMOUNT.toFixed(2)}) : c; }`;
 
 // ---------------------------------------------------------------------------
 // Geometry helpers (pure)

@@ -13,6 +13,10 @@ import { OWN } from './worldCam';
 //
 // Measured on the rider's screen box: the share of pixels in the slab's
 // colour (before: ~0.9, after: ~0).
+//
+// Both engines (lane E1 2026-11-05). Under `ENGINE=own` the streamed footprints over the passage start at 8 m, so the
+// cover does not fire there at all; the spec checks the corridor's pixels and that no cover holds a building. The own
+// cover rule (route-aware, ghosting) is pinned by rider-cover-bump.spec.ts and coveredPassage.test.ts.
 
 const PASSAGE: [number, number, number] = [52.3797, 4.89862, 0.62]; // lat, lng, compass bearing (rad)
 const OPEN_STREET: [number, number, number] = [52.37450, 4.89450, 0.0]; // Damrak
@@ -51,13 +55,27 @@ async function slabShare(page: Page): Promise<number> {
 }
 
 test('the rider can see the Cuyperspassage under Centraal\'s train shed', async ({ page }, testInfo) => {
-  test.skip(OWN, 'MapLibre style assertion: deleted with the default path at P5');
   test.skip(testInfo.project.name !== 'desktop', 'one camera is enough');
   test.setTimeout(180_000);
   // The shed comes from the building appearance layers, which need the
   // building tiles (not aborted here).
   await openRoute(page, { travelMode: 'car', viewMode: 'chase', abortHeavyTiles: false });
   await placeRider(page, PASSAGE);
+  if (OWN) {
+    // Under the own engine the streamed footprints over the passage already start at 8 m (w451533147 and its
+    // neighbours, min_height 8, measured 2026-11-05), so nothing covers the rider and nothing needs to fade: the pin
+    // is the corridor itself, and that no cover took a building away.
+    await page.waitForTimeout(15_000);
+    const share = await slabShare(page);
+    const own = await page.evaluate(() => {
+      const vm = (window as any).canalRecallGame.vectorMap, tb = vm._threeBuildings;
+      return { covered: vm.riderCovered, hidden: [...(tb?.hiddenBy?.get('cover') ?? [])], ghosted: tb?.ghostedIds?.() ?? [] };
+    });
+    console.log(`own, under the train shed: ${JSON.stringify(own)}, slab share ${share.toFixed(2)}`);
+    expect(share, 'the corridor is not hidden behind the shed').toBeLessThan(0.2);
+    expect([...own.hidden, ...own.ghosted], 'no cover holds a building').toEqual([]);
+    return;
+  }
   await expect.poll(() => page.evaluate(() => (window as any).canalRecallGame.vectorMap.riderCovered), { timeout: 90_000 }).toBe(true);
   await page.waitForTimeout(1000);
   const under = await page.evaluate(() => (window as any).canalRecallGame.vectorMap.riderCovered);

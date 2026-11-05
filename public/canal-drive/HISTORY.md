@@ -1,5 +1,43 @@
 # Canal Recall — what is built
 
+**Houses stay put when the rider bumps into them: the passage cover is route-aware and dims instead of hiding; the far haze is gentler, with a Distance haze switch (2026-11-05, #214).**
+Lane E1 (528bdb5f7 … 2b9720a0b). The Cuyperspassage rule (`coveredPassage.ts`)
+covered any footprint the rider's point was inside, and under own that meant
+`setHidden`, so a bump into a house front made the house vanish (the old rule
+covered the bumped house in 37/41 and 40/41 samples at Nieuwe Leliestraat). Now
+`coveringBuildingOnPath` needs the rider at least 1.5 m inside the footprint
+**and** the path ahead inside the same footprint: the next 15 m of the route
+when the rider is within 15 m of it, else the road underfoot plus 15 m along it
+(`track.getNearestRoad`). The heading was tried first and rejected: a rider
+pressed against a wall faces into it. The covering building draws as a 0.28
+screen door (`HIDDEN.ghost`, `ThreeBuildings.setGhosted`, in all three facade
+fragment shaders), depth stays opaque. `?coverRoute=0` restores the point rule,
+`?coverDim=0` hides as before; MapLibre's `vector-map.js` keeps its rule.
+Result 0/41 at both streets; pins in `rider-cover-bump.spec.ts` (own, `COVER_AB=1`
+for the before). `covered-passage.spec.ts` now runs under both engines; under
+own the streamed footprints over the passage start at 8 m, so the cover never
+fires there and the spec checks the corridor pixels instead. For the road lane:
+the road guard lets the bike 1.1–2.6 m into house footprints at Nieuwe
+Leliestraat and 1.3–1.4 m at Bloemgracht, which is why the depth check alone
+would not have done. Haze: the user asked for a gentle far haze that can be
+turned off. `depthFade.ts` keeps the 0.8 × start but never inside 200 m (was
+80), full at 4 × (3.5), desaturation 0.5 (0.7), haze 0.38 (0.55), detail blend
+250–600 m (150–320); the brief's 2 ×–6 × start kept only 0–1 % of the gain
+because the A/B camera sits ~348 m from the view centre. `?fadeStrength=0..1`
+scales desaturation, haze and detail together, `?depthFadeMinNear=<m>` moves the
+floor. The busyness ratio keeps 53–58 % of lever 1's gain on desktop and 58–74 %
+on iPhone at every spot, near third unchanged. The "Distance haze" preference
+(default on, Comfort & detail, setup and in-ride, EN/NL) sets
+`__canalRecallDistanceHaze` and `sharedFrame` moves the fog range out of reach
+on the next frame, no reload, both engines; pinned in `distance-haze.spec.ts`;
+Storybook `AdvancedOptionsHazeOff` + phone. Marking fade now starts at 200 m
+for close cameras. Open: the ghost dimming has not been seen in a real ride (no
+passage fires under own); the road guard depth; the phone layout of the new tile.
+Integrator: engine, three-buildings, own-ground, signature, building-style,
+overlay, preferences, tile-buildings and building-types bundles rebuilt;
+`coveredPassage.test.ts` joined test:engine (158/158); test:look 178/178,
+test:own-ground 236/236, test:hud 34/34; What's New for both.
+
 **The pop-in the user saw was the world ring lagging the rider, not detail swapping: the ring now follows the rider, swaps cross-fade, and detail is prefetched along the route (2026-11-05, #217).**
 Lane E4 (272ce63a3, d95b510fb, 5dec6092f, 63a595ec0). The user's answer to #168
 was "detail switching on buildings already there", so the lane built the

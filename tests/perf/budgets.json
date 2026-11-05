@@ -119,6 +119,12 @@
       "unit": "visible swaps of >= 400 px^2 within 120 m of the rider during the pinned 60 s ride at 40 m/s under ?engine=own (tests/e2e/swap-gate.spec.ts, PERF_SWAPS=1), desktop and iPhone",
       "source": "lane E4 2026-11-05 (#217): 34 -> 0 desktop, 6 -> 0 iPhone with ringFollow + swapFade + routeAhead + detailLinger; 63 (desktop) / 135 (iPhone) shell->detail swaps remain 120-300 m out, faded but not prefetched",
       "date": "2026-11-05"
+    },
+    "coverBumpHidden": {
+      "value": 0,
+      "unit": "samples (of 41) in which a bump into a house front hides or dims that house under ?engine=own (tests/e2e/rider-cover-bump.spec.ts, Nieuwe Leliestraat and Bloemgracht)",
+      "source": "lane E1 2026-11-05 (#214): old point-in-footprint rule 37/41 and 40/41 at Nieuwe Leliestraat; route-aware rule 0/41 at both streets",
+      "date": "2026-11-05"
     }
   },
   "_desktopPerfViewport": {

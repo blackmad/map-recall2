@@ -331,9 +331,11 @@ have been live for a day, and watches the 48 h bar. Pin harness: the shading fli
 camera elevation, fixed in the spec (d80ab4245); trees are pinnable. **Engine cutover lanes (2026-11-05, plan #213, user's play verdict on
 `?engine=own`: sky flicker, Chrome crash within a minute on this Mac (renderer
 OOM per the Crashpad dump), jank, buildings vanishing on bump, far fade too
-stark, pop-in = detail switching on buildings already there):** E1 #214
-cover rule + fade tune + "Distance haze" switch (`engine-cover-fade-20261105`,
-4620); E2 #215 merged 2026-11-05 (HISTORY "The own engine does not leak"): no
+stark, pop-in = detail switching on buildings already there):** E1 #214 merged
+2026-11-05 (HISTORY "Houses stay put when the rider bumps into them"): bump
+cover 37–40/41 → 0/41, haze gentler with the Distance haze switch; open: the
+road guard lets the bike 1.1–2.6 m into house footprints (road lane), the ghost
+dimming unseen in a ride, the phone layout of the new settings tile; E2 #215 merged 2026-11-05 (HISTORY "The own engine does not leak"): no
 leak, one ride ~380 MB flat, the Nov 2 crash was a ~3.2 GB renderer with 12
 workers, hypothesis several same-origin game tabs in one process (user asked:
 how many game tabs were open?); heartbeat + context-loss telemetry now report

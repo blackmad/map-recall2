@@ -3,6 +3,29 @@
   "notes": [
     {
       "date": "2026-11-05",
+      "title": "A gentler distance haze, and a switch for it",
+      "text": "The haze over the far city is softer and starts further away: colour drops by half instead of seventy percent, and window detail stays until about 250 m. If you would rather see the whole city sharp, a new Distance haze switch under Comfort & detail turns it off mid-ride.",
+      "images": [
+        {
+          "src": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/whats-new/2026-11-05-haze-gentler-desktop.jpg",
+          "alt": "Five spots: no haze, the first haze, the gentler haze",
+          "caption": "Off | before | now, at five spots"
+        },
+        {
+          "src": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/whats-new/2026-11-05-haze-gentler-iphone.jpg",
+          "alt": "The same five spots on a phone",
+          "caption": "Phone: off | before | now"
+        }
+      ]
+    },
+    {
+      "date": "2026-11-05",
+      "title": "New engine preview: houses stay put when you bump into them",
+      "text": "In the new engine (?engine=own), riding into a house front made the house vanish, because the rule that lets you see through the Centraal passage fired on any building you touched. It now fires only when your route runs through the building, and it dims instead of hiding.",
+      "images": []
+    },
+    {
+      "date": "2026-11-05",
       "title": "Buildings stop appearing right in front of you",
       "text": "The city used to load the next stretch of buildings only when you crossed into a new map tile, which could be sixty metres ahead of you. It now loads as you move, buildings that do change dissolve in and out instead of popping, and the detailed buildings along your route are fetched before you reach them.",
       "images": []
