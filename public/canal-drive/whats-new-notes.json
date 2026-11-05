@@ -3,6 +3,18 @@
   "notes": [
     {
       "date": "2026-11-06",
+      "title": "Sharper distance, steadier rails, and a performance readout",
+      "text": "Distant buildings now wear their roofs: two to five blocks out, rooftops show their real pitch and colour instead of flat grey lids. When nearby detail fades in, it takes over the simple shape pixel by pixel instead of flickering on top of it. Railway tracks on the ground are drawn as sharp dark rails that stay at least a pixel wide in the distance, instead of blurring into a grey hatch. A new Show performance switch under Comfort & detail puts one small line of numbers in the corner: memory, graphics memory, what is loaded and how smooth the last few seconds were. If the city ever slows down, those numbers tell us why. Flying over the city also keeps far fewer landmark models loaded at once (up to 627 before, about 250 now on a Mac), so a long tour from the air holds about a third less graphics memory.",
+      "images": [
+        "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/engine/2026-11-06-r1/swap-s1-hoftuin-desktop-dpr2.jpg",
+        "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/engine/2026-11-06-r1/swap-s3-slab-mid-swap-desktop.jpg",
+        "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/engine/2026-11-06-r1/crisp-rails-off-on-desktop.jpg",
+        "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/engine/2026-11-06-r1/perf-hud-desktop-crop.jpg",
+        "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/engine/2026-11-06-r1/aerial-s4-zuidas-desktop.jpg"
+      ]
+    },
+    {
+      "date": "2026-11-06",
       "title": "The Bloemenmarkt's sixteen floating stalls, Park Kiosk BEA and Ramon's Coffee",
       "text": "The Bloemenmarkt is back on the Singel: all sixteen floating flower stalls from the Koningsplein to the Muntplein end, with their saw-tooth glass roofs, open flower fronts and the canal-side glasshouse wall, placed from the city's mooring register in place of generic houseboats. Park Kiosk BEA in the Beatrixpark stands beside the wading pool as itself, a long low board pavilion with a sedum roof, its kiosk porch and wooden BEA sign at the east end. Ramon's Coffee Kiosk on the Silodam is a small glazed cabin with its dark lettered road side, menu board and a garden on the roof. Pat's Poffertjes turned out to be a shop inside a building, not a kiosk, so it stays in the ordinary building layer.",
       "images": [
