@@ -149,6 +149,113 @@
       "unit": "frames over 100 ms in the first 10 s after RACING on the cold first start, iPhone 13 profile at 4x, own engine, fresh browser",
       "source": "lane E6 2026-11-05 (#219): before 17,17,17, after 7,7,8; the line holds the gain, the target (<= 5, 0 over 200 ms) stays on the board: one 233-250 ms major GC per start remains",
       "date": "2026-11-05"
+    },
+    "popInSwapsMid": {
+      "value": {
+        "desktop": 88,
+        "iphone": 241
+      },
+      "reportOnly": true,
+      "unit": "swapped objects of >= 400 px^2 at 120-300 m of the rider (ownership-flip area) during the pinned 60 s ride under ?engine=own (tests/e2e/swap-gate.spec.ts, PERF_SWAPS=1); gating only with SWAP_GATE_MID=1, which stays OFF",
+      "note": "REPORT-ONLY, not a passing gate: the target is 0; the values are today's measurement. The probe counts ownership-flip area, so a roofed shell (shellRoofs) raises the count without more swap events; gate the band on visible dE per swap before turning SWAP_GATE_MID on.",
+      "source": "lane R1-A 2026-11-06 (#223) at 6105b6244: before (&swapComplement=0&shellRoofs=0, same bundles) 60 desktop / 135 iPhone, after 88 (shell->detail 82, detail->shell 5, extras 1) / 241 (detail->shell 218); swap event counts identical before and after (iPhone 29 shell->detail, 31 detail->shell)",
+      "date": "2026-11-06"
+    },
+    "desktopTextureMB": {
+      "value": 90,
+      "measured": 86.7,
+      "unit": "MB facade-cell array texture (ThreeBuildings stats().textureMB), desktop high tier DPR 2, default flags (tests/e2e/crisp-textures.spec.ts facadeTextureMB, opt-in CRISP=1)",
+      "note": "measured by the crisp-textures harness, not yet asserted by an expect; HIGH_CELL_PX pinned to 256 at integration (512 px cells measured no sharpness gain at S2 for +260 MB)",
+      "source": "lane R1-B 2026-11-06 (#224) at 356164e54: 86.7 MB at 256 px, 195 MB at 384, 346.7 MB at 512 (2880x1800 DPR 2)",
+      "date": "2026-11-06"
+    },
+    "aerialHeapGrowthPct": {
+      "value": 10,
+      "measured": {
+        "desktop": -1.3,
+        "iphone": -4.2
+      },
+      "unit": "% JS heap growth, peak of the last minute vs peak of minute 1 of the aerial pan",
+      "source": "lane R1-C 2026-11-06 (#225) at 8d9a22a6f, harness scripts/aerial-pan.mjs (npm run perf:aerial): 3-min Free Ride aerial sweep Centrum -> S1 Hoftuin -> S4 Zuidas -> West -> Oost -> Dam at 300 m/s, sampled every 5 s after forced GC; installed Chrome on Metal, headed, desktop 1512x982 DPR 2 and iPhone 13 profile; before the landmark reach: desktop 418 -> 361 MB, iPhone 349 -> 337 MB peaks",
+      "date": "2026-11-06"
+    },
+    "aerialLandmarksMax": {
+      "value": {
+        "desktop": 260,
+        "iphone": 130
+      },
+      "measured": {
+        "desktop": 250,
+        "iphone": 118
+      },
+      "unit": "landmark models resident at any sample of the aerial pan",
+      "source": "lane R1-C 2026-11-06 (#225) at 8d9a22a6f, harness scripts/aerial-pan.mjs (npm run perf:aerial): 3-min Free Ride aerial sweep Centrum -> S1 Hoftuin -> S4 Zuidas -> West -> Oost -> Dam at 300 m/s, sampled every 5 s after forced GC; installed Chrome on Metal, headed, desktop 1512x982 DPR 2 and iPhone 13 profile; before ?landmarkReach: 627 desktop (budget 72) / 465 iPhone (budget 24)",
+      "date": "2026-11-06"
+    },
+    "aerialGlMaxMB": {
+      "value": {
+        "desktop": 700,
+        "iphone": 400
+      },
+      "measured": {
+        "desktop": 635,
+        "iphone": 371
+      },
+      "unit": "MB GPU resident (glCounters GlResident totalMB) max over the aerial pan",
+      "source": "lane R1-C 2026-11-06 (#225) at 8d9a22a6f, harness scripts/aerial-pan.mjs (npm run perf:aerial): 3-min Free Ride aerial sweep Centrum -> S1 Hoftuin -> S4 Zuidas -> West -> Oost -> Dam at 300 m/s, sampled every 5 s after forced GC; installed Chrome on Metal, headed, desktop 1512x982 DPR 2 and iPhone 13 profile; before: 957 desktop / 577 iPhone",
+      "date": "2026-11-06"
+    },
+    "aerialGeometriesMax": {
+      "value": {
+        "desktop": 2800,
+        "iphone": 3000
+      },
+      "measured": {
+        "desktop": 2533,
+        "iphone": 2702
+      },
+      "unit": "three.js renderer.info.memory.geometries max over the aerial pan",
+      "source": "lane R1-C 2026-11-06 (#225) at 8d9a22a6f, harness scripts/aerial-pan.mjs (npm run perf:aerial): 3-min Free Ride aerial sweep Centrum -> S1 Hoftuin -> S4 Zuidas -> West -> Oost -> Dam at 300 m/s, sampled every 5 s after forced GC; installed Chrome on Metal, headed, desktop 1512x982 DPR 2 and iPhone 13 profile; before: 5197 desktop / 4910 iPhone",
+      "date": "2026-11-06"
+    },
+    "aerialTexturesGrowthPct": {
+      "value": 10,
+      "reportOnly": true,
+      "measured": {
+        "desktop": 20,
+        "iphone": 2
+      },
+      "unit": "% growth of renderer.info.memory.textures, peak of the last minute vs minute 1 of the aerial pan",
+      "note": "RED TODAY on desktop (+20 %, 45 -> 54 textures); recorded report-only, NOT a passing gate.",
+      "source": "lane R1-C 2026-11-06 (#225) at 8d9a22a6f, harness scripts/aerial-pan.mjs (npm run perf:aerial): 3-min Free Ride aerial sweep Centrum -> S1 Hoftuin -> S4 Zuidas -> West -> Oost -> Dam at 300 m/s, sampled every 5 s after forced GC; installed Chrome on Metal, headed, desktop 1512x982 DPR 2 and iPhone 13 profile; before: +20 % desktop (60 -> 72), +18 % iPhone",
+      "date": "2026-11-06"
+    },
+    "aerialP99Ms": {
+      "value": {
+        "desktop": 33,
+        "iphone": 50
+      },
+      "reportOnly": true,
+      "measured": {
+        "desktop": 167,
+        "iphone": 109
+      },
+      "unit": "ms frame p99, worst 5 s window of the aerial pan (median window: 100 desktop / 51 iPhone)",
+      "note": "RED TODAY on both profiles; recorded report-only, NOT a passing gate. Owners: GPU fill + shadow map from the air (governor steps DPR 2 -> 0.75), labels occlusion/place, city follow; lever is R2-B baked shells and a label cap at aerial zoom.",
+      "source": "lane R1-C 2026-11-06 (#225) at 8d9a22a6f, harness scripts/aerial-pan.mjs (npm run perf:aerial): 3-min Free Ride aerial sweep Centrum -> S1 Hoftuin -> S4 Zuidas -> West -> Oost -> Dam at 300 m/s, sampled every 5 s after forced GC; installed Chrome on Metal, headed, desktop 1512x982 DPR 2 and iPhone 13 profile; before: 158 / 93 ms desktop, 116 / 75 ms iPhone (worst / median window)",
+      "date": "2026-11-06"
+    },
+    "aerialFramesOver250Ms": {
+      "value": 0,
+      "reportOnly": true,
+      "measured": {
+        "desktop": 1,
+        "iphone": 1
+      },
+      "unit": "frames over 250 ms during the 3-min aerial pan",
+      "note": "RED TODAY (1 / 1: single label-occlusion / city-follow frames, 309 ms desktop, 258 ms iPhone); recorded report-only, NOT a passing gate.",
+      "source": "lane R1-C 2026-11-06 (#225) at 8d9a22a6f, harness scripts/aerial-pan.mjs (npm run perf:aerial): 3-min Free Ride aerial sweep Centrum -> S1 Hoftuin -> S4 Zuidas -> West -> Oost -> Dam at 300 m/s, sampled every 5 s after forced GC; installed Chrome on Metal, headed, desktop 1512x982 DPR 2 and iPhone 13 profile; before: 0 / 0; frames > 100 ms 104 desktop / 34 iPhone after (78 / 17 before)",
+      "date": "2026-11-06"
     }
   },
   "_desktopPerfViewport": {

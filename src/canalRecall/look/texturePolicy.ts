@@ -6,7 +6,7 @@
 // drawn detail was thrown away on the way into the array, and the ground canvases filtered at anisotropy 4 at the
 // chase camera's grazing angle (rails and kerbs smeared along the view).
 //
-// Desktop `high` tier: 512 px facade cells (the bay drawing at nearly its own resolution) and anisotropy
+// Desktop `high` tier: HIGH_CELL_PX facade cells (pinned 256 at integration; `?cellPx=` up to 512 for A/B) and anisotropy
 // min(gpuMax, 16) on every array and ground canvas. `mid`, `low`, touch and any page without a tier (the legacy
 // MapLibre layer, galleries) keep exactly the values they had: 256 px (128 on touch) cells at 16 (4 on touch), ground 4.
 // `?texturePolicy=0` (or `window.__canalRecallTexturePolicy = false`) restores those values everywhere, byte for byte.
@@ -45,8 +45,14 @@ export interface TextureParams {
 
 /** The cell side every tier but desktop `high` uses (facadeCells.ts CELL_PX). */
 export const BASE_CELL_PX = 256;
-/** Desktop `high`: the cell side. */
-export const HIGH_CELL_PX = 512;
+/**
+ * Desktop `high`: the default cell side. Pinned to 256 at integration (2026-11-06, #224): at the
+ * same pose 512 px cells measured no sharpness gain at S2 (lapVar 757 vs 736) for +260 MB of GPU
+ * texture (86.7 -> 346.7 MB). `?cellPx=288..512` still raises it for an A/B (MAX_CELL_PX).
+ */
+export const HIGH_CELL_PX = 256;
+/** The largest side `?cellPx=` may ask for on desktop high (A/B only). */
+export const MAX_CELL_PX = 512;
 export const HIGH_ANISOTROPY = 16;
 /** What the ground canvases always used (gameGround.ts canvasTexture). */
 export const LEGACY_GROUND_ANISOTROPY = 4;
@@ -63,12 +69,12 @@ export function legacyTextureParams(kind: TextureKind, input: Pick<TexturePolicy
   return { ...base, cellPx, anisotropy, tierScale: 1 };
 }
 
-/** The policy: desktop `high` gets 512 px cells and 16x anisotropy everywhere; everything else is `legacyTextureParams`. */
+/** The policy: desktop `high` gets HIGH_CELL_PX cells (or `?cellPx=`) and 16x anisotropy everywhere; everything else is `legacyTextureParams`. */
 export function texturePolicy(kind: TextureKind, input: TexturePolicyInput): TextureParams {
   if (!input.enabled || input.coarse || input.tier !== 'high') return legacyTextureParams(kind, input);
   const gpu = Number.isFinite(input.gpuMaxAnisotropy) && input.gpuMaxAnisotropy >= 1 ? input.gpuMaxAnisotropy : 1;
   const asked = Number(input.cellPx);
-  const cellPx = Number.isInteger(asked) && asked > BASE_CELL_PX && asked <= HIGH_CELL_PX && asked % 32 === 0 ? asked : HIGH_CELL_PX;
+  const cellPx = Number.isInteger(asked) && asked > BASE_CELL_PX && asked <= MAX_CELL_PX && asked % 32 === 0 ? asked : HIGH_CELL_PX;
   return { ...base, cellPx, anisotropy: Math.min(gpu, HIGH_ANISOTROPY), tierScale: cellPx / BASE_CELL_PX };
 }
 
@@ -81,7 +87,7 @@ export function texturePolicyFlag(): boolean {
   } catch { return true; }
 }
 
-/** `?cellPx=` (or `window.__canalRecallCellPx`): the desktop-high cell side for a memory A/B; null: 512. */
+/** `?cellPx=` (or `window.__canalRecallCellPx`): the desktop-high cell side for a memory A/B; null: HIGH_CELL_PX. */
 export function pageCellPx(): number | null {
   try {
     const g = globalThis as { __canalRecallCellPx?: number | string; location?: { search?: string } };

@@ -38,13 +38,18 @@ test('the governor floor (0.75x) reads as ratio 1, as at creation', () => {
   assert.deepEqual(b.material.uniforms.cellTier.value, facadeTierUniform(1));
 });
 
-test('desktop high (512 px cells) scales the tier with the cell size', () => {
-  const g = globalThis as { __canalPerf?: unknown };
+test('desktop high (?cellPx=512 A/B) scales the tier with the cell size; the pinned 256 px default does not', () => {
+  const g = globalThis as { __canalPerf?: unknown; __canalRecallCellPx?: unknown };
   g.__canalPerf = { tier: 'high' };
   try {
     const { b } = fake(2);
     b.renderer = { capabilities: { getMaxAnisotropy: () => 16 } };
     b.setCellTierPixelRatio(2);
-    assert.deepEqual(b.material.uniforms.cellTier.value, facadeTierUniform(2, 2));
-  } finally { delete g.__canalPerf; }
+    assert.deepEqual(b.material.uniforms.cellTier.value, facadeTierUniform(2, 1), 'HIGH_CELL_PX pinned to 256 at integration');
+    g.__canalRecallCellPx = 512;
+    const { b: big } = fake(2);
+    big.renderer = { capabilities: { getMaxAnisotropy: () => 16 } };
+    big.setCellTierPixelRatio(2);
+    assert.deepEqual(big.material.uniforms.cellTier.value, facadeTierUniform(2, 2));
+  } finally { delete g.__canalPerf; delete g.__canalRecallCellPx; }
 });
