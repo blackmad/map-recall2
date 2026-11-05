@@ -238,9 +238,26 @@ function gardenRoomTrisFor(f: Feature, building: MeshBuilding, look: BuildingLoo
   return gardenRoomTriangles({ ring, heightM: building.heightM, glass: glassEdge(ring, party, house, house ? nearestStreetPoint(ring, streets) : null), party, design: designInLook(gardenRoomDesign(id, year), look), lidHex: building.lid?.hex ?? GARDEN_ROOM_TONES.lidEpdm, frameHex: tone(GARDEN_ROOM_TONES.frame), fasciaHex: tone(GARDEN_ROOM_TONES.fascia), glassHex: gardenRoomGlassHex(look) });
 }
 
+/**
+ * Shell roofs (lane R1-A, #223, `?shellRoofs=0` off): a coarse or touch shell under a planned roof stops its walls at
+ * the eaves and carries the detail path's planned roof, low-poly (no dormers, chimneys, white trim, shutters, turned
+ * street ridges or ornamental crowns; a shaped gable becomes a plain one) in the same measured or planned roof colour.
+ * Before, it was a full-height box under a flat lid (often a grey prior), so the detail chunk replacing it two to five
+ * blocks out changed grey lid → pitched coloured roof in one frame (the user's S1 pop-in at the Hoftuin).
+ */
+export const shellRoofPlan = (plan: RoofPlan): RoofPlan => ({
+  ...plan, kind: SHELL_ROOF_KIND[plan.kind] ?? plan.kind, dormers: false, chimney: false, accents: false, shutters: false, streetRidge: undefined, streetEnds: undefined, sourceCrownFront: undefined,
+  gable: 'plain', clipToOutline: false, pieces: plan.pieces?.map(p => ({ ...p, plan: shellRoofPlan(p.plan) })),
+});
+/** Two-pitch and broken roofs read as a hip from a shell's distance (a mansard's kink is a few pixels); 6–9× fewer triangles. */
+const SHELL_ROOF_KIND: Partial<Record<RoofPlan['kind'], RoofPlan['kind']>> = { mansard: 'hipped', mansardHip: 'hipped', school: 'hipped', halfHipped: 'hipped', sawtooth: 'pitched' };
+/** A parapet roof is flat behind its parapet: the shell's lid at the same height already draws it. */
+const shellRoofed = (plan: RoofPlan) => plan.kind !== 'parapet';
+export type FeatureChunkOptions = { /** Coarse/touch shells get their planned roof, low-poly (shellRoofPlan). */ shellRoofs?: boolean };
+
 /** A chunk for a group of streamed features in one look. */
 /** `streets`: flat street segments near the chunk, metres from ORIGIN (streetFronts.ts); doors then go only on the street side. */
-export function buildFeatureChunk(features: readonly Feature[], look: BuildingLook, mode: 'walls' | 'extras' | 'coarse' | 'shell' = 'walls', streets?: Float32Array, profiles: readonly StreetAppearanceProfile[] = [], contextFeatures: readonly Feature[] = [], hostOpenings: readonly ChunkHostOpeningConfig[] = [], surveyedEnvelopes: ReadonlyMap<string,SurveyedMeshBinding> = new Map()): Chunk {
+export function buildFeatureChunk(features: readonly Feature[], look: BuildingLook, mode: 'walls' | 'extras' | 'coarse' | 'shell' = 'walls', streets?: Float32Array, profiles: readonly StreetAppearanceProfile[] = [], contextFeatures: readonly Feature[] = [], hostOpenings: readonly ChunkHostOpeningConfig[] = [], surveyedEnvelopes: ReadonlyMap<string,SurveyedMeshBinding> = new Map(), chunkOptions: FeatureChunkOptions = {}): Chunk {
   const garden = features.filter(isAllotmentHouse);
   // Garden sheds draw as low muted boxes in the near tier and not at all beyond it (gardenSheds.ts). Without the
   // chunk's streets nothing is classified, so a street kiosk is never dropped for want of a street file.
@@ -250,14 +267,20 @@ export function buildFeatureChunk(features: readonly Feature[], look: BuildingLo
   const roomContext = mode === 'walls' && marked.some(f => f.properties.gardenRoom) ? gardenRoomContext([...marked, ...contextFeatures]) : null;
   const chunk = buildChunk(marked.filter(f => !(mode === 'coarse' && f.properties.gardenShed)).map(f => {
     const flat = mode === 'coarse' || mode === 'shell';
-    const visualRoof = !flat && profiles.length ? sourceVisualRoof(f, profiles) : undefined;
-    const building = meshBuildingFor(visualRoof?.feature ?? f, look, flat, visualRoof?.plan);
+    // Shell roofs: the same roof decision as the detail chunk (its visual roof from the street profiles included).
+    const shellRoof = flat && !!chunkOptions.shellRoofs && !f.properties.gardenShed && !f.properties.kitRoof;
+    const visualRoof = (!flat || shellRoof) && profiles.length ? sourceVisualRoof(f, profiles) : undefined;
+    const building = meshBuildingFor(visualRoof?.feature ?? f, look, flat && !shellRoof, visualRoof?.plan);
     if (building && roomContext && f.properties.gardenRoom) building.gardenRoom = { tris: gardenRoomTrisFor(f, building, look, roomContext, shedStreets) };
     if(building){
       const binding=surveyedEnvelopes.get(building.id),geometry=f.geometry as {type?:string;coordinates?:number[][][]};
       if(binding&&binding.nativeParentId===building.id&&geometry.type==='Polygon'&&binding.installedFootprintFingerprint===envelopeFootprintFingerprint(geometry as {type:'Polygon';coordinates:number[][][]})&&binding.nativeMetadata.aggregateHeightM===Number(f.properties.height)&&binding.nativeMetadata.constructionYear===Number(f.properties.constructionYear)&&binding.meshOrigin.lng===ORIGIN.lng&&binding.meshOrigin.lat===ORIGIN.lat)building.surveyedEnvelope=binding;
     }
-    if (building && (mode === 'coarse' || mode === 'shell')) {
+    if (building && shellRoof && building.roof && !building.surveyedEnvelope && shellRoofed(building.roof.plan)) {
+      // Walls (and their windows) stop at the eaves under the low-poly planned roof, in the detail's roof colour.
+      building.roof = { ...building.roof, plan: shellRoofPlan(building.roof.plan), lowPoly: true };
+      building.extras = false;
+    } else if (building && (mode === 'coarse' || mode === 'shell')) {
       // Keep textured windows and ground-floor doors at every distance. Simplify
       // roofs and omit relief; a plain shell made normal street views look empty.
       // A church host's raw maximum can be its towers. Its semantic kit eaves
@@ -277,7 +300,7 @@ export function buildFeatureChunk(features: readonly Feature[], look: BuildingLo
       building.streetAppearance = { profiles: localProfiles, look, sourceHeightM: Number(f.properties.height) || building.heightM, year: p.constructionYear == null || !Number.isFinite(Number(p.constructionYear)) ? null : Number(p.constructionYear), mappedWallHex, shopfront: shopfrontOf(p), periodWallHex: periodWallOf(p) };
     }
     return building;
-  }).filter((b): b is MeshBuilding => !!b), ORIGIN, mode === 'coarse' ? 'walls' : mode, streets, contextFeatures.map(f=>{const b=meshBuildingFor(f,look,mode==='coarse'||mode==='shell');if(b){const binding=surveyedEnvelopes.get(b.id),g=f.geometry as {type?:string;coordinates?:number[][][]};if(binding&&binding.nativeParentId===b.id&&g.type==='Polygon'&&binding.installedFootprintFingerprint===envelopeFootprintFingerprint(g as {type:'Polygon';coordinates:number[][][]})&&binding.nativeMetadata.aggregateHeightM===Number(f.properties.height)&&binding.nativeMetadata.constructionYear===Number(f.properties.constructionYear)&&binding.meshOrigin.lng===ORIGIN.lng&&binding.meshOrigin.lat===ORIGIN.lat)b.surveyedEnvelope=binding;}if(b&&(mode==='coarse'||mode==='shell')){b.heightM=f.properties.kitRoof?wallTopHeightM(f.properties):Number(f.properties.height)||b.heightM;b.roof=undefined;}return b;}).filter((b):b is MeshBuilding=>!!b), hostOpenings);
+  }).filter((b): b is MeshBuilding => !!b), ORIGIN, mode === 'coarse' ? 'walls' : mode, streets, contextFeatures.map(f=>{const roofed=(mode==='coarse'||mode==='shell')&&!!chunkOptions.shellRoofs&&!f.properties.gardenShed&&!f.properties.kitRoof;const b=meshBuildingFor(f,look,(mode==='coarse'||mode==='shell')&&!roofed);if(b){const binding=surveyedEnvelopes.get(b.id),g=f.geometry as {type?:string;coordinates?:number[][][]};if(binding&&binding.nativeParentId===b.id&&g.type==='Polygon'&&binding.installedFootprintFingerprint===envelopeFootprintFingerprint(g as {type:'Polygon';coordinates:number[][][]})&&binding.nativeMetadata.aggregateHeightM===Number(f.properties.height)&&binding.nativeMetadata.constructionYear===Number(f.properties.constructionYear)&&binding.meshOrigin.lng===ORIGIN.lng&&binding.meshOrigin.lat===ORIGIN.lat)b.surveyedEnvelope=binding;}if(b&&(mode==='coarse'||mode==='shell')&&!(roofed&&b.roof&&shellRoofed(b.roof.plan))){b.heightM=f.properties.kitRoof?wallTopHeightM(f.properties):Number(f.properties.height)||b.heightM;b.roof=undefined;}return b;}).filter((b):b is MeshBuilding=>!!b), hostOpenings);
   if (!garden.length || mode === 'extras') return chunk;
   const flatLayer = (cellSetOf(look) === 'procedural' ? CELL_LAYER_COUNT : BAY_LAYER_COUNT) + 3;
   return appendAllotmentHouses(chunk, garden, ORIGIN, flatLayer, mode === 'coarse' || mode === 'shell');

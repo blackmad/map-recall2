@@ -12,7 +12,7 @@ import { summariseSwaps, swapSummaryMarkdown, type SwapRecord } from '../../src/
 // seconds (60). src/canalRecall/engine/swapProbe.ts logs every swap (shell → detail, detail rebuilds, buildings a
 // rebuilt chunk gains or loses, extras, detail → shell, ground lifts, landmark arrivals/LODs, tree rebuilds) per object
 // with its distance from the rider and its visible on-screen area (CSS px², occlusion included) right after the frame
-// that shows it. Gate: no swapped object ≥ 400 px² within 120 m. SWAP_QS adds query flags (A/B, the pre-#217 swaps:
+// that shows it. Gate: no swapped object ≥ 400 px² within 120 m; SWAP_GATE_MID=1 also 0 at 120–300 m (popInSwapsMid). SWAP_QS adds query flags (A/B, the pre-#217 swaps:
 // `&swapFade=0&routeAhead=0&ringFollow=0&detailLinger=0`), SWAP_REPORT_ONLY=1 reports without failing, SWAP_TRACE=1
 // adds the buildings layer's install/drop/fade steps to the JSON, BUNDLES_DIR serves bundles built from this checkout.
 // Output: artifacts/perf/swaps/<project><label>.{json,md}.
@@ -147,4 +147,6 @@ test('pop-in gate: no swap ≥ 400 px² within 120 m on the pinned ride', async 
   expect(errors, 'page errors').toEqual([]);
   expect(raw.rideM, 'the rider rode').toBeGreaterThan(RIDE_S * SPEED * 0.5);
   if (!process.env.SWAP_REPORT_ONLY) expect(summary.gate.failures, `swapped objects ≥ ${summary.gate.minAreaPx} px² within ${summary.gate.nearM} m`).toBe(0);
+  // SWAP_GATE_MID=1 (lane R1-A, #223, budget row popInSwapsMid): the same swaps 120–300 m out must be 0 as well.
+  if (!process.env.SWAP_REPORT_ONLY && process.env.SWAP_GATE_MID) expect(summary.mid.failures, `swapped objects ≥ ${summary.gate.minAreaPx} px² at ${summary.mid.fromM}–${summary.mid.toM} m`).toBe(0);
 });

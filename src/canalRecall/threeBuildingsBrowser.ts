@@ -50,6 +50,7 @@ import { createFacadeDepthMaterial, createLitFacadeMaterial } from './rendererSh
 import { HIDDEN, HIGHLIGHT_GLSL, attachHighlightPasses, detachHighlightPasses, footprintCentroid, highlightDefines, highlightRecipe, mPerDegLng, DESATURATE_RADIUS_M, type HighlightFocus, type LngLat } from './look/highlight.js';
 import { ROOF_LAYER_COUNT, RESTORE_TEXTURE_SLICE_MS, TEXTURE_SLICE_MS, calmBayLayers, lookAtlasLayers, paintLookArrays, type LookAtlasArrays } from './look/paintLookAtlas.js';
 import { loadLookAtlas, lookAtlasStamp, readCachedLookAtlas, storeCachedLookAtlas } from './look/lookAtlas.js';
+import { SwapSlots, clearSlot, paintSlot, swapComplementEnabled } from './swapComplement.js';
 import { SLOT_LAYER_COUNT, cityLookEnabled, createCityLookMaterial, createCityUniforms, getCityLook, loadCityBrick, paintSlotLayers } from './look/cityLook.js';
 import { boundingSphereOf } from './geometryBounds.js';
 import { cutMesh, disposeTiles, growTileSpheres } from './rendererShared/tiledGeometry.js';
@@ -236,19 +237,37 @@ const SWAP_FADE = (() => {
 /** Arriving chunks dissolve in over this long (fadeIn); `?chunkFade=0` or `window.__canalRecallChunkFade = false` turns it off. */
 const CHUNK_FADE_MS = SWAP_FADE ? 700 : 350;
 /**
+ * Complementary dissolve (swapComplement.ts, lane R1-A #223): the mesh a dissolving chunk replaces (the coarse shells
+ * under a detail chunk, a rebuilt chunk's old mesh) draws only where the newcomer does not, on the city look's
+ * `swap` program variant. `?swapComplement=0` keeps both drawn over each other during the fade, as before.
+ */
+const SWAP_COMPLEMENT = CHUNK_FADE && swapComplementEnabled();
+/**
+ * Shell roofs (threeBuildingFeatures.ts shellRoofPlan, lane R1-A #223): coarse and touch shells stop their walls at
+ * the eaves under the detail path's planned roof, low-poly, in its colour, so a detail chunk replacing them changes
+ * extras and shading, not the roof. `?shellRoofs=0` or `window.__canalRecallShellRoofs = false` keeps the flat lids.
+ */
+const SHELL_ROOFS = (() => {
+  try {
+    const g = globalThis as { __canalRecallShellRoofs?: boolean; location?: { search?: string } };
+    return g.__canalRecallShellRoofs !== false && new URLSearchParams(g.location?.search ?? '').get('shellRoofs') !== '0';
+  } catch { return true; }
+})();
+/**
  * A clone of a city material whose `cityFade` (the screen-door dissolve) is its own, starting at `value`; it shares the
  * source's program (same defines and cache key: no compile, no link in the frame). Null when the material has no fade.
  */
-function fadeClone(source: any, value: number): any | null {
+function fadeClone(source: any, value: number, under?: { value: number }): any | null {
   if (!source?.uniforms?.cityFade || typeof source.onBeforeCompile !== 'function' || !source.customProgramCacheKey) return null;
+  if (under && !source.uniforms.cityUnder) return null;
   const fade = { value };
   const clone = source.clone();
   // Material.copy does not carry `defines` (only ShaderMaterial's does), and three keys a program by them:
   // without this the clone compiled a program of its own, freed when the last fade ended and linked again
   // inside the frame of the next chunk's fade (2 of the iPhone ride's 4 in-frame links, lane D 2026-10-31).
   if (source.defines) clone.defines = source.defines;
-  clone.uniforms = { ...source.uniforms, cityFade: fade };
-  clone.onBeforeCompile = (shader: any, renderer: any) => { source.onBeforeCompile(shader, renderer); shader.uniforms.cityFade = fade; };
+  clone.uniforms = under ? { ...source.uniforms, cityFade: fade, cityUnder: under } : { ...source.uniforms, cityFade: fade };
+  clone.onBeforeCompile = (shader: any, renderer: any) => { source.onBeforeCompile(shader, renderer); shader.uniforms.cityFade = fade; if (under) shader.uniforms.cityUnder = under; };
   clone.customProgramCacheKey = () => source.customProgramCacheKey();
   if (source.defaultAttributeValues) clone.defaultAttributeValues = source.defaultAttributeValues;
   return clone;
@@ -1028,11 +1047,19 @@ export class ThreeBuildings {
   private lookAheadOn: boolean | undefined;
   private detailBlockState: DetailBlock | null = null;
   /** Chunks dissolving in (fadeIn). */
-  private readonly fading = new Map<string, { mesh: any; source: any; clone: any; start: number }>();
-  /** SWAP_FADE: the drawn mesh a rebuilt chunk replaces, kept opaque until the new one has dissolved in. */
-  private readonly outgoing = new Map<string, { mesh: any; ranges: Map<string, { start: number; count: number }> }>();
+  private readonly fading = new Map<string, { mesh: any; source: any; clone: any; start: number; slot?: number }>();
+  /**
+   * SWAP_FADE: the drawn mesh a rebuilt chunk replaces, kept opaque until the new one has dissolved in. SWAP_COMPLEMENT:
+   * `under` is its material clone drawing only where the newcomer does not (cityUnder follows the newcomer's fade).
+   */
+  private readonly outgoing = new Map<string, { mesh: any; ranges: Map<string, { start: number; count: number }>; under?: { source: any; clone: any } }>();
   /** SWAP_FADE: meshes of chunks that left, dissolving out. */
-  private readonly leaving = new Set<{ mesh: any; clone: any; start: number }>();
+  private readonly leaving = new Set<{ mesh: any; clone: any; start: number; slot?: number }>();
+  /** SWAP_COMPLEMENT: the coarse shells' swap slots (one per detail chunk dissolving in or out over them). */
+  private readonly swapSlots = new SwapSlots();
+  private readonly swapUnder = { value: this.swapSlots.under };
+  /** The overview's own fade (prepareFrame), which every chunk dissolve is scaled by. */
+  private fadeGlobal = 1;
 
   /**
    * Build order: the chunk nearest the rider, ahead first (streamingLookAhead.ts aheadRank on the nearest point
@@ -1203,7 +1230,7 @@ export class ThreeBuildings {
       const options = { surveyedEnvelopeData: this.surveyedEnvelopeTransport.envelopes, surveyedEnvelopeRevision: this.surveyedEnvelopeTransport.revision, look: this.look, streets: this.streetsFor(source), profiles: this.appearanceProfiles, contextFeatures: this.contextGroups.get(key) ?? this.contextFor(source), appearanceRevision: this.appearanceRevision, hostOpenings: this.openingsFor(key, source), hostOpeningRevision: this.openingRevision(key, source) };
       this.inflightOptions.set(key, options);
       this.busy.set(w, key);
-      pool.post(w, { key, gen, ...options, features: source, mode: this.modeFor(key),
+      pool.post(w, { key, gen, ...options, features: source, mode: this.modeFor(key), ...(SHELL_ROOFS ? { shellRoofs: true } : {}),
         special: key === KIT_KEY ? 'kits' : key.startsWith(BOAT_PREFIX) ? 'boats' : undefined,
         boats: key.startsWith(BOAT_PREFIX) ? this.boatTiles.get(key.slice(BOAT_PREFIX.length)) ?? [] : undefined,
         layers: this.kitLayers(), tiles: this.facadeTiles, tileMin: FACADE_TILE_MIN_TRIANGLES });
@@ -1213,7 +1240,7 @@ export class ThreeBuildings {
     const options = { surveyedEnvelopeData: this.surveyedEnvelopeTransport.envelopes, surveyedEnvelopeRevision: this.surveyedEnvelopeTransport.revision, look: this.look, streets: this.streetsFor(source), profiles: this.appearanceProfiles, contextFeatures: this.contextGroups.get(key) ?? this.contextFor(source), appearanceRevision: this.appearanceRevision, hostOpenings: this.openingsFor(key, source), hostOpeningRevision: this.openingRevision(key, source) };
     const result = key === KIT_KEY ? {chunk:this.buildKits(source),boundParentIds:[]}
       : key.startsWith(BOAT_PREFIX) ? {chunk:this.buildBoats(key.slice(BOAT_PREFIX.length)),boundParentIds:[]}
-      : buildTransportedEnvelopeChunk(source,{...options,mode:this.modeFor(key)});
+      : buildTransportedEnvelopeChunk(source,{...options,mode:this.modeFor(key),...(SHELL_ROOFS?{shellRoofs:true}:{})});
     this.install(key, source, result.chunk, performance.now() - t0, options, result.boundParentIds);
   }
 
@@ -1419,6 +1446,12 @@ export class ThreeBuildings {
     geometry.setAttribute('tint', release(new THREE.BufferAttribute(chunk.tints, 4, true)));
     geometry.setAttribute('accent', release(new THREE.BufferAttribute(chunk.accents, 4, true)));
     geometry.setAttribute('hidden', new THREE.BufferAttribute(new Uint8Array(chunk.vertexCount), 1, false));
+    // SWAP_COMPLEMENT: the shells' per-building swap slot (kept on the CPU like `hidden`), marked for swaps under way.
+    if (this.complement && key.startsWith(COARSE_PREFIX)) {
+      const slots = new Uint8Array(chunk.vertexCount), ranges = new Map(chunk.ranges.map(r => [r.id, { start: r.start, count: r.count }]));
+      for (const [slot, ids] of this.swapSlots.active()) paintSlot(slots, ranges, ids, slot);
+      geometry.setAttribute('swapSlot', new THREE.BufferAttribute(slots, 1, false));
+    }
     geometry.setIndex(release(new THREE.BufferAttribute(chunk.indices, 1)));
     // three.js uploads a new mesh, then computes its bounding sphere to sort it.
     // With `position` already freed that throws inside MapLibre's frame and the
@@ -1493,18 +1526,58 @@ export class ThreeBuildings {
     const source = mesh.material, clone = fadeClone(source, 0);
     if (!clone) return;
     mesh.material = clone;
-    this.fading.set(key, { mesh, source, clone, start: performance.now() });
+    let slot: number | undefined;
+    if (this.complement) {
+      // A rebuilt chunk's old mesh yields where the new one draws.
+      const out = this.outgoing.get(key);
+      if (out && !out.under) {
+        const under = fadeClone(out.mesh.material, this.fadeGlobal, { value: 0 });
+        if (under) { out.under = { source: out.mesh.material, clone: under }; out.mesh.material = under; }
+      }
+      // Detail over the coarse shells: the shells' copies of its buildings yield where it draws.
+      const ranges = this.chunks.get(key)?.ranges;
+      if (key.startsWith('near:') && ranges?.size) slot = this.claimSwapSlot(new Set(ranges.keys()), 0);
+    }
+    this.fading.set(key, { mesh, source, clone, start: performance.now(), slot });
+  }
+
+  /** Whether the complementary dissolve runs (the flag, and a material with the city look's `swap` variant). */
+  private get complement(): boolean { return SWAP_COMPLEMENT && !!this.material?.uniforms?.citySwapUnder; }
+
+  /** A swap slot over the coarse shells for `ids` at coverage `value`; undefined when none is free. */
+  private claimSwapSlot(ids: ReadonlySet<string>, value: number): number | undefined {
+    const slot = this.swapSlots.claim(ids, value);
+    if (slot < 0) return undefined;
+    this.paintShells(ids, slot, true);
+    return slot;
+  }
+
+  private releaseSwapSlot(slot: number | undefined): void {
+    if (slot === undefined) return;
+    const ids = this.swapSlots.release(slot);
+    if (ids) this.paintShells(ids, slot, false);
+  }
+
+  private paintShells(ids: ReadonlySet<string>, slot: number, on: boolean): void {
+    for (const [key, entry] of this.chunks) {
+      if (!key.startsWith(COARSE_PREFIX) || !entry.mesh) continue;
+      const attribute = entry.mesh.geometry.getAttribute('swapSlot');
+      if (!attribute?.array) continue;
+      if (on ? paintSlot(attribute.array, entry.ranges, ids, slot) : clearSlot(attribute.array, entry.ranges, ids, slot)) attribute.needsUpdate = true;
+    }
   }
 
   /** Whether chunks of `key` dissolve in and out now. */
   private fades(key: string): boolean { return CHUNK_FADE && key !== KIT_KEY && !this.basemapHeld; }
 
   /** SWAP_FADE: dissolve a leaving chunk's mesh out (removed when it has gone); false when its material cannot. */
-  private fadeOut(mesh: any): boolean {
+  private fadeOut(mesh: any, ids?: ReadonlySet<string>): boolean {
     const clone = fadeClone(mesh.material, 1);
     if (!clone) return false;
     mesh.material = clone;
-    this.leaving.add({ mesh, clone, start: performance.now() });
+    // A detail chunk leaving: the shells it hid come back yielding where it still draws (none at first).
+    const slot = ids?.size && this.complement ? this.claimSwapSlot(ids, this.fadeGlobal) : undefined;
+    this.leaving.add({ mesh, clone, start: performance.now(), slot });
     return true;
   }
 
@@ -1513,6 +1586,8 @@ export class ThreeBuildings {
     const out = this.outgoing.get(key);
     if (!out) return;
     this.outgoing.delete(key);
+    // Complementary: it has already dissolved out under its successor (it yields every pixel at the end).
+    if (out.under) { out.under.clone.dispose(); this.disposeMesh(out.mesh); return; }
     if (!(this.fades(key) && this.fadeOut(out.mesh))) this.disposeMesh(out.mesh);
   }
 
@@ -1521,6 +1596,7 @@ export class ThreeBuildings {
     const out = this.outgoing.get(key);
     if (!out) return;
     this.outgoing.delete(key);
+    out.under?.clone.dispose();
     this.disposeMesh(out.mesh);
   }
 
@@ -1528,17 +1604,27 @@ export class ThreeBuildings {
 
   /** Advance the arriving chunks' dissolve under the overview's own fade `global`; nothing runs when none fade. */
   private tickFades(global: number): void {
+    this.fadeGlobal = global;
     if (!this.fading.size && !this.leaving.size) return;
     const now = performance.now();
     for (const [key, f] of this.fading) {
       const t = (now - f.start) / CHUNK_FADE_MS;
-      if (t < 1) { f.clone.uniforms.cityFade.value = global * t; continue; }
+      if (t < 1) {
+        const value = global * t;
+        f.clone.uniforms.cityFade.value = value;
+        // Complementary: the shells' slot and a rebuilt chunk's old mesh yield exactly where this one draws.
+        if (f.slot !== undefined) this.swapSlots.set(f.slot, value);
+        const under = this.outgoing.get(key)?.under?.clone.uniforms;
+        if (under) { under.cityFade.value = global; under.cityUnder.value = value; }
+        continue;
+      }
       this.endFade(key);
     }
     for (const f of this.leaving) {
       const t = (now - f.start) / CHUNK_FADE_MS;
-      if (t < 1) { f.clone.uniforms.cityFade.value = global * (1 - t); continue; }
+      if (t < 1) { f.clone.uniforms.cityFade.value = global * (1 - t); if (f.slot !== undefined) this.swapSlots.set(f.slot, global * (1 - t)); continue; }
       this.leaving.delete(f);
+      this.releaseSwapSlot(f.slot);
       f.clone.dispose();
       this.disposeMesh(f.mesh);
     }
@@ -1551,11 +1637,18 @@ export class ThreeBuildings {
     if (f.mesh.material === f.clone) f.mesh.material = f.source;
     f.clone.dispose();
     this.fading.delete(key);
-    if (!refresh) return; // dropped mid-fade: its caller decides what happens to a mesh kept under it
+    if (!refresh) {
+      // Dropped mid-fade: its caller decides what happens to a mesh kept under it, which is solid again meanwhile.
+      this.releaseSwapSlot(f.slot);
+      const out = this.outgoing.get(key);
+      if (out?.under) { if (out.mesh.material === out.under.clone) out.mesh.material = out.under.source; out.under.clone.dispose(); out.under = undefined; }
+      return;
+    }
     // A rebuilt chunk is solid now: the mesh it replaced dissolves out (only its faces the new one lacks still show).
     this.retireOutgoing(key);
     // The detail chunk is solid now: hide the coarse shells it replaces.
     if (key.startsWith('near:') && this.chunks.has(key)) this.refreshDetailOwnership();
+    this.releaseSwapSlot(f.slot);
   }
 
   /**
@@ -1567,7 +1660,7 @@ export class ThreeBuildings {
     if (!keepOutgoing) this.dropOutgoing(key);
     const held = this.chunks.get(key);
     if (!held) return;
-    if (held.mesh && !(fadeOut && SWAP_FADE && this.fades(key) && this.fadeOut(held.mesh))) this.disposeMesh(held.mesh);
+    if (held.mesh && !(fadeOut && SWAP_FADE && this.fades(key) && this.fadeOut(held.mesh, key.startsWith('near:') ? new Set(held.ranges.keys()) : undefined))) this.disposeMesh(held.mesh);
     this.chunks.delete(key);
     this.refreshSurveyedRoofOwnership();
     if (key.startsWith('near:')) this.refreshDetailOwnership();
@@ -1575,7 +1668,7 @@ export class ThreeBuildings {
 
   /** Every leaving mesh goes now (context loss: their buffers are gone). */
   private dropLeaving(): void {
-    for (const f of this.leaving) { f.clone.dispose(); this.disposeMesh(f.mesh); }
+    for (const f of this.leaving) { this.releaseSwapSlot(f.slot); f.clone.dispose(); this.disposeMesh(f.mesh); }
     this.leaving.clear();
   }
 
@@ -1674,7 +1767,8 @@ export class ThreeBuildings {
     if (this.cityLook) {
       // One shader for every building mesh (look/cityLook.ts); chunks keep their own uniforms per look.
       const variant = LOOK_VARIANTS[this.look];
-      return createCityLookMaterial(THREE, { lit: this.lit, kind: 'chunk', side: THREE.FrontSide }, createCityUniforms(THREE, {
+      return createCityLookMaterial(THREE, { lit: this.lit, kind: 'chunk', side: THREE.FrontSide, ...(SWAP_COMPLEMENT ? { swap: true } : {}) }, createCityUniforms(THREE, {
+        ...(SWAP_COMPLEMENT ? { citySwapUnder: this.swapUnder } : {}),
         bands: { value: variant.shadeBands }, flatColour: { value: variant.flatColour ? 1 : 0 }, wallGain: { value: litFacadeWallGain(variant.litWallGain) },
         roofLayers: { value: roofLayers }, roofTier: { value: roofTierUniform() }, cellTier: { value: facadeTierUniform(this.pixelRatio()) },
       }));

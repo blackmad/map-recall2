@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { boxDistanceM, bucketOf, diffTriangles, drawnIn, triangleHashes, changedIds, countPids, decodePid, encodePid, lngLatBox, rangeHash, summariseSwaps, swapSummaryMarkdown, vertexPids, type SwapRecord } from './swapProbe.ts';
+import { boxDistanceM, bucketOf, diffTriangles, drawnIn, triangleHashes, changedIds, countPids, decodePid, encodePid, lngLatBox, rangeHash, summariseSwaps, swapSummaryMarkdown, vertexPids, GATE_MID_M, GATE_NEAR_M, type SwapRecord } from './swapProbe.ts';
 
 test('object ids round-trip through the RGB the id material writes', () => {
   for (const pid of [1, 255, 256, 65_535, 65_536, 1_234_567]) assert.equal(decodePid(...encodePid(pid)), pid);
@@ -71,4 +71,15 @@ test('a rebuild names the faces it added and lost, not the faces it rebuilt iden
   assert.deepEqual(d.added, [3]);
   assert.deepEqual(d.removed, [3]);
   assert.deepEqual(diffTriangles(before, before), { added: [], removed: [] });
+});
+
+test('mid band (popInSwapsMid, lane R1-A #223): swaps ≥ 400 px² beyond 120 m up to 300 m, arrivals never counted', () => {
+  const records = [
+    { t: 1, kind: 'shell-detail', key: 'near:a', objects: [{ id: 'a', distM: 150, areaPx: 900 }, { id: 'b', distM: 299, areaPx: 400 }, { id: 'c', distM: 301, areaPx: 5000 }, { id: 'd', distM: 200, areaPx: 399 }, { id: 'e', distM: 100, areaPx: 900 }] },
+    { t: 2, kind: 'shell-arrive', key: 'coarse:x', objects: [{ id: 'f', distM: 200, areaPx: 9000 }] },
+  ];
+  const s = summariseSwaps(records);
+  assert.deepEqual(s.mid, { fromM: GATE_NEAR_M, toM: GATE_MID_M, failures: 2, byKind: { 'shell-detail': 2 } });
+  assert.equal(s.gate.failures, 1, 'the near gate is unchanged');
+  assert.match(swapSummaryMarkdown(s, 't'), /Mid band \(popInSwapsMid\): ≥ 400 px² at 120–300 m: \*\*2\*\*/);
 });
