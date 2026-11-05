@@ -112,8 +112,6 @@ export function railMinPxFlag(): boolean { return pageFlag('railMinPx', '__canal
 
 /** `?farRail=0` / `window.__canalRecallFarRail = false`: no rail corridors in the far ring (farRing.ts). */
 export function farRailFlag(): boolean { return pageFlag('farRail', '__canalRecallFarRail'); }
-/** `?railYard=0` / `window.__canalRecallRailYard = false`: the yard beds as before (railTracks.ts railYard). */
-export function railYardFlag(): boolean { return pageFlag('railYard', '__canalRecallRailYard'); }
 
 function pageFlag(param: string, global: string): boolean {
   try {

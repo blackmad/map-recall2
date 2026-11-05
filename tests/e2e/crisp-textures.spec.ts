@@ -18,7 +18,7 @@ test.skip(!process.env.CRISP, 'set CRISP=1 to measure');
 const OUT = process.env.CRISP_DIR || 'artifacts/crisp';
 const ONLY = (process.env.CRISP_SPOTS ?? '').split(',').filter(Boolean);
 const SPOTS = ONLY.length ? CRISP_SPOTS.filter(s => ONLY.includes(s.name)) : CRISP_SPOTS;
-const VARIANTS = (process.env.CRISP_VARIANTS ?? 'before=texturePolicy=0&railStripes=0&railMinPx=0&railYard=0&farRail=0;after=').split(';').filter(Boolean).map(v => {
+const VARIANTS = (process.env.CRISP_VARIANTS ?? 'before=texturePolicy=0&railStripes=0&railMinPx=0&farRail=0;after=').split(';').filter(Boolean).map(v => {
   const [name, ...query] = v.split('='); return { name, query: query.join('=') };
 });
 // The tier is forced on desktop (headless may probe low); the phone keeps its own (touch: legacy textures).
@@ -93,7 +93,8 @@ async function shot(page: Page, spot: typeof CRISP_SPOTS[number]): Promise<Buffe
   await jump();
   await settle(page, `${spot.name} second jump`);
   await page.evaluate(() => { const f = (window as any).canalRecallGame.vectorMap._sharedFrame; if (f) { f.anchor = null; f.invalidateShadows?.(); } });
-  await page.waitForTimeout(1200);
+  await page.waitForTimeout(Number(process.env.CRISP_HOLD_MS ?? 4000));
+  await settle(page, `${spot.name} hold`);
   const url: string = await page.evaluate(() => (window as any).canalRecallGame.vectorMap.captureFrame().then((c: HTMLCanvasElement | null) => c?.toDataURL('image/png') ?? ''));
   expect(url.startsWith('data:image/png;base64,'), 'world canvas captured').toBe(true);
   return Buffer.from(url.split(',')[1], 'base64');
@@ -108,6 +109,11 @@ for (const variant of VARIANTS) {
     await page.addInitScript(() => { (window as any).__canalRecallChunkFade = false; });
     await openRoute(page, { travelMode: 'car', viewMode: 'chase', enterRacing: true, query: `?${query}` });
     await page.evaluate(() => { const g = (window as any).canalRecallGame; if (g) { Object.defineProperty(g, '_lastDriveByAt', { configurable: true, get: () => g.raceTime, set: () => {} }); g._clearLandmarkNotice?.(); g.vectorMap?.setActiveLandmark?.(null); } });
+    const errors: string[] = [];
+    page.on('pageerror', e => errors.push(e.message.slice(0, 300)));
+    page.on('console', m => { if (m.type() === 'error') errors.push(m.text().slice(0, 300)); });
+    // A throwaway visit first: the first pose of a load otherwise catches the near detail still arriving.
+    if (!process.env.CRISP_NO_WARMUP) await shot(page, SPOTS[0]);
     const file = `${OUT}/${info.project.name}-results.json`;
     const results = existsSync(file) ? JSON.parse(readFileSync(file, 'utf8')) : {};
     for (const spot of SPOTS) {
@@ -118,10 +124,12 @@ for (const variant of VARIANTS) {
       const state = await page.evaluate(() => {
         const vm = (window as any).canalRecallGame.vectorMap, t = vm._threeBuildings, i = vm._sharedFrame?.renderer?.info ?? vm.host?.renderer?.info;
         const perf = (window as any).__canalPerf ?? {};
-        return { tier: perf.tier ?? null, pixelRatio: vm.host?.getPixelRatio?.(), facadeTextureMB: +(t?.stats?.().textureMB ?? 0).toFixed(1), atlas: t?.atlasSource ?? null, textures: i?.memory?.textures ?? null, geometries: i?.memory?.geometries ?? null, cellTier: t?.material?.uniforms?.cellTier?.value ?? null };
+        const gs = vm._ownGround?.status?.() ?? null;
+        const ground = gs ? { ready: gs.ready, visible: gs.visible, blend: gs.blend, basemapHidden: gs.basemapHidden, radiusM: gs.radiusM, cells: Object.keys(gs.cells ?? {}).length, far: gs.far, errors: gs.errors } : null;
+        return { ground, tier: perf.tier ?? null, pixelRatio: vm.host?.getPixelRatio?.(), facadeTextureMB: +(t?.stats?.().textureMB ?? 0).toFixed(1), atlas: t?.atlasSource ?? null, textures: i?.memory?.textures ?? null, geometries: i?.memory?.geometries ?? null, cellTier: t?.material?.uniforms?.cellTier?.value ?? null };
       });
       const ms = await frameMs(page);
-      (results[spot.name] ??= {})[variant.name] = { query, size: [img.width, img.height], sharpness: { laplacianVar: +s.laplacianVar.toFixed(1), edge: +s.edge.toFixed(2), acutance: +s.acutance.toFixed(1) }, ...state, ...ms };
+      (results[spot.name] ??= {})[variant.name] = { errors: errors.slice(-5), query, size: [img.width, img.height], sharpness: { laplacianVar: +s.laplacianVar.toFixed(1), edge: +s.edge.toFixed(2), acutance: +s.acutance.toFixed(1) }, ...state, ...ms };
       console.log(info.project.name, spot.name, variant.name, JSON.stringify(results[spot.name][variant.name]));
       writeFileSync(file, JSON.stringify(results, null, 1));
     }

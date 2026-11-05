@@ -15,6 +15,10 @@ export const CRISP_SPOTS: readonly CrispSpot[] = [
   { name: 'da-costakade-chase', center: [4.8738, 52.3672], zoom: 17.8, bearing: -15, pitch: null, band: { x0: 0, y0: 0.2, x1: 1, y1: 0.8 }, crop: { x: 0.3, y: 0.75 } },
   // S4: the Zuidas rail corridor between Zuid and RAI, Beatrixpark beyond, from the air looking N.
   { name: 'zuidas-rails', center: [4.8835, 52.3402], zoom: 16.7, bearing: 5, pitch: 66, band: { x0: 0, y0: 0.55, x1: 0.7, y1: 0.9 }, crop: { x: 0.35, y: 0.66 }, shot: 's4-zuidas-rails.png' },
+  // S2 close: the quay from the chase camera at its nearest zoom (cells magnified: where 512 px cells can show).
+  { name: 'da-costakade-near', center: [4.8738, 52.3672], zoom: 18.8, bearing: -15, pitch: null, band: { x0: 0, y0: 0.1, x1: 1, y1: 0.9 }, crop: { x: 0.3, y: 0.5 } },
+  // S4 higher: under z15 the own ground is not drawn and the overview's rail lines are what shows (the user's frame).
+  { name: 'zuidas-rails-high', center: [4.8835, 52.3402], zoom: 14.8, bearing: 5, pitch: 66, band: { x0: 0, y0: 0.55, x1: 0.7, y1: 0.9 }, crop: { x: 0.35, y: 0.66 }, shot: 's4-zuidas-rails.png' },
   // The rail-look spots (issue #145), chase pose.
   { name: 'dijksgracht', center: [4.9180, 52.3757], zoom: 17.5, bearing: 300, pitch: null, band: { x0: 0, y0: 0.3, x1: 1, y1: 1 } },
   { name: 'piet-heinkade-east', center: [4.919002, 52.376640], zoom: 17.5, bearing: 100, pitch: null, band: { x0: 0, y0: 0.3, x1: 1, y1: 1 } },
