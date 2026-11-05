@@ -23,6 +23,11 @@ export const ARRIVAL_KINDS: ReadonlySet<string> = new Set(['shell-arrive']);
 export const GATE_MIN_AREA_PX = 400;
 /** ... within this distance of the rider. */
 export const GATE_NEAR_M = 120;
+/**
+ * The mid band (lane R1-A, #223, budget row `popInSwapsMid`): the same swaps from GATE_NEAR_M out to this, where the
+ * user's S1 pop-in was (detail onto buildings two to five blocks out, 63 desktop / 135 iPhone on the pinned ride).
+ */
+export const GATE_MID_M = 300;
 /** Histogram edges: metres from the rider, and on-screen CSS px². */
 export const DISTANCE_EDGES_M = [0, 30, 60, 120, 200, 400, Infinity] as const;
 export const AREA_EDGES_PX = [1, 100, 400, 2_000, 10_000, 50_000, Infinity] as const;
@@ -126,6 +131,8 @@ export function lngLatBox(geometry: { coordinates?: unknown } | null | undefined
 export type KindRow = { events: number; objects: number; onScreen: number; gate: number; areaPx: number; nearestM: number | null; maxAreaPx: number };
 export type SwapSummary = {
   gate: { minAreaPx: number; nearM: number; failures: number };
+  /** Swapped objects ≥ minAreaPx beyond `fromM` up to `toM` (GATE_NEAR_M–GATE_MID_M), and the share per kind. */
+  mid: { fromM: number; toM: number; failures: number; byKind: Record<string, number> };
   /** The same count at wider radii, and swapped objects of at least 2000 px² at any distance (what the gate misses). */
   wider: { nearM: number; count: number }[];
   bigAnywhere: number;
@@ -138,8 +145,9 @@ export type SwapSummary = {
 };
 
 /** The table #217 asks for: swaps by kind, distance and area histograms, the largest objects, and the gate count. */
-export function summariseSwaps(records: readonly SwapRecord[], options: { minAreaPx?: number; nearM?: number; top?: number } = {}): SwapSummary {
-  const minAreaPx = options.minAreaPx ?? GATE_MIN_AREA_PX, nearM = options.nearM ?? GATE_NEAR_M;
+export function summariseSwaps(records: readonly SwapRecord[], options: { minAreaPx?: number; nearM?: number; midM?: number; top?: number } = {}): SwapSummary {
+  const minAreaPx = options.minAreaPx ?? GATE_MIN_AREA_PX, nearM = options.nearM ?? GATE_NEAR_M, midM = options.midM ?? GATE_MID_M;
+  const mid: SwapSummary['mid'] = { fromM: nearM, toM: midM, failures: 0, byKind: {} };
   const byKind: Record<string, KindRow> = {}, distance: Record<string, number[]> = {};
   const areaAll = new Array(AREA_EDGES_PX.length - 1).fill(0), areaNear = new Array(AREA_EDGES_PX.length - 1).fill(0);
   const top: SwapSummary['top'] = [];
@@ -162,6 +170,7 @@ export function summariseSwaps(records: readonly SwapRecord[], options: { minAre
       if (ab >= 0) { areaAll[ab]++; if (o.distM != null && o.distM <= nearM) areaNear[ab]++; }
       const swap = !ARRIVAL_KINDS.has(r.kind);
       if (swap && o.areaPx >= minAreaPx && o.distM != null && o.distM <= nearM) { row.gate++; failures++; }
+      if (swap && o.areaPx >= minAreaPx && o.distM != null && o.distM > nearM && o.distM <= midM) { mid.failures++; mid.byKind[r.kind] = (mid.byKind[r.kind] ?? 0) + 1; }
       if (swap && o.areaPx >= minAreaPx && o.distM != null) for (const w of wider) if (o.distM <= w.nearM) w.count++;
       if (swap && o.areaPx >= 2000) bigAnywhere++;
       top.push({ ...o, t: r.t, kind: r.kind, key: r.key });
@@ -171,6 +180,7 @@ export function summariseSwaps(records: readonly SwapRecord[], options: { minAre
   top.sort((a, b) => b.areaPx - a.areaPx);
   return {
     gate: { minAreaPx, nearM, failures },
+    mid,
     wider, bigAnywhere,
     byKind: Object.fromEntries(Object.entries(byKind).sort((a, b) => b[1].areaPx - a[1].areaPx)),
     distance: { labels: bucketLabels(DISTANCE_EDGES_M, 'm'), byKind: distance },
@@ -182,6 +192,7 @@ export function summariseSwaps(records: readonly SwapRecord[], options: { minAre
 /** The summary as Markdown tables (the #217 comment). */
 export function swapSummaryMarkdown(s: SwapSummary, title: string): string {
   const lines = [`#### ${title}`, '', `Gate: swapped objects ≥ ${s.gate.minAreaPx} px² within ${s.gate.nearM} m: **${s.gate.failures}**`,
+    `Mid band (popInSwapsMid): ≥ ${s.gate.minAreaPx} px² at ${s.mid.fromM}–${s.mid.toM} m: **${s.mid.failures}**${s.mid.failures ? ` (${Object.entries(s.mid.byKind).map(([k, n]) => `${k} ${n}`).join(', ')})` : ''}`,
     `(≥ ${s.gate.minAreaPx} px² within ${s.wider.map(w => `${w.nearM} m: ${w.count}`).join(', ')}; ≥ 2000 px² at any distance: ${s.bigAnywhere})`, '',
     '| kind | events | objects | on screen | gate fails | Σ area px² | max px² | nearest m |', '|---|--:|--:|--:|--:|--:|--:|--:|'];
   for (const [k, r] of Object.entries(s.byKind)) lines.push(`| ${k} | ${r.events} | ${r.objects} | ${r.onScreen} | ${r.gate} | ${r.areaPx} | ${r.maxAreaPx} | ${r.nearestM ?? '–'} |`);
