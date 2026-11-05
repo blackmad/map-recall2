@@ -411,7 +411,11 @@ async function run(browser, kind, throttle, context) {
       deadline = Date.now();
     }
     errors.push(`route ${await page.evaluate(() => { const g = canalRecallGame, f = g.track.finishPoint; return `finish dist ${Math.round(Math.hypot(f.x - g.player.x, f.y - g.player.y))}px dest ${document.querySelector('#poi-destination')?.value}`; })}`);
-  } catch (e) { errors.push(`flow stopped after ${reached}: ${e.message.split('\n')[0]}`); }
+  } catch (e) {
+    errors.push(`flow stopped after ${reached}: ${e.message.split('\n')[0]}`);
+    // --starts sets a 30-minute deadline for the whole plan: a flow that stopped early ends the run now (lane E6).
+    if (starts) { deadline = Date.now(); console.error(`run ${kind}: flow stopped after ${reached}: ${e.message.split('\n')[0]}`); }
+  }
   await page.waitForTimeout(Math.max(0, deadline - Date.now()));
   const sync1 = profiling ? await sync('sync1') : null;
   const gl = glCounters ? await page.evaluate(() => {

@@ -21,6 +21,7 @@
  */
 
 import { BoxGrid } from './engine/boxGrid.js';
+import { IdleBoxGrid, coverGridIdleEnabled } from './engine/idleBoxGrid.js';
 import { dropNestedDuplicates } from './buildingNesting.js';
 import {
   BuildingTileCache, BUILDING_TILE_ZOOM, buildingForLandmark, planTilesAhead, planSourceDiff, tileUrl,
@@ -892,10 +893,23 @@ export class BuildingTileStreamer {
     // Through a grid over the resident list (engine/boxGrid.ts), rebuilt when the list changes: the same features in
     // the same order as scanning every resident (#129: the rider cover asks eight times a second).
     const features = this.cache.collection().features;
+    // Built in idle slices when the resident list changes (engine/idleBoxGrid.ts, lane E6 #219): the build was the
+    // ride's first-frame `sync: rider cover` cost. `?coverGridIdle=0` builds here, as before.
+    const idle = this.coverGrid();
+    if (idle) return idle.at(lng, lat, features).map(raw => this.styled(raw));
     if (this.atGrid?.of !== features) this.atGrid = { of: features, grid: new BoxGrid(features, f => this.boxOf(f)) };
     return this.atGrid.grid.at(lng, lat, features).map(raw => this.styled(raw));
   }
   private atGrid: { of: readonly BuildingFeature[]; grid: BoxGrid<BuildingFeature> } | null = null;
+  private idleGrid: IdleBoxGrid<BuildingFeature> | false | undefined;
+  /** Start indexing the resident list for `featuresAt` in idle time (the ride's start-up frames call it). */
+  prewarmFeaturesAt(): void {
+    this.coverGrid()?.prewarm(this.cache.collection().features);
+  }
+  private coverGrid(): IdleBoxGrid<BuildingFeature> | null {
+    if (this.idleGrid === undefined) this.idleGrid = coverGridIdleEnabled() ? new IdleBoxGrid<BuildingFeature>(f => this.boxOf(f)) : false;
+    return this.idleGrid || null;
+  }
 
   /**
    * Every resident building as loaded (unstyled: footprint and heights). The array is the source's cached list, so

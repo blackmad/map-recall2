@@ -1669,6 +1669,32 @@ test('a houseboat half over the generalised shore gets its berth opened: water u
   assert.ok(behind[0].every(p => p[1] > 9.9), 'only where the berth is on land');
 });
 
+test('houseboat berths: the polygon-box prefilter (lane E6 #219) gives the same water, shores and berths as the plain scan', () => {
+  // Many canals (some with holes) and many boats over their banks, as a dense city cell has.
+  let s = 4242; const rnd = () => (s = (s * 1664525 + 1013904223) >>> 0) / 2 ** 32;
+  const polygons: Vec2[][][] = [], shores: Vec2[][] = [];
+  for (let k = 0; k < 40; k++) {
+    const x = rnd() * 900, y = rnd() * 900, w = 20 + rnd() * 60, h = 8 + rnd() * 12;
+    // Every fourth canal has a wiggly south bank of 100+ vertices (the banded test's case).
+    const outer: Vec2[] = k % 4 ? [[x, y], [x + w, y], [x + w, y + h], [x, y + h]] : [...Array.from({ length: 120 }, (_, i) => [x + w * i / 119, y + Math.sin(i) * 0.7] as Vec2), [x + w, y + h], [x, y + h]];
+    polygons.push(k % 5 ? [outer] : [outer, [[x + 2, y + 2], [x + 6, y + 2], [x + 6, y + 5], [x + 2, y + 5]]]);
+    shores.push([[x, y + h], [x + w, y + h]], [[x + w, y], [x, y]]);
+  }
+  const boats: { id: string; ring: Vec2[] }[] = [];
+  polygons.forEach(([o], k) => {
+    for (let b = 0; b < 3; b++) {
+      const bx = o[0][0] + 2 + rnd() * 10, by = o[2][1] - 3 + rnd() * 2.5, r = rnd() * 0.3;
+      const pts: Vec2[] = [[0, 0], [12, 0], [12, 4], [0, 4]].map(([u, v]) => [bx + u * Math.cos(r) - v * Math.sin(r), by + u * Math.sin(r) + v * Math.cos(r)] as Vec2);
+      boats.push({ id: `b${k}-${b}`, ring: [...pts, pts[0]] });
+    }
+  });
+  const geo = { polygons, shores, levels: polygons.map((_, k) => -0.4 - k / 100) };
+  const fast = openUnderHouseboats(geo, boats, [0, 0, 1000, 1000], -1.77);
+  const plain = openUnderHouseboats(geo, boats, [0, 0, 1000, 1000], -1.77, false);
+  assert.ok(fast.opened.length > 20, `berths opened (${fast.opened.length})`);
+  assert.deepEqual(fast, plain);
+});
+
 const haveBoats = existsSync('public/data/extracts/amsterdam/houseboats.json') && existsSync('public/data/extracts/amsterdam/own-ground-osm-v1/cells.json');
 test('regression (houseboats, user 2026-10-14): no houseboat in the Frederik Hendrikbuurt / Westerkanaal / Spaarndammerbuurt cells lies under land', { skip: !haveBoats }, async () => {
   const store = fsStore();

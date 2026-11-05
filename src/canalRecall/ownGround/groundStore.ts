@@ -884,7 +884,7 @@ export class GroundStore {
     let p = this.roads.get(key);
     if (!p) {
       p = this.roadCells.has(key)
-        ? this.fetchBytes(`${EXTRACTS.roads}/cells/${key}.json.gz`).then(bytes => { this.loadedBytes.roads += bytes.byteLength; const c = JSON.parse(new TextDecoder().decode(bytes)) as RoadCell; return ROAD_CELL_VERSIONS.includes(c.version) ? (this.options.prepareOnly ? { ...c, kerbs: [], coverWays: [] } : c) : null; }).catch(() => null)
+        ? this.fetchBytes(`${EXTRACTS.roads}/cells/${key}.json.gz`).then(async bytes => { this.loadedBytes.roads += bytes.byteLength; await beforeParse(); const c = JSON.parse(new TextDecoder().decode(bytes)) as RoadCell; return ROAD_CELL_VERSIONS.includes(c.version) ? (this.options.prepareOnly ? { ...c, kerbs: [], coverWays: [] } : c) : null; }).catch(() => null)
         : Promise.resolve(null);
       this.roads.set(key, p);
     }
@@ -896,7 +896,7 @@ export class GroundStore {
     let p = this.marks.get(key);
     if (!p) {
       p = this.markCells.has(key)
-        ? this.fetchBytes(`${EXTRACTS.marks}/cells/${key}.json.gz`).then(bytes => { this.loadedBytes.roads += bytes.byteLength; const c = JSON.parse(new TextDecoder().decode(bytes)); return isRoadMarksCell(c) ? decodeMarks(c) : []; }).catch(() => [])
+        ? this.fetchBytes(`${EXTRACTS.marks}/cells/${key}.json.gz`).then(async bytes => { this.loadedBytes.roads += bytes.byteLength; await beforeParse(); const c = JSON.parse(new TextDecoder().decode(bytes)); return isRoadMarksCell(c) ? decodeMarks(c) : []; }).catch(() => [])
         : Promise.resolve([]);
       this.marks.set(key, p);
     }
@@ -918,7 +918,7 @@ export class GroundStore {
     if (!p) {
       const none = { ways: [], platforms: [] };
       p = this.railCells.has(key)
-        ? this.fetchBytes(`${EXTRACTS.rail}/cells/${key}.json.gz`).then(bytes => { this.loadedBytes.osm += bytes.byteLength; const c = JSON.parse(new TextDecoder().decode(bytes)); return isRailCell(c) ? { ways: decodeRail(c), platforms: decodePlatforms(c) } : none; }).catch(() => none)
+        ? this.fetchBytes(`${EXTRACTS.rail}/cells/${key}.json.gz`).then(async bytes => { this.loadedBytes.osm += bytes.byteLength; await beforeParse(); const c = JSON.parse(new TextDecoder().decode(bytes)); return isRailCell(c) ? { ways: decodeRail(c), platforms: decodePlatforms(c) } : none; }).catch(() => none)
         : Promise.resolve(none);
       this.rail.set(key, p);
     }
@@ -930,7 +930,7 @@ export class GroundStore {
     let p = this.courtyards.get(key);
     if (!p) {
       p = this.courtyardCells.has(key)
-        ? this.fetchBytes(`${EXTRACTS.courtyards}/cells/${key}.json.gz`).then(bytes => { this.loadedBytes.courtyards += bytes.byteLength; return JSON.parse(new TextDecoder().decode(bytes)) as CourtyardsCell; }).catch(() => null)
+        ? this.fetchBytes(`${EXTRACTS.courtyards}/cells/${key}.json.gz`).then(async bytes => { this.loadedBytes.courtyards += bytes.byteLength; await beforeParse(); return JSON.parse(new TextDecoder().decode(bytes)) as CourtyardsCell; }).catch(() => null)
         : Promise.resolve(null);
       this.courtyards.set(key, p);
     }

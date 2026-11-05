@@ -27,8 +27,9 @@ import { guardFrameHost } from './frameGuards';
 import { settleChecks } from './settle';
 import { CameraMap, EngineCamera, unitsPerMetre, mercatorX, mercatorY } from './cameraMap';
 import { GameCameraSolver, lngLatToWorld, worldToLngLat, type GameCamera, type LoaderFrame } from './gameCamera';
-import { clearCamera, clearanceResidents } from './cameraClearance';
+import { clearCamera, clearanceResidents, residentIndex } from './cameraClearance';
 import { RiderCoverTracker } from './riderCover';
+import { idleScheduler } from './idleBoxGrid';
 import { coverRouteFlag, roadAheadPoints, routeAheadPoints, type LngLat as CoverLngLat } from '../coveredPassage';
 import { decodeOverviewBytes, fetchOverviewBytes, OverviewLayer, overviewTileGrid, OVERVIEW_TILE_MIN_TRIANGLES } from './overviewLayer';
 import { overviewFromPool } from '../ownMap/overviewPool';
@@ -189,6 +190,49 @@ export class OwnWorldView implements WorldViewOracles {
   readonly labelOcclusion = new LabelOcclusion();
   /** `?labelOcclusion=0` (or flipping it at run time: specs compare on and off at one pose). */
   private _labelOcclusionOn = flag('labelOcclusion', '__canalRecallLabelOcclusion', true);
+  /**
+   * The label occlusion grid is (re)built in idle time when the resident list changes or the eye jumps, not inside the
+   * first full placement after a ride start or route change (9-20 ms there on the iPhone profile; lane E6 #219).
+   * `?labelIndexIdle=0`: built at the placement only, as before.
+   */
+  private readonly labelIndexIdle = flag('labelIndexIdle', '__canalRecallLabelIndexIdle', true);
+  private labelIndexScheduled = false;
+  /**
+   * `landing`: during the start flight the eye is high over the city, so the grid is centred on where the ride lands
+   * (the rider), which the chase eye stays well within REINDEX_M of; it also warms every footprint's box (featureBox),
+   * which the first frame's camera clearance reads.
+   */
+  /**
+   * The camera clearance's resident grid (cameraClearance.ts residentIndex, with every footprint's box) is built in
+   * idle time when the resident list changes, not in the ride's first frame (`sync: camera solve and clearance` 21-25 ms
+   * on the iPhone profile; lane E6 #219). `?clearanceIdle=0`: built at the first clearance walk, as before.
+   */
+  private readonly clearanceIdle = flag('clearanceIdle', '__canalRecallClearanceIdle', true);
+  private clearanceWarmFor: unknown = null;
+  private prewarmClearance(): void {
+    const city = this._completeCity;
+    if (!this.clearanceIdle || !city?.sampleFeatures || !city.residentFeatures) return;
+    const list = city.residentFeatures();
+    if (list === this.clearanceWarmFor) return;
+    this.clearanceWarmFor = list;
+    idleScheduler(() => {
+      const c = this._completeCity;
+      if (c?.sampleFeatures) residentIndex(clearanceResidents(c as { sampleFeatures(limit: number): any[] }));
+    });
+  }
+
+  private prewarmLabelOcclusion(landing?: readonly [number, number]): void {
+    const city = this._completeCity;
+    if (!this.labelIndexIdle || this.labelIndexScheduled || !this.labelOcclusionOn || !city?.residentFeatures) return;
+    const centre = (): [number, number] => { if (landing) return [landing[0], landing[1]]; const e = this.cameraMap.camera.eye(); return [e.lng, e.lat]; };
+    if (!this.labelOcclusion.needsIndex(city.residentFeatures(), centre())) return;
+    this.labelIndexScheduled = true;
+    idleScheduler(() => {
+      this.labelIndexScheduled = false;
+      if (!this.labelOcclusionOn || !this._completeCity?.residentFeatures) return;
+      this.labelOcclusion.index(this._completeCity.residentFeatures(), centre());
+    });
+  }
   get labelOcclusionOn(): boolean { return this._labelOcclusionOn; }
   /** The A/B switch: a still frame is not redrawn (render-on-change), so the switch asks for the frame that re-places the labels. */
   set labelOcclusionOn(on: boolean) { this._labelOcclusionOn = on; this.host?.triggerRepaint(); }
@@ -769,6 +813,11 @@ export class OwnWorldView implements WorldViewOracles {
     lap('building detail centre');
     this.extras.tick();
     lap('extras tick');
+    // The cover's footprint grid is indexed in idle time as the resident list changes, from the intro on, so the
+    // ride's first frame does not build it (engine/idleBoxGrid.ts, lane E6 #219; `?coverGridIdle=0`).
+    city?.prewarmFeaturesAt?.();
+    this.prewarmLabelOcclusion(view.introFlat > 0 ? view.subject : undefined);
+    this.prewarmClearance();
     this.updateRiderCover(view.subject, pitch > 0 && !view.detached && view.introFlat === 0);
     lap('rider cover');
     if (view.introFlat === 0) this.extras.setSuspended(false);

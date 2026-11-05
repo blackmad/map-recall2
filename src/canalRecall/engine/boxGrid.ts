@@ -10,8 +10,17 @@ const key = (x: number, y: number) => x * 1_000_003 + y;
 
 export class BoxGrid<T> {
   private readonly cells = new Map<number, T[]>();
-  constructor(items: readonly T[], private readonly boxOf: (item: T) => Box | null) {
+  /** `deferred`: leave the grid empty; the caller drains `insertSteps()` (IdleBoxGrid: a slice per idle period). */
+  constructor(private readonly items: readonly T[], private readonly boxOf: (item: T) => Box | null, deferred = false) {
+    if (!deferred) { const steps = this.insertSteps(Infinity); while (!steps.next().done) { /* one task */ } }
+  }
+
+  /** Insert the items, yielding after every `step` of them. Same cells, same order as the constructor. Runs once. */
+  *insertSteps(step: number): Generator<void, void, void> {
+    const items = this.items, boxOf = this.boxOf;
+    let n = 0;
     for (const item of items) {
+      if (++n % step === 0) yield;
       const b = boxOf(item);
       if (!b) continue;
       const x0 = Math.floor(b[0] / CELL_LNG), x1 = Math.floor(b[2] / CELL_LNG), y0 = Math.floor(b[1] / CELL_LAT), y1 = Math.floor(b[3] / CELL_LAT);

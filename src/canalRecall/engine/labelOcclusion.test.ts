@@ -68,3 +68,17 @@ test('a party wall is no frontage: a place whose nearest edge is shared with the
   const [fe, fn] = [(f[0] - O[0]) * mLng, (f[1] - O[1]) * mLat];
   assert.ok(fn < 40 && Math.abs(fe + 1) < 1, `drawn at the street frontage, not across the party wall (${fe.toFixed(1)}, ${fn.toFixed(1)})`);
 });
+
+test('needsIndex: true for a new list or an eye moved 250 m, false after index (the idle prewarm, lane E6 #219)', () => {
+  const box = (x: number, y: number) => ({ type: 'Feature', properties: { id: `${x}`, height: 10 }, geometry: { type: 'Polygon', coordinates: [[[x, y], [x + 0.0001, y], [x + 0.0001, y + 0.0001], [x, y + 0.0001], [x, y]]] } }) as any;
+  const occ = new LabelOcclusion();
+  const list = [box(4.89, 52.37), box(4.891, 52.371)], centre: [number, number] = [4.89, 52.37];
+  assert.equal(occ.needsIndex(list, centre), true, 'never indexed');
+  occ.index(list, centre);
+  assert.equal(occ.stats.indexes, 1);
+  assert.equal(occ.needsIndex(list, [4.8905, 52.3702]), false, '~40 m away');
+  assert.equal(occ.needsIndex(list, [4.895, 52.37]), true, '~340 m away');
+  assert.equal(occ.needsIndex([...list], centre), true, 'a new resident list');
+  occ.index(list, [4.8905, 52.3702]);
+  assert.equal(occ.stats.indexes, 1, 'index skips exactly when needsIndex is false');
+});
