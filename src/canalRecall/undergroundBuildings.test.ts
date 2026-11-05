@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { centrelineInsideM, isUndergroundOsm, isUndergroundPand, isVoidOverRoad, type UndergroundIndex } from './undergroundBuildings';
+import { centrelineInsideM, isBelowGroundByBagStoreys, isUndergroundOsm, isUndergroundPand, isVoidOverRoad, type UndergroundIndex } from './undergroundBuildings';
 
 // Tags as mapped in OSM on 2026-10-30 (the user's Weesperstraat/Wibautstraat reports).
 const weesperplein = { building: 'yes', layer: '-1', level: '-1', location: 'underground', railway: 'station', 'ref:bag': '0363100012186191' };
@@ -56,4 +56,30 @@ test('centreline metres inside a footprint', () => {
   assert.ok(centrelineInsideM([square], [along]) > 60);
   assert.equal(centrelineInsideM([square], [along], 3), 0);
   assert.ok(Math.abs(centrelineInsideM([square], [[[4.899, 52.3603], [4.902, 52.3603]]], 3) - 62) < 2);
+});
+
+// AkzoNobel Center garage, Christian Neefestraat 50 (2017): BAG storeys -1..-1, 3DBAG height 41.46 from the towers over it,
+// footprint matched to the towers' OSM ways (w46274135 AkzoNobel Center, w387808996, w388095663), none tagged underground.
+const akzoGarage = { id: 'NL.IMBAG.Pand.0363100012240015', heightM: 41.46, matchedOsm: ['w387808996', 'w388095663', 'w46274135'] };
+
+test('BAG storeys: wholly below street level only when highest < 0 and the record is consistent', () => {
+  assert.ok(isBelowGroundByBagStoreys({ highest: -1, lowest: -1 }));
+  assert.ok(isBelowGroundByBagStoreys({ highest: -1, lowest: -7 }));
+  assert.ok(isBelowGroundByBagStoreys({ highest: -2, lowest: -2 }));
+  assert.ok(!isBelowGroundByBagStoreys({ highest: 0, lowest: -1 }), 'a ground storey over a basement');
+  assert.ok(!isBelowGroundByBagStoreys({ highest: 5, lowest: -2 }));
+  assert.ok(!isBelowGroundByBagStoreys({ highest: -1, lowest: 0 }), 'inconsistent record (1792 canal house 0363100012168190)');
+  assert.ok(!isBelowGroundByBagStoreys({ highest: null, lowest: -1 }));
+  assert.ok(!isBelowGroundByBagStoreys({ highest: -1, lowest: null }));
+});
+
+test('a BAG-registered underground pand is dropped whatever its 3DBAG height or OSM matches (AkzoNobel garage)', () => {
+  assert.ok(!isUndergroundPand(akzoGarage, index), 'without the BAG storeys the towers hide it: 41 m, ordinary OSM matches');
+  const withBag: UndergroundIndex = { ...index, bagBelowGround: new Set(['0363100012240015']) };
+  assert.ok(isUndergroundPand(akzoGarage, withBag));
+  assert.ok(isUndergroundPand({ ...akzoGarage, id: '0363100012240015', matchedOsm: [] }, withBag), 'bare id, no OSM match');
+  // the set changes nothing else: the Amstel Tower and the houses over a shared garage keep their pands
+  assert.ok(!isUndergroundPand({ id: 'NL.IMBAG.Pand.0363100012246480', heightM: 90, matchedOsm: ['w1302928107'] }, withBag));
+  assert.ok(!isUndergroundPand({ id: 'NL.IMBAG.Pand.0363100012241802', heightM: 5.46, matchedOsm: ['w275074231', 'w278085626'] }, withBag));
+  assert.ok(isUndergroundPand({ id: 'NL.IMBAG.Pand.0363100012102589', heightM: 3.22, matchedOsm: ['w278085626'] }, withBag));
 });
