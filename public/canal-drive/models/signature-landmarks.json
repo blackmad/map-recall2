@@ -2246,72 +2246,100 @@
       "landmarkId": "extract_landmarks_1719479765",
       "modelUrl": "./models/stedelijk-museum.glb",
       "suppressOsmIds": [
+        "w754299888",
         "w754299889",
         "w754299890",
         "w754299892",
-        "w754299896",
-        "w754299897",
+        "w754299893",
         "w754299894",
         "w754299895",
-        "w754299893",
-        "w754299898"
+        "w754299896",
+        "w754299897",
+        "w754299898",
+        "NL.IMBAG.Pand.0363100012077791",
+        "NL.IMBAG.Pand.0363100012251804",
+        "NL.IMBAG.Pand.0363100012251805",
+        "w754299891"
       ],
       "footprint": {
         "centre": [
-          4.879830319756338,
-          52.35792078508553
+          4.879836,
+          52.357871
         ],
-        "headingDegrees": 66.37991087111777,
-        "lengthMetres": 100.85707403797215,
-        "widthMetres": 82.04982538671491
+        "headingDegrees": 0,
+        "lengthMetres": 123.5,
+        "widthMetres": 121
       },
       "groundAltitudeMetres": 0,
-      "facingOffsetDegrees": 90,
+      "facingOffsetDegrees": 0,
       "attribution": {
-        "title": "Stedelijk Museum",
+        "title": "Stedelijk Museum Amsterdam: A.W. Weissman (1892-1895) and Benthem Crouwel (2012)",
         "author": "Map Recall",
-        "sourceUrl": "https://www.benthemcrouwel.com/projects/stedelijk-museum",
+        "sourceUrl": "https://monumentenregister.cultureelerfgoed.nl/monumenten/505840",
         "licence": "CC BY 4.0",
         "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
-        "modifications": "Original flat-colour low-poly reconstruction using visual references and OpenStreetMap footprint alignment. Approximate architectural dimensions, no reference image textures or imported geometry."
+        "modifications": "Original texture-free flat-colour geometry on the BAG footprints (CC0) with 3DBAG LoD2.2 heights (CC BY 4.0) and OSM building parts (ODbL): Weissman's red-brick museum with white stone bands, dressings, round tympana and oculi, relief panels, statues in niches on the Paulus Potterstraat front, the four corner pavilions with their scroll gables, pyramid roofs and lanterns, the frontispiece with its glazed entrance, tower attic, clock lantern and spire, the central mansard with dormers and the north-light roofs; Benthem Crouwel's white bathtub under its flat roof over the glazed ground storey, its bottom rising towards the east end, the glass hall between the two buildings and the dark service tower with its circular STEDELIJK MUSEUM AMSTERDAM lettering; read for proportion and tone from Gemeente Amsterdam panoramas (CC BY 4.0). No pixels or meshes imported."
+      },
+      "spatialSuppression": false,
+      "surveyed": {
+        "anchor": [
+          4.87971851,
+          52.35807918
+        ],
+        "northOffsetDegrees": 0,
+        "source": "Vertex average of the BAG 0363100012077791 ring (RD, PDOK BAG WFS, CC0) in native east/south metres above its 3DBAG ground 0.41 m NAP (scripts/landmarks/stedelijk-museum-footprints.json, written by museumplein-north-prepare.ts). Drawn on the 1895 building's axis (bearing 66.7, its BAG edges): Weissman's block, pavilions, central front and frontispiece on the BAG 0363100012077791 ring; the 2012 glazed ground storey on BAG 0363100012251804; the service tower on BAG 0363100012251805. Heights from the 3DBAG LoD2.2 roofs (CC BY 4.0): wings 14.5 m with north-light sheds to 17.6 m, pavilion pyramids 15.6 -> 25.3 m, the central mansard 22.4 m, the frontispiece tower and lantern to 33.7 m, the rear hall ridge 21.5 m, the 2012 roof 17.65 m, the tower 17.6 m. The tub's rim and the roof slab's outline from the OSM building parts w754299890 and w754299892 (ODbL). Bays, bands, dressings, niches, gables and the tub's section measured on rectified and aimed Gemeente Amsterdam panoramas (CC BY 4.0) listed in scripts/landmarks/stedelijk-museum-inventory.json."
+      },
+      "heightMetres": 33.7,
+      "bagYear": 1895,
+      "materialOverrides": {
+        "brick": "#a65b45",
+        "white": "#e9e3d5",
+        "stone": "#8f877c",
+        "slate": "#5b646c",
+        "glass": "#a5bcb6",
+        "greyBrick": "#6a4a40",
+        "canopyGlass": "#76878b",
+        "concrete": "#eceeea",
+        "dark": "#3a4246",
+        "frame": "#2c3236"
       },
       "buildingCategory": "landmark",
       "bounds": {
         "min": [
-          -46.187496185302734,
-          -9.536743306171047e-8,
-          -37.742919921875
+          -53.724544525146484,
+          0,
+          -37.26590347290039
         ],
         "max": [
-          46.187496185302734,
-          29.899999618530273,
-          37.870113372802734
+          69.78644561767578,
+          33.70000076293945,
+          83.69617462158203
         ]
       },
       "placement": {
         "anchor": [
-          4.879830319756338,
-          52.35792078508553
+          4.87971851,
+          52.35807918
         ],
         "altitudeMetres": 0,
-        "modelRotationDegrees": 66.37991087111777,
-        "facadeBearingDegrees": 156.37991087111777,
-        "scale": 1.0918222719124766
+        "modelRotationDegrees": 90,
+        "facadeBearingDegrees": 0,
+        "scale": 1
       },
       "extent": {
-        "widthMetres": 92.37499237060547,
-        "heightMetres": 29.899999713897706,
-        "depthMetres": 75.61303329467773,
-        "depthCoverage": 0.9215502036512634
+        "widthMetres": 123.51099014282227,
+        "heightMetres": 33.70000076293945,
+        "depthMetres": 120.96207809448242,
+        "depthCoverage": 0.9996865958221688
       },
-      "triangles": 6540,
-      "bytes": 88684,
+      "triangles": 28152,
+      "bytes": 387616,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "lod1": {
-        "sourceHash": "b228f5dd96a7760d",
+        "sourceHash": "d593f2e6b70f3b8f",
         "buildVersion": 2,
-        "bytes": 27128,
-        "triangles": 1140
+        "bytes": 83740,
+        "triangles": 4903
       }
     },
     "adam-tower": {
