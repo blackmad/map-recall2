@@ -32,6 +32,9 @@ export class FrameBudget {
   private spentFrame = -1;
   private resumedAt: number;
 
+  /** Largest work reported within one frame, and yields seen (diagnostics). */
+  maxSpent = 0;
+  yields = 0;
   /** Resumes that found this frame's budget already spent by another slice and waited again (diagnostics). */
   regated = 0;
 
@@ -88,6 +91,8 @@ export class FrameBudget {
     const t = this.deps.now();
     if (this.spentFrame !== this.frame) { this.spentFrame = this.frame; this.spent = 0; }
     this.spent += Math.max(0, t - (since ?? this.resumedAt));
+    if (this.spent > this.maxSpent) this.maxSpent = this.spent;
+    this.yields++;
     if (this.queue && (this.spent >= this.budgetMs || this.line.length)) {
       // Over budget, or others already waiting: join the back of the line (no slice overtakes a waiting one).
       this.deferrals++;

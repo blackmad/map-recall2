@@ -27,7 +27,7 @@ import { guardFrameHost } from './frameGuards';
 import { settleChecks } from './settle';
 import { CameraMap, EngineCamera, unitsPerMetre, mercatorX, mercatorY } from './cameraMap';
 import { GameCameraSolver, lngLatToWorld, worldToLngLat, type GameCamera, type LoaderFrame } from './gameCamera';
-import { clearCamera, clearanceResidents, hasResidentIndex, RESIDENT_INDEX_MIN, residentIndex, residentIndexInSlices } from './cameraClearance';
+import { CLEARANCE_NEAR_M, clearCamera, clearanceResidents, hasResidentIndex, RESIDENT_INDEX_MIN, residentIndex, residentIndexInSlices, residentsNear } from './cameraClearance';
 import { RiderCoverTracker } from './riderCover';
 import { idleScheduler } from './idleBoxGrid';
 import { coverRouteFlag, roadAheadPoints, routeAheadPoints, type LngLat as CoverLngLat } from '../coveredPassage';
@@ -63,6 +63,11 @@ const LOADING_STATE = 2;
  * uploads and compiles behind it, once a second, and the chunk builds the settle hold waits for get the main thread.
  */
 export const COVERED_FRAME_MS = 1000;
+/** The clearance grid's slices (lane E7): an idle callback that waits at most 50 ms, so a busy ride start still builds it. */
+const clearanceSlice = (cb: () => void): void => {
+  const g = globalThis as { requestIdleCallback?: (cb: () => void, o?: { timeout: number }) => number };
+  if (g.requestIdleCallback) g.requestIdleCallback(cb, { timeout: 50 }); else setTimeout(cb, 0);
+};
 const flag = (param: string, global: string, fallback: boolean): boolean => {
   const g = W();
   if (typeof g[global] === 'boolean') return g[global];
@@ -188,6 +193,7 @@ export class OwnWorldView implements WorldViewOracles {
   _highlightMarker: any = null;
   private readonly landmarkHighlight = new LandmarkHighlight();
   readonly labelOcclusion = new LabelOcclusion();
+  private readonly labelIndexNear = (() => { if (!flag('labelIndexNear', '__canalRecallLabelIndexNear', true)) this.labelOcclusion.nearPadM = 0; return this.labelOcclusion.nearPadM > 0; })();
   /** `?labelOcclusion=0` (or flipping it at run time: specs compare on and off at one pose). */
   private _labelOcclusionOn = flag('labelOcclusion', '__canalRecallLabelOcclusion', true);
   /**
@@ -218,8 +224,20 @@ export class OwnWorldView implements WorldViewOracles {
    */
   private readonly clearanceStale = flag('clearanceStale', '__canalRecallClearanceStale', true);
   private clearanceReady: readonly any[] | null = null;
-  /** Diagnostics: clearance walks answered from the previous list. */
-  readonly clearanceStats = { staleWalks: 0 };
+  /** The list whose grid is being built in slices (one at a time: a newer list waits, and the newest is built next). */
+  private clearanceBuilding: readonly any[] | null = null;
+  /** Diagnostics: clearance walks answered from the previous list, built inline (no ready grid), grids built in slices. */
+  readonly clearanceStats = { staleWalks: 0, nearWalks: 0, sliced: 0 };
+  private buildClearance(list: readonly any[]): void {
+    this.clearanceBuilding = list;
+    residentIndexInSlices(list, clearanceSlice, undefined, () => {
+      this.clearanceStats.sliced++;
+      this.clearanceReady = list;
+      this.clearanceBuilding = null;
+      const want = this.clearanceWarmFor as readonly any[] | null;
+      if (want && want !== list && !hasResidentIndex(want)) this.buildClearance(want);
+    });
+  }
   private prewarmClearance(): void {
     const city = this._completeCity;
     if (!this.clearanceIdle || !city?.sampleFeatures || !city.residentFeatures) return;
@@ -228,7 +246,9 @@ export class OwnWorldView implements WorldViewOracles {
       const list = clearanceResidents(city as { sampleFeatures(limit: number): any[] });
       if (list === this.clearanceWarmFor) return;
       this.clearanceWarmFor = list;
-      residentIndexInSlices(list, idleScheduler, undefined, () => { this.clearanceReady = list; });
+      if (list.length < RESIDENT_INDEX_MIN) return;
+      if (hasResidentIndex(list)) { this.clearanceReady = list; return; }
+      if (!this.clearanceBuilding) this.buildClearance(list);
       return;
     }
     const list = city.residentFeatures();
@@ -239,15 +259,24 @@ export class OwnWorldView implements WorldViewOracles {
       if (c?.sampleFeatures) residentIndex(clearanceResidents(c as { sampleFeatures(limit: number): any[] }));
     });
   }
-  /** The resident list the clearance walks this frame (see clearanceStale). */
-  private clearanceList(): readonly any[] {
+  /**
+   * The resident list the clearance walks this frame (see clearanceStale). With no grid ready at all (the ride's first
+   * frame: during the start flight the suspended city holds a few hundred residents, at landing ~36,000), the residents
+   * near the rider by their first vertex (cameraClearance.ts residentsNear), cached per list and 50 m of rider travel.
+   */
+  private clearanceNear: { of: readonly any[]; at: readonly [number, number]; near: readonly any[] } | null = null;
+  private clearanceList(rider: readonly [number, number]): readonly any[] {
     const list = clearanceResidents(this._completeCity as { sampleFeatures(limit: number): any[] });
     if (!this.clearanceStale || !this.clearanceIdle || list.length < RESIDENT_INDEX_MIN) return list;
     if (hasResidentIndex(list)) { this.clearanceReady = list; return list; }
-    if (!this.clearanceReady) return list;
     this.prewarmClearance();
-    this.clearanceStats.staleWalks++;
-    return this.clearanceReady;
+    if (this.clearanceReady) { this.clearanceStats.staleWalks++; return this.clearanceReady; }
+    this.clearanceStats.nearWalks++;
+    const c = this.clearanceNear, mLng = 111320 * Math.cos(rider[1] * Math.PI / 180);
+    if (c && c.of === list && Math.hypot((c.at[0] - rider[0]) * mLng, (c.at[1] - rider[1]) * 111320) < 50) return c.near;
+    const near = residentsNear(list, rider, CLEARANCE_NEAR_M);
+    this.clearanceNear = { of: list, at: [rider[0], rider[1]], near };
+    return near;
   }
 
   private prewarmLabelOcclusion(landing?: readonly [number, number]): void {
@@ -706,8 +735,11 @@ export class OwnWorldView implements WorldViewOracles {
    * is indexed in idle time; the inline rebuild was 15-19 ms of the iPhone profile's second ride frame (labels 47 ms).
    */
   private readonly labelIndexStale = flag('labelIndexStale', '__canalRecallLabelIndexStale', true);
+  /** Diagnostics: full placements that used the previous grid, and inline (re)indexes. */
+  readonly labelStaleStats = { stale: 0, inline: 0 };
   private indexLabelOcclusion(features: Parameters<LabelOcclusion['index']>[0], centre: [number, number]): void {
-    if (this.labelIndexStale && this.labelIndexIdle && this.labelOcclusion.coversStale(features, centre)) { this.prewarmLabelOcclusion(); return; }
+    if (this.labelIndexStale && this.labelIndexIdle && this.labelOcclusion.coversStale(features, centre)) { this.labelStaleStats.stale++; this.prewarmLabelOcclusion(); return; }
+    if (this.labelOcclusion.needsIndex(features, centre)) this.labelStaleStats.inline++;
     const phases = framePhases(), t0 = phases ? performance.now() : 0;
     this.labelOcclusion.index(features, centre);
     if (phases) phases.add('labels: occlusion index (inside occlusion)', performance.now() - t0);
@@ -822,7 +854,7 @@ export class OwnWorldView implements WorldViewOracles {
         const probe = new EngineCamera(() => this.host.viewport(), { center: view.lngLat, zoom: view.zoom, bearing: view.bearing, pitch, elevation, maxPitch: this.cameraMap.camera.maxPitch });
         const e = probe.eye();
         return { lngLat: [e.lng, e.lat], altitude: e.altitudeM };
-      }, () => this.clearanceList());
+      }, () => this.clearanceList(view.subject));
       if (result) this.solver.safePitch = result.safePitch;
       (this as any)._lastCameraClearance = result;
     }

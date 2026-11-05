@@ -21,7 +21,7 @@
  * soon as the line is above the tallest resident.
  */
 import { footprintContains, type FootprintFeature } from '../coveredPassage';
-import { featureBox } from './cameraClearance';
+import { featureBox, firstVertex } from './cameraClearance';
 import { occluderTopM } from '../labels/sightlineOcclusion';
 
 type LngLat = readonly [number, number];
@@ -45,6 +45,8 @@ const OUT_M = 0.5;
 /** Footprints indexed around the eye; a sightline is never longer than the labels' draw depth at street zooms. */
 export const INDEX_RADIUS_M = 900;
 const REINDEX_M = 250;
+/** See LabelOcclusion.nearPadM: no Amsterdam footprint in the resident set is near this long. */
+export const NEAR_PAD_M = 500;
 
 type Ring = ReadonlyArray<readonly number[]>;
 const outerRings = (f: FootprintFeature): Ring[] => {
@@ -88,6 +90,13 @@ export class LabelOcclusion<F extends FootprintFeature = FootprintFeature> {
   readonly stats = { tests: 0, indexes: 0, indexMs: 0 };
 
   private centre: LngLat | null = null;
+  /**
+   * Lane E7 (#220): a resident whose first vertex lies more than INDEX_RADIUS_M + this from the centre is skipped before
+   * its box is walked (it could only reach the indexed disc by being longer than this). Most of the ~36,000 residents
+   * are outside the 900 m disc, and their box walks were most of the 18-24 ms index build in the iPhone profile's
+   * second ride frame. 0 walks every box (`?labelIndexNear=0`).
+   */
+  nearPadM = NEAR_PAD_M;
 
   /**
    * (Re)index the residents within INDEX_RADIUS_M of `centre` (the camera eye). Rebuilt only when the resident list
@@ -103,7 +112,12 @@ export class LabelOcclusion<F extends FootprintFeature = FootprintFeature> {
     this.cellTop.clear();
     this.tallest = 0;
     const rLng = INDEX_RADIUS_M / mLng, rLat = INDEX_RADIUS_M / 111320;
+    const padLng = (INDEX_RADIUS_M + this.nearPadM) / mLng, padLat = (INDEX_RADIUS_M + this.nearPadM) / 111320;
     for (const f of features) {
+      if (this.nearPadM > 0) {
+        const v = firstVertex(f);
+        if (v && (Math.abs(v[0] - centre[0]) > padLng || Math.abs(v[1] - centre[1]) > padLat)) continue;
+      }
       const b = featureBox(f);
       if (!b || b[2] < centre[0] - rLng || b[0] > centre[0] + rLng || b[3] < centre[1] - rLat || b[1] > centre[1] + rLat) continue;
       const top = topOf(f);

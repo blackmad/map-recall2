@@ -30,11 +30,16 @@ export interface ClearanceResult {
 
 const boxes = new WeakMap<object, Box | null>();
 
-/** [west, south, east, north] of a footprint's outer rings, cached per feature object. */
+/**
+ * [west, south, east, north] of a footprint's outer rings, cached per geometry object (lane E7, #220: the tile source's
+ * raw feature and its styled copy share one geometry, and the clearance, the label occlusion and the cover read both;
+ * per feature object every box was walked twice at landing), else per feature.
+ */
 export function featureBox(feature: FootprintFeature): Box | null {
-  const cached = boxes.get(feature);
-  if (cached !== undefined) return cached;
   const g = feature && feature.geometry as { type?: string; coordinates?: any } | null | undefined;
+  const key: object = g && typeof g === 'object' ? g : feature;
+  const cached = boxes.get(key);
+  if (cached !== undefined) return cached;
   const polygons = g && g.type === 'Polygon' ? [g.coordinates] : g && g.type === 'MultiPolygon' ? g.coordinates : [];
   let w = Infinity, s = Infinity, e = -Infinity, n = -Infinity;
   for (const rings of polygons || []) {
@@ -47,9 +52,36 @@ export function featureBox(feature: FootprintFeature): Box | null {
     }
   }
   const box: Box | null = Number.isFinite(w) ? [w, s, e, n] : null;
-  boxes.set(feature, box);
+  boxes.set(key, box);
   return box;
 }
+
+/** A footprint's first outer vertex (lng, lat), read without walking the ring; null when it has none. */
+export function firstVertex(feature: FootprintFeature): LngLat | null {
+  const g = feature && feature.geometry as { type?: string; coordinates?: any } | null | undefined;
+  const c = g?.type === 'Polygon' ? g.coordinates?.[0]?.[0] : g?.type === 'MultiPolygon' ? g.coordinates?.[0]?.[0]?.[0] : null;
+  return Array.isArray(c) && typeof c[0] === 'number' ? c as unknown as LngLat : null;
+}
+
+/**
+ * The residents whose first vertex lies within `radiusM` of `centre` (lane E7, #220): one coordinate read per resident
+ * instead of a box walk. A footprint left out has its first vertex farther than `radiusM` and so, to reach the area
+ * near `centre`, would have to be longer than `radiusM - reach` itself. The clearance walks this list for the frames
+ * before the new resident list's grid is ready (the ride's first frame built that grid inline: 24-40 ms at 4x).
+ */
+export function residentsNear<T extends FootprintFeature>(resident: readonly T[], centre: LngLat, radiusM: number): T[] {
+  const rLat = radiusM / 111320, rLng = radiusM / (111320 * Math.cos(centre[1] * Math.PI / 180));
+  const out: T[] = [];
+  for (const f of resident) {
+    const v = firstVertex(f);
+    if (v && Math.abs(v[0] - centre[0]) <= rLng && Math.abs(v[1] - centre[1]) <= rLat) out.push(f);
+  }
+  WALK_UNINDEXED.add(out); // a list for a few frames: walked by box, no grid built for it
+  return out;
+}
+const WALK_UNINDEXED = new WeakSet<readonly FootprintFeature[]>();
+/** The clearance's reach for that list: the chase camera sits well within 250 m of the rider. */
+export const CLEARANCE_NEAR_M = 600;
 
 /** The first footprint at `point` whose top is above `altitude` (+0.75 m). */
 export function blockingFeature<T extends FootprintFeature>(point: LngLat, altitude: number, features: readonly T[]): T | null {
@@ -124,7 +156,7 @@ export function sightlineBlocker<T extends FootprintFeature>(from: LngLat, cente
   const south = Math.min(from[1], center[1]), northEdge = Math.max(from[1], center[1]);
   const candidates: T[] = [];
   const hits = (f: T) => { const b = featureBox(f); return !!b && b[0] <= eastEdge && b[2] >= west && b[1] <= northEdge && b[3] >= south; };
-  if (resident.length >= indexMin) {
+  if (resident.length >= indexMin && !WALK_UNINDEXED.has(resident)) {
     // The city's ~34,000 residents in a grid, built once per resident list: the walk ran a box test on every one for
     // each pitch probe, every frame (#129). Candidates keep the list's order, so the blocker found is the same.
     const index = residentIndex(resident);
