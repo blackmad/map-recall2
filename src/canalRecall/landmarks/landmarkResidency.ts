@@ -50,3 +50,31 @@ export function landmarkResidencyBudget(search: string, coarsePointer: boolean):
   if (Number.isFinite(asked) && asked >= 4) return Math.min(asked, 1000);
   return coarsePointer ? 24 : 72;
 }
+
+/**
+ * Landmark reach (lane R1-C, #225): metres from the view centre within which a landmark model loads and counts as
+ * "in view" for residency. A pitched view's bounds reach the horizon (mapCamera.ts visibleBounds clamps at 20 km), so
+ * from the air "in view" was every landmark in Amsterdam: the 3-minute aerial pan held up to 627 models resident
+ * against a budget of 72 (none could be evicted while in view) and re-uploaded ~12 GB of GPU data as they cycled
+ * (scripts/aerial-pan.mjs, 2026-11-06). Beyond the reach a model is never requested and, once over budget, is given
+ * back to its extrusion furthest-first like an off-view one. 2000 m on desktop (the 12 resident z14 building tiles reach
+ * about as far), 1000 m on touch. `?landmarkReach=0` turns it off (the horizon-deep reach before); `?landmarkReach=N`
+ * sets it.
+ */
+export function landmarkReachM(search: string, coarsePointer: boolean): number {
+  const m = /[?&]landmarkReach=(\d+)/.exec(search);
+  if (m) { const v = Number(m[1]); return v === 0 ? Infinity : Math.max(200, v); }
+  return coarsePointer ? 1000 : 2000;
+}
+
+/** Ground metres between an anchor and the view centre ([lng, lat] each), the equirectangular approximation. */
+export function anchorDistanceM(anchor: readonly [number, number], centre: { lng: number; lat: number }): number {
+  const cos = Math.cos((centre.lat * Math.PI) / 180);
+  return Math.hypot((anchor[0] - centre.lng) * cos, anchor[1] - centre.lat) * 111_320;
+}
+
+/** Is the anchor within reach of the centre (always, with the reach off)? `radiusM` is the model's half-diagonal. */
+export function withinReach(anchor: readonly [number, number] | null | undefined, centre: { lng: number; lat: number }, reachM: number, radiusM = 0): boolean {
+  if (!anchor || !Number.isFinite(reachM)) return true;
+  return anchorDistanceM(anchor, centre) - radiusM <= reachM;
+}

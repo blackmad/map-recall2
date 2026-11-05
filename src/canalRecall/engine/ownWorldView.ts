@@ -19,7 +19,8 @@
 import { framePhases } from './framePhases';
 import { chooseTier, TIER_SETTINGS, type QualityTier } from '../renderGovernor';
 import { tierProbe } from './tierProbe';
-import { GlCounters, objectLabel } from './glCounters';
+import { GlCounters, GlResident, objectLabel } from './glCounters';
+import { PerfHud, type PerfSnapshot } from './perfHud';
 import { SharedFrame } from '../rendererShared/sharedFrame';
 import { mapLibreSky } from '../look/sunny';
 import { FrameHost, type FrameSimulation } from './frameHost';
@@ -125,6 +126,9 @@ export class OwnWorldView implements WorldViewOracles {
   _ownGround: any = null;
   /** `?glCounters=1`: GL work counters (engine/glCounters.ts). */
   _glCounters: GlCounters | null = null;
+  /** The perf HUD's GPU allocation tracker when `?glCounters` is off (engine/perfHud.ts). */
+  private _gpuResident: GlResident | null = null;
+  _perfHud: PerfHud | null = null;
   _threeBuildings: any = null;
   _completeCity: any = null;
   /** Landmark models, trees, detailed buildings, pyramidal roofs, ARTIS (cityExtras.ts). */
@@ -309,6 +313,10 @@ export class OwnWorldView implements WorldViewOracles {
       counters.install(renderer.getContext());
       this._glCounters = counters;
       W().__canalPerf = { ...(W().__canalPerf ?? {}), gl: { markWarm: () => counters.markWarm(), report: () => counters.report() } };
+    } else if (PerfHud.wantedAtStart(W())) {
+      // The perf HUD's GPU MB (engine/perfHud.ts): the allocation tracker alone, only when the HUD is wanted at start.
+      this._gpuResident = new GlResident();
+      this._gpuResident.install(this.host.renderer.getContext());
     }
     // Quality tier (renderGovernor.ts): chosen once from a ~1 s fill probe and what the browser reports; it sets
     // the start and the ceiling of the knobs below, the governor steps inside it. `?tier=low|mid|high` forces one.
@@ -360,6 +368,10 @@ export class OwnWorldView implements WorldViewOracles {
       maxPixelRatio: explicitDpr ? undefined : Math.min(dpr, cap, settings.dprCap),
     });
     this._renderGovernor = guards.governor;
+    // Perf HUD (engine/perfHud.ts, lane R1-C #225): `?perfHud=1` or "Show performance"; `__canalPerf.snapshot()` is the
+    // same numbers for the ride heartbeat and the stall report (rideHeartbeat.ts).
+    W().__canalPerf = { ...(W().__canalPerf ?? {}), snapshot: (p99Ms: number | null = null) => this.perfSnapshot(p99Ms) };
+    if (W().document?.body) { this._perfHud = new PerfHud(W(), { snapshot: p99 => this.perfSnapshot(p99) }); this._perfHud.start(); }
     const view = { center: () => this.camera.center(), zoom: () => this.camera.zoom() };
     this._lines = { cycle: new FlatLines('cycle-tracks', view), transit: new FlatLines('transit-network', view), hoods: new FlatLines('neighbourhoods', view) };
     this._sharedFrame.register('engine-hoods', this._lines.hoods, { order: -60 });
@@ -708,6 +720,20 @@ export class OwnWorldView implements WorldViewOracles {
 
   // ---- WorldView: frame / camera ----
   frameCanvas(): HTMLCanvasElement { return this.host.canvas; }
+  /** What the page holds now (engine/perfHud.ts PerfSnapshot): a few Map sizes and counters, cheap enough for 1 Hz. */
+  perfSnapshot(p99Ms: number | null = null): PerfSnapshot {
+    const size = (v: any): number | null => (v && typeof v.size === 'number' ? v.size : Array.isArray(v) ? v.length : null);
+    const memory = W().performance?.memory, info = this.host.renderer?.info?.memory;
+    const gpu = this._glCounters ? this._glCounters.resident.report().totalMB : this._gpuResident ? this._gpuResident.report().totalMB : null;
+    return {
+      tier: this.qualityTier?.tier ?? null, dpr: this.host.getPixelRatio(),
+      heapMB: memory?.usedJSHeapSize ? Math.round(memory.usedJSHeapSize / 1048576) : null,
+      gpuMB: gpu, geometries: info?.geometries ?? null, textures: info?.textures ?? null,
+      cells: size(this._completeCity?.cache?.tiles), chunks: size(this._threeBuildings?.chunks), models: size(this.extras?.signature?._entries),
+      p99Ms: p99Ms != null ? Math.round(p99Ms) : null,
+    };
+  }
+
   captureFrame(): Promise<HTMLCanvasElement | null> {
     return new Promise(resolve => { this.host.once('render', () => resolve(this.host.canvas)); this.host.triggerRepaint(); });
   }

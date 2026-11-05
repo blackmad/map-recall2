@@ -20,7 +20,7 @@ import { cityLookEnabled } from '../../../src/canalRecall/look/cityLook.ts';
 import { INFERRED_SLOT_SOURCE } from '../../../src/canalRecall/look/materialSlotInference.ts';
 import { landmarkHighlightStates } from '../../../src/canalRecall/look/highlightLandmarks.ts';
 import { buildPickBvhs, nearestVisibleHit } from '../../../src/canalRecall/landmarks/pickBvh.ts';
-import { landmarkResidencyBudget, pickEvictions } from '../../../src/canalRecall/landmarks/landmarkResidency.ts';
+import { anchorDistanceM, landmarkReachM, landmarkResidencyBudget, pickEvictions, withinReach } from '../../../src/canalRecall/landmarks/landmarkResidency.ts';
 import { freezeStaticMatrices } from '../../../src/canalRecall/landmarks/staticMatrices.ts';
 import { hasReleasedVertexData, releaseGeometryOnUpload, releaseVertexDataOnUpload } from '../../../src/canalRecall/landmarks/releaseVertexData.ts';
 import { SHADOW_STAND_IN_PENDING, disposeShadowStandIn, shadowStandInFor } from '../../../src/canalRecall/rendererShared/shadowStandIns.ts';
@@ -118,6 +118,12 @@ export class SignatureLandmarks {
     /** Resident model budget (landmarks/landmarkResidency.ts): 24 on touch, 72 on desktop; `?landmarkBudget=`. */
     this.residencyBudget = options.residencyBudget ?? landmarkResidencyBudget(window.location?.search ?? '', !!window.matchMedia?.('(pointer: coarse)')?.matches);
     this._lastEvictCheck = 0;
+    /**
+     * Landmark reach (landmarks/landmarkResidency.ts, lane R1-C #225): metres from the view centre within which a
+     * model loads and counts as in view for eviction; a pitched view's bounds reach the horizon. 2000 m desktop,
+     * 1000 m touch; `?landmarkReach=0` is the horizon-deep reach before (Infinity).
+     */
+    this.reachM = options.reachM ?? landmarkReachM(window.location?.search ?? '', !!window.matchMedia?.('(pointer: coarse)')?.matches);
     /**
      * No model loads below this zoom (2026-10-23). The overview raster draws the
      * city to z15.6; below z15 "visible" is every landmark in Amsterdam, which is
@@ -602,6 +608,9 @@ export class SignatureLandmarks {
     return collection;
   }
 
+  /** A model's half-diagonal, metres (what `_nearby` pads the view by). */
+  _radiusM(spec) { return Math.hypot(spec.footprint?.lengthMetres || 0, spec.footprint?.widthMetres || 0) / 2; }
+
   /** Keep loading and render culling aligned, including large footprint edges. */
   _nearby(spec, anchor = spec.surveyed?.anchor || spec.footprint?.centre, bounds = null) {
     if (!anchor) return !this.loadVisibleOnly;
@@ -644,7 +653,7 @@ export class SignatureLandmarks {
       return {
         id: entry.spec.id,
         distanceSq: anchor ? ((anchor[0] - center.lng) * cos) ** 2 + (anchor[1] - center.lat) ** 2 : 0,
-        inView: !anchor || this._nearby(entry.spec, anchor, view),
+        inView: !anchor || (this._nearby(entry.spec, anchor, view) && withinReach(anchor, center, this.reachM, this._radiusM(entry.spec))),
         // Procedural building types rebuild a whole instanced scene; a level swap in flight owns its entry.
         evictable: !!anchor && !entry.spec.sceneFactory && !entry.levelLoading && !highlighted,
       };
@@ -655,12 +664,19 @@ export class SignatureLandmarks {
     this._dropEntries(ids);
   }
 
-  /** The smallest outsideSlack (engine/viewSlack.ts) over the models a walk could request, all outside `view`. */
+  /**
+   * The smallest outsideSlack (engine/viewSlack.ts) over the models a walk could request, all outside `view` or beyond
+   * the reach. A model needs both shortfalls covered to load, so its slack is the larger; the reach's is in degrees of
+   * latitude (the smaller unit, so the skip stays conservative when the centre moves east-west).
+   */
   _loadableSlack(view) {
     let slack = Infinity;
+    const reach = Number.isFinite(this.reachM) ? this.reachM : null, centre = reach != null ? this.camera.center() : null;
     for (const spec of this.models) {
       if (this.shown.has(spec.id) || this._pending.has(spec.id) || this._failed.has(spec.id)) continue;
-      const s = outsideSlack(view, spec.surveyed?.anchor || spec.footprint?.centre, Math.hypot(spec.footprint?.lengthMetres || 0, spec.footprint?.widthMetres || 0) / 2);
+      const anchor = spec.surveyed?.anchor || spec.footprint?.centre, radius = this._radiusM(spec);
+      let s = outsideSlack(view, anchor, radius);
+      if (centre && anchor) s = Math.max(s, (anchorDistanceM(anchor, centre) - radius - reach) / 111_320);
       if (s < slack) slack = s;
     }
     return slack;
@@ -679,7 +695,9 @@ export class SignatureLandmarks {
     const check = window.__canalRecallLandmarkGateCheck;
     if (!check) return;
     check.skips = (check.skips || 0) + 1;
-    const found = this.models.filter(spec => !this.shown.has(spec.id) && !this._pending.has(spec.id) && !this._failed.has(spec.id) && this._nearby(spec, undefined, view));
+    const centre = Number.isFinite(this.reachM) ? this.camera.center() : null;
+    const found = this.models.filter(spec => !this.shown.has(spec.id) && !this._pending.has(spec.id) && !this._failed.has(spec.id) && this._nearby(spec, undefined, view)
+      && (!centre || withinReach(spec.surveyed?.anchor || spec.footprint?.centre, centre, this.reachM, this._radiusM(spec))));
     if (found.length) (check.misses ||= []).push({ t: performance.now(), ids: found.map(spec => spec.id) });
   }
 
@@ -702,8 +720,10 @@ export class SignatureLandmarks {
       this._gateCheck(view);
       return;
     }
+    const reachFrom = this.loadVisibleOnly && Number.isFinite(this.reachM) ? this.camera.center() : null;
     const candidates = this.models.filter(spec => !this.shown.has(spec.id) && !this._pending.has(spec.id) &&
-      !this._failed.has(spec.id) && (!this.loadVisibleOnly || this._nearby(spec, undefined, view)));
+      !this._failed.has(spec.id) && (!this.loadVisibleOnly || (this._nearby(spec, undefined, view)
+        && (!reachFrom || withinReach(spec.surveyed?.anchor || spec.footprint?.centre, reachFrom, this.reachM, this._radiusM(spec))))));
     this._requestIdle = view && !candidates.length ? { rev: this._requestRev, models: this.models, generation: this._generation, view: { ...view }, slack: this._loadableSlack(view) } : null;
     const center = this.camera.center();
     const distance = spec => {

@@ -139,6 +139,8 @@ export const en = {
   'options.trees': 'Trees',
   'options.distanceHaze': 'Distance haze',
   'options.distanceHazeHint': 'Far streets fade softly toward the sky',
+  'options.perfHud': 'Show performance',
+  'options.perfHudHint': 'Memory and frame-time numbers in the corner',
 
   // --- Ride settings panel --------------------------------------------------
   'settings.title': 'Ride settings',
