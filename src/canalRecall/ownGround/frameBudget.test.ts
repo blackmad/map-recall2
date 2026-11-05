@@ -37,7 +37,7 @@ test('an explicit slice start counts only that slice', async () => {
 });
 
 test('flag parsing', () => {
-  assert.equal(groundFrameBudgetMs(''), null, 'opt-in until a 3-run A/B shows a gain (integrator 2026-11-05)');
+  assert.equal(groundFrameBudgetMs(''), GROUND_FRAME_BUDGET_MS, 'on by default since the ride-start A/B (lane E5, #218)');
   assert.equal(groundFrameBudgetMs('?groundFrameBudget=1'), GROUND_FRAME_BUDGET_MS);
   assert.equal(groundFrameBudgetMs('?groundFrameBudget=on'), GROUND_FRAME_BUDGET_MS);
   assert.equal(groundFrameBudgetMs('?engine=own&groundFrameBudget=0'), null);

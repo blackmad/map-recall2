@@ -49,6 +49,7 @@ import { CityExtras } from './cityExtras';
 import { gameTileEnricher } from '../gameTileEnricher';
 import { LandmarkHighlight } from './landmarkHighlight';
 import { LabelOcclusion } from './labelOcclusion';
+import { SpoilerSources } from './spoilerSources';
 
 declare const CANVAS_W: number;
 declare const CANVAS_H: number;
@@ -320,7 +321,8 @@ export class OwnWorldView implements WorldViewOracles {
     this._sharedFrame.register('engine-hoods', this._lines.hoods, { order: -60 });
     this._sharedFrame.register('engine-transit', this._lines.transit, { order: -55 });
     this._sharedFrame.register('engine-cycle', this._lines.cycle, { order: -50 });
-    this._labels = new LabelLayer(container, () => this.labelPolicy());
+    // `?labelLazyPolicy=0`: the eager label rebuild (every named street re-tested in the frame the policy changes).
+    this._labels = new LabelLayer(container, () => this.labelPolicy(), { lazyPolicy: flag('labelLazyPolicy', '__canalRecallLabelLazyPolicy', true) });
     // Paper over the map (menu, setup, loading) hides the labels without waiting for a repaint: a state change need
     // not move the map, so the check also runs on its own slow clock, as the MapLibre overlay's (labels/labelOverlay.ts).
     const syncCovered = () => { if (this._labels.setCovered(isCoveredState(W().canalRecallGame?.state))) this.host.triggerRepaint(); };
@@ -971,7 +973,13 @@ export class OwnWorldView implements WorldViewOracles {
     if (this._threeBuildings) { this._threeBuildings.setStreets?.(ways); this.streetFronts = null; }
     else this.streetFronts = ways;
   }
-  setSpoilerNames(names: string[]): void { this.spoilerNames = names || []; }
+  /** Per source, as vector-map.js (spoilerSources.ts: the track's names used to replace the extract's at every route start). */
+  setSpoilerNames(names: string[], source = 'extract'): void {
+    this.spoilerNames = this.spoilerSourcesOn ? this.spoilerSources.set(names, source) : (names || []);
+  }
+  private readonly spoilerSources = new SpoilerSources();
+  /** `?spoilerSources=0`: the last list wins (the old behaviour). */
+  private readonly spoilerSourcesOn = flag('spoilerSources', '__canalRecallSpoilerSources', true);
   _spoils(name: string): boolean { return !!name && this.spoilerNames.includes(name); }
   setMeasuredColoursOnly(on: boolean): void { this.measuredColoursOnly = !!on; this.extras.syncEnabled(); }
   /** The look the saved preference asks for, unless a URL look is in force (vector-map.js, same rule). */

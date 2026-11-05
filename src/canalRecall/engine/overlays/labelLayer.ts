@@ -42,8 +42,28 @@ export class LabelLayer {
   readonly canvas: HTMLCanvasElement;
   private readonly ctx: CanvasRenderingContext2D;
   private readonly advances = new Map<string, number>();
-  /** Candidates from the overview (streets, water, neighbourhoods), bucketed by 500 m cell. */
-  private readonly buckets = new Map<string, LabelCandidate[]>();
+  /** Candidates from the overview (streets, water, neighbourhoods) and the POIs, bucketed by 500 m cell. */
+  private readonly buckets = new Map<string, BucketEntry[]>();
+  /**
+   * Lazy policy (lane E5, #218; `?labelLazyPolicy=0` off): the buckets hold every named candidate with its spoiler test,
+   * built once per overview/POI change; a policy change (an answer, a quiz, a learned street) only bumps `policyRev`,
+   * and each candidate is tested when a draw first meets it in view, memoised per revision. The eager rebuild tested
+   * all ~6,000 named streets and every POI in the frame the policy changed: 18 ms desktop, 64 ms on the iPhone
+   * profile at 4x, on top of the policy itself, once per ride start and per answer.
+   */
+  readonly lazyPolicy: boolean;
+  private policyRev = 0;
+  private policyCtx: LabelContext | null = null;
+  /**
+   * Lazy policy: the POIs' own buckets (rebuilt alone when the POIs load mid-ride), and the overview's structure built
+   * in idle slices after the overview arrives (all ~86,000 named street pieces: 246 ms in one frame on the iPhone
+   * profile when it ran at the first draw), drained at once only if a draw needs it before it is done.
+   */
+  private readonly poiBuckets = new Map<string, BucketEntry[]>();
+  private structureSteps: Generator<void, void, void> | null = null;
+  private structureScheduled = false;
+  /** Idle slices: `schedule(step)` runs `step` later (tests inject a manual one). */
+  private readonly schedule: (step: () => void) => void;
   private data: OverviewData | null = null;
   private pois: PointLabel[] = [];
   private extra = new Map<string, PointLabel[]>();
@@ -99,7 +119,9 @@ export class LabelLayer {
   /** Menu, setup and loading paint paper over the map: nothing is drawn and the root is hidden (setCovered). */
   covered = false;
 
-  constructor(container: HTMLElement, private readonly policy: () => LabelContext) {
+  constructor(container: HTMLElement, private readonly policy: () => LabelContext, options: { lazyPolicy?: boolean; schedule?: (step: () => void) => void } = {}) {
+    this.lazyPolicy = options.lazyPolicy ?? true;
+    this.schedule = options.schedule ?? (step => { const g = globalThis as { requestIdleCallback?: (cb: () => void, o?: { timeout: number }) => void }; if (g.requestIdleCallback) g.requestIdleCallback(step, { timeout: 200 }); else setTimeout(step, 0); });
     const doc = container.ownerDocument;
     this.root = doc.createElement('div');
     this.root.className = LABEL_ROOT_CLASS;
@@ -121,8 +143,29 @@ export class LabelLayer {
     return true;
   }
 
-  setOverview(data: OverviewData): void { this.data = data; this.ctxKey = ''; this.rev++; }
-  setPois(pois: PointLabel[]): void { this.pois = pois; this.poiById = new Map(pois.map(q => [q.id, q])); this.ctxKey = ''; this.rev++; }
+  setOverview(data: OverviewData): void {
+    this.data = data; this.ctxKey = ''; this.rev++;
+    if (this.lazyPolicy) { this.buckets.clear(); this.structureSteps = this.entries(null, 'overview', this.buckets); this.scheduleStructure(); }
+  }
+  setPois(pois: PointLabel[]): void {
+    this.pois = pois; this.poiById = new Map(pois.map(q => [q.id, q])); this.ctxKey = ''; this.rev++;
+    if (this.lazyPolicy) { this.poiBuckets.clear(); drain(this.entries(null, 'pois', this.poiBuckets)); }
+  }
+  /** One idle slice of the overview's structure (~4 ms), then the next. */
+  private scheduleStructure(): void {
+    if (this.structureScheduled || !this.structureSteps) return;
+    this.structureScheduled = true;
+    this.schedule(() => {
+      this.structureScheduled = false;
+      const steps = this.structureSteps;
+      if (!steps) return;
+      const t0 = performance.now();
+      while (performance.now() - t0 < 4) if (steps.next().done) { this.structureSteps = null; this.rev++; return; }
+      this.scheduleStructure();
+    });
+  }
+  /** Overview structure finished (lazy policy); tests and the perf probe read it. */
+  get structureReady(): boolean { return !this.structureSteps; }
   private poiById = new Map<string, PointLabel>();
 
   /**
@@ -157,8 +200,16 @@ export class LabelLayer {
     return l;
   }
 
+  /**
+   * Bucket the candidates. With `ctx` (the eager path, `?labelLazyPolicy=0`) only those the policy admits now; without
+   * it every named candidate, each with its policy test for the draw to run lazily.
+   */
   private rebuild(ctx: LabelContext): void {
     this.buckets.clear();
+    drain(this.entries(ctx, 'overview', this.buckets));
+    drain(this.entries(ctx, 'pois', this.buckets));
+  }
+  private *entries(ctx: LabelContext | null, part: 'overview' | 'pois', into: Map<string, BucketEntry[]>): Generator<void, void, void> {
     const keysOf = (c: LabelCandidate): Iterable<string> => {
       const key = ([x, y]: readonly number[]) => `${Math.floor(x / BUCKET)},${Math.floor(y / BUCKET)}`;
       if (!c.path) return [key(c.at!)];
@@ -166,25 +217,33 @@ export class LabelLayer {
       if (!keys) { keys = [...new Set(c.path.map(key))]; this.pathKeys.set(c.path, keys); }
       return keys;
     };
-    const add = (c: LabelCandidate) => {
-      for (const k of keysOf(c)) { const l = this.buckets.get(k); if (l) l.push(c); else this.buckets.set(k, [c]); }
+    // Eager: the test runs now and only admitted candidates are bucketed. Lazy: every candidate is bucketed with its test.
+    const add = (c: LabelCandidate, test: PolicyTest) => {
+      if (ctx && !test(ctx)) return;
+      const entry: BucketEntry = { c, test: ctx ? null : test, rev: -1, vis: true };
+      for (const k of keysOf(c)) { const l = into.get(k); if (l) l.push(entry); else into.set(k, [entry]); }
     };
     const d = this.data;
-    if (d) {
-      d.streets.forEach((s, i) => {
-        if (!s.name) return;
+    if (part === 'overview' && d) {
+      for (let i = 0; i < d.streets.length; i++) {
+        const s = d.streets[i];
+        if ((i & 255) === 255) yield;
+        if (!s.name) continue;
         const mid = s.points[s.points.length >> 1];
-        if (!streetLabelVisible(ctx, s.name, mid[0], mid[1])) return;
-        add({ id: `s${i}`, text: s.name, kind: 'street', priority: (STREET_STYLE[s.cls].order + 1) * 1000 + Math.min(999, this.lengthOf(s.points) / 10), path: s.points, minZoom: CLASS_LABEL_MINZOOM[s.cls] });
-      });
-      d.waterLines.forEach((w, i) => {
+        add({ id: `s${i}`, text: s.name, kind: 'street', priority: (STREET_STYLE[s.cls].order + 1) * 1000 + Math.min(999, this.lengthOf(s.points) / 10), path: s.points, minZoom: CLASS_LABEL_MINZOOM[s.cls] },
+          q => streetLabelVisible(q, s.name, mid[0], mid[1]));
+      }
+      for (let i = 0; i < d.waterLines.length; i++) {
+        const w = d.waterLines[i];
+        if ((i & 255) === 255) yield;
         const mid = w.points[w.points.length >> 1];
-        if (!streetLabelVisible(ctx, w.name, mid[0], mid[1])) return;
-        add({ id: `w${i}`, text: w.name, kind: 'water', priority: 8000 + Math.min(999, this.lengthOf(w.points) / 10), path: w.points, minZoom: this.lengthOf(w.points) > 1500 ? 12.5 : 14.5 });
-      });
-      if (neighbourhoodLabelVisible(ctx)) d.hoods.forEach((h, i) => add({ id: `h${i}`, text: h.name.toUpperCase(), kind: 'hood', priority: 9000, at: h.at, minZoom: 13, maxZoom: 18.5 }));
+        add({ id: `w${i}`, text: w.name, kind: 'water', priority: 8000 + Math.min(999, this.lengthOf(w.points) / 10), path: w.points, minZoom: this.lengthOf(w.points) > 1500 ? 12.5 : 14.5 },
+          q => streetLabelVisible(q, w.name, mid[0], mid[1]));
+      }
+      d.hoods.forEach((h, i) => add({ id: `h${i}`, text: h.name.toUpperCase(), kind: 'hood', priority: 9000, at: h.at, minZoom: 13, maxZoom: 18.5 }, neighbourhoodLabelVisible));
     }
-    for (const p of this.pois) if (poiLabelVisible(ctx, p.text) && (p.aliases ?? []).every(a => poiLabelVisible(ctx, a))) add({ id: p.id, text: p.text, kind: p.kind, priority: p.priority, at: toLocal(p.lngLat[0], p.lngLat[1]), minZoom: p.minZoom ?? 16.5 });
+    if (part === 'pois') for (const p of this.pois) add({ id: p.id, text: p.text, kind: p.kind, priority: p.priority, at: toLocal(p.lngLat[0], p.lngLat[1]), minZoom: p.minZoom ?? 16.5 },
+      q => poiLabelVisible(q, p.text) && (p.aliases ?? []).every(a => poiLabelVisible(q, a)));
   }
 
   private advance(ch: string, kind: LabelKind): number {
@@ -213,7 +272,14 @@ export class LabelLayer {
     lap('policy');
     if (policy) {
       const key = `${policy.hiddenName}|${policy.quizQuiet}|${(policy as { revision?: unknown }).revision ?? ''}|${this.pois.length}|${!!this.data}`;
-      if (key !== this.ctxKey) { this.ctxKey = key; this.rebuild(policy); this.rev++; }
+      if (key !== this.ctxKey) {
+        this.ctxKey = key;
+        if (!this.lazyPolicy) this.rebuild(policy);
+        else {
+          this.policyCtx = policy; this.policyRev++;
+        }
+        this.rev++;
+      }
     }
     lap('rebuild');
     const rev = shows ? this.rev : -2;
@@ -231,9 +297,16 @@ export class LabelLayer {
     const full = !pose || !this.fullPose || rev !== this.fullRev || movedEnough(pose, this.fullPose) || now - this.fullAt > 400;
     this.zoom = zoom;
     const seen = new Set<LabelCandidate>();
+    // Lazy policy: a draw before the idle slices finished the overview's structure finishes it now.
+    if (this.structureSteps) { drain(this.structureSteps); this.structureSteps = null; }
     for (let x = Math.floor(bounds[0] / BUCKET); x <= Math.floor(bounds[2] / BUCKET); x++)
       for (let y = Math.floor(bounds[1] / BUCKET); y <= Math.floor(bounds[3] / BUCKET); y++)
-        for (const c of this.buckets.get(`${x},${y}`) ?? []) if ((c.minZoom ?? 0) <= zoom && zoom < (c.maxZoom ?? 99)) seen.add(c);
+        for (const map of [this.buckets, this.poiBuckets]) for (const e of map.get(`${x},${y}`) ?? []) {
+          const c = e.c;
+          if (!((c.minZoom ?? 0) <= zoom && zoom < (c.maxZoom ?? 99))) continue;
+          if (e.test) { if (e.rev !== this.policyRev) { e.rev = this.policyRev; e.vis = e.test(this.policyCtx!); } if (!e.vis) continue; }
+          seen.add(c);
+        }
     // Game point labels always compete first (priority above every map label).
     for (const points of this.extra.values()) for (const p of points) seen.add({ id: p.id, text: p.text, kind: p.kind, priority: 1e6 + p.priority, at: toLocal(p.lngLat[0], p.lngLat[1]), minZoom: p.minZoom ?? 0 });
     const options = {
@@ -323,6 +396,11 @@ export class LabelLayer {
     lap('paint');
   }
 }
+
+type PolicyTest = (ctx: LabelContext) => boolean;
+const drain = (steps: Generator<void, void, void>): void => { while (!steps.next().done) { /* run to the end */ } };
+/** A bucketed candidate; `test` (lazy policy) admits it under the policy in force, memoised as `vis` for `rev`. */
+interface BucketEntry { readonly c: LabelCandidate; readonly test: PolicyTest | null; rev: number; vis: boolean }
 
 /** The camera in own-map local metres: centre x, y, zoom, bearing and pitch (degrees). */
 export type LabelPose = readonly [number, number, number, number, number];

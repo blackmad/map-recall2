@@ -597,6 +597,18 @@ test('overview footprints: MapLibre\'s zoom range and fade, one tile built per f
   assert.equal(fp.stats().triangles, 4);
 });
 
+test('overview footprints: the per-feature tile memo follows a replaced geometry (lane E5, ?featureGroupCache)', async () => {
+  const { OverviewFootprints } = await import('./overviewFootprints');
+  const square = (lng: number, lat: number, id: string) => ({ properties: { id }, geometry: { type: 'Polygon', coordinates: [[[lng, lat], [lng + 1e-4, lat], [lng + 1e-4, lat + 1e-4], [lng, lat + 1e-4], [lng, lat]]] } });
+  const a = square(4.8840, 52.3746, 'a'), b = square(4.8842, 52.3747, 'b');
+  const fp = new OverviewFootprints(-3, {}, 5);
+  fp.setFeatures([a, b]);
+  assert.equal(fp.stats().tiles, 1);
+  a.geometry = square(4.95, 52.36, 'a').geometry; // the same object, moved to another tile
+  fp.setFeatures([a, b]);
+  assert.equal(fp.stats().tiles, 2, 'the moved footprint is filed under its new tile');
+});
+
 test('worldCameraOf (MapLibre): whenIdle asks for a frame, so an already idle map still resolves', async () => {
   const { worldCameraOf } = await import('./worldCameraOf');
   const handlers: Record<string, Array<() => void>> = {};
