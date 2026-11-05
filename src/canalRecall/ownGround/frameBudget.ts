@@ -12,6 +12,8 @@
  */
 
 export const GROUND_FRAME_BUDGET_MS = 8;
+/** Frames a resumed slice waits at most for a budget other slices spent (the gate never starves a slice). */
+export const MAX_REGATES = 4;
 
 export interface FrameBudgetDeps {
   now(): number;
@@ -30,9 +32,21 @@ export class FrameBudget {
   private spentFrame = -1;
   private resumedAt: number;
 
-  constructor(private readonly deps: FrameBudgetDeps, readonly budgetMs = GROUND_FRAME_BUDGET_MS) {
+  /** Resumes that found this frame's budget already spent by another slice and waited again (diagnostics). */
+  regated = 0;
+
+  /**
+   * `gate` (lane E6, #219): a slice resuming from a deferral re-checks the budget before it runs. Every deferred slice
+   * resumes in its own task right after the same paint, so without the gate K cells in flight each ran one slice in
+   * that gap: on the desktop cold start, frames of 67-100 ms made of four to six 6-20 ms `setTimeout` continuations of
+   * own-ground slices. With it, the first resumed slice spends the frame's budget and the rest wait for the next frame
+   * (at most MAX_REGATES times, so no slice starves).
+   */
+  constructor(private readonly deps: FrameBudgetDeps, readonly budgetMs = GROUND_FRAME_BUDGET_MS, readonly gate = false) {
     this.resumedAt = deps.now();
   }
+
+  private spentThisFrame(): boolean { return this.spentFrame === this.frame && this.spent >= this.budgetMs; }
 
   /** A frame began (the page's rAF tick). */
   onFrame(): void { this.frame++; }
@@ -48,6 +62,7 @@ export class FrameBudget {
     if (this.spent >= this.budgetMs) {
       this.deferrals++;
       await this.deps.nextFrame();
+      for (let n = 0; this.gate && n < MAX_REGATES && this.spentThisFrame(); n++) { this.regated++; await this.deps.nextFrame(); }
     } else {
       await this.deps.yieldTask();
     }
@@ -66,6 +81,11 @@ export function groundFrameBudgetMs(search: string): number | null {
   if (m[1] === '1' || m[1] === 'on') return GROUND_FRAME_BUDGET_MS;
   const v = Number(m[1]);
   return m[1] === '0' || m[1] === 'off' || !Number.isFinite(v) || v <= 0 ? null : v;
+}
+
+/** `?groundBudgetGate=0`: deferred slices resume without re-checking the frame's budget (lane E5's behaviour). */
+export function groundBudgetGate(search: string): boolean {
+  return !/[?&]groundBudgetGate=(0|off)(&|#|$)/.test(search);
 }
 
 const KEY = '__canalRecallGroundFrameBudget';
@@ -90,7 +110,7 @@ export function pageFrameBudget(): FrameBudget | null {
     now: () => { touch(); return performance.now(); },
     nextFrame: () => new Promise<void>(resolve => raf(() => setTimeout(resolve, 0))),
     yieldTask: () => (g.scheduler?.yield ? g.scheduler.yield() : new Promise<void>(resolve => setTimeout(resolve, 0))),
-  }, ms);
+  }, ms, groundBudgetGate(g.location?.search ?? ''));
   g[KEY] = budget;
   return budget;
 }

@@ -49,3 +49,34 @@ test('flag parsing', () => {
 test('no page budget without a document (the worker)', () => {
   assert.equal(pageFrameBudget(), null);
 });
+
+test('gate (lane E6): slices resuming after the same paint run one per frame, never starving', async () => {
+  let t = 0, b: FrameBudget;
+  const waiters: Array<() => void> = [];
+  b = new FrameBudget({
+    now: () => t,
+    nextFrame: () => new Promise<void>(r => waiters.push(r)),
+    yieldTask: async () => {},
+  }, 8, true);
+  const ran: number[][] = [];
+  let frame = 0;
+  // Three chains, each: 10 ms of work, yield, 10 ms of work, done.
+  const chain = async (id: number) => { t += 10; (ran[frame] ??= []).push(id); await b.yield(t - 10); t += 10; (ran[frame] ??= []).push(id); await b.yield(t - 10); };
+  const all = Promise.all([chain(0), chain(1), chain(2)]);
+  // Paint: the frame ticks, every waiter resumes in the same gap.
+  for (let i = 0; i < 12 && waiters.length; i++) {
+    frame++; b.onFrame();
+    const now = waiters.splice(0);
+    for (const r of now) { r(); await new Promise(res => setImmediate(res)); }
+  }
+  await all;
+  for (let f = 1; f < ran.length; f++) assert.ok((ran[f]?.length ?? 0) <= 1, `frame ${f} ran ${ran[f]?.length} slices`);
+  assert.equal(ran.flat().length, 6, 'every slice ran');
+  assert.ok(b.regated > 0);
+});
+
+test('gate flag', async () => {
+  const { groundBudgetGate } = await import('./frameBudget');
+  assert.equal(groundBudgetGate(''), true);
+  assert.equal(groundBudgetGate('?groundBudgetGate=0'), false);
+});
