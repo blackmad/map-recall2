@@ -500,6 +500,7 @@ ${HIGHLIGHT_GRAIN_GLSL}
 ${HIGHLIGHT_GLSL}`;
 
 const FRAGMENT_FADE = /* glsl */ `
+if (HL_GHOST(vHighlight)) discard;
 if (cityFade < 1.0 && fract(dot(floor(gl_FragCoord.xy), vec2(0.754877666, 0.569840296))) >= cityFade) discard;`;
 
 /** Cell × tint × accent, the same arithmetic as the facade shader of 2026-10-02. */

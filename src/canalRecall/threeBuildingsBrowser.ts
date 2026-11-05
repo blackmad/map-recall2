@@ -127,7 +127,7 @@ ${HIGHLIGHT_GLSL}
 out float vDist;
 void main() {
   vUv = uv; vLayer = layer; vTint = tint.rgb; vAccent = accent.rgb; vShade = tint.a;
-  // hidden: 0 drawn, 1 hidden, 2 the highlighted answer (plain yellow, or its own look under ?highlight=a|b|c), 3 dimmed.
+  // hidden: 0 drawn, 1 hidden, 2 the highlighted answer (plain yellow, or its own look under ?highlight=a|b|c), 3 dimmed, 4 ghosted.
   vHighlight = hlState(hidden);
   vec4 viewPosition = modelViewMatrix * vec4(position, 1.0);
   vDist = length(viewPosition.xyz);
@@ -157,6 +157,7 @@ in float vDist;
 out vec4 fragColor;
 ${HIGHLIGHT_GLSL}
 void main() {
+  if (HL_GHOST(vHighlight)) discard;
   // Screen-door coverage keeps depth writes correct while the city emerges from the overview.
   if (cityFade < 1.0 && fract(dot(floor(gl_FragCoord.xy), vec2(0.754877666, 0.569840296))) >= cityFade) discard;
   if (HL_PAINT(vHighlight)) { fragColor = vec4(vec3(1.0, 0.824, 0.122) * vShade, 1.0); return; }
@@ -812,6 +813,25 @@ export class ThreeBuildings {
   }
 
   /**
+   * Draw `ids` see-through (HIDDEN.ghost: a COVERED_BUILDING_OPACITY screen door) while `reason` holds them: the
+   * building over the rider (engine/ownWorldView.ts rider cover). Hidden wins over ghosted, ghosted over highlighted.
+   */
+  setGhosted(reason: string, ids: Iterable<string | number>): void {
+    this.ghostedBy.set(reason, new Set([...ids].map(String)));
+    const next = new Set<string>();
+    for (const set of this.ghostedBy.values()) for (const id of set) next.add(id);
+    const changed = new Set<string>([...next, ...this.ghosted].filter(id => next.has(id) !== this.ghosted.has(id)));
+    this.ghosted = next;
+    if (!changed.size) return;
+    for (const entry of this.chunks.values()) this.applyHidden(entry, changed);
+    this.map.triggerRepaint();
+  }
+  private readonly ghostedBy = new Map<string, Set<string>>();
+  private ghosted = new Set<string>();
+  /** Ids drawn ghosted now (specs read it). */
+  ghostedIds(): string[] { return [...this.ghosted]; }
+
+  /**
    * Whether this layer draws the city under the rider yet: the coarse shell group of a z14 tile in `tiles`
    * (`x/y`) is installed (a rebuild in flight still draws the previous mesh). Until then the map keeps the
    * basemap's own extrusions, so a ride does not start in an empty city while the first shells build
@@ -1336,7 +1356,7 @@ export class ThreeBuildings {
     mesh.userData.coarse = key.startsWith(COARSE_PREFIX);
     this.refreshDetailOwnership();
     if (this.highlightRecipe.desaturate && this.highlightFocus) for (const id of this.dimmedIn(entry)) this.dimmed.add(id);
-    this.applyHidden(entry, new Set([...this.hidden, ...this.highlighted, ...this.installedDetailIds, ...this.dimmed]));
+    this.applyHidden(entry, new Set([...this.hidden, ...this.ghosted, ...this.highlighted, ...this.installedDetailIds, ...this.dimmed]));
     this.applyPasses(entry);
     this.lastBuildMs = performance.now() - t0;
     this.map.triggerRepaint();
@@ -1349,7 +1369,7 @@ export class ThreeBuildings {
     for (const id of ids) {
       const range = entry.ranges.get(id);
       if (!range) continue;
-      attribute.array.fill(this.hidden.has(id) || entry.mesh.userData.coarse && this.installedDetailIds.has(id) ? HIDDEN.hide : this.highlighted.has(id) ? HIDDEN.highlight : this.dimmed.has(id) ? HIDDEN.dim : HIDDEN.drawn, range.start, range.start + range.count);
+      attribute.array.fill(this.hidden.has(id) || entry.mesh.userData.coarse && this.installedDetailIds.has(id) ? HIDDEN.hide : this.ghosted.has(id) ? HIDDEN.ghost : this.highlighted.has(id) ? HIDDEN.highlight : this.dimmed.has(id) ? HIDDEN.dim : HIDDEN.drawn, range.start, range.start + range.count);
       touched = true;
     }
     if (touched) { attribute.needsUpdate = true; this.hiddenRevision++; }
