@@ -28,6 +28,8 @@ export interface TexturePolicyInput {
   gpuMaxAnisotropy: number;
   /** `?texturePolicy=0` turns the policy off: every texture as before. */
   enabled: boolean;
+  /** `?cellPx=384` (desktop high only, A/B of the memory cost): another cell side in 257..512. */
+  cellPx?: number | null;
 }
 
 export interface TextureParams {
@@ -65,7 +67,9 @@ export function legacyTextureParams(kind: TextureKind, input: Pick<TexturePolicy
 export function texturePolicy(kind: TextureKind, input: TexturePolicyInput): TextureParams {
   if (!input.enabled || input.coarse || input.tier !== 'high') return legacyTextureParams(kind, input);
   const gpu = Number.isFinite(input.gpuMaxAnisotropy) && input.gpuMaxAnisotropy >= 1 ? input.gpuMaxAnisotropy : 1;
-  return { ...base, cellPx: HIGH_CELL_PX, anisotropy: Math.min(gpu, HIGH_ANISOTROPY), tierScale: HIGH_CELL_PX / BASE_CELL_PX };
+  const asked = Number(input.cellPx);
+  const cellPx = Number.isInteger(asked) && asked > BASE_CELL_PX && asked <= HIGH_CELL_PX && asked % 32 === 0 ? asked : HIGH_CELL_PX;
+  return { ...base, cellPx, anisotropy: Math.min(gpu, HIGH_ANISOTROPY), tierScale: cellPx / BASE_CELL_PX };
 }
 
 /** `?texturePolicy=0` / `window.__canalRecallTexturePolicy = false`: off. On by default. */
@@ -75,6 +79,15 @@ export function texturePolicyFlag(): boolean {
     const asked = g.__canalRecallTexturePolicy ?? (typeof URLSearchParams === 'function' ? new URLSearchParams(g.location?.search ?? '').get('texturePolicy') : null);
     return !(asked === false || asked === '0' || asked === 'false' || asked === 'off');
   } catch { return true; }
+}
+
+/** `?cellPx=` (or `window.__canalRecallCellPx`): the desktop-high cell side for a memory A/B; null: 512. */
+export function pageCellPx(): number | null {
+  try {
+    const g = globalThis as { __canalRecallCellPx?: number | string; location?: { search?: string } };
+    const n = Number(g.__canalRecallCellPx ?? (typeof URLSearchParams === 'function' ? new URLSearchParams(g.location?.search ?? '').get('cellPx') : null) ?? NaN);
+    return Number.isFinite(n) && n > 0 ? n : null;
+  } catch { return null; }
 }
 
 /** The page's tier as the own engine published it (`__canalPerf.tier`), null when none (legacy layer, galleries). */
@@ -89,7 +102,7 @@ export function pageCoarsePointer(): boolean {
 
 /** The policy for this page: its tier, pointer and flag, and the renderer's anisotropy ceiling. */
 export function pageTextureParams(kind: TextureKind, gpuMaxAnisotropy: number): TextureParams {
-  return texturePolicy(kind, { tier: pageTextureTier(), coarse: pageCoarsePointer(), gpuMaxAnisotropy, enabled: texturePolicyFlag() });
+  return texturePolicy(kind, { tier: pageTextureTier(), coarse: pageCoarsePointer(), gpuMaxAnisotropy, enabled: texturePolicyFlag(), cellPx: pageCellPx() });
 }
 
 /** Bytes a mipmapped 2D array texture holds on the GPU (full chain), for the texture budget rows. */

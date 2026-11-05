@@ -64,3 +64,10 @@ test('texture bytes: the 512 px array is 4x the 256 px one (budget row desktopTe
   assert.equal(arrayTextureBytes(1, 1, 4), 4);
   assert.equal(arrayTextureBytes(2, 1, 1), 5);
 });
+
+test('?cellPx= picks another desktop-high side (multiples of 32 in 288..512), never below 256 or on touch', () => {
+  const high = (cellPx: number) => texturePolicy('facadeCells', { tier: 'high', coarse: false, gpuMaxAnisotropy: 16, enabled: true, cellPx });
+  assert.equal(high(384).cellPx, 384); assert.equal(high(384).tierScale, 1.5);
+  assert.equal(high(128).cellPx, HIGH_CELL_PX); assert.equal(high(1024).cellPx, HIGH_CELL_PX); assert.equal(high(300).cellPx, HIGH_CELL_PX);
+  assert.equal(texturePolicy('facadeCells', { tier: 'high', coarse: true, gpuMaxAnisotropy: 16, enabled: true, cellPx: 384 }).cellPx, 128);
+});

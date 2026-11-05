@@ -23,7 +23,7 @@ import {buildTransportedEnvelopeChunk,diagnosticEnvelopeTransport,EMPTY_ENVELOPE
 import { CELL_LAYER_COUNT, CELL_PX, STYLE_DIMS, cellLayer, CELL_KINDS, CELL_VARIANTS, paintCell, paintFatihMasonryCell } from './facadeCells.js';
 import { ROOF_CELL_M, paintRoofLayers } from './roofCells.js';
 import { FACADE_TIER_GLSL, ROOF_LAYERS_OFF, ROOF_TIER_GLSL, facadeTierUniform, roofTierUniform } from './roofTier.js';
-import { HIGH_CELL_PX, pageTextureParams, type TextureParams } from './look/texturePolicy.js';
+import { pageTextureParams, type TextureParams } from './look/texturePolicy.js';
 import { withMonumentGable } from './monumentGables.js';
 import { decorateRoof, exceptLandmarks as exceptLandmarksOf, fitRect, localOuterRing, planRoof, type RoofPlan } from './roofMesh.js';
 import { BAY_ENTRIES, BAY_LAYER_COUNT, FATIH_MASONRY_LAYER, bayLayer, bayLookFor, bayVariant } from './bayLook.js';
@@ -1677,7 +1677,7 @@ export class ThreeBuildings {
     const gpuMax = this.renderer?.capabilities?.getMaxAnisotropy?.() ?? 1;
     const params = pageTextureParams('facadeCells', gpuMax);
     // The legacy rule's touch test is this layer's own (detailZoom), so `?texturePolicy=0` stays exactly it.
-    const resolved = params.cellPx === HIGH_CELL_PX ? params : { ...params, cellPx: this.detailZoom === 17 ? CELL_PX / 2 : CELL_PX, anisotropy: Math.min(gpuMax, this.detailZoom === 17 ? 4 : 16), tierScale: 1 };
+    const resolved = params.cellPx > CELL_PX ? params : { ...params, cellPx: this.detailZoom === 17 ? CELL_PX / 2 : CELL_PX, anisotropy: Math.min(gpuMax, this.detailZoom === 17 ? 4 : 16), tierScale: 1 };
     // Cached once the renderer is known (its anisotropy ceiling is part of the answer).
     if (this.renderer) this.texturePolicyCache = resolved;
     return resolved;

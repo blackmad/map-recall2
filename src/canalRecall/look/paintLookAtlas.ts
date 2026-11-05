@@ -80,7 +80,7 @@ export function calmBayLayers(colour: Uint8Array, mask: Uint8Array, layers: numb
  */
 export async function paintLookArrays(look: 'procedural' | Look, size = CELL_PX, options: { slotLayers?: boolean | { colour: Uint8Array; mask: Uint8Array }; sliceMs?: number | (() => number) } = {}): Promise<LookAtlasArrays> {
   // 512 px: the desktop-high texture policy (look/texturePolicy.ts); the bay drawings are 520 x 310 px of their own.
-  if (size !== CELL_PX && size !== CELL_PX / 2 && size !== CELL_PX * 2) throw new Error('Unsupported building texture size');
+  if (size !== CELL_PX && size !== CELL_PX / 2 && !(size > CELL_PX && size <= CELL_PX * 2)) throw new Error('Unsupported building texture size');
   const slotLayers = options.slotLayers === true ? paintSlotLayers(document, await loadCityBrick(document), size) : options.slotLayers || undefined;
   const { layers, total } = lookAtlasLayers(look, !!slotLayers);
   // Facade chunks store their layer as a byte; slot meshes carry their own (small) slot ordinal.
