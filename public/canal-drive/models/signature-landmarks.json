@@ -83841,6 +83841,182 @@
         "bytes": 87120,
         "triangles": 4631
       }
+    },
+    "kinkerstraat-32": {
+      "id": "kinkerstraat-32",
+      "name": "Kinkerstraat 32-54 (Vomar block, 1999)",
+      "modelUrl": "./models/kinkerstraat-32.glb",
+      "suppressOsmIds": [
+        "NL.IMBAG.Pand.0363100012137280"
+      ],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.87415777,
+          52.36805388
+        ],
+        "headingDegrees": 0,
+        "lengthMetres": 67.8,
+        "widthMetres": 46.1
+      },
+      "surveyed": {
+        "anchor": [
+          4.87415777,
+          52.36805388
+        ],
+        "northOffsetDegrees": 0,
+        "source": "Vertex average of the BAG 0363100012137280 ring (RD, PDOK BAG WFS, CC0) in native east/south metres above the 3DBAG ground 0.796 m NAP (scripts/landmarks/kinkerstraat-32-footprints.json, written by sarphati-plaza-prepare.ts --id=kinkerstraat-32 --pand=0363100012137280). Volumes and heights from the 3DBAG LoD2.2 roof parts (CC BY 4.0): the beige west corner block with its set-back zinc top storey (21.4 m) and lift head (25.2 m), the red Kinkerstraat bar and side wings (mansard to 18.75 m), the beige east corner block and the 5.0 m courtyard deck. Storeys, window axes, the mezzanine loggias, shop bays, dormers and the glazed joint on the Da Costastraat measured on rectified Gemeente Amsterdam panorama crops (CC BY 4.0), per wall in scripts/landmarks/kinkerstraat-32-inventory.json. The courtyard faces, the stair core and the 8 m north-east face carry no photograph and are inferred."
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 0,
+      "heightMetres": 25.2,
+      "bagYear": 1999,
+      "materialOverrides": {
+        "brick": "#a87160",
+        "greyBrick": "#b3ab9a",
+        "concrete": "#bcb7ad",
+        "slate": "#8a9194",
+        "copper": "#5e6064",
+        "bronze": "#5b6264",
+        "frame": "#6b7476",
+        "glass": "#4f6873",
+        "dark": "#2e3236",
+        "red": "#c3262f",
+        "green": "#8e9e98"
+      },
+      "attribution": {
+        "title": "Kinkerstraat 32-54 / Da Costakade 157-165 / Da Costastraat 66-70 (housing over the Vomar supermarket, 1999)",
+        "author": "Map Recall",
+        "sourceUrl": "https://api.data.amsterdam.nl/v1/bag/panden/0363100012137280",
+        "licence": "CC BY 4.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "modifications": "Original texture-free flat-colour geometry on the BAG footprint (CC0) with 3DBAG LoD2.2 heights (CC BY 4.0): the red-brick Kinkerstraat bar with its glazed shop ground and mezzanine loggias in a ten-bay steel frame, twenty punched windows per storey in groups of four with plant holders under them, the grey cornice and zinc mansard with five dormers; the light beige-brick corner blocks with their own window grid, the set-back zinc top storey and lift head; the red side wings on the Da Costakade and the Da Costastraat with their dormers, loggias, entrance and the glazed joint; read for proportion and tone from Gemeente Amsterdam panoramas (CC BY 4.0). No pixels or meshes imported."
+      },
+      "buildingFootprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.87382886,
+              52.36783606
+            ],
+            [
+              4.87383645,
+              52.36782488
+            ],
+            [
+              4.87385487,
+              52.36782983
+            ],
+            [
+              4.87403804,
+              52.36787734
+            ],
+            [
+              4.87454083,
+              52.36800804
+            ],
+            [
+              4.87464207,
+              52.36803425
+            ],
+            [
+              4.87461887,
+              52.36806793
+            ],
+            [
+              4.87455778,
+              52.36815655
+            ],
+            [
+              4.87454567,
+              52.36817344
+            ],
+            [
+              4.87454404,
+              52.36817603
+            ],
+            [
+              4.87449785,
+              52.36824219
+            ],
+            [
+              4.87424759,
+              52.36817669
+            ],
+            [
+              4.87420505,
+              52.3681654
+            ],
+            [
+              4.87402376,
+              52.36811731
+            ],
+            [
+              4.87388943,
+              52.36808357
+            ],
+            [
+              4.8738435,
+              52.36814997
+            ],
+            [
+              4.87382458,
+              52.36814506
+            ],
+            [
+              4.87364635,
+              52.36809885
+            ],
+            [
+              4.87381196,
+              52.3678604
+            ],
+            [
+              4.87382886,
+              52.36783606
+            ]
+          ]
+        ]
+      },
+      "buildingCategory": "landmark",
+      "bounds": {
+        "min": [
+          -35.18801498413086,
+          0,
+          -20.91482925415039
+        ],
+        "max": [
+          33.3892707824707,
+          25.200000762939453,
+          25.76282501220703
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.87415777,
+          52.36805388
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 90,
+        "facadeBearingDegrees": 0,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 68.57728576660156,
+        "heightMetres": 25.200000762939453,
+        "depthMetres": 46.67765426635742,
+        "depthCoverage": 1.0125304613092716
+      },
+      "triangles": 17860,
+      "bytes": 245872,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
+      "lod1": {
+        "sourceHash": "cd54ba0e04ccc98e",
+        "buildVersion": 2,
+        "bytes": 104980,
+        "triangles": 6606
+      }
     }
   }
 }

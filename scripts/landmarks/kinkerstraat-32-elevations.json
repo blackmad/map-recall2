@@ -1,0 +1,146 @@
+{
+ "id": "kinkerstraat-32",
+ "countedBy": "lane #211 (opus) from the rectified panorama crops of the brief (w01-157 2021 + 2025 second view, w02-247 2019, w03-67 2021 second view); one facade entry per building part (the beige corner blocks and the red bar/wings are separate volumes on one front); ribbon convention (the red bar's steel posts plus frames measure 0.35-0.40 m, so each shop and loggia bay is its own opening); a glazed door counts, solid doors do not. Not a blind count; the integrator may re-count.",
+ "facades": [
+  {
+   "name": "Kinkerstraat, beige west corner block",
+   "bearing": 157,
+   "photo": "artifacts/landmark-briefs/kinkerstraat-32/w01-157.jpg",
+   "alongM": [
+    0,
+    15.5
+   ],
+   "heightM": [
+    0,
+    18.75
+   ],
+   "rows": [
+    6,
+    8,
+    8,
+    8,
+    8,
+    4
+   ],
+   "symmetric": false,
+   "note": "w01-157 (TMX7316010203-002059_pano_0000_000714, 2021-03-24, 38.6 px/m), crop x 0-14.6. Ground: the wide corner glazing and five tall windows; four storeys of eight axes; top row: two five-light ribbons and two singles. The set-back top storey above the cornice is cut off at the crop top and left out (heightM)."
+  },
+  {
+   "name": "Kinkerstraat, red bar",
+   "bearing": 157,
+   "photo": "artifacts/landmark-briefs/kinkerstraat-32/w01-157.alt.jpg",
+   "alongM": [
+    15.51,
+    52.31
+   ],
+   "rows": [
+    10,
+    10,
+    20,
+    20,
+    20,
+    5
+   ],
+   "symmetric": false,
+   "note": "w01-157 2025 second view (recording_2025-06-30_05-16-46_00501), crop x 14.6-51.5. Ten shop bays and ten mezzanine loggia bays: the steel posts with the glazing frames either side read 0.35-0.40 m dark between panes on the 50 px/m zoom (wider than the 0.3 m ribbon limit), so each bay is one opening; three storeys of twenty windows in five groups of four; five dormers."
+  },
+  {
+   "name": "Kinkerstraat, beige east corner block",
+   "bearing": 157,
+   "photo": "artifacts/landmark-briefs/kinkerstraat-32/w01-157.alt.jpg",
+   "alongM": [
+    52.31,
+    60.26
+   ],
+   "rows": [
+    1,
+    4,
+    4,
+    4,
+    4,
+    2
+   ],
+   "symmetric": false,
+   "note": "crop x 51.5-59.6: the supermarket's glazing, four axes on four storeys, two wide top windows."
+  },
+  {
+   "name": "Da Costakade, red wing",
+   "bearing": 247,
+   "photo": "artifacts/landmark-briefs/kinkerstraat-32/w02-247.jpg",
+   "alongM": [
+    0,
+    18.1
+   ],
+   "rows": [
+    5,
+    9,
+    9,
+    9,
+    9,
+    2
+   ],
+   "symmetric": false,
+   "note": "w02-247 (TMX7316010203-001147_pano_0000_001639, 2019-04-29, 50 px/m), crop x 0-18.1. Ground: three windows, the glazed entrance, the loggia-axis window (the grey door is solid); four storeys of nine axes, the last a recessed loggia; two dormers."
+  },
+  {
+   "name": "Da Costakade, beige corner block",
+   "bearing": 247,
+   "photo": "artifacts/landmark-briefs/kinkerstraat-32/w02-247.jpg",
+   "alongM": [
+    18.1,
+    33.45
+   ],
+   "heightM": [
+    0,
+    18.75
+   ],
+   "rows": [
+    6,
+    5,
+    5,
+    5,
+    5,
+    5
+   ],
+   "symmetric": false,
+   "note": "crop x 18.1-31.8. Ground: four windows, a glazed door, the wide corner window; five axes on four storeys and the top row. The set-back storey is cut off at the crop top."
+  },
+  {
+   "name": "Da Costastraat, beige corner block",
+   "bearing": 67,
+   "photo": "artifacts/landmark-briefs/kinkerstraat-32/w03-67.alt.jpg",
+   "alongM": [
+    0,
+    14.95
+   ],
+   "rows": [
+    5,
+    5,
+    5,
+    5,
+    5,
+    2
+   ],
+   "symmetric": false,
+   "note": "w03-67 second view (TMX7316010203-002059_pano_0000_001751, 2021); the 2022 view is hidden by a lorry below 10 m. Ground: the three red-framed supermarket doors (one opening) and four windows; five axes on four storeys; top: a single window and a four-light ribbon."
+  },
+  {
+   "name": "Da Costastraat, red wing",
+   "bearing": 67,
+   "photo": "artifacts/landmark-briefs/kinkerstraat-32/w03-67.alt.jpg",
+   "alongM": [
+    15.65,
+    25.45
+   ],
+   "rows": [
+    4,
+    4,
+    4,
+    2,
+    1
+   ],
+   "symmetric": false,
+   "note": "crop x 14.0-23.0 (2021) / 15.6-25.1 (2022): no glazing on the ground (a service door and a grey roller door); four axes on three storeys, two wide three-light windows on the top storey, one dormer."
+  }
+ ]
+}

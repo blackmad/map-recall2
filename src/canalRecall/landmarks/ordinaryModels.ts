@@ -56,6 +56,8 @@ export const SHADOWED_BY_LANDMARK: Readonly<Record<string, string>> = {
   'ordinary-0363100012091838': 'rietveld-academie-2006',
   // Oudemanhuispoort north and west wings (kloveniersburgwal-72 recipe drew the apotheek portal and the north side of Rusland on it; bespoke #208).
   'ordinary-0363100012171179': 'binnengasthuis-kloveniersburgwal',
+  // Kinkerstraat 32-54 (large recipe failed the likeness judge on three walls: square windows for tall, a curtain face drawn as brick; bespoke #211).
+  'ordinary-0363100012137280': 'kinkerstraat-32',
 };
 /** Every catalogue model (both categories) that no landmark shadows: what the game draws. */
 export const ORDINARY_BUILDINGS: readonly SignatureModelSpec[] = models.filter(m => !SHADOWED_BY_LANDMARK[m.id]).map(ordinarySpecFor);
