@@ -79,7 +79,8 @@ export function calmBayLayers(colour: Uint8Array, mask: Uint8Array, layers: numb
  * settle hold lengthens the slices while it waits). Byte for byte what buildLookTextures always uploaded.
  */
 export async function paintLookArrays(look: 'procedural' | Look, size = CELL_PX, options: { slotLayers?: boolean | { colour: Uint8Array; mask: Uint8Array }; sliceMs?: number | (() => number) } = {}): Promise<LookAtlasArrays> {
-  if (size !== CELL_PX && size !== CELL_PX / 2) throw new Error('Unsupported building texture size');
+  // 512 px: the desktop-high texture policy (look/texturePolicy.ts); the bay drawings are 520 x 310 px of their own.
+  if (size !== CELL_PX && size !== CELL_PX / 2 && size !== CELL_PX * 2) throw new Error('Unsupported building texture size');
   const slotLayers = options.slotLayers === true ? paintSlotLayers(document, await loadCityBrick(document), size) : options.slotLayers || undefined;
   const { layers, total } = lookAtlasLayers(look, !!slotLayers);
   // Facade chunks store their layer as a byte; slot meshes carry their own (small) slot ordinal.
@@ -96,6 +97,7 @@ export async function paintLookArrays(look: 'procedural' | Look, size = CELL_PX,
   // Native procedural painters store wall tint in alpha. Downsample one cell at
   // a time so the mobile path never allocates a second full-size city atlas.
   const copyCell = (cell: Uint8ClampedArray, layer: number) => {
+    if (size > CELL_PX) { upsampleCell(cell, layer); return; }
     const factor = CELL_PX / size;
     for (let y = 0; y < size; y++) for (let x = 0; x < size; x++) {
       let red = 0, green = 0, blue = 0, tint = 0;
@@ -106,6 +108,20 @@ export async function paintLookArrays(look: 'procedural' | Look, size = CELL_PX,
       const at = layer * px + y * size + x, count = factor * factor;
       colour[at * 4] = Math.round(red / count); colour[at * 4 + 1] = Math.round(green / count); colour[at * 4 + 2] = Math.round(blue / count);
       colour[at * 4 + 3] = 255; mask[at * 2] = Math.round(tint / count);
+    }
+  };
+  // The 256 px painters (procedural cells, roofs, glass block, masonry) into a larger array: bilinear, wrapping (the
+  // cells tile), so a 512 px array holds the same pictures; only the bay drawings gain real detail.
+  const upsampleCell = (cell: Uint8ClampedArray, layer: number) => {
+    const k = CELL_PX / size;
+    for (let y = 0; y < size; y++) for (let x = 0; x < size; x++) {
+      const sx = (x + 0.5) * k - 0.5, sy = (y + 0.5) * k - 0.5, x0 = Math.floor(sx), y0 = Math.floor(sy), fx = sx - x0, fy = sy - y0;
+      const at = (xx: number, yy: number) => ((((yy % CELL_PX) + CELL_PX) % CELL_PX) * CELL_PX + (((xx % CELL_PX) + CELL_PX) % CELL_PX)) * 4;
+      const a = at(x0, y0), b = at(x0 + 1, y0), c = at(x0, y0 + 1), d = at(x0 + 1, y0 + 1);
+      const lerp = (o: number) => (cell[a + o] * (1 - fx) + cell[b + o] * fx) * (1 - fy) + (cell[c + o] * (1 - fx) + cell[d + o] * fx) * fy;
+      const out = layer * px + y * size + x;
+      colour[out * 4] = Math.round(lerp(0)); colour[out * 4 + 1] = Math.round(lerp(1)); colour[out * 4 + 2] = Math.round(lerp(2));
+      colour[out * 4 + 3] = 255; mask[out * 2] = Math.round(lerp(3));
     }
   };
   if (look === 'procedural') {

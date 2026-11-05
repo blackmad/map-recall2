@@ -34,6 +34,7 @@
 // supplies the camera; `GroundHost` is the thin adapter the page implements
 // (repaint, hiding the basemap's own ground). THREE is injected.
 
+import { HIGH_ANISOTROPY, pageTextureParams } from '../look/texturePolicy.js';
 import { GroundStore, httpFetchBytes, toLocal, WATER_Z, type ReliefTileLoader, type Rect } from './groundStore.js';
 import { readGroundTile } from './heightField.js';
 import { poolReliefLoader } from './reliefDecode.js';
@@ -759,7 +760,9 @@ export class OwnGround {
     paint(c.getContext('2d')!, size);
     const t = new THREE.CanvasTexture(c);
     t.wrapS = t.wrapT = THREE.RepeatWrapping; t.colorSpace = THREE.SRGBColorSpace;
-    t.anisotropy = 4; t.repeat.set(1 / metres, 1 / metres);
+    // Anisotropy from the one texture policy (look/texturePolicy.ts): 16 on desktop `high` (rails, kerbs and pavers at
+    // the chase camera's grazing angle), 4 everywhere else and under `?texturePolicy=0`; three clamps it to the GPU's.
+    t.anisotropy = pageTextureParams('ground', HIGH_ANISOTROPY).anisotropy; t.repeat.set(1 / metres, 1 / metres);
     return t;
   }
 

@@ -45,10 +45,22 @@ export const ROOF_TIER_FAR_FADE_M = 40;
  * At ratio 1 the tier is unchanged.
  */
 export const FACADE_TIER_FROM_TEXELS = 16;
+/**
+ * The mip level the cell's mean colour is read at. GL clamps a textureLod level to the texture's last mip, so 12 reads
+ * the 1x1 level of any cell up to 4096 px: level 8 of today's 256 px cells (the literal 8.0 this replaced, same
+ * pixels), level 7 of the 128 px touch cells (8.0 clamped there too) and level 9 of the 512 px desktop-high cells
+ * (look/texturePolicy.ts), where 8.0 would have read a 2x2 mip.
+ */
+export const CELL_MEAN_LOD = 12;
+const CELL_MEAN_LOD_GLSL = '12.0';
 export const FACADE_TIER_TO_TEXELS = 30;
 export const FACADE_TIER_OFF: [number, number] = [-1, -1];
-export const facadeTierUniform = (pixelRatio = 1): [number, number] => {
-  const k = Number.isFinite(pixelRatio) && pixelRatio > 1 ? pixelRatio : 1;
+/**
+ * `tierScale` (look/texturePolicy.ts, cellPx / 256): the rates are texels per pixel, so a 512 px cell doubles them and
+ * the windows still flatten at the same size on screen. 1 (the default) is the tier as before.
+ */
+export const facadeTierUniform = (pixelRatio = 1, tierScale = 1): [number, number] => {
+  const k = (Number.isFinite(pixelRatio) && pixelRatio > 1 ? pixelRatio : 1) * (Number.isFinite(tierScale) && tierScale > 0 ? tierScale : 1);
   return [FACADE_TIER_FROM_TEXELS * k, FACADE_TIER_TO_TEXELS * k];
 };
 
@@ -71,7 +83,7 @@ vec3 roofTierColour(vec3 fine, vec2 uv, float layer, float dist) {
   if (mid <= 0.0) return fine;
   float far = smoothstep(roofTier.y - ${glsl(ROOF_TIER_FAR_FADE_M)}, roofTier.y + ${glsl(ROOF_TIER_FAR_FADE_M)}, dist);
   vec3 coarse = texture(cells, vec3(uv * roofTier.z, layer)).rgb;
-  vec3 flatMean = textureLod(cells, vec3(uv, layer), 8.0).rgb;
+  vec3 flatMean = textureLod(cells, vec3(uv, layer), ${CELL_MEAN_LOD_GLSL}).rgb;
   return mix(mix(fine, coarse, mid), flatMean, far);
 }`;
 
@@ -95,7 +107,7 @@ void cellTierSample(vec3 p, float dist, out vec3 c, out vec2 m) {
   far = max(far, ${DEPTH_FADE_DETAIL_GLSL('dist')});
 #endif
   if (far <= 0.0) return;
-  vec4 fc = textureLod(cells, p, 8.0); vec2 fm = textureLod(masks, p, 8.0).rg;
+  vec4 fc = textureLod(cells, p, ${CELL_MEAN_LOD_GLSL}); vec2 fm = textureLod(masks, p, ${CELL_MEAN_LOD_GLSL}).rg;
   c = mix(c, fc.rgb, far); m = mix(m, vec2(fm.r, ${accentGlsl('fm', 'fc')}), far);
 }`;
 
