@@ -1,0 +1,24 @@
+{
+ "id": "albert-heijn-museumplein",
+ "note": "audit:glb thresholds for the raised lawn corner and its two garage stair kiosks (scripts/landmarks/albert-heijn-museumplein-builder.ts). Model-local metres, x east, z south of the anchor.",
+ "detachedStructures": [
+  {
+   "box": [
+    29.2,
+    -41.8,
+    34.4,
+    -36.3
+   ],
+   "evidence": "Garage stair kiosk BAG pand 0363100012225637 (1999, 3DBAG 4.8 m), a mirrored steel cube standing on the plaza 25 m from the lawn; Gemeente Amsterdam panorama b_20250115_1006_Track23_Sphere_00015."
+  },
+  {
+   "box": [
+    41.0,
+    -31.9,
+    49.0,
+    -24.0
+   ],
+   "evidence": "Garage stair box BAG pand 0363100012225636 (1999), black glass with a glazed door, on the plaza beside the cube; same panorama."
+  }
+ ]
+}

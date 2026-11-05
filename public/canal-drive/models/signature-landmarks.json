@@ -84765,6 +84765,92 @@
         "bytes": 127476,
         "triangles": 7959
       }
+    },
+    "albert-heijn-museumplein": {
+      "id": "albert-heijn-museumplein",
+      "name": "Albert Heijn Museumplein",
+      "modelUrl": "./models/albert-heijn-museumplein.glb",
+      "suppressOsmIds": [
+        "NL.IMBAG.Pand.0363100012082824",
+        "passage:NL.IMBAG.Pand.0363100012082824:0",
+        "passage:NL.IMBAG.Pand.0363100012082824:1",
+        "w277108687",
+        "NL.IMBAG.Pand.0363100012225637",
+        "w277108788",
+        "NL.IMBAG.Pand.0363100012225636"
+      ],
+      "footprint": {
+        "centre": [
+          4.880273,
+          52.357403
+        ],
+        "headingDegrees": 0,
+        "lengthMetres": 104.6,
+        "widthMetres": 83.8
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 0,
+      "attribution": {
+        "title": "Albert Heijn Museumplein and the raised lawn corner (1999)",
+        "author": "Map Recall",
+        "sourceUrl": "https://bag.basisregistraties.overheid.nl/bag/id/pand/0363100012082824",
+        "licence": "CC BY 4.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "modifications": "Original texture-free flat-colour geometry on the BAG footprints (CC0) with the 3DBAG LoD2.2 roof (CC BY 4.0): the Museumplein lawn's tilted north corner rising to 7.5 m over the Van Baerlestraat, its green copper edge and soffit, the supermarket's glass fronts with blue Albert Heijn lettering, the granite corner pier, dark cladding and the Q-Park garage entrance under the raised tip, the granite retaining wall where the edge falls, and the two garage stair kiosks on the plaza (a mirrored steel cube and a black glass box); read for proportion and tone from Gemeente Amsterdam panoramas (CC BY 4.0). No pixels or meshes imported."
+      },
+      "spatialSuppression": false,
+      "surveyed": {
+        "anchor": [
+          4.88032444,
+          52.35740599
+        ],
+        "northOffsetDegrees": 0,
+        "source": "Vertex average of the BAG 0363100012082824 ring (RD, PDOK BAG WFS, CC0) in native east/south metres above its 3DBAG ground 0.49 m NAP (scripts/landmarks/albert-heijn-museumplein-footprints.json, written by museumplein-north-prepare.ts). The lawn plane through the 3DBAG LoD2.2 roof points (CC BY 4.0): 7.5 m at the Van Baerlestraat tip, 0.3 m at the south and north-east corners. The kiosks on BAG 0363100012225637 (3DBAG 4.8 m) and 0363100012225636 (about 3 m on the panorama). Fronts measured on Gemeente Amsterdam panoramas (CC BY 4.0) listed in scripts/landmarks/albert-heijn-museumplein-inventory.json."
+      },
+      "heightMetres": 7.6,
+      "bagYear": 1999,
+      "materialOverrides": {
+        "green": "#6f8a48",
+        "copper": "#5d7a68",
+        "stone": "#8f8d87",
+        "dark": "#33393c",
+        "glass": "#4f6068",
+        "frame": "#2a3033",
+        "blue": "#2a73c4",
+        "bronze": "#6b6f73"
+      },
+      "buildingCategory": "landmark",
+      "bounds": {
+        "min": [
+          -55.94754409790039,
+          0,
+          -41.59825897216797
+        ],
+        "max": [
+          48.79999923706055,
+          7.550070762634277,
+          42.40182113647461
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.88032444,
+          52.35740599
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 90,
+        "facadeBearingDegrees": 0,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 104.74754333496094,
+        "heightMetres": 7.550070762634277,
+        "depthMetres": 84.00008010864258,
+        "depthCoverage": 1.0023875907952575
+      },
+      "triangles": 1543,
+      "bytes": 27856,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
     }
   }
 }
