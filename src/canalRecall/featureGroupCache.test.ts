@@ -43,3 +43,32 @@ test('the cached grouping equals the uncached loop across detail moves and tile 
   on.forEach((s, i) => assert.equal(s, off[i], `step ${i}`));
   assert.ok(on[1].includes('near:'), 'the detail centre made near groups');
 });
+
+// Lane E7 (#220, `?featureDiffStamp=0`): changedBoxes by the grouping memo's diff stamp, not two Sets of 36,000. The
+// same boxes in the same order across tile flushes, a repeated feature, a list handed back unchanged and a restyle.
+test('the stamped feature diff gives the Set diff boxes and keeps the context index exact', () => {
+  const runDiff = (stamped: boolean) => {
+    (globalThis as { __canalRecallFeatureDiffStamp?: boolean }).__canalRecallFeatureDiffStamp = stamped;
+    const map = { getZoom: () => 17, triggerRepaint() {}, getCanvas: () => ({}) } as never;
+    const tb = new ThreeBuildings(map, {} as never, 'photo', { detail: 'full' }) as any;
+    tb.pump = () => {};
+    const out: string[] = [];
+    const rec = () => out.push(JSON.stringify(tb.contextChanges) + ' | ' + [...tb.contextGroups].map(([k, l]: [string, Feature[]]) => `${k}:${l.map(f => f.properties.id).join(',')}`).join(';'));
+    const features = city();
+    tb.setFeatures(features); rec();
+    const flushed = features.slice(100).concat(city().slice(0, 50));
+    tb.setFeatures(flushed); rec();
+    tb.setFeatures(flushed); rec(); // the same list: no changes
+    const repeated = flushed.concat([flushed[3]]); // a feature listed twice
+    tb.setFeatures(repeated); rec();
+    const restyled = repeated.slice(); restyled[10] = { ...restyled[10], properties: { ...restyled[10].properties } } as Feature;
+    tb.setFeatures(restyled); rec();
+    tb.setFeatures(features.slice(0, 300)); rec(); // most tiles leave
+    delete (globalThis as { __canalRecallFeatureDiffStamp?: boolean }).__canalRecallFeatureDiffStamp;
+    return out;
+  };
+  const stamped = runDiff(true), sets = runDiff(false);
+  assert.equal(stamped.length, sets.length);
+  stamped.forEach((s, i) => assert.equal(s, sets[i], `step ${i}`));
+  assert.ok(stamped[1].startsWith('[[') && stamped[2].startsWith('[] |'), 'flushes report boxes; an unchanged list none');
+});

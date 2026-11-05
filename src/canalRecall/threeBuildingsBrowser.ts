@@ -255,8 +255,16 @@ function fadeClone(source: any, value: number): any | null {
 }
 const BOAT_PREFIX = 'boats:';
 /** What setFeatures groups a feature by, memoised per feature object (ThreeBuildings.groupOf). */
-interface FeatureGroupInfo { geometry: unknown; id: string; kit: boolean; tile: string | null; coarse: string | null; near: string; nearKey: string; extrasKey: string }
+interface FeatureGroupInfo { geometry: unknown; id: string; kit: boolean; tile: string | null; coarse: string | null; near: string; nearKey: string; extrasKey: string; /** The last stamped diff whose resident list held this feature (changedBoxesStamped). */ seen?: number }
 /** `?featureGroupCache=0` (or `window.__canalRecallFeatureGroupCache = false`): the uncached grouping loop. */
+/** `?featureDiffStamp=0` (or `window.__canalRecallFeatureDiffStamp = false`): changedBoxes through two Sets, as before lane E7. */
+export function featureDiffStampEnabled(): boolean {
+  try {
+    const g = globalThis as { __canalRecallFeatureDiffStamp?: boolean; location?: { search?: string } };
+    if (typeof g.__canalRecallFeatureDiffStamp === 'boolean') return g.__canalRecallFeatureDiffStamp;
+    return new URLSearchParams(g.location?.search ?? '').get('featureDiffStamp') !== '0';
+  } catch { return true; }
+}
 export function featureGroupCacheEnabled(): boolean {
   try {
     const g = globalThis as { __canalRecallFeatureGroupCache?: boolean; location?: { search?: string } };
@@ -662,15 +670,16 @@ export class ThreeBuildings {
 
   /** The resident building set from the tile streamer; rebuilds only chunks whose features changed. */
   setFeatures(features: readonly Feature[]): void {
+    this.groupCacheOn ??= featureGroupCacheEnabled();
     if (features !== this.lastFeatures) {
       // The index is built only if some group's context must be recomputed (contextFor).
       this.contextIndex = undefined;
       this.contextFeatures = features;
-      this.contextChanges = this.changedBoxes(this.lastFeatures, features);
+      this.contextChanges = this.groupCacheOn && (this.diffStampOn ??= featureDiffStampEnabled()) ? this.changedBoxesStamped(this.lastFeatures, features) : this.changedBoxes(this.lastFeatures, features);
     } else this.contextChanges = [];
     const groups = new Map<string, Feature[]>();
     const kitParts: Feature[] = [];
-    if (this.groupCacheOn ??= featureGroupCacheEnabled()) this.groupCached(features, groups, kitParts);
+    if (this.groupCacheOn) this.groupCached(features, groups, kitParts);
     else for (const feature of features) {
       const p = feature.properties;
       const id = String(p.id ?? '');
@@ -1153,7 +1162,31 @@ export class ThreeBuildings {
   private contextCache = new Map<string, { source: readonly Feature[]; box: [number, number, number, number]; context: Feature[]; boats: ReadonlySet<string> }>();
   private contextFeatures: readonly Feature[] = [];
   private contextChanges: [number, number, number, number][] = [];
+  /**
+   * changedBoxes without building a Set of each list (lane E7, #220; `?featureDiffStamp=0` off): every feature's
+   * grouping memo (groupOf, looked up for the grouping anyway) carries the number of the last diff whose list held it.
+   * A route change on the iPhone profile at 4x spent 12 ms of a 67 ms `setFeatures` in the two 36,000-entry Sets, and
+   * their tables were garbage at once. Same boxes, same order (a feature whose geometry was replaced in place counts as
+   * arrived, which only re-derives a context that is the same). Also learns whether a feature repeats in the list.
+   */
+  private diffStampOn: boolean | undefined;
+  private diffGen = 0;
+  private contextUnique = false;
+  private changedBoxesStamped(previous: readonly Feature[], next: readonly Feature[]): [number, number, number, number][] {
+    const gen = this.diffGen += 2, before = gen - 2, out: [number, number, number, number][] = [];
+    let repeats = false;
+    for (const f of next) {
+      const g = this.groupOf(f);
+      if (g.seen === gen) { repeats = true; continue; }
+      if (g.seen !== before) out.push(this.boundsFor(f));
+      g.seen = gen;
+    }
+    for (const f of previous) if (this.groupOf(f).seen !== gen) out.push(this.boundsFor(f));
+    this.contextUnique = !repeats;
+    return out;
+  }
   private changedBoxes(previous: readonly Feature[], next: readonly Feature[]): [number, number, number, number][] {
+    this.contextUnique = false;
     const before = new Set(previous), after = new Set(next), out: [number, number, number, number][] = [];
     for (const f of next) if (!before.has(f)) out.push(this.boundsFor(f));
     for (const f of previous) if (!after.has(f)) out.push(this.boundsFor(f));
@@ -1174,7 +1207,7 @@ export class ThreeBuildings {
   }
   private contextFor(source:readonly Feature[]):Feature[]{
     const ids=new Set(source.map(f=>String(f.properties.id)));
-    this.contextIndex ??= new BuildingContextIndex(this.contextFeatures, f => this.boundsFor(f));
+    this.contextIndex ??= new BuildingContextIndex(this.contextFeatures, f => this.boundsFor(f), this.contextUnique);
     return this.contextIndex?.neighbors(source, f => {
       const id=String(f.properties.id);return ids.has(id)||KIT_HIDE_SET.has(id)||this.boatIds.has(id);
     }) ?? [];

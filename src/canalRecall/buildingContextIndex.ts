@@ -20,11 +20,15 @@ export class BuildingContextIndex<T> {
   private seenAt = new Uint32Array(0);
   private seenAs = new Uint8Array(0);
   private stamp = 0;
-  constructor(features: readonly T[], private readonly bounds: (feature: T) => FootprintBox) {
-    const last = new Map<T, number>();
-    features.forEach((feature, index) => last.set(feature, index));
+  /**
+   * `unique` (lane E7, #220): the caller knows no feature repeats (three-buildings' stamped diff counts repeats), so the
+   * last-position map over every resident, a 36,000-entry Map per tile flush, is not built. Same index either way.
+   */
+  constructor(features: readonly T[], private readonly bounds: (feature: T) => FootprintBox, unique = false) {
+    const last = unique ? null : new Map<T, number>();
+    if (last) features.forEach((feature, index) => last.set(feature, index));
     features.forEach((feature, index) => {
-      if (last.get(feature) !== index) return;
+      if (last && last.get(feature) !== index) return;
       const box = bounds(feature);
       this.features[index] = feature; this.boxes[index] = box;
       this.eachCell(box, key => {
