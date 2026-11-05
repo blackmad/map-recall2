@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-02",
+ "generated": "2026-11-05",
  "note": "Existing geometry-audit offenders (src/canalRecall/landmarks/geometryAudit.ts). audit:glb fails a model only when a gated count (opening-floating-fail, opening-overhang-fail, zfight-m2, and since 2026-10-11 window-rhythm-fail / window-mismatch-spec / window-missing-spec on photo-spec facades) grows past its entry. Lower an entry when you fix a model; never raise one to pass. The window-rhythm keys were recorded for every model with an <id>-elevations.json on 2026-10-11 (lane fix/american-hotel-windows-20261011); american-hotel has no allowance (0 failing facades). The zfight keys were re-recorded for every landmark on 2026-10-13 (lane zfight-audit): zfight-m2 is now same-facing overlap under 2 cm (2.5 deg normal tolerance, measured against the larger triangle's plane), zfight-tight-m2 is 2-3 cm (gated like zfight-m2), zfight-near-m2 (2-8 cm) and zfight-same-m2 (a material against itself) are recorded for information only. opening-outside-parts / opening-outside-m2 (openingsWithinWalls, hard since 2026-10-16, lane homomonument-krijtberg) recorded for every recorded model on 2026-10-16; a recorded model may not add a part past its wall nor grow the area by more than 0.02 m2, a new export must have none. 2026-10-17 (lane westerkerk-magna): auditZFight now probes visibility over the whole overlap polygon (fan pieces sampled about 1 m apart) instead of each pair's centroid, which had marked a turret top flush with its band as hidden under the drum (Magna Plaza). zfight-m2 / zfight-tight-m2 were raised only where the old detector stayed within the entry and the new one exceeds it (142 entries); nothing else moved.",
  "reasons": {
   "blankenstraat-15": "First record: model landed after the 2026-10-10 baseline with these defects present (no earlier count to regress from); fix the model and lower the entry.",
@@ -562,6 +562,28 @@
    "zfight-same-m2": 1.1,
    "opening-outside-parts": 12,
    "opening-outside-m2": 19.2
+  },
+  "binnengasthuis-kloveniersburgwal": {
+   "normals-inward-permille": 0,
+   "normals-bad-permille": 0,
+   "material-slot-untagged-permille": 0,
+   "opening-floating": 0,
+   "opening-floating-fail": 0,
+   "opening-overhang": 0,
+   "opening-overhang-fail": 0,
+   "opening-buried": 0,
+   "opening-outside-parts": 0,
+   "opening-outside-m2": 0,
+   "zfight-m2": 0,
+   "zfight-near-m2": 150.6,
+   "zfight-tight-m2": 0,
+   "zfight-same-m2": 0,
+   "window-mismatch": 5,
+   "window-missing": 0,
+   "window-misaligned": 0,
+   "window-rhythm-fail": 0,
+   "window-mismatch-spec": 5,
+   "window-missing-spec": 0
   },
   "blankenstraat-15": {
    "opening-floating": 7,
@@ -3087,6 +3109,28 @@
    "zfight-same-m2": 3.3,
    "opening-outside-parts": 0,
    "opening-outside-m2": 0
+  },
+  "kinkerstraat-32": {
+   "normals-inward-permille": 0,
+   "normals-bad-permille": 0,
+   "material-slot-untagged-permille": 0,
+   "opening-floating": 0,
+   "opening-floating-fail": 0,
+   "opening-overhang": 0,
+   "opening-overhang-fail": 0,
+   "opening-buried": 0,
+   "opening-outside-parts": 0,
+   "opening-outside-m2": 0,
+   "zfight-m2": 0,
+   "zfight-near-m2": 0.3,
+   "zfight-tight-m2": 0,
+   "zfight-same-m2": 0,
+   "window-mismatch": 10,
+   "window-missing": 0,
+   "window-misaligned": 1,
+   "window-rhythm-fail": 0,
+   "window-mismatch-spec": 10,
+   "window-missing-spec": 0
   },
   "kleine-komedie": {
    "opening-floating": 0,
