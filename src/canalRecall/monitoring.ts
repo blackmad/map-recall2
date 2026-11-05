@@ -1,7 +1,7 @@
 import * as Sentry from '@sentry/browser';
 import { PENDING_GRAPHICS_FAILURES } from './mapGuard';
 import { IGNORED_ERRORS } from './monitoringFilters';
-import { RideHeartbeat, phaseName, unendedReport } from './rideHeartbeat';
+import { PeerTabs, RideHeartbeat, phaseName, unendedReport } from './rideHeartbeat';
 
 /**
  * Canal Recall error monitoring.
@@ -133,12 +133,26 @@ window.addEventListener('unhandledrejection', (event) => {
   for (const detail of pending ?? []) window.canalRecallMonitoring?.reportGraphicsFailure(detail);
 }
 
+/** The page's dedicated workers: the shared pool (engine/workerPool.ts) plus the own ground's worker. */
+function workerCount(game: CanalRecallGameGlobals | undefined): number | undefined {
+  const pool = (window as unknown as { __canalRecallWorkerPool?: { live?: number } | null }).__canalRecallWorkerPool;
+  const ground = (game?.vectorMap as { _ownGround?: { worker?: unknown } | null } | null | undefined)?._ownGround;
+  if (pool == null && !ground) return undefined;
+  return (pool?.live ?? 0) + (ground?.worker ? 1 : 0);
+}
+
 // Ride heartbeat (lane E2, #215; rideHeartbeat.ts): a renderer killed for memory sends nothing, so the next load of the
 // same tab reports the previous page that never reached pagehide, with the engine, tier and phase it was in.
 // `?heartbeat=0` turns it off.
 if (enabled && !/[?&]heartbeat=0\b/.test(location.search)) {
   let storage: Storage | null = null;
   try { storage = window.sessionStorage; } catch { /* blocked storage */ }
+  const peers = new PeerTabs(Math.random().toString(36).slice(2));
+  let channel: BroadcastChannel | null = null;
+  try {
+    channel = new BroadcastChannel('canal-recall-heartbeat');
+    channel.onmessage = event => { if (typeof event.data?.id === 'string') peers.heard(event.data.id, Date.now()); };
+  } catch { /* no BroadcastChannel */ }
   const heartbeat = new RideHeartbeat({
     storage,
     sample: () => {
@@ -151,6 +165,8 @@ if (enabled && !/[?&]heartbeat=0\b/.test(location.search)) {
         heapMB: memory?.usedJSHeapSize ? Math.round(memory.usedJSHeapSize / 1048576) : undefined,
         // PIXELS_PER_METER is 3 in the legacy game.
         distanceM: Number.isFinite(distancePx) ? Math.round(distancePx / 3) : undefined,
+        workers: workerCount(game),
+        tabs: (() => { try { channel?.postMessage({ id: peers.id }); } catch { /* closed */ } return peers.count(Date.now()); })(),
       };
     },
   });

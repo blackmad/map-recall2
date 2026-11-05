@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
-import { HEARTBEAT_KEY, type HeartbeatSample, RideHeartbeat, phaseName, readStamp, unendedReport } from './rideHeartbeat';
+import { HEARTBEAT_KEY, type HeartbeatSample, PeerTabs, RideHeartbeat, phaseName, readStamp, unendedReport } from './rideHeartbeat';
 
 function memory() {
   const m = new Map<string, string>();
@@ -76,4 +76,12 @@ test('phase names', () => {
   assert.equal(phaseName(2), 'loading');
   assert.equal(phaseName(9), '9');
   assert.equal(phaseName(undefined), undefined);
+});
+
+test('peer tabs: ids heard recently, this page included, stale ones dropped', () => {
+  const t = new PeerTabs('me', 15_000);
+  assert.equal(t.count(0), 1);
+  t.heard('a', 1000); t.heard('b', 2000); t.heard('me', 2000);
+  assert.equal(t.count(10_000), 3);
+  assert.equal(t.count(16_500), 2, 'a went quiet');
 });

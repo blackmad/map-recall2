@@ -20,6 +20,10 @@ export interface HeartbeatSample {
   heapMB?: number;
   /** Distance ridden this session, metres (how far into the ride the end came). */
   distanceM?: number;
+  /** Dedicated workers the page holds (pool + own ground): their heaps share the renderer's V8 cage with the page. */
+  workers?: number;
+  /** Game pages of this origin open in the browser (this one included): same-site tabs can share one renderer. */
+  tabs?: number;
 }
 
 export interface HeartbeatStamp extends HeartbeatSample {
@@ -58,7 +62,7 @@ export function unendedReport(stamp: HeartbeatStamp | null, now: number, maxAgeM
     tags,
     extra: {
       uptimeS: Math.round((stamp.at - stamp.startedAt) / 1000), sinceLastStampS: Math.round((now - stamp.at) / 1000), stamps: stamp.seq,
-      heapMB: stamp.heapMB ?? null, peakHeapMB: stamp.peakHeapMB ?? null, distanceM: stamp.distanceM ?? null,
+      heapMB: stamp.heapMB ?? null, peakHeapMB: stamp.peakHeapMB ?? null, distanceM: stamp.distanceM ?? null, workers: stamp.workers ?? null, tabs: stamp.tabs ?? null,
     },
   };
 }
@@ -137,4 +141,20 @@ export class RideHeartbeat {
 const PHASES: Record<number, string> = { 0: 'menu', 1: 'map-select', 2: 'loading', 4: 'racing', 5: 'finished', 6: 'paused' };
 export function phaseName(state: unknown): string | undefined {
   return typeof state === 'number' ? PHASES[state] ?? String(state) : undefined;
+}
+
+/**
+ * Peer game pages of this origin, from their heartbeats on a BroadcastChannel: each page posts its id on every beat
+ * and counts the ids heard within `windowMs`. Same-site tabs may share a renderer process and its V8 heap ceiling,
+ * so a crash report says how many were open.
+ */
+export class PeerTabs {
+  private readonly seen = new Map<string, number>();
+  constructor(readonly id: string, private readonly windowMs = 3 * HEARTBEAT_INTERVAL_MS) {}
+  heard(id: string, at: number): void { if (id !== this.id) this.seen.set(id, at); }
+  /** Pages open now, this one included. */
+  count(now: number): number {
+    for (const [id, at] of this.seen) if (now - at > this.windowMs) this.seen.delete(id);
+    return 1 + this.seen.size;
+  }
 }

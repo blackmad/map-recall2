@@ -69,6 +69,15 @@ if (process.env.BUNDLES_DIR) await context.route(/\/canal-drive\/js\/([\w-]+\.bu
   const file = path.join(process.env.BUNDLES_DIR, /\/([\w-]+\.bundle\.js)/.exec(route.request().url())[1]);
   return fs.existsSync(file) ? route.fulfill({ body: fs.readFileSync(file), contentType: 'application/javascript' }) : route.continue();
 });
+// SITE_DIR=<dir> serves /canal-drive/<path> from an older checkout's public/canal-drive (index.html, js/) where the
+// file exists there, over today's data: replays a past deploy (the 2026-11-02 crash build, lane E2).
+if (process.env.SITE_DIR) await context.route(/\/canal-drive\/([^?#]*)/, route => {
+  const rel = /\/canal-drive\/([^?#]*)/.exec(route.request().url())[1] || 'index.html';
+  const file = path.join(path.resolve(process.env.SITE_DIR), rel);
+  if (!file.startsWith(path.resolve(process.env.SITE_DIR)) || !fs.existsSync(file) || fs.statSync(file).isDirectory()) return route.continue();
+  const type = file.endsWith('.html') ? 'text/html' : file.endsWith('.js') ? 'application/javascript' : file.endsWith('.json') ? 'application/json' : file.endsWith('.css') ? 'text/css' : 'application/octet-stream';
+  return route.fulfill({ path: file, contentType: type });
+});
 const page = await context.newPage();
 if (glOn) await page.addInitScript(() => { window.__canalRecallGlCounters = true; });
 // rAF intervals for the timeline's frame histograms; __frameSkip marks the forced-GC sample windows (left out).
