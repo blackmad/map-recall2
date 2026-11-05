@@ -87,8 +87,8 @@ test('swap z-fight: no moving stripes on the Weesperstraat slab while its detail
     // Diagnosis: the buildings on a screen grid at the pose (id, year, height, chunk kinds), and the frame.
     const found = await page.evaluate(() => {
       const vm = (window as any).canalRecallGame.vectorMap, tb = vm._threeBuildings, vp = vm.host.viewport(), out: Record<string, any> = {};
-      for (let gy = 1; gy < 36; gy++) for (let gx = 1; gx < 48; gx++) {
-        const x = gx * innerWidth / 48, y = gy * innerHeight / 36;
+      for (let gy = 1; gy < 12; gy++) for (let gx = 1; gx < 16; gx++) {
+        const x = gx * innerWidth / 16, y = gy * innerHeight / 12;
         const hit = tb.inspectAtScreen?.(x * vp.width / innerWidth, y * vp.height / innerHeight, vp.width, vp.height);
         if (!hit || out[hit.id]) continue;
         const keys: string[] = []; let props: any = null;
@@ -98,9 +98,9 @@ test('swap z-fight: no moving stripes on the Weesperstraat slab while its detail
       return out;
     });
     mkdirSync(OUT, { recursive: true });
-    writeFileSync(`${OUT}/find-${SPOT.name}-${info.project.name}.json`, JSON.stringify(found, null, 1));
+    writeFileSync(`${OUT}/find-${SPOT.name}-${info.project.name}${LABEL}.json`, JSON.stringify(found, null, 1));
     const url = await page.evaluate(() => (window as any).canalRecallGame.vectorMap.captureFrame().then((c: HTMLCanvasElement | null) => c?.toDataURL('image/png') ?? ''));
-    writeFileSync(`${OUT}/find-${SPOT.name}-${info.project.name}.png`, Buffer.from(url.slice(url.indexOf(',') + 1), 'base64'));
+    writeFileSync(`${OUT}/find-${SPOT.name}-${info.project.name}${LABEL}.png`, Buffer.from(url.slice(url.indexOf(',') + 1), 'base64'));
     return;
   }
   // The slab: the pand under the spot's pick point, and the detail chunk that holds it.
@@ -117,6 +117,7 @@ test('swap z-fight: no moving stripes on the Weesperstraat slab while its detail
     return { id: [...ids][0], ids: [...ids], near, props, detailZoom: tb.detailZoom };
   }, SPOT.pand);
   console.log('swap-zfight target', JSON.stringify(target));
+  console.log('swap-zfight build', JSON.stringify(await page.evaluate(() => { const tb = (window as any).canalRecallGame.vectorMap._threeBuildings; return { complement: tb.complement, swapUniform: !!tb.material?.uniforms?.citySwapUnder, defines: Object.keys(tb.material?.defines ?? {}), name: tb.material?.name, slots: tb.swapSlots?.used ?? null }; })));
   expect(target?.id, 'a building under the pick point').toBeTruthy();
   expect(target?.near, 'the slab has a detail chunk at this pose').toBeTruthy();
   const grab = () => page.evaluate(() => (window as any).canalRecallGame.vectorMap.captureFrame().then((c: HTMLCanvasElement | null) => c?.toDataURL('image/png') ?? ''));
@@ -179,17 +180,55 @@ test('swap z-fight: no moving stripes on the Weesperstraat slab while its detail
     return { areas, fadingSteps: under.filter(n => n > 0).length };
   };
   const still = await run(false);
+  // The shell's yield at mid-swap: the detail chunk held at t = 0.5 and taken off screen, the share of the slab's
+  // pixels where the shell under it draws nothing (the background shows, as in the slab-hidden frame). With the
+  // complementary dissolve that is the detail's own coverage (~0.5); with the old overlap 0 (the shell stays solid).
+  const yieldShare = await (async () => {
+    await page.evaluate(([pose, key]) => {
+      const vm = (window as any).canalRecallGame.vectorMap, tb = vm._threeBuildings, g = vm._ownGround, e = tb.chunks.get(key);
+      vm.jumpToLngLat({ ...pose, elevation: g?.ready ? g.heightAt(pose.center) : 0 });
+      (window as any).__zfSource = e.source;
+      tb.dropChunk(key);
+      tb.pending.push(key, () => tb.rebuild(key, e.source));
+      tb.pump();
+    }, [pose, target!.near] as const);
+    await expect.poll(() => page.evaluate((key) => (window as any).canalRecallGame.vectorMap._threeBuildings.fading.has(key), target!.near), { timeout: 60_000, intervals: [16] }).toBe(true);
+    // Pause the dissolve at 0.5 for the capture (the clock is re-set right before it, and the capture is one frame).
+    await page.evaluate((key) => {
+      const tb = (window as any).canalRecallGame.vectorMap._threeBuildings, f = tb.fading.get(key);
+      const now = performance.now.bind(performance), t0 = now();
+      f.start = t0 - 350; (window as any).__zfNow = now;
+      performance.now = () => t0 + (now() - t0) * 0; // the fade clock stands still until restored
+      for (const ff of tb.fading.values()) ff.start = t0 - 350;
+      f.mesh.visible = false;
+    }, target!.near);
+    const shot = await rgba(await grab());
+    await page.evaluate((key) => { const tb = (window as any).canalRecallGame.vectorMap._threeBuildings; performance.now = (window as any).__zfNow; tb.chunks.get(key).mesh.visible = true; }, target!.near);
+    let open = 0;
+    for (let i = 0; i < inner.length; i++) {
+      if (!inner[i]) continue;
+      const p = i * 4;
+      if (Math.abs(shot.data[p] - hidden.data[p]) + Math.abs(shot.data[p + 1] - hidden.data[p + 1]) + Math.abs(shot.data[p + 2] - hidden.data[p + 2]) <= 30) open++;
+    }
+    mkdirSync(OUT, { recursive: true });
+    await sharp(shot.data, { raw: { width: shot.width, height: shot.height, channels: 4 } }).png().toFile(`${OUT}/${info.project.name}${LABEL}-shell-at-half.png`);
+    await settle(page);
+    return open / maskPx;
+  })();
+  console.log('shell yield at mid-swap', yieldShare.toFixed(3));
   const swap = await run(true);
   const sum = (a: number[]) => a.reduce((s, v) => s + v, 0);
-  const report = { when: new Date().toISOString(), spot: SPOT.name, qs: QS, target, maskPx, steps: STEPS, panPx: PAN_PX,
+  const report = { when: new Date().toISOString(), spot: SPOT.name, qs: QS, target, maskPx, steps: STEPS, panPx: PAN_PX, shellYieldAtHalf: yieldShare,
     still: { total: sum(still.areas), max: Math.max(...still.areas), areas: still.areas },
     swap: { total: sum(swap.areas), max: Math.max(...swap.areas), areas: swap.areas, fadingSteps: swap.fadingSteps },
     // What the swap adds over the still pan, per step: the stripes.
     excess: swap.areas.map((v, i) => Math.max(0, v - still.areas[i])), errors };
   mkdirSync(OUT, { recursive: true });
   writeFileSync(`${OUT}/${info.project.name}${LABEL}.json`, JSON.stringify(report, null, 1));
-  console.log('swap-zfight', JSON.stringify({ spot: SPOT.name, qs: QS, maskPx, still: report.still.total, swap: report.swap.total, excess: sum(report.excess), excessMax: Math.max(...report.excess), fadingSteps: swap.fadingSteps }));
+  console.log('swap-zfight', JSON.stringify({ spot: SPOT.name, qs: QS, maskPx, shellYield: +yieldShare.toFixed(3), still: report.still.total, swap: report.swap.total, excess: sum(report.excess), excessMax: Math.max(...report.excess), fadingSteps: swap.fadingSteps }));
   expect(errors, 'page errors').toEqual([]);
   expect(swap.fadingSteps, 'the swap was dissolving through the steps').toBeGreaterThan(STEPS * 0.8);
+  // Complementary (the default): the shell yields the detail's share of the slab at mid-swap (0.5 ± 0.1).
+  if (!process.env.ZFIGHT_REPORT_ONLY && !/swapComplement=0|chunkFade=0/.test(QS)) expect(Math.abs(yieldShare - 0.5), `shell yield ${yieldShare.toFixed(3)} at t = 0.5`).toBeLessThan(0.1);
   if (!process.env.ZFIGHT_REPORT_ONLY) expect(sum(report.excess), 'ΔE>20 px on the slab beyond the still pan, during the swap').toBe(0);
 });
