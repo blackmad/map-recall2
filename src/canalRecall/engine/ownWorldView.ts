@@ -27,7 +27,7 @@ import { guardFrameHost } from './frameGuards';
 import { settleChecks } from './settle';
 import { CameraMap, EngineCamera, unitsPerMetre, mercatorX, mercatorY } from './cameraMap';
 import { GameCameraSolver, lngLatToWorld, worldToLngLat, type GameCamera, type LoaderFrame } from './gameCamera';
-import { clearCamera, clearanceResidents, residentIndex } from './cameraClearance';
+import { clearCamera, clearanceResidents, hasResidentIndex, RESIDENT_INDEX_MIN, residentIndex, residentIndexInSlices } from './cameraClearance';
 import { RiderCoverTracker } from './riderCover';
 import { idleScheduler } from './idleBoxGrid';
 import { coverRouteFlag, roadAheadPoints, routeAheadPoints, type LngLat as CoverLngLat } from '../coveredPassage';
@@ -209,9 +209,28 @@ export class OwnWorldView implements WorldViewOracles {
    */
   private readonly clearanceIdle = flag('clearanceIdle', '__canalRecallClearanceIdle', true);
   private clearanceWarmFor: unknown = null;
+  /**
+   * `?clearanceStale=0` (lane E7, #220): while the grid of a new resident list is still being built in idle slices,
+   * the clearance walks the last list whose grid is ready, for those few hundred milliseconds, instead of building the
+   * new one inside the frame. The resident list turns over at landing (the city resumes in the ride's first frame), so
+   * the idle prewarm never caught up: `sync: camera solve and clearance` 22 ms of the iPhone profile's 117 ms first
+   * ride frame. The camera only needs the blocks along its sightline, which the landing preload already held.
+   */
+  private readonly clearanceStale = flag('clearanceStale', '__canalRecallClearanceStale', true);
+  private clearanceReady: readonly any[] | null = null;
+  /** Diagnostics: clearance walks answered from the previous list. */
+  readonly clearanceStats = { staleWalks: 0 };
   private prewarmClearance(): void {
     const city = this._completeCity;
     if (!this.clearanceIdle || !city?.sampleFeatures || !city.residentFeatures) return;
+    if (this.clearanceStale) {
+      // Keyed by the clearance's own list (styled residents), which also turns over as arrivals are styled.
+      const list = clearanceResidents(city as { sampleFeatures(limit: number): any[] });
+      if (list === this.clearanceWarmFor) return;
+      this.clearanceWarmFor = list;
+      residentIndexInSlices(list, idleScheduler, undefined, () => { this.clearanceReady = list; });
+      return;
+    }
     const list = city.residentFeatures();
     if (list === this.clearanceWarmFor) return;
     this.clearanceWarmFor = list;
@@ -219,6 +238,16 @@ export class OwnWorldView implements WorldViewOracles {
       const c = this._completeCity;
       if (c?.sampleFeatures) residentIndex(clearanceResidents(c as { sampleFeatures(limit: number): any[] }));
     });
+  }
+  /** The resident list the clearance walks this frame (see clearanceStale). */
+  private clearanceList(): readonly any[] {
+    const list = clearanceResidents(this._completeCity as { sampleFeatures(limit: number): any[] });
+    if (!this.clearanceStale || !this.clearanceIdle || list.length < RESIDENT_INDEX_MIN) return list;
+    if (hasResidentIndex(list)) { this.clearanceReady = list; return list; }
+    if (!this.clearanceReady) return list;
+    this.prewarmClearance();
+    this.clearanceStats.staleWalks++;
+    return this.clearanceReady;
   }
 
   private prewarmLabelOcclusion(landing?: readonly [number, number]): void {
@@ -671,7 +700,14 @@ export class OwnWorldView implements WorldViewOracles {
     this._labels.draw(frame, [x0, y0, x1, y1], zoom, this.host.getPixelRatio(), p => { const [lng, lat] = fromLocal(p[0], p[1]); return cam.project([lng, lat]); }, [lx, ly, zoom, cam.bearing, cam.pitch]);
   }
 
+  /**
+   * `?labelIndexStale=0` (lane E7, #220): a full placement right after the resident list turned over (the ride's
+   * landing, a tile arrival) tests against the previous grid when the eye is still within its reach, and the new list
+   * is indexed in idle time; the inline rebuild was 15-19 ms of the iPhone profile's second ride frame (labels 47 ms).
+   */
+  private readonly labelIndexStale = flag('labelIndexStale', '__canalRecallLabelIndexStale', true);
   private indexLabelOcclusion(features: Parameters<LabelOcclusion['index']>[0], centre: [number, number]): void {
+    if (this.labelIndexStale && this.labelIndexIdle && this.labelOcclusion.coversStale(features, centre)) { this.prewarmLabelOcclusion(); return; }
     const phases = framePhases(), t0 = phases ? performance.now() : 0;
     this.labelOcclusion.index(features, centre);
     if (phases) phases.add('labels: occlusion index (inside occlusion)', performance.now() - t0);
@@ -786,7 +822,7 @@ export class OwnWorldView implements WorldViewOracles {
         const probe = new EngineCamera(() => this.host.viewport(), { center: view.lngLat, zoom: view.zoom, bearing: view.bearing, pitch, elevation, maxPitch: this.cameraMap.camera.maxPitch });
         const e = probe.eye();
         return { lngLat: [e.lng, e.lat], altitude: e.altitudeM };
-      }, () => clearanceResidents(this._completeCity as { sampleFeatures(limit: number): any[] }));
+      }, () => this.clearanceList());
       if (result) this.solver.safePitch = result.safePitch;
       (this as any)._lastCameraClearance = result;
     }
@@ -1025,7 +1061,15 @@ export class OwnWorldView implements WorldViewOracles {
   /** Per source, as vector-map.js (spoilerSources.ts: the track's names used to replace the extract's at every route start). */
   setSpoilerNames(names: string[], source = 'extract'): void {
     this.spoilerNames = this.spoilerSourcesOn ? this.spoilerSources.set(names, source) : (names || []);
+    // `?spoilerIndexIdle=0` (lane E7, #220): the label policy's spoiler index for the new names is built in idle time
+    // now, not by the next label draw (`labels: policy` 16 ms of the iPhone profile's second ride frame: a route start
+    // hands over its track's names during the start flight).
+    if (this.spoilerIndexIdle && !this.spoilersSuspended) {
+      const want = this.spoilerNames;
+      idleScheduler(() => { if (this.spoilerNames === want && !this.spoilersSuspended) this.spoilerIndexFor(want); });
+    }
   }
+  private readonly spoilerIndexIdle = flag('spoilerIndexIdle', '__canalRecallSpoilerIndexIdle', true);
   private readonly spoilerSources = new SpoilerSources();
   /** `?spoilerSources=0`: the last list wins (the old behaviour). */
   private readonly spoilerSourcesOn = flag('spoilerSources', '__canalRecallSpoilerSources', true);
@@ -1133,9 +1177,19 @@ export class OwnWorldView implements WorldViewOracles {
     this.host.triggerRepaint();
   }
 
+  /**
+   * `?ferryIdle=0` (lane E7, #220): the ferry terminal labels of a new track are worked out in idle time, not inside
+   * the game frame that hands the track over (8 ms of the iPhone profile's 117 ms first ride frame: every segment
+   * walked and the terminals merged). The labels appear a frame or two later.
+   */
+  private readonly ferryIdle = flag('ferryIdle', '__canalRecallFerryIdle', true);
   setFerryTerminals(track: any, loader: LoaderFrame): void {
     if (!this.ready || !track || !loader || this.ferryTrack === track) return;
     this.ferryTrack = track;
+    if (this.ferryIdle) { idleScheduler(() => { if (this.ferryTrack === track) this.placeFerryTerminals(track, loader); }); return; }
+    this.placeFerryTerminals(track, loader);
+  }
+  private placeFerryTerminals(track: any, loader: LoaderFrame): void {
     const terminals = new Map<string, any>();
     for (const segment of track.segments) if (segment.ferryLink) for (const t of [segment.ferryLink.from, segment.ferryLink.to]) terminals.set(t.id, t);
     const merge = W().CanalRecallFerry?.terminalLabels;

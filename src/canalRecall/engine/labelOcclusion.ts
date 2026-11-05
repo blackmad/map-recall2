@@ -118,6 +118,16 @@ export class LabelOcclusion<F extends FootprintFeature = FootprintFeature> {
     this.stats.indexes++; this.stats.indexMs += performance.now() - t0;
   }
 
+  /**
+   * Whether the grid built for an earlier resident list still covers `centre` (within REINDEX_M of where it was built),
+   * so a placement may test against it while the new list is indexed in idle time (lane E7, #220). Only the list
+   * changed: the buildings that arrived or left are a tile's worth at the ring's edge, not the blocks in view.
+   */
+  coversStale(features: readonly F[], centre: LngLat): boolean {
+    if (!this.indexed || !this.centre || features === this.indexed) return false;
+    const mLng = 111320 * Math.cos(centre[1] * Math.PI / 180);
+    return Math.hypot((centre[0] - this.centre[0]) * mLng, (centre[1] - this.centre[1]) * 111320) < REINDEX_M;
+  }
   /** Whether `index(features, centre)` would rebuild the grid (the idle prewarm asks before it schedules one). */
   needsIndex(features: readonly F[], centre: LngLat): boolean {
     if (features !== this.indexed || !this.centre) return true;

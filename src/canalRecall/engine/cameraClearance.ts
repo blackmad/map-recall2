@@ -70,18 +70,44 @@ export function residentIndex(resident: readonly FootprintFeature[]): Map<number
   let index = RESIDENT_INDEXES.get(resident);
   if (index) return index;
   index = new Map();
-  for (let k = 0; k < resident.length; k++) {
-    const b = featureBox(resident[k]);
-    if (!b) continue;
-    for (let i = Math.floor(b[0] / RESIDENT_GRID_DEG); i <= Math.floor(b[2] / RESIDENT_GRID_DEG); i++) {
-      for (let j = Math.floor(b[1] / RESIDENT_GRID_DEG); j <= Math.floor(b[3] / RESIDENT_GRID_DEG); j++) {
-        const key = gridKey(i, j), list = index.get(key);
-        if (list) list.push(k); else index.set(key, [k]);
-      }
-    }
-  }
+  for (let k = 0; k < resident.length; k++) fileResident(index, resident, k);
   RESIDENT_INDEXES.set(resident, index);
   return index;
+}
+function fileResident(index: Map<number, number[]>, resident: readonly FootprintFeature[], k: number): void {
+  const b = featureBox(resident[k]);
+  if (!b) return;
+  for (let i = Math.floor(b[0] / RESIDENT_GRID_DEG); i <= Math.floor(b[2] / RESIDENT_GRID_DEG); i++) {
+    for (let j = Math.floor(b[1] / RESIDENT_GRID_DEG); j <= Math.floor(b[3] / RESIDENT_GRID_DEG); j++) {
+      const key = gridKey(i, j), list = index.get(key);
+      if (list) list.push(k); else index.set(key, [k]);
+    }
+  }
+}
+/** Whether the grid of this exact resident list is built (the stale-list rule in ownWorldView asks, lane E7). */
+export const hasResidentIndex = (resident: readonly FootprintFeature[]): boolean => RESIDENT_INDEXES.has(resident);
+/** Residents filed per idle slice (each footprint's box walked once: ~2-4 ms at 4x CPU throttling). */
+export const RESIDENT_INDEX_STEP = 3000;
+const RESIDENT_BUILDS = new WeakSet<readonly FootprintFeature[]>();
+/**
+ * Build `residentIndex(resident)` in slices of `step` residents, each its own `schedule` callback (idle time), and
+ * register it when complete (lane E7, #220): the one-task build was a 15-25 ms idle task at 4x, and when it had not run
+ * yet the ride's first frame built it inline. Same grid as `residentIndex`.
+ */
+export function residentIndexInSlices(resident: readonly FootprintFeature[], schedule: (cb: () => void) => void, step = RESIDENT_INDEX_STEP, onReady?: () => void): void {
+  if (RESIDENT_INDEXES.has(resident) || RESIDENT_BUILDS.has(resident)) return;
+  RESIDENT_BUILDS.add(resident);
+  const index = new Map<number, number[]>();
+  let k = 0;
+  const slice = (): void => {
+    if (RESIDENT_INDEXES.has(resident)) { RESIDENT_BUILDS.delete(resident); return; } // built inline meanwhile
+    for (const end = Math.min(resident.length, k + step); k < end; k++) fileResident(index, resident, k);
+    if (k < resident.length) { schedule(slice); return; }
+    RESIDENT_INDEXES.set(resident, index);
+    RESIDENT_BUILDS.delete(resident);
+    onReady?.();
+  };
+  schedule(slice);
 }
 
 /**
