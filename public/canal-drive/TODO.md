@@ -359,7 +359,7 @@ new `WORLD_BYTES_QS`), ride 10–44 m; it read 9 cells / 0.56 MB on 2026-11-01
 after L1 21b, 11 on the lane's branch. Bytes are inside the 1.5 MB cap. Owner
 to find: what between 2 Nov and 5 Nov widened the ride-start ring (spawn
 variance of the free ride is the first suspect; then the cell index).
-The flip (`lane/engine-flip-20261101`, rebase owed) merges only when all six
+E5 #218 (lane `engine-ride-start-20261105`, opus, started 2026-11-05 evening) owns the ride-start stalls: first draw 35–84 ms, label rebuilds 45 desktop / 164 iPhone; measure ten starts, then incremental label layout and pre-Start program links behind flags. The flip (`lane/engine-flip-20261105`, rebased onto 4e1c7b153 on 2026-11-05, b48438df5, tsc/lint/engine tests green) merges only when all six
 are green during a 60 s ride on the user's Mac and iPhone, not on Sentry days.
 **User
 asks (2026-11-01):** a first-person riding camera (#171, small opus lane after
