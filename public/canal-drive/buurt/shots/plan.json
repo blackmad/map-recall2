@@ -2181,6 +2181,17 @@
      ]
     },
     {
+     "label": "Park Kiosk BEA",
+     "lat": 52.3435695,
+     "lng": 4.8841794,
+     "view": "chase",
+     "at": [
+      4.884709,
+      52.343594,
+      266
+     ]
+    },
+    {
      "label": "Parnassustoren (Gebouw Parnas)",
      "lat": 52.34313439,
      "lng": 4.86806412,
@@ -2189,17 +2200,6 @@
       4.868148,
       52.344124,
       183
-     ]
-    },
-    {
-     "label": "Spinoza Lyceum, Peter van Anrooystraat 8, Amsterdam (built 1957)",
-     "lat": 52.3428814,
-     "lng": 4.8663062,
-     "view": "chase",
-     "at": [
-      4.867884,
-      52.343105,
-      257
      ]
     },
     {
