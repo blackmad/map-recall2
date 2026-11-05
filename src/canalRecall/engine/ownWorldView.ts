@@ -27,7 +27,7 @@ import { guardFrameHost } from './frameGuards';
 import { settleChecks } from './settle';
 import { CameraMap, EngineCamera, unitsPerMetre, mercatorX, mercatorY } from './cameraMap';
 import { GameCameraSolver, lngLatToWorld, worldToLngLat, type GameCamera, type LoaderFrame } from './gameCamera';
-import { clearCamera, clearanceResidents } from './cameraClearance';
+import { clearCamera, clearanceResidents, residentIndex } from './cameraClearance';
 import { RiderCoverTracker } from './riderCover';
 import { idleScheduler } from './idleBoxGrid';
 import { coverRouteFlag, roadAheadPoints, routeAheadPoints, type LngLat as CoverLngLat } from '../coveredPassage';
@@ -202,6 +202,25 @@ export class OwnWorldView implements WorldViewOracles {
    * (the rider), which the chase eye stays well within REINDEX_M of; it also warms every footprint's box (featureBox),
    * which the first frame's camera clearance reads.
    */
+  /**
+   * The camera clearance's resident grid (cameraClearance.ts residentIndex, with every footprint's box) is built in
+   * idle time when the resident list changes, not in the ride's first frame (`sync: camera solve and clearance` 21-25 ms
+   * on the iPhone profile; lane E6 #219). `?clearanceIdle=0`: built at the first clearance walk, as before.
+   */
+  private readonly clearanceIdle = flag('clearanceIdle', '__canalRecallClearanceIdle', true);
+  private clearanceWarmFor: unknown = null;
+  private prewarmClearance(): void {
+    const city = this._completeCity;
+    if (!this.clearanceIdle || !city?.sampleFeatures || !city.residentFeatures) return;
+    const list = city.residentFeatures();
+    if (list === this.clearanceWarmFor) return;
+    this.clearanceWarmFor = list;
+    idleScheduler(() => {
+      const c = this._completeCity;
+      if (c?.sampleFeatures) residentIndex(clearanceResidents(c as { sampleFeatures(limit: number): any[] }));
+    });
+  }
+
   private prewarmLabelOcclusion(landing?: readonly [number, number]): void {
     const city = this._completeCity;
     if (!this.labelIndexIdle || this.labelIndexScheduled || !this.labelOcclusionOn || !city?.residentFeatures) return;
@@ -798,6 +817,7 @@ export class OwnWorldView implements WorldViewOracles {
     // ride's first frame does not build it (engine/idleBoxGrid.ts, lane E6 #219; `?coverGridIdle=0`).
     city?.prewarmFeaturesAt?.();
     this.prewarmLabelOcclusion(view.introFlat > 0 ? view.subject : undefined);
+    this.prewarmClearance();
     this.updateRiderCover(view.subject, pitch > 0 && !view.detached && view.introFlat === 0);
     lap('rider cover');
     if (view.introFlat === 0) this.extras.setSuspended(false);

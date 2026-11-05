@@ -493,6 +493,16 @@ test('sightlineBlocker through the resident grid finds the blocker the linear wa
   assert.ok(blocked > 30, `the queries exercise blocking (${blocked})`);
 });
 
+test('residentIndex prewarmed in idle (lane E6 #219) is the grid the first clearance walk then uses', async () => {
+  const { residentIndex, sightlineBlocker } = await import('./cameraClearance');
+  const list: any[] = [];
+  for (let i = 0; i < 2500; i++) { const w = 4.88 + (i % 50) * 0.0004, s = 52.365 + Math.floor(i / 50) * 0.0003; list.push({ properties: { id: `p${i}`, height: 12 }, geometry: { type: 'Polygon', coordinates: [[[w, s], [w + 0.0002, s], [w + 0.0002, s + 0.0002], [w, s + 0.0002], [w, s]]] } }); }
+  const warm = residentIndex(list);
+  assert.equal(residentIndex(list), warm, 'memoised per list: the walk does not rebuild it');
+  const hit = sightlineBlocker([4.8805, 52.3655], [4.8901, 52.3712], 6, list);
+  assert.equal(hit?.properties?.id ?? null, sightlineBlocker([4.8805, 52.3655], [4.8901, 52.3712], 6, list, Infinity)?.properties?.id ?? null);
+});
+
 test('EngineCamera.bounds: the per-frame cache returns what a fresh camera computes, after every kind of change', () => {
   let vp = { width: 800, height: 600 };
   const cam = new EngineCamera(() => vp, { center: [4.9, 52.37], zoom: 17, pitch: 50, bearing: 20 });

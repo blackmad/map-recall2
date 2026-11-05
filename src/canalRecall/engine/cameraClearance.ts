@@ -65,8 +65,8 @@ export const RESIDENT_INDEX_MIN = 2000;
 const RESIDENT_GRID_DEG = 0.002;
 const gridKey = (i: number, j: number) => i * 1_000_003 + j;
 const RESIDENT_INDEXES = new WeakMap<readonly FootprintFeature[], Map<number, number[]>>();
-/** Each resident's position in the list under every grid cell its box touches. */
-function residentIndex(resident: readonly FootprintFeature[]): Map<number, number[]> {
+/** Each resident's position in the list under every grid cell its box touches. Exported for the idle prewarm (lane E6). */
+export function residentIndex(resident: readonly FootprintFeature[]): Map<number, number[]> {
   let index = RESIDENT_INDEXES.get(resident);
   if (index) return index;
   index = new Map();
