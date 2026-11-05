@@ -35,6 +35,13 @@ const inPolygon = (poly: readonly (readonly Vec2[])[], x: number, y: number) => 
   return c;
 };
 
+/** The box of every vertex of every ring: [minX, minY, maxX, maxY]. */
+const ringsBox = (poly: readonly (readonly Vec2[])[]): [number, number, number, number] => {
+  let a = Infinity, b = Infinity, c = -Infinity, d = -Infinity;
+  for (const ring of poly) for (const [x, y] of ring) { if (x < a) a = x; if (x > c) c = x; if (y < b) b = y; if (y > d) d = y; }
+  return [a, b, c, d];
+};
+
 const openRing = (ring: readonly Vec2[]): Vec2[] => (ring.length > 1 && ring[0][0] === ring[ring.length - 1][0] && ring[0][1] === ring[ring.length - 1][1] ? ring.slice(0, -1) : [...ring]);
 
 function convexHull(points: readonly Vec2[]): Vec2[] {
@@ -79,8 +86,12 @@ export function hullSamples(ring: readonly Vec2[], inset = 0.15): Vec2[] {
  * Open the berths of the boats whose centroid lies in `rect` and that float
  * partly outside the cell's water. Returns the new geometry and the boat ids.
  */
-export function openUnderHouseboats(geo: WaterGeometry, boats: readonly Boat[], rect: readonly [number, number, number, number], fallbackZ: number): { geo: WaterGeometry; opened: string[] } {
-  const polyAt = (x: number, y: number) => geo.polygons.findIndex(p => inPolygon(p, x, y));
+export function openUnderHouseboats(geo: WaterGeometry, boats: readonly Boat[], rect: readonly [number, number, number, number], fallbackZ: number, boxTest = true): { geo: WaterGeometry; opened: string[] } {
+  // Each polygon's box (over all its rings) first: a point outside it cannot be inside (lane E6 #219: the full even-odd
+  // test of every water polygon for each hull sample and each 0.5 m berth-edge piece was the largest main-thread owner
+  // of the cold ride start, 30-40 ms slices at 4x). Same polygon found, same order. `boxTest` false: the plain scan.
+  const polyBoxes = boxTest ? geo.polygons.map(ringsBox) : null;
+  const polyAt = (x: number, y: number) => geo.polygons.findIndex((p, k) => (!polyBoxes || (x >= polyBoxes[k][0] && x <= polyBoxes[k][2] && y >= polyBoxes[k][1] && y <= polyBoxes[k][3])) && inPolygon(p, x, y));
   const added: Vec2[][] = [], addedLevels: number[] = [], opened: string[] = [];
   for (const b of boats) {
     const samples = [...hullSamples(b.ring), ...openRing(b.ring)];
@@ -92,7 +103,9 @@ export function openUnderHouseboats(geo: WaterGeometry, boats: readonly Boat[], 
     const berth = berthRect(b.ring, MOORING_MARGIN_M);
     if (!berth || berth.area > MOORING_MAX_AREA_M2) continue;
     // Wholly in the water polygon still needs a berth when a shore line (its quay wall) runs through the hull.
-    if (where.every(k => k >= 0) && !geo.shores.some(line => line.some((a, i) => i > 0 && inPolygon([berth.rect], (a[0] + line[i - 1][0]) / 2, (a[1] + line[i - 1][1]) / 2)))) continue;
+    const bb = ringsBox([berth.rect]);
+    const inRect = (x: number, y: number) => (!boxTest || (x >= bb[0] && x <= bb[2] && y >= bb[1] && y <= bb[3])) && inPolygon([berth.rect], x, y);
+    if (where.every(k => k >= 0) && !geo.shores.some(line => line.some((a, i) => i > 0 && inRect((a[0] + line[i - 1][0]) / 2, (a[1] + line[i - 1][1]) / 2)))) continue;
     added.push(berth.rect);
     addedLevels.push(geo.levels?.[wet] ?? fallbackZ);
     opened.push(b.id);
