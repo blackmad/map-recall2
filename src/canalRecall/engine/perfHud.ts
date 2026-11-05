@@ -119,6 +119,7 @@ export class PerfHud {
   private readonly frames = new FrameRing();
   private lastFrame = 0;
   private rafOn = false;
+  private narrow: boolean | null = null;
   private readonly forcedOff: boolean;
   constructor(private readonly win: HudWindow, private readonly source: PerfHudSource) {
     this.forcedOff = perfHudForcedOff(win.location?.search ?? '');
@@ -155,8 +156,8 @@ export class PerfHud {
       const el = this.win.document.createElement('div');
       el.id = PERF_HUD_ID;
       el.setAttribute('aria-hidden', 'true');
-      // A phone has no attribution line but a centred d-pad at the bottom: wrap into the corner left of it.
-      el.style.cssText = PERF_HUD_STYLE + ((this.win.innerWidth ?? 1024) < 600 ? PERF_HUD_NARROW_STYLE : '');
+      el.style.cssText = PERF_HUD_STYLE;
+      this.narrow = null;
       this.win.document.body.appendChild(el);
       this.el = el;
       this.frames.clear();
@@ -178,7 +179,11 @@ export class PerfHud {
 
   private update(): void {
     if (!this.el) return;
+    // A phone has no attribution line but a centred d-pad at the bottom: wrap into the corner left of it. Checked every
+    // update (the window is sized after the engine starts, and a phone turns).
+    const narrow = (this.win.innerWidth ?? 1024) < 600;
+    if (narrow !== this.narrow) { this.narrow = narrow; this.el.style.cssText = PERF_HUD_STYLE + (narrow ? PERF_HUD_NARROW_STYLE : ''); }
     const now = this.lastFrame || 0;
-    try { this.el.textContent = perfHudLine(this.source.snapshot(this.frames.p99(now))); } catch { /* a page half torn down */ }
+    try { this.el.textContent = perfHudLine(this.source.snapshot(this.frames.p99(now))).split(' · ').map(seg => seg.replace(/ /g, '\u00a0')).join(' · '); } catch { /* a page half torn down */ }
   }
 }
