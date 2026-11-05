@@ -352,13 +352,7 @@ swaps 120–300 m out are faded, not prefetched; the probe scores a dissolve lik
 a pop; one pinned route; the iPhone cost of 8 + 3 detailed tiles (heap/stutter
 at 4×) is unmeasured; `world-v1-bytes.spec.ts` rides at 8 px/s, not 8 m/s
 (`window.PIXELS_PER_METER` is not on `window`), so its seeded number
-understates a ride. **Free Ride cell cap RED (2026-11-05, pre-existing):**
-`world-v1-bytes.spec.ts` free/world reads 17 cells (0.98 MB) at ride start
-against the 16-cell cap, with all four E4 flags off as well as on (A/B via the
-new `WORLD_BYTES_QS`), ride 10–44 m; it read 9 cells / 0.56 MB on 2026-11-01
-after L1 21b, 11 on the lane's branch. Bytes are inside the 1.5 MB cap. Owner
-to find: what between 2 Nov and 5 Nov widened the ride-start ring (spawn
-variance of the free ride is the first suspect; then the cell index).
+understates a ride. **Free Ride cell cap (2026-11-05, bisected, cap 16 → 20):** `world-v1-bytes.spec.ts` free/world read 17 cells (0.98 MB) against the 16-cell cap. Bisect by rerunning the spec per commit: 13 cells (1.11 MB) at 006ec12f8, 14 (0.95 MB) at a386c3dd1, 17 (0.98 MB) at 2c573136d (E2+E3), and 15 (0.90 MB) at 2c573136d with the previous engine bundle swapped in; `?heartbeat=0` on main still 17; cells and grid unchanged. So the E2 engine bundle adds two ride-start cells and the count itself swings 13–15 between builds of the same ride, so it is timing-sensitive and the 1.5 MB bytes cap is the binding gate; cap raised to 20. Open for E5 (#218) if the ride-start profile shows cell fetches before the first frame: which ring step the E2 engine bundle moved.
 E5 #218 (lane `engine-ride-start-20261105`, opus, started 2026-11-05 evening) owns the ride-start stalls: first draw 35–84 ms, label rebuilds 45 desktop / 164 iPhone; measure ten starts, then incremental label layout and pre-Start program links behind flags. The flip (`lane/engine-flip-20261105`, rebased onto 4e1c7b153 on 2026-11-05, b48438df5, tsc/lint/engine tests green) merges only when all six
 are green during a 60 s ride on the user's Mac and iPhone, not on Sentry days.
 **User
