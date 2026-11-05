@@ -110,6 +110,11 @@ export function railStripesFlag(): boolean { return pageFlag('railStripes', '__c
 /** `?railMinPx=0` / `window.__canalRecallRailMinPx = false`: stripes at their physical width only. */
 export function railMinPxFlag(): boolean { return pageFlag('railMinPx', '__canalRecallRailMinPx'); }
 
+/** `?farRail=0` / `window.__canalRecallFarRail = false`: no rail corridors in the far ring (farRing.ts). */
+export function farRailFlag(): boolean { return pageFlag('farRail', '__canalRecallFarRail'); }
+/** `?railYard=0` / `window.__canalRecallRailYard = false`: the yard beds as before (railTracks.ts railYard). */
+export function railYardFlag(): boolean { return pageFlag('railYard', '__canalRecallRailYard'); }
+
 function pageFlag(param: string, global: string): boolean {
   try {
     const g = globalThis as Record<string, unknown> & { location?: { search?: string } };
