@@ -7,6 +7,7 @@
 import {ViewResidency} from '../../../src/canalRecall/viewResidency.ts';
 import {worldCameraOf} from '../../../src/canalRecall/engine/worldCameraOf.ts';
 import {InstanceCull} from '../../../src/canalRecall/rendererShared/instanceCull.ts';
+import {RebuildCoalescer,extrasRebuildSync} from '../../../src/canalRecall/rendererShared/rebuildCoalescer.ts';
 import {FURNITURE_MODELS} from '../../../src/canalRecall/streetFurniture/models.ts';
 import {instancesOf} from '../../../src/canalRecall/streetFurniture/placement.ts';
 const {THREE} = window.CanalRecallThree;
@@ -49,6 +50,9 @@ export class StreetFurniture {
     this.enabled=furnitureFlag();this.ready=false;this.generation=0;
     this.tiles=new Map();this.pending=new Map();this.meshes=[];this.culls=[];this.queue=[];
     this.residency=new ViewResidency(.25,60);
+    // One rebuild per burst of tile arrivals / ground re-bases, after a frame (lane E6 #219, rendererShared/rebuildCoalescer.ts;
+    // `?extrasRebuild=sync` rebuilds at once).
+    this.rebuilds=new RebuildCoalescer(()=>{if(this.enabled&&this.ready)this.rebuild();},undefined,extrasRebuildSync());
     this.geometries=new Map();this.material=null;
     this.sharedFrame=options.sharedFrame||null;
     this.scene=new THREE.Group();this.scene.name='street-furniture';
@@ -93,12 +97,12 @@ export class StreetFurniture {
     } catch(error){console.warn('Street furniture unavailable.',error);}
   }
   setGroundBase(fn){this.groundBase=fn||null;this.refreshGroundBases();}
-  refreshGroundBases(){this.residency.invalidate();if(this.enabled&&this.ready&&this.meshes.length)this.rebuild();this.map.triggerRepaint?.();}
+  refreshGroundBases(){this.residency.invalidate();if(this.enabled&&this.ready&&(this.meshes.length||this.rebuilds.pending))this.rebuilds.request();this.map.triggerRepaint?.();}
   setEnabled(value){this.enabled=!!value&&furnitureFlag();if(this.enabled)this.update();else this.clear();this.map.triggerRepaint?.();}
   setSuspended(value){if(this.suspended===!!value)return;this.suspended=!!value;if(!this.suspended)this.update();}
   clear(){
     for(const c of this.pending.values())c.abort();
-    this.pending.clear();this.tiles.clear();this.queue=[];this.residency.invalidate();this.disposeMeshes();
+    this.pending.clear();this.tiles.clear();this.queue=[];this.residency.invalidate();this.rebuilds.cancel();this.disposeMeshes();
   }
   disposeMeshes(){
     for(const m of this.meshes){this.scene.remove(m);m.dispose?.();}
@@ -116,7 +120,7 @@ export class StreetFurniture {
     for(const key of this.tiles.keys())if(!keys.has(key)){this.tiles.delete(key);this.residency.invalidate();}
     for(const [key,ctl] of this.pending)if(!keys.has(key)){ctl.abort();this.pending.delete(key);}
     this.queue=[...keys].filter(k=>!this.tiles.has(k)&&!this.pending.has(k));
-    if(this.residency.needsRebuild(b,'f'))this.rebuild();
+    if(this.residency.needsRebuild(b,'f'))this.rebuilds.request();
     this.pump();
   }
   pump(){while(this.pending.size<2&&this.queue.length){const key=this.queue.shift();void this.fetchTile(key);}}
@@ -132,7 +136,7 @@ export class StreetFurniture {
       if(!controller.signal.aborted&&generation===this.generation){
         // Instances depend only on the record: expand once per tile, keep them with it.
         const instances=[];for(const r of data.items)for(const i of instancesOf(r))instances.push(i);
-        this.tiles.set(key,instances);this.residency.invalidate();this.rebuild();
+        this.tiles.set(key,instances);this.residency.invalidate();this.rebuilds.request();
       }
     } catch(error){if(error.name!=='AbortError')console.warn(`Street-furniture tile ${key} unavailable`,error);}
     finally{if(this.pending.get(key)===controller)this.pending.delete(key);this.pump();}
