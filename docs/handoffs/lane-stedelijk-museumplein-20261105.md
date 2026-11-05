@@ -121,3 +121,14 @@ with the counts and whether each is photo-true, sheet paths, in-game shot paths 
 and the user's view before/after), what the photos show that the model does not, holds. INTEGRATOR
 TODO: `npm run build:canal-signature-landmarks`, covers rebuild and `check:covers`, backlog regen,
 world recompile, the source refs to archive, the What's New note text.
+
+## Addendum (user, 2026-11-05 evening, after the brief was written)
+
+"also that little rectangular building in front of stedelijk". In the screenshot that is the small
+pale rectangular building with a green door beside the Albert Heijn label, between the Van
+Baerlestraat corner and the bathtub, in front of the long low shed. Identify it from the tile
+(candidates: pand 0363100012225637, 1999, 4.7 m; pand 0363100012235374, 1889, 2.9 m, on the Van
+Baerlestraat side; or one of the `passage:` parts of 0363100012082824) and from the panoramas
+(it is probably the Albert Heijn entrance pavilion or the Museumplein's plant/vent house). Model
+it as its own part of landmark 2 (or a third small model if it stands apart), measured, with its
+lettering if it carries the Albert Heijn name. Say in the report which pand it was.
