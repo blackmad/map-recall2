@@ -2278,5 +2278,11 @@
   "buildVersion": 2,
   "bytes": 40180,
   "triangles": 1897
+ },
+ "binnengasthuis-kloveniersburgwal": {
+  "sourceHash": "bc577777558233c0",
+  "buildVersion": 2,
+  "bytes": 87120,
+  "triangles": 4631
  }
 }

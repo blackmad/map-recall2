@@ -54,6 +54,8 @@ export const SHADOWED_BY_LANDMARK: Readonly<Record<string, string>> = {
   'ordinary-0363100012131469': 'politie-oost-watergraafsmeer',
   // Benthem Crouwel tower + Fedlev wing (2026-10-14 large recipe): it drew Fedlev as a plain grey box; the bespoke model (#205) draws the screens, shutters, stair and bridge.
   'ordinary-0363100012091838': 'rietveld-academie-2006',
+  // Oudemanhuispoort north and west wings (kloveniersburgwal-72 recipe drew the apotheek portal and the north side of Rusland on it; bespoke #208).
+  'ordinary-0363100012171179': 'binnengasthuis-kloveniersburgwal',
 };
 /** Every catalogue model (both categories) that no landmark shadows: what the game draws. */
 export const ORDINARY_BUILDINGS: readonly SignatureModelSpec[] = models.filter(m => !SHADOWED_BY_LANDMARK[m.id]).map(ordinarySpecFor);

@@ -1,0 +1,192 @@
+{
+ "id": "binnengasthuis-kloveniersburgwal",
+ "countedBy": "lane #208 (opus) from rectified panorama strips (artifacts/landmark-refs/binnengasthuis-kloveniersburgwal/strip-kbw.jpg, strip-rusland.jpg, strip-oza.jpg); ribbon convention; a door counts; alongM is metres from the front's viewer-left end (the passage gate on the Kloveniersburgwal, the Rusland corner on the Achterburgwal). Not a blind count; the integrator may re-count.",
+ "facades": [
+  {
+   "name": "Kloveniersburgwal: de schaats (Marnette 1927)",
+   "bearing": 121,
+   "photo": "artifacts/landmark-refs/binnengasthuis-kloveniersburgwal/strip-kbw.jpg",
+   "depthBand": 1.5,
+   "alongM": [
+    6.2,
+    17.0
+   ],
+   "heightM": [
+    6.8,
+    14.7
+   ],
+   "rows": [
+    5,
+    5
+   ],
+   "columns": 5,
+   "symmetric": false,
+   "note": "Panoramas TMX7316010203-001975_pano_0000_001256..001262 (2021-01-22). Above the skate band and oriel: the lower glazed band (five windows of 5x6 small panes) and the upper band (five windows of 8x4) between white jambs, the triple ledge between them. The skate band and the glass-block oriel at the foot are left out of the count (one ribbon and a stack of glass courses)."
+  },
+  {
+   "name": "Kloveniersburgwal: beige post-war front",
+   "bearing": 121,
+   "photo": "artifacts/landmark-refs/binnengasthuis-kloveniersburgwal/strip-kbw.jpg",
+   "depthBand": 1.5,
+   "alongM": [
+    19.7,
+    35.2
+   ],
+   "heightM": [
+    0,
+    15.8
+   ],
+   "rows": [
+    9,
+    9,
+    9,
+    9
+   ],
+   "columns": 9,
+   "symmetric": true,
+   "note": "Nine axes: the brick ground storey and three beige storeys of brown-framed windows; the recessed top storey ribbon is above heightM."
+  },
+  {
+   "name": "Kloveniersburgwal: brick front with dormers",
+   "bearing": 121,
+   "photo": "artifacts/landmark-refs/binnengasthuis-kloveniersburgwal/strip-kbw.jpg",
+   "depthBand": 1.5,
+   "alongM": [
+    35.2,
+    45.6
+   ],
+   "heightM": [
+    0,
+    14.3
+   ],
+   "rows": [
+    5,
+    6,
+    6,
+    6
+   ],
+   "columns": 6,
+   "symmetric": false,
+   "note": "Six axes over four storeys; on the ground the door (fifth axis) with four windows and a blank axis."
+  },
+  {
+   "name": "Kloveniersburgwal: canal house 1 (rijksmonument 72, neck gable)",
+   "bearing": 121,
+   "photo": "artifacts/landmark-refs/binnengasthuis-kloveniersburgwal/strip-kbw.jpg",
+   "depthBand": 1.5,
+   "alongM": [
+    45.6,
+    52.0
+   ],
+   "heightM": [
+    0,
+    19.5
+   ],
+   "rows": [
+    3,
+    3,
+    3,
+    3,
+    1
+   ],
+   "columns": 3,
+   "symmetric": false,
+   "gables": 1,
+   "note": "Three axes; ground: two windows and the door (third axis); four storeys and the hoist window in the neck."
+  },
+  {
+   "name": "Kloveniersburgwal: canal house 2 (scroll neck gable)",
+   "bearing": 121,
+   "photo": "artifacts/landmark-refs/binnengasthuis-kloveniersburgwal/strip-kbw.jpg",
+   "depthBand": 1.5,
+   "alongM": [
+    52.0,
+    57.0
+   ],
+   "heightM": [
+    0,
+    19.5
+   ],
+   "rows": [
+    3,
+    3,
+    3,
+    1
+   ],
+   "columns": 3,
+   "symmetric": false,
+   "gables": 1,
+   "note": "Three axes; three storeys and the hoist window in the neck."
+  },
+  {
+   "name": "Kloveniersburgwal: canal house 3 (scroll neck gable, Rusland corner)",
+   "bearing": 121,
+   "photo": "artifacts/landmark-refs/binnengasthuis-kloveniersburgwal/strip-kbw.jpg",
+   "depthBand": 1.5,
+   "alongM": [
+    57.0,
+    61.25
+   ],
+   "heightM": [
+    0,
+    19.5
+   ],
+   "rows": [
+    3,
+    3,
+    3,
+    1
+   ],
+   "columns": 3,
+   "symmetric": false,
+   "gables": 1,
+   "note": "Three axes; ground: the door (first axis) and two windows; three storeys and the hoist window in the neck."
+  },
+  {
+   "name": "Oudezijds Achterburgwal: dark-brick front, corner axes",
+   "bearing": 300,
+   "photo": "artifacts/landmark-refs/binnengasthuis-kloveniersburgwal/strip-oza.jpg",
+   "depthBand": 1.5,
+   "alongM": [
+    0,
+    6.7
+   ],
+   "heightM": [
+    0,
+    15.5
+   ],
+   "rows": [
+    3,
+    3,
+    3,
+    3
+   ],
+   "columns": 3,
+   "symmetric": false,
+   "note": "recording_2025-06-30_05-16-46_01390..01398. The three axes from the Rusland corner to the blank axis with the stone tablet; four storeys."
+  },
+  {
+   "name": "Oudezijds Achterburgwal: dark-brick front, five axes past the tablet",
+   "bearing": 300,
+   "photo": "artifacts/landmark-refs/binnengasthuis-kloveniersburgwal/strip-oza.jpg",
+   "depthBand": 1.5,
+   "alongM": [
+    8.9,
+    20.4
+   ],
+   "heightM": [
+    0,
+    15.5
+   ],
+   "rows": [
+    5,
+    5,
+    5,
+    5
+   ],
+   "columns": 5,
+   "symmetric": false,
+   "note": "The five axes past the blank tablet axis; on the second storey the middle three windows are taller, with iron balconettes."
+  }
+ ]
+}
