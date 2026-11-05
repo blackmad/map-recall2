@@ -1,7 +1,8 @@
 import { useCallback } from 'react';
 import type { Meta, StoryObj } from '@storybook/react-vite';
+import { PERF_HUD_ID, PERF_HUD_NARROW_STYLE, PERF_HUD_STYLE, perfHudLine } from '../../src/canalRecall/engine/perfHud';
 
-type Scenario = 'default' | 'bike-home' | 'bike-here' | 'transit' | 'advanced' | 'advanced-cartoon' | 'advanced-questions-off' | 'advanced-haze-off' | 'hud' | 'neighborhood' | 'neighborhood-fallback'
+type Scenario = 'default' | 'bike-home' | 'bike-here' | 'transit' | 'advanced' | 'advanced-cartoon' | 'advanced-questions-off' | 'advanced-haze-off' | 'advanced-perf-hud' | 'hud' | 'neighborhood' | 'neighborhood-fallback'
   | 'stacked-notices' | 'finish' | 'finish-calm' | 'finish-calm-bare' | 'finish-bike' | 'finish-transit'
   | 'landmark-card' | 'landmark-card-bare' | 'landmark-card-touch' | 'landmark-panel' | 'landmark-panel-dutch'
   | 'landmark-card-folded' | 'landmark-card-folded-touch'
@@ -90,10 +91,21 @@ function drawStoryRadar(win: Window, game: any, ctx: CanvasRenderingContext2D) {
   });
 }
 
-function CanalDriveFrame({ scenario = 'default' }: { scenario?: Scenario }) {
+/** The perf HUD line (engine/perfHud.ts) as the own engine draws it, from a fixed snapshot: the aerial-pan numbers. */
+function addPerfHud(doc: Document): void {
+  if (doc.getElementById(PERF_HUD_ID)) return;
+  const el = doc.createElement('div');
+  el.id = PERF_HUD_ID;
+  el.style.cssText = PERF_HUD_STYLE + ((doc.defaultView?.innerWidth ?? 1024) < 600 ? PERF_HUD_NARROW_STYLE : '');
+  el.textContent = perfHudLine({ tier: 'high', dpr: 2, heapMB: 309, gpuMB: 473, geometries: 1500, textures: 46, cells: 14, chunks: 26, models: 72, p99Ms: 58 });
+  doc.body.appendChild(el);
+}
+
+function CanalDriveFrame({ scenario = 'default', perfHud = false }: { scenario?: Scenario; perfHud?: boolean }) {
   const configure = useCallback((frame: HTMLIFrameElement) => {
     const doc = frame.contentDocument;
     if (!doc) return;
+    if (perfHud) addPerfHud(doc);
     const win = frame.contentWindow as (Window & {
       canalRecallForceTouch?: boolean;
       canalRecallGame?: any;
@@ -102,7 +114,7 @@ function CanalDriveFrame({ scenario = 'default' }: { scenario?: Scenario }) {
     // Storybook viewport addon resizes the iframe after load.
     if (win && scenario.includes('touch')) win.canalRecallForceTouch = true;
     const setupStories = new Set([
-      'default', 'bike-home', 'bike-here', 'transit', 'advanced', 'advanced-cartoon', 'advanced-questions-off', 'advanced-haze-off', 'knowledge',
+      'default', 'bike-home', 'bike-here', 'transit', 'advanced', 'advanced-cartoon', 'advanced-questions-off', 'advanced-haze-off', 'advanced-perf-hud', 'knowledge',
       'touch-setup', 'touch-setup-transit', 'touch-setup-here', 'touch-knowledge', 'touch-setup-home',
       ...Object.keys(ONBOARDING_STEP),
     ]);
@@ -144,6 +156,12 @@ function CanalDriveFrame({ scenario = 'default' }: { scenario?: Scenario }) {
       window.setTimeout(() => doc.querySelector('[aria-label="Questions a minute"]')?.scrollIntoView({ block: 'center' }), 600);
     }
     // The "Distance haze" switch (look/depthFade.ts) turned off, its Comfort & detail row scrolled into view.
+    // "Show performance" (engine/perfHud.ts) switched on, its Comfort & detail row scrolled into view.
+    if (scenario === 'advanced-perf-hud' && overlay) {
+      patchPrefs({ perfHud: true });
+      overlay.store.setAdvancedOpen(true);
+      window.setTimeout(() => doc.getElementById('perf-hud')?.scrollIntoView({ block: 'center' }), 600);
+    }
     if (scenario === 'advanced-haze-off' && overlay) {
       patchPrefs({ distanceHaze: false });
       overlay.store.setAdvancedOpen(true);
@@ -517,10 +535,10 @@ function CanalDriveFrame({ scenario = 'default' }: { scenario?: Scenario }) {
         win?.addEventListener('resize', () => drawWhenReady());
       }
     }
-  }, [scenario]);
+  }, [scenario, perfHud]);
 
   return <iframe
-    key={scenario}
+    key={`${scenario}${perfHud ? '-perf' : ''}`}
     onLoad={(event) => configure(event.currentTarget)}
     title={`Canal Recall — ${scenario}`}
     // `/canal-drive/` (no filename) 404s under `storybook dev`, which made
@@ -569,6 +587,11 @@ export const AdvancedOptionsHazeOffPhone: Story = {
   args: { scenario: 'advanced-haze-off' },
   parameters: { viewport: { defaultViewport: 'mobile1' } },
 };
+export const AdvancedOptionsPerfHud: Story = { args: { scenario: 'advanced-perf-hud' } };
+export const AdvancedOptionsPerfHudPhone: Story = {
+  args: { scenario: 'advanced-perf-hud' },
+  parameters: { viewport: { defaultViewport: 'mobile1' } },
+};
 export const KnowledgeReview: Story = { args: { scenario: 'knowledge' } };
 export const Mobile: Story = {
   args: { scenario: 'default' },
@@ -579,6 +602,9 @@ export const TransitBriefingPhone: Story = {
   parameters: { viewport: { defaultViewport: 'mobile1' } },
 };
 export const LiveHud: Story = { args: { scenario: 'hud' } };
+/** "Show performance" on (engine/perfHud.ts): the mono line bottom-left, above the attribution. */
+export const LiveHudPerf: Story = { args: { scenario: 'hud', perfHud: true } };
+export const LiveHudPerfPhone: Story = { args: { scenario: 'touch-hud', perfHud: true }, globals: phone };
 /** Aboard an IJ ferry: the notice names the departure and the pier to dock at. */
 /** Desktop, a few seconds into the ride: Feedback, settings, help and the build stamp are gone. */
 export const LiveHudIdle: Story = { args: { scenario: 'hud-idle' } };

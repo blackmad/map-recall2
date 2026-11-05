@@ -141,6 +141,8 @@ export const nl: Record<MessageKey, string> = {
   'options.trees': 'Bomen',
   'options.distanceHaze': 'Nevel in de verte',
   'options.distanceHazeHint': 'Verre straten vervagen zacht naar de lucht',
+  'options.perfHud': 'Prestaties tonen',
+  'options.perfHudHint': 'Geheugen en beeldtijden in de hoek',
 
   // --- Ritinstellingen ------------------------------------------------------
   'settings.title': 'Ritinstellingen',

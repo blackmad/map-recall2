@@ -196,6 +196,8 @@ class GameRouteRuntime {
     this.vectorMap.setTreesVisible(prefs.trees);
     // "Distance haze" (look/depthFade.ts distanceHazeOn): read by the shared frame every frame, so it applies at once.
     window.__canalRecallDistanceHaze = prefs.distanceHaze !== false;
+    // "Show performance" (engine/perfHud.ts): the own engine's HUD reads this once a second.
+    window.__canalRecallPerfHud = prefs.perfHud === true;
     this.vectorMap.setDetailedBuildingsVisible(prefs.detailed3d && (this.viewMode === 'chase' || this.viewMode === 'cockpit'));
     this.vectorMap.setMeasuredColoursOnly(!!prefs.measuredColoursOnly);
     if (typeof this.vectorMap.setTransitNetwork === 'function') {
