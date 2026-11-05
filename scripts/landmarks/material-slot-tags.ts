@@ -61,6 +61,13 @@ export const MATERIAL_SLOT_TAGS: Readonly<Record<string, Readonly<Record<string,
     copper: {slot: 'paint', why: 'dark-painted iron rods, struts, railings and lantern posts'},
     bronze: {slot: 'paint', why: 'tarred timber bascule piers, fender piles and the counterweight box'},
   },
+  'da-costakade-146': {
+    ochre: {slot: 'brick', why: 'ochre brick of the 1902 Tetterode factory front (monument register 524828 "okerkleurige bakstenen"; w01-248, Commons Bilderdijkstraat 163.jpg)'},
+    pink: {slot: 'brick', why: 'brown brick of the 1898 dairy front (register 524830 "bruine steen"; w01-248, Commons Bilderdijkstraat 159.jpg)'},
+    sandstone: {slot: 'brick', why: 'cream brick of the Da Costakade 136-140 housing block (w05-67, w07-68, w11-67); also the cream-painted dormers and cornice consoles of the 1909 range (w02-67)'},
+    gold: {slot: 'door', why: 'brown varnished wooden doors of the factory side parts (w01-248: the double door at n 39 and the door at n 62.6)'},
+    copper: {slot: 'roofTile', why: 'red-brown pantiles on the dairy gable and its short roof (register 524830 "zadeldak met pannen", "dakschild met pannen")'},
+  },
 };
 
 /** The declared slot for a palette name in a model, if any. */

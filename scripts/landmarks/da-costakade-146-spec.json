@@ -1,0 +1,34 @@
+{
+ "id": "da-costakade-146",
+ "pand": "0363100012236799",
+ "identity": {
+  "name": "Tetterode complex, former Lettergieterij 'Amsterdam' v/h N. Tetterode",
+  "addresses": "Bilderdijkstraat 155-167 and Da Costakade 136-164 (71 verblijfsobjecten in one BAG pand)",
+  "bouwjaar": 1903,
+  "parts": "corner house Bilderdijkstraat 155-157; melkfabriek Holland 1898 (rijksmonument 524830); factory 1902-03 by J.W.F. Hartkamp (524828); Da Costakade extension 1909-12 by Hartkamp (524831); block 1940-51 by Merkelbach & Karsten; housing Da Costakade 136-140 after the 1980s squat",
+  "correctionsToBrief": "the ochre workshop front faces the Bilderdijkstraat (W 248), not the Da Costakade; the lettered band is on both fronts; the red-brick range with balconies is the 1898 dairy; the glass block's curve is panorama projection, its real half-round is the roof volume",
+  "sources": ["https://api.data.amsterdam.nl/v1/bag/panden/0363100012236799", "https://monumentenregister.cultureelerfgoed.nl/monumenten/524828", "https://nl.wikipedia.org/wiki/Tetterode_(bedrijf)"]
+ },
+ "frame": {
+  "axes": "e from the Bilderdijkstraat front (0) to the Da Costakade front (~60.3), n north (0) to south (70.57); E=(0.92397,-0.38246), N=(0.38246,0.92397) in native x east / z south; origin BAG vertex 13 (-48.26, -4.023); A(e,n) in da-costakade-146-builder.ts"
+ },
+ "partyWallBearings": [157.5, 337.5],
+ "partyWallEvidence": "South (157.5): the factory and the 1909 tower adjoin the Bilderdijkstraat/Da Costakade houses to the south; north (337.5): the corner house and the housing block's north end adjoin neighbouring pands. Not photographed; drawn plain.",
+ "streetNAP": 0.907,
+ "volumes": {
+  "cornerHouse": {"e": [0, 9], "n": [0, 11.7], "top": 14.3, "roof": 16.4},
+  "dairy": {"e": [0, 15.9], "n": [11.7, 32.9], "top": 15.2, "gable": 20.8, "roof": 18.1},
+  "factory": {"e": [0, 23], "n": [32.9, 70.57], "top": 17.3, "piers": 18.0},
+  "yardSheds": {"top": "5.5 / 5.0, bridge range 15.4"},
+  "merkelbach": {"e": [45.3, 60.32], "n": [17.9, 43.0], "top": 26.0, "roofStorey": 29.0, "canopy": 29.3, "halfRound": 32.6},
+  "range1909": {"e": [57.4, 60.37], "n": [43.0, 69.4], "cornice": 21.0, "mansard": 24.6, "southEnd": 28.0},
+  "housing": {"e": "~45-60.25 stepped", "n": [-6.65, 17.9], "top": "15.0 / 23.2 / 14.8"}
+ },
+ "storeys": {
+  "factory": "ground segmental workshop windows 0.35-6.4 (rise 0.9) in the middle bays; mezzanine lights 4.7-6.6 in the side parts; windows 7.9-11.7 and 13.1-16.4",
+  "dairy": "stone ground 0-5.45 with three 6.4 m segmental arches and the lettered frieze 4.95-5.45; sills 5.8 / 9.0 / 12.3",
+  "cornerHouse": "shops under a grey fascia 3.0-3.8; sills 4.5 / 7.6 / 10.9",
+  "range1909": "ground cross windows 1.0-4.45, frieze 5.45-6.3, sills 7.6 / 12.7 / 17.1",
+  "merkelbach": "ground insteek 0.3-3.6 and 4.3-6.45, ribbons sills 7.9 / 12.65 / 17.4 / 22.15, 3.4 m tall"
+ }
+}
