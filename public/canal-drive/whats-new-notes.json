@@ -2,6 +2,20 @@
   "note": "Visible changes to the ride, newest first. One entry per shipped fix the player can see; models themselves are listed by the feed. Fields: date (YYYY-MM-DD, the day it reached main), title, text, where [lng, lat] optional, images optional: [{src, alt, caption?}] where src is a path in github.com/blackmad/map-recall2-screenshots (whats-new/YYYY-MM-DD-slug.jpg, before/after pairs welcome) or a full https URL. Link a screenshot whenever the change can be seen; keep the pictures out of this repository.",
   "notes": [
     {
+      "date": "2026-11-06",
+      "title": "The AkzoNobel Center's red block, the Ziggo Dome roof and the Volkshotel letters",
+      "text": "Three small fixes. The AkzoNobel Center no longer sits inside a 41 m red block: its underground car park had been drawn above ground because the height survey gave the garage outline the towers' roofs, and the 52 other garages the BAG registers wholly below street level have gone the same way. The Ziggo Dome's roof is the white membrane the aerial photo shows, not tan gravel. The VOLKSHOTEL roof letters are solid letters standing on their rail instead of a paper-thin sign that floated off it from behind.",
+      "images": [
+        "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/whats-new/2026-11-06-akzonobel-garage-before.jpg",
+        "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/whats-new/2026-11-06-akzonobel-garage-after.jpg",
+        "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/whats-new/2026-11-06-ziggo-roof-before.jpg",
+        "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/whats-new/2026-11-06-ziggo-roof-after.jpg",
+        "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/whats-new/2026-11-06-volkshotel-letters-before.jpg",
+        "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/whats-new/2026-11-06-volkshotel-letters-after.jpg",
+        "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/whats-new/2026-11-06-volkshotel-letters-front.jpg"
+      ]
+    },
+    {
       "date": "2026-11-05",
       "title": "The underground waste containers, re-modelled from the panoramas",
       "text": "The 13,000 underground container tops on the city's corners are rebuilt from the city panoramas: the graphite Amsterdam column with its hooded top, the stainless drum set into the slope, the fraction colour as a band and on the lift handle, and a round glass hole or a paper slot where the waste register says glass or paper. The old model's sides were missing in the ride, so the columns read see-through; they are solid now. Measured on five panoramas (body 1.19 m, front 0.63 m, plate 1.56 m); the wider 2020s box on the Prinsengracht is not yet told apart by the register, so it still gets the column.",
