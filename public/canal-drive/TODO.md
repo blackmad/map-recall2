@@ -328,7 +328,17 @@ bag-tiles pixel-share drift (both engines, open). Then L1 prepares the flip
 commit on its branch (engineFlag default + wantsMapLibre + query-table tests +
 `ENGINE=maplibre` spec switch); the integrator merges it once the Sentry tags
 have been live for a day, and watches the 48 h bar. Pin harness: the shading flip was an unpinned
-camera elevation, fixed in the spec (d80ab4245); trees are pinnable. **User
+camera elevation, fixed in the spec (d80ab4245); trees are pinnable. **Engine cutover lanes (2026-11-05, plan #213, user's play verdict on
+`?engine=own`: sky flicker, Chrome crash within a minute on this Mac (renderer
+OOM per the Crashpad dump), jank, buildings vanishing on bump, far fade too
+stark, pop-in = detail switching on buildings already there):** E1 #214
+cover rule + fade tune + "Distance haze" switch (`engine-cover-fade-20261105`,
+4620); E2 #215 crash + jank, measure first (`engine-crash-jank-20261105`, 4621);
+E3 #216 sky flicker (`engine-sky-20261105`, 4622); E4 #217 depth-aware pop-in
+detector + cross-fade + route-ahead prefetch (`engine-popin-20261105`, 4623).
+The flip (`lane/engine-flip-20261101`, rebase owed) merges only when all six
+are green during a 60 s ride on the user's Mac and iPhone, not on Sentry days.
+**User
 asks (2026-11-01):** a first-person riding camera (#171, small opus lane after
 the flip), the cartoon look mode (#161: steps 1–2 merged behind `?look=toon`,
 strips on #161 for the user's verdict; open question: the lavender, teal and
