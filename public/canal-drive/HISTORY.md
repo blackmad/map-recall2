@@ -1,5 +1,60 @@
 # Canal Recall — what is built
 
+**The own engine's sky no longer flickers: the frame host re-asserts the sky clear colour before every clear (2026-11-05, #216).**
+Lane E3 (e75434338). The sky under own is only the colour the frame host clears
+the canvas to, and three sets that colour inside `renderer.render()` alone.
+Every streamed install precompiles its programs through `SharedFrame.compile` /
+`compileAsync`, which ends in `renderer.resetState()`, and that leaves
+`gl.clearColor(0,0,0,0)` behind; the next clear went transparent and the page's
+cream background showed through. It only happened while riding because riding
+is what streams installs, which is why no frozen strip ever showed it. Over a
+20 s ride at the lowest chase pitch on this Mac, 212 of 612 composited frames had
+a cream sky and 224 of 653 canvas clears were transparent; with the guard
+(`FrameHost` option `clearGuard`, `?skyClear=0` for A/B) 0 of ~630 frames and 0 of
+818/877/901 clears; MapLibre is 0 either way. `?renderOnChange=0` and
+`?depthFade=0` did not move the number, so those hypotheses are closed. Pinned in
+`tests/e2e/sky-flicker.spec.ts` (standing still the top rows are sky, no ride
+frame has anything else there, no transparent or masked clear), now in
+`test:e2e:engine-own`. Contact sheet in the screenshots repo under
+`engine-sky-20261105/`. Left open: one of four fixed-bundle runs failed the
+standing-still check before the ride (5,600 non-sky pixels), unexplained; the spec
+now attaches its worst frame. The root smell is `resetState()` leaving GL
+defaults between frames; anything else that clears outside `render()` needs the
+same guard.
+
+**The own engine does not leak: one ride is ~380 MB and flat; the Nov 2 crash was a renderer process at ~3.2 GB with 12 workers (2026-11-05, #215).**
+Lane E2 (553f6b8b8, a37f34fa1, 70a187f8e). Chrome's crash dump of 2 Nov 08:48 on
+this Mac is a renderer that ran out of JavaScript memory while an 11-second-old
+worker held only 67 MB; the process had 12 worker threads where one ride runs 4.
+Measured on this Mac (Chrome 156) the page and its workers share about 3.3 GB per
+renderer process. One own-engine ride uses ~380 MB: a 10-minute desktop ride
+grew +4 % on the main thread (225 → 234 MB) and +8 % in workers; eight rides
+without a reload were flat, the deployed site was flat, a replay of the Nov 2
+build was flat with 4 workers, the iPhone profile ~190 + 95 MB. The 4 Nov dump is
+another site. So the leading hypothesis is several game tabs of the same origin
+sharing one renderer process plus a flow nobody scripted yet; the fade clones
+are freed at the end of each fade, the road-cache write never appears in a
+stall, and dropping the overview decode would free little because the label
+layer holds the same data. Telemetry so that the next crash is seen: a ride
+heartbeat (`rideHeartbeat.ts`, every 5 s to sessionStorage with engine, tier,
+phase, heap, peak, distance, worker count and same-origin game tabs; the next
+load of a tab whose stamp never reached `pagehide` sends one Sentry event,
+`?heartbeat=0` off), the own engine's `webglcontextlost` named in its Sentry
+event, and `GlResident` in `glCounters.ts` for GPU bytes held (400–580 MB on a
+desktop ride). Frames: desktop in motion p99 10.4 ms headed at 120 Hz, 0 over
+100 ms; iPhone at 4× p99 33.4 ms with 8 over 100 ms a minute. Stall owners:
+the ride-start game frame (97–112 ms desktop, 215–234 iPhone), own-ground slices
+landing together in one frame, label rebuilds (45 ms desktop, 164 iPhone). Fixes:
+the ride-start ground hook is staged over frames (`?stagedGroundHook=0`), worst
+ride-start frame 87/88 → 59/67 ms; one 8 ms per-frame budget for own-ground
+slices (`frameBudget.ts`), which the lane's single iPhone run read as 3 → 4
+frames over 100 ms, inside the noise, so the integrator made it opt-in
+(`?groundFrameBudget=1`) until a 3-run A/B shows a gain. `scripts/heap-ride.mjs`
+gained the timeline, GPU and process-memory columns, multi-ride and hidden-tab
+modes and a deployed-site target. Budgets recorded: desktop heap growth ≤ 10 %,
+desktop motion p99 ≤ 33 ms, iPhone motion p99 ≤ 50 ms. Still red: ride start
+(2–3 frames over 100 ms, first draw and labels), iPhone heap 303 vs 250.
+
 **Tetterode complex, Da Costakade 146, bespoke (2026-11-05, #209 part 1).** `da-costakade-146` (pand 0363100012236799 is the whole Tetterode block: 71 addresses, Bilderdijkstraat 155-167 and Da Costakade 136-164; corner house, melkfabriek Holland 1898 (rijksmonument 524830), factory 1902-03 by J.W.F. Hartkamp (524828), Da Costakade extension 1909-12 by Hartkamp (524831), the 1940-51 Merkelbach & Karsten block, housing 136-140; today housing, studios, the Dijktheater and De Trut; catalogue name "Tetterode complex (former type foundry), Da Costakade" because `test:building-taxonomy` rejects landmark names containing "Bilderdijkstraat"). Corrections to the brief: the ochre workshop front faces the Bilderdijkstraat, lettered bands are on both fronts, the "red-brick range with balconies" is the dairy, the "glass block" curve was panorama projection (the real half-round is a roof volume). 30,493 tris, lod1 7,959, 32.6 m; audit PASS 5.1 (only a zfight-near warning: the housing's white plinth 6 cm off the cream wall); compare:facades passes nine crops; no baseline row. Shadows `ordinary-0363100012236799`. Kit: `archOpeningWall.ts` optional `rise` for segmental heads + `segmentalRadius()` (hofkerk and watertoren rebuilt byte-identical), `mixed-case-glyphs.ts` '/' glyph (nfta-markenplein byte-identical), `material-slot-tags.ts` entry mapping ochre/pink/sandstone to brick, copper to roofTile, gold to door. Counting conventions: solid wooden and green doors are not counted as openings (the factory's wooden doors are 'gold' tagged door so the rhythm rule skips them); the dairy crop stops at the eaves because its gable row is unequal by design. Not drawn: the Merkelbach glazing reads silvery in the photo and darker in the model; the 1909 dormers and consoles are really white but use cream 'sandstone' because the audit treats every small all-'white' part as a loose opening; shop signs, tram wires, fire ladder, wall lamp; the portico's sawtooth edge and gate lattice simplified; yard and back faces inferred. Audit problem (shared with Westerdok 748): wall clustering seeds a plane from the first triangle it meets, so a quantization-tilted piece split the 70 m Bilderdijkstraat front and produced false opening-outside/overhang failures; the builder adds cut walls before all trim as a workaround. Kit cannot say: plant-motif iron anchors and balcony ironwork, a sawtooth lintel, a gate lattice, glazed-brick spandrel texture. The Weteringschans corner office not started (programme paused). World-v1 recompiled (`--no-policy`).
 
 **Westerdok 748 courtyard block, bespoke (2026-11-05, #210 part 1).** `westerdok-748` (pand 0363100012186003, 2008, 232 verblijfsobjecten of which 191 homes, not "232 homes" as the brief said; no monument record, architect not found; 3DBAG ground 1.33 m NAP, low wings 10.8 m with 13.5 m roof pavilions, blocks 23 m, recessed towers 29.2 m, NW/SW towers 35.3/35.4 m; 3DBAG piece 55 split at the courtyard edge drawn at 10.8 m to match the panoramas and floor counts; 30,929 tris, lod1 19,125; audit PASS 9.6 clean, no baseline row needed; compare:facades passes on the three photo-counted facades (north and south punched wedges rows 4,8,8,8,8,8 on 12 axes, north block end 3,6,6,6,6,6 on 9); the west passage, three courtyard portals declared as through passages). One prism per 3DBAG LoD2.2 roof piece (71, simplified to 0.3 m), walls only on exposed runs with cut reveals. Shadows `ordinary-0363100012186003`. Not drawn: the glass gates in the portals (drawn open), courtyard gardens and low-wing roof decks, tenant signs, the timber tower's board texture, fine sash division, the two-storey steel bay frames on w04 are approximate and not in elevations.json; the punched-wedge window pitch reads about 10 % shorter in the rectified crops than 3DBAG implies (3DBAG followed, noted). Audit finding for other builders: `geometryAudit` `clusterWalls` seeds each plane from the first triangle it meets, so a window reveal on an adjoining face within 3 cm and 2.5 degrees captured a whole 17 m wall (36 false opening-outside parts); emitting faces largest first avoids it. Kit cannot say: an openable glass gate in a through-portal, timber board cladding, the two-storey framed bay as a reusable piece. Politiebureau Postjesweg not started (programme paused). World-v1 recompiled (`--no-policy`).

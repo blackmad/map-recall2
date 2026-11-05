@@ -333,8 +333,17 @@ camera elevation, fixed in the spec (d80ab4245); trees are pinnable. **Engine cu
 OOM per the Crashpad dump), jank, buildings vanishing on bump, far fade too
 stark, pop-in = detail switching on buildings already there):** E1 #214
 cover rule + fade tune + "Distance haze" switch (`engine-cover-fade-20261105`,
-4620); E2 #215 crash + jank, measure first (`engine-crash-jank-20261105`, 4621);
-E3 #216 sky flicker (`engine-sky-20261105`, 4622); E4 #217 depth-aware pop-in
+4620); E2 #215 merged 2026-11-05 (HISTORY "The own engine does not leak"): no
+leak, one ride ~380 MB flat, the Nov 2 crash was a ~3.2 GB renderer with 12
+workers, hypothesis several same-origin game tabs in one process (user asked:
+how many game tabs were open?); heartbeat + context-loss telemetry now report
+the next crash; open: ride-start frames > 100 ms (first draw 35–84 ms, labels
+42–49 desktop / 164 iPhone), iPhone heap 303 vs 250, the 3-run A/B of the
+opt-in ground frame budget, a crash repro with a hidden tab or two tabs in one
+process; E3 #216 merged 2026-11-05 (HISTORY "The own engine's sky no longer
+flickers"): `resetState()` after precompile left a transparent clear colour,
+guarded, 212 → 0 cream frames, pinned in `sky-flicker.spec.ts`; open: one
+unexplained standing-still failure in four runs; E4 #217 depth-aware pop-in
 detector + cross-fade + route-ahead prefetch (`engine-popin-20261105`, 4623).
 The flip (`lane/engine-flip-20261101`, rebase owed) merges only when all six
 are green during a 60 s ride on the user's Mac and iPhone, not on Sentry days.

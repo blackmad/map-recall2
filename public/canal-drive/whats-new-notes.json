@@ -3,6 +3,18 @@
   "notes": [
     {
       "date": "2026-11-05",
+      "title": "New engine preview: the sky stops flickering",
+      "text": "If you ride with the new engine (?engine=own), the sky no longer flashes to cream while the city streams in around you. The flash came from the shader precompiler resetting the canvas clear colour between frames.",
+      "images": [
+        {
+          "src": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/engine-sky-20261105/sky-contact-sheet.jpg",
+          "alt": "Consecutive frames of a 20 s ride before and after the fix",
+          "caption": "Before: 212 of 612 frames with a cream sky. After: none."
+        }
+      ]
+    },
+    {
+      "date": "2026-11-05",
       "title": "Tetterode, the old type foundry on the Bilderdijkstraat and Da Costakade",
       "text": "The whole Tetterode block in Oud-West was a four-wall recipe box; it is now its six parts, measured from the city panoramas and Marcel Mulder's photographs: the corner house with its iron balconies and slate mansard, the 1898 melkfabriek Holland with its three hardstone arches, ochre bands and lettered frieze, Hartkamp's 1902 factory with the high segmental workshop windows between anchored piers, the 1909 range with twelve axes of cross windows, the LETTERGIETERIJ 'AMSTERDAM' V/H N.TETTERODE frieze and four dormers, the 1940s Merkelbach and Karsten block with its ribbon storeys, tiled bay and frosted half-round on the roof, and the housing at 136-140 with its loggias and portico. The kit learned segmental arch heads.",
       "images": [

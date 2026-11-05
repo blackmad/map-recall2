@@ -79,10 +79,40 @@
     },
     "worldRideDownloadMB": {
       "value": 2,
-      "measured": { "seededWorld": 1.13, "seededLive": 1.58, "freeWorld": 2.00, "freeLive": 0.22, "note": "MB gzip of building data for one ride: seeded Anne Frank -> Rijksmuseum replay 90 s (692 m, 16 cells, worker decode median 5 ms p95 16) and 90 s Free Ride (202 m, 27 cells, decode median 5.9 p95 25.9); live = ?world=live tile path (building-tiles + facts). The free ride's 27 cells for 202 m is the lever (fetch ring), road lane item." },
+      "measured": {
+        "seededWorld": 1.13,
+        "seededLive": 1.58,
+        "freeWorld": 2.0,
+        "freeLive": 0.22,
+        "note": "MB gzip of building data for one ride: seeded Anne Frank -> Rijksmuseum replay 90 s (692 m, 16 cells, worker decode median 5 ms p95 16) and 90 s Free Ride (202 m, 27 cells, decode median 5.9 p95 25.9); live = ?world=live tile path (building-tiles + facts). The free ride's 27 cells for 202 m is the lever (fetch ring), road lane item."
+      },
       "unit": "MB gzip fetched for one ride under ?world=v1 (seeded Anne Frank -> Rijksmuesum and one free ride), tests/e2e/world-v1-bytes.spec.ts WORLD_BYTES=1 on the published cells, desktop, 4x CPU",
       "source": "#130 part 2, integrator measurement 2026-11-01 (artifacts/world/bytes/*.json on the integrator-engine checkout)",
       "date": "2026-11-01"
+    },
+    "desktopRideHeapGrowthPct": {
+      "value": 10,
+      "unit": "% JS heap growth from minute 1 to minute 10 of an own-engine desktop ride, forced GC (scripts/heap-ride.mjs --every)",
+      "source": "lane E2 2026-11-05 (#215): measured +4 % main thread (225 -> 234 MB), +8 % workers (136 -> 147 MB); 8 rides without reload flat; the Nov 2 crash dump shows the renderer process at ~3.2 GB with 12 workers against a ~3.3 GB per-process limit, which one ride (~380 MB) never approaches",
+      "date": "2026-11-05"
+    },
+    "desktopMotionP99Ms": {
+      "value": 33,
+      "unit": "ms p99 frame time over a 60 s own-engine desktop ride in motion (heap-ride.mjs timeline)",
+      "source": "lane E2 2026-11-05: 10.4 ms headed at 120 Hz, 16.8 ms headless; 0 frames > 100 ms in motion; ride start still has 2-3 frames > 100 ms (first draw 35-84 ms, labels 42-49 ms)",
+      "date": "2026-11-05"
+    },
+    "iphoneMotionP99Ms": {
+      "value": 50,
+      "unit": "ms p99 frame time over a 60 s own-engine ride, iPhone profile at 4x",
+      "source": "lane E2 2026-11-05: 33.4 ms; 8 frames > 100 ms per minute (ride-start frame 215-234 ms, labels 164 ms, tile publishing 65-83 ms, chunk installs 59-79 ms)",
+      "date": "2026-11-05"
+    },
+    "skyTransparentClears": {
+      "value": 0,
+      "unit": "canvas clears with alpha < 1 or a masked colour channel during a 20 s own-engine ride at the lowest chase pitch (tests/e2e/sky-flicker.spec.ts)",
+      "source": "lane E3 2026-11-05 (#216): 224 of 653 before the clear guard, 0 of 818/877/901 after; cream-sky frames 212 -> 0 of ~620",
+      "date": "2026-11-05"
     }
   },
   "_desktopPerfViewport": {

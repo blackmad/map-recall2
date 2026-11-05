@@ -58,7 +58,11 @@ export class FrameBudget {
 /** `?groundFrameBudget=`: null when off, else the budget in ms. */
 export function groundFrameBudgetMs(search: string): number | null {
   const m = /[?&]groundFrameBudget=([^&#]*)/.exec(search);
-  if (!m) return GROUND_FRAME_BUDGET_MS;
+  // Off by default (integrator, 2026-11-05): the lane's one-run A/B on the iPhone profile read 3 -> 4 frames over
+  // 100 ms, inside the noise, so the budget stays an opt-in until a 3-run A/B shows a gain. `?groundFrameBudget=1`
+  // or `=on` takes GROUND_FRAME_BUDGET_MS; `=<ms>` sets it.
+  if (!m) return null;
+  if (m[1] === '1' || m[1] === 'on') return GROUND_FRAME_BUDGET_MS;
   const v = Number(m[1]);
   return m[1] === '0' || m[1] === 'off' || !Number.isFinite(v) || v <= 0 ? null : v;
 }
