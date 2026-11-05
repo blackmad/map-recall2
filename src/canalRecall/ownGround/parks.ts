@@ -73,9 +73,9 @@ export function decodeLine(e: readonly number[]): Vec2[] {
 
 /** decodeLine's bounding box [minX, minY, maxX, maxY] without decoding (Infinity/-Infinity: no point); the same values. */
 /** Surfaces looked at per SurfaceIndex step. */
-const SURFACE_STEP = 256;
+const SURFACE_STEP = 64;
 /** Grid cells filed per SurfaceIndex step at most (a step also ends after SURFACE_STEP surfaces). */
-const CELL_STEP = 2048;
+const CELL_STEP = 512;
 /** A 25 m grid cell's key: exact for |gx|, |gy| < 2^20 cells (26,000 km), so the same cells as the old string key. */
 const gridKey = (gx: number, gy: number) => gx * 2_097_152 + gy;
 /** encodedLineBox per encoded ring (the same cell's rings are boxed by every planning index of its 3x3). */
