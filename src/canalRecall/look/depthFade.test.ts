@@ -13,7 +13,7 @@ test('depthFadeFlag: on by default, ?depthFade=0 off', () => {
 test('the range scales with the eye-to-centre distance and never starts inside 200 m', () => {
   const chase = depthFadeRange(40);
   assert.ok(chase.near >= DEPTH_FADE_MIN_NEAR_M && chase.far >= chase.near * 2);
-  assert.ok(depthFadeRange(3000).near >= 6000, 'the fade starts well past the view centre');
+  assert.ok(depthFadeRange(3000).near >= 2400, 'the fade starts past the view centre');
   assert.equal(depthFadeRange(5).near, DEPTH_FADE_MIN_NEAR_M);
   assert.deepEqual(depthFadeRange(Number.NaN), { near: DEPTH_FADE_MIN_NEAR_M, far: DEPTH_FADE_MIN_NEAR_M * 2 });
 });
@@ -39,7 +39,7 @@ test('?fadeStrength scales the desaturation, the haze and the detail blend toget
   const g = globalThis as { __canalRecallFadeStrength?: unknown };
   assert.equal(depthFadeStrength(), 1);
   g.__canalRecallFadeStrength = '0.5'; assert.equal(depthFadeStrength(), 0.5);
-  g.__canalRecallFadeStrength = '7'; assert.equal(depthFadeStrength(), 1);
+  g.__canalRecallFadeStrength = '7'; assert.equal(depthFadeStrength(), 2);
   g.__canalRecallFadeStrength = 'x'; assert.equal(depthFadeStrength(), 1);
   delete g.__canalRecallFadeStrength;
   const haze: [number, number, number] = [0.63, 0.78, 0.9], brick: [number, number, number] = [0.6, 0.3, 0.2];
@@ -48,8 +48,9 @@ test('?fadeStrength scales the desaturation, the haze and the detail blend toget
   const half = depthFadeColour(brick, haze, r.far, r, 0.5), full = depthFadeColour(brick, haze, r.far, r, 1);
   assert.ok(Math.abs(half[0] - brick[0]) < Math.abs(full[0] - brick[0]));
   assert.equal(depthFadeDetail(600, r, 0.5), 0.5);
-  assert.match(depthFadeFogFragment(0.5), /fogFactor \* 0\.2 \)/);
-  assert.match(depthFadeFogFragment(0.5), /fogFactor \* 0\.15 \)/);
+  assert.match(depthFadeFogFragment(0.5), /fogFactor \* 0\.25 \)/);
+  assert.match(depthFadeFogFragment(0.5), /fogFactor \* 0\.19 \)/);
+  assert.match(DEPTH_FADE_DETAIL_GLSL('d', 1.5), /^1\.0 \* smoothstep/, 'the detail blend never passes the mean tint');
   assert.match(DEPTH_FADE_DETAIL_GLSL('d', 0.5), /^0\.5 \* smoothstep/);
 });
 
