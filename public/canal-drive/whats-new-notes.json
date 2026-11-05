@@ -3,6 +3,11 @@
   "notes": [
     {
       "date": "2026-11-05",
+      "title": "A smoother first start (engine preview)",
+      "text": "The very first start of a ride under the engine preview (?engine=own) stutters less: ground work is spread over more frames, houseboat berths are found far faster, trees and street furniture are rebuilt once instead of several times, and the lookup grids the camera and labels need are built while the start screen is still up. On an iPhone the frames over a tenth of a second at a cold start halved; on a desktop none is over a fifth of a second any more. One long garbage-collection pause per start remains and is the next target."
+    },
+    {
+      "date": "2026-11-05",
       "title": "Spoiler screening fixed for bridges and canals (engine preview)",
       "text": "Under the engine preview, starting a new route replaced the list of names to hide with only that route’s streets, so a bridge, canal or stop name could appear on a point of interest before you answered. Names from every source are now kept together, as in the standard map."
     },

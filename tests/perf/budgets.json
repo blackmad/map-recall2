@@ -137,6 +137,18 @@
       "unit": "frames over 100 ms in the first 10 s after RACING on a route change, Free Ride or next-from-finish start, desktop perf viewport, own engine",
       "source": "lane E5 2026-11-05 (#218): before 1,1,0,0,0,0 on route changes; after 0 on all; the cold first start stays red at 1 (was 6)",
       "date": "2026-11-05"
+    },
+    "desktopColdStartOver200Ms": {
+      "value": 0,
+      "unit": "frames over 200 ms in the first 10 s after RACING on the cold first start, desktop perf viewport, own engine, fresh browser (scripts/motion-stutter.mjs --runs cold --seconds 0 --starts default)",
+      "source": "lane E6 2026-11-05 (#219): before 1,1,1 (longest 217 ms), after 0,0,0 (longest 133-150 ms, one major GC); over 100 ms still 1 per run, held on the board",
+      "date": "2026-11-05"
+    },
+    "iphoneColdStartOver100Ms": {
+      "value": 8,
+      "unit": "frames over 100 ms in the first 10 s after RACING on the cold first start, iPhone 13 profile at 4x, own engine, fresh browser",
+      "source": "lane E6 2026-11-05 (#219): before 17,17,17, after 7,7,8; the line holds the gain, the target (<= 5, 0 over 200 ms) stays on the board: one 233-250 ms major GC per start remains",
+      "date": "2026-11-05"
     }
   },
   "_desktopPerfViewport": {
