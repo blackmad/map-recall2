@@ -7,7 +7,7 @@
  * (1139 ms of stalled samples). Every yield now reports the work it ends; once a frame's slices add up to `budgetMs`,
  * the next yield waits for the following frame to paint instead of continuing in this one.
  *
- * `?groundFrameBudget=0` turns it off (each yield is a plain `scheduler.yield` again); `?groundFrameBudget=<ms>` sets
+ * On by default (lane E5). `?groundFrameBudget=0` turns it off (each yield is a plain `scheduler.yield` again); `?groundFrameBudget=<ms>` sets
  * the budget. Pure state with injected clock and frame source, unit-tested in frameBudget.test.ts.
  */
 
@@ -58,10 +58,11 @@ export class FrameBudget {
 /** `?groundFrameBudget=`: null when off, else the budget in ms. */
 export function groundFrameBudgetMs(search: string): number | null {
   const m = /[?&]groundFrameBudget=([^&#]*)/.exec(search);
-  // Off by default (integrator, 2026-11-05): the lane's one-run A/B on the iPhone profile read 3 -> 4 frames over
-  // 100 ms, inside the noise, so the budget stays an opt-in until a 3-run A/B shows a gain. `?groundFrameBudget=1`
-  // or `=on` takes GROUND_FRAME_BUDGET_MS; `=<ms>` sets it.
-  if (!m) return null;
+  // On by default since lane E5 (#218): opt-in after E2 because its one-run motion A/B was inside the noise, but at ride
+  // start, where the slices pile up, three A/B pairs (desktop 1512x982@2 and the iPhone profile at 4x, 8 starts each)
+  // read iPhone >100 ms frames 84 -> 39 and >200 ms 1 -> 0, desktop cold start 6 -> 2 over 100 ms. `?groundFrameBudget=0`
+  // or `=off` turns it off; `=1`/`=on` takes GROUND_FRAME_BUDGET_MS; `=<ms>` sets it.
+  if (!m) return GROUND_FRAME_BUDGET_MS;
   if (m[1] === '1' || m[1] === 'on') return GROUND_FRAME_BUDGET_MS;
   const v = Number(m[1]);
   return m[1] === '0' || m[1] === 'off' || !Number.isFinite(v) || v <= 0 ? null : v;
