@@ -186,6 +186,8 @@ async function run(browser, kind, throttle, context) {
           const gl = info ? { prog: info.programs?.length ?? 0, tex: info.memory?.textures ?? 0, geo: info.memory?.geometries ?? 0, calls: info.render?.calls ?? 0 } : null;
           if (ms > Math.min(8, stallMs)) { // every host frame worth naming, so a stall's frame-host share shows
             const d = gl && gl0 ? { prog: gl.prog - gl0.prog, tex: gl.tex - gl0.tex, geo: gl.geo - gl0.geo, calls: gl.calls } : null;
+            // Programs linked in this frame, by three's name (the material type or the ShaderMaterial's name).
+            if (d && d.prog > 0) d.programs = (info.programs || []).slice(-d.prog).map(q => q.name || q.cacheKey?.slice(0, 40) || '?');
             L.host.push({ at: performance.now(), ms, phases: { ...rec.current }, gl: d });
           }
           gl0 = gl;
