@@ -1,5 +1,7 @@
 # Canal Recall — what is built
 
+**Bundles are also evaluated without a browser (2026-11-05, CI red after E1).** `check-game-decomposition.mjs` loads every ride bundle in a Node context where `URLSearchParams` is absent; the new fade-strength reader in `look/depthFade.ts` ran at module load and threw, so `test:canal-game-structure` failed on main at 4e1c7b153. The reader is guarded (`typeof URLSearchParams`), and the structure gate also found three ride bundles (game-landmarks, game-recall, game-presentation) stale against their sources since the E1 rebuild list; all rebuilt. Rule for lanes: any flag read in a shared `look/` module must tolerate a non-browser global.
+
 **Houses stay put when the rider bumps into them: the passage cover is route-aware and dims instead of hiding; the far haze is gentler, with a Distance haze switch (2026-11-05, #214).**
 Lane E1 (528bdb5f7 … 2b9720a0b). The Cuyperspassage rule (`coveredPassage.ts`)
 covered any footprint the rider's point was inside, and under own that meant

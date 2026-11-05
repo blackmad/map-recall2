@@ -59,7 +59,9 @@ export function depthFadeFlag(): boolean {
  */
 export function depthFadeStrength(): number {
   const g = globalThis as { __canalRecallFadeStrength?: number | string; location?: { search?: string } };
-  const raw = g.__canalRecallFadeStrength ?? new URLSearchParams(g.location?.search ?? '').get('fadeStrength');
+  // Guarded: the bundle is also evaluated where URLSearchParams is absent (check-game-decomposition, CI 2026-11-05).
+  const fromUrl = typeof URLSearchParams === 'function' ? new URLSearchParams(g.location?.search ?? '').get('fadeStrength') : null;
+  const raw = g.__canalRecallFadeStrength ?? fromUrl;
   const n = raw === null || raw === undefined || raw === '' ? NaN : Number(raw);
   // Up to 2 so look review can also try stronger than the default; the player-facing range is 0..1.
   return Number.isFinite(n) ? Math.max(0, Math.min(2, n)) : 1;
