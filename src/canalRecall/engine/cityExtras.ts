@@ -53,6 +53,8 @@ export class CityExtras {
   /** covers.json once loaded under ?bagTiles=1 (vector-map.js `_bagCovers`), else null. */
   get covers(): unknown { return this.bagCovers; }
   private hookedGround: unknown = null;
+  private hookingGround: unknown = null;
+  private hookStep = 0;
 
   constructor(private readonly host: CityExtrasHost) {}
 
@@ -144,12 +146,18 @@ export class CityExtras {
   }
 
   /** Own ground: models and trees stand on the relief / decks (vector-map.js _syncOwnGroundConsumers). */
-  hookGround(ground: any): void {
+  hookGround(ground: any, staged = true): void {
     if (!ground?.ready || this.hookedGround === ground) return;
-    this.hookedGround = ground;
-    this.trees?.setGroundBase?.((lngLat: [number, number]) => ground.pointBase(lngLat));
-    this.furniture?.setGroundBase?.((lngLat: [number, number]) => ground.pointBase(lngLat));
-    this.signature?.setGroundBase?.((anchor: [number, number], halfM: number) => ground.pointBase(anchor, halfM));
+    if (this.hookingGround !== ground) { this.hookingGround = ground; this.hookStep = 0; }
+    // Each consumer re-bases everything it holds when hooked (27-43 ms desktop, 74 ms iPhone 4x for the three at once,
+    // the ride's first frame; lane E2 #215): staged, one consumer per call (per frame). `?stagedGroundHook=0`: all at once.
+    const steps = [
+      () => this.trees?.setGroundBase?.((lngLat: [number, number]) => ground.pointBase(lngLat)),
+      () => this.furniture?.setGroundBase?.((lngLat: [number, number]) => ground.pointBase(lngLat)),
+      () => this.signature?.setGroundBase?.((anchor: [number, number], halfM: number) => ground.pointBase(anchor, halfM)),
+    ];
+    do steps[this.hookStep++](); while (!staged && this.hookStep < steps.length);
+    if (this.hookStep >= steps.length) { this.hookedGround = ground; this.hookingGround = null; }
   }
   /**
    * New relief or decks arrived. Trees re-base at once (cheap: one height per tree). Landmarks re-base at most every

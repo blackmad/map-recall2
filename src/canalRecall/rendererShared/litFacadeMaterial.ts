@@ -122,6 +122,7 @@ ${HIGHLIGHT_GLSL}
 varying float vFacDist;
 `)
       .replace('#include <clipping_planes_fragment>', `#include <clipping_planes_fragment>
+if (HL_GHOST(vHighlight)) discard;
 if (cityFade < 1.0 && fract(dot(floor(gl_FragCoord.xy), vec2(0.754877666, 0.569840296))) >= cityFade) discard;`)
       .replace('#include <map_fragment>', `
 vec3 fp = vec3(vFacUv, vLayer);

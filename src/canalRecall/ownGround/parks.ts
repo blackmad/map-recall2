@@ -73,7 +73,11 @@ export function decodeLine(e: readonly number[]): Vec2[] {
 
 /** decodeLine's bounding box [minX, minY, maxX, maxY] without decoding (Infinity/-Infinity: no point); the same values. */
 /** Surfaces looked at per SurfaceIndex step. */
-const SURFACE_STEP = 256;
+const SURFACE_STEP = 64;
+/** Grid cells filed per SurfaceIndex step at most (a step also ends after SURFACE_STEP surfaces). */
+const CELL_STEP = 512;
+/** A 25 m grid cell's key: exact for |gx|, |gy| < 2^20 cells (26,000 km), so the same cells as the old string key. */
+const gridKey = (gx: number, gy: number) => gx * 2_097_152 + gy;
 /** encodedLineBox per encoded ring (the same cell's rings are boxed by every planning index of its 3x3). */
 const lineBoxes = new WeakMap<readonly number[], [number, number, number, number]>();
 function cachedLineBox(e: readonly number[]): [number, number, number, number] {
@@ -608,7 +612,9 @@ export class SurfaceIndex<S extends { r: EncodedLine[] } = ParksCell['surfaces']
   }
   /** The record each polygon was built from, parallel to the polygon ids `find` returns. */
   readonly records: S[] = [];
-  private readonly grid = new Map<string, number[]>();
+  // Numeric cell keys (lane E6 #219): the `${gx}:${gy}` strings, three per cell a polygon box covers, were the planning
+  // indexes' allocation (a road polygon's box spans hundreds of 25 m cells) and much of the GC in the ride-start stalls.
+  private readonly grid = new Map<number, number[]>();
   private static readonly G = 25;
   /** Surfaces [0, own) belong to the first cell passed (drawn by the same build as the land under them). */
   readonly own: number = 0;
@@ -631,12 +637,13 @@ export class SurfaceIndex<S extends { r: EncodedLine[] } = ParksCell['surfaces']
     this.input = null;
     const { cells, keep, within } = input;
     const seen = new Set<{ surfaces: readonly S[] }>();
-    let looked = 0;
+    let looked = 0, filed = 0;
     for (const c of cells) {
       if (!c || seen.has(c)) continue;
       seen.add(c);
       for (const s of c.surfaces) {
-        if (++looked % SURFACE_STEP === 0) yield;
+        // A step also ends after CELL_STEP grid cells filed: one long road polygon's box covers hundreds (lane E6 #219).
+        if (++looked % SURFACE_STEP === 0 || filed >= CELL_STEP) { filed = 0; yield; }
         if (!keep(s)) continue;
         // Past `within`: skipped before decoding (a planning index over a 3x3 keeps a few dozen of its thousands, #129).
         if (within && c !== cells[0] && s.r.length) {
@@ -653,7 +660,7 @@ export class SurfaceIndex<S extends { r: EncodedLine[] } = ParksCell['surfaces']
         this.polys.push({ rings, box });
         this.records.push(s);
         const G = SurfaceIndex.G;
-        for (let gx = Math.floor(box[0] / G); gx <= Math.floor(box[2] / G); gx++) for (let gy = Math.floor(box[1] / G); gy <= Math.floor(box[3] / G); gy++) (this.grid.get(`${gx}:${gy}`) ?? this.grid.set(`${gx}:${gy}`, []).get(`${gx}:${gy}`)!).push(k);
+        for (let gx = Math.floor(box[0] / G); gx <= Math.floor(box[2] / G); gx++) for (let gy = Math.floor(box[1] / G); gy <= Math.floor(box[3] / G); gy++) { const g = gridKey(gx, gy), l = this.grid.get(g); if (l) l.push(k); else this.grid.set(g, [k]); filed++; }
       }
       if (c === cells[0]) (this as { own: number }).own = this.polys.length;
     }
@@ -680,7 +687,7 @@ export class SurfaceIndex<S extends { r: EncodedLine[] } = ParksCell['surfaces']
   /** Index of a surface containing (x, y), or -1. */
   find(x: number, y: number): number {
     const G = SurfaceIndex.G;
-    for (const k of this.grid.get(`${Math.floor(x / G)}:${Math.floor(y / G)}`) ?? []) {
+    for (const k of this.grid.get(gridKey(Math.floor(x / G), Math.floor(y / G))) ?? []) {
       const { rings, box } = this.polys[k];
       if (x < box[0] || x > box[2] || y < box[1] || y > box[3]) continue;
       let c = false;
@@ -693,7 +700,7 @@ export class SurfaceIndex<S extends { r: EncodedLine[] } = ParksCell['surfaces']
   /** Every surface containing (x, y) (stacked bridge decks over a street). */
   findAll(x: number, y: number): number[] {
     const G = SurfaceIndex.G, out: number[] = [];
-    for (const k of this.grid.get(`${Math.floor(x / G)}:${Math.floor(y / G)}`) ?? []) {
+    for (const k of this.grid.get(gridKey(Math.floor(x / G), Math.floor(y / G))) ?? []) {
       const { rings, box } = this.polys[k];
       if (x < box[0] || x > box[2] || y < box[1] || y > box[3]) continue;
       if (inRings(rings, x, y)) out.push(k);

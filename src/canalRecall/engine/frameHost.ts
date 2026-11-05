@@ -67,6 +67,15 @@ export interface FrameHostOptions {
    * false draws every animation frame the simulation runs (the old behaviour, `?renderOnChange=0`).
    */
   renderOnChange?: boolean;
+  /**
+   * Re-assert the sky before each frame's clear (default true; `?skyClear=0` turns it off). three's `renderer.clear()`
+   * clears with whatever `gl.clearColor` and colour mask the GL context holds; it sets the clear colour only inside
+   * `renderer.render()`. Work between frames that ends in `renderer.resetState()` (SharedFrame.compile/compileAsync, a
+   * streamed install's precompile) leaves `gl.clearColor(0, 0, 0, 0)`, so the next frame cleared the sky to
+   * transparent and the page's cream background showed through it: the sky flicker (#216, ~1 frame in 3 while riding,
+   * headed Chrome on the Mac).
+   */
+  clearGuard?: boolean;
   /** Tests: the clock and the frame scheduler. */
   now?: () => number;
   requestFrame?: (callback: (t: number) => void) => unknown;
@@ -156,6 +165,14 @@ export class FrameHost {
     }
     renderer.setClearColor?.(this.options.clearColor ?? 0xbfd8ee, 1);
     return renderer;
+  }
+
+  /** See FrameHostOptions.clearGuard: the host's clear colour (alpha 1) and a full colour write mask, in GL. */
+  private assertClearState(renderer: any): void {
+    if (this.options.clearGuard === false) return;
+    // setClearColor goes through three's state cache (invalidated by resetState), so it reaches GL after a reset.
+    renderer.setClearColor?.(this.options.clearColor ?? 0xbfd8ee, 1);
+    renderer.state?.buffers?.color?.setMask?.(true);
   }
 
   // ---- MapLibre-shaped event surface (mapGuard, renderGovernor, SharedFrame) ----
@@ -292,6 +309,7 @@ export class FrameHost {
     const now = (this.options.now ?? (() => performance.now()))();
     renderer.setRenderTarget?.(null);
     renderer.setViewport?.(0, 0, this.canvas.width, this.canvas.height);
+    this.assertClearState(renderer);
     renderer.clear?.(true, true, true);
     const phases = framePhases();
     if (phases) phases.add('clear', (this.options.now ?? (() => performance.now()))() - now);

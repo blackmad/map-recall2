@@ -331,12 +331,29 @@ have been live for a day, and watches the 48 h bar. Pin harness: the shading fli
 camera elevation, fixed in the spec (d80ab4245); trees are pinnable. **Engine cutover lanes (2026-11-05, plan #213, user's play verdict on
 `?engine=own`: sky flicker, Chrome crash within a minute on this Mac (renderer
 OOM per the Crashpad dump), jank, buildings vanishing on bump, far fade too
-stark, pop-in = detail switching on buildings already there):** E1 #214
-cover rule + fade tune + "Distance haze" switch (`engine-cover-fade-20261105`,
-4620); E2 #215 crash + jank, measure first (`engine-crash-jank-20261105`, 4621);
-E3 #216 sky flicker (`engine-sky-20261105`, 4622); E4 #217 depth-aware pop-in
-detector + cross-fade + route-ahead prefetch (`engine-popin-20261105`, 4623).
-The flip (`lane/engine-flip-20261101`, rebase owed) merges only when all six
+stark, pop-in = detail switching on buildings already there):** E1 #214 merged
+2026-11-05 (HISTORY "Houses stay put when the rider bumps into them"): bump
+cover 37–40/41 → 0/41, haze gentler with the Distance haze switch; open: the
+road guard lets the bike 1.1–2.6 m into house footprints (road lane), the ghost
+dimming unseen in a ride (the phone layout of the Distance haze tile was reviewed 2026-11-05 from the Storybook phone story: fine, one tile alone on its row; render in map-recall2-screenshots `board/2026-11-05-setup-phone-distance-haze-tile.png`); (the desktop Storybook story `canal-recall-route-setup--advanced-options-haze-off` shows the questions row scrolled under the sticky language/guest header; the live page at 1280×900 renders the label and gloss in full, so there is no overlap bug, only a story that opens scrolled); E2 #215 merged 2026-11-05 (HISTORY "The own engine does not leak"): no
+leak, one ride ~380 MB flat, the Nov 2 crash was a ~3.2 GB renderer with 12
+workers, hypothesis several same-origin game tabs in one process (user asked:
+how many game tabs were open?); heartbeat + context-loss telemetry now report
+the next crash; open: ride-start frames > 100 ms (first draw 35–84 ms, labels
+42–49 desktop / 164 iPhone), iPhone heap 303 vs 250, the 3-run A/B of the
+opt-in ground frame budget, a crash repro with a hidden tab or two tabs in one
+process; E3 #216 merged 2026-11-05 (HISTORY "The own engine's sky no longer
+flickers"): `resetState()` after precompile left a transparent clear colour,
+guarded, 212 → 0 cream frames, pinned in `sky-flicker.spec.ts`; open: one
+unexplained standing-still failure in four runs; E4 #217 merged 2026-11-05
+(HISTORY "The pop-in the user saw was the world ring lagging the rider"): swaps
+≥ 400 px² within 120 m desktop 34 → 0, iPhone 6 → 0; open: 63/135 shell→detail
+swaps 120–300 m out are faded, not prefetched; the probe scores a dissolve like
+a pop; one pinned route; the iPhone cost of 8 + 3 detailed tiles (heap/stutter
+at 4×) is unmeasured; `world-v1-bytes.spec.ts` rides at 8 px/s, not 8 m/s
+(`window.PIXELS_PER_METER` is not on `window`), so its seeded number
+understates a ride. **Free Ride cell cap (2026-11-05, bisected, cap 16 → 20):** `world-v1-bytes.spec.ts` free/world read 17 cells (0.98 MB) against the 16-cell cap. Bisect by rerunning the spec per commit: 13 cells (1.11 MB) at 006ec12f8, 14 (0.95 MB) at a386c3dd1, 17 (0.98 MB) at 2c573136d (E2+E3), and 15 (0.90 MB) at 2c573136d with the previous engine bundle swapped in; `?heartbeat=0` on main still 17; cells and grid unchanged. So the E2 engine bundle adds two ride-start cells and the count itself swings 13–15 between builds of the same ride, so it is timing-sensitive and the 1.5 MB bytes cap is the binding gate; cap raised to 20. Open for E5 (#218) if the ride-start profile shows cell fetches before the first frame: which ring step the E2 engine bundle moved.
+E7 #220 (lane `engine-gc-start-20261105`, opus, started 2026-11-05 night, brief `docs/handoffs/lane-engine-gc-start-20261105.md`) owns the major GC per cold start, the iPhone first ride frame and the route-change flush. E6 #219 merged 2026-11-05 (HISTORY "The cold first start stalls less"): iPhone cold start over 100 ms 17 → 7–8, desktop over 200 ms 1 → 0; motion unchanged. Open, largest first: one major GC per cold start (125–165 ms desktop, 200–214 ms at 4×, 0.1–0.6 s after RACING; next: heap-allocation profile of the load, `HEAP_OWNERS=1`); the iPhone first ride frame 117–133 ms (camera solve 25–28 ms, `_render`, `setFerryTerminals`); the following label frame 133 ms iPhone (occlusion index 19 + policy 16); building-tiles flush → `setFeatures` 86–101 ms per route change on the iPhone (`changedBoxes`); shader precompile unmeasured (no stalled frame compiled a program). Lane trap for every brief: the Vite dev server full-reloads on any worktree file change and silently hangs a harness run; build to a scratch `--outdir` and run through `BUNDLES_DIR`. E5 #218 merged 2026-11-05 (HISTORY "Ride starts stall less"): iPhone frames over 200 ms at a start 1–2 → 0, over 100 ms about halved; desktop warm starts 0 over 100 ms; label frame 162 → <20 ms; the own-ground frame budget is on by default after the lane's A/B (iPhone >100 ms 84 → 39). Open, largest first: own-ground main-thread slices of 30–40 ms at 4× on the cold start and first route change (50 of the 70 remaining iPhone frames >100 ms: smaller slices or index in the ground worker); the first ride-start frame 80–130 ms iPhone (inventory trees re-base every tree in one call 34–38 ms, rider cover 13–17 ms); 1–2 shader compiles per start (masonry, city-look lit|slot|uv / lit|slot|box: precompile via `sharedFrame.compileAsync` before the ride); building-tiles flush → `setFeatures` 60–100 ms per route change on the iPhone (`changedBoxes` two 36k Sets); label occlusion index 9–20 ms on the first placement after a jump; harness misses the restart after 2 of ~12 `next` arrivals. **`test:street-appearance` red (pre-existing, not in `check:canal`):** `audit-frontages.test.ts` "surveyed footprint or construction-year sources changed" since the landmark installs after its 2026-10-29 re-record; owner: rebake with `bake-frontages.ts` and re-record in the same change. The flip (`lane/engine-flip-20261105`, rebased onto 82b525133 on 2026-11-05, b2a2265d1, tsc/lint/engine tests green) merges only when all six
 are green during a 60 s ride on the user's Mac and iPhone, not on Sentry days.
 **User
 asks (2026-11-01):** a first-person riding camera (#171, small opus lane after

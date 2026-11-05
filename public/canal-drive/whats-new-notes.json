@@ -3,6 +3,62 @@
   "notes": [
     {
       "date": "2026-11-05",
+      "title": "A smoother first start (engine preview)",
+      "text": "The very first start of a ride under the engine preview (?engine=own) stutters less: ground work is spread over more frames, houseboat berths are found far faster, trees and street furniture are rebuilt once instead of several times, and the lookup grids the camera and labels need are built while the start screen is still up. On an iPhone the frames over a tenth of a second at a cold start halved; on a desktop none is over a fifth of a second any more. One long garbage-collection pause per start remains and is the next target."
+    },
+    {
+      "date": "2026-11-05",
+      "title": "Spoiler screening fixed for bridges and canals (engine preview)",
+      "text": "Under the engine preview, starting a new route replaced the list of names to hide with only that route’s streets, so a bridge, canal or stop name could appear on a point of interest before you answered. Names from every source are now kept together, as in the standard map."
+    },
+    {
+      "date": "2026-11-05",
+      "title": "Smoother ride starts (engine preview)",
+      "text": "Starting a ride, changing route or taking the next one under the engine preview (?engine=own) stalls far less: street labels are screened for spoilers only as they come into view instead of all six thousand at once, buildings are grouped once instead of on every update, and ground data is parsed in small slices. On an iPhone there are no more frames over a fifth of a second at a ride start; on a desktop route changes start without a visible hitch. A cold first start still has one long frame, which is the next thing being worked on."
+    },
+    {
+      "date": "2026-11-05",
+      "title": "A gentler distance haze, and a switch for it",
+      "text": "The haze over the far city is softer and starts further away: colour drops by half instead of seventy percent, and window detail stays until about 250 m. If you would rather see the whole city sharp, a new Distance haze switch under Comfort & detail turns it off mid-ride.",
+      "images": [
+        {
+          "src": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/whats-new/2026-11-05-haze-gentler-desktop.jpg",
+          "alt": "Five spots: no haze, the first haze, the gentler haze",
+          "caption": "Off | before | now, at five spots"
+        },
+        {
+          "src": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/whats-new/2026-11-05-haze-gentler-iphone.jpg",
+          "alt": "The same five spots on a phone",
+          "caption": "Phone: off | before | now"
+        }
+      ]
+    },
+    {
+      "date": "2026-11-05",
+      "title": "New engine preview: houses stay put when you bump into them",
+      "text": "In the new engine (?engine=own), riding into a house front made the house vanish, because the rule that lets you see through the Centraal passage fired on any building you touched. It now fires only when your route runs through the building, and it dims instead of hiding.",
+      "images": []
+    },
+    {
+      "date": "2026-11-05",
+      "title": "Buildings stop appearing right in front of you",
+      "text": "The city used to load the next stretch of buildings only when you crossed into a new map tile, which could be sixty metres ahead of you. It now loads as you move, buildings that do change dissolve in and out instead of popping, and the detailed buildings along your route are fetched before you reach them.",
+      "images": []
+    },
+    {
+      "date": "2026-11-05",
+      "title": "New engine preview: the sky stops flickering",
+      "text": "If you ride with the new engine (?engine=own), the sky no longer flashes to cream while the city streams in around you. The flash came from the shader precompiler resetting the canvas clear colour between frames.",
+      "images": [
+        {
+          "src": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/engine-sky-20261105/sky-contact-sheet.jpg",
+          "alt": "Consecutive frames of a 20 s ride before and after the fix",
+          "caption": "Before: 212 of 612 frames with a cream sky. After: none."
+        }
+      ]
+    },
+    {
+      "date": "2026-11-05",
       "title": "Tetterode, the old type foundry on the Bilderdijkstraat and Da Costakade",
       "text": "The whole Tetterode block in Oud-West was a four-wall recipe box; it is now its six parts, measured from the city panoramas and Marcel Mulder's photographs: the corner house with its iron balconies and slate mansard, the 1898 melkfabriek Holland with its three hardstone arches, ochre bands and lettered frieze, Hartkamp's 1902 factory with the high segmental workshop windows between anchored piers, the 1909 range with twelve axes of cross windows, the LETTERGIETERIJ 'AMSTERDAM' V/H N.TETTERODE frieze and four dormers, the 1940s Merkelbach and Karsten block with its ribbon storeys, tiled bay and frosted half-round on the roof, and the housing at 136-140 with its loggias and portico. The kit learned segmental arch heads.",
       "images": [

@@ -8,6 +8,7 @@ import roseGardens from './rose-garden-data.js';
 import {worldCameraOf} from '../../../src/canalRecall/engine/worldCameraOf.ts';
 import {InstanceCull,treeCullFlag} from '../../../src/canalRecall/rendererShared/instanceCull.ts';
 import {trunkGeometry,treeCapsFlag} from '../../../src/canalRecall/rendererShared/trunkGeometry.ts';
+import {RebuildCoalescer,extrasRebuildSync} from '../../../src/canalRecall/rendererShared/rebuildCoalescer.ts';
 const {THREE} = window.CanalRecallThree;
 const MIN_ZOOM = 15.5;
 const BUDGET = 12;
@@ -45,6 +46,9 @@ export class InventoryTrees {
     // `moveend` fires every riding frame (jumpTo); rebuild instances only when
     // the view leaves the padded area last built, or the inputs change.
     this.residency=new ViewResidency(.25,60);
+    // Tile arrivals, the ground hook and relief re-bases share one rebuild, in its own task after a frame (lane E6
+    // #219, rendererShared/rebuildCoalescer.ts; `?extrasRebuild=sync` rebuilds at once). rebuild() itself stays synchronous.
+    this.rebuilds=new RebuildCoalescer(()=>{if(this.enabled&&this.ready)this.rebuild();},undefined,extrasRebuildSync());
     // Keep GPU geometry and shaders warm while streamed instance buffers change.
     this.geometries=new Map();this.materials=new Map();
     // A root in the page's one three.js frame, lit by its rig (no frame: headless checks build instances only).
@@ -95,8 +99,8 @@ export class InventoryTrees {
   // Own ground (`?ownGround=1`): trees stand on the relief under the trunk.
   // `fn([lng, lat])` → metres, or undefined while that relief is not resident.
   setGroundBase(fn) {this.groundBase=fn||null;this.refreshGroundBases();}
-  refreshGroundBases() {this.residency.invalidate();if(this.enabled&&this.ready&&this.meshes.length)this.rebuild();this.map.triggerRepaint();}
-  setAllotmentCanopyEnabled(value) {this.allotmentCanopyEnabled=!!value;this.residency.invalidate();if(this.enabled&&this.ready)this.rebuild();this.map.triggerRepaint();}
+  refreshGroundBases() {this.residency.invalidate();if(this.enabled&&this.ready&&(this.meshes.length||this.rebuilds.pending))this.rebuilds.request();this.map.triggerRepaint();}
+  setAllotmentCanopyEnabled(value) {this.allotmentCanopyEnabled=!!value;this.residency.invalidate();if(this.enabled&&this.ready)this.rebuilds.request();this.map.triggerRepaint();}
   setEnabled(value) {this.enabled=!!value;if(this.enabled)this.update();else this.clear();this.map.triggerRepaint();}
   setTheme(value) {
     this.theme=value;
@@ -107,7 +111,7 @@ export class InventoryTrees {
   }
   clear() {
     for (const c of this.pending.values()) c.abort();
-    this.pending.clear();this.tiles.clear();this.queue=[];this.residency.invalidate();this.disposeMeshes();
+    this.pending.clear();this.tiles.clear();this.queue=[];this.residency.invalidate();this.rebuilds.cancel();this.disposeMeshes();
   }
   disposeMeshes() {
     for(const m of this.meshes){this.scene.remove(m);m.dispose?.();}
@@ -130,7 +134,7 @@ export class InventoryTrees {
     for(const key of this.tiles.keys())if(!keys.has(key)){this.tiles.delete(key);this.residency.invalidate();}
     for(const [key,c] of this.pending)if(!keys.has(key)){c.abort();this.pending.delete(key);}
     this.queue=[...keys].filter(k=>!this.tiles.has(k)&&!this.pending.has(k));
-    if(this.residency.needsRebuild(b,this.buildKey()))this.rebuild();
+    if(this.residency.needsRebuild(b,this.buildKey()))this.rebuilds.request();
     this.pump();
   }
   buildKey() {const z=this.camera.zoom();return `${z>=18}|${z>=ROSE_MIN_ZOOM}|${this.allotmentCanopyEnabled}`;}
@@ -146,7 +150,7 @@ export class InventoryTrees {
       const text=bytes[0]===0x1f&&bytes[1]===0x8b ? await new Response(new Blob([bytes]).stream().pipeThrough(new DecompressionStream('gzip'))).text() : new TextDecoder().decode(bytes);
       const data=JSON.parse(text);
       if(data.version!==1||data.key!==key||!Array.isArray(data.trees))throw Error('Invalid municipal tree tile');
-      if(!controller.signal.aborted&&generation===this.generation){this.tiles.set(key,data.trees);this.residency.invalidate();this.rebuild();}
+      if(!controller.signal.aborted&&generation===this.generation){this.tiles.set(key,data.trees);this.residency.invalidate();this.rebuilds.request();}
     } catch(error){if(error.name!=='AbortError')console.warn(`Tree tile ${key} unavailable`,error);}
     finally{if(this.pending.get(key)===controller)this.pending.delete(key);this.pump();}
   }

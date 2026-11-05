@@ -34,7 +34,7 @@ test('yellow compiles today\'s programs: no define, and the paint branch is the 
   assert.match(HIGHLIGHT_GLSL, /#define HL_PAINT\(h\) false/);
   // The yellow style never writes the dim state.
   assert.equal(HIGHLIGHT_RECIPES.yellow.desaturate, false);
-  assert.deepEqual(HIDDEN, { drawn: 0, hide: 1, highlight: 2, dim: 3 });
+  assert.deepEqual(HIDDEN, { drawn: 0, hide: 1, highlight: 2, dim: 3, ghost: 4 });
 });
 
 test('candidate recipes: a outline+ring+beacon (+ small-target wash), b rim+ring (animated), c desaturate+ring', () => {

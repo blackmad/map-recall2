@@ -27,8 +27,10 @@ import { guardFrameHost } from './frameGuards';
 import { settleChecks } from './settle';
 import { CameraMap, EngineCamera, unitsPerMetre, mercatorX, mercatorY } from './cameraMap';
 import { GameCameraSolver, lngLatToWorld, worldToLngLat, type GameCamera, type LoaderFrame } from './gameCamera';
-import { clearCamera, clearanceResidents } from './cameraClearance';
+import { clearCamera, clearanceResidents, residentIndex } from './cameraClearance';
 import { RiderCoverTracker } from './riderCover';
+import { idleScheduler } from './idleBoxGrid';
+import { coverRouteFlag, roadAheadPoints, routeAheadPoints, type LngLat as CoverLngLat } from '../coveredPassage';
 import { decodeOverviewBytes, fetchOverviewBytes, OverviewLayer, overviewTileGrid, OVERVIEW_TILE_MIN_TRIANGLES } from './overviewLayer';
 import { overviewFromPool } from '../ownMap/overviewPool';
 import { awaitWorkerPool } from './workerPool';
@@ -48,6 +50,7 @@ import { CityExtras } from './cityExtras';
 import { gameTileEnricher } from '../gameTileEnricher';
 import { LandmarkHighlight } from './landmarkHighlight';
 import { LabelOcclusion } from './labelOcclusion';
+import { SpoilerSources } from './spoilerSources';
 
 declare const CANVAS_W: number;
 declare const CANVAS_H: number;
@@ -168,6 +171,10 @@ export class OwnWorldView implements WorldViewOracles {
   private groundHooked = new WeakSet<object>();
   private groundRevision: unknown = undefined;
   private groundRefreshAt = 0;
+  /** `?stagedGroundHook=0` off: the ground consumers' hook and re-base spread over frames (lane E2, #215). */
+  private readonly stagedGroundHook = flag('stagedGroundHook', '__canalRecallStagedGroundHook', true);
+  /** The extras' re-base, due the frame after the buildings' one (stagedGroundHook). */
+  private extrasRebaseDue = false;
   private introLanding = false;
   private measuredColoursOnly = false;
   /** The building look in force (worldViewApi BUILDING_LOOK_IDS); a URL/global look locks out the saved preference. */
@@ -183,6 +190,49 @@ export class OwnWorldView implements WorldViewOracles {
   readonly labelOcclusion = new LabelOcclusion();
   /** `?labelOcclusion=0` (or flipping it at run time: specs compare on and off at one pose). */
   private _labelOcclusionOn = flag('labelOcclusion', '__canalRecallLabelOcclusion', true);
+  /**
+   * The label occlusion grid is (re)built in idle time when the resident list changes or the eye jumps, not inside the
+   * first full placement after a ride start or route change (9-20 ms there on the iPhone profile; lane E6 #219).
+   * `?labelIndexIdle=0`: built at the placement only, as before.
+   */
+  private readonly labelIndexIdle = flag('labelIndexIdle', '__canalRecallLabelIndexIdle', true);
+  private labelIndexScheduled = false;
+  /**
+   * `landing`: during the start flight the eye is high over the city, so the grid is centred on where the ride lands
+   * (the rider), which the chase eye stays well within REINDEX_M of; it also warms every footprint's box (featureBox),
+   * which the first frame's camera clearance reads.
+   */
+  /**
+   * The camera clearance's resident grid (cameraClearance.ts residentIndex, with every footprint's box) is built in
+   * idle time when the resident list changes, not in the ride's first frame (`sync: camera solve and clearance` 21-25 ms
+   * on the iPhone profile; lane E6 #219). `?clearanceIdle=0`: built at the first clearance walk, as before.
+   */
+  private readonly clearanceIdle = flag('clearanceIdle', '__canalRecallClearanceIdle', true);
+  private clearanceWarmFor: unknown = null;
+  private prewarmClearance(): void {
+    const city = this._completeCity;
+    if (!this.clearanceIdle || !city?.sampleFeatures || !city.residentFeatures) return;
+    const list = city.residentFeatures();
+    if (list === this.clearanceWarmFor) return;
+    this.clearanceWarmFor = list;
+    idleScheduler(() => {
+      const c = this._completeCity;
+      if (c?.sampleFeatures) residentIndex(clearanceResidents(c as { sampleFeatures(limit: number): any[] }));
+    });
+  }
+
+  private prewarmLabelOcclusion(landing?: readonly [number, number]): void {
+    const city = this._completeCity;
+    if (!this.labelIndexIdle || this.labelIndexScheduled || !this.labelOcclusionOn || !city?.residentFeatures) return;
+    const centre = (): [number, number] => { if (landing) return [landing[0], landing[1]]; const e = this.cameraMap.camera.eye(); return [e.lng, e.lat]; };
+    if (!this.labelOcclusion.needsIndex(city.residentFeatures(), centre())) return;
+    this.labelIndexScheduled = true;
+    idleScheduler(() => {
+      this.labelIndexScheduled = false;
+      if (!this.labelOcclusionOn || !this._completeCity?.residentFeatures) return;
+      this.labelOcclusion.index(this._completeCity.residentFeatures(), centre());
+    });
+  }
   get labelOcclusionOn(): boolean { return this._labelOcclusionOn; }
   /** The A/B switch: a still frame is not redrawn (render-on-change), so the switch asks for the frame that re-places the labels. */
   set labelOcclusionOn(on: boolean) { this._labelOcclusionOn = on; this.host?.triggerRepaint(); }
@@ -221,7 +271,7 @@ export class OwnWorldView implements WorldViewOracles {
       // The game's loading screen (GameState.LOADING, presentationRuntime.ts) paints over the world opaquely.
       coveredFrameMs: () => (W().canalRecallGame?.state === LOADING_STATE ? COVERED_FRAME_MS : null),
       ...(toon ? { post: (renderer: any, width: number, height: number) => (this.toonPost ??= new ToonPost(THREE)).apply(renderer, width, height) } : {}),
-    }, { antialias, pixelRatio: Math.min(dpr, cap), clearColor: clear, renderOnChange: flag('renderOnChange', '__canalRecallRenderOnChange', true) });
+    }, { antialias, pixelRatio: Math.min(dpr, cap), clearColor: clear, renderOnChange: flag('renderOnChange', '__canalRecallRenderOnChange', true), clearGuard: flag('skyClear', '__canalRecallSkyClear', true) });
     // GL work counters (engine/glCounters.ts, the P4 counters gate): opt-in, on window.__canalPerf.gl.
     if (flag('glCounters', '__canalRecallGlCounters', false)) {
       // three uploads geometry and links programs lazily inside its draw of an object: name that object as the owner.
@@ -315,7 +365,8 @@ export class OwnWorldView implements WorldViewOracles {
     this._sharedFrame.register('engine-hoods', this._lines.hoods, { order: -60 });
     this._sharedFrame.register('engine-transit', this._lines.transit, { order: -55 });
     this._sharedFrame.register('engine-cycle', this._lines.cycle, { order: -50 });
-    this._labels = new LabelLayer(container, () => this.labelPolicy());
+    // `?labelLazyPolicy=0`: the eager label rebuild (every named street re-tested in the frame the policy changes).
+    this._labels = new LabelLayer(container, () => this.labelPolicy(), { lazyPolicy: flag('labelLazyPolicy', '__canalRecallLabelLazyPolicy', true) });
     // Paper over the map (menu, setup, loading) hides the labels without waiting for a repaint: a state change need
     // not move the map, so the check also runs on its own slow clock, as the MapLibre overlay's (labels/labelOverlay.ts).
     const syncCovered = () => { if (this._labels.setCovered(isCoveredState(W().canalRecallGame?.state))) this.host.triggerRepaint(); };
@@ -408,6 +459,7 @@ export class OwnWorldView implements WorldViewOracles {
       if (this.streetFronts && this._threeBuildings.setStreets) this._threeBuildings.setStreets(this.streetFronts);
       this.streetFronts = null;
       this._threeBuildings.setVisible(true);
+      if (this.buildingsRoute) this._threeBuildings.setRoute?.(this.buildingsRoute);
       const city = this._completeCity = new runtime.BuildingTileStreamer(this.cameraMap, 'osm-building-appearance', this.extractPath);
       // No MapLibre source to feed: the streamer answers featuresAt / sampleFeatures itself.
       city.setPublishing?.(false);
@@ -517,7 +569,14 @@ export class OwnWorldView implements WorldViewOracles {
         return ring && ring.length >= 3 ? ground.footprintBase(ring) : null;
       });
     }
-    this.extras.hookGround(ground);
+    this.extras.hookGround(ground, this.stagedGroundHook);
+    if (this.extrasRebaseDue) {
+      lap?.('ground update: consumers');
+      this.extrasRebaseDue = false;
+      this.extras.refreshGroundBases();
+      lap?.('ground update: extras bases');
+      return;
+    }
     if (ground.surfaceRevision === this.groundRevision) return;
     const now = performance.now();
     if (this.groundRefreshAt && now - this.groundRefreshAt < 400) return;
@@ -526,6 +585,7 @@ export class OwnWorldView implements WorldViewOracles {
     lap?.('ground update: consumers');
     tb?.refreshGroundBases?.();
     lap?.('ground update: building bases');
+    if (this.stagedGroundHook) { this.extrasRebaseDue = true; return; }
     this.extras.refreshGroundBases();
     lap?.('ground update: extras bases');
   }
@@ -753,6 +813,11 @@ export class OwnWorldView implements WorldViewOracles {
     lap('building detail centre');
     this.extras.tick();
     lap('extras tick');
+    // The cover's footprint grid is indexed in idle time as the resident list changes, from the intro on, so the
+    // ride's first frame does not build it (engine/idleBoxGrid.ts, lane E6 #219; `?coverGridIdle=0`).
+    city?.prewarmFeaturesAt?.();
+    this.prewarmLabelOcclusion(view.introFlat > 0 ? view.subject : undefined);
+    this.prewarmClearance();
     this.updateRiderCover(view.subject, pitch > 0 && !view.detached && view.introFlat === 0);
     lap('rider cover');
     if (view.introFlat === 0) this.extras.setSuspended(false);
@@ -765,12 +830,43 @@ export class OwnWorldView implements WorldViewOracles {
     camera.projector = pitch > 0 || view.introFlat > 0 ? (x: number, y: number) => this.projectWorld(x, y, loader, canvas) : null;
   }
 
+  /**
+   * Rider cover (coveredPassage.ts): the building over the rider draws see-through. Route-aware (lane E1 2026-11-05):
+   * the route ahead (or, off the route, the centreline of the road underfoot) must run through the footprint too, so
+   * a bump into a house front no longer counts. `?coverRoute=0` restores the point-only rule; `?coverDim=0` hides the
+   * building outright as before instead of ghosting it.
+   */
   private updateRiderCover(rider: [number, number], active: boolean): void {
     const city = this._completeCity;
-    const r = this.cover.update(rider, active, performance.now() / 1000, () => city?.featuresAt ? city.featuresAt(rider[0], rider[1]) : []);
+    const ahead = this.coverRoute ? () => this.coverAhead(rider) : undefined;
+    const r = this.cover.update(rider, active, performance.now() / 1000, () => city?.featuresAt ? city.featuresAt(rider[0], rider[1]) : [], ahead);
     if (!r.changed) return;
-    this._threeBuildings?.setHidden?.('cover', r.covered && r.id ? [r.id] : []);
+    const ids = r.covered && r.id ? [r.id] : [];
+    const tb = this._threeBuildings;
+    if (this.coverDim && tb?.setGhosted) tb.setGhosted('cover', ids);
+    else tb?.setHidden?.('cover', ids);
     this.riderCovered = r.covered;
+  }
+  private readonly coverRoute = coverRouteFlag();
+  private readonly coverDim = (() => { try { return new URLSearchParams(globalThis.location?.search ?? '').get('coverDim') !== '0'; } catch { return true; } })();
+  /** The route as lng/lat for the cover rule (kept when the route line is not drawn), and its source array. */
+  private coverRouteCoords: CoverLngLat[] | null = null;
+  private coverRouteSource: unknown = null;
+  /** The road network and frame the off-route rule reads (handed over with the street highlights) and the bike's heading. */
+  private coverTrack: { getNearestRoad?(x: number, y: number, angle?: number | null): { x: number; y: number; angle: number } | null } | null = null;
+  private coverLoader: LoaderFrame | null = null;
+  private riderAngle: number | null = null;
+  private coverAhead(rider: CoverLngLat): readonly CoverLngLat[] {
+    const onRoute = routeAheadPoints(this.coverRouteCoords, rider);
+    if (onRoute) return onRoute;
+    const track = this.coverTrack, loader = this.coverLoader;
+    if (!track?.getNearestRoad || !loader || loader._lastCenterLat == null) return [];
+    const w = lngLatToWorld(rider[0], rider[1], loader);
+    const road = track.getNearestRoad(w.x, w.y, this.riderAngle);
+    if (!road || !Number.isFinite(road.angle)) return [];
+    // World x east, y south: a world angle `a` is compass bearing a + π/2. Along the road, the way the bike faces.
+    const forward = this.riderAngle == null || Math.cos(road.angle - this.riderAngle) >= 0 ? road.angle : road.angle + Math.PI;
+    return roadAheadPoints(worldToLngLat(road.x, road.y, loader), forward + Math.PI / 2);
   }
 
   projectWorld(worldX: number, worldY: number, loader: LoaderFrame, canvas: HTMLCanvasElement): ScreenPoint {
@@ -813,6 +909,7 @@ export class OwnWorldView implements WorldViewOracles {
 
   // ---- vehicles ----
   setPlayerBike(player: any, loader: LoaderFrame, visible: boolean, zoomScale = 1): void {
+    if (player) { this.riderAngle = Number.isFinite(player.angle) ? player.angle : null; this.coverLoader = loader; }
     const bike = this._playerBike;
     if (!bike || !player || !loader) return;
     bike.zoomScale = zoomScale;
@@ -872,14 +969,28 @@ export class OwnWorldView implements WorldViewOracles {
 
   setRoute(routePath: readonly { x: number; y: number }[] | null, loader: LoaderFrame, visible: boolean): void {
     if (!loader || loader._lastCenterLat == null) return;
+    // The buildings' route-ahead prefetch (#217) follows the planned route whether or not its line is shown (the line
+    // is an aid the player pays for; most rides hide it).
+    if (routePath !== this.buildingsRouteRef) {
+      this.buildingsRouteRef = routePath;
+      this.buildingsRoute = routePath && routePath.length > 1 ? routePath.map(p => worldToLngLat(p.x, p.y, loader)) : null;
+      this._threeBuildings?.setRoute?.(this.buildingsRoute);
+    }
+    if (routePath !== this.coverRouteSource) {
+      this.coverRouteSource = routePath;
+      this.coverRouteCoords = routePath && routePath.length >= 2 ? routePath.map(p => worldToLngLat(p.x, p.y, loader)) : null;
+    }
     if (!visible || !routePath || routePath.length < 2) { if (this.ownGroundState.route) this.groundRoute(null); this.routeRef = null; return; }
     if (this.routeRef === routePath && this.ownGroundState.route) return;
     this.routeRef = routePath;
     this.groundRoute(routePath.map(p => worldToLngLat(p.x, p.y, loader)));
   }
   private groundRoute(coords: [number, number][] | null): void { this.ownGroundState.route = coords; this._ownGround?.setRoute(coords); }
+  private buildingsRouteRef: unknown = null;
+  private buildingsRoute: [number, number][] | null = null;
 
   setStreetHighlights(track: any, loader: LoaderFrame, _learned: Set<string>, activeName: string, activeSegmentIndex: number, routePath: unknown = null): void {
+    if (track && loader) { this.coverTrack = track; this.coverLoader = loader; }
     if (!this.ready || !track || !loader) return;
     const key = `${activeName || ''}:${activeSegmentIndex}`;
     if (key !== this.activeStreetKey || routePath !== this.activeStreetRoute) {
@@ -911,7 +1022,13 @@ export class OwnWorldView implements WorldViewOracles {
     if (this._threeBuildings) { this._threeBuildings.setStreets?.(ways); this.streetFronts = null; }
     else this.streetFronts = ways;
   }
-  setSpoilerNames(names: string[]): void { this.spoilerNames = names || []; }
+  /** Per source, as vector-map.js (spoilerSources.ts: the track's names used to replace the extract's at every route start). */
+  setSpoilerNames(names: string[], source = 'extract'): void {
+    this.spoilerNames = this.spoilerSourcesOn ? this.spoilerSources.set(names, source) : (names || []);
+  }
+  private readonly spoilerSources = new SpoilerSources();
+  /** `?spoilerSources=0`: the last list wins (the old behaviour). */
+  private readonly spoilerSourcesOn = flag('spoilerSources', '__canalRecallSpoilerSources', true);
   _spoils(name: string): boolean { return !!name && this.spoilerNames.includes(name); }
   setMeasuredColoursOnly(on: boolean): void { this.measuredColoursOnly = !!on; this.extras.syncEnabled(); }
   /** The look the saved preference asks for, unless a URL look is in force (vector-map.js, same rule). */

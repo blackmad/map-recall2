@@ -34,6 +34,24 @@ export const DETAIL_LEAD_M = 110;
 export const DETAIL_SIDE_MARGIN = 0.12;
 export const DETAIL_LINGER_M = 160;
 export const DETAIL_MAX_TILES = 6;
+/**
+ * A touch device's z17 tiles are a quarter of a z16 tile: six left room for the 2×2 block and two lingering tiles only,
+ * so a tile beside the rider went back to coarse shells 90-115 m away, on screen (lane E4, #217: the seeded ride's
+ * iPhone profile, Koninginneweg 67303/43085 and Van Baerlestraat 67311/43083). Eight keep four lingering
+ * (`?detailLinger=0`: six, as before).
+ */
+export const DETAIL_MAX_TILES_TOUCH = 8;
+/** With room for them to linger, a touch block's centre leads further (side tiles turned detailed ~115 m away). */
+export const DETAIL_LEAD_M_TOUCH = 160;
+
+/** `?detailLinger=0` (or `window.__canalRecallDetailLinger = false`): the touch block keeps DETAIL_MAX_TILES (A/B). */
+export function detailLingerEnabled(): boolean {
+  try {
+    const g = globalThis as { __canalRecallDetailLinger?: boolean; location?: { search?: string } };
+    if (g.__canalRecallDetailLinger === false) return false;
+    return new URLSearchParams(g.location?.search ?? '').get('detailLinger') !== '0';
+  } catch { return true; }
+}
 
 const M_PER_DEG_LAT = 111_320;
 

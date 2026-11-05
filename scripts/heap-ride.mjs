@@ -8,6 +8,14 @@
 // performance.memory.usedJSHeapSize (what the engine-own spec reports as heapMB), and with --snapshot the retained
 // size of every own property of the game and its world view (two levels: `vm._threeBuildings.chunks`) plus self size
 // by constructor (scripts/heap-snapshot.mjs). Snapshot files go to $HEAP_TMP (default os.tmpdir()) and are deleted.
+// Timeline (lane E2, #215: the own engine crashed Chrome with a V8 OOM): --every 5 samples every 5 s of the ride, each
+// after a forced GC in the page and its workers, with the renderer and GPU process RSS (ps), resident GPU bytes
+// (engine/glCounters.ts GlResident, on with --gl), three.js renderer.info.memory, building chunks resident and fading,
+// and the rAF frame histogram of the window since the previous sample (the GC'd sample itself is left out). Snapshot
+// labels may name timeline points (`--snapshot start,t30,t60,t600`). --chrome rides the installed Chrome on Metal (the
+// user's browser), else Playwright's Chromium. --via auto:12 carries the rider on rails (motion-stutter.mjs's rails,
+// --speed px/s) through 12 POIs of the centre and back again, so a 10-minute ride never stops at a finish.
+import { execFileSync } from 'node:child_process';
 import { chromium, devices } from 'playwright';
 import fs from 'node:fs';
 import os from 'node:os';
@@ -23,11 +31,36 @@ const qs = opt('qs', '?engine=own&world=v1&roads=bin');
 const rideS = Number(opt('ride', '60'));
 const snapAt = (opt('snapshot', 'start,end') || '').split(',').filter(Boolean);
 const throttle = Number(opt('throttle', '1'));
-const origin = `http://127.0.0.1:${process.env.PORT || 4544}`;
+// ORIGIN/PAGE ride another server, e.g. the deployed site: ORIGIN=https://canalrecall-blackmad.web.app PAGE=/ride
+const origin = process.env.ORIGIN || `http://127.0.0.1:${process.env.PORT || 4544}`;
+const pagePath = process.env.PAGE || '/canal-drive/';
 const tmp = process.env.HEAP_TMP || os.tmpdir();
+const every = Number(opt('every', '0'));
+const via = opt('via', '');
+const railSpeed = Number(opt('speed', '120'));
+const useChrome = argv.includes('--chrome');
+const glOn = argv.includes('--gl');
 
-const browser = await chromium.launch({ args: ['--enable-precise-memory-info', '--js-flags=--expose-gc'] });
-const context = await browser.newContext(device === 'iphone' ? { ...devices['iPhone 13'] } : { viewport: { width: 1280, height: 800 } });
+const browser = await chromium.launch({ args: ['--enable-precise-memory-info', '--js-flags=--expose-gc', ...(useChrome ? ['--use-angle=metal', '--ignore-gpu-blocklist'] : [])],
+  ...(useChrome ? { executablePath: '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome' } : {}) });
+const browserCdp = await browser.newBrowserCDPSession();
+/** Resident set of the renderer and GPU processes, MB (SystemInfo names the pids, ps reads their RSS). */
+async function processRss() {
+  try {
+    const { processInfo } = await browserCdp.send('SystemInfo.getProcessInfo');
+    const out = {};
+    for (const p of processInfo) {
+      if (p.type !== 'renderer' && p.type !== 'GPU') continue;
+      let kb = 0; try { kb = Number(execFileSync('ps', ['-o', 'rss=', '-p', String(p.id)]).toString().trim()) || 0; } catch (_) {}
+      const k = p.type === 'GPU' ? 'gpuMB' : 'rendererMB';
+      out[k] = Math.max(out[k] ?? 0, Math.round(kb / 1024));
+    }
+    return out;
+  } catch (e) { return { error: String(e).slice(0, 120) }; }
+}
+// Desktop: the user's 14-inch MacBook Pro (budgets.json _desktopPerfViewport, 1512x982 at DPR 2); VIEWPORT/DPR override.
+const [vw, vh] = (process.env.VIEWPORT || '1512x982').split('x').map(Number);
+const context = await browser.newContext(device === 'iphone' ? { ...devices['iPhone 13'] } : { viewport: { width: vw, height: vh }, deviceScaleFactor: Number(process.env.DPR || 2) });
 if (process.env.WORLD_DIR) await context.route(/\/data\/extracts\/amsterdam\/world-v1\/([^?]+)/, route => {
   const dir = path.resolve(process.env.WORLD_DIR), file = path.join(dir, /world-v1\/([^?]+)/.exec(route.request().url())[1]);
   return fs.existsSync(file) ? route.fulfill({ body: fs.readFileSync(file) }) : route.fulfill({ status: 404, body: '' });
@@ -36,13 +69,29 @@ if (process.env.BUNDLES_DIR) await context.route(/\/canal-drive\/js\/([\w-]+\.bu
   const file = path.join(process.env.BUNDLES_DIR, /\/([\w-]+\.bundle\.js)/.exec(route.request().url())[1]);
   return fs.existsSync(file) ? route.fulfill({ body: fs.readFileSync(file), contentType: 'application/javascript' }) : route.continue();
 });
+// SITE_DIR=<dir> serves /canal-drive/<path> from an older checkout's public/canal-drive (index.html, js/) where the
+// file exists there, over today's data: replays a past deploy (the 2026-11-02 crash build, lane E2).
+if (process.env.SITE_DIR) await context.route(/\/canal-drive\/([^?#]*)/, route => {
+  const rel = /\/canal-drive\/([^?#]*)/.exec(route.request().url())[1] || 'index.html';
+  const file = path.join(path.resolve(process.env.SITE_DIR), rel);
+  if (!file.startsWith(path.resolve(process.env.SITE_DIR)) || !fs.existsSync(file) || fs.statSync(file).isDirectory()) return route.continue();
+  const type = file.endsWith('.html') ? 'text/html' : file.endsWith('.js') ? 'application/javascript' : file.endsWith('.json') ? 'application/json' : file.endsWith('.css') ? 'text/css' : 'application/octet-stream';
+  return route.fulfill({ path: file, contentType: type });
+});
 const page = await context.newPage();
+if (glOn) await page.addInitScript(() => { window.__canalRecallGlCounters = true; });
+// rAF intervals for the timeline's frame histograms; __frameSkip marks the forced-GC sample windows (left out).
+await page.addInitScript(() => {
+  const F = window.__rideFrames = { t: [], skip: [] };
+  const tick = now => { F.t.push(now); requestAnimationFrame(tick); };
+  requestAnimationFrame(tick);
+});
 const errors = [];
 page.on('pageerror', e => errors.push(String(e).slice(0, 300)));
 await page.addInitScript(() => { let s = 0x5eed1234; Math.random = () => { s = (s * 1664525 + 1013904223) >>> 0; return s / 2 ** 32; }; });
 const cdp = await context.newCDPSession(page);
 await cdp.send('Emulation.setCPUThrottlingRate', { rate: throttle });
-await page.goto(`${origin}/canal-drive/${qs}`);
+await page.goto(`${origin}${pagePath}${qs}`);
 const startPoi = 'anne-frank', destPoi = 'rijksmuseum';
 await page.waitForFunction(([a, b]) => window.canalRecallGame?.routePois?.some(p => p.id === a) && window.canalRecallGame.routePois.some(p => p.id === b), [startPoi, destPoi], { timeout: 120_000 });
 await page.locator('#travel-mode').selectOption('car', { force: true });
@@ -125,7 +174,12 @@ async function sample(label) {
     for (const r of Object.values(groups)) { r.cpuMB = Math.round(r.cpuMB * 10) / 10; r.uploadedCpuMB = Math.round(r.uploadedCpuMB * 10) / 10; }
     return Object.fromEntries(Object.entries(groups).filter(([, r]) => r.cpuMB >= 0.1).sort((a, b) => b[1].cpuMB - a[1].cpuMB));
   });
-  const row = { label, ...perf, ...heap, scene };
+  const extra = await page.evaluate(() => {
+    const vm = canalRecallGame.vectorMap, tb = vm._threeBuildings, info = vm.host?.renderer?.info ?? vm._sharedFrame?.renderer?.info;
+    return { gpu: window.__canalPerf?.gl?.report?.().resident ?? null, three: info ? { ...info.memory, programs: info.programs?.length ?? null } : null,
+      chunks: tb?.chunks?.size ?? null, fading: tb?.fading?.size ?? null };
+  }).catch(e => ({ error: String(e).slice(0, 120) }));
+  const row = { label, ...perf, ...heap, ...(await processRss()), ...extra, scene };
   if (snapAt.includes(label)) {
     row.marks = await markOwners();
     const file = path.join(tmp, `heap-${device}-${label}-${process.pid}.heapsnapshot`);
@@ -162,9 +216,123 @@ await page.evaluate(() => {
     p.steerInput = Math.max(-1, Math.min(1, err * 2.5)); p.throttle = p.speed < cruise ? 1 : 0; p.brake = p.speed > cruise * 1.6 ? 1 : 0; p.handbrake = false;
   };
 });
-await page.waitForTimeout(rideS * 1000);
+const startRails = () => page.evaluate(([viaArg, v]) => {
+  const g = canalRecallGame, p = g.player, l = g.osmLoader, ppm = (0, eval)('PIXELS_PER_METER');
+  const world = (lat, lng) => ({ x: l._lastOffsetX + (lng - l._lastCenterLng) * 111320 * Math.cos(l._lastCenterLat * Math.PI / 180) * ppm, y: l._lastOffsetY - (lat - l._lastCenterLat) * 111320 * ppm });
+  let pois;
+  if (viaArg.startsWith('auto:')) {
+    // N POIs within 2.2 km of the Dam, sorted by id (deterministic), visited nearest-first from the rider.
+    const n = Number(viaArg.slice(5)), dam = { lat: 52.3731, lng: 4.8926 };
+    const near = g.routePois.filter(q => Math.hypot((q.lat - dam.lat) * 111320, (q.lng - dam.lng) * 67800) < 2200).sort((a, b) => String(a.id).localeCompare(String(b.id)));
+    const step = Math.max(1, Math.floor(near.length / n)), pick = near.filter((_, i) => i % step === 0).slice(0, n);
+    pois = []; let at = { x: p.x, y: p.y };
+    while (pick.length) { let bi = 0, bd = Infinity; pick.forEach((q, i) => { const w = world(q.lat, q.lng), d = Math.hypot(w.x - at.x, w.y - at.y); if (d < bd) { bd = d; bi = i; } }); const q = pick.splice(bi, 1)[0]; pois.push(q); at = world(q.lat, q.lng); }
+  } else pois = viaArg.split(',').map(id => g.routePois.find(q => q.id === id)).filter(Boolean);
+  const stops = [{ x: p.x, y: p.y }, ...pois.map(q => world(q.lat, q.lng))];
+  const path = [];
+  for (let k = 1; k < stops.length; k++) { let leg = null; try { leg = g.track.findRoute(stops[k - 1], stops[k]); } catch (_) {} if (leg && leg.length > 1) path.push(...(path.length ? leg.slice(1) : leg)); }
+  const cum = [0]; for (let k = 1; k < path.length; k++) cum.push(cum[k - 1] + Math.hypot(path[k].x - path[k - 1].x, path[k].y - path[k - 1].y));
+  const total = cum[cum.length - 1] || 0;
+  window.__rail = { pois: pois.map(q => q.id), px: Math.round(total) };
+  let sAt = 0, seg = 1, dir = 1;
+  if (path.length > 1) p.update = function (dt) {
+    if (window.__railPause) { this.speed = 0; this.vx = 0; this.vy = 0; return; }
+    // Ping-pong: out along the tour and back, so a long ride keeps moving (and revisits what it streamed out).
+    sAt += dir * v * dt;
+    if (sAt >= total) { sAt = total; dir = -1; } else if (sAt <= 0) { sAt = 0; dir = 1; }
+    while (seg < path.length - 1 && cum[seg] < sAt) seg++;
+    while (seg > 1 && cum[seg - 1] > sAt) seg--;
+    const a = path[seg - 1], b = path[seg], f = (sAt - cum[seg - 1]) / Math.max(1e-6, cum[seg] - cum[seg - 1]);
+    const ang = Math.atan2((b.y - a.y) * dir, (b.x - a.x) * dir);
+    this.x = a.x + (b.x - a.x) * f; this.y = a.y + (b.y - a.y) * f;
+    let d = ang - this.angle; d = Math.atan2(Math.sin(d), Math.cos(d)); this.angle += d * Math.min(1, dt * 6);
+    this.speed = v; this.vx = Math.cos(this.angle) * v; this.vy = Math.sin(this.angle) * v;
+    this.distancePx = (this.distancePx || 0) + v * dt;
+  };
+}, [via, railSpeed]);
+if (via) await startRails();
+const rail = via ? await page.evaluate(() => window.__rail) : null;
+if (rail) console.log(`rails: ${rail.pois.length} POIs, ${Math.round(rail.px / 3)} m out`);
+
+const pickQ = (v, q) => { const s = [...v].sort((a, b) => a - b); return s.length ? s[Math.min(s.length - 1, Math.floor(q * s.length))] : 0; };
+/** Frame intervals since `from` (page ms), leaving out the forced-GC sample windows. */
+const frameWindow = from => page.evaluate(from => {
+  const F = window.__rideFrames, out = [];
+  for (let i = 1; i < F.t.length; i++) {
+    if (F.t[i - 1] < from) continue;
+    if (F.skip.some(([a, b]) => F.t[i] > a && F.t[i - 1] < b)) continue;
+    out.push(F.t[i] - F.t[i - 1]);
+  }
+  return out;
+}, from);
+const frameStats = iv => ({ n: iv.length, p50: +pickQ(iv, 0.5).toFixed(1), p99: +pickQ(iv, 0.99).toFixed(1), over33: iv.filter(f => f > 33.4).length,
+  over50: iv.filter(f => f > 50).length, over100: iv.filter(f => f > 100).length, longestMs: Math.round(Math.max(0, ...iv)) });
+const timeline = [];
+const rideT0 = await page.evaluate(() => performance.now());
+if (every > 0) {
+  // Ride time excludes the samples: the rider holds still while a sample (GC, snapshot) runs, and the next window
+  // starts when it ends, so a slow snapshot does not eat the ride.
+  let last = rideT0;
+  for (let t = every; t <= rideS; t += every) {
+    const wait = last + every * 1000 - (await page.evaluate(() => performance.now()));
+    if (wait > 0) await page.waitForTimeout(wait);
+    const frames = frameStats(await frameWindow(last));
+    const a = await page.evaluate(() => { window.__railPause = true; return performance.now(); });
+    const label = `t${t}`;
+    const row = await sample(label);
+    const b = await page.evaluate(() => { window.__railPause = false; return performance.now(); });
+    await page.evaluate(([a, b]) => window.__rideFrames.skip.push([a, b + 50]), [a, b]);
+    last = b + 50;
+    if (!snapAt.includes(label)) delete row.scene;
+    timeline.push({ t, ...row, frames });
+    console.log(`  t${t}: main ${row.main.usedMB} MB +${row.main.backingMB ?? '?'} buf, workers ${row.workersUsedMB}, renderer RSS ${row.rendererMB}, GPU RSS ${row.gpuMB}, gl ${row.gpu?.totalMB ?? '-'} MB, chunks ${row.chunks} fading ${row.fading}; frames p99 ${frames.p99} >50 ${frames.over50} >100 ${frames.over100} max ${frames.longestMs}`);
+  }
+} else await page.waitForTimeout(rideS * 1000);
+// --rides N: after the ride, N - 1 more rides in the same page (route setup -> a new destination -> ride), each
+// --ride seconds, sampled at its end: what a player who keeps playing without reloading holds (lane E2, #215).
+const rides = Number(opt('rides', '1'));
+const rideRows = [];
+for (let r = 2; r <= rides; r++) {
+  const dest = await page.evaluate(r => {
+    const g = canalRecallGame;
+    g._openRouteSetup();
+    const ids = [...document.querySelectorAll('#poi-destination option')].map(o => o.value).filter(Boolean);
+    const id = ids[(r * 7) % ids.length];
+    document.querySelector('#poi-destination').value = id;
+    const here = g.routePois.slice().sort((a, b) => Math.hypot(a.lat - 52.3731, a.lng - 4.8926) - Math.hypot(b.lat - 52.3731, b.lng - 4.8926))[r % 10];
+    g._pickDestinationNear = () => here;
+    return id;
+  }, r);
+  await page.locator('#route-card').evaluate(f => f.requestSubmit());
+  await page.waitForFunction(() => canalRecallGame.state === 4 && canalRecallGame.camera.introOverview === 0, null, { timeout: 180_000 }).catch(() => errors.push(`ride ${r}: never raced`));
+  await page.evaluate(() => { const g = canalRecallGame, p = g.player; g._quizFreezesRide = () => false; p.update = window.__heldUpdate ?? p.update; });
+  if (via) await startRails();
+  await page.waitForTimeout(rideS * 1000);
+  const row = await sample(`ride${r}`);
+  delete row.scene;
+  rideRows.push({ ride: r, dest, ...row });
+  console.log(`  ride ${r} (${dest}): main ${row.main.usedMB} MB +${row.main.backingMB} buf, workers ${row.workers.length}/${row.workersUsedMB} MB, renderer RSS ${row.rendererMB}, gl ${row.gpu?.totalMB ?? '-'}, three ${JSON.stringify(row.three)}`);
+}
+// --hide S: then another tab in front for S seconds (this page hidden, rAF stopped, workers and timers running), the
+// hidden page sampled every --every seconds (default 15): does anything pile up while nobody draws? (lane E2, #215)
+const hideS = Number(opt('hide', '0'));
+const hiddenRows = [];
+if (hideS > 0) {
+  const front = await context.newPage();
+  await front.goto('about:blank'); await front.bringToFront();
+  const step = every > 0 ? every : 15;
+  for (let t = step; t <= hideS; t += step) {
+    await front.waitForTimeout(step * 1000);
+    const vis = await page.evaluate(() => document.visibilityState);
+    const row = await sample(`hidden${t}`); delete row.scene;
+    hiddenRows.push({ t, visibility: vis, ...row });
+    console.log(`  hidden ${t}s (${vis}): main ${row.main.usedMB} MB +${row.main.backingMB} buf, workers ${row.workers.length}/${row.workersUsedMB} MB, renderer RSS ${row.rendererMB}`);
+  }
+  await page.bringToFront(); await front.close();
+}
+const rideFrames = frameStats(await frameWindow(rideT0));
 const end = await sample('end');
-const result = { device, qs, throttle, rideS, settleMs, bundles: process.env.BUNDLES_DIR ?? null, world: process.env.WORLD_DIR ?? null, start, end, errors };
+const result = { device, qs, throttle, rideS, every, chrome: useChrome, rail, settleMs, bundles: process.env.BUNDLES_DIR ?? null, world: process.env.WORLD_DIR ?? null, start, timeline, rideRows, hiddenRows, end, rideFrames, errors };
 fs.mkdirSync(path.dirname(out), { recursive: true });
 fs.writeFileSync(out, JSON.stringify(result, null, 1));
 await browser.close();

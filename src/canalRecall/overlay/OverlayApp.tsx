@@ -412,6 +412,8 @@ function RideOptions({
       <ToggleGroup label={t('options.comfort')}>
         <ToggleTile id={id('reduced-motion', 'live-reduced-motion')} checked={prefs.reducedMotion} onChange={reducedMotion => set({ reducedMotion })} title={t('options.lessMotion')} />
         <ToggleTile id={id('trees-enabled', 'live-trees')} checked={prefs.trees} onChange={trees => set({ trees })} title={t('options.trees')} />
+        <ToggleTile id={id('distance-haze', 'live-distance-haze')} checked={prefs.distanceHaze} onChange={distanceHaze => set({ distanceHaze })}
+          title={t('options.distanceHaze')} hint={t('options.distanceHazeHint')} />
       </ToggleGroup>
     </>
   );

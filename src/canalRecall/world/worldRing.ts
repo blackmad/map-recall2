@@ -59,3 +59,24 @@ export function ringCells(ride: RingBounds, ahead: readonly RingBounds[], margin
   for (const b of ahead) add(b);
   return out;
 }
+
+/**
+ * `?ringFollow=0` (or `window.__canalRecallRingFollow = false`): the streamer re-plans only when its z14 tiles change,
+ * as before (A/B). On (lane E4, #217), the ring's own cells join the streamer's follow signature, so the ring follows
+ * the rider: a z14 tile is ~1.5 km and 1 km cells change inside it, and before this a cell the ring had reached was read
+ * only once the next z14 tile came into view, ~60 m from the rider (Koninginneweg → Van Baerlestraat, the seeded
+ * ride: 1,586 buildings arrived in coarse:8413/5385 at 57 m, and 112 in the detailed tile 33654/21541 at 59 m).
+ */
+export function ringFollowEnabled(): boolean {
+  try {
+    const g = globalThis as { __canalRecallRingFollow?: boolean; location?: { search?: string } };
+    if (g.__canalRecallRingFollow === false) return false;
+    return new URLSearchParams(g.location?.search ?? '').get('ringFollow') !== '0';
+  } catch { return true; }
+}
+
+/** A stable key of a ring's cells (sorted), for a follow signature. */
+export function ringSignature(ring: ReadonlySet<string> | null): string {
+  return ring ? [...ring].sort().join(',') : '';
+}
+

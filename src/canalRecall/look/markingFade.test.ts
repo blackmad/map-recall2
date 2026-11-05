@@ -2,6 +2,7 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { MARKING_FADE_DEFAULT, MARKING_FADE_FROM_M, MARKING_FADE_STRENGTH, markingFadeFlag, markingFadeRange, markingFadeUniforms, markingFadeWeight } from './markingFade.ts';
 import { groundProgram } from '../ownGround/groundMaterial.ts';
+import { DEPTH_FADE_MIN_NEAR_M } from './depthFade.ts';
 
 test('markingFadeFlag: on by default, ?markingFade=0 off', () => {
   const g = globalThis as { __canalRecallMarkingFade?: unknown };
@@ -13,9 +14,11 @@ test('markingFadeFlag: on by default, ?markingFade=0 off', () => {
 
 test('the near field keeps its markings; far paint becomes the asphalt, far cycle red keeps a hint', () => {
   const chase = markingFadeRange(40);
-  assert.equal(chase.from, MARKING_FADE_FROM_M, 'a chase camera fades from 120 m');
+  // The later of 120 m and the depth fade's start: since the gentler depth fade (2026-11-05) a chase camera's
+  // markings fade from 200 m, with the haze.
+  assert.equal(chase.from, Math.max(MARKING_FADE_FROM_M, DEPTH_FADE_MIN_NEAR_M), 'a chase camera fades with the depth fade');
   assert.ok(markingFadeRange(350).from > 250, 'a high camera starts with the depth fade, not inside its near frame');
-  assert.equal(markingFadeWeight(119, chase, MARKING_FADE_STRENGTH.paint), 0);
+  assert.equal(markingFadeWeight(chase.from - 1, chase, MARKING_FADE_STRENGTH.paint), 0);
   assert.equal(markingFadeWeight(chase.to, chase, MARKING_FADE_STRENGTH.paint), 1);
   assert.equal(markingFadeWeight(chase.to + 500, chase, MARKING_FADE_STRENGTH.cycle), 0.7);
 });

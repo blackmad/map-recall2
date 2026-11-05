@@ -128,6 +128,8 @@
     "options.comfort": "Comfort & detail",
     "options.lessMotion": "Less motion",
     "options.trees": "Trees",
+    "options.distanceHaze": "Distance haze",
+    "options.distanceHazeHint": "Far streets fade softly toward the sky",
     // --- Ride settings panel --------------------------------------------------
     "settings.title": "Ride settings",
     "settings.progress": "My progress",
@@ -749,6 +751,8 @@
     "options.comfort": "Comfort en detail",
     "options.lessMotion": "Minder beweging",
     "options.trees": "Bomen",
+    "options.distanceHaze": "Nevel in de verte",
+    "options.distanceHazeHint": "Verre straten vervagen zacht naar de lucht",
     // --- Ritinstellingen ------------------------------------------------------
     "settings.title": "Ritinstellingen",
     "settings.progress": "Mijn voortgang",
@@ -1773,6 +1777,7 @@
       routePattern: "surprise",
       homeAddress: "",
       trees: true,
+      distanceHaze: true,
       measuredColoursOnly: false,
       detailed3d: false,
       reducedMotion: false,

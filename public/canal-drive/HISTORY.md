@@ -1,5 +1,146 @@
 # Canal Recall — what is built
 
+**The cold first start stalls less: budget-gated ground slices, houseboat berths by box first, coalesced tree and furniture rebuilds, grids built in idle time (2026-11-05, lane E6 #219).** Lane E6 (bd4a82f18 … f80aed2ea). After E5 the cold first start was the last ride-start owner in the red. Measured with `motion-stutter.mjs --runs cold --seconds 0 --starts default,change` (fresh browser per run, 3 runs, installed Chrome on Metal, `CANAL_PW_EXCLUSIVE`), first 10 s after RACING: desktop frames over 100 ms 2–3 → 1 and over 200 ms 1 → 0 (longest 217 → 133–150 ms); iPhone 13 at 4× over 100 ms 17 → 7–8, over 200 ms 1–2 → 1 (longest 250 → 233–250). Owners found and fixed, each behind a flag: every deferred own-ground slice resumed after the same paint, so 4–6 continuations landed in one 67–117 ms frame; a resuming slice now re-checks the frame budget and waits at most 4 frames (`?groundBudgetGate=0`; `frameBudget.test.ts` fails without it). Houseboat berths in `moorings.ts` were the largest iPhone owner (1059 ms summed over the stalled frames): polygons are box-checked first, polygons over 64 edges use `water.ts` `bandedInPolygon`, berths by box, result identical (`deepEqual` against the plain scan in `ownGround.test.ts`). `SurfaceIndex` uses numeric grid keys and finer steps (64 surfaces or 512 cells a step), exact. Road, marking, rail and courtyard cells call `beforeParse()` (`?groundParseYield=0`). Inventory trees and street furniture rebuild once per paint, at least 120 ms apart, through the typed `rendererShared/rebuildCoalescer.ts` (6 tests; `?extrasRebuild=sync` off; the legacy `inventory-trees-source.js` and `street-furniture-source.js` got a small adapter; without a `document` every request rebuilds at once, so Node callers are unchanged). Three grids are built in idle time: the rider-cover footprint grid (`engine/idleBoxGrid.ts`, `?coverGridIdle=0`; the cover may answer from the previous grid for a few hundred ms), the label occlusion grid centred on the landing during the start flight (`?labelIndexIdle=0`), and the camera clearance resident grid (`?clearanceIdle=0`). Motion unchanged (desktop p99 16.8 ms, 0 over 50 ms). Still red, largest first: one major GC per cold start (125–165 ms desktop, 200–214 ms at 4×, 0.1–0.6 s after RACING; next: a heap-allocation profile of the load, `HEAP_OWNERS=1`); the iPhone's first ride frame 117–133 ms (camera solve 25–28 ms because the resident list changes at landing before the idle prewarm; `_render`, `setFerryTerminals`); the following label frame 133 ms iPhone (occlusion index 19, policy 16); the building-tiles flush into `setFeatures` 86–101 ms on a route change (untouched); shader precompile not done because no stalled frame compiled a program. Trap recorded for lanes: the Vite dev server full-reloads the page on any file change in the worktree, which silently hangs a harness run; build to a scratch `--outdir` with `BUNDLES_DIR`. `buildingTilesBrowser.ts` is hashed compiler code, so the world cells were recompiled. Bundles engine, building-tiles, own-ground-game, own-ground-worker, inventory-trees, street-furniture.
+
+**Ride starts stall less under the own engine: lazy spoiler policy for labels, grouping memos, sliced ground parsing, the frame budget on by default (2026-11-05, lane E5 #218).** Lane E5 (f1d2b6470 … a8325860b). The ride-start stalls lane E2 left red had three owners: a route start, answer or quiz re-tested ~6k named streets and every POI against the spoiler policy in one frame (68 ms policy + 69 ms rebuild on the iPhone profile, the 358 ms first frame); three-buildings `setFeatures` recomputed every feature's id, kit role and tile keys per call (36k features, 30–37 ms); and own-ground slices landed together. Now each label is tested when a draw first meets it in view, once per policy change, with the street-label structure built in ~4 ms idle slices after the overview loads and POIs in their own buckets (`?labelLazyPolicy=0`); the feature grouping is memoised per feature (`?featureGroupCache=0`, 14–19 ms, same groups and order; the overview footprints memo their tile the same way); each fetched ground cell's JSON parse is its own slice (`?groundParseYield=0`); and the own-ground per-frame budget E2 shipped is on by default after the A/B the integrator asked for (iPhone ride-start frames over 100 ms 84 → 39, over 200 ms 1 → 0; desktop cold start 6 → 2; `?groundFrameBudget=0`). A spoiler bug fell out: under own, `setSpoilerNames(names,'track')` at every route start replaced the extract's names, so POIs named after bridges, canals or stops off the road network were no longer screened; names are kept per source and merged (`spoilerSources.ts`, `?spoilerSources=0`). Measured in the first 10 s after RACING with `scripts/motion-stutter.mjs --starts default,change,next,free` (every frame over 50 ms attributed by frame phase, GL work with program names, labels, streaming, LoAF, CPU profile): iPhone 13 at 4× over 200 ms 1–2 per start → 0 (longest 367 → 200 ms), over 100 ms 28 → 15 cold, 14/11/6/5 → 6/1/1/7/3/3 on route changes, 16/8 → 8/1/7/2 free; desktop cold start over 100 ms 6 → 1, route changes 1,1,0,0,0,0 → 0; motion unchanged (p99 16.8 ms headless before and after, longest 50 → 16.8 ms). Budgets: `iphoneRideStartOver200Ms` 0, `desktopRideStartOver100MsWarm` 0; the desktop cold start (1 over 100 ms) and the iPhone cold start and first change stay red, owners on the board. Tests: `labelLayerPolicy.test.ts`, `spoilerSources.test.ts` in `test:engine` (166); `featureGroupCache.test.ts` wired into `test:street-appearance`; `frameBudget.test.ts` default assertion flipped. Bundles engine, three-buildings, own-ground-game, own-ground-worker.
+
+**Bundles are also evaluated without a browser (2026-11-05, CI red after E1).** `check-game-decomposition.mjs` loads every ride bundle in a Node context where `URLSearchParams` is absent; the new fade-strength reader in `look/depthFade.ts` ran at module load and threw, so `test:canal-game-structure` failed on main at 4e1c7b153. The reader is guarded (`typeof URLSearchParams`), and the structure gate also found three ride bundles (game-landmarks, game-recall, game-presentation) stale against their sources since the E1 rebuild list; all rebuilt. Rule for lanes: any flag read in a shared `look/` module must tolerate a non-browser global.
+
+**Houses stay put when the rider bumps into them: the passage cover is route-aware and dims instead of hiding; the far haze is gentler, with a Distance haze switch (2026-11-05, #214).**
+Lane E1 (528bdb5f7 … 2b9720a0b). The Cuyperspassage rule (`coveredPassage.ts`)
+covered any footprint the rider's point was inside, and under own that meant
+`setHidden`, so a bump into a house front made the house vanish (the old rule
+covered the bumped house in 37/41 and 40/41 samples at Nieuwe Leliestraat). Now
+`coveringBuildingOnPath` needs the rider at least 1.5 m inside the footprint
+**and** the path ahead inside the same footprint: the next 15 m of the route
+when the rider is within 15 m of it, else the road underfoot plus 15 m along it
+(`track.getNearestRoad`). The heading was tried first and rejected: a rider
+pressed against a wall faces into it. The covering building draws as a 0.28
+screen door (`HIDDEN.ghost`, `ThreeBuildings.setGhosted`, in all three facade
+fragment shaders), depth stays opaque. `?coverRoute=0` restores the point rule,
+`?coverDim=0` hides as before; MapLibre's `vector-map.js` keeps its rule.
+Result 0/41 at both streets; pins in `rider-cover-bump.spec.ts` (own, `COVER_AB=1`
+for the before). `covered-passage.spec.ts` now runs under both engines; under
+own the streamed footprints over the passage start at 8 m, so the cover never
+fires there and the spec checks the corridor pixels instead. For the road lane:
+the road guard lets the bike 1.1–2.6 m into house footprints at Nieuwe
+Leliestraat and 1.3–1.4 m at Bloemgracht, which is why the depth check alone
+would not have done. Haze: the user asked for a gentle far haze that can be
+turned off. `depthFade.ts` keeps the 0.8 × start but never inside 200 m (was
+80), full at 4 × (3.5), desaturation 0.5 (0.7), haze 0.38 (0.55), detail blend
+250–600 m (150–320); the brief's 2 ×–6 × start kept only 0–1 % of the gain
+because the A/B camera sits ~348 m from the view centre. `?fadeStrength=0..1`
+scales desaturation, haze and detail together, `?depthFadeMinNear=<m>` moves the
+floor. The busyness ratio keeps 53–58 % of lever 1's gain on desktop and 58–74 %
+on iPhone at every spot, near third unchanged. The "Distance haze" preference
+(default on, Comfort & detail, setup and in-ride, EN/NL) sets
+`__canalRecallDistanceHaze` and `sharedFrame` moves the fog range out of reach
+on the next frame, no reload, both engines; pinned in `distance-haze.spec.ts`;
+Storybook `AdvancedOptionsHazeOff` + phone. Marking fade now starts at 200 m
+for close cameras. Open: the ghost dimming has not been seen in a real ride (no
+passage fires under own); the road guard depth; the phone layout of the new tile.
+Integrator: engine, three-buildings, own-ground, signature, building-style,
+overlay, preferences, tile-buildings and building-types bundles rebuilt;
+`coveredPassage.test.ts` joined test:engine (158/158); test:look 178/178,
+test:own-ground 236/236, test:hud 34/34; What's New for both.
+
+**The pop-in the user saw was the world ring lagging the rider, not detail swapping: the ring now follows the rider, swaps cross-fade, and detail is prefetched along the route (2026-11-05, #217).**
+Lane E4 (272ce63a3, d95b510fb, 5dec6092f, 63a595ec0). The user's answer to #168
+was "detail switching on buildings already there", so the lane built the
+depth-aware detector that was parked: `engine/swapProbe.ts` records every
+chunk rebuild, arrival and departure during a pinned 60 s ride (Willemspark →
+Van Gogh Museum at 40 m/s, `#race=`) with the distance to the rider and the
+on-screen area of the faces the frame actually drew; `tests/e2e/swap-gate.spec.ts`
+pins it (`PERF_SWAPS=1`). Its first table was wrong three ways and says so:
+rebuilds read as zero because the probe's subset geometry had no bounding
+sphere (three computed one from a freed array and only warned; the spec now
+fails on the warning), chunks built before the hooks counted every building as
+swapped, and the seeded route changed between runs. The corrected table showed
+the near pop-in was buildings arriving inside chunks already loaded: two near
+chunks gained 112 and 150 buildings 59–87 m from the rider, a coarse chunk 1,586
+at the same moment, all 34 desktop gate failures. Cause: the world-v1 fetch
+ring was recomputed only when the building streamer's follow signature changed,
+and that signature tracked z14 tiles (~1.5 km), so a 1 km cell the ring had
+reached was not read until the next z14 tile came into view, ~60 m away. This is
+the streamer both engines use, so the default engine had it too. Fixes, each
+with its flag and test: `ringFollow` (the ring's cells join the follow
+signature, `world/worldRing.ts`, `?ringFollow=0`), `swapFade` (a rebuilt chunk
+keeps its old mesh while the new one dissolves in over 700 ms, then the old
+one dissolves out; a leaving chunk dissolves out; no program links while riding,
+`?swapFade=0`), `routeAhead` (tiles under the next 320 m desktop / 260 m touch
+of the planned route join the detailed set, at most 2–3 extra tiles;
+`ownWorldView.setRoute` now hands the route to the buildings layer even with
+the route line hidden, which the prefetch never received before, `?routeAhead=0`)
+and `detailLinger` (touch keeps 8 detailed tiles and leads 160 m instead of 6
+and 110, `?detailLinger=0`). Swaps ≥ 400 px² within 120 m: desktop 34 → 0,
+iPhone 6 → 0; within 200/300/500 m desktop 117/325/462 → 3/63/180, iPhone
+77/169/173 → 44/135/144; ringFollow alone took desktop to 0. Free Ride stays at
+11 cells, 0.82 MB. Open: the 63/135 shell→detail swaps 120–300 m out fade but
+are not prefetched (nearest desktop 174 m, off-route); the probe scores a swap
+at its first frame, so a dissolve counts like a pop; one pinned route; the
+iPhone cost of 8 + 3 detailed tiles is unmeasured. Found on the way:
+`world-v1-bytes.spec.ts` reads `window.PIXELS_PER_METER || 1`, which is not on
+`window`, so its "8 m/s" ride is 8 px/s (~2.7 m/s). Integrator: three-buildings,
+engine and building-tiles bundles rebuilt; `buildingTilesBrowser.ts` is hashed
+compiler code, cells recompiled (0 buildings changed) and re-verified;
+`worldRing.test.ts` joined test:world-format (39/39), `detailRing.test.ts` and
+the orphaned `streamingLookAhead.test.ts` joined test:engine (152/152).
+
+**The own engine's sky no longer flickers: the frame host re-asserts the sky clear colour before every clear (2026-11-05, #216).**
+Lane E3 (e75434338). The sky under own is only the colour the frame host clears
+the canvas to, and three sets that colour inside `renderer.render()` alone.
+Every streamed install precompiles its programs through `SharedFrame.compile` /
+`compileAsync`, which ends in `renderer.resetState()`, and that leaves
+`gl.clearColor(0,0,0,0)` behind; the next clear went transparent and the page's
+cream background showed through. It only happened while riding because riding
+is what streams installs, which is why no frozen strip ever showed it. Over a
+20 s ride at the lowest chase pitch on this Mac, 212 of 612 composited frames had
+a cream sky and 224 of 653 canvas clears were transparent; with the guard
+(`FrameHost` option `clearGuard`, `?skyClear=0` for A/B) 0 of ~630 frames and 0 of
+818/877/901 clears; MapLibre is 0 either way. `?renderOnChange=0` and
+`?depthFade=0` did not move the number, so those hypotheses are closed. Pinned in
+`tests/e2e/sky-flicker.spec.ts` (standing still the top rows are sky, no ride
+frame has anything else there, no transparent or masked clear), now in
+`test:e2e:engine-own`. Contact sheet in the screenshots repo under
+`engine-sky-20261105/`. Left open: one of four fixed-bundle runs failed the
+standing-still check before the ride (5,600 non-sky pixels), unexplained; the spec
+now attaches its worst frame. The root smell is `resetState()` leaving GL
+defaults between frames; anything else that clears outside `render()` needs the
+same guard.
+
+**The own engine does not leak: one ride is ~380 MB and flat; the Nov 2 crash was a renderer process at ~3.2 GB with 12 workers (2026-11-05, #215).**
+Lane E2 (553f6b8b8, a37f34fa1, 70a187f8e). Chrome's crash dump of 2 Nov 08:48 on
+this Mac is a renderer that ran out of JavaScript memory while an 11-second-old
+worker held only 67 MB; the process had 12 worker threads where one ride runs 4.
+Measured on this Mac (Chrome 156) the page and its workers share about 3.3 GB per
+renderer process. One own-engine ride uses ~380 MB: a 10-minute desktop ride
+grew +4 % on the main thread (225 → 234 MB) and +8 % in workers; eight rides
+without a reload were flat, the deployed site was flat, a replay of the Nov 2
+build was flat with 4 workers, the iPhone profile ~190 + 95 MB. The 4 Nov dump is
+another site. So the leading hypothesis is several game tabs of the same origin
+sharing one renderer process plus a flow nobody scripted yet; the fade clones
+are freed at the end of each fade, the road-cache write never appears in a
+stall, and dropping the overview decode would free little because the label
+layer holds the same data. Telemetry so that the next crash is seen: a ride
+heartbeat (`rideHeartbeat.ts`, every 5 s to sessionStorage with engine, tier,
+phase, heap, peak, distance, worker count and same-origin game tabs; the next
+load of a tab whose stamp never reached `pagehide` sends one Sentry event,
+`?heartbeat=0` off), the own engine's `webglcontextlost` named in its Sentry
+event, and `GlResident` in `glCounters.ts` for GPU bytes held (400–580 MB on a
+desktop ride). Frames: desktop in motion p99 10.4 ms headed at 120 Hz, 0 over
+100 ms; iPhone at 4× p99 33.4 ms with 8 over 100 ms a minute. Stall owners:
+the ride-start game frame (97–112 ms desktop, 215–234 iPhone), own-ground slices
+landing together in one frame, label rebuilds (45 ms desktop, 164 iPhone). Fixes:
+the ride-start ground hook is staged over frames (`?stagedGroundHook=0`), worst
+ride-start frame 87/88 → 59/67 ms; one 8 ms per-frame budget for own-ground
+slices (`frameBudget.ts`), which the lane's single iPhone run read as 3 → 4
+frames over 100 ms, inside the noise, so the integrator made it opt-in
+(`?groundFrameBudget=1`) until a 3-run A/B shows a gain. `scripts/heap-ride.mjs`
+gained the timeline, GPU and process-memory columns, multi-ride and hidden-tab
+modes and a deployed-site target. Budgets recorded: desktop heap growth ≤ 10 %,
+desktop motion p99 ≤ 33 ms, iPhone motion p99 ≤ 50 ms. Still red: ride start
+(2–3 frames over 100 ms, first draw and labels), iPhone heap 303 vs 250.
+
 **Tetterode complex, Da Costakade 146, bespoke (2026-11-05, #209 part 1).** `da-costakade-146` (pand 0363100012236799 is the whole Tetterode block: 71 addresses, Bilderdijkstraat 155-167 and Da Costakade 136-164; corner house, melkfabriek Holland 1898 (rijksmonument 524830), factory 1902-03 by J.W.F. Hartkamp (524828), Da Costakade extension 1909-12 by Hartkamp (524831), the 1940-51 Merkelbach & Karsten block, housing 136-140; today housing, studios, the Dijktheater and De Trut; catalogue name "Tetterode complex (former type foundry), Da Costakade" because `test:building-taxonomy` rejects landmark names containing "Bilderdijkstraat"). Corrections to the brief: the ochre workshop front faces the Bilderdijkstraat, lettered bands are on both fronts, the "red-brick range with balconies" is the dairy, the "glass block" curve was panorama projection (the real half-round is a roof volume). 30,493 tris, lod1 7,959, 32.6 m; audit PASS 5.1 (only a zfight-near warning: the housing's white plinth 6 cm off the cream wall); compare:facades passes nine crops; no baseline row. Shadows `ordinary-0363100012236799`. Kit: `archOpeningWall.ts` optional `rise` for segmental heads + `segmentalRadius()` (hofkerk and watertoren rebuilt byte-identical), `mixed-case-glyphs.ts` '/' glyph (nfta-markenplein byte-identical), `material-slot-tags.ts` entry mapping ochre/pink/sandstone to brick, copper to roofTile, gold to door. Counting conventions: solid wooden and green doors are not counted as openings (the factory's wooden doors are 'gold' tagged door so the rhythm rule skips them); the dairy crop stops at the eaves because its gable row is unequal by design. Not drawn: the Merkelbach glazing reads silvery in the photo and darker in the model; the 1909 dormers and consoles are really white but use cream 'sandstone' because the audit treats every small all-'white' part as a loose opening; shop signs, tram wires, fire ladder, wall lamp; the portico's sawtooth edge and gate lattice simplified; yard and back faces inferred. Audit problem (shared with Westerdok 748): wall clustering seeds a plane from the first triangle it meets, so a quantization-tilted piece split the 70 m Bilderdijkstraat front and produced false opening-outside/overhang failures; the builder adds cut walls before all trim as a workaround. Kit cannot say: plant-motif iron anchors and balcony ironwork, a sawtooth lintel, a gate lattice, glazed-brick spandrel texture. The Weteringschans corner office not started (programme paused). World-v1 recompiled (`--no-policy`).
 
 **Westerdok 748 courtyard block, bespoke (2026-11-05, #210 part 1).** `westerdok-748` (pand 0363100012186003, 2008, 232 verblijfsobjecten of which 191 homes, not "232 homes" as the brief said; no monument record, architect not found; 3DBAG ground 1.33 m NAP, low wings 10.8 m with 13.5 m roof pavilions, blocks 23 m, recessed towers 29.2 m, NW/SW towers 35.3/35.4 m; 3DBAG piece 55 split at the courtyard edge drawn at 10.8 m to match the panoramas and floor counts; 30,929 tris, lod1 19,125; audit PASS 9.6 clean, no baseline row needed; compare:facades passes on the three photo-counted facades (north and south punched wedges rows 4,8,8,8,8,8 on 12 axes, north block end 3,6,6,6,6,6 on 9); the west passage, three courtyard portals declared as through passages). One prism per 3DBAG LoD2.2 roof piece (71, simplified to 0.3 m), walls only on exposed runs with cut reveals. Shadows `ordinary-0363100012186003`. Not drawn: the glass gates in the portals (drawn open), courtyard gardens and low-wing roof decks, tenant signs, the timber tower's board texture, fine sash division, the two-storey steel bay frames on w04 are approximate and not in elevations.json; the punched-wedge window pitch reads about 10 % shorter in the rectified crops than 3DBAG implies (3DBAG followed, noted). Audit finding for other builders: `geometryAudit` `clusterWalls` seeds each plane from the first triangle it meets, so a window reveal on an adjoining face within 3 cm and 2.5 degrees captured a whole 17 m wall (36 false opening-outside parts); emitting faces largest first avoids it. Kit cannot say: an openable glass gate in a through-portal, timber board cladding, the two-storey framed bay as a reusable piece. Politiebureau Postjesweg not started (programme paused). World-v1 recompiled (`--no-policy`).

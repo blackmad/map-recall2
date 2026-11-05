@@ -262,9 +262,20 @@ test('street furniture (#170): built with the extras, suspended with the flight,
     g.CanalRecallStreetFurniture.furnitureFlag = () => true;
     const extras = new CityExtras(host); extras.start();
     extras.setSuspended(true);
-    extras.hookGround({ ready: true, pointBase: () => 0 });
+    const ground = { ready: true, pointBase: () => 0 };
+    // Staged (lane E2): trees on the first frame, furniture on the second, landmarks on the third.
+    extras.hookGround(ground);
+    assert.deepEqual(log.slice(3), [], 'the first frame hooks the trees only');
+    extras.hookGround(ground);
+    assert.deepEqual(log.slice(3), ['ground:function'], 'the second hooks the furniture');
+    extras.hookGround(ground); extras.hookGround(ground);
     extras.refreshGroundBases(0);
     assert.deepEqual(log, ['new:true', 'load:/data/extracts/amsterdam', 'suspended:true', 'ground:function', 'rebase']);
+    // ?stagedGroundHook=0: every consumer in one call.
+    log.length = 0;
+    const once = new CityExtras(host); once.start();
+    once.hookGround(ground, false);
+    assert.ok(log.includes('ground:function'), 'unstaged hooks the furniture at once');
   } finally { delete g.CanalRecallStreetFurniture; delete g.__canalStreetFurniture; }
 });
 
@@ -482,6 +493,16 @@ test('sightlineBlocker through the resident grid finds the blocker the linear wa
   assert.ok(blocked > 30, `the queries exercise blocking (${blocked})`);
 });
 
+test('residentIndex prewarmed in idle (lane E6 #219) is the grid the first clearance walk then uses', async () => {
+  const { residentIndex, sightlineBlocker } = await import('./cameraClearance');
+  const list: any[] = [];
+  for (let i = 0; i < 2500; i++) { const w = 4.88 + (i % 50) * 0.0004, s = 52.365 + Math.floor(i / 50) * 0.0003; list.push({ properties: { id: `p${i}`, height: 12 }, geometry: { type: 'Polygon', coordinates: [[[w, s], [w + 0.0002, s], [w + 0.0002, s + 0.0002], [w, s + 0.0002], [w, s]]] } }); }
+  const warm = residentIndex(list);
+  assert.equal(residentIndex(list), warm, 'memoised per list: the walk does not rebuild it');
+  const hit = sightlineBlocker([4.8805, 52.3655], [4.8901, 52.3712], 6, list);
+  assert.equal(hit?.properties?.id ?? null, sightlineBlocker([4.8805, 52.3655], [4.8901, 52.3712], 6, list, Infinity)?.properties?.id ?? null);
+});
+
 test('EngineCamera.bounds: the per-frame cache returns what a fresh camera computes, after every kind of change', () => {
   let vp = { width: 800, height: 600 };
   const cam = new EngineCamera(() => vp, { center: [4.9, 52.37], zoom: 17, pitch: 50, bearing: 20 });
@@ -586,6 +607,18 @@ test('overview footprints: MapLibre\'s zoom range and fade, one tile built per f
   assert.equal(fp.stats().triangles, 4);
 });
 
+test('overview footprints: the per-feature tile memo follows a replaced geometry (lane E5, ?featureGroupCache)', async () => {
+  const { OverviewFootprints } = await import('./overviewFootprints');
+  const square = (lng: number, lat: number, id: string) => ({ properties: { id }, geometry: { type: 'Polygon', coordinates: [[[lng, lat], [lng + 1e-4, lat], [lng + 1e-4, lat + 1e-4], [lng, lat + 1e-4], [lng, lat]]] } });
+  const a = square(4.8840, 52.3746, 'a'), b = square(4.8842, 52.3747, 'b');
+  const fp = new OverviewFootprints(-3, {}, 5);
+  fp.setFeatures([a, b]);
+  assert.equal(fp.stats().tiles, 1);
+  a.geometry = square(4.95, 52.36, 'a').geometry; // the same object, moved to another tile
+  fp.setFeatures([a, b]);
+  assert.equal(fp.stats().tiles, 2, 'the moved footprint is filed under its new tile');
+});
+
 test('worldCameraOf (MapLibre): whenIdle asks for a frame, so an already idle map still resolves', async () => {
   const { worldCameraOf } = await import('./worldCameraOf');
   const handlers: Record<string, Array<() => void>> = {};
@@ -600,4 +633,33 @@ test('worldCameraOf (MapLibre): whenIdle asks for a frame, so an already idle ma
   await Promise.race([worldCameraOf(map).whenIdle().then(() => { resolved = true; }), new Promise(r => setTimeout(r, 50))]);
   assert.equal(resolved, true, 'resolves without an outside frame');
   assert.equal(repaints, 1);
+});
+
+test('FrameHost clear guard (#216): every frame clears with the sky at alpha 1 and a full colour mask, whatever GL was left with', async () => {
+  const { FrameHost } = await import('./frameHost');
+  const make = (clearGuard?: boolean) => {
+    const canvas: any = { style: {}, width: 0, height: 0, addEventListener() {}, remove() {} };
+    const container: any = { clientWidth: 400, clientHeight: 300, ownerDocument: { createElement: () => canvas }, appendChild() {} };
+    // A fake GL clear state: what three's resetState() leaves (clearColor 0,0,0,0) until the next renderer.render().
+    const gl = { clear: [0, 0, 0, 0] as number[], mask: true, isContextLost: () => false };
+    const clears: Array<{ colour: number[]; mask: boolean }> = [];
+    const renderer: any = {
+      getContext: () => gl, setViewport() {}, setRenderTarget() {}, dispose() {},
+      setClearColor(hex: number, alpha: number) { gl.clear = [(hex >> 16) & 255, (hex >> 8) & 255, hex & 255, alpha]; },
+      state: { buffers: { color: { setMask(m: boolean) { gl.mask = m; } } } },
+      clear() { clears.push({ colour: gl.clear.slice(), mask: gl.mask }); },
+      // Between frames: a precompile ends in resetState, and a colorWrite:false draw left the mask off.
+      resetState() { gl.clear = [0, 0, 0, 0]; },
+    };
+    const host = new FrameHost({}, container, { render: () => {} }, { createRenderer: () => renderer, clearColor: 0x9ec3ed, clearGuard, requestFrame: () => 1, cancelFrame() {} });
+    return { host, renderer, gl, clears };
+  };
+  const on = make();
+  on.renderer.resetState(); on.gl.mask = false;
+  on.host.redraw();
+  assert.deepEqual(on.clears.at(-1), { colour: [0x9e, 0xc3, 0xed, 1], mask: true }, 'the guard: sky colour, alpha 1, full mask');
+  const off = make(false);
+  off.renderer.resetState();
+  off.host.redraw();
+  assert.deepEqual(off.clears.at(-1)!.colour, [0, 0, 0, 0], '?skyClear=0: the old behaviour clears to transparent after a reset');
 });

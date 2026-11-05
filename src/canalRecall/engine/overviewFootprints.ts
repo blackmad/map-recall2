@@ -52,6 +52,15 @@ export function footprintRings(f: FootprintFeatureLike): Vec2[][][] {
   return polys.map(rings => rings.map(ring => ring.map(([lng, lat]) => toLocal(lng, lat) as Vec2)));
 }
 
+/** `?featureGroupCache=0` (or `__canalRecallFeatureGroupCache = false`): no per-feature memo (three-buildings shares the switch). */
+function footprintMemoEnabled(): boolean {
+  try {
+    const g = globalThis as { __canalRecallFeatureGroupCache?: boolean; location?: { search?: string } };
+    if (typeof g.__canalRecallFeatureGroupCache === 'boolean') return g.__canalRecallFeatureGroupCache;
+    return new URLSearchParams(g.location?.search ?? '').get('featureGroupCache') !== '0';
+  } catch { return true; }
+}
+
 type Tile = { sig: string; features: FootprintFeatureLike[]; mesh: THREE.Mesh | null; built: string };
 
 export class OverviewFootprints {
@@ -71,11 +80,27 @@ export class OverviewFootprints {
   }
   private readonly renderOrder: number;
 
+  /**
+   * Each feature's tile, memoised per feature object and geometry (lane E5, #218; `?featureGroupCache=0` off): every
+   * tile flush hands over all ~36,000 resident buildings, and the projection per first vertex ran for each of them
+   * in the flush's frame (`setFeatures` 37-46 ms self on the iPhone profile at 4x at ride start).
+   */
+  private readonly tileOf = new WeakMap<FootprintFeatureLike, { geometry: unknown; key: string | null }>();
+  private readonly memo = footprintMemoEnabled();
+  private tileKey(f: FootprintFeatureLike): string | null {
+    if (!this.memo) return footprintTile(f);
+    const held = this.tileOf.get(f);
+    if (held && held.geometry === f.geometry) return held.key;
+    const key = footprintTile(f);
+    this.tileOf.set(f, { geometry: f.geometry, key });
+    return key;
+  }
+
   /** The resident buildings (all of them, as the streamer hands them over). */
   setFeatures(features: readonly FootprintFeatureLike[]): void {
     const byTile = new Map<string, FootprintFeatureLike[]>();
     for (const f of features) {
-      const key = footprintTile(f);
+      const key = this.tileKey(f);
       if (!key) continue;
       let list = byTile.get(key);
       if (!list) byTile.set(key, list = []);

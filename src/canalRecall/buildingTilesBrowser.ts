@@ -21,6 +21,7 @@
  */
 
 import { BoxGrid } from './engine/boxGrid.js';
+import { IdleBoxGrid, coverGridIdleEnabled } from './engine/idleBoxGrid.js';
 import { dropNestedDuplicates } from './buildingNesting.js';
 import {
   BuildingTileCache, BUILDING_TILE_ZOOM, buildingForLandmark, planTilesAhead, planSourceDiff, tileUrl,
@@ -34,7 +35,7 @@ import type { WorldCamera } from './engine/worldViewApi.js';
 import { introLandingArea } from './game/introFlight.js';
 import { MotionEstimate, boxAround, lookAheadEnabled, lookAheadPoints } from './streamingLookAhead.js';
 import { WorldCellClient, assembleTile, readWorldIndex, worldV1Enabled, type TilePart } from './world/worldCells.js';
-import { rideBox, ringCells, worldRingEnabled } from './world/worldRing.js';
+import { rideBox, ringCells, ringFollowEnabled, ringSignature, worldRingEnabled } from './world/worldRing.js';
 import { citywideBuildingGroundPrior, citywideBuildingRoofPrior, citywideBuildingWallPrior, materialWallDisplayPrior } from './look/palette.js';
 
 type GeoJsonSource = {
@@ -183,6 +184,7 @@ export class BuildingTileStreamer {
   /** world-v1 fetch ring (world/worldRing.ts): the cells the ride can show; null reads every cell of a tile. */
   private ring: Set<string> | null = null;
   private readonly ringOn = worldRingEnabled();
+  private readonly ringFollow = ringFollowEnabled();
   /** Per resident tile (key), the cell parts it was cut from: a top-up keeps these objects and adds the new cells'. */
   private readonly worldParts = new Map<string, Map<string, TilePart>>();
   get usingWorldCells(): boolean { return !!this.world; }
@@ -527,7 +529,9 @@ export class BuildingTileStreamer {
     // zoom bucket, and those tiles used to stay unrequested (bare patches).
     const needed = tilesCovering(this.bounds(), this.zoom, 0).map(tileKey).join(',');
     const ahead = this.lookAhead.flatMap(area => tilesCovering(area, this.zoom, 0).map(tileKey)).join(',');
-    const signature = `${tileKey(tile)}@${zoomBucket}|${needed}|${ahead}`;
+    // The ring follows the rider (worldRing.ts ringFollowEnabled): its cells change inside one z14 tile.
+    const ring = this.world && this.ringOn && this.ringFollow ? ringSignature(this.planRing()) : '';
+    const signature = `${tileKey(tile)}@${zoomBucket}|${needed}|${ahead}|${ring}`;
     if (signature === this.lastFollowSignature) return;
     this.lastFollowSignature = signature;
     this.update();
@@ -561,12 +565,7 @@ export class BuildingTileStreamer {
       this.worldParts.delete(key);
       changed = true;
     }
-    if (this.world && this.ringOn) {
-      const base = this.preloadBounds ?? this.bounds();
-      // A landing preload is planned as it is; the camera view only at ride zoom (the intro overview is ~2x wider).
-      const ride = this.preloadBounds ? base : rideBox(base, this.camera.zoom(), this.riderAt ?? (() => { const c = this.camera.center(); return [c.lng, c.lat] as [number, number]; })());
-      this.ring = ringCells(ride, this.preloadBounds ? [] : this.lookAhead);
-    }
+    if (this.world && this.ringOn) this.ring = this.planRing();
 
     // Drop in-flight work the camera no longer needs so a Damrak prefetch
     // cannot keep eating bandwidth after the start jump.
@@ -616,6 +615,14 @@ export class BuildingTileStreamer {
   }
 
   /** The tile's index cells inside the ring (all of them without a ring). */
+  /** The world-v1 ring now: the ride view box (or a landing preload) grown by the margin, plus the look-ahead boxes. */
+  private planRing(): Set<string> {
+    const base = this.preloadBounds ?? this.bounds();
+    // A landing preload is planned as it is; the camera view only at ride zoom (the intro overview is ~2x wider).
+    const ride = this.preloadBounds ? base : rideBox(base, this.camera.zoom(), this.riderAt ?? (() => { const c = this.camera.center(); return [c.lng, c.lat] as [number, number]; })());
+    return ringCells(ride, this.preloadBounds ? [] : this.lookAhead);
+  }
+
   private ringCellsOf(tile: { x: number; y: number }): string[] {
     const all = this.world?.index.tileCells[`${tile.x}/${tile.y}`] ?? [];
     return this.ring ? all.filter(c => this.ring!.has(c)) : all;
@@ -886,10 +893,23 @@ export class BuildingTileStreamer {
     // Through a grid over the resident list (engine/boxGrid.ts), rebuilt when the list changes: the same features in
     // the same order as scanning every resident (#129: the rider cover asks eight times a second).
     const features = this.cache.collection().features;
+    // Built in idle slices when the resident list changes (engine/idleBoxGrid.ts, lane E6 #219): the build was the
+    // ride's first-frame `sync: rider cover` cost. `?coverGridIdle=0` builds here, as before.
+    const idle = this.coverGrid();
+    if (idle) return idle.at(lng, lat, features).map(raw => this.styled(raw));
     if (this.atGrid?.of !== features) this.atGrid = { of: features, grid: new BoxGrid(features, f => this.boxOf(f)) };
     return this.atGrid.grid.at(lng, lat, features).map(raw => this.styled(raw));
   }
   private atGrid: { of: readonly BuildingFeature[]; grid: BoxGrid<BuildingFeature> } | null = null;
+  private idleGrid: IdleBoxGrid<BuildingFeature> | false | undefined;
+  /** Start indexing the resident list for `featuresAt` in idle time (the ride's start-up frames call it). */
+  prewarmFeaturesAt(): void {
+    this.coverGrid()?.prewarm(this.cache.collection().features);
+  }
+  private coverGrid(): IdleBoxGrid<BuildingFeature> | null {
+    if (this.idleGrid === undefined) this.idleGrid = coverGridIdleEnabled() ? new IdleBoxGrid<BuildingFeature>(f => this.boxOf(f)) : false;
+    return this.idleGrid || null;
+  }
 
   /**
    * Every resident building as loaded (unstyled: footprint and heights). The array is the source's cached list, so

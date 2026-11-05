@@ -31,6 +31,7 @@ import { openUnderHouseboats, type Boat } from './moorings.js';
 import type { CellDetail, CellInput } from './groundCell.js';
 import { farBlockCells, type FarBlockInput } from './farRing.js';
 import { cutWays, isTunnelTags, planCutsSteps, type CutWay } from './tunnels.js';
+import { pageFrameBudget } from './frameBudget.js';
 
 /** Relief ensured (and scanned) this far around a cell with tunnel portals, metres: a ramp's reach from its portal. */
 
@@ -42,6 +43,10 @@ import { cutWays, isTunnelTags, planCutsSteps, type CutWay } from './tunnels.js'
 export const yieldToFrame = (): Promise<void> => {
   const g = globalThis as { document?: unknown; scheduler?: { yield?: () => Promise<void> } };
   if (!g.document) return Promise.resolve();
+  // One budget per frame across every slice in flight (frameBudget.ts, lane E2): `?groundFrameBudget=0` restores
+  // the plain yield.
+  const budget = pageFrameBudget();
+  if (budget) return budget.yield();
   return g.scheduler?.yield ? g.scheduler.yield() : new Promise(resolve => setTimeout(resolve, 0));
 };
 
@@ -50,6 +55,20 @@ export const yieldToFrame = (): Promise<void> => {
  * calls it after each step and ends its task every few milliseconds instead of after every step (#129).
  */
 export const PACE_BUDGET_MS = 6;
+
+/**
+ * Before a fetched cell's JSON.parse (lane E5, #218): end the task that resolved the fetch, so the parse is a slice the
+ * frame budget can count and defer (`?groundFrameBudget=1`), not work tacked onto whichever continuation ran first. At
+ * ride start the parses ran back to back after `Response.arrayBuffer` with no frame between them (100-133 ms frames on
+ * the desktop cold start). `?groundParseYield=0` parses at once, as before.
+ */
+let parseYieldOn: boolean | undefined;
+export const beforeParse = (): Promise<void> => {
+  if (parseYieldOn === undefined) {
+    try { parseYieldOn = new URLSearchParams((globalThis as { location?: { search?: string } }).location?.search ?? '').get('groundParseYield') !== '0'; } catch { parseYieldOn = true; }
+  }
+  return parseYieldOn ? yieldToFrame() : Promise.resolve();
+};
 export const pacer = (budgetMs = PACE_BUDGET_MS): (() => Promise<void>) => {
   let last = performance.now();
   return async () => {
@@ -245,7 +264,9 @@ export class GroundStore {
   readonly openedBerths = new Map<string, string[]>();
 
   private async json<T>(path: string): Promise<T> {
-    return JSON.parse(new TextDecoder().decode(await this.fetchBytes(path))) as T;
+    const bytes = await this.fetchBytes(path);
+    await beforeParse();
+    return JSON.parse(new TextDecoder().decode(bytes)) as T;
   }
 
   /**
@@ -748,8 +769,9 @@ export class GroundStore {
     if (!p) {
       const [ex, ey] = key.split('_').map(Number);
       if (!this.elevation.cells.some(([cx, cy]) => cx === ex && cy === ey)) p = Promise.resolve(null);
-      else p = this.fetchBytes(`${EXTRACTS.water}/cells/${key}.json`).then(bytes => {
+      else p = this.fetchBytes(`${EXTRACTS.water}/cells/${key}.json`).then(async bytes => {
         this.loadedBytes.water += bytes.byteLength;
+        await beforeParse();
         const cell = JSON.parse(new TextDecoder().decode(bytes)) as WaterCell;
         const quant = this.elevation.quantization.xy, ox = cell.cell[0] * this.elevation.cellSizeM, oy = cell.cell[1] * this.elevation.cellSizeM;
         const ring = (r: number[]) => { const out: Vec2[] = []; for (let i = 0; i < r.length; i += 2) out.push(this.toScene(ox + r[i] * quant, oy + r[i + 1] * quant)); return out; };
@@ -838,7 +860,7 @@ export class GroundStore {
     let p = this.osm.get(key);
     if (!p) {
       p = this.osmCells.has(key)
-        ? this.fetchBytes(`${EXTRACTS.osm}/cells/${key}.json.gz`).then(bytes => { this.loadedBytes.osm += bytes.byteLength; const o = JSON.parse(new TextDecoder().decode(bytes)) as OsmGroundExtract; return this.options.prepareOnly ? { ...o, areas: [] } : o; }).catch(() => null)
+        ? this.fetchBytes(`${EXTRACTS.osm}/cells/${key}.json.gz`).then(async bytes => { this.loadedBytes.osm += bytes.byteLength; await beforeParse(); const o = JSON.parse(new TextDecoder().decode(bytes)) as OsmGroundExtract; return this.options.prepareOnly ? { ...o, areas: [] } : o; }).catch(() => null)
         : Promise.resolve(null);
       this.osm.set(key, p);
     }
@@ -850,7 +872,7 @@ export class GroundStore {
     let p = this.parks.get(key);
     if (!p) {
       p = this.parkCells.has(key)
-        ? this.fetchBytes(`${EXTRACTS.parks}/cells/${key}.json.gz`).then(bytes => { this.loadedBytes.parks += bytes.byteLength; return JSON.parse(new TextDecoder().decode(bytes)) as ParksCell; }).catch(() => null)
+        ? this.fetchBytes(`${EXTRACTS.parks}/cells/${key}.json.gz`).then(async bytes => { this.loadedBytes.parks += bytes.byteLength; await beforeParse(); return JSON.parse(new TextDecoder().decode(bytes)) as ParksCell; }).catch(() => null)
         : Promise.resolve(null);
       this.parks.set(key, p);
     }
@@ -862,7 +884,7 @@ export class GroundStore {
     let p = this.roads.get(key);
     if (!p) {
       p = this.roadCells.has(key)
-        ? this.fetchBytes(`${EXTRACTS.roads}/cells/${key}.json.gz`).then(bytes => { this.loadedBytes.roads += bytes.byteLength; const c = JSON.parse(new TextDecoder().decode(bytes)) as RoadCell; return ROAD_CELL_VERSIONS.includes(c.version) ? (this.options.prepareOnly ? { ...c, kerbs: [], coverWays: [] } : c) : null; }).catch(() => null)
+        ? this.fetchBytes(`${EXTRACTS.roads}/cells/${key}.json.gz`).then(async bytes => { this.loadedBytes.roads += bytes.byteLength; await beforeParse(); const c = JSON.parse(new TextDecoder().decode(bytes)) as RoadCell; return ROAD_CELL_VERSIONS.includes(c.version) ? (this.options.prepareOnly ? { ...c, kerbs: [], coverWays: [] } : c) : null; }).catch(() => null)
         : Promise.resolve(null);
       this.roads.set(key, p);
     }
@@ -874,7 +896,7 @@ export class GroundStore {
     let p = this.marks.get(key);
     if (!p) {
       p = this.markCells.has(key)
-        ? this.fetchBytes(`${EXTRACTS.marks}/cells/${key}.json.gz`).then(bytes => { this.loadedBytes.roads += bytes.byteLength; const c = JSON.parse(new TextDecoder().decode(bytes)); return isRoadMarksCell(c) ? decodeMarks(c) : []; }).catch(() => [])
+        ? this.fetchBytes(`${EXTRACTS.marks}/cells/${key}.json.gz`).then(async bytes => { this.loadedBytes.roads += bytes.byteLength; await beforeParse(); const c = JSON.parse(new TextDecoder().decode(bytes)); return isRoadMarksCell(c) ? decodeMarks(c) : []; }).catch(() => [])
         : Promise.resolve([]);
       this.marks.set(key, p);
     }
@@ -896,7 +918,7 @@ export class GroundStore {
     if (!p) {
       const none = { ways: [], platforms: [] };
       p = this.railCells.has(key)
-        ? this.fetchBytes(`${EXTRACTS.rail}/cells/${key}.json.gz`).then(bytes => { this.loadedBytes.osm += bytes.byteLength; const c = JSON.parse(new TextDecoder().decode(bytes)); return isRailCell(c) ? { ways: decodeRail(c), platforms: decodePlatforms(c) } : none; }).catch(() => none)
+        ? this.fetchBytes(`${EXTRACTS.rail}/cells/${key}.json.gz`).then(async bytes => { this.loadedBytes.osm += bytes.byteLength; await beforeParse(); const c = JSON.parse(new TextDecoder().decode(bytes)); return isRailCell(c) ? { ways: decodeRail(c), platforms: decodePlatforms(c) } : none; }).catch(() => none)
         : Promise.resolve(none);
       this.rail.set(key, p);
     }
@@ -908,7 +930,7 @@ export class GroundStore {
     let p = this.courtyards.get(key);
     if (!p) {
       p = this.courtyardCells.has(key)
-        ? this.fetchBytes(`${EXTRACTS.courtyards}/cells/${key}.json.gz`).then(bytes => { this.loadedBytes.courtyards += bytes.byteLength; return JSON.parse(new TextDecoder().decode(bytes)) as CourtyardsCell; }).catch(() => null)
+        ? this.fetchBytes(`${EXTRACTS.courtyards}/cells/${key}.json.gz`).then(async bytes => { this.loadedBytes.courtyards += bytes.byteLength; await beforeParse(); return JSON.parse(new TextDecoder().decode(bytes)) as CourtyardsCell; }).catch(() => null)
         : Promise.resolve(null);
       this.courtyards.set(key, p);
     }

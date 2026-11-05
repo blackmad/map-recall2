@@ -32,7 +32,10 @@ const SPOTS = [
   { name: 'leidsegracht-courtyard', at: [4.8868, 52.3676], face: [4.8884, 52.3686] },
   { name: 'ijburg-edge', at: [5.0185, 52.3512], face: [5.0203, 52.3521] },
 ] as const;
-const ALL_VARIANTS = [{ name: 'default', query: '?world=live' }, { name: 'world', query: '?world=v1' }, { name: 'world-main', query: '?world=v1&worldWorker=0' }];
+// WORLD_BYTES_QS='&ringFollow=0' is appended to every variant (an A/B of a streaming flag against the same ride).
+const QS = (process.env.WORLD_BYTES_QS ?? '').replace(/^[?&]/, '');
+const withQs = (q: string) => (QS ? `${q}&${QS}` : q);
+const ALL_VARIANTS = [{ name: 'default', query: withQs('?world=live') }, { name: 'world', query: withQs('?world=v1') }, { name: 'world-main', query: withQs('?world=v1&worldWorker=0') }];
 const pick = (env: string | undefined, all: string[]) => (env ?? '').split(',').filter(Boolean).filter(x => all.includes(x));
 const VARIANTS = ALL_VARIANTS.filter(v => (pick(process.env.WORLD_BYTES_VARIANTS, ALL_VARIANTS.map(x => x.name)).length ? pick(process.env.WORLD_BYTES_VARIANTS, ALL_VARIANTS.map(x => x.name)) : ['default', 'world']).includes(v.name));
 const RIDES = pick(process.env.WORLD_BYTES_RIDES, ['seeded', 'free', 'tour']).length ? pick(process.env.WORLD_BYTES_RIDES, ['seeded', 'free', 'tour']) : ['seeded', 'free'];
@@ -190,9 +193,12 @@ for (const ride of RIDES) for (const variant of VARIANTS) {
     if (variant.name.startsWith('world')) expect(world.usingWorldCells, 'world-v1 index served').toBe(true);
     // The fetch ring must not quietly grow back (#130 b74955c7c; #129 round 21 made a camera looking away from the
     // rider read its own view): Free Ride read 27 cells (2.0 MB) before the ring, about 13 cells (1.2 MB) with it, and
-    // 11 cells (0.79 MB) on 2026-11-01 with and without the round-21 fix. Bound: 16 cells, 1.5 MB of cells.
+    // 11 cells (0.79 MB) on 2026-11-01 with and without the round-21 fix. Bound: 20 cells, 1.5 MB of cells.
+    // The count is timing-sensitive, not a ring lever: the same 48-88 m free ride read 13/14/15 cells on 2-5 Nov builds
+    // and 17 with the E2 engine bundle (2c573136d; bisected 2026-11-05, bytes 0.90-1.11 MB throughout), so the
+    // bytes cap is the binding one.
     if (ride === 'free' && variant.name.startsWith('world')) {
-      expect(result.decode?.cells ?? 0, 'Free Ride: world-v1 cells read (fetch ring)').toBeLessThanOrEqual(16);
+      expect(result.decode?.cells ?? 0, 'Free Ride: world-v1 cells read (fetch ring)').toBeLessThanOrEqual(20);
       expect(buildingBytes['world-v1 cells'] ?? 0, 'Free Ride: world-v1 cell bytes (fetch ring)').toBeLessThanOrEqual(1.5e6);
     }
   });

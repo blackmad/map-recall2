@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { depthFadeColour, depthFadeDetail, depthFadeFlag, depthFadeRange, installDepthFade, DEPTH_FADE_DEFAULT, DEPTH_FADE_MIN_NEAR_M } from './depthFade.ts';
+import { depthFadeColour, depthFadeDetail, depthFadeFlag, depthFadeFogFragment, depthFadeRange, depthFadeStrength, distanceHazeOn, installDepthFade, setDistanceHaze, DEPTH_FADE_DEFAULT, DEPTH_FADE_DETAIL_GLSL, DEPTH_FADE_MIN_NEAR_M } from './depthFade.ts';
 
 test('depthFadeFlag: on by default, ?depthFade=0 off', () => {
   const gl = globalThis as { __canalRecallDepthFade?: unknown };
@@ -10,7 +10,7 @@ test('depthFadeFlag: on by default, ?depthFade=0 off', () => {
   delete gl.__canalRecallDepthFade;
 });
 
-test('the range scales with the eye-to-centre distance and never starts inside 80 m', () => {
+test('the range scales with the eye-to-centre distance and never starts inside 200 m', () => {
   const chase = depthFadeRange(40);
   assert.ok(chase.near >= DEPTH_FADE_MIN_NEAR_M && chase.far >= chase.near * 2);
   assert.ok(depthFadeRange(3000).near >= 2400, 'the fade starts past the view centre');
@@ -22,16 +22,42 @@ test('the near field is unchanged; far colour loses saturation and contrast but 
   const haze: [number, number, number] = [0.63, 0.78, 0.9];
   const brick: [number, number, number] = [0.6, 0.3, 0.2], pane: [number, number, number] = [0.1, 0.1, 0.12];
   const r = depthFadeRange(40);
-  assert.deepEqual(depthFadeColour(brick, haze, 79, r), brick);
+  assert.deepEqual(depthFadeColour(brick, haze, 199, r), brick, 'nothing fades inside 200 m');
   const fb = depthFadeColour(brick, haze, r.far, r), fp = depthFadeColour(pane, haze, r.far, r);
   const chroma = (c: number[]) => Math.max(...c) - Math.min(...c);
   assert.ok(chroma(fb) < chroma(brick) * 0.6, 'saturation fades');
-  assert.ok(Math.abs(fb[1] - fp[1]) < Math.abs(brick[1] - pane[1]) * 0.6, 'contrast compresses');
+  assert.ok(Math.abs(fb[1] - fp[1]) < Math.abs(brick[1] - pane[1]) * 0.8, 'contrast compresses');
+  assert.ok(Math.abs(fb[1] - fp[1]) > Math.abs(brick[1] - pane[1]) * 0.6, 'gently (2026-11-05): most of the contrast survives');
   assert.notDeepEqual(fb.map(x => x.toFixed(2)), haze.map(x => x.toFixed(2)), 'not a fog to one colour');
-  assert.equal(depthFadeDetail(149, r), 0);
-  assert.equal(depthFadeDetail(400, r), 1);
+  assert.equal(depthFadeDetail(249, r), 0);
+  assert.equal(depthFadeDetail(600, r), 1);
   const high = depthFadeRange(600);
   assert.equal(depthFadeDetail(450, high), 0, 'a high camera keeps detail up to its fade start');
+});
+
+test('?fadeStrength scales the desaturation, the haze and the detail blend together; 0 is no fade', () => {
+  const g = globalThis as { __canalRecallFadeStrength?: unknown };
+  assert.equal(depthFadeStrength(), 1);
+  g.__canalRecallFadeStrength = '0.5'; assert.equal(depthFadeStrength(), 0.5);
+  g.__canalRecallFadeStrength = '7'; assert.equal(depthFadeStrength(), 2);
+  g.__canalRecallFadeStrength = 'x'; assert.equal(depthFadeStrength(), 1);
+  delete g.__canalRecallFadeStrength;
+  const haze: [number, number, number] = [0.63, 0.78, 0.9], brick: [number, number, number] = [0.6, 0.3, 0.2];
+  const r = depthFadeRange(40);
+  assert.deepEqual(depthFadeColour(brick, haze, r.far, r, 0), brick);
+  const half = depthFadeColour(brick, haze, r.far, r, 0.5), full = depthFadeColour(brick, haze, r.far, r, 1);
+  assert.ok(Math.abs(half[0] - brick[0]) < Math.abs(full[0] - brick[0]));
+  assert.equal(depthFadeDetail(600, r, 0.5), 0.5);
+  assert.match(depthFadeFogFragment(0.5), /fogFactor \* 0\.25 \)/);
+  assert.match(depthFadeFogFragment(0.5), /fogFactor \* 0\.19 \)/);
+  assert.match(DEPTH_FADE_DETAIL_GLSL('d', 1.5), /^1\.0 \* smoothstep/, 'the detail blend never passes the mean tint');
+  assert.match(DEPTH_FADE_DETAIL_GLSL('d', 0.5), /^0\.5 \* smoothstep/);
+});
+
+test('the Distance haze switch: on unless the game turned it off', () => {
+  assert.equal(distanceHazeOn(), true);
+  setDistanceHaze(false); assert.equal(distanceHazeOn(), false);
+  setDistanceHaze(true); assert.equal(distanceHazeOn(), true);
 });
 
 test('installDepthFade swaps both fog chunks, once', () => {

@@ -95,8 +95,7 @@ export class LabelOcclusion<F extends FootprintFeature = FootprintFeature> {
    */
   index(features: readonly F[], centre: LngLat): void {
     const mLng = 111320 * Math.cos(centre[1] * Math.PI / 180);
-    if (features === this.indexed && this.centre
-      && Math.hypot((centre[0] - this.centre[0]) * mLng, (centre[1] - this.centre[1]) * 111320) < REINDEX_M) return;
+    if (!this.needsIndex(features, centre)) return;
     const t0 = performance.now();
     this.indexed = features;
     this.centre = centre;
@@ -119,6 +118,12 @@ export class LabelOcclusion<F extends FootprintFeature = FootprintFeature> {
     this.stats.indexes++; this.stats.indexMs += performance.now() - t0;
   }
 
+  /** Whether `index(features, centre)` would rebuild the grid (the idle prewarm asks before it schedules one). */
+  needsIndex(features: readonly F[], centre: LngLat): boolean {
+    if (features !== this.indexed || !this.centre) return true;
+    const mLng = 111320 * Math.cos(centre[1] * Math.PI / 180);
+    return Math.hypot((centre[0] - this.centre[0]) * mLng, (centre[1] - this.centre[1]) * 111320) >= REINDEX_M;
+  }
   /** The resident footprint containing `p`, if any (first match), among those taller than `above`. */
   at(p: LngLat, skip?: F | null, above = -Infinity): F | null {
     const k = key(Math.floor(p[0] / CELL_LNG), Math.floor(p[1] / CELL_LAT));

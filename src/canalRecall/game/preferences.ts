@@ -196,6 +196,8 @@ export interface CanalPreferences {
   arrow: boolean;
   minimap: boolean;
   trees: boolean;
+  /** "Distance haze" (look/depthFade.ts): the gentle far fade toward the horizon haze; off draws the far city as near. */
+  distanceHaze: boolean;
   measuredColoursOnly: boolean;
   detailed3d: boolean;
   reducedMotion: boolean;
@@ -256,6 +258,7 @@ export function defaultPreferences(zoom: ZoomClamp): CanalPreferences {
     routePattern: 'surprise',
     homeAddress: '',
     trees: true,
+    distanceHaze: true,
     measuredColoursOnly: false,
     detailed3d: false,
     reducedMotion: false,
@@ -348,6 +351,7 @@ function fillPreferences(
     arrow: parseBoolean(source.arrow, base.arrow),
     minimap: parseBoolean(source.minimap, base.minimap),
     trees: parseBoolean(source.trees, base.trees),
+    distanceHaze: parseBoolean(source.distanceHaze, base.distanceHaze),
     measuredColoursOnly: parseBoolean(source.measuredColoursOnly, base.measuredColoursOnly),
     detailed3d: base.detailed3d,
     reducedMotion: parseBoolean(source.reducedMotion, base.reducedMotion),
