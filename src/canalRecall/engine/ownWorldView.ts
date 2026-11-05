@@ -408,6 +408,7 @@ export class OwnWorldView implements WorldViewOracles {
       if (this.streetFronts && this._threeBuildings.setStreets) this._threeBuildings.setStreets(this.streetFronts);
       this.streetFronts = null;
       this._threeBuildings.setVisible(true);
+      if (this.buildingsRoute) this._threeBuildings.setRoute?.(this.buildingsRoute);
       const city = this._completeCity = new runtime.BuildingTileStreamer(this.cameraMap, 'osm-building-appearance', this.extractPath);
       // No MapLibre source to feed: the streamer answers featuresAt / sampleFeatures itself.
       city.setPublishing?.(false);
@@ -872,12 +873,21 @@ export class OwnWorldView implements WorldViewOracles {
 
   setRoute(routePath: readonly { x: number; y: number }[] | null, loader: LoaderFrame, visible: boolean): void {
     if (!loader || loader._lastCenterLat == null) return;
+    // The buildings' route-ahead prefetch (#217) follows the planned route whether or not its line is shown (the line
+    // is an aid the player pays for; most rides hide it).
+    if (routePath !== this.buildingsRouteRef) {
+      this.buildingsRouteRef = routePath;
+      this.buildingsRoute = routePath && routePath.length > 1 ? routePath.map(p => worldToLngLat(p.x, p.y, loader)) : null;
+      this._threeBuildings?.setRoute?.(this.buildingsRoute);
+    }
     if (!visible || !routePath || routePath.length < 2) { if (this.ownGroundState.route) this.groundRoute(null); this.routeRef = null; return; }
     if (this.routeRef === routePath && this.ownGroundState.route) return;
     this.routeRef = routePath;
     this.groundRoute(routePath.map(p => worldToLngLat(p.x, p.y, loader)));
   }
   private groundRoute(coords: [number, number][] | null): void { this.ownGroundState.route = coords; this._ownGround?.setRoute(coords); }
+  private buildingsRouteRef: unknown = null;
+  private buildingsRoute: [number, number][] | null = null;
 
   setStreetHighlights(track: any, loader: LoaderFrame, _learned: Set<string>, activeName: string, activeSegmentIndex: number, routePath: unknown = null): void {
     if (!this.ready || !track || !loader) return;

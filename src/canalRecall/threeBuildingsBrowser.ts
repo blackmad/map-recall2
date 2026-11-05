@@ -55,7 +55,8 @@ import { boundingSphereOf } from './geometryBounds.js';
 import { cutMesh, disposeTiles, growTileSpheres } from './rendererShared/tiledGeometry.js';
 import { finishTiles, type PlannedTile } from './ownGround/cellTiles.js';
 import { MotionEstimate, aheadRank, lookAheadEnabled } from './streamingLookAhead.js';
-import { detailBlock, type DetailBlock } from './detailRing.js';
+import { DETAIL_LEAD_M, DETAIL_LEAD_M_TOUCH, DETAIL_MAX_TILES, DETAIL_MAX_TILES_TOUCH, detailBlock, detailLingerEnabled, type DetailBlock } from './detailRing.js';
+import { ROUTE_AHEAD_M, ROUTE_AHEAD_MAX_TILES, headingAheadTiles, routeAheadEnabled, routeAheadTiles, withAhead } from './engine/routeAhead.js';
 import { worldCameraOf } from './engine/worldCameraOf.js';
 import type { WorldCamera } from './engine/worldViewApi.js';
 import { packMask } from './look/maskPacking.js';
@@ -210,14 +211,47 @@ export { decorateRoof, exceptLandmarks, decorateKitRoof, decorateFront, decorate
 const KIT_KEY = '__kit';
 /** chunkRank: an uninstalled coarse shell builds before detail up to this much nearer (metres of ahead rank). */
 const COARSE_HOLE_BONUS_M = 400;
-/** Arriving chunks dissolve in over this long (fadeIn); `?chunkFade=0` or `window.__canalRecallChunkFade = false` turns it off. */
-const CHUNK_FADE_MS = 350;
 const CHUNK_FADE = (() => {
   try {
     const g = globalThis as { __canalRecallChunkFade?: boolean; location?: { search?: string } };
     return g.__canalRecallChunkFade !== false && new URLSearchParams(g.location?.search ?? '').get('chunkFade') !== '0';
   } catch { return true; }
 })();
+/**
+ * Swap cross-fades (lane E4, #217: the pop-in the player sees is detail switching on buildings already there). A
+ * rebuilt chunk keeps its old mesh drawn, opaque, while the new one dissolves in over it, then dissolves the old one
+ * out (it used to replace it in one frame, so faces it added or lost popped); a chunk that leaves (a detail tile the
+ * block left, its extras) dissolves out over the coarse shells instead of vanishing; and the dissolve is
+ * CHUNK_FADE_MS 700 (350 before). Both reuse the arriving chunk's material clone,
+ * which shares the program (no link in the frame). `?swapFade=0` or `window.__canalRecallSwapFade = false` restores
+ * the old swaps for A/B.
+ */
+const SWAP_FADE = (() => {
+  try {
+    const g = globalThis as { __canalRecallSwapFade?: boolean; location?: { search?: string } };
+    return g.__canalRecallSwapFade !== false && new URLSearchParams(g.location?.search ?? '').get('swapFade') !== '0';
+  } catch { return true; }
+})();
+/** Arriving chunks dissolve in over this long (fadeIn); `?chunkFade=0` or `window.__canalRecallChunkFade = false` turns it off. */
+const CHUNK_FADE_MS = SWAP_FADE ? 700 : 350;
+/**
+ * A clone of a city material whose `cityFade` (the screen-door dissolve) is its own, starting at `value`; it shares the
+ * source's program (same defines and cache key: no compile, no link in the frame). Null when the material has no fade.
+ */
+function fadeClone(source: any, value: number): any | null {
+  if (!source?.uniforms?.cityFade || typeof source.onBeforeCompile !== 'function' || !source.customProgramCacheKey) return null;
+  const fade = { value };
+  const clone = source.clone();
+  // Material.copy does not carry `defines` (only ShaderMaterial's does), and three keys a program by them:
+  // without this the clone compiled a program of its own, freed when the last fade ended and linked again
+  // inside the frame of the next chunk's fade (2 of the iPhone ride's 4 in-frame links, lane D 2026-10-31).
+  if (source.defines) clone.defines = source.defines;
+  clone.uniforms = { ...source.uniforms, cityFade: fade };
+  clone.onBeforeCompile = (shader: any, renderer: any) => { source.onBeforeCompile(shader, renderer); shader.uniforms.cityFade = fade; };
+  clone.customProgramCacheKey = () => source.customProgramCacheKey();
+  if (source.defaultAttributeValues) clone.defaultAttributeValues = source.defaultAttributeValues;
+  return clone;
+}
 const BOAT_PREFIX = 'boats:';
 /** Boat chunks build from the houseboat extract, not features: one shared empty source keeps them stable. */
 const NO_SOURCE: Feature[] = [];
@@ -655,7 +689,7 @@ export class ThreeBuildings {
     this.lastFeatures = features;
     this.sourceGroups = groups;
     const same = (a: readonly Feature[] | undefined, b: readonly Feature[]) => !!a && a.length === b.length && a.every((f, i) => f === b[i]);
-    for (const key of [...this.chunks.keys(), ...this.inflight.keys()]) if (!groups.has(key)) { this.dropChunk(key); this.inflight.delete(key); this.inflightOptions.delete(key); this.gens.set(key, (this.gens.get(key) ?? 0) + 1); }
+    for (const key of [...this.chunks.keys(), ...this.inflight.keys()]) if (!groups.has(key)) { this.dropChunk(key, true); this.inflight.delete(key); this.inflightOptions.delete(key); this.gens.set(key, (this.gens.get(key) ?? 0) + 1); }
     for(const key of this.contextGroups.keys()) if(!groups.has(key)) this.contextGroups.delete(key);
     const contexts = new Map<string, Feature[]>();
     for (const [key, list] of groups) {
@@ -808,6 +842,7 @@ export class ThreeBuildings {
     this.hidden = next;
     if (!changed.size) return;
     for (const entry of this.chunks.values()) { this.applyHidden(entry, changed); if ([...this.highlighted].some(id => changed.has(id))) this.applyPasses(entry); }
+    for (const out of this.outgoing.values()) this.applyHidden(out, changed);
     this.map.triggerRepaint();
   }
 
@@ -859,6 +894,7 @@ export class ThreeBuildings {
     this.busy.clear();
     this.pool = undefined;
     for (const key of [...this.chunks.keys()]) this.dropChunk(key);
+    this.dropLeaving();
     for (const material of new Set([this.material, ...this.materials.values()])) material?.dispose();
     this.materials.clear();
     for (const set of this.textureSets.values()) void set.then(t => { t.colour.dispose(); t.mask.dispose(); });
@@ -903,19 +939,39 @@ export class ThreeBuildings {
     if (on) this.motion.update(lng, lat, performance.now());
     // Look-ahead (default): the block leads the rider, flips sides with hysteresis and lets tiles it leaves linger
     // (detailRing.ts); `?lookAhead=0` is the old rider-centred block with a hard midline.
-    const block = detailBlock([lng, lat], on ? this.motion.direction : null, this.detailZoom, this.detailBlockState, { legacy: !on });
+    const touch = this.detailZoom >= 17 && (this.detailLingerOn ??= detailLingerEnabled());
+    const block = detailBlock([lng, lat], on ? this.motion.direction : null, this.detailZoom, this.detailBlockState, { legacy: !on, maxTiles: touch ? DETAIL_MAX_TILES_TOUCH : DETAIL_MAX_TILES, leadM: touch ? DETAIL_LEAD_M_TOUCH : DETAIL_LEAD_M });
     this.detailBlockState = block;
-    const next = block.keys;
+    // Route-ahead prefetch (engine/routeAhead.ts, lane E4): the tiles the next ROUTE_AHEAD_M of the planned route (or the
+    // heading, off a route) crosses join the detailed set, so their detail is built before it is near; `?routeAhead=0` off.
+    const aheadOn = this.routeAheadOn ??= on && routeAheadEnabled();
+    const direction = this.motion.direction, aheadM = ROUTE_AHEAD_M[this.detailZoom] ?? 300;
+    const ahead = !aheadOn ? null : routeAheadTiles(this.route, [lng, lat], this.detailZoom, aheadM, this.routeCursor) ?? (direction ? headingAheadTiles([lng, lat], direction, this.detailZoom, aheadM) : null);
+    const next = withAhead(block.keys, ahead, ROUTE_AHEAD_MAX_TILES[this.detailZoom] ?? 2);
     if (next.length === this.detailTiles.size && next.every(k => this.detailTiles.has(k))) return;
     this.detailTiles = new Set(next);
     this.setFeatures(this.lastFeatures);
   }
   private rider: [number, number] | null = null;
   private readonly motion = new MotionEstimate();
+  private routeAheadOn: boolean | undefined;
+  private detailLingerOn: boolean | undefined;
+  /** The planned route (lng/lat), for the route-ahead prefetch; null in Free Ride. */
+  private route: [number, number][] | null = null;
+  private readonly routeCursor = { index: -1 };
+  /** The planned route the rider follows (lng/lat), or null: its next stretch's tiles turn detailed early. */
+  setRoute(coords: readonly (readonly [number, number])[] | null): void {
+    this.route = coords && coords.length > 1 ? coords.map(c => [c[0], c[1]] as [number, number]) : null;
+    this.routeCursor.index = -1;
+  }
   private lookAheadOn: boolean | undefined;
   private detailBlockState: DetailBlock | null = null;
   /** Chunks dissolving in (fadeIn). */
   private readonly fading = new Map<string, { mesh: any; source: any; clone: any; start: number }>();
+  /** SWAP_FADE: the drawn mesh a rebuilt chunk replaces, kept opaque until the new one has dissolved in. */
+  private readonly outgoing = new Map<string, { mesh: any; ranges: Map<string, { start: number; count: number }> }>();
+  /** SWAP_FADE: meshes of chunks that left, dissolving out. */
+  private readonly leaving = new Set<{ mesh: any; clone: any; start: number }>();
 
   /**
    * Build order: the chunk nearest the rider, ahead first (streamingLookAhead.ts aheadRank on the nearest point
@@ -1269,8 +1325,16 @@ export class ThreeBuildings {
     if(options?.contextFeatures && context && (context.length!==options.contextFeatures.length || context.some((f,i)=>f!==options.contextFeatures![i]))) return;
     const t0 = performance.now() - buildMs;
     const arriving = !this.chunks.get(key)?.mesh;
-    this.dropChunk(key);
-    if (!chunk.vertexCount) { this.chunks.set(key, { source, mesh: null, info: infoOf(chunk), ranges: new Map() }); return; }
+    // SWAP_FADE: a rebuilt chunk's drawn mesh stays (opaque) under the new one while it dissolves in; a rebuild of a
+    // chunk still dissolving keeps the older, solid mesh and drops the half-faded one.
+    const crossFade = SWAP_FADE && !arriving && this.fades(key);
+    if (crossFade && !this.outgoing.has(key) && !this.fading.has(key)) {
+      const held = this.chunks.get(key)!;
+      this.outgoing.set(key, { mesh: held.mesh, ranges: held.ranges });
+      this.chunks.delete(key);
+    }
+    this.dropChunk(key, false, crossFade);
+    if (!chunk.vertexCount) { this.dropOutgoing(key); this.chunks.set(key, { source, mesh: null, info: infoOf(chunk), ranges: new Map() }); if (key.startsWith('near:')) this.refreshDetailOwnership(); return; }
     const THREE = this.THREE;
     const geometry = new THREE.BufferGeometry();
     // The GPU holds the copy that draws; the CPU array is freed once uploaded
@@ -1330,7 +1394,8 @@ export class ThreeBuildings {
     const entry = { source, mesh, info: infoOf(chunk), ranges: new Map(chunk.ranges.map(r => [r.id, { start: r.start, count: r.count }])), lift };
     this.chunks.set(key, entry);
     this.scene.add(mesh);
-    if (arriving) this.fadeIn(key, mesh);
+    if (arriving || crossFade) this.fadeIn(key, mesh);
+    if (crossFade && !this.fading.has(key)) this.dropOutgoing(key);
     if (this.firstShellTime === null && key.startsWith(COARSE_PREFIX)) this.firstShellTime = performance.now();
     this.refreshSurveyedRoofOwnership();
     mesh.userData.coarse = key.startsWith(COARSE_PREFIX);
@@ -1363,31 +1428,58 @@ export class ThreeBuildings {
    * dissolve rather than a one-frame jump. `?chunkFade=0` installs at once, as before.
    */
   private fadeIn(key: string, mesh: any): void {
-    if (!CHUNK_FADE || key === KIT_KEY || this.basemapHeld) return;
-    const source = mesh.material;
-    if (!source?.uniforms?.cityFade || typeof source.onBeforeCompile !== 'function' || !source.customProgramCacheKey) return;
-    const fade = { value: 0 };
-    const clone = source.clone();
-    // Material.copy does not carry `defines` (only ShaderMaterial's does), and three keys a program by them:
-    // without this the clone compiled a program of its own, freed when the last fade ended and linked again
-    // inside the frame of the next chunk's fade (2 of the iPhone ride's 4 in-frame links, lane D 2026-10-31).
-    if (source.defines) clone.defines = source.defines;
-    clone.uniforms = { ...source.uniforms, cityFade: fade };
-    clone.onBeforeCompile = (shader: any, renderer: any) => { source.onBeforeCompile(shader, renderer); shader.uniforms.cityFade = fade; };
-    clone.customProgramCacheKey = () => source.customProgramCacheKey();
-    if (source.defaultAttributeValues) clone.defaultAttributeValues = source.defaultAttributeValues;
+    if (!this.fades(key)) return;
+    const source = mesh.material, clone = fadeClone(source, 0);
+    if (!clone) return;
     mesh.material = clone;
     this.fading.set(key, { mesh, source, clone, start: performance.now() });
   }
 
+  /** Whether chunks of `key` dissolve in and out now. */
+  private fades(key: string): boolean { return CHUNK_FADE && key !== KIT_KEY && !this.basemapHeld; }
+
+  /** SWAP_FADE: dissolve a leaving chunk's mesh out (removed when it has gone); false when its material cannot. */
+  private fadeOut(mesh: any): boolean {
+    const clone = fadeClone(mesh.material, 1);
+    if (!clone) return false;
+    mesh.material = clone;
+    this.leaving.add({ mesh, clone, start: performance.now() });
+    return true;
+  }
+
+  /** The mesh a rebuilt chunk kept while its successor dissolved in: dissolve it out now, or drop it. */
+  private retireOutgoing(key: string): void {
+    const out = this.outgoing.get(key);
+    if (!out) return;
+    this.outgoing.delete(key);
+    if (!(this.fades(key) && this.fadeOut(out.mesh))) this.disposeMesh(out.mesh);
+  }
+
+  /** Drop the mesh a rebuilt chunk kept while its successor dissolved in. */
+  private dropOutgoing(key: string): void {
+    const out = this.outgoing.get(key);
+    if (!out) return;
+    this.outgoing.delete(key);
+    this.disposeMesh(out.mesh);
+  }
+
+  private disposeMesh(mesh: any): void { this.scene?.remove(mesh); disposeTiles(mesh); mesh.geometry.dispose(); }
+
   /** Advance the arriving chunks' dissolve under the overview's own fade `global`; nothing runs when none fade. */
   private tickFades(global: number): void {
-    if (!this.fading.size) return;
+    if (!this.fading.size && !this.leaving.size) return;
     const now = performance.now();
     for (const [key, f] of this.fading) {
       const t = (now - f.start) / CHUNK_FADE_MS;
       if (t < 1) { f.clone.uniforms.cityFade.value = global * t; continue; }
       this.endFade(key);
+    }
+    for (const f of this.leaving) {
+      const t = (now - f.start) / CHUNK_FADE_MS;
+      if (t < 1) { f.clone.uniforms.cityFade.value = global * (1 - t); continue; }
+      this.leaving.delete(f);
+      f.clone.dispose();
+      this.disposeMesh(f.mesh);
     }
     this.map.triggerRepaint();
   }
@@ -1398,18 +1490,32 @@ export class ThreeBuildings {
     if (f.mesh.material === f.clone) f.mesh.material = f.source;
     f.clone.dispose();
     this.fading.delete(key);
+    if (!refresh) return; // dropped mid-fade: its caller decides what happens to a mesh kept under it
+    // A rebuilt chunk is solid now: the mesh it replaced dissolves out (only its faces the new one lacks still show).
+    this.retireOutgoing(key);
     // The detail chunk is solid now: hide the coarse shells it replaces.
-    if (refresh && key.startsWith('near:') && this.chunks.has(key)) this.refreshDetailOwnership();
+    if (key.startsWith('near:') && this.chunks.has(key)) this.refreshDetailOwnership();
   }
 
-  private dropChunk(key: string): void {
+  /**
+   * Remove a chunk. `fadeOut` (a chunk that left the resident set, SWAP_FADE): its mesh dissolves out instead of
+   * vanishing. `keepOutgoing` (a rebuild cross-fading): the mesh kept under the new one stays.
+   */
+  private dropChunk(key: string, fadeOut = false, keepOutgoing = false): void {
     this.endFade(key, false);
+    if (!keepOutgoing) this.dropOutgoing(key);
     const held = this.chunks.get(key);
     if (!held) return;
-    if (held.mesh) { this.scene?.remove(held.mesh); disposeTiles(held.mesh); held.mesh.geometry.dispose(); }
+    if (held.mesh && !(fadeOut && SWAP_FADE && this.fades(key) && this.fadeOut(held.mesh))) this.disposeMesh(held.mesh);
     this.chunks.delete(key);
     this.refreshSurveyedRoofOwnership();
     if (key.startsWith('near:')) this.refreshDetailOwnership();
+  }
+
+  /** Every leaving mesh goes now (context loss: their buffers are gone). */
+  private dropLeaving(): void {
+    for (const f of this.leaving) { f.clone.dispose(); this.disposeMesh(f.mesh); }
+    this.leaving.clear();
   }
 
   private refreshSurveyedRoofOwnership(): void {
@@ -1425,6 +1531,8 @@ export class ThreeBuildings {
   private refreshDetailOwnership(): void {
     const next = new Set<string>();
     for (const [key, entry] of this.chunks) if (key.startsWith('near:') && entry.mesh && !this.fading.has(key)) for (const id of entry.ranges.keys()) next.add(id);
+    // A rebuilt detail chunk's old mesh still draws, solid, while its successor dissolves in.
+    for (const [key, out] of this.outgoing) if (key.startsWith('near:')) for (const id of out.ranges.keys()) next.add(id);
     const changed = new Set([...next, ...this.installedDetailIds].filter(id => next.has(id) !== this.installedDetailIds.has(id)));
     this.installedDetailIds = next;
     if (!changed.size) return;
@@ -1447,6 +1555,7 @@ export class ThreeBuildings {
     this.restoring = true;
     this.textureSets.clear();
     for (const key of [...this.chunks.keys()]) this.dropChunk(key);
+    this.dropLeaving();
     for (const material of this.materials.values()) material.dispose();
     this.materials.clear();
     this.material.uniforms.cells.value = null;
