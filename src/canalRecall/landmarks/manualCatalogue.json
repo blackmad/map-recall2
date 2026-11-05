@@ -68463,5 +68463,59 @@
    "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
    "modifications": "Original low-poly reconstruction: the BAG outline extruded as olive-grey board walls with lighter battens over a grey brick plinth, a board fascia and sedum roof, four flush service doors, the west oversail, the east porch with a glazed shop front and doorway, a pale brick block with a serving window and the wooden BEA board. Footprint and height from BAG/3DBAG (CC0); tints are panorama medians (Gemeente Amsterdam, CC BY 4.0) between the overcast 2017 and sunlit 2022 captures. No photo pixels or imported meshes."
   }
+ },
+ {
+  "id": "kiosk-ramons-coffee",
+  "name": "Ramon's Coffee Kiosk",
+  "landmarkId": "osm_food_9047305243",
+  "modelUrl": "./models/kiosk-ramons-coffee.glb",
+  "suppressOsmIds": [
+   "NL.IMBAG.Pand.0363100012246428",
+   "w977775722"
+  ],
+  "spatialSuppression": false,
+  "footprint": {
+   "centre": [
+    4.8910493,
+    52.389849
+   ],
+   "headingDegrees": 12.48,
+   "lengthMetres": 5.149,
+   "widthMetres": 2.973
+  },
+  "surveyed": {
+   "anchor": [
+    4.8910493,
+    52.389849
+   ],
+   "northOffsetDegrees": 0,
+   "source": "bag-pand: BAG pand 0363100012246428 (2019) outline, vertex average as the anchor (OSM node 9047305243 is 0.7 m away); walls 5.0 x 2.85 m inside the 5.15 x 2.97 m outline (the outline is the roof edge). Wall 2.75 m and fascia 0.45 m scaled on the 2.1 m door; 3DBAG's 4.96 m top is the roof garden and stove pipes. Glazed side, door, menu board, lettering and roof garden from Gemeente Amsterdam panoramas recording_2024-09-17_13-37-56_00020 / _00153 (CC BY 4.0). See scripts/landmarks/kiosk-ramons-coffee-footprints.json and -inventory.json."
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 0,
+  "heightMetres": 4.0,
+  "bagYear": 2019,
+  "assetKind": "building",
+  "materialOverrides": {
+   "white": "#c8d0d2",
+   "stone": "#b9c3c6",
+   "glass": "#5e6d72",
+   "concrete": "#8a8f8e",
+   "blue": "#7d93a0",
+   "dark": "#3a3a3a",
+   "greyBrick": "#2c333b",
+   "bronze": "#39444c",
+   "gold": "#e8e6dc",
+   "ochre": "#8a8456",
+   "green": "#5f6f45"
+  },
+  "attribution": {
+   "title": "Ramon's Coffee Kiosk, Silodam",
+   "author": "Map Recall",
+   "sourceUrl": "https://www.openstreetmap.org/node/9047305243",
+   "licence": "CC BY 4.0",
+   "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+   "modifications": "Original low-poly reconstruction from the typed kiosk kit: pale grey-blue cabin with a glazed north side and glass door, a dark navy lettered south side and menu board, a deep grey-blue fascia and a rooftop garden with two stove pipes. Footprint from BAG (CC0); tints are panorama medians (Gemeente Amsterdam, CC BY 4.0) lifted toward the sunlit 2024 view. No photo pixels or imported meshes."
+  }
  }
 ]
