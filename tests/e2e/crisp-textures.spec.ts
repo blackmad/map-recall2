@@ -111,7 +111,7 @@ for (const variant of VARIANTS) {
     await page.evaluate(() => { const g = (window as any).canalRecallGame; if (g) { Object.defineProperty(g, '_lastDriveByAt', { configurable: true, get: () => g.raceTime, set: () => {} }); g._clearLandmarkNotice?.(); g.vectorMap?.setActiveLandmark?.(null); } });
     const errors: string[] = [];
     page.on('pageerror', e => errors.push(e.message.slice(0, 300)));
-    page.on('console', m => { if (m.type() === 'error') errors.push(m.text().slice(0, 300)); });
+    page.on('console', m => { if (m.type() === 'error' || (m.type() === 'warning' && /WebGL|GL_|texture|memory/i.test(m.text()))) errors.push(`${m.type()}: ${m.text().slice(0, 300)}`); });
     // A throwaway visit first: the first pose of a load otherwise catches the near detail still arriving.
     if (!process.env.CRISP_NO_WARMUP) await shot(page, SPOTS[0]);
     const file = `${OUT}/${info.project.name}-results.json`;
@@ -126,7 +126,9 @@ for (const variant of VARIANTS) {
         const perf = (window as any).__canalPerf ?? {};
         const gs = vm._ownGround?.status?.() ?? null;
         const ground = gs ? { ready: gs.ready, visible: gs.visible, blend: gs.blend, basemapHidden: gs.basemapHidden, radiusM: gs.radiusM, cells: Object.keys(gs.cells ?? {}).length, far: gs.far, errors: gs.errors } : null;
-        return { ground, tier: perf.tier ?? null, pixelRatio: vm.host?.getPixelRatio?.(), facadeTextureMB: +(t?.stats?.().textureMB ?? 0).toFixed(1), atlas: t?.atlasSource ?? null, textures: i?.memory?.textures ?? null, geometries: i?.memory?.geometries ?? null, cellTier: t?.material?.uniforms?.cellTier?.value ?? null };
+        const gl = vm.host?.renderer?.getContext?.(), glErrors: number[] = [];
+        for (let k = 0; gl && k < 8; k++) { const e = gl.getError(); if (!e) break; glErrors.push(e); }
+        return { glErrors, ground, tier: perf.tier ?? null, pixelRatio: vm.host?.getPixelRatio?.(), facadeTextureMB: +(t?.stats?.().textureMB ?? 0).toFixed(1), atlas: t?.atlasSource ?? null, textures: i?.memory?.textures ?? null, geometries: i?.memory?.geometries ?? null, cellTier: t?.material?.uniforms?.cellTier?.value ?? null };
       });
       const ms = await frameMs(page);
       (results[spot.name] ??= {})[variant.name] = { errors: errors.slice(-5), query, size: [img.width, img.height], sharpness: { laplacianVar: +s.laplacianVar.toFixed(1), edge: +s.edge.toFixed(2), acutance: +s.acutance.toFixed(1) }, ...state, ...ms };
