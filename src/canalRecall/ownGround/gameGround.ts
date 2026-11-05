@@ -35,6 +35,7 @@
 // (repaint, hiding the basemap's own ground). THREE is injected.
 
 import { HIGH_ANISOTROPY, pageTextureParams } from '../look/texturePolicy.js';
+import { installRailStripes, railMinPxFlag, railStripesFlag } from './railStripes.js';
 import { GroundStore, httpFetchBytes, toLocal, WATER_Z, type ReliefTileLoader, type Rect } from './groundStore.js';
 import { readGroundTile } from './heightField.js';
 import { poolReliefLoader } from './reliefDecode.js';
@@ -766,6 +767,9 @@ export class OwnGround {
     return t;
   }
 
+  /** `?railStripes=0` / `?railMinPx=0` (railStripes.ts): read once, when the materials are made. */
+  private readonly railStripes = { stripes: railStripesFlag(), minPx: railMinPxFlag() };
+
   /** Base materials (as the prototype page); cut layers are cloned per cell with that cell's mask. */
   private makeMaterials(): void {
     const THREE = this.THREE;
@@ -849,9 +853,13 @@ export class OwnGround {
         const px = s / SLEEPER_TILE_M, sl = RAIL_TONES.sleeper;
         for (let y = 0; y < SLEEPER_TILE_M - 0.01; y += SLEEPER_TILE_M / 5) {
           const v = (rnd() - 0.5) * 10;
+          // Under the rail stripe layer (railStripes.ts) the shader draws the sleepers; the draw is skipped, not the
+          // random number, so every texture painted after this one stays the same.
+          if (this.railStripes.stripes) continue;
           g.fillStyle = `rgb(${sl[0] + v},${sl[1] + v},${sl[2] + v})`;
           g.fillRect(0.25 * px, (y + 0.17) * px, (SLEEPER_TILE_M - 0.5) * px, 0.26 * px);
         }
+        if (this.railStripes.stripes) return;
         // The rails as dark stripes along the track (issue #145): continuous at chase distance, under the ridge rails up close.
         g.fillStyle = `rgb(${RAIL_STRIPE.tone.join(',')})`;
         for (const [u0, u1] of railStripes()) g.fillRect(u0 * px, 0, (u1 - u0) * px, s);
@@ -897,6 +905,8 @@ export class OwnGround {
     const asphaltAlbedo = new THREE.Color(`rgb(${asphaltBase.map(Math.round).join(',')})`).multiplyScalar(UNGAINED.has('asphalt') ? 1 : FLAT_GROUND_GAIN).toArray();
     const marking = (layer: string) => (layer in MARKING_FADE_STRENGTH ? { tone: asphaltAlbedo, strength: MARKING_FADE_STRENGTH[layer as keyof typeof MARKING_FADE_STRENGTH] } : null);
     for (const [layer, m] of Object.entries(M)) this.blendMaterial(m, flat[layer] ?? 'vertex', marking(layer));
+    // Rails as their own layer on the bed (railStripes.ts, lane R1-B #224); off: the baked tile above, nothing installed.
+    installRailStripes(M.ballast, this.railStripes);
     // Overlays: the game's own route / active-street colours (vector-map.js), draped.
     const overlay = (color: string, k: number, o: Record<string, unknown> = {}) => new THREE.MeshBasicMaterial({ color, polygonOffset: true, polygonOffsetFactor: -k, polygonOffsetUnits: -2 * k, ...o });
     M.routeCasing = overlay('#03121c', 5, { transparent: true, opacity: 0.75, depthWrite: false, fog: false });
