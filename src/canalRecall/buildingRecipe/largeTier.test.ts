@@ -11,10 +11,10 @@ import {canalhouseGroupToGlb} from '../../../scripts/canalhouse-recipes/export-g
 import {decodeTriangles} from '../../../scripts/building-recipes/compile.ts';
 import {dissolveFaces} from '../blockBuilding/dissolve.ts';
 import {meshHashOf} from '../../../scripts/building-recipes/mesh-hash.ts';
+import {recipeDir} from './recipeFixtures.ts';
 
-const HOUSES = 'scripts/building-recipes/houses';
-const raw = (id: string) => JSON.parse(fs.readFileSync(`${HOUSES}/${id}/intent.json`, 'utf8'));
-const facts = (id: string): BuildingFacts => JSON.parse(fs.readFileSync(`${HOUSES}/${id}/facts.json`, 'utf8'));
+const raw = (id: string) => JSON.parse(fs.readFileSync(`${recipeDir(id)}/intent.json`, 'utf8'));
+const facts = (id: string): BuildingFacts => JSON.parse(fs.readFileSync(`${recipeDir(id)}/facts.json`, 'utf8'));
 const LARGE = ['politie-van-leijenberghlaan', 'leidsestraat-67-large', 'de-balie-large', 'social-history-large', 'kattenburg-wings-164938', 'heinekenplein-130580', 'kattenburgerstraat-164930', 'beursplein-5-165051', 'damrak-77-165746', 'warmoesstraat-garage-165687', 'engelsesteeg-165098', 'oz-achterburgwal-233-180196', 'westerdok-186086', 'nieuwe-achtergracht-253754', 'aambeeldstraat-202176', 'oude-turfmarkt-168172'];
 
 async function gatesOf(intent: LargeBuildingIntent, f: BuildingFacts) {
