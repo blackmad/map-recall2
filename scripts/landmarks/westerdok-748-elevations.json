@@ -1,0 +1,78 @@
+{
+ "id": "westerdok-748",
+ "countedBy": "lane #210 (opus) from the rectified panorama crops w05-75 (TMX7316010203-002620_pano_0007_000079, 2022-06-22), w06-77 (b_20241211_1256_Track10_Sphere_00075, 2024-12-11) and w07-75 (b_20241211_1256_Track10_Sphere_00055, 2024-12-11), about 50 px/m; ribbon convention (a shop front counts once); awnings, signs and lamp posts are not openings. The framed-bay front (w04) is left uncounted: its two-storey steel frames hold glazing that does not split into storey rows cleanly. alongM is measured from the elevation's viewer-left (south) end: the south wedge starts 0.9 m in, the north wedge at 69.4 m, the north block at 103.8 m.",
+ "facades": [
+  {
+   "name": "North punched wedge, Westerdokskade front",
+   "bearing": 75,
+   "photo": "artifacts/landmark-briefs/westerdok-748/w05-75.jpg",
+   "alongM": [
+    69.4,
+    93.0
+   ],
+   "heightM": [
+    0.3,
+    23.0
+   ],
+   "rows": [
+    4,
+    8,
+    8,
+    8,
+    8,
+    8
+   ],
+   "columns": 12,
+   "symmetric": true,
+   "note": "Ground storey: four glazed shop fronts between brick piers. Five storeys of eight deep-set windows on one grid; the top row has the same windows (two awnings on the first floor are not openings). The tower roof at viewer-left is behind the parapet. Axes: the eight window columns plus the four shop-front centres, which fall between window pairs. The crop reads about 10% short vertically against the 3DBAG parapet (23 m); heightM follows 3DBAG."
+  },
+  {
+   "name": "South punched wedge, Westerdokskade front",
+   "bearing": 77,
+   "photo": "artifacts/landmark-briefs/westerdok-748/w06-77.jpg",
+   "alongM": [
+    0.9,
+    24.1
+   ],
+   "heightM": [
+    0.3,
+    21.6
+   ],
+   "rows": [
+    4,
+    8,
+    8,
+    8,
+    8,
+    8
+   ],
+   "columns": 12,
+   "symmetric": true,
+   "note": "Same grid as the north wedge: four shop fronts, five storeys of eight deep-set windows. The lamp post and the road sign stand in front. Axes: eight window columns plus four shop-front centres."
+  },
+  {
+   "name": "North block, Westerdokskade end",
+   "bearing": 75,
+   "photo": "artifacts/landmark-briefs/westerdok-748/w07-75.jpg",
+   "alongM": [
+    103.8,
+    121.6
+   ],
+   "heightM": [
+    0.3,
+    22.5
+   ],
+   "rows": [
+    3,
+    6,
+    6,
+    6,
+    6,
+    6
+   ],
+   "columns": 9,
+   "symmetric": false,
+   "note": "Ground storey: three glazed shop fronts (the right two under the deck canopy). Five storeys of six French windows with railings; the first floor's right four open onto the deck's long railing. The crop stops at the corner pier on the right. Axes: six window columns plus three shop-front centres between window pairs."
+  }
+ ]
+}

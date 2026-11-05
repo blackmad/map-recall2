@@ -62404,180 +62404,6 @@
   }
  },
  {
-  "id": "gerrit-rietveld-academie",
-  "name": "Gerrit Rietveld Academie",
-  "modelUrl": "./models/gerrit-rietveld-academie.glb",
-  "suppressOsmIds": [
-   "NL.IMBAG.Pand.0363100012077325"
-  ],
-  "spatialSuppression": false,
-  "footprint": {
-   "centre": [
-    4.8598734,
-    52.34185608
-   ],
-   "headingDegrees": 0,
-   "lengthMetres": 80.3,
-   "widthMetres": 62.8
-  },
-  "surveyed": {
-   "anchor": [
-    4.8598734,
-    52.34185608
-   ],
-   "northOffsetDegrees": 0,
-   "source": "Vertex average of the BAG 0363100012077325 ring (RD, PDOK BAG WFS, CC0) in native east/south metres above the 3DBAG ground 0.692 m NAP (scripts/landmarks/gerrit-rietveld-academie-footprints.json, written by sarphati-plaza-prepare.ts --id=gerrit-rietveld-academie --pand=0363100012077325). The building is drawn on its own axis (bearing 86.9, the BAG edges): the curtain-wall block 75.2 x 20.9 m on the 2.09 m module (36 x 10 modules, the register's 2.10 m raster), the white glazed-brick wall 0.35 m proud round the west head, the one-storey workshop wing and transverse block from the BAG ring; roof 18.2 m, the rear set-back at 16.1 m, lift tower and plant decks and the wing's 3.6 and 4.68 m roofs from the 3DBAG LoD2.2 roof parts (CC BY 4.0); the sheds counted on the PDOK orthophoto (CC BY 4.0). Band section measured on the rectified Gemeente Amsterdam panorama TMX7316010203-001151_pano_0001_002208 (CC BY 4.0, 38.1 px/m); the south front, lettering, entrance, black wall and fire stair from Wikimedia Commons photographs by Alf van Beem (CC0) and Paul Berendsen (CC BY-SA 4.0); the canal front's basement band and stair bay from Rietveldacademie.jpg (bureau Monumenten & Archeologie, attribution). Register text: gemeentelijk monument 200479. The wing's outer faces (east, south, west of the transverse block) have no photograph and are inferred."
-  },
-  "groundAltitudeMetres": 0,
-  "facingOffsetDegrees": 0,
-  "heightMetres": 21.1,
-  "bagYear": 1967,
-  "materialOverrides": {
-   "glass": "#5b6665",
-   "pink": "#9fa9a8",
-   "frame": "#8e9694",
-   "white": "#e4e0da",
-   "greyBrick": "#2e2c2f",
-   "green": "#71292c",
-   "stone": "#6e726f",
-   "concrete": "#9a9c97",
-   "slate": "#cfcdc2",
-   "bronze": "#3a4048",
-   "copper": "#b2b8b5"
-  },
-  "attribution": {
-   "title": "Gerrit Rietveld Academie, Rietveld building, Fred. Roeskestraat 96 (G. Rietveld with J. van Dillen and J. van Tricht, 1959-1967)",
-   "author": "Map Recall",
-   "sourceUrl": "https://api.data.amsterdam.nl/v1/bag/panden/0363100012077325",
-   "licence": "CC BY 4.0",
-   "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
-   "modifications": "Original texture-free flat-colour geometry on the BAG footprint (CC0) with 3DBAG LoD2.2 heights (CC BY 4.0): the four-storey curtain-wall block on the 2.09 m module with clear vision bands between frosted bands over a recessed sokkel with basement windows, the main-stair bay on the canal front, the rear roof set-back, lift tower and plant deck with its round fans, the white glazed-brick wall round the west head with the GERRIT RIETVELD ACADEMIE lettering, the entrance landing, steps, detached canopy and black glazed-brick wall, the steel fire stair on the west head and the one-storey workshop wing and transverse block with north-light sheds; read for proportion and tone from Gemeente Amsterdam panoramas (CC BY 4.0), the PDOK orthophoto (CC BY 4.0), Wikimedia Commons photographs 'Frederik Roeskestraat 96, Gerrit Rietmieveld Academie pic1-pic4' by Alf van Beem (CC0), 'Rietveld Academie, ingang, 2011.jpg' by Paul Berendsen (CC BY-SA 4.0), 'GRA bijgebouw.jpg' by Ceescamel (CC BY-SA 4.0) and 'Rietveldacademie.jpg' by bureau Monumenten & Archeologie (attribution), and the municipal monument register text 200479. No pixels or meshes imported."
-  },
-  "buildingFootprint": {
-   "type": "Polygon",
-   "coordinates": [
-    [
-     [
-      4.86038558,
-      52.34211127
-     ],
-     [
-      4.86038529,
-      52.34211416
-     ],
-     [
-      4.85946342,
-      52.34207968
-     ],
-     [
-      4.85946307,
-      52.34208273
-     ],
-     [
-      4.85927807,
-      52.34207583
-     ],
-     [
-      4.85927833,
-      52.34207327
-     ],
-     [
-      4.85929806,
-      52.34188444
-     ],
-     [
-      4.85929834,
-      52.34188158
-     ],
-     [
-      4.85941619,
-      52.34188617
-     ],
-     [
-      4.85951285,
-      52.34188993
-     ],
-     [
-      4.85954358,
-      52.34189112
-     ],
-     [
-      4.85954331,
-      52.3418939
-     ],
-     [
-      4.85978863,
-      52.34190345
-     ],
-     [
-      4.85980843,
-      52.34190423
-     ],
-     [
-      4.85996644,
-      52.34191037
-     ],
-     [
-      4.85997329,
-      52.34191063
-     ],
-     [
-      4.8600042,
-      52.34191184
-     ],
-     [
-      4.86009403,
-      52.34191533
-     ],
-     [
-      4.86015809,
-      52.34191783
-     ],
-     [
-      4.86016,
-      52.34189855
-     ],
-     [
-      4.86018057,
-      52.34169155
-     ],
-     [
-      4.85993434,
-      52.34168237
-     ],
-     [
-      4.85994768,
-      52.34154814
-     ],
-     [
-      4.86013213,
-      52.34155433
-     ],
-     [
-      4.8601319,
-      52.34155675
-     ],
-     [
-      4.86043959,
-      52.34156822
-     ],
-     [
-      4.86043805,
-      52.34158372
-     ],
-     [
-      4.86043158,
-      52.34164885
-     ],
-     [
-      4.86038558,
-      52.34211127
-     ]
-    ]
-   ]
-  }
- },
- {
   "id": "effectenbeurs",
   "name": "Effectenbeurs (Beursplein 5)",
   "modelUrl": "./models/effectenbeurs.glb",
@@ -64252,305 +64078,6 @@
   }
  },
  {
-  "id": "heinekenplein-block",
-  "name": "Heinekenplein block (Stadhouderskade 79)",
-  "modelUrl": "./models/heinekenplein-block.glb",
-  "suppressOsmIds": [
-   "NL.IMBAG.Pand.0363100012130580",
-   "NL.IMBAG.Pand.0363100012232488",
-   "NL.IMBAG.Pand.0363100012080460",
-   "NL.IMBAG.Pand.0363100012139518"
-  ],
-  "spatialSuppression": false,
-  "footprint": {
-   "centre": [
-    4.89241917,
-    52.35740181
-   ],
-   "headingDegrees": 0,
-   "lengthMetres": 50.4,
-   "widthMetres": 110.1
-  },
-  "surveyed": {
-   "anchor": [
-    4.89241917,
-    52.35740181
-   ],
-   "northOffsetDegrees": 0,
-   "source": "Vertex average of the BAG 0363100012130580 ring (RD, PDOK BAG WFS, CC0) in native east/south metres above the 3DBAG ground 0.333 m NAP (scripts/landmarks/heinekenplein-block-footprints.json, written by sarphati-plaza-prepare.ts --id=heinekenplein-block --pand=0363100012130580). Bar, deck, court, roof pavilion, office block, plant room and beige front heights from the 3DBAG LoD2.2 roof parts (CC BY 4.0); storeys, window axes, ribbons, shop fronts, the gateway, the HEINEKEN sign and the passage recess measured on rectified Gemeente Amsterdam panorama crops (CC BY 4.0), per wall in scripts/landmarks/heinekenplein-block-inventory.json. The office block's south and west faces, the court and the deck's yard face carry no photograph and are inferred. Also suppresses the three 1994 BAG pands that overlap this one (0363100012232488, 0363100012080460, 0363100012139518; the large recipe's aliases)."
-  },
-  "groundAltitudeMetres": 0,
-  "facingOffsetDegrees": 0,
-  "heightMetres": 35.1,
-  "bagYear": 1995,
-  "materialOverrides": {
-   "brick": "#a3634f",
-   "stone": "#a59d8a",
-   "greyBrick": "#aca89b",
-   "concrete": "#c8c3b6",
-   "white": "#d2d0c8",
-   "glass": "#56707e",
-   "frame": "#33373b",
-   "dark": "#2c2e31",
-   "slate": "#87898d",
-   "green": "#2f7a45",
-   "red": "#c3262f",
-   "blue": "#1f6fb5",
-   "bronze": "#34383b"
-  },
-  "attribution": {
-   "title": "Heinekenplein block, Stadhouderskade 79 / Marie Heinekenplein 25 (offices, supermarket and car park, 1995)",
-   "author": "Map Recall",
-   "sourceUrl": "https://api.data.amsterdam.nl/v1/bag/panden/0363100012130580",
-   "licence": "CC BY 4.0",
-   "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
-   "modifications": "Original texture-free flat-colour geometry on the BAG footprint (CC0) with 3DBAG LoD2.2 heights (CC BY 4.0): the four-storey red-brick bar on the Eerste Van der Helststraat with its square windows, top-storey ribbons and parapet stone blocks, the Dirk shop fronts, car-park entrance and the gateway with the green HEINEKEN sign and red star, the rendered passage recess, the ten-storey office block on the Stadhouderskade with its four-light windows and deep glazed corner bays, and the beige seven-storey front with stone-framed ground windows; read for proportion and tone from Gemeente Amsterdam panoramas (CC BY 4.0). No pixels or meshes imported."
-  },
-  "buildingFootprint": {
-   "type": "Polygon",
-   "coordinates": [
-    [
-     [
-      4.8919744,
-      52.35689447
-     ],
-     [
-      4.89204745,
-      52.35689006
-     ],
-     [
-      4.8921278,
-      52.3568852
-     ],
-     [
-      4.89220815,
-      52.35688034
-     ],
-     [
-      4.89229242,
-      52.35687523
-     ],
-     [
-      4.89237219,
-      52.35687042
-     ],
-     [
-      4.89246157,
-      52.35686501
-     ],
-     [
-      4.89256121,
-      52.35685898
-     ],
-     [
-      4.89260488,
-      52.35712963
-     ],
-     [
-      4.89261042,
-      52.3571639
-     ],
-     [
-      4.89261474,
-      52.35719073
-     ],
-     [
-      4.89262129,
-      52.3572313
-     ],
-     [
-      4.89261499,
-      52.35723169
-     ],
-     [
-      4.89261469,
-      52.35722989
-     ],
-     [
-      4.89259329,
-      52.3572312
-     ],
-     [
-      4.89260345,
-      52.35729342
-     ],
-     [
-      4.89262471,
-      52.35729213
-     ],
-     [
-      4.89262442,
-      52.35729033
-     ],
-     [
-      4.89263072,
-      52.35728996
-     ],
-     [
-      4.89263723,
-      52.35733083
-     ],
-     [
-      4.89264717,
-      52.35739345
-     ],
-     [
-      4.89265598,
-      52.35744892
-     ],
-     [
-      4.89267196,
-      52.35754659
-     ],
-     [
-      4.89270407,
-      52.35774752
-     ],
-     [
-      4.8926978,
-      52.35774791
-     ],
-     [
-      4.89269719,
-      52.35774443
-     ],
-     [
-      4.89267883,
-      52.35774563
-     ],
-     [
-      4.89267938,
-      52.35774902
-     ],
-     [
-      4.89268996,
-      52.35781354
-     ],
-     [
-      4.89263717,
-      52.35781669
-     ],
-     [
-      4.89258468,
-      52.35781981
-     ],
-     [
-      4.89257898,
-      52.35782015
-     ],
-     [
-      4.89258058,
-      52.35782999
-     ],
-     [
-      4.89259446,
-      52.35782915
-     ],
-     [
-      4.89259502,
-      52.357833
-     ],
-     [
-      4.89243101,
-      52.35784289
-     ],
-     [
-      4.89235567,
-      52.35784742
-     ],
-     [
-      4.8923555,
-      52.35784646
-     ],
-     [
-      4.89235481,
-      52.3578465
-     ],
-     [
-      4.89233141,
-      52.35769297
-     ],
-     [
-      4.892237,
-      52.35769864
-     ],
-     [
-      4.89221697,
-      52.35757443
-     ],
-     [
-      4.89243358,
-      52.35756114
-     ],
-     [
-      4.89245213,
-      52.35756
-     ],
-     [
-      4.89245209,
-      52.35755998
-     ],
-     [
-      4.89244173,
-      52.35749549
-     ],
-     [
-      4.89243812,
-      52.35747302
-     ],
-     [
-      4.89243775,
-      52.35747025
-     ],
-     [
-      4.89207107,
-      52.35749306
-     ],
-     [
-      4.89206543,
-      52.35745908
-     ],
-     [
-      4.89204449,
-      52.35732922
-     ],
-     [
-      4.8920344,
-      52.35726661
-     ],
-     [
-      4.89202814,
-      52.3572278
-     ],
-     [
-      4.89201725,
-      52.35716028
-     ],
-     [
-      4.8920114,
-      52.35712395
-     ],
-     [
-      4.89199891,
-      52.35704653
-     ],
-     [
-      4.89198955,
-      52.35698839
-     ],
-     [
-      4.89198017,
-      52.35693025
-     ],
-     [
-      4.8919744,
-      52.35689447
-     ]
-    ]
-   ]
-  }
- },
- {
   "id": "nfta-markenplein",
   "name": "Nederlandse Filmacademie",
   "landmarkId": "extract_landmarks_1149389771",
@@ -65347,6 +64874,479 @@
      [
       4.911672501744578,
       52.34571892376574
+     ]
+    ]
+   ]
+  }
+ },
+ {
+  "id": "gerrit-rietveld-academie",
+  "name": "Gerrit Rietveld Academie",
+  "modelUrl": "./models/gerrit-rietveld-academie.glb",
+  "suppressOsmIds": [
+   "NL.IMBAG.Pand.0363100012077325"
+  ],
+  "spatialSuppression": false,
+  "footprint": {
+   "centre": [
+    4.8598734,
+    52.34185608
+   ],
+   "headingDegrees": 0,
+   "lengthMetres": 80.3,
+   "widthMetres": 62.8
+  },
+  "surveyed": {
+   "anchor": [
+    4.8598734,
+    52.34185608
+   ],
+   "northOffsetDegrees": 0,
+   "source": "Vertex average of the BAG 0363100012077325 ring (RD, PDOK BAG WFS, CC0) in native east/south metres above the 3DBAG ground 0.692 m NAP (scripts/landmarks/gerrit-rietveld-academie-footprints.json, written by sarphati-plaza-prepare.ts --id=gerrit-rietveld-academie --pand=0363100012077325). The building is drawn on its own axis (bearing 86.9, the BAG edges): the curtain-wall block 75.2 x 20.9 m on the 2.09 m module (36 x 10 modules, the register's 2.10 m raster), the white glazed-brick wall 0.35 m proud round the west head, the one-storey workshop wing and transverse block from the BAG ring; roof 18.2 m, the rear set-back at 16.1 m, lift tower and plant decks and the wing's 3.6 and 4.68 m roofs from the 3DBAG LoD2.2 roof parts (CC BY 4.0); the sheds counted on the PDOK orthophoto (CC BY 4.0). Band section measured on the rectified Gemeente Amsterdam panorama TMX7316010203-001151_pano_0001_002208 (CC BY 4.0, 38.1 px/m); the south front, lettering, entrance, black wall and fire stair from Wikimedia Commons photographs by Alf van Beem (CC0) and Paul Berendsen (CC BY-SA 4.0); the canal front's basement band and stair bay from Rietveldacademie.jpg (bureau Monumenten & Archeologie, attribution). Register text: gemeentelijk monument 200479. The wing's outer faces (east, south, west of the transverse block) have no photograph and are inferred."
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 0,
+  "heightMetres": 21.1,
+  "bagYear": 1967,
+  "materialOverrides": {
+   "glass": "#5b6665",
+   "pink": "#9fa9a8",
+   "frame": "#8e9694",
+   "white": "#e4e0da",
+   "greyBrick": "#2e2c2f",
+   "green": "#71292c",
+   "stone": "#6e726f",
+   "concrete": "#9a9c97",
+   "slate": "#cfcdc2",
+   "bronze": "#3a4048",
+   "copper": "#b2b8b5"
+  },
+  "attribution": {
+   "title": "Gerrit Rietveld Academie, Rietveld building, Fred. Roeskestraat 96 (G. Rietveld with J. van Dillen and J. van Tricht, 1959-1967)",
+   "author": "Map Recall",
+   "sourceUrl": "https://api.data.amsterdam.nl/v1/bag/panden/0363100012077325",
+   "licence": "CC BY 4.0",
+   "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+   "modifications": "Original texture-free flat-colour geometry on the BAG footprint (CC0) with 3DBAG LoD2.2 heights (CC BY 4.0): the four-storey curtain-wall block on the 2.09 m module with clear vision bands between frosted bands over a recessed sokkel with basement windows, the main-stair bay on the canal front, the rear roof set-back, lift tower and plant deck with its round fans, the white glazed-brick wall round the west head with the GERRIT RIETVELD ACADEMIE lettering, the entrance landing, steps, detached canopy and black glazed-brick wall, the steel fire stair on the west head and the one-storey workshop wing and transverse block with north-light sheds; read for proportion and tone from Gemeente Amsterdam panoramas (CC BY 4.0), the PDOK orthophoto (CC BY 4.0), Wikimedia Commons photographs 'Frederik Roeskestraat 96, Gerrit Rietmieveld Academie pic1-pic4' by Alf van Beem (CC0), 'Rietveld Academie, ingang, 2011.jpg' by Paul Berendsen (CC BY-SA 4.0), 'GRA bijgebouw.jpg' by Ceescamel (CC BY-SA 4.0) and 'Rietveldacademie.jpg' by bureau Monumenten & Archeologie (attribution), and the municipal monument register text 200479. No pixels or meshes imported."
+  },
+  "buildingFootprint": {
+   "type": "Polygon",
+   "coordinates": [
+    [
+     [
+      4.86038558,
+      52.34211127
+     ],
+     [
+      4.86038529,
+      52.34211416
+     ],
+     [
+      4.85946342,
+      52.34207968
+     ],
+     [
+      4.85946307,
+      52.34208273
+     ],
+     [
+      4.85927807,
+      52.34207583
+     ],
+     [
+      4.85927833,
+      52.34207327
+     ],
+     [
+      4.85929806,
+      52.34188444
+     ],
+     [
+      4.85929834,
+      52.34188158
+     ],
+     [
+      4.85941619,
+      52.34188617
+     ],
+     [
+      4.85951285,
+      52.34188993
+     ],
+     [
+      4.85954358,
+      52.34189112
+     ],
+     [
+      4.85954331,
+      52.3418939
+     ],
+     [
+      4.85978863,
+      52.34190345
+     ],
+     [
+      4.85980843,
+      52.34190423
+     ],
+     [
+      4.85996644,
+      52.34191037
+     ],
+     [
+      4.85997329,
+      52.34191063
+     ],
+     [
+      4.8600042,
+      52.34191184
+     ],
+     [
+      4.86009403,
+      52.34191533
+     ],
+     [
+      4.86015809,
+      52.34191783
+     ],
+     [
+      4.86016,
+      52.34189855
+     ],
+     [
+      4.86018057,
+      52.34169155
+     ],
+     [
+      4.85993434,
+      52.34168237
+     ],
+     [
+      4.85994768,
+      52.34154814
+     ],
+     [
+      4.86013213,
+      52.34155433
+     ],
+     [
+      4.8601319,
+      52.34155675
+     ],
+     [
+      4.86043959,
+      52.34156822
+     ],
+     [
+      4.86043805,
+      52.34158372
+     ],
+     [
+      4.86043158,
+      52.34164885
+     ],
+     [
+      4.86038558,
+      52.34211127
+     ]
+    ]
+   ]
+  }
+ },
+ {
+  "id": "heinekenplein-block",
+  "name": "Heinekenplein block (Stadhouderskade 79)",
+  "modelUrl": "./models/heinekenplein-block.glb",
+  "suppressOsmIds": [
+   "NL.IMBAG.Pand.0363100012130580",
+   "NL.IMBAG.Pand.0363100012232488",
+   "NL.IMBAG.Pand.0363100012080460",
+   "NL.IMBAG.Pand.0363100012139518"
+  ],
+  "spatialSuppression": false,
+  "footprint": {
+   "centre": [
+    4.89241917,
+    52.35740181
+   ],
+   "headingDegrees": 0,
+   "lengthMetres": 50.4,
+   "widthMetres": 110.1
+  },
+  "surveyed": {
+   "anchor": [
+    4.89241917,
+    52.35740181
+   ],
+   "northOffsetDegrees": 0,
+   "source": "Vertex average of the BAG 0363100012130580 ring (RD, PDOK BAG WFS, CC0) in native east/south metres above the 3DBAG ground 0.333 m NAP (scripts/landmarks/heinekenplein-block-footprints.json, written by sarphati-plaza-prepare.ts --id=heinekenplein-block --pand=0363100012130580). Bar, deck, court, roof pavilion, office block, plant room and beige front heights from the 3DBAG LoD2.2 roof parts (CC BY 4.0); storeys, window axes, ribbons, shop fronts, the gateway, the HEINEKEN sign and the passage recess measured on rectified Gemeente Amsterdam panorama crops (CC BY 4.0), per wall in scripts/landmarks/heinekenplein-block-inventory.json. The office block's south and west faces, the court and the deck's yard face carry no photograph and are inferred. Also suppresses the three 1994 BAG pands that overlap this one (0363100012232488, 0363100012080460, 0363100012139518; the large recipe's aliases)."
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 0,
+  "heightMetres": 35.1,
+  "bagYear": 1995,
+  "materialOverrides": {
+   "brick": "#a3634f",
+   "stone": "#a59d8a",
+   "greyBrick": "#aca89b",
+   "concrete": "#c8c3b6",
+   "white": "#d2d0c8",
+   "glass": "#56707e",
+   "frame": "#33373b",
+   "dark": "#2c2e31",
+   "slate": "#87898d",
+   "green": "#2f7a45",
+   "red": "#c3262f",
+   "blue": "#1f6fb5",
+   "bronze": "#34383b"
+  },
+  "attribution": {
+   "title": "Heinekenplein block, Stadhouderskade 79 / Marie Heinekenplein 25 (offices, supermarket and car park, 1995)",
+   "author": "Map Recall",
+   "sourceUrl": "https://api.data.amsterdam.nl/v1/bag/panden/0363100012130580",
+   "licence": "CC BY 4.0",
+   "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+   "modifications": "Original texture-free flat-colour geometry on the BAG footprint (CC0) with 3DBAG LoD2.2 heights (CC BY 4.0): the four-storey red-brick bar on the Eerste Van der Helststraat with its square windows, top-storey ribbons and parapet stone blocks, the Dirk shop fronts, car-park entrance and the gateway with the green HEINEKEN sign and red star, the rendered passage recess, the ten-storey office block on the Stadhouderskade with its four-light windows and deep glazed corner bays, and the beige seven-storey front with stone-framed ground windows; read for proportion and tone from Gemeente Amsterdam panoramas (CC BY 4.0). No pixels or meshes imported."
+  },
+  "buildingFootprint": {
+   "type": "Polygon",
+   "coordinates": [
+    [
+     [
+      4.8919744,
+      52.35689447
+     ],
+     [
+      4.89204745,
+      52.35689006
+     ],
+     [
+      4.8921278,
+      52.3568852
+     ],
+     [
+      4.89220815,
+      52.35688034
+     ],
+     [
+      4.89229242,
+      52.35687523
+     ],
+     [
+      4.89237219,
+      52.35687042
+     ],
+     [
+      4.89246157,
+      52.35686501
+     ],
+     [
+      4.89256121,
+      52.35685898
+     ],
+     [
+      4.89260488,
+      52.35712963
+     ],
+     [
+      4.89261042,
+      52.3571639
+     ],
+     [
+      4.89261474,
+      52.35719073
+     ],
+     [
+      4.89262129,
+      52.3572313
+     ],
+     [
+      4.89261499,
+      52.35723169
+     ],
+     [
+      4.89261469,
+      52.35722989
+     ],
+     [
+      4.89259329,
+      52.3572312
+     ],
+     [
+      4.89260345,
+      52.35729342
+     ],
+     [
+      4.89262471,
+      52.35729213
+     ],
+     [
+      4.89262442,
+      52.35729033
+     ],
+     [
+      4.89263072,
+      52.35728996
+     ],
+     [
+      4.89263723,
+      52.35733083
+     ],
+     [
+      4.89264717,
+      52.35739345
+     ],
+     [
+      4.89265598,
+      52.35744892
+     ],
+     [
+      4.89267196,
+      52.35754659
+     ],
+     [
+      4.89270407,
+      52.35774752
+     ],
+     [
+      4.8926978,
+      52.35774791
+     ],
+     [
+      4.89269719,
+      52.35774443
+     ],
+     [
+      4.89267883,
+      52.35774563
+     ],
+     [
+      4.89267938,
+      52.35774902
+     ],
+     [
+      4.89268996,
+      52.35781354
+     ],
+     [
+      4.89263717,
+      52.35781669
+     ],
+     [
+      4.89258468,
+      52.35781981
+     ],
+     [
+      4.89257898,
+      52.35782015
+     ],
+     [
+      4.89258058,
+      52.35782999
+     ],
+     [
+      4.89259446,
+      52.35782915
+     ],
+     [
+      4.89259502,
+      52.357833
+     ],
+     [
+      4.89243101,
+      52.35784289
+     ],
+     [
+      4.89235567,
+      52.35784742
+     ],
+     [
+      4.8923555,
+      52.35784646
+     ],
+     [
+      4.89235481,
+      52.3578465
+     ],
+     [
+      4.89233141,
+      52.35769297
+     ],
+     [
+      4.892237,
+      52.35769864
+     ],
+     [
+      4.89221697,
+      52.35757443
+     ],
+     [
+      4.89243358,
+      52.35756114
+     ],
+     [
+      4.89245213,
+      52.35756
+     ],
+     [
+      4.89245209,
+      52.35755998
+     ],
+     [
+      4.89244173,
+      52.35749549
+     ],
+     [
+      4.89243812,
+      52.35747302
+     ],
+     [
+      4.89243775,
+      52.35747025
+     ],
+     [
+      4.89207107,
+      52.35749306
+     ],
+     [
+      4.89206543,
+      52.35745908
+     ],
+     [
+      4.89204449,
+      52.35732922
+     ],
+     [
+      4.8920344,
+      52.35726661
+     ],
+     [
+      4.89202814,
+      52.3572278
+     ],
+     [
+      4.89201725,
+      52.35716028
+     ],
+     [
+      4.8920114,
+      52.35712395
+     ],
+     [
+      4.89199891,
+      52.35704653
+     ],
+     [
+      4.89198955,
+      52.35698839
+     ],
+     [
+      4.89198017,
+      52.35693025
+     ],
+     [
+      4.8919744,
+      52.35689447
      ]
     ]
    ]
@@ -67616,5 +67616,388 @@
     ]
    ]
   }
+ },
+ {
+  "id": "westerdok-748",
+  "name": "Westerdok 748 courtyard block",
+  "modelUrl": "./models/westerdok-748.glb",
+  "suppressOsmIds": [
+   "NL.IMBAG.Pand.0363100012186003",
+   "r3606839"
+  ],
+  "spatialSuppression": false,
+  "footprint": {
+   "centre": [
+    4.8924343,
+    52.3860419
+   ],
+   "headingDegrees": 4.5,
+   "lengthMetres": 114.13,
+   "widthMetres": 85.23
+  },
+  "surveyed": {
+   "anchor": [
+    4.89239479,
+    52.38609987
+   ],
+   "northOffsetDegrees": 0,
+   "source": "Vertex average of the BAG 0363100012186003 ring (RD, PDOK BAG WFS, CC0); massing is one prism per 3DBAG LoD2.2 roof piece (CC BY 4.0) in native east/south metres above the street at 1.33 m NAP (scripts/landmarks/westerdok-748-prepare.ts), with the low Leliendaalstraat wing of roof piece 55 drawn at 10.8 m (panoramas w02 and BAG floor numbers). Window orders, passage, porches, towers and decks read from Gemeente Amsterdam panoramas (CC BY 4.0); see scripts/landmarks/westerdok-748-inventory.json and westerdok-748-elevations.json."
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 0,
+  "heightMetres": 38.0,
+  "bagYear": 2008,
+  "materialOverrides": {
+   "brick": "#745546",
+   "red": "#4e3a32",
+   "glass": "#566a77",
+   "dark": "#2f3337",
+   "frame": "#7f8486",
+   "concrete": "#bdb9b0",
+   "white": "#e2e0d8",
+   "slate": "#56585e",
+   "greyBrick": "#66625f",
+   "ochre": "#7d705c",
+   "blue": "#3c4954",
+   "bronze": "#4a5560",
+   "copper": "#7d9590"
+  },
+  "attribution": {
+   "title": "Westerdok 748 courtyard block, Westerdokseiland (2008)",
+   "author": "Map Recall",
+   "sourceUrl": "https://api.data.amsterdam.nl/v1/bag/panden/0363100012186003",
+   "licence": "CC BY 4.0",
+   "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+   "modifications": "Original texture-free flat-colour geometry on 3DBAG LoD2.2 roof pieces (CC BY 4.0) and the BAG footprint (CC0): the stepped red-brick blocks round three courtyards with deep-set punched windows, the Juliet-balcony north fronts with their eaves, storey ledges, gallery deck and canopy, the framed-bay and shop-front wedges on the Westerdokskade, the grey, timber and slate towers over the courtyard portals, the west passage and porches, the south balconies; read for order and tone from Gemeente Amsterdam panoramas (CC BY 4.0). No pixels or meshes imported."
+  },
+  "buildingFootprint": {
+   "type": "MultiPolygon",
+   "coordinates": [
+    [
+     [
+      [
+       4.8917845,
+       52.3858487
+      ],
+      [
+       4.8917741,
+       52.3857587
+      ],
+      [
+       4.8917501,
+       52.3855591
+      ],
+      [
+       4.8929982,
+       52.3855029
+      ],
+      [
+       4.8929986,
+       52.3855029
+      ],
+      [
+       4.8929186,
+       52.385707
+      ],
+      [
+       4.8928119,
+       52.3857117
+      ],
+      [
+       4.8928235,
+       52.3858017
+      ],
+      [
+       4.892878,
+       52.3857992
+      ],
+      [
+       4.8927869,
+       52.3860052
+      ],
+      [
+       4.8926875,
+       52.3860097
+      ],
+      [
+       4.8926982,
+       52.3860995
+      ],
+      [
+       4.892747,
+       52.3860972
+      ],
+      [
+       4.8926562,
+       52.3863025
+      ],
+      [
+       4.8925659,
+       52.3863064
+      ],
+      [
+       4.892577,
+       52.386397
+      ],
+      [
+       4.8926155,
+       52.3863952
+      ],
+      [
+       4.8925477,
+       52.3865499
+      ],
+      [
+       4.8923301,
+       52.38656
+      ],
+      [
+       4.8922392,
+       52.3865642
+      ],
+      [
+       4.8918734,
+       52.3865807
+      ],
+      [
+       4.8918733,
+       52.3865796
+      ],
+      [
+       4.8918553,
+       52.3864297
+      ],
+      [
+       4.8918445,
+       52.3863396
+      ],
+      [
+       4.8918207,
+       52.3861392
+      ],
+      [
+       4.8918086,
+       52.3860493
+      ],
+      [
+       4.8917845,
+       52.3858487
+      ]
+     ],
+     [
+      [
+       4.8923973,
+       52.3863136
+      ],
+      [
+       4.8923854,
+       52.3862174
+      ],
+      [
+       4.8920002,
+       52.3862348
+      ],
+      [
+       4.8920118,
+       52.386332
+      ],
+      [
+       4.8920155,
+       52.3863615
+      ],
+      [
+       4.8922136,
+       52.3863524
+      ],
+      [
+       4.8922207,
+       52.3864131
+      ],
+      [
+       4.8924085,
+       52.3864046
+      ],
+      [
+       4.8923973,
+       52.3863136
+      ]
+     ],
+     [
+      [
+       4.8925319,
+       52.386107
+      ],
+      [
+       4.8925212,
+       52.3860172
+      ],
+      [
+       4.8925095,
+       52.3859192
+      ],
+      [
+       4.8919636,
+       52.3859438
+      ],
+      [
+       4.8919757,
+       52.3860418
+      ],
+      [
+       4.8919877,
+       52.3861316
+      ],
+      [
+       4.8925319,
+       52.386107
+      ]
+     ],
+     [
+      [
+       4.8919517,
+       52.3858411
+      ],
+      [
+       4.8926553,
+       52.3858093
+      ],
+      [
+       4.8926437,
+       52.3857193
+      ],
+      [
+       4.8926312,
+       52.3856227
+      ],
+      [
+       4.8924047,
+       52.385633
+      ],
+      [
+       4.8924105,
+       52.3856812
+      ],
+      [
+       4.892419,
+       52.3857539
+      ],
+      [
+       4.892211,
+       52.3857632
+      ],
+      [
+       4.8922022,
+       52.3856907
+      ],
+      [
+       4.8921962,
+       52.3856427
+      ],
+      [
+       4.8919304,
+       52.3856544
+      ],
+      [
+       4.8919414,
+       52.3857511
+      ],
+      [
+       4.8919517,
+       52.3858411
+      ]
+     ]
+    ]
+   ]
+  },
+  "throughPassages": [
+   {
+    "axisBearing": 94.6,
+    "corridor": [
+     [
+      -39.056,
+      -4.642
+     ],
+     [
+      -39.946,
+      5.355
+     ],
+     [
+      -28.577,
+      6.27
+     ],
+     [
+      -27.687,
+      -3.723
+     ]
+    ],
+    "evidence": "Two-storey public passage under the middle west block from the Westerdok street into the middle courtyard, open at both ends: Gemeente Amsterdam panorama TMX7316010203-002532_pano_0000_000133 (2022, w01-275) and b_20241121_0951_Track02_Sphere_00038 (2024)."
+   },
+   {
+    "axisBearing": 274.5,
+    "corridor": [
+     [
+      12.632,
+      -32.974
+     ],
+     [
+      11.803,
+      -22.897
+     ],
+     [
+      0.334,
+      -23.783
+     ],
+     [
+      1.167,
+      -33.903
+     ]
+    ],
+    "evidence": "Courtyard portal under the recessed grey-brick tower, from the Westerdokskade pavement to the courtyard, one storey high under a dark soffit; a glass gate stands in it (not modelled, see-through): Gemeente Amsterdam panorama TMX7316010203-002037_pano_0000_002843 (2021, w08-95)."
+   },
+   {
+    "axisBearing": 274.6,
+    "corridor": [
+     [
+      20.656,
+      0.187
+     ],
+     [
+      19.859,
+      10.168
+     ],
+     [
+      8.541,
+      9.259
+     ],
+     [
+      9.338,
+      -0.728
+     ]
+    ],
+    "evidence": "Courtyard portal under the recessed slate-clad tower, from the Westerdokskade pavement to the courtyard, one storey high under a dark soffit; a glass gate stands in it (not modelled, see-through): Gemeente Amsterdam panorama TMX7316010203-000224_pano_0000_002045 (2017, w10-95)."
+   },
+   {
+    "axisBearing": 274.6,
+    "corridor": [
+     [
+      28.962,
+      33.378
+     ],
+     [
+      28.102,
+      43.378
+     ],
+     [
+      16.655,
+      42.462
+     ],
+     [
+      17.516,
+      32.453
+     ]
+    ],
+    "evidence": "Courtyard portal under the recessed timber-clad tower, from the Westerdokskade pavement to the courtyard, one storey high under a dark soffit; a glass gate stands in it (not modelled, see-through): Gemeente Amsterdam panorama TMX7316010203-001182_pano_0000_002814 (2019, w09-95)."
+   }
+  ]
  }
 ]

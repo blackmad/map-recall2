@@ -408,6 +408,7 @@ import {buildPolitieOostWatergraafsmeer} from './politie-oost-watergraafsmeer-bu
 import {buildRietveldAcademie2006} from './rietveld-academie-2006-builder';
 import {buildBinnengasthuisKloveniersburgwal} from './binnengasthuis-kloveniersburgwal-builder';
 import {buildKinkerstraat32} from './kinkerstraat-32-builder';
+import {buildWesterdok748} from './westerdok-748-builder';
 const out=path.resolve('public/canal-drive/models');
 const palette={brick:'#9a5240',stone:'#cfc2a6',sandstone:'#a09580',slate:'#4a525d',white:'#efe9db',gold:'#d9b24c',glass:'#527787',dark:'#303b43',frame:'#9daaa8',red:'#ac624e',blue:'#3f5f9a',pink:'#be9295',bronze:'#3d5148',copper:'#43888b',green:'#718b58',ochre:'#9f825c',concrete:'#d4d5d0',greyBrick:'#7d7871',
  // Light frit glass of the IJ bus-station canopy (centraal-complex-builder.ts): median of its sunlit north half on the PDOK 2023
@@ -1006,6 +1007,7 @@ for(const spec of MANUAL_LANDMARKS.filter(model => !selectedIds.length || select
     else if(id==='rietveld-academie-2006')buildRietveldAcademie2006(w,d,helpers);
     else if(id==='binnengasthuis-kloveniersburgwal')buildBinnengasthuisKloveniersburgwal(w,d,helpers);
     else if(id==='kinkerstraat-32')buildKinkerstraat32(w,d,helpers);
+    else if(id==='westerdok-748')buildWesterdok748(w,d,helpers);
     else buildCulturalLandmark(id,w,d,helpers);
   }
   }catch(e){

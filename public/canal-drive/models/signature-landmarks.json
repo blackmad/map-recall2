@@ -84017,6 +84017,427 @@
         "bytes": 104980,
         "triangles": 6606
       }
+    },
+    "westerdok-748": {
+      "id": "westerdok-748",
+      "name": "Westerdok 748 courtyard block",
+      "modelUrl": "./models/westerdok-748.glb",
+      "suppressOsmIds": [
+        "NL.IMBAG.Pand.0363100012186003",
+        "r3606839"
+      ],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.8924343,
+          52.3860419
+        ],
+        "headingDegrees": 4.5,
+        "lengthMetres": 114.13,
+        "widthMetres": 85.23
+      },
+      "surveyed": {
+        "anchor": [
+          4.89239479,
+          52.38609987
+        ],
+        "northOffsetDegrees": 0,
+        "source": "Vertex average of the BAG 0363100012186003 ring (RD, PDOK BAG WFS, CC0); massing is one prism per 3DBAG LoD2.2 roof piece (CC BY 4.0) in native east/south metres above the street at 1.33 m NAP (scripts/landmarks/westerdok-748-prepare.ts), with the low Leliendaalstraat wing of roof piece 55 drawn at 10.8 m (panoramas w02 and BAG floor numbers). Window orders, passage, porches, towers and decks read from Gemeente Amsterdam panoramas (CC BY 4.0); see scripts/landmarks/westerdok-748-inventory.json and westerdok-748-elevations.json."
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 0,
+      "heightMetres": 38,
+      "bagYear": 2008,
+      "materialOverrides": {
+        "brick": "#745546",
+        "red": "#4e3a32",
+        "glass": "#566a77",
+        "dark": "#2f3337",
+        "frame": "#7f8486",
+        "concrete": "#bdb9b0",
+        "white": "#e2e0d8",
+        "slate": "#56585e",
+        "greyBrick": "#66625f",
+        "ochre": "#7d705c",
+        "blue": "#3c4954",
+        "bronze": "#4a5560",
+        "copper": "#7d9590"
+      },
+      "attribution": {
+        "title": "Westerdok 748 courtyard block, Westerdokseiland (2008)",
+        "author": "Map Recall",
+        "sourceUrl": "https://api.data.amsterdam.nl/v1/bag/panden/0363100012186003",
+        "licence": "CC BY 4.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "modifications": "Original texture-free flat-colour geometry on 3DBAG LoD2.2 roof pieces (CC BY 4.0) and the BAG footprint (CC0): the stepped red-brick blocks round three courtyards with deep-set punched windows, the Juliet-balcony north fronts with their eaves, storey ledges, gallery deck and canopy, the framed-bay and shop-front wedges on the Westerdokskade, the grey, timber and slate towers over the courtyard portals, the west passage and porches, the south balconies; read for order and tone from Gemeente Amsterdam panoramas (CC BY 4.0). No pixels or meshes imported."
+      },
+      "buildingFootprint": {
+        "type": "MultiPolygon",
+        "coordinates": [
+          [
+            [
+              [
+                4.8917845,
+                52.3858487
+              ],
+              [
+                4.8917741,
+                52.3857587
+              ],
+              [
+                4.8917501,
+                52.3855591
+              ],
+              [
+                4.8929982,
+                52.3855029
+              ],
+              [
+                4.8929986,
+                52.3855029
+              ],
+              [
+                4.8929186,
+                52.385707
+              ],
+              [
+                4.8928119,
+                52.3857117
+              ],
+              [
+                4.8928235,
+                52.3858017
+              ],
+              [
+                4.892878,
+                52.3857992
+              ],
+              [
+                4.8927869,
+                52.3860052
+              ],
+              [
+                4.8926875,
+                52.3860097
+              ],
+              [
+                4.8926982,
+                52.3860995
+              ],
+              [
+                4.892747,
+                52.3860972
+              ],
+              [
+                4.8926562,
+                52.3863025
+              ],
+              [
+                4.8925659,
+                52.3863064
+              ],
+              [
+                4.892577,
+                52.386397
+              ],
+              [
+                4.8926155,
+                52.3863952
+              ],
+              [
+                4.8925477,
+                52.3865499
+              ],
+              [
+                4.8923301,
+                52.38656
+              ],
+              [
+                4.8922392,
+                52.3865642
+              ],
+              [
+                4.8918734,
+                52.3865807
+              ],
+              [
+                4.8918733,
+                52.3865796
+              ],
+              [
+                4.8918553,
+                52.3864297
+              ],
+              [
+                4.8918445,
+                52.3863396
+              ],
+              [
+                4.8918207,
+                52.3861392
+              ],
+              [
+                4.8918086,
+                52.3860493
+              ],
+              [
+                4.8917845,
+                52.3858487
+              ]
+            ],
+            [
+              [
+                4.8923973,
+                52.3863136
+              ],
+              [
+                4.8923854,
+                52.3862174
+              ],
+              [
+                4.8920002,
+                52.3862348
+              ],
+              [
+                4.8920118,
+                52.386332
+              ],
+              [
+                4.8920155,
+                52.3863615
+              ],
+              [
+                4.8922136,
+                52.3863524
+              ],
+              [
+                4.8922207,
+                52.3864131
+              ],
+              [
+                4.8924085,
+                52.3864046
+              ],
+              [
+                4.8923973,
+                52.3863136
+              ]
+            ],
+            [
+              [
+                4.8925319,
+                52.386107
+              ],
+              [
+                4.8925212,
+                52.3860172
+              ],
+              [
+                4.8925095,
+                52.3859192
+              ],
+              [
+                4.8919636,
+                52.3859438
+              ],
+              [
+                4.8919757,
+                52.3860418
+              ],
+              [
+                4.8919877,
+                52.3861316
+              ],
+              [
+                4.8925319,
+                52.386107
+              ]
+            ],
+            [
+              [
+                4.8919517,
+                52.3858411
+              ],
+              [
+                4.8926553,
+                52.3858093
+              ],
+              [
+                4.8926437,
+                52.3857193
+              ],
+              [
+                4.8926312,
+                52.3856227
+              ],
+              [
+                4.8924047,
+                52.385633
+              ],
+              [
+                4.8924105,
+                52.3856812
+              ],
+              [
+                4.892419,
+                52.3857539
+              ],
+              [
+                4.892211,
+                52.3857632
+              ],
+              [
+                4.8922022,
+                52.3856907
+              ],
+              [
+                4.8921962,
+                52.3856427
+              ],
+              [
+                4.8919304,
+                52.3856544
+              ],
+              [
+                4.8919414,
+                52.3857511
+              ],
+              [
+                4.8919517,
+                52.3858411
+              ]
+            ]
+          ]
+        ]
+      },
+      "throughPassages": [
+        {
+          "axisBearing": 94.6,
+          "corridor": [
+            [
+              -39.056,
+              -4.642
+            ],
+            [
+              -39.946,
+              5.355
+            ],
+            [
+              -28.577,
+              6.27
+            ],
+            [
+              -27.687,
+              -3.723
+            ]
+          ],
+          "evidence": "Two-storey public passage under the middle west block from the Westerdok street into the middle courtyard, open at both ends: Gemeente Amsterdam panorama TMX7316010203-002532_pano_0000_000133 (2022, w01-275) and b_20241121_0951_Track02_Sphere_00038 (2024)."
+        },
+        {
+          "axisBearing": 274.5,
+          "corridor": [
+            [
+              12.632,
+              -32.974
+            ],
+            [
+              11.803,
+              -22.897
+            ],
+            [
+              0.334,
+              -23.783
+            ],
+            [
+              1.167,
+              -33.903
+            ]
+          ],
+          "evidence": "Courtyard portal under the recessed grey-brick tower, from the Westerdokskade pavement to the courtyard, one storey high under a dark soffit; a glass gate stands in it (not modelled, see-through): Gemeente Amsterdam panorama TMX7316010203-002037_pano_0000_002843 (2021, w08-95)."
+        },
+        {
+          "axisBearing": 274.6,
+          "corridor": [
+            [
+              20.656,
+              0.187
+            ],
+            [
+              19.859,
+              10.168
+            ],
+            [
+              8.541,
+              9.259
+            ],
+            [
+              9.338,
+              -0.728
+            ]
+          ],
+          "evidence": "Courtyard portal under the recessed slate-clad tower, from the Westerdokskade pavement to the courtyard, one storey high under a dark soffit; a glass gate stands in it (not modelled, see-through): Gemeente Amsterdam panorama TMX7316010203-000224_pano_0000_002045 (2017, w10-95)."
+        },
+        {
+          "axisBearing": 274.6,
+          "corridor": [
+            [
+              28.962,
+              33.378
+            ],
+            [
+              28.102,
+              43.378
+            ],
+            [
+              16.655,
+              42.462
+            ],
+            [
+              17.516,
+              32.453
+            ]
+          ],
+          "evidence": "Courtyard portal under the recessed timber-clad tower, from the Westerdokskade pavement to the courtyard, one storey high under a dark soffit; a glass gate stands in it (not modelled, see-through): Gemeente Amsterdam panorama TMX7316010203-001182_pano_0000_002814 (2019, w09-95)."
+        }
+      ],
+      "buildingCategory": "landmark",
+      "bounds": {
+        "min": [
+          -44.38893127441406,
+          0,
+          -55.05665969848633
+        ],
+        "max": [
+          40.72565460205078,
+          38.01499938964844,
+          68.17383575439453
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.89239479,
+          52.38609987
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 90,
+        "facadeBearingDegrees": 4.5,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 123.23049545288086,
+        "heightMetres": 38.01499938964844,
+        "depthMetres": 85.11458587646484,
+        "depthCoverage": 0.9986458509499571
+      },
+      "triangles": 30933,
+      "bytes": 421768,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
+      "lod1": {
+        "sourceHash": "abfc87d232f25322",
+        "buildVersion": 2,
+        "bytes": 251644,
+        "triangles": 19125
+      }
     }
   }
 }
