@@ -227,6 +227,8 @@ export function vertexPids(vertexCount: number, ranges: readonly { start: number
 
 export class SwapProbe {
   readonly records: SwapRecord[] = [];
+  /** Every building rebuild the hooks saw, measured or not (diagnosis: faces added/removed, buildings left visible). */
+  readonly rebuilds: { t: number; key: string; added: number; removed: number; shapeAdded: number; shapeRemoved: number; visible: number; oldIds: number; newIds: number }[] = [];
   private queue: ProbeEvent[] = [];
   private target: any = null;
   private buffer: Uint8Array | null = null;
@@ -236,7 +238,9 @@ export class SwapProbe {
   measureMs = 0;
   measured = 0;
   on = true;
-  readonly t0 = performance.now();
+  t0 = performance.now();
+  /** Start recording now (hooks installed early with `on = false` still learn each chunk's faces, so a later rebuild diffs). */
+  start(): void { this.on = true; this.t0 = performance.now(); }
 
   constructor(private readonly frame: ProbeFrame, private readonly scale = 0.5) {}
 
@@ -270,7 +274,7 @@ export class SwapProbe {
       try { renderer.render(scene, camera); } finally { undo?.(); scene.background = background; }
       for (const event of events) {
         try { this.records.push(this.measure(event, w, h)); }
-        catch (error) { console.warn('[swap-probe] measure failed', event.kind, event.key, error); }
+        catch (error) { console.warn('[swap-probe] measure failed', event.kind, event.key, String((error as Error)?.stack ?? error)); }
         finally { event.done?.(); }
       }
     } finally {
@@ -376,9 +380,9 @@ export function installSwapHooks(vm: any, probe: SwapProbe, rider: () => [number
     const original = obj[name];
     obj[name] = function (this: any, ...a: any[]) {
       const ctx: any = {};
-      try { pre?.call(this, ctx, ...a); } catch (error) { console.warn('[swap-probe] pre', name, error); }
+      try { pre?.call(this, ctx, ...a); } catch (error) { console.warn('[swap-probe] pre', name, String((error as Error)?.stack ?? error)); }
       const r = original.apply(this, a);
-      try { post.call(this, ctx, ...a); } catch (error) { console.warn('[swap-probe] post', name, error); }
+      try { post.call(this, ctx, ...a); } catch (error) { console.warn('[swap-probe] post', name, String((error as Error)?.stack ?? error)); }
       return r;
     };
     return true;
@@ -397,16 +401,16 @@ export function installSwapHooks(vm: any, probe: SwapProbe, rider: () => [number
 
   // --- buildings (threeBuildingsBrowser.ts): per building id, from the chunk's vertex ranges.
   /** The last installed mesh's faces per chunk key: triangle hashes, a copy of its index, and each vertex's building. */
-  type Faces = { hashes: Uint32Array; index: Uint32Array; building: Int32Array; ids: string[] };
+  type Faces = { hashes: Uint32Array; shapes: Uint32Array; index: Uint32Array; building: Int32Array; ids: string[] };
   const faces = new Map<string, Faces>();
   const facesOf = (chunk: any): Faces | null => {
     const positions: Float32Array | undefined = chunk?.positions, index: ArrayLike<number> | undefined = chunk?.indices;
     if (!positions || !index) return null;
     const n = positions.length / 3, arrays = [positions, chunk.uvs, chunk.layers, chunk.tints, chunk.accents], sizes = [3, 2, 1, 4, 4];
-    const vertexHashes = new Uint32Array(n), building = new Int32Array(n).fill(-1), ids: string[] = [];
-    for (let v = 0; v < n; v++) vertexHashes[v] = rangeHash(arrays, sizes, v, 1);
+    const vertexHashes = new Uint32Array(n), vertexShapes = new Uint32Array(n), building = new Int32Array(n).fill(-1), ids: string[] = [];
+    for (let v = 0; v < n; v++) { vertexHashes[v] = rangeHash(arrays, sizes, v, 1); vertexShapes[v] = rangeHash([positions], [3], v, 1); }
     (chunk.ranges ?? []).forEach((r: any, i: number) => { ids.push(String(r.id)); building.fill(i, r.start, Math.min(n, r.start + r.count)); });
-    return { hashes: triangleHashes(vertexHashes, index), index: Uint32Array.from(index), building, ids };
+    return { hashes: triangleHashes(vertexHashes, index), shapes: triangleHashes(vertexShapes, index), index: Uint32Array.from(index), building, ids };
   };
   /** A geometry over `base`'s own (uploaded) attributes drawing only these triangles of `index`. */
   const subset = (base: any, index: Uint32Array, triangles: number[]): any => {
@@ -414,6 +418,9 @@ export function installSwapHooks(vm: any, probe: SwapProbe, rider: () => [number
     triangles.forEach((t, i) => sub.set(index.subarray(t * 3, t * 3 + 3), i * 3));
     for (const [name, attribute] of Object.entries(base.attributes)) g.setAttribute(name, attribute);
     g.setIndex(new THREE.BufferAttribute(sub, 1));
+    // The renderer sorts by bounding sphere and computes one from `position` when missing, but the drawn mesh freed
+    // that CPU array once uploaded: take the base's (every rebuild's measurement failed on this until 2026-11-05).
+    g.boundingSphere = base.boundingSphere?.clone() ?? new THREE.Sphere(new THREE.Vector3(), Infinity);
     return g;
   };
   /** Free a subset geometry's own index only: its attributes are the drawn mesh's (three would delete their buffers). */
@@ -473,6 +480,8 @@ export function installSwapHooks(vm: any, probe: SwapProbe, rider: () => [number
     const visible = new Set(seen(key, [...new Set([...added.map(t => next.ids[next.building[next.index[t * 3]]]), ...removed.map(t => old.ids[old.building[old.index[t * 3]]])])].filter(Boolean)));
     const keep = (ids: string[], building: Int32Array, index: Uint32Array, list: number[]) => list.filter(t => visible.has(ids[building[index[t * 3]]]));
     const addedSeen = keep(next.ids, next.building, next.index, added), removedSeen = keep(old.ids, old.building, old.index, removed);
+    const shape = diffTriangles(old.shapes, next.shapes);
+    if (probe.on) probe.rebuilds.push({ t: Math.round(now() - probe.t0), key, added: added.length, removed: removed.length, shapeAdded: shape.added.length, shapeRemoved: shape.removed.length, visible: visible.size, oldIds: old.ids.length, newIds: next.ids.length });
     for (const id of visible) { pidOf.set(id, objects.length + 1); objects.push({ id, distM: distOf(byId.get(id)) }); }
     if (!objects.length) { release(); return; }
     const pids = (f: Faces) => { const data = new Float32Array(f.building.length); for (let v = 0; v < data.length; v++) { const b = f.building[v]; data[v] = b >= 0 ? pidOf.get(f.ids[b]) ?? 0 : 0; } return data; };
@@ -489,9 +498,9 @@ export function installSwapHooks(vm: any, probe: SwapProbe, rider: () => [number
     // A rebuild drops then installs the same key: that is logged by install, not here.
     if (ctx.rebuild = this.__swapProbeInstalling === key) return;
     const mesh = held.mesh, ids = seen(key, [...held.ranges.keys()] as string[]), byId = featuresById(held.source), parent = mesh.parent;
-    const disposals: any[] = [mesh.geometry, ...((mesh.userData?.tiles ?? []).map((t: any) => t.geometry))];
-    const deferred = disposals.map(g => { const d = g.dispose; g.dispose = () => {}; return () => { g.dispose = d; d.call(g); }; });
-    const event: ProbeEvent = { t: now(), kind: key.startsWith('near:') ? 'detail→shell' : 'extras-leave', key, objects: ids.map(id => ({ id, distM: distOf(byId.get(id)) })), draws: buildingDraws(mesh, held.ranges, ids, parent), done: () => { for (const d of deferred) d(); } };
+    // Held, not disposed, after: a leaving chunk that dissolves out (SWAP_FADE) is still drawn when the probe is done.
+    const release = holdBuffers(mesh);
+    const event: ProbeEvent = { t: now(), kind: key.startsWith('near:') ? 'detail→shell' : 'extras-leave', key, objects: ids.map(id => ({ id, distM: distOf(byId.get(id)) })), draws: buildingDraws(mesh, held.ranges, ids, parent), done: release };
     ctx.event = event;
     faces.delete(key);
   }, function (_ctx: any) { if (_ctx.event) probe.push(_ctx.event); });
