@@ -14,11 +14,11 @@ import type {BuildingFacts} from './facts.ts';
 import {archFor, COURSE, largeSystem, SOUTERRAIN, type SystemFit} from '../blockBuilding/systems.ts';
 import {PANE_OUT_M, paneRects} from '../blockBuilding/compose.ts';
 import {clipConvexRect, polyArea} from '../blockBuilding/arch.ts';
+import {recipeDir} from './recipeFixtures.ts';
 
-const HOUSES = 'scripts/building-recipes/houses';
 const ID = 'beursplein-5-165051';
-const raw = () => JSON.parse(fs.readFileSync(`${HOUSES}/${ID}/intent.json`, 'utf8'));
-const facts = (): BuildingFacts => JSON.parse(fs.readFileSync(`${HOUSES}/${ID}/facts.json`, 'utf8'));
+const raw = () => JSON.parse(fs.readFileSync(`${recipeDir(ID)}/intent.json`, 'utf8'));
+const facts = (): BuildingFacts => JSON.parse(fs.readFileSync(`${recipeDir(ID)}/facts.json`, 'utf8'));
 const fit = (extra: Partial<SystemFit> = {}): SystemFit => ({pitchM: 3, lines: [0, 3, 7.5, 12], ground: 'system', windows: 'cross', slots: {frame: 'frame', stone: 'stone', glass: 'glass', door: 'door', curtain: 'frame', wall: 'wall'}, ...extra});
 
 test('paneRects: a cross window is four panes inside the ring, split by bars of the given width', () => {

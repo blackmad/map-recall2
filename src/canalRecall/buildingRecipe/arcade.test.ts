@@ -13,10 +13,10 @@ import {compileLargeBuilding} from './largeCompile.ts';
 import type {BuildingFacts} from './facts.ts';
 import {archHead, archOutline, polyArea} from '../blockBuilding/arch.ts';
 import {ARCADE_PROPORTIONS, largeSystem} from '../blockBuilding/systems.ts';
+import {recipeDir} from './recipeFixtures.ts';
 
-const HOUSES = 'scripts/building-recipes/houses';
-const raw = (id: string) => JSON.parse(fs.readFileSync(`${HOUSES}/${id}/intent.json`, 'utf8'));
-const facts = (id: string): BuildingFacts => JSON.parse(fs.readFileSync(`${HOUSES}/${id}/facts.json`, 'utf8'));
+const raw = (id: string) => JSON.parse(fs.readFileSync(`${recipeDir(id)}/intent.json`, 'utf8'));
+const facts = (id: string): BuildingFacts => JSON.parse(fs.readFileSync(`${recipeDir(id)}/facts.json`, 'utf8'));
 const ID = 'beursplein-5-165051';
 
 test('chamfered head: flat top, straight shoulders, trapezoid area', () => {

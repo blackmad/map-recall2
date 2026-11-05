@@ -70956,12 +70956,12 @@
         "depthCoverage": 1.0036171614082818
       },
       "triangles": 6038,
-      "bytes": 101900,
+      "bytes": 101956,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "lod1": {
-        "sourceHash": "908a767f62e448a4",
+        "sourceHash": "fd54f955d51fde83",
         "buildVersion": 2,
-        "bytes": 32664,
+        "bytes": 32720,
         "triangles": 1182
       }
     },
@@ -72129,8 +72129,8 @@
         "depthMetres": 54.56260108947754,
         "depthCoverage": 1.0160633349995816
       },
-      "triangles": 1980,
-      "bytes": 34268,
+      "triangles": 2960,
+      "bytes": 44920,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
     },
     "oranje-nassau-kazerne": {

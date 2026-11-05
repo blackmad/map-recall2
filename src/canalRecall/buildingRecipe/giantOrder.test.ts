@@ -19,10 +19,10 @@ import {DRESS} from '../blockBuilding/dressings.ts';
 import {largeSystem} from '../blockBuilding/systems.ts';
 import {canalhouseGroupToGlb} from '../../../scripts/canalhouse-recipes/export-glb.ts';
 import {decodeTriangles} from '../../../scripts/building-recipes/compile.ts';
+import {recipeDir} from './recipeFixtures.ts';
 
-const HOUSES = 'scripts/building-recipes/houses';
-const raw = (id: string): LargeBuildingIntent => JSON.parse(fs.readFileSync(`${HOUSES}/${id}/intent.json`, 'utf8'));
-const facts = (id: string): BuildingFacts => JSON.parse(fs.readFileSync(`${HOUSES}/${id}/facts.json`, 'utf8'));
+const raw = (id: string): LargeBuildingIntent => JSON.parse(fs.readFileSync(`${recipeDir(id)}/intent.json`, 'utf8'));
+const facts = (id: string): BuildingFacts => JSON.parse(fs.readFileSync(`${recipeDir(id)}/facts.json`, 'utf8'));
 const WAREHOUSE = 'pand-233585', HIRSCH = 'hirschpassage-2-165488', SCHOOL = 'stadhouderskade-111-137448';
 const compile = (i: LargeBuildingIntent, id: string) => compileBuilding(validateLargeIntent(i), facts(id)) as unknown as CompiledLargeBuilding;
 

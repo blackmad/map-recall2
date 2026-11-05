@@ -64,16 +64,42 @@ export type UndergroundIndex = {
   osm: ReadonlySet<string>;
   /** Bare 16-digit BAG ids named by `ref:bag` on an underground OSM way. */
   refBag: ReadonlySet<string>;
+  /**
+   * Bare 16-digit BAG ids the Amsterdam BAG registers wholly below street level
+   * (`isBelowGroundByBagStoreys`). Optional: an index without it drops exactly
+   * what it dropped before.
+   */
+  bagBelowGround?: ReadonlySet<string>;
 };
+
+/**
+ * The Amsterdam BAG (api.data.amsterdam.nl `bag/panden`, CC0) registers each
+ * pand's highest and lowest storey (`hoogsteBouwlaag`, `laagsteBouwlaag`, 0 =
+ * street level). A pand whose highest storey is below 0 has nothing above the
+ * street: an underground car park under towers (the AkzoNobel Center garage,
+ * Christian Neefestraat 50, 0363100012240015, storeys -1..-1) or under a housing
+ * block. 3DBAG measures the roofs over its footprint, which are the towers', so
+ * such a pand reaches the tiles as a 41 m block; its height says nothing. A
+ * record whose lowest storey lies above its highest is inconsistent (a 1792
+ * canal house registered -1..0) and is not trusted.
+ */
+export function isBelowGroundByBagStoreys(storeys: { highest: number | null; lowest: number | null }): boolean {
+  const { highest, lowest } = storeys;
+  if (highest === null || lowest === null || !Number.isFinite(highest) || !Number.isFinite(lowest)) return false;
+  return highest < 0 && lowest <= highest;
+}
 
 const bareBagId = (id: string): string => id.replace(/^NL\.IMBAG\.Pand\./, '');
 
 /**
- * A BAG pand is an underground shell when it is low, OSM ties it to an
- * underground way (by `ref:bag` or a footprint match), and no footprint match
- * is an ordinary building: a row of houses over a shared garage keeps its pand.
+ * A BAG pand is an underground shell when the BAG registers it wholly below
+ * street level (whatever its 3DBAG height or OSM matches), or when it is low,
+ * OSM ties it to an underground way (by `ref:bag` or a footprint match), and no
+ * footprint match is an ordinary building: a row of houses over a shared garage
+ * keeps its pand.
  */
 export function isUndergroundPand(pand: PandUndergroundInput, index: UndergroundIndex): boolean {
+  if (index.bagBelowGround?.has(bareBagId(pand.id))) return true;
   if (pand.heightM !== null && pand.heightM > UNDERGROUND_PAND_MAX_HEIGHT_M) return false;
   if (!pand.matchedOsm.every(osmId => index.osm.has(osmId))) return false;
   return pand.matchedOsm.length > 0 || index.refBag.has(bareBagId(pand.id));

@@ -12,18 +12,22 @@
  *   npx tsx scripts/drop-underground-buildings.ts --check    # exit 1 if any published feature is underground
  *   npx tsx scripts/drop-underground-buildings.ts --survey-voids [--publish]
  *     # also measure `isVoidOverRoad` pands (needs .cache/3dbag) into the stored index
+ *   npx tsx scripts/drop-underground-buildings.ts --survey-bag-storeys [--publish]
+ *     # also fetch the pands the Amsterdam BAG registers wholly below street level
+ *     # (api.data.amsterdam.nl, CC0; `isBelowGroundByBagStoreys`) into the stored index
  */
 import { createReadStream, mkdirSync, readdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { createInterface } from 'node:readline';
 import path from 'node:path';
 import { gunzipSync, gzipSync } from 'node:zlib';
-import { centrelineInsideM, isUndergroundOsm, isUndergroundPand, isVoidOverRoad, type UndergroundIndex } from '../src/canalRecall/undergroundBuildings.ts';
+import { centrelineInsideM, isBelowGroundByBagStoreys, isUndergroundOsm, isUndergroundPand, isVoidOverRoad, type UndergroundIndex } from '../src/canalRecall/undergroundBuildings.ts';
 import { roofCoverOf, type CityJson } from '../src/canalRecall/bag3dCityJson.ts';
 import { BAG3D_VERSION } from '../src/canalRecall/bag3dTiles.ts';
 
 const publish = process.argv.includes('--publish');
 const check = process.argv.includes('--check');
 const surveyVoids = process.argv.includes('--survey-voids');
+const surveyBagStoreys = process.argv.includes('--survey-bag-storeys');
 const ROOT = path.join('public', 'data', 'extracts', 'amsterdam');
 const OSM_SEQ = path.join('.cache', 'osm-source', 'derived', 'amsterdam-buildings.geojsonseq');
 const INDEX_FILE = path.join(ROOT, 'underground-buildings.json');
@@ -33,7 +37,7 @@ type LngLat = [number, number];
 type TileFeature = { properties: Record<string, unknown>; geometry: { type: string; coordinates: unknown } };
 type Void = { roofCover: number; roadInsideM: number; year: number | null };
 const polygonsOf = (g: TileFeature['geometry']): LngLat[][][] => (g.type === 'Polygon' ? [g.coordinates as LngLat[][]] : g.coordinates as LngLat[][][]);
-const stored = (): { voidPands?: Record<string, Void> } => { try { return JSON.parse(readFileSync(INDEX_FILE, 'utf8')); } catch { return {}; } };
+const stored = (): { voidPands?: Record<string, Void>; bagBelowGround?: string[] } => { try { return JSON.parse(readFileSync(INDEX_FILE, 'utf8')); } catch { return {}; } };
 
 /**
  * `isVoidOverRoad`: pands lying across a car road that 3DBAG roofs over little
@@ -91,6 +95,27 @@ function measureVoids(): Record<string, Void> {
 }
 
 /**
+ * Pands the Amsterdam BAG registers wholly below street level (highest storey
+ * < 0), from api.data.amsterdam.nl `bag/panden` (CC0), current records only.
+ */
+async function fetchBagBelowGround(): Promise<string[]> {
+  const ids = new Set<string>();
+  let url: string | null = 'https://api.data.amsterdam.nl/v1/bag/panden/?hoogsteBouwlaag[lt]=0&_format=json&_pageSize=100&_fields=identificatie,hoogsteBouwlaag,laagsteBouwlaag,eindGeldigheid';
+  while (url) {
+    const response = await fetch(url);
+    if (!response.ok) throw Error(`BAG panden: HTTP ${response.status} for ${url}`);
+    const page = await response.json() as { _embedded?: { panden?: { identificatie: string; hoogsteBouwlaag: number | null; laagsteBouwlaag: number | null; eindGeldigheid?: string | null }[] }; _links?: { next?: { href?: string | null } } };
+    for (const pand of page._embedded?.panden ?? []) {
+      if (pand.eindGeldigheid) continue;
+      if (isBelowGroundByBagStoreys({ highest: pand.hoogsteBouwlaag, lowest: pand.laagsteBouwlaag })) ids.add(pand.identificatie);
+    }
+    url = page._links?.next?.href ?? null;
+  }
+  if (!ids.size) throw Error('BAG panden: no pand below ground; refusing to store an empty list');
+  return [...ids].sort();
+}
+
+/**
  * The OSM ids and ref:bag ids that are underground. Built from the OSM cache
  * when present and stored in the extract, so `--check` runs without the cache.
  */
@@ -118,15 +143,18 @@ async function loadIndex(): Promise<UndergroundIndex & { voids: Set<string>; nam
   }
   const prior = stored();
   const voidPands = { ...prior.voidPands, ...(surveyVoids ? measureVoids() : {}) };
+  const bagBelowGround = surveyBagStoreys ? await fetchBagBelowGround() : prior.bagBelowGround;
+  const bagSet = bagBelowGround ? new Set(bagBelowGround) : undefined;
   if (!fromCache) {
     const index = prior as { osm: string[]; refBag: string[] };
-    return { osm: new Set(index.osm), refBag: new Set(index.refBag), voids: new Set(Object.keys(voidPands)), names: {} };
+    if (surveyBagStoreys) writeFileSync(INDEX_FILE, `${JSON.stringify({ ...prior, bagBelowGround }, null, 0)}\n`);
+    return { osm: new Set(index.osm), refBag: new Set(index.refBag), bagBelowGround: bagSet, voids: new Set(Object.keys(voidPands)), names: {} };
   }
   writeFileSync(INDEX_FILE, `${JSON.stringify({
-    rule: 'src/canalRecall/undergroundBuildings.ts isUndergroundOsm over .cache/osm-source/derived/amsterdam-buildings.geojsonseq; voidPands isVoidOverRoad over .cache/3dbag',
-    osm: [...osm].sort(), refBag: [...refBag].sort(), voidPands,
+    rule: 'src/canalRecall/undergroundBuildings.ts isUndergroundOsm over .cache/osm-source/derived/amsterdam-buildings.geojsonseq; voidPands isVoidOverRoad over .cache/3dbag; bagBelowGround isBelowGroundByBagStoreys over api.data.amsterdam.nl bag/panden',
+    osm: [...osm].sort(), refBag: [...refBag].sort(), voidPands, ...(bagBelowGround ? { bagBelowGround } : {}),
   }, null, 0)}\n`);
-  return { osm, refBag, voids: new Set(Object.keys(voidPands)), names };
+  return { osm, refBag, bagBelowGround: bagSet, voids: new Set(Object.keys(voidPands)), names };
 }
 
 const index = await loadIndex();
@@ -167,7 +195,7 @@ if (publish || droppedPands.size !== (indexJson.droppedPands ?? []).length) writ
 mkdirSync(REPORT, { recursive: true });
 writeFileSync(path.join(REPORT, 'report.json'), `${JSON.stringify({ osmUnderground: index.osm.size, refBagUnderground: index.refBag.size, dropped }, null, 1)}\n`);
 const bySet = (set: string): number => dropped.filter(row => row.tileSet === set).length;
-process.stdout.write(`underground OSM ways ${index.osm.size}, ref:bag ${index.refBag.size}\n`);
+process.stdout.write(`underground OSM ways ${index.osm.size}, ref:bag ${index.refBag.size}, BAG below ground ${index.bagBelowGround?.size ?? 0}\n`);
 process.stdout.write(`${publish ? 'dropped' : 'would drop'} building-tiles ${bySet('building-tiles')}, bag-tiles ${bySet('bag-tiles')}${publish ? ` (${rewritten} tiles rewritten)` : ''}\n`);
 if (check && dropped.length && !publish) {
   for (const row of dropped.slice(0, 20)) process.stderr.write(`  underground in ${row.tileSet} ${row.tile}: ${row.id}\n`);

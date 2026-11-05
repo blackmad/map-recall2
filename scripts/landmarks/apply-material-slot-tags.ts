@@ -16,7 +16,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import {readGlb, writeGlb} from './infer-material-slots';
 import {INFERRED_SLOT_SOURCE, linearToSrgbHex} from '../../src/canalRecall/look/materialSlotInference';
-import {MATERIAL_SLOT_TAG, MATERIAL_SLOT_TAGS} from './material-slot-tags';
+import {MATERIAL_SLOT_TAGS, tagExtras} from './material-slot-tags';
 
 const MODELS = path.resolve(import.meta.dirname, '../../public/canal-drive/models');
 const VERSIONS = path.resolve(import.meta.dirname, '../../src/canalRecall/landmarks/modelAssetVersions.json');
@@ -34,7 +34,7 @@ for (const [id, tags] of Object.entries(MATERIAL_SLOT_TAGS)) {
       if (!tag) continue;
       seen.add(m.name!);
       const [r, g, b] = m.pbrMetallicRoughness?.baseColorFactor ?? [1, 1, 1];
-      const want = {materialSlot: tag.slot, tint: linearToSrgbHex(r, g, b), materialSlotSource: INFERRED_SLOT_SOURCE, materialSlotTag: MATERIAL_SLOT_TAG};
+      const want: Record<string, unknown> = tagExtras({tint: linearToSrgbHex(r, g, b), materialSlotSource: INFERRED_SLOT_SOURCE}, tag);
       const ex = m.extras ?? {};
       if (Object.entries(want).every(([k, v]) => ex[k] === v)) continue;
       console.log(`${path.basename(file)} ${m.name}: ${ex.materialSlot ?? '-'} -> ${tag.slot} (${tag.why})`);
