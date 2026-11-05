@@ -68342,5 +68342,262 @@
     ]
    ]
   }
+ },
+ {
+  "id": "bloemenmarkt-stalls",
+  "name": "Bloemenmarkt",
+  "category": "landmark",
+  "modelUrl": "./models/bloemenmarkt-stalls.glb",
+  "suppressOsmIds": [
+   "w266907890",
+   "w266907891",
+   "w266907892",
+   "w266907893",
+   "w266907894",
+   "w266907895",
+   "w266907896",
+   "w266907897",
+   "w266907898",
+   "w266907899",
+   "w266907900",
+   "w266907901",
+   "w266907902",
+   "w266907903"
+  ],
+  "spatialSuppression": false,
+  "footprint": {
+   "centre": [
+    4.8910718,
+    52.3669248
+   ],
+   "headingDegrees": 190,
+   "lengthMetres": 216,
+   "widthMetres": 15
+  },
+  "surveyed": {
+   "anchor": [
+    4.8910718,
+    52.3669248
+   ],
+   "northOffsetDegrees": 0,
+   "source": "bag-ligplaatsen: the 16 BAG ligplaatsen Singel 600-630 (0363020001988046-064, api.data.amsterdam.nl, CC0), one stall per plot on its minimum rectangle, front to the street, grown 3.2 m onto the pavement as the PDOK 2025 orthophoto (CC BY 4.0) shows the roofs reaching; 14 of the plots are OSM building=houseboat ways w266907890-w266907903 (suppressed). Wall 2.75 m, gable rise 0.75 m, bays ~3.4 m, panes 1.15 m from Gemeente Amsterdam panoramas b_20241211_0954_Track19_Sphere_00022 (canal side) and b_20250120_0926_Track02_Sphere_00222/_00235/_00236/_00239/_00243, recording_2025-06-19_03-28-47_01511 (street side), CC BY 4.0. See scripts/landmarks/bloemenmarkt-stalls-footprints.json and -inventory.json."
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 0,
+  "heightMetres": 3.6,
+  "assetKind": "building",
+  "materialOverrides": {
+   "white": "#d6dbd0",
+   "glass": "#627268",
+   "canopyGlass": "#7d8f8c",
+      "dark": "#4a5e45",
+   "green": "#55703f",
+   "pink": "#7d8f8c",
+   "red": "#b8423a",
+   "gold": "#d7b13e",
+   "stone": "#a9aea6",
+   "greyBrick": "#2a2b26",
+   "concrete": "#6a6a62",
+   "bronze": "#d6dbd0",
+   "frame": "#b4b6ae",
+   "slate": "#3e4246",
+   "blue": "#5d7284",
+   "ochre": "#3d7794"
+  },
+  "attribution": {
+   "title": "Bloemenmarkt, Singel 600-630",
+   "author": "Map Recall",
+   "sourceUrl": "https://nl.wikipedia.org/wiki/Bloemenmarkt",
+   "licence": "CC BY 4.0",
+   "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+   "modifications": "Original low-poly reconstruction from the typed kiosk kit's flower-stall variant with its greenhouse roof: sixteen stalls on their BAG ligplaatsen (CC0), each a row of glass gables with pale frames on a dark pontoon, a glass canal wall with the plants inside showing as flat colour, and an open street front with the awning roller tube, fascia, posts, tiered displays and buckets. Proportions and tints from Gemeente Amsterdam panoramas (CC BY 4.0) and the PDOK orthophoto (CC BY 4.0). No photo pixels or imported meshes."
+  },
+  "buildingFootprint": {
+   "type": "Polygon",
+   "coordinates": [
+    [
+     [
+      4.8897255,
+      52.3670652
+     ],
+     [
+      4.8899851,
+      52.3669778
+     ],
+     [
+      4.8900003,
+      52.3669745
+     ],
+     [
+      4.8904497,
+      52.3668939
+     ],
+     [
+      4.8908465,
+      52.3668305
+     ],
+     [
+      4.8910226,
+      52.3668054
+     ],
+     [
+      4.8912306,
+      52.366776
+     ],
+     [
+      4.8915762,
+      52.3667382
+     ],
+     [
+      4.8917041,
+      52.3667275
+     ],
+     [
+      4.8919291,
+      52.3667143
+     ],
+     [
+      4.8923686,
+      52.366701
+     ],
+     [
+      4.8925848,
+      52.3666998
+     ],
+     [
+      4.8928372,
+      52.3667108
+     ],
+     [
+      4.8928432,
+      52.366711
+     ],
+     [
+      4.8930774,
+      52.3667219
+     ],
+     [
+      4.8930609,
+      52.3668547
+     ],
+     [
+      4.8897667,
+      52.3671699
+     ],
+     [
+      4.8897255,
+      52.3670652
+     ]
+    ]
+   ]
+  }
+ },
+ {
+  "id": "kiosk-park-bea",
+  "name": "Park Kiosk BEA",
+  "landmarkId": "osm_food_5218592654",
+  "modelUrl": "./models/kiosk-park-bea.glb",
+  "suppressOsmIds": [
+   "NL.IMBAG.Pand.0363100012241046",
+   "w277174094"
+  ],
+  "spatialSuppression": false,
+  "footprint": {
+   "centre": [
+    4.8841794,
+    52.3435695
+   ],
+   "headingDegrees": 186.47,
+   "lengthMetres": 22.037,
+   "widthMetres": 5.936
+  },
+  "surveyed": {
+   "anchor": [
+    4.8841794,
+    52.3435695
+   ],
+   "northOffsetDegrees": 0,
+   "source": "bag-pand: BAG pand 0363100012241046 (2013) outline, vertex average as the anchor (OSM node 5218592654 'Park Kiosk BEA' is 10 m east, inside the porch end); the outline is the fascia, the board walls stand 6 cm inside it. Height from 3DBAG (eaves 3.10 m, top 3.14 m). Plinth, fascia, doors, west oversail, east porch, brick block, window and sign from Gemeente Amsterdam panoramas TMX7316010203-000259_pano_0000_000460 / _000461 / _000462 (2017-04-13), TMX7316010203-002471_pano_0000_000593 (2022-03-23) and recording_2024-09-03_05-21-23_00663 (CC BY 4.0). See scripts/landmarks/kiosk-park-bea-footprints.json and -inventory.json."
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 0,
+  "heightMetres": 3.14,
+  "bagYear": 2013,
+  "assetKind": "building",
+  "materialOverrides": {
+   "green": "#7e7c62",
+   "ochre": "#908d6e",
+   "greyBrick": "#7d7c74",
+   "brick": "#cdc7b3",
+   "slate": "#6b6a4a",
+   "concrete": "#a3a69c",
+   "dark": "#2c2924",
+   "glass": "#454a48",
+   "frame": "#7f957c",
+   "bronze": "#b38d5c",
+   "red": "#3a2c22"
+  },
+  "attribution": {
+   "title": "Park Kiosk BEA, Beatrixpark",
+   "author": "Map Recall",
+   "sourceUrl": "https://www.openstreetmap.org/node/5218592654",
+   "licence": "CC BY 4.0",
+   "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+   "modifications": "Original low-poly reconstruction: the BAG outline extruded as olive-grey board walls with lighter battens over a grey brick plinth, a board fascia and sedum roof, four flush service doors, the west oversail, the east porch with a glazed shop front and doorway, a pale brick block with a serving window and the wooden BEA board. Footprint and height from BAG/3DBAG (CC0); tints are panorama medians (Gemeente Amsterdam, CC BY 4.0) between the overcast 2017 and sunlit 2022 captures. No photo pixels or imported meshes."
+  }
+ },
+ {
+  "id": "kiosk-ramons-coffee",
+  "name": "Ramon's Coffee Kiosk",
+  "landmarkId": "osm_food_9047305243",
+  "modelUrl": "./models/kiosk-ramons-coffee.glb",
+  "suppressOsmIds": [
+   "NL.IMBAG.Pand.0363100012246428",
+   "w977775722"
+  ],
+  "spatialSuppression": false,
+  "footprint": {
+   "centre": [
+    4.8910493,
+    52.389849
+   ],
+   "headingDegrees": 12.48,
+   "lengthMetres": 5.149,
+   "widthMetres": 2.973
+  },
+  "surveyed": {
+   "anchor": [
+    4.8910493,
+    52.389849
+   ],
+   "northOffsetDegrees": 0,
+   "source": "bag-pand: BAG pand 0363100012246428 (2019) outline, vertex average as the anchor (OSM node 9047305243 is 0.7 m away); walls 5.0 x 2.85 m inside the 5.15 x 2.97 m outline (the outline is the roof edge). Wall 2.75 m and fascia 0.45 m scaled on the 2.1 m door; 3DBAG's 4.96 m top is the roof garden and stove pipes. Glazed side, door, menu board, lettering and roof garden from Gemeente Amsterdam panoramas recording_2024-09-17_13-37-56_00020 / _00153 (CC BY 4.0). See scripts/landmarks/kiosk-ramons-coffee-footprints.json and -inventory.json."
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 0,
+  "heightMetres": 4.0,
+  "bagYear": 2019,
+  "assetKind": "building",
+  "materialOverrides": {
+   "white": "#c8d0d2",
+   "stone": "#b9c3c6",
+   "glass": "#5e6d72",
+   "concrete": "#8a8f8e",
+   "blue": "#7d93a0",
+   "dark": "#3a3a3a",
+   "greyBrick": "#2c333b",
+   "bronze": "#39444c",
+   "gold": "#e8e6dc",
+   "ochre": "#8a8456",
+   "green": "#5f6f45"
+  },
+  "attribution": {
+   "title": "Ramon's Coffee Kiosk, Silodam",
+   "author": "Map Recall",
+   "sourceUrl": "https://www.openstreetmap.org/node/9047305243",
+   "licence": "CC BY 4.0",
+   "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+   "modifications": "Original low-poly reconstruction from the typed kiosk kit: pale grey-blue cabin with a glazed north side and glass door, a dark navy lettered south side and menu board, a deep grey-blue fascia and a rooftop garden with two stove pipes. Footprint from BAG (CC0); tints are panorama medians (Gemeente Amsterdam, CC BY 4.0) lifted toward the sunlit 2024 view. No photo pixels or imported meshes."
+  }
  }
 ]

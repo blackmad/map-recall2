@@ -1,0 +1,7 @@
+{
+ "id": "bloemenmarkt-stalls",
+ "siteModel": true,
+ "siteModelEvidence": "sixteen separate stalls, one per BAG ligplaats Singel 600-630, along 216 m of the Singel quay (scripts/landmarks/bloemenmarkt-stalls-footprints.json)",
+ "belowGroundMetres": -2.0,
+ "belowGroundEvidence": "the stalls float: each pontoon hull reaches 1.97 m below the quay so it meets the own-ground canal water at CANAL_WATER_Z = -1.77 m (src/canalRecall/ownGround/groundCell.ts); the panorama b_20241211_0954_Track19_Sphere_00022 shows the dark hull band at the waterline under every stall"
+}

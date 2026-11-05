@@ -1,0 +1,211 @@
+{
+ "schemaVersion": 1,
+ "id": "kiosk-ramons-coffee",
+ "pand": "0363100012246428",
+ "signature": [
+  "glazed-north-side",
+  "dark-lettered-south-side",
+  "corrugated-fascia",
+  "roof-garden"
+ ],
+ "walls": [
+  {
+   "tag": "v-012",
+   "bearing": 12,
+   "lengthM": 5,
+   "centre": [
+    4.8910537,
+    52.3898617
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2024-09-17_13-37-56_00020",
+   "capturedAt": "2024-09-17",
+   "checked": true,
+   "items": [
+    {
+     "id": "glazed-north-side",
+     "kind": "window-shape",
+     "where": "glass panels in pale frames with a glass door and a narrow pier",
+     "approxSizeM": [
+      4.6,
+      2.4
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2024-09-17_13-37-56_00020",
+     "how": "kit glass/door panels in white frames, a solid pier"
+    },
+    {
+     "id": "house-number",
+     "kind": "lettering",
+     "where": "small 460 number plate beside the door",
+     "approxSizeM": [
+      0.25,
+      0.3
+     ],
+     "plan": "skipped",
+     "seenIn": "recording_2024-09-17_13-37-56_00020",
+     "skip": {
+      "reason": "too-small",
+      "note": "0.3 m plate"
+     }
+    },
+    {
+     "id": "festoon-lights",
+     "kind": "lamp",
+     "where": "a string of bulbs along the fascia",
+     "approxSizeM": [
+      5,
+      0.05
+     ],
+     "plan": "skipped",
+     "seenIn": "recording_2024-09-17_13-37-56_00020",
+     "skip": {
+      "reason": "too-small",
+      "note": "bulbs a few cm across"
+     }
+    },
+    {
+     "id": "terrace",
+     "kind": "other",
+     "where": "parasols, chairs, planters and a fence round the terrace",
+     "approxSizeM": [
+      6,
+      2
+     ],
+     "plan": "skipped",
+     "seenIn": "recording_2024-09-17_13-37-56_00020",
+     "skip": {
+      "reason": "temporary",
+      "note": "movable terrace furniture"
+     }
+    }
+   ],
+   "note": "Glazed side and door (artifacts/kiosks-holds/ramon/z00020.jpg)."
+  },
+  {
+   "tag": "v-192",
+   "bearing": 192,
+   "lengthM": 5,
+   "centre": [
+    4.8910449,
+    52.3898363
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2024-09-17_13-37-56_00153",
+   "capturedAt": "2024-09-17",
+   "checked": true,
+   "items": [
+    {
+     "id": "dark-lettered-south-side",
+     "kind": "sign",
+     "where": "dark navy board wall with a framed RAMON'S COFFEE KIOSK panel, OPEN 7AM and COFFEE TEA JUICES",
+     "approxSizeM": [
+      5,
+      2.6
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2024-09-17_13-37-56_00153",
+     "how": "kit solid panels in the screen role, a sign board with flat lettering, panel lettering"
+    },
+    {
+     "id": "cup-drawing",
+     "kind": "relief",
+     "where": "a white line drawing of a coffee cup on the dark board",
+     "approxSizeM": [
+      0.6,
+      0.7
+     ],
+     "plan": "skipped",
+     "seenIn": "recording_2024-09-17_13-37-56_00153",
+     "skip": {
+      "reason": "too-small",
+      "note": "line drawing; the kit has no line art"
+     }
+    }
+   ],
+   "note": "Road side, behind a fence and bushes (artifacts/kiosks-holds/ramon/z00153.jpg)."
+  },
+  {
+   "tag": "v-102",
+   "bearing": 102,
+   "lengthM": 2.85,
+   "centre": [
+    4.8910861,
+    52.3898445
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2024-09-17_13-37-56_00020",
+   "capturedAt": "2024-09-17",
+   "checked": true,
+   "items": [
+    {
+     "id": "menu-board",
+     "kind": "sign",
+     "where": "dark menu board panel with the kiosk name and a food photo",
+     "approxSizeM": [
+      0.9,
+      2.3
+     ],
+     "plan": "simplified",
+     "seenIn": "recording_2024-09-17_13-37-56_00020",
+     "how": "dark solid panel (screen role) beside a glass window and a pale pier; the photo and small text are not drawn"
+    },
+    {
+     "id": "corrugated-fascia",
+     "kind": "other",
+     "where": "deep corrugated grey-blue fascia round the roof",
+     "approxSizeM": [
+      5.2,
+      0.45
+     ],
+     "plan": "simplified",
+     "seenIn": "recording_2024-09-17_13-37-56_00020",
+     "how": "kit flat roof 0.45 m thick in the fascia tint (no corrugation)"
+    },
+    {
+     "id": "roof-garden",
+     "kind": "other",
+     "where": "grasses and plants on the roof with two stove pipes",
+     "approxSizeM": [
+      4.4,
+      0.8
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2024-09-17_13-37-56_00020",
+     "how": "two stacked roof boxes in dry-grass and green tints, two thin pipe boxes"
+    }
+   ],
+   "note": "East end (artifacts/kiosks-holds/ramon/z00020.jpg)."
+  },
+  {
+   "tag": "v-282",
+   "bearing": 282,
+   "lengthM": 2.85,
+   "centre": [
+    4.8910125,
+    52.3898535
+   ],
+   "evidence": "inferred",
+   "checked": true,
+   "items": [],
+   "note": "West end, not seen in any 2016-2025 panorama (screened by the terrace planting); drawn as plain pale panels."
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  },
+  {
+   "name": "BAG pand 0363100012246428",
+   "url": "https://api.data.amsterdam.nl/v1/bag/panden/0363100012246428/",
+   "licence": "CC0"
+  },
+  {
+   "name": "OpenStreetMap node 9047305243 (Ramon's Coffee Kiosk)",
+   "url": "https://www.openstreetmap.org/node/9047305243",
+   "licence": "ODbL"
+  }
+ ]
+}

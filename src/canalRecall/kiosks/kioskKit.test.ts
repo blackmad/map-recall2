@@ -38,6 +38,8 @@ const stall: KioskSpec = {
   stall: {hullDepth: 1.0, hullOverhang: 0.2, tiers: 3, tierDepth: 0.5, tierRise: 0.3, openFace: 'front'},
 };
 const SPECS = {glass, herring, trailer, stall};
+/** sha256 (first 16 hex) of each spec's roles and positions, measured on the kit before the #227 greenhouse additions */
+const PINNED = {glass: 'abb3859f8d19d92f', herring: '657f344fbbeb06cc', trailer: '47f385e9f81c305b', stall: '421b397aa88655f6'};
 
 function bounds(parts: KioskPart[]) {
   const b = new Box3();
@@ -190,4 +192,72 @@ test('a panel role draws a solid/glass infill in that role (posters) and leaves 
   assert.equal(parts.filter(p => p.role === 'bloomA').length, 1);
   assert.equal(parts.filter(p => p.role === 'bloomC').length, 1);
   assert.equal(triangleCount(parts), triangleCount(buildKiosk({...s, faces: {...s.faces, front: {panels: [{kind: 'solid', width: 1}, {kind: 'glass', width: 1}, {kind: 'solid', width: 1}]}}})));
+});
+
+// Bloemenmarkt (#227): the greenhouse roof, the stall's street front and the part-on-the-quay hull.
+const greenhouse: KioskSpec = {
+  ...stall, width: 14, depth: 13, wallHeight: 2.75, headRail: 0.12,
+  faces: {front: {panels: []}, back: {panels: Array.from({length: 12}, () => ({kind: 'glass' as const, width: 1}))}, left: {panels: []}, right: {panels: [{kind: 'glass', width: 1}]}},
+  roof: {kind: 'greenhouse', bays: 4, rise: 0.75, overhang: 0.05, barPitch: 1.3, frontEnd: 'solid'},
+  stall: {hullDepth: 1.4, hullOverhang: 0, tiers: 2, tierDepth: 0.5, tierRise: 0.3, openFace: 'front', landDepth: 3.2,
+    front: {tube: 0.09, fascia: {height: 0.45, roles: ['bloomA', 'foliage', 'bloomB']}, posts: 5}},
+};
+
+test('greenhouse roof: one ridge per bay at the rise, glass slopes, solid street gables and glass canal gables', () => {
+  const parts = buildKiosk(greenhouse), r = greenhouse.roof as Extract<KioskSpec['roof'], {kind: 'greenhouse'}>;
+  const top = bounds(parts.filter(p => p.role === 'roofGlass' || p.role === 'frame' || p.role === 'roofFrame' || p.role === 'solid'));
+  assert.ok(Math.abs(top.max.y - (greenhouse.wallHeight + r.rise + 0.035)) < 0.03, `top ${top.max.y}`);
+  // the roof stays inside the width (the row is continuous) and reaches its overhang front and back
+  const roofParts = parts.filter(p => {p.geometry.computeBoundingBox(); return p.geometry.boundingBox!.min.y >= greenhouse.wallHeight - 0.05;});
+  const rb = bounds(roofParts);
+  // (the glass slabs' lower corners reach 1.5 cm past the outer eave line: half their 3 cm thickness)
+  assert.ok(rb.min.x >= -greenhouse.width / 2 - 0.02 && rb.max.x <= greenhouse.width / 2 + 0.02, `x ${rb.min.x}..${rb.max.x}`);
+  assert.ok(rb.max.z >= greenhouse.depth / 2 + r.overhang - 1e-6 && rb.min.z <= -greenhouse.depth / 2 - r.overhang + 1e-6);
+  // four ridge caps at the bay centres
+  const ridges = roofParts.filter(p => p.role === 'roofFrame' && Math.abs(p.geometry.boundingBox!.max.y - (greenhouse.wallHeight + r.rise + 0.035)) < 1e-4);
+  assert.deepEqual([...new Set(ridges.map(p => +p.geometry.boundingBox!.getCenter(new Vector3()).x.toFixed(3)))].sort((a, b) => a - b), [-5.25, -1.75, 1.75, 5.25]);
+  assert.equal(ridges.length, 8, "two ridge lengths per bay");
+  // the street gables are solid, the canal gables glass, one triangle per bay at each end
+  const ends = (role: string, front: boolean) => roofParts.filter(p => p.role === role && !p.geometry.index && p.geometry.getAttribute('position').count === 24 && (p.geometry.boundingBox!.min.z > 0) === front).length;
+  assert.equal(ends('solid', true), 4);
+  assert.equal(ends('roofGlass', false), 4);
+  // roof glazing is its own role (cladding, not a window in a wall): no plain glass above the wall head
+  assert.equal(roofParts.filter(p => p.role === 'glass').length, 0);
+  // every slope and gable is wound outward (positive volume)
+  for (const p of roofParts.filter(q => !q.geometry.index && q.geometry.getAttribute('position').count === 24)) {
+    const pos = p.geometry.getAttribute('position').array as Float32Array;
+    let v = 0;
+    for (let i = 0; i < pos.length; i += 9) v += new Vector3(pos[i], pos[i + 1], pos[i + 2]).dot(new Vector3(pos[i + 3], pos[i + 4], pos[i + 5]).cross(new Vector3(pos[i + 6], pos[i + 7], pos[i + 8]))) / 6;
+    assert.ok(v > 0, `gable volume ${v}`);
+  }
+  assert.ok(triangleCount(parts) < 3000, `${triangleCount(parts)} triangles`);
+});
+
+test('stall street front: tube in front of the head, fascia panels in their roles, posts; hull only under the water part', () => {
+  const parts = buildKiosk(greenhouse), D = greenhouse.depth;
+  const tube = bounds(parts.filter(p => p.role === 'trim'));
+  assert.ok(tube.min.z > D / 2 && tube.max.y <= greenhouse.wallHeight + 0.05 && tube.max.y > greenhouse.wallHeight - 0.2, `tube ${tube.min.z} ${tube.max.y}`);
+  for (const role of ['bloomA', 'foliage', 'bloomB'] as const) {
+    const f = parts.filter(p => {p.geometry.computeBoundingBox(); return p.role === role && p.geometry.boundingBox!.min.y > 2;});
+    assert.equal(f.length, 1, `${role} fascia panel`);
+  }
+  // three inner posts reach the fascia bottom
+  const posts = parts.filter(p => {p.geometry.computeBoundingBox(); const b = p.geometry.boundingBox!; return p.role === 'frame' && b.min.y < 0.1 && b.max.z <= D / 2 + 1e-6 && b.min.z > D / 2 - 0.2 && Math.abs(b.max.y - (greenhouse.wallHeight - 0.12 - 0.45)) < 1e-6;});
+  assert.equal(posts.length, 3);
+  const hull = bounds(parts.filter(p => p.role === 'hull'));
+  // under the water part only, 4 cm inside the deck's edges, its top inside the deck slab 3 cm above its underside
+  assert.ok(Math.abs(hull.max.z - (D / 2 - 3.2)) < 1e-6 && Math.abs(hull.min.z - (-D / 2 + 0.04)) < 1e-6, `hull z ${hull.min.z}..${hull.max.z}`);
+  assert.ok(Math.abs(hull.max.x - (greenhouse.width / 2 - 0.04)) < 1e-6 && Math.abs(hull.min.y + 1.42) < 1e-6 && Math.abs(hull.max.y + 0.07) < 1e-6);
+  const deck = bounds(parts.filter(p => p.role === 'deck'));
+  assert.ok(Math.abs(hull.max.y - deck.min.y - 0.03) < 1e-6 && deck.max.y > 0);
+});
+
+test('kit additions leave the existing variants byte-identical (digests pinned before the greenhouse roof)', async () => {
+  const crypto = await import('node:crypto');
+  const digest = (s: KioskSpec) => {
+    const h = crypto.createHash('sha256');
+    for (const p of buildKiosk(s)) {h.update(p.role); h.update(Buffer.from((p.geometry.getAttribute('position').array as Float32Array).buffer));}
+    return h.digest('hex').slice(0, 16);
+  };
+  assert.deepEqual(Object.fromEntries(Object.entries(SPECS).map(([n, s]) => [n, digest(s)])), PINNED);
 });

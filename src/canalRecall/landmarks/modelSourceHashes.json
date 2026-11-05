@@ -1,5 +1,5 @@
 {
-  "toolchain": "b701d2675960c0af1f08287c3d4037484f9b1ab43757a2b5ec5cd08d3bb22bf0",
+  "toolchain": "f81351e5c830d2247154f3e1cccf56853bee364c2b3fcccfc7d9d09b955c38af",
   "models": {
     "abn-amro-hoofdkantoor": "90ff65a2d9f94e99b2ab33438567f147959a43f017d3d9cf9d2ae68b6dae7cbf",
     "academie-theater-dans": "503b3e8d59937cbf7ac8776eb644c11fd10b567e5ac1113e0caa55c83cb68cde",
@@ -48,6 +48,7 @@
     "blankenstraat-15": "f2d246c52d0476446d8f473b4533f95bfd7f98bcaf24f05b0fe64caecf8793ab",
     "blauwbrug": "f020edfa4be3c9cc6b9faf8fdbd78292133d6c31b76dfc29c0368eeeb89892df",
     "blauwe-theehuis": "601251dad10463e4749f25d2ef311886a5ed44df379cee441c4279a76991b01f",
+    "bloemenmarkt-stalls": "560ff5b3796f0b9cbbd259ff7a831739f48a87a5f8472305fde9282b2240608a",
     "bogortuin-101": "ce28479351713ff9f2e239aeb49ae93d5d73c0ead49bbb2694388e690efb56bd",
     "booking-hq": "bebb5c254ed79261404f90e95cdf6ec21095f5b5ad276e0097d421d0bb0df4e0",
     "boom-chicago": "9f3abc28d4d41aa3d049e2e6afbd57d34bdb13208b6eccb112fdf150ef647a0a",
@@ -218,6 +219,8 @@
     "kiosk-haringhandel-jonk": "f06e017a62481e5531a16616365e2ca9fcb37ac0457e0f09a310acc302219444",
     "kiosk-mr-blou": "913001ac212423912425904b1f8f1bf64088f83e1096afb4dd3183a6199b5efd",
     "kiosk-museumplein": "7e217d99d86f691d8ab1b3cf186d0d9f572f64f42813f1c3ed72ef58f917516e",
+    "kiosk-park-bea": "21a8832db7cba5fde369faa69c968745b96ae240d75476ca2e7a06f63a06e267",
+    "kiosk-ramons-coffee": "21262111b83688bcd4a27c533e0cc6e0dcdfc773b4f13b14f7da73d8e83e1765",
     "kiosk-stubbes-haring": "312831a964ea99fcca72be370f04c7dd46189b91946cb2edceb71f35b5152824",
     "kleine-komedie": "f0dca73ee8727c2485a8d768e5a1842a6846a4a0f6a5123a17bb6492f9d1a6a5",
     "klimhal": "126be658c5814ea5e90b7bf40ec55c8e6d1d5a98cef781ba060fb8bd177ccba7",

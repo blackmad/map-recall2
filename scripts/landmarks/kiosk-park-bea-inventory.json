@@ -1,0 +1,285 @@
+{
+ "schemaVersion": 1,
+ "id": "kiosk-park-bea",
+ "pand": "0363100012241046",
+ "signature": [
+  "two-tone-board-walls",
+  "grey-brick-plinth",
+  "deep-fascia",
+  "west-oversail",
+  "east-porch",
+  "bea-sign"
+ ],
+ "walls": [
+  {
+   "tag": "v-186",
+   "bearing": 186,
+   "lengthM": 20,
+   "centre": [
+    4.8841794,
+    52.3435469
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000259_pano_0000_000460",
+   "capturedAt": "2017-04-13",
+   "checked": true,
+   "items": [
+    {
+     "id": "two-tone-board-walls",
+     "kind": "other",
+     "where": "vertical boards in olive grey with lighter boards between, the whole south face above the plinth",
+     "approxSizeM": [
+      18,
+      1.6
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-000259_pano_0000_000460",
+     "how": "board wall slab in the darker tone with battens 0.2 m wide every 0.5 m, 3.5 cm proud, in the lighter tone"
+    },
+    {
+     "id": "grey-brick-plinth",
+     "kind": "other",
+     "where": "grey brick band about 0.9 m high under the boards, broken by the door bay",
+     "approxSizeM": [
+      16,
+      0.9
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-000259_pano_0000_000460",
+     "how": "greyBrick slab 4 cm proud of the boards"
+    },
+    {
+     "id": "deep-fascia",
+     "kind": "other",
+     "where": "board fascia band 0.6 m deep round the whole outline, the eaves line at 3.10 m",
+     "approxSizeM": [
+      22,
+      0.6
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-000259_pano_0000_000460",
+     "how": "fascia slab on the BAG outline with battens"
+    },
+    {
+     "id": "service-doors",
+     "kind": "other",
+     "where": "four flush board doors with pale thin frames in the middle of the south face",
+     "approxSizeM": [
+      4.2,
+      2.2
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-000259_pano_0000_000460",
+     "how": "pale 4 cm frame strips over the board wall; the leaves are the wall itself (no battens over the door bay)"
+    },
+    {
+     "id": "west-oversail",
+     "kind": "other",
+     "where": "at the west end the upper band runs on over a ground floor set back about 0.8 m, wrapping the rounded corner",
+     "approxSizeM": [
+      2.4,
+      1.15
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-000259_pano_0000_000461",
+     "how": "upper band slab 1.95-2.5 m on the outline, ground floor and plinth on the outline inset 0.8 m"
+    },
+    {
+     "id": "pergola",
+     "kind": "other",
+     "where": "the pool's concrete pergola ring stands 3 m in front of the south face",
+     "approxSizeM": [
+      30,
+      3
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7316010203-000259_pano_0000_000460",
+     "skip": {
+      "reason": "not-visible",
+      "note": "part of the wading pool's ring, not of this pand; out of scope for the kiosk"
+     }
+    },
+    {
+     "id": "bench-bins",
+     "kind": "other",
+     "where": "benches and bins under the pergola",
+     "approxSizeM": [
+      2,
+      0.8
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7316010203-000259_pano_0000_000460",
+     "skip": {
+      "reason": "too-small",
+      "note": "street furniture"
+     }
+    }
+   ],
+   "note": "South face to the wading pool, seen through the pergola (artifacts/kiosks-holds/bea/r00460_h5.jpg, z00460_h38.jpg)."
+  },
+  {
+   "tag": "v-096",
+   "bearing": 96,
+   "lengthM": 4.5,
+   "centre": [
+    4.8843309,
+    52.3435659
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002471_pano_0000_000593",
+   "capturedAt": "2022-03-23",
+   "checked": true,
+   "items": [
+    {
+     "id": "east-porch",
+     "kind": "other",
+     "where": "the fascia runs on over a porch at the south-east corner, about 1.8 m along the south face and 2.5 m deep",
+     "approxSizeM": [
+      2.5,
+      2.5
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002471_pano_0000_000593",
+     "how": "the board wall stops 1.8 m short of the corner; the fascia and roof cover the porch"
+    },
+    {
+     "id": "shop-front",
+     "kind": "window-shape",
+     "where": "a glazed shop front and a dark doorway in the porch's back wall",
+     "approxSizeM": [
+      2.6,
+      2.2
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002471_pano_0000_000593",
+     "how": "glass panel with sage frames and a dark door panel on the porch back wall"
+    },
+    {
+     "id": "brick-block",
+     "kind": "other",
+     "where": "pale cream brick block north of the porch, out to the fascia line",
+     "approxSizeM": [
+      2.1,
+      2.5
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002471_pano_0000_000593",
+     "how": "brick slab on the outline inset 3 cm, north of the porch"
+    },
+    {
+     "id": "serving-window",
+     "kind": "window-shape",
+     "where": "a dark window with a sage green frame in the brick block, about 1.0 x 1.2 m, sill 1.05 m",
+     "approxSizeM": [
+      1.0,
+      1.2
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002471_pano_0000_000593",
+     "how": "glass panel and frame bars on the brick block's east face"
+    },
+    {
+     "id": "bea-sign",
+     "kind": "sign",
+     "where": "wooden board lettered BEA on the fascia over the porch",
+     "approxSizeM": [
+      1.9,
+      0.42
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002471_pano_0000_000593",
+     "how": "bronze board 7-10 cm proud of the fascia, BEA in the exporter's pixel font"
+    },
+    {
+     "id": "menu-boards",
+     "kind": "sign",
+     "where": "menu panels and A-board at the porch",
+     "approxSizeM": [
+      0.6,
+      1.0
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7316010203-002471_pano_0000_000593",
+     "skip": {
+      "reason": "too-small",
+      "note": "menu panels and a movable A-board"
+     }
+    },
+    {
+     "id": "fascia-lamp",
+     "kind": "other",
+     "where": "a small sloping lamp or solar panel on the porch fascia",
+     "approxSizeM": [
+      0.5,
+      0.2
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7316010203-002471_pano_0000_000593",
+     "skip": {
+      "reason": "too-small",
+      "note": "0.5 m fitting"
+     }
+    }
+   ],
+   "note": "East end, the kiosk side (artifacts/kiosks-holds/bea/z00593_h274.jpg sunlit, z00663_h264.jpg 2024)."
+  },
+  {
+   "tag": "v-276",
+   "bearing": 276,
+   "lengthM": 3.5,
+   "centre": [
+    4.884025,
+    52.3435641
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000259_pano_0000_000461",
+   "capturedAt": "2017-04-13",
+   "checked": true,
+   "items": [
+    {
+     "id": "west-end-boards",
+     "kind": "other",
+     "where": "the west end in the same boards, rounded at the corners",
+     "approxSizeM": [
+      3.5,
+      2.5
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-000259_pano_0000_000461",
+     "how": "the outline's rounded corners extruded, battens round them"
+    }
+   ],
+   "note": "West end, oblique from the south-west (artifacts/kiosks-holds/bea/r00461_h20.jpg)."
+  },
+  {
+   "tag": "v-006",
+   "bearing": 6,
+   "lengthM": 20,
+   "centre": [
+    4.8841794,
+    52.3435948
+   ],
+   "evidence": "inferred",
+   "checked": true,
+   "note": "North face to the park pond, behind trees; no panorama sees it. Drawn as the south face's boards and plinth without doors.",
+   "items": []
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  },
+  {
+   "name": "BAG pand 0363100012241046",
+   "url": "https://api.data.amsterdam.nl/v1/bag/panden/0363100012241046/",
+   "licence": "CC0"
+  },
+  {
+   "name": "OpenStreetMap node 5218592654 (Park Kiosk BEA)",
+   "url": "https://www.openstreetmap.org/node/5218592654",
+   "licence": "ODbL"
+  }
+ ]
+}

@@ -1,0 +1,77 @@
+{
+ "id": "kiosk-ramons-coffee",
+ "generatedBy": "node --import tsx scripts/landmarks/kiosk-footprint.ts --id=kiosk-ramons-coffee --pand=0363100012246428 --near=52.3898483,4.8910493",
+ "source": {
+  "kind": "bag-pand",
+  "id": "0363100012246428",
+  "url": "https://api.data.amsterdam.nl/v1/bag/panden/0363100012246428/",
+  "licence": "CC0 (BAG)",
+  "properties": {
+   "id": "NL.IMBAG.Pand.0363100012246428",
+   "tier": 3,
+   "minHeight": 0,
+   "height": 4.96,
+   "eaves": 4.9,
+   "roof": 1,
+   "year": 2019,
+   "osm": [
+    "w977775722"
+   ]
+  }
+ },
+ "anchor": [
+  4.8910493,
+  52.389849
+ ],
+ "ringLngLat": [
+  [
+   4.891017,
+   52.389867
+  ],
+  [
+   4.891008,
+   52.389841
+  ],
+  [
+   4.891081,
+   52.389831
+  ],
+  [
+   4.891091,
+   52.389857
+  ],
+  [
+   4.891017,
+   52.389867
+  ]
+ ],
+ "localEastSouthMetres": [
+  [
+   -2.191,
+   -2.004
+  ],
+  [
+   -2.802,
+   0.891
+  ],
+  [
+   2.157,
+   2.004
+  ],
+  [
+   2.836,
+   -0.891
+  ]
+ ],
+ "areaM2": 15.17,
+ "rect": {
+  "centre": [
+   0.001,
+   0.004
+  ],
+  "widthM": 5.149,
+  "depthM": 2.973,
+  "frontBearing": 12.48
+ },
+ "notes": []
+}

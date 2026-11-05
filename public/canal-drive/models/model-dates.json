@@ -431,6 +431,16 @@
       "version": "7727a2af63138869",
       "dateSource": "asset-update"
     },
+    "bloemenmarkt-stalls": {
+      "updatedAt": "2026-11-05T20:59:15.908Z",
+      "version": "4f4e251e73566540",
+      "dateSource": "asset-update"
+    },
+    "bloemenmarkt-stalls.lod1": {
+      "updatedAt": "2026-11-05T20:59:39.037Z",
+      "version": "82d4af08b5242b76",
+      "dateSource": "asset-update"
+    },
     "bogortuin-101": {
       "updatedAt": "2026-10-20T10:16:58.076Z",
       "version": "3520d14a631ffc10",
@@ -2069,6 +2079,21 @@
     "kiosk-museumplein": {
       "updatedAt": "2026-11-01T22:05:47.503Z",
       "version": "3e9f09f39cf1c3ad",
+      "dateSource": "asset-update"
+    },
+    "kiosk-park-bea": {
+      "updatedAt": "2026-11-05T21:15:26.945Z",
+      "version": "e9d49b6add3e4da8",
+      "dateSource": "asset-update"
+    },
+    "kiosk-park-bea.lod1": {
+      "updatedAt": "2026-11-05T21:15:28.563Z",
+      "version": "1cd174a4527dc621",
+      "dateSource": "asset-update"
+    },
+    "kiosk-ramons-coffee": {
+      "updatedAt": "2026-11-05T21:23:27.419Z",
+      "version": "26af490c8ba10e3b",
       "dateSource": "asset-update"
     },
     "kiosk-stubbes-haring": {
