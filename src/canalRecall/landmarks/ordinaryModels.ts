@@ -44,6 +44,9 @@ export const SHADOWED_BY_LANDMARK: Readonly<Record<string, string>> = {
   'ordinary-0363100012077325': 'gerrit-rietveld-academie',
   // Heinekenplein block (large recipe failed the likeness judge on its east wall and drew the office tower blank; bespoke #207).
   'ordinary-0363100012130580': 'heinekenplein-block',
+  // Tetterode complex, Da Costakade 146 (large recipe: one 82 x 94 m block; the bespoke model (#209) draws the 1902 factory front,
+  // the dairy, the 1909 lettered range and the Merkelbach & Karsten ribbons).
+  'ordinary-0363100012236799': 'da-costakade-146',
 };
 /** Every catalogue model (both categories) that no landmark shadows: what the game draws. */
 export const ORDINARY_BUILDINGS: readonly SignatureModelSpec[] = models.filter(m => !SHADOWED_BY_LANDMARK[m.id]).map(ordinarySpecFor);

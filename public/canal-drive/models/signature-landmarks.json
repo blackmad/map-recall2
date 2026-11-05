@@ -82219,6 +82219,305 @@
         "bytes": 17796,
         "triangles": 740
       }
+    },
+    "da-costakade-146": {
+      "id": "da-costakade-146",
+      "name": "Tetterode complex (former type foundry), Da Costakade",
+      "modelUrl": "./models/da-costakade-146.glb",
+      "suppressOsmIds": [
+        "NL.IMBAG.Pand.0363100012236799"
+      ],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.87246997,
+          52.36813224
+        ],
+        "headingDegrees": 0,
+        "lengthMetres": 82.3,
+        "widthMetres": 94.2
+      },
+      "surveyed": {
+        "anchor": [
+          4.87246997,
+          52.36813224
+        ],
+        "northOffsetDegrees": 0,
+        "source": "Vertex average of the BAG 0363100012236799 ring (RD, PDOK BAG WFS, CC0) in native east/south metres above the 3DBAG ground 0.907 m NAP (scripts/landmarks/da-costakade-146-footprints.json, written by bag-shell-prepare.ts da-costakade-146 0363100012236799). Volume heights from the 3DBAG LoD2.2 roof parts (CC BY 4.0); identity and the four building phases from the Rijksmonumentenregister (complex 524827: 524828 fabriek 1902-03 and 1906, 524829 centrale uitbreiding 1909-12, both J.W.F. Hartkamp; 524830 melkfabriek Holland 1898, taken over 1921; 524831 uitbreiding 1940-51, B. Merkelbach and Ch.J.F. Karsten; CC0) and nl.wikipedia 'Tetterode (bedrijf)' (CC BY-SA 4.0). Storeys, window axes, arches, friezes, balconies and dormers measured on rectified Gemeente Amsterdam panorama crops (CC BY 4.0; recording_2025-07-31_08-46-40_01995 for the Bilderdijkstraat front, TMX7316010203-001702_pano_0000_005491 for the Da Costakade front, TMX7316010203-002928_pano_0012_000182/183 and -002059_pano_0000_002152 for the housing block) and checked against Wikimedia Commons photographs by Marcel Mulder (CC BY-SA 3.0 nl). Yard faces, party walls, the housing block's back and the Merkelbach block's north side carry no photograph and are inferred."
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 0,
+      "heightMetres": 32.6,
+      "bagYear": 1903,
+      "materialOverrides": {
+        "ochre": "#b19576",
+        "pink": "#7d5c4f",
+        "red": "#8c6355",
+        "brick": "#7e5f55",
+        "sandstone": "#cbc3b0",
+        "greyBrick": "#aeb0aa",
+        "concrete": "#6f6b66",
+        "stone": "#b8ad9e",
+        "white": "#e8e4da",
+        "frame": "#d6d9cf",
+        "glass": "#4f5f69",
+        "dark": "#36312d",
+        "green": "#2f5a40",
+        "slate": "#6c7074",
+        "copper": "#7a5548",
+        "bronze": "#2e3033",
+        "canopyGlass": "#c9d0cf",
+        "gold": "#6b4a35"
+      },
+      "attribution": {
+        "title": "Tetterode complex, former Lettergieterij 'Amsterdam' v/h N. Tetterode (Bilderdijkstraat 155-167 / Da Costakade 136-164, 1898-1951)",
+        "author": "Map Recall",
+        "sourceUrl": "https://monumentenregister.cultureelerfgoed.nl/monumenten/524828",
+        "licence": "CC BY 4.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "modifications": "Original texture-free flat-colour geometry on the BAG footprint (CC0) with 3DBAG LoD2.2 heights (CC BY 4.0): the ochre-brick 1902 factory front with lisenen, high segmental workshop windows and mezzanine side parts, the 1898 dairy with its hardstone arches, lettered frieze, banded brown brick, balconies and stepped gable, the corner house, the 1909 Da Costakade range with cross windows, the TETTERODE frieze, gate, cornice and dormered mansard, the Merkelbach & Karsten ribbon-window block with its roof canopy and half-round rooftop volume, and the cream-brick housing block; read for proportion and tone from Gemeente Amsterdam panoramas (CC BY 4.0) and Wikimedia Commons photographs by Marcel Mulder (CC BY-SA 3.0 nl). No pixels or meshes imported."
+      },
+      "buildingFootprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.87245441,
+              52.36820626
+            ],
+            [
+              4.87247204,
+              52.36818069
+            ],
+            [
+              4.87247556,
+              52.36817533
+            ],
+            [
+              4.87227245,
+              52.36812345
+            ],
+            [
+              4.87226685,
+              52.36813176
+            ],
+            [
+              4.8722465,
+              52.36812661
+            ],
+            [
+              4.8722157,
+              52.36810427
+            ],
+            [
+              4.87214756,
+              52.36808754
+            ],
+            [
+              4.8721503,
+              52.36808337
+            ],
+            [
+              4.87208214,
+              52.36806667
+            ],
+            [
+              4.87204667,
+              52.3681209
+            ],
+            [
+              4.87195125,
+              52.36809751
+            ],
+            [
+              4.8718837,
+              52.36819539
+            ],
+            [
+              4.871761,
+              52.36816531
+            ],
+            [
+              4.8721642,
+              52.36758103
+            ],
+            [
+              4.87247768,
+              52.36766329
+            ],
+            [
+              4.87247852,
+              52.36766206
+            ],
+            [
+              4.87277586,
+              52.36774677
+            ],
+            [
+              4.87277926,
+              52.36774364
+            ],
+            [
+              4.87283474,
+              52.36775963
+            ],
+            [
+              4.87283104,
+              52.36776411
+            ],
+            [
+              4.87297403,
+              52.36780168
+            ],
+            [
+              4.87294389,
+              52.36784524
+            ],
+            [
+              4.87292647,
+              52.36787044
+            ],
+            [
+              4.87267928,
+              52.36822788
+            ],
+            [
+              4.87267805,
+              52.36822757
+            ],
+            [
+              4.87267748,
+              52.36822839
+            ],
+            [
+              4.87267167,
+              52.36822689
+            ],
+            [
+              4.87266865,
+              52.36823141
+            ],
+            [
+              4.87265088,
+              52.36825684
+            ],
+            [
+              4.87264789,
+              52.36826144
+            ],
+            [
+              4.87265088,
+              52.36826221
+            ],
+            [
+              4.87262698,
+              52.36829691
+            ],
+            [
+              4.87262997,
+              52.36829768
+            ],
+            [
+              4.8725862,
+              52.36836129
+            ],
+            [
+              4.87258321,
+              52.36836053
+            ],
+            [
+              4.87255939,
+              52.36839515
+            ],
+            [
+              4.87255642,
+              52.36839438
+            ],
+            [
+              4.87253224,
+              52.3684295
+            ],
+            [
+              4.87233581,
+              52.36837826
+            ],
+            [
+              4.8723599,
+              52.36834333
+            ],
+            [
+              4.87235545,
+              52.36834218
+            ],
+            [
+              4.87237236,
+              52.36831765
+            ],
+            [
+              4.87236939,
+              52.36831689
+            ],
+            [
+              4.87242688,
+              52.36823349
+            ],
+            [
+              4.87242986,
+              52.36823425
+            ],
+            [
+              4.87244682,
+              52.36820965
+            ],
+            [
+              4.87245127,
+              52.3682108
+            ],
+            [
+              4.87245441,
+              52.36820626
+            ]
+          ]
+        ]
+      },
+      "buildingCategory": "landmark",
+      "bounds": {
+        "min": [
+          -48.84619140625,
+          -1.9073486612342094e-7,
+          -33.170143127441406
+        ],
+        "max": [
+          34.155189514160156,
+          32.599998474121094,
+          61.485137939453125
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.87246997,
+          52.36813224
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 90,
+        "facadeBearingDegrees": 0,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 94.65528106689453,
+        "heightMetres": 32.59999866485596,
+        "depthMetres": 83.00138092041016,
+        "depthCoverage": 0.8811186934226131
+      },
+      "triangles": 30493,
+      "bytes": 401736,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
+      "lod1": {
+        "sourceHash": "318f863e529527a0",
+        "buildVersion": 2,
+        "bytes": 127476,
+        "triangles": 7959
+      }
     }
   }
 }

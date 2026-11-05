@@ -19,8 +19,16 @@
  * `arch = 0.5` (the default) is a semicircle, `arch = 1` the equilateral pointed arch, values in between are blunt
  * lancets; `arch = 0` is a flat head (a plain rectangle), so square windows and doors can share the wall with the
  * arches. Openings may share columns (a clerestory light above an aisle light) but must not touch or overlap.
+ *
+ * `rise` (optional, 0 < rise <= width / 2) makes the head a segmental ("gedrukte", depressed) arch instead: one circular arc
+ * through both springing points and the apex `y1`, rising `rise` above the springing line, its centre below the springing
+ * line on the centre line (rise = width / 2 is the semicircle). Added for the Tetterode type foundry (Da Costakade 146 lane,
+ * 2026-11-02): its 1902 Bilderdijkstraat front is described by the monument register (524828) as "grote vensters met gedrukte
+ * toging" and its 1898 dairy front by three "brede gedrukte bogen"; a semicircle on those 4-6 m wide workshop windows would
+ * rise 2-3 m instead of the photographed ~0.6-1 m. `arch` is ignored when `rise` is set; openings without `rise` are drawn
+ * exactly as before.
  */
-export type ArchOpening = {t0: number; t1: number; y0: number; y1: number; depth: number; arch?: number; segments?: number};
+export type ArchOpening = {t0: number; t1: number; y0: number; y1: number; depth: number; arch?: number; segments?: number; rise?: number};
 export type V3 = [number, number, number];
 export type Tri = {pts: [V3, V3, V3]; normal: V3};
 export type ArchOpeningWall = {face: Tri[]; reveals: Tri[][]; backs: Tri[][]};
@@ -36,10 +44,17 @@ export function archRise(width: number, arch = 0.5): number {
 }
 
 /** Springing height of an opening (where the jambs end and the head begins). */
-export const springing = (o: ArchOpening) => o.y1 - archRise(o.t1 - o.t0, o.arch);
+export const springing = (o: ArchOpening) => o.y1 - (o.rise !== undefined ? o.rise : archRise(o.t1 - o.t0, o.arch));
+
+/** Radius of a segmental head of half-width `half` rising `rise`. */
+export const segmentalRadius = (half: number, rise: number) => (half * half + rise * rise) / (2 * rise);
 
 /** Top edge of the opening at t (t inside t0..t1): the jamb top on the springing line plus the arc. */
 export function headAt(o: ArchOpening, t: number): number {
+  if (o.rise !== undefined) {
+    const half = (o.t1 - o.t0) / 2, R = segmentalRadius(half, o.rise), dt = t - (o.t0 + o.t1) / 2;
+    return o.y1 - R + Math.sqrt(Math.max(0, R * R - dt * dt));
+  }
   const w = o.t1 - o.t0, r = (o.arch ?? 0.5) * w, ys = springing(o), mid = (o.t0 + o.t1) / 2;
   const c = t <= mid ? o.t0 + r : o.t1 - r;            // the left half is drawn about a centre on the right, and vice versa
   return ys + Math.sqrt(Math.max(0, r * r - (t - c) * (t - c)));
@@ -47,6 +62,14 @@ export function headAt(o: ArchOpening, t: number): number {
 
 /** Sample t values of the head from t0 to t1: `segments` per half (default 6), apex included. */
 function headTs(o: ArchOpening): number[] {
+  if (o.rise !== undefined) {
+    // equal angle steps on the one arc, `segments` per half, apex included
+    const n = Math.max(1, o.segments ?? 6), half = (o.t1 - o.t0) / 2, mid = (o.t0 + o.t1) / 2, R = segmentalRadius(half, o.rise);
+    const phi = Math.asin(Math.min(1, half / R)), xs: number[] = [];
+    for (let k = -n; k <= n; k++) xs.push(mid + R * Math.sin(phi * k / n));
+    xs[0] = o.t0; xs[n] = mid; xs[2 * n] = o.t1;
+    return xs;
+  }
   if (o.arch === 0) return [o.t0, o.t1];
   const n = Math.max(1, o.segments ?? 6), w = o.t1 - o.t0, r = (o.arch ?? 0.5) * w, mid = (o.t0 + o.t1) / 2;
   // equal angle steps on each arc: the left arc runs from angle a0 (at t0) to a1 (at the apex) about centre t0 + r
@@ -90,7 +113,9 @@ function rect(t0: number, t1: number, y0: number, y1: number, out: Tri[]) {
 export function archOpeningWall(len: number, y0: number, y1: number, openings: ArchOpening[]): ArchOpeningWall {
   for (const o of openings) {
     if (o.t0 < -EPS || o.t1 > len + EPS || o.y0 < y0 - EPS || o.y1 > y1 + EPS) throw Error('archOpeningWall: opening outside the wall');
-    if (o.t1 - o.t0 < EPS || o.depth <= 0 || (o.arch !== 0 && (o.arch ?? 0.5) < 0.5 - EPS) || springing(o) < o.y0 - 1e-6) throw Error('archOpeningWall: bad opening shape');
+    const badRise = o.rise !== undefined && (!(o.rise > EPS) || o.rise > (o.t1 - o.t0) / 2 + EPS);
+    const badArch = o.rise === undefined && o.arch !== 0 && (o.arch ?? 0.5) < 0.5 - EPS;
+    if (o.t1 - o.t0 < EPS || o.depth <= 0 || badArch || badRise || springing(o) < o.y0 - 1e-6) throw Error('archOpeningWall: bad opening shape');
   }
   for (let i = 0; i < openings.length; i++) for (let j = i + 1; j < openings.length; j++) {
     const a = openings[i], b = openings[j];
@@ -112,7 +137,7 @@ export function archOpeningWall(len: number, y0: number, y1: number, openings: A
     rect(t, len, ya, yb, face);
   }
   for (const o of openings) {
-    if (o.arch === 0) continue;
+    if (o.arch === 0 && o.rise === undefined) continue;
     const xs = headTs(o), mid = (o.t0 + o.t1) / 2, L: V3 = [o.t0, o.y1, 0], R: V3 = [o.t1, o.y1, 0];
     const h = (t: number, i: number) => (i === 0 || i === xs.length - 1 ? springing(o) : headAt(o, t));
     for (let i = 0; i + 1 < xs.length; i++) {

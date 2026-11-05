@@ -1,0 +1,577 @@
+{
+ "schemaVersion": 1,
+ "id": "da-costakade-146",
+ "pand": "0363100012236799",
+ "brief": "scripts/landmarks/da-costakade-146-brief.md",
+ "signature": [
+  "factory-workshop-windows",
+  "r1909-frieze",
+  "mk-ribbons",
+  "dairy-gable",
+  "factory-lisenen",
+  "dairy-frieze",
+  "r1909-cross-windows",
+  "dairy-hardstone-arches"
+ ],
+ "walls": [
+  {
+   "tag": "w01-248",
+   "bearing": 248,
+   "lengthM": 70.6,
+   "centre": [
+    4.8719655,
+    52.3678755
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-07-31_08-46-40_01995",
+   "capturedAt": "2025-07-31",
+   "checked": true,
+   "items": [
+    {
+     "id": "factory-workshop-windows",
+     "kind": "window-shape",
+     "where": "1902 factory, four middle bays: high segmental-headed workshop windows in the onderpui (1.1-6.4 m) under red/ochre brick arches, two storeys of straight four-light windows with transoms above",
+     "approxSizeM": [
+      19.8,
+      17.3
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-07-31_08-46-40_01995",
+     "how": "archOpeningWall segmental heads (new `rise`), pane bars, red brick arch bands, stone sill courses, frames in the measured grey-green"
+    },
+    {
+     "id": "factory-side-parts",
+     "kind": "window-shape",
+     "where": "1902 factory side parts: three axes of segmental-headed windows on two storeys, five small arched mezzanine lights (insteek), ground windows and the wooden double doors",
+     "approxSizeM": [
+      8.5,
+      17.3
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-07-31_08-46-40_01995",
+     "how": "segmental openings with arch bands; mezzanine lights 0.9 m with rise 0.45; doors as recessed brown wooden leaves"
+    },
+    {
+     "id": "factory-lisenen",
+     "kind": "other",
+     "where": "lisenen (piers) between the window axes breaking through the cornice as stone-capped posts to 18 m, the arcaded brick frieze under the stone coping",
+     "approxSizeM": [
+      37.7,
+      18
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-07-31_08-46-40_01995",
+     "how": "0.75 m proud piers to 18.0 m with stone caps, stone coping, brick arch bands under it"
+    },
+    {
+     "id": "factory-iron-anchors",
+     "kind": "other",
+     "where": "black wrought-iron wall anchors with plant motifs on the piers at two heights",
+     "approxSizeM": [
+      0.5,
+      1.3
+     ],
+     "plan": "simplified",
+     "seenIn": "Commons: Bilderdijkstraat 163.jpg (Marcel Mulder, CC BY-SA 3.0 nl)",
+     "how": "a vertical bar with a cross bar in dark iron on every pier at 6.3 and 11.6 m"
+    },
+    {
+     "id": "factory-shop-signs",
+     "kind": "sign",
+     "where": "shop fascia boards (Galleries, TREKKEMAAN) over the doors in the middle bays",
+     "approxSizeM": [
+      1.8,
+      0.5
+     ],
+     "plan": "skipped",
+     "seenIn": "recording_2025-07-31_08-46-40_01995",
+     "skip": {
+      "reason": "temporary",
+      "note": "tenant signs change; the map label names the place"
+     }
+    },
+    {
+     "id": "dairy-hardstone-arches",
+     "kind": "colonnade",
+     "where": "1898 dairy ground storey clad in hardstone with three wide segmental arches, glazed fronts and doors set back behind them (register 524830)",
+     "approxSizeM": [
+      20.5,
+      5.4
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-07-31_08-46-40_01995",
+     "how": "stone face 0-5.45 m, three 6.4 m segmental openings 0.55 m deep with frames and doors, stone arch bands"
+    },
+    {
+     "id": "dairy-frieze",
+     "kind": "lettering",
+     "where": "frieze over the arches: LETTERGIETERIJ AMSTERDAM VOORHEEN N. TETTERODE",
+     "approxSizeM": [
+      17.5,
+      0.4
+     ],
+     "plan": "modelled",
+     "seenIn": "Commons: Bilderdijkstraat 159.jpg (Marcel Mulder, CC BY-SA 3.0 nl)",
+     "how": "stone band 4.95-5.45 m with 5x7 pixel letters 0.35 m high in dark relief"
+    },
+    {
+     "id": "dairy-banded-brick",
+     "kind": "window-shape",
+     "where": "brown brick upper storeys with yellow brick bands and stijlen, nine axes of windows with pale stone hoods",
+     "approxSizeM": [
+      20.9,
+      9.8
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-07-31_08-46-40_01995",
+     "how": "nine axes on three storeys, ochre courses at 5.5/8.5/11.7/14.6 m and pilaster strips between the axes, stone sills and segmental hoods"
+    },
+    {
+     "id": "dairy-gable",
+     "kind": "other",
+     "where": "three-axis tuitgevel with stone coping, a finial and a three-light round-headed window under a relieving arch (register 524830)",
+     "approxSizeM": [
+      6.9,
+      5.6
+     ],
+     "plan": "modelled",
+     "seenIn": "Commons: Bilderdijkstraat 159.jpg (Marcel Mulder, CC BY-SA 3.0 nl)",
+     "how": "gable polygon to 20.8 m with stone copings, three round-headed lights (0.7/0.9/0.7 m), stone arch band, saddle roof in pantiles behind"
+    },
+    {
+     "id": "dairy-balconies",
+     "kind": "balcony-ironwork",
+     "where": "six balconies with wrought-iron railings on the second and third floors at three axes",
+     "approxSizeM": [
+      1.9,
+      1.0
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-07-31_08-46-40_01995",
+     "how": "stone slab on two consoles, top and bottom rails and balusters in dark iron"
+    },
+    {
+     "id": "dairy-roof-dormer",
+     "kind": "other",
+     "where": "short tiled roof over the right part above a white cornice, one dormer",
+     "approxSizeM": [
+      14,
+      2.9
+     ],
+     "plan": "modelled",
+     "seenIn": "Commons: Bilderdijkstraat 159.jpg (Marcel Mulder, CC BY-SA 3.0 nl)",
+     "how": "pantile slope 15.2-18.1 m, white cornice, a white dormer with a two-light window"
+    },
+    {
+     "id": "corner-house",
+     "kind": "window-shape",
+     "where": "corner house Bilderdijkstraat 155-157: red brick, shop glazing under a grey fascia, three storeys of six axes, three balconies, mansard with a gabled dormer and round-headed window",
+     "approxSizeM": [
+      11.7,
+      17
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-07-31_08-46-40_01995",
+     "how": "six axes on three storeys with white frames, stone sills and hoods, three iron balconies, slate mansard and a brick dormer gable"
+    },
+    {
+     "id": "tram-wires",
+     "kind": "other",
+     "where": "tram overhead wires and the street lamp in front of the dairy",
+     "approxSizeM": [
+      70,
+      0.1
+     ],
+     "plan": "skipped",
+     "seenIn": "recording_2025-07-31_08-46-40_01995",
+     "skip": {
+      "reason": "not-visible",
+      "note": "street furniture, not part of the building"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "w02-67",
+   "bearing": 67,
+   "lengthM": 51.5,
+   "centre": [
+    4.8728295,
+    52.368017
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001702_pano_0000_005491",
+   "capturedAt": "2020-05-11",
+   "checked": true,
+   "items": [
+    {
+     "id": "r1909-cross-windows",
+     "kind": "window-shape",
+     "where": "1909 range: twelve axes of white cross windows (kruiskozijnen) with six/eight-pane top lights on three storeys (register 524829)",
+     "approxSizeM": [
+      26.4,
+      12
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001702_pano_0000_005491",
+     "how": "12 axes x 3 storeys, mullion, transom at 66 %, two extra top-light bars, stone sills"
+    },
+    {
+     "id": "r1909-frieze",
+     "kind": "lettering",
+     "where": "stone text frieze over the ground storey: LETTERGIETERIJ 'AMSTERDAM' V/H N.TETTERODE",
+     "approxSizeM": [
+      16.8,
+      0.85
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001702_pano_0000_005491",
+     "how": "stone band 5.45-6.3 m, 5x7 pixel letters 0.46 m high (new '/' glyph in mixed-case-glyphs.ts)"
+    },
+    {
+     "id": "r1909-gate",
+     "kind": "other",
+     "where": "four-leaf gate with a natural-stone surround (enkadrering) and segmental head, left of the frieze",
+     "approxSizeM": [
+      3.4,
+      4.8
+     ],
+     "plan": "modelled",
+     "seenIn": "Commons: Lettergieterij (Tetterode).JPG (Marcel Mulder, CC BY-SA 3.0 nl)",
+     "how": "2.5 m segmental opening with green leaves, stone jambs, stone arch band and keystone"
+    },
+    {
+     "id": "r1909-end-doors",
+     "kind": "other",
+     "where": "simple doorways with mezzanine windows over them at both ends of the front (green doors)",
+     "approxSizeM": [
+      3.2,
+      5.9
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001702_pano_0000_005491",
+     "how": "four green door openings with mezzanine cross windows above"
+    },
+    {
+     "id": "r1909-cornice-dormers",
+     "kind": "other",
+     "where": "white cornice on consoles, slate mansard with four white dormers, the raised brick south end with two top windows",
+     "approxSizeM": [
+      26.4,
+      7
+     ],
+     "plan": "modelled",
+     "seenIn": "Commons: Lettergieterij (Tetterode).JPG (Marcel Mulder, CC BY-SA 3.0 nl)",
+     "how": "white cornice with consoles, mansard 21.0-24.6 m, four white dormers with two-light windows, brick south end to 28 m"
+    },
+    {
+     "id": "mk-ribbons",
+     "kind": "window-shape",
+     "where": "Merkelbach & Karsten block (register 524831): four storeys of steel-framed ribbon windows between glazed grey-brick spandrels with small square vents",
+     "approxSizeM": [
+      25.1,
+      18
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001702_pano_0000_005491",
+     "how": "ribbons 7.9/12.65/17.4/22.15 m, 3.4 m tall, white mullions ~1.25 m and a transom, spandrels with white sill lines and dark vent blocks"
+    },
+    {
+     "id": "mk-ground-insteek",
+     "kind": "colonnade",
+     "where": "high ground storey with insteek: dark concrete columns, lower glazing with red and blue doors, mezzanine glazing, a grey-tiled bay with a steel door",
+     "approxSizeM": [
+      25.1,
+      6.6
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001702_pano_0000_005491",
+     "how": "four 0.5 m concrete columns, two ribbons per bay, coloured door panels, steel door in the tiled bay"
+    },
+    {
+     "id": "mk-roof-canopy",
+     "kind": "canopy",
+     "where": "set-back roof storey (former canteen) under a broad canopy on slender posts with a terrace rail",
+     "approxSizeM": [
+      25.1,
+      3.3
+     ],
+     "plan": "modelled",
+     "seenIn": "Commons: Uitbreiding lettergieterij (Tetterode).JPG (Marcel Mulder, CC BY-SA 3.0 nl)",
+     "how": "glazed roof storey set back 1.5 m, white canopy slab 29.0-29.3 m over the whole block, posts and rail"
+    },
+    {
+     "id": "mk-half-round",
+     "kind": "dome",
+     "where": "half-round rooftop volume with frosted glass panels and a curved rail",
+     "approxSizeM": [
+      8,
+      3.3
+     ],
+     "plan": "simplified",
+     "seenIn": "Commons: Lettergieterij (Tetterode).JPG (Marcel Mulder, CC BY-SA 3.0 nl)",
+     "how": "half-disc of radius 4 m, frosted panels between white posts, 29.3-32.6 m, placed on the 3DBAG roof part (not photographed head-on)"
+    },
+    {
+     "id": "mk-fire-ladder",
+     "kind": "other",
+     "where": "steel ladder and downpipes on the Merkelbach front",
+     "approxSizeM": [
+      0.5,
+      20
+     ],
+     "plan": "skipped",
+     "seenIn": "Commons: Uitbreiding lettergieterij (Tetterode).JPG (Marcel Mulder, CC BY-SA 3.0 nl)",
+     "skip": {
+      "reason": "too-small",
+      "note": "0.5 m wide steel ladder, reads as a line"
+     }
+    },
+    {
+     "id": "r1909-wall-lamp",
+     "kind": "lamp",
+     "where": "lantern on a bracket by the gate",
+     "approxSizeM": [
+      0.5,
+      1.0
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7316010203-001702_pano_0000_005491",
+     "skip": {
+      "reason": "too-small",
+      "note": "0.5 m lantern"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "w03-338",
+   "bearing": 338,
+   "lengthM": 15,
+   "centre": [
+    4.8723765,
+    52.368152
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "items": [],
+   "note": "no panorama within 35 m (party wall or yard); inferred plain wall"
+  },
+  {
+   "tag": "w04-247",
+   "bearing": 247,
+   "lengthM": 10,
+   "centre": [
+    4.872401,
+    52.3682775
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "items": [],
+   "note": "no panorama within 35 m (party wall or yard); inferred plain wall"
+  },
+  {
+   "tag": "w05-67",
+   "bearing": 67,
+   "lengthM": 7.6,
+   "centre": [
+    4.872611,
+    52.3683315
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002928_pano_0012_000182",
+   "capturedAt": "2023-01-12",
+   "checked": true,
+   "items": [
+    {
+     "id": "hb-loggias",
+     "kind": "balcony-ironwork",
+     "where": "housing block middle section: four recessed loggias per storey on seven storeys with dark railings",
+     "approxSizeM": [
+      7.7,
+      17
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002928_pano_0012_000182",
+     "how": "1.0 m deep loggia openings with dark backs and two rails each"
+    },
+    {
+     "id": "hb-portico",
+     "kind": "canopy",
+     "where": "entrance portico with white posts and a white sawtooth lintel",
+     "approxSizeM": [
+      3.8,
+      4
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-002928_pano_0012_000182",
+     "how": "three white posts and a white lintel slab before a glazed entrance; the sawtooth edge is not drawn"
+    }
+   ]
+  },
+  {
+   "tag": "w06-248",
+   "bearing": 248,
+   "lengthM": 4.2,
+   "centre": [
+    4.872466,
+    52.3681955
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "items": [],
+   "note": "no panorama within 35 m (party wall or yard); inferred plain wall"
+  },
+  {
+   "tag": "w07-68",
+   "bearing": 68,
+   "lengthM": 4.2,
+   "centre": [
+    4.872642,
+    52.3682815
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002059_pano_0000_002152",
+   "capturedAt": "2021-03-24",
+   "checked": true,
+   "items": [
+    {
+     "id": "hb-punched-windows",
+     "kind": "window-shape",
+     "where": "cream-brick sections with two dark-framed square windows per storey on eight storeys, white plinth, grey coping",
+     "approxSizeM": [
+      4.2,
+      23
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002059_pano_0000_002152",
+     "how": "two 1.25 x 1.3 m windows per storey, white plinth, slate coping"
+    }
+   ]
+  },
+  {
+   "tag": "w08-68",
+   "bearing": 68,
+   "lengthM": 4.2,
+   "centre": [
+    4.872547,
+    52.3684145
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001702_pano_0000_005483",
+   "capturedAt": "2020-05-11",
+   "checked": true,
+   "items": [
+    {
+     "id": "hb-low-wing",
+     "kind": "window-shape",
+     "where": "15 m wings at both ends: four storeys of two windows, ground windows or the gated passage",
+     "approxSizeM": [
+      4.2,
+      15
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001702_pano_0000_005483",
+     "how": "same window grid on the 15.0 and 14.8 m wings"
+    }
+   ]
+  },
+  {
+   "tag": "w09-68",
+   "bearing": 68,
+   "lengthM": 4.2,
+   "centre": [
+    4.8726625,
+    52.3682465
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001702_pano_0000_005487",
+   "capturedAt": "2020-05-11",
+   "checked": true,
+   "items": [
+    {
+     "id": "hb-gate",
+     "kind": "other",
+     "where": "gated passage under the south wing with a white frame and a lattice gate",
+     "approxSizeM": [
+      2.3,
+      3.0
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-001702_pano_0000_005487",
+     "how": "a 2.3 x 3.0 m deep dark opening with a white frame; the lattice is not drawn"
+    }
+   ]
+  },
+  {
+   "tag": "w10-247",
+   "bearing": 247,
+   "lengthM": 4.1,
+   "centre": [
+    4.872351,
+    52.368363
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "items": [],
+   "note": "no panorama within 35 m (party wall or yard); inferred plain wall"
+  },
+  {
+   "tag": "w11-67",
+   "bearing": 67,
+   "lengthM": 4.1,
+   "centre": [
+    4.872574,
+    52.36838
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002928_pano_0012_000183",
+   "capturedAt": "2023-01-12",
+   "checked": true,
+   "items": [
+    {
+     "id": "hb-north-section",
+     "kind": "window-shape",
+     "where": "north 23 m section: two windows per storey",
+     "approxSizeM": [
+      4.2,
+      23
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002928_pano_0012_000183",
+     "how": "as w07-68"
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  },
+  {
+   "name": "Rijksmonumentenregister 524828, 524829, 524830, 524831 (complex 524827)",
+   "url": "https://monumentenregister.cultureelerfgoed.nl/monumenten/524828",
+   "licence": "CC0"
+  },
+  {
+   "name": "nl.wikipedia Tetterode (bedrijf)",
+   "url": "https://nl.wikipedia.org/wiki/Tetterode_(bedrijf)",
+   "licence": "CC BY-SA 4.0"
+  },
+  {
+   "name": "Wikimedia Commons, Marcel Mulder: Bilderdijkstraat 163.jpg, Bilderdijkstraat 159.jpg, Lettergieterij (Tetterode).JPG, Uitbreiding lettergieterij (Tetterode).JPG",
+   "url": "https://commons.wikimedia.org/wiki/Category:Da_Costakade_160,_Amsterdam",
+   "licence": "CC BY-SA 3.0 nl"
+  }
+ ]
+}

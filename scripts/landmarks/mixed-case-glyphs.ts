@@ -16,6 +16,9 @@ export const MIXED_CASE_EXTRA: Readonly<Record<string, readonly string[]>> = {
   f: ['00110', '01000', '01000', '11110', '01000', '01000', '01000'],
   t: ['01000', '01000', '11110', '01000', '01000', '01001', '00110'],
   v: ['00000', '00000', '10001', '10001', '10001', '01010', '00100'],
+  // Tetterode type foundry (Da Costakade 146 lane, 2026-11-02): the 1909 Da Costakade frieze reads
+  // LETTERGIETERIJ 'AMSTERDAM' V/H N.TETTERODE (w02-67 panorama 2020, Commons "Lettergieterij (Tetterode).JPG"); GL has the apostrophe, not the slash.
+  '/': ['00001', '00010', '00010', '00100', '01000', '01000', '10000'],
 };
 
 /** GL plus the extra glyphs; GL wins where both define a character, so nothing GL already draws changes. */

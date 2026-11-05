@@ -1,0 +1,207 @@
+{
+ "id": "da-costakade-146",
+ "countedBy": "lane #209 (opus) from the rectified panorama crops of the brief (w01-248 Bilderdijkstraat, w02-67 Da Costakade); ribbon convention; a door and a shop window count. Not a blind count; the integrator may re-count.",
+ "facades": [
+  {
+   "name": "corner house, Bilderdijkstraat 155-157",
+   "bearing": 247.5,
+   "photo": "artifacts/landmark-briefs/da-costakade-146/w01-248.jpg",
+   "alongM": [
+    0,
+    11.7
+   ],
+   "heightM": [
+    3.8,
+    17.2
+   ],
+   "rows": [
+    5,
+    5,
+    null,
+    1
+   ],
+   "note": "w01-248 (recording_2025-07-31_08-46-40_01995, 2025-07-31), corner house at the photo's left. Storey 1: the tripartite window (0.4/1.1/0.4 m lights, mullions under 0.3 m: one opening) and four single windows; storey 2 the same (the left lights behind the balcony and a tree); storey 3: the north half is behind the tree (null); the dormer's round-headed window. Ground shops cut by the parked van, outside the crop."
+  },
+  {
+   "name": "dairy, Bilderdijkstraat 157a-161",
+   "bearing": 247.5,
+   "photo": "artifacts/landmark-briefs/da-costakade-146/w01-248.jpg",
+   "alongM": [
+    11.7,
+    32.9
+   ],
+   "heightM": [
+    5.45,
+    15.2
+   ],
+   "rows": [
+    9,
+    9,
+    9
+   ],
+   "note": "w01-248: the stone ground with its arches is below the crop (vans, ivy). Three storeys of nine axes (three in the gable bay, six to the right; the gable bay's first axis is behind the tree trunk, its two neighbours line up with the gable lights above). Cropped at the eaves (15.2 m): the gable's three round-headed lights (the middle one taller, as photographed) and the dormer are one row of unequal openings by design."
+  },
+  {
+   "name": "factory, north side part",
+   "bearing": 247.5,
+   "photo": "artifacts/landmark-briefs/da-costakade-146/w01-248.jpg",
+   "alongM": [
+    32.9,
+    40.55
+   ],
+   "heightM": [
+    0,
+    17.3
+   ],
+   "rows": [
+    2,
+    5,
+    3,
+    null
+   ],
+   "note": "w01-248: ground: two windows (the wooden double door is solid, not counted); mezzanine: five small arched lights; storey 2: three segmental windows; storey 3 is behind the tree (null)."
+  },
+  {
+   "name": "factory, four middle bays",
+   "bearing": 247.5,
+   "photo": "artifacts/landmark-briefs/da-costakade-146/w01-248.jpg",
+   "alongM": [
+    40.55,
+    61.45
+   ],
+   "heightM": [
+    0,
+    17.3
+   ],
+   "rows": [
+    4,
+    4,
+    4
+   ],
+   "note": "w01-248: one high segmental workshop window per bay on the ground (the shop doors stand inside two of them), one four-light window per bay on storeys 2 and 3 (mullions under 0.3 m: one opening each); the third bay's upper windows are partly behind the slim tree, the rhythm shows them."
+  },
+  {
+   "name": "factory, south side part",
+   "bearing": 247.5,
+   "photo": "artifacts/landmark-briefs/da-costakade-146/w01-248.jpg",
+   "alongM": [
+    61.45,
+    70.57
+   ],
+   "heightM": [
+    0,
+    17.3
+   ],
+   "rows": [
+    2,
+    5,
+    3,
+    3
+   ],
+   "note": "w01-248: ground: two windows (the wooden door is solid, not counted); mezzanine: five small arched lights; storeys 2 and 3: three segmental windows each."
+  },
+  {
+   "name": "1909 range, Da Costakade 158-164",
+   "bearing": 67.5,
+   "photo": "artifacts/landmark-briefs/da-costakade-146/w02-67.jpg",
+   "alongM": [
+    0,
+    26.4
+   ],
+   "heightM": [
+    0,
+    25
+   ],
+   "rows": [
+    6,
+    4,
+    12,
+    12,
+    12,
+    4
+   ],
+   "note": "w02-67 (TMX7316010203-001702_pano_0000_005491, 2020-05-11): ground: six tall cross windows (the four-leaf gate and the green panelled doors at both ends are solid, not counted; at the left edge the two door top lights show over the van); mezzanine windows over the four end doors; three storeys of twelve cross windows; four dormers in the mansard."
+  },
+  {
+   "name": "Merkelbach and Karsten block, tiled bay",
+   "bearing": 67.5,
+   "photo": "artifacts/landmark-briefs/da-costakade-146/w02-67.jpg",
+   "alongM": [
+    26.4,
+    29.75
+   ],
+   "heightM": [
+    0,
+    26.0
+   ],
+   "rows": [
+    1,
+    1,
+    1,
+    1,
+    1,
+    1
+   ],
+   "note": "w02-67: the steel door in the tiled bay, the ground ribbon above it, then the four storeys of continuous ribbons (cropped to this bay).",
+   "openings": [
+    "glass",
+    "dark",
+    "red"
+   ]
+  },
+  {
+   "name": "Merkelbach and Karsten block, bays 2-4",
+   "bearing": 67.5,
+   "photo": "artifacts/landmark-briefs/da-costakade-146/w02-67.jpg",
+   "alongM": [
+    30.25,
+    45.05
+   ],
+   "heightM": [
+    0,
+    26.0
+   ],
+   "rows": [
+    3,
+    3,
+    1,
+    1,
+    1,
+    1
+   ],
+   "note": "w02-67: three ground bays between the concrete columns, each lower glazing with its red door at one end (thin frames: one opening per bay), each with an upper ribbon; four storeys of continuous ribbons (cropped). The roof storey is above the frame (cropped at 26 m).",
+   "openings": [
+    "glass",
+    "dark",
+    "red"
+   ]
+  },
+  {
+   "name": "Merkelbach and Karsten block, north bay",
+   "bearing": 67.5,
+   "photo": "artifacts/landmark-briefs/da-costakade-146/w02-67.jpg",
+   "alongM": [
+    45.55,
+    51.5
+   ],
+   "heightM": [
+    0,
+    26.0
+   ],
+   "rows": [
+    1,
+    1,
+    1,
+    1,
+    1,
+    1
+   ],
+   "note": "w02-67: the north bay at the photo's right edge: lower glazing with its red door at the left end, the upper ribbon, four storeys of ribbons (cropped).",
+   "openings": [
+    "glass",
+    "dark",
+    "red"
+   ]
+  }
+ ]
+}

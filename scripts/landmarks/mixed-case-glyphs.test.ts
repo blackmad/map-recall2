@@ -25,3 +25,10 @@ test('the Filmacademie lettering has every glyph, and runs tile the pixel grid',
 test('an unknown character throws instead of drawing nothing', () => {
   assert.throws(() => glyphRuns('Q?', 0.1));
 });
+
+test('the Tetterode frieze has every glyph (the slash from the extra table)', () => {
+  const text = "LETTERGIETERIJ 'AMSTERDAM' V/H N.TETTERODE", px = 0.07;
+  const {width} = glyphRuns(text, px);
+  assert.ok(Math.abs(width - ([...text].length * 6 - 1) * px) < 1e-9);
+  assert.ok(!('/' in GL) && "'" in GL);
+});

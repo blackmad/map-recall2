@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
-import {archArea, archOpeningWall, archOutline, archRise, headAt, springing, triArea, triNormal, type ArchOpening, type Tri} from './archOpeningWall';
+import {archArea, archOpeningWall, archOutline, archRise, headAt, segmentalRadius, springing, triArea, triNormal, type ArchOpening, type Tri} from './archOpeningWall';
 
 const area = (ts: Tri[]) => ts.reduce((s, t) => s + triArea(t), 0);
 const close = (a: number, b: number, eps = 1e-9) => Math.abs(a - b) < eps;
@@ -67,4 +67,29 @@ test('arch 0 is a flat-headed rectangle beside the arches', () => {
   assert.ok(close(area(w.reveals[0]), 2 * (1 + 1.2) * 0.15));
   assert.ok(close(area(w.face), 20 - 1.2 - archArea({t0: 2, t1: 3, y0: 1, y1: 3, depth: 0.2}), 1e-7));
   for (const t of [...w.face, ...w.reveals.flat(), ...w.backs.flat()]) assert.ok(dot(triNormal(t), t.normal) > 0.999);
+});
+
+test('rise: a segmental (depressed) head rises `rise` over the springing line on one arc', () => {
+  // a 4 m workshop window rising 0.8 m (Tetterode, Bilderdijkstraat 163: "grote vensters met gedrukte toging")
+  const o: ArchOpening = {t0: 1, t1: 5, y0: 1, y1: 6.4, depth: 0.3, rise: 0.8, segments: 5};
+  assert.ok(close(springing(o), 5.6));
+  assert.ok(close(headAt(o, 3), 6.4) && close(headAt(o, 1), 5.6) && close(headAt(o, 5), 5.6));
+  assert.ok(close(headAt(o, 2), headAt(o, 4)), 'symmetric');
+  const R = segmentalRadius(2, 0.8);
+  assert.ok(close(R, 2.9));
+  // one circle: every head point lies R from the centre (3, 6.4 - R)
+  for (const [t, y] of archOutline(o).slice(2)) assert.ok(close(Math.hypot(t - 3, y - (6.4 - R)), R, 1e-9));
+  // the sampled area approaches rectangle + circular segment
+  const phi = Math.asin(2 / R), segment = R * R * (2 * phi - Math.sin(2 * phi)) / 2, exact = 4 * 4.6 + segment;
+  assert.ok(Math.abs(archArea(o) - exact) / exact < 0.002, `${archArea(o)} vs ${exact}`);
+  const w = archOpeningWall(6, 0, 8, [o, {t0: 5.3, t1: 5.8, y0: 1, y1: 2, depth: 0.1, arch: 0}]);
+  assert.ok(close(area(w.face), 48 - archArea(o) - 0.5, 1e-7));
+  assert.ok(close(area(w.backs[0]), archArea(o), 1e-7));
+  for (const t of [...w.face, ...w.reveals.flat(), ...w.backs.flat()]) assert.ok(dot(triNormal(t), t.normal) > 0.999);
+  // rise = half the width is the semicircle of the default head
+  const semi: ArchOpening = {t0: 0, t1: 2, y0: 0, y1: 3, depth: 0.1, rise: 1};
+  assert.ok(close(headAt(semi, 0.5), headAt({...semi, rise: undefined}, 0.5), 1e-12));
+  assert.throws(() => archOpeningWall(6, 0, 8, [{...o, rise: 2.5}]), /shape/);
+  assert.throws(() => archOpeningWall(6, 0, 8, [{...o, rise: 0}]), /shape/);
+  assert.throws(() => archOpeningWall(6, 0, 8, [{...o, y0: 6}]), /shape/);
 });
