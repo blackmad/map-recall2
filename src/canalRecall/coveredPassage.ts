@@ -107,8 +107,12 @@ export function updateCoverState(state: CoverState, coveredNow: boolean, nowS: n
 // inside that house's footprint, so the old rule covered the rider and the house the rider had just hit went away
 // (user report 2026-11-05, "buildings vanish when I bump into them"). A passage is on the way the rider is going; a
 // bump is not. So cover now also needs the rider to be well inside the footprint (COVER_MIN_DEPTH_M from its edge)
-// and the path ahead (the next COVER_AHEAD_M of the route, or the heading point when there is no route near) to be
-// inside the same footprint. `?coverRoute=0` restores the old rule.
+// and the path ahead (the next COVER_AHEAD_M of the route, or off the route the centreline of the road the rider is
+// on) to run through the same footprint. `?coverRoute=0` restores the old rule.
+//
+// Not the heading: measured at Nieuwe Leliestraat (2026-11-05, rider-cover-bump.spec.ts), the road guard lets the
+// bike's point 2.2-2.6 m into a house footprint, and a rider pressed against a wall faces (and pushes) into it, so
+// the points ahead along the heading were inside the house and the bump still covered.
 // ---------------------------------------------------------------------------
 
 /** Metres: the rider must be at least this far inside the footprint's edge (a bump stops short of it). */
@@ -117,8 +121,8 @@ export const COVER_MIN_DEPTH_M = 1.5;
 export const COVER_AHEAD_M = 15;
 /** Metres between the samples along the path ahead. */
 export const COVER_AHEAD_STEP_M = 3;
-/** Metres: further than this from the route, the rider has left it and the heading answers instead. */
-export const COVER_OFF_ROUTE_M = 25;
+/** Metres: further than this from the route, the rider has left it and the road underfoot answers instead. */
+export const COVER_OFF_ROUTE_M = 15;
 
 const M_PER_DEG_LAT = 110_540;
 const mPerDegLng = (lat: number) => 111_320 * Math.cos(lat * Math.PI / 180);
@@ -188,11 +192,15 @@ export function routeAheadPoints(route: readonly LngLat[] | null | undefined, ri
   return out;
 }
 
-/** Points ahead of the rider along a compass bearing (radians, 0 north, clockwise), every COVER_AHEAD_STEP_M. */
-export function headingAheadPoints(rider: LngLat, bearingRad: number, aheadM = COVER_AHEAD_M, stepM = COVER_AHEAD_STEP_M): LngLat[] {
-  const kx = mPerDegLng(rider[1]), ky = M_PER_DEG_LAT;
-  const out: LngLat[] = [];
-  for (let d = stepM; d <= aheadM + 1e-9; d += stepM) out.push([rider[0] + Math.sin(bearingRad) * d / kx, rider[1] + Math.cos(bearingRad) * d / ky]);
+/**
+ * Off the route: the centreline point of the road the rider is on and points on along the road's direction
+ * (compass bearing, radians, 0 north, clockwise; the one nearer the rider's way), every COVER_AHEAD_STEP_M. A passage
+ * is a road through the building; a bike pressed against a house front is beside a centreline out in the street.
+ */
+export function roadAheadPoints(centre: LngLat, roadBearingRad: number, aheadM = COVER_AHEAD_M, stepM = COVER_AHEAD_STEP_M): LngLat[] {
+  const kx = mPerDegLng(centre[1]), ky = M_PER_DEG_LAT;
+  const out: LngLat[] = [centre];
+  for (let d = stepM; d <= aheadM + 1e-9; d += stepM) out.push([centre[0] + Math.sin(roadBearingRad) * d / kx, centre[1] + Math.cos(roadBearingRad) * d / ky]);
   return out;
 }
 

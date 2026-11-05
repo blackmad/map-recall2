@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
 import {
-  COVER_MIN_DEPTH_M, coverRouteFlag, coveringBuilding, coveringBuildingOnPath, headingAheadPoints, insideDepthM, routeAheadPoints,
+  COVER_MIN_DEPTH_M, coverRouteFlag, coveringBuilding, coveringBuildingOnPath, insideDepthM, roadAheadPoints, routeAheadPoints,
   type LngLat,
 } from './coveredPassage.ts';
 
@@ -35,6 +35,7 @@ test('route ahead: from the rider\'s nearest route point, every 3 m to 15 m; nul
   const last = pts[pts.length - 1];
   assert.ok(Math.abs((last[0] - O[0]) * kx - 19) < 0.01);
   assert.equal(routeAheadPoints(streetRoute, at(4, 30)), null, '36 m off the route');
+  assert.equal(routeAheadPoints(streetRoute, at(4, 10)), null, '16 m off: a parallel street');
   assert.equal(routeAheadPoints(null, at(0, 0)), null);
   // Across a vertex: the walk continues on the next segment.
   const bend = routeAheadPoints([at(0, 0), at(5, 0), at(5, 50)], at(0, 0))!;
@@ -61,11 +62,14 @@ test('the passage the route runs through covers the rider (Cuyperspassage)', () 
   assert.equal(coveringBuildingOnPath([raised], at(30, 20), routeAheadPoints(passageRoute, at(30, 20))!), null, 'a raised deck is open above the rider');
 });
 
-test('off the route the way the bike moves answers: along the passage covers, a stop facing a wall does not past the depth gate', () => {
-  const rider = at(30, 20);
-  assert.equal(coveringBuildingOnPath([shed], rider, headingAheadPoints(rider, Math.PI / 2))?.properties.id, 'shed', 'heading east through the shed');
-  const bumped = at(4, 1);
-  assert.equal(coveringBuildingOnPath([house], bumped, headingAheadPoints(bumped, 0)), null, 'facing into the house, 1 m in');
+test('off the route the road underfoot answers: its centreline through the shed covers, a house front 2.5 m in does not', () => {
+  const rider = at(30, 22);
+  assert.equal(coveringBuildingOnPath([shed], rider, roadAheadPoints(at(30, 20), Math.PI / 2))?.properties.id, 'shed', 'the cycleway runs east through the shed');
+  // Measured 2026-11-05 (Nieuwe Leliestraat): the road guard lets the bike 2.2-2.6 m into a footprint, facing the wall.
+  const bumped = at(4, 2.5);
+  assert.ok(insideDepthM(house.geometry, bumped) >= COVER_MIN_DEPTH_M);
+  assert.equal(coveringBuildingOnPath([house], bumped, roadAheadPoints(at(4, -6), Math.PI / 2)), null, 'the street centreline runs on outside');
+  assert.equal(coveringBuildingOnPath([house], bumped, roadAheadPoints(at(4, -6), -Math.PI / 2)), null, 'either way along it');
 });
 
 test('?coverRoute=0 restores the old rule', () => {

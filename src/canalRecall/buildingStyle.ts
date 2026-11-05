@@ -176,6 +176,7 @@ export type { Ring };
 // Riding under a building (Cuyperspassage): which extrusion covers the rider.
 export {
   coveringBuilding,
+  insideDepthM,
   initialCoverState,
   updateCoverState,
   COVERED_BUILDING_OPACITY,

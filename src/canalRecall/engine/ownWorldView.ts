@@ -29,7 +29,7 @@ import { CameraMap, EngineCamera, unitsPerMetre, mercatorX, mercatorY } from './
 import { GameCameraSolver, lngLatToWorld, worldToLngLat, type GameCamera, type LoaderFrame } from './gameCamera';
 import { clearCamera, clearanceResidents } from './cameraClearance';
 import { RiderCoverTracker } from './riderCover';
-import { coverRouteFlag, headingAheadPoints, routeAheadPoints, type LngLat as CoverLngLat } from '../coveredPassage';
+import { coverRouteFlag, roadAheadPoints, routeAheadPoints, type LngLat as CoverLngLat } from '../coveredPassage';
 import { decodeOverviewBytes, fetchOverviewBytes, OverviewLayer, overviewTileGrid, OVERVIEW_TILE_MIN_TRIANGLES } from './overviewLayer';
 import { overviewFromPool } from '../ownMap/overviewPool';
 import { awaitWorkerPool } from './workerPool';
@@ -768,8 +768,8 @@ export class OwnWorldView implements WorldViewOracles {
 
   /**
    * Rider cover (coveredPassage.ts): the building over the rider draws see-through. Route-aware (lane E1 2026-11-05):
-   * the route ahead (or, off the route, the way the bike is moving) must run through the footprint too, so a bump
-   * into a house front no longer counts. `?coverRoute=0` restores the point-only rule; `?coverDim=0` hides the
+   * the route ahead (or, off the route, the centreline of the road underfoot) must run through the footprint too, so
+   * a bump into a house front no longer counts. `?coverRoute=0` restores the point-only rule; `?coverDim=0` hides the
    * building outright as before instead of ghosting it.
    */
   private updateRiderCover(rider: [number, number], active: boolean): void {
@@ -788,12 +788,21 @@ export class OwnWorldView implements WorldViewOracles {
   /** The route as lng/lat for the cover rule (kept when the route line is not drawn), and its source array. */
   private coverRouteCoords: CoverLngLat[] | null = null;
   private coverRouteSource: unknown = null;
-  /** The bike's motion (compass bearing, radians; moving or not) for the off-route cover rule. */
-  private riderMotion: { bearing: number; moving: boolean } | null = null;
+  /** The road network and frame the off-route rule reads (handed over with the street highlights) and the bike's heading. */
+  private coverTrack: { getNearestRoad?(x: number, y: number, angle?: number | null): { x: number; y: number; angle: number } | null } | null = null;
+  private coverLoader: LoaderFrame | null = null;
+  private riderAngle: number | null = null;
   private coverAhead(rider: CoverLngLat): readonly CoverLngLat[] {
     const onRoute = routeAheadPoints(this.coverRouteCoords, rider);
     if (onRoute) return onRoute;
-    return this.riderMotion ? headingAheadPoints(rider, this.riderMotion.bearing) : [];
+    const track = this.coverTrack, loader = this.coverLoader;
+    if (!track?.getNearestRoad || !loader || loader._lastCenterLat == null) return [];
+    const w = lngLatToWorld(rider[0], rider[1], loader);
+    const road = track.getNearestRoad(w.x, w.y, this.riderAngle);
+    if (!road || !Number.isFinite(road.angle)) return [];
+    // World x east, y south: a world angle `a` is compass bearing a + π/2. Along the road, the way the bike faces.
+    const forward = this.riderAngle == null || Math.cos(road.angle - this.riderAngle) >= 0 ? road.angle : road.angle + Math.PI;
+    return roadAheadPoints(worldToLngLat(road.x, road.y, loader), forward + Math.PI / 2);
   }
 
   projectWorld(worldX: number, worldY: number, loader: LoaderFrame, canvas: HTMLCanvasElement): ScreenPoint {
@@ -836,12 +845,7 @@ export class OwnWorldView implements WorldViewOracles {
 
   // ---- vehicles ----
   setPlayerBike(player: any, loader: LoaderFrame, visible: boolean, zoomScale = 1): void {
-    // World x east, y south: a heading `a` is compass bearing a + π/2. Moving: the velocity's direction (after a
-    // bump the bike slides along the wall, not into it); stopped: the way it faces.
-    if (player) {
-      const moving = Math.hypot(player.vx || 0, player.vy || 0) > 1;
-      this.riderMotion = { bearing: (moving ? Math.atan2(player.vy, player.vx) : player.angle || 0) + Math.PI / 2, moving };
-    }
+    if (player) { this.riderAngle = Number.isFinite(player.angle) ? player.angle : null; this.coverLoader = loader; }
     const bike = this._playerBike;
     if (!bike || !player || !loader) return;
     bike.zoomScale = zoomScale;
@@ -913,6 +917,7 @@ export class OwnWorldView implements WorldViewOracles {
   private groundRoute(coords: [number, number][] | null): void { this.ownGroundState.route = coords; this._ownGround?.setRoute(coords); }
 
   setStreetHighlights(track: any, loader: LoaderFrame, _learned: Set<string>, activeName: string, activeSegmentIndex: number, routePath: unknown = null): void {
+    if (track && loader) { this.coverTrack = track; this.coverLoader = loader; }
     if (!this.ready || !track || !loader) return;
     const key = `${activeName || ''}:${activeSegmentIndex}`;
     if (key !== this.activeStreetKey || routePath !== this.activeStreetRoute) {

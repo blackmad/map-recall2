@@ -1,7 +1,7 @@
 import { useCallback } from 'react';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
-type Scenario = 'default' | 'bike-home' | 'bike-here' | 'transit' | 'advanced' | 'advanced-cartoon' | 'advanced-questions-off' | 'hud' | 'neighborhood' | 'neighborhood-fallback'
+type Scenario = 'default' | 'bike-home' | 'bike-here' | 'transit' | 'advanced' | 'advanced-cartoon' | 'advanced-questions-off' | 'advanced-haze-off' | 'hud' | 'neighborhood' | 'neighborhood-fallback'
   | 'stacked-notices' | 'finish' | 'finish-calm' | 'finish-calm-bare' | 'finish-bike' | 'finish-transit'
   | 'landmark-card' | 'landmark-card-bare' | 'landmark-card-touch' | 'landmark-panel' | 'landmark-panel-dutch'
   | 'landmark-card-folded' | 'landmark-card-folded-touch'
@@ -102,7 +102,7 @@ function CanalDriveFrame({ scenario = 'default' }: { scenario?: Scenario }) {
     // Storybook viewport addon resizes the iframe after load.
     if (win && scenario.includes('touch')) win.canalRecallForceTouch = true;
     const setupStories = new Set([
-      'default', 'bike-home', 'bike-here', 'transit', 'advanced', 'advanced-cartoon', 'advanced-questions-off', 'knowledge',
+      'default', 'bike-home', 'bike-here', 'transit', 'advanced', 'advanced-cartoon', 'advanced-questions-off', 'advanced-haze-off', 'knowledge',
       'touch-setup', 'touch-setup-transit', 'touch-setup-here', 'touch-knowledge', 'touch-setup-home',
       ...Object.keys(ONBOARDING_STEP),
     ]);
@@ -142,6 +142,12 @@ function CanalDriveFrame({ scenario = 'default' }: { scenario?: Scenario }) {
       patchPrefs({ maxAsksPerMinute: 0 });
       overlay.store.setAdvancedOpen(true);
       window.setTimeout(() => doc.querySelector('[aria-label="Questions a minute"]')?.scrollIntoView({ block: 'center' }), 600);
+    }
+    // The "Distance haze" switch (look/depthFade.ts) turned off, its Comfort & detail row scrolled into view.
+    if (scenario === 'advanced-haze-off' && overlay) {
+      patchPrefs({ distanceHaze: false });
+      overlay.store.setAdvancedOpen(true);
+      window.setTimeout(() => doc.getElementById('distance-haze')?.scrollIntoView({ block: 'center' }), 600);
     }
     if ((scenario === 'knowledge' || scenario === 'touch-knowledge') && win) {
       const now = Date.now();
@@ -556,6 +562,11 @@ export const AdvancedOptionsCartoonLookPhone: Story = {
 export const AdvancedOptionsQuestionsOff: Story = { args: { scenario: 'advanced-questions-off' } };
 export const AdvancedOptionsQuestionsOffPhone: Story = {
   args: { scenario: 'advanced-questions-off' },
+  parameters: { viewport: { defaultViewport: 'mobile1' } },
+};
+export const AdvancedOptionsHazeOff: Story = { args: { scenario: 'advanced-haze-off' } };
+export const AdvancedOptionsHazeOffPhone: Story = {
+  args: { scenario: 'advanced-haze-off' },
   parameters: { viewport: { defaultViewport: 'mobile1' } },
 };
 export const KnowledgeReview: Story = { args: { scenario: 'knowledge' } };
