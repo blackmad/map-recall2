@@ -48,6 +48,15 @@ const heapRows = process.env.HEAP !== '0';
 const heapOwnerRows = process.env.HEAP_OWNERS === '1';
 const stallMs = Number(process.env.STALL_MS || 50);
 const glCounters = process.env.GL_COUNTERS === '1';
+// Ride starts (lane E5, #218): --starts default,change,wrongturn,free,next,... rides the seeded default route, then each
+// listed start in turn in the same page: `change` opens route setup mid-ride and starts the game's own next route,
+// `free` starts Free Ride, `wrongturn` steers off the route until the game re-plans it, `next` arrives (the rider is set
+// down on the finish) and rides on from the finish card. Per start: every frame over STALL_MS (default 50) in the first
+// --start-window seconds (default 10) after the game enters RACING (for `wrongturn`, after the re-plan), attributed by
+// frame phase (needs `--qs '...&framePhases=1'`), GL work, label rebuilds/placements, streaming events, LoAF scripts and
+// the CPU profile of that frame. Pair with --runs warm and --seconds 0.
+const starts = opt('starts', '') ? opt('starts').split(',') : null;
+const startWindowS = Number(opt('start-window', '10'));
 
 const pick = (v, q) => { const s = [...v].sort((a, b) => a - b); return s.length ? s[Math.min(s.length - 1, Math.floor(q * s.length))] : 0; };
 const r1 = v => +v.toFixed(1);
@@ -146,6 +155,7 @@ async function run(browser, kind, throttle, context) {
   // GL_COUNTERS=1 (P4 counters gate, #129): engine/glCounters.ts on (?engine=own), its window starts at motionStart
   // (the end of --warmup), and the report lands in the result as `gl`.
   if (glCounters) await page.addInitScript(() => { window.__canalRecallGlCounters = true; });
+  await page.addInitScript(ms => { window.__lsStallMs = ms; }, stallMs);
   await page.addInitScript(() => {
     let s = 0x5eed1234; Math.random = () => { s = (s * 1664525 + 1013904223) >>> 0; return s / 2 ** 32; };
     if (!/^\/canal-drive\/?(index\.html)?$/.test(location.pathname)) return;
@@ -154,7 +164,36 @@ async function run(browser, kind, throttle, context) {
       new PerformanceObserver(list => { for (const e of list.getEntries()) L.loaf.push({ start: e.startTime, dur: e.duration, blocking: e.blockingDuration, renderStart: e.renderStart, styleStart: e.styleAndLayoutStart, scripts: (e.scripts || []).map(x => ({ inv: x.invoker, type: x.invokerType, src: (x.sourceURL || '').split('/').pop(), fn: x.sourceFunctionName, start: x.startTime, dur: x.duration, forced: x.forcedStyleAndLayoutDuration })) }); }).observe({ type: 'long-animation-frame', buffered: true });
     } catch (_) {}
     try { new PerformanceObserver(list => { for (const e of list.getEntries()) L.longtask.push({ start: e.startTime, dur: e.duration }); }).observe({ type: 'longtask', buffered: true }); } catch (_) {}
-    const tick = now => { L.frames.push(now); if (!L.stop) requestAnimationFrame(tick); };
+    // Ride starts (--starts, lane E5 #218): game state and route changes with their time, and every frame-host frame
+    // over the stall threshold with its framePhases (`?framePhases=1`) and the GL work it did (programs, textures,
+    // geometries added, draw calls), so a stall is named by what that frame did, not by the session's worst list.
+    L.states = []; L.paths = []; L.host = [];
+    const stallMs = window.__lsStallMs || 50;
+    let lastState, lastPath;
+    const watch = now => {
+      const g = window.canalRecallGame;
+      if (g) {
+        if (g.state !== lastState) { lastState = g.state; L.states.push([now, g.state]); }
+        if (g.routePath !== lastPath) { lastPath = g.routePath; L.paths.push([now, g.routePath ? g.routePath.length : 0]); }
+      }
+      const rec = window.__canalRecallFramePhaseRecorder;
+      if (rec && !rec.__lsWrapped) {
+        rec.__lsWrapped = true;
+        const end = rec.end.bind(rec);
+        let gl0 = null;
+        rec.end = ms => {
+          const info = window.canalRecallGame?.vectorMap?.host?.renderer?.info;
+          const gl = info ? { prog: info.programs?.length ?? 0, tex: info.memory?.textures ?? 0, geo: info.memory?.geometries ?? 0, calls: info.render?.calls ?? 0 } : null;
+          if (ms > Math.min(8, stallMs)) { // every host frame worth naming, so a stall's frame-host share shows
+            const d = gl && gl0 ? { prog: gl.prog - gl0.prog, tex: gl.tex - gl0.tex, geo: gl.geo - gl0.geo, calls: gl.calls } : null;
+            L.host.push({ at: performance.now(), ms, phases: { ...rec.current }, gl: d });
+          }
+          gl0 = gl;
+          return end(ms);
+        };
+      }
+    };
+    const tick = now => { L.frames.push(now); try { watch(now); } catch (_) {} if (!L.stop) requestAnimationFrame(tick); };
     requestAnimationFrame(tick);
   });
   await page.goto(`${origin}/canal-drive/js/build-stamp.js`).catch(() => {});
@@ -199,9 +238,9 @@ async function run(browser, kind, throttle, context) {
   }, label);
   const sync0 = profiling ? await sync('sync0') : null;
   const mark = label => page.evaluate(label => { window.__ls.marks[label] = performance.now(); }, label);
-  let deadline = navAt + (warmup != null ? 180_000 : seconds * 1000);
+  let deadline = navAt + (starts ? 1_800_000 : warmup != null ? 180_000 : seconds * 1000);
   const left = () => Math.max(1000, deadline - Date.now());
-  let reached = 'nav', heapAtStart = null;
+  let reached = 'nav', heapAtStart = null, startPlan = null;
   try {
     await page.waitForFunction(([a, b]) => window.canalRecallGame?.routePois?.some(p => p.id === a) && window.canalRecallGame.routePois.some(p => p.id === b), [startPoi, destPoi], { timeout: left() });
     await mark('menuReady'); reached = 'menu';
@@ -260,8 +299,30 @@ async function run(browser, kind, throttle, context) {
       ev(vm._signatureLandmarks, '_requestModels', 'landmarkRequest');
       ev(vm._inventoryTrees, 'rebuild', 'treesRebuild');
       ev(vm._labelOverlay, 'frame', 'labels');
-      let route = null, index = 1;
+      // ?engine=own: the label canvas (engine/overlays/labelLayer.ts). A rebuild logs the candidates it bucketed; a draw
+      // logs whether it was a full placement and how many labels it placed.
+      const labels = vm._labels;
+      if (labels && typeof labels.rebuild === 'function') {
+        L.labelLog = [];
+        const rebuild = labels.rebuild.bind(labels), draw = labels.draw.bind(labels);
+        labels.rebuild = (...a) => {
+          const s = performance.now(); const r = rebuild(...a);
+          const seen = new Set(); for (const list of labels.buckets.values()) for (const c of list) seen.add(c.c ?? c);
+          L.labelLog.push([s, 'rebuild', performance.now() - s, seen.size]); return r;
+        };
+        labels.draw = (...a) => {
+          const s = performance.now(), full0 = labels.stats.full; const r = draw(...a); const d = performance.now() - s;
+          if (d > 2) L.labelLog.push([s, labels.stats.full > full0 ? 'draw full' : 'draw', d, labels.placed.length]); return r;
+        };
+      }
+      let route = null, index = 1, finish = null;
       p.handleInput = () => {
+        // --starts: a new route (new finish) re-plans the autopilot; `__apWrong` (until that time) steers off the route.
+        if (g.track.finishPoint !== finish) { finish = g.track.finishPoint; route = null; }
+        if (window.__apWrong && performance.now() < window.__apWrong) {
+          const turning = performance.now() > window.__apWrong - 5000 && performance.now() < window.__apWrong - 3500;
+          p.steerInput = turning ? 1 : 0; p.throttle = p.speed < 120 ? 1 : 0; p.brake = 0; p.handbrake = false; route = null; return;
+        }
         if (!route || route.length < 2) { try { route = g.track.findRoute({ x: p.x, y: p.y }, g.track.finishPoint); } catch (_) { route = null; } index = 1; if (!route || route.length < 2) { p.throttle = 1; return; } }
         let best = Infinity;
         for (let i = Math.max(0, index - 4); i < Math.min(route.length, index + 24); i++) { const d = Math.hypot(route[i].x - p.x, route[i].y - p.y); if (d < best) { best = d; index = i; } }
@@ -302,6 +363,51 @@ async function run(browser, kind, throttle, context) {
       await mark('motionEnd');
       deadline = Date.now();
     }
+    if (starts) {
+      // The first start is the seeded default route the flow above just rode into.
+      if (starts[0] !== 'default') errors.push('--starts must begin with default');
+      const until = (fn, arg, ms = 240_000) => page.waitForFunction(fn, arg, { timeout: ms, polling: 100 });
+      const now = () => page.evaluate(() => performance.now());
+      const plan = [{ kind: 'default', trigger: await page.evaluate(() => window.__ls.marks.submitted) }];
+      await page.waitForTimeout((startWindowS + 4) * 1000);
+      for (const kind of starts.slice(1)) {
+        const entry = { kind, trigger: await now() };
+        try {
+          if (kind === 'change' || kind === 'free') {
+            await page.evaluate(free => {
+              const g = canalRecallGame;
+              delete g._pickDestinationNear; // the game's own start pick (seeded Math.random)
+              g._openRouteSetup();
+              g._overlay.store.patchPrefs({ routePattern: free ? 'free' : 'surprise' }, g._overlayZoom());
+            }, kind === 'free');
+            await page.waitForTimeout(1500);
+            entry.trigger = await now();
+            await page.locator('#route-card').evaluate(f => f.requestSubmit());
+            await until(t => canalRecallGame.state === 4 && window.__ls.states.some(([at, st]) => at > t && st === 4), entry.trigger);
+          } else if (kind === 'next') {
+            await page.evaluate(() => { const g = canalRecallGame, f = g.track.finishPoint; g.player.x = f.x; g.player.y = f.y; g.player.speed = 0; });
+            await until(() => canalRecallGame.state === 5, null, 30_000);
+            await page.waitForTimeout(1500);
+            entry.trigger = await now();
+            await page.evaluate(() => canalRecallGame._runFinishAction('again'));
+            await until(t => canalRecallGame.state === 4 && window.__ls.states.some(([at, st]) => at > t && st === 4), entry.trigger);
+          } else if (kind === 'wrongturn') {
+            // The game re-plans only with the route line on (medium difficulty has it off): a wrong turn with the line off
+            // changes nothing. The line is turned on for this start, as a player who rides with it.
+            await page.evaluate(() => { const g = canalRecallGame; if (!g.routeOptions.line) { g.routeOptions.line = true; g.vectorMap.setRoute(g.routePath, g.osmLoader, true); } });
+            await page.waitForTimeout(1000);
+            entry.trigger = await now();
+            await page.evaluate(() => { window.__apWrong = performance.now() + 9000; });
+            await until(t => window.__ls.paths.some(([at]) => at > t), entry.trigger, 20_000).catch(() => { entry.noReplan = true; });
+          } else errors.push(`unknown start ${kind}`);
+        } catch (e) { entry.error = e.message.split('\n')[0]; }
+        plan.push(entry);
+        await page.waitForTimeout((startWindowS + 4) * 1000);
+        if (kind === 'wrongturn') await page.evaluate(() => { const g = canalRecallGame; g.routeOptions.line = false; g.vectorMap.setRoute(g.routePath, g.osmLoader, false); });
+      }
+      startPlan = plan;
+      deadline = Date.now();
+    }
     errors.push(`route ${await page.evaluate(() => { const g = canalRecallGame, f = g.track.finishPoint; return `finish dist ${Math.round(Math.hypot(f.x - g.player.x, f.y - g.player.y))}px dest ${document.querySelector('#poi-destination')?.value}`; })}`);
   } catch (e) { errors.push(`flow stopped after ${reached}: ${e.message.split('\n')[0]}`); }
   await page.waitForTimeout(Math.max(0, deadline - Date.now()));
@@ -326,7 +432,7 @@ async function run(browser, kind, throttle, context) {
   await cdp.send('Emulation.setCPUThrottlingRate', { rate: 1 });
   await page.close();
 
-  const end = raw.marks.sync1 ?? (seconds * 1000);
+  const end = raw.marks.sync1 ?? (starts ? Infinity : seconds * 1000);
   const ts = raw.frames.filter(t => t <= end);
   const intervals = []; const iv = [];
   for (let i = 1; i < ts.length; i++) {
@@ -368,6 +474,35 @@ async function run(browser, kind, throttle, context) {
       bursts: { hitches: hitches.length, alignedWithStreaming: aligned, byKind, gapsS: gaps }, events: evTotals,
       longTasks: (() => { const lt = raw.longtask.filter(l => l.start >= a && l.start < b); return { n: lt.length, totalMs: Math.round(lt.reduce((x, l) => x + l.dur, 0)), over100: lt.filter(l => l.dur > 100).length, longestMs: Math.round(Math.max(0, ...lt.map(l => l.dur))) }; })() };
   }
+  // Ride starts: each start's window, its stalled frames and what they did.
+  let rideStarts = null;
+  const startWindows = [];
+  if (startPlan) {
+    rideStarts = startPlan.map((st, i) => {
+      const next = startPlan[i + 1]?.trigger ?? end;
+      const racing = st.kind === 'wrongturn' ? (raw.paths.find(([at]) => at > st.trigger && at < next)?.[0] ?? st.trigger)
+        : (raw.states.find(([at, s]) => at > st.trigger && s === 4)?.[0] ?? null);
+      const a = racing ?? st.trigger, b = Math.min(a + startWindowS * 1000, next);
+      const fr = iv.filter(f => f.at >= a && f.at < b), load = iv.filter(f => f.at >= st.trigger && f.at < a);
+      const stalls = fr.filter(f => f.ms > stallMs).map(f => {
+        const fEnd = f.at + f.ms;
+        // Frame-host frames that overlap this interval by 10 ms or more (rAF timestamps are frame begin times, so a long
+        // host frame can straddle two intervals; it is listed under both).
+        const host = raw.host.filter(h => Math.min(h.at, fEnd) - Math.max(h.at - h.ms, f.at) >= Math.min(10, h.ms * 0.5)).map(h => ({ ms: r1(h.ms), gl: h.gl,
+          phases: Object.fromEntries(Object.entries(h.phases).sort((x, y) => y[1] - x[1]).slice(0, 8).filter(([, v]) => v >= 1).map(([k, v]) => [k, r1(v)])) }));
+        const events = (raw.events || []).filter(e => e[0] < fEnd && e[0] + e[2] > f.at).map(e => `${e[1]} ${r1(e[2])}`);
+        const labels = (raw.labelLog || []).filter(e => e[0] < fEnd && e[0] + e[2] > f.at).map(e => `${e[1]} ${r1(e[2])}ms n=${e[3]}`);
+        const l = raw.loaf.filter(x => x.start < fEnd && x.start + x.dur > f.at).sort((x, y) => y.dur - x.dur)[0];
+        startWindows.push({ start: f.at, end: fEnd, key: `${i}@${r1(f.at)}` });
+        return { atS: r1((f.at - a) / 1000), ms: Math.round(f.ms), host, events, labels,
+          loaf: l ? { dur: Math.round(l.dur), render: Math.round(l.start + l.dur - (l.renderStart || l.start + l.dur)), scripts: l.scripts.sort((x, y) => y.dur - x.dur).slice(0, 4).map(x => `${Math.round(x.dur)}ms ${x.inv}${x.fn ? ` ${x.fn}` : ''} @${x.src}`) } : null, key: `${i}@${r1(f.at)}` };
+      });
+      const lr = (raw.labelLog || []).filter(e => e[0] >= a && e[0] < b);
+      return { i, kind: st.kind, error: st.error, noReplan: st.noReplan, loadS: racing != null ? r1((racing - st.trigger) / 1000) : null,
+        frames: frameStats(fr.map(f => f.ms)), loadFrames: { over50: load.filter(f => f.ms > 50).length, over100: load.filter(f => f.ms > 100).length },
+        labelRebuilds: lr.filter(e => e[1] === 'rebuild').map(e => `${r1(e[2])}ms n=${e[3]}`), labelFullDraws: lr.filter(e => e[1] === 'draw full').map(e => `${r1(e[2])}ms placed=${e[3]}`), stalls };
+    });
+  }
   // Profile alignment: first sample inside __lsSync <-> marks.sync0.
   let attribution = null, alignErrMs = null;
   if (profile) {
@@ -378,6 +513,11 @@ async function run(browser, kind, throttle, context) {
       const first = hits[0], offset = sync0 - first;
       const second = hits.find(h => h > first + 1000);
       alignErrMs = second != null ? r1(second + offset - sync1) : null;
+      if (rideStarts) for (const st of rideStarts) for (const f of st.stalls) {
+        const w = startWindows.find(x => x.key === f.key); if (!w) continue;
+        const at = attribute(profile, [w], offset);
+        f.profile = { categories: at.categories.slice(0, 6).filter(c => c.ms >= 2), owners: at.owners.slice(0, 6).filter(c => c.ms >= 2) };
+      }
       attribution = {
         stalls: attribute(profile, stallWindows, offset),
         whole: attribute(profile, [{ start: 0, end }], offset),
@@ -401,7 +541,7 @@ async function run(browser, kind, throttle, context) {
     phases: { load: phase('sync0', 'racing'), ride: phase('racing') }, motion,
     longTasks: { n: raw.longtask.length, totalMs: Math.round(raw.longtask.reduce((a, b) => a + b.dur, 0)), over100: raw.longtask.filter(l => l.dur > 100).length, longestMs: Math.round(Math.max(0, ...raw.longtask.map(l => l.dur))) },
     loaf: { over50: raw.loaf.filter(l => l.dur > 50).length, renderMsInStalls: Math.round(loafRender), entries: [...entries].sort((a, b) => b[1] - a[1]).slice(0, 25).map(([k, v]) => ({ k, ms: Math.round(v) })) },
-    dump, gl, worst, attribution, alignErrMs, heapMB: raw.heapMB, heapAtStart, heapAtEnd, distanceM: raw.distancePx != null ? Math.round(raw.distancePx / 3) : null, railM: raw.railPx != null ? Math.round(raw.railPx / 3) : null, ownGround: raw.ownGround, lift: raw.lift, world: raw.world,
+    dump, gl, worst, rideStarts, attribution, alignErrMs, heapMB: raw.heapMB, heapAtStart, heapAtEnd, distanceM: raw.distancePx != null ? Math.round(raw.distancePx / 3) : null, railM: raw.railPx != null ? Math.round(raw.railPx / 3) : null, ownGround: raw.ownGround, lift: raw.lift, world: raw.world,
   };
 }
 
@@ -416,6 +556,7 @@ for (const throttle of throttles) {
     results.push(r);
     const f = r.frames;
     if (r.motion) { const m = r.motion, f = m.frames; console.log(`motion ${kind} x${throttle}: ${m.seconds}s p50 ${f.p50} p95 ${f.p95} p99 ${f.p99} >50/min ${m.hitchesPerMin.over50} >100/min ${m.hitchesPerMin.over100} longest ${f.longestMs} stalled ${f.stalledS}s LT ${m.longTasks.n} aligned ${m.bursts.alignedWithStreaming}/${m.bursts.hitches} renders/frame ${m.cadence.renderPerFrame} dist ${r.distanceM}m errors ${r.errors.join(';')}`); }
+    if (r.rideStarts) for (const st of r.rideStarts) console.log(`start ${st.i} ${st.kind}${st.error ? ` ERROR ${st.error}` : ''}: load ${st.loadS}s >50 ${st.frames.over50} >100 ${st.frames.over100} >200 ${st.frames.hist['250-500'] + st.frames.hist['>500'] + st.stalls.filter(f => f.ms > 200 && f.ms <= 250).length} longest ${st.frames.longestMs} | ${st.stalls.map(f => `${f.ms}@${f.atS}`).join(' ')}`);
     if (r.heapAtStart) console.log(`heap ${kind} x${throttle}: start main ${r.heapAtStart.main.usedMB} MB (+${r.heapAtStart.main.backingMB ?? '?'} buffers) workers ${r.heapAtStart.workersUsedMB} MB @${r.heapAtStart.atS}s; end main ${r.heapAtEnd?.main?.usedMB} MB (+${r.heapAtEnd?.main?.backingMB ?? '?'}) workers ${r.heapAtEnd?.workersUsedMB} MB`);
     console.log(`${kind} x${throttle}: p50 ${f.p50} p95 ${f.p95} p99 ${f.p99} >50 ${f.over50} >100 ${f.over100} longest ${f.longestMs} stalled ${f.stalledS}s racing@${r.marksS.racing} align ${r.alignErrMs} errors ${r.errors.length}`);
   }
