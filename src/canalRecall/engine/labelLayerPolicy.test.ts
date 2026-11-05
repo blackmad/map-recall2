@@ -86,3 +86,36 @@ test('a policy change tests only the candidates in view, once per revision', () 
   layer.draw(frame, [-390, -300, 410, 300], 16, 1, project, [10, 0, 16, 0, 0]);
   assert.equal(calls.n, first);
 });
+
+test('lazy policy builds the overview structure in idle slices, and a draw before they finish drains them', () => {
+  const queued: (() => void)[] = [];
+  const all = new Set(Array.from({ length: 30 }, (_, i) => `Street ${i}`).concat('Canal A'));
+  const p = policy(all);
+  const layer = new LabelLayer(fakeContainer(), () => p, { lazyPolicy: true, schedule: step => queued.push(step) });
+  layer.setOverview(overview());
+  assert.equal(layer.structureReady, false, 'nothing is built in the setOverview call');
+  assert.equal(queued.length, 1);
+  while (queued.length) queued.shift()!();
+  assert.equal(layer.structureReady, true);
+  layer.draw(frame, view, 16, 1, project);
+  const idle = layer.placed.map(l => l.id).sort();
+  const early = new LabelLayer(fakeContainer(), () => p, { lazyPolicy: true, schedule: () => {} });
+  early.setOverview(overview());
+  early.draw(frame, view, 16, 1, project);
+  assert.deepEqual(early.placed.map(l => l.id).sort(), idle, 'a draw before the slices ran draws the same');
+});
+
+test('POIs loading mid-ride rebuild only their own buckets, screened like the rest', () => {
+  const all = new Set(Array.from({ length: 30 }, (_, i) => `Street ${i}`));
+  const p = { ...policy(all, 'Street 3'), spoilerIndex: null };
+  const layer = new LabelLayer(fakeContainer(), () => p, { lazyPolicy: true });
+  layer.setOverview(overview());
+  layer.draw(frame, view, 17, 1, project);
+  layer.setPois([
+    { id: 'poi:cafe', text: 'Cafe Noord', kind: 'poi', priority: 10, lngLat: [4.9, 52.37] as const },
+    { id: 'poi:spoil', text: 'Street 3 Bakery', kind: 'poi', priority: 10, lngLat: [4.9, 52.37] as const },
+  ]);
+  assert.equal(layer.structureReady, true, 'the overview structure is kept');
+  layer.draw(frame, view, 17, 1, project);
+  assert.ok(!layer.placed.some(l => l.text.includes('Street 3')), 'a POI that says the asked name is not drawn');
+});
