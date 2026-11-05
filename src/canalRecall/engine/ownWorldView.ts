@@ -197,17 +197,21 @@ export class OwnWorldView implements WorldViewOracles {
    */
   private readonly labelIndexIdle = flag('labelIndexIdle', '__canalRecallLabelIndexIdle', true);
   private labelIndexScheduled = false;
-  private prewarmLabelOcclusion(): void {
+  /**
+   * `landing`: during the start flight the eye is high over the city, so the grid is centred on where the ride lands
+   * (the rider), which the chase eye stays well within REINDEX_M of; it also warms every footprint's box (featureBox),
+   * which the first frame's camera clearance reads.
+   */
+  private prewarmLabelOcclusion(landing?: readonly [number, number]): void {
     const city = this._completeCity;
     if (!this.labelIndexIdle || this.labelIndexScheduled || !this.labelOcclusionOn || !city?.residentFeatures) return;
-    const e = this.cameraMap.camera.eye();
-    if (!this.labelOcclusion.needsIndex(city.residentFeatures(), [e.lng, e.lat])) return;
+    const centre = (): [number, number] => { if (landing) return [landing[0], landing[1]]; const e = this.cameraMap.camera.eye(); return [e.lng, e.lat]; };
+    if (!this.labelOcclusion.needsIndex(city.residentFeatures(), centre())) return;
     this.labelIndexScheduled = true;
     idleScheduler(() => {
       this.labelIndexScheduled = false;
       if (!this.labelOcclusionOn || !this._completeCity?.residentFeatures) return;
-      const eye = this.cameraMap.camera.eye();
-      this.labelOcclusion.index(this._completeCity.residentFeatures(), [eye.lng, eye.lat]);
+      this.labelOcclusion.index(this._completeCity.residentFeatures(), centre());
     });
   }
   get labelOcclusionOn(): boolean { return this._labelOcclusionOn; }
@@ -793,7 +797,7 @@ export class OwnWorldView implements WorldViewOracles {
     // The cover's footprint grid is indexed in idle time as the resident list changes, from the intro on, so the
     // ride's first frame does not build it (engine/idleBoxGrid.ts, lane E6 #219; `?coverGridIdle=0`).
     city?.prewarmFeaturesAt?.();
-    if (view.introFlat === 0) this.prewarmLabelOcclusion();
+    this.prewarmLabelOcclusion(view.introFlat > 0 ? view.subject : undefined);
     this.updateRiderCover(view.subject, pitch > 0 && !view.detached && view.introFlat === 0);
     lap('rider cover');
     if (view.introFlat === 0) this.extras.setSuspended(false);
