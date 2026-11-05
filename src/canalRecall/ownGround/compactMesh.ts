@@ -13,7 +13,7 @@
 import type { BuiltCell, PackedMesh } from './groundCell.js';
 import type { BuiltFar } from './farRing.js';
 
-export interface CompactMesh { positions: Float32Array; normals: Int8Array; indices: Uint16Array | Uint32Array; colors?: Uint16Array; /** Kept for UV_LAYERS only. */ uvs?: Float32Array }
+export interface CompactMesh { positions: Float32Array; normals: Int8Array; indices: Uint16Array | Uint32Array; colors?: Uint16Array; /** Kept for UV_LAYERS only. */ uvs?: Float32Array; /** As PackedMesh.sphere. */ sphere?: import('./groundCell.js').MeshSphere }
 /** Layers whose uv is not the position's x, y (railTracks.ts: u across the bed's top, v along the track). */
 export const UV_LAYERS: ReadonlySet<string> = new Set(['ballast']);
 /** A mesh as the worker sends it: packed (floats, uv array) or compact. */

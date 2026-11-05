@@ -63,7 +63,8 @@ export type GroundLayer =
 export const GROUND_LAYERS: readonly GroundLayer[] = ['land', 'park', 'wood', 'square', 'parking', 'lawn', 'bed', 'shrub', 'bark', 'sand', 'parkGravel', 'parkPath', 'pond', 'hedge', 'furniture', 'asphalt', 'klinker', 'brick', 'cycle', 'paving', 'gravel', 'kerb', 'paint', 'tram', 'bollard', 'water', 'quay', 'deckBody', 'deckTop', 'garden', 'ballast', 'track'];
 
 /** Transferable mesh arrays. Colours are sRGB 0..1 when present. */
-export interface PackedMesh { positions: Float32Array; normals: Float32Array; uvs: Float32Array; indices: Uint32Array; colors?: Float32Array }
+export interface PackedMesh { positions: Float32Array; normals: Float32Array; uvs: Float32Array; indices: Uint32Array; colors?: Float32Array; /** geometryBounds.ts boundingSphereOf(positions), measured in the worker (lane E7). */ sphere?: MeshSphere }
+export interface MeshSphere { center: [number, number, number]; radius: number }
 
 /**
  * How much detail a cell is built with (CANAL-RECALL-7). `full` is the desktop build and the near ring on every

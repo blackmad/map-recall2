@@ -40,7 +40,7 @@ import { poolReliefLoader } from './reliefDecode.js';
 import { poolWorkerUrl, sharedWorkerPool } from '../engine/workerPool.js';
 /** The page's worker pool runs the building worker bundle next to this one (engine/workerPool.ts). */
 const POOL_WORKER_URL = typeof document !== 'undefined' ? poolWorkerUrl((document.currentScript as HTMLScriptElement | null)?.src ?? '') : '';
-import { boundingSphereOf } from '../geometryBounds.js';
+import { meshSphere } from './meshSpheres.js';
 import { compileWithinBudget, precompileBudget, precompileStepDue } from '../rendererShared/compileBudget.js';
 import { GROUND_LAYERS, PARK_RANK, type BuiltCell, type CellDetail, type GroundLayer } from './groundCell.js';
 import { gpuMeshBytes, isCompact, type GpuMesh } from './compactMesh.js';
@@ -1060,7 +1060,7 @@ export class OwnGround {
       g.setAttribute('normal', new THREE.BufferAttribute(p.normals, 3, true));
       if (p.colors) g.setAttribute('color', new THREE.BufferAttribute(p.colors, 3, true));
       g.setIndex(new THREE.BufferAttribute(p.indices, 1));
-      const sphere = boundingSphereOf(p.positions);
+      const sphere = meshSphere(p);
       g.boundingSphere = new THREE.Sphere(new THREE.Vector3(...sphere.center), sphere.radius);
       return g;
     }
@@ -1075,7 +1075,7 @@ export class OwnGround {
     }
     g.setIndex(new THREE.BufferAttribute(p.indices, 1));
     // three's computeBoundingSphere, without its per-vertex attribute accessors (geometryBounds.ts).
-    const sphere = boundingSphereOf(p.positions);
+    const sphere = meshSphere(p);
     g.boundingSphere = new THREE.Sphere(new THREE.Vector3(...sphere.center), sphere.radius);
     return g;
   }

@@ -25,6 +25,7 @@ import { setKerbShadowRoadLook } from './roadSurfaces.js';
 import { GroundBuildQueue } from './buildQueue.js';
 import { cellTileGrid, layerTiles, tileTransferables } from './cellTiles.js';
 import { cellGpuTransferables, compactCell, compactFar, farGpuTransferables } from './compactMesh.js';
+import { measureSpheres } from './meshSpheres.js';
 
 type In =
   | { type: 'init'; root: string; parks?: boolean; rails?: boolean; roads?: boolean; /** false: the pre-fix bridge decks (gameGround bridgeGapsFlag, issue #178). */ bridgeGaps?: boolean; /** true: bridgeGaps step 3, dry way decks (gameGround dryWayDecksFlag). */ dryWayDecks?: boolean; groundLook?: GroundLook; compact?: boolean; detail?: CellDetail; tiles?: number; /** Tiles per side for a LOD 0, full-detail cell (cellTiles.ts cellTileGrid). */ nearTiles?: number; tileMin?: number; /** The road look under review (gameGround roadLookFlag), for the kerb shadows' ramp ends. */ roadLook?: string | null }
@@ -62,6 +63,7 @@ async function pump(s: GroundStore): Promise<void> {
           const built = buildCell(input), cell = compact ? compactCell(built) : built;
           // The tiles of the meshes exactly as sent (compact or not): the main thread's install only wraps them.
           if (tiles > 1) cell.tiles = layerTiles(cell.layers, cellTileGrid(tiles, nearTiles, cell.lod, cell.detail), tileMin);
+          measureSpheres(Object.values(cell.layers));
           ctx.postMessage({ type: 'cell', gen: job.gen, cell }, [...(compact ? cellGpuTransferables(cell) : cellTransferables(cell)), ...tileTransferables(cell.tiles)]);
         } catch (error) {
           ctx.postMessage({ type: 'error', key: job.key, gen: job.gen, message: String((error as Error)?.stack ?? error) });
@@ -70,6 +72,7 @@ async function pump(s: GroundStore): Promise<void> {
         try {
           const input = await s.farInput(job.key);
           const built = input ? buildFarBlock(input, colours) : null, far = built && compact ? compactFar(built) : built;
+          if (far) measureSpheres(far.parts.map(p => p.mesh));
           ctx.postMessage({ type: 'far', gen: job.gen, key: job.key, far }, far ? (compact ? farGpuTransferables(far) : farTransferables(far)) : []);
         } catch (error) {
           ctx.postMessage({ type: 'error', far: job.key, gen: job.gen, message: String((error as Error)?.stack ?? error) });
