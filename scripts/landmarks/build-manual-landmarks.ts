@@ -406,6 +406,8 @@ import {buildPolitieNieuwezijdsVoorburgwal} from './politie-nieuwezijds-voorburg
 import {buildPolitieLijnbaansgracht} from './politie-lijnbaansgracht-builder';
 import {buildPolitieOostWatergraafsmeer} from './politie-oost-watergraafsmeer-builder';
 import {buildRietveldAcademie2006} from './rietveld-academie-2006-builder';
+import {buildStedelijkMuseum} from './stedelijk-museum-builder';
+import {buildAlbertHeijnMuseumplein} from './albert-heijn-museumplein-builder';
 import {buildBinnengasthuisKloveniersburgwal} from './binnengasthuis-kloveniersburgwal-builder';
 import {buildKinkerstraat32} from './kinkerstraat-32-builder';
 import {buildWesterdok748} from './westerdok-748-builder';
@@ -1006,6 +1008,8 @@ for(const spec of MANUAL_LANDMARKS.filter(model => !selectedIds.length || select
     else if(id==='politie-lijnbaansgracht')buildPolitieLijnbaansgracht(w,d,helpers);
     else if(id==='politie-oost-watergraafsmeer')buildPolitieOostWatergraafsmeer(w,d,helpers);
     else if(id==='rietveld-academie-2006')buildRietveldAcademie2006(w,d,helpers);
+    else if(id==='stedelijk-museum')buildStedelijkMuseum(w,d,helpers);
+    else if(id==='albert-heijn-museumplein')buildAlbertHeijnMuseumplein(w,d,helpers);
     else if(id==='binnengasthuis-kloveniersburgwal')buildBinnengasthuisKloveniersburgwal(w,d,helpers);
     else if(id==='kinkerstraat-32')buildKinkerstraat32(w,d,helpers);
     else if(id==='westerdok-748')buildWesterdok748(w,d,helpers);

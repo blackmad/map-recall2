@@ -1,0 +1,49 @@
+{
+ "id": "stedelijk-museum",
+ "countedBy": "lane #221 (opus) from the rectified Gemeente Amsterdam panorama crops (CC BY 4.0) in artifacts/landmark-briefs/stedelijk-museum/, counted before comparing with the model",
+ "facades": [
+  {
+   "name": "pp-east-wing",
+   "bearing": 337,
+   "photo": "artifacts/landmark-briefs/stedelijk-museum/w01-337.jpg",
+   "depthBand": 8,
+   "openings": [
+    "glass"
+   ],
+   "alongM": [
+    11.8,
+    35.5
+   ],
+   "heightM": [
+    0,
+    14.4
+   ],
+   "rows": [
+    4,
+    4
+   ],
+   "columns": 4,
+   "symmetric": true
+  },
+  {
+   "name": "vanbaerle-side",
+   "bearing": 247,
+   "photo": "artifacts/landmark-briefs/stedelijk-museum/w03-247.jpg",
+   "depthBand": 3,
+   "openings": [
+    "glass"
+   ],
+   "alongM": [
+    11.6,
+    27.3
+   ],
+   "rows": [
+    4
+   ],
+   "columns": 4,
+   "symmetric": true,
+   "gables": 2
+  }
+ ],
+ "note": "alongM crops each face to the wing wall between the pavilions (the silhouette starts at the pavilion cornice, 0.32 m proud); heightM drops the roofs behind. openings count glass only: dark is the 2012 glazing, the oculi and the lettering."
+}

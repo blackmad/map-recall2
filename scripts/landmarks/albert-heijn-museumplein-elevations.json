@@ -1,0 +1,35 @@
+{
+ "id": "albert-heijn-museumplein",
+ "countedBy": "lane #221 (opus) from Gemeente Amsterdam panoramas (CC BY 4.0) before comparing with the model: one continuous mullioned shopfront under each raised edge, the edge falls monotonically from the tip in both photos (no interior peak)",
+ "facades": [
+  {
+   "name": "nw-front",
+   "bearing": 328,
+   "photo": "artifacts/landmark-briefs/albert-heijn-museumplein/v-tip-from-nw.jpg",
+   "depthBand": 9.5,
+   "openings": [
+    "glass"
+   ],
+   "rows": [
+    1
+   ],
+   "columns": 1,
+   "gables": 0
+  },
+  {
+   "name": "sw-tip",
+   "bearing": 216,
+   "photo": "artifacts/landmark-briefs/albert-heijn-museumplein/v-tip-from-s.jpg",
+   "depthBand": 3,
+   "openings": [
+    "glass"
+   ],
+   "rows": [
+    1
+   ],
+   "columns": 1,
+   "gables": 0
+  }
+ ],
+ "note": "openings count glass only: dark is the cladding and the garage entrance. The kiosks stand outside both depth bands. nw-front: the mirrored kiosk stands 7.5 m in front of the north-west front, so its depth band reaches 9.5 m (the kiosk has no glass)."
+}

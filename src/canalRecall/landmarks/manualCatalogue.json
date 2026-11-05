@@ -36,34 +36,116 @@
   "landmarkId": "extract_landmarks_1719479765",
   "modelUrl": "./models/stedelijk-museum.glb",
   "suppressOsmIds": [
+   "w754299888",
    "w754299889",
    "w754299890",
    "w754299892",
-   "w754299896",
-   "w754299897",
+   "w754299893",
    "w754299894",
    "w754299895",
-   "w754299893",
-   "w754299898"
+   "w754299896",
+   "w754299897",
+   "w754299898",
+   "NL.IMBAG.Pand.0363100012077791",
+   "NL.IMBAG.Pand.0363100012251804",
+   "NL.IMBAG.Pand.0363100012251805",
+   "w754299891"
   ],
   "footprint": {
    "centre": [
-    4.879830319756338,
-    52.35792078508553
+    4.879836,
+    52.357871
    ],
-   "headingDegrees": 66.37991087111777,
-   "lengthMetres": 100.85707403797215,
-   "widthMetres": 82.04982538671491
+   "headingDegrees": 0,
+   "lengthMetres": 123.5,
+   "widthMetres": 121.0
   },
   "groundAltitudeMetres": 0,
-  "facingOffsetDegrees": 90,
+  "facingOffsetDegrees": 0,
   "attribution": {
-   "title": "Stedelijk Museum",
+   "title": "Stedelijk Museum Amsterdam: A.W. Weissman (1892-1895) and Benthem Crouwel (2012)",
    "author": "Map Recall",
-   "sourceUrl": "https://www.benthemcrouwel.com/projects/stedelijk-museum",
+   "sourceUrl": "https://monumentenregister.cultureelerfgoed.nl/monumenten/505840",
    "licence": "CC BY 4.0",
    "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
-   "modifications": "Original flat-colour low-poly reconstruction using visual references and OpenStreetMap footprint alignment. Approximate architectural dimensions, no reference image textures or imported geometry."
+   "modifications": "Original texture-free flat-colour geometry on the BAG footprints (CC0) with 3DBAG LoD2.2 heights (CC BY 4.0) and OSM building parts (ODbL): Weissman's red-brick museum with white stone bands, dressings, round tympana and oculi, relief panels, statues in niches on the Paulus Potterstraat front, the four corner pavilions with their scroll gables, pyramid roofs and lanterns, the frontispiece with its glazed entrance, tower attic, clock lantern and spire, the central mansard with dormers and the north-light roofs; Benthem Crouwel's white bathtub under its flat roof over the glazed ground storey, its bottom rising towards the east end, the glass hall between the two buildings and the dark service tower with its circular STEDELIJK MUSEUM AMSTERDAM lettering; read for proportion and tone from Gemeente Amsterdam panoramas (CC BY 4.0). No pixels or meshes imported."
+  },
+  "spatialSuppression": false,
+  "surveyed": {
+   "anchor": [
+    4.87971851,
+    52.35807918
+   ],
+   "northOffsetDegrees": 0,
+   "source": "Vertex average of the BAG 0363100012077791 ring (RD, PDOK BAG WFS, CC0) in native east/south metres above its 3DBAG ground 0.41 m NAP (scripts/landmarks/stedelijk-museum-footprints.json, written by museumplein-north-prepare.ts). Drawn on the 1895 building's axis (bearing 66.7, its BAG edges): Weissman's block, pavilions, central front and frontispiece on the BAG 0363100012077791 ring; the 2012 glazed ground storey on BAG 0363100012251804; the service tower on BAG 0363100012251805. Heights from the 3DBAG LoD2.2 roofs (CC BY 4.0): wings 14.5 m with north-light sheds to 17.6 m, pavilion pyramids 15.6 -> 25.3 m, the central mansard 22.4 m, the frontispiece tower and lantern to 33.7 m, the rear hall ridge 21.5 m, the 2012 roof 17.65 m, the tower 17.6 m. The tub's rim and the roof slab's outline from the OSM building parts w754299890 and w754299892 (ODbL). Bays, bands, dressings, niches, gables and the tub's section measured on rectified and aimed Gemeente Amsterdam panoramas (CC BY 4.0) listed in scripts/landmarks/stedelijk-museum-inventory.json."
+  },
+  "heightMetres": 33.7,
+  "bagYear": 1895,
+  "materialOverrides": {
+   "brick": "#a65b45",
+   "white": "#e9e3d5",
+   "stone": "#8f877c",
+   "slate": "#5b646c",
+   "glass": "#a5bcb6",
+   "greyBrick": "#6a4a40",
+   "canopyGlass": "#76878b",
+   "concrete": "#eceeea",
+   "dark": "#3a4246",
+   "frame": "#2c3236"
+  }
+ },
+ {
+  "id": "albert-heijn-museumplein",
+  "name": "Albert Heijn Museumplein",
+  "modelUrl": "./models/albert-heijn-museumplein.glb",
+  "suppressOsmIds": [
+   "NL.IMBAG.Pand.0363100012082824",
+   "passage:NL.IMBAG.Pand.0363100012082824:0",
+   "passage:NL.IMBAG.Pand.0363100012082824:1",
+   "w277108687",
+   "NL.IMBAG.Pand.0363100012225637",
+   "w277108788",
+   "NL.IMBAG.Pand.0363100012225636"
+  ],
+  "footprint": {
+   "centre": [
+    4.880273,
+    52.357403
+   ],
+   "headingDegrees": 0,
+   "lengthMetres": 104.6,
+   "widthMetres": 83.8
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 0,
+  "attribution": {
+   "title": "Albert Heijn Museumplein and the raised lawn corner (1999)",
+   "author": "Map Recall",
+   "sourceUrl": "https://bag.basisregistraties.overheid.nl/bag/id/pand/0363100012082824",
+   "licence": "CC BY 4.0",
+   "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+   "modifications": "Original texture-free flat-colour geometry on the BAG footprints (CC0) with the 3DBAG LoD2.2 roof (CC BY 4.0): the Museumplein lawn's tilted north corner rising to 7.5 m over the Van Baerlestraat, its green copper edge and soffit, the supermarket's glass fronts with blue Albert Heijn lettering, the granite corner pier, dark cladding and the Q-Park garage entrance under the raised tip, the granite retaining wall where the edge falls, and the two garage stair kiosks on the plaza (a mirrored steel cube and a black glass box); read for proportion and tone from Gemeente Amsterdam panoramas (CC BY 4.0). No pixels or meshes imported."
+  },
+  "spatialSuppression": false,
+  "surveyed": {
+   "anchor": [
+    4.88032444,
+    52.35740599
+   ],
+   "northOffsetDegrees": 0,
+   "source": "Vertex average of the BAG 0363100012082824 ring (RD, PDOK BAG WFS, CC0) in native east/south metres above its 3DBAG ground 0.49 m NAP (scripts/landmarks/albert-heijn-museumplein-footprints.json, written by museumplein-north-prepare.ts). The lawn plane through the 3DBAG LoD2.2 roof points (CC BY 4.0): 7.5 m at the Van Baerlestraat tip, 0.3 m at the south and north-east corners. The kiosks on BAG 0363100012225637 (3DBAG 4.8 m) and 0363100012225636 (about 3 m on the panorama). Fronts measured on Gemeente Amsterdam panoramas (CC BY 4.0) listed in scripts/landmarks/albert-heijn-museumplein-inventory.json."
+  },
+  "heightMetres": 7.6,
+  "bagYear": 1999,
+  "materialOverrides": {
+   "green": "#6f8a48",
+   "copper": "#5d7a68",
+   "stone": "#8f8d87",
+   "dark": "#33393c",
+   "glass": "#4f6068",
+   "frame": "#2a3033",
+   "blue": "#2a73c4",
+   "bronze": "#6b6f73"
   }
  },
  {

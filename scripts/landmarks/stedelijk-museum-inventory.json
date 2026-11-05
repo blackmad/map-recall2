@@ -1,0 +1,947 @@
+{
+ "schemaVersion": 1,
+ "id": "stedelijk-museum",
+ "pand": "0363100012077791",
+ "brief": "scripts/landmarks/stedelijk-museum-brief.md",
+ "signature": [
+  "tub",
+  "roof-slab",
+  "east-statues",
+  "front-tower",
+  "east-bands",
+  "nw-n-pavilion-gable",
+  "tower-lettering"
+ ],
+ "walls": [
+  {
+   "tag": "w01-337",
+   "bearing": 337,
+   "lengthM": 23.8,
+   "centre": [
+    4.8799962,
+    52.3582965
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001156_pano_0000_001072",
+   "capturedAt": "2019-05-02",
+   "checked": true,
+   "items": [
+    {
+     "id": "east-statues",
+     "kind": "sculpture",
+     "where": "three standing figures of artists in round-headed niches between the upper windows of the east wing front",
+     "approxSizeM": [
+      1.2,
+      2.8
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-001156_pano_0000_001072",
+     "how": "stedelijk-museum-builder.ts bandedFront niche: greyBrick recess 0.45 m, white hood fan and console, a three-box white figure on a plinth (82% of the niche height)"
+    },
+    {
+     "id": "east-tympana",
+     "kind": "window-shape",
+     "where": "semicircular white arches with a stone medallion over the four upper windows of the east wing",
+     "approxSizeM": [
+      3.0,
+      1.6
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001156_pano_0000_001072",
+     "how": "stedelijk-museum-builder.ts head \"tympanum\": white half-disc 0.07 m proud and a 0.42 m stone medallion"
+    },
+    {
+     "id": "east-relief-panels",
+     "kind": "relief",
+     "where": "carved panels with a diamond under each upper window of the east wing",
+     "approxSizeM": [
+      2.9,
+      1.4
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-001156_pano_0000_001072",
+     "how": "stedelijk-museum-builder.ts panel: white slab 0.07 m proud with a brick diamond; the carved foliage is flat"
+    },
+    {
+     "id": "east-bands",
+     "kind": "other",
+     "where": "white stone bands across the red brick every 0.9 m, string course and cornice (east wing)",
+     "approxSizeM": [
+      23.8,
+      14.5
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001156_pano_0000_001072",
+     "how": "stedelijk-museum-builder.ts bandedFront: closed 0.18 m bands 0.05 m proud every 0.9 m, string course 6.72-7.0, cornice eaves -0.42"
+    },
+    {
+     "id": "east-roof-lights",
+     "kind": "other",
+     "where": "glazed top-light band along the east wing roof behind a slate slope",
+     "approxSizeM": [
+      23,
+      1.5
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-001156_pano_0000_001072",
+     "how": "stedelijk-museum-builder.ts wing(): 2 m slate slope to a flat at 15.4 m with shedRoof north-light teeth (rijksmonument 505840: light only from the north)"
+    }
+   ]
+  },
+  {
+   "tag": "w02-337",
+   "bearing": 337,
+   "lengthM": 23.7,
+   "centre": [
+    4.8792654,
+    52.3581016
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001703_pano_0000_000701",
+   "capturedAt": "2020-05-13",
+   "checked": true,
+   "items": [
+    {
+     "id": "west-statues",
+     "kind": "sculpture",
+     "where": "three standing figures of artists in round-headed niches between the upper windows of the west wing front",
+     "approxSizeM": [
+      1.2,
+      2.8
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-001703_pano_0000_000701",
+     "how": "stedelijk-museum-builder.ts bandedFront niche: greyBrick recess 0.45 m, white hood fan and console, a three-box white figure on a plinth (82% of the niche height)"
+    },
+    {
+     "id": "west-tympana",
+     "kind": "window-shape",
+     "where": "semicircular white arches with a stone medallion over the four upper windows of the west wing",
+     "approxSizeM": [
+      3.0,
+      1.6
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001703_pano_0000_000701",
+     "how": "stedelijk-museum-builder.ts head \"tympanum\": white half-disc 0.07 m proud and a 0.42 m stone medallion"
+    },
+    {
+     "id": "west-relief-panels",
+     "kind": "relief",
+     "where": "carved panels with a diamond under each upper window of the west wing",
+     "approxSizeM": [
+      2.9,
+      1.4
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-001703_pano_0000_000701",
+     "how": "stedelijk-museum-builder.ts panel: white slab 0.07 m proud with a brick diamond; the carved foliage is flat"
+    },
+    {
+     "id": "west-bands",
+     "kind": "other",
+     "where": "white stone bands across the red brick every 0.9 m, string course and cornice (west wing)",
+     "approxSizeM": [
+      23.8,
+      14.5
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001703_pano_0000_000701",
+     "how": "stedelijk-museum-builder.ts bandedFront: closed 0.18 m bands 0.05 m proud every 0.9 m, string course 6.72-7.0, cornice eaves -0.42"
+    }
+   ]
+  },
+  {
+   "tag": "w03-247",
+   "bearing": 247,
+   "lengthM": 16.1,
+   "centre": [
+    4.8790772,
+    52.3579027
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000778_pano_0000_001919",
+   "capturedAt": "2018-06-06",
+   "checked": true,
+   "items": [
+    {
+     "id": "vanbaerle-blind-arches",
+     "kind": "window-shape",
+     "where": "blind upper storey: four brick panels under white arches with medallions, white bands running across them (vanbaerle wing, top-lit galleries)",
+     "approxSizeM": [
+      2.4,
+      3.0
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-000778_pano_0000_001919",
+     "how": "stedelijk-museum-builder.ts Op kind \"blind\": 0.12 m recess with brick back, dressings, tympanum, the bands continued on the recess"
+    },
+    {
+     "id": "vanbaerle-relief-panels",
+     "kind": "relief",
+     "where": "carved diamond panels under the blind arches (vanbaerle wing)",
+     "approxSizeM": [
+      2.8,
+      1.4
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-000778_pano_0000_001919",
+     "how": "stedelijk-museum-builder.ts panel: white slab with a brick diamond"
+    },
+    {
+     "id": "vanbaerle-gables",
+     "kind": "other",
+     "where": "two small stepped scroll gables standing on the cornice over the inner bays (vanbaerle wing)",
+     "approxSizeM": [
+      3.6,
+      4.6
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-000778_pano_0000_001919",
+     "how": "stedelijk-museum-builder.ts scrollGable at t 3.75 and 12.3, 3.6 m wide, 4.6 m tall: stepped brick shield, white copings, oculus, finial; the scrolls are steps"
+    },
+    {
+     "id": "vanbaerle-downpipe",
+     "kind": "other",
+     "where": "downpipe between the two pairs of bays",
+     "approxSizeM": [
+      0.15,
+      14
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7316010203-000778_pano_0000_001919",
+     "skip": {
+      "reason": "too-small",
+      "note": "a 15 cm pipe"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "w04-66",
+   "bearing": 66,
+   "lengthM": 16.1,
+   "centre": [
+    4.8803645,
+    52.3582498
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002454_pano_0000_000329",
+   "capturedAt": "2022-03-21",
+   "checked": true,
+   "items": [
+    {
+     "id": "east-side-blind-arches",
+     "kind": "window-shape",
+     "where": "blind upper storey: four brick panels under white arches with medallions, white bands running across them (east-side wing, top-lit galleries)",
+     "approxSizeM": [
+      2.4,
+      3.0
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002454_pano_0000_000329",
+     "how": "stedelijk-museum-builder.ts Op kind \"blind\": 0.12 m recess with brick back, dressings, tympanum, the bands continued on the recess"
+    },
+    {
+     "id": "east-side-relief-panels",
+     "kind": "relief",
+     "where": "carved diamond panels under the blind arches (east-side wing)",
+     "approxSizeM": [
+      2.8,
+      1.4
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-002454_pano_0000_000329",
+     "how": "stedelijk-museum-builder.ts panel: white slab with a brick diamond"
+    },
+    {
+     "id": "east-side-gables",
+     "kind": "other",
+     "where": "two small stepped scroll gables standing on the cornice over the inner bays (east-side wing)",
+     "approxSizeM": [
+      3.6,
+      4.6
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-002454_pano_0000_000329",
+     "how": "stedelijk-museum-builder.ts scrollGable at t 3.75 and 12.3, 3.6 m wide, 4.6 m tall: stepped brick shield, white copings, oculus, finial; the scrolls are steps"
+    },
+    {
+     "id": "east-side-downpipe",
+     "kind": "other",
+     "where": "downpipe between the two pairs of bays",
+     "approxSizeM": [
+      0.15,
+      14
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7316010203-002454_pano_0000_000329",
+     "skip": {
+      "reason": "too-small",
+      "note": "a 15 cm pipe"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "w05-337",
+   "bearing": 337,
+   "lengthM": 13.6,
+   "centre": [
+    4.8795889,
+    52.3582575
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-07-30_09-59-09_01520",
+   "capturedAt": "2025-07-30",
+   "checked": true,
+   "items": [
+    {
+     "id": "front-entrance",
+     "kind": "window-shape",
+     "where": "three tall glazed entrance openings (the 1957 pui) in the frontispiece, relief slabs over them",
+     "approxSizeM": [
+      2.4,
+      5.0
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-07-30_09-59-09_01520",
+     "how": "stedelijk-museum-builder.ts Op kind \"pui\" 0.45-5.5 m, 0.35 m deep, transoms; white slabs 5.95-6.62 m"
+    },
+    {
+     "id": "front-oculi",
+     "kind": "window-shape",
+     "where": "three upper windows under round arches with open oculi",
+     "approxSizeM": [
+      2.4,
+      4.8
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-07-30_09-59-09_01520",
+     "how": "stedelijk-museum-builder.ts head \"oculus\": white half-disc with a dark 0.42r circle"
+    },
+    {
+     "id": "front-tower",
+     "kind": "tower",
+     "where": "set-back tower attic with two windows, hipped slate roof, clock lantern and spire over the frontispiece",
+     "approxSizeM": [
+      9.6,
+      20
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-07-30_09-59-09_01520",
+     "how": "stedelijk-museum-builder.ts attic u +-4.8 to 21.0 m, hip roof to 27.8, slate lantern 27.4-30.6, spire to 33.7 (3DBAG)"
+    },
+    {
+     "id": "front-clock",
+     "kind": "clock",
+     "where": "clock face on the tower lantern",
+     "approxSizeM": [
+      1.2,
+      1.2
+     ],
+     "plan": "simplified",
+     "seenIn": "v-pp-n recording_2025-07-30_09-59-09_01515",
+     "how": "stedelijk-museum-builder.ts white disc r 0.6 with dark face r 0.45 at 29.2 m; no hands"
+    },
+    {
+     "id": "front-pinnacles",
+     "kind": "other",
+     "where": "slender white pinnacles at the corners of the frontispiece and central parts",
+     "approxSizeM": [
+      0.4,
+      2.6
+     ],
+     "plan": "simplified",
+     "seenIn": "recording_2025-07-30_09-59-09_01520",
+     "how": "stedelijk-museum-builder.ts two white boxes 13.8-16.4 m on the frontispiece cornice; the central parts' corner obelisks are left out"
+    },
+    {
+     "id": "mansard-dormers",
+     "kind": "window-shape",
+     "where": "small gabled dormers with red-and-black shutters in the central mansard",
+     "approxSizeM": [
+      0.9,
+      1.3
+     ],
+     "plan": "simplified",
+     "seenIn": "recording_2025-07-30_09-59-09_01520",
+     "how": "stedelijk-museum-builder.ts mansard dormers: white front with dark glass and a white pediment, slate cheeks; the shutter colours are dark"
+    }
+   ]
+  },
+  {
+   "tag": "w06-337",
+   "bearing": 337,
+   "lengthM": 8.4,
+   "centre": [
+    4.8797415,
+    52.3582911
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000781_pano_0000_005262",
+   "capturedAt": "2018-06-07",
+   "checked": true,
+   "items": [
+    {
+     "id": "east-central-bay",
+     "kind": "window-shape",
+     "where": "one bay with an upper window under a medallion arch and a relief panel (east-central part)",
+     "approxSizeM": [
+      2.5,
+      9.9
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-000781_pano_0000_005262",
+     "how": "stedelijk-museum-builder.ts bay(.., panel) with tympanum"
+    }
+   ]
+  },
+  {
+   "tag": "w07-337",
+   "bearing": 337,
+   "lengthM": 8.4,
+   "centre": [
+    4.8794455,
+    52.3582112
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-07-30_09-59-09_01543",
+   "capturedAt": "2025-07-30",
+   "checked": true,
+   "items": [
+    {
+     "id": "west-central-bay",
+     "kind": "window-shape",
+     "where": "one bay with an upper window under a medallion arch and a relief panel (west-central part)",
+     "approxSizeM": [
+      2.5,
+      9.9
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-07-30_09-59-09_01543",
+     "how": "stedelijk-museum-builder.ts bay(.., panel) with tympanum"
+    }
+   ]
+  },
+  {
+   "tag": "w08-67",
+   "bearing": 67,
+   "lengthM": 6.4,
+   "centre": [
+    4.8798172,
+    52.3582799
+   ],
+   "evidence": "photo",
+   "panoId": "b_20241211_0838_Track09_Sphere_00029",
+   "capturedAt": "2024-12-11",
+   "checked": true,
+   "items": [
+    {
+     "id": "east-return-bay",
+     "kind": "window-shape",
+     "where": "return wall of the central part: one bay of windows, upper under a medallion arch (east-return)",
+     "approxSizeM": [
+      2.0,
+      9.9
+     ],
+     "plan": "modelled",
+     "seenIn": "b_20241211_0838_Track09_Sphere_00029",
+     "how": "stedelijk-museum-builder.ts bay(3.2, 2.0)"
+    }
+   ]
+  },
+  {
+   "tag": "w09-247",
+   "bearing": 247,
+   "lengthM": 6.3,
+   "centre": [
+    4.8794068,
+    52.3581704
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-07-30_09-59-09_01538",
+   "capturedAt": "2025-07-30",
+   "checked": true,
+   "items": [
+    {
+     "id": "west-return-bay",
+     "kind": "window-shape",
+     "where": "return wall of the central part: one bay of windows, upper under a medallion arch (west-return)",
+     "approxSizeM": [
+      2.0,
+      9.9
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-07-30_09-59-09_01538",
+     "how": "stedelijk-museum-builder.ts bay(3.2, 2.0)"
+    }
+   ]
+  },
+  {
+   "tag": "w10-247",
+   "bearing": 247,
+   "lengthM": 4.2,
+   "centre": [
+    4.8791227,
+    52.3577824
+   ],
+   "evidence": "photo",
+   "panoId": "b_20241211_0838_Track01_Sphere_00512",
+   "capturedAt": "2024-12-11",
+   "checked": true,
+   "items": [
+    {
+     "id": "sw-pavilion-gable",
+     "kind": "other",
+     "where": "scroll gable over the pavilion risalit with medallions, a small shuttered window, finial (sw)",
+     "approxSizeM": [
+      4.0,
+      4.4
+     ],
+     "plan": "simplified",
+     "seenIn": "b_20241211_0838_Track01_Sphere_00512",
+     "how": "stedelijk-museum-builder.ts scrollGable 3.9 m wide, 4.4 m tall from 15.6 m: stepped shield, copings, bands, oculus, finial; scroll volutes are steps"
+    },
+    {
+     "id": "sw-pavilion-niche",
+     "kind": "sculpture",
+     "where": "statue niche over a relief panel in the risalit (sw; some niches stand empty)",
+     "approxSizeM": [
+      1.3,
+      2.8
+     ],
+     "plan": "simplified",
+     "seenIn": "b_20241211_0838_Track01_Sphere_00512",
+     "how": "stedelijk-museum-builder.ts niche with a three-box figure; the photo's empty niches carry one too"
+    }
+   ]
+  },
+  {
+   "tag": "w11-246",
+   "bearing": 246,
+   "lengthM": 4.2,
+   "centre": [
+    4.8801434,
+    52.3583567
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-07-30_09-59-09_01549",
+   "capturedAt": "2025-07-30",
+   "checked": true,
+   "items": [
+    {
+     "id": "ne-pyramid",
+     "kind": "dome",
+     "where": "pyramid roof with a lantern over the north-east pavilion; this one reads as zinc and glass ribs",
+     "approxSizeM": [
+      11,
+      9
+     ],
+     "plan": "simplified",
+     "seenIn": "recording_2025-07-30_09-59-09_01549",
+     "how": "stedelijk-museum-builder.ts pavilion(): slate pyramid 15.6-23.4 m, lantern box, cap and finial to 26.2 m; the ribs and glazing are not drawn"
+    }
+   ]
+  },
+  {
+   "tag": "w12-336",
+   "bearing": 336,
+   "lengthM": 4.1,
+   "centre": [
+    4.8790069,
+    52.3580744
+   ],
+   "evidence": "photo",
+   "panoId": "b_20241211_0838_Track09_Sphere_00013",
+   "capturedAt": "2024-12-11",
+   "checked": true,
+   "items": [
+    {
+     "id": "nw-n-pavilion-gable",
+     "kind": "other",
+     "where": "scroll gable over the pavilion risalit with medallions, a small shuttered window, finial (nw-n)",
+     "approxSizeM": [
+      4.0,
+      4.4
+     ],
+     "plan": "simplified",
+     "seenIn": "b_20241211_0838_Track09_Sphere_00013",
+     "how": "stedelijk-museum-builder.ts scrollGable 3.9 m wide, 4.4 m tall from 15.6 m: stepped shield, copings, bands, oculus, finial; scroll volutes are steps"
+    },
+    {
+     "id": "nw-n-pavilion-niche",
+     "kind": "sculpture",
+     "where": "statue niche over a relief panel in the risalit (nw-n; some niches stand empty)",
+     "approxSizeM": [
+      1.3,
+      2.8
+     ],
+     "plan": "simplified",
+     "seenIn": "b_20241211_0838_Track09_Sphere_00013",
+     "how": "stedelijk-museum-builder.ts niche with a three-box figure; the photo's empty niches carry one too"
+    }
+   ]
+  },
+  {
+   "tag": "w13-337",
+   "bearing": 337,
+   "lengthM": 4.1,
+   "centre": [
+    4.8802027,
+    52.3583961
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-07-30_09-59-09_01554",
+   "capturedAt": "2025-07-30",
+   "checked": true,
+   "items": [
+    {
+     "id": "ne-n-pavilion-gable",
+     "kind": "other",
+     "where": "scroll gable over the pavilion risalit with medallions, a small shuttered window, finial (ne-n)",
+     "approxSizeM": [
+      4.0,
+      4.4
+     ],
+     "plan": "simplified",
+     "seenIn": "recording_2025-07-30_09-59-09_01554",
+     "how": "stedelijk-museum-builder.ts scrollGable 3.9 m wide, 4.4 m tall from 15.6 m: stepped shield, copings, bands, oculus, finial; scroll volutes are steps"
+    },
+    {
+     "id": "ne-n-pavilion-niche",
+     "kind": "sculpture",
+     "where": "statue niche over a relief panel in the risalit (ne-n; some niches stand empty)",
+     "approxSizeM": [
+      1.3,
+      2.8
+     ],
+     "plan": "simplified",
+     "seenIn": "recording_2025-07-30_09-59-09_01554",
+     "how": "stedelijk-museum-builder.ts niche with a three-box figure; the photo's empty niches carry one too"
+    }
+   ]
+  },
+  {
+   "tag": "w14-66",
+   "bearing": 66,
+   "lengthM": 4.1,
+   "centre": [
+    4.8803162,
+    52.3583696
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001154_pano_0001_000220",
+   "capturedAt": "2019-05-02",
+   "checked": true,
+   "items": [
+    {
+     "id": "ne-e-pavilion-gable",
+     "kind": "other",
+     "where": "scroll gable over the pavilion risalit with medallions, a small shuttered window, finial (ne-e)",
+     "approxSizeM": [
+      4.0,
+      4.4
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-001154_pano_0001_000220",
+     "how": "stedelijk-museum-builder.ts scrollGable 3.9 m wide, 4.4 m tall from 15.6 m: stepped shield, copings, bands, oculus, finial; scroll volutes are steps"
+    },
+    {
+     "id": "ne-e-pavilion-niche",
+     "kind": "sculpture",
+     "where": "statue niche over a relief panel in the risalit (ne-e; some niches stand empty)",
+     "approxSizeM": [
+      1.3,
+      2.8
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-001154_pano_0001_000220",
+     "how": "stedelijk-museum-builder.ts niche with a three-box figure; the photo's empty niches carry one too"
+    }
+   ]
+  },
+  {
+   "tag": "w15-66",
+   "bearing": 66,
+   "lengthM": 4.1,
+   "centre": [
+    4.880478,
+    52.3581477
+   ],
+   "evidence": "photo",
+   "panoId": "b_20250115_1006_Track21_Sphere_00039",
+   "capturedAt": "2025-01-15",
+   "checked": true,
+   "items": [
+    {
+     "id": "se-e-pavilion-gable",
+     "kind": "other",
+     "where": "scroll gable over the pavilion risalit with medallions, a small shuttered window, finial (se-e)",
+     "approxSizeM": [
+      4.0,
+      4.4
+     ],
+     "plan": "simplified",
+     "seenIn": "b_20250115_1006_Track21_Sphere_00039",
+     "how": "stedelijk-museum-builder.ts scrollGable 3.9 m wide, 4.4 m tall from 15.6 m: stepped shield, copings, bands, oculus, finial; scroll volutes are steps"
+    },
+    {
+     "id": "se-e-pavilion-niche",
+     "kind": "sculpture",
+     "where": "statue niche over a relief panel in the risalit (se-e; some niches stand empty)",
+     "approxSizeM": [
+      1.3,
+      2.8
+     ],
+     "plan": "simplified",
+     "seenIn": "b_20250115_1006_Track21_Sphere_00039",
+     "how": "stedelijk-museum-builder.ts niche with a three-box figure; the photo's empty niches carry one too"
+    }
+   ]
+  },
+  {
+   "tag": "w16-247",
+   "bearing": 247,
+   "lengthM": 4.1,
+   "centre": [
+    4.8789624,
+    52.358005
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002920_pano_0000_000295",
+   "capturedAt": "2023-01-10",
+   "checked": true,
+   "items": [
+    {
+     "id": "nw-w-pavilion-gable",
+     "kind": "other",
+     "where": "scroll gable over the pavilion risalit with medallions, a small shuttered window, finial (nw-w)",
+     "approxSizeM": [
+      4.0,
+      4.4
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-002920_pano_0000_000295",
+     "how": "stedelijk-museum-builder.ts scrollGable 3.9 m wide, 4.4 m tall from 15.6 m: stepped shield, copings, bands, oculus, finial; scroll volutes are steps"
+    },
+    {
+     "id": "nw-w-pavilion-niche",
+     "kind": "sculpture",
+     "where": "statue niche over a relief panel in the risalit (nw-w; some niches stand empty)",
+     "approxSizeM": [
+      1.3,
+      2.8
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-002920_pano_0000_000295",
+     "how": "stedelijk-museum-builder.ts niche with a three-box figure; the photo's empty niches carry one too"
+    },
+    {
+     "id": "nw-banners",
+     "kind": "sign",
+     "where": "two white vertical STEDELIJK MUSEUM banners on brackets at the north-west pavilion corner (one on each street face)",
+     "approxSizeM": [
+      1.3,
+      7.4
+     ],
+     "plan": "modelled",
+     "seenIn": "v-corner-vb-pp recording_2025-07-30_09-59-09_01109",
+     "how": "stedelijk-museum-builder.ts banner(): white slab 0.2-0.3 m off the wall on two brackets, 5x7 glyph lettering reading upwards"
+    }
+   ]
+  },
+  {
+   "tag": "t01-157",
+   "bearing": 157,
+   "lengthM": 93,
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001154_pano_0001_000185",
+   "capturedAt": "2019-05-02",
+   "checked": true,
+   "items": [
+    {
+     "id": "tub",
+     "kind": "other",
+     "where": "the white composite \"bathtub\": a flaring hull under the flat roof, bottom 4.4 m at the Van Baerlestraat end rising to about 10.5 m at the east",
+     "approxSizeM": [
+      93,
+      13
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001154_pano_0001_000185",
+     "how": "bathtubShell (new kit component): rounded-rectangle rings lofted from a tilted bottom to the rim; rim u -46.8..46.3, v -48.5..-29.3 (OSM w754299890)"
+    },
+    {
+     "id": "roof-slab",
+     "kind": "canopy",
+     "where": "the thin flat roof (100 x 41 m at 17.65 m) cantilevered 11.6 m over the Museumplein entrance",
+     "approxSizeM": [
+      100,
+      0.4
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001154_pano_0001_000249",
+     "how": "roof slab with soffit, rim hole and edge, two slender columns at u 18 and 38"
+    },
+    {
+     "id": "ground-glass",
+     "kind": "window-shape",
+     "where": "glazed ground storey under the tub, mullions every 3 m",
+     "approxSizeM": [
+      93,
+      5.4
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001154_pano_0001_000185",
+     "how": "dark glass to 5.4 m with frame mullions; a white skirt closes the rising bottom"
+    },
+    {
+     "id": "tub-eye",
+     "kind": "window-shape",
+     "where": "a small oval window in the tub flank near the west end",
+     "approxSizeM": [
+      1.5,
+      0.8
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7316010203-001154_pano_0001_000249",
+     "skip": {
+      "reason": "too-small",
+      "note": "about 1.5 m on a 93 m hull, under the roof shadow"
+     }
+    },
+    {
+     "id": "plein-lettering",
+     "kind": "lettering",
+     "where": "exhibition lettering on the ground-storey glass",
+     "approxSizeM": [
+      10,
+      1
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7316010203-001154_pano_0001_000249",
+     "skip": {
+      "reason": "temporary",
+      "note": "changes with each exhibition"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "t02-247",
+   "bearing": 247,
+   "lengthM": 20,
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001703_pano_0000_001702",
+   "capturedAt": "2019-05-02",
+   "checked": true,
+   "items": [
+    {
+     "id": "west-end-glass",
+     "kind": "window-shape",
+     "where": "glass under the tub end and the tall hall glass between the old building and the tub",
+     "approxSizeM": [
+      20,
+      17
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001703_pano_0000_001702",
+     "how": "dark glass to 5.4 m under the tub, hall glass to the roof with mullions every 2.3 m"
+    }
+   ]
+  },
+  {
+   "tag": "t03-67",
+   "bearing": 67,
+   "lengthM": 20,
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001154_pano_0001_000200",
+   "capturedAt": "2019-05-02",
+   "checked": true,
+   "items": [
+    {
+     "id": "east-lettering",
+     "kind": "lettering",
+     "where": "STEDELIJK MUSEUM AMSTERDAM in an arc on the east end glass under the raised tub",
+     "approxSizeM": [
+      8,
+      3
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-001154_pano_0001_000200",
+     "how": "arcLettering-style 5x7 glyphs in three lines on the east glass"
+    },
+    {
+     "id": "east-glass",
+     "kind": "window-shape",
+     "where": "two-storey glass wall under the raised east end of the tub",
+     "approxSizeM": [
+      20,
+      10.5
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001154_pano_0001_000200",
+     "how": "dark glass to the tub bottom (10.5 m), hall glass to the roof"
+    }
+   ]
+  },
+  {
+   "tag": "s01-247",
+   "bearing": 247,
+   "lengthM": 7.4,
+   "evidence": "photo",
+   "panoId": "recording_2025-07-30_11-08-35_00341",
+   "capturedAt": "2025-07-30",
+   "checked": true,
+   "items": [
+    {
+     "id": "tower-lettering",
+     "kind": "lettering",
+     "where": "circular STEDELIJK MUSEUM AMSTERDAM lettering high on the service tower (pand 0363100012251805)",
+     "approxSizeM": [
+      5,
+      5
+     ],
+     "plan": "simplified",
+     "seenIn": "recording_2025-07-30_11-08-35_00341",
+     "how": "glyphs on a circle r 2.55 m at 12.9 m"
+    },
+    {
+     "id": "tower-panels",
+     "kind": "other",
+     "where": "dark horizontal panel bands on the service tower",
+     "approxSizeM": [
+      17.4,
+      17.6
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-07-30_11-08-35_00341",
+     "how": "dark box with frame fins every 1.8 m and holed doors"
+    },
+    {
+     "id": "tower-poster",
+     "kind": "sign",
+     "where": "large exhibition poster on the service tower face to the Museumplein",
+     "approxSizeM": [
+      6,
+      8
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7316010203-001154_pano_0001_000249",
+     "skip": {
+      "reason": "temporary",
+      "note": "changes with each exhibition"
+     }
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  }
+ ]
+}

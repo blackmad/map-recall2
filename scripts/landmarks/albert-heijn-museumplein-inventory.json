@@ -1,0 +1,281 @@
+{
+ "schemaVersion": 1,
+ "id": "albert-heijn-museumplein",
+ "pand": "0363100012082824",
+ "brief": "scripts/landmarks/albert-heijn-museumplein-brief.md",
+ "signature": [
+  "nw-copper-edge",
+  "nw-shopfront",
+  "nw-ah-lettering",
+  "tip-pier"
+ ],
+ "walls": [
+  {
+   "tag": "w01-328",
+   "bearing": 328,
+   "lengthM": 88,
+   "centre": [
+    4.880055,
+    52.357407
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002454_pano_0000_000388",
+   "capturedAt": "2022-03-21",
+   "checked": true,
+   "items": [
+    {
+     "id": "nw-copper-edge",
+     "kind": "other",
+     "where": "green copper fascia along the raised north-west edge of the lawn, overhanging the fronts, falling from 7.5 m at the tip to the ground",
+     "approxSizeM": [
+      88,
+      0.6
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-09-29_08-09-56_01107",
+     "how": "albert-heijn-museumplein-builder.ts + slopedLawnEdge (new kit component): 0.6 m fascia 0.25 m proud, soffit, fronts 0.9 m behind, following the 3DBAG lawn plane"
+    },
+    {
+     "id": "nw-shopfront",
+     "kind": "window-shape",
+     "where": "the supermarket glass front under the raised edge, mullioned, from the corner pier for about 23 m",
+     "approxSizeM": [
+      23,
+      6.5
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-09-29_08-09-56_01107",
+     "how": "albert-heijn-museumplein-builder.ts slopedLawnEdge glass zone s 3.6-26.4, mullions every 1.9 m"
+    },
+    {
+     "id": "nw-ah-lettering",
+     "kind": "lettering",
+     "where": "blue \"Albert Heijn supermarkt\" lettering on the glass",
+     "approxSizeM": [
+      7,
+      1.1
+     ],
+     "plan": "simplified",
+     "seenIn": "recording_2025-09-29_08-09-56_01107",
+     "how": "5x7 glyphs in capitals (the brand script is not drawn), 0.67 m and 0.42 m tall"
+    },
+    {
+     "id": "nw-retaining-wall",
+     "kind": "other",
+     "where": "granite retaining wall where the edge falls towards the north-east (graffiti)",
+     "approxSizeM": [
+      58,
+      3
+     ],
+     "plan": "modelled",
+     "seenIn": "b_20250115_1006_Track23_Sphere_00028",
+     "how": "slopedLawnEdge stone zone s 29.4-88"
+    },
+    {
+     "id": "nw-graffiti",
+     "kind": "other",
+     "where": "graffiti on the retaining wall",
+     "approxSizeM": [
+      40,
+      1.5
+     ],
+     "plan": "skipped",
+     "seenIn": "b_20250115_1006_Track23_Sphere_00028",
+     "skip": {
+      "reason": "temporary",
+      "note": "graffiti changes"
+     }
+    },
+    {
+     "id": "nw-signs",
+     "kind": "sign",
+     "where": "small hazard and parking signs on the wall",
+     "approxSizeM": [
+      0.6,
+      0.6
+     ],
+     "plan": "skipped",
+     "seenIn": "b_20250115_1006_Track23_Sphere_00028",
+     "skip": {
+      "reason": "too-small",
+      "note": "under 1 m"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "w02-126",
+   "bearing": 126,
+   "lengthM": 64.6,
+   "centre": [
+    4.8802045,
+    52.3572789
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002454_pano_0000_000411",
+   "capturedAt": "2022-03-21",
+   "checked": true,
+   "items": [
+    {
+     "id": "se-lawn-edge",
+     "kind": "other",
+     "where": "the lawn meets the plain at the south-east edge, a low kerb",
+     "approxSizeM": [
+      64,
+      0.3
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002454_pano_0000_000411",
+     "how": "granite kerb under the grass edge"
+    }
+   ]
+  },
+  {
+   "tag": "w03-216",
+   "bearing": 216,
+   "lengthM": 32.7,
+   "centre": [
+    4.8797025,
+    52.3571106
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-07-30_09-59-09_01080",
+   "capturedAt": "2025-07-30",
+   "checked": true,
+   "items": [
+    {
+     "id": "tip-pier",
+     "kind": "other",
+     "where": "light granite corner pier under the raised tip, between the two glass fronts",
+     "approxSizeM": [
+      3.6,
+      6.9
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-07-30_11-08-35_00343",
+     "how": "slopedLawnEdge stone zone s 0-3.6 on both edges"
+    },
+    {
+     "id": "sw-shopfront",
+     "kind": "window-shape",
+     "where": "second glass front with an entrance and Albert Heijn lettering on the Van Baerlestraat side of the tip",
+     "approxSizeM": [
+      8,
+      6
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-07-30_11-08-35_00343",
+     "how": "slopedLawnEdge glass zone s 3.6-11.6"
+    },
+    {
+     "id": "sw-ah-lettering",
+     "kind": "lettering",
+     "where": "blue Albert Heijn lettering over the second entrance",
+     "approxSizeM": [
+      7,
+      1.1
+     ],
+     "plan": "simplified",
+     "seenIn": "recording_2025-07-30_11-08-35_00343",
+     "how": "5x7 capitals"
+    },
+    {
+     "id": "garage-entrance",
+     "kind": "other",
+     "where": "Q-Park Museumplein garage entrance in dark cladding under the falling edge",
+     "approxSizeM": [
+      6.2,
+      3.2
+     ],
+     "plan": "simplified",
+     "seenIn": "recording_2025-07-30_09-59-09_01078",
+     "how": "slopedLawnEdge opening zone s 13.4-19.6 drawn as a dark front; the ramp behind it is not modelled"
+    },
+    {
+     "id": "garage-signs",
+     "kind": "sign",
+     "where": "blue P signs on pylons at the garage entrance",
+     "approxSizeM": [
+      0.8,
+      0.8
+     ],
+     "plan": "skipped",
+     "seenIn": "recording_2025-07-30_09-59-09_01078",
+     "skip": {
+      "reason": "too-small",
+      "note": "pylon signs under 1 m, free-standing street furniture"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "w04-126",
+   "bearing": 126,
+   "lengthM": 19.2,
+   "centre": [
+    4.88058,
+    52.3575598
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001154_pano_0001_000246",
+   "capturedAt": "2019-05-02",
+   "checked": true,
+   "items": [
+    {
+     "id": "ne-lawn-end",
+     "kind": "other",
+     "where": "the north-east end where the lawn edge reaches the plaza",
+     "approxSizeM": [
+      19,
+      0.3
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001154_pano_0001_000246",
+     "how": "granite kerb"
+    }
+   ]
+  },
+  {
+   "tag": "k01-kiosks",
+   "bearing": 216,
+   "lengthM": 6,
+   "evidence": "photo",
+   "panoId": "b_20250115_1006_Track23_Sphere_00015",
+   "capturedAt": "2025-01-15",
+   "checked": true,
+   "items": [
+    {
+     "id": "mirror-kiosk",
+     "kind": "other",
+     "where": "garage stair kiosk: a mirrored steel cube with a 4 x 4 panel grid (pand 0363100012225637)",
+     "approxSizeM": [
+      2.8,
+      4.8
+     ],
+     "plan": "modelled",
+     "seenIn": "b_20250115_1006_Track23_Sphere_00015",
+     "how": "box on the BAG ring to the 3DBAG 4.8 m, mid-grey steel with frame joints"
+    },
+    {
+     "id": "black-kiosk",
+     "kind": "other",
+     "where": "black glass stair box with a glazed door and locker sign (pand 0363100012225636)",
+     "approxSizeM": [
+      7,
+      3
+     ],
+     "plan": "simplified",
+     "seenIn": "b_20250115_1006_Track23_Sphere_00015",
+     "how": "dark box on the BAG ring, 3.0 m, a glass door; the coloured light strip and sign are left out"
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  }
+ ]
+}

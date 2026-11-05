@@ -1,5 +1,5 @@
 {
-  "toolchain": "76b20ca6c08c03ee20c67274742990561b60abab5323ff08db51f98bf0718ed9",
+  "toolchain": "b701d2675960c0af1f08287c3d4037484f9b1ab43757a2b5ec5cd08d3bb22bf0",
   "models": {
     "abn-amro-hoofdkantoor": "90ff65a2d9f94e99b2ab33438567f147959a43f017d3d9cf9d2ae68b6dae7cbf",
     "academie-theater-dans": "503b3e8d59937cbf7ac8776eb644c11fd10b567e5ac1113e0caa55c83cb68cde",
@@ -8,6 +8,7 @@
     "afrikahuis": "28791dda2bbd57d2386d785290706d7cb3fcc2d5ba83c5caa82804fdde7eb614",
     "agnietenkapel": "feec89c25cfea8884a12abc19b5caebfdf3d67f0913eea6da76e0cc0fde70930",
     "akzonobel-center": "168c74e2131c7258d43ca007fb11682bc58848d3bbd0c6b94cfcb3a6ef26d940",
+    "albert-heijn-museumplein": "063afd3fa2725675cd64790eee8595900828eb5e30d4088183499731ee266274",
     "allard-pierson": "1a99fd699bd6f13017e8b90635de92b3eca30764dcc1421676d3fb0e24cc736d",
     "american-hotel": "16e687a413e02b777a4bd35589ba03d3cb76d3b8136a821ffa5e44c904dbeb17",
     "amsta-de-poort": "ad11d2cc3b6edb6c2093f072fc7c660e05864bb8a74902ad3e936c9abebd62f5",
@@ -360,7 +361,7 @@
     "stadhuis": "66b0cf3fec017cf27a3df8efb39ae9ba31996f8853407f0e3b8c12d53574e0f5",
     "stadsschouwburg": "69e1aa111afe782394e77a45a9ca3988f8c544271d7b4a59669b84a8d99d39f9",
     "stationsplein-paviljoens": "85fccd3f1b13d39cfc2625b0b0482eacd6a031e4e5ec461f9dd3d5ba8d418e8e",
-    "stedelijk-museum": "41e1bb15a4895ffcab2aaa21c87dfcdd20f2ec157f4b43c8ca5d659a9d849d7f",
+    "stedelijk-museum": "b5e39294037ba95920c6d5b743cd73f413fc9dd0a67913bc0af485509d42edaf",
     "straat-museum": "a9615d916674f783ca04bb40469bb0e7fd5df3ea6af96c4d0d1af7c4b447afb0",
     "studiok": "4504b9582713fa073863eca1446e1cd51dcf4f6d6978148c49d62bfb7090cee6",
     "symphony": "a36e9c26b44eff3b9c524d680315f7c5d99424492ba45c3cc663fc60c9d68741",

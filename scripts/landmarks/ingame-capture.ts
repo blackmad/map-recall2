@@ -2,6 +2,7 @@
  * In-game captures of one landmark at desktop and phone size, for its review and What's New note.
  *
  *   node --import tsx scripts/landmarks/ingame-capture.ts --id=de-roos --port=4484 --views=vondelpark:337,pc-hooftstraat:157
+ *   ... --views=user:125:4.8796:52.3573[:zoom[:pitch]]   (a view may name its own look-at point, zoom and pitch)
  *
  * Each view looks at the model's anchor along the given bearing (degrees clockwise from north; the camera stands on the
  * opposite side) at `--zoom` (18.7) and `--pitch` (68). Writes artifacts/review/<id>/ingame-<view>-<desktop|phone>.png.
@@ -17,7 +18,10 @@ const arg = (k: string) => process.argv.find(a => a.startsWith(`--${k}=`))?.slic
 const id = arg('id') ?? 'de-roos';
 const port = arg('port') ?? process.env.PW_PORT ?? '4401';
 const zoom = Number(arg('zoom') ?? 18.7), pitch = Number(arg('pitch') ?? 68);
-const views = (arg('views') ?? 'north:180,south:0').split(',').map(v => { const [name, b] = v.split(':'); return {name, bearing: Number(b)}; });
+const views = (arg('views') ?? 'north:180,south:0').split(',').map(v => {
+  const [name, b, lng, lat, z, p] = v.split(':');
+  return {name, bearing: Number(b), centre: lng && lat ? [Number(lng), Number(lat)] : undefined, zoom: z ? Number(z) : undefined, pitch: p ? Number(p) : undefined};
+});
 const spec = (catalogue as Array<{id: string; surveyed?: {anchor?: number[]}; footprint?: {centre?: number[]}}>).find(m => m.id === id);
 const anchor = spec?.surveyed?.anchor ?? spec?.footprint?.centre;
 if (!anchor) throw new Error(`${id}: no anchor in manualCatalogue.json`);
@@ -43,7 +47,7 @@ try {
     const page = await br.newPage({viewport, deviceScaleFactor: size === 'phone' ? 2 : 1});
     await ride(page);
     for (const v of views) {
-      await page.evaluate(({c, z, p, b}) => ((window as any).canalRecallGame.vectorMap.map ?? (window as any).canalRecallGame.vectorMap.cameraMap).jumpTo({center: c, zoom: z, pitch: p, bearing: b}), {c: anchor, z: zoom, p: pitch, b: v.bearing});
+      await page.evaluate(({c, z, p, b}) => ((window as any).canalRecallGame.vectorMap.map ?? (window as any).canalRecallGame.vectorMap.cameraMap).jumpTo({center: c, zoom: z, pitch: p, bearing: b}), {c: v.centre ?? anchor, z: v.zoom ?? zoom, p: v.pitch ?? pitch, b: v.bearing});
       await page.waitForFunction(i => (window as any).canalRecallGame.vectorMap._signatureLandmarks.shown.has(i), id, {timeout: 60000});
       await page.waitForTimeout(5000);
       const file = path.join(out, `ingame-${v.name}-${size}.png`);
