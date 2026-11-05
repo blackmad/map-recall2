@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
-import { GlCounters, bufferBytes, objectLabel, stackOwner, textureBytes, trianglesOf } from './glCounters';
+import { GlCounters, GlResident, bufferBytes, chainBytes, objectLabel, stackOwner, textureBytes, trianglesOf } from './glCounters';
 
 function fakeGl() {
   const calls: string[] = [];
@@ -98,4 +98,30 @@ test('draws and triangles per owner, as means per frame since warm-up', () => {
   gl.drawArrays(4, 0, 300); who = 'own-ground'; gl.drawArrays(4, 0, 30); c.endFrame();
   who = 'facades'; gl.drawArrays(4, 0, 300); c.endFrame();
   assert.deepEqual(c.report().byOwner, [{ owner: 'facades', draws: 1, triangles: 100 }, { owner: 'own-ground', draws: 0.5, triangles: 5 }]);
+});
+
+test('resident GPU bytes follow binds, reallocations and deletes', () => {
+  const gl: Record<string, any> = {};
+  for (const fn of ['bindBuffer', 'bufferData', 'deleteBuffer', 'activeTexture', 'bindTexture', 'texImage2D', 'texStorage2D', 'deleteTexture', 'bindRenderbuffer', 'renderbufferStorageMultisample', 'deleteRenderbuffer']) gl[fn] = () => fn;
+  const r = new GlResident();
+  const undo = r.install(gl);
+  const a = {}, b = {}, t = {}, cube = {}, rb = {};
+  gl.bindBuffer(0x8892, a); gl.bufferData(0x8892, new Float32Array(262144), 0x88e4); // 1 MiB
+  gl.bindBuffer(0x8893, b); gl.bufferData(0x8893, 1 << 20, 0x88e4);
+  gl.bindBuffer(0x8892, a); gl.bufferData(0x8892, new Float32Array(524288), 0x88e4); // a grows to 2 MiB, not 3
+  gl.activeTexture(0x84c1); gl.bindTexture(0x0de1, t);
+  gl.texStorage2D(0x0de1, 2, 0x8058, 512, 512); // 1 MiB + 256 KiB
+  gl.bindTexture(0x8513, cube);
+  for (let f = 0; f < 6; f++) gl.texImage2D(0x8515 + f, 0, 0x8058, 0x1908, 0x1401, { width: 256, height: 256 });
+  gl.bindRenderbuffer(0x8d41, rb); gl.renderbufferStorageMultisample(0x8d41, 4, 0x8058, 512, 512);
+  let rep = r.report();
+  assert.equal(rep.buffers, 2); assert.equal(rep.bufferMB, 3);
+  assert.equal(rep.textures, 2); assert.equal(rep.textureMB, 2.8); // 1.25 + 6 x 0.25
+  assert.equal(rep.renderbufferMB, 4);
+  gl.deleteBuffer(a); gl.deleteTexture(cube); gl.deleteRenderbuffer(rb);
+  rep = r.report();
+  assert.deepEqual([rep.buffers, rep.bufferMB, rep.textures, rep.textureMB, rep.renderbufferMB, rep.totalMB], [1, 1, 1, 1.3, 0, 2.3]);
+  undo();
+  assert.equal(gl.bufferData(), 'bufferData');
+  assert.equal(chainBytes(4, 4, 1, 3), (16 + 4 + 1) * 4);
 });

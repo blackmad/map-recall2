@@ -31,6 +31,7 @@ import { openUnderHouseboats, type Boat } from './moorings.js';
 import type { CellDetail, CellInput } from './groundCell.js';
 import { farBlockCells, type FarBlockInput } from './farRing.js';
 import { cutWays, isTunnelTags, planCutsSteps, type CutWay } from './tunnels.js';
+import { pageFrameBudget } from './frameBudget.js';
 
 /** Relief ensured (and scanned) this far around a cell with tunnel portals, metres: a ramp's reach from its portal. */
 
@@ -42,6 +43,10 @@ import { cutWays, isTunnelTags, planCutsSteps, type CutWay } from './tunnels.js'
 export const yieldToFrame = (): Promise<void> => {
   const g = globalThis as { document?: unknown; scheduler?: { yield?: () => Promise<void> } };
   if (!g.document) return Promise.resolve();
+  // One budget per frame across every slice in flight (frameBudget.ts, lane E2): `?groundFrameBudget=0` restores
+  // the plain yield.
+  const budget = pageFrameBudget();
+  if (budget) return budget.yield();
   return g.scheduler?.yield ? g.scheduler.yield() : new Promise(resolve => setTimeout(resolve, 0));
 };
 

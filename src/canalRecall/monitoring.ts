@@ -1,6 +1,7 @@
 import * as Sentry from '@sentry/browser';
 import { PENDING_GRAPHICS_FAILURES } from './mapGuard';
 import { IGNORED_ERRORS } from './monitoringFilters';
+import { PeerTabs, RideHeartbeat, phaseName, unendedReport } from './rideHeartbeat';
 
 /**
  * Canal Recall error monitoring.
@@ -28,6 +29,8 @@ declare global {
 }
 
 interface CanalRecallGameGlobals {
+  state?: unknown;
+  player?: { distancePx?: unknown } | null;
   cityId?: unknown;
   travelMode?: unknown;
   viewMode?: unknown;
@@ -73,8 +76,10 @@ window.canalRecallMonitoring = {
   reportGraphicsFailure(detail) {
     if (!enabled) return;
     const kind = GRAPHICS_FAILURES[String(detail.event)] ?? GRAPHICS_FAILURES['dead-gpu-shader'];
+    // The own engine's frame host reports through the same guard (engine/frameGuards.ts): name the engine that lost it.
+    const own = routeTags().engine === 'own';
     Sentry.captureMessage(
-      kind.message,
+      own ? kind.message.replace(/^MapLibre/, 'The own engine') : kind.message,
       {
         level: 'warning',
         tags: { ...routeTags(), graphics: kind.tag },
@@ -126,4 +131,49 @@ window.addEventListener('unhandledrejection', (event) => {
   const pending = root[PENDING_GRAPHICS_FAILURES];
   root[PENDING_GRAPHICS_FAILURES] = undefined;
   for (const detail of pending ?? []) window.canalRecallMonitoring?.reportGraphicsFailure(detail);
+}
+
+/** The page's dedicated workers: the shared pool (engine/workerPool.ts) plus the own ground's worker. */
+function workerCount(game: CanalRecallGameGlobals | undefined): number | undefined {
+  const pool = (window as unknown as { __canalRecallWorkerPool?: { live?: number } | null }).__canalRecallWorkerPool;
+  const ground = (game?.vectorMap as { _ownGround?: { worker?: unknown } | null } | null | undefined)?._ownGround;
+  if (pool == null && !ground) return undefined;
+  return (pool?.live ?? 0) + (ground?.worker ? 1 : 0);
+}
+
+// Ride heartbeat (lane E2, #215; rideHeartbeat.ts): a renderer killed for memory sends nothing, so the next load of the
+// same tab reports the previous page that never reached pagehide, with the engine, tier and phase it was in.
+// `?heartbeat=0` turns it off.
+if (enabled && !/[?&]heartbeat=0\b/.test(location.search)) {
+  let storage: Storage | null = null;
+  try { storage = window.sessionStorage; } catch { /* blocked storage */ }
+  const peers = new PeerTabs(Math.random().toString(36).slice(2));
+  let channel: BroadcastChannel | null = null;
+  try {
+    channel = new BroadcastChannel('canal-recall-heartbeat');
+    channel.onmessage = event => { if (typeof event.data?.id === 'string') peers.heard(event.data.id, Date.now()); };
+  } catch { /* no BroadcastChannel */ }
+  const heartbeat = new RideHeartbeat({
+    storage,
+    sample: () => {
+      const game = (window as unknown as { canalRecallGame?: CanalRecallGameGlobals }).canalRecallGame;
+      const tags = routeTags();
+      const memory = (performance as unknown as { memory?: { usedJSHeapSize?: number } }).memory;
+      const distancePx = Number(game?.player?.distancePx);
+      return {
+        engine: tags.engine, tier: tags.tier, phase: phaseName(game?.state),
+        heapMB: memory?.usedJSHeapSize ? Math.round(memory.usedJSHeapSize / 1048576) : undefined,
+        // PIXELS_PER_METER is 3 in the legacy game.
+        distanceM: Number.isFinite(distancePx) ? Math.round(distancePx / 3) : undefined,
+        workers: workerCount(game),
+        tabs: (() => { try { channel?.postMessage({ id: peers.id }); } catch { /* closed */ } return peers.count(Date.now()); })(),
+      };
+    },
+  });
+  const previous = heartbeat.start(document.visibilityState !== 'hidden');
+  const report = unendedReport(previous, Date.now());
+  if (report) Sentry.captureMessage(report.message, { level: 'error', tags: report.tags, extra: report.extra, fingerprint: ['canal-recall', 'unended-ride', report.tags.engine ?? 'unknown'] });
+  document.addEventListener('visibilitychange', () => heartbeat.setVisible(document.visibilityState !== 'hidden'));
+  window.addEventListener('pagehide', () => heartbeat.end());
+  window.addEventListener('pageshow', event => { if (event.persisted) heartbeat.resume(); });
 }

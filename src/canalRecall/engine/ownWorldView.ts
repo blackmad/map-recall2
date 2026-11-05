@@ -168,6 +168,10 @@ export class OwnWorldView implements WorldViewOracles {
   private groundHooked = new WeakSet<object>();
   private groundRevision: unknown = undefined;
   private groundRefreshAt = 0;
+  /** `?stagedGroundHook=0` off: the ground consumers' hook and re-base spread over frames (lane E2, #215). */
+  private readonly stagedGroundHook = flag('stagedGroundHook', '__canalRecallStagedGroundHook', true);
+  /** The extras' re-base, due the frame after the buildings' one (stagedGroundHook). */
+  private extrasRebaseDue = false;
   private introLanding = false;
   private measuredColoursOnly = false;
   /** The building look in force (worldViewApi BUILDING_LOOK_IDS); a URL/global look locks out the saved preference. */
@@ -517,7 +521,14 @@ export class OwnWorldView implements WorldViewOracles {
         return ring && ring.length >= 3 ? ground.footprintBase(ring) : null;
       });
     }
-    this.extras.hookGround(ground);
+    this.extras.hookGround(ground, this.stagedGroundHook);
+    if (this.extrasRebaseDue) {
+      lap?.('ground update: consumers');
+      this.extrasRebaseDue = false;
+      this.extras.refreshGroundBases();
+      lap?.('ground update: extras bases');
+      return;
+    }
     if (ground.surfaceRevision === this.groundRevision) return;
     const now = performance.now();
     if (this.groundRefreshAt && now - this.groundRefreshAt < 400) return;
@@ -526,6 +537,7 @@ export class OwnWorldView implements WorldViewOracles {
     lap?.('ground update: consumers');
     tb?.refreshGroundBases?.();
     lap?.('ground update: building bases');
+    if (this.stagedGroundHook) { this.extrasRebaseDue = true; return; }
     this.extras.refreshGroundBases();
     lap?.('ground update: extras bases');
   }

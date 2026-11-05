@@ -32,6 +32,8 @@ export interface GlReport {
   newPrograms: string[];
   /** Per-frame draws and triangles over the frames since warm-up (every pass, shadow included). */
   frames: { draws: GlFrameStats; triangles: GlFrameStats };
+  /** GPU memory the context holds now (buffers, textures, renderbuffers), estimated from the allocation calls. */
+  resident: GlResidentReport;
   /** Mean draws and triangles per frame by `drawOwner` since warm-up, largest triangle share first. */
   byOwner: { owner: string; draws: number; triangles: number }[];
 }
@@ -88,6 +90,106 @@ export function bufferBytes(fn: string, args: readonly unknown[]): number {
   }
   if (v instanceof ArrayBuffer) return v.byteLength;
   return typeof v === 'number' && fn === 'bufferData' ? v : 0;
+}
+
+export interface GlResidentReport { buffers: number; bufferMB: number; textures: number; textureMB: number; renderbuffers: number; renderbufferMB: number; totalMB: number }
+
+const TEXTURE_CUBE_MAP = 0x8513;
+const isCubeFace = (target: number) => target >= 0x8515 && target <= 0x851a;
+const MB = (b: number) => Math.round(b / 1048576 * 10) / 10;
+/**
+ * Resident GPU bytes of one context (lane E2, #215): what `bufferData`, `texImage*`/`texStorage*`/`compressedTexImage*`
+ * and `renderbufferStorage*` allocated, less what `delete*` freed, tracked per object through the bind calls. Texels
+ * count 4 bytes (formats are not decoded); a texStorage chain counts every level. An estimate, but one that grows
+ * exactly when the context keeps objects alive, which is the question a long ride asks.
+ */
+export class GlResident {
+  private readonly bound = new Map<string, object | null>();
+  private unit = 0;
+  private readonly sizes = { buffer: new Map<object, number>(), texture: new Map<object, Map<string, number>>(), renderbuffer: new Map<object, number>() };
+  private bytes = { buffer: 0, texture: 0, renderbuffer: 0 };
+
+  bindBuffer(target: number, buffer: object | null): void { this.bound.set(`b${target}`, buffer); }
+  activeTexture(unit: number): void { this.unit = unit; }
+  bindTexture(target: number, texture: object | null): void { this.bound.set(`t${this.unit}:${target}`, texture); }
+  bindRenderbuffer(_target: number, rb: object | null): void { this.bound.set('r', rb); }
+
+  bufferData(target: number, bytes: number): void {
+    const b = this.bound.get(`b${target}`);
+    if (!b) return;
+    this.bytes.buffer += bytes - (this.sizes.buffer.get(b) ?? 0);
+    this.sizes.buffer.set(b, bytes);
+  }
+  /** A level (or a whole storage chain, `level` 'storage') of the texture bound to `target` on the active unit. */
+  textureLevel(target: number, level: number | 'storage', bytes: number): void {
+    const t = this.bound.get(`t${this.unit}:${isCubeFace(target) ? TEXTURE_CUBE_MAP : target}`);
+    if (!t) return;
+    const levels = this.sizes.texture.get(t) ?? new Map<string, number>();
+    const key = level === 'storage' ? 'storage' : `${target}:${level}`;
+    this.bytes.texture += bytes - (levels.get(key) ?? 0);
+    levels.set(key, bytes);
+    this.sizes.texture.set(t, levels);
+  }
+  renderbufferStorage(bytes: number): void {
+    const r = this.bound.get('r');
+    if (!r) return;
+    this.bytes.renderbuffer += bytes - (this.sizes.renderbuffer.get(r) ?? 0);
+    this.sizes.renderbuffer.set(r, bytes);
+  }
+  delete(kind: 'buffer' | 'texture' | 'renderbuffer', obj: object | null): void {
+    if (!obj) return;
+    if (kind === 'texture') {
+      const levels = this.sizes.texture.get(obj);
+      if (levels) for (const v of levels.values()) this.bytes.texture -= v;
+      this.sizes.texture.delete(obj);
+    } else {
+      this.bytes[kind] -= this.sizes[kind].get(obj) ?? 0;
+      this.sizes[kind].delete(obj);
+    }
+  }
+
+  /** Wrap the context's allocation calls (after the originals run); returns the undo. */
+  install(gl: Record<string, any>): () => void {
+    const undo: (() => void)[] = [];
+    const wrap = (fn: string, after: (args: any[]) => void) => {
+      const original = gl[fn];
+      if (typeof original !== 'function') return;
+      const had = Object.prototype.hasOwnProperty.call(gl, fn);
+      gl[fn] = function (this: unknown, ...args: any[]) { const r = original.apply(gl, args); try { after(args); } catch { /* counting never breaks GL */ } return r; };
+      undo.push(() => { if (had) gl[fn] = original; else delete gl[fn]; });
+    };
+    wrap('bindBuffer', a => this.bindBuffer(a[0], a[1]));
+    wrap('activeTexture', a => this.activeTexture(a[0]));
+    wrap('bindTexture', a => this.bindTexture(a[0], a[1]));
+    wrap('bindRenderbuffer', a => this.bindRenderbuffer(a[0], a[1]));
+    wrap('bufferData', a => this.bufferData(a[0], bufferBytes('bufferData', a)));
+    wrap('texImage2D', a => this.textureLevel(a[0], a[1], textureBytes(a)));
+    wrap('compressedTexImage2D', a => this.textureLevel(a[0], a[1], ArrayBuffer.isView(a[6]) ? a[6].byteLength : (typeof a[6] === 'number' ? a[6] : 0)));
+    // texImage3D(target, level, internalformat, width, height, depth, border, format, type, source)
+    wrap('texImage3D', a => this.textureLevel(a[0], a[1], ArrayBuffer.isView(a[9]) ? a[9].byteLength : a[3] * a[4] * a[5] * BYTES_PER_TEXEL));
+    // texStorage2D(target, levels, internalformat, width, height): the whole mip chain at once.
+    wrap('texStorage2D', a => this.textureLevel(a[0], 'storage', chainBytes(a[3], a[4], 1, a[1])));
+    wrap('texStorage3D', a => this.textureLevel(a[0], 'storage', chainBytes(a[3], a[4], a[5], a[1])));
+    wrap('renderbufferStorage', a => this.renderbufferStorage(a[2] * a[3] * BYTES_PER_TEXEL));
+    wrap('renderbufferStorageMultisample', a => this.renderbufferStorage(a[3] * a[4] * BYTES_PER_TEXEL * Math.max(1, a[1])));
+    wrap('deleteBuffer', a => this.delete('buffer', a[0]));
+    wrap('deleteTexture', a => this.delete('texture', a[0]));
+    wrap('deleteRenderbuffer', a => this.delete('renderbuffer', a[0]));
+    return () => { for (const u of undo.reverse()) u(); };
+  }
+
+  report(): GlResidentReport {
+    const { buffer, texture, renderbuffer } = this.bytes;
+    return { buffers: this.sizes.buffer.size, bufferMB: MB(buffer), textures: this.sizes.texture.size, textureMB: MB(texture),
+      renderbuffers: this.sizes.renderbuffer.size, renderbufferMB: MB(renderbuffer), totalMB: MB(buffer + texture + renderbuffer) };
+  }
+}
+
+/** Bytes of a `levels`-deep mip chain of a w x h x depth texture (depth not halved: array textures). */
+export function chainBytes(width: number, height: number, depth: number, levels: number): number {
+  let bytes = 0, w = width, h = height;
+  for (let l = 0; l < Math.max(1, levels); l++) { bytes += w * h * depth * BYTES_PER_TEXEL; w = Math.max(1, w >> 1); h = Math.max(1, h >> 1); }
+  return bytes;
 }
 
 const THREE_FRAME = /three(\.bundle|\.module|\.core)?\.js|node_modules\/three\//;
@@ -158,6 +260,7 @@ export class GlCounters {
   private warmPrograms = new Set<string>();
   private owners = new Map<string, { draws: number; triangles: number }>();
   private framesSinceWarm = 0;
+  readonly resident = new GlResident();
   private readonly o: Required<Omit<GlCounterOptions, 'programNames' | 'context' | 'drawOwner'>> & { programNames?: () => string[]; context?: () => string; drawOwner?: () => string };
 
   constructor(options: GlCounterOptions = {}) {
@@ -173,7 +276,8 @@ export class GlCounters {
 
   /** Wrap the context's methods; returns the undo. */
   install(gl: Record<string, any>): () => void {
-    const undo: (() => void)[] = [];
+    // The resident tracker wraps innermost (undone last), so the owner's frame depth below is unchanged.
+    const undo: (() => void)[] = [this.resident.install(gl)];
     const wrap = (fn: string, count: (args: any[]) => void) => {
       const original = gl[fn];
       if (typeof original !== 'function') return;
@@ -241,6 +345,7 @@ export class GlCounters {
       frames: { draws: stats(this.frames.map(f => f.draws)), triangles: stats(this.frames.map(f => f.triangles)) },
       byOwner: [...this.owners].map(([owner, o]) => ({ owner, draws: +(o.draws / Math.max(1, this.framesSinceWarm)).toFixed(1), triangles: Math.round(o.triangles / Math.max(1, this.framesSinceWarm)) }))
         .sort((a, b) => b.triangles - a.triangles),
+      resident: this.resident.report(),
     };
   }
 
