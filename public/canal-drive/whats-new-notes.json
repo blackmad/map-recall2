@@ -3,6 +3,12 @@
   "notes": [
     {
       "date": "2026-11-05",
+      "title": "Buildings stop appearing right in front of you",
+      "text": "The city used to load the next stretch of buildings only when you crossed into a new map tile, which could be sixty metres ahead of you. It now loads as you move, buildings that do change dissolve in and out instead of popping, and the detailed buildings along your route are fetched before you reach them.",
+      "images": []
+    },
+    {
+      "date": "2026-11-05",
       "title": "New engine preview: the sky stops flickering",
       "text": "If you ride with the new engine (?engine=own), the sky no longer flashes to cream while the city streams in around you. The flash came from the shader precompiler resetting the canvas clear colour between frames.",
       "images": [

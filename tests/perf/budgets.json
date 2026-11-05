@@ -113,6 +113,12 @@
       "unit": "canvas clears with alpha < 1 or a masked colour channel during a 20 s own-engine ride at the lowest chase pitch (tests/e2e/sky-flicker.spec.ts)",
       "source": "lane E3 2026-11-05 (#216): 224 of 653 before the clear guard, 0 of 818/877/901 after; cream-sky frames 212 -> 0 of ~620",
       "date": "2026-11-05"
+    },
+    "popInSwapsNear": {
+      "value": 0,
+      "unit": "visible swaps of >= 400 px^2 within 120 m of the rider during the pinned 60 s ride at 40 m/s under ?engine=own (tests/e2e/swap-gate.spec.ts, PERF_SWAPS=1), desktop and iPhone",
+      "source": "lane E4 2026-11-05 (#217): 34 -> 0 desktop, 6 -> 0 iPhone with ringFollow + swapFade + routeAhead + detailLinger; 63 (desktop) / 135 (iPhone) shell->detail swaps remain 120-300 m out, faded but not prefetched",
+      "date": "2026-11-05"
     }
   },
   "_desktopPerfViewport": {

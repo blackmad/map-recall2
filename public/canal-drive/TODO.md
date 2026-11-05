@@ -343,8 +343,14 @@ opt-in ground frame budget, a crash repro with a hidden tab or two tabs in one
 process; E3 #216 merged 2026-11-05 (HISTORY "The own engine's sky no longer
 flickers"): `resetState()` after precompile left a transparent clear colour,
 guarded, 212 → 0 cream frames, pinned in `sky-flicker.spec.ts`; open: one
-unexplained standing-still failure in four runs; E4 #217 depth-aware pop-in
-detector + cross-fade + route-ahead prefetch (`engine-popin-20261105`, 4623).
+unexplained standing-still failure in four runs; E4 #217 merged 2026-11-05
+(HISTORY "The pop-in the user saw was the world ring lagging the rider"): swaps
+≥ 400 px² within 120 m desktop 34 → 0, iPhone 6 → 0; open: 63/135 shell→detail
+swaps 120–300 m out are faded, not prefetched; the probe scores a dissolve like
+a pop; one pinned route; the iPhone cost of 8 + 3 detailed tiles (heap/stutter
+at 4×) is unmeasured; `world-v1-bytes.spec.ts` rides at 8 px/s, not 8 m/s
+(`window.PIXELS_PER_METER` is not on `window`), so its seeded number
+understates a ride.
 The flip (`lane/engine-flip-20261101`, rebase owed) merges only when all six
 are green during a 60 s ride on the user's Mac and iPhone, not on Sentry days.
 **User

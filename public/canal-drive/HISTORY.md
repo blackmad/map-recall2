@@ -1,5 +1,47 @@
 # Canal Recall — what is built
 
+**The pop-in the user saw was the world ring lagging the rider, not detail swapping: the ring now follows the rider, swaps cross-fade, and detail is prefetched along the route (2026-11-05, #217).**
+Lane E4 (272ce63a3, d95b510fb, 5dec6092f, 63a595ec0). The user's answer to #168
+was "detail switching on buildings already there", so the lane built the
+depth-aware detector that was parked: `engine/swapProbe.ts` records every
+chunk rebuild, arrival and departure during a pinned 60 s ride (Willemspark →
+Van Gogh Museum at 40 m/s, `#race=`) with the distance to the rider and the
+on-screen area of the faces the frame actually drew; `tests/e2e/swap-gate.spec.ts`
+pins it (`PERF_SWAPS=1`). Its first table was wrong three ways and says so:
+rebuilds read as zero because the probe's subset geometry had no bounding
+sphere (three computed one from a freed array and only warned; the spec now
+fails on the warning), chunks built before the hooks counted every building as
+swapped, and the seeded route changed between runs. The corrected table showed
+the near pop-in was buildings arriving inside chunks already loaded: two near
+chunks gained 112 and 150 buildings 59–87 m from the rider, a coarse chunk 1,586
+at the same moment, all 34 desktop gate failures. Cause: the world-v1 fetch
+ring was recomputed only when the building streamer's follow signature changed,
+and that signature tracked z14 tiles (~1.5 km), so a 1 km cell the ring had
+reached was not read until the next z14 tile came into view, ~60 m away. This is
+the streamer both engines use, so the default engine had it too. Fixes, each
+with its flag and test: `ringFollow` (the ring's cells join the follow
+signature, `world/worldRing.ts`, `?ringFollow=0`), `swapFade` (a rebuilt chunk
+keeps its old mesh while the new one dissolves in over 700 ms, then the old
+one dissolves out; a leaving chunk dissolves out; no program links while riding,
+`?swapFade=0`), `routeAhead` (tiles under the next 320 m desktop / 260 m touch
+of the planned route join the detailed set, at most 2–3 extra tiles;
+`ownWorldView.setRoute` now hands the route to the buildings layer even with
+the route line hidden, which the prefetch never received before, `?routeAhead=0`)
+and `detailLinger` (touch keeps 8 detailed tiles and leads 160 m instead of 6
+and 110, `?detailLinger=0`). Swaps ≥ 400 px² within 120 m: desktop 34 → 0,
+iPhone 6 → 0; within 200/300/500 m desktop 117/325/462 → 3/63/180, iPhone
+77/169/173 → 44/135/144; ringFollow alone took desktop to 0. Free Ride stays at
+11 cells, 0.82 MB. Open: the 63/135 shell→detail swaps 120–300 m out fade but
+are not prefetched (nearest desktop 174 m, off-route); the probe scores a swap
+at its first frame, so a dissolve counts like a pop; one pinned route; the
+iPhone cost of 8 + 3 detailed tiles is unmeasured. Found on the way:
+`world-v1-bytes.spec.ts` reads `window.PIXELS_PER_METER || 1`, which is not on
+`window`, so its "8 m/s" ride is 8 px/s (~2.7 m/s). Integrator: three-buildings,
+engine and building-tiles bundles rebuilt; `buildingTilesBrowser.ts` is hashed
+compiler code, cells recompiled (0 buildings changed) and re-verified;
+`worldRing.test.ts` joined test:world-format (39/39), `detailRing.test.ts` and
+the orphaned `streamingLookAhead.test.ts` joined test:engine (152/152).
+
 **The own engine's sky no longer flickers: the frame host re-asserts the sky clear colour before every clear (2026-11-05, #216).**
 Lane E3 (e75434338). The sky under own is only the colour the frame host clears
 the canvas to, and three sets that colour inside `renderer.render()` alone.
