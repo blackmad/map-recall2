@@ -436,9 +436,14 @@ export const GARDEN_ROOM_TONES = {
  * (2025 360geo missions, CC BY 4.0) with scripts/street-furniture/sample-colour.ts, then neutralised for the rig's
  * cyan cast (R x1.14, G x0.92, B x0.81, from the container body against NCS 7000 neutral grey). Crops and sheets:
  * staging/street-furniture/measure-*.jpg.
- *   - underground container column: NCS 7000 grey #6c7173 (sunlit face #535d60 raw; lifted from #585c5e after the ride frame read near-black beside the photo, sheet-prinsengracht-containers.jpg), stainless drum #b9bdba,
- *     galvanised floor plate #9da3a4, insert slot #26292b; fraction lids glass yellow #e2c34e (raw #dbe579),
- *     paper blue #2f569e (raw #212c3a at dusk), rest grey with the dark chute, GFT green and textile red as priors;
+ *   - underground container column (#212 re-sample, 2026-11-05; staging/street-furniture/container-measurements.md): the
+ *     register's NCS 7000 (S 7000-N, 12,037 of 12,892 active containers). Raw lit faces #515b5e (102570), #444e55 /
+ *     #536066 (57671), #45535b / #4d5c62 (Prinsengracht 00568 / 00566), #4a606c (191647), #444846 (121395): median luma
+ *     88, neutralised per crop against the body (the cyan cast varies by mission) -> body #56595b (was #6c7173), the
+ *     sky-lit flat top a step lighter #5f6264; stainless drum #c1c5c3 (raw #becfc2, #aacbdf), lip #a7aba9 (raw #a3aea7),
+ *     galvanised plate #8f9495 (raw #7a9caa, plinth #677d82) with a darker edge #5c6061, mouth #1d1f20, top sticker #d5d8d2; fraction
+ *     bands glass yellow #d6b44e (raw #b3b966, neutralised R x1.16 G x0.96 B x0.88), paper blue #2a5f94 (raw #206aa0,
+ *     #5473a6), rest the lighter label grey #73777a; GFT green and textile red stay priors;
  *   - canal lantern post: Amsterdam maroon #6e4038 (raw #655751), lantern glass #c9c7b4, roof #4a302b;
  *   - hooked / modern pole: light grey #bdbfbb (raw #a2c9de), luminaire #d8dad6;
  *   - abri: anthracite frame #3a3d40, ad panel light box #e8ebe4, bench #6b6e70;
@@ -446,11 +451,16 @@ export const GARDEN_ROOM_TONES = {
  *   - bike hoop galvanised #9fa4a3; litter bin grey #6f7476 (abri photo).
  */
 export const STREET_FURNITURE_TONES = {
-  containerBody: '#6c7173',
-  containerDrum: '#b9bdba',
-  containerPlate: '#9da3a4',
-  containerSlot: '#26292b',
-  fraction: { glas: '#e2c34e', papier: '#2f569e', rest: '#4a4f52', gft: '#4f8a3c', textiel: '#a23a37', brood: '#c08a3e', plastic: '#e07a2e', grof: '#4a4f52', unknown: '#4a4f52' } as Readonly<Record<string, string>>,
+  containerBody: '#56595b',
+  containerTop: '#5f6264',
+  containerDrum: '#c1c5c3',
+  containerLip: '#a7aba9',
+  containerHandle: '#9a9e9e',
+  containerPlate: '#8f9495',
+  containerPlateEdge: '#5c6061',
+  containerSlot: '#1d1f20',
+  containerLabel: '#d5d8d2',
+  fraction: { glas: '#d6b44e', papier: '#2a5f94', rest: '#73777a', gft: '#4f8a3c', textiel: '#a23a37', brood: '#c08a3e', plastic: '#e07a2e', grof: '#73777a', unknown: '#73777a' } as Readonly<Record<string, string>>,
   lanternPost: '#6e4038',
   lanternGlass: '#c9c7b4',
   lanternRoof: '#4a302b',

@@ -39,6 +39,11 @@ export function containerYaw(r: FurnitureRecord): number {
   return -(diff(a) <= diff(b) ? a : b) * RAD;
 }
 
+/** The register's fraction picks the insert (CONTAINER_INSERT): glass's round hole, paper's slot, the drum otherwise. */
+export function containerModelId(subtype: string): FurnitureModelId {
+  return subtype === 'glas' ? 'container-glas' : subtype === 'papier' ? 'container-papier' : 'container';
+}
+
 export function fractionHex(subtype: string): string { return T.fraction[subtype] ?? T.fraction.unknown; }
 export function posterHex(id: string): string { return T.posters[Math.floor(hash01(`${id}:poster`) * T.posters.length)]; }
 
@@ -46,7 +51,7 @@ const KX = (lat: number) => 111320 * Math.cos(lat * RAD), KY = 110540;
 
 export function instancesOf(r: FurnitureRecord): FurnitureInstance[] {
   switch (r.kind) {
-    case 'container': return [{ model: 'container', id: r.id, lng: r.lng, lat: r.lat, yaw: containerYaw(r), scale: 1, slotHex: fractionHex(r.subtype) }];
+    case 'container': return [{ model: containerModelId(r.subtype), id: r.id, lng: r.lng, lat: r.lat, yaw: containerYaw(r), scale: 1, slotHex: fractionHex(r.subtype) }];
     case 'lamp':
       if (r.subtype === 'lantern') return [{ model: 'lamp-lantern', id: r.id, lng: r.lng, lat: r.lat, yaw: -frontBearing(r, false) * RAD, scale: 1, slotHex: null }];
       return [{ model: 'lamp-pole', id: r.id, lng: r.lng, lat: r.lat, yaw: -frontBearing(r, false) * RAD, scale: lampHeight(r.road) / DIMENSIONS.pole.height, slotHex: null }];
