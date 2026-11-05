@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { boxDistanceM, bucketOf, changedIds, countPids, decodePid, encodePid, lngLatBox, rangeHash, summariseSwaps, swapSummaryMarkdown, vertexPids, type SwapRecord } from './swapProbe.ts';
+import { boxDistanceM, bucketOf, diffTriangles, drawnIn, triangleHashes, changedIds, countPids, decodePid, encodePid, lngLatBox, rangeHash, summariseSwaps, swapSummaryMarkdown, vertexPids, type SwapRecord } from './swapProbe.ts';
 
 test('object ids round-trip through the RGB the id material writes', () => {
   for (const pid of [1, 255, 256, 65_535, 65_536, 1_234_567]) assert.equal(decodePid(...encodePid(pid)), pid);
@@ -51,4 +51,24 @@ test('the gate counts swapped objects at least 400 px² within 120 m, never arri
   const md = swapSummaryMarkdown(s, 'test');
   assert.match(md, /Gate: swapped objects ≥ 400 px² within 120 m: \*\*2\*\*/);
   assert.match(md, /\| shell→detail \| 1 \| 4 \| 3 \| 1 \|/);
+});
+
+test('only what the frame drew is measured: attached to the scene, every ancestor visible', () => {
+  const scene = { visible: true, parent: null }, group = { visible: true, parent: scene }, mesh = { visible: true, parent: group };
+  assert.equal(drawnIn(mesh, scene), true);
+  group.visible = false;
+  assert.equal(drawnIn(mesh, scene), false);
+  assert.equal(drawnIn({ visible: true, parent: null }, scene), false, 'a model not added yet');
+});
+
+test('a rebuild names the faces it added and lost, not the faces it rebuilt identically', () => {
+  // Two quads (four triangles); the rebuild reorders the index, rotates one triangle's corners and replaces one face.
+  const v = new Uint32Array([11, 12, 13, 14, 21, 22, 23, 24]);
+  const before = triangleHashes(v, [0, 1, 2, 0, 2, 3, 4, 5, 6, 4, 6, 7]);
+  const w = Uint32Array.from(v); w[7] = 99; // one corner of the second quad moved
+  const after = triangleHashes(w, [4, 5, 6, 2, 0, 1, 0, 2, 3, 4, 6, 7]);
+  const d = diffTriangles(before, after);
+  assert.deepEqual(d.added, [3]);
+  assert.deepEqual(d.removed, [3]);
+  assert.deepEqual(diffTriangles(before, before), { added: [], removed: [] });
 });

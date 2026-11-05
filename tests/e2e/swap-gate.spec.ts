@@ -8,7 +8,7 @@ import { summariseSwaps, swapSummaryMarkdown, type SwapRecord } from '../../src/
 //   PERF_SWAPS=1 PW_PORT=4623 /tmp/canal-pw.sh perl -e 'alarm 2400; exec @ARGV' -- npx playwright test swap-gate \
 //     --project=desktop --workers=1 --trace off --reporter=line          (and --project=iphone)
 // The seeded default route under `?engine=own`, settled at the spawn, then replayed along the game's routePath at
-// SWAP_SPEED m/s (8, a brisk cyclist) for SWAP_RIDE_S seconds (60). src/canalRecall/engine/swapProbe.ts logs every swap
+// SWAP_SPEED m/s (40: 120 px/s, scripts/pop-in.mjs's ride; the game's top speed is 260 px/s, 87 m/s) for SWAP_RIDE_S seconds (60). src/canalRecall/engine/swapProbe.ts logs every swap
 // (shell → detail, detail rebuilds, extras, detail → shell, ground lifts, landmark arrivals/LODs, tree rebuilds) per
 // object with its distance from the rider and its visible on-screen area (CSS px², occlusion included) right after the
 // frame that shows it. Gate: no swapped object ≥ 400 px² within 120 m. SWAP_QS adds query flags (A/B: `&swapFade=0`),
@@ -17,7 +17,7 @@ import { summariseSwaps, swapSummaryMarkdown, type SwapRecord } from '../../src/
 test.skip(!process.env.PERF_SWAPS, 'set PERF_SWAPS=1 to measure');
 
 const RIDE_S = Number(process.env.SWAP_RIDE_S ?? 60);
-const SPEED = Number(process.env.SWAP_SPEED ?? 8);
+const SPEED = Number(process.env.SWAP_SPEED ?? 40);
 const QS = process.env.SWAP_QS ?? '';
 const LABEL = process.env.SWAP_LABEL ? `-${process.env.SWAP_LABEL}` : '';
 
@@ -47,7 +47,7 @@ test('pop-in gate: no swap ≥ 400 px² within 120 m on the seeded ride', async 
   await page.addScriptTag({ content: probe.outputFiles[0].text });
   const setup = await page.evaluate(([speed]) => {
     const g = (window as any).canalRecallGame, vm = g.vectorMap, sf = vm._sharedFrame, tb = vm._threeBuildings, P = (window as any).CanalSwapProbe;
-    const l = g.osmLoader, ppm = (window as any).PIXELS_PER_METER || 1;
+    const l = g.osmLoader, ppm = (0, eval)('PIXELS_PER_METER') as number; // a script-level const, not on window
     const lngLatOf = (x: number, y: number): [number, number] => [l._lastCenterLng + (x - l._lastOffsetX) / (111320 * Math.cos(l._lastCenterLat * Math.PI / 180) * ppm), l._lastCenterLat - (y - l._lastOffsetY) / (111320 * ppm)];
     const probe = new P.SwapProbe({ THREE: sf.THREE, scene: sf.scene, camera: sf.camera, renderer: sf.renderer });
     const hooked = P.installSwapHooks(vm, probe, () => tb.rider ?? lngLatOf(g.player.x, g.player.y));

@@ -72,6 +72,30 @@ export function rangeHash(arrays: readonly (ArrayLike<number> | null | undefined
   return h >>> 0;
 }
 
+/**
+ * Per-triangle hashes of an indexed mesh from its per-vertex hashes, independent of the corners' order and of where the
+ * triangle sits in the index: two builds of the same face hash alike, so a rebuild names only the faces that changed.
+ */
+export function triangleHashes(vertexHashes: Uint32Array, index: ArrayLike<number>): Uint32Array {
+  const n = Math.floor(index.length / 3), out = new Uint32Array(n);
+  for (let t = 0; t < n; t++) {
+    let a = vertexHashes[index[t * 3]], b = vertexHashes[index[t * 3 + 1]], c = vertexHashes[index[t * 3 + 2]], x: number;
+    if (a > b) { x = a; a = b; b = x; } if (b > c) { x = b; b = c; c = x; } if (a > b) { x = a; a = b; b = x; }
+    let h = 0x811c9dc5;
+    h = Math.imul(h ^ a, 0x01000193) >>> 0; h = Math.imul(h ^ b, 0x01000193) >>> 0; h = Math.imul(h ^ c, 0x01000193) >>> 0;
+    out[t] = h;
+  }
+  return out;
+}
+
+/** Triangles of `after` whose hash `before` lacks (added) and of `before` that `after` lacks (removed), by triangle index. */
+export function diffTriangles(before: Uint32Array, after: Uint32Array): { added: number[]; removed: number[] } {
+  const was = new Set(before), is = new Set(after), added: number[] = [], removed: number[] = [];
+  for (let t = 0; t < after.length; t++) if (!was.has(after[t])) added.push(t);
+  for (let t = 0; t < before.length; t++) if (!is.has(before[t])) removed.push(t);
+  return { added, removed };
+}
+
 /** Ids whose hash changed, appeared or (with `removed`) left between two hash maps. */
 export function changedIds(before: ReadonlyMap<string, number> | undefined, after: ReadonlyMap<string, number>, removed = false): string[] {
   const out: string[] = [];
@@ -102,6 +126,9 @@ export function lngLatBox(geometry: { coordinates?: unknown } | null | undefined
 export type KindRow = { events: number; objects: number; onScreen: number; gate: number; areaPx: number; nearestM: number | null; maxAreaPx: number };
 export type SwapSummary = {
   gate: { minAreaPx: number; nearM: number; failures: number };
+  /** The same count at wider radii, and swapped objects of at least 2000 px² at any distance (what the gate misses). */
+  wider: { nearM: number; count: number }[];
+  bigAnywhere: number;
   byKind: Record<string, KindRow>;
   /** Objects on screen (area > 0), per distance bucket, per kind. */
   distance: { labels: string[]; byKind: Record<string, number[]> };
@@ -116,7 +143,8 @@ export function summariseSwaps(records: readonly SwapRecord[], options: { minAre
   const byKind: Record<string, KindRow> = {}, distance: Record<string, number[]> = {};
   const areaAll = new Array(AREA_EDGES_PX.length - 1).fill(0), areaNear = new Array(AREA_EDGES_PX.length - 1).fill(0);
   const top: SwapSummary['top'] = [];
-  let failures = 0;
+  let failures = 0, bigAnywhere = 0;
+  const wider = [200, 300, 500].map(nearM => ({ nearM, count: 0 }));
   for (const r of records) {
     const row = byKind[r.kind] ??= { events: 0, objects: 0, onScreen: 0, gate: 0, areaPx: 0, nearestM: null, maxAreaPx: 0 };
     const dist = distance[r.kind] ??= new Array(DISTANCE_EDGES_M.length - 1).fill(0);
@@ -132,7 +160,10 @@ export function summariseSwaps(records: readonly SwapRecord[], options: { minAre
       if (db >= 0) dist[db]++;
       const ab = bucketOf(o.areaPx, AREA_EDGES_PX);
       if (ab >= 0) { areaAll[ab]++; if (o.distM != null && o.distM <= nearM) areaNear[ab]++; }
-      if (!ARRIVAL_KINDS.has(r.kind) && o.areaPx >= minAreaPx && o.distM != null && o.distM <= nearM) { row.gate++; failures++; }
+      const swap = !ARRIVAL_KINDS.has(r.kind);
+      if (swap && o.areaPx >= minAreaPx && o.distM != null && o.distM <= nearM) { row.gate++; failures++; }
+      if (swap && o.areaPx >= minAreaPx && o.distM != null) for (const w of wider) if (o.distM <= w.nearM) w.count++;
+      if (swap && o.areaPx >= 2000) bigAnywhere++;
       top.push({ ...o, t: r.t, kind: r.kind, key: r.key });
     }
   }
@@ -140,6 +171,7 @@ export function summariseSwaps(records: readonly SwapRecord[], options: { minAre
   top.sort((a, b) => b.areaPx - a.areaPx);
   return {
     gate: { minAreaPx, nearM, failures },
+    wider, bigAnywhere,
     byKind: Object.fromEntries(Object.entries(byKind).sort((a, b) => b[1].areaPx - a[1].areaPx)),
     distance: { labels: bucketLabels(DISTANCE_EDGES_M, 'm'), byKind: distance },
     area: { labels: bucketLabels(AREA_EDGES_PX, 'px²'), all: areaAll, near: areaNear },
@@ -149,7 +181,8 @@ export function summariseSwaps(records: readonly SwapRecord[], options: { minAre
 
 /** The summary as Markdown tables (the #217 comment). */
 export function swapSummaryMarkdown(s: SwapSummary, title: string): string {
-  const lines = [`#### ${title}`, '', `Gate: swapped objects ≥ ${s.gate.minAreaPx} px² within ${s.gate.nearM} m: **${s.gate.failures}**`, '',
+  const lines = [`#### ${title}`, '', `Gate: swapped objects ≥ ${s.gate.minAreaPx} px² within ${s.gate.nearM} m: **${s.gate.failures}**`,
+    `(≥ ${s.gate.minAreaPx} px² within ${s.wider.map(w => `${w.nearM} m: ${w.count}`).join(', ')}; ≥ 2000 px² at any distance: ${s.bigAnywhere})`, '',
     '| kind | events | objects | on screen | gate fails | Σ area px² | max px² | nearest m |', '|---|--:|--:|--:|--:|--:|--:|--:|'];
   for (const [k, r] of Object.entries(s.byKind)) lines.push(`| ${k} | ${r.events} | ${r.objects} | ${r.onScreen} | ${r.gate} | ${r.areaPx} | ${r.maxAreaPx} | ${r.nearestM ?? '–'} |`);
   lines.push('', `| on-screen objects by distance | ${s.distance.labels.join(' | ')} |`, `|---|${s.distance.labels.map(() => '--:').join('|')}|`);
@@ -168,12 +201,22 @@ export type ProbeDraw = {
   geometry: any;
   /** World matrix at measure time (the frame's world is eye-relative: read it then, not at the swap). */
   matrix: () => any;
+  /** Whether it drew in the frame just drawn (attached and visible up to the scene); a draw that did not is skipped
+   * (its world matrix is stale, and an undrawn model's identity matrix put it at the eye, filling the screen). */
+  drawn?: () => boolean;
   pids: { by: 'vertex'; data: Float32Array } | { by: 'instance'; data: Float32Array; matrices: Float32Array; count: number } | { by: 'whole'; pid: number };
 };
 export type ProbeEvent = { t: number; kind: string; key: string; objects: { id: string; distM: number | null }[]; draws: ProbeDraw[]; done?: () => void };
 export type ProbeFrame = { THREE: any; scene: any; camera: any; renderer: any };
 
 const PID_W = 2048;
+
+/** Whether `object` is attached to `scene` with every ancestor visible (what the frame draws). */
+export function drawnIn(object: { visible?: boolean; parent?: unknown } | null | undefined, scene: unknown): boolean {
+  let o: any = object;
+  while (o) { if (o === scene) return true; if (o.visible === false) return false; o = o.parent; }
+  return false;
+}
 
 /** A vertex-id texture: `pid` for each vertex in `ranges`, 0 elsewhere (vertexCount long). */
 export function vertexPids(vertexCount: number, ranges: readonly { start: number; count: number; pid: number }[]): Float32Array {
@@ -248,6 +291,7 @@ export class SwapProbe {
     probeScene.matrixWorldAutoUpdate = false;
     const disposables: any[] = [];
     for (const draw of event.draws) {
+      if (draw.drawn && !draw.drawn()) continue;
       const mode = draw.pids.by === 'vertex' ? 1 : draw.pids.by === 'instance' ? 2 : 0;
       const material = this.material(mode).clone();
       material.onBeforeCompile = this.material(mode).onBeforeCompile;
@@ -352,8 +396,34 @@ export function installSwapHooks(vm: any, probe: SwapProbe, rider: () => [number
   };
 
   // --- buildings (threeBuildingsBrowser.ts): per building id, from the chunk's vertex ranges.
-  const hashes = new WeakMap<any, Map<string, number>>();
-  const lastHashes = new Map<string, Map<string, number>>();
+  /** The last installed mesh's faces per chunk key: triangle hashes, a copy of its index, and each vertex's building. */
+  type Faces = { hashes: Uint32Array; index: Uint32Array; building: Int32Array; ids: string[] };
+  const faces = new Map<string, Faces>();
+  const facesOf = (chunk: any): Faces | null => {
+    const positions: Float32Array | undefined = chunk?.positions, index: ArrayLike<number> | undefined = chunk?.indices;
+    if (!positions || !index) return null;
+    const n = positions.length / 3, arrays = [positions, chunk.uvs, chunk.layers, chunk.tints, chunk.accents], sizes = [3, 2, 1, 4, 4];
+    const vertexHashes = new Uint32Array(n), building = new Int32Array(n).fill(-1), ids: string[] = [];
+    for (let v = 0; v < n; v++) vertexHashes[v] = rangeHash(arrays, sizes, v, 1);
+    (chunk.ranges ?? []).forEach((r: any, i: number) => { ids.push(String(r.id)); building.fill(i, r.start, Math.min(n, r.start + r.count)); });
+    return { hashes: triangleHashes(vertexHashes, index), index: Uint32Array.from(index), building, ids };
+  };
+  /** A geometry over `base`'s own (uploaded) attributes drawing only these triangles of `index`. */
+  const subset = (base: any, index: Uint32Array, triangles: number[]): any => {
+    const THREE = sf.THREE, g = new THREE.BufferGeometry(), sub = new Uint32Array(triangles.length * 3);
+    triangles.forEach((t, i) => sub.set(index.subarray(t * 3, t * 3 + 3), i * 3));
+    for (const [name, attribute] of Object.entries(base.attributes)) g.setAttribute(name, attribute);
+    g.setIndex(new THREE.BufferAttribute(sub, 1));
+    return g;
+  };
+  /** Free a subset geometry's own index only: its attributes are the drawn mesh's (three would delete their buffers). */
+  const releaseSubset = (g: any): void => { g.attributes = {}; g.morphAttributes = {}; g.dispose(); };
+  /** Hold a mesh's GPU buffers until the probe has drawn from them; returns the release. */
+  const holdBuffers = (mesh: any): (() => void) => {
+    const geometries: any[] = [mesh.geometry, ...((mesh.userData?.tiles ?? []).map((t: any) => t.geometry))];
+    const releases = geometries.map(g => { const d = g.dispose; let asked = false; g.dispose = () => { asked = true; }; return () => { g.dispose = d; if (asked) d.call(g); }; });
+    return () => { for (const r of releases) r(); };
+  };
   const distOf = (feature: any): number | null => { const at = rider(), box = lngLatBox(feature?.geometry); return at && box ? boxDistanceM(box, at) : null; };
   const featuresById = (source: any[]): Map<string, any> => { const m = new Map<string, any>(); for (const f of source ?? []) { const id = String(f?.properties?.id ?? f?.id ?? ''); if (id) m.set(id, f); } return m; };
   /** Draws of a building mesh for these ids: the owner geometry, or its culled tiles (phone: the owner's index is freed). */
@@ -361,27 +431,55 @@ export function installSwapHooks(vm: any, probe: SwapProbe, rider: () => [number
     const vertexCount = mesh.geometry.getAttribute('position').count;
     const data = vertexPids(vertexCount, ids.map((id, i) => ({ ...(ranges.get(id) ?? { start: 0, count: 0 }), pid: i + 1 })));
     const matrix = () => parent ? new mesh.matrixWorld.constructor().multiplyMatrices(parent.matrixWorld, mesh.matrix) : mesh.matrixWorld;
+    const drawn = () => drawnIn(parent ?? mesh, sf?.scene);
     const tiles: any[] = mesh.userData?.tiles ?? [];
-    if (tiles.length) return tiles.map(t => ({ geometry: t.geometry, matrix, pids: { by: 'vertex' as const, data } }));
-    return [{ geometry: mesh.geometry, matrix, pids: { by: 'vertex', data } }];
+    if (tiles.length) return tiles.map(t => ({ geometry: t.geometry, matrix, drawn, pids: { by: 'vertex' as const, data } }));
+    return [{ geometry: mesh.geometry, matrix, drawn, pids: { by: 'vertex', data } }];
+  };
+  /** Buildings of a chunk the layer draws hidden (setHidden; a coarse shell under installed detail): no visible swap. */
+  const seen = (key: string, ids: string[]): string[] => {
+    const hidden: Set<string> | undefined = tb?.hidden, detail: Set<string> | undefined = tb?.installedDetailIds, coarse = key.startsWith('coarse:');
+    return ids.filter(id => !hidden?.has(id) && !(coarse && detail?.has(id)));
   };
   const kindOf = (key: string, arriving: boolean): string => key.startsWith('coarse:') ? (arriving ? 'shell-arrive' : 'shell-rebuild')
     : key.startsWith('extras:') ? (arriving ? 'extras-arrive' : 'extras-rebuild')
     : key.startsWith('near:') ? (arriving ? 'shell→detail' : 'detail-rebuild')
     : key.startsWith('boats:') ? (arriving ? 'boats-arrive' : 'boats-rebuild') : (arriving ? 'kits-arrive' : 'kits-rebuild');
-  hooked.buildingsInstall = wrap(tb, 'install', function (this: any, ctx: any, key: string) { ctx.before = this.chunks.get(key)?.mesh ?? null; }, function (this: any, ctx: any, key: string, source: any[], chunk: any) {
+  // An arriving chunk swaps every building it draws (shell → detail, extras appearing). A rebuilt chunk swaps only the
+  // faces that changed: the faces it adds (drawn from the new mesh) and the faces it loses (drawn from the old mesh,
+  // whose buffers are held until then), per building. A party wall dropped between two shells changes the building's
+  // hash but not one visible pixel; it is not a swap.
+  hooked.buildingsInstall = wrap(tb, 'install', function (this: any, ctx: any, key: string) {
+    const old = this.chunks.get(key)?.mesh ?? null;
+    ctx.before = old;
+    if (old) { ctx.old = faces.get(key) ?? null; ctx.oldParent = old.parent; ctx.release = holdBuffers(old); }
+  }, function (this: any, ctx: any, key: string, source: any[], chunk: any) {
+    const release: () => void = ctx.release ?? (() => {});
     const entry = this.chunks.get(key), mesh = entry?.mesh;
-    if (!mesh || mesh === ctx.before) return;
-    const arrays = [chunk.positions, chunk.uvs, chunk.layers, chunk.tints, chunk.accents], sizes = [3, 2, 1, 4, 4];
-    const next = new Map<string, number>();
-    for (const r of chunk.ranges ?? []) next.set(String(r.id), rangeHash(arrays, sizes, r.start, r.count));
-    const before = lastHashes.get(key);
-    hashes.set(mesh, next); lastHashes.set(key, next);
-    const arriving = !ctx.before;
-    const ids = arriving ? [...next.keys()] : changedIds(before, next);
-    if (!ids.length) return;
+    if (!mesh || mesh === ctx.before) { release(); return; }
+    const next = facesOf(chunk);
+    if (next) faces.set(key, next); else faces.delete(key);
     const byId = featuresById(source);
-    probe.push({ t: now(), kind: kindOf(key, arriving), key, objects: ids.map(id => ({ id, distM: distOf(byId.get(id)) })), draws: buildingDraws(mesh, entry.ranges, ids) });
+    const arriving = !ctx.before;
+    if (arriving || !ctx.old || !next) {
+      release();
+      const ids = seen(key, [...entry.ranges.keys()] as string[]);
+      if (ids.length) probe.push({ t: now(), kind: kindOf(key, arriving), key, objects: ids.map(id => ({ id, distM: distOf(byId.get(id)) })), draws: buildingDraws(mesh, entry.ranges, ids) });
+      return;
+    }
+    const old: Faces = ctx.old, oldMesh = ctx.before, oldParent = ctx.oldParent;
+    const { added, removed } = diffTriangles(old.hashes, next.hashes);
+    const pidOf = new Map<string, number>(), objects: { id: string; distM: number | null }[] = [];
+    const visible = new Set(seen(key, [...new Set([...added.map(t => next.ids[next.building[next.index[t * 3]]]), ...removed.map(t => old.ids[old.building[old.index[t * 3]]])])].filter(Boolean)));
+    const keep = (ids: string[], building: Int32Array, index: Uint32Array, list: number[]) => list.filter(t => visible.has(ids[building[index[t * 3]]]));
+    const addedSeen = keep(next.ids, next.building, next.index, added), removedSeen = keep(old.ids, old.building, old.index, removed);
+    for (const id of visible) { pidOf.set(id, objects.length + 1); objects.push({ id, distM: distOf(byId.get(id)) }); }
+    if (!objects.length) { release(); return; }
+    const pids = (f: Faces) => { const data = new Float32Array(f.building.length); for (let v = 0; v < data.length; v++) { const b = f.building[v]; data[v] = b >= 0 ? pidOf.get(f.ids[b]) ?? 0 : 0; } return data; };
+    const subsets: any[] = [], draws: ProbeDraw[] = [];
+    if (addedSeen.length) { const g = subset(mesh.geometry, next.index, addedSeen); subsets.push(g); draws.push({ geometry: g, matrix: () => mesh.matrixWorld, drawn: () => drawnIn(mesh, sf?.scene), pids: { by: 'vertex', data: pids(next) } }); }
+    if (removedSeen.length) { const g = subset(oldMesh.geometry, old.index, removedSeen); subsets.push(g); draws.push({ geometry: g, matrix: () => oldParent ? new oldMesh.matrixWorld.constructor().multiplyMatrices(oldParent.matrixWorld, oldMesh.matrix) : oldMesh.matrixWorld, drawn: () => drawnIn(oldParent, sf?.scene), pids: { by: 'vertex', data: pids(old) } }); }
+    probe.push({ t: now(), kind: kindOf(key, false), key, objects, draws, done: () => { for (const g of subsets) releaseSubset(g); release(); } });
   });
   // A chunk leaving (a detail tile the block left, extras with it): what disappears is measured before it goes; its
   // geometry is kept until then. The coarse shells it covered show again in the same step (detail → shell).
@@ -390,12 +488,12 @@ export function installSwapHooks(vm: any, probe: SwapProbe, rider: () => [number
     if (!held?.mesh || !(key.startsWith('near:') || key.startsWith('extras:'))) return;
     // A rebuild drops then installs the same key: that is logged by install, not here.
     if (ctx.rebuild = this.__swapProbeInstalling === key) return;
-    const mesh = held.mesh, ids = [...held.ranges.keys()] as string[], byId = featuresById(held.source), parent = mesh.parent;
+    const mesh = held.mesh, ids = seen(key, [...held.ranges.keys()] as string[]), byId = featuresById(held.source), parent = mesh.parent;
     const disposals: any[] = [mesh.geometry, ...((mesh.userData?.tiles ?? []).map((t: any) => t.geometry))];
     const deferred = disposals.map(g => { const d = g.dispose; g.dispose = () => {}; return () => { g.dispose = d; d.call(g); }; });
     const event: ProbeEvent = { t: now(), kind: key.startsWith('near:') ? 'detail→shell' : 'extras-leave', key, objects: ids.map(id => ({ id, distM: distOf(byId.get(id)) })), draws: buildingDraws(mesh, held.ranges, ids, parent), done: () => { for (const d of deferred) d(); } };
     ctx.event = event;
-    lastHashes.delete(key);
+    faces.delete(key);
   }, function (_ctx: any) { if (_ctx.event) probe.push(_ctx.event); });
   // install() drops the old mesh of a rebuilt key first: mark it so dropChunk does not log a leave.
   const install = tb?.install;
@@ -408,7 +506,7 @@ export function installSwapHooks(vm: any, probe: SwapProbe, rider: () => [number
     for (const [key, applied] of ctx.before as Map<string, Map<string, number>>) {
       const e = this.chunks.get(key);
       if (!e?.mesh || !e.lift) continue;
-      const moved = [...e.lift.applied].filter(([id, z]) => Math.abs(z - (applied.get(id) ?? 0)) > 0.05).map(([id]) => String(id));
+      const moved = seen(key, [...e.lift.applied].filter(([id, z]) => Math.abs(z - (applied.get(id) ?? 0)) > 0.05).map(([id]) => String(id)));
       if (!moved.length) continue;
       const byId = featuresById(e.source);
       probe.push({ t: now(), kind: 'ground-lift', key, objects: moved.map(id => ({ id, distM: distOf(byId.get(id)) })), draws: buildingDraws(e.mesh, e.ranges, moved) });
@@ -419,7 +517,7 @@ export function installSwapHooks(vm: any, probe: SwapProbe, rider: () => [number
   const anchorDist = (spec: any): number | null => { const a = spec?.surveyed?.anchor || spec?.footprint?.centre, at = rider(); return a && at ? boxDistanceM([a[0], a[1], a[0], a[1]], at) : null; };
   const modelDraws = (root: any): ProbeDraw[] => {
     const out: ProbeDraw[] = [];
-    root?.traverse?.((o: any) => { if ((o.isMesh || o.isInstancedMesh) && o.geometry && !o.isSkinnedMesh) out.push({ geometry: o.geometry, matrix: () => o.matrixWorld, pids: { by: 'whole', pid: 1 } }); });
+    root?.traverse?.((o: any) => { if ((o.isMesh || o.isInstancedMesh) && o.geometry && !o.isSkinnedMesh) out.push({ geometry: o.geometry, matrix: () => o.matrixWorld, drawn: () => drawnIn(o, sf?.scene), pids: { by: 'whole', pid: 1 } }); });
     return out;
   };
   hooked.landmarkArrive = wrap(sl, '_add', null, function (this: any, _ctx: any, spec: any, imported: any, _map: any, _url: any, level: any) {
@@ -450,7 +548,7 @@ export function installSwapHooks(vm: any, probe: SwapProbe, rider: () => [number
       const matrices = new Float32Array(fresh.length * 16), data = new Float32Array(fresh.length);
       fresh.forEach((j, i) => { matrices.set(all.subarray(j * 16, j * 16 + 16), i * 16); data[i] = objects.length + i + 1; });
       for (const j of fresh) objects.push({ id: `tree@${all[j * 16 + 12].toFixed(0)},${all[j * 16 + 13].toFixed(0)}`, distM: rx == null ? null : Math.hypot(all[j * 16 + 12] - rx, all[j * 16 + 13] - (ry as number)) });
-      draws.push({ geometry: m.geometry, matrix: () => m.matrixWorld, pids: { by: 'instance', data, matrices, count: fresh.length } });
+      draws.push({ geometry: m.geometry, matrix: () => m.matrixWorld, drawn: () => drawnIn(m, sf?.scene), pids: { by: 'instance', data, matrices, count: fresh.length } });
     }
     if (objects.length) probe.push({ t: now(), kind: 'trees', key: `trees:${this.meshes?.length ?? 0}`, objects, draws });
   });
