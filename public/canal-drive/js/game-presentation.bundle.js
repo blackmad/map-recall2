@@ -281,6 +281,8 @@
     "options.trees": "Trees",
     "options.distanceHaze": "Distance haze",
     "options.distanceHazeHint": "Far streets fade softly toward the sky",
+    "options.perfHud": "Show performance",
+    "options.perfHudHint": "Memory and frame-time numbers in the corner",
     // --- Ride settings panel --------------------------------------------------
     "settings.title": "Ride settings",
     "settings.progress": "My progress",
@@ -904,6 +906,8 @@
     "options.trees": "Bomen",
     "options.distanceHaze": "Nevel in de verte",
     "options.distanceHazeHint": "Verre straten vervagen zacht naar de lucht",
+    "options.perfHud": "Prestaties tonen",
+    "options.perfHudHint": "Geheugen en beeldtijden in de hoek",
     // --- Ritinstellingen ------------------------------------------------------
     "settings.title": "Ritinstellingen",
     "settings.progress": "Mijn voortgang",

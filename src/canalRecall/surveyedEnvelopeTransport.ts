@@ -26,7 +26,7 @@ export function diagnosticEnvelopeTransport(input:unknown):EnvelopeTransport|und
   return {revision:json,envelopes:JSON.parse(json)};
  }catch{return;}
 }
-export type EnvelopeBuildOptions={look:BuildingLook;mode?:'walls'|'extras'|'coarse'|'shell';streets?:Float32Array;profiles?:readonly StreetAppearanceProfile[];contextFeatures?:readonly Feature[];hostOpenings?:readonly ChunkHostOpeningConfig[];surveyedEnvelopeData?:readonly SurveyedBuildingEnvelope[]};
+export type EnvelopeBuildOptions={look:BuildingLook;mode?:'walls'|'extras'|'coarse'|'shell';streets?:Float32Array;profiles?:readonly StreetAppearanceProfile[];contextFeatures?:readonly Feature[];hostOpenings?:readonly ChunkHostOpeningConfig[];surveyedEnvelopeData?:readonly SurveyedBuildingEnvelope[];/** Coarse/touch shells carry their low-poly planned roof (threeBuildingFeatures.ts shellRoofPlan). */shellRoofs?:boolean};
 /** Called inside the worker, or inline after worker failure. Native inputs are
  * authoritative; rejected sources never acquire roof ownership. */
 export function buildTransportedEnvelopeChunk(features:readonly Feature[],options:EnvelopeBuildOptions,now?:string){
@@ -42,7 +42,7 @@ export function buildTransportedEnvelopeChunk(features:readonly Feature[],option
       &&bound.nativeMetadata.constructionYear===Number(f.properties.constructionYear))bindings.set(id,bound);}
   }catch{/* malformed diagnostics retain stock geometry */}
  }
- const chunk=buildFeatureChunk(features,options.look,options.mode??'walls',options.streets,options.profiles,options.contextFeatures,options.hostOpenings,bindings);
+ const chunk=buildFeatureChunk(features,options.look,options.mode??'walls',options.streets,options.profiles,options.contextFeatures,options.hostOpenings,bindings,options.shellRoofs?{shellRoofs:true}:{});
  const sourceIds=new Set(features.map(f=>String(f.properties.id??'')));
  const boundParentIds=options.mode==='extras'?[]:[...bindings.keys()].filter(id=>sourceIds.has(id)&&chunk.ranges.some(r=>r.id===id&&r.count>0));
  return {chunk,boundParentIds};

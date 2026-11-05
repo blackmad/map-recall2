@@ -24,10 +24,20 @@ export interface HeartbeatSample {
   workers?: number;
   /** Game pages of this origin open in the browser (this one included): same-site tabs can share one renderer. */
   tabs?: number;
+  /** What the own engine held (engine/perfHud.ts PerfSnapshot, `__canalPerf.snapshot()`): GPU MB, residents, p99. */
+  gpuMB?: number;
+  geometries?: number;
+  textures?: number;
+  cells?: number;
+  chunks?: number;
+  models?: number;
+  dpr?: number;
 }
 
 export interface HeartbeatStamp extends HeartbeatSample {
   v: 1;
+  /** This page's id: the shared (localStorage) copy is keyed by it, so a reload of the same tab reports once. */
+  id?: string;
   startedAt: number;
   at: number;
   seq: number;
@@ -63,12 +73,90 @@ export function unendedReport(stamp: HeartbeatStamp | null, now: number, maxAgeM
     extra: {
       uptimeS: Math.round((stamp.at - stamp.startedAt) / 1000), sinceLastStampS: Math.round((now - stamp.at) / 1000), stamps: stamp.seq,
       heapMB: stamp.heapMB ?? null, peakHeapMB: stamp.peakHeapMB ?? null, distanceM: stamp.distanceM ?? null, workers: stamp.workers ?? null, tabs: stamp.tabs ?? null,
+      gpuMB: stamp.gpuMB ?? null, geometries: stamp.geometries ?? null, textures: stamp.textures ?? null,
+      cells: stamp.cells ?? null, chunks: stamp.chunks ?? null, models: stamp.models ?? null, dpr: stamp.dpr ?? null,
     },
   };
 }
 
+/**
+ * The shared copy (lane R1-C, #225). sessionStorage belongs to one tab: a tab that locks up and is *closed* (the
+ * user's aerial pan, 2026-11-05) takes its stamp with it, so nothing is ever reported. Each page also keeps its stamp
+ * in localStorage under its own id while it runs and removes it at pagehide; the next load in any tab reports the
+ * pages whose stamp stopped beating without an end. `?heartbeatShared=0` turns the copy off.
+ */
+export const SHARED_HEARTBEAT_PREFIX = 'canalRecall.rideHeartbeat.page.';
+/** A visible page whose stamp is older than this has stopped beating (a hung main thread or a dead renderer). */
+export const ORPHAN_VISIBLE_MS = 30_000;
+/** A hidden page's timers are throttled (Chrome: once a minute after 5 min hidden), so it is given much longer. */
+export const ORPHAN_HIDDEN_MS = 15 * 60_000;
+
+export interface KeyedStorage extends StorageLike { readonly length: number; key(index: number): string | null; removeItem(key: string): void }
+
+/** Other pages' shared stamps that stopped beating without an end: removed from storage and returned (oldest first). */
+export function takeOrphans(storage: KeyedStorage | null | undefined, selfId: string, now: number, maxAgeMs = HEARTBEAT_MAX_AGE_MS): HeartbeatStamp[] {
+  if (!storage) return [];
+  const out: HeartbeatStamp[] = [];
+  const keys: string[] = [];
+  try { for (let i = 0; i < storage.length; i++) { const k = storage.key(i); if (k && k.startsWith(SHARED_HEARTBEAT_PREFIX)) keys.push(k); } } catch { return []; }
+  for (const k of keys) {
+    if (k === SHARED_HEARTBEAT_PREFIX + selfId) continue;
+    let s: HeartbeatStamp | null = null;
+    try { const raw = storage.getItem(k); s = raw ? JSON.parse(raw) as HeartbeatStamp : null; } catch { s = null; }
+    const valid = s && s.v === 1 && typeof s.at === 'number';
+    const age = valid ? now - s!.at : Infinity;
+    // Ended, unreadable or too old: litter, removed without a report. Still beating: a live peer, left alone.
+    if (!valid || s!.ended || age > maxAgeMs || age < 0) { try { storage.removeItem(k); } catch { /* */ } continue; }
+    if (age < (s!.visible ? ORPHAN_VISIBLE_MS : ORPHAN_HIDDEN_MS)) continue;
+    try { storage.removeItem(k); } catch { /* */ }
+    out.push(s!);
+  }
+  return out.sort((a, b) => a.at - b.at);
+}
+
+/** The report for an orphaned shared stamp: as `unendedReport`, tagged `orphaned` (the tab was closed or hung). */
+export function orphanReport(stamp: HeartbeatStamp, now: number): { message: string; tags: Record<string, string>; extra: Record<string, unknown> } | null {
+  const r = unendedReport({ ...stamp, ended: false }, now, Infinity);
+  if (!r) return null;
+  const tags: Record<string, string> = { ...r.tags, heartbeat: 'orphaned' };
+  return { ...r, message: 'previous ride stopped beating (tab closed or hung)', tags };
+}
+
+/**
+ * Stall watch (lane R1-C, #225): a tab that is "practically locked" but alive never ends unclean, so the heartbeat
+ * says nothing. Long frames (long-animation-frame / longtask entries) are counted in a sliding window; `count` of at
+ * least `minMs` within `windowMs`, or one of at least `singleMs`, is a stall, reported at once (the page can still
+ * send) and at most `maxReports` times a page, `gapMs` apart. `?stallReport=0` turns it off.
+ */
+export const STALL_DEFAULTS = { minMs: 250, count: 6, windowMs: 10_000, singleMs: 2000, maxReports: 2, gapMs: 120_000 } as const;
+export interface StallOptions { minMs: number; count: number; windowMs: number; singleMs: number; maxReports: number; gapMs: number }
+export interface Stall { longest: number; count: number; totalMs: number; windowMs: number }
+
+export class StallWatch {
+  private readonly recent: { at: number; ms: number }[] = [];
+  private reports = 0;
+  private lastReport = -Infinity;
+  constructor(private readonly o: StallOptions = STALL_DEFAULTS) {}
+  /** A long frame of `ms` that started at `at` (page ms); returns a stall to report, or null. */
+  note(at: number, ms: number): Stall | null {
+    if (ms < this.o.minMs) return null;
+    this.recent.push({ at, ms });
+    while (this.recent.length && at - this.recent[0].at > this.o.windowMs) this.recent.shift();
+    if (this.reports >= this.o.maxReports || at - this.lastReport < this.o.gapMs) return null;
+    if (this.recent.length < this.o.count && ms < this.o.singleMs) return null;
+    this.reports++;
+    this.lastReport = at;
+    const stall = { longest: Math.round(Math.max(...this.recent.map(r => r.ms))), count: this.recent.length, totalMs: Math.round(this.recent.reduce((a, r) => a + r.ms, 0)), windowMs: this.o.windowMs };
+    this.recent.length = 0;
+    return stall;
+  }
+}
+
 export interface HeartbeatOptions {
   storage: StorageLike | null | undefined;
+  /** The shared copy (localStorage), keyed by `id`; removed at a clean end. */
+  shared?: KeyedStorage | null;
+  id?: string;
   sample: () => HeartbeatSample;
   now?: () => number;
   intervalMs?: number;
@@ -89,7 +177,7 @@ export class RideHeartbeat {
   start(visible = true): HeartbeatStamp | null {
     const previous = readStamp(this.o.storage);
     const t = this.now();
-    this.stamp = { v: 1, startedAt: t, at: t, seq: 0, visible, ended: false };
+    this.stamp = { v: 1, ...(this.o.id ? { id: this.o.id } : {}), startedAt: t, at: t, seq: 0, visible, ended: false };
     this.beat();
     const every = this.o.setInterval ?? ((fn: () => void, ms: number) => setInterval(fn, ms));
     this.handle = every(() => this.beat(), this.o.intervalMs ?? HEARTBEAT_INTERVAL_MS);
@@ -134,7 +222,11 @@ export class RideHeartbeat {
   current(): HeartbeatStamp | null { return this.stamp; }
 
   private write(): void {
-    try { this.o.storage?.setItem(HEARTBEAT_KEY, JSON.stringify(this.stamp)); } catch { /* quota, private mode */ }
+    const json = JSON.stringify(this.stamp);
+    try { this.o.storage?.setItem(HEARTBEAT_KEY, json); } catch { /* quota, private mode */ }
+    if (!this.o.shared || !this.o.id) return;
+    const key = SHARED_HEARTBEAT_PREFIX + this.o.id;
+    try { if (this.stamp?.ended) this.o.shared.removeItem(key); else this.o.shared.setItem(key, json); } catch { /* quota, private mode */ }
   }
 }
 

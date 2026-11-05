@@ -9,6 +9,8 @@
 //   water    the elevation-v1 water polygons, simplified
 //   green    OSM parks, grass and woods, simplified
 //   streets  carriageways and cycle paths as flat bands of their mapped width
+//   rails    railway corridors (rail-v1) as a two-tone band, the ballast bed with a dark band at the gauge (lane R1-B
+//            #224: from the air the tracks ended where the resident cells did, ~2 km out; `?farRail=0` drops them)
 //
 // Everything lies FAR_LIFT over the relief (water, green and streets a few
 // decimetres up, so a coarse grid never pokes through): from 2 km away
@@ -24,6 +26,9 @@ import type { WaterGeometry } from './water.js';
 import type { HeightFn, Vec2 } from './surface.js';
 import type { Rect } from './groundStore.js';
 import { groundPalette, roadLookTones, type GroundPalette, type RoadLookId } from './groundLook.js';
+import { RAIL_SECTION, RAIL_STRIPE, RAIL_TONES, type RailWay } from './railTracks.js';
+
+function rgbOf(c: readonly number[]): [number, number, number] { return [c[0] / 255, c[1] / 255, c[2] / 255]; }
 
 /** Far blocks are this many streamed cells on a side. */
 export const FAR_BLOCK_CELLS = 2;
@@ -32,7 +37,9 @@ export const FAR_GRID_M = 50;
 /** Triangle budget per 2 km block. */
 export const FAR_BLOCK_BUDGET = 20000;
 /** Lift over the relief per layer, metres. */
-export const FAR_LIFT = { land: 0, green: 0.3, water: 0.4, street: 0.5, cycle: 0.55 } as const;
+export const FAR_LIFT = { land: 0, green: 0.3, water: 0.4, street: 0.5, cycle: 0.55, rail: 0.6, railTrack: 0.62 } as const;
+/** The far rail band: the bed toe to toe and the dark band over both rails (metres), in the near ring's tones (railTracks.ts). */
+export const FAR_RAIL = { bedM: 2 * RAIL_SECTION.toeHalf, trackM: RAIL_SECTION.gauge + 2 * RAIL_STRIPE.half, bed: rgbOf(RAIL_TONES.ballast), track: rgbOf(RAIL_STRIPE.tone) } as const;
 /** Douglas–Peucker tolerance for outlines and centrelines, metres. */
 export const FAR_SIMPLIFY_M = 3;
 
@@ -63,7 +70,7 @@ const STREET_TIERS: readonly (readonly string[])[] = [
   ['residential', 'unclassified', 'living_street', 'pedestrian'],
 ];
 
-export interface FarSubCell { key: string; rect: Rect; water: WaterGeometry | null; osm: OsmGroundExtract | null }
+export interface FarSubCell { key: string; rect: Rect; water: WaterGeometry | null; osm: OsmGroundExtract | null; /** rail-v1 ways through the cell (absent: no far rails, `?farRail=0`). */ rails?: readonly RailWay[] }
 export interface FarBlockInput { key: string; rect: Rect; cells: readonly FarSubCell[]; ground: HeightFn | null; project: (lngLat: [number, number]) => Vec2 }
 export interface BuiltFar {
   key: string;
@@ -173,6 +180,22 @@ export function buildFarBlock(input: FarBlockInput, FAR: FarColours = FAR_COLOUR
       for (const poly of c.water?.polygons ?? []) polygon(m, poly, height, FAR_LIFT.water, FAR.water);
       count('water', m, n);
     });
+    // Rail corridors (rail-v1), by the sub-cell of their midpoint: a way is listed in every cell it passes, once here.
+    const railSeen = new Set<string>();
+    for (const c of input.cells) for (const w of c.rails ?? []) {
+      const id = `${w.points[0].join(',')};${w.points[w.points.length - 1].join(',')};${w.points.length}`;
+      if (railSeen.has(id)) continue;
+      railSeen.add(id);
+      const i = subOf(midpoint(w.points));
+      if (i < 0) continue;
+      const m = meshes[i], n = m.indices.length, pts = simplify(w.points, FAR_SIMPLIFY_M);
+      // A bridge rides at least the lower of its ends (the water under it is not the deck).
+      const ends = Math.min(height(...pts[0]), height(...pts[pts.length - 1]));
+      const h: HeightFn = w.bridge ? (x, y) => Math.max(height(x, y), ends) : height;
+      ribbon(m, pts, 0, FAR_RAIL.bedM, h, FAR_LIFT.rail, { step: 1e9, colour: FAR_RAIL.bed });
+      ribbon(m, pts, 0, FAR_RAIL.trackM, h, FAR_LIFT.railTrack, { step: 1e9, colour: FAR_RAIL.track });
+      byLayer.rail = (byLayer.rail ?? 0) + (m.indices.length - n) / 3;
+    }
     // Streets, by the sub-cell of their midpoint.
     for (const w of ways) {
       const hw = w.tags.highway ?? '';

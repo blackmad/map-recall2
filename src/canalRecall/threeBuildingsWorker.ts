@@ -15,7 +15,7 @@ import { answerStandIn, isStandInRequest, type StandInRequest } from './renderer
 import { planTiles, plannedTransferables } from './ownGround/cellTiles.js';
 import { answerOverview, isOverviewRequest, type OverviewRequest } from './ownMap/overviewPool.js';
 
-type Job = { surveyedEnvelopeData?: SurveyedBuildingEnvelope[]; surveyedEnvelopeRevision?: string; special?: 'kits' | 'boats'; boats?: Houseboat[]; layers: KitLayers; key: string; gen: number; look: BuildingLook; features: Feature[]; contextFeatures?: Feature[]; mode?: 'walls' | 'extras' | 'coarse' | 'shell'; streets?: Float32Array; profiles?: StreetAppearanceProfile[]; appearanceRevision?: string; hostOpenings?: ChunkHostOpeningConfig[]; hostOpeningRevision?: string; /** Facade tiles per side and the smallest chunk worth cutting: the tiles' x/y partition is cut here (cellTiles.ts planTiles). */ tiles?: number; tileMin?: number };
+type Job = { surveyedEnvelopeData?: SurveyedBuildingEnvelope[]; surveyedEnvelopeRevision?: string; special?: 'kits' | 'boats'; boats?: Houseboat[]; layers: KitLayers; key: string; gen: number; look: BuildingLook; features: Feature[]; contextFeatures?: Feature[]; mode?: 'walls' | 'extras' | 'coarse' | 'shell'; streets?: Float32Array; profiles?: StreetAppearanceProfile[]; appearanceRevision?: string; hostOpenings?: ChunkHostOpeningConfig[]; hostOpeningRevision?: string; shellRoofs?: boolean; /** Facade tiles per side and the smallest chunk worth cutting: the tiles' x/y partition is cut here (cellTiles.ts planTiles). */ tiles?: number; tileMin?: number };
 
 // world-v1 (`?world=v1`): the streamer's cell reads (fetch, inflate, decode, decoded-cell cache) run here, off the
 // main thread, and come back as batches of styled features (world/worldCells.ts).

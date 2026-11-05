@@ -41,6 +41,7 @@ import { CITY_BRICK_LIGHTNESS, CITY_ROOF, PERIOD_FROM, PHOTO_WALL_CELL_MEAN, SLO
 import { inferMaterialSlot, isMaterialSlot, isWhiteWord, INFERRED_SLOT_SOURCE } from './materialSlotInference.ts';
 import { paintBrick20Canvas, paintBrickCanvas, paintDoorCanvas, paintGlassCanvas, paintGlassTintCanvas, paintStoneCanvas, paintStuccoCanvas, paintWhiteCanvas, paintWhiteStuccoCanvas, roofCanvas } from './slotCells.ts';
 import { HIGHLIGHT_GLSL, highlightDefines } from './highlight.ts';
+import { HIGH_ANISOTROPY, pageTextureParams } from './texturePolicy.ts';
 import { FACADE_TIER_GLSL, FACADE_TIER_OFF, ROOF_LAYERS_OFF, ROOF_TIER_GLSL, roofTierUniform } from '../roofTier.ts';
 import { BAKED_SHADE_GLSL } from '../rendererShared/lightRig.ts';
 import { sceneLookFrom, sceneSlotHex, type SceneLook } from './sunny.ts';
@@ -352,14 +353,17 @@ export type CityVariant = {
   side?: number;
   /** Drawn without the depth fade (look/depthFade.ts): catalogue landmarks stay crisp at any distance. */
   noFade?: boolean;
+  /** Facade chunks under the complementary dissolve (SWAP_SLOTS): `swapSlot` attribute, `citySwapUnder` / `cityUnder` uniforms. */
+  swap?: boolean;
 };
 
-export const variantKey = (v: CityVariant) => `${v.lit ? 'lit' : 'unlit'}|${v.kind}|${v.kind === 'slot' ? v.uv ?? 'uv' : '-'}|${v.highlight ? 'hl' : v.dim ? 'dim' : '-'}|${v.side ?? 0}${v.noFade ? '|nofade' : ''}`;
+export const variantKey = (v: CityVariant) => `${v.lit ? 'lit' : 'unlit'}|${v.kind}|${v.kind === 'slot' ? v.uv ?? 'uv' : '-'}|${v.highlight ? 'hl' : v.dim ? 'dim' : '-'}|${v.side ?? 0}${v.noFade ? '|nofade' : ''}${v.swap ? '|swap' : ''}`;
 
 /** Shader defines for a variant (also what the program cache key is built from). */
 export function variantDefines(v: CityVariant): Record<string, string> {
   const d: Record<string, string> = { CITY_SLOT_COUNT: String(SLOT_LAYER_COUNT) };
   if (v.kind === 'slot') d.CITY_SLOT = '';
+  if (v.swap) d.CITY_SWAP = '';
   if (v.lit) {
     // Lit (the shared frame's look): box UVs and the highlight/dim state are per-material uniforms (cityVariantUniforms),
     // so the uv/box and plain/highlight/dim variants of a kind share one program (#129 P4 registry).
@@ -378,7 +382,7 @@ export function cityVariantUniforms(v: CityVariant): { cityForce: { value: numbe
 }
 
 /** The program key of a variant: lit variants differ only in uniforms beyond their kind; side is a material parameter. */
-export const cityProgramKey = (v: CityVariant) => (v.lit ? `city-look-v4|lit|${v.kind}` : `city-look-v3|${variantKey({ ...v, side: 0 })}`);
+export const cityProgramKey = (v: CityVariant) => (v.lit ? `city-look-v4|lit|${v.kind}${v.swap ? '|swap' : ''}` : `city-look-v3|${variantKey({ ...v, side: 0 })}`);
 
 const HIGHLIGHT_SRGB = 'vec3(1.0, 0.824, 0.122)';
 const HIGHLIGHT_LINEAR = 'vec3(1.0, 0.637, 0.0137)';
@@ -407,6 +411,29 @@ float cityGrain(vec3 cell) {
   return mix(1.0, g, ${glslFloat(HIGHLIGHT_GRAIN)});
 }`;
 
+/**
+ * Complementary dissolve (`?swapComplement=0` turns it off; lane R1-A, #223). A chunk dissolving in draws where
+ * `hash < cityFade`; the mesh it replaces draws only where `hash >= under`, with `under` the same value, so no pixel
+ * is drawn by both during the swap (the coplanar depth fight under a screen-locked dither the user saw as moving
+ * stripes) and the replaced mesh dissolves out as its successor dissolves in (no one-frame pop at the end).
+ * `under` comes per building from `citySwapUnder[swapSlot - 1]` (the coarse shells, one merged mesh over many
+ * detail tiles: the slot is a per-vertex byte) or per mesh from `cityUnder` (a rebuilt chunk's old mesh). Only
+ * materials of the `swap` variant (CITY_SWAP) carry it; every other program is byte-identical.
+ */
+export const SWAP_SLOTS = 16;
+const SWAP_VERTEX_DECLS = /* glsl */ `
+#ifdef CITY_SWAP
+attribute float swapSlot;
+uniform vec4 citySwapUnder[${SWAP_SLOTS / 4}];
+uniform float cityUnder;
+flat varying float vCityUnder;
+#endif`;
+const SWAP_VERTEX_BODY = /* glsl */ `
+#ifdef CITY_SWAP
+int citySw = int(swapSlot + 0.5) - 1;
+vCityUnder = citySw >= 0 ? citySwapUnder[citySw / 4][citySw % 4] : cityUnder;
+#endif`;
+
 /** Shared vertex declarations (both variants). */
 const VERTEX_DECLS = /* glsl */ `
 attribute float layer;
@@ -426,6 +453,7 @@ varying float vFacDist;
 uniform float cityForce;
 uniform float cityBoxUv;
 #endif
+${SWAP_VERTEX_DECLS}
 ${HIGHLIGHT_GLSL}`;
 
 /**
@@ -434,6 +462,7 @@ ${HIGHLIGHT_GLSL}`;
  * stay horizontal and the brick keeps its metre scale on any placement.
  */
 const VERTEX_BODY = /* glsl */ `
+${SWAP_VERTEX_BODY}
 vTint = tint.rgb; vAccent = accent.rgb;
 vHighlight = hlState(hidden);
 #ifdef CITY_VARIANT_UNIFORMS
@@ -496,12 +525,22 @@ varying vec3 vTint;
 varying vec3 vAccent;
 flat varying float vHighlight;
 varying float vFacDist;
+#ifdef CITY_SWAP
+flat varying float vCityUnder;
+#endif
 ${HIGHLIGHT_GRAIN_GLSL}
 ${HIGHLIGHT_GLSL}`;
 
 const FRAGMENT_FADE = /* glsl */ `
 if (HL_GHOST(vHighlight)) discard;
-if (cityFade < 1.0 && fract(dot(floor(gl_FragCoord.xy), vec2(0.754877666, 0.569840296))) >= cityFade) discard;`;
+#ifdef CITY_SWAP
+float cityHash = fract(dot(floor(gl_FragCoord.xy), vec2(0.754877666, 0.569840296)));
+if (cityFade < 1.0 && cityHash >= cityFade) discard;
+// The complement of a replacement dissolving in over (or out from) this mesh: where it draws, this one does not.
+if (cityHash < vCityUnder) discard;
+#else
+if (cityFade < 1.0 && fract(dot(floor(gl_FragCoord.xy), vec2(0.754877666, 0.569840296))) >= cityFade) discard;
+#endif`;
 
 /** Cell × tint × accent, the same arithmetic as the facade shader of 2026-10-02. */
 const FRAGMENT_CELL = /* glsl */ `
@@ -577,6 +616,10 @@ export type CityLookUniforms = {
   cellTier: { value: number[] };
   /** Unlit slot meshes: world → east/north/up for the baked shade (set per model in the legacy layers). */
   enuFromWorld: { value: any };
+  /** CITY_SWAP: the complement's `under` per swap slot (SWAP_SLOTS floats, 0 = draw everywhere). */
+  citySwapUnder: { value: Float32Array };
+  /** CITY_SWAP: the complement's `under` for vertices without a slot (a rebuilt chunk's old mesh clones it). */
+  cityUnder: { value: number };
 };
 
 export function createCityUniforms(THREE: any, init: Partial<CityLookUniforms> = {}): CityLookUniforms {
@@ -593,11 +636,13 @@ export function createCityUniforms(THREE: any, init: Partial<CityLookUniforms> =
     roofTier: init.roofTier ?? { value: roofTierUniform() },
     cellTier: init.cellTier ?? { value: FACADE_TIER_OFF },
     enuFromWorld: init.enuFromWorld ?? { value: new THREE.Matrix3() },
+    citySwapUnder: init.citySwapUnder ?? { value: new Float32Array(SWAP_SLOTS) },
+    cityUnder: init.cityUnder ?? { value: 0 },
   };
 }
 
 /** Attribute values used when a mesh does not carry the attribute (GLB meshes: no accent, never hidden). */
-const DEFAULT_ATTRIBUTES = { accent: [1, 1, 1, 1], hidden: [0], color: [1, 1, 1], uv: [0, 0], uv1: [0, 0] };
+const DEFAULT_ATTRIBUTES = { accent: [1, 1, 1, 1], hidden: [0], color: [1, 1, 1], uv: [0, 0], uv1: [0, 0], swapSlot: [0] };
 
 /** Mark shared by every city-look material (and the recipe look's, so landmark disposal leaves them). */
 export const CITY_LOOK_SHARED = 'recipeLookShared';
@@ -787,7 +832,7 @@ export function createCityLook(THREE: any, options: CityLookOptions = {}): CityL
     const t = new THREE.DataArrayTexture(data, size, size, SLOT_LAYER_COUNT);
     t.format = format; t.type = THREE.UnsignedByteType;
     t.wrapS = t.wrapT = THREE.RepeatWrapping; t.minFilter = THREE.LinearMipmapLinearFilter; t.magFilter = THREE.LinearFilter;
-    t.generateMipmaps = true; t.anisotropy = options.anisotropy ?? 4; t.unpackAlignment = 1; t.needsUpdate = true;
+    t.generateMipmaps = true; t.anisotropy = options.anisotropy ?? pageTextureParams('slotCells', HIGH_ANISOTROPY).anisotropy; t.unpackAlignment = 1; t.needsUpdate = true;
     t.userData = { bytes: data.byteLength, [CITY_LOOK_SHARED]: true };
     return t;
   };

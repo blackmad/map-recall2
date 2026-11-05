@@ -1,7 +1,7 @@
 import * as Sentry from '@sentry/browser';
 import { PENDING_GRAPHICS_FAILURES } from './mapGuard';
 import { IGNORED_ERRORS } from './monitoringFilters';
-import { PeerTabs, RideHeartbeat, phaseName, unendedReport } from './rideHeartbeat';
+import { type HeartbeatSample, type KeyedStorage, PeerTabs, RideHeartbeat, SHARED_HEARTBEAT_PREFIX, StallWatch, orphanReport, phaseName, takeOrphans, unendedReport } from './rideHeartbeat';
 
 /**
  * Canal Recall error monitoring.
@@ -133,6 +133,18 @@ window.addEventListener('unhandledrejection', (event) => {
   for (const detail of pending ?? []) window.canalRecallMonitoring?.reportGraphicsFailure(detail);
 }
 
+/** What the own engine holds (engine/perfHud.ts `__canalPerf.snapshot()`), for the heartbeat; empty under MapLibre. */
+function perfSample(): Partial<HeartbeatSample> {
+  const snap = (window as unknown as { __canalPerf?: { snapshot?: () => Record<string, number | null> } }).__canalPerf?.snapshot?.();
+  if (!snap) return {};
+  const out: Partial<HeartbeatSample> = {};
+  for (const k of ['gpuMB', 'geometries', 'textures', 'cells', 'chunks', 'models', 'dpr'] as const) {
+    const v = snap[k];
+    if (typeof v === 'number' && Number.isFinite(v)) out[k] = Math.round(v * 10) / 10;
+  }
+  return out;
+}
+
 /** The page's dedicated workers: the shared pool (engine/workerPool.ts) plus the own ground's worker. */
 function workerCount(game: CanalRecallGameGlobals | undefined): number | undefined {
   const pool = (window as unknown as { __canalRecallWorkerPool?: { live?: number } | null }).__canalRecallWorkerPool;
@@ -147,6 +159,9 @@ function workerCount(game: CanalRecallGameGlobals | undefined): number | undefin
 if (enabled && !/[?&]heartbeat=0\b/.test(location.search)) {
   let storage: Storage | null = null;
   try { storage = window.sessionStorage; } catch { /* blocked storage */ }
+  // The shared copy (rideHeartbeat.ts takeOrphans): a hung tab that is closed takes its sessionStorage with it.
+  let shared: KeyedStorage | null = null;
+  if (!/[?&]heartbeatShared=0\b/.test(location.search)) { try { shared = window.localStorage; } catch { /* blocked storage */ } }
   const peers = new PeerTabs(Math.random().toString(36).slice(2));
   let channel: BroadcastChannel | null = null;
   try {
@@ -155,6 +170,8 @@ if (enabled && !/[?&]heartbeat=0\b/.test(location.search)) {
   } catch { /* no BroadcastChannel */ }
   const heartbeat = new RideHeartbeat({
     storage,
+    shared,
+    id: peers.id,
     sample: () => {
       const game = (window as unknown as { canalRecallGame?: CanalRecallGameGlobals }).canalRecallGame;
       const tags = routeTags();
@@ -167,12 +184,47 @@ if (enabled && !/[?&]heartbeat=0\b/.test(location.search)) {
         distanceM: Number.isFinite(distancePx) ? Math.round(distancePx / 3) : undefined,
         workers: workerCount(game),
         tabs: (() => { try { channel?.postMessage({ id: peers.id }); } catch { /* closed */ } return peers.count(Date.now()); })(),
+        ...perfSample(),
       };
     },
   });
   const previous = heartbeat.start(document.visibilityState !== 'hidden');
   const report = unendedReport(previous, Date.now());
   if (report) Sentry.captureMessage(report.message, { level: 'error', tags: report.tags, extra: report.extra, fingerprint: ['canal-recall', 'unended-ride', report.tags.engine ?? 'unknown'] });
+  // The previous page of this tab is reported above (or ended cleanly): its shared copy is not an orphan.
+  if (previous?.id) { try { shared?.removeItem(SHARED_HEARTBEAT_PREFIX + previous.id); } catch { /* */ } }
+  for (const orphan of takeOrphans(shared, peers.id, Date.now())) {
+    const r = orphanReport(orphan, Date.now());
+    if (r) Sentry.captureMessage(r.message, { level: 'error', tags: r.tags, extra: r.extra, fingerprint: ['canal-recall', 'orphaned-ride', r.tags.engine ?? 'unknown'] });
+  }
+  // Stall report (rideHeartbeat.ts StallWatch): a tab that is practically locked but alive, reported while it can still
+  // send, with what the page holds. `?stallReport=0` turns it off.
+  if (!/[?&]stallReport=0\b/.test(location.search) && typeof PerformanceObserver === 'function') {
+    const watch = new StallWatch();
+    const onEntry = (entry: PerformanceEntry & { scripts?: Array<{ sourceURL?: string; sourceFunctionName?: string; invoker?: string; duration?: number }> }) => {
+      // Riding only (GameState.RACING): the load and the menu have their own long tasks and their own gates.
+      if ((window as unknown as { canalRecallGame?: CanalRecallGameGlobals }).canalRecallGame?.state !== 4) return;
+      const stall = watch.note(entry.startTime, entry.duration);
+      if (!stall) return;
+      heartbeat.beat();
+      const now = heartbeat.current();
+      const scripts = (entry.scripts ?? []).slice().sort((a, b) => (b.duration ?? 0) - (a.duration ?? 0)).slice(0, 3)
+        .map(s => `${Math.round(s.duration ?? 0)} ms ${s.invoker ?? ''} ${s.sourceFunctionName ?? ''} ${(s.sourceURL ?? '').split('/').pop()}`.trim());
+      Sentry.captureMessage('ride stalled: long frames', {
+        level: 'warning',
+        tags: { ...routeTags(), heartbeat: 'stall', phase: now?.phase ?? 'unknown' },
+        extra: { ...stall, heapMB: now?.heapMB ?? null, peakHeapMB: now?.peakHeapMB ?? null, gpuMB: now?.gpuMB ?? null, geometries: now?.geometries ?? null,
+          textures: now?.textures ?? null, cells: now?.cells ?? null, chunks: now?.chunks ?? null, models: now?.models ?? null, dpr: now?.dpr ?? null,
+          workers: now?.workers ?? null, tabs: now?.tabs ?? null, uptimeS: now ? Math.round((now.at - now.startedAt) / 1000) : null, lastFrameScripts: scripts },
+        fingerprint: ['canal-recall', 'ride-stall', routeTags().engine ?? 'unknown'],
+      });
+    };
+    const observe = (type: string) => {
+      try { new PerformanceObserver(list => { for (const e of list.getEntries()) onEntry(e as never); }).observe({ type, buffered: false }); return true; } catch { return false; }
+    };
+    // long-animation-frame (Chrome 123+) names the scripts; longtask elsewhere; Safari has neither (nothing to watch).
+    if (!(PerformanceObserver.supportedEntryTypes?.includes('long-animation-frame') && observe('long-animation-frame'))) observe('longtask');
+  }
   document.addEventListener('visibilitychange', () => heartbeat.setVisible(document.visibilityState !== 'hidden'));
   window.addEventListener('pagehide', () => heartbeat.end());
   window.addEventListener('pageshow', event => { if (event.persisted) heartbeat.resume(); });

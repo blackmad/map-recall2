@@ -91,7 +91,8 @@ export type MeshBuilding = {
   /** A plain band this tall between the top window row and the wall top (large tier). */
   parapetM?: number;
   /** A real roof for this building; its walls already stop at the eaves. */
-  roof?: { plan: RoofPlan; layers: { slope: number; plain: number; dormer: number }; roofHex: string; dims: RoofDims };
+  /** `lowPoly`: a shell's roof (threeBuildingFeatures.ts shellRoofPlan): no street crown, no street-facing gable ends. */
+  roof?: { plan: RoofPlan; layers: { slope: number; plain: number; dormer: number }; roofHex: string; dims: RoofDims; lowPoly?: boolean };
   /**
    * Roof furniture measured from the orthophoto (roof-facts sidecar, roofs/roofFurniture.ts): drawn in
    * the extras chunk on a flat roof instead of the guessed roof extras. Offsets are from the outline's first vertex.
@@ -634,8 +635,8 @@ export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin, m
     if(b.surveyedEnvelope){
       roof.push(...b.surveyedEnvelope.roofTriangles.map(t=>({...t,uv:t.p.map(p=>[p[0]/5,p[1]/5])as RoofTri['uv'],part:'trim' as const,hex:'#4a525d'})),...b.surveyedEnvelope.closureTriangles.map(t=>({...t,uv:t.p.map(p=>[p[0]/5,p[2]/3])as RoofTri['uv'],part:'plate' as const,facadeLayer:b.plainLayer})));
     }else if (b.roof) {
-      roof = roofTrianglesForOutline(b.polygons[0]?.[0] ?? [], origin, b.roof.plan, b.heightM, b.roof.dims, kxLocal, b.roof.plan.kind === 'gable' || b.roof.plan.streetRidge ? crownFacing(bi) : undefined);
-      if (crownFronts.length&&!b.roof.plan.repeatedTerrace) roof = streetCrown(roof,crownFronts,b.heightM,['gable','pitched','halfHipped'].includes(b.roof.plan.kind)&&!b.roof.plan.shutters);
+      roof = roofTrianglesForOutline(b.polygons[0]?.[0] ?? [], origin, b.roof.plan, b.heightM, b.roof.dims, kxLocal, !b.roof.lowPoly && (b.roof.plan.kind === 'gable' || b.roof.plan.streetRidge) ? crownFacing(bi) : undefined);
+      if (crownFronts.length&&!b.roof.plan.repeatedTerrace&&!b.roof.lowPoly) roof = streetCrown(roof,crownFronts,b.heightM,['gable','pitched','halfHipped'].includes(b.roof.plan.kind)&&!b.roof.plan.shutters);
     }
     const walled = mode === 'walls', shellMode = mode === 'shell';
     const lid = (walled || shellMode) && !b.surveyedEnvelope && b.lid && (!b.roof || !roof.length || b.roof.plan.keepLid) ? lidMesh(b, origin) : null;
