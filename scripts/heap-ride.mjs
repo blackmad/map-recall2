@@ -216,7 +216,7 @@ await page.evaluate(() => {
     p.steerInput = Math.max(-1, Math.min(1, err * 2.5)); p.throttle = p.speed < cruise ? 1 : 0; p.brake = p.speed > cruise * 1.6 ? 1 : 0; p.handbrake = false;
   };
 });
-if (via) await page.evaluate(([viaArg, v]) => {
+const startRails = () => page.evaluate(([viaArg, v]) => {
   const g = canalRecallGame, p = g.player, l = g.osmLoader, ppm = (0, eval)('PIXELS_PER_METER');
   const world = (lat, lng) => ({ x: l._lastOffsetX + (lng - l._lastCenterLng) * 111320 * Math.cos(l._lastCenterLat * Math.PI / 180) * ppm, y: l._lastOffsetY - (lat - l._lastCenterLat) * 111320 * ppm });
   let pois;
@@ -250,6 +250,7 @@ if (via) await page.evaluate(([viaArg, v]) => {
     this.distancePx = (this.distancePx || 0) + v * dt;
   };
 }, [via, railSpeed]);
+if (via) await startRails();
 const rail = via ? await page.evaluate(() => window.__rail) : null;
 if (rail) console.log(`rails: ${rail.pois.length} POIs, ${Math.round(rail.px / 3)} m out`);
 
@@ -287,9 +288,51 @@ if (every > 0) {
     console.log(`  t${t}: main ${row.main.usedMB} MB +${row.main.backingMB ?? '?'} buf, workers ${row.workersUsedMB}, renderer RSS ${row.rendererMB}, GPU RSS ${row.gpuMB}, gl ${row.gpu?.totalMB ?? '-'} MB, chunks ${row.chunks} fading ${row.fading}; frames p99 ${frames.p99} >50 ${frames.over50} >100 ${frames.over100} max ${frames.longestMs}`);
   }
 } else await page.waitForTimeout(rideS * 1000);
+// --rides N: after the ride, N - 1 more rides in the same page (route setup -> a new destination -> ride), each
+// --ride seconds, sampled at its end: what a player who keeps playing without reloading holds (lane E2, #215).
+const rides = Number(opt('rides', '1'));
+const rideRows = [];
+for (let r = 2; r <= rides; r++) {
+  const dest = await page.evaluate(r => {
+    const g = canalRecallGame;
+    g._openRouteSetup();
+    const ids = [...document.querySelectorAll('#poi-destination option')].map(o => o.value).filter(Boolean);
+    const id = ids[(r * 7) % ids.length];
+    document.querySelector('#poi-destination').value = id;
+    const here = g.routePois.slice().sort((a, b) => Math.hypot(a.lat - 52.3731, a.lng - 4.8926) - Math.hypot(b.lat - 52.3731, b.lng - 4.8926))[r % 10];
+    g._pickDestinationNear = () => here;
+    return id;
+  }, r);
+  await page.locator('#route-card').evaluate(f => f.requestSubmit());
+  await page.waitForFunction(() => canalRecallGame.state === 4 && canalRecallGame.camera.introOverview === 0, null, { timeout: 180_000 }).catch(() => errors.push(`ride ${r}: never raced`));
+  await page.evaluate(() => { const g = canalRecallGame, p = g.player; g._quizFreezesRide = () => false; p.update = window.__heldUpdate ?? p.update; });
+  if (via) await startRails();
+  await page.waitForTimeout(rideS * 1000);
+  const row = await sample(`ride${r}`);
+  delete row.scene;
+  rideRows.push({ ride: r, dest, ...row });
+  console.log(`  ride ${r} (${dest}): main ${row.main.usedMB} MB +${row.main.backingMB} buf, workers ${row.workers.length}/${row.workersUsedMB} MB, renderer RSS ${row.rendererMB}, gl ${row.gpu?.totalMB ?? '-'}, three ${JSON.stringify(row.three)}`);
+}
+// --hide S: then another tab in front for S seconds (this page hidden, rAF stopped, workers and timers running), the
+// hidden page sampled every --every seconds (default 15): does anything pile up while nobody draws? (lane E2, #215)
+const hideS = Number(opt('hide', '0'));
+const hiddenRows = [];
+if (hideS > 0) {
+  const front = await context.newPage();
+  await front.goto('about:blank'); await front.bringToFront();
+  const step = every > 0 ? every : 15;
+  for (let t = step; t <= hideS; t += step) {
+    await front.waitForTimeout(step * 1000);
+    const vis = await page.evaluate(() => document.visibilityState);
+    const row = await sample(`hidden${t}`); delete row.scene;
+    hiddenRows.push({ t, visibility: vis, ...row });
+    console.log(`  hidden ${t}s (${vis}): main ${row.main.usedMB} MB +${row.main.backingMB} buf, workers ${row.workers.length}/${row.workersUsedMB} MB, renderer RSS ${row.rendererMB}`);
+  }
+  await page.bringToFront(); await front.close();
+}
 const rideFrames = frameStats(await frameWindow(rideT0));
 const end = await sample('end');
-const result = { device, qs, throttle, rideS, every, chrome: useChrome, rail, settleMs, bundles: process.env.BUNDLES_DIR ?? null, world: process.env.WORLD_DIR ?? null, start, timeline, end, rideFrames, errors };
+const result = { device, qs, throttle, rideS, every, chrome: useChrome, rail, settleMs, bundles: process.env.BUNDLES_DIR ?? null, world: process.env.WORLD_DIR ?? null, start, timeline, rideRows, hiddenRows, end, rideFrames, errors };
 fs.mkdirSync(path.dirname(out), { recursive: true });
 fs.writeFileSync(out, JSON.stringify(result, null, 1));
 await browser.close();

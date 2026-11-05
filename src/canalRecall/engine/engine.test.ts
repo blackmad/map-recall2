@@ -262,9 +262,20 @@ test('street furniture (#170): built with the extras, suspended with the flight,
     g.CanalRecallStreetFurniture.furnitureFlag = () => true;
     const extras = new CityExtras(host); extras.start();
     extras.setSuspended(true);
-    extras.hookGround({ ready: true, pointBase: () => 0 });
+    const ground = { ready: true, pointBase: () => 0 };
+    // Staged (lane E2): trees on the first frame, furniture on the second, landmarks on the third.
+    extras.hookGround(ground);
+    assert.deepEqual(log.slice(3), [], 'the first frame hooks the trees only');
+    extras.hookGround(ground);
+    assert.deepEqual(log.slice(3), ['ground:function'], 'the second hooks the furniture');
+    extras.hookGround(ground); extras.hookGround(ground);
     extras.refreshGroundBases(0);
     assert.deepEqual(log, ['new:true', 'load:/data/extracts/amsterdam', 'suspended:true', 'ground:function', 'rebase']);
+    // ?stagedGroundHook=0: every consumer in one call.
+    log.length = 0;
+    const once = new CityExtras(host); once.start();
+    once.hookGround(ground, false);
+    assert.ok(log.includes('ground:function'), 'unstaged hooks the furniture at once');
   } finally { delete g.CanalRecallStreetFurniture; delete g.__canalStreetFurniture; }
 });
 
