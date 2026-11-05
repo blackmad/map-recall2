@@ -42,8 +42,37 @@ export class FrameBudget {
    * own-ground slices. With it, the first resumed slice spends the frame's budget and the rest wait for the next frame
    * (at most MAX_REGATES times, so no slice starves).
    */
-  constructor(private readonly deps: FrameBudgetDeps, readonly budgetMs = GROUND_FRAME_BUDGET_MS, readonly gate = false) {
+  /**
+   * `queue` (lane E7, #220): deferred slices wait in one FIFO line and are let through after each paint, one task at a
+   * time, while the frame's budget lasts (at least one per frame, so none starves). The gate above polls instead: each
+   * deferred slice re-checks after every paint and runs anyway after MAX_REGATES frames, so with five or more cells in
+   * flight (the cold start, a route change) they all came due after the same paint: on the iPhone profile at 4x, 8 of
+   * the cold start's 10 frames over 100 ms were four to six 6-8 ms `setTimeout` continuations of `indexSteps` /
+   * `pacedSteps` in one frame. `?groundBudgetQueue=0` restores the gate.
+   */
+  constructor(private readonly deps: FrameBudgetDeps, readonly budgetMs = GROUND_FRAME_BUDGET_MS, readonly gate = false, readonly queue = false) {
     this.resumedAt = deps.now();
+  }
+  private readonly line: Array<() => void> = [];
+  private pumping = false;
+  /** Slices waiting in the line (diagnostics, tests). */
+  get waiting(): number { return this.line.length; }
+  /** After each paint, let waiting slices through one task at a time while this frame's budget lasts. */
+  private pump(): void {
+    if (this.pumping) return;
+    this.pumping = true;
+    void (async () => {
+      try {
+        while (this.line.length) {
+          await this.deps.nextFrame();
+          for (let released = 0; this.line.length && (released === 0 || !this.spentThisFrame()); released++) {
+            this.line.shift()!();
+            // The released slice runs (to its next yield) before this task resumes and reads the budget again.
+            await this.deps.yieldTask();
+          }
+        }
+      } finally { this.pumping = false; }
+    })();
   }
 
   private spentThisFrame(): boolean { return this.spentFrame === this.frame && this.spent >= this.budgetMs; }
@@ -59,7 +88,11 @@ export class FrameBudget {
     const t = this.deps.now();
     if (this.spentFrame !== this.frame) { this.spentFrame = this.frame; this.spent = 0; }
     this.spent += Math.max(0, t - (since ?? this.resumedAt));
-    if (this.spent >= this.budgetMs) {
+    if (this.queue && (this.spent >= this.budgetMs || this.line.length)) {
+      // Over budget, or others already waiting: join the back of the line (no slice overtakes a waiting one).
+      this.deferrals++;
+      await new Promise<void>(resolve => { this.line.push(resolve); this.pump(); });
+    } else if (this.spent >= this.budgetMs) {
       this.deferrals++;
       await this.deps.nextFrame();
       for (let n = 0; this.gate && n < MAX_REGATES && this.spentThisFrame(); n++) { this.regated++; await this.deps.nextFrame(); }
@@ -81,6 +114,11 @@ export function groundFrameBudgetMs(search: string): number | null {
   if (m[1] === '1' || m[1] === 'on') return GROUND_FRAME_BUDGET_MS;
   const v = Number(m[1]);
   return m[1] === '0' || m[1] === 'off' || !Number.isFinite(v) || v <= 0 ? null : v;
+}
+
+/** `?groundBudgetQueue=0`: deferred slices poll the gate (lane E6's behaviour) instead of waiting in one line (lane E7). */
+export function groundBudgetQueue(search: string): boolean {
+  return !/[?&]groundBudgetQueue=(0|off)(&|#|$)/.test(search);
 }
 
 /** `?groundBudgetGate=0`: deferred slices resume without re-checking the frame's budget (lane E5's behaviour). */
@@ -110,7 +148,7 @@ export function pageFrameBudget(): FrameBudget | null {
     now: () => { touch(); return performance.now(); },
     nextFrame: () => new Promise<void>(resolve => raf(() => setTimeout(resolve, 0))),
     yieldTask: () => (g.scheduler?.yield ? g.scheduler.yield() : new Promise<void>(resolve => setTimeout(resolve, 0))),
-  }, ms, groundBudgetGate(g.location?.search ?? ''));
+  }, ms, groundBudgetGate(g.location?.search ?? ''), groundBudgetQueue(g.location?.search ?? ''));
   g[KEY] = budget;
   return budget;
 }
