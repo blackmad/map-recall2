@@ -254,6 +254,16 @@ function fadeClone(source: any, value: number): any | null {
   return clone;
 }
 const BOAT_PREFIX = 'boats:';
+/** What setFeatures groups a feature by, memoised per feature object (ThreeBuildings.groupOf). */
+interface FeatureGroupInfo { geometry: unknown; id: string; kit: boolean; tile: string | null; coarse: string | null; near: string; nearKey: string; extrasKey: string }
+/** `?featureGroupCache=0` (or `window.__canalRecallFeatureGroupCache = false`): the uncached grouping loop. */
+export function featureGroupCacheEnabled(): boolean {
+  try {
+    const g = globalThis as { __canalRecallFeatureGroupCache?: boolean; location?: { search?: string } };
+    if (typeof g.__canalRecallFeatureGroupCache === 'boolean') return g.__canalRecallFeatureGroupCache;
+    return new URLSearchParams(g.location?.search ?? '').get('featureGroupCache') !== '0';
+  } catch { return true; }
+}
 /** Boat chunks build from the houseboat extract, not features: one shared empty source keeps them stable. */
 const NO_SOURCE: Feature[] = [];
 /** The chunk worker sits next to this bundle (three-buildings-worker.bundle.js). */
@@ -660,7 +670,8 @@ export class ThreeBuildings {
     } else this.contextChanges = [];
     const groups = new Map<string, Feature[]>();
     const kitParts: Feature[] = [];
-    for (const feature of features) {
+    if (this.groupCacheOn ??= featureGroupCacheEnabled()) this.groupCached(features, groups, kitParts);
+    else for (const feature of features) {
       const p = feature.properties;
       const id = String(p.id ?? '');
       if (KIT_PART_IDS.has(id) || FRONT_PART_IDS.has(id)) kitParts.push(feature);
@@ -681,7 +692,8 @@ export class ThreeBuildings {
     }
     if (kitParts.length) groups.set(KIT_KEY, kitParts);
     // Houseboats ride along with the resident building tiles, one chunk per tile.
-    for (const feature of features) {
+    if (this.groupCacheOn) { if (this.boatTiles.size) for (const feature of features) { const g = this.groupOf(feature); if (g.tile !== null && this.boatTiles.has(g.tile)) groups.set(BOAT_PREFIX + g.tile, NO_SOURCE); } }
+    else for (const feature of features) {
       const polygons = asPolygons(feature.geometry);
       if (!polygons.length) continue;
       const key = tileKeyOf(polygons);
@@ -689,7 +701,7 @@ export class ThreeBuildings {
     }
     this.lastFeatures = features;
     this.sourceGroups = groups;
-    const same = (a: readonly Feature[] | undefined, b: readonly Feature[]) => !!a && a.length === b.length && a.every((f, i) => f === b[i]);
+    const same = (a: readonly Feature[] | undefined, b: readonly Feature[]) => !!a && (a === b || (a.length === b.length && a.every((f, i) => f === b[i])));
     for (const key of [...this.chunks.keys(), ...this.inflight.keys()]) if (!groups.has(key)) { this.dropChunk(key, true); this.inflight.delete(key); this.inflightOptions.delete(key); this.gens.set(key, (this.gens.get(key) ?? 0) + 1); }
     for(const key of this.contextGroups.keys()) if(!groups.has(key)) this.contextGroups.delete(key);
     const contexts = new Map<string, Feature[]>();
@@ -705,6 +717,35 @@ export class ThreeBuildings {
     }
     for (const k of [...this.contextCache.keys()]) if (!contexts.has(k)) this.contextCache.delete(k);
     this.pump();
+  }
+
+  /**
+   * Feature grouping memo (lane E5, #218; `?featureGroupCache=0` off): a feature's id, kit role and tile keys are fixed,
+   * so they are derived once per feature object instead of on every call. setFeatures runs over every resident
+   * building (~36,000) on each tile flush and each detail-centre move; at ride start on the iPhone profile (4x) one call
+   * was 40-107 ms, mostly this loop. The groups, their order and their lists are the same as the uncached loop's.
+   */
+  private groupCacheOn: boolean | undefined;
+  private readonly groupInfo = new WeakMap<Feature, FeatureGroupInfo>();
+  private groupOf(feature: Feature): FeatureGroupInfo {
+    const held = this.groupInfo.get(feature);
+    if (held && held.geometry === feature.geometry) return held;
+    const id = String(feature.properties.id ?? '');
+    const polygons = asPolygons(feature.geometry);
+    const tile = polygons.length ? tileKeyOf(polygons) : null, near = polygons.length ? tileKeyOf(polygons, this.detailZoom) : '';
+    const info: FeatureGroupInfo = { geometry: feature.geometry, id, kit: KIT_PART_IDS.has(id) || FRONT_PART_IDS.has(id), tile, coarse: tile === null ? null : COARSE_PREFIX + tile, near, nearKey: `near:${near}`, extrasKey: EXTRAS_PREFIX + near };
+    this.groupInfo.set(feature, info);
+    return info;
+  }
+  private groupCached(features: readonly Feature[], groups: Map<string, Feature[]>, kitParts: Feature[]): void {
+    const push = (k: string, f: Feature) => { const l = groups.get(k); if (l) l.push(f); else groups.set(k, [f]); };
+    for (const feature of features) {
+      const g = this.groupOf(feature);
+      if (g.kit) kitParts.push(feature);
+      if (KIT_HIDE_SET.has(g.id) || this.boatIds.has(g.id) || g.coarse === null) continue;
+      push(g.coarse, feature);
+      if (this.detailTiles.has(g.near)) { push(g.nearKey, feature); push(g.extrasKey, feature); }
+    }
   }
 
   /**
