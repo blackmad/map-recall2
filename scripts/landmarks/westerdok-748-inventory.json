@@ -1,0 +1,789 @@
+{
+ "schemaVersion": 1,
+ "id": "westerdok-748",
+ "pand": "0363100012186003",
+ "brief": "scripts/landmarks/westerdok-748-brief.md",
+ "signature": [
+  "s-tower",
+  "w-passage",
+  "e-framed-bays",
+  "n-juliet",
+  "t-timber-tower",
+  "w-deep-windows",
+  "n-gallery-deck"
+ ],
+ "walls": [
+  {
+   "tag": "w01-275",
+   "bearing": 275,
+   "lengthM": 114,
+   "centre": [
+    4.8918119,
+    52.3860704
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002532_pano_0000_000133",
+   "capturedAt": "2022-04-21",
+   "checked": true,
+   "items": [
+    {
+     "id": "w-passage",
+     "kind": "other",
+     "where": "middle west block, right (south) part of its ground: a two-storey passage 10 m wide into the middle courtyard",
+     "approxSizeM": [
+      10,
+      6
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002532_pano_0000_000133",
+     "how": "pieces(): the 3DBAG pieces over the passage polygon start at 7.0 m with a concrete soffit; walls inside it plain brick; declared in throughPassages"
+    },
+    {
+     "id": "w-porches",
+     "kind": "other",
+     "where": "ground storey of the north link next to the north block and of the south block's north bay: deep porches under a dark soffit, two storeys high",
+     "approxSizeM": [
+      10,
+      6
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002532_pano_0000_000133",
+     "how": "a 6.1 m high, 3 m deep cut opening with a shaded back (blockBFace/lowFace, outer edges 22-23 and 0-1)"
+    },
+    {
+     "id": "w-deep-windows",
+     "kind": "window-shape",
+     "where": "all three seven-storey blocks and the links: punched windows set deep in the brick, dark frames, one off-centre mullion, a regular grid",
+     "approxSizeM": [
+      1.55,
+      2.0
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002532_pano_0000_000133",
+     "how": "deepWindow(): 0.25 m deep cut opening with one dark mullion inside the reveal, on 3.4 m axes"
+    },
+    {
+     "id": "w-block-steps",
+     "kind": "other",
+     "where": "the front steps from 23 m blocks to 10.8 m three-storey links and back, five segments",
+     "approxSizeM": [
+      114,
+      23
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002532_pano_0000_000133",
+     "how": "3DBAG roof pieces 24, 70, 37, 49, 54 as separate prisms"
+    },
+    {
+     "id": "w-north-eaves",
+     "kind": "other",
+     "where": "north block (left): light concrete eaves along the top",
+     "approxSizeM": [
+      17,
+      0.7
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002532_pano_0000_000133",
+     "how": "blockAFace(): 0.75 m concrete band 0.6 m proud at the top"
+    },
+    {
+     "id": "w-maisonette-windows",
+     "kind": "window-shape",
+     "where": "south link: two-storey-high glazed openings in grey frames at ground and first floor",
+     "approxSizeM": [
+      1.6,
+      5.5
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-002532_pano_0000_000133",
+     "how": "the deep-set grid with a tall ground opening (0.25-3.7 m) and the first-floor window over it"
+    },
+    {
+     "id": "w-shop-signs",
+     "kind": "sign",
+     "where": "tenant lettering in the ground storey windows",
+     "approxSizeM": [
+      2,
+      0.5
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7316010203-002532_pano_0000_000133",
+     "skip": {
+      "reason": "temporary",
+      "note": "tenant window lettering, changes with the tenant"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "w02-185",
+   "bearing": 185,
+   "lengthM": 85.2,
+   "centre": [
+    4.8923745,
+    52.3855315
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000703_pano_0000_001100",
+   "capturedAt": "2018-05-02",
+   "checked": true,
+   "items": [
+    {
+     "id": "s-tower",
+     "kind": "tower",
+     "where": "the eleven-storey brick tower (35.4 m) rising flush from the three-storey street wall, four axes on the street",
+     "approxSizeM": [
+      14,
+      35
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-000703_pano_0000_001100",
+     "how": "3DBAG piece 55 east of the courtyard edge as the tower; deepWindow grid on the 3.1 m storey schedule"
+    },
+    {
+     "id": "s-street-wall",
+     "kind": "window-shape",
+     "where": "three-storey street wall with tall ground-floor doors and two rows of deep-set windows, one axis every ~3.1 m",
+     "approxSizeM": [
+      60,
+      10.8
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-000703_pano_0000_001100",
+     "how": "gridB(): ground openings 0.25-3.7 m, windows at 4.8 and 7.9 m; the 3DBAG 35.4 m piece west of the tower drawn at 10.8 m (BAG floor numbers, the panoramas)"
+    },
+    {
+     "id": "s-glass-balconies",
+     "kind": "balcony-ironwork",
+     "where": "east corner block: stacked balconies with green glass balustrades",
+     "approxSizeM": [
+      12,
+      15
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-000703_pano_0000_001100",
+     "how": "wedgeFace(): a concrete slab 1.6 m deep and a 1.0 m green-grey glass balustrade per storey over the face's east 60 %, below the top storey"
+    },
+    {
+     "id": "s-roof-pavilion",
+     "kind": "other",
+     "where": "small timber-clad pavilion on the low wing roof between the tower and the corner block",
+     "approxSizeM": [
+      4,
+      2.7
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-000703_pano_0000_001100",
+     "how": "the 13.5 m 3DBAG roof pieces on the 10.8 m wings as ochre (timber) prisms with one glazed opening"
+    },
+    {
+     "id": "s-house-numbers",
+     "kind": "sign",
+     "where": "house numbers and letterboxes by the doors",
+     "approxSizeM": [
+      0.3,
+      0.2
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7316010203-000703_pano_0000_001100",
+     "skip": {
+      "reason": "too-small",
+      "note": "house numbers 20 cm"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "w03-5",
+   "bearing": 5,
+   "lengthM": 46,
+   "centre": [
+    4.8922107,
+    52.3865657
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000703_pano_0000_000707",
+   "capturedAt": "2018-05-02",
+   "checked": true,
+   "items": [
+    {
+     "id": "n-juliet",
+     "kind": "balcony-ironwork",
+     "where": "every window of the north blocks and the tower: French windows in white frames behind a grey railing",
+     "approxSizeM": [
+      1.3,
+      2.1
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-000703_pano_0000_000707",
+     "how": "juliet(): cut opening, white frame border and transom, grey railing panel 10 cm proud"
+    },
+    {
+     "id": "n-tower-ledges",
+     "kind": "other",
+     "where": "the tower: a projecting concrete ledge at every storey",
+     "approxSizeM": [
+      17,
+      0.2
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-000703_pano_0000_000707",
+     "how": "blockAFace(tower): 0.18 m concrete band 0.3 m proud under each sill row"
+    },
+    {
+     "id": "n-eaves",
+     "kind": "other",
+     "where": "the 23 m blocks either side: deep overhanging concrete eaves",
+     "approxSizeM": [
+      25,
+      0.8
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-000703_pano_0000_000707",
+     "how": "0.75 m concrete band 0.6 m proud at the top of every blockA face"
+    },
+    {
+     "id": "n-gallery-deck",
+     "kind": "balcony-ironwork",
+     "where": "a first-floor gallery deck along the whole north front with a grey railing, on slender columns",
+     "approxSizeM": [
+      38,
+      1.4
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-000703_pano_0000_000707",
+     "how": "northFront(): concrete deck 2 m deep at 5.2 m, railing panel, columns every 6.6 m"
+    },
+    {
+     "id": "n-canopy",
+     "kind": "canopy",
+     "where": "concrete canopy over the low gap and under the tower at the third storey",
+     "approxSizeM": [
+      24,
+      0.9
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-000703_pano_0000_000707",
+     "how": "northFront(): 0.9 m concrete slab 1.6 m deep at 8.4 m"
+    },
+    {
+     "id": "n-carpark-exit",
+     "kind": "other",
+     "where": "car-park exit with a red-and-white sign board in the low gap",
+     "approxSizeM": [
+      4.7,
+      2.9
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-000703_pano_0000_000707",
+     "how": "lowFace(): 4.7 x 2.9 m opening 1.5 m deep, dark back"
+    },
+    {
+     "id": "n-carpark-sign",
+     "kind": "sign",
+     "where": "UITRIT / height sign over the car-park exit",
+     "approxSizeM": [
+      4,
+      0.3
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7316010203-000703_pano_0000_000707",
+     "skip": {
+      "reason": "too-small",
+      "note": "a 0.3 m high traffic board"
+     }
+    },
+    {
+     "id": "n-stone-ledges",
+     "kind": "other",
+     "where": "ground storey: a pale stone ledge under each mezzanine window",
+     "approxSizeM": [
+      1.8,
+      0.3
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-000703_pano_0000_000707",
+     "how": "blockAFace(): concrete ledge strip at 2.75 m on every axis of the street-level faces"
+    }
+   ]
+  },
+  {
+   "tag": "w04-75",
+   "bearing": 75,
+   "lengthM": 23.8,
+   "centre": [
+    4.8928326,
+    52.3859027
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-06-17_09-10-34_01935",
+   "capturedAt": "2025-06-17",
+   "checked": true,
+   "items": [
+    {
+     "id": "e-framed-bays",
+     "kind": "window-shape",
+     "where": "the framed-bay wedge: two-storey glazed bays in grey steel frames, staggered (outer bays at storeys 1-2 and 4-5, the middle pair at 3-4)",
+     "approxSizeM": [
+      5,
+      6
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-06-17_09-10-34_01935",
+     "how": "baysFace(): BAY_FRAMES cut openings with a 0.12 m grey border, spandrel band and three mullions, positions measured off the rectified crop"
+    },
+    {
+     "id": "e-french-between",
+     "kind": "balcony-ironwork",
+     "where": "narrow French windows with railings between the bays",
+     "approxSizeM": [
+      1.1,
+      2.7
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-06-17_09-10-34_01935",
+     "how": "baysFace(): BAY_WINDOWS with dark frames and a railing panel 10 cm proud"
+    },
+    {
+     "id": "e-shopfronts-04",
+     "kind": "window-shape",
+     "where": "ground storey: three wide shop windows and three narrow ones",
+     "approxSizeM": [
+      4,
+      4.3
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-06-17_09-10-34_01935",
+     "how": "BAY_SHOPS cut openings with a transom"
+    },
+    {
+     "id": "e-tenant-04",
+     "kind": "sign",
+     "where": "KRACHT WERK window graphics",
+     "approxSizeM": [
+      3,
+      1
+     ],
+     "plan": "skipped",
+     "seenIn": "recording_2025-06-17_09-10-34_01935",
+     "skip": {
+      "reason": "temporary",
+      "note": "tenant window graphics"
+     }
+    }
+   ],
+   "note": "middle wedge (3DBAG piece 62), between the slate and timber towers"
+  },
+  {
+   "tag": "w05-75",
+   "bearing": 75,
+   "lengthM": 23.7,
+   "centre": [
+    4.8927017,
+    52.3862003
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002620_pano_0007_000079",
+   "capturedAt": "2022-06-22",
+   "checked": true,
+   "items": [
+    {
+     "id": "e-grid-05",
+     "kind": "window-shape",
+     "where": "eight axes of deep-set windows on five storeys over the shop storey",
+     "approxSizeM": [
+      23,
+      17
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002620_pano_0007_000079",
+     "how": "wedgeFace(): cols(2.75 m, edge 1.2) gives 8 axes on the 23.7 m front; sills 6.7 m + 3.23 m"
+    },
+    {
+     "id": "e-shops-05",
+     "kind": "window-shape",
+     "where": "shop storey: four shop fronts, each the width of two window axes, with a dark box head",
+     "approxSizeM": [
+      4.4,
+      4.8
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002620_pano_0007_000079",
+     "how": "shops(): paired cut openings, dark transom and mullions, a slate head band"
+    },
+    {
+     "id": "e-awnings",
+     "kind": "canopy",
+     "where": "two roll-down awnings on the first floor",
+     "approxSizeM": [
+      1.6,
+      0.5
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7316010203-002620_pano_0007_000079",
+     "skip": {
+      "reason": "temporary",
+      "note": "roll-down sun awnings"
+     }
+    },
+    {
+     "id": "e-boxing-sign",
+     "kind": "sign",
+     "where": "PT BOXING shield graphics",
+     "approxSizeM": [
+      2,
+      1.6
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7316010203-002620_pano_0007_000079",
+     "skip": {
+      "reason": "temporary",
+      "note": "tenant graphics"
+     }
+    },
+    {
+     "id": "e-timber-roof",
+     "kind": "other",
+     "where": "timber-clad roof structure seen behind the parapet (top left)",
+     "approxSizeM": [
+      4,
+      2.5
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-002620_pano_0007_000079",
+     "how": "the 3DBAG roof-plant pieces drawn as brick boxes at their 3DBAG heights"
+    }
+   ],
+   "note": "north punched-grid wedge (piece 64)"
+  },
+  {
+   "tag": "w06-77",
+   "bearing": 77,
+   "lengthM": 23.4,
+   "centre": [
+    4.8929588,
+    52.3856054
+   ],
+   "evidence": "photo",
+   "panoId": "b_20241211_1256_Track10_Sphere_00075",
+   "capturedAt": "2024-12-11",
+   "checked": true,
+   "items": [
+    {
+     "id": "e-grid-06",
+     "kind": "window-shape",
+     "where": "the same eight-axis grid of deep-set windows on five storeys",
+     "approxSizeM": [
+      23,
+      17
+     ],
+     "plan": "modelled",
+     "seenIn": "b_20241211_1256_Track10_Sphere_00075",
+     "how": "wedgeFace()"
+    },
+    {
+     "id": "e-shops-06",
+     "kind": "window-shape",
+     "where": "four shop fronts in the ground storey",
+     "approxSizeM": [
+      4.4,
+      4.8
+     ],
+     "plan": "modelled",
+     "seenIn": "b_20241211_1256_Track10_Sphere_00075",
+     "how": "shops()"
+    },
+    {
+     "id": "e-beyond",
+     "kind": "sign",
+     "where": "BEYOND / PERSONAL TRAINING window lettering",
+     "approxSizeM": [
+      3,
+      0.6
+     ],
+     "plan": "skipped",
+     "seenIn": "b_20241211_1256_Track10_Sphere_00075",
+     "skip": {
+      "reason": "temporary",
+      "note": "tenant lettering"
+     }
+    }
+   ],
+   "note": "south wedge (piece 58) at the Leliendaalstraat corner"
+  },
+  {
+   "tag": "w07-75",
+   "bearing": 75,
+   "lengthM": 17.8,
+   "centre": [
+    4.8925818,
+    52.386473
+   ],
+   "evidence": "photo",
+   "panoId": "b_20241211_1256_Track10_Sphere_00055",
+   "capturedAt": "2024-12-11",
+   "checked": true,
+   "items": [
+    {
+     "id": "e-juliet-07",
+     "kind": "balcony-ironwork",
+     "where": "the north wedge: six axes of white French windows with grey railings, five storeys",
+     "approxSizeM": [
+      17,
+      16
+     ],
+     "plan": "modelled",
+     "seenIn": "b_20241211_1256_Track10_Sphere_00055",
+     "how": "zone blockA (piece 69): juliet() grid over a shops() ground storey (three paired glazed fronts)"
+    },
+    {
+     "id": "e-eaves-07",
+     "kind": "other",
+     "where": "overhanging concrete eaves",
+     "approxSizeM": [
+      18,
+      0.8
+     ],
+     "plan": "modelled",
+     "seenIn": "b_20241211_1256_Track10_Sphere_00055",
+     "how": "blockAFace() top band"
+    },
+    {
+     "id": "e-entrance-balcony",
+     "kind": "balcony-ironwork",
+     "where": "first-floor balcony with railing over the glazed entrance",
+     "approxSizeM": [
+      8,
+      1
+     ],
+     "plan": "modelled",
+     "seenIn": "b_20241211_1256_Track10_Sphere_00055",
+     "how": "blockAFace(): the north gallery deck returns 11.6 m along this front at 5.2 m, concrete slab 2 m deep with its railing panel"
+    },
+    {
+     "id": "e-wear-sign",
+     "kind": "sign",
+     "where": "WEAR WHAT LEFT OF sign board",
+     "approxSizeM": [
+      1,
+      1
+     ],
+     "plan": "skipped",
+     "seenIn": "b_20241211_1256_Track10_Sphere_00055",
+     "skip": {
+      "reason": "temporary",
+      "note": "tenant sign"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "w08-95",
+   "bearing": 95,
+   "lengthM": 10.1,
+   "centre": [
+    4.8925716,
+    52.3863521
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002037_pano_0000_002843",
+   "capturedAt": "2021-03-11",
+   "checked": true,
+   "items": [
+    {
+     "id": "t-grey-tower",
+     "kind": "tower",
+     "where": "recessed 29 m tower in dark grey brick with a projecting band at every storey, three wide windows per storey",
+     "approxSizeM": [
+      10,
+      24
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002037_pano_0000_002843",
+     "how": "towerFace(grey): greyBrick face from 5 m, 2.0 m windows on 3.2 m axes, a band 0.3 m tall per storey"
+    },
+    {
+     "id": "t-portal-08",
+     "kind": "other",
+     "where": "courtyard portal under the tower: dark soffit, glazed gate set back",
+     "approxSizeM": [
+      10,
+      5
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-002037_pano_0000_002843",
+     "how": "the tower piece starts at 5.0 m with a dark soffit; the gate is left open"
+    }
+   ],
+   "note": "north recessed tower (piece 29)"
+  },
+  {
+   "tag": "w09-95",
+   "bearing": 95,
+   "lengthM": 10,
+   "centre": [
+    4.8928179,
+    52.3857572
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001182_pano_0000_002814",
+   "capturedAt": "2019-05-14",
+   "checked": true,
+   "items": [
+    {
+     "id": "t-timber-tower",
+     "kind": "tower",
+     "where": "recessed tower clad in vertical timber with horizontal timber bands, three wide windows per storey",
+     "approxSizeM": [
+      10,
+      24
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-001182_pano_0000_002814",
+     "how": "towerFace(timber): ochre face, storey bands, 2.0 m windows"
+    },
+    {
+     "id": "t-portal-09",
+     "kind": "other",
+     "where": "courtyard portal with a glass gate; greenery of the courtyard behind",
+     "approxSizeM": [
+      10,
+      5
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-001182_pano_0000_002814",
+     "how": "piece starts at 5.0 m, dark soffit, open"
+    }
+   ],
+   "note": "south recessed tower (piece 60)"
+  },
+  {
+   "tag": "w10-95",
+   "bearing": 95,
+   "lengthM": 10,
+   "centre": [
+    4.892693,
+    52.386055
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000224_pano_0000_002045",
+   "capturedAt": "2017-03-27",
+   "checked": true,
+   "items": [
+    {
+     "id": "t-slate-tower",
+     "kind": "tower",
+     "where": "recessed tower in dark slate-blue panels with vertical fins between narrow windows",
+     "approxSizeM": [
+      10,
+      24
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-000224_pano_0000_002045",
+     "how": "towerFace(slate): blue-grey face, 1.3 m windows on 2.4 m axes, fins 0.25 m proud between them"
+    },
+    {
+     "id": "t-portal-10",
+     "kind": "other",
+     "where": "courtyard portal under the tower",
+     "approxSizeM": [
+      10,
+      5
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-000224_pano_0000_002045",
+     "how": "piece starts at 5.0 m, dark soffit"
+    }
+   ],
+   "note": "middle recessed tower (piece 52)"
+  },
+  {
+   "tag": "w11-5",
+   "bearing": 5,
+   "lengthM": 7.3,
+   "centre": [
+    4.8928654,
+    52.3857098
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7315120208-000074_pano_0002_000087",
+   "capturedAt": "2016-06-09",
+   "checked": true,
+   "items": [
+    {
+     "id": "e-north-end-11",
+     "kind": "window-shape",
+     "where": "north end of the south wedge: one axis of deep-set windows, glazed corner shop",
+     "approxSizeM": [
+      7.3,
+      23
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7315120208-000074_pano_0002_000087",
+     "how": "wedgeFace() on the short face"
+    }
+   ]
+  },
+  {
+   "tag": "w12-5",
+   "bearing": 5,
+   "lengthM": 6.8,
+   "centre": [
+    4.8927374,
+    52.3860079
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000703_pano_0000_001292",
+   "capturedAt": "2018-05-02",
+   "checked": true,
+   "items": [
+    {
+     "id": "e-north-end-12",
+     "kind": "window-shape",
+     "where": "north end of the middle (framed-bay) wedge: one axis of windows, tall ground glazing",
+     "approxSizeM": [
+      6.8,
+      23
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-000703_pano_0000_001292",
+     "how": "wedgeFace() on the short face"
+    }
+   ]
+  },
+  {
+   "tag": "w13-4",
+   "bearing": 4,
+   "lengthM": 6.2,
+   "centre": [
+    4.8926111,
+    52.3863049
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-06-17_09-10-34_02224",
+   "capturedAt": "2025-06-17",
+   "checked": true,
+   "items": [
+    {
+     "id": "e-north-end-13",
+     "kind": "window-shape",
+     "where": "north end of the north punched-grid wedge: one axis of windows, ground shop",
+     "approxSizeM": [
+      6.2,
+      23
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-06-17_09-10-34_02224",
+     "how": "wedgeFace() on the short face"
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  }
+ ]
+}
