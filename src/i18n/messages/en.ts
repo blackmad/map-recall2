@@ -137,6 +137,8 @@ export const en = {
   'options.comfort': 'Comfort & detail',
   'options.lessMotion': 'Less motion',
   'options.trees': 'Trees',
+  'options.distanceHaze': 'Distance haze',
+  'options.distanceHazeHint': 'Far streets fade softly toward the sky',
 
   // --- Ride settings panel --------------------------------------------------
   'settings.title': 'Ride settings',
