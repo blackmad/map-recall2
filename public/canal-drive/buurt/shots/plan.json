@@ -323,6 +323,17 @@
    "name": "Da Costabuurt",
    "shots": [
     {
+     "label": "Kinkerstraat 32-54 (Vomar block, 1999)",
+     "lat": 52.36805388,
+     "lng": 4.87415777,
+     "view": "chase",
+     "at": [
+      4.873267,
+      52.367497,
+      44
+     ]
+    },
+    {
      "label": "Nassaukade 318 to 300 (20 houses)",
      "lat": 52.369321384667145,
      "lng": 4.875039457071271,
@@ -331,17 +342,6 @@
       4.876164,
       52.368591,
       317
-     ]
-    },
-    {
-     "label": "Kinkerstraat 30 to 2 (corner) (16 houses)",
-     "lat": 52.36823699779775,
-     "lng": 4.875417919105738,
-     "view": "chase",
-     "at": [
-      4.876818,
-      52.367765,
-      299
      ]
     },
     {

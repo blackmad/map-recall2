@@ -2,6 +2,20 @@
   "note": "Visible changes to the ride, newest first. One entry per shipped fix the player can see; models themselves are listed by the feed. Fields: date (YYYY-MM-DD, the day it reached main), title, text, where [lng, lat] optional, images optional: [{src, alt, caption?}] where src is a path in github.com/blackmad/map-recall2-screenshots (whats-new/YYYY-MM-DD-slug.jpg, before/after pairs welcome) or a full https URL. Link a screenshot whenever the change can be seen; keep the pictures out of this repository.",
   "notes": [
     {
+      "date": "2026-11-05",
+      "title": "The Oudemanhuispoort wings on the Kloveniersburgwal, and Kinkerstraat 32-54",
+      "text": "Two more recipe boxes replaced by measured models. On the Kloveniersburgwal the north and west wings of the old Oude Mannen- en Vrouwengasthuis (the university's Oudemanhuispoort block) now show Marnette's 1927 'schaats' with its skate band, glass-block oriel and chimney, the beige post-war front, the brick front with its dormers, three neck-gabled canal houses with the rijksmonument at number 72 first, the lecture-hall rear on Rusland and the dark Achterburgwal front with its stone tablet. At the De Hallen end of the Kinkerstraat the 1999 block at 32-54 has its red-brown brick grid over the Vomar shop glazing, the beige corner blocks, the loggia stack on the Da Costakade and the mansard dormers of the set-back top floor. The kit learned mansard dormers, rounded bands and capping 3DBAG roofs under a measured front.",
+      "images": [
+        "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/whats-new/2026-11-05-oudemanhuispoort-wings.jpg",
+        "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/whats-new/2026-11-05-oudemanhuispoort-wings-achterburgwal.jpg",
+        "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/whats-new/2026-11-05-oudemanhuispoort-wings-rusland.jpg",
+        "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/whats-new/2026-11-05-oudemanhuispoort-wings-phone.jpg",
+        "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/whats-new/2026-11-05-kinkerstraat-32.jpg",
+        "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/whats-new/2026-11-05-kinkerstraat-32-dacostakade.jpg",
+        "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/whats-new/2026-11-05-kinkerstraat-32-phone.jpg"
+      ]
+    },
+    {
       "date": "2026-11-02",
       "title": "The Rietveld Academie's dimpled tower, the Fedlev wing and the bridge between them",
       "text": "Next to Rietveld's glass box, the 2006 Benthem Crouwel tower was a plain grey slab; it now has its pressed-metal skin of dimples and dark slices, the three first-floor ribbons wrapping the corners, the high ribbons, the glazed studio storeys on the court side and the stepped roof. The 2018 Fedlev wing beside it has its glazed ground storey under the overhang, the expanded-metal screen storey with its loggias and folding shutters, the stair landing on its V-pylon and the GERRIT RIETVELD ACADEMIE / SANDBERG INSTITUUT lettering, and the sloping mesh footbridge joins the two. The kit learned banded curtain walls and pressed-metal grids.",
