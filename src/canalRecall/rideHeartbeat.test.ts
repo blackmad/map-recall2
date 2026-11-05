@@ -85,3 +85,57 @@ test('peer tabs: ids heard recently, this page included, stale ones dropped', ()
   assert.equal(t.count(10_000), 3);
   assert.equal(t.count(16_500), 2, 'a went quiet');
 });
+
+// Lane R1-C (#225): the shared copy and the stall watch.
+import { ORPHAN_HIDDEN_MS, SHARED_HEARTBEAT_PREFIX, StallWatch, orphanReport, takeOrphans } from './rideHeartbeat';
+
+function keyed() {
+  const m = new Map<string, string>();
+  return { getItem: (k: string) => m.get(k) ?? null, setItem: (k: string, v: string) => { m.set(k, v); }, removeItem: (k: string) => { m.delete(k); },
+    key: (i: number) => [...m.keys()][i] ?? null, get length() { return m.size; }, m };
+}
+
+test('a hung tab that was closed is reported by the next load in another tab, once', () => {
+  const shared = keyed();
+  let t = 1_000_000;
+  const a = new RideHeartbeat({ storage: memory(), shared, id: 'a', sample: () => ({ engine: 'own', tier: 'high', phase: 'racing', heapMB: 900, gpuMB: 950, models: 627 }), now: () => t, setInterval: () => 1, clearInterval: () => {} });
+  a.start();
+  t += 5000; a.beat();
+  assert.ok(shared.m.has(`${SHARED_HEARTBEAT_PREFIX}a`));
+  // The tab locks (no more beats) and is closed: its sessionStorage goes with it. A new tab opens 2 minutes later.
+  t += 120_000;
+  const orphans = takeOrphans(shared, 'b', t);
+  assert.equal(orphans.length, 1);
+  const r = orphanReport(orphans[0], t)!;
+  assert.equal(r.message, 'previous ride stopped beating (tab closed or hung)');
+  assert.equal(r.tags.heartbeat, 'orphaned');
+  assert.deepEqual([r.extra.gpuMB, r.extra.models, r.extra.sinceLastStampS], [950, 627, 120]);
+  assert.equal(takeOrphans(shared, 'c', t + 1000).length, 0, 'reported once');
+});
+
+test('a clean close removes the shared copy; a live peer and a recently hidden page are left alone', () => {
+  const shared = keyed();
+  let t = 5_000_000;
+  const mk = (id: string) => new RideHeartbeat({ storage: memory(), shared, id, sample: () => ({}), now: () => t, setInterval: () => 1, clearInterval: () => {} });
+  const clean = mk('clean'), live = mk('live'), hidden = mk('hidden');
+  clean.start(); live.start(); hidden.start(false);
+  clean.end();
+  assert.equal(shared.m.has(`${SHARED_HEARTBEAT_PREFIX}clean`), false);
+  t += 10_000; live.beat();
+  t += 60_000; live.beat();
+  assert.deepEqual(takeOrphans(shared, 'me', t).map(s => s.id), [], 'live beats; hidden is under its throttled allowance');
+  t += ORPHAN_HIDDEN_MS;
+  assert.deepEqual(takeOrphans(shared, 'me', t).map(s => s.id).sort(), ['hidden', 'live']);
+});
+
+test('stall watch: six long frames in 10 s, or one of 2 s, is a stall; at most twice, 2 minutes apart', () => {
+  const w = new StallWatch();
+  assert.equal(w.note(0, 120), null, 'under 250 ms is not counted');
+  for (let i = 0; i < 5; i++) assert.equal(w.note(1000 + i * 500, 300), null);
+  const s = w.note(4000, 400)!;
+  assert.deepEqual([s.count, s.longest, s.totalMs], [6, 400, 1900]);
+  assert.equal(w.note(5000, 2500), null, 'within the 2 minute gap');
+  const single = w.note(200_000, 2500)!;
+  assert.equal(single.longest, 2500);
+  assert.equal(w.note(400_000, 3000), null, 'two reports a page');
+});
