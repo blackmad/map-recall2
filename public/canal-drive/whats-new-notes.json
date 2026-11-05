@@ -3,6 +3,16 @@
   "notes": [
     {
       "date": "2026-11-05",
+      "title": "Spoiler screening fixed for bridges and canals (engine preview)",
+      "text": "Under the engine preview, starting a new route replaced the list of names to hide with only that route’s streets, so a bridge, canal or stop name could appear on a point of interest before you answered. Names from every source are now kept together, as in the standard map."
+    },
+    {
+      "date": "2026-11-05",
+      "title": "Smoother ride starts (engine preview)",
+      "text": "Starting a ride, changing route or taking the next one under the engine preview (?engine=own) stalls far less: street labels are screened for spoilers only as they come into view instead of all six thousand at once, buildings are grouped once instead of on every update, and ground data is parsed in small slices. On an iPhone there are no more frames over a fifth of a second at a ride start; on a desktop route changes start without a visible hitch. A cold first start still has one long frame, which is the next thing being worked on."
+    },
+    {
+      "date": "2026-11-05",
       "title": "A gentler distance haze, and a switch for it",
       "text": "The haze over the far city is softer and starts further away: colour drops by half instead of seventy percent, and window detail stays until about 250 m. If you would rather see the whole city sharp, a new Distance haze switch under Comfort & detail turns it off mid-ride.",
       "images": [

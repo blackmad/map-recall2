@@ -82,7 +82,7 @@
       "measured": {
         "seededWorld": 1.13,
         "seededLive": 1.58,
-        "freeWorld": 2.0,
+        "freeWorld": 2,
         "freeLive": 0.22,
         "note": "MB gzip of building data for one ride: seeded Anne Frank -> Rijksmuseum replay 90 s (692 m, 16 cells, worker decode median 5 ms p95 16) and 90 s Free Ride (202 m, 27 cells, decode median 5.9 p95 25.9); live = ?world=live tile path (building-tiles + facts). The free ride's 27 cells for 202 m is the lever (fetch ring), road lane item."
       },
@@ -124,6 +124,18 @@
       "value": 0,
       "unit": "samples (of 41) in which a bump into a house front hides or dims that house under ?engine=own (tests/e2e/rider-cover-bump.spec.ts, Nieuwe Leliestraat and Bloemgracht)",
       "source": "lane E1 2026-11-05 (#214): old point-in-footprint rule 37/41 and 40/41 at Nieuwe Leliestraat; route-aware rule 0/41 at both streets",
+      "date": "2026-11-05"
+    },
+    "iphoneRideStartOver200Ms": {
+      "value": 0,
+      "unit": "frames over 200 ms in the first 10 s after RACING, iPhone 13 profile at 4x, own engine, any start type (scripts/motion-stutter.mjs --starts default,change,next,free)",
+      "source": "lane E5 2026-11-05 (#218): before 1-2 per start (longest 367 ms), after 0 across 2 cold starts, 6 route changes, 4 free rides, 4 next starts; label frame 162 -> <20 ms, ground budget on by default",
+      "date": "2026-11-05"
+    },
+    "desktopRideStartOver100MsWarm": {
+      "value": 0,
+      "unit": "frames over 100 ms in the first 10 s after RACING on a route change, Free Ride or next-from-finish start, desktop perf viewport, own engine",
+      "source": "lane E5 2026-11-05 (#218): before 1,1,0,0,0,0 on route changes; after 0 on all; the cold first start stays red at 1 (was 6)",
       "date": "2026-11-05"
     }
   },
