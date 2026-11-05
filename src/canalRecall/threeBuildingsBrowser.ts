@@ -23,6 +23,7 @@ import {buildTransportedEnvelopeChunk,diagnosticEnvelopeTransport,EMPTY_ENVELOPE
 import { CELL_LAYER_COUNT, CELL_PX, STYLE_DIMS, cellLayer, CELL_KINDS, CELL_VARIANTS, paintCell, paintFatihMasonryCell } from './facadeCells.js';
 import { ROOF_CELL_M, paintRoofLayers } from './roofCells.js';
 import { FACADE_TIER_GLSL, ROOF_LAYERS_OFF, ROOF_TIER_GLSL, facadeTierUniform, roofTierUniform } from './roofTier.js';
+import { pageTextureParams, type TextureParams } from './look/texturePolicy.js';
 import { withMonumentGable } from './monumentGables.js';
 import { decorateRoof, exceptLandmarks as exceptLandmarksOf, fitRect, localOuterRing, planRoof, type RoofPlan } from './roofMesh.js';
 import { BAY_ENTRIES, BAY_LAYER_COUNT, FATIH_MASONRY_LAYER, bayLayer, bayLookFor, bayVariant } from './bayLook.js';
@@ -653,10 +654,13 @@ export class ThreeBuildings {
   }
 
   private async buildTextures(look: 'procedural' | Look, sliceMs?: number): Promise<{ colour: any; mask: any; slotBase: number }> {
-    const size = this.detailZoom === 17 ? CELL_PX / 2 : CELL_PX;
+    // Size and filtering from the one texture policy (look/texturePolicy.ts): desktop `high` 512 px cells at 16x,
+    // everything else (and `?texturePolicy=0`) the 256 / 128 px cells at 16 / 4 they always were.
+    const policy = this.texturePolicy();
+    const size = policy.cellPx;
     // The slot layers join this array only in the shared frame, where slot meshes sample it (one renderer, one
     // upload). Legacy layers each own a renderer, so there slot meshes keep the city look's small slot-only array.
-    const slots = !!(this.cityLook && this.sharedFrame), anisotropy = Math.min(this.renderer.capabilities.getMaxAnisotropy(), this.detailZoom === 17 ? 4 : 16);
+    const slots = !!(this.cityLook && this.sharedFrame), anisotropy = policy.anisotropy;
     // Pre-painted atlas (look/lookAtlas.ts): this browser's own bytes from an earlier visit, or (opt-in) the shipped
     // extract, instead of ~200 canvas cells painted on the main thread. Anything short of exact bytes paints as before.
     const { layers, total } = lookAtlasLayers(look, slots), started = performance.now(), stamp = lookAtlasStamp(BUNDLE_SRC);
@@ -1755,8 +1759,46 @@ export class ThreeBuildings {
 
   /** The canvas pixel ratio MapLibre renders at (the facade tier's rates are per CSS pixel). */
   private pixelRatio(): number {
+    if (this.cellTierRatio !== null) return this.cellTierRatio;
     const ratio = (this.map as { getPixelRatio?: () => number }).getPixelRatio?.();
     return typeof ratio === 'number' && Number.isFinite(ratio) && ratio > 0 ? ratio : 1;
+  }
+
+  /** The texture policy for this page and the facade arrays (look/texturePolicy.ts); read once per page (tier is fixed). */
+  private texturePolicy(): TextureParams {
+    if (this.texturePolicyCache) return this.texturePolicyCache;
+    const gpuMax = this.renderer?.capabilities?.getMaxAnisotropy?.() ?? 1;
+    const params = pageTextureParams('facadeCells', gpuMax);
+    // The legacy rule's touch test is this layer's own (detailZoom), so `?texturePolicy=0` stays exactly it.
+    const resolved = params.cellPx > CELL_PX ? params : { ...params, cellPx: this.detailZoom === 17 ? CELL_PX / 2 : CELL_PX, anisotropy: Math.min(gpuMax, this.detailZoom === 17 ? 4 : 16), tierScale: 1 };
+    // Cached once the renderer is known (its anisotropy ceiling is part of the answer).
+    if (this.renderer) this.texturePolicyCache = resolved;
+    return resolved;
+  }
+  private texturePolicyCache: TextureParams | null = null;
+  /** Set by `setCellTierPixelRatio`; null: the map's own ratio. */
+  private cellTierRatio: number | null = null;
+  private cellTierValue(): [number, number] { return facadeTierUniform(this.pixelRatio(), this.texturePolicy().tierScale); }
+
+  /**
+   * The facade tier follows the canvas pixel ratio (lane R1-B #224): the governor steps it down (renderGovernor.ts) and
+   * the tier caps it after the materials exist, and the uniform was only ever set at material creation. One setter,
+   * called from the frame host's resize (engine/ownWorldView.ts), updates every live material (fade clones share the
+   * uniform object). `?cellTierFollow=0` leaves the materials as created. Returns how many materials changed.
+   */
+  setCellTierPixelRatio(ratio: number): number {
+    if (!(Number.isFinite(ratio) && ratio > 0)) return 0;
+    this.cellTierRatio = ratio;
+    const value = this.cellTierValue();
+    let changed = 0;
+    for (const material of new Set([this.material, ...this.materials.values()])) {
+      const u = material?.uniforms?.cellTier;
+      if (!u || !Array.isArray(u.value) || u.value[0] < 0) continue;
+      if (u.value[0] === value[0] && u.value[1] === value[1]) continue;
+      u.value = value; changed++;
+    }
+    if (changed) this.map.triggerRepaint();
+    return changed;
   }
 
   private newMaterial(): any {
@@ -1770,11 +1812,11 @@ export class ThreeBuildings {
       return createCityLookMaterial(THREE, { lit: this.lit, kind: 'chunk', side: THREE.FrontSide, ...(SWAP_COMPLEMENT ? { swap: true } : {}) }, createCityUniforms(THREE, {
         ...(SWAP_COMPLEMENT ? { citySwapUnder: this.swapUnder } : {}),
         bands: { value: variant.shadeBands }, flatColour: { value: variant.flatColour ? 1 : 0 }, wallGain: { value: litFacadeWallGain(variant.litWallGain) },
-        roofLayers: { value: roofLayers }, roofTier: { value: roofTierUniform() }, cellTier: { value: facadeTierUniform(this.pixelRatio()) },
+        roofLayers: { value: roofLayers }, roofTier: { value: roofTierUniform() }, cellTier: { value: this.cellTierValue() },
       }));
     }
     if (this.lit) {
-      const material = createLitFacadeMaterial(THREE, { cityFlat: { value: CITY_FLAT }, roofLayers: { value: roofLayers }, roofTier: { value: roofTierUniform() }, cellTier: { value: facadeTierUniform(this.pixelRatio()) } });
+      const material = createLitFacadeMaterial(THREE, { cityFlat: { value: CITY_FLAT }, roofLayers: { value: roofLayers }, roofTier: { value: roofTierUniform() }, cellTier: { value: this.cellTierValue() } });
       material.uniforms.bands.value = LOOK_VARIANTS[this.look].shadeBands;
       material.uniforms.flatColour.value = LOOK_VARIANTS[this.look].flatColour ? 1 : 0;
       if (material.uniforms.wallGain) material.uniforms.wallGain.value = litFacadeWallGain(LOOK_VARIANTS[this.look].litWallGain);
@@ -1782,7 +1824,7 @@ export class ThreeBuildings {
     }
     return new THREE.RawShaderMaterial({
       glslVersion: THREE.GLSL3, vertexShader: VERTEX, fragmentShader: FRAGMENT, defines: highlightDefines(),
-      uniforms: { cells: { value: null }, masks: { value: null }, bands: { value: LOOK_VARIANTS[this.look].shadeBands }, flatColour: { value: LOOK_VARIANTS[this.look].flatColour ? 1 : 0 }, cityFade: { value: 1 }, cityTone: { value: 1 }, cityFlat: { value: CITY_FLAT }, roofLayers: { value: roofLayers }, roofTier: { value: roofTierUniform() }, cellTier: { value: facadeTierUniform(this.pixelRatio()) } }, side: THREE.FrontSide,
+      uniforms: { cells: { value: null }, masks: { value: null }, bands: { value: LOOK_VARIANTS[this.look].shadeBands }, flatColour: { value: LOOK_VARIANTS[this.look].flatColour ? 1 : 0 }, cityFade: { value: 1 }, cityTone: { value: 1 }, cityFlat: { value: CITY_FLAT }, roofLayers: { value: roofLayers }, roofTier: { value: roofTierUniform() }, cellTier: { value: this.cellTierValue() } }, side: THREE.FrontSide,
     });
   }
 

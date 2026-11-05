@@ -7,6 +7,7 @@
  * `mountRecipeTiles(vectorMap)` is the whole adapter: vector-map.js only loads the bundle and calls it. Everything the
  * near tier needs from the legacy page goes through the host object built here.
  */
+import { HIGH_ANISOTROPY, pageTextureParams } from '../look/texturePolicy.ts';
 import {getCityLook} from '../look/cityLook.ts';
 import {TileBuildings, recipeTilesEnabled, type TileBuildingsHost} from './runtime.ts';
 
@@ -36,7 +37,7 @@ export async function mountRecipeTiles(vm: any): Promise<TileBuildings> {
   };
   const host: TileBuildingsHost = {
     THREE, frame, baseUrl: recipeTilesBase(), lit: true,
-    cityLook: getCityLook(THREE, {anisotropy: (globalThis as any).matchMedia?.('(pointer: coarse)').matches ? 1 : 4}),
+    cityLook: getCityLook(THREE, {anisotropy: (globalThis as any).matchMedia?.('(pointer: coarse)').matches ? 1 : pageTextureParams('slotCells', HIGH_ANISOTROPY).anisotropy}),
     loadGltf: url => loader.loadAsync(url),
     getCentre: () => vm.map?.getCenter?.(),
     setHidden: ids => {

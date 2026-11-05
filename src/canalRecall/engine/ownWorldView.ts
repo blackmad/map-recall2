@@ -456,6 +456,12 @@ export class OwnWorldView implements WorldViewOracles {
     try {
       this._threeBuildings = new api.ThreeBuildings(this.cameraMap, MERCATOR, this.drawnLook());
       this._threeBuildings.attachToSharedFrame(this._sharedFrame);
+      // The facade tier follows the pixel ratio the governor or tier sets (lane R1-B #224); `?cellTierFollow=0` keeps
+      // the ratio the materials were created with.
+      if (flag('cellTierFollow', '__canalRecallCellTierFollow', true) && this._threeBuildings.setCellTierPixelRatio) {
+        const buildings = this._threeBuildings;
+        this.host.on('resize', () => { if (this._threeBuildings === buildings) buildings.setCellTierPixelRatio(this.host.getPixelRatio()); });
+      }
       if (this.streetFronts && this._threeBuildings.setStreets) this._threeBuildings.setStreets(this.streetFronts);
       this.streetFronts = null;
       this._threeBuildings.setVisible(true);

@@ -41,6 +41,7 @@ import { CITY_BRICK_LIGHTNESS, CITY_ROOF, PERIOD_FROM, PHOTO_WALL_CELL_MEAN, SLO
 import { inferMaterialSlot, isMaterialSlot, isWhiteWord, INFERRED_SLOT_SOURCE } from './materialSlotInference.ts';
 import { paintBrick20Canvas, paintBrickCanvas, paintDoorCanvas, paintGlassCanvas, paintGlassTintCanvas, paintStoneCanvas, paintStuccoCanvas, paintWhiteCanvas, paintWhiteStuccoCanvas, roofCanvas } from './slotCells.ts';
 import { HIGHLIGHT_GLSL, highlightDefines } from './highlight.ts';
+import { HIGH_ANISOTROPY, pageTextureParams } from './texturePolicy.ts';
 import { FACADE_TIER_GLSL, FACADE_TIER_OFF, ROOF_LAYERS_OFF, ROOF_TIER_GLSL, roofTierUniform } from '../roofTier.ts';
 import { BAKED_SHADE_GLSL } from '../rendererShared/lightRig.ts';
 import { sceneLookFrom, sceneSlotHex, type SceneLook } from './sunny.ts';
@@ -831,7 +832,7 @@ export function createCityLook(THREE: any, options: CityLookOptions = {}): CityL
     const t = new THREE.DataArrayTexture(data, size, size, SLOT_LAYER_COUNT);
     t.format = format; t.type = THREE.UnsignedByteType;
     t.wrapS = t.wrapT = THREE.RepeatWrapping; t.minFilter = THREE.LinearMipmapLinearFilter; t.magFilter = THREE.LinearFilter;
-    t.generateMipmaps = true; t.anisotropy = options.anisotropy ?? 4; t.unpackAlignment = 1; t.needsUpdate = true;
+    t.generateMipmaps = true; t.anisotropy = options.anisotropy ?? pageTextureParams('slotCells', HIGH_ANISOTROPY).anisotropy; t.unpackAlignment = 1; t.needsUpdate = true;
     t.userData = { bytes: data.byteLength, [CITY_LOOK_SHARED]: true };
     return t;
   };
