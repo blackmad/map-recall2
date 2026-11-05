@@ -1,0 +1,237 @@
+{
+ "schemaVersion": 1,
+ "id": "bloemenmarkt-stalls",
+ "signature": [
+  "glass-gable-row",
+  "canal-glass-wall",
+  "open-flower-fronts",
+  "awning-tube",
+  "pontoon-hull"
+ ],
+ "walls": [
+  {
+   "tag": "v-190",
+   "bearing": 190,
+   "lengthM": 216,
+   "centre": [
+    4.8910718,
+    52.3669248
+   ],
+   "evidence": "photo",
+   "panoId": "b_20250120_0926_Track02_Sphere_00239",
+   "capturedAt": "2025-01-20",
+   "checked": true,
+   "note": "Street side (Singel, south quay), open in the morning: artifacts/kiosks-holds/bloemenmarkt/b0235_h60.jpg, b0236_h95.jpg, b0239_h14.jpg, b0243_h300.jpg, west_h330.jpg (Singel 602); shut at night in r1511_h20.jpg.",
+   "items": [
+    {
+     "id": "street-gables",
+     "kind": "other",
+     "where": "one gable end per roof bay along the street, light-grey panels (white in sun, mid grey under cloud); Singel 602's are glazed",
+     "approxSizeM": [
+      3.4,
+      0.75
+     ],
+     "plan": "modelled",
+     "how": "kioskKit greenhouse roof frontEnd: solid (role solid, #a9aea6), glass on Singel 602",
+     "seenIn": "b_20250120_0926_Track02_Sphere_00235; b_20250120_0926_Track02_Sphere_00236; b_20250120_0926_Track02_Sphere_00239; b_20250120_0926_Track02_Sphere_00243; recording_2025-06-19_03-28-47_01511; b_20250120_0926_Track02_Sphere_00222"
+    },
+    {
+     "id": "awning-tube",
+     "kind": "canopy",
+     "where": "the retracted awning's galvanised roller tube along the head of every open front, about 2.6 m up",
+     "approxSizeM": [
+      14,
+      0.18
+     ],
+     "plan": "modelled",
+     "how": "kioskKit stall front tube, r 9 cm, 10 sides, role trim",
+     "seenIn": "b_20250120_0926_Track02_Sphere_00235; b_20250120_0926_Track02_Sphere_00236; b_20250120_0926_Track02_Sphere_00239; b_20250120_0926_Track02_Sphere_00243"
+    },
+    {
+     "id": "awnings",
+     "kind": "canopy",
+     "where": "blue (some green, Singel 602 red-and-white) awnings let out about a metre over the displays on several stalls",
+     "approxSizeM": [
+      13,
+      1.1
+     ],
+     "plan": "simplified",
+     "how": "kit awnings 1.1 m deep, 0.35 m drop on seven stalls, all in the measured blue; the green and striped ones are drawn blue",
+     "seenIn": "b_20250120_0926_Track02_Sphere_00235; b_20250120_0926_Track02_Sphere_00236; b_20250120_0926_Track02_Sphere_00239; b_20250120_0926_Track02_Sphere_00243; b_20250120_0926_Track02_Sphere_00222"
+    },
+    {
+     "id": "fascia",
+     "kind": "sign",
+     "where": "a dark name band under the tube (Singel 602 'Flower Market ... Singel 602'); printed city-photo panels on Singel 612-616 ('Tulipe & More 61')",
+     "approxSizeM": [
+      14,
+      0.42
+     ],
+     "plan": "simplified",
+     "how": "kit stall fascia 0.42 m: role fascia (#3e4246) for name bands, role screen (#5d7284) for the photo panels; names not lettered",
+     "seenIn": "b_20250120_0926_Track02_Sphere_00222; recording_2025-06-19_03-28-47_01511; b_20250120_0926_Track02_Sphere_00243"
+    },
+    {
+     "id": "open-flower-fronts",
+     "kind": "other",
+     "where": "open fronts full of bulb packets, tiered plant stands and buckets of flowers spilling onto the pavement",
+     "approxSizeM": [
+      14,
+      1.8
+     ],
+     "plan": "simplified",
+     "how": "kit flower-stall tier (1 tier 0.7 m deep, 0.35 m rise) with blooms every 0.95 m and dark buckets every 1.3 m in four bloom colours under the fascia; front posts at the bay lines",
+     "seenIn": "b_20250120_0926_Track02_Sphere_00235; b_20250120_0926_Track02_Sphere_00236; b_20250120_0926_Track02_Sphere_00239; b_20250120_0926_Track02_Sphere_00243"
+    },
+    {
+     "id": "shutters",
+     "kind": "other",
+     "where": "at night the fronts close with grey panel shutters under graffiti",
+     "approxSizeM": [
+      14,
+      2.2
+     ],
+     "plan": "skipped",
+     "skip": {
+      "reason": "temporary",
+      "note": "only closed at night; drawn open as in the daytime captures riders see"
+     },
+     "seenIn": "recording_2025-06-19_03-28-47_01511"
+    },
+    {
+     "id": "house-numbers",
+     "kind": "lettering",
+     "where": "small enamel number plates (614) on the front posts",
+     "approxSizeM": [
+      0.15,
+      0.2
+     ],
+     "plan": "skipped",
+     "skip": {
+      "reason": "too-small",
+      "note": "15 cm plates"
+     },
+     "seenIn": "recording_2025-06-19_03-28-47_01511"
+    }
+   ]
+  },
+  {
+   "tag": "v-010",
+   "bearing": 10,
+   "lengthM": 216,
+   "centre": [
+    4.8910718,
+    52.3669248
+   ],
+   "evidence": "photo",
+   "panoId": "b_20241211_0954_Track19_Sphere_00022",
+   "capturedAt": "2024-12-11",
+   "checked": true,
+   "note": "Canal side from the north bank (artifacts/kiosks-holds/bloemenmarkt/n0022_h185.jpg, n0022_z160/185/210.jpg).",
+   "items": [
+    {
+     "id": "glass-gable-row",
+     "kind": "other",
+     "where": "a saw-tooth of low glass gables, ridges running from the street to the canal, about 3.1-3.8 m per bay, 0.7-0.9 m rise on 2.7 m walls",
+     "approxSizeM": [
+      3.4,
+      0.8
+     ],
+     "plan": "modelled",
+     "how": "kioskKit greenhouse roof: bays = width / 3.4, rise 0.75 m, glazing bars every 1.4 m, ridge caps, valley gutters, canal gables as flat panels in the roof-glass tint with a sill, raking bars and a mullion (roofFrame role, white), street gables solid grey or, at Singel 602, the same glass panels",
+     "seenIn": "b_20241211_0954_Track19_Sphere_00022; PDOK luchtfoto 2025 (ridge lines N-S)"
+    },
+    {
+     "id": "canal-glass-wall",
+     "kind": "window-shape",
+     "where": "a continuous wall of tall glass panes in slim pale frames, the plants inside showing through",
+     "approxSizeM": [
+      14,
+      2.7
+     ],
+     "plan": "simplified",
+     "how": "kit glass panels 1.15 m between 5 cm pale mullions; the plants behind as alternating dark (void) and glass panels in the measured canal-side tones (no transparency in this engine)",
+     "seenIn": "b_20241211_0954_Track19_Sphere_00022"
+    },
+    {
+     "id": "pontoon-hull",
+     "kind": "other",
+     "where": "a dark pontoon band about 0.45 m above the water under every stall",
+     "approxSizeM": [
+      14,
+      0.45
+     ],
+     "plan": "modelled",
+     "how": "kit stall hull 1.95 m deep (to the game water at -1.77 m) under the water part only, sides battered 13 degrees (landDepth 3.2 m)",
+     "seenIn": "b_20241211_0954_Track19_Sphere_00022"
+    }
+   ]
+  },
+  {
+   "tag": "v-280",
+   "bearing": 280,
+   "lengthM": 9,
+   "centre": [
+    4.8910718,
+    52.3669248
+   ],
+   "evidence": "photo",
+   "panoId": "b_20250120_0926_Track02_Sphere_00222",
+   "capturedAt": "2025-01-20",
+   "checked": true,
+   "note": "West end at the Koningsplein (west_h330.jpg): the tree beside Singel 602 and the glass street gables.",
+   "items": [
+    {
+     "id": "koningsplein-tree",
+     "kind": "other",
+     "where": "a large tree grows through the triangular plot of Singel 602",
+     "approxSizeM": [
+      6,
+      12
+     ],
+     "plan": "skipped",
+     "skip": {
+      "reason": "not-visible",
+      "note": "a tree, drawn by the city tree layer, not part of the stalls; the stall is trimmed 2.5 m east of the trunk"
+     },
+     "seenIn": "b_20250120_0926_Track02_Sphere_00222; PDOK luchtfoto 2025"
+    }
+   ]
+  },
+  {
+   "tag": "v-100",
+   "bearing": 100,
+   "lengthM": 12,
+   "centre": [
+    4.8910718,
+    52.3669248
+   ],
+   "evidence": "inferred",
+   "checked": true,
+   "note": "East end at the Vijzelstraat (Singel 630) and the 6 m gap at the steps between 618 and 620: glass end walls as on the canal side.",
+   "items": []
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  },
+  {
+   "name": "BAG ligplaatsen Singel 600-630 (0363020001988046-064)",
+   "url": "https://api.data.amsterdam.nl/v1/bag/ligplaatsen/",
+   "licence": "CC0"
+  },
+  {
+   "name": "PDOK luchtfoto Actueel_orthoHR (2025)",
+   "url": "https://service.pdok.nl/hwh/luchtfotorgb/wms/v1_0",
+   "licence": "CC BY 4.0"
+  },
+  {
+   "name": "OpenStreetMap building=houseboat w266907890-w266907903",
+   "url": "https://www.openstreetmap.org/way/266907890",
+   "licence": "ODbL"
+  }
+ ]
+}

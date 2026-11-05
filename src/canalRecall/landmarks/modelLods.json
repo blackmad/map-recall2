@@ -2302,5 +2302,11 @@
   "buildVersion": 2,
   "bytes": 127476,
   "triangles": 7959
+ },
+ "bloemenmarkt-stalls": {
+  "sourceHash": "4f4e251e73566540",
+  "buildVersion": 2,
+  "bytes": 84500,
+  "triangles": 3995
  }
 }

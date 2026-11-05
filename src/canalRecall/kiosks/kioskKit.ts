@@ -17,7 +17,10 @@
  *   herring       wooden herring/fish kiosk: boarded walls, serving hatch with fold-up flap (or fixed awning), hip/gable roof.
  *   trailer       food trailer or cart: body on a chassis with wheels and an A-frame drawbar, hatch and flap, barrel roof.
  *   flower-stall  Bloemenmarkt stall: pontoon hull at the quay, glass-house with a pitched glass roof, open front with
- *                 tiered flower displays, a front fascia board.
+ *                 tiered flower displays, a front fascia board. With `roof: {kind: 'greenhouse'}` the roof is a row of
+ *                 glass gables (bays, ridge caps, valley gutters, gable ends with bars), and `landDepth`, `front` give the
+ *                 Bloemenmarkt's quay-side deck, battered hull, roller tube, fascia panels and front posts; unset, the
+ *                 output is byte-identical to the original variant (pinned digests in kioskKit.test.ts).
  */
 import {BoxGeometry, BufferGeometry, CylinderGeometry, Float32BufferAttribute, Matrix4, Vector3} from 'three';
 
@@ -30,7 +33,11 @@ export const FACES: readonly FaceName[] = ['front', 'right', 'back', 'left'];
 export type KioskRole =
   | 'plinth' | 'frame' | 'glass' | 'solid' | 'door' | 'board' | 'void' | 'counter' | 'flap' | 'strut'
   | 'awning' | 'awningStripe' | 'roof' | 'fascia' | 'sign' | 'lettering' | 'chassis' | 'wheel' | 'hull' | 'deck'
-  | 'display' | 'bloomA' | 'bloomB' | 'bloomC' | 'bloomD' | 'foliage' | 'pole' | 'trim' | 'corner' | 'screen' | 'green';
+  | 'display' | 'bloomA' | 'bloomB' | 'bloomC' | 'bloomD' | 'foliage' | 'pole' | 'trim' | 'corner' | 'screen' | 'green'
+  /** glazing that is cladding, not a window in a wall: a greenhouse roof's slopes and gable triangles */
+  | 'roofGlass'
+  /** the members of a roof that are structure on the roof, not a window in a wall: a greenhouse roof's glazing bars, ridge caps and gutters */
+  | 'roofFrame';
 export interface KioskPart { role: KioskRole; geometry: BufferGeometry }
 
 /**
@@ -81,7 +88,16 @@ export type KioskRoof =
      /** a round flue/vent cap on the roof at (along, across) from the plan centre */
      flue?: {along: number; across: number; height: number; radius: number}}
   | {kind: 'gable' | 'hip'; rise: number; overhang: number; eaveThickness: number; ridge: 'width' | 'depth'}
-  | {kind: 'barrel'; rise: number; overhang: number; segments?: number};
+  | {kind: 'barrel'; rise: number; overhang: number; segments?: number}
+  /** greenhouse (Bloemenmarkt stalls): `bays` glass gables side by side across the width, each ridge running front to
+   *  back; glass slopes (role roofGlass) with flat glazing bars every `barPitch` metres down the slope, a ridge cap, valley
+   *  gutters (role frame); the gable triangles at the front and back ends in `frontEnd` /
+   *  `backEnd` (default roofGlass; a glazed end also gets a mullion and frame bars on its raking edges); `overhang` beyond
+   *  front and back */
+  | {kind: 'greenhouse'; bays: number; rise: number; overhang: number; barPitch: number; frontEnd?: KioskRole; backEnd?: KioskRole;
+     /** glazing bars (sill, mullion, raking bars) on an end whose infill is a flat panel standing for glass; default: on the
+      *  ends drawn in glass roles */
+     endBars?: {front?: boolean; back?: boolean}};
 /** Text in the 5x7 pixel face, uppercase A-Z, 0-9, space and . ' & -; centred on (along, bottom) of its face/panel. */
 export interface KioskLettering { text: string; height: number; maxWidth?: number; bottom: number; along?: number; role?: KioskRole;
   /** painted lettering: one flat quad per glyph rectangle 5 cm off the board (2 triangles instead of a 12-triangle block) */
@@ -128,7 +144,16 @@ export interface KioskSpec {
   /** canvas awnings on the faces (shop awnings, retractable sunshades) */
   awnings?: KioskAwning[];
   /** flower stall: hull below the deck, and tiered displays across the open front */
-  stall?: {hullDepth: number; hullOverhang: number; tiers: number; tierDepth: number; tierRise: number; openFace: FaceName};
+  stall?: {hullDepth: number; hullOverhang: number; tiers: number; tierDepth: number; tierRise: number; openFace: FaceName;
+    /** the part of the plan on the quay (metres from the open face inward): no hull under it (Bloemenmarkt stalls stand
+     *  part on the pontoon, part on the pavement); absent = hull under the whole plan */
+    landDepth?: number;
+    /** spacing of the bloom boxes along each tier and of the buckets along the front (default 0.55 / 0.7 m); a long row of
+     *  stalls spaces them wider to stay in its triangle budget */
+    bloomPitch?: number; bucketPitch?: number;
+    /** street front of an open stall: the retracted awning's roller tube along the head (radius), a printed fascia band
+     *  hanging under it (height, panel roles left to right), steel posts at the open front (count, >= 2) */
+    front?: {tube?: number; fascia?: {height: number; roles: KioskRole[]}; posts?: number}};
 }
 
 // ---------------------------------------------------------------------------------------------------------------------
@@ -352,8 +377,26 @@ export function buildKiosk(s: KioskSpec): KioskPart[] {
   }
   if (s.stall) {
     const st = s.stall, o = st.hullOverhang;
-    add('hull', new BoxGeometry(W + 2 * o, st.hullDepth, D + 2 * o).translate(0, -st.hullDepth / 2 - 0.02, 0));
-    add('deck', new BoxGeometry(W + 2 * o, 0.06, D + 2 * o).translate(0, 0.01, 0));
+    if (st.landDepth !== undefined) {
+      // hull only under the water part, away from the open face, under a 14 cm deck slab: the hull's top 3 cm above the
+      // slab's underside and 4 cm inside its edges (no shared or 2-3 cm planes), 7 cm below the ground so the walls' feet
+      // stand clear of it; its sides batter inward 13 degrees like a barge's, so no hull face is a vertical wall plane that
+      // a neighbouring stall's glass could be judged against
+      const land = Math.max(0, Math.min(faceOffset(s, st.openFace) * 2 - 0.2, st.landDepth));
+      const wet = faceOffset(s, st.openFace) * 2 - land, across = faceLength(s, st.openFace);
+      const top = -0.07, bottom = -st.hullDepth - 0.02, batter = (top - bottom) * Math.tan(13 * Math.PI / 180);
+      const a0 = -(across + 2 * o - 0.08) / 2, a1 = -a0, o0 = -land - wet - o + 0.04, o1 = -land;
+      const ring = (y: number, k: number) => [[a0 + k, y, o0 + k], [a1 - k, y, o0 + k], [a1 - k, y, o1 - k], [a0 + k, y, o1 - k]];
+      const T = ring(top, 0), B = ring(bottom, Math.min(batter, (a1 - a0) / 4, (o1 - o0) / 4));
+      const tris: [number, number, number][] = [T[0], T[1], T[2], T[0], T[2], T[3], B[0], B[2], B[1], B[0], B[3], B[2]] as [number, number, number][];
+      for (let i = 0; i < 4; i++) {const j = (i + 1) % 4; tris.push(T[i] as [number, number, number], B[i] as [number, number, number], B[j] as [number, number, number], T[i] as [number, number, number], B[j] as [number, number, number], T[j] as [number, number, number]);}
+      const hull = faceSolid(s, st.openFace, tris);
+      add('hull', fixWinding(hull));
+      add('deck', new BoxGeometry(W + 2 * o, 0.14, D + 2 * o).translate(0, -0.03, 0));
+    } else {
+      add('hull', new BoxGeometry(W + 2 * o, st.hullDepth, D + 2 * o).translate(0, -st.hullDepth / 2 - 0.02, 0));
+      add('deck', new BoxGeometry(W + 2 * o, 0.06, D + 2 * o).translate(0, 0.01, 0));
+    }
   }
 
   // corner posts
@@ -499,19 +542,37 @@ function stallFront(s: KioskSpec, add: (r: KioskRole, g: BufferGeometry) => void
   for (let t = 0; t < st.tiers; t++) {
     const o1 = -0.15 - t * st.tierDepth, o0 = o1 - st.tierDepth, y = 0.45 + t * st.tierRise;
     add('display', faceBox(s, f, 0, clear - 0.1, 0.04, y, o0, o1));
-    const n = Math.max(2, Math.round(clear / 0.55));
+    const n = Math.max(2, Math.round(clear / (st.bloomPitch ?? 0.55)));
     for (let k = 0; k < n; k++) {
       const a = -clear / 2 + (k + 0.5) * clear / n;
       add(blooms[(k + t) % 4], faceBox(s, f, a, clear / n * 0.8, y, y + 0.22, o0 + 0.06, o1 - 0.06));
     }
   }
   // buckets on the deck in front of the stall, under the fascia
-  const n = Math.max(2, Math.round(clear / 0.7));
+  const n = Math.max(2, Math.round(clear / (st.bucketPitch ?? 0.7)));
   for (let k = 0; k < n; k++) {
     const a = -clear / 2 + (k + 0.5) * clear / n;
     add('display', faceBox(s, f, a, 0.32, 0.04, 0.34, 0.05, 0.37));
     add(blooms[(k + 2) % 4], faceBox(s, f, a, 0.4, 0.34, 0.62, 0.01, 0.41));
   }
+  const fr = st.front;
+  if (!fr) return;
+  const H = s.wallHeight, r = fr.tube ?? 0;
+  // the roller tube of the retracted awning, along the head of the open front, in front of the head rail
+  if (r > 0) {
+    const tube = new CylinderGeometry(r, r, L - 0.04, 10).rotateZ(Math.PI / 2);
+    tube.translate(0, H - s.headRail / 2, faceOffset(s, f) + r + 0.06);
+    add('trim', tube.rotateY(FACE_ANGLE[f]));
+  }
+  // printed fascia band under the head rail, set 2 cm out from the wall plane (behind the tube)
+  const fasciaBottom = fr.fascia ? H - s.headRail - fr.fascia.height : H - s.headRail;
+  if (fr.fascia && fr.fascia.roles.length) {
+    const m = fr.fascia.roles.length, w = clear / m;
+    fr.fascia.roles.forEach((role, k) => add(role, faceBox(s, f, -clear / 2 + (k + 0.5) * w, w - 0.02, fasciaBottom, H - s.headRail, 0.01, 0.03)));
+  }
+  // steel posts across the open front (the corner posts are the outer two)
+  const posts = Math.max(2, fr.posts ?? 2);
+  for (let k = 1; k < posts - 1; k++) add('frame', faceBox(s, f, -L / 2 + s.post / 2 + k * (L - s.post) / (posts - 1), s.post * 0.8, 0.04, fasciaBottom, -s.post * 0.8, 0));
 }
 
 /** Diamond lattice as flat strips (two triangles each) in a plane `out` metres off the wall, clipped to the panel. */
@@ -636,6 +697,7 @@ function roof(s: KioskSpec, add: (r: KioskRole, g: BufferGeometry) => void) {
     add('fascia', new BoxGeometry(W + 2 * r.overhang, 0.06, D + 2 * r.overhang).translate(0, H - 0.03 + 0.001, 0));
     return;
   }
+  if (r.kind === 'greenhouse') { greenhouseRoof(s, r, add); return; }
   // gable / hip with eaves; ridge along the width (gable ends left/right) or the depth (gable ends front/back)
   const along = r.ridge === 'width', a = (along ? W : D) / 2 + r.overhang, b = (along ? D : W) / 2 + r.overhang;
   const y0 = H + r.eaveThickness, y1 = y0 + r.rise;
@@ -656,6 +718,67 @@ function roof(s: KioskSpec, add: (r: KioskRole, g: BufferGeometry) => void) {
   add('roof', windOutward(g, [0, (y0 + y1) / 2 - 0.01, 0]));
   // eave board: a thin closed slab under the roof edge all round
   add('fascia', new BoxGeometry(along ? 2 * a : 2 * b, r.eaveThickness, along ? 2 * b : 2 * a).translate(0, H + r.eaveThickness / 2, 0));
+}
+
+/** Glass gables side by side across the width, ridges front to back (see the `greenhouse` roof kind). */
+function greenhouseRoof(s: KioskSpec, r: Extract<KioskRoof, {kind: 'greenhouse'}>, add: (r: KioskRole, g: BufferGeometry) => void) {
+  const W = s.width, D = s.depth, H = s.wallHeight, n = Math.max(1, Math.round(r.bays)), bw = W / n, half = bw / 2;
+  const z0 = -D / 2 - r.overhang, z1 = D / 2 + r.overhang, len = z1 - z0;
+  const slope = Math.hypot(half, r.rise), ang = Math.atan2(r.rise, half);
+  const bars = Math.max(1, Math.round(len / Math.max(0.3, r.barPitch)));
+  for (let k = 0; k < n; k++) {
+    const xa = -W / 2 + k * bw, xm = xa + half;
+    for (const side of [-1, 1]) {
+      // one slope: a single glass sheet on the eave-to-ridge line, facing up (the exporter draws it double-sided). A sheet,
+      // not a slab: a slab's end faces would stand in the gable plane as a thin raking band the gable glass sits outside of
+      const cx = xm + side * half / 2, cy = H + r.rise / 2, turn = -side * ang;
+      const sheet = new BufferGeometry();
+      const S = [[-slope / 2, 0, z0], [-slope / 2, 0, z1], [slope / 2, 0, z1], [slope / 2, 0, z0]];
+      sheet.setAttribute('position', new Float32BufferAttribute([0, 1, 2, 0, 2, 3].flatMap(i => S[i]), 3));
+      sheet.rotateZ(turn).translate(cx, cy, 0);
+      sheet.computeVertexNormals();
+      add('roofGlass', sheet);
+      // glazing bars: flat strips 3.5 cm above the glass (clear of the 3 cm z-fight band), running down the slope
+      const pos: number[] = [], y = 0.035, w = 0.025;
+      for (let j = 1; j < bars; j++) {
+        const z = z0 + j * len / bars;
+        const P = [[-slope / 2, y, z - w], [-slope / 2, y, z + w], [slope / 2, y, z + w], [slope / 2, y, z - w]];
+        for (const i of [0, 1, 2, 0, 2, 3]) pos.push(...P[i]);
+      }
+      if (pos.length) {
+        const g = new BufferGeometry();
+        g.setAttribute('position', new Float32BufferAttribute(pos, 3));
+        g.rotateZ(turn).translate(cx, cy, 0);
+        g.computeVertexNormals();
+        add('roofFrame', g);
+      }
+    }
+    // ridge cap and valley gutters come in two lengths butted 2 cm apart at mid-depth (no member longer than ~7.5 m)
+    for (const h of [-1, 1]) add('roofFrame', new BoxGeometry(0.07, 0.07, len / 2 - 0.01).translate(xm, H + r.rise, h * (len / 4 + 0.005)));
+    // the gable triangles, 2 cm inside each end of the slopes
+    for (const [z, role, bars] of [[z1 - 0.04, r.frontEnd ?? 'roofGlass', r.endBars?.front], [z0 + 0.04, r.backEnd ?? 'roofGlass', r.endBars?.back]] as [number, KioskRole, boolean | undefined][]) {
+      // a closed triangular prism 4 cm thick, its base 1 cm above the wall head (no shared plane with the head rail); a
+      // glazed gable stands on a 7 cm sill beam instead, so the glass starts above the wall it crowns
+      const glazed = role === 'roofGlass' || role === 'glass', foot = H + (glazed ? 0.08 : 0.01), out = z > 0 ? 0.07 : -0.07;
+      const tri = new BufferGeometry(), e = 0.02;
+      const A = [xa + 0.02, foot], B = [xa + bw - 0.02, foot], C = [xm, H + r.rise - 0.02];
+      const q: number[] = [...A, z + e, ...B, z + e, ...C, z + e, ...A, z - e, ...C, z - e, ...B, z - e];
+      for (const [a, b] of [[A, B], [B, C], [C, A]]) q.push(a[0], a[1], z - e, b[0], b[1], z - e, b[0], b[1], z + e, a[0], a[1], z - e, b[0], b[1], z + e, a[0], a[1], z + e);
+      tri.setAttribute('position', new Float32BufferAttribute(q, 3));
+      add(role, windOutward(tri, [xm, (2 * foot + H + r.rise) / 3, z]));
+      if (!(bars ?? glazed)) continue;
+      // the sill beam, a mullion up the middle and bars just inside the raking edges, 5 cm proud of the triangle; all clear of the wall head by 5 mm, so roof structure shares no plane with the wall frame
+      add('roofFrame', new BoxGeometry(bw - 0.04, 0.07, 0.05).translate(xm, H + 0.04, z + out));
+      add('roofFrame', new BoxGeometry(0.05, r.rise - 0.1, 0.05).translate(xm, foot + (r.rise - 0.1) / 2, z + out));
+      const k = (foot - H) / r.rise, L = Math.hypot(half, r.rise), ix = r.rise / L * 0.03, iy = half / L * 0.03;
+      for (const side of [-1, 1]) add('roofFrame', beam([xm + side * (half * (1 - k) - ix), foot - iy, z + out], [xm - side * ix, H + r.rise - iy, z + out], 0.05));
+    }
+  }
+  // valley gutters between the bays and along the two outer eaves
+  for (let k = 0; k <= n; k++) {
+    const x = Math.max(-W / 2 + 0.06, Math.min(W / 2 - 0.06, -W / 2 + k * bw));
+    for (const h of [-1, 1]) add('roofFrame', new BoxGeometry(0.12, 0.08, len / 2 + 0.01).translate(x, H + 0.045, h * (len / 4 + 0.015)));
+  }
 }
 
 function windOutward(g: BufferGeometry, c: [number, number, number]) {
