@@ -107,6 +107,46 @@ export function flatLetters(acc: Acc, f: Frame, text: string, t: number, y: numb
     u += 6 * px;
   }
 }
+/**
+ * Pixel lettering as solid channel letters: every glyph run is a closed box from `out` m proud of the frame plane back
+ * `depth` m into it (front, back, top, bottom and both ends, 12 triangles a run). Free-standing roof letters (the
+ * Volkshotel's VOLKSHOTEL) need a back: flatLetters' single quads are paper-thin, and seen from behind or edge-on they
+ * read as a mirrored decal floating off the rail. flatLetters is unchanged; a builder opts in by calling this instead.
+ */
+export function blockLetters(acc: Acc, f: Frame, text: string, t: number, y: number, out: number, depth: number, px: number, c: C) {
+  if (!(depth > 0)) throw Error('blockLetters: depth must be positive');
+  const total = ([...text].length * 6 - 1) * px; let u = t - total / 2;
+  const P = (tt: number, yy: number, o: number) => [f.origin[0] + f.tangent[0] * tt + f.n[0] * o, yy, f.origin[1] + f.tangent[1] * tt + f.n[1] * o];
+  const n3 = (dt: number, dy: number, dn: number) => [f.tangent[0] * dt + f.n[0] * dn, dy, f.tangent[1] * dt + f.n[1] * dn];
+  // a face listed in either order, wound so its geometric normal points along `want`
+  const face = (q: number[][], want: number[]) => {
+    const [a, b, d] = q, u1 = [b[0] - a[0], b[1] - a[1], b[2] - a[2]], v1 = [d[0] - a[0], d[1] - a[1], d[2] - a[2]];
+    const g = [u1[1] * v1[2] - u1[2] * v1[1], u1[2] * v1[0] - u1[0] * v1[2], u1[0] * v1[1] - u1[1] * v1[0]];
+    // Acc.quad winds a-d-b, a-e-d: its normal is minus the a-b-d cross product
+    const flip = g[0] * want[0] + g[1] * want[1] + g[2] * want[2] > 0;
+    if (flip) acc.quad(c, q[0], q[3], q[2], q[1]); else acc.quad(c, q[0], q[1], q[2], q[3]);
+  };
+  const o0 = out, o1 = out - depth;
+  for (const ch of text) {
+    const rows = GL[ch] ?? [];
+    rows.forEach((row, j) => {
+      let k = 0;
+      while (k < 5) {
+        if (row[k] !== '1') { k++; continue; }
+        let e = k; while (e < 5 && row[e] === '1') e++;
+        const y0 = y + (6 - j) * px, y1 = y0 + px, t0 = u + k * px, t1 = u + e * px;
+        face([P(t0, y0, o0), P(t0, y1, o0), P(t1, y1, o0), P(t1, y0, o0)], n3(0, 0, 1));
+        face([P(t0, y0, o1), P(t0, y1, o1), P(t1, y1, o1), P(t1, y0, o1)], n3(0, 0, -1));
+        face([P(t0, y1, o0), P(t0, y1, o1), P(t1, y1, o1), P(t1, y1, o0)], n3(0, 1, 0));
+        face([P(t0, y0, o0), P(t0, y0, o1), P(t1, y0, o1), P(t1, y0, o0)], n3(0, -1, 0));
+        face([P(t0, y0, o0), P(t0, y1, o0), P(t0, y1, o1), P(t0, y0, o1)], n3(-1, 0, 0));
+        face([P(t1, y0, o0), P(t1, y1, o0), P(t1, y1, o1), P(t1, y0, o1)], n3(1, 0, 0));
+        k = e;
+      }
+    });
+    u += 6 * px;
+  }
+}
 /** A downward-facing horizontal plane (soffit, underside of an overhang) over plan polygons at height y. */
 export function soffit(b: BuildingTools, polys: PlanPolygon[], y: number, c: C) {
   for (const [outer, ...holes] of polys) {

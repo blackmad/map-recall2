@@ -2,7 +2,7 @@ import * as T from 'three';
 import polygonClipping, {type MultiPolygon} from 'polygon-clipping';
 import type {BuildingTools} from './cultural-builders';
 import {frameFromBearing} from './modern-kit';
-import {Acc, ccw, inside, edgeBox, fin, flatLetters, roof, soffit, strip, wallQuad, type C} from './tier-kit';
+import {Acc, blockLetters, ccw, inside, edgeBox, fin, roof, soffit, strip, wallQuad, type C} from './tier-kit';
 import {cleanPlan, edgeNormal, ringArea, type PlanPoint, type PlanPolygon} from '../../src/canalRecall/landmarks/roofTiers';
 import source from './volkshotel-footprints.json';
 
@@ -120,7 +120,9 @@ export function buildVolkshotel(_w: number, _d: number, b: BuildingTools) {
   // On the front edge of the roof slab, so the letters stand on its top: a dark rail with the pixel letters on its street face.
   const lf = frameFromBearing(at(11, -0.6), FRONT_BEARING), rot = Math.atan2(lf.n[0], lf.n[1]);
   b.add(new T.BoxGeometry(12.4, 0.25, 0.25).rotateY(rot).translate(lf.origin[0] - lf.n[0] * 0.125, ROOF1 + 0.125, lf.origin[1] - lf.n[1] * 0.125), 'dark');
-  flatLetters(acc, lf, 'VOLKSHOTEL', 0, ROOF1 + 0.25, 0.005, 0.2, 'dark');
+  // Solid 0.15 m channel letters on the 0.25 m rail, not single quads: from the rear wing (west) and edge-on they read as
+  // the backs of standing letters on their rail, not a paper decal floating in front of it (lane #226).
+  blockLetters(acc, lf, 'VOLKSHOTEL', 0, ROOF1 + 0.25, 0.005, 0.15, 0.2, 'dark');
 
   // ---- stair core on the back, blank concrete to 32.2 m ----
   for (const [a, c] of edges(CORE)) wallQuad(acc, 'concrete', a, c, 0, ROOF1);
