@@ -2308,5 +2308,11 @@
   "buildVersion": 2,
   "bytes": 84500,
   "triangles": 3995
+ },
+ "kiosk-park-bea": {
+  "sourceHash": "e9d49b6add3e4da8",
+  "buildVersion": 2,
+  "bytes": 29616,
+  "triangles": 1134
  }
 }

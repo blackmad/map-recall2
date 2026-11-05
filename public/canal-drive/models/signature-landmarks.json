@@ -84923,6 +84923,98 @@
         "bytes": 84500,
         "triangles": 3995
       }
+    },
+    "kiosk-park-bea": {
+      "id": "kiosk-park-bea",
+      "name": "Park Kiosk BEA",
+      "landmarkId": "osm_food_5218592654",
+      "modelUrl": "./models/kiosk-park-bea.glb",
+      "suppressOsmIds": [
+        "NL.IMBAG.Pand.0363100012241046",
+        "w277174094"
+      ],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.8841794,
+          52.3435695
+        ],
+        "headingDegrees": 186.47,
+        "lengthMetres": 22.037,
+        "widthMetres": 5.936
+      },
+      "surveyed": {
+        "anchor": [
+          4.8841794,
+          52.3435695
+        ],
+        "northOffsetDegrees": 0,
+        "source": "bag-pand: BAG pand 0363100012241046 (2013) outline, vertex average as the anchor (OSM node 5218592654 'Park Kiosk BEA' is 10 m east, inside the porch end); the outline is the fascia, the board walls stand 6 cm inside it. Height from 3DBAG (eaves 3.10 m, top 3.14 m). Plinth, fascia, doors, west oversail, east porch, brick block, window and sign from Gemeente Amsterdam panoramas TMX7316010203-000259_pano_0000_000460 / _000461 / _000462 (2017-04-13), TMX7316010203-002471_pano_0000_000593 (2022-03-23) and recording_2024-09-03_05-21-23_00663 (CC BY 4.0). See scripts/landmarks/kiosk-park-bea-footprints.json and -inventory.json."
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 0,
+      "heightMetres": 3.14,
+      "bagYear": 2013,
+      "assetKind": "building",
+      "materialOverrides": {
+        "green": "#7e7c62",
+        "ochre": "#908d6e",
+        "greyBrick": "#7d7c74",
+        "brick": "#cdc7b3",
+        "slate": "#6b6a4a",
+        "concrete": "#a3a69c",
+        "dark": "#2c2924",
+        "glass": "#454a48",
+        "frame": "#7f957c",
+        "bronze": "#b38d5c",
+        "red": "#3a2c22"
+      },
+      "attribution": {
+        "title": "Park Kiosk BEA, Beatrixpark",
+        "author": "Map Recall",
+        "sourceUrl": "https://www.openstreetmap.org/node/5218592654",
+        "licence": "CC BY 4.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "modifications": "Original low-poly reconstruction: the BAG outline extruded as olive-grey board walls with lighter battens over a grey brick plinth, a board fascia and sedum roof, four flush service doors, the west oversail, the east porch with a glazed shop front and doorway, a pale brick block with a serving window and the wooden BEA board. Footprint and height from BAG/3DBAG (CC0); tints are panorama medians (Gemeente Amsterdam, CC BY 4.0) between the overcast 2017 and sunlit 2022 captures. No photo pixels or imported meshes."
+      },
+      "buildingCategory": "landmark",
+      "bounds": {
+        "min": [
+          -10.633000373840332,
+          -2.3841858265427618e-8,
+          -3.319000005722046
+        ],
+        "max": [
+          11.469000816345215,
+          3.140000104904175,
+          3.061000108718872
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.8841794,
+          52.3435695
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 90,
+        "facadeBearingDegrees": 186.47000000000003,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 22.102001190185547,
+        "heightMetres": 3.140000128746033,
+        "depthMetres": 6.380000114440918,
+        "depthCoverage": 1.0747978629448987
+      },
+      "triangles": 3064,
+      "bytes": 53720,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
+      "lod1": {
+        "sourceHash": "e9d49b6add3e4da8",
+        "buildVersion": 2,
+        "bytes": 29616,
+        "triangles": 1134
+      }
     }
   }
 }
