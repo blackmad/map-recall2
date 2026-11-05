@@ -20,7 +20,8 @@
 import { chromium, devices } from 'playwright';
 import fs from 'node:fs';
 import path from 'node:path';
-import { heapSample, heapOwners, startHeapSampling } from './heap-sample.mjs';
+import { heapSample, heapOwners, startHeapSampling, startAllocSampling, heapAllocOwners } from './heap-sample.mjs';
+import { startGcTrace } from './gc-trace.mjs';
 
 const argv = process.argv.slice(2);
 const out = argv[0] && !argv[0].startsWith('--') ? argv[0] : 'artifacts/perf/load-stutter.json';
@@ -43,9 +44,17 @@ const port = process.env.PORT || 4544;
 const origin = `http://127.0.0.1:${port}`;
 const profiling = process.env.PROFILE !== '0';
 // HEAP=0 skips the GC'd heap samples at ride start and end of ride (each forces a GC in the page and its workers).
+// With --starts the ride-start sample is off unless HEAP=1: its forced GC (page and every worker) landed 0.1-0.6 s after
+// RACING, inside the start window it measures, and read as a 125-165 ms "major GC" stall (lane E7, #220).
 const heapRows = process.env.HEAP !== '0';
+const heapAtStartRows = heapRows && (process.env.HEAP === '1' || !opt('starts', ''));
 // HEAP_OWNERS=1: sampling heap profiler from navigation; live bytes by allocating app frame at ride start (use unminified bundles).
 const heapOwnerRows = process.env.HEAP_OWNERS === '1';
+// HEAP_ALLOC=1 (lane E7): sampling heap profiler from navigation that keeps what the GCs collected; at RACING the bytes
+// allocated so far by owner (garbage included) as `allocAtRacing`, and with HEAP_OWNERS=1 also the live owners after a GC.
+const heapAllocRows = process.env.HEAP_ALLOC === '1';
+// GC_TRACE=1 (lane E7): every main-thread GC from a Chrome trace (scripts/gc-trace.mjs), as `gcs`, and on each stall.
+const gcTrace = process.env.GC_TRACE === '1';
 const stallMs = Number(process.env.STALL_MS || 50);
 const glCounters = process.env.GL_COUNTERS === '1';
 // Ride starts (lane E5, #218): --starts default,change,wrongturn,free,next,... rides the seeded default route, then each
@@ -205,7 +214,9 @@ async function run(browser, kind, throttle, context) {
     await cdp.send('Profiler.enable'); await cdp.send('Profiler.setSamplingInterval', { interval: 1000 }); await cdp.send('Profiler.start');
     await page.waitForTimeout(2500); // the Profiler.start stall lands here, before navigation
   }
-  if (heapOwnerRows) await startHeapSampling(cdp);
+  if (heapAllocRows) await startAllocSampling(cdp);
+  else if (heapOwnerRows) await startHeapSampling(cdp);
+  const tracer = gcTrace ? await startGcTrace(cdp) : null;
   // WATCHDOG=<s>: when the page stops answering for that long, pause it through the debugger and print where its
   // main thread is (a JS loop that never yields), with the last 2 s of console, then end the run.
   const consoleLog = [];
@@ -239,10 +250,11 @@ async function run(browser, kind, throttle, context) {
     fn(); window.__ls.marks[label] = s; return s;
   }, label);
   const sync0 = profiling ? await sync('sync0') : null;
+  if (tracer) await page.evaluate(() => { performance.mark('lsTraceSync'); window.__lsTraceSyncAt = performance.getEntriesByName('lsTraceSync')[0].startTime; });
   const mark = label => page.evaluate(label => { window.__ls.marks[label] = performance.now(); }, label);
   let deadline = navAt + (starts ? 1_800_000 : warmup != null ? 180_000 : seconds * 1000);
   const left = () => Math.max(1000, deadline - Date.now());
-  let reached = 'nav', heapAtStart = null, startPlan = null;
+  let reached = 'nav', heapAtStart = null, startPlan = null, allocAtRacing = null;
   try {
     await page.waitForFunction(([a, b]) => window.canalRecallGame?.routePois?.some(p => p.id === a) && window.canalRecallGame.routePois.some(p => p.id === b), [startPoi, destPoi], { timeout: left() });
     await mark('menuReady'); reached = 'menu';
@@ -265,9 +277,10 @@ async function run(browser, kind, throttle, context) {
     await mark('player'); reached = 'player';
     await page.waitForFunction(() => canalRecallGame.state === 4 && canalRecallGame.camera.introOverview === 0, null, { timeout: left() });
     await mark('racing'); reached = 'racing';
+    if (heapAllocRows) { allocAtRacing = await heapAllocOwners(cdp); allocAtRacing.atS = +(((await page.evaluate(() => performance.now())) / 1000).toFixed(2)); }
     // Ride-start heap (L4 gate, issue #136): once the first four building tiles are resident, before the rail moves the rider.
-    if (heapRows) {
-      await page.waitForFunction(() => [...(canalRecallGame.vectorMap?._completeCity?.tileTimes?.values() ?? [])].filter(t => t.resident != null).length >= 4, null, { timeout: left() }).catch(() => {});
+    if (heapAtStartRows) {
+      await page.waitForFunction(() => [...(canalRecallGame.vectorMap?._completeCity?.tileTimes?.values() ?? [])].filter(t => t.resident != null).length >= 4, null, { timeout: Math.min(20_000, left()) }).catch(() => {});
       heapAtStart = { atS: +(((await page.evaluate(() => performance.now())) / 1000).toFixed(2)), ...(await heapSample(cdp)) };
       if (heapOwnerRows) heapAtStart.owners = await heapOwners(cdp);
     }
@@ -432,7 +445,9 @@ async function run(browser, kind, throttle, context) {
       // `?world=v1`: where cells decoded, the main-thread decode tasks (main) or reply messages (worker), ms.
       world: (w => w ? { thread: w.decodeThread, cells: w.decodeMs.size, decodeMsMax: Math.round(Math.max(0, ...w.decodeMs.values()) * 10) / 10, inflateMsMax: Math.round(Math.max(0, ...w.inflateMs.values())), messages: w.messages ?? null, longestMessageMs: w.longestMessageMs != null ? Math.round(w.longestMessageMs * 10) / 10 : null } : null)(vm?._completeCity?.world) };
   });
+  const gcLog = tracer ? await tracer.stop(page).catch(e => ({ error: e.message })) : null;
   const heapAtEnd = heapRows ? await heapSample(cdp).catch(e => ({ error: e.message })) : null;
+  if (heapAllocRows && heapOwnerRows && heapAtEnd) heapAtEnd.ownersLive = await heapOwners(cdp).catch(e => ({ error: e.message }));
   let profile = null;
   if (profiling) ({ profile } = await cdp.send('Profiler.stop'));
   await cdp.send('Emulation.setCPUThrottlingRate', { rate: 1 });
@@ -500,7 +515,8 @@ async function run(browser, kind, throttle, context) {
         const labels = (raw.labelLog || []).filter(e => e[0] < fEnd && e[0] + e[2] > f.at).map(e => `${e[1]} ${r1(e[2])}ms n=${e[3]}`);
         const l = raw.loaf.filter(x => x.start < fEnd && x.start + x.dur > f.at).sort((x, y) => y.dur - x.dur)[0];
         startWindows.push({ start: f.at, end: fEnd, key: `${i}@${r1(f.at)}` });
-        return { atS: r1((f.at - a) / 1000), ms: Math.round(f.ms), host, events, labels,
+        const gc = gcLog?.gcs?.filter(g => g.at < fEnd && g.at + g.ms > f.at).map(g => `${g.kind} ${g.ms}ms ${g.type ?? ''} ${g.beforeMB}->${g.afterMB}MB`);
+        return { atS: r1((f.at - a) / 1000), ms: Math.round(f.ms), host, events, labels, gc,
           loaf: l ? { dur: Math.round(l.dur), render: Math.round(l.start + l.dur - (l.renderStart || l.start + l.dur)), scripts: l.scripts.sort((x, y) => y.dur - x.dur).slice(0, 4).map(x => `${Math.round(x.dur)}ms ${x.inv}${x.fn ? ` ${x.fn}` : ''} @${x.src}`) } : null, key: `${i}@${r1(f.at)}` };
       });
       const lr = (raw.labelLog || []).filter(e => e[0] >= a && e[0] < b);
@@ -547,7 +563,7 @@ async function run(browser, kind, throttle, context) {
     phases: { load: phase('sync0', 'racing'), ride: phase('racing') }, motion,
     longTasks: { n: raw.longtask.length, totalMs: Math.round(raw.longtask.reduce((a, b) => a + b.dur, 0)), over100: raw.longtask.filter(l => l.dur > 100).length, longestMs: Math.round(Math.max(0, ...raw.longtask.map(l => l.dur))) },
     loaf: { over50: raw.loaf.filter(l => l.dur > 50).length, renderMsInStalls: Math.round(loafRender), entries: [...entries].sort((a, b) => b[1] - a[1]).slice(0, 25).map(([k, v]) => ({ k, ms: Math.round(v) })) },
-    dump, gl, worst, rideStarts, attribution, alignErrMs, heapMB: raw.heapMB, heapAtStart, heapAtEnd, distanceM: raw.distancePx != null ? Math.round(raw.distancePx / 3) : null, railM: raw.railPx != null ? Math.round(raw.railPx / 3) : null, ownGround: raw.ownGround, lift: raw.lift, world: raw.world,
+    dump, gl, worst, rideStarts, attribution, alignErrMs, heapMB: raw.heapMB, heapAtStart, heapAtEnd, allocAtRacing, gcs: gcLog, distanceM: raw.distancePx != null ? Math.round(raw.distancePx / 3) : null, railM: raw.railPx != null ? Math.round(raw.railPx / 3) : null, ownGround: raw.ownGround, lift: raw.lift, world: raw.world,
   };
 }
 

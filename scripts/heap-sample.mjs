@@ -53,6 +53,10 @@ const LIB = /^(three\.bundle\.js|maplibre-gl\.js|maplibre-gl-csp\.js)$/;
 export async function heapOwners(cdp, top = 30) {
   await cdp.send('HeapProfiler.collectGarbage');
   const { profile } = await cdp.send('HeapProfiler.getSamplingProfile');
+  return summarise(profile, top);
+}
+
+function summarise(profile, top) {
   const owners = new Map(), scripts = new Map(), stacks = new Map();
   const add = (m, k, v) => m.set(k, (m.get(k) || 0) + v);
   const walk = (node, appFrames) => {
@@ -69,4 +73,19 @@ export async function heapOwners(cdp, top = 30) {
   const sorted = (m, n) => [...m].sort((a, b) => b[1] - a[1]).slice(0, n).map(([k, v]) => ({ k, mb: Math.round(v / 1048576 * 10) / 10 }));
   const total = [...owners.values()].reduce((a, b) => a + b, 0);
   return { sampledMB: Math.round(total / 1048576), scripts: sorted(scripts, 15), owners: sorted(owners, top), stacks: sorted(stacks, top) };
+}
+
+/**
+ * Allocation attribution (lane E7, #220): with `collected` the sampling profiler keeps objects the minor and major GCs
+ * collected, so `heapAllocOwners` (no GC first) reports every sampled byte allocated since sampling started, garbage
+ * included: who fills the heap that a later GC has to collect.
+ */
+export async function startAllocSampling(cdp, intervalBytes = 65536) {
+  await cdp.send('HeapProfiler.enable');
+  await cdp.send('HeapProfiler.startSampling', { samplingInterval: intervalBytes, includeObjectsCollectedByMajorGC: true, includeObjectsCollectedByMinorGC: true });
+}
+/** Sampled bytes allocated so far (live or collected), by owner, MB. Does not force a GC. */
+export async function heapAllocOwners(cdp, top = 30) {
+  const { profile } = await cdp.send('HeapProfiler.getSamplingProfile');
+  return summarise(profile, top);
 }
