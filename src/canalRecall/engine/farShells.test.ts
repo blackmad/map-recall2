@@ -44,7 +44,7 @@ test('farCellOrigin is the shell origin of the key', () => {
 
 // A minimal three stand-in: enough for install / hidden / drop.
 class Attr { needsUpdate = false; constructor(public array: any, public itemSize: number) {} }
-class Geometry { attrs = new Map<string, Attr>(); index: Attr | null = null; disposed = false; setAttribute(n: string, a: Attr) { this.attrs.set(n, a); } getAttribute(n: string) { return this.attrs.get(n)!; } setIndex(a: Attr) { this.index = a; } computeBoundingSphere() {} dispose() { this.disposed = true; } }
+class Geometry { attrs = new Map<string, Attr>(); index: Attr | null = null; disposed = false; setAttribute(n: string, a: Attr) { this.attrs.set(n, a); } getAttribute(n: string) { return this.attrs.get(n)!; } setIndex(a: Attr) { this.index = a; } deleteAttribute(n: string) { this.attrs.delete(n); } computeBoundingSphere() {} dispose() { this.disposed = true; } }
 class Mesh { name = ''; visible = true; parent: any = null; castShadow = true; receiveShadow = true; userData: any = {}; position = { set: (..._: number[]) => {} }; scale = { set: (..._: number[]) => {} }; constructor(public geometry: Geometry, public material: any) {} }
 const THREE = { BufferGeometry: Geometry, BufferAttribute: Attr, Mesh };
 
@@ -83,8 +83,12 @@ test('FarShells: installs one mesh per cell, hides a tile part while its coarse 
   assert.equal(added[0].visible, false);
   drawn.clear(); far.frame();
   assert.equal(added[0].visible, true);
+  // Both cells share one accent / UV pair; a dropped cell lets go of it before it is disposed.
+  assert.equal(added[0].geometry.getAttribute('accent'), added[1].geometry.getAttribute('accent'));
+  const kept = added.slice();
   far.update(centre[0], centre[1], 0);
   assert.equal(added.length, 0);
+  for (const m of kept) { assert.equal(m.geometry.attrs.has('accent'), false); assert.equal(m.geometry.disposed, true); }
   far.setEnabled(false); far.setEnabled(false);
   assert.equal(far.stats().cells, 0);
 });

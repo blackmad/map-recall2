@@ -143,6 +143,16 @@ export class FarShells {
     }
   }
 
+  private shared: { size: number; accent: any; uv: any } | null = null;
+  /** The white-accent and zero-UV attributes every far mesh shares; a bigger cell grows them and re-binds the residents. */
+  private sharedAttributes(n: number): { accent: any; uv: any } {
+    if (this.shared && this.shared.size >= n) return this.shared;
+    const THREE = this.host.THREE, size = Math.max(n, (this.shared?.size ?? 0) * 2, 65536);
+    this.shared = { size, accent: new THREE.BufferAttribute(new Uint8Array(size * 4).fill(255), 4, true), uv: new THREE.BufferAttribute(new Uint8Array(size * 2), 2, true) };
+    for (const r of this.residents.values()) { r.mesh.geometry.setAttribute('accent', this.shared.accent); r.mesh.geometry.setAttribute('uv', this.shared.uv); }
+    return this.shared;
+  }
+
   private install(data: FarCellData): void {
     const scene = this.host.scene(), material = this.host.material(), THREE = this.host.THREE;
     if (!scene || !material || !data.indices.length) { this.knownTriangles.set(data.key, 0); return; }
@@ -152,8 +162,10 @@ export class FarShells {
     g.setAttribute('layer', new THREE.BufferAttribute(data.layers, 1, false));
     g.setAttribute('tint', new THREE.BufferAttribute(data.tints, 4, true));
     // The chunk shader's other inputs: white accents, UV 0 (far cells sample each layer's mean: depth fade), drawn.
-    g.setAttribute('accent', new THREE.BufferAttribute(new Uint8Array(n * 4).fill(255), 4, true));
-    g.setAttribute('uv', new THREE.BufferAttribute(new Uint8Array(n * 2), 2, true));
+    // Constant per vertex: one shared pair for every far mesh (uploaded once, grown for a bigger cell).
+    const shared = this.sharedAttributes(n);
+    g.setAttribute('accent', shared.accent);
+    g.setAttribute('uv', shared.uv);
     const hidden = new Uint8Array(n);
     g.setAttribute('hidden', new THREE.BufferAttribute(hidden, 1, false));
     g.setIndex(new THREE.BufferAttribute(data.indices, 1));
@@ -165,7 +177,7 @@ export class FarShells {
     mesh.scale.set(0.1, 0.1, 0.1); // decimetres
     mesh.castShadow = false; mesh.receiveShadow = false;
     mesh.userData.farShell = true;
-    const r: Resident = { key: data.key, mesh, parts: data.parts.map(p => ({ ...p, hidden: false })), triangles: data.indices.length / 3, bytes: data.positions.byteLength + data.layers.byteLength + data.tints.byteLength + data.indices.byteLength + n * 7, gzBytes: data.gzBytes, ...(clone ? { fade: { start: performance.now(), clone, source: material } } : {}) };
+    const r: Resident = { key: data.key, mesh, parts: data.parts.map(p => ({ ...p, hidden: false })), triangles: data.indices.length / 3, bytes: data.positions.byteLength + data.layers.byteLength + data.tints.byteLength + data.indices.byteLength + n, gzBytes: data.gzBytes, ...(clone ? { fade: { start: performance.now(), clone, source: material } } : {}) };
     this.applyHidden(r, true);
     scene.add(mesh);
     this.knownTriangles.set(data.key, r.triangles);
@@ -210,6 +222,8 @@ export class FarShells {
     if (!r) return;
     this.residents.delete(key);
     r.mesh.parent?.remove(r.mesh);
+    // Detach the shared pair first: three frees the GL buffers of the attributes a disposed geometry holds.
+    r.mesh.geometry.deleteAttribute?.('accent'); r.mesh.geometry.deleteAttribute?.('uv');
     r.mesh.geometry.dispose();
     r.fade?.clone.dispose?.();
   }
@@ -225,6 +239,7 @@ export class FarShells {
   stats(): { radiusM: number; cells: number; parts: number; partsShown: number; triangles: number; gpuMB: number; fetchedMB: number; pending: number; failed: number; planned: number } {
     let parts = 0, shown = 0, triangles = 0, bytes = 0;
     for (const r of this.residents.values()) { parts += r.parts.length; shown += r.parts.filter(p => !p.hidden).length; triangles += r.triangles; bytes += r.bytes; }
+    bytes += (this.shared?.size ?? 0) * 6;
     return { radiusM: this.radiusM, cells: this.residents.size, parts, partsShown: shown, triangles, gpuMB: +(bytes / 1048576).toFixed(1), fetchedMB: +(this.fetchedBytes / 1048576).toFixed(2), pending: this.inflight.size + this.queue.length, failed: this.failed.size, planned: this.planned ? this.planned.split(',').length : 0 };
   }
 
