@@ -332,6 +332,7 @@ import {buildSpanjemonument} from './spanjemonument-builder';
 import {buildHuisMetDeHoofden} from './huis-met-de-hoofden-builder';
 import {buildLensbomen} from './lensbomen-builder';
 import {buildAbnAmroHoofdkantoor} from './abn-amro-hoofdkantoor-builder';
+import {buildXavierZuidas} from './xavier-zuidas-builder';
 import {buildWolkenkrabber} from './wolkenkrabber-builder';
 import {buildCromhouthuizen} from './cromhouthuizen-builder';
 import {buildWaldorfAstoriaHerengracht} from './waldorf-astoria-herengracht-builder';
@@ -945,6 +946,7 @@ for(const spec of MANUAL_LANDMARKS.filter(model => !selectedIds.length || select
     else if(id==='droogbak')buildDroogbak(w,d,helpers);
     else if(id==='havengebouw')buildHavengebouw(w,d,helpers);
     else if(id==='abn-amro-hoofdkantoor')buildAbnAmroHoofdkantoor(w,d,helpers);
+    else if(id==='xavier-zuidas')buildXavierZuidas(w,d,helpers);
     else if(id==='wolkenkrabber')buildWolkenkrabber(w,d,helpers);
     else if(id==='zuiderbad')buildZuiderbad(w,d,helpers);
     else if(id==='marnixbad')buildMarnixbad(w,d,helpers);
