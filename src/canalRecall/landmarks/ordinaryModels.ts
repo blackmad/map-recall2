@@ -58,6 +58,10 @@ export const SHADOWED_BY_LANDMARK: Readonly<Record<string, string>> = {
   'ordinary-0363100012171179': 'binnengasthuis-kloveniersburgwal',
   // Kinkerstraat 32-54 (large recipe failed the likeness judge on three walls: square windows for tall, a curtain face drawn as brick; bespoke #211).
   'ordinary-0363100012137280': 'kinkerstraat-32',
+  // Kinkerstraat 89-105 (large recipe failed likeness: no loggia slots, balconies or arcade; bespoke #236).
+  'ordinary-0363100012092013': 'kinkerstraat-89',
+  // Politiebureau Postjesweg (large recipe: a plain red box without the oriels, the POLITIE sign or the garage doors; bespoke #236).
+  'ordinary-0363100012092810': 'politiebureau-postjesweg',
   // Westerdok 748 courtyard block (large recipe): one shell per 3DBAG height without the towers' cladding, the west passage,
   // the framed bays or the courtyard portals; the bespoke model (#210) draws them.
   'ordinary-0363100012186003': 'westerdok-748',

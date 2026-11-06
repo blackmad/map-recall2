@@ -1,5 +1,5 @@
 {
-  "toolchain": "f81351e5c830d2247154f3e1cccf56853bee364c2b3fcccfc7d9d09b955c38af",
+  "toolchain": "63b8021d1d64146feaaff3dcc43766928bc466e51c44d3bd241f49bca97260c5",
   "models": {
     "abn-amro-hoofdkantoor": "90ff65a2d9f94e99b2ab33438567f147959a43f017d3d9cf9d2ae68b6dae7cbf",
     "academie-theater-dans": "503b3e8d59937cbf7ac8776eb644c11fd10b567e5ac1113e0caa55c83cb68cde",
@@ -213,6 +213,7 @@
     "kinderbrug-meisje-eekhoorns": "198fa0777357d8885a7beb08ac49fffcaa7731bf77195ede0968916039e560b9",
     "kinderkookkafe": "2e89427f335356fd5d8ab3795dd2b0af487c074dd7aaf9400ff1c0f4b7c4c70a",
     "kinkerstraat-32": "d4f41d3fa87a2a06277339ff9bcd85a291a7b914b691b33d1f4455417de22531",
+    "kinkerstraat-89": "cb0a854a99f91834755b6e55fd575774f6ac8c00b752dcbfed5975b3ec07f091",
     "kiosk-dr-falafel": "f4ae127a62e6657d8abbebe7576563f51405ad50cca519d10f7d94d5609beee4",
     "kiosk-dumplings-nassauplein": "423cc761093460dbdbdb4345990ccca1819d1d0f9f142d92b8762642fe143798",
     "kiosk-frens-haringhandel": "fb23a24b82fd676c0f3719c826315089c0b6248577b7c4cb4bbeaa7262b54fd6",
@@ -323,6 +324,7 @@
     "politie-lijnbaansgracht": "a6af3476ff135d5e451363e00a8387059c19a1882f5ebcef0bfc7adf31ca7944",
     "politie-nieuwezijds-voorburgwal": "37a3a9d938c6fdf7aa31a8001a1892f6edd728f28e35f2641bd09d7d05893c06",
     "politie-oost-watergraafsmeer": "ed4636f39aa28fd8e79c685094431b3aa6c9c614ebbd263fe399de8a0c336eb5",
+    "politiebureau-postjesweg": "4c1c1a04ac88ac92f98edc93da2f796617aa4d067023f6ff68c46345d5c2e54f",
     "pontsteiger": "89383c49d03bca1f3820b868cb85ca9c699017b03de17b271ee78c5115770290",
     "portuguese-synagogue": "94a6baa2bbf657c3b562b4e515a0eafb0e15865ad12e8df722c22f1bf2bc3ab0",
     "posthoornkerk": "9d25e1ebf3bf5b94d272cc3e756b171dfff52de3de8cd6cd8170516c6a2b1ba2",

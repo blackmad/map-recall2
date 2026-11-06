@@ -1,0 +1,42 @@
+{
+ "id": "kinkerstraat-89",
+ "pand": "0363100012092013",
+ "replaces": "ordinary-0363100012092013 (large recipe scripts/building-recipes/houses/kinkerstraat-89-092013), shadowed in src/canalRecall/landmarks/ordinaryModels.ts",
+ "identity": {
+  "addresses": "Kinkerstraat 89-105 (odd), Tollensstraat 101-191 (odd), Bilderdijkkade 542-574 (even): 69 verblijfsobjecten, 62 woonfunctie and 7 winkelfunctie; an Albert Heijn on the Tollensstraat ground floor",
+  "bouwjaar": 1987,
+  "bouwlagen": 5,
+  "architect": "not named by nl.wikipedia (Kinkerstraat, Kinkerbuurt), the BAG or the monument registers (no monument record); unconfirmed",
+  "correctionsToBrief": "None to the name: the BAG addresses confirm Kinkerstraat 89-105. The pand also carries Tollensstraat 101-191 and Bilderdijkkade 542-574 and wraps the whole block corner of the Kinkerstraat and the Tollensstraat, with a west wing on the side street.",
+  "sources": [
+   "https://api.data.amsterdam.nl/v1/bag/panden/0363100012092013",
+   "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/?ligtInPanden.identificatie=0363100012092013",
+   "https://nl.wikipedia.org/wiki/Kinkerstraat",
+   "https://nl.wikipedia.org/wiki/Kinkerbuurt"
+  ]
+ },
+ "frame": {
+  "axes": "u along the Kinkerstraat front from the Tollensstraat corner (BAG vertex (23.123, -29.15)), v into the block; U = (-0.91797, 0.39668), V = (0.39668, 0.91797) in native (x east, z south)"
+ },
+ "partyWallBearings": [
+  157,
+  161
+ ],
+ "partyWallEvidence": "157: the Tollensstraat wing's south end adjoins BAG 0363100012138597 (19.85 m, taller); the 3.2 m deck wall w03 faces the Bilderdijkkade back yards (no panorama). 161: the 4 m deck end w06 adjoins the same neighbour (the 2024 panorama sees that block behind it).",
+ "streetNAP": 0.619,
+ "levels": {
+  "parapet": 15.6,
+  "terrace": 12.6,
+  "deck": 4.0,
+  "deckSouth": 3.2,
+  "arcade": 3.6,
+  "beam": [
+   3.6,
+   4.0
+  ],
+  "balustradeTop": 5.1,
+  "loggiaTop": 12.3,
+  "rows": "punched windows 5.1-6.85, 7.9-9.5, 10.5-12.2, top storey 13.4-15.0; loggia wings glass 5.15-6.65, 7.8-9.3, 10.5-11.75; balcony slabs at 7.06 and 9.72",
+  "verticalScale": "crop heights scaled to the 3DBAG parapet: w01 and w04 x 0.966, w02 x 0.89"
+ }
+}

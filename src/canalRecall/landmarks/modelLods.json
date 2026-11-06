@@ -2314,5 +2314,17 @@
   "buildVersion": 2,
   "bytes": 29616,
   "triangles": 1134
+ },
+ "kinkerstraat-89": {
+  "sourceHash": "814a26b22f7e11bf",
+  "buildVersion": 2,
+  "bytes": 102016,
+  "triangles": 6222
+ },
+ "politiebureau-postjesweg": {
+  "sourceHash": "2d3b7b68c13316f9",
+  "buildVersion": 2,
+  "bytes": 31060,
+  "triangles": 1312
  }
 }

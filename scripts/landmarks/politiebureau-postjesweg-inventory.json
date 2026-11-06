@@ -1,0 +1,294 @@
+{
+ "schemaVersion": 1,
+ "id": "politiebureau-postjesweg",
+ "pand": "0363100012092810",
+ "brief": "scripts/landmarks/politiebureau-postjesweg-brief.md",
+ "signature": [
+  "politie-sign",
+  "north-oriel",
+  "corner-balcony-pergola",
+  "south-ribbon",
+  "garage-doors"
+ ],
+ "walls": [
+  {
+   "tag": "w01-89",
+   "bearing": 89,
+   "lengthM": 24.5,
+   "centre": [
+    4.8388765,
+    52.363682
+   ],
+   "evidence": "photo",
+   "panoId": "2025_10_01_11_49_16_00432",
+   "capturedAt": "2025-10-01",
+   "checked": true,
+   "items": [
+    {
+     "id": "east-top-ribbon",
+     "kind": "window-shape",
+     "where": "storey 2, t 12.8-15.7 from the south: a glazed strip seen over the neighbour",
+     "approxSizeM": [
+      2.9,
+      1.9
+     ],
+     "plan": "modelled",
+     "seenIn": "2025_10_01_11_49_16_00432",
+     "how": "strip()"
+    }
+   ],
+   "note": "East side, 2025, 45 deg and 34 m away: a beige low building with a tower stands in front of it (another pand). Only the top ribbon and the north end are seen; the other openings are inferred from the north front."
+  },
+  {
+   "tag": "w02-269",
+   "bearing": 269,
+   "lengthM": 24.5,
+   "centre": [
+    4.838546,
+    52.363678
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002834_pano_0011_000033",
+   "capturedAt": "2022-12-07",
+   "checked": true,
+   "items": [
+    {
+     "id": "west-corner-box",
+     "kind": "window-shape",
+     "where": "storeys 2 and 3 at the south corner: a glass corner box, two by four panes",
+     "approxSizeM": [
+      4.6,
+      4.3
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002834_pano_0011_000033",
+     "how": "oriel()"
+    },
+    {
+     "id": "west-louvre-windows",
+     "kind": "window-shape",
+     "where": "storey 2: four tall windows with closed louvre blinds and a small projecting window box at the north end",
+     "approxSizeM": [
+      6,
+      2.1
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002834_pano_0011_000033",
+     "how": "slate-backed openings with six louvre rails; oriel() for the box"
+    },
+    {
+     "id": "west-strips",
+     "kind": "window-shape",
+     "where": "storey 1: two strip windows; ground: five small windows over the fence",
+     "approxSizeM": [
+      17,
+      1
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002834_pano_0011_000033",
+     "how": "strip(), openings"
+    }
+   ],
+   "note": "West side, 2022 (second view 2016): ground hidden by the Avondverkoop kiosk (a separate building) and a site fence."
+  },
+  {
+   "tag": "w03-179",
+   "bearing": 179,
+   "lengthM": 22.6,
+   "centre": [
+    4.8387145,
+    52.36357
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000055_pano_0001_000339",
+   "capturedAt": "2016-08-10",
+   "checked": true,
+   "items": [
+    {
+     "id": "south-ribbon",
+     "kind": "window-shape",
+     "where": "storey 2: a 21 m ribbon of eight bays, each with two transoms",
+     "approxSizeM": [
+      20.9,
+      2
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-000055_pano_0001_000339",
+     "how": "strip() with 8 lights and two bars"
+    },
+    {
+     "id": "south-windows",
+     "kind": "window-shape",
+     "where": "storey 1: a four-light strip at the west end and seven tall windows to the east",
+     "approxSizeM": [
+      21,
+      2.2
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-000055_pano_0001_000339",
+     "how": "strip() and tall()"
+    },
+    {
+     "id": "vent-grilles",
+     "kind": "other",
+     "where": "ground: nine recessed ventilation grilles with vertical ribs, a low strip window at the east end",
+     "approxSizeM": [
+      13.6,
+      2.3
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-000055_pano_0001_000339",
+     "how": "grille(): recess and four ribs"
+    }
+   ],
+   "note": "South side, 2016 (second view 2019)."
+  },
+  {
+   "tag": "w04-359",
+   "bearing": 359,
+   "lengthM": 22.5,
+   "centre": [
+    4.838708,
+    52.36379
+   ],
+   "evidence": "photo",
+   "panoId": "2025_10_01_11_49_16_00439",
+   "capturedAt": "2025-10-01",
+   "checked": true,
+   "items": [
+    {
+     "id": "politie-sign",
+     "kind": "lettering",
+     "where": "north front between storeys 1 and 2, t 6.3-9.8: POLITIE in police blue with the flame badge over the O",
+     "approxSizeM": [
+      3.5,
+      1.3
+     ],
+     "plan": "modelled",
+     "seenIn": "2025_10_01_11_49_16_00439",
+     "how": "letters() 0.084 m pixels, the badge as a blue lozenge proud of the letters"
+    },
+    {
+     "id": "north-oriel",
+     "kind": "window-shape",
+     "where": "storey 2, t 13.9 to the west corner: a cantilevered glass box, six by three panes in grey frames under a dark red cap",
+     "approxSizeM": [
+      8.6,
+      2.5
+     ],
+     "plan": "modelled",
+     "seenIn": "2025_10_01_11_49_16_00439",
+     "how": "oriel(): glass box 0.6 m out, mullion and transom strips, cap"
+    },
+    {
+     "id": "corner-balcony-pergola",
+     "kind": "balcony-ironwork",
+     "where": "the east corner: a grey cantilevered balcony box at storey 2 and a pergola of horizontal grey slats over it to the roof",
+     "approxSizeM": [
+      4.3,
+      4.5
+     ],
+     "plan": "modelled",
+     "seenIn": "2025_10_01_11_49_16_00439",
+     "how": "concrete box, six slats and a post"
+    },
+    {
+     "id": "storey1-windows",
+     "kind": "window-shape",
+     "where": "storey 1: eleven tall narrow windows with a top light, grey frames",
+     "approxSizeM": [
+      19,
+      2
+     ],
+     "plan": "modelled",
+     "seenIn": "2025_10_01_11_49_16_00439",
+     "how": "tall()"
+    },
+    {
+     "id": "garage-doors",
+     "kind": "other",
+     "where": "ground t 11.6-21.5: three grey sectional garage doors",
+     "approxSizeM": [
+      10,
+      2.85
+     ],
+     "plan": "modelled",
+     "seenIn": "2025_10_01_11_49_16_00439",
+     "how": "slate recessed doors with five panels"
+    },
+    {
+     "id": "corner-entrance",
+     "kind": "window-shape",
+     "where": "ground t 2.3-4.6: the glazed public entrance at the east corner",
+     "approxSizeM": [
+      2.3,
+      2.6
+     ],
+     "plan": "modelled",
+     "seenIn": "2025_10_01_11_49_16_00439",
+     "how": "opening"
+    },
+    {
+     "id": "wall-lamps",
+     "kind": "lamp",
+     "where": "three floodlights at storey 2",
+     "approxSizeM": [
+      0.45,
+      0.15
+     ],
+     "plan": "simplified",
+     "seenIn": "2025_10_01_11_49_16_00439",
+     "how": "small grey slabs"
+    },
+    {
+     "id": "blue-sign-panel",
+     "kind": "sign",
+     "where": "small blue police panel beside the windows of storey 1",
+     "approxSizeM": [
+      0.4,
+      0.9
+     ],
+     "plan": "skipped",
+     "seenIn": "2025_10_01_11_49_16_00439",
+     "skip": {
+      "reason": "too-small",
+      "note": "0.4 m panel"
+     }
+    },
+    {
+     "id": "flagpole",
+     "kind": "other",
+     "where": "the flagpole on the east corner of the roof",
+     "approxSizeM": [
+      0.1,
+      5
+     ],
+     "plan": "skipped",
+     "seenIn": "2025_10_01_11_49_16_00439",
+     "skip": {
+      "reason": "too-small",
+      "note": "thin pole"
+     }
+    }
+   ],
+   "note": "North front on the square, 2025 (second view 2022): the station entrance side with POLITIE, police vans in front."
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  },
+  {
+   "name": "BAG pand 0363100012092810",
+   "url": "https://api.data.amsterdam.nl/v1/bag/panden/0363100012092810",
+   "licence": "CC0"
+  },
+  {
+   "name": "3DBAG",
+   "url": "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012092810",
+   "licence": "CC BY 4.0"
+  }
+ ]
+}

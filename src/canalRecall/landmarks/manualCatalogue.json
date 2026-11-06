@@ -68599,5 +68599,306 @@
    "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
    "modifications": "Original low-poly reconstruction from the typed kiosk kit: pale grey-blue cabin with a glazed north side and glass door, a dark navy lettered south side and menu board, a deep grey-blue fascia and a rooftop garden with two stove pipes. Footprint from BAG (CC0); tints are panorama medians (Gemeente Amsterdam, CC BY 4.0) lifted toward the sunlit 2024 view. No photo pixels or imported meshes."
   }
+ },
+ {
+  "id": "kinkerstraat-89",
+  "name": "Kinkerstraat 89-105 (balcony block, 1987)",
+  "modelUrl": "./models/kinkerstraat-89.glb",
+  "suppressOsmIds": [
+   "NL.IMBAG.Pand.0363100012092013"
+  ],
+  "spatialSuppression": false,
+  "footprint": {
+   "centre": [
+    4.87015755,
+    52.36639922
+   ],
+   "headingDegrees": 0,
+   "lengthMetres": 79.9,
+   "widthMetres": 55.8
+  },
+  "surveyed": {
+   "anchor": [
+    4.87015755,
+    52.36639922
+   ],
+   "northOffsetDegrees": 0,
+   "source": "Vertex average of the BAG 0363100012092013 ring (RD, PDOK BAG WFS, CC0) in native east/south metres above the 3DBAG ground 0.62 m NAP (scripts/landmarks/kinkerstraat-89-footprints.json, written by sarphati-plaza-prepare.ts --id=kinkerstraat-89 --pand=0363100012092013). Volumes from the 3DBAG LoD2.2 roof parts (CC BY 4.0): the Kinkerstraat bar and the Tollensstraat and west wings under a 15.6 m parapet, the 12.6 m rear terrace and the 4.0 m shop deck round the open light slot. The four loggia bays of the Kinkerstraat front, the two of the Tollensstraat and the passage of the west side measured on rectified Gemeente Amsterdam panorama crops (CC BY 4.0), per wall in scripts/landmarks/kinkerstraat-89-inventory.json. The courtyard faces and the deck walls carry no photograph and are inferred."
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 0,
+  "heightMetres": 15.6,
+  "bagYear": 1987,
+  "materialOverrides": {
+   "brick": "#c9bca0",
+   "white": "#e6e1d6",
+   "frame": "#efeee8",
+   "glass": "#4f6873",
+   "concrete": "#b4aea3",
+   "stone": "#bdb6a8",
+   "ochre": "#c4ad3c",
+   "blue": "#283048",
+   "green": "#6f8fb6",
+   "dark": "#2e3236",
+   "red": "#b8312f",
+   "copper": "#6b6d6e",
+   "canopyGlass": "#9fb3bb",
+   "pink": "#f2f1ec"
+  },
+  "attribution": {
+   "title": "Kinkerstraat 89-105 / Tollensstraat 101-191 / Bilderdijkkade 542-574 (housing over shops, 1987)",
+   "author": "Map Recall",
+   "sourceUrl": "https://api.data.amsterdam.nl/v1/bag/panden/0363100012092013",
+   "licence": "CC BY 4.0",
+   "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+   "modifications": "Original texture-free flat-colour geometry on the BAG footprint (CC0) with 3DBAG LoD2.2 heights (CC BY 4.0): the beige-brick Kinkerstraat front of four bays, each a brick frame round a loggia zone of white-panelled glazed wings and a deep slot with a yellow back wall and stacks of round-ended concrete balconies with white bar railings, the brick balustrade band over the shop arcade on square columns and nine windows in threes in the top storey; the Tollensstraat side with two more bays over the supermarket's blue tile ground and a plain corner section; the west side's double-height passage with round columns, curved balconies and the yellow entrance pavilion; read for proportion and tone from Gemeente Amsterdam panoramas (CC BY 4.0). No pixels or meshes imported."
+  },
+  "buildingFootprint": {
+   "type": "Polygon",
+   "coordinates": [
+    [
+     [
+      4.8697267,
+      52.36625794
+     ],
+     [
+      4.86974101,
+      52.36623708
+     ],
+     [
+      4.86976988,
+      52.366195
+     ],
+     [
+      4.86978212,
+      52.3661772
+     ],
+     [
+      4.86991064,
+      52.36621032
+     ],
+     [
+      4.86989736,
+      52.36622962
+     ],
+     [
+      4.87033685,
+      52.36634768
+     ],
+     [
+      4.87046537,
+      52.36616072
+     ],
+     [
+      4.87058867,
+      52.3661925
+     ],
+     [
+      4.87059169,
+      52.36618811
+     ],
+     [
+      4.87078735,
+      52.36623853
+     ],
+     [
+      4.87074977,
+      52.36629286
+     ],
+     [
+      4.87072043,
+      52.36633529
+     ],
+     [
+      4.8705551,
+      52.36657435
+     ],
+     [
+      4.87051415,
+      52.36663356
+     ],
+     [
+      4.87049827,
+      52.36665647
+     ],
+     [
+      4.87049399,
+      52.36666268
+     ],
+     [
+      4.87048257,
+      52.36665961
+     ],
+     [
+      4.87027871,
+      52.36660461
+     ],
+     [
+      4.87026583,
+      52.36660114
+     ],
+     [
+      4.87005915,
+      52.36654539
+     ],
+     [
+      4.87004627,
+      52.36654192
+     ],
+     [
+      4.86983988,
+      52.36648624
+     ],
+     [
+      4.869827,
+      52.3664828
+     ],
+     [
+      4.86962312,
+      52.36642778
+     ],
+     [
+      4.8696117,
+      52.3664247
+     ],
+     [
+      4.86961599,
+      52.36641849
+     ],
+     [
+      4.86963187,
+      52.36639558
+     ],
+     [
+      4.8697267,
+      52.36625794
+     ]
+    ],
+    [
+     [
+      4.86985508,
+      52.36629108
+     ],
+     [
+      4.8698533,
+      52.36629365
+     ],
+     [
+      4.87035115,
+      52.36642793
+     ],
+     [
+      4.87036699,
+      52.3664059
+     ],
+     [
+      4.86986858,
+      52.36627146
+     ],
+     [
+      4.86985508,
+      52.36629108
+     ]
+    ]
+   ]
+  }
+ },
+ {
+  "id": "politiebureau-postjesweg",
+  "name": "Politiebureau Postjesweg (2004)",
+  "modelUrl": "./models/politiebureau-postjesweg.glb",
+  "suppressOsmIds": [
+   "NL.IMBAG.Pand.0363100012092810"
+  ],
+  "spatialSuppression": false,
+  "footprint": {
+   "centre": [
+    4.83873665,
+    52.36372716
+   ],
+   "headingDegrees": 0,
+   "lengthMetres": 22.7,
+   "widthMetres": 24.7
+  },
+  "surveyed": {
+   "anchor": [
+    4.83873665,
+    52.36372716
+   ],
+   "northOffsetDegrees": 0,
+   "source": "Vertex average of the BAG 0363100012092810 ring (RD, PDOK BAG WFS, CC0) in native east/south metres above the 3DBAG ground -0.85 m NAP (scripts/landmarks/politiebureau-postjesweg-footprints.json, written by sarphati-plaza-prepare.ts --id=politiebureau-postjesweg --pand=0363100012092810). One red-brick box under a 12.0 m parapet with a roof plant box from the 3DBAG LoD2.2 roof parts (CC BY 4.0). Windows, the oriels, the corner balcony and pergola, the POLITIE sign and the garage doors measured on rectified Gemeente Amsterdam panorama crops (CC BY 4.0), per wall in scripts/landmarks/politiebureau-postjesweg-inventory.json. The east wall is mostly hidden by the neighbour in front of it and is partly inferred."
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 0,
+  "heightMetres": 13.8,
+  "bagYear": 2004,
+  "materialOverrides": {
+   "brick": "#9a4a36",
+   "frame": "#556375",
+   "glass": "#4f6873",
+   "concrete": "#8c8f92",
+   "stone": "#7d5045",
+   "slate": "#5f666c",
+   "blue": "#2f63a0",
+   "bronze": "#6a3428",
+   "red": "#7a2f2a",
+   "copper": "#6b6d6e",
+   "dark": "#2e3236"
+  },
+  "attribution": {
+   "title": "Politiebureau Postjesweg, Postjesweg 179 (police station, 2004)",
+   "author": "Map Recall",
+   "sourceUrl": "https://api.data.amsterdam.nl/v1/bag/panden/0363100012092810",
+   "licence": "CC BY 4.0",
+   "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+   "modifications": "Original texture-free flat-colour geometry on the BAG footprint (CC0) with 3DBAG LoD2.2 heights (CC BY 4.0): the red-brick box with its eleven tall storey-1 windows, the glass oriel and the POLITIE lettering with its badge on the north front, the grey corner balcony and pergola, the garage doors, the long top ribbon and ventilation grilles of the south side and the glass corner box of the west side; read for proportion and tone from Gemeente Amsterdam panoramas (CC BY 4.0). No pixels or meshes imported."
+  },
+  "buildingFootprint": {
+   "type": "Polygon",
+   "coordinates": [
+    [
+     [
+      4.83887244,
+      52.36372743
+     ],
+     [
+      4.83887138,
+      52.36376575
+     ],
+     [
+      4.83887051,
+      52.36378978
+     ],
+     [
+      4.8388074,
+      52.36378915
+     ],
+     [
+      4.8387033,
+      52.363788
+     ],
+     [
+      4.83854026,
+      52.36378638
+     ],
+     [
+      4.838541,
+      52.36376207
+     ],
+     [
+      4.8385467,
+      52.36356609
+     ],
+     [
+      4.83887681,
+      52.36356977
+     ],
+     [
+      4.83887244,
+      52.36372743
+     ]
+    ]
+   ]
+  }
  }
 ]

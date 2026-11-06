@@ -1,0 +1,411 @@
+{
+ "schemaVersion": 1,
+ "id": "kinkerstraat-89",
+ "pand": "0363100012092013",
+ "brief": "scripts/landmarks/kinkerstraat-89-brief.md",
+ "signature": [
+  "round-balconies",
+  "loggia-bays",
+  "yellow-panels",
+  "brick-balustrade-band",
+  "shop-arcade",
+  "passage"
+ ],
+ "walls": [
+  {
+   "tag": "w01-337",
+   "bearing": 337,
+   "lengthM": 65.7,
+   "centre": [
+    4.870053,
+    52.3665441
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001631_pano_0000_000319",
+   "capturedAt": "2020-02-07",
+   "checked": true,
+   "items": [
+    {
+     "id": "loggia-bays",
+     "kind": "window-shape",
+     "where": "all four bays, storeys 1-3: a brick frame round a loggia zone, white-panelled glazed wings either side of a deep slot",
+     "approxSizeM": [
+      14,
+      7.2
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001631_pano_0000_000319",
+     "how": "loggiaBay(): three holes per bay (wings 0.35 m, slot 2.2 m deep), wing faces with three glass bands of four lights and top lights over white panels, slab-edge strips"
+    },
+    {
+     "id": "round-balconies",
+     "kind": "balcony-ironwork",
+     "where": "in every slot, storeys 2 and 3: stacks of cantilevered concrete balconies with round outer ends and white bar railings, the outer end over the wing",
+     "approxSizeM": [
+      4.2,
+      1.2
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001631_pano_0000_000319",
+     "how": "balcony() from the new roundedBalcony.ts kit component: rounded slab, ribbon rails and bars, 0.6 m proud of the front"
+    },
+    {
+     "id": "yellow-panels",
+     "kind": "other",
+     "where": "the back wall of each slot: a tall mustard-yellow panel (stair) between white-framed balcony doors",
+     "approxSizeM": [
+      2.5,
+      7
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001631_pano_0000_000319",
+     "how": "ochre back panel cut 8 cm into the slot back, doors per storey"
+    },
+    {
+     "id": "brick-balustrade-band",
+     "kind": "other",
+     "where": "over the shop arcade, the whole front: a solid brick balustrade band 4.0-5.1 m over a concrete beam",
+     "approxSizeM": [
+      65.7,
+      1.5
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001631_pano_0000_000319",
+     "how": "facade brick between the arcade and the loggia holes, concrete beam band 12 cm proud"
+    },
+    {
+     "id": "shop-arcade",
+     "kind": "colonnade",
+     "where": "ground floor: shopfronts set back about 2.5 m behind square concrete columns under the slots",
+     "approxSizeM": [
+      65.7,
+      3.6
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001631_pano_0000_000319",
+     "how": "arcade holes 2.5 m deep per bay, shopfront faces with four glazed bays each, 0.6 m columns"
+    },
+    {
+     "id": "top-storey-windows",
+     "kind": "window-shape",
+     "where": "brick top storey: nine windows per bay in three groups of three, white frames with a top light",
+     "approxSizeM": [
+      14,
+      1.6
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001631_pano_0000_000319",
+     "how": "topRow() at the measured group centres"
+    },
+    {
+     "id": "downpipes",
+     "kind": "other",
+     "where": "on the three BAG joints between the bays, full height",
+     "approxSizeM": [
+      0.15,
+      15.5
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001631_pano_0000_000319",
+     "how": "pipe()"
+    },
+    {
+     "id": "shop-signs",
+     "kind": "sign",
+     "where": "shop fascias in the arcade (Lowie Kopie, Copycenter, Waar, Alles)",
+     "approxSizeM": [
+      4,
+      0.5
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7316010203-001631_pano_0000_000319",
+     "skip": {
+      "reason": "temporary",
+      "note": "tenant signs change"
+     }
+    },
+    {
+     "id": "span-wire-anchors",
+     "kind": "other",
+     "where": "on the parapet: tram span-wire rods",
+     "approxSizeM": [
+      0.1,
+      2
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7316010203-001631_pano_0000_000319",
+     "skip": {
+      "reason": "too-small",
+      "note": "thin rods, street furniture of the tram line"
+     }
+    }
+   ],
+   "note": "Kinkerstraat front, 2020 crop and the 2021 second view (TMX7316010203-002374_pano_0001_000036): four 16 m bays between the BAG 0.96 m joints, mirrored about the middle joint (positions agree within 0.4 m)."
+  },
+  {
+   "tag": "w02-67",
+   "bearing": 67,
+   "lengthM": 51.2,
+   "centre": [
+    4.8706408,
+    52.3664511
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001500_pano_0000_003490",
+   "capturedAt": "2019-12-09",
+   "checked": true,
+   "items": [
+    {
+     "id": "t-loggia-bays",
+     "kind": "window-shape",
+     "where": "t 1.1-32.6 from the south end: two loggia bays like the front's",
+     "approxSizeM": [
+      14,
+      7.2
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001500_pano_0000_003490",
+     "how": "loggiaBay() with the bays measured on this crop"
+    },
+    {
+     "id": "t-round-balconies",
+     "kind": "balcony-ironwork",
+     "where": "in both slots, storeys 2 and 3",
+     "approxSizeM": [
+      4.5,
+      1.2
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001500_pano_0000_003490",
+     "how": "balcony()"
+    },
+    {
+     "id": "ah-tile-ground",
+     "kind": "other",
+     "where": "supermarket ground t 1.1-33.6: dark blue tile panels with four light blue courses between concrete piers, two service doors, four round vents over two panels",
+     "approxSizeM": [
+      32,
+      3.6
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001500_pano_0000_003490",
+     "how": "blue panels 15 cm in, light blue course strips, dark doors, small vent blocks"
+    },
+    {
+     "id": "ah-logo",
+     "kind": "sign",
+     "where": "the Albert Heijn logo panel on the ground",
+     "approxSizeM": [
+      1.9,
+      1.6
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7316010203-001500_pano_0000_003490",
+     "skip": {
+      "reason": "temporary",
+      "note": "tenant sign"
+     }
+    },
+    {
+     "id": "plain-corner-section",
+     "kind": "window-shape",
+     "where": "t 34.3-48.6: brick, four axes of 1.4 m windows on storeys 1-3, the top row in threes and fours, three shops under grey canopies",
+     "approxSizeM": [
+      14,
+      15
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001500_pano_0000_003490",
+     "how": "punched(), the top row at its measured axes, shop openings and canopy bands"
+    },
+    {
+     "id": "corner-glass-loggias",
+     "kind": "balcony-ironwork",
+     "where": "t 48.6-51.2 at the Kinkerstraat corner: a stack of recessed loggias with glass balustrades and dark frames",
+     "approxSizeM": [
+      2.6,
+      8
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-001500_pano_0000_003490",
+     "how": "recessed 1.2 m openings with a dark frame and glass back; the glass balustrade as the lower pane"
+    }
+   ],
+   "note": "Tollensstraat side, 2019 (second view 2020): two loggia bays over the Albert Heijn and a plain corner section with punched windows towards the Kinkerstraat."
+  },
+  {
+   "tag": "w03-157",
+   "bearing": 157,
+   "lengthM": 32.7,
+   "centre": [
+    4.8701172,
+    52.3662891
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": false,
+   "items": [],
+   "note": "No panorama: plain brick deck wall, inferred."
+  },
+  {
+   "tag": "w04-248",
+   "bearing": 248,
+   "lengthM": 29.9,
+   "centre": [
+    4.8696971,
+    52.3663014
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001147_pano_0000_000906",
+   "capturedAt": "2019-04-29",
+   "checked": true,
+   "items": [
+    {
+     "id": "passage",
+     "kind": "colonnade",
+     "where": "t 19.8-29.5: double-height passage (to 6.5 m) to the courtyard on two round concrete columns",
+     "approxSizeM": [
+      9.7,
+      6.5
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001147_pano_0000_000906",
+     "how": "6 m deep hole, two 0.5 m columns"
+    },
+    {
+     "id": "yellow-entrance-pavilion",
+     "kind": "canopy",
+     "where": "in the passage: yellow-framed glazed entrance box under a curved glass canopy",
+     "approxSizeM": [
+      5.8,
+      3.7
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001147_pano_0000_000906",
+     "how": "ochre face with three glazed doors 1.6 m in, a rounded canopy slab from roundedBalcony"
+    },
+    {
+     "id": "curved-brick-balcony",
+     "kind": "balcony-ironwork",
+     "where": "over the passage, storey 2: a round-ended balcony with a solid brick parapet",
+     "approxSizeM": [
+      5.2,
+      1.4
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001147_pano_0000_000906",
+     "how": "balcony() with parapet"
+    },
+    {
+     "id": "curved-railed-balcony",
+     "kind": "balcony-ironwork",
+     "where": "over it, storey 3: a round-ended balcony with a white bar railing",
+     "approxSizeM": [
+      5.2,
+      1.0
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001147_pano_0000_000906",
+     "how": "balcony()"
+    },
+    {
+     "id": "w-punched-windows",
+     "kind": "window-shape",
+     "where": "storeys 1-3: four punched windows and a recessed loggia column; the top row of sixteen",
+     "approxSizeM": [
+      29,
+      10
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001147_pano_0000_000906",
+     "how": "punched(), loggia opening 1.1 m deep, top row at its measured axes"
+    },
+    {
+     "id": "w-corner-glass-loggias",
+     "kind": "balcony-ironwork",
+     "where": "t 0-3.2 at the Kinkerstraat corner: recessed loggias with glass balustrades",
+     "approxSizeM": [
+      3,
+      8
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-001147_pano_0000_000906",
+     "how": "recessed openings with a dark frame"
+    },
+    {
+     "id": "red-awning",
+     "kind": "canopy",
+     "where": "the shop at t 4-8.3: red awning",
+     "approxSizeM": [
+      4.6,
+      0.4
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-001147_pano_0000_000906",
+     "how": "red slab"
+    },
+    {
+     "id": "mural",
+     "kind": "other",
+     "where": "the dark garage door at t 9.2-13.4 painted YOU ARE ON MY MIND",
+     "approxSizeM": [
+      4.2,
+      3.5
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-001147_pano_0000_000906",
+     "how": "dark recessed door panel; the painted lettering is temporary street art and is not drawn"
+    }
+   ],
+   "note": "West side street, 2019 (second view 2022): brick with punched windows, a double-height passage to the courtyard with round columns, curved balconies over it and the yellow entrance pavilion."
+  },
+  {
+   "tag": "w05-248",
+   "bearing": 248,
+   "lengthM": 22.6,
+   "centre": [
+    4.8704012,
+    52.3662546
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": false,
+   "items": [],
+   "note": "No panorama: plain brick deck wall, inferred."
+  },
+  {
+   "tag": "w06-158",
+   "bearing": 158,
+   "lengthM": 9.1,
+   "centre": [
+    4.8705271,
+    52.366177
+   ],
+   "evidence": "photo",
+   "panoId": "b_20241129_0829_Track03_Sphere_00165",
+   "capturedAt": "2024-11-29",
+   "checked": true,
+   "items": [],
+   "note": "The 2024 panorama from 34 m sees the neighbouring block behind the 4 m deck end; the deck end itself is a plain wall."
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  },
+  {
+   "name": "BAG pand 0363100012092013",
+   "url": "https://api.data.amsterdam.nl/v1/bag/panden/0363100012092013",
+   "licence": "CC0"
+  },
+  {
+   "name": "3DBAG",
+   "url": "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012092013",
+   "licence": "CC BY 4.0"
+  }
+ ]
+}
