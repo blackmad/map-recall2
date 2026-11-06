@@ -28744,7 +28744,7 @@
       "bounds": {
         "min": [
           -46.45899963378906,
-          -0.0000015258789289873675,
+          -7.629394644936838e-7,
           -94.0999984741211
         ],
         "max": [
@@ -28765,18 +28765,18 @@
       },
       "extent": {
         "widthMetres": 166.85900115966797,
-        "heightMetres": 105.10000000000002,
+        "heightMetres": 105.09999923706056,
         "depthMetres": 117.24699592590332,
         "depthCoverage": 1.002111076289772
       },
-      "triangles": 18267,
-      "bytes": 245116,
+      "triangles": 19411,
+      "bytes": 260712,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "lod1": {
-        "sourceHash": "d3f9794a44b978f8",
+        "sourceHash": "e4f157debc46180f",
         "buildVersion": 2,
-        "bytes": 80372,
-        "triangles": 4226
+        "bytes": 85920,
+        "triangles": 4512
       }
     },
     "ij-toren": {

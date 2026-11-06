@@ -3,6 +3,7 @@ import type {BuildingTools} from './cultural-builders';
 import {addShell, type Surface} from './worship-shell';
 import {faceWall, punchedFacade, wallAwayFrom} from './modern-kit';
 import {setSink} from './nearbar-kit';
+import {openTopPrism, upwardRoofPlane} from './house-geometry';
 import source from './symphony-footprints.json';
 
 /**
@@ -26,36 +27,51 @@ export function buildSymphony(_w: number, _d: number, b: BuildingTools & {mark?:
   addShell(b, src as never, {wall: 'slate', roof: 'slate', skip: s => (s as Part).part === 1 || isTowerPart(s) || (s as Part).part >= 5});
   addShell(b, src as never, {wall: 'brick', roof: 'slate', skip: s => (s as Part).part !== 1});
 
-  const box = (x0: number, x1: number, z0: number, z1: number, y0: number, y1: number, wall = 'ochre') => {
-    b.add(new T.BoxGeometry(x1 - x0, y1 - y0, z1 - z0), wall as never, (x0 + x1) / 2, (y0 + y1) / 2, (z0 + z1) / 2);
-    if (wall === 'ochre') b.add(new T.BoxGeometry(x1 - x0 - 0.04, 0.1, z1 - z0 - 0.04), 'slate' as never, (x0 + x1) / 2, y1 + 0.03, (z0 + z1) / 2);
+  // Massing as stacked, non-overlapping walls-only prisms per height band with roofs only where a band is uncovered
+  // (2026-11-06, lane #237): the old overlapping boxes left their buried faces coplanar with the neighbouring box's walls
+  // and caps 2 cm over the tops, about 320 m2 of ochre/ochre coplanar overlap. Plan points are native (x, z).
+  const shape = (pts: [number, number][]) => { const sh = new T.Shape(); pts.forEach(([x, z], i) => (i ? sh.lineTo(x, z) : sh.moveTo(x, z))); sh.closePath(); return sh; };
+  const walls = (pts: [number, number][], y0: number, y1: number) => {
+    const g = openTopPrism(shape(pts), y0, y1), p = g.getAttribute('position'), n = g.getAttribute('normal'), keep: number[] = [];
+    for (let i = 0; i < p.count; i += 3) {
+      if ([0, 1, 2].every(j => Math.abs(n.getY(i + j)) > 0.9)) continue;
+      for (let j = 0; j < 3; j++) keep.push(p.getX(i + j), p.getY(i + j), p.getZ(i + j));
+    }
+    const out = new T.BufferGeometry();
+    out.setAttribute('position', new T.Float32BufferAttribute(keep, 3)); out.computeVertexNormals(); g.dispose();
+    b.add(out, 'ochre' as never);
   };
-  // Tower A
-  box(15.9, 42.0, -51.2, -41.3, 0, 58.8);
-  box(18.8, 42.0, -60.6, -43.0, 0, 102.7);
-  box(25.0, 35.5, -56.2, -46.2, 102.6, 105.0, 'slate');
-  // Tower B
-  box(52.2, 75.0, -93.2, -58.8, 0, 102.8);
-  box(59.0, 69.0, -80.5, -66.0, 102.7, 105.1, 'slate');
-  box(56.9, 79.0, -79.8, -47.5, 0, 74.0);
-  // Office wing (trapezoid in plan: its south wall runs 5.3 degrees off the grid). Shape y = -native z so that
-  // rotateX(-90 deg) maps (x, -z, depth) to (x, depth, z): extrusion goes up, top face looks up.
-  {
-    const sh = new T.Shape();
-    const pts: [number, number][] = [[56.9, -44.67], [120.1, -38.8], [120.0, -93.8], [52.2, -93.9]];
-    pts.forEach(([x, z], i) => (i ? sh.lineTo(x, -z) : sh.moveTo(x, -z)));
-    sh.closePath();
-    const g = new T.ExtrudeGeometry(sh, {depth: 23.7, bevelEnabled: false});
-    g.rotateX(-Math.PI / 2);
-    b.add(g, 'ochre' as never);
-    const cap = new T.ShapeGeometry(sh);
-    cap.rotateX(-Math.PI / 2);
-    b.add(cap, 'slate' as never, 0, 23.76, 0);
-  }
+  const roof = (pts: [number, number][], y: number, colour = 'slate') => b.add(upwardRoofPlane(shape(pts), y), colour as never);
+  const box = (x0: number, x1: number, z0: number, z1: number, y0: number, y1: number, wall = 'slate') =>
+    b.add(new T.BoxGeometry(x1 - x0, y1 - y0, z1 - z0), wall as never, (x0 + x1) / 2, (y0 + y1) / 2, (z0 + z1) / 2);
+  // Tower A: the 58.8 m south block wrapped round the foot of the 102.7 m shaft
+  const aLow: [number, number][] = [[18.8, -60.6], [42, -60.6], [42, -41.3], [15.9, -41.3], [15.9, -51.2], [18.8, -51.2]];
+  const aShaft: [number, number][] = [[18.8, -60.6], [42, -60.6], [42, -43.0], [18.8, -43.0]];
+  walls(aLow, 0, 58.8);
+  walls(aShaft, 58.8, 102.7);
+  roof([[42, -43.0], [42, -41.3], [15.9, -41.3], [15.9, -51.2], [18.8, -51.2], [18.8, -43.0]], 58.8);
+  roof(aShaft, 102.7);
+  box(25.0, 35.5, -56.2, -46.2, 102.0, 105.0);
+  // Tower B: the office wing (its south wall 5.3 degrees off the grid) round the core and the 74 m stage
+  const bLow: [number, number][] = [[52.2, -93.8], [120, -93.8], [120.1, -38.8], [56.9, -44.67], [55.55, -58.8], [52.2, -58.8]];
+  const bMid: [number, number][] = [[52.2, -93.2], [75, -93.2], [75, -79.8], [79, -79.8], [79, -47.5], [56.9, -47.5], [56.9, -58.8], [52.2, -58.8]];
+  const bCore: [number, number][] = [[52.2, -93.2], [75, -93.2], [75, -58.8], [52.2, -58.8]];
+  walls(bLow, 0, 23.7);
+  walls(bMid, 23.7, 74.0);
+  walls(bCore, 74.0, 102.8);
+  roof([[52.2, -93.8], [120, -93.8], [120.1, -38.8], [56.9, -44.67], [55.55, -58.8], [56.9, -58.8], [56.9, -47.5], [79, -47.5], [79, -79.8], [75, -79.8], [75, -93.2], [52.2, -93.2]], 23.7);
+  roof([[75, -79.8], [79, -79.8], [79, -47.5], [56.9, -47.5], [56.9, -58.8], [75, -58.8]], 74.0);
+  roof(bCore, 102.8);
+  box(59.0, 69.0, -80.5, -66.0, 102.0, 105.1);
   b.mark?.('shell');
 
   setSink(1.2);
-  const tower = {y0: 5.0, pitch: 3.5, colPitch: 3.25, winW: 1.15, winBottom: 0.85, winH: 1.95, band: 'ochre', stripe: 'red', darkStripe: 'greyBrick', darkFloors: 5, glass: 'glass', ground: 'dark', crenel: 'ochre'};
+  // Piers (2026-11-06, lane #237, Commons "Amsterdam Symphony Towers" 2021-11-22): both towers read as deep tan brick
+  // fins with the glazing set back between them, every fin rising as a merlon above the flat crown (about 1.0 m on the
+  // residential tower, 0.7 m on the office tower); the windows are tall slots, about 42 % of each axis and two thirds of the storey. The old flat punched front had
+  // no fins and no crown above 100 m.
+  const tower = {y0: 5.0, pitch: 3.5, colPitch: 3.25, winW: 1.35, winBottom: 0.6, winH: 2.35, band: 'ochre', stripe: 'red', darkStripe: 'greyBrick', darkFloors: 5, glass: 'glass', ground: 'dark',
+    pier: {colour: 'ochre', depth: 0.45, crenelH: 1.0}};
   // [origin at t = 0, outward bearing, length, y from, y to]
   const faces: [[number, number], number, number, number, number][] = [
     // A
@@ -69,7 +85,7 @@ export function buildSymphony(_w: number, _d: number, b: BuildingTools & {mark?:
     // B
     [[75.0, -93.2], 0, 22.8, 0, 102.8],
     [[52.2, -93.2], 270, 34.4, 0, 102.8],
-    [[52.2, -58.8], 180, 4.7, 0, 102.8],
+    [[52.2, -58.8], 180, 4.7, 23.7, 102.8],  // below 23.7 the wing's slanted west wall takes over at x 55.55
     [[56.9, -58.8], 180, 18.1, 74.0, 102.8],
     [[75.0, -80.0], 90, 13.2, 23.7, 102.8],
     [[75.0, -58.8], 90, 21.2, 74.0, 102.8],
@@ -78,7 +94,7 @@ export function buildSymphony(_w: number, _d: number, b: BuildingTools & {mark?:
     [[56.9, -58.8], 270, 11.3, 23.7, 74.0],
   ];
   // Tower B is the office tower: same brick and grid, finer axes (2.0 m) and narrower windows than the residential tower A.
-  const office = {...tower, colPitch: 2.0, winW: 1.1};
+  const office = {...tower, colPitch: 2.0, winW: 0.9, pier: {colour: 'ochre', depth: 0.4, crenelH: 0.7}};
   faces.forEach(([origin, bearing, len, y0, y1], k) => punchedFacade(b, faceWall(origin, bearing, len, y0, y1), k >= 7 ? office : tower));
   const wing = {y0: 5.0, pitch: 3.5, colPitch: 2.2, winW: 1.6, winBottom: 0.9, winH: 1.9, band: 'ochre', stripe: 'red', glass: 'glass', ground: 'dark', crenel: 'ochre'};
   for (const [origin, bearing, len] of [[[56.9, -44.67], 185.3, 63.4], [[120.1, -38.8], 90, 55.0], [[120.0, -93.8], 0, 67.8]] as [[number, number], number, number][])
