@@ -85,6 +85,33 @@ export function lineMaterial(color: string, z: number): THREE.ShaderMaterial {
   });
 }
 
+/** The CSS viewport every rail line material reads (railLineMaterial), set once per frame by the overview layer. */
+export const railViewport = { uViewport: { value: new THREE.Vector2(1280, 800) } };
+
+/**
+ * lineMaterial with a screen-space floor (lane R3-C #232): each vertex projects its centreline point and a metre
+ * across the line, and widens the half-width to at least `uMinHalfPx` CSS px there, so a rail line never thins
+ * below its floor with depth in a pitched view (lineMaterial's `uHalf` is metres at the view centre). Behind the eye
+ * (w <= 0) the styled width stands. Its own program: the street lines keep lineMaterial's.
+ */
+export function railLineMaterial(color: string, z: number): THREE.ShaderMaterial {
+  return new THREE.ShaderMaterial({
+    uniforms: { ...flatUniforms(color, z), uMinHalfPx: { value: 0 }, ...railViewport, ...fogUniforms() } as unknown as Record<string, THREE.IUniform>,
+    fog: true,
+    vertexShader: /* glsl */`${FOG_VERT_PARS}
+      uniform float uZ; uniform float uHalf; uniform float uMinHalfPx; uniform vec2 uViewport; attribute vec2 aDir; attribute vec2 aCorner; varying vec2 vWorld;
+      void main(){ vec2 n=vec2(-aDir.y,aDir.x);
+        vec4 c0=projectionMatrix*modelViewMatrix*vec4(position.xy,uZ,1.), c1=projectionMatrix*modelViewMatrix*vec4(position.xy+n,uZ,1.);
+        float half_=uHalf;
+        if(c0.w>0. && c1.w>0.){ float pxPerM=length((c1.xy/c1.w-c0.xy/c0.w)*0.5*uViewport); half_=max(uHalf, uMinHalfPx/max(pxPerM,1e-4)); }
+        vec2 p=position.xy+(n*aCorner.x+aDir*aCorner.y)*half_; vWorld=p;
+        vec4 mvPosition=modelViewMatrix*vec4(p,uZ,1.); gl_Position=projectionMatrix*mvPosition;${FOG_VERTEX} }`,
+    fragmentShader: FRAG,
+    transparent: true,
+    depthWrite: false,
+  });
+}
+
 /** Triangulated polygons (ring 0 outer, rest holes) as one geometry. */
 export function polygonGeometry(polygons: readonly (readonly (readonly Vec2[])[])[]): THREE.BufferGeometry {
   const pos: number[] = [], idx: number[] = [];

@@ -113,6 +113,9 @@ export function railMinPxFlag(): boolean { return pageFlag('railMinPx', '__canal
 /** `?farRail=0` / `window.__canalRecallFarRail = false`: no rail corridors in the far ring (farRing.ts). */
 export function farRailFlag(): boolean { return pageFlag('farRail', '__canalRecallFarRail'); }
 
+/** `?farRailDrape=0` / `window.__canalRecallFarRailDrape = false`: far rail bands sampled at their bends only (farRing.ts, #232). */
+export function farRailDrapeFlag(): boolean { return pageFlag('farRailDrape', '__canalRecallFarRailDrape'); }
+
 function pageFlag(param: string, global: string): boolean {
   try {
     const g = globalThis as Record<string, unknown> & { location?: { search?: string } };

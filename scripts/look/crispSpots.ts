@@ -18,6 +18,10 @@ export const CRISP_SPOTS: readonly CrispSpot[] = [
   { name: 'da-costakade-near', center: [4.8738, 52.3672], zoom: 18.8, bearing: -15, pitch: null, band: { x0: 0, y0: 0.1, x1: 1, y1: 0.9 }, crop: { x: 0.3, y: 0.5 } },
   // S4 higher: under z15 the own ground is not drawn and the overview's rail lines are what shows (the user's frame).
   { name: 'zuidas-rails-high', center: [4.8835, 52.3402], zoom: 14.8, bearing: 5, pitch: 66, band: { x0: 0, y0: 0.55, x1: 0.7, y1: 0.9 }, crop: { x: 0.35, y: 0.66 }, shot: 's4-zuidas-rails.png' },
+  // S4 at the user's pose (lane R3-C #232): the user's frame s4-zuidas-rails.png, the camera panned (RE-CENTER showing)
+  // from a rider at the Amstel / Weesperbuurt (~2.8 km away) to the corridor south of the Beatrixpark, looking N, the
+  // RAI/Zuidas towers to the right. Pitch and zoom matched to the shot by eye (tests/e2e/rail-beds.spec.ts strips).
+  { name: 's4-zuidas-user', center: [4.8800, 52.3396], zoom: 17.0, bearing: 2, pitch: 68, band: { x0: 0, y0: 0.5, x1: 0.7, y1: 0.95 }, crop: { x: 0.35, y: 0.7 }, shot: 's4-zuidas-rails.png' },
   // GPU-cost spots (lane R2-A #228, analytic windows): the world-v1 A/B's Westerkerk (scripts/world/abSpots.ts) and the
   // look spots' Dam, chase pose, whole frame.
   { name: 'westerkerk', center: [4.8826, 52.3741], zoom: 17.8, bearing: 74, pitch: null, band: { x0: 0, y0: 0, x1: 1, y1: 1 } },
