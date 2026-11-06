@@ -36,7 +36,7 @@ async function main() {
     // Neighbours in other cells: look them up in the 8 cells around.
     const context: any[] = [];
     if (ext.size) for (let di = -1; di <= 1; di++) for (let dj = -1; dj <= 1; dj++) { if (!di && !dj) continue; const c = cellAt(`${i + di}_${j + dj}`); if (c) for (const b of c.buildings) if (ext.has(b.id)) context.push(styledFeature(b, rawFeature(b))); }
-    const bake = bakeCellShell(i, j, features, context, ROOT);
+    const bake = bakeCellShell(i, j, features, context, ROOT, cell.buildings.map(b => b.group ?? b.tile));
     if (!bake) { console.log(`| ${key} | ${features.length} | 0 | | | | | |`); continue; }
     const s = encodeShel(bake.shel), f = encodeShl1(bake.far), sg = gz(s), fg = gz(f);
     rows.push({ shel: sg, far: fg });

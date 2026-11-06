@@ -11,6 +11,7 @@
 //   PORT=4642 node scripts/aerial-pan.mjs <out.json> [--device desktop|iphone] [--pan 180] [--every 5] [--speed 300]
 //     [--qs '?ride=free&engine=own'] [--chrome] [--headed] [--census]
 // BUNDLES_DIR=<dir> serves *.bundle.js from a scratch build (the Vite reload trap: never build into the worktree).
+// WORLD_DIR=<dir> serves world-v1 (tiles.json, cells, far/, shells/) from a staged compile (artifacts/world/staging).
 // SHOTS=<dir> saves a frame at each pose change (the before/after strips at the user's spots).
 // --census dumps every Map/Set/Array size under the world view's big owners at each sample (finds an unnamed grower).
 // Gates (tests/perf/budgets.json aerial* rows, integrator-owned): see `summary` at the end of the output.
@@ -71,6 +72,10 @@ const context = await browser.newContext(device === 'iphone' ? { ...devices['iPh
 if (process.env.BUNDLES_DIR) await context.route(/\/canal-drive\/js\/([\w-]+\.bundle\.js)(\?.*)?$/, route => {
   const file = path.join(process.env.BUNDLES_DIR, /\/([\w-]+\.bundle\.js)/.exec(route.request().url())[1]);
   return fs.existsSync(file) ? route.fulfill({ body: fs.readFileSync(file), contentType: 'application/javascript' }) : route.continue();
+});
+if (process.env.WORLD_DIR) await context.route(/\/data\/extracts\/amsterdam\/world-v1\/([\w/.-]+?)(\?.*)?$/, route => {
+  const file = path.join(process.env.WORLD_DIR, /\/world-v1\/([\w/.-]+?)(\?.*)?$/.exec(route.request().url())[1]);
+  return fs.existsSync(file) ? route.fulfill({ body: fs.readFileSync(file), contentType: file.endsWith('.json') ? 'application/json' : 'application/octet-stream' }) : route.fulfill({ status: 404, body: '' });
 });
 // Sentry stays out of a harness run.
 await context.route(/ingest\.(us\.)?sentry\.io/, route => route.fulfill({ status: 200, body: '{}' }));
@@ -171,7 +176,11 @@ const residents = census => page.evaluate(census => {
     contextFeatures: size(tb?.contextFeatures), contextChanges: size(tb?.contextChanges), contextCache: size(tb?.contextCache), pendingJobs: size(tb?.pending?.jobs),
     landmarks: size(sig?._entries), landmarksShown: size(sig?.shown), roofs: size(vm.extras?.roofs?._entries),
     trees: size(trees?.tiles), groundCells: size(ground?.resident), groundPrepared: size(ground?.prepared), farRing: size(ground?.far),
-    labelsPlaced: size(vm._labels?.placed), occlusionIndexed: size(vm.labelOcclusion?.indexed),
+    labelsPlaced: size(vm._labels?.placed), labelCandidates: vm._labels?.stats?.candidates ?? null, labelAerial: vm.labelAerial ?? null, occlusionIndexed: size(vm.labelOcclusion?.indexed),
+    // Draw calls and triangles of the last main + overlay pass (sharedFrame stats), the own ground's far radius, the far
+    // tier's resident cells / MB / draws (engine/farShells.ts, lane R2-B #229).
+    draws: (vm._sharedFrame?.stats?.main?.calls ?? 0) + (vm._sharedFrame?.stats?.overlay?.calls ?? 0), drawTriangles: (vm._sharedFrame?.stats?.main?.triangles ?? 0) + (vm._sharedFrame?.stats?.overlay?.triangles ?? 0),
+    farRadiusM: ground?.farRadius ?? null, farShells: vm._farShells?.stats?.() ?? null,
     workers: (pool?.live ?? 0) + (ground?.worker ? 1 : 0),
   };
   if (census) {
@@ -252,7 +261,7 @@ for (let t = every; t <= panS; t += every) {
   last = b + 50;
   const row = { t, ...aerial, heapMB: heap.main.usedMB, bufMB: heap.main.backingMB, workersMB: heap.workersUsedMB, ...rss, ...res, frames, worst };
   timeline.push(row);
-  console.log(`${device} t${t} ${aerial.leg ?? '-'} z${res.zoom} p${res.pitch}: heap ${heap.main.usedMB}+${heap.main.backingMB ?? '?'} MB, wk ${heap.workersUsedMB} MB, rss ${rss.rendererRssMB}/${rss.gpuRssMB}, geo ${res.geometries} tex ${res.textures} gl ${res.gl?.residentMB} MB (+${res.gl?.uploadMB} MB up), chunks ${res.chunks} tiles ${res.cityTiles} feats ${res.cityFeatures} ctxCh ${res.contextChanges} lm ${res.landmarks} trees ${res.trees} ground ${res.groundCells} far ${res.farRing} labels ${res.labelsPlaced} wkrs ${res.workers}; p99 ${frames.p99} >100 ${frames.over100} >250 ${frames.over250} max ${frames.longestMs}${worst?.[0] ? ` worst ${JSON.stringify(worst[0].phases)}` : ''}`);
+  console.log(`${device} t${t} ${aerial.leg ?? '-'} z${res.zoom} p${res.pitch}: heap ${heap.main.usedMB}+${heap.main.backingMB ?? '?'} MB, wk ${heap.workersUsedMB} MB, rss ${rss.rendererRssMB}/${rss.gpuRssMB}, geo ${res.geometries} tex ${res.textures} gl ${res.gl?.residentMB} MB (+${res.gl?.uploadMB} MB up), chunks ${res.chunks} tiles ${res.cityTiles} feats ${res.cityFeatures} ctxCh ${res.contextChanges} lm ${res.landmarks} trees ${res.trees} ground ${res.groundCells} far ${res.farRing} r${res.farRadiusM} fs ${res.farShells?.cells ?? '-'}/${res.farShells?.partsShown ?? '-'} draws ${res.draws} labels ${res.labelsPlaced} wkrs ${res.workers}; p99 ${frames.p99} >100 ${frames.over100} >250 ${frames.over250} max ${frames.longestMs}${worst?.[0] ? ` worst ${JSON.stringify(worst[0].phases)}` : ''}`);
 }
 
 // Gates: minute 1 is the reference (the sweep has reached every district once by then at the default speed).
@@ -282,6 +291,14 @@ const summary = {
   aerialP99MedianWindowMs: pickQ(allFrames.map(f => f.p99), 0.5),
   aerialFramesOver100Ms: allFrames.reduce((a, f) => a + f.over100, 0),
   aerialFramesOver250Ms: allFrames.reduce((a, f) => a + f.over250, 0),
+  aerialDrawsMax: Math.max(...timeline.map(r => r.draws ?? 0)),
+  aerialFarRadiusMax: Math.max(...timeline.map(r => r.farRadiusM ?? 0)),
+  farShellCellsMax: Math.max(...timeline.map(r => r.farShells?.cells ?? 0)),
+  farShellMBMax: Math.max(...timeline.map(r => r.farShells?.gpuMB ?? 0)),
+  farShellFetchedMB: Math.max(...timeline.map(r => r.farShells?.fetchedMB ?? 0)),
+  // The slowest label phase in any window's worst frames (labels: occlusion index / placement, engine/overlays).
+  labelsWorstMs: Math.max(0, ...timeline.flatMap(r => (r.worst ?? []).flatMap(w => Object.entries(w.phases).filter(([k]) => /label/i.test(k)).map(([, v]) => v)))),
+  labelCandidatesMax: Math.max(0, ...timeline.map(r => r.labelCandidates ?? 0)),
   aerialLongestFrameMs: Math.max(...allFrames.map(f => f.longestMs)),
   km: m3.km,
 };

@@ -38,6 +38,8 @@ import { awaitWorkerPool } from './workerPool';
 import type { BuildingLookId, JumpOptions, ScreenPoint, WorldCamera, WorldViewOracles } from './worldViewApi';
 import { BUILDING_LOOK_IDS, urlBuildingLook } from './worldViewApi';
 import { FlatLines, type LngLatLine } from './overlays/flatLines';
+import { FarShells, farCellOrigin, farShellsEnabled } from './farShells';
+import { isAerialView } from '../rendererShared/aerialView';
 import { ToonPost, toonLookFlag } from './toonLook';
 import { COVER_POLL_MS, isCoveredState } from '../labels/coveredState';
 import { LabelLayer, type PointLabel } from './overlays/labelLayer';
@@ -64,6 +66,8 @@ const LOADING_STATE = 2;
  * uploads and compiles behind it, once a second, and the chunk builds the settle hold waits for get the main thread.
  */
 export const COVERED_FRAME_MS = 1000;
+/** Candidates a full label placement takes from the air (labelLayer aerialCap): ~2x the most a ride frame collects. */
+const AERIAL_LABEL_CAP = { count: 1200 };
 const flag = (param: string, global: string, fallback: boolean): boolean => {
   const g = W();
   if (typeof g[global] === 'boolean') return g[global];
@@ -131,6 +135,9 @@ export class OwnWorldView implements WorldViewOracles {
   _perfHud: PerfHud | null = null;
   _threeBuildings: any = null;
   _completeCity: any = null;
+  /** The far tier (engine/farShells.ts, lane R2-B #229; `?farShells=0`): baked SHL1 prisms out to the far ring. */
+  _farShells: FarShells | null = null;
+  private farShellsOn = farShellsEnabled();
   /** Landmark models, trees, detailed buildings, pyramidal roofs, ARTIS (cityExtras.ts). */
   readonly extras: CityExtras;
   get _signatureLandmarks(): any { return this.extras.signature; }
@@ -194,6 +201,9 @@ export class OwnWorldView implements WorldViewOracles {
   readonly labelOcclusion = new LabelOcclusion();
   /** `?labelOcclusion=0` (or flipping it at run time: specs compare on and off at one pose). */
   private _labelOcclusionOn = flag('labelOcclusion', '__canalRecallLabelOcclusion', true);
+  /** From the air (rendererShared/aerialView.ts): no occlusion rounds, candidates capped (lane R2-B #229; `?labelAerialCap=0`). */
+  private labelAerialCapOn = flag('labelAerialCap', '__canalRecallLabelAerialCap', true);
+  labelAerial = false;
   /**
    * The label occlusion grid is (re)built in idle time when the resident list changes or the eye jumps, not inside the
    * first full placement after a ride start or route change (9-20 ms there on the iPhone profile; lane E6 #219).
@@ -568,6 +578,32 @@ export class OwnWorldView implements WorldViewOracles {
     } catch (error) { this.fail('ownGround', error); this._ownGround = null; }
   }
 
+  /** Create the far tier once the facades and a compiled world (with far prisms) are up; feed it the far radius. */
+  private updateFarShells(subject: [number, number], radiusM: number): void {
+    if (!this.farShellsOn) return;
+    if (!this._farShells) {
+      const tb = this._threeBuildings, world = this._completeCity?.worldClient;
+      if (!tb?.farShellHost || !world?.farCells || !tb.farShellHost()) return;
+      const available = world.farCells();
+      if (!available.size) { this.farShellsOn = false; return; } // an index compiled without --shell
+      this._farShells = new FarShells({
+        THREE: tb.farShellHost().THREE,
+        scene: () => tb.farShellHost()?.scene ?? null,
+        material: () => tb.farShellHost()?.material ?? null,
+        fadeMaterial: (v: number) => tb.farShellHost()?.fadeMaterial(v) ?? null,
+        coarseDrawn: (tile: string) => !!tb.farShellHost()?.coarseDrawn(tile),
+        origin: farCellOrigin,
+        fetchFar: (key: string, signal: AbortSignal) => world.far(key, signal),
+        available: () => available,
+        repaint: () => this.host.triggerRepaint(),
+      }, { touch: coarse() });
+    }
+    // The prisms carry the photo look's colours; another look (cartoon, plain) draws no far tier.
+    this._farShells.setEnabled(this.drawnLook() === 'photo' && this._threeBuildings?.visible !== false);
+    this._farShells.update(subject[0], subject[1], radiusM);
+    this._farShells.frame();
+  }
+
   private riderSurface(): any { return this._ownGround && this._ownGround.ready ? this._ownGround : null; }
   private easeRiderSurface(target: number): number {
     const v = Number.isFinite(target) ? target : 0, d = v - this.riderSurfaceM;
@@ -671,7 +707,9 @@ export class OwnWorldView implements WorldViewOracles {
     // sampleFeatures' first 20,000: the city holds ~36,000 and the cap dropped the blocks around the camera.
     // `?labelOcclusion=0` turns it off.
     const city = this._completeCity;
-    if (this.labelOcclusionOn && city?.residentFeatures) {
+    const aerial = this.labelAerial = this.labelAerialCapOn && isAerialView(zoom, cam.pitch, cam.lat);
+    this._labels.aerialCap = aerial ? AERIAL_LABEL_CAP : null;
+    if (this.labelOcclusionOn && !aerial && city?.residentFeatures) {
       const eye = cam.eye();
       let indexed = false;
       this._labels.setOcclusion(c => {
@@ -838,6 +876,8 @@ export class OwnWorldView implements WorldViewOracles {
       this.syncGroundConsumers(phases ? lap : undefined);
     }
     lap('ground update');
+    this.updateFarShells(view.subject, view.introFlat > 0 ? 0 : (this._ownGround?.farRadiusM ?? 0));
+    lap('far shells');
     this.cameraMap.jumpTo({ center: view.lngLat, zoom: view.zoom, bearing: view.bearing, pitch, elevation });
     lap('jumpTo and move listeners');
     this.lastSubject = view.subject;

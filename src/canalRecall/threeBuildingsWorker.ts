@@ -19,7 +19,7 @@ type Job = { surveyedEnvelopeData?: SurveyedBuildingEnvelope[]; surveyedEnvelope
 
 // world-v1 (`?world=v1`): the streamer's cell reads (fetch, inflate, decode, decoded-cell cache) run here, off the
 // main thread, and come back as batches of styled features (world/worldCells.ts).
-const world = new WorldCellWorkerHost(reply => (self as unknown as Worker).postMessage(reply));
+const world = new WorldCellWorkerHost((reply, transfer) => (self as unknown as Worker).postMessage(reply, transfer ?? []));
 
 // The pool (engine/workerPool.ts) also decodes the own ground's relief tiles here (ownGround/reliefDecode.ts) and
 // welds landmark shadow stand-ins (rendererShared/shadowStandIns.ts, #129) and builds the engine's overview geometry.

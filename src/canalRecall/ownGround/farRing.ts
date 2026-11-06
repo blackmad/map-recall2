@@ -233,6 +233,29 @@ export const FAR_STEP_M = 1000;
 /** Far blocks farther than the far radius by this much are dropped (hysteresis). */
 export const FAR_KEEP_M = 2000;
 
+/**
+ * How far the screen's top edge reaches over flat ground, metres, for the far ring (lane R2-B, #229; `?farHorizon=0`
+ * uses `viewReachM`). worldStreamer.viewReachM caps the top ray at 86°: right for the resident ring, whose cells cost
+ * build time, but from a pitched view that shows the horizon (pitch + half the field of view ≥ 86°, i.e. pitch ≥
+ * ~67.6°) it pegs the reach at tan 86° ≈ 14× the eye height, ~1.25 km at the aerial pan's S1 pose (zoom 17.6, pitch
+ * 68–72), under the 1,400 m resident radius: the far ring stayed off (round 1 saw `far.radiusM` 0 in every frame)
+ * while the screen showed empty ground to the horizon. Here the ray may run to FAR_HORIZON_DEG (89.5°: 115× the eye
+ * height), so such a view asks for the whole far ring; a view whose top edge is under 86° gets viewReachM's value.
+ */
+export { FAR_HORIZON_DEG, farReachM } from '../rendererShared/aerialView.js';
+import { AERIAL_EYE_MIN_M, eyeHeightM, farReachM as reachOf } from '../rendererShared/aerialView.js';
+/**
+ * The far ring's reach for a view: farReachM from the air, viewReachM's `reach` otherwise. The horizon reach needs an
+ * eye above AERIAL_EYE_MIN_M: the cockpit view (pitch 84, eye ~13 m) also shows the horizon, and must not fetch the
+ * far city on a ride (world-v1-bytes.spec, the ride case).
+ */
+export function horizonReachM(reach: number, zoom: number, pitchDeg: number, latDeg: number): number {
+  return eyeHeightM(zoom, pitchDeg, latDeg) >= AERIAL_EYE_MIN_M ? Math.max(reach, reachOf(zoom, pitchDeg, latDeg)) : reach;
+}
+export function farHorizonEnabled(search: string = typeof location !== 'undefined' ? location.search : ''): boolean {
+  try { return new URLSearchParams(search).get('farHorizon') !== '0'; } catch { return true; }
+}
+
 /** Far radius for a view reaching `reachM`, with the resident ring at `residentM`: 0 while the resident ring reaches it. */
 export function farRadiusM(reachM: number, residentM: number): number {
   if (reachM <= residentM) return 0;

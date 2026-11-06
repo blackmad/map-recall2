@@ -27,6 +27,11 @@ export function shellProfiles(root: string): StreetAppearanceProfile[] {
   return profiles = JSON.parse(JSON.stringify(admitted)).profiles;
 }
 const KIT_HIDE = new Set(KIT_HIDE_IDS);
+/** A building's coarse group without a cell's GRP: the z14 tile of its first vertex (threeBuildingsBrowser tileKeyOf). */
+function groupTile(f: Feature): string {
+  const [lng, lat] = asPolygons(f.geometry)[0]?.[0]?.[0] ?? [0, 0], n = 2 ** 14, rad = lat * Math.PI / 180;
+  return `${Math.floor(((lng + 180) / 360) * n)}/${Math.floor(((1 - Math.log(Math.tan(rad) + 1 / Math.cos(rad)) / Math.PI) / 2) * n)}`;
+}
 
 export type ShellBake = { shel: ShellMesh; far: FarPrism[]; coarseTriangles: number; ms: number; farMs: number; buildings: number };
 
@@ -34,7 +39,7 @@ export type ShellBake = { shel: ShellMesh; far: FarPrism[]; coarseTriangles: num
  * `features`: the cell's styled buildings in cell order (index = bid); `context`: the party-wall neighbours of the
  * cell's buildings that are not in the cell (other cells), as the runtime context of a chunk.
  */
-export function bakeCellShell(i: number, j: number, features: readonly Feature[], context: readonly Feature[], root: string): ShellBake | null {
+export function bakeCellShell(i: number, j: number, features: readonly Feature[], context: readonly Feature[], root: string, groups: readonly string[] = []): ShellBake | null {
   const t0 = performance.now();
   const bid = new Map<string, number>();
   features.forEach((f, k) => bid.set(String(f.properties.id), k));
@@ -44,11 +49,12 @@ export function bakeCellShell(i: number, j: number, features: readonly Feature[]
   if (!chunk.indices.length) return null;
   const origin = shellOrigin(i, j), shel = shellFromChunk(chunk, origin, id => bid.get(id) ?? -1);
   const ms = performance.now() - t0, t1 = performance.now();
-  return { shel, far: bakeFar(shel, features, origin), coarseTriangles: chunk.indices.length / 3, ms, farMs: performance.now() - t1, buildings: features.length };
+  return { shel, far: bakeFar(shel, features, origin, groups), coarseTriangles: chunk.indices.length / 3, ms, farMs: performance.now() - t1, buildings: features.length };
 }
 
 /** SHL1: a prism per building polygon, measured off the SHEL bake (shellMesh.ts farPrisms). */
-export function bakeFar(shel: ShellMesh, features: readonly Feature[], origin: readonly [number, number]): FarPrism[] {
+/** `groups[bid]`: the building's coarse group tile (CellBuilding.group, `x/y`); the far tier hides a tile's prisms while its resident shell draws. */
+export function bakeFar(shel: ShellMesh, features: readonly Feature[], origin: readonly [number, number], groups: readonly string[] = []): FarPrism[] {
   const top = new Float64Array(features.length).fill(-Infinity);
   for (let k = 0; k < shel.bids.length; k++) top[shel.bids[k]] = Math.max(top[shel.bids[k]], shel.positions[k * 3 + 2]);
   // One prism per polygon of a building (a multipolygon's parts share its colours and heights).
@@ -66,6 +72,6 @@ export function bakeFar(shel: ShellMesh, features: readonly Feature[], origin: r
   features.forEach((f, b) => { rings.push(Number.isFinite(top[b]) ? [[[0, 0]]] : null); heights.push({ eavesM: Math.min(wallTopHeightM(f.properties), top[b]), topM: top[b] }); });
   const perBuilding = farPrisms(shel, rings, heights);
   const out: FarPrism[] = [];
-  polys.forEach((poly, n) => { const pr = perBuilding[owner[n]]; if (pr) out.push({ ...pr, rings: poly }); });
+  polys.forEach((poly, n) => { const pr = perBuilding[owner[n]]; if (pr) out.push({ ...pr, rings: poly, tile: groups[owner[n]] ?? groupTile(features[owner[n]]) }); });
   return quantisePrisms(out);
 }

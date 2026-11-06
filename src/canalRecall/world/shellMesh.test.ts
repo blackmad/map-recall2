@@ -4,7 +4,7 @@ import '../../../scripts/world/useBrowserMath.js';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { Reader } from './cellFormat.js';
-import { decodeShel, decodeShl1, encodeShel, encodeShl1, farShellMesh, firstUseOrder, quantisePrisms, shellFromChunk, shellOrigin, simplifyRing, NO_BID, SHEL_UNIT_M, type FarPrism } from './shellMesh.js';
+import { decodeShel, decodeShl1, encodeShel, encodeShl1, farCellArrays, farShellMesh, firstUseOrder, quantisePrisms, shellFromChunk, shellOrigin, simplifyRing, NO_BID, SHEL_UNIT_M, type FarPrism } from './shellMesh.js';
 import { CELL_GRID, cellBounds } from './cellGrid.js';
 
 test('shellOrigin is the cell SW corner in the chunk frame (threeBuildingFeatures ORIGIN projection)', () => {
@@ -54,7 +54,7 @@ test('simplifyRing drops collinear points within the tolerance and keeps a trian
 
 const prism = (x: number, y: number, w: number, eavesM: number, topM: number, ccw = true): FarPrism => {
   const ring = [[x, y], [x + w, y], [x + w, y + w], [x, y + w]];
-  return { rings: [ccw ? ring : [...ring].reverse()], eavesM, topM, wall: [200, 100, 50, 5], roof: [90, 80, 70, 9] };
+  return { rings: [ccw ? ring : [...ring].reverse()], eavesM, topM, wall: [200, 100, 50, 5], roof: [90, 80, 70, 9], tile: '8414/5384' };
 };
 
 test('SHL1: prisms quantise to the 0.5 m grid and decimetres and round-trip exactly', () => {
@@ -90,4 +90,28 @@ test('farShellMesh: walls face out, lids face up, a pitched roof gets its band, 
   // Shades: tint alpha is the baked shade (0.84..1 walls), layer from the prism.
   assert.ok([...pitched.tints].filter((_, k) => k % 4 === 3).every(a => a >= 0.5 * 255 - 1));
   assert.ok([...pitched.layers].every(l => l === 5 || l === 9));
+});
+
+test('farCellArrays: one vertex range per z14 tile, decimetre positions, indices inside their part', () => {
+  const a = prism(0, 0, 10, 9, 9), b = { ...prism(30, 0, 10, 12, 15), tile: '8415/5384' }, c = prism(60, 0, 10, 6, 6);
+  const out = farCellArrays([a, b, c]);
+  assert.deepEqual(out.parts.map(p => p.tile), ['8414/5384', '8415/5384']);
+  assert.equal(out.parts[0].start, 0);
+  assert.equal(out.parts[1].start, out.parts[0].count);
+  assert.equal(out.parts[1].start + out.parts[1].count, out.layers.length);
+  assert.equal(out.positions.length, out.layers.length * 3);
+  assert.equal(out.tints.length, out.layers.length * 4);
+  assert.ok(out.indices instanceof Uint16Array);
+  const one = farShellMesh([b], { neighbours: [a, b, c] });
+  assert.equal(out.parts[1].count, one.layers.length);
+  for (let k = 0; k < one.positions.length; k++) assert.equal(out.positions[out.parts[1].start * 3 + k], Math.round(one.positions[k] * 10));
+  // Every triangle stays inside one part: hiding a tile's vertex range hides whole triangles.
+  for (let t = 0; t < out.indices.length; t += 3) {
+    const owner = (v: number) => out.parts.findIndex(p => v >= p.start && v < p.start + p.count);
+    assert.equal(owner(out.indices[t]), owner(out.indices[t + 1]));
+    assert.equal(owner(out.indices[t]), owner(out.indices[t + 2]));
+  }
+  // The pitched prism's lid sits at its roof band's mid height, (12 + 15) / 2 m: 135 dm.
+  let top = 0; for (let k = 2; k < out.positions.length; k += 3) top = Math.max(top, out.positions[k]);
+  assert.equal(top, 135);
 });

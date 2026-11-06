@@ -273,6 +273,8 @@ function fadeClone(source: any, value: number, under?: { value: number }): any |
   if (source.defaultAttributeValues) clone.defaultAttributeValues = source.defaultAttributeValues;
   return clone;
 }
+/** What the far tier reads off the facade layer (ThreeBuildings.farShellHost). */
+export type FarShellHostView = { THREE: any; scene: any; material: any; look: string; fadeMaterial(value: number): any | null; coarseDrawn(tile: string): boolean };
 const BOAT_PREFIX = 'boats:';
 /** What setFeatures groups a feature by, memoised per feature object (ThreeBuildings.groupOf). */
 interface FeatureGroupInfo { geometry: unknown; id: string; kit: boolean; tile: string | null; coarse: string | null; near: string; nearKey: string; extrasKey: string }
@@ -942,6 +944,24 @@ export class ThreeBuildings {
     for (const tile of tiles) if (this.chunks.get(`${COARSE_PREFIX}${tile}`)?.mesh) return true;
     return false;
   }
+
+  /**
+   * The far tier's host (engine/farShells.ts, lane R2-B #229): the facade scene (chunk metres), the chunk material
+   * and a fading clone of it (one program), the drawn look, and whether a resident coarse shell is installed and done
+   * dissolving in for a z14 tile (then the far tier hides that tile's prisms). Null until the layer is set up.
+   */
+  farShellHost(): FarShellHostView | null {
+    if (!this.THREE || !this.scene || !this.material) return null;
+    const held = this.farHost;
+    if (held && held.material === this.material && held.scene === this.scene) { held.look = this.look; return held; }
+    const material = this.material;
+    return this.farHost = {
+      THREE: this.THREE, scene: this.scene, material, look: this.look,
+      fadeMaterial: (value: number) => fadeClone(material, value),
+      coarseDrawn: (tile: string) => { const key = `${COARSE_PREFIX}${tile}`; return !!this.chunks.get(key)?.mesh && !this.fading.has(key); },
+    };
+  }
+  private farHost: FarShellHostView | null = null;
 
   /** performance.now() of the first coarse shell installed with geometry, or null. */
   firstShellAt(): number | null { return this.firstShellTime; }

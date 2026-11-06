@@ -51,7 +51,7 @@ import { footprintBase } from './placement.js';
 import { cutMesh, disposeTiles, setTileReach } from '../rendererShared/tiledGeometry.js';
 import { cellTileGrid, type CellTile } from './cellTiles.js';
 import { inTouchRing, residentRadius, touchAheadMarginM, touchResidentRadius, viewCornerReachM, viewReachM } from '../engine/worldStreamer.js';
-import { farBlockCells, farBlocksWithin, farRadiusM, FAR_KEEP_M, type BuiltFar } from './farRing.js';
+import { farBlockCells, farBlocksWithin, farHorizonEnabled, farRadiusM, horizonReachM, FAR_KEEP_M, type BuiltFar } from './farRing.js';
 import { routeRibbon } from './streets.js';
 import { disc, emptyMesh, merge, type MeshArrays } from './drape.js';
 import { riderPose as surfaceRiderPose, type Vec2 } from './surface.js';
@@ -374,6 +374,9 @@ export class OwnGround {
   private readonly cellBuilds = new Map<string, BuiltCell['stats'] & { lod: 0 | 1; detail: CellDetail }>();
   /** Far ring radius now (0: the resident ring reaches what the camera sees). */
   private farRadius = 0;
+  private farHorizon: boolean | undefined;
+  /** The far ring's radius now, metres (0: off at this view); the far building tier follows it (engine/farShells.ts). */
+  get farRadiusM(): number { return this.farRadius; }
   /** A `view` ring's extra reach ahead of the moving rider, metres (residency.ts touchAheadMarginM). */
   private aheadM = 0;
   private readonly far = new Map<string, FarResident>();
@@ -502,7 +505,8 @@ export class OwnGround {
       radius = residentRadius(reach, this.opts.radiusM, this.opts.aerialRadiusM);
     }
     if (radius !== this.radiusM) { this.radiusM = radius; this.residencyAt = null; }
-    const far = this.opts.far ? farRadiusM(reach, radius) : 0;
+    // The far ring follows the horizon (farRing.ts farReachM, lane R2-B #229): a pitched view that shows it asks for the ring.
+    const far = this.opts.far ? farRadiusM((this.farHorizon ??= farHorizonEnabled()) ? horizonReachM(reach, zoom, pitchDeg, lngLat[1]) : reach, radius) : 0;
     if (far !== this.farRadius) { this.farRadius = far; this.residencyAt = null; }
     if (!this.ready) return;
     if (!this.residencyAt || Math.hypot(this.centre[0] - this.residencyAt[0], this.centre[1] - this.residencyAt[1]) >= RESIDENCY_STEP_M) this.updateResidency();

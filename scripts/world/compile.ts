@@ -251,7 +251,7 @@ async function main() {
       const features = cell.buildings.map(b => byId.get(b.id));
       const context: any[] = [], seen = new Set<string>();
       for (const b of cell.buildings) for (const n of b.neighbours ?? []) if (typeof n === 'string' && !seen.has(n)) { seen.add(n); const f = byId.get(n); if (f) context.push(f); }
-      const bake = bakeCellShell(cell.i, cell.j, features, context, ROOT);
+      const bake = bakeCellShell(cell.i, cell.j, features, context, ROOT, cell.buildings.map(b => b.group ?? b.tile));
       const entry = cellsOut[key];
       delete entry.shell; delete entry.far;
       if (!bake) continue;

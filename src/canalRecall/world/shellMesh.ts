@@ -21,9 +21,9 @@
  *         XY: per vertex uvar k (k > 0: the k-th most recent distinct XY, moved to front; 0: zz dx zz dy from the
  *         last literal, 0.1 m)  Z column (zz deltas, 0.1 m)  U, V columns (zz deltas, 1/UV_UNITS)
  *         layer bytes  tint R, G, B, A planes  accent R, G, B planes  indices (high-water-mark code)
- *   SHL1  u8 level (2)  uvar prisms  per prism uvar rings  per ring uvar points  X, Y columns (zz deltas, 0.5 m,
- *         running across rings and prisms)  eaves dm (uvar)  rise dm (uvar)  wall R, G, B, layer planes  roof R, G,
- *         B, layer planes
+ *   SHL1  u8 level (2)  uvar tiles { uvar x uvar y }*  uvar prisms  per prism uvar tile index  per prism uvar rings
+ *         per ring uvar points  X, Y columns (zz deltas, 0.5 m, running across rings and prisms)  eaves dm (uvar)
+ *         rise dm (uvar)  wall R, G, B, layer planes  roof R, G, B, layer planes
  * Index code: `hw - index`, `hw` the next unseen vertex (0 = a new vertex), the usual high-water mark.
  */
 import earcut from 'earcut';
@@ -51,7 +51,7 @@ export type ShellMesh = {
   bids: Uint16Array; indices: Uint32Array;
 };
 /** One building of SHL1: rings (outer first, then holes; open, metres from the cell origin), eaves and roof top (m), wall and roof (r, g, b, layer). */
-export type FarPrism = { rings: number[][][]; eavesM: number; topM: number; wall: [number, number, number, number]; roof: [number, number, number, number] };
+export type FarPrism = { rings: number[][][]; eavesM: number; topM: number; wall: [number, number, number, number]; roof: [number, number, number, number]; /** The building's coarse group tile (`x/y`, CellBuilding.group): the far tier hides it while that tile's resident shell draws. */ tile: string };
 /** The far ring's mesh (farShellMesh): positions (metres from the cell origin), layer, tint (RGB + shade), indices. */
 export type FarShellMesh = { positions: Float32Array; layers: Uint8Array; tints: Uint8Array; indices: Uint32Array };
 
@@ -249,7 +249,7 @@ export function farPrisms(shel: ShellMesh, rings: readonly (number[][][] | null)
     const wall = top(wallArea.get(bid)), roof = top(roofArea.get(bid));
     if (!wall && !roof) return null;
     const { eavesM, topM } = heights[bid];
-    return { rings: r, eavesM, topM: Math.max(eavesM, topM), wall: wall ?? roof!, roof: roof ?? wall! };
+    return { rings: r, eavesM, topM: Math.max(eavesM, topM), wall: wall ?? roof!, roof: roof ?? wall!, tile: '' };
   });
 }
 
@@ -264,13 +264,18 @@ export function quantisePrisms(prisms: readonly FarPrism[]): FarPrism[] {
       return pts;
     }).filter(r => r.length >= 3);
     const eavesM = dm(pr.eavesM);
-    return { rings, eavesM, topM: Math.max(eavesM, dm(pr.topM)), wall: pr.wall, roof: pr.roof };
+    return { rings, eavesM, topM: Math.max(eavesM, dm(pr.topM)), wall: pr.wall, roof: pr.roof, tile: pr.tile };
   }).filter(pr => pr.rings.length);
 }
 
 export function encodeShl1(prisms: readonly FarPrism[]): Uint8Array {
   const w = new Writer(), n = prisms.length;
-  w.byte(2); w.uvar(n);
+  w.byte(2);
+  const tiles: string[] = [], tileIndex = new Map<string, number>();
+  for (const pr of prisms) if (!tileIndex.has(pr.tile)) { const [x, y] = pr.tile.split('/').map(Number); if (!Number.isSafeInteger(x) || !Number.isSafeInteger(y) || x < 0 || y < 0 || `${x}/${y}` !== pr.tile) throw Error(`bad prism tile ${pr.tile}`); tileIndex.set(pr.tile, tiles.length); tiles.push(pr.tile); }
+  w.uvar(tiles.length); for (const t of tiles) { const [x, y] = t.split('/').map(Number); w.uvar(x); w.uvar(y); }
+  w.uvar(n);
+  for (const pr of prisms) w.uvar(tileIndex.get(pr.tile)!);
   for (const pr of prisms) w.uvar(pr.rings.length);
   for (const pr of prisms) for (const r of pr.rings) w.uvar(r.length);
   let px = 0, py = 0;
@@ -286,7 +291,10 @@ export function encodeShl1(prisms: readonly FarPrism[]): Uint8Array {
 }
 export function decodeShl1(r: Reader): FarPrism[] {
   const level = r.byte(); if (level !== 2) r.fail(`SHL1 level ${level}`);
-  const n = r.count(200_000, 'prisms'), ringCounts: number[] = [];
+  const nt = r.count(10_000, 'prism tiles'), tiles: string[] = [];
+  for (let k = 0; k < nt; k++) tiles.push(`${r.uvar()}/${r.uvar()}`);
+  const n = r.count(200_000, 'prisms'), ringCounts: number[] = [], tileOf: string[] = [];
+  for (let k = 0; k < n; k++) { const t = r.uvar(); if (t >= tiles.length) r.fail(`prism tile ${t} of ${tiles.length}`); tileOf.push(tiles[t]); }
   for (let k = 0; k < n; k++) ringCounts.push(r.count(10_000, 'rings'));
   const pointCounts: number[][] = ringCounts.map(c => { const l: number[] = []; for (let k = 0; k < c; k++) { const m = r.count(100_000, 'ring points'); if (m < 3) r.fail(`ring of ${m} points`); l.push(m); } return l; });
   const total = pointCounts.reduce((s, l) => s + l.reduce((a, b) => a + b, 0), 0);
@@ -303,11 +311,13 @@ export function decodeShl1(r: Reader): FarPrism[] {
   const out: FarPrism[] = []; let v = 0;
   for (let k = 0; k < n; k++) {
     const rings = pointCounts[k].map(m => { const ring: number[][] = []; for (let e = 0; e < m; e++, v++) ring.push([xs[v], ys[v]]); return ring; });
-    out.push({ rings, eavesM: eaves[k], topM: +(eaves[k] + rise[k]).toFixed(1), wall: wall.slice(k * 4, k * 4 + 4) as FarPrism['wall'], roof: roof.slice(k * 4, k * 4 + 4) as FarPrism['roof'] });
+    out.push({ rings, eavesM: eaves[k], topM: +(eaves[k] + rise[k]).toFixed(1), wall: wall.slice(k * 4, k * 4 + 4) as FarPrism['wall'], roof: roof.slice(k * 4, k * 4 + 4) as FarPrism['roof'], tile: tileOf[k] });
   }
   return out;
 }
 
+/** Far walls start this far below 0 (the own ground's relief lies a few metres either side of it; buildings are not lifted at this distance). */
+export const FAR_BASE_M = -3;
 /** A rise under this draws no roof band (a flat roof: the lid at the eaves). */
 export const FAR_FLAT_RISE_M = 0.5;
 /** A pitched roof's band leans this much (its baked shade is a 45° slope's facing the wall's normal). */
@@ -319,7 +329,7 @@ const SLOPE = Math.SQRT1_2;
  * (roof tint, a 45° slope's shade), then an earcut lid at that height (roof tint, the flat-roof shade). Positions in
  * metres from the cell origin, z from 0 (the ground lift is the layer's).
  */
-export function farShellMesh(prisms: readonly FarPrism[], options: { partyWalls?: boolean } = {}): FarShellMesh {
+export function farShellMesh(prisms: readonly FarPrism[], options: { partyWalls?: boolean; /** Prisms whose walls hide these prisms' party walls (default: `prisms`). */ neighbours?: readonly FarPrism[] } = {}): FarShellMesh {
   // Party walls (lane R2-B): an edge whose reverse is another prism's edge (same 0.5 m grid points) is hidden up to the
   // lower of the two eaves; a wall at or under a neighbour of at least its height is not drawn (`partyWalls: true` draws all).
   const cull = !options.partyWalls, key = (x0: number, y0: number, x1: number, y1: number) => `${Math.round(x0 * 2)},${Math.round(y0 * 2)},${Math.round(x1 * 2)},${Math.round(y1 * 2)}`;
@@ -328,8 +338,9 @@ export function farShellMesh(prisms: readonly FarPrism[], options: { partyWalls?
     // Outer rings counter-clockwise, holes clockwise: the outward normal is on the right of travel.
     return (area2 > 0) !== (ri === 0) ? [...ring].reverse() : ring;
   }));
-  const edgeEaves = new Map<string, number>();
-  if (cull) oriented.forEach((rings, k) => { for (const ring of rings) for (let e = 0; e < ring.length; e++) { const a = ring[e], b = ring[(e + 1) % ring.length]; const id = key(a[0], a[1], b[0], b[1]); edgeEaves.set(id, Math.max(edgeEaves.get(id) ?? -Infinity, prisms[k].eavesM)); } });
+  const edgeEaves = new Map<string, number>(), others = options.neighbours ?? prisms;
+  const orient = (pr: FarPrism) => pr.rings.map((ring, ri) => { let area2 = 0; for (let a = 0, b = ring.length - 1; a < ring.length; b = a++) area2 += ring[b][0] * ring[a][1] - ring[a][0] * ring[b][1]; return (area2 > 0) !== (ri === 0) ? [...ring].reverse() : ring; });
+  if (cull) for (const pr of others) for (const ring of others === prisms ? oriented[prisms.indexOf(pr)] : orient(pr)) for (let e = 0; e < ring.length; e++) { const a = ring[e], b = ring[(e + 1) % ring.length]; const id = key(a[0], a[1], b[0], b[1]); edgeEaves.set(id, Math.max(edgeEaves.get(id) ?? -Infinity, pr.eavesM)); }
   const hidden = (a: number[], b: number[], eavesM: number) => cull && (edgeEaves.get(key(b[0], b[1], a[0], a[1])) ?? -Infinity) >= eavesM;
   let quads = 0, lidTris = 0, lidVerts = 0;
   const lids = prisms.map((pr, k) => {
@@ -355,7 +366,7 @@ export function farShellMesh(prisms: readonly FarPrism[], options: { partyWalls?
       const [x0, y0] = ring[e], [x1, y1] = ring[(e + 1) % ring.length];
       if (hidden(ring[e], ring[(e + 1) % ring.length], pr.eavesM)) continue;
       const len = Math.hypot(x1 - x0, y1 - y0) || 1, nx = (y1 - y0) / len, ny = -(x1 - x0) / len;
-      const bands: [number, number, readonly number[], number][] = [[0, pr.eavesM, pr.wall, bakedWallShade(nx, ny)]];
+      const bands: [number, number, readonly number[], number][] = [[FAR_BASE_M, pr.eavesM, pr.wall, bakedWallShade(nx, ny)]];
       if (pitched) bands.push([pr.eavesM, lidZ, pr.roof, bakedFaceShade([nx * SLOPE, ny * SLOPE, SLOPE])]);
       for (const [z0, z1, c, s] of bands) {
         const a = vert(x0, y0, z0, c, s), b = vert(x1, y1, z0, c, s), cc = vert(x1, y1, z1, c, s), d = vert(x0, y0, z1, c, s);
@@ -375,3 +386,26 @@ export function farShellMesh(prisms: readonly FarPrism[], options: { partyWalls?
 }
 
 export const shellTriangles = (m: { indices: Uint32Array }) => m.indices.length / 3;
+
+/** A far cell as the far tier uploads it: one mesh, positions in decimetres (int16) from the cell origin, the vertex range of each z14 tile's prisms. */
+export type FarCellArrays = { positions: Int16Array; layers: Uint8Array; tints: Uint8Array; indices: Uint16Array | Uint32Array; parts: { tile: string; start: number; count: number }[] };
+/** Extrude a cell's prisms tile by tile (farShellMesh per tile, party walls culled within the cell) into one buffer set. */
+export function farCellArrays(prisms: readonly FarPrism[]): FarCellArrays {
+  const byTile = new Map<string, FarPrism[]>();
+  for (const pr of prisms) { let l = byTile.get(pr.tile); if (!l) byTile.set(pr.tile, l = []); l.push(pr); }
+  // Party walls are culled across the whole cell: a wall hidden by a neighbour in another tile part stays hidden.
+  const meshes = [...byTile].map(([tile, list]) => ({ tile, mesh: farShellMesh(list, { neighbours: prisms }) }));
+  const nv = meshes.reduce((s, m) => s + m.mesh.layers.length, 0), ni = meshes.reduce((s, m) => s + m.mesh.indices.length, 0);
+  const positions = new Int16Array(nv * 3), layers = new Uint8Array(nv), tints = new Uint8Array(nv * 4), indices = nv > 65535 ? new Uint32Array(ni) : new Uint16Array(ni);
+  const parts: FarCellArrays['parts'] = [];
+  let v = 0, ix = 0;
+  for (const { tile, mesh } of meshes) {
+    const n = mesh.layers.length;
+    for (let k = 0; k < n * 3; k++) positions[v * 3 + k] = Math.round(mesh.positions[k] * 10);
+    layers.set(mesh.layers, v); tints.set(mesh.tints, v * 4);
+    for (let k = 0; k < mesh.indices.length; k++) indices[ix + k] = mesh.indices[k] + v;
+    parts.push({ tile, start: v, count: n });
+    v += n; ix += mesh.indices.length;
+  }
+  return { positions, layers, tints, indices, parts };
+}
