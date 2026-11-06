@@ -188,6 +188,8 @@ export class BuildingTileStreamer {
   /** Per resident tile (key), the cell parts it was cut from: a top-up keeps these objects and adds the new cells'. */
   private readonly worldParts = new Map<string, Map<string, TilePart>>();
   get usingWorldCells(): boolean { return !!this.world; }
+  /** The world-v1 client (null on the live tile path): the far tier reads far cells through it (engine/farShells.ts). */
+  get worldClient(): WorldCellClient | null { return this.world; }
   /** Baked styled copy of each world-v1 raw feature: the default decorator chain's output, computed at build time. */
   private baked = new WeakMap<BuildingFeature, BuildingFeature>();
   private readonly cache = new BuildingTileCache();

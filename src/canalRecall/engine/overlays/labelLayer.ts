@@ -78,9 +78,16 @@ export class LabelLayer {
   private winners = new Set<string>();
   private fullRev = -1;
   /** Full placements (all candidates) vs re-placements of the last winners; read by the perf probe. */
-  readonly stats = { full: 0, winnersOnly: 0, skipped: 0, fullMs: 0, lastFullMs: 0, occluded: 0, betweenMs: 0, betweenSightlines: 0 };
+  readonly stats = { full: 0, winnersOnly: 0, skipped: 0, fullMs: 0, lastFullMs: 0, occluded: 0, betweenMs: 0, betweenSightlines: 0, candidates: 0 };
   /** POI labels hidden behind nearer buildings (engine/labelOcclusion.ts); null tests nothing. */
   private occludedTest: ((c: LabelCandidate) => boolean) | null = null;
+  /**
+   * The aerial cap (lane R2-B #229, `?labelAerialCap=0`; set by the world view while rendererShared/aerialView.ts
+   * isAerialView holds): candidates are collected only from the buckets within `maxDepth + distance` of the view
+   * centre (a farther point lies deeper than placeLabels' maxDepth, so this drops nothing placement would keep), and
+   * at most `count` of them by priority (the game's own points first) enter a full placement.
+   */
+  aerialCap: { count: number } | null = null;
   /** Between full placements: sightlines per frame, and whether street and water names are re-tested (A/B knobs). */
   readonly between = { budget: OCCLUSION_PER_FRAME, lines: true };
   /** Copies of street and water names (instanceKeys) found hidden since the last full placement. */
@@ -299,8 +306,12 @@ export class LabelLayer {
     const seen = new Set<LabelCandidate>();
     // Lazy policy: a draw before the idle slices finished the overview's structure finishes it now.
     if (this.structureSteps) { drain(this.structureSteps); this.structureSteps = null; }
-    for (let x = Math.floor(bounds[0] / BUCKET); x <= Math.floor(bounds[2] / BUCKET); x++)
-      for (let y = Math.floor(bounds[1] / BUCKET); y <= Math.floor(bounds[3] / BUCKET); y++)
+    const cap = this.aerialCap && pose ? this.aerialCap : null;
+    const reach = cap ? frame.distance * 5 : 0;
+    const bx0 = cap ? Math.max(bounds[0], pose![0] - reach) : bounds[0], bx1 = cap ? Math.min(bounds[2], pose![0] + reach) : bounds[2];
+    const by0 = cap ? Math.max(bounds[1], pose![1] - reach) : bounds[1], by1 = cap ? Math.min(bounds[3], pose![1] + reach) : bounds[3];
+    for (let x = Math.floor(bx0 / BUCKET); x <= Math.floor(bx1 / BUCKET); x++)
+      for (let y = Math.floor(by0 / BUCKET); y <= Math.floor(by1 / BUCKET); y++)
         for (const map of [this.buckets, this.poiBuckets]) for (const e of map.get(`${x},${y}`) ?? []) {
           const c = e.c;
           if (!((c.minZoom ?? 0) <= zoom && zoom < (c.maxZoom ?? 99))) continue;
@@ -314,6 +325,8 @@ export class LabelLayer {
       advance: (ch: string, kind: LabelCandidate['kind']) => this.advance(ch, kind), fontSize, maxDepth: frame.distance * 4, repeatDistance: 260,
     };
     let candidates = full ? [...seen] : [...seen].filter(c => this.winners.has(c.id));
+    this.stats.candidates = candidates.length;
+    if (cap && full && candidates.length > cap.count) candidates = candidates.sort((a, b) => b.priority - a.priority).slice(0, cap.count);
     const original = new Map(candidates.map(c => [c.id, c] as const));
     const shifted = (list: LabelCandidate[]) => list.map(c => { const at = this.drawAt.get(c.id); return at && c.at ? { ...c, at } : c; });
     lap(full ? 'collect (full)' : 'collect');

@@ -275,6 +275,8 @@ function fadeClone(source: any, value: number, under?: { value: number }): any |
   if (source.defaultAttributeValues) clone.defaultAttributeValues = source.defaultAttributeValues;
   return clone;
 }
+/** What the far tier reads off the facade layer (ThreeBuildings.farShellHost). */
+export type FarShellHostView = { THREE: any; scene: any; material: any; look: string; fadeMaterial(value: number): any | null; coarseDrawn(tile: string): boolean };
 const BOAT_PREFIX = 'boats:';
 /** What setFeatures groups a feature by, memoised per feature object (ThreeBuildings.groupOf). */
 interface FeatureGroupInfo { geometry: unknown; id: string; kit: boolean; tile: string | null; coarse: string | null; near: string; nearKey: string; extrasKey: string }
@@ -943,6 +945,37 @@ export class ThreeBuildings {
     if (!this.visible || !this.ready) return false;
     for (const tile of tiles) if (this.chunks.get(`${COARSE_PREFIX}${tile}`)?.mesh) return true;
     return false;
+  }
+
+  /**
+   * The far tier's host (engine/farShells.ts, lane R2-B #229): the facade scene (chunk metres), the chunk material
+   * and a fading clone of it (one program), the drawn look, and whether a resident coarse shell is installed and done
+   * dissolving in for a z14 tile (then the far tier hides that tile's prisms). Null until the layer is set up.
+   */
+  farShellHost(): FarShellHostView | null {
+    if (!this.THREE || !this.scene || !this.material) return null;
+    const held = this.farHost;
+    if (held && held.material === this.material && held.scene === this.scene) { held.look = this.look; return held; }
+    const material = this.material;
+    return this.farHost = {
+      THREE: this.THREE, scene: this.scene, material, look: this.look,
+      fadeMaterial: (value: number) => fadeClone(material, value),
+      // A resident tile draws its buildings as the coarse shell, or as detailed `near:` chunks of its z16 sub-tiles.
+      coarseDrawn: (tile: string) => { const key = `${COARSE_PREFIX}${tile}`; return (!!this.chunks.get(key)?.mesh && !this.fading.has(key)) || this.nearDrawnIn(tile); },
+    };
+  }
+  private farHost: FarShellHostView | null = null;
+  /** z14 tiles with an installed `near:` chunk, re-read at most every 200 ms (the far tier asks per part per frame). */
+  private nearTilesAt = -Infinity;
+  private readonly nearTiles = new Set<string>();
+  private nearDrawnIn(tile: string): boolean {
+    const now = performance.now();
+    if (now - this.nearTilesAt > 200) {
+      this.nearTilesAt = now; this.nearTiles.clear();
+      const shift = 2 ** (this.detailZoom - TILE_ZOOM);
+      for (const [k, c] of this.chunks) if (k.startsWith('near:') && c?.mesh) { const [x, y] = k.slice(5).split('/').map(Number); this.nearTiles.add(`${Math.floor(x / shift)}/${Math.floor(y / shift)}`); }
+    }
+    return this.nearTiles.has(tile);
   }
 
   /** performance.now() of the first coarse shell installed with geometry, or null. */
