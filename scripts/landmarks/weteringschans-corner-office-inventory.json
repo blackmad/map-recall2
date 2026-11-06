@@ -1,0 +1,393 @@
+{
+ "schemaVersion": 1,
+ "id": "weteringschans-corner-office",
+ "pand": "0363100012184747",
+ "brief": "scripts/landmarks/weteringschans-corner-office-brief.md",
+ "signature": [
+  "afm-grid",
+  "stepped-brick-grid",
+  "copper-caps",
+  "hall-glazing"
+ ],
+ "walls": [
+  {
+   "tag": "w01-11",
+   "bearing": 11,
+   "lengthM": 90,
+   "centre": [
+    4.8899575,
+    52.3606635
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": false,
+   "items": []
+  },
+  {
+   "tag": "w02-217",
+   "bearing": 217,
+   "lengthM": 41.9,
+   "centre": [
+    4.8898775,
+    52.3602775
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000355_pano_0000_000303",
+   "capturedAt": "2017-07-07",
+   "checked": true,
+   "items": [
+    {
+     "id": "hall-glazing",
+     "kind": "window-shape",
+     "where": "one-storey glazed hall on the Lijnbaansgracht: tall glazing between grey piers",
+     "approxSizeM": [
+      40,
+      4.5
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-000355_pano_0000_000303"
+    },
+    {
+     "id": "hall-parapet",
+     "kind": "canopy",
+     "where": "heavy concrete parapet band over the hall, curving with the wall",
+     "approxSizeM": [
+      40,
+      1.5
+     ],
+     "plan": "simplified",
+     "how": "straight concrete band per footprint edge, not cantilevered or curved",
+     "seenIn": "TMX7316010203-000355_pano_0000_000303"
+    }
+   ]
+  },
+  {
+   "tag": "w03-217",
+   "bearing": 217,
+   "lengthM": 35.1,
+   "centre": [
+    4.8893075,
+    52.360541
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000355_pano_0000_000308",
+   "capturedAt": "2017-07-07",
+   "checked": true,
+   "items": [
+    {
+     "id": "stepped-brick-grid",
+     "kind": "window-shape",
+     "where": "dark brick storeys stepping back over the hall; narrow white-framed windows with grey lintels at a 1.76 m pitch",
+     "approxSizeM": [
+      35,
+      12
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-000355_pano_0000_000308"
+    },
+    {
+     "id": "copper-caps",
+     "kind": "other",
+     "where": "patinated copper mansard caps on the stepped tops",
+     "approxSizeM": [
+      10,
+      3
+     ],
+     "plan": "simplified",
+     "how": "3DBAG sloped roof pieces drawn in copper",
+     "seenIn": "TMX7316010203-000355_pano_0000_000308"
+    }
+   ]
+  },
+  {
+   "tag": "w04-102",
+   "bearing": 102,
+   "lengthM": 34,
+   "centre": [
+    4.8907755,
+    52.3604055
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001681_pano_0000_004518",
+   "capturedAt": "2020-04-29",
+   "checked": true,
+   "items": [
+    {
+     "id": "afm-grid",
+     "kind": "window-shape",
+     "where": "Vijzelgracht front: six storeys of narrow white windows with grey lintels over a glazed ground storey on grey piers",
+     "approxSizeM": [
+      32,
+      20
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001681_pano_0000_004518"
+    },
+    {
+     "id": "copper-stair",
+     "kind": "other",
+     "where": "vertical copper-clad stair strip running up past the roof line",
+     "approxSizeM": [
+      1.6,
+      22
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-001681_pano_0000_004518",
+     "how": "copper-clad prism 1.4 m wide standing 0.6 m proud at the step between the tall Vijzelgracht block and the lower north wing, from the ground band to the 3DBAG cap at 25.4 m"
+    },
+    {
+     "id": "ground-band",
+     "kind": "canopy",
+     "where": "concrete edge band over the set-back glazed ground storey",
+     "approxSizeM": [
+      32,
+      0.7
+     ],
+     "plan": "simplified",
+     "how": "solid concrete storey face above the glazed bays",
+     "seenIn": "TMX7316010203-001681_pano_0000_004518"
+    }
+   ]
+  },
+  {
+   "tag": "w05-191",
+   "bearing": 191,
+   "lengthM": 31.5,
+   "centre": [
+    4.8903505,
+    52.360138
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000355_pano_0000_000297",
+   "capturedAt": "2017-07-07",
+   "checked": true,
+   "items": [
+    {
+     "id": "canal-corner",
+     "kind": "window-shape",
+     "where": "rounded brick corner over the canal hall, same window grid",
+     "approxSizeM": [
+      31,
+      18
+     ],
+     "plan": "simplified",
+     "how": "the rounded corner follows the BAG/3DBAG polygon facets",
+     "seenIn": "TMX7316010203-000355_pano_0000_000297"
+    }
+   ]
+  },
+  {
+   "tag": "w06-11",
+   "bearing": 11,
+   "lengthM": 15.4,
+   "centre": [
+    4.890716,
+    52.3605675
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002979_pano_0004_000128",
+   "capturedAt": "2023-02-20",
+   "checked": true,
+   "items": [
+    {
+     "id": "neighbour-houses",
+     "kind": "other",
+     "where": "crop shows the neighbouring canal houses; the block only appears behind them",
+     "approxSizeM": [
+      15,
+      15
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7316010203-002979_pano_0004_000128",
+     "skip": {
+      "reason": "not-visible",
+      "note": "this crop frames the neighbouring canal houses; the block shows only behind them and is covered by w04/w08"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "w07-307",
+   "bearing": 307,
+   "lengthM": 11.8,
+   "centre": [
+    4.889154,
+    52.3606785
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-07-14_05-25-22_00582",
+   "capturedAt": "2025-07-14",
+   "checked": true,
+   "items": [
+    {
+     "id": "corner-glazing",
+     "kind": "window-shape",
+     "where": "glazed ground-storey corner on the Nieuwe Weteringstraat",
+     "approxSizeM": [
+      10,
+      3.5
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-07-14_05-25-22_00582"
+    }
+   ]
+  },
+  {
+   "tag": "w08-102",
+   "bearing": 102,
+   "lengthM": 10.2,
+   "centre": [
+    4.8906885,
+    52.360155
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002857_pano_0004_000022",
+   "capturedAt": "2022-12-14",
+   "checked": true,
+   "items": [
+    {
+     "id": "bay-tower",
+     "kind": "tower",
+     "where": "brick bay tower with copper cap and gold-coloured fascia; balcony with white rail",
+     "approxSizeM": [
+      8,
+      22
+     ],
+     "plan": "simplified",
+     "how": "3DBAG piece with copper cap; the gold fascia and balcony rail are not drawn",
+     "seenIn": "TMX7316010203-002857_pano_0004_000022"
+    }
+   ]
+  },
+  {
+   "tag": "w09-218",
+   "bearing": 218,
+   "lengthM": 10.1,
+   "centre": [
+    4.889571,
+    52.3604175
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000355_pano_0000_000290",
+   "capturedAt": "2017-07-07",
+   "checked": true,
+   "items": [
+    {
+     "id": "hall-parapet-2",
+     "kind": "canopy",
+     "where": "concrete parapet over the hall on the water",
+     "approxSizeM": [
+      10,
+      1.5
+     ],
+     "plan": "simplified",
+     "how": "flat concrete band",
+     "seenIn": "TMX7316010203-000355_pano_0000_000290"
+    }
+   ]
+  },
+  {
+   "tag": "w10-190",
+   "bearing": 190,
+   "lengthM": 6.4,
+   "centre": [
+    4.8906265,
+    52.360115
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000355_pano_0000_000298",
+   "capturedAt": "2017-07-07",
+   "checked": true,
+   "items": [
+    {
+     "id": "hall-end",
+     "kind": "window-shape",
+     "where": "glazed hall end at the bridge",
+     "approxSizeM": [
+      6,
+      4
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-000355_pano_0000_000298"
+    }
+   ]
+  },
+  {
+   "tag": "w11-102",
+   "bearing": 102,
+   "lengthM": 6.4,
+   "centre": [
+    4.8907445,
+    52.360224
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001552_pano_0001_000054",
+   "capturedAt": "2020-01-10",
+   "checked": true,
+   "items": [
+    {
+     "id": "afm-lettering",
+     "kind": "lettering",
+     "where": "\"Autoriteit Financiële Markten\" letters over the entrance",
+     "approxSizeM": [
+      6,
+      0.4
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7316010203-001552_pano_0001_000054",
+     "skip": {
+      "reason": "too-small",
+      "note": "0.4 m letters over the entrance; the map label names the building"
+     }
+    },
+    {
+     "id": "entrance-canopy",
+     "kind": "canopy",
+     "where": "entrance under the brick front between grey piers",
+     "approxSizeM": [
+      6,
+      4
+     ],
+     "plan": "simplified",
+     "how": "glazed ground bay",
+     "seenIn": "TMX7316010203-001552_pano_0001_000054"
+    }
+   ]
+  },
+  {
+   "tag": "w12-38",
+   "bearing": 38,
+   "lengthM": 5.5,
+   "centre": [
+    4.889238,
+    52.360706
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001900_pano_0003_000000",
+   "capturedAt": "2020-08-31",
+   "checked": true,
+   "items": [
+    {
+     "id": "blind-end",
+     "kind": "window-shape",
+     "where": "brick end wall with a few small windows, glazed ground storey",
+     "approxSizeM": [
+      5.5,
+      20
+     ],
+     "plan": "simplified",
+     "how": "window grid applied to every exposed band",
+     "seenIn": "TMX7316010203-001900_pano_0003_000000"
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  }
+ ]
+}

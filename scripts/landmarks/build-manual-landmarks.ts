@@ -411,6 +411,7 @@ import {buildAlbertHeijnMuseumplein} from './albert-heijn-museumplein-builder';
 import {buildBinnengasthuisKloveniersburgwal} from './binnengasthuis-kloveniersburgwal-builder';
 import {buildKinkerstraat32} from './kinkerstraat-32-builder';
 import {buildOudeTurfmarkt139} from './oude-turfmarkt-139-builder';
+import {buildWeteringschansCornerOffice} from './weteringschans-corner-office-builder';
 import {buildWesterdok748} from './westerdok-748-builder';
 import {buildDaCostakade146} from './da-costakade-146-builder';
 import {buildBloemenmarktStalls} from './bloemenmarkt-stalls-builder';
@@ -1017,6 +1018,7 @@ for(const spec of MANUAL_LANDMARKS.filter(model => !selectedIds.length || select
     else if(id==='binnengasthuis-kloveniersburgwal')buildBinnengasthuisKloveniersburgwal(w,d,helpers);
     else if(id==='kinkerstraat-32')buildKinkerstraat32(w,d,helpers);
     else if(id==='oude-turfmarkt-139')buildOudeTurfmarkt139(w,d,helpers);
+    else if(id==='weteringschans-corner-office')buildWeteringschansCornerOffice(w,d,helpers);
     else if(id==='westerdok-748')buildWesterdok748(w,d,helpers);
     else if(id==='da-costakade-146')buildDaCostakade146(w,d,helpers);
     else if(id==='bloemenmarkt-stalls')buildBloemenmarktStalls(w,d,helpers);

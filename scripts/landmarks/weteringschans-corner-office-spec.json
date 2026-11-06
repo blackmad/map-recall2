@@ -1,0 +1,25 @@
+{
+ "id": "weteringschans-corner-office",
+ "pand": "0363100012184747",
+ "identity": {
+  "addresses": "Vijzelgracht 46-58 and Nieuwe Weteringstraat 24-46 (BAG verblijfsobjecten: 4)",
+  "bouwjaar": 1981,
+  "what": "Het Noortse Bosch: the office block on the corner of the Vijzelgracht and the Lijnbaansgracht by architectenbureau Cornelis Wegener Sleeswijk, built 1978-81 for the Amsterdamse Assurantie Beurs; since 2000s the Autoriteit Financiële Markten",
+  "notThis": "the brief's name says Weteringschans; the block stands on the Vijzelgracht/Lijnbaansgracht corner. The ordinary recipe for this pand (ordinary-0363100012184747) is shadowed by this model.",
+  "sources": [
+   "https://api.data.amsterdam.nl/v1/bag/panden/0363100012184747",
+   "https://nl.wikipedia.org/wiki/Lijst_van_gebouwen_aan_de_Vijzelgracht",
+   "https://nl.wikipedia.org/wiki/Vijzelgracht_(Amsterdam)"
+  ]
+ },
+ "frame": "native metres of weteringschans-corner-office-footprints.json (x east, z south, y up from the 0.77 m NAP street); fronts are generated per exposed wall band of each 3DBAG roof piece (ring-height-runs.ts pieceFacadeBands); the counted Vijzelgracht band runs (54.8, 21.5) -> (60.1, -2.5)",
+ "partyWallBearings": [],
+ "partyWallEvidence": "Free-standing: the footprints file lists no BAG neighbours; the north side (w01-11, 90 m) has no panorama within 35 m and carries the same inferred window grid.",
+ "fronts": {
+  "grid": "every exposed brick band: windows 1.42 x 2.1 m at a 2.0 m pitch, sills from 5.3 m every 3.34 m, grey lintel over each; measured on w04-102 and scaled by 1.13 to the 3DBAG 22.3 m eaves",
+  "ground": "street-level bands: glazed bays between grey piers on a 7.5 m bay, concrete band to 4.9 m",
+  "hall": "one-storey bands under 7.5 m (the Lijnbaansgracht hall): glazing to 1.5 m under the top, concrete parapet above",
+  "stair": "copper-clad stair strip 1.4 m wide, 0.6 m proud, at the step from the tall Vijzelgracht block to the lower north wing, up to 25.4 m"
+ },
+ "heightsFrom": "3DBAG LoD2.2 roof pieces (CC BY 4.0); storey grid from the w04-102 rectified crop"
+}
