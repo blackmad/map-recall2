@@ -123,15 +123,17 @@ export const WINDOW_SDF_FADE_PX = [2.5, 5] as const;
  *   fadePx     opening size (px, smaller axis) over which the window fades in from the painted (mip) texel;
  *   frameMinPx the frame ring is drawn at least this wide on screen, its contrast scaled by true / drawn area;
  *   barPx      glazing bars fade out as their width on screen falls from [1] to [0] px, the glass taking their mean;
+ *              [0, 0] (the default) never fades them: a tent-filtered bar already draws at its true area, and fading
+ *              them erased the sash panes at da-costakade-near while aliasPx was lower without the fade (#231 sweep 8).
  *   tent       filter the edges by a tent of half-width footprint x fwidth instead of a box (`?windowSdfTent=1`).
  * The values are uniforms (`windowSdfBand`, `windowSdfShape`) so the probes sweep them in one page; the query flags
  * `?windowSdfFoot=`, `?windowSdfFade=a,b`, `?windowSdfFrameMin=`, `?windowSdfBar=a,b` set them for a page.
  */
-export const WINDOW_SDF_BAND = { footprint: 1.0, fadePx: [2, 4] as readonly [number, number], frameMinPx: 0, barPx: [1.5, 3.0] as readonly [number, number], tent: true };
+export const WINDOW_SDF_BAND = { footprint: 1.0, fadePx: [2, 4] as readonly [number, number], frameMinPx: 0, barPx: [0, 0] as readonly [number, number], tent: true };
 /**
  * The facade cell sample's mip bias while the band-limited windows are on (`?cellLodBias=` overrides, 0 = none). The
  * windows fix the alias, the bias buys the brick/trim sharpness back; picked by the sweep in the lane's hand-back
- * (#231): at -0.6 aliasPx stays under the painted cell's at both S3 poses, at -0.75 s3-slab-user is at the line.
+ * (#231): at -0.6 aliasPx is 13 % under the painted cell's at s3-slab-user and 13 % under at s3-slab; -0.75 is 5 % under at s3-slab-user.
  */
 export const WINDOW_SDF_LOD_BIAS = -0.6;
 
@@ -193,6 +195,7 @@ export function bandFrameWeight(x: number, a: number, width: number, fw: number,
 }
 /** Glazing bar weight for a bar `width` canvas px wide with `fw` canvas px per screen px (fades out [from, to] px). */
 export function barFade(width: number, fw: number, from: number, to: number): number {
+  if (to <= 0) return 1;
   const t = Math.min(1, Math.max(0, (width / Math.max(fw, 1e-6) - from) / Math.max(to - from, 1e-6)));
   return t * t * (3 - 2 * t);
 }
@@ -245,7 +248,7 @@ float wsBarH(vec2 p, vec2 fw, float x0, float x1, float yc, float hw) { return w
 float wsBarV(vec2 p, vec2 fw, float y0, float y1, float xc, float hw) { return wsCover(p.y, y0, y1, fw.y) * wsCover(p.x, xc - hw, xc + hw, fw.x); }
 // Band mode: a bar's weight as its width on screen (2 hw / fw across it) falls through the bar fade, and its area share
 // of the span it crosses (what the glass takes over as it fades).
-float wsBarFade(float hw, float fwAcross) { return smoothstep(windowSdfShape.y, windowSdfShape.z, 2.0 * hw / max(fwAcross, 1e-4)); }
+float wsBarFade(float hw, float fwAcross) { return windowSdfShape.z <= 0.0 ? 1.0 : smoothstep(windowSdfShape.y, windowSdfShape.z, 2.0 * hw / max(fwAcross, 1e-4)); }
 void windowSdf(vec2 uv, float layer, float weight, inout vec3 c, inout vec2 m) {
   weight *= windowSdfMix;
   if (weight <= 0.0) return;

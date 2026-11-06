@@ -104,7 +104,9 @@ test('band twin: a 0.5 px frame drawn at the 1 px minimum integrates to 0.5 x it
 });
 
 test('band twin: glazing bars fade out between the bar px and their area goes to the glass', () => {
-  const [from, to] = WINDOW_SDF_BAND.barPx;
+  assert.deepEqual(WINDOW_SDF_BAND.barPx, [0, 0], 'the default never fades bars');
+  assert.equal(barFade(4, 400, 0, 0), 1);
+  const [from, to] = [1.5, 3];
   assert.equal(barFade(4, 4 / (from - 0.01), from, to), 0);
   assert.equal(barFade(4, 4 / (to + 0.01), from, to), 1);
   const mid = barFade(4, 4 / ((from + to) / 2), from, to);
