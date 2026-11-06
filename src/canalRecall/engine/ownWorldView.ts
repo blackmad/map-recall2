@@ -41,6 +41,7 @@ import { FlatLines, type LngLatLine } from './overlays/flatLines';
 import { FarShells, farCellOrigin, farShellsEnabled } from './farShells';
 import { isAerialView } from '../rendererShared/aerialView';
 import { ToonPost, toonLookFlag } from './toonLook';
+import { SmaaPost, smaaFlag } from './postAA';
 import { COVER_POLL_MS, isCoveredState } from '../labels/coveredState';
 import { LabelLayer, type PointLabel } from './overlays/labelLayer';
 import { gameLabelContext, type LabelContext } from '../ownMap/labelPolicy';
@@ -192,6 +193,8 @@ export class OwnWorldView implements WorldViewOracles {
   private buildingLookNow: BuildingLookId = 'photo';
   /** The toon look's palette pass (`?look=toon`, #161); null otherwise. */
   private toonPost: ToonPost | null = null;
+  /** `?smaa=1` (lane R3-A #230): SMAA 1x over the resolved frame, before the toon remap. */
+  private smaaPost: SmaaPost | null = null;
   private buildingLookLocked = false;
   /** Overlays (engine/overlays): flat lines over the ground, labels on a 2D canvas, the landmark marker. */
   readonly _lines: Record<'cycle' | 'transit' | 'hoods', FlatLines>;
@@ -274,6 +277,7 @@ export class OwnWorldView implements WorldViewOracles {
     // MSAA unless the device reports ≤ 3 GB (vector-map.js canalRecallAntialias); phones cap at 1.25× (PHONE_PIXEL_RATIO).
     const memory = Number(W().navigator?.deviceMemory);
     const antialias = flag('msaa', '__canalRecallMsaa', !(Number.isFinite(memory) && memory > 0 && memory <= 3));
+    const smaa = smaaFlag();
     const dpr = W().devicePixelRatio || 1;
     let cap = coarse() ? 1.25 : dpr;
     const askedDpr = Number(new URLSearchParams(W().location?.search ?? '').get('dpr'));
@@ -284,7 +288,10 @@ export class OwnWorldView implements WorldViewOracles {
       render: () => this.renderFrame(),
       // The game's loading screen (GameState.LOADING, presentationRuntime.ts) paints over the world opaquely.
       coveredFrameMs: () => (W().canalRecallGame?.state === LOADING_STATE ? COVERED_FRAME_MS : null),
-      ...(toon ? { post: (renderer: any, width: number, height: number) => (this.toonPost ??= new ToonPost(THREE)).apply(renderer, width, height) } : {}),
+      ...(toon || smaa ? { post: (renderer: any, width: number, height: number) => {
+        if (smaa) (this.smaaPost ??= new SmaaPost(THREE)).apply(renderer, width, height);
+        if (toon) (this.toonPost ??= new ToonPost(THREE)).apply(renderer, width, height);
+      } } : {}),
     }, { antialias, pixelRatio: Math.min(dpr, cap), clearColor: clear, renderOnChange: flag('renderOnChange', '__canalRecallRenderOnChange', true), clearGuard: flag('skyClear', '__canalRecallSkyClear', true) });
     // GL work counters (engine/glCounters.ts, the P4 counters gate): opt-in, on window.__canalPerf.gl.
     if (flag('glCounters', '__canalRecallGlCounters', false)) {

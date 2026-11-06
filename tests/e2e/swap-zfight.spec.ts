@@ -80,7 +80,8 @@ test('swap z-fight: no moving stripes on the Weesperstraat slab while its detail
   await page.route(/3dbag|cesium3dtiles/i, route => route.abort());
   await useEngine(page);
   const [lng, lat] = SPOT.rider;
-  await page.goto(`/canal-drive/?engine=own&travel=car&governor=0${QS}#race=${lat},${lng},${lat},${lng},${SPOT.face[1]},${SPOT.face[0]}`);
+  const startUrl = `/canal-drive/?engine=own&travel=car&governor=0${QS}#race=${lat},${lng},${lat},${lng},${SPOT.face[1]},${SPOT.face[0]}`;
+  await page.goto(startUrl);
   await expect.poll(() => page.evaluate(() => Boolean((window as any).canalRecallGame?.player?.x)), { timeout: 120_000 }).toBe(true);
   await page.evaluate(() => { const g = (window as any).canalRecallGame; g.state = 4; g._quizFreezesRide = () => false; g.player.handleInput = () => {}; g.player.update = function () { this.speed = 0; this.vx = 0; this.vy = 0; }; });
   await expect.poll(() => page.evaluate(() => { const vm = (window as any).canalRecallGame.vectorMap; return vm.engine === 'own' && !!vm._threeBuildings?.ready; }), { timeout: 180_000 }).toBe(true);
@@ -305,12 +306,39 @@ test('swap z-fight: no moving stripes on the Weesperstraat slab while its detail
     return open / maskPx;
   })();
   console.log('shell yield at mid-swap', yieldShare.toFixed(3));
+  // ZFIGHT_GPU=n (lane R3-A): n runs of 24 forced frames at the pose, GPU ms (EXT_disjoint_timer_query_webgl2 around
+  // the host's render, post pass included), the median of the run medians, as crisp-textures.spec's timer.
+  let gpu: { runs: (number | null)[]; median: number | null } | null = null;
+  if (Number(process.env.ZFIGHT_GPU) > 0) {
+    await page.evaluate(([pose]) => { const vm = (window as any).canalRecallGame.vectorMap, g = vm._ownGround; vm.jumpToLngLat({ ...pose, elevation: g?.ready ? g.heightAt(pose.center) : 0 }); }, [pose] as const);
+    await settle(page);
+    const runs: (number | null)[] = [];
+    for (let k = 0; k < Number(process.env.ZFIGHT_GPU); k++) runs.push(await page.evaluate(async (n: number) => {
+      const vm = (window as any).canalRecallGame.vectorMap, host = vm.host, gl = host.renderer.getContext();
+      const ext = gl.getExtension('EXT_disjoint_timer_query_webgl2');
+      if (!ext) return null;
+      const out: number[] = [], pending: any[] = [], render = host._render.bind(host), px = new Uint8Array(4);
+      for (let i = 0; i < n; i++) {
+        host.dirty = true;
+        const q = gl.createQuery(); gl.beginQuery(ext.TIME_ELAPSED_EXT, q); render(); gl.endQuery(ext.TIME_ELAPSED_EXT); pending.push(q);
+        gl.readPixels(0, 0, 1, 1, gl.RGBA, gl.UNSIGNED_BYTE, px);
+        await new Promise(r => requestAnimationFrame(r));
+      }
+      for (let k = 0; k < 60 && pending.length; k++) {
+        while (pending.length && gl.getQueryParameter(pending[0], gl.QUERY_RESULT_AVAILABLE)) { const q = pending.shift(); if (!gl.getParameter(ext.GPU_DISJOINT_EXT)) out.push(gl.getQueryParameter(q, gl.QUERY_RESULT) / 1e6); }
+        await new Promise(r => requestAnimationFrame(r));
+      }
+      const s = out.slice(4).sort((a, b) => a - b);
+      return s.length ? +s[Math.floor(s.length / 2)].toFixed(3) : null;
+    }, 24));
+    const ok = runs.filter((v): v is number => v != null).sort((a, b) => a - b);
+    gpu = { runs, median: ok.length ? ok[Math.floor(ok.length / 2)] : null };
+    console.log('swap-zfight gpu', JSON.stringify(gpu));
+  }
   const swap = FRAME_MASK || process.env.ZFIGHT_ALIAS_ONLY ? { areas: still.areas.map(() => 0), fadingSteps: STEPS + 1, frames: [] } : await run(true);
   if (process.env.ZFIGHT_OWNER && aliasCount) {
     // The owner view: the same pose with every chunk painted by its owner class, then each alias pixel's class.
-    const url = new URL(page.url());
-    url.searchParams.set('thinDebug', 'owner');
-    await page.goto(url.toString());
+    await page.goto(startUrl.replace('#', '&thinDebug=owner#'));
     await expect.poll(() => page.evaluate(() => Boolean((window as any).canalRecallGame?.player?.x)), { timeout: 120_000 }).toBe(true);
     await page.evaluate(() => { const g = (window as any).canalRecallGame; g.state = 4; g._quizFreezesRide = () => false; g.player.handleInput = () => {}; g.player.update = function () { this.speed = 0; this.vx = 0; this.vy = 0; }; });
     await expect.poll(() => page.evaluate(() => { const vm = (window as any).canalRecallGame.vectorMap; return vm.engine === 'own' && !!vm._threeBuildings?.ready; }), { timeout: 180_000 }).toBe(true);
@@ -340,7 +368,7 @@ test('swap z-fight: no moving stripes on the Weesperstraat slab while its detail
   }
   const sum = (a: number[]) => a.reduce((s, v) => s + v, 0);
   const report = { when: new Date().toISOString(), spot: SPOT.name, qs: QS, pose, target, maskPx, maskShare, frame: [shown.width, shown.height], steps: STEPS, panPx: PAN_PX, shellYieldAtHalf: yieldShare,
-    still: { total: sum(still.areas), max: Math.max(...still.areas), areas: still.areas }, ...(alias ? { alias } : {}), ...(owners ? { owners } : {}),
+    still: { total: sum(still.areas), max: Math.max(...still.areas), areas: still.areas }, ...(alias ? { alias } : {}), ...(owners ? { owners } : {}), ...(gpu ? { gpu } : {}),
     swap: { total: sum(swap.areas), max: Math.max(...swap.areas), areas: swap.areas, fadingSteps: swap.fadingSteps },
     // What the swap adds over the still pan, per step: the stripes.
     excess: swap.areas.map((v, i) => Math.max(0, v - still.areas[i])), errors };
