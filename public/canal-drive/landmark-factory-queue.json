@@ -1,6 +1,6 @@
 {
  "version": 1,
- "generatedAt": "2026-10-23T20:36:20.484Z",
+ "generatedAt": "2026-11-06T22:17:09.182Z",
  "method": "factory-queue.ts: landmark-backlog pending building|review (by queueRank), then dominant-building-backlog by rideVisibility.score; pands drawn by covers.json, the ordinary catalogue, manualCatalogue suppress ids or building-type instances left out; authored recipes keep their house",
  "items": [
   {
@@ -23,63 +23,84 @@
      "already drawn by a placed model or catalogue entry"
     ],
     "gaps": [],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    }
   },
   {
-   "id": "poi:lm-extract_landmarks_994708838",
+   "id": "poi:lm-article_landmarks_Q50720",
    "pand": "",
-   "name": "DeLaMar (West)",
+   "name": "Amsterdam Amstel",
    "source": "poi",
-   "poiId": "lm-extract_landmarks_994708838",
+   "poiId": "lm-article_landmarks_Q50720",
    "type": "landmark",
    "rideVisibility": null,
    "center": [
-    4.8403867,
-    52.3733459
+    4.9176029833333335,
+    52.34648926666666
    ],
    "status": "needs-pand",
    "triage": {
-    "verdict": "no-evidence",
+    "verdict": "not-in-tiles",
     "reasons": [
-     "pand 0363100012240368 under the POI centre",
-     "wall family unresolved but a measured tint on w02 (paint): the kit draws it (walls[].wallFamily)",
-     "2 of 3 street walls judgeable (need 2, and every street wall >= 15 m)",
-     "w03 (Jan van Galenstraat, 56 m): foliage 31 % > 25 %"
+     "no BAG pand in the tiles under the POI centre",
+     "pand not in the building tiles: crops and facts cannot run"
     ],
     "gaps": [],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    }
   },
   {
-   "id": "poi:lm-extract_landmarks_82936853",
+   "id": "poi:lm-article_landmarks_Q2077489",
    "pand": "",
-   "name": "Levend Paardenmuseum",
+   "name": "Museum of Bags and Purses",
    "source": "poi",
-   "poiId": "lm-extract_landmarks_82936853",
-   "type": "museum",
+   "poiId": "lm-article_landmarks_Q2077489",
+   "type": "landmark",
    "rideVisibility": null,
    "center": [
-    4.8721123,
-    52.361191
+    4.896697897435898,
+    52.365240769230766
    ],
    "status": "needs-pand",
    "triage": {
-    "verdict": "covered",
+    "verdict": "bespoke",
     "reasons": [
-     "pand 0363100012074454 under the POI centre",
-     "already drawn by a placed model or catalogue entry"
+     "pand 0363100012178853 under the POI centre",
+     "built 1665 (< 1915): ornamented historic front"
     ],
     "gaps": [],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    }
   },
   {
-   "id": "poi:requested-world-trade-center-amsterdam",
+   "id": "poi:lm-article_landmarks_Q1208561",
    "pand": "",
-   "name": "World Trade Center Amsterdam",
+   "name": "Diamond Museum Amsterdam",
    "source": "poi",
-   "poiId": "requested-world-trade-center-amsterdam",
+   "poiId": "lm-article_landmarks_Q1208561",
+   "type": "landmark",
+   "rideVisibility": null,
+   "center": [
+    4.882440266666666,
+    52.35946846666666
+   ],
+   "status": "needs-pand",
+   "triage": {
+    "verdict": "bespoke",
+    "reasons": [
+     "pand 0363100012076129 under the POI centre",
+     "built 1899 (< 1915): ornamented historic front"
+    ],
+    "gaps": [],
+    "date": "2026-11-06"
+   }
+  },
+  {
+   "id": "poi:requested-embassy-of-the-free-mind",
+   "pand": "",
+   "name": "Embassy of the Free Mind",
+   "source": "poi",
+   "poiId": "requested-embassy-of-the-free-mind",
    "rideVisibility": null,
    "center": [
     null,
@@ -93,7 +114,7 @@
      "pand not in the building tiles: crops and facts cannot run"
     ],
     "gaps": [],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    }
   },
   {
@@ -174,7 +195,7 @@
     "gaps": [
      "band"
     ],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    },
    "model": "fable",
    "turns": 0.7,
@@ -207,7 +228,7 @@
      "pand not in the building tiles: crops and facts cannot run"
     ],
     "gaps": [],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    }
   },
   {
@@ -235,7 +256,7 @@
      "pand not in the building tiles: crops and facts cannot run"
     ],
     "gaps": [],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    }
   },
   {
@@ -335,7 +356,7 @@
      "3 judgeable street walls: w02 punched, w04 curtain, w05 ribbon"
     ],
     "gaps": [],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    }
   },
   {
@@ -363,7 +384,7 @@
      "pand not in the building tiles: crops and facts cannot run"
     ],
     "gaps": [],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    }
   },
   {
@@ -488,7 +509,7 @@
      "w05 (Albardakade, 16 m): foliage 28 % > 25 %; washed out 39 % > 30 %"
     ],
     "gaps": [],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    }
   },
   {
@@ -595,7 +616,7 @@
     "gaps": [
      "curtain"
     ],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    }
   },
   {
@@ -693,7 +714,7 @@
     "gaps": [
      "curtain"
     ],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    }
   },
   {
@@ -715,7 +736,7 @@
      "pand not in the building tiles: crops and facts cannot run"
     ],
     "gaps": [],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    }
   },
   {
@@ -743,7 +764,7 @@
      "pand not in the building tiles: crops and facts cannot run"
     ],
     "gaps": [],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    }
   },
   {
@@ -848,7 +869,7 @@
      "band",
      "painted-or-clad"
     ],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    }
   },
   {
@@ -957,7 +978,7 @@
      "w04 (Johan Greivestraat, 12 m): washed out 46 % > 30 %"
     ],
     "gaps": [],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    }
   },
   {
@@ -1078,7 +1099,7 @@
     "gaps": [
      "curtain"
     ],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    }
   },
   {
@@ -1179,7 +1200,7 @@
      "band",
      "curtain"
     ],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    }
   },
   {
@@ -1207,7 +1228,7 @@
      "pand not in the building tiles: crops and facts cannot run"
     ],
     "gaps": [],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    }
   },
   {
@@ -1235,7 +1256,7 @@
      "pand not in the building tiles: crops and facts cannot run"
     ],
     "gaps": [],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    }
   },
   {
@@ -1361,7 +1382,7 @@
      "w12 (Osdorpplein, 11 m): washed out 50 % > 30 %; crop 2017 predates the 2022 building"
     ],
     "gaps": [],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    }
   },
   {
@@ -1389,7 +1410,7 @@
      "pand not in the building tiles: crops and facts cannot run"
     ],
     "gaps": [],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    }
   },
   {
@@ -1417,7 +1438,7 @@
      "pand not in the building tiles: crops and facts cannot run"
     ],
     "gaps": [],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    }
   },
   {
@@ -1439,7 +1460,7 @@
      "pand not in the building tiles: crops and facts cannot run"
     ],
     "gaps": [],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    }
   },
   {
@@ -1467,7 +1488,7 @@
      "pand not in the building tiles: crops and facts cannot run"
     ],
     "gaps": [],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    }
   },
   {
@@ -1500,7 +1521,7 @@
     "gaps": [
      "tower"
     ],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    }
   },
   {
@@ -1530,7 +1551,7 @@
      "pand not in the building tiles: crops and facts cannot run"
     ],
     "gaps": [],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    }
   },
   {
@@ -1552,7 +1573,7 @@
      "pand not in the building tiles: crops and facts cannot run"
     ],
     "gaps": [],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    }
   },
   {
@@ -1580,7 +1601,7 @@
      "pand not in the building tiles: crops and facts cannot run"
     ],
     "gaps": [],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    }
   },
   {
@@ -1604,7 +1625,7 @@
     "gaps": [
      "tower"
     ],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    }
   },
   {
@@ -1684,96 +1705,7 @@
      "w03 (Derde Oosterparkstraat, 22 m): obliquity 53 deg > 45"
     ],
     "gaps": [],
-    "date": "2026-10-31"
-   }
-  },
-  {
-   "id": "0363100012080630",
-   "pand": "0363100012080630",
-   "name": "Montessori Lyceum Oostpoort",
-   "source": "poi",
-   "poiId": "school-montessori-lyceum-oostpoort",
-   "rideVisibility": null,
-   "center": [
-    4.9438059,
-    52.363092
-   ],
-   "status": "installed",
-   "house": "oostpoort-montessori-080630",
-   "notes": [
-    "2026-10-24T05:58 draft: hand-authored intent kept",
-    "2026-10-24T05:58 measured groups 0,1 in 3 s",
-    "2026-10-24T05:58 compiled: 4119 tris, gates pass, likeness g0:FAIL g1:WARN",
-    "2026-10-24T06:13 measured read-only (hand-authored intent): artifacts/building-recipes/oostpoort-montessori-080630/measured.json",
-    "2026-10-24T06:15 measured read-only (hand-authored intent): artifacts/building-recipes/oostpoort-montessori-080630/measured.json",
-    "2026-10-24T06:17 compiled: 3795 tris, gates pass, likeness g0:FAIL g1:FAIL",
-    "2026-10-24T20:16 compiled: 3795 tris, gates pass, likeness g0:FAIL g1:FAIL",
-    "2026-10-24T20:23 compiled: 3795 tris, gates pass, likeness g0:WARN g1:FAIL",
-    "2026-10-24T20:26 compiled: 4767 tris, gates pass, likeness g0:FAIL g1:FAIL",
-    "2026-10-24T20:27 compiled: 4767 tris, gates pass, likeness g0:FAIL g1:FAIL",
-    "2026-10-24T20:28 compiled: 5199 tris, gates pass, likeness g0:FAIL g1:FAIL",
-    "2026-10-24T20:37 compiled: 5529 tris, gates pass, likeness g0:FAIL g1:FAIL g2:NO EVIDENCE",
-    "2026-10-24 integrator: Opus review passed it, but the likeness gate refuses (street walls FAIL on glazing band and window shape); held until the gate or the intent agrees.",
-    "2026-10-25 installed with the likeness gate running (MAP_RECALL_SOURCE_DATA set); inferred groups per #48 review"
-   ],
-   "owner": "factory-1",
-   "claimedAt": "2026-10-24T05:58:45.273Z",
-   "updatedAt": "2026-10-24T20:37:39.669Z",
-   "report": {
-    "triangles": 5529,
-    "bytes": 410652,
-    "gatesFailing": [],
-    "passed": true,
-    "likeness": [
-     {
-      "group": 0,
-      "verdict": "FAIL",
-      "reasons": [
-       "wall hue 12 deg",
-       "glazing storey band off by 0.22 mean 0.25 vs photo 0.40",
-       "window shape tall vs photo square"
-      ]
-     },
-     {
-      "group": 1,
-      "verdict": "FAIL",
-      "reasons": [
-       "wall dL +0.16",
-       "glazing storey band off by 0.38 mean 0.28 vs photo 0.49"
-      ]
-     },
-     {
-      "group": 2,
-      "verdict": "NO EVIDENCE",
-      "reasons": [
-       "obliquity 45.9 deg > 45"
-      ]
-     }
-    ],
-    "compiledAt": "2026-10-24T20:37"
-   },
-   "sheets": [
-    "artifacts/building-recipes/oostpoort-montessori-080630/contact-walls-0.png",
-    "artifacts/building-recipes/oostpoort-montessori-080630/contact-walls-1.png",
-    "artifacts/building-recipes/oostpoort-montessori-080630/contact-walls-2.png",
-    "artifacts/building-recipes/oostpoort-montessori-080630/contact-aerial.png"
-   ],
-   "verdict": {
-    "outcome": "pass",
-    "note": "purple-brown brick, two storeys of square sashes under a frieze of small paired attic windows, red tile hipped roof; south walls blank (no crop); tall stair window not drawn",
-    "sheet": "artifacts/strips/accept-r1",
-    "date": "2026-10-24",
-    "model": "opus",
-    "round": 3,
-    "lane": "factory-acceptance-20261024"
-   },
-   "triage": {
-    "verdict": "covered",
-    "reasons": [
-     "already drawn by ordinary-0363100012080630"
-    ],
-    "gaps": [],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    }
   },
   {
@@ -1797,7 +1729,7 @@
     "gaps": [
      "tower"
     ],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    }
   },
   {
@@ -1819,7 +1751,7 @@
      "pand not in the building tiles: crops and facts cannot run"
     ],
     "gaps": [],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    }
   },
   {
@@ -1841,7 +1773,7 @@
      "pand not in the building tiles: crops and facts cannot run"
     ],
     "gaps": [],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    }
   },
   {
@@ -1967,7 +1899,7 @@
      "w08 (Bijdorpstraat, 17 m): washed out 58 % > 30 %; obliquity 50 deg > 45"
     ],
     "gaps": [],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    }
   },
   {
@@ -2014,7 +1946,7 @@
      "w11 (Kramatweg, 9 m): washed out 33 % > 30 %"
     ],
     "gaps": [],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    }
   },
   {
@@ -2055,7 +1987,7 @@
      "w12 (Plantage Lepellaan, 9 m): crop 2021 predates the 2022 building"
     ],
     "gaps": [],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    }
   },
   {
@@ -2186,7 +2118,7 @@
      "band",
      "painted-or-clad"
     ],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    }
   },
   {
@@ -2305,7 +2237,7 @@
      "w09 (Zeeburgerdijk, 19 m): foliage 25 % > 25 %; obliquity 49 deg > 45"
     ],
     "gaps": [],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    }
   },
   {
@@ -2433,128 +2365,7 @@
     "gaps": [
      "painted-or-clad"
     ],
-    "date": "2026-10-31"
-   }
-  },
-  {
-   "id": "0363100012165086",
-   "pand": "0363100012165086",
-   "name": null,
-   "source": "dominant",
-   "rideVisibility": {
-    "score": 1121536,
-    "rank": 16
-   },
-   "footprintM2": 5475,
-   "heightM": 29.4,
-   "center": [
-    4.891564000000001,
-    52.367475
-   ],
-   "status": "error",
-   "house": "singel-457-165086",
-   "notes": [
-    "authored recipe houses/singel-457-165086 exists and is not installed: the factory keeps its intent, measures and compiles it",
-    "2026-10-23T20:59 crops: 8 usable walls in 14 s",
-    "2026-10-24T06:00 draft: hand-authored intent kept",
-    "2026-10-24T06:00 measure failed:   walls[1] kit gap window-shape-range: measured 0.75x1 outside the windowShape range | /Users/blackmad/Code/map-recall2-worktrees/integrator-plan/scripts/building-recipes/measure.ts:171 |     intent.notes = [...(intent.notes ?? []).filter(t => !t.startsWith('Measured ')), `Measured ${today()} (measure.ts, evidence in measured.json): groups ${measuredGroups.join(', ')} take the photo's wall and glass colour, window shape, bay count and front class${notes.length ? '; ' + notes.join('; ') : ''}.`]; |                                             ^ | TypeError: (intent.notes ?? []).filter is not a function or its return value is not iterable | Node.js v26.8.1"
-   ],
-   "owner": "factory-1",
-   "claimedAt": "2026-10-24T06:00:04.750Z",
-   "updatedAt": "2026-10-24T06:00:08.424Z",
-   "triage": {
-    "verdict": "kit-gap",
-    "reasons": [
-     "w01 (Singel, 34 m) reads curtain without floor bands",
-     "w04 (Singel, 15 m) reads curtain without floor bands",
-     "wall family unresolved but a measured tint on w03 (paint): the kit draws it (walls[].wallFamily)"
-    ],
-    "gaps": [
-     "curtain"
-    ],
-    "date": "2026-10-31"
-   }
-  },
-  {
-   "id": "0363100012165488",
-   "pand": "0363100012165488",
-   "name": null,
-   "source": "dominant",
-   "rideVisibility": {
-    "score": 1075478,
-    "rank": 17
-   },
-   "footprintM2": 2738,
-   "heightM": 27.5,
-   "center": [
-    4.8824705,
-    52.3633065
-   ],
-   "status": "held",
-   "house": "hirschpassage-2-165488",
-   "notes": [
-    "authored recipe houses/hirschpassage-2-165488 exists and is not installed: the factory keeps its intent, measures and compiles it",
-    "2026-10-24T06:51 draft: hand-authored intent kept",
-    "2026-10-24T06:51 measured read-only (hand-authored intent): artifacts/building-recipes/hirschpassage-2-165488/measured.json",
-    "2026-10-24T06:51 compiled: 10116 tris, gates pass, likeness g0:NO PHOTO g1:FAIL g2:NO PHOTO (large.ts exited non-zero: hirschpassage-2-165488: 10116 tris, 792380 B, 1657 ms, openings 84 recessed / 0 flush, components {\"nameBoards\":0,\"entrances\":0,\"halls\":0,\"canopies\":0,\"garageDo)",
-    "2026-10-24T20:16 compiled: 11300 tris, gates pass, likeness g0:NO PHOTO g1:FAIL g2:NO PHOTO g3:NO PHOTO"
-   ],
-   "owner": "factory-2",
-   "claimedAt": "2026-10-24T06:51:13.453Z",
-   "updatedAt": "2026-10-24T20:16:51.182Z",
-   "report": {
-    "triangles": 11300,
-    "bytes": 882052,
-    "gatesFailing": [],
-    "passed": true,
-    "likeness": [
-     {
-      "group": 0,
-      "verdict": "NO PHOTO",
-      "reasons": []
-     },
-     {
-      "group": 1,
-      "verdict": "FAIL",
-      "reasons": [
-       "wall dL +0.14",
-       "glazing storey band off by 0.56 mean 0.25 vs photo 0.66",
-       "window shape tall vs photo square"
-      ]
-     },
-     {
-      "group": 2,
-      "verdict": "NO PHOTO",
-      "reasons": []
-     },
-     {
-      "group": 3,
-      "verdict": "NO PHOTO",
-      "reasons": []
-     }
-    ],
-    "compiledAt": "2026-10-24T20:16"
-   },
-   "sheets": [
-    "artifacts/building-recipes/hirschpassage-2-165488/contact-walls-1.png",
-    "artifacts/building-recipes/hirschpassage-2-165488/contact-aerial.png"
-   ],
-   "verdict": {
-    "outcome": "hold",
-    "note": "wall reads beige-brown vs dark sandstone photo; 2 vs 3 windows per bay (3 per bay over budget); balustrades missing",
-    "sheet": "artifacts/strips/accept-r1",
-    "date": "2026-10-24",
-    "model": "opus",
-    "round": 3,
-    "lane": "factory-acceptance-20261024"
-   },
-   "triage": {
-    "verdict": "covered",
-    "reasons": [
-     "already drawn by hirschgebouw"
-    ],
-    "gaps": [],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    }
   },
   {
@@ -2586,13 +2397,13 @@
      "pand not in the building tiles: crops and facts cannot run"
     ],
     "gaps": [],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    }
   },
   {
    "id": "0363100012244160",
    "pand": "0363100012244160",
-   "name": null,
+   "name": "Atrium Parkeergarage",
    "source": "dominant",
    "rideVisibility": {
     "score": 887928,
@@ -2620,7 +2431,7 @@
     "gaps": [
      "curtain"
     ],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    }
   },
   {
@@ -2654,44 +2465,7 @@
     "gaps": [
      "band"
     ],
-    "date": "2026-10-31"
-   }
-  },
-  {
-   "id": "0363100012242951",
-   "pand": "0363100012242951",
-   "name": null,
-   "source": "dominant",
-   "rideVisibility": {
-    "score": 769592,
-    "rank": 30
-   },
-   "footprintM2": 6249,
-   "heightM": 21.3,
-   "center": [
-    4.878467499999999,
-    52.3668545
-   ],
-   "status": "crops",
-   "house": "passeerdersstraat-242951",
-   "notes": [
-    "authored recipe houses/passeerdersstraat-242951 exists and is not installed: the factory keeps its intent, measures and compiles it",
-    "2026-10-23T21:02 crops: 11 usable walls in 30 s"
-   ],
-   "owner": "crops-20261023",
-   "claimedAt": "2026-10-23T21:01:48.336Z",
-   "updatedAt": "2026-10-23T21:02:18.128Z",
-   "triage": {
-    "verdict": "kit-gap",
-    "reasons": [
-     "w02 (Marnixstraat, 54 m) reads columns with a ribbon on storey 1: the kit draws windows under it (bands, balconies, a shopfront strip)",
-     "wall family unresolved (dark, neutral, brick courses not resolved) on the main front w02 (Marnixstraat, 54 m), 77 % of 71 m of street wall (w02): painted or clad"
-    ],
-    "gaps": [
-     "band",
-     "painted-or-clad"
-    ],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    }
   },
   {
@@ -2725,78 +2499,7 @@
     "gaps": [
      "band"
     ],
-    "date": "2026-10-31"
-   }
-  },
-  {
-   "id": "0363100012096613",
-   "pand": "0363100012096613",
-   "name": null,
-   "source": "dominant",
-   "rideVisibility": {
-    "score": 703622,
-    "rank": 35
-   },
-   "footprintM2": 13813,
-   "heightM": 66.8,
-   "center": [
-    4.874995,
-    52.340247500000004
-   ],
-   "status": "crops",
-   "house": "pand-096613",
-   "owner": "crops-20261023",
-   "claimedAt": "2026-10-23T21:02:54.547Z",
-   "notes": [
-    "2026-10-23T21:03 crops: 18 usable walls in 42 s"
-   ],
-   "updatedAt": "2026-10-23T21:03:36.079Z",
-   "triage": {
-    "verdict": "kit-gap",
-    "reasons": [
-     "w06 (Zuidplein, 36 m) reads punched with a ribbon on storey 1: the kit draws windows under it (bands, balconies, a shopfront strip)",
-     "w12 (Mathijs Vermeulenpad, 19 m) reads punched with a ribbon on storey 1: the kit draws windows under it (bands, balconies, a shopfront strip)",
-     "wall family unresolved but a measured tint on w06 (paint): the kit draws it (walls[].wallFamily)"
-    ],
-    "gaps": [
-     "band"
-    ],
-    "date": "2026-10-31"
-   }
-  },
-  {
-   "id": "0363100012238702",
-   "pand": "0363100012238702",
-   "name": null,
-   "source": "dominant",
-   "rideVisibility": {
-    "score": 682272,
-    "rank": 36
-   },
-   "footprintM2": 4393,
-   "heightM": 4.3,
-   "center": [
-    4.8955605,
-    52.4001685
-   ],
-   "status": "crops",
-   "house": "pand-238702",
-   "owner": "crops-20261023",
-   "claimedAt": "2026-10-23T21:03:36.080Z",
-   "notes": [
-    "2026-10-23T21:03 crops: 13 usable walls in 16 s"
-   ],
-   "updatedAt": "2026-10-23T21:03:52.206Z",
-   "triage": {
-    "verdict": "kit-gap",
-    "reasons": [
-     "w06 (NDSM-plein, 21 m) reads curtain without floor bands",
-     "w07 (NDSM-plein, 18 m) reads curtain without floor bands"
-    ],
-    "gaps": [
-     "curtain"
-    ],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    }
   },
   {
@@ -2831,7 +2534,7 @@
     "gaps": [
      "band"
     ],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    }
   },
   {
@@ -2858,100 +2561,12 @@
    ],
    "updatedAt": "2026-10-23T21:04:21.981Z",
    "triage": {
-    "verdict": "no-evidence",
+    "verdict": "not-in-tiles",
     "reasons": [
-     "0 of 2 street walls judgeable (need 2, and every street wall >= 15 m)",
-     "w01 (Papaverweg, 76 m): crop 2021 predates the 2023 building",
-     "w02 (Bosrankstraat, 76 m): crop 2021 predates the 2023 building"
+     "pand not in the building tiles: crops and facts cannot run"
     ],
     "gaps": [],
-    "date": "2026-10-31"
-   }
-  },
-  {
-   "id": "0363100012066028",
-   "pand": "0363100012066028",
-   "name": null,
-   "source": "dominant",
-   "rideVisibility": {
-    "score": 592956,
-    "rank": 41
-   },
-   "footprintM2": 2568,
-   "heightM": 22.5,
-   "center": [
-    4.846671049999999,
-    52.3854768
-   ],
-   "status": "reviewed-pass",
-   "house": "molenwerf-1-066028",
-   "notes": [
-    "authored recipe houses/molenwerf-1-066028 exists and is not installed: the factory keeps its intent, measures and compiles it",
-    "2026-10-29T20:51 draft: hand-authored intent kept",
-    "2026-10-29T20:51 measured read-only (hand-authored intent): artifacts/building-recipes/molenwerf-1-066028/measured.json",
-    "2026-10-29T20:51 compiled: 10960 tris, gates pass, likeness g0:PASS g1:NO PHOTO g2:WARN"
-   ],
-   "owner": "landmark-lane-selftest",
-   "claimedAt": "2026-10-29T20:51:11.571Z",
-   "updatedAt": "2026-10-29T22:05:16.189Z",
-   "triage": {
-    "verdict": "covered",
-    "reasons": [
-     "already drawn by ordinary-0363100012066028"
-    ],
-    "gaps": [],
-    "date": "2026-10-31"
-   },
-   "model": "fable",
-   "turns": 2.8,
-   "ms": {
-    "facts": 0,
-    "draft": 0,
-    "measure": 3470,
-    "compile": 5215,
-    "strip": 89,
-    "install": 3229
-   },
-   "report": {
-    "triangles": 10960,
-    "bytes": 813304,
-    "gatesFailing": [],
-    "passed": true,
-    "likeness": [
-     {
-      "group": 0,
-      "verdict": "PASS",
-      "reasons": []
-     },
-     {
-      "group": 1,
-      "verdict": "NO PHOTO",
-      "reasons": []
-     },
-     {
-      "group": 2,
-      "verdict": "WARN",
-      "reasons": [
-       "mask IoU 0.398 < 0.45"
-      ]
-     }
-    ],
-    "compiledAt": "2026-10-29T20:51"
-   },
-   "sheets": [
-    "artifacts/building-recipes/molenwerf-1-066028/contact-walls-0.png",
-    "artifacts/building-recipes/molenwerf-1-066028/contact-walls-1.png",
-    "artifacts/building-recipes/molenwerf-1-066028/contact-walls-2.png",
-    "artifacts/building-recipes/molenwerf-1-066028/contact-aerial.png"
-   ],
-   "verdict": {
-    "outcome": "pass",
-    "note": "dark brown brick and ribbon windows match walls[0] (PASS); walls[2] WARN on mask IoU only, reads right; walls[1] no panorama, inherited from walls[0] (inferred)",
-    "sheet": "artifacts/strips/selftest",
-    "date": "2026-10-29",
-    "model": "fable",
-    "lane": "landmark-lane-selftest",
-    "round": 1
+    "date": "2026-11-06"
    }
   },
   {
@@ -2987,7 +2602,7 @@
      "3 judgeable street walls: w01 columns, w02 punched, w03 punched"
     ],
     "gaps": [],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    },
    "model": "fable",
    "turns": 1.8,
@@ -3048,132 +2663,6 @@
    }
   },
   {
-   "id": "0363100012165427",
-   "pand": "0363100012165427",
-   "name": null,
-   "source": "dominant",
-   "rideVisibility": {
-    "score": 560046,
-    "rank": 45
-   },
-   "footprintM2": 4575,
-   "heightM": 18.5,
-   "center": [
-    4.88297355,
-    52.365377050000006
-   ],
-   "status": "installed",
-   "house": "pand-165427",
-   "owner": "factory-2",
-   "claimedAt": "2026-10-24T06:51:20.065Z",
-   "notes": [
-    "2026-10-23T21:05 crops: 23 usable walls in 49 s",
-    "2026-10-24T06:51 facts: no routing street within 30 m; groups will be unnamed",
-    "2026-10-24T06:51 draft: 8 groups (0 on a street), 170 panels blank",
-    "2026-10-24T06:51 measured groups 0,1,4,5,6 in 13 s",
-    "2026-10-24T06:51 compiled: 7934 tris, gates FAIL eaves-vs-3dbag/walls[3], likeness g0:WARN g1:WARN g2:NO EVIDENCE g3:NO PHOTO g4:FAIL g5:WARN g6:WARN g7:NO PHOTO (large.ts exited non-zero:   artifacts/building-recipes/pand-165427/contact-walls-3.png |   artifacts/building-recipes/pand-165427/contact-walls-4.png |   artifacts/building-recipes/pand-)",
-    "2026-10-24T20:17 compiled: 8683 tris, gates pass, likeness g0:WARN g1:WARN g2:NO EVIDENCE g3:NO PHOTO g4:FAIL g5:WARN g6:WARN g7:NO PHOTO",
-    "2026-10-24T20:19 compiled: 9623 tris, gates pass, likeness g0:WARN g1:WARN g2:NO EVIDENCE g3:NO PHOTO g4:FAIL g5:WARN g6:WARN g7:NO PHOTO",
-    "2026-10-24T20:20 compiled: 9529 tris, gates pass, likeness g0:WARN g1:WARN g2:NO EVIDENCE g3:NO PHOTO g4:FAIL g5:WARN g6:WARN g7:NO PHOTO",
-    "2026-10-24T20:20 compiled: 8859 tris, gates pass, likeness g0:WARN g1:WARN g2:NO EVIDENCE g3:NO PHOTO g4:FAIL g5:WARN g6:WARN g7:NO PHOTO",
-    "2026-10-24 integrator: Opus review passed it, but the likeness gate refuses (street walls FAIL on glazing band and window shape); held until the gate or the intent agrees.",
-    "2026-10-25 installed with the likeness gate running (MAP_RECALL_SOURCE_DATA set); inferred groups per #48 review"
-   ],
-   "updatedAt": "2026-10-24T20:20:41.969Z",
-   "report": {
-    "triangles": 8859,
-    "bytes": 692056,
-    "gatesFailing": [],
-    "passed": true,
-    "likeness": [
-     {
-      "group": 0,
-      "verdict": "WARN",
-      "reasons": [
-       "wall family unresolved (#4f4c4d is dark and neutral, brick courses not resolved): lightness and hue judged only",
-       "mask IoU 0.436 < 0.45"
-      ]
-     },
-     {
-      "group": 1,
-      "verdict": "WARN",
-      "reasons": [
-       "wall family unresolved (#413f3d is dark and neutral, brick courses not resolved): lightness and hue judged only",
-       "mask IoU 0.367 < 0.45"
-      ]
-     },
-     {
-      "group": 2,
-      "verdict": "NO EVIDENCE",
-      "reasons": [
-       "camera 5.1 m < 8 m from a 18 m wall"
-      ]
-     },
-     {
-      "group": 3,
-      "verdict": "NO PHOTO",
-      "reasons": []
-     },
-     {
-      "group": 4,
-      "verdict": "FAIL",
-      "reasons": [
-       "glazing storey band off by 0.21",
-       "wall family unresolved (#414040 is dark and neutral, brick courses not resolved): lightness and hue judged only"
-      ]
-     },
-     {
-      "group": 5,
-      "verdict": "WARN",
-      "reasons": [
-       "mask IoU 0.226 < 0.45"
-      ]
-     },
-     {
-      "group": 6,
-      "verdict": "WARN",
-      "reasons": [
-       "mask IoU 0.42 < 0.45"
-      ]
-     },
-     {
-      "group": 7,
-      "verdict": "NO PHOTO",
-      "reasons": []
-     }
-    ],
-    "compiledAt": "2026-10-24T20:20"
-   },
-   "sheets": [
-    "artifacts/building-recipes/pand-165427/contact-walls-0.png",
-    "artifacts/building-recipes/pand-165427/contact-walls-1.png",
-    "artifacts/building-recipes/pand-165427/contact-walls-2.png",
-    "artifacts/building-recipes/pand-165427/contact-walls-3.png",
-    "artifacts/building-recipes/pand-165427/contact-walls-4.png",
-    "artifacts/building-recipes/pand-165427/contact-walls-5.png",
-    "artifacts/building-recipes/pand-165427/contact-walls-6.png",
-    "artifacts/building-recipes/pand-165427/contact-walls-7.png",
-    "artifacts/building-recipes/pand-165427/contact-aerial.png"
-   ],
-   "verdict": {
-    "outcome": "pass",
-    "note": "canal front reads right: dark brick, 12 bays, row of four fronts with the tall left house arched on top, red-brown frames; courtyard walls blank (no photo); dormers and oculus not drawn",
-    "sheet": "artifacts/strips/accept-r1",
-    "date": "2026-10-24",
-    "model": "opus",
-    "round": 3,
-    "lane": "factory-acceptance-20261024"
-   },
-   "triage": {
-    "verdict": "covered",
-    "reasons": [
-     "already drawn by ordinary-0363100012165427"
-    ],
-    "gaps": [],
-    "date": "2026-10-31"
-   }
-  },
-  {
    "id": "0363100012145366",
    "pand": "0363100012145366",
    "name": null,
@@ -3205,7 +2694,7 @@
     "gaps": [
      "band"
     ],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    }
   },
   {
@@ -3237,7 +2726,7 @@
      "pand not in the building tiles: crops and facts cannot run"
     ],
     "gaps": [],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    }
   },
   {
@@ -3275,7 +2764,7 @@
      "band",
      "painted-or-clad"
     ],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    }
   },
   {
@@ -3311,7 +2800,7 @@
      "band",
      "painted-or-clad"
     ],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    }
   },
   {
@@ -3343,7 +2832,7 @@
      "pand not in the building tiles: crops and facts cannot run"
     ],
     "gaps": [],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    }
   },
   {
@@ -3378,7 +2867,7 @@
      "w04 (Parnassusweg, 45 m): washed out 82 % > 30 %"
     ],
     "gaps": [],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    }
   },
   {
@@ -3414,13 +2903,13 @@
      "band",
      "painted-or-clad"
     ],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    }
   },
   {
    "id": "0363100012240015",
    "pand": "0363100012240015",
-   "name": null,
+   "name": "AkzoNobel Center",
    "source": "dominant",
    "rideVisibility": {
     "score": 472267,
@@ -3441,17 +2930,12 @@
    ],
    "updatedAt": "2026-10-23T21:08:03.441Z",
    "triage": {
-    "verdict": "no-evidence",
+    "verdict": "not-in-tiles",
     "reasons": [
-     "3 of 8 street walls judgeable (need 2, and every street wall >= 15 m)",
-     "w04 (Beethovenplein, 37 m): washed out 58 % > 30 %; crop 2017 predates the 2017 building",
-     "w05 (Beethovenplein, 34 m): washed out 74 % > 30 %",
-     "w08 (Beethovenplein, 12 m): washed out 55 % > 30 %",
-     "w10 (Beethovenplein, 10 m): washed out 97 % > 30 %",
-     "w11 (Beethovenplein, 10 m): washed out 66 % > 30 %; crop 2017 predates the 2017 building"
+     "pand not in the building tiles: crops and facts cannot run"
     ],
     "gaps": [],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    }
   },
   {
@@ -3485,7 +2969,7 @@
     "gaps": [
      "band"
     ],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    }
   },
   {
@@ -3522,7 +3006,7 @@
      "band",
      "painted-or-clad"
     ],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    }
   },
   {
@@ -3556,13 +3040,13 @@
     "gaps": [
      "band"
     ],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    }
   },
   {
    "id": "0363100012239853",
    "pand": "0363100012239853",
-   "name": null,
+   "name": "Sint-Nicolaaslyceum",
    "source": "dominant",
    "rideVisibility": {
     "score": 418806,
@@ -3591,7 +3075,7 @@
      "w06 (Beethovenplein, 11 m): usable 12 % < 40 %"
     ],
     "gaps": [],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    }
   },
   {
@@ -3666,7 +3150,7 @@
      "built 1899 (< 1915): ornamented historic front"
     ],
     "gaps": [],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    }
   },
   {
@@ -3701,42 +3185,7 @@
     "gaps": [
      "band"
     ],
-    "date": "2026-10-31"
-   }
-  },
-  {
-   "id": "0363100012135250",
-   "pand": "0363100012135250",
-   "name": null,
-   "source": "dominant",
-   "rideVisibility": {
-    "score": 392579,
-    "rank": 74
-   },
-   "footprintM2": 3502,
-   "heightM": 21.3,
-   "center": [
-    4.88017535,
-    52.361774499999996
-   ],
-   "status": "crops",
-   "house": "pand-135250",
-   "owner": "crops-20261023",
-   "claimedAt": "2026-10-23T21:10:14.523Z",
-   "notes": [
-    "2026-10-23T21:10 crops: 12 usable walls in 26 s"
-   ],
-   "updatedAt": "2026-10-23T21:10:40.690Z",
-   "triage": {
-    "verdict": "no-evidence",
-    "reasons": [
-     "3 of 6 street walls judgeable (need 2, and every street wall >= 15 m)",
-     "w01 (Zandpad, 64 m): foliage 32 % > 25 %; washed out 41 % > 30 %; camera 5.6 m < 8 m from a 64 m wall",
-     "w05 (Tesselschadestraat, 9 m): washed out 44 % > 30 %",
-     "w07 (Tesselschadestraat, 8 m): washed out 31 % > 30 %"
-    ],
-    "gaps": [],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    }
   },
   {
@@ -3769,7 +3218,7 @@
      "w02 (Papaverweg, 39 m): foliage 27 % > 25 %"
     ],
     "gaps": [],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    }
   },
   {
@@ -3854,39 +3303,7 @@
      "built 1872 (< 1915): ornamented historic front"
     ],
     "gaps": [],
-    "date": "2026-10-31"
-   }
-  },
-  {
-   "id": "0363100012090791",
-   "pand": "0363100012090791",
-   "name": null,
-   "source": "dominant",
-   "rideVisibility": {
-    "score": 388517,
-    "rank": 77
-   },
-   "footprintM2": 3319,
-   "heightM": 11.3,
-   "center": [
-    4.85908175,
-    52.38450695
-   ],
-   "status": "crops",
-   "house": "pand-090791",
-   "owner": "crops-20261023",
-   "claimedAt": "2026-10-23T21:10:52.726Z",
-   "notes": [
-    "2026-10-23T21:11 crops: 9 usable walls in 16 s"
-   ],
-   "updatedAt": "2026-10-23T21:11:08.684Z",
-   "triage": {
-    "verdict": "covered",
-    "reasons": [
-     "already drawn by ordinary-0363100012090791"
-    ],
-    "gaps": [],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    }
   },
   {
@@ -3918,7 +3335,7 @@
      "1 of 1 street walls judgeable (need 2, and every street wall >= 15 m)"
     ],
     "gaps": [],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    }
   },
   {
@@ -3953,13 +3370,13 @@
      "w04 (Meester Treublaan, 53 m): crop 2021 predates the 2024 building"
     ],
     "gaps": [],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    }
   },
   {
    "id": "0363100012251533",
    "pand": "0363100012251533",
-   "name": null,
+   "name": "De Valerius",
    "source": "dominant",
    "rideVisibility": {
     "score": 377313,
@@ -3993,39 +3410,7 @@
      "w11 (Valeriusplein, 10 m): foliage 27 % > 25 %"
     ],
     "gaps": [],
-    "date": "2026-10-31"
-   }
-  },
-  {
-   "id": "0363100012154874",
-   "pand": "0363100012154874",
-   "name": null,
-   "source": "dominant",
-   "rideVisibility": {
-    "score": 336694,
-    "rank": 85
-   },
-   "footprintM2": 3229,
-   "heightM": 18.1,
-   "center": [
-    4.8589525,
-    52.3643586
-   ],
-   "status": "crops",
-   "house": "pand-154874",
-   "owner": "crops-20261023",
-   "claimedAt": "2026-10-23T21:12:09.237Z",
-   "notes": [
-    "2026-10-23T21:12 crops: 8 usable walls in 12 s"
-   ],
-   "updatedAt": "2026-10-23T21:12:21.639Z",
-   "triage": {
-    "verdict": "bespoke",
-    "reasons": [
-     "rijksmonument: ornament carries the likeness"
-    ],
-    "gaps": [],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    }
   },
   {
@@ -4059,7 +3444,7 @@
     "gaps": [
      "band"
     ],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    }
   },
   {
@@ -4093,7 +3478,7 @@
      "pand not in the building tiles: crops and facts cannot run"
     ],
     "gaps": [],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    },
    "model": "fable",
    "turns": 1.6,
@@ -4137,7 +3522,7 @@
      "pand not in the building tiles: crops and facts cannot run"
     ],
     "gaps": [],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    }
   },
   {
@@ -4173,7 +3558,7 @@
      "band",
      "painted-or-clad"
     ],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    }
   },
   {
@@ -4207,80 +3592,7 @@
     "gaps": [
      "painted-or-clad"
     ],
-    "date": "2026-10-31"
-   }
-  },
-  {
-   "id": "0363100012139498",
-   "pand": "0363100012139498",
-   "name": null,
-   "source": "dominant",
-   "rideVisibility": {
-    "score": 325532,
-    "rank": 91
-   },
-   "footprintM2": 3149,
-   "heightM": 34,
-   "center": [
-    4.9263825,
-    52.3760035
-   ],
-   "status": "crops",
-   "house": "pand-139498",
-   "owner": "crops-20261023",
-   "claimedAt": "2026-10-23T21:14:16.482Z",
-   "notes": [
-    "2026-10-23T21:14 crops: 15 usable walls in 38 s"
-   ],
-   "updatedAt": "2026-10-23T21:14:54.765Z",
-   "triage": {
-    "verdict": "kit-gap",
-    "reasons": [
-     "w01 (Veemkade, 70 m) storey 4 has a 18.2 m ribbon over punched windows on storey 1: bands (balconies, ribbons, a shopfront strip)",
-     "w02 (Piet Heinkade, 57 m) storey 1 has a 9.3 m ribbon over punched windows on storey 2: bands (balconies, ribbons, a shopfront strip)",
-     "wall family unresolved but a measured tint on w06 (paint): the kit draws it (walls[].wallFamily)"
-    ],
-    "gaps": [
-     "band"
-    ],
-    "date": "2026-10-31"
-   }
-  },
-  {
-   "id": "0363100012142095",
-   "pand": "0363100012142095",
-   "name": null,
-   "source": "dominant",
-   "rideVisibility": {
-    "score": 316120,
-    "rank": 92
-   },
-   "footprintM2": 6975,
-   "heightM": 15.9,
-   "center": [
-    4.9389585,
-    52.377356000000006
-   ],
-   "status": "crops",
-   "house": "pand-142095",
-   "owner": "crops-20261023",
-   "claimedAt": "2026-10-23T21:14:54.765Z",
-   "notes": [
-    "2026-10-23T21:15 crops: 16 usable walls in 34 s"
-   ],
-   "updatedAt": "2026-10-23T21:15:28.832Z",
-   "triage": {
-    "verdict": "kit-gap",
-    "reasons": [
-     "w04 (Azartplein, 27 m) reads curtain without floor bands",
-     "w06 (Surinamekade, 16 m) reads punched with a ribbon on storey 1: the kit draws windows under it (bands, balconies, a shopfront strip)",
-     "wall family unresolved but a measured tint on w02 (paint): the kit draws it (walls[].wallFamily)"
-    ],
-    "gaps": [
-     "curtain",
-     "band"
-    ],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    }
   },
   {
@@ -4315,7 +3627,7 @@
     "gaps": [
      "band"
     ],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    }
   },
   {
@@ -4350,13 +3662,13 @@
     "gaps": [
      "band"
     ],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    }
   },
   {
    "id": "0363100012125840",
    "pand": "0363100012125840",
-   "name": null,
+   "name": "Forum",
    "source": "dominant",
    "rideVisibility": {
     "score": 298673,
@@ -4384,13 +3696,13 @@
     "gaps": [
      "blank-front"
     ],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    }
   },
   {
    "id": "0363100012153698",
    "pand": "0363100012153698",
-   "name": null,
+   "name": "Gebouw Parnas",
    "source": "dominant",
    "rideVisibility": {
     "score": 285371,
@@ -4418,7 +3730,7 @@
      "w11 (Parnassusweg, 10 m): washed out 85 % > 30 %"
     ],
     "gaps": [],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    }
   },
   {
@@ -4450,214 +3762,7 @@
      "pand not in the building tiles: crops and facts cannot run"
     ],
     "gaps": [],
-    "date": "2026-10-31"
-   }
-  },
-  {
-   "id": "0363100012182840",
-   "pand": "0363100012182840",
-   "name": null,
-   "source": "dominant",
-   "rideVisibility": {
-    "score": 269136,
-    "rank": 106
-   },
-   "footprintM2": 890,
-   "heightM": 39.1,
-   "center": [
-    4.907496,
-    52.3608205
-   ],
-   "status": "crops",
-   "house": "pand-182840",
-   "owner": "crops-20261023",
-   "claimedAt": "2026-10-23T21:17:45.429Z",
-   "notes": [
-    "2026-10-23T21:18 crops: 8 usable walls in 15 s"
-   ],
-   "updatedAt": "2026-10-23T21:18:00.746Z",
-   "triage": {
-    "verdict": "no-evidence",
-    "reasons": [
-     "1 of 2 street walls judgeable (need 2, and every street wall >= 15 m)",
-     "w01 (Sarphatistraat, 39 m): washed out 48 % > 30 %"
-    ],
-    "gaps": [],
-    "date": "2026-10-31"
-   }
-  },
-  {
-   "id": "0363100012136232",
-   "pand": "0363100012136232",
-   "name": null,
-   "source": "dominant",
-   "rideVisibility": {
-    "score": 266579,
-    "rank": 108
-   },
-   "footprintM2": 12051,
-   "heightM": 64.7,
-   "center": [
-    4.866779899999999,
-    52.33421965
-   ],
-   "status": "crops",
-   "house": "pand-136232",
-   "owner": "crops-20261023",
-   "claimedAt": "2026-10-23T21:18:00.747Z",
-   "notes": [
-    "2026-10-23T21:18 crops: 16 usable walls in 29 s"
-   ],
-   "updatedAt": "2026-10-23T21:18:29.719Z",
-   "triage": {
-    "verdict": "kit-gap",
-    "reasons": [
-     "wall family unresolved (dark, neutral, brick courses not resolved) on the main front w03 (no street, 77 m)100 % of 113 m of street wall (w03, w08): painted or clad"
-    ],
-    "gaps": [
-     "painted-or-clad"
-    ],
-    "date": "2026-10-31"
-   }
-  },
-  {
-   "id": "0363100012236735",
-   "pand": "0363100012236735",
-   "name": null,
-   "source": "dominant",
-   "rideVisibility": {
-    "score": 261450,
-    "rank": 110
-   },
-   "footprintM2": 2958,
-   "heightM": 23.7,
-   "center": [
-    4.8560099999999995,
-    52.3574975
-   ],
-   "status": "crops",
-   "house": "pand-236735",
-   "owner": "crops-20261023",
-   "claimedAt": "2026-10-23T21:18:29.719Z",
-   "notes": [
-    "2026-10-23T21:19 crops: 17 usable walls in 46 s"
-   ],
-   "updatedAt": "2026-10-23T21:19:15.538Z",
-   "triage": {
-    "verdict": "bespoke",
-    "reasons": [
-     "rijksmonument: ornament carries the likeness"
-    ],
-    "gaps": [],
-    "date": "2026-10-31"
-   }
-  },
-  {
-   "id": "0363100012165158",
-   "pand": "0363100012165158",
-   "name": null,
-   "source": "dominant",
-   "rideVisibility": {
-    "score": 249241,
-    "rank": 112
-   },
-   "footprintM2": 3691,
-   "heightM": 28.9,
-   "center": [
-    4.8417815,
-    52.388118399999996
-   ],
-   "status": "held",
-   "house": "pand-165158",
-   "owner": "landmark-lane-r2",
-   "claimedAt": "2026-10-29T22:21:47.327Z",
-   "notes": [
-    "2026-10-23T21:19 crops: 9 usable walls in 21 s",
-    "2026-10-29T22:21 facts: fronts on Kingsfordweg, Teleportboulevard, Changiweg",
-    "2026-10-29T22:21 draft: 8 groups (5 on a street), 41 panels blank",
-    "2026-10-29T22:22 measured groups 0,1,2,4 in 27 s",
-    "2026-10-29T22:22 compiled: 26973 tris, gates FAIL triangle-budget, likeness g0:FAIL g1:FAIL g2:FAIL g4:FAIL (large.ts exited non-zero:   artifacts/building-recipes/pand-165158/contact-walls-3.png |   artifacts/building-recipes/pand-165158/contact-walls-4.png |   artifacts/building-recipes/pand-)"
-   ],
-   "updatedAt": "2026-10-29T22:29:45.688Z",
-   "triage": {
-    "verdict": "buildable",
-    "reasons": [
-     "5 judgeable street walls: w01 punched, w03 punched, w04 ribbon, w05 punched, w06 punched"
-    ],
-    "gaps": [],
-    "date": "2026-10-31"
-   },
-   "model": "fable",
-   "turns": 1.65,
-   "ms": {
-    "facts": 5029,
-    "draft": 11,
-    "measure": 26639,
-    "compile": 12338,
-    "strip": 62.3
-   },
-   "report": {
-    "triangles": 26973,
-    "bytes": 1963692,
-    "gatesFailing": [
-     "triangle-budget"
-    ],
-    "passed": false,
-    "likeness": [
-     {
-      "group": 0,
-      "verdict": "FAIL",
-      "reasons": [
-       "glazing storey band off by 0.34 mean 0.39 vs photo 0.13",
-       "wall family unresolved (#544d57 is dark and neutral, brick courses not resolved): lightness and hue judged only"
-      ]
-     },
-     {
-      "group": 1,
-      "verdict": "FAIL",
-      "reasons": [
-       "glazing storey band off by 0.32"
-      ]
-     },
-     {
-      "group": 2,
-      "verdict": "FAIL",
-      "reasons": [
-       "glazing storey band off by 0.33",
-       "storey 7: widest opening 1.1 m vs photo 10.6 m (a ribbon against windows)",
-       "wall family unresolved (#3b3637 is dark and neutral, brick courses not resolved): lightness and hue judged only"
-      ]
-     },
-     {
-      "group": 4,
-      "verdict": "FAIL",
-      "reasons": [
-       "glazing storey band off by 0.34 mean 0.39 vs photo 0.22",
-       "storey 7: widest opening 1.3 m vs photo 8.6 m (a ribbon against windows)"
-      ]
-     }
-    ],
-    "compiledAt": "2026-10-29T22:22"
-   },
-   "sheets": [
-    "artifacts/building-recipes/pand-165158/contact-walls-0.png",
-    "artifacts/building-recipes/pand-165158/contact-walls-1.png",
-    "artifacts/building-recipes/pand-165158/contact-walls-2.png",
-    "artifacts/building-recipes/pand-165158/contact-walls-3.png",
-    "artifacts/building-recipes/pand-165158/contact-walls-4.png",
-    "artifacts/building-recipes/pand-165158/contact-walls-5.png",
-    "artifacts/building-recipes/pand-165158/contact-walls-6.png",
-    "artifacts/building-recipes/pand-165158/contact-walls-7.png",
-    "artifacts/building-recipes/pand-165158/contact-aerial.png"
-   ],
-   "verdict": {
-    "outcome": "hold",
-    "note": "KPN Teleport: glass office with continuous ribbon bands and floor bands; kit draws a brick punched grid; triangle budget 27k; needs the curtain floor-band component (#116)",
-    "sheet": "artifacts/strips/r2",
-    "date": "2026-10-29",
-    "model": "fable",
-    "lane": "landmark-lane-r2",
-    "round": 1
+    "date": "2026-11-06"
    }
   },
   {
@@ -4693,49 +3798,13 @@
      "w07 (Haarlemmerweg, 28 m): no crop"
     ],
     "gaps": [],
-    "date": "2026-10-31"
-   }
-  },
-  {
-   "id": "0363100012239633",
-   "pand": "0363100012239633",
-   "name": null,
-   "source": "dominant",
-   "rideVisibility": {
-    "score": 241007,
-    "rank": 114
-   },
-   "footprintM2": 6249,
-   "heightM": 55.3,
-   "center": [
-    4.8619555000000005,
-    52.337149499999995
-   ],
-   "status": "crops",
-   "house": "pand-239633",
-   "owner": "crops-20261023",
-   "claimedAt": "2026-10-23T21:19:52.527Z",
-   "notes": [
-    "2026-10-23T21:20 crops: 9 usable walls in 21 s"
-   ],
-   "updatedAt": "2026-10-23T21:20:13.586Z",
-   "triage": {
-    "verdict": "kit-gap",
-    "reasons": [
-     "height 55.3 m: the tallest judgeable street crop reaches 32 m (< 80 %), the upper storeys have no evidence",
-     "wall family unresolved (dark, neutral, brick courses not resolved) on the main front w06 (Gustav Mahlerlaan, 19 m)100 % of 19 m of street wall (w06): painted or clad"
-    ],
-    "gaps": [
-     "tower",
-     "painted-or-clad"
-    ],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    }
   },
   {
    "id": "0363100012236656",
    "pand": "0363100012236656",
-   "name": null,
+   "name": "Strafgevangenis",
    "source": "dominant",
    "rideVisibility": {
     "score": 237463,
@@ -4842,47 +3911,13 @@
      "built 1890 (< 1915): ornamented historic front"
     ],
     "gaps": [],
-    "date": "2026-10-31"
-   }
-  },
-  {
-   "id": "0363100012080492",
-   "pand": "0363100012080492",
-   "name": null,
-   "source": "dominant",
-   "rideVisibility": {
-    "score": 234505,
-    "rank": 118
-   },
-   "footprintM2": 870,
-   "heightM": 35.4,
-   "center": [
-    4.879169,
-    52.363166500000005
-   ],
-   "status": "crops",
-   "house": "pand-080492",
-   "owner": "crops-20261023",
-   "claimedAt": "2026-10-23T21:20:38.280Z",
-   "notes": [
-    "2026-10-23T21:20 crops: 2 usable walls in 6 s"
-   ],
-   "updatedAt": "2026-10-23T21:20:44.753Z",
-   "triage": {
-    "verdict": "kit-gap",
-    "reasons": [
-     "wall family unresolved (dark, neutral, brick courses not resolved) on the main front w01 (Stadhouderskade, 32 m)100 % of 32 m of street wall (w01): painted or clad"
-    ],
-    "gaps": [
-     "painted-or-clad"
-    ],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    }
   },
   {
    "id": "0363100012165746",
    "pand": "0363100012165746",
-   "name": null,
+   "name": "Brand bij C&A",
    "source": "dominant",
    "rideVisibility": {
     "score": 231267,
@@ -4951,41 +3986,7 @@
      "built 1893 (< 1915): ornamented historic front"
     ],
     "gaps": [],
-    "date": "2026-10-31"
-   }
-  },
-  {
-   "id": "0363100012236811",
-   "pand": "0363100012236811",
-   "name": null,
-   "source": "dominant",
-   "rideVisibility": {
-    "score": 226165,
-    "rank": 126
-   },
-   "footprintM2": 320,
-   "heightM": 38.9,
-   "center": [
-    4.8805505,
-    52.362161
-   ],
-   "status": "crops",
-   "house": "pand-236811",
-   "owner": "crops-20261023",
-   "claimedAt": "2026-10-23T21:20:44.755Z",
-   "notes": [
-    "2026-10-23T21:20 crops: 2 usable walls in 5 s"
-   ],
-   "updatedAt": "2026-10-23T21:20:50.232Z",
-   "triage": {
-    "verdict": "kit-gap",
-    "reasons": [
-     "wall family unresolved (dark, neutral, brick courses not resolved) on the main front w01 (Tesselschadestraat, 16 m)100 % of 16 m of street wall (w01): painted or clad"
-    ],
-    "gaps": [
-     "painted-or-clad"
-    ],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    }
   },
   {
@@ -5024,7 +4025,7 @@
     "gaps": [
      "band"
     ],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    },
    "model": "fable",
    "turns": 1.8,
@@ -5119,7 +4120,17 @@
    "notes": [
     "2026-10-23T21:21 crops: 5 usable walls in 16 s"
    ],
-   "updatedAt": "2026-10-23T21:21:30.343Z"
+   "updatedAt": "2026-10-23T21:21:30.343Z",
+   "triage": {
+    "verdict": "no-evidence",
+    "reasons": [
+     "wall family unresolved but a measured tint on w02 (paint): the kit draws it (walls[].wallFamily)",
+     "2 of 3 street walls judgeable (need 2, and every street wall >= 15 m)",
+     "w03 (Jan van Galenstraat, 56 m): foliage 31 % > 25 %"
+    ],
+    "gaps": [],
+    "date": "2026-11-06"
+   }
   },
   {
    "id": "0363100012088496",
@@ -5152,7 +4163,7 @@
      "w03 (Plesostraat, 38 m): washed out 31 % > 30 %"
     ],
     "gaps": [],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    }
   },
   {
@@ -5188,151 +4199,7 @@
     "gaps": [
      "band"
     ],
-    "date": "2026-10-31"
-   }
-  },
-  {
-   "id": "0363100012119827",
-   "pand": "0363100012119827",
-   "name": null,
-   "source": "dominant",
-   "rideVisibility": {
-    "score": 215989,
-    "rank": 131
-   },
-   "footprintM2": 2703,
-   "heightM": 9.2,
-   "center": [
-    4.9033545,
-    52.3832095
-   ],
-   "status": "held",
-   "house": "pand-119827",
-   "owner": "painted-clad-146",
-   "claimedAt": "2026-10-31T03:10:52.464Z",
-   "notes": [
-    "2026-10-23T21:23 crops: 11 usable walls in 17 s",
-    "2026-10-29T20:52 facts: fronts on IJpromenade, Buiksloterweg, Overhoeksplein",
-    "2026-10-29T20:52 draft: 8 groups (3 on a street), 143 panels blank",
-    "2026-10-29T20:52 measured groups 0,2 in 11 s",
-    "2026-10-29T20:52 compiled: 5225 tris, gates FAIL open-edges, likeness g0:FAIL g1:NO EVIDENCE g2:FAIL g3:NO EVIDENCE g4:NO EVIDENCE g5:NO EVIDENCE g6:NO PHOTO g7:NO EVIDENCE (large.ts exited non-zero:   artifacts/building-recipes/pand-119827/contact-walls-3.png |   artifacts/building-recipes/pand-119827/contact-walls-4.png |   artifacts/building-recipes/pand-)",
-    "2026-10-31T03:11 facts: fronts on IJpromenade, Buiksloterweg, Overhoeksplein",
-    "2026-10-31T03:11 draft: 8 groups (3 on a street), 143 panels blank",
-    "2026-10-31T03:12 measured groups 0,2 in 33 s",
-    "2026-10-31T03:13 compiled: 5225 tris, gates FAIL open-edges, likeness g0:FAIL g1:NO EVIDENCE g2:FAIL g3:NO EVIDENCE g4:NO EVIDENCE g5:NO EVIDENCE g6:NO PHOTO g7:NO EVIDENCE (large.ts exited non-zero:   artifacts/building-recipes/pand-119827/contact-walls-3.png |   artifacts/building-recipes/pand-119827/contact-walls-4.png |   artifacts/building-recipes/pand-)",
-    "2026-10-31T03:19 measured groups 0,2 in 10 s",
-    "2026-10-31T03:19 compiled: 5089 tris, gates FAIL open-edges, likeness g0:FAIL g1:NO EVIDENCE g2:FAIL g3:NO EVIDENCE g4:NO EVIDENCE g5:NO EVIDENCE g6:NO PHOTO g7:NO EVIDENCE (large.ts exited non-zero:   artifacts/building-recipes/pand-119827/contact-walls-3.png |   artifacts/building-recipes/pand-119827/contact-walls-4.png |   artifacts/building-recipes/pand-)"
-   ],
-   "updatedAt": "2026-10-31T03:19:38.192Z",
-   "triage": {
-    "verdict": "buildable",
-    "reasons": [
-     "wall family unresolved but a measured tint on w05 (paint): the kit draws it (walls[].wallFamily)",
-     "3 judgeable street walls: w02 punched, w03 punched, w05 punched"
-    ],
-    "gaps": [],
-    "date": "2026-10-31"
-   },
-   "model": "opus",
-   "turns": 5.13,
-   "ms": {
-    "facts": 61519,
-    "draft": 122,
-    "measure": 52949,
-    "compile": 80122,
-    "strip": 89,
-    "crops": 12
-   },
-   "report": {
-    "triangles": 5089,
-    "bytes": 410348,
-    "gatesFailing": [
-     "open-edges"
-    ],
-    "passed": false,
-    "likeness": [
-     {
-      "group": 0,
-      "verdict": "FAIL",
-      "reasons": [
-       "glazing storey band off by 0.22 mean 0.39 vs photo 0.24"
-      ]
-     },
-     {
-      "group": 1,
-      "verdict": "NO EVIDENCE",
-      "reasons": [
-       "usable upper cells 31 % < 40 %",
-       "foliage 52 % > 25 %"
-      ]
-     },
-     {
-      "group": 2,
-      "verdict": "FAIL",
-      "reasons": [
-       "glazing storey band off by 0.32 mean 0.28 vs photo 0.57",
-       "wall family unresolved (#7b7e78 is dark and neutral, brick courses not resolved): lightness and hue judged only"
-      ]
-     },
-     {
-      "group": 3,
-      "verdict": "NO EVIDENCE",
-      "reasons": [
-       "usable upper cells 6 % < 40 %",
-       "foliage 82 % > 25 %"
-      ]
-     },
-     {
-      "group": 4,
-      "verdict": "NO EVIDENCE",
-      "reasons": [
-       "foliage 37 % > 25 %"
-      ]
-     },
-     {
-      "group": 5,
-      "verdict": "NO EVIDENCE",
-      "reasons": [
-       "usable upper cells 32 % < 40 %",
-       "foliage 48 % > 25 %",
-       "obliquity 51.8 deg > 45"
-      ]
-     },
-     {
-      "group": 6,
-      "verdict": "NO PHOTO",
-      "reasons": []
-     },
-     {
-      "group": 7,
-      "verdict": "NO EVIDENCE",
-      "reasons": [
-       "usable upper cells 25 % < 40 %",
-       "foliage 55 % > 25 %"
-      ]
-     }
-    ],
-    "compiledAt": "2026-10-31T03:19"
-   },
-   "sheets": [
-    "artifacts/building-recipes/pand-119827/contact-walls-0.png",
-    "artifacts/building-recipes/pand-119827/contact-walls-1.png",
-    "artifacts/building-recipes/pand-119827/contact-walls-2.png",
-    "artifacts/building-recipes/pand-119827/contact-walls-3.png",
-    "artifacts/building-recipes/pand-119827/contact-walls-4.png",
-    "artifacts/building-recipes/pand-119827/contact-walls-5.png",
-    "artifacts/building-recipes/pand-119827/contact-walls-6.png",
-    "artifacts/building-recipes/pand-119827/contact-walls-7.png",
-    "artifacts/building-recipes/pand-119827/contact-aerial.png"
-   ],
-   "verdict": {
-    "outcome": "hold",
-    "note": "glazed pavilion under a deep roof (Tolhuis); walls[2] FAIL glazing 0.28 vs 0.57, gate open-edges; house mosaic spread 0.22 proposes no wall family (triage crop did)",
-    "sheet": "artifacts/strips/painted-clad-146",
-    "date": "2026-10-31",
-    "model": "opus",
-    "lane": "painted-clad-146",
-    "round": 1
+    "date": "2026-11-06"
    }
   },
   {
@@ -5368,133 +4235,7 @@
      "tower",
      "painted-or-clad"
     ],
-    "date": "2026-10-31"
-   }
-  },
-  {
-   "id": "0363100012165051",
-   "pand": "0363100012165051",
-   "name": null,
-   "source": "dominant",
-   "rideVisibility": {
-    "score": 206441,
-    "rank": 138
-   },
-   "footprintM2": 3424,
-   "heightM": 25.3,
-   "center": [
-    4.89596465,
-    52.3741502
-   ],
-   "status": "held",
-   "house": "beursplein-5-165051",
-   "notes": [
-    "authored recipe houses/beursplein-5-165051 exists and is not installed: the factory keeps its intent, measures and compiles it",
-    "2026-10-24T06:52 draft: hand-authored intent kept",
-    "2026-10-24T06:52 measured read-only (hand-authored intent): artifacts/building-recipes/beursplein-5-165051/measured.json",
-    "2026-10-24T06:52 compiled: 8953 tris, gates pass, likeness g0:NO EVIDENCE g1:NO EVIDENCE g2:NO EVIDENCE g3:NO EVIDENCE",
-    "2026-10-24T20:17 compiled: 8953 tris, gates pass, likeness g0:NO EVIDENCE g1:NO EVIDENCE g2:NO EVIDENCE g3:NO EVIDENCE",
-    "2026-10-24T20:30 compiled: 11269 tris, gates pass, likeness g0:NO EVIDENCE g1:NO EVIDENCE g2:NO EVIDENCE g3:NO EVIDENCE",
-    "2026-10-24T20:31 compiled: 11269 tris, gates pass, likeness g0:NO EVIDENCE g1:NO EVIDENCE g2:NO EVIDENCE g3:NO EVIDENCE"
-   ],
-   "owner": "factory-2",
-   "claimedAt": "2026-10-24T06:52:14.757Z",
-   "updatedAt": "2026-10-24T20:31:15.705Z",
-   "report": {
-    "triangles": 11269,
-    "bytes": 864040,
-    "gatesFailing": [],
-    "passed": true,
-    "likeness": [
-     {
-      "group": 0,
-      "verdict": "NO EVIDENCE",
-      "reasons": [
-       "obliquity 49.2 deg > 45"
-      ]
-     },
-     {
-      "group": 1,
-      "verdict": "NO EVIDENCE",
-      "reasons": [
-       "obliquity 47.8 deg > 45"
-      ]
-     },
-     {
-      "group": 2,
-      "verdict": "NO EVIDENCE",
-      "reasons": [
-       "obliquity 48.9 deg > 45"
-      ]
-     },
-     {
-      "group": 3,
-      "verdict": "NO EVIDENCE",
-      "reasons": [
-       "foliage 36 % > 25 %",
-       "washed out 33 % > 30 %"
-      ]
-     }
-    ],
-    "compiledAt": "2026-10-24T20:31"
-   },
-   "sheets": [
-    "artifacts/building-recipes/beursplein-5-165051/contact-walls-0.png",
-    "artifacts/building-recipes/beursplein-5-165051/contact-walls-1.png",
-    "artifacts/building-recipes/beursplein-5-165051/contact-walls-2.png",
-    "artifacts/building-recipes/beursplein-5-165051/contact-walls-3.png",
-    "artifacts/building-recipes/beursplein-5-165051/contact-aerial.png"
-   ],
-   "verdict": {
-    "outcome": "hold",
-    "note": "every group NO EVIDENCE (obliquity > 45 deg); crops disagree on the brick (sunlit orange-red vs overcast dark brown); surrounds added but read thin",
-    "sheet": "artifacts/strips/accept-r1",
-    "date": "2026-10-24",
-    "model": "opus",
-    "round": 3,
-    "lane": "factory-acceptance-20261024"
-   },
-   "triage": {
-    "verdict": "bespoke",
-    "reasons": [
-     "rijksmonument: ornament carries the likeness"
-    ],
-    "gaps": [],
-    "date": "2026-10-31"
-   }
-  },
-  {
-   "id": "0363100012148632",
-   "pand": "0363100012148632",
-   "name": null,
-   "source": "dominant",
-   "rideVisibility": {
-    "score": 206242,
-    "rank": 139
-   },
-   "footprintM2": 3014,
-   "heightM": 24.5,
-   "center": [
-    4.88504955,
-    52.3486361
-   ],
-   "status": "crops",
-   "house": "pand-148632",
-   "owner": "crops-20261023",
-   "claimedAt": "2026-10-23T21:23:35.537Z",
-   "notes": [
-    "2026-10-23T21:23 crops: 10 usable walls in 20 s"
-   ],
-   "updatedAt": "2026-10-23T21:23:55.310Z",
-   "triage": {
-    "verdict": "kit-gap",
-    "reasons": [
-     "wall family unresolved (dark, neutral, brick courses not resolved) on the main front w07 (Stadionweg, 13 m)100 % of 13 m of street wall (w07): painted or clad"
-    ],
-    "gaps": [
-     "painted-or-clad"
-    ],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    }
   },
   {
@@ -5527,7 +4268,7 @@
      "w04 (Laan van Spartaan, 16 m): foliage 59 % > 25 %"
     ],
     "gaps": [],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    }
   },
   {
@@ -5564,7 +4305,7 @@
      "4 judgeable street walls: w02 punched, w08 punched, w09 punched, w10 punched"
     ],
     "gaps": [],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    },
    "model": "fable",
    "turns": 1.8,
@@ -5656,13 +4397,13 @@
     "gaps": [
      "band"
     ],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    }
   },
   {
    "id": "0363100012078546",
    "pand": "0363100012078546",
-   "name": null,
+   "name": "Pieter Nieuwlandcollege",
    "source": "dominant",
    "rideVisibility": {
     "score": 196009,
@@ -5691,7 +4432,7 @@
     "gaps": [
      "painted-or-clad"
     ],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    }
   },
   {
@@ -5728,7 +4469,7 @@
      "w08 (Revaleiland, 12 m): washed out 58 % > 30 %"
     ],
     "gaps": [],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    }
   },
   {
@@ -5766,7 +4507,7 @@
      "w10 (Schoenerstraat, 18 m): washed out 34 % > 30 %"
     ],
     "gaps": [],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    }
   },
   {
@@ -5799,7 +4540,7 @@
      "w01 (Jan van Galenstraat, 14 m): foliage 30 % > 25 %"
     ],
     "gaps": [],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    }
   },
   {
@@ -5833,72 +4574,7 @@
      "w08 (Stettineiland, 12 m): washed out 33 % > 30 %; obliquity 47 deg > 45; crop 2020 predates the 2020 building"
     ],
     "gaps": [],
-    "date": "2026-10-31"
-   }
-  },
-  {
-   "id": "0363100012080770",
-   "pand": "0363100012080770",
-   "name": null,
-   "source": "dominant",
-   "rideVisibility": {
-    "score": 187237,
-    "rank": 154
-   },
-   "footprintM2": 5037,
-   "heightM": 3.9,
-   "center": [
-    4.85628915,
-    52.340513650000005
-   ],
-   "status": "crops",
-   "house": "pand-080770",
-   "owner": "crops-20261023",
-   "claimedAt": "2026-10-23T21:27:35.044Z",
-   "notes": [
-    "2026-10-23T21:27 crops: 15 usable walls in 23 s"
-   ],
-   "updatedAt": "2026-10-23T21:27:57.822Z",
-   "triage": {
-    "verdict": "bespoke",
-    "reasons": [
-     "rijksmonument: ornament carries the likeness"
-    ],
-    "gaps": [],
-    "date": "2026-10-31"
-   }
-  },
-  {
-   "id": "0363100012080490",
-   "pand": "0363100012080490",
-   "name": null,
-   "source": "dominant",
-   "rideVisibility": {
-    "score": 186874,
-    "rank": 156
-   },
-   "footprintM2": 3081,
-   "heightM": 14.6,
-   "center": [
-    4.856466,
-    52.343173
-   ],
-   "status": "crops",
-   "house": "pand-080490",
-   "owner": "crops-20261023",
-   "claimedAt": "2026-10-23T21:27:57.822Z",
-   "notes": [
-    "2026-10-23T21:28 crops: 10 usable walls in 24 s"
-   ],
-   "updatedAt": "2026-10-23T21:28:21.959Z",
-   "triage": {
-    "verdict": "no-evidence",
-    "reasons": [
-     "2 of 3 street walls judgeable (need 2, and every street wall >= 15 m)",
-     "w05 (Stadionplein, 17 m): washed out 38 % > 30 %"
-    ],
-    "gaps": [],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    }
   },
   {
@@ -5933,7 +4609,7 @@
      "w10 (Burgemeester Hogguerstraat, 21 m): foliage 47 % > 25 %"
     ],
     "gaps": [],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    }
   },
   {
@@ -5968,13 +4644,13 @@
      "w04 (Westerdoksdijk, 49 m): no crop"
     ],
     "gaps": [],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    }
   },
   {
    "id": "0363100012142901",
    "pand": "0363100012142901",
-   "name": null,
+   "name": "The Edge Olympic",
    "source": "dominant",
    "rideVisibility": {
     "score": 179274,
@@ -6001,13 +4677,13 @@
      "w04 (Fred. Roeskestraat, 38 m): obliquity 46 deg > 45"
     ],
     "gaps": [],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    }
   },
   {
    "id": "0363100012080532",
    "pand": "0363100012080532",
-   "name": null,
+   "name": "Scala",
    "source": "dominant",
    "rideVisibility": {
     "score": 176184,
@@ -6035,7 +4711,7 @@
     "gaps": [
      "blank-front"
     ],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    }
   },
   {
@@ -6072,7 +4748,7 @@
      "w10 (Ottho Heldringstraat, 9 m): washed out 77 % > 30 %; crop 2022 predates the 2024 building"
     ],
     "gaps": [],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    }
   },
   {
@@ -6110,7 +4786,7 @@
     "gaps": [
      "painted-or-clad"
     ],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    },
    "model": "fable",
    "turns": 1.8,
@@ -6236,13 +4912,13 @@
     "gaps": [
      "band"
     ],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    }
   },
   {
    "id": "0363100012113136",
    "pand": "0363100012113136",
-   "name": null,
+   "name": "vm RK Technische School Dominicus Savius, nu Vliegbasis De Huygens",
    "source": "dominant",
    "rideVisibility": {
     "score": 169335,
@@ -6269,140 +4945,13 @@
      "band",
      "painted-or-clad"
     ],
-    "date": "2026-10-31"
-   }
-  },
-  {
-   "id": "0363100012233585",
-   "pand": "0363100012233585",
-   "name": null,
-   "source": "dominant",
-   "rideVisibility": {
-    "score": 166883,
-    "rank": 169
-   },
-   "footprintM2": 2668,
-   "heightM": 34.5,
-   "center": [
-    4.891170499999999,
-    52.390919999999994
-   ],
-   "status": "held",
-   "house": "pand-233585",
-   "owner": "factory-2",
-   "claimedAt": "2026-10-24T06:52:23.442Z",
-   "notes": [
-    "2026-10-24T06:52 facts: no routing street within 30 m; groups will be unnamed",
-    "2026-10-24T06:52 draft: 8 groups (0 on a street), 113 panels blank",
-    "2026-10-24T06:52 measured groups 1,3,7 in 10 s",
-    "2026-10-24T06:52 compiled: 8426 tris, gates FAIL eaves-vs-3dbag/walls[0],eaves-vs-3dbag/walls[4], likeness g0:NO EVIDENCE g1:FAIL g2:NO PHOTO g3:FAIL g4:NO EVIDENCE g5:NO PHOTO g6:NO EVIDENCE g7:FAIL (large.ts exited non-zero:   artifacts/building-recipes/pand-233585/contact-walls-3.png |   artifacts/building-recipes/pand-233585/contact-walls-4.png |   artifacts/building-recipes/pand-)",
-    "2026-10-24T20:17 compiled: 11998 tris, gates pass, likeness g0:FAIL g1:FAIL g2:NO PHOTO g3:WARN g4:NO EVIDENCE g5:NO PHOTO g6:NO EVIDENCE g7:FAIL",
-    "2026-10-24T20:33 compiled: 13010 tris, gates FAIL open-edges, likeness g0:FAIL g1:FAIL g2:NO PHOTO g3:WARN g4:NO EVIDENCE g5:NO PHOTO g6:NO EVIDENCE g7:FAIL (large.ts exited non-zero:   artifacts/building-recipes/pand-233585/contact-walls-3.png |   artifacts/building-recipes/pand-233585/contact-walls-4.png |   artifacts/building-recipes/pand-)",
-    "2026-10-24T20:33 compiled: 12816 tris, gates FAIL open-edges, likeness g0:FAIL g1:FAIL g2:NO PHOTO g3:WARN g4:NO EVIDENCE g5:NO PHOTO g6:NO EVIDENCE g7:FAIL (large.ts exited non-zero:   artifacts/building-recipes/pand-233585/contact-walls-3.png |   artifacts/building-recipes/pand-233585/contact-walls-4.png |   artifacts/building-recipes/pand-)",
-    "2026-10-24T20:33 compiled: 12792 tris, gates FAIL open-edges, likeness g0:FAIL g1:FAIL g2:NO PHOTO g3:WARN g4:NO EVIDENCE g5:NO PHOTO g6:NO EVIDENCE g7:FAIL (large.ts exited non-zero:   artifacts/building-recipes/pand-233585/contact-walls-3.png |   artifacts/building-recipes/pand-233585/contact-walls-4.png |   artifacts/building-recipes/pand-)",
-    "2026-10-24T20:33 compiled: 12740 tris, gates FAIL open-edges, likeness g0:FAIL g1:FAIL g2:NO PHOTO g3:WARN g4:NO EVIDENCE g5:NO PHOTO g6:NO EVIDENCE g7:FAIL (large.ts exited non-zero:   artifacts/building-recipes/pand-233585/contact-walls-3.png |   artifacts/building-recipes/pand-233585/contact-walls-4.png |   artifacts/building-recipes/pand-)",
-    "2026-10-24T20:34 compiled: 13096 tris, gates pass, likeness g0:FAIL g1:FAIL g2:NO PHOTO g3:WARN g4:NO EVIDENCE g5:NO PHOTO g6:NO EVIDENCE g7:FAIL",
-    "2026-10-24T20:34 compiled: 19055 tris, gates FAIL triangle-budget,storey-height/walls[3],open-edges, likeness g0:FAIL g1:FAIL g2:NO PHOTO g3:WARN g4:NO EVIDENCE g5:NO PHOTO g6:NO EVIDENCE g7:FAIL (large.ts exited non-zero:   artifacts/building-recipes/pand-233585/contact-walls-3.png |   artifacts/building-recipes/pand-233585/contact-walls-4.png |   artifacts/building-recipes/pand-)",
-    "2026-10-24T20:34 compiled: 13096 tris, gates pass, likeness g0:FAIL g1:FAIL g2:NO PHOTO g3:WARN g4:NO EVIDENCE g5:NO PHOTO g6:NO EVIDENCE g7:FAIL"
-   ],
-   "updatedAt": "2026-10-24T20:34:40.667Z",
-   "report": {
-    "triangles": 13096,
-    "bytes": 996444,
-    "gatesFailing": [],
-    "passed": true,
-    "likeness": [
-     {
-      "group": 0,
-      "verdict": "FAIL",
-      "reasons": [
-       "glazing storey band off by 0.18"
-      ]
-     },
-     {
-      "group": 1,
-      "verdict": "FAIL",
-      "reasons": [
-       "glazing storey band off by 0.37 mean 0.39 vs photo 0.26",
-       "window shape square vs photo wide"
-      ]
-     },
-     {
-      "group": 2,
-      "verdict": "NO PHOTO",
-      "reasons": []
-     },
-     {
-      "group": 3,
-      "verdict": "WARN",
-      "reasons": [
-       "mask IoU 0 < 0.45"
-      ]
-     },
-     {
-      "group": 4,
-      "verdict": "NO EVIDENCE",
-      "reasons": [
-       "washed out 45 % > 30 %"
-      ]
-     },
-     {
-      "group": 5,
-      "verdict": "NO PHOTO",
-      "reasons": []
-     },
-     {
-      "group": 6,
-      "verdict": "NO EVIDENCE",
-      "reasons": [
-       "obliquity 48 deg > 45"
-      ]
-     },
-     {
-      "group": 7,
-      "verdict": "FAIL",
-      "reasons": [
-       "glazing storey band off by 0.38 mean 0.40 vs photo 0.23",
-       "window shape tall vs photo square",
-       "columns 3 vs photo 2"
-      ]
-     }
-    ],
-    "compiledAt": "2026-10-24T20:34"
-   },
-   "sheets": [
-    "artifacts/building-recipes/pand-233585/contact-walls-0.png",
-    "artifacts/building-recipes/pand-233585/contact-walls-1.png",
-    "artifacts/building-recipes/pand-233585/contact-walls-2.png",
-    "artifacts/building-recipes/pand-233585/contact-walls-3.png",
-    "artifacts/building-recipes/pand-233585/contact-walls-4.png",
-    "artifacts/building-recipes/pand-233585/contact-walls-5.png",
-    "artifacts/building-recipes/pand-233585/contact-walls-6.png",
-    "artifacts/building-recipes/pand-233585/contact-walls-7.png",
-    "artifacts/building-recipes/pand-233585/contact-aerial.png"
-   ],
-   "verdict": {
-    "outcome": "hold",
-    "note": "giant-order warehouse bays right on walls[1,7] and now walls[0]; the tower and the right wing of the east front stay plain draft grids, and walls[3] is a low strip; budget 16k",
-    "sheet": "artifacts/strips/accept-r1",
-    "date": "2026-10-24",
-    "model": "opus",
-    "round": 3,
-    "lane": "factory-acceptance-20261024"
-   },
-   "triage": {
-    "verdict": "bespoke",
-    "reasons": [
-     "built 1898 (< 1915): ornamented historic front"
-    ],
-    "gaps": [],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    }
   },
   {
    "id": "0363100012093150",
    "pand": "0363100012093150",
-   "name": null,
+   "name": "Stellingwegflat",
    "source": "dominant",
    "rideVisibility": {
     "score": 161901,
@@ -6430,7 +4979,7 @@
      "w04 (Stellingweg, 10 m): crop 2018 predates the 2025 building"
     ],
     "gaps": [],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    }
   },
   {
@@ -6467,7 +5016,7 @@
      "w05 (Gelrestraat, 25 m): washed out 95 % > 30 %; crop 2020 predates the 2023 building"
     ],
     "gaps": [],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    }
   },
   {
@@ -6500,13 +5049,13 @@
      "w02 (Elckerlijcstraat, 88 m): washed out 34 % > 30 %"
     ],
     "gaps": [],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    }
   },
   {
    "id": "0363100012237537",
    "pand": "0363100012237537",
-   "name": null,
+   "name": "Opvang HVOQuerido Poeldijkstraat",
    "source": "dominant",
    "rideVisibility": {
     "score": 156820,
@@ -6534,7 +5083,7 @@
      "w06 (Rijswijkstraat, 24 m): washed out 52 % > 30 %"
     ],
     "gaps": [],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    }
   },
   {
@@ -6567,7 +5116,7 @@
      "w07 (Nieuwe Purmerweg, 19 m): foliage 49 % > 25 %"
     ],
     "gaps": [],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    }
   },
   {
@@ -6601,7 +5150,7 @@
     "gaps": [
      "band"
     ],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    }
   },
   {
@@ -6637,7 +5186,7 @@
      "w05 (Grasweg, 20 m): crop 2024 predates the 2025 building"
     ],
     "gaps": [],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    }
   },
   {
@@ -6671,13 +5220,13 @@
     "gaps": [
      "painted-or-clad"
     ],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    }
   },
   {
    "id": "0363100012247938",
    "pand": "0363100012247938",
-   "name": null,
+   "name": "The Fizz",
    "source": "dominant",
    "rideVisibility": {
     "score": 126945,
@@ -6705,13 +5254,13 @@
     "gaps": [
      "painted-or-clad"
     ],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    }
   },
   {
    "id": "0363100012246555",
    "pand": "0363100012246555",
-   "name": null,
+   "name": "Xavier",
    "source": "dominant",
    "rideVisibility": {
     "score": 126922,
@@ -6739,13 +5288,13 @@
     "gaps": [
      "tower"
     ],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    }
   },
   {
    "id": "0363100012112179",
    "pand": "0363100012112179",
-   "name": null,
+   "name": "Winkelcentrum Plein '40-'45",
    "source": "dominant",
    "rideVisibility": {
     "score": 125089,
@@ -6774,7 +5323,7 @@
     "gaps": [
      "painted-or-clad"
     ],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    }
   },
   {
@@ -6808,7 +5357,7 @@
      "w11 (Kimpoweg, 15 m): obliquity 50 deg > 45"
     ],
     "gaps": [],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    }
   },
   {
@@ -6843,7 +5392,7 @@
      "w07 (Bartholomeus Ruloffsstraat, 22 m): washed out 54 % > 30 %"
     ],
     "gaps": [],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    }
   },
   {
@@ -6875,7 +5424,7 @@
      "pand not in the building tiles: crops and facts cannot run"
     ],
     "gaps": [],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    }
   },
   {
@@ -6910,13 +5459,13 @@
     "gaps": [
      "band"
     ],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    }
   },
   {
    "id": "0363100012061445",
    "pand": "0363100012061445",
-   "name": null,
+   "name": "Timmerwerkplaats NDSM werf",
    "source": "dominant",
    "rideVisibility": {
     "score": 118283,
@@ -6942,13 +5491,13 @@
      "rijksmonument: ornament carries the likeness"
     ],
     "gaps": [],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    }
   },
   {
    "id": "0363100012150568",
    "pand": "0363100012150568",
-   "name": null,
+   "name": "Ziekenhuis Amsterdam-Noord",
    "source": "dominant",
    "rideVisibility": {
     "score": 117039,
@@ -6976,7 +5525,7 @@
      "w04 (Distelkade, 42 m): foliage 49 % > 25 %"
     ],
     "gaps": [],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    }
   },
   {
@@ -7015,7 +5564,7 @@
     "gaps": [
      "band"
     ],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    },
    "model": "fable",
    "turns": 1.8,
@@ -7112,7 +5661,7 @@
   {
    "id": "0363100012249726",
    "pand": "0363100012249726",
-   "name": null,
+   "name": "Pathé Amsterdam Noord",
    "source": "dominant",
    "rideVisibility": {
     "score": 114290,
@@ -7143,7 +5692,7 @@
      "w06 (Buikslotermeerplein, 9 m): washed out 35 % > 30 %"
     ],
     "gaps": [],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    }
   },
   {
@@ -7177,13 +5726,13 @@
      "w02 (Gillis van Ledenberchstraat, 48 m): washed out 39 % > 30 %"
     ],
     "gaps": [],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    }
   },
   {
    "id": "0363100012254654",
    "pand": "0363100012254654",
-   "name": null,
+   "name": "Stepstone",
    "source": "dominant",
    "rideVisibility": {
     "score": 107177,
@@ -7211,7 +5760,7 @@
     "gaps": [
      "curtain"
     ],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    }
   },
   {
@@ -7247,13 +5796,13 @@
      "w07 (Heathrowstraat, 10 m): washed out 99 % > 30 %; crop 2019 predates the 2024 building"
     ],
     "gaps": [],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    }
   },
   {
    "id": "0363100012116511",
    "pand": "0363100012116511",
-   "name": null,
+   "name": "De Voortuinen",
    "source": "dominant",
    "rideVisibility": {
     "score": 106870,
@@ -7281,7 +5830,7 @@
     "gaps": [
      "curtain"
     ],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    }
   },
   {
@@ -7319,7 +5868,7 @@
     "gaps": [
      "band"
     ],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    },
    "model": "fable",
    "turns": 1.8,
@@ -7417,42 +5966,6 @@
    }
   },
   {
-   "id": "0363100012179689",
-   "pand": "0363100012179689",
-   "name": null,
-   "source": "dominant",
-   "rideVisibility": {
-    "score": 103191,
-    "rank": 222
-   },
-   "footprintM2": 794,
-   "heightM": 53,
-   "center": [
-    4.895519500000001,
-    52.3815365
-   ],
-   "status": "crops",
-   "house": "pand-179689",
-   "owner": "crops-20261023",
-   "claimedAt": "2026-10-23T21:41:53.557Z",
-   "notes": [
-    "2026-10-23T21:42 crops: 3 usable walls in 8 s"
-   ],
-   "updatedAt": "2026-10-23T21:42:01.654Z",
-   "triage": {
-    "verdict": "kit-gap",
-    "reasons": [
-     "w03 (De Ruijterkade, 22 m) storey 11 has a 9.3 m ribbon over punched windows on storey 4: bands (balconies, ribbons, a shopfront strip)",
-     "wall family unresolved (dark, neutral, brick courses not resolved) on the main front w03 (De Ruijterkade, 22 m)100 % of 22 m of street wall (w03): painted or clad"
-    ],
-    "gaps": [
-     "band",
-     "painted-or-clad"
-    ],
-    "date": "2026-10-31"
-   }
-  },
-  {
    "id": "0363100012119117",
    "pand": "0363100012119117",
    "name": null,
@@ -7481,7 +5994,7 @@
      "1 of 1 street walls judgeable (need 2, and every street wall >= 15 m)"
     ],
     "gaps": [],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    }
   },
   {
@@ -7514,13 +6027,13 @@
      "w06 (Transformatorweg, 18 m): washed out 46 % > 30 %"
     ],
     "gaps": [],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    }
   },
   {
    "id": "0363100012061212",
    "pand": "0363100012061212",
-   "name": null,
+   "name": "Crystal Court",
    "source": "dominant",
    "rideVisibility": {
     "score": 98050,
@@ -7546,13 +6059,13 @@
      "1 of 1 street walls judgeable (need 2, and every street wall >= 15 m)"
     ],
     "gaps": [],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    }
   },
   {
    "id": "0363100012237535",
    "pand": "0363100012237535",
-   "name": null,
+   "name": "New Kit",
    "source": "dominant",
    "rideVisibility": {
     "score": 97706,
@@ -7581,13 +6094,13 @@
     "gaps": [
      "band"
     ],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    }
   },
   {
    "id": "0363100012072084",
    "pand": "0363100012072084",
-   "name": null,
+   "name": "Queens Towers",
    "source": "dominant",
    "rideVisibility": {
     "score": 94783,
@@ -7617,13 +6130,13 @@
      "band",
      "painted-or-clad"
     ],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    }
   },
   {
    "id": "0363100012070336",
    "pand": "0363100012070336",
-   "name": null,
+   "name": "Orly Plaza",
    "source": "dominant",
    "rideVisibility": {
     "score": 93727,
@@ -7653,7 +6166,7 @@
      "3 judgeable street walls: w02 ribbon, w03 ribbon, w05 punched"
     ],
     "gaps": [],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    },
    "model": "fable",
    "turns": 1.8,
@@ -7736,7 +6249,7 @@
   {
    "id": "0363100012216927",
    "pand": "0363100012216927",
-   "name": null,
+   "name": "Waternet",
    "source": "dominant",
    "rideVisibility": {
     "score": 93377,
@@ -7763,13 +6276,13 @@
      "w03 (Skûtsjespad, 40 m): foliage 27 % > 25 %"
     ],
     "gaps": [],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    }
   },
   {
    "id": "0363100012242874",
    "pand": "0363100012242874",
-   "name": null,
+   "name": "Ravel Residence",
    "source": "dominant",
    "rideVisibility": {
     "score": 93335,
@@ -7795,13 +6308,13 @@
      "pand not in the building tiles: crops and facts cannot run"
     ],
     "gaps": [],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    }
   },
   {
    "id": "0363100012252015",
    "pand": "0363100012252015",
-   "name": null,
+   "name": "Westbeat",
    "source": "dominant",
    "rideVisibility": {
     "score": 90732,
@@ -7831,7 +6344,7 @@
      "w06 (Delflandlaan, 14 m): no crop"
     ],
     "gaps": [],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    }
   },
   {
@@ -7864,7 +6377,7 @@
      "w03 (Burgemeester Hogguerstraat, 24 m): obliquity 51 deg > 45"
     ],
     "gaps": [],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    }
   },
   {
@@ -7898,7 +6411,7 @@
      "w08 (Borneokade, 20 m): washed out 43 % > 30 %"
     ],
     "gaps": [],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    }
   },
   {
@@ -7933,7 +6446,7 @@
     "gaps": [
      "band"
     ],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    }
   },
   {
@@ -7967,7 +6480,7 @@
     "gaps": [
      "painted-or-clad"
     ],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    }
   },
   {
@@ -8001,7 +6514,7 @@
     "gaps": [
      "painted-or-clad"
     ],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    }
   },
   {
@@ -8035,7 +6548,7 @@
     "gaps": [
      "curtain"
     ],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    }
   },
   {
@@ -8067,13 +6580,13 @@
      "1 of 1 street walls judgeable (need 2, and every street wall >= 15 m)"
     ],
     "gaps": [],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    }
   },
   {
    "id": "0363100012244546",
    "pand": "0363100012244546",
-   "name": null,
+   "name": "Intermezzo",
    "source": "dominant",
    "rideVisibility": {
     "score": 79539,
@@ -8102,7 +6615,7 @@
      "w05 (Leonard Bernsteinstraat, 15 m): washed out 64 % > 30 %"
     ],
     "gaps": [],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    }
   },
   {
@@ -8129,49 +6642,12 @@
    ],
    "updatedAt": "2026-10-23T21:49:11.326Z",
    "triage": {
-    "verdict": "no-evidence",
+    "verdict": "not-in-tiles",
     "reasons": [
-     "1 of 2 street walls judgeable (need 2, and every street wall >= 15 m)",
-     "w04 (Narav-eiland, 17 m): camera 7.3 m < 8 m from a 17 m wall"
+     "pand not in the building tiles: crops and facts cannot run"
     ],
     "gaps": [],
-    "date": "2026-10-31"
-   }
-  },
-  {
-   "id": "0363100012240149",
-   "pand": "0363100012240149",
-   "name": null,
-   "source": "dominant",
-   "rideVisibility": {
-    "score": 77062,
-    "rank": 260
-   },
-   "footprintM2": 1741,
-   "heightM": 42.7,
-   "center": [
-    4.8779699999999995,
-    52.3401525
-   ],
-   "status": "crops",
-   "house": "pand-240149",
-   "owner": "crops-20261023",
-   "claimedAt": "2026-10-23T21:49:11.327Z",
-   "notes": [
-    "2026-10-23T21:49 crops: 9 usable walls in 28 s"
-   ],
-   "updatedAt": "2026-10-23T21:49:38.840Z",
-   "triage": {
-    "verdict": "no-evidence",
-    "reasons": [
-     "1 of 5 street walls judgeable (need 2, and every street wall >= 15 m)",
-     "w01 (Christian Neefestraat, 27 m): washed out 75 % > 30 %",
-     "w02 (Christian Neefestraat, 19 m): washed out 75 % > 30 %",
-     "w04 (Christian Neefestraat, 17 m): washed out 42 % > 30 %",
-     "w05 (Christian Neefestraat, 11 m): washed out 83 % > 30 %"
-    ],
-    "gaps": [],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    }
   },
   {
@@ -8206,114 +6682,7 @@
      "w09 (Sibogastraat, 23 m): foliage 29 % > 25 %"
     ],
     "gaps": [],
-    "date": "2026-10-31"
-   }
-  },
-  {
-   "id": "0363100012137174",
-   "pand": "0363100012137174",
-   "name": null,
-   "source": "dominant",
-   "rideVisibility": {
-    "score": 72784,
-    "rank": 265
-   },
-   "footprintM2": 391,
-   "heightM": 59.5,
-   "center": [
-    4.938082,
-    52.3702
-   ],
-   "status": "reviewed-pass",
-   "house": "pand-137174",
-   "owner": "landmark-lane-r3",
-   "claimedAt": "2026-10-30T08:28:42.744Z",
-   "notes": [
-    "2026-10-23T21:50 crops: 7 usable walls in 17 s",
-    "2026-10-30T08:28 facts: fronts on Borneokade, C. van Eesterenlaan",
-    "2026-10-30T08:28 draft: 7 groups (5 on a street), 24 panels blank",
-    "2026-10-30T08:29 measured groups 2,5,6 in 14 s",
-    "2026-10-30T08:29 compiled: 11953 tris, gates pass, likeness g0:NO EVIDENCE g2:FAIL g4:NO PHOTO g5:WARN g6:FAIL"
-   ],
-   "updatedAt": "2026-10-30T08:36:43.137Z",
-   "triage": {
-    "verdict": "covered",
-    "reasons": [
-     "already drawn by ordinary-0363100012137174"
-    ],
-    "gaps": [],
-    "date": "2026-10-31"
-   },
-   "model": "fable",
-   "turns": 4.8,
-   "ms": {
-    "facts": 5997,
-    "draft": 4,
-    "measure": 13644,
-    "compile": 9979,
-    "strip": 93.83,
-    "install": 4856
-   },
-   "report": {
-    "triangles": 11953,
-    "bytes": 876968,
-    "gatesFailing": [],
-    "passed": true,
-    "likeness": [
-     {
-      "group": 0,
-      "verdict": "NO EVIDENCE",
-      "reasons": [
-       "obliquity 48.9 deg > 45"
-      ]
-     },
-     {
-      "group": 2,
-      "verdict": "FAIL",
-      "reasons": [
-       "glazing storey band off by 0.33 mean 0.27 vs photo 0.03"
-      ]
-     },
-     {
-      "group": 4,
-      "verdict": "NO PHOTO",
-      "reasons": []
-     },
-     {
-      "group": 5,
-      "verdict": "WARN",
-      "reasons": [
-       "wall family unresolved (#504b4b is dark and neutral, brick courses not resolved): lightness and hue judged only",
-       "mask IoU 0.278 < 0.45"
-      ]
-     },
-     {
-      "group": 6,
-      "verdict": "FAIL",
-      "reasons": [
-       "glazing storey band off by 0.20"
-      ]
-     }
-    ],
-    "compiledAt": "2026-10-30T08:29"
-   },
-   "sheets": [
-    "artifacts/building-recipes/pand-137174/contact-walls-0.png",
-    "artifacts/building-recipes/pand-137174/contact-walls-1.png",
-    "artifacts/building-recipes/pand-137174/contact-walls-2.png",
-    "artifacts/building-recipes/pand-137174/contact-walls-3.png",
-    "artifacts/building-recipes/pand-137174/contact-walls-5.png",
-    "artifacts/building-recipes/pand-137174/contact-walls-6.png",
-    "artifacts/building-recipes/pand-137174/contact-aerial.png"
-   ],
-   "verdict": {
-    "outcome": "pass",
-    "note": "slender dark-grey tower on a plinth, 14 storeys of punched windows in a 4-bay grid, matches the h70 crop by eye; fix applied: walls[2] plinth drawn blank (photo glazing 0.03); walls[0] NO EVIDENCE at 49 deg obliquity and walls[4] no photo are inferred from the tower faces",
-    "sheet": "artifacts/strips/r3",
-    "date": "2026-10-30",
-    "model": "fable",
-    "lane": "landmark-lane-r3",
-    "round": 1
+    "date": "2026-11-06"
    }
   },
   {
@@ -8347,13 +6716,13 @@
     "gaps": [
      "band"
     ],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    }
   },
   {
    "id": "0363100012246893",
    "pand": "0363100012246893",
-   "name": null,
+   "name": "Little Manhattan",
    "source": "dominant",
    "rideVisibility": {
     "score": 71309,
@@ -8381,13 +6750,13 @@
     "gaps": [
      "band"
     ],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    }
   },
   {
    "id": "0363100012067741",
    "pand": "0363100012067741",
-   "name": null,
+   "name": "Medische Faculteit",
    "source": "dominant",
    "rideVisibility": {
     "score": 70459,
@@ -8417,7 +6786,7 @@
      "curtain",
      "painted-or-clad"
     ],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    }
   },
   {
@@ -8449,7 +6818,7 @@
      "1 of 1 street walls judgeable (need 2, and every street wall >= 15 m)"
     ],
     "gaps": [],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    }
   },
   {
@@ -8487,7 +6856,7 @@
     "gaps": [
      "painted-or-clad"
     ],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    },
    "model": "fable",
    "turns": 1.8,
@@ -8571,42 +6940,7 @@
      "w05 (Rosy Wertheimstraat, 14 m): washed out 83 % > 30 %"
     ],
     "gaps": [],
-    "date": "2026-10-31"
-   }
-  },
-  {
-   "id": "0363100012106929",
-   "pand": "0363100012106929",
-   "name": null,
-   "source": "dominant",
-   "rideVisibility": {
-    "score": 67817,
-    "rank": 275
-   },
-   "footprintM2": 17350,
-   "heightM": 20.2,
-   "center": [
-    4.9102725,
-    52.345698999999996
-   ],
-   "status": "crops",
-   "house": "pand-106929",
-   "owner": "crops-20261023",
-   "claimedAt": "2026-10-23T21:52:06.812Z",
-   "notes": [
-    "2026-10-23T21:52 crops: 19 usable walls in 40 s"
-   ],
-   "updatedAt": "2026-10-23T21:52:46.522Z",
-   "triage": {
-    "verdict": "no-evidence",
-    "reasons": [
-     "w07 (13 m, short) reads curtain: noted, not a gap",
-     "2 of 4 street walls judgeable (need 2, and every street wall >= 15 m)",
-     "w01 (Waverstraat, 185 m): camera 7.1 m < 8 m from a 185 m wall",
-     "w10 (Kromme-Mijdrechtstraat, 12 m): washed out 48 % > 30 %"
-    ],
-    "gaps": [],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    }
   },
   {
@@ -8640,40 +6974,7 @@
     "gaps": [
      "painted-or-clad"
     ],
-    "date": "2026-10-31"
-   }
-  },
-  {
-   "id": "0363100012237143",
-   "pand": "0363100012237143",
-   "name": null,
-   "source": "dominant",
-   "rideVisibility": {
-    "score": 66741,
-    "rank": 278
-   },
-   "footprintM2": 955,
-   "heightM": 48.5,
-   "center": [
-    4.8914835,
-    52.390162000000004
-   ],
-   "status": "crops",
-   "house": "pand-237143",
-   "owner": "crops-20261023",
-   "claimedAt": "2026-10-23T21:52:56.071Z",
-   "notes": [
-    "2026-10-23T21:53 crops: 5 usable walls in 14 s"
-   ],
-   "updatedAt": "2026-10-23T21:53:09.658Z",
-   "triage": {
-    "verdict": "no-evidence",
-    "reasons": [
-     "1 of 2 street walls judgeable (need 2, and every street wall >= 15 m)",
-     "w04 (Silodam, 12 m): obliquity 50 deg > 45"
-    ],
-    "gaps": [],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    }
   },
   {
@@ -8707,7 +7008,7 @@
     "gaps": [
      "painted-or-clad"
     ],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    }
   },
   {
@@ -8742,7 +7043,7 @@
      "w04 (Billitonstraat, 35 m): crop 2016 predates the 2020 building"
     ],
     "gaps": [],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    }
   },
   {
@@ -8782,7 +7083,7 @@
      "band",
      "painted-or-clad"
     ],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    },
    "model": "fable",
    "turns": 1.8,
@@ -8903,13 +7204,13 @@
      "1 of 1 street walls judgeable (need 2, and every street wall >= 15 m)"
     ],
     "gaps": [],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    }
   },
   {
    "id": "0363100012249709",
    "pand": "0363100012249709",
-   "name": null,
+   "name": "Pulse",
    "source": "dominant",
    "rideVisibility": {
     "score": 61474,
@@ -8939,13 +7240,13 @@
      "tower",
      "painted-or-clad"
     ],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    }
   },
   {
    "id": "0363100012240148",
    "pand": "0363100012240148",
-   "name": null,
+   "name": "Lab O|2",
    "source": "dominant",
    "rideVisibility": {
     "score": 60659,
@@ -8974,7 +7275,7 @@
      "w07 (Gustav Mahlerlaan, 9 m): washed out 96 % > 30 %"
     ],
     "gaps": [],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    }
   },
   {
@@ -9007,13 +7308,13 @@
      "w01 (Hobbemakade, 18 m): foliage 46 % > 25 %"
     ],
     "gaps": [],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    }
   },
   {
    "id": "0363100012243287",
    "pand": "0363100012243287",
-   "name": null,
+   "name": "Nieuw Universiteitsgebouw",
    "source": "dominant",
    "rideVisibility": {
     "score": 56980,
@@ -9040,13 +7341,13 @@
      "w05 (De Boelelaan, 21 m): obliquity 54 deg > 45; crop 2017 predates the 2021 building"
     ],
     "gaps": [],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    }
   },
   {
    "id": "0363100012144991",
    "pand": "0363100012144991",
-   "name": null,
+   "name": "Vm. school voor technisch onderwijs Hendrick de Keyser",
    "source": "dominant",
    "rideVisibility": {
     "score": 56313,
@@ -9075,7 +7376,7 @@
      "w11 (Krelis Louwenstraat, 20 m): foliage 38 % > 25 %"
     ],
     "gaps": [],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    }
   },
   {
@@ -9111,7 +7412,7 @@
      "2 judgeable street walls: w01 punched, w04 punched"
     ],
     "gaps": [],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    },
    "model": "fable",
    "turns": 1.8,
@@ -9161,7 +7462,7 @@
   {
    "id": "0363100012250970",
    "pand": "0363100012250970",
-   "name": null,
+   "name": "Blend",
    "source": "dominant",
    "rideVisibility": {
     "score": 55004,
@@ -9191,7 +7492,7 @@
      "w01 (Haarlemmerweg, 16 m): obliquity 49 deg > 45; crop 2022 predates the 2023 building"
     ],
     "gaps": [],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    }
   },
   {
@@ -9226,7 +7527,7 @@
      "w08 (Spaarndammerdijk, 23 m): no crop"
     ],
     "gaps": [],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    }
   },
   {
@@ -9260,7 +7561,7 @@
     "gaps": [
      "painted-or-clad"
     ],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    }
   },
   {
@@ -9293,7 +7594,7 @@
      "w02 (Fred. Roeskestraat, 28 m): washed out 45 % > 30 %"
     ],
     "gaps": [],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    }
   },
   {
@@ -9328,7 +7629,7 @@
      "w05 (Noordzijde, 12 m): foliage 76 % > 25 %"
     ],
     "gaps": [],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    }
   },
   {
@@ -9364,7 +7665,7 @@
      "2 judgeable street walls: w04 punched, w05 punched"
     ],
     "gaps": [],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    },
    "model": "fable",
    "turns": 1.65,
@@ -9454,7 +7755,7 @@
   {
    "id": "0363100012253541",
    "pand": "0363100012253541",
-   "name": null,
+   "name": "Lycka",
    "source": "dominant",
    "rideVisibility": {
     "score": 45680,
@@ -9482,39 +7783,7 @@
      "w03 (Zaventemweg, 27 m): washed out 42 % > 30 %; crop 2021 predates the 2021 building"
     ],
     "gaps": [],
-    "date": "2026-10-31"
-   }
-  },
-  {
-   "id": "0363100012250971",
-   "pand": "0363100012250971",
-   "name": null,
-   "source": "dominant",
-   "rideVisibility": {
-    "score": 45680,
-    "rank": 315
-   },
-   "footprintM2": 749,
-   "heightM": 36.5,
-   "center": [
-    4.8533,
-    52.385718
-   ],
-   "status": "crops",
-   "house": "haarlemmerweg-778",
-   "notes": [
-    "authored recipe houses/haarlemmerweg-778 exists and is not installed: the factory keeps its intent, measures and compiles it"
-   ],
-   "owner": "crops-20261023",
-   "claimedAt": "2026-10-23T21:58:34.024Z",
-   "updatedAt": "2026-10-23T21:58:34.025Z",
-   "triage": {
-    "verdict": "covered",
-    "reasons": [
-     "already drawn by ordinary-0363100012250971"
-    ],
-    "gaps": [],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    }
   },
   {
@@ -9548,7 +7817,7 @@
     "gaps": [
      "blank-front"
     ],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    }
   },
   {
@@ -9580,13 +7849,13 @@
      "pand not in the building tiles: crops and facts cannot run"
     ],
     "gaps": [],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    }
   },
   {
    "id": "0363100012252442",
    "pand": "0363100012252442",
-   "name": null,
+   "name": "Het Dok",
    "source": "dominant",
    "rideVisibility": {
     "score": 44829,
@@ -9617,7 +7886,7 @@
      "band",
      "painted-or-clad"
     ],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    }
   },
   {
@@ -9653,7 +7922,7 @@
      "6 judgeable street walls: w01 punched, w02 punched, w03 punched, w04 punched, w09 punched, w10 punched"
     ],
     "gaps": [],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    },
    "model": "fable",
    "turns": 3.65,
@@ -9775,7 +8044,7 @@
      "w05 (Distelweg, 10 m): crop 2022 predates the 2022 building"
     ],
     "gaps": [],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    }
   },
   {
@@ -9809,13 +8078,13 @@
     "gaps": [
      "painted-or-clad"
     ],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    }
   },
   {
    "id": "0363100012080966",
    "pand": "0363100012080966",
-   "name": null,
+   "name": "Energiecentrum",
    "source": "dominant",
    "rideVisibility": {
     "score": 43477,
@@ -9847,7 +8116,7 @@
     "gaps": [
      "band"
     ],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    }
   },
   {
@@ -9880,7 +8149,7 @@
      "pand not in the building tiles: crops and facts cannot run"
     ],
     "gaps": [],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    }
   },
   {
@@ -9915,7 +8184,7 @@
     "gaps": [
      "band"
     ],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    }
   },
   {
@@ -9953,7 +8222,7 @@
     "gaps": [
      "painted-or-clad"
     ],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    },
    "model": "fable",
    "turns": 1.65,
@@ -10030,7 +8299,7 @@
   {
    "id": "0363100012238346",
    "pand": "0363100012238346",
-   "name": null,
+   "name": "Piri Reïs",
    "source": "dominant",
    "rideVisibility": {
     "score": 40746,
@@ -10058,13 +8327,13 @@
      "w10 (Piri Reisplein, 14 m): no crop"
     ],
     "gaps": [],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    }
   },
   {
    "id": "0363100012133666",
    "pand": "0363100012133666",
-   "name": null,
+   "name": "Busgarage West",
    "source": "dominant",
    "rideVisibility": {
     "score": 40011,
@@ -10094,13 +8363,13 @@
      "curtain",
      "painted-or-clad"
     ],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    }
   },
   {
    "id": "0363100012246472",
    "pand": "0363100012246472",
-   "name": null,
+   "name": "George",
    "source": "dominant",
    "rideVisibility": {
     "score": 39363,
@@ -10130,7 +8399,7 @@
      "2 judgeable street walls: w01 punched, w02 punched"
     ],
     "gaps": [],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    },
    "model": "fable",
    "turns": 1.8,
@@ -10213,7 +8482,7 @@
   {
    "id": "0363100012120246",
    "pand": "0363100012120246",
-   "name": null,
+   "name": "De Klokkenhof",
    "source": "dominant",
    "rideVisibility": {
     "score": 38815,
@@ -10245,7 +8514,7 @@
      "5 judgeable street walls: w01 ?, w02 punched, w03 punched, w04 punched, w07 blank"
     ],
     "gaps": [],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    },
    "model": "fable",
    "turns": 1.8,
@@ -10373,40 +8642,7 @@
     "gaps": [
      "curtain"
     ],
-    "date": "2026-10-31"
-   }
-  },
-  {
-   "id": "0363100012250972",
-   "pand": "0363100012250972",
-   "name": null,
-   "source": "dominant",
-   "rideVisibility": {
-    "score": 38743,
-    "rank": 339
-   },
-   "footprintM2": 802,
-   "heightM": 46.9,
-   "center": [
-    4.8528175000000005,
-    52.385510999999994
-   ],
-   "status": "crops",
-   "house": "haarlemmerweg-940",
-   "notes": [
-    "authored recipe houses/haarlemmerweg-940 exists and is not installed: the factory keeps its intent, measures and compiles it",
-    "2026-10-23T22:06 crops: 5 usable walls in 7 s"
-   ],
-   "owner": "crops-20261023",
-   "claimedAt": "2026-10-23T22:06:10.782Z",
-   "updatedAt": "2026-10-23T22:06:17.316Z",
-   "triage": {
-    "verdict": "covered",
-    "reasons": [
-     "already drawn by ordinary-0363100012250972"
-    ],
-    "gaps": [],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    }
   },
   {
@@ -10438,7 +8674,7 @@
      "1 of 1 street walls judgeable (need 2, and every street wall >= 15 m)"
     ],
     "gaps": [],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    }
   },
   {
@@ -10475,13 +8711,13 @@
      "band",
      "painted-or-clad"
     ],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    }
   },
   {
    "id": "0363100012242116",
    "pand": "0363100012242116",
-   "name": null,
+   "name": "900 Mahler",
    "source": "dominant",
    "rideVisibility": {
     "score": 37640,
@@ -10511,7 +8747,7 @@
      "blank-front",
      "painted-or-clad"
     ],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    }
   },
   {
@@ -10550,7 +8786,7 @@
     "gaps": [
      "band"
     ],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    },
    "model": "fable",
    "turns": 1.65,
@@ -10661,20 +8897,18 @@
    ],
    "updatedAt": "2026-10-23T22:08:04.836Z",
    "triage": {
-    "verdict": "no-evidence",
+    "verdict": "not-in-tiles",
     "reasons": [
-     "2 of 4 street walls judgeable (need 2, and every street wall >= 15 m)",
-     "w01 (Stettineiland, 22 m): obliquity 48 deg > 45; crop 2017 predates the 2018 building",
-     "w02 (Stettineiland, 22 m): obliquity 49 deg > 45"
+     "pand not in the building tiles: crops and facts cannot run"
     ],
     "gaps": [],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    }
   },
   {
    "id": "0363100012082192",
    "pand": "0363100012082192",
-   "name": null,
+   "name": "Flatgebouw Poeldijkstraat / Mr. August Povelhuis",
    "source": "dominant",
    "rideVisibility": {
     "score": 34372,
@@ -10700,7 +8934,7 @@
      "1 of 1 street walls judgeable (need 2, and every street wall >= 15 m)"
     ],
     "gaps": [],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    }
   },
   {
@@ -10738,7 +8972,7 @@
     "gaps": [
      "band"
     ],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    },
    "model": "fable",
    "turns": 1.65,
@@ -10856,14 +9090,12 @@
    ],
    "updatedAt": "2026-10-23T22:08:51.562Z",
    "triage": {
-    "verdict": "no-evidence",
+    "verdict": "not-in-tiles",
     "reasons": [
-     "0 of 2 street walls judgeable (need 2, and every street wall >= 15 m)",
-     "w03 (Wichersstraat, 33 m): washed out 31 % > 30 %",
-     "w04 (Buyspad, 25 m): foliage 31 % > 25 %"
+     "pand not in the building tiles: crops and facts cannot run"
     ],
     "gaps": [],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    }
   },
   {
@@ -10899,13 +9131,13 @@
      "band",
      "painted-or-clad"
     ],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    }
   },
   {
    "id": "0363100012123762",
    "pand": "0363100012123762",
-   "name": null,
+   "name": "Anadolubank Nederland N.V.",
    "source": "dominant",
    "rideVisibility": {
     "score": 31935,
@@ -10935,7 +9167,7 @@
      "5 judgeable street walls: w02 columns, w04 columns, w05 punched, w07 punched, w08 punched"
     ],
     "gaps": [],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    },
    "model": "fable",
    "turns": 1.8,
@@ -11017,7 +9249,7 @@
      "pand not in the building tiles: crops and facts cannot run"
     ],
     "gaps": [],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    }
   },
   {
@@ -11051,7 +9283,7 @@
     "gaps": [
      "band"
     ],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    }
   },
   {
@@ -11085,7 +9317,7 @@
     "gaps": [
      "tower"
     ],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    }
   },
   {
@@ -11118,13 +9350,13 @@
      "1 of 1 street walls judgeable (need 2, and every street wall >= 15 m)"
     ],
     "gaps": [],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    }
   },
   {
    "id": "0363100012098805",
    "pand": "0363100012098805",
-   "name": null,
+   "name": "Triade",
    "source": "dominant",
    "rideVisibility": {
     "score": 31013,
@@ -11152,7 +9384,7 @@
     "gaps": [
      "painted-or-clad"
     ],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    }
   },
   {
@@ -11187,7 +9419,7 @@
      "w03 (Insulindeweg, 9 m): foliage 54 % > 25 %"
     ],
     "gaps": [],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    }
   },
   {
@@ -11222,7 +9454,7 @@
      "w07 (Spyridon Louisweg, 19 m): foliage 26 % > 25 %; washed out 62 % > 30 %"
     ],
     "gaps": [],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    }
   },
   {
@@ -11256,7 +9488,7 @@
      "w08 (Statenjachtstraat, 12 m): foliage 46 % > 25 %"
     ],
     "gaps": [],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    }
   },
   {
@@ -11299,7 +9531,7 @@
      "4 judgeable street walls: w02 punched, w04 punched, w06 punched, w07 punched"
     ],
     "gaps": [],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    },
    "model": "opus",
    "turns": 4.98,
@@ -11417,7 +9649,7 @@
      "w05 (Wagenaarstraat, 24 m): foliage 33 % > 25 %"
     ],
     "gaps": [],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    }
   },
   {
@@ -11524,7 +9756,7 @@
      "built 1900 (< 1915): ornamented historic front"
     ],
     "gaps": [],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    }
   },
   {
@@ -11558,7 +9790,7 @@
     "gaps": [
      "painted-or-clad"
     ],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    }
   },
   {
@@ -11592,13 +9824,13 @@
     "gaps": [
      "tower"
     ],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    }
   },
   {
    "id": "0363100012165818",
    "pand": "0363100012165818",
-   "name": null,
+   "name": "Energetica (museum)",
    "source": "dominant",
    "rideVisibility": {
     "score": 28797,
@@ -11625,13 +9857,13 @@
      "w04 (Geschutswerf, 15 m): foliage 39 % > 25 %"
     ],
     "gaps": [],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    }
   },
   {
    "id": "0363100012239704",
    "pand": "0363100012239704",
-   "name": null,
+   "name": "De Wending",
    "source": "dominant",
    "rideVisibility": {
     "score": 28761,
@@ -11659,13 +9891,13 @@
     "gaps": [
      "band"
     ],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    }
   },
   {
    "id": "0363100012141601",
    "pand": "0363100012141601",
-   "name": null,
+   "name": "Koningshof",
    "source": "dominant",
    "rideVisibility": {
     "score": 27554,
@@ -11698,7 +9930,7 @@
      "band",
      "painted-or-clad"
     ],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    }
   },
   {
@@ -11733,7 +9965,7 @@
      "w07 (Skûtsjespad, 16 m): foliage 45 % > 25 %; obliquity 49 deg > 45"
     ],
     "gaps": [],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    }
   },
   {
@@ -11767,7 +9999,7 @@
     "gaps": [
      "blank-front"
     ],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    }
   },
   {
@@ -11799,7 +10031,7 @@
      "pand not in the building tiles: crops and facts cannot run"
     ],
     "gaps": [],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    }
   },
   {
@@ -11831,7 +10063,7 @@
      "pand not in the building tiles: crops and facts cannot run"
     ],
     "gaps": [],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    }
   },
   {
@@ -11867,7 +10099,7 @@
      "3 judgeable street walls: w01 punched, w03 ribbon, w06 punched"
     ],
     "gaps": [],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    },
    "model": "fable",
    "turns": 1.8,
@@ -11976,7 +10208,7 @@
     "gaps": [
      "band"
     ],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    }
   },
   {
@@ -12012,13 +10244,13 @@
      "w10 (Staalmeesterslaan, 26 m): obliquity 50 deg > 45"
     ],
     "gaps": [],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    }
   },
   {
    "id": "0363100012112409",
    "pand": "0363100012112409",
-   "name": null,
+   "name": "Vrije Universiteit Amsterdam",
    "source": "dominant",
    "rideVisibility": {
     "score": 22863,
@@ -12046,13 +10278,13 @@
     "gaps": [
      "tower"
     ],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    }
   },
   {
    "id": "0363100012105061",
    "pand": "0363100012105061",
-   "name": null,
+   "name": "Galerijwoningen Voorburgstraat / Edith Steinhuis",
    "source": "dominant",
    "rideVisibility": {
     "score": 22845,
@@ -12079,13 +10311,13 @@
      "w01 (no street, 14 m): no crop"
     ],
     "gaps": [],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    }
   },
   {
    "id": "0363100012114072",
    "pand": "0363100012114072",
-   "name": null,
+   "name": "Turmacgebouw",
    "source": "dominant",
    "rideVisibility": {
     "score": 21737,
@@ -12116,7 +10348,7 @@
      "band",
      "painted-or-clad"
     ],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    }
   },
   {
@@ -12150,13 +10382,13 @@
     "gaps": [
      "band"
     ],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    }
   },
   {
    "id": "0363100012241772",
    "pand": "0363100012241772",
-   "name": null,
+   "name": "Q-Park Weesperplein",
    "source": "dominant",
    "rideVisibility": {
     "score": 21224,
@@ -12187,7 +10419,7 @@
      "3 judgeable street walls: w02 punched, w03 curtain, w04 punched"
     ],
     "gaps": [],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    },
    "model": "fable",
    "turns": 1.65,
@@ -12272,123 +10504,9 @@
    }
   },
   {
-   "id": "0363100012094874",
-   "pand": "0363100012094874",
-   "name": null,
-   "source": "dominant",
-   "rideVisibility": {
-    "score": 20763,
-    "rank": 402
-   },
-   "footprintM2": 4935,
-   "heightM": 37,
-   "center": [
-    4.8836835,
-    52.33395385
-   ],
-   "status": "reviewed-pass",
-   "house": "pand-094874",
-   "owner": "landmark-lane-r2",
-   "claimedAt": "2026-10-29T22:24:43.893Z",
-   "notes": [
-    "2026-10-23T22:20 crops: 17 usable walls in 32 s",
-    "2026-10-29T22:24 facts: fronts on De Boelelaan, De Klencke, Van Heenvlietlaan",
-    "2026-10-29T22:24 draft: 8 groups (6 on a street), 143 panels blank",
-    "2026-10-29T22:24 measured groups 1,3 in 7 s",
-    "2026-10-29T22:25 compiled: 10889 tris, gates pass, likeness g0:NO EVIDENCE g1:WARN g2:NO PHOTO g3:PASS g4:NO PHOTO g5:NO PHOTO g7:NO PHOTO"
-   ],
-   "updatedAt": "2026-10-29T22:29:45.688Z",
-   "triage": {
-    "verdict": "covered",
-    "reasons": [
-     "already drawn by ordinary-0363100012094874"
-    ],
-    "gaps": [],
-    "date": "2026-10-31"
-   },
-   "model": "fable",
-   "turns": 2.65,
-   "ms": {
-    "facts": 5534,
-    "draft": 5,
-    "measure": 6919,
-    "compile": 7194,
-    "strip": 62.3,
-    "install": 4484
-   },
-   "report": {
-    "triangles": 10889,
-    "bytes": 813460,
-    "gatesFailing": [],
-    "passed": true,
-    "likeness": [
-     {
-      "group": 0,
-      "verdict": "NO EVIDENCE",
-      "reasons": [
-       "usable upper cells 39 % < 40 %"
-      ]
-     },
-     {
-      "group": 1,
-      "verdict": "WARN",
-      "reasons": [
-       "mask IoU 0.395 < 0.45"
-      ]
-     },
-     {
-      "group": 2,
-      "verdict": "NO PHOTO",
-      "reasons": []
-     },
-     {
-      "group": 3,
-      "verdict": "PASS",
-      "reasons": []
-     },
-     {
-      "group": 4,
-      "verdict": "NO PHOTO",
-      "reasons": []
-     },
-     {
-      "group": 5,
-      "verdict": "NO PHOTO",
-      "reasons": []
-     },
-     {
-      "group": 7,
-      "verdict": "NO PHOTO",
-      "reasons": []
-     }
-    ],
-    "compiledAt": "2026-10-29T22:25"
-   },
-   "sheets": [
-    "artifacts/building-recipes/pand-094874/contact-walls-0.png",
-    "artifacts/building-recipes/pand-094874/contact-walls-1.png",
-    "artifacts/building-recipes/pand-094874/contact-walls-2.png",
-    "artifacts/building-recipes/pand-094874/contact-walls-3.png",
-    "artifacts/building-recipes/pand-094874/contact-walls-4.png",
-    "artifacts/building-recipes/pand-094874/contact-walls-5.png",
-    "artifacts/building-recipes/pand-094874/contact-walls-6.png",
-    "artifacts/building-recipes/pand-094874/contact-walls-7.png",
-    "artifacts/building-recipes/pand-094874/contact-aerial.png"
-   ],
-   "verdict": {
-    "outcome": "pass",
-    "note": "10-storey dark brick slab on a low glazed wing: walls[1] WARN (IoU only) and walls[3] PASS read right against the photos; walls[0] NO EVIDENCE (foliage), walls[2],[4],[5] no photo: inferred from the photographed faces",
-    "sheet": "artifacts/strips/r2",
-    "date": "2026-10-29",
-    "model": "fable",
-    "lane": "landmark-lane-r2",
-    "round": 1
-   }
-  },
-  {
    "id": "0363100012063603",
    "pand": "0363100012063603",
-   "name": null,
+   "name": "Ibis Amsterdam City West",
    "source": "dominant",
    "rideVisibility": {
     "score": 20476,
@@ -12416,13 +10534,13 @@
     "gaps": [
      "band"
     ],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    }
   },
   {
    "id": "0363100012252819",
    "pand": "0363100012252819",
-   "name": null,
+   "name": "De Admiraal",
    "source": "dominant",
    "rideVisibility": {
     "score": 19860,
@@ -12450,7 +10568,7 @@
      "w02 (Oostenburgermiddenstraat, 21 m): washed out 100 % > 30 %; crop 2020 predates the 2024 building"
     ],
     "gaps": [],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    }
   },
   {
@@ -12485,13 +10603,13 @@
      "w02 (Jan Voermanstraat, 68 m): foliage 29 % > 25 %"
     ],
     "gaps": [],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    }
   },
   {
    "id": "0363100012246469",
    "pand": "0363100012246469",
-   "name": null,
+   "name": "Nautique Living/Student Experience",
    "source": "dominant",
    "rideVisibility": {
     "score": 18872,
@@ -12521,7 +10639,7 @@
      "2 judgeable street walls: w01 columns, w02 punched"
     ],
     "gaps": [],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    },
    "model": "fable",
    "turns": 1.8,
@@ -12615,7 +10733,7 @@
     "gaps": [
      "band"
     ],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    }
   },
   {
@@ -12649,13 +10767,13 @@
     "gaps": [
      "painted-or-clad"
     ],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    }
   },
   {
    "id": "0363100012169282",
    "pand": "0363100012169282",
-   "name": null,
+   "name": "Kalenderpanden",
    "source": "dominant",
    "rideVisibility": {
     "score": 17245,
@@ -12731,7 +10849,7 @@
      "built 1840 (< 1915): ornamented historic front"
     ],
     "gaps": [],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    }
   },
   {
@@ -12769,7 +10887,7 @@
      "band",
      "blank-front"
     ],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    }
   },
   {
@@ -12803,7 +10921,7 @@
     "gaps": [
      "band"
     ],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    }
   },
   {
@@ -12839,7 +10957,7 @@
      "4 judgeable street walls: w01 punched, w03 punched, w04 punched, w05 punched"
     ],
     "gaps": [],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    },
    "model": "fable",
    "turns": 1.65,
@@ -12961,7 +11079,7 @@
      "w04 (Schakelstraat, 34 m): foliage 29 % > 25 %; washed out 43 % > 30 %"
     ],
     "gaps": [],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    }
   },
   {
@@ -13002,7 +11120,7 @@
      "band",
      "painted-or-clad"
     ],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    },
    "model": "fable",
    "turns": 1.65,
@@ -13135,13 +11253,12 @@
    ],
    "updatedAt": "2026-10-31T03:19:58.836Z",
    "triage": {
-    "verdict": "buildable",
+    "verdict": "not-in-tiles",
     "reasons": [
-     "wall family unresolved but a measured tint on w01 (paint): the kit draws it (walls[].wallFamily)",
-     "2 judgeable street walls: w01 punched, w02 punched"
+     "pand not in the building tiles: crops and facts cannot run"
     ],
     "gaps": [],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    },
    "model": "opus",
    "turns": 4.98,
@@ -13246,13 +11363,13 @@
     "gaps": [
      "band"
     ],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    }
   },
   {
    "id": "0363100012138900",
    "pand": "0363100012138900",
-   "name": null,
+   "name": "Coengebouw",
    "source": "dominant",
    "rideVisibility": {
     "score": 14976,
@@ -13351,7 +11468,7 @@
      "pand not in the building tiles: crops and facts cannot run"
     ],
     "gaps": [],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    }
   },
   {
@@ -13386,7 +11503,7 @@
     "gaps": [
      "band"
     ],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    }
   },
   {
@@ -13420,7 +11537,7 @@
     "gaps": [
      "band"
     ],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    }
   },
   {
@@ -13454,7 +11571,7 @@
     "gaps": [
      "painted-or-clad"
     ],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    }
   },
   {
@@ -13488,7 +11605,7 @@
     "gaps": [
      "tower"
     ],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    }
   },
   {
@@ -13522,7 +11639,7 @@
     "gaps": [
      "painted-or-clad"
     ],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    }
   },
   {
@@ -13555,7 +11672,7 @@
      "w07 (Dr. Jan van Breemenstraat, 17 m): foliage 26 % > 25 %"
     ],
     "gaps": [],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    }
   },
   {
@@ -13591,7 +11708,7 @@
      "band",
      "blank-front"
     ],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    }
   },
   {
@@ -13627,13 +11744,13 @@
      "w04 (no street, 8 m): obliquity 53 deg > 45; crop 2022 predates the 2024 building"
     ],
     "gaps": [],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    }
   },
   {
    "id": "0363100012165552",
    "pand": "0363100012165552",
-   "name": null,
+   "name": "B",
    "source": "dominant",
    "rideVisibility": {
     "score": 12671,
@@ -13663,13 +11780,13 @@
      "tower",
      "painted-or-clad"
     ],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    }
   },
   {
    "id": "0363100012072045",
    "pand": "0363100012072045",
-   "name": null,
+   "name": "Jaap Eden-hal",
    "source": "dominant",
    "rideVisibility": {
     "score": 12043,
@@ -13702,7 +11819,7 @@
      "w07 (Radioweg, 13 m): obliquity 52 deg > 45"
     ],
     "gaps": [],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    }
   },
   {
@@ -13737,7 +11854,7 @@
      "w06 (Johan Greivestraat, 19 m): foliage 28 % > 25 %; crop 2016 predates the 2024 building"
     ],
     "gaps": [],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    }
   },
   {
@@ -13771,7 +11888,7 @@
     "gaps": [
      "painted-or-clad"
     ],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    }
   },
   {
@@ -13805,13 +11922,13 @@
     "gaps": [
      "painted-or-clad"
     ],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    }
   },
   {
    "id": "0363100012253362",
    "pand": "0363100012253362",
-   "name": null,
+   "name": "Vertical",
    "source": "dominant",
    "rideVisibility": {
     "score": 11676,
@@ -13841,7 +11958,7 @@
      "band",
      "painted-or-clad"
     ],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    }
   },
   {
@@ -13879,7 +11996,7 @@
     "gaps": [
      "band"
     ],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    },
    "model": "fable",
    "turns": 1.65,
@@ -13947,7 +12064,7 @@
   {
    "id": "0363100012077602",
    "pand": "0363100012077602",
-   "name": null,
+   "name": "Ringpark",
    "source": "dominant",
    "rideVisibility": {
     "score": 10864,
@@ -13980,7 +12097,7 @@
      "w12 (Nachtwachtlaan, 10 m): no crop"
     ],
     "gaps": [],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    }
   },
   {
@@ -14018,7 +12135,7 @@
     "gaps": [
      "band"
     ],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    },
    "model": "fable",
    "turns": 1.65,
@@ -14148,13 +12265,13 @@
      "band",
      "painted-or-clad"
     ],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    }
   },
   {
    "id": "0363100012112686",
    "pand": "0363100012112686",
-   "name": null,
+   "name": "UWV A",
    "source": "dominant",
    "rideVisibility": {
     "score": 10071,
@@ -14182,7 +12299,7 @@
     "gaps": [
      "band"
     ],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    }
   },
   {
@@ -14219,7 +12336,7 @@
      "4 judgeable street walls: w02 punched, w03 punched, w05 punched, w06 curtain"
     ],
     "gaps": [],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    },
    "model": "fable",
    "turns": 1.65,
@@ -14337,7 +12454,7 @@
      "w08 (La Guardiaweg, 16 m): washed out 62 % > 30 %"
     ],
     "gaps": [],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    }
   },
   {
@@ -14375,7 +12492,7 @@
      "band",
      "curtain"
     ],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    }
   },
   {
@@ -14409,13 +12526,13 @@
     "gaps": [
      "curtain"
     ],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    }
   },
   {
    "id": "0363100012164353",
    "pand": "0363100012164353",
-   "name": null,
+   "name": "Remise Havenstraat",
    "source": "dominant",
    "rideVisibility": {
     "score": 8610,
@@ -14443,7 +12560,7 @@
     "gaps": [
      "painted-or-clad"
     ],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    }
   },
   {
@@ -14565,7 +12682,7 @@
      "built 1900 (< 1915): ornamented historic front"
     ],
     "gaps": [],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    }
   },
   {
@@ -14601,7 +12718,7 @@
      "curtain",
      "painted-or-clad"
     ],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    }
   },
   {
@@ -14628,50 +12745,12 @@
    ],
    "updatedAt": "2026-10-23T22:35:36.843Z",
    "triage": {
-    "verdict": "kit-gap",
+    "verdict": "not-in-tiles",
     "reasons": [
-     "w05 (Piet Mondriaanstraat, 15 m) reads blank",
-     "wall family unresolved (dark, neutral, brick courses not resolved) on the main front w02 (Ringweg-West, 146 m), 83 % of 176 m of street wall (w02): painted or clad"
+     "pand not in the building tiles: crops and facts cannot run"
     ],
-    "gaps": [
-     "blank-front",
-     "painted-or-clad"
-    ],
-    "date": "2026-10-31"
-   }
-  },
-  {
-   "id": "0363100012179691",
-   "pand": "0363100012179691",
-   "name": null,
-   "source": "dominant",
-   "rideVisibility": {
-    "score": 7489,
-    "rank": 478
-   },
-   "footprintM2": 348,
-   "heightM": 50.6,
-   "center": [
-    4.8953465000000005,
-    52.381319000000005
-   ],
-   "status": "crops",
-   "house": "pand-179691",
-   "owner": "crops-20261023",
-   "claimedAt": "2026-10-23T22:35:36.844Z",
-   "notes": [
-    "2026-10-23T22:35 crops: 4 usable walls in 1 s"
-   ],
-   "updatedAt": "2026-10-23T22:35:37.836Z",
-   "triage": {
-    "verdict": "kit-gap",
-    "reasons": [
-     "height 50.6 m: the tallest street crop reaches ? (< 80 %), the upper storeys have no evidence"
-    ],
-    "gaps": [
-     "tower"
-    ],
-    "date": "2026-10-31"
+    "gaps": [],
+    "date": "2026-11-06"
    }
   },
   {
@@ -14705,7 +12784,7 @@
     "gaps": [
      "tower"
     ],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    }
   },
   {
@@ -14740,7 +12819,7 @@
      "w07 (Koivistokade, 10 m): washed out 45 % > 30 %; crop 2021 predates the 2021 building"
     ],
     "gaps": [],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    }
   },
   {
@@ -14777,39 +12856,7 @@
      "band",
      "painted-or-clad"
     ],
-    "date": "2026-10-31"
-   }
-  },
-  {
-   "id": "0363100012127007",
-   "pand": "0363100012127007",
-   "name": null,
-   "source": "dominant",
-   "rideVisibility": {
-    "score": 5618,
-    "rank": 497
-   },
-   "footprintM2": 356,
-   "heightM": 40.3,
-   "center": [
-    4.902626,
-    52.3459225
-   ],
-   "status": "crops",
-   "house": "pand-127007",
-   "owner": "crops-20261023",
-   "claimedAt": "2026-10-23T22:36:01.414Z",
-   "notes": [
-    "2026-10-23T22:36 crops: 7 usable walls in 19 s"
-   ],
-   "updatedAt": "2026-10-23T22:36:20.745Z",
-   "triage": {
-    "verdict": "bespoke",
-    "reasons": [
-     "rijksmonument: ornament carries the likeness"
-    ],
-    "gaps": [],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    }
   },
   {
@@ -14843,7 +12890,7 @@
     "gaps": [
      "painted-or-clad"
     ],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    }
   },
   {
@@ -14881,7 +12928,7 @@
     "gaps": [
      "band"
     ],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    },
    "model": "fable",
    "turns": 0.4,
@@ -14930,7 +12977,7 @@
      "band",
      "painted-or-clad"
     ],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    },
    "model": "fable",
    "turns": 1.65,
@@ -15033,7 +13080,7 @@
      "w05 (Koningin Wilhelminaplein, 11 m): washed out 63 % > 30 %"
     ],
     "gaps": [],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    }
   },
   {
@@ -15067,7 +13114,7 @@
     "gaps": [
      "tower"
     ],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    }
   },
   {
@@ -15099,7 +13146,7 @@
      "1 of 1 street walls judgeable (need 2, and every street wall >= 15 m)"
     ],
     "gaps": [],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    }
   },
   {
@@ -15133,7 +13180,7 @@
     "gaps": [
      "tower"
     ],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    }
   },
   {
@@ -15167,7 +13214,7 @@
     "gaps": [
      "painted-or-clad"
     ],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    }
   },
   {
@@ -15204,7 +13251,7 @@
      "3 judgeable street walls: w02 ?, w03 punched, w04 punched"
     ],
     "gaps": [],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    },
    "model": "fable",
    "turns": 1.8,
@@ -15270,43 +13317,9 @@
    }
   },
   {
-   "id": "0363100012250984",
-   "pand": "0363100012250984",
-   "name": null,
-   "source": "dominant",
-   "rideVisibility": {
-    "score": 2999,
-    "rank": 518
-   },
-   "footprintM2": 17,
-   "heightM": 44.4,
-   "center": [
-    4.855423,
-    52.3437705
-   ],
-   "status": "no-evidence",
-   "house": "pand-250984",
-   "owner": "crops-20261023",
-   "claimedAt": "2026-10-23T22:37:55.512Z",
-   "notes": [
-    "2026-10-23T22:37 no usable panorama crop for any exposed wall (0 walls listed)"
-   ],
-   "updatedAt": "2026-10-23T22:37:55.820Z",
-   "triage": {
-    "verdict": "kit-gap",
-    "reasons": [
-     "height 44.4 m: the tallest street crop reaches ? (< 80 %), the upper storeys have no evidence"
-    ],
-    "gaps": [
-     "tower"
-    ],
-    "date": "2026-10-31"
-   }
-  },
-  {
    "id": "0363100012081222",
    "pand": "0363100012081222",
-   "name": null,
+   "name": "Two Amsterdam",
    "source": "dominant",
    "rideVisibility": {
     "score": 2995,
@@ -15337,7 +13350,7 @@
      "band",
      "painted-or-clad"
     ],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    }
   },
   {
@@ -15375,7 +13388,7 @@
      "3 judgeable street walls: w03 punched, w04 ?, w05 punched"
     ],
     "gaps": [],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    },
    "model": "fable",
    "turns": 1.8,
@@ -15479,7 +13492,7 @@
      "2 judgeable street walls: w04 punched, w05 ?"
     ],
     "gaps": [],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    },
    "model": "fable",
    "turns": 1.65,
@@ -15595,7 +13608,7 @@
      "w04 (Reinier Engelmanstraat, 29 m): crop 2022 predates the 2022 building"
     ],
     "gaps": [],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    }
   },
   {
@@ -15629,7 +13642,7 @@
     "gaps": [
      "band"
     ],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    }
   },
   {
@@ -15665,7 +13678,7 @@
      "2 judgeable street walls: w01 punched, w07 punched"
     ],
     "gaps": [],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    },
    "model": "fable",
    "turns": 1.65,
@@ -15768,7 +13781,7 @@
   {
    "id": "0363100012150639",
    "pand": "0363100012150639",
-   "name": null,
+   "name": "Milos",
    "source": "dominant",
    "rideVisibility": {
     "score": 1239,
@@ -15794,7 +13807,7 @@
      "pand not in the building tiles: crops and facts cannot run"
     ],
     "gaps": [],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    }
   },
   {
@@ -15827,7 +13840,7 @@
      "w03 (Postjesweg, 19 m): foliage 47 % > 25 %; washed out 33 % > 30 %; crop 2019 predates the 2023 building"
     ],
     "gaps": [],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    }
   },
   {
@@ -15860,11 +13873,11 @@
    "triage": {
     "verdict": "buildable",
     "reasons": [
-     "wall family unresolved but a measured tint on w03 (paint), w04 (paint): the kit draws it (walls[].wallFamily)",
+     "wall family unresolved but a measured tint on w03 (metal), w04 (metal): the kit draws it (walls[].wallFamily)",
      "4 judgeable street walls: w01 punched, w02 punched, w03 punched, w04 punched"
     ],
     "gaps": [],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    },
    "model": "fable",
    "turns": 1.65,
@@ -15939,40 +13952,6 @@
    }
   },
   {
-   "id": "0363100012216977",
-   "pand": "0363100012216977",
-   "name": null,
-   "source": "dominant",
-   "rideVisibility": {
-    "score": 588,
-    "rank": 552
-   },
-   "footprintM2": 239,
-   "heightM": 36.1,
-   "center": [
-    4.856458,
-    52.3361865
-   ],
-   "status": "no-evidence",
-   "house": "pand-216977",
-   "owner": "crops-20261023",
-   "claimedAt": "2026-10-23T22:40:01.339Z",
-   "notes": [
-    "2026-10-23T22:40 no usable panorama crop for any exposed wall (0 walls listed)"
-   ],
-   "updatedAt": "2026-10-23T22:40:01.661Z",
-   "triage": {
-    "verdict": "kit-gap",
-    "reasons": [
-     "height 36.1 m: the tallest street crop reaches ? (< 80 %), the upper storeys have no evidence"
-    ],
-    "gaps": [
-     "tower"
-    ],
-    "date": "2026-10-31"
-   }
-  },
-  {
    "id": "0363100012239262",
    "pand": "0363100012239262",
    "name": null,
@@ -16002,7 +13981,7 @@
      "w01 (Gerrie Knetemannlaan, 10 m): washed out 53 % > 30 %"
     ],
     "gaps": [],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    }
   },
   {
@@ -16037,7 +14016,7 @@
     "gaps": [
      "band"
     ],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    }
   },
   {
@@ -16071,7 +14050,7 @@
      "w04 (Turbinestraat, 16 m): foliage 33 % > 25 %"
     ],
     "gaps": [],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    }
   },
   {
@@ -16104,7 +14083,7 @@
      "w01 (no street, 12 m): obliquity 51 deg > 45"
     ],
     "gaps": [],
-    "date": "2026-10-31"
+    "date": "2026-11-06"
    }
   }
  ]
