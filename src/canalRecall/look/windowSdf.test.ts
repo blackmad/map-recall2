@@ -5,7 +5,7 @@ import assert from 'node:assert/strict';
 import * as THREE from 'three';
 import { cityProgramKey, createCityLookMaterial, createCityUniforms, variantDefines, type CityVariant } from './cityLook.ts';
 import { createLitFacadeMaterial } from '../rendererShared/litFacadeMaterial.ts';
-import { CELL_DEBUG_CLASSES, WINDOW_SDF_GLSL, cellDebugClass, cellDebugHistogram, cellDebugMode, windowSdfEnabled } from './windowSdf.ts';
+import { CELL_DEBUG_CLASSES, WINDOW_SDF_GLSL, cellDebugClass, cellDebugHistogram, cellDebugMode, windowSdfEnabled, WINDOW_SDF_DESKTOP_DEFAULT, WINDOW_SDF_TOUCH_DEFAULT } from './windowSdf.ts';
 import { createWindowTableTexture } from './windowTable.ts';
 
 const withGlobal = <T>(key: string, value: unknown, fn: () => T): T => {
@@ -14,9 +14,9 @@ const withGlobal = <T>(key: string, value: unknown, fn: () => T): T => {
   try { return fn(); } finally { if (had) g[key] = prev; else delete g[key]; }
 };
 
-test('flags: analytic windows on by default on desktop, off on touch unless asked; ?windowSdf=0 off; cellDebug off by default', () => {
-  assert.equal(windowSdfEnabled(false), true);
-  assert.equal(windowSdfEnabled(true), false);
+test('flags: analytic windows follow the tier defaults unless asked; ?windowSdf=0 off, =1 on; cellDebug off by default', () => {
+  assert.equal(windowSdfEnabled(false), WINDOW_SDF_DESKTOP_DEFAULT);
+  assert.equal(windowSdfEnabled(true), WINDOW_SDF_TOUCH_DEFAULT);
   assert.equal(withGlobal('__canalRecallWindowSdf', false, () => windowSdfEnabled(false)), false);
   assert.equal(withGlobal('__canalRecallWindowSdf', true, () => windowSdfEnabled(true)), true);
   assert.equal(withGlobal('location', { search: '?windowSdf=0' }, () => windowSdfEnabled(false)), false);

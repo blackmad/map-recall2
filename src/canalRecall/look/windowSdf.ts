@@ -88,16 +88,31 @@ export function cellDebugMode(): CellDebug {
   return asked === 'rho' ? 'rho' : null;
 }
 
-/** `?windowSdf=0` (or `window.__canalRecallWindowSdf = false`): facades sample only the painted cell, as before. */
+/**
+ * `?windowSdf=1` / `?windowSdf=0` (or `window.__canalRecallWindowSdf = true | false`). Unasked, desktop follows
+ * WINDOW_SDF_DESKTOP_DEFAULT and touch WINDOW_SDF_TOUCH_DEFAULT. Both off at hand-back (#228): the S2 frames gain
+ * 3-5 % sharpness, but the S3 slab's still pan flickers more at DPR 2 and on the phone than with the painted cell
+ * (aliasPx against a supersampled reference, swap-zfight ZFIGHT_SS), so the integrator flips them after review.
+ */
 export function windowSdfEnabled(touch = false): boolean {
   const g = globalThis as Record<string, unknown>;
   const asked = g.__canalRecallWindowSdf ?? pageParam('windowSdf');
   if (asked === false || asked === '0' || asked === 'false' || asked === 'off') return false;
   if (asked === true || asked === '1' || asked === 'true' || asked === 'on') return true;
-  return !touch || WINDOW_SDF_TOUCH_DEFAULT;
+  return touch ? WINDOW_SDF_TOUCH_DEFAULT : WINDOW_SDF_DESKTOP_DEFAULT;
 }
-/** Touch tier default (the brief: on only if the iPhone GPU cost holds; see the hand-back on #228). */
+export const WINDOW_SDF_DESKTOP_DEFAULT = false;
+/** Touch tier default (the brief: on only if the iPhone GPU cost holds; the emulated profile is not the phone's GPU). */
 export const WINDOW_SDF_TOUCH_DEFAULT = false;
+
+/** The pixel footprint the edges are filtered over, in pixels (1 = a box exactly one pixel wide). */
+export const WINDOW_SDF_FOOTPRINT = 1.25;
+/**
+ * On-screen opening size (px, the smaller axis) over which the analytic window fades in from the painted cell. Measured
+ * at hand-back: [5, 10] removed the S3 flicker excess but also every S2 gain; [2.5, 5] keeps about two thirds of the S2
+ * gain; no fade (v1) the most S2 gain and the most S3 flicker.
+ */
+export const WINDOW_SDF_FADE_PX = [2.5, 5] as const;
 
 /** The painter's glazing gradient (bayTextures.ts windowAt, photo look): stops at 0, 0.55, 1 down the opening. */
 export const GLASS_STOPS = ['#6f8796', '#2f4350', '#1d2a33'] as const;
@@ -145,7 +160,7 @@ void windowSdf(vec2 uv, float layer, float weight, inout vec3 c, inout vec2 m) {
   vec2 cell = vec2(${BAY_PX_GLSL}, head.y);
   vec2 p = fract(uv) * cell;
   // The footprint from the continuous uv (fract jumps at the cell seam).
-  vec2 fw = max(fwidth(uv * cell), vec2(1e-3));
+  vec2 fw = max(fwidth(uv * cell), vec2(1e-3)) * ${WINDOW_SDF_FOOTPRINT.toFixed(2)};
   for (int i = 0; i < ${WINDOW_MAX_GLSL}; i++) {
     if (i >= count) break;
     vec4 r = texelFetch(windowTable, ivec2(1 + 4 * i, row), 0) * vec4(cell.x, cell.x, cell.y, cell.y);
@@ -155,6 +170,11 @@ void windowSdf(vec2 uv, float layer, float weight, inout vec3 c, inout vec2 m) {
     vec4 frame = texelFetch(windowTable, ivec2(3 + 4 * i, row), 0);
     vec4 t3 = texelFetch(windowTable, ivec2(4 + 4 * i, row), 0);
     float shape = t1.x, muntin = t1.y, ix = t1.z * cell.x, iy = t1.w * cell.y, rise = t3.x * cell.y, lift = t3.y;
+    // Small windows go back to the painted (mip-filtered) cell: a box-filtered grid of 2-4 px openings beats against
+    // the pixel grid as the camera moves (S3 still pan, DPR 2 and the phone), where the trilinear texel does not.
+    float sizePx = min((r.y - r.x) / fw.x, (r.w - r.z) / fw.y);
+    float wk = weight * smoothstep(${WINDOW_SDF_FADE_PX[0].toFixed(1)}, ${WINDOW_SDF_FADE_PX[1].toFixed(1)}, sizePx);
+    if (wk <= 0.0) continue;
     float outer = wsOpening(p, fw, r.x, r.y, r.z, r.w, shape, rise);
     if (outer <= 0.0) continue;
     float px0 = r.x + ix, px1 = r.y - ix, py0 = r.z + iy, py1 = r.w - iy;
@@ -179,8 +199,8 @@ void windowSdf(vec2 uv, float layer, float weight, inout vec3 c, inout vec2 m) {
     vec3 gc = g < 0.55 ? mix(${hexV3(GLASS_STOPS[0])}, ${hexV3(GLASS_STOPS[1])}, g / 0.55) : mix(${hexV3(GLASS_STOPS[1])}, ${hexV3(GLASS_STOPS[2])}, (g - 0.55) / 0.45);
     float lum = (gc.r + gc.g + gc.b) / 3.0;
     if (lum < ${(90 / 255).toFixed(5)}) gc += (vec3(${(150 / 255).toFixed(5)}) - gc) * lift * (1.0 - lum / ${(90 / 255).toFixed(5)});
-    c = mix(c, frame.rgb, outer * weight); m = mix(m, vec2(0.0, frame.a), outer * weight);
-    c = mix(c, gc, glass * weight); m = mix(m, vec2(0.0), glass * weight);
+    c = mix(c, frame.rgb, outer * wk); m = mix(m, vec2(0.0, frame.a), outer * wk);
+    c = mix(c, gc, glass * wk); m = mix(m, vec2(0.0), glass * wk);
   }
 }
 #endif`;
