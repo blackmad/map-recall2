@@ -105,10 +105,10 @@
  "grounds": {
   "door-left": {
    "doorBay": 0,
-   "note": "a double house door 1.4-1.6 m wide (head 2.1 m) on the outer axis, the wide window (2.8 m, 0.8-2.3 m) over the other two; mirrored when the strip reads the door on the right. Door reveal (#239): Steynplein 9-19 (steyn-9-19-r1, 2024 panoramas either side of each door, door-reveal-sheet --photos): the paired flat doors stand back under the concrete lintel behind brick returns; the returns read 0.39 m at 36 deg (063929) and 0.17 m at 21 deg (145744) in the facade plane, i.e. 0.54 and 0.44 m to the leaf, plane sweep 0.28 m on 073365; one stone step at the mouth. Set 0.45 m, one 0.15 m step, brick jambs.",
+   "note": "a double house door 1.4-1.6 m wide (head 2.1 m) on the outer axis, the wide window (2.8 m, 0.8-2.3 m) over the other two; mirrored when the strip reads the door on the right. Door reveal (#239): Steynplein 9-19 (steyn-9-19-r1, 2024 panoramas either side of each door, door-reveal-sheet --photos): the paired flat doors stand back under the concrete lintel behind brick returns; the returns read 0.39 m at 36 deg (063929) and 0.17 m at 21 deg (145744) in the facade plane, i.e. (return / sin of the view angle) 0.66 and 0.47 m to the leaf, 0.76 and 0.57 m to the back of the frame (plane sweep 0.28 m on 073365, low ncc); one stone step at the mouth. Set a 0.65 m portiek, one 0.15 m step, brick jambs.",
    "doorReveal": {
-    "form": "reveal",
-    "deep": 0.45,
+    "form": "portiek",
+    "deep": 0.65,
     "steps": 1,
     "riser": 0.15
    }
@@ -178,6 +178,6 @@
  ],
  "notes": [
   "Palette: the type default is the measured red-brown of President Steynstraat 9-15 (#755651-#785a52); every placed pand takes its trim-normalised strip wall (auto-place measuredPalette).",
-  "Door reveal (#239): Steynplein 9-19 (steyn-9-19-r1, 2024 panoramas either side of each door, door-reveal-sheet --photos): the paired flat doors stand back under the concrete lintel behind brick returns; the returns read 0.39 m at 36 deg (063929) and 0.17 m at 21 deg (145744) in the facade plane, i.e. 0.54 and 0.44 m to the leaf, plane sweep 0.28 m on 073365; one stone step at the mouth. Set 0.45 m, one 0.15 m step, brick jambs."
+  "Door reveal (#239): Steynplein 9-19 (steyn-9-19-r1, 2024 panoramas either side of each door, door-reveal-sheet --photos): the paired flat doors stand back under the concrete lintel behind brick returns; the returns read 0.39 m at 36 deg (063929) and 0.17 m at 21 deg (145744) in the facade plane, i.e. (return / sin of the view angle) 0.66 and 0.47 m to the leaf, 0.76 and 0.57 m to the back of the frame (plane sweep 0.28 m on 073365, low ncc); one stone step at the mouth. Set a 0.65 m portiek, one 0.15 m step, brick jambs."
  ]
 }

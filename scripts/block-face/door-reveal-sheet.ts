@@ -5,6 +5,8 @@
  *
  *   node --import tsx scripts/block-face/door-reveal-sheet.ts --face=helmers-209-253-r1 [--after=staging/block-face/<face>/chunk.glb] [--doors=3] [--pands=159748,...] [--out=...]
  *   ... --photos [--angle=38]   the measurement views only: the best panorama either side of each door
+ *   ... --date=YYYY-MM-DD|any   panoramas of another day (default: the strip's)
+ *   ... --match-half=1.2   half-width (m) of the photo-eye panels (default 2.4): zoom in to compare a return with the photo
  */
 import fs from 'node:fs/promises';
 import path from 'node:path';
@@ -54,7 +56,9 @@ async function main() {
   const rows: Buffer[] = [];
   for (const d of picks) {
     const xc = (d.x[0] + d.x[1]) / 2, door = toRD(xc, 0);
-    const panos = (await listPanos(door, 20)).filter((p: any) => String(p.timestamp).slice(0, 10) === strip.date);
+    // --date=YYYY-MM-DD|any: another capture when the strip's own day has a van in front of the door (#239).
+    const date = arg('date') ?? strip.date;
+    const panos = (await listPanos(door, 20)).filter((p: any) => date === 'any' || String(p.timestamp).slice(0, 10) === date);
     const views = panos.map((p: any) => { const c = lngLatToRd(p.geometry.coordinates); const along = (c.x - door.x) * uRD[0] + (c.y - door.y) * uRD[1], o = (c.x - door.x) * nRD[0] + (c.y - door.y) * nRD[1]; return {p, along, o, deg: Math.atan2(along, o) * 180 / Math.PI}; })
       .filter(v => v.o > 3 && Math.abs(v.deg) > 15 && Math.abs(v.deg) < 55).sort((a, b) => Math.abs(Math.abs(a.deg) - ANGLE) - Math.abs(Math.abs(b.deg) - ANGLE));
     const panels: Buffer[] = [];
@@ -64,7 +68,7 @@ async function main() {
       for (const v of [views.find(w => w.deg < 0), views.find(w => w.deg > 0)]) {
         if (!v) continue;
         const lens = lensFor(v.p, g)!, pano = (await loadPano({panoId: v.p.pano_id, record: v.p} as any))!, dist = Math.hypot(v.along, v.o);
-        panels.push(await labelled(await perspective(pano.img, lens.pose, {...toRD(tgt.x, 0), z: g + tgt.y}, 2 * Math.atan(HALF / dist) * 180 / Math.PI, P.width, P.height), `${face} ${d.pand.slice(-6)} ${d.type ?? ''} ${v.deg.toFixed(0)}°`));
+        panels.push(await labelled(await perspective(pano.img, lens.pose, {...toRD(tgt.x, 0), z: g + tgt.y}, 2 * Math.atan(HALF / dist) * 180 / Math.PI, P.width, P.height), `${face} ${d.pand.slice(-6)} ${d.type ?? ''} ${v.deg.toFixed(0)}° ${String(v.p.timestamp).slice(0, 10)}`));
       }
       if (panels.length) rows.push(await sharp({create: {width: panels.length * (P.width + 6), height: P.height + 24, channels: 3, background: '#f4f4f2'}}).composite(panels.map((input, i) => ({input, left: i * (P.width + 6), top: 0}))).png().toBuffer());
       continue;
@@ -73,7 +77,7 @@ async function main() {
     let matched: RenderView | null = null;
     if (views.length) {
       const v = views[0], lens = lensFor(v.p, g)!, pano = (await loadPano({panoId: v.p.pano_id, record: v.p} as any))!;
-      const eyeH = lens.pose.z - g, dist = Math.hypot(v.along, v.o), fov = 2 * Math.atan(2.4 / dist) * 180 / Math.PI;
+      const eyeH = lens.pose.z - g, dist = Math.hypot(v.along, v.o), fov = 2 * Math.atan(Number(arg("match-half") ?? 2.4) / dist) * 180 / Math.PI;
       panels.push(await labelled(await perspective(pano.img, lens.pose, {...toRD(tgt.x, 0), z: g + tgt.y}, fov, P.width, P.height), `photo ${d.pand.slice(-6)} ${v.p.pano_id.slice(-12)} ${v.deg.toFixed(0)}°`));
       matched = {eye: [xc + v.along, eyeH, v.o], target: [tgt.x, tgt.y, 0], fov, ...P, background: '#9fb8cf'};
     }
