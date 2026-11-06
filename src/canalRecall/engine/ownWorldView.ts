@@ -54,6 +54,7 @@ import { gameTileEnricher } from '../gameTileEnricher';
 import { LandmarkHighlight } from './landmarkHighlight';
 import { LabelOcclusion } from './labelOcclusion';
 import { SpoilerSources } from './spoilerSources';
+import { groundCentre, groundViewFlag } from '../ownGround/groundResidency';
 
 declare const CANVAS_W: number;
 declare const CANVAS_H: number;
@@ -138,6 +139,8 @@ export class OwnWorldView implements WorldViewOracles {
   /** The far tier (engine/farShells.ts, lane R2-B #229; `?farShells=0`): baked SHL1 prisms out to the far ring. */
   _farShells: FarShells | null = null;
   private farShellsOn = farShellsEnabled();
+  /** `?groundView=0`: the own ground follows the rider also while the camera is panned off it (groundResidency.ts). */
+  private readonly groundView = groundViewFlag();
   /** Landmark models, trees, detailed buildings, pyramidal roofs, ARTIS (cityExtras.ts). */
   readonly extras: CityExtras;
   get _signatureLandmarks(): any { return this.extras.signature; }
@@ -457,7 +460,7 @@ export class OwnWorldView implements WorldViewOracles {
       const data = await decodeOverviewBytes(bytes);
       const prebuilt = await pooled;
       this.status.overviewBuilt = prebuilt ? 'pool' : 'main';
-      this._overview = new OverviewLayer(data, { center: () => this.camera.center(), zoom: () => this.camera.zoom(), rider: () => this.lastSubject, ground: () => (this._ownGround?.ready && this._ownGround.coversRect ? this._ownGround : null), repaint: () => this.host.triggerRepaint() }, prebuilt);
+      this._overview = new OverviewLayer(data, { center: () => this.camera.center(), zoom: () => this.camera.zoom(), rider: () => this.lastSubject, ground: () => (this._ownGround?.ready && this._ownGround.coversRect ? this._ownGround : null), repaint: () => this.host.triggerRepaint(), viewport: () => this.host.viewport() }, prebuilt);
       // First in the main pass, under every 3D participant.
       this._sharedFrame.register('engine-overview', this._overview, { order: -100 });
       this.status.overview = { water: data.water.length, parks: data.parks.length, streets: data.streets.length };
@@ -871,7 +874,9 @@ export class OwnWorldView implements WorldViewOracles {
     if (view.introFlat > 0) this.extras.setSuspended(true);
     if (view.introFlat === 0) this.introLanding = false;
     if (this._ownGround) {
-      this._ownGround.update(view.subject, view.introFlat > 0 ? 0 : view.zoom, pitch);
+      // Panned off the rider (RE-CENTER showing), the ground's ring follows the view, not the rider (#232: the user's
+      // S4 corridor 2.8 km from the rider drew from the far ring, no ballast beds); `?groundView=0` follows the rider.
+      this._ownGround.update(groundCentre(view, this.groundView), view.introFlat > 0 ? 0 : view.zoom, pitch);
       lap('ground update: own ground');
       this.syncGroundConsumers(phases ? lap : undefined);
     }

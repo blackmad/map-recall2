@@ -86,6 +86,34 @@ export const RAIL_STYLE: Record<RailKind, RailStyle> = {
   monorail: { fill: '#b3aca6', width: [[13, 0.3], [16, 1], [18, 1.8]] },
   funicular: { fill: '#b3aca6', width: [[13, 0.3], [16, 1], [18, 1.8]] },
 };
+/**
+ * Rail lines with contrast and a screen minimum (lane R3-C #232; `?overviewRail=0` draws RAIL_STYLE alone, one pale
+ * 1-1.8 px line that the beige land swallowed: the user's S4 "thin pale lines"). Surface heavy rail, light rail, metro
+ * and narrow gauge draw a dark rail core over a ballast halo `haloScale` times as wide; trams (in the street, no
+ * ballast) a core only. Neither is ever narrower than `minPx` CSS px on screen at any zoom or depth (layers.ts
+ * railLineMaterial widens the line per vertex), so the corridor stays a line on the phone, where past the 400 m ring
+ * this is the only rail. The tones are the far ring's rail band (ownGround/farRing.ts FAR_RAIL: railTracks.ts
+ * RAIL_TONES.ballast and RAIL_STRIPE.tone), so the hand-over at the ring's edge does not show. Tunnels stay faint.
+ */
+export const RAIL_LINE_STYLE = {
+  core: '#3e3834', halo: '#7e756a', tram: '#6f6b66', haloScale: 1.6,
+  minPx: { rail: 1.25, light_rail: 1, subway: 1, narrow_gauge: 1, tram: 0.75, monorail: 0.75, funicular: 0.75 } as Record<RailKind, number>,
+  haloed: { rail: true, light_rail: true, subway: true, narrow_gauge: true, tram: false, monorail: false, funicular: false } as Record<RailKind, boolean>,
+};
+
+/** A rail group's line widths at `zoom`, CSS px: core and halo as styled, and the floors the shader keeps them above. */
+export function railLinePx(kind: RailKind, zoom: number, service: boolean): { core: number; halo: number | null; minCore: number; minHalo: number | null } {
+  const scale = service ? 0.6 : 1, core = interpolateStops(RAIL_STYLE[kind].width, zoom) * scale;
+  // Service track (yards, sidings) a step thinner than the running lines, still above a pixel.
+  const minCore = RAIL_LINE_STYLE.minPx[kind] * (service ? 0.8 : 1);
+  if (!RAIL_LINE_STYLE.haloed[kind]) return { core, halo: null, minCore, minHalo: null };
+  return { core, halo: core * RAIL_LINE_STYLE.haloScale, minCore, minHalo: minCore * RAIL_LINE_STYLE.haloScale };
+}
+
+/** `?overviewRail=0`: the overview's rail lines as before #232 (RAIL_STYLE, no halo, no screen minimum). */
+export function overviewRailFlag(query = (globalThis as { location?: { search?: string } }).location?.search ?? ''): boolean {
+  return !/[?&]overviewRail=0\b/.test(query);
+}
 export const RAIL_TUNNEL_STYLE = { opacity: 0.45, dash: [3, 2] as [number, number] };
 
 /** Piers: land laid over the water (areas) and walkways (lines). */
