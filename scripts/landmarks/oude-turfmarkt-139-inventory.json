@@ -1,0 +1,910 @@
+{
+ "schemaVersion": 1,
+ "id": "oude-turfmarkt-139",
+ "pand": "0363100012168172",
+ "brief": "scripts/landmarks/oude-turfmarkt-139-brief.md",
+ "signature": [
+  "dnb-pediment",
+  "dnb-pilasters",
+  "neo-ren-1884",
+  "bernardus-bands",
+  "uva-front",
+  "gasthuis-gate"
+ ],
+ "walls": [
+  {
+   "tag": "w01-55",
+   "bearing": 55,
+   "lengthM": 49.6,
+   "centre": [
+    4.893575,
+    52.3685923
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": false,
+   "items": []
+  },
+  {
+   "tag": "w02-182",
+   "bearing": 182,
+   "lengthM": 42,
+   "centre": [
+    4.8936739,
+    52.3687707
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": false,
+   "items": []
+  },
+  {
+   "tag": "w03-91",
+   "bearing": 91,
+   "lengthM": 34.2,
+   "centre": [
+    4.8940973,
+    52.3687024
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7315120208-000073_pano_0003_000676",
+   "capturedAt": "2016-06-09",
+   "checked": true,
+   "items": [
+    {
+     "id": "court-housing",
+     "kind": "window-shape",
+     "where": "white rendered courtyard housing: timber windows in four storeys, round balconies, glass-block stair",
+     "approxSizeM": [
+      33.5,
+      10
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7315120208-000073_pano_0003_000676",
+     "how": "window grid with timber frames, the stair as a tall many-paned opening, balconies as slab and parapet (not rounded)"
+    }
+   ]
+  },
+  {
+   "tag": "w04-9",
+   "bearing": 9,
+   "lengthM": 26.9,
+   "centre": [
+    4.8941638,
+    52.3682257
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": false,
+   "items": []
+  },
+  {
+   "tag": "w05-235",
+   "bearing": 235,
+   "lengthM": 21.7,
+   "centre": [
+    4.8933393,
+    52.3683398
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000354_pano_0001_000246",
+   "capturedAt": "2017-07-06",
+   "checked": true,
+   "items": [
+    {
+     "id": "uva-front",
+     "kind": "window-shape",
+     "where": "three Vingboons houses joined under one straight cornice: nine axes in three groups, four storeys of white-framed windows diminishing upward",
+     "approxSizeM": [
+      21.7,
+      15
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-000354_pano_0001_000246"
+    },
+    {
+     "id": "uva-entablature",
+     "kind": "other",
+     "where": "white entablature with frieze and straight cornice",
+     "approxSizeM": [
+      21.7,
+      2.3
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-000354_pano_0001_000246"
+    },
+    {
+     "id": "uva-cellar-arches",
+     "kind": "window-shape",
+     "where": "row of small round-headed cellar lights, two per axis, in the pale plinth",
+     "approxSizeM": [
+      0.45,
+      0.95
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-000354_pano_0001_000246"
+    },
+    {
+     "id": "uva-lettering",
+     "kind": "lettering",
+     "where": "UNIVERSITEIT VAN AMSTERDAM on the frieze",
+     "approxSizeM": [
+      9,
+      0.4
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7316010203-000354_pano_0001_000246",
+     "skip": {
+      "reason": "too-small",
+      "note": "0.35 m letters at 16 m; the map label names the building"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "w06-271",
+   "bearing": 271,
+   "lengthM": 21.1,
+   "centre": [
+    4.8939798,
+    52.368672
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": false,
+   "items": []
+  },
+  {
+   "tag": "w07-233",
+   "bearing": 233,
+   "lengthM": 20,
+   "centre": [
+    4.8938734,
+    52.3679051
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002543_pano_0000_000123",
+   "capturedAt": "2022-04-25",
+   "checked": true,
+   "items": [
+    {
+     "id": "pilaster-neck-5785",
+     "kind": "window-shape",
+     "where": "Vingboons pilaster neck gable (5785) with white cornices on every storey and an ornate white top",
+     "approxSizeM": [
+      6.4,
+      17.9
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-002543_pano_0000_000123",
+     "how": "white storey cornices and pilasters, neck gable with white claws; the carved scrolls of the top as the claw outlines"
+    },
+    {
+     "id": "neo-ren-1884",
+     "kind": "window-shape",
+     "where": "1884 neo-renaissance front (5786): red brick with white bands, white sunburst fans over the windows, stepped gable",
+     "approxSizeM": [
+      7.3,
+      19.6
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002543_pano_0000_000123"
+    },
+    {
+     "id": "cornice-5787",
+     "kind": "window-shape",
+     "where": "house under a straight cornice with consoles (5787), iron balconettes on two floors",
+     "approxSizeM": [
+      5.7,
+      15.2
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002543_pano_0000_000123"
+    }
+   ]
+  },
+  {
+   "tag": "w08-25",
+   "bearing": 25,
+   "lengthM": 17.1,
+   "centre": [
+    4.8938348,
+    52.3682786
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": false,
+   "items": []
+  },
+  {
+   "tag": "w09-2",
+   "bearing": 2,
+   "lengthM": 15,
+   "centre": [
+    4.8935345,
+    52.3688576
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": false,
+   "items": []
+  },
+  {
+   "tag": "w10-354",
+   "bearing": 354,
+   "lengthM": 14.6,
+   "centre": [
+    4.8932032,
+    52.3688798
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000354_pano_0001_000262",
+   "capturedAt": "2017-07-06",
+   "checked": true,
+   "items": [
+    {
+     "id": "north-brick",
+     "kind": "window-shape",
+     "where": "dark brick north end with tall round-headed windows",
+     "approxSizeM": [
+      14.6,
+      7
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-000354_pano_0001_000262",
+     "how": "round-headed openings in the brick face at an even pitch"
+    }
+   ]
+  },
+  {
+   "tag": "w11-53",
+   "bearing": 53,
+   "lengthM": 14.1,
+   "centre": [
+    4.8941796,
+    52.368084
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7315120208-000073_pano_0003_000690",
+   "capturedAt": "2016-06-09",
+   "checked": true,
+   "items": [
+    {
+     "id": "teal-entrance",
+     "kind": "canopy",
+     "where": "glazed entrance with teal frames and a canopy",
+     "approxSizeM": [
+      8,
+      4
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7315120208-000073_pano_0003_000690"
+    }
+   ]
+  },
+  {
+   "tag": "w12-243",
+   "bearing": 243,
+   "lengthM": 12.3,
+   "centre": [
+    4.8930304,
+    52.3686215
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001975_pano_0000_001309",
+   "capturedAt": "2021-01-22",
+   "checked": true,
+   "items": [
+    {
+     "id": "dnb-pediment",
+     "kind": "relief",
+     "where": "centre risaliet: pediment over the cornice with a sculpted figure group in the tympanum",
+     "approxSizeM": [
+      11.6,
+      2.5
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-001975_pano_0000_001309",
+     "how": "triangular pediment with a raking cornice; the figure group as five low blocks (standing centre, seated, reclining) inside the field; the figures themselves go to the sculpture track"
+    },
+    {
+     "id": "dnb-acroteria",
+     "kind": "sculpture",
+     "where": "figure group on the pediment apex and urns on its corners",
+     "approxSizeM": [
+      1.2,
+      1.5
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-001975_pano_0000_001309",
+     "how": "blocks on the apex and corners at their measured size; figures to the sculpture track"
+    },
+    {
+     "id": "dnb-pilasters",
+     "kind": "colonnade",
+     "where": "fluted pilasters of the upper storey of the centre risaliet, pairs at each end",
+     "approxSizeM": [
+      0.5,
+      4.6
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001975_pano_0000_001309"
+    },
+    {
+     "id": "dnb-balustrade",
+     "kind": "balcony-ironwork",
+     "where": "stone balusters under the three upper windows of the centre",
+     "approxSizeM": [
+      1.8,
+      0.75
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001975_pano_0000_001309"
+    },
+    {
+     "id": "dnb-window-pediments",
+     "kind": "window-shape",
+     "where": "small pediments over the centre upper windows, cornices on consoles over the lower ones",
+     "approxSizeM": [
+      2.2,
+      0.6
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001975_pano_0000_001309"
+    },
+    {
+     "id": "dnb-canopy",
+     "kind": "canopy",
+     "where": "entrance canopy in front of the centre ground storey",
+     "approxSizeM": [
+      5.5,
+      0.3
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7316010203-001975_pano_0000_001309",
+     "skip": {
+      "reason": "temporary",
+      "note": "a fabric-hung canopy over the former entrance, behind a moored boat in every view"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "w13-238",
+   "bearing": 238,
+   "lengthM": 12.2,
+   "centre": [
+    4.8931335,
+    52.3685306
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001174_pano_0000_002538",
+   "capturedAt": "2019-05-10",
+   "checked": true,
+   "items": [
+    {
+     "id": "dnb-wing-windows",
+     "kind": "window-shape",
+     "where": "south wing: four axes, cellar light pairs, tall windows under cornices, attic lights in the frieze",
+     "approxSizeM": [
+      12,
+      15
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001174_pano_0000_002538"
+    }
+   ]
+  },
+  {
+   "tag": "w14-248",
+   "bearing": 248,
+   "lengthM": 12.2,
+   "centre": [
+    4.8929672,
+    52.3687253
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001174_pano_0000_002533",
+   "capturedAt": "2019-05-10",
+   "checked": true,
+   "items": [
+    {
+     "id": "dnb-wing-n",
+     "kind": "window-shape",
+     "where": "north wing: four axes as the south wing",
+     "approxSizeM": [
+      12,
+      15
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001174_pano_0000_002533"
+    },
+    {
+     "id": "ap-lettering",
+     "kind": "lettering",
+     "where": "ALLARD PIERSON letters on the rusticated base",
+     "approxSizeM": [
+      4,
+      0.4
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7316010203-001174_pano_0000_002533",
+     "skip": {
+      "reason": "too-small",
+      "note": "0.35 m letters at 2.5 m height, below reading size at gallery distance; the map label names the museum"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "w15-1",
+   "bearing": 1,
+   "lengthM": 11.3,
+   "centre": [
+    4.8939057,
+    52.368866
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": false,
+   "items": []
+  },
+  {
+   "tag": "w16-234",
+   "bearing": 234,
+   "lengthM": 11.2,
+   "centre": [
+    4.8935077,
+    52.3681954
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000354_pano_0001_000244",
+   "capturedAt": "2017-07-06",
+   "checked": true,
+   "items": [
+    {
+     "id": "bernardus-bands",
+     "kind": "other",
+     "where": "red brick with white stone bands (speklagen) over the whole front",
+     "approxSizeM": [
+      24,
+      13
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-000354_pano_0001_000244"
+    },
+    {
+     "id": "bernardus-paired-arches",
+     "kind": "window-shape",
+     "where": "paired round-headed windows of the top storey under pale relieving arches",
+     "approxSizeM": [
+      1.4,
+      2.5
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-000354_pano_0001_000244"
+    },
+    {
+     "id": "bernardus-voussoirs",
+     "kind": "window-shape",
+     "where": "segmental heads with alternating pale voussoirs on the first floor",
+     "approxSizeM": [
+      1.5,
+      0.6
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-000354_pano_0001_000244",
+     "how": "one pale arch ring standing 7 cm proud; the alternation is not drawn"
+    },
+    {
+     "id": "gasthuis-gate",
+     "kind": "gable-stone",
+     "where": "the 1732 T GASTHVISHOF gate in the north bay: white stone portal, arched door, tablet, window with a pediment",
+     "approxSizeM": [
+      2.8,
+      5.9
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-000354_pano_0001_000244"
+    },
+    {
+     "id": "bijzondere-letters",
+     "kind": "lettering",
+     "where": "BIJZONDERE COLLECTIES letters on the plinth",
+     "approxSizeM": [
+      4,
+      0.3
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7316010203-000354_pano_0001_000244",
+     "skip": {
+      "reason": "too-small",
+      "note": "0.3 m letters at 1 m height"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "w17-145",
+   "bearing": 145,
+   "lengthM": 9.3,
+   "centre": [
+    4.8940374,
+    52.3685245
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": false,
+   "items": []
+  },
+  {
+   "tag": "w18-248",
+   "bearing": 248,
+   "lengthM": 7.7,
+   "centre": [
+    4.8929034,
+    52.3688099
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001975_pano_0000_001319",
+   "capturedAt": "2021-01-22",
+   "checked": true,
+   "items": [
+    {
+     "id": "dnb-pavilion-aedicule",
+     "kind": "window-shape",
+     "where": "end pavilion: one window framed by pilasters under a pediment, balusters under it, blind panels either side",
+     "approxSizeM": [
+      3,
+      5
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001975_pano_0000_001319"
+    },
+    {
+     "id": "museum-door",
+     "kind": "other",
+     "where": "painted lower storeys of the pavilion with the museum door and two lights over it",
+     "approxSizeM": [
+      1.7,
+      3.1
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001975_pano_0000_001319"
+    },
+    {
+     "id": "archeologisch-letters",
+     "kind": "lettering",
+     "where": "ARCHEOLOGISCH MUSEUM letters over the door",
+     "approxSizeM": [
+      3,
+      0.2
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7316010203-001975_pano_0000_001319",
+     "skip": {
+      "reason": "too-small",
+      "note": "0.2 m letters"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "w19-238",
+   "bearing": 238,
+   "lengthM": 7.7,
+   "centre": [
+    4.8932089,
+    52.3684496
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001975_pano_0000_001324",
+   "capturedAt": "2021-01-22",
+   "checked": true,
+   "items": [
+    {
+     "id": "dnb-pavilion-s",
+     "kind": "window-shape",
+     "where": "south pavilion: the same aedicule; three windows in its painted lower storeys",
+     "approxSizeM": [
+      3,
+      5
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001975_pano_0000_001324"
+    }
+   ]
+  },
+  {
+   "tag": "w20-145",
+   "bearing": 145,
+   "lengthM": 7.6,
+   "centre": [
+    4.8937393,
+    52.3683901
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": false,
+   "items": []
+  },
+  {
+   "tag": "w21-233",
+   "bearing": 233,
+   "lengthM": 7.3,
+   "centre": [
+    4.8935877,
+    52.3681284
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001174_pano_0000_002549",
+   "capturedAt": "2019-05-10",
+   "checked": true,
+   "items": [
+    {
+     "id": "bernardus-door",
+     "kind": "window-shape",
+     "where": "main door with a round-headed fanlight and a pale arch ring",
+     "approxSizeM": [
+      1.7,
+      3.9
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001174_pano_0000_002549"
+    },
+    {
+     "id": "wall-anchors",
+     "kind": "other",
+     "where": "iron cross anchors between the first-floor windows",
+     "approxSizeM": [
+      0.5,
+      0.6
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001174_pano_0000_002549"
+    }
+   ]
+  },
+  {
+   "tag": "w22-235",
+   "bearing": 235,
+   "lengthM": 7.2,
+   "centre": [
+    4.8939514,
+    52.3685267
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": false,
+   "items": []
+  },
+  {
+   "tag": "w23-188",
+   "bearing": 188,
+   "lengthM": 7.1,
+   "centre": [
+    4.8942872,
+    52.3681495
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": false,
+   "items": []
+  },
+  {
+   "tag": "w24-184",
+   "bearing": 184,
+   "lengthM": 7,
+   "centre": [
+    4.8941804,
+    52.3681378
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": false,
+   "items": []
+  },
+  {
+   "tag": "w25-54",
+   "bearing": 54,
+   "lengthM": 6.3,
+   "centre": [
+    4.8937212,
+    52.3683471
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": false,
+   "items": []
+  },
+  {
+   "tag": "w26-232",
+   "bearing": 232,
+   "lengthM": 6.3,
+   "centre": [
+    4.8937553,
+    52.3679982
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001174_pano_0000_002554",
+   "capturedAt": "2019-05-10",
+   "checked": true,
+   "items": [
+    {
+     "id": "neck-gable-5784",
+     "kind": "window-shape",
+     "where": "dark brick neck gable house (5784): three axes, claws and segment crown",
+     "approxSizeM": [
+      6.3,
+      17.7
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001174_pano_0000_002554"
+    },
+    {
+     "id": "stoep",
+     "kind": "other",
+     "where": "stoep with a stair to the raised door",
+     "approxSizeM": [
+      3.6,
+      1.6
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-001174_pano_0000_002554",
+     "how": "one stone block for the stoep and stair"
+    }
+   ]
+  },
+  {
+   "tag": "w27-14",
+   "bearing": 14,
+   "lengthM": 6.2,
+   "centre": [
+    4.893052,
+    52.3688795
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000354_pano_0001_000262",
+   "capturedAt": "2017-07-06",
+   "checked": true,
+   "items": [
+    {
+     "id": "north-brick-2",
+     "kind": "window-shape",
+     "where": "dark brick with tall round-headed windows",
+     "approxSizeM": [
+      6.2,
+      19
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-000354_pano_0001_000262",
+     "how": "one axis of round-headed windows"
+    }
+   ]
+  },
+  {
+   "tag": "w28-54",
+   "bearing": 54,
+   "lengthM": 6,
+   "centre": [
+    4.8942608,
+    52.3680084
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7315120208-000073_pano_0003_000690",
+   "capturedAt": "2016-06-09",
+   "checked": true,
+   "items": [
+    {
+     "id": "teal-ground",
+     "kind": "window-shape",
+     "where": "teal-framed ground-storey glazing",
+     "approxSizeM": [
+      5,
+      2.8
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7315120208-000073_pano_0003_000690"
+    }
+   ]
+  },
+  {
+   "tag": "w29-232",
+   "bearing": 232,
+   "lengthM": 5.9,
+   "centre": [
+    4.8936482,
+    52.3680824
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001174_pano_0000_002553",
+   "capturedAt": "2019-05-10",
+   "checked": true,
+   "items": [
+    {
+     "id": "carriage-entrance",
+     "kind": "other",
+     "where": "Bijzondere Collecties carriage entrance with a white surround and sign band",
+     "approxSizeM": [
+      3.3,
+      4.2
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001174_pano_0000_002553"
+    }
+   ]
+  },
+  {
+   "tag": "w30-233",
+   "bearing": 233,
+   "lengthM": 5.6,
+   "centre": [
+    4.8937002,
+    52.3680394
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001174_pano_0000_002554",
+   "capturedAt": "2019-05-10",
+   "checked": true,
+   "items": [
+    {
+     "id": "warehouse-bell-gable",
+     "kind": "window-shape",
+     "where": "warehouse (5783): loading doors on the centre axis under white lintels, bell gable with white rim",
+     "approxSizeM": [
+      5.6,
+      17.5
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001174_pano_0000_002554"
+    },
+    {
+     "id": "ap-passage",
+     "kind": "other",
+     "where": "white ground storey with the museum passage opening",
+     "approxSizeM": [
+      3.4,
+      3.1
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001174_pano_0000_002554"
+    },
+    {
+     "id": "ap-passage-letters",
+     "kind": "lettering",
+     "where": "ALLARD PIERSON letters over the passage",
+     "approxSizeM": [
+      3,
+      0.4
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7316010203-001174_pano_0000_002554",
+     "skip": {
+      "reason": "too-small",
+      "note": "0.4 m letters on the lintel"
+     }
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  }
+ ]
+}

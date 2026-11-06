@@ -61,6 +61,9 @@ export const SHADOWED_BY_LANDMARK: Readonly<Record<string, string>> = {
   // Westerdok 748 courtyard block (large recipe): one shell per 3DBAG height without the towers' cladding, the west passage,
   // the framed bays or the courtyard portals; the bespoke model (#210) draws them.
   'ordinary-0363100012186003': 'westerdok-748',
+  // Oude Turfmarkt 127-149 (pand 0363100012168172): the recipe failed likeness on the DNB front and drew the canal houses as one
+  // brick grid; the bespoke model (#235) draws the bank front, the University front, St. Bernardus and the five houses.
+  'ordinary-0363100012168172': 'oude-turfmarkt-139',
   // Tetterode complex, Da Costakade 146 (large recipe: one 82 x 94 m block; the bespoke model (#209) draws the 1902 factory front,
   // the dairy, the 1909 lettered range and the Merkelbach & Karsten ribbons).
   'ordinary-0363100012236799': 'da-costakade-146',

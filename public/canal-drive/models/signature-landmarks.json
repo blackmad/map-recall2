@@ -85215,6 +85215,100 @@
       "triangles": 824,
       "bytes": 23308,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+    },
+    "oude-turfmarkt-139": {
+      "id": "oude-turfmarkt-139",
+      "name": "Oude Turfmarkt 127-149: Allard Pierson (former Nederlandsche Bank), University front, St. Bernardus and five canal houses",
+      "modelUrl": "./models/oude-turfmarkt-139.glb",
+      "suppressOsmIds": [
+        "NL.IMBAG.Pand.0363100012168172"
+      ],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.89341787,
+          52.36856306
+        ],
+        "headingDegrees": 0,
+        "lengthMetres": 117.5,
+        "widthMetres": 100.1
+      },
+      "surveyed": {
+        "anchor": [
+          4.89341787,
+          52.36856306
+        ],
+        "northOffsetDegrees": 0,
+        "source": "Vertex average of the BAG 0363100012168172 ring (RD, PDOK BAG WFS, CC0) in native east/south metres above the 3DBAG ground 0.392 m NAP (scripts/landmarks/oude-turfmarkt-139-footprints.json, written by sarphati-plaza-prepare.ts --id=oude-turfmarkt-139 --pand=0363100012168172). Rear wings and courtyard from the 3DBAG LoD2.2 roof pieces (CC BY 4.0), capped under the measured fronts. Oude Turfmarkt fronts measured on rectified Gemeente Amsterdam panorama crops (CC BY 4.0, 50 px/m): TMX7316010203-000354_pano_0001_000246/000244 (2017-07-06), TMX7316010203-001975_pano_0000_001309/001319/001324 (2021-01-22), TMX7316010203-001174_pano_0000_002533..002554 (2019-05-10), TMX7316010203-002543_pano_0000_000123 (2022-04-25); per wall in scripts/landmarks/oude-turfmarkt-139-inventory.json."
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 0,
+      "heightMetres": 21.8,
+      "bagYear": 1643,
+      "materialOverrides": {
+        "stone": "#a39886",
+        "brick": "#8a5f4d",
+        "red": "#8e5446",
+        "greyBrick": "#66544b",
+        "ochre": "#6f5a4c",
+        "pink": "#7a4a3f",
+        "white": "#e3dfd2",
+        "gold": "#e6e2d6",
+        "concrete": "#e2ddd0",
+        "slate": "#5b6064",
+        "copper": "#3f8f8f",
+        "green": "#4f5e4f",
+        "frame": "#e2ded0",
+        "bronze": "#3a2f2a",
+        "glass": "#56707e",
+        "dark": "#2c2e31"
+      },
+      "attribution": {
+        "title": "Oude Turfmarkt 127-149, Amsterdam: the former De Nederlandsche Bank (Allard Pierson), the University front, the former Gesticht St. Bernardus and five canal houses",
+        "author": "Map Recall",
+        "sourceUrl": "https://monumentenregister.cultureelerfgoed.nl/monumenten/5780",
+        "licence": "CC BY 4.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "modifications": "Original texture-free flat-colour geometry on the BAG footprint (CC0) with 3DBAG LoD2.2 heights (CC BY 4.0): W.A. Froger's 1865-69 bank front with its pavilions, wings and pedimented centre; three 1642 Vingboons houses under one cornice; P.F. Laarman's 1882-84 banded St. Bernardus front with the 1732 gasthuis gate; the warehouse bell gable, two neck gables, the 1884 stepped gable and the corniced house of rijksmonumenten 5783-5787; measured from Gemeente Amsterdam panoramas (CC BY 4.0)."
+      },
+      "buildingCategory": "landmark",
+      "bounds": {
+        "min": [
+          -37.20706558227539,
+          -4.7683716530855236e-8,
+          -36.459075927734375
+        ],
+        "max": [
+          63.827999114990234,
+          22.19300079345703,
+          81.87752532958984
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.89341787,
+          52.36856306
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 90,
+        "facadeBearingDegrees": 0,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 118.33660125732422,
+        "heightMetres": 22.193000841140748,
+        "depthMetres": 101.03506469726562,
+        "depthCoverage": 1.0093413056669893
+      },
+      "triangles": 27859,
+      "bytes": 388660,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
+      "lod1": {
+        "sourceHash": "1074d49be4b71118",
+        "buildVersion": 2,
+        "bytes": 122780,
+        "triangles": 6973
+      }
     }
   }
 }
