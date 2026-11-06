@@ -334,12 +334,13 @@ test('overview v2 layers: landuse, piers and rail add meshes on the shared flat 
   const view = { center: () => ({ lng: 4.9, lat: 52.37 }), zoom: () => 15 };
   const count = (l: InstanceType<typeof OverviewLayer>) => l.root.children.length;
   const withV2 = new OverviewLayer(v2, view), withV1 = new OverviewLayer(decodeOverview({ ...base, version: 1 }), view);
-  // 2 landuse classes + pier fill + pier lines + 3 rail groups (rail, rail tunnel, tram).
-  assert.equal(count(withV2) - count(withV1), 7);
+  // 2 landuse classes + pier fill + pier lines + 3 rail groups: surface rail is a ballast halo under a dark core
+  // (#232, two meshes), the tunnel one faint line, tram one core.
+  assert.equal(count(withV2) - count(withV1), 8);
   withV2.beforeRender({} as never);
   const programs = new Set<string>();
   withV2.root.traverse(o => { const m = (o as any).material; if (m) programs.add(m.vertexShader + m.fragmentShader); });
-  assert.equal(programs.size, 2, 'fills and lines: two shader sources, whatever the layer count');
+  assert.equal(programs.size, 3, 'fills, lines and the one rail-line program (railLineMaterial, #232): three shader sources, whatever the layer count');
   const tunnel = withV2.root.children.find(o => o.renderOrder === 9) as any;
   assert.ok(tunnel && tunnel.material.uniforms.uOpacity.value < 0.5, 'tunnels faint');
 });
