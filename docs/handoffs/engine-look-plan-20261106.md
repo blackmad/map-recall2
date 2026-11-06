@@ -1,6 +1,6 @@
 # Engine look-and-robustness plan (2026-11-06) — for the Opus integrator
 
-Issues: plan #222; round 1 lanes #223 (R1-A swap), #224 (R1-B crisp), #225 (R1-C aerial), merged b52f002e0; round 2 lanes #228 (R2-A windows), #229 (R2-B shells), briefed 2026-11-06 after the user said "do round two". Lane briefs: `docs/handoffs/lane-engine-{swap,crisp,aerial,windows,shells}-20261106.md`. User shots archived in map-recall2-screenshots `engine/2026-11-06-user-shots/` (s1–s4).
+Issues: plan #222; round 1 lanes #223 (R1-A swap), #224 (R1-B crisp), #225 (R1-C aerial), merged b52f002e0; round 2 lanes #228 (R2-A windows), #229 (R2-B shells), briefed 2026-11-06 after the user said "do round two". Round 2 merged ed7783933 / e3c5507a4; round 3 lanes #230 (R3-A trim AA at the user's S3 pose), #231 (R3-B sharpness at DPR 2), #232 (R3-C rail beds), briefed 2026-11-06 after the user said "third round please". Lane briefs: `docs/handoffs/lane-engine-{swap,crisp,aerial,windows,shells,trim-aa,sharp,railbeds}-20261106.md`. User shots archived in map-recall2-screenshots `engine/2026-11-06-user-shots/` (s1–s4).
 
 ## Context
 
@@ -241,3 +241,13 @@ Chrome task manager (Shift+Esc) shows the tab's memory footprint and GPU memory;
 the tab still responds, `__canalPerf` in the DevTools console gives tier, pixel ratio
 and GL counters. If the tab dies, the next load of the site reports it to Sentry via
 the heartbeat; nothing has arrived there in the last 24 h.
+
+## Round 3 — three opus lanes, started 2026-11-06 (#230, #231, #232)
+
+What round two settled: the S2 fuzz is trilinear mip blur at 4–16 texels per device pixel (not the tier, not the governor, not texel density); analytic windows lift sharpness 14–21 % but alias at DPR 2, so they shipped off; the S3 moiré is thin cornice/parapet/eaves geometry and an edge-on elevation under MSAA, and the slab's street wall draws blank at the pinned pose; the far tier is on (`?farShells`) and the aerial label cap is on. What round two got wrong: both strips were taken from poses far above the user's shots, so nothing has been measured at the user's distance. Round three pins the user's poses first.
+
+- **R3-A #230** `lane-engine-trim-aa-20261106.md` (port 4645): `s3-slab-user` pose, owner attribution of the moving pixels (`?cellDebug=owner`), the blank slab wall (four passage pieces, `decorateFacade` per piece), a `thin` attribute with a screen-size dither-out for extras and decals (`?thinFade=0`), and a time-boxed SMAA copy-back spike (`?smaa=1`). Gate: aliasPx at the user's pose down ≥ 50 % at DPR 2. TAA with reprojection is explicitly out.
+- **R3-B #231** `lane-engine-sharp-20261106.md` (port 4646): `da-costakade-user` pose, band-limited SDF windows (minimum screen widths with energy-conserving coverage, bars fade first), a custom Kaiser/Lanczos mip chain for the façade array uploaded by hand (three 0.185 ignores `mipmaps[]` on `DataArrayTexture`), a LOD-bias A/B, the fade sweep, and the desktop default-flip proposal. Gate: aliasPx at DPR 2 ≤ painted baseline, lapVar ≥ +10 %, GPU ≤ +1 ms.
+- **R3-C #232** `lane-engine-railbeds-20261106.md` (port 4647): the one complaint no round fixed. Ten fresh loads per rail spot reading `cellBuild(key).byLayer`, the owner split (silently cached empty rail fetches, manifest failure, install discards for stationary riders, worker reorder drops), fixes behind `?railRetry`/`?groundRequeue`, a `rail-beds.spec.ts` gate, two-tone overview rail lines with a 1.25 px minimum (`?overviewRail=0`), far-ring rails checked now that the ring reaches the horizon.
+
+Merge order: R3-C (own ground only), then R3-B (texture path and the `CITY_WINDOW_SDF` injection), then R3-A (chunk attributes, `look/thinFade.ts`, post pass). A and B both inject into `cityLook.ts`/`litFacadeMaterial.ts`; each is fenced to one injection point.
