@@ -2326,5 +2326,11 @@
   "buildVersion": 2,
   "bytes": 145396,
   "triangles": 9532
+ },
+ "barlaeus-gymnasium": {
+  "sourceHash": "e38753c555670b61",
+  "buildVersion": 2,
+  "bytes": 55708,
+  "triangles": 3017
  }
 }

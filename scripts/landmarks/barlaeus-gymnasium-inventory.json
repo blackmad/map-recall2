@@ -1,0 +1,291 @@
+{
+ "schemaVersion": 1,
+ "id": "barlaeus-gymnasium",
+ "pand": "0363100012169565",
+ "brief": "scripts/landmarks/barlaeus-gymnasium-brief.md",
+ "signature": [
+  "gymnasium-attic",
+  "sculpture-group",
+  "pediment-tondo",
+  "portico",
+  "wing-surrounds"
+ ],
+ "walls": [
+  {
+   "tag": "w01-39",
+   "bearing": 39,
+   "lengthM": 21.7,
+   "centre": [
+    4.8845145,
+    52.3625465
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000355_pano_0000_000249",
+   "capturedAt": "2017-07-07",
+   "checked": true,
+   "items": [
+    {
+     "id": "canal-bands",
+     "kind": "window-shape",
+     "where": "Lijnbaansgracht side: brown brick with pale stone bands, plain windows in four rows",
+     "approxSizeM": [
+      21.7,
+      17
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-000355_pano_0000_000249"
+    }
+   ]
+  },
+  {
+   "tag": "w02-219",
+   "bearing": 219,
+   "lengthM": 10.2,
+   "centre": [
+    4.884574,
+    52.3623135
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002985_pano_0003_000409",
+   "capturedAt": "2023-02-27",
+   "checked": true,
+   "items": [
+    {
+     "id": "pavilion-e",
+     "kind": "window-shape",
+     "where": "south-east pavilion: rusticated ground, balustrades, half columns, corner trophies and tondi, triangular pediment",
+     "approxSizeM": [
+      10.2,
+      21.6
+     ],
+     "plan": "simplified",
+     "how": "columns as flat pilaster blocks, reliefs as low blocks and discs",
+     "seenIn": "TMX7316010203-002985_pano_0003_000409"
+    }
+   ]
+  },
+  {
+   "tag": "w03-219",
+   "bearing": 219,
+   "lengthM": 10.2,
+   "centre": [
+    4.884131,
+    52.3625285
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-07-14_05-25-22_02118",
+   "capturedAt": "2025-07-14",
+   "checked": true,
+   "items": [
+    {
+     "id": "pediment-tondo",
+     "kind": "relief",
+     "where": "pediment of the north-west pavilion with a tondo and a head among scrolls",
+     "approxSizeM": [
+      3,
+      2.2
+     ],
+     "plan": "simplified",
+     "how": "tondo disc and scroll blocks in the tympanum",
+     "seenIn": "recording_2025-07-14_05-25-22_02118"
+    },
+    {
+     "id": "pavilion-columns",
+     "kind": "colonnade",
+     "where": "engaged columns between the upper windows, mask keystones",
+     "approxSizeM": [
+      0.5,
+      3.6
+     ],
+     "plan": "simplified",
+     "how": "rectangular half-column blocks with capitals as slabs",
+     "seenIn": "recording_2025-07-14_05-25-22_02118"
+    }
+   ]
+  },
+  {
+   "tag": "w04-39",
+   "bearing": 39,
+   "lengthM": 10.2,
+   "centre": [
+    4.8843,
+    52.3626585
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000355_pano_0000_000247",
+   "capturedAt": "2017-07-07",
+   "checked": true,
+   "items": [
+    {
+     "id": "canal-wing",
+     "kind": "window-shape",
+     "where": "three-axis brick wing on the canal",
+     "approxSizeM": [
+      10.2,
+      17
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-000355_pano_0000_000247"
+    }
+   ]
+  },
+  {
+   "tag": "w05-219",
+   "bearing": 219,
+   "lengthM": 10.2,
+   "centre": [
+    4.8844695,
+    52.3623815
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002306_pano_0000_000427",
+   "capturedAt": "2021-09-09",
+   "checked": true,
+   "items": [
+    {
+     "id": "wing-surrounds",
+     "kind": "window-shape",
+     "where": "red brick upper storeys with stone window surrounds, lintel cornices and sill panels over the rusticated ground",
+     "approxSizeM": [
+      10.2,
+      17.6
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002306_pano_0000_000427"
+    },
+    {
+     "id": "dentil-cornice",
+     "kind": "other",
+     "where": "dentil course and cornice over the whole front",
+     "approxSizeM": [
+      50,
+      1.2
+     ],
+     "plan": "simplified",
+     "how": "two stepped stone copings",
+     "seenIn": "TMX7316010203-002306_pano_0000_000427"
+    }
+   ]
+  },
+  {
+   "tag": "w06-39",
+   "bearing": 39,
+   "lengthM": 10.2,
+   "centre": [
+    4.8847425,
+    52.3624445
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000355_pano_0000_000251",
+   "capturedAt": "2017-07-07",
+   "checked": true,
+   "items": [
+    {
+     "id": "canal-wing-2",
+     "kind": "window-shape",
+     "where": "north-west wing on the canal",
+     "approxSizeM": [
+      10.2,
+      17
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-000355_pano_0000_000251"
+    }
+   ]
+  },
+  {
+   "tag": "w07-219",
+   "bearing": 219,
+   "lengthM": 10.2,
+   "centre": [
+    4.8842625,
+    52.3624815
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002363_pano_0005_000563",
+   "capturedAt": "2021-12-29",
+   "checked": true,
+   "items": [
+    {
+     "id": "wing-w",
+     "kind": "window-shape",
+     "where": "north-west wing, same order as w05",
+     "approxSizeM": [
+      10.2,
+      17.6
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002363_pano_0005_000563"
+    }
+   ]
+  },
+  {
+   "tag": "w08-219",
+   "bearing": 219,
+   "lengthM": 7.8,
+   "centre": [
+    4.884352,
+    52.362421
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-07-14_05-25-22_02122",
+   "capturedAt": "2025-07-14",
+   "checked": true,
+   "items": [
+    {
+     "id": "gymnasium-attic",
+     "kind": "lettering",
+     "where": "ANNO | GYMNASIUM | 1885 on the attic over the entrance risaliet",
+     "approxSizeM": [
+      6,
+      0.5
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-07-14_05-25-22_02122"
+    },
+    {
+     "id": "sculpture-group",
+     "kind": "sculpture",
+     "where": "three standing figures with an angel over the attic, finials on the corner pedestals",
+     "approxSizeM": [
+      3,
+      3
+     ],
+     "plan": "simplified",
+     "how": "figure blocks on a plinth, wing slab; the sculpture track can replace them",
+     "seenIn": "recording_2025-07-14_05-25-22_02122"
+    },
+    {
+     "id": "portico",
+     "kind": "canopy",
+     "where": "entrance between two columns under a pediment, round-headed door with fanlight",
+     "approxSizeM": [
+      4.9,
+      7.5
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-07-14_05-25-22_02122"
+    },
+    {
+     "id": "atlas",
+     "kind": "sculpture",
+     "where": "atlas figure between the upper windows and relief panels on the corner piers",
+     "approxSizeM": [
+      0.5,
+      3.4
+     ],
+     "plan": "simplified",
+     "how": "figure and panels as low blocks",
+     "seenIn": "recording_2025-07-14_05-25-22_02122"
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  }
+ ]
+}

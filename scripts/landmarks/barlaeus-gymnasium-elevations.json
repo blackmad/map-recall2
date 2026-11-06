@@ -1,0 +1,125 @@
+{
+ "id": "barlaeus-gymnasium",
+ "countedBy": "lane #235 (opus) from the rectified panorama crops of landmark-brief.ts (artifacts/landmark-briefs/barlaeus-gymnasium/); ribbon convention; a door counts; span and frontDepth pin each counted front to its chord. Not a blind count; the integrator may re-count.",
+ "facades": [
+  {
+   "name": "Weteringschans: north-west pavilion",
+   "bearing": 219,
+   "photo": "artifacts/landmark-briefs/barlaeus-gymnasium/w03-219.jpg",
+   "span": [
+    -25.76,
+    -15.68
+   ],
+   "frontDepth": 8.37,
+   "depthBand": 0.8,
+   "heightM": [
+    0.5,
+    16
+   ],
+   "rows": [
+    3,
+    3,
+    3
+   ],
+   "columns": 3,
+   "symmetric": true,
+   "note": "Panorama recording_2025-07-14_05-25-22_02118 (2025-07-14). Three axes on three storeys between corner piers; balustrades under the first floor, half columns on both upper storeys; the pediment above heightM."
+  },
+  {
+   "name": "Weteringschans: north-west wing",
+   "bearing": 219,
+   "photo": "artifacts/landmark-briefs/barlaeus-gymnasium/w07-219.jpg",
+   "span": [
+    -15.49,
+    -5.49
+   ],
+   "frontDepth": 6.81,
+   "depthBand": 0.8,
+   "heightM": [
+    0.5,
+    16
+   ],
+   "rows": [
+    3,
+    3,
+    3
+   ],
+   "columns": 3,
+   "symmetric": true,
+   "note": "Panorama TMX7316010203-002363_pano_0005_000563 (2021-12-29). Three axes: rusticated ground, two brick storeys in stone surrounds."
+  },
+  {
+   "name": "Weteringschans: entrance risaliet",
+   "bearing": 219,
+   "photo": "artifacts/landmark-briefs/barlaeus-gymnasium/w08-219.jpg",
+   "span": [
+    -5.28,
+    2.32
+   ],
+   "frontDepth": 8.26,
+   "depthBand": 0.8,
+   "heightM": [
+    0.1,
+    16
+   ],
+   "rows": [
+    3,
+    2,
+    2
+   ],
+   "columns": 5,
+   "symmetric": true,
+   "note": "Panorama recording_2025-07-14_05-25-22_02122 (2025-07-14). Door between two small windows under the portico; pairs of windows above; the GYMNASIUM attic above heightM."
+  },
+  {
+   "name": "Weteringschans: south-east wing",
+   "bearing": 219,
+   "photo": "artifacts/landmark-briefs/barlaeus-gymnasium/w05-219.jpg",
+   "span": [
+    2.51,
+    12.51
+   ],
+   "frontDepth": 6.72,
+   "depthBand": 0.8,
+   "heightM": [
+    0.5,
+    16
+   ],
+   "rows": [
+    3,
+    3,
+    3
+   ],
+   "columns": 3,
+   "symmetric": true,
+   "note": "Panorama TMX7316010203-002306_pano_0000_000427 (2021-09-09). As the north-west wing. alongM crops the 0.4 m where the pavilion return and its cornice stand forward inside the depth band.",
+   "alongM": [
+    0,
+    9.4
+   ]
+  },
+  {
+   "name": "Weteringschans: south-east pavilion",
+   "bearing": 219,
+   "photo": "artifacts/landmark-briefs/barlaeus-gymnasium/w02-219.jpg",
+   "span": [
+    12.72,
+    22.79
+   ],
+   "frontDepth": 8.16,
+   "depthBand": 0.8,
+   "heightM": [
+    0.5,
+    16
+   ],
+   "rows": [
+    3,
+    3,
+    3
+   ],
+   "columns": 3,
+   "symmetric": true,
+   "note": "Panorama TMX7316010203-002985_pano_0003_000409 (2023-02-27). As the north-west pavilion."
+  }
+ ]
+}
