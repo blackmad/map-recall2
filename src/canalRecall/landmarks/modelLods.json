@@ -2332,5 +2332,11 @@
   "buildVersion": 2,
   "bytes": 133256,
   "triangles": 8859
+ },
+ "de-valerius": {
+  "sourceHash": "dfe1d4eed9e4e14c",
+  "buildVersion": 2,
+  "bytes": 96828,
+  "triangles": 5989
  }
 }

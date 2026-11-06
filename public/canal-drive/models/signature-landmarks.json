@@ -86153,6 +86153,246 @@
         "bytes": 133256,
         "triangles": 8859
       }
+    },
+    "de-valerius": {
+      "id": "de-valerius",
+      "name": "Valerius, Valeriusplein 9 / Lassusstraat (on the site of the former Valeriuskliniek)",
+      "modelUrl": "./models/de-valerius.glb",
+      "suppressOsmIds": [
+        "NL.IMBAG.Pand.0363100012251533"
+      ],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.86487401,
+          52.35256988
+        ],
+        "headingDegrees": 0,
+        "lengthMetres": 87.3,
+        "widthMetres": 73.7
+      },
+      "surveyed": {
+        "anchor": [
+          4.86487401,
+          52.35256988
+        ],
+        "northOffsetDegrees": 0,
+        "source": "Laid out in the long block's own frame on the BAG 0363100012251533 ring (RD, PDOK BAG WFS, CC0), native east/south metres from its vertex average above the 3DBAG ground +0.5 m NAP (scripts/landmarks/de-valerius-footprints.json, written by sarphati-plaza-prepare.ts --id=de-valerius --pand=0363100012251533); heights from the 3DBAG LoD2.2 parts (CC BY 4.0); storeys, windows, the pergolas, terraces and fence measured on the rectified Gemeente Amsterdam panoramas b_20241106_1111_Track21_Sphere_00007, recording_2025-07-30_08-35-53_00141, recording_2025-07-30_08-35-53_00150, recording_2025-07-30_08-35-53_00137 (CC BY 4.0). Identity: BAG units (26 dwellings, care and meeting spaces), nl.wikipedia Valeriuskliniek (built 2017-2023). The NW and SE ends are inferred from the finished fronts."
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 0,
+      "heightMetres": 19.3,
+      "bagYear": 2023,
+      "materialOverrides": {
+        "brick": "#3b3f46",
+        "blue": "#24282c",
+        "white": "#e4e4df",
+        "glass": "#404b55",
+        "dark": "#2a2e33",
+        "stone": "#7d7c78",
+        "concrete": "#8f8e8a",
+        "green": "#5f7048",
+        "slate": "#55595d"
+      },
+      "attribution": {
+        "title": "Valerius (De Jong Groep, 2017-2023), Valeriusplein 9 / Lassusstraat, on the site of the former Valeriuskliniek",
+        "author": "Map Recall",
+        "sourceUrl": "https://nl.wikipedia.org/wiki/Valeriuskliniek",
+        "licence": "CC BY 4.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "modifications": "Original texture-free flat-colour geometry on the BAG footprint (CC0) with 3DBAG LoD2.2 heights (CC BY 4.0): the dark glazed-brick long block with its end blocks and tower, the pergola sections with their balconies and slotted parapets, the two wings with their recessed top storeys under steel pergolas, the terraces stepping down into the garden, the garden room and the fence of brick piers and railings; read for proportion and tone from Gemeente Amsterdam panoramas (CC BY 4.0). No pixels or meshes imported."
+      },
+      "buildingFootprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.86437518,
+              52.35289234
+            ],
+            [
+              4.86437792,
+              52.35288856
+            ],
+            [
+              4.86445511,
+              52.35278154
+            ],
+            [
+              4.86446165,
+              52.35278332
+            ],
+            [
+              4.86481076,
+              52.35287846
+            ],
+            [
+              4.86482096,
+              52.35286442
+            ],
+            [
+              4.86440047,
+              52.35274982
+            ],
+            [
+              4.86451698,
+              52.35258855
+            ],
+            [
+              4.86458621,
+              52.35260733
+            ],
+            [
+              4.86462881,
+              52.35254932
+            ],
+            [
+              4.86455898,
+              52.35253041
+            ],
+            [
+              4.86467584,
+              52.35236866
+            ],
+            [
+              4.86487325,
+              52.35242253
+            ],
+            [
+              4.86488341,
+              52.35240847
+            ],
+            [
+              4.86475845,
+              52.35237437
+            ],
+            [
+              4.86475228,
+              52.35237269
+            ],
+            [
+              4.86482934,
+              52.35226619
+            ],
+            [
+              4.86483209,
+              52.3522624
+            ],
+            [
+              4.86504545,
+              52.35232034
+            ],
+            [
+              4.86505418,
+              52.35232271
+            ],
+            [
+              4.8654012,
+              52.35241694
+            ],
+            [
+              4.8653985,
+              52.35242074
+            ],
+            [
+              4.86546197,
+              52.35243719
+            ],
+            [
+              4.86542116,
+              52.35249621
+            ],
+            [
+              4.865357,
+              52.35247874
+            ],
+            [
+              4.86531778,
+              52.35253285
+            ],
+            [
+              4.8651855,
+              52.35271534
+            ],
+            [
+              4.865161,
+              52.35274892
+            ],
+            [
+              4.86494485,
+              52.35304714
+            ],
+            [
+              4.86437518,
+              52.35289234
+            ]
+          ],
+          [
+            [
+              4.86498306,
+              52.35245248
+            ],
+            [
+              4.86509862,
+              52.35248402
+            ],
+            [
+              4.86510425,
+              52.35247631
+            ],
+            [
+              4.86510887,
+              52.35246999
+            ],
+            [
+              4.8649932,
+              52.35243844
+            ],
+            [
+              4.86498306,
+              52.35245248
+            ]
+          ]
+        ]
+      },
+      "buildingCategory": "landmark",
+      "bounds": {
+        "min": [
+          -33.85818099975586,
+          0,
+          -53.14196014404297
+        ],
+        "max": [
+          39.94538116455078,
+          19.549999237060547,
+          34.31169891357422
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.86487401,
+          52.35256988
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 90,
+        "facadeBearingDegrees": 0,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 87.45365905761719,
+        "heightMetres": 19.549999237060547,
+        "depthMetres": 73.80356216430664,
+        "depthCoverage": 1.001405185404432
+      },
+      "triangles": 13888,
+      "bytes": 199556,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
+      "lod1": {
+        "sourceHash": "dfe1d4eed9e4e14c",
+        "buildVersion": 2,
+        "bytes": 96828,
+        "triangles": 5989
+      }
     }
   }
 }
