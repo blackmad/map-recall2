@@ -1,6 +1,6 @@
 {
  "version": 1,
- "generatedAt": "2026-11-06T23:39:20.213Z",
+ "generatedAt": "2026-11-06T23:45:10.283Z",
  "chunks": [
   {
    "id": "chunk-face-bilder-080336-090492",
@@ -49471,238 +49471,6 @@
    ]
   },
   {
-   "id": "chunk-face-helmers-40-60-r1",
-   "category": "street-survey",
-   "name": "face-helmers-40-60-r1",
-   "modelUrl": "./models/ordinary-buildings/chunks/chunk-face-helmers-40-60-r1.glb?asset=6396c594c27ad184",
-   "sha256": "6396c594c27ad1849b0841a49889d7eed6d03bf0867f3542f82042fa65169373",
-   "bytes": 349184,
-   "triangles": 5143,
-   "primitives": 10,
-   "instance": {
-    "anchor": [
-     4.875370540063154,
-     52.363618394198525
-    ],
-    "northOffsetDegrees": 336.3305,
-    "mirror": false
-   },
-   "bounds": {
-    "min": [
-     -6.006,
-     0,
-     -12.343
-    ],
-    "max": [
-     5.897,
-     16.971,
-     0.645
-    ]
-   },
-   "height": 16.971,
-   "suppress": [
-    "NL.IMBAG.Pand.0363100012167041",
-    "NL.IMBAG.Pand.0363100012165540"
-   ],
-   "replaces": [
-    "ordinary-0363100012167041",
-    "ordinary-0363100012165540"
-   ],
-   "footprint": {
-    "type": "MultiPolygon",
-    "coordinates": [
-     [
-      [
-       [
-        4.8752992,
-        52.3637199
-       ],
-       [
-        4.8752181,
-        52.3636983
-       ],
-       [
-        4.8752285,
-        52.3636825
-       ],
-       [
-        4.8752917,
-        52.3635973
-       ],
-       [
-        4.8753705,
-        52.3636184
-       ]
-      ]
-     ],
-     [
-      [
-       [
-        4.8753776,
-        52.3637408
-       ],
-       [
-        4.8752992,
-        52.3637199
-       ],
-       [
-        4.8753705,
-        52.3636184
-       ],
-       [
-        4.8754494,
-        52.3636395
-       ]
-      ]
-     ]
-    ]
-   },
-   "pands": [
-    {
-     "recipeId": "helmers-167041",
-     "pandId": "0363100012167041",
-     "buildingId": "NL.IMBAG.Pand.0363100012167041",
-     "address": "Eerste Helmersstraat 56",
-     "frontage": {
-      "x0": -5.858,
-      "x1": -0.003,
-      "widthM": 5.854
-     },
-     "bounds": {
-      "min": [
-       -6.006,
-       0,
-       -12.343
-      ],
-      "max": [
-       0.073,
-       16.971,
-       0.645
-      ]
-     },
-     "triangles": 2571,
-     "ranges": [
-      {
-       "primitive": 1,
-       "firstTriangle": 0,
-       "triangleCount": 44
-      },
-      {
-       "primitive": 2,
-       "firstTriangle": 0,
-       "triangleCount": 432
-      },
-      {
-       "primitive": 3,
-       "firstTriangle": 0,
-       "triangleCount": 172
-      },
-      {
-       "primitive": 4,
-       "firstTriangle": 0,
-       "triangleCount": 1204
-      },
-      {
-       "primitive": 5,
-       "firstTriangle": 0,
-       "triangleCount": 444
-      },
-      {
-       "primitive": 6,
-       "firstTriangle": 0,
-       "triangleCount": 260
-      },
-      {
-       "primitive": 7,
-       "firstTriangle": 0,
-       "triangleCount": 9
-      },
-      {
-       "primitive": 8,
-       "firstTriangle": 0,
-       "triangleCount": 1
-      },
-      {
-       "primitive": 9,
-       "firstTriangle": 0,
-       "triangleCount": 5
-      }
-     ]
-    },
-    {
-     "recipeId": "helmers-165540",
-     "pandId": "0363100012165540",
-     "buildingId": "NL.IMBAG.Pand.0363100012165540",
-     "address": "Eerste Helmersstraat 54",
-     "frontage": {
-      "x0": -0.003,
-      "x1": 5.864,
-      "widthM": 5.868
-     },
-     "bounds": {
-      "min": [
-       -0.003,
-       0,
-       -12.335
-      ],
-      "max": [
-       5.897,
-       16.469,
-       0.645
-      ]
-     },
-     "triangles": 2572,
-     "ranges": [
-      {
-       "primitive": 0,
-       "firstTriangle": 0,
-       "triangleCount": 42
-      },
-      {
-       "primitive": 2,
-       "firstTriangle": 432,
-       "triangleCount": 432
-      },
-      {
-       "primitive": 3,
-       "firstTriangle": 172,
-       "triangleCount": 172
-      },
-      {
-       "primitive": 4,
-       "firstTriangle": 1204,
-       "triangleCount": 1204
-      },
-      {
-       "primitive": 5,
-       "firstTriangle": 444,
-       "triangleCount": 444
-      },
-      {
-       "primitive": 6,
-       "firstTriangle": 260,
-       "triangleCount": 260
-      },
-      {
-       "primitive": 7,
-       "firstTriangle": 9,
-       "triangleCount": 9
-      },
-      {
-       "primitive": 8,
-       "firstTriangle": 1,
-       "triangleCount": 3
-      },
-      {
-       "primitive": 9,
-       "firstTriangle": 5,
-       "triangleCount": 6
-      }
-     ]
-    }
-   ]
-  },
-  {
    "id": "chunk-face-helmers-51-73-r1",
    "category": "street-survey",
    "name": "face-helmers-51-73-r1",
@@ -73491,984 +73259,6 @@
    ]
   },
   {
-   "id": "chunk-face-luthuli-22-32",
-   "category": "street-survey",
-   "name": "face-luthuli-22-32",
-   "modelUrl": "./models/ordinary-buildings/chunks/chunk-face-luthuli-22-32.glb?asset=5b022f6d81409477",
-   "sha256": "5b022f6d81409477e7364012990c4b09676fe67d8a635ad1b3fa6665ba7b3b18",
-   "bytes": 506448,
-   "triangles": 7577,
-   "primitives": 10,
-   "instance": {
-    "anchor": [
-     4.91913579489326,
-     52.35276897688812
-    ],
-    "northOffsetDegrees": 323.6275,
-    "mirror": false
-   },
-   "bounds": {
-    "min": [
-     -22.94,
-     0,
-     -17.045
-    ],
-    "max": [
-     22.805,
-     17.565,
-     1.002
-    ]
-   },
-   "height": 17.565,
-   "suppress": [
-    "NL.IMBAG.Pand.0363100012124743",
-    "NL.IMBAG.Pand.0363100012088339",
-    "NL.IMBAG.Pand.0363100012068825"
-   ],
-   "replaces": [
-    "ordinary-0363100012124743",
-    "ordinary-0363100012088339",
-    "ordinary-0363100012068825"
-   ],
-   "footprint": {
-    "type": "MultiPolygon",
-    "coordinates": [
-     [
-      [
-       [
-        4.9189821,
-        52.3528003
-       ],
-       [
-        4.918956,
-        52.3527886
-       ],
-       [
-        4.9189474,
-        52.3527957
-       ],
-       [
-        4.9188892,
-        52.3527696
-       ],
-       [
-        4.9188271,
-        52.3528198
-       ],
-       [
-        4.9187207,
-        52.3527718
-       ],
-       [
-        4.9187559,
-        52.3527426
-       ],
-       [
-        4.9187518,
-        52.3527408
-       ],
-       [
-        4.9187738,
-        52.3527225
-       ],
-       [
-        4.9187778,
-        52.3527243
-       ],
-       [
-        4.9188686,
-        52.3526487
-       ],
-       [
-        4.9189478,
-        52.3526844
-       ],
-       [
-        4.9189521,
-        52.3526808
-       ],
-       [
-        4.9190085,
-        52.3527061
-       ],
-       [
-        4.9190041,
-        52.3527097
-       ],
-       [
-        4.9190605,
-        52.3527351
-       ]
-      ]
-     ],
-     [
-      [
-       [
-        4.9192098,
-        52.3528023
-       ],
-       [
-        4.9191314,
-        52.3528676
-       ],
-       [
-        4.9191053,
-        52.3528559
-       ],
-       [
-        4.9190967,
-        52.3528631
-       ],
-       [
-        4.9189995,
-        52.3528194
-       ],
-       [
-        4.9190083,
-        52.3528121
-       ],
-       [
-        4.9189821,
-        52.3528003
-       ],
-       [
-        4.9190605,
-        52.3527351
-       ],
-       [
-        4.9191168,
-        52.3527604
-       ],
-       [
-        4.9191177,
-        52.3527596
-       ],
-       [
-        4.9191534,
-        52.3527757
-       ],
-       [
-        4.9191525,
-        52.3527765
-       ]
-      ]
-     ],
-     [
-      [
-       [
-        4.9194056,
-        52.3528903
-       ],
-       [
-        4.919304,
-        52.3529454
-       ],
-       [
-        4.9192765,
-        52.352933
-       ],
-       [
-        4.9192684,
-        52.3529399
-       ],
-       [
-        4.9191491,
-        52.3528865
-       ],
-       [
-        4.9191576,
-        52.3528794
-       ],
-       [
-        4.9191314,
-        52.3528676
-       ],
-       [
-        4.9192098,
-        52.3528023
-       ],
-       [
-        4.9192672,
-        52.3528281
-       ],
-       [
-        4.9192714,
-        52.3528246
-       ],
-       [
-        4.9193275,
-        52.3528497
-       ],
-       [
-        4.9193235,
-        52.3528534
-       ]
-      ]
-     ]
-    ]
-   },
-   "pands": [
-    {
-     "recipeId": "luthuli-124743",
-     "pandId": "0363100012124743",
-     "buildingId": "NL.IMBAG.Pand.0363100012124743",
-     "address": "Albert Luthulistraat 30A",
-     "frontage": {
-      "x0": -22.59,
-      "x1": -6.369,
-      "widthM": 16.221
-     },
-     "bounds": {
-      "min": [
-       -22.94,
-       0,
-       -17.045
-      ],
-      "max": [
-       -6.369,
-       17.565,
-       1.002
-      ]
-     },
-     "triangles": 2489,
-     "ranges": [
-      {
-       "primitive": 0,
-       "firstTriangle": 0,
-       "triangleCount": 148
-      },
-      {
-       "primitive": 2,
-       "firstTriangle": 0,
-       "triangleCount": 24
-      },
-      {
-       "primitive": 3,
-       "firstTriangle": 0,
-       "triangleCount": 10
-      },
-      {
-       "primitive": 4,
-       "firstTriangle": 0,
-       "triangleCount": 12
-      },
-      {
-       "primitive": 5,
-       "firstTriangle": 0,
-       "triangleCount": 1860
-      },
-      {
-       "primitive": 6,
-       "firstTriangle": 0,
-       "triangleCount": 12
-      },
-      {
-       "primitive": 7,
-       "firstTriangle": 0,
-       "triangleCount": 396
-      },
-      {
-       "primitive": 8,
-       "firstTriangle": 0,
-       "triangleCount": 10
-      },
-      {
-       "primitive": 9,
-       "firstTriangle": 0,
-       "triangleCount": 17
-      }
-     ]
-    },
-    {
-     "recipeId": "luthuli-088339",
-     "pandId": "0363100012088339",
-     "buildingId": "NL.IMBAG.Pand.0363100012088339",
-     "address": "Albert Luthulistraat 26A",
-     "frontage": {
-      "x0": -6.369,
-      "x1": 6.262,
-      "widthM": 12.631
-     },
-     "bounds": {
-      "min": [
-       -6.371,
-       0,
-       -10.057
-      ],
-      "max": [
-       6.262,
-       14.28,
-       0.245
-      ]
-     },
-     "triangles": 2574,
-     "ranges": [
-      {
-       "primitive": 0,
-       "firstTriangle": 148,
-       "triangleCount": 86
-      },
-      {
-       "primitive": 1,
-       "firstTriangle": 0,
-       "triangleCount": 144
-      },
-      {
-       "primitive": 2,
-       "firstTriangle": 24,
-       "triangleCount": 24
-      },
-      {
-       "primitive": 4,
-       "firstTriangle": 12,
-       "triangleCount": 12
-      },
-      {
-       "primitive": 5,
-       "firstTriangle": 1860,
-       "triangleCount": 1900
-      },
-      {
-       "primitive": 6,
-       "firstTriangle": 12,
-       "triangleCount": 12
-      },
-      {
-       "primitive": 7,
-       "firstTriangle": 396,
-       "triangleCount": 384
-      },
-      {
-       "primitive": 9,
-       "firstTriangle": 17,
-       "triangleCount": 12
-      }
-     ]
-    },
-    {
-     "recipeId": "luthuli-068825",
-     "pandId": "0363100012068825",
-     "buildingId": "NL.IMBAG.Pand.0363100012068825",
-     "address": "Albert Luthulistraat 22A",
-     "frontage": {
-      "x0": 6.262,
-      "x1": 22.805,
-      "widthM": 16.544
-     },
-     "bounds": {
-      "min": [
-       6.26,
-       0,
-       -10.036
-      ],
-      "max": [
-       22.805,
-       17.553,
-       0.992
-      ]
-     },
-     "triangles": 2514,
-     "ranges": [
-      {
-       "primitive": 0,
-       "firstTriangle": 234,
-       "triangleCount": 110
-      },
-      {
-       "primitive": 2,
-       "firstTriangle": 48,
-       "triangleCount": 24
-      },
-      {
-       "primitive": 3,
-       "firstTriangle": 10,
-       "triangleCount": 10
-      },
-      {
-       "primitive": 4,
-       "firstTriangle": 24,
-       "triangleCount": 12
-      },
-      {
-       "primitive": 5,
-       "firstTriangle": 3760,
-       "triangleCount": 1916
-      },
-      {
-       "primitive": 6,
-       "firstTriangle": 24,
-       "triangleCount": 12
-      },
-      {
-       "primitive": 7,
-       "firstTriangle": 780,
-       "triangleCount": 408
-      },
-      {
-       "primitive": 8,
-       "firstTriangle": 10,
-       "triangleCount": 10
-      },
-      {
-       "primitive": 9,
-       "firstTriangle": 29,
-       "triangleCount": 12
-      }
-     ]
-    }
-   ]
-  },
-  {
-   "id": "chunk-face-luthuli-6-20",
-   "category": "street-survey",
-   "name": "face-luthuli-6-20",
-   "modelUrl": "./models/ordinary-buildings/chunks/chunk-face-luthuli-6-20.glb?asset=925d69104cb63737",
-   "sha256": "925d69104cb637374d3a8f7807ec293fa64e34c0fdf3830d7a549cb399dc2db7",
-   "bytes": 675932,
-   "triangles": 10152,
-   "primitives": 10,
-   "instance": {
-    "anchor": [
-     4.919610495330769,
-     52.35312291398182
-    ],
-    "northOffsetDegrees": 298.2857,
-    "mirror": false
-   },
-   "bounds": {
-    "min": [
-     -29.407,
-     0,
-     -14.043
-    ],
-    "max": [
-     27.085,
-     17.565,
-     1.002
-    ]
-   },
-   "height": 17.565,
-   "suppress": [
-    "NL.IMBAG.Pand.0363100012092667",
-    "NL.IMBAG.Pand.0363100012087850",
-    "NL.IMBAG.Pand.0363100012073273",
-    "NL.IMBAG.Pand.0363100012097026"
-   ],
-   "replaces": [
-    "ordinary-0363100012092667",
-    "ordinary-0363100012087850",
-    "ordinary-0363100012073273",
-    "ordinary-0363100012097026"
-   ],
-   "footprint": {
-    "type": "MultiPolygon",
-    "coordinates": [
-     [
-      [
-       [
-        4.9195208,
-        52.3530211
-       ],
-       [
-        4.9194046,
-        52.3530595
-       ],
-       [
-        4.9193891,
-        52.353042
-       ],
-       [
-        4.9193761,
-        52.3530463
-       ],
-       [
-        4.919307,
-        52.3529676
-       ],
-       [
-        4.9193198,
-        52.3529633
-       ],
-       [
-        4.919304,
-        52.3529454
-       ],
-       [
-        4.9194056,
-        52.3528903
-       ],
-       [
-        4.9194543,
-        52.3529456
-       ],
-       [
-        4.9194607,
-        52.3529435
-       ],
-       [
-        4.9194938,
-        52.3529812
-       ],
-       [
-        4.9194875,
-        52.3529832
-       ]
-      ]
-     ],
-     [
-      [
-       [
-        4.9196097,
-        52.353122
-       ],
-       [
-        4.9194934,
-        52.3531604
-       ],
-       [
-        4.919478,
-        52.3531429
-       ],
-       [
-        4.9194651,
-        52.3531472
-       ],
-       [
-        4.9194361,
-        52.3531143
-       ],
-       [
-        4.919407,
-        52.3530813
-       ],
-       [
-        4.9194199,
-        52.353077
-       ],
-       [
-        4.9194046,
-        52.3530595
-       ],
-       [
-        4.9195208,
-        52.3530211
-       ],
-       [
-        4.9195542,
-        52.353059
-       ],
-       [
-        4.9195584,
-        52.3530576
-       ],
-       [
-        4.9195807,
-        52.3530828
-       ],
-       [
-        4.9195764,
-        52.3530842
-       ]
-      ]
-     ],
-     [
-      [
-       [
-        4.9197091,
-        52.3532348
-       ],
-       [
-        4.9195928,
-        52.3532732
-       ],
-       [
-        4.9195774,
-        52.3532558
-       ],
-       [
-        4.9195645,
-        52.35326
-       ],
-       [
-        4.9194959,
-        52.3531821
-       ],
-       [
-        4.9195088,
-        52.3531779
-       ],
-       [
-        4.9194934,
-        52.3531604
-       ],
-       [
-        4.9196097,
-        52.353122
-       ],
-       [
-        4.919643,
-        52.3531597
-       ],
-       [
-        4.9196494,
-        52.3531576
-       ],
-       [
-        4.9196824,
-        52.353195
-       ],
-       [
-        4.9196759,
-        52.3531972
-       ]
-      ]
-     ],
-     [
-      [
-       [
-        4.9197992,
-        52.3533371
-       ],
-       [
-        4.919683,
-        52.3533756
-       ],
-       [
-        4.9196676,
-        52.3533581
-       ],
-       [
-        4.9196547,
-        52.3533623
-       ],
-       [
-        4.9196242,
-        52.3533278
-       ],
-       [
-        4.9195724,
-        52.3533447
-       ],
-       [
-        4.9195281,
-        52.3532944
-       ],
-       [
-        4.9195928,
-        52.3532732
-       ],
-       [
-        4.9197091,
-        52.3532348
-       ],
-       [
-        4.9197423,
-        52.3532725
-       ],
-       [
-        4.9197466,
-        52.3532711
-       ],
-       [
-        4.9197687,
-        52.3532963
-       ],
-       [
-        4.9197645,
-        52.3532977
-       ]
-      ]
-     ]
-    ]
-   },
-   "pands": [
-    {
-     "recipeId": "luthuli-092667",
-     "pandId": "0363100012092667",
-     "buildingId": "NL.IMBAG.Pand.0363100012092667",
-     "address": "Albert Luthulistraat 18A",
-     "frontage": {
-      "x0": -29.407,
-      "x1": -12.87,
-      "widthM": 16.537
-     },
-     "bounds": {
-      "min": [
-       -29.407,
-       0,
-       -10.046
-      ],
-      "max": [
-       -12.869,
-       17.565,
-       0.997
-      ]
-     },
-     "triangles": 2513,
-     "ranges": [
-      {
-       "primitive": 0,
-       "firstTriangle": 0,
-       "triangleCount": 110
-      },
-      {
-       "primitive": 2,
-       "firstTriangle": 0,
-       "triangleCount": 24
-      },
-      {
-       "primitive": 3,
-       "firstTriangle": 0,
-       "triangleCount": 10
-      },
-      {
-       "primitive": 4,
-       "firstTriangle": 0,
-       "triangleCount": 12
-      },
-      {
-       "primitive": 5,
-       "firstTriangle": 0,
-       "triangleCount": 1916
-      },
-      {
-       "primitive": 6,
-       "firstTriangle": 0,
-       "triangleCount": 12
-      },
-      {
-       "primitive": 7,
-       "firstTriangle": 0,
-       "triangleCount": 408
-      },
-      {
-       "primitive": 8,
-       "firstTriangle": 0,
-       "triangleCount": 10
-      },
-      {
-       "primitive": 9,
-       "firstTriangle": 0,
-       "triangleCount": 11
-      }
-     ]
-    },
-    {
-     "recipeId": "luthuli-087850",
-     "pandId": "0363100012087850",
-     "buildingId": "NL.IMBAG.Pand.0363100012087850",
-     "address": "Albert Luthulistraat 14A",
-     "frontage": {
-      "x0": -12.87,
-      "x1": -0.12,
-      "widthM": 12.75
-     },
-     "bounds": {
-      "min": [
-       -12.87,
-       0,
-       -10.04
-      ],
-      "max": [
-       -0.12,
-       14.29,
-       0.467
-      ]
-     },
-     "triangles": 2583,
-     "ranges": [
-      {
-       "primitive": 0,
-       "firstTriangle": 110,
-       "triangleCount": 91
-      },
-      {
-       "primitive": 1,
-       "firstTriangle": 0,
-       "triangleCount": 144
-      },
-      {
-       "primitive": 2,
-       "firstTriangle": 24,
-       "triangleCount": 24
-      },
-      {
-       "primitive": 4,
-       "firstTriangle": 12,
-       "triangleCount": 12
-      },
-      {
-       "primitive": 5,
-       "firstTriangle": 1916,
-       "triangleCount": 1900
-      },
-      {
-       "primitive": 6,
-       "firstTriangle": 12,
-       "triangleCount": 12
-      },
-      {
-       "primitive": 7,
-       "firstTriangle": 408,
-       "triangleCount": 384
-      },
-      {
-       "primitive": 8,
-       "firstTriangle": 10,
-       "triangleCount": 3
-      },
-      {
-       "primitive": 9,
-       "firstTriangle": 11,
-       "triangleCount": 13
-      }
-     ]
-    },
-    {
-     "recipeId": "luthuli-073273",
-     "pandId": "0363100012073273",
-     "buildingId": "NL.IMBAG.Pand.0363100012073273",
-     "address": "Albert Luthulistraat 10A",
-     "frontage": {
-      "x0": -0.12,
-      "x1": 14.151,
-      "widthM": 14.27
-     },
-     "bounds": {
-      "min": [
-       -0.12,
-       0,
-       -10.04
-      ],
-      "max": [
-       14.151,
-       17.565,
-       1.002
-      ]
-     },
-     "triangles": 2448,
-     "ranges": [
-      {
-       "primitive": 0,
-       "firstTriangle": 201,
-       "triangleCount": 112
-      },
-      {
-       "primitive": 2,
-       "firstTriangle": 48,
-       "triangleCount": 24
-      },
-      {
-       "primitive": 3,
-       "firstTriangle": 10,
-       "triangleCount": 10
-      },
-      {
-       "primitive": 4,
-       "firstTriangle": 24,
-       "triangleCount": 12
-      },
-      {
-       "primitive": 5,
-       "firstTriangle": 3816,
-       "triangleCount": 1860
-      },
-      {
-       "primitive": 6,
-       "firstTriangle": 24,
-       "triangleCount": 12
-      },
-      {
-       "primitive": 7,
-       "firstTriangle": 792,
-       "triangleCount": 396
-      },
-      {
-       "primitive": 8,
-       "firstTriangle": 13,
-       "triangleCount": 12
-      },
-      {
-       "primitive": 9,
-       "firstTriangle": 24,
-       "triangleCount": 10
-      }
-     ]
-    },
-    {
-     "recipeId": "luthuli-097026",
-     "pandId": "0363100012097026",
-     "buildingId": "NL.IMBAG.Pand.0363100012097026",
-     "address": "Albert Luthulistraat 6A",
-     "frontage": {
-      "x0": 14.151,
-      "x1": 27.084,
-      "widthM": 12.933
-     },
-     "bounds": {
-      "min": [
-       14.129,
-       0,
-       -14.043
-      ],
-      "max": [
-       27.085,
-       14.29,
-       0.466
-      ]
-     },
-     "triangles": 2608,
-     "ranges": [
-      {
-       "primitive": 0,
-       "firstTriangle": 313,
-       "triangleCount": 111
-      },
-      {
-       "primitive": 1,
-       "firstTriangle": 144,
-       "triangleCount": 144
-      },
-      {
-       "primitive": 2,
-       "firstTriangle": 72,
-       "triangleCount": 24
-      },
-      {
-       "primitive": 4,
-       "firstTriangle": 36,
-       "triangleCount": 12
-      },
-      {
-       "primitive": 5,
-       "firstTriangle": 5676,
-       "triangleCount": 1900
-      },
-      {
-       "primitive": 6,
-       "firstTriangle": 36,
-       "triangleCount": 12
-      },
-      {
-       "primitive": 7,
-       "firstTriangle": 1188,
-       "triangleCount": 384
-      },
-      {
-       "primitive": 8,
-       "firstTriangle": 25,
-       "triangleCount": 3
-      },
-      {
-       "primitive": 9,
-       "firstTriangle": 34,
-       "triangleCount": 18
-      }
-     ]
-    }
-   ]
-  },
-  {
    "id": "chunk-face-bree-107-149-r1",
    "category": "street-survey",
    "name": "face-bree-107-149-r1",
@@ -83982,6 +82772,1306 @@
        "primitive": 22,
        "firstTriangle": 20,
        "triangleCount": 4
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "chunk-face-helmers-40-60-r1",
+   "category": "street-survey",
+   "name": "face-helmers-40-60-r1",
+   "modelUrl": "./models/ordinary-buildings/chunks/chunk-face-helmers-40-60-r1.glb?asset=68bbac21da91875a",
+   "sha256": "68bbac21da91875a5b3470ad4e0b347f0f137498326d934acecee53f9a3ead17",
+   "bytes": 365440,
+   "triangles": 5353,
+   "primitives": 14,
+   "instance": {
+    "anchor": [
+     4.875370540063154,
+     52.363618394198525
+    ],
+    "northOffsetDegrees": 336.3305,
+    "mirror": false
+   },
+   "bounds": {
+    "min": [
+     -6.006,
+     0,
+     -12.343
+    ],
+    "max": [
+     5.897,
+     16.971,
+     0.645
+    ]
+   },
+   "height": 16.971,
+   "suppress": [
+    "NL.IMBAG.Pand.0363100012167041",
+    "NL.IMBAG.Pand.0363100012165540"
+   ],
+   "replaces": [
+    "ordinary-0363100012167041",
+    "ordinary-0363100012165540"
+   ],
+   "footprint": {
+    "type": "MultiPolygon",
+    "coordinates": [
+     [
+      [
+       [
+        4.8752992,
+        52.3637199
+       ],
+       [
+        4.8752181,
+        52.3636983
+       ],
+       [
+        4.8752285,
+        52.3636825
+       ],
+       [
+        4.8752917,
+        52.3635973
+       ],
+       [
+        4.8753705,
+        52.3636184
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.8753776,
+        52.3637408
+       ],
+       [
+        4.8752992,
+        52.3637199
+       ],
+       [
+        4.8753705,
+        52.3636184
+       ],
+       [
+        4.8754494,
+        52.3636395
+       ]
+      ]
+     ]
+    ]
+   },
+   "pands": [
+    {
+     "recipeId": "helmers-167041",
+     "pandId": "0363100012167041",
+     "buildingId": "NL.IMBAG.Pand.0363100012167041",
+     "address": "Eerste Helmersstraat 56",
+     "frontage": {
+      "x0": -5.858,
+      "x1": -0.003,
+      "widthM": 5.854
+     },
+     "bounds": {
+      "min": [
+       -6.006,
+       0,
+       -12.343
+      ],
+      "max": [
+       0.073,
+       16.971,
+       0.645
+      ]
+     },
+     "triangles": 2676,
+     "ranges": [
+      {
+       "primitive": 2,
+       "firstTriangle": 0,
+       "triangleCount": 30
+      },
+      {
+       "primitive": 3,
+       "firstTriangle": 0,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 0,
+       "triangleCount": 83
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 0,
+       "triangleCount": 444
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 0,
+       "triangleCount": 172
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 0,
+       "triangleCount": 1204
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 0,
+       "triangleCount": 444
+      },
+      {
+       "primitive": 10,
+       "firstTriangle": 0,
+       "triangleCount": 260
+      },
+      {
+       "primitive": 11,
+       "firstTriangle": 0,
+       "triangleCount": 9
+      },
+      {
+       "primitive": 12,
+       "firstTriangle": 0,
+       "triangleCount": 1
+      },
+      {
+       "primitive": 13,
+       "firstTriangle": 0,
+       "triangleCount": 5
+      }
+     ]
+    },
+    {
+     "recipeId": "helmers-165540",
+     "pandId": "0363100012165540",
+     "buildingId": "NL.IMBAG.Pand.0363100012165540",
+     "address": "Eerste Helmersstraat 54",
+     "frontage": {
+      "x0": -0.003,
+      "x1": 5.864,
+      "widthM": 5.868
+     },
+     "bounds": {
+      "min": [
+       -0.003,
+       0,
+       -12.335
+      ],
+      "max": [
+       5.897,
+       16.469,
+       0.645
+      ]
+     },
+     "triangles": 2677,
+     "ranges": [
+      {
+       "primitive": 0,
+       "firstTriangle": 0,
+       "triangleCount": 30
+      },
+      {
+       "primitive": 1,
+       "firstTriangle": 0,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 4,
+       "firstTriangle": 0,
+       "triangleCount": 81
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 444,
+       "triangleCount": 444
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 172,
+       "triangleCount": 172
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 1204,
+       "triangleCount": 1204
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 444,
+       "triangleCount": 444
+      },
+      {
+       "primitive": 10,
+       "firstTriangle": 260,
+       "triangleCount": 260
+      },
+      {
+       "primitive": 11,
+       "firstTriangle": 9,
+       "triangleCount": 9
+      },
+      {
+       "primitive": 12,
+       "firstTriangle": 1,
+       "triangleCount": 3
+      },
+      {
+       "primitive": 13,
+       "firstTriangle": 5,
+       "triangleCount": 6
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "chunk-face-luthuli-6-20",
+   "category": "street-survey",
+   "name": "face-luthuli-6-20",
+   "modelUrl": "./models/ordinary-buildings/chunks/chunk-face-luthuli-6-20.glb?asset=9632d52ca4d2de34",
+   "sha256": "9632d52ca4d2de342e9edeec0c7b6642dd93d9f0f33ffef52f4ae76e4519a4ec",
+   "bytes": 706112,
+   "triangles": 10652,
+   "primitives": 12,
+   "instance": {
+    "anchor": [
+     4.919610495330769,
+     52.35312291398182
+    ],
+    "northOffsetDegrees": 298.2857,
+    "mirror": false
+   },
+   "bounds": {
+    "min": [
+     -29.407,
+     0,
+     -14.043
+    ],
+    "max": [
+     27.085,
+     17.565,
+     1.002
+    ]
+   },
+   "height": 17.565,
+   "suppress": [
+    "NL.IMBAG.Pand.0363100012092667",
+    "NL.IMBAG.Pand.0363100012087850",
+    "NL.IMBAG.Pand.0363100012073273",
+    "NL.IMBAG.Pand.0363100012097026"
+   ],
+   "replaces": [
+    "ordinary-0363100012092667",
+    "ordinary-0363100012087850",
+    "ordinary-0363100012073273",
+    "ordinary-0363100012097026"
+   ],
+   "footprint": {
+    "type": "MultiPolygon",
+    "coordinates": [
+     [
+      [
+       [
+        4.9195208,
+        52.3530211
+       ],
+       [
+        4.9194046,
+        52.3530595
+       ],
+       [
+        4.9193891,
+        52.353042
+       ],
+       [
+        4.9193761,
+        52.3530463
+       ],
+       [
+        4.919307,
+        52.3529676
+       ],
+       [
+        4.9193198,
+        52.3529633
+       ],
+       [
+        4.919304,
+        52.3529454
+       ],
+       [
+        4.9194056,
+        52.3528903
+       ],
+       [
+        4.9194543,
+        52.3529456
+       ],
+       [
+        4.9194607,
+        52.3529435
+       ],
+       [
+        4.9194938,
+        52.3529812
+       ],
+       [
+        4.9194875,
+        52.3529832
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.9196097,
+        52.353122
+       ],
+       [
+        4.9194934,
+        52.3531604
+       ],
+       [
+        4.919478,
+        52.3531429
+       ],
+       [
+        4.9194651,
+        52.3531472
+       ],
+       [
+        4.9194361,
+        52.3531143
+       ],
+       [
+        4.919407,
+        52.3530813
+       ],
+       [
+        4.9194199,
+        52.353077
+       ],
+       [
+        4.9194046,
+        52.3530595
+       ],
+       [
+        4.9195208,
+        52.3530211
+       ],
+       [
+        4.9195542,
+        52.353059
+       ],
+       [
+        4.9195584,
+        52.3530576
+       ],
+       [
+        4.9195807,
+        52.3530828
+       ],
+       [
+        4.9195764,
+        52.3530842
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.9197091,
+        52.3532348
+       ],
+       [
+        4.9195928,
+        52.3532732
+       ],
+       [
+        4.9195774,
+        52.3532558
+       ],
+       [
+        4.9195645,
+        52.35326
+       ],
+       [
+        4.9194959,
+        52.3531821
+       ],
+       [
+        4.9195088,
+        52.3531779
+       ],
+       [
+        4.9194934,
+        52.3531604
+       ],
+       [
+        4.9196097,
+        52.353122
+       ],
+       [
+        4.919643,
+        52.3531597
+       ],
+       [
+        4.9196494,
+        52.3531576
+       ],
+       [
+        4.9196824,
+        52.353195
+       ],
+       [
+        4.9196759,
+        52.3531972
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.9197992,
+        52.3533371
+       ],
+       [
+        4.919683,
+        52.3533756
+       ],
+       [
+        4.9196676,
+        52.3533581
+       ],
+       [
+        4.9196547,
+        52.3533623
+       ],
+       [
+        4.9196242,
+        52.3533278
+       ],
+       [
+        4.9195724,
+        52.3533447
+       ],
+       [
+        4.9195281,
+        52.3532944
+       ],
+       [
+        4.9195928,
+        52.3532732
+       ],
+       [
+        4.9197091,
+        52.3532348
+       ],
+       [
+        4.9197423,
+        52.3532725
+       ],
+       [
+        4.9197466,
+        52.3532711
+       ],
+       [
+        4.9197687,
+        52.3532963
+       ],
+       [
+        4.9197645,
+        52.3532977
+       ]
+      ]
+     ]
+    ]
+   },
+   "pands": [
+    {
+     "recipeId": "luthuli-092667",
+     "pandId": "0363100012092667",
+     "buildingId": "NL.IMBAG.Pand.0363100012092667",
+     "address": "Albert Luthulistraat 18A",
+     "frontage": {
+      "x0": -29.407,
+      "x1": -12.87,
+      "widthM": 16.537
+     },
+     "bounds": {
+      "min": [
+       -29.407,
+       0,
+       -10.046
+      ],
+      "max": [
+       -12.869,
+       17.565,
+       0.997
+      ]
+     },
+     "triangles": 2636,
+     "ranges": [
+      {
+       "primitive": 0,
+       "firstTriangle": 0,
+       "triangleCount": 30
+      },
+      {
+       "primitive": 1,
+       "firstTriangle": 0,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 2,
+       "firstTriangle": 0,
+       "triangleCount": 167
+      },
+      {
+       "primitive": 4,
+       "firstTriangle": 0,
+       "triangleCount": 36
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 0,
+       "triangleCount": 10
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 0,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 0,
+       "triangleCount": 1916
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 0,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 0,
+       "triangleCount": 408
+      },
+      {
+       "primitive": 10,
+       "firstTriangle": 0,
+       "triangleCount": 10
+      },
+      {
+       "primitive": 11,
+       "firstTriangle": 0,
+       "triangleCount": 11
+      }
+     ]
+    },
+    {
+     "recipeId": "luthuli-087850",
+     "pandId": "0363100012087850",
+     "buildingId": "NL.IMBAG.Pand.0363100012087850",
+     "address": "Albert Luthulistraat 14A",
+     "frontage": {
+      "x0": -12.87,
+      "x1": -0.12,
+      "widthM": 12.75
+     },
+     "bounds": {
+      "min": [
+       -12.87,
+       0,
+       -10.04
+      ],
+      "max": [
+       -0.12,
+       14.29,
+       0.467
+      ]
+     },
+     "triangles": 2714,
+     "ranges": [
+      {
+       "primitive": 0,
+       "firstTriangle": 30,
+       "triangleCount": 30
+      },
+      {
+       "primitive": 1,
+       "firstTriangle": 24,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 2,
+       "firstTriangle": 167,
+       "triangleCount": 156
+      },
+      {
+       "primitive": 3,
+       "firstTriangle": 0,
+       "triangleCount": 144
+      },
+      {
+       "primitive": 4,
+       "firstTriangle": 36,
+       "triangleCount": 36
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 12,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 1916,
+       "triangleCount": 1900
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 12,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 408,
+       "triangleCount": 384
+      },
+      {
+       "primitive": 10,
+       "firstTriangle": 10,
+       "triangleCount": 3
+      },
+      {
+       "primitive": 11,
+       "firstTriangle": 11,
+       "triangleCount": 13
+      }
+     ]
+    },
+    {
+     "recipeId": "luthuli-073273",
+     "pandId": "0363100012073273",
+     "buildingId": "NL.IMBAG.Pand.0363100012073273",
+     "address": "Albert Luthulistraat 10A",
+     "frontage": {
+      "x0": -0.12,
+      "x1": 14.151,
+      "widthM": 14.27
+     },
+     "bounds": {
+      "min": [
+       -0.12,
+       0,
+       -10.04
+      ],
+      "max": [
+       14.151,
+       17.565,
+       1.002
+      ]
+     },
+     "triangles": 2568,
+     "ranges": [
+      {
+       "primitive": 0,
+       "firstTriangle": 60,
+       "triangleCount": 30
+      },
+      {
+       "primitive": 1,
+       "firstTriangle": 48,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 2,
+       "firstTriangle": 323,
+       "triangleCount": 166
+      },
+      {
+       "primitive": 4,
+       "firstTriangle": 72,
+       "triangleCount": 36
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 10,
+       "triangleCount": 10
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 24,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 3816,
+       "triangleCount": 1860
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 24,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 792,
+       "triangleCount": 396
+      },
+      {
+       "primitive": 10,
+       "firstTriangle": 13,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 11,
+       "firstTriangle": 24,
+       "triangleCount": 10
+      }
+     ]
+    },
+    {
+     "recipeId": "luthuli-097026",
+     "pandId": "0363100012097026",
+     "buildingId": "NL.IMBAG.Pand.0363100012097026",
+     "address": "Albert Luthulistraat 6A",
+     "frontage": {
+      "x0": 14.151,
+      "x1": 27.084,
+      "widthM": 12.933
+     },
+     "bounds": {
+      "min": [
+       14.129,
+       0,
+       -14.043
+      ],
+      "max": [
+       27.085,
+       14.29,
+       0.466
+      ]
+     },
+     "triangles": 2734,
+     "ranges": [
+      {
+       "primitive": 0,
+       "firstTriangle": 90,
+       "triangleCount": 30
+      },
+      {
+       "primitive": 1,
+       "firstTriangle": 72,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 2,
+       "firstTriangle": 489,
+       "triangleCount": 171
+      },
+      {
+       "primitive": 3,
+       "firstTriangle": 144,
+       "triangleCount": 144
+      },
+      {
+       "primitive": 4,
+       "firstTriangle": 108,
+       "triangleCount": 36
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 36,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 5676,
+       "triangleCount": 1900
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 36,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 1188,
+       "triangleCount": 384
+      },
+      {
+       "primitive": 10,
+       "firstTriangle": 25,
+       "triangleCount": 3
+      },
+      {
+       "primitive": 11,
+       "firstTriangle": 34,
+       "triangleCount": 18
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "chunk-face-luthuli-22-32",
+   "category": "street-survey",
+   "name": "face-luthuli-22-32",
+   "modelUrl": "./models/ordinary-buildings/chunks/chunk-face-luthuli-22-32.glb?asset=0dd9ba21752f44ca",
+   "sha256": "0dd9ba21752f44cab1f8cfcb70c8c657c9215021a8e44ec87015c426b61665f2",
+   "bytes": 529012,
+   "triangles": 7950,
+   "primitives": 12,
+   "instance": {
+    "anchor": [
+     4.91913579489326,
+     52.35276897688812
+    ],
+    "northOffsetDegrees": 323.6275,
+    "mirror": false
+   },
+   "bounds": {
+    "min": [
+     -22.94,
+     0,
+     -17.045
+    ],
+    "max": [
+     22.805,
+     17.565,
+     1.002
+    ]
+   },
+   "height": 17.565,
+   "suppress": [
+    "NL.IMBAG.Pand.0363100012124743",
+    "NL.IMBAG.Pand.0363100012088339",
+    "NL.IMBAG.Pand.0363100012068825"
+   ],
+   "replaces": [
+    "ordinary-0363100012124743",
+    "ordinary-0363100012088339",
+    "ordinary-0363100012068825"
+   ],
+   "footprint": {
+    "type": "MultiPolygon",
+    "coordinates": [
+     [
+      [
+       [
+        4.9189821,
+        52.3528003
+       ],
+       [
+        4.918956,
+        52.3527886
+       ],
+       [
+        4.9189474,
+        52.3527957
+       ],
+       [
+        4.9188892,
+        52.3527696
+       ],
+       [
+        4.9188271,
+        52.3528198
+       ],
+       [
+        4.9187207,
+        52.3527718
+       ],
+       [
+        4.9187559,
+        52.3527426
+       ],
+       [
+        4.9187518,
+        52.3527408
+       ],
+       [
+        4.9187738,
+        52.3527225
+       ],
+       [
+        4.9187778,
+        52.3527243
+       ],
+       [
+        4.9188686,
+        52.3526487
+       ],
+       [
+        4.9189478,
+        52.3526844
+       ],
+       [
+        4.9189521,
+        52.3526808
+       ],
+       [
+        4.9190085,
+        52.3527061
+       ],
+       [
+        4.9190041,
+        52.3527097
+       ],
+       [
+        4.9190605,
+        52.3527351
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.9192098,
+        52.3528023
+       ],
+       [
+        4.9191314,
+        52.3528676
+       ],
+       [
+        4.9191053,
+        52.3528559
+       ],
+       [
+        4.9190967,
+        52.3528631
+       ],
+       [
+        4.9189995,
+        52.3528194
+       ],
+       [
+        4.9190083,
+        52.3528121
+       ],
+       [
+        4.9189821,
+        52.3528003
+       ],
+       [
+        4.9190605,
+        52.3527351
+       ],
+       [
+        4.9191168,
+        52.3527604
+       ],
+       [
+        4.9191177,
+        52.3527596
+       ],
+       [
+        4.9191534,
+        52.3527757
+       ],
+       [
+        4.9191525,
+        52.3527765
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.9194056,
+        52.3528903
+       ],
+       [
+        4.919304,
+        52.3529454
+       ],
+       [
+        4.9192765,
+        52.352933
+       ],
+       [
+        4.9192684,
+        52.3529399
+       ],
+       [
+        4.9191491,
+        52.3528865
+       ],
+       [
+        4.9191576,
+        52.3528794
+       ],
+       [
+        4.9191314,
+        52.3528676
+       ],
+       [
+        4.9192098,
+        52.3528023
+       ],
+       [
+        4.9192672,
+        52.3528281
+       ],
+       [
+        4.9192714,
+        52.3528246
+       ],
+       [
+        4.9193275,
+        52.3528497
+       ],
+       [
+        4.9193235,
+        52.3528534
+       ]
+      ]
+     ]
+    ]
+   },
+   "pands": [
+    {
+     "recipeId": "luthuli-124743",
+     "pandId": "0363100012124743",
+     "buildingId": "NL.IMBAG.Pand.0363100012124743",
+     "address": "Albert Luthulistraat 30A",
+     "frontage": {
+      "x0": -22.59,
+      "x1": -6.369,
+      "widthM": 16.221
+     },
+     "bounds": {
+      "min": [
+       -22.94,
+       0,
+       -17.045
+      ],
+      "max": [
+       -6.369,
+       17.565,
+       1.002
+      ]
+     },
+     "triangles": 2611,
+     "ranges": [
+      {
+       "primitive": 0,
+       "firstTriangle": 0,
+       "triangleCount": 30
+      },
+      {
+       "primitive": 1,
+       "firstTriangle": 0,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 2,
+       "firstTriangle": 0,
+       "triangleCount": 204
+      },
+      {
+       "primitive": 4,
+       "firstTriangle": 0,
+       "triangleCount": 36
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 0,
+       "triangleCount": 10
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 0,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 0,
+       "triangleCount": 1860
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 0,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 0,
+       "triangleCount": 396
+      },
+      {
+       "primitive": 10,
+       "firstTriangle": 0,
+       "triangleCount": 10
+      },
+      {
+       "primitive": 11,
+       "firstTriangle": 0,
+       "triangleCount": 17
+      }
+     ]
+    },
+    {
+     "recipeId": "luthuli-088339",
+     "pandId": "0363100012088339",
+     "buildingId": "NL.IMBAG.Pand.0363100012088339",
+     "address": "Albert Luthulistraat 26A",
+     "frontage": {
+      "x0": -6.369,
+      "x1": 6.262,
+      "widthM": 12.631
+     },
+     "bounds": {
+      "min": [
+       -6.371,
+       0,
+       -10.057
+      ],
+      "max": [
+       6.262,
+       14.28,
+       0.245
+      ]
+     },
+     "triangles": 2702,
+     "ranges": [
+      {
+       "primitive": 0,
+       "firstTriangle": 30,
+       "triangleCount": 30
+      },
+      {
+       "primitive": 1,
+       "firstTriangle": 24,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 2,
+       "firstTriangle": 204,
+       "triangleCount": 148
+      },
+      {
+       "primitive": 3,
+       "firstTriangle": 0,
+       "triangleCount": 144
+      },
+      {
+       "primitive": 4,
+       "firstTriangle": 36,
+       "triangleCount": 36
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 12,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 1860,
+       "triangleCount": 1900
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 12,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 396,
+       "triangleCount": 384
+      },
+      {
+       "primitive": 11,
+       "firstTriangle": 17,
+       "triangleCount": 12
+      }
+     ]
+    },
+    {
+     "recipeId": "luthuli-068825",
+     "pandId": "0363100012068825",
+     "buildingId": "NL.IMBAG.Pand.0363100012068825",
+     "address": "Albert Luthulistraat 22A",
+     "frontage": {
+      "x0": 6.262,
+      "x1": 22.805,
+      "widthM": 16.544
+     },
+     "bounds": {
+      "min": [
+       6.26,
+       0,
+       -10.036
+      ],
+      "max": [
+       22.805,
+       17.553,
+       0.992
+      ]
+     },
+     "triangles": 2637,
+     "ranges": [
+      {
+       "primitive": 0,
+       "firstTriangle": 60,
+       "triangleCount": 30
+      },
+      {
+       "primitive": 1,
+       "firstTriangle": 48,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 2,
+       "firstTriangle": 352,
+       "triangleCount": 167
+      },
+      {
+       "primitive": 4,
+       "firstTriangle": 72,
+       "triangleCount": 36
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 10,
+       "triangleCount": 10
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 24,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 3760,
+       "triangleCount": 1916
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 24,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 780,
+       "triangleCount": 408
+      },
+      {
+       "primitive": 10,
+       "firstTriangle": 10,
+       "triangleCount": 10
+      },
+      {
+       "primitive": 11,
+       "firstTriangle": 29,
+       "triangleCount": 12
       }
      ]
     }

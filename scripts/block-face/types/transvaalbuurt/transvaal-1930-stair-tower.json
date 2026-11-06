@@ -175,7 +175,12 @@
     "colour": "#71797f",
     "groundTransomOnly": true
    },
-   "note": "the portiek door (red, 1.05 m, head 3.4 m) on the stair axis under a grey concrete canopy at 3.85-4.1 m that spans the tower's 5.8 m (drawn over the door only); a ground window either side in the tower, mailboxes"
+   "note": "the portiek door (red, 1.05 m, head 3.4 m) on the stair axis under a grey concrete canopy at 3.85-4.1 m that spans the tower's 5.8 m (drawn over the door only); a ground window either side in the tower, mailboxes. Door reveal: measured on Luthulistraat 6-20 (pand 092667, panoramas at -25 and 35 deg): a brick return each side of the stair door, 0.43 and 0.39 m to the frame face (return / sin of the view angle), about 0.55 m to the back of the frame. Set a 0.55 m reveal, brick jambs, no step.",
+   "doorReveal": {
+    "form": "reveal",
+    "deep": 0.55,
+    "steps": 0
+   }
   }
  },
  "palettes": {
@@ -244,6 +249,7 @@
   "the single end window stands at the end BAG gives it; on 30-32 that end is blank wall (the pair moves 3 m in)"
  ],
  "notes": [
-  "Palette: the type default is the raw strip wall of the tree-free piers; every placed pand takes its trim-normalised strip wall (auto-place measuredPalette)."
+  "Palette: the type default is the raw strip wall of the tree-free piers; every placed pand takes its trim-normalised strip wall (auto-place measuredPalette).",
+  "Door reveal (#239): measured on Luthulistraat 6-20 (pand 092667, panoramas at -25 and 35 deg): a brick return each side of the stair door, 0.43 and 0.39 m to the frame face (return / sin of the view angle), about 0.55 m to the back of the frame. Set a 0.55 m reveal, brick jambs, no step."
  ]
 }

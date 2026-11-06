@@ -85,12 +85,22 @@
   "door-left": {
    "doorBay": 0,
    "basement": "none",
-   "note": "46: round-arched house door on the left axis"
+   "note": "46: round-arched house door on the left axis. Door reveal: measured on Eerste Helmersstraat 56 (pand 167041, panoramas at -45 and 42 deg on the strip date): an arched doorway with a brick return of about 0.3 m to the leaf (return / sin of the view angle), 0.4 m to the back of the frame. Set a 0.4 m reveal, brick jambs, no step.",
+   "doorReveal": {
+    "form": "reveal",
+    "deep": 0.4,
+    "steps": 0
+   }
   },
   "door-right": {
    "doorBay": 2,
    "basement": "none",
-   "note": "mirrored neighbours: door on the right axis"
+   "note": "mirrored neighbours: door on the right axis. Door reveal: measured on Eerste Helmersstraat 56 (pand 167041, panoramas at -45 and 42 deg on the strip date): an arched doorway with a brick return of about 0.3 m to the leaf (return / sin of the view angle), 0.4 m to the back of the frame. Set a 0.4 m reveal, brick jambs, no step.",
+   "doorReveal": {
+    "form": "reveal",
+    "deep": 0.4,
+    "steps": 0
+   }
   }
  },
  "palettes": {
@@ -160,6 +170,7 @@
  ],
  "notes": [
   "Palette: read on the hazy 2023-01-12 strip; placed pands take their own measured wall.",
-  "Entablature and storeys (#81 review 2026-10-25), vertical profile of Eerste 56's left axis on the re-intaken 2023-01-12 strip (40 px/m): floors at 4.1, 7.1 and 10.1 m, top windows 10.2-11.95 m, a brick strip, then the crown band 12.75-14.4 m: a 0.45 m white cap over a brick frieze carried on four white consoles at the piers, a fillet at its foot. The top storey now ends at the frieze foot (2.65 m) instead of carrying the frieze in a 4.4 m storey. Replaces the simple cornice and the frieze-vent stand-ins; the frieze's chequered tiles are not expressed."
+  "Entablature and storeys (#81 review 2026-10-25), vertical profile of Eerste 56's left axis on the re-intaken 2023-01-12 strip (40 px/m): floors at 4.1, 7.1 and 10.1 m, top windows 10.2-11.95 m, a brick strip, then the crown band 12.75-14.4 m: a 0.45 m white cap over a brick frieze carried on four white consoles at the piers, a fillet at its foot. The top storey now ends at the frieze foot (2.65 m) instead of carrying the frieze in a 4.4 m storey. Replaces the simple cornice and the frieze-vent stand-ins; the frieze's chequered tiles are not expressed.",
+  "Door reveal (#239): measured on Eerste Helmersstraat 56 (pand 167041, panoramas at -45 and 42 deg on the strip date): an arched doorway with a brick return of about 0.3 m to the leaf (return / sin of the view angle), 0.4 m to the back of the frame. Set a 0.4 m reveal, brick jambs, no step."
  ]
 }
