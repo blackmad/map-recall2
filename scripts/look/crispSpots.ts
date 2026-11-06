@@ -3,8 +3,7 @@
  * `?ride=free&engine=own`, Mac DPR 2) and the rail-look spots (scripts/own-ground/rail-shots.mjs). `center` is the
  * view centre [lng, lat], `pitch` null = the chase pitch; `band` the facade (or rail) band the sharpness probe reads,
  * fractions of the frame. Used by tests/e2e/crisp-textures.spec.ts.
- * Note: the archive's file names are swapped for these two: the Da Costakade frame is `s3-weesperstraat-slab-moire.png`
- * and the Weesperstraat slab is `s2-da-costakade-fuzzy-windows.png` (the README's table follows the plan's numbering).
+ * The archive's s2/s3 file names were swapped until map-recall2-screenshots c856dd1 (2026-11-06) and now match the plan's numbering.
  */
 export type CrispSpot = { name: string; center: [number, number]; zoom: number; bearing: number; pitch: number | null; band: { x0: number; y0: number; x1: number; y1: number }; /** Centre of the strip's 1:1 crop (fractions); default the band's centre. */ crop?: { x: number; y: number }; shot?: string };
 
