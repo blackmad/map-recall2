@@ -192,6 +192,8 @@ const infoOf = (chunk: Chunk): ChunkInfo => ({
 });
 
 export { calmBayLayers, RESTORE_TEXTURE_SLICE_MS, paintLookArrays, lookAtlasLayers };
+// Lane R3-A (#230): the owner view's classes, for tests/e2e/swap-zfight.spec.ts ZFIGHT_OWNER.
+export { THIN_OWNER_CLASSES } from './look/thinFade.js';
 
 
 // Per-ring memo of tile keys by zoom: setFeatures regroups the whole resident city (up to ~20k buildings) on every
@@ -369,7 +371,7 @@ function installBudgetBytes(): number {
   try { const v = typeof location !== 'undefined' ? new URLSearchParams(location.search).get('uploadBudget') : null; if (v != null && v !== '' && Number.isFinite(Number(v))) return Math.max(0, Number(v)); } catch { /* no location */ }
   return INSTALL_BUDGET_BYTES;
 }
-const chunkBytes = (c: Chunk): number => [c.positions, c.uvs, c.layers, c.tints, c.accents, c.indices].reduce((s, a) => s + (a?.byteLength ?? 0), 0);
+const chunkBytes = (c: Chunk): number => [c.positions, c.uvs, c.layers, c.tints, c.accents, c.indices, c.thin].reduce((s, a) => s + (a?.byteLength ?? 0), 0);
 type StagedInstall = { key: string; source: Feature[]; chunk: Chunk; ms: number; options: BuildOptions; boundParentIds: string[]; lift?: GroundLift; ranges?: Map<string, { start: number; count: number }> };
 
 
@@ -1555,6 +1557,9 @@ export class ThreeBuildings {
     geometry.setAttribute('tint', release(new THREE.BufferAttribute(chunk.tints, 4, true)));
     geometry.setAttribute('accent', release(new THREE.BufferAttribute(chunk.accents, 4, true)));
     geometry.setAttribute('hidden', new THREE.BufferAttribute(new Uint8Array(chunk.vertexCount), 1, false));
+    // Thin-element fade and owner class (look/thinFade.ts, lane R3-A #230): only when it matches this chunk's vertices
+    // (a host-opening rebuild re-lays the arrays without it).
+    if (chunk.thin && chunk.thin.length === chunk.vertexCount * 2) geometry.setAttribute('thin', release(new THREE.BufferAttribute(chunk.thin, 2, false)));
     // SWAP_COMPLEMENT: the shells' per-building swap slot (kept on the CPU like `hidden`), marked for swaps under way.
     if (this.complement && key.startsWith(COARSE_PREFIX)) {
       const slots = new Uint8Array(chunk.vertexCount), ranges = new Map(chunk.ranges.map(r => [r.id, { start: r.start, count: r.count }]));

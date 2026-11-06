@@ -33,6 +33,7 @@ import type { KitPartGeometry } from './landmarkKits.js';
 import type { ChainLook } from './shopfronts.js';
 import { wordRuns } from './blockLetters.js';
 import earcut from 'earcut';
+import { THIN_CLASS, thinCm } from './look/thinFade.js';
 import { ExtraSink, EXTRA_BUDGET, roofExtras, buildingWallExtras, type ExtraContext } from './facadeExtras.js';
 import type { FlatTri } from './facadeExtraCore.js';
 import { fitRect, roofTrianglesForOutline, type RoofDims, type RoofPlan, type RoofTri } from './roofMesh.js';
@@ -117,6 +118,11 @@ export type Chunk = {
   /** RGBA accent colour (door leaf, shutters, awnings) for the bay looks; white otherwise. */
   accents: Uint8Array;
   indices: Uint32Array;
+  /**
+   * Thin-element fade and owner class (look/thinFade.ts, lane R3-A #230), two bytes per vertex: the triangle's
+   * cross-section in cm (0 = not thin) and its THIN_CLASS. buildChunk only; absent on kit, boat and shell-stream chunks.
+   */
+  thin?: Uint8Array;
   ranges: VertexRange[];
   vertexCount: number;
   quadCount: number;
@@ -234,7 +240,7 @@ function lidMesh(b: MeshBuilding, origin: Origin): LidMesh | null {
 }
 
 /** `lit`: lit signage (a chain's fascia and lettering), barely dimmed on a wall facing away from the sun. */
-type SignTri = { p: [number, number, number][]; hex: string; n: [number, number, number]; lit?: boolean; texture?: 'glass-block'; uv?: [number,number][]; layer?: number; accentHex?: string };
+type SignTri = { p: [number, number, number][]; hex: string; n: [number, number, number]; lit?: boolean; texture?: 'glass-block'; uv?: [number,number][]; layer?: number; accentHex?: string; prim?: FlatTri['prim'] };
 
 /** One flat quad (corners in order) as two triangles wound to face `n`. */
 function faceTris(q: [number, number, number][], n: [number, number, number], hex: string, out: SignTri[]) {
@@ -466,6 +472,8 @@ export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin, m
   };
 
   const CORNICE_STYLES = new Set<string>(['canal', 'c19', 'school']);
+  // Owner classes for the thin fade (look/thinFade.ts): the projecting cornice strip, and surveyed roofs drawn as `trim`.
+  const corniceTris = new WeakSet<object>(), surveyedRoofTris = new WeakSet<object>();
   type Quad = { kind: string; accent: [number, number, number]; e: Edge; u0: number; u1: number; v1: number; v0?: number; z1Left?:number;z1Right?:number;v1Left?:number;v1Right?:number;layer: number; z0: number; z1: number; tint: [number, number, number, number]; along0: number; along1: number };
   const quadsByBuilding: Array<{ b: MeshBuilding; quads: Quad[]; walls: number; roof: StreetCrownTri[]; lid: LidMesh | null; sign: SignTri[]; extraTris: number }> = [];
   let signTotal = 0, extrasTotal = 0, gardenTotal = 0;
@@ -600,7 +608,9 @@ export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin, m
           const C: [number, number, number] = [e.x1 + nx, e.y1 + ny, z - drop], D: [number, number, number] = [e.x0 + nx, e.y0 + ny, z - drop];
           const n: [number, number, number] = [e.nx * drop, e.ny * drop, out], l = Math.hypot(...n);
           const nn: [number, number, number] = [n[0] / l, n[1] / l, n[2] / l], u1 = e.len / 5;
-          cornice.push({ p: [A, D, C], uv: [[0, 0], [0, 0.1], [u1, 0.1]], part: 'plate', n: nn }, { p: [A, C, B], uv: [[0, 0], [u1, 0.1], [u1, 0]], part: 'plate', n: nn });
+          const c0: StreetCrownTri = { p: [A, D, C], uv: [[0, 0], [0, 0.1], [u1, 0.1]], part: 'plate', n: nn }, c1: StreetCrownTri = { p: [A, C, B], uv: [[0, 0], [u1, 0.1], [u1, 0]], part: 'plate', n: nn };
+          corniceTris.add(c0); corniceTris.add(c1);
+          cornice.push(c0, c1);
         }
         const tint: [number, number, number, number] = [Math.min(255, r * jitter), Math.min(255, g * jitter), Math.min(255, bl * jitter), wallShade(e.nx, e.ny) * 255];
         const paint = paintTint ? [paintTint[0], paintTint[1], paintTint[2], tint[3]] as [number, number, number, number] : tint;
@@ -633,7 +643,7 @@ export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin, m
     })).flatMap(clampToSource);
     let roof: StreetCrownTri[] = cornice;
     if(b.surveyedEnvelope){
-      roof.push(...b.surveyedEnvelope.roofTriangles.map(t=>({...t,uv:t.p.map(p=>[p[0]/5,p[1]/5])as RoofTri['uv'],part:'trim' as const,hex:'#4a525d'})),...b.surveyedEnvelope.closureTriangles.map(t=>({...t,uv:t.p.map(p=>[p[0]/5,p[2]/3])as RoofTri['uv'],part:'plate' as const,facadeLayer:b.plainLayer})));
+      roof.push(...b.surveyedEnvelope.roofTriangles.map(t=>{const r={...t,uv:t.p.map(p=>[p[0]/5,p[1]/5])as RoofTri['uv'],part:'trim' as const,hex:'#4a525d'};surveyedRoofTris.add(r);return r;}),...b.surveyedEnvelope.closureTriangles.map(t=>({...t,uv:t.p.map(p=>[p[0]/5,p[2]/3])as RoofTri['uv'],part:'plate' as const,facadeLayer:b.plainLayer})));
     }else if (b.roof) {
       roof = roofTrianglesForOutline(b.polygons[0]?.[0] ?? [], origin, b.roof.plan, b.heightM, b.roof.dims, kxLocal, !b.roof.lowPoly && (b.roof.plan.kind === 'gable' || b.roof.plan.streetRidge) ? crownFacing(bi) : undefined);
       if (crownFronts.length&&!b.roof.plan.repeatedTerrace&&!b.roof.lowPoly) roof = streetCrown(roof,crownFronts,b.heightM,['gable','pitched','halfHipped'].includes(b.roof.plan.kind)&&!b.roof.plan.shutters);
@@ -715,6 +725,7 @@ export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin, m
   const vertexCount = quadTotal * 4 + roofTotal * 3 + lidVerts + signTotal * 3;
   const positions = new Float32Array(vertexCount * 3), uvs = new Float32Array(vertexCount * 2);
   const layers = new Uint8Array(vertexCount), tints = new Uint8Array(vertexCount * 4), accents = new Uint8Array(vertexCount * 4);
+  const thin = new Uint8Array(vertexCount * 2);
   const indices = new Uint32Array(quadTotal * 6 + roofTotal * 3 + lidIndices + signTotal * 3);
   const ranges: VertexRange[] = [];
   /** Triangles per content kind (diagnostics only; not a rendering input). */
@@ -739,6 +750,7 @@ export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin, m
         layers[v] = quad.layer;
         tints[v * 4] = quad.tint[0]; tints[v * 4 + 1] = quad.tint[1]; tints[v * 4 + 2] = quad.tint[2]; tints[v * 4 + 3] = quad.tint[3];
         accents[v * 4] = quad.accent[0]; accents[v * 4 + 1] = quad.accent[1]; accents[v * 4 + 2] = quad.accent[2]; accents[v * 4 + 3] = 255;
+        thin[v * 2 + 1] = shell ? THIN_CLASS.shell : THIN_CLASS.wall;
         v++;
       }
       const i = v - 4;
@@ -756,7 +768,10 @@ export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin, m
         // Trim and decals (white stone, cornices, shutters) are flat colour on the lid's flat layer.
         const layer = flat ? (b.lid?.flatLayer ?? b.roof?.layers.slope ?? b.lid!.flatLayer) : t.part === 'plate' ? (t.facadeLayer ?? b.plainLayer ?? b.roof?.layers.plain ?? b.plainLayer!) : t.part === 'dormerFace' ? b.roof?.layers.dormer ?? b.plainLayer! : b.roof?.layers.slope ?? b.lid!.flatLayer;
         const tint = t.hex ? parseHex(t.hex) : flat ? white : wall ? t.facadeTint ?? defaultWallTint : [rr, rg, rb];
+        const thinClass = shell ? THIN_CLASS.shell : surveyedRoofTris.has(t) ? THIN_CLASS.roof : corniceTris.has(t) ? THIN_CLASS.cornice : flat ? THIN_CLASS.trim : wall ? THIN_CLASS.wall : THIN_CLASS.roof;
+        const thinSize = thinClass === THIN_CLASS.cornice || thinClass === THIN_CLASS.trim ? thinCm(t.p[0], t.p[1], t.p[2]) : 0;
         for (let k = 0; k < 3; k++) {
+          thin[v * 2] = thinSize; thin[v * 2 + 1] = thinClass;
           positions[v * 3] = t.p[k][0]; positions[v * 3 + 1] = t.p[k][1]; positions[v * 3 + 2] = t.p[k][2];
           uvs[v * 2] = t.uv[k][0]; uvs[v * 2 + 1] = t.uv[k][1];
           layers[v] = layer;
@@ -776,16 +791,22 @@ export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin, m
         layers[v] = b.lid!.flatLayer;
         tints[v * 4] = lr; tints[v * 4 + 1] = lg; tints[v * 4 + 2] = lb; tints[v * 4 + 3] = LID_SHADE * 255;
         accents[v * 4] = accents[v * 4 + 1] = accents[v * 4 + 2] = accents[v * 4 + 3] = 255;
+        thin[v * 2 + 1] = shell ? THIN_CLASS.shell : THIN_CLASS.lid;
         v++;
       }
       for (const k of lid.index) indices[ti++] = base + k;
       addKind('lid', lid.index.length / 3);
     }
-    for (const t of sign) {
+    const extrasFrom = sign.length - extraTris;
+    for (const [si, t] of sign.entries()) {
       // Signature storefront boxes: flat colour on the flat layer, shaded by facing.
       const shade = Math.max(t.lit ? 0.9 : 0.55, bakedFaceShade(t.n));
       const [sr, sg, sb] = parseHex(t.hex);
+      const prim = t.prim;
+      const thinClass = shell ? THIN_CLASS.shell : si < extrasFrom ? THIN_CLASS.frontage : prim === 'strip' ? THIN_CLASS.extrasStrip : prim === 'box' ? THIN_CLASS.extrasBox : THIN_CLASS.extrasOther;
+      const thinSize = shell || t.p.length < 3 ? 0 : thinCm(t.p[0], t.p[1], t.p[2]);
       for (const [qi,q] of t.p.entries()) {
+        thin[v * 2] = thinSize; thin[v * 2 + 1] = thinClass;
         positions[v * 3] = q[0]; positions[v * 3 + 1] = q[1]; positions[v * 3 + 2] = q[2];
         uvs[v * 2] = t.uv?.[qi][0] ?? 0.5; uvs[v * 2 + 1] = t.uv?.[qi][1] ?? 0.5;
         layers[v] = t.layer ?? (t.texture === 'glass-block' ? BAY_LAYER_COUNT + (b.streetAppearance?.look === 'procedural' ? PROCEDURAL_RECIPE_LAYER_OFFSET : PROCEDURAL_RECIPE_LAYER_OFFSET - CELL_LAYER_COUNT) : b.lid!.flatLayer);
@@ -800,7 +821,7 @@ export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin, m
   addKind('frontage', signTotal - extrasTotal - gardenTotal);
   addKind('garden-room', gardenTotal);
   addKind('extras', extrasTotal);
-  const chunk = { positions, uvs, layers, tints, accents, indices, ranges, vertexCount, quadCount: quadTotal + Math.ceil(roofTotal / 2), wallCount: wallTotal, buildingCount: ranges.length, kinds };
+  const chunk = { positions, uvs, layers, tints, accents, thin, indices, ranges, vertexCount, quadCount: quadTotal + Math.ceil(roofTotal / 2), wallCount: wallTotal, buildingCount: ranges.length, kinds };
   return mode === 'walls' ? applyHostWallOpenings(chunk, origin, hostOpenings) : chunk;
 }
 
