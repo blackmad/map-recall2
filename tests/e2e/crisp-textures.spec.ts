@@ -21,6 +21,10 @@ const SPOTS = ONLY.length ? CRISP_SPOTS.filter(s => ONLY.includes(s.name)) : CRI
 const VARIANTS = (process.env.CRISP_VARIANTS ?? 'before=texturePolicy=0&railStripes=0&railMinPx=0&farRail=0;after=').split(';').filter(Boolean).map(v => {
   const [name, ...query] = v.split('='); return { name, query: query.join('=') };
 });
+// CRISP_MIX='before=0;after=1' (lane R2-A #228): per spot, frames at each `windowSdfMix` (the analytic windows' weight,
+// look/windowSdf.ts) in the same page and pose, so the A/B is not confounded by a re-landed camera. Needs a variant
+// with the analytic windows on (the default). Names the results `<variant>/<mix name>`.
+const MIXES = (process.env.CRISP_MIX ?? '').split(';').filter(Boolean).map(v => { const [name, value] = v.split('='); return { name, value: Number(value) }; });
 // The tier is forced on desktop (headless may probe low); the phone keeps its own (touch: legacy textures).
 const BASE_QUERY = (process.env.CRISP_QUERY ?? 'governor=0').replace(/^[?&]/, '');
 if (Number(process.env.CRISP_DPR) > 0) test.use({ deviceScaleFactor: Number(process.env.CRISP_DPR) });
@@ -117,8 +121,21 @@ for (const variant of VARIANTS) {
     const file = `${OUT}/${info.project.name}-results.json`;
     const results = existsSync(file) ? JSON.parse(readFileSync(file, 'utf8')) : {};
     for (const spot of SPOTS) {
-      const png = await shot(page, spot);
-      writeFileSync(`${OUT}/${info.project.name}-${spot.name}-${variant.name}.png`, png);
+      const first = await shot(page, spot);
+      for (const mix of MIXES.length ? MIXES : [null]) {
+      const label = mix ? `${variant.name}/${mix.name}` : variant.name;
+      let png = first;
+      if (mix) {
+        await page.evaluate((v) => {
+          const tb = (window as any).canalRecallGame.vectorMap._threeBuildings;
+          for (const m of new Set([tb.material, ...tb.materials.values()])) if (m?.uniforms?.windowSdfMix) m.uniforms.windowSdfMix.value = v;
+          tb.map?.triggerRepaint?.();
+        }, mix.value);
+        await page.waitForTimeout(500);
+        const url: string = await page.evaluate(() => (window as any).canalRecallGame.vectorMap.captureFrame().then((c: HTMLCanvasElement | null) => c?.toDataURL('image/png') ?? ''));
+        png = Buffer.from(url.split(',')[1], 'base64');
+      }
+      writeFileSync(`${OUT}/${info.project.name}-${spot.name}-${label.replace('/', '-')}.png`, png);
       const { data, info: img } = await sharp(png).raw().toBuffer({ resolveWithObject: true });
       const s = frameSharpness(data, img.width, img.height, img.channels, spot.band as Rect);
       const state = await page.evaluate(() => {
@@ -131,9 +148,10 @@ for (const variant of VARIANTS) {
         return { glErrors, ground, tier: perf.tier ?? null, pixelRatio: vm.host?.getPixelRatio?.(), facadeTextureMB: +(t?.stats?.().textureMB ?? 0).toFixed(1), atlas: t?.atlasSource ?? null, textures: i?.memory?.textures ?? null, geometries: i?.memory?.geometries ?? null, cellTier: t?.material?.uniforms?.cellTier?.value ?? null };
       });
       const ms = await frameMs(page);
-      (results[spot.name] ??= {})[variant.name] = { errors: errors.slice(-5), query, size: [img.width, img.height], sharpness: { laplacianVar: +s.laplacianVar.toFixed(1), edge: +s.edge.toFixed(2), acutance: +s.acutance.toFixed(1) }, ...state, ...ms };
-      console.log(info.project.name, spot.name, variant.name, JSON.stringify(results[spot.name][variant.name]));
+      (results[spot.name] ??= {})[label] = { errors: [...errors.filter(e => /Shader Error|ERROR: /.test(e)).slice(0, 2), ...errors.slice(-3)], query, size: [img.width, img.height], sharpness: { laplacianVar: +s.laplacianVar.toFixed(1), edge: +s.edge.toFixed(2), acutance: +s.acutance.toFixed(1) }, ...state, ...(mix ? { windowSdfMix: mix.value } : {}), ...ms };
+      console.log(info.project.name, spot.name, label, JSON.stringify(results[spot.name][label]));
       writeFileSync(file, JSON.stringify(results, null, 1));
+      }
     }
   });
 }

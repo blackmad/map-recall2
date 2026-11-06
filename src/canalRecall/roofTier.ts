@@ -95,16 +95,29 @@ vec3 roofTierColour(vec3 fine, vec2 uv, float layer, float dist) {
  */
 export const FACADE_TIER_GLSL = /* glsl */ `${DEPTH_FADE_DETAIL_PARS}
 uniform vec2 cellTier;
+#ifdef CELL_TIER_PROBE
+// What the last cellTierSample saw (look/windowSdf.ts reads them: the ?cellDebug=rho view, the analytic windows' fade).
+float cellRho = 0.0; float cellFarTier = 0.0; float cellFar = 0.0;
+#endif
 void cellTierSample(vec3 p, float dist, out vec3 c, out vec2 m) {
   vec4 cc = texture(cells, p); vec2 mm = texture(masks, p).rg;
   c = cc.rgb; m = vec2(mm.r, ${accentGlsl('mm', 'cc')});
   float far = 0.0;
+#ifdef CELL_TIER_PROBE
+  cellRho = max(length(dFdx(p.xy)), length(dFdy(p.xy))) * float(textureSize(cells, 0).x);
+#endif
   if (cellTier.x >= 0.0) {
     float rho = max(length(dFdx(p.xy)), length(dFdy(p.xy))) * float(textureSize(cells, 0).x);
     far = smoothstep(cellTier.x, cellTier.y, rho);
   }
+#ifdef CELL_TIER_PROBE
+  cellFarTier = far;
+#endif
 #ifdef USE_FOG
   far = max(far, ${DEPTH_FADE_DETAIL_GLSL('dist')});
+#endif
+#ifdef CELL_TIER_PROBE
+  cellFar = far;
 #endif
   if (far <= 0.0) return;
   vec4 fc = textureLod(cells, p, ${CELL_MEAN_LOD_GLSL}); vec2 fm = textureLod(masks, p, ${CELL_MEAN_LOD_GLSL}).rg;

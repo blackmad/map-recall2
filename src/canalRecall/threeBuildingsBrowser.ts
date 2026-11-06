@@ -62,6 +62,8 @@ import { ROUTE_AHEAD_M, ROUTE_AHEAD_MAX_TILES, headingAheadTiles, routeAheadEnab
 import { worldCameraOf } from './engine/worldCameraOf.js';
 import type { WorldCamera } from './engine/worldViewApi.js';
 import { packMask } from './look/maskPacking.js';
+import { cellDebugMode, windowSdfEnabled } from './look/windowSdf.js';
+import { createWindowTableTexture, windowTableData } from './look/windowTable.js';
 
 type BuildOptions = { surveyedEnvelopeData: EnvelopeTransport["envelopes"]; surveyedEnvelopeRevision: string; look: BuildingLook; streets?: Float32Array; profiles: readonly StreetAppearanceProfile[]; contextFeatures?: readonly Feature[]; appearanceRevision: string; hostOpenings: readonly ChunkHostOpeningConfig[]; hostOpeningRevision: string };
 
@@ -1801,6 +1803,20 @@ export class ThreeBuildings {
     return changed;
   }
 
+  /** The window table texture of a look's atlas (look/windowTable.ts), once per cell set; null when off or empty. */
+  private windowTableFor(cells: 'procedural' | Look): any {
+    if (!this.windowSdf) return null;
+    if (!this.windowTables.has(cells)) {
+      const data = windowTableData(cells);
+      this.windowTables.set(cells, data.windows ? createWindowTableTexture(this.THREE, cells) : null);
+    }
+    return this.windowTables.get(cells);
+  }
+  private readonly windowTables = new Map<string, any>();
+  /** `?windowSdf=0` off; touch devices (detail z17) follow WINDOW_SDF_TOUCH_DEFAULT. Read once the detail zoom is known. */
+  private get windowSdf(): boolean { return this.windowSdfOn ??= windowSdfEnabled(this.detailZoom === 17); }
+  private windowSdfOn: boolean | undefined;
+
   private newMaterial(): any {
     const THREE = this.THREE;
     // The pantile and slate cells (the planned roofs' slope layers) coarsen with distance; every other layer is left alone.
@@ -1809,14 +1825,20 @@ export class ThreeBuildings {
     if (this.cityLook) {
       // One shader for every building mesh (look/cityLook.ts); chunks keep their own uniforms per look.
       const variant = LOOK_VARIANTS[this.look];
-      return createCityLookMaterial(THREE, { lit: this.lit, kind: 'chunk', side: THREE.FrontSide, ...(SWAP_COMPLEMENT ? { swap: true } : {}) }, createCityUniforms(THREE, {
+      const cellDebug = cellDebugMode();
+      // Analytic windows (look/windowSdf.ts, lane R2-A #228): only for a look whose table has windows; the define,
+      // the program key suffix and the table upload are all absent with `?windowSdf=0`.
+      const windowTable = this.windowTableFor(cellSetOf(this.look));
+      return createCityLookMaterial(THREE, { lit: this.lit, kind: 'chunk', side: THREE.FrontSide, ...(SWAP_COMPLEMENT ? { swap: true } : {}), ...(cellDebug ? { cellDebug } : {}), ...(windowTable ? { windows: true } : {}) }, createCityUniforms(THREE, {
         ...(SWAP_COMPLEMENT ? { citySwapUnder: this.swapUnder } : {}),
+        ...(windowTable ? { windowTable: { value: windowTable } } : {}),
         bands: { value: variant.shadeBands }, flatColour: { value: variant.flatColour ? 1 : 0 }, wallGain: { value: litFacadeWallGain(variant.litWallGain) },
         roofLayers: { value: roofLayers }, roofTier: { value: roofTierUniform() }, cellTier: { value: this.cellTierValue() },
       }));
     }
     if (this.lit) {
-      const material = createLitFacadeMaterial(THREE, { cityFlat: { value: CITY_FLAT }, roofLayers: { value: roofLayers }, roofTier: { value: roofTierUniform() }, cellTier: { value: this.cellTierValue() } });
+      const windowTable = this.windowTableFor(cellSetOf(this.look));
+      const material = createLitFacadeMaterial(THREE, { cityFlat: { value: CITY_FLAT }, roofLayers: { value: roofLayers }, roofTier: { value: roofTierUniform() }, cellTier: { value: this.cellTierValue() } }, windowTable ? { windowTable } : {});
       material.uniforms.bands.value = LOOK_VARIANTS[this.look].shadeBands;
       material.uniforms.flatColour.value = LOOK_VARIANTS[this.look].flatColour ? 1 : 0;
       if (material.uniforms.wallGain) material.uniforms.wallGain.value = litFacadeWallGain(LOOK_VARIANTS[this.look].litWallGain);
