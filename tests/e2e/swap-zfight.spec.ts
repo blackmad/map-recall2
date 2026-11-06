@@ -16,7 +16,7 @@ import { SWAP_SPOTS } from '../../scripts/world/abSpots';
 // ZFIGHT_STEPS (24) and ZFIGHT_PAN_PX (0.35 CSS px per step) shape the pan. Output: artifacts/swap-zfight/<project><label>.
 const QS = process.env.ZFIGHT_QS ?? '';
 const LABEL = process.env.ZFIGHT_LABEL ? `-${process.env.ZFIGHT_LABEL}` : '';
-const SPOT = SWAP_SPOTS.find(s => s.name === (process.env.ZFIGHT_SPOT ?? 's3-slab'))!;
+const SPOT: any = SWAP_SPOTS.find(s => s.name === (process.env.ZFIGHT_SPOT ?? 's3-slab'))!;
 const STEPS = Number(process.env.ZFIGHT_STEPS ?? 24);
 const PAN_PX = Number(process.env.ZFIGHT_PAN_PX ?? 0.35);
 const OUT = 'artifacts/swap-zfight';
@@ -26,6 +26,13 @@ const OUT = 'artifacts/swap-zfight';
 // step change is ΔE > 20 at the base ratio but not in the reference: the still-pan area that is not true motion.
 const SS = Number(process.env.ZFIGHT_SS ?? 0);
 if (Number(process.env.ZFIGHT_DPR) > 0) test.use({ deviceScaleFactor: Number(process.env.ZFIGHT_DPR) });
+// Lane R3-A (#230): a spot with `viewport` runs in that window (s3-slab-user: the user's 1448 × 657 CSS px), one with
+// `eye` holds the camera at that eye (lng, lat, metres over the ground) looking `bearing` at `pitch`, one with
+// `pitch: null` at the chase pitch. A spot without `pand` (or ZFIGHT_MASK=frame) counts over the whole frame and runs
+// the still pan and the alias reference only (no building to swap). ZFIGHT_OWNER=1 reloads with `?thinDebug=owner`
+// after the pans and buckets every alias pixel by the owner class drawn there (look/thinFade.ts THIN_OWNER_CLASSES).
+if (SPOT.viewport && !process.env.ZFIGHT_NO_VIEWPORT) test.use({ viewport: { width: SPOT.viewport[0], height: SPOT.viewport[1] } });
+const FRAME_MASK = !SPOT.pand || process.env.ZFIGHT_MASK === 'frame';
 
 async function settle(page: Page) {
   let last = '';
@@ -79,7 +86,18 @@ test('swap z-fight: no moving stripes on the Weesperstraat slab while its detail
   await expect.poll(() => page.evaluate(() => { const vm = (window as any).canalRecallGame.vectorMap; return vm.engine === 'own' && !!vm._threeBuildings?.ready; }), { timeout: 180_000 }).toBe(true);
   await settle(page);
   // Hold the world camera at the spot's pose (the game no longer drives it), with the player's vehicle off every layer.
-  const pose = { center: SPOT.camera, zoom: SPOT.zoom, bearing: SPOT.bearing, pitch: SPOT.pitch };
+  const pose = await page.evaluate((spot) => {
+    const vm = (window as any).canalRecallGame.vectorMap, cm = vm.cameraMap, g = vm._ownGround;
+    if (!spot.eye) return { center: spot.camera, zoom: spot.zoom, bearing: spot.bearing, pitch: spot.pitch ?? vm.pitchForViewMode('chase') };
+    const [lng, lat, alt] = spot.eye, ground = g?.ready ? g.heightAt([lng, lat]) : 0;
+    const run = alt * Math.tan(spot.pitch * Math.PI / 180), b = spot.bearing * Math.PI / 180;
+    const to = [lng + run * Math.sin(b) / (111320 * Math.cos(lat * Math.PI / 180)), lat + run * Math.cos(b) / 111132];
+    const o = cm.calculateCameraOptionsFromTo([lng, lat], alt + ground, to, ground);
+    return { center: o.center, zoom: o.zoom, bearing: o.bearing, pitch: o.pitch };
+  }, SPOT);
+  console.log('swap-zfight pose', JSON.stringify(pose));
+  // ZFIGHT_EVAL (lane R3-A, diagnosis): page code run once at the pose before measuring (e.g. flat colour, extras off).
+  if (process.env.ZFIGHT_EVAL) { await page.evaluate(process.env.ZFIGHT_EVAL); await page.waitForTimeout(300); }
   await page.evaluate((pose) => {
     const vm = (window as any).canalRecallGame.vectorMap;
     vm.sync = () => {}; vm.aimAtWorld = () => {};
@@ -109,7 +127,7 @@ test('swap z-fight: no moving stripes on the Weesperstraat slab while its detail
     return;
   }
   // The slab: the pand under the spot's pick point, and the detail chunk that holds it.
-  const target = await page.evaluate((pand) => {
+  const target = FRAME_MASK ? null : await page.evaluate((pand) => {
     const tb = (window as any).canalRecallGame.vectorMap._threeBuildings;
     const ids = new Set<string>(); let near: string | null = null, nearCount = 0, props: any = null;
     for (const [key, e] of tb.chunks) for (const [id, r] of e.ranges ?? []) {
@@ -122,24 +140,28 @@ test('swap z-fight: no moving stripes on the Weesperstraat slab while its detail
     return { id: [...ids][0], ids: [...ids], near, props, detailZoom: tb.detailZoom };
   }, SPOT.pand);
   console.log('swap-zfight target', JSON.stringify(target));
+  if (!FRAME_MASK) {
   console.log('swap-zfight build', JSON.stringify(await page.evaluate(() => { const tb = (window as any).canalRecallGame.vectorMap._threeBuildings; return { complement: tb.complement, swapUniform: !!tb.material?.uniforms?.citySwapUnder, defines: Object.keys(tb.material?.defines ?? {}), name: tb.material?.name, slots: tb.swapSlots?.used ?? null }; })));
   expect(target?.id, 'a building under the pick point').toBeTruthy();
   expect(target?.near, 'the slab has a detail chunk at this pose').toBeTruthy();
+  }
   const grab = () => page.evaluate(() => (window as any).canalRecallGame.vectorMap.captureFrame().then((c: HTMLCanvasElement | null) => c?.toDataURL('image/png') ?? ''));
   // The slab's pixels: the frame with it hidden (every chunk's copy) against the frame with it.
   const shown = await rgba(await grab());
-  await page.evaluate((ids) => { const tb = (window as any).canalRecallGame.vectorMap._threeBuildings; tb.setHidden('swap-zfight', ids); }, target!.ids);
+  if (!FRAME_MASK) await page.evaluate((ids) => { const tb = (window as any).canalRecallGame.vectorMap._threeBuildings; tb.setHidden('swap-zfight', ids); }, target!.ids);
   await page.waitForTimeout(300);
-  const hidden = await rgba(await grab());
+  const hidden = FRAME_MASK ? shown : await rgba(await grab());
   await page.evaluate(() => { const tb = (window as any).canalRecallGame.vectorMap._threeBuildings; tb.setHidden('swap-zfight', []); });
   const mask = new Uint8Array(shown.width * shown.height);
-  for (let i = 0; i < mask.length; i++) { const p = i * 4; if (Math.abs(shown.data[p] - hidden.data[p]) + Math.abs(shown.data[p + 1] - hidden.data[p + 1]) + Math.abs(shown.data[p + 2] - hidden.data[p + 2]) > 30) mask[i] = 1; }
+  for (let i = 0; i < mask.length; i++) { const p = i * 4; if (FRAME_MASK || Math.abs(shown.data[p] - hidden.data[p]) + Math.abs(shown.data[p + 1] - hidden.data[p + 1]) + Math.abs(shown.data[p + 2] - hidden.data[p + 2]) > 30) mask[i] = 1; }
   // Erode by one pixel: a sub-pixel pan moves the silhouette edge, which is not the façade.
   const inner = new Uint8Array(mask.length);
   for (let y = 1; y < shown.height - 1; y++) for (let x = 1; x < shown.width - 1; x++) { const i = y * shown.width + x; if (mask[i] && mask[i - 1] && mask[i + 1] && mask[i - shown.width] && mask[i + shown.width]) inner[i] = 1; }
-  const maskPx = inner.reduce((s, v) => s + v, 0);
-  console.log('slab mask px', maskPx);
+  const maskPx = inner.reduce((s, v) => s + v, 0), maskShare = maskPx / (shown.width * shown.height);
+  console.log('slab mask px', maskPx, 'share', maskShare.toFixed(4), 'frame', shown.width, shown.height);
   expect(maskPx, 'the slab is on screen').toBeGreaterThan(500);
+  // s3-slab-user: the slab covers what it covers in the user's window (measured 2026-11-06 at DPR 2, see abSpots.ts).
+  if (SPOT.minMaskShare) expect(maskShare, 'the slab fills its share of the user\'s frame').toBeGreaterThan(SPOT.minMaskShare);
   // Steps: the camera pans PAN_PX CSS px per step across the view (about the slab, at its distance); `fade` holds the
   // swap's dissolve at t = step / STEPS. Run once with the detail solid (the still floor), once through the swap.
   const run = async (swap: boolean, capture: () => Promise<string> = grab) => {
@@ -147,7 +169,7 @@ test('swap z-fight: no moving stripes on the Weesperstraat slab while its detail
       const vm = (window as any).canalRecallGame.vectorMap, tb = vm._threeBuildings, g = vm._ownGround;
       vm.jumpToLngLat({ ...pose, elevation: g?.ready ? g.heightAt(pose.center) : 0 });
       (window as any).__zf = { key };
-    }, [pose, target!.near] as const);
+    }, [pose, target?.near ?? null] as const);
     await page.waitForTimeout(200);
     if (swap) {
       // Evict the detail chunk (the shells show its buildings again) and let it re-arrive: it dissolves in over them.
@@ -198,6 +220,7 @@ test('swap z-fight: no moving stripes on the Weesperstraat slab while its detail
   };
   const still = await run(false);
   let alias: { refTotal: number; aliasPx: number; aliasSteps: number[]; refAreas: number[] } | null = null;
+  let aliasCount: Uint8Array | null = null;
   if (SS > 1) {
     const base = await page.evaluate(() => (window as any).canalRecallGame.vectorMap.host.getPixelRatio());
     await page.evaluate((r) => (window as any).canalRecallGame.vectorMap.host.setPixelRatio(r), base * SS);
@@ -219,6 +242,7 @@ test('swap z-fight: no moving stripes on the Weesperstraat slab while its detail
     await page.evaluate((r) => (window as any).canalRecallGame.vectorMap.host.setPixelRatio(r), base);
     await page.waitForTimeout(1500);
     const aliasSteps: number[] = [];
+    aliasCount = new Uint8Array(inner.length);
     for (let k = 1; k < still.frames.length; k++) {
       let n = 0;
       const a0 = still.frames[k - 1].data, a1 = still.frames[k].data, r0 = ref.frames[k - 1].data, r1 = ref.frames[k].data;
@@ -227,17 +251,28 @@ test('swap z-fight: no moving stripes on the Weesperstraat slab while its detail
         const p = i * 4, A = lab(a0[p], a0[p + 1], a0[p + 2]), B = lab(a1[p], a1[p + 1], a1[p + 2]);
         if (Math.hypot(A[0] - B[0], A[1] - B[1], A[2] - B[2]) <= 20) continue;
         const C = lab(r0[p], r0[p + 1], r0[p + 2]), D = lab(r1[p], r1[p + 1], r1[p + 2]);
-        if (Math.hypot(C[0] - D[0], C[1] - D[1], C[2] - D[2]) <= 20) n++;
+        if (Math.hypot(C[0] - D[0], C[1] - D[1], C[2] - D[2]) <= 20) { n++; aliasCount[i]++; }
       }
       aliasSteps.push(n);
     }
     alias = { refTotal: ref.areas.reduce((s, v) => s + v, 0), aliasPx: aliasSteps.reduce((s, v) => s + v, 0), aliasSteps, refAreas: ref.areas };
     console.log('swap-zfight alias', JSON.stringify({ ss: SS, stillBase: still.areas.reduce((s, v) => s + v, 0), stillRef: alias.refTotal, aliasPx: alias.aliasPx }));
+    if (process.env.ZFIGHT_DUMP) {
+      // The alias map (lane R3-A): red = a pixel that aliased in at least one step (brighter = more steps), over the mid frame.
+      const mid = still.frames[Math.round(STEPS / 2)].data, map = Buffer.alloc(shown.width * shown.height * 3);
+      for (let i = 0; i < inner.length; i++) {
+        const p = i * 4, g = Math.round((mid[p] + mid[p + 1] + mid[p + 2]) / 6);
+        if (aliasCount[i]) map.set([Math.min(255, 120 + aliasCount[i] * 20), 0, 0], i * 3); else map.set([g, g, g], i * 3);
+      }
+      mkdirSync(OUT, { recursive: true });
+      await sharp(map, { raw: { width: shown.width, height: shown.height, channels: 3 } }).png().toFile(`${OUT}/${info.project.name}${LABEL}-alias-map.png`);
+    }
   }
+  let owners: Record<string, number> | null = null;
   // The shell's yield at mid-swap: the detail chunk held at t = 0.5 and taken off screen, the share of the slab's
   // pixels where the shell under it draws nothing (the background shows, as in the slab-hidden frame). With the
   // complementary dissolve that is the detail's own coverage (~0.5); with the old overlap 0 (the shell stays solid).
-  const yieldShare = await (async () => {
+  const yieldShare = FRAME_MASK ? NaN : await (async () => {
     await page.evaluate(([pose, key]) => {
       const vm = (window as any).canalRecallGame.vectorMap, tb = vm._threeBuildings, g = vm._ownGround, e = tb.chunks.get(key);
       vm.jumpToLngLat({ ...pose, elevation: g?.ready ? g.heightAt(pose.center) : 0 });
@@ -270,19 +305,51 @@ test('swap z-fight: no moving stripes on the Weesperstraat slab while its detail
     return open / maskPx;
   })();
   console.log('shell yield at mid-swap', yieldShare.toFixed(3));
-  const swap = await run(true);
+  const swap = FRAME_MASK || process.env.ZFIGHT_ALIAS_ONLY ? { areas: still.areas.map(() => 0), fadingSteps: STEPS + 1, frames: [] } : await run(true);
+  if (process.env.ZFIGHT_OWNER && aliasCount) {
+    // The owner view: the same pose with every chunk painted by its owner class, then each alias pixel's class.
+    const url = new URL(page.url());
+    url.searchParams.set('thinDebug', 'owner');
+    await page.goto(url.toString());
+    await expect.poll(() => page.evaluate(() => Boolean((window as any).canalRecallGame?.player?.x)), { timeout: 120_000 }).toBe(true);
+    await page.evaluate(() => { const g = (window as any).canalRecallGame; g.state = 4; g._quizFreezesRide = () => false; g.player.handleInput = () => {}; g.player.update = function () { this.speed = 0; this.vx = 0; this.vy = 0; }; });
+    await expect.poll(() => page.evaluate(() => { const vm = (window as any).canalRecallGame.vectorMap; return vm.engine === 'own' && !!vm._threeBuildings?.ready; }), { timeout: 180_000 }).toBe(true);
+    await settle(page);
+    await page.evaluate((pose) => {
+      const vm = (window as any).canalRecallGame.vectorMap;
+      vm.sync = () => {}; vm.aimAtWorld = () => {};
+      for (const top of vm._sharedFrame?.scene?.children ?? []) if (/(^|\/)player-/.test(`${top.userData?.participant ?? ''} ${top.name ?? ''}`)) top.traverse((o: any) => o.layers?.disableAll?.());
+      const g = vm._ownGround;
+      vm.jumpToLngLat({ ...pose, elevation: g?.ready ? g.heightAt(pose.center) : 0 });
+    }, pose);
+    await settle(page);
+    const ownerShot = await rgba(await grab());
+    mkdirSync(OUT, { recursive: true });
+    await sharp(ownerShot.data, { raw: { width: ownerShot.width, height: ownerShot.height, channels: 4 } }).png().toFile(`${OUT}/${info.project.name}${LABEL}-owner.png`);
+    const classes = await page.evaluate(() => (window as any).CanalRecallThreeBuildings?.THIN_OWNER_CLASSES ?? null);
+    expect(classes, 'the three-buildings bundle exports THIN_OWNER_CLASSES (lane R3-A)').toBeTruthy();
+    owners = {};
+    for (let i = 0; i < aliasCount.length; i++) {
+      if (!aliasCount[i] || !inner[i]) continue;
+      const p = i * 4, r = ownerShot.data[p], g = ownerShot.data[p + 1], b = ownerShot.data[p + 2];
+      let best = 'other', d = 90;
+      for (const c of classes) { const e = Math.abs(c.rgb[0] - r) + Math.abs(c.rgb[1] - g) + Math.abs(c.rgb[2] - b); if (e < d) { d = e; best = c.name; } }
+      owners[best] = (owners[best] ?? 0) + aliasCount[i];
+    }
+    console.log('swap-zfight owners', JSON.stringify(owners));
+  }
   const sum = (a: number[]) => a.reduce((s, v) => s + v, 0);
-  const report = { when: new Date().toISOString(), spot: SPOT.name, qs: QS, target, maskPx, steps: STEPS, panPx: PAN_PX, shellYieldAtHalf: yieldShare,
-    still: { total: sum(still.areas), max: Math.max(...still.areas), areas: still.areas }, ...(alias ? { alias } : {}),
+  const report = { when: new Date().toISOString(), spot: SPOT.name, qs: QS, pose, target, maskPx, maskShare, frame: [shown.width, shown.height], steps: STEPS, panPx: PAN_PX, shellYieldAtHalf: yieldShare,
+    still: { total: sum(still.areas), max: Math.max(...still.areas), areas: still.areas }, ...(alias ? { alias } : {}), ...(owners ? { owners } : {}),
     swap: { total: sum(swap.areas), max: Math.max(...swap.areas), areas: swap.areas, fadingSteps: swap.fadingSteps },
     // What the swap adds over the still pan, per step: the stripes.
     excess: swap.areas.map((v, i) => Math.max(0, v - still.areas[i])), errors };
   mkdirSync(OUT, { recursive: true });
   writeFileSync(`${OUT}/${info.project.name}${LABEL}.json`, JSON.stringify(report, null, 1));
-  console.log('swap-zfight', JSON.stringify({ spot: SPOT.name, qs: QS, maskPx, shellYield: +yieldShare.toFixed(3), still: report.still.total, swap: report.swap.total, excess: sum(report.excess), excessMax: Math.max(...report.excess), fadingSteps: swap.fadingSteps }));
+  console.log('swap-zfight', JSON.stringify({ spot: SPOT.name, qs: QS, maskPx, shellYield: +yieldShare.toFixed(3), still: report.still.total, aliasPx: alias?.aliasPx ?? null, swap: report.swap.total, excess: sum(report.excess), excessMax: Math.max(...report.excess), fadingSteps: swap.fadingSteps }));
   expect(errors, 'page errors').toEqual([]);
-  expect(swap.fadingSteps, 'the swap was dissolving through the steps').toBeGreaterThan(STEPS * 0.8);
+  if (!process.env.ZFIGHT_REPORT_ONLY) expect(swap.fadingSteps, 'the swap was dissolving through the steps').toBeGreaterThan(STEPS * 0.8);
   // Complementary (the default): the shell yields the detail's share of the slab at mid-swap (0.5 ± 0.1).
-  if (!process.env.ZFIGHT_REPORT_ONLY && !/swapComplement=0|chunkFade=0/.test(QS)) expect(Math.abs(yieldShare - 0.5), `shell yield ${yieldShare.toFixed(3)} at t = 0.5`).toBeLessThan(0.1);
+  if (!process.env.ZFIGHT_REPORT_ONLY && !FRAME_MASK && !process.env.ZFIGHT_ALIAS_ONLY && !/swapComplement=0|chunkFade=0/.test(QS)) expect(Math.abs(yieldShare - 0.5), `shell yield ${yieldShare.toFixed(3)} at t = 0.5`).toBeLessThan(0.1);
   if (!process.env.ZFIGHT_REPORT_ONLY) expect(sum(report.excess), 'ΔE>20 px on the slab beyond the still pan, during the swap').toBe(0);
 });
