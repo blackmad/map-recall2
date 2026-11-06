@@ -2314,5 +2314,11 @@
   "buildVersion": 2,
   "bytes": 29616,
   "triangles": 1134
+ },
+ "belastingdienst-amsterdam": {
+  "sourceHash": "20f873537cfee9ee",
+  "buildVersion": 2,
+  "bytes": 234000,
+  "triangles": 17600
  }
 }

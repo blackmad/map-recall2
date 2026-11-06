@@ -68599,5 +68599,454 @@
    "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
    "modifications": "Original low-poly reconstruction from the typed kiosk kit: pale grey-blue cabin with a glazed north side and glass door, a dark navy lettered south side and menu board, a deep grey-blue fascia and a rooftop garden with two stove pipes. Footprint from BAG (CC0); tints are panorama medians (Gemeente Amsterdam, CC BY 4.0) lifted toward the sunlit 2024 view. No photo pixels or imported meshes."
   }
+ },
+ {
+  "id": "belastingdienst-amsterdam",
+  "name": "Het Boekhuis (Belastingdienst Amsterdam), Kingsfordweg 1",
+  "modelUrl": "./models/belastingdienst-amsterdam.glb",
+  "suppressOsmIds": [
+   "NL.IMBAG.Pand.0363100012107557",
+   "w57864988",
+   "NL.IMBAG.Pand.0363100012204651",
+   "w268460654"
+  ],
+  "spatialSuppression": false,
+  "footprint": {
+   "centre": [
+    4.84322155,
+    52.38714863
+   ],
+   "headingDegrees": 0,
+   "lengthMetres": 261.1,
+   "widthMetres": 66
+  },
+  "surveyed": {
+   "anchor": [
+    4.84322155,
+    52.38714863
+   ],
+   "northOffsetDegrees": 0,
+   "source": "Vertex average of the BAG 0363100012107557 ring (RD, PDOK BAG WFS, CC0) in native east/south metres above the 3DBAG ground 0.91 m NAP (scripts/landmarks/belastingdienst-amsterdam-footprints.json, written by sarphati-plaza-prepare.ts --id=belastingdienst-amsterdam --pand=0363100012107557). Plans from the BAG ring and the 3DBAG LoD2.2 roof parts (CC BY 4.0): the open-book tower in two 14 m leaves at 82 m, the voorbouw on the Kingsfordweg at 18.1 and 19.1 m, the north car park at 18.8 m, the east wing at 15.5 m, the court hall at 9.3 m, the south slab at 58.7 m with its 25.6 and 26.4 m links and the Ringweg car park at 8.2 m. The voorbouw fronts measured on the rectified Gemeente Amsterdam panoramas recording_2025-07-01_11-45-33_00562, recording_2024-09-09_08-42-32_05540 and TMX7316010203-001710_pano_0000_000705 (CC BY 4.0), the car park's north face on recording_2025-07-01_11-45-33_00512; the tower's panels, stripes, glazed leaf ends and the wheel from Wikimedia Commons photographs by Choinowski (2016), Ilonamay (2015) and Ceescamel (2020), all CC BY-SA 4.0. The east wing's faces, the court sides of the voorbouw and the south slab's windows are inferred."
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 0,
+  "heightMetres": 82,
+  "bagYear": 1994,
+  "materialOverrides": {
+   "stone": "#4b5257",
+   "concrete": "#8a9296",
+   "white": "#a8abad",
+   "ochre": "#b7bdc1",
+   "bronze": "#6e6a66",
+   "glass": "#5c6e7c",
+   "canopyGlass": "#36424a",
+   "frame": "#e4e6e6",
+   "dark": "#434c55",
+   "slate": "#6b6f72",
+   "blue": "#848e94",
+   "pink": "#c3c9cd",
+   "copper": "#434c55"
+  },
+  "attribution": {
+   "title": "Het Boekhuis, Kingsfordweg 1 (Abe Bonnema for Reed Elsevier, 1991-1994; the Belastingdienst and Douane Amsterdam since 1994), with Jeroen Henneman's Het wiel on the roof",
+   "author": "Map Recall",
+   "sourceUrl": "https://api.data.amsterdam.nl/v1/bag/panden/0363100012107557",
+   "licence": "CC BY 4.0",
+   "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+   "modifications": "Original texture-free flat-colour geometry on the BAG footprint (CC0) with 3DBAG LoD2.2 heights (CC BY 4.0): the two tower leaves opened towards the Kingsfordweg with a ribbon window every storey, four dark stripes on each broad face, glazed leaf ends, the grille row under the roof and Henneman's wheel; the dark granite voorbouw with three rows of white-framed ribbon windows over a ground storey glazed behind square piers, its two glazed halls and lattice mast; the light granite south section with its punched windows, colonnade and passage; the dark-clad north car park with its open deck bay; the south slab, links, court hall and the Ringweg car park; read for proportion and tone from Gemeente Amsterdam panoramas (CC BY 4.0), the PDOK orthophoto (CC BY 4.0) and Wikimedia Commons photographs 'Kingsfordweg 1 Amsterdam.jpg' and 'Boekhuis in 2016.jpg' by Choinowski (CC BY-SA 4.0), 'Kingsfordweg.JPG' by Ilonamay (CC BY-SA 4.0), '2020 Wiel van Henneman, vooraanzicht.jpg' and '... zijaanzicht.jpg' by Ceescamel (CC BY-SA 4.0). No pixels or meshes imported."
+  },
+  "buildingFootprint": {
+   "type": "Polygon",
+   "coordinates": [
+    [
+     [
+      4.84268723,
+      52.38842999
+     ],
+     [
+      4.8427009,
+      52.3877168
+     ],
+     [
+      4.8427494,
+      52.38771714
+     ],
+     [
+      4.84274893,
+      52.38770396
+     ],
+     [
+      4.84274997,
+      52.38768751
+     ],
+     [
+      4.84270147,
+      52.38768716
+     ],
+     [
+      4.84271549,
+      52.38695438
+     ],
+     [
+      4.84276697,
+      52.38695477
+     ],
+     [
+      4.842768,
+      52.38690552
+     ],
+     [
+      4.84271615,
+      52.3869051
+     ],
+     [
+      4.8427215,
+      52.38662557
+     ],
+     [
+      4.84272803,
+      52.38627974
+     ],
+     [
+      4.842922,
+      52.38628124
+     ],
+     [
+      4.84291746,
+      52.38650981
+     ],
+     [
+      4.84315044,
+      52.3865115
+     ],
+     [
+      4.84315102,
+      52.38650869
+     ],
+     [
+      4.84315261,
+      52.3865056
+     ],
+     [
+      4.84315617,
+      52.3865019
+     ],
+     [
+      4.8431596,
+      52.38649966
+     ],
+     [
+      4.8431638,
+      52.38649779
+     ],
+     [
+      4.8431676,
+      52.38649664
+     ],
+     [
+      4.84317344,
+      52.38649565
+     ],
+     [
+      4.84317991,
+      52.3864955
+     ],
+     [
+      4.84318438,
+      52.38649598
+     ],
+     [
+      4.84319165,
+      52.38649789
+     ],
+     [
+      4.84319487,
+      52.38649932
+     ],
+     [
+      4.8431982,
+      52.38650136
+     ],
+     [
+      4.84344016,
+      52.38635721
+     ],
+     [
+      4.84344145,
+      52.38630648
+     ],
+     [
+      4.84352587,
+      52.38630707
+     ],
+     [
+      4.84358729,
+      52.3862692
+     ],
+     [
+      4.84358732,
+      52.3863075
+     ],
+     [
+      4.84368212,
+      52.38630803
+     ],
+     [
+      4.84367106,
+      52.38691185
+     ],
+     [
+      4.84360162,
+      52.38691136
+     ],
+     [
+      4.84360111,
+      52.38696072
+     ],
+     [
+      4.84366982,
+      52.38696124
+     ],
+     [
+      4.84365868,
+      52.38755052
+     ],
+     [
+      4.84353619,
+      52.38754965
+     ],
+     [
+      4.84353473,
+      52.38762829
+     ],
+     [
+      4.84360522,
+      52.38762878
+     ],
+     [
+      4.843604,
+      52.38769349
+     ],
+     [
+      4.84359079,
+      52.38769339
+     ],
+     [
+      4.84359024,
+      52.38772307
+     ],
+     [
+      4.84360344,
+      52.38772317
+     ],
+     [
+      4.84360222,
+      52.38778787
+     ],
+     [
+      4.84353172,
+      52.38778737
+     ],
+     [
+      4.84353024,
+      52.387866
+     ],
+     [
+      4.84365274,
+      52.38786686
+     ],
+     [
+      4.84363887,
+      52.38861642
+     ],
+     [
+      4.8431584,
+      52.38852224
+     ],
+     [
+      4.84316721,
+      52.38807972
+     ],
+     [
+      4.84291169,
+      52.38807824
+     ],
+     [
+      4.84290384,
+      52.38847241
+     ],
+     [
+      4.84273975,
+      52.38844027
+     ],
+     [
+      4.84268723,
+      52.38842999
+     ]
+    ],
+    [
+     [
+      4.84283712,
+      52.38695144
+     ],
+     [
+      4.84290812,
+      52.38695205
+     ],
+     [
+      4.84290806,
+      52.38695581
+     ],
+     [
+      4.84293289,
+      52.38695598
+     ],
+     [
+      4.84293168,
+      52.38702052
+     ],
+     [
+      4.8429259,
+      52.38732912
+     ],
+     [
+      4.84297144,
+      52.38732944
+     ],
+     [
+      4.84297219,
+      52.38731559
+     ],
+     [
+      4.8429775,
+      52.38729792
+     ],
+     [
+      4.84298759,
+      52.38728103
+     ],
+     [
+      4.84300217,
+      52.38726542
+     ],
+     [
+      4.84302058,
+      52.38725143
+     ],
+     [
+      4.84304295,
+      52.38723977
+     ],
+     [
+      4.84306805,
+      52.38723042
+     ],
+     [
+      4.84309535,
+      52.38722378
+     ],
+     [
+      4.84312409,
+      52.38722004
+     ],
+     [
+      4.84315343,
+      52.3872193
+     ],
+     [
+      4.8431824,
+      52.38722229
+     ],
+     [
+      4.84321106,
+      52.38722624
+     ],
+     [
+      4.84323933,
+      52.38723112
+     ],
+     [
+      4.84326714,
+      52.38723692
+     ],
+     [
+      4.8432944,
+      52.38724362
+     ],
+     [
+      4.84332103,
+      52.38725122
+     ],
+     [
+      4.84334695,
+      52.38725968
+     ],
+     [
+      4.84337209,
+      52.38726898
+     ],
+     [
+      4.84339638,
+      52.38727909
+     ],
+     [
+      4.84341975,
+      52.38728999
+     ],
+     [
+      4.84342593,
+      52.38695945
+     ],
+     [
+      4.84343336,
+      52.3869595
+     ],
+     [
+      4.84343419,
+      52.38691022
+     ],
+     [
+      4.84342999,
+      52.38691018
+     ],
+     [
+      4.84343502,
+      52.38664382
+     ],
+     [
+      4.84327742,
+      52.3866427
+     ],
+     [
+      4.84323365,
+      52.38666876
+     ],
+     [
+      4.84308472,
+      52.38675789
+     ],
+     [
+      4.84308684,
+      52.38664138
+     ],
+     [
+      4.8429153,
+      52.38664026
+     ],
+     [
+      4.84291045,
+      52.38690629
+     ],
+     [
+      4.84283777,
+      52.3869059
+     ],
+     [
+      4.84283712,
+      52.38695144
+     ]
+    ]
+   ]
+  }
  }
 ]
