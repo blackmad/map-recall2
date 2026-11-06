@@ -238,10 +238,10 @@
       "reportOnly": true,
       "measured": {
         "desktop": 167,
-        "iphone": 109
+        "iphone": 117
       },
       "unit": "ms frame p99, worst 5 s window of the aerial pan (median window: 100 desktop / 51 iPhone)",
-      "note": "RED TODAY on both profiles; recorded report-only, NOT a passing gate. Owners: GPU fill + shadow map from the air (governor steps DPR 2 -> 0.75), labels occlusion/place, city follow; lever is R2-B baked shells and a label cap at aerial zoom.",
+      "note": "RED TODAY on both profiles; recorded report-only, NOT a passing gate. Owners: GPU fill + shadow map from the air (governor steps DPR 2 -> 0.75), labels occlusion/place, city follow; lever is R2-B baked shells and a label cap at aerial zoom. R2-B (#229) after far shells + label cap: worst window 166.7 / 116.6 ms, median window 83 / 67 ms, frames > 100 ms 36 -> 26 desktop, 15 -> 11 iPhone; windows with a label phase over 10 ms 19 -> 4 on desktop.",
       "source": "lane R1-C 2026-11-06 (#225) at 8d9a22a6f, harness scripts/aerial-pan.mjs (npm run perf:aerial): 3-min Free Ride aerial sweep Centrum -> S1 Hoftuin -> S4 Zuidas -> West -> Oost -> Dam at 300 m/s, sampled every 5 s after forced GC; installed Chrome on Metal, headed, desktop 1512x982 DPR 2 and iPhone 13 profile; before: 158 / 93 ms desktop, 116 / 75 ms iPhone (worst / median window)",
       "date": "2026-11-06"
     },
@@ -256,6 +256,42 @@
       "note": "RED TODAY (1 / 1: single label-occlusion / city-follow frames, 309 ms desktop, 258 ms iPhone); recorded report-only, NOT a passing gate.",
       "source": "lane R1-C 2026-11-06 (#225) at 8d9a22a6f, harness scripts/aerial-pan.mjs (npm run perf:aerial): 3-min Free Ride aerial sweep Centrum -> S1 Hoftuin -> S4 Zuidas -> West -> Oost -> Dam at 300 m/s, sampled every 5 s after forced GC; installed Chrome on Metal, headed, desktop 1512x982 DPR 2 and iPhone 13 profile; before: 0 / 0; frames > 100 ms 104 desktop / 34 iPhone after (78 / 17 before)",
       "date": "2026-11-06"
+    },
+    "farShellCellsMax": {
+      "value": {
+        "desktop": 160,
+        "iphone": 48
+      },
+      "measured": {
+        "desktop": 148,
+        "iphone": 14
+      },
+      "unit": "far-shell cells (world-v1/far/<key>.bin SHL1 prisms) resident at once in the aerial pan (?farShells=0 turns the tier off)",
+      "note": "on touch the 600k-triangle cap binds first; the tier fetches nothing below 60 m eye height / 1,500 m reach (rendererShared/aerialView.ts)",
+      "source": "lane R2-B 2026-11-06 (#229) at 6a72b6283, scripts/aerial-pan.mjs 180 s pan, real Chrome, exclusive lock, staged world with far/ (format 6)"
+    },
+    "farShellMBMax": {
+      "value": {
+        "desktop": 96,
+        "iphone": 24
+      },
+      "measured": {
+        "desktop": 80.6,
+        "iphone": 20.1
+      },
+      "unit": "MB of far-shell geometry on the GPU in the aerial pan (fetched gz: 2.6 MB desktop / 0.81 MB iPhone)",
+      "source": "lane R2-B 2026-11-06 (#229) at 6a72b6283, scripts/aerial-pan.mjs 180 s pan, real Chrome, exclusive lock, staged world with far/ (format 6)"
+    },
+    "aerialDrawsMax": {
+      "value": 400,
+      "reportOnly": true,
+      "measured": {
+        "desktop": 2008,
+        "iphone": 1524
+      },
+      "unit": "max draw calls in a sampled frame of the aerial pan",
+      "note": "RED TODAY, report-only: the resident tier alone drew 1,166-2,147 before any far shell (far shells add about 150 at most); the lever is merging coarse chunks per cell in the resident tier, not the far tier.",
+      "source": "lane R2-B 2026-11-06 (#229) at 6a72b6283, scripts/aerial-pan.mjs 180 s pan, real Chrome, exclusive lock, staged world with far/ (format 6)"
     }
   },
   "_desktopPerfViewport": {

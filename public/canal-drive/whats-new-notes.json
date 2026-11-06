@@ -3,6 +3,16 @@
   "notes": [
     {
       "date": "2026-11-06",
+      "title": "The city runs to the horizon from the air",
+      "text": "Fly up over Amsterdam and the city no longer stops a kilometre or two from you. Every neighbourhood beyond the streets around the rider is drawn as simple baked blocks out to seven kilometres, so from the Hoftuin, the Zuidas or Bos en Lommer the roofs continue to the skyline instead of ending at an empty beige plain. Map labels also skip their building checks when you fly high, so panning over the whole city is smoother. On the street nothing changes; ?farShells=0 turns the far city off.",
+      "images": [
+        "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/engine/2026-11-06-r2/far-west-bos-en-lommer-desktop.jpg",
+        "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/engine/2026-11-06-r2/far-s1-hoftuin-desktop.jpg",
+        "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/engine/2026-11-06-r2/far-s4-zuidas-iphone.jpg"
+      ]
+    },
+    {
+      "date": "2026-11-06",
       "title": "Sharper distance, steadier rails, and a performance readout",
       "text": "Distant buildings now wear their roofs: two to five blocks out, rooftops show their real pitch and colour instead of flat grey lids. When nearby detail fades in, it takes over the simple shape pixel by pixel instead of flickering on top of it. Railway tracks on the ground are drawn as sharp dark rails that stay at least a pixel wide in the distance, instead of blurring into a grey hatch. A new Show performance switch under Comfort & detail puts one small line of numbers in the corner: memory, graphics memory, what is loaded and how smooth the last few seconds were. If the city ever slows down, those numbers tell us why. Flying over the city also keeps far fewer landmark models loaded at once (up to 627 before, about 250 now on a Mac), so a long tour from the air holds about a third less graphics memory.",
       "images": [
