@@ -1,5 +1,16 @@
 "use strict";
 (() => {
+  // src/canalRecall/blockBuilding/cladding.ts
+  var CLADDING = {
+    ribs: { pitch: 0.5, min: 0.25, max: 2, w: 0.09, out: 0.04 },
+    boards: { pitch: 0.4, min: 0.15, max: 1.5, w: 0.05, out: 0.035 },
+    louvres: { pitch: 0.35, min: 0.2, max: 1, w: 0.12, out: 0.12 },
+    panels: { pitch: 1.2, min: 0.6, max: 6, w: 0.05, out: 0.035 }
+  };
+
+  // src/canalRecall/buildingRecipe/wallFamily.ts
+  var RIB_PITCH = { min: 0.15, max: CLADDING.ribs.max };
+
   // src/canalRecall/facade/materials.ts
   function wallFamily(rgb) {
     const [r, g, b] = rgb;
@@ -22,8 +33,8 @@
   function rgbToLab(c) {
     const [r, g, b] = c.map(lin);
     const x = (0.4124 * r + 0.3576 * g + 0.1805 * b) / 0.95047, y = 0.2126 * r + 0.7152 * g + 0.0722 * b, z = (0.0193 * r + 0.1192 * g + 0.9505 * b) / 1.08883;
-    const f = (t) => t > 216 / 24389 ? Math.cbrt(t) : (24389 / 27 * t + 16) / 116;
-    return [116 * f(y) - 16, 500 * (f(x) - f(y)), 200 * (f(y) - f(z))];
+    const f2 = (t) => t > 216 / 24389 ? Math.cbrt(t) : (24389 / 27 * t + 16) / 116;
+    return [116 * f2(y) - 16, 500 * (f2(x) - f2(y)), 200 * (f2(y) - f2(z))];
   }
   function labToRgb([L, a, b]) {
     const fy = (L + 16) / 116, fx = fy + a / 500, fz = fy - b / 200;
@@ -425,8 +436,8 @@
     return rgbHex(lin2.map((c) => linearToSrgb(c / over)));
   }
   var MEDIAN_MEASURED_WALL = (() => {
-    const walls = Object.keys(WALL_WHITE_POINTS).map(hexRgb), med = (a) => a.slice().sort((p, q2) => p - q2)[a.length >> 1];
-    return rgbHex([0, 1, 2].map((i) => med(walls.map((w) => w[i]))));
+    const walls2 = Object.keys(WALL_WHITE_POINTS).map(hexRgb), med = (a) => a.slice().sort((p, q2) => p - q2)[a.length >> 1];
+    return rgbHex([0, 1, 2].map((i) => med(walls2.map((w) => w[i]))));
   })();
 
   // src/canalRecall/look/measuredWalls.ts
@@ -517,15 +528,15 @@
     /** An axis-aligned box in local coordinates, all six faces unless `open` names some (e.g. 'bottom'). */
     box(u0, u1, v0, v1, z0, z1, part, hex2, open = []) {
       const P2 = (u, v, z) => [u, v, z];
-      const f = (name, a, b, c, d, hint) => {
+      const f2 = (name, a, b, c, d, hint) => {
         if (!open.includes(name)) this.quad(a, b, c, d, [0, 0], [1, 0], [1, 1], [0, 1], part, hint, hex2);
       };
-      f("bottom", P2(u0, v0, z0), P2(u1, v0, z0), P2(u1, v1, z0), P2(u0, v1, z0), [0, 0, -1]);
-      f("top", P2(u0, v0, z1), P2(u1, v0, z1), P2(u1, v1, z1), P2(u0, v1, z1), [0, 0, 1]);
-      f("u0", P2(u0, v0, z0), P2(u0, v1, z0), P2(u0, v1, z1), P2(u0, v0, z1), [-1, 0, 0]);
-      f("u1", P2(u1, v0, z0), P2(u1, v1, z0), P2(u1, v1, z1), P2(u1, v0, z1), [1, 0, 0]);
-      f("v0", P2(u0, v0, z0), P2(u1, v0, z0), P2(u1, v0, z1), P2(u0, v0, z1), [0, -1, 0]);
-      f("v1", P2(u0, v1, z0), P2(u1, v1, z0), P2(u1, v1, z1), P2(u0, v1, z1), [0, 1, 0]);
+      f2("bottom", P2(u0, v0, z0), P2(u1, v0, z0), P2(u1, v1, z0), P2(u0, v1, z0), [0, 0, -1]);
+      f2("top", P2(u0, v0, z1), P2(u1, v0, z1), P2(u1, v1, z1), P2(u0, v1, z1), [0, 0, 1]);
+      f2("u0", P2(u0, v0, z0), P2(u0, v1, z0), P2(u0, v1, z1), P2(u0, v0, z1), [-1, 0, 0]);
+      f2("u1", P2(u1, v0, z0), P2(u1, v1, z0), P2(u1, v1, z1), P2(u1, v0, z1), [1, 0, 0]);
+      f2("v0", P2(u0, v0, z0), P2(u1, v0, z0), P2(u1, v0, z1), P2(u0, v0, z1), [0, -1, 0]);
+      f2("v1", P2(u0, v1, z0), P2(u1, v1, z0), P2(u1, v1, z1), P2(u0, v1, z1), [0, 1, 0]);
     }
   };
 
@@ -586,12 +597,12 @@
     }
     return hi > lo ? [lo, hi] : null;
   }
-  function rectDecal(s, f, e, v0, v1, z0, z1, hex2, proud = PROUD) {
-    const u = f + e * proud;
+  function rectDecal(s, f2, e, v0, v1, z0, z1, hex2, proud = PROUD) {
+    const u = f2 + e * proud;
     s.quad([u, v0, z0], [u, v1, z0], [u, v1, z1], [u, v0, z1], [0, 0], [0, 0], [0, 0], [0, 0], "decal", [e, 0, 0], hex2);
   }
-  function outlineBand(s, prof, f, e, bw, hex2, from = 0, to = Infinity) {
-    const u = f + e * PROUD;
+  function outlineBand(s, prof, f2, e, bw, hex2, from = 0, to = Infinity) {
+    const u = f2 + e * PROUD;
     for (let i = 0; i < prof.length - 1; i++) {
       const [x0, y0] = prof[i], [x1, y1] = prof[i + 1];
       if (Math.max(y0, y1) < from || Math.min(y0, y1) > to) continue;
@@ -603,15 +614,15 @@
       s.quad(a, b, c, d, [0, 0], [0, 0], [0, 0], [0, 0], "decal", [e, 0, 0], hex2);
     }
   }
-  function fanDecal(s, f, e, centre, rim, hex2, proud = PROUD_HI) {
-    const u = f + e * proud;
+  function fanDecal(s, f2, e, centre, rim, hex2, proud = PROUD_HI) {
+    const u = f2 + e * proud;
     for (let i = 0; i < rim.length - 1; i++) s.tri([u, centre[0], centre[1]], [u, rim[i][0], rim[i][1]], [u, rim[i + 1][0], rim[i + 1][1]], [0, 0], [0, 0], [0, 0], "decal", [e, 0, 0], hex2);
   }
   function gableAccents(s, g) {
-    const { shape, prof, f, e, W, trimHex } = g, half = W / 2;
+    const { shape, prof, f: f2, e, W, trimHex } = g, half = W / 2;
     const top = Math.max(...prof.map((p) => p[1]));
     if (shape === "plain") {
-      outlineBand(s, prof, f, e, 0.2, trimHex);
+      outlineBand(s, prof, f2, e, 0.2, trimHex);
       return;
     }
     if (shape === "cornice") {
@@ -625,62 +636,62 @@
         const hi = Math.max(y0, y1), lo = Math.min(y0, y1), inward = x0 < 0 ? 1 : -1;
         for (let k = 0, z = hi - 0.02; z - 0.24 > lo + 0.02 && k < 2; k++, z -= 0.27) {
           const w = k % 2 === 0 ? 0.36 : 0.22;
-          rectDecal(s, f, e, inward > 0 ? x0 : x0 - w, inward > 0 ? x0 + w : x0, z - 0.24, z, trimHex);
+          rectDecal(s, f2, e, inward > 0 ? x0 : x0 - w, inward > 0 ? x0 + w : x0, z - 0.24, z, trimHex);
         }
       }
-      speklagen(s, prof, f, e, top, trimHex, [0.3, 0.62]);
+      speklagen(s, prof, f2, e, top, trimHex, [0.3, 0.62]);
       return;
     }
-    if (shape === "raisedNeck" || shape === "clock" || shape === "neck" || shape === "bell") outlineBand(s, prof, f, e, shape === "clock" ? 0.22 : 0.16, trimHex);
-    if (shape === "neck") speklagen(s, prof, f, e, top, trimHex, [0.45]);
+    if (shape === "raisedNeck" || shape === "clock" || shape === "neck" || shape === "bell") outlineBand(s, prof, f2, e, shape === "clock" ? 0.22 : 0.16, trimHex);
+    if (shape === "neck") speklagen(s, prof, f2, e, top, trimHex, [0.45]);
     if (shape === "raisedNeck") {
       for (const side of [-1, 1]) {
         const arc = g.claws?.[side < 0 ? 0 : 1];
         if (!arc || arc.length < 2) continue;
         const cx = side * Math.min(...arc.map((p) => Math.abs(p[0]))), cy = Math.min(...arc.map((p) => p[1]));
-        fanDecal(s, f, e, [cx, cy], arc, trimHex);
+        fanDecal(s, f2, e, [cx, cy], arc, trimHex);
       }
-      crown(s, prof, f, e, top, trimHex, g.crownBase ?? top - 0.6);
-      speklagen(s, prof, f, e, top, trimHex, [0.62]);
+      crown(s, prof, f2, e, top, trimHex, g.crownBase ?? top - 0.6);
+      speklagen(s, prof, f2, e, top, trimHex, [0.62]);
     }
-    if (shape === "clock") crown(s, prof, f, e, top, trimHex, g.crownBase ?? top - 0.6);
+    if (shape === "clock") crown(s, prof, f2, e, top, trimHex, g.crownBase ?? top - 0.6);
     if (shape === "bell") {
       const span = profileSpan(prof, top - 0.5);
-      if (span) rectDecal(s, f, e, span[0] + 0.05, span[1] - 0.05, top - 0.5, top - 0.34, trimHex);
+      if (span) rectDecal(s, f2, e, span[0] + 0.05, span[1] - 0.05, top - 0.5, top - 0.34, trimHex);
     }
-    if (shape === "spout" && g.shutters) spoutShutters(s, prof, f, e, half, top, trimHex, g.shutterHex);
+    if (shape === "spout" && g.shutters) spoutShutters(s, prof, f2, e, half, top, trimHex, g.shutterHex);
   }
-  function crown(s, prof, f, e, top, hex2, base) {
+  function crown(s, prof, f2, e, top, hex2, base) {
     const rim = prof.filter((p) => p[1] >= base - 1e-6);
     if (rim.length < 3 || top - base < 0.15) return;
-    fanDecal(s, f, e, [(rim[0][0] + rim[rim.length - 1][0]) / 2, base], rim, hex2);
+    fanDecal(s, f2, e, [(rim[0][0] + rim[rim.length - 1][0]) / 2, base], rim, hex2);
   }
-  function speklagen(s, prof, f, e, top, hex2, at) {
+  function speklagen(s, prof, f2, e, top, hex2, at) {
     for (const t of at) {
       const y = top * t, a = profileSpan(prof, y), b = profileSpan(prof, y + 0.15);
       if (!a || !b) continue;
       const v0 = Math.max(a[0], b[0]) + 0.02, v1 = Math.min(a[1], b[1]) - 0.02;
-      if (v1 - v0 > 0.5) rectDecal(s, f, e, v0, v1, y, y + 0.15, hex2);
+      if (v1 - v0 > 0.5) rectDecal(s, f2, e, v0, v1, y, y + 0.15, hex2);
     }
   }
-  function spoutShutters(s, prof, f, e, half, top, trimHex, shutterHex) {
+  function spoutShutters(s, prof, f2, e, half, top, trimHex, shutterHex) {
     const y0 = 0.3, h = Math.min(1.5, top * 0.45), span = profileSpan(prof, y0 + h + 0.1);
     if (!span) return;
     const w = Math.min(1, half * 0.4, span[1] - span[0] - 0.35);
     if (w < 0.5 || h < 0.8) return;
-    rectDecal(s, f, e, -w / 2 - 0.08, w / 2 + 0.08, y0 - 0.08, y0 + h + 0.08, trimHex);
-    rectDecal(s, f, e, -w / 2, -0.025, y0, y0 + h, shutterHex, PROUD_HI);
-    rectDecal(s, f, e, 0.025, w / 2, y0, y0 + h, shutterHex, PROUD_HI);
+    rectDecal(s, f2, e, -w / 2 - 0.08, w / 2 + 0.08, y0 - 0.08, y0 + h + 0.08, trimHex);
+    rectDecal(s, f2, e, -w / 2, -0.025, y0, y0 + h, shutterHex, PROUD_HI);
+    rectDecal(s, f2, e, 0.025, w / 2, y0, y0 + h, shutterHex, PROUD_HI);
   }
   function corniceFront(s, g, top) {
-    const { f, e, W, trimHex } = g, depth = 0.42, h = 0.48, over = 0.08;
-    const u0 = Math.min(f, f + e * depth), u1 = Math.max(f, f + e * depth);
+    const { f: f2, e, W, trimHex } = g, depth = 0.42, h = 0.48, over = 0.08;
+    const u0 = Math.min(f2, f2 + e * depth), u1 = Math.max(f2, f2 + e * depth);
     s.box(u0, u1, -W / 2 - over, W / 2 + over, top - h, top + 0.05, "trim", trimHex);
-    rectDecal(s, f, e, -W / 2, W / 2, top - h - 0.34, top - h - 0.06, trimHex);
-    for (const side of [-1, 1]) rectDecal(s, f, e, side < 0 ? -W / 2 : W / 2 - 0.3, side < 0 ? -W / 2 + 0.3 : W / 2, -1.6, top - h - 0.06, trimHex);
+    rectDecal(s, f2, e, -W / 2, W / 2, top - h - 0.34, top - h - 0.06, trimHex);
+    for (const side of [-1, 1]) rectDecal(s, f2, e, side < 0 ? -W / 2 : W / 2 - 0.3, side < 0 ? -W / 2 + 0.3 : W / 2, -1.6, top - h - 0.06, trimHex);
   }
-  function vergeBoards(s, f, e, edges, hex2, bw = 0.22) {
-    for (const [a, b] of edges) outlineBand(s, [a, b], f, e, bw, hex2);
+  function vergeBoards(s, f2, e, edges, hex2, bw = 0.22) {
+    for (const [a, b] of edges) outlineBand(s, [a, b], f2, e, bw, hex2);
   }
 
   // src/canalRecall/roofMesh.ts
@@ -765,7 +776,7 @@
   function gableProfile(shape, widthM, roofRiseM) {
     const half = widthM / 2, pts = [];
     const slope = (x) => roofRiseM * (1 - Math.abs(x) / half);
-    const add = (x, y) => pts.push([x, Math.max(y, slope(x) + 0.04)]);
+    const add2 = (x, y) => pts.push([x, Math.max(y, slope(x) + 0.04)]);
     const mirror = (left) => {
       const right = left.slice(0, -1).reverse().map(([x, y]) => [-x, y]);
       const all = [...left, ...right];
@@ -775,9 +786,9 @@
     };
     const N = 10;
     if (shape === "plain") {
-      add(-half, 0);
-      add(0, roofRiseM);
-      add(half, 0);
+      add2(-half, 0);
+      add2(0, roofRiseM);
+      add2(half, 0);
       pts[0][1] = 0;
       pts[2][1] = 0;
       return pts;
@@ -804,56 +815,56 @@
     }
     if (shape === "neck") {
       const top2 = roofRiseM * 1.45 + 0.7, neck = half * 0.42, shoulder = roofRiseM * 0.62;
-      add(-half, 0);
+      add2(-half, 0);
       for (let i = 1; i <= 4; i++) {
         const t = i / 4, x = -half + (half - neck) * t;
-        add(x, 0.15 + (shoulder - 0.15) * Math.pow(t, 1.7));
+        add2(x, 0.15 + (shoulder - 0.15) * Math.pow(t, 1.7));
       }
-      add(-neck, top2);
-      add(neck, top2);
+      add2(-neck, top2);
+      add2(neck, top2);
       for (let i = 4; i >= 1; i--) {
         const t = i / 4, x = half - (half - neck) * t;
-        add(x, 0.15 + (shoulder - 0.15) * Math.pow(t, 1.7));
+        add2(x, 0.15 + (shoulder - 0.15) * Math.pow(t, 1.7));
       }
-      add(half, 0);
+      add2(half, 0);
       pts[0][1] = 0;
       pts[pts.length - 1][1] = 0;
       return dedupe(pts);
     }
     if (shape === "raisedNeck") {
       const d = raisedNeckDims(widthM, roofRiseM);
-      add(-half, 0);
-      add(-half, d.s0);
+      add2(-half, 0);
+      add2(-half, d.s0);
       if (d.arc.length) {
-        if (d.arc[0][0] > -half + 0.01) add(d.arc[0][0], d.s0);
-        for (const [x, y] of d.arc) add(x, y);
-      } else add(-d.neck, d.s0);
-      add(-d.neck, d.topN);
-      add(0, d.top);
+        if (d.arc[0][0] > -half + 0.01) add2(d.arc[0][0], d.s0);
+        for (const [x, y] of d.arc) add2(x, y);
+      } else add2(-d.neck, d.s0);
+      add2(-d.neck, d.topN);
+      add2(0, d.top);
       return mirror(pts);
     }
     if (shape === "clock") {
       const { neck, sh, nt, top: top2 } = clockDims(widthM, roofRiseM);
       for (let i = 0; i <= 4; i++) {
         const t = i / 4;
-        add(-half + (half - neck) * t, sh * (3 * t * t - 2 * t * t * t));
+        add2(-half + (half - neck) * t, sh * (3 * t * t - 2 * t * t * t));
       }
       for (let i = 0; i <= 3; i++) {
         const a = Math.PI - i / 3 * (Math.PI / 2);
-        add(neck * Math.cos(a), nt + (top2 - nt) * Math.sin(a));
+        add2(neck * Math.cos(a), nt + (top2 - nt) * Math.sin(a));
       }
       return mirror(pts);
     }
     const bell = shape === "bell", top = roofRiseM * (bell ? 1.3 : 1.55) + (bell ? 0.6 : 0.9);
     for (let i = 0; i <= N; i++) {
       const x = -half + widthM * i / N, t = Math.abs(x) / half;
-      let f;
-      if (bell) f = t < 0.18 ? 1 : 0.12 + 0.88 * (0.5 + 0.5 * Math.cos(Math.PI * Math.pow((t - 0.18) / 0.82, 0.85)));
+      let f2;
+      if (bell) f2 = t < 0.18 ? 1 : 0.12 + 0.88 * (0.5 + 0.5 * Math.cos(Math.PI * Math.pow((t - 0.18) / 0.82, 0.85)));
       else {
         const tt = t < 0.26 ? 0 : (t - 0.26) / 0.74;
-        f = t < 0.26 ? 1 : 0.1 + 0.9 * (1 - Math.pow(tt, 0.6));
+        f2 = t < 0.26 ? 1 : 0.1 + 0.9 * (1 - Math.pow(tt, 0.6));
       }
-      add(x, top * f);
+      add2(x, top * f2);
     }
     pts[0][1] = 0;
     pts[pts.length - 1][1] = 0;
@@ -861,16 +872,16 @@
   }
   var dedupe = (pts) => pts.filter((p, i) => i === 0 || p[0] !== pts[i - 1][0] || p[1] !== pts[i - 1][1]);
   function gableSlab(s, prof, e, L, topPart, topHex, t = 0.32) {
-    const f = e * L / 2, b = e * (L / 2 - t), st = s.dims.storeyM;
+    const f2 = e * L / 2, b = e * (L / 2 - t), st = s.dims.storeyM;
     for (let i = 0; i < prof.length - 1; i++) {
       const [x0, y0] = prof[i], [x1, y1] = prof[i + 1];
       if (Math.abs(x1 - x0) > 1e-4) {
-        s.quad([f, x0, 0], [f, x1, 0], [f, x1, y1], [f, x0, y0], s.wallUv(x0, 0), s.wallUv(x1, 0), s.wallUv(x1, y1), s.wallUv(x0, y0), "plate", [e, 0, 0]);
+        s.quad([f2, x0, 0], [f2, x1, 0], [f2, x1, y1], [f2, x0, y0], s.wallUv(x0, 0), s.wallUv(x1, 0), s.wallUv(x1, y1), s.wallUv(x0, y0), "plate", [e, 0, 0]);
         s.quad([b, x0, 0], [b, x1, 0], [b, x1, y1], [b, x0, y0], s.wallUv(x0, 0), s.wallUv(x1, 0), s.wallUv(x1, y1), s.wallUv(x0, y0), "plate", [-e, 0, 0]);
-        s.quad([f, x0, y0], [f, x1, y1], [b, x1, y1], [b, x0, y0], [0, 0], [1, 0], [1, 1], [0, 1], topPart, [0, 0, 1], topPart === "trim" ? topHex : void 0);
+        s.quad([f2, x0, y0], [f2, x1, y1], [b, x1, y1], [b, x0, y0], [0, 0], [1, 0], [1, 1], [0, 1], topPart, [0, 0, 1], topPart === "trim" ? topHex : void 0);
       } else {
         const hi = Math.max(y0, y1), lo = Math.min(y0, y1), faceV = y1 > y0 ? -1 : 1;
-        s.quad([f, x0, lo], [b, x0, lo], [b, x0, hi], [f, x0, hi], [0, lo / st], [0.1, lo / st], [0.1, hi / st], [0, hi / st], "plate", [0, faceV, 0]);
+        s.quad([f2, x0, lo], [b, x0, lo], [b, x0, hi], [f2, x0, hi], [0, lo / st], [0.1, lo / st], [0.1, hi / st], [0, hi / st], "plate", [0, faceV, 0]);
       }
     }
   }
@@ -979,8 +990,8 @@
       if (rc > 0) for (const sv of [-1, 1]) {
         const cu = su * (Ue - rc), cv = sv * (E - rc), arc = [];
         for (let i = 0; i <= 3; i++) {
-          const f = i / 3 * Math.PI / 2;
-          arc.push([cu + su * rc * Math.sin(f), cv + sv * rc * Math.cos(f), -drop]);
+          const f2 = i / 3 * Math.PI / 2;
+          arc.push([cu + su * rc * Math.sin(f2), cv + sv * rc * Math.cos(f2), -drop]);
         }
         for (let i = 0; i < 3; i++) s.slopeTri(arc[i], arc[i + 1], apex(su), [su, sv, 1.4]);
       }
@@ -1049,14 +1060,14 @@
       const zc = cornice ? corniceHeight(R) : R * 0.55, vc = W / 2 * (1 - zc / R);
       halfHipSlopes(s, L, W, R, zc, ov);
       for (const e of [-1, 1]) {
-        const f = e * L / 2;
+        const f2 = e * L / 2;
         if (cornice && plan.gableEnds?.[e < 0 ? 0 : 1] !== false && plan.streetEnds?.[e < 0 ? 0 : 1] !== false) {
           const prof = gableProfile("cornice", W, R);
           gableSlab(s, prof, e, L, accents ? "trim" : "plate", trim);
-          if (accents) gableAccents(s, { shape: "cornice", prof, f, e, W, R, trimHex: trim, shutterHex: "", shutters: false });
+          if (accents) gableAccents(s, { shape: "cornice", prof, f: f2, e, W, R, trimHex: trim, shutterHex: "", shutters: false });
         } else {
-          s.quad([f, -W / 2, 0], [f, W / 2, 0], [f, vc, zc], [f, -vc, zc], s.wallUv(-W / 2, 0), s.wallUv(W / 2, 0), s.wallUv(vc, zc), s.wallUv(-vc, zc), "plate", [e, 0, 0]);
-          if (accents && plan.gableEnds?.[e < 0 ? 0 : 1] !== false && plan.streetEnds?.[e < 0 ? 0 : 1] !== false) vergeBoards(s, f, e, [[[-W / 2, 0], [-vc, zc]], [[vc, zc], [W / 2, 0]]], trim);
+          s.quad([f2, -W / 2, 0], [f2, W / 2, 0], [f2, vc, zc], [f2, -vc, zc], s.wallUv(-W / 2, 0), s.wallUv(W / 2, 0), s.wallUv(vc, zc), s.wallUv(-vc, zc), "plate", [e, 0, 0]);
+          if (accents && plan.gableEnds?.[e < 0 ? 0 : 1] !== false && plan.streetEnds?.[e < 0 ? 0 : 1] !== false) vergeBoards(s, f2, e, [[[-W / 2, 0], [-vc, zc]], [[vc, zc], [W / 2, 0]]], trim);
         }
       }
       const d = vc;
@@ -1068,17 +1079,17 @@
     if (accents) for (const sv of [-1, 1]) fascia(s, [-L / 2, sv * (W / 2 + ov), -drop], [L / 2, sv * (W / 2 + ov), -drop], [0, sv, 0], trim);
     chimney(s, plan, L, W, R, (_u, v) => surfV(v));
     for (const e of [-1, 1]) {
-      const f = e * L / 2;
+      const f2 = e * L / 2;
       const exterior = plan.gableEnds?.[e < 0 ? 0 : 1] !== false;
       const rear = plan.kind === "gable" && plan.streetEnds?.[e < 0 ? 0 : 1] === false;
       if (plan.kind === "pitched" || !exterior || rear) {
-        s.tri([f, -W / 2, 0], [f, W / 2, 0], [f, 0, R], s.wallUv(-W / 2, 0), s.wallUv(W / 2, 0), s.wallUv(0, R), "plate", [e, 0, 0]);
-        if (accents && exterior && !rear) vergeBoards(s, f, e, [[[-W / 2, 0], [0, R]], [[0, R], [W / 2, 0]]], trim);
+        s.tri([f2, -W / 2, 0], [f2, W / 2, 0], [f2, 0, R], s.wallUv(-W / 2, 0), s.wallUv(W / 2, 0), s.wallUv(0, R), "plate", [e, 0, 0]);
+        if (accents && exterior && !rear) vergeBoards(s, f2, e, [[[-W / 2, 0], [0, R]], [[0, R], [W / 2, 0]]], trim);
         continue;
       }
       const prof = gableProfile(plan.gable, W, R);
       gableSlab(s, prof, e, L, accents && plan.gable !== "plain" ? "trim" : "plate", trim);
-      if (accents) gableAccents(s, { shape: plan.gable, prof, f, e, W, R, trimHex: trim, shutterHex: plan.shutterHex ?? "#2f4a3a", shutters: !!plan.shutters, claws: plan.gable === "raisedNeck" ? clawArcs(W, R) : void 0, crownBase: crownBaseOf(plan.gable, W, R) });
+      if (accents) gableAccents(s, { shape: plan.gable, prof, f: f2, e, W, R, trimHex: trim, shutterHex: plan.shutterHex ?? "#2f4a3a", shutters: !!plan.shutters, claws: plan.gable === "raisedNeck" ? clawArcs(W, R) : void 0, crownBase: crownBaseOf(plan.gable, W, R) });
     }
     if (plan.dormers) {
       const n = Math.min(3, Math.floor((L - 2) / 3.4));
@@ -1091,15 +1102,15 @@
     if (!plan.nativeEnvelopeM || !triangles.length) return triangles;
     const top = Math.max(...triangles.flatMap((t) => t.p.map((p) => p[2] - h0)));
     if (top <= 0) return triangles;
-    const scale = plan.nativeEnvelopeM / top;
+    const scale2 = plan.nativeEnvelopeM / top;
     return triangles.map((t) => {
-      const nz = t.n[2] / scale, length = Math.hypot(t.n[0], t.n[1], nz);
+      const nz = t.n[2] / scale2, length = Math.hypot(t.n[0], t.n[1], nz);
       const endDot = t.n[0] * rect.ux + t.n[1] * rect.uy;
       const sourceCrownShape = plan.kind === "gable" && t.part === "plate" && Math.abs(endDot) > 0.9 && plan.gableEnds?.[endDot < 0 ? 0 : 1] !== false && plan.streetEnds?.[endDot < 0 ? 0 : 1] !== false ? plan.gable : void 0;
       return {
         ...t,
         sourceCrownShape,
-        p: t.p.map(([x, y, z]) => [x, y, h0 + (z - h0) * scale]),
+        p: t.p.map(([x, y, z]) => [x, y, h0 + (z - h0) * scale2]),
         n: [t.n[0] / length, t.n[1] / length, nz / length]
       };
     });
@@ -3535,8 +3546,8 @@
     const period = facts?.year ? periodForYear(facts.year) : null;
     const measured = period ? SCHOOL_PERIOD_WALLS[period] : void 0;
     if (measured?.length) return { hex: schoolWallDisplay(stablePick(id, measured)), source: "period" };
-    const walls = period ? PERIOD_WALLS.photo[period] : null;
-    if (walls?.length) return { hex: stablePick(id, walls), source: "period" };
+    const walls2 = period ? PERIOD_WALLS.photo[period] : null;
+    if (walls2?.length) return { hex: stablePick(id, walls2), source: "period" };
     return { hex: PUBLIC_WALL.s[era], source: "era" };
   }
   var SCHOOL_HIP_BEFORE = 1940;
@@ -4154,11 +4165,11 @@
       }]
     }
   ];
-  var kitIds = (k) => [...k.tiers.map((t) => t.id), ...k.stacks.map((s) => s.onId), ...k.roofs.map((r) => r.id), ...(k.halls ?? []).map((h) => h.id), ...k.hides ?? [], ...(k.forms ?? []).map((f) => f.on), ...k.body ?? []];
+  var kitIds = (k) => [...k.tiers.map((t) => t.id), ...k.stacks.map((s) => s.onId), ...k.roofs.map((r) => r.id), ...(k.halls ?? []).map((h) => h.id), ...k.hides ?? [], ...(k.forms ?? []).map((f2) => f2.on), ...k.body ?? []];
   var HAND_KIT_IDS = new Set(HAND_KITS.flatMap(kitIds));
   var HAND_IDS = HAND_KIT_IDS;
   var KITS = [...HAND_KITS, ...[...GENERIC_WORSHIP_KITS, ...GENERIC_PUBLIC_KITS].filter((k) => kitIds(k).every((id) => !HAND_IDS.has(id)))];
-  var KIT_PART_IDS = new Set(KITS.flatMap((k) => [...k.tiers.map((t) => t.id), ...k.stacks.map((s) => s.onId), ...k.roofs.map((r) => r.id), ...(k.halls ?? []).map((h) => h.id), ...k.hides ?? [], ...(k.forms ?? []).map((f) => f.on)]));
+  var KIT_PART_IDS = new Set(KITS.flatMap((k) => [...k.tiers.map((t) => t.id), ...k.stacks.map((s) => s.onId), ...k.roofs.map((r) => r.id), ...(k.halls ?? []).map((h) => h.id), ...k.hides ?? [], ...(k.forms ?? []).map((f2) => f2.on)]));
   var KIT_HIDE_IDS = [...new Set(KITS.flatMap((k) => [...k.tiers.map((t) => t.id), ...k.stacks.map((s) => s.onId), ...k.hides ?? []]))];
   var KIT_MODELLED_IDS = /* @__PURE__ */ new Set([...KIT_PART_IDS, ...KITS.flatMap((k) => k.body ?? [])]);
   var KIT_ROOF = new Map(KITS.flatMap((k) => k.roofs.map((r) => [r.id, { roof: r, wall: k.wall }])));
@@ -4350,8 +4361,8 @@
     wallPolygon(sink, o, t, n, OFF.tracery, disc(r * 0.26, 8), stone);
   }
   function ribbon(sink, e, row, glass, frame) {
-    const inset = Math.min(0.6, e.len * 0.1), s0 = inset, s1 = e.len - inset, f = 0.1;
-    wallPolygon(sink, e.o, e.t, e.n, OFF.frame, [[s0 - f, row.z0 - f], [s1 + f, row.z0 - f], [s1 + f, row.z1 + f], [s0 - f, row.z1 + f]], frame);
+    const inset = Math.min(0.6, e.len * 0.1), s0 = inset, s1 = e.len - inset, f2 = 0.1;
+    wallPolygon(sink, e.o, e.t, e.n, OFF.frame, [[s0 - f2, row.z0 - f2], [s1 + f2, row.z0 - f2], [s1 + f2, row.z1 + f2], [s0 - f2, row.z1 + f2]], frame);
     wallPolygon(sink, e.o, e.t, e.n, OFF.glass, [[s0, row.z0], [s1, row.z0], [s1, row.z1], [s0, row.z1]], glass);
     const n = Math.max(1, Math.round((s1 - s0) / row.bayM));
     for (let k = 1; k < n; k++) {
@@ -4505,8 +4516,8 @@
     for (const t of spec.towers ?? []) {
       if ((t.shape ?? "square") !== "square" || t.lenM !== void 0 || t.capShape === "slant") continue;
       const [cx, cy] = toLocal(t.at), a = towerAng(t), half = t.widthM / 2;
-      for (let f = 0; f < 4; f++) {
-        const na = a + f * Math.PI / 2, n = [Math.cos(na), Math.sin(na)], tt = [-n[1], n[0]];
+      for (let f2 = 0; f2 < 4; f2++) {
+        const na = a + f2 * Math.PI / 2, n = [Math.cos(na), Math.sin(na)], tt = [-n[1], n[0]];
         const o = [cx + n[0] * half - tt[0] * half, cy + n[1] * half - tt[1] * half];
         for (const row of win.towerRows ?? []) {
           if (row.z1 > t.z1 - 0.6 || row.z0 < (t.z0 ?? 0)) continue;
@@ -4791,6 +4802,12 @@
   else if (n.z < 0.0) shade = 0.5;
   else shade = clamp(0.58 + 0.42 * max(0.0, dot(n, vec3(${BAKED_FACE_LIGHT.map(glslFloat).join(", ")}))), 0.5, 1.0);`;
 
+  // src/canalRecall/streetFronts.ts
+  var CELL_RANGE = 2 ** 20;
+
+  // src/canalRecall/coplanarSurfaces.ts
+  var NEAR_COS = Math.cos(2 * Math.PI / 180);
+
   // src/canalRecall/wallBays.ts
   function hashSeed(value) {
     let hash = 2166136261;
@@ -4837,6 +4854,24 @@
     const width = v.openingOccupancy !== void 0 ? BAY_PX * v.openingOccupancy / v.windows : (v.windows === 1 ? 150 : v.windows === 2 ? 112 : 82) * (v.proportions === "wide" ? 1.35 : v.proportions === "balanced" ? 1.12 : 1) * (look === "cartoon" ? 1.12 : 1);
     const height = v.openingHeight !== void 0 ? Math.min((y === 70 || y === 76 ? GROUND_PX : STOREY_PX) * v.openingHeight, h * 1.18) : h * (v.proportions === "wide" ? 0.76 : v.proportions === "balanced" ? 0.88 : 1);
     return { width, y: y + (h - height) / 2, height };
+  }
+
+  // src/canalRecall/buurtProfiles/modern-pand-walls.json
+  var modern_pand_walls_default = {
+    schemaVersion: 1,
+    revision: "555c5e568d5cc6f9",
+    licence: "measured from Gemeente Amsterdam panoramas, CC BY 4.0",
+    walls: {},
+    note: "Empty on purpose (2026-10-30): the 320 px thumbnail samples are too close and steep (Haarlemmer Houttuinen: 8.6 m at pitch 39 read balcony shadow as dark brick). Needs a quality gate before per-pand walls ship; see TODO."
+  };
+
+  // src/canalRecall/buurtProfiles/modernPandWalls.ts
+  var CODE = /^[bp][0-9a-f]{6}$/;
+  var walls = validate(modern_pand_walls_default).walls;
+  function validate(set) {
+    if (set?.schemaVersion !== 1 || typeof set.walls !== "object") throw new Error("modern-pand-walls: bad schema");
+    for (const [id, code] of Object.entries(set.walls)) if (!/^\d{16}$/.test(id) || !CODE.test(code)) throw new Error(`modern-pand-walls: bad row ${id} ${code}`);
+    return set;
   }
 
   // src/canalRecall/bayLook.ts
@@ -4953,6 +4988,7 @@
     recipeStyles.set(key, indices);
     return indices[(h >>> 4) % indices.length];
   }
+  var PROFILE_STYLE_INDICES = Object.fromEntries(ARCHETYPES.map((archetype) => [archetype, BAY_STYLES[archetype].flatMap((v, i) => !v.openingGroup && !v.groundAssembly && !v.entranceAssembly && !v.facadeAssembly && (archetype === "modern" ? v.family === "punched" : !v.family || v.family === "masonry") ? [i] : [])]));
 
   // src/canalRecall/facadeOpenings.ts
   var BAY_W = 520;
@@ -5068,6 +5104,72 @@
 
   // src/canalRecall/streetFacadeRendering.ts
   var PROCEDURAL_RECIPE_LAYER_OFFSET = CELL_LAYER_COUNT + 4;
+
+  // src/canalRecall/look/thinFade.ts
+  var THIN_CLASS = {
+    other: 0,
+    wall: 1,
+    roof: 2,
+    lid: 3,
+    trim: 4,
+    cornice: 5,
+    frontage: 6,
+    extrasStrip: 7,
+    extrasBox: 8,
+    extrasOther: 9,
+    shell: 10
+  };
+  var THIN_OWNER_CLASSES = [
+    { name: "other", id: THIN_CLASS.other, rgb: [0, 0, 0] },
+    { name: "wall", id: THIN_CLASS.wall, rgb: [255, 255, 255] },
+    { name: "roof", id: THIN_CLASS.roof, rgb: [255, 0, 0] },
+    { name: "lid", id: THIN_CLASS.lid, rgb: [128, 0, 128] },
+    { name: "trim-decal", id: THIN_CLASS.trim, rgb: [0, 255, 0] },
+    { name: "cornice", id: THIN_CLASS.cornice, rgb: [0, 0, 255] },
+    { name: "frontage", id: THIN_CLASS.frontage, rgb: [255, 255, 0] },
+    { name: "extras-strip", id: THIN_CLASS.extrasStrip, rgb: [255, 0, 255] },
+    { name: "extras-box", id: THIN_CLASS.extrasBox, rgb: [0, 255, 255] },
+    { name: "extras-other", id: THIN_CLASS.extrasOther, rgb: [128, 128, 0] },
+    { name: "shell", id: THIN_CLASS.shell, rgb: [0, 128, 128] }
+  ];
+  var THIN_FADE_FROM_PX = 1;
+  var THIN_FADE_TO_PX = 2;
+  var THIN_TRIM_DEPTH_BIAS = 4e-6;
+  var f = (v) => Number.isInteger(v) ? v.toFixed(1) : String(v);
+  var v3 = (rgb) => `vec3(${rgb.map((c) => (c / 255).toFixed(4)).join(", ")})`;
+  var VERTEX_BODY = (
+    /* glsl */
+    `
+vThinM = thin.x * 0.01; vThinClass = thin.y;
+#ifdef CITY_THIN_FADE
+if (thin.y > ${f(THIN_CLASS.trim - 0.5)} && thin.y < ${f(THIN_CLASS.trim + 0.5)}) gl_Position.z -= ${THIN_TRIM_DEPTH_BIAS.toExponential()} * gl_Position.w;
+#endif
+`
+  );
+  var FRAGMENT_DECLS = (
+    /* glsl */
+    `
+uniform float thinFocalPx;
+varying float vThinM;
+flat varying float vThinClass;
+vec3 thinOwnerColour(float c) {
+${THIN_OWNER_CLASSES.map((k) => `  if (c < ${f(k.id + 0.5)}) return ${v3(k.rgb)};`).join("\n")}
+  return vec3(0.5);
+}
+`
+  );
+  var FRAGMENT_FADE = (
+    /* glsl */
+    `
+#ifdef CITY_THIN_FADE
+if (vThinM > 0.0) {
+  float thinPx = vThinM * thinFocalPx / max(vFacDist, 0.01);
+  float thinCover = clamp((thinPx - ${f(THIN_FADE_FROM_PX)}) / ${f(THIN_FADE_TO_PX - THIN_FADE_FROM_PX)}, 0.0, 1.0);
+  if (thinCover < 1.0 && fract(dot(floor(gl_FragCoord.xy), vec2(0.754877666, 0.569840296))) >= thinCover) discard;
+}
+#endif
+`
+  );
 
   // src/canalRecall/facadeExtraCore.ts
   function hash012(text) {
@@ -5290,7 +5392,7 @@
       for (let k = 0; k < n; k++) for (const w of windowSpans(c, k)) {
         const zt = w.z1 - (w.z1 - w.z0) * 0.3;
         s.strip(c.f, w.x - w.hw, w.x + w.hw, 0.04, zt - 0.03, zt + 0.03, hex2);
-        for (const f of [-1 / 3, 1 / 3]) s.strip(c.f, w.x + f * w.hw * 2 - 0.025, w.x + f * w.hw * 2 + 0.025, 0.04, w.z0, w.z1, hex2);
+        for (const f2 of [-1 / 3, 1 / 3]) s.strip(c.f, w.x + f2 * w.hw * 2 - 0.025, w.x + f2 * w.hw * 2 + 0.025, 0.04, w.z0, w.z1, hex2);
       }
     } },
     // --- Bands and courses ---------------------------------------------------------------------
@@ -5886,11 +5988,11 @@
     const kit = KITS.find((k) => k.name === kitName);
     const mine = /* @__PURE__ */ new Set([...kit.tiers.map((t) => t.id), ...kit.stacks.map((s) => s.onId), ...kit.roofs.map((r) => r.id)]);
     const parts = /* @__PURE__ */ new Map(), context = [];
-    for (const f of features) {
-      const g = f.geometry, ring = g.type === "Polygon" ? g.coordinates[0] : g.coordinates[0][0], id = String(f.properties.id);
+    for (const f2 of features) {
+      const g = f2.geometry, ring = g.type === "Polygon" ? g.coordinates[0] : g.coordinates[0][0], id = String(f2.properties.id);
       const pts = local(ring);
-      if (mine.has(id)) parts.set(id, { id, ring: pts, minHeightM: Number(f.properties.minHeight) || 0, heightM: Number(f.properties.height) });
-      else if (Math.hypot(pts[0][0], pts[0][1]) < 70) context.push({ pts, h: Number(f.properties.height) || 8, min: Number(f.properties.minHeight) || 0 });
+      if (mine.has(id)) parts.set(id, { id, ring: pts, minHeightM: Number(f2.properties.minHeight) || 0, heightM: Number(f2.properties.height) });
+      else if (Math.hypot(pts[0][0], pts[0][1]) < 70) context.push({ pts, h: Number(f2.properties.height) || 8, min: Number(f2.properties.minHeight) || 0 });
     }
     const chunk = buildKitChunk(kitGeometry(kit, parts), { plain: 0, flat: 0, slope: 0 });
     const scene = new THREE.Scene();
