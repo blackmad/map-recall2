@@ -3,6 +3,16 @@
   "notes": [
     {
       "date": "2026-11-06",
+      "title": "Railways keep their tracks when you look away",
+      "text": "Pan the map off your bike to the Zuidas or any rail yard and the ground there now builds its ballast beds, sleepers and rails, instead of a flat grey band: the detailed ground used to stay centred on the rider even while you were looking two kilometres away. From high up and on the city map, railways now draw as a dark line on a ballast edge that stays visible on phones, and the distant rails are laid on the land instead of sinking under it. Each strip: aerial photo, your screenshot, before, after.",
+      "images": [
+        "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/engine/2026-11-06-r3/r3c-rail-beds-desktop-a.jpg",
+        "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/engine/2026-11-06-r3/r3c-rail-beds-desktop-b.jpg",
+        "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/engine/2026-11-06-r3/r3c-rail-beds-iphone.jpg"
+      ]
+    },
+    {
+      "date": "2026-11-06",
       "title": "The city runs to the horizon from the air",
       "text": "Fly up over Amsterdam and the city no longer stops a kilometre or two from you. Every neighbourhood beyond the streets around the rider is drawn as simple baked blocks out to seven kilometres, so from the Hoftuin, the Zuidas or Bos en Lommer the roofs continue to the skyline instead of ending at an empty beige plain. Map labels also skip their building checks when you fly high, so panning over the whole city is smoother. On the street nothing changes; ?farShells=0 turns the far city off.",
       "images": [
