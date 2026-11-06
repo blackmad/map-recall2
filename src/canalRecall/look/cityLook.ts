@@ -37,6 +37,7 @@
  *
  * Flag off, nothing here runs: every adapter keeps its previous code path.
  */
+import { installThinFade } from './thinFade.ts';
 import { CITY_BRICK_LIGHTNESS, CITY_ROOF, PERIOD_FROM, PHOTO_WALL_CELL_MEAN, SLOT_CELL, SLOT_TILE_M, cityTint, isMeasuredTint, type TintSource, hexToRgb, hslToRgb, rgbToHex, rgbToHsl, type MaterialSlot, type SlotCell } from './palette.ts';
 import { inferMaterialSlot, isMaterialSlot, isWhiteWord, INFERRED_SLOT_SOURCE } from './materialSlotInference.ts';
 import { paintBrick20Canvas, paintBrickCanvas, paintDoorCanvas, paintGlassCanvas, paintGlassTintCanvas, paintStoneCanvas, paintStuccoCanvas, paintWhiteCanvas, paintWhiteStuccoCanvas, roofCanvas } from './slotCells.ts';
@@ -725,7 +726,8 @@ else totalEmissiveRadiance += ${SKY_TINT} * (1.0 - smoothstep(0.06, 0.2, cityLum
   if (variant.noFade) material.fog = false;
   material.name = `city-look/${variantKey(variant)}`;
   material.userData = { cityLook: true, cityVariant: { ...variant }, [CITY_LOOK_SHARED]: true };
-  return material;
+  // Thin-element fade and the owner view (look/thinFade.ts, lane R3-A #230; `?thinFade=0`): facade chunks only.
+  return variant.kind === 'chunk' ? installThinFade(material, !!variant.lit) : material;
 }
 
 // ---------------------------------------------------------------------------
