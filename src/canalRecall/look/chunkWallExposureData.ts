@@ -27,8 +27,6 @@ export const CHUNK_WALL_EXPOSURE_DATA: Readonly<Record<string, {readonly white: 
   'face-hasebroek-43-101-r1': {white: [197, 176, 164], stripOverDrawn: 2.244},
   'face-hasebroek-90-98-r1': {white: [193, 184, 159], stripOverDrawn: 1.352},
   'face-hasebroek-2-46-r1': {white: [230, 234, 235], stripOverDrawn: 0.791},
-  'face-hasebroek-1-41-r1': {white: [230, 227, 233], stripOverDrawn: 0.889},
-  'face-hasebroek-1-41-r2': {white: [235, 236, 240], stripOverDrawn: 0.744},
   'face-bellamydwars-4-12': {white: [166, 168, 154], stripOverDrawn: 0.526},
   'face-bellamyplein-18-38-r1': {white: [189, 204, 194], stripOverDrawn: 0.436},
   'face-bellamyplein-18-38-r2': {white: [198, 209, 198], stripOverDrawn: 0.466},
@@ -151,4 +149,6 @@ export const CHUNK_WALL_EXPOSURE_DATA: Readonly<Record<string, {readonly white: 
   'face-zaanhof-125-134': {white: [188, 178, 162], stripOverDrawn: 1.619},
   'face-zaanhof-52-55': {white: [167, 167, 153], stripOverDrawn: 0.707},
   'face-zaanhof-99-104': {white: [177, 171, 158], stripOverDrawn: 0.534},
+  'face-hasebroek-1-41-r1': {white: [230, 227, 233], stripOverDrawn: 0.889},
+  'face-hasebroek-1-41-r2': {white: [235, 236, 240], stripOverDrawn: 0.744},
 };

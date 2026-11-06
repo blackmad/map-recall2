@@ -101,7 +101,7 @@
    "address": "Hasebroekstraat 30",
    "type": {
     "type": "bellamy-1904-balcony-axis",
-    "ground": "door-right",
+    "ground": "door-right-flush",
     "measuredPalette": {
      "brick": "#37302d",
      "evidence": "strip 2022-01-04 span 654-870: trim-normalised wall (buildingRecipe/measureFacade.ts)"
@@ -472,7 +472,8 @@
        "colour": "#2a2a2a"
       },
       "evidence": "auto-place: bag-only (bijeenkomstfunctie); fascia colour measured on the strip 2022-01-04 span 3506-3716"
-     }
+     },
+     "doorReveal": null
     },
     "measuredPalette": {
      "brick": "#3e3631",

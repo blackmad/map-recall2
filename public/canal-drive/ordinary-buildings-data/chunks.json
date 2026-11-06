@@ -1,6 +1,6 @@
 {
  "version": 1,
- "generatedAt": "2026-11-06T23:34:05.842Z",
+ "generatedAt": "2026-11-06T23:39:20.213Z",
  "chunks": [
   {
    "id": "chunk-face-bilder-080336-090492",
@@ -11970,925 +11970,6 @@
        "primitive": 31,
        "firstTriangle": 103,
        "triangleCount": 7
-      }
-     ]
-    }
-   ]
-  },
-  {
-   "id": "chunk-face-hasebroek-1-41-r1",
-   "category": "street-survey",
-   "name": "face-hasebroek-1-41-r1",
-   "modelUrl": "./models/ordinary-buildings/chunks/chunk-face-hasebroek-1-41-r1.glb?asset=68ab3993b8934117",
-   "sha256": "68ab3993b8934117fb9e7f2724c739be83d3d38d1e295aab7f1360241b7b8d88",
-   "bytes": 705148,
-   "triangles": 10999,
-   "primitives": 13,
-   "instance": {
-    "anchor": [
-     4.866956245597255,
-     52.36635719920221
-    ],
-    "northOffsetDegrees": 157.9552,
-    "mirror": false
-   },
-   "bounds": {
-    "min": [
-     -11.931,
-     0,
-     -13.147
-    ],
-    "max": [
-     10.811,
-     18.793,
-     1.134
-    ]
-   },
-   "height": 18.793,
-   "suppress": [
-    "NL.IMBAG.Pand.0363100012165485",
-    "NL.IMBAG.Pand.0363100012152706",
-    "NL.IMBAG.Pand.0363100012153109",
-    "NL.IMBAG.Pand.0363100012160213"
-   ],
-   "replaces": [
-    "ordinary-0363100012165485",
-    "ordinary-0363100012152706",
-    "ordinary-0363100012153109",
-    "ordinary-0363100012160213"
-   ],
-   "footprint": {
-    "type": "MultiPolygon",
-    "coordinates": [
-     [
-      [
-       [
-        4.867031,
-        52.3663755
-       ],
-       [
-        4.8670898,
-        52.3662847
-       ],
-       [
-        4.8670792,
-        52.3662822
-       ],
-       [
-        4.8670923,
-        52.3662637
-       ],
-       [
-        4.8671256,
-        52.3662723
-       ],
-       [
-        4.8671211,
-        52.3662788
-       ],
-       [
-        4.8671858,
-        52.3662956
-       ],
-       [
-        4.8671234,
-        52.3663847
-       ],
-       [
-        4.8670955,
-        52.3663919
-       ]
-      ]
-     ],
-     [
-      [
-       [
-        4.867031,
-        52.3663756
-       ],
-       [
-        4.8669578,
-        52.3663571
-       ],
-       [
-        4.8670162,
-        52.3662669
-       ],
-       [
-        4.8670898,
-        52.3662847
-       ]
-      ]
-     ],
-     [
-      [
-       [
-        4.8669578,
-        52.3663571
-       ],
-       [
-        4.8668835,
-        52.3663395
-       ],
-       [
-        4.8669488,
-        52.3662389
-       ],
-       [
-        4.8670241,
-        52.3662572
-       ],
-       [
-        4.8670176,
-        52.3662672
-       ],
-       [
-        4.8670162,
-        52.3662669
-       ]
-      ]
-     ],
-     [
-      [
-       [
-        4.8668835,
-        52.3663395
-       ],
-       [
-        4.8668099,
-        52.3663214
-       ],
-       [
-        4.8668749,
-        52.366221
-       ],
-       [
-        4.8669488,
-        52.3662389
-       ]
-      ]
-     ]
-    ]
-   },
-   "pands": [
-    {
-     "recipeId": "hasebroek-165485",
-     "pandId": "0363100012165485",
-     "buildingId": "NL.IMBAG.Pand.0363100012165485",
-     "address": "Hasebroekstraat 1",
-     "frontage": {
-      "x0": -10.245,
-      "x1": -5.483,
-      "widthM": 4.761
-     },
-     "bounds": {
-      "min": [
-       -11.931,
-       0,
-       -13.147
-      ],
-      "max": [
-       -4.64,
-       16.655,
-       0.205
-      ]
-     },
-     "triangles": 2492,
-     "ranges": [
-      {
-       "primitive": 2,
-       "firstTriangle": 0,
-       "triangleCount": 63
-      },
-      {
-       "primitive": 4,
-       "firstTriangle": 0,
-       "triangleCount": 252
-      },
-      {
-       "primitive": 5,
-       "firstTriangle": 0,
-       "triangleCount": 36
-      },
-      {
-       "primitive": 6,
-       "firstTriangle": 0,
-       "triangleCount": 12
-      },
-      {
-       "primitive": 7,
-       "firstTriangle": 0,
-       "triangleCount": 1164
-      },
-      {
-       "primitive": 8,
-       "firstTriangle": 0,
-       "triangleCount": 360
-      },
-      {
-       "primitive": 9,
-       "firstTriangle": 0,
-       "triangleCount": 204
-      },
-      {
-       "primitive": 10,
-       "firstTriangle": 0,
-       "triangleCount": 390
-      },
-      {
-       "primitive": 12,
-       "firstTriangle": 0,
-       "triangleCount": 11
-      }
-     ]
-    },
-    {
-     "recipeId": "hasebroek-152706",
-     "pandId": "0363100012152706",
-     "buildingId": "NL.IMBAG.Pand.0363100012152706",
-     "address": "Hasebroekstraat 3",
-     "frontage": {
-      "x0": -5.484,
-      "x1": -0.091,
-      "widthM": 5.392
-     },
-     "bounds": {
-      "min": [
-       -5.484,
-       0,
-       -10.903
-      ],
-      "max": [
-       -0.022,
-       18.725,
-       1.069
-      ]
-     },
-     "triangles": 2832,
-     "ranges": [
-      {
-       "primitive": 0,
-       "firstTriangle": 0,
-       "triangleCount": 186
-      },
-      {
-       "primitive": 4,
-       "firstTriangle": 252,
-       "triangleCount": 252
-      },
-      {
-       "primitive": 5,
-       "firstTriangle": 36,
-       "triangleCount": 24
-      },
-      {
-       "primitive": 6,
-       "firstTriangle": 12,
-       "triangleCount": 12
-      },
-      {
-       "primitive": 7,
-       "firstTriangle": 1164,
-       "triangleCount": 1580
-      },
-      {
-       "primitive": 8,
-       "firstTriangle": 360,
-       "triangleCount": 384
-      },
-      {
-       "primitive": 10,
-       "firstTriangle": 390,
-       "triangleCount": 382
-      },
-      {
-       "primitive": 11,
-       "firstTriangle": 0,
-       "triangleCount": 8
-      },
-      {
-       "primitive": 12,
-       "firstTriangle": 11,
-       "triangleCount": 4
-      }
-     ]
-    },
-    {
-     "recipeId": "hasebroek-153109",
-     "pandId": "0363100012153109",
-     "buildingId": "NL.IMBAG.Pand.0363100012153109",
-     "address": "Hasebroekstraat 5",
-     "frontage": {
-      "x0": -0.091,
-      "x1": 5.329,
-      "widthM": 5.421
-     },
-     "bounds": {
-      "min": [
-       -0.121,
-       0,
-       -12.088
-      ],
-      "max": [
-       5.401,
-       18.648,
-       1.09
-      ]
-     },
-     "triangles": 2792,
-     "ranges": [
-      {
-       "primitive": 1,
-       "firstTriangle": 0,
-       "triangleCount": 102
-      },
-      {
-       "primitive": 4,
-       "firstTriangle": 504,
-       "triangleCount": 252
-      },
-      {
-       "primitive": 5,
-       "firstTriangle": 60,
-       "triangleCount": 24
-      },
-      {
-       "primitive": 6,
-       "firstTriangle": 24,
-       "triangleCount": 12
-      },
-      {
-       "primitive": 7,
-       "firstTriangle": 2744,
-       "triangleCount": 1620
-      },
-      {
-       "primitive": 8,
-       "firstTriangle": 744,
-       "triangleCount": 384
-      },
-      {
-       "primitive": 10,
-       "firstTriangle": 772,
-       "triangleCount": 392
-      },
-      {
-       "primitive": 12,
-       "firstTriangle": 15,
-       "triangleCount": 6
-      }
-     ]
-    },
-    {
-     "recipeId": "hasebroek-160213",
-     "pandId": "0363100012160213",
-     "buildingId": "NL.IMBAG.Pand.0363100012160213",
-     "address": "Hasebroekstraat 7",
-     "frontage": {
-      "x0": 5.329,
-      "x1": 10.736,
-      "widthM": 5.407
-     },
-     "bounds": {
-      "min": [
-       5.329,
-       0,
-       -12.052
-      ],
-      "max": [
-       10.811,
-       18.793,
-       1.134
-      ]
-     },
-     "triangles": 2883,
-     "ranges": [
-      {
-       "primitive": 3,
-       "firstTriangle": 0,
-       "triangleCount": 188
-      },
-      {
-       "primitive": 4,
-       "firstTriangle": 756,
-       "triangleCount": 252
-      },
-      {
-       "primitive": 5,
-       "firstTriangle": 84,
-       "triangleCount": 24
-      },
-      {
-       "primitive": 6,
-       "firstTriangle": 36,
-       "triangleCount": 12
-      },
-      {
-       "primitive": 7,
-       "firstTriangle": 4364,
-       "triangleCount": 1620
-      },
-      {
-       "primitive": 8,
-       "firstTriangle": 1128,
-       "triangleCount": 384
-      },
-      {
-       "primitive": 10,
-       "firstTriangle": 1164,
-       "triangleCount": 392
-      },
-      {
-       "primitive": 12,
-       "firstTriangle": 21,
-       "triangleCount": 11
-      }
-     ]
-    }
-   ]
-  },
-  {
-   "id": "chunk-face-hasebroek-1-41-r2",
-   "category": "street-survey",
-   "name": "face-hasebroek-1-41-r2",
-   "modelUrl": "./models/ordinary-buildings/chunks/chunk-face-hasebroek-1-41-r2.glb?asset=742fb7a217ae9f5c",
-   "sha256": "742fb7a217ae9f5c7051967d4c0fea745bb0eb645d237e06cc1c09d58add2367",
-   "bytes": 900700,
-   "triangles": 14075,
-   "primitives": 13,
-   "instance": {
-    "anchor": [
-     4.866549682517412,
-     52.36625799365144
-    ],
-    "northOffsetDegrees": 158.2856,
-    "mirror": false
-   },
-   "bounds": {
-    "min": [
-     -13.605,
-     0,
-     -12.043
-    ],
-    "max": [
-     13.549,
-     19.275,
-     1.127
-    ]
-   },
-   "height": 19.275,
-   "suppress": [
-    "NL.IMBAG.Pand.0363100012164250",
-    "NL.IMBAG.Pand.0363100012153107",
-    "NL.IMBAG.Pand.0363100012166233",
-    "NL.IMBAG.Pand.0363100012165183",
-    "NL.IMBAG.Pand.0363100012157271"
-   ],
-   "replaces": [
-    "ordinary-0363100012164250",
-    "ordinary-0363100012153107",
-    "ordinary-0363100012166233",
-    "ordinary-0363100012165183",
-    "ordinary-0363100012157271"
-   ],
-   "footprint": {
-    "type": "MultiPolygon",
-    "coordinates": [
-     [
-      [
-       [
-        4.8667352,
-        52.3663033
-       ],
-       [
-        4.8666614,
-        52.3662848
-       ],
-       [
-        4.8667262,
-        52.3661849
-       ],
-       [
-        4.8668003,
-        52.3662028
-       ]
-      ]
-     ],
-     [
-      [
-       [
-        4.8666614,
-        52.3662848
-       ],
-       [
-        4.866586,
-        52.3662667
-       ],
-       [
-        4.8666509,
-        52.3661666
-       ],
-       [
-        4.8667262,
-        52.3661849
-       ]
-      ]
-     ],
-     [
-      [
-       [
-        4.866586,
-        52.3662667
-       ],
-       [
-        4.8665124,
-        52.3662489
-       ],
-       [
-        4.8665773,
-        52.3661487
-       ],
-       [
-        4.8666509,
-        52.3661666
-       ]
-      ]
-     ],
-     [
-      [
-       [
-        4.8665124,
-        52.3662489
-       ],
-       [
-        4.8664385,
-        52.3662313
-       ],
-       [
-        4.8665036,
-        52.3661308
-       ],
-       [
-        4.8665773,
-        52.3661487
-       ]
-      ]
-     ],
-     [
-      [
-       [
-        4.8664385,
-        52.3662313
-       ],
-       [
-        4.8663648,
-        52.3662132
-       ],
-       [
-        4.8664298,
-        52.3661129
-       ],
-       [
-        4.8665036,
-        52.3661308
-       ]
-      ]
-     ]
-    ]
-   },
-   "pands": [
-    {
-     "recipeId": "hasebroek-164250",
-     "pandId": "0363100012164250",
-     "buildingId": "NL.IMBAG.Pand.0363100012164250",
-     "address": "Hasebroekstraat 11",
-     "frontage": {
-      "x0": -13.605,
-      "x1": -8.175,
-      "widthM": 5.43
-     },
-     "bounds": {
-      "min": [
-       -13.605,
-       0,
-       -12.043
-      ],
-      "max": [
-       -8.167,
-       19.128,
-       1.088
-      ]
-     },
-     "triangles": 2820,
-     "ranges": [
-      {
-       "primitive": 2,
-       "firstTriangle": 0,
-       "triangleCount": 128
-      },
-      {
-       "primitive": 5,
-       "firstTriangle": 0,
-       "triangleCount": 252
-      },
-      {
-       "primitive": 6,
-       "firstTriangle": 0,
-       "triangleCount": 24
-      },
-      {
-       "primitive": 7,
-       "firstTriangle": 0,
-       "triangleCount": 12
-      },
-      {
-       "primitive": 8,
-       "firstTriangle": 0,
-       "triangleCount": 1620
-      },
-      {
-       "primitive": 9,
-       "firstTriangle": 0,
-       "triangleCount": 384
-      },
-      {
-       "primitive": 10,
-       "firstTriangle": 0,
-       "triangleCount": 392
-      },
-      {
-       "primitive": 12,
-       "firstTriangle": 0,
-       "triangleCount": 8
-      }
-     ]
-    },
-    {
-     "recipeId": "hasebroek-153107",
-     "pandId": "0363100012153107",
-     "buildingId": "NL.IMBAG.Pand.0363100012153107",
-     "address": "Hasebroekstraat 13",
-     "frontage": {
-      "x0": -8.175,
-      "x1": -2.661,
-      "widthM": 5.514
-     },
-     "bounds": {
-      "min": [
-       -8.175,
-       0,
-       -12.039
-      ],
-      "max": [
-       -2.654,
-       19.071,
-       1.075
-      ]
-     },
-     "triangles": 2878,
-     "ranges": [
-      {
-       "primitive": 0,
-       "firstTriangle": 0,
-       "triangleCount": 182
-      },
-      {
-       "primitive": 5,
-       "firstTriangle": 252,
-       "triangleCount": 252
-      },
-      {
-       "primitive": 6,
-       "firstTriangle": 24,
-       "triangleCount": 24
-      },
-      {
-       "primitive": 7,
-       "firstTriangle": 12,
-       "triangleCount": 12
-      },
-      {
-       "primitive": 8,
-       "firstTriangle": 1620,
-       "triangleCount": 1620
-      },
-      {
-       "primitive": 9,
-       "firstTriangle": 384,
-       "triangleCount": 384
-      },
-      {
-       "primitive": 10,
-       "firstTriangle": 392,
-       "triangleCount": 392
-      },
-      {
-       "primitive": 11,
-       "firstTriangle": 0,
-       "triangleCount": 8
-      },
-      {
-       "primitive": 12,
-       "firstTriangle": 8,
-       "triangleCount": 4
-      }
-     ]
-    },
-    {
-     "recipeId": "hasebroek-166233",
-     "pandId": "0363100012166233",
-     "buildingId": "NL.IMBAG.Pand.0363100012166233",
-     "address": "Hasebroekstraat 15",
-     "frontage": {
-      "x0": -2.661,
-      "x1": 2.732,
-      "widthM": 5.393
-     },
-     "bounds": {
-      "min": [
-       -2.661,
-       0,
-       -12.034
-      ],
-      "max": [
-       2.741,
-       19.275,
-       1.094
-      ]
-     },
-     "triangles": 2792,
-     "ranges": [
-      {
-       "primitive": 1,
-       "firstTriangle": 0,
-       "triangleCount": 104
-      },
-      {
-       "primitive": 5,
-       "firstTriangle": 504,
-       "triangleCount": 252
-      },
-      {
-       "primitive": 6,
-       "firstTriangle": 48,
-       "triangleCount": 24
-      },
-      {
-       "primitive": 7,
-       "firstTriangle": 24,
-       "triangleCount": 12
-      },
-      {
-       "primitive": 8,
-       "firstTriangle": 3240,
-       "triangleCount": 1620
-      },
-      {
-       "primitive": 9,
-       "firstTriangle": 768,
-       "triangleCount": 384
-      },
-      {
-       "primitive": 10,
-       "firstTriangle": 784,
-       "triangleCount": 392
-      },
-      {
-       "primitive": 12,
-       "firstTriangle": 12,
-       "triangleCount": 4
-      }
-     ]
-    },
-    {
-     "recipeId": "hasebroek-165183",
-     "pandId": "0363100012165183",
-     "buildingId": "NL.IMBAG.Pand.0363100012165183",
-     "address": "Hasebroekstraat 17",
-     "frontage": {
-      "x0": 2.732,
-      "x1": 8.135,
-      "widthM": 5.403
-     },
-     "bounds": {
-      "min": [
-       2.732,
-       0,
-       -12.031
-      ],
-      "max": [
-       8.143,
-       19.275,
-       1.118
-      ]
-     },
-     "triangles": 2792,
-     "ranges": [
-      {
-       "primitive": 4,
-       "firstTriangle": 0,
-       "triangleCount": 104
-      },
-      {
-       "primitive": 5,
-       "firstTriangle": 756,
-       "triangleCount": 252
-      },
-      {
-       "primitive": 6,
-       "firstTriangle": 72,
-       "triangleCount": 24
-      },
-      {
-       "primitive": 7,
-       "firstTriangle": 36,
-       "triangleCount": 12
-      },
-      {
-       "primitive": 8,
-       "firstTriangle": 4860,
-       "triangleCount": 1620
-      },
-      {
-       "primitive": 9,
-       "firstTriangle": 1152,
-       "triangleCount": 384
-      },
-      {
-       "primitive": 10,
-       "firstTriangle": 1176,
-       "triangleCount": 392
-      },
-      {
-       "primitive": 12,
-       "firstTriangle": 16,
-       "triangleCount": 4
-      }
-     ]
-    },
-    {
-     "recipeId": "hasebroek-157271",
-     "pandId": "0363100012157271",
-     "buildingId": "NL.IMBAG.Pand.0363100012157271",
-     "address": "Hasebroekstraat 19",
-     "frontage": {
-      "x0": 8.135,
-      "x1": 13.542,
-      "widthM": 5.406
-     },
-     "bounds": {
-      "min": [
-       8.135,
-       0,
-       -12.028
-      ],
-      "max": [
-       13.549,
-       19.181,
-       1.127
-      ]
-     },
-     "triangles": 2793,
-     "ranges": [
-      {
-       "primitive": 3,
-       "firstTriangle": 0,
-       "triangleCount": 105
-      },
-      {
-       "primitive": 5,
-       "firstTriangle": 1008,
-       "triangleCount": 252
-      },
-      {
-       "primitive": 6,
-       "firstTriangle": 96,
-       "triangleCount": 24
-      },
-      {
-       "primitive": 7,
-       "firstTriangle": 48,
-       "triangleCount": 12
-      },
-      {
-       "primitive": 8,
-       "firstTriangle": 6480,
-       "triangleCount": 1620
-      },
-      {
-       "primitive": 9,
-       "firstTriangle": 1536,
-       "triangleCount": 384
-      },
-      {
-       "primitive": 10,
-       "firstTriangle": 1568,
-       "triangleCount": 392
-      },
-      {
-       "primitive": 12,
-       "firstTriangle": 20,
-       "triangleCount": 4
       }
      ]
     }
@@ -83902,6 +82983,1005 @@
        "primitive": 10,
        "firstTriangle": 50,
        "triangleCount": 18
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "chunk-face-hasebroek-1-41-r1",
+   "category": "street-survey",
+   "name": "face-hasebroek-1-41-r1",
+   "modelUrl": "./models/ordinary-buildings/chunks/chunk-face-hasebroek-1-41-r1.glb?asset=88d803a187bd665e",
+   "sha256": "88d803a187bd665e2bbebe9b240257f7a4f946a429ba3c56615c6161131e0583",
+   "bytes": 730600,
+   "triangles": 11314,
+   "primitives": 19,
+   "instance": {
+    "anchor": [
+     4.866956245597255,
+     52.36635719920221
+    ],
+    "northOffsetDegrees": 157.9552,
+    "mirror": false
+   },
+   "bounds": {
+    "min": [
+     -11.931,
+     0,
+     -13.147
+    ],
+    "max": [
+     10.811,
+     18.793,
+     1.134
+    ]
+   },
+   "height": 18.793,
+   "suppress": [
+    "NL.IMBAG.Pand.0363100012165485",
+    "NL.IMBAG.Pand.0363100012152706",
+    "NL.IMBAG.Pand.0363100012153109",
+    "NL.IMBAG.Pand.0363100012160213"
+   ],
+   "replaces": [
+    "ordinary-0363100012165485",
+    "ordinary-0363100012152706",
+    "ordinary-0363100012153109",
+    "ordinary-0363100012160213"
+   ],
+   "footprint": {
+    "type": "MultiPolygon",
+    "coordinates": [
+     [
+      [
+       [
+        4.867031,
+        52.3663755
+       ],
+       [
+        4.8670898,
+        52.3662847
+       ],
+       [
+        4.8670792,
+        52.3662822
+       ],
+       [
+        4.8670923,
+        52.3662637
+       ],
+       [
+        4.8671256,
+        52.3662723
+       ],
+       [
+        4.8671211,
+        52.3662788
+       ],
+       [
+        4.8671858,
+        52.3662956
+       ],
+       [
+        4.8671234,
+        52.3663847
+       ],
+       [
+        4.8670955,
+        52.3663919
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.867031,
+        52.3663756
+       ],
+       [
+        4.8669578,
+        52.3663571
+       ],
+       [
+        4.8670162,
+        52.3662669
+       ],
+       [
+        4.8670898,
+        52.3662847
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.8669578,
+        52.3663571
+       ],
+       [
+        4.8668835,
+        52.3663395
+       ],
+       [
+        4.8669488,
+        52.3662389
+       ],
+       [
+        4.8670241,
+        52.3662572
+       ],
+       [
+        4.8670176,
+        52.3662672
+       ],
+       [
+        4.8670162,
+        52.3662669
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.8668835,
+        52.3663395
+       ],
+       [
+        4.8668099,
+        52.3663214
+       ],
+       [
+        4.8668749,
+        52.366221
+       ],
+       [
+        4.8669488,
+        52.3662389
+       ]
+      ]
+     ]
+    ]
+   },
+   "pands": [
+    {
+     "recipeId": "hasebroek-165485",
+     "pandId": "0363100012165485",
+     "buildingId": "NL.IMBAG.Pand.0363100012165485",
+     "address": "Hasebroekstraat 1",
+     "frontage": {
+      "x0": -10.245,
+      "x1": -5.483,
+      "widthM": 4.761
+     },
+     "bounds": {
+      "min": [
+       -11.931,
+       0,
+       -13.147
+      ],
+      "max": [
+       -4.64,
+       16.655,
+       0.205
+      ]
+     },
+     "triangles": 2492,
+     "ranges": [
+      {
+       "primitive": 8,
+       "firstTriangle": 0,
+       "triangleCount": 63
+      },
+      {
+       "primitive": 10,
+       "firstTriangle": 0,
+       "triangleCount": 252
+      },
+      {
+       "primitive": 11,
+       "firstTriangle": 0,
+       "triangleCount": 36
+      },
+      {
+       "primitive": 12,
+       "firstTriangle": 0,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 13,
+       "firstTriangle": 0,
+       "triangleCount": 1164
+      },
+      {
+       "primitive": 14,
+       "firstTriangle": 0,
+       "triangleCount": 360
+      },
+      {
+       "primitive": 15,
+       "firstTriangle": 0,
+       "triangleCount": 204
+      },
+      {
+       "primitive": 16,
+       "firstTriangle": 0,
+       "triangleCount": 390
+      },
+      {
+       "primitive": 18,
+       "firstTriangle": 0,
+       "triangleCount": 11
+      }
+     ]
+    },
+    {
+     "recipeId": "hasebroek-152706",
+     "pandId": "0363100012152706",
+     "buildingId": "NL.IMBAG.Pand.0363100012152706",
+     "address": "Hasebroekstraat 3",
+     "frontage": {
+      "x0": -5.484,
+      "x1": -0.091,
+      "widthM": 5.392
+     },
+     "bounds": {
+      "min": [
+       -5.484,
+       0,
+       -10.903
+      ],
+      "max": [
+       -0.022,
+       18.725,
+       1.069
+      ]
+     },
+     "triangles": 2937,
+     "ranges": [
+      {
+       "primitive": 0,
+       "firstTriangle": 0,
+       "triangleCount": 30
+      },
+      {
+       "primitive": 2,
+       "firstTriangle": 0,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 0,
+       "triangleCount": 225
+      },
+      {
+       "primitive": 10,
+       "firstTriangle": 252,
+       "triangleCount": 252
+      },
+      {
+       "primitive": 11,
+       "firstTriangle": 36,
+       "triangleCount": 36
+      },
+      {
+       "primitive": 12,
+       "firstTriangle": 12,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 13,
+       "firstTriangle": 1164,
+       "triangleCount": 1580
+      },
+      {
+       "primitive": 14,
+       "firstTriangle": 360,
+       "triangleCount": 384
+      },
+      {
+       "primitive": 16,
+       "firstTriangle": 390,
+       "triangleCount": 382
+      },
+      {
+       "primitive": 17,
+       "firstTriangle": 0,
+       "triangleCount": 8
+      },
+      {
+       "primitive": 18,
+       "firstTriangle": 11,
+       "triangleCount": 4
+      }
+     ]
+    },
+    {
+     "recipeId": "hasebroek-153109",
+     "pandId": "0363100012153109",
+     "buildingId": "NL.IMBAG.Pand.0363100012153109",
+     "address": "Hasebroekstraat 5",
+     "frontage": {
+      "x0": -0.091,
+      "x1": 5.329,
+      "widthM": 5.421
+     },
+     "bounds": {
+      "min": [
+       -0.121,
+       0,
+       -12.088
+      ],
+      "max": [
+       5.401,
+       18.648,
+       1.09
+      ]
+     },
+     "triangles": 2897,
+     "ranges": [
+      {
+       "primitive": 1,
+       "firstTriangle": 0,
+       "triangleCount": 30
+      },
+      {
+       "primitive": 3,
+       "firstTriangle": 0,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 0,
+       "triangleCount": 141
+      },
+      {
+       "primitive": 10,
+       "firstTriangle": 504,
+       "triangleCount": 252
+      },
+      {
+       "primitive": 11,
+       "firstTriangle": 72,
+       "triangleCount": 36
+      },
+      {
+       "primitive": 12,
+       "firstTriangle": 24,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 13,
+       "firstTriangle": 2744,
+       "triangleCount": 1620
+      },
+      {
+       "primitive": 14,
+       "firstTriangle": 744,
+       "triangleCount": 384
+      },
+      {
+       "primitive": 16,
+       "firstTriangle": 772,
+       "triangleCount": 392
+      },
+      {
+       "primitive": 18,
+       "firstTriangle": 15,
+       "triangleCount": 6
+      }
+     ]
+    },
+    {
+     "recipeId": "hasebroek-160213",
+     "pandId": "0363100012160213",
+     "buildingId": "NL.IMBAG.Pand.0363100012160213",
+     "address": "Hasebroekstraat 7",
+     "frontage": {
+      "x0": 5.329,
+      "x1": 10.736,
+      "widthM": 5.407
+     },
+     "bounds": {
+      "min": [
+       5.329,
+       0,
+       -12.052
+      ],
+      "max": [
+       10.811,
+       18.793,
+       1.134
+      ]
+     },
+     "triangles": 2988,
+     "ranges": [
+      {
+       "primitive": 4,
+       "firstTriangle": 0,
+       "triangleCount": 30
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 0,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 0,
+       "triangleCount": 227
+      },
+      {
+       "primitive": 10,
+       "firstTriangle": 756,
+       "triangleCount": 252
+      },
+      {
+       "primitive": 11,
+       "firstTriangle": 108,
+       "triangleCount": 36
+      },
+      {
+       "primitive": 12,
+       "firstTriangle": 36,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 13,
+       "firstTriangle": 4364,
+       "triangleCount": 1620
+      },
+      {
+       "primitive": 14,
+       "firstTriangle": 1128,
+       "triangleCount": 384
+      },
+      {
+       "primitive": 16,
+       "firstTriangle": 1164,
+       "triangleCount": 392
+      },
+      {
+       "primitive": 18,
+       "firstTriangle": 21,
+       "triangleCount": 11
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "chunk-face-hasebroek-1-41-r2",
+   "category": "street-survey",
+   "name": "face-hasebroek-1-41-r2",
+   "modelUrl": "./models/ordinary-buildings/chunks/chunk-face-hasebroek-1-41-r2.glb?asset=c06c5201202f3f38",
+   "sha256": "c06c5201202f3f3836008ee92d74988d9081246700ec3391f36ac7dac6d3e19e",
+   "bytes": 939732,
+   "triangles": 14600,
+   "primitives": 23,
+   "instance": {
+    "anchor": [
+     4.866549682517412,
+     52.36625799365144
+    ],
+    "northOffsetDegrees": 158.2856,
+    "mirror": false
+   },
+   "bounds": {
+    "min": [
+     -13.605,
+     0,
+     -12.043
+    ],
+    "max": [
+     13.549,
+     19.275,
+     1.127
+    ]
+   },
+   "height": 19.275,
+   "suppress": [
+    "NL.IMBAG.Pand.0363100012164250",
+    "NL.IMBAG.Pand.0363100012153107",
+    "NL.IMBAG.Pand.0363100012166233",
+    "NL.IMBAG.Pand.0363100012165183",
+    "NL.IMBAG.Pand.0363100012157271"
+   ],
+   "replaces": [
+    "ordinary-0363100012164250",
+    "ordinary-0363100012153107",
+    "ordinary-0363100012166233",
+    "ordinary-0363100012165183",
+    "ordinary-0363100012157271"
+   ],
+   "footprint": {
+    "type": "MultiPolygon",
+    "coordinates": [
+     [
+      [
+       [
+        4.8667352,
+        52.3663033
+       ],
+       [
+        4.8666614,
+        52.3662848
+       ],
+       [
+        4.8667262,
+        52.3661849
+       ],
+       [
+        4.8668003,
+        52.3662028
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.8666614,
+        52.3662848
+       ],
+       [
+        4.866586,
+        52.3662667
+       ],
+       [
+        4.8666509,
+        52.3661666
+       ],
+       [
+        4.8667262,
+        52.3661849
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.866586,
+        52.3662667
+       ],
+       [
+        4.8665124,
+        52.3662489
+       ],
+       [
+        4.8665773,
+        52.3661487
+       ],
+       [
+        4.8666509,
+        52.3661666
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.8665124,
+        52.3662489
+       ],
+       [
+        4.8664385,
+        52.3662313
+       ],
+       [
+        4.8665036,
+        52.3661308
+       ],
+       [
+        4.8665773,
+        52.3661487
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.8664385,
+        52.3662313
+       ],
+       [
+        4.8663648,
+        52.3662132
+       ],
+       [
+        4.8664298,
+        52.3661129
+       ],
+       [
+        4.8665036,
+        52.3661308
+       ]
+      ]
+     ]
+    ]
+   },
+   "pands": [
+    {
+     "recipeId": "hasebroek-164250",
+     "pandId": "0363100012164250",
+     "buildingId": "NL.IMBAG.Pand.0363100012164250",
+     "address": "Hasebroekstraat 11",
+     "frontage": {
+      "x0": -13.605,
+      "x1": -8.175,
+      "widthM": 5.43
+     },
+     "bounds": {
+      "min": [
+       -13.605,
+       0,
+       -12.043
+      ],
+      "max": [
+       -8.167,
+       19.128,
+       1.088
+      ]
+     },
+     "triangles": 2925,
+     "ranges": [
+      {
+       "primitive": 4,
+       "firstTriangle": 0,
+       "triangleCount": 30
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 0,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 10,
+       "firstTriangle": 0,
+       "triangleCount": 167
+      },
+      {
+       "primitive": 15,
+       "firstTriangle": 0,
+       "triangleCount": 252
+      },
+      {
+       "primitive": 16,
+       "firstTriangle": 0,
+       "triangleCount": 36
+      },
+      {
+       "primitive": 17,
+       "firstTriangle": 0,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 18,
+       "firstTriangle": 0,
+       "triangleCount": 1620
+      },
+      {
+       "primitive": 19,
+       "firstTriangle": 0,
+       "triangleCount": 384
+      },
+      {
+       "primitive": 20,
+       "firstTriangle": 0,
+       "triangleCount": 392
+      },
+      {
+       "primitive": 22,
+       "firstTriangle": 0,
+       "triangleCount": 8
+      }
+     ]
+    },
+    {
+     "recipeId": "hasebroek-153107",
+     "pandId": "0363100012153107",
+     "buildingId": "NL.IMBAG.Pand.0363100012153107",
+     "address": "Hasebroekstraat 13",
+     "frontage": {
+      "x0": -8.175,
+      "x1": -2.661,
+      "widthM": 5.514
+     },
+     "bounds": {
+      "min": [
+       -8.175,
+       0,
+       -12.039
+      ],
+      "max": [
+       -2.654,
+       19.071,
+       1.075
+      ]
+     },
+     "triangles": 2983,
+     "ranges": [
+      {
+       "primitive": 0,
+       "firstTriangle": 0,
+       "triangleCount": 30
+      },
+      {
+       "primitive": 1,
+       "firstTriangle": 0,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 0,
+       "triangleCount": 221
+      },
+      {
+       "primitive": 15,
+       "firstTriangle": 252,
+       "triangleCount": 252
+      },
+      {
+       "primitive": 16,
+       "firstTriangle": 36,
+       "triangleCount": 36
+      },
+      {
+       "primitive": 17,
+       "firstTriangle": 12,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 18,
+       "firstTriangle": 1620,
+       "triangleCount": 1620
+      },
+      {
+       "primitive": 19,
+       "firstTriangle": 384,
+       "triangleCount": 384
+      },
+      {
+       "primitive": 20,
+       "firstTriangle": 392,
+       "triangleCount": 392
+      },
+      {
+       "primitive": 21,
+       "firstTriangle": 0,
+       "triangleCount": 8
+      },
+      {
+       "primitive": 22,
+       "firstTriangle": 8,
+       "triangleCount": 4
+      }
+     ]
+    },
+    {
+     "recipeId": "hasebroek-166233",
+     "pandId": "0363100012166233",
+     "buildingId": "NL.IMBAG.Pand.0363100012166233",
+     "address": "Hasebroekstraat 15",
+     "frontage": {
+      "x0": -2.661,
+      "x1": 2.732,
+      "widthM": 5.393
+     },
+     "bounds": {
+      "min": [
+       -2.661,
+       0,
+       -12.034
+      ],
+      "max": [
+       2.741,
+       19.275,
+       1.094
+      ]
+     },
+     "triangles": 2897,
+     "ranges": [
+      {
+       "primitive": 2,
+       "firstTriangle": 0,
+       "triangleCount": 30
+      },
+      {
+       "primitive": 3,
+       "firstTriangle": 0,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 0,
+       "triangleCount": 143
+      },
+      {
+       "primitive": 15,
+       "firstTriangle": 504,
+       "triangleCount": 252
+      },
+      {
+       "primitive": 16,
+       "firstTriangle": 72,
+       "triangleCount": 36
+      },
+      {
+       "primitive": 17,
+       "firstTriangle": 24,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 18,
+       "firstTriangle": 3240,
+       "triangleCount": 1620
+      },
+      {
+       "primitive": 19,
+       "firstTriangle": 768,
+       "triangleCount": 384
+      },
+      {
+       "primitive": 20,
+       "firstTriangle": 784,
+       "triangleCount": 392
+      },
+      {
+       "primitive": 22,
+       "firstTriangle": 12,
+       "triangleCount": 4
+      }
+     ]
+    },
+    {
+     "recipeId": "hasebroek-165183",
+     "pandId": "0363100012165183",
+     "buildingId": "NL.IMBAG.Pand.0363100012165183",
+     "address": "Hasebroekstraat 17",
+     "frontage": {
+      "x0": 2.732,
+      "x1": 8.135,
+      "widthM": 5.403
+     },
+     "bounds": {
+      "min": [
+       2.732,
+       0,
+       -12.031
+      ],
+      "max": [
+       8.143,
+       19.275,
+       1.118
+      ]
+     },
+     "triangles": 2897,
+     "ranges": [
+      {
+       "primitive": 12,
+       "firstTriangle": 0,
+       "triangleCount": 30
+      },
+      {
+       "primitive": 13,
+       "firstTriangle": 0,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 14,
+       "firstTriangle": 0,
+       "triangleCount": 143
+      },
+      {
+       "primitive": 15,
+       "firstTriangle": 756,
+       "triangleCount": 252
+      },
+      {
+       "primitive": 16,
+       "firstTriangle": 108,
+       "triangleCount": 36
+      },
+      {
+       "primitive": 17,
+       "firstTriangle": 36,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 18,
+       "firstTriangle": 4860,
+       "triangleCount": 1620
+      },
+      {
+       "primitive": 19,
+       "firstTriangle": 1152,
+       "triangleCount": 384
+      },
+      {
+       "primitive": 20,
+       "firstTriangle": 1176,
+       "triangleCount": 392
+      },
+      {
+       "primitive": 22,
+       "firstTriangle": 16,
+       "triangleCount": 4
+      }
+     ]
+    },
+    {
+     "recipeId": "hasebroek-157271",
+     "pandId": "0363100012157271",
+     "buildingId": "NL.IMBAG.Pand.0363100012157271",
+     "address": "Hasebroekstraat 19",
+     "frontage": {
+      "x0": 8.135,
+      "x1": 13.542,
+      "widthM": 5.406
+     },
+     "bounds": {
+      "min": [
+       8.135,
+       0,
+       -12.028
+      ],
+      "max": [
+       13.549,
+       19.181,
+       1.127
+      ]
+     },
+     "triangles": 2898,
+     "ranges": [
+      {
+       "primitive": 7,
+       "firstTriangle": 0,
+       "triangleCount": 30
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 0,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 11,
+       "firstTriangle": 0,
+       "triangleCount": 144
+      },
+      {
+       "primitive": 15,
+       "firstTriangle": 1008,
+       "triangleCount": 252
+      },
+      {
+       "primitive": 16,
+       "firstTriangle": 144,
+       "triangleCount": 36
+      },
+      {
+       "primitive": 17,
+       "firstTriangle": 48,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 18,
+       "firstTriangle": 6480,
+       "triangleCount": 1620
+      },
+      {
+       "primitive": 19,
+       "firstTriangle": 1536,
+       "triangleCount": 384
+      },
+      {
+       "primitive": 20,
+       "firstTriangle": 1568,
+       "triangleCount": 392
+      },
+      {
+       "primitive": 22,
+       "firstTriangle": 20,
+       "triangleCount": 4
       }
      ]
     }

@@ -121,11 +121,25 @@
  "grounds": {
   "door-left": {
    "doorBay": 0,
-   "note": "house door in the left axis (Hasebroekstraat 36)"
+   "note": "house door in the left axis (Hasebroekstraat 36). Door reveal: measured on Hasebroekstraat (pands 160178, 161486, 167170, panoramas 2022-01-04): brick jamb returns of about 0.22 m to the white frame face at 31-37 deg (return / sin of the view angle), i.e. 0.35 m to the back of the frame; plane sweep 0.125 m on 160178 (low ncc). Set a 0.35 m reveal, brick jambs, no step.",
+   "doorReveal": {
+    "form": "reveal",
+    "deep": 0.35,
+    "steps": 0
+   }
   },
   "door-right": {
    "doorBay": 2,
-   "note": "house door in the right axis"
+   "note": "house door in the right axis. Door reveal: measured on Hasebroekstraat (pands 160178, 161486, 167170, panoramas 2022-01-04): brick jamb returns of about 0.22 m to the white frame face at 31-37 deg (return / sin of the view angle), i.e. 0.35 m to the back of the frame; plane sweep 0.125 m on 160178 (low ncc). Set a 0.35 m reveal, brick jambs, no step.",
+   "doorReveal": {
+    "form": "reveal",
+    "deep": 0.35,
+    "steps": 0
+   }
+  },
+  "door-right-flush": {
+   "doorBay": 2,
+   "note": "house door in the right axis, flush: Hasebroekstraat 30 (163006), where the measured 0.35 m reveal would cross the native footprint boundary beside the door (#239)"
   }
  },
  "palettes": {
@@ -199,6 +213,7 @@
   "Bellamyplein's square brick towers over an outer axis are drawn as the neck or box crown"
  ],
  "notes": [
-  "Palette: dark brown from the trim-normalised walls of hasebroek-2-46 (2022-01-04, overcast); every placed pand carries its own measured brick."
+  "Palette: dark brown from the trim-normalised walls of hasebroek-2-46 (2022-01-04, overcast); every placed pand carries its own measured brick.",
+  "Door reveal (#239): measured on Hasebroekstraat (pands 160178, 161486, 167170, panoramas 2022-01-04): brick jamb returns of about 0.22 m to the white frame face at 31-37 deg (return / sin of the view angle), i.e. 0.35 m to the back of the frame; plane sweep 0.125 m on 160178 (low ncc). Set a 0.35 m reveal, brick jambs, no step."
  ]
 }
