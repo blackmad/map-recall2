@@ -1,0 +1,27 @@
+{
+ "id": "brand-bij-ca",
+ "pand": "0363100012165746",
+ "identity": {
+  "addresses": "Damrak 77, 79 and Beurspassage 12 (BAG verblijfsobjecten: 3); the block runs through to the Nieuwendijk",
+  "bouwjaar": 1893,
+  "what": "the former C&A block between the Damrak and the Nieuwendijk with the Beurspassage through it: the 1893 BAG year is the first building on the site; the C&A store burned on 16 February 1963 and was rebuilt, and in 2016 the block got its present brick-and-stone fronts on the concrete frame by Robert A.M. Stern Architects with Rijnboutt for Bouwinvest, with the Amsterdamse Oersoep vault by Arno Coenen and Iris Roskam in the passage",
+  "notThis": "'Brand bij C&A' (the brief's name) is the 1963 fire, not the building; the white Damrak 70 front at the north end of the Damrak crops is the neighbouring pand",
+  "sources": [
+   "https://api.data.amsterdam.nl/v1/bag/panden/0363100012165746",
+   "https://nl.wikipedia.org/wiki/Beurspassage",
+   "https://nl.wikipedia.org/wiki/Damrak"
+  ]
+ },
+ "frame": "native metres of brand-bij-ca-footprints.json (x east, z south, y up from the 1.27 m NAP street); Damrak chord (14.263,23.362)->(45.933,-16.053); five Nieuwendijk bay chords and four pier chords in the builder",
+ "partyWallBearings": [
+  29,
+  191
+ ],
+ "partyWallEvidence": "North-east (29) and south-west (191-194): the long sides adjoin the neighbouring Damrak and Nieuwendijk panden (BAG 0363100012168262, 169215, 170986, 179186, 179188, 179192 within the neighbours list); no panorama sees them.",
+ "fronts": {
+  "damrak": "five bays centred at s 5.0, 12.7, 20.4, 28.3, 36.2: double-height shopfronts to 8.7, paired three-sided stone oriels from 10.4 with lights at 10.6, 15.2, 19.8, 24.4, crowns over the 24.6 m (s < 16.5) and 27.9 m parapets; speklagen bands at 13.9, 18.5, 23.1 and dashed quoins on the piers; the Beurspassage arch (5.6 x 8.6 m) at s 46.9 with three window rows over it and the corner tower to 36.8",
+  "nieuwendijk": "six 6.1 m bays standing 0.19 m proud of banded piers: glazed shop bay to 4.1, first-floor glazed bay 4.6-7.5, two windows a bay on three storeys, coping at 19.6",
+  "upper": "every exposed 3DBAG wall band starting 12 m or more up carries a white-framed window grid (2.6 m pitch, 3.6 m storeys)"
+ },
+ "heightsFrom": "w01-128 rectified crop (45.9 px/m) checked against the 3DBAG LoD2.2 pieces (parapets 24.6 and 27.9 m, tower 36.8 m)"
+}

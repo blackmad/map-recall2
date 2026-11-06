@@ -1,0 +1,32 @@
+{
+ "id": "brand-bij-ca",
+ "countedBy": "lane #235 (opus) from the rectified panorama crops of landmark-brief.ts (artifacts/landmark-briefs/brand-bij-ca/); ribbon convention; a shop door counts with its shopfront; span pins the counted bays on the Damrak chord. Not a blind count; the integrator may re-count.",
+ "facades": [
+  {
+   "name": "Damrak: the three high bays (oriel pairs over shopfronts)",
+   "bearing": 129,
+   "photo": "artifacts/landmark-briefs/brand-bij-ca/w01-128.jpg",
+   "span": [
+    7.42,
+    30.82
+   ],
+   "frontDepth": 26.02,
+   "depthBand": 0.8,
+   "heightM": [
+    0.1,
+    28
+   ],
+   "rows": [
+    3,
+    3,
+    6,
+    6,
+    6,
+    6
+   ],
+   "columns": 9,
+   "symmetric": false,
+   "note": "Panoramas TMX7316010203-001658_pano_0000_001927 (2020-04-21) and recording_2025-06-16_06-42-40_01858 (2025-06-16). Each bay: the shop glazing, the mezzanine lights over the white transom, and two stone oriels with one front light on each of four storeys."
+  }
+ ]
+}

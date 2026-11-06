@@ -1,0 +1,385 @@
+{
+ "schemaVersion": 1,
+ "id": "brand-bij-ca",
+ "pand": "0363100012165746",
+ "brief": "scripts/landmarks/brand-bij-ca-brief.md",
+ "signature": [
+  "oriel-pairs",
+  "speklagen",
+  "beurspassage-arch",
+  "corner-tower"
+ ],
+ "walls": [
+  {
+   "tag": "w01-128",
+   "bearing": 128,
+   "lengthM": 26.7,
+   "centre": [
+    4.8947275,
+    52.3745835
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001658_pano_0000_001927",
+   "capturedAt": "2020-04-21",
+   "checked": true,
+   "items": [
+    {
+     "id": "oriel-pairs",
+     "kind": "window-shape",
+     "where": "pairs of white stone three-sided oriels over each bay, four storeys on stepped corbels, pointed crowns",
+     "approxSizeM": [
+      4.8,
+      18
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-001658_pano_0000_001927",
+     "how": "three-sided stone oriels with the front lights cut; the narrow chamfer lights are drawn solid"
+    },
+    {
+     "id": "speklagen",
+     "kind": "other",
+     "where": "white stone bands and dashed quoins on the red brick piers",
+     "approxSizeM": [
+      50,
+      0.35
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001658_pano_0000_001927"
+    },
+    {
+     "id": "beurspassage-arch",
+     "kind": "window-shape",
+     "where": "round arch of alternating red and white voussoirs over the Beurspassage",
+     "approxSizeM": [
+      5.6,
+      8.7
+     ],
+     "plan": "simplified",
+     "how": "white voussoir ring over the brick; the red voussoirs are the wall between",
+     "seenIn": "TMX7316010203-001658_pano_0000_001927"
+    },
+    {
+     "id": "corner-tower",
+     "kind": "tower",
+     "where": "brick corner tower over the passage with banded storeys",
+     "approxSizeM": [
+      4,
+      37
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001658_pano_0000_001927"
+    },
+    {
+     "id": "shop-signs",
+     "kind": "sign",
+     "where": "PRIMARK and shop lettering on the shopfront fascias",
+     "approxSizeM": [
+      3,
+      0.4
+     ],
+     "plan": "skipped",
+     "skip": {
+      "reason": "temporary",
+      "note": "tenant signs change; the shopfront frames are drawn"
+     },
+     "seenIn": "TMX7316010203-001658_pano_0000_001927"
+    }
+   ]
+  },
+  {
+   "tag": "w02-317",
+   "bearing": 317,
+   "lengthM": 8.9,
+   "centre": [
+    4.8941245,
+    52.3748375
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001659_pano_0000_000421",
+   "capturedAt": "2020-04-21",
+   "checked": true,
+   "items": [
+    {
+     "id": "passage-nw-arch",
+     "kind": "window-shape",
+     "where": "Beurspassage entrance from the Nieuwendijk side, banded arch",
+     "approxSizeM": [
+      4,
+      6
+     ],
+     "plan": "skipped",
+     "skip": {
+      "reason": "not-visible",
+      "note": "the passage mouth on this side lies in the neighbouring pand; only the banded corner shows from here"
+     },
+     "seenIn": "TMX7316010203-001659_pano_0000_000421"
+    }
+   ]
+  },
+  {
+   "tag": "w03-306",
+   "bearing": 306,
+   "lengthM": 6.1,
+   "centre": [
+    4.893752,
+    52.3745655
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000716_pano_0000_001536",
+   "capturedAt": "2018-05-14",
+   "checked": true,
+   "items": [
+    {
+     "id": "glass-bay-1",
+     "kind": "window-shape",
+     "where": "curved glass shop bay and first-floor glazed bay between white stone piers",
+     "approxSizeM": [
+      6.1,
+      8
+     ],
+     "plan": "simplified",
+     "how": "flat glazed openings with white frames and ledges; the curve is not drawn",
+     "seenIn": "TMX7316010203-000716_pano_0000_001536"
+    }
+   ]
+  },
+  {
+   "tag": "w04-312",
+   "bearing": 312,
+   "lengthM": 6.1,
+   "centre": [
+    4.893967,
+    52.3747365
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000716_pano_0000_001540",
+   "capturedAt": "2018-05-14",
+   "checked": true,
+   "items": [
+    {
+     "id": "glass-bay-2",
+     "kind": "window-shape",
+     "where": "as w03",
+     "approxSizeM": [
+      6.1,
+      8
+     ],
+     "plan": "simplified",
+     "how": "flat glazed openings",
+     "seenIn": "TMX7316010203-000716_pano_0000_001540"
+    }
+   ]
+  },
+  {
+   "tag": "w05-312",
+   "bearing": 312,
+   "lengthM": 6.1,
+   "centre": [
+    4.894045,
+    52.3747905
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002360_pano_0001_000027",
+   "capturedAt": "2021-12-29",
+   "checked": true,
+   "items": [
+    {
+     "id": "alley-brick",
+     "kind": "window-shape",
+     "where": "plain brick side of the alley with a few windows",
+     "approxSizeM": [
+      6.1,
+      19
+     ],
+     "plan": "simplified",
+     "how": "banded brick with the bay grid",
+     "seenIn": "TMX7316010203-002360_pano_0001_000027"
+    }
+   ]
+  },
+  {
+   "tag": "w06-309",
+   "bearing": 309,
+   "lengthM": 6.1,
+   "centre": [
+    4.893891,
+    52.3746815
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000716_pano_0000_001539",
+   "capturedAt": "2018-05-14",
+   "checked": true,
+   "items": [
+    {
+     "id": "glass-bay-3",
+     "kind": "window-shape",
+     "where": "as w03",
+     "approxSizeM": [
+      6.1,
+      8
+     ],
+     "plan": "simplified",
+     "how": "flat glazed openings",
+     "seenIn": "TMX7316010203-000716_pano_0000_001539"
+    }
+   ]
+  },
+  {
+   "tag": "w07-305",
+   "bearing": 305,
+   "lengthM": 6.1,
+   "centre": [
+    4.8938195,
+    52.3746245
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000716_pano_0000_001537",
+   "capturedAt": "2018-05-14",
+   "checked": true,
+   "items": [
+    {
+     "id": "ca-sign",
+     "kind": "sign",
+     "where": "C&A sign on the first-floor bay",
+     "approxSizeM": [
+      1.5,
+      0.8
+     ],
+     "plan": "skipped",
+     "skip": {
+      "reason": "temporary",
+      "note": "tenant sign"
+     },
+     "seenIn": "TMX7316010203-000716_pano_0000_001537"
+    },
+    {
+     "id": "glass-bay-4",
+     "kind": "window-shape",
+     "where": "as w03",
+     "approxSizeM": [
+      6.1,
+      8
+     ],
+     "plan": "simplified",
+     "how": "flat glazed openings",
+     "seenIn": "TMX7316010203-000716_pano_0000_001537"
+    }
+   ]
+  },
+  {
+   "tag": "w08-128",
+   "bearing": 128,
+   "lengthM": 6,
+   "centre": [
+    4.894433,
+    52.3743485
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-06-16_06-42-40_01855",
+   "capturedAt": "2025-06-16",
+   "checked": true,
+   "items": [
+    {
+     "id": "damrak-north-bays",
+     "kind": "window-shape",
+     "where": "lower north part of the Damrak front: the same oriel pairs under a 24.6 m parapet",
+     "approxSizeM": [
+      14,
+      25
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-06-16_06-42-40_01855"
+    }
+   ]
+  },
+  {
+   "tag": "w09-128",
+   "bearing": 128,
+   "lengthM": 5.9,
+   "centre": [
+    4.8945015,
+    52.374402
+   ],
+   "evidence": "photo",
+   "panoId": "b_20250108_1349_Track19_Sphere_00303",
+   "capturedAt": "2025-01-08",
+   "checked": true,
+   "items": [
+    {
+     "id": "damrak-bay",
+     "kind": "window-shape",
+     "where": "oriel pair over a shopfront",
+     "approxSizeM": [
+      6,
+      28
+     ],
+     "plan": "modelled",
+     "seenIn": "b_20250108_1349_Track19_Sphere_00303"
+    }
+   ]
+  },
+  {
+   "tag": "w10-128",
+   "bearing": 128,
+   "lengthM": 5.9,
+   "centre": [
+    4.8945685,
+    52.374456
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-06-16_06-42-40_01858",
+   "capturedAt": "2025-06-16",
+   "checked": true,
+   "items": [
+    {
+     "id": "damrak-bay-2",
+     "kind": "window-shape",
+     "where": "oriel pair over the TK Maxx shopfront",
+     "approxSizeM": [
+      6,
+      28
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-06-16_06-42-40_01858"
+    }
+   ]
+  },
+  {
+   "tag": "w11-322",
+   "bearing": 322,
+   "lengthM": 4.1,
+   "centre": [
+    4.8941955,
+    52.3748765
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001530_pano_0004_000199",
+   "capturedAt": "2019-12-20",
+   "checked": true,
+   "items": [
+    {
+     "id": "oersoep",
+     "kind": "relief",
+     "where": "the Amsterdamse Oersoep mosaic vault inside the Beurspassage",
+     "approxSizeM": [
+      4,
+      40
+     ],
+     "plan": "skipped",
+     "skip": {
+      "reason": "not-visible",
+      "note": "inside the covered passage; seen from the street only as the coloured back of the arch, drawn in ochre"
+     },
+     "seenIn": "TMX7316010203-001530_pano_0004_000199"
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  }
+ ]
+}
