@@ -16,7 +16,19 @@ import { SWAP_SPOTS } from '../../scripts/world/abSpots';
 // ZFIGHT_STEPS (24) and ZFIGHT_PAN_PX (0.35 CSS px per step) shape the pan. Output: artifacts/swap-zfight/<project><label>.
 const QS = process.env.ZFIGHT_QS ?? '';
 const LABEL = process.env.ZFIGHT_LABEL ? `-${process.env.ZFIGHT_LABEL}` : '';
-const SPOT = SWAP_SPOTS.find(s => s.name === (process.env.ZFIGHT_SPOT ?? 's3-slab'))!;
+// ZFIGHT_SPOT_JSON (lane R3-B #231): a spot given inline (a sibling lane's pose before it is merged), same fields.
+type Spot = (typeof SWAP_SPOTS)[number] & { viewport?: [number, number] };
+const SPOT: Spot = process.env.ZFIGHT_SPOT_JSON ? JSON.parse(process.env.ZFIGHT_SPOT_JSON) : SWAP_SPOTS.find(s => s.name === (process.env.ZFIGHT_SPOT ?? 's3-slab'))!;
+if (SPOT.viewport) test.use({ viewport: { width: SPOT.viewport[0], height: SPOT.viewport[1] } });
+// ZFIGHT_ALIAS_ONLY=1 (lane R3-B): the still pan and its supersampled reference only (no swap, no shell yield).
+// ZFIGHT_VARIANTS='painted=windowSdfMix:0;band=windowSdfMix:1|windowSdfBand:1,1.25,2.5,5' measures aliasPx once per
+// variant in the same page and pose, each a set of facade uniforms (look/windowSdf.ts) written to every material.
+const ALIAS_ONLY = !!process.env.ZFIGHT_ALIAS_ONLY;
+const UNIFORM_VARIANTS = (process.env.ZFIGHT_VARIANTS ?? '').split(';').filter(Boolean).map(v => {
+  const name = v.slice(0, v.indexOf('=')), set: Record<string, number | number[]> = {};
+  for (const e of v.slice(v.indexOf('=') + 1).split('|').filter(Boolean)) { const [k, list] = e.split(':'); const n = list.split(',').map(Number); set[k] = n.length === 1 ? n[0] : n; }
+  return { name, set };
+});
 const STEPS = Number(process.env.ZFIGHT_STEPS ?? 24);
 const PAN_PX = Number(process.env.ZFIGHT_PAN_PX ?? 0.35);
 const OUT = 'artifacts/swap-zfight';
@@ -196,6 +208,7 @@ test('swap z-fight: no moving stripes on the Weesperstraat slab while its detail
     if (swap) await settle(page);
     return { areas, fadingSteps: under.filter(n => n > 0).length, frames };
   };
+  const measureAlias = async () => {
   const still = await run(false);
   let alias: { refTotal: number; aliasPx: number; aliasSteps: number[]; refAreas: number[] } | null = null;
   if (SS > 1) {
@@ -233,6 +246,39 @@ test('swap z-fight: no moving stripes on the Weesperstraat slab while its detail
     }
     alias = { refTotal: ref.areas.reduce((s, v) => s + v, 0), aliasPx: aliasSteps.reduce((s, v) => s + v, 0), aliasSteps, refAreas: ref.areas };
     console.log('swap-zfight alias', JSON.stringify({ ss: SS, stillBase: still.areas.reduce((s, v) => s + v, 0), stillRef: alias.refTotal, aliasPx: alias.aliasPx }));
+  }
+  return { still, alias };
+  };
+  const setUniforms = async (set: Record<string, number | number[]>) => {
+    // `mipSharpen:x|mipLinear:0|1|mipLobes:2|3` (lane R3-B): rebuild the custom chain with those options (?cellMipsKeep=1).
+    const mo: Record<string, number | boolean> = {};
+    if ('mipSharpen' in set) mo.sharpen = set.mipSharpen as number;
+    if ('mipLinear' in set) mo.linear = !!set.mipLinear;
+    if ('mipLobes' in set) mo.lobes = set.mipLobes as number;
+    if (Object.keys(mo).length) await page.evaluate((mo) => (window as any).canalRecallGame.vectorMap._threeBuildings.setCellMipOptions(mo), mo);
+    return page.evaluate((set) => {
+    const tb = (window as any).canalRecallGame.vectorMap._threeBuildings;
+    for (const m of new Set([tb.material, ...tb.materials.values()])) for (const [k, v] of Object.entries(set)) if (m?.uniforms?.[k]) m.uniforms[k].value = v;
+    // `mips:0|1`: GL's box mips or the custom chain on the live colour array (look/cellMips.ts; needs ?cellMipsKeep=1).
+    if ('mips' in set) tb.setCellMipsMode?.(set.mips ? 'custom' : 'gl');
+    tb.map?.triggerRepaint?.();
+  }, set);
+  };
+  const variants: Record<string, { stillTotal: number; aliasPx: number | null; refTotal: number | null; set: Record<string, number | number[]> }> = {};
+  for (const v of UNIFORM_VARIANTS) {
+    await setUniforms(v.set);
+    await page.waitForTimeout(300);
+    const r = await measureAlias();
+    variants[v.name] = { stillTotal: r.still.areas.reduce((s, x) => s + x, 0), aliasPx: r.alias?.aliasPx ?? null, refTotal: r.alias?.refTotal ?? null, set: v.set };
+    console.log('swap-zfight variant', v.name, JSON.stringify(variants[v.name]));
+  }
+  if (UNIFORM_VARIANTS.length) await setUniforms(UNIFORM_VARIANTS[UNIFORM_VARIANTS.length - 1].set);
+  const { still, alias } = UNIFORM_VARIANTS.length && ALIAS_ONLY ? { still: { areas: [] as number[] }, alias: null } : await measureAlias();
+  if (ALIAS_ONLY) {
+    mkdirSync(OUT, { recursive: true });
+    writeFileSync(`${OUT}/${info.project.name}${LABEL}-alias.json`, JSON.stringify({ when: new Date().toISOString(), spot: SPOT.name, qs: QS, ss: SS, maskPx, target, variants, ...(alias ? { alias: { aliasPx: alias.aliasPx, refTotal: alias.refTotal }, still: still.areas.reduce((s, x) => s + x, 0) } : {}), errors }, null, 1));
+    expect(errors, 'page errors').toEqual([]);
+    return;
   }
   // The shell's yield at mid-swap: the detail chunk held at t = 0.5 and taken off screen, the share of the slab's
   // pixels where the shell under it draws nothing (the background shows, as in the slab-hidden frame). With the

@@ -5,11 +5,17 @@
  * fractions of the frame. Used by tests/e2e/crisp-textures.spec.ts.
  * The archive's s2/s3 file names were swapped until map-recall2-screenshots c856dd1 (2026-11-06) and now match the plan's numbering.
  */
-export type CrispSpot = { name: string; center: [number, number]; zoom: number; bearing: number; pitch: number | null; band: { x0: number; y0: number; x1: number; y1: number }; /** Centre of the strip's 1:1 crop (fractions); default the band's centre. */ crop?: { x: number; y: number }; shot?: string };
+export type CrispSpot = { name: string; center: [number, number]; zoom: number; bearing: number; pitch: number | null; band: { x0: number; y0: number; x1: number; y1: number }; /** Centre of the strip's 1:1 crop (fractions); default the band's centre. */ crop?: { x: number; y: number }; shot?: string;
+  /** CSS viewport [w, h] for this spot (the user's window); default the project's. */ viewport?: [number, number];
+  /** The part of the frame the user's shot shows (fractions), for strips beside it. */ shotRect?: { x0: number; y0: number; x1: number; y1: number } };
 
 export const CRISP_SPOTS: readonly CrispSpot[] = [
   // S2: Da Costakade / Jacob van Lennepkade looking N along the Da Costagracht, from ~150 m up.
-  { name: 'da-costakade', center: [4.8727, 52.3702], zoom: 17.1, bearing: -12, pitch: 70, band: { x0: 0, y0: 0.35, x1: 1, y1: 1 }, crop: { x: 0.45, y: 0.8 }, shot: 's3-weesperstraat-slab-moire.png' },
+  { name: 'da-costakade', center: [4.8727, 52.3702], zoom: 17.1, bearing: -12, pitch: 70, band: { x0: 0, y0: 0.35, x1: 1, y1: 1 }, crop: { x: 0.45, y: 0.8 }, shot: 's2-da-costakade-fuzzy-windows.png' },
+  // S2 at the user's pose (lane R3-B #231): solved from eight POI labels in s2-da-costakade-fuzzy-windows.png (rms 3.8
+  // device px; camera 4.874700, 52.364514, 62 m up, bearing -18.35, pitch 75.2, window 1310 x 757 CSS at DPR 2; the shot
+  // is the top-left 1228 x 505 CSS of that window). Facade band: the quay houses 20-300 m out, below the skyline.
+  { name: 'da-costakade-user', center: [4.873608, 52.366539], zoom: 17.76, bearing: -18.35, pitch: 75.2, viewport: [1310, 757], shotRect: { x0: 0, y0: 0, x1: 1228 / 1310, y1: 505 / 757 }, band: { x0: 0, y0: 0.3, x1: 1, y1: 1 }, crop: { x: 0.75, y: 0.55 }, shot: 's2-da-costakade-fuzzy-windows.png' },
   // S2 at the chase distance: the same quay from the rider's view (windows magnified).
   { name: 'da-costakade-chase', center: [4.8738, 52.3672], zoom: 17.8, bearing: -15, pitch: null, band: { x0: 0, y0: 0.2, x1: 1, y1: 0.8 }, crop: { x: 0.3, y: 0.75 } },
   // S4: the Zuidas rail corridor between Zuid and RAI, Beatrixpark beyond, from the air looking N.
