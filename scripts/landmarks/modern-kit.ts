@@ -173,7 +173,8 @@ export function punchedFacade(b: BuildingTools, w: Wall, o: PunchedOptions) {
     const flat = Math.abs(top(1) - top(w.length - 1)) < 0.3;
     for (let i = 0; i <= n; i++) {
       const t = i === 0 ? m - pitch / 2 + pw / 2 : i === n ? w.length - m + pitch / 2 - pw / 2 : m + pitch * i;
-      const tt = Math.max(pw / 2, Math.min(w.length - pw / 2, t)), yTop = top(tt);
+      // end piers stop 6 cm short of the wall ends: flush, their sunk sides would lie in the next face's wall plane
+      const tt = Math.max(pw / 2 + 0.06, Math.min(w.length - pw / 2 - 0.06, t)), yTop = top(tt);
       if (yTop - y0 < 2) continue;
       slab(b, f, tt, y0, pw, yTop - y0 + (flat ? o.pier.crenelH ?? 0 : 0), o.pier.depth, o.pier.colour);
     }
