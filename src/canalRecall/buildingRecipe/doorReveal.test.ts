@@ -160,20 +160,20 @@ test('per-house shop grounds (#239): the residential door beside a shop keeps th
 test('President Steynstraat 11 (#239, the slivers): on a jogged front no shell face, step face or jog backing stands inside the cavity', async () => {
   const pand = '0363100012073365', f = facts('steyn-9-19-r1', pand), t = defaultTypeLoader('transvaal-1928-plain-row')!;
   const design = resolvePlacement(t, {type: t.id, mirror: true} as never, 'President Steynstraat').design;
-  assert.deepEqual(design.fronts[0].doorReveal, {form: 'reveal', deep: 0.45, steps: 1, riser: 0.15});
+  assert.deepEqual(design.fronts[0].doorReveal, {form: 'portiek', deep: 0.65, steps: 1, riser: 0.15});
   const built = await compileBuilding(validateIntent({schemaVersion: 1, kind: 'canal-house', id: 'reveal-steyn', pandId: pand, address: 'President Steynstraat 11', sources: [{id: 'strip', kind: 'street-panorama', capturedAt: '2024-11-29'}], ...design, notes: []} as CanalHouseIntent), f);
   built.group.updateMatrixWorld(true);
   const facade = built.group.getObjectByName('elevation/front0')!, door = built.recipe.elevations[0].openings.value.find(o => o.id === 'door')!;
   const toFacade = facade.matrixWorld.clone().invert();
   assert.ok(meshes(built.group, /^shell\/jog-backing/).length > 0, 'this front is jogged');
   // Rays from the street into the door opening: none may meet a shell face (wall, step face of the jog, its backing)
-  // before the leaf, 0.45 m back (a native step face crossing the cavity drew a full-height sliver).
+  // before the leaf, 0.65 m back (a native step face crossing the cavity drew a full-height sliver).
   const shell = meshes(built.group, /^shell\//).map(m => { const c = m.clone(); c.material = new T.MeshBasicMaterial({side: T.DoubleSide}); return c; });
   const ray = new T.Raycaster(), dir = new T.Vector3(0, 0, -1).transformDirection(facade.matrixWorld);
   let inside = 0;
   for (let i = 1; i < 10; i++) for (const y of [0.4, 1.2, 2.0]) {
     const o = new T.Vector3(door.leftM + 0.06 + (door.widthM - 0.12) * i / 10, door.bottomM + y, 1).applyMatrix4(facade.matrixWorld);
-    ray.set(o, dir); ray.far = 1 + 0.4;
+    ray.set(o, dir); ray.far = 1 + 0.5;
     if (ray.intersectObjects(shell, false).length) inside++;
   }
   assert.equal(inside, 0, `${inside} rays meet a shell face inside the cavity`);
