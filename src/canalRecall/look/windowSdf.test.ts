@@ -5,7 +5,7 @@ import assert from 'node:assert/strict';
 import * as THREE from 'three';
 import { cityProgramKey, createCityLookMaterial, createCityUniforms, variantDefines, type CityVariant } from './cityLook.ts';
 import { createLitFacadeMaterial } from '../rendererShared/litFacadeMaterial.ts';
-import { CELL_DEBUG_CLASSES, WINDOW_SDF_GLSL, coverTent, cellDebugClass, cellDebugHistogram, cellDebugMode, windowSdfEnabled, WINDOW_SDF_DESKTOP_DEFAULT, WINDOW_SDF_TOUCH_DEFAULT, WINDOW_SDF_BAND, barFade, bandFrameSpan, bandFrameWeight, coverBox, windowSdfBandEnabled, windowSdfBandUniforms, windowSdfBandValues } from './windowSdf.ts';
+import { CELL_DEBUG_CLASSES, CELL_UNDER_CLASS_NAMES, WINDOW_SDF_GLSL, coverTent, cellDebugClass, cellDebugHistogram, cellDebugMode, windowSdfEnabled, WINDOW_SDF_DESKTOP_DEFAULT, WINDOW_SDF_TOUCH_DEFAULT, WINDOW_SDF_BAND, barFade, bandFrameSpan, bandFrameWeight, coverBox, windowSdfBandEnabled, windowSdfBandUniforms, windowSdfBandValues } from './windowSdf.ts';
 import { createWindowTableTexture } from './windowTable.ts';
 
 const withGlobal = <T>(key: string, value: unknown, fn: () => T): T => {
@@ -82,7 +82,29 @@ test('rho debug classes: exact colours classify to themselves, a slot-mesh brick
   assert.equal(cellDebugClass(150, 80, 60), -1, 'a brick wall (a slot mesh, not a chunk) is not a debug pixel');
   const px = new Uint8Array([255, 0, 0, 0, 255, 0, 128, 128, 128, 20, 30, 40]);
   const h = cellDebugHistogram(px, 4, 1, 3);
-  assert.equal(h.facade, 2); assert.equal(h.counts[8], 1); assert.equal(h.share[0], 0.5);
+  assert.equal(h.facade, 2); assert.equal(h.counts[CELL_DEBUG_CLASSES.length - 1], 1); assert.equal(h.share[0], 0.5);
+});
+
+test('anisotropy-aware tier (lane R3-D #233): its define, uniforms and key suffix; ?cellDebug=under; the debug classes', () => {
+  const v = { lit: true, kind: 'chunk' as const, swap: true };
+  assert.equal(cityProgramKey({ ...v, aniso: true }), 'city-look-v4|lit|chunk|swap|aniso');
+  assert.equal(cityProgramKey({ ...v, windows: true, lodBias: true, aniso: true }), 'city-look-v4|lit|chunk|swap|wsdf2|lodb|aniso');
+  assert.ok('CELL_TIER_ANISO' in variantDefines({ ...v, aniso: true }));
+  assert.ok(!('CELL_TIER_ANISO' in variantDefines(v)), 'absent without the flag: the major-axis rule');
+  assert.ok(!('CELL_TIER_ANISO' in variantDefines({ ...v, kind: 'slot', aniso: true })), 'slot meshes never take the facade tier');
+  const u = createCityUniforms(THREE);
+  assert.equal(u.cellAniso.value, 16); assert.deepEqual(u.cellAnisoRule.value, [1, 1, 1, 2]);
+  assert.equal(withGlobal('location', { search: '?cellDebug=under' }, () => cellDebugMode()), 'under');
+  const d = variantDefines({ ...v, aniso: true, cellDebug: 'under' });
+  assert.ok('CELL_DEBUG_UNDER' in d && 'CELL_DEBUG_RHO' in d && 'CELL_TIER_PROBE' in d);
+  assert.equal(CELL_UNDER_CLASS_NAMES.length, CELL_DEBUG_CLASSES.length);
+  assert.equal(CELL_DEBUG_CLASSES[CELL_DEBUG_CLASSES.length - 1].name, 'roof layer');
+  // The lit facade material: its own define, uniforms and key suffix only when asked.
+  const plain = createLitFacadeMaterial(THREE), aniso = createLitFacadeMaterial(THREE, {}, { aniso: 4 });
+  assert.equal(plain.customProgramCacheKey(), 'shared-frame-facade-v7');
+  assert.equal(aniso.customProgramCacheKey(), 'shared-frame-facade-v7-aniso');
+  assert.ok(!('CELL_TIER_ANISO' in plain.defines) && 'CELL_TIER_ANISO' in aniso.defines);
+  assert.equal(aniso.uniforms.cellAniso.value, 4); assert.equal(plain.uniforms.cellAniso, undefined);
 });
 
 // Band-limited windows (lane R3-B #231): the CPU twins of the shader's coverage and the band flags.

@@ -19,7 +19,7 @@
 // THREE is injected (the page's shared copy) so bundles that use this do not
 // carry their own three.js.
 
-import { FACADE_TIER_GLSL, FACADE_TIER_OFF, ROOF_LAYERS_OFF, ROOF_TIER_GLSL, roofTierUniform } from '../roofTier.js';
+import { FACADE_TIER_GLSL, FACADE_TIER_OFF, ROOF_LAYERS_OFF, ROOF_TIER_GLSL, facadeTierAnisoUniform, roofTierUniform } from '../roofTier.js';
 
 export type FacadeUniforms = {
   cells: { value: any };
@@ -70,7 +70,7 @@ if (hidden > 0.5 && hidden < 1.5) gl_Position = vec4(2.0, 2.0, 2.0, 1.0);`;
  * `windowTable` (look/windowTable.ts texture): draw the analytic windows (look/windowSdf.ts, lane R2-A #228) over the
  * cell sample. Absent: the define, the uniform and the program key are exactly as before.
  */
-export function createLitFacadeMaterial(THREE: any, uniforms?: Partial<FacadeUniforms>, options: { windowTable?: any; lodBias?: number | null } = {}): any {
+export function createLitFacadeMaterial(THREE: any, uniforms?: Partial<FacadeUniforms>, options: { windowTable?: any; lodBias?: number | null; aniso?: number | null } = {}): any {
   const shared: FacadeUniforms = {
     cells: uniforms?.cells ?? { value: null },
     masks: uniforms?.masks ?? { value: null },
@@ -93,6 +93,8 @@ export function createLitFacadeMaterial(THREE: any, uniforms?: Partial<FacadeUni
   const windowSdfMix = { value: 1 }, band = windowSdfBandUniforms();
   // ?cellLodBias (lane R3-B #231): the facade cell sample's mip bias, its own define and key suffix; absent by default.
   const lodBias = options.lodBias != null ? { cellLodBias: { value: options.lodBias } } : null;
+  // The anisotropy-aware facade tier (roofTier.ts CELL_TIER_ANISO, lane R3-D #233): the cells' anisotropy; absent by default.
+  const aniso = options.aniso != null ? (() => { const u = facadeTierAnisoUniform(options.aniso); return { cellAniso: { value: u.cellAniso }, cellAnisoRule: { value: u.cellAnisoRule } }; })() : null;
   material.onBeforeCompile = (shader: any) => {
     shader.uniforms.cells = shared.cells;
     shader.uniforms.masks = shared.masks;
@@ -106,6 +108,7 @@ export function createLitFacadeMaterial(THREE: any, uniforms?: Partial<FacadeUni
     shader.uniforms.cellTier = shared.cellTier;
     if (options.windowTable) { shader.uniforms.windowTable = { value: options.windowTable }; shader.uniforms.windowSdfMix = windowSdfMix; shader.uniforms.windowSdfBand = band.windowSdfBand; shader.uniforms.windowSdfShape = band.windowSdfShape; }
     if (lodBias) shader.uniforms.cellLodBias = lodBias.cellLodBias;
+    if (aniso) { shader.uniforms.cellAniso = aniso.cellAniso; shader.uniforms.cellAnisoRule = aniso.cellAnisoRule; }
     shader.vertexShader = shader.vertexShader
       .replace('#include <common>', `#include <common>${VERTEX_DECLS}`)
       .replace('#include <begin_vertex>', `#include <begin_vertex>${VERTEX_BODY}`)
@@ -152,11 +155,11 @@ if (cityTone < 1.0) gl_FragColor.rgb = mix(cityFlat, gl_FragColor.rgb, cityTone)
       .replace('#include <emissivemap_fragment>', `#include <emissivemap_fragment>
 if (HL_PAINT(vHighlight)) totalEmissiveRadiance += vec3(${HIGHLIGHT_LINEAR.join(', ')}) * 0.45;`);
   };
-  material.defines = { ...(material.defines ?? {}), ...highlightDefines(), ...(options.windowTable ? { CELL_TIER_PROBE: '', CITY_WINDOW_SDF: '' } : {}), ...(lodBias ? { CELL_LOD_BIAS: '' } : {}) };
-  const programKey = `${options.windowTable ? 'shared-frame-facade-v7-wsdf2' : 'shared-frame-facade-v7'}${lodBias ? '-lodb' : ''}`;
+  material.defines = { ...(material.defines ?? {}), ...highlightDefines(), ...(options.windowTable ? { CELL_TIER_PROBE: '', CITY_WINDOW_SDF: '' } : {}), ...(lodBias ? { CELL_LOD_BIAS: '' } : {}), ...(aniso ? { CELL_TIER_ANISO: '' } : {}) };
+  const programKey = `${options.windowTable ? 'shared-frame-facade-v7-wsdf2' : 'shared-frame-facade-v7'}${lodBias ? '-lodb' : ''}${aniso ? '-aniso' : ''}`;
   material.customProgramCacheKey = () => programKey;
   // The facade layer reads and writes these like a ShaderMaterial's uniforms.
-  material.uniforms = options.windowTable || lodBias ? { ...shared, ...(options.windowTable ? { windowSdfMix, ...band } : {}), ...(lodBias ?? {}) } : shared;
+  material.uniforms = options.windowTable || lodBias || aniso ? { ...shared, ...(options.windowTable ? { windowSdfMix, ...band } : {}), ...(lodBias ?? {}), ...(aniso ?? {}) } : shared;
   material.userData.litFacade = true;
   return material;
 }

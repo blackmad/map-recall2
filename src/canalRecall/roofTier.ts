@@ -99,6 +99,16 @@ uniform vec2 cellTier;
 // What the last cellTierSample saw (look/windowSdf.ts reads them: the ?cellDebug=rho view, the analytic windows' fade).
 float cellRho = 0.0; float cellFarTier = 0.0; float cellFar = 0.0;
 #endif
+#ifdef CELL_TIER_ANISO
+// The anisotropy-aware footprint (lane R3-D #233, ?cellTierAniso=0 drops the define): cellAniso is the anisotropy the
+// cells texture was given (look/texturePolicy.ts); <= 0 falls back to the major-axis rule in the same program (A/B).
+// cellAnisoRule = (flatten on the effective footprint 1/0, fade where the filter undersamples 1/0, fade band from, to).
+uniform float cellAniso;
+uniform vec4 cellAnisoRule;
+#ifdef CELL_TIER_PROBE
+float cellRhoEff = 0.0; float cellUnder = 0.0; float cellFarFlat = 0.0; float cellFarUnder = 0.0;
+#endif
+#endif
 #ifdef CELL_LOD_BIAS
 // ?cellLodBias=<b> (lane R3-B #231, look/cellMips.ts): a mip bias on the facade cell sample, the cheap sharpness A/B.
 uniform float cellLodBias;
@@ -115,8 +125,27 @@ void cellTierSample(vec3 p, float dist, out vec3 c, out vec2 m) {
   cellRho = max(length(dFdx(p.xy)), length(dFdy(p.xy))) * float(textureSize(cells, 0).x);
 #endif
   if (cellTier.x >= 0.0) {
+#ifdef CELL_TIER_ANISO
+    // The footprint the anisotropic filter samples at (EXT_texture_filter_anisotropic: N = min(ceil(major / minor),
+    // aniso) probes at level log2(major / N)), i.e. max(minor, major / aniso): flatten on that, not on the major axis, so
+    // a grazing wall keeps the windows the filter can still draw. Where major / (aniso x max(minor, 1)) passes 1 the
+    // probes no longer cover the footprint along the wall (minification stops at level 0 across it) and the grid
+    // beats against the pixels: fade toward the mean there instead.
+    float texels = float(textureSize(cells, 0).x);
+    float lx = length(dFdx(p.xy)) * texels, ly = length(dFdy(p.xy)) * texels;
+    float major = max(lx, ly), minor = min(lx, ly);
+    float rhoEff = cellAniso > 0.0 && cellAnisoRule.x > 0.5 ? max(minor, major / cellAniso) : major;
+    float under = cellAniso > 0.0 ? major / (cellAniso * max(minor, 1.0)) : 0.0;
+    float farFlat = smoothstep(cellTier.x, cellTier.y, rhoEff);
+    float farUnder = cellAniso > 0.0 && cellAnisoRule.y > 0.5 ? smoothstep(cellAnisoRule.z, cellAnisoRule.w, under) : 0.0;
+    far = max(farFlat, farUnder);
+#ifdef CELL_TIER_PROBE
+    cellRhoEff = rhoEff; cellUnder = under; cellFarFlat = farFlat; cellFarUnder = farUnder;
+#endif
+#else
     float rho = max(length(dFdx(p.xy)), length(dFdy(p.xy))) * float(textureSize(cells, 0).x);
     far = smoothstep(cellTier.x, cellTier.y, rho);
+#endif
   }
 #ifdef CELL_TIER_PROBE
   cellFarTier = far;
@@ -131,6 +160,51 @@ void cellTierSample(vec3 p, float dist, out vec3 c, out vec2 m) {
   vec4 fc = textureLod(cells, p, ${CELL_MEAN_LOD_GLSL}); vec2 fm = textureLod(masks, p, ${CELL_MEAN_LOD_GLSL}).rg;
   c = mix(c, fc.rgb, far); m = mix(m, vec2(fm.r, ${accentGlsl('fm', 'fc')}), far);
 }`;
+
+/**
+ * The anisotropy-aware facade tier (lane R3-D #233). At the user's S3 pose (`s3-slab-user`, the 1962 slab on
+ * Weesperstraat, #230) 92 % of the moving pixels were the window texture on the slab's long street wall, seen almost
+ * edge-on, and at DPR 1 the same wall drew blank. Both came from flattening on the major axis of the pixel footprint:
+ * with anisotropic filtering the hardware samples a footprint of about `max(minor, major / aniso)`, so the wall
+ * flattened where the filter could still draw it (blank), and just under the threshold the grid was drawn where
+ * `major / minor` exceeds the anisotropy cap and the probes undersample along the wall (moiré). The rule:
+ *   flatten   `smoothstep(cellTier.x, cellTier.y, rhoEff)`, `rhoEff = max(minor, major / aniso)`;
+ *   fade      `smoothstep(band[0], band[1], under)`, `under = major / (aniso x max(minor, 1))` (texels; across the wall
+ *             minification stops at level 0, hence the 1);
+ *   far       the larger of the two, mixed toward the cell's mean colour as before (the analytic windows read it).
+ * `aniso` is the anisotropy the cells texture was given (16 desktop, 4 coarse or low GPUs), not a constant.
+ * `?cellTierAniso=0` drops the define: the major-axis rule, byte for byte.
+ */
+export const FACADE_TIER_UNDER_BAND: readonly [number, number] = [1, 2];
+
+/** `[aniso, rule]` uniform values: `cellAniso` and `cellAnisoRule` (flatten on rhoEff, fade on under, band from, to). */
+export function facadeTierAnisoUniform(anisotropy: number, band: readonly [number, number] = FACADE_TIER_UNDER_BAND): { cellAniso: number; cellAnisoRule: [number, number, number, number] } {
+  return { cellAniso: Number.isFinite(anisotropy) && anisotropy >= 1 ? anisotropy : 1, cellAnisoRule: [1, 1, band[0], band[1]] };
+}
+
+/** `?cellTierAniso=0` (or `window.__canalRecallCellTierAniso = false`): the major-axis tier. On by default. */
+export function facadeTierAnisoEnabled(): boolean {
+  const g = globalThis as Record<string, unknown>;
+  let asked = g.__canalRecallCellTierAniso;
+  if (asked == null) {
+    try { asked = typeof URLSearchParams === 'function' ? new URLSearchParams((g.location as { search?: string } | undefined)?.search ?? '').get('cellTierAniso') : null; } catch { asked = null; }
+  }
+  return !(asked === false || asked === '0' || asked === 'false' || asked === 'off');
+}
+
+const smoothstep = (a: number, b: number, x: number) => { const t = Math.max(0, Math.min(1, (x - a) / (b - a))); return t * t * (3 - 2 * t); };
+
+/**
+ * The facade tier on the CPU (the shader's twin): `major`/`minor` are the footprint's axis lengths in texels per pixel
+ * (|dFdx|, |dFdy| x cell size), `tier` the `cellTier` uniform. `aniso` null is the major-axis rule.
+ */
+export function facadeTierWeights(major: number, minor: number, tier: readonly [number, number], aniso: number | null, band: readonly [number, number] = FACADE_TIER_UNDER_BAND): { rhoEff: number; under: number; flat: number; fade: number; far: number } {
+  const hi = Math.max(major, minor), lo = Math.min(major, minor);
+  if (aniso == null || !(aniso > 0)) { const flat = tier[0] >= 0 ? smoothstep(tier[0], tier[1], hi) : 0; return { rhoEff: hi, under: 0, flat, fade: 0, far: flat }; }
+  const rhoEff = Math.max(lo, hi / aniso), under = hi / (aniso * Math.max(lo, 1));
+  const flat = tier[0] >= 0 ? smoothstep(tier[0], tier[1], rhoEff) : 0, fade = tier[0] >= 0 ? smoothstep(band[0], band[1], under) : 0;
+  return { rhoEff, under, flat, fade, far: Math.max(flat, fade) };
+}
 
 /** The roof blend on the CPU, for tests and the gallery's tier readout: weights of the fine, mid and far samples. */
 export function roofTierWeights(distM: number): { fine: number; mid: number; far: number } {

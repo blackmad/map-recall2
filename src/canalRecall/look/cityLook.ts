@@ -42,7 +42,7 @@ import { inferMaterialSlot, isMaterialSlot, isWhiteWord, INFERRED_SLOT_SOURCE } 
 import { paintBrick20Canvas, paintBrickCanvas, paintDoorCanvas, paintGlassCanvas, paintGlassTintCanvas, paintStoneCanvas, paintStuccoCanvas, paintWhiteCanvas, paintWhiteStuccoCanvas, roofCanvas } from './slotCells.ts';
 import { HIGHLIGHT_GLSL, highlightDefines } from './highlight.ts';
 import { HIGH_ANISOTROPY, pageTextureParams } from './texturePolicy.ts';
-import { FACADE_TIER_GLSL, FACADE_TIER_OFF, ROOF_LAYERS_OFF, ROOF_TIER_GLSL, roofTierUniform } from '../roofTier.ts';
+import { FACADE_TIER_GLSL, FACADE_TIER_OFF, ROOF_LAYERS_OFF, ROOF_TIER_GLSL, facadeTierAnisoUniform, roofTierUniform } from '../roofTier.ts';
 import { BAKED_SHADE_GLSL } from '../rendererShared/lightRig.ts';
 import { sceneLookFrom, sceneSlotHex, type SceneLook } from './sunny.ts';
 import { photoMatchedWallTint, type WallExposure } from './chunkWallExposure.ts';
@@ -362,18 +362,21 @@ export type CityVariant = {
   windows?: boolean;
   /** Facade chunks: a mip bias on the cell sample (roofTier.ts CELL_LOD_BIAS, look/cellMips.ts `?cellLodBias=`). */
   lodBias?: boolean;
+  /** Facade chunks: the anisotropy-aware facade tier (roofTier.ts CELL_TIER_ANISO, `?cellTierAniso=0`, lane R3-D #233). */
+  aniso?: boolean;
 };
 
-export const variantKey = (v: CityVariant) => `${v.lit ? 'lit' : 'unlit'}|${v.kind}|${v.kind === 'slot' ? v.uv ?? 'uv' : '-'}|${v.highlight ? 'hl' : v.dim ? 'dim' : '-'}|${v.side ?? 0}${v.noFade ? '|nofade' : ''}${v.swap ? '|swap' : ''}${v.cellDebug ? `|dbg-${v.cellDebug}` : ''}${v.windows ? '|wsdf2' : ''}${v.lodBias ? '|lodb' : ''}`;
+export const variantKey = (v: CityVariant) => `${v.lit ? 'lit' : 'unlit'}|${v.kind}|${v.kind === 'slot' ? v.uv ?? 'uv' : '-'}|${v.highlight ? 'hl' : v.dim ? 'dim' : '-'}|${v.side ?? 0}${v.noFade ? '|nofade' : ''}${v.swap ? '|swap' : ''}${v.cellDebug ? `|dbg-${v.cellDebug}` : ''}${v.windows ? '|wsdf2' : ''}${v.lodBias ? '|lodb' : ''}${v.aniso ? '|aniso' : ''}`;
 
 /** Shader defines for a variant (also what the program cache key is built from). */
 export function variantDefines(v: CityVariant): Record<string, string> {
   const d: Record<string, string> = { CITY_SLOT_COUNT: String(SLOT_LAYER_COUNT) };
   if (v.kind === 'slot') d.CITY_SLOT = '';
   if (v.swap) d.CITY_SWAP = '';
-  if (v.cellDebug === 'rho' && v.kind === 'chunk') { d.CELL_TIER_PROBE = ''; d.CELL_DEBUG_RHO = ''; }
+  if (v.cellDebug && v.kind === 'chunk') { d.CELL_TIER_PROBE = ''; d.CELL_DEBUG_RHO = ''; if (v.cellDebug === 'under') d.CELL_DEBUG_UNDER = ''; }
   if (v.windows && v.kind === 'chunk') { d.CELL_TIER_PROBE = ''; d.CITY_WINDOW_SDF = ''; }
   if (v.lodBias && v.kind === 'chunk') d.CELL_LOD_BIAS = '';
+  if (v.aniso && v.kind === 'chunk') d.CELL_TIER_ANISO = '';
   if (v.lit) {
     // Lit (the shared frame's look): box UVs and the highlight/dim state are per-material uniforms (cityVariantUniforms),
     // so the uv/box and plain/highlight/dim variants of a kind share one program (#129 P4 registry).
@@ -392,7 +395,7 @@ export function cityVariantUniforms(v: CityVariant): { cityForce: { value: numbe
 }
 
 /** The program key of a variant: lit variants differ only in uniforms beyond their kind; side is a material parameter. */
-export const cityProgramKey = (v: CityVariant) => (v.lit ? `city-look-v4|lit|${v.kind}${v.swap ? '|swap' : ''}${v.cellDebug ? `|dbg-${v.cellDebug}` : ''}${v.windows ? '|wsdf2' : ''}${v.lodBias ? '|lodb' : ''}` : `city-look-v3|${variantKey({ ...v, side: 0 })}`);
+export const cityProgramKey = (v: CityVariant) => (v.lit ? `city-look-v4|lit|${v.kind}${v.swap ? '|swap' : ''}${v.cellDebug ? `|dbg-${v.cellDebug}` : ''}${v.windows ? '|wsdf2' : ''}${v.lodBias ? '|lodb' : ''}${v.aniso ? '|aniso' : ''}` : `city-look-v3|${variantKey({ ...v, side: 0 })}`);
 
 const HIGHLIGHT_SRGB = 'vec3(1.0, 0.824, 0.122)';
 const HIGHLIGHT_LINEAR = 'vec3(1.0, 0.637, 0.0137)';
@@ -647,6 +650,10 @@ export type CityLookUniforms = {
   windowSdfShape: { value: number[] };
   /** CELL_LOD_BIAS: the facade cell sample's mip bias. */
   cellLodBias: { value: number };
+  /** CELL_TIER_ANISO: the anisotropy the cells texture was given (<= 0: the major-axis rule in the same program). */
+  cellAniso: { value: number };
+  /** CELL_TIER_ANISO: (flatten on the effective footprint, fade where the filter undersamples, fade band from, to). */
+  cellAnisoRule: { value: number[] };
 };
 
 export function createCityUniforms(THREE: any, init: Partial<CityLookUniforms> = {}): CityLookUniforms {
@@ -668,6 +675,8 @@ export function createCityUniforms(THREE: any, init: Partial<CityLookUniforms> =
     windowTable: init.windowTable ?? { value: null },
     windowSdfMix: init.windowSdfMix ?? { value: 1 },
     cellLodBias: init.cellLodBias ?? { value: 0 },
+    cellAniso: init.cellAniso ?? { value: facadeTierAnisoUniform(HIGH_ANISOTROPY).cellAniso },
+    cellAnisoRule: init.cellAnisoRule ?? { value: facadeTierAnisoUniform(HIGH_ANISOTROPY).cellAnisoRule },
     ...windowSdfBandUniforms(),
     ...(init.windowSdfBand ? { windowSdfBand: init.windowSdfBand } : {}),
     ...(init.windowSdfShape ? { windowSdfShape: init.windowSdfShape } : {}),
