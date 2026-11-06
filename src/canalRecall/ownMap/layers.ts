@@ -94,6 +94,14 @@ export const railViewport = { uViewport: { value: new THREE.Vector2(1280, 800) }
  * below its floor with depth in a pitched view (lineMaterial's `uHalf` is metres at the view centre). Behind the eye
  * (w <= 0) the styled width stands. Its own program: the street lines keep lineMaterial's.
  */
+/**
+ * The floor's reach, metres of half-width: toward the horizon a metre across a line seen edge-on is a sliver of a
+ * pixel, and an unclamped floor would extrude the far lines hundreds of metres along the ground (toward the eye too).
+ * Measured at the S4 and Zuidas rail spots (desktop, DPR 2, 2026-11-06), hiding both overview rail meshes changes
+ * GPU ms by under 0.1 ms; the clamp bounds the worst case.
+ */
+export const RAIL_FLOOR_MAX_HALF_M = 30;
+
 export function railLineMaterial(color: string, z: number): THREE.ShaderMaterial {
   return new THREE.ShaderMaterial({
     uniforms: { ...flatUniforms(color, z), uMinHalfPx: { value: 0 }, ...railViewport, ...fogUniforms() } as unknown as Record<string, THREE.IUniform>,
@@ -103,7 +111,8 @@ export function railLineMaterial(color: string, z: number): THREE.ShaderMaterial
       void main(){ vec2 n=vec2(-aDir.y,aDir.x);
         vec4 c0=projectionMatrix*modelViewMatrix*vec4(position.xy,uZ,1.), c1=projectionMatrix*modelViewMatrix*vec4(position.xy+n,uZ,1.);
         float half_=uHalf;
-        if(c0.w>0. && c1.w>0.){ float pxPerM=length((c1.xy/c1.w-c0.xy/c0.w)*0.5*uViewport); half_=max(uHalf, uMinHalfPx/max(pxPerM,1e-4)); }
+        const float RAIL_FLOOR_MAX_HALF_M=${RAIL_FLOOR_MAX_HALF_M.toFixed(1)};
+        if(c0.w>0. && c1.w>0.){ float pxPerM=length((c1.xy/c1.w-c0.xy/c0.w)*0.5*uViewport); half_=max(uHalf, min(uMinHalfPx/max(pxPerM,1e-4), RAIL_FLOOR_MAX_HALF_M)); }
         vec2 p=position.xy+(n*aCorner.x+aDir*aCorner.y)*half_; vWorld=p;
         vec4 mvPosition=modelViewMatrix*vec4(p,uZ,1.); gl_Position=projectionMatrix*mvPosition;${FOG_VERTEX} }`,
     fragmentShader: FRAG,

@@ -24,7 +24,7 @@ const RAIL_SHOT_SPOTS = [
 ];
 const spots = spotArg.split(',').map(n => [...CRISP_SPOTS, ...RAIL_SHOT_SPOTS].find(s => s.name === n) ?? (() => { throw new Error(`unknown spot ${n}`); })())
   .map(s => pose ? { ...s, center: [pose[0], pose[1]], zoom: pose[2], bearing: pose[3], pitch: pose[4] } : s);
-const variants = variantArg.split(';').filter(Boolean).map(v => { const [name, rest] = v.split('='); const at = (rest ?? '').lastIndexOf('@'); return { name, query: at >= 0 ? rest.slice(0, at) : rest, bundles: at >= 0 ? rest.slice(at + 1) : '' }; });
+const variants = variantArg.split(';').filter(Boolean).map(v => { const eq = v.indexOf('='), name = eq < 0 ? v : v.slice(0, eq), rest = eq < 0 ? '' : v.slice(eq + 1); const at = (rest ?? '').lastIndexOf('@'); return { name, query: at >= 0 ? rest.slice(0, at) : rest, bundles: at >= 0 ? rest.slice(at + 1) : '' }; });
 const ctxOpts = device === 'iphone' ? { ...devices['iPhone 13'], defaultBrowserType: undefined } : { viewport: { width: 1288, height: 715 }, deviceScaleFactor: 2 };
 fs.mkdirSync(out, { recursive: true });
 const framesFile = `${out}/${device}-frames.json`;
@@ -89,6 +89,8 @@ for (const v of variants) {
     const settled = await settle(page);
     await page.waitForTimeout(2500);
     await page.screenshot({ path: `${out}/${device}-${spot.name}-${v.name}.png` });
+    // STRIP_EVAL='<js>': run in the page before the frames are timed (an A/B of one mesh or flag at the same pose).
+    if (process.env.STRIP_EVAL) await page.evaluate(js => (0, eval)(js), process.env.STRIP_EVAL);
     // Forced frames (the host draws only when dirty): GPU ms by EXT_disjoint_timer_query_webgl2, wall ms with a finish
     // (crisp-textures.spec.ts frameMs), medians after 4 warm-up frames.
     const f = await page.evaluate(async n => {
