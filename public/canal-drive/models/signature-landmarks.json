@@ -85702,6 +85702,281 @@
         "bytes": 234000,
         "triangles": 17600
       }
+    },
+    "dominicus-savius-school": {
+      "id": "dominicus-savius-school",
+      "name": "Vliegbasis De Huygens (former RK Technische School Dominicus Savius), Jan Evertsenstraat 717-781",
+      "modelUrl": "./models/dominicus-savius-school.glb",
+      "suppressOsmIds": [
+        "NL.IMBAG.Pand.0363100012113136"
+      ],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.83557144,
+          52.36953157
+        ],
+        "headingDegrees": 0,
+        "lengthMetres": 65.8,
+        "widthMetres": 79.4
+      },
+      "surveyed": {
+        "anchor": [
+          4.83557144,
+          52.36953157
+        ],
+        "northOffsetDegrees": 0,
+        "source": "Vertex average of the BAG 0363100012113136 ring (RD, PDOK BAG WFS, CC0) in native east/south metres above the 3DBAG ground -0.46 m NAP (scripts/landmarks/dominicus-savius-school-footprints.json, written by sarphati-plaza-prepare.ts --id=dominicus-savius-school --pand=0363100012113136). The hook at 17.2 m, the emergency stair at 15.8 m and the seven sheds' crests (8.6 m) and gutters (4.8 m) from the 3DBAG LoD2.2 roof parts (CC BY 4.0); the street front's bands and bays measured on the rectified Gemeente Amsterdam panorama recording_2025-06-18_10-57-50_01495, the entrance block's 21 windows, canopy and sign on b_20241206_0806_Track55_Sphere_00068 and recording_2025-06-18_10-57-50_01488, the sheds' section and glazed south front on 2025_10_01_11_11_11_00106, the glazed west end on TMX7316010203-000154_pano_0000_004009, the stair on recording_2025-06-18_10-57-50_01739 and the south end on TMX7316010203-002513_pano_0000_000501 (all CC BY 4.0); the description from the municipal monument register (monument 200564, CC0). The east wing's east face is inferred from the register ('the rear front has the same strips and parapets as the front')."
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 0,
+      "heightMetres": 17.2,
+      "bagYear": 2006,
+      "materialOverrides": {
+        "concrete": "#8b8c89",
+        "bronze": "#34414b",
+        "glass": "#5b6f7d",
+        "ochre": "#b9a64a",
+        "slate": "#5d6266",
+        "dark": "#2b3036",
+        "pink": "#c9cfd2",
+        "blue": "#4f565c",
+        "red": "#d98a86",
+        "white": "#f2f2ee"
+      },
+      "attribution": {
+        "title": "Vliegbasis De Huygens, the former RK Technische School Dominicus Savius (L. van Steenhardt Carre and K.P. Tholens, 1968; renovated 2005-2007), Jan Evertsenstraat 717-781, gemeentelijk monument 200564",
+        "author": "Map Recall",
+        "sourceUrl": "https://api.data.amsterdam.nl/v1/monumenten/monumenten/b5df5235-85b4-4e2a-892a-3cf4281d38c6",
+        "licence": "CC BY 4.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "modifications": "Original texture-free flat-colour geometry on the BAG footprint (CC0) with 3DBAG LoD2.2 heights (CC BY 4.0): the four-storey hook with its dark glazed ground storey, three window bands of fourteen bays between pebble-concrete parapets and the olive-yellow roof edge; the yellow entrance block with its 21 scattered windows, canopy and sign; the seven curved sheds of the old workshops with their glazed south front, light rims and posts; the glazed west end; the emergency stair with its balconies; the blank south end with yellow edges and the yellow pilasters of the east wing; read for proportion and tone from Gemeente Amsterdam panoramas (CC BY 4.0) and the monument register (CC0). No pixels or meshes imported."
+      },
+      "buildingFootprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.83616509,
+              52.36964541
+            ],
+            [
+              4.8361601,
+              52.36964613
+            ],
+            [
+              4.83612668,
+              52.36965088
+            ],
+            [
+              4.83602436,
+              52.36966542
+            ],
+            [
+              4.83598475,
+              52.36967105
+            ],
+            [
+              4.83598314,
+              52.36966682
+            ],
+            [
+              4.83538149,
+              52.36975233
+            ],
+            [
+              4.83527783,
+              52.36976706
+            ],
+            [
+              4.83521182,
+              52.36977643
+            ],
+            [
+              4.83516097,
+              52.36978366
+            ],
+            [
+              4.83516259,
+              52.36978786
+            ],
+            [
+              4.83515588,
+              52.36978882
+            ],
+            [
+              4.83515319,
+              52.36978176
+            ],
+            [
+              4.83513775,
+              52.36978396
+            ],
+            [
+              4.83512922,
+              52.36976146
+            ],
+            [
+              4.83508102,
+              52.36976831
+            ],
+            [
+              4.83508002,
+              52.36976568
+            ],
+            [
+              4.83508604,
+              52.36976482
+            ],
+            [
+              4.83505867,
+              52.3696927
+            ],
+            [
+              4.83505267,
+              52.36969355
+            ],
+            [
+              4.83505167,
+              52.36969092
+            ],
+            [
+              4.83512219,
+              52.3696809
+            ],
+            [
+              4.83510809,
+              52.36964374
+            ],
+            [
+              4.83506347,
+              52.36965007
+            ],
+            [
+              4.83500102,
+              52.36948864
+            ],
+            [
+              4.83586649,
+              52.36936391
+            ],
+            [
+              4.83586522,
+              52.3693604
+            ],
+            [
+              4.83587183,
+              52.36935948
+            ],
+            [
+              4.83586273,
+              52.36933424
+            ],
+            [
+              4.83585612,
+              52.36933518
+            ],
+            [
+              4.8358547,
+              52.3693314
+            ],
+            [
+              4.83586129,
+              52.36933043
+            ],
+            [
+              4.83585161,
+              52.36930519
+            ],
+            [
+              4.83584502,
+              52.36930615
+            ],
+            [
+              4.83584361,
+              52.36930233
+            ],
+            [
+              4.8358502,
+              52.36930136
+            ],
+            [
+              4.83584043,
+              52.36927614
+            ],
+            [
+              4.83583391,
+              52.36927708
+            ],
+            [
+              4.8358323,
+              52.36927318
+            ],
+            [
+              4.83583909,
+              52.3692723
+            ],
+            [
+              4.83582299,
+              52.36923077
+            ],
+            [
+              4.83581647,
+              52.36923171
+            ],
+            [
+              4.83581488,
+              52.36922781
+            ],
+            [
+              4.83599482,
+              52.36920165
+            ],
+            [
+              4.83616509,
+              52.36964541
+            ]
+          ]
+        ]
+      },
+      "buildingCategory": "landmark",
+      "bounds": {
+        "min": [
+          -38.91950607299805,
+          0,
+          -28.83799934387207
+        ],
+        "max": [
+          40.65441131591797,
+          18.299999237060547,
+          37.05546188354492
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.83557144,
+          52.36953157
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 90,
+        "facadeBearingDegrees": 0,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 79.57391738891602,
+        "heightMetres": 18.299999237060547,
+        "depthMetres": 65.89346122741699,
+        "depthCoverage": 0.8298924587835893
+      },
+      "triangles": 13184,
+      "bytes": 182292,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
+      "lod1": {
+        "sourceHash": "4f1d0252d6a595be",
+        "buildVersion": 2,
+        "bytes": 62056,
+        "triangles": 3397
+      }
     }
   }
 }

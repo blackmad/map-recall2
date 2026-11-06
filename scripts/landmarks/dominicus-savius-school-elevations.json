@@ -1,0 +1,19 @@
+{
+ "id": "dominicus-savius-school",
+ "source": "Gemeente Amsterdam panorama recording_2025-06-18_10-57-50_01495 (2025-06-18, Jan Evertsenstraat street front), CC BY 4.0, rectified crop artifacts/landmark-briefs/dominicus-savius-school/w02-14.jpg",
+ "countedBy": "lane (opus) from the rectified crop, 2026-11-07, before comparing with the model; each bay's window (four lights by two) is one opening, the ground storey counts once per bay between the dark columns, the door bay included. Blind recount welcome.",
+ "facades": [
+  {
+   "name": "Jan Evertsenstraat street front (w02)",
+   "bearing": 14,
+   "photo": "artifacts/landmark-briefs/dominicus-savius-school/w02-14.jpg",
+   "rows": [14, 14, 14, 14],
+   "gables": 0,
+   "symmetric": false,
+   "span": [-23.5, 30.5],
+   "depthBand": 1.5,
+   "openings": ["glass", "dark"],
+   "note": "Ground storey: fourteen bays between dark columns, the fourth from the east end a dark door bay, the two at the west end the PUCK shopfront. Three window bands of fourteen bays each between the pebble-concrete parapets (the tree hides the middle three in the upper two bands). The yellow entrance block east of the span and the stair west of it are left out."
+  }
+ ]
+}

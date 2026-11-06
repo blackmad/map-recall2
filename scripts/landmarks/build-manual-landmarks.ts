@@ -407,6 +407,7 @@ import {buildPolitieLijnbaansgracht} from './politie-lijnbaansgracht-builder';
 import {buildPolitieOostWatergraafsmeer} from './politie-oost-watergraafsmeer-builder';
 import {buildRietveldAcademie2006} from './rietveld-academie-2006-builder';
 import {buildBelastingdienstAmsterdam} from './belastingdienst-amsterdam-builder';
+import {buildDominicusSaviusSchool} from './dominicus-savius-school-builder';
 import {buildStedelijkMuseum} from './stedelijk-museum-builder';
 import {buildAlbertHeijnMuseumplein} from './albert-heijn-museumplein-builder';
 import {buildBinnengasthuisKloveniersburgwal} from './binnengasthuis-kloveniersburgwal-builder';
@@ -1022,6 +1023,7 @@ for(const spec of MANUAL_LANDMARKS.filter(model => !selectedIds.length || select
     else if(id==='kiosk-park-bea')buildKioskParkBea(w,d,helpers);
     else if(id==='kiosk-ramons-coffee')buildKioskRamonsCoffee(w,d,helpers);
     else if(id==='belastingdienst-amsterdam')buildBelastingdienstAmsterdam(w,d,helpers);
+    else if(id==='dominicus-savius-school')buildDominicusSaviusSchool(w,d,helpers);
     else buildCulturalLandmark(id,w,d,helpers);
   }
   }catch(e){

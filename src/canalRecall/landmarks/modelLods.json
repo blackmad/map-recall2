@@ -2320,5 +2320,11 @@
   "buildVersion": 2,
   "bytes": 234000,
   "triangles": 17600
+ },
+ "dominicus-savius-school": {
+  "sourceHash": "4f1d0252d6a595be",
+  "buildVersion": 2,
+  "bytes": 62056,
+  "triangles": 3397
  }
 }
