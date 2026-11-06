@@ -1,0 +1,91 @@
+{
+ "id": "winkelcentrum-plein-40-45",
+ "pand": "0363100012112179",
+ "replaces": "the generic BAG-pand building-type mass (no ordinary model for this pand)",
+ "identity": {
+  "addresses": "Jan de Jonghkade 5-79, Joop van Weezelhof 1-50, Willem Kraanstraat 2-80, Burgemeester De Vlugtlaan 143-159, Plein '40-'45 3-10: 174 verblijfsobjecten",
+  "bouwjaar": 2000,
+  "architect": "not named by the BAG or nl.wikipedia; unconfirmed",
+  "correctionsToBrief": "None: the covered shopping centre with parking garage beside Plein '40-'45 (nl.wikipedia: built in the 1990s; BAG bouwjaar 2000), 'winkelcentrum 40-45' lettering on the entrances. The brief's 11 m is the 3DBAG median; the block rises to 24.7 m (south block) and 17 m (north and west bars).",
+  "sources": [
+   "https://api.data.amsterdam.nl/v1/bag/panden/0363100012112179",
+   "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/?adresseertVerblijfsobject.ligtInPanden.identificatie=0363100012112179",
+   "https://nl.wikipedia.org/wiki/Plein_%2740-%2745"
+  ]
+ },
+ "frame": {
+  "axes": "u along the south front from the south-west corner (-65.3, 98.7) eastwards, v into the block (north); U = (0.9667, 0.256), V = (0.256, -0.9667)"
+ },
+ "partyWallBearings": [],
+ "streetNAP": -0.637,
+ "levels": {
+  "southBlock": 24.7,
+  "southFloors": "4.6 + 2.9 (k - 1), k = 1..7",
+  "undercroft": 6.8,
+  "garageParapet": 11.3,
+  "lowBrick": 9.0,
+  "garageSlots": [
+   [
+    5.7,
+    7.0
+   ],
+   [
+    8.4,
+    9.7
+   ]
+  ],
+  "northBar": 17.0,
+  "northStoreys": [
+   5.2,
+   7.95,
+   10.7,
+   13.45
+  ],
+  "westBar": 17.0,
+  "westWindowRows": [
+   [
+    6.0,
+    8.0
+   ],
+   [
+    9.0,
+    11.0
+   ],
+   [
+    12.0,
+    14.0
+   ],
+   [
+    15.0,
+    16.4
+   ]
+  ],
+  "mallRoof": 4.2,
+  "glassStreet": 7.0,
+  "pergola": "4.9 at the wall to 6.3 at 3 m out"
+ },
+ "throughPassages": [
+  {
+   "axisBearing": 14.8,
+   "corridor": [
+    [
+     -27.147,
+     109.321
+    ],
+    [
+     1.661,
+     116.95
+    ],
+    [
+     6.653,
+     98.099
+    ],
+    [
+     -22.155,
+     90.47
+    ]
+   ],
+   "evidence": "The mall entrance under the west half of the south block: an open hall from the Burgemeester De Vlugtlaan pavement through to the shops of the mall, under the first balconies on square piers, the winkelcentrum lettering deep inside (Gemeente Amsterdam panoramas b_20240920_0946_Track59_Sphere_00226 (2024) and TMX7316010203-002523_pano_0001_000243 (2022))."
+  }
+ ]
+}

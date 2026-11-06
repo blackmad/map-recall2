@@ -69093,5 +69093,421 @@
     ]
    ]
   }
+ },
+ {
+  "id": "winkelcentrum-plein-40-45",
+  "name": "Winkelcentrum Plein '40-'45 (2000)",
+  "modelUrl": "./models/winkelcentrum-plein-40-45.glb",
+  "suppressOsmIds": [
+   "NL.IMBAG.Pand.0363100012112179"
+  ],
+  "spatialSuppression": false,
+  "footprint": {
+   "centre": [
+    4.82277593,
+    52.38053255
+   ],
+   "headingDegrees": 0,
+   "lengthMetres": 156.6,
+   "widthMetres": 184.6
+  },
+  "surveyed": {
+   "anchor": [
+    4.82277593,
+    52.38053255
+   ],
+   "northOffsetDegrees": 0,
+   "source": "Vertex average of the BAG 0363100012112179 ring (RD, PDOK BAG WFS, CC0) in native east/south metres above the 3DBAG ground -0.64 m NAP (scripts/landmarks/winkelcentrum-plein-40-45-footprints.json, written by sarphati-plaza-prepare.ts --id=winkelcentrum-plein-40-45 --pand=0363100012112179). The south block, the garage, the north and west bars, the mall roof and its glass street from the 3DBAG LoD2.2 roof parts (CC BY 4.0). Balconies, windows, garage slots, the pergola, canopies and entrance frames measured on rectified Gemeente Amsterdam panorama crops (CC BY 4.0), per wall in scripts/landmarks/winkelcentrum-plein-40-45-inventory.json. The faces over the mall roof are inferred."
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 0,
+  "heightMetres": 24.7,
+  "bagYear": 2000,
+  "materialOverrides": {
+   "brick": "#634539",
+   "stone": "#c9c7c0",
+   "glass": "#4d5f6a",
+   "frame": "#2e3a48",
+   "ochre": "#c8a04a",
+   "blue": "#8796ab",
+   "bronze": "#2b2f33",
+   "concrete": "#9a9892",
+   "slate": "#5d6064",
+   "green": "#4f7a6e",
+   "pink": "#eeeeea",
+   "red": "#e07a1f",
+   "canopyGlass": "#9fb4bd"
+  },
+  "attribution": {
+   "title": "Winkelcentrum Plein '40-'45, Slotermeer (shopping centre with housing, 2000)",
+   "author": "Map Recall",
+   "sourceUrl": "https://api.data.amsterdam.nl/v1/bag/panden/0363100012112179",
+   "licence": "CC BY 4.0",
+   "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+   "modifications": "Original texture-free flat-colour geometry on the BAG footprint (CC0) with 3DBAG LoD2.2 heights (CC BY 4.0): the seven-storey south block with its staggered blue balconies and the mall undercroft, the brick garage with its rhythm of louvred slots, orange columns and shops, the north housing bar with its brick piers and white bays over shops, the grey office bar on the west under a pergola of raked beams, the orange entrance frames, the low mall with its glass street; read for proportion and tone from Gemeente Amsterdam panoramas (CC BY 4.0). No pixels or meshes imported."
+  },
+  "buildingFootprint": {
+   "type": "Polygon",
+   "coordinates": [
+    [
+     [
+      4.82399882,
+      52.38052013
+     ],
+     [
+      4.82397693,
+      52.38052343
+     ],
+     [
+      4.82403081,
+      52.38065332
+     ],
+     [
+      4.82405334,
+      52.38065
+     ],
+     [
+      4.82411271,
+      52.38079192
+     ],
+     [
+      4.82411213,
+      52.38079204
+     ],
+     [
+      4.8241129,
+      52.3807939
+     ],
+     [
+      4.8239366,
+      52.38082145
+     ],
+     [
+      4.82390102,
+      52.38082701
+     ],
+     [
+      4.82375871,
+      52.38084925
+     ],
+     [
+      4.823652,
+      52.38086592
+     ],
+     [
+      4.82358795,
+      52.38087593
+     ],
+     [
+      4.82352392,
+      52.38088593
+     ],
+     [
+      4.82342257,
+      52.38090177
+     ],
+     [
+      4.82342056,
+      52.38089677
+     ],
+     [
+      4.82341544,
+      52.38089769
+     ],
+     [
+      4.82341311,
+      52.38089148
+     ],
+     [
+      4.82341264,
+      52.38089156
+     ],
+     [
+      4.82332521,
+      52.3809054
+     ],
+     [
+      4.8233245,
+      52.38090551
+     ],
+     [
+      4.8233271,
+      52.3809114
+     ],
+     [
+      4.82332208,
+      52.38091215
+     ],
+     [
+      4.82332423,
+      52.38091719
+     ],
+     [
+      4.82303519,
+      52.38096255
+     ],
+     [
+      4.82288549,
+      52.38098604
+     ],
+     [
+      4.82288532,
+      52.38098564
+     ],
+     [
+      4.82245581,
+      52.38105287
+     ],
+     [
+      4.82242048,
+      52.38105843
+     ],
+     [
+      4.82241986,
+      52.38105696
+     ],
+     [
+      4.82238587,
+      52.38097605
+     ],
+     [
+      4.82238588,
+      52.38097605
+     ],
+     [
+      4.82238589,
+      52.38097607
+     ],
+     [
+      4.82238635,
+      52.38097597
+     ],
+     [
+      4.82242122,
+      52.38097048
+     ],
+     [
+      4.82242106,
+      52.38097011
+     ],
+     [
+      4.82242034,
+      52.38097022
+     ],
+     [
+      4.82237677,
+      52.38086763
+     ],
+     [
+      4.82277336,
+      52.3808061
+     ],
+     [
+      4.82280873,
+      52.38080056
+     ],
+     [
+      4.82286182,
+      52.38079237
+     ],
+     [
+      4.82287849,
+      52.38083161
+     ],
+     [
+      4.82291771,
+      52.3808255
+     ],
+     [
+      4.8229797,
+      52.38081583
+     ],
+     [
+      4.82287042,
+      52.38055432
+     ],
+     [
+      4.82286705,
+      52.38055476
+     ],
+     [
+      4.82286646,
+      52.38055273
+     ],
+     [
+      4.82283173,
+      52.38055812
+     ],
+     [
+      4.82255215,
+      52.38060149
+     ],
+     [
+      4.82258151,
+      52.38067171
+     ],
+     [
+      4.82258349,
+      52.38067644
+     ],
+     [
+      4.82231598,
+      52.38071812
+     ],
+     [
+      4.82228057,
+      52.38072364
+     ],
+     [
+      4.82228036,
+      52.38072314
+     ],
+     [
+      4.82226941,
+      52.38069691
+     ],
+     [
+      4.82219639,
+      52.38052188
+     ],
+     [
+      4.8221913,
+      52.38052225
+     ],
+     [
+      4.82219725,
+      52.38051601
+     ],
+     [
+      4.82219852,
+      52.38051906
+     ],
+     [
+      4.82223077,
+      52.38051404
+     ],
+     [
+      4.82222518,
+      52.38050061
+     ],
+     [
+      4.82220379,
+      52.38044919
+     ],
+     [
+      4.82219797,
+      52.38043522
+     ],
+     [
+      4.82216583,
+      52.38044022
+     ],
+     [
+      4.82216712,
+      52.38044329
+     ],
+     [
+      4.82215688,
+      52.38043968
+     ],
+     [
+      4.82216172,
+      52.38043893
+     ],
+     [
+      4.82216175,
+      52.38043893
+     ],
+     [
+      4.82200834,
+      52.38007078
+     ],
+     [
+      4.82200264,
+      52.38007167
+     ],
+     [
+      4.82200173,
+      52.3800699
+     ],
+     [
+      4.82200839,
+      52.38006886
+     ],
+     [
+      4.82198911,
+      52.38002262
+     ],
+     [
+      4.82198231,
+      52.38002367
+     ],
+     [
+      4.82198167,
+      52.38002197
+     ],
+     [
+      4.82198726,
+      52.3800211
+     ],
+     [
+      4.82198725,
+      52.38002106
+     ],
+     [
+      4.82187108,
+      52.37974293
+     ],
+     [
+      4.8218283,
+      52.3796405
+     ],
+     [
+      4.82211943,
+      52.37959469
+     ],
+     [
+      4.82224117,
+      52.37957554
+     ],
+     [
+      4.82227632,
+      52.37966021
+     ],
+     [
+      4.8224231,
+      52.37963739
+     ],
+     [
+      4.82240024,
+      52.37958266
+     ],
+     [
+      4.82283253,
+      52.37951446
+     ],
+     [
+      4.8235332,
+      52.37940483
+     ],
+     [
+      4.82363692,
+      52.37965246
+     ],
+     [
+      4.82372043,
+      52.37985234
+     ],
+     [
+      4.82372599,
+      52.37986565
+     ],
+     [
+      4.82399882,
+      52.38052013
+     ]
+    ]
+   ]
+  }
  }
 ]
