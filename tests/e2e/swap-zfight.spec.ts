@@ -3,6 +3,7 @@ import { mkdirSync, writeFileSync } from 'node:fs';
 import sharp from 'sharp';
 import { useEngine } from './helpers';
 import { SWAP_SPOTS } from '../../scripts/world/abSpots';
+import { CELL_DEBUG_CLASSES, CELL_DEBUG_FACADE_CLASSES, cellDebugClass } from '../../src/canalRecall/look/windowSdf';
 
 // The swap z-fight pin (lane R1-A, #223): the user's S3 shot (map-recall2-screenshots engine/2026-11-06-user-shots,
 // the 1962 slab on Weesperstraat, ~150 m) showed moving stripes over the window grid while the camera moved. Here the
@@ -151,7 +152,7 @@ test('swap z-fight: no moving stripes on the Weesperstraat slab while its detail
   }, SPOT.pand);
   console.log('swap-zfight target', JSON.stringify(target));
   if (!FRAME_MASK) {
-  console.log('swap-zfight build', JSON.stringify(await page.evaluate(() => { const tb = (window as any).canalRecallGame.vectorMap._threeBuildings; return { complement: tb.complement, swapUniform: !!tb.material?.uniforms?.citySwapUnder, defines: Object.keys(tb.material?.defines ?? {}), name: tb.material?.name, slots: tb.swapSlots?.used ?? null }; })));
+  console.log('swap-zfight build', JSON.stringify(await page.evaluate(() => { const tb = (window as any).canalRecallGame.vectorMap._threeBuildings; return { complement: tb.complement, swapUniform: !!tb.material?.uniforms?.citySwapUnder, defines: Object.keys(tb.material?.defines ?? {}), name: tb.material?.name, slots: tb.swapSlots?.used ?? null, cellAniso: tb.material?.uniforms?.cellAniso?.value ?? null, texAniso: tb.material?.uniforms?.cells?.value?.anisotropy ?? null }; })));
   expect(target?.id, 'a building under the pick point').toBeTruthy();
   expect(target?.near, 'the slab has a detail chunk at this pose').toBeTruthy();
   }
@@ -172,6 +173,20 @@ test('swap z-fight: no moving stripes on the Weesperstraat slab while its detail
   expect(maskPx, 'the slab is on screen').toBeGreaterThan(500);
   // s3-slab-user: the slab covers what it covers in the user's window (measured 2026-11-06 at DPR 2, see abSpots.ts).
   if (SPOT.minMaskShare) expect(maskShare, 'the slab fills its share of the user\'s frame').toBeGreaterThan(SPOT.minMaskShare);
+  // ZFIGHT_HIST=1 (lane R3-D #233): with `?cellDebug=rho|under` in ZFIGHT_QS, the debug classes inside the slab mask
+  // (look/windowSdf.ts cellDebugHistogram's classes) and the frame, then stop: the facade tier's footprint at the pose.
+  if (process.env.ZFIGHT_HIST) {
+    const counts = CELL_DEBUG_CLASSES.map(() => 0);
+    for (let i = 0; i < inner.length; i++) { if (!inner[i]) continue; const p = i * 4, k = cellDebugClass(shown.data[p], shown.data[p + 1], shown.data[p + 2]); if (k >= 0) counts[k]++; }
+    const facade = counts.slice(0, CELL_DEBUG_FACADE_CLASSES).reduce((a, b) => a + b, 0);
+    const hist = Object.fromEntries(CELL_DEBUG_CLASSES.map((c, i) => [c.name, { px: counts[i], share: i < CELL_DEBUG_FACADE_CLASSES && facade ? +(counts[i] / facade).toFixed(4) : null }]));
+    console.log('swap-zfight hist', JSON.stringify({ maskPx, facade, hist }));
+    mkdirSync(OUT, { recursive: true });
+    writeFileSync(`${OUT}/${info.project.name}${LABEL}-hist.json`, JSON.stringify({ when: new Date().toISOString(), spot: SPOT.name, qs: QS, maskPx, facade, hist }, null, 1));
+    await sharp(shown.data, { raw: { width: shown.width, height: shown.height, channels: 4 } }).png().toFile(`${OUT}/${info.project.name}${LABEL}-hist.png`);
+    expect(errors, 'page errors').toEqual([]);
+    return;
+  }
   // Steps: the camera pans PAN_PX CSS px per step across the view (about the slab, at its distance); `fade` holds the
   // swap's dissolve at t = step / STEPS. Run once with the detail solid (the still floor), once through the swap.
   const run = async (swap: boolean, capture: () => Promise<string> = grab) => {
