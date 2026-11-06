@@ -1,0 +1,26 @@
+{
+ "id": "atrium-zuidas",
+ "countedBy": "zuidas lane #237 (opus) from panorama recording_2024-09-03_05-15-44_00043 (Parnassusweg, 2024), crop of the granite shaft before the shaft was re-modelled: two openings on its west face, one above the other on the centre line (the T-shaped fanlight-and-stem window under the top, a four-pane window at mid-height); the shaft's top is a level cornice (0 peaks within the crop).",
+ "facades": [
+  {
+   "name": "granite shaft west face (Parnassusweg)",
+   "bearing": 267,
+   "photo": "artifacts/landmark-briefs/atrium-zuidas/w02-267.jpg",
+   "depthBand": 30,
+   "openings": [
+    "canopyGlass"
+   ],
+   "rows": [
+    1,
+    1
+   ],
+   "columns": 1,
+   "gables": 0,
+   "alongM": [
+    39.9,
+    45.6
+   ]
+  }
+ ],
+ "note": "Only the shaft is counted: the tower faces are glass walls with bronze slab bands and the grid block is a curtain grid, not punched openings; their slab and grid rhythm is judged on the review sheet against the panoramas. Mirror symmetry is not declared: the photo's two windows sit on the shaft's centre line, but an IoU on two small openings swings from 0.05 to 0.69 with a 0.2 m shift of the crop window, so it measures the crop, not the facade; the shared axis is checked by 'columns' instead."
+}
