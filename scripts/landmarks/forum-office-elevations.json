@@ -1,0 +1,45 @@
+{
+ "id": "forum-office",
+ "source": "Gemeente Amsterdam panoramas recording_2025-07-30_06-59-28_00051 (2025-07-30, the serre), recording_2024-09-02_06-51-56_00427 (2024-09-02, the west wing's south end) and b_20241105_0934_Track15_Sphere_00032 (2024-11-05, the east wing's south end), CC BY 4.0, rectified crops artifacts/landmark-briefs/forum-office/w04-177.alt.jpg, w05-177.jpg and w06-177.jpg",
+ "countedBy": "lane (opus) from the rectified crops, 2026-11-07, before comparing with the model; each framed light of the serre is one opening (its single mullion does not split it), each slit one opening. Blind recount welcome.",
+ "facades": [
+  {
+   "name": "Serre south front (w04)",
+   "bearing": 177,
+   "photo": "artifacts/landmark-briefs/forum-office/w04-177.alt.jpg",
+   "rows": [6, 6, 6, 6, 6, 6, 6],
+   "gables": 0,
+   "symmetric": false,
+   "span": [-14.6, 8.7],
+   "depthBand": 1.5,
+   "openings": ["glass", "dark"],
+   "note": "Six bays of deep dark frames: the 4.8 m ground storey (the revolving door in the fifth bay from the west) and six storeys over it."
+  },
+  {
+   "name": "West wing south end (w05)",
+   "bearing": 177,
+   "photo": "artifacts/landmark-briefs/forum-office/w05-177.jpg",
+   "rows": [4, 4, 3, 4, 3, 5],
+   "gables": 0,
+   "symmetric": false,
+   "staggered": true,
+   "span": [-33.0, -17.6],
+   "depthBand": 1.5,
+   "openings": ["glass", "dark"],
+   "note": "Sandstone with scattered slits, bottom row first: 4, 4, 3, 4, 3, 5."
+  },
+  {
+   "name": "East wing south end (w06)",
+   "bearing": 177,
+   "photo": "artifacts/landmark-briefs/forum-office/w06-177.jpg",
+   "rows": [4, 4, 3, 4, 5],
+   "gables": 0,
+   "symmetric": false,
+   "staggered": true,
+   "span": [12.6, 27.2],
+   "depthBand": 1.5,
+   "openings": ["glass", "dark"],
+   "note": "The same sandstone, bleached by the low sun in this view, with five rows of slits (bottom first 4, 4, 3, 4, 5) over the recessed ribbed green-glass ground storey (not counted)."
+  }
+ ]
+}

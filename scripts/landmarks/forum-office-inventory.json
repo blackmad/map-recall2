@@ -1,0 +1,308 @@
+{
+ "schemaVersion": 1,
+ "id": "forum-office",
+ "pand": "0363100012125840",
+ "brief": "scripts/landmarks/forum-office-brief.md",
+ "signature": [
+  "sandstone-ends",
+  "serre",
+  "glass-grid",
+  "east-end"
+ ],
+ "walls": [
+  {
+   "tag": "w01-87",
+   "bearing": 87,
+   "lengthM": 98.4,
+   "centre": [
+    4.859121,
+    52.3416255
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "items": [],
+   "note": "no panorama: the east side inferred from the west side (glass grid)"
+  },
+  {
+   "tag": "w02-267",
+   "bearing": 267,
+   "lengthM": 90.2,
+   "centre": [
+    4.8582355,
+    52.3416285
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2024-09-02_05-55-18_01011",
+   "capturedAt": "2024-09-02",
+   "checked": true,
+   "items": [
+    {
+     "id": "glass-grid",
+     "kind": "window-shape",
+     "where": "the long Amstelveenseweg side: seven storeys of climate windows alternating with panels clad in tinted glass on a 1.8 m grid, dark frames",
+     "approxSizeM": [
+      90,
+      26.3
+     ],
+     "plan": "modelled",
+     "how": "glassGrid(): one opening per bay and storey, glass and tinted panel alternating like a chequerboard, the ground storey glazed 0.5 m deep",
+     "seenIn": "recording_2024-09-02_05-55-18_01011"
+    }
+   ]
+  },
+  {
+   "tag": "w03-357",
+   "bearing": 357,
+   "lengthM": 60.2,
+   "centre": [
+    4.858635,
+    52.34205
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001151_pano_0001_002191",
+   "capturedAt": "2019-04-30",
+   "checked": true,
+   "items": [
+    {
+     "id": "north-ends",
+     "kind": "window-shape",
+     "where": "the wings' north ends over the low deck (2019, behind a tree)",
+     "approxSizeM": [
+      25,
+      23
+     ],
+     "plan": "simplified",
+     "how": "the south ends' sandstone and slits repeated; the 2019 view predates the 2022 renovation and shows little",
+     "seenIn": "TMX7316010203-001151_pano_0001_002191"
+    },
+    {
+     "id": "north-deck",
+     "kind": "other",
+     "where": "a low deck along the north side",
+     "approxSizeM": [
+      60,
+      3.1
+     ],
+     "plan": "modelled",
+     "how": "a 3.1 m block with a 1 m parapet",
+     "seenIn": "TMX7316010203-001151_pano_0001_002191"
+    }
+   ]
+  },
+  {
+   "tag": "w04-177",
+   "bearing": 177,
+   "lengthM": 22,
+   "centre": [
+    4.858722,
+    52.341198
+   ],
+   "evidence": "photo",
+   "panoId": "b_20241105_0934_Track15_Sphere_00028",
+   "capturedAt": "2024-11-05",
+   "checked": true,
+   "items": [
+    {
+     "id": "serre",
+     "kind": "window-shape",
+     "where": "the 2022 glass serre closing the atrium on the Fred. Roeskestraat: six bays of deep dark frames, a 4.8 m ground storey and six storeys, each light split by one mullion",
+     "approxSizeM": [
+      22,
+      30
+     ],
+     "plan": "modelled",
+     "how": "serreFront(): openings 0.45 m deep, one mullion each, a proud sill at every floor edge",
+     "seenIn": "b_20241105_0934_Track15_Sphere_00028"
+    },
+    {
+     "id": "revolving-door",
+     "kind": "other",
+     "where": "the revolving door in the fifth bay from the west",
+     "approxSizeM": [
+      3,
+      3
+     ],
+     "plan": "simplified",
+     "how": "the ground-storey light of that bay; the drum is not modelled",
+     "seenIn": "b_20241105_0934_Track15_Sphere_00028"
+    },
+    {
+     "id": "entrance-steps",
+     "kind": "other",
+     "where": "broad granite steps up to the entrance across the serre and the west wing's end",
+     "approxSizeM": [
+      22,
+      1.2
+     ],
+     "plan": "skipped",
+     "skip": {
+      "reason": "not-visible",
+      "note": "landscaping in front of the building, below the model's ground; the ride's ground draws the pavement"
+     },
+     "seenIn": "b_20241105_0934_Track15_Sphere_00028"
+    },
+    {
+     "id": "tenant-sign",
+     "kind": "sign",
+     "where": "a tenant's round logo and a sign column beside the door",
+     "approxSizeM": [
+      1,
+      1
+     ],
+     "plan": "skipped",
+     "skip": {
+      "reason": "temporary",
+      "note": "tenant signage"
+     },
+     "seenIn": "b_20241105_0934_Track15_Sphere_00028"
+    }
+   ]
+  },
+  {
+   "tag": "w05-177",
+   "bearing": 177,
+   "lengthM": 15.6,
+   "centre": [
+    4.85839,
+    52.341224
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2024-09-02_06-51-56_00427",
+   "capturedAt": "2024-09-02",
+   "checked": true,
+   "items": [
+    {
+     "id": "sandstone-ends",
+     "kind": "window-shape",
+     "where": "the west wing's south end: rough-cut yellow sandstone in courses with 23 slit windows in six rows at scattered positions",
+     "approxSizeM": [
+      15.6,
+      26.3
+     ],
+     "plan": "modelled",
+     "how": "stoneEnd(): every slit from the rectified crop, 0.25 m reveals in the stone tint",
+     "seenIn": "recording_2024-09-02_06-51-56_00427"
+    }
+   ]
+  },
+  {
+   "tag": "w06-177",
+   "bearing": 177,
+   "lengthM": 14.9,
+   "centre": [
+    4.859057,
+    52.34118
+   ],
+   "evidence": "photo",
+   "panoId": "b_20241105_0934_Track15_Sphere_00032",
+   "capturedAt": "2024-11-05",
+   "checked": true,
+   "items": [
+    {
+     "id": "east-end",
+     "kind": "window-shape",
+     "where": "the east wing's south end: the same sandstone (bleached by the sun in this view) with 20 slits in five rows",
+     "approxSizeM": [
+      14.9,
+      26.3
+     ],
+     "plan": "modelled",
+     "how": "stoneEnd() with its own slit positions",
+     "seenIn": "b_20241105_0934_Track15_Sphere_00032"
+    },
+    {
+     "id": "green-ground",
+     "kind": "window-shape",
+     "where": "under the east end: a recessed ground storey of ribbed green glass between dark posts",
+     "approxSizeM": [
+      14.9,
+      3.7
+     ],
+     "plan": "modelled",
+     "how": "a 1.4 m recess with a green back and dark ribs every 1.15 m",
+     "seenIn": "b_20241105_0934_Track15_Sphere_00032"
+    }
+   ]
+  },
+  {
+   "tag": "w07-267",
+   "bearing": 267,
+   "lengthM": 7.4,
+   "centre": [
+    4.8589445,
+    52.341209
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2024-09-02_06-51-56_00440",
+   "capturedAt": "2024-09-02",
+   "checked": true,
+   "items": [
+    {
+     "id": "cantilever-end",
+     "kind": "other",
+     "where": "the sandstone end standing over the dark glazed ground storey at the corner by the entrance steps",
+     "approxSizeM": [
+      7.4,
+      4.4
+     ],
+     "plan": "simplified",
+     "how": "the side grid's glazed ground storey runs to the corner under the stone; the stone end itself goes to the ground (w05 shows its lowest slits near the ground)",
+     "seenIn": "recording_2024-09-02_06-51-56_00440"
+    }
+   ]
+  },
+  {
+   "tag": "w08-267",
+   "bearing": 267,
+   "lengthM": 4.8,
+   "centre": [
+    4.858559,
+    52.3412135
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2024-09-02_06-51-56_00434",
+   "capturedAt": "2024-09-02",
+   "checked": true,
+   "items": []
+  },
+  {
+   "tag": "w09-176",
+   "bearing": 176,
+   "lengthM": 4.2,
+   "centre": [
+    4.8589105,
+    52.3412405
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001894_pano_0000_002330",
+   "capturedAt": "2020-08-27",
+   "checked": true,
+   "items": [
+    {
+     "id": "s-front-2020",
+     "kind": "other",
+     "where": "2020: the brown banded S-shaped entrance front before the serre enclosed it",
+     "approxSizeM": [
+      20,
+      20
+     ],
+     "plan": "skipped",
+     "skip": {
+      "reason": "gone",
+      "note": "enclosed in the 2022 serre (architectuur.org); the 2024-2025 views show the serre"
+     },
+     "seenIn": "TMX7316010203-001894_pano_0000_002330"
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  }
+ ]
+}

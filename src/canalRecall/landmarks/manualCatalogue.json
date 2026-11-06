@@ -69285,5 +69285,143 @@
     ]
    ]
   }
+ },
+ {
+  "id": "forum-office",
+  "name": "EDGE Stadium (former Forum office building), Fred. Roeskestraat 100",
+  "modelUrl": "./models/forum-office.glb",
+  "suppressOsmIds": [
+   "NL.IMBAG.Pand.0363100012125840"
+  ],
+  "spatialSuppression": false,
+  "footprint": {
+   "centre": [
+    4.85873459,
+    52.34147287
+   ],
+   "headingDegrees": 0,
+   "lengthMetres": 99.1,
+   "widthMetres": 65.6
+  },
+  "surveyed": {
+   "anchor": [
+    4.85873459,
+    52.34147287
+   ],
+   "northOffsetDegrees": 0,
+   "source": "Vertex average of the BAG 0363100012125840 ring (RD, PDOK BAG WFS, CC0) in native east/south metres above the 3DBAG ground -0.33 m NAP (scripts/landmarks/forum-office-footprints.json, written by sarphati-plaza-prepare.ts --id=forum-office --pand=0363100012125840). The two wings at 26.3 m, the atrium and serre at 30.1 m and the north deck at 3.1 m from the 3DBAG LoD2.2 roof parts (CC BY 4.0); the serre front measured on the rectified Gemeente Amsterdam panoramas recording_2025-07-30_06-59-28_00051 and b_20241105_0934_Track15_Sphere_00028, the sandstone ends and their slits on recording_2024-09-02_06-51-56_00427 and b_20241105_0934_Track15_Sphere_00032, the long sides' grid on recording_2024-09-02_06-51-56_00440 and recording_2024-09-02_05-55-18_01011 (all CC BY 4.0). Identity: architectuur.org (bouwwerk 81) and Wikidata Q125679074; the east side is inferred from the west side."
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 0,
+  "heightMetres": 30.1,
+  "bagYear": 2001,
+  "materialOverrides": {
+   "ochre": "#a48b5c",
+   "bronze": "#2c3134",
+   "glass": "#3e4c58",
+   "dark": "#36423f",
+   "pink": "#6f8a76",
+   "concrete": "#9a9893",
+   "slate": "#5f6366"
+  },
+  "attribution": {
+   "title": "EDGE Stadium, the former Forum office building (Atelier PRO: Hans Kalkhoven, Leon Thier, 1996-2001; serre 2022), Fred. Roeskestraat 100",
+   "author": "Map Recall",
+   "sourceUrl": "https://www.architectuur.org/bouwwerk/81/Edge_Stadium_Forum_gebouw.html",
+   "licence": "CC BY 4.0",
+   "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+   "modifications": "Original texture-free flat-colour geometry on the BAG footprint (CC0) with 3DBAG LoD2.2 heights (CC BY 4.0): the two shifted office wings with their grid of climate windows and tinted-glass panels, the sandstone short ends with their scattered slit windows (the east end over a recessed ribbed green-glass ground storey), the taller atrium between the wings and the 2022 glass serre on its south end with its deep dark frames, the low deck along the north side; read for proportion and tone from Gemeente Amsterdam panoramas (CC BY 4.0). No pixels or meshes imported."
+  },
+  "buildingFootprint": {
+   "type": "Polygon",
+   "coordinates": [
+    [
+     [
+      4.85819083,
+      52.34203144
+     ],
+     [
+      4.85819477,
+      52.34199259
+     ],
+     [
+      4.85827398,
+      52.34122164
+     ],
+     [
+      4.85827322,
+      52.34122168
+     ],
+     [
+      4.8582736,
+      52.34121805
+     ],
+     [
+      4.85850165,
+      52.34122648
+     ],
+     [
+      4.85850124,
+      52.3412307
+     ],
+     [
+      4.85855411,
+      52.34123265
+     ],
+     [
+      4.85855829,
+      52.34119031
+     ],
+     [
+      4.85888023,
+      52.3412022
+     ],
+     [
+      4.85887677,
+      52.34123728
+     ],
+     [
+      4.85893843,
+      52.34123956
+     ],
+     [
+      4.85894489,
+      52.34117398
+     ],
+     [
+      4.85916287,
+      52.34118204
+     ],
+     [
+      4.85914995,
+      52.34130937
+     ],
+     [
+      4.85910728,
+      52.34173004
+     ],
+     [
+      4.85910688,
+      52.34173395
+     ],
+     [
+      4.85908459,
+      52.3419538
+     ],
+     [
+      4.85907319,
+      52.34206532
+     ],
+     [
+      4.85904509,
+      52.3420643
+     ],
+     [
+      4.85819083,
+      52.34203144
+     ]
+    ]
+   ]
+  }
  }
 ]
