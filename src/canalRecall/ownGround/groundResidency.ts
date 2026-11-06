@@ -6,8 +6,10 @@
 // the 2 km aerial ring, so the corridor drew from the far ring (flat bands) and the overview, never from built cells.
 // `groundCentre` centres the ring on the view while detached (`?groundView=0`: the rider, as before).
 //
-// The brief's other candidates, made robust behind `?railRetry=0` and `?groundRequeue=0` (none was seen to fire in
-// the ten loads; they are cheap and each left a cell without rails or without a build, silently):
+// The brief's other candidates, made robust behind `?railRetry=0` and `?groundRequeue=0`. In 200 measured loads
+// (2026-11-06) no rail fetch failed, both manifests read 139 cells and no build errored; 5 installs were discarded
+// and each came back by the next residency update. They are cheap, and when one does fire it leaves a cell without
+// rails or without a build, silently:
 // - a failed rail cell fetch is not cached as "no rails" for the rest of the ride: it is retried with a backoff and,
 //   when it keeps failing, the cell build fails (and is retried) instead of building a cell without its rails;
 // - a failed rail manifest (cells.json) is retried and logged instead of switching every rail off;
