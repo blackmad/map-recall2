@@ -41,6 +41,7 @@ export type FacadeUniforms = {
 };
 
 import { HIGHLIGHT_GLSL, highlightDefines } from '../look/highlight.js';
+import { WINDOW_SDF_GLSL } from '../look/windowSdf.js';
 
 export const HIGHLIGHT_LINEAR = [1.0, 0.637, 0.0137] as const; // #ffd21f in linear
 
@@ -65,7 +66,11 @@ vHighlight = hlState(hidden);`;
 const VERTEX_HIDE = /* glsl */ `
 if (hidden > 0.5 && hidden < 1.5) gl_Position = vec4(2.0, 2.0, 2.0, 1.0);`;
 
-export function createLitFacadeMaterial(THREE: any, uniforms?: Partial<FacadeUniforms>): any {
+/**
+ * `windowTable` (look/windowTable.ts texture): draw the analytic windows (look/windowSdf.ts, lane R2-A #228) over the
+ * cell sample. Absent: the define, the uniform and the program key are exactly as before.
+ */
+export function createLitFacadeMaterial(THREE: any, uniforms?: Partial<FacadeUniforms>, options: { windowTable?: any } = {}): any {
   const shared: FacadeUniforms = {
     cells: uniforms?.cells ?? { value: null },
     masks: uniforms?.masks ?? { value: null },
@@ -85,6 +90,7 @@ export function createLitFacadeMaterial(THREE: any, uniforms?: Partial<FacadeUni
   // its F0 0.04 sun specular and multiscatter-reduced sky fill drew a sun side ~3 luma over and a shade side ~1 luma
   // under the Lambert walls beside it, plus view-dependent glints on dark glass no other building had.
   const material = new THREE.MeshLambertMaterial({ side: THREE.FrontSide, flatShading: true });
+  const windowSdfMix = { value: 1 };
   material.onBeforeCompile = (shader: any) => {
     shader.uniforms.cells = shared.cells;
     shader.uniforms.masks = shared.masks;
@@ -96,6 +102,7 @@ export function createLitFacadeMaterial(THREE: any, uniforms?: Partial<FacadeUni
     shader.uniforms.roofLayers = shared.roofLayers;
     shader.uniforms.roofTier = shared.roofTier;
     shader.uniforms.cellTier = shared.cellTier;
+    if (options.windowTable) { shader.uniforms.windowTable = { value: options.windowTable }; shader.uniforms.windowSdfMix = windowSdfMix; }
     shader.vertexShader = shader.vertexShader
       .replace('#include <common>', `#include <common>${VERTEX_DECLS}`)
       .replace('#include <begin_vertex>', `#include <begin_vertex>${VERTEX_BODY}`)
@@ -113,6 +120,7 @@ uniform vec3 cityFlat;
 uniform float wallGain;
 ${ROOF_TIER_GLSL}
 ${FACADE_TIER_GLSL}
+${WINDOW_SDF_GLSL}
 varying vec2 vFacUv;
 flat varying float vLayer;
 varying vec3 vTint;
@@ -128,6 +136,9 @@ if (cityFade < 1.0 && fract(dot(floor(gl_FragCoord.xy), vec2(0.754877666, 0.5698
 vec3 fp = vec3(vFacUv, vLayer);
 vec3 fc; vec2 fm;
 cellTierSample(fp, vFacDist, fc, fm);
+#ifdef CITY_WINDOW_SDF
+windowSdf(vFacUv, vLayer, 1.0 - cellFar, fc, fm);
+#endif
 fc = roofTierColour(fc, vFacUv, vLayer, vFacDist);
 fc *= mix(vec3(1.0), vTint, fm.r) * mix(vec3(1.0), vAccent, fm.g);
 fc *= mix(1.0, wallGain, fm.r);
@@ -138,10 +149,11 @@ if (cityTone < 1.0) gl_FragColor.rgb = mix(cityFlat, gl_FragColor.rgb, cityTone)
       .replace('#include <emissivemap_fragment>', `#include <emissivemap_fragment>
 if (HL_PAINT(vHighlight)) totalEmissiveRadiance += vec3(${HIGHLIGHT_LINEAR.join(', ')}) * 0.45;`);
   };
-  material.defines = { ...(material.defines ?? {}), ...highlightDefines() };
-  material.customProgramCacheKey = () => 'shared-frame-facade-v7';
+  material.defines = { ...(material.defines ?? {}), ...highlightDefines(), ...(options.windowTable ? { CELL_TIER_PROBE: '', CITY_WINDOW_SDF: '' } : {}) };
+  const programKey = options.windowTable ? 'shared-frame-facade-v7-wsdf1' : 'shared-frame-facade-v7';
+  material.customProgramCacheKey = () => programKey;
   // The facade layer reads and writes these like a ShaderMaterial's uniforms.
-  material.uniforms = shared;
+  material.uniforms = options.windowTable ? { ...shared, windowSdfMix } : shared;
   material.userData.litFacade = true;
   return material;
 }

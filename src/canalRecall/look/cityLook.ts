@@ -47,6 +47,7 @@ import { BAKED_SHADE_GLSL } from '../rendererShared/lightRig.ts';
 import { sceneLookFrom, sceneSlotHex, type SceneLook } from './sunny.ts';
 import { photoMatchedWallTint, type WallExposure } from './chunkWallExposure.ts';
 import { accentGlsl, packMask } from './maskPacking.ts';
+import { CELL_DEBUG_GLSL, WINDOW_SDF_GLSL, type CellDebug } from './windowSdf.ts';
 
 // ---------------------------------------------------------------------------
 // Flag
@@ -355,15 +356,21 @@ export type CityVariant = {
   noFade?: boolean;
   /** Facade chunks under the complementary dissolve (SWAP_SLOTS): `swapSlot` attribute, `citySwapUnder` / `cityUnder` uniforms. */
   swap?: boolean;
+  /** Facade chunks: `?cellDebug=rho` paints the facade tier's texels per pixel as flat classes (look/windowSdf.ts). */
+  cellDebug?: CellDebug;
+  /** Facade chunks: analytic window frames, glass and muntins from the layer's window table (look/windowSdf.ts, `?windowSdf=0`). */
+  windows?: boolean;
 };
 
-export const variantKey = (v: CityVariant) => `${v.lit ? 'lit' : 'unlit'}|${v.kind}|${v.kind === 'slot' ? v.uv ?? 'uv' : '-'}|${v.highlight ? 'hl' : v.dim ? 'dim' : '-'}|${v.side ?? 0}${v.noFade ? '|nofade' : ''}${v.swap ? '|swap' : ''}`;
+export const variantKey = (v: CityVariant) => `${v.lit ? 'lit' : 'unlit'}|${v.kind}|${v.kind === 'slot' ? v.uv ?? 'uv' : '-'}|${v.highlight ? 'hl' : v.dim ? 'dim' : '-'}|${v.side ?? 0}${v.noFade ? '|nofade' : ''}${v.swap ? '|swap' : ''}${v.cellDebug ? `|dbg-${v.cellDebug}` : ''}${v.windows ? '|wsdf1' : ''}`;
 
 /** Shader defines for a variant (also what the program cache key is built from). */
 export function variantDefines(v: CityVariant): Record<string, string> {
   const d: Record<string, string> = { CITY_SLOT_COUNT: String(SLOT_LAYER_COUNT) };
   if (v.kind === 'slot') d.CITY_SLOT = '';
   if (v.swap) d.CITY_SWAP = '';
+  if (v.cellDebug === 'rho' && v.kind === 'chunk') { d.CELL_TIER_PROBE = ''; d.CELL_DEBUG_RHO = ''; }
+  if (v.windows && v.kind === 'chunk') { d.CELL_TIER_PROBE = ''; d.CITY_WINDOW_SDF = ''; }
   if (v.lit) {
     // Lit (the shared frame's look): box UVs and the highlight/dim state are per-material uniforms (cityVariantUniforms),
     // so the uv/box and plain/highlight/dim variants of a kind share one program (#129 P4 registry).
@@ -382,7 +389,7 @@ export function cityVariantUniforms(v: CityVariant): { cityForce: { value: numbe
 }
 
 /** The program key of a variant: lit variants differ only in uniforms beyond their kind; side is a material parameter. */
-export const cityProgramKey = (v: CityVariant) => (v.lit ? `city-look-v4|lit|${v.kind}${v.swap ? '|swap' : ''}` : `city-look-v3|${variantKey({ ...v, side: 0 })}`);
+export const cityProgramKey = (v: CityVariant) => (v.lit ? `city-look-v4|lit|${v.kind}${v.swap ? '|swap' : ''}${v.cellDebug ? `|dbg-${v.cellDebug}` : ''}${v.windows ? '|wsdf1' : ''}` : `city-look-v3|${variantKey({ ...v, side: 0 })}`);
 
 const HIGHLIGHT_SRGB = 'vec3(1.0, 0.824, 0.122)';
 const HIGHLIGHT_LINEAR = 'vec3(1.0, 0.637, 0.0137)';
@@ -518,6 +525,8 @@ uniform float cityFade;
 uniform float wallGain;
 ${ROOF_TIER_GLSL}
 ${FACADE_TIER_GLSL}
+${CELL_DEBUG_GLSL}
+${WINDOW_SDF_GLSL}
 varying vec2 vFacUv;
 flat varying float vLayer;
 flat varying vec4 vSlot;
@@ -552,6 +561,9 @@ vec4 cityCC = texture(cells, cityP); vec2 cityMM = texture(masks, cityP).rg;
 cityC = cityCC.rgb; cityM = vec2(cityMM.r, ${accentGlsl('cityMM', 'cityCC')});
 #else
 cellTierSample(cityP, vFacDist, cityC, cityM);
+#ifdef CITY_WINDOW_SDF
+windowSdf(cityUv, vLayer, 1.0 - cellFar, cityC, cityM);
+#endif
 cityC = roofTierColour(cityC, cityUv, vLayer, vFacDist);
 #endif
 float cityG = cityGrain(cityC);
@@ -597,6 +609,9 @@ ${FRAGMENT_CELL}
   cityC = hlDesat(cityC, vHighlight);
   float shade = bands > 0.5 ? floor(vShade * bands + 0.5) / bands : vShade;
   gl_FragColor = vec4(cityC * shade, 1.0);
+#ifdef CELL_DEBUG_RHO
+  gl_FragColor = vec4(cellDebugColour(vLayer), 1.0);
+#endif
 }`;
 
 /** The uniforms every city-look material reads (shared objects: rebinding one updates every material using it). */
@@ -620,6 +635,10 @@ export type CityLookUniforms = {
   citySwapUnder: { value: Float32Array };
   /** CITY_SWAP: the complement's `under` for vertices without a slot (a rebuilt chunk's old mesh clones it). */
   cityUnder: { value: number };
+  /** CITY_WINDOW_SDF: the look's window table (look/windowTable.ts), texelFetch by layer. */
+  windowTable: { value: any };
+  /** CITY_WINDOW_SDF: 1 draws the analytic windows, 0 the painted cell (A/B in one page). */
+  windowSdfMix: { value: number };
 };
 
 export function createCityUniforms(THREE: any, init: Partial<CityLookUniforms> = {}): CityLookUniforms {
@@ -638,6 +657,8 @@ export function createCityUniforms(THREE: any, init: Partial<CityLookUniforms> =
     enuFromWorld: init.enuFromWorld ?? { value: new THREE.Matrix3() },
     citySwapUnder: init.citySwapUnder ?? { value: new Float32Array(SWAP_SLOTS) },
     cityUnder: init.cityUnder ?? { value: 0 },
+    windowTable: init.windowTable ?? { value: null },
+    windowSdfMix: init.windowSdfMix ?? { value: 1 },
   };
 }
 
@@ -672,6 +693,10 @@ export function createCityLookMaterial(THREE: any, variant: CityVariant, uniform
       shader.fragmentShader = shader.fragmentShader
         .replace('#include <common>', `#include <common>${FRAGMENT_DECLS}
 float cityLuma;`)
+        .replace('#include <dithering_fragment>', `#include <dithering_fragment>
+#ifdef CELL_DEBUG_RHO
+gl_FragColor = vec4(cellDebugColour(vLayer), 1.0);
+#endif`)
         .replace('#include <clipping_planes_fragment>', `#include <clipping_planes_fragment>${FRAGMENT_FADE}`)
         .replace('#include <map_fragment>', `${FRAGMENT_CELL}
 #ifdef CITY_SLOT
