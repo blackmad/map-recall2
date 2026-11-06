@@ -243,5 +243,8 @@ export class FarShells {
     return { radiusM: this.radiusM, cells: this.residents.size, parts, partsShown: shown, triangles, gpuMB: +(bytes / 1048576).toFixed(1), fetchedMB: +(this.fetchedBytes / 1048576).toFixed(2), pending: this.inflight.size + this.queue.length, failed: this.failed.size, planned: this.planned ? this.planned.split(',').length : 0 };
   }
 
+  /** The z14 tiles whose far part draws now (diagnostics: the aerial probe compares them with the resident coarse tiles). */
+  shownTiles(): string[] { const out: string[] = []; for (const r of this.residents.values()) for (const p of r.parts) if (!p.hidden) out.push(p.tile); return out; }
+
   dispose(): void { this.clear(); }
 }

@@ -39,7 +39,7 @@ export type ShellBake = { shel: ShellMesh; far: FarPrism[]; coarseTriangles: num
  * `features`: the cell's styled buildings in cell order (index = bid); `context`: the party-wall neighbours of the
  * cell's buildings that are not in the cell (other cells), as the runtime context of a chunk.
  */
-export function bakeCellShell(i: number, j: number, features: readonly Feature[], context: readonly Feature[], root: string, groups: readonly string[] = []): ShellBake | null {
+export function bakeCellShell(i: number, j: number, features: readonly Feature[], context: readonly Feature[], root: string, groups: readonly string[] = [], farHidden: ReadonlySet<string> = new Set()): ShellBake | null {
   const t0 = performance.now();
   const bid = new Map<string, number>();
   features.forEach((f, k) => bid.set(String(f.properties.id), k));
@@ -49,19 +49,20 @@ export function bakeCellShell(i: number, j: number, features: readonly Feature[]
   if (!chunk.indices.length) return null;
   const origin = shellOrigin(i, j), shel = shellFromChunk(chunk, origin, id => bid.get(id) ?? -1);
   const ms = performance.now() - t0, t1 = performance.now();
-  return { shel, far: bakeFar(shel, features, origin, groups), coarseTriangles: chunk.indices.length / 3, ms, farMs: performance.now() - t1, buildings: features.length };
+  return { shel, far: bakeFar(shel, features, origin, groups, farHidden), coarseTriangles: chunk.indices.length / 3, ms, farMs: performance.now() - t1, buildings: features.length };
 }
 
 /** SHL1: a prism per building polygon, measured off the SHEL bake (shellMesh.ts farPrisms). */
 /** `groups[bid]`: the building's coarse group tile (CellBuilding.group, `x/y`); the far tier hides a tile's prisms while its resident shell draws. */
-export function bakeFar(shel: ShellMesh, features: readonly Feature[], origin: readonly [number, number], groups: readonly string[] = []): FarPrism[] {
+/** `hidden`: ids an installed model or kit replaces (the cell's HIDE list); they get no prism. */
+export function bakeFar(shel: ShellMesh, features: readonly Feature[], origin: readonly [number, number], groups: readonly string[] = [], hidden: ReadonlySet<string> = new Set()): FarPrism[] {
   const top = new Float64Array(features.length).fill(-Infinity);
   for (let k = 0; k < shel.bids.length; k++) top[shel.bids[k]] = Math.max(top[shel.bids[k]], shel.positions[k * 3 + 2]);
   // One prism per polygon of a building (a multipolygon's parts share its colours and heights).
   const rings: (number[][][] | null)[] = [], heights: { eavesM: number; topM: number }[] = [], owner: number[] = [];
   const polys: number[][][][] = [];
   features.forEach((f, b) => {
-    if (!Number.isFinite(top[b])) return;
+    if (!Number.isFinite(top[b]) || hidden.has(String(f.properties.id))) return;
     for (const polygon of asPolygons(f.geometry)) {
       const local = polygon.map(ring => { const pts = ring.map(([lng, lat]) => { const [x, y] = chunkMetres(lng, lat); return [x - origin[0], y - origin[1]]; }); if (pts.length > 1 && pts[0][0] === pts[pts.length - 1][0] && pts[0][1] === pts[pts.length - 1][1]) pts.pop(); return pts; }).filter(r => r.length >= 3);
       if (!local.length) continue;

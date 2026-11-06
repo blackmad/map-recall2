@@ -207,7 +207,8 @@ const residents = census => page.evaluate(census => {
 // --spots: still frames at the user's spots (S1 Hoftuin, S4 Zuidas), each after the camera parks and the world settles
 // (whenIdle, then 4 s), into SHOTS; no pan. The before/after strip beside the user's shots.
 if (argv.includes('--spots')) {
-  const spots = [{ name: 's1-hoftuin', at: [4.9065, 52.3655], ...POSES.s1 }, { name: 's4-zuidas', at: [4.8775, 52.3385], ...POSES.s4 }];
+  // West: Bos en Lommer looking west to the horizon (the far side of the pan; lane R2-B #229).
+  const spots = [{ name: 's1-hoftuin', at: [4.9065, 52.3655], ...POSES.s1 }, { name: 's4-zuidas', at: [4.8775, 52.3385], ...POSES.s4 }, { name: 'west-bos-en-lommer', at: [4.8530, 52.3780], ...POSES.s4, bearing: 270 }];
   fs.mkdirSync(shotsDir || 'artifacts/perf/aerial-spots', { recursive: true });
   const rows = [];
   await page.evaluate(() => { window.__aerialPause = true; });
@@ -223,8 +224,10 @@ if (argv.includes('--spots')) {
     await page.waitForTimeout(4000);
     const file = path.join(shotsDir || 'artifacts/perf/aerial-spots', `${device}-spot-${spot.name}.png`);
     await page.screenshot({ path: file });
-    rows.push({ spot: spot.name, file, ...(await residents(false)) });
-    console.log(`${device} spot ${spot.name}: ${file} lm ${rows.at(-1).landmarks} geo ${rows.at(-1).geometries} gl ${rows.at(-1).gl?.residentMB} MB`);
+    const overlap = await page.evaluate(() => { const vm = canalRecallGame.vectorMap, tb = vm._threeBuildings; const coarse = new Set([...(tb?.chunks?.keys?.() ?? [])].filter(k => k.startsWith('coarse:')).map(k => k.slice(7))); const near = [...(tb?.chunks?.keys?.() ?? [])].filter(k => k.startsWith('near:')).length; const shown = vm._farShells?.shownTiles?.() ?? []; return { coarseTiles: coarse.size, nearChunks: near, farShown: shown.length, farShownOverCoarse: shown.filter(t => coarse.has(t)), coarseSample: [...coarse].slice(0, 5) }; });
+    rows.push({ spot: spot.name, file, overlap, ...(await residents(false)) });
+    console.log(`${device} spot ${spot.name} overlap ${JSON.stringify(overlap)}`);
+    console.log(`${device} spot ${spot.name}: ${file} lm ${rows.at(-1).landmarks} geo ${rows.at(-1).geometries} gl ${rows.at(-1).gl?.residentMB} MB draws ${rows.at(-1).draws} fs ${rows.at(-1).farShells?.cells ?? '-'}/${rows.at(-1).farShells?.partsShown ?? '-'} r${rows.at(-1).farRadiusM}`);
   }
   fs.mkdirSync(path.dirname(out), { recursive: true });
   fs.writeFileSync(out, JSON.stringify({ device, qs, spots: rows, errors }, null, 1));
