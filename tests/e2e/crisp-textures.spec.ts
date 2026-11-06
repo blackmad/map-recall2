@@ -17,17 +17,31 @@ test.skip(!process.env.CRISP, 'set CRISP=1 to measure');
 
 const OUT = process.env.CRISP_DIR || 'artifacts/crisp';
 const ONLY = (process.env.CRISP_SPOTS ?? '').split(',').filter(Boolean);
-const SPOTS = ONLY.length ? CRISP_SPOTS.filter(s => ONLY.includes(s.name)) : CRISP_SPOTS;
+// CRISP_EXTRA='[{"name":..,"center":[..],..}]' (lane R3-B #231): ad-hoc poses beside the pinned ones (pose search).
+const EXTRA: typeof CRISP_SPOTS[number][] = process.env.CRISP_EXTRA ? JSON.parse(process.env.CRISP_EXTRA) : [];
+const ALL = [...CRISP_SPOTS, ...EXTRA];
+const SPOTS = ONLY.length ? ONLY.map(n => ALL.find(s => s.name === n)!).filter(Boolean) : ALL;
 const VARIANTS = (process.env.CRISP_VARIANTS ?? 'before=texturePolicy=0&railStripes=0&railMinPx=0&farRail=0;after=').split(';').filter(Boolean).map(v => {
   const [name, ...query] = v.split('='); return { name, query: query.join('=') };
 });
 // CRISP_MIX='before=0;after=1' (lane R2-A #228): per spot, frames at each `windowSdfMix` (the analytic windows' weight,
 // look/windowSdf.ts) in the same page and pose, so the A/B is not confounded by a re-landed camera. Needs a variant
 // with the analytic windows on (the default). Names the results `<variant>/<mix name>`.
-const MIXES = (process.env.CRISP_MIX ?? '').split(';').filter(Boolean).map(v => { const [name, value] = v.split('='); return { name, value: Number(value) }; });
+// Lane R3-B (#231): a mix may also set the band-limit uniforms, `name=1|band=1,1.25,2.5,5|shape=1,1.5,3,0` (look/windowSdf.ts).
+const MIXES = (process.env.CRISP_MIX ?? '').split(';').filter(Boolean).map(v => {
+  const [name, rest] = [v.slice(0, v.indexOf('=')), v.slice(v.indexOf('=') + 1)];
+  const [value, ...extra] = rest.split('|');
+  const set: Record<string, number | number[]> = {};
+  for (const e of extra) { const [k, list] = e.split('='); const n = list.split(',').map(Number); set[k === 'band' ? 'windowSdfBand' : k === 'shape' ? 'windowSdfShape' : k] = n.length === 1 ? n[0] : n; }
+  return { name, value: Number(value), set };
+});
 // The tier is forced on desktop (headless may probe low); the phone keeps its own (touch: legacy textures).
 const BASE_QUERY = (process.env.CRISP_QUERY ?? 'governor=0').replace(/^[?&]/, '');
 if (Number(process.env.CRISP_DPR) > 0) test.use({ deviceScaleFactor: Number(process.env.CRISP_DPR) });
+// CRISP_VIEWPORT=WxH (CSS px): the frame size (the user's shots are not 1440x900).
+if (/^\d+x\d+$/.test(process.env.CRISP_VIEWPORT ?? '')) { const [width, height] = process.env.CRISP_VIEWPORT!.split('x').map(Number); test.use({ viewport: { width, height } }); }
+
+let DEFAULT_VIEWPORT: { width: number; height: number } | null = null;
 
 async function settle(page: Page, where: string): Promise<void> {
   let previous = '', stable = 0;
@@ -81,6 +95,10 @@ async function frameMs(page: Page, frames = 24): Promise<{ gpuMs: number | null;
 }
 
 async function shot(page: Page, spot: typeof CRISP_SPOTS[number]): Promise<Buffer> {
+  // A spot with its own window (the user's pose) resizes the page first; the next spot without one goes back.
+  const want = spot.viewport ? { width: spot.viewport[0], height: spot.viewport[1] } : DEFAULT_VIEWPORT;
+  const have = page.viewportSize();
+  if (want && (have?.width !== want.width || have?.height !== want.height)) { await page.setViewportSize(want); await page.waitForTimeout(1000); }
   const pose = { center: spot.center, zoom: spot.zoom, bearing: spot.bearing, pitch: spot.pitch };
   const jump = () => page.evaluate((pose) => {
     const vm = (window as any).canalRecallGame.vectorMap;
@@ -111,6 +129,7 @@ for (const variant of VARIANTS) {
     const touch = info.project.name === 'iphone';
     const query = [touch ? '' : 'tier=high', BASE_QUERY, variant.query].filter(Boolean).join('&');
     await page.addInitScript(() => { (window as any).__canalRecallChunkFade = false; });
+    DEFAULT_VIEWPORT = page.viewportSize();
     await openRoute(page, { travelMode: 'car', viewMode: 'chase', enterRacing: true, query: `?${query}` });
     await page.evaluate(() => { const g = (window as any).canalRecallGame; if (g) { Object.defineProperty(g, '_lastDriveByAt', { configurable: true, get: () => g.raceTime, set: () => {} }); g._clearLandmarkNotice?.(); g.vectorMap?.setActiveLandmark?.(null); } });
     const errors: string[] = [];
@@ -126,11 +145,21 @@ for (const variant of VARIANTS) {
       const label = mix ? `${variant.name}/${mix.name}` : variant.name;
       let png = first;
       if (mix) {
-        await page.evaluate((v) => {
+        const mo: Record<string, number | boolean> = {};
+        if ('mipSharpen' in mix.set) mo.sharpen = mix.set.mipSharpen as number;
+        if ('mipLinear' in mix.set) mo.linear = !!mix.set.mipLinear;
+        if ('mipLobes' in mix.set) mo.lobes = mix.set.mipLobes as number;
+        if (Object.keys(mo).length) await page.evaluate((mo) => (window as any).canalRecallGame.vectorMap._threeBuildings.setCellMipOptions(mo), mo);
+        await page.evaluate(([v, set]) => {
           const tb = (window as any).canalRecallGame.vectorMap._threeBuildings;
-          for (const m of new Set([tb.material, ...tb.materials.values()])) if (m?.uniforms?.windowSdfMix) m.uniforms.windowSdfMix.value = v;
+          for (const m of new Set([tb.material, ...tb.materials.values()])) {
+            if (m?.uniforms?.windowSdfMix) m.uniforms.windowSdfMix.value = v;
+            for (const [k, list] of Object.entries(set)) if (m?.uniforms?.[k]) m.uniforms[k].value = list;
+          }
+          // `mips=0|1` (lane R3-B): GL's box mips or the custom chain on the live colour array (needs ?cellMipsKeep=1).
+          if ('mips' in set) (window as any).__crispMips = tb.setCellMipsMode?.(set.mips ? 'custom' : 'gl');
           tb.map?.triggerRepaint?.();
-        }, mix.value);
+        }, [mix.value, mix.set] as const);
         await page.waitForTimeout(500);
         const url: string = await page.evaluate(() => (window as any).canalRecallGame.vectorMap.captureFrame().then((c: HTMLCanvasElement | null) => c?.toDataURL('image/png') ?? ''));
         png = Buffer.from(url.split(',')[1], 'base64');
@@ -145,10 +174,10 @@ for (const variant of VARIANTS) {
         const ground = gs ? { ready: gs.ready, visible: gs.visible, blend: gs.blend, basemapHidden: gs.basemapHidden, radiusM: gs.radiusM, cells: Object.keys(gs.cells ?? {}).length, far: gs.far, errors: gs.errors } : null;
         const gl = vm.host?.renderer?.getContext?.(), glErrors: number[] = [];
         for (let k = 0; gl && k < 8; k++) { const e = gl.getError(); if (!e) break; glErrors.push(e); }
-        return { glErrors, ground, tier: perf.tier ?? null, pixelRatio: vm.host?.getPixelRatio?.(), facadeTextureMB: +(t?.stats?.().textureMB ?? 0).toFixed(1), atlas: t?.atlasSource ?? null, textures: i?.memory?.textures ?? null, geometries: i?.memory?.geometries ?? null, cellTier: t?.material?.uniforms?.cellTier?.value ?? null };
+        return { glErrors, ground, tier: perf.tier ?? null, pixelRatio: vm.host?.getPixelRatio?.(), facadeTextureMB: +(t?.stats?.().textureMB ?? 0).toFixed(1), atlas: t?.atlasSource ?? null, textures: i?.memory?.textures ?? null, geometries: i?.memory?.geometries ?? null, cellTier: t?.material?.uniforms?.cellTier?.value ?? null, cellMips: t?.cellMipsInfo ? { buildMs: t.cellMipsInfo.buildMs, upload: t.cellMipsInfo.upload } : null };
       });
       const ms = await frameMs(page);
-      (results[spot.name] ??= {})[label] = { errors: [...errors.filter(e => /Shader Error|ERROR: /.test(e)).slice(0, 2), ...errors.slice(-3)], query, size: [img.width, img.height], sharpness: { laplacianVar: +s.laplacianVar.toFixed(1), edge: +s.edge.toFixed(2), acutance: +s.acutance.toFixed(1) }, ...state, ...(mix ? { windowSdfMix: mix.value } : {}), ...ms };
+      (results[spot.name] ??= {})[label] = { errors: [...errors.filter(e => /Shader Error|ERROR: /.test(e)).slice(0, 2), ...errors.slice(-3)], query, size: [img.width, img.height], sharpness: { laplacianVar: +s.laplacianVar.toFixed(1), edge: +s.edge.toFixed(2), acutance: +s.acutance.toFixed(1) }, ...state, ...(mix ? { windowSdfMix: mix.value, ...mix.set } : {}), ...ms };
       console.log(info.project.name, spot.name, label, JSON.stringify(results[spot.name][label]));
       writeFileSync(file, JSON.stringify(results, null, 1));
       }

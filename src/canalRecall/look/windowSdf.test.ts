@@ -5,7 +5,7 @@ import assert from 'node:assert/strict';
 import * as THREE from 'three';
 import { cityProgramKey, createCityLookMaterial, createCityUniforms, variantDefines, type CityVariant } from './cityLook.ts';
 import { createLitFacadeMaterial } from '../rendererShared/litFacadeMaterial.ts';
-import { CELL_DEBUG_CLASSES, WINDOW_SDF_GLSL, cellDebugClass, cellDebugHistogram, cellDebugMode, windowSdfEnabled, WINDOW_SDF_DESKTOP_DEFAULT, WINDOW_SDF_TOUCH_DEFAULT } from './windowSdf.ts';
+import { CELL_DEBUG_CLASSES, WINDOW_SDF_GLSL, coverTent, cellDebugClass, cellDebugHistogram, cellDebugMode, windowSdfEnabled, WINDOW_SDF_DESKTOP_DEFAULT, WINDOW_SDF_TOUCH_DEFAULT, WINDOW_SDF_BAND, barFade, bandFrameSpan, bandFrameWeight, coverBox, windowSdfBandEnabled, windowSdfBandUniforms, windowSdfBandValues } from './windowSdf.ts';
 import { createWindowTableTexture } from './windowTable.ts';
 
 const withGlobal = <T>(key: string, value: unknown, fn: () => T): T => {
@@ -28,7 +28,7 @@ test('flags: analytic windows follow the tier defaults unless asked; ?windowSdf=
 test('defines and program keys: only the windows / debug variants carry the probe; the default keys are unchanged', () => {
   const plain: CityVariant = { lit: true, kind: 'chunk', swap: true };
   assert.equal(cityProgramKey(plain), 'city-look-v4|lit|chunk|swap');
-  assert.equal(cityProgramKey({ ...plain, windows: true }), 'city-look-v4|lit|chunk|swap|wsdf1');
+  assert.equal(cityProgramKey({ ...plain, windows: true }), 'city-look-v4|lit|chunk|swap|wsdf2');
   assert.equal(cityProgramKey({ ...plain, cellDebug: 'rho' }), 'city-look-v4|lit|chunk|swap|dbg-rho');
   const d = (v: CityVariant) => Object.keys(variantDefines(v)).filter(k => !k.startsWith('HL_')).sort();
   assert.deepEqual(d(plain), ['CITY_SLOT_COUNT', 'CITY_SWAP', 'CITY_VARIANT_UNIFORMS']);
@@ -63,7 +63,7 @@ test('lit facade material (cityLook=0): same window injection under the same def
   const table = createWindowTableTexture(THREE, 'photo');
   const off = createLitFacadeMaterial(THREE), on = createLitFacadeMaterial(THREE, undefined, { windowTable: table });
   assert.equal(off.customProgramCacheKey(), 'shared-frame-facade-v7');
-  assert.equal(on.customProgramCacheKey(), 'shared-frame-facade-v7-wsdf1');
+  assert.equal(on.customProgramCacheKey(), 'shared-frame-facade-v7-wsdf2');
   assert.ok(!('CITY_WINDOW_SDF' in off.defines) && 'CITY_WINDOW_SDF' in on.defines);
   const s = compiled(on);
   assert.match(s.fragmentShader, /windowSdf\(vFacUv, vLayer, 1\.0 - cellFar, fc, fm\);/);
@@ -83,4 +83,54 @@ test('rho debug classes: exact colours classify to themselves, a slot-mesh brick
   const px = new Uint8Array([255, 0, 0, 0, 255, 0, 128, 128, 128, 20, 30, 40]);
   const h = cellDebugHistogram(px, 4, 1, 3);
   assert.equal(h.facade, 2); assert.equal(h.counts[8], 1); assert.equal(h.share[0], 0.5);
+});
+
+// Band-limited windows (lane R3-B #231): the CPU twins of the shader's coverage and the band flags.
+test('band twin: a 0.5 px frame drawn at the 1 px minimum integrates to 0.5 x its tone at any phase', () => {
+  const fw = 10; // canvas px per screen px
+  for (const phase of [0, 0.13, 0.37, 0.5, 0.81]) {
+    const a = 100 + phase * fw;
+    let sum = 0;
+    for (let x = 80.5; x < 140; x += fw) sum += bandFrameWeight(x, a, 0.5 * fw, fw, 1.0, 1.0);
+    assert.ok(Math.abs(sum - 0.5) < 1e-9, `phase ${phase}: ${sum}`);
+    // Without the widening (frame min 0) the box alone integrates it too.
+    let plain = 0;
+    for (let x = 80.5; x < 140; x += fw) plain += bandFrameWeight(x, a, 0.5 * fw, fw, 0, 1.0);
+    assert.ok(Math.abs(plain - 0.5) < 1e-9, `phase ${phase} plain: ${plain}`);
+  }
+  assert.deepEqual(bandFrameSpan(12, 10, 1), { drawn: 12, k: 1 });
+  assert.deepEqual(bandFrameSpan(5, 10, 1), { drawn: 10, k: 0.5 });
+  assert.equal(coverBox(0, -1, 1, 1), 1);
+});
+
+test('band twin: glazing bars fade out between the bar px and their area goes to the glass', () => {
+  const [from, to] = WINDOW_SDF_BAND.barPx;
+  assert.equal(barFade(4, 4 / (from - 0.01), from, to), 0);
+  assert.equal(barFade(4, 4 / (to + 0.01), from, to), 1);
+  const mid = barFade(4, 4 / ((from + to) / 2), from, to);
+  assert.ok(mid > 0.4 && mid < 0.6);
+});
+
+test('band flags and uniforms: on by default, ?windowSdfBand=0 is round two; query knobs reach the uniform values', () => {
+  assert.equal(windowSdfBandEnabled(), true);
+  assert.equal(withGlobal('location', { search: '?windowSdfBand=0' }, () => windowSdfBandEnabled()), false);
+  const b = WINDOW_SDF_BAND;
+  assert.deepEqual(windowSdfBandValues(), { band: [1, b.footprint, b.fadePx[0], b.fadePx[1]], shape: [b.frameMinPx, b.barPx[0], b.barPx[1], b.tent ? 1 : 0] });
+  assert.deepEqual(withGlobal('location', { search: '?windowSdfBand=0&windowSdfFoot=1.5&windowSdfFade=1,2&windowSdfFrameMin=0&windowSdfBar=2,4&windowSdfTent=1' }, () => windowSdfBandValues()), { band: [0, 1.5, 1, 2], shape: [0, 2, 4, 1] });
+  const u1 = windowSdfBandUniforms(), u2 = windowSdfBandUniforms();
+  assert.notEqual(u1.windowSdfBand, u2.windowSdfBand, 'each material its own uniform objects');
+  // Round two's constants stay compiled in for band = 0.
+  assert.match(WINDOW_SDF_GLSL, /band \? windowSdfBand\.y : 1\.25/);
+  assert.match(WINDOW_SDF_GLSL, /vec2\(2\.5, 5\.0\)/);
+});
+
+test('band twin: the tent is a partition of unity at the pixel pitch (a thin bar sums to its width and keeps its peak)', () => {
+  const fw = 8;
+  for (const phase of [0, 0.2, 0.5, 0.9]) {
+    const a = 100 + phase * fw, w = 0.3 * fw;
+    let sum = 0;
+    for (let x = 60.5; x < 150; x += fw) sum += coverTent(x, a, a + w, fw);
+    assert.ok(Math.abs(sum - 0.3) < 1e-9, `phase ${phase}: ${sum}`);
+  }
+  assert.equal(coverTent(0, -100, 100, 1), 1);
 });

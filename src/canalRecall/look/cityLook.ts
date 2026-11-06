@@ -47,7 +47,7 @@ import { BAKED_SHADE_GLSL } from '../rendererShared/lightRig.ts';
 import { sceneLookFrom, sceneSlotHex, type SceneLook } from './sunny.ts';
 import { photoMatchedWallTint, type WallExposure } from './chunkWallExposure.ts';
 import { accentGlsl, packMask } from './maskPacking.ts';
-import { CELL_DEBUG_GLSL, WINDOW_SDF_GLSL, type CellDebug } from './windowSdf.ts';
+import { CELL_DEBUG_GLSL, WINDOW_SDF_GLSL, windowSdfBandUniforms, type CellDebug } from './windowSdf.ts';
 
 // ---------------------------------------------------------------------------
 // Flag
@@ -360,9 +360,11 @@ export type CityVariant = {
   cellDebug?: CellDebug;
   /** Facade chunks: analytic window frames, glass and muntins from the layer's window table (look/windowSdf.ts, `?windowSdf=0`). */
   windows?: boolean;
+  /** Facade chunks: a mip bias on the cell sample (roofTier.ts CELL_LOD_BIAS, look/cellMips.ts `?cellLodBias=`). */
+  lodBias?: boolean;
 };
 
-export const variantKey = (v: CityVariant) => `${v.lit ? 'lit' : 'unlit'}|${v.kind}|${v.kind === 'slot' ? v.uv ?? 'uv' : '-'}|${v.highlight ? 'hl' : v.dim ? 'dim' : '-'}|${v.side ?? 0}${v.noFade ? '|nofade' : ''}${v.swap ? '|swap' : ''}${v.cellDebug ? `|dbg-${v.cellDebug}` : ''}${v.windows ? '|wsdf1' : ''}`;
+export const variantKey = (v: CityVariant) => `${v.lit ? 'lit' : 'unlit'}|${v.kind}|${v.kind === 'slot' ? v.uv ?? 'uv' : '-'}|${v.highlight ? 'hl' : v.dim ? 'dim' : '-'}|${v.side ?? 0}${v.noFade ? '|nofade' : ''}${v.swap ? '|swap' : ''}${v.cellDebug ? `|dbg-${v.cellDebug}` : ''}${v.windows ? '|wsdf2' : ''}${v.lodBias ? '|lodb' : ''}`;
 
 /** Shader defines for a variant (also what the program cache key is built from). */
 export function variantDefines(v: CityVariant): Record<string, string> {
@@ -371,6 +373,7 @@ export function variantDefines(v: CityVariant): Record<string, string> {
   if (v.swap) d.CITY_SWAP = '';
   if (v.cellDebug === 'rho' && v.kind === 'chunk') { d.CELL_TIER_PROBE = ''; d.CELL_DEBUG_RHO = ''; }
   if (v.windows && v.kind === 'chunk') { d.CELL_TIER_PROBE = ''; d.CITY_WINDOW_SDF = ''; }
+  if (v.lodBias && v.kind === 'chunk') d.CELL_LOD_BIAS = '';
   if (v.lit) {
     // Lit (the shared frame's look): box UVs and the highlight/dim state are per-material uniforms (cityVariantUniforms),
     // so the uv/box and plain/highlight/dim variants of a kind share one program (#129 P4 registry).
@@ -389,7 +392,7 @@ export function cityVariantUniforms(v: CityVariant): { cityForce: { value: numbe
 }
 
 /** The program key of a variant: lit variants differ only in uniforms beyond their kind; side is a material parameter. */
-export const cityProgramKey = (v: CityVariant) => (v.lit ? `city-look-v4|lit|${v.kind}${v.swap ? '|swap' : ''}${v.cellDebug ? `|dbg-${v.cellDebug}` : ''}${v.windows ? '|wsdf1' : ''}` : `city-look-v3|${variantKey({ ...v, side: 0 })}`);
+export const cityProgramKey = (v: CityVariant) => (v.lit ? `city-look-v4|lit|${v.kind}${v.swap ? '|swap' : ''}${v.cellDebug ? `|dbg-${v.cellDebug}` : ''}${v.windows ? '|wsdf2' : ''}${v.lodBias ? '|lodb' : ''}` : `city-look-v3|${variantKey({ ...v, side: 0 })}`);
 
 const HIGHLIGHT_SRGB = 'vec3(1.0, 0.824, 0.122)';
 const HIGHLIGHT_LINEAR = 'vec3(1.0, 0.637, 0.0137)';
@@ -639,6 +642,11 @@ export type CityLookUniforms = {
   windowTable: { value: any };
   /** CITY_WINDOW_SDF: 1 draws the analytic windows, 0 the painted cell (A/B in one page). */
   windowSdfMix: { value: number };
+  /** CITY_WINDOW_SDF: the band-limit knobs (look/windowSdf.ts WINDOW_SDF_BAND; x = 0 is round two's shader). */
+  windowSdfBand: { value: number[] };
+  windowSdfShape: { value: number[] };
+  /** CELL_LOD_BIAS: the facade cell sample's mip bias. */
+  cellLodBias: { value: number };
 };
 
 export function createCityUniforms(THREE: any, init: Partial<CityLookUniforms> = {}): CityLookUniforms {
@@ -659,6 +667,10 @@ export function createCityUniforms(THREE: any, init: Partial<CityLookUniforms> =
     cityUnder: init.cityUnder ?? { value: 0 },
     windowTable: init.windowTable ?? { value: null },
     windowSdfMix: init.windowSdfMix ?? { value: 1 },
+    cellLodBias: init.cellLodBias ?? { value: 0 },
+    ...windowSdfBandUniforms(),
+    ...(init.windowSdfBand ? { windowSdfBand: init.windowSdfBand } : {}),
+    ...(init.windowSdfShape ? { windowSdfShape: init.windowSdfShape } : {}),
   };
 }
 

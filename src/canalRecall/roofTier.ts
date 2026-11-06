@@ -99,8 +99,16 @@ uniform vec2 cellTier;
 // What the last cellTierSample saw (look/windowSdf.ts reads them: the ?cellDebug=rho view, the analytic windows' fade).
 float cellRho = 0.0; float cellFarTier = 0.0; float cellFar = 0.0;
 #endif
+#ifdef CELL_LOD_BIAS
+// ?cellLodBias=<b> (lane R3-B #231, look/cellMips.ts): a mip bias on the facade cell sample, the cheap sharpness A/B.
+uniform float cellLodBias;
+#endif
 void cellTierSample(vec3 p, float dist, out vec3 c, out vec2 m) {
+#ifdef CELL_LOD_BIAS
+  vec4 cc = texture(cells, p, cellLodBias); vec2 mm = texture(masks, p, cellLodBias).rg;
+#else
   vec4 cc = texture(cells, p); vec2 mm = texture(masks, p).rg;
+#endif
   c = cc.rgb; m = vec2(mm.r, ${accentGlsl('mm', 'cc')});
   float far = 0.0;
 #ifdef CELL_TIER_PROBE

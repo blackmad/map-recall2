@@ -63,6 +63,13 @@ import { worldCameraOf } from './engine/worldCameraOf.js';
 import type { WorldCamera } from './engine/worldViewApi.js';
 import { packMask } from './look/maskPacking.js';
 import { cellDebugMode, windowSdfEnabled } from './look/windowSdf.js';
+import { arrayMips, cellLodBiasFlag, cellMipOptions, cellMipsEnabled } from './look/cellMips.js';
+import { uploadArrayMips, type ArrayMipUploadResult } from './look/arrayMipUpload.js';
+
+/** A query flag's raw value, or null (tolerates a page without URLSearchParams). */
+function pageFlag(name: string): string | null {
+  try { return typeof URLSearchParams === 'function' ? new URLSearchParams(globalThis.location?.search ?? '').get(name) : null; } catch { return null; }
+}
 import { createWindowTableTexture, windowTableData } from './look/windowTable.js';
 
 type BuildOptions = { surveyedEnvelopeData: EnvelopeTransport["envelopes"]; surveyedEnvelopeRevision: string; look: BuildingLook; streets?: Float32Array; profiles: readonly StreetAppearanceProfile[]; contextFeatures?: readonly Feature[]; appearanceRevision: string; hostOpenings: readonly ChunkHostOpeningConfig[]; hostOpeningRevision: string };
@@ -669,16 +676,79 @@ export class ThreeBuildings {
     // extract, instead of ~200 canvas cells painted on the main thread. Anything short of exact bytes paints as before.
     const { layers, total } = lookAtlasLayers(look, slots), started = performance.now(), stamp = lookAtlasStamp(BUNDLE_SRC);
     const cached = await readCachedLookAtlas(stamp, look, size, slots, layers, total);
-    if (cached) { this.atlasSource = { reason: 'cache', ms: Math.round(performance.now() - started), file: '' }; return lookTexturesOf(this.THREE, cached, anisotropy); }
+    if (cached) { this.atlasSource = { reason: 'cache', ms: Math.round(performance.now() - started), file: '' }; return this.withColourMips(lookTexturesOf(this.THREE, cached, anisotropy), cached, sliceMs); }
     const load = await loadLookAtlas(new URL('../data/extracts/amsterdam', document.baseURI).href, look, size, slots, layers, total);
     this.atlasSource = { reason: load.reason, ms: Math.round(load.ms), file: load.file };
-    if (load.atlas) return lookTexturesOf(this.THREE, load.atlas, anisotropy);
+    if (load.atlas) return this.withColourMips(lookTexturesOf(this.THREE, load.atlas, anisotropy), load.atlas, sliceMs);
     const paintStarted = performance.now();
     const painted = await paintLookArrays(look, size, { slotLayers: slots, sliceMs: () => this.atlasSliceMs ?? sliceMs ?? TEXTURE_SLICE_MS });
     this.atlasSource.paintMs = Math.round(performance.now() - paintStarted);
     storeCachedLookAtlas(stamp, painted, look, slots);
-    return lookTexturesOf(this.THREE, painted, anisotropy);
+    return this.withColourMips(lookTexturesOf(this.THREE, painted, anisotropy), painted, sliceMs);
   }
+
+  /**
+   * The facade colour array's own mip chain (look/cellMips.ts, lane R3-B #231). The array goes up as before, with GL's
+   * mips, so nothing waits for this; the custom levels are built afterwards in frame-sized slices (~2 s of slices on
+   * the 222-layer desktop atlas) and then replace levels 1..N in the same storage (look/arrayMipUpload.ts), so the
+   * facades sharpen a moment after they appear. `?cellMips=0` keeps GL's mips. `cellMipsInfo` records the cost.
+   */
+  private withColourMips<T extends { colour: any }>(set: T, atlas: LookAtlasArrays, sliceMs?: number): T {
+    if (!cellMipsEnabled() || (atlas.size & (atlas.size - 1))) return set;
+    const texture = set.colour, colour = atlas.colour, mask = atlas.mask, { size, total } = atlas;
+    const options = cellMipOptions(), keep = pageFlag('cellMipsKeep') === '1';
+    void (async () => {
+      const started = performance.now();
+      // lookTexturesOf has packed the accent into the colour's alpha (in place): the levels carry what the shader reads.
+      const { levels } = await arrayMips(colour, size, total, mask, 2, options, this.atlasSliceMs ?? sliceMs ?? TEXTURE_SLICE_MS);
+      const info: NonNullable<ThreeBuildings['cellMipsInfo']> = { buildMs: Math.round(performance.now() - started), options, size, layers: total, levels: levels.length, upload: null };
+      this.cellMipsInfo = info;
+      // Three uploads the array on the first frame that draws it; wait for that (at most ~10 s of frames).
+      for (let i = 0; i < 600 && !this.renderer?.properties?.get?.(texture)?.__webglTexture; i++) await new Promise(r => requestAnimationFrame(r));
+      if (!this.renderer?.getContext?.()) return;
+      info.upload = uploadArrayMips(this.renderer, texture, levels, size, total);
+      // `?cellMipsKeep=1` (probes only): keep the CPU levels so setCellMipsMode can A/B them against GL's in one page.
+      if (keep) this.cellMipsKept = { texture, levels, size, depth: total, colour, mask };
+      this.map.triggerRepaint();
+    })();
+    return set;
+  }
+  private cellMipsKept: { texture: any; levels: Uint8Array[]; size: number; depth: number; colour: Uint8Array; mask: Uint8Array } | null = null;
+
+  /** Probe hook: rebuild the kept custom levels with other options (look/cellMips.ts) and upload them; ms taken. */
+  async setCellMipOptions(options: Partial<ReturnType<typeof cellMipOptions>>): Promise<number> {
+    const kept = this.cellMipsKept;
+    if (!kept) return -1;
+    const started = performance.now();
+    const { levels } = await arrayMips(kept.colour, kept.size, kept.depth, kept.mask, 2, { ...cellMipOptions(), ...options }, 0);
+    kept.levels = levels;
+    uploadArrayMips(this.renderer, kept.texture, levels, kept.size, kept.depth);
+    this.map.triggerRepaint();
+    return Math.round(performance.now() - started);
+  }
+
+  /**
+   * Probe hook (tests/e2e/crisp-textures `CRISP_MIX ...|mips=0`): regenerate the live colour array's levels 1..N with
+   * GL's box mips, or put the custom ones back (needs `?cellMipsKeep=1`). Returns the mode now drawn.
+   */
+  setCellMipsMode(mode: 'custom' | 'gl'): string {
+    const t = this.material?.uniforms?.cells?.value, gl = this.renderer?.getContext?.();
+    const handle = t && this.renderer?.properties?.get?.(t)?.__webglTexture;
+    if (!gl || !handle) return 'none';
+    if (mode === 'gl') {
+      this.renderer.state.bindTexture(gl.TEXTURE_2D_ARRAY, handle);
+      gl.generateMipmap(gl.TEXTURE_2D_ARRAY);
+    } else {
+      const kept = this.cellMipsKept;
+      if (!kept || kept.texture !== t) return 'gl';
+      const r = uploadArrayMips(this.renderer, t, kept.levels, kept.size, kept.depth);
+      if (r.mode !== 'custom') return 'gl';
+    }
+    this.map.triggerRepaint();
+    return mode;
+  }
+  /** What the custom colour mips cost (null: GL mips). */
+  cellMipsInfo: { buildMs: number; options: ReturnType<typeof cellMipOptions>; size: number; layers: number; levels: number; upload: ArrayMipUploadResult | null } | null = null;
 
   setVisible(visible: boolean): void {
     if (this.visible === visible) return;
@@ -1862,16 +1932,18 @@ export class ThreeBuildings {
       // Analytic windows (look/windowSdf.ts, lane R2-A #228): only for a look whose table has windows; the define,
       // the program key suffix and the table upload are all absent with `?windowSdf=0`.
       const windowTable = this.windowTableFor(cellSetOf(this.look));
-      return createCityLookMaterial(THREE, { lit: this.lit, kind: 'chunk', side: THREE.FrontSide, ...(SWAP_COMPLEMENT ? { swap: true } : {}), ...(cellDebug ? { cellDebug } : {}), ...(windowTable ? { windows: true } : {}) }, createCityUniforms(THREE, {
+      const lodBias = cellLodBiasFlag();
+      return createCityLookMaterial(THREE, { lit: this.lit, kind: 'chunk', side: THREE.FrontSide, ...(SWAP_COMPLEMENT ? { swap: true } : {}), ...(cellDebug ? { cellDebug } : {}), ...(windowTable ? { windows: true } : {}), ...(lodBias != null ? { lodBias: true } : {}) }, createCityUniforms(THREE, {
         ...(SWAP_COMPLEMENT ? { citySwapUnder: this.swapUnder } : {}),
         ...(windowTable ? { windowTable: { value: windowTable } } : {}),
+        ...(lodBias != null ? { cellLodBias: { value: lodBias } } : {}),
         bands: { value: variant.shadeBands }, flatColour: { value: variant.flatColour ? 1 : 0 }, wallGain: { value: litFacadeWallGain(variant.litWallGain) },
         roofLayers: { value: roofLayers }, roofTier: { value: roofTierUniform() }, cellTier: { value: this.cellTierValue() },
       }));
     }
     if (this.lit) {
       const windowTable = this.windowTableFor(cellSetOf(this.look));
-      const material = createLitFacadeMaterial(THREE, { cityFlat: { value: CITY_FLAT }, roofLayers: { value: roofLayers }, roofTier: { value: roofTierUniform() }, cellTier: { value: this.cellTierValue() } }, windowTable ? { windowTable } : {});
+      const material = createLitFacadeMaterial(THREE, { cityFlat: { value: CITY_FLAT }, roofLayers: { value: roofLayers }, roofTier: { value: roofTierUniform() }, cellTier: { value: this.cellTierValue() } }, { ...(windowTable ? { windowTable } : {}), lodBias: cellLodBiasFlag() });
       material.uniforms.bands.value = LOOK_VARIANTS[this.look].shadeBands;
       material.uniforms.flatColour.value = LOOK_VARIANTS[this.look].flatColour ? 1 : 0;
       if (material.uniforms.wallGain) material.uniforms.wallGain.value = litFacadeWallGain(LOOK_VARIANTS[this.look].litWallGain);
