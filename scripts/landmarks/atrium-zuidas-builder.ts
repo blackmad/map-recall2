@@ -132,7 +132,7 @@ export function buildAtriumZuidas(_w: number, _d: number, b: BuildingTools & {ma
     // ground storey to 7.0 m, 15 floors of 3.9 m, the roof band; short floors read off Commons Strawinsky 02/11 and w02
     slabs: [
       {y: 6.6, h: 0.8, out: 1.1},
-      ...Array.from({length: 14}, (_, k) => ({y: 10.9 + k * 3.9 - 0.45, h: 0.45, out: 0.9, open: ([
+      ...Array.from({length: 14}, (_, k) => ({y: 10.9 + k * 3.9 - 0.75, h: 0.75, out: 0.9, open: ([
         [], [], [], ['NW'], ['NW'], ['NW'], [], ['SE'], ['SE'], ['NW', 'NE'], ['NE'], [], ['SW'], ['SW'],
       ] as Corner[][])[k]})),
       {y: 64.9, h: 1.5, out: 0.9},
@@ -156,7 +156,7 @@ export function buildAtriumZuidas(_w: number, _d: number, b: BuildingTools & {ma
     glass: 'glass', band: 'bronze', fin: 'dark',
     slabs: [
       {y: 5.6, h: 0.8, out: 1.0},
-      ...Array.from({length: 8}, (_, k) => ({y: 9.75 + k * 3.75 - 0.45, h: 0.45, out: 0.9, open: ([[], ['NW'], [], [], ['NE'], [], ['NW'], []] as Corner[][])[k]})),
+      ...Array.from({length: 8}, (_, k) => ({y: 9.75 + k * 3.75 - 0.75, h: 0.75, out: 0.9, open: ([[], ['NW'], [], [], ['NE'], [], ['NW'], []] as Corner[][])[k]})),
       {y: 38.9, h: 1.1, out: 0.9},
     ],
   };
@@ -173,7 +173,7 @@ export function buildAtriumZuidas(_w: number, _d: number, b: BuildingTools & {ma
   b.mark?.('towers');
 
   // ---- 3DBAG massing: NMB, Zuidtoren plinth, garage deck ----
-  type Block = {rings: P3[][]; h: number; kind: 'grid' | 'core' | 'wing' | 'plinth' | 'deck'};
+  type Block = {rings: P3[][]; h: number; kind: 'grid' | 'core' | 'wing' | 'plinth' | 'deck' | 'lobby'};
   const blocks: Block[] = [];
   const inside = (c: PlanPt, ...rs: number[][][]) => rs.some(r => inPoly(c[0], c[1], r));
   for (const r of roofsOf(NMB)) {
@@ -187,7 +187,7 @@ export function buildAtriumZuidas(_w: number, _d: number, b: BuildingTools & {ma
   }
   // (planes above 12 m on the lobby and garage pands are 3DBAG slivers of the NMB block's west wall, drawn there already)
   // the lobby roof sits 3DBAG-flush with the deck that wraps it; lift its planes 0.2 m so the two never share a plane
-  for (const r of roofsOf(NORTH)) if (area(r.rings[0]) > 1.5 && r.h < 12) blocks.push({rings: r.rings.map(g => g.map(q => [q[0], q[1] + 0.2, q[2]] as P3)), h: r.h + 0.2, kind: 'plinth'});
+  for (const r of roofsOf(NORTH)) if (area(r.rings[0]) > 1.5 && r.h < 12) blocks.push({rings: r.rings.map(g => g.map(q => [q[0], q[1] + 0.2, q[2]] as P3)), h: r.h + 0.2, kind: 'lobby'});
   for (const r of roofsOf(ZUID)) if (r.h < 20 && !inPoly(r.c[0], r.c[1], zRing) && area(r.rings[0]) > 1.5) blocks.push({rings: r.rings, h: r.h, kind: 'plinth'});
   for (const r of roofsOf(GARAGE)) {
     if (r.h > 12 || area(r.rings[0]) < 1.5) continue;
@@ -196,7 +196,7 @@ export function buildAtriumZuidas(_w: number, _d: number, b: BuildingTools & {ma
     if (area(r.rings[0]) < 100 && inside(r.c, NORTH.nativeRing)) continue;
     blocks.push({rings: r.rings, h: r.h, kind: r.h > 8 && r.h < 9.5 ? 'deck' : 'plinth'});
   }
-  const WALL: Record<Block['kind'], string> = {grid: 'canopyGlass', core: 'stone', wing: 'stone', plinth: 'glass', deck: 'glass'};
+  const WALL: Record<Block['kind'], string> = {grid: 'canopyGlass', core: 'stone', wing: 'stone', plinth: 'glass', deck: 'glass', lobby: 'glass'};
   for (const k of blocks) {
     roofPrism(b, k.rings, WALL[k.kind], k.kind === 'deck' ? 'concrete' : 'slate');
     vols.push({ring: k.rings[0], h: k.h});
@@ -262,6 +262,11 @@ export function buildAtriumZuidas(_w: number, _d: number, b: BuildingTools & {ma
           const near = heightAt(f.origin[0] + f.tangent[0] * L / 2 + f.n[0] * 0.25, f.origin[1] + f.tangent[1] * L / 2 + f.n[1] * 0.25);
           if (y0 < BREAK - 1 && top > BREAK + 4 && near < BREAK - 1) slab(b, f, L / 2, BREAK - 0.55, L - 0.2, 0.55, 0.22, 'dark');
           if (e0.f.n[1] < -0.95 && L > 30 && (!bay || L > bay.L)) bay = {f, L, y0: Math.max(y0, BREAK), top};
+        } else if (k.kind === 'lobby' && heightAt(f.origin[0] + f.tangent[0] * L / 2 + f.n[0] * 0.25, f.origin[1] + f.tangent[1] * L / 2 + f.n[1] * 0.25) < y0 + 0.5) {
+          // the two-storey glazed lobby (w04 2024): slim mullions about 1.5 m apart and one transom at the mezzanine
+          const n = Math.max(1, Math.round(L / 1.5));
+          for (let j = 1; j < n; j++) slab(b, f, (L * j) / n, y0, 0.08, top - y0, 0.12, 'frame');
+          if (y0 < 4) slab(b, f, L / 2, 4.3, L - 0.1, 0.1, 0.1, 'frame');
         } else if (k.kind === 'wing') {
           gridFacade(b, {origin: f.origin, tangent: f.tangent, n: f.n, length: L, base: y0, poly: [[0, y0], [L, y0], [L, top + 0.4], [0, top + 0.4]], index: 0}, ribbon);
         } else if (k.kind === 'core' && L > 4 && top - y0 > 8 && !r.every(p => p[0] < -24)) {
@@ -315,9 +320,9 @@ export function buildAtriumZuidas(_w: number, _d: number, b: BuildingTools & {ma
         if (e0.L < 6 || e0.f.n[1] > -0.9) continue; // north-facing edges only
         if (heightAt(e0.m[0] + e0.f.n[0] * 1.0, e0.m[1] + e0.f.n[1] * 1.0) > 1) continue;
         slab(b, e0.f, e0.L / 2, top - 0.55, e0.L - 0.4, 0.8, 1.8, 'white', -0.3);
-        // the letters, about 8.6 m wide and 1.1 m tall, centred over x = -47 (the lobby entrance)
+        // the letters, about 7 m wide and 0.9 m tall (camera-matched on the w04 review overlay), centred over x = -47 (the lobby entrance)
         const t = (-47 - e0.f.origin[0]) / e0.f.tangent[0];
-        if (Math.abs(e0.f.tangent[0]) > 0.9 && t > 4.5 && t < e0.L - 4.5) letters(b, e0.f, 'ATRIUM', t, top + 0.25, 0.5, 0.245, 0.14, 'dark', 0.157);
+        if (Math.abs(e0.f.tangent[0]) > 0.9 && t > 4.5 && t < e0.L - 4.5) letters(b, e0.f, 'ATRIUM', t, top + 0.25, 0.5, 0.2, 0.14, 'dark', 0.13);
       }
     }
   }

@@ -241,12 +241,12 @@
           "kind": "lettering",
           "where": "lobby entrance on Strawinskylaan: ATRIUM in dark capitals standing on the canopy over the deck edge",
           "approxSizeM": [
-            8.6,
-            1.1
+            7,
+            0.9
           ],
           "plan": "modelled",
           "seenIn": "recording_2024-09-02_09-15-33_01297",
-          "how": "letters() 0.14 m deep in dark, 8.6 x 1.1 m, standing on the canopy top over x = -47 (the lobby entrance)"
+          "how": "letters() 0.14 m deep in dark, 7 x 0.9 m (camera-matched on the w04 review overlay), standing on the canopy top over x = -47 (the lobby entrance)"
         },
         {
           "id": "north-canopy",
@@ -258,7 +258,7 @@
           ],
           "plan": "modelled",
           "seenIn": "recording_2024-09-02_09-15-33_01297",
-          "how": "the deck-canopy slab (white, 1.8 m proud, 0.8 m deep) runs on over the lobby; the lobby itself is its 3DBAG prism in glass"
+          "how": "the deck-canopy slab (white, 1.8 m proud, 0.8 m deep) runs on over the lobby; the lobby is its 3DBAG prism in glass with slim mullions every 1.5 m and a transom at 4.3 m"
         },
         {
           "id": "stone-joint",

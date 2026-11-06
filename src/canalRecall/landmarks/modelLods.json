@@ -1314,9 +1314,9 @@
   "triangles": 5470
  },
  "symphony": {
-  "sourceHash": "93f5c27085ce1f48",
+  "sourceHash": "29641e783661205c",
   "buildVersion": 2,
-  "bytes": 85848,
+  "bytes": 85852,
   "triangles": 4508
  },
  "ij-toren": {
@@ -2316,9 +2316,9 @@
   "triangles": 1134
  },
  "atrium-zuidas": {
-  "sourceHash": "7aaaa2ea57912a46",
+  "sourceHash": "7fc3bc7fd7679a8d",
   "buildVersion": 2,
-  "bytes": 100996,
-  "triangles": 5204
+  "bytes": 102844,
+  "triangles": 5288
  }
 }
