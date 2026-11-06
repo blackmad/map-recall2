@@ -1,6 +1,6 @@
 # Engine look-and-robustness plan (2026-11-06) — for the Opus integrator
 
-Issues: plan #222; lanes #223 (R1-A swap), #224 (R1-B crisp), #225 (R1-C aerial). Lane briefs: `docs/handoffs/lane-engine-{swap,crisp,aerial}-20261106.md`. User shots archived in map-recall2-screenshots `engine/2026-11-06-user-shots/` (s1–s4).
+Issues: plan #222; round 1 lanes #223 (R1-A swap), #224 (R1-B crisp), #225 (R1-C aerial), merged b52f002e0; round 2 lanes #228 (R2-A windows), #229 (R2-B shells), briefed 2026-11-06 after the user said "do round two". Lane briefs: `docs/handoffs/lane-engine-{swap,crisp,aerial,windows,shells}-20261106.md`. User shots archived in map-recall2-screenshots `engine/2026-11-06-user-shots/` (s1–s4).
 
 ## Context
 
@@ -186,7 +186,9 @@ Files: new `scripts/aerial-pan.mjs`, `src/canalRecall/engine/glCounters.ts`,
    heartbeat at all (none in the last 24 h); if the deployed build is not sending,
    that is a P0 for this lane.
 
-## Round 2 — after the user reviews round one's strips (two opus lanes)
+## Round 2 — two opus lanes, started 2026-11-06 (#228, #229)
+
+Round one's findings that shaped the briefs: the S3 moiré is still-pan façade aliasing, not the swap (27,639 px ΔE>20 at the slab); 512 px cells gave no sharpness gain, so the S2 fix must be resolution-independent; the far ring was inactive in every round-one frame; aerial p99 owners are labels and tile-streaming upload churn (~65 MB/s). Briefs: `lane-engine-windows-20261106.md` (R2-A, port 4643) and `lane-engine-shells-20261106.md` (R2-B, port 4644). Merge order: R2-B first (world format and chunk code), then R2-A (façade shaders); the two are fenced to disjoint files.
 
 ### Lane R2-A — resolution-independent windows
 Replace the painted window rectangles with analytic SDF cells in the façade shader
