@@ -21,33 +21,56 @@ const POSES = [
 const ctxOpts = device === 'iphone' ? { ...devices['iPhone 13'], defaultBrowserType: undefined } : { viewport: { width: 1288, height: 715 }, deviceScaleFactor: 2 };
 fs.mkdirSync(out, { recursive: true });
 const results = {};
-const browser = await chromium.launch({ headless: true, executablePath: '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome' });
 const luma = (d, i) => 0.2126 * d[i] + 0.7152 * d[i + 1] + 0.0722 * d[i + 2];
 
 /**
  * The rail lines' pixels are those that change when the overview's rail meshes are hidden (renderOrder 29/30, the
  * halo and core or the old single line; streets are 10-26). Down columns, each run of changed pixels is one line's
- * cross-section: its width in CSS px, and its contrast, the luma it takes off what lies under it.
+ * cross-section (see measure): its width in CSS px, and its contrast, the luma it takes off what lies under it.
  */
-async function measure(withPng, withoutPng, dpr) {
+async function measure(withPng, withoutPng, cssWidth) {
   const a = await sharp(withPng).removeAlpha().raw().toBuffer({ resolveWithObject: true }), b = await sharp(withoutPng).removeAlpha().raw().toBuffer();
   const { width: w, height: h, channels: c } = a.info, A = a.data, runs = [];
+  // The frame's pixels per CSS px: the engine's drawing buffer, not devicePixelRatio (iPhone draws ~1.25x, not 3x).
+  const dpr = w / cssWidth;
+  // A run: changed pixels (|d luma| > 6) down a column, one-device-pixel gaps bridged; it counts as a line only when it
+  // darkens what lies under it by PEAK luma somewhere (single dithered edge pixels do not).
+  const PEAK = 30, diff = (x, k) => luma(b, (k * w + x) * c) - luma(A, (k * w + x) * c);
   for (let x = 0; x < w; x += Math.max(1, Math.round(w / 120))) {
     for (let y = 0; y < h;) {
-      const d = k => Math.abs(luma(A, (k * w + x) * c) - luma(b, (k * w + x) * c));
-      if (d(y) > 6) { let e = y, best = 0; while (e < h && d(e) > 6) { best = Math.max(best, luma(b, (e * w + x) * c) - luma(A, (e * w + x) * c)); e++; } runs.push({ px: (e - y) / dpr, contrast: best }); y = e; } else y++;
+      if (Math.abs(diff(x, y)) <= 6) { y++; continue; }
+      let e = y, best = 0;
+      while (e < h && (Math.abs(diff(x, e)) > 6 || (e + 1 < h && Math.abs(diff(x, e + 1)) > 6))) { best = Math.max(best, diff(x, e)); e++; }
+      if (best >= PEAK) runs.push({ px: (e - y) / dpr, contrast: best });
+      y = e;
     }
   }
-  const s = arr => { const v = [...arr].sort((p, q) => p - q); return v.length ? { n: v.length, p10: +v[Math.floor(v.length * 0.1)].toFixed(2), p50: +v[v.length >> 1].toFixed(2), p90: +v[Math.floor(v.length * 0.9)].toFixed(2) } : null; };
-  return { widthCssPx: s(runs.map(r => r.px)), contrastLuma: s(runs.map(r => r.contrast)) };
+  const s = arr => { const v = [...arr].sort((p, q) => p - q); return v.length ? { n: v.length, p10: +v[Math.floor(v.length * 0.1)].toFixed(2), p50: +v[v.length >> 1].toFixed(2), p90: +v[Math.floor(v.length * 0.9)].toFixed(2), under125: +(v.filter(x => x < 1.25).length / v.length).toFixed(3) } : null; };
+  return { pxPerCss: +dpr.toFixed(3), widthCssPx: s(runs.map(r => r.px)), contrastLuma: s(runs.map(r => r.contrast)) };
 }
 
 const capture = page => page.evaluate(() => window.canalRecallGame.vectorMap.captureFrame().then(c => c?.toDataURL('image/png') ?? '')).then(u => Buffer.from(u.split(',')[1], 'base64'));
-const setRails = (page, on) => page.evaluate(on => {
-  for (const m of window.canalRecallGame.vectorMap._overview.root.children) if (m.renderOrder === 29 || m.renderOrder === 30) { if (on) m.layers.enableAll(); else m.layers.disableAll(); }
+// PROBE_KIND=rail (or tram, subway, ...): only that kind's lines are hidden, so the runs are that kind's alone
+// (lane variants; the old single-line build has no kinds and hides every rail line).
+const KIND = process.env.PROBE_KIND ?? '';
+const setRails = (page, on) => page.evaluate(({ on, kind }) => {
+  const ov = window.canalRecallGame.vectorMap._overview, only = kind && ov.railLines?.length ? new Set(ov.railLines.filter(r => r.kind === kind).map(r => r.mesh)) : null;
+  for (const m of ov.root.children) if ((m.renderOrder === 29 || m.renderOrder === 30) && (!only || only.has(m))) { if (on) m.layers.enableAll(); else m.layers.disableAll(); }
   window.canalRecallGame.vectorMap.host?.triggerRepaint?.();
-}, on);
+}, { on, kind: KIND });
 
+// REMEASURE=<css width>: measure the frames already in <outdir> again (no browser), e.g. REMEASURE=390 for iPhone 13.
+if (process.env.REMEASURE) {
+  for (const f of fs.readdirSync(out).filter(f => f.startsWith(`${device}-overview-`) && f.endsWith('.png') && !f.includes('-bare'))) {
+    const stem = f.slice(0, -4), bare = `${out}/${stem}-bare${KIND ? `-${KIND}` : ''}.png`;
+    if (!fs.existsSync(bare)) continue;
+    results[stem.slice(`${device}-overview-`.length)] = await measure(`${out}/${f}`, bare, Number(process.env.REMEASURE));
+    console.log(stem, JSON.stringify(results[stem.slice(`${device}-overview-`.length)]));
+  }
+  fs.writeFileSync(`${out}/${device}-overview${KIND ? `-${KIND}` : ''}-remeasured.json`, JSON.stringify(results, null, 1));
+  process.exit(0);
+}
+const browser = await chromium.launch({ headless: true, executablePath: '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome' });
 for (const v of variants) {
   const ctx = await browser.newContext(ctxOpts);
   const page = await ctx.newPage();
@@ -61,7 +84,7 @@ for (const v of variants) {
   await page.locator('#travel-mode').selectOption('car', { force: true }); await page.locator('#view-mode').selectOption('chase', { force: true });
   await page.locator('#route-card').evaluate(f => f.requestSubmit());
   await page.waitForFunction(() => window.canalRecallGame.player?.x && window.canalRecallGame.camera.introOverview === 0 && window.canalRecallGame.vectorMap?._overview, null, { timeout: 180000 });
-  const dpr = await page.evaluate(() => window.devicePixelRatio);
+  const cssWidth = await page.evaluate(() => window.innerWidth);
   for (const pose of POSES) {
     await page.evaluate(pose => {
       const vm = window.canalRecallGame.vectorMap;
@@ -75,10 +98,11 @@ for (const v of variants) {
     const bare = await capture(page);
     await setRails(page, true);
     fs.writeFileSync(`${out}/${device}-overview-${pose.name}-${v.name}.png`, png);
-    results[`${pose.name}:${v.name}`] = { dpr, ...(await measure(png, bare, dpr)) };
+    fs.writeFileSync(`${out}/${device}-overview-${pose.name}-${v.name}-bare${KIND ? `-${KIND}` : ''}.png`, bare);
+    results[`${pose.name}:${v.name}`] = { cssWidth, ...(await measure(png, bare, cssWidth)) };
     console.log(device, pose.name, v.name, JSON.stringify(results[`${pose.name}:${v.name}`]));
   }
   await ctx.close();
 }
-fs.writeFileSync(`${out}/${device}-overview.json`, JSON.stringify(results, null, 1));
+fs.writeFileSync(`${out}/${device}-overview${KIND ? `-${KIND}` : ''}.json`, JSON.stringify(results, null, 1));
 await browser.close();
