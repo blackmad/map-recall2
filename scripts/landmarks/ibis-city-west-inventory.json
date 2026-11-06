@@ -1,0 +1,409 @@
+{
+ "schemaVersion": 1,
+ "id": "ibis-city-west",
+ "pand": "0363100012063603",
+ "brief": "scripts/landmarks/ibis-city-west-brief.md",
+ "signature": [
+  "cantilever-lobby",
+  "brick-ribbons",
+  "bar-pilotis",
+  "glass-boxes",
+  "stepped-deck",
+  "parapet-names"
+ ],
+ "walls": [
+  {
+   "tag": "w01-359",
+   "bearing": 359,
+   "lengthM": 149.4,
+   "centre": [
+    4.848686,
+    52.392807
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "items": [],
+   "note": "North ring edge (149 m: brick slab north front and the parking deck edge). No panorama within 35 m; the slab's ribbons and ground strip are inferred from the south front, the corner from w08-359."
+  },
+  {
+   "tag": "w02-179",
+   "bearing": 179,
+   "lengthM": 105.6,
+   "centre": [
+    4.8491275,
+    52.3922765
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2024-09-09_08-42-32_03479",
+   "capturedAt": "2024-09-09",
+   "checked": true,
+   "items": [
+    {
+     "id": "bar-pilotis",
+     "kind": "colonnade",
+     "where": "ground floor of the whole bar: eleven dark round columns 0.95 m across at 8.3 m, the glazing 2 m back behind them with white transoms and a dark brick plinth",
+     "approxSizeM": [
+      94.5,
+      5.2
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2024-09-09_08-42-32_03479",
+     "how": "strut() columns, a 2 m deep hole with glass back, transom and mullion strips, plinth slab"
+    },
+    {
+     "id": "bar-windows",
+     "kind": "window-shape",
+     "where": "five rows of punched portrait windows 1.1 x 1.6 m at 2.1 m in white panels",
+     "approxSizeM": [
+      94.5,
+      15.3
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2024-09-09_08-42-32_03479",
+     "how": "opening() 45 per row, skipped behind the glass boxes"
+    },
+    {
+     "id": "glass-boxes",
+     "kind": "window-shape",
+     "where": "two cantilevered glass boxes: a tall dark-framed one at u 80-91 (9.2-25.1 m) rising above the parapet, a wide grey-gridded one at u 126-158 (12.7-22.4 m) on a dark soffit",
+     "approxSizeM": [
+      32.3,
+      9.7
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2024-09-09_08-42-32_03479",
+     "how": "glassBox(): glass slab, frame grid, soffit and cap"
+    },
+    {
+     "id": "bar-top-storey",
+     "kind": "other",
+     "where": "set-back top storey over the east end of the tall box (3DBAG parts to 28.9 m)",
+     "approxSizeM": [
+      16,
+      4.4
+     ],
+     "plan": "simplified",
+     "seenIn": "recording_2024-09-09_08-42-32_03479",
+     "how": "plain white prism"
+    }
+   ],
+   "note": "The white office bar on Transformatorweg, 2024 (second view 2022); trees hide much of it."
+  },
+  {
+   "tag": "w03-269",
+   "bearing": 269,
+   "lengthM": 42.7,
+   "centre": [
+    4.8474985,
+    52.392443
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-07-01_10-32-54_02318",
+   "capturedAt": "2025-07-01",
+   "checked": true,
+   "items": [
+    {
+     "id": "west-steps",
+     "kind": "other",
+     "where": "six concrete steps 0.32 m high along the deck's west edge, a stair rail at the north end",
+     "approxSizeM": [
+      42.7,
+      1.9
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-07-01_10-32-54_02318",
+     "how": "stepped walls and treads"
+    },
+    {
+     "id": "bridge-west",
+     "kind": "window-shape",
+     "where": "the bridge's west face: dark spandrels and five bands of glazing",
+     "approxSizeM": [
+      31,
+      19
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-07-01_10-32-54_02318",
+     "how": "bronze face with five glazing bands"
+    },
+    {
+     "id": "tenant-sign-bar",
+     "kind": "sign",
+     "where": "tenant sign on the white bar's west end",
+     "approxSizeM": [
+      5,
+      0.6
+     ],
+     "plan": "skipped",
+     "seenIn": "recording_2025-07-01_10-32-54_02318",
+     "skip": {
+      "reason": "temporary",
+      "note": "tenant sign, changes with the lease"
+     }
+    }
+   ],
+   "note": "The garden deck's west steps and the brick slab's south front receding, 2025 (second view 2021). The black bridge face and the grey west end of the white bar behind."
+  },
+  {
+   "tag": "w04-179",
+   "bearing": 179,
+   "lengthM": 41.6,
+   "centre": [
+    4.8480235,
+    52.392259
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-07-01_11-45-33_02123",
+   "capturedAt": "2025-07-01",
+   "checked": true,
+   "items": [
+    {
+     "id": "brick-ribbons",
+     "kind": "window-shape",
+     "where": "seven rows of ribbon windows broken into two or three runs per row in dark brown brick; the lowest two start east of the cantilever",
+     "approxSizeM": [
+      72,
+      23.5
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-07-01_11-45-33_02123",
+     "how": "opening() runs per row at the measured ends; right ends behind the trees run on to 68.2"
+    },
+    {
+     "id": "parapet-names",
+     "kind": "lettering",
+     "where": "\"tot maandag\" (white and green) over the west end and the \"quarter plaza\" name with its hexagon mark to the east, 1 m letters under the parapet",
+     "approxSizeM": [
+      11,
+      1.2
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-07-01_11-45-33_02123",
+     "how": "5 x 7 pixel lettering (mixed-case-glyphs, q and u added), hexagon poly"
+    },
+    {
+     "id": "ground-glazing",
+     "kind": "window-shape",
+     "where": "glazing at deck level behind black posts, to 4.1 m",
+     "approxSizeM": [
+      47,
+      2.2
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-07-01_11-45-33_02123",
+     "how": "opening() 0.6 m deep with 31 lights"
+    },
+    {
+     "id": "stepped-deck",
+     "kind": "other",
+     "where": "the garden deck 1.9 m up with six steps along its street edge, planted on top",
+     "approxSizeM": [
+      68,
+      1.9
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-07-01_11-45-33_02123",
+     "how": "stepped walls and treads, green-brown deck cap"
+    },
+    {
+     "id": "bridge-glass",
+     "kind": "window-shape",
+     "where": "dark glass of the bridge at the slab's east end",
+     "approxSizeM": [
+      15,
+      21
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-07-01_11-45-33_02123",
+     "how": "bridge faces"
+    }
+   ],
+   "note": "Brick slab south front across the garden deck, 2025 (second view 2024)."
+  },
+  {
+   "tag": "w05-89",
+   "bearing": 89,
+   "lengthM": 25.2,
+   "centre": [
+    4.8498825,
+    52.392711
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316060226-000462_pano_0003_002130",
+   "capturedAt": "2019-11-06",
+   "checked": true,
+   "items": [
+    {
+     "id": "east-strips",
+     "kind": "window-shape",
+     "where": "seven strip windows of uneven length on the brick end",
+     "approxSizeM": [
+      13,
+      23.5
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316060226-000462_pano_0003_002130",
+     "how": "opening() runs at their measured ends"
+    },
+    {
+     "id": "bridge-east",
+     "kind": "window-shape",
+     "where": "the bridge's east face: glazing in a dark grid",
+     "approxSizeM": [
+      32,
+      19
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316060226-000462_pano_0003_002130",
+     "how": "bronze face with five glazing bands"
+    },
+    {
+     "id": "parking-deck",
+     "kind": "other",
+     "where": "parking deck with a dark garage slot and a black rail",
+     "approxSizeM": [
+      76,
+      1.4
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316060226-000462_pano_0003_002130",
+     "how": "concrete edge with a recess and rail strips"
+    }
+   ],
+   "note": "East end over the parking deck, 2019 (second view 2017): the white bar's end, the glass bridge, the brick slab's end with seven strips."
+  },
+  {
+   "tag": "w06-269",
+   "bearing": 269,
+   "lengthM": 16.6,
+   "centre": [
+    4.8474625,
+    52.3927095
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-07-01_10-32-54_02312",
+   "capturedAt": "2025-07-01",
+   "checked": true,
+   "items": [
+    {
+     "id": "cantilever-lobby",
+     "kind": "colonnade",
+     "where": "the slab's west end cantilevered over a tall gridded glass lobby set back about 3 m, white soffit with downlights, raked dark round columns in V pairs",
+     "approxSizeM": [
+      24,
+      9.4
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-07-01_10-32-54_02312",
+     "how": "soffit capDown(), glass walls with frame grid, strut() V pairs"
+    },
+    {
+     "id": "soffit-downlights",
+     "kind": "lamp",
+     "where": "downlights in the soffit",
+     "approxSizeM": [
+      0.2,
+      0.2
+     ],
+     "plan": "skipped",
+     "seenIn": "recording_2025-07-01_10-32-54_02312",
+     "skip": {
+      "reason": "too-small",
+      "note": "0.2 m lights"
+     }
+    }
+   ],
+   "note": "West end under the cantilever, 2025 (second view 2019)."
+  },
+  {
+   "tag": "w07-179",
+   "bearing": 179,
+   "lengthM": 12.8,
+   "centre": [
+    4.847601,
+    52.3922525
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2024-09-09_08-42-32_03500",
+   "capturedAt": "2024-09-09",
+   "checked": true,
+   "items": [
+    {
+     "id": "v-columns",
+     "kind": "colonnade",
+     "where": "raked columns in V pairs under the south edge of the cantilever",
+     "approxSizeM": [
+      6,
+      9.4
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2024-09-09_08-42-32_03500",
+     "how": "strut() pairs"
+    }
+   ],
+   "note": "The cantilevered west end from the south, 2024 (second view 2021): V columns, lobby glass, the steps."
+  },
+  {
+   "tag": "w08-359",
+   "bearing": 359,
+   "lengthM": 8.9,
+   "centre": [
+    4.847524,
+    52.392785
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000279_pano_0000_005024",
+   "capturedAt": "2017-04-24",
+   "checked": true,
+   "items": [
+    {
+     "id": "north-lobby",
+     "kind": "window-shape",
+     "where": "the lobby glass at street level on the north side",
+     "approxSizeM": [
+      8,
+      9
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-000279_pano_0000_005024",
+     "how": "the brick north face is closed below the soffit east of u 3; the lobby glass is drawn on the west and south only"
+    }
+   ],
+   "note": "North-west corner, 2017 (second view 2019): ribbons wrapping the corner, the lobby glass to the soffit on a dark plinth, five raked columns (light in 2017, dark on the 2024-2025 views; the model takes the latest)."
+  },
+  {
+   "tag": "w09-359",
+   "bearing": 359,
+   "lengthM": 4.9,
+   "centre": [
+    4.849841,
+    52.3928235
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000279_pano_0000_005507",
+   "capturedAt": "2017-04-24",
+   "checked": true,
+   "items": [],
+   "note": "North-east, 2017: the parking ramp down to the garage under the deck, the deck behind a black fence, the white bar's north face beyond; the chequered tower is the Ibis (another pand)."
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  },
+  {
+   "name": "BAG pand 0363100012063603",
+   "url": "https://api.data.amsterdam.nl/v1/bag/panden/0363100012063603",
+   "licence": "CC0"
+  },
+  {
+   "name": "3DBAG",
+   "url": "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012063603",
+   "licence": "CC BY 4.0"
+  }
+ ]
+}

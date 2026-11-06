@@ -2326,5 +2326,11 @@
   "buildVersion": 2,
   "bytes": 31060,
   "triangles": 1312
+ },
+ "ibis-city-west": {
+  "sourceHash": "00703acccf1cbad5",
+  "buildVersion": 2,
+  "bytes": 99688,
+  "triangles": 7189
  }
 }

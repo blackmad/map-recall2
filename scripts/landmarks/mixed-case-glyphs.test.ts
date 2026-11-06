@@ -32,3 +32,10 @@ test('the Tetterode frieze has every glyph (the slash from the extra table)', ()
   assert.ok(Math.abs(width - ([...text].length * 6 - 1) * px) < 1e-9);
   assert.ok(!('/' in GL) && "'" in GL);
 });
+
+test('the Quarter Plaza name has every glyph', () => {
+  const text = 'quarter plaza', px = 0.12;
+  const {width} = glyphRuns(text, px);
+  assert.ok(Math.abs(width - ([...text].length * 6 - 1) * px) < 1e-9);
+  assert.ok(!('q' in GL) && !('u' in GL));
+});

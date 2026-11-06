@@ -1,0 +1,33 @@
+{
+ "id": "ibis-city-west",
+ "pand": "0363100012063603",
+ "name": "Quarter Plaza",
+ "replaces": "the generic BAG-pand building-type mass (no ordinary model for this pand)",
+ "identity": {
+  "addresses": "Transformatorweg 38-104: 34 kantoor and 1 winkel verblijfsobjecten",
+  "bouwjaar": 2003,
+  "architect": "not named by the BAG or nl.wikipedia; unconfirmed",
+  "correctionsToBrief": "The brief named this pand Ibis Amsterdam City West. BAG pand 0363100012063603 is the Quarter Plaza office complex (Transformatorweg 38-104; 'quarter plaza' lettering on the 2025 south panorama). The Ibis Amsterdam City West (logiesfunctie, Transformatorweg 36) is the neighbouring pand 0363100012068830 (2004, 31.9 m) to the east. The id is kept; the model is named Quarter Plaza.",
+  "sources": [
+   "https://api.data.amsterdam.nl/v1/bag/panden/0363100012063603",
+   "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/?ligtInPanden.identificatie=0363100012063603",
+   "https://api.data.amsterdam.nl/v1/bag/panden/0363100012068830"
+  ]
+ },
+ "frame": {
+  "axes": "u along the south ring edge from its west corner (-64.193, 34.271) eastwards, v into the block (north); U = (0.99983, -0.0185), V = (-0.0185, -0.99983)"
+ },
+ "partyWallBearings": [],
+ "streetNAP": 0.524,
+ "levels": {
+  "brickSlabParapet": 31.8,
+  "cantileverSoffit": 11.28,
+  "whiteBarParapet": 24.5,
+  "pilotisTop": 5.18,
+  "bridgeRoof": 21.0,
+  "gardenDeck": 1.9,
+  "parkingDeck": 2.2,
+  "brickRibbons": [[5.79, 7.32], [9.45, 10.97], [13.11, 14.63], [16.76, 18.29], [20.42, 21.95], [23.98, 25.5], [27.74, 29.26]],
+  "barWindowRows": [[6.94, 8.56], [10.33, 11.95], [13.71, 15.33], [17.1, 18.72], [20.6, 22.22]]
+ }
+}

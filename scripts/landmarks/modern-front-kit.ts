@@ -39,12 +39,18 @@ export function planFrame(O: P2, U: P2, V: P2) {
     return {f: {origin: a, tangent: [tx, tz], n: [-tz, tx]}, len};
   };
   const capUp = (b: BuildingTools, uv: P2[], y: number, c: Col) => b.add(upwardRoofPlane(new T.Shape(uv.map(p => { const a = A(p[0], p[1]); return new T.Vector2(a[0], a[1]); })), y), c);
+  /** Downward-facing cap (a soffit under a cantilever) over the (u, v) polygon at height y. */
+  const capDown = (b: BuildingTools, uv: P2[], y: number, c: Col) => {
+    const g = upwardRoofPlane(new T.Shape(uv.map(p => { const a = A(p[0], p[1]); return new T.Vector2(a[0], a[1]); })), y), idx = g.index!;
+    for (let i = 0; i < idx.count; i += 3) { const j = idx.getX(i + 1); idx.setX(i + 1, idx.getX(i + 2)); idx.setX(i + 2, j); }
+    g.computeVertexNormals(); b.add(g, c);
+  };
   /** Closed volume on a counter-clockwise (u, v) ring: plain walls y0..y1 on every edge not in `skip`, an upward cap at y1. */
   const prism = (b: BuildingTools, ring: P2[], y0: number, y1: number, c: Col, roof: Col, skip: number[] = []) => {
     ring.forEach((p, i) => { if (!skip.includes(i)) wall(b, fr(p, ring[(i + 1) % ring.length]), y0, y1, c); });
     capUp(b, ring, y1, roof);
   };
-  return {A, fr, capUp, prism};
+  return {A, fr, capUp, capDown, prism};
 }
 
 export function wall(b: BuildingTools, F: FR, y0: number, y1: number, c: Col, t0 = 0, t1 = F.len) {
@@ -129,6 +135,19 @@ export function balcony(b: BuildingTools, F: FR, t0: number, w: number, d: numbe
     return {pts: [at(a, y), at(c, y), at(c, y + rh), at(a, y + rh)]};
   });
   addPolys(b, F.f, [...rails, ...bars], rc);
+}
+
+/**
+ * Round column (or slanted strut) between two native points a and c (x, y, z): an n-sided closed tube of radius r. For the
+ * round pilotis of post-war colonnades and the raked V-columns under cantilevers; 2n + 2(n - 2) triangles.
+ */
+export function strut(b: BuildingTools, a: [number, number, number], c: [number, number, number], r: number, col: Col, n = 8) {
+  const A3 = new T.Vector3(...a), C3 = new T.Vector3(...c), dir = C3.clone().sub(A3), len = dir.length();
+  if (!(len > 1e-6) || !(r > 0)) throw new Error('strut: zero length or radius');
+  const g = new T.CylinderGeometry(r, r, len, n, 1, false);
+  g.applyQuaternion(new T.Quaternion().setFromUnitVectors(new T.Vector3(0, 1, 0), dir.normalize()));
+  g.translate((a[0] + c[0]) / 2, (a[1] + c[1]) / 2, (a[2] + c[2]) / 2);
+  b.add(g, col);
 }
 
 /** Downpipe from y0 to y1, 12 cm square, 6 cm off the wall. */

@@ -1846,6 +1846,16 @@
       "version": "85f91a73c0bcd84a",
       "dateSource": "asset-update"
     },
+    "ibis-city-west": {
+      "updatedAt": "2026-11-06T23:28:24.287Z",
+      "version": "00703acccf1cbad5",
+      "dateSource": "asset-update"
+    },
+    "ibis-city-west.lod1": {
+      "updatedAt": "2026-11-06T23:29:27.048Z",
+      "version": "b8aaa5158297fa52",
+      "dateSource": "asset-update"
+    },
     "idfa-pavilion": {
       "updatedAt": "2026-10-20T10:13:42.434Z",
       "version": "a90e67ed8e6483ba",
@@ -2054,6 +2064,11 @@
     "kinkerstraat-89": {
       "updatedAt": "2026-11-06T23:00:06.182Z",
       "version": "814a26b22f7e11bf",
+      "dateSource": "asset-update"
+    },
+    "kinkerstraat-89.lod1": {
+      "updatedAt": "2026-11-06T23:13:12.637Z",
+      "version": "9e3d609716329b19",
       "dateSource": "asset-update"
     },
     "kiosk-dr-falafel": {
@@ -3074,6 +3089,11 @@
     "politiebureau-postjesweg": {
       "updatedAt": "2026-11-06T23:06:59.536Z",
       "version": "2d3b7b68c13316f9",
+      "dateSource": "asset-update"
+    },
+    "politiebureau-postjesweg.lod1": {
+      "updatedAt": "2026-11-06T23:13:12.926Z",
+      "version": "04e0643479064b09",
       "dateSource": "asset-update"
     },
     "pontsteiger": {

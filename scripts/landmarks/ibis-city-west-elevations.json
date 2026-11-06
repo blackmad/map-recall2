@@ -1,0 +1,48 @@
+{
+ "id": "ibis-city-west",
+ "countedBy": "lane #236 (opus) from the rectified panorama crops of the brief (w04-179 2025, w02-179 2024); ribbon convention (one run of a ribbon window is one opening). Not a blind count; the integrator may re-count.",
+ "facades": [
+  {
+   "name": "brick slab south front",
+   "bearing": 172.5,
+   "photo": "artifacts/landmark-briefs/ibis-city-west/w04-179.jpg",
+   "rows": [
+    2,
+    3,
+    2,
+    3,
+    3
+   ],
+   "symmetric": false,
+   "gables": 0,
+   "alongM": [
+    4.1,
+    68.3
+   ],
+   "heightM": [
+    12.5,
+    31.8
+   ],
+   "note": "w04-179 (2025-07-01): the five ribbon rows above the cantilever soffit, counted as runs from the west corner to the bridge (72.3 m; the crop stops at 68.3 m of the model silhouette, where the white bar's west end enters the depth band, and starts at the slab corner 4.1 m in from the stepped deck edge): R5 2, R4 3, R3 2, R2 3, R1 3. The two lowest rows and the ground glazing start east of the lobby and are half hidden by the deck planting and two trees, so the crop starts above the soffit (12.5 m). frontDepth pins the band to the slab front (the white bar stands 30 m nearer at this bearing).",
+   "frontDepth": -11.1,
+   "depthBand": 1.5
+  },
+  {
+   "name": "white bar south front",
+   "bearing": 177.5,
+   "photo": "artifacts/landmark-briefs/ibis-city-west/w02-179.jpg",
+   "rows": [
+    12,
+    45,
+    39,
+    23,
+    25,
+    23
+   ],
+   "symmetric": false,
+   "gables": 0,
+   "depthBand": 4,
+   "note": "w02-179 (2024-09-09, 23.1 px/m): ground the glazing 2 m back behind eleven round pilotis (12 pieces); storey 1 45 punched windows at 2.1 m from u 69.4 to 161.6; storey 2 39 (six behind the tall glass box at u 80-91); storeys 3-5 23 windows each beside the wide glass box (u 126-158); the two boxes are counted in the row holding their centres (storey 4, 17-18 m), so 25 there. Trees hide parts; the pitch and both ends are measured where visible."
+  }
+ ]
+}

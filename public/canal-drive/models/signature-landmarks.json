@@ -85592,6 +85592,237 @@
         "bytes": 31060,
         "triangles": 1312
       }
+    },
+    "ibis-city-west": {
+      "id": "ibis-city-west",
+      "name": "Quarter Plaza (2003)",
+      "modelUrl": "./models/ibis-city-west.glb",
+      "suppressOsmIds": [
+        "NL.IMBAG.Pand.0363100012063603"
+      ],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.84844388,
+          52.39256106
+        ],
+        "headingDegrees": 0,
+        "lengthMetres": 166,
+        "widthMetres": 66.2
+      },
+      "surveyed": {
+        "anchor": [
+          4.84844388,
+          52.39256106
+        ],
+        "northOffsetDegrees": 0,
+        "source": "Vertex average of the BAG 0363100012063603 ring (RD, PDOK BAG WFS, CC0) in native east/south metres above the 3DBAG ground 0.524 m NAP (scripts/landmarks/ibis-city-west-footprints.json, written by sarphati-plaza-prepare.ts --id=ibis-city-west --pand=0363100012063603). The brick office slab, the white office bar, the glass bridge and the decks from the 3DBAG LoD2.2 roof parts (CC BY 4.0). Ribbon and punched windows, the pilotis, the cantilever with its raked columns and lobby, the glass boxes, the stepped deck edges and the parapet names measured on rectified Gemeente Amsterdam panorama crops (CC BY 4.0), per wall in scripts/landmarks/ibis-city-west-inventory.json. The north faces are inferred. The catalogue id says Ibis; BAG and the lettering show this pand is Quarter Plaza (Transformatorweg 38-104), the Ibis is the neighbouring pand 0363100012068830."
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 0,
+      "heightMetres": 36.3,
+      "bagYear": 2003,
+      "materialOverrides": {
+        "brick": "#5a3a33",
+        "stone": "#dcdcd6",
+        "glass": "#50646f",
+        "frame": "#8e959b",
+        "pink": "#f1f1ee",
+        "green": "#4fcf3f",
+        "ochre": "#78894f",
+        "bronze": "#2f3336",
+        "concrete": "#8f8e88",
+        "slate": "#5e6266"
+      },
+      "attribution": {
+        "title": "Quarter Plaza, Transformatorweg 38-104 (offices, 2003)",
+        "author": "Map Recall",
+        "sourceUrl": "https://api.data.amsterdam.nl/v1/bag/panden/0363100012063603",
+        "licence": "CC BY 4.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "modifications": "Original texture-free flat-colour geometry on the BAG footprint (CC0) with 3DBAG LoD2.2 heights (CC BY 4.0): the dark brick slab with its broken ribbon windows, its cantilevered west end on raked columns over a tall glass lobby and the two parapet names; the white-panelled bar on eleven round pilotis with its punched windows and two glass boxes; the dark glass bridge; the garden deck with stepped edges and the parking deck; read for proportion and tone from Gemeente Amsterdam panoramas (CC BY 4.0). No pixels or meshes imported."
+      },
+      "buildingFootprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.84988564,
+              52.39259641
+            ],
+            [
+              4.84987468,
+              52.39282176
+            ],
+            [
+              4.8498022,
+              52.39282068
+            ],
+            [
+              4.84980154,
+              52.3928392
+            ],
+            [
+              4.84977992,
+              52.39283882
+            ],
+            [
+              4.84978048,
+              52.39282302
+            ],
+            [
+              4.84922877,
+              52.39281396
+            ],
+            [
+              4.84870314,
+              52.39280531
+            ],
+            [
+              4.8486583,
+              52.39280456
+            ],
+            [
+              4.84817203,
+              52.39279651
+            ],
+            [
+              4.84758585,
+              52.39278679
+            ],
+            [
+              4.84758594,
+              52.39278448
+            ],
+            [
+              4.84748101,
+              52.39278273
+            ],
+            [
+              4.84745585,
+              52.3927823
+            ],
+            [
+              4.84746281,
+              52.39263278
+            ],
+            [
+              4.8474875,
+              52.39263318
+            ],
+            [
+              4.84748752,
+              52.39263285
+            ],
+            [
+              4.84748764,
+              52.39263018
+            ],
+            [
+              4.84748879,
+              52.3926044
+            ],
+            [
+              4.8474889,
+              52.39260183
+            ],
+            [
+              4.84750462,
+              52.39224876
+            ],
+            [
+              4.84769218,
+              52.39225173
+            ],
+            [
+              4.84769312,
+              52.39223463
+            ],
+            [
+              4.84771622,
+              52.39223508
+            ],
+            [
+              4.84771528,
+              52.39225209
+            ],
+            [
+              4.84832669,
+              52.39226178
+            ],
+            [
+              4.84832736,
+              52.39224533
+            ],
+            [
+              4.84835042,
+              52.39224566
+            ],
+            [
+              4.84834954,
+              52.39226214
+            ],
+            [
+              4.84858793,
+              52.39226592
+            ],
+            [
+              4.84990069,
+              52.39228678
+            ],
+            [
+              4.84989414,
+              52.39242082
+            ],
+            [
+              4.84989134,
+              52.39247224
+            ],
+            [
+              4.84988564,
+              52.39259641
+            ]
+          ]
+        ]
+      },
+      "buildingCategory": "landmark",
+      "bounds": {
+        "min": [
+          -65.29744720458984,
+          -1.1920929132713809e-8,
+          -28.33307456970215
+        ],
+        "max": [
+          98.93926239013672,
+          36.29999923706055,
+          34.270999908447266
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.84844388,
+          52.39256106
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 90,
+        "facadeBearingDegrees": 0,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 164.23670959472656,
+        "heightMetres": 36.29999924898148,
+        "depthMetres": 62.604074478149414,
+        "depthCoverage": 0.9456808833557313
+      },
+      "triangles": 20430,
+      "bytes": 250084,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
+      "lod1": {
+        "sourceHash": "00703acccf1cbad5",
+        "buildVersion": 2,
+        "bytes": 99688,
+        "triangles": 7189
+      }
     }
   }
 }
