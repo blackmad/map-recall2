@@ -256,8 +256,8 @@ test('v3: every single-byte change is rejected or decodes without crashing; v2 s
   }
   assert.ok(decodeCell(encodeCell(small, 2).bytes));
   assert.throws(() => encodeCell(small, 1), /cannot encode/);
-  for (const format of [2, 3, 4, 5]) assert.ok(readWorldIndex({ version: 1, format, tileCells: {}, cells: {} }), `index format ${format}`);
-  assert.equal(readWorldIndex({ version: 1, format: 6, tileCells: {}, cells: {} }), null);
+  for (const format of [2, 3, 4, 5, 6]) assert.ok(readWorldIndex({ version: 1, format, tileCells: {}, cells: {} }), `index format ${format}`);
+  assert.equal(readWorldIndex({ version: 1, format: 7, tileCells: {}, cells: {} }), null);
 });
 
 // --- v4: shared string table, C_SAME columns, interleaved FOOT; the compile policy ----------------------------
@@ -462,4 +462,47 @@ test('rail infrastructure is baked: viaduct pands gone, the Amstel canopy cut to
       if (debug) assert.ok(sameValue(b.attr, list[k].raw.properties), `${b.id} attr bag`);
     });
   }
+});
+
+// --- v6: the baked shell streams (lane R2-B, #229) -------------------------------------------------------------
+test('v6: SHEL and SHL1 round-trip in a cell and in a shell file; a v6 cell without them is legal; v5 cells still decode', async () => {
+  const { bakeCellShell } = await import('../../../scripts/world/shellBake.js');
+  const { ROOT } = await import('../../../scripts/world/pipeline.js');
+  const { encodeShellCell, decodeShellCell, BUILDING_FORMAT_VERSION, FLAG_SHELLS } = await import('./cellFormat.js');
+  const key = fs.existsSync(path.join(PUBLISHED, '8_-2.bin')) ? '8_-2' : '-2_0';
+  const cell = published(key), small = keepOnly(cell, new Set(cell.buildings.slice(0, 80).map((_, k) => k)));
+  const features = small.buildings.map(b => styledFeature(b, rawFeature(b)) as any);
+  const bake = bakeCellShell(small.i, small.j, features, [], ROOT)!;
+  assert.ok(bake && bake.shel.indices.length && bake.far.length, 'the bake drew something');
+  // A v6 cell with both streams gives the buildings, the shell and the prisms back exactly.
+  const withShells: Cell = { ...small, shel: bake.shel, far: bake.far };
+  const v6 = encodeCell(withShells, 6);
+  assert.deepEqual(v6.streams.slice(-2).map(s => s.tag), ['SHEL', 'SHL1']);
+  const back = decodeCell(v6.bytes);
+  assert.ok(sameValue(back.buildings, small.buildings) && sameValue(back.hide, small.hide));
+  assert.deepEqual(back.shel, bake.shel); assert.deepEqual(back.far, bake.far);
+  // Without them: legal, and the building streams are byte-for-byte the v5 cell's (only the version byte differs).
+  const bare6 = encodeCell(small, 6).bytes, bare5 = encodeCell(small, BUILDING_FORMAT_VERSION).bytes;
+  assert.equal(bare6.length, bare5.length); assert.deepEqual(bare6.subarray(5), bare5.subarray(5)); assert.equal(bare6[4], 6); assert.equal(bare5[4], 5);
+  assert.ok(sameValue(decodeCell(bare6), decodeCell(bare5)));
+  assert.equal(decodeCell(bare6).shel, undefined);
+  // The published cells (format <= 6) still decode, and only v6 may carry shells.
+  assert.ok(decodeCell(zlib.gunzipSync(fs.readFileSync(path.join(PUBLISHED, `${key}.bin`))), key, PUBLISHED_STRINGS).buildings.length);
+  assert.throws(() => encodeCell(withShells, 5), /format 6/);
+  // SHL1 alone, SHEL alone, then out of order: rejected.
+  assert.ok(decodeCell(encodeCell({ ...small, far: bake.far }, 6).bytes).far);
+  const swapped = encodeCell(withShells, 6), tagAt = (t: string) => swapped.bytes.indexOf(t.charCodeAt(0), 6);
+  const bad = swapped.bytes.slice(); const s = tagAt('SHEL'); bad.set(new TextEncoder().encode('SHL1'), s);
+  assert.throws(() => decodeCell(bad), /expected one of|stream/);
+  // A shell file: shell streams only, its own flag; decodeCell refuses it and decodeShellCell refuses a building cell.
+  const file = encodeShellCell({ i: small.i, j: small.j, shel: bake.shel, far: bake.far });
+  assert.equal(file.bytes[5], FLAG_SHELLS);
+  const sc = decodeShellCell(file.bytes);
+  assert.equal(sc.i, small.i); assert.deepEqual(sc.shel, bake.shel); assert.deepEqual(sc.far, bake.far);
+  assert.deepEqual(decodeShellCell(encodeShellCell({ i: 1, j: -2, far: bake.far }).bytes), { i: 1, j: -2, far: bake.far });
+  assert.throws(() => decodeCell(file.bytes), /unknown flags 4/);
+  assert.throws(() => decodeShellCell(bare6), /not a shell file/);
+  assert.throws(() => encodeShellCell({ i: 0, j: 0 }), /no shell stream/);
+  for (let n = 0; n < file.bytes.length; n += Math.max(1, Math.floor(file.bytes.length / 301))) assert.throws(() => decodeShellCell(file.bytes.subarray(0, n)), /./, `prefix ${n}`);
+  const trailing = new Uint8Array(file.bytes.length + 1); trailing.set(file.bytes); assert.throws(() => decodeShellCell(trailing), /trailing/);
 });

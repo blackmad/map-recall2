@@ -44,7 +44,14 @@
  * indices, tags and leftover bytes all throw.
  */
 
-export const WORLD_FORMAT_VERSION = 5;
+import { decodeShel, decodeShl1, encodeShel, encodeShl1, type FarPrism, type ShellMesh } from './shellMesh.js';
+
+export const WORLD_FORMAT_VERSION = 6;
+// v6 (2026-11-06, lane R2-B #229): v5 plus two optional trailing streams, SHEL (the baked coarse shell of the cell's
+// buildings) and SHL1 (the far ring's prisms), world/shellMesh.ts. A v6 cell without them is legal; the compiler
+// writes the building cells without them (BUILDING_FORMAT_VERSION, byte-identical to v5) and the shells as separate
+// v6 shell files (FLAG_SHELLS: only shell streams) under world-v1/shells/ and world-v1/far/, so a ride fetches no
+// shell bytes it does not draw.
 // v5 (2026-10-31, #130 census): v4 plus an integer-list bag column (C_INTS: roofFurniture, 363 KB of near-unique
 // strings in STRS) and a run symbol in FOOT refs (a party wall shares vertex runs: continue the last reference).
 // v4 (2026-10-31): v3 plus an optional shared string table (FLAG_GLOBAL, strings.bin), fetched once per page.
@@ -53,11 +60,15 @@ export const WORLD_FORMAT_VERSION = 5;
 // per-value tag, column dictionaries, numeric deltas, packed colours and booleans); GRP with symmetric
 // party walls written once. City total 13.46 MB -> 10.37 MB gzip; see the "v3 streams" section.
 /** Versions `decodeCell` reads: v2 cells (published before the v3 bytes gate) stay readable until world-v1 is recompiled. */
-export const WORLD_FORMAT_VERSIONS: readonly number[] = [2, 3, 4, 5];
+export const WORLD_FORMAT_VERSIONS: readonly number[] = [2, 3, 4, 5, 6];
+/** The format the compiler writes building cells in: v6 changed no building stream, so they stay v5 bytes. */
+export const BUILDING_FORMAT_VERSION = 5;
 /** Flag bit: the cell carries ATTR (a `--debug` compile). */
 export const FLAG_DEBUG = 1;
 /** Flag bit (v4): the cell's string indices start with the shared table (strings.bin). */
 export const FLAG_GLOBAL = 2;
+/** Flag bit (v6): a shell file, carrying only shell streams (SHEL and/or SHL1) and no buildings. */
+export const FLAG_SHELLS = 4;
 export const WORLD_MAGIC = 'WRLD';
 /** Units per degree of FOOT coordinates (exact for sources with <= 7 decimals). */
 export const COORD_SCALE = 1e7;
@@ -65,8 +76,11 @@ export const COORD_SCALE = 1e7;
 export const MAX_BUILDINGS = 200_000;
 const MAX_COUNT = 10_000_000;
 const MAX_VARINT_BYTES = 8; // 2^56 > Number.MAX_SAFE_INTEGER
-export const STREAM_TAGS = ['STRS', 'FOOT', 'ATTR', 'STYL', 'ROOF', 'GRP ', 'HIDE'] as const;
+export const STREAM_TAGS = ['STRS', 'FOOT', 'ATTR', 'STYL', 'ROOF', 'GRP ', 'HIDE', 'SHEL', 'SHL1'] as const;
 export type StreamTag = typeof STREAM_TAGS[number];
+/** The building streams (every version), and the optional shell streams v6 may append, in this order. */
+export const BUILDING_TAGS: readonly StreamTag[] = STREAM_TAGS.slice(0, 7);
+export const SHELL_TAGS: readonly StreamTag[] = ['SHEL', 'SHL1'];
 
 export type Geometry = { type: 'Polygon'; coordinates: number[][][] } | { type: 'MultiPolygon'; coordinates: number[][][][] };
 export type Props = Record<string, unknown>;
@@ -88,8 +102,11 @@ export type CellBuilding = {
   /** Coarse group tile (`x/y`) and party-wall neighbours. */
   group?: string; neighbours?: Neighbour[];
 };
-/** `debug`: decoded from (or to be encoded as) a DEBUG cell, so `attr` is the enriched source bag. */
-export type Cell = { i: number; j: number; buildings: CellBuilding[]; hide: HideEntry[]; debug?: boolean };
+/** `debug`: decoded from (or to be encoded as) a DEBUG cell, so `attr` is the enriched source bag. `shel`/`far`: the
+ *  v6 shell streams (absent unless the cell carries them). */
+export type Cell = { i: number; j: number; buildings: CellBuilding[]; hide: HideEntry[]; debug?: boolean; shel?: ShellMesh; far?: FarPrism[] };
+/** A v6 shell file (FLAG_SHELLS): the baked shells of a cell, no buildings. */
+export type ShellCell = { i: number; j: number; shel?: ShellMesh; far?: FarPrism[] };
 
 // --- bytes -----------------------------------------------------------------
 
@@ -845,14 +862,55 @@ export function encodeCell(cell: Cell, version: number = WORLD_FORMAT_VERSION, g
   for (const h of cell.hide) { hide.uvar(s.ref(h.id)); hide.uvar(h.reasons); hide.uvar(h.models.length); for (const m of h.models) hide.uvar(s.ref(m)); }
   const payloads: [StreamTag, Uint8Array][] = [['STRS', writeStrings(s)], ['FOOT', foot.done()], ['ATTR', attr.done()], ['STYL', styl.done()], ['ROOF', roof.done()], ['GRP ', grp.done()], ['HIDE', hide.done()]];
   if (!debug) payloads.splice(2, 1);
+  if ((cell.shel || cell.far) && version < 6) throw Error(`shell streams need format 6, not ${version}`);
+  payloads.push(...shellPayloads(cell));
+  return { ...container(cell.i, cell.j, version, (debug ? FLAG_DEBUG : 0) | (globals ? FLAG_GLOBAL : 0), payloads, globals), strings: s.list };
+}
+
+function shellPayloads(c: { shel?: ShellMesh; far?: FarPrism[] }): [StreamTag, Uint8Array][] {
+  const out: [StreamTag, Uint8Array][] = [];
+  if (c.shel) out.push(['SHEL', encodeShel(c.shel)]);
+  if (c.far) out.push(['SHL1', encodeShl1(c.far)]);
+  return out;
+}
+function container(i: number, j: number, version: number, flags: number, payloads: [StreamTag, Uint8Array][], globals?: GlobalStrings): Omit<EncodedCell, 'strings'> {
   const w = new Writer();
-  w.bytes(encoder.encode(WORLD_MAGIC)); w.byte(version); w.byte((debug ? FLAG_DEBUG : 0) | (globals ? FLAG_GLOBAL : 0)); w.zvar(cell.i); w.zvar(cell.j);
+  w.bytes(encoder.encode(WORLD_MAGIC)); w.byte(version); w.byte(flags); w.zvar(i); w.zvar(j);
   if (globals) { w.uvar(globals.list.length); for (let k = 0; k < 4; k++) w.byte(globals.hash >>> (8 * k)); }
   w.uvar(payloads.length);
   for (const [tag, bytes] of payloads) { w.bytes(encoder.encode(tag)); w.uvar(bytes.length); }
   const streams: EncodedCell['streams'] = [];
   for (const [tag, bytes] of payloads) { streams.push({ tag, offset: w.length, bytes: bytes.length }); w.bytes(bytes); }
-  return { bytes: w.done(), streams, strings: s.list };
+  return { bytes: w.done(), streams };
+}
+
+/** Encode a v6 shell file (FLAG_SHELLS): `shel` and/or `far`, no buildings. */
+export function encodeShellCell(cell: ShellCell): Omit<EncodedCell, 'strings'> {
+  const payloads = shellPayloads(cell);
+  if (!payloads.length) throw Error(`shell file ${cell.i}_${cell.j} has no shell stream`);
+  return container(cell.i, cell.j, 6, FLAG_SHELLS, payloads);
+}
+/** Decode a v6 shell file. Throws on a building cell, an unknown tag or a structural problem. */
+export function decodeShellCell(bytes: Uint8Array, what = 'world shell'): ShellCell {
+  const r = new Reader(bytes, what);
+  const magic = String.fromCharCode(...r.take(4));
+  if (magic !== WORLD_MAGIC) r.fail(`bad magic ${JSON.stringify(magic)}`);
+  const version = r.byte(); if (version < 6 || !WORLD_FORMAT_VERSIONS.includes(version)) r.fail(`unsupported shell version ${version}`);
+  const flags = r.byte(); if (flags !== FLAG_SHELLS) r.fail(`not a shell file (flags ${flags})`);
+  const i = r.zvar(), j = r.zvar();
+  const n = r.count(SHELL_TAGS.length, 'streams'), table: [string, number][] = [];
+  if (!n) r.fail('no shell stream');
+  let at = 0;
+  for (let k = 0; k < n; k++) {
+    const tag = String.fromCharCode(...r.take(4)), pos = SHELL_TAGS.indexOf(tag as StreamTag);
+    if (pos < at) r.fail(`stream ${k} is ${JSON.stringify(tag)}, expected one of ${SHELL_TAGS.slice(at).join(', ')}`);
+    at = pos + 1; table.push([tag, r.count(bytes.length, 'stream length')]);
+  }
+  const out: ShellCell = { i, j };
+  const subs = table.map(([tag, len]) => [tag, new Reader(r.take(len), `${what} ${tag}`)] as const);
+  r.end();
+  for (const [tag, sub] of subs) { if (tag === 'SHEL') out.shel = decodeShel(sub); else out.far = decodeShl1(sub); }
+  return out;
 }
 
 /** Decode a cell (already inflated). Throws on any structural problem; never returns a partial cell. */
@@ -862,8 +920,8 @@ export function decodeCell(bytes: Uint8Array, what = 'world cell', globals?: Glo
   if (magic !== WORLD_MAGIC) r.fail(`bad magic ${JSON.stringify(magic)}`);
   const version = r.byte(); if (!WORLD_FORMAT_VERSIONS.includes(version)) r.fail(`unsupported version ${version}`);
   const v3 = version >= 3;
-  const flags = r.byte(); if (flags & ~(version >= 4 ? FLAG_DEBUG | FLAG_GLOBAL : FLAG_DEBUG)) r.fail(`unknown flags ${flags}`);
-  const debug = (flags & FLAG_DEBUG) !== 0, tags = debug ? STREAM_TAGS : STREAM_TAGS.filter(t => t !== 'ATTR');
+  const flags = r.byte(); if (flags & ~(version >= 4 ? FLAG_DEBUG | FLAG_GLOBAL : FLAG_DEBUG)) r.fail(`unknown flags ${flags}${flags & FLAG_SHELLS && version >= 6 ? ' (a shell file: decodeShellCell)' : ''}`);
+  const debug = (flags & FLAG_DEBUG) !== 0, tags = debug ? BUILDING_TAGS : BUILDING_TAGS.filter(t => t !== 'ATTR');
   const i = r.zvar(), j = r.zvar();
   let shared: readonly string[] = [];
   if (flags & FLAG_GLOBAL) {
@@ -872,10 +930,17 @@ export function decodeCell(bytes: Uint8Array, what = 'world cell', globals?: Glo
     if (g.list.length !== count || g.hash !== hash) r.fail(`shared string table mismatch: cell wants ${count} strings #${hash.toString(16)}, have ${g.list.length} #${g.hash.toString(16)}`);
     shared = g.list;
   }
-  const n = r.count(STREAM_TAGS.length, 'streams');
-  if (n !== tags.length) r.fail(`expected ${tags.length} streams, got ${n}`);
+  // The building streams in order; v6 may append SHEL and SHL1 (each optional, in that order).
+  const n = r.count(STREAM_TAGS.length, 'streams'), extra = version >= 6 ? SHELL_TAGS.length : 0;
+  if (n < tags.length || n > tags.length + extra) r.fail(`expected ${tags.length}${extra ? `-${tags.length + extra}` : ''} streams, got ${n}`);
   const table: [string, number][] = [];
-  for (let k = 0; k < n; k++) { const tag = String.fromCharCode(...r.take(4)); if (tag !== tags[k]) r.fail(`stream ${k} is ${JSON.stringify(tag)}, expected ${tags[k]}`); table.push([tag, r.count(bytes.length, 'stream length')]); }
+  let shellAt = 0;
+  for (let k = 0; k < n; k++) {
+    const tag = String.fromCharCode(...r.take(4));
+    if (k < tags.length) { if (tag !== tags[k]) r.fail(`stream ${k} is ${JSON.stringify(tag)}, expected ${tags[k]}`); }
+    else { const pos = SHELL_TAGS.indexOf(tag as StreamTag); if (pos < shellAt) r.fail(`stream ${k} is ${JSON.stringify(tag)}, expected one of ${SHELL_TAGS.slice(shellAt).join(', ')}`); shellAt = pos + 1; }
+    table.push([tag, r.count(bytes.length, 'stream length')]);
+  }
   const sub = new Map<string, Reader>();
   for (const [tag, len] of table) sub.set(tag, new Reader(r.take(len), `${what} ${tag.trim()}`));
   r.end();
@@ -907,7 +972,11 @@ export function decodeCell(bytes: Uint8Array, what = 'world cell', globals?: Glo
   const hn = hr.count(MAX_COUNT, 'hidden ids'), hide: HideEntry[] = [];
   for (let k = 0; k < hn; k++) { const id = str(hr, strings), reasons = hr.uvar(); if (reasons === 0 || reasons > 7) hr.fail(`bad hide reasons ${reasons}`); const mc = hr.count(1000, 'models'), models: string[] = []; for (let q = 0; q < mc; q++) models.push(str(hr, strings)); hide.push({ id, reasons, models }); }
   for (const x of [ar, sr, rr, gr, hr]) x?.end();
-  return debug ? { i, j, buildings, hide, debug } : { i, j, buildings, hide };
+  const out: Cell = debug ? { i, j, buildings, hide, debug } : { i, j, buildings, hide };
+  const shel = sub.get('SHEL'), far = sub.get('SHL1');
+  if (shel) out.shel = decodeShel(shel);
+  if (far) out.far = decodeShl1(far);
+  return out;
 }
 
 /** Inflate when gzipped (the host may already have decoded Content-Encoding); other bytes pass through. */
