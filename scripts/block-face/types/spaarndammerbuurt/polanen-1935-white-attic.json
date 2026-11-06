@@ -116,7 +116,12 @@
     "span": 0.9,
     "apex": 2.6
    },
-   "note": "the portiek arch stands on the party wall (rectified 1.8-2.0 m wide, crown 2.7 m); each house draws its half as a 0.9 m arched door"
+   "note": "the portiek arch stands on the party wall (rectified 1.8-2.0 m wide, crown 2.7 m); each house draws its half as a 0.9 m arched door. Door reveal: measured on Polanenstraat 181-331 (pand 131460, panoramas at -41 and 29 deg): an arched doorway whose tiled floor runs in to the door, brick returns of 0.27 and 0.56 m to the frame face (return / sin of the view angle), about 0.55 m to the back of the frame on the mean. Set a 0.55 m arched reveal, brick jambs, no step.",
+   "doorReveal": {
+    "form": "reveal",
+    "deep": 0.55,
+    "steps": 0
+   }
   }
  },
  "palettes": {
@@ -191,6 +196,7 @@
   "the overhang is drawn flat-ended; the attic's thin white sill ledge under the band"
  ],
  "notes": [
-  "Palette: every placed pand takes its trim-normalised strip wall (auto-place measuredPalette)."
+  "Palette: every placed pand takes its trim-normalised strip wall (auto-place measuredPalette).",
+  "Door reveal (#239): measured on Polanenstraat 181-331 (pand 131460, panoramas at -41 and 29 deg): an arched doorway whose tiled floor runs in to the door, brick returns of 0.27 and 0.56 m to the frame face (return / sin of the view angle), about 0.55 m to the back of the frame on the mean. Set a 0.55 m arched reveal, brick jambs, no step."
  ]
 }

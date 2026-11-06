@@ -64,7 +64,6 @@ export const CHUNK_WALL_EXPOSURE_DATA: Readonly<Record<string, {readonly white: 
   'face-molukken-35-67-r1': {white: [159, 160, 159], stripOverDrawn: 0.474},
   'face-hembrug-44-154-r1': {white: [179, 178, 163], stripOverDrawn: 1.084},
   'face-hembrug-160-272-r1': {white: [172, 175, 164], stripOverDrawn: 1.238},
-  'face-polanen-181-331-r1': {white: [156, 163, 161], stripOverDrawn: 0.589},
   'face-hembrug-21-27': {white: [177, 165, 153], stripOverDrawn: 0.716},
   'face-houtrijk-335-409-r1': {white: [199, 197, 181], stripOverDrawn: 0.986},
   'face-polanen-184-250-r1': {white: [190, 186, 167], stripOverDrawn: 1.045},
@@ -151,4 +150,5 @@ export const CHUNK_WALL_EXPOSURE_DATA: Readonly<Record<string, {readonly white: 
   'face-helmers-40-60-r1': {white: [210, 200, 199], stripOverDrawn: 0.691},
   'face-luthuli-6-20': {white: [182, 182, 177], stripOverDrawn: 0.85},
   'face-luthuli-22-32': {white: [185, 184, 180], stripOverDrawn: 0.854},
+  'face-polanen-181-331-r1': {white: [156, 163, 161], stripOverDrawn: 0.589},
 };
