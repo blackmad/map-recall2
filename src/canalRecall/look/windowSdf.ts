@@ -127,7 +127,13 @@ export const WINDOW_SDF_FADE_PX = [2.5, 5] as const;
  * The values are uniforms (`windowSdfBand`, `windowSdfShape`) so the probes sweep them in one page; the query flags
  * `?windowSdfFoot=`, `?windowSdfFade=a,b`, `?windowSdfFrameMin=`, `?windowSdfBar=a,b` set them for a page.
  */
-export const WINDOW_SDF_BAND = { footprint: 1.25, fadePx: [2.5, 5] as readonly [number, number], frameMinPx: 0, barPx: [1.5, 3.0] as readonly [number, number], tent: false };
+export const WINDOW_SDF_BAND = { footprint: 1.0, fadePx: [2, 4] as readonly [number, number], frameMinPx: 0, barPx: [1.5, 3.0] as readonly [number, number], tent: true };
+/**
+ * The facade cell sample's mip bias while the band-limited windows are on (`?cellLodBias=` overrides, 0 = none). The
+ * windows fix the alias, the bias buys the brick/trim sharpness back; picked by the sweep in the lane's hand-back
+ * (#231): at -0.6 aliasPx stays under the painted cell's at both S3 poses, at -0.75 s3-slab-user is at the line.
+ */
+export const WINDOW_SDF_LOD_BIAS = -0.6;
 
 /** `?windowSdfBand=0` (or `window.__canalRecallWindowSdfBand = false`): round two's shader. On by default. */
 export function windowSdfBandEnabled(): boolean {

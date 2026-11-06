@@ -62,7 +62,7 @@ import { ROUTE_AHEAD_M, ROUTE_AHEAD_MAX_TILES, headingAheadTiles, routeAheadEnab
 import { worldCameraOf } from './engine/worldCameraOf.js';
 import type { WorldCamera } from './engine/worldViewApi.js';
 import { packMask } from './look/maskPacking.js';
-import { cellDebugMode, windowSdfEnabled } from './look/windowSdf.js';
+import { cellDebugMode, windowSdfBandEnabled, windowSdfEnabled, WINDOW_SDF_LOD_BIAS } from './look/windowSdf.js';
 import { arrayMips, cellLodBiasFlag, cellMipOptions, cellMipsEnabled } from './look/cellMips.js';
 import { uploadArrayMips, type ArrayMipUploadResult } from './look/arrayMipUpload.js';
 
@@ -1920,6 +1920,11 @@ export class ThreeBuildings {
   private get windowSdf(): boolean { return this.windowSdfOn ??= windowSdfEnabled(this.detailZoom === 17); }
   private windowSdfOn: boolean | undefined;
 
+  /** `?cellLodBias=` as asked; unasked, WINDOW_SDF_LOD_BIAS with the band-limited windows on, else none (no define). */
+  private lodBiasFor(windows: boolean): number | null {
+    return cellLodBiasFlag() ?? (windows && windowSdfBandEnabled() ? WINDOW_SDF_LOD_BIAS : null);
+  }
+
   private newMaterial(): any {
     const THREE = this.THREE;
     // The pantile and slate cells (the planned roofs' slope layers) coarsen with distance; every other layer is left alone.
@@ -1932,7 +1937,7 @@ export class ThreeBuildings {
       // Analytic windows (look/windowSdf.ts, lane R2-A #228): only for a look whose table has windows; the define,
       // the program key suffix and the table upload are all absent with `?windowSdf=0`.
       const windowTable = this.windowTableFor(cellSetOf(this.look));
-      const lodBias = cellLodBiasFlag();
+      const lodBias = this.lodBiasFor(!!windowTable);
       return createCityLookMaterial(THREE, { lit: this.lit, kind: 'chunk', side: THREE.FrontSide, ...(SWAP_COMPLEMENT ? { swap: true } : {}), ...(cellDebug ? { cellDebug } : {}), ...(windowTable ? { windows: true } : {}), ...(lodBias != null ? { lodBias: true } : {}) }, createCityUniforms(THREE, {
         ...(SWAP_COMPLEMENT ? { citySwapUnder: this.swapUnder } : {}),
         ...(windowTable ? { windowTable: { value: windowTable } } : {}),
@@ -1943,7 +1948,7 @@ export class ThreeBuildings {
     }
     if (this.lit) {
       const windowTable = this.windowTableFor(cellSetOf(this.look));
-      const material = createLitFacadeMaterial(THREE, { cityFlat: { value: CITY_FLAT }, roofLayers: { value: roofLayers }, roofTier: { value: roofTierUniform() }, cellTier: { value: this.cellTierValue() } }, { ...(windowTable ? { windowTable } : {}), lodBias: cellLodBiasFlag() });
+      const material = createLitFacadeMaterial(THREE, { cityFlat: { value: CITY_FLAT }, roofLayers: { value: roofLayers }, roofTier: { value: roofTierUniform() }, cellTier: { value: this.cellTierValue() } }, { ...(windowTable ? { windowTable } : {}), lodBias: this.lodBiasFor(!!windowTable) });
       material.uniforms.bands.value = LOOK_VARIANTS[this.look].shadeBands;
       material.uniforms.flatColour.value = LOOK_VARIANTS[this.look].flatColour ? 1 : 0;
       if (material.uniforms.wallGain) material.uniforms.wallGain.value = litFacadeWallGain(LOOK_VARIANTS[this.look].litWallGain);
