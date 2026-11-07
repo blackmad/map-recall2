@@ -275,7 +275,7 @@ const longFrames = (from, resumedAt) => page.evaluate(([from, resumedAt]) => {
       glMB: Math.round(gMB * 10) / 10, compiles, glOwners: Object.fromEntries(Object.entries(gOwners).sort((x, y) => y[1] - x[1]).slice(0, 4).map(([k, v]) => [k, Math.round(v * 10) / 10])),
       phases: ph, scripts, leg: leg?.to ?? null, legS: leg ? Math.round((a - leg.at) / 100) / 10 : null, sinceResumeS: resumedAt ? Math.round((a - resumedAt) / 100) / 10 : null, speedMps: A?.speedMps ?? null });
   }
-  window.__aerialPhaseFrames = PF.filter(p => p.at >= (F.t.at(-1) ?? 0) - 1000);
+  { const k = PF.findIndex(p => p.at >= (F.t.at(-1) ?? 0) - 1000); PF.splice(0, k < 0 ? PF.length : k); }
   const GE = window.__glEvents; if (GE) { const k = GE.findIndex(e => e.at >= (F.t.at(-1) ?? 0) - 1000); GE.splice(0, k < 0 ? GE.length : k); }
   return out;
 }, [from, resumedAt]);
@@ -559,6 +559,31 @@ if (argv.includes('--land')) {
   process.exit(0);
 }
 
+// --trace <from>-<to> (lane R4-E #248): a Chrome trace (renderer + GPU process) from pan second <from> to <to>, written
+// beside the output as <out>.trace.json: what the GPU process does in the long frames where the main thread is idle.
+const traceArg = opt('trace', '');
+const [traceFrom, traceTo] = traceArg ? traceArg.split('-').map(Number) : [null, null];
+let tracing = null;
+const traceChunks = [];
+async function traceStart() {
+  const c = await browser.newBrowserCDPSession();
+  c.on('Tracing.dataCollected', e => { for (const ev of e.value) traceChunks.push(ev); });
+  await c.send('Tracing.start', { transferMode: 'ReportEvents', traceConfig: { recordMode: 'recordContinuously', includedCategories: ['toplevel', 'gpu', 'gpu.service', 'gpu.angle', 'viz', 'cc', 'blink', 'v8', 'devtools.timeline', 'disabled-by-default-devtools.timeline', 'disabled-by-default-gpu.service', 'disabled-by-default-gpu.decoder'] } });
+  tracing = c;
+}
+async function traceStop() {
+  const c = tracing; tracing = null;
+  const done = new Promise(r => c.once('Tracing.tracingComplete', r));
+  await c.send('Tracing.end'); await done;
+  const file = out.replace(/\.json$/, '') + '.trace.json';
+  fs.writeFileSync(file, JSON.stringify({ traceEvents: traceChunks }));
+  console.log(`trace ${traceChunks.length} events -> ${file}`);
+}
+// --profile <from>-<to> (lane R4-E #248): a V8 CPU profile of the page's main thread over those pan seconds, written as
+// <out>.cpuprofile (Profiler.start stalls ~1.7 s once; ignore that window's spike).
+const profArg = opt('profile', '');
+const [profFrom, profTo] = profArg ? profArg.split('-').map(Number) : [null, null];
+let profiling = false;
 const timeline = [];
 const shots = [];
 const baseInstalls = await page.evaluate(() => canalRecallGame.vectorMap._threeBuildings?.detailInstalls ?? null);
@@ -567,7 +592,11 @@ let last = await page.evaluate(() => performance.now());
 const panT0 = last;
 for (let t = every; t <= panS; t += every) {
   const wait = last + every * 1000 - (await page.evaluate(() => performance.now()));
+  if (traceFrom != null && !tracing && t - every >= traceFrom && t - every < traceTo) await traceStart();
+  if (profFrom != null && !profiling && t - every >= profFrom && t - every < profTo) { await cdp.send('Profiler.enable'); await cdp.send('Profiler.setSamplingInterval', { interval: 200 }); await cdp.send('Profiler.start'); profiling = true; }
   if (wait > 0) await page.waitForTimeout(wait);
+  if (tracing && t >= traceTo) await traceStop();
+  if (profiling && t >= profTo) { const { profile } = await cdp.send('Profiler.stop'); profiling = false; const file = out.replace(/\.json$/, '') + '.cpuprofile'; fs.writeFileSync(file, JSON.stringify(profile)); console.log(`profile -> ${file}`); }
   const long = await longFrames(last, timeline.length ? last : null);
   const frames = frameStats(await frameWindow(last));
   const worst = await page.evaluate(() => {
@@ -578,7 +607,10 @@ for (let t = every; t <= panS; t += every) {
   // The window's long animation frames: count over 100 ms, main-thread script time in them by script, and the
   // part of those frames before rendering (tasks) vs rendering (rAF callbacks, style, paint, GPU submit).
   const loaf = await page.evaluate(from => {
-    const L = window.__aerialLoaf ?? [], mine = L.filter(e => e.start >= from); window.__aerialLoaf = L.filter(e => e.start >= from - 1000);
+    // Trimmed in place: the observer pushes into this same array (reassigning it left every window after the first
+    // with no LoAF entries; lane R4-E #248 found R3-F's "0-4 main-thread frames > 100 ms" read was that).
+    const L = window.__aerialLoaf ?? [], mine = L.filter(e => e.start >= from);
+    { const k = L.findIndex(e => e.start >= from - 1000); L.splice(0, k < 0 ? L.length : k); }
     const over = mine.filter(e => e.duration > 100), by = {};
     let scriptMs = 0, renderMs = 0, durMs = 0;
     for (const e of over) {
@@ -606,7 +638,7 @@ for (let t = every; t <= panS; t += every) {
   res.detailInstalls = res.detailInstallsTotal == null ? null : res.detailInstallsTotal - (timeline.at(-1)?.detailInstallsTotal ?? baseInstalls ?? 0);
   res.coarseFadeIns = res.coarseFadeInsTotal - (timeline.at(-1)?.coarseFadeInsTotal ?? res.coarseFadeInsTotal);
   res.uploadMBDelta = res.gl?.uploadMB == null ? null : res.gl.uploadMB - (timeline.at(-1)?.gl?.uploadMB ?? 0);
-  const row = { t, ...aerial, heapMB: heap.main.usedMB, bufMB: heap.main.backingMB, workersMB: heap.workersUsedMB, ...rss, ...res, frames, worst, loaf, long };
+  const row = { t, at: Math.round(a), pauseMs: Math.round(b + 50 - a), ...aerial, heapMB: heap.main.usedMB, bufMB: heap.main.backingMB, workersMB: heap.workersUsedMB, ...rss, ...res, frames, worst, loaf, long };
   for (const f of long) console.log(`${device}   long ${f.ms} ms (cb ${f.cbMs}, outside ${f.outside}) leg ${f.leg} +${f.legS}s resume +${f.sinceResumeS}s v${f.speedMps ?? '-'} gl ${f.glMB} MB ${f.compiles} compiles ${JSON.stringify(f.glOwners)} ${JSON.stringify(f.split)}${f.scripts.length ? ` scripts ${f.scripts.join(' | ')}` : ''}`);
   timeline.push(row);
   console.log(`${device} t${t} ${aerial.leg ?? '-'} z${res.zoom} p${res.pitch}: heap ${heap.main.usedMB}+${heap.main.backingMB ?? '?'} MB, wk ${heap.workersUsedMB} MB, rss ${rss.rendererRssMB}/${rss.gpuRssMB}, geo ${res.geometries} tex ${res.textures} gl ${res.gl?.residentMB} MB (+${res.gl?.uploadMB} MB up), chunks ${res.chunks} tiles ${res.cityTiles} feats ${res.cityFeatures} ctxCh ${res.contextChanges} lm ${res.landmarks} trees ${res.trees} ground ${res.groundCells} far ${res.farRing} r${res.farRadiusM} fs ${res.farShells?.cells ?? '-'}/${res.farShells?.partsShown ?? '-'} draws ${res.draws} bc ${res.bakedCoarse ? `${res.bakedCoarse.drawn}/${res.bakedCoarse.cells}` : '-'} cc ${res.coarseChunks} labels ${res.labelsPlaced} wkrs ${res.workers} detail +${res.detailInstalls} (${res.detailTiles} tiles, ${res.detailMB} MB) fading ${res.fading} coarse fading ${res.coarseFading} (+${res.coarseFadeIns}) up +${res.uploadMBDelta} MB; p99 ${frames.p99} >100 ${frames.over100} >250 ${frames.over250} max ${frames.longestMs}${worst?.[0] ? ` worst ${JSON.stringify(worst[0].phases)}` : ''}`);
