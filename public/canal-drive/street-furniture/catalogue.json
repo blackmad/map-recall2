@@ -185,15 +185,18 @@
    "category": "street-furniture",
    "subtypes": "-",
    "modelUrl": "./models/street-furniture/bin.glb",
-   "triangles": 56,
-   "glbBytes": 6932,
+   "triangles": 94,
+   "glbBytes": 11012,
    "instances": 0,
    "source": "none: no open register places Amsterdam litter bins (BGT afvalbak rows are container columns)",
    "measured": [
-    "1.11 x 0.57 m beside the Nassaukade abri"
+    "1.05 m high, 0.50 m wide beside the Nassaukade abri",
+    "rounded-rectangle body, front door with its seam on the left, hood with a wide mouth recessed 0.11 m under a thin rim",
+    "sticker under the mouth"
    ],
    "prior": [
-    "octagonal drum, domed lid"
+    "depth 0.42 m",
+    "corner radius 0.13 m"
    ],
    "photo": {
     "panoId": "2025_10_02_06_52_49_00943",

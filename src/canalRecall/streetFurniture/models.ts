@@ -50,7 +50,7 @@ export const DIMENSIONS = {
   lantern: { height: 4.09, baseR: 0.13, baseH: 0.55, shaftR: 0.055, lanternBottom: 3.16, lanternH: 0.45, lanternBot: 0.30, lanternTop: 0.42, roofW: 0.50, roofH: 0.18, finialH: 0.10 },
   pole: { height: 7.6, baseR: 0.11, topR: 0.06, reach: 1.0, bowlR: 0.18, bowlH: 0.16 },
   abri: { length: 4.11, depth: 1.4, height: 2.47, post: 0.08, roofT: 0.10, panelW: 1.27, panelH: 1.78, panelT: 0.14, panelBase: 0.35 },
-  bin: { height: 1.05, radius: 0.27 },
+  bin: { height: 1.05, width: 0.50, depth: 0.42, corner: 0.13, hoodH: 0.24, rimH: 0.05, mouthSet: 0.11, dome: 0.03 },
   hoop: { height: 0.75, width: 0.70, tube: 0.05 },
   column: { radius: 0.92, baseR: 0.98, baseH: 0.30, bodyH: 3.40, corniceR: 1.0, corniceH: 0.22, roofH: 0.72, finialH: 0.16 },
 } as const;
@@ -277,13 +277,41 @@ export function poleModel(): FurnitureMesh {
   return b.done('lamp-pole');
 }
 
-/** The grey Amsterdam litter bin: an octagonal drum with a darker domed lid and a slot (no open register places it). */
+/**
+ * The grey Amsterdam litter bin (Nassaukade abri, pano 2025_10_02_06_52_49_00943, 2026-11-07 re-model): a rounded
+ * rectangle in plan, straight sides, a full-height front door with its seam on the left, and a hood whose front is cut
+ * back into a wide dark mouth under a thin rim. The mouth is a real recess in the hood (floor, back wall, cheeks), so it
+ * sits in the body, not on it. A small sticker under the mouth. No open register places these bins.
+ */
 export function binModel(): FurnitureMesh {
-  const D = DIMENSIONS.bin, b = new Builder();
-  b.prism(0, 0, 0, D.height - 0.18, D.radius, D.radius, 8, T.bin, false);
-  b.prism(0, 0, D.height - 0.18, D.height - 0.06, D.radius * 1.03, D.radius * 0.9, 8, T.binLid, false);
-  b.prism(0, 0, D.height - 0.06, D.height, D.radius * 0.9, D.radius * 0.45, 8, T.binLid, true);
-  b.quad([0.12, D.radius + 0.01, D.height - 0.14], [-0.12, D.radius + 0.01, D.height - 0.14], [-0.12, D.radius + 0.01, D.height - 0.08], [0.12, D.radius + 0.01, D.height - 0.08], T.containerSlot);
+  const D = DIMENSIONS.bin, b = new Builder(), W = D.width / 2, Dp = D.depth / 2, r = D.corner, n = 3;
+  // Plan, counter-clockwise from the front-right end of the straight front (+y) edge.
+  const plan: [number, number][] = [];
+  const corner = (cx: number, cy: number, a0: number) => { for (let k = 0; k <= n; k++) { const a = a0 + (Math.PI / 2) * k / n; plan.push([cx + r * Math.cos(a), cy + r * Math.sin(a)]); } };
+  corner(W - r, Dp - r, 0); corner(-W + r, Dp - r, Math.PI / 2); corner(-W + r, -Dp + r, Math.PI); corner(W - r, -Dp + r, 1.5 * Math.PI);
+  // plan[n] .. plan[n + 1] is the straight front edge, from x = W - r to x = -(W - r).
+  const front = n, zm = D.height - D.hoodH, top = D.height, rimZ = top - D.rimH, xf = W - r, yf = Dp, set = D.mouthSet;
+  const side = (i: number, z0: number, z1: number, hex: string) => { const [x0, y0] = plan[i], [x1, y1] = plan[(i + 1) % plan.length]; b.quad([x0, y0, z0], [x1, y1, z0], [x1, y1, z1], [x0, y0, z1], hex); };
+  for (let i = 0; i < plan.length; i++) {
+    side(i, 0, zm, T.bin);
+    if (i !== front) side(i, zm, top, T.binLid);
+  }
+  // The mouth: dark back wall, floor and cheeks set into the hood behind the front edge, the rim over it.
+  const yb = yf - set;
+  b.quad([xf, yb, zm], [-xf, yb, zm], [-xf, yb, rimZ], [xf, yb, rimZ], T.containerSlot);
+  b.quad([-xf, yf, zm], [-xf, yb, zm], [xf, yb, zm], [xf, yf, zm], T.binLid);
+  b.quad([-xf, yb, zm], [-xf, yf, zm], [-xf, yf, rimZ], [-xf, yb, rimZ], T.containerSlot);
+  b.quad([xf, yf, zm], [xf, yb, zm], [xf, yb, rimZ], [xf, yf, rimZ], T.containerSlot);
+  b.quad([xf, yb, rimZ], [-xf, yb, rimZ], [-xf, yf, rimZ], [xf, yf, rimZ], T.containerSlot);
+  side(front, rimZ, top, T.binLid);
+  // Domed cap over the whole plan: the centre 3 cm above the rim line.
+  const c: V = [0, 0, top + D.dome];
+  for (let i = 0; i < plan.length; i++) { const [x0, y0] = plan[i], [x1, y1] = plan[(i + 1) % plan.length]; b.tri([x0, y0, top], [x1, y1, top], c, T.binLid); }
+  // Door on the front: seam on the left, sticker under the mouth.
+  const e = yf + 0.003;
+  // +x is the viewer's left when facing the front.
+  b.quad([xf - 0.02, e, 0.06], [xf - 0.035, e, 0.06], [xf - 0.035, e, zm - 0.03], [xf - 0.02, e, zm - 0.03], T.containerSlot);
+  b.quad([xf - 0.08, e, zm - 0.12], [-xf + 0.02, e, zm - 0.12], [-xf + 0.02, e, zm - 0.04], [xf - 0.08, e, zm - 0.04], T.containerLabel);
   return b.done('bin');
 }
 

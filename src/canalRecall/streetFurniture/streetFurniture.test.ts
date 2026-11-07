@@ -11,7 +11,7 @@ import type { FurnitureRecord } from './extract.ts';
 /** Triangle counts per model: a change here is a deliberate geometry change (update with the reason). */
 // container 114 -> 150 (2026-11-07: full width, corner strips, door, pictogram, crosses); 52 -> 114 (#212): the hexagonal hood, the recess between cheeks with the rest drum (glass: round hole 104,
 // paper: slot and flap 102), lip, top sticker, two-disc mushroom.
-const TRIANGLES: Record<string, number> = { container: 150, 'container-rest': 136, 'container-glas': 140, 'container-papier': 133, 'lamp-lantern': 74, 'lamp-pole': 92, bin: 56, 'bike-rack': 40, abri: 86, 'ad-column': 90 };
+const TRIANGLES: Record<string, number> = { container: 150, 'container-rest': 136, 'container-glas': 140, 'container-papier': 133, 'lamp-lantern': 74, 'lamp-pole': 92, bin: 94, 'bike-rack': 40, abri: 86, 'ad-column': 90 };
 
 test('every model stays within the per-kind triangle cap and its recorded count', () => {
   for (const id of FURNITURE_MODEL_IDS) {
