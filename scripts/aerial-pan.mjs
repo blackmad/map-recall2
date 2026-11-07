@@ -314,7 +314,7 @@ if (argv.includes('--spots')) {
     }, spot);
     await page.waitForTimeout(1500);
     await page.evaluate(async () => { const cam = canalRecallGame.vectorMap.camera; await Promise.race([cam?.whenIdle?.() ?? Promise.resolve(), new Promise(r => setTimeout(r, 60_000))]); });
-    await page.waitForTimeout(4000);
+    await page.waitForTimeout(Number(process.env.SPOT_SETTLE_MS ?? 4000)); // SPOT_SETTLE_MS: longer, for identity pairs
     const file = path.join(shotsDir || 'artifacts/perf/aerial-spots', `${device}-spot-${spot.name}.png`);
     if (process.env.SPOT_SET === 'identity') await page.evaluate(() => {
       // Only the 3D frame is compared: no labels, HUD or minimap (as look-consistency's quiet()).
