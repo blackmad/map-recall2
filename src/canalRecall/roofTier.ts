@@ -104,8 +104,14 @@ vec3 roofTierColour(vec3 fine, vec2 uv, float layer, float dist) {
  * (look/windowSdf.ts reads `cellTapW`).
  */
 export const CELL_TAPS_DEFAULT = false;
-/** Default knobs: threshold in texels per framebuffer pixel (scaled by the policy's tierScale, like the tier). */
-export const CELL_TAPS = { threshold: 16, taps: 4, spread: 0.5, grad: 0.5, sdf: 1 } as const;
+/**
+ * Default knobs, the measured best (#246 hand-back, desktop DPR 2): threshold 20 texels per framebuffer pixel (scaled by
+ * the policy's tierScale, like the tier), 3 x 3 tent taps 1 px apart, each read at 0.85 x the pixel's gradient. At
+ * `s3-slab-user` aliasPx sdf 29,997 -> 21,322 (gate 22,822), painted 49,918 -> 24,462 (gate 23,500, missed); S2 lapVar
+ * -1.5 / -2.9 / -2.4 % (sdf), GPU +0.10 ms at the pose. Threshold 16 or lower reaches the quay walls of S2 (chase -4 %,
+ * threshold 8: -19 %); 2 x 2 taps at half gradient made the slab worse (they read a sharper level each).
+ */
+export const CELL_TAPS = { threshold: 20, taps: 9, spread: 1, grad: 0.85, sdf: 1 } as const;
 export type CellTapsOptions = { threshold: number; taps: number; spread: number; grad: number; sdf: number };
 
 const CELL_TAPS_GLSL = /* glsl */ `

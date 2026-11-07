@@ -183,8 +183,10 @@ test('cell taps: off by default; the shader carries them only under CELL_TAPS, a
     g.__canalRecallCellTaps = '0'; assert.equal(cellTapsEnabled(), false);
   } finally { delete g.__canalRecallCellTaps; }
   assert.deepEqual(cellTapsOptions(), { ...CELL_TAPS });
-  assert.deepEqual(cellTapsUniform(CELL_TAPS, 2).cellTaps, [32, 4, 0.5, 0.5]);
-  assert.deepEqual(cellTapsUniform(CELL_TAPS).cellTaps, [16, 4, 0.5, 0.5]);
+  assert.deepEqual(cellTapsUniform(CELL_TAPS, 2).cellTaps, [40, 9, 1, 0.85]);
+  assert.deepEqual(cellTapsUniform(CELL_TAPS).cellTaps, [20, 9, 1, 0.85]);
+  // The quay walls of S2 (chase 8-16 texels/px at DPR 2) stay one tap at the default threshold.
+  assert.equal(cellTapsWeight(16, CELL_TAPS.threshold, CELL_TAPS.taps), 0);
   // Drop the CELL_TAPS blocks (nested #if aware), as the preprocessor does without the define.
   const off = (() => { const out: string[] = []; let skip = 0; for (const line of FACADE_TIER_GLSL.split('\n')) { const t = line.trim(); if (skip) { if (/^#if/.test(t)) skip++; else if (t === '#endif') skip--; continue; } if (t === '#ifdef CELL_TAPS') { skip = 1; continue; } out.push(line); } return out.join('\n'); })();
   assert.ok(!/cellTaps|textureGrad/.test(off), 'without the define the program has no taps');
