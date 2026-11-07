@@ -1892,14 +1892,14 @@
      ]
     },
     {
-     "label": "Sea Palace",
-     "lat": 52.37574985135794,
-     "lng": 4.906292382923983,
+     "label": "DoubleTree by Hilton Amsterdam Centraal Station",
+     "lat": 52.37666465,
+     "lng": 4.90510367,
      "view": "chase",
      "at": [
-      4.906975,
-      52.375923,
-      247
+      4.9036,
+      52.377005,
+      110
      ]
     },
     {
@@ -2999,6 +2999,17 @@
    "name": "Van Lennepbuurt",
    "shots": [
     {
+     "label": "Kinkerstraat 89-105 (balcony block, 1987)",
+     "lat": 52.36639922,
+     "lng": 4.87015755,
+     "view": "chase",
+     "at": [
+      4.869058,
+      52.365758,
+      46
+     ]
+    },
+    {
      "label": "Kinkerstraat 1 to 29 (11 houses)",
      "lat": 52.368070987614345,
      "lng": 4.87552571653081,
@@ -3018,17 +3029,6 @@
       4.873069,
       52.366042,
       352
-     ]
-    },
-    {
-     "label": "Kinkerstraat 89-105, Amsterdam-West (Oud-West)",
-     "lat": 52.3662994,
-     "lng": 4.8701755,
-     "view": "chase",
-     "at": [
-      4.871194,
-      52.366982,
-      222
      ]
     },
     {
