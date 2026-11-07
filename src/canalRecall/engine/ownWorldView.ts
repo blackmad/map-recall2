@@ -214,6 +214,8 @@ export class OwnWorldView implements WorldViewOracles {
   private _labelOcclusionOn = flag('labelOcclusion', '__canalRecallLabelOcclusion', true);
   /** From the air (rendererShared/aerialView.ts): no occlusion rounds, candidates capped (lane R2-B #229; `?labelAerialCap=0`). */
   private labelAerialCapOn = flag('labelAerialCap', '__canalRecallLabelAerialCap', true);
+  /** `?labelClipTries=0` off: line labels try every centre along a run, also the ones projected far off screen. */
+  private readonly labelClipTriesOn = flag('labelClipTries', '__canalRecallLabelClipTries', true);
   /** `?labelBudget=0` off, `?labelBudget=N` N ms: the aerial full placement's per-frame budget (labelLayer placeBudgetMs). */
   private readonly labelBudgetMs: number | null = (() => {
     if (!flag('labelBudget', '__canalRecallLabelBudget', true)) return null;
@@ -804,6 +806,7 @@ export class OwnWorldView implements WorldViewOracles {
     this._labels.aerialCap = aerial ? AERIAL_LABEL_CAP : null;
     // From the air only (no occlusion there): full placements in slices, and at most every 800 ms while panning.
     this._labels.placeBudgetMs = aerial ? this.labelBudgetMs : null;
+    this._labels.clipTries = this.labelClipTriesOn;
     this._labels.movingCadenceMs = aerial && this.labelBudgetMs !== null ? AERIAL_LABEL_CADENCE_MS : null;
     if (this.labelOcclusionOn && !aerial && city?.residentFeatures) {
       const eye = cam.eye();

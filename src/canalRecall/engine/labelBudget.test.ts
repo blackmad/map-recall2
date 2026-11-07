@@ -95,3 +95,23 @@ test('panning from the air: full placements wait for the cadence, not ~24 px of 
   assert.equal(aerial.stats.full, 1);
   assert.equal(aerial.stats.winnersOnly, 4);
 });
+
+test('clipped tries (default) place exactly what every try along the run places, also when a run projects far off screen', () => {
+  let seed = 7;
+  const rand = () => { seed = (seed * 1664525 + 1013904223) >>> 0; return seed / 2 ** 32; };
+  // Points past y = 1000 m run toward the eye's foot: they project up to ~10^6 px below the screen (the aerial case).
+  const far = (p: readonly number[]) => ({ x: 400 + p[0], y: p[1] < 1000 ? 300 - p[1] / 4 : 300 + 1e6 / Math.max(1, 2000 - p[1]), depth: 10 });
+  let placed = 0;
+  for (let trial = 0; trial < 20; trial++) {
+    const list: LabelCandidate[] = Array.from({ length: 50 }, (_, i) => {
+      const x0 = -500 + rand() * 1000, y0 = -800 + rand() * 1600, dx = (rand() - 0.5) * 200, dy = 40 + rand() * 120;
+      return { id: `r${i}`, text: `Street ${i % 9}${'x'.repeat(i % 5)}`, kind: 'street', priority: Math.floor(rand() * 100), path: Array.from({ length: 6 + (i % 30) }, (_, k) => [x0 + dx * k * 0.1 + Math.sin(k) * 20, y0 + dy * k] as [number, number]) };
+    });
+    const o = { ...options, project: far };
+    const clipped = placeLabels(list, o), every = placeLabels(list, { ...o, clipTries: false });
+    assert.deepEqual(clipped, every, `trial ${trial}`);
+    placed += clipped.length;
+  }
+  assert.ok(placed > 40, `placed ${placed}`);
+  assert.deepEqual(placeLabels(candidates(), options), placeLabels(candidates(), { ...options, clipTries: false }));
+});

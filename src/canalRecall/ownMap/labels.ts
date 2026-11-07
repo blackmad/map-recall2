@@ -44,6 +44,8 @@ export interface PlaceOptions {
   /** Ignore candidates farther than this (eye-space metres): the horizon at high pitch. */
   maxDepth?: number;
   padding?: number;
+  /** Line labels: try only the centres that can land on screen (default; false: every centre along the run). */
+  clipTries?: boolean;
 }
 
 export interface PlacedGlyph { ch: string; x: number; y: number; angle: number }
@@ -204,8 +206,28 @@ export class LabelPlacement {
       const L = cum[cum.length - 1];
       if (L < textW * 1.15) continue;
       // Try the middle first, then outward, MapLibre-style spacing.
-      const tries = [L / 2];
-      for (let d = textW; d < L / 2; d += textW) tries.push(L / 2 - d, L / 2 + d);
+      let tries = [L / 2];
+      if (opts.clipTries === false) for (let d = textW; d < L / 2; d += textW) tries.push(L / 2 - d, L / 2 + d);
+      else {
+        // Only centres that can be on screen (lane R3-F #241): a centre farther than half the name from the screen
+        // puts every glyph off it, so that try fails anyway. From the air a run's points just ahead of the eye's foot
+        // project 10^5-10^6 px below the screen, and the tries along that length (glyphsAlong each) took 20-75 ms
+        // in one frame. The arc range of the segments whose box meets the screen grown by half the name (and a glyph)
+        // holds every centre that can pass, so skipping the rest places exactly what the full walk places.
+        const m = textW / 2 + size + pad;
+        let lo = Infinity, hi = -Infinity;
+        for (let i = 1; i < run.length; i++) {
+          const a = run[i - 1], b = run[i];
+          if (Math.max(a.x, b.x) < -m || Math.min(a.x, b.x) > W + m || Math.max(a.y, b.y) < -m || Math.min(a.y, b.y) > H + m) continue;
+          if (cum[i - 1] < lo) lo = cum[i - 1];
+          if (cum[i] > hi) hi = cum[i];
+        }
+        const ok = (c: number) => c >= lo && c <= hi;
+        tries = ok(L / 2) ? [L / 2] : [];
+        // The same steps as the unclipped walk (d accumulated the same way), stopping once both sides are past the range.
+        const reach = Math.max(Math.abs(lo - L / 2), Math.abs(hi - L / 2));
+        if (lo <= hi) for (let d = textW; d < L / 2 && d <= reach + textW; d += textW) { if (ok(L / 2 - d)) tries.push(L / 2 - d); if (ok(L / 2 + d)) tries.push(L / 2 + d); }
+      }
       for (const centre of tries) {
         const glyphs = glyphsAlong(run, cum, centre, advances, chars);
         if (!glyphs) continue;

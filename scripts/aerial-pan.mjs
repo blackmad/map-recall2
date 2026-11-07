@@ -83,6 +83,18 @@ const page = await context.newPage();
 await page.addInitScript(() => {
   window.__canalRecallGlCounters = true;
   const F = window.__aerialFrames = { t: [], skip: [] };
+  // Long animation frames (lane R3-F #241): which main-thread scripts sit in the long frames, and how much of a long
+  // rAF interval the main thread was busy at all (the rest is GPU / compositor).
+  const L = window.__aerialLoaf = [];
+  try {
+    new PerformanceObserver(list => {
+      for (const e of list.getEntries()) {
+        if (e.duration < 50) continue;
+        L.push({ start: e.startTime, duration: e.duration, renderStart: e.renderStart, styleAndLayoutStart: e.styleAndLayoutStart, blocking: e.blockingDuration,
+          scripts: (e.scripts ?? []).map(sc => ({ invoker: String(sc.invoker ?? '').slice(0, 120), type: sc.invokerType, fn: sc.sourceFunctionName, url: String(sc.sourceURL ?? '').split('/').pop().split('?')[0], char: sc.sourceCharPosition, duration: Math.round(sc.duration), layout: Math.round(sc.forcedStyleAndLayoutDuration ?? 0) })) });
+      }
+    }).observe({ type: 'long-animation-frame', buffered: true });
+  } catch (_) { /* no LoAF */ }
   const tick = now => { F.t.push(now); requestAnimationFrame(tick); };
   requestAnimationFrame(tick);
   let s = 0x5eed1234; Math.random = () => { s = (s * 1664525 + 1013904223) >>> 0; return s / 2 ** 32; };
@@ -183,7 +195,7 @@ const residents = census => page.evaluate(census => {
     farRadiusM: ground?.farRadius ?? null, farShells: vm._farShells?.stats?.() ?? null,
     // Lane R3-F (#241): the last frame's draws by owner (facade chunks by kind), resident GPU MB by owner (glCounters
     // tagging; absent on older bundles), the held/sliced ground re-base and the budgeted label placements.
-    ...(() => { const rep = window.__canalPerf?.gl?.report?.(); return { drawsByOwner: rep?.lastFrameByOwner ?? null, glOwners: rep?.resident?.byOwner?.slice(0, 16) ?? null }; })(),
+    ...(() => { const rep = window.__canalPerf?.gl?.report?.(); return { drawsByOwner: rep?.lastFrameByOwner ?? null, glOwners: rep?.resident?.byOwner?.slice(0, 40) ?? null }; })(),
     groundBases: vm.groundBaseStats ? { ...vm.groundBaseStats } : null,
     labelStats: vm._labels?.stats ? { full: vm._labels.stats.full, slicedFrames: vm._labels.stats.slicedFrames ?? null, lastFullMs: Math.round(vm._labels.stats.lastFullMs) } : null,
     workers: (pool?.live ?? 0) + (ground?.worker ? 1 : 0),
@@ -254,6 +266,19 @@ for (let t = every; t <= panS; t += every) {
     const w = rec.worst.slice(0, 3).map(x => ({ ms: Math.round(x.ms), phases: Object.fromEntries(Object.entries(x.phases).sort((a, b) => b[1] - a[1]).slice(0, 5).map(([k, v]) => [k, Math.round(v)])) }));
     rec.worst.length = 0; return w;
   });
+  // The window's long animation frames: count over 100 ms, main-thread script time in them by script, and the
+  // part of those frames before rendering (tasks) vs rendering (rAF callbacks, style, paint, GPU submit).
+  const loaf = await page.evaluate(from => {
+    const L = window.__aerialLoaf ?? [], mine = L.filter(e => e.start >= from); window.__aerialLoaf = L.filter(e => e.start >= from - 1000);
+    const over = mine.filter(e => e.duration > 100), by = {};
+    let scriptMs = 0, renderMs = 0, durMs = 0;
+    for (const e of over) {
+      durMs += e.duration; renderMs += e.renderStart ? e.duration - (e.renderStart - e.start) : 0;
+      for (const sc of e.scripts) { const k = `${sc.type}:${sc.invoker.slice(0, 60)} ${sc.fn || '?'}@${sc.url}:${sc.char}`; by[k] = (by[k] ?? 0) + sc.duration; scriptMs += sc.duration; }
+    }
+    return { over50: mine.length, over100: over.length, over100Ms: Math.round(durMs), over100ScriptMs: Math.round(scriptMs), over100RenderMs: Math.round(renderMs),
+      topScripts: Object.fromEntries(Object.entries(by).sort((a, b) => b[1] - a[1]).slice(0, 6)) };
+  }, last);
   const a = await page.evaluate(() => { window.__aerialPause = true; return performance.now(); });
   const heap = await heapSample(cdp);
   const res = await residents(censusOn);
@@ -267,7 +292,7 @@ for (let t = every; t <= panS; t += every) {
   const b = await page.evaluate(() => { window.__aerialPause = false; return performance.now(); });
   await page.evaluate(([a, b]) => window.__aerialFrames.skip.push([a, b + 50]), [a, b]);
   last = b + 50;
-  const row = { t, ...aerial, heapMB: heap.main.usedMB, bufMB: heap.main.backingMB, workersMB: heap.workersUsedMB, ...rss, ...res, frames, worst };
+  const row = { t, ...aerial, heapMB: heap.main.usedMB, bufMB: heap.main.backingMB, workersMB: heap.workersUsedMB, ...rss, ...res, frames, worst, loaf };
   timeline.push(row);
   console.log(`${device} t${t} ${aerial.leg ?? '-'} z${res.zoom} p${res.pitch}: heap ${heap.main.usedMB}+${heap.main.backingMB ?? '?'} MB, wk ${heap.workersUsedMB} MB, rss ${rss.rendererRssMB}/${rss.gpuRssMB}, geo ${res.geometries} tex ${res.textures} gl ${res.gl?.residentMB} MB (+${res.gl?.uploadMB} MB up), chunks ${res.chunks} tiles ${res.cityTiles} feats ${res.cityFeatures} ctxCh ${res.contextChanges} lm ${res.landmarks} trees ${res.trees} ground ${res.groundCells} far ${res.farRing} r${res.farRadiusM} fs ${res.farShells?.cells ?? '-'}/${res.farShells?.partsShown ?? '-'} draws ${res.draws} labels ${res.labelsPlaced} wkrs ${res.workers}; p99 ${frames.p99} >100 ${frames.over100} >250 ${frames.over250} max ${frames.longestMs}${worst?.[0] ? ` worst ${JSON.stringify(worst[0].phases)}` : ''}`);
 }

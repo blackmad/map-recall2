@@ -96,6 +96,8 @@ export class LabelLayer {
    * re-placement rounds stay in one frame.
    */
   placeBudgetMs: number | null = null;
+  /** Line labels try only centres that can land on screen (ownMap/labels.ts; `?labelClipTries=0` off, lane R3-F #241). */
+  clipTries = true;
   /** From the air while the camera moves (world view, with the budget): full placements at most this often, ms. */
   movingCadenceMs: number | null = null;
   /** A budgeted full placement still walking its candidates, with what it started from. */
@@ -337,7 +339,7 @@ export class LabelLayer {
     for (const points of this.extra.values()) for (const p of points) seen.add({ id: p.id, text: p.text, kind: p.kind, priority: 1e6 + p.priority, at: toLocal(p.lngLat[0], p.lngLat[1]), minZoom: p.minZoom ?? 0 });
     const options = {
       project, width: vp.width, height: vp.height, zoom,
-      advance: (ch: string, kind: LabelCandidate['kind']) => this.advance(ch, kind), fontSize, maxDepth: frame.distance * 4, repeatDistance: 260,
+      advance: (ch: string, kind: LabelCandidate['kind']) => this.advance(ch, kind), fontSize, maxDepth: frame.distance * 4, repeatDistance: 260, clipTries: this.clipTries,
     };
     // Budgeted (no occlusion): a full placement is started, or a pending one continued, in slices of `placeBudgetMs`.
     const budgeted = this.placeBudgetMs !== null && !this.occludedTest && !!pose;
