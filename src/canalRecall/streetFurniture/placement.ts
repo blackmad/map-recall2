@@ -39,9 +39,20 @@ export function containerYaw(r: FurnitureRecord): number {
   return -(diff(a) <= diff(b) ? a : b) * RAD;
 }
 
-/** The register's fraction picks the insert (CONTAINER_INSERT): glass's round hole, paper's slot, the drum otherwise. */
-export function containerModelId(subtype: string): FurnitureModelId {
-  return subtype === 'glas' ? 'container-glas' : subtype === 'papier' ? 'container-papier' : 'container';
+/**
+ * Share of rest columns with the drum top (2026-11-07): 6 of 20 readable random rest panoramas; the other 14 had the
+ * plain flap. The register's containertype names the bin underground, not the column, so no field picks it: a cluster
+ * gets one top for all its rest columns (rows in the panoramas match), by a stable hash of the cluster.
+ */
+export const CONTAINER_DRUM_SHARE = 0.3;
+
+/** The register's fraction picks the insert (CONTAINER_INSERT): glass's round hole, paper's slot; rest the drum or the flap. */
+export function containerModelId(subtype: string, cluster?: string | null, form?: 'above'): FurnitureModelId {
+  if (form === 'above') return 'container-bg';
+  if (subtype === 'glas') return 'container-glas';
+  if (subtype === 'papier') return 'container-papier';
+  if (subtype !== 'rest' || !cluster) return 'container';
+  return hash01(`${cluster}:top`) < CONTAINER_DRUM_SHARE ? 'container' : 'container-rest';
 }
 
 export function fractionHex(subtype: string): string { return T.fraction[subtype] ?? T.fraction.unknown; }
@@ -51,6 +62,9 @@ const KX = (lat: number) => 111320 * Math.cos(lat * RAD), KY = 110540;
 
 /** Container rows: one register cluster stands in a straight line along the kerb, its plates nearly touching. */
 export const ROW_PITCH_MIN_M = 1.7, ROW_SPLIT_M = 1.0;
+/** An above-ground box is 2.16 m long on its frame: its neighbours keep 0.1 m clear of it. */
+export const ROW_PITCH_ABOVE_M = 2.26;
+const rowLength = (r: FurnitureRecord) => r.form === 'above' ? ROW_PITCH_ABOVE_M : ROW_PITCH_MIN_M;
 
 /**
  * Line up each container cluster (2026-11-07, user: "they almost always sit in a straight line"). The register's
@@ -91,7 +105,7 @@ export function alignContainerRows(items: readonly FurnitureRecord[]): Furniture
       const med = row.map(k => across[k]).sort((a, b) => a - b)[row.length >> 1];
       const byAlong = row.slice().sort((a, b) => along[a] - along[b] || rs[a].id.localeCompare(rs[b].id));
       const t = byAlong.map(k => along[k]);
-      for (let j = 1; j < t.length; j++) t[j] = Math.max(t[j], t[j - 1] + ROW_PITCH_MIN_M);
+      for (let j = 1; j < t.length; j++) t[j] = Math.max(t[j], t[j - 1] + (rowLength(rs[byAlong[j - 1]]) + rowLength(rs[byAlong[j]])) / 2);
       const shift = byAlong.reduce((a, k) => a + along[k], 0) / t.length - t.reduce((a, v) => a + v, 0) / t.length;
       byAlong.forEach((k, j) => {
         const a = t[j] + shift, x = a * ux - med * uy, y = a * uy + med * ux;
@@ -104,7 +118,7 @@ export function alignContainerRows(items: readonly FurnitureRecord[]): Furniture
 
 export function instancesOf(r: FurnitureRecord): FurnitureInstance[] {
   switch (r.kind) {
-    case 'container': return [{ model: containerModelId(r.subtype), id: r.id, lng: r.lng, lat: r.lat, yaw: containerYaw(r), scale: 1, slotHex: fractionHex(r.subtype) }];
+    case 'container': return [{ model: containerModelId(r.subtype, r.cluster ?? r.id, r.form), id: r.id, lng: r.lng, lat: r.lat, yaw: containerYaw(r), scale: 1, slotHex: fractionHex(r.subtype) }];
     case 'lamp':
       if (r.subtype === 'lantern') return [{ model: 'lamp-lantern', id: r.id, lng: r.lng, lat: r.lat, yaw: -frontBearing(r, false) * RAD, scale: 1, slotHex: null }];
       return [{ model: 'lamp-pole', id: r.id, lng: r.lng, lat: r.lat, yaw: -frontBearing(r, false) * RAD, scale: lampHeight(r.road) / DIMENSIONS.pole.height, slotHex: null }];

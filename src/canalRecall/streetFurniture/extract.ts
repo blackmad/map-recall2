@@ -19,6 +19,8 @@ export type FurnitureRecord = {
   /** OSM highway class of that street. */
   road?: string;
   cluster?: string; fraction?: string | null; volume?: number | null;
+  /** Containers: 'above' for the register's above-ground (BG) boxes; absent for underground column tops. */
+  form?: 'above';
 };
 
 /** BGT collection → plus_type → kind. Everything else is counted as skipped (kunstobject stays a bespoke landmark). */

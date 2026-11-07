@@ -30,8 +30,8 @@
  */
 import { STREET_FURNITURE_TONES as T, hexToRgb } from '../look/palette.js';
 
-export type FurnitureModelId = 'container' | 'container-glas' | 'container-papier' | 'lamp-lantern' | 'lamp-pole' | 'bin' | 'bike-rack' | 'abri' | 'ad-column';
-export const FURNITURE_MODEL_IDS: readonly FurnitureModelId[] = ['container', 'container-glas', 'container-papier', 'lamp-lantern', 'lamp-pole', 'bin', 'bike-rack', 'abri', 'ad-column'];
+export type FurnitureModelId = 'container' | 'container-rest' | 'container-bg' | 'container-glas' | 'container-papier' | 'lamp-lantern' | 'lamp-pole' | 'bin' | 'bike-rack' | 'abri' | 'ad-column';
+export const FURNITURE_MODEL_IDS: readonly FurnitureModelId[] = ['container', 'container-rest', 'container-bg', 'container-glas', 'container-papier', 'lamp-lantern', 'lamp-pole', 'bin', 'bike-rack', 'abri', 'ad-column'];
 /** Per-model triangle cap (the brief's budget). */
 export const FURNITURE_TRI_CAP = 160;
 /** Faces in this colour take the instance colour. */
@@ -40,6 +40,8 @@ export const SLOT = '#ff00ff';
 export type FurnitureMesh = { id: FurnitureModelId; positions: Float32Array; colours: Float32Array; triangles: number; heightM: number };
 
 export const DIMENSIONS = {
+  /** Above-ground box, register containertype "3,5m3 KHC … BG 2100*1470*1778 (Engels)": width × depth × height. */
+  containerBg: { width: 2.10, depth: 1.47, height: 1.78, baseH: 0.10, baseOut: 0.03, chamferH: 0.16, chamferIn: 0.14, post: 0.08, openW: 0.58, openH: 0.30, openX: 0.42, openTop: 0.06, openSet: 0.10, frame: 0.04 },
   container: {
     plate: 1.55, plateH: 0.04, colW: 0.86, frontW: 0.50, cornerRun: 0.13, colD: 0.80, colH: 1.19, colBack: 0.15,
     chamferZ: 0.80, chamferRun: 0.30, backChamferH: 0.18, backChamferRun: 0.12,
@@ -50,7 +52,7 @@ export const DIMENSIONS = {
   lantern: { height: 4.09, baseR: 0.13, baseH: 0.55, shaftR: 0.055, lanternBottom: 3.16, lanternH: 0.45, lanternBot: 0.30, lanternTop: 0.42, roofW: 0.50, roofH: 0.18, finialH: 0.10 },
   pole: { height: 7.6, baseR: 0.11, topR: 0.06, reach: 1.0, bowlR: 0.18, bowlH: 0.16 },
   abri: { length: 4.11, depth: 1.4, height: 2.47, post: 0.08, roofT: 0.10, panelW: 1.27, panelH: 1.78, panelT: 0.14, panelBase: 0.35 },
-  bin: { height: 1.05, radius: 0.27 },
+  bin: { height: 1.05, width: 0.50, depth: 0.42, corner: 0.13, hoodH: 0.24, rimH: 0.05, mouthSet: 0.11, dome: 0.03 },
   hoop: { height: 0.75, width: 0.70, tube: 0.05 },
   column: { radius: 0.92, baseR: 0.98, baseH: 0.30, bodyH: 3.40, corniceR: 1.0, corniceH: 0.22, roofH: 0.72, finialH: 0.16 },
 } as const;
@@ -114,21 +116,26 @@ class Builder {
  * long hexagon: vertical front, a steep slope, short flat top with the lift post, a small back chamfer. Between the
  * strips the slope is recessed: rest has the convex stainless drum over a light lip and a lid above it, glass a round
  * hole in the slope, paper a dark slot over a light flap. The fraction band (SLOT, the instance colour) runs the recess
- * width at the top of the slope. Below: the darker pictogram panel (bag, sheet, bottle), side doors, the XXX on the
+ * width at the top of the slope. Rest comes in two tops the register cannot tell apart (2026-11-07, 30 random rest
+ * panoramas: 6 drum, 14 flat-front, the rest unreadable; every type, 1338 / 1380 / 1340 >2022 / Sidcon press alike):
+ * the drum (`container`) and the plain throw-in flap with a pull bar (`container-rest`; 85362, 15070, 107568, 217065).
+ * Below: the darker pictogram panel (bag, sheet, bottle), side doors, the XXX on the
  * left strip. Grey galvanised floor plate with a darker edge.
  */
-export type ContainerInsert = 'drum' | 'hole' | 'slot';
-/** The insert under the fraction band: rest's drum, glass's round hole, paper's wide slot over a flap (193394, 57671). */
-export const CONTAINER_INSERT: Readonly<Record<'container' | 'container-glas' | 'container-papier', ContainerInsert>> = { container: 'drum', 'container-glas': 'hole', 'container-papier': 'slot' };
+export type ContainerInsert = 'drum' | 'flap' | 'hole' | 'slot';
+export type ContainerModelId = 'container' | 'container-rest' | 'container-glas' | 'container-papier';
+/** The insert under the fraction band: rest's drum or flap, glass's round hole, paper's wide slot over a flap (193394, 57671). */
+export const CONTAINER_INSERT: Readonly<Record<ContainerModelId, ContainerInsert>> = { container: 'drum', 'container-rest': 'flap', 'container-glas': 'hole', 'container-papier': 'slot' };
 
 /** Pictogram outlines on the front panel, unit box (x -1..1, z 0..1), convex pieces fanned from their first point. */
 const PICTOGRAM: Readonly<Record<ContainerInsert, readonly (readonly (readonly [number, number])[])[]>> = {
   drum: [[[-0.85, 0], [0.85, 0], [1, 0.3], [0.45, 0.72], [-0.45, 0.72], [-1, 0.3]], [[-0.3, 0.72], [0.3, 0.72], [0.55, 1], [-0.55, 1]]],
+  flap: [[[-0.85, 0], [0.85, 0], [1, 0.3], [0.45, 0.72], [-0.45, 0.72], [-1, 0.3]], [[-0.3, 0.72], [0.3, 0.72], [0.55, 1], [-0.55, 1]]],
   hole: [[[-0.45, 0], [0.45, 0], [0.45, 0.55], [0.15, 0.72], [-0.15, 0.72], [-0.45, 0.55]], [[-0.15, 0.72], [0.15, 0.72], [0.15, 1], [-0.15, 1]]],
   slot: [[[-0.7, 0], [0.7, 0], [0.7, 0.72], [0.35, 1], [-0.7, 1]]],
 };
 
-export function containerModel(id: 'container' | 'container-glas' | 'container-papier' = 'container'): FurnitureMesh {
+export function containerModel(id: ContainerModelId = 'container'): FurnitureMesh {
   const D = DIMENSIONS.container, b = new Builder(), insert = CONTAINER_INSERT[id], body = T.containerBody;
   const h = D.plate / 2, pz = D.plateH;
   // Floor plate: lighter steel top, darker visible edge.
@@ -146,9 +153,10 @@ export function containerModel(id: 'container' | 'container-glas' | 'container-p
     const side: [number, number][] = [[yb, pz], [yc, pz], [yc, zs], [yt, top], [ybt, top], [yb, zbk]];
     const pts = side.map(([y, z]) => P(W, y, z));
     for (let i = 1; i < pts.length - 1; i++) sx > 0 ? b.tri(pts[0], pts[i], pts[i + 1], body) : b.tri(pts[0], pts[i + 1], pts[i], body);
-    // The access door: a darker panel with its top-front corner cut along the slope.
-    const dy0 = yb + 0.13, dy1 = yc - 0.07, dz0 = pz + 0.16, dz1 = top - 0.19, dzf = slopeZ(dy1) - 0.14;
-    const door = ([[dy0, dz0], [dy1, dz0], [dy1, dzf], [dy1 - (dz1 - dzf) * (yf - yt) / (top - zc), dz1], [dy0, dz1]] as const).map(([y, z]) => P(W + 0.003, y, z));
+    // The access door: a darker panel with its top-back corner cut parallel to the back chamfer (every side view,
+    // 2026-11-07: 202523, 191178, 120284, 188634; the front corner is square under the slope).
+    const dy0 = yb + 0.13, dy1 = yc - 0.07, dz0 = pz + 0.16, dz1 = Math.min(top - 0.19, slopeZ(dy1) - 0.06), cut = 0.2;
+    const door = ([[dy0, dz0], [dy1, dz0], [dy1, dz1], [dy0 + cut * D.backChamferRun / D.backChamferH, dz1], [dy0, dz1 - cut]] as const).map(([y, z]) => P(W + 0.003, y, z));
     for (let i = 1; i < door.length - 1; i++) sx > 0 ? b.tri(door[0], door[i], door[i + 1], T.containerDoor) : b.tri(door[0], door[i + 1], door[i], T.containerDoor);
     q(P(Wf, yf, pz), P(W, yc, pz), P(W, yc, zs), P(Wf, yf, zc), body); // corner strip
     q(P(Wf, yf, zc), P(W, yc, zs), P(W, yt, top), P(Wf, yt, top), body); // cheek on the slope
@@ -194,6 +202,12 @@ export function containerModel(id: 'container' | 'container-glas' | 'container-p
       const tc = 0.5, len = Math.hypot(yBand - ya, zBand - zm), hr = D.holeD / 2;
       const ring = Array.from({ length: 10 }, (_, i) => { const a = (i + 0.5) * 2 * Math.PI / 10; return on(hr * Math.cos(a), tc + hr * Math.sin(a) / len); });
       for (let i = 1; i < 9; i++) b.tri(ring[0], ring[i + 1], ring[i], T.containerSlot);
+    } else if (insert === 'flap') {
+      // Rest without the drum: the whole slope is the hinged throw-in flap, a dark seam along its foot and a light
+      // pull bar across its lower third.
+      const fw = xi - 0.03, bw = D.slotW / 2;
+      b.quad(on(-fw, 0.02), on(-fw, 0.06), on(fw, 0.06), on(fw, 0.02), T.containerSlot);
+      b.quad(on(-bw, 0.2), on(-bw, 0.27), on(bw, 0.27), on(bw, 0.2), T.containerLip);
     } else {
       // Paper: the wide letterbox slot high on the slope, the light flap below it.
       const sw = D.slotW / 2;
@@ -234,6 +248,61 @@ export function containerModel(id: 'container' | 'container-glas' | 'container-p
   return b.done(id);
 }
 
+/**
+ * The above-ground box (bovengronds, "BG", by Engels; 930 active in the register, mostly in the 19th-century ring
+ * where there is no room underground): photos of 189468 and 203765 at Nassaukade / Da Costakade (the user's photo,
+ * 2026-11-07) and 216117 (graffitied, pano 2025). A graphite box 2.10 x 1.47 x 1.78 m on a galvanised base frame,
+ * galvanised posts at the four corners, the top chamfered all round, the lift mushroom on top. The throw-in hatch is a
+ * dark recess high on the long face, left of centre, framed in the fraction colour (SLOT); a sticker and the
+ * fraction's pictogram under it, the pictogram again on the end to the right of the hatch.
+ */
+export function containerBgModel(): FurnitureMesh {
+  const D = DIMENSIONS.containerBg, C = DIMENSIONS.container, b = new Builder();
+  const W = D.width / 2, H = D.depth / 2, z0 = D.baseH, zc = D.height - D.chamferH, top = D.height, o = D.baseOut;
+  b.box(-W - o, -H - o, 0, W + o, H + o, z0, T.containerPlate);
+  // Body: back and ends whole, the front built around the hatch opening.
+  const B = T.containerBgBody;
+  b.quad([-W, -H, z0], [W, -H, z0], [W, -H, zc], [-W, -H, zc], B);
+  b.quad([W, -H, z0], [W, H, z0], [W, H, zc], [W, -H, zc], B);
+  b.quad([-W, H, z0], [-W, -H, z0], [-W, -H, zc], [-W, H, zc], B);
+  // Chamfered lid: four sloped faces up to the inset top.
+  const i = D.chamferIn, R: V[] = [[W, -H, zc], [W, H, zc], [-W, H, zc], [-W, -H, zc]], Q: V[] = [[W - i, -H + i, top], [W - i, H - i, top], [-W + i, H - i, top], [-W + i, -H + i, top]];
+  for (let k = 0; k < 4; k++) { const j = (k + 1) % 4; b.quad(R[k], R[j], Q[j], Q[k], T.containerBgBody); }
+  b.quad(Q[0], Q[1], Q[2], Q[3], T.containerTop);
+  // Galvanised corner posts, slightly proud of both faces.
+  const p = D.post, e = 0.012;
+  for (const sx of [-1, 1]) for (const sy of [-1, 1]) {
+    const x0 = sx > 0 ? W - p : -W - e, x1 = sx > 0 ? W + e : -W + p, y0 = sy > 0 ? H - p : -H - e, y1 = sy > 0 ? H + e : -H + p;
+    b.box(x0, y0, z0, x1, y1, zc, T.containerBgPost, false, false);
+  }
+  // The hatch: a dark recess (back, floor, cheeks, head) inside a frame in the fraction colour.
+  const hx0 = D.openX - D.openW / 2, hx1 = D.openX + D.openW / 2, hz1 = zc - D.openTop, hz0 = hz1 - D.openH, s = H - D.openSet, f = D.frame, ef = H + 0.004;
+  b.quad([hx1, s, hz0], [hx0, s, hz0], [hx0, s, hz1], [hx1, s, hz1], T.containerSlot);
+  b.quad([hx0, H, hz0], [hx0, s, hz0], [hx1, s, hz0], [hx1, H, hz0], T.containerRecess);
+  b.quad([hx1, s, hz1], [hx0, s, hz1], [hx0, H, hz1], [hx1, H, hz1], T.containerRecess);
+  b.quad([hx0, s, hz0], [hx0, H, hz0], [hx0, H, hz1], [hx0, s, hz1], T.containerRecess);
+  b.quad([hx1, H, hz0], [hx1, s, hz0], [hx1, s, hz1], [hx1, H, hz1], T.containerRecess);
+  b.quad([W, H, z0], [-W, H, z0], [-W, H, hz0], [W, H, hz0], B);
+  b.quad([W, H, hz1], [-W, H, hz1], [-W, H, zc], [W, H, zc], B);
+  b.quad([hx0, H, hz0], [-W, H, hz0], [-W, H, hz1], [hx0, H, hz1], B);
+  b.quad([W, H, hz0], [hx1, H, hz0], [hx1, H, hz1], [W, H, hz1], B);
+  const frame = (a0: number, a1: number, c0: number, c1: number) => b.quad([a1, ef, c0], [a0, ef, c0], [a0, ef, c1], [a1, ef, c1], SLOT);
+  frame(hx0 - f, hx1 + f, hz1, hz1 + f); frame(hx0 - f, hx1 + f, hz0 - f, hz0); frame(hx0 - f, hx0, hz0, hz1); frame(hx1, hx1 + f, hz0, hz1);
+  // Sticker and pictogram under the hatch; the pictogram again on the -x end (+x is the viewer's left facing the front).
+  b.quad([D.openX + 0.12, ef, hz0 - 0.24], [D.openX - 0.12, ef, hz0 - 0.24], [D.openX - 0.12, ef, hz0 - 0.08], [D.openX + 0.12, ef, hz0 - 0.08], T.containerLabel);
+  const ph = 0.40, pw = ph * 0.42, pc = hz0 - 0.74;
+  for (const piece of PICTOGRAM.drum) {
+    const front = piece.map(([x, z]): V => [D.openX - x * pw, ef + 0.001, pc + z * ph]);
+    for (let k = 1; k < front.length - 1; k++) b.tri(front[0], front[k], front[k + 1], T.containerLabel);
+    const end = piece.map(([x, z]): V => [-W - 0.004, -x * pw, pc + 0.25 + z * ph]);
+    for (let k = 1; k < end.length - 1; k++) b.tri(end[0], end[k], end[k + 1], T.containerLabel);
+  }
+  // Lift mushroom on top, shaft in the fraction colour, as on the columns.
+  b.prism(0, 0, top, top + C.handleH - 0.02, C.handleShaftR, C.handleShaftR, 6, SLOT, false);
+  for (const z of [top + C.handleH * 0.5, top + C.handleH - 0.03]) b.prism(0, 0, z, z + 0.03, C.handleDiscR, C.handleDiscR, 8, T.containerHandle, true, false);
+  return b.done('container-bg');
+}
+
 /** The canal lantern: maroon cast-iron post on a fluted base, a four-sided lantern that widens upward, roof and finial. */
 export function lanternModel(): FurnitureMesh {
   const D = DIMENSIONS.lantern, b = new Builder();
@@ -265,13 +334,41 @@ export function poleModel(): FurnitureMesh {
   return b.done('lamp-pole');
 }
 
-/** The grey Amsterdam litter bin: an octagonal drum with a darker domed lid and a slot (no open register places it). */
+/**
+ * The grey Amsterdam litter bin (Nassaukade abri, pano 2025_10_02_06_52_49_00943, 2026-11-07 re-model): a rounded
+ * rectangle in plan, straight sides, a full-height front door with its seam on the left, and a hood whose front is cut
+ * back into a wide dark mouth under a thin rim. The mouth is a real recess in the hood (floor, back wall, cheeks), so it
+ * sits in the body, not on it. A small sticker under the mouth. No open register places these bins.
+ */
 export function binModel(): FurnitureMesh {
-  const D = DIMENSIONS.bin, b = new Builder();
-  b.prism(0, 0, 0, D.height - 0.18, D.radius, D.radius, 8, T.bin, false);
-  b.prism(0, 0, D.height - 0.18, D.height - 0.06, D.radius * 1.03, D.radius * 0.9, 8, T.binLid, false);
-  b.prism(0, 0, D.height - 0.06, D.height, D.radius * 0.9, D.radius * 0.45, 8, T.binLid, true);
-  b.quad([0.12, D.radius + 0.01, D.height - 0.14], [-0.12, D.radius + 0.01, D.height - 0.14], [-0.12, D.radius + 0.01, D.height - 0.08], [0.12, D.radius + 0.01, D.height - 0.08], T.containerSlot);
+  const D = DIMENSIONS.bin, b = new Builder(), W = D.width / 2, Dp = D.depth / 2, r = D.corner, n = 3;
+  // Plan, counter-clockwise from the front-right end of the straight front (+y) edge.
+  const plan: [number, number][] = [];
+  const corner = (cx: number, cy: number, a0: number) => { for (let k = 0; k <= n; k++) { const a = a0 + (Math.PI / 2) * k / n; plan.push([cx + r * Math.cos(a), cy + r * Math.sin(a)]); } };
+  corner(W - r, Dp - r, 0); corner(-W + r, Dp - r, Math.PI / 2); corner(-W + r, -Dp + r, Math.PI); corner(W - r, -Dp + r, 1.5 * Math.PI);
+  // plan[n] .. plan[n + 1] is the straight front edge, from x = W - r to x = -(W - r).
+  const front = n, zm = D.height - D.hoodH, top = D.height, rimZ = top - D.rimH, xf = W - r, yf = Dp, set = D.mouthSet;
+  const side = (i: number, z0: number, z1: number, hex: string) => { const [x0, y0] = plan[i], [x1, y1] = plan[(i + 1) % plan.length]; b.quad([x0, y0, z0], [x1, y1, z0], [x1, y1, z1], [x0, y0, z1], hex); };
+  for (let i = 0; i < plan.length; i++) {
+    side(i, 0, zm, T.bin);
+    if (i !== front) side(i, zm, top, T.binLid);
+  }
+  // The mouth: dark back wall, floor and cheeks set into the hood behind the front edge, the rim over it.
+  const yb = yf - set;
+  b.quad([xf, yb, zm], [-xf, yb, zm], [-xf, yb, rimZ], [xf, yb, rimZ], T.containerSlot);
+  b.quad([-xf, yf, zm], [-xf, yb, zm], [xf, yb, zm], [xf, yf, zm], T.binLid);
+  b.quad([-xf, yb, zm], [-xf, yf, zm], [-xf, yf, rimZ], [-xf, yb, rimZ], T.containerSlot);
+  b.quad([xf, yf, zm], [xf, yb, zm], [xf, yb, rimZ], [xf, yf, rimZ], T.containerSlot);
+  b.quad([xf, yb, rimZ], [-xf, yb, rimZ], [-xf, yf, rimZ], [xf, yf, rimZ], T.containerSlot);
+  side(front, rimZ, top, T.binLid);
+  // Domed cap over the whole plan: the centre 3 cm above the rim line.
+  const c: V = [0, 0, top + D.dome];
+  for (let i = 0; i < plan.length; i++) { const [x0, y0] = plan[i], [x1, y1] = plan[(i + 1) % plan.length]; b.tri([x0, y0, top], [x1, y1, top], c, T.binLid); }
+  // Door on the front: seam on the left, sticker under the mouth.
+  const e = yf + 0.003;
+  // +x is the viewer's left when facing the front.
+  b.quad([xf - 0.02, e, 0.06], [xf - 0.035, e, 0.06], [xf - 0.035, e, zm - 0.03], [xf - 0.02, e, zm - 0.03], T.containerSlot);
+  b.quad([xf - 0.08, e, zm - 0.12], [-xf + 0.02, e, zm - 0.12], [-xf + 0.02, e, zm - 0.04], [xf - 0.08, e, zm - 0.04], T.containerLabel);
   return b.done('bin');
 }
 
@@ -326,13 +423,14 @@ export const RIDE_PLATE_SKIRT_M = 0.2;
 export function rideModel(id: FurnitureModelId): FurnitureMesh {
   const m = FURNITURE_MODELS[id]();
   if (!id.startsWith('container')) return m;
-  const D = DIMENSIONS.container, b = new Builder(), h = D.plate / 2;
-  b.box(-h, -h, -RIDE_PLATE_SKIRT_M, h, h, 0, T.containerPlateEdge, false, false);
+  const b = new Builder(), G = DIMENSIONS.containerBg;
+  const hx = id === 'container-bg' ? G.width / 2 + G.baseOut : DIMENSIONS.container.plate / 2, hy = id === 'container-bg' ? G.depth / 2 + G.baseOut : hx;
+  b.box(-hx, -hy, -RIDE_PLATE_SKIRT_M, hx, hy, 0, T.containerPlateEdge, false, false);
   const positions = new Float32Array(m.positions.length + b.p.length), colours = new Float32Array(m.colours.length + b.c.length);
   positions.set(m.positions); positions.set(b.p, m.positions.length); colours.set(m.colours); colours.set(b.c, m.colours.length);
   return { ...m, positions, colours, triangles: positions.length / 9 };
 }
 
 export const FURNITURE_MODELS: Readonly<Record<FurnitureModelId, () => FurnitureMesh>> = {
-  container: () => containerModel('container'), 'container-glas': () => containerModel('container-glas'), 'container-papier': () => containerModel('container-papier'), 'lamp-lantern': lanternModel, 'lamp-pole': poleModel, bin: binModel, 'bike-rack': hoopModel, abri: abriModel, 'ad-column': columnModel,
+  container: () => containerModel('container'), 'container-rest': () => containerModel('container-rest'), 'container-bg': containerBgModel, 'container-glas': () => containerModel('container-glas'), 'container-papier': () => containerModel('container-papier'), 'lamp-lantern': lanternModel, 'lamp-pole': poleModel, bin: binModel, 'bike-rack': hoopModel, abri: abriModel, 'ad-column': columnModel,
 };

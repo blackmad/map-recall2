@@ -3,19 +3,19 @@
  "category": "street-furniture",
  "generator": "scripts/street-furniture/export-models.ts",
  "extract": "public/data/extracts/amsterdam/street-furniture",
- "extractRetrievedAt": "2026-11-01T20:10:17.348Z",
- "instances": 135140,
+ "extractRetrievedAt": "2026-11-07T19:13:24.888Z",
+ "instances": 135987,
  "models": [
   {
    "id": "container",
    "name": "Underground container top (rest drum)",
    "kind": "container",
    "category": "street-furniture",
-   "subtypes": "rest, gft, textiel; BGT afvalbak columns as unknown",
+   "subtypes": "rest (about 30 % of clusters), gft, textiel; BGT afvalbak columns as unknown",
    "modelUrl": "./models/street-furniture/container.glb",
    "triangles": 150,
    "glbBytes": 17100,
-   "instances": 9119,
+   "instances": 3122,
    "source": "Gemeente Amsterdam huishoudelijkafval register (active, UNDERGROUND) + BGT bak/afvalbak; the Amsterdam Standaard column (#212)",
    "measured": [
     "column 1.19 m (1.16-1.22 m, four panoramas)",
@@ -41,6 +41,54 @@
    }
   },
   {
+   "id": "container-rest",
+   "name": "Underground container top (rest flap)",
+   "kind": "container",
+   "category": "street-furniture",
+   "subtypes": "rest (about 70 % of clusters, by a stable cluster hash)",
+   "modelUrl": "./models/street-furniture/container-rest.glb",
+   "triangles": 136,
+   "glbBytes": 15604,
+   "instances": 5994,
+   "source": "Gemeente Amsterdam huishoudelijkafval register: fractieOmschrijving Rest; drum or flap is not in the register (2026-11-07)",
+   "measured": [
+    "the same column with a plain throw-in flap over the whole slope, a pull bar across its lower third",
+    "14 of 20 readable random rest panoramas are this top, 6 the drum; every containertype alike"
+   ],
+   "prior": [
+    "pull bar 0.38 m"
+   ],
+   "photo": {
+    "panoId": "recording_2025-09-25_12-28-12_00860",
+    "heading": 193,
+    "distanceM": 6.12,
+    "recordId": "afval-107568",
+    "thumbnail": "https://api.data.amsterdam.nl/panorama/thumbnail/recording_2025-09-25_12-28-12_00860/?heading=193&width=600&aspect=1.25&horizon=0.4",
+    "licence": "Gemeente Amsterdam panoramas, CC BY 4.0"
+   }
+  },
+  {
+   "id": "container-bg",
+   "name": "Above-ground container (BG box)",
+   "kind": "container",
+   "category": "street-furniture",
+   "subtypes": "rest, papier, glas, textiel (register ABOVE_GROUND \"BG\" types, Engels)",
+   "modelUrl": "./models/street-furniture/container-bg.glb",
+   "triangles": 154,
+   "glbBytes": 17544,
+   "instances": 895,
+   "source": "Gemeente Amsterdam huishoudelijkafval register: containertype \"3,5m3 KHC … BG 2100*1470*1778 (Engels)\" and \"… BG\" (2026-11-07)",
+   "measured": [
+    "2.10 x 1.47 x 1.78 m from the register type name",
+    "galvanised base frame and corner posts, top chamfered all round, hatch high on the long face left of centre, pictogram under it and on the end (189468 / 203765 at Nassaukade and Da Costakade, the user's photo; 216117 panorama)"
+   ],
+   "prior": [
+    "hatch 0.58 x 0.30 m",
+    "chamfer 0.16 m"
+   ],
+   "photo": null
+  },
+  {
    "id": "container-glas",
    "name": "Underground container top (glass)",
    "kind": "container",
@@ -49,7 +97,7 @@
    "modelUrl": "./models/street-furniture/container-glas.glb",
    "triangles": 140,
    "glbBytes": 16036,
-   "instances": 1474,
+   "instances": 1475,
    "source": "Gemeente Amsterdam huishoudelijkafval register: fractieOmschrijving Glas (#212)",
    "measured": [
     "the same column with one round throw-in hole (~0.20 m) in the slope under the yellow band",
@@ -74,7 +122,7 @@
    "modelUrl": "./models/street-furniture/container-papier.glb",
    "triangles": 133,
    "glbBytes": 15288,
-   "instances": 2666,
+   "instances": 2665,
    "source": "Gemeente Amsterdam huishoudelijkafval register: fractieOmschrijving Papier (#212)",
    "measured": [
     "the same column: wide dark slot on the slope under the blue band, light flap below",
@@ -130,7 +178,7 @@
    "modelUrl": "./models/street-furniture/lamp-pole.glb",
    "triangles": 92,
    "glbBytes": 10836,
-   "instances": 113661,
+   "instances": 113616,
    "source": "BGT paal/lichtmast",
    "measured": [
     "7.6 m to the curl on a residential Pijp street",
@@ -158,15 +206,18 @@
    "category": "street-furniture",
    "subtypes": "-",
    "modelUrl": "./models/street-furniture/bin.glb",
-   "triangles": 56,
-   "glbBytes": 6932,
+   "triangles": 94,
+   "glbBytes": 11012,
    "instances": 0,
    "source": "none: no open register places Amsterdam litter bins (BGT afvalbak rows are container columns)",
    "measured": [
-    "1.11 x 0.57 m beside the Nassaukade abri"
+    "1.05 m high, 0.50 m wide beside the Nassaukade abri",
+    "rounded-rectangle body, front door with its seam on the left, hood with a wide mouth recessed 0.11 m under a thin rim",
+    "sticker under the mouth"
    ],
    "prior": [
-    "octagonal drum, domed lid"
+    "depth 0.42 m",
+    "corner radius 0.13 m"
    ],
    "photo": {
     "panoId": "2025_10_02_06_52_49_00943",

@@ -194,3 +194,55 @@ export function chooseLevel(current: LandmarkLevel, radiusPixels: number): Landm
 export function initialLevel(radiusPixels: number): LandmarkLevel {
   return radiusPixels > LOD_UPGRADE_RADIUS_PX ? 'full' : 'lod1';
 }
+
+/**
+ * Street chunks' lod2 (lane R4-C #245): `<chunk>.lod2.glb` beside the chunk GLB, its record in the chunk's chunks.json
+ * row (`lod2`). Bump to rebuild every chunk lod2. Same simplifier, cap and error bound as the landmarks (a block face is
+ * one long low mass: the bound, not the cap, decides), one primitive per source material with the pand ranges kept.
+ */
+export const CHUNK_LOD2_BUILD_VERSION = 4;
+/**
+ * Chunk lod2 simplifier settings. A block face is long and low with shallow window reveals: the landmark bound (1.25 m at
+ * 2 %) flattens every window into the wall and the white frames go, so the face reads darker than its full model.
+ * Swept on all 142 chunks (lane R4-C): ratio 0.1 / 0.15 m 3.52 MB, 0.25 / 0.3 m 4.73 MB, 1 / 0.1 m (the cap decides)
+ * 5.34 MB.
+ */
+export const CHUNK_LOD2_TRIANGLE_RATIO = 1;
+export const CHUNK_LOD2_MAX_ERROR_M = 0.1;
+
+/** Whether a chunk's stored lod2 is the output of this chunk GLB (its manifest sha256) and the current parameters. */
+export function chunkLod2IsCurrent(record: LandmarkLodRecord | undefined | null, sha256: string | undefined): boolean {
+  return !!record && !!sha256 && record.sourceHash === sha256.slice(0, 16) && record.buildVersion === CHUNK_LOD2_BUILD_VERSION;
+}
+
+/**
+ * A street chunk takes its lod2 only from the air and only when its footprint radius, projected through the camera
+ * (perspective, at the chunk itself), is under this many pixels (`?chunkLod2Px=` sweeps it); it leaves lod2 above
+ * LOD2_HYSTERESIS times it. Not R4-B's rule for landmarks (beyond 500 m of the view centre, or the view centre's
+ * scale): in a pitched aerial view the rows in the foreground below the centre were 500 m off it yet large on screen,
+ * and a block face's stand-in lost its windows and frames there (lane R4-C strips).
+ */
+export const CHUNK_LOD2_DOWNGRADE_PX = 12;
+
+/**
+ * Screen radius in CSS pixels of a sphere of `radius` (world units) at `centre`, through the column-major
+ * `clipFromWorld` (projection x view) of a `widthPx` x `heightPx` viewport: the largest screen offset of the three axis
+ * offsets. Null when the centre is behind the camera.
+ */
+export function projectedRadiusPx(clipFromWorld: ArrayLike<number>, centre: readonly [number, number, number], radius: number, widthPx: number, heightPx: number): number | null {
+  const m = clipFromWorld;
+  const ndc = (x: number, y: number, z: number): [number, number] | null => {
+    const w = m[3] * x + m[7] * y + m[11] * z + m[15];
+    if (!(w > 1e-9)) return null;
+    return [(m[0] * x + m[4] * y + m[8] * z + m[12]) / w, (m[1] * x + m[5] * y + m[9] * z + m[13]) / w];
+  };
+  const [cx, cy, cz] = centre, c = ndc(cx, cy, cz);
+  if (!c) return null;
+  let best = 0;
+  for (const [dx, dy, dz] of [[radius, 0, 0], [0, radius, 0], [0, 0, radius]]) {
+    const p = ndc(cx + dx, cy + dy, cz + dz);
+    if (!p) continue;
+    best = Math.max(best, Math.hypot((p[0] - c[0]) * widthPx / 2, (p[1] - c[1]) * heightPx / 2));
+  }
+  return best;
+}

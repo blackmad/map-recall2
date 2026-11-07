@@ -481,6 +481,9 @@ export const STREET_FURNITURE_TONES = {
   hoop: '#9fa4a3',
   bin: '#6f7476',
   binLid: '#5d6264',
+  // Above-ground Engels box (189468, Nassaukade / Da Costakade, 2026-11-07): graphite body, galvanised corner posts.
+  containerBgBody: '#4e5153',
+  containerBgPost: '#868b8c',
 } as const;
 
 /** OSM `building:material` → display hue. A material family suggests a hue, never a measured wall colour. */
