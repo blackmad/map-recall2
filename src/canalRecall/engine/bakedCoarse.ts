@@ -71,6 +71,9 @@ export function cellDistanceM(key: string, lng: number, lat: number): number {
  * Which cells the tier wants (the wanted cells that have a shell, nearest first, within the budget by their triangle
  * estimate) and keeps (the wanted ones, plus residents within the wanted radius + `keepM`). Pure.
  */
+/** Residents kept past the wanted set may take the budget this far over (cells and triangles). */
+export const BAKED_KEEP_OVER = 1.25;
+
 export function planBakedCells(lng: number, lat: number, wanted: Iterable<string>, available: ReadonlyMap<string, number>, budget: { cells: number; triangles: number }, triangles: (key: string) => number, residents: Iterable<string> = [], keepM = BAKED_KEEP_M): { want: string[]; keep: Set<string> } {
   const near: { key: string; d: number }[] = [];
   for (const key of new Set(wanted)) if (available.has(key)) near.push({ key, d: cellDistanceM(key, lng, lat) });
@@ -83,7 +86,17 @@ export function planBakedCells(lng: number, lat: number, wanted: Iterable<string
     if (tris + t > budget.triangles && want.length) break;
     tris += t; want.push(key); keep.add(key); radius = Math.max(radius, d);
   }
-  for (const key of residents) if (!keep.has(key) && available.has(key) && want.length && cellDistanceM(key, lng, lat) <= radius + keepM) keep.add(key);
+  // Hysteresis: residents just outside the wanted radius stay, nearest first, up to a quarter over the budget (a long
+  // jump must not keep the old view's cells on top of the new one's).
+  const extra: { key: string; d: number }[] = [];
+  for (const key of residents) if (!keep.has(key) && available.has(key) && want.length) { const d = cellDistanceM(key, lng, lat); if (d <= radius + keepM) extra.push({ key, d }); }
+  extra.sort((a, b) => a.d - b.d || (a.key < b.key ? -1 : 1));
+  const maxCells = Math.ceil(budget.cells * BAKED_KEEP_OVER), maxTris = budget.triangles * BAKED_KEEP_OVER;
+  for (const { key } of extra) {
+    const t = triangles(key);
+    if (keep.size >= maxCells || tris + t > maxTris) break;
+    tris += t; keep.add(key);
+  }
   return { want, keep };
 }
 
@@ -381,10 +394,10 @@ export class BakedCoarse {
   /** The cells drawn now (diagnostics). */
   drawnCells(): string[] { return [...this.residents.values()].filter(r => r.drawn).map(r => r.key); }
 
-  stats(): { enabled: boolean; cells: number; drawn: number; covered: number; triangles: number; gpuMB: number; fetchedMB: number; uploadedMB: number; pending: number; failed: number; liftPending: number; cpuMB: number } {
+  stats(): { enabled: boolean; wanted: number; cells: number; drawn: number; covered: number; triangles: number; gpuMB: number; fetchedMB: number; uploadedMB: number; pending: number; failed: number; liftPending: number; cpuMB: number } {
     let triangles = 0, bytes = 0, drawn = 0, liftPending = 0, cpu = 0;
     for (const r of this.residents.values()) { triangles += r.triangles; bytes += r.bytes; if (r.drawn) drawn++; if (r.lift) { liftPending += r.lift.pending.length; cpu += r.lift.positions.byteLength; } }
-    return { enabled: this.enabled, cells: this.residents.size, drawn, covered: this.covered.size, triangles, gpuMB: +(bytes / 1048576).toFixed(1), fetchedMB: +(this.fetchedBytes / 1048576).toFixed(2), uploadedMB: +(this.uploads / 1048576).toFixed(1), pending: this.inflight.size + this.queue.length, failed: this.failed.size, liftPending, cpuMB: +(cpu / 1048576).toFixed(1) };
+    return { enabled: this.enabled, wanted: this.wanted.size, cells: this.residents.size, drawn, covered: this.covered.size, triangles, gpuMB: +(bytes / 1048576).toFixed(1), fetchedMB: +(this.fetchedBytes / 1048576).toFixed(2), uploadedMB: +(this.uploads / 1048576).toFixed(1), pending: this.inflight.size + this.queue.length, failed: this.failed.size, liftPending, cpuMB: +(cpu / 1048576).toFixed(1) };
   }
 
   dispose(): void { this.clear(); }

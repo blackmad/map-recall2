@@ -40,6 +40,9 @@ test('planBakedCells: wanted cells with a shell, nearest first, capped by cells 
   const h = planBakedCells(centre[0], centre[1], ['0_0', '1_0'], avail(grid), { cells: 99, triangles: 1e9 }, () => 1, ['2_0', '4_4'], 1200);
   assert.deepEqual(h.want, ['0_0', '1_0']);
   assert.ok(h.keep.has('2_0') && !h.keep.has('4_4'));
+  // ...but only up to a quarter over the cell budget (4 wanted -> 5 kept), nearest residents first.
+  const c = planBakedCells(centre[0], centre[1], ['0_0', '1_0', '0_1', '1_1'], avail(grid), { cells: 4, triangles: 1e9 }, () => 1, ['2_0', '2_1', '0_2'], 5000);
+  assert.equal(c.keep.size, 5);
   // Nothing wanted keeps nothing.
   assert.equal(planBakedCells(centre[0], centre[1], [], avail(grid), { cells: 9, triangles: 9 }, () => 1, ['0_0']).keep.size, 0);
 });

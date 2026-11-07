@@ -252,12 +252,25 @@ const residents = census => page.evaluate(census => {
 // (whenIdle, then 4 s), into SHOTS; no pan. The before/after strip beside the user's shots.
 if (argv.includes('--spots')) {
   // West: Bos en Lommer looking west to the horizon (the far side of the pan; lane R2-B #229).
-  const spots = [{ name: 's1-hoftuin', at: [4.9065, 52.3655], ...POSES.s1 }, { name: 's4-zuidas', at: [4.8775, 52.3385], ...POSES.s4 }, { name: 'west-bos-en-lommer', at: [4.8530, 52.3780], ...POSES.s4, bearing: 270 }];
+  const spots = process.env.SPOT_SET === 'identity'
+    // SPOT_SET=identity (lane R4-A #243): S1, the user's two aerial shots (Amstelkanaal looking N over Rivierenbuurt and
+    // De Pijp; Chassébuurt looking W over the Kostverlorenvaart), and one street pose (look-consistency's Westerkerk).
+    ? [{ name: 's1-hoftuin', at: [4.9065, 52.3655], ...POSES.s1 }, { name: 'amstelkanaal-n', at: [4.8950, 52.3500], ...POSES.s4 },
+      { name: 'chassebuurt-w', at: [4.8600, 52.3690], ...POSES.s4, bearing: 270 },
+      { name: 'westerkerk-street', street: { target: [4.88390, 52.37450], bearing: 200, distM: 140, altM: 45, targetAltM: 15 } }]
+    : [{ name: 's1-hoftuin', at: [4.9065, 52.3655], ...POSES.s1 }, { name: 's4-zuidas', at: [4.8775, 52.3385], ...POSES.s4 }, { name: 'west-bos-en-lommer', at: [4.8530, 52.3780], ...POSES.s4, bearing: 270 }];
   fs.mkdirSync(shotsDir || 'artifacts/perf/aerial-spots', { recursive: true });
   const rows = [];
   await page.evaluate(() => { window.__aerialPause = true; });
   for (const spot of spots) {
-    await page.evaluate(sp => {
+    if (spot.street) await page.evaluate(v => {
+      // A fixed street camera (the look-consistency pose): the game stops driving the camera from here on.
+      const g = canalRecallGame, vm = g.vectorMap, map = vm.map ?? vm.cameraMap, r = v.bearing * Math.PI / 180;
+      const eye = [v.target[0] + Math.sin(r) * v.distM / (111320 * Math.cos(v.target[1] * Math.PI / 180)), v.target[1] + Math.cos(r) * v.distM / 111320];
+      vm.sync = () => {}; map.stop?.(); map.setMaxPitch?.(85); map.setVerticalFieldOfView?.(50); map.setPadding?.({ top: 0, bottom: 0, left: 0, right: 0 });
+      map.jumpTo(map.calculateCameraOptionsFromTo({ lng: eye[0], lat: eye[1] }, v.altM, { lng: v.target[0], lat: v.target[1] }, v.targetAltM));
+    }, spot.street);
+    else await page.evaluate(sp => {
       const g = canalRecallGame, l = g.osmLoader, ppm = (0, eval)('PIXELS_PER_METER'), cam = g.camera;
       const x = l._lastOffsetX + (sp.at[0] - l._lastCenterLng) * 111320 * Math.cos(l._lastCenterLat * Math.PI / 180) * ppm, y = l._lastOffsetY - (sp.at[1] - l._lastCenterLat) * 111320 * ppm;
       cam.pan(1, 0); cam.detached = true; cam.anchorX = cam.x = x; cam.anchorY = cam.y = y; cam.zoom = sp.zoom; cam.rotation = sp.bearing * Math.PI / 180;
@@ -267,6 +280,13 @@ if (argv.includes('--spots')) {
     await page.evaluate(async () => { const cam = canalRecallGame.vectorMap.camera; await Promise.race([cam?.whenIdle?.() ?? Promise.resolve(), new Promise(r => setTimeout(r, 60_000))]); });
     await page.waitForTimeout(4000);
     const file = path.join(shotsDir || 'artifacts/perf/aerial-spots', `${device}-spot-${spot.name}.png`);
+    if (process.env.SPOT_SET === 'identity') await page.evaluate(() => {
+      // Only the 3D frame is compared: no labels, HUD or minimap (as look-consistency's quiet()).
+      const vm = canalRecallGame.vectorMap, canvas = (vm.map ?? vm.cameraMap).getCanvas();
+      vm.setLabelsVisible?.(false);
+      for (const e of document.body.querySelectorAll('*')) if (e !== canvas && !e.contains(canvas)) e.style.visibility = 'hidden';
+    });
+    if (process.env.SPOT_SET === 'identity') await page.waitForTimeout(1500);
     await page.screenshot({ path: file });
     const overlap = await page.evaluate(() => { const vm = canalRecallGame.vectorMap, tb = vm._threeBuildings; const coarse = new Set([...(tb?.chunks?.keys?.() ?? [])].filter(k => k.startsWith('coarse:')).map(k => k.slice(7))); const near = [...(tb?.chunks?.keys?.() ?? [])].filter(k => k.startsWith('near:')).length; const shown = vm._farShells?.shownTiles?.() ?? []; return { coarseTiles: coarse.size, nearChunks: near, farShown: shown.length, farShownOverCoarse: shown.filter(t => coarse.has(t)), coarseSample: [...coarse].slice(0, 5) }; });
     rows.push({ spot: spot.name, file, overlap, ...(await residents(false)) });
