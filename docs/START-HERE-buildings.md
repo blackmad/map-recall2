@@ -37,6 +37,10 @@ npm run dev                          # tsx server.ts on PORT (default 3000)
 - Run one browser-heavy job at a time per machine. The maintainer's machine
   has a lock wrapper at `/tmp/canal-pw.sh`; if it exists, run Playwright and
   `review:sheet` through it (`bash /tmp/canal-pw.sh <command>`).
+  Wrap each capture or sheet separately, never a batch script that loops over
+  several: the wrapper holds one of two machine-wide slots for the whole
+  command, and a 50-minute batch starves every other lane and the
+  integrator's gate (2026-11-07).
 - If `git` misbehaves in your agent's shell on the maintainer's Mac, use
   `/usr/bin/git`. That's a local wrapper issue, not a repo rule.
 - Raw API responses are cached under `.cache/` (untracked). Review output goes
