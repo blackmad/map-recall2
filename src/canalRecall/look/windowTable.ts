@@ -164,3 +164,11 @@ export function createWindowTableTexture(THREE: any, look: 'procedural' | Look, 
   t.userData = { bytes: data.byteLength, windowTable: look };
   return t;
 }
+
+/**
+ * Every layer's window openings in cell uv (x of BAY_PX, y of the cell's canvas height, y down: the pitch does not
+ * care), empty where the layer has none: the roll-off chain's window pitch (look/cellMips.ts rectWindowPitch, lane R3-E #240).
+ */
+export function layerWindowRects(look: 'procedural' | Look): { x0: number; x1: number; y0: number; y1: number }[][] {
+  return lookWindowLayers(look).map(row => row.windows.map(w => ({ x0: w.x / BAY_PX, x1: (w.x + w.w) / BAY_PX, y0: w.y / row.cellH, y1: (w.y + w.h) / row.cellH })));
+}
