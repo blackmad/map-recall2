@@ -2,6 +2,50 @@
   "note": "Visible changes to the ride, newest first. One entry per shipped fix the player can see; models themselves are listed by the feed. Fields: date (YYYY-MM-DD, the day it reached main), title, text, where [lng, lat] optional, images optional: [{src, alt, caption?}] where src is a path in github.com/blackmad/map-recall2-screenshots (whats-new/YYYY-MM-DD-slug.jpg, before/after pairs welcome) or a full https URL. Link a screenshot whenever the change can be seen; keep the pictures out of this repository.",
   "notes": [
     {
+      "date": "2026-11-07",
+      "title": "Kinkerstraat 89-105 on the corner of the Tollensstraat",
+      "text": "The 1987 corner block on the Kinkerstraat, Tollensstraat and Bilderdijkkade is now drawn individually. Its window bands, loggia bays and corner match the city panoramas.",
+      "images": [
+        "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/landmarks/2026-11-06-r5/west/kinkerstraat-89/ingame-rider-kinker-desktop.jpg",
+        "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/landmarks/2026-11-06-r5/west/kinkerstraat-89/sheet.jpg"
+      ]
+    },
+    {
+      "date": "2026-11-07",
+      "title": "The Postjesweg police station",
+      "text": "The 2004 red-brick police station at Postjesweg 179 now stands in the game. It has its ribbon window, louvred upper windows, the POLITIE sign, the garage doors and the corner pergola balcony.",
+      "images": [
+        "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/landmarks/2026-11-06-r5/west/politiebureau-postjesweg/ingame-rider-north-desktop.jpg",
+        "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/landmarks/2026-11-06-r5/west/politiebureau-postjesweg/sheet.jpg"
+      ]
+    },
+    {
+      "date": "2026-11-07",
+      "title": "Quarter Plaza on the Transformatorweg",
+      "text": "Riders on the Transformatorweg now pass Quarter Plaza: a brick slab with long ribbon windows lifted on raked V-columns over a glass lobby, its \"quarter plaza\" and \"tot maandag\" lettering, and the long white office bar on pilotis beside it.",
+      "images": [
+        "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/landmarks/2026-11-06-r5/west/ibis-city-west/ingame-rider-south-desktop.jpg"
+      ]
+    },
+    {
+      "date": "2026-11-07",
+      "title": "Winkelcentrum Plein '40-'45 in Slotermeer",
+      "text": "The shopping centre beside the square is now drawn as it stands. It has the seven-storey block with staggered blue balconies over the mall entrance, the brick garage with its rhythm of louvred slots and orange columns, the housing bar over a shop canopy, and the grey office bar under its raked pergola.",
+      "images": [
+        "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/landmarks/2026-11-06-r5/west/winkelcentrum-plein-40-45/ingame-rider-west-desktop.jpg",
+        "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/landmarks/2026-11-06-r5/west/winkelcentrum-plein-40-45/sheet.jpg"
+      ]
+    },
+    {
+      "date": "2026-11-07",
+      "title": "The Andreas Ensemble on the Cornelis Lelylaan",
+      "text": "The 2009 block with the WestCord Fashion Hotel is now drawn individually. On the Lelylaan, the stepped buff-brick front rises over a two-storey stone plinth of shops and glass-block bays. The 41 m hotel tower carries its lettering, its stone bands and its bay windows. The Titus van Rijnstraat wing has its glazed hotel storey and top loggias, and two grey-brick pavilions with corner balconies stand on the south street.",
+      "images": [
+        "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/landmarks/2026-11-06-r5/west/andreas-ensemble/ingame-rider-lelylaan-desktop.jpg",
+        "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/landmarks/2026-11-06-r5/west/andreas-ensemble/sheet.jpg"
+      ]
+    },
+    {
       "date": "2026-11-06",
       "title": "Thin trim stops crawling in the distance",
       "text": "Cornices, parapets, railings, signs and other thin façade details no longer shimmer and crawl as you ride: anything thinner than about two screen pixels now fades out smoothly instead of flickering between drawn and not drawn, and trim no longer fights its own wall. Measured on the Weesperstraat slab from your screenshot and at the Hoftuin, Westerkerk and Nassaukade, the moving-pixel count drops 13 to 21 % on whole frames at no visible frame cost. The slab's own window grid still shimmers at a grazing angle; that is the façade texture, not the trim, and the next round owns it. ?thinFade=0 shows the old frame; ?smaa=1 tries a full-screen anti-aliasing pass that is off because it costs 2 to 4 ms. Strips: your shot, before, after, and a 4x crop of the slab.",
