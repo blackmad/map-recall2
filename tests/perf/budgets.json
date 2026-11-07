@@ -322,6 +322,21 @@
       "note": "R3-F (#241): 102.8 -> 16.7 desktop, 45.4 -> 7.9 iPhone with sticky winners (?labelSticky=0), the 800 ms aerial cadence and aerial POI thinning (?labelAerialPois=1 restores). The user's 'bouncing labels' from the air. Report-only row proposed by the lane.",
       "source": "lane R3-F 2026-11-07 (#241) at 79ed122ed, harness scripts/aerial-pan.mjs (npm run perf:aerial) headed installed Chrome on Metal, 3-min pan --every 5, lane defaults (groundBasesAerial, labelBudget 4 ms, labelClipTries, aerial POI thinning, sticky winners); run-to-run noise: desktop frames > 100 ranged 29-49 across eight runs of the same bundles",
       "date": "2026-11-07"
+    },
+    "aerialCoarseFadeIns": {
+      "value": {
+        "desktop": 700,
+        "iphone": 750
+      },
+      "reportOnly": true,
+      "measured": {
+        "desktop": 650,
+        "iphone": 629
+      },
+      "unit": "coarse-tier chunk fade-ins over the 3-min aerial pan (aerial-pan summary coarseFadeIns; coarseFadingMax and coarseFadingSamples beside it)",
+      "note": "R4-A (#243): baked coarse tier desktop on 650 vs off 894 (median new fades per 5 s sample 1 vs 25, samples with >= 20 new 10 vs 24 of 36); iPhone measured with ?bakedCoarse=1 forced (629 vs off 725, 5 vs 18, 13 vs 15), touch default is off. The fades left sit at the pan teleports to a new district.",
+      "source": "lane R4-A 2026-11-07 (#243) at a2f15b692, scripts/aerial-pan.mjs --pan 180 --every 5, headed installed Chrome on Metal, bundles rebuilt from the merged branch",
+      "date": "2026-11-07"
     }
   },
   "_desktopPerfViewport": {

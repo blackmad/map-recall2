@@ -3,6 +3,28 @@
   "notes": [
     {
       "date": "2026-11-07",
+      "title": "The city from the air is one piece",
+      "text": "On desktop the streets near you no longer rebuild block by block while you pan across the city from the air. The coarse city is baked ahead of time per cell and streamed in as one piece, so a pan over one area keeps its buildings still; the few fades left happen when you jump to a new district. Phones keep the previous behaviour for now. Add ?bakedCoarse=0 to the ride link to compare.",
+      "images": [
+        {
+          "src": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/engine/2026-11-07-r4a/aerial-amstelkanaal-on-off.jpg",
+          "alt": "Amstelkanaal from the air: the baked city on the left, the previous rebuilding coarse tier on the right",
+          "caption": "Amstelkanaal from the air, baked (left) beside before (right): the same streets, now arriving whole."
+        },
+        {
+          "src": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/engine/2026-11-07-r4a/aerial-chassebuurt-on-off.jpg",
+          "alt": "Chassébuurt from the air: baked on the left, before on the right",
+          "caption": "Chassébuurt from the air, baked (left) beside before (right)."
+        },
+        {
+          "src": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/engine/2026-11-07-r4a/midpan-t110-dam-on-off.jpg",
+          "alt": "Mid-pan over the Dam: baked on the left shows settled blocks, before on the right shows blocks still fading in",
+          "caption": "Caught mid-pan over the Dam: with the baked city (left) the blocks are settled; before (right) they were still fading in."
+        }
+      ]
+    },
+    {
+      "date": "2026-11-07",
       "title": "Tall buildings seen edge-on shimmer less",
       "text": "Window grids on tall buildings seen edge-on shimmer less while you ride on desktop. The slab's grazing wall was sampled too sharply for its distance; the facade sampler now settles for a little less anisotropy, which calms the moving stripes by about a quarter without softening the quay houses up close. Add ?texAniso=16 to the ride link to compare.",
       "images": [
