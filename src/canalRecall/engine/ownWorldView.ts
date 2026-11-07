@@ -338,7 +338,7 @@ export class OwnWorldView implements WorldViewOracles {
       });
       counters.install(renderer.getContext());
       this._glCounters = counters;
-      W().__canalPerf = { ...(W().__canalPerf ?? {}), gl: { markWarm: () => counters.markWarm(), report: () => counters.report() } };
+      W().__canalPerf = { ...(W().__canalPerf ?? {}), gl: { markWarm: () => counters.markWarm(), report: () => counters.report(), counters } };
     } else if (PerfHud.wantedAtStart(W())) {
       // The perf HUD's GPU MB (engine/perfHud.ts): the allocation tracker alone, only when the HUD is wanted at start.
       this._gpuResident = new GlResident();
