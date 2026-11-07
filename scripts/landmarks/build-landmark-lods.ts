@@ -9,7 +9,13 @@
 // materials take the recipe look at runtime (explicit material slots) get none:
 // their colour is not the GLB's.
 //
+// And, with `--chunks` (lane R4-C #245), `<chunk>.lod2.glb` beside every street chunk GLB
+// (models/ordinary-buildings/chunks/): the same simplifier and cap, one primitive per source material, each
+// primitive's triangles grouped by pand with `extras.pandRanges` (hover/pick and the ground lift), its record in
+// the chunk's chunks.json row (`lod2`). Chunks keep their explicit material slots (the city look dresses them).
+//
 //   npm run build:landmark-lods [-- --force] [-- --only=id,id] [-- --lod1-only | --lod2-only]
+//   npm run build:landmark-lods -- --chunks [--force] [--only=chunk-id,...] [--lod2-out=<dir>] [--lod2-error-m=0.1] [--lod2-ratio=1] [--lod2-cap=1500] [--chunk-uv]
 //   ... --lod2-out=<dir> [--lod2-ratio=0.02] [--lod2-error-m=1] [--lod2-cap=3000]   stage a lod2 sweep: writes only there, no records
 //
 // Also writes src/canalRecall/landmarks/modelLods.json (id -> lod1 record, plus
@@ -26,7 +32,7 @@ import { MeshoptDecoder, MeshoptEncoder, MeshoptSimplifier } from 'meshoptimizer
 import sharp from 'sharp';
 
 import {
-  LOD1_BUILD_VERSION, LOD1_MAX_TEXTURE_SIZE, LOD1_MIN_SOURCE_TRIANGLES, LOD2_BUILD_VERSION, LOD2_CAP_ERROR_M, LOD2_GUARD_M, LOD2_GUARD_SHARE, LOD2_MAX_ERROR_M, LOD2_MAX_ERROR_M_BY_ID, LOD2_MAX_TRIANGLES, LOD2_MIN_ALPHA, LOD2_TOWER_ERROR_M,
+  CHUNK_LOD2_BUILD_VERSION, CHUNK_LOD2_MAX_ERROR_M, CHUNK_LOD2_TRIANGLE_RATIO, chunkLod2IsCurrent, LOD1_BUILD_VERSION, LOD1_MAX_TEXTURE_SIZE, LOD1_MIN_SOURCE_TRIANGLES, LOD2_BUILD_VERSION, LOD2_CAP_ERROR_M, LOD2_GUARD_M, LOD2_GUARD_SHARE, LOD2_MAX_ERROR_M, LOD2_MAX_ERROR_M_BY_ID, LOD2_MAX_TRIANGLES, LOD2_MIN_ALPHA, LOD2_TOWER_ERROR_M,
   lod1IsCurrent, lod1SimplifyOptions, lod1Url, lod2IsCurrent, lod2SimplifyOptions, lod2Url,
   type LandmarkLodEntry, type LandmarkLodRecord,
 } from '../../src/canalRecall/landmarks/landmarkLod';
@@ -35,6 +41,7 @@ const ROOT = path.resolve(import.meta.dirname, '..', '..');
 const MODELS = path.join(ROOT, 'public', 'canal-drive', 'models');
 const MANIFEST = path.join(MODELS, 'signature-landmarks.json');
 const TABLE = path.join(ROOT, 'src', 'canalRecall', 'landmarks', 'modelLods.json');
+const CHUNK_MANIFEST = path.join(ROOT, 'public', 'canal-drive', 'ordinary-buildings-data', 'chunks.json');
 
 function triangles(document: Document): number {
   let total = 0;
@@ -66,7 +73,7 @@ export function hasRecipeSlots(document: Document): boolean {
   });
 }
 
-export type Faces = { positions: number[]; colours: number[]; indices: number[]; faceMaterials: (Material | null)[] };
+export type Faces = { positions: number[]; colours: number[]; indices: number[]; faceMaterials: (Material | null)[]; facePands: number[]; uvs: number[] };
 
 /**
  * Every triangle of the model in the scene's space, with its material's base colour per vertex (glTF factors are
@@ -74,7 +81,8 @@ export type Faces = { positions: number[]; colours: number[]; indices: number[];
  * out: from the air it reads as the hall behind it.
  */
 export function collectFaces(source: Document): Faces {
-  const positions: number[] = [], colours: number[] = [], indices: number[] = [], faceMaterials: (Material | null)[] = [];
+  const positions: number[] = [], colours: number[] = [], indices: number[] = [], faceMaterials: (Material | null)[] = [], facePands: number[] = [], uvs: number[] = [];
+  const uv: number[] = [0, 0];
   const tmp = new Float32Array(3), p: number[] = [0, 0, 0];
   for (const node of source.getRoot().listNodes()) {
     const mesh = node.getMesh();
@@ -93,14 +101,21 @@ export function collectFaces(source: Document): Faces {
         transformPoint(world, p, tmp, 0);
         positions.push(tmp[0], tmp[1], tmp[2]);
         colours.push(factor[0], factor[1], factor[2]);
+        // TEXCOORD_0 as stored (a street chunk's facade UVs; 0 without).
+        const t = primitive.getAttribute('TEXCOORD_0');
+        if (t) { t.getElement(i, uv); uvs.push(uv[0], uv[1]); } else uvs.push(0, 0);
       }
       const index = primitive.getIndices();
       const count = index ? index.getCount() : position.getCount();
       for (let i = 0; i < count; i++) indices.push(base + (index ? index.getScalar(i) : i));
       for (let t = 0; t < count / 3; t++) faceMaterials.push(material);
+      // A street chunk's pand per face (primitive extras.pandRanges; -1 outside every range or on a landmark).
+      const at = facePands.length;
+      for (let t = 0; t < count / 3; t++) facePands.push(-1);
+      for (const [pand, first, n] of ((primitive.getExtras() as { pandRanges?: number[][] })?.pandRanges ?? [])) for (let t = first; t < first + n && t < count / 3; t++) facePands[at + t] = pand;
     }
   }
-  return { positions, colours, indices, faceMaterials };
+  return { positions, colours, indices, faceMaterials, facePands, uvs };
 }
 
 /** One primitive for the whole model, colours per vertex (see collectFaces). */
@@ -260,29 +275,34 @@ export function trimMaterials(document: Document): void {
 }
 
 /** Rewrites a mesh's primitives to share one POSITION and one NORMAL accessor, each keeping its own indices. */
-export function shareVertexStreams(document: Document, mesh: ReturnType<Document['createMesh']>): void {
+export function shareVertexStreams(document: Document, mesh: ReturnType<Document['createMesh']>, extra: readonly string[] = []): void {
   const prims = mesh.listPrimitives();
   if (prims.length < 2) return;
-  const first = { p: prims[0].getAttribute('POSITION')!, n: prims[0].getAttribute('NORMAL')! };
-  const same = (a: typeof first.p, b: typeof first.p) => a.getComponentType() === b.getComponentType() && a.getNormalized() === b.getNormalized() && a.getElementSize() === b.getElementSize();
-  if (!prims.every(prim => same(prim.getAttribute('POSITION')!, first.p) && same(prim.getAttribute('NORMAL')!, first.n))) return;
-  const pos: number[] = [], nor: number[] = [], lists: number[][] = [];
-  const ps = first.p.getElementSize(), ns = first.n.getElementSize();
+  // POSITION and NORMAL, plus `extra` semantics (a street chunk's TEXCOORD_0), one stream each for every primitive.
+  const semantics = ['POSITION', 'NORMAL', ...extra];
+  const firsts = semantics.map(name => prims[0].getAttribute(name));
+  if (firsts.some(a => !a)) return;
+  type Acc = NonNullable<typeof firsts[number]>;
+  const same = (a: Acc | null, b: Acc) => !!a && a.getComponentType() === b.getComponentType() && a.getNormalized() === b.getNormalized() && a.getElementSize() === b.getElementSize();
+  if (!prims.every(prim => semantics.every((name, k) => same(prim.getAttribute(name), firsts[k]!)))) return;
+  const values: number[][] = semantics.map(() => []), lists: number[][] = [];
+  const ps = firsts[0]!.getElementSize();
+  let base = 0;
   for (const prim of prims) {
-    const p = prim.getAttribute('POSITION')!.getArray()!, n = prim.getAttribute('NORMAL')!.getArray()!, base = pos.length / ps;
-    for (let i = 0; i < p.length; i++) pos.push(p[i]);
-    for (let i = 0; i < n.length; i++) nor.push(n[i]);
+    semantics.forEach((name, k) => { const a = prim.getAttribute(name)!.getArray()!; for (let i = 0; i < a.length; i++) values[k].push(a[i]); });
+    const count = prim.getAttribute('POSITION')!.getArray()!.length / ps;
     const idx = prim.getIndices();
-    lists.push(idx ? Array.from(idx.getArray()!, v => v + base) : Array.from({ length: p.length / ps }, (_, i) => base + i));
+    lists.push(idx ? Array.from(idx.getArray()!, v => v + base) : Array.from({ length: count }, (_, i) => base + i));
+    base += count;
   }
   const buffer = document.getRoot().listBuffers()[0];
-  const typed = (a: typeof first.p, v: number[]) => new (a.getArray()!.constructor as Float32ArrayConstructor)(v);
-  const P = document.createAccessor().setType(first.p.getType()).setArray(typed(first.p, pos)).setNormalized(first.p.getNormalized()).setBuffer(buffer);
-  const N = document.createAccessor().setType(first.n.getType()).setArray(typed(first.n, nor)).setNormalized(first.n.getNormalized()).setBuffer(buffer);
-  const count = pos.length / ps;
+  const shared = semantics.map((_, k) => {
+    const a = firsts[k]!;
+    return document.createAccessor().setType(a.getType()).setArray(new (a.getArray()!.constructor as Float32ArrayConstructor)(values[k])).setNormalized(a.getNormalized()).setBuffer(buffer);
+  });
   prims.forEach((prim, i) => {
-    prim.setAttribute('POSITION', P).setAttribute('NORMAL', N)
-      .setIndices(document.createAccessor().setType('SCALAR').setArray(count > 65535 ? new Uint32Array(lists[i]) : new Uint16Array(lists[i])).setBuffer(buffer));
+    semantics.forEach((name, k) => prim.setAttribute(name, shared[k]));
+    prim.setIndices(document.createAccessor().setType('SCALAR').setArray(base > 65535 ? new Uint32Array(lists[i]) : new Uint16Array(lists[i])).setBuffer(buffer));
   });
 }
 
@@ -484,6 +504,160 @@ async function buildLod2(io: Io, manifest: Manifest, force: boolean, only: strin
   if (guarded.length) console.log(`lod2 silhouette guard re-baked ${guarded.length} at ${LOD2_TOWER_ERROR_M} m: ${guarded.join(", ")}`);
 }
 
+/**
+ * The UV of point q from source triangle t's affine UV map (q projected onto t's plane, barycentrics that may fall
+ * outside [0, 1]): a street chunk's walls carry UVs linear over each wall plane, so a simplified face that lies on a
+ * wall takes the wall's UVs at its own corners.
+ */
+export function uvFromFace(source: { positions: ArrayLike<number>; indices: ArrayLike<number>; uvs: ArrayLike<number> }, t: number, q: ArrayLike<number>): [number, number] {
+  const i0 = source.indices[t * 3], i1 = source.indices[t * 3 + 1], i2 = source.indices[t * 3 + 2], P = source.positions, U = source.uvs;
+  const e1 = [P[i1 * 3] - P[i0 * 3], P[i1 * 3 + 1] - P[i0 * 3 + 1], P[i1 * 3 + 2] - P[i0 * 3 + 2]];
+  const e2 = [P[i2 * 3] - P[i0 * 3], P[i2 * 3 + 1] - P[i0 * 3 + 1], P[i2 * 3 + 2] - P[i0 * 3 + 2]];
+  const d = [q[0] - P[i0 * 3], q[1] - P[i0 * 3 + 1], q[2] - P[i0 * 3 + 2]];
+  const dot = (a: number[], b: number[]) => a[0] * b[0] + a[1] * b[1] + a[2] * b[2];
+  const a11 = dot(e1, e1), a12 = dot(e1, e2), a22 = dot(e2, e2), b1 = dot(d, e1), b2 = dot(d, e2), det = a11 * a22 - a12 * a12;
+  if (!(Math.abs(det) > 1e-12)) return [U[i0 * 2], U[i0 * 2 + 1]];
+  const v = (a22 * b1 - a12 * b2) / det, w = (a11 * b2 - a12 * b1) / det, u = 1 - v - w;
+  return [u * U[i0 * 2] + v * U[i1 * 2] + w * U[i2 * 2], u * U[i0 * 2 + 1] + v * U[i1 * 2 + 1] + w * U[i2 * 2 + 1]];
+}
+
+/**
+ * Re-orders each primitive's triangles so every pand's are contiguous (stable within a pand) and writes its
+ * `extras.pandRanges`. `pandOf(primitive index, triangle)` is the triangle's pand (-1: none, kept last, no range).
+ */
+export function groupTrianglesByPand(document: Document, pandOf: (primitive: number, triangle: number) => number): void {
+  const prims = document.getRoot().listMeshes().flatMap(mesh => mesh.listPrimitives());
+  const buffer = document.getRoot().listBuffers()[0];
+  prims.forEach((prim, k) => {
+    const index = prim.getIndices();
+    const list = index ? Array.from(index.getArray()!) : Array.from({ length: prim.getAttribute('POSITION')!.getCount() }, (_, i) => i);
+    const n = list.length / 3, order = Array.from({ length: n }, (_, t) => t), pand = order.map(t => pandOf(k, t));
+    order.sort((a, b) => (pand[a] < 0 ? Infinity : pand[a]) - (pand[b] < 0 ? Infinity : pand[b]) || a - b);
+    const out: number[] = [], ranges: [number, number, number][] = [];
+    order.forEach((t, i) => {
+      out.push(list[t * 3], list[t * 3 + 1], list[t * 3 + 2]);
+      if (pand[t] < 0) return;
+      const last = ranges.at(-1);
+      if (last && last[0] === pand[t] && last[1] + last[2] === i) last[2]++; else ranges.push([pand[t], i, 1]);
+    });
+    const vertices = prim.getAttribute('POSITION')!.getCount();
+    prim.setIndices(document.createAccessor().setType('SCALAR').setArray(vertices > 65535 ? new Uint32Array(out) : new Uint16Array(out)).setBuffer(buffer));
+    prim.setExtras({ ...(prim.getExtras() ?? {}), pandRanges: ranges });
+  });
+}
+
+/**
+ * Bakes one street chunk's lod2 (lane R4-C #245): the landmark lod2 recipe (positions welded across materials,
+ * meshoptimizer under the error bound, the cap; each simplified face takes the material most of seven points on it
+ * land on, and the pand of the source face it took), then flat normals, meshopt, one vertex stream, and the faces
+ * grouped by pand per primitive. Returns null when the chunk has no faces.
+ */
+export async function bakeChunkLod2(io: Io, id: string, source: string, output: string, errorM = CHUNK_LOD2_MAX_ERROR_M, capTriangles = LOD2_MAX_TRIANGLES, ratio = CHUNK_LOD2_TRIANGLE_RATIO, withUv = false): Promise<{ sourceTriangles: number; triangles: number; bytes: number; primitives: number; pands: number } | null> {
+  const document = await io.read(source);
+  const sourceTriangles = triangles(document);
+  const faces = collectFaces(document);
+  if (!faces.indices.length) return null;
+  const work = new Document();
+  const wbuf = work.createBuffer();
+  work.createScene().addChild(work.createNode().setMesh(work.createMesh().addPrimitive(work.createPrimitive()
+    .setAttribute('POSITION', work.createAccessor().setType('VEC3').setArray(new Float32Array(faces.positions)).setBuffer(wbuf))
+    .setIndices(work.createAccessor().setType('SCALAR').setArray(new Uint32Array(faces.indices)).setBuffer(wbuf)))));
+  await work.transform(weld());
+  const welded = work.getRoot().listMeshes()[0].listPrimitives()[0];
+  const weldedPositions = welded.getAttribute('POSITION')!.getArray() as Float32Array;
+  let min = [Infinity, Infinity, Infinity], max = [-Infinity, -Infinity, -Infinity];
+  for (let i = 0; i < weldedPositions.length; i += 3) for (let k = 0; k < 3; k++) { min[k] = Math.min(min[k], weldedPositions[i + k]); max[k] = Math.max(max[k], weldedPositions[i + k]); }
+  const extent = Math.max(max[0] - min[0], max[1] - min[1], max[2] - min[2]);
+  const all = Uint32Array.from(welded.getIndices()!.getArray()!);
+  const options = lod2SimplifyOptions(id, extent, ratio, errorM);
+  let [kept] = MeshoptSimplifier.simplify(all, weldedPositions, 3, Math.floor(all.length * options.ratio / 3) * 3, options.error);
+  if (kept.length / 3 > capTriangles) {
+    const cap = capTriangles * 3, error = Math.min(1, LOD2_CAP_ERROR_M / extent);
+    [kept] = MeshoptSimplifier.simplify(kept, weldedPositions, 3, cap, error, ['Prune']);
+    if (kept.length > cap) [kept] = MeshoptSimplifier.simplifySloppy(kept, weldedPositions, 3, null, cap, error);
+  }
+  const facePositions = new Float32Array(kept.length * 3);
+  for (let i = 0; i < kept.length; i++) facePositions.set(weldedPositions.subarray(kept[i] * 3, kept[i] * 3 + 3), i * 3);
+  const materialIds = new Map<Material | null, number>();
+  const classOf = (t: number) => { const m = faces.faceMaterials[t]; let k = materialIds.get(m); if (k === undefined) materialIds.set(m, k = materialIds.size); return k; };
+  const identity = Uint32Array.from({ length: kept.length }, (_, i) => i);
+  const nearest = nearestSourceFaces(faces, { positions: facePositions, indices: identity }, classOf);
+  const facePand = Array.from(nearest, t => faces.facePands[t]);
+  const byMaterial = new Map<Material | null, number[]>();
+  for (let f = 0; f < nearest.length; f++) {
+    const m = faces.faceMaterials[nearest[f]];
+    let list = byMaterial.get(m); if (!list) byMaterial.set(m, list = []); list.push(f);
+  }
+  const root = document.getRoot(), buffer = root.listBuffers()[0] ?? document.createBuffer();
+  for (const scene of root.listScenes()) for (const child of scene.listChildren()) scene.removeChild(child);
+  const mesh = document.createMesh('lod2');
+  // `uv` (off by default): carry the source's facade UVs over (uvFromFace), so the city look draws the stand-in with the
+  // full model's UV variant instead of box projection. Measured in lane R4-C: no visible change at the sizes the stand-in
+  // is drawn (under CHUNK_LOD2_DOWNGRADE_PX), and 9.17 MB against 5.34 MB for the set (the UV seams unweld it).
+  const hasUv = withUv && faces.uvs.some(v => v !== 0);
+  for (const [material, list] of byMaterial) {
+    const p = new Float32Array(list.length * 9), t = new Float32Array(list.length * 6);
+    list.forEach((f, j) => {
+      p.set(facePositions.subarray(f * 9, f * 9 + 9), j * 9);
+      if (hasUv) for (let c = 0; c < 3; c++) t.set(uvFromFace(faces, nearest[f], facePositions.subarray(f * 9 + c * 3, f * 9 + c * 3 + 3)), j * 6 + c * 2);
+    });
+    const prim = document.createPrimitive().setAttribute('POSITION', document.createAccessor().setType('VEC3').setArray(p).setBuffer(buffer));
+    if (hasUv) prim.setAttribute('TEXCOORD_0', document.createAccessor().setType('VEC2').setArray(t).setBuffer(buffer));
+    if (material) prim.setMaterial(material);
+    mesh.addPrimitive(prim);
+  }
+  const scene = root.getDefaultScene() ?? root.listScenes()[0] ?? document.createScene();
+  scene.addChild(document.createNode('lod2').setMesh(mesh));
+  // prune() drops vertex attributes no texture reads: with `uv` the facade UVs feed the city look, keep them.
+  const keep = { keepAttributes: hasUv };
+  await document.transform(prune(keep), normals({ overwrite: true }), weld(), prune(keep), meshopt({ encoder: MeshoptEncoder }));
+  shareVertexStreams(document, mesh, hasUv ? ['TEXCOORD_0'] : []);
+  await document.transform(prune(keep));
+  trimMaterials(document);
+  // The transforms re-order triangles: find each final triangle's simplified face again (the same triangle, quantised:
+  // its centroid lies on it) and group the primitive's triangles by that face's pand.
+  const final = collectFaces(document);
+  const back = nearestSourceFaces({ positions: facePositions, indices: identity }, final);
+  const primStart: number[] = [];
+  let at = 0;
+  for (const prim of mesh.listPrimitives()) { primStart.push(at); at += (prim.getIndices()?.getCount() ?? 0) / 3; }
+  groupTrianglesByPand(document, (k, t) => facePand[back[primStart[k] + t]] ?? -1);
+  await io.write(output, document);
+  const pands = new Set(facePand.filter(p => p >= 0)).size;
+  return { sourceTriangles, triangles: triangles(document), bytes: fs.statSync(output).size, primitives: mesh.listPrimitives().length, pands };
+}
+
+type ChunkRow = { id: string; modelUrl: string; sha256: string; pands: unknown[]; lod2?: LandmarkLodRecord };
+
+/** lod2 for every street chunk in chunks.json; records go into the chunk rows unless staged. */
+async function buildChunkLod2(io: Io, force: boolean, only: string[] | undefined, stage: string | null, errorM?: number, cap?: number, ratio?: number): Promise<void> {
+  const started = Date.now();
+  const manifest = JSON.parse(fs.readFileSync(CHUNK_MANIFEST, 'utf8')) as { chunks: ChunkRow[] };
+  const rows: string[] = [];
+  let built = 0, skipped = 0, stale = 0, total = 0;
+  if (stage) fs.mkdirSync(stage, { recursive: true });
+  for (const chunk of manifest.chunks) {
+    if (only && !only.includes(chunk.id)) continue;
+    const source = path.join(ROOT, 'public', 'canal-drive', chunk.modelUrl.split('?')[0]);
+    if (!fs.existsSync(source)) continue;
+    const hash = crypto.createHash('sha256').update(fs.readFileSync(source)).digest('hex');
+    // A GLB that is not the one the row describes: leave the row alone (its compile owner republishes it).
+    if (hash !== chunk.sha256) { stale++; console.warn(`${chunk.id}: GLB sha256 ${hash.slice(0, 16)} is not the row's ${chunk.sha256.slice(0, 16)}; skipped`); continue; }
+    const output = path.join(stage ?? path.dirname(source), path.basename(lod2Url(source)));
+    if (!stage && !force && fs.existsSync(output) && chunkLod2IsCurrent(chunk.lod2, chunk.sha256)) { skipped++; total += chunk.lod2!.bytes; continue; }
+    const result = await bakeChunkLod2(io, chunk.id, source, output, errorM, cap, ratio, process.argv.includes('--chunk-uv'));
+    if (!result) continue;
+    built++; total += result.bytes;
+    rows.push(`| ${chunk.id.replace(/^chunk-/, '')} | ${result.sourceTriangles} | ${result.triangles} | ${result.primitives} | ${result.pands}/${chunk.pands.length} | ${fs.statSync(source).size} | ${result.bytes} |`);
+    if (!stage) {
+      chunk.lod2 = { sourceHash: chunk.sha256.slice(0, 16), buildVersion: CHUNK_LOD2_BUILD_VERSION, bytes: result.bytes, triangles: result.triangles };
+      fs.writeFileSync(CHUNK_MANIFEST, `${JSON.stringify(manifest, null, 1)}\n`); // resumable after each chunk
+    }
+  }
+  if (process.argv.includes('--verbose') || only) console.log(['| chunk | source tris | lod2 tris | prims | pands | GLB B | lod2 B |', '|---|---|---|---|---|---|---|', ...rows].join('\n'));
+  console.log(`chunk lod2${stage ? ` (staged in ${stage})` : ''}: built ${built}, up to date ${skipped}, GLB not the row's ${stale}; ${(total / 1e6).toFixed(2)} MB total; ${((Date.now() - started) / 1000).toFixed(0)} s`);
+}
+
 /** modelLods.json from the manifest's records: lod1 fields at the top (as before), `lod2` beside them. */
 export function lodTable(manifest: Manifest): Record<string, LandmarkLodEntry> {
   const table: Record<string, LandmarkLodEntry> = {};
@@ -506,6 +680,7 @@ async function main(): Promise<void> {
   const io = new NodeIO().registerExtensions(ALL_EXTENSIONS)
     .registerDependencies({ 'meshopt.encoder': MeshoptEncoder, 'meshopt.decoder': MeshoptDecoder });
   const manifest = JSON.parse(fs.readFileSync(MANIFEST, 'utf8')) as Manifest;
+  if (process.argv.includes('--chunks')) { await buildChunkLod2(io, force, only, stage, errorM, cap, ratio); return; }
   if (stage) { await buildLod2(io, manifest, true, only, stage, ratio, errorM, cap); return; }
   if (!process.argv.includes('--lod2-only')) await buildLod1(io, manifest, force, only);
   if (!process.argv.includes('--lod1-only')) await buildLod2(io, manifest, force, only, null);

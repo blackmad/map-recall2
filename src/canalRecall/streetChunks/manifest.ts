@@ -34,6 +34,12 @@ export interface ChunkManifestEntry {
   replaces: string[];
   footprint: {type: 'MultiPolygon'; coordinates: number[][][][]};
   pands: Pick<PandMeta, 'recipeId' | 'pandId' | 'buildingId' | 'address' | 'frontage' | 'bounds' | 'triangles' | 'ranges'>[];
+  /**
+   * The lod2 stand-in beside the GLB (`<id>.lod2.glb`, scripts/landmarks/build-landmark-lods.ts --chunks, lane R4-C #245):
+   * built from the GLB whose sha256 starts with `sourceHash`. A recompile that replaces the row drops it (and changes the
+   * hash), so a stale stand-in is never drawn.
+   */
+  lod2?: {sourceHash: string; buildVersion: number; bytes: number; triangles: number};
 }
 
 export interface ChunkManifest { version: 1; generatedAt: string; chunks: ChunkManifestEntry[] }

@@ -351,6 +351,28 @@
       ]
     },
     {
+      "date": "2026-11-07",
+      "title": "Street blocks from the air draw as one piece",
+      "text": "Street blocks seen from the air now draw as one piece per material, and far-off blocks swap to a light stand-in: about 600 fewer draw calls over the Jordaan and around the Rijksmuseum. At street level the blocks look the same. Add ?chunkMerge=0 or ?chunkLod2=0 to the ride link to compare.",
+      "images": [
+        {
+          "src": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/engine/2026-11-07-r4c/aerial-parked-westerkerk-wide-west.jpg",
+          "alt": "Westerkerk from the air: before, merged, and merged with stand-ins, with a four-times crop",
+          "caption": "Westerkerk from the air: before, merged per material, merged with the light stand-ins. 584 block draws became 24."
+        },
+        {
+          "src": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/engine/2026-11-07-r4c/aerial-parked-rijksmuseum-wide-west.jpg",
+          "alt": "Rijksmuseum from the air: before, merged, and merged with stand-ins",
+          "caption": "Rijksmuseum from the west: 483 block draws became 14."
+        },
+        {
+          "src": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/engine/2026-11-07-r4c/street-chunk-transvaal-42-48-138.jpg",
+          "alt": "Transvaalstraat 42 to 48 at street level: before, after, and before again",
+          "caption": "Transvaalstraat 42 to 48 at street level: before, after, before again. The blocks look the same."
+        }
+      ]
+    },
+    {
       "date": "2026-11-06",
       "title": "Thin trim stops crawling in the distance",
       "text": "Cornices, parapets, railings, signs and other thin façade details no longer shimmer and crawl as you ride: anything thinner than about two screen pixels now fades out smoothly instead of flickering between drawn and not drawn, and trim no longer fights its own wall. Measured on the Weesperstraat slab from your screenshot and at the Hoftuin, Westerkerk and Nassaukade, the moving-pixel count drops 13 to 21 % on whole frames at no visible frame cost. The slab's own window grid still shimmers at a grazing angle; that is the façade texture, not the trim, and the next round owns it. ?thinFade=0 shows the old frame; ?smaa=1 tries a full-screen anti-aliasing pass that is off because it costs 2 to 4 ms. Strips: your shot, before, after, and a 4x crop of the slab.",

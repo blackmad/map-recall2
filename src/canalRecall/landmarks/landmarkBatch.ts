@@ -13,6 +13,8 @@
 //
 // The JS adapter (signature-landmarks-source.js) only calls add / remove / setMatrix / setVisible / setDepthBias.
 
+import {concatPandRanges} from '../streetChunks/mergeRanges.ts';
+
 export interface BatchStats {
   batches: number;
   instances: number;
@@ -386,6 +388,9 @@ export function mergeLevelByMaterial(THREE: any, root: any): { before: number; a
       geometry.setAttribute(name, name === 'position' || name === 'normal' ? new THREE.BufferAttribute(out[name], 3) : new THREE.BufferAttribute(out[name], a.itemSize, a.normalized));
     }
     geometry.setIndex(new THREE.BufferAttribute(index, 1));
+    // A street chunk's lod2 (lane R4-C #245): the parts' pand ranges, re-based onto the merged triangle order.
+    const ranges = concatPandRanges(meshes.map((m, k) => ({ ranges: m.geometry.userData?.pandRanges, triangles: used[k].index.length / 3 })));
+    if (ranges) geometry.userData.pandRanges = ranges;
     const merged = new THREE.Mesh(geometry, material);
     merged.name = `merged ${meshes.length}`;
     merged.castShadow = meshes.some(m => m.castShadow); merged.receiveShadow = meshes.some(m => m.receiveShadow);
@@ -501,6 +506,10 @@ export function mergeSiblingsByMaterial(root: any, THREE: any): { before: number
       io += idx ? idx.count : n; vo += n;
     }
     geometry.setIndex(new THREE.BufferAttribute(index, 1));
+    // Street chunks (lane R4-C #245): the siblings' pand ranges, re-based onto the merged triangle order, so the per-pand
+    // ground lift and the hover pick read the merged geometry as they read the primitives. Absent on catalogue models.
+    const ranges = concatPandRanges(meshes.map(m => ({ ranges: m.geometry.userData?.pandRanges, triangles: (m.geometry.getIndex() ? m.geometry.getIndex().count : m.geometry.getAttribute('position').count) / 3 })));
+    if (ranges) geometry.userData.pandRanges = ranges;
     const keep = meshes[0];
     const freed = new Set<any>(meshes.map(m => m.geometry));
     keep.geometry = geometry;
