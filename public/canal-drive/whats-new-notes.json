@@ -3,6 +3,18 @@
   "notes": [
     {
       "date": "2026-11-07",
+      "title": "Rest containers come in two tops",
+      "text": "Most restafval columns in Amsterdam have a plain throw-in flap, not the big steel drum, and the ride now shows both: about one cluster in three gets the drum, the others the flap, the same top for a whole row. The city's register only describes the bin under the street, so the mix follows a count of 20 street panoramas. Every container's side door now has its cut corner at the back, as on the street.",
+      "images": [
+        {
+          "src": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/whats-new/2026-11-07-rest-container-tops.jpg",
+          "alt": "A flap-top rest container and a drum-top one in street panoramas, each beside its new model",
+          "caption": "Flap top (left pair) and drum top (right pair): panorama, then the model."
+        }
+      ]
+    },
+    {
+      "date": "2026-11-07",
       "title": "The city from the air is one piece",
       "text": "On desktop the streets near you no longer rebuild block by block while you pan across the city from the air. The coarse city is baked ahead of time per cell and streamed in as one piece, so a pan over one area keeps its buildings still; the few fades left happen when you jump to a new district. Phones keep the previous behaviour for now. Add ?bakedCoarse=0 to the ride link to compare.",
       "images": [

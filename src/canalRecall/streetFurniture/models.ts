@@ -30,8 +30,8 @@
  */
 import { STREET_FURNITURE_TONES as T, hexToRgb } from '../look/palette.js';
 
-export type FurnitureModelId = 'container' | 'container-glas' | 'container-papier' | 'lamp-lantern' | 'lamp-pole' | 'bin' | 'bike-rack' | 'abri' | 'ad-column';
-export const FURNITURE_MODEL_IDS: readonly FurnitureModelId[] = ['container', 'container-glas', 'container-papier', 'lamp-lantern', 'lamp-pole', 'bin', 'bike-rack', 'abri', 'ad-column'];
+export type FurnitureModelId = 'container' | 'container-rest' | 'container-glas' | 'container-papier' | 'lamp-lantern' | 'lamp-pole' | 'bin' | 'bike-rack' | 'abri' | 'ad-column';
+export const FURNITURE_MODEL_IDS: readonly FurnitureModelId[] = ['container', 'container-rest', 'container-glas', 'container-papier', 'lamp-lantern', 'lamp-pole', 'bin', 'bike-rack', 'abri', 'ad-column'];
 /** Per-model triangle cap (the brief's budget). */
 export const FURNITURE_TRI_CAP = 160;
 /** Faces in this colour take the instance colour. */
@@ -114,21 +114,26 @@ class Builder {
  * long hexagon: vertical front, a steep slope, short flat top with the lift post, a small back chamfer. Between the
  * strips the slope is recessed: rest has the convex stainless drum over a light lip and a lid above it, glass a round
  * hole in the slope, paper a dark slot over a light flap. The fraction band (SLOT, the instance colour) runs the recess
- * width at the top of the slope. Below: the darker pictogram panel (bag, sheet, bottle), side doors, the XXX on the
+ * width at the top of the slope. Rest comes in two tops the register cannot tell apart (2026-11-07, 30 random rest
+ * panoramas: 6 drum, 14 flat-front, the rest unreadable; every type, 1338 / 1380 / 1340 >2022 / Sidcon press alike):
+ * the drum (`container`) and the plain throw-in flap with a pull bar (`container-rest`; 85362, 15070, 107568, 217065).
+ * Below: the darker pictogram panel (bag, sheet, bottle), side doors, the XXX on the
  * left strip. Grey galvanised floor plate with a darker edge.
  */
-export type ContainerInsert = 'drum' | 'hole' | 'slot';
-/** The insert under the fraction band: rest's drum, glass's round hole, paper's wide slot over a flap (193394, 57671). */
-export const CONTAINER_INSERT: Readonly<Record<'container' | 'container-glas' | 'container-papier', ContainerInsert>> = { container: 'drum', 'container-glas': 'hole', 'container-papier': 'slot' };
+export type ContainerInsert = 'drum' | 'flap' | 'hole' | 'slot';
+export type ContainerModelId = 'container' | 'container-rest' | 'container-glas' | 'container-papier';
+/** The insert under the fraction band: rest's drum or flap, glass's round hole, paper's wide slot over a flap (193394, 57671). */
+export const CONTAINER_INSERT: Readonly<Record<ContainerModelId, ContainerInsert>> = { container: 'drum', 'container-rest': 'flap', 'container-glas': 'hole', 'container-papier': 'slot' };
 
 /** Pictogram outlines on the front panel, unit box (x -1..1, z 0..1), convex pieces fanned from their first point. */
 const PICTOGRAM: Readonly<Record<ContainerInsert, readonly (readonly (readonly [number, number])[])[]>> = {
   drum: [[[-0.85, 0], [0.85, 0], [1, 0.3], [0.45, 0.72], [-0.45, 0.72], [-1, 0.3]], [[-0.3, 0.72], [0.3, 0.72], [0.55, 1], [-0.55, 1]]],
+  flap: [[[-0.85, 0], [0.85, 0], [1, 0.3], [0.45, 0.72], [-0.45, 0.72], [-1, 0.3]], [[-0.3, 0.72], [0.3, 0.72], [0.55, 1], [-0.55, 1]]],
   hole: [[[-0.45, 0], [0.45, 0], [0.45, 0.55], [0.15, 0.72], [-0.15, 0.72], [-0.45, 0.55]], [[-0.15, 0.72], [0.15, 0.72], [0.15, 1], [-0.15, 1]]],
   slot: [[[-0.7, 0], [0.7, 0], [0.7, 0.72], [0.35, 1], [-0.7, 1]]],
 };
 
-export function containerModel(id: 'container' | 'container-glas' | 'container-papier' = 'container'): FurnitureMesh {
+export function containerModel(id: ContainerModelId = 'container'): FurnitureMesh {
   const D = DIMENSIONS.container, b = new Builder(), insert = CONTAINER_INSERT[id], body = T.containerBody;
   const h = D.plate / 2, pz = D.plateH;
   // Floor plate: lighter steel top, darker visible edge.
@@ -146,9 +151,10 @@ export function containerModel(id: 'container' | 'container-glas' | 'container-p
     const side: [number, number][] = [[yb, pz], [yc, pz], [yc, zs], [yt, top], [ybt, top], [yb, zbk]];
     const pts = side.map(([y, z]) => P(W, y, z));
     for (let i = 1; i < pts.length - 1; i++) sx > 0 ? b.tri(pts[0], pts[i], pts[i + 1], body) : b.tri(pts[0], pts[i + 1], pts[i], body);
-    // The access door: a darker panel with its top-front corner cut along the slope.
-    const dy0 = yb + 0.13, dy1 = yc - 0.07, dz0 = pz + 0.16, dz1 = top - 0.19, dzf = slopeZ(dy1) - 0.14;
-    const door = ([[dy0, dz0], [dy1, dz0], [dy1, dzf], [dy1 - (dz1 - dzf) * (yf - yt) / (top - zc), dz1], [dy0, dz1]] as const).map(([y, z]) => P(W + 0.003, y, z));
+    // The access door: a darker panel with its top-back corner cut parallel to the back chamfer (every side view,
+    // 2026-11-07: 202523, 191178, 120284, 188634; the front corner is square under the slope).
+    const dy0 = yb + 0.13, dy1 = yc - 0.07, dz0 = pz + 0.16, dz1 = Math.min(top - 0.19, slopeZ(dy1) - 0.06), cut = 0.2;
+    const door = ([[dy0, dz0], [dy1, dz0], [dy1, dz1], [dy0 + cut * D.backChamferRun / D.backChamferH, dz1], [dy0, dz1 - cut]] as const).map(([y, z]) => P(W + 0.003, y, z));
     for (let i = 1; i < door.length - 1; i++) sx > 0 ? b.tri(door[0], door[i], door[i + 1], T.containerDoor) : b.tri(door[0], door[i + 1], door[i], T.containerDoor);
     q(P(Wf, yf, pz), P(W, yc, pz), P(W, yc, zs), P(Wf, yf, zc), body); // corner strip
     q(P(Wf, yf, zc), P(W, yc, zs), P(W, yt, top), P(Wf, yt, top), body); // cheek on the slope
@@ -194,6 +200,12 @@ export function containerModel(id: 'container' | 'container-glas' | 'container-p
       const tc = 0.5, len = Math.hypot(yBand - ya, zBand - zm), hr = D.holeD / 2;
       const ring = Array.from({ length: 10 }, (_, i) => { const a = (i + 0.5) * 2 * Math.PI / 10; return on(hr * Math.cos(a), tc + hr * Math.sin(a) / len); });
       for (let i = 1; i < 9; i++) b.tri(ring[0], ring[i + 1], ring[i], T.containerSlot);
+    } else if (insert === 'flap') {
+      // Rest without the drum: the whole slope is the hinged throw-in flap, a dark seam along its foot and a light
+      // pull bar across its lower third.
+      const fw = xi - 0.03, bw = D.slotW / 2;
+      b.quad(on(-fw, 0.02), on(-fw, 0.06), on(fw, 0.06), on(fw, 0.02), T.containerSlot);
+      b.quad(on(-bw, 0.2), on(-bw, 0.27), on(bw, 0.27), on(bw, 0.2), T.containerLip);
     } else {
       // Paper: the wide letterbox slot high on the slope, the light flap below it.
       const sw = D.slotW / 2;
@@ -334,5 +346,5 @@ export function rideModel(id: FurnitureModelId): FurnitureMesh {
 }
 
 export const FURNITURE_MODELS: Readonly<Record<FurnitureModelId, () => FurnitureMesh>> = {
-  container: () => containerModel('container'), 'container-glas': () => containerModel('container-glas'), 'container-papier': () => containerModel('container-papier'), 'lamp-lantern': lanternModel, 'lamp-pole': poleModel, bin: binModel, 'bike-rack': hoopModel, abri: abriModel, 'ad-column': columnModel,
+  container: () => containerModel('container'), 'container-rest': () => containerModel('container-rest'), 'container-glas': () => containerModel('container-glas'), 'container-papier': () => containerModel('container-papier'), 'lamp-lantern': lanternModel, 'lamp-pole': poleModel, bin: binModel, 'bike-rack': hoopModel, abri: abriModel, 'ad-column': columnModel,
 };
