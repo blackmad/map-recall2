@@ -100,9 +100,10 @@ uniform vec2 cellTier;
 float cellRho = 0.0; float cellFarTier = 0.0; float cellFar = 0.0;
 #endif
 #ifdef CELL_TIER_ANISO
-// The anisotropy-aware footprint (lane R3-D #233, ?cellTierAniso=0 drops the define): cellAniso is the anisotropy the
+// The anisotropy-aware footprint (lane R3-D #233, off by default, ?cellTierAniso=1 adds the define): cellAniso is the anisotropy the
 // cells texture was given (look/texturePolicy.ts); <= 0 falls back to the major-axis rule in the same program (A/B).
-// cellAnisoRule = (flatten on the effective footprint 1/0, fade where the filter undersamples 1/0, fade band from, to).
+// cellAnisoRule = (flatten on the effective footprint 1/0, fade where the filter undersamples: 0 off, 1 on the |dFdx|/|dFdy|
+// axes, 2 on the footprint ellipse's axes; fade band from, to).
 uniform float cellAniso;
 uniform vec4 cellAnisoRule;
 #ifdef CELL_TIER_PROBE
@@ -132,10 +133,20 @@ void cellTierSample(vec3 p, float dist, out vec3 c, out vec2 m) {
     // probes no longer cover the footprint along the wall (minification stops at level 0 across it) and the grid
     // beats against the pixels: fade toward the mean there instead.
     float texels = float(textureSize(cells, 0).x);
-    float lx = length(dFdx(p.xy)) * texels, ly = length(dFdy(p.xy)) * texels;
+    vec2 ja = dFdx(p.xy) * texels, jb = dFdy(p.xy) * texels;
+    float lx = length(ja), ly = length(jb);
     float major = max(lx, ly), minor = min(lx, ly);
     float rhoEff = cellAniso > 0.0 && cellAnisoRule.x > 0.5 ? max(minor, major / cellAniso) : major;
-    float under = cellAniso > 0.0 ? major / (cellAniso * max(minor, 1.0)) : 0.0;
+    float under = 0.0;
+    if (cellAniso > 0.0) {
+      if (cellAnisoRule.y > 1.5) {
+        // The footprint ellipse's own axes (the singular values of the uv Jacobian): on a wall receding diagonally
+        // across the screen both derivatives are long and min(|dFdx|, |dFdy|) hides how thin the footprint is.
+        float tr = dot(ja, ja) + dot(jb, jb), det = abs(ja.x * jb.y - ja.y * jb.x);
+        float s1 = sqrt(0.5 * (tr + sqrt(max(tr * tr - 4.0 * det * det, 0.0))));
+        under = s1 / (cellAniso * max(det / max(s1, 1e-6), 1.0));
+      } else under = major / (cellAniso * max(minor, 1.0));
+    }
     float farFlat = smoothstep(cellTier.x, cellTier.y, rhoEff);
     float farUnder = cellAniso > 0.0 && cellAnisoRule.y > 0.5 ? smoothstep(cellAnisoRule.z, cellAnisoRule.w, under) : 0.0;
     far = max(farFlat, farUnder);
@@ -173,7 +184,7 @@ void cellTierSample(vec3 p, float dist, out vec3 c, out vec2 m) {
  *             minification stops at level 0, hence the 1);
  *   far       the larger of the two, mixed toward the cell's mean colour as before (the analytic windows read it).
  * `aniso` is the anisotropy the cells texture was given (16 desktop, 4 coarse or low GPUs), not a constant.
- * `?cellTierAniso=0` drops the define: the major-axis rule, byte for byte.
+ * Off by default (FACADE_TIER_ANISO_DEFAULT, measured); `?cellTierAniso=1` adds the define.
  */
 export const FACADE_TIER_UNDER_BAND: readonly [number, number] = [1, 2];
 
@@ -182,14 +193,25 @@ export function facadeTierAnisoUniform(anisotropy: number, band: readonly [numbe
   return { cellAniso: Number.isFinite(anisotropy) && anisotropy >= 1 ? anisotropy : 1, cellAnisoRule: [1, 1, band[0], band[1]] };
 }
 
-/** `?cellTierAniso=0` (or `window.__canalRecallCellTierAniso = false`): the major-axis tier. On by default. */
+/**
+ * Measured off (lane R3-D #233 hand-back). At the user's S3 pose the rule raised aliasPx 46,984 -> 55,502 (painted) and
+ * 41,116 -> 58,970 (analytic windows), DPR 2: the flatten on rhoEff brings back the grid on the 37 % of the street wall
+ * the major-axis tier had flattened, and that grid aliases; the under fade never fires there, because the wall's footprint
+ * is under 4:1 anisotropic (rho 16-32 texels/px on both axes), i.e. plain minification, not anisotropic undersampling.
+ * `?cellTierAniso=1` turns it on for A/B; off, the program is the major-axis tier byte for byte (no define, no uniform).
+ */
+export const FACADE_TIER_ANISO_DEFAULT = false;
+
+/** `?cellTierAniso=1` / `=0` (or `window.__canalRecallCellTierAniso`); unasked, FACADE_TIER_ANISO_DEFAULT. */
 export function facadeTierAnisoEnabled(): boolean {
   const g = globalThis as Record<string, unknown>;
   let asked = g.__canalRecallCellTierAniso;
   if (asked == null) {
     try { asked = typeof URLSearchParams === 'function' ? new URLSearchParams((g.location as { search?: string } | undefined)?.search ?? '').get('cellTierAniso') : null; } catch { asked = null; }
   }
-  return !(asked === false || asked === '0' || asked === 'false' || asked === 'off');
+  if (asked === false || asked === '0' || asked === 'false' || asked === 'off') return false;
+  if (asked === true || asked === '1' || asked === 'true' || asked === 'on') return true;
+  return FACADE_TIER_ANISO_DEFAULT;
 }
 
 const smoothstep = (a: number, b: number, x: number) => { const t = Math.max(0, Math.min(1, (x - a) / (b - a))); return t * t * (3 - 2 * t); };
@@ -204,6 +226,13 @@ export function facadeTierWeights(major: number, minor: number, tier: readonly [
   const rhoEff = Math.max(lo, hi / aniso), under = hi / (aniso * Math.max(lo, 1));
   const flat = tier[0] >= 0 ? smoothstep(tier[0], tier[1], rhoEff) : 0, fade = tier[0] >= 0 ? smoothstep(band[0], band[1], under) : 0;
   return { rhoEff, under, flat, fade, far: Math.max(flat, fade) };
+}
+
+/** The footprint ellipse's axes (singular values of the Jacobian [dx dy], texels per pixel), the shader's `cellAnisoRule.y = 2`. */
+export function footprintAxes(dx: readonly [number, number], dy: readonly [number, number]): { major: number; minor: number } {
+  const tr = dx[0] ** 2 + dx[1] ** 2 + dy[0] ** 2 + dy[1] ** 2, det = Math.abs(dx[0] * dy[1] - dx[1] * dy[0]);
+  const major = Math.sqrt(0.5 * (tr + Math.sqrt(Math.max(tr * tr - 4 * det * det, 0))));
+  return { major, minor: det / Math.max(major, 1e-6) };
 }
 
 /** The roof blend on the CPU, for tests and the gallery's tier readout: weights of the fine, mid and far samples. */

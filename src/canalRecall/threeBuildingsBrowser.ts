@@ -1926,7 +1926,7 @@ export class ThreeBuildings {
   }
   /**
    * The anisotropy-aware facade tier (roofTier.ts, lane R3-D #233): the anisotropy the cells texture got from the policy
-   * (16 desktop, 4 coarse or low GPUs), or null with `?cellTierAniso=0` (no define, no uniform: the major-axis rule).
+   * (16 desktop, 4 coarse or low GPUs) with `?cellTierAniso=1`; null by default (no define, no uniform: the major-axis rule).
    */
   private anisoFor(): number | null { return facadeTierAnisoEnabled() ? this.texturePolicy().anisotropy : null; }
 

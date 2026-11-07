@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
 import { ROOF_CELL_SD_MAX, paintRoofCell } from './roofCells.ts';
-import { FACADE_TIER_FROM_TEXELS, FACADE_TIER_GLSL, FACADE_TIER_OFF, FACADE_TIER_TO_TEXELS, FACADE_TIER_UNDER_BAND, facadeTierAnisoEnabled, facadeTierAnisoUniform, facadeTierUniform, facadeTierWeights, ROOF_LAYERS_OFF, ROOF_TIER_FAR_M, ROOF_TIER_GLSL, ROOF_TIER_MID_M, roofTierUniform, roofTierWeights } from './roofTier.ts';
+import { FACADE_TIER_FROM_TEXELS, FACADE_TIER_GLSL, FACADE_TIER_OFF, FACADE_TIER_TO_TEXELS, FACADE_TIER_UNDER_BAND, facadeTierAnisoEnabled, facadeTierAnisoUniform, facadeTierUniform, facadeTierWeights, footprintAxes, ROOF_LAYERS_OFF, ROOF_TIER_FAR_M, ROOF_TIER_GLSL, ROOF_TIER_MID_M, roofTierUniform, roofTierWeights } from './roofTier.ts';
 
 const stats = (data: Uint8ClampedArray) => {
   let n = 0, s = 0, s2 = 0;
@@ -95,19 +95,31 @@ test('anisotropy-aware tier: the shader carries both rules; without CELL_TIER_AN
   assert.ok(!/cellAniso|CELL_TIER_ANISO|rhoEff/.test(off), 'nothing of the new rule is left with the define off');
   assert.match(off, /  if \(cellTier\.x >= 0\.0\) \{\n    float rho = max\(length\(dFdx\(p\.xy\)\), length\(dFdy\(p\.xy\)\)\) \* float\(textureSize\(cells, 0\)\.x\);\n    far = smoothstep\(cellTier\.x, cellTier\.y, rho\);\n  \}\n/);
   assert.match(FACADE_TIER_GLSL, /float rhoEff = cellAniso > 0\.0 && cellAnisoRule\.x > 0\.5 \? max\(minor, major \/ cellAniso\) : major;/);
-  assert.match(FACADE_TIER_GLSL, /float under = cellAniso > 0\.0 \? major \/ \(cellAniso \* max\(minor, 1\.0\)\) : 0\.0;/);
+  assert.match(FACADE_TIER_GLSL, /else under = major \/ \(cellAniso \* max\(minor, 1\.0\)\);/);
+  assert.match(FACADE_TIER_GLSL, /under = s1 \/ \(cellAniso \* max\(det \/ max\(s1, 1e-6\), 1\.0\)\);/);
   assert.match(FACADE_TIER_GLSL, /far = max\(farFlat, farUnder\);/);
   assert.deepEqual(facadeTierAnisoUniform(16), { cellAniso: 16, cellAnisoRule: [1, 1, FACADE_TIER_UNDER_BAND[0], FACADE_TIER_UNDER_BAND[1]] });
   assert.equal(facadeTierAnisoUniform(0).cellAniso, 1);
 });
 
-test('anisotropy-aware tier: on by default, ?cellTierAniso=0 off', () => {
+test('anisotropy-aware tier: off by default (measured, #233), ?cellTierAniso=1 on, =0 off', () => {
   const g = globalThis as Record<string, unknown>, had = g.location;
   try {
-    assert.equal(facadeTierAnisoEnabled(), true);
+    assert.equal(facadeTierAnisoEnabled(), false);
     g.location = { search: '?cellTierAniso=0' };
     assert.equal(facadeTierAnisoEnabled(), false);
     g.location = { search: '?cellTierAniso=1' };
     assert.equal(facadeTierAnisoEnabled(), true);
   } finally { if (had === undefined) delete g.location; else g.location = had; }
+});
+
+test('footprint ellipse axes: a wall receding diagonally is thin although both derivatives are long', () => {
+  // Axis-aligned: the axes are the derivative lengths.
+  const a = footprintAxes([24, 0], [0, 0.5]);
+  assert.ok(Math.abs(a.major - 24) < 1e-9 && Math.abs(a.minor - 0.5) < 1e-9);
+  // The same footprint turned 45° on screen: |dFdx| = |dFdy| ~ 17, so min(|dFdx|, |dFdy|) reads it as nearly isotropic.
+  const c = Math.SQRT1_2, d = footprintAxes([24 * c, 0.5 * c], [-24 * c, 0.5 * c]);
+  assert.ok(Math.abs(d.major - 24) < 1e-6 && Math.abs(d.minor - 0.5) < 1e-6, `${d.major} ${d.minor}`);
+  // A degenerate footprint has no minor axis.
+  assert.equal(footprintAxes([3, 4], [6, 8]).minor, 0);
 });
