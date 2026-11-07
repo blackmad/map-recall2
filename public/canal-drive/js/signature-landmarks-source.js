@@ -32,7 +32,7 @@ import { canSkipWalk, outsideSlack } from '../../../src/canalRecall/engine/viewS
 import { applyMeshHighlight, highlightRecipe, LANDMARK_WORLD_UP } from '../../../src/canalRecall/look/highlight.ts';
 // Landmarks from the air (lane R4-B #244): lod2 stand-ins and one batched draw for them.
 import { chooseLandmarkLevel, initialLandmarkLevel, lod2IsCurrent, lod2Url } from '../../../src/canalRecall/landmarks/landmarkLod.ts';
-import { LandmarkBatch, batchingMaterial, mergeLevelByLook, mergeLevelByMaterial } from '../../../src/canalRecall/landmarks/landmarkBatch.ts';
+import { LandmarkBatch, batchingMaterial, mergeLevelByLook, mergeLevelByMaterial, mergeSiblingsByMaterial } from '../../../src/canalRecall/landmarks/landmarkBatch.ts';
 import { isAerialView } from '../../../src/canalRecall/rendererShared/aerialView.ts';
 import { DEPTH_FADE_OPT_OUT } from '../../../src/canalRecall/look/depthFade.ts';
 const { THREE, GLTFLoader, MeshoptDecoder } = window.CanalRecallThree;
@@ -808,6 +808,7 @@ export class SignatureLandmarks {
         // that streams in mid-ride no longer links its shaders inside a draw.
         this._fadeOptOut(spec, gltf.scene);
         if (level === 'lod2' && gltf.scene) this._prepareLod2(gltf.scene);
+        else if (gltf.scene) this._mergeShared(spec, gltf.scene);
         this._precompile(gltf.scene).then(() => {
           if (this._removed || generation !== this._generation) { this._disposeModel(gltf.scene, spec, url); return; }
           if (!this.models.includes(spec)) { this._disposeModel(gltf.scene, spec, url); finish(); return; }
@@ -1285,6 +1286,17 @@ export class SignatureLandmarks {
     if (scene.userData.recipeLook) mergeLevelByMaterial(THREE, scene);
   }
 
+  /**
+   * Full and lod1 under the city look: sibling meshes sharing a city material merge into one draw
+   * (landmarkBatch.ts mergeSiblingsByMaterial: same vertices, matrix and program, so the same pixels).
+   * Catalogue landmark GLBs in the shared frame only; `?landmarkMergeShared=0` restores a draw per primitive.
+   */
+  _mergeShared(spec, scene) {
+    if (this._mergeSharedFlag === undefined) this._mergeSharedFlag = !!this.sharedFrame && flagOn('landmarkMergeShared');
+    if (!this._mergeSharedFlag || !scene.userData.recipeLook || spec.sharedModel || spec.sceneFactory || spec.chunkPands) return;
+    mergeSiblingsByMaterial(scene, THREE);
+  }
+
   /** The drawn lod2's meshes (one per material; empty at other levels). */
   _lod2Meshes(entry) {
     if (entry.level !== 'lod2') return [];
@@ -1388,6 +1400,7 @@ export class SignatureLandmarks {
       if (level === 'lod1') this._mergeLevel(scene);
       this._fadeOptOut(spec, scene);
       if (level === 'lod2') this._prepareLod2(scene);
+      else this._mergeShared(spec, scene);
       // As for a first load: its programs compile before the swap, not inside the frame that shows it.
       this._precompile(scene).then(() => {
         if (this._removed || generation !== this._generation || !this._entries.includes(entry)) { this._disposeResources(scene); done(); return; }

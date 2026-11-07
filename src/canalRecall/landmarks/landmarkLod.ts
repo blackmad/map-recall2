@@ -61,7 +61,7 @@ export interface LandmarkLodRecord {
 export type LandmarkLodEntry = Partial<LandmarkLodRecord> & { lod2?: LandmarkLodRecord };
 
 /** Bump to force every lod2 to rebuild after the lod2 build parameters change. */
-export const LOD2_BUILD_VERSION = 3;
+export const LOD2_BUILD_VERSION = 4;
 /** Target share of the source triangles; the error bound below stops the simplifier first on detailed models. */
 export const LOD2_TRIANGLE_RATIO = 0.02;
 /**
@@ -73,9 +73,10 @@ export const LOD2_MAX_ERROR_M = 1.25;
 /**
  * Triangle cap: a model the error bound leaves above this is simplified again to it, with the bound relaxed to
  * LOD2_CAP_ERROR_M (the large curved and terraced blocks: American Hotel 11.8k, Valley 13.1k at 1 m). Keeps the set
- * under the 6 MB budget. Models with an error override are exempt.
+ * under the 6 MB budget. Models with an error override are exempt. 2,000 until the silhouette guard (below) re-baked
+ * the towers it found at 0.75 m (+0.33 MB); 1,500 pays for that (5.96 MB).
  */
-export const LOD2_MAX_TRIANGLES = 2000;
+export const LOD2_MAX_TRIANGLES = 1500;
 export const LOD2_CAP_ERROR_M = 3;
 /**
  * Per-model lod2 error caps, metres, where the default eats a silhouette the user steers by: thin spires and
@@ -84,6 +85,14 @@ export const LOD2_CAP_ERROR_M = 3;
 export const LOD2_MAX_ERROR_M_BY_ID: Readonly<Record<string, number>> = {
   'centraal-station': 0.5, westerkerk: 0.5, rijksmuseum: 0.5,
 };
+/**
+ * Silhouette guard (build-landmark-lods.ts lostSurfaceShare): when more than LOD2_GUARD_SHARE of the sampled source
+ * points end up further than LOD2_GUARD_M from the lod2 (a folded tower stage, not ornament), the model is baked again
+ * at LOD2_TOWER_ERROR_M with no triangle cap.
+ */
+export const LOD2_GUARD_M = 2.5;
+export const LOD2_GUARD_SHARE = 0.04;
+export const LOD2_TOWER_ERROR_M = 0.75;
 /** Blended (glass) primitives at or above this opacity are baked opaque into lod2; fainter ones are left out. */
 export const LOD2_MIN_ALPHA = 0.5;
 

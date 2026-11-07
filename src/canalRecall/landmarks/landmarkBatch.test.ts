@@ -2,7 +2,7 @@ import assert from 'node:assert/strict';
 import { test } from 'node:test';
 import * as THREE from 'three';
 
-import { LandmarkBatch, batchingAware, batchingMaterial, grownCapacity, mergeLevelByLook, mergeLevelByMaterial, usedVertices } from './landmarkBatch';
+import { LandmarkBatch, batchingAware, batchingMaterial, grownCapacity, mergeLevelByLook, mergeLevelByMaterial, mergeSiblingsByMaterial, usedVertices } from './landmarkBatch';
 
 /** A lod2-shaped geometry: indexed, position + normal + colour, `n` triangles. */
 function lod2Geometry(n: number): THREE.BufferGeometry {
@@ -260,4 +260,37 @@ test('batchingMaterial: same hook and uniforms, its own program key', () => {
   m.onBeforeCompile(shader, null);
   assert.equal(hooked, 1);
   assert.match(shader.vertexShader, /float s = cityBatchScale;/);
+});
+
+test('mergeSiblingsByMaterial: siblings sharing a material become one draw with the same stored vertices and matrix', () => {
+  const shared = new THREE.MeshLambertMaterial(), other = new THREE.MeshLambertMaterial();
+  const node = new THREE.Group(), root = new THREE.Group();
+  root.add(node);
+  const quantised = (k: number) => {
+    const g = new THREE.BufferGeometry();
+    g.setAttribute('position', new THREE.BufferAttribute(new Int16Array([k, 0, 0, k + 100, 0, 0, k, 100, 0]), 3, true));
+    g.setAttribute('layer', new THREE.BufferAttribute(new Uint8Array([k, k, k]), 1));
+    g.setIndex([0, 1, 2]);
+    return g;
+  };
+  const meshes = [new THREE.Mesh(quantised(1), shared), new THREE.Mesh(quantised(2), shared), new THREE.Mesh(quantised(3), other)];
+  for (const m of meshes) { m.scale.setScalar(0.01); m.position.set(5, 0, 0); node.add(m); }
+  assert.deepEqual(mergeSiblingsByMaterial(root, THREE), { before: 3, after: 2 });
+  const merged = node.children[0] as THREE.Mesh, g = merged.geometry;
+  assert.equal(merged.material, shared);
+  assert.equal(merged.scale.x, 0.01, 'transform kept');
+  const p = g.getAttribute('position');
+  assert.ok(p.array instanceof Int16Array && p.normalized, 'quantised stream stays quantised');
+  assert.deepEqual(Array.from(p.array), [1, 0, 0, 101, 0, 0, 1, 100, 0, 2, 0, 0, 102, 0, 0, 2, 100, 0]);
+  assert.deepEqual(Array.from(g.getIndex()!.array), [0, 1, 2, 3, 4, 5]);
+  assert.deepEqual(Array.from(g.getAttribute('layer').array), [1, 1, 1, 2, 2, 2]);
+  assert.equal((node.children[1] as THREE.Mesh).material, other, 'another material keeps its own mesh');
+});
+
+test('mergeSiblingsByMaterial: different local matrices or layouts are not merged', () => {
+  const shared = new THREE.MeshLambertMaterial(), root = new THREE.Group();
+  const a = new THREE.Mesh(lod2Geometry(1), shared), b = new THREE.Mesh(lod2Geometry(1), shared), c = new THREE.Mesh(lod2Geometry(1).deleteAttribute('color'), shared);
+  b.position.x = 1;
+  root.add(a, b, c);
+  assert.deepEqual(mergeSiblingsByMaterial(root, THREE), { before: 3, after: 3 });
 });

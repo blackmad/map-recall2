@@ -26,7 +26,7 @@ import { MeshoptDecoder, MeshoptEncoder, MeshoptSimplifier } from 'meshoptimizer
 import sharp from 'sharp';
 
 import {
-  LOD1_BUILD_VERSION, LOD1_MAX_TEXTURE_SIZE, LOD1_MIN_SOURCE_TRIANGLES, LOD2_BUILD_VERSION, LOD2_CAP_ERROR_M, LOD2_MAX_ERROR_M_BY_ID, LOD2_MAX_TRIANGLES, LOD2_MIN_ALPHA,
+  LOD1_BUILD_VERSION, LOD1_MAX_TEXTURE_SIZE, LOD1_MIN_SOURCE_TRIANGLES, LOD2_BUILD_VERSION, LOD2_CAP_ERROR_M, LOD2_GUARD_M, LOD2_GUARD_SHARE, LOD2_MAX_ERROR_M, LOD2_MAX_ERROR_M_BY_ID, LOD2_MAX_TRIANGLES, LOD2_MIN_ALPHA, LOD2_TOWER_ERROR_M,
   lod1IsCurrent, lod1SimplifyOptions, lod1Url, lod2IsCurrent, lod2SimplifyOptions, lod2Url,
   type LandmarkLodEntry, type LandmarkLodRecord,
 } from '../../src/canalRecall/landmarks/landmarkLod';
@@ -267,6 +267,48 @@ export function shareVertexStreams(document: Document, mesh: ReturnType<Document
   });
 }
 
+/** Models the silhouette guard re-baked at the tower bound in this run (reported at the end). */
+export const guarded: string[] = [];
+
+/**
+ * Share of sampled source points (up to 6,000 of the source vertices) further than `limitM` from every triangle of
+ * the simplified mesh (`positions` indexed by `kept`): a lost part, not ornament. `upper`: of the points in the upper
+ * half of the model's height (glTF +Y), where towers, lanterns and spires are. Grid of `limitM` cells over the
+ * simplified triangles' boxes, so a point checks only the 27 cells around it.
+ */
+export function lostSurfaceShare(source: ArrayLike<number>, positions: ArrayLike<number>, kept: ArrayLike<number>, limitM: number): { all: number; upper: number } {
+  const cells = new Map<string, number[]>(), key = (x: number, y: number, z: number) => `${x},${y},${z}`;
+  const v = (i: number) => [positions[i * 3], positions[i * 3 + 1], positions[i * 3 + 2]];
+  for (let t = 0; t < kept.length; t += 3) {
+    const a = v(kept[t]), b = v(kept[t + 1]), c = v(kept[t + 2]);
+    const lo = [0, 1, 2].map(k => Math.floor(Math.min(a[k], b[k], c[k]) / limitM)), hi = [0, 1, 2].map(k => Math.floor(Math.max(a[k], b[k], c[k]) / limitM));
+    // A huge triangle spans many cells; cap its registration (its own neighbourhood test still catches it via the corners).
+    if ((hi[0] - lo[0] + 1) * (hi[1] - lo[1] + 1) * (hi[2] - lo[2] + 1) > 4096) { for (const q of [a, b, c]) { const k = key(...(q.map(x => Math.floor(x / limitM)) as [number, number, number])); (cells.get(k) ?? cells.set(k, []).get(k)!).push(t); } continue; }
+    for (let x = lo[0]; x <= hi[0]; x++) for (let y = lo[1]; y <= hi[1]; y++) for (let z = lo[2]; z <= hi[2]; z++) {
+      const k = key(x, y, z); (cells.get(k) ?? cells.set(k, []).get(k)!).push(t);
+    }
+  }
+  const points = source.length / 3, step = Math.max(1, Math.floor(points / 6000)), limit2 = limitM * limitM;
+  let minY = Infinity, maxY = -Infinity;
+  for (let i = 0; i < points; i++) { minY = Math.min(minY, source[i * 3 + 1]); maxY = Math.max(maxY, source[i * 3 + 1]); }
+  const midY = (minY + maxY) / 2;
+  let sampled = 0, lost = 0, upperSampled = 0, upperLost = 0;
+  for (let i = 0; i < points; i += step) {
+    sampled++;
+    const upper = source[i * 3 + 1] > midY;
+    if (upper) upperSampled++;
+    const p = [source[i * 3], source[i * 3 + 1], source[i * 3 + 2]], g = p.map(x => Math.floor(x / limitM));
+    let near = false;
+    for (let dx = -1; dx <= 1 && !near; dx++) for (let dy = -1; dy <= 1 && !near; dy++) for (let dz = -1; dz <= 1 && !near; dz++) {
+      for (const t of cells.get(key(g[0] + dx, g[1] + dy, g[2] + dz)) ?? []) {
+        if (pointTriangleDistanceSq(p, v(kept[t]), v(kept[t + 1]), v(kept[t + 2])) <= limit2) { near = true; break; }
+      }
+    }
+    if (!near) { lost++; if (upper) upperLost++; }
+  }
+  return { all: sampled ? lost / sampled : 0, upper: upperSampled ? upperLost / upperSampled : 0 };
+}
+
 async function bakeLod2(io: Io, id: string, source: string, output: string, ratio?: number, errorM?: number, capTriangles = LOD2_MAX_TRIANGLES): Promise<{ sourceTriangles: number; triangles: number; bytes: number } | 'recipe' | null> {
   const document = await io.read(source);
   if (hasRecipeSlots(document)) return 'recipe';
@@ -287,15 +329,30 @@ async function bakeLod2(io: Io, id: string, source: string, output: string, rati
   let min = [Infinity, Infinity, Infinity], max = [-Infinity, -Infinity, -Infinity];
   for (let i = 0; i < weldedPositions.length; i += 3) for (let k = 0; k < 3; k++) { min[k] = Math.min(min[k], weldedPositions[i + k]); max[k] = Math.max(max[k], weldedPositions[i + k]); }
   const extent = Math.max(max[0] - min[0], max[1] - min[1], max[2] - min[2]);
-  let kept = Uint32Array.from(welded.getIndices()!.getArray()!);
-  const options = lod2SimplifyOptions(id, extent, ratio, errorM);
-  [kept] = MeshoptSimplifier.simplify(kept, weldedPositions, 3, Math.floor(kept.length * options.ratio / 3) * 3, options.error);
-  if (LOD2_MAX_ERROR_M_BY_ID[id] === undefined && kept.length / 3 > capTriangles) {
-    // Over the cap (large curved and terraced blocks): to the cap under the relaxed bound, dropping small separate
-    // parts first; sloppy (topology-free) clustering only if that still cannot get there.
-    const cap = capTriangles * 3, error = Math.min(1, LOD2_CAP_ERROR_M / extent);
-    [kept] = MeshoptSimplifier.simplify(kept, weldedPositions, 3, cap, error, ['Prune']);
-    if (kept.length > cap) [kept] = MeshoptSimplifier.simplifySloppy(kept, weldedPositions, 3, null, cap, error);
+  const all = Uint32Array.from(welded.getIndices()!.getArray()!);
+  const simplifyAt = (bound: number | undefined, capped: boolean): Uint32Array => {
+    const options = lod2SimplifyOptions(id, extent, ratio, bound);
+    let [out] = MeshoptSimplifier.simplify(all, weldedPositions, 3, Math.floor(all.length * options.ratio / 3) * 3, options.error);
+    if (capped && out.length / 3 > capTriangles) {
+      // Over the cap (large curved and terraced blocks): to the cap under the relaxed bound, dropping small separate
+      // parts first; sloppy (topology-free) clustering only if that still cannot get there.
+      const cap = capTriangles * 3, error = Math.min(1, LOD2_CAP_ERROR_M / extent);
+      [out] = MeshoptSimplifier.simplify(out, weldedPositions, 3, cap, error, ['Prune']);
+      if (out.length > cap) [out] = MeshoptSimplifier.simplifySloppy(out, weldedPositions, 3, null, cap, error);
+    }
+    return out;
+  };
+  const override = errorM ?? LOD2_MAX_ERROR_M_BY_ID[id];
+  let kept = simplifyAt(errorM, override === undefined);
+  const capped = override === undefined && kept.length / 3 >= capTriangles * 0.98;
+  // The silhouette guard: meshoptimizer's bound is per collapse, and a slender tower stage can still fold away
+  // (Munttoren, Zuiderkerk at 1.25 m). Where the source surface ends up more than LOD2_GUARD_M from the lod2, the
+  // model is baked again at the tower bound with no cap.
+  // Capped blocks already trade 3 m for the budget and are left as they are.
+  const lost = capped ? null : lostSurfaceShare(faces.positions, weldedPositions, kept, LOD2_GUARD_M);
+  if (lost && lost.upper > LOD2_GUARD_SHARE && (override ?? LOD2_MAX_ERROR_M) > LOD2_TOWER_ERROR_M) {
+    kept = simplifyAt(LOD2_TOWER_ERROR_M, false);
+    guarded.push(`${id} ${(lost.upper * 100).toFixed(1)} %`);
   }
   // Unwelded faces, each given the material of the source face under it, one primitive per material: the runtime
   // dresses them as it dresses the full model (city look slots, Lambert), then merges them into one mesh.
@@ -403,6 +460,7 @@ async function buildLod2(io: Io, manifest: Manifest, force: boolean, only: strin
   }
   const total = bytes.reduce((a, b) => a + b, 0);
   console.log(`lod2${stage ? ` (staged in ${stage})` : ''}: built ${built}, up to date ${skipped}, recipe-look ${recipe}, empty ${empty}; ${(total / 1e6).toFixed(2)} MB total, per model p50 ${quantile(bytes, 0.5)} B p90 ${quantile(bytes, 0.9)} B max ${quantile(bytes, 1)} B; triangle share p50 ${(quantile(ratios, 0.5) * 100).toFixed(1)} % p90 ${(quantile(ratios, 0.9) * 100).toFixed(1)} %; ${((Date.now() - started) / 1000).toFixed(0)} s`);
+  if (guarded.length) console.log(`lod2 silhouette guard re-baked ${guarded.length} at ${LOD2_TOWER_ERROR_M} m: ${guarded.join(", ")}`);
 }
 
 /** modelLods.json from the manifest's records: lod1 fields at the top (as before), `lod2` beside them. */

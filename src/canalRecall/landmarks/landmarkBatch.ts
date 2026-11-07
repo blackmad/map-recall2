@@ -434,3 +434,80 @@ export function batchingAware(vertexShader: string): string {
 #endif
 #include <begin_vertex>`);
 }
+
+/** Exact layout key: names, item sizes, array types and normalisation of every attribute, and whether it is indexed. */
+function exactLayoutOf(geometry: any): string {
+  return `${geometry.getIndex() ? 'i' : 'n'}|` + Object.keys(geometry.attributes).sort().map(name => {
+    const a = geometry.getAttribute(name), array = a.isInterleavedBufferAttribute ? a.data.array : a.array;
+    return `${name}:${a.itemSize}:${a.normalized}:${array.constructor.name}`;
+  }).join(',');
+}
+
+/** One vertex component as stored (no normalisation applied), plain or interleaved. */
+function rawComponent(a: any, vertex: number, c: number): number {
+  return a.isInterleavedBufferAttribute ? a.data.array[vertex * a.data.stride + a.offset + c] : a.array[vertex * a.itemSize + c];
+}
+
+/**
+ * Full and lod1 levels under the city look (lane R4-B #244): a landmark GLB is one node of ~8 primitives, and the
+ * look gives them 1–3 shared city materials, so ~8 draws draw what 1–3 could. Sibling meshes (same parent, same local
+ * matrix, same material object, same exact attribute layout) are merged into one: the stored vertex values copied as
+ * they are (quantised streams stay quantised), indices offset, the transform and material kept. The GPU sees the same
+ * vertices through the same matrices and program, so the pixels are the same; only the draw count changes.
+ * Morph targets, skins, instancing, groups and multi-material meshes are left alone. Returns meshes before and after.
+ */
+export function mergeSiblingsByMaterial(root: any, THREE: any): { before: number; after: number } {
+  const groups = new Map<string, any[]>();
+  let before = 0;
+  const parents = new Map<any, number>();
+  root.traverse((child: any) => {
+    if (!child.isMesh) return;
+    before++;
+    if (child.isInstancedMesh || child.isSkinnedMesh || child.isBatchedMesh || Array.isArray(child.material) || !child.material) return;
+    const g = child.geometry;
+    if (!g?.attributes?.position || g.morphAttributes && Object.keys(g.morphAttributes).length || g.groups?.length || child.children.length) return;
+    if (!parents.has(child.parent)) parents.set(child.parent, parents.size);
+    child.updateMatrix();
+    const key = `${parents.get(child.parent)}|${child.material.uuid}|${child.matrix.elements.join(',')}|${child.castShadow}|${child.receiveShadow}|${child.renderOrder}|${child.visible}|${exactLayoutOf(g)}`;
+    let list = groups.get(key);
+    if (!list) groups.set(key, list = []);
+    list.push(child);
+  });
+  let after = before;
+  for (const meshes of groups.values()) {
+    if (meshes.length < 2) continue;
+    const first = meshes[0].geometry, names = Object.keys(first.attributes), indexed = !!first.getIndex();
+    let vertices = 0, indices = 0;
+    for (const m of meshes) { const n = m.geometry.getAttribute('position').count; vertices += n; indices += indexed ? m.geometry.getIndex().count : n; }
+    const geometry = new THREE.BufferGeometry();
+    for (const name of names) {
+      const a = first.getAttribute(name), Array_ = (a.isInterleavedBufferAttribute ? a.data.array : a.array).constructor, size = a.itemSize;
+      const out = new Array_(vertices * size);
+      let vo = 0;
+      for (const m of meshes) {
+        const src = m.geometry.getAttribute(name), n = src.count;
+        if (!src.isInterleavedBufferAttribute) out.set(src.array.subarray(0, n * size), vo * size);
+        else for (let v = 0; v < n; v++) for (let c = 0; c < size; c++) out[(vo + v) * size + c] = rawComponent(src, v, c);
+        vo += n;
+      }
+      geometry.setAttribute(name, new THREE.BufferAttribute(out, size, a.normalized));
+    }
+    const index = vertices > 65535 ? new Uint32Array(indices) : new Uint16Array(indices);
+    let vo = 0, io = 0;
+    for (const m of meshes) {
+      const g = m.geometry, n = g.getAttribute('position').count, idx = g.getIndex();
+      if (idx) for (let i = 0; i < idx.count; i++) index[io + i] = vo + idx.getX(i);
+      else for (let i = 0; i < n; i++) index[io + i] = vo + i;
+      io += idx ? idx.count : n; vo += n;
+    }
+    geometry.setIndex(new THREE.BufferAttribute(index, 1));
+    const keep = meshes[0];
+    const freed = new Set<any>(meshes.map(m => m.geometry));
+    keep.geometry = geometry;
+    keep.name = `${keep.name} +${meshes.length - 1}`;
+    for (const m of meshes.slice(1)) m.parent?.remove(m);
+    for (const g of freed) g.dispose();
+    after -= meshes.length - 1;
+  }
+  return { before, after };
+}
