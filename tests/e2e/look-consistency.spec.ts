@@ -30,6 +30,11 @@ export const LOOK_VIEWS: View[] = [
   // Dam: Royal Palace and the Bijenkorf front kits (lookHex per look).
   { name: 'dam', target: [4.89260, 52.37300], bearing: 250, distM: 170, altM: 60, targetAltM: 12 },
 ];
+// LOOK_SHOTS_VIEWS=chunks (lane R4-C #245): street views of two installed street chunks, both sides of each street, for
+// the street-level identity of the chunk merge (Transvaalstraat 42-48, Pretoriusstraat 71-95).
+const CHUNK_VIEWS: View[] = ([['transvaal-42-48', [4.925689639209945, 52.3551321520268], 318], ['pretorius-71-95', [4.921325184261987, 52.35453393870728], 153]] as const)
+  .flatMap(([name, target, b]) => [0, 180].map(flip => ({ name: `chunk-${name}-${(b + flip) % 360}`, target: [...target] as [number, number], bearing: (b + flip) % 360, distM: 45, altM: 14, targetAltM: 7 })));
+if (process.env.LOOK_SHOTS_VIEWS === 'chunks') LOOK_VIEWS.splice(0, LOOK_VIEWS.length, ...CHUNK_VIEWS);
 
 const ahead = ([lng, lat]: number[], bearingDeg: number, metres: number): [number, number] => {
   const r = bearingDeg * Math.PI / 180;

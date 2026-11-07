@@ -111,3 +111,16 @@ test('street chunk lod2 (lane R4-C): current only for this GLB hash and build ve
   assert.deepEqual(chunkSpecFor({ ...row, lod2: record }).chunkLod2, record);
   assert.equal(chunkSpecFor({ ...row, lod2: { ...record, sourceHash: 'stale' } }).chunkLod2, undefined);
 });
+
+test('projectedRadiusPx (lane R4-C): perspective size halves with distance, null behind the camera', async () => {
+  const THREE = await import('three');
+  const { projectedRadiusPx } = await import('./landmarkLod');
+  const camera = new THREE.PerspectiveCamera(60, 1.5, 1, 1e5);
+  camera.position.set(0, 0, 0); camera.lookAt(0, 0, -1); camera.updateMatrixWorld(true);
+  const clip = new THREE.Matrix4().multiplyMatrices(camera.projectionMatrix, camera.matrixWorldInverse).elements;
+  const near = projectedRadiusPx(clip, [0, 0, -500], 20, 1500, 1000)!, far = projectedRadiusPx(clip, [0, 0, -1000], 20, 1500, 1000)!;
+  // 60° vertical field: 1000 px over 2*tan(30°)*500 m = 577 m, so 20 m at 500 m is ~34.6 px.
+  assert.ok(Math.abs(near - 20 * 1000 / (2 * Math.tan(Math.PI / 6) * 500)) < 0.5, `${near}`);
+  assert.ok(Math.abs(near / far - 2) < 0.02);
+  assert.equal(projectedRadiusPx(clip, [0, 0, 500], 20, 1500, 1000), null);
+});

@@ -31,7 +31,7 @@ import { onViewChange, worldCameraOf } from '../../../src/canalRecall/engine/wor
 import { canSkipWalk, outsideSlack } from '../../../src/canalRecall/engine/viewSlack.ts';
 import { applyMeshHighlight, highlightRecipe, LANDMARK_WORLD_UP } from '../../../src/canalRecall/look/highlight.ts';
 // Landmarks from the air (lane R4-B #244): lod2 stand-ins and one batched draw for them.
-import { chooseLandmarkLevel, initialLandmarkLevel, lod2IsCurrent, lod2Url } from '../../../src/canalRecall/landmarks/landmarkLod.ts';
+import { CHUNK_LOD2_DOWNGRADE_PX, chooseLandmarkLevel, initialLandmarkLevel, lod2IsCurrent, lod2Url, projectedRadiusPx } from '../../../src/canalRecall/landmarks/landmarkLod.ts';
 import { LandmarkBatch, batchingMaterial, mergeLevelByLook, mergeLevelByMaterial, mergeSiblingsByMaterial } from '../../../src/canalRecall/landmarks/landmarkBatch.ts';
 import { isAerialView } from '../../../src/canalRecall/rendererShared/aerialView.ts';
 import { lowestPandBase } from '../../../src/canalRecall/streetChunks/mergeRanges.ts';
@@ -302,6 +302,8 @@ export class SignatureLandmarks {
           entry.pickProjection = show ? ctx.clipFromWorld : null;
           if (show) any = true;
         }
+        // The camera as last drawn: the street chunks' lod2 choice measures their size on screen through it.
+        this._clipFromWorld = ctx.clipFromWorld;
         // The frame's world is already east/north/up metres.
         if (any && this._recipeLook) this._recipeLook.enuFromWorld.value.identity();
         return any;
@@ -1255,12 +1257,31 @@ export class SignatureLandmarks {
   }
 
   _levelInputs(spec, radiusMetres, anchor, view, highlighted = false) {
+    // A street chunk (lane R4-C #245): lod2 only from the air and only while small on screen through the camera, at
+    // the chunk itself (landmarkLod.ts CHUNK_LOD2_DOWNGRADE_PX); no view-centre distance rule. Null: not measurable.
+    if (spec.chunkPands) {
+      if (!view.aerialCentre) return { radiusPixels: Infinity, hasLod1: false, hasLod2: false, aerialDistanceM: null, highlighted };
+      // Behind the camera (or before the first frame) counts as small: nothing of it is on screen.
+      const px = this._chunkRadiusPx(anchor, radiusMetres) ?? 0;
+      if (this._chunkLod2Px === undefined) this._chunkLod2Px = numberFlag('chunkLod2Px') ?? CHUNK_LOD2_DOWNGRADE_PX;
+      return { radiusPixels: px, hasLod1: false, hasLod2: this._hasLod2(spec), aerialDistanceM: null, highlighted, lod2DowngradePx: this._chunkLod2Px };
+    }
     return {
       radiusPixels: this._radiusPixels(radiusMetres, anchor),
       hasLod1: this._hasLod(spec), hasLod2: this._hasLod2(spec),
       aerialDistanceM: view.aerialCentre ? anchorDistanceM(anchor, view.aerialCentre) : null,
       highlighted, lod2DowngradePx: this._lod2Px, lod2AerialM: this._lod2M,
     };
+  }
+
+  /** A footprint radius at `anchor` in CSS pixels through the last drawn camera (null before a frame or behind it). */
+  _chunkRadiusPx(anchor, radiusMetres) {
+    const clip = this._clipFromWorld, canvas = this.map?.getCanvas?.();
+    if (!clip || !canvas || !this._sharedRoot) return null;
+    const m = this.maplibregl.MercatorCoordinate.fromLngLat(anchor, 0);
+    // Mercator (the landmark root) to the frame's world (east/north/up metres): the root's matrix as last drawn.
+    const p = new THREE.Vector3(m.x, m.y, m.z).applyMatrix4(this._sharedRoot.matrixWorld);
+    return projectedRadiusPx(clip.elements, [p.x, p.y, p.z], radiusMetres, canvas.clientWidth, canvas.clientHeight);
   }
 
   /** Footprint radius of a model in screen pixels at the current zoom. */
