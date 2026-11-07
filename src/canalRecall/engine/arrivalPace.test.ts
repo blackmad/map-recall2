@@ -12,10 +12,10 @@ const grid = (r: number, i0 = 0, j0 = 0) => { const out = new Set<string>(); for
 test('flag: off unless ?arrivalPace=1|on|ring|baked|features (or the global)', () => {
   assert.equal(arrivalPaceOption('', {}), null);
   assert.equal(arrivalPaceOption('?arrivalPace=0', {}), null);
-  assert.deepEqual(arrivalPaceOption('?arrivalPace=1', {}), { ring: true, baked: true, features: true });
-  assert.deepEqual(arrivalPaceOption('?arrivalPace=ring', {}), { ring: true, baked: false, features: false });
-  assert.deepEqual(arrivalPaceOption('?arrivalPace=baked', {}), { ring: false, baked: true, features: false });
-  assert.deepEqual(arrivalPaceOption('', { __canalRecallArrivalPace: 'on' }), { ring: true, baked: true, features: true });
+  assert.deepEqual(arrivalPaceOption('?arrivalPace=1', {}), { ring: true, baked: true, features: true, trees: true });
+  assert.deepEqual(arrivalPaceOption('?arrivalPace=ring', {}), { ring: true, baked: false, features: false, trees: false });
+  assert.deepEqual(arrivalPaceOption('?arrivalPace=baked', {}), { ring: false, baked: true, features: false, trees: false });
+  assert.deepEqual(arrivalPaceOption('', { __canalRecallArrivalPace: 'on' }), { ring: true, baked: true, features: true, trees: true });
 });
 
 test('paceRingCells: the first ring is whole; a jump admits the allowance nearest the centre; leaving cells go at once', () => {
@@ -66,9 +66,9 @@ test('FrameAdmit: one install per frame; calls within BAKED_PACE_FRAME_MS share 
 });
 
 test('?arrivalPace comma lists; features alone', () => {
-  assert.deepEqual(arrivalPaceOption('?arrivalPace=features', {}), { ring: false, baked: false, features: true });
-  assert.deepEqual(arrivalPaceOption('?arrivalPace=ring,features', {}), { ring: true, baked: false, features: true });
-  assert.deepEqual(arrivalPaceOption('?arrivalPace=1', {}), { ring: true, baked: true, features: true });
+  assert.deepEqual(arrivalPaceOption('?arrivalPace=features', {}), { ring: false, baked: false, features: true, trees: false });
+  assert.deepEqual(arrivalPaceOption('?arrivalPace=ring,features', {}), { ring: true, baked: false, features: true, trees: false });
+  assert.deepEqual(arrivalPaceOption('?arrivalPace=1', {}), { ring: true, baked: true, features: true, trees: true });
   assert.equal(arrivalPaceOption('?arrivalPace=nope', {}), null);
 });
 
@@ -93,4 +93,15 @@ test('PacedDelivery: from the air a burst of tile arrivals is one delivery per g
   aerial = true; d.push(200); d.push(201); assert.ok(d.waiting);
   d.flush(); assert.equal(got.at(-1), 201); assert.equal(d.waiting, false);
   assert.equal(timers.length, 0);
+});
+
+test('treeRebuildGap: undefined when off (the coalescer keeps its constant); with trees, 1 s from the air, 120 ms at street level', async () => {
+  const { treeRebuildGap, AERIAL_TREE_REBUILD_GAP_MS } = await import('./arrivalPace.js');
+  const cam = (zoom: number, pitch: number) => ({ zoom: () => zoom, pitch: () => pitch, center: () => ({ lat: 52.37 }) });
+  assert.equal(treeRebuildGap(cam(17.8, 60), '', {}), undefined);
+  assert.equal(treeRebuildGap(cam(17.8, 60), '?arrivalPace=ring', {}), undefined);
+  const air = treeRebuildGap(cam(14.5, 70), '?arrivalPace=trees', {})!;
+  assert.equal(air(), AERIAL_TREE_REBUILD_GAP_MS);
+  assert.equal(treeRebuildGap(cam(19, 60), '?arrivalPace=1', {})!(), 120);
+  assert.deepEqual(arrivalPaceOption('?arrivalPace=trees', {}), { ring: false, baked: false, features: false, trees: true });
 });

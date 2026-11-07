@@ -40,7 +40,8 @@ export class RebuildCoalescer {
   /**
    * `run` does the rebuild; it is called only while dirty. `sync`: every request runs at once (the flag's off state).
    */
-  constructor(private readonly run: () => void, private readonly deps: RebuildCoalescerDeps = browserDeps(), readonly sync = false, readonly minGapMs = REBUILD_MIN_GAP_MS) {}
+  /** `minGapMs` may be a function read at each schedule (`?arrivalPace=trees`: a longer gap from the air, engine/arrivalPace.ts). */
+  constructor(private readonly run: () => void, private readonly deps: RebuildCoalescerDeps = browserDeps(), readonly sync = false, readonly minGapMs: number | (() => number) = REBUILD_MIN_GAP_MS) {}
 
   /** Is a rebuild waiting? */
   get pending(): boolean { return this.dirty; }
@@ -70,7 +71,7 @@ export class RebuildCoalescer {
   private schedule(): void {
     this.cancelPending = this.deps.afterFrame(() => {
       this.cancelPending = null;
-      const wait = this.lastRun + this.minGapMs - this.deps.now();
+      const wait = this.lastRun + (typeof this.minGapMs === 'function' ? this.minGapMs() : this.minGapMs) - this.deps.now();
       if (wait > 0) { this.cancelPending = this.deps.after(wait, () => { this.cancelPending = null; this.fire(); }); return; }
       this.fire();
     });

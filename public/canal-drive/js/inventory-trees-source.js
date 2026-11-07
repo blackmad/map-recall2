@@ -9,6 +9,7 @@ import {worldCameraOf} from '../../../src/canalRecall/engine/worldCameraOf.ts';
 import {InstanceCull,treeCullFlag} from '../../../src/canalRecall/rendererShared/instanceCull.ts';
 import {trunkGeometry,treeCapsFlag} from '../../../src/canalRecall/rendererShared/trunkGeometry.ts';
 import {RebuildCoalescer,extrasRebuildSync} from '../../../src/canalRecall/rendererShared/rebuildCoalescer.ts';
+import {treeRebuildGap} from '../../../src/canalRecall/engine/arrivalPace.ts';
 const {THREE} = window.CanalRecallThree;
 const MIN_ZOOM = 15.5;
 const BUDGET = 12;
@@ -48,7 +49,8 @@ export class InventoryTrees {
     this.residency=new ViewResidency(.25,60);
     // Tile arrivals, the ground hook and relief re-bases share one rebuild, in its own task after a frame (lane E6
     // #219, rendererShared/rebuildCoalescer.ts; `?extrasRebuild=sync` rebuilds at once). rebuild() itself stays synchronous.
-    this.rebuilds=new RebuildCoalescer(()=>{if(this.enabled&&this.ready)this.rebuild();},undefined,extrasRebuildSync());
+    // `?arrivalPace=trees` (lane R4-E #248): from the air at most one rebuild a second (engine/arrivalPace.ts).
+    this.rebuilds=new RebuildCoalescer(()=>{if(this.enabled&&this.ready)this.rebuild();},undefined,extrasRebuildSync(),treeRebuildGap(this.camera));
     // Keep GPU geometry and shaders warm while streamed instance buffers change.
     this.geometries=new Map();this.materials=new Map();
     // A root in the page's one three.js frame, lit by its rig (no frame: headless checks build instances only).

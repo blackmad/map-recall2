@@ -14,8 +14,10 @@
  * cell's upload does not share its frame with another's), `?arrivalPace=features` delivers the resident buildings to
  * the facade layer at most every AERIAL_FEATURES_GAP_MS from the air (PacedDelivery); comma lists combine them. Off by
  * default until measured; with the flag off the ring, the installs and the deliveries are exactly as before.
+ * `?arrivalPace=trees` holds the inventory trees to one rebuild a second from the air (treeRebuildGap).
  */
 import { cellBounds, parseCellKey } from '../world/cellGrid.js';
+import { isAerialView } from '../rendererShared/aerialView.js';
 
 export const RING_PACE_CELLS = 6;
 export const RING_PACE_MS = 250;
@@ -28,7 +30,10 @@ export const BAKED_PACE_FRAME_MS = 8;
 /** Least time between two deliveries of the resident buildings to the facade layer from the air, ms. */
 export const AERIAL_FEATURES_GAP_MS = 500;
 
-export type ArrivalPace = { ring: boolean; baked: boolean; features: boolean };
+/** Least time between two inventory-tree rebuilds from the air, ms (REBUILD_MIN_GAP_MS 120 at street level). */
+export const AERIAL_TREE_REBUILD_GAP_MS = 1000;
+
+export type ArrivalPace = { ring: boolean; baked: boolean; features: boolean; trees: boolean };
 
 /**
  * `?arrivalPace=1|on`: all three; or a comma list of `ring`, `baked`, `features`; absent, `0` or anything else: off
@@ -38,10 +43,21 @@ export function arrivalPaceOption(search: string = typeof location !== 'undefine
   let v: string | null = null;
   try { v = new URLSearchParams(search).get('arrivalPace'); } catch { /* no location */ }
   if (v === null && w?.__canalRecallArrivalPace !== undefined) v = String(w.__canalRecallArrivalPace);
-  if (v === '1' || v === 'on' || v === 'true') return { ring: true, baked: true, features: true };
+  if (v === '1' || v === 'on' || v === 'true') return { ring: true, baked: true, features: true, trees: true };
   const parts = new Set((v ?? '').split(',').map(x => x.trim()));
-  const out = { ring: parts.has('ring'), baked: parts.has('baked'), features: parts.has('features') };
-  return out.ring || out.baked || out.features ? out : null;
+  const out = { ring: parts.has('ring'), baked: parts.has('baked'), features: parts.has('features'), trees: parts.has('trees') };
+  return out.ring || out.baked || out.features || out.trees ? out : null;
+}
+
+/**
+ * The inventory trees' rebuild gap (`?arrivalPace=trees`): the layer rebuilds every instance it holds on any input
+ * (a tree tile, a ground re-base, the view leaving its built bounds), 70-235 ms a rebuild from the air on the desktop
+ * pan, the largest script in most of the harness's long frames. From the air at most one a second; at street level the
+ * coalescer's own 120 ms. Undefined when off: the coalescer keeps its constant default.
+ */
+export function treeRebuildGap(camera: { zoom(): number; pitch(): number; center(): { lat: number } }, search?: string, w?: any): (() => number) | undefined {
+  if (!arrivalPaceOption(search, w)?.trees) return undefined;
+  return () => { try { return isAerialView(camera.zoom(), camera.pitch(), camera.center().lat) ? AERIAL_TREE_REBUILD_GAP_MS : 120; } catch { return 120; } };
 }
 
 /**

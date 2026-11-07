@@ -84,3 +84,18 @@ test('flag: ?extrasRebuild=sync or =0 restores the old path; Node without a docu
   assert.equal(extrasRebuildSync('?a=1&extrasRebuild=0'), true);
   assert.equal(extrasRebuildSync(), true, 'no document in node');
 });
+
+test('a gap function is read at each schedule (?arrivalPace=trees: 1 s from the air, the default at street level)', () => {
+  const f = fakeDeps();
+  let runs = 0, gap = 1000;
+  const c = new RebuildCoalescer(() => { runs++; }, f.deps, false, () => gap);
+  c.request(); f.frame();
+  assert.equal(runs, 1);
+  c.request(); f.frame(); f.advance(REBUILD_MIN_GAP_MS);
+  assert.equal(runs, 1, 'from the air the 120 ms gap does not release it');
+  f.advance(1000);
+  assert.equal(runs, 2);
+  gap = REBUILD_MIN_GAP_MS;
+  c.request(); f.frame(); f.advance(REBUILD_MIN_GAP_MS);
+  assert.equal(runs, 3);
+});
