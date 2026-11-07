@@ -3,19 +3,19 @@
 // Run: node --import tsx --test src/canalRecall/engine/arrivalPace.test.ts
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { FrameAdmit, RING_PACE_BURST, RING_PACE_CELLS, RING_PACE_MS, RingPacer, TokenBucket, arrivalPaceOption, paceRingCells } from './arrivalPace.js';
+import { FrameAdmit, PacedDelivery, RING_PACE_BURST, RING_PACE_CELLS, RING_PACE_MS, RingPacer, TokenBucket, arrivalPaceOption, paceRingCells } from './arrivalPace.js';
 import { cellBounds } from '../world/cellGrid.js';
 
 const centreOf = (i: number, j: number) => { const [w, s, e, n] = cellBounds(i, j); return [(w + e) / 2, (s + n) / 2] as const; };
 const grid = (r: number, i0 = 0, j0 = 0) => { const out = new Set<string>(); for (let i = -r; i <= r; i++) for (let j = -r; j <= r; j++) out.add(`${i + i0}_${j + j0}`); return out; };
 
-test('flag: off unless ?arrivalPace=1|on|ring|baked (or the global)', () => {
+test('flag: off unless ?arrivalPace=1|on|ring|baked|features (or the global)', () => {
   assert.equal(arrivalPaceOption('', {}), null);
   assert.equal(arrivalPaceOption('?arrivalPace=0', {}), null);
-  assert.deepEqual(arrivalPaceOption('?arrivalPace=1', {}), { ring: true, baked: true });
-  assert.deepEqual(arrivalPaceOption('?arrivalPace=ring', {}), { ring: true, baked: false });
-  assert.deepEqual(arrivalPaceOption('?arrivalPace=baked', {}), { ring: false, baked: true });
-  assert.deepEqual(arrivalPaceOption('', { __canalRecallArrivalPace: 'on' }), { ring: true, baked: true });
+  assert.deepEqual(arrivalPaceOption('?arrivalPace=1', {}), { ring: true, baked: true, features: true });
+  assert.deepEqual(arrivalPaceOption('?arrivalPace=ring', {}), { ring: true, baked: false, features: false });
+  assert.deepEqual(arrivalPaceOption('?arrivalPace=baked', {}), { ring: false, baked: true, features: false });
+  assert.deepEqual(arrivalPaceOption('', { __canalRecallArrivalPace: 'on' }), { ring: true, baked: true, features: true });
 });
 
 test('paceRingCells: the first ring is whole; a jump admits the allowance nearest the centre; leaving cells go at once', () => {
@@ -63,4 +63,34 @@ test('FrameAdmit: one install per frame; calls within BAKED_PACE_FRAME_MS share 
   assert.equal(a.admit(17), false);
   const two = new FrameAdmit(2, 8);
   assert.deepEqual([two.admit(0), two.admit(1), two.admit(2)], [true, true, false]);
+});
+
+test('?arrivalPace comma lists; features alone', () => {
+  assert.deepEqual(arrivalPaceOption('?arrivalPace=features', {}), { ring: false, baked: false, features: true });
+  assert.deepEqual(arrivalPaceOption('?arrivalPace=ring,features', {}), { ring: true, baked: false, features: true });
+  assert.deepEqual(arrivalPaceOption('?arrivalPace=1', {}), { ring: true, baked: true, features: true });
+  assert.equal(arrivalPaceOption('?arrivalPace=nope', {}), null);
+});
+
+test('PacedDelivery: from the air a burst of tile arrivals is one delivery per gap carrying the latest set; at street level every push delivers at once', () => {
+  let now = 0; const timers: { at: number; cb: () => void }[] = [];
+  const deps = { now: () => now, after: (ms: number, cb: () => void) => { const t = { at: now + ms, cb }; timers.push(t); return t; }, cancel: (h: unknown) => { const i = timers.indexOf(h as any); if (i >= 0) timers.splice(i, 1); } };
+  const run = (until: number) => { for (;;) { timers.sort((a, b) => a.at - b.at); const t = timers[0]; if (!t || t.at > until) break; timers.shift(); now = t.at; t.cb(); } now = until; };
+  const got: number[] = []; let aerial = true;
+  const d = new PacedDelivery<number>(v => got.push(v), () => aerial, 500, deps);
+  d.push(1); // the first goes at once
+  for (let k = 2; k <= 56; k++) { now += 50; d.push(k); } // 55 tiles over 2.75 s
+  run(now + 600);
+  assert.equal(got[0], 1);
+  assert.equal(got.at(-1), 56, 'the latest set always arrives');
+  assert.ok(got.length <= 8, `${got.length} deliveries for 56 arrivals`);
+  for (let i = 1; i < got.length; i++) assert.ok(got[i] > got[i - 1]);
+  // Street level: no gap.
+  aerial = false; const before = got.length;
+  d.push(100); d.push(101);
+  assert.deepEqual(got.slice(before), [100, 101]);
+  // A waiting set is handed over by flush (the view came down).
+  aerial = true; d.push(200); d.push(201); assert.ok(d.waiting);
+  d.flush(); assert.equal(got.at(-1), 201); assert.equal(d.waiting, false);
+  assert.equal(timers.length, 0);
 });

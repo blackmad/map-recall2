@@ -11,8 +11,9 @@
  * (RING_PACE_CELLS per RING_PACE_MS, burst RING_PACE_BURST); cells leave at once. A ring that grows by a row at the
  * pan's leading edge (about one cell a second at 120 m/s) never waits. `?arrivalPace=ring` paces the ring only,
  * `?arrivalPace=baked` only the baked coarse installs (bakedCoarse.ts: at most one cell installed per frame, so a
- * cell's upload does not share its frame with another's). Off by default until measured; with the flag off the ring
- * and the installs are exactly as before.
+ * cell's upload does not share its frame with another's), `?arrivalPace=features` delivers the resident buildings to
+ * the facade layer at most every AERIAL_FEATURES_GAP_MS from the air (PacedDelivery); comma lists combine them. Off by
+ * default until measured; with the flag off the ring, the installs and the deliveries are exactly as before.
  */
 import { cellBounds, parseCellKey } from '../world/cellGrid.js';
 
@@ -24,17 +25,62 @@ export const BAKED_PACE_PER_FRAME = 1;
 /** Two calls closer than this belong to one frame (the baked tier steps from sync and from the facade layer). */
 export const BAKED_PACE_FRAME_MS = 8;
 
-export type ArrivalPace = { ring: boolean; baked: boolean };
+/** Least time between two deliveries of the resident buildings to the facade layer from the air, ms. */
+export const AERIAL_FEATURES_GAP_MS = 500;
 
-/** `?arrivalPace=1|on` both, `ring`, `baked`; absent, `0` or anything else: off (null). */
+export type ArrivalPace = { ring: boolean; baked: boolean; features: boolean };
+
+/**
+ * `?arrivalPace=1|on`: all three; or a comma list of `ring`, `baked`, `features`; absent, `0` or anything else: off
+ * (null).
+ */
 export function arrivalPaceOption(search: string = typeof location !== 'undefined' ? location.search : '', w: any = typeof window !== 'undefined' ? window : {}): ArrivalPace | null {
   let v: string | null = null;
   try { v = new URLSearchParams(search).get('arrivalPace'); } catch { /* no location */ }
   if (v === null && w?.__canalRecallArrivalPace !== undefined) v = String(w.__canalRecallArrivalPace);
-  if (v === '1' || v === 'on' || v === 'true') return { ring: true, baked: true };
-  if (v === 'ring') return { ring: true, baked: false };
-  if (v === 'baked') return { ring: false, baked: true };
-  return null;
+  if (v === '1' || v === 'on' || v === 'true') return { ring: true, baked: true, features: true };
+  const parts = new Set((v ?? '').split(',').map(x => x.trim()));
+  const out = { ring: parts.has('ring'), baked: parts.has('baked'), features: parts.has('features') };
+  return out.ring || out.baked || out.features ? out : null;
+}
+
+/**
+ * Latest-wins delivery with a least gap while `gated()` (from the air): the city streamer hands the whole resident set
+ * to the facade layer, the overview and the extras on every tile arrival, O(resident buildings) each (~60 ms a tile at
+ * ~80 k buildings from the air); a ring jump lands 55-76 tiles in a few seconds. Gated, a delivery waits until `gapMs`
+ * after the last one and then carries the latest set; ungated (street level) it runs at once, as before.
+ */
+export class PacedDelivery<T> {
+  private pending: { value: T } | null = null;
+  private last = -Infinity;
+  private timer: unknown = null;
+  /** Deliveries requested and made (diagnostics). */
+  readonly stats = { requests: 0, runs: 0 };
+  constructor(private readonly deliver: (value: T) => void, private readonly gated: () => boolean, private readonly gapMs = AERIAL_FEATURES_GAP_MS,
+    private readonly deps: { now(): number; after(ms: number, cb: () => void): unknown; cancel(handle: unknown): void } = {
+      now: () => performance.now(), after: (ms, cb) => setTimeout(cb, ms), cancel: h => clearTimeout(h as ReturnType<typeof setTimeout>) }) {}
+  push(value: T): void {
+    this.stats.requests++;
+    this.pending = { value };
+    if (this.timer != null) return;
+    const wait = this.gated() ? this.last + this.gapMs - this.deps.now() : 0;
+    if (wait <= 0) { this.fire(); return; }
+    this.timer = this.deps.after(wait, () => { this.timer = null; this.fire(); });
+  }
+  /** Deliver a waiting set now (the view came down to street level, or a reader needs it). */
+  flush(): void {
+    if (this.timer != null) { this.deps.cancel(this.timer); this.timer = null; }
+    this.fire();
+  }
+  get waiting(): boolean { return !!this.pending; }
+  private fire(): void {
+    const p = this.pending;
+    if (!p) return;
+    this.pending = null;
+    this.last = this.deps.now();
+    this.stats.runs++;
+    this.deliver(p.value);
+  }
 }
 
 function cellCentreLngLat(key: string): [number, number] {

@@ -40,7 +40,7 @@ import { BUILDING_LOOK_IDS, urlBuildingLook } from './worldViewApi';
 import { FlatLines, type LngLatLine } from './overlays/flatLines';
 import { FarShells, farCellOrigin, farShellsEnabled } from './farShells';
 import { BakedCoarse, bakedCoarseEnabled } from './bakedCoarse';
-import { arrivalPaceOption } from './arrivalPace';
+import { PacedDelivery, arrivalPaceOption } from './arrivalPace';
 import { isAerialView } from '../rendererShared/aerialView';
 import { BASE_REFRESH_BUDGET_MS } from '../rendererShared/baseRefreshBudget';
 import { ToonPost, toonLookFlag } from './toonLook';
@@ -167,6 +167,8 @@ export class OwnWorldView implements WorldViewOracles {
   private farShellsOn = farShellsEnabled();
   /** The baked coarse tier (engine/bakedCoarse.ts, lane R4-A #243; `?bakedCoarse=0`): one SHEL mesh per world cell instead of the runtime coarse chunks. */
   _bakedCoarse: BakedCoarse | null = null;
+  /** The paced feature delivery (`?arrivalPace=features`), null when off. */
+  _featureDelivery: { flush(): void; waiting: boolean; stats: { requests: number; runs: number } } | null = null;
   /** The own ground revision the baked tier last re-based against (a new one restarts its lift pass). */
   private bakedGroundRevision: number | undefined;
   private bakedCoarseOn = bakedCoarseEnabled(coarse());
@@ -590,12 +592,16 @@ export class OwnWorldView implements WorldViewOracles {
       this.decorateCity();
       void this.loadDecorationExtracts();
       if (!(await city.probe())) { this.fail('buildings', 'tiles not published'); return; }
-      city.attach(() => { this._completeCityHasBuildings = true; this.status.firstBuildingsAt = performance.now(); }, (features: any[]) => {
+      const deliverFeatures = (features: any[]) => {
         this._tileFeatures = features;
         this._overview?.setFootprints(features);
         this.extras.setBuildingFeatures(features);
         try { this._threeBuildings.setFeatures(features); } catch (error) { console.warn('[engine] facade sync failed', error); }
-      });
+      };
+      // `?arrivalPace=features` (engine/arrivalPace.ts, lane R4-E #248): from the air, one delivery per gap, the latest set.
+      const paced = arrivalPaceOption()?.features ? new PacedDelivery<any[]>(deliverFeatures, () => { const c = this.cameraMap.camera; return isAerialView(c.zoom, c.pitch, c.lat); }) : null;
+      this._featureDelivery = paced;
+      city.attach(() => { this._completeCityHasBuildings = true; this.status.firstBuildingsAt = performance.now(); }, paced ? (features: any[]) => paced.push(features) : deliverFeatures);
       this.applyPendingAim();
       this.status.buildings = true;
     } catch (error) { this.fail('buildings', error); }
@@ -1106,6 +1112,8 @@ export class OwnWorldView implements WorldViewOracles {
     // From the air the detail block keeps its last plan (detailRing.ts detailBlockFrozen, lane R3-G #242): panning at
     // ~150 m no longer builds and dissolves detail tiles at every z16 edge the subject crosses. Not during the intro.
     this._threeBuildings?.setDetailCentre?.(view.subject[0], view.subject[1], view.introFlat === 0 && isAerialView(view.zoom, pitch, view.lngLat[1]));
+    // A paced delivery (`?arrivalPace=features`) waiting when the view comes down is handed over now.
+    if (this._featureDelivery?.waiting && !isAerialView(view.zoom, pitch, view.lngLat[1])) this._featureDelivery.flush();
     lap('building detail centre');
     this.extras.tick();
     lap('extras tick');
