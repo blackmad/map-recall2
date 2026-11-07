@@ -99,8 +99,8 @@ function windows(K: FrontKit, S: Sec, b: BuildingTools, from: number, to: number
     for (let y = FIRST_SILL; y + WIN_H <= y1 - 0.5; y += STOREY) {
       if (y < y0 + 0.35 || y < floorAt(s - w / 2, s + w / 2) + 0.3) continue;
       K.opening(S, s, y, w, WIN_H, {cols: Math.max(1, Math.round(w / MULLION)), frame: 'bronze', depth: 0.16, edge: 0.06});
-      // the grey band over the window, its ledge proud of the brick
-      if (y + WIN_H + 0.9 <= y1 - 0.2) band(b, f, s, y + WIN_H + 0.05, w, 0.8, 0.05);
+      // the grey band over the window, 9 cm proud of the brick (past the 2-8 cm z-fight range)
+      if (y + WIN_H + 0.9 <= y1 - 0.2) band(b, f, s, y + WIN_H + 0.05, w, 0.8, 0.09);
     }
   }
 }
