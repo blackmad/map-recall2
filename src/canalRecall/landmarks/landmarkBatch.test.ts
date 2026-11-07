@@ -294,3 +294,65 @@ test('mergeSiblingsByMaterial: different local matrices or layouts are not merge
   root.add(a, b, c);
   assert.deepEqual(mergeSiblingsByMaterial(root, THREE), { before: 3, after: 3 });
 });
+
+/** A street-chunk primitive: `pands` houses side by side, each one quad (two triangles) at x = pand * 2, with pandRanges. */
+function chunkPrimitive(pands: number[], material: THREE.Material, y = 0): THREE.Mesh {
+  const g = new THREE.BufferGeometry(), p: number[] = [], idx: number[] = [], ranges: number[][] = [];
+  pands.forEach((pand, k) => {
+    const x = pand * 2, v = p.length / 3;
+    p.push(x, y, 0, x + 1, y, 0, x + 1, y + 1, 0, x, y + 1, 0);
+    idx.push(v, v + 1, v + 2, v, v + 2, v + 3);
+    ranges.push([pand, k * 2, 2]);
+  });
+  g.setAttribute('position', new THREE.BufferAttribute(new Float32Array(p), 3));
+  g.setAttribute('normal', new THREE.BufferAttribute(new Float32Array(p.length).fill(0), 3));
+  g.setIndex(idx);
+  g.userData.pandRanges = ranges;
+  return new THREE.Mesh(g, material);
+}
+
+test('mergeSiblingsByMaterial (street chunk, lane R4-C): pand ranges re-based, a pick on a merged face names its pand, the lift moves only that pand', async () => {
+  const { separatePands, liftPands } = await import('../ownGround/chunkBases.ts');
+  const { pandIndexForFace } = await import('../streetChunks/extras.ts');
+  const brick = new THREE.MeshLambertMaterial(), glass = new THREE.MeshLambertMaterial();
+  const root = new THREE.Group();
+  // Primitive order as in a chunk GLB: brick (pands 0,1,2), glass (pands 1,2), brick again (pand 0, the frames).
+  root.add(chunkPrimitive([0, 1, 2], brick), chunkPrimitive([1, 2], glass, 2), chunkPrimitive([0], brick, 4));
+  const { before, after } = mergeSiblingsByMaterial(root, THREE);
+  assert.deepEqual([before, after], [3, 2]);
+  const merged = root.children.find(m => (m as THREE.Mesh).material === brick) as THREE.Mesh;
+  assert.deepEqual(merged.geometry.userData.pandRanges, [[0, 0, 2], [1, 2, 2], [2, 4, 2], [0, 6, 2]]);
+  // Pick: the merged triangle 6 is the third primitive's first face (pand 0); the raycast agrees.
+  const hit = new THREE.Raycaster(new THREE.Vector3(0.75, 4.25, 5), new THREE.Vector3(0, 0, -1)).intersectObject(merged)[0];
+  assert.equal(hit.faceIndex, 6);
+  assert.equal(pandIndexForFace(merged.geometry.userData.pandRanges, hit.faceIndex ?? undefined), 0);
+  const middle = new THREE.Raycaster(new THREE.Vector3(2.5, 0.5, 5), new THREE.Vector3(0, 0, -1)).intersectObject(merged)[0];
+  assert.equal(pandIndexForFace(merged.geometry.userData.pandRanges, middle.faceIndex ?? undefined), 1);
+  // Lift: separate the merged geometry, raise pand 1 by 3 m; only its vertices move.
+  const g = merged.geometry, sep = separatePands(g.index!.array, g.attributes.position.count, g.userData.pandRanges);
+  const base = new Float32Array(sep.source.length * 3);
+  sep.source.forEach((v, i) => base.set([g.attributes.position.getX(v), g.attributes.position.getY(v), g.attributes.position.getZ(v)], i * 3));
+  const lifted = liftPands(base, sep.owner, [0, 1, 0], pand => (pand === 1 ? 3 : 0));
+  for (let i = 0; i < sep.owner.length; i++) assert.equal(lifted[i * 3 + 1] - base[i * 3 + 1], sep.owner[i] === 1 ? 3 : 0);
+  assert.ok([...sep.owner].includes(1));
+  // Glass stayed its own mesh with its own ranges untouched.
+  const glassMesh = root.children.find(m => (m as THREE.Mesh).material === glass) as THREE.Mesh;
+  assert.deepEqual(glassMesh.geometry.userData.pandRanges, [[1, 0, 2], [2, 2, 2]]);
+});
+
+test('mergeSiblingsByMaterial: catalogue meshes (no pand ranges) merge with no pandRanges in userData', () => {
+  const material = new THREE.MeshLambertMaterial(), root = new THREE.Group();
+  const a = chunkPrimitive([0], material), b = chunkPrimitive([1], material);
+  delete a.geometry.userData.pandRanges; delete b.geometry.userData.pandRanges;
+  root.add(a, b);
+  mergeSiblingsByMaterial(root, THREE);
+  assert.equal((root.children[0] as THREE.Mesh).geometry.userData.pandRanges, undefined);
+});
+
+test('mergeLevelByMaterial (chunk lod2): pand ranges follow the used-vertex merge', () => {
+  const material = new THREE.MeshLambertMaterial(), root = new THREE.Group();
+  root.add(chunkPrimitive([2, 0], material), chunkPrimitive([1], material, 2));
+  mergeLevelByMaterial(THREE, root);
+  const merged = root.children[0] as THREE.Mesh;
+  assert.deepEqual(merged.geometry.userData.pandRanges, [[2, 0, 2], [0, 2, 2], [1, 4, 2]]);
+});

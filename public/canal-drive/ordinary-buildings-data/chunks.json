@@ -425,7 +425,13 @@
      ]
     }
    ],
-   "category": "street-survey"
+   "category": "street-survey",
+   "lod2": {
+    "sourceHash": "01cefc9e2cb620f8",
+    "buildVersion": 1,
+    "bytes": 32748,
+    "triangles": 1255
+   }
   },
   {
    "id": "chunk-face-bilder-159426-165632",
@@ -758,7 +764,13 @@
      ]
     }
    ],
-   "category": "street-survey"
+   "category": "street-survey",
+   "lod2": {
+    "sourceHash": "e10ed1e77e98f2a4",
+    "buildVersion": 1,
+    "bytes": 37160,
+    "triangles": 1499
+   }
   },
   {
    "id": "chunk-face-bilder-233645-236975",
@@ -1084,7 +1096,13 @@
       }
      ]
     }
-   ]
+   ],
+   "lod2": {
+    "sourceHash": "a75529407281083b",
+    "buildVersion": 1,
+    "bytes": 34236,
+    "triangles": 1394
+   }
   },
   {
    "id": "chunk-face-bilder-166802-235892",
@@ -1536,7 +1554,13 @@
       }
      ]
     }
-   ]
+   ],
+   "lod2": {
+    "sourceHash": "202779b2b7abd433",
+    "buildVersion": 1,
+    "bytes": 39004,
+    "triangles": 1498
+   }
   },
   {
    "id": "chunk-face-marnix-c",
@@ -2402,7 +2426,13 @@
       }
      ]
     }
-   ]
+   ],
+   "lod2": {
+    "sourceHash": "990ce361db0adba1",
+    "buildVersion": 1,
+    "bytes": 32456,
+    "triangles": 1489
+   }
   },
   {
    "id": "chunk-face-bilder-081118-155417",
@@ -3163,7 +3193,13 @@
       }
      ]
     }
-   ]
+   ],
+   "lod2": {
+    "sourceHash": "ad6d91df76d05e92",
+    "buildVersion": 1,
+    "bytes": 38752,
+    "triangles": 1450
+   }
   },
   {
    "id": "chunk-face-bilder-133467-159649",
@@ -3504,7 +3540,13 @@
       }
      ]
     }
-   ]
+   ],
+   "lod2": {
+    "sourceHash": "2de2f2e04a127e1f",
+    "buildVersion": 1,
+    "bytes": 38760,
+    "triangles": 1497
+   }
   },
   {
    "id": "chunk-face-bilder-153622-156732",
@@ -3922,7 +3964,13 @@
       }
      ]
     }
-   ]
+   ],
+   "lod2": {
+    "sourceHash": "31ddc392f82edd9e",
+    "buildVersion": 1,
+    "bytes": 42892,
+    "triangles": 1500
+   }
   },
   {
    "id": "chunk-face-bilder-157757-164549",
@@ -4140,7 +4188,13 @@
       }
      ]
     }
-   ]
+   ],
+   "lod2": {
+    "sourceHash": "866237cc2eda6ec3",
+    "buildVersion": 1,
+    "bytes": 37124,
+    "triangles": 1486
+   }
   },
   {
    "id": "chunk-face-bilder-161259-236206",
@@ -4774,7 +4828,13 @@
       }
      ]
     }
-   ]
+   ],
+   "lod2": {
+    "sourceHash": "e102187ad6693612",
+    "buildVersion": 1,
+    "bytes": 38848,
+    "triangles": 1348
+   }
   },
   {
    "id": "chunk-face-bilder-161281-157756",
@@ -5004,7 +5064,13 @@
       }
      ]
     }
-   ]
+   ],
+   "lod2": {
+    "sourceHash": "604f3eff019dd084",
+    "buildVersion": 1,
+    "bytes": 34496,
+    "triangles": 1497
+   }
   },
   {
    "id": "chunk-face-bilder-236022-167243",
@@ -5736,7 +5802,13 @@
       }
      ]
     }
-   ]
+   ],
+   "lod2": {
+    "sourceHash": "930f5b2d83aff59c",
+    "buildVersion": 1,
+    "bytes": 40868,
+    "triangles": 1414
+   }
   },
   {
    "id": "chunk-face-bilder-236189-166159",
@@ -6173,7 +6245,13 @@
       }
      ]
     }
-   ]
+   ],
+   "lod2": {
+    "sourceHash": "53954c6c53d5556f",
+    "buildVersion": 1,
+    "bytes": 41696,
+    "triangles": 1490
+   }
   },
   {
    "id": "chunk-face-marnix-124-138",
@@ -6925,7 +7003,13 @@
       }
      ]
     }
-   ]
+   ],
+   "lod2": {
+    "sourceHash": "51dbd0a76f802a88",
+    "buildVersion": 1,
+    "bytes": 32596,
+    "triangles": 1500
+   }
   },
   {
    "id": "chunk-face-clercq-236681",
@@ -7859,7 +7943,13 @@
       }
      ]
     }
-   ]
+   ],
+   "lod2": {
+    "sourceHash": "f6ea59ed283fd30c",
+    "buildVersion": 1,
+    "bytes": 42652,
+    "triangles": 1488
+   }
   },
   {
    "id": "chunk-face-hasebroek-52-88-r1",
@@ -8760,7 +8850,13 @@
       }
      ]
     }
-   ]
+   ],
+   "lod2": {
+    "sourceHash": "cde1e4ce9fc7d740",
+    "buildVersion": 1,
+    "bytes": 38400,
+    "triangles": 1444
+   }
   },
   {
    "id": "chunk-face-hasebroek-43-101-r1",
@@ -9846,7 +9942,13 @@
       }
      ]
     }
-   ]
+   ],
+   "lod2": {
+    "sourceHash": "41806b9b1a50387d",
+    "buildVersion": 1,
+    "bytes": 39540,
+    "triangles": 1491
+   }
   },
   {
    "id": "chunk-face-hasebroek-90-98-r1",
@@ -10189,7 +10291,13 @@
       }
      ]
     }
-   ]
+   ],
+   "lod2": {
+    "sourceHash": "5f67b839c84ebc49",
+    "buildVersion": 1,
+    "bytes": 36148,
+    "triangles": 1497
+   }
   },
   {
    "id": "chunk-face-hasebroek-2-46-r1",
@@ -12583,7 +12691,13 @@
       }
      ]
     }
-   ]
+   ],
+   "lod2": {
+    "sourceHash": "713600a1ab4b1212",
+    "buildVersion": 1,
+    "bytes": 31840,
+    "triangles": 1016
+   }
   },
   {
    "id": "chunk-face-bellamyplein-18-38-r1",
@@ -13115,7 +13229,13 @@
       }
      ]
     }
-   ]
+   ],
+   "lod2": {
+    "sourceHash": "33aedbf9ceb5d45b",
+    "buildVersion": 1,
+    "bytes": 37100,
+    "triangles": 1301
+   }
   },
   {
    "id": "chunk-face-bellamyplein-18-38-r2",
@@ -13572,7 +13692,13 @@
       }
      ]
     }
-   ]
+   ],
+   "lod2": {
+    "sourceHash": "d3eda009f07c36cd",
+    "buildVersion": 1,
+    "bytes": 40496,
+    "triangles": 1465
+   }
   },
   {
    "id": "chunk-face-effen-2-12-r1",
@@ -13814,7 +13940,13 @@
       }
      ]
     }
-   ]
+   ],
+   "lod2": {
+    "sourceHash": "c06695fe2b7383d1",
+    "buildVersion": 1,
+    "bytes": 33904,
+    "triangles": 1497
+   }
   },
   {
    "id": "chunk-face-heije-41-53-r1",
@@ -14047,7 +14179,13 @@
       }
      ]
     }
-   ]
+   ],
+   "lod2": {
+    "sourceHash": "b2176690204f5347",
+    "buildVersion": 1,
+    "bytes": 35364,
+    "triangles": 1498
+   }
   },
   {
    "id": "chunk-face-kate-5-21-r1",
@@ -14551,7 +14689,13 @@
       }
      ]
     }
-   ]
+   ],
+   "lod2": {
+    "sourceHash": "cbb19110e8162b79",
+    "buildVersion": 1,
+    "bytes": 32876,
+    "triangles": 1212
+   }
   },
   {
    "id": "chunk-face-evertsen-91-135",
@@ -16865,7 +17009,13 @@
       }
      ]
     }
-   ]
+   ],
+   "lod2": {
+    "sourceHash": "94cd2a858704c721",
+    "buildVersion": 1,
+    "bytes": 37648,
+    "triangles": 1493
+   }
   },
   {
    "id": "chunk-face-evertsen-94-142",
@@ -19674,7 +19824,13 @@
       }
      ]
     }
-   ]
+   ],
+   "lod2": {
+    "sourceHash": "ae4749803bf7e285",
+    "buildVersion": 1,
+    "bytes": 43316,
+    "triangles": 1499
+   }
   },
   {
    "id": "chunk-face-evertsen-59-89",
@@ -21293,7 +21449,13 @@
       }
      ]
     }
-   ]
+   ],
+   "lod2": {
+    "sourceHash": "a70733ee528ea7f8",
+    "buildVersion": 1,
+    "bytes": 37948,
+    "triangles": 1409
+   }
   },
   {
    "id": "chunk-face-evertsen-43-57",
@@ -22209,7 +22371,13 @@
       }
      ]
     }
-   ]
+   ],
+   "lod2": {
+    "sourceHash": "341de1aaa5117894",
+    "buildVersion": 1,
+    "bytes": 28828,
+    "triangles": 1036
+   }
   },
   {
    "id": "chunk-face-evertsen-68-92",
@@ -23609,7 +23777,13 @@
       }
      ]
     }
-   ]
+   ],
+   "lod2": {
+    "sourceHash": "16083a244f0db791",
+    "buildVersion": 1,
+    "bytes": 37412,
+    "triangles": 1474
+   }
   },
   {
    "id": "chunk-face-evertsen-139-143",
@@ -23970,7 +24144,13 @@
       }
      ]
     }
-   ]
+   ],
+   "lod2": {
+    "sourceHash": "aea62b5b33623e5e",
+    "buildVersion": 1,
+    "bytes": 37536,
+    "triangles": 1480
+   }
   },
   {
    "id": "chunk-face-evertsen-145-155",
@@ -24608,7 +24788,13 @@
       }
      ]
     }
-   ]
+   ],
+   "lod2": {
+    "sourceHash": "e4e43edad0d3c998",
+    "buildVersion": 1,
+    "bytes": 37096,
+    "triangles": 1232
+   }
   },
   {
    "id": "chunk-face-evertsen-146-150",
@@ -24968,7 +25154,13 @@
       }
      ]
     }
-   ]
+   ],
+   "lod2": {
+    "sourceHash": "b595415ba83ba17e",
+    "buildVersion": 1,
+    "bytes": 38988,
+    "triangles": 1496
+   }
   },
   {
    "id": "chunk-face-evertsen-152-160",
@@ -25501,7 +25693,13 @@
       }
      ]
     }
-   ]
+   ],
+   "lod2": {
+    "sourceHash": "36d84224c2a21726",
+    "buildVersion": 1,
+    "bytes": 34468,
+    "triangles": 1167
+   }
   },
   {
    "id": "chunk-face-wallen-oza-41-57",
@@ -26341,7 +26539,13 @@
       }
      ]
     }
-   ]
+   ],
+   "lod2": {
+    "sourceHash": "76c4b23be0a7e78d",
+    "buildVersion": 1,
+    "bytes": 44156,
+    "triangles": 1482
+   }
   },
   {
    "id": "chunk-face-wallen-ozv-115-125",
@@ -26953,7 +27157,13 @@
       }
      ]
     }
-   ]
+   ],
+   "lod2": {
+    "sourceHash": "fd0c71a68327abf3",
+    "buildVersion": 1,
+    "bytes": 42992,
+    "triangles": 1499
+   }
   },
   {
    "id": "chunk-face-utrechtse-48-76",
@@ -28028,7 +28238,13 @@
       }
      ]
     }
-   ]
+   ],
+   "lod2": {
+    "sourceHash": "448043763be34cf4",
+    "buildVersion": 1,
+    "bytes": 49440,
+    "triangles": 1460
+   }
   },
   {
    "id": "chunk-face-nassau-162289",
@@ -29958,7 +30174,13 @@
       }
      ]
     }
-   ]
+   ],
+   "lod2": {
+    "sourceHash": "54174c6bfc90762c",
+    "buildVersion": 1,
+    "bytes": 35344,
+    "triangles": 1374
+   }
   },
   {
    "id": "chunk-face-bilder-164451-156126",
@@ -30612,7 +30834,13 @@
       }
      ]
     }
-   ]
+   ],
+   "lod2": {
+    "sourceHash": "d0a55b5d29429947",
+    "buildVersion": 1,
+    "bytes": 44308,
+    "triangles": 1458
+   }
   },
   {
    "id": "chunk-face-bilder-233580-162444",
@@ -31097,7 +31325,13 @@
       }
      ]
     }
-   ]
+   ],
+   "lod2": {
+    "sourceHash": "260523429a15a224",
+    "buildVersion": 1,
+    "bytes": 36872,
+    "triangles": 1323
+   }
   },
   {
    "id": "chunk-face-boterdiep-3-59-r1",
@@ -32423,7 +32657,13 @@
       }
      ]
     }
-   ]
+   ],
+   "lod2": {
+    "sourceHash": "23c15e86bb9327b1",
+    "buildVersion": 1,
+    "bytes": 37940,
+    "triangles": 1436
+   }
   },
   {
    "id": "chunk-face-eems-6-78",
@@ -34028,7 +34268,13 @@
       }
      ]
     }
-   ]
+   ],
+   "lod2": {
+    "sourceHash": "78fa965eaa5d6e76",
+    "buildVersion": 1,
+    "bytes": 38464,
+    "triangles": 1466
+   }
   },
   {
    "id": "chunk-face-hoendiep-2-60-r1",
@@ -35502,7 +35748,13 @@
       }
      ]
     }
-   ]
+   ],
+   "lod2": {
+    "sourceHash": "1a1d9020106c7a16",
+    "buildVersion": 1,
+    "bytes": 37508,
+    "triangles": 1437
+   }
   },
   {
    "id": "chunk-face-hoendiep-5-35-r1",
@@ -35885,7 +36137,13 @@
       }
      ]
     }
-   ]
+   ],
+   "lod2": {
+    "sourceHash": "5e3a1eba1a79b073",
+    "buildVersion": 1,
+    "bytes": 37340,
+    "triangles": 1413
+   }
   },
   {
    "id": "chunk-face-hoendiep-5-35-r2",
@@ -37194,7 +37452,13 @@
       }
      ]
     }
-   ]
+   ],
+   "lod2": {
+    "sourceHash": "a3c576470b0746cd",
+    "buildVersion": 1,
+    "bytes": 39096,
+    "triangles": 1450
+   }
   },
   {
    "id": "chunk-face-boterdiep-36-66",
@@ -38748,7 +39012,13 @@
       }
      ]
     }
-   ]
+   ],
+   "lod2": {
+    "sourceHash": "ea753b6c0a0aee36",
+    "buildVersion": 1,
+    "bytes": 36472,
+    "triangles": 1437
+   }
   },
   {
    "id": "chunk-face-boterdiep-6-34",
@@ -40213,7 +40483,13 @@
       }
      ]
     }
-   ]
+   ],
+   "lod2": {
+    "sourceHash": "032b5bfdb6240f27",
+    "buildVersion": 1,
+    "bytes": 38232,
+    "triangles": 1461
+   }
   },
   {
    "id": "chunk-face-boterdiep-37-59",
@@ -41590,7 +41866,13 @@
       }
      ]
     }
-   ]
+   ],
+   "lod2": {
+    "sourceHash": "ef47c827858e3606",
+    "buildVersion": 1,
+    "bytes": 39132,
+    "triangles": 1474
+   }
   },
   {
    "id": "chunk-face-gorontalo-25-47-r1",
@@ -42353,7 +42635,13 @@
       }
      ]
     }
-   ]
+   ],
+   "lod2": {
+    "sourceHash": "dfb7ebe301f14737",
+    "buildVersion": 1,
+    "bytes": 41960,
+    "triangles": 1477
+   }
   },
   {
    "id": "chunk-face-gorontalo-25-47-r2",
@@ -42704,7 +42992,13 @@
       }
      ]
     }
-   ]
+   ],
+   "lod2": {
+    "sourceHash": "fb89e6298d85eeb1",
+    "buildVersion": 1,
+    "bytes": 39908,
+    "triangles": 1478
+   }
   },
   {
    "id": "chunk-face-molukken-7-29-r1",
@@ -43113,7 +43407,13 @@
       }
      ]
     }
-   ]
+   ],
+   "lod2": {
+    "sourceHash": "9e0d727e21f7cf0a",
+    "buildVersion": 1,
+    "bytes": 38668,
+    "triangles": 1469
+   }
   },
   {
    "id": "chunk-face-molukken-7-29-r2",
@@ -43520,7 +43820,13 @@
       }
      ]
     }
-   ]
+   ],
+   "lod2": {
+    "sourceHash": "82bd60fd20e97b11",
+    "buildVersion": 1,
+    "bytes": 38736,
+    "triangles": 1456
+   }
   },
   {
    "id": "chunk-face-nias-1-13-r1",
@@ -44170,7 +44476,13 @@
       }
      ]
     }
-   ]
+   ],
+   "lod2": {
+    "sourceHash": "99e166132ce81921",
+    "buildVersion": 1,
+    "bytes": 26868,
+    "triangles": 834
+   }
   },
   {
    "id": "chunk-face-molukken-35-67-r1",
@@ -45330,7 +45642,13 @@
       }
      ]
     }
-   ]
+   ],
+   "lod2": {
+    "sourceHash": "d3b9956e490920ee",
+    "buildVersion": 1,
+    "bytes": 45984,
+    "triangles": 1476
+   }
   },
   {
    "id": "chunk-face-hembrug-44-154-r1",
@@ -45709,7 +46027,13 @@
       }
      ]
     }
-   ]
+   ],
+   "lod2": {
+    "sourceHash": "5c72e4fb342edc4f",
+    "buildVersion": 1,
+    "bytes": 29580,
+    "triangles": 1069
+   }
   },
   {
    "id": "chunk-face-hembrug-160-272-r1",
@@ -46194,7 +46518,13 @@
       }
      ]
     }
-   ]
+   ],
+   "lod2": {
+    "sourceHash": "ce8992323ec7414f",
+    "buildVersion": 1,
+    "bytes": 33720,
+    "triangles": 1417
+   }
   },
   {
    "id": "chunk-face-hembrug-21-27",
@@ -46450,7 +46780,13 @@
       }
      ]
     }
-   ]
+   ],
+   "lod2": {
+    "sourceHash": "4157c727cab0858c",
+    "buildVersion": 1,
+    "bytes": 35364,
+    "triangles": 1497
+   }
   },
   {
    "id": "chunk-face-houtrijk-335-409-r1",
@@ -46714,7 +47050,13 @@
       }
      ]
     }
-   ]
+   ],
+   "lod2": {
+    "sourceHash": "d095592c8fdf15da",
+    "buildVersion": 1,
+    "bytes": 36404,
+    "triangles": 1499
+   }
   },
   {
    "id": "chunk-face-polanen-184-250-r1",
@@ -46978,7 +47320,13 @@
       }
      ]
     }
-   ]
+   ],
+   "lod2": {
+    "sourceHash": "e1cae5871678a7e4",
+    "buildVersion": 1,
+    "bytes": 36420,
+    "triangles": 1498
+   }
   },
   {
    "id": "chunk-face-zaanhof-23-34",
@@ -47674,7 +48022,13 @@
       }
      ]
     }
-   ]
+   ],
+   "lod2": {
+    "sourceHash": "72023cd5768c7a57",
+    "buildVersion": 1,
+    "bytes": 38264,
+    "triangles": 1497
+   }
   },
   {
    "id": "chunk-face-zaanhof-71-78",
@@ -48152,7 +48506,13 @@
       }
      ]
     }
-   ]
+   ],
+   "lod2": {
+    "sourceHash": "ca27173fe22ce3c2",
+    "buildVersion": 1,
+    "bytes": 36148,
+    "triangles": 1480
+   }
   },
   {
    "id": "chunk-face-helmers-209-253-r2",
@@ -48388,7 +48748,13 @@
       }
      ]
     }
-   ]
+   ],
+   "lod2": {
+    "sourceHash": "4cf89adb6b5c7b9f",
+    "buildVersion": 1,
+    "bytes": 37436,
+    "triangles": 1486
+   }
   },
   {
    "id": "chunk-face-helmers-51-73-r1",
@@ -48708,7 +49074,13 @@
       }
      ]
     }
-   ]
+   ],
+   "lod2": {
+    "sourceHash": "e05755c1c6a3fcc9",
+    "buildVersion": 1,
+    "bytes": 39492,
+    "triangles": 1497
+   }
   },
   {
    "id": "chunk-face-helmers-23-57-r1",
@@ -49062,7 +49434,13 @@
       }
      ]
     }
-   ]
+   ],
+   "lod2": {
+    "sourceHash": "3fe46d423662d4c0",
+    "buildVersion": 1,
+    "bytes": 41768,
+    "triangles": 1452
+   }
   },
   {
    "id": "chunk-face-helmers-23-57-r2",
@@ -49710,7 +50088,13 @@
       }
      ]
     }
-   ]
+   ],
+   "lod2": {
+    "sourceHash": "fee1ef6b91ba1317",
+    "buildVersion": 1,
+    "bytes": 28804,
+    "triangles": 1009
+   }
   },
   {
    "id": "chunk-face-helmers-23-57-r3",
@@ -49962,7 +50346,13 @@
       }
      ]
     }
-   ]
+   ],
+   "lod2": {
+    "sourceHash": "3839a8f153e22234",
+    "buildVersion": 1,
+    "bytes": 35088,
+    "triangles": 1496
+   }
   },
   {
    "id": "chunk-face-helmers-108-174-r1",
@@ -50198,7 +50588,13 @@
       }
      ]
     }
-   ]
+   ],
+   "lod2": {
+    "sourceHash": "d8a964e94b9eeac0",
+    "buildVersion": 1,
+    "bytes": 36036,
+    "triangles": 1499
+   }
   },
   {
    "id": "chunk-face-cuyp-130-168-r1",
@@ -50446,7 +50842,13 @@
       }
      ]
     }
-   ]
+   ],
+   "lod2": {
+    "sourceHash": "940685129c520a62",
+    "buildVersion": 1,
+    "bytes": 35976,
+    "triangles": 1499
+   }
   },
   {
    "id": "chunk-face-cuyp-130-168-r2",
@@ -51364,7 +51766,13 @@
       }
      ]
     }
-   ]
+   ],
+   "lod2": {
+    "sourceHash": "fb358bdafe397553",
+    "buildVersion": 1,
+    "bytes": 44644,
+    "triangles": 1412
+   }
   },
   {
    "id": "chunk-face-wou-32-52-r1",
@@ -51725,7 +52133,13 @@
       }
      ]
     }
-   ]
+   ],
+   "lod2": {
+    "sourceHash": "7644eb5ea1c590b9",
+    "buildVersion": 1,
+    "bytes": 43124,
+    "triangles": 1498
+   }
   },
   {
    "id": "chunk-face-wou-32-52-r2",
@@ -51981,7 +52395,13 @@
       }
      ]
     }
-   ]
+   ],
+   "lod2": {
+    "sourceHash": "8941b063416bf733",
+    "buildVersion": 1,
+    "bytes": 38572,
+    "triangles": 1499
+   }
   },
   {
    "id": "chunk-face-wou-54-72-r1",
@@ -52458,7 +52878,13 @@
       }
      ]
     }
-   ]
+   ],
+   "lod2": {
+    "sourceHash": "7d094467dbacf6f8",
+    "buildVersion": 1,
+    "bytes": 39096,
+    "triangles": 1360
+   }
   },
   {
    "id": "chunk-face-wou-54-72-r2",
@@ -52723,7 +53149,13 @@
       }
      ]
     }
-   ]
+   ],
+   "lod2": {
+    "sourceHash": "9f002aae8c0dff2e",
+    "buildVersion": 1,
+    "bytes": 39812,
+    "triangles": 1500
+   }
   },
   {
    "id": "chunk-face-bol-12-22-r2",
@@ -52990,7 +53422,13 @@
       }
      ]
     }
-   ]
+   ],
+   "lod2": {
+    "sourceHash": "efe774be3e4bbbaf",
+    "buildVersion": 1,
+    "bytes": 36396,
+    "triangles": 1500
+   }
   },
   {
    "id": "chunk-face-bol-24-38-r1",
@@ -53242,7 +53680,13 @@
       }
      ]
     }
-   ]
+   ],
+   "lod2": {
+    "sourceHash": "1141e8387266e84e",
+    "buildVersion": 1,
+    "bytes": 37036,
+    "triangles": 1499
+   }
   },
   {
    "id": "chunk-face-kinker-1-29",
@@ -54483,7 +54927,13 @@
       }
      ]
     }
-   ]
+   ],
+   "lod2": {
+    "sourceHash": "71ac72bc79b0f6de",
+    "buildVersion": 1,
+    "bytes": 44896,
+    "triangles": 1374
+   }
   },
   {
    "id": "chunk-face-kinker-2-30",
@@ -56134,7 +56584,13 @@
       }
      ]
     }
-   ]
+   ],
+   "lod2": {
+    "sourceHash": "3ba5ae48f1ac4d66",
+    "buildVersion": 1,
+    "bytes": 43016,
+    "triangles": 1482
+   }
   },
   {
    "id": "chunk-face-kinker-56-84",
@@ -56748,7 +57204,13 @@
       }
      ]
     }
-   ]
+   ],
+   "lod2": {
+    "sourceHash": "d5a1f6056ce581b1",
+    "buildVersion": 1,
+    "bytes": 43020,
+    "triangles": 1445
+   }
   },
   {
    "id": "chunk-face-kinker-206-242",
@@ -58315,7 +58777,13 @@
       }
      ]
     }
-   ]
+   ],
+   "lod2": {
+    "sourceHash": "79bda9f3ff968492",
+    "buildVersion": 1,
+    "bytes": 43952,
+    "triangles": 1425
+   }
   },
   {
    "id": "chunk-face-kinker-376-380",
@@ -58635,7 +59103,13 @@
       }
      ]
     }
-   ]
+   ],
+   "lod2": {
+    "sourceHash": "9dc34f80b841b7fc",
+    "buildVersion": 1,
+    "bytes": 40028,
+    "triangles": 1500
+   }
   },
   {
    "id": "chunk-face-kinker-112-116",
@@ -58882,7 +59356,13 @@
       }
      ]
     }
-   ]
+   ],
+   "lod2": {
+    "sourceHash": "8b722a7fc2ce430d",
+    "buildVersion": 1,
+    "bytes": 39176,
+    "triangles": 1500
+   }
   },
   {
    "id": "chunk-face-dou-222-254-r1",
@@ -59229,7 +59709,13 @@
       }
      ]
     }
-   ]
+   ],
+   "lod2": {
+    "sourceHash": "ed3207c34846a786",
+    "buildVersion": 1,
+    "bytes": 40692,
+    "triangles": 1493
+   }
   },
   {
    "id": "chunk-face-wou-74-92-r1",
@@ -59567,7 +60053,13 @@
       }
      ]
     }
-   ]
+   ],
+   "lod2": {
+    "sourceHash": "08fbcd564d76f4b9",
+    "buildVersion": 1,
+    "bytes": 41700,
+    "triangles": 1500
+   }
   },
   {
    "id": "chunk-face-cuyp-102-130-r1",
@@ -59930,7 +60422,13 @@
       }
      ]
     }
-   ]
+   ],
+   "lod2": {
+    "sourceHash": "80909159ae19a2bf",
+    "buildVersion": 1,
+    "bytes": 41268,
+    "triangles": 1499
+   }
   },
   {
    "id": "chunk-face-cuyp-184-232-r1",
@@ -60281,7 +60779,13 @@
       }
      ]
     }
-   ]
+   ],
+   "lod2": {
+    "sourceHash": "9e8db36c4fd0027a",
+    "buildVersion": 1,
+    "bytes": 40688,
+    "triangles": 1499
+   }
   },
   {
    "id": "chunk-face-steen-84-140-r2",
@@ -60633,7 +61137,13 @@
       }
      ]
     }
-   ]
+   ],
+   "lod2": {
+    "sourceHash": "21f5e1f971a1a8e9",
+    "buildVersion": 1,
+    "bytes": 39168,
+    "triangles": 1467
+   }
   },
   {
    "id": "chunk-face-helst-66-82-r1",
@@ -60917,7 +61427,13 @@
       }
      ]
     }
-   ]
+   ],
+   "lod2": {
+    "sourceHash": "413da6c3602c70f6",
+    "buildVersion": 1,
+    "bytes": 39756,
+    "triangles": 1500
+   }
   },
   {
    "id": "chunk-face-campen-27-59-r1",
@@ -61163,7 +61679,13 @@
       }
      ]
     }
-   ]
+   ],
+   "lod2": {
+    "sourceHash": "5e34af6e55bd4901",
+    "buildVersion": 1,
+    "bytes": 34804,
+    "triangles": 1499
+   }
   },
   {
    "id": "chunk-face-campen-2-34-r2",
@@ -61612,7 +62134,13 @@
       }
      ]
     }
-   ]
+   ],
+   "lod2": {
+    "sourceHash": "eff02c1ccd117675",
+    "buildVersion": 1,
+    "bytes": 40088,
+    "triangles": 1458
+   }
   },
   {
    "id": "chunk-face-ruysdaelkade-75-85-r1",
@@ -61933,7 +62461,13 @@
       }
      ]
     }
-   ]
+   ],
+   "lod2": {
+    "sourceHash": "1ebdb9a8bbbd8c5a",
+    "buildVersion": 1,
+    "bytes": 37164,
+    "triangles": 1499
+   }
   },
   {
    "id": "chunk-face-dou-128-174-r1",
@@ -62264,7 +62798,13 @@
       }
      ]
     }
-   ]
+   ],
+   "lod2": {
+    "sourceHash": "bc09218c408515fb",
+    "buildVersion": 1,
+    "bytes": 38848,
+    "triangles": 1499
+   }
   },
   {
    "id": "chunk-face-saenredam-62-66-r1",
@@ -62526,7 +63066,13 @@
       }
      ]
     }
-   ]
+   ],
+   "lod2": {
+    "sourceHash": "96a63fdbd94bd938",
+    "buildVersion": 1,
+    "bytes": 37240,
+    "triangles": 1500
+   }
   },
   {
    "id": "chunk-face-cuyp-80-88-r1",
@@ -62796,7 +63342,13 @@
       }
      ]
     }
-   ]
+   ],
+   "lod2": {
+    "sourceHash": "c7c606e2e30eb6c4",
+    "buildVersion": 1,
+    "bytes": 38452,
+    "triangles": 1499
+   }
   },
   {
    "id": "chunk-face-wou-12-22-r1",
@@ -63178,7 +63730,13 @@
       }
      ]
     }
-   ]
+   ],
+   "lod2": {
+    "sourceHash": "2c777e2b25eb9bf7",
+    "buildVersion": 1,
+    "bytes": 42724,
+    "triangles": 1499
+   }
   },
   {
    "id": "chunk-face-heijden-2-40-r1",
@@ -63427,7 +63985,13 @@
       }
      ]
     }
-   ]
+   ],
+   "lod2": {
+    "sourceHash": "259e78227e2ca44f",
+    "buildVersion": 1,
+    "bytes": 37852,
+    "triangles": 1499
+   }
   },
   {
    "id": "chunk-face-helst-56-62-r1",
@@ -63697,7 +64261,13 @@
       }
      ]
     }
-   ]
+   ],
+   "lod2": {
+    "sourceHash": "33ecbd832e8ccd2b",
+    "buildVersion": 1,
+    "bytes": 40060,
+    "triangles": 1500
+   }
   },
   {
    "id": "chunk-face-helst-39-49-r1",
@@ -64083,7 +64653,13 @@
       }
      ]
     }
-   ]
+   ],
+   "lod2": {
+    "sourceHash": "9bf16f46263a1249",
+    "buildVersion": 1,
+    "bytes": 41580,
+    "triangles": 1466
+   }
   },
   {
    "id": "chunk-face-helst-51-67-r1",
@@ -64357,7 +64933,13 @@
       }
      ]
     }
-   ]
+   ],
+   "lod2": {
+    "sourceHash": "526a08d4c899536b",
+    "buildVersion": 1,
+    "bytes": 40864,
+    "triangles": 1500
+   }
   },
   {
    "id": "chunk-face-bloemgracht-138-300-r1",
@@ -64702,7 +65284,13 @@
       }
      ]
     }
-   ]
+   ],
+   "lod2": {
+    "sourceHash": "3e676b4848be7479",
+    "buildVersion": 1,
+    "bytes": 40848,
+    "triangles": 1495
+   }
   },
   {
    "id": "chunk-face-luthuli-21-41-r1",
@@ -65236,7 +65824,13 @@
       }
      ]
     }
-   ]
+   ],
+   "lod2": {
+    "sourceHash": "379694de6ce1bada",
+    "buildVersion": 1,
+    "bytes": 33780,
+    "triangles": 1279
+   }
   },
   {
    "id": "chunk-face-retief-45-75-r1",
@@ -65569,7 +66163,13 @@
       }
      ]
     }
-   ]
+   ],
+   "lod2": {
+    "sourceHash": "2c82ea403fcfcd35",
+    "buildVersion": 1,
+    "bytes": 38380,
+    "triangles": 1457
+   }
   },
   {
    "id": "chunk-face-pretorius-72-120-r1",
@@ -65925,7 +66525,13 @@
       }
      ]
     }
-   ]
+   ],
+   "lod2": {
+    "sourceHash": "4b3bfe9278e44b47",
+    "buildVersion": 1,
+    "bytes": 38504,
+    "triangles": 1418
+   }
   },
   {
    "id": "chunk-face-pretorius-71-95-r1",
@@ -66201,7 +66807,13 @@
       }
      ]
     }
-   ]
+   ],
+   "lod2": {
+    "sourceHash": "97283e3a708cf3fa",
+    "buildVersion": 1,
+    "bytes": 39588,
+    "triangles": 1498
+   }
   },
   {
    "id": "chunk-face-pretorius-71-95-r2",
@@ -66477,7 +67089,13 @@
       }
      ]
     }
-   ]
+   ],
+   "lod2": {
+    "sourceHash": "bab212e93546adf2",
+    "buildVersion": 1,
+    "bytes": 38240,
+    "triangles": 1498
+   }
   },
   {
    "id": "chunk-face-vaalrivier-2-14-r1",
@@ -67017,7 +67635,13 @@
       }
      ]
     }
-   ]
+   ],
+   "lod2": {
+    "sourceHash": "270768b0291ba869",
+    "buildVersion": 1,
+    "bytes": 38992,
+    "triangles": 1497
+   }
   },
   {
    "id": "chunk-face-kraaipan-63-65",
@@ -67251,7 +67875,13 @@
       }
      ]
     }
-   ]
+   ],
+   "lod2": {
+    "sourceHash": "711045125f7f4d67",
+    "buildVersion": 1,
+    "bytes": 34688,
+    "triangles": 1493
+   }
   },
   {
    "id": "chunk-face-retief-194-268-r1",
@@ -67477,7 +68107,13 @@
       }
      ]
     }
-   ]
+   ],
+   "lod2": {
+    "sourceHash": "1024ef122b0d5ab2",
+    "buildVersion": 1,
+    "bytes": 31524,
+    "triangles": 1499
+   }
   },
   {
    "id": "chunk-face-retief-194-268-r2",
@@ -67800,7 +68436,13 @@
       }
      ]
     }
-   ]
+   ],
+   "lod2": {
+    "sourceHash": "58fccb4cf70bb192",
+    "buildVersion": 1,
+    "bytes": 35144,
+    "triangles": 1500
+   }
   },
   {
    "id": "chunk-face-reij-25-39-r1",
@@ -68415,7 +69057,13 @@
       }
      ]
     }
-   ]
+   ],
+   "lod2": {
+    "sourceHash": "406dbc95325dc5bc",
+    "buildVersion": 1,
+    "bytes": 36328,
+    "triangles": 1350
+   }
   },
   {
    "id": "chunk-face-kraaipan-41-45-r1",
@@ -68699,7 +69347,13 @@
       }
      ]
     }
-   ]
+   ],
+   "lod2": {
+    "sourceHash": "4546c2c123fd6492",
+    "buildVersion": 1,
+    "bytes": 34476,
+    "triangles": 1498
+   }
   },
   {
    "id": "chunk-face-transvaalkade-103-105",
@@ -68971,7 +69625,13 @@
       }
      ]
     }
-   ]
+   ],
+   "lod2": {
+    "sourceHash": "02e3dbe8a982653e",
+    "buildVersion": 1,
+    "bytes": 35440,
+    "triangles": 1493
+   }
   },
   {
    "id": "chunk-face-theron-2-36-r1",
@@ -69473,7 +70133,13 @@
       }
      ]
     }
-   ]
+   ],
+   "lod2": {
+    "sourceHash": "46aba9b8839c933f",
+    "buildVersion": 1,
+    "bytes": 20004,
+    "triangles": 778
+   }
   },
   {
    "id": "chunk-face-theron-9-37-r1",
@@ -69701,7 +70367,13 @@
       }
      ]
     }
-   ]
+   ],
+   "lod2": {
+    "sourceHash": "495d09c2a8c28850",
+    "buildVersion": 1,
+    "bytes": 35384,
+    "triangles": 1500
+   }
   },
   {
    "id": "chunk-face-theron-9-37-r2",
@@ -70108,7 +70780,13 @@
       }
      ]
     }
-   ]
+   ],
+   "lod2": {
+    "sourceHash": "050d88c3cb47cf71",
+    "buildVersion": 1,
+    "bytes": 31604,
+    "triangles": 1400
+   }
   },
   {
    "id": "chunk-face-transvaal-3-47-r1",
@@ -70384,7 +71062,13 @@
       }
      ]
     }
-   ]
+   ],
+   "lod2": {
+    "sourceHash": "c952c266407dc25c",
+    "buildVersion": 1,
+    "bytes": 36980,
+    "triangles": 1500
+   }
   },
   {
    "id": "chunk-face-transvaal-42-48-r1",
@@ -70648,7 +71332,13 @@
       }
      ]
     }
-   ]
+   ],
+   "lod2": {
+    "sourceHash": "b3858805118019e4",
+    "buildVersion": 1,
+    "bytes": 36772,
+    "triangles": 1496
+   }
   },
   {
    "id": "chunk-face-retief-45-75-r2",
@@ -70791,7 +71481,13 @@
       }
      ]
     }
-   ]
+   ],
+   "lod2": {
+    "sourceHash": "193087c3b3234843",
+    "buildVersion": 1,
+    "bytes": 27780,
+    "triangles": 1499
+   }
   },
   {
    "id": "chunk-face-retief-45-75-r3",
@@ -70934,7 +71630,13 @@
       }
      ]
     }
-   ]
+   ],
+   "lod2": {
+    "sourceHash": "d0af55a3279be865",
+    "buildVersion": 1,
+    "bytes": 27864,
+    "triangles": 1499
+   }
   },
   {
    "id": "chunk-face-pretorius-1-33-r1",
@@ -71077,7 +71779,13 @@
       }
      ]
     }
-   ]
+   ],
+   "lod2": {
+    "sourceHash": "11027e709d6ab08b",
+    "buildVersion": 1,
+    "bytes": 26744,
+    "triangles": 1499
+   }
   },
   {
    "id": "chunk-face-paardekraal-1-15-r1",
@@ -71220,7 +71928,13 @@
       }
      ]
     }
-   ]
+   ],
+   "lod2": {
+    "sourceHash": "233b2d6a96ac9936",
+    "buildVersion": 1,
+    "bytes": 27988,
+    "triangles": 1498
+   }
   },
   {
    "id": "chunk-face-afrikanerplein-25-55-r1",
@@ -72176,7 +72890,13 @@
       }
      ]
     }
-   ]
+   ],
+   "lod2": {
+    "sourceHash": "78297dffe26e913d",
+    "buildVersion": 1,
+    "bytes": 35944,
+    "triangles": 1481
+   }
   },
   {
    "id": "chunk-face-bree-107-149-r1",
@@ -72590,7 +73310,13 @@
       }
      ]
     }
-   ]
+   ],
+   "lod2": {
+    "sourceHash": "334d0cbba10ede8f",
+    "buildVersion": 1,
+    "bytes": 37592,
+    "triangles": 1500
+   }
   },
   {
    "id": "chunk-face-florisz-2-10-r1",
@@ -73018,7 +73744,13 @@
       }
      ]
     }
-   ]
+   ],
+   "lod2": {
+    "sourceHash": "c9bc4d472e0fba67",
+    "buildVersion": 1,
+    "bytes": 38732,
+    "triangles": 1489
+   }
   },
   {
    "id": "chunk-face-florisz-12-38-r1",
@@ -73447,7 +74179,13 @@
       }
      ]
     }
-   ]
+   ],
+   "lod2": {
+    "sourceHash": "1f05db4731d31ba7",
+    "buildVersion": 1,
+    "bytes": 38568,
+    "triangles": 1500
+   }
   },
   {
    "id": "chunk-face-wouwerman-2-44-r1",
@@ -73979,7 +74717,13 @@
       }
      ]
     }
-   ]
+   ],
+   "lod2": {
+    "sourceHash": "d2f8dbcc97d0e141",
+    "buildVersion": 1,
+    "bytes": 38076,
+    "triangles": 1482
+   }
   },
   {
    "id": "chunk-face-maes-31-71-r1",
@@ -74781,7 +75525,13 @@
       }
      ]
     }
-   ]
+   ],
+   "lod2": {
+    "sourceHash": "42ca00ccf5e1f13b",
+    "buildVersion": 1,
+    "bytes": 30020,
+    "triangles": 1251
+   }
   },
   {
    "id": "chunk-face-helmers-209-253-r1",
@@ -75745,7 +76495,13 @@
       }
      ]
     }
-   ]
+   ],
+   "lod2": {
+    "sourceHash": "eea89eb876d2affb",
+    "buildVersion": 1,
+    "bytes": 43928,
+    "triangles": 1473
+   }
   },
   {
    "id": "chunk-face-helmers-32-66-r1",
@@ -76001,7 +76757,13 @@
       }
      ]
     }
-   ]
+   ],
+   "lod2": {
+    "sourceHash": "4c6e0abd62213fdd",
+    "buildVersion": 1,
+    "bytes": 40196,
+    "triangles": 1484
+   }
   },
   {
    "id": "chunk-face-helmers-32-66-r2",
@@ -76257,7 +77019,13 @@
       }
      ]
     }
-   ]
+   ],
+   "lod2": {
+    "sourceHash": "0f1d33a3c8c5b0d3",
+    "buildVersion": 1,
+    "bytes": 39516,
+    "triangles": 1482
+   }
   },
   {
    "id": "chunk-face-burger-45-131-r1",
@@ -76652,7 +77420,13 @@
       }
      ]
     }
-   ]
+   ],
+   "lod2": {
+    "sourceHash": "7afd62b9c6aa72fb",
+    "buildVersion": 1,
+    "bytes": 38728,
+    "triangles": 1500
+   }
   },
   {
    "id": "chunk-face-burger-45-131-r2",
@@ -77047,7 +77821,13 @@
       }
      ]
     }
-   ]
+   ],
+   "lod2": {
+    "sourceHash": "982f17f96ff1f747",
+    "buildVersion": 1,
+    "bytes": 38336,
+    "triangles": 1500
+   }
   },
   {
    "id": "chunk-face-anthonisz-40-72-r1",
@@ -77686,7 +78466,13 @@
       }
      ]
     }
-   ]
+   ],
+   "lod2": {
+    "sourceHash": "0da3d4f424dd2267",
+    "buildVersion": 1,
+    "bytes": 32620,
+    "triangles": 1066
+   }
   },
   {
    "id": "chunk-face-steyn-9-19-r1",
@@ -78136,7 +78922,13 @@
       }
      ]
     }
-   ]
+   ],
+   "lod2": {
+    "sourceHash": "f0de79937b264e06",
+    "buildVersion": 1,
+    "bytes": 37308,
+    "triangles": 1499
+   }
   },
   {
    "id": "chunk-face-zaanhof-1-20",
@@ -79360,7 +80152,13 @@
       }
      ]
     }
-   ]
+   ],
+   "lod2": {
+    "sourceHash": "ed9488eb26d65c10",
+    "buildVersion": 1,
+    "bytes": 38872,
+    "triangles": 1487
+   }
   },
   {
    "id": "chunk-face-zaanhof-125-134",
@@ -80005,7 +80803,13 @@
       }
      ]
     }
-   ]
+   ],
+   "lod2": {
+    "sourceHash": "d8f77dc361e48a3c",
+    "buildVersion": 1,
+    "bytes": 40000,
+    "triangles": 1500
+   }
   },
   {
    "id": "chunk-face-zaanhof-52-55",
@@ -80293,7 +81097,13 @@
       }
      ]
     }
-   ]
+   ],
+   "lod2": {
+    "sourceHash": "1a0383f660886071",
+    "buildVersion": 1,
+    "bytes": 37460,
+    "triangles": 1498
+   }
   },
   {
    "id": "chunk-face-zaanhof-99-104",
@@ -80696,7 +81506,13 @@
       }
      ]
     }
-   ]
+   ],
+   "lod2": {
+    "sourceHash": "b16eabc136873610",
+    "buildVersion": 1,
+    "bytes": 38576,
+    "triangles": 1483
+   }
   },
   {
    "id": "chunk-face-hasebroek-1-41-r1",
@@ -81158,7 +81974,13 @@
       }
      ]
     }
-   ]
+   ],
+   "lod2": {
+    "sourceHash": "88d803a187bd665e",
+    "buildVersion": 1,
+    "bytes": 37428,
+    "triangles": 1283
+   }
   },
   {
    "id": "chunk-face-hasebroek-1-41-r2",
@@ -81695,7 +82517,13 @@
       }
      ]
     }
-   ]
+   ],
+   "lod2": {
+    "sourceHash": "c06c5201202f3f38",
+    "buildVersion": 1,
+    "bytes": 44440,
+    "triangles": 1500
+   }
   },
   {
    "id": "chunk-face-helmers-40-60-r1",
@@ -81947,7 +82775,13 @@
       }
      ]
     }
-   ]
+   ],
+   "lod2": {
+    "sourceHash": "68bbac21da91875a",
+    "buildVersion": 1,
+    "bytes": 38792,
+    "triangles": 1476
+   }
   },
   {
    "id": "chunk-face-luthuli-6-20",
@@ -82537,7 +83371,13 @@
       }
      ]
     }
-   ]
+   ],
+   "lod2": {
+    "sourceHash": "9632d52ca4d2de34",
+    "buildVersion": 1,
+    "bytes": 35416,
+    "triangles": 1470
+   }
   },
   {
    "id": "chunk-face-luthuli-22-32",
@@ -82995,7 +83835,13 @@
       }
      ]
     }
-   ]
+   ],
+   "lod2": {
+    "sourceHash": "0dd9ba21752f44ca",
+    "buildVersion": 1,
+    "bytes": 29360,
+    "triangles": 1118
+   }
   },
   {
    "id": "chunk-face-polanen-181-331-r1",
@@ -84185,7 +85031,13 @@
       }
      ]
     }
-   ]
+   ],
+   "lod2": {
+    "sourceHash": "30128121980a2107",
+    "buildVersion": 1,
+    "bytes": 46068,
+    "triangles": 1470
+   }
   }
  ]
 }

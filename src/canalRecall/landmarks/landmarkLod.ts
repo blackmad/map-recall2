@@ -194,3 +194,23 @@ export function chooseLevel(current: LandmarkLevel, radiusPixels: number): Landm
 export function initialLevel(radiusPixels: number): LandmarkLevel {
   return radiusPixels > LOD_UPGRADE_RADIUS_PX ? 'full' : 'lod1';
 }
+
+/**
+ * Street chunks' lod2 (lane R4-C #245): `<chunk>.lod2.glb` beside the chunk GLB, its record in the chunk's chunks.json
+ * row (`lod2`). Bump to rebuild every chunk lod2. Same simplifier, cap and error bound as the landmarks (a block face is
+ * one long low mass: the bound, not the cap, decides), one primitive per source material with the pand ranges kept.
+ */
+export const CHUNK_LOD2_BUILD_VERSION = 1;
+/**
+ * Chunk lod2 simplifier settings. A block face is long and low with shallow window reveals: the landmark bound (1.25 m at
+ * 2 %) flattens every window into the wall and the white frames go, so the face reads darker than its full model.
+ * Swept on all 142 chunks (lane R4-C): ratio 0.1 / 0.15 m 3.52 MB, 0.25 / 0.3 m 4.73 MB, 1 / 0.1 m (the cap decides)
+ * 5.34 MB.
+ */
+export const CHUNK_LOD2_TRIANGLE_RATIO = 1;
+export const CHUNK_LOD2_MAX_ERROR_M = 0.1;
+
+/** Whether a chunk's stored lod2 is the output of this chunk GLB (its manifest sha256) and the current parameters. */
+export function chunkLod2IsCurrent(record: LandmarkLodRecord | undefined | null, sha256: string | undefined): boolean {
+  return !!record && !!sha256 && record.sourceHash === sha256.slice(0, 16) && record.buildVersion === CHUNK_LOD2_BUILD_VERSION;
+}

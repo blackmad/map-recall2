@@ -4,7 +4,7 @@ import { test } from 'node:test';
 import { Document } from '@gltf-transform/core';
 
 import { lod2IsCurrent, LOD2_BUILD_VERSION, type LandmarkLodEntry } from '../../src/canalRecall/landmarks/landmarkLod';
-import { hasRecipeSlots, lodTable, mergeForLod2, pointTriangleDistanceSq, recolourFaces, shareVertexStreams, trimMaterials } from './build-landmark-lods';
+import { bakeChunkLod2, collectFaces, groupTrianglesByPand, hasRecipeSlots, lodTable, mergeForLod2, pointTriangleDistanceSq, recolourFaces, shareVertexStreams, trimMaterials } from './build-landmark-lods';
 
 test('lodTable: lod1 fields stay at the top level, lod2 beside them, lod2-only models get a row, and it round-trips', () => {
   const lod1 = { sourceHash: 'a', buildVersion: 2, bytes: 10, triangles: 5 };
@@ -109,4 +109,51 @@ test('shareVertexStreams: per-material primitives draw from one position/normal 
   assert.equal(m.getRoughnessFactor(), 1);
   assert.equal(m.getBaseColorFactor()[0], 0.1235);
   assert.deepEqual(m.getExtras(), { materialSlot: 'brick', tint: '#aa0000', materialSlotSource: 'inferred' });
+});
+
+test('groupTrianglesByPand: triangles of a pand become contiguous (stable), ranges written, no-pand triangles last', () => {
+  const doc = new Document(), buffer = doc.createBuffer();
+  const p = new Float32Array(15 * 3);
+  const prim = doc.createPrimitive().setAttribute('POSITION', doc.createAccessor().setType('VEC3').setArray(p).setBuffer(buffer))
+    .setIndices(doc.createAccessor().setType('SCALAR').setArray(new Uint16Array(Array.from({ length: 15 }, (_, i) => i))).setBuffer(buffer));
+  doc.createMesh().addPrimitive(prim);
+  const pands = [2, 0, -1, 2, 0];
+  groupTrianglesByPand(doc, (_k, t) => pands[t]);
+  assert.deepEqual(Array.from(prim.getIndices()!.getArray()!), [3, 4, 5, 12, 13, 14, 0, 1, 2, 9, 10, 11, 6, 7, 8]);
+  assert.deepEqual((prim.getExtras() as { pandRanges: number[][] }).pandRanges, [[0, 0, 2], [2, 2, 2]]);
+});
+
+test('bakeChunkLod2: a real chunk at <= 1,500 triangles, every primitive ranged, faces sit inside their pand (lane R4-C)', async () => {
+  const fs = await import('node:fs'), os = await import('node:os'), path = await import('node:path');
+  const { NodeIO } = await import('@gltf-transform/core');
+  const { ALL_EXTENSIONS } = await import('@gltf-transform/extensions');
+  const { MeshoptDecoder, MeshoptEncoder, MeshoptSimplifier } = await import('meshoptimizer');
+  await Promise.all([MeshoptDecoder.ready, MeshoptEncoder.ready, MeshoptSimplifier.ready]);
+  const id = 'chunk-face-bilder-080336-090492';
+  const source = `public/canal-drive/models/ordinary-buildings/chunks/${id}.glb`;
+  const row = (JSON.parse(fs.readFileSync('public/canal-drive/ordinary-buildings-data/chunks.json', 'utf8')).chunks as { id: string; pands: { bounds: { min: number[]; max: number[] } }[] }[]).find(c => c.id === id)!;
+  const io = new NodeIO().registerExtensions(ALL_EXTENSIONS).registerDependencies({ 'meshopt.encoder': MeshoptEncoder, 'meshopt.decoder': MeshoptDecoder });
+  const out = path.join(fs.mkdtempSync(path.join(os.tmpdir(), 'chunk-lod2-')), `${id}.lod2.glb`);
+  const result = (await bakeChunkLod2(io, id, source, out))!;
+  assert.ok(result.triangles <= 1500 && result.triangles > 100, `${result.triangles} triangles`);
+  assert.equal(result.pands, row.pands.length);
+  const doc = await io.read(out);
+  const faces = collectFaces(doc);
+  assert.equal(faces.facePands.length, result.triangles);
+  assert.ok(faces.facePands.every(p => p >= 0), 'every lod2 face has a pand');
+  // Each primitive's ranges tile its triangles exactly.
+  for (const prim of doc.getRoot().listMeshes()[0].listPrimitives()) {
+    const ranges = (prim.getExtras() as { pandRanges: number[][] }).pandRanges;
+    let next = 0;
+    for (const [, first, count] of ranges) { assert.equal(first, next); next += count; }
+    assert.equal(next, prim.getIndices()!.getCount() / 3);
+  }
+  // A face's centroid lies within its pand's bounds along the frontage (x), a 1.5 m margin for the simplifier.
+  let inside = 0;
+  for (let f = 0; f < faces.facePands.length; f++) {
+    const x = [0, 1, 2].reduce((a, j) => a + faces.positions[faces.indices[f * 3 + j] * 3], 0) / 3;
+    const b = row.pands[faces.facePands[f]].bounds;
+    if (x >= b.min[0] - 1.5 && x <= b.max[0] + 1.5) inside++;
+  }
+  assert.ok(inside / faces.facePands.length > 0.97, `${inside}/${faces.facePands.length} faces inside their pand`);
 });

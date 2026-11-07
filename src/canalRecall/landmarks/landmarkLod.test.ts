@@ -94,3 +94,20 @@ test('lod2 level choice: small on screen, and far from the centre only from the 
   assert.equal(chooseLandmarkLevel('lod2', { ...base, hasLod1: false, radiusPixels: 5, aerialDistanceM: null }), 'lod2');
   assert.equal(chooseLandmarkLevel('lod2', { ...base, hasLod1: false, radiusPixels: 40 }), 'full');
 });
+
+test('street chunk lod2 (lane R4-C): current only for this GLB hash and build version; chunkSpecFor carries it only then', async () => {
+  const { chunkLod2IsCurrent, CHUNK_LOD2_BUILD_VERSION } = await import('./landmarkLod');
+  const { chunkSpecFor } = await import('./ordinaryChunks');
+  const sha256 = 'abcdef0123456789' + '0'.repeat(48);
+  const record = { sourceHash: 'abcdef0123456789', buildVersion: CHUNK_LOD2_BUILD_VERSION, bytes: 9, triangles: 3 };
+  assert.ok(chunkLod2IsCurrent(record, sha256));
+  assert.ok(!chunkLod2IsCurrent({ ...record, buildVersion: CHUNK_LOD2_BUILD_VERSION + 1 }, sha256));
+  assert.ok(!chunkLod2IsCurrent(record, 'ffff' + sha256.slice(4)));
+  assert.ok(!chunkLod2IsCurrent(undefined, sha256));
+  const row = { id: 'chunk-x', category: 'street-survey' as const, name: 'x', modelUrl: './x.glb', sha256, bytes: 1, triangles: 1, primitives: 1,
+    instance: { anchor: [4.9, 52.37] as [number, number], northOffsetDegrees: 0, mirror: false as const }, bounds: { min: [0, 0, 0], max: [10, 10, 5] }, height: 10,
+    suppress: [], replaces: [], footprint: { type: 'MultiPolygon' as const, coordinates: [] }, pands: [] };
+  assert.equal(chunkSpecFor(row).chunkLod2, undefined);
+  assert.deepEqual(chunkSpecFor({ ...row, lod2: record }).chunkLod2, record);
+  assert.equal(chunkSpecFor({ ...row, lod2: { ...record, sourceHash: 'stale' } }).chunkLod2, undefined);
+});

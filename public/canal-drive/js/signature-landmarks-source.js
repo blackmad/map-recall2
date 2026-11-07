@@ -34,6 +34,7 @@ import { applyMeshHighlight, highlightRecipe, LANDMARK_WORLD_UP } from '../../..
 import { chooseLandmarkLevel, initialLandmarkLevel, lod2IsCurrent, lod2Url } from '../../../src/canalRecall/landmarks/landmarkLod.ts';
 import { LandmarkBatch, batchingMaterial, mergeLevelByLook, mergeLevelByMaterial, mergeSiblingsByMaterial } from '../../../src/canalRecall/landmarks/landmarkBatch.ts';
 import { isAerialView } from '../../../src/canalRecall/rendererShared/aerialView.ts';
+import { lowestPandBase } from '../../../src/canalRecall/streetChunks/mergeRanges.ts';
 import { DEPTH_FADE_OPT_OUT } from '../../../src/canalRecall/look/depthFade.ts';
 const { THREE, GLTFLoader, MeshoptDecoder } = window.CanalRecallThree;
 const { SIGNATURE_MODELS, placementFor, basemapBuildingFilter } = window.CanalRecallSignatureLandmarks;
@@ -51,7 +52,8 @@ const assetUrl = (path, id) => {
 const levelUrl = (spec, level) => {
   if (level === 'lod2') {
     const url = new URL(lod2Url(spec.modelUrl), window.location.href);
-    const record = lodApi().MODEL_LODS[spec.id].lod2;
+    // A street chunk's lod2 record rides on its spec (chunks.json row, lane R4-C #245); a landmark's is in modelLods.json.
+    const record = spec.chunkLod2 ?? lodApi().MODEL_LODS[spec.id].lod2;
     url.searchParams.set('asset', `${record.sourceHash}-${record.buildVersion}`);
     return url.href;
   }
@@ -987,47 +989,19 @@ export class SignatureLandmarks {
    */
   _applyChunkPandBases(entry) {
     const api = window.CanalRecallOwnGround;
-    if (!entry.chunkPands) {
-      // Once: give every pand its own vertices and remember the unlifted positions.
-      const meshes = [];
-      entry.group.updateMatrixWorld(true);
-      const groupInverse = new THREE.Matrix4().copy(entry.group.matrixWorld).invert();
-      entry.group.traverse(object => {
-        const ranges = object.isMesh && object.geometry?.userData?.pandRanges;
-        if (!ranges || !object.geometry.index) return;
-        const g = object.geometry, sep = api.separatePands(g.index.array, g.attributes.position.count, ranges);
-        // Position through the accessors as plain floats (the lift writes floats into it; glTF positions may be
-        // interleaved or quantized). Every other attribute keeps its stored type and normalized flag when the
-        // bundle has the strided remap (compactIndex ships with it): a Uint8 tint widened to float was 4x the
-        // bytes, 16 MB of CPU copies on a 60 s desktop ride (heap gate, #130). Same values through the accessors.
-        const getters = ['getX', 'getY', 'getZ', 'getW'], typed = typeof api.compactIndex === 'function';
-        for (const name of Object.keys(g.attributes)) {
-          const a = g.attributes[name], size = a.itemSize;
-          if (typed && name !== 'position') {
-            const array = a.isInterleavedBufferAttribute ? a.data.array : a.array;
-            const out = api.remapAttribute(array, size, sep.source, a.isInterleavedBufferAttribute ? a.data.stride : size, a.isInterleavedBufferAttribute ? a.offset : 0);
-            g.setAttribute(name, new THREE.BufferAttribute(out, size, a.normalized));
-            continue;
-          }
-          const out = new Float32Array(sep.source.length * size);
-          for (let v = 0; v < sep.source.length; v++) for (let c = 0; c < size; c++) out[v * size + c] = a[getters[c]](sep.source[v]);
-          g.setAttribute(name, new THREE.BufferAttribute(out, size, false));
-        }
-        g.setIndex(new THREE.BufferAttribute(typed ? api.compactIndex(sep.index, sep.source.length) : sep.index, 1));
-        // The split attributes are final now: free their CPU copies once uploaded (position stays for the lift).
-        if (this._releaseOn()) releaseGeometryOnUpload(g);
-        // mesh-local → Mercator (holder space = Mercator; the holder's own lift stays 0 for chunks).
-        const toMercator = new THREE.Matrix4().copy(entry.transform).multiply(entry.group.matrix).multiply(groupInverse).multiply(object.matrixWorld);
-        const up = new THREE.Vector3(0, 0, entry.units).applyMatrix4(new THREE.Matrix4().copy(toMercator).invert().setPosition(0, 0, 0));
-        meshes.push({ geometry: g, owner: sep.owner, base: g.attributes.position.array.slice(), toMercator, dir: [up.x, up.y, up.z] });
-      });
-      entry.chunkPands = { meshes, bases: null };
-      if (entry.groundBase) { entry.groundBase = 0; entry.holder.matrix.copy(entry.transform); entry.holder.matrixWorldNeedsUpdate = true; }
+    // A chunk drawn at its lod2 (lane R4-C #245) is not split: it measures its pands (from the full level once that has
+    // been separated, else from its own geometry, read only) and the holder takes the lowest pand base, one matrix.
+    const lod2 = entry.level === 'lod2';
+    if (!lod2 && !entry.chunkPands) entry.chunkPands = { meshes: this._chunkPandMeshes(entry, api, true), bases: null };
+    let state = entry.chunkPands;
+    if (lod2 && !state) {
+      if (entry.chunkPandsLod2?.level !== entry.imported) entry.chunkPandsLod2 = { level: entry.imported, meshes: this._chunkPandMeshes(entry, api, false), bases: null };
+      state = entry.chunkPandsLod2;
     }
     // Lowest relief under each pand's ground-level vertices, across all its primitives.
     const bases = new Map();
     const v = new THREE.Vector3();
-    for (const m of entry.chunkPands.meshes) {
+    for (const m of state.meshes) {
       // Each pand's ground-level points as lng/lat, once per mesh (the unlifted positions never change) and without
       // repeats: the primitives share their footprint corners, and every re-base used to redo the projections (#129).
       if (!m.groundPoints) {
@@ -1049,18 +1023,81 @@ export class SignatureLandmarks {
         bases.set(pand, Math.min(bases.has(pand) ? bases.get(pand) : Infinity, z ?? 0));
       }
     }
+    let changed = false;
     const key = [...bases].map(([k, z]) => `${k}:${z.toFixed(3)}`).join(',');
-    if (key === entry.chunkPands.bases) return false;
-    entry.chunkPands.bases = key;
-    for (const m of entry.chunkPands.meshes) {
-      m.geometry.attributes.position.array.set(api.liftPands(m.base, m.owner, m.dir, pand => bases.get(pand) ?? 0));
-      m.geometry.attributes.position.needsUpdate = true;
-      m.geometry.computeBoundingSphere();
-      m.geometry.computeBoundingBox();
+    if (key !== state.bases) {
+      state.bases = key;
+      if (state === entry.chunkPands) for (const m of state.meshes) {
+        m.geometry.attributes.position.array.set(api.liftPands(m.base, m.owner, m.dir, pand => bases.get(pand) ?? 0));
+        m.geometry.attributes.position.needsUpdate = true;
+        m.geometry.computeBoundingSphere();
+        m.geometry.computeBoundingBox();
+      }
+      entry.pandBases = Object.fromEntries(bases);
+      entry.pickBox = null;
+      changed = true;
     }
-    entry.pandBases = Object.fromEntries(bases);
-    entry.pickBox = null;
-    return true;
+    // The holder: street level under the per-pand lifted full level, the lowest pand base under the lod2.
+    const lift = lod2 ? lowestPandBase(bases) : 0;
+    if (lift !== entry.groundBase) {
+      entry.groundBase = lift;
+      if (lift) entry.holder.matrix.makeTranslation(0, 0, lift * entry.units).multiply(entry.transform);
+      else entry.holder.matrix.copy(entry.transform);
+      entry.holder.matrixWorldNeedsUpdate = true;
+      if (entry.batched) entry.batched.forEach((mesh, i) => this._batch.setMatrix(entry.batchIds[i], this._batchMatrix(entry, mesh)));
+      entry.pickBox = null;
+      changed = true;
+    }
+    return changed;
+  }
+
+  /**
+   * A chunk level's meshes with pand ranges, each as { geometry, owner, base, toMercator, dir }. `separate`: give every
+   * pand its own vertices in the geometry (the full level, lifted per pand); otherwise only measure (geometry null).
+   */
+  _chunkPandMeshes(entry, api, separate) {
+    const meshes = [];
+    entry.group.updateMatrixWorld(true);
+    const groupInverse = new THREE.Matrix4().copy(entry.group.matrixWorld).invert();
+    entry.group.traverse(object => {
+      const ranges = object.isMesh && object.geometry?.userData?.pandRanges;
+      if (!ranges || !object.geometry.index) return;
+      const g = object.geometry, sep = api.separatePands(g.index.array, g.attributes.position.count, ranges);
+      if (!separate) {
+        // Measure only (a lod2, lane R4-C #245): the unlifted positions per separated vertex, the geometry untouched.
+        const p = g.attributes.position, base = new Float32Array(sep.source.length * 3);
+        for (let v = 0; v < sep.source.length; v++) { base[v * 3] = p.getX(sep.source[v]); base[v * 3 + 1] = p.getY(sep.source[v]); base[v * 3 + 2] = p.getZ(sep.source[v]); }
+        const toMercator = new THREE.Matrix4().copy(entry.transform).multiply(entry.group.matrix).multiply(groupInverse).multiply(object.matrixWorld);
+        const up = new THREE.Vector3(0, 0, entry.units).applyMatrix4(new THREE.Matrix4().copy(toMercator).invert().setPosition(0, 0, 0));
+        meshes.push({ geometry: null, owner: sep.owner, base, toMercator, dir: [up.x, up.y, up.z] });
+        return;
+      }
+      // Position through the accessors as plain floats (the lift writes floats into it; glTF positions may be
+      // interleaved or quantized). Every other attribute keeps its stored type and normalized flag when the
+      // bundle has the strided remap (compactIndex ships with it): a Uint8 tint widened to float was 4x the
+      // bytes, 16 MB of CPU copies on a 60 s desktop ride (heap gate, #130). Same values through the accessors.
+      const getters = ['getX', 'getY', 'getZ', 'getW'], typed = typeof api.compactIndex === 'function';
+      for (const name of Object.keys(g.attributes)) {
+        const a = g.attributes[name], size = a.itemSize;
+        if (typed && name !== 'position') {
+          const array = a.isInterleavedBufferAttribute ? a.data.array : a.array;
+          const out = api.remapAttribute(array, size, sep.source, a.isInterleavedBufferAttribute ? a.data.stride : size, a.isInterleavedBufferAttribute ? a.offset : 0);
+          g.setAttribute(name, new THREE.BufferAttribute(out, size, a.normalized));
+          continue;
+        }
+        const out = new Float32Array(sep.source.length * size);
+        for (let v = 0; v < sep.source.length; v++) for (let c = 0; c < size; c++) out[v * size + c] = a[getters[c]](sep.source[v]);
+        g.setAttribute(name, new THREE.BufferAttribute(out, size, false));
+      }
+      g.setIndex(new THREE.BufferAttribute(typed ? api.compactIndex(sep.index, sep.source.length) : sep.index, 1));
+      // The split attributes are final now: free their CPU copies once uploaded (position stays for the lift).
+      if (this._releaseOn()) releaseGeometryOnUpload(g);
+      // mesh-local → Mercator (holder space = Mercator; the holder's own lift stays 0 for chunks).
+      const toMercator = new THREE.Matrix4().copy(entry.transform).multiply(entry.group.matrix).multiply(groupInverse).multiply(object.matrixWorld);
+      const up = new THREE.Vector3(0, 0, entry.units).applyMatrix4(new THREE.Matrix4().copy(toMercator).invert().setPosition(0, 0, 0));
+      meshes.push({ geometry: g, owner: sep.owner, base: g.attributes.position.array.slice(), toMercator, dir: [up.x, up.y, up.z] });
+    });
+    return meshes;
   }
 
   /** Normalises a loaded model onto its anchor and builds its fixed transform.
@@ -1190,9 +1227,17 @@ export class SignatureLandmarks {
   }
 
   _hasLod2(spec) {
-    if (!this._lod2On() || spec.sharedModel || spec.sceneFactory || spec.chunkPands) return false;
+    // Street chunks (lane R4-C #245, `?chunkLod2=0` restores): a lod2 built from the GLB drawn now (chunkSpecFor checks the hash).
+    if (spec.chunkPands) return this._chunkLod2On() && !!spec.chunkLod2;
+    if (!this._lod2On() || spec.sharedModel || spec.sceneFactory) return false;
     const api = lodApi();
     return lod2IsCurrent(api.MODEL_LODS?.[spec.id]?.lod2, api.MODEL_ASSET_VERSIONS?.[spec.id]);
+  }
+
+  /** `?chunkLod2=0` (lane R4-C #245): street chunks keep their full GLB from the air (no stand-in, no batch). */
+  _chunkLod2On() {
+    if (this._chunkLod2Flag === undefined) this._chunkLod2Flag = this._lod2On() && flagOn('chunkLod2');
+    return this._chunkLod2Flag;
   }
 
   /** `?landmarkBatch=0`: lod2 models draw as their own mesh (one draw each) instead of joining the batch. */
@@ -1297,8 +1342,16 @@ export class SignatureLandmarks {
    */
   _mergeShared(spec, scene) {
     if (this._mergeSharedFlag === undefined) this._mergeSharedFlag = !!this.sharedFrame && flagOn('landmarkMergeShared');
-    if (!this._mergeSharedFlag || !scene.userData.recipeLook || spec.sharedModel || spec.sceneFactory || spec.chunkPands) return;
+    if (!this._mergeSharedFlag || !scene.userData.recipeLook || spec.sharedModel || spec.sceneFactory) return;
+    // Street chunks (lane R4-C #245, `?chunkMerge=0` restores a draw per primitive): ~20 primitives share 2-4 city
+    // materials; the merge carries their pand ranges, so the per-pand lift and the hover pick read the merged mesh.
+    if (spec.chunkPands && !this._chunkMergeOn()) return;
     mergeSiblingsByMaterial(scene, THREE);
+  }
+
+  _chunkMergeOn() {
+    if (this._chunkMergeFlag === undefined) this._chunkMergeFlag = flagOn('chunkMerge');
+    return this._chunkMergeFlag;
   }
 
   /** A shared mesh's master (decoded once, cloned per instance): the same sibling merge, before any clone exists. */
@@ -1449,6 +1502,8 @@ export class SignatureLandmarks {
     this._applySuppression();
     if (active) this.setActiveLandmark(this._highlightLandmark || { id: this.activeLandmarkId });
     if (this.sharedFrame) this.sharedFrame.constructor.setShadows(entry.group, true, true);
+    // A street chunk changes how it stands on the relief with its level (lane R4-C #245): per pand at full, one lift at lod2.
+    if (entry.spec.chunkPands && this._groundBase && window.CanalRecallOwnGround?.separatePands) this._applyChunkPandBases(entry);
     this._syncBatch(entry);
     this._attachShadowStandIn(entry);
     this.map.triggerRepaint();

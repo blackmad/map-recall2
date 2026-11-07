@@ -13,6 +13,7 @@
 import type {ChunkManifest, ChunkManifestEntry} from '../streetChunks/manifest.ts';
 import type {SignatureModelSpec} from './signaturePlacement';
 import {chunkWallExposure} from '../look/chunkWallExposure.ts';
+import {chunkLod2IsCurrent} from './landmarkLod.ts';
 
 export {pandIndexForFace} from '../streetChunks/extras.ts';
 
@@ -61,6 +62,8 @@ export function chunkSpecFor(c: ChunkManifestEntry): SignatureModelSpec {
     chunkPands: c.pands.map((p, i) => ({buildingId: p.buildingId, address: p.address, footprint: c.footprint.coordinates[i]})),
     // Its walls were matched to the face's photo strip: the sunny look draws them at the strip colour normalised to sunlight.
     wallExposure: chunkWallExposure(c.name),
+    // Its lod2 stand-in from the air (lane R4-C #245), only when built from this GLB.
+    ...(chunkLod2IsCurrent(c.lod2, c.sha256) ? {chunkLod2: {...c.lod2!}} : {}),
     surveyed: {anchor: c.instance.anchor, northOffsetDegrees: c.instance.northOffsetDegrees, source: 'Street chunk: one mesh per block face, compiled from the houses\' intent recipes and 3DBAG LoD2.2.'},
     attribution: {title: c.name, author: 'Ride Amsterdam', sourceUrl: 'https://data.amsterdam.nl/', licence: 'CC BY 4.0', licenceUrl: 'https://creativecommons.org/licenses/by/4.0/', modifications: 'Block face compiled from per-house recipes on native surveyed footprints; party walls between neighbours omitted.'},
   };
