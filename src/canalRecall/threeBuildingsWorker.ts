@@ -37,6 +37,6 @@ self.onmessage = (event: MessageEvent<Job | WorldRequest | ReliefRequest | Stand
   // The partition reads x/y only, which the main thread's ground lift leaves alone (threeBuildingsBrowser.ts install).
   const n = event.data.tiles ?? 0;
   const tiles = n > 1 ? { n, plan: planTiles(chunk.positions, chunk.indices, n, event.data.tileMin ?? 0, 3, chunk.ranges) } : undefined;
-  const buffers = [chunk.positions, chunk.uvs, chunk.layers, chunk.tints, chunk.accents, chunk.indices].map(a => a.buffer as ArrayBuffer);
+  const buffers = [chunk.positions, chunk.uvs, chunk.layers, chunk.tints, chunk.accents, chunk.indices, ...(chunk.thin ? [chunk.thin] : [])].map(a => a.buffer as ArrayBuffer);
   (self as unknown as Worker).postMessage({ key, gen, appearanceRevision, hostOpeningRevision, surveyedEnvelopeRevision, boundParentIds, chunk, ms: performance.now() - t0, tiles }, [...buffers, ...plannedTransferables(tiles?.plan)]);
 };

@@ -1,5 +1,5 @@
 {
-  "toolchain": "fe32448155218dee45f3e77f126522faa3a5b4868238e22a138d852bb323b780",
+  "toolchain": "7c343c2089ffcf782c92f0c37c43909ea1aec469960bb3602e6f3b72aca4bb92",
   "models": {
     "abn-amro-hoofdkantoor": "90ff65a2d9f94e99b2ab33438567f147959a43f017d3d9cf9d2ae68b6dae7cbf",
     "academie-theater-dans": "503b3e8d59937cbf7ac8776eb644c11fd10b567e5ac1113e0caa55c83cb68cde",
@@ -33,7 +33,7 @@
     "asterweg-23": "ac60054b0e09a055b07d89bc9852fc39b009e01c4cd7428d98bdeda3666aa7e4",
     "athenaeum": "04333046f1bf8946753eb42280e04db3e0daadba9afcd18f34719ee20d7c80ab",
     "atlanta-stadhouderskade": "c64cc840ea6687b82c178d7266aab3ac7944aa1174420298afd7fa8c10682bc2",
-    "atrium-zuidas": "0c897b7f6e1d97694d2e4c61c5754d12f2a00f533b5f2cff0aa99435f132a960",
+    "atrium-zuidas": "8492e0ad217ad596ffd7b87786d830ce05309b607a28371c5a2338c7fb512b4f",
     "auschwitz-monument": "b425e91c67c90ec1d1a10b997ecb7399d6b00a7448c65407e7ad2474de62e1e6",
     "autopon": "d04fb2fe4852abdc6af2f52d67df65b9f6838b588746ce35160976580f6052b9",
     "badhuistheater": "15049df413704352efccf10043d8c2c37b328eb814f674ab1b93759cc1889c42",
@@ -368,7 +368,7 @@
     "stedelijk-museum": "b5e39294037ba95920c6d5b743cd73f413fc9dd0a67913bc0af485509d42edaf",
     "straat-museum": "a9615d916674f783ca04bb40469bb0e7fd5df3ea6af96c4d0d1af7c4b447afb0",
     "studiok": "4504b9582713fa073863eca1446e1cd51dcf4f6d6978148c49d62bfb7090cee6",
-    "symphony": "40253b1841d58009e165b6120e2ce373ea9a8366b48036ea0d7a9d9a539c1f07",
+    "symphony": "5b30d24f822f987903948f468edbd6e770336e1baa04adedbbf87dd4c12945ea",
     "telefooncentrale-spuistraat": "06fd3f90d91e19372280f5fe484349cdbca837f4469f7c4dedea21b52b4b1c07",
     "telegraaf-gebouw": "59a13cb8b25dab256bcf5102673a6dbee4105561fa38c3802f88142f520e190b",
     "teun-de-jager": "e228076a236708ef4beba819bd0e922fc03ee64908fe6eb1c55ddf9d93bdf26a",
@@ -430,6 +430,7 @@
     "wolkenkrabber": "32353cbf2c2e45f30e7a187f559bb998f6fbcc4504f9a821c2b3304fcd17efc1",
     "woongebouw-wladiwostok": "dd3fd4130cf6493bc7e957ad7b30b960a96f1ecf664fe48f51cb21278cd8b65b",
     "wtc-amsterdam": "ba452b1768c2a1188dd19f53cac141efed2812687e15bd275a5b6e2fe5ff4276",
+    "xavier-zuidas": "a7d7aedd6af06c188c43fd5120f2b7f0f9626e162ab4de13c1cd0c7e661a7688",
     "y-helling": "0d3a0c05ef01d48395ab51fc3866082254552a78154749a2471df229e06c4e01",
     "zevenlandenhuizen": "346d2b35dc78a8e8b20dfb0269b9787dbafd57878513bd541c3b13239a61ee09",
     "ziggo-dome": "cc382dd69840360a3cdb359af413c36498aaa1836ee2d6fbfe67565aefdff524",

@@ -62,7 +62,14 @@ import { ROUTE_AHEAD_M, ROUTE_AHEAD_MAX_TILES, headingAheadTiles, routeAheadEnab
 import { worldCameraOf } from './engine/worldCameraOf.js';
 import type { WorldCamera } from './engine/worldViewApi.js';
 import { packMask } from './look/maskPacking.js';
-import { cellDebugMode, windowSdfEnabled } from './look/windowSdf.js';
+import { cellDebugMode, windowSdfBandEnabled, windowSdfEnabled, WINDOW_SDF_LOD_BIAS } from './look/windowSdf.js';
+import { arrayMips, cellLodBiasFlag, cellMipOptions, cellMipsEnabled } from './look/cellMips.js';
+import { uploadArrayMips, type ArrayMipUploadResult } from './look/arrayMipUpload.js';
+
+/** A query flag's raw value, or null (tolerates a page without URLSearchParams). */
+function pageFlag(name: string): string | null {
+  try { return typeof URLSearchParams === 'function' ? new URLSearchParams(globalThis.location?.search ?? '').get(name) : null; } catch { return null; }
+}
 import { createWindowTableTexture, windowTableData } from './look/windowTable.js';
 
 type BuildOptions = { surveyedEnvelopeData: EnvelopeTransport["envelopes"]; surveyedEnvelopeRevision: string; look: BuildingLook; streets?: Float32Array; profiles: readonly StreetAppearanceProfile[]; contextFeatures?: readonly Feature[]; appearanceRevision: string; hostOpenings: readonly ChunkHostOpeningConfig[]; hostOpeningRevision: string };
@@ -185,6 +192,8 @@ const infoOf = (chunk: Chunk): ChunkInfo => ({
 });
 
 export { calmBayLayers, RESTORE_TEXTURE_SLICE_MS, paintLookArrays, lookAtlasLayers };
+// Lane R3-A (#230): the owner view's classes, for tests/e2e/swap-zfight.spec.ts ZFIGHT_OWNER.
+export { THIN_OWNER_CLASSES } from './look/thinFade.js';
 
 
 // Per-ring memo of tile keys by zoom: setFeatures regroups the whole resident city (up to ~20k buildings) on every
@@ -362,7 +371,7 @@ function installBudgetBytes(): number {
   try { const v = typeof location !== 'undefined' ? new URLSearchParams(location.search).get('uploadBudget') : null; if (v != null && v !== '' && Number.isFinite(Number(v))) return Math.max(0, Number(v)); } catch { /* no location */ }
   return INSTALL_BUDGET_BYTES;
 }
-const chunkBytes = (c: Chunk): number => [c.positions, c.uvs, c.layers, c.tints, c.accents, c.indices].reduce((s, a) => s + (a?.byteLength ?? 0), 0);
+const chunkBytes = (c: Chunk): number => [c.positions, c.uvs, c.layers, c.tints, c.accents, c.indices, c.thin].reduce((s, a) => s + (a?.byteLength ?? 0), 0);
 type StagedInstall = { key: string; source: Feature[]; chunk: Chunk; ms: number; options: BuildOptions; boundParentIds: string[]; lift?: GroundLift; ranges?: Map<string, { start: number; count: number }> };
 
 
@@ -669,16 +678,79 @@ export class ThreeBuildings {
     // extract, instead of ~200 canvas cells painted on the main thread. Anything short of exact bytes paints as before.
     const { layers, total } = lookAtlasLayers(look, slots), started = performance.now(), stamp = lookAtlasStamp(BUNDLE_SRC);
     const cached = await readCachedLookAtlas(stamp, look, size, slots, layers, total);
-    if (cached) { this.atlasSource = { reason: 'cache', ms: Math.round(performance.now() - started), file: '' }; return lookTexturesOf(this.THREE, cached, anisotropy); }
+    if (cached) { this.atlasSource = { reason: 'cache', ms: Math.round(performance.now() - started), file: '' }; return this.withColourMips(lookTexturesOf(this.THREE, cached, anisotropy), cached, sliceMs); }
     const load = await loadLookAtlas(new URL('../data/extracts/amsterdam', document.baseURI).href, look, size, slots, layers, total);
     this.atlasSource = { reason: load.reason, ms: Math.round(load.ms), file: load.file };
-    if (load.atlas) return lookTexturesOf(this.THREE, load.atlas, anisotropy);
+    if (load.atlas) return this.withColourMips(lookTexturesOf(this.THREE, load.atlas, anisotropy), load.atlas, sliceMs);
     const paintStarted = performance.now();
     const painted = await paintLookArrays(look, size, { slotLayers: slots, sliceMs: () => this.atlasSliceMs ?? sliceMs ?? TEXTURE_SLICE_MS });
     this.atlasSource.paintMs = Math.round(performance.now() - paintStarted);
     storeCachedLookAtlas(stamp, painted, look, slots);
-    return lookTexturesOf(this.THREE, painted, anisotropy);
+    return this.withColourMips(lookTexturesOf(this.THREE, painted, anisotropy), painted, sliceMs);
   }
+
+  /**
+   * The facade colour array's own mip chain (look/cellMips.ts, lane R3-B #231). The array goes up as before, with GL's
+   * mips, so nothing waits for this; the custom levels are built afterwards in frame-sized slices (~2 s of slices on
+   * the 222-layer desktop atlas) and then replace levels 1..N in the same storage (look/arrayMipUpload.ts), so the
+   * facades sharpen a moment after they appear. `?cellMips=0` keeps GL's mips. `cellMipsInfo` records the cost.
+   */
+  private withColourMips<T extends { colour: any }>(set: T, atlas: LookAtlasArrays, sliceMs?: number): T {
+    if (!cellMipsEnabled() || (atlas.size & (atlas.size - 1))) return set;
+    const texture = set.colour, colour = atlas.colour, mask = atlas.mask, { size, total } = atlas;
+    const options = cellMipOptions(), keep = pageFlag('cellMipsKeep') === '1';
+    void (async () => {
+      const started = performance.now();
+      // lookTexturesOf has packed the accent into the colour's alpha (in place): the levels carry what the shader reads.
+      const { levels } = await arrayMips(colour, size, total, mask, 2, options, this.atlasSliceMs ?? sliceMs ?? TEXTURE_SLICE_MS);
+      const info: NonNullable<ThreeBuildings['cellMipsInfo']> = { buildMs: Math.round(performance.now() - started), options, size, layers: total, levels: levels.length, upload: null };
+      this.cellMipsInfo = info;
+      // Three uploads the array on the first frame that draws it; wait for that (at most ~10 s of frames).
+      for (let i = 0; i < 600 && !this.renderer?.properties?.get?.(texture)?.__webglTexture; i++) await new Promise(r => requestAnimationFrame(r));
+      if (!this.renderer?.getContext?.()) return;
+      info.upload = uploadArrayMips(this.renderer, texture, levels, size, total);
+      // `?cellMipsKeep=1` (probes only): keep the CPU levels so setCellMipsMode can A/B them against GL's in one page.
+      if (keep) this.cellMipsKept = { texture, levels, size, depth: total, colour, mask };
+      this.map.triggerRepaint();
+    })();
+    return set;
+  }
+  private cellMipsKept: { texture: any; levels: Uint8Array[]; size: number; depth: number; colour: Uint8Array; mask: Uint8Array } | null = null;
+
+  /** Probe hook: rebuild the kept custom levels with other options (look/cellMips.ts) and upload them; ms taken. */
+  async setCellMipOptions(options: Partial<ReturnType<typeof cellMipOptions>>): Promise<number> {
+    const kept = this.cellMipsKept;
+    if (!kept) return -1;
+    const started = performance.now();
+    const { levels } = await arrayMips(kept.colour, kept.size, kept.depth, kept.mask, 2, { ...cellMipOptions(), ...options }, 0);
+    kept.levels = levels;
+    uploadArrayMips(this.renderer, kept.texture, levels, kept.size, kept.depth);
+    this.map.triggerRepaint();
+    return Math.round(performance.now() - started);
+  }
+
+  /**
+   * Probe hook (tests/e2e/crisp-textures `CRISP_MIX ...|mips=0`): regenerate the live colour array's levels 1..N with
+   * GL's box mips, or put the custom ones back (needs `?cellMipsKeep=1`). Returns the mode now drawn.
+   */
+  setCellMipsMode(mode: 'custom' | 'gl'): string {
+    const t = this.material?.uniforms?.cells?.value, gl = this.renderer?.getContext?.();
+    const handle = t && this.renderer?.properties?.get?.(t)?.__webglTexture;
+    if (!gl || !handle) return 'none';
+    if (mode === 'gl') {
+      this.renderer.state.bindTexture(gl.TEXTURE_2D_ARRAY, handle);
+      gl.generateMipmap(gl.TEXTURE_2D_ARRAY);
+    } else {
+      const kept = this.cellMipsKept;
+      if (!kept || kept.texture !== t) return 'gl';
+      const r = uploadArrayMips(this.renderer, t, kept.levels, kept.size, kept.depth);
+      if (r.mode !== 'custom') return 'gl';
+    }
+    this.map.triggerRepaint();
+    return mode;
+  }
+  /** What the custom colour mips cost (null: GL mips). */
+  cellMipsInfo: { buildMs: number; options: ReturnType<typeof cellMipOptions>; size: number; layers: number; levels: number; upload: ArrayMipUploadResult | null } | null = null;
 
   setVisible(visible: boolean): void {
     if (this.visible === visible) return;
@@ -1485,6 +1557,9 @@ export class ThreeBuildings {
     geometry.setAttribute('tint', release(new THREE.BufferAttribute(chunk.tints, 4, true)));
     geometry.setAttribute('accent', release(new THREE.BufferAttribute(chunk.accents, 4, true)));
     geometry.setAttribute('hidden', new THREE.BufferAttribute(new Uint8Array(chunk.vertexCount), 1, false));
+    // Thin-element fade and owner class (look/thinFade.ts, lane R3-A #230): only when it matches this chunk's vertices
+    // (a host-opening rebuild re-lays the arrays without it).
+    if (chunk.thin && chunk.thin.length === chunk.vertexCount * 2) geometry.setAttribute('thin', release(new THREE.BufferAttribute(chunk.thin, 2, false)));
     // SWAP_COMPLEMENT: the shells' per-building swap slot (kept on the CPU like `hidden`), marked for swaps under way.
     if (this.complement && key.startsWith(COARSE_PREFIX)) {
       const slots = new Uint8Array(chunk.vertexCount), ranges = new Map(chunk.ranges.map(r => [r.id, { start: r.start, count: r.count }]));
@@ -1850,6 +1925,11 @@ export class ThreeBuildings {
   private get windowSdf(): boolean { return this.windowSdfOn ??= windowSdfEnabled(this.detailZoom === 17); }
   private windowSdfOn: boolean | undefined;
 
+  /** `?cellLodBias=` as asked; unasked, WINDOW_SDF_LOD_BIAS with the band-limited windows on, else none (no define). */
+  private lodBiasFor(windows: boolean): number | null {
+    return cellLodBiasFlag() ?? (windows && windowSdfBandEnabled() ? WINDOW_SDF_LOD_BIAS : null);
+  }
+
   private newMaterial(): any {
     const THREE = this.THREE;
     // The pantile and slate cells (the planned roofs' slope layers) coarsen with distance; every other layer is left alone.
@@ -1862,16 +1942,18 @@ export class ThreeBuildings {
       // Analytic windows (look/windowSdf.ts, lane R2-A #228): only for a look whose table has windows; the define,
       // the program key suffix and the table upload are all absent with `?windowSdf=0`.
       const windowTable = this.windowTableFor(cellSetOf(this.look));
-      return createCityLookMaterial(THREE, { lit: this.lit, kind: 'chunk', side: THREE.FrontSide, ...(SWAP_COMPLEMENT ? { swap: true } : {}), ...(cellDebug ? { cellDebug } : {}), ...(windowTable ? { windows: true } : {}) }, createCityUniforms(THREE, {
+      const lodBias = this.lodBiasFor(!!windowTable);
+      return createCityLookMaterial(THREE, { lit: this.lit, kind: 'chunk', side: THREE.FrontSide, ...(SWAP_COMPLEMENT ? { swap: true } : {}), ...(cellDebug ? { cellDebug } : {}), ...(windowTable ? { windows: true } : {}), ...(lodBias != null ? { lodBias: true } : {}) }, createCityUniforms(THREE, {
         ...(SWAP_COMPLEMENT ? { citySwapUnder: this.swapUnder } : {}),
         ...(windowTable ? { windowTable: { value: windowTable } } : {}),
+        ...(lodBias != null ? { cellLodBias: { value: lodBias } } : {}),
         bands: { value: variant.shadeBands }, flatColour: { value: variant.flatColour ? 1 : 0 }, wallGain: { value: litFacadeWallGain(variant.litWallGain) },
         roofLayers: { value: roofLayers }, roofTier: { value: roofTierUniform() }, cellTier: { value: this.cellTierValue() },
       }));
     }
     if (this.lit) {
       const windowTable = this.windowTableFor(cellSetOf(this.look));
-      const material = createLitFacadeMaterial(THREE, { cityFlat: { value: CITY_FLAT }, roofLayers: { value: roofLayers }, roofTier: { value: roofTierUniform() }, cellTier: { value: this.cellTierValue() } }, windowTable ? { windowTable } : {});
+      const material = createLitFacadeMaterial(THREE, { cityFlat: { value: CITY_FLAT }, roofLayers: { value: roofLayers }, roofTier: { value: roofTierUniform() }, cellTier: { value: this.cellTierValue() } }, { ...(windowTable ? { windowTable } : {}), lodBias: this.lodBiasFor(!!windowTable) });
       material.uniforms.bands.value = LOOK_VARIANTS[this.look].shadeBands;
       material.uniforms.flatColour.value = LOOK_VARIANTS[this.look].flatColour ? 1 : 0;
       if (material.uniforms.wallGain) material.uniforms.wallGain.value = litFacadeWallGain(LOOK_VARIANTS[this.look].litWallGain);

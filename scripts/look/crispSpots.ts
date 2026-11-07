@@ -5,11 +5,17 @@
  * fractions of the frame. Used by tests/e2e/crisp-textures.spec.ts.
  * The archive's s2/s3 file names were swapped until map-recall2-screenshots c856dd1 (2026-11-06) and now match the plan's numbering.
  */
-export type CrispSpot = { name: string; center: [number, number]; zoom: number; bearing: number; pitch: number | null; band: { x0: number; y0: number; x1: number; y1: number }; /** Centre of the strip's 1:1 crop (fractions); default the band's centre. */ crop?: { x: number; y: number }; shot?: string };
+export type CrispSpot = { name: string; center: [number, number]; zoom: number; bearing: number; pitch: number | null; band: { x0: number; y0: number; x1: number; y1: number }; /** Centre of the strip's 1:1 crop (fractions); default the band's centre. */ crop?: { x: number; y: number }; shot?: string;
+  /** CSS viewport [w, h] for this spot (the user's window); default the project's. */ viewport?: [number, number];
+  /** The part of the frame the user's shot shows (fractions), for strips beside it. */ shotRect?: { x0: number; y0: number; x1: number; y1: number } };
 
 export const CRISP_SPOTS: readonly CrispSpot[] = [
   // S2: Da Costakade / Jacob van Lennepkade looking N along the Da Costagracht, from ~150 m up.
-  { name: 'da-costakade', center: [4.8727, 52.3702], zoom: 17.1, bearing: -12, pitch: 70, band: { x0: 0, y0: 0.35, x1: 1, y1: 1 }, crop: { x: 0.45, y: 0.8 }, shot: 's3-weesperstraat-slab-moire.png' },
+  { name: 'da-costakade', center: [4.8727, 52.3702], zoom: 17.1, bearing: -12, pitch: 70, band: { x0: 0, y0: 0.35, x1: 1, y1: 1 }, crop: { x: 0.45, y: 0.8 }, shot: 's2-da-costakade-fuzzy-windows.png' },
+  // S2 at the user's pose (lane R3-B #231): solved from eight POI labels in s2-da-costakade-fuzzy-windows.png (rms 3.8
+  // device px; camera 4.874700, 52.364514, 62 m up, bearing -18.35, pitch 75.2, window 1310 x 757 CSS at DPR 2; the shot
+  // is the top-left 1228 x 505 CSS of that window). Facade band: the quay houses 20-300 m out, below the skyline.
+  { name: 'da-costakade-user', center: [4.873608, 52.366539], zoom: 17.76, bearing: -18.35, pitch: 75.2, viewport: [1310, 757], shotRect: { x0: 0, y0: 0, x1: 1228 / 1310, y1: 505 / 757 }, band: { x0: 0, y0: 0.3, x1: 1, y1: 1 }, crop: { x: 0.75, y: 0.55 }, shot: 's2-da-costakade-fuzzy-windows.png' },
   // S2 at the chase distance: the same quay from the rider's view (windows magnified).
   { name: 'da-costakade-chase', center: [4.8738, 52.3672], zoom: 17.8, bearing: -15, pitch: null, band: { x0: 0, y0: 0.2, x1: 1, y1: 0.8 }, crop: { x: 0.3, y: 0.75 } },
   // S4: the Zuidas rail corridor between Zuid and RAI, Beatrixpark beyond, from the air looking N.
@@ -19,10 +25,11 @@ export const CRISP_SPOTS: readonly CrispSpot[] = [
   // S4 higher: under z15 the own ground is not drawn and the overview's rail lines are what shows (the user's frame).
   { name: 'zuidas-rails-high', center: [4.8835, 52.3402], zoom: 14.8, bearing: 5, pitch: 66, band: { x0: 0, y0: 0.55, x1: 0.7, y1: 0.9 }, crop: { x: 0.35, y: 0.66 }, shot: 's4-zuidas-rails.png' },
   // S4 at the user's pose (lane R3-C #232): the user's frame s4-zuidas-rails.png, the camera panned (RE-CENTER showing)
-  // from a rider at the Amstel / Weesperbuurt (~2.8 km away) to the corridor south of the Beatrixpark, looking N, the
-  // RAI/Zuidas towers to the right. Pitch, zoom and bearing matched to the shot by eye over four tries (scripts/own-ground/rail-beds-strip.mjs POSE=);
-  // the rail-beds ten-load tables of 2026-11-06 ran at the first guess [4.8800, 52.3396] z17 bearing 2 pitch 68, the same cell -2_-4.
-  { name: 's4-zuidas-user', center: [4.8818, 52.3400], zoom: 17.45, bearing: -12, pitch: 70, band: { x0: 0, y0: 0.5, x1: 0.7, y1: 0.95 }, crop: { x: 0.35, y: 0.7 }, shot: 's4-zuidas-rails.png' },
+  // from a rider at the Amstel / Weesperbuurt (~2.8 km away) to the corridor south of the Beatrixpark, looking N.
+  // Pitch, zoom and bearing matched by eye; the centre moved east (review 2026-11-06) until the Zuidas slab trio south
+  // of the tracks (OSM w753541325-27, 86-87 m, 4.8847-4.8851 E 52.3378 N) stands at the right edge at the user's size.
+  // Ten-load tables: the first guess [4.8800, 52.3396] z17, then this pose (same cell -2_-4).
+  { name: 's4-zuidas-user', center: [4.8836, 52.3399], zoom: 17.45, bearing: -12, pitch: 70, band: { x0: 0, y0: 0.5, x1: 0.7, y1: 0.95 }, crop: { x: 0.35, y: 0.7 }, shot: 's4-zuidas-rails.png' },
   // GPU-cost spots (lane R2-A #228, analytic windows): the world-v1 A/B's Westerkerk (scripts/world/abSpots.ts) and the
   // look spots' Dam, chase pose, whole frame.
   { name: 'westerkerk', center: [4.8826, 52.3741], zoom: 17.8, bearing: 74, pitch: null, band: { x0: 0, y0: 0, x1: 1, y1: 1 } },

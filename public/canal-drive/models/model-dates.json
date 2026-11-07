@@ -297,8 +297,8 @@
       "dateSource": "asset-update"
     },
     "atrium-zuidas.lod1": {
-      "updatedAt": "2026-11-06T23:48:56.773Z",
-      "version": "cc7f473a15f51542",
+      "updatedAt": "2026-11-06T23:50:40.634Z",
+      "version": "d005f242d22242da",
       "dateSource": "asset-update"
     },
     "auschwitz-monument": {
@@ -4084,6 +4084,16 @@
     "wtc-amsterdam.lod1": {
       "updatedAt": "2026-11-02T01:45:02.433Z",
       "version": "7e3afa42855fff29",
+      "dateSource": "asset-update"
+    },
+    "xavier-zuidas": {
+      "updatedAt": "2026-11-06T23:26:54.262Z",
+      "version": "31a5b4dee14b6083",
+      "dateSource": "asset-update"
+    },
+    "xavier-zuidas.lod1": {
+      "updatedAt": "2026-11-06T23:27:28.866Z",
+      "version": "80198c7c1377636b",
       "dateSource": "asset-update"
     },
     "y-helling": {
