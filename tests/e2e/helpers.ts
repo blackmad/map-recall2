@@ -47,6 +47,12 @@ export async function useEngine(page: Page): Promise<void> {
  * their bundles outside the tree; the integrator rebuilds the committed ones). Bundles missing there are served as usual.
  */
 export async function useBundlesDir(page: Page): Promise<void> {
+  // `WORLD_DIR=<dir>` serves world-v1 (tiles.json, cells, far/, shells/) from a staged compile, as aerial-pan.mjs does.
+  const world = process.env.WORLD_DIR;
+  if (world) await page.route(/\/data\/extracts\/amsterdam\/world-v1\/([\w/.-]+?)(\?.*)?$/, route => {
+    const file = join(world, /\/world-v1\/([\w/.-]+?)(\?.*)?$/.exec(route.request().url())![1]);
+    return existsSync(file) ? route.fulfill({ body: readFileSync(file), contentType: file.endsWith('.json') ? 'application/json' : 'application/octet-stream' }) : route.continue();
+  });
   const dir = process.env.BUNDLES_DIR;
   if (!dir) return;
   await page.route(/\/canal-drive\/js\/([\w-]+\.bundle\.js)(\?.*)?$/, route => {
