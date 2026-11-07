@@ -9,7 +9,7 @@
 // previous sample (p99, > 100 ms, > 250 ms) with the slowest frames' phases (`framePhases=1`).
 //
 //   PORT=4642 node scripts/aerial-pan.mjs <out.json> [--device desktop|iphone] [--pan 180] [--every 5] [--speed 300]
-//     [--qs '?ride=free&engine=own'] [--chrome] [--headed] [--census]
+//     [--qs '?ride=free&engine=own'] [--chrome] [--headed] [--census] [--land]
 // BUNDLES_DIR=<dir> serves *.bundle.js from a scratch build (the Vite reload trap: never build into the worktree).
 // WORLD_DIR=<dir> serves world-v1 (tiles.json, cells, far/, shells/) from a staged compile (artifacts/world/staging).
 // SHOTS=<dir> saves a frame at each pose change (the before/after strips at the user's spots).
@@ -133,6 +133,9 @@ await page.evaluate(() => {
 });
 
 
+// The chase pose the ride settled at (the --land leg drops back to it).
+await page.evaluate(() => { const g = canalRecallGame; window.__chasePose = { zoom: g.camera.zoom, tilt: g.vectorMap._cameraTilt ?? null, rotation: g.camera.rotation }; });
+
 // The pan driver: a rAF loop that moves the detached camera's anchor along the waypoints at `speed` m/s and eases the
 // zoom, tilt and bearing toward each leg's pose. `window.__aerialPause` holds it still while a sample runs.
 await page.evaluate(([wps, poses, v]) => {
@@ -237,7 +240,9 @@ const residents = census => page.evaluate(census => {
     tier: vm.qualityTier?.tier ?? null, dpr: vm.host?.getPixelRatio?.() ?? null,
     geometries: info?.memory?.geometries ?? null, textures: info?.memory?.textures ?? null, programs: info?.programs?.length ?? null,
     gl: (() => { const rep = window.__canalPerf?.gl?.report?.(); return rep ? { residentMB: rep.resident.totalMB, bufferMB: rep.resident.bufferMB, textureMB: rep.resident.textureMB, buffers: rep.resident.buffers, textures: rep.resident.textures, uploadMB: Math.round(rep.sinceWarm.uploadBytes / 1048576), uploads: rep.sinceWarm.uploads, compiles: rep.sinceWarm.compiles } : null; })(),
-    chunks: size(tb?.chunks), chunkKinds: kinds, fading: size(tb?.fading),
+    chunks: size(tb?.chunks), chunkKinds: kinds, fading: size(tb?.fading), detailInstallsTotal: tb?.detailInstalls ?? null, detailTiles: size(tb?.detailTiles),
+    // MB of the resident detail (`near:`) and extras chunks (their geometry bytes: the copy uploaded to the GPU).
+    detailMB: tb?.chunks ? Math.round([...tb.chunks].filter(([k]) => k.startsWith('near:') || k.startsWith('extras:')).reduce((a, [, c]) => a + (c?.info?.bytes ?? 0), 0) / 1048576 * 10) / 10 : null,
     cityTiles: size(city?.cache?.tiles), cityFeatures: size(city?.cache?.list), cityRing: size(city?.ring), worldInterned: size(city?.world?.interned),
     contextFeatures: size(tb?.contextFeatures), contextChanges: size(tb?.contextChanges), contextCache: size(tb?.contextCache), pendingJobs: size(tb?.pending?.jobs),
     landmarks: size(sig?._entries), landmarksShown: size(sig?.shown), roofs: size(vm.extras?.roofs?._entries),
@@ -335,8 +340,55 @@ if (argv.includes('--spots')) {
   process.exit(0);
 }
 
+// --land (lane R3-G #242): pan from the air for --pan s, park at the S1 pose over Hoftuin with the rider moved there
+// for 6 s, then drop to the settled chase pose (camera reattached, chase zoom and tilt) and time the detail
+// block: `detailInstalls` and the resident `near:` chunks every 100 ms until 3 s pass with no install and nothing
+// fading (or 30 s). SHOTS gets the landing frame at +0, +1, +2 s.
+if (argv.includes('--land')) {
+  const hoftuin = WAYPOINTS[1];
+  await page.waitForTimeout(panS * 1000);
+  const snap = () => page.evaluate(() => { const vm = canalRecallGame.vectorMap, tb = vm._threeBuildings; const keys = [...(tb?.chunks?.keys?.() ?? [])]; return { t: performance.now(), installs: tb?.detailInstalls ?? null, near: keys.filter(k => k.startsWith('near:')).length, nearDrawn: keys.filter(k => k.startsWith('near:') && tb.chunks.get(k)?.mesh).length, detailTiles: tb?.detailTiles?.size ?? null, fading: tb?.fading?.size ?? null, zoom: Math.round(vm.camera.zoom() * 10) / 10, pitch: Math.round(vm.camera.pitch()) }; });
+  await page.evaluate(sp => {
+    window.__aerialPause = true;
+    const g = canalRecallGame, l = g.osmLoader, ppm = (0, eval)('PIXELS_PER_METER'), cam = g.camera;
+    const x = l._lastOffsetX + (sp.at[0] - l._lastCenterLng) * 111320 * Math.cos(l._lastCenterLat * Math.PI / 180) * ppm, y = l._lastOffsetY - (sp.at[1] - l._lastCenterLat) * 111320 * ppm;
+    cam.detached = true; cam.anchorX = x; cam.anchorY = y; cam.zoom = sp.zoom; cam.rotation = sp.bearing * Math.PI / 180;
+    g.vectorMap.setCameraTilt?.(sp.tilt); g.vectorMap._cameraTilt = sp.tilt;
+    // The detail block follows the vehicle (view.subject is camera.targetX/Y), so the rider moves under the aerial
+    // camera: a ride that rode on (or was moved) while the view was up. Landing then reattaches the camera to it.
+    g.player.x = x; g.player.y = y;
+  }, { at: hoftuin.at, ...POSES.s1 });
+  const airStart = await snap();
+  await page.waitForTimeout(6000);
+  const airEnd = await snap();
+  if (shotsDir) { fs.mkdirSync(shotsDir, { recursive: true }); await page.screenshot({ path: path.join(shotsDir, `${device}-land-air.png`) }); }
+  await page.evaluate(() => { const rec = window.__canalRecallFramePhaseRecorder; if (rec) rec.worst.length = 0; });
+  const l0 = await page.evaluate(() => { const g = canalRecallGame, p = window.__chasePose; g.camera.detached = false; g.camera.zoom = p.zoom; g.camera.rotation = p.rotation; if (p.tilt != null) { g.vectorMap.setCameraTilt?.(p.tilt); g.vectorMap._cameraTilt = p.tilt; } return performance.now(); });
+  const samples = [];
+  let lastInstallAt = l0, lastInstalls = null, shot = 0;
+  for (;;) {
+    const r = await snap();
+    const dt = r.t - l0;
+    if (lastInstalls !== null && r.installs !== lastInstalls) lastInstallAt = r.t;
+    lastInstalls = r.installs;
+    samples.push({ ...r, ms: Math.round(dt) });
+    if (shotsDir && shot <= 2 && dt >= shot * 1000) { await page.screenshot({ path: path.join(shotsDir, `${device}-land-plus${shot}s.png`) }); shot++; }
+    if ((r.t - lastInstallAt > 3000 && !r.fading && dt > 3000) || dt > 30_000) break;
+    await page.waitForTimeout(100);
+  }
+  const frames = frameStats(await frameWindow(l0));
+  const worst = await page.evaluate(() => { const rec = window.__canalRecallFramePhaseRecorder; return rec ? rec.worst.slice(0, 3).map(x => ({ ms: Math.round(x.ms), phases: Object.fromEntries(Object.entries(x.phases).sort((a, b) => b[1] - a[1]).slice(0, 6).map(([k, v]) => [k, Math.round(v)])) })) : null; });
+  const land = { worst, airInstalls: airEnd.installs - airStart.installs, landInstalls: samples.at(-1).installs - airEnd.installs, detailResidentMs: Math.round(lastInstallAt - l0), settledAtMs: samples.at(-1).ms, nearAtEnd: samples.at(-1).near, frames, airStart, airEnd };
+  console.log(`${device} land ${JSON.stringify(land)}`);
+  fs.mkdirSync(path.dirname(out), { recursive: true });
+  fs.writeFileSync(out, JSON.stringify({ device, qs, panS, land, samples, errors }, null, 1));
+  await browser.close();
+  process.exit(0);
+}
+
 const timeline = [];
 const shots = [];
+const baseInstalls = await page.evaluate(() => canalRecallGame.vectorMap._threeBuildings?.detailInstalls ?? null);
 let lastPoseCount = 0;
 let last = await page.evaluate(() => performance.now());
 const panT0 = last;
@@ -376,9 +428,12 @@ for (let t = every; t <= panS; t += every) {
   const b = await page.evaluate(() => { window.__aerialPause = false; return performance.now(); });
   await page.evaluate(([a, b]) => window.__aerialFrames.skip.push([a, b + 50]), [a, b]);
   last = b + 50;
+  // Per-sample deltas: detail chunks installed and MB uploaded to the GPU since the previous sample.
+  res.detailInstalls = res.detailInstallsTotal == null ? null : res.detailInstallsTotal - (timeline.at(-1)?.detailInstallsTotal ?? baseInstalls ?? 0);
+  res.uploadMBDelta = res.gl?.uploadMB == null ? null : res.gl.uploadMB - (timeline.at(-1)?.gl?.uploadMB ?? 0);
   const row = { t, ...aerial, heapMB: heap.main.usedMB, bufMB: heap.main.backingMB, workersMB: heap.workersUsedMB, ...rss, ...res, frames, worst, loaf };
   timeline.push(row);
-  console.log(`${device} t${t} ${aerial.leg ?? '-'} z${res.zoom} p${res.pitch}: heap ${heap.main.usedMB}+${heap.main.backingMB ?? '?'} MB, wk ${heap.workersUsedMB} MB, rss ${rss.rendererRssMB}/${rss.gpuRssMB}, geo ${res.geometries} tex ${res.textures} gl ${res.gl?.residentMB} MB (+${res.gl?.uploadMB} MB up), chunks ${res.chunks} tiles ${res.cityTiles} feats ${res.cityFeatures} ctxCh ${res.contextChanges} lm ${res.landmarks} trees ${res.trees} ground ${res.groundCells} far ${res.farRing} r${res.farRadiusM} fs ${res.farShells?.cells ?? '-'}/${res.farShells?.partsShown ?? '-'} draws ${res.draws} bc ${res.bakedCoarse ? `${res.bakedCoarse.drawn}/${res.bakedCoarse.cells}` : '-'} cc ${res.coarseChunks} labels ${res.labelsPlaced} wkrs ${res.workers}; p99 ${frames.p99} >100 ${frames.over100} >250 ${frames.over250} max ${frames.longestMs}${worst?.[0] ? ` worst ${JSON.stringify(worst[0].phases)}` : ''}`);
+  console.log(`${device} t${t} ${aerial.leg ?? '-'} z${res.zoom} p${res.pitch}: heap ${heap.main.usedMB}+${heap.main.backingMB ?? '?'} MB, wk ${heap.workersUsedMB} MB, rss ${rss.rendererRssMB}/${rss.gpuRssMB}, geo ${res.geometries} tex ${res.textures} gl ${res.gl?.residentMB} MB (+${res.gl?.uploadMB} MB up), chunks ${res.chunks} tiles ${res.cityTiles} feats ${res.cityFeatures} ctxCh ${res.contextChanges} lm ${res.landmarks} trees ${res.trees} ground ${res.groundCells} far ${res.farRing} r${res.farRadiusM} fs ${res.farShells?.cells ?? '-'}/${res.farShells?.partsShown ?? '-'} draws ${res.draws} bc ${res.bakedCoarse ? `${res.bakedCoarse.drawn}/${res.bakedCoarse.cells}` : '-'} cc ${res.coarseChunks} labels ${res.labelsPlaced} wkrs ${res.workers} detail +${res.detailInstalls} (${res.detailTiles} tiles, ${res.detailMB} MB) fading ${res.fading} up +${res.uploadMBDelta} MB; p99 ${frames.p99} >100 ${frames.over100} >250 ${frames.over250} max ${frames.longestMs}${worst?.[0] ? ` worst ${JSON.stringify(worst[0].phases)}` : ''}`);
 }
 
 // Gates: minute 1 is the reference (the sweep has reached every district once by then at the default speed).

@@ -51,7 +51,11 @@ export const MODEL_ASSET_VERSIONS = { ...modelVersions, ...ORDINARY_BUILDING_VER
 export { SharedAssetCache } from './sharedAssetCache';
 export { streetChunksEnabled, heldStreetChunks, streetSurveyMode, withoutStreetSurveys, applyStreetChunks, chunkSpecFor, pandIndexForFace } from './ordinaryChunks';
 export { createRecipeLook } from '../buildingRecipe/recipeLook';
-export { lod1IsCurrent, chooseLevel, initialLevel, footprintRadiusPixels, lod1Url } from './landmarkLod';
+export { lod1IsCurrent, chooseLevel, initialLevel, footprintRadiusPixels, lod1Url, lod2IsCurrent, lod2Url, chooseLandmarkLevel, initialLandmarkLevel } from './landmarkLod';
+import type { LandmarkLodEntry } from './landmarkLod';
 import modelLods from './modelLods.json';
-/** Ids that have a `<id>.lod1.glb`, with the fingerprint it was built from (also its cache-busting version). */
-export const MODEL_LODS: Readonly<Record<string, { sourceHash: string; bytes: number; triangles: number }>> = modelLods;
+/**
+ * Ids that have a `<id>.lod1.glb`, with the fingerprint it was built from (also its cache-busting version), and
+ * `lod2` for those with a `<id>.lod2.glb` (lane R4-B #244; a model under the lod1 threshold has only `lod2`).
+ */
+export const MODEL_LODS: Readonly<Record<string, LandmarkLodEntry>> = modelLods as Record<string, LandmarkLodEntry>;

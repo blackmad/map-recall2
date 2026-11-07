@@ -3,6 +3,23 @@
   "notes": [
     {
       "date": "2026-11-07",
+      "title": "Landmarks seen from the air draw as one piece",
+      "text": "Landmarks seen from the air draw as one piece: beyond about 500 m from the view centre, or when a model is smaller than 12 px, each modelled landmark switches to a light stand-in (around 2 % of its triangles, towers and spires kept), and all of them draw in one or two calls instead of hundreds. Up close nothing changes. Add ?landmarkLod2=0 to the ride link to compare.",
+      "images": [
+        {
+          "src": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/engine/2026-11-07-r4b/r4b-s1-hoftuin.jpg",
+          "alt": "Aerial view over the Hoftuin: main build, light stand-ins, and stand-ins batched into one draw; the three panels look the same",
+          "caption": "Over the Hoftuin from the air: main, stand-ins, stand-ins batched. The skyline reads the same."
+        },
+        {
+          "src": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/engine/2026-11-07-r4b/r4b-crop-westerkerk.jpg",
+          "alt": "Four-times crop of the Westerkerk tower: full model beside its stand-in",
+          "caption": "Westerkerk at four times magnification: the stand-in keeps the tower and spire; its windows coarsen to dark triangles, which is on the board."
+        }
+      ]
+    },
+    {
+      "date": "2026-11-07",
       "title": "Panning across the city from the air is smoother",
       "text": "Panning across the city from the air is smoother: the building bases that used to be re-fitted to the ground on every aerial frame now wait until you come back down, and are then fitted in small slices. Label placement is budgeted per frame as well. The remaining long frames from the air are GPU-bound (landmark draws), which the next engine lane takes on.",
       "images": [
@@ -15,13 +32,13 @@
     },
     {
       "date": "2026-11-07",
-      "title": "From the air, the map shows places, not every shop",
-      "text": "From the air, the map shows neighbourhood and water names instead of every shop and café, and labels no longer jump around while you pan. Museums, churches, stations, parks and your route's own markers stay; each neighbourhood name is placed once.",
+      "title": "From the air, the map shows a handful of names",
+      "text": "From the air, the map shows just a handful of landmark names plus neighbourhood and water names, and labels no longer jump around while you pan. Nearby landmarks win over famous ones far away; each neighbourhood name is placed once. Add ?labelAerialPois=all to the ride link to see every name again.",
       "images": [
         {
           "src": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/engine/2026-11-07-r3f/r3f-labels-desktop-sarphatipark-north.jpg",
-          "alt": "Overview above Sarphatipark looking north: before with every shop and café labelled, after with neighbourhood names and landmarks only",
-          "caption": "Above Sarphatipark looking north, desktop: before (every shop and café) above after (neighbourhoods, water and landmarks)."
+          "alt": "Overview above Sarphatipark looking north: before with every shop and café labelled, thinned, and capped at ten landmark names",
+          "caption": "Above Sarphatipark looking north, desktop: before (every shop and café), thinned (landmark-class names), capped (ten names, the default)."
         },
         {
           "src": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/engine/2026-11-07-r3f/r3f-labels-desktop-chassebuurt-north.jpg",

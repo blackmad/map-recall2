@@ -45,7 +45,7 @@ import { BASE_REFRESH_BUDGET_MS } from '../rendererShared/baseRefreshBudget';
 import { ToonPost, toonLookFlag } from './toonLook';
 import { SmaaPost, smaaFlag } from './postAA';
 import { COVER_POLL_MS, isCoveredState } from '../labels/coveredState';
-import { LabelLayer, type PointLabel } from './overlays/labelLayer';
+import { AERIAL_POI_MAX, LabelLayer, type PointLabel } from './overlays/labelLayer';
 import { gameLabelContext, type LabelContext } from '../ownMap/labelPolicy';
 import { buildSpoilerIndex, type SpoilerIndex } from '../orientationPois';
 import { ownPoiFeatures, type OrientationPoiFile } from '../ownPois';
@@ -85,6 +85,24 @@ const flag = (param: string, global: string, fallback: boolean): boolean => {
     if (v === '1' || v === 'true' || v === 'on') return true;
   } catch (_) { /* no window */ }
   return fallback;
+};
+/**
+ * `?labelAerialPois=all` (or the global `true`): every POI from the air, as before lane R3-F; `=N` (or a number):
+ * the aerial POI cap; absent or anything else: AERIAL_POI_MAX. (`=1` is a cap of one; it restored every POI before
+ * the cap landed.)
+ */
+const parseAerialPois = (): 'all' | number => {
+  const g = W();
+  const v: unknown = g.__canalRecallLabelAerialPois;
+  if (v === true) return 'all';
+  if (typeof v === 'number' && Number.isFinite(v) && v >= 0) return Math.floor(v);
+  try {
+    const q = new URLSearchParams(g.location?.search ?? '').get('labelAerialPois');
+    if (q === 'all') return 'all';
+    const n = q === null || q === '' ? NaN : Number(q);
+    if (Number.isFinite(n) && n >= 0) return Math.floor(n);
+  } catch (_) { /* no window */ }
+  return AERIAL_POI_MAX;
 };
 const coarse = () => !!W().matchMedia?.('(pointer: coarse)')?.matches;
 
@@ -224,8 +242,11 @@ export class OwnWorldView implements WorldViewOracles {
   private labelAerialCapOn = flag('labelAerialCap', '__canalRecallLabelAerialCap', true);
   /** `?labelSticky=0` off: from the air the last winners keep their places across full placements (labelLayer sticky). */
   private readonly labelStickyOn = flag('labelSticky', '__canalRecallLabelSticky', true);
-  /** `?labelAerialPois=1`: every POI from the air too (the A/B of lane R3-F's aerial POI thinning, #241). */
-  private readonly labelAerialPoisAll = flag('labelAerialPois', '__canalRecallLabelAerialPois', false);
+  /**
+   * From the air (lane R3-F #241): `?labelAerialPois=all` keeps every POI (the A/B of the aerial POI thinning);
+   * `?labelAerialPois=N` admits the signature landmarks but caps them at N (default AERIAL_POI_MAX).
+   */
+  private readonly labelAerialPois: 'all' | number = parseAerialPois();
   /** `?labelClipTries=0` off: line labels try every centre along a run, also the ones projected far off screen. */
   private readonly labelClipTriesOn = flag('labelClipTries', '__canalRecallLabelClipTries', true);
   /** `?labelBudget=0` off, `?labelBudget=N` N ms: the aerial full placement's per-frame budget (labelLayer placeBudgetMs). */
@@ -872,8 +893,10 @@ export class OwnWorldView implements WorldViewOracles {
     // From the air only (no occlusion there): full placements in slices, and at most every 800 ms while panning.
     this._labels.placeBudgetMs = aerial ? this.labelBudgetMs : null;
     this._labels.clipTries = this.labelClipTriesOn;
-    // From the air only signature-landmark POIs keep their names (`?labelAerialPois=1`: every POI, as before).
-    this._labels.aerialPoisOnly = this._labels.hoodsOnce = aerial && !this.labelAerialPoisAll;
+    // From the air only signature-landmark POIs keep their names (`?labelAerialPois=all`: every POI, as before).
+    this._labels.aerialPoisOnly = this._labels.hoodsOnce = aerial && this.labelAerialPois !== 'all';
+    // ... and only the AERIAL_POI_MAX of them nearest and most prominent (`?labelAerialPois=N`).
+    this._labels.aerialPoiMax = aerial && this.labelAerialPois !== 'all' ? this.labelAerialPois : null;
     this._labels.sticky = aerial && this.labelStickyOn;
     this._labels.movingCadenceMs = aerial && this.labelBudgetMs !== null ? AERIAL_LABEL_CADENCE_MS : null;
     if (this.labelOcclusionOn && !aerial && city?.residentFeatures) {
@@ -1051,7 +1074,9 @@ export class OwnWorldView implements WorldViewOracles {
     this.cameraMap.jumpTo({ center: view.lngLat, zoom: view.zoom, bearing: view.bearing, pitch, elevation });
     lap('jumpTo and move listeners');
     this.lastSubject = view.subject;
-    this._threeBuildings?.setDetailCentre?.(view.subject[0], view.subject[1]);
+    // From the air the detail block keeps its last plan (detailRing.ts detailBlockFrozen, lane R3-G #242): panning at
+    // ~150 m no longer builds and dissolves detail tiles at every z16 edge the subject crosses. Not during the intro.
+    this._threeBuildings?.setDetailCentre?.(view.subject[0], view.subject[1], view.introFlat === 0 && isAerialView(view.zoom, pitch, view.lngLat[1]));
     lap('building detail centre');
     this.extras.tick();
     lap('extras tick');
