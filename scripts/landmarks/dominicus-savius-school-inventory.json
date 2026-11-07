@@ -1,0 +1,417 @@
+{
+ "schemaVersion": 1,
+ "id": "dominicus-savius-school",
+ "pand": "0363100012113136",
+ "brief": "scripts/landmarks/dominicus-savius-school-brief.md",
+ "signature": [
+  "sheds",
+  "yellow-entrance",
+  "window-bands",
+  "shed-glass-front",
+  "yellow-roof-edge",
+  "pebble-parapets"
+ ],
+ "walls": [
+  {
+   "tag": "w01-194",
+   "bearing": 194,
+   "lengthM": 60.5,
+   "centre": [
+    4.8354365,
+    52.3694285
+   ],
+   "evidence": "photo",
+   "panoId": "2025_10_01_11_11_11_00106",
+   "capturedAt": "2025-10-01",
+   "checked": true,
+   "items": [
+    {
+     "id": "sheds",
+     "kind": "other",
+     "where": "the old workshops: seven sheds, each a steep curved glazed rise on its west side curving over into a long fall to the gutter",
+     "approxSizeM": [
+      60,
+      8.6
+     ],
+     "plan": "modelled",
+     "how": "workshops(): the section repeated on the 8.24 m pitch from the 3DBAG crest lines, ruled roof strips, the rises glazed",
+     "seenIn": "2025_10_01_11_11_11_00106"
+    },
+    {
+     "id": "shed-glass-front",
+     "kind": "window-shape",
+     "where": "the whole south front of the workshops glazed up to the shed sections on a fine grid",
+     "approxSizeM": [
+      60,
+      8.6
+     ],
+     "plan": "modelled",
+     "how": "one glazed outline under the section with bars every 1.05 m and transoms every 1.3 m",
+     "seenIn": "2025_10_01_11_11_11_00106"
+    },
+    {
+     "id": "shed-rims",
+     "kind": "other",
+     "where": "light metal rims following every shed section",
+     "approxSizeM": [
+      8,
+      0.3
+     ],
+     "plan": "modelled",
+     "how": "a 0.32 m band along the section 12 cm proud",
+     "seenIn": "2025_10_01_11_11_11_00106"
+    },
+    {
+     "id": "shed-posts",
+     "kind": "colonnade",
+     "where": "light posts at every gutter",
+     "approxSizeM": [
+      0.4,
+      4.6
+     ],
+     "plan": "modelled",
+     "how": "bars 0.25 m proud",
+     "seenIn": "2025_10_01_11_11_11_00106"
+    },
+    {
+     "id": "shed-doors",
+     "kind": "other",
+     "where": "pairs of glazed doors in the sheds",
+     "approxSizeM": [
+      1.7,
+      2.1
+     ],
+     "plan": "simplified",
+     "how": "dark door panels 3 cm proud of the glass",
+     "seenIn": "2025_10_01_11_11_11_00106"
+    },
+    {
+     "id": "hook-rear-bands",
+     "kind": "window-shape",
+     "where": "above the sheds: the hook's rear front with the same bands and the yellow roof edge",
+     "approxSizeM": [
+      38,
+      8.5
+     ],
+     "plan": "modelled",
+     "how": "banded() from 8.7 m",
+     "seenIn": "2025_10_01_11_11_11_00106"
+    }
+   ]
+  },
+  {
+   "tag": "w02-14",
+   "bearing": 14,
+   "lengthM": 57.5,
+   "centre": [
+    4.835575,
+    52.3697275
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-06-18_10-57-50_01495",
+   "capturedAt": "2025-06-18",
+   "checked": true,
+   "items": [
+    {
+     "id": "window-bands",
+     "kind": "window-shape",
+     "where": "three window bands, one per storey, between pebble-concrete parapets, fourteen bays of 4.08 m, four lights by two",
+     "approxSizeM": [
+      57,
+      2.8
+     ],
+     "plan": "modelled",
+     "how": "banded(): dark band walls with one opening per bay, mullions 4 x 2",
+     "seenIn": "recording_2025-06-18_10-57-50_01495"
+    },
+    {
+     "id": "pebble-parapets",
+     "kind": "other",
+     "where": "grey pebble-concrete parapets between the bands",
+     "approxSizeM": [
+      57,
+      1.5
+     ],
+     "plan": "modelled",
+     "how": "measured tint",
+     "seenIn": "recording_2025-06-18_10-57-50_01495"
+    },
+    {
+     "id": "yellow-roof-edge",
+     "kind": "other",
+     "where": "olive-yellow roof edge along the whole front",
+     "approxSizeM": [
+      57,
+      0.7
+     ],
+     "plan": "modelled",
+     "how": "proud fascia bar 12 cm",
+     "seenIn": "recording_2025-06-18_10-57-50_01495"
+    },
+    {
+     "id": "dark-ground",
+     "kind": "window-shape",
+     "where": "ground storey glazed bay by bay between dark columns, one dark door bay",
+     "approxSizeM": [
+      57,
+      4
+     ],
+     "plan": "modelled",
+     "how": "bay openings 0.2 m deep, door bay dark",
+     "seenIn": "recording_2025-06-18_10-57-50_01495"
+    },
+    {
+     "id": "rooftop-sign",
+     "kind": "sign",
+     "where": "on the roof edge towards the west: VLIEGBASIS in white capitals and the pink deHuygens panel",
+     "approxSizeM": [
+      14,
+      1.1
+     ],
+     "plan": "simplified",
+     "how": "pixel capitals and a panel standing on the roof 0.5 m behind the fascia; the real lettering is a rounded display face",
+     "seenIn": "recording_2025-06-18_10-57-50_01495"
+    },
+    {
+     "id": "puck-sign",
+     "kind": "sign",
+     "where": "ground storey at the west end, a tenant shopfront sign (PUCK)",
+     "approxSizeM": [
+      3,
+      0.6
+     ],
+     "plan": "skipped",
+     "skip": {
+      "reason": "temporary",
+      "note": "tenant signage on the shopfront, changes with tenants"
+     },
+     "seenIn": "recording_2025-06-18_10-57-50_01495"
+    }
+   ]
+  },
+  {
+   "tag": "w03-104",
+   "bearing": 104,
+   "lengthM": 50.7,
+   "centre": [
+    4.836083,
+    52.369426
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "items": [],
+   "note": "no panorama: inferred from the register (the rear front has the same strips and parapets as the front)"
+  },
+  {
+   "tag": "w04-284",
+   "bearing": 284,
+   "lengthM": 18.4,
+   "centre": [
+    4.835035,
+    52.3695715
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000154_pano_0000_004009",
+   "capturedAt": "2016-10-10",
+   "checked": true,
+   "items": [
+    {
+     "id": "west-glass-end",
+     "kind": "window-shape",
+     "where": "the workshops' west end glazed on a grid over a dark plinth",
+     "approxSizeM": [
+      18.4,
+      8.2
+     ],
+     "plan": "modelled",
+     "how": "one recessed glazed opening with 1.2 m mullions and four transoms",
+     "seenIn": "TMX7316010203-000154_pano_0000_004009"
+    }
+   ]
+  },
+  {
+   "tag": "w05-13",
+   "bearing": 13,
+   "lengthM": 12.6,
+   "centre": [
+    4.8360775,
+    52.3696605
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-06-18_10-57-50_01488",
+   "capturedAt": "2025-06-18",
+   "checked": true,
+   "items": [
+    {
+     "id": "yellow-entrance",
+     "kind": "window-shape",
+     "where": "the entrance block: yellow panels with 21 windows of different sizes in a random pattern",
+     "approxSizeM": [
+      12.6,
+      17.2
+     ],
+     "plan": "modelled",
+     "how": "entry(): each window from the leaf-off 2024 crop, panel joints every 1.15 m",
+     "seenIn": "recording_2025-06-18_10-57-50_01488"
+    },
+    {
+     "id": "entrance-canopy",
+     "kind": "canopy",
+     "where": "flat dark canopy on two posts over the entrance doors",
+     "approxSizeM": [
+      10,
+      2
+     ],
+     "plan": "modelled",
+     "how": "slab with soffit and fascia on two posts",
+     "seenIn": "recording_2025-06-18_10-57-50_01488"
+    },
+    {
+     "id": "entrance-sign",
+     "kind": "sign",
+     "where": "on the canopy: Vliegbasis in red letters and deHuygens white on a pink panel",
+     "approxSizeM": [
+      8.5,
+      0.75
+     ],
+     "plan": "simplified",
+     "how": "pixel capitals and the pink panel; the lettering is a display face",
+     "seenIn": "recording_2025-06-18_10-57-50_01488"
+    }
+   ]
+  },
+  {
+   "tag": "w06-194",
+   "bearing": 194,
+   "lengthM": 12.6,
+   "centre": [
+    4.835908,
+    52.369217
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002513_pano_0000_000501",
+   "capturedAt": "2022-04-13",
+   "checked": true,
+   "items": [
+    {
+     "id": "south-end-blank",
+     "kind": "other",
+     "where": "the east wing's south end: blank pebble concrete with yellow edges and the yellow roof edge",
+     "approxSizeM": [
+      12.6,
+      17.2
+     ],
+     "plan": "modelled",
+     "how": "plain wall, two proud yellow edge strips, fascia",
+     "seenIn": "TMX7316010203-002513_pano_0000_000501"
+    }
+   ]
+  },
+  {
+   "tag": "w07-284",
+   "bearing": 284,
+   "lengthM": 8.2,
+   "centre": [
+    4.835075,
+    52.369731
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-06-18_10-57-50_01739",
+   "capturedAt": "2025-06-18",
+   "checked": true,
+   "items": [
+    {
+     "id": "emergency-stair",
+     "kind": "other",
+     "where": "the emergency stair at the west end: glass front with a concrete balcony at every storey",
+     "approxSizeM": [
+      8.2,
+      15.8
+     ],
+     "plan": "modelled",
+     "how": "recessed glass with mullions, three balcony slabs 1.3 m deep",
+     "seenIn": "recording_2025-06-18_10-57-50_01739"
+    }
+   ]
+  },
+  {
+   "tag": "w08-193",
+   "bearing": 193,
+   "lengthM": 5,
+   "centre": [
+    4.8350895,
+    52.369688
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000154_pano_0000_004008",
+   "capturedAt": "2016-10-10",
+   "checked": true,
+   "items": []
+  },
+  {
+   "tag": "w09-284",
+   "bearing": 284,
+   "lengthM": 4.8,
+   "centre": [
+    4.835834,
+    52.369254
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002513_pano_0000_000511",
+   "capturedAt": "2022-04-13",
+   "checked": true,
+   "items": [
+    {
+     "id": "yellow-pilasters",
+     "kind": "other",
+     "where": "the east wing's west face south of the sheds: yellow pilasters between the bays",
+     "approxSizeM": [
+      0.45,
+      17.2
+     ],
+     "plan": "modelled",
+     "how": "the BAG ring's 0.45 m notches drawn as yellow pilaster faces",
+     "seenIn": "TMX7316010203-002513_pano_0000_000511"
+    },
+    {
+     "id": "spiral-stair",
+     "kind": "balcony-ironwork",
+     "where": "a steel spiral escape stair at the south end of the west face",
+     "approxSizeM": [
+      2,
+      12
+     ],
+     "plan": "skipped",
+     "skip": {
+      "reason": "too-small",
+      "note": "a 2 m open steel spiral behind the trees; at ride distance it reads as part of the dark wall"
+     },
+     "seenIn": "TMX7316010203-002513_pano_0000_000511"
+    }
+   ]
+  },
+  {
+   "tag": "w10-283",
+   "bearing": 283,
+   "lengthM": 4.2,
+   "centre": [
+    4.835118,
+    52.3696645
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000154_pano_0000_004010",
+   "capturedAt": "2016-10-10",
+   "checked": true,
+   "items": []
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  }
+ ]
+}

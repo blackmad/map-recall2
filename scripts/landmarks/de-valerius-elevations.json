@@ -1,0 +1,19 @@
+{
+ "id": "de-valerius",
+ "source": "Gemeente Amsterdam panorama recording_2025-07-30_08-35-53_00141 (2025-07-30, the south wing's west end), CC BY 4.0, rectified crop artifacts/landmark-briefs/de-valerius/w10-246.alt.jpg",
+ "countedBy": "lane (opus) from the rectified crop, 2026-11-07, before comparing with the model; each window one opening, each slot in the parapet one opening; the recessed top storey behind the parapet is outside the depth band. Blind recount welcome.",
+ "facades": [
+  {
+   "name": "South wing west end (w10)",
+   "bearing": 246,
+   "photo": "artifacts/landmark-briefs/de-valerius/w10-246.alt.jpg",
+   "rows": [4, 4, 4, 4],
+   "gables": 0,
+   "symmetric": true,
+   "span": [16.4, 30.1],
+   "depthBand": 1.0,
+   "openings": ["glass", "dark"],
+   "note": "Three storeys of four tall windows with French balconies (the lowest behind the fence), then the four slots in the parapet."
+  }
+ ]
+}

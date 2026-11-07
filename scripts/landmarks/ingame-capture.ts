@@ -48,7 +48,15 @@ try {
     await ride(page);
     for (const v of views) {
       await page.evaluate(({c, z, p, b}) => ((window as any).canalRecallGame.vectorMap.map ?? (window as any).canalRecallGame.vectorMap.cameraMap).jumpTo({center: c, zoom: z, pitch: p, bearing: b}), {c: v.centre ?? anchor, z: v.zoom ?? zoom, p: v.pitch ?? pitch, b: v.bearing});
-      await page.waitForFunction(i => (window as any).canalRecallGame.vectorMap._signatureLandmarks.shown.has(i), id, {timeout: 60000});
+      // ride() stubs vectorMap.sync, so a landmark far from the route start was never requested after the jump (every
+      // oost-zuid landmark timed out here, 2026-11-07): ask the layer to walk its candidates from the new view, and again
+      // on every poll until the model is shown.
+      await page.evaluate(() => (window as any).canalRecallGame.vectorMap._signatureLandmarks?._onMove?.());
+      await page.waitForFunction(i => {
+        const s = (window as any).canalRecallGame.vectorMap._signatureLandmarks;
+        if (!s.shown.has(i)) s._onMove?.();
+        return s.shown.has(i);
+      }, id, {timeout: 60000, polling: 1000});
       await page.waitForTimeout(5000);
       const file = path.join(out, `ingame-${v.name}-${size}.png`);
       await page.screenshot({path: file});

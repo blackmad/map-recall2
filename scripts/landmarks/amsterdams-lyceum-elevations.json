@@ -1,0 +1,43 @@
+{
+ "id": "amsterdams-lyceum",
+ "source": "Gemeente Amsterdam panoramas recording_2025-07-29_12-06-07_02111 (2025-07-29, the canal side of the middle), TMX7316010203-001160_pano_0000_001143 (2019, the west canal tower) and TMX7316060226-000012_pano_0000_006548 (2016, the east wing), CC BY 4.0, rectified crops in artifacts/landmark-briefs/amsterdams-lyceum/",
+ "countedBy": "lane (opus) from the rectified crops, 2026-11-07, before comparing with the model; each white-framed window one opening; the carriage arches and footways are through passages, not openings. Blind recount welcome.",
+ "facades": [
+  {
+   "name": "Middle, canal side (w01)",
+   "bearing": 157,
+   "photo": "artifacts/landmark-briefs/amsterdams-lyceum/w01-157.jpg",
+   "rows": [6, 6],
+   "gables": 0,
+   "symmetric": true,
+   "span": [-9.6, 10.0],
+   "depthBand": 1.0,
+   "openings": ["glass"],
+   "note": "Two storeys of six window axes between the pilasters over the arches."
+  },
+  {
+   "name": "West canal tower (w14)",
+   "bearing": 157,
+   "photo": "artifacts/landmark-briefs/amsterdams-lyceum/w14-157.jpg",
+   "rows": [3, 3, 3, 3, 3],
+   "gables": 0,
+   "symmetric": true,
+   "span": [-16.0, -9.3],
+   "depthBand": 1.0,
+   "openings": ["glass"],
+   "note": "Three small windows at the top, three storeys of three coupled tall windows, three basement lights."
+  },
+  {
+   "name": "East wing, canal side (w04)",
+   "bearing": 157,
+   "photo": "artifacts/landmark-briefs/amsterdams-lyceum/w04-157.jpg",
+   "rows": [4, 4, 4],
+   "gables": 0,
+   "symmetric": true,
+   "span": [15.9, 27.5],
+   "depthBand": 1.0,
+   "openings": ["glass"],
+   "note": "Two storeys of four wide windows over four basement lights."
+  }
+ ]
+}

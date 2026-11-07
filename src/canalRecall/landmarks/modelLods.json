@@ -2374,5 +2374,35 @@
   "buildVersion": 2,
   "bytes": 192964,
   "triangles": 14326
+ },
+ "belastingdienst-amsterdam": {
+  "sourceHash": "1f3cd85962958a6a",
+  "buildVersion": 2,
+  "bytes": 231976,
+  "triangles": 17737
+ },
+ "dominicus-savius-school": {
+  "sourceHash": "4f1d0252d6a595be",
+  "buildVersion": 2,
+  "bytes": 62056,
+  "triangles": 3397
+ },
+ "forum-office": {
+  "sourceHash": "18aa1e44fd636fda",
+  "buildVersion": 2,
+  "bytes": 205480,
+  "triangles": 14517
+ },
+ "de-valerius": {
+  "sourceHash": "c665322a6749494c",
+  "buildVersion": 2,
+  "bytes": 96828,
+  "triangles": 5989
+ },
+ "amsterdams-lyceum": {
+  "sourceHash": "5ad480c0ef68051c",
+  "buildVersion": 2,
+  "bytes": 93180,
+  "triangles": 5756
  }
 }

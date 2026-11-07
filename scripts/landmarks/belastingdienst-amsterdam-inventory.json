@@ -1,0 +1,825 @@
+{
+ "schemaVersion": 1,
+ "id": "belastingdienst-amsterdam",
+ "pand": "0363100012107557",
+ "brief": "scripts/landmarks/belastingdienst-amsterdam-brief.md",
+ "signature": [
+  "t-open-book",
+  "t-dark-stripes",
+  "w-ribbon-windows",
+  "t-glass-ends",
+  "t-wheel",
+  "s-colonnade"
+ ],
+ "walls": [
+  {
+   "tag": "w01-90",
+   "bearing": 90,
+   "lengthM": 83.4,
+   "centre": [
+    4.8436458,
+    52.3882416
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "items": [],
+   "note": "no panorama: inferred; drawn with the rhythm of its section"
+  },
+  {
+   "tag": "w02-270",
+   "bearing": 270,
+   "lengthM": 81.5,
+   "centre": [
+    4.8427085,
+    52.3873208
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2024-09-09_08-42-32_05540",
+   "capturedAt": "2024-09-09",
+   "checked": true,
+   "items": [
+    {
+     "id": "w2-ribbon-windows",
+     "kind": "window-shape",
+     "where": "three rows of eleven ribbon windows, the lowest row starting after the north hall",
+     "approxSizeM": [
+      5.8,
+      1.3
+     ],
+     "plan": "modelled",
+     "how": "darkFront() on the measured 7.05 m pitch",
+     "seenIn": "recording_2024-09-09_08-42-32_05540"
+    },
+    {
+     "id": "w2-north-hall",
+     "kind": "window-shape",
+     "where": "north end of the middle section, the glazed hall to 6.5 m under the first window row",
+     "approxSizeM": [
+      15,
+      6.5
+     ],
+     "plan": "modelled",
+     "how": "lobby opening with mullion grid",
+     "seenIn": "recording_2024-09-09_08-42-32_05540"
+    },
+    {
+     "id": "w2-lattice-mast",
+     "kind": "other",
+     "where": "south end of the middle section, a steel lattice mast standing off the granite from 5 m to above the roof",
+     "approxSizeM": [
+      1.2,
+      15.5
+     ],
+     "plan": "simplified",
+     "how": "two posts 0.55 m off the wall with a rung every metre",
+     "seenIn": "recording_2024-09-09_08-42-32_05540"
+    },
+    {
+     "id": "w2-garage-gate",
+     "kind": "other",
+     "where": "ground storey under the mast, the car-park entrance",
+     "approxSizeM": [
+      4.8,
+      2.9
+     ],
+     "plan": "modelled",
+     "how": "dark opening 3 m deep",
+     "seenIn": "recording_2024-09-09_08-42-32_05540"
+    },
+    {
+     "id": "w2-street-lamps",
+     "kind": "lamp",
+     "where": "pavement in front, the pale green Sloterdijk street lamps",
+     "approxSizeM": [
+      2,
+      8
+     ],
+     "plan": "skipped",
+     "skip": {
+      "reason": "not-visible",
+      "note": "street furniture on the pavement, not part of the building; the street-furniture layer owns lamps"
+     },
+     "seenIn": "recording_2024-09-09_08-42-32_05540"
+    }
+   ]
+  },
+  {
+   "tag": "w03-270",
+   "bearing": 270,
+   "lengthM": 79.4,
+   "centre": [
+    4.8426941,
+    52.3880734
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-07-01_11-45-33_00562",
+   "capturedAt": "2025-07-01",
+   "checked": true,
+   "items": [
+    {
+     "id": "w-ribbon-windows",
+     "kind": "window-shape",
+     "where": "three rows of eleven ribbon windows over the whole north section, white frames, eight panes and a transom",
+     "approxSizeM": [
+      6.0,
+      1.3
+     ],
+     "plan": "modelled",
+     "how": "darkFront(): recessed openings on the measured 7.26 m pitch, white reveals, mullions and a transom in frame white",
+     "seenIn": "recording_2025-07-01_11-45-33_00562"
+    },
+    {
+     "id": "w-ground-piers",
+     "kind": "colonnade",
+     "where": "ground storey, square dark granite piers on a 7.2 m pitch in front of the glazing",
+     "approxSizeM": [
+      0.9,
+      3.9
+     ],
+     "plan": "modelled",
+     "how": "ground openings 1.6 m deep between 0.9 m piers",
+     "seenIn": "recording_2025-07-01_11-45-33_00562"
+    },
+    {
+     "id": "w-south-hall",
+     "kind": "window-shape",
+     "where": "south end of the north section, the glazed entrance hall two storeys high",
+     "approxSizeM": [
+      12,
+      8.2
+     ],
+     "plan": "modelled",
+     "how": "lobby opening with a 1.5 m mullion grid",
+     "seenIn": "recording_2025-07-01_11-45-33_00562"
+    },
+    {
+     "id": "w-granite-grid",
+     "kind": "other",
+     "where": "the whole front: polished dark granite on a square panel grid",
+     "approxSizeM": [
+      79,
+      18
+     ],
+     "plan": "simplified",
+     "how": "flat measured tint; the panel joints are below gallery resolution",
+     "seenIn": "recording_2025-07-01_11-45-33_00562"
+    }
+   ]
+  },
+  {
+   "tag": "w04-270",
+   "bearing": 270,
+   "lengthM": 69.6,
+   "centre": [
+    4.8427221,
+    52.3865924
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001710_pano_0000_000705",
+   "capturedAt": "2020-05-14",
+   "checked": true,
+   "items": [
+    {
+     "id": "s-punched-windows",
+     "kind": "window-shape",
+     "where": "three rows of eighteen square punched windows on the light granite south section",
+     "approxSizeM": [
+      1.75,
+      1.75
+     ],
+     "plan": "modelled",
+     "how": "lightFront(): 3.63 m pitch, 0.25 m reveals, transom",
+     "seenIn": "TMX7316010203-001710_pano_0000_000705"
+    },
+    {
+     "id": "s-colonnade",
+     "kind": "colonnade",
+     "where": "ground storey, round grey columns on a 7.15 m pitch in front of glazing set 2.2 m back under a 6.5 m soffit",
+     "approxSizeM": [
+      0.85,
+      6.5
+     ],
+     "plan": "modelled",
+     "how": "ten-sided columns under the overhang, recessed glazing",
+     "seenIn": "TMX7316010203-001710_pano_0000_000705"
+    },
+    {
+     "id": "s-passage",
+     "kind": "other",
+     "where": "43-53 m from the north end, the open passage through to the south court",
+     "approxSizeM": [
+      8.6,
+      6.5
+     ],
+     "plan": "modelled",
+     "how": "open through-hole with side walls and soffit; declared in the spec as a through passage",
+     "seenIn": "TMX7316010203-001710_pano_0000_000705"
+    },
+    {
+     "id": "s-storey-lines",
+     "kind": "other",
+     "where": "thin pale lines at every storey on the light granite",
+     "approxSizeM": [
+      69,
+      0.12
+     ],
+     "plan": "modelled",
+     "how": "0.12 m bars 6 cm proud in the tower-panel tint",
+     "seenIn": "TMX7316010203-001710_pano_0000_000705"
+    }
+   ]
+  },
+  {
+   "tag": "w05-90",
+   "bearing": 90,
+   "lengthM": 67.2,
+   "centre": [
+    4.8436766,
+    52.3866099
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "items": [],
+   "note": "no panorama: inferred; drawn with the rhythm of its section"
+  },
+  {
+   "tag": "w06-90",
+   "bearing": 90,
+   "lengthM": 65.6,
+   "centre": [
+    4.8436643,
+    52.3872559
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "items": [],
+   "note": "no panorama: inferred; drawn with the rhythm of its section"
+  },
+  {
+   "tag": "w07-270",
+   "bearing": 270,
+   "lengthM": 49.2,
+   "centre": [
+    4.8431628,
+    52.388301
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "items": [],
+   "note": "no panorama: inferred; drawn with the rhythm of its section"
+  },
+  {
+   "tag": "w08-90",
+   "bearing": 90,
+   "lengthM": 43.9,
+   "centre": [
+    4.8429078,
+    52.3882753
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "items": [],
+   "note": "no panorama: inferred; drawn with the rhythm of its section"
+  },
+  {
+   "tag": "w09-343",
+   "bearing": 343,
+   "lengthM": 34.3,
+   "centre": [
+    4.8433986,
+    52.3885693
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-07-01_11-45-33_00512",
+   "capturedAt": "2025-07-01",
+   "checked": true,
+   "items": [
+    {
+     "id": "g-cladding",
+     "kind": "other",
+     "where": "north car park: dark cladding panels on a square grid, blank but for a few light slits",
+     "approxSizeM": [
+      34,
+      18.8
+     ],
+     "plan": "simplified",
+     "how": "flat measured dark tint with a proud joint line every 2.45 m; the slits are too small",
+     "seenIn": "recording_2025-07-01_11-45-33_00512"
+    },
+    {
+     "id": "g-deck-bay",
+     "kind": "balcony-ironwork",
+     "where": "west end, the open deck bay with two railed levels and the gate under them",
+     "approxSizeM": [
+      5.7,
+      6.3
+     ],
+     "plan": "modelled",
+     "how": "3 m deep opening, two deck slabs with rails",
+     "seenIn": "recording_2025-07-01_11-45-33_00512"
+    }
+   ]
+  },
+  {
+   "tag": "w10-90",
+   "bearing": 90,
+   "lengthM": 25.4,
+   "centre": [
+    4.8429197,
+    52.3863955
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2024-09-09_08-42-32_05008",
+   "capturedAt": "2024-09-09",
+   "checked": true,
+   "items": [
+    {
+     "id": "c-court-glass",
+     "kind": "window-shape",
+     "where": "south court: glass curtain lobby fronts and granite with punched windows",
+     "approxSizeM": [
+      20,
+      7
+     ],
+     "plan": "simplified",
+     "how": "recessed ground glazing and punched rows; trees hide most of it",
+     "seenIn": "recording_2024-09-09_08-42-32_05008"
+    }
+   ]
+  },
+  {
+   "tag": "w11-225",
+   "bearing": 225,
+   "lengthM": 23,
+   "centre": [
+    4.8433192,
+    52.3864293
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2024-09-09_08-42-32_05012",
+   "capturedAt": "2024-09-09",
+   "checked": true,
+   "items": [
+    {
+     "id": "c-slab-columns",
+     "kind": "colonnade",
+     "where": "south court: two big round white columns carrying the south slab over its glazed ground storey",
+     "approxSizeM": [
+      1.1,
+      6.8
+     ],
+     "plan": "modelled",
+     "how": "two cylinders 1.6 m in front of glazing set 3 m back",
+     "seenIn": "recording_2024-09-09_08-42-32_05012"
+    }
+   ]
+  },
+  {
+   "tag": "w12-360",
+   "bearing": 0,
+   "lengthM": 17.4,
+   "centre": [
+    4.8430395,
+    52.388079
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "items": [],
+   "note": "no panorama: inferred; drawn with the rhythm of its section"
+  },
+  {
+   "tag": "w13-180",
+   "bearing": 180,
+   "lengthM": 15.9,
+   "centre": [
+    4.8430339,
+    52.3865107
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2024-09-09_08-42-32_05011",
+   "capturedAt": "2024-09-09",
+   "checked": true,
+   "items": [
+    {
+     "id": "c-link-glass",
+     "kind": "window-shape",
+     "where": "the link block facing the south court: two storeys of curtain glass",
+     "approxSizeM": [
+      16,
+      7
+     ],
+     "plan": "modelled",
+     "how": "curtain() to 7 m, light granite with punched windows above",
+     "seenIn": "recording_2024-09-09_08-42-32_05011"
+    }
+   ]
+  },
+  {
+   "tag": "w14-343",
+   "bearing": 343,
+   "lengthM": 15.5,
+   "centre": [
+    4.8427955,
+    52.3884512
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2024-09-09_08-42-32_04883",
+   "capturedAt": "2024-09-09",
+   "checked": true,
+   "items": [
+    {
+     "id": "n-end-ribbons",
+     "kind": "window-shape",
+     "where": "north end of the voorbouw: dark granite with stacked white-framed windows",
+     "approxSizeM": [
+      15,
+      18
+     ],
+     "plan": "simplified",
+     "how": "inferredDark(): ribbon rows on the front rhythm",
+     "seenIn": "recording_2024-09-09_08-42-32_04883"
+    }
+   ]
+  },
+  {
+   "tag": "w15-180",
+   "bearing": 180,
+   "lengthM": 13.2,
+   "centre": [
+    4.842825,
+    52.3862805
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2024-09-09_08-42-32_05014",
+   "capturedAt": "2024-09-09",
+   "checked": true,
+   "items": [
+    {
+     "id": "s-end-glass",
+     "kind": "window-shape",
+     "where": "south end of the voorbouw: glazed with grey storey bands",
+     "approxSizeM": [
+      13,
+      19
+     ],
+     "plan": "modelled",
+     "how": "curtain() with granite-tint frames and storey transoms",
+     "seenIn": "recording_2024-09-09_08-42-32_05014"
+    }
+   ]
+  },
+  {
+   "tag": "w16-90",
+   "bearing": 90,
+   "lengthM": 8.8,
+   "centre": [
+    4.8435355,
+    52.387589
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "items": [],
+   "note": "no panorama: inferred; drawn with the rhythm of its section"
+  },
+  {
+   "tag": "w17-90",
+   "bearing": 90,
+   "lengthM": 8.7,
+   "centre": [
+    4.843531,
+    52.3878267
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "items": [],
+   "note": "no panorama: inferred; drawn with the rhythm of its section"
+  },
+  {
+   "tag": "w18-180",
+   "bearing": 180,
+   "lengthM": 8.3,
+   "centre": [
+    4.8435915,
+    52.3878664
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "items": [],
+   "note": "no panorama: inferred; drawn with the rhythm of its section"
+  },
+  {
+   "tag": "w19-360",
+   "bearing": 0,
+   "lengthM": 8.3,
+   "centre": [
+    4.8435974,
+    52.3875501
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "items": [],
+   "note": "no panorama: inferred; drawn with the rhythm of its section"
+  },
+  {
+   "tag": "w20-90",
+   "bearing": 90,
+   "lengthM": 7.2,
+   "centre": [
+    4.8436046,
+    52.3876611
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "items": [],
+   "note": "no panorama: inferred; drawn with the rhythm of its section"
+  },
+  {
+   "tag": "w21-90",
+   "bearing": 90,
+   "lengthM": 7.2,
+   "centre": [
+    4.8436028,
+    52.3877555
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "items": [],
+   "note": "no panorama: inferred; drawn with the rhythm of its section"
+  },
+  {
+   "tag": "w22-180",
+   "bearing": 180,
+   "lengthM": 6.5,
+   "centre": [
+    4.8436347,
+    52.3863078
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2024-09-09_08-42-32_05003",
+   "capturedAt": "2024-09-09",
+   "checked": true,
+   "items": [
+    {
+     "id": "p-park-band",
+     "kind": "other",
+     "where": "the Ringweg car park: grey base, white upper band, the slab overhang above",
+     "approxSizeM": [
+      6,
+      8
+     ],
+     "plan": "modelled",
+     "how": "two-tone wall with slit grilles",
+     "seenIn": "recording_2024-09-09_08-42-32_05003"
+    }
+   ]
+  },
+  {
+   "tag": "w23-226",
+   "bearing": 226,
+   "lengthM": 5.9,
+   "centre": [
+    4.8435566,
+    52.3862881
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2024-09-09_08-42-32_05006",
+   "capturedAt": "2024-09-09",
+   "checked": true,
+   "items": []
+  },
+  {
+   "tag": "w24-180",
+   "bearing": 180,
+   "lengthM": 5.7,
+   "centre": [
+    4.8434837,
+    52.3863068
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2024-09-09_08-42-32_05005",
+   "capturedAt": "2024-09-09",
+   "checked": true,
+   "items": []
+  },
+  {
+   "tag": "w25-270",
+   "bearing": 270,
+   "lengthM": 5.6,
+   "centre": [
+    4.8434408,
+    52.3863318
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2024-09-09_08-42-32_05009",
+   "capturedAt": "2024-09-09",
+   "checked": true,
+   "items": []
+  },
+  {
+   "tag": "w26-90",
+   "bearing": 90,
+   "lengthM": 5.5,
+   "centre": [
+    4.8436014,
+    52.386936
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "items": [],
+   "note": "no panorama: inferred; drawn with the rhythm of its section"
+  },
+  {
+   "tag": "w27-270",
+   "bearing": 270,
+   "lengthM": 5.5,
+   "centre": [
+    4.8427675,
+    52.3869301
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2024-09-09_08-42-32_05627",
+   "capturedAt": "2024-09-09",
+   "checked": true,
+   "items": [
+    {
+     "id": "e-notch-hall",
+     "kind": "window-shape",
+     "where": "the recess between the dark and light sections: full-height glazed hall over the car-park entrance",
+     "approxSizeM": [
+      5,
+      19
+     ],
+     "plan": "modelled",
+     "how": "curtain() on the notch faces",
+     "seenIn": "recording_2024-09-09_08-42-32_05627"
+    }
+   ]
+  },
+  {
+   "tag": "w28-360",
+   "bearing": 0,
+   "lengthM": 4.8,
+   "centre": [
+    4.843567,
+    52.3877876
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "items": [],
+   "note": "no panorama: inferred; drawn with the rhythm of its section"
+  },
+  {
+   "tag": "w29-180",
+   "bearing": 180,
+   "lengthM": 4.8,
+   "centre": [
+    4.84357,
+    52.3876285
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "items": [],
+   "note": "no panorama: inferred; drawn with the rhythm of its section"
+  },
+  {
+   "tag": "w30-360",
+   "bearing": 0,
+   "lengthM": 4.7,
+   "centre": [
+    4.8436363,
+    52.3869116
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "items": [],
+   "note": "no panorama: inferred; drawn with the rhythm of its section"
+  },
+  {
+   "tag": "tower",
+   "bearing": 270,
+   "lengthM": 50,
+   "centre": [
+    4.8432,
+    52.3876
+   ],
+   "evidence": "photo",
+   "panoId": "commons:Kingsfordweg_1_Amsterdam.jpg",
+   "capturedAt": "2016-09-07",
+   "checked": true,
+   "note": "the tower leaves seen in Commons photographs (no panorama frames them)",
+   "items": [
+    {
+     "id": "t-open-book",
+     "kind": "tower",
+     "where": "the 82 m tower: two 14 m leaves opened like a book towards the Kingsfordweg",
+     "approxSizeM": [
+      50,
+      82
+     ],
+     "plan": "modelled",
+     "how": "chevron plan from the 3DBAG roof parts",
+     "seenIn": "commons:Kingsfordweg_1_Amsterdam.jpg (Choinowski 2016, CC BY-SA 4.0)"
+    },
+    {
+     "id": "t-dark-stripes",
+     "kind": "other",
+     "where": "four dark vertical stripes on every broad face of the leaves, base to the grille row",
+     "approxSizeM": [
+      1.5,
+      66
+     ],
+     "plan": "modelled",
+     "how": "bars 0.3 m proud in the measured stripe tint",
+     "seenIn": "commons:Boekhuis_in_2016.jpg (Choinowski 2016, CC BY-SA 4.0)"
+    },
+    {
+     "id": "t-ribbons",
+     "kind": "window-shape",
+     "where": "a ribbon window every storey between the stripes on silver-grey panels",
+     "approxSizeM": [
+      7,
+      1.45
+     ],
+     "plan": "modelled",
+     "how": "towerPanel(): 20 storeys of 3.75 m",
+     "seenIn": "commons:Boekhuis_in_2016.jpg (Choinowski 2016, CC BY-SA 4.0)"
+    },
+    {
+     "id": "t-glass-ends",
+     "kind": "window-shape",
+     "where": "the leaf ends towards the Kingsfordweg, glazed full height on a fine grid",
+     "approxSizeM": [
+      14,
+      82
+     ],
+     "plan": "modelled",
+     "how": "curtain() with 1.45 m mullions and storey transoms",
+     "seenIn": "commons:Kingsfordweg_1_Amsterdam.jpg (Choinowski 2016, CC BY-SA 4.0)"
+    },
+    {
+     "id": "t-grilles",
+     "kind": "other",
+     "where": "a row of grilles in the top storey of every face",
+     "approxSizeM": [
+      2.4,
+      0.6
+     ],
+     "plan": "modelled",
+     "how": "dark recessed slots",
+     "seenIn": "commons:Kingsfordweg_1_Amsterdam.jpg (Choinowski 2016, CC BY-SA 4.0)"
+    },
+    {
+     "id": "t-wheel",
+     "kind": "sculpture",
+     "where": "Jeroen Henneman's Het wiel on the roof of the south leaf by the spine",
+     "approxSizeM": [
+      6.5,
+      7
+     ],
+     "plan": "simplified",
+     "how": "torus ring on a short post with the short arm at its rim; position from the 3DBAG 84.7 m roof part and the Ceescamel photos",
+     "seenIn": "commons:2020_Wiel_van_Henneman,_zijaanzicht.jpg and vooraanzicht.jpg (Ceescamel 2020, CC BY-SA 4.0)"
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  }
+ ]
+}

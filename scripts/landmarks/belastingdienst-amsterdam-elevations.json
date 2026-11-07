@@ -1,0 +1,31 @@
+{
+ "id": "belastingdienst-amsterdam",
+ "source": "Gemeente Amsterdam panoramas recording_2025-07-01_11-45-33_00562 (2025-07-01, voorbouw north section) and TMX7316010203-001710_pano_0000_000705 (2020-05-14, voorbouw south section), CC BY 4.0, rectified crops artifacts/landmark-briefs/belastingdienst-amsterdam/w03-270.jpg and w04-270.jpg",
+ "countedBy": "lane (opus) from the rectified crops, 2026-11-07, before comparing with the model; ribbon convention: each ribbon window is one opening, the ground-storey glazing counts once per run between piers or columns. Blind recount welcome.",
+ "facades": [
+  {
+   "name": "Kingsfordweg front, north section (w03)",
+   "bearing": 270,
+   "photo": "artifacts/landmark-briefs/belastingdienst-amsterdam/w03-270.jpg",
+   "rows": [11, 10, 11, 11],
+   "gables": 0,
+   "symmetric": false,
+   "span": [-147.0, -63.6],
+   "depthBand": 3,
+   "openings": ["glass", "dark", "canopyGlass"],
+   "note": "Ground storey: glazing between nine dark piers, one run north of the first pier, the two-storey hall at the south end and the run south of it (11). Second band: nine ribbon windows (none over the hall) and the hall's upper tier above the floor-slab line at about 4 m (10); the two upper rows eleven each (the first one narrower)."
+  },
+  {
+   "name": "Kingsfordweg front, south section (w04)",
+   "bearing": 270,
+   "photo": "artifacts/landmark-briefs/belastingdienst-amsterdam/w04-270.jpg",
+   "rows": [9, null, 18, 18],
+   "gables": 0,
+   "symmetric": false,
+   "span": [26.8, 96.4],
+   "depthBand": 3,
+   "openings": ["glass", "dark", "canopyGlass"],
+   "note": "Ground storey: glazing set back behind round columns, six runs north of the passage and three south of it (9). The lowest window row is half hidden by the street trees (null); the two upper rows eighteen square windows each."
+  }
+ ]
+}

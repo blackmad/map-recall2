@@ -1,0 +1,416 @@
+{
+ "schemaVersion": 1,
+ "id": "de-valerius",
+ "pand": "0363100012251533",
+ "brief": "scripts/landmarks/de-valerius-brief.md",
+ "signature": [
+  "dark-brick",
+  "end-blocks-tower",
+  "pergola-sections",
+  "wing-pergola",
+  "terraces",
+  "garden-fence"
+ ],
+ "walls": [
+  {
+   "tag": "w01-66",
+   "bearing": 66,
+   "lengthM": 69.2,
+   "centre": [
+    4.865154,
+    52.352765
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001705_pano_0000_002616",
+   "capturedAt": "2020-05-13",
+   "checked": true,
+   "items": [
+    {
+     "id": "dark-brick",
+     "kind": "other",
+     "where": "the whole building in dark blue-grey glazed brick",
+     "approxSizeM": [
+      69,
+      19.3
+     ],
+     "plan": "modelled",
+     "how": "measured brick tint",
+     "seenIn": "b_20241106_1111_Track21_Sphere_00007"
+    },
+    {
+     "id": "end-blocks-tower",
+     "kind": "window-shape",
+     "where": "the two end blocks and the central tower rising to the full height with four storeys of deep-set white-framed windows with French balconies; the tower's top storey only its middle two windows",
+     "approxSizeM": [
+      13,
+      19.3
+     ],
+     "plan": "modelled",
+     "how": "tallFront(): windows 0.4 m deep with white reveals and a rail",
+     "seenIn": "b_20241106_1111_Track21_Sphere_00007"
+    },
+    {
+     "id": "pergola-sections",
+     "kind": "other",
+     "where": "between them two lower sections with a slotted parapet, a recessed top storey and a steel pergola spanning to the front",
+     "approxSizeM": [
+      19,
+      17.6
+     ],
+     "plan": "modelled",
+     "how": "stripFront() + recessed glazed storey + pergola beams on posts",
+     "seenIn": "b_20241106_1111_Track21_Sphere_00007"
+    },
+    {
+     "id": "front-balconies",
+     "kind": "balcony-ironwork",
+     "where": "projecting balconies with stone parapets in the pergola sections, swapping sides storey by storey",
+     "approxSizeM": [
+      2.8,
+      1.4
+     ],
+     "plan": "modelled",
+     "how": "slab with three parapet sides",
+     "seenIn": "b_20241106_1111_Track21_Sphere_00007"
+    },
+    {
+     "id": "dark-ground",
+     "kind": "window-shape",
+     "where": "the ground storey recessed glazing between brick piers under a dark band, the oak entrance door in the tower",
+     "approxSizeM": [
+      69,
+      3.9
+     ],
+     "plan": "simplified",
+     "how": "0.6 m recessed glazing between piers; the door reads as one of the lights",
+     "seenIn": "b_20241106_1111_Track21_Sphere_00007"
+    },
+    {
+     "id": "tenant-signs",
+     "kind": "sign",
+     "where": "tenant names on the ground-storey glass",
+     "approxSizeM": [
+      2,
+      0.4
+     ],
+     "plan": "skipped",
+     "skip": {
+      "reason": "temporary",
+      "note": "tenant signage"
+     },
+     "seenIn": "b_20241106_1111_Track21_Sphere_00007"
+    }
+   ]
+  },
+  {
+   "tag": "w02-337",
+   "bearing": 337,
+   "lengthM": 42.4,
+   "centre": [
+    4.864663,
+    52.352972
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001061_pano_0001_000865",
+   "capturedAt": "2019-01-17",
+   "checked": true,
+   "items": [],
+   "note": "its main view predates completion (construction); described from the finished walls beside it"
+  },
+  {
+   "tag": "w03-157",
+   "bearing": 157,
+   "lengthM": 42.4,
+   "centre": [
+    4.8651195,
+    52.352342
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "items": [],
+   "note": "no panorama: inferred from the finished fronts"
+  },
+  {
+   "tag": "w04-336",
+   "bearing": 336,
+   "lengthM": 31.4,
+   "centre": [
+    4.8646135,
+    52.3528095
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002463_pano_0003_001047",
+   "capturedAt": "2022-03-22",
+   "checked": true,
+   "items": [],
+   "note": "its main view predates completion (construction); described from the finished walls beside it"
+  },
+  {
+   "tag": "w05-156",
+   "bearing": 156,
+   "lengthM": 26.5,
+   "centre": [
+    4.8646355,
+    52.3528325
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "items": [],
+   "note": "no panorama: inferred from the finished fronts"
+  },
+  {
+   "tag": "w06-247",
+   "bearing": 247,
+   "lengthM": 19.7,
+   "centre": [
+    4.8646205,
+    52.352452
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001705_pano_0000_001406",
+   "capturedAt": "2020-05-13",
+   "checked": true,
+   "items": [],
+   "note": "its main view predates completion (construction); described from the finished walls beside it"
+  },
+  {
+   "tag": "w07-246",
+   "bearing": 246,
+   "lengthM": 19.6,
+   "centre": [
+    4.8644615,
+    52.3526715
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000259_pano_0007_000275",
+   "capturedAt": "2017-04-13",
+   "checked": true,
+   "items": [
+    {
+     "id": "garden-fence",
+     "kind": "balcony-ironwork",
+     "where": "the garden fence on the street: a dark plinth, brick piers every 4.3 m and black railings",
+     "approxSizeM": [
+      19.6,
+      2.35
+     ],
+     "plan": "modelled",
+     "how": "fence(): boxes for plinth, piers, rail and bars every 0.32 m",
+     "seenIn": "recording_2025-07-30_08-35-53_00150"
+    },
+    {
+     "id": "terraces",
+     "kind": "balcony-ironwork",
+     "where": "the long block's garden side stepping down in planted terraces with stone planters",
+     "approxSizeM": [
+      50,
+      15.3
+     ],
+     "plan": "modelled",
+     "how": "four terrace steps (15.3 / 11.6 / 7.8 / 4.2 m) with glazed faces, green roofs and planter parapets",
+     "seenIn": "recording_2025-07-30_08-35-53_00150"
+    },
+    {
+     "id": "banner",
+     "kind": "sign",
+     "where": "a V banner on a pole by the fence",
+     "approxSizeM": [
+      0.8,
+      2
+     ],
+     "plan": "skipped",
+     "skip": {
+      "reason": "temporary",
+      "note": "marketing banner"
+     },
+     "seenIn": "recording_2025-07-30_08-35-53_00150"
+    }
+   ]
+  },
+  {
+   "tag": "w08-156",
+   "bearing": 156,
+   "lengthM": 14.7,
+   "centre": [
+    4.8647775,
+    52.352398
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001705_pano_0000_001401",
+   "capturedAt": "2020-05-13",
+   "checked": true,
+   "items": [
+    {
+     "id": "wing-windows",
+     "kind": "window-shape",
+     "where": "the south wing's garden side: tall windows with French balconies in white frames",
+     "approxSizeM": [
+      14.7,
+      11
+     ],
+     "plan": "modelled",
+     "how": "wingFront()",
+     "seenIn": "recording_2025-07-30_08-35-53_00137"
+    }
+   ]
+  },
+  {
+   "tag": "w09-247",
+   "bearing": 247,
+   "lengthM": 13.5,
+   "centre": [
+    4.864418,
+    52.3528395
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001705_pano_0000_001415",
+   "capturedAt": "2020-05-13",
+   "checked": true,
+   "items": [],
+   "note": "its main view predates completion (construction); described from the finished walls beside it"
+  },
+  {
+   "tag": "w10-246",
+   "bearing": 246,
+   "lengthM": 13.4,
+   "centre": [
+    4.864795,
+    52.35232
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002920_pano_0005_000173",
+   "capturedAt": "2023-01-10",
+   "checked": true,
+   "items": [
+    {
+     "id": "wing-pergola",
+     "kind": "canopy",
+     "where": "the south wing's west end: three storeys of tall windows with French balconies, brick pilasters, the slotted parapet, the recessed top storey and the steel pergola on top",
+     "approxSizeM": [
+      13.4,
+      15.4
+     ],
+     "plan": "modelled",
+     "how": "wingFront() + recessed glazed storey + perimeter and cross beams on posts",
+     "seenIn": "recording_2025-07-30_08-35-53_00141"
+    },
+    {
+     "id": "plants-on-top",
+     "kind": "other",
+     "where": "trees in planters on the top terrace",
+     "approxSizeM": [
+      1,
+      2
+     ],
+     "plan": "skipped",
+     "skip": {
+      "reason": "too-small",
+      "note": "planting, below the pergola line"
+     },
+     "seenIn": "recording_2025-07-30_08-35-53_00141"
+    }
+   ]
+  },
+  {
+   "tag": "w11-336",
+   "bearing": 336,
+   "lengthM": 9.8,
+   "centre": [
+    4.8648205,
+    52.352393
+   ],
+   "evidence": "photo",
+   "panoId": "b_20241112_0936_Track25_Sphere_00020",
+   "capturedAt": "2024-11-12",
+   "checked": true,
+   "items": [],
+   "note": "its main view predates completion (construction); described from the finished walls beside it"
+  },
+  {
+   "tag": "w12-246",
+   "bearing": 246,
+   "lengthM": 7.1,
+   "centre": [
+    4.8646105,
+    52.352581
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000780_pano_0000_001169",
+   "capturedAt": "2018-06-07",
+   "checked": true,
+   "items": [],
+   "note": "its main view predates completion (construction); described from the finished walls beside it"
+  },
+  {
+   "tag": "w13-337",
+   "bearing": 337,
+   "lengthM": 5.2,
+   "centre": [
+    4.864597,
+    52.3525425
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002463_pano_0003_001165",
+   "capturedAt": "2022-03-22",
+   "checked": true,
+   "items": [],
+   "note": "its main view predates completion (construction); described from the finished walls beside it"
+  },
+  {
+   "tag": "w14-156",
+   "bearing": 156,
+   "lengthM": 5.2,
+   "centre": [
+    4.8645545,
+    52.3526005
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-07-30_08-35-53_00144",
+   "capturedAt": "2025-07-30",
+   "checked": true,
+   "items": [],
+   "note": "its main view predates completion (construction); described from the finished walls beside it"
+  },
+  {
+   "tag": "w15-337",
+   "bearing": 337,
+   "lengthM": 4.8,
+   "centre": [
+    4.865392,
+    52.3524895
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001061_pano_0001_000799",
+   "capturedAt": "2019-01-17",
+   "checked": true,
+   "items": [],
+   "note": "its main view predates completion (construction); described from the finished walls beside it"
+  },
+  {
+   "tag": "w16-158",
+   "bearing": 158,
+   "lengthM": 4.7,
+   "centre": [
+    4.865433,
+    52.352431
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002412_pano_0008_000057",
+   "capturedAt": "2022-01-11",
+   "checked": true,
+   "items": [],
+   "note": "its main view predates completion (construction); described from the finished walls beside it"
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  }
+ ]
+}

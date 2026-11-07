@@ -1,5 +1,5 @@
 {
-  "toolchain": "3b11913f230dcabb6697e035ba4fa8794a6afb5408a90c3de24936be85be42a4",
+  "toolchain": "58bdeed60ea529d362efceb2e3375f2149c507d155c232db475549fcc64cb5fe",
   "models": {
     "abn-amro-hoofdkantoor": "90ff65a2d9f94e99b2ab33438567f147959a43f017d3d9cf9d2ae68b6dae7cbf",
     "academie-theater-dans": "503b3e8d59937cbf7ac8776eb644c11fd10b567e5ac1113e0caa55c83cb68cde",
@@ -445,6 +445,11 @@
     "brand-bij-ca": "b8682a00bd145aead75f2f5928f127e6606c44f92253dff5516fa828774dffe2",
     "doubletree-centraal": "2cc657ed24e134b288fd5fc45be3fb9203f4804046a729f0f6b6cf1bdb062594",
     "oude-turfmarkt-139": "2288df79a96c4a37153d8f9bcfc2255206a294d7abadbd20a8647d90846a2e18",
-    "weteringschans-corner-office": "fb08ab5de9e9f4415dbcb04400cb741b7217e18bd75761cde90e921a248c0ce5"
+    "weteringschans-corner-office": "fb08ab5de9e9f4415dbcb04400cb741b7217e18bd75761cde90e921a248c0ce5",
+    "amsterdams-lyceum": "13cec0468019203827698bceb2345891695dbad37bde8493edba0a3de6c6e940",
+    "belastingdienst-amsterdam": "d0d800e443ae88fca75a0c3deeedab074b34c05111e9934630178d76c9461b1a",
+    "de-valerius": "72a7bb06c57784eedd5d59060ebbec04645fbd255929326a945824b147411d79",
+    "dominicus-savius-school": "b7a4a35b5e5fc21ef72720f9be1e5c067e7e0af4470febf79a80a0451af72846",
+    "forum-office": "72388690f357ebdbd2e3091b1d00932eb0b08646cfe11167774745977e04992f"
   }
 }

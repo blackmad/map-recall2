@@ -1,0 +1,114 @@
+{
+ "id": "amsterdams-lyceum",
+ "note": "The brick lattice garden walls stand in front of the wings on the Valeriusplein side, apart from the building.",
+ "throughPassages": [
+  {
+   "axisBearing": 335.4,
+   "corridor": [
+    [
+     -4.34,
+     12.87
+    ],
+    [
+     -2.38,
+     11.98
+    ],
+    [
+     -9.79,
+     -4.21
+    ],
+    [
+     -11.74,
+     -3.31
+    ]
+   ],
+   "evidence": "The west footway through the middle block from the Valeriusplein to the canal side: daylight through both ends in panoramas recording_2025-07-29_12-06-07_02111 (w01, 2025) and TMX7316010203-000259_pano_0008_000142 (w02, 2017), CC BY 4.0; Rijksmonumentenregister 504650 (two round-arched carriage passages with cross vaults, two rectangular footways). The BAG ring 0363100012149878 keeps the block whole above it."
+  },
+  {
+   "axisBearing": 335.4,
+   "corridor": [
+    [
+     -0.78,
+     11.24
+    ],
+    [
+     3.35,
+     9.36
+    ],
+    [
+     -4.06,
+     -6.83
+    ],
+    [
+     -8.19,
+     -4.94
+    ]
+   ],
+   "evidence": "The west carriage arch through the middle block from the Valeriusplein to the canal side: daylight through both ends in panoramas recording_2025-07-29_12-06-07_02111 (w01, 2025) and TMX7316010203-000259_pano_0008_000142 (w02, 2017), CC BY 4.0; Rijksmonumentenregister 504650 (two round-arched carriage passages with cross vaults, two rectangular footways). The BAG ring 0363100012149878 keeps the block whole above it."
+  },
+  {
+   "axisBearing": 335.4,
+   "corridor": [
+    [
+     4.89,
+     8.65
+    ],
+    [
+     9.02,
+     6.76
+    ],
+    [
+     1.61,
+     -9.43
+    ],
+    [
+     -2.51,
+     -7.54
+    ]
+   ],
+   "evidence": "The east carriage arch through the middle block from the Valeriusplein to the canal side: daylight through both ends in panoramas recording_2025-07-29_12-06-07_02111 (w01, 2025) and TMX7316010203-000259_pano_0008_000142 (w02, 2017), CC BY 4.0; Rijksmonumentenregister 504650 (two round-arched carriage passages with cross vaults, two rectangular footways). The BAG ring 0363100012149878 keeps the block whole above it."
+  },
+  {
+   "axisBearing": 335.4,
+   "corridor": [
+    [
+     10.62,
+     6.03
+    ],
+    [
+     12.58,
+     5.13
+    ],
+    [
+     5.17,
+     -11.05
+    ],
+    [
+     3.21,
+     -10.16
+    ]
+   ],
+   "evidence": "The east footway through the middle block from the Valeriusplein to the canal side: daylight through both ends in panoramas recording_2025-07-29_12-06-07_02111 (w01, 2025) and TMX7316010203-000259_pano_0008_000142 (w02, 2017), CC BY 4.0; Rijksmonumentenregister 504650 (two round-arched carriage passages with cross vaults, two rectangular footways). The BAG ring 0363100012149878 keeps the block whole above it."
+  }
+ ],
+ "detachedStructures": [
+  {
+   "box": [
+    -38.42,
+    -5.41,
+    -19.49,
+    3.82
+   ],
+   "evidence": "The west brick lattice garden wall in front of the wing (about 2.4 m, piers and open lattice panels): Gemeente Amsterdam panoramas recording_2025-07-30_07-40-42_01138, recording_2025-07-30_07-40-42_01139 (CC BY 4.0)."
+  },
+  {
+   "box": [
+    8.86,
+    -27.05,
+    27.79,
+    -17.81
+   ],
+   "evidence": "The east brick lattice garden wall in front of the wing (about 2.4 m, piers and open lattice panels): Gemeente Amsterdam panoramas TMX7316060226-000013_pano_0000_000466, TMX7316060226-000013_pano_0000_000465 (CC BY 4.0)."
+  }
+ ]
+}
