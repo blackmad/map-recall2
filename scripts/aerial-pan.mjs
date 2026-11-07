@@ -27,7 +27,13 @@ const opt = (k, d) => { const i = argv.indexOf(`--${k}`); return i >= 0 ? argv[i
 const device = opt('device', 'desktop');
 const panS = Number(opt('pan', '180'));
 const every = Number(opt('every', '5'));
-const speed = Number(opt('speed', '300'));
+// --continuous (lane R4-E #248): a player-like flight over the same legs: each leg flown as a fly-to (ease in, cruise at
+// --speed, ease out to the waypoint, a --dwell s look), the pose blended across the leg instead of eased at its start,
+// the camera starting at the first waypoint. Default speed 120 m/s there (one lap in ~180 s); the harness keeps 300.
+const continuous = argv.includes('--continuous');
+const speed = Number(opt('speed', continuous ? '120' : '300'));
+const dwellS = Number(opt('dwell', '2'));
+const accelS = Number(opt('accel', '3'));
 const extraQs = opt('qs', '');
 const useChrome = argv.includes('--chrome');
 const headed = argv.includes('--headed');
@@ -95,6 +101,19 @@ await page.addInitScript(() => {
       }
     }).observe({ type: 'long-animation-frame', buffered: true });
   } catch (_) { /* no LoAF */ }
+  // Every rendered frame's framePhases split whose callback took > 30 ms, stamped (lane R4-E #248): a long rAF interval
+  // is matched to the callback that ran inside it, and the rest of the interval (tasks between frames: fetch / worker
+  // results / decode / GC; or GPU back-pressure) is reported as `outside`. The recorder is created lazily by the engine
+  // (framePhases.ts), so its `end` is wrapped when the engine assigns it.
+  const PF = window.__aerialPhaseFrames = [];
+  let rec;
+  Object.defineProperty(window, '__canalRecallFramePhaseRecorder', { configurable: true, get: () => rec, set: v => {
+    rec = v;
+    if (v && typeof v.end === 'function') {
+      const end = v.end.bind(v);
+      v.end = ms => { const phases = v.current ? { ...v.current } : {}; end(ms); if (ms > 30) PF.push({ at: performance.now(), ms, phases }); };
+    }
+  } });
   const tick = now => { F.t.push(now); requestAnimationFrame(tick); };
   requestAnimationFrame(tick);
   let s = 0x5eed1234; Math.random = () => { s = (s * 1664525 + 1013904223) >>> 0; return s / 2 ** 32; };
@@ -124,12 +143,20 @@ await page.evaluate(() => window.__canalPerf?.gl?.markWarm?.());
 await page.evaluate(() => {
   const gl = window.__canalPerf?.gl?.counters; if (!gl?.upload || window.__uploadByOwner) return;
   const by = window.__uploadByOwner = {}, base = gl.upload.bind(gl);
+  // Stamped GL events for the long-frame report (lane R4-E #248): uploads of 64 KiB and more with their owner, small
+  // uploads summed into the next stamped event, and every shader compile / program link.
+  const ev = window.__glEvents = []; let small = 0;
   gl.upload = (fn, bytes) => {
     let owner = `small ${fn}`;
     if (bytes >= 65536) { try { owner = gl.ownerNow().replace(/^.*?\) @ /, ''); } catch { owner = `? ${fn}`; } }
     const o = by[owner] ??= { n: 0, MB: 0 }; o.n++; o.MB += bytes / 1048576;
+    if (bytes >= 65536) { ev.push({ at: performance.now(), kind: 'upload', bytes, owner, small }); small = 0; } else small += bytes;
     return base(fn, bytes);
   };
+  if (typeof gl.program === 'function') {
+    const prog = gl.program.bind(gl);
+    gl.program = (kind, fn) => { let owner = '?'; try { owner = gl.ownerNow().replace(/^.*?\) @ /, ''); } catch { /* */ } ev.push({ at: performance.now(), kind, bytes: 0, owner, small: 0 }); return prog(kind, fn); };
+  }
 });
 
 
@@ -138,7 +165,7 @@ await page.evaluate(() => { const g = canalRecallGame; window.__chasePose = { zo
 
 // The pan driver: a rAF loop that moves the detached camera's anchor along the waypoints at `speed` m/s and eases the
 // zoom, tilt and bearing toward each leg's pose. `window.__aerialPause` holds it still while a sample runs.
-await page.evaluate(([wps, poses, v]) => {
+await page.evaluate(([wps, poses, v, flight]) => {
   const g = canalRecallGame, l = g.osmLoader, ppm = (0, eval)('PIXELS_PER_METER'), cam = g.camera, vm = g.vectorMap;
   const world = ([lng, lat]) => ({ x: l._lastOffsetX + (lng - l._lastCenterLng) * 111320 * Math.cos(l._lastCenterLat * Math.PI / 180) * ppm, y: l._lastOffsetY - (lat - l._lastCenterLat) * 111320 * ppm });
   const pts = wps.map(w => ({ ...w, p: world(w.at) }));
@@ -147,6 +174,53 @@ await page.evaluate(([wps, poses, v]) => {
   const A = window.__aerial = { s: 0, laps: 0, leg: 0, poseChanges: [], totalM: Math.round(total / ppm) };
   cam.pan(1, 0);
   let last = performance.now(), tilt = 0;
+  if (flight.continuous) {
+    // Fly-to legs: distance along leg i follows a trapezoid (accelerate over accelS, cruise at v, decelerate over accelS
+    // to the waypoint), then a dwell. The camera starts at the first waypoint at its pose (no initial jump).
+    const p0 = pts[0], pose0 = poses[p0.pose];
+    cam.detached = true; cam.anchorX = cam.x = p0.p.x; cam.anchorY = cam.y = p0.p.y; cam.zoom = pose0.zoom; cam.rotation = pose0.bearing * Math.PI / 180;
+    tilt = pose0.tilt; vm.setCameraTilt?.(tilt); vm._cameraTilt = tilt;
+    const legs = pts.slice(1).map((b, k) => {
+      const a = pts[k], len = cum[k + 1] - cum[k], vpx = v * ppm, ta = flight.accelS;
+      // A short leg never reaches cruise: a triangle with peak sqrt(len * vpx / ta).
+      const reach = vpx * ta; const peak = len >= reach ? vpx : Math.sqrt(len * vpx / ta), tRamp = peak / vpx * ta, tCruise = Math.max(0, (len - peak * tRamp) / Math.max(1e-6, peak));
+      return { a, b, len, peak, tRamp, tCruise, tMove: 2 * tRamp + tCruise, tAll: 2 * tRamp + tCruise + flight.dwellS, from: poses[a.pose], to: poses[b.pose] };
+    });
+    const along = (L, t) => {
+      if (t <= L.tRamp) return 0.5 * (L.peak / L.tRamp) * t * t;
+      if (t <= L.tRamp + L.tCruise) return 0.5 * L.peak * L.tRamp + L.peak * (t - L.tRamp);
+      if (t <= L.tMove) { const u = L.tMove - t; return L.len - 0.5 * (L.peak / L.tRamp) * u * u; }
+      return L.len;
+    };
+    const smooth = x => x <= 0 ? 0 : x >= 1 ? 1 : x * x * (3 - 2 * x);
+    let legT = 0, k = 0;
+    A.leg = 1; A.poseChanges.push({ at: performance.now(), to: legs[0].b.name, pose: legs[0].b.pose });
+    const step = now => {
+      const dt = Math.min(0.1, (now - last) / 1000); last = now;
+      if (!window.__aerialPause) {
+        legT += dt;
+        while (legT >= legs[k].tAll) {
+          legT -= legs[k].tAll; k++;
+          if (k >= legs.length) { k = 0; A.laps++; }
+          A.leg = k + 1; A.poseChanges.push({ at: performance.now(), to: legs[k].b.name, pose: legs[k].b.pose });
+        }
+        const L = legs[k], d = along(L, legT), f = d / Math.max(1e-6, L.len);
+        A.s = cum[k] + d; A.speedMps = legT < L.tMove ? Math.round((legT <= L.tRamp ? L.peak * legT / L.tRamp : legT <= L.tRamp + L.tCruise ? L.peak : L.peak * (L.tMove - legT) / L.tRamp) / ppm) : 0;
+        cam.detached = true;
+        cam.anchorX = L.a.p.x + (L.b.p.x - L.a.p.x) * f; cam.anchorY = L.a.p.y + (L.b.p.y - L.a.p.y) * f;
+        // The pose changes across the leg's flight (a player zooms while panning), not in the first 2 s of it.
+        const w = smooth(f);
+        cam.zoom = L.from.zoom + (L.to.zoom - L.from.zoom) * w;
+        tilt = L.from.tilt + (L.to.tilt - L.from.tilt) * w;
+        vm.setCameraTilt?.(tilt); vm._cameraTilt = tilt;
+        let db = (L.to.bearing - L.from.bearing) * Math.PI / 180; db = Math.atan2(Math.sin(db), Math.cos(db));
+        cam.rotation = L.from.bearing * Math.PI / 180 + db * w;
+      }
+      requestAnimationFrame(step);
+    };
+    requestAnimationFrame(step);
+    return;
+  }
   const step = now => {
     const dt = Math.min(0.1, (now - last) / 1000); last = now;
     if (!window.__aerialPause) {
@@ -167,9 +241,44 @@ await page.evaluate(([wps, poses, v]) => {
     requestAnimationFrame(step);
   };
   requestAnimationFrame(step);
-}, [WAYPOINTS, POSES, speed]);
+}, [WAYPOINTS, POSES, speed, { continuous, dwellS, accelS }]);
 
 const pickQ = (v, q) => { const s = [...v].sort((a, b) => a - b); return s.length ? s[Math.min(s.length - 1, Math.floor(q * s.length))] : 0; };
+/**
+ * Every rAF interval over 100 ms since `from` (lane R4-E #248), with the framePhases split of the callback that ran in
+ * it (`cb`: its ms and top phases; game frame / three render main / labels / sync: ground ... ), `outside` (interval minus
+ * callback: tasks between frames such as fetch / worker results / decode / GC, or GPU back-pressure), the long-animation-
+ * frame scripts overlapping it, the leg it fell in and the seconds since that leg began, and the seconds since the last
+ * sample's pause ended. Call before frameWindow (which trims the timeline).
+ */
+const longFrames = (from, resumedAt) => page.evaluate(([from, resumedAt]) => {
+  const F = window.__aerialFrames, PF = window.__aerialPhaseFrames ?? [], L = window.__aerialLoaf ?? [], A = window.__aerial, out = [];
+  for (let i = 1; i < F.t.length; i++) {
+    const a = F.t[i - 1], b = F.t[i];
+    if (a < from || b - a <= 100) continue;
+    if (F.skip.some(([x, y]) => b > x && a < y)) continue;
+    const cb = PF.find(p => p.at > a && p.at <= b + 2);
+    // GL work issued in the callback before this interval and inside it (the GPU process runs it while rAF waits).
+    const gev = (window.__glEvents ?? []).filter(e => e.at > a - 40 && e.at <= b);
+    const gOwners = {}; let gMB = 0, compiles = 0;
+    for (const e of gev) {
+      gMB += (e.bytes + e.small) / 1048576;
+      if (e.kind === 'upload') { const k = e.owner.replace(/ \(new geometry\)| \[\w+\]/g, '').slice(0, 60); gOwners[k] = (gOwners[k] ?? 0) + e.bytes / 1048576; }
+      else if (e.kind === 'compile') compiles++;
+    }
+    const leg = [...(A?.poseChanges ?? [])].reverse().find(c => c.at <= a);
+    const scripts = L.filter(e => e.start < b && e.start + e.duration > a).flatMap(e => e.scripts.filter(sc => sc.duration >= 10).map(sc => `${sc.type}:${sc.fn || '?'}@${sc.url}:${sc.char} ${sc.duration}`)).slice(0, 4);
+    const ph = cb ? Object.fromEntries(Object.entries(cb.phases).sort((x, y) => y[1] - x[1]).slice(0, 8).map(([k, v]) => [k, Math.round(v)])) : null;
+    const sum = re => cb ? Math.round(Object.entries(cb.phases).filter(([k]) => re.test(k)).reduce((s, [, v]) => s + v, 0)) : 0;
+    out.push({ at: Math.round(b), ms: Math.round(b - a), cbMs: cb ? Math.round(cb.ms) : 0, outside: Math.round(b - a - (cb?.ms ?? 0)),
+      split: { gameFrame: sum(/^game frame$/), renderMain: sum(/^three render (main|overlay)$/), labels: sum(/^labels$/), ground: sum(/^sync: ground update/), beforeRender: sum(/^beforeRender /), listeners: sum(/listener: /) },
+      glMB: Math.round(gMB * 10) / 10, compiles, glOwners: Object.fromEntries(Object.entries(gOwners).sort((x, y) => y[1] - x[1]).slice(0, 4).map(([k, v]) => [k, Math.round(v * 10) / 10])),
+      phases: ph, scripts, leg: leg?.to ?? null, legS: leg ? Math.round((a - leg.at) / 100) / 10 : null, sinceResumeS: resumedAt ? Math.round((a - resumedAt) / 100) / 10 : null, speedMps: A?.speedMps ?? null });
+  }
+  window.__aerialPhaseFrames = PF.filter(p => p.at >= (F.t.at(-1) ?? 0) - 1000);
+  const GE = window.__glEvents; if (GE) { const k = GE.findIndex(e => e.at >= (F.t.at(-1) ?? 0) - 1000); GE.splice(0, k < 0 ? GE.length : k); }
+  return out;
+}, [from, resumedAt]);
 const frameWindow = from => page.evaluate(from => {
   const F = window.__aerialFrames, o = [];
   for (let i = 1; i < F.t.length; i++) {
@@ -285,7 +394,7 @@ const residents = census => page.evaluate(census => {
     chunks: size(tb?.chunks), chunkKinds: kinds, fading: size(tb?.fading), detailInstallsTotal: tb?.detailInstalls ?? null, detailTiles: size(tb?.detailTiles),
     // MB of the resident detail (`near:`) and extras chunks (their geometry bytes: the copy uploaded to the GPU).
     detailMB: tb?.chunks ? Math.round([...tb.chunks].filter(([k]) => k.startsWith('near:') || k.startsWith('extras:')).reduce((a, [, c]) => a + (c?.info?.bytes ?? 0), 0) / 1048576 * 10) / 10 : null,
-    cityTiles: size(city?.cache?.tiles), cityFeatures: size(city?.cache?.list), cityRing: size(city?.ring), worldInterned: size(city?.world?.interned),
+    cityTiles: size(city?.cache?.tiles), cityFeatures: size(city?.cache?.list), cityRing: size(city?.ring), cityRingDeferred: city?.ringPacer?.deferred ?? null, worldInterned: size(city?.world?.interned),
     contextFeatures: size(tb?.contextFeatures), contextChanges: size(tb?.contextChanges), contextCache: size(tb?.contextCache), pendingJobs: size(tb?.pending?.jobs),
     landmarks: size(sig?._entries), landmarksShown: size(sig?.shown), roofs: size(vm.extras?.roofs?._entries),
     trees: size(trees?.tiles), groundCells: size(ground?.resident), groundPrepared: size(ground?.prepared), farRing: size(ground?.far),
@@ -459,6 +568,7 @@ const panT0 = last;
 for (let t = every; t <= panS; t += every) {
   const wait = last + every * 1000 - (await page.evaluate(() => performance.now()));
   if (wait > 0) await page.waitForTimeout(wait);
+  const long = await longFrames(last, timeline.length ? last : null);
   const frames = frameStats(await frameWindow(last));
   const worst = await page.evaluate(() => {
     const rec = window.__canalRecallFramePhaseRecorder; if (!rec) return null;
@@ -483,7 +593,7 @@ for (let t = every; t <= panS; t += every) {
   const res = await residents(censusOn);
   res.drawKinds = await drawKinds();
   const rss = await processRss();
-  const aerial = await page.evaluate(() => ({ laps: window.__aerial.laps, km: Math.round((window.__aerial.laps * window.__aerial.totalM + window.__aerial.s / 3) / 100) / 10, poses: window.__aerial.poseChanges.length, leg: window.__aerial.poseChanges.at(-1)?.to }));
+  const aerial = await page.evaluate(() => ({ routeM: Math.round(window.__aerial.s / (0, eval)('PIXELS_PER_METER')), laps: window.__aerial.laps, km: Math.round((window.__aerial.laps * window.__aerial.totalM + window.__aerial.s / 3) / 100) / 10, poses: window.__aerial.poseChanges.length, leg: window.__aerial.poseChanges.at(-1)?.to }));
   if (shotsDir && aerial.poses !== lastPoseCount) {
     fs.mkdirSync(shotsDir, { recursive: true });
     const file = path.join(shotsDir, `${device}-t${t}-${aerial.leg}.png`);
@@ -496,7 +606,8 @@ for (let t = every; t <= panS; t += every) {
   res.detailInstalls = res.detailInstallsTotal == null ? null : res.detailInstallsTotal - (timeline.at(-1)?.detailInstallsTotal ?? baseInstalls ?? 0);
   res.coarseFadeIns = res.coarseFadeInsTotal - (timeline.at(-1)?.coarseFadeInsTotal ?? res.coarseFadeInsTotal);
   res.uploadMBDelta = res.gl?.uploadMB == null ? null : res.gl.uploadMB - (timeline.at(-1)?.gl?.uploadMB ?? 0);
-  const row = { t, ...aerial, heapMB: heap.main.usedMB, bufMB: heap.main.backingMB, workersMB: heap.workersUsedMB, ...rss, ...res, frames, worst, loaf };
+  const row = { t, ...aerial, heapMB: heap.main.usedMB, bufMB: heap.main.backingMB, workersMB: heap.workersUsedMB, ...rss, ...res, frames, worst, loaf, long };
+  for (const f of long) console.log(`${device}   long ${f.ms} ms (cb ${f.cbMs}, outside ${f.outside}) leg ${f.leg} +${f.legS}s resume +${f.sinceResumeS}s v${f.speedMps ?? '-'} gl ${f.glMB} MB ${f.compiles} compiles ${JSON.stringify(f.glOwners)} ${JSON.stringify(f.split)}${f.scripts.length ? ` scripts ${f.scripts.join(' | ')}` : ''}`);
   timeline.push(row);
   console.log(`${device} t${t} ${aerial.leg ?? '-'} z${res.zoom} p${res.pitch}: heap ${heap.main.usedMB}+${heap.main.backingMB ?? '?'} MB, wk ${heap.workersUsedMB} MB, rss ${rss.rendererRssMB}/${rss.gpuRssMB}, geo ${res.geometries} tex ${res.textures} gl ${res.gl?.residentMB} MB (+${res.gl?.uploadMB} MB up), chunks ${res.chunks} tiles ${res.cityTiles} feats ${res.cityFeatures} ctxCh ${res.contextChanges} lm ${res.landmarks} trees ${res.trees} ground ${res.groundCells} far ${res.farRing} r${res.farRadiusM} fs ${res.farShells?.cells ?? '-'}/${res.farShells?.partsShown ?? '-'} draws ${res.draws} bc ${res.bakedCoarse ? `${res.bakedCoarse.drawn}/${res.bakedCoarse.cells}` : '-'} cc ${res.coarseChunks} labels ${res.labelsPlaced} wkrs ${res.workers} detail +${res.detailInstalls} (${res.detailTiles} tiles, ${res.detailMB} MB) fading ${res.fading} coarse fading ${res.coarseFading} (+${res.coarseFadeIns}) up +${res.uploadMBDelta} MB; p99 ${frames.p99} >100 ${frames.over100} >250 ${frames.over250} max ${frames.longestMs}${worst?.[0] ? ` worst ${JSON.stringify(worst[0].phases)}` : ''}`);
 }
@@ -543,6 +654,22 @@ const summary = {
   aerialLongestFrameMs: Math.max(...allFrames.map(f => f.longestMs)),
   km: m3.km,
 };
+// Lane R4-E (#248): where the long frames are and what owns them. `outside` dominates when the interval is mostly spent
+// outside the engine's frame callback (loading tasks, GC, GPU back-pressure); `callback` when inside it, then by its
+// largest top-level phase. `nearLegStart`: within 5 s of a leg's start; `nearResume`: within 1 s of a sample's pause.
+{
+  const L = timeline.flatMap(r => r.long ?? []);
+  const owner = f => {
+    if (f.outside >= f.cbMs) return 'outside';
+    const [k] = Object.entries(f.split).sort((a, b) => b[1] - a[1])[0] ?? ['?'];
+    return `callback:${k}`;
+  };
+  summary.longFrames = L.length;
+  summary.longFramesByOwner = L.reduce((o, f) => { const k = owner(f); o[k] = (o[k] ?? 0) + 1; return o; }, {});
+  summary.longFramesNearLegStart = L.filter(f => f.legS != null && f.legS < 5).length;
+  summary.longFramesNearResume = L.filter(f => f.sinceResumeS != null && f.sinceResumeS < 1).length;
+  summary.longFramesByLeg = L.reduce((o, f) => { o[f.leg ?? '-'] = (o[f.leg ?? '-'] ?? 0) + 1; return o; }, {});
+}
 // Who uploaded: the large uploads (glCounters.ts, >= its largeBytes) since warm-up, MB by owner.
 summary.uploadBytesByOwnerMB = await page.evaluate(() => Object.fromEntries(Object.entries(window.__uploadByOwner ?? {}).map(([k, v]) => [k.slice(0, 90), { n: v.n, MB: Math.round(v.MB) }]).sort((a, b) => b[1].MB - a[1].MB).slice(0, 25)));
 summary.uploadOwnersMB = await page.evaluate(() => {
@@ -552,8 +679,9 @@ summary.uploadOwnersMB = await page.evaluate(() => {
   return Object.fromEntries(Object.entries(by).sort((a, b) => b[1] - a[1]).slice(0, 12).map(([k, v]) => [k, Math.round(v / 1048576)]));
 }).catch(() => null);
 console.log(JSON.stringify(summary));
-const result = { device, qs, panS, every, speed, chrome: useChrome, headed, settleMs, loadS: Math.round((Date.now() - t0) / 1000), bundles: process.env.BUNDLES_DIR ?? null, waypoints: WAYPOINTS, poses: POSES, timeline, summary, shots, errors };
+// The legs' start times and the pan's start (performance.now): the timeline chart marks the legs against `long[].at`.
+const legStarts = await page.evaluate(() => window.__aerial.poseChanges).catch(() => null);
+const result = { panT0: Math.round(panT0), legStarts, device, qs, panS, every, speed, continuous, dwellS: continuous ? dwellS : null, accelS: continuous ? accelS : null, chrome: useChrome, headed, settleMs, loadS: Math.round((Date.now() - t0) / 1000), bundles: process.env.BUNDLES_DIR ?? null, waypoints: WAYPOINTS, poses: POSES, timeline, summary, shots, errors };
 fs.mkdirSync(path.dirname(out), { recursive: true });
 fs.writeFileSync(out, JSON.stringify(result, null, 1));
 await browser.close();
-void panT0;
