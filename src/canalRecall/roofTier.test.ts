@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
 import { ROOF_CELL_SD_MAX, paintRoofCell } from './roofCells.ts';
-import { FACADE_TIER_FROM_TEXELS, FACADE_TIER_GLSL, FACADE_TIER_OFF, FACADE_TIER_TO_TEXELS, FACADE_TIER_UNDER_BAND, facadeTierAnisoEnabled, facadeTierAnisoUniform, facadeTierUniform, facadeTierWeights, footprintAxes, ROOF_LAYERS_OFF, ROOF_TIER_FAR_M, ROOF_TIER_GLSL, ROOF_TIER_MID_M, roofTierUniform, roofTierWeights } from './roofTier.ts';
+import { CELL_TAPS, CELL_TAPS_DEFAULT, cellTapPattern, cellTapsEnabled, cellTapsOptions, cellTapsUniform, cellTapsWeight, FACADE_TIER_FROM_TEXELS, FACADE_TIER_GLSL, FACADE_TIER_OFF, FACADE_TIER_TO_TEXELS, FACADE_TIER_UNDER_BAND, facadeTierAnisoEnabled, facadeTierAnisoUniform, facadeTierUniform, facadeTierWeights, footprintAxes, ROOF_LAYERS_OFF, ROOF_TIER_FAR_M, ROOF_TIER_GLSL, ROOF_TIER_MID_M, roofTierUniform, roofTierWeights } from './roofTier.ts';
 
 const stats = (data: Uint8ClampedArray) => {
   let n = 0, s = 0, s2 = 0;
@@ -122,4 +122,74 @@ test('footprint ellipse axes: a wall receding diagonally is thin although both d
   assert.ok(Math.abs(d.major - 24) < 1e-6 && Math.abs(d.minor - 0.5) < 1e-6, `${d.major} ${d.minor}`);
   // A degenerate footprint has no minor axis.
   assert.equal(footprintAxes([3, 4], [6, 8]).minor, 0);
+});
+
+// Lane R4-D (#246): the footprint prefilter of the facade cell sample.
+test('cell taps: one tap at or below the threshold, the full taps from 1.25 x, a smooth ramp between', () => {
+  for (const t of [8, 12, 16]) {
+    assert.equal(cellTapsWeight(t * 0.5, t), 0);
+    assert.equal(cellTapsWeight(t, t), 0, 'at the threshold: one tap, as before');
+    assert.equal(cellTapsWeight(1.25 * t, t), 1);
+    assert.equal(cellTapsWeight(64, t), 1);
+    const mid = cellTapsWeight(1.125 * t, t);
+    assert.ok(mid > 0.4 && mid < 0.6, `ramp midpoint ${mid}`);
+  }
+  // S2's quay walls (chase 8-16 texels/px at DPR 2) sit under a 16 threshold.
+  assert.equal(cellTapsWeight(15.9, 16), 0);
+  assert.equal(cellTapsWeight(40, 16, 1), 0, 'taps < 2: off');
+  assert.equal(cellTapsWeight(40, -1), 0, 'threshold < 0: off');
+  assert.equal(cellTapsWeight(1, 0), 1, 'threshold 0 is a step, not NaN');
+});
+
+test('cell taps: the patterns are centred, symmetric and their weights sum to 1 (a tent for 3 x 3)', () => {
+  for (const [n, spread] of [[2, 0.5], [4, 0.5], [4, 1], [9, 0.5]] as const) {
+    const taps = cellTapPattern(n, spread);
+    assert.equal(taps.length, n);
+    const sum = taps.reduce((a, t) => a + t.w, 0), cx = taps.reduce((a, t) => a + t.w * t.x, 0), cy = taps.reduce((a, t) => a + t.w * t.y, 0);
+    assert.ok(Math.abs(sum - 1) < 1e-12, `${n} taps sum ${sum}`);
+    assert.ok(Math.abs(cx) < 1e-12 && Math.abs(cy) < 1e-12, `${n} taps centred`);
+    for (const t of taps) assert.ok(Math.abs(t.x) <= spread + 1e-12 && Math.abs(t.y) <= spread + 1e-12);
+  }
+  const four = cellTapPattern(4, 0.5);
+  assert.deepEqual(four.map(t => [t.x, t.y]), [[-0.25, -0.25], [0.25, -0.25], [-0.25, 0.25], [0.25, 0.25]]);
+  const nine = cellTapPattern(9, 1);
+  assert.deepEqual(nine.map(t => t.w), [1 / 16, 1 / 8, 1 / 16, 1 / 8, 1 / 4, 1 / 8, 1 / 16, 1 / 8, 1 / 16]);
+  assert.deepEqual(cellTapPattern(2, 0.5).map(t => [t.x, t.y]), [[-0.25, 0], [0.25, 0]]);
+});
+
+test('cell taps: a 2 x 2 supersample of a grid at the pixel pitch returns its mean where one tap returns a stripe', () => {
+  // A 1D window grid of period 2 px on screen (near Nyquist): one tap at the pixel centre reads 0 or 1 by phase; the
+  // 4 taps at +-0.25 px (spread 0.5) of a box-prefiltered grid read close to the mean at every phase.
+  const grid = (x: number) => (((x % 2) + 2) % 2 < 1 ? 1 : 0);
+  const prefiltered = (x: number, w: number) => { let a = 0; const n = 64; for (let i = 0; i < n; i++) a += grid(x - w / 2 + (w * (i + 0.5)) / n); return a / n; };
+  let oneSpread = 0, tapsSpread = 0;
+  const one = [] as number[], tapped = [] as number[];
+  for (let k = 0; k < 20; k++) {
+    const phase = k * 0.1;
+    one.push(prefiltered(phase, 1));
+    tapped.push(cellTapPattern(4, 1).reduce((a, t) => a + t.w * prefiltered(phase + t.x, 0.5), 0));
+  }
+  oneSpread = Math.max(...one) - Math.min(...one);
+  tapsSpread = Math.max(...tapped) - Math.min(...tapped);
+  assert.ok(tapsSpread < 0.6 * oneSpread, `taps ${tapsSpread.toFixed(3)} vs one ${oneSpread.toFixed(3)}`);
+});
+
+test('cell taps: off by default; the shader carries them only under CELL_TAPS, and the uniform scales like the tier', () => {
+  assert.equal(CELL_TAPS_DEFAULT, false);
+  const g = globalThis as Record<string, unknown>;
+  try {
+    g.__canalRecallCellTaps = undefined; assert.equal(cellTapsEnabled(), false);
+    g.__canalRecallCellTaps = '1'; assert.equal(cellTapsEnabled(), true);
+    g.__canalRecallCellTaps = '0'; assert.equal(cellTapsEnabled(), false);
+  } finally { delete g.__canalRecallCellTaps; }
+  assert.deepEqual(cellTapsOptions(), { ...CELL_TAPS });
+  assert.deepEqual(cellTapsUniform(CELL_TAPS, 2).cellTaps, [40, 9, 1, 0.85]);
+  assert.deepEqual(cellTapsUniform(CELL_TAPS).cellTaps, [20, 9, 1, 0.85]);
+  // The quay walls of S2 (chase 8-16 texels/px at DPR 2) stay one tap at the default threshold.
+  assert.equal(cellTapsWeight(16, CELL_TAPS.threshold, CELL_TAPS.taps), 0);
+  // Drop the CELL_TAPS blocks (nested #if aware), as the preprocessor does without the define.
+  const off = (() => { const out: string[] = []; let skip = 0; for (const line of FACADE_TIER_GLSL.split('\n')) { const t = line.trim(); if (skip) { if (/^#if/.test(t)) skip++; else if (t === '#endif') skip--; continue; } if (t === '#ifdef CELL_TAPS') { skip = 1; continue; } out.push(line); } return out.join('\n'); })();
+  assert.ok(!/cellTaps|textureGrad/.test(off), 'without the define the program has no taps');
+  assert.equal((FACADE_TIER_GLSL.match(/#ifdef CELL_TAPS/g) ?? []).length, 2);
+  assert.match(FACADE_TIER_GLSL, /textureGrad\(cells, q, gx, gy\)/);
 });

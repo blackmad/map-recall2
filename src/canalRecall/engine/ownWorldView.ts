@@ -968,6 +968,33 @@ export class OwnWorldView implements WorldViewOracles {
   }
   jumpToLngLat(options: JumpOptions): void { this.cameraMap.jumpTo(options); }
 
+  /**
+   * Held-camera harnesses (2026-11-07, user: "screenshot logic needs to wait for pop-in"): frame specs replace `sync`
+   * to hold the camera, which also froze the far and baked coarse tiers (their fetch, dissolve and ground lift run
+   * from `sync` via updateFarShells). The baked tier marks a cell covered (runtime coarse hidden) as soon as it is
+   * planned, so a held frame showed empty blocks where cells sat mid-dissolve. This runs that tier work for the held
+   * camera's centre; `worldSettled()` says when every tier has landed. Not called by the game.
+   */
+  settleTick(): void {
+    const cam = this.cameraMap.camera, subject: [number, number] = [cam.lng, cam.lat];
+    this._ownGround?.update(subject, cam.zoom, cam.pitch);
+    this.updateFarShells(subject, this._ownGround?.farRadiusM ?? 0);
+    this.host.triggerRepaint();
+  }
+
+  /** Every streaming tier landed for the current view: ground, city tiles, facades, far and baked coarse (dissolves included). */
+  worldSettled(): { settled: boolean; ground: boolean; city: boolean; buildings: boolean; far: boolean; baked: boolean; detail: Record<string, unknown> } {
+    const g: any = this._ownGround, c: any = this._completeCity?.status?.(), tb: any = this._threeBuildings;
+    const fading = g ? [...(g.resident?.values?.() ?? [])].filter((r: any) => r.fade).length : 0;
+    const ground = !g || (!!g.ready && (g.loadingCells ?? 0) === 0 && fading === 0);
+    const city = !c || (!c.inFlight && !c.queued && !c.styling);
+    const buildings = !tb || ((tb.pending?.length ?? 0) === 0 && !tb.cellRolloffPending);
+    const fs = this._farShells?.stats?.(), bs = this._bakedCoarse?.stats?.();
+    const far = !fs || fs.pending === 0;
+    const baked = !bs || !bs.enabled || (bs.pending === 0 && bs.fading === 0 && bs.cells >= bs.covered);
+    return { settled: ground && city && buildings && far && baked, ground, city, buildings, far, baked, detail: { groundFading: fading, city: c && { inFlight: c.inFlight, queued: c.queued, styling: !!c.styling }, buildingsPending: tb?.pending?.length ?? 0, far: fs && { pending: fs.pending }, baked: bs && { covered: bs.covered, cells: bs.cells, drawn: bs.drawn, fading: bs.fading, pending: bs.pending } } };
+  }
+
   setExtractRoot(path: string): void { if (path) this.extractPath = path.replace(/\/$/, ''); }
   setCameraTilt(degrees: number): void {
     const prefs = W().CanalRecallPreferences;

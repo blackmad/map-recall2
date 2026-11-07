@@ -22,7 +22,7 @@ import {buildTransportedEnvelopeChunk,diagnosticEnvelopeTransport,EMPTY_ENVELOPE
 
 import { CELL_LAYER_COUNT, CELL_PX, STYLE_DIMS, cellLayer, CELL_KINDS, CELL_VARIANTS, paintCell, paintFatihMasonryCell } from './facadeCells.js';
 import { ROOF_CELL_M, paintRoofLayers } from './roofCells.js';
-import { FACADE_TIER_GLSL, ROOF_LAYERS_OFF, ROOF_TIER_GLSL, facadeTierAnisoEnabled, facadeTierAnisoUniform, facadeTierUniform, roofTierUniform } from './roofTier.js';
+import { FACADE_TIER_GLSL, ROOF_LAYERS_OFF, ROOF_TIER_GLSL, cellTapsEnabled, cellTapsOptions, cellTapsUniform, facadeTierAnisoEnabled, facadeTierAnisoUniform, facadeTierUniform, roofTierUniform } from './roofTier.js';
 import { pageCoarsePointer, pageTextureParams, pageTextureTier, texturePolicyFlag, type TextureParams } from './look/texturePolicy.js';
 import { withMonumentGable } from './monumentGables.js';
 import { decorateRoof, exceptLandmarks as exceptLandmarksOf, fitRect, localOuterRing, planRoof, type RoofPlan } from './roofMesh.js';
@@ -2268,6 +2268,8 @@ export class ThreeBuildings {
    * (16 desktop, 4 coarse or low GPUs) with `?cellTierAniso=1`; null by default (no define, no uniform: the major-axis rule).
    */
   private anisoFor(): number | null { return facadeTierAnisoEnabled() ? this.texturePolicy().anisotropy : null; }
+  /** The footprint prefilter of the cell sample (roofTier.ts CELL_TAPS, lane R4-D #246): `?cellTaps=1`; null by default (no define). */
+  private tapsFor(): ReturnType<typeof cellTapsUniform> | null { return cellTapsEnabled() ? cellTapsUniform(cellTapsOptions(), this.texturePolicy().tierScale) : null; }
 
   private newMaterial(): any {
     const THREE = this.THREE;
@@ -2283,18 +2285,20 @@ export class ThreeBuildings {
       const windowTable = this.windowTableFor(cellSetOf(this.look));
       const lodBias = this.lodBiasFor(!!windowTable), aniso = this.anisoFor();
       const anisoUniform = aniso != null ? facadeTierAnisoUniform(aniso) : null;
-      return createCityLookMaterial(THREE, { lit: this.lit, kind: 'chunk', side: THREE.FrontSide, ...(SWAP_COMPLEMENT ? { swap: true } : {}), ...(cellDebug ? { cellDebug } : {}), ...(windowTable ? { windows: true } : {}), ...(lodBias != null ? { lodBias: true } : {}), ...(anisoUniform ? { aniso: true } : {}) }, createCityUniforms(THREE, {
+      const taps = this.tapsFor();
+      return createCityLookMaterial(THREE, { lit: this.lit, kind: 'chunk', side: THREE.FrontSide, ...(SWAP_COMPLEMENT ? { swap: true } : {}), ...(cellDebug ? { cellDebug } : {}), ...(windowTable ? { windows: true } : {}), ...(lodBias != null ? { lodBias: true } : {}), ...(anisoUniform ? { aniso: true } : {}), ...(taps ? { taps: true } : {}) }, createCityUniforms(THREE, {
         ...(SWAP_COMPLEMENT ? { citySwapUnder: this.swapUnder } : {}),
         ...(anisoUniform ? { cellAniso: { value: anisoUniform.cellAniso }, cellAnisoRule: { value: anisoUniform.cellAnisoRule } } : {}),
         ...(windowTable ? { windowTable: { value: windowTable } } : {}),
         ...(lodBias != null ? { cellLodBias: { value: lodBias } } : {}),
+        ...(taps ? { cellTaps: { value: taps.cellTaps }, cellTapsSdf: { value: taps.cellTapsSdf } } : {}),
         bands: { value: variant.shadeBands }, flatColour: { value: variant.flatColour ? 1 : 0 }, wallGain: { value: litFacadeWallGain(variant.litWallGain) },
         roofLayers: { value: roofLayers }, roofTier: { value: roofTierUniform() }, cellTier: { value: this.cellTierValue() },
       }));
     }
     if (this.lit) {
       const windowTable = this.windowTableFor(cellSetOf(this.look));
-      const material = createLitFacadeMaterial(THREE, { cityFlat: { value: CITY_FLAT }, roofLayers: { value: roofLayers }, roofTier: { value: roofTierUniform() }, cellTier: { value: this.cellTierValue() } }, { ...(windowTable ? { windowTable } : {}), lodBias: this.lodBiasFor(!!windowTable), aniso: this.anisoFor() });
+      const material = createLitFacadeMaterial(THREE, { cityFlat: { value: CITY_FLAT }, roofLayers: { value: roofLayers }, roofTier: { value: roofTierUniform() }, cellTier: { value: this.cellTierValue() } }, { ...(windowTable ? { windowTable } : {}), lodBias: this.lodBiasFor(!!windowTable), aniso: this.anisoFor(), taps: this.tapsFor() });
       material.uniforms.bands.value = LOOK_VARIANTS[this.look].shadeBands;
       material.uniforms.flatColour.value = LOOK_VARIANTS[this.look].flatColour ? 1 : 0;
       if (material.uniforms.wallGain) material.uniforms.wallGain.value = litFacadeWallGain(LOOK_VARIANTS[this.look].litWallGain);

@@ -14,7 +14,7 @@ for (let i = -4; i <= 4; i++) for (let j = -4; j <= 4; j++) grid.push(`${i}_${j}
 const avail = (keys: string[]) => new Map(keys.map(k => [k, 1000]));
 
 test('flag: on by default on desktop, off on touch; ?bakedCoarse=0 / the global off, =1 forces it on touch too', () => {
-  assert.equal(bakedCoarseEnabled(false, '', {}), true);
+  assert.equal(bakedCoarseEnabled(false, '', {}), false, 'desktop default off until the Da Costakade gap is fixed (2026-11-07)');
   assert.equal(bakedCoarseEnabled(true, '', {}), false);
   assert.equal(bakedCoarseEnabled(false, '?bakedCoarse=0', {}), false);
   assert.equal(bakedCoarseEnabled(true, '?bakedCoarse=off', {}), false);

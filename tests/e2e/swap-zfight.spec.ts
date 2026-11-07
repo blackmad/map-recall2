@@ -376,7 +376,8 @@ test('swap z-fight: no moving stripes on the Weesperstraat slab while its detail
   }, set);
   };
   const variants: Record<string, { stillTotal: number; aliasPx: number | null; refTotal: number | null; set: Record<string, number | number[]> }> = {};
-  for (const v of UNIFORM_VARIANTS) {
+  // ZFIGHT_GPU_ONLY=1 (lane R4-D): skip the per-variant alias pans, time the variants only.
+  for (const v of process.env.ZFIGHT_GPU_ONLY ? [] : UNIFORM_VARIANTS) {
     await setUniforms(v.set);
     await page.waitForTimeout(300);
     TAG = `-${v.name}`;
@@ -384,6 +385,42 @@ test('swap z-fight: no moving stripes on the Weesperstraat slab while its detail
     TAG = '';
     variants[v.name] = { stillTotal: r.still.areas.reduce((s, x) => s + x, 0), aliasPx: r.alias?.aliasPx ?? null, refTotal: r.alias?.refTotal ?? null, set: v.set };
     console.log('swap-zfight variant', v.name, JSON.stringify(variants[v.name]));
+  }
+  // ZFIGHT_GPU=n with ZFIGHT_VARIANTS (lane R4-D #246): n alternating rounds of 24 forced frames per variant at the pose,
+  // GPU ms (the median of the run medians), so a uniform A/B (the cell taps) is timed in one page under one load.
+  if (UNIFORM_VARIANTS.length && Number(process.env.ZFIGHT_GPU) > 0) {
+    await page.evaluate(([pose]) => { const vm = (window as any).canalRecallGame.vectorMap, g = vm._ownGround; vm.jumpToLngLat({ ...pose, elevation: g?.ready ? g.heightAt(pose.center) : 0 }); }, [pose] as const);
+    await settle(page);
+    const runs: Record<string, number[]> = {};
+    for (let k = 0; k < Number(process.env.ZFIGHT_GPU); k++) for (const v of UNIFORM_VARIANTS) {
+      await setUniforms(v.set);
+      await page.waitForTimeout(200);
+      const ms = await page.evaluate(async (n: number) => {
+        const host = (window as any).canalRecallGame.vectorMap.host, gl = host.renderer.getContext();
+        const ext = gl.getExtension('EXT_disjoint_timer_query_webgl2');
+        if (!ext) return null;
+        const out: number[] = [], pending: any[] = [], render = host._render.bind(host), px = new Uint8Array(4);
+        for (let i = 0; i < n; i++) {
+          host.dirty = true;
+          const q = gl.createQuery(); gl.beginQuery(ext.TIME_ELAPSED_EXT, q); render(); gl.endQuery(ext.TIME_ELAPSED_EXT); pending.push(q);
+          gl.readPixels(0, 0, 1, 1, gl.RGBA, gl.UNSIGNED_BYTE, px);
+          await new Promise(r => requestAnimationFrame(r));
+        }
+        for (let j = 0; j < 60 && pending.length; j++) {
+          while (pending.length && gl.getQueryParameter(pending[0], gl.QUERY_RESULT_AVAILABLE)) { const q = pending.shift(); if (!gl.getParameter(ext.GPU_DISJOINT_EXT)) out.push(gl.getQueryParameter(q, gl.QUERY_RESULT) / 1e6); }
+          await new Promise(r => requestAnimationFrame(r));
+        }
+        const s = out.slice(4).sort((a, b) => a - b);
+        return s.length ? s[Math.floor(s.length / 2)] : null;
+      }, 24);
+      if (ms != null) (runs[v.name] ??= []).push(ms);
+    }
+    for (const v of UNIFORM_VARIANTS) {
+      const r = (runs[v.name] ?? []).slice().sort((a, b) => a - b);
+      const median = r.length ? +r[Math.floor(r.length / 2)].toFixed(3) : null;
+      if (variants[v.name]) (variants[v.name] as any).gpuMs = median;
+      console.log('swap-zfight variant gpu', v.name, JSON.stringify({ median, runs: r.map(x => +x.toFixed(3)) }));
+    }
   }
   if (UNIFORM_VARIANTS.length) await setUniforms(UNIFORM_VARIANTS[UNIFORM_VARIANTS.length - 1].set);
   const { still, alias } = UNIFORM_VARIANTS.length && ALIAS_ONLY ? { still: { areas: [] as number[] }, alias: null } : await measureAlias();

@@ -39,8 +39,16 @@ export function bakedCellOrigin(key: string): [number, number] { const [i, j] = 
 export const BAKED_COARSE_TOUCH_DEFAULT = false;
 
 /**
+ * Desktop default OFF again since 2026-11-07 evening (integrator, #243 follow-up): at the user's Da Costakade chase poses
+ * (zoom 17.8, pitch 75) the baked layer covered the cells but drew no houses, and neither did the runtime coarse or detail
+ * tiers, so the canal-house fabric was missing (crisp-textures lapVar 415 vs 1006 with `?bakedCoarse=0`; the zoom 17.1
+ * pose was fine). `?bakedCoarse=1` opts in until the cause is fixed; then this goes back to true.
+ */
+export const BAKED_COARSE_DESKTOP_DEFAULT = false;
+
+/**
  * `?bakedCoarse=0` (or `window.__canalRecallBakedCoarse = false`): the runtime coarse shells, as before. `?bakedCoarse=1`
- * forces it on (touch included), `?bakedCoarse=desktop` is the default (touch devices on their runtime `shell` chunks).
+ * forces it on (touch included), `?bakedCoarse=desktop` turns it on for desktop only; the defaults are the two constants below the touch note.
  */
 export function bakedCoarseEnabled(touch: boolean, search: string = typeof location !== 'undefined' ? location.search : '', w: any = typeof window !== 'undefined' ? window : {}): boolean {
   let v: string | null = null;
@@ -49,7 +57,7 @@ export function bakedCoarseEnabled(touch: boolean, search: string = typeof locat
   if (v === '0' || v === 'off' || v === 'false') return false;
   if (v === '1' || v === 'on' || v === 'true') return true;
   if (v === 'desktop') return !touch;
-  return touch ? BAKED_COARSE_TOUCH_DEFAULT : true;
+  return touch ? BAKED_COARSE_TOUCH_DEFAULT : BAKED_COARSE_DESKTOP_DEFAULT;
 }
 
 /** The resident budget: cells and triangles (a touch device holds fewer). */

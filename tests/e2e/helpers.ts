@@ -127,3 +127,28 @@ export async function serveMapLibreOffline(page: Page): Promise<void> {
     body: JSON.stringify({ version: 8, name: 'offline', sources: {}, layers: [{ id: 'background', type: 'background', paint: { 'background-color': '#ece6d6' } }] }),
   }));
 }
+
+/**
+ * Wait until the own engine's world has landed for a held camera (2026-11-07, user: "screenshot logic needs to wait
+ * for pop-in"). Specs that hold the camera by stubbing `vectorMap.sync` also stop the far and baked coarse tiers and
+ * the ground's dissolves, which only advance from `sync`; this drives them with `settleTick()` and polls
+ * `worldSettled()` (engine/ownWorldView.ts) until two polls in a row agree. Returns the last status; warns on timeout.
+ */
+export async function settleWorld(page: Page, where = 'settle', timeoutMs = 90_000): Promise<unknown> {
+  let previous = '', stable = 0, last: unknown = null;
+  const start = Date.now();
+  while (Date.now() - start < timeoutMs) {
+    for (let k = 0; k < 5; k++) {
+      await page.evaluate(() => { const vm = (window as any).canalRecallGame?.vectorMap; if (vm?.settleTick) vm.settleTick(); else vm?.host?.triggerRepaint?.(); });
+      await page.waitForTimeout(100);
+    }
+    const now = await page.evaluate(() => (window as any).canalRecallGame?.vectorMap?.worldSettled?.() ?? { settled: true, legacy: true });
+    last = now;
+    const key = JSON.stringify(now);
+    stable = (now as any).settled && key === previous ? stable + 1 : 0;
+    previous = key;
+    if (stable >= 2) return now;
+  }
+  console.warn(`${where}: world not settled after ${timeoutMs / 1000} s: ${previous}`);
+  return last;
+}
