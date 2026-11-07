@@ -1,3 +1,4 @@
+import { existsSync } from 'node:fs';
 import { expect, test, type Page } from '@playwright/test';
 import { openRoute } from './helpers';
 import { OWN } from './worldCam';
@@ -94,6 +95,14 @@ async function bumpHouse(page: Page, street: keyof typeof SPOTS): Promise<{ road
 
 test.describe('rider cover', () => {
   test.skip(!OWN, 'the own engine path (ENGINE=own); MapLibre queries the rendered extrusion and dims every layer');
+  // BUNDLES_DIR=<dir>: serve *.bundle.js from a lane's scratch build (as engine-own.spec does).
+  test.beforeEach(async ({ page }) => {
+    const bundles = process.env.BUNDLES_DIR;
+    if (bundles) await page.route(/\/canal-drive\/js\/([\w-]+\.bundle\.js)(\?.*)?$/, route => {
+      const file = `${bundles}/${/\/([\w-]+\.bundle\.js)/.exec(route.request().url())![1]}`;
+      return existsSync(file) ? route.fulfill({ path: file, contentType: 'application/javascript' }) : route.continue();
+    });
+  });
 
   for (const street of Object.keys(SPOTS) as (keyof typeof SPOTS)[]) {
     const [lat, lng] = SPOTS[street].at;

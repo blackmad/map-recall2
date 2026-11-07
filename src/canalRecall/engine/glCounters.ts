@@ -36,6 +36,8 @@ export interface GlReport {
   resident: GlResidentReport;
   /** Mean draws and triangles per frame by `drawOwner` since warm-up, largest triangle share first. */
   byOwner: { owner: string; draws: number; triangles: number }[];
+  /** Draws by `drawOwner` in the last closed frame. */
+  lastFrameByOwner: Record<string, number>;
 }
 
 export interface GlCounterOptions {
@@ -92,8 +94,13 @@ export function bufferBytes(fn: string, args: readonly unknown[]): number {
   return typeof v === 'number' && fn === 'bufferData' ? v : 0;
 }
 
-export interface GlResidentReport { buffers: number; bufferMB: number; textures: number; textureMB: number; renderbuffers: number; renderbufferMB: number; totalMB: number }
+export interface GlResidentReport {
+  buffers: number; bufferMB: number; textures: number; textureMB: number; renderbuffers: number; renderbufferMB: number; totalMB: number;
+  /** With a tagger (`tagWith`): resident MB by who allocated each object, largest first. */
+  byOwner?: { owner: string; MB: number; objects: number }[];
+}
 
+export type GlObjectKind = 'buffer' | 'texture' | 'renderbuffer';
 const TEXTURE_CUBE_MAP = 0x8513;
 const isCubeFace = (target: number) => target >= 0x8515 && target <= 0x851a;
 const MB = (b: number) => Math.round(b / 1048576 * 10) / 10;
@@ -108,6 +115,19 @@ export class GlResident {
   private unit = 0;
   private readonly sizes = { buffer: new Map<object, number>(), texture: new Map<object, Map<string, number>>(), renderbuffer: new Map<object, number>() };
   private bytes = { buffer: 0, texture: 0, renderbuffer: 0 };
+  /**
+   * Who allocated each object (lane R3-F #241: the aerial pan's GL peak by owner). `tag()` runs at an object's first
+   * allocation and may return a cheap token; `name(token)` turns it into an owner at report time.
+   */
+  private tagger: { tag: (kind: GlObjectKind) => unknown; name: () => (token: unknown) => string } | null = null;
+  private readonly tags = new Map<object, unknown>();
+  tagWith(tag: (kind: GlObjectKind) => unknown, name: () => (token: unknown) => string = () => token => String(token)): void { this.tagger = { tag, name }; }
+  private tagObject(obj: object, kind: GlObjectKind): void {
+    if (!this.tagger || this.tags.has(obj)) return;
+    let token: unknown = '?';
+    try { token = this.tagger.tag(kind); } catch { /* counting never breaks GL */ }
+    this.tags.set(obj, token);
+  }
 
   bindBuffer(target: number, buffer: object | null): void { this.bound.set(`b${target}`, buffer); }
   activeTexture(unit: number): void { this.unit = unit; }
@@ -117,6 +137,7 @@ export class GlResident {
   bufferData(target: number, bytes: number): void {
     const b = this.bound.get(`b${target}`);
     if (!b) return;
+    this.tagObject(b, 'buffer');
     this.bytes.buffer += bytes - (this.sizes.buffer.get(b) ?? 0);
     this.sizes.buffer.set(b, bytes);
   }
@@ -124,6 +145,7 @@ export class GlResident {
   textureLevel(target: number, level: number | 'storage', bytes: number): void {
     const t = this.bound.get(`t${this.unit}:${isCubeFace(target) ? TEXTURE_CUBE_MAP : target}`);
     if (!t) return;
+    this.tagObject(t, 'texture');
     const levels = this.sizes.texture.get(t) ?? new Map<string, number>();
     const key = level === 'storage' ? 'storage' : `${target}:${level}`;
     this.bytes.texture += bytes - (levels.get(key) ?? 0);
@@ -133,11 +155,13 @@ export class GlResident {
   renderbufferStorage(bytes: number): void {
     const r = this.bound.get('r');
     if (!r) return;
+    this.tagObject(r, 'renderbuffer');
     this.bytes.renderbuffer += bytes - (this.sizes.renderbuffer.get(r) ?? 0);
     this.sizes.renderbuffer.set(r, bytes);
   }
   delete(kind: 'buffer' | 'texture' | 'renderbuffer', obj: object | null): void {
     if (!obj) return;
+    this.tags.delete(obj);
     if (kind === 'texture') {
       const levels = this.sizes.texture.get(obj);
       if (levels) for (const v of levels.values()) this.bytes.texture -= v;
@@ -180,8 +204,23 @@ export class GlResident {
 
   report(): GlResidentReport {
     const { buffer, texture, renderbuffer } = this.bytes;
-    return { buffers: this.sizes.buffer.size, bufferMB: MB(buffer), textures: this.sizes.texture.size, textureMB: MB(texture),
+    const out: GlResidentReport = { buffers: this.sizes.buffer.size, bufferMB: MB(buffer), textures: this.sizes.texture.size, textureMB: MB(texture),
       renderbuffers: this.sizes.renderbuffer.size, renderbufferMB: MB(renderbuffer), totalMB: MB(buffer + texture + renderbuffer) };
+    if (this.tagger) out.byOwner = this.ownerBytes(this.tagger.name());
+    return out;
+  }
+  private ownerBytes(name: (token: unknown) => string): { owner: string; MB: number; objects: number }[] {
+    const by = new Map<string, { bytes: number; objects: number }>();
+    const add = (obj: object, kind: string, bytes: number) => {
+      let owner = '?';
+      try { owner = this.tags.has(obj) ? name(this.tags.get(obj)) : 'untagged'; } catch { /* keep '?' */ }
+      const key = `${kind} ${owner}`, o = by.get(key) ?? { bytes: 0, objects: 0 };
+      o.bytes += bytes; o.objects++; by.set(key, o);
+    };
+    for (const [b, bytes] of this.sizes.buffer) add(b, 'buffer', bytes);
+    for (const [t, levels] of this.sizes.texture) { let bytes = 0; for (const v of levels.values()) bytes += v; add(t, 'texture', bytes); }
+    for (const [r, bytes] of this.sizes.renderbuffer) add(r, 'renderbuffer', bytes);
+    return [...by].map(([owner, o]) => ({ owner, MB: MB(o.bytes), objects: o.objects })).sort((a, b) => b.MB - a.MB);
   }
 }
 
@@ -259,6 +298,9 @@ export class GlCounters {
   private events: GlEvent[] = [];
   private warmPrograms = new Set<string>();
   private owners = new Map<string, { draws: number; triangles: number }>();
+  /** Draws by owner in the frame under way, and in the last closed frame (lane R3-F #241: draws per kind at a sample). */
+  private frameOwners = new Map<string, number>();
+  private lastFrameOwners = new Map<string, number>();
   private framesSinceWarm = 0;
   readonly resident = new GlResident();
   private readonly o: Required<Omit<GlCounterOptions, 'programNames' | 'context' | 'drawOwner'>> & { programNames?: () => string[]; context?: () => string; drawOwner?: () => string };
@@ -301,6 +343,7 @@ export class GlCounters {
       const o = this.owners.get(key) ?? { draws: 0, triangles: 0 };
       o.draws++; o.triangles += triangles;
       this.owners.set(key, o);
+      this.frameOwners.set(key, (this.frameOwners.get(key) ?? 0) + 1);
     }
   }
 
@@ -320,6 +363,8 @@ export class GlCounters {
     this.frames.push(this.frame);
     if (this.frames.length > this.o.keepFrames) this.frames.shift();
     this.frame = { draws: 0, triangles: 0 };
+    this.lastFrameOwners = this.frameOwners;
+    this.frameOwners = new Map();
   }
 
   /** Start the after-warm-up window: totals, events and frame statistics count from here. */
@@ -346,6 +391,7 @@ export class GlCounters {
       byOwner: [...this.owners].map(([owner, o]) => ({ owner, draws: +(o.draws / Math.max(1, this.framesSinceWarm)).toFixed(1), triangles: Math.round(o.triangles / Math.max(1, this.framesSinceWarm)) }))
         .sort((a, b) => b.triangles - a.triangles),
       resident: this.resident.report(),
+      lastFrameByOwner: Object.fromEntries([...this.lastFrameOwners].sort((a, b) => b[1] - a[1])),
     };
   }
 
