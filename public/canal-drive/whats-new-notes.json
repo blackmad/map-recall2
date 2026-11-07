@@ -3,6 +3,28 @@
   "notes": [
     {
       "date": "2026-11-07",
+      "title": "Street blocks from the air draw as one piece",
+      "text": "Street blocks seen from the air now draw as one piece per material, and far-off blocks swap to a light stand-in: about 600 fewer draw calls over the Jordaan and around the Rijksmuseum. At street level the blocks look the same. Add ?chunkMerge=0 or ?chunkLod2=0 to the ride link to compare.",
+      "images": [
+        {
+          "src": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/engine/2026-11-07-r4c/aerial-parked-westerkerk-wide-west.jpg",
+          "alt": "Westerkerk from the air: before, merged, and merged with stand-ins, with a four-times crop",
+          "caption": "Westerkerk from the air: before, merged per material, merged with the light stand-ins. 584 block draws became 24."
+        },
+        {
+          "src": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/engine/2026-11-07-r4c/aerial-parked-rijksmuseum-wide-west.jpg",
+          "alt": "Rijksmuseum from the air: before, merged, and merged with stand-ins",
+          "caption": "Rijksmuseum from the west: 483 block draws became 14."
+        },
+        {
+          "src": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/engine/2026-11-07-r4c/street-chunk-transvaal-42-48-138.jpg",
+          "alt": "Transvaalstraat 42 to 48 at street level: before, after, and before again",
+          "caption": "Transvaalstraat 42 to 48 at street level: before, after, before again. The blocks look the same."
+        }
+      ]
+    },
+    {
+      "date": "2026-11-07",
       "title": "Rest containers come in two tops",
       "text": "Most restafval columns in Amsterdam have a plain throw-in flap, not the big steel drum, and the ride now shows both: about one cluster in three gets the drum, the others the flap, the same top for a whole row. The city's register only describes the bin under the street, so the mix follows a count of 20 street panoramas. Every container's side door now has its cut corner at the back, as on the street.",
       "images": [
