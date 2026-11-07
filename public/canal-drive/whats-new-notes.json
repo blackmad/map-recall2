@@ -15,13 +15,13 @@
     },
     {
       "date": "2026-11-07",
-      "title": "From the air, the map shows places, not every shop",
-      "text": "From the air, the map shows neighbourhood and water names instead of every shop and café, and labels no longer jump around while you pan. Museums, churches, stations, parks and your route's own markers stay; each neighbourhood name is placed once.",
+      "title": "From the air, the map shows a handful of names",
+      "text": "From the air, the map shows just a handful of landmark names plus neighbourhood and water names, and labels no longer jump around while you pan. Nearby landmarks win over famous ones far away; each neighbourhood name is placed once. Add ?labelAerialPois=all to the ride link to see every name again.",
       "images": [
         {
           "src": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/engine/2026-11-07-r3f/r3f-labels-desktop-sarphatipark-north.jpg",
-          "alt": "Overview above Sarphatipark looking north: before with every shop and café labelled, after with neighbourhood names and landmarks only",
-          "caption": "Above Sarphatipark looking north, desktop: before (every shop and café) above after (neighbourhoods, water and landmarks)."
+          "alt": "Overview above Sarphatipark looking north: before with every shop and café labelled, thinned, and capped at ten landmark names",
+          "caption": "Above Sarphatipark looking north, desktop: before (every shop and café), thinned (landmark-class names), capped (ten names, the default)."
         },
         {
           "src": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/engine/2026-11-07-r3f/r3f-labels-desktop-chassebuurt-north.jpg",
