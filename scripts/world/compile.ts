@@ -47,11 +47,12 @@ import { bakeCellShell, SHELL_LOOK } from './shellBake.js';
 import { CELL_GRID, cellBounds, parseCellKey } from '../../src/canalRecall/world/cellGrid.js';
 import { applyPolicy, emptyPolicyReport, summarisePolicy, policyOptionsOf, policyOptionsFromArgs, POLICY_VERSION, type PolicyOptions } from '../../src/canalRecall/world/cellPolicy.js';
 import { readGlobalStrings } from './cellFiles.js';
+import { shellLayerHash } from '../../src/canalRecall/world/shellLayers.js';
 
 // world-compiler-2 (2026-11-06, lane R2-B #229): --shell bakes the format-6 shell files; the cells are unchanged.
 export const COMPILER_VERSION = 'world-compiler-2';
 /** What a cell's shells are baked from beyond the cell itself (the mesher and its tables): a change rebakes every shell. */
-const SHELL_CODE = ['src/canalRecall/threeBuildingFeatures.ts', 'src/canalRecall/threeBuildingMesh.ts', 'src/canalRecall/world/shellMesh.ts', 'scripts/world/shellBake.ts', 'public/data/street-appearance/profiles.json'].map(f => path.join(ROOT, f));
+const SHELL_CODE = ['src/canalRecall/threeBuildingFeatures.ts', 'src/canalRecall/threeBuildingMesh.ts', 'src/canalRecall/world/shellMesh.ts', 'src/canalRecall/world/shellLayers.ts', 'scripts/world/shellBake.ts', 'public/data/street-appearance/profiles.json'].map(f => path.join(ROOT, f));
 const WORLD_FORMAT_VERSION = BUILDING_FORMAT_VERSION;
 const args = process.argv.slice(2);
 const flag = (name: string) => args.find(a => a === `--${name}` || a.startsWith(`--${name}=`));
@@ -68,6 +69,8 @@ const AGAINST = value('against') === 'none' ? null : path.resolve(value('against
 
 const sha = (b: Uint8Array | string) => crypto.createHash('sha256').update(b).digest('hex');
 const gz = (b: Uint8Array) => zlib.gzipSync(b, { level: 6 }); // Node writes mtime 0, so output is reproducible
+/** SHEL files at gzip level 9 (lane R4-A #243: −3.6 % over level 6 on the 604 cells, decoded the same). */
+const gz9 = (b: Uint8Array) => zlib.gzipSync(b, { level: 9 });
 const exists = (p: string) => fs.existsSync(p);
 void tileFile;
 
@@ -241,7 +244,8 @@ async function main() {
   // 5. Shells (--shell): from the decoded cells (what the runtime reads), each cell's buildings with their party-wall
   // neighbours in other cells as context, through the runtime coarse build (shellBake.ts).
   const shellReport = SHELL ? { look: SHELL_LOOK, cells: 0, coarseTriangles: 0, farPrisms: 0, bakeMs: 0, farMs: 0, shelGz: [] as number[], farGz: [] as number[] } : null;
-  const shellHash = inputHash(SHELL_CODE);
+  // The mesher's sources and (lane R4-A #243) the facade atlas layer table the SHEL `layers` bytes index.
+  const layerHash = shellLayerHash(), shellHash = sha(`${inputHash(SHELL_CODE)}:${layerHash}`);
   if (SHELL && previous?.shells && previous.shells.hash !== shellHash && rebuild) throw Error('--shell --changed: the shell code changed since the last run; run --shell without --changed');
   if (SHELL) {
     const byId = new Map<string, any>();
@@ -262,16 +266,17 @@ async function main() {
       for (const [field, sub, part] of files) {
         const enc = encodeShellCell({ i: cell.i, j: cell.j, ...part }), back = decodeShellCell(enc.bytes, `${sub} ${key}`);
         if (!sameValue(back, { i: cell.i, j: cell.j, ...part })) throw Error(`${sub} ${key}: the shell does not round-trip`);
-        const zipped = gz(enc.bytes), s0 = enc.streams[0];
+        // SHEL at level 9; the published far files keep level 6 (their bytes, and so their published sha, unchanged).
+        const zip = field === 'shell' ? gz9 : gz, zipped = zip(enc.bytes), s0 = enc.streams[0];
         fs.writeFileSync(path.join(OUT, sub, `${key}.bin`), zipped);
-        const tag = s0.tag.trim(), sg = gz(enc.bytes.subarray(s0.offset, s0.offset + s0.bytes)).length;
+        const tag = s0.tag.trim(), sg = zip(enc.bytes.subarray(s0.offset, s0.offset + s0.bytes)).length;
         entry[field] = { bytes: enc.bytes.length, gzBytes: zipped.length, sha256: sha(zipped), streams: { [tag]: { offset: s0.offset, bytes: s0.bytes, gz: sg } } };
         const t = streamTotals[tag] ??= { raw: 0, gz: 0 }; t.raw += s0.bytes; t.gz += sg;
         (field === 'shell' ? shellReport!.shelGz : shellReport!.farGz).push(zipped.length);
       }
     }
   }
-  const shells = SHELL ? { format: 6, look: SHELL_LOOK, hash: shellHash, shel: SHELL === 'all', far: true } : undefined;
+  const shells = SHELL ? { format: 6, look: SHELL_LOOK, hash: shellHash, layers: layerHash, shel: SHELL === 'all', far: true } : undefined;
 
   // Which cells each source tile's buildings landed in: the tile-preserving consumer fetches these.
   const tileCells: Record<string, string[]> = {};
@@ -291,7 +296,7 @@ async function main() {
   // The runtime's probe reads only this (tileCells and the cell list, ~5 % of index.json): the 400 KB index cost
   // world-v1 ~150 ms against the default path at page start (lane L4 time-to-resident).
   // The far tier (engine/farShells.ts) reads `far` (gzip bytes of far/<key>.bin) to know which cells have prisms.
-  const runtime = { version: 1, format: WORLD_FORMAT_VERSION, ...(policy ? { policy, policyOptions } : {}), ...(strings ? { strings } : {}), ...(shells ? { shells: { format: shells.format, look: shells.look, shel: shells.shel, far: shells.far } } : {}), compiler: COMPILER_VERSION, globalHash, tileCells, cells: Object.fromEntries(Object.entries<any>(cellsOut).map(([k, c]) => [k, { buildings: c.buildings, gzBytes: c.gzBytes, ...(c.far ? { far: c.far.gzBytes } : {}), ...(c.shell ? { shell: c.shell.gzBytes } : {}) }])) };
+  const runtime = { version: 1, format: WORLD_FORMAT_VERSION, ...(policy ? { policy, policyOptions } : {}), ...(strings ? { strings } : {}), ...(shells ? { shells: { format: shells.format, look: shells.look, layers: shells.layers, shel: shells.shel, far: shells.far } } : {}), compiler: COMPILER_VERSION, globalHash, tileCells, cells: Object.fromEntries(Object.entries<any>(cellsOut).map(([k, c]) => [k, { buildings: c.buildings, gzBytes: c.gzBytes, ...(c.far ? { far: c.far.gzBytes } : {}), ...(c.shell ? { shell: c.shell.gzBytes } : {}) }])) };
   fs.writeFileSync(path.join(OUT, 'tiles.json'), JSON.stringify(runtime));
 
   const allGz = Object.values<any>(cellsOut).reduce((s, c) => s + c.gzBytes, 0);

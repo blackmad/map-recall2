@@ -39,6 +39,7 @@ import type { BuildingLookId, JumpOptions, ScreenPoint, WorldCamera, WorldViewOr
 import { BUILDING_LOOK_IDS, urlBuildingLook } from './worldViewApi';
 import { FlatLines, type LngLatLine } from './overlays/flatLines';
 import { FarShells, farCellOrigin, farShellsEnabled } from './farShells';
+import { BakedCoarse, bakedCoarseEnabled, BAKED_LIFT_SLICE_MS } from './bakedCoarse';
 import { isAerialView } from '../rendererShared/aerialView';
 import { ToonPost, toonLookFlag } from './toonLook';
 import { SmaaPost, smaaFlag } from './postAA';
@@ -140,6 +141,11 @@ export class OwnWorldView implements WorldViewOracles {
   /** The far tier (engine/farShells.ts, lane R2-B #229; `?farShells=0`): baked SHL1 prisms out to the far ring. */
   _farShells: FarShells | null = null;
   private farShellsOn = farShellsEnabled();
+  /** The baked coarse tier (engine/bakedCoarse.ts, lane R4-A #243; `?bakedCoarse=0`): one SHEL mesh per world cell instead of the runtime coarse chunks. */
+  _bakedCoarse: BakedCoarse | null = null;
+  private bakedCoarseOn = bakedCoarseEnabled(coarse());
+  /** Why the baked tier is off (diagnostics): flag, no-shel, layer-table, look. */
+  bakedCoarseOff: string | null = null;
   /** `?groundView=0`: the own ground follows the rider also while the camera is panned off it (groundResidency.ts). */
   private readonly groundView = groundViewFlag();
   /** Landmark models, trees, detailed buildings, pyramidal roofs, ARTIS (cityExtras.ts). */
@@ -610,8 +616,56 @@ export class OwnWorldView implements WorldViewOracles {
     }
     // The prisms carry the photo look's colours; another look (cartoon, plain) draws no far tier.
     this._farShells.setEnabled(this.drawnLook() === 'photo' && this._threeBuildings?.visible !== false);
+    this.updateBakedCoarse(subject);
     this._farShells.update(subject[0], subject[1], radiusM);
     this._farShells.frame();
+  }
+
+  /**
+   * The baked coarse tier (lane R4-A #243): created with the far tier once the facades and a compiled world with SHEL
+   * are up, refused when the compile's layer table is not this build's (shellLayers.ts), off for a look other than the
+   * baked one. Fed the camera subject; from the air nothing is lifted, at street level a slice per frame lifts buildings
+   * onto the own ground (BAKED_LIFT_SLICE_MS; R3-F's shared frame budget can take this call site over).
+   */
+  private updateBakedCoarse(subject: [number, number]): void {
+    if (!this.bakedCoarseOn) { this.bakedCoarseOff ??= 'flag'; return; }
+    const tb = this._threeBuildings, world = this._completeCity?.worldClient;
+    if (!this._bakedCoarse) {
+      const host = tb?.bakedCoarseHost?.();
+      if (!host || !world?.shellCells) return;
+      const available = world.shellCells(), shells = world.index?.shells;
+      if (!available.size || !shells?.shel) { this.bakedCoarseOn = false; this.bakedCoarseOff = 'no-shel'; return; }
+      if (shells.layers !== host.layerHash) { this.bakedCoarseOn = false; this.bakedCoarseOff = `layer-table ${shells.layers ?? 'none'} != ${host.layerHash}`; console.warn(`baked coarse: ${this.bakedCoarseOff}; runtime coarse shells`); return; }
+      if (shells.look !== 'photo') { this.bakedCoarseOn = false; this.bakedCoarseOff = `look ${shells.look}`; return; }
+      let base: string | undefined;
+      try { const asked = new URLSearchParams(W().location?.search ?? '').get('worldShells'); if (asked) base = new URL(asked, W().location.href).href; } catch { /* no override */ }
+      const baked: BakedCoarse = new BakedCoarse({
+        THREE: host.THREE,
+        scene: () => tb.bakedCoarseHost()?.scene ?? null,
+        material: () => tb.bakedCoarseHost()?.material ?? null,
+        fadeMaterial: (v: number) => tb.bakedCoarseHost()?.fadeMaterial(v) ?? null,
+        attach: entry => tb.bakedCoarseHost()?.attach(entry),
+        detach: entry => tb.bakedCoarseHost()?.detach(entry),
+        swapSlots: () => !!tb.bakedCoarseHost()?.swapSlots(),
+        fetchShell: (key: string, signal: AbortSignal) => world.shell(key, signal, base),
+        available: () => available,
+        coverageChanged: () => tb.bakedCoarseHost()?.regroup(),
+        groundBase: (id: string) => tb.bakedCoarseHost()?.groundBase(id),
+        repaint: () => this.host.triggerRepaint(),
+      }, { touch: coarse() });
+      this._bakedCoarse = baked;
+      host.setGate({ plan: (cells: ReadonlySet<string>) => baked.plan(cells), covers: (cell: string) => baked.covers(cell), drawn: (cell: string) => baked.drawn(cell), contextLost: () => baked.contextLost() });
+    }
+    const baked = this._bakedCoarse;
+    const photo = this.drawnLook() === 'photo';
+    if (!photo && baked.isEnabled) this.bakedCoarseOff = `look ${this.drawnLook()}`;
+    baked.setEnabled(photo);
+    if (!photo) return;
+    const cam = this.cameraMap.camera;
+    const street = !isAerialView(cam.zoom, cam.pitch, cam.lat);
+    baked.update(subject[0], subject[1], street);
+    if (street) baked.refreshBases(BAKED_LIFT_SLICE_MS);
+    baked.frame();
   }
 
   private riderSurface(): any { return this._ownGround && this._ownGround.ready ? this._ownGround : null; }

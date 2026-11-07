@@ -157,6 +157,48 @@ const frameWindow = from => page.evaluate(from => {
 const frameStats = iv => ({ n: iv.length, p50: +pickQ(iv, 0.5).toFixed(1), p99: +pickQ(iv, 0.99).toFixed(1),
   over50: iv.filter(f => f > 50).length, over100: iv.filter(f => f > 100).length, over250: iv.filter(f => f > 250).length, longestMs: Math.round(Math.max(0, ...iv)) });
 
+/**
+ * Draws per kind in the last rendered frame (lane R4-A #243): every renderBufferDirect is tallied under its shared-frame
+ * participant (`shared-frame/<name>`), the facade layer's meshes split by chunk kind (coarse, near, extras, boats, kits),
+ * baked coarse cells and far cells; shadow-map draws are counted apart. Installed once, on the first sample.
+ */
+const drawKinds = () => page.evaluate(() => {
+  const vm = canalRecallGame.vectorMap, renderer = vm.host?.renderer;
+  if (!renderer) return null;
+  const D = window.__drawKinds ??= (() => {
+    const st = { frame: 0, cur: {}, last: {}, at: -1 };
+    const tick = () => { st.frame++; requestAnimationFrame(tick); }; requestAnimationFrame(tick);
+    const kind = (o, material) => {
+      const shadow = material?.isMeshDepthMaterial || material?.isMeshDistanceMaterial ? ' (shadow)' : '';
+      let k;
+      {
+        let part = '', near = '', chunk = '';
+        for (let p = o; p; p = p.parent) {
+          const n = typeof p.name === 'string' ? p.name : '';
+          if (p.userData?.bakedCoarse) chunk = 'baked-coarse';
+          else if (p.userData?.farShell) chunk = 'far-shells';
+          else if (!chunk && p.userData?.chunkKind) chunk = p.userData.chunkKind;
+          if (n.startsWith('shared-frame/')) { part = n.slice(13); break; }
+          if (!near && n) near = n.split(/[:/#]/)[0];
+        }
+        k = `${part || 'unwrapped'}:${chunk || near || o.type}`;
+      }
+      return k + shadow;
+    };
+    const rbd = renderer.renderBufferDirect.bind(renderer);
+    renderer.renderBufferDirect = (camera, scene, geometry, material, object, group) => {
+      if (st.at !== st.frame) { st.last = st.cur; st.cur = {}; st.at = st.frame; }
+      const k = kind(object, material); st.cur[k] = (st.cur[k] ?? 0) + 1;
+      return rbd(camera, scene, geometry, material, object, group);
+    };
+    return st;
+  })();
+  // The facade layer's chunk meshes (and their culled tile children) carry their key's kind.
+  const tb = vm._threeBuildings;
+  if (tb?.chunks) for (const [key, c] of tb.chunks) { const m = c?.mesh; if (!m || m.userData.chunkKind) continue; const kind = key.includes(':') ? key.split(':')[0] : key.replace(/^_+/, ''); m.userData.chunkKind = kind; m.traverse?.(x => { x.userData.chunkKind = kind; }); }
+  return D.last;
+});
+
 /** Resident counts by owner, read off the world view (names from the modules; `null` when an owner is absent). */
 const residents = census => page.evaluate(census => {
   const g = canalRecallGame, vm = g.vectorMap, tb = vm._threeBuildings, city = vm._completeCity, ground = vm._ownGround;
@@ -181,6 +223,8 @@ const residents = census => page.evaluate(census => {
     // tier's resident cells / MB / draws (engine/farShells.ts, lane R2-B #229).
     draws: (vm._sharedFrame?.stats?.main?.calls ?? 0) + (vm._sharedFrame?.stats?.overlay?.calls ?? 0), drawTriangles: (vm._sharedFrame?.stats?.main?.triangles ?? 0) + (vm._sharedFrame?.stats?.overlay?.triangles ?? 0),
     farRadiusM: ground?.farRadius ?? null, farShells: vm._farShells?.stats?.() ?? null,
+    bakedCoarse: vm._bakedCoarse?.stats?.() ?? null, bakedCoarseOff: vm.bakedCoarseOff ?? null,
+    coarseChunks: tb?.chunks ? [...tb.chunks.keys()].filter(k => k.startsWith('coarse:')).length : null,
     workers: (pool?.live ?? 0) + (ground?.worker ? 1 : 0),
   };
   if (census) {
@@ -252,6 +296,7 @@ for (let t = every; t <= panS; t += every) {
   const a = await page.evaluate(() => { window.__aerialPause = true; return performance.now(); });
   const heap = await heapSample(cdp);
   const res = await residents(censusOn);
+  res.drawKinds = await drawKinds();
   const rss = await processRss();
   const aerial = await page.evaluate(() => ({ laps: window.__aerial.laps, km: Math.round((window.__aerial.laps * window.__aerial.totalM + window.__aerial.s / 3) / 100) / 10, poses: window.__aerial.poseChanges.length, leg: window.__aerial.poseChanges.at(-1)?.to }));
   if (shotsDir && aerial.poses !== lastPoseCount) {
@@ -264,7 +309,7 @@ for (let t = every; t <= panS; t += every) {
   last = b + 50;
   const row = { t, ...aerial, heapMB: heap.main.usedMB, bufMB: heap.main.backingMB, workersMB: heap.workersUsedMB, ...rss, ...res, frames, worst };
   timeline.push(row);
-  console.log(`${device} t${t} ${aerial.leg ?? '-'} z${res.zoom} p${res.pitch}: heap ${heap.main.usedMB}+${heap.main.backingMB ?? '?'} MB, wk ${heap.workersUsedMB} MB, rss ${rss.rendererRssMB}/${rss.gpuRssMB}, geo ${res.geometries} tex ${res.textures} gl ${res.gl?.residentMB} MB (+${res.gl?.uploadMB} MB up), chunks ${res.chunks} tiles ${res.cityTiles} feats ${res.cityFeatures} ctxCh ${res.contextChanges} lm ${res.landmarks} trees ${res.trees} ground ${res.groundCells} far ${res.farRing} r${res.farRadiusM} fs ${res.farShells?.cells ?? '-'}/${res.farShells?.partsShown ?? '-'} draws ${res.draws} labels ${res.labelsPlaced} wkrs ${res.workers}; p99 ${frames.p99} >100 ${frames.over100} >250 ${frames.over250} max ${frames.longestMs}${worst?.[0] ? ` worst ${JSON.stringify(worst[0].phases)}` : ''}`);
+  console.log(`${device} t${t} ${aerial.leg ?? '-'} z${res.zoom} p${res.pitch}: heap ${heap.main.usedMB}+${heap.main.backingMB ?? '?'} MB, wk ${heap.workersUsedMB} MB, rss ${rss.rendererRssMB}/${rss.gpuRssMB}, geo ${res.geometries} tex ${res.textures} gl ${res.gl?.residentMB} MB (+${res.gl?.uploadMB} MB up), chunks ${res.chunks} tiles ${res.cityTiles} feats ${res.cityFeatures} ctxCh ${res.contextChanges} lm ${res.landmarks} trees ${res.trees} ground ${res.groundCells} far ${res.farRing} r${res.farRadiusM} fs ${res.farShells?.cells ?? '-'}/${res.farShells?.partsShown ?? '-'} draws ${res.draws} bc ${res.bakedCoarse ? `${res.bakedCoarse.drawn}/${res.bakedCoarse.cells}` : '-'} cc ${res.coarseChunks} labels ${res.labelsPlaced} wkrs ${res.workers}; p99 ${frames.p99} >100 ${frames.over100} >250 ${frames.over250} max ${frames.longestMs}${worst?.[0] ? ` worst ${JSON.stringify(worst[0].phases)}` : ''}`);
 }
 
 // Gates: minute 1 is the reference (the sweep has reached every district once by then at the default speed).

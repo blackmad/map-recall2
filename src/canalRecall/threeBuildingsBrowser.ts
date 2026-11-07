@@ -52,6 +52,9 @@ import { HIDDEN, HIGHLIGHT_GLSL, attachHighlightPasses, detachHighlightPasses, f
 import { ROOF_LAYER_COUNT, RESTORE_TEXTURE_SLICE_MS, TEXTURE_SLICE_MS, calmBayLayers, lookAtlasLayers, paintLookArrays, type LookAtlasArrays } from './look/paintLookAtlas.js';
 import { loadLookAtlas, lookAtlasStamp, readCachedLookAtlas, storeCachedLookAtlas } from './look/lookAtlas.js';
 import { SwapSlots, clearSlot, paintSlot, swapComplementEnabled } from './swapComplement.js';
+import { buildingCell } from './world/cellGrid.js';
+import { shellLayerHash } from './world/shellLayers.js';
+import type { BakedEntry } from './engine/bakedCoarse.js';
 import { SLOT_LAYER_COUNT, cityLookEnabled, createCityLookMaterial, createCityUniforms, getCityLook, loadCityBrick, paintSlotLayers } from './look/cityLook.js';
 import { boundingSphereOf } from './geometryBounds.js';
 import { cutMesh, disposeTiles, growTileSpheres } from './rendererShared/tiledGeometry.js';
@@ -284,11 +287,19 @@ function fadeClone(source: any, value: number, under?: { value: number }): any |
   if (source.defaultAttributeValues) clone.defaultAttributeValues = source.defaultAttributeValues;
   return clone;
 }
-/** What the far tier reads off the facade layer (ThreeBuildings.farShellHost). */
-export type FarShellHostView = { THREE: any; scene: any; material: any; look: string; fadeMaterial(value: number): any | null; coarseDrawn(tile: string): boolean };
+/** What the far tier reads off the facade layer (ThreeBuildings.farShellHost). `cell`: the far cell asking (a drawn baked coarse cell hides it). */
+export type FarShellHostView = { THREE: any; scene: any; material: any; look: string; fadeMaterial(value: number): any | null; coarseDrawn(tile: string, cell?: string): boolean };
+/**
+ * The baked coarse tier as the facade layer sees it (engine/bakedCoarse.ts, lane R4-A #243): it is told the resident
+ * buildings' cells while grouping (`plan`), answers which cells it covers (their buildings build no runtime `coarse:`
+ * chunk) and which it draws (the far tier hides those cells).
+ */
+export interface BakedCoarseGate { plan(cells: ReadonlySet<string>): void; covers(cell: string): boolean; drawn(cell: string): boolean; /** The GL context was lost: the meshes' CPU arrays are gone, fetch again. */ contextLost?(): void }
+/** What the baked coarse tier reads off the facade layer (ThreeBuildings.bakedCoarseHost). */
+export type BakedCoarseHostView = { THREE: any; scene: any; material: any; look: string; layerHash: string; fadeMaterial(value: number): any | null; swapSlots(): boolean; attach(entry: BakedEntry & { applied?: Map<string, number> }): void; detach(entry: BakedEntry): void; groundBase(id: string): number | null | undefined; regroup(): void; setGate(gate: BakedCoarseGate | null): void };
 const BOAT_PREFIX = 'boats:';
 /** What setFeatures groups a feature by, memoised per feature object (ThreeBuildings.groupOf). */
-interface FeatureGroupInfo { geometry: unknown; id: string; kit: boolean; tile: string | null; coarse: string | null; near: string; nearKey: string; extrasKey: string }
+interface FeatureGroupInfo { geometry: unknown; id: string; kit: boolean; tile: string | null; coarse: string | null; near: string; nearKey: string; extrasKey: string; /** world-v1 cell (first vertex), for the baked coarse gate. */ cell: string | null }
 /** `?featureGroupCache=0` (or `window.__canalRecallFeatureGroupCache = false`): the uncached grouping loop. */
 export function featureGroupCacheEnabled(): boolean {
   try {
@@ -487,18 +498,22 @@ export class ThreeBuildings {
     const ray = new T.Ray(near.clone(), far.clone().sub(near).normalize());
     const toLocal = new T.Matrix4();
     let result: any = null;
-    for (const [key, chunk] of this.chunks) {
+    // Baked coarse cells (lane R4-A #243) are picked from their resident features, in the chunk frame (the mesh sits at the cell origin).
+    const baked = [...this.bakedEntries.values()].map(e => ({ key: `baked:${e.key}`, chunk: { mesh: e.mesh, source: this.bakedSources.get(e.key) ?? [], ranges: e.ranges, lift: e.applied ? { applied: e.applied } : undefined, offset: e.mesh.position } }));
+    for (const [key, chunk] of [...this.chunks.entries(), ...baked.map(b => [b.key, b.chunk] as const)] as [string, { mesh: any; source: Feature[]; ranges: Map<string, { start: number; count: number }>; lift?: { applied: Map<string, number> }; offset?: any }][]) {
       // Extras (dormers, chimneys) belong to buildings their walls chunk already holds.
       if (!chunk.mesh || !chunk.source.length || key.startsWith(EXTRAS_PREFIX)) continue;
       chunk.mesh.updateWorldMatrix(true, false);
       const sphere = chunk.mesh.geometry.boundingSphere?.clone().applyMatrix4(chunk.mesh.matrixWorld);
       if (sphere && !ray.intersectsSphere(sphere)) continue;
-      let index = this.pickIndex.get(chunk);
-      if (!index) this.pickIndex.set(chunk, index = buildPrismIndex(chunk.source, ORIGIN));
-      let grid = this.pickGrid.get(chunk);
-      if (!grid || grid.entries !== index) this.pickGrid.set(chunk, grid = buildPrismGrid(index));
+      const memo: object = chunk.offset ? chunk.source : chunk; // a baked cell's entry is made per click; its source list is stable
+      let index = this.pickIndex.get(memo);
+      if (!index) this.pickIndex.set(memo, index = buildPrismIndex(chunk.source, ORIGIN));
+      let grid = this.pickGrid.get(memo);
+      if (!grid || grid.entries !== index) this.pickGrid.set(memo, grid = buildPrismGrid(index));
       toLocal.copy(chunk.mesh.matrixWorld).invert();
       const o = near.clone().applyMatrix4(toLocal), d = far.clone().applyMatrix4(toLocal).sub(o);
+      if (chunk.offset) { o.x += chunk.offset.x; o.y += chunk.offset.y; o.z += chunk.offset.z; }
       const hiddenAttribute = chunk.mesh.geometry.getAttribute('hidden');
       const lift = chunk.lift?.applied;
       const bounds = this.liftRange(lift);
@@ -511,7 +526,9 @@ export class ThreeBuildings {
       const liftOf = (id: string) => lift?.get(id) ?? 0;
       const hit = pickPrismGrid(grid, [o.x, o.y, o.z], [d.x, d.y, d.z], liftOf, skip, bounds.min, bounds.max);
       if (!hit) continue;
-      const point = o.clone().addScaledVector(d, hit.t).applyMatrix4(chunk.mesh.matrixWorld);
+      const point = o.clone().addScaledVector(d, hit.t);
+      if (chunk.offset) { point.x -= chunk.offset.x; point.y -= chunk.offset.y; point.z -= chunk.offset.z; }
+      point.applyMatrix4(chunk.mesh.matrixWorld);
       const depth = point.applyMatrix4(projection).z;
       if (depth < -1 || depth > 1 || result && depth >= result.depth) continue;
       const feature = chunk.source.find(feature => String(feature.properties.id) === hit.entry.id);
@@ -755,6 +772,7 @@ export class ThreeBuildings {
   setVisible(visible: boolean): void {
     if (this.visible === visible) return;
     this.visible = visible;
+    for (const entry of this.bakedEntries.values()) entry.mesh.visible = visible;
     this.refreshSurveyedRoofOwnership();
     this.map.triggerRepaint();
   }
@@ -769,7 +787,8 @@ export class ThreeBuildings {
     } else this.contextChanges = [];
     const groups = new Map<string, Feature[]>();
     const kitParts: Feature[] = [];
-    if (this.groupCacheOn ??= featureGroupCacheEnabled()) this.groupCached(features, groups, kitParts);
+    const gate = (this.groupCacheOn ??= featureGroupCacheEnabled()) ? null : this.bakedPlan(features);
+    if (this.groupCacheOn) this.groupCached(features, groups, kitParts);
     else for (const feature of features) {
       const p = feature.properties;
       const id = String(p.id ?? '');
@@ -782,9 +801,9 @@ export class ThreeBuildings {
       const near = tileKeyOf(polygons, this.detailZoom);
       const detailed = this.detailTiles.has(near);
       const key = COARSE_PREFIX + tileKeyOf(polygons);
-      let list = groups.get(key);
-      if (!list) groups.set(key, list = []);
-      list.push(feature);
+      const cell = gate ? buildingCell(feature.geometry as any) : null;
+      if (gate && cell !== null && gate.covers(cell)) this.bakedSourceOf(cell).push(feature);
+      else { let list = groups.get(key); if (!list) groups.set(key, list = []); list.push(feature); }
       // The cheap shell remains available until the detailed mesh actually installs.
       if (detailed) { const k = `near:${near}`; let l = groups.get(k); if (!l) groups.set(k, l = []); l.push(feature); }
       if (detailed) { const k = EXTRAS_PREFIX + near; let l = groups.get(k); if (!l) groups.set(k, l = []); l.push(feature); }
@@ -832,19 +851,90 @@ export class ThreeBuildings {
     const id = String(feature.properties.id ?? '');
     const polygons = asPolygons(feature.geometry);
     const tile = polygons.length ? tileKeyOf(polygons) : null, near = polygons.length ? tileKeyOf(polygons, this.detailZoom) : '';
-    const info: FeatureGroupInfo = { geometry: feature.geometry, id, kit: KIT_PART_IDS.has(id) || FRONT_PART_IDS.has(id), tile, coarse: tile === null ? null : COARSE_PREFIX + tile, near, nearKey: `near:${near}`, extrasKey: EXTRAS_PREFIX + near };
+    const info: FeatureGroupInfo = { geometry: feature.geometry, id, kit: KIT_PART_IDS.has(id) || FRONT_PART_IDS.has(id), tile, coarse: tile === null ? null : COARSE_PREFIX + tile, near, nearKey: `near:${near}`, extrasKey: EXTRAS_PREFIX + near, cell: polygons.length ? buildingCell(feature.geometry as any) : null };
     this.groupInfo.set(feature, info);
     return info;
   }
   private groupCached(features: readonly Feature[], groups: Map<string, Feature[]>, kitParts: Feature[]): void {
     const push = (k: string, f: Feature) => { const l = groups.get(k); if (l) l.push(f); else groups.set(k, [f]); };
+    const gate = this.bakedPlan(features);
     for (const feature of features) {
       const g = this.groupOf(feature);
       if (g.kit) kitParts.push(feature);
       if (KIT_HIDE_SET.has(g.id) || this.boatIds.has(g.id) || g.coarse === null) continue;
-      push(g.coarse, feature);
+      // Baked coarse (lane R4-A #243): a building whose cell the baked tier covers builds no runtime coarse chunk.
+      if (gate && g.cell !== null && gate.covers(g.cell)) this.bakedSourceOf(g.cell).push(feature);
+      else push(g.coarse, feature);
       if (this.detailTiles.has(g.near)) { push(g.nearKey, feature); push(g.extrasKey, feature); }
     }
+  }
+
+  /**
+   * The baked coarse tier (engine/bakedCoarse.ts, lane R4-A #243). Null: every building builds its runtime `coarse:`
+   * chunk (`?bakedCoarse=0`, the live tile path, a look other than the baked one, a stale layer table, no SHEL).
+   */
+  private bakedGate: BakedCoarseGate | null = null;
+  /** The resident features per baked cell (picking and the answer's footprint read them; the baked meshes have no source). */
+  private bakedSources = new Map<string, Feature[]>();
+  private bakedSourceOf(cell: string): Feature[] { let l = this.bakedSources.get(cell); if (!l) this.bakedSources.set(cell, l = []); return l; }
+  /** Drawn baked cells, registered by the tier: hidden / ghosted / highlighted / detail / swap slots apply to them as to coarse chunks. */
+  private readonly bakedEntries = new Map<string, BakedEntry & { applied?: Map<string, number> }>();
+  /** Tell the gate the resident buildings' cells (it plans before the grouping asks what it covers). */
+  private bakedPlan(features: readonly Feature[]): BakedCoarseGate | null {
+    this.bakedSources = new Map();
+    const gate = this.bakedGate;
+    if (!gate || this.look !== 'photo') return null;
+    const cells = new Set<string>();
+    for (const feature of features) { const g = this.groupOf(feature); if (g.cell !== null && !KIT_HIDE_SET.has(g.id)) cells.add(g.cell); }
+    gate.plan(cells);
+    return gate;
+  }
+  /** The meshes the coarse per-building state applies to: coarse chunks and drawn baked cells. */
+  private *coarseEntries(): Generator<{ mesh: any; ranges: Map<string, { start: number; count: number }> }> {
+    for (const [key, entry] of this.chunks) if (key.startsWith(COARSE_PREFIX)) yield entry;
+    yield* this.bakedEntries.values();
+  }
+
+  /**
+   * The baked coarse tier's host: the facade scene and material, the layer table its shells must match, registration
+   * of its meshes for the per-building state, the own-ground base by building id, and the gate. Null until set up.
+   */
+  bakedCoarseHost(): BakedCoarseHostView | null {
+    if (!this.THREE || !this.scene || !this.material) return null;
+    const material = this.material;
+    return {
+      THREE: this.THREE, scene: this.scene, material, look: this.look, layerHash: shellLayerHash(),
+      fadeMaterial: (value: number) => fadeClone(material, value),
+      swapSlots: () => this.complement,
+      attach: entry => {
+        this.bakedEntries.set(entry.key, entry);
+        entry.mesh.visible = this.visible;
+        if (this.lit) { entry.mesh.receiveShadow = true; entry.mesh.customDepthMaterial = this.depthMaterial; }
+        this.applyHidden(entry, new Set(entry.ranges.keys()));
+        const slots = entry.mesh.geometry.getAttribute('swapSlot');
+        if (slots?.array) { let touched = false; for (const [slot, ids] of this.swapSlots.active()) touched = paintSlot(slots.array, entry.ranges, ids, slot) || touched; if (touched) slots.needsUpdate = true; }
+        if (this.firstShellTime === null) this.firstShellTime = performance.now();
+        this.map.triggerRepaint();
+      },
+      detach: entry => { if (this.bakedEntries.get(entry.key) === entry) this.bakedEntries.delete(entry.key); },
+      groundBase: (id: string) => {
+        if (!this.groundBase) return null;
+        const f = this.featureById(id);
+        return f ? this.groundBase(f) : undefined;
+      },
+      regroup: () => this.setFeatures(this.lastFeatures),
+      setGate: gate => { if (gate === this.bakedGate) return; this.bakedGate = gate; this.setFeatures(this.lastFeatures); },
+    };
+  }
+  /** Resident feature by id (the baked tier's ground lift), indexed lazily per resident list. */
+  private featureIndex: { list: readonly Feature[]; byId: Map<string, Feature> } | null = null;
+  private featureById(id: string): Feature | undefined {
+    if (this.featureIndex?.list !== this.lastFeatures) {
+      const byId = new Map<string, Feature>();
+      for (const f of this.lastFeatures) byId.set(String(f.properties.id ?? ''), f);
+      this.featureIndex = { list: this.lastFeatures, byId };
+    }
+    return this.featureIndex.byId.get(id);
   }
 
   /**
@@ -925,6 +1015,7 @@ export class ThreeBuildings {
     this.dimmed = dimmed;
     if (!changed.size) return;
     for (const entry of this.chunks.values()) { this.applyHidden(entry, changed); this.applyPasses(entry); }
+    for (const entry of this.bakedEntries.values()) this.applyHidden(entry, changed);
     this.map.triggerRepaint();
   }
 
@@ -962,7 +1053,7 @@ export class ThreeBuildings {
     const polygons: LngLat[][][] = [];
     let heightM = 0;
     const seen = new Set<string>();
-    for (const entry of this.chunks.values()) for (const f of entry.source) {
+    for (const source of [...[...this.chunks.values()].map(e => e.source), ...this.bakedSources.values()]) for (const f of source) {
       const id = String(f.properties?.id);
       if (!want.has(id) || seen.has(id)) continue;
       seen.add(id);
@@ -984,6 +1075,7 @@ export class ThreeBuildings {
     if (!changed.size) return;
     for (const entry of this.chunks.values()) { this.applyHidden(entry, changed); if ([...this.highlighted].some(id => changed.has(id))) this.applyPasses(entry); }
     for (const out of this.outgoing.values()) this.applyHidden(out, changed);
+    for (const entry of this.bakedEntries.values()) this.applyHidden(entry, changed);
     this.map.triggerRepaint();
   }
 
@@ -999,6 +1091,7 @@ export class ThreeBuildings {
     this.ghosted = next;
     if (!changed.size) return;
     for (const entry of this.chunks.values()) this.applyHidden(entry, changed);
+    for (const entry of this.bakedEntries.values()) this.applyHidden(entry, changed);
     this.map.triggerRepaint();
   }
   private readonly ghostedBy = new Map<string, Set<string>>();
@@ -1016,7 +1109,8 @@ export class ThreeBuildings {
   drawsResidentCity(tiles: Iterable<string>): boolean {
     if (!this.visible || !this.ready) return false;
     for (const tile of tiles) if (this.chunks.get(`${COARSE_PREFIX}${tile}`)?.mesh) return true;
-    return false;
+    // Baked coarse (lane R4-A #243): a drawn baked cell is the city under the rider (its tiles build no coarse chunk).
+    return this.bakedEntries.size > 0;
   }
 
   /**
@@ -1033,7 +1127,8 @@ export class ThreeBuildings {
       THREE: this.THREE, scene: this.scene, material, look: this.look,
       fadeMaterial: (value: number) => fadeClone(material, value),
       // A resident tile draws its buildings as the coarse shell, or as detailed `near:` chunks of its z16 sub-tiles.
-      coarseDrawn: (tile: string) => { const key = `${COARSE_PREFIX}${tile}`; return (!!this.chunks.get(key)?.mesh && !this.fading.has(key)) || this.nearDrawnIn(tile); },
+      // Baked coarse (lane R4-A #243): a far cell whose baked shell draws here hides every part of it.
+      coarseDrawn: (tile: string, cell?: string) => { if (cell !== undefined && this.bakedGate?.drawn(cell)) return true; const key = `${COARSE_PREFIX}${tile}`; return (!!this.chunks.get(key)?.mesh && !this.fading.has(key)) || this.nearDrawnIn(tile); },
     };
   }
   private farHost: FarShellHostView | null = null;
@@ -1238,6 +1333,7 @@ export class ThreeBuildings {
     this.boats = boats;
     this.boatTiles = houseboatsByTile(boats);
     this.boatIds = new Set(boats.map(b => b.id));
+    for (const entry of this.bakedEntries.values()) this.applyHidden(entry, new Set(entry.ranges.keys()));
     for (const key of [...this.chunks.keys()]) if (key.startsWith(BOAT_PREFIX)) this.dropChunk(key);
     this.setFeatures(this.lastFeatures);
   }
@@ -1622,7 +1718,7 @@ export class ThreeBuildings {
     for (const id of ids) {
       const range = entry.ranges.get(id);
       if (!range) continue;
-      attribute.array.fill(this.hidden.has(id) || entry.mesh.userData.coarse && this.installedDetailIds.has(id) ? HIDDEN.hide : this.ghosted.has(id) ? HIDDEN.ghost : this.highlighted.has(id) ? HIDDEN.highlight : this.dimmed.has(id) ? HIDDEN.dim : HIDDEN.drawn, range.start, range.start + range.count);
+      attribute.array.fill(this.hidden.has(id) || entry.mesh.userData.coarse && this.installedDetailIds.has(id) || entry.mesh.userData.bakedCoarse && this.boatIds.has(id) ? HIDDEN.hide : this.ghosted.has(id) ? HIDDEN.ghost : this.highlighted.has(id) ? HIDDEN.highlight : this.dimmed.has(id) ? HIDDEN.dim : HIDDEN.drawn, range.start, range.start + range.count);
       touched = true;
     }
     if (touched) { attribute.needsUpdate = true; this.hiddenRevision++; }
@@ -1673,8 +1769,8 @@ export class ThreeBuildings {
   }
 
   private paintShells(ids: ReadonlySet<string>, slot: number, on: boolean): void {
-    for (const [key, entry] of this.chunks) {
-      if (!key.startsWith(COARSE_PREFIX) || !entry.mesh) continue;
+    for (const entry of this.coarseEntries()) {
+      if (!entry.mesh) continue;
       const attribute = entry.mesh.geometry.getAttribute('swapSlot');
       if (!attribute?.array) continue;
       if (on ? paintSlot(attribute.array, entry.ranges, ids, slot) : clearSlot(attribute.array, entry.ranges, ids, slot)) attribute.needsUpdate = true;
@@ -1804,7 +1900,7 @@ export class ThreeBuildings {
     const changed = new Set([...next, ...this.installedDetailIds].filter(id => next.has(id) !== this.installedDetailIds.has(id)));
     this.installedDetailIds = next;
     if (!changed.size) return;
-    for (const [key, entry] of this.chunks) if (key.startsWith(COARSE_PREFIX)) this.applyHidden(entry, changed);
+    for (const entry of this.coarseEntries()) this.applyHidden(entry, changed);
   }
 
   /** Set when the facades draw in the shared frame (`?sharedFrame=1`) instead of their own layer. */
@@ -1824,6 +1920,7 @@ export class ThreeBuildings {
     this.textureSets.clear();
     for (const key of [...this.chunks.keys()]) this.dropChunk(key);
     this.dropLeaving();
+    this.bakedGate?.contextLost?.();
     for (const material of this.materials.values()) material.dispose();
     this.materials.clear();
     this.material.uniforms.cells.value = null;

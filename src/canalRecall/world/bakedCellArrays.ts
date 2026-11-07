@@ -1,0 +1,45 @@
+/**
+ * A decoded SHEL mesh as the baked coarse tier uploads it (lane R4-A, #243): vertices regrouped so each building's are
+ * one contiguous range (buildings in first-use order, vertices in their decoded order inside it), indices remapped, and
+ * every range named by the building's id (the cell's FOOT order is the `bid`). The layer then hides, ghosts, highlights
+ * and swap-marks a building by filling its range, exactly as threeBuildingsBrowser applyHidden does for a coarse chunk.
+ * Pure: the world worker runs it after decodeShel.
+ */
+import { NO_BID, type ShellMesh } from './shellMesh.js';
+
+export type BakedRange = { id: string; start: number; count: number };
+/** Positions are metres from the cell origin (shellOrigin), z up from 0 (the layer lifts buildings onto the ground). */
+export type BakedCellArrays = {
+  positions: Float32Array; uvs: Float32Array; layers: Uint8Array; tints: Uint8Array; accents: Uint8Array;
+  indices: Uint16Array | Uint32Array; ranges: BakedRange[]; triangles: number;
+};
+
+/** `ids[bid]`: the cell's building ids in FOOT order. Vertices of NO_BID (allotment gardens) form one range with id ''. */
+export function bakedCellArrays(shel: ShellMesh, ids: readonly string[]): BakedCellArrays {
+  const n = shel.layers.length;
+  // Per bid: its order of first use, then a counting sort of the vertices by that order (stable).
+  const rank = new Map<number, number>(), order: number[] = [], counts: number[] = [];
+  for (let k = 0; k < n; k++) {
+    const b = shel.bids[k];
+    let r = rank.get(b);
+    if (r === undefined) { rank.set(b, r = order.length); order.push(b); counts.push(0); }
+    counts[r]++;
+  }
+  const starts = new Array<number>(order.length);
+  let at = 0;
+  for (let r = 0; r < order.length; r++) { starts[r] = at; at += counts[r]; }
+  const next = starts.slice(), remap = new Uint32Array(n);
+  for (let k = 0; k < n; k++) remap[k] = next[rank.get(shel.bids[k])!]++;
+  const positions = new Float32Array(n * 3), uvs = new Float32Array(n * 2), layers = new Uint8Array(n), tints = new Uint8Array(n * 4), accents = new Uint8Array(n * 4);
+  for (let k = 0; k < n; k++) {
+    const v = remap[k];
+    positions[v * 3] = shel.positions[k * 3]; positions[v * 3 + 1] = shel.positions[k * 3 + 1]; positions[v * 3 + 2] = shel.positions[k * 3 + 2];
+    uvs[v * 2] = shel.uvs[k * 2]; uvs[v * 2 + 1] = shel.uvs[k * 2 + 1];
+    layers[v] = shel.layers[k];
+    for (let c = 0; c < 4; c++) { tints[v * 4 + c] = shel.tints[k * 4 + c]; accents[v * 4 + c] = shel.accents[k * 4 + c]; }
+  }
+  const indices = n <= 65536 ? new Uint16Array(shel.indices.length) : new Uint32Array(shel.indices.length);
+  for (let k = 0; k < shel.indices.length; k++) indices[k] = remap[shel.indices[k]];
+  const ranges: BakedRange[] = order.map((b, r) => ({ id: b === NO_BID ? '' : ids[b] ?? '', start: starts[r], count: counts[r] }));
+  return { positions, uvs, layers, tints, accents, indices, ranges, triangles: shel.indices.length / 3 };
+}

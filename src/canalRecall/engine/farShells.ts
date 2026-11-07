@@ -43,8 +43,8 @@ export interface FarShellHost {
   /** The chunk material, and a clone of it with its own `cityFade` (shares the program), or null. */
   material(): any | null;
   fadeMaterial(value: number): any | null;
-  /** A resident coarse shell is installed and drawn (not still dissolving in) for this z14 tile. */
-  coarseDrawn(tile: string): boolean;
+  /** A resident coarse shell is installed and drawn (not still dissolving in) for this z14 tile, or (lane R4-A #243) the baked coarse shell of far cell `cell` draws. */
+  coarseDrawn(tile: string, cell?: string): boolean;
   /** The cell's SW corner in chunk metres (world/shellMesh.ts shellOrigin). */
   origin(key: string): [number, number];
   fetchFar(key: string, signal: AbortSignal): Promise<FarCellData>;
@@ -191,7 +191,7 @@ export class FarShells {
     const attribute = r.mesh.geometry.getAttribute('hidden');
     let changed = false, shown = 0;
     for (const p of r.parts) {
-      const h = this.host.coarseDrawn(p.tile);
+      const h = this.host.coarseDrawn(p.tile, r.key);
       if (!h) shown++;
       if (h === p.hidden && !force) continue;
       p.hidden = h; changed = true;

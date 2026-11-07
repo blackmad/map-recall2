@@ -229,3 +229,28 @@ test('fetch ring (#130): a tile cut from some of its cells is topped up with the
     assert.equal(s.empty.has('14/8413/5384'), false);
   } finally { globalThis.fetch = realFetch; delete (globalThis as any).location; }
 });
+
+test('world-shell (lane R4-A #243): a SHEL cell through the worker equals the in-thread read, ranges named by the cell FOOT ids', async () => {
+  const { encodeShellCell, decodeCell } = await import('./cellFormat.js');
+  const files = await worldFiles(false);
+  const key = [...files.keys()].find(k => k.startsWith('world-v1/cells/'))!.slice('world-v1/cells/'.length, -4);
+  const cell = decodeCell(zlib.gunzipSync(files.get(`world-v1/cells/${key}.bin`)!));
+  const [i, j] = parseCellKey(key);
+  // Two triangles: building 1 first, then building 0 (first-use order puts 1's range first).
+  const shel = { positions: Float32Array.from([0, 0, 0, 1, 0, 0, 1, 0, 3, 5, 5, 0, 6, 5, 0, 6, 5, 2]), uvs: new Float32Array(12), layers: new Uint8Array(6).fill(4), tints: new Uint8Array(24).fill(200), accents: new Uint8Array(24).fill(255), bids: Uint16Array.from([1, 1, 1, 0, 0, 0]), indices: Uint32Array.from([0, 1, 2, 3, 4, 5]) };
+  files.set(`world-v1/shells/${key}.bin`, zlib.gzipSync(encodeShellCell({ i, j, shel }).bytes));
+  const realFetch = globalThis.fetch, realWorker = (globalThis as any).Worker;
+  globalThis.fetch = (async (input: any) => { const url = String(input), rel = url.slice(BASE.length + 1); return files.has(rel) ? new Response(files.get(rel) as BodyInit) : new Response(null, { status: 404 }); }) as typeof fetch;
+  (globalThis as any).Worker = FakeWorker;
+  try {
+    const index = readWorldIndex(JSON.parse(new TextDecoder().decode(files.get('world-v1/index.json'))))!;
+    const viaWorker = new WorldCellClient(index, BASE, globalThis.fetch, new WorkerPool('fake-worker.js', 2)), inThread = new WorldCellClient(index, BASE, globalThis.fetch, null);
+    const [a, b] = await Promise.all([inThread.shell(key, undefined, `${BASE}/world-v1`), viaWorker.shell(key, undefined, `${BASE}/world-v1`)]);
+    assert.deepEqual(b.ranges, a.ranges);
+    assert.deepEqual(a.ranges, [{ id: cell.buildings[1].id, start: 0, count: 3 }, { id: cell.buildings[0].id, start: 3, count: 3 }]);
+    assert.deepEqual([...b.positions], [...a.positions]);
+    assert.equal(a.triangles, 2); assert.equal(b.key, key); assert.ok(b.gzBytes > 0);
+    await assert.rejects(inThread.shell('99_99', undefined, `${BASE}/world-v1`), /404/);
+    await assert.rejects(viaWorker.shell('99_99', undefined, `${BASE}/world-v1`), /404/);
+  } finally { globalThis.fetch = realFetch; (globalThis as any).Worker = realWorker; }
+});

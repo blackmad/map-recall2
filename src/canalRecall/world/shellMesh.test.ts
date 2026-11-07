@@ -4,7 +4,7 @@ import '../../../scripts/world/useBrowserMath.js';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { Reader } from './cellFormat.js';
-import { decodeShel, decodeShl1, encodeShel, encodeShl1, farCellArrays, farShellMesh, firstUseOrder, quantisePrisms, shellFromChunk, shellOrigin, simplifyRing, NO_BID, SHEL_UNIT_M, type FarPrism } from './shellMesh.js';
+import { decodeShel, decodeShl1, encodeShel, encodeShelLevel0, encodeShl1, DUP_WINDOW, farCellArrays, farShellMesh, firstUseOrder, quantisePrisms, shellFromChunk, shellOrigin, simplifyRing, NO_BID, SHEL_UNIT_M, type FarPrism } from './shellMesh.js';
 import { CELL_GRID, cellBounds } from './cellGrid.js';
 
 test('shellOrigin is the cell SW corner in the chunk frame (threeBuildingFeatures ORIGIN projection)', () => {
@@ -114,4 +114,57 @@ test('farCellArrays: one vertex range per z14 tile, decimetre positions, indices
   // The pitched prism's lid sits at its roof band's mid height, (12 + 15) / 2 m: 135 dm.
   let top = 0; for (let k = 2; k < out.positions.length; k += 3) top = Math.max(top, out.positions[k]);
   assert.equal(top, 135);
+});
+
+// Lane R4-A (#243): SHEL level 1 codes wall quads as quads, duplicated roof corners as back-references, records split.
+const wallsAndRoof = () => {
+  // A building of two stacked wall quads, a second building's quad sharing an XY corner, a roof plane as two
+  // triangles with duplicated corners (fresh 0..2, then a duplicate of 0, a duplicate of 2, one new), and a quad whose
+  // corners break the quad pattern (a sheared top) that must stay triangles.
+  const P: number[] = [], UV: number[] = [], L: number[] = [], T: number[] = [], A: number[] = [], B: number[] = [], I: number[] = [];
+  const v = (x: number, y: number, z: number, u: number, w: number, layer: number, tint: number[], accent: number[], bid: number) => { P.push(x, y, z); UV.push(u, w); L.push(layer); T.push(...tint); A.push(...accent, 255); B.push(bid); return B.length - 1; };
+  const quad = (x0: number, y0: number, x1: number, y1: number, z0: number, z1: number, u0: number, u1: number, v0: number, v1: number, layer: number, tint: number[], bid: number) => {
+    const a = v(x0, y0, z0, u0, v0, layer, tint, [9, 8, 7], bid), b = v(x1, y1, z0, u1, v0, layer, tint, [9, 8, 7], bid), c = v(x1, y1, z1, u1, v1, layer, tint, [9, 8, 7], bid), d = v(x0, y0, z1, u0, v1, layer, tint, [9, 8, 7], bid);
+    I.push(a, b, c, a, c, d);
+  };
+  quad(0, 0, 4.2, 0.1, 0, 3.9, 0, 1, 0, 1, 140, [199, 195, 186, 217], 3);
+  quad(0, 0, 4.2, 0.1, 3.9, 9, 0, 1, 0, 2, 141, [199, 195, 186, 217], 3);
+  quad(4.2, 0.1, 8.3, -0.2, 0, 9, 1, 3, 0, 2, 141, [199, 195, 186, 230], 7);
+  const r0 = v(0, 0, 9, -6.7896, -0.3081, 122, [168, 72, 47, 249], [9, 8, 7], 3), r1 = v(4.2, 0.1, 9, 6.7896, -0.3081, 122, [168, 72, 47, 249], [9, 8, 7], 3), r2 = v(4.2, 4, 11.5, 6.7896, 5.9333, 122, [168, 72, 47, 249], [9, 8, 7], 3);
+  const r3 = v(0, 0, 9, -6.7896, -0.3081, 122, [168, 72, 47, 249], [9, 8, 7], 3), r4 = v(4.2, 4, 11.5, 6.7896, 5.9333, 122, [168, 72, 47, 249], [9, 8, 7], 3), r5 = v(0, 3.9, 11.5, -6.7896, 5.9333, 122, [168, 72, 47, 249], [9, 8, 7], 3);
+  I.push(r0, r1, r2, r3, r4, r5);
+  const s0 = v(10, 10, 0, 0, 0, 5, [1, 2, 3, 4], [5, 6, 7], NO_BID), s1 = v(11, 10, 0, 1, 0, 5, [1, 2, 3, 4], [5, 6, 7], NO_BID), s2 = v(11, 10, 3.1, 1, 1, 5, [1, 2, 3, 4], [5, 6, 7], NO_BID), s3 = v(10, 10, 3, 0, 1, 5, [1, 2, 3, 4], [5, 6, 7], NO_BID);
+  I.push(s0, s1, s2, s0, s2, s3, s1, s2, s0);
+  return { positions: Float32Array.from(P), uvs: Float32Array.from(UV), layers: Uint8Array.from(L), tints: Uint8Array.from(T), accents: Uint8Array.from(A), bids: Uint16Array.from(B), indices: Uint32Array.from(I) };
+};
+const quantised = () => { const m = wallsAndRoof(); return decodeShel(new Reader(encodeShelLevel0(m))); };
+
+test('SHEL level 1: quads, duplicate corners and plain triangles round-trip exactly, and decode as level 0 does', () => {
+  const m = quantised(), bytes = encodeShel(m);
+  assert.equal(bytes[0], 1, 'level 1');
+  const back = decodeShel(new Reader(bytes));
+  assert.deepEqual(back, m);
+  assert.deepEqual(encodeShel(back), bytes);
+  // Level 0 bytes still decode (staged before lane R4-A).
+  assert.deepEqual(decodeShel(new Reader(encodeShelLevel0(m))), m);
+  assert.ok(DUP_WINDOW >= 3);
+  // Damage: every truncation throws, and an index ahead of the high-water mark is refused at encode.
+  for (let n = 0; n < bytes.length; n++) assert.throws(() => decodeShel(new Reader(bytes.subarray(0, n))), /./, `prefix ${n}`);
+  assert.throws(() => encodeShel({ ...m, indices: Uint32Array.from([0, 2, 1, ...m.indices.subarray(3)]) }), /skips ahead/);
+});
+
+test('SHEL level 1: smaller than level 0 on a wall-heavy mesh', () => {
+  const big = quantised();
+  // Many copies of the mesh side by side (a street): the quad and record codes pay off.
+  const reps = 50, n = big.layers.length, ni = big.indices.length;
+  const m = { positions: new Float32Array(n * 3 * reps), uvs: new Float32Array(n * 2 * reps), layers: new Uint8Array(n * reps), tints: new Uint8Array(n * 4 * reps), accents: new Uint8Array(n * 4 * reps), bids: new Uint16Array(n * reps), indices: new Uint32Array(ni * reps) };
+  for (let r = 0; r < reps; r++) {
+    for (let k = 0; k < n * 3; k++) m.positions[r * n * 3 + k] = big.positions[k] + (k % 3 === 0 ? Math.round(r * 83) / 10 : 0);
+    m.uvs.set(big.uvs, r * n * 2); m.layers.set(big.layers, r * n); m.tints.set(big.tints, r * n * 4); m.accents.set(big.accents, r * n * 4); m.bids.set(big.bids, r * n);
+    for (let k = 0; k < ni; k++) m.indices[r * ni + k] = big.indices[k] + r * n;
+  }
+  const q = decodeShel(new Reader(encodeShelLevel0(m)));
+  const l1 = encodeShel(q), l0 = encodeShelLevel0(q);
+  assert.deepEqual(decodeShel(new Reader(l1)), q);
+  assert.ok(l1.length < l0.length * 0.8, `${l1.length} vs ${l0.length}`);
 });
