@@ -828,7 +828,7 @@ export class SignatureLandmarks {
         spec.sceneFactory().then(scene => onLoaded({ scene }), onError);
       } else if (spec.sharedModel) {
         // Shared mesh: decode once, then clone per instance (geometry and materials stay shared).
-        this._sharedAssets.acquire(url, () => loader.loadAsync(url).then(gltf => this._dress(gltf, spec) ?? gltf).then(gltf => this._shade(gltf)))
+        this._sharedAssets.acquire(url, () => loader.loadAsync(url).then(gltf => this._dress(gltf, spec) ?? gltf).then(gltf => this._mergeSharedMaster(this._shade(gltf))))
           .then(gltf => onLoaded({ scene: gltf.scene.clone(true) }), onError);
       } else loader.load(url, gltf => { const dressing = this._dress(gltf, spec); if (dressing) dressing.then(dressed => onLoaded(this._shade(dressed)), onError); else onLoaded(this._shade(gltf)); }, undefined, onError);
     }
@@ -1299,6 +1299,13 @@ export class SignatureLandmarks {
     if (this._mergeSharedFlag === undefined) this._mergeSharedFlag = !!this.sharedFrame && flagOn('landmarkMergeShared');
     if (!this._mergeSharedFlag || !scene.userData.recipeLook || spec.sharedModel || spec.sceneFactory || spec.chunkPands) return;
     mergeSiblingsByMaterial(scene, THREE);
+  }
+
+  /** A shared mesh's master (decoded once, cloned per instance): the same sibling merge, before any clone exists. */
+  _mergeSharedMaster(gltf) {
+    if (this._mergeSharedFlag === undefined) this._mergeSharedFlag = !!this.sharedFrame && flagOn('landmarkMergeShared');
+    if (this._mergeSharedFlag && gltf.scene?.userData.recipeLook) mergeSiblingsByMaterial(gltf.scene, THREE);
+    return gltf;
   }
 
   /** The drawn lod2's meshes (one per material; empty at other levels). */
