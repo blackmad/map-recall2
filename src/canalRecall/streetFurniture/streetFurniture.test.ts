@@ -118,3 +118,13 @@ test('container clusters stand in one straight row, plates apart, fronts one way
   ]);
   assert.ok(Math.abs((two[1].lat - two[0].lat) * 110540 - 3) < 0.01);
 });
+
+test('furniture stands on the pavement planes, not under them (user 2026-11-07: plates "still sunk a bit")', async () => {
+  const { RIDE_BASE_LIFT_M, RIDE_PLATE_SKIRT_M, rideModel } = await import('./models.ts');
+  const { SIDEWALK_TOP, DRAPE_TOL, ROAD_LIFT } = await import('../ownGround/roadSurfaces.ts');
+  const plateTop = RIDE_BASE_LIFT_M + DIMENSIONS.container.plateH;
+  assert.ok(plateTop > SIDEWALK_TOP + DRAPE_TOL.foot.float, `plate top ${plateTop} over the highest pavement plane`);
+  assert.ok(RIDE_BASE_LIFT_M - RIDE_PLATE_SKIRT_M < ROAD_LIFT.parking, 'the skirt reaches below a parking-strip plane');
+  for (const id of ['container', 'container-glas', 'container-papier'] as const) assert.equal(rideModel(id).triangles, FURNITURE_MODELS[id]().triangles + 8, id);
+  assert.equal(rideModel('lamp-pole').triangles, FURNITURE_MODELS['lamp-pole']().triangles);
+});
