@@ -28,11 +28,21 @@ const STOREY = 3.1, FIRST_SILL = 12.4, WIN_H = 2.2, MULLION = 1.65, PIER_W = 2.1
 const GROUND_TOP = 10.1, GLAZE_H = 9.35, TRANSOM = 4.7, PIER_BAY = 5.6, CANOPY_Y = 10.3;
 /** The Oosterdok terrace fronts (w08/w09, w16-w25 face 207-210). */
 const oosterdok = (bearing: number) => bearing > 190 && bearing < 230;
-/** White panel cladding (w02-21, w11-72, w13-72, w28-21 at the east entrance volume; w15-30 at the west corner). */
+/** White panel cladding where the panoramas photograph it (inventory tags: native x, z, facing bearing, wall length): the
+ *  entrance tower over the DoubleTree doors, the east drum, the station-side volume and the west corner. The dark brick
+ *  fronts beside them (w05-201, w06-72, w14-252, w21-207) stay brick. */
+const WHITE: [string, number, number, number, number][] = [
+  ['w02-21', 31.2, -11.0, 21, 23.6], ['w11-72', 26.3, 14.1, 72, 7.2], ['w12-201', 45.5, 11.0, 201, 7.1],
+  ['w13-72', 23.9, 7.8, 72, 6.4], ['w15-30', -50.7, -29.4, 30, 6], ['w28-21', 19.7, -10.9, 21, 4.7],
+];
 const white = (bd: Band) => {
-  const t = [(bd.chord.b[0] - bd.chord.a[0]) / bd.L, (bd.chord.b[1] - bd.chord.a[1]) / bd.L], m = (bd.s0 + bd.s1) / 2;
-  const x = bd.chord.a[0] + t[0] * m, z = bd.chord.a[1] + t[1] * m;
-  return x > 18 || Math.hypot(x + 51, z + 30) < 6;
+  const t = [(bd.chord.b[0] - bd.chord.a[0]) / bd.L, (bd.chord.b[1] - bd.chord.a[1]) / bd.L];
+  return WHITE.some(([, x, z, bearing, len]) => {
+    if (Math.abs(((bd.bearing - bearing + 540) % 360) - 180) > 30) return false;
+    // nearest point of the band to the tag centre
+    const u = Math.max(bd.s0, Math.min(bd.s1, (x - bd.chord.a[0]) * t[0] + (z - bd.chord.a[1]) * t[1]));
+    return Math.hypot(bd.chord.a[0] + t[0] * u - x, bd.chord.a[1] + t[1] * u - z) < len / 2 + 2;
+  });
 };
 
 type Ctx = {K: FrontKit; b: BuildingTools; edges: PieceEdge[]; ends: End[]};
