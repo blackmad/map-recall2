@@ -11,11 +11,11 @@
    "name": "Underground container top (rest drum)",
    "kind": "container",
    "category": "street-furniture",
-   "subtypes": "rest, gft, textiel; BGT afvalbak columns as unknown",
+   "subtypes": "rest (about 30 % of clusters), gft, textiel; BGT afvalbak columns as unknown",
    "modelUrl": "./models/street-furniture/container.glb",
    "triangles": 150,
    "glbBytes": 17100,
-   "instances": 9119,
+   "instances": 3130,
    "source": "Gemeente Amsterdam huishoudelijkafval register (active, UNDERGROUND) + BGT bak/afvalbak; the Amsterdam Standaard column (#212)",
    "measured": [
     "column 1.19 m (1.16-1.22 m, four panoramas)",
@@ -37,6 +37,33 @@
     "distanceM": 6.74,
     "recordId": "afval-102570",
     "thumbnail": "https://api.data.amsterdam.nl/panorama/thumbnail/recording_2025-06-18_08-56-14_01425/?heading=338&width=600&aspect=1.25&horizon=0.4",
+    "licence": "Gemeente Amsterdam panoramas, CC BY 4.0"
+   }
+  },
+  {
+   "id": "container-rest",
+   "name": "Underground container top (rest flap)",
+   "kind": "container",
+   "category": "street-furniture",
+   "subtypes": "rest (about 70 % of clusters, by a stable cluster hash)",
+   "modelUrl": "./models/street-furniture/container-rest.glb",
+   "triangles": 136,
+   "glbBytes": 15604,
+   "instances": 5989,
+   "source": "Gemeente Amsterdam huishoudelijkafval register: fractieOmschrijving Rest; drum or flap is not in the register (2026-11-07)",
+   "measured": [
+    "the same column with a plain throw-in flap over the whole slope, a pull bar across its lower third",
+    "14 of 20 readable random rest panoramas are this top, 6 the drum; every containertype alike"
+   ],
+   "prior": [
+    "pull bar 0.38 m"
+   ],
+   "photo": {
+    "panoId": "recording_2025-09-25_12-28-12_00860",
+    "heading": 193,
+    "distanceM": 6.12,
+    "recordId": "afval-107568",
+    "thumbnail": "https://api.data.amsterdam.nl/panorama/thumbnail/recording_2025-09-25_12-28-12_00860/?heading=193&width=600&aspect=1.25&horizon=0.4",
     "licence": "Gemeente Amsterdam panoramas, CC BY 4.0"
    }
   },

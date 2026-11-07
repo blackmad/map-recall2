@@ -119,7 +119,7 @@
     },
     "streetFurniture": {
       "count": 135140,
-      "models": 9,
+      "models": 10,
       "note": "Street furniture placed in the ride from the open registers (underground-container tops, lamp posts, abris, advertising columns, bike hoops), one instance per object; `models` is how many furniture models draw them.",
       "sources": [
         "public/canal-drive/street-furniture/catalogue.json",

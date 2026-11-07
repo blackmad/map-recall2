@@ -3,7 +3,7 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
 import { DIMENSIONS, FURNITURE_MODELS, FURNITURE_MODEL_IDS, FURNITURE_TRI_CAP, isSlot, lampHeight, linearOf, SLOT } from './models.ts';
-import { HOOPS_PER_RACK, containerYaw, instancesOf } from './placement.ts';
+import { CONTAINER_DRUM_SHARE, HOOPS_PER_RACK, containerModelId, containerYaw, instancesOf } from './placement.ts';
 import { BGT_KIND, containerSubtype, lampStyle, polygonTest, tileKeyOf } from './extract.ts';
 import { StreetIndex } from './streetIndex.ts';
 import type { FurnitureRecord } from './extract.ts';
@@ -11,7 +11,7 @@ import type { FurnitureRecord } from './extract.ts';
 /** Triangle counts per model: a change here is a deliberate geometry change (update with the reason). */
 // container 114 -> 150 (2026-11-07: full width, corner strips, door, pictogram, crosses); 52 -> 114 (#212): the hexagonal hood, the recess between cheeks with the rest drum (glass: round hole 104,
 // paper: slot and flap 102), lip, top sticker, two-disc mushroom.
-const TRIANGLES: Record<string, number> = { container: 150, 'container-glas': 140, 'container-papier': 133, 'lamp-lantern': 74, 'lamp-pole': 92, bin: 56, 'bike-rack': 40, abri: 86, 'ad-column': 90 };
+const TRIANGLES: Record<string, number> = { container: 150, 'container-rest': 136, 'container-glas': 140, 'container-papier': 133, 'lamp-lantern': 74, 'lamp-pole': 92, bin: 56, 'bike-rack': 40, abri: 86, 'ad-column': 90 };
 
 test('every model stays within the per-kind triangle cap and its recorded count', () => {
   for (const id of FURNITURE_MODEL_IDS) {
@@ -26,7 +26,7 @@ test('every model stays within the per-kind triangle cap and its recorded count'
 
 test('measured heights: container column 1.19 m plus the 0.35 m lift mushroom on its plate, lantern 4.09 m, hooked pole 7.6 m, abri 2.47 m, column ~4.7 m', () => {
   const near = (a: number, b: number, tol = 0.02) => Math.abs(a - b) <= tol;
-  for (const id of ['container', 'container-glas', 'container-papier'] as const) assert.ok(near(FURNITURE_MODELS[id]().heightM, DIMENSIONS.container.plateH + DIMENSIONS.container.colH + DIMENSIONS.container.handleH), id);
+  for (const id of ['container', 'container-rest', 'container-glas', 'container-papier'] as const) assert.ok(near(FURNITURE_MODELS[id]().heightM, DIMENSIONS.container.plateH + DIMENSIONS.container.colH + DIMENSIONS.container.handleH), id);
   assert.ok(near(FURNITURE_MODELS['lamp-lantern']().heightM, 4.09));
   assert.ok(near(FURNITURE_MODELS['lamp-pole']().heightM, 7.6));
   assert.ok(near(FURNITURE_MODELS.abri().heightM, 2.47));
@@ -35,7 +35,7 @@ test('measured heights: container column 1.19 m plus the 0.35 m lift mushroom on
 
 test('slot faces (instance colour) exist exactly where the ride paints one: the container fraction band and lift shaft, the poster drum, the abri panel', () => {
   const slots = (id: keyof typeof FURNITURE_MODELS) => { const c = FURNITURE_MODELS[id]().colours; let n = 0; for (let i = 0; i < c.length; i += 3) if (isSlot(c[i], c[i + 1], c[i + 2])) n++; return n / 3; };
-  for (const id of ['container', 'container-glas', 'container-papier'] as const) assert.equal(slots(id), 14, `${id}: fraction band (2) and the lift shaft (12)`);
+  for (const id of ['container', 'container-rest', 'container-glas', 'container-papier'] as const) assert.equal(slots(id), 14, `${id}: fraction band (2) and the lift shaft (12)`);
   assert.equal(slots('ad-column'), 20);
   assert.equal(slots('abri'), 2);
   for (const id of ['lamp-lantern', 'lamp-pole', 'bin', 'bike-rack'] as const) assert.equal(slots(id), 0, id);
@@ -52,6 +52,16 @@ test('containers lie along their row and turn the insert away from the street', 
   assert.ok(Math.abs(containerYaw(rec({ facing: 90 })) - -270 * Math.PI / 180) < 1e-9);
   const [i] = instancesOf(rec({ subtype: 'glas' }));
   assert.equal(i.model, 'container-glas'); assert.equal(i.slotHex, '#d6b44e');
+});
+
+test('rest columns take the drum or the flap per cluster, at the measured share', () => {
+  // Every rest column of one cluster gets the same top; the register cannot say which, so ~30 % of clusters get the drum.
+  const ids = (cluster: string) => new Set([0, 1, 2].map(k => instancesOf(rec({ subtype: 'rest', id: `afval-${cluster}-${k}`, cluster }))[0].model));
+  let drum = 0;
+  for (let c = 0; c < 2000; c++) { const s = ids(`c${c}`); assert.equal(s.size, 1); if (s.has('container')) drum++; }
+  assert.ok(Math.abs(drum / 2000 - CONTAINER_DRUM_SHARE) < 0.04, `drum share ${drum / 2000}`);
+  assert.equal(containerModelId('gft', 'c1'), 'container');
+  assert.equal(containerModelId('glas', 'c1'), 'container-glas');
   assert.equal(instancesOf(rec({ subtype: 'papier' }))[0].model, 'container-papier');
   for (const subtype of ['rest', 'gft', 'textiel', 'unknown']) assert.equal(instancesOf(rec({ subtype }))[0].model, 'container', subtype);
 });
@@ -125,6 +135,6 @@ test('furniture stands on the pavement planes, not under them (user 2026-11-07: 
   const plateTop = RIDE_BASE_LIFT_M + DIMENSIONS.container.plateH;
   assert.ok(plateTop > SIDEWALK_TOP + DRAPE_TOL.foot.float, `plate top ${plateTop} over the highest pavement plane`);
   assert.ok(RIDE_BASE_LIFT_M - RIDE_PLATE_SKIRT_M < ROAD_LIFT.parking, 'the skirt reaches below a parking-strip plane');
-  for (const id of ['container', 'container-glas', 'container-papier'] as const) assert.equal(rideModel(id).triangles, FURNITURE_MODELS[id]().triangles + 8, id);
+  for (const id of ['container', 'container-rest', 'container-glas', 'container-papier'] as const) assert.equal(rideModel(id).triangles, FURNITURE_MODELS[id]().triangles + 8, id);
   assert.equal(rideModel('lamp-pole').triangles, FURNITURE_MODELS['lamp-pole']().triangles);
 });
