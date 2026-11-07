@@ -1223,6 +1223,19 @@ export class OwnGround {
     return z;
   }
 
+  /**
+   * A street-furniture base: the riding surface (pavement and kerb rise included), not the bare relief. On the raised
+   * pavement the relief lies below the drawn paving, which buried the container plates and the lowest ~0.25 m of every
+   * piece (TODO P1 (a), user 2026-11-07). Never below the relief.
+   */
+  surfaceBase(lngLat: LngLat): number | undefined {
+    if (!this.ready) return undefined;
+    const [x, y] = toLocal(lngLat[0], lngLat[1]);
+    if (!this.store.reliefCovered(x, y)) return 0;
+    if (!this.store.hasRelief(x, y)) return undefined;
+    return Math.max(this.store.surface.ground(x, y), this.store.surface.height(x, y));
+  }
+
   // CanalElevation-compatible surface for vector-map.js's rider code.
 
   /** Height and pitch for a vehicle with rear/front contacts, facing the game's `angle` (east = 0, clockwise-negative north). */

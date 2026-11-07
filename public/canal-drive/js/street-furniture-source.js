@@ -9,7 +9,7 @@ import {worldCameraOf} from '../../../src/canalRecall/engine/worldCameraOf.ts';
 import {InstanceCull} from '../../../src/canalRecall/rendererShared/instanceCull.ts';
 import {RebuildCoalescer,extrasRebuildSync} from '../../../src/canalRecall/rendererShared/rebuildCoalescer.ts';
 import {FURNITURE_MODELS} from '../../../src/canalRecall/streetFurniture/models.ts';
-import {instancesOf} from '../../../src/canalRecall/streetFurniture/placement.ts';
+import {alignContainerRows,instancesOf} from '../../../src/canalRecall/streetFurniture/placement.ts';
 const {THREE} = window.CanalRecallThree;
 
 export const MIN_ZOOM = 16;
@@ -28,7 +28,9 @@ function viewBox(camera) {
 
 /** One material for every kind: vertex colours, and magenta (1,0,1) faces take the instance colour (fraction lid, poster). */
 export function furnitureMaterial() {
-  const material=new THREE.MeshStandardMaterial({color:'#ffffff',roughness:.82,metalness:0,flatShading:true,vertexColors:true});
+  // polygonOffset ahead of the ground layers (paving -3/-6, paint -4/-8, tram -5/-10 in ownGround OFFSET): without it
+  // the pulled-forward paving hid the container plates and the lowest ~0.25 m of every piece (TODO P1 (a), 2026-11-07).
+  const material=new THREE.MeshStandardMaterial({color:'#ffffff',roughness:.82,metalness:0,flatShading:true,vertexColors:true,polygonOffset:true,polygonOffsetFactor:-6,polygonOffsetUnits:-12});
   material.onBeforeCompile=shader=>{shader.vertexShader=shader.vertexShader.replace('#include <color_vertex>',
     '#include <color_vertex>\n#ifdef USE_INSTANCING_COLOR\n float sfSlot = step(0.98, color.r) * step(color.g, 0.02) * step(0.98, color.b);\n vColor.rgb = mix(color.rgb, instanceColor.rgb, sfSlot);\n#endif');};
   material.customProgramCacheKey=()=>'canal-street-furniture';
@@ -135,7 +137,7 @@ export class StreetFurniture {
       if(data.version!==1||data.key!==key||!Array.isArray(data.items))throw Error('Invalid street-furniture tile');
       if(!controller.signal.aborted&&generation===this.generation){
         // Instances depend only on the record: expand once per tile, keep them with it.
-        const instances=[];for(const r of data.items)for(const i of instancesOf(r))instances.push(i);
+        const instances=[];for(const r of alignContainerRows(data.items))for(const i of instancesOf(r))instances.push(i);
         this.tiles.set(key,instances);this.residency.invalidate();this.rebuilds.request();
       }
     } catch(error){if(error.name!=='AbortError')console.warn(`Street-furniture tile ${key} unavailable`,error);}

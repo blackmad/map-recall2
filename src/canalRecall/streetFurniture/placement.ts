@@ -49,6 +49,59 @@ export function posterHex(id: string): string { return T.posters[Math.floor(hash
 
 const KX = (lat: number) => 111320 * Math.cos(lat * RAD), KY = 110540;
 
+/** Container rows: one register cluster stands in a straight line along the kerb, its plates nearly touching. */
+export const ROW_PITCH_MIN_M = 1.7, ROW_SPLIT_M = 1.0;
+
+/**
+ * Line up each container cluster (2026-11-07, user: "they almost always sit in a straight line"). The register's
+ * points scatter around the row (the Pijp cluster 121618.639|485569.861 puts its paper container 1.0 m off the line
+ * and 0.8 m from the next plate). Per cluster: the row axis is its `heading`; points within ROW_SPLIT_M of each other
+ * across the axis share one row and snap to its median line (a cluster more than that apart keeps two rows, e.g. both
+ * sides of a square); along the row the order is kept and neighbours are pushed to at least ROW_PITCH_MIN_M, centred
+ * on the original mean; every member takes the cluster's mean `facing`, so the fronts all face one way.
+ * Non-containers and lone containers pass through unchanged.
+ */
+export function alignContainerRows(items: readonly FurnitureRecord[]): FurnitureRecord[] {
+  const groups = new Map<string, number[]>();
+  items.forEach((r, i) => { if (r.kind === 'container' && r.cluster) { const g = groups.get(r.cluster); g ? g.push(i) : groups.set(r.cluster, [i]); } });
+  const out = items.slice();
+  for (const idx of groups.values()) {
+    if (idx.length < 2) continue;
+    const rs = idx.map(i => items[i]);
+    const lat0 = rs[0].lat, lng0 = rs[0].lng, kx = KX(lat0);
+    const heading = rs.find(r => Number.isFinite(r.heading))?.heading;
+    const local = rs.map(r => [(r.lng - lng0) * kx, (r.lat - lat0) * KY] as const);
+    let th: number;
+    if (Number.isFinite(heading)) th = (heading as number) * RAD;
+    else {
+      const mx = local.reduce((a, p) => a + p[0], 0) / local.length, my = local.reduce((a, p) => a + p[1], 0) / local.length;
+      let sxx = 0, syy = 0, sxy = 0; for (const [x, y] of local) { sxx += (x - mx) ** 2; syy += (y - my) ** 2; sxy += (x - mx) * (y - my); }
+      th = Math.PI / 2 - 0.5 * Math.atan2(2 * sxy, sxx - syy); // compass bearing of the principal axis
+    }
+    const ux = Math.sin(th), uy = Math.cos(th); // along the row (east, north)
+    const along = local.map(([x, y]) => x * ux + y * uy), across = local.map(([x, y]) => -x * uy + y * ux);
+    // Rows: sort across, split where the gap exceeds ROW_SPLIT_M.
+    const order = across.map((_, k) => k).sort((a, b) => across[a] - across[b]);
+    const rows: number[][] = [];
+    for (const k of order) { const row = rows[rows.length - 1]; if (row && across[k] - across[row[row.length - 1]] <= ROW_SPLIT_M) row.push(k); else rows.push([k]); }
+    // Facing: the circular mean of the members' facings.
+    const fs = rs.map(r => r.facing).filter((f): f is number => Number.isFinite(f));
+    const facing = fs.length ? ((Math.atan2(fs.reduce((a, f) => a + Math.sin(f * RAD), 0), fs.reduce((a, f) => a + Math.cos(f * RAD), 0)) / RAD) + 360) % 360 : undefined;
+    for (const row of rows) {
+      const med = row.map(k => across[k]).sort((a, b) => a - b)[row.length >> 1];
+      const byAlong = row.slice().sort((a, b) => along[a] - along[b] || rs[a].id.localeCompare(rs[b].id));
+      const t = byAlong.map(k => along[k]);
+      for (let j = 1; j < t.length; j++) t[j] = Math.max(t[j], t[j - 1] + ROW_PITCH_MIN_M);
+      const shift = byAlong.reduce((a, k) => a + along[k], 0) / t.length - t.reduce((a, v) => a + v, 0) / t.length;
+      byAlong.forEach((k, j) => {
+        const a = t[j] + shift, x = a * ux - med * uy, y = a * uy + med * ux;
+        out[idx[k]] = { ...rs[k], lng: lng0 + x / kx, lat: lat0 + y / KY, ...(facing === undefined ? {} : { facing }) };
+      });
+    }
+  }
+  return out;
+}
+
 export function instancesOf(r: FurnitureRecord): FurnitureInstance[] {
   switch (r.kind) {
     case 'container': return [{ model: containerModelId(r.subtype), id: r.id, lng: r.lng, lat: r.lat, yaw: containerYaw(r), scale: 1, slotHex: fractionHex(r.subtype) }];
