@@ -2314,5 +2314,35 @@
   "buildVersion": 2,
   "bytes": 29616,
   "triangles": 1134
+ },
+ "kinkerstraat-89": {
+  "sourceHash": "814a26b22f7e11bf",
+  "buildVersion": 2,
+  "bytes": 102016,
+  "triangles": 6222
+ },
+ "politiebureau-postjesweg": {
+  "sourceHash": "2d3b7b68c13316f9",
+  "buildVersion": 2,
+  "bytes": 31060,
+  "triangles": 1312
+ },
+ "ibis-city-west": {
+  "sourceHash": "00703acccf1cbad5",
+  "buildVersion": 2,
+  "bytes": 99688,
+  "triangles": 7189
+ },
+ "winkelcentrum-plein-40-45": {
+  "sourceHash": "9c35e2f056b20ba3",
+  "buildVersion": 2,
+  "bytes": 175636,
+  "triangles": 12138
+ },
+ "andreas-ensemble": {
+  "sourceHash": "856de356f4f0c5c0",
+  "buildVersion": 2,
+  "bytes": 165916,
+  "triangles": 12171
  }
 }

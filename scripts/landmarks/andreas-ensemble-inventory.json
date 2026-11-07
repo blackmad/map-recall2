@@ -1,0 +1,663 @@
+{
+ "schemaVersion": 1,
+ "id": "andreas-ensemble",
+ "pand": "0363100012111082",
+ "brief": "scripts/landmarks/andreas-ensemble-brief.md",
+ "signature": [
+  "stepped-skyline",
+  "hotel-sign",
+  "stone-plinth",
+  "french-windows",
+  "hotel-bands",
+  "west-loggias",
+  "pavilion-windows",
+  "corner-balconies",
+  "terraced-garden"
+ ],
+ "walls": [
+  {
+   "tag": "w01-360",
+   "bearing": 0,
+   "lengthM": 130.6,
+   "centre": [
+    4.8452452,
+    52.3577236
+   ],
+   "evidence": "photo",
+   "panoId": "2025_10_01_05_29_50_00031",
+   "capturedAt": "2025-10-01",
+   "checked": true,
+   "items": [
+    {
+     "id": "hotel-sign",
+     "kind": "lettering",
+     "where": "\"WestCord\" (teal) over \"FASHION\" and \"HOTEL\" (white) on the hotel tower's north face beside the bay windows, a round teal mark above",
+     "approxSizeM": [
+      7,
+      12
+     ],
+     "plan": "modelled",
+     "seenIn": "2025_10_01_05_29_50_00031",
+     "how": "glyph lettering (WestCord / FASHION / HOTEL) and a stepped round mark"
+    },
+    {
+     "id": "hotel-bays",
+     "kind": "window-shape",
+     "where": "one vertical stack of bronze-framed projecting bay windows on the hotel's north face over the corner undercroft",
+     "approxSizeM": [
+      3.7,
+      26
+     ],
+     "plan": "modelled",
+     "seenIn": "2025_10_01_05_29_50_00031",
+     "how": "a bronze sill, glass box and head per floor, 0.65 m out"
+    },
+    {
+     "id": "hotel-bands",
+     "kind": "other",
+     "where": "light stone bands at every floor across the hotel tower, single windows with a white panel under the glass",
+     "approxSizeM": [
+      33,
+      30
+     ],
+     "plan": "modelled",
+     "seenIn": "2025_10_01_05_29_50_00031",
+     "how": "stone slabs per floor; openings with a white panel in the reveal"
+    },
+    {
+     "id": "hotel-crown",
+     "kind": "other",
+     "where": "the top storey of close vertical fins over a dark recess (2024 crop)",
+     "approxSizeM": [
+      33,
+      4
+     ],
+     "plan": "modelled",
+     "seenIn": "2025_10_01_05_29_50_00031",
+     "how": "fins every 0.9 m in front of a dark recess"
+    },
+    {
+     "id": "hotel-undercroft",
+     "kind": "canopy",
+     "where": "the open corner at the hotel entrance: the tower stands over a lower glazed front, about 7 m high",
+     "approxSizeM": [
+      13,
+      7.5
+     ],
+     "plan": "modelled",
+     "seenIn": "2025_10_01_05_29_50_00031",
+     "how": "4.5 m deep hole with a glass back and a stone lintel"
+    },
+    {
+     "id": "stone-plinth",
+     "kind": "colonnade",
+     "where": "two-storey light stone plinth with piers every 5.4 m, shop glazing below and windows above, glass-block bays, two brick-lined entrance recesses",
+     "approxSizeM": [
+      97,
+      7.6
+     ],
+     "plan": "modelled",
+     "seenIn": "2025_10_01_05_29_50_00031",
+     "how": "stone face, piers as solid wall between per-bay openings, glass-block bays with a gridded pale back, 1 m deep entrances"
+    },
+    {
+     "id": "room-lettering",
+     "kind": "lettering",
+     "where": "FASHION / MEETING / LOUNGE over three ground-floor bays of the hotel rooms",
+     "approxSizeM": [
+      10,
+      0.4
+     ],
+     "plan": "modelled",
+     "seenIn": "2025_10_01_05_29_50_00031",
+     "how": "small glyph lettering over the bays"
+    },
+    {
+     "id": "french-windows",
+     "kind": "window-shape",
+     "where": "paired French windows with black rails in deep reveals, in groups of five; alternate groups carry a thin stone ledge on every floor; a narrow 0.66 m window starts some groups",
+     "approxSizeM": [
+      97,
+      25
+     ],
+     "plan": "modelled",
+     "seenIn": "2025_10_01_05_29_50_00031",
+     "how": "measured centres per group; rails; ledges as slabs over the ledged groups"
+    },
+    {
+     "id": "stepped-skyline",
+     "kind": "tower",
+     "where": "the bar steps up and down along the street: 32.9, 34.9, 35.8, 28.6 and 30 m, the hotel at 41 m",
+     "approxSizeM": [
+      130,
+      41
+     ],
+     "plan": "modelled",
+     "seenIn": "2025_10_01_05_29_50_00031",
+     "how": "five prisms on the 3DBAG roof heights"
+    },
+    {
+     "id": "shop-signs",
+     "kind": "sign",
+     "where": "small tenant signs and the P sign at the garage",
+     "approxSizeM": [
+      1,
+      0.5
+     ],
+     "plan": "skipped",
+     "seenIn": "2025_10_01_05_29_50_00031",
+     "skip": {
+      "reason": "too-small",
+      "note": "under 1 m"
+     }
+    }
+   ],
+   "note": "North front on the Cornelis Lelylaan, 2025 (12 m, lower 21 m) plus the full-height 2020 and 2024 rectifications in tall/; the bar in five steps over a stone plinth, the hotel tower on the west corner."
+  },
+  {
+   "tag": "w02-270",
+   "bearing": 270,
+   "lengthM": 67.6,
+   "centre": [
+    4.8442942,
+    52.3574107
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002219_pano_0000_003736",
+   "capturedAt": "2021-07-07",
+   "checked": true,
+   "items": [
+    {
+     "id": "west-loggias",
+     "kind": "window-shape",
+     "where": "the top two storeys: stone-framed loggias between pilasters every 4.4 m, glazed behind black railings",
+     "approxSizeM": [
+      50,
+      5
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002219_pano_0000_003736",
+     "how": "pilaster slabs, 1.2 m deep openings with a rail"
+    },
+    {
+     "id": "hotel-glass-storey",
+     "kind": "other",
+     "where": "the glazed hotel storey (restaurant) along the north half above the stone plinth, and the two-storey glazed lobby under the tower",
+     "approxSizeM": [
+      48,
+      3
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002219_pano_0000_003736",
+     "how": "a long opening with bronze mullions; the lobby a two-row opening"
+    },
+    {
+     "id": "west-bands",
+     "kind": "other",
+     "where": "stone bands at every floor over buff brick, French windows every 4.5 m",
+     "approxSizeM": [
+      50,
+      16
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002219_pano_0000_003736",
+     "how": "stone slabs, french() windows"
+    },
+    {
+     "id": "garage-entrance",
+     "kind": "sign",
+     "where": "\"PARKING FASHION HOTEL\" on a blue plate over the garage entrance, three garage doors south of it",
+     "approxSizeM": [
+      7.8,
+      2.7
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002219_pano_0000_003736",
+     "how": "3 m deep dark hole, blue plate with glyph lettering, three shallow doors"
+    },
+    {
+     "id": "hotel-entrance-sign",
+     "kind": "sign",
+     "where": "\"FASHION HOTEL\" on a blue plate over the hotel entrance",
+     "approxSizeM": [
+      4.6,
+      0.5
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002219_pano_0000_003736",
+     "how": "blue plate with glyph lettering"
+    },
+    {
+     "id": "west-hotel-sign",
+     "kind": "lettering",
+     "where": "\"WestCord FASHION HOTEL\" high on the tower's west face",
+     "approxSizeM": [
+      8,
+      4
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002219_pano_0000_003736",
+     "how": "glyph lettering in the crown band"
+    }
+   ],
+   "note": "West front on the Titus van Rijnstraat, 2021 (second view 2025): the hotel tower on the left, the eight-storey wing with loggias at the top."
+  },
+  {
+   "tag": "w03-180",
+   "bearing": 180,
+   "lengthM": 33.1,
+   "centre": [
+    4.8452618,
+    52.3571344
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002219_pano_0000_003511",
+   "capturedAt": "2021-07-07",
+   "checked": true,
+   "items": [
+    {
+     "id": "pavilion-windows",
+     "kind": "window-shape",
+     "where": "wide windows with khaki frames and khaki spandrel panels, five a floor, in mottled grey brick",
+     "approxSizeM": [
+      30,
+      14
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002219_pano_0000_003511",
+     "how": "openings with two lights, ochre panel slab under each"
+    },
+    {
+     "id": "corner-balconies",
+     "kind": "balcony-ironwork",
+     "where": "stacked balconies on the west corner, slab with a dark rail, wrapping onto the side",
+     "approxSizeM": [
+      5,
+      10
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-002219_pano_0000_003511",
+     "how": "balcony() with a solid dark parapet in place of the bar-and-glass rail"
+    },
+    {
+     "id": "top-storey",
+     "kind": "other",
+     "where": "the set-back top storey in a concrete frame with four wide windows",
+     "approxSizeM": [
+      29,
+      3.7
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002219_pano_0000_003511",
+     "how": "inset prism, framed openings"
+    },
+    {
+     "id": "entrance-balcony",
+     "kind": "canopy",
+     "where": "the glazed entrance with a balcony over it",
+     "approxSizeM": [
+      4.4,
+      3.4
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002219_pano_0000_003511",
+     "how": "deep opening and a balcony on floor 1"
+    }
+   ],
+   "note": "South front of the western pavilion, 2021; the same design as w04."
+  },
+  {
+   "tag": "w04-180",
+   "bearing": 180,
+   "lengthM": 33.1,
+   "centre": [
+    4.8459753,
+    52.3571408
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000054_pano_0001_000591",
+   "capturedAt": "2016-08-10",
+   "checked": true,
+   "items": [
+    {
+     "id": "pavilion-windows-2",
+     "kind": "window-shape",
+     "where": "the eastern pavilion: five wide khaki-framed windows a floor, spandrel panels",
+     "approxSizeM": [
+      30,
+      14
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-000054_pano_0001_000591",
+     "how": "as w03"
+    },
+    {
+     "id": "corner-balconies-2",
+     "kind": "balcony-ironwork",
+     "where": "stacked corner balconies on the west corner",
+     "approxSizeM": [
+      5,
+      10
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-000054_pano_0001_000591",
+     "how": "balcony() with a solid dark parapet"
+    }
+   ],
+   "note": "South front of the eastern pavilion, 2016 and 2021."
+  },
+  {
+   "tag": "w05-180",
+   "bearing": 180,
+   "lengthM": 30.1,
+   "centre": [
+    4.8447954,
+    52.3572336
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002219_pano_0000_003473",
+   "capturedAt": "2021-07-07",
+   "checked": true,
+   "items": [
+    {
+     "id": "terraced-garden",
+     "kind": "other",
+     "where": "the raised garden deck behind a hedge and a low fence, planted terraces stepping up in the court",
+     "approxSizeM": [
+      60,
+      1.5
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-002219_pano_0000_003473",
+     "how": "deck cap, three planted steps, hedge and posts on the edge"
+    },
+    {
+     "id": "court-balconies",
+     "kind": "balcony-ironwork",
+     "where": "continuous balconies on the north bar's court face",
+     "approxSizeM": [
+      60,
+      25
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-002219_pano_0000_003473",
+     "how": "slab and solid rail per floor where the 3DBAG shows the balcony stacks"
+    },
+    {
+     "id": "wing-glass-hall",
+     "kind": "other",
+     "where": "a glazed hall at deck level along the west wing's court face",
+     "approxSizeM": [
+      30,
+      8
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002219_pano_0000_003473",
+     "how": "glass prism with bronze mullions"
+    }
+   ],
+   "note": "The deck between the pavilions, looking north into the court, 2021."
+  },
+  {
+   "tag": "w06-90",
+   "bearing": 90,
+   "lengthM": 17,
+   "centre": [
+    4.8462054,
+    52.3576563
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001141_pano_0001_000750",
+   "capturedAt": "2019-04-26",
+   "checked": true,
+   "items": [
+    {
+     "id": "east-end",
+     "kind": "window-shape",
+     "where": "the north bar's east end: stone plinth with a shop, three stacks of French windows",
+     "approxSizeM": [
+      17,
+      33
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001141_pano_0001_000750",
+     "how": "plinth slabs, french() windows"
+    },
+    {
+     "id": "shop-awning",
+     "kind": "canopy",
+     "where": "a red shop awning at the ground floor",
+     "approxSizeM": [
+      3,
+      0.8
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7316010203-001141_pano_0001_000750",
+     "skip": {
+      "reason": "temporary",
+      "note": "a tenant's awning"
+     }
+    }
+   ],
+   "note": "East end of the north bar, 2019."
+  },
+  {
+   "tag": "w07-180",
+   "bearing": 180,
+   "lengthM": 15.5,
+   "centre": [
+    4.845616,
+    52.3572413
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000795_pano_0001_001367",
+   "capturedAt": "2018-06-19",
+   "checked": true,
+   "items": [
+    {
+     "id": "court-gate",
+     "kind": "other",
+     "where": "the iron gate between stone posts and the stair up to the deck",
+     "approxSizeM": [
+      5,
+      2.5
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-000795_pano_0001_001367",
+     "how": "the deck edge with posts and a hedge; the stair cut not modelled"
+    }
+   ],
+   "note": "The gap between the pavilions, 2018: the gate and the stair up to the deck."
+  },
+  {
+   "tag": "w08-180",
+   "bearing": 180,
+   "lengthM": 11.9,
+   "centre": [
+    4.8443892,
+    52.3571077
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002650_pano_0002_000755",
+   "capturedAt": "2022-06-29",
+   "checked": true,
+   "items": [
+    {
+     "id": "stone-balconies",
+     "kind": "balcony-ironwork",
+     "where": "cantilevered stone balconies with solid parapets stacked at the court corner of the wing's south end",
+     "approxSizeM": [
+      6.4,
+      22
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002650_pano_0002_000755",
+     "how": "stone slab and parapet per floor"
+    }
+   ],
+   "note": "South end of the west wing, 2022."
+  },
+  {
+   "tag": "w09-269",
+   "bearing": 269,
+   "lengthM": 11.6,
+   "centre": [
+    4.8457309,
+    52.3571905
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000795_pano_0001_001331",
+   "capturedAt": "2018-06-19",
+   "checked": true,
+   "items": [
+    {
+     "id": "w09-269-side",
+     "kind": "window-shape",
+     "where": "grey brick side with two wide windows a floor and the stacked corner balconies",
+     "approxSizeM": [
+      17,
+      17
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-000795_pano_0001_001331",
+     "how": "openings, balcony() with a dark parapet"
+    }
+   ],
+   "note": "West side of the eastern pavilion, 2018: grey brick, two windows a floor, corner balconies."
+  },
+  {
+   "tag": "w10-90",
+   "bearing": 90,
+   "lengthM": 11.5,
+   "centre": [
+    4.8455036,
+    52.3571885
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002219_pano_0000_003449",
+   "capturedAt": "2021-07-07",
+   "checked": true,
+   "items": [
+    {
+     "id": "w10-90-side",
+     "kind": "window-shape",
+     "where": "grey brick side with two wide windows a floor and the stacked corner balconies",
+     "approxSizeM": [
+      17,
+      17
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002219_pano_0000_003449",
+     "how": "openings, balcony() with a dark parapet"
+    }
+   ],
+   "note": "East side of the western pavilion, 2021."
+  },
+  {
+   "tag": "w11-270",
+   "bearing": 270,
+   "lengthM": 11.5,
+   "centre": [
+    4.8450175,
+    52.3571839
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000266_pano_0000_000992",
+   "capturedAt": "2017-04-20",
+   "checked": true,
+   "items": [
+    {
+     "id": "w11-270-side",
+     "kind": "window-shape",
+     "where": "grey brick side with two wide windows a floor and the stacked corner balconies",
+     "approxSizeM": [
+      17,
+      17
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-000266_pano_0000_000992",
+     "how": "openings, balcony() with a dark parapet"
+    }
+   ],
+   "note": "West side of the western pavilion, 2017."
+  },
+  {
+   "tag": "w12-90",
+   "bearing": 90,
+   "lengthM": 11.5,
+   "centre": [
+    4.8445758,
+    52.3571798
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000266_pano_0000_000993",
+   "capturedAt": "2017-04-20",
+   "checked": true,
+   "items": [
+    {
+     "id": "wing-court-balconies",
+     "kind": "balcony-ironwork",
+     "where": "stone balconies stacked on the corner of the wing's court face, stone bands over buff brick",
+     "approxSizeM": [
+      5,
+      22
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-000266_pano_0000_000993",
+     "how": "stone slab and parapet per floor"
+    }
+   ],
+   "note": "The west wing's court face on the south street, 2017."
+  },
+  {
+   "tag": "w13-180",
+   "bearing": 180,
+   "lengthM": 6.9,
+   "centre": [
+    4.8445267,
+    52.3571277
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000266_pano_0000_000991",
+   "capturedAt": "2017-04-20",
+   "checked": true,
+   "items": [
+    {
+     "id": "wing-step",
+     "kind": "other",
+     "where": "the stone plinth and balconies at the wing's south-east step",
+     "approxSizeM": [
+      6.9,
+      8
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-000266_pano_0000_000991",
+     "how": "the wing prism; the 2 m step in the plan not modelled"
+    }
+   ],
+   "note": "The step at the wing's south-east corner, 2017."
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  },
+  {
+   "name": "BAG pand 0363100012111082",
+   "url": "https://api.data.amsterdam.nl/v1/bag/panden/0363100012111082",
+   "licence": "CC0"
+  },
+  {
+   "name": "3DBAG",
+   "url": "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012111082",
+   "licence": "CC BY 4.0"
+  },
+  {
+   "name": "nl.wikipedia Andreas Ensemble",
+   "url": "https://nl.wikipedia.org/wiki/Andreas_Ensemble",
+   "licence": "CC BY-SA 4.0"
+  }
+ ]
+}

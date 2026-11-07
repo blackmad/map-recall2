@@ -129,6 +129,10 @@ document.title='ready';
   return {
     close: () => br.close(),
     shot: async (cam: Cam): Promise<Buffer> => {
+      // The first shot after the GLB loads resizes a canvas that has never painted; screenshotting it at once captured
+      // Chrome's broken-canvas icon (Andreas Ensemble, the first wall's MODEL tile). Render, wait two frames, render again.
+      await page.evaluate(c => (window as any).shot(c), cam);
+      await page.evaluate(() => new Promise(res => requestAnimationFrame(() => requestAnimationFrame(res))));
       await page.evaluate(c => (window as any).shot(c), cam);
       return page.locator('canvas').screenshot();
     },

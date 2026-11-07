@@ -1,0 +1,29 @@
+{
+ "id": "politiebureau-postjesweg",
+ "pand": "0363100012092810",
+ "replaces": "ordinary-0363100012092810 (large recipe scripts/building-recipes/houses/politie-postjesweg), shadowed in src/canalRecall/landmarks/ordinaryModels.ts",
+ "identity": {
+  "addresses": "Postjesweg 179: one verblijfsobject, kantoorfunctie",
+  "bouwjaar": 2004,
+  "architect": "not named by the BAG, nl.wikipedia or a monument record (none); unconfirmed",
+  "correctionsToBrief": "None: the BAG address Postjesweg 179 and the POLITIE lettering, badge and police vans on the 2025 panorama confirm the police station. An earlier brief gave 179B; the BAG has 179.",
+  "sources": [
+   "https://api.data.amsterdam.nl/v1/bag/panden/0363100012092810",
+   "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/?ligtInPanden.identificatie=0363100012092810"
+  ]
+ },
+ "frame": {
+  "axes": "u along the north front from its east end (BAG vertex (9.171, -6.899)) westwards, v into the block; U = (-0.99996, 0.00925), V = (0.00925, 0.99996)"
+ },
+ "partyWallBearings": [],
+ "streetNAP": -0.852,
+ "levels": {
+  "parapet": 12.0,
+  "plantBox": 13.8,
+  "storey1Windows": [
+   4.5,
+   6.5
+  ],
+  "storey2": "oriel 8.1-10.6, ribbons 8.54-10.56"
+ }
+}

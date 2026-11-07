@@ -1,0 +1,29 @@
+{
+ "id": "winkelcentrum-plein-40-45",
+ "countedBy": "lane #236 (opus) from the rectified panorama crops of the brief (w02-195 2024, w04-15 2025); glazed openings only (the small dark squares in the north piers and the garage slots are not glass). Not a blind count; the integrator may re-count.",
+ "facades": [
+  {
+   "name": "south block front",
+   "bearing": 194.8,
+   "photo": "artifacts/landmark-briefs/winkelcentrum-plein-40-45/w02-195.jpg",
+   "rows": [17, 21],
+   "symmetric": false,
+   "gables": 0,
+   "frontDepth": 108.73,
+   "depthBand": 1.0,
+   "heightM": [0, 7.4],
+   "note": "w02-195 (2024-09-20, 42.6 px/m): the crop holds the lower 12 m. Ground: 17 tall narrow blue-framed windows and doors east of the mall undercroft (four slits narrower than 0.3 m are pipes and not counted); storey 1 (5.5-7.2 m): 21 yellow-framed windows in groups of a pair and a single every 7.05 m. The balconies above 7.25 m and the undercroft's glass 10 m back are outside the band."
+  },
+  {
+   "name": "north front east of the entrance",
+   "bearing": 14.8,
+   "photo": "artifacts/landmark-briefs/winkelcentrum-plein-40-45/w04-15.jpg",
+   "rows": [9, 10, 10, 10],
+   "symmetric": false,
+   "gables": 0,
+   "alongM": [0.5, 49.1],
+   "heightM": [0, 12.4],
+   "note": "w04-15 (2025-06-17, 50 px/m): ground nine shop bays between dark columns under the glass canopy; storeys 1-3 (the crop stops at 12.5 m, storey 3 cut at its top) each three wide white bays of two windows and four French windows = 10."
+  }
+ ]
+}

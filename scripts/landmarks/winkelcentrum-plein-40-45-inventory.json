@@ -1,0 +1,775 @@
+{
+ "schemaVersion": 1,
+ "id": "winkelcentrum-plein-40-45",
+ "pand": "0363100012112179",
+ "brief": "scripts/landmarks/winkelcentrum-plein-40-45-brief.md",
+ "signature": [
+  "south-balconies",
+  "west-pergola",
+  "garage-vents",
+  "orange-columns",
+  "north-bays",
+  "entrance-portals"
+ ],
+ "walls": [
+  {
+   "tag": "w01-105",
+   "bearing": 105,
+   "lengthM": 128,
+   "centre": [
+    4.8237685,
+    52.3799645
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002523_pano_0001_000427",
+   "capturedAt": "2022-04-19",
+   "checked": true,
+   "items": [
+    {
+     "id": "garage-vents",
+     "kind": "window-shape",
+     "where": "two rows of louvred slots in the garage brick: a wide slot then a pair of square ones every 7.6 m, the lower row offset",
+     "approxSizeM": [
+      90,
+      4
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002523_pano_0001_000427",
+     "how": "ventRows(): openings with three louvres, dark back"
+    },
+    {
+     "id": "orange-columns",
+     "kind": "colonnade",
+     "where": "the garage entrance: open, dark, three orange round columns",
+     "approxSizeM": [
+      28,
+      4
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002523_pano_0001_000427",
+     "how": "6 m deep hole, strut() columns"
+    },
+    {
+     "id": "kwikfit-shops",
+     "kind": "other",
+     "where": "shopfronts between grey columns under a blue fascia",
+     "approxSizeM": [
+      36,
+      3.9
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002523_pano_0001_000427",
+     "how": "holes per bay, fascia strip; the Kwik-Fit lettering not drawn"
+    },
+    {
+     "id": "blue-doors",
+     "kind": "window-shape",
+     "where": "tall narrow blue-framed windows and doors in the brick ground storey",
+     "approxSizeM": [
+      20,
+      3.6
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002523_pano_0001_000427",
+     "how": "narrow openings"
+    },
+    {
+     "id": "parking-sign",
+     "kind": "sign",
+     "where": "the P sign pylon with the 40-45 logo on the garage corner",
+     "approxSizeM": [
+      0.8,
+      4
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7316010203-002523_pano_0001_000427",
+     "skip": {
+      "reason": "too-small",
+      "note": "0.8 m pylon"
+     }
+    }
+   ],
+   "note": "East front on the Burgemeester De Vlugtlaan side, 2022 (second view 2018): the south block end, the low brick part, the garage with its slot rhythm, the garage entrance and the Kwik-Fit shops."
+  },
+  {
+   "tag": "w02-195",
+   "bearing": 195,
+   "lengthM": 79.6,
+   "centre": [
+    4.8229695,
+    52.379496
+   ],
+   "evidence": "photo",
+   "panoId": "b_20240920_0946_Track59_Sphere_00226",
+   "capturedAt": "2024-09-20",
+   "checked": true,
+   "items": [
+    {
+     "id": "south-balconies",
+     "kind": "balcony-ironwork",
+     "where": "deep cantilevered balconies with blue-grey panel fronts, staggered floor by floor in two alternating plans",
+     "approxSizeM": [
+      80,
+      17
+     ],
+     "plan": "modelled",
+     "seenIn": "b_20240920_0946_Track59_Sphere_00226",
+     "how": "balcony() with a solid parapet, the two measured plans alternating"
+    },
+    {
+     "id": "yellow-windows",
+     "kind": "window-shape",
+     "where": "pairs of windows in yellow frames on seven floors",
+     "approxSizeM": [
+      80,
+      20
+     ],
+     "plan": "modelled",
+     "seenIn": "b_20240920_0946_Track59_Sphere_00226",
+     "how": "punched openings with ochre frames at 2.45 m"
+    },
+    {
+     "id": "mall-undercroft",
+     "kind": "colonnade",
+     "where": "the mall entrance under the west half of the block: an open hall to 6.8 m on square brick piers, the winkelcentrum sign deep inside",
+     "approxSizeM": [
+      30,
+      6.8
+     ],
+     "plan": "modelled",
+     "seenIn": "b_20240920_0946_Track59_Sphere_00226",
+     "how": "15 m deep hole with a glass back, four piers; the sign inside not drawn"
+    },
+    {
+     "id": "ground-windows",
+     "kind": "window-shape",
+     "where": "tall narrow blue windows and doors along the ground storey",
+     "approxSizeM": [
+      48,
+      3.2
+     ],
+     "plan": "modelled",
+     "seenIn": "b_20240920_0946_Track59_Sphere_00226",
+     "how": "narrow openings"
+    }
+   ],
+   "note": "South front, 2024 (second view 2022); the rectified crop holds the lower 12 m, the upper floors from the aimed view."
+  },
+  {
+   "tag": "w03-15",
+   "bearing": 15,
+   "lengthM": 63.5,
+   "centre": [
+    4.822875,
+    52.38099
+   ],
+   "evidence": "photo",
+   "panoId": "b_20240918_0854_Track08_Sphere_00305",
+   "capturedAt": "2024-09-18",
+   "checked": true,
+   "items": [
+    {
+     "id": "north-bays",
+     "kind": "window-shape",
+     "where": "brick piers with pairs of small square openings, white French-window bays with railings, wide white bays with two big windows, on four floors",
+     "approxSizeM": [
+      63,
+      12
+     ],
+     "plan": "modelled",
+     "seenIn": "b_20240918_0854_Track08_Sphere_00305",
+     "how": "bay faces in a 19.1 m sequence"
+    },
+    {
+     "id": "shop-fascia",
+     "kind": "other",
+     "where": "shopfronts between dark columns under a dark fascia, the white band above",
+     "approxSizeM": [
+      63,
+      5
+     ],
+     "plan": "modelled",
+     "seenIn": "b_20240918_0854_Track08_Sphere_00305",
+     "how": "plinth face with holes, fascia and band strips; shop signs not drawn"
+    }
+   ],
+   "note": "North front, west part, 2024 (second view 2018): the same bays as w04 over shops with a dark fascia."
+  },
+  {
+   "tag": "w04-15",
+   "bearing": 15,
+   "lengthM": 48.6,
+   "centre": [
+    4.8237705,
+    52.38085
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-06-17_08-04-10_01213",
+   "capturedAt": "2025-06-17",
+   "checked": true,
+   "items": [
+    {
+     "id": "glass-canopy",
+     "kind": "canopy",
+     "where": "glass canopy on steel beams over the shopfronts",
+     "approxSizeM": [
+      48.6,
+      0.3
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-06-17_08-04-10_01213",
+     "how": "canopyGlass slab with beam strips"
+    },
+    {
+     "id": "north-bays-east",
+     "kind": "window-shape",
+     "where": "the bay sequence of w03",
+     "approxSizeM": [
+      48,
+      12
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-06-17_08-04-10_01213",
+     "how": "bay faces"
+    },
+    {
+     "id": "dirk-signs",
+     "kind": "sign",
+     "where": "supermarket signs and window posters",
+     "approxSizeM": [
+      3,
+      0.6
+     ],
+     "plan": "skipped",
+     "seenIn": "recording_2025-06-17_08-04-10_01213",
+     "skip": {
+      "reason": "temporary",
+      "note": "shop signs and posters change"
+     }
+    }
+   ],
+   "note": "North front, east part, 2025 (second view 2022): Dirk van den Broek under a glass canopy."
+  },
+  {
+   "tag": "w05-285",
+   "bearing": 285,
+   "lengthM": 43.6,
+   "centre": [
+    4.8219105,
+    52.379833
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001891_pano_0000_004834",
+   "capturedAt": "2020-08-24",
+   "checked": true,
+   "items": [
+    {
+     "id": "west-pergola",
+     "kind": "canopy",
+     "where": "pergola of raked dark beams at 1 m over glass along the whole shop front, about 3 m deep",
+     "approxSizeM": [
+      114,
+      1.5
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001891_pano_0000_004834",
+     "how": "strut() beams, an edge beam and a glass sheet"
+    },
+    {
+     "id": "office-windows",
+     "kind": "window-shape",
+     "where": "wide four-light windows 5.9 m at 7.4 m on four floors in grey panels",
+     "approxSizeM": [
+      114,
+      11
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001891_pano_0000_004834",
+     "how": "punched openings with mullions and a transom"
+    },
+    {
+     "id": "green-stair-tower",
+     "kind": "window-shape",
+     "where": "a green-glazed stair tower full height",
+     "approxSizeM": [
+      5.1,
+      12
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001891_pano_0000_004834",
+     "how": "green glass slab with a frame grid, at the three lift heads"
+    },
+    {
+     "id": "shop-signs",
+     "kind": "sign",
+     "where": "shop names on the dark fascia",
+     "approxSizeM": [
+      4,
+      0.6
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7316010203-001891_pano_0000_004834",
+     "skip": {
+      "reason": "temporary",
+      "note": "shop signs change"
+     }
+    }
+   ],
+   "note": "West front, south part, 2020 (second view 2019): grey office panels with wide windows, the green glass stair tower, the pergola over the shops."
+  },
+  {
+   "tag": "w06-285",
+   "bearing": 285,
+   "lengthM": 42.3,
+   "centre": [
+    4.8220875,
+    52.380257
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001891_pano_0000_004809",
+   "capturedAt": "2020-08-24",
+   "checked": true,
+   "items": [
+    {
+     "id": "pergola-fan",
+     "kind": "canopy",
+     "where": "the beams fan out radially over the entrance",
+     "approxSizeM": [
+      20,
+      1.5
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-001891_pano_0000_004809",
+     "how": "straight parallel beams"
+    }
+   ],
+   "note": "West front, middle, 2020: the pergola fans out over the ING entrance; WINKELCENTRUM banner at the left."
+  },
+  {
+   "tag": "w07-195",
+   "bearing": 195,
+   "lengthM": 34.1,
+   "centre": [
+    4.8226215,
+    52.380832
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002069_pano_0000_001132",
+   "capturedAt": "2021-03-29",
+   "checked": true,
+   "items": [
+    {
+     "id": "yard-doors",
+     "kind": "other",
+     "where": "service doors and roller shutters",
+     "approxSizeM": [
+      34,
+      2.5
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002069_pano_0000_001132",
+     "how": "dark door openings at 7 m"
+    },
+    {
+     "id": "orange-brick-bands",
+     "kind": "other",
+     "where": "orange brick panels between the windows of the north bar's yard side",
+     "approxSizeM": [
+      60,
+      10
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-002069_pano_0000_001132",
+     "how": "light panel face with windows, the orange panels not drawn"
+    }
+   ],
+   "note": "Service yard, north side, 2021: low brown brick walls with roller shutters, containers; the north bar's yard side behind with light panels and orange brick bands."
+  },
+  {
+   "tag": "w08-285",
+   "bearing": 285,
+   "lengthM": 30.1,
+   "centre": [
+    4.8229275,
+    52.380687
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002069_pano_0000_001132",
+   "capturedAt": "2021-03-29",
+   "checked": true,
+   "items": [],
+   "note": "Service yard, east side, 2021: low brick walls with doors."
+  },
+  {
+   "tag": "w09-195",
+   "bearing": 195,
+   "lengthM": 29,
+   "centre": [
+    4.8220375,
+    52.3796105
+   ],
+   "evidence": "photo",
+   "panoId": "b_20240920_0946_Track59_Sphere_00212",
+   "capturedAt": "2024-09-20",
+   "checked": true,
+   "items": [
+    {
+     "id": "corner-cafe",
+     "kind": "other",
+     "where": "low shop corner under the pergola",
+     "approxSizeM": [
+      29,
+      4.9
+     ],
+     "plan": "modelled",
+     "seenIn": "b_20240920_0946_Track59_Sphere_00212",
+     "how": "bronze plinth with glass and the pergola"
+    }
+   ],
+   "note": "South-west corner, 2024: the low café corner with an awning; the grey office bar above."
+  },
+  {
+   "tag": "w10-285",
+   "bearing": 285,
+   "lengthM": 23.2,
+   "centre": [
+    4.822241,
+    52.380625
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001325_pano_0000_001079",
+   "capturedAt": "2019-07-24",
+   "checked": true,
+   "items": [],
+   "note": "West front, north part, 2019: glass corner entrance, grey cladding, the pergola, the nos shop."
+  },
+  {
+   "tag": "w11-15",
+   "bearing": 15,
+   "lengthM": 22.1,
+   "centre": [
+    4.822712,
+    52.3805795
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000829_pano_0000_002928",
+   "capturedAt": "2018-07-06",
+   "checked": true,
+   "items": [],
+   "note": "Service yard, 2018: low brick walls, the grey bar beyond."
+  },
+  {
+   "tag": "w12-15",
+   "bearing": 15,
+   "lengthM": 21.3,
+   "centre": [
+    4.8224345,
+    52.3807025
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000829_pano_0000_002932",
+   "capturedAt": "2018-07-06",
+   "checked": true,
+   "items": [
+    {
+     "id": "slit-windows",
+     "kind": "window-shape",
+     "where": "two long horizontal slit windows near the top of the blank end wall",
+     "approxSizeM": [
+      13,
+      0.6
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-000829_pano_0000_002932",
+     "how": "two openings 13 m long"
+    }
+   ],
+   "note": "North end of the office bar on the yard, 2018: a blank light wall with two long slit windows near the top over a brick base with a door."
+  },
+  {
+   "tag": "w13-105",
+   "bearing": 105,
+   "lengthM": 16.5,
+   "centre": [
+    4.824086,
+    52.380724
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-10-02_12-40-32_00010",
+   "capturedAt": "2025-10-02",
+   "checked": true,
+   "items": [],
+   "note": "East end of the north bar, 2025: brick with a column of white-framed windows, Dirk van den Broek at the corner."
+  },
+  {
+   "tag": "w14-105",
+   "bearing": 105,
+   "lengthM": 14.8,
+   "centre": [
+    4.8240065,
+    52.3805905
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001326_pano_0000_006839",
+   "capturedAt": "2019-07-24",
+   "checked": true,
+   "items": [
+    {
+     "id": "loading-dock",
+     "kind": "other",
+     "where": "white low loading-dock wall",
+     "approxSizeM": [
+      12,
+      4
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-001326_pano_0000_006839",
+     "how": "the brick mall wall"
+    }
+   ],
+   "note": "Loading dock on the east side, 2019: a white low wall and the brick end behind."
+  },
+  {
+   "tag": "w15-285",
+   "bearing": 285,
+   "lengthM": 11.7,
+   "centre": [
+    4.822401,
+    52.380921
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000829_pano_0000_002938",
+   "capturedAt": "2018-07-06",
+   "checked": true,
+   "items": [
+    {
+     "id": "curved-canopy",
+     "kind": "canopy",
+     "where": "curved dark canopy on a post over the loading bay",
+     "approxSizeM": [
+      10,
+      4
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-000829_pano_0000_002938",
+     "how": "the yard wall with its door openings; the curved canopy itself is not drawn"
+    }
+   ],
+   "note": "Loading bay on the yard, 2018: a curved dark canopy over a roller shutter."
+  },
+  {
+   "tag": "w16-195",
+   "bearing": 195,
+   "lengthM": 10.3,
+   "centre": [
+    4.8223525,
+    52.3796505
+   ],
+   "evidence": "photo",
+   "panoId": "b_20240920_0946_Track59_Sphere_00217",
+   "capturedAt": "2024-09-20",
+   "checked": true,
+   "items": [
+    {
+     "id": "awnings",
+     "kind": "canopy",
+     "where": "striped shop awnings",
+     "approxSizeM": [
+      8,
+      1
+     ],
+     "plan": "skipped",
+     "seenIn": "b_20240920_0946_Track59_Sphere_00217",
+     "skip": {
+      "reason": "temporary",
+      "note": "tenant awnings"
+     }
+    }
+   ],
+   "note": "Low shops on the south-west, 2024: BILADNA with striped awnings."
+  },
+  {
+   "tag": "w17-105",
+   "bearing": 105,
+   "lengthM": 9.6,
+   "centre": [
+    4.8222615,
+    52.37962
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-10-02_12-00-03_01181",
+   "capturedAt": "2025-10-02",
+   "checked": true,
+   "items": [],
+   "note": "Snack kiosk and the office bar, 2025."
+  },
+  {
+   "tag": "w18-285",
+   "bearing": 285,
+   "lengthM": 9.5,
+   "centre": [
+    4.822406,
+    52.3810195
+   ],
+   "evidence": "photo",
+   "panoId": "b_20240925_0919_Track35_Sphere_00387",
+   "capturedAt": "2024-09-25",
+   "checked": true,
+   "items": [],
+   "note": "North-west: the north bar's west end, 2024."
+  },
+  {
+   "tag": "w19-284",
+   "bearing": 284,
+   "lengthM": 9.1,
+   "centre": [
+    4.822217,
+    52.3804765
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001325_pano_0000_001079",
+   "capturedAt": "2019-07-24",
+   "checked": true,
+   "items": [
+    {
+     "id": "entrance-portals",
+     "kind": "other",
+     "where": "orange entrance frame with the winkelcentrum 40-45 lettering on its lintel; two vertical orange WINKELCENTRUM banners on the office panels",
+     "approxSizeM": [
+      8,
+      5
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001325_pano_0000_001079",
+     "how": "portal() posts and lintel, two orange banner slabs; the lettering not drawn (no lowercase w in the glyph tables)"
+    }
+   ],
+   "note": "Main entrance from the square, 2019: the orange frame, WINKELCENTRUM banners and lettering, the pergola."
+  },
+  {
+   "tag": "w20-105",
+   "bearing": 105,
+   "lengthM": 8.6,
+   "centre": [
+    4.8225705,
+    52.3806415
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002069_pano_0000_001129",
+   "capturedAt": "2021-03-29",
+   "checked": true,
+   "items": [],
+   "note": "Yard side, 2021: a light curved tower over a brick base."
+  },
+  {
+   "tag": "w21-195",
+   "bearing": 195,
+   "lengthM": 7.1,
+   "centre": [
+    4.8229315,
+    52.380826
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000829_pano_0000_002925",
+   "capturedAt": "2018-07-06",
+   "checked": true,
+   "items": [],
+   "note": "Service entrance on the yard, 2018: roller shutters and air-conditioning units."
+  },
+  {
+   "tag": "w22-15",
+   "bearing": 15,
+   "lengthM": 6.3,
+   "centre": [
+    4.8233715,
+    52.380901
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000829_pano_0000_002537",
+   "capturedAt": "2018-07-06",
+   "checked": true,
+   "items": [
+    {
+     "id": "north-portal",
+     "kind": "other",
+     "where": "orange entrance frame between two sign pylons",
+     "approxSizeM": [
+      6,
+      4.6
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-000829_pano_0000_002537",
+     "how": "portal(); the pylons and lettering not drawn"
+    }
+   ],
+   "note": "North entrance, 2018: the orange frame with winkelcentrum lettering between two sign pylons."
+  },
+  {
+   "tag": "w23-285",
+   "bearing": 285,
+   "lengthM": 6.2,
+   "centre": [
+    4.8224145,
+    52.379612
+   ],
+   "evidence": "photo",
+   "panoId": "b_20240920_0946_Track59_Sphere_00214",
+   "capturedAt": "2024-09-20",
+   "checked": true,
+   "items": [],
+   "note": "South block west end, 2024: balconies behind a tree."
+  },
+  {
+   "tag": "w24-285",
+   "bearing": 285,
+   "lengthM": 5.3,
+   "centre": [
+    4.8220015,
+    52.380048
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001891_pano_0000_004813",
+   "capturedAt": "2020-08-24",
+   "checked": true,
+   "items": [],
+   "note": "West front, 2020: the pergola, SUSA GYM and the garage passage."
+  },
+  {
+   "tag": "w25-105",
+   "bearing": 105,
+   "lengthM": 4.6,
+   "centre": [
+    4.8228725,
+    52.380814
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "items": [],
+   "note": "Yard, small face."
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  },
+  {
+   "name": "BAG pand 0363100012112179",
+   "url": "https://api.data.amsterdam.nl/v1/bag/panden/0363100012112179",
+   "licence": "CC0"
+  },
+  {
+   "name": "3DBAG",
+   "url": "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012112179",
+   "licence": "CC BY 4.0"
+  },
+  {
+   "name": "nl.wikipedia Plein '40-'45",
+   "url": "https://nl.wikipedia.org/wiki/Plein_%2740-%2745",
+   "licence": "CC BY-SA 4.0"
+  }
+ ]
+}

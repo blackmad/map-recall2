@@ -1,0 +1,49 @@
+{
+ "id": "politiebureau-postjesweg",
+ "countedBy": "lane #236 (opus) from the rectified panorama crops of the brief (w04-359 2025, w03-179 2016, w02-269 2022); ribbon convention; a glazed door counts, solid garage doors do not. Not a blind count; the integrator may re-count.",
+ "facades": [
+  {
+   "name": "north front",
+   "bearing": 359,
+   "photo": "artifacts/landmark-briefs/politiebureau-postjesweg/w04-359.jpg",
+   "rows": [
+    2,
+    11,
+    3
+   ],
+   "symmetric": false,
+   "gables": 0,
+   "note": "w04-359 (2025-10-01, 50 px/m): ground the corner entrance and the window under the sign; storey 1 eleven tall windows; storey 2 two windows and the glass oriel. heightM 0-12.1: the roof plant box stands 6 m behind the parapet and is out of the street camera's sight (sight line over the parapet clears 16 m there); the crop keeps the front itself.",
+   "heightM": [
+    0,
+    12.1
+   ]
+  },
+  {
+   "name": "south side",
+   "bearing": 179,
+   "photo": "artifacts/landmark-briefs/politiebureau-postjesweg/w03-179.jpg",
+   "rows": [
+    2,
+    8,
+    2
+   ],
+   "symmetric": false,
+   "gables": 0,
+   "note": "w03-179 (2016-08-10, 50 px/m): ground a small window and the low strip (the grilles are brick); storey 1 a strip and seven windows; storey 2 the ribbon and, at the west end, the side of the west corner glass box (the dark strip left of the red wall on the aimed view w03-179.thumb.jpg, TMX7316010203-000055_pano_0001_000339)."
+  },
+  {
+   "name": "west side",
+   "bearing": 269,
+   "photo": "artifacts/landmark-briefs/politiebureau-postjesweg/w02-269.jpg",
+   "rows": [
+    null,
+    2,
+    null
+   ],
+   "symmetric": false,
+   "gables": 0,
+   "note": "w02-269 (2022-12-07): ground hidden by the kiosk and fence (null); storey 1 two strips; storey 2 null: the corner box spans storeys 2 and 3 and the louvred windows read as closed panels."
+  }
+ ]
+}

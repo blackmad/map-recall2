@@ -19,6 +19,10 @@ export const MIXED_CASE_EXTRA: Readonly<Record<string, readonly string[]>> = {
   // Tetterode type foundry (Da Costakade 146 lane, 2026-11-02): the 1909 Da Costakade frieze reads
   // LETTERGIETERIJ 'AMSTERDAM' V/H N.TETTERODE (w02-67 panorama 2020, Commons "Lettergieterij (Tetterode).JPG"); GL has the apostrophe, not the slash.
   '/': ['00001', '00010', '00010', '00100', '01000', '01000', '10000'],
+  // Quarter Plaza, Transformatorweg 38-104 (#236, 2026-11-07): the "quarter plaza" name on the south front's parapet
+  // (w04-179 panorama 2025-07-01) needs a lowercase q and u. q keeps the x-height; its stem ends on the baseline (7 rows).
+  q: ['00000', '00000', '01111', '10001', '01111', '00001', '00001'],
+  u: ['00000', '00000', '10001', '10001', '10001', '10011', '01101'],
 };
 
 /** GL plus the extra glyphs; GL wins where both define a character, so nothing GL already draws changes. */

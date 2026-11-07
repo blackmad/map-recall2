@@ -85215,6 +85215,1324 @@
       "triangles": 824,
       "bytes": 23308,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+    },
+    "kinkerstraat-89": {
+      "id": "kinkerstraat-89",
+      "name": "Kinkerstraat 89-105 (balcony block, 1987)",
+      "modelUrl": "./models/kinkerstraat-89.glb",
+      "suppressOsmIds": [
+        "NL.IMBAG.Pand.0363100012092013"
+      ],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.87015755,
+          52.36639922
+        ],
+        "headingDegrees": 0,
+        "lengthMetres": 79.9,
+        "widthMetres": 55.8
+      },
+      "surveyed": {
+        "anchor": [
+          4.87015755,
+          52.36639922
+        ],
+        "northOffsetDegrees": 0,
+        "source": "Vertex average of the BAG 0363100012092013 ring (RD, PDOK BAG WFS, CC0) in native east/south metres above the 3DBAG ground 0.62 m NAP (scripts/landmarks/kinkerstraat-89-footprints.json, written by sarphati-plaza-prepare.ts --id=kinkerstraat-89 --pand=0363100012092013). Volumes from the 3DBAG LoD2.2 roof parts (CC BY 4.0): the Kinkerstraat bar and the Tollensstraat and west wings under a 15.6 m parapet, the 12.6 m rear terrace and the 4.0 m shop deck round the open light slot. The four loggia bays of the Kinkerstraat front, the two of the Tollensstraat and the passage of the west side measured on rectified Gemeente Amsterdam panorama crops (CC BY 4.0), per wall in scripts/landmarks/kinkerstraat-89-inventory.json. The courtyard faces and the deck walls carry no photograph and are inferred."
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 0,
+      "heightMetres": 15.6,
+      "bagYear": 1987,
+      "materialOverrides": {
+        "brick": "#c9bca0",
+        "white": "#e6e1d6",
+        "frame": "#efeee8",
+        "glass": "#4f6873",
+        "concrete": "#b4aea3",
+        "stone": "#bdb6a8",
+        "ochre": "#c4ad3c",
+        "blue": "#283048",
+        "green": "#6f8fb6",
+        "dark": "#2e3236",
+        "red": "#b8312f",
+        "copper": "#6b6d6e",
+        "canopyGlass": "#9fb3bb",
+        "pink": "#f2f1ec"
+      },
+      "attribution": {
+        "title": "Kinkerstraat 89-105 / Tollensstraat 101-191 / Bilderdijkkade 542-574 (housing over shops, 1987)",
+        "author": "Map Recall",
+        "sourceUrl": "https://api.data.amsterdam.nl/v1/bag/panden/0363100012092013",
+        "licence": "CC BY 4.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "modifications": "Original texture-free flat-colour geometry on the BAG footprint (CC0) with 3DBAG LoD2.2 heights (CC BY 4.0): the beige-brick Kinkerstraat front of four bays, each a brick frame round a loggia zone of white-panelled glazed wings and a deep slot with a yellow back wall and stacks of round-ended concrete balconies with white bar railings, the brick balustrade band over the shop arcade on square columns and nine windows in threes in the top storey; the Tollensstraat side with two more bays over the supermarket's blue tile ground and a plain corner section; the west side's double-height passage with round columns, curved balconies and the yellow entrance pavilion; read for proportion and tone from Gemeente Amsterdam panoramas (CC BY 4.0). No pixels or meshes imported."
+      },
+      "buildingFootprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.8697267,
+              52.36625794
+            ],
+            [
+              4.86974101,
+              52.36623708
+            ],
+            [
+              4.86976988,
+              52.366195
+            ],
+            [
+              4.86978212,
+              52.3661772
+            ],
+            [
+              4.86991064,
+              52.36621032
+            ],
+            [
+              4.86989736,
+              52.36622962
+            ],
+            [
+              4.87033685,
+              52.36634768
+            ],
+            [
+              4.87046537,
+              52.36616072
+            ],
+            [
+              4.87058867,
+              52.3661925
+            ],
+            [
+              4.87059169,
+              52.36618811
+            ],
+            [
+              4.87078735,
+              52.36623853
+            ],
+            [
+              4.87074977,
+              52.36629286
+            ],
+            [
+              4.87072043,
+              52.36633529
+            ],
+            [
+              4.8705551,
+              52.36657435
+            ],
+            [
+              4.87051415,
+              52.36663356
+            ],
+            [
+              4.87049827,
+              52.36665647
+            ],
+            [
+              4.87049399,
+              52.36666268
+            ],
+            [
+              4.87048257,
+              52.36665961
+            ],
+            [
+              4.87027871,
+              52.36660461
+            ],
+            [
+              4.87026583,
+              52.36660114
+            ],
+            [
+              4.87005915,
+              52.36654539
+            ],
+            [
+              4.87004627,
+              52.36654192
+            ],
+            [
+              4.86983988,
+              52.36648624
+            ],
+            [
+              4.869827,
+              52.3664828
+            ],
+            [
+              4.86962312,
+              52.36642778
+            ],
+            [
+              4.8696117,
+              52.3664247
+            ],
+            [
+              4.86961599,
+              52.36641849
+            ],
+            [
+              4.86963187,
+              52.36639558
+            ],
+            [
+              4.8697267,
+              52.36625794
+            ]
+          ],
+          [
+            [
+              4.86985508,
+              52.36629108
+            ],
+            [
+              4.8698533,
+              52.36629365
+            ],
+            [
+              4.87035115,
+              52.36642793
+            ],
+            [
+              4.87036699,
+              52.3664059
+            ],
+            [
+              4.86986858,
+              52.36627146
+            ],
+            [
+              4.86985508,
+              52.36629108
+            ]
+          ]
+        ]
+      },
+      "buildingCategory": "landmark",
+      "bounds": {
+        "min": [
+          -37.3192253112793,
+          -4.7683716530855236e-8,
+          -29.281463623046875
+        ],
+        "max": [
+          42.92112350463867,
+          15.600000381469727,
+          26.663291931152344
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.87015755,
+          52.36639922
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 90,
+        "facadeBearingDegrees": 0,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 80.24034881591797,
+        "heightMetres": 15.600000429153443,
+        "depthMetres": 55.94475555419922,
+        "depthCoverage": 1.0025941855591258
+      },
+      "triangles": 19214,
+      "bytes": 266024,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
+      "lod1": {
+        "sourceHash": "814a26b22f7e11bf",
+        "buildVersion": 2,
+        "bytes": 102016,
+        "triangles": 6222
+      }
+    },
+    "politiebureau-postjesweg": {
+      "id": "politiebureau-postjesweg",
+      "name": "Politiebureau Postjesweg (2004)",
+      "modelUrl": "./models/politiebureau-postjesweg.glb",
+      "suppressOsmIds": [
+        "NL.IMBAG.Pand.0363100012092810"
+      ],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.83873665,
+          52.36372716
+        ],
+        "headingDegrees": 0,
+        "lengthMetres": 22.7,
+        "widthMetres": 24.7
+      },
+      "surveyed": {
+        "anchor": [
+          4.83873665,
+          52.36372716
+        ],
+        "northOffsetDegrees": 0,
+        "source": "Vertex average of the BAG 0363100012092810 ring (RD, PDOK BAG WFS, CC0) in native east/south metres above the 3DBAG ground -0.85 m NAP (scripts/landmarks/politiebureau-postjesweg-footprints.json, written by sarphati-plaza-prepare.ts --id=politiebureau-postjesweg --pand=0363100012092810). One red-brick box under a 12.0 m parapet with a roof plant box from the 3DBAG LoD2.2 roof parts (CC BY 4.0). Windows, the oriels, the corner balcony and pergola, the POLITIE sign and the garage doors measured on rectified Gemeente Amsterdam panorama crops (CC BY 4.0), per wall in scripts/landmarks/politiebureau-postjesweg-inventory.json. The east wall is mostly hidden by the neighbour in front of it and is partly inferred."
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 0,
+      "heightMetres": 13.8,
+      "bagYear": 2004,
+      "materialOverrides": {
+        "brick": "#9a4a36",
+        "frame": "#556375",
+        "glass": "#4f6873",
+        "concrete": "#8c8f92",
+        "stone": "#7d5045",
+        "slate": "#5f666c",
+        "blue": "#2f63a0",
+        "bronze": "#6a3428",
+        "red": "#7a2f2a",
+        "copper": "#6b6d6e",
+        "dark": "#2e3236"
+      },
+      "attribution": {
+        "title": "Politiebureau Postjesweg, Postjesweg 179 (police station, 2004)",
+        "author": "Map Recall",
+        "sourceUrl": "https://api.data.amsterdam.nl/v1/bag/panden/0363100012092810",
+        "licence": "CC BY 4.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "modifications": "Original texture-free flat-colour geometry on the BAG footprint (CC0) with 3DBAG LoD2.2 heights (CC BY 4.0): the red-brick box with its eleven tall storey-1 windows, the glass oriel and the POLITIE lettering with its badge on the north front, the grey corner balcony and pergola, the garage doors, the long top ribbon and ventilation grilles of the south side and the glass corner box of the west side; read for proportion and tone from Gemeente Amsterdam panoramas (CC BY 4.0). No pixels or meshes imported."
+      },
+      "buildingFootprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.83887244,
+              52.36372743
+            ],
+            [
+              4.83887138,
+              52.36376575
+            ],
+            [
+              4.83887051,
+              52.36378978
+            ],
+            [
+              4.8388074,
+              52.36378915
+            ],
+            [
+              4.8387033,
+              52.363788
+            ],
+            [
+              4.83854026,
+              52.36378638
+            ],
+            [
+              4.838541,
+              52.36376207
+            ],
+            [
+              4.8385467,
+              52.36356609
+            ],
+            [
+              4.83887681,
+              52.36356977
+            ],
+            [
+              4.83887244,
+              52.36372743
+            ]
+          ]
+        ]
+      },
+      "buildingCategory": "landmark",
+      "bounds": {
+        "min": [
+          -13.895431518554688,
+          -7.450580707946131e-10,
+          -7.596196174621582
+        ],
+        "max": [
+          9.474152565002441,
+          13.800000190734863,
+          18.099964141845703
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.83873665,
+          52.36372716
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 90,
+        "facadeBearingDegrees": 0,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 25.696160316467285,
+        "heightMetres": 13.80000019147992,
+        "depthMetres": 23.36958408355713,
+        "depthCoverage": 0.9461370074314628
+      },
+      "triangles": 3686,
+      "bytes": 57944,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
+      "lod1": {
+        "sourceHash": "2d3b7b68c13316f9",
+        "buildVersion": 2,
+        "bytes": 31060,
+        "triangles": 1312
+      }
+    },
+    "ibis-city-west": {
+      "id": "ibis-city-west",
+      "name": "Quarter Plaza (2003)",
+      "modelUrl": "./models/ibis-city-west.glb",
+      "suppressOsmIds": [
+        "NL.IMBAG.Pand.0363100012063603"
+      ],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.84844388,
+          52.39256106
+        ],
+        "headingDegrees": 0,
+        "lengthMetres": 166,
+        "widthMetres": 66.2
+      },
+      "surveyed": {
+        "anchor": [
+          4.84844388,
+          52.39256106
+        ],
+        "northOffsetDegrees": 0,
+        "source": "Vertex average of the BAG 0363100012063603 ring (RD, PDOK BAG WFS, CC0) in native east/south metres above the 3DBAG ground 0.524 m NAP (scripts/landmarks/ibis-city-west-footprints.json, written by sarphati-plaza-prepare.ts --id=ibis-city-west --pand=0363100012063603). The brick office slab, the white office bar, the glass bridge and the decks from the 3DBAG LoD2.2 roof parts (CC BY 4.0). Ribbon and punched windows, the pilotis, the cantilever with its raked columns and lobby, the glass boxes, the stepped deck edges and the parapet names measured on rectified Gemeente Amsterdam panorama crops (CC BY 4.0), per wall in scripts/landmarks/ibis-city-west-inventory.json. The north faces are inferred. The catalogue id says Ibis; BAG and the lettering show this pand is Quarter Plaza (Transformatorweg 38-104), the Ibis is the neighbouring pand 0363100012068830."
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 0,
+      "heightMetres": 36.3,
+      "bagYear": 2003,
+      "materialOverrides": {
+        "brick": "#5a3a33",
+        "stone": "#dcdcd6",
+        "glass": "#50646f",
+        "frame": "#8e959b",
+        "pink": "#f1f1ee",
+        "green": "#4fcf3f",
+        "ochre": "#78894f",
+        "bronze": "#2f3336",
+        "concrete": "#8f8e88",
+        "slate": "#5e6266"
+      },
+      "attribution": {
+        "title": "Quarter Plaza, Transformatorweg 38-104 (offices, 2003)",
+        "author": "Map Recall",
+        "sourceUrl": "https://api.data.amsterdam.nl/v1/bag/panden/0363100012063603",
+        "licence": "CC BY 4.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "modifications": "Original texture-free flat-colour geometry on the BAG footprint (CC0) with 3DBAG LoD2.2 heights (CC BY 4.0): the dark brick slab with its broken ribbon windows, its cantilevered west end on raked columns over a tall glass lobby and the two parapet names; the white-panelled bar on eleven round pilotis with its punched windows and two glass boxes; the dark glass bridge; the garden deck with stepped edges and the parking deck; read for proportion and tone from Gemeente Amsterdam panoramas (CC BY 4.0). No pixels or meshes imported."
+      },
+      "buildingFootprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.84988564,
+              52.39259641
+            ],
+            [
+              4.84987468,
+              52.39282176
+            ],
+            [
+              4.8498022,
+              52.39282068
+            ],
+            [
+              4.84980154,
+              52.3928392
+            ],
+            [
+              4.84977992,
+              52.39283882
+            ],
+            [
+              4.84978048,
+              52.39282302
+            ],
+            [
+              4.84922877,
+              52.39281396
+            ],
+            [
+              4.84870314,
+              52.39280531
+            ],
+            [
+              4.8486583,
+              52.39280456
+            ],
+            [
+              4.84817203,
+              52.39279651
+            ],
+            [
+              4.84758585,
+              52.39278679
+            ],
+            [
+              4.84758594,
+              52.39278448
+            ],
+            [
+              4.84748101,
+              52.39278273
+            ],
+            [
+              4.84745585,
+              52.3927823
+            ],
+            [
+              4.84746281,
+              52.39263278
+            ],
+            [
+              4.8474875,
+              52.39263318
+            ],
+            [
+              4.84748752,
+              52.39263285
+            ],
+            [
+              4.84748764,
+              52.39263018
+            ],
+            [
+              4.84748879,
+              52.3926044
+            ],
+            [
+              4.8474889,
+              52.39260183
+            ],
+            [
+              4.84750462,
+              52.39224876
+            ],
+            [
+              4.84769218,
+              52.39225173
+            ],
+            [
+              4.84769312,
+              52.39223463
+            ],
+            [
+              4.84771622,
+              52.39223508
+            ],
+            [
+              4.84771528,
+              52.39225209
+            ],
+            [
+              4.84832669,
+              52.39226178
+            ],
+            [
+              4.84832736,
+              52.39224533
+            ],
+            [
+              4.84835042,
+              52.39224566
+            ],
+            [
+              4.84834954,
+              52.39226214
+            ],
+            [
+              4.84858793,
+              52.39226592
+            ],
+            [
+              4.84990069,
+              52.39228678
+            ],
+            [
+              4.84989414,
+              52.39242082
+            ],
+            [
+              4.84989134,
+              52.39247224
+            ],
+            [
+              4.84988564,
+              52.39259641
+            ]
+          ]
+        ]
+      },
+      "buildingCategory": "landmark",
+      "bounds": {
+        "min": [
+          -65.29744720458984,
+          -1.1920929132713809e-8,
+          -28.33307456970215
+        ],
+        "max": [
+          98.93926239013672,
+          36.29999923706055,
+          34.270999908447266
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.84844388,
+          52.39256106
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 90,
+        "facadeBearingDegrees": 0,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 164.23670959472656,
+        "heightMetres": 36.29999924898148,
+        "depthMetres": 62.604074478149414,
+        "depthCoverage": 0.9456808833557313
+      },
+      "triangles": 20430,
+      "bytes": 250084,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
+      "lod1": {
+        "sourceHash": "00703acccf1cbad5",
+        "buildVersion": 2,
+        "bytes": 99688,
+        "triangles": 7189
+      }
+    },
+    "winkelcentrum-plein-40-45": {
+      "id": "winkelcentrum-plein-40-45",
+      "name": "Winkelcentrum Plein '40-'45 (2000)",
+      "modelUrl": "./models/winkelcentrum-plein-40-45.glb",
+      "suppressOsmIds": [
+        "NL.IMBAG.Pand.0363100012112179"
+      ],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.82277593,
+          52.38053255
+        ],
+        "headingDegrees": 0,
+        "lengthMetres": 156.6,
+        "widthMetres": 184.6
+      },
+      "surveyed": {
+        "anchor": [
+          4.82277593,
+          52.38053255
+        ],
+        "northOffsetDegrees": 0,
+        "source": "Vertex average of the BAG 0363100012112179 ring (RD, PDOK BAG WFS, CC0) in native east/south metres above the 3DBAG ground -0.64 m NAP (scripts/landmarks/winkelcentrum-plein-40-45-footprints.json, written by sarphati-plaza-prepare.ts --id=winkelcentrum-plein-40-45 --pand=0363100012112179). The south block, the garage, the north and west bars, the mall roof and its glass street from the 3DBAG LoD2.2 roof parts (CC BY 4.0). Balconies, windows, garage slots, the pergola, canopies and entrance frames measured on rectified Gemeente Amsterdam panorama crops (CC BY 4.0), per wall in scripts/landmarks/winkelcentrum-plein-40-45-inventory.json. The faces over the mall roof are inferred."
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 0,
+      "heightMetres": 24.7,
+      "bagYear": 2000,
+      "materialOverrides": {
+        "brick": "#634539",
+        "stone": "#c9c7c0",
+        "glass": "#4d5f6a",
+        "frame": "#2e3a48",
+        "ochre": "#c8a04a",
+        "blue": "#8796ab",
+        "bronze": "#2b2f33",
+        "concrete": "#9a9892",
+        "slate": "#5d6064",
+        "green": "#4f7a6e",
+        "pink": "#eeeeea",
+        "red": "#e07a1f",
+        "canopyGlass": "#9fb4bd"
+      },
+      "attribution": {
+        "title": "Winkelcentrum Plein '40-'45, Slotermeer (shopping centre with housing, 2000)",
+        "author": "Map Recall",
+        "sourceUrl": "https://api.data.amsterdam.nl/v1/bag/panden/0363100012112179",
+        "licence": "CC BY 4.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "modifications": "Original texture-free flat-colour geometry on the BAG footprint (CC0) with 3DBAG LoD2.2 heights (CC BY 4.0): the seven-storey south block with its staggered blue balconies and the mall undercroft, the brick garage with its rhythm of louvred slots, orange columns and shops, the north housing bar with its brick piers and white bays over shops, the grey office bar on the west under a pergola of raked beams, the orange entrance frames, the low mall with its glass street; read for proportion and tone from Gemeente Amsterdam panoramas (CC BY 4.0). No pixels or meshes imported."
+      },
+      "buildingFootprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.82399882,
+              52.38052013
+            ],
+            [
+              4.82397693,
+              52.38052343
+            ],
+            [
+              4.82403081,
+              52.38065332
+            ],
+            [
+              4.82405334,
+              52.38065
+            ],
+            [
+              4.82411271,
+              52.38079192
+            ],
+            [
+              4.82411213,
+              52.38079204
+            ],
+            [
+              4.8241129,
+              52.3807939
+            ],
+            [
+              4.8239366,
+              52.38082145
+            ],
+            [
+              4.82390102,
+              52.38082701
+            ],
+            [
+              4.82375871,
+              52.38084925
+            ],
+            [
+              4.823652,
+              52.38086592
+            ],
+            [
+              4.82358795,
+              52.38087593
+            ],
+            [
+              4.82352392,
+              52.38088593
+            ],
+            [
+              4.82342257,
+              52.38090177
+            ],
+            [
+              4.82342056,
+              52.38089677
+            ],
+            [
+              4.82341544,
+              52.38089769
+            ],
+            [
+              4.82341311,
+              52.38089148
+            ],
+            [
+              4.82341264,
+              52.38089156
+            ],
+            [
+              4.82332521,
+              52.3809054
+            ],
+            [
+              4.8233245,
+              52.38090551
+            ],
+            [
+              4.8233271,
+              52.3809114
+            ],
+            [
+              4.82332208,
+              52.38091215
+            ],
+            [
+              4.82332423,
+              52.38091719
+            ],
+            [
+              4.82303519,
+              52.38096255
+            ],
+            [
+              4.82288549,
+              52.38098604
+            ],
+            [
+              4.82288532,
+              52.38098564
+            ],
+            [
+              4.82245581,
+              52.38105287
+            ],
+            [
+              4.82242048,
+              52.38105843
+            ],
+            [
+              4.82241986,
+              52.38105696
+            ],
+            [
+              4.82238587,
+              52.38097605
+            ],
+            [
+              4.82238588,
+              52.38097605
+            ],
+            [
+              4.82238589,
+              52.38097607
+            ],
+            [
+              4.82238635,
+              52.38097597
+            ],
+            [
+              4.82242122,
+              52.38097048
+            ],
+            [
+              4.82242106,
+              52.38097011
+            ],
+            [
+              4.82242034,
+              52.38097022
+            ],
+            [
+              4.82237677,
+              52.38086763
+            ],
+            [
+              4.82277336,
+              52.3808061
+            ],
+            [
+              4.82280873,
+              52.38080056
+            ],
+            [
+              4.82286182,
+              52.38079237
+            ],
+            [
+              4.82287849,
+              52.38083161
+            ],
+            [
+              4.82291771,
+              52.3808255
+            ],
+            [
+              4.8229797,
+              52.38081583
+            ],
+            [
+              4.82287042,
+              52.38055432
+            ],
+            [
+              4.82286705,
+              52.38055476
+            ],
+            [
+              4.82286646,
+              52.38055273
+            ],
+            [
+              4.82283173,
+              52.38055812
+            ],
+            [
+              4.82255215,
+              52.38060149
+            ],
+            [
+              4.82258151,
+              52.38067171
+            ],
+            [
+              4.82258349,
+              52.38067644
+            ],
+            [
+              4.82231598,
+              52.38071812
+            ],
+            [
+              4.82228057,
+              52.38072364
+            ],
+            [
+              4.82228036,
+              52.38072314
+            ],
+            [
+              4.82226941,
+              52.38069691
+            ],
+            [
+              4.82219639,
+              52.38052188
+            ],
+            [
+              4.8221913,
+              52.38052225
+            ],
+            [
+              4.82219725,
+              52.38051601
+            ],
+            [
+              4.82219852,
+              52.38051906
+            ],
+            [
+              4.82223077,
+              52.38051404
+            ],
+            [
+              4.82222518,
+              52.38050061
+            ],
+            [
+              4.82220379,
+              52.38044919
+            ],
+            [
+              4.82219797,
+              52.38043522
+            ],
+            [
+              4.82216583,
+              52.38044022
+            ],
+            [
+              4.82216712,
+              52.38044329
+            ],
+            [
+              4.82215688,
+              52.38043968
+            ],
+            [
+              4.82216172,
+              52.38043893
+            ],
+            [
+              4.82216175,
+              52.38043893
+            ],
+            [
+              4.82200834,
+              52.38007078
+            ],
+            [
+              4.82200264,
+              52.38007167
+            ],
+            [
+              4.82200173,
+              52.3800699
+            ],
+            [
+              4.82200839,
+              52.38006886
+            ],
+            [
+              4.82198911,
+              52.38002262
+            ],
+            [
+              4.82198231,
+              52.38002367
+            ],
+            [
+              4.82198167,
+              52.38002197
+            ],
+            [
+              4.82198726,
+              52.3800211
+            ],
+            [
+              4.82198725,
+              52.38002106
+            ],
+            [
+              4.82187108,
+              52.37974293
+            ],
+            [
+              4.8218283,
+              52.3796405
+            ],
+            [
+              4.82211943,
+              52.37959469
+            ],
+            [
+              4.82224117,
+              52.37957554
+            ],
+            [
+              4.82227632,
+              52.37966021
+            ],
+            [
+              4.8224231,
+              52.37963739
+            ],
+            [
+              4.82240024,
+              52.37958266
+            ],
+            [
+              4.82283253,
+              52.37951446
+            ],
+            [
+              4.8235332,
+              52.37940483
+            ],
+            [
+              4.82363692,
+              52.37965246
+            ],
+            [
+              4.82372043,
+              52.37985234
+            ],
+            [
+              4.82372599,
+              52.37986565
+            ],
+            [
+              4.82399882,
+              52.38052013
+            ]
+          ]
+        ]
+      },
+      "buildingCategory": "landmark",
+      "bounds": {
+        "min": [
+          -66.86209106445312,
+          -9.536743306171047e-8,
+          -58.823795318603516
+        ],
+        "max": [
+          91.86074829101562,
+          24.700000762939453,
+          127.56558227539062
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.82277593,
+          52.38053255
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 90,
+        "facadeBearingDegrees": 0,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 186.38937759399414,
+        "heightMetres": 24.700000858306886,
+        "depthMetres": 158.72283935546875,
+        "depthCoverage": 0.8598203648725284
+      },
+      "triangles": 29792,
+      "bytes": 377872,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
+      "lod1": {
+        "sourceHash": "9c35e2f056b20ba3",
+        "buildVersion": 2,
+        "bytes": 175636,
+        "triangles": 12138
+      }
+    },
+    "andreas-ensemble": {
+      "id": "andreas-ensemble",
+      "name": "Andreas Ensemble block with the WestCord Fashion Hotel (2009)",
+      "modelUrl": "./models/andreas-ensemble.glb",
+      "suppressOsmIds": [
+        "w274869328",
+        "w1148325404",
+        "w1148325665",
+        "w1148325666"
+      ],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.84521378,
+          52.35733708
+        ],
+        "headingDegrees": 0,
+        "lengthMetres": 131.1,
+        "widthMetres": 68.7
+      },
+      "surveyed": {
+        "anchor": [
+          4.84521378,
+          52.35733708
+        ],
+        "northOffsetDegrees": 0,
+        "source": "Vertex average of the BAG 0363100012111082 ring (RD, PDOK BAG WFS, CC0) in native east/south metres above the 3DBAG ground -0.65 m NAP (scripts/landmarks/andreas-ensemble-footprints.json, written by sarphati-plaza-prepare.ts --id=andreas-ensemble --pand=0363100012111082). The north bar's five steps, the hotel tower, the west wing, the two pavilions and the deck from the 3DBAG LoD2.2 roof parts of all three building parts (CC BY 4.0). Windows, plinth bays, bands, loggias, balconies and lettering measured on rectified Gemeente Amsterdam panorama crops (CC BY 4.0), per wall in scripts/landmarks/andreas-ensemble-inventory.json, heights scaled per front to the 3DBAG roofs. The court faces over the deck are inferred."
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 0,
+      "heightMetres": 41,
+      "bagYear": 2009,
+      "materialOverrides": {
+        "brick": "#ae896d",
+        "sandstone": "#cfb283",
+        "greyBrick": "#7a7974",
+        "stone": "#a39d8a",
+        "glass": "#4f5b62",
+        "frame": "#33363a",
+        "ochre": "#a39c8c",
+        "bronze": "#4a4038",
+        "concrete": "#8e8b86",
+        "slate": "#5d6064",
+        "green": "#4a5e3c",
+        "pink": "#ecebe6",
+        "white": "#d9d7cf",
+        "blue": "#2e6466",
+        "dark": "#24272a",
+        "canopyGlass": "#a9b6b8"
+      },
+      "attribution": {
+        "title": "Andreas Ensemble, Nieuw-West (housing block with the WestCord Fashion Hotel, 2009)",
+        "author": "Map Recall",
+        "sourceUrl": "https://api.data.amsterdam.nl/v1/bag/panden/0363100012111082",
+        "licence": "CC BY 4.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "modifications": "Original texture-free flat-colour geometry on the BAG footprint (CC0) with 3DBAG LoD2.2 heights (CC BY 4.0): the stepped buff-brick bar on the Cornelis Lelylaan over its two-storey stone plinth of shops, glass-block bays and entrances, its French windows and stone ledges; the hotel tower with stone bands, bay windows, finned crown and its WestCord Fashion Hotel lettering; the west wing with its glazed hotel storey, stone bands and loggias; the two grey-brick pavilions with khaki-framed windows, corner balconies and set-back top storeys; the garden deck between them; read for proportion and tone from Gemeente Amsterdam panoramas (CC BY 4.0). No pixels or meshes imported."
+      },
+      "buildingFootprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.84620736,
+              52.35757994
+            ],
+            [
+              4.84620344,
+              52.3577327
+            ],
+            [
+              4.84611288,
+              52.35773183
+            ],
+            [
+              4.84604492,
+              52.35773112
+            ],
+            [
+              4.84563757,
+              52.35772726
+            ],
+            [
+              4.84556968,
+              52.35772672
+            ],
+            [
+              4.8449243,
+              52.35772053
+            ],
+            [
+              4.84485636,
+              52.35771984
+            ],
+            [
+              4.8445629,
+              52.3577171
+            ],
+            [
+              4.84446353,
+              52.35771617
+            ],
+            [
+              4.84428693,
+              52.35771452
+            ],
+            [
+              4.84428773,
+              52.3576812
+            ],
+            [
+              4.84430103,
+              52.35712547
+            ],
+            [
+              4.84430148,
+              52.35710684
+            ],
+            [
+              4.84447683,
+              52.35710855
+            ],
+            [
+              4.8444764,
+              52.35712719
+            ],
+            [
+              4.84455017,
+              52.35712792
+            ],
+            [
+              4.84457697,
+              52.35712818
+            ],
+            [
+              4.84457462,
+              52.35723151
+            ],
+            [
+              4.84501626,
+              52.35723569
+            ],
+            [
+              4.84501637,
+              52.35723155
+            ],
+            [
+              4.84501879,
+              52.35713318
+            ],
+            [
+              4.84501882,
+              52.35713212
+            ],
+            [
+              4.84511231,
+              52.35713299
+            ],
+            [
+              4.84517372,
+              52.35713357
+            ],
+            [
+              4.8451948,
+              52.35713377
+            ],
+            [
+              4.8453291,
+              52.35713502
+            ],
+            [
+              4.84535002,
+              52.35713521
+            ],
+            [
+              4.84541149,
+              52.35713578
+            ],
+            [
+              4.84550476,
+              52.35713665
+            ],
+            [
+              4.84550241,
+              52.35724028
+            ],
+            [
+              4.84572957,
+              52.35724242
+            ],
+            [
+              4.84573233,
+              52.35713857
+            ],
+            [
+              4.84590856,
+              52.35714021
+            ],
+            [
+              4.84604263,
+              52.35714146
+            ],
+            [
+              4.84621823,
+              52.3571431
+            ],
+            [
+              4.84621463,
+              52.35729555
+            ],
+            [
+              4.84620736,
+              52.35757994
+            ]
+          ]
+        ]
+      },
+      "buildingCategory": "landmark",
+      "bounds": {
+        "min": [
+          -63.0588493347168,
+          0,
+          -43.764991760253906
+        ],
+        "max": [
+          69.86145782470703,
+          41,
+          26.938894271850586
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.84521378,
+          52.35733708
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 90,
+        "facadeBearingDegrees": 0,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 132.92030715942383,
+        "heightMetres": 41,
+        "depthMetres": 70.70388603210449,
+        "depthCoverage": 1.0291686467555239
+      },
+      "triangles": 27376,
+      "bytes": 314880,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
+      "lod1": {
+        "sourceHash": "856de356f4f0c5c0",
+        "buildVersion": 2,
+        "bytes": 165916,
+        "triangles": 12171
+      }
     }
   }
 }

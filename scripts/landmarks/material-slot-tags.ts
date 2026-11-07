@@ -77,6 +77,9 @@ export const MATERIAL_SLOT_TAGS: Readonly<Record<string, Readonly<Record<string,
     gold: {slot: 'door', why: 'brown varnished wooden doors of the factory side parts (w01-248: the double door at n 39 and the door at n 62.6)'},
     copper: {slot: 'roofTile', why: 'red-brown pantiles on the dairy gable and its short roof (register 524830 "zadeldak met pannen", "dakschild met pannen")'},
   },
+  'andreas-ensemble': {
+    sandstone: {slot: 'brick', why: 'the WestCord Fashion Hotel tower: buff brick that reads ochre-yellow in sun (w12-90 sunlit brick #e4c9a0, Lab h 82; w06-90 upper storeys), drawn apart from the warm red-brown Lelylaan bar and west wing brick'},
+  },
 };
 
 /**

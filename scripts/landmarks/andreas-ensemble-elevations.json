@@ -1,0 +1,30 @@
+{
+ "id": "andreas-ensemble",
+ "countedBy": "lane #236 (opus) from the rectified panorama crops of the brief (w01-360 2025 at 12 m, w02-270 2021 and its full-height rectification tall/w02-0.jpg); glazed openings and doors only (the glass-block bays are not windows). Not a blind count; the integrator may re-count.",
+ "facades": [
+  {
+   "name": "north front, east module",
+   "bearing": 359.5,
+   "photo": "artifacts/landmark-briefs/andreas-ensemble/w01-360.jpg",
+   "rows": [6, 5, 10, 10, 10, 10, 10],
+   "symmetric": false,
+   "gables": 0,
+   "depthBand": 1.0,
+   "alongM": [0.2, 32.6],
+   "heightM": [0, 24.0],
+   "note": "w01-360 (2025-10-01, 25.3 px/m, the lower 21.5 m of the crop = 24.7 m of model at the north front's x1.15): plinth bays between stone piers every 5.42 m, six below (the second a dark door bay) and five above (the second bay is a closed dark panel); then five storeys of ten French windows: a group of five, blank brick, a group of five with stone ledges starting with a narrow 0.66 m window."
+  },
+  {
+   "name": "west wing front",
+   "bearing": 269.5,
+   "photo": "artifacts/landmark-briefs/andreas-ensemble/tall/w02-0.jpg",
+   "rows": [12, 11, 5, 12, 12, 12, 12],
+   "symmetric": false,
+   "gables": 0,
+   "depthBand": 3.2,
+   "alongM": [13.5, 67.4],
+   "heightM": [0, 22.0],
+   "note": "tall/w02-0 (2021-07-07, 25 px/m, heights x0.893 to the 3DBAG roof): the wing starts 13.3 m from the north corner (the tower is 13.3 m deep on this front). Ground six shop windows, the garage entrance, three garage doors and two doors; the stone first storey eleven French windows (none under the first column); the glazed hotel storey along the north half plus four windows south of it; four brick storeys of twelve French windows every 4.5 m. depthBand 3.2 keeps the 3 m deep garage entrance. The two loggia storeys above 22 m are outside the band."
+  }
+ ]
+}
