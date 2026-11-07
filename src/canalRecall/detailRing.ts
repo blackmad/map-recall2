@@ -98,3 +98,28 @@ export function detailBlock(rider: LngLat, direction: readonly [number, number] 
   }
   return { x, y, dx, dy, keys };
 }
+
+/**
+ * `?detailFreezeAerial=0` (or `window.__canalRecallDetailFreezeAerial = false`): the detail block follows the camera
+ * subject from the air as it did before lane R3-G (#242).
+ */
+export function detailFreezeAerialEnabled(): boolean {
+  try {
+    const g = globalThis as { __canalRecallDetailFreezeAerial?: boolean; location?: { search?: string } };
+    if (g.__canalRecallDetailFreezeAerial === false) return false;
+    return new URLSearchParams(g.location?.search ?? '').get('detailFreezeAerial') !== '0';
+  } catch { return true; }
+}
+
+/**
+ * Lane R3-G (#242): from the air (rendererShared/aerialView.ts `isAerialView`) the detail block keeps its last plan.
+ * Panning at ~150 m eye height moved the camera subject across z16 tile edges continuously, and every move built,
+ * uploaded and dissolved detail tiles (plus their extras and trees) whose difference from the coarse shell is a few
+ * pixels from that height: the user's "pop-in" and most of a 3-minute pan's 17.8 GB of uploads. True: keep the
+ * previous block (no new tiles, the resident ones stay, linger unbounded). False: plan from the current subject — on
+ * the ground, on leaving the air (landing, or the camera reattaching), when there is no previous block yet (a ride
+ * that starts aerial plans once at its entry pose), and always with `?detailFreezeAerial=0`.
+ */
+export function detailBlockFrozen(previous: DetailBlock | null, aerial: boolean, enabled = true): boolean {
+  return enabled && aerial && previous !== null;
+}

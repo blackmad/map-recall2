@@ -57,7 +57,7 @@ import { boundingSphereOf } from './geometryBounds.js';
 import { cutMesh, disposeTiles, growTileSpheres } from './rendererShared/tiledGeometry.js';
 import { finishTiles, type PlannedTile } from './ownGround/cellTiles.js';
 import { MotionEstimate, aheadRank, lookAheadEnabled } from './streamingLookAhead.js';
-import { DETAIL_LEAD_M, DETAIL_LEAD_M_TOUCH, DETAIL_MAX_TILES, DETAIL_MAX_TILES_TOUCH, detailBlock, detailLingerEnabled, type DetailBlock } from './detailRing.js';
+import { DETAIL_LEAD_M, DETAIL_LEAD_M_TOUCH, DETAIL_MAX_TILES, DETAIL_MAX_TILES_TOUCH, detailBlock, detailBlockFrozen, detailFreezeAerialEnabled, detailLingerEnabled, type DetailBlock } from './detailRing.js';
 import { ROUTE_AHEAD_M, ROUTE_AHEAD_MAX_TILES, headingAheadTiles, routeAheadEnabled, routeAheadTiles, withAhead } from './engine/routeAhead.js';
 import { worldCameraOf } from './engine/worldCameraOf.js';
 import type { WorldCamera } from './engine/worldViewApi.js';
@@ -1135,11 +1135,14 @@ export class ThreeBuildings {
   /**
    * Detail follows the rider; touch devices use a smaller z17 neighbourhood.
    * Cheap to call every frame; regroups only when that block changes.
+   * `aerial` (rendererShared/aerialView.ts, passed by the own engine): the block keeps its last plan from the air
+   * (detailRing.ts detailBlockFrozen, lane R3-G #242; `?detailFreezeAerial=0` follows the subject as before).
    */
-  setDetailCentre(lng: number, lat: number): void {
+  setDetailCentre(lng: number, lat: number, aerial = false): void {
     const on = this.lookAheadOn ??= lookAheadEnabled();
     this.rider = [lng, lat];
     if (on) this.motion.update(lng, lat, performance.now());
+    if (detailBlockFrozen(this.detailBlockState, aerial, this.detailFreezeOn ??= detailFreezeAerialEnabled())) return;
     // Look-ahead (default): the block leads the rider, flips sides with hysteresis and lets tiles it leaves linger
     // (detailRing.ts); `?lookAhead=0` is the old rider-centred block with a hard midline.
     const touch = this.detailZoom >= 17 && (this.detailLingerOn ??= detailLingerEnabled());
@@ -1156,9 +1159,12 @@ export class ThreeBuildings {
     this.setFeatures(this.lastFeatures);
   }
   private rider: [number, number] | null = null;
+  /** Detail (`near:`) chunks installed so far, for the aerial pan harness (scripts/aerial-pan.mjs `detailInstalls`). */
+  detailInstalls = 0;
   private readonly motion = new MotionEstimate();
   private routeAheadOn: boolean | undefined;
   private detailLingerOn: boolean | undefined;
+  private detailFreezeOn: boolean | undefined;
   /** The planned route (lng/lat), for the route-ahead prefetch; null in Free Ride. */
   private route: [number, number][] | null = null;
   private readonly routeCursor = { index: -1 };
@@ -1599,6 +1605,7 @@ export class ThreeBuildings {
       this.chunks.delete(key);
     }
     this.dropChunk(key, false, crossFade);
+    if (key.startsWith('near:')) this.detailInstalls++;
     if (!chunk.vertexCount) { this.dropOutgoing(key); this.chunks.set(key, { source, mesh: null, info: infoOf(chunk), ranges: new Map() }); if (key.startsWith('near:')) this.refreshDetailOwnership(); return; }
     const THREE = this.THREE;
     const geometry = new THREE.BufferGeometry();
