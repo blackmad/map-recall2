@@ -168,7 +168,7 @@ export function recolourFaces(source: { positions: ArrayLike<number>; indices: A
 
 /** For each simplified face, the source face under it (see recolourFaces). */
 export function nearestSourceFaces(source: { positions: ArrayLike<number>; indices: ArrayLike<number> },
-  out: { positions: ArrayLike<number>; indices: ArrayLike<number> }): Int32Array {
+  out: { positions: ArrayLike<number>; indices: ArrayLike<number> }, classOf?: (sourceFace: number) => number): Int32Array {
   const sp = source.positions, si = source.indices, triangles = si.length / 3;
   let min = [Infinity, Infinity, Infinity], max = [-Infinity, -Infinity, -Infinity];
   for (let i = 0; i < sp.length; i += 3) for (let k = 0; k < 3; k++) { min[k] = Math.min(min[k], sp[i + k]); max[k] = Math.max(max[k], sp[i + k]); }
@@ -191,10 +191,9 @@ export function nearestSourceFaces(source: { positions: ArrayLike<number>; indic
   const vertex = (t: number, j: number) => { const i = si[t * 3 + j] * 3; return [sp[i], sp[i + 1], sp[i + 2]]; };
   const op = out.positions, oi = out.indices, faces = oi.length / 3, result = new Int32Array(faces);
   const seen = new Int32Array(triangles).fill(-1);
-  for (let f = 0; f < faces; f++) {
-    const a = oi[f * 3], b = oi[f * 3 + 1], c = oi[f * 3 + 2];
-    const centre = [0, 1, 2].map(k => (op[a * 3 + k] + op[b * 3 + k] + op[c * 3 + k]) / 3);
-    const n = unitNormal(op, a, b, c);
+  let stamp = 0;
+  const nearest = (centre: number[], n: number[]): number => {
+    const f = stamp++;
     const home = [0, 1, 2].map(k => cellOf(centre[k], k));
     let bestAligned = -1, bestAlignedD = Infinity, bestAny = -1, bestAnyD = Infinity;
     for (let ring = 0; ring <= Math.max(...dims); ring++) {
@@ -216,7 +215,27 @@ export function nearestSourceFaces(source: { positions: ArrayLike<number>; indic
       if (bestAligned < 0 && bestAny >= 0 && ring >= 2 && bestAnyD <= reach * reach) break;
     }
     const t = bestAligned >= 0 && bestAlignedD <= Math.max(bestAnyD, (2 * cell) ** 2) ? bestAligned : bestAny;
-    result[f] = Math.max(0, t);
+    return Math.max(0, t);
+  };
+  // With `classOf` (the material), a face takes the class most of seven points on it land on (centroid, three
+  // towards the corners, three towards the edges; the centroid breaks ties): one centroid over a window recess
+  // painted a whole simplified tower face dark (Westerkerk, lane R4-B strips).
+  const WEIGHTS = [[1 / 3, 1 / 3, 1 / 3], [0.6, 0.2, 0.2], [0.2, 0.6, 0.2], [0.2, 0.2, 0.6], [0.4, 0.4, 0.2], [0.2, 0.4, 0.4], [0.4, 0.2, 0.4]];
+  for (let f = 0; f < faces; f++) {
+    const a = oi[f * 3], b = oi[f * 3 + 1], c = oi[f * 3 + 2];
+    const n = unitNormal(op, a, b, c);
+    const at = (w: number[]) => [0, 1, 2].map(k => op[a * 3 + k] * w[0] + op[b * 3 + k] * w[1] + op[c * 3 + k] * w[2]);
+    const centroid = nearest(at(WEIGHTS[0]), n);
+    if (!classOf) { result[f] = centroid; continue; }
+    const votes = new Map<number, { count: number; face: number }>();
+    for (let w = 0; w < WEIGHTS.length; w++) {
+      const t = w === 0 ? centroid : nearest(at(WEIGHTS[w]), n), cls = classOf(t);
+      const v = votes.get(cls); if (v) v.count++; else votes.set(cls, { count: 1, face: t });
+    }
+    const mine = classOf(centroid);
+    let best = votes.get(mine)!, bestCls = mine;
+    for (const [cls, v] of votes) if (v.count > best.count) { best = v; bestCls = cls; }
+    result[f] = bestCls === mine ? centroid : best.face;
   }
   return result;
 }
@@ -358,7 +377,9 @@ async function bakeLod2(io: Io, id: string, source: string, output: string, rati
   // dresses them as it dresses the full model (city look slots, Lambert), then merges them into one mesh.
   const facePositions = new Float32Array(kept.length * 3);
   for (let i = 0; i < kept.length; i++) facePositions.set(weldedPositions.subarray(kept[i] * 3, kept[i] * 3 + 3), i * 3);
-  const nearest = nearestSourceFaces(faces, { positions: facePositions, indices: Uint32Array.from({ length: kept.length }, (_, i) => i) });
+  const materialIds = new Map<Material | null, number>();
+  const classOf = (t: number) => { const m = faces.faceMaterials[t]; let id = materialIds.get(m); if (id === undefined) materialIds.set(m, id = materialIds.size); return id; };
+  const nearest = nearestSourceFaces(faces, { positions: facePositions, indices: Uint32Array.from({ length: kept.length }, (_, i) => i) }, classOf);
   const byMaterial = new Map<Material | null, number[]>();
   for (let f = 0; f < nearest.length; f++) {
     const m = faces.faceMaterials[nearest[f]];

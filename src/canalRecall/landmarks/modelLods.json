@@ -6,15 +6,15 @@
   "triangles": 2646,
   "lod2": {
    "sourceHash": "af0caa99560518f7",
-   "buildVersion": 5,
-   "bytes": 11328,
+   "buildVersion": 6,
+   "bytes": 11316,
    "triangles": 311
   }
  },
  "figure-decoupee": {
   "lod2": {
    "sourceHash": "5a6de85a03cf46a9",
-   "buildVersion": 5,
+   "buildVersion": 6,
    "bytes": 2360,
    "triangles": 16
   }
@@ -22,7 +22,7 @@
  "joods-verzetsmonument": {
   "lod2": {
    "sourceHash": "68b174d90bf04162",
-   "buildVersion": 5,
+   "buildVersion": 6,
    "bytes": 2628,
    "triangles": 14
   }
@@ -34,8 +34,8 @@
   "triangles": 16460,
   "lod2": {
    "sourceHash": "7e828db6c9d7e0ad",
-   "buildVersion": 5,
-   "bytes": 68612,
+   "buildVersion": 6,
+   "bytes": 67952,
    "triangles": 4858
   }
  },
@@ -46,8 +46,8 @@
   "triangles": 4588,
   "lod2": {
    "sourceHash": "ac59800ea37889ed",
-   "buildVersion": 5,
-   "bytes": 20184,
+   "buildVersion": 6,
+   "bytes": 20172,
    "triangles": 1039
   }
  },
@@ -58,7 +58,7 @@
   "triangles": 1012,
   "lod2": {
    "sourceHash": "5c6fd1051011658b",
-   "buildVersion": 5,
+   "buildVersion": 6,
    "bytes": 4688,
    "triangles": 120
   }
@@ -70,8 +70,8 @@
   "triangles": 2567,
   "lod2": {
    "sourceHash": "5cf8026a0b067b36",
-   "buildVersion": 5,
-   "bytes": 31288,
+   "buildVersion": 6,
+   "bytes": 31304,
    "triangles": 1477
   }
  },
@@ -82,8 +82,8 @@
   "triangles": 5002,
   "lod2": {
    "sourceHash": "e25cd1845b99b169",
-   "buildVersion": 5,
-   "bytes": 14408,
+   "buildVersion": 6,
+   "bytes": 14424,
    "triangles": 629
   }
  },
@@ -94,8 +94,8 @@
   "triangles": 4749,
   "lod2": {
    "sourceHash": "0b3213c7240b8985",
-   "buildVersion": 5,
-   "bytes": 15384,
+   "buildVersion": 6,
+   "bytes": 14900,
    "triangles": 583
   }
  },
@@ -106,8 +106,8 @@
   "triangles": 6909,
   "lod2": {
    "sourceHash": "4522b3dbb1ecf576",
-   "buildVersion": 5,
-   "bytes": 102124,
+   "buildVersion": 6,
+   "bytes": 101676,
    "triangles": 6049
   }
  },
@@ -118,8 +118,8 @@
   "triangles": 1154,
   "lod2": {
    "sourceHash": "705002e5ff4d04dd",
-   "buildVersion": 5,
-   "bytes": 5308,
+   "buildVersion": 6,
+   "bytes": 5284,
    "triangles": 116
   }
  },
@@ -130,8 +130,8 @@
   "triangles": 4631,
   "lod2": {
    "sourceHash": "a3168550ec318afd",
-   "buildVersion": 5,
-   "bytes": 122324,
+   "buildVersion": 6,
+   "bytes": 122704,
    "triangles": 6950
   }
  },
@@ -142,7 +142,7 @@
   "triangles": 1080,
   "lod2": {
    "sourceHash": "e75a89af6d620770",
-   "buildVersion": 5,
+   "buildVersion": 6,
    "bytes": 4728,
    "triangles": 110
   }
@@ -154,8 +154,8 @@
   "triangles": 4797,
   "lod2": {
    "sourceHash": "29cc7723458acc71",
-   "buildVersion": 5,
-   "bytes": 26748,
+   "buildVersion": 6,
+   "bytes": 26736,
    "triangles": 1315
   }
  },
@@ -166,8 +166,8 @@
   "triangles": 7231,
   "lod2": {
    "sourceHash": "6bbde10baab9fa29",
-   "buildVersion": 5,
-   "bytes": 88216,
+   "buildVersion": 6,
+   "bytes": 88124,
    "triangles": 5428
   }
  },
@@ -178,8 +178,8 @@
   "triangles": 2770,
   "lod2": {
    "sourceHash": "5faf5b6d479c4a92",
-   "buildVersion": 5,
-   "bytes": 15876,
+   "buildVersion": 6,
+   "bytes": 15900,
    "triangles": 616
   }
  },
@@ -190,8 +190,8 @@
   "triangles": 1426,
   "lod2": {
    "sourceHash": "1801a0a49bb84609",
-   "buildVersion": 5,
-   "bytes": 7436,
+   "buildVersion": 6,
+   "bytes": 7776,
    "triangles": 256
   }
  },
@@ -202,16 +202,16 @@
   "triangles": 1911,
   "lod2": {
    "sourceHash": "45c6b9a10742979b",
-   "buildVersion": 5,
-   "bytes": 30960,
+   "buildVersion": 6,
+   "bytes": 30548,
    "triangles": 1479
   }
  },
  "muziekgebouw-bimhuis": {
   "lod2": {
    "sourceHash": "b165abe32c0d0af1",
-   "buildVersion": 5,
-   "bytes": 5036,
+   "buildVersion": 6,
+   "bytes": 5028,
    "triangles": 72
   }
  },
@@ -222,7 +222,7 @@
   "triangles": 2763,
   "lod2": {
    "sourceHash": "464243c07bd2cb6f",
-   "buildVersion": 5,
+   "buildVersion": 6,
    "bytes": 8988,
    "triangles": 475
   }
@@ -234,16 +234,16 @@
   "triangles": 3814,
   "lod2": {
    "sourceHash": "844cf40bd35b8f8e",
-   "buildVersion": 5,
-   "bytes": 10644,
+   "buildVersion": 6,
+   "bytes": 10520,
    "triangles": 564
   }
  },
  "van-gogh-museum": {
   "lod2": {
    "sourceHash": "0b663a1c7450e894",
-   "buildVersion": 5,
-   "bytes": 5736,
+   "buildVersion": 6,
+   "bytes": 5368,
    "triangles": 124
   }
  },
@@ -254,8 +254,8 @@
   "triangles": 4903,
   "lod2": {
    "sourceHash": "d593f2e6b70f3b8f",
-   "buildVersion": 5,
-   "bytes": 28040,
+   "buildVersion": 6,
+   "bytes": 27992,
    "triangles": 1500
   }
  },
@@ -266,8 +266,8 @@
   "triangles": 3298,
   "lod2": {
    "sourceHash": "f5963924108a152e",
-   "buildVersion": 5,
-   "bytes": 7752,
+   "buildVersion": 6,
+   "bytes": 7640,
    "triangles": 264
   }
  },
@@ -278,8 +278,8 @@
   "triangles": 4244,
   "lod2": {
    "sourceHash": "1f9f41629833d4c5",
-   "buildVersion": 5,
-   "bytes": 11752,
+   "buildVersion": 6,
+   "bytes": 11768,
    "triangles": 552
   }
  },
@@ -290,8 +290,8 @@
   "triangles": 2930,
   "lod2": {
    "sourceHash": "e17fa33f00b2662b",
-   "buildVersion": 5,
-   "bytes": 10704,
+   "buildVersion": 6,
+   "bytes": 11080,
    "triangles": 356
   }
  },
@@ -302,7 +302,7 @@
   "triangles": 842,
   "lod2": {
    "sourceHash": "00b0beaeb4309cbf",
-   "buildVersion": 5,
+   "buildVersion": 6,
    "bytes": 5804,
    "triangles": 126
   }
@@ -314,16 +314,16 @@
   "triangles": 572,
   "lod2": {
    "sourceHash": "5ce89164c61afca0",
-   "buildVersion": 5,
-   "bytes": 4372,
+   "buildVersion": 6,
+   "bytes": 4368,
    "triangles": 70
   }
  },
  "melkweg": {
   "lod2": {
    "sourceHash": "c316c1a16e1e79c2",
-   "buildVersion": 5,
-   "bytes": 4256,
+   "buildVersion": 6,
+   "bytes": 4252,
    "triangles": 68
   }
  },
@@ -334,15 +334,15 @@
   "triangles": 2941,
   "lod2": {
    "sourceHash": "59a513770337b2cb",
-   "buildVersion": 5,
-   "bytes": 13220,
+   "buildVersion": 6,
+   "bytes": 13592,
    "triangles": 697
   }
  },
  "embassy-free-mind": {
   "lod2": {
    "sourceHash": "1f524a90878f8b55",
-   "buildVersion": 5,
+   "buildVersion": 6,
    "bytes": 6108,
    "triangles": 160
   }
@@ -354,7 +354,7 @@
   "triangles": 908,
   "lod2": {
    "sourceHash": "7f4aae83c2b2ffd3",
-   "buildVersion": 5,
+   "buildVersion": 6,
    "bytes": 5156,
    "triangles": 74
   }
@@ -366,7 +366,7 @@
   "triangles": 3263,
   "lod2": {
    "sourceHash": "5d32162e58b46fa2",
-   "buildVersion": 5,
+   "buildVersion": 6,
    "bytes": 14960,
    "triangles": 363
   }
@@ -378,7 +378,7 @@
   "triangles": 3896,
   "lod2": {
    "sourceHash": "01f1b99a123fc64a",
-   "buildVersion": 5,
+   "buildVersion": 6,
    "bytes": 11060,
    "triangles": 476
   }
@@ -390,8 +390,8 @@
   "triangles": 708,
   "lod2": {
    "sourceHash": "d128fa40815d1320",
-   "buildVersion": 5,
-   "bytes": 6292,
+   "buildVersion": 6,
+   "bytes": 6308,
    "triangles": 136
   }
  },
@@ -402,8 +402,8 @@
   "triangles": 542,
   "lod2": {
    "sourceHash": "d525f9e9ea4b80ec",
-   "buildVersion": 5,
-   "bytes": 4320,
+   "buildVersion": 6,
+   "bytes": 4312,
    "triangles": 66
   }
  },
@@ -414,7 +414,7 @@
   "triangles": 1268,
   "lod2": {
    "sourceHash": "b2304095772064be",
-   "buildVersion": 5,
+   "buildVersion": 6,
    "bytes": 4032,
    "triangles": 72
   }
@@ -422,8 +422,8 @@
  "anne-frank-house": {
   "lod2": {
    "sourceHash": "d626cc976cdc33bc",
-   "buildVersion": 5,
-   "bytes": 3568,
+   "buildVersion": 6,
+   "bytes": 3564,
    "triangles": 48
   }
  },
@@ -434,8 +434,8 @@
   "triangles": 742,
   "lod2": {
    "sourceHash": "9d89f4040576047a",
-   "buildVersion": 5,
-   "bytes": 4268,
+   "buildVersion": 6,
+   "bytes": 4992,
    "triangles": 66
   }
  },
@@ -446,16 +446,16 @@
   "triangles": 652,
   "lod2": {
    "sourceHash": "e969f768f954c70c",
-   "buildVersion": 5,
-   "bytes": 4588,
+   "buildVersion": 6,
+   "bytes": 4608,
    "triangles": 66
   }
  },
  "museum-van-loon": {
   "lod2": {
    "sourceHash": "80cffff2239f5b0a",
-   "buildVersion": 5,
-   "bytes": 5864,
+   "buildVersion": 6,
+   "bytes": 5860,
    "triangles": 104
   }
  },
@@ -466,7 +466,7 @@
   "triangles": 1216,
   "lod2": {
    "sourceHash": "7000cb45aa29d746",
-   "buildVersion": 5,
+   "buildVersion": 6,
    "bytes": 4840,
    "triangles": 100
   }
@@ -478,7 +478,7 @@
   "triangles": 1235,
   "lod2": {
    "sourceHash": "a6e7133c8cf673b9",
-   "buildVersion": 5,
+   "buildVersion": 6,
    "bytes": 6264,
    "triangles": 153
   }
@@ -490,7 +490,7 @@
   "triangles": 564,
   "lod2": {
    "sourceHash": "a18190b20a25c9a5",
-   "buildVersion": 5,
+   "buildVersion": 6,
    "bytes": 4008,
    "triangles": 74
   }
@@ -502,8 +502,8 @@
   "triangles": 4974,
   "lod2": {
    "sourceHash": "cbaf7d141ccf0ad1",
-   "buildVersion": 5,
-   "bytes": 14812,
+   "buildVersion": 6,
+   "bytes": 14824,
    "triangles": 621
   }
  },
@@ -514,16 +514,16 @@
   "triangles": 4579,
   "lod2": {
    "sourceHash": "6b781592a63cd5d7",
-   "buildVersion": 5,
-   "bytes": 19100,
+   "buildVersion": 6,
+   "bytes": 19416,
    "triangles": 941
   }
  },
  "rialto": {
   "lod2": {
    "sourceHash": "956f5bc48609ca1a",
-   "buildVersion": 5,
-   "bytes": 3500,
+   "buildVersion": 6,
+   "bytes": 3508,
    "triangles": 24
   }
  },
@@ -534,8 +534,8 @@
   "triangles": 1452,
   "lod2": {
    "sourceHash": "56065f9d3b58bb67",
-   "buildVersion": 5,
-   "bytes": 11976,
+   "buildVersion": 6,
+   "bytes": 11608,
    "triangles": 463
   }
  },
@@ -546,8 +546,8 @@
   "triangles": 4497,
   "lod2": {
    "sourceHash": "3997d133fbb0e19a",
-   "buildVersion": 5,
-   "bytes": 30216,
+   "buildVersion": 6,
+   "bytes": 30236,
    "triangles": 1485
   }
  },
@@ -558,8 +558,8 @@
   "triangles": 1058,
   "lod2": {
    "sourceHash": "297078e45465e2cc",
-   "buildVersion": 5,
-   "bytes": 7524,
+   "buildVersion": 6,
+   "bytes": 7880,
    "triangles": 235
   }
  },
@@ -570,8 +570,8 @@
   "triangles": 1354,
   "lod2": {
    "sourceHash": "7f98a62276012210",
-   "buildVersion": 5,
-   "bytes": 10296,
+   "buildVersion": 6,
+   "bytes": 10268,
    "triangles": 430
   }
  },
@@ -582,7 +582,7 @@
   "triangles": 948,
   "lod2": {
    "sourceHash": "65b1a1fc35bd541d",
-   "buildVersion": 5,
+   "buildVersion": 6,
    "bytes": 5008,
    "triangles": 154
   }
@@ -594,8 +594,8 @@
   "triangles": 932,
   "lod2": {
    "sourceHash": "7722dbfe0633ea77",
-   "buildVersion": 5,
-   "bytes": 5508,
+   "buildVersion": 6,
+   "bytes": 5124,
    "triangles": 90
   }
  },
@@ -606,8 +606,8 @@
   "triangles": 4849,
   "lod2": {
    "sourceHash": "5ee4be33beed348c",
-   "buildVersion": 5,
-   "bytes": 21328,
+   "buildVersion": 6,
+   "bytes": 21168,
    "triangles": 1158
   }
  },
@@ -618,8 +618,8 @@
   "triangles": 1292,
   "lod2": {
    "sourceHash": "d3f0cb103c5247c4",
-   "buildVersion": 5,
-   "bytes": 5492,
+   "buildVersion": 6,
+   "bytes": 5496,
    "triangles": 118
   }
  },
@@ -630,16 +630,16 @@
   "triangles": 649,
   "lod2": {
    "sourceHash": "7fe4971edc2a0b5c",
-   "buildVersion": 5,
-   "bytes": 5264,
+   "buildVersion": 6,
+   "bytes": 5260,
    "triangles": 104
   }
  },
  "de-papegaai": {
   "lod2": {
    "sourceHash": "819db8b35d2d2ede",
-   "buildVersion": 5,
-   "bytes": 4284,
+   "buildVersion": 6,
+   "bytes": 3876,
    "triangles": 76
   }
  },
@@ -650,8 +650,8 @@
   "triangles": 1661,
   "lod2": {
    "sourceHash": "00dccd677959bdce",
-   "buildVersion": 5,
-   "bytes": 8356,
+   "buildVersion": 6,
+   "bytes": 8328,
    "triangles": 280
   }
  },
@@ -662,8 +662,8 @@
   "triangles": 1112,
   "lod2": {
    "sourceHash": "22e4977c97d55677",
-   "buildVersion": 5,
-   "bytes": 5180,
+   "buildVersion": 6,
+   "bytes": 5552,
    "triangles": 167
   }
  },
@@ -674,8 +674,8 @@
   "triangles": 5398,
   "lod2": {
    "sourceHash": "e5b49b2b94517146",
-   "buildVersion": 5,
-   "bytes": 13512,
+   "buildVersion": 6,
+   "bytes": 13484,
    "triangles": 680
   }
  },
@@ -686,8 +686,8 @@
   "triangles": 5225,
   "lod2": {
    "sourceHash": "f69b3ebc3dd33061",
-   "buildVersion": 5,
-   "bytes": 16108,
+   "buildVersion": 6,
+   "bytes": 16068,
    "triangles": 1050
   }
  },
@@ -698,8 +698,8 @@
   "triangles": 2358,
   "lod2": {
    "sourceHash": "439fb139097329a9",
-   "buildVersion": 5,
-   "bytes": 8644,
+   "buildVersion": 6,
+   "bytes": 8656,
    "triangles": 277
   }
  },
@@ -710,8 +710,8 @@
   "triangles": 818,
   "lod2": {
    "sourceHash": "8e49862cadb52062",
-   "buildVersion": 5,
-   "bytes": 4924,
+   "buildVersion": 6,
+   "bytes": 4928,
    "triangles": 101
   }
  },
@@ -722,8 +722,8 @@
   "triangles": 4123,
   "lod2": {
    "sourceHash": "5f6794a6b798da4b",
-   "buildVersion": 5,
-   "bytes": 9176,
+   "buildVersion": 6,
+   "bytes": 9124,
    "triangles": 300
   }
  },
@@ -734,15 +734,15 @@
   "triangles": 2797,
   "lod2": {
    "sourceHash": "77a79d26675ebeba",
-   "buildVersion": 5,
-   "bytes": 9552,
+   "buildVersion": 6,
+   "bytes": 9528,
    "triangles": 380
   }
  },
  "homomonument": {
   "lod2": {
    "sourceHash": "22389b882ba0f541",
-   "buildVersion": 5,
+   "buildVersion": 6,
    "bytes": 2148,
    "triangles": 6
   }
@@ -754,15 +754,15 @@
   "triangles": 1941,
   "lod2": {
    "sourceHash": "ca2663737e6c853f",
-   "buildVersion": 5,
-   "bytes": 8056,
+   "buildVersion": 6,
+   "bytes": 7680,
    "triangles": 256
   }
  },
  "artis-entrance": {
   "lod2": {
    "sourceHash": "b2d6b88f32155935",
-   "buildVersion": 5,
+   "buildVersion": 6,
    "bytes": 3372,
    "triangles": 36
   }
@@ -774,15 +774,15 @@
   "triangles": 2645,
   "lod2": {
    "sourceHash": "f35af2e1c1817ee3",
-   "buildVersion": 5,
-   "bytes": 16404,
+   "buildVersion": 6,
+   "bytes": 16372,
    "triangles": 737
   }
  },
  "arcam": {
   "lod2": {
    "sourceHash": "14011d4bd844b10e",
-   "buildVersion": 5,
+   "buildVersion": 6,
    "bytes": 4744,
    "triangles": 98
   }
@@ -794,8 +794,8 @@
   "triangles": 1014,
   "lod2": {
    "sourceHash": "c19ff3188928724a",
-   "buildVersion": 5,
-   "bytes": 6272,
+   "buildVersion": 6,
+   "bytes": 6248,
    "triangles": 185
   }
  },
@@ -806,8 +806,8 @@
   "triangles": 990,
   "lod2": {
    "sourceHash": "a19378d527ed6f54",
-   "buildVersion": 5,
-   "bytes": 7184,
+   "buildVersion": 6,
+   "bytes": 6772,
    "triangles": 208
   }
  },
@@ -818,7 +818,7 @@
   "triangles": 809,
   "lod2": {
    "sourceHash": "07d521812305b3fa",
-   "buildVersion": 5,
+   "buildVersion": 6,
    "bytes": 5440,
    "triangles": 98
   }
@@ -830,8 +830,8 @@
   "triangles": 5000,
   "lod2": {
    "sourceHash": "bfe1bfae73cf795a",
-   "buildVersion": 5,
-   "bytes": 10716,
+   "buildVersion": 6,
+   "bytes": 10636,
    "triangles": 487
   }
  },
@@ -842,7 +842,7 @@
   "triangles": 2695,
   "lod2": {
    "sourceHash": "597d0a5418466dd6",
-   "buildVersion": 5,
+   "buildVersion": 6,
    "bytes": 8012,
    "triangles": 287
   }
@@ -854,7 +854,7 @@
   "triangles": 1432,
   "lod2": {
    "sourceHash": "f225ef38745508da",
-   "buildVersion": 5,
+   "buildVersion": 6,
    "bytes": 7380,
    "triangles": 149
   }
@@ -862,8 +862,8 @@
  "agnietenkapel": {
   "lod2": {
    "sourceHash": "0105a37aacfc4f0c",
-   "buildVersion": 5,
-   "bytes": 3540,
+   "buildVersion": 6,
+   "bytes": 3532,
    "triangles": 64
   }
  },
@@ -874,15 +874,15 @@
   "triangles": 2836,
   "lod2": {
    "sourceHash": "79ac4b5b88e8bc12",
-   "buildVersion": 5,
-   "bytes": 6504,
+   "buildVersion": 6,
+   "bytes": 6472,
    "triangles": 200
   }
  },
  "occii": {
   "lod2": {
    "sourceHash": "21666dc8bcb61554",
-   "buildVersion": 5,
+   "buildVersion": 6,
    "bytes": 4408,
    "triangles": 58
   }
@@ -894,8 +894,8 @@
   "triangles": 970,
   "lod2": {
    "sourceHash": "912ec931af099c42",
-   "buildVersion": 5,
-   "bytes": 5468,
+   "buildVersion": 6,
+   "bytes": 5100,
    "triangles": 121
   }
  },
@@ -906,8 +906,8 @@
   "triangles": 5223,
   "lod2": {
    "sourceHash": "43ee6f41800cb7a6",
-   "buildVersion": 5,
-   "bytes": 23048,
+   "buildVersion": 6,
+   "bytes": 23040,
    "triangles": 1486
   }
  },
@@ -918,8 +918,8 @@
   "triangles": 1283,
   "lod2": {
    "sourceHash": "65a0b4eb809caef4",
-   "buildVersion": 5,
-   "bytes": 11664,
+   "buildVersion": 6,
+   "bytes": 11640,
    "triangles": 561
   }
  },
@@ -930,8 +930,8 @@
   "triangles": 2904,
   "lod2": {
    "sourceHash": "31b73111328ad4d2",
-   "buildVersion": 5,
-   "bytes": 23700,
+   "buildVersion": 6,
+   "bytes": 23664,
    "triangles": 1490
   }
  },
@@ -942,8 +942,8 @@
   "triangles": 2376,
   "lod2": {
    "sourceHash": "9208a4591318d8e9",
-   "buildVersion": 5,
-   "bytes": 9540,
+   "buildVersion": 6,
+   "bytes": 9528,
    "triangles": 384
   }
  },
@@ -954,8 +954,8 @@
   "triangles": 1792,
   "lod2": {
    "sourceHash": "6c13cebf87d7c20d",
-   "buildVersion": 5,
-   "bytes": 7680,
+   "buildVersion": 6,
+   "bytes": 7700,
    "triangles": 308
   }
  },
@@ -966,8 +966,8 @@
   "triangles": 1507,
   "lod2": {
    "sourceHash": "357b69f104d17af6",
-   "buildVersion": 5,
-   "bytes": 6876,
+   "buildVersion": 6,
+   "bytes": 6880,
    "triangles": 176
   }
  },
@@ -978,8 +978,8 @@
   "triangles": 1770,
   "lod2": {
    "sourceHash": "0103e3b35170fd11",
-   "buildVersion": 5,
-   "bytes": 6604,
+   "buildVersion": 6,
+   "bytes": 6584,
    "triangles": 168
   }
  },
@@ -990,8 +990,8 @@
   "triangles": 2976,
   "lod2": {
    "sourceHash": "21128223ebed8fc9",
-   "buildVersion": 5,
-   "bytes": 9256,
+   "buildVersion": 6,
+   "bytes": 9204,
    "triangles": 374
   }
  },
@@ -1002,8 +1002,8 @@
   "triangles": 1780,
   "lod2": {
    "sourceHash": "a9e6b70e1fbd40b6",
-   "buildVersion": 5,
-   "bytes": 6764,
+   "buildVersion": 6,
+   "bytes": 6752,
    "triangles": 246
   }
  },
@@ -1014,8 +1014,8 @@
   "triangles": 2254,
   "lod2": {
    "sourceHash": "67bc70e61cd14505",
-   "buildVersion": 5,
-   "bytes": 13008,
+   "buildVersion": 6,
+   "bytes": 12576,
    "triangles": 515
   }
  },
@@ -1026,8 +1026,8 @@
   "triangles": 1808,
   "lod2": {
    "sourceHash": "2358cce2579ce451",
-   "buildVersion": 5,
-   "bytes": 4752,
+   "buildVersion": 6,
+   "bytes": 4744,
    "triangles": 104
   }
  },
@@ -1038,8 +1038,8 @@
   "triangles": 3348,
   "lod2": {
    "sourceHash": "443a9ca11112e4fa",
-   "buildVersion": 5,
-   "bytes": 12000,
+   "buildVersion": 6,
+   "bytes": 11920,
    "triangles": 426
   }
  },
@@ -1050,8 +1050,8 @@
   "triangles": 955,
   "lod2": {
    "sourceHash": "54cc9ca43ef6acef",
-   "buildVersion": 5,
-   "bytes": 7096,
+   "buildVersion": 6,
+   "bytes": 7092,
    "triangles": 211
   }
  },
@@ -1062,7 +1062,7 @@
   "triangles": 1982,
   "lod2": {
    "sourceHash": "4983bd1781103ef3",
-   "buildVersion": 5,
+   "buildVersion": 6,
    "bytes": 5420,
    "triangles": 116
   }
@@ -1074,8 +1074,8 @@
   "triangles": 1257,
   "lod2": {
    "sourceHash": "72395c79c4d485ec",
-   "buildVersion": 5,
-   "bytes": 5984,
+   "buildVersion": 6,
+   "bytes": 5988,
    "triangles": 147
   }
  },
@@ -1086,7 +1086,7 @@
   "triangles": 1774,
   "lod2": {
    "sourceHash": "d2af22de8199d63b",
-   "buildVersion": 5,
+   "buildVersion": 6,
    "bytes": 7424,
    "triangles": 194
   }
@@ -1098,8 +1098,8 @@
   "triangles": 1518,
   "lod2": {
    "sourceHash": "97b1826e46a10dff",
-   "buildVersion": 5,
-   "bytes": 6084,
+   "buildVersion": 6,
+   "bytes": 6076,
    "triangles": 189
   }
  },
@@ -1110,8 +1110,8 @@
   "triangles": 1589,
   "lod2": {
    "sourceHash": "4c715175e2b3ccf9",
-   "buildVersion": 5,
-   "bytes": 6016,
+   "buildVersion": 6,
+   "bytes": 6044,
    "triangles": 232
   }
  },
@@ -1122,8 +1122,8 @@
   "triangles": 1467,
   "lod2": {
    "sourceHash": "20e04af188516e89",
-   "buildVersion": 5,
-   "bytes": 5412,
+   "buildVersion": 6,
+   "bytes": 5416,
    "triangles": 142
   }
  },
@@ -1134,8 +1134,8 @@
   "triangles": 1494,
   "lod2": {
    "sourceHash": "4b8a32381adc6f71",
-   "buildVersion": 5,
-   "bytes": 5136,
+   "buildVersion": 6,
+   "bytes": 5132,
    "triangles": 135
   }
  },
@@ -1146,8 +1146,8 @@
   "triangles": 2355,
   "lod2": {
    "sourceHash": "580856d4e9ef91d6",
-   "buildVersion": 5,
-   "bytes": 7548,
+   "buildVersion": 6,
+   "bytes": 7544,
    "triangles": 244
   }
  },
@@ -1158,8 +1158,8 @@
   "triangles": 1936,
   "lod2": {
    "sourceHash": "fa6677a2e649764c",
-   "buildVersion": 5,
-   "bytes": 6436,
+   "buildVersion": 6,
+   "bytes": 6404,
    "triangles": 204
   }
  },
@@ -1170,15 +1170,15 @@
   "triangles": 1213,
   "lod2": {
    "sourceHash": "8e9f88f612f12ed9",
-   "buildVersion": 5,
-   "bytes": 10788,
+   "buildVersion": 6,
+   "bytes": 10404,
    "triangles": 422
   }
  },
  "houten-huys": {
   "lod2": {
    "sourceHash": "212ad19e7ab3149f",
-   "buildVersion": 5,
+   "buildVersion": 6,
    "bytes": 4476,
    "triangles": 48
   }
@@ -1186,8 +1186,8 @@
  "herepoort-bergpoort": {
   "lod2": {
    "sourceHash": "04ba05c7a02dbb7d",
-   "buildVersion": 5,
-   "bytes": 4340,
+   "buildVersion": 6,
+   "bytes": 3976,
    "triangles": 58
   }
  },
@@ -1198,7 +1198,7 @@
   "triangles": 804,
   "lod2": {
    "sourceHash": "dc4023c9be22b568",
-   "buildVersion": 5,
+   "buildVersion": 6,
    "bytes": 4840,
    "triangles": 83
   }
@@ -1210,8 +1210,8 @@
   "triangles": 1216,
   "lod2": {
    "sourceHash": "a6d0c64c28399ea8",
-   "buildVersion": 5,
-   "bytes": 5044,
+   "buildVersion": 6,
+   "bytes": 5028,
    "triangles": 130
   }
  },
@@ -1222,7 +1222,7 @@
   "triangles": 1485,
   "lod2": {
    "sourceHash": "22db86629558b27c",
-   "buildVersion": 5,
+   "buildVersion": 6,
    "bytes": 8576,
    "triangles": 375
   }
@@ -1234,7 +1234,7 @@
   "triangles": 979,
   "lod2": {
    "sourceHash": "34e51859771c7ea5",
-   "buildVersion": 5,
+   "buildVersion": 6,
    "bytes": 5120,
    "triangles": 125
   }
@@ -1242,8 +1242,8 @@
  "vondelpark-open-air-theater": {
   "lod2": {
    "sourceHash": "4f28f482aff2f5a9",
-   "buildVersion": 5,
-   "bytes": 4108,
+   "buildVersion": 6,
+   "bytes": 3744,
    "triangles": 35
   }
  },
@@ -1254,8 +1254,8 @@
   "triangles": 2417,
   "lod2": {
    "sourceHash": "713c0003cd19d9b6",
-   "buildVersion": 5,
-   "bytes": 25704,
+   "buildVersion": 6,
+   "bytes": 25684,
    "triangles": 1262
   }
  },
@@ -1266,8 +1266,8 @@
   "triangles": 4000,
   "lod2": {
    "sourceHash": "3ecadad78bbca5ac",
-   "buildVersion": 5,
-   "bytes": 18436,
+   "buildVersion": 6,
+   "bytes": 18800,
    "triangles": 1097
   }
  },
@@ -1278,8 +1278,8 @@
   "triangles": 4013,
   "lod2": {
    "sourceHash": "59af46ef26fdbe8a",
-   "buildVersion": 5,
-   "bytes": 13108,
+   "buildVersion": 6,
+   "bytes": 12736,
    "triangles": 524
   }
  },
@@ -1290,8 +1290,8 @@
   "triangles": 1021,
   "lod2": {
    "sourceHash": "fc0b34923f1ff3bc",
-   "buildVersion": 5,
-   "bytes": 6232,
+   "buildVersion": 6,
+   "bytes": 6212,
    "triangles": 170
   }
  },
@@ -1302,8 +1302,8 @@
   "triangles": 1333,
   "lod2": {
    "sourceHash": "c5cf7238f441c3f4",
-   "buildVersion": 5,
-   "bytes": 6340,
+   "buildVersion": 6,
+   "bytes": 5944,
    "triangles": 154
   }
  },
@@ -1314,7 +1314,7 @@
   "triangles": 1421,
   "lod2": {
    "sourceHash": "3094990044b797a3",
-   "buildVersion": 5,
+   "buildVersion": 6,
    "bytes": 5668,
    "triangles": 141
   }
@@ -1326,7 +1326,7 @@
   "triangles": 2119,
   "lod2": {
    "sourceHash": "e4754d6836b8343e",
-   "buildVersion": 5,
+   "buildVersion": 6,
    "bytes": 6460,
    "triangles": 218
   }
@@ -1338,8 +1338,8 @@
   "triangles": 2788,
   "lod2": {
    "sourceHash": "42e701da9501a422",
-   "buildVersion": 5,
-   "bytes": 12620,
+   "buildVersion": 6,
+   "bytes": 12612,
    "triangles": 700
   }
  },
@@ -1350,8 +1350,8 @@
   "triangles": 3370,
   "lod2": {
    "sourceHash": "4ec8ea01240a3ec0",
-   "buildVersion": 5,
-   "bytes": 12424,
+   "buildVersion": 6,
+   "bytes": 12060,
    "triangles": 648
   }
  },
@@ -1362,16 +1362,16 @@
   "triangles": 4203,
   "lod2": {
    "sourceHash": "485e6e8f82422129",
-   "buildVersion": 5,
-   "bytes": 12928,
+   "buildVersion": 6,
+   "bytes": 12936,
    "triangles": 689
   }
  },
  "walloon-church": {
   "lod2": {
    "sourceHash": "990963ba8d8f3d92",
-   "buildVersion": 5,
-   "bytes": 7156,
+   "buildVersion": 6,
+   "bytes": 6792,
    "triangles": 228
   }
  },
@@ -1382,8 +1382,8 @@
   "triangles": 595,
   "lod2": {
    "sourceHash": "bdfa675b2af9ea8a",
-   "buildVersion": 5,
-   "bytes": 4872,
+   "buildVersion": 6,
+   "bytes": 4868,
    "triangles": 94
   }
  },
@@ -1394,16 +1394,16 @@
   "triangles": 2742,
   "lod2": {
    "sourceHash": "326092fc924b7244",
-   "buildVersion": 5,
-   "bytes": 7940,
+   "buildVersion": 6,
+   "bytes": 7948,
    "triangles": 297
   }
  },
  "eye-filmmuseum": {
   "lod2": {
    "sourceHash": "72dc9cb8f009ae4e",
-   "buildVersion": 5,
-   "bytes": 8796,
+   "buildVersion": 6,
+   "bytes": 8408,
    "triangles": 332
   }
  },
@@ -1414,8 +1414,8 @@
   "triangles": 2817,
   "lod2": {
    "sourceHash": "691987957fc8588b",
-   "buildVersion": 5,
-   "bytes": 15744,
+   "buildVersion": 6,
+   "bytes": 15792,
    "triangles": 715
   }
  },
@@ -1426,8 +1426,8 @@
   "triangles": 5651,
   "lod2": {
    "sourceHash": "0bd6d198c4c47de7",
-   "buildVersion": 5,
-   "bytes": 19080,
+   "buildVersion": 6,
+   "bytes": 19028,
    "triangles": 949
   }
  },
@@ -1438,8 +1438,8 @@
   "triangles": 906,
   "lod2": {
    "sourceHash": "8799c5dfa9ac10d0",
-   "buildVersion": 5,
-   "bytes": 5076,
+   "buildVersion": 6,
+   "bytes": 4692,
    "triangles": 102
   }
  },
@@ -1450,8 +1450,8 @@
   "triangles": 2162,
   "lod2": {
    "sourceHash": "35dd3bd53e42e37a",
-   "buildVersion": 5,
-   "bytes": 7456,
+   "buildVersion": 6,
+   "bytes": 7428,
    "triangles": 260
   }
  },
@@ -1462,8 +1462,8 @@
   "triangles": 949,
   "lod2": {
    "sourceHash": "869e1a54afec4ce1",
-   "buildVersion": 5,
-   "bytes": 5448,
+   "buildVersion": 6,
+   "bytes": 5452,
    "triangles": 146
   }
  },
@@ -1474,8 +1474,8 @@
   "triangles": 1302,
   "lod2": {
    "sourceHash": "f8e211dedb552b92",
-   "buildVersion": 5,
-   "bytes": 6132,
+   "buildVersion": 6,
+   "bytes": 6124,
    "triangles": 136
   }
  },
@@ -1486,8 +1486,8 @@
   "triangles": 2689,
   "lod2": {
    "sourceHash": "768b267959b06b7d",
-   "buildVersion": 5,
-   "bytes": 20608,
+   "buildVersion": 6,
+   "bytes": 20276,
    "triangles": 1390
   }
  },
@@ -1498,8 +1498,8 @@
   "triangles": 2624,
   "lod2": {
    "sourceHash": "b0a531f37b0b06a3",
-   "buildVersion": 5,
-   "bytes": 8240,
+   "buildVersion": 6,
+   "bytes": 8284,
    "triangles": 348
   }
  },
@@ -1510,8 +1510,8 @@
   "triangles": 2066,
   "lod2": {
    "sourceHash": "cbf28700115ee162",
-   "buildVersion": 5,
-   "bytes": 6344,
+   "buildVersion": 6,
+   "bytes": 6312,
    "triangles": 210
   }
  },
@@ -1522,8 +1522,8 @@
   "triangles": 2186,
   "lod2": {
    "sourceHash": "cc79a4c11f99876d",
-   "buildVersion": 5,
-   "bytes": 7016,
+   "buildVersion": 6,
+   "bytes": 6972,
    "triangles": 246
   }
  },
@@ -1534,8 +1534,8 @@
   "triangles": 4970,
   "lod2": {
    "sourceHash": "d023352d83b52aeb",
-   "buildVersion": 5,
-   "bytes": 12044,
+   "buildVersion": 6,
+   "bytes": 12036,
    "triangles": 550
   }
  },
@@ -1546,7 +1546,7 @@
   "triangles": 1668,
   "lod2": {
    "sourceHash": "0c0b7a3ff1f3840f",
-   "buildVersion": 5,
+   "buildVersion": 6,
    "bytes": 7828,
    "triangles": 249
   }
@@ -1558,8 +1558,8 @@
   "triangles": 782,
   "lod2": {
    "sourceHash": "5dc6daa86b9b3de7",
-   "buildVersion": 5,
-   "bytes": 5764,
+   "buildVersion": 6,
+   "bytes": 5760,
    "triangles": 129
   }
  },
@@ -1570,7 +1570,7 @@
   "triangles": 891,
   "lod2": {
    "sourceHash": "aad82236830324a4",
-   "buildVersion": 5,
+   "buildVersion": 6,
    "bytes": 6024,
    "triangles": 174
   }
@@ -1582,8 +1582,8 @@
   "triangles": 1812,
   "lod2": {
    "sourceHash": "3a518469067cf2cd",
-   "buildVersion": 5,
-   "bytes": 14928,
+   "buildVersion": 6,
+   "bytes": 14920,
    "triangles": 756
   }
  },
@@ -1594,8 +1594,8 @@
   "triangles": 4112,
   "lod2": {
    "sourceHash": "821f04c93f199c44",
-   "buildVersion": 5,
-   "bytes": 9788,
+   "buildVersion": 6,
+   "bytes": 9756,
    "triangles": 378
   }
  },
@@ -1606,7 +1606,7 @@
   "triangles": 643,
   "lod2": {
    "sourceHash": "d8c9c8e5dde80167",
-   "buildVersion": 5,
+   "buildVersion": 6,
    "bytes": 4824,
    "triangles": 80
   }
@@ -1618,7 +1618,7 @@
   "triangles": 753,
   "lod2": {
    "sourceHash": "5ac4f3fd46a8936c",
-   "buildVersion": 5,
+   "buildVersion": 6,
    "bytes": 4984,
    "triangles": 89
   }
@@ -1630,8 +1630,8 @@
   "triangles": 4149,
   "lod2": {
    "sourceHash": "e41dd9b73159c0b8",
-   "buildVersion": 5,
-   "bytes": 14684,
+   "buildVersion": 6,
+   "bytes": 14320,
    "triangles": 820
   }
  },
@@ -1642,8 +1642,8 @@
   "triangles": 918,
   "lod2": {
    "sourceHash": "9f71e96b68a985c7",
-   "buildVersion": 5,
-   "bytes": 6420,
+   "buildVersion": 6,
+   "bytes": 6040,
    "triangles": 158
   }
  },
@@ -1654,8 +1654,8 @@
   "triangles": 2100,
   "lod2": {
    "sourceHash": "2effacb22193ad48",
-   "buildVersion": 5,
-   "bytes": 13944,
+   "buildVersion": 6,
+   "bytes": 13560,
    "triangles": 527
   }
  },
@@ -1666,8 +1666,8 @@
   "triangles": 2443,
   "lod2": {
    "sourceHash": "54106702988c35bc",
-   "buildVersion": 5,
-   "bytes": 9320,
+   "buildVersion": 6,
+   "bytes": 9332,
    "triangles": 332
   }
  },
@@ -1678,8 +1678,8 @@
   "triangles": 2552,
   "lod2": {
    "sourceHash": "a90e67ed8e6483ba",
-   "buildVersion": 5,
-   "bytes": 8328,
+   "buildVersion": 6,
+   "bytes": 8324,
    "triangles": 347
   }
  },
@@ -1690,8 +1690,8 @@
   "triangles": 657,
   "lod2": {
    "sourceHash": "0d97bc6ba8d2a685",
-   "buildVersion": 5,
-   "bytes": 8092,
+   "buildVersion": 6,
+   "bytes": 8180,
    "triangles": 299
   }
  },
@@ -1702,8 +1702,8 @@
   "triangles": 788,
   "lod2": {
    "sourceHash": "34ae76bf6a6a5cf4",
-   "buildVersion": 5,
-   "bytes": 6644,
+   "buildVersion": 6,
+   "bytes": 6280,
    "triangles": 187
   }
  },
@@ -1714,7 +1714,7 @@
   "triangles": 1041,
   "lod2": {
    "sourceHash": "a6eca24167c2892b",
-   "buildVersion": 5,
+   "buildVersion": 6,
    "bytes": 4928,
    "triangles": 130
   }
@@ -1726,8 +1726,8 @@
   "triangles": 2395,
   "lod2": {
    "sourceHash": "07a4f082790f72a1",
-   "buildVersion": 5,
-   "bytes": 7852,
+   "buildVersion": 6,
+   "bytes": 7832,
    "triangles": 287
   }
  },
@@ -1738,8 +1738,8 @@
   "triangles": 757,
   "lod2": {
    "sourceHash": "027c8dae462ec068",
-   "buildVersion": 5,
-   "bytes": 5612,
+   "buildVersion": 6,
+   "bytes": 5248,
    "triangles": 90
   }
  },
@@ -1750,7 +1750,7 @@
   "triangles": 1348,
   "lod2": {
    "sourceHash": "fdb4667127c0d7fe",
-   "buildVersion": 5,
+   "buildVersion": 6,
    "bytes": 10256,
    "triangles": 357
   }
@@ -1762,8 +1762,8 @@
   "triangles": 3010,
   "lod2": {
    "sourceHash": "9d693c1565161b91",
-   "buildVersion": 5,
-   "bytes": 10956,
+   "buildVersion": 6,
+   "bytes": 10944,
    "triangles": 397
   }
  },
@@ -1774,7 +1774,7 @@
   "triangles": 1734,
   "lod2": {
    "sourceHash": "c8f78828c9c8e8b1",
-   "buildVersion": 5,
+   "buildVersion": 6,
    "bytes": 5764,
    "triangles": 142
   }
@@ -1786,7 +1786,7 @@
   "triangles": 2571,
   "lod2": {
    "sourceHash": "cbc066efa0fc689d",
-   "buildVersion": 5,
+   "buildVersion": 6,
    "bytes": 10188,
    "triangles": 336
   }
@@ -1798,8 +1798,8 @@
   "triangles": 1197,
   "lod2": {
    "sourceHash": "5a1c77850473e6e8",
-   "buildVersion": 5,
-   "bytes": 9316,
+   "buildVersion": 6,
+   "bytes": 9304,
    "triangles": 312
   }
  },
@@ -1810,8 +1810,8 @@
   "triangles": 4430,
   "lod2": {
    "sourceHash": "1ef280694b29e408",
-   "buildVersion": 5,
-   "bytes": 15284,
+   "buildVersion": 6,
+   "bytes": 14956,
    "triangles": 702
   }
  },
@@ -1822,8 +1822,8 @@
   "triangles": 782,
   "lod2": {
    "sourceHash": "e75a8c62bd19e619",
-   "buildVersion": 5,
-   "bytes": 5956,
+   "buildVersion": 6,
+   "bytes": 5960,
    "triangles": 103
   }
  },
@@ -1834,8 +1834,8 @@
   "triangles": 2842,
   "lod2": {
    "sourceHash": "9db01712475e16f6",
-   "buildVersion": 5,
-   "bytes": 14220,
+   "buildVersion": 6,
+   "bytes": 14208,
    "triangles": 521
   }
  },
@@ -1848,7 +1848,7 @@
  "klimmuur-centraal": {
   "lod2": {
    "sourceHash": "d8a425109051a29f",
-   "buildVersion": 5,
+   "buildVersion": 6,
    "bytes": 4704,
    "triangles": 40
   }
@@ -1860,8 +1860,8 @@
   "triangles": 6928,
   "lod2": {
    "sourceHash": "3c9854b8fa07f8a1",
-   "buildVersion": 5,
-   "bytes": 18376,
+   "buildVersion": 6,
+   "bytes": 18336,
    "triangles": 871
   }
  },
@@ -1872,8 +1872,8 @@
   "triangles": 877,
   "lod2": {
    "sourceHash": "704dfad29fecf2db",
-   "buildVersion": 5,
-   "bytes": 6568,
+   "buildVersion": 6,
+   "bytes": 6212,
    "triangles": 187
   }
  },
@@ -1884,8 +1884,8 @@
   "triangles": 11624,
   "lod2": {
    "sourceHash": "b0fd184920c6d816",
-   "buildVersion": 5,
-   "bytes": 87520,
+   "buildVersion": 6,
+   "bytes": 87216,
    "triangles": 4926
   }
  },
@@ -1896,8 +1896,8 @@
   "triangles": 2383,
   "lod2": {
    "sourceHash": "26713ac3d6ab6d35",
-   "buildVersion": 5,
-   "bytes": 29408,
+   "buildVersion": 6,
+   "bytes": 29392,
    "triangles": 1482
   }
  },
@@ -1908,7 +1908,7 @@
   "triangles": 1802,
   "lod2": {
    "sourceHash": "1bd8d4fddaa797a5",
-   "buildVersion": 5,
+   "buildVersion": 6,
    "bytes": 7036,
    "triangles": 209
   }
@@ -1920,8 +1920,8 @@
   "triangles": 1662,
   "lod2": {
    "sourceHash": "339327220c42dd6c",
-   "buildVersion": 5,
-   "bytes": 7784,
+   "buildVersion": 6,
+   "bytes": 7428,
    "triangles": 248
   }
  },
@@ -1932,7 +1932,7 @@
   "triangles": 634,
   "lod2": {
    "sourceHash": "0a471dbcb07e6bec",
-   "buildVersion": 5,
+   "buildVersion": 6,
    "bytes": 4348,
    "triangles": 68
   }
@@ -1944,7 +1944,7 @@
   "triangles": 1354,
   "lod2": {
    "sourceHash": "e38452b4dd1f46f9",
-   "buildVersion": 5,
+   "buildVersion": 6,
    "bytes": 9844,
    "triangles": 344
   }
@@ -1956,15 +1956,15 @@
   "triangles": 1581,
   "lod2": {
    "sourceHash": "2c76f7ae7905c362",
-   "buildVersion": 5,
-   "bytes": 6596,
+   "buildVersion": 6,
+   "bytes": 6584,
    "triangles": 178
   }
  },
  "groot-melkhuis": {
   "lod2": {
    "sourceHash": "4fa0cb401d2478c6",
-   "buildVersion": 5,
+   "buildVersion": 6,
    "bytes": 4144,
    "triangles": 56
   }
@@ -1972,7 +1972,7 @@
  "beest-het-lab": {
   "lod2": {
    "sourceHash": "63dfb1e9227b8af7",
-   "buildVersion": 5,
+   "buildVersion": 6,
    "bytes": 7984,
    "triangles": 233
   }
@@ -1984,7 +1984,7 @@
   "triangles": 5792,
   "lod2": {
    "sourceHash": "0ffc69c585380c26",
-   "buildVersion": 5,
+   "buildVersion": 6,
    "bytes": 22672,
    "triangles": 1500
   }
@@ -1996,8 +1996,8 @@
   "triangles": 1250,
   "lod2": {
    "sourceHash": "2229c9abcaa2505c",
-   "buildVersion": 5,
-   "bytes": 6120,
+   "buildVersion": 6,
+   "bytes": 6112,
    "triangles": 187
   }
  },
@@ -2008,7 +2008,7 @@
   "triangles": 2577,
   "lod2": {
    "sourceHash": "9f4a558c30b94695",
-   "buildVersion": 5,
+   "buildVersion": 6,
    "bytes": 9572,
    "triangles": 322
   }
@@ -2020,8 +2020,8 @@
   "triangles": 1487,
   "lod2": {
    "sourceHash": "84ed7c9c40dfa11e",
-   "buildVersion": 5,
-   "bytes": 7948,
+   "buildVersion": 6,
+   "bytes": 7936,
    "triangles": 240
   }
  },
@@ -2032,8 +2032,8 @@
   "triangles": 5430,
   "lod2": {
    "sourceHash": "affc853ba557e9c9",
-   "buildVersion": 5,
-   "bytes": 29816,
+   "buildVersion": 6,
+   "bytes": 29620,
    "triangles": 1454
   }
  },
@@ -2044,8 +2044,8 @@
   "triangles": 5101,
   "lod2": {
    "sourceHash": "3b9f218afb3be951",
-   "buildVersion": 5,
-   "bytes": 31400,
+   "buildVersion": 6,
+   "bytes": 31404,
    "triangles": 1577
   }
  },
@@ -2056,8 +2056,8 @@
   "triangles": 7093,
   "lod2": {
    "sourceHash": "a4cfccd473d8830d",
-   "buildVersion": 5,
-   "bytes": 32212,
+   "buildVersion": 6,
+   "bytes": 32176,
    "triangles": 1499
   }
  },
@@ -2068,8 +2068,8 @@
   "triangles": 679,
   "lod2": {
    "sourceHash": "f3dec5518d716788",
-   "buildVersion": 5,
-   "bytes": 4812,
+   "buildVersion": 6,
+   "bytes": 4444,
    "triangles": 81
   }
  },
@@ -2080,8 +2080,8 @@
   "triangles": 728,
   "lod2": {
    "sourceHash": "c080935a9df679fd",
-   "buildVersion": 5,
-   "bytes": 5740,
+   "buildVersion": 6,
+   "bytes": 5732,
    "triangles": 92
   }
  },
@@ -2092,8 +2092,8 @@
   "triangles": 3671,
   "lod2": {
    "sourceHash": "b25a90f1046b376a",
-   "buildVersion": 5,
-   "bytes": 12300,
+   "buildVersion": 6,
+   "bytes": 12296,
    "triangles": 449
   }
  },
@@ -2104,7 +2104,7 @@
   "triangles": 4055,
   "lod2": {
    "sourceHash": "9ce6b54498760a99",
-   "buildVersion": 5,
+   "buildVersion": 6,
    "bytes": 12240,
    "triangles": 508
   }
@@ -2116,7 +2116,7 @@
   "triangles": 1552,
   "lod2": {
    "sourceHash": "999ec12436855ecc",
-   "buildVersion": 5,
+   "buildVersion": 6,
    "bytes": 5520,
    "triangles": 128
   }
@@ -2124,7 +2124,7 @@
  "vondeltuin": {
   "lod2": {
    "sourceHash": "28c954de1ae9491b",
-   "buildVersion": 5,
+   "buildVersion": 6,
    "bytes": 3492,
    "triangles": 46
   }
@@ -2136,8 +2136,8 @@
   "triangles": 732,
   "lod2": {
    "sourceHash": "d9da83391c4cdbb3",
-   "buildVersion": 5,
-   "bytes": 12396,
+   "buildVersion": 6,
+   "bytes": 12388,
    "triangles": 496
   }
  },
@@ -2148,8 +2148,8 @@
   "triangles": 1385,
   "lod2": {
    "sourceHash": "6b165e582965dd13",
-   "buildVersion": 5,
-   "bytes": 7156,
+   "buildVersion": 6,
+   "bytes": 6428,
    "triangles": 174
   }
  },
@@ -2160,7 +2160,7 @@
   "triangles": 1614,
   "lod2": {
    "sourceHash": "8f3c171c4624ad43",
-   "buildVersion": 5,
+   "buildVersion": 6,
    "bytes": 9968,
    "triangles": 357
   }
@@ -2168,8 +2168,8 @@
  "brouwerij-het-ij": {
   "lod2": {
    "sourceHash": "1677082daee69e53",
-   "buildVersion": 5,
-   "bytes": 5304,
+   "buildVersion": 6,
+   "bytes": 4920,
    "triangles": 103
   }
  },
@@ -2180,8 +2180,8 @@
   "triangles": 3012,
   "lod2": {
    "sourceHash": "a1bf421212f4b2dd",
-   "buildVersion": 5,
-   "bytes": 10488,
+   "buildVersion": 6,
+   "bytes": 10464,
    "triangles": 394
   }
  },
@@ -2192,7 +2192,7 @@
   "triangles": 1132,
   "lod2": {
    "sourceHash": "5fa5f3ef794687df",
-   "buildVersion": 5,
+   "buildVersion": 6,
    "bytes": 5500,
    "triangles": 113
   }
@@ -2204,8 +2204,8 @@
   "triangles": 4501,
   "lod2": {
    "sourceHash": "a93042826f85b8a2",
-   "buildVersion": 5,
-   "bytes": 15164,
+   "buildVersion": 6,
+   "bytes": 14868,
    "triangles": 523
   }
  },
@@ -2216,8 +2216,8 @@
   "triangles": 4290,
   "lod2": {
    "sourceHash": "6290ec8a232cd883",
-   "buildVersion": 5,
-   "bytes": 14544,
+   "buildVersion": 6,
+   "bytes": 14572,
    "triangles": 547
   }
  },
@@ -2228,15 +2228,15 @@
   "triangles": 5829,
   "lod2": {
    "sourceHash": "2fe8cb2613c8fecd",
-   "buildVersion": 5,
-   "bytes": 21580,
+   "buildVersion": 6,
+   "bytes": 20852,
    "triangles": 1495
   }
  },
  "haparandaweg-9": {
   "lod2": {
    "sourceHash": "6f80e976de93a48c",
-   "buildVersion": 5,
+   "buildVersion": 6,
    "bytes": 4092,
    "triangles": 34
   }
@@ -2244,7 +2244,7 @@
  "haparandaweg-11": {
   "lod2": {
    "sourceHash": "d8f40af285400b88",
-   "buildVersion": 5,
+   "buildVersion": 6,
    "bytes": 3224,
    "triangles": 28
   }
@@ -2252,7 +2252,7 @@
  "haparandaweg-13": {
   "lod2": {
    "sourceHash": "33a18013f8346b8a",
-   "buildVersion": 5,
+   "buildVersion": 6,
    "bytes": 2948,
    "triangles": 14
   }
@@ -2264,7 +2264,7 @@
   "triangles": 2195,
   "lod2": {
    "sourceHash": "2fc0e56c723ffa98",
-   "buildVersion": 5,
+   "buildVersion": 6,
    "bytes": 7720,
    "triangles": 277
   }
@@ -2276,8 +2276,8 @@
   "triangles": 1207,
   "lod2": {
    "sourceHash": "c787ae2afa017062",
-   "buildVersion": 5,
-   "bytes": 6536,
+   "buildVersion": 6,
+   "bytes": 6528,
    "triangles": 140
   }
  },
@@ -2288,8 +2288,8 @@
   "triangles": 3246,
   "lod2": {
    "sourceHash": "c759556f16122968",
-   "buildVersion": 5,
-   "bytes": 11560,
+   "buildVersion": 6,
+   "bytes": 11552,
    "triangles": 430
   }
  },
@@ -2300,8 +2300,8 @@
   "triangles": 3527,
   "lod2": {
    "sourceHash": "e0265562540b159e",
-   "buildVersion": 5,
-   "bytes": 10400,
+   "buildVersion": 6,
+   "bytes": 10056,
    "triangles": 484
   }
  },
@@ -2312,7 +2312,7 @@
   "triangles": 1094,
   "lod2": {
    "sourceHash": "4d45dee33be6afb2",
-   "buildVersion": 5,
+   "buildVersion": 6,
    "bytes": 9208,
    "triangles": 309
   }
@@ -2324,8 +2324,8 @@
   "triangles": 2326,
   "lod2": {
    "sourceHash": "d2b68dced647f5f0",
-   "buildVersion": 5,
-   "bytes": 9680,
+   "buildVersion": 6,
+   "bytes": 9652,
    "triangles": 308
   }
  },
@@ -2336,8 +2336,8 @@
   "triangles": 3542,
   "lod2": {
    "sourceHash": "fbce7e788ce53c61",
-   "buildVersion": 5,
-   "bytes": 12304,
+   "buildVersion": 6,
+   "bytes": 11924,
    "triangles": 425
   }
  },
@@ -2348,7 +2348,7 @@
   "triangles": 1960,
   "lod2": {
    "sourceHash": "6febb35df8243ad4",
-   "buildVersion": 5,
+   "buildVersion": 6,
    "bytes": 8564,
    "triangles": 247
   }
@@ -2360,8 +2360,8 @@
   "triangles": 2746,
   "lod2": {
    "sourceHash": "93354fbb1b366df0",
-   "buildVersion": 5,
-   "bytes": 11000,
+   "buildVersion": 6,
+   "bytes": 11012,
    "triangles": 327
   }
  },
@@ -2372,8 +2372,8 @@
   "triangles": 4432,
   "lod2": {
    "sourceHash": "185184fe7ad68702",
-   "buildVersion": 5,
-   "bytes": 12336,
+   "buildVersion": 6,
+   "bytes": 11952,
    "triangles": 556
   }
  },
@@ -2384,8 +2384,8 @@
   "triangles": 3515,
   "lod2": {
    "sourceHash": "e8ea4dce0c62b898",
-   "buildVersion": 5,
-   "bytes": 13048,
+   "buildVersion": 6,
+   "bytes": 13044,
    "triangles": 448
   }
  },
@@ -2396,8 +2396,8 @@
   "triangles": 986,
   "lod2": {
    "sourceHash": "72f460e59ae4d033",
-   "buildVersion": 5,
-   "bytes": 6280,
+   "buildVersion": 6,
+   "bytes": 5900,
    "triangles": 124
   }
  },
@@ -2408,8 +2408,8 @@
   "triangles": 3234,
   "lod2": {
    "sourceHash": "b273089787690b71",
-   "buildVersion": 5,
-   "bytes": 12328,
+   "buildVersion": 6,
+   "bytes": 12316,
    "triangles": 412
   }
  },
@@ -2420,8 +2420,8 @@
   "triangles": 6286,
   "lod2": {
    "sourceHash": "1a9f6587be889f28",
-   "buildVersion": 5,
-   "bytes": 23928,
+   "buildVersion": 6,
+   "bytes": 23864,
    "triangles": 1409
   }
  },
@@ -2432,7 +2432,7 @@
   "triangles": 1380,
   "lod2": {
    "sourceHash": "b96d57b1383f8168",
-   "buildVersion": 5,
+   "buildVersion": 6,
    "bytes": 7268,
    "triangles": 161
   }
@@ -2444,7 +2444,7 @@
   "triangles": 1229,
   "lod2": {
    "sourceHash": "27ff8cd0b2414a6c",
-   "buildVersion": 5,
+   "buildVersion": 6,
    "bytes": 5480,
    "triangles": 143
   }
@@ -2456,8 +2456,8 @@
   "triangles": 1443,
   "lod2": {
    "sourceHash": "157de70588496e4b",
-   "buildVersion": 5,
-   "bytes": 7416,
+   "buildVersion": 6,
+   "bytes": 7412,
    "triangles": 173
   }
  },
@@ -2468,7 +2468,7 @@
   "triangles": 636,
   "lod2": {
    "sourceHash": "363874599312211d",
-   "buildVersion": 5,
+   "buildVersion": 6,
    "bytes": 6308,
    "triangles": 102
   }
@@ -2476,7 +2476,7 @@
  "fire-station-driemond": {
   "lod2": {
    "sourceHash": "20f65b9d9599d75b",
-   "buildVersion": 5,
+   "buildVersion": 6,
    "bytes": 4988,
    "triangles": 60
   }
@@ -2488,8 +2488,8 @@
   "triangles": 2728,
   "lod2": {
    "sourceHash": "d8e7036396fc4ebb",
-   "buildVersion": 5,
-   "bytes": 14520,
+   "buildVersion": 6,
+   "bytes": 14136,
    "triangles": 474
   }
  },
@@ -2500,8 +2500,8 @@
   "triangles": 4005,
   "lod2": {
    "sourceHash": "ecb2668aa414b89e",
-   "buildVersion": 5,
-   "bytes": 14556,
+   "buildVersion": 6,
+   "bytes": 14540,
    "triangles": 554
   }
  },
@@ -2512,8 +2512,8 @@
   "triangles": 3034,
   "lod2": {
    "sourceHash": "e2c2dbde73e6c9ad",
-   "buildVersion": 5,
-   "bytes": 21716,
+   "buildVersion": 6,
+   "bytes": 21772,
    "triangles": 1056
   }
  },
@@ -2524,8 +2524,8 @@
   "triangles": 3034,
   "lod2": {
    "sourceHash": "7030412c2dd4963a",
-   "buildVersion": 5,
-   "bytes": 10932,
+   "buildVersion": 6,
+   "bytes": 10900,
    "triangles": 376
   }
  },
@@ -2536,8 +2536,8 @@
   "triangles": 1977,
   "lod2": {
    "sourceHash": "6b3bb1b5c5dbafbb",
-   "buildVersion": 5,
-   "bytes": 9652,
+   "buildVersion": 6,
+   "bytes": 9664,
    "triangles": 254
   }
  },
@@ -2548,8 +2548,8 @@
   "triangles": 1710,
   "lod2": {
    "sourceHash": "c20af42bf2018526",
-   "buildVersion": 5,
-   "bytes": 8880,
+   "buildVersion": 6,
+   "bytes": 8868,
    "triangles": 243
   }
  },
@@ -2560,7 +2560,7 @@
   "triangles": 1084,
   "lod2": {
    "sourceHash": "4d8cc7071328b2c0",
-   "buildVersion": 5,
+   "buildVersion": 6,
    "bytes": 6260,
    "triangles": 141
   }
@@ -2572,8 +2572,8 @@
   "triangles": 1396,
   "lod2": {
    "sourceHash": "a11dbf621df46ba6",
-   "buildVersion": 5,
-   "bytes": 7312,
+   "buildVersion": 6,
+   "bytes": 7308,
    "triangles": 151
   }
  },
@@ -2584,8 +2584,8 @@
   "triangles": 6021,
   "lod2": {
    "sourceHash": "de45836a40f4cc52",
-   "buildVersion": 5,
-   "bytes": 17448,
+   "buildVersion": 6,
+   "bytes": 17436,
    "triangles": 782
   }
  },
@@ -2596,7 +2596,7 @@
   "triangles": 1518,
   "lod2": {
    "sourceHash": "b236ae3c9963f018",
-   "buildVersion": 5,
+   "buildVersion": 6,
    "bytes": 7612,
    "triangles": 188
   }
@@ -2608,8 +2608,8 @@
   "triangles": 3386,
   "lod2": {
    "sourceHash": "bd8bb0b02bd4575d",
-   "buildVersion": 5,
-   "bytes": 21120,
+   "buildVersion": 6,
+   "bytes": 21076,
    "triangles": 1015
   }
  },
@@ -2620,7 +2620,7 @@
   "triangles": 810,
   "lod2": {
    "sourceHash": "1b5f6d3d4a815cc7",
-   "buildVersion": 5,
+   "buildVersion": 6,
    "bytes": 6072,
    "triangles": 104
   }
@@ -2632,8 +2632,8 @@
   "triangles": 2255,
   "lod2": {
    "sourceHash": "8bd7c1f86926776a",
-   "buildVersion": 5,
-   "bytes": 8108,
+   "buildVersion": 6,
+   "bytes": 8100,
    "triangles": 268
   }
  },
@@ -2644,8 +2644,8 @@
   "triangles": 2008,
   "lod2": {
    "sourceHash": "e845396407e19e33",
-   "buildVersion": 5,
-   "bytes": 10600,
+   "buildVersion": 6,
+   "bytes": 10224,
    "triangles": 256
   }
  },
@@ -2656,15 +2656,15 @@
   "triangles": 938,
   "lod2": {
    "sourceHash": "a5fc6a059de6c2a3",
-   "buildVersion": 5,
-   "bytes": 6296,
+   "buildVersion": 6,
+   "bytes": 5552,
    "triangles": 95
   }
  },
  "museum-amsterdam-noord": {
   "lod2": {
    "sourceHash": "efc6d1d52ec7d8b8",
-   "buildVersion": 5,
+   "buildVersion": 6,
    "bytes": 4120,
    "triangles": 48
   }
@@ -2672,7 +2672,7 @@
  "levend-paardenmuseum": {
   "lod2": {
    "sourceHash": "d9e7ab3c0233e393",
-   "buildVersion": 5,
+   "buildVersion": 6,
    "bytes": 7284,
    "triangles": 177
   }
@@ -2684,15 +2684,15 @@
   "triangles": 1307,
   "lod2": {
    "sourceHash": "09f6a8014e1f5323",
-   "buildVersion": 5,
-   "bytes": 7528,
+   "buildVersion": 6,
+   "bytes": 7160,
    "triangles": 143
   }
  },
  "torture-museum": {
   "lod2": {
    "sourceHash": "a4f79228351fe998",
-   "buildVersion": 5,
+   "buildVersion": 6,
    "bytes": 4352,
    "triangles": 59
   }
@@ -2700,15 +2700,15 @@
  "theo-thijssen-museum": {
   "lod2": {
    "sourceHash": "aa2f8da43b96f71a",
-   "buildVersion": 5,
-   "bytes": 3536,
+   "buildVersion": 6,
+   "bytes": 3532,
    "triangles": 37
   }
  },
  "houseboat-museum": {
   "lod2": {
    "sourceHash": "cf941fb165642276",
-   "buildVersion": 5,
+   "buildVersion": 6,
    "bytes": 3820,
    "triangles": 34
   }
@@ -2716,7 +2716,7 @@
  "sint-olofskapel": {
   "lod2": {
    "sourceHash": "99b0b0daaa02c5f0",
-   "buildVersion": 5,
+   "buildVersion": 6,
    "bytes": 5160,
    "triangles": 62
   }
@@ -2728,8 +2728,8 @@
   "triangles": 1047,
   "lod2": {
    "sourceHash": "3cdfd6239660fdd5",
-   "buildVersion": 5,
-   "bytes": 5000,
+   "buildVersion": 6,
+   "bytes": 4640,
    "triangles": 97
   }
  },
@@ -2740,8 +2740,8 @@
   "triangles": 1352,
   "lod2": {
    "sourceHash": "599bf6e57eea78fb",
-   "buildVersion": 5,
-   "bytes": 7300,
+   "buildVersion": 6,
+   "bytes": 6940,
    "triangles": 174
   }
  },
@@ -2752,8 +2752,8 @@
   "triangles": 3180,
   "lod2": {
    "sourceHash": "9ab5eb1919d55020",
-   "buildVersion": 5,
-   "bytes": 12384,
+   "buildVersion": 6,
+   "bytes": 12368,
    "triangles": 401
   }
  },
@@ -2764,8 +2764,8 @@
   "triangles": 2202,
   "lod2": {
    "sourceHash": "02ec4851b9ce300a",
-   "buildVersion": 5,
-   "bytes": 9936,
+   "buildVersion": 6,
+   "bytes": 9564,
    "triangles": 270
   }
  },
@@ -2776,15 +2776,15 @@
   "triangles": 2611,
   "lod2": {
    "sourceHash": "a1394688636adc52",
-   "buildVersion": 5,
-   "bytes": 11780,
+   "buildVersion": 6,
+   "bytes": 11412,
    "triangles": 362
   }
  },
  "haparandaweg-902-950": {
   "lod2": {
    "sourceHash": "08bbb5afa02a6771",
-   "buildVersion": 5,
+   "buildVersion": 6,
    "bytes": 7384,
    "triangles": 252
   }
@@ -2796,23 +2796,23 @@
   "triangles": 1875,
   "lod2": {
    "sourceHash": "0238fd0b70e128ff",
-   "buildVersion": 5,
-   "bytes": 11664,
+   "buildVersion": 6,
+   "bytes": 11424,
    "triangles": 446
   }
  },
  "haparandaweg-708-744": {
   "lod2": {
    "sourceHash": "93161a2fea7eaaed",
-   "buildVersion": 5,
-   "bytes": 9652,
+   "buildVersion": 6,
+   "bytes": 9388,
    "triangles": 368
   }
  },
  "haparandaweg-746-786": {
   "lod2": {
    "sourceHash": "b5115ab435a0c6b2",
-   "buildVersion": 5,
+   "buildVersion": 6,
    "bytes": 6276,
    "triangles": 170
   }
@@ -2824,8 +2824,8 @@
   "triangles": 919,
   "lod2": {
    "sourceHash": "096faadbd3087afa",
-   "buildVersion": 5,
-   "bytes": 11324,
+   "buildVersion": 6,
+   "bytes": 11344,
    "triangles": 407
   }
  },
@@ -2836,7 +2836,7 @@
   "triangles": 1327,
   "lod2": {
    "sourceHash": "2fba735f311e532f",
-   "buildVersion": 5,
+   "buildVersion": 6,
    "bytes": 10576,
    "triangles": 618
   }
@@ -2844,24 +2844,24 @@
  "haparandaweg-788-868": {
   "lod2": {
    "sourceHash": "8073532d86b175be",
-   "buildVersion": 5,
-   "bytes": 5956,
+   "buildVersion": 6,
+   "bytes": 5960,
    "triangles": 165
   }
  },
  "haparandaweg-65": {
   "lod2": {
    "sourceHash": "16ddfc7e38b07b8c",
-   "buildVersion": 5,
-   "bytes": 8256,
+   "buildVersion": 6,
+   "bytes": 8248,
    "triangles": 322
   }
  },
  "thomaskerk": {
   "lod2": {
    "sourceHash": "60dc2617b0ee7031",
-   "buildVersion": 5,
-   "bytes": 7728,
+   "buildVersion": 6,
+   "bytes": 7344,
    "triangles": 200
   }
  },
@@ -2872,7 +2872,7 @@
   "triangles": 917,
   "lod2": {
    "sourceHash": "39d98979ac9edafd",
-   "buildVersion": 5,
+   "buildVersion": 6,
    "bytes": 6732,
    "triangles": 115
   }
@@ -2884,8 +2884,8 @@
   "triangles": 967,
   "lod2": {
    "sourceHash": "880f4901931b5d44",
-   "buildVersion": 5,
-   "bytes": 6932,
+   "buildVersion": 6,
+   "bytes": 6928,
    "triangles": 121
   }
  },
@@ -2896,8 +2896,8 @@
   "triangles": 4279,
   "lod2": {
    "sourceHash": "cc0ce3528ad1d92d",
-   "buildVersion": 5,
-   "bytes": 20548,
+   "buildVersion": 6,
+   "bytes": 20544,
    "triangles": 890
   }
  },
@@ -2908,8 +2908,8 @@
   "triangles": 3452,
   "lod2": {
    "sourceHash": "99c27225164965b1",
-   "buildVersion": 5,
-   "bytes": 16896,
+   "buildVersion": 6,
+   "bytes": 16908,
    "triangles": 605
   }
  },
@@ -2920,8 +2920,8 @@
   "triangles": 2598,
   "lod2": {
    "sourceHash": "230f461a8cba42c3",
-   "buildVersion": 5,
-   "bytes": 11708,
+   "buildVersion": 6,
+   "bytes": 11716,
    "triangles": 408
   }
  },
@@ -2932,8 +2932,8 @@
   "triangles": 821,
   "lod2": {
    "sourceHash": "2750d0136b107ec1",
-   "buildVersion": 5,
-   "bytes": 5900,
+   "buildVersion": 6,
+   "bytes": 5892,
    "triangles": 154
   }
  },
@@ -2944,15 +2944,15 @@
   "triangles": 5470,
   "lod2": {
    "sourceHash": "150229fdc5785de5",
-   "buildVersion": 5,
-   "bytes": 17888,
+   "buildVersion": 6,
+   "bytes": 17528,
    "triangles": 520
   }
  },
  "klimhal": {
   "lod2": {
    "sourceHash": "96fe17b24871faed",
-   "buildVersion": 5,
+   "buildVersion": 6,
    "bytes": 4504,
    "triangles": 73
   }
@@ -2964,8 +2964,8 @@
   "triangles": 4508,
   "lod2": {
    "sourceHash": "29641e783661205c",
-   "buildVersion": 5,
-   "bytes": 28236,
+   "buildVersion": 6,
+   "bytes": 28140,
    "triangles": 1366
   }
  },
@@ -2976,7 +2976,7 @@
   "triangles": 2682,
   "lod2": {
    "sourceHash": "d48b974d8b575c11",
-   "buildVersion": 5,
+   "buildVersion": 6,
    "bytes": 18004,
    "triangles": 733
   }
@@ -2988,8 +2988,8 @@
   "triangles": 4385,
   "lod2": {
    "sourceHash": "01ec05d62e9fdde5",
-   "buildVersion": 5,
-   "bytes": 15844,
+   "buildVersion": 6,
+   "bytes": 15840,
    "triangles": 566
   }
  },
@@ -3000,8 +3000,8 @@
   "triangles": 1785,
   "lod2": {
    "sourceHash": "17951767e52d0e71",
-   "buildVersion": 5,
-   "bytes": 8504,
+   "buildVersion": 6,
+   "bytes": 8120,
    "triangles": 226
   }
  },
@@ -3012,8 +3012,8 @@
   "triangles": 2850,
   "lod2": {
    "sourceHash": "8d2fd63ac1a874b4",
-   "buildVersion": 5,
-   "bytes": 11260,
+   "buildVersion": 6,
+   "bytes": 10128,
    "triangles": 314
   }
  },
@@ -3024,8 +3024,8 @@
   "triangles": 1045,
   "lod2": {
    "sourceHash": "0b73cbdf7d3e629f",
-   "buildVersion": 5,
-   "bytes": 5468,
+   "buildVersion": 6,
+   "bytes": 4372,
    "triangles": 71
   }
  },
@@ -3036,7 +3036,7 @@
   "triangles": 1505,
   "lod2": {
    "sourceHash": "f5b69000082caa49",
-   "buildVersion": 5,
+   "buildVersion": 6,
    "bytes": 6376,
    "triangles": 178
   }
@@ -3048,8 +3048,8 @@
   "triangles": 2691,
   "lod2": {
    "sourceHash": "555ac8dda9d30fc7",
-   "buildVersion": 5,
-   "bytes": 8724,
+   "buildVersion": 6,
+   "bytes": 8688,
    "triangles": 287
   }
  },
@@ -3060,8 +3060,8 @@
   "triangles": 4228,
   "lod2": {
    "sourceHash": "b4bdac787a4d99e2",
-   "buildVersion": 5,
-   "bytes": 15072,
+   "buildVersion": 6,
+   "bytes": 15016,
    "triangles": 528
   }
  },
@@ -3072,8 +3072,8 @@
   "triangles": 2164,
   "lod2": {
    "sourceHash": "f3d12c730bac1273",
-   "buildVersion": 5,
-   "bytes": 11200,
+   "buildVersion": 6,
+   "bytes": 10892,
    "triangles": 335
   }
  },
@@ -3084,8 +3084,8 @@
   "triangles": 11292,
   "lod2": {
    "sourceHash": "7794d31dd20983cf",
-   "buildVersion": 5,
-   "bytes": 21772,
+   "buildVersion": 6,
+   "bytes": 21760,
    "triangles": 926
   }
  },
@@ -3096,7 +3096,7 @@
   "triangles": 6938,
   "lod2": {
    "sourceHash": "5a03c36f0be13141",
-   "buildVersion": 5,
+   "buildVersion": 6,
    "bytes": 20172,
    "triangles": 746
   }
@@ -3108,8 +3108,8 @@
   "triangles": 2338,
   "lod2": {
    "sourceHash": "a0157f2eb2f44000",
-   "buildVersion": 5,
-   "bytes": 9556,
+   "buildVersion": 6,
+   "bytes": 9196,
    "triangles": 270
   }
  },
@@ -3120,8 +3120,8 @@
   "triangles": 4804,
   "lod2": {
    "sourceHash": "16aafc971912faa9",
-   "buildVersion": 5,
-   "bytes": 14016,
+   "buildVersion": 6,
+   "bytes": 13976,
    "triangles": 550
   }
  },
@@ -3132,8 +3132,8 @@
   "triangles": 1583,
   "lod2": {
    "sourceHash": "01eb50d717491f69",
-   "buildVersion": 5,
-   "bytes": 8128,
+   "buildVersion": 6,
+   "bytes": 7720,
    "triangles": 191
   }
  },
@@ -3144,8 +3144,8 @@
   "triangles": 2145,
   "lod2": {
    "sourceHash": "faa8b522debe6126",
-   "buildVersion": 5,
-   "bytes": 11280,
+   "buildVersion": 6,
+   "bytes": 10512,
    "triangles": 294
   }
  },
@@ -3156,8 +3156,8 @@
   "triangles": 2847,
   "lod2": {
    "sourceHash": "ae8f0cf664772dbe",
-   "buildVersion": 5,
-   "bytes": 20024,
+   "buildVersion": 6,
+   "bytes": 19652,
    "triangles": 785
   }
  },
@@ -3168,8 +3168,8 @@
   "triangles": 2864,
   "lod2": {
    "sourceHash": "c4626b9ef776e46b",
-   "buildVersion": 5,
-   "bytes": 10636,
+   "buildVersion": 6,
+   "bytes": 10284,
    "triangles": 328
   }
  },
@@ -3180,8 +3180,8 @@
   "triangles": 3088,
   "lod2": {
    "sourceHash": "e7545d5ac9e22d85",
-   "buildVersion": 5,
-   "bytes": 10792,
+   "buildVersion": 6,
+   "bytes": 10796,
    "triangles": 357
   }
  },
@@ -3192,8 +3192,8 @@
   "triangles": 2194,
   "lod2": {
    "sourceHash": "4943a8260e5c4e03",
-   "buildVersion": 5,
-   "bytes": 7020,
+   "buildVersion": 6,
+   "bytes": 7032,
    "triangles": 195
   }
  },
@@ -3204,8 +3204,8 @@
   "triangles": 4939,
   "lod2": {
    "sourceHash": "721d98704c685d7f",
-   "buildVersion": 5,
-   "bytes": 17668,
+   "buildVersion": 6,
+   "bytes": 17292,
    "triangles": 666
   }
  },
@@ -3216,8 +3216,8 @@
   "triangles": 3788,
   "lod2": {
    "sourceHash": "9ccfed7fd4c5c988",
-   "buildVersion": 5,
-   "bytes": 8688,
+   "buildVersion": 6,
+   "bytes": 8336,
    "triangles": 234
   }
  },
@@ -3228,8 +3228,8 @@
   "triangles": 2552,
   "lod2": {
    "sourceHash": "5c4dd5b7b9966aed",
-   "buildVersion": 5,
-   "bytes": 31708,
+   "buildVersion": 6,
+   "bytes": 31312,
    "triangles": 1474
   }
  },
@@ -3240,8 +3240,8 @@
   "triangles": 6595,
   "lod2": {
    "sourceHash": "2493b3469d9a3c53",
-   "buildVersion": 5,
-   "bytes": 33676,
+   "buildVersion": 6,
+   "bytes": 33652,
    "triangles": 1475
   }
  },
@@ -3252,8 +3252,8 @@
   "triangles": 808,
   "lod2": {
    "sourceHash": "03302730c1bcb31f",
-   "buildVersion": 5,
-   "bytes": 6904,
+   "buildVersion": 6,
+   "bytes": 6556,
    "triangles": 132
   }
  },
@@ -3264,8 +3264,8 @@
   "triangles": 4885,
   "lod2": {
    "sourceHash": "3cf272c49a1b6e84",
-   "buildVersion": 5,
-   "bytes": 13824,
+   "buildVersion": 6,
+   "bytes": 13820,
    "triangles": 478
   }
  },
@@ -3276,8 +3276,8 @@
   "triangles": 5537,
   "lod2": {
    "sourceHash": "4b306c902d74445a",
-   "buildVersion": 5,
-   "bytes": 16696,
+   "buildVersion": 6,
+   "bytes": 16684,
    "triangles": 692
   }
  },
@@ -3288,7 +3288,7 @@
   "triangles": 2199,
   "lod2": {
    "sourceHash": "8d85fc2556b3d741",
-   "buildVersion": 5,
+   "buildVersion": 6,
    "bytes": 8676,
    "triangles": 226
   }
@@ -3300,8 +3300,8 @@
   "triangles": 2251,
   "lod2": {
    "sourceHash": "4e03d468afe8daec",
-   "buildVersion": 5,
-   "bytes": 9288,
+   "buildVersion": 6,
+   "bytes": 8928,
    "triangles": 272
   }
  },
@@ -3312,15 +3312,15 @@
   "triangles": 6202,
   "lod2": {
    "sourceHash": "962471b9b834d058",
-   "buildVersion": 5,
-   "bytes": 15140,
+   "buildVersion": 6,
+   "bytes": 15132,
    "triangles": 549
   }
  },
  "asterweg-23": {
   "lod2": {
    "sourceHash": "2001cd89e4af86b9",
-   "buildVersion": 5,
+   "buildVersion": 6,
    "bytes": 7416,
    "triangles": 221
   }
@@ -3332,8 +3332,8 @@
   "triangles": 3408,
   "lod2": {
    "sourceHash": "a0f0d0edbed6f1ea",
-   "buildVersion": 5,
-   "bytes": 13452,
+   "buildVersion": 6,
+   "bytes": 12716,
    "triangles": 402
   }
  },
@@ -3344,8 +3344,8 @@
   "triangles": 4049,
   "lod2": {
    "sourceHash": "f11a9ebfb34eb2e3",
-   "buildVersion": 5,
-   "bytes": 16964,
+   "buildVersion": 6,
+   "bytes": 16968,
    "triangles": 651
   }
  },
@@ -3356,8 +3356,8 @@
   "triangles": 2658,
   "lod2": {
    "sourceHash": "4aaa1714e39647ba",
-   "buildVersion": 5,
-   "bytes": 10212,
+   "buildVersion": 6,
+   "bytes": 10216,
    "triangles": 320
   }
  },
@@ -3368,8 +3368,8 @@
   "triangles": 4010,
   "lod2": {
    "sourceHash": "3520d14a631ffc10",
-   "buildVersion": 5,
-   "bytes": 12608,
+   "buildVersion": 6,
+   "bytes": 12968,
    "triangles": 516
   }
  },
@@ -3380,8 +3380,8 @@
   "triangles": 3196,
   "lod2": {
    "sourceHash": "631eace09fd06d0d",
-   "buildVersion": 5,
-   "bytes": 24244,
+   "buildVersion": 6,
+   "bytes": 24232,
    "triangles": 1121
   }
  },
@@ -3392,8 +3392,8 @@
   "triangles": 4205,
   "lod2": {
    "sourceHash": "d55f337d9d6be801",
-   "buildVersion": 5,
-   "bytes": 16612,
+   "buildVersion": 6,
+   "bytes": 16552,
    "triangles": 639
   }
  },
@@ -3404,8 +3404,8 @@
   "triangles": 3690,
   "lod2": {
    "sourceHash": "074ee3c4b36d1559",
-   "buildVersion": 5,
-   "bytes": 32676,
+   "buildVersion": 6,
+   "bytes": 32576,
    "triangles": 1579
   }
  },
@@ -3416,8 +3416,8 @@
   "triangles": 4423,
   "lod2": {
    "sourceHash": "377117f9a6cd9695",
-   "buildVersion": 5,
-   "bytes": 29148,
+   "buildVersion": 6,
+   "bytes": 29112,
    "triangles": 1326
   }
  },
@@ -3428,8 +3428,8 @@
   "triangles": 2155,
   "lod2": {
    "sourceHash": "ca2d417b6b58b927",
-   "buildVersion": 5,
-   "bytes": 10108,
+   "buildVersion": 6,
+   "bytes": 10104,
    "triangles": 344
   }
  },
@@ -3440,8 +3440,8 @@
   "triangles": 4833,
   "lod2": {
    "sourceHash": "92671806852d1fa7",
-   "buildVersion": 5,
-   "bytes": 20708,
+   "buildVersion": 6,
+   "bytes": 20712,
    "triangles": 1500
   }
  },
@@ -3452,8 +3452,8 @@
   "triangles": 1271,
   "lod2": {
    "sourceHash": "d0267f661bda5af4",
-   "buildVersion": 5,
-   "bytes": 14292,
+   "buildVersion": 6,
+   "bytes": 14316,
    "triangles": 880
   }
  },
@@ -3464,7 +3464,7 @@
   "triangles": 1438,
   "lod2": {
    "sourceHash": "3bc844361675f53d",
-   "buildVersion": 5,
+   "buildVersion": 6,
    "bytes": 21360,
    "triangles": 1500
   }
@@ -3476,7 +3476,7 @@
   "triangles": 6217,
   "lod2": {
    "sourceHash": "da47cd58262034b5",
-   "buildVersion": 5,
+   "buildVersion": 6,
    "bytes": 65124,
    "triangles": 6218
   }
@@ -3488,8 +3488,8 @@
   "triangles": 4565,
   "lod2": {
    "sourceHash": "36d804c5803b1713",
-   "buildVersion": 5,
-   "bytes": 13416,
+   "buildVersion": 6,
+   "bytes": 13396,
    "triangles": 591
   }
  },
@@ -3500,8 +3500,8 @@
   "triangles": 3182,
   "lod2": {
    "sourceHash": "8639fb451a8a015e",
-   "buildVersion": 5,
-   "bytes": 11596,
+   "buildVersion": 6,
+   "bytes": 11600,
    "triangles": 372
   }
  },
@@ -3512,8 +3512,8 @@
   "triangles": 1762,
   "lod2": {
    "sourceHash": "f8af0a673b7fee2e",
-   "buildVersion": 5,
-   "bytes": 8916,
+   "buildVersion": 6,
+   "bytes": 8548,
    "triangles": 204
   }
  },
@@ -3524,8 +3524,8 @@
   "triangles": 2567,
   "lod2": {
    "sourceHash": "35e0014538b7aa5d",
-   "buildVersion": 5,
-   "bytes": 10672,
+   "buildVersion": 6,
+   "bytes": 10660,
    "triangles": 335
   }
  },
@@ -3536,8 +3536,8 @@
   "triangles": 1384,
   "lod2": {
    "sourceHash": "577638b6f78be191",
-   "buildVersion": 5,
-   "bytes": 8916,
+   "buildVersion": 6,
+   "bytes": 8560,
    "triangles": 252
   }
  },
@@ -3548,8 +3548,8 @@
   "triangles": 1248,
   "lod2": {
    "sourceHash": "d13aee0a7677b4d9",
-   "buildVersion": 5,
-   "bytes": 7012,
+   "buildVersion": 6,
+   "bytes": 6996,
    "triangles": 160
   }
  },
@@ -3560,8 +3560,8 @@
   "triangles": 3543,
   "lod2": {
    "sourceHash": "dded32773c81cdcc",
-   "buildVersion": 5,
-   "bytes": 14920,
+   "buildVersion": 6,
+   "bytes": 14472,
    "triangles": 483
   }
  },
@@ -3572,8 +3572,8 @@
   "triangles": 1107,
   "lod2": {
    "sourceHash": "176000923ff7a24b",
-   "buildVersion": 5,
-   "bytes": 5556,
+   "buildVersion": 6,
+   "bytes": 5528,
    "triangles": 157
   }
  },
@@ -3584,8 +3584,8 @@
   "triangles": 1747,
   "lod2": {
    "sourceHash": "da7222a59d7ea6c4",
-   "buildVersion": 5,
-   "bytes": 8716,
+   "buildVersion": 6,
+   "bytes": 8332,
    "triangles": 215
   }
  },
@@ -3596,8 +3596,8 @@
   "triangles": 9243,
   "lod2": {
    "sourceHash": "88499b8a887d3aaa",
-   "buildVersion": 5,
-   "bytes": 34692,
+   "buildVersion": 6,
+   "bytes": 34004,
    "triangles": 1500
   }
  },
@@ -3608,8 +3608,8 @@
   "triangles": 5010,
   "lod2": {
    "sourceHash": "9ad6641533f310c2",
-   "buildVersion": 5,
-   "bytes": 28288,
+   "buildVersion": 6,
+   "bytes": 27952,
    "triangles": 1498
   }
  },
@@ -3620,8 +3620,8 @@
   "triangles": 1327,
   "lod2": {
    "sourceHash": "ddea9d3aa42a5ad8",
-   "buildVersion": 5,
-   "bytes": 5896,
+   "buildVersion": 6,
+   "bytes": 5528,
    "triangles": 164
   }
  },
@@ -3632,8 +3632,8 @@
   "triangles": 2565,
   "lod2": {
    "sourceHash": "8ca58ce3f25edaa3",
-   "buildVersion": 5,
-   "bytes": 9248,
+   "buildVersion": 6,
+   "bytes": 9232,
    "triangles": 332
   }
  },
@@ -3644,8 +3644,8 @@
   "triangles": 3386,
   "lod2": {
    "sourceHash": "d8abfa92db6923d7",
-   "buildVersion": 5,
-   "bytes": 17256,
+   "buildVersion": 6,
+   "bytes": 17588,
    "triangles": 901
   }
  },
@@ -3656,8 +3656,8 @@
   "triangles": 911,
   "lod2": {
    "sourceHash": "d4bc7ab02f1432d5",
-   "buildVersion": 5,
-   "bytes": 12936,
+   "buildVersion": 6,
+   "bytes": 12556,
    "triangles": 542
   }
  },
@@ -3668,8 +3668,8 @@
   "triangles": 3634,
   "lod2": {
    "sourceHash": "f0b34170920942b6",
-   "buildVersion": 5,
-   "bytes": 31364,
+   "buildVersion": 6,
+   "bytes": 31324,
    "triangles": 1480
   }
  },
@@ -3680,8 +3680,8 @@
   "triangles": 2855,
   "lod2": {
    "sourceHash": "25a9f7d133328b2a",
-   "buildVersion": 5,
-   "bytes": 8528,
+   "buildVersion": 6,
+   "bytes": 8532,
    "triangles": 270
   }
  },
@@ -3692,8 +3692,8 @@
   "triangles": 4094,
   "lod2": {
    "sourceHash": "5f88f48d99715441",
-   "buildVersion": 5,
-   "bytes": 8212,
+   "buildVersion": 6,
+   "bytes": 8208,
    "triangles": 258
   }
  },
@@ -3704,8 +3704,8 @@
   "triangles": 1788,
   "lod2": {
    "sourceHash": "f4572b102b6d517e",
-   "buildVersion": 5,
-   "bytes": 12620,
+   "buildVersion": 6,
+   "bytes": 12216,
    "triangles": 482
   }
  },
@@ -3716,7 +3716,7 @@
   "triangles": 644,
   "lod2": {
    "sourceHash": "876f3d4dfca9523a",
-   "buildVersion": 5,
+   "buildVersion": 6,
    "bytes": 4584,
    "triangles": 88
   }
@@ -3728,8 +3728,8 @@
   "triangles": 2856,
   "lod2": {
    "sourceHash": "a4227eb4d1476caf",
-   "buildVersion": 5,
-   "bytes": 11964,
+   "buildVersion": 6,
+   "bytes": 11956,
    "triangles": 417
   }
  },
@@ -3740,8 +3740,8 @@
   "triangles": 1284,
   "lod2": {
    "sourceHash": "0f26022c827780cb",
-   "buildVersion": 5,
-   "bytes": 9656,
+   "buildVersion": 6,
+   "bytes": 9648,
    "triangles": 354
   }
  },
@@ -3752,7 +3752,7 @@
   "triangles": 1526,
   "lod2": {
    "sourceHash": "f25096f25e831407",
-   "buildVersion": 5,
+   "buildVersion": 6,
    "bytes": 6156,
    "triangles": 158
   }
@@ -3764,8 +3764,8 @@
   "triangles": 3783,
   "lod2": {
    "sourceHash": "68d73896c3a5ffb2",
-   "buildVersion": 5,
-   "bytes": 10716,
+   "buildVersion": 6,
+   "bytes": 11100,
    "triangles": 379
   }
  },
@@ -3776,8 +3776,8 @@
   "triangles": 2746,
   "lod2": {
    "sourceHash": "099d46093ba4a47d",
-   "buildVersion": 5,
-   "bytes": 7052,
+   "buildVersion": 6,
+   "bytes": 6696,
    "triangles": 209
   }
  },
@@ -3788,8 +3788,8 @@
   "triangles": 1028,
   "lod2": {
    "sourceHash": "525e790cde684c79",
-   "buildVersion": 5,
-   "bytes": 5456,
+   "buildVersion": 6,
+   "bytes": 5468,
    "triangles": 125
   }
  },
@@ -3800,8 +3800,8 @@
   "triangles": 942,
   "lod2": {
    "sourceHash": "f7a9c22f444051bc",
-   "buildVersion": 5,
-   "bytes": 5184,
+   "buildVersion": 6,
+   "bytes": 5204,
    "triangles": 120
   }
  },
@@ -3812,7 +3812,7 @@
   "triangles": 1628,
   "lod2": {
    "sourceHash": "e8078b785e2c999d",
-   "buildVersion": 5,
+   "buildVersion": 6,
    "bytes": 5468,
    "triangles": 132
   }
@@ -3824,7 +3824,7 @@
   "triangles": 1232,
   "lod2": {
    "sourceHash": "f8c7dbce34f4cc8e",
-   "buildVersion": 5,
+   "buildVersion": 6,
    "bytes": 6392,
    "triangles": 218
   }
@@ -3832,7 +3832,7 @@
  "auschwitz-monument": {
   "lod2": {
    "sourceHash": "e0f0358e0880e8ba",
-   "buildVersion": 5,
+   "buildVersion": 6,
    "bytes": 2932,
    "triangles": 28
   }
@@ -3844,8 +3844,8 @@
   "triangles": 7337,
   "lod2": {
    "sourceHash": "62bb1f9ad28b4c9b",
-   "buildVersion": 5,
-   "bytes": 33588,
+   "buildVersion": 6,
+   "bytes": 33160,
    "triangles": 1499
   }
  },
@@ -3856,8 +3856,8 @@
   "triangles": 6491,
   "lod2": {
    "sourceHash": "0d7b1c43143a48cd",
-   "buildVersion": 5,
-   "bytes": 29552,
+   "buildVersion": 6,
+   "bytes": 29500,
    "triangles": 1500
   }
  },
@@ -3868,7 +3868,7 @@
   "triangles": 5452,
   "lod2": {
    "sourceHash": "8a8093a144c3965a",
-   "buildVersion": 5,
+   "buildVersion": 6,
    "bytes": 15208,
    "triangles": 702
   }
@@ -3880,7 +3880,7 @@
   "triangles": 2732,
   "lod2": {
    "sourceHash": "ddac9403630d4828",
-   "buildVersion": 5,
+   "buildVersion": 6,
    "bytes": 5296,
    "triangles": 148
   }
@@ -3892,7 +3892,7 @@
   "triangles": 1802,
   "lod2": {
    "sourceHash": "a9f3fbc991ba4591",
-   "buildVersion": 5,
+   "buildVersion": 6,
    "bytes": 5600,
    "triangles": 150
   }
@@ -3904,7 +3904,7 @@
   "triangles": 720,
   "lod2": {
    "sourceHash": "dc04963f913b3880",
-   "buildVersion": 5,
+   "buildVersion": 6,
    "bytes": 4344,
    "triangles": 94
   }
@@ -3916,8 +3916,8 @@
   "triangles": 1164,
   "lod2": {
    "sourceHash": "d37201221a696b1d",
-   "buildVersion": 5,
-   "bytes": 4868,
+   "buildVersion": 6,
+   "bytes": 4880,
    "triangles": 120
   }
  },
@@ -3928,8 +3928,8 @@
   "triangles": 1040,
   "lod2": {
    "sourceHash": "93e98bd5315de9da",
-   "buildVersion": 5,
-   "bytes": 4856,
+   "buildVersion": 6,
+   "bytes": 4852,
    "triangles": 120
   }
  },
@@ -3940,15 +3940,15 @@
   "triangles": 1951,
   "lod2": {
    "sourceHash": "339181a31e96abad",
-   "buildVersion": 5,
-   "bytes": 6616,
+   "buildVersion": 6,
+   "bytes": 6612,
    "triangles": 180
   }
  },
  "de-schreeuw-oosterpark": {
   "lod2": {
    "sourceHash": "efd3183658000f29",
-   "buildVersion": 5,
+   "buildVersion": 6,
    "bytes": 2616,
    "triangles": 26
   }
@@ -3960,7 +3960,7 @@
   "triangles": 542,
   "lod2": {
    "sourceHash": "9686e52663e2b64e",
-   "buildVersion": 5,
+   "buildVersion": 6,
    "bytes": 3808,
    "triangles": 58
   }
@@ -3972,7 +3972,7 @@
   "triangles": 892,
   "lod2": {
    "sourceHash": "e2f64d7ee6cbffa6",
-   "buildVersion": 5,
+   "buildVersion": 6,
    "bytes": 3452,
    "triangles": 66
   }
@@ -3984,7 +3984,7 @@
   "triangles": 1203,
   "lod2": {
    "sourceHash": "cfe7909241c5b93b",
-   "buildVersion": 5,
+   "buildVersion": 6,
    "bytes": 6516,
    "triangles": 152
   }
@@ -3996,8 +3996,8 @@
   "triangles": 4431,
   "lod2": {
    "sourceHash": "ceded78930018e4f",
-   "buildVersion": 5,
-   "bytes": 12460,
+   "buildVersion": 6,
+   "bytes": 12432,
    "triangles": 452
   }
  },
@@ -4008,8 +4008,8 @@
   "triangles": 3373,
   "lod2": {
    "sourceHash": "3a3caa031f218cde",
-   "buildVersion": 5,
-   "bytes": 31760,
+   "buildVersion": 6,
+   "bytes": 31756,
    "triangles": 1499
   }
  },
@@ -4020,8 +4020,8 @@
   "triangles": 1430,
   "lod2": {
    "sourceHash": "edbf5280bf75e26d",
-   "buildVersion": 5,
-   "bytes": 19680,
+   "buildVersion": 6,
+   "bytes": 19160,
    "triangles": 813
   }
  },
@@ -4032,8 +4032,8 @@
   "triangles": 4580,
   "lod2": {
    "sourceHash": "d9f5a46f776bf897",
-   "buildVersion": 5,
-   "bytes": 24024,
+   "buildVersion": 6,
+   "bytes": 24384,
    "triangles": 1192
   }
  },
@@ -4044,15 +4044,15 @@
   "triangles": 646,
   "lod2": {
    "sourceHash": "a10929b18a805be2",
-   "buildVersion": 5,
-   "bytes": 5284,
+   "buildVersion": 6,
+   "bytes": 5272,
    "triangles": 110
   }
  },
  "de-otter": {
   "lod2": {
    "sourceHash": "20c9d0dace2174e1",
-   "buildVersion": 5,
+   "buildVersion": 6,
    "bytes": 5300,
    "triangles": 60
   }
@@ -4064,8 +4064,8 @@
   "triangles": 984,
   "lod2": {
    "sourceHash": "a75d487e29023373",
-   "buildVersion": 5,
-   "bytes": 6564,
+   "buildVersion": 6,
+   "bytes": 6200,
    "triangles": 99
   }
  },
@@ -4076,8 +4076,8 @@
   "triangles": 1563,
   "lod2": {
    "sourceHash": "dea9198bc4f7a098",
-   "buildVersion": 5,
-   "bytes": 8576,
+   "buildVersion": 6,
+   "bytes": 8572,
    "triangles": 218
   }
  },
@@ -4088,8 +4088,8 @@
   "triangles": 5676,
   "lod2": {
    "sourceHash": "eb6fd7c5b1488f96",
-   "buildVersion": 5,
-   "bytes": 18176,
+   "buildVersion": 6,
+   "bytes": 18144,
    "triangles": 727
   }
  },
@@ -4100,8 +4100,8 @@
   "triangles": 3500,
   "lod2": {
    "sourceHash": "2a2010e69de4af5e",
-   "buildVersion": 5,
-   "bytes": 21148,
+   "buildVersion": 6,
+   "bytes": 20708,
    "triangles": 738
   }
  },
@@ -4112,7 +4112,7 @@
   "triangles": 2502,
   "lod2": {
    "sourceHash": "6d7d0c5dbdfda371",
-   "buildVersion": 5,
+   "buildVersion": 6,
    "bytes": 8804,
    "triangles": 282
   }
@@ -4124,7 +4124,7 @@
   "triangles": 508,
   "lod2": {
    "sourceHash": "84573bdb953f314b",
-   "buildVersion": 5,
+   "buildVersion": 6,
    "bytes": 3944,
    "triangles": 70
   }
@@ -4136,8 +4136,8 @@
   "triangles": 5407,
   "lod2": {
    "sourceHash": "234c41654ea98cca",
-   "buildVersion": 5,
-   "bytes": 25908,
+   "buildVersion": 6,
+   "bytes": 25872,
    "triangles": 1294
   }
  },
@@ -4148,8 +4148,8 @@
   "triangles": 4041,
   "lod2": {
    "sourceHash": "1dabed264c783f80",
-   "buildVersion": 5,
-   "bytes": 15564,
+   "buildVersion": 6,
+   "bytes": 15556,
    "triangles": 647
   }
  },
@@ -4160,8 +4160,8 @@
   "triangles": 4093,
   "lod2": {
    "sourceHash": "65954ae0ec76278e",
-   "buildVersion": 5,
-   "bytes": 13568,
+   "buildVersion": 6,
+   "bytes": 13556,
    "triangles": 486
   }
  },
@@ -4172,8 +4172,8 @@
   "triangles": 1777,
   "lod2": {
    "sourceHash": "023c8ea79a32b66b",
-   "buildVersion": 5,
-   "bytes": 7728,
+   "buildVersion": 6,
+   "bytes": 8096,
    "triangles": 219
   }
  },
@@ -4184,8 +4184,8 @@
   "triangles": 2438,
   "lod2": {
    "sourceHash": "152f5c777a82421c",
-   "buildVersion": 5,
-   "bytes": 13120,
+   "buildVersion": 6,
+   "bytes": 13108,
    "triangles": 362
   }
  },
@@ -4196,8 +4196,8 @@
   "triangles": 5163,
   "lod2": {
    "sourceHash": "0aeb60175612bc0d",
-   "buildVersion": 5,
-   "bytes": 15336,
+   "buildVersion": 6,
+   "bytes": 14144,
    "triangles": 728
   }
  },
@@ -4208,8 +4208,8 @@
   "triangles": 2857,
   "lod2": {
    "sourceHash": "dfd315d58de38070",
-   "buildVersion": 5,
-   "bytes": 8120,
+   "buildVersion": 6,
+   "bytes": 8124,
    "triangles": 204
   }
  },
@@ -4220,8 +4220,8 @@
   "triangles": 6465,
   "lod2": {
    "sourceHash": "9a2b538531ac83a5",
-   "buildVersion": 5,
-   "bytes": 39652,
+   "buildVersion": 6,
+   "bytes": 39660,
    "triangles": 2460
   }
  },
@@ -4232,8 +4232,8 @@
   "triangles": 2285,
   "lod2": {
    "sourceHash": "1da18b6e8d540940",
-   "buildVersion": 5,
-   "bytes": 7048,
+   "buildVersion": 6,
+   "bytes": 6676,
    "triangles": 156
   }
  },
@@ -4244,8 +4244,8 @@
   "triangles": 4389,
   "lod2": {
    "sourceHash": "a7c82c954243af02",
-   "buildVersion": 5,
-   "bytes": 14560,
+   "buildVersion": 6,
+   "bytes": 14900,
    "triangles": 523
   }
  },
@@ -4256,7 +4256,7 @@
   "triangles": 1010,
   "lod2": {
    "sourceHash": "109f06ad4434b460",
-   "buildVersion": 5,
+   "buildVersion": 6,
    "bytes": 6584,
    "triangles": 96
   }
@@ -4268,7 +4268,7 @@
   "triangles": 4833,
   "lod2": {
    "sourceHash": "0e987c34023206c1",
-   "buildVersion": 5,
+   "buildVersion": 6,
    "bytes": 13572,
    "triangles": 573
   }
@@ -4280,8 +4280,8 @@
   "triangles": 3130,
   "lod2": {
    "sourceHash": "7bc87d5fa8600fd2",
-   "buildVersion": 5,
-   "bytes": 10628,
+   "buildVersion": 6,
+   "bytes": 10256,
    "triangles": 378
   }
  },
@@ -4292,8 +4292,8 @@
   "triangles": 4325,
   "lod2": {
    "sourceHash": "761e8a608fc3a710",
-   "buildVersion": 5,
-   "bytes": 13080,
+   "buildVersion": 6,
+   "bytes": 12692,
    "triangles": 535
   }
  },
@@ -4304,8 +4304,8 @@
   "triangles": 1985,
   "lod2": {
    "sourceHash": "1768ecdf65823a24",
-   "buildVersion": 5,
-   "bytes": 8084,
+   "buildVersion": 6,
+   "bytes": 6988,
    "triangles": 176
   }
  },
@@ -4316,8 +4316,8 @@
   "triangles": 1221,
   "lod2": {
    "sourceHash": "8ae0d4a333f2b7e6",
-   "buildVersion": 5,
-   "bytes": 6412,
+   "buildVersion": 6,
+   "bytes": 6020,
    "triangles": 182
   }
  },
@@ -4328,7 +4328,7 @@
   "triangles": 3910,
   "lod2": {
    "sourceHash": "5d46d293ff21dc52",
-   "buildVersion": 5,
+   "buildVersion": 6,
    "bytes": 12680,
    "triangles": 511
   }
@@ -4340,7 +4340,7 @@
   "triangles": 2275,
   "lod2": {
    "sourceHash": "e8c99d8e2714c970",
-   "buildVersion": 5,
+   "buildVersion": 6,
    "bytes": 8988,
    "triangles": 300
   }
@@ -4348,15 +4348,15 @@
  "kiosk-dr-falafel": {
   "lod2": {
    "sourceHash": "17f2e42d4e64d442",
-   "buildVersion": 5,
-   "bytes": 4616,
+   "buildVersion": 6,
+   "bytes": 4620,
    "triangles": 40
   }
  },
  "kiosk-mr-blou": {
   "lod2": {
    "sourceHash": "0ea91558d1c12314",
-   "buildVersion": 5,
+   "buildVersion": 6,
    "bytes": 4204,
    "triangles": 34
   }
@@ -4364,7 +4364,7 @@
  "kiosk-dumplings-nassauplein": {
   "lod2": {
    "sourceHash": "36adbd968bd4343c",
-   "buildVersion": 5,
+   "buildVersion": 6,
    "bytes": 3500,
    "triangles": 18
   }
@@ -4372,7 +4372,7 @@
  "kiosk-frens-haringhandel": {
   "lod2": {
    "sourceHash": "db74db64ab26dd66",
-   "buildVersion": 5,
+   "buildVersion": 6,
    "bytes": 3536,
    "triangles": 36
   }
@@ -4380,7 +4380,7 @@
  "kiosk-stubbes-haring": {
   "lod2": {
    "sourceHash": "cc9757ac107752de",
-   "buildVersion": 5,
+   "buildVersion": 6,
    "bytes": 3012,
    "triangles": 18
   }
@@ -4388,7 +4388,7 @@
  "kiosk-haringhandel-jonk": {
   "lod2": {
    "sourceHash": "b68028f1297758a3",
-   "buildVersion": 5,
+   "buildVersion": 6,
    "bytes": 3200,
    "triangles": 44
   }
@@ -4396,7 +4396,7 @@
  "kiosk-museumplein": {
   "lod2": {
    "sourceHash": "3e9f09f39cf1c3ad",
-   "buildVersion": 5,
+   "buildVersion": 6,
    "bytes": 2220,
    "triangles": 10
   }
@@ -4408,8 +4408,8 @@
   "triangles": 4147,
   "lod2": {
    "sourceHash": "1310fc65cf2a62ae",
-   "buildVersion": 5,
-   "bytes": 22920,
+   "buildVersion": 6,
+   "bytes": 22840,
    "triangles": 1316
   }
  },
@@ -4420,8 +4420,8 @@
   "triangles": 2426,
   "lod2": {
    "sourceHash": "2085964f78c2f01c",
-   "buildVersion": 5,
-   "bytes": 36240,
+   "buildVersion": 6,
+   "bytes": 36272,
    "triangles": 1882
   }
  },
@@ -4432,8 +4432,8 @@
   "triangles": 1459,
   "lod2": {
    "sourceHash": "16254d5bcc24e408",
-   "buildVersion": 5,
-   "bytes": 19428,
+   "buildVersion": 6,
+   "bytes": 19420,
    "triangles": 824
   }
  },
@@ -4444,8 +4444,8 @@
   "triangles": 1344,
   "lod2": {
    "sourceHash": "f45795786dc7c4de",
-   "buildVersion": 5,
-   "bytes": 7488,
+   "buildVersion": 6,
+   "bytes": 7092,
    "triangles": 162
   }
  },
@@ -4456,8 +4456,8 @@
   "triangles": 4405,
   "lod2": {
    "sourceHash": "b3224d1258c39c12",
-   "buildVersion": 5,
-   "bytes": 14968,
+   "buildVersion": 6,
+   "bytes": 14904,
    "triangles": 528
   }
  },
@@ -4468,8 +4468,8 @@
   "triangles": 3696,
   "lod2": {
    "sourceHash": "a1d6702c7f4cb824",
-   "buildVersion": 5,
-   "bytes": 24724,
+   "buildVersion": 6,
+   "bytes": 24696,
    "triangles": 950
   }
  },
@@ -4480,8 +4480,8 @@
   "triangles": 2506,
   "lod2": {
    "sourceHash": "ca99fc45b4e0fec0",
-   "buildVersion": 5,
-   "bytes": 12148,
+   "buildVersion": 6,
+   "bytes": 11408,
    "triangles": 339
   }
  },
@@ -4492,8 +4492,8 @@
   "triangles": 3976,
   "lod2": {
    "sourceHash": "64ab583f1cbe374b",
-   "buildVersion": 5,
-   "bytes": 14852,
+   "buildVersion": 6,
+   "bytes": 14472,
    "triangles": 488
   }
  },
@@ -4504,8 +4504,8 @@
   "triangles": 3996,
   "lod2": {
    "sourceHash": "e776cce0235357e5",
-   "buildVersion": 5,
-   "bytes": 13072,
+   "buildVersion": 6,
+   "bytes": 12740,
    "triangles": 511
   }
  },
@@ -4516,7 +4516,7 @@
   "triangles": 2443,
   "lod2": {
    "sourceHash": "79a0a5443847149e",
-   "buildVersion": 5,
+   "buildVersion": 6,
    "bytes": 15052,
    "triangles": 812
   }
@@ -4528,8 +4528,8 @@
   "triangles": 2230,
   "lod2": {
    "sourceHash": "ea88956c3d920fae",
-   "buildVersion": 5,
-   "bytes": 8972,
+   "buildVersion": 6,
+   "bytes": 8984,
    "triangles": 218
   }
  },
@@ -4540,8 +4540,8 @@
   "triangles": 5068,
   "lod2": {
    "sourceHash": "b9a4c1fc5a00a0d5",
-   "buildVersion": 5,
-   "bytes": 16188,
+   "buildVersion": 6,
+   "bytes": 16184,
    "triangles": 574
   }
  },
@@ -4552,8 +4552,8 @@
   "triangles": 2618,
   "lod2": {
    "sourceHash": "60c250f25986c0ac",
-   "buildVersion": 5,
-   "bytes": 11888,
+   "buildVersion": 6,
+   "bytes": 11872,
    "triangles": 350
   }
  },
@@ -4564,8 +4564,8 @@
   "triangles": 1704,
   "lod2": {
    "sourceHash": "bc0f100cd8b0cea7",
-   "buildVersion": 5,
-   "bytes": 8984,
+   "buildVersion": 6,
+   "bytes": 8960,
    "triangles": 272
   }
  },
@@ -4576,7 +4576,7 @@
   "triangles": 976,
   "lod2": {
    "sourceHash": "a2128c7efc5f9712",
-   "buildVersion": 5,
+   "buildVersion": 6,
    "bytes": 5456,
    "triangles": 120
   }
@@ -4588,8 +4588,8 @@
   "triangles": 5020,
   "lod2": {
    "sourceHash": "aac8e27524281277",
-   "buildVersion": 5,
-   "bytes": 20352,
+   "buildVersion": 6,
+   "bytes": 20320,
    "triangles": 813
   }
  },
@@ -4600,8 +4600,8 @@
   "triangles": 5671,
   "lod2": {
    "sourceHash": "71e0a14ab60dd9fa",
-   "buildVersion": 5,
-   "bytes": 18348,
+   "buildVersion": 6,
+   "bytes": 17948,
    "triangles": 679
   }
  },
@@ -4612,8 +4612,8 @@
   "triangles": 1182,
   "lod2": {
    "sourceHash": "fd54f955d51fde83",
-   "buildVersion": 5,
-   "bytes": 14784,
+   "buildVersion": 6,
+   "bytes": 14736,
    "triangles": 578
   }
  },
@@ -4624,8 +4624,8 @@
   "triangles": 2520,
   "lod2": {
    "sourceHash": "417e542696fdda6d",
-   "buildVersion": 5,
-   "bytes": 21820,
+   "buildVersion": 6,
+   "bytes": 21828,
    "triangles": 1164
   }
  },
@@ -4636,16 +4636,16 @@
   "triangles": 5663,
   "lod2": {
    "sourceHash": "e4b09cd91bd03199",
-   "buildVersion": 5,
-   "bytes": 24848,
+   "buildVersion": 6,
+   "bytes": 24752,
    "triangles": 1374
   }
  },
  "volkshotel": {
   "lod2": {
    "sourceHash": "19a4a6dae2dcf93e",
-   "buildVersion": 5,
-   "bytes": 7480,
+   "buildVersion": 6,
+   "bytes": 7436,
    "triangles": 263
   }
  },
@@ -4656,8 +4656,8 @@
   "triangles": 10698,
   "lod2": {
    "sourceHash": "88f8d6b71cee5717",
-   "buildVersion": 5,
-   "bytes": 27252,
+   "buildVersion": 6,
+   "bytes": 26140,
    "triangles": 1500
   }
  },
@@ -4668,8 +4668,8 @@
   "triangles": 3695,
   "lod2": {
    "sourceHash": "a822e4ba8235da70",
-   "buildVersion": 5,
-   "bytes": 19680,
+   "buildVersion": 6,
+   "bytes": 19400,
    "triangles": 773
   }
  },
@@ -4680,8 +4680,8 @@
   "triangles": 5427,
   "lod2": {
    "sourceHash": "5ca0f3c89e7623f3",
-   "buildVersion": 5,
-   "bytes": 14564,
+   "buildVersion": 6,
+   "bytes": 14228,
    "triangles": 679
   }
  },
@@ -4692,8 +4692,8 @@
   "triangles": 4808,
   "lod2": {
    "sourceHash": "9c1cf931b8f43533",
-   "buildVersion": 5,
-   "bytes": 14484,
+   "buildVersion": 6,
+   "bytes": 14864,
    "triangles": 606
   }
  },
@@ -4704,8 +4704,8 @@
   "triangles": 2668,
   "lod2": {
    "sourceHash": "73038bf31ceb930f",
-   "buildVersion": 5,
-   "bytes": 14692,
+   "buildVersion": 6,
+   "bytes": 14688,
    "triangles": 599
   }
  },
@@ -4716,8 +4716,8 @@
   "triangles": 7255,
   "lod2": {
    "sourceHash": "e082cdcf1ffaffb7",
-   "buildVersion": 5,
-   "bytes": 24880,
+   "buildVersion": 6,
+   "bytes": 24648,
    "triangles": 1251
   }
  },
@@ -4728,8 +4728,8 @@
   "triangles": 3237,
   "lod2": {
    "sourceHash": "dec21658543084fe",
-   "buildVersion": 5,
-   "bytes": 28500,
+   "buildVersion": 6,
+   "bytes": 28492,
    "triangles": 1498
   }
  },
@@ -4740,8 +4740,8 @@
   "triangles": 1914,
   "lod2": {
    "sourceHash": "4d90cd344bc794b3",
-   "buildVersion": 5,
-   "bytes": 14404,
+   "buildVersion": 6,
+   "bytes": 14136,
    "triangles": 609
   }
  },
@@ -4752,8 +4752,8 @@
   "triangles": 615,
   "lod2": {
    "sourceHash": "985bd1f99ee9da64",
-   "buildVersion": 5,
-   "bytes": 6900,
+   "buildVersion": 6,
+   "bytes": 6524,
    "triangles": 192
   }
  },
@@ -4764,7 +4764,7 @@
   "triangles": 2437,
   "lod2": {
    "sourceHash": "480562ef9015bc8e",
-   "buildVersion": 5,
+   "buildVersion": 6,
    "bytes": 7660,
    "triangles": 268
   }
@@ -4776,7 +4776,7 @@
   "triangles": 2230,
   "lod2": {
    "sourceHash": "754638560554e56d",
-   "buildVersion": 5,
+   "buildVersion": 6,
    "bytes": 6076,
    "triangles": 171
   }
@@ -4788,8 +4788,8 @@
   "triangles": 5070,
   "lod2": {
    "sourceHash": "dcdb0a2580365d32",
-   "buildVersion": 5,
-   "bytes": 32212,
+   "buildVersion": 6,
+   "bytes": 32136,
    "triangles": 1500
   }
  },
@@ -4800,8 +4800,8 @@
   "triangles": 9970,
   "lod2": {
    "sourceHash": "35a83b0b7632bef3",
-   "buildVersion": 5,
-   "bytes": 31392,
+   "buildVersion": 6,
+   "bytes": 30140,
    "triangles": 1499
   }
  },
@@ -4812,8 +4812,8 @@
   "triangles": 6800,
   "lod2": {
    "sourceHash": "62eba8d4912398f1",
-   "buildVersion": 5,
-   "bytes": 26336,
+   "buildVersion": 6,
+   "bytes": 25876,
    "triangles": 1382
   }
  },
@@ -4824,8 +4824,8 @@
   "triangles": 5954,
   "lod2": {
    "sourceHash": "fc808da77c981955",
-   "buildVersion": 5,
-   "bytes": 15304,
+   "buildVersion": 6,
+   "bytes": 15872,
    "triangles": 781
   }
  },
@@ -4836,8 +4836,8 @@
   "triangles": 6915,
   "lod2": {
    "sourceHash": "0a56eba4908e9e33",
-   "buildVersion": 5,
-   "bytes": 32148,
+   "buildVersion": 6,
+   "bytes": 32112,
    "triangles": 1499
   }
  },
@@ -4848,8 +4848,8 @@
   "triangles": 5998,
   "lod2": {
    "sourceHash": "3df1476210829363",
-   "buildVersion": 5,
-   "bytes": 30076,
+   "buildVersion": 6,
+   "bytes": 29904,
    "triangles": 1499
   }
  },
@@ -4860,7 +4860,7 @@
   "triangles": 4646,
   "lod2": {
    "sourceHash": "4b34d4d29a6fc6d9",
-   "buildVersion": 5,
+   "buildVersion": 6,
    "bytes": 15024,
    "triangles": 630
   }
@@ -4872,7 +4872,7 @@
   "triangles": 2361,
   "lod2": {
    "sourceHash": "34f882696606038c",
-   "buildVersion": 5,
+   "buildVersion": 6,
    "bytes": 21732,
    "triangles": 1133
   }
@@ -4884,8 +4884,8 @@
   "triangles": 3417,
   "lod2": {
    "sourceHash": "1c7c560cf9ad253a",
-   "buildVersion": 5,
-   "bytes": 14684,
+   "buildVersion": 6,
+   "bytes": 14296,
    "triangles": 484
   }
  },
@@ -4896,8 +4896,8 @@
   "triangles": 810,
   "lod2": {
    "sourceHash": "ebf32f1166d5c4d5",
-   "buildVersion": 5,
-   "bytes": 8980,
+   "buildVersion": 6,
+   "bytes": 8988,
    "triangles": 181
   }
  },
@@ -4908,8 +4908,8 @@
   "triangles": 4431,
   "lod2": {
    "sourceHash": "532e08d38304f1c0",
-   "buildVersion": 5,
-   "bytes": 30404,
+   "buildVersion": 6,
+   "bytes": 30412,
    "triangles": 1499
   }
  },
@@ -4920,8 +4920,8 @@
   "triangles": 3187,
   "lod2": {
    "sourceHash": "40e41ffe3add2dd9",
-   "buildVersion": 5,
-   "bytes": 15832,
+   "buildVersion": 6,
+   "bytes": 15296,
    "triangles": 1124
   }
  },
@@ -4932,7 +4932,7 @@
   "triangles": 740,
   "lod2": {
    "sourceHash": "2293803e634b9235",
-   "buildVersion": 5,
+   "buildVersion": 6,
    "bytes": 5532,
    "triangles": 132
   }
@@ -4944,8 +4944,8 @@
   "triangles": 3366,
   "lod2": {
    "sourceHash": "efcc0f64fb7c38b2",
-   "buildVersion": 5,
-   "bytes": 21484,
+   "buildVersion": 6,
+   "bytes": 21624,
    "triangles": 1191
   }
  },
@@ -4956,8 +4956,8 @@
   "triangles": 2182,
   "lod2": {
    "sourceHash": "b5e3f79e0df15fde",
-   "buildVersion": 5,
-   "bytes": 9064,
+   "buildVersion": 6,
+   "bytes": 9040,
    "triangles": 392
   }
  },
@@ -4968,8 +4968,8 @@
   "triangles": 4274,
   "lod2": {
    "sourceHash": "07f9066b0a9b510e",
-   "buildVersion": 5,
-   "bytes": 31656,
+   "buildVersion": 6,
+   "bytes": 31612,
    "triangles": 1500
   }
  },
@@ -4980,8 +4980,8 @@
   "triangles": 1897,
   "lod2": {
    "sourceHash": "799ca908d0e8a9cc",
-   "buildVersion": 5,
-   "bytes": 9660,
+   "buildVersion": 6,
+   "bytes": 9552,
    "triangles": 276
   }
  },
@@ -4992,8 +4992,8 @@
   "triangles": 4631,
   "lod2": {
    "sourceHash": "bc577777558233c0",
-   "buildVersion": 5,
-   "bytes": 32436,
+   "buildVersion": 6,
+   "bytes": 32700,
    "triangles": 1500
   }
  },
@@ -5004,8 +5004,8 @@
   "triangles": 6606,
   "lod2": {
    "sourceHash": "cd54ba0e04ccc98e",
-   "buildVersion": 5,
-   "bytes": 32212,
+   "buildVersion": 6,
+   "bytes": 31712,
    "triangles": 1499
   }
  },
@@ -5016,8 +5016,8 @@
   "triangles": 19125,
   "lod2": {
    "sourceHash": "abfc87d232f25322",
-   "buildVersion": 5,
-   "bytes": 25420,
+   "buildVersion": 6,
+   "bytes": 24440,
    "triangles": 1500
   }
  },
@@ -5028,16 +5028,16 @@
   "triangles": 7959,
   "lod2": {
    "sourceHash": "318f863e529527a0",
-   "buildVersion": 5,
-   "bytes": 34676,
+   "buildVersion": 6,
+   "bytes": 34604,
    "triangles": 1499
   }
  },
  "albert-heijn-museumplein": {
   "lod2": {
    "sourceHash": "4682501c32475d6b",
-   "buildVersion": 5,
-   "bytes": 5696,
+   "buildVersion": 6,
+   "bytes": 5692,
    "triangles": 97
   }
  },
@@ -5048,7 +5048,7 @@
   "triangles": 3995,
   "lod2": {
    "sourceHash": "4f4e251e73566540",
-   "buildVersion": 5,
+   "buildVersion": 6,
    "bytes": 12100,
    "triangles": 528
   }
@@ -5060,16 +5060,16 @@
   "triangles": 1134,
   "lod2": {
    "sourceHash": "e9d49b6add3e4da8",
-   "buildVersion": 5,
-   "bytes": 5036,
+   "buildVersion": 6,
+   "bytes": 4664,
    "triangles": 60
   }
  },
  "kiosk-ramons-coffee": {
   "lod2": {
    "sourceHash": "26af490c8ba10e3b",
-   "buildVersion": 5,
-   "bytes": 3780,
+   "buildVersion": 6,
+   "bytes": 3412,
    "triangles": 16
   }
  },
@@ -5080,8 +5080,8 @@
   "triangles": 6222,
   "lod2": {
    "sourceHash": "814a26b22f7e11bf",
-   "buildVersion": 5,
-   "bytes": 31012,
+   "buildVersion": 6,
+   "bytes": 30932,
    "triangles": 1500
   }
  },
@@ -5092,8 +5092,8 @@
   "triangles": 1312,
   "lod2": {
    "sourceHash": "2d3b7b68c13316f9",
-   "buildVersion": 5,
-   "bytes": 10648,
+   "buildVersion": 6,
+   "bytes": 10668,
    "triangles": 411
   }
  },
@@ -5104,8 +5104,8 @@
   "triangles": 7189,
   "lod2": {
    "sourceHash": "00703acccf1cbad5",
-   "buildVersion": 5,
-   "bytes": 27764,
+   "buildVersion": 6,
+   "bytes": 27880,
    "triangles": 1500
   }
  },
@@ -5116,8 +5116,8 @@
   "triangles": 12138,
   "lod2": {
    "sourceHash": "9c35e2f056b20ba3",
-   "buildVersion": 5,
-   "bytes": 28400,
+   "buildVersion": 6,
+   "bytes": 28436,
    "triangles": 1500
   }
  },
@@ -5128,8 +5128,8 @@
   "triangles": 12171,
   "lod2": {
    "sourceHash": "856de356f4f0c5c0",
-   "buildVersion": 5,
-   "bytes": 28128,
+   "buildVersion": 6,
+   "bytes": 27616,
    "triangles": 1498
   }
  },
@@ -5140,8 +5140,8 @@
   "triangles": 6973,
   "lod2": {
    "sourceHash": "1074d49be4b71118",
-   "buildVersion": 5,
-   "bytes": 33288,
+   "buildVersion": 6,
+   "bytes": 33508,
    "triangles": 1481
   }
  },
@@ -5152,8 +5152,8 @@
   "triangles": 9532,
   "lod2": {
    "sourceHash": "f610c7dd12f32de1",
-   "buildVersion": 5,
-   "bytes": 27796,
+   "buildVersion": 6,
+   "bytes": 27536,
    "triangles": 1480
   }
  },
@@ -5164,8 +5164,8 @@
   "triangles": 3017,
   "lod2": {
    "sourceHash": "d7d51ae641ae54b1",
-   "buildVersion": 5,
-   "bytes": 24200,
+   "buildVersion": 6,
+   "bytes": 24064,
    "triangles": 1038
   }
  },
@@ -5176,8 +5176,8 @@
   "triangles": 4738,
   "lod2": {
    "sourceHash": "56a468177685e8e9",
-   "buildVersion": 5,
-   "bytes": 31844,
+   "buildVersion": 6,
+   "bytes": 31468,
    "triangles": 1499
   }
  },
@@ -5188,8 +5188,8 @@
   "triangles": 14326,
   "lod2": {
    "sourceHash": "82b1b6a4c52e223e",
-   "buildVersion": 5,
-   "bytes": 29020,
+   "buildVersion": 6,
+   "bytes": 28944,
    "triangles": 1382
   }
  },
@@ -5200,8 +5200,8 @@
   "triangles": 17737,
   "lod2": {
    "sourceHash": "1f3cd85962958a6a",
-   "buildVersion": 5,
-   "bytes": 24440,
+   "buildVersion": 6,
+   "bytes": 22892,
    "triangles": 1499
   }
  },
@@ -5212,8 +5212,8 @@
   "triangles": 3397,
   "lod2": {
    "sourceHash": "4f1d0252d6a595be",
-   "buildVersion": 5,
-   "bytes": 14980,
+   "buildVersion": 6,
+   "bytes": 14964,
    "triangles": 665
   }
  },
@@ -5224,8 +5224,8 @@
   "triangles": 14517,
   "lod2": {
    "sourceHash": "18aa1e44fd636fda",
-   "buildVersion": 5,
-   "bytes": 20448,
+   "buildVersion": 6,
+   "bytes": 20332,
    "triangles": 1032
   }
  },
@@ -5236,8 +5236,8 @@
   "triangles": 5989,
   "lod2": {
    "sourceHash": "c665322a6749494c",
-   "buildVersion": 5,
-   "bytes": 16916,
+   "buildVersion": 6,
+   "bytes": 16884,
    "triangles": 747
   }
  },
@@ -5248,8 +5248,8 @@
   "triangles": 5756,
   "lod2": {
    "sourceHash": "5ad480c0ef68051c",
-   "buildVersion": 5,
-   "bytes": 14348,
+   "buildVersion": 6,
+   "bytes": 13908,
    "triangles": 628
   }
  },
@@ -5260,8 +5260,8 @@
   "triangles": 5288,
   "lod2": {
    "sourceHash": "7fc3bc7fd7679a8d",
-   "buildVersion": 5,
-   "bytes": 29920,
+   "buildVersion": 6,
+   "bytes": 29788,
    "triangles": 1488
   }
  },
@@ -5272,8 +5272,8 @@
   "triangles": 5366,
   "lod2": {
    "sourceHash": "31a5b4dee14b6083",
-   "buildVersion": 5,
-   "bytes": 14948,
+   "buildVersion": 6,
+   "bytes": 14940,
    "triangles": 630
   }
  },
@@ -5284,8 +5284,8 @@
   "triangles": 1852,
   "lod2": {
    "sourceHash": "aa0f42f6838e1b25",
-   "buildVersion": 5,
-   "bytes": 10856,
+   "buildVersion": 6,
+   "bytes": 10848,
    "triangles": 398
   }
  }

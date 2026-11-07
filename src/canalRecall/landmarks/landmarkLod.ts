@@ -61,7 +61,7 @@ export interface LandmarkLodRecord {
 export type LandmarkLodEntry = Partial<LandmarkLodRecord> & { lod2?: LandmarkLodRecord };
 
 /** Bump to force every lod2 to rebuild after the lod2 build parameters change. */
-export const LOD2_BUILD_VERSION = 5;
+export const LOD2_BUILD_VERSION = 6;
 /** Target share of the source triangles; the error bound below stops the simplifier first on detailed models. */
 export const LOD2_TRIANGLE_RATIO = 0.02;
 /**
