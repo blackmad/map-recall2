@@ -607,7 +607,7 @@ export class OwnWorldView implements WorldViewOracles {
         scene: () => tb.farShellHost()?.scene ?? null,
         material: () => tb.farShellHost()?.material ?? null,
         fadeMaterial: (v: number) => tb.farShellHost()?.fadeMaterial(v) ?? null,
-        coarseDrawn: (tile: string) => !!tb.farShellHost()?.coarseDrawn(tile),
+        coarseDrawn: (tile: string, cell?: string) => !!tb.farShellHost()?.coarseDrawn(tile, cell),
         origin: farCellOrigin,
         fetchFar: (key: string, signal: AbortSignal) => world.far(key, signal),
         available: () => available,
