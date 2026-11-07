@@ -159,6 +159,7 @@ for (const variant of VARIANTS) {
         if ('rolloffLinear' in mix.set) ro.linear = !!mix.set.rolloffLinear;
         if ('rolloffMask' in mix.set) ro.mask = !!mix.set.rolloffMask;
         if (Object.keys(ro).length) await page.evaluate((ro) => (window as any).canalRecallGame.vectorMap._threeBuildings.setCellRolloffOptions(ro), ro);
+        if ('texAniso' in mix.set) await page.evaluate((n) => (window as any).canalRecallGame.vectorMap._threeBuildings.setCellTextureAnisotropy(n), mix.set.texAniso);
         if ('cellTierBand' in mix.set) await page.evaluate((b) => (window as any).canalRecallGame.vectorMap._threeBuildings.setCellTierBand(Array.isArray(b) ? b : null), mix.set.cellTierBand);
         await page.evaluate(([v, set]) => {
           const tb = (window as any).canalRecallGame.vectorMap._threeBuildings;

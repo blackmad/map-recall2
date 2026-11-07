@@ -4,7 +4,7 @@ import sharp from 'sharp';
 import { useEngine } from './helpers';
 import { SWAP_SPOTS } from '../../scripts/world/abSpots';
 import { CELL_DEBUG_CLASSES, CELL_DEBUG_FACADE_CLASSES, cellDebugClass } from '../../src/canalRecall/look/windowSdf';
-import { debugLevelOf } from '../../src/canalRecall/look/cellMips';
+import { debugLevelOf, layerDigitOf } from '../../src/canalRecall/look/cellMips';
 
 // The swap z-fight pin (lane R1-A, #223): the user's S3 shot (map-recall2-screenshots engine/2026-11-06-user-shots,
 // the 1962 slab on Weesperstraat, ~150 m) showed moving stripes over the window grid while the camera moved. Here the
@@ -201,6 +201,32 @@ test('swap z-fight: no moving stripes on the Weesperstraat slab while its detail
     expect(errors, 'page errors').toEqual([]);
     return;
   }
+  // ZFIGHT_LAYERS=1 (lane R3-E #240): the atlas layers drawn inside the slab mask (two hue-digit frames), with each
+  // layer's window pitch and first rolled-off level from the roll-off chain (needs ?cellRolloff=1), and stop.
+  if (process.env.ZFIGHT_LAYERS) {
+    const info = await page.evaluate(() => (window as any).canalRecallGame.vectorMap._threeBuildings.cellRolloffInfo?.layerInfo ?? null);
+    const digits: Buffer[] = [];
+    for (const d of [0, 1]) {
+      await page.evaluate((d) => (window as any).canalRecallGame.vectorMap._threeBuildings.setCellLayerDebug(d), d);
+      await page.waitForTimeout(600);
+      const shot = await rgba(await grab());
+      digits.push(shot.data);
+      mkdirSync(OUT, { recursive: true });
+      await sharp(shot.data, { raw: { width: shot.width, height: shot.height, channels: 4 } }).png().toFile(`${OUT}/${info0()}-layers-d${d}.png`);
+    }
+    function info0() { return `${test.info().project.name}${LABEL}`; }
+    const hist: Record<number, number> = {};
+    for (let i = 0; i < inner.length; i++) {
+      if (!inner[i]) continue;
+      const p = i * 4, lo = layerDigitOf(digits[0][p], digits[0][p + 1], digits[0][p + 2]), hi = layerDigitOf(digits[1][p], digits[1][p + 1], digits[1][p + 2]);
+      if (lo == null || hi == null) continue;
+      const layer = hi * 16 + lo; hist[layer] = (hist[layer] ?? 0) + 1;
+    }
+    const top = Object.entries(hist).sort((a, b) => b[1] - a[1]).slice(0, 12).map(([l, px]) => ({ layer: +l, px, share: +(px / maskPx).toFixed(4), ...(info?.[+l] ?? {}) }));
+    console.log('swap-zfight layers', JSON.stringify(top));
+    writeFileSync(`${OUT}/${info0()}-layers.json`, JSON.stringify({ spot: SPOT.name, qs: QS, maskPx, top }, null, 1));
+    return;
+  }
   if (process.env.ZFIGHT_HIST) {
     const counts = CELL_DEBUG_CLASSES.map(() => 0);
     for (let i = 0; i < inner.length; i++) { if (!inner[i]) continue; const p = i * 4, k = cellDebugClass(shown.data[p], shown.data[p + 1], shown.data[p + 2]); if (k >= 0) counts[k]++; }
@@ -339,6 +365,7 @@ test('swap z-fight: no moving stripes on the Weesperstraat slab while its detail
     if ('rolloffLinear' in set) ro.linear = !!set.rolloffLinear;
     if ('rolloffMask' in set) ro.mask = !!set.rolloffMask;
     if (Object.keys(ro).length) console.log('swap-zfight rolloff rebuild ms', await page.evaluate((ro) => (window as any).canalRecallGame.vectorMap._threeBuildings.setCellRolloffOptions(ro), ro));
+    if ('texAniso' in set) console.log('swap-zfight texAniso', await page.evaluate((n) => (window as any).canalRecallGame.vectorMap._threeBuildings.setCellTextureAnisotropy(n), set.texAniso));
     if ('cellTierBand' in set) console.log('swap-zfight cellTier', JSON.stringify(await page.evaluate((b) => (window as any).canalRecallGame.vectorMap._threeBuildings.setCellTierBand(Array.isArray(b) ? b : null), set.cellTierBand)));
     return page.evaluate((set) => {
     const tb = (window as any).canalRecallGame.vectorMap._threeBuildings;

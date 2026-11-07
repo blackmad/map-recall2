@@ -63,7 +63,7 @@ import { worldCameraOf } from './engine/worldCameraOf.js';
 import type { WorldCamera } from './engine/worldViewApi.js';
 import { packMask } from './look/maskPacking.js';
 import { cellDebugMode, windowSdfBandEnabled, windowSdfEnabled, WINDOW_SDF_LOD_BIAS } from './look/windowSdf.js';
-import { arrayMips, arrayRolloffMips, cellLodBiasFlag, cellTierBandFlag, cellTierFromBand, cellMipOptions, cellMipsEnabled, cellRolloffEnabled, cellRolloffOptions, debugLevels, LEVEL_DEBUG_RGB, type CellRolloffOptions, type RolloffArrayLevels } from './look/cellMips.js';
+import { arrayMips, arrayRolloffMips, cellLodBiasFlag, cellTierBandFlag, cellTierFromBand, cellMipOptions, cellMipsEnabled, cellRolloffEnabled, cellRolloffOptions, debugLevels, layerDigitRgb, LEVEL_DEBUG_RGB, type CellRolloffOptions, type RolloffArrayLevels } from './look/cellMips.js';
 import { uploadArrayMips, type ArrayMipUploadResult } from './look/arrayMipUpload.js';
 
 /** A query flag's raw value, or null (tolerates a page without URLSearchParams). */
@@ -744,7 +744,7 @@ export class ThreeBuildings {
     void (async () => {
       const started = performance.now();
       const got = await arrayRolloffMips(colour, size, total, { options: cellRolloffOptions(), pitchMask: atlas.mask, pitchMaskChannels: 2, mask: maskBytes, maskChannels, rects, sliceMs: this.atlasSliceMs ?? sliceMs ?? TEXTURE_SLICE_MS });
-      const info: NonNullable<ThreeBuildings['cellRolloffInfo']> = { buildMs: Math.round(performance.now() - started), options: cellRolloffOptions(), size, layers: total, levels: got.colour.length, upload: null, maskUpload: null, rolled: rolloffSummary(got) };
+      const info: NonNullable<ThreeBuildings['cellRolloffInfo']> = { buildMs: Math.round(performance.now() - started), options: cellRolloffOptions(), size, layers: total, levels: got.colour.length, upload: null, maskUpload: null, rolled: rolloffSummary(got), layerInfo: got.layers };
       this.cellRolloffInfo = info;
       for (let i = 0; i < 600 && !this.renderer?.properties?.get?.(texture)?.__webglTexture; i++) await new Promise(r => requestAnimationFrame(r));
       if (!this.renderer?.getContext?.()) return;
@@ -761,7 +761,47 @@ export class ThreeBuildings {
   /** True while the roll-off chain is being built or waits for its upload (probes wait for it). */
   cellRolloffPending = false;
   /** What the roll-off chain cost and did (null: not built). */
-  cellRolloffInfo: { buildMs: number; options: CellRolloffOptions; size: number; layers: number; levels: number; upload: ArrayMipUploadResult | null; maskUpload: ArrayMipUploadResult | null; rolled: ReturnType<typeof rolloffSummary> } | null = null;
+  cellRolloffInfo: { buildMs: number; options: CellRolloffOptions; size: number; layers: number; levels: number; upload: ArrayMipUploadResult | null; maskUpload: ArrayMipUploadResult | null; rolled: ReturnType<typeof rolloffSummary>; layerInfo: RolloffArrayLevels['layers'] } | null = null;
+
+  /**
+   * Diagnosis (lane R3-E #240): every level of every layer one flat colour whose hue is a base-16 digit of the layer
+   * index (look/cellMips.ts layerDigitRgb), the tint off, so two frames (digit 0, digit 1) name the layer at a pixel.
+   * One way, as setCellMipDebug.
+   */
+  setCellLayerDebug(digit: 0 | 1): string {
+    const t = this.material?.uniforms?.cells?.value, m = this.material?.uniforms?.masks?.value;
+    const depth = t?.image?.depth, size = t?.image?.width;
+    if (!t || !depth || !size) return 'none';
+    const levels: Uint8Array[] = [];
+    for (let s = size; s >= 1; s >>= 1) {
+      const b = new Uint8Array(s * s * 4 * depth);
+      for (let l = 0; l < depth; l++) { const [r, g, bl] = layerDigitRgb(l, digit); for (let i = l * s * s * 4; i < (l + 1) * s * s * 4; i += 4) { b[i] = r; b[i + 1] = g; b[i + 2] = bl; b[i + 3] = 255; } }
+      levels.push(b);
+    }
+    const r = uploadArrayMips(this.renderer, t, levels, size, depth, 4, 0);
+    const mc = m?.format === this.THREE?.RGFormat ? 2 : 1;
+    if (m) uploadArrayMips(this.renderer, m, debugLevels(size, depth, mc, () => [0, 0]), size, depth, mc, 0);
+    this.map.triggerRepaint();
+    return r.mode;
+  }
+
+  /**
+   * Probe hook (lane R3-E #240, diagnosis): the colour and mask arrays' sampler anisotropy set on the live GL texture
+   * (three set it at upload; the arrays cannot be re-uploaded once their bytes are released). Returns the value set.
+   */
+  setCellTextureAnisotropy(n: number): number {
+    const gl = this.renderer?.getContext?.(), ext = gl && (gl.getExtension('EXT_texture_filter_anisotropic') || gl.getExtension('WEBKIT_EXT_texture_filter_anisotropic'));
+    if (!ext) return -1;
+    const v = Math.max(1, Math.min(n, gl.getParameter(ext.MAX_TEXTURE_MAX_ANISOTROPY_EXT)));
+    for (const t of [this.material?.uniforms?.cells?.value, this.material?.uniforms?.masks?.value]) {
+      const handle = t && this.renderer?.properties?.get?.(t)?.__webglTexture;
+      if (!handle) continue;
+      this.renderer.state.bindTexture(gl.TEXTURE_2D_ARRAY, handle);
+      gl.texParameterf(gl.TEXTURE_2D_ARRAY, ext.TEXTURE_MAX_ANISOTROPY_EXT, v);
+    }
+    this.map.triggerRepaint();
+    return v;
+  }
 
   /** Probe hook (lane R3-E): rebuild the kept roll-off levels with other options (`?cellMipsKeep=1`) and upload them; ms taken. */
   async setCellRolloffOptions(options: Partial<CellRolloffOptions>): Promise<number> {
@@ -774,7 +814,7 @@ export class ThreeBuildings {
     // Mask off: GL's chain for the mask array; on: the rolled-off levels.
     r.maskLevels = got.mask;
     this.setMaskMips(got.mask ? 'custom' : 'gl');
-    if (this.cellRolloffInfo) this.cellRolloffInfo.rolled = rolloffSummary(got);
+    if (this.cellRolloffInfo) { this.cellRolloffInfo.rolled = rolloffSummary(got); this.cellRolloffInfo.layerInfo = got.layers; }
     this.map.triggerRepaint();
     return Math.round(performance.now() - started);
   }

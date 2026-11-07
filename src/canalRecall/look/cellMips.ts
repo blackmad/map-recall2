@@ -497,3 +497,20 @@ export function cellTierFromBand(band: readonly [number, number], pixelRatio = 1
   const k = (Number.isFinite(pixelRatio) && pixelRatio > 1 ? pixelRatio : 1) * (Number.isFinite(tierScale) && tierScale > 0 ? tierScale : 1) / 2;
   return [band[0] * k, band[1] * k];
 }
+
+/**
+ * Diagnosis (`setCellLayerDebug`): an RGB per layer whose hue carries one base-16 digit of the layer index (digit 0:
+ * layer & 15, digit 1: layer >> 4), so two frames name the layer drawn at each pixel. `layerDigitOf` reads it back.
+ */
+export function layerDigitRgb(layer: number, digit: 0 | 1): [number, number, number] {
+  const d = digit ? (layer >> 4) & 15 : layer & 15, h = d / 16 * 6, x = 1 - Math.abs((h % 2) - 1);
+  const [r, g, b] = h < 1 ? [1, x, 0] : h < 2 ? [x, 1, 0] : h < 3 ? [0, 1, x] : h < 4 ? [0, x, 1] : h < 5 ? [x, 0, 1] : [1, 0, x];
+  return [Math.round(r * 255), Math.round(g * 255), Math.round(b * 255)];
+}
+export function layerDigitOf(r: number, g: number, b: number): number | null {
+  const mx = Math.max(r, g, b), mn = Math.min(r, g, b);
+  if (mx < 24 || (mx - mn) / mx < 0.5) return null;
+  let h: number;
+  if (mx === r) h = ((g - b) / (mx - mn) + 6) % 6; else if (mx === g) h = (b - r) / (mx - mn) + 2; else h = (r - g) / (mx - mn) + 4;
+  return Math.round(h / 6 * 16) % 16;
+}
