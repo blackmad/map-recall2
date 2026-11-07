@@ -11,7 +11,7 @@
 
 import { framePhases } from '../framePhases';
 import { LABEL_ROOT_CLASS } from '../../labels/labelStyle';
-import { placeLabels, drawPlacedLabels, type LabelCandidate, type LabelKind, type LabelPaint, type PlacedLabel } from '../../ownMap/labels';
+import { placeLabels, drawPlacedLabels, LabelPlacement, type LabelCandidate, type LabelKind, type LabelPaint, type PlacedLabel } from '../../ownMap/labels';
 import { neighbourhoodLabelVisible, poiLabelVisible, streetLabelVisible, type LabelContext } from '../../ownMap/labelPolicy';
 import { interpolateStops, STREET_STYLE } from '../../ownMap/style';
 import { toLocal, type Vec2 } from '../../ownMap/frame';
@@ -78,7 +78,7 @@ export class LabelLayer {
   private winners = new Set<string>();
   private fullRev = -1;
   /** Full placements (all candidates) vs re-placements of the last winners; read by the perf probe. */
-  readonly stats = { full: 0, winnersOnly: 0, skipped: 0, fullMs: 0, lastFullMs: 0, occluded: 0, betweenMs: 0, betweenSightlines: 0, candidates: 0 };
+  readonly stats = { full: 0, winnersOnly: 0, skipped: 0, fullMs: 0, lastFullMs: 0, occluded: 0, betweenMs: 0, betweenSightlines: 0, candidates: 0, slicedFrames: 0 };
   /** POI labels hidden behind nearer buildings (engine/labelOcclusion.ts); null tests nothing. */
   private occludedTest: ((c: LabelCandidate) => boolean) | null = null;
   /**
@@ -88,6 +88,18 @@ export class LabelLayer {
    * at most `count` of them by priority (the game's own points first) enter a full placement.
    */
   aerialCap: { count: number } | null = null;
+  /**
+   * The full placement's per-frame budget (lane R3-F #241, `?labelBudget=0` off; null = unbudgeted): a full placement
+   * that runs past it stops with the winners so far and continues next frame (candidates in priority order, so the
+   * set it settles on is the one an unbudgeted placement picks, a frame or two later); meanwhile the last winners are
+   * re-placed as between full placements. Only without occlusion (the aerial view, `?labelOcclusion=0`): occlusion's
+   * re-placement rounds stay in one frame.
+   */
+  placeBudgetMs: number | null = null;
+  /** From the air while the camera moves (world view, with the budget): full placements at most this often, ms. */
+  movingCadenceMs: number | null = null;
+  /** A budgeted full placement still walking its candidates, with what it started from. */
+  private pendingFull: { placement: LabelPlacement; candidates: LabelCandidate[]; rev: number; startedAt: number; frames: number } | null = null;
   /** Between full placements: sightlines per frame, and whether street and water names are re-tested (A/B knobs). */
   readonly between = { budget: OCCLUSION_PER_FRAME, lines: true };
   /** Copies of street and water names (instanceKeys) found hidden since the last full placement. */
@@ -292,6 +304,7 @@ export class LabelLayer {
     const rev = shows ? this.rev : -2;
     // A still camera and unchanged inputs: the canvas already holds this frame.
     if (!resized && pose && this.drawnPose && rev === this.drawnRev && samePose(pose, this.drawnPose)) { this.stats.skipped++; return; }
+    const priorPose = this.drawnPose;
     this.drawnRev = rev;
     this.drawnPose = pose ?? null;
     this.ctx.setTransform(1, 0, 0, 1, 0, 0);
@@ -301,7 +314,9 @@ export class LabelLayer {
     // Which labels win only changes when the camera has moved enough (or every 400 ms while it creeps); in between
     // the last winners are re-placed at the new projection (cheap: a handful of labels, not every candidate).
     const now = performance.now();
-    const full = !pose || !this.fullPose || rev !== this.fullRev || movedEnough(pose, this.fullPose) || now - this.fullAt > 400;
+    // From the air at pan speed (`movingCadenceMs`): every 800 ms instead of every ~24 px of travel.
+    const panning = this.movingCadenceMs !== null && !!pose && !!priorPose && !samePose(pose, priorPose);
+    let full = !pose || !this.fullPose || rev !== this.fullRev || (panning ? now - this.fullAt > this.movingCadenceMs! : movedEnough(pose, this.fullPose) || now - this.fullAt > 400);
     this.zoom = zoom;
     const seen = new Set<LabelCandidate>();
     // Lazy policy: a draw before the idle slices finished the overview's structure finishes it now.
@@ -324,14 +339,40 @@ export class LabelLayer {
       project, width: vp.width, height: vp.height, zoom,
       advance: (ch: string, kind: LabelCandidate['kind']) => this.advance(ch, kind), fontSize, maxDepth: frame.distance * 4, repeatDistance: 260,
     };
-    let candidates = full ? [...seen] : [...seen].filter(c => this.winners.has(c.id));
-    this.stats.candidates = candidates.length;
-    if (cap && full && candidates.length > cap.count) candidates = candidates.sort((a, b) => b.priority - a.priority).slice(0, cap.count);
+    // Budgeted (no occlusion): a full placement is started, or a pending one continued, in slices of `placeBudgetMs`.
+    const budgeted = this.placeBudgetMs !== null && !this.occludedTest && !!pose;
+    if (!budgeted || (this.pendingFull && this.pendingFull.rev !== rev)) this.pendingFull = null;
+    let sliced: { placement: LabelPlacement; candidates: LabelCandidate[]; startedAt: number; frames: number } | null = null;
+    if (budgeted && (full || this.pendingFull)) {
+      if (!this.pendingFull) {
+        let all = [...seen];
+        this.stats.candidates = all.length;
+        if (cap && all.length > cap.count) all = all.sort((a, b) => b.priority - a.priority).slice(0, cap.count);
+        this.pendingFull = { placement: new LabelPlacement(all, options), candidates: all, rev, startedAt: now, frames: 0 };
+      }
+      const pf = this.pendingFull;
+      pf.frames++;
+      lap('collect (full)');
+      if (pf.placement.step(now + this.placeBudgetMs!)) { this.pendingFull = null; sliced = pf; full = true; }
+      else { full = false; this.stats.slicedFrames++; }
+      lap(full ? 'place (full)' : 'place (sliced)');
+    }
+    let candidates = full && !sliced ? [...seen] : sliced ? sliced.candidates : [...seen].filter(c => this.winners.has(c.id));
+    if (!sliced && !(budgeted && !full && this.pendingFull)) this.stats.candidates = candidates.length;
+    if (cap && full && !sliced && candidates.length > cap.count) candidates = candidates.sort((a, b) => b.priority - a.priority).slice(0, cap.count);
     const original = new Map(candidates.map(c => [c.id, c] as const));
     const shifted = (list: LabelCandidate[]) => list.map(c => { const at = this.drawAt.get(c.id); return at && c.at ? { ...c, at } : c; });
-    lap(full ? 'collect (full)' : 'collect');
-    this.placed = placeLabels(this.occludedTest ? shifted(candidates) : candidates, options);
-    lap(full ? 'place (full)' : 'place');
+    if (!sliced) lap(full ? 'collect (full)' : 'collect');
+    if (sliced) {
+      // Finished in its first frame: exactly the unbudgeted result. Over several frames: its winners, placed at this
+      // frame's camera (the walk projected each slice at its own frame's camera).
+      if (sliced.frames === 1) this.placed = sliced.placement.out;
+      else { const won = new Set(sliced.placement.out.map(l => l.id)); this.placed = placeLabels(candidates.filter(c => won.has(c.id)), options); }
+      lap('place (full, sliced)');
+    } else {
+      this.placed = placeLabels(this.occludedTest ? shifted(candidates) : candidates, options);
+      lap(full ? 'place (full)' : 'place');
+    }
     // Occlusion (full placements only): test the POIs that won, drop the hidden ones and place again, so the tests
     // cost a few dozen sightlines, not every candidate in view. Only POI points from the map are tested: the
     // game's own points (priority >= 1e6: the answered street, ferry landings, the destination) and the draped
@@ -400,7 +441,7 @@ export class LabelLayer {
     if (full) {
       const ms = performance.now() - now;
       this.stats.fullMs += ms; this.stats.lastFullMs = ms; this.stats.occluded = occluded;
-      this.fullPose = pose ?? null; this.fullAt = now; this.fullRev = rev;
+      this.fullPose = pose ?? null; this.fullAt = sliced ? sliced.startedAt : now; this.fullRev = rev;
       this.winners = new Set(this.placed.map(l => l.id));
       this.stats.full++;
     } else this.stats.winnersOnly++;

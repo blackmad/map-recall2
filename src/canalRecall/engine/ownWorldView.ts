@@ -40,6 +40,7 @@ import { BUILDING_LOOK_IDS, urlBuildingLook } from './worldViewApi';
 import { FlatLines, type LngLatLine } from './overlays/flatLines';
 import { FarShells, farCellOrigin, farShellsEnabled } from './farShells';
 import { isAerialView } from '../rendererShared/aerialView';
+import { BASE_REFRESH_BUDGET_MS } from '../rendererShared/baseRefreshBudget';
 import { ToonPost, toonLookFlag } from './toonLook';
 import { SmaaPost, smaaFlag } from './postAA';
 import { COVER_POLL_MS, isCoveredState } from '../labels/coveredState';
@@ -70,6 +71,10 @@ const LOADING_STATE = 2;
 export const COVERED_FRAME_MS = 1000;
 /** Candidates a full label placement takes from the air (labelLayer aerialCap): ~2x the most a ride frame collects. */
 const AERIAL_LABEL_CAP = { count: 1200 };
+/** A full label placement's per-frame budget from the air, ms (lane R3-F #241; `?labelBudget=0` off, `=N` sets it). */
+export const LABEL_PLACE_BUDGET_MS = 4;
+/** From the air while the camera moves: full label placements at most this often (with the budget), ms. */
+const AERIAL_LABEL_CADENCE_MS = 800;
 const flag = (param: string, global: string, fallback: boolean): boolean => {
   const g = W();
   if (typeof g[global] === 'boolean') return g[global];
@@ -209,6 +214,25 @@ export class OwnWorldView implements WorldViewOracles {
   private _labelOcclusionOn = flag('labelOcclusion', '__canalRecallLabelOcclusion', true);
   /** From the air (rendererShared/aerialView.ts): no occlusion rounds, candidates capped (lane R2-B #229; `?labelAerialCap=0`). */
   private labelAerialCapOn = flag('labelAerialCap', '__canalRecallLabelAerialCap', true);
+  /** `?labelBudget=0` off, `?labelBudget=N` N ms: the aerial full placement's per-frame budget (labelLayer placeBudgetMs). */
+  private readonly labelBudgetMs: number | null = (() => {
+    if (!flag('labelBudget', '__canalRecallLabelBudget', true)) return null;
+    let v: number | null = null;
+    try { v = Number(new URLSearchParams(W().location?.search ?? '').get('labelBudget') ?? NaN); } catch (_) { /* no window */ }
+    return v !== null && Number.isFinite(v) && v > 1 ? v : LABEL_PLACE_BUDGET_MS;
+  })();
+  /**
+   * Building and extras bases held from the air (lane R3-F #241, `?groundBasesAerial=0` off): while the view is aerial
+   * a new ground revision is only noted; when it leaves, one catch-up re-base runs in BASE_REFRESH_BUDGET_MS slices,
+   * nearest chunk first (rendererShared/baseRefreshBudget.ts). Street-level rides keep the 400 ms throttled re-base.
+   */
+  private readonly groundBasesAerialOn = flag('groundBasesAerial', '__canalRecallGroundBasesAerial', true);
+  /** A revision arrived while aerial and is not applied yet. */
+  private groundBasesHeld = false;
+  /** The catch-up re-base is under way (one slice per frame). */
+  private groundBasesSlicing = false;
+  /** Revisions and frames the hold skipped, and catch-up slices run (perf probe). */
+  readonly groundBaseStats = { held: 0, heldFrames: 0, slices: 0, catchUps: 0 };
   labelAerial = false;
   /**
    * The label occlusion grid is (re)built in idle time when the resident list changes or the eye jumps, not inside the
@@ -321,14 +345,37 @@ export class OwnWorldView implements WorldViewOracles {
         this._sharedFrame?.scene?.traverse?.((o: any) => { if (!found && o.geometry === geometry) found = o; });
         return found;
       };
+      // The building chunk kind under a drawn object (coarse / near / extras / walls...), cached per object: the aerial
+      // pan's draws per kind (lane R3-F #241).
+      const kindOf = new WeakMap<object, string>();
+      const chunkKind = (object: any): string => {
+        let kind = kindOf.get(object);
+        if (kind !== undefined) return kind;
+        kind = '';
+        const chunks: Map<string, any> | undefined = this._threeBuildings?.chunks;
+        if (chunks) for (let o = object; o && !kind; o = o.parent) for (const [key, entry] of chunks) if (entry?.mesh === o) { kind = key.includes(':') ? key.slice(0, key.indexOf(':')) : 'walls'; break; }
+        kindOf.set(object, kind);
+        return kind;
+      };
       const counters = new GlCounters({
         programNames: () => (renderer.info?.programs ?? []).map((p: any) => `${p.name}#${p.id}`),
-        drawOwner: () => (drawing ? `${objectLabel(drawing).split(':')[0] || 'unnamed'}${drawingMaterial?.isMeshDepthMaterial || drawingMaterial?.isMeshDistanceMaterial ? ' (shadow)' : ''}` : 'outside a draw'),
+        drawOwner: () => {
+          if (!drawing) return 'outside a draw';
+          const part = objectLabel(drawing).split(':')[0] || 'unnamed', kind = part === 'facades' ? chunkKind(drawing) : '';
+          return `${part}${kind ? ` ${kind}` : ''}${drawingMaterial?.isMeshDepthMaterial || drawingMaterial?.isMeshDistanceMaterial ? ' (shadow)' : ''}`;
+        },
         context: () => {
           if (drawing) return `${objectLabel(drawing)} [${drawingMaterial?.type ?? '?'}]`;
           const mesh = seen ? meshOf(seen) : null;
           return mesh ? `${objectLabel(mesh)} (new geometry)` : '';
         },
+      });
+      // Resident bytes by owner: the drawn object's label inside a draw, else (buffers) the geometry being uploaded,
+      // named at report time from one scene walk (a WeakRef keeps a disposed geometry collectable).
+      counters.resident.tagWith(kind => (drawing ? objectLabel(drawing).replace(/\d+/g, '#') : kind === 'buffer' && seen ? new WeakRef(seen) : `outside a draw (${kind === 'buffer' ? 'buffer' : 'render target or prewarm'})`), () => {
+        const names = new Map<object, string>();
+        this._sharedFrame?.scene?.traverse?.((o: any) => { if (o.geometry && !names.has(o.geometry)) names.set(o.geometry, objectLabel(o).replace(/\d+/g, '#')); });
+        return (token: unknown) => typeof token === 'string' ? token : token instanceof WeakRef ? (g => (g ? names.get(g) ?? 'geometry not in the scene' : 'geometry collected'))(token.deref()) : String(token);
       });
       counters.install(renderer.getContext());
       this._glCounters = counters;
@@ -621,7 +668,7 @@ export class OwnWorldView implements WorldViewOracles {
     return this.riderSurfaceM;
   }
 
-  private syncGroundConsumers(lap?: (name: string) => void): void {
+  private syncGroundConsumers(lap?: (name: string) => void, aerial = false, centre: readonly [number, number] = [0, 0]): void {
     const ground = this._ownGround;
     if (!ground || !ground.ready) return;
     const tb = this._threeBuildings;
@@ -641,6 +688,7 @@ export class OwnWorldView implements WorldViewOracles {
       lap?.('ground update: extras bases');
       return;
     }
+    if (this.groundBasesAerialOn && this.syncGroundBasesAerial(ground, tb, aerial, centre, lap)) return;
     if (ground.surfaceRevision === this.groundRevision) return;
     const now = performance.now();
     if (this.groundRefreshAt && now - this.groundRefreshAt < 400) return;
@@ -652,6 +700,41 @@ export class OwnWorldView implements WorldViewOracles {
     if (this.stagedGroundHook) { this.extrasRebaseDue = true; return; }
     this.extras.refreshGroundBases();
     lap?.('ground update: extras bases');
+  }
+
+  /**
+   * `?groundBasesAerial` (default on): hold the re-base while aerial, then catch up in slices. True when this frame's
+   * ground-base work is handled here (held, or a slice ran); false hands over to the street-level re-base.
+   */
+  private syncGroundBasesAerial(ground: any, tb: any, aerial: boolean, centre: readonly [number, number], lap?: (name: string) => void): boolean {
+    if (aerial) {
+      if (ground.surfaceRevision !== this.groundRevision) {
+        if (!this.groundBasesHeld) this.groundBaseStats.held++;
+        this.groundBasesHeld = true;
+        this.groundBaseStats.heldFrames++;
+      }
+      return this.groundBasesHeld || this.groundBasesSlicing;
+    }
+    if (!this.groundBasesHeld && !this.groundBasesSlicing) return false;
+    const now = performance.now();
+    // A new revision restarts the pass from the nearest chunk, at most every 400 ms (the street-level throttle).
+    const bumped = ground.surfaceRevision !== this.groundRevision && (!this.groundRefreshAt || now - this.groundRefreshAt >= 400);
+    const restart = this.groundBasesHeld || bumped;
+    if (restart) { this.groundRevision = ground.surfaceRevision; this.groundRefreshAt = now; }
+    if (this.groundBasesHeld) this.groundBaseStats.catchUps++;
+    this.groundBasesHeld = false;
+    lap?.('ground update: consumers');
+    const budget: { ms: number; centre: readonly [number, number]; restart: boolean; done?: boolean } = { ms: BASE_REFRESH_BUDGET_MS, centre, restart };
+    tb?.refreshGroundBases?.(budget);
+    this.groundBaseStats.slices++;
+    lap?.('ground update: building bases (sliced)');
+    // An older buildings bundle ignores the budget and re-bases everything at once: that is done too.
+    if (budget.done === false) { this.groundBasesSlicing = true; return true; }
+    this.groundBasesSlicing = false;
+    // The extras (trees, furniture, landmarks) re-base on the next frame, as the staged hook does.
+    if (this.stagedGroundHook) this.extrasRebaseDue = true;
+    else { this.extras.refreshGroundBases(); lap?.('ground update: extras bases'); }
+    return true;
   }
 
   // ---- the frame ----
@@ -719,6 +802,9 @@ export class OwnWorldView implements WorldViewOracles {
     const city = this._completeCity;
     const aerial = this.labelAerial = this.labelAerialCapOn && isAerialView(zoom, cam.pitch, cam.lat);
     this._labels.aerialCap = aerial ? AERIAL_LABEL_CAP : null;
+    // From the air only (no occlusion there): full placements in slices, and at most every 800 ms while panning.
+    this._labels.placeBudgetMs = aerial ? this.labelBudgetMs : null;
+    this._labels.movingCadenceMs = aerial && this.labelBudgetMs !== null ? AERIAL_LABEL_CADENCE_MS : null;
     if (this.labelOcclusionOn && !aerial && city?.residentFeatures) {
       const eye = cam.eye();
       let indexed = false;
@@ -885,7 +971,8 @@ export class OwnWorldView implements WorldViewOracles {
       // S4 corridor 2.8 km from the rider drew from the far ring, no ballast beds); `?groundView=0` follows the rider.
       this._ownGround.update(groundCentre(view, this.groundView), view.introFlat > 0 ? 0 : view.zoom, pitch);
       lap('ground update: own ground');
-      this.syncGroundConsumers(phases ? lap : undefined);
+      const aerialGround = this.groundBasesAerialOn && view.introFlat === 0 && isAerialView(view.zoom, pitch, view.lngLat[1]);
+      this.syncGroundConsumers(phases ? lap : undefined, aerialGround, view.lngLat);
     }
     lap('ground update');
     this.updateFarShells(view.subject, view.introFlat > 0 ? 0 : (this._ownGround?.farRadiusM ?? 0));

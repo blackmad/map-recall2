@@ -109,39 +109,76 @@ function localAlong(run: readonly { q: Vec2 }[], cum: readonly number[], s: numb
 }
 
 export function placeLabels(candidates: readonly LabelCandidate[], opts: PlaceOptions): PlacedLabel[] {
-  const { width: W, height: H, zoom } = opts;
-  const pad = opts.padding ?? 2;
-  const repeat = opts.repeatDistance ?? 280;
-  const maxTurn = (opts.maxGlyphTurn ?? 35) * Math.PI / 180;
-  const grid = new CollisionGrid();
-  const placedAt = new Map<string, Array<{ x: number; y: number }>>();
-  const out: PlacedLabel[] = [];
-  const order = candidates
-    .filter(c => (c.minZoom ?? 0) <= zoom && zoom < (c.maxZoom ?? 99))
-    .slice().sort((a, b) => b.priority - a.priority || (a.id < b.id ? -1 : 1));
-  const tooClose = (text: string, x: number, y: number) => (placedAt.get(text) ?? []).some(p => Math.hypot(p.x - x, p.y - y) < repeat);
-  const remember = (text: string, x: number, y: number) => { const l = placedAt.get(text); if (l) l.push({ x, y }); else placedAt.set(text, [{ x, y }]); };
+  const placement = new LabelPlacement(candidates, opts);
+  placement.step();
+  return placement.out;
+}
 
-  const measure = (c: LabelCandidate) => {
+/**
+ * `placeLabels` in steps (lane R3-F #241, `?labelBudget=0` off): the same priority walk, resumable. `step(deadline)`
+ * places candidates until `now()` passes the deadline (checked every LABEL_STEP_CHECK candidates) and says whether the
+ * walk is done; `out` holds the winners so far, highest priority first. Run to the end in one step it is
+ * `placeLabels`, byte for byte.
+ */
+export class LabelPlacement {
+  readonly out: PlacedLabel[] = [];
+  private readonly order: LabelCandidate[];
+  private next = 0;
+  private readonly grid = new CollisionGrid();
+  private readonly placedAt = new Map<string, Array<{ x: number; y: number }>>();
+  private readonly pad: number;
+  private readonly repeat: number;
+  private readonly maxTurn: number;
+
+  constructor(candidates: readonly LabelCandidate[], private readonly opts: PlaceOptions) {
+    const zoom = opts.zoom;
+    this.pad = opts.padding ?? 2;
+    this.repeat = opts.repeatDistance ?? 280;
+    this.maxTurn = (opts.maxGlyphTurn ?? 35) * Math.PI / 180;
+    this.order = candidates
+      .filter(c => (c.minZoom ?? 0) <= zoom && zoom < (c.maxZoom ?? 99))
+      .slice().sort((a, b) => b.priority - a.priority || (a.id < b.id ? -1 : 1));
+  }
+
+  get done(): boolean { return this.next >= this.order.length; }
+  /** Candidates walked so far, and in all. */
+  get walked(): number { return this.next; }
+  get total(): number { return this.order.length; }
+
+  step(deadline = Infinity, now: () => number = () => performance.now()): boolean {
+    const timed = deadline !== Infinity;
+    // Every step places at least LABEL_STEP_CHECK candidates (progress even past the deadline).
+    for (let k = 0; this.next < this.order.length; k++) {
+      if (timed && k > 0 && k % LABEL_STEP_CHECK === 0 && now() > deadline) return false;
+      this.place(this.order[this.next++]);
+    }
+    return true;
+  }
+
+  private tooClose(text: string, x: number, y: number): boolean { return (this.placedAt.get(text) ?? []).some(p => Math.hypot(p.x - x, p.y - y) < this.repeat); }
+  private remember(text: string, x: number, y: number): void { const l = this.placedAt.get(text); if (l) l.push({ x, y }); else this.placedAt.set(text, [{ x, y }]); }
+  private measure(c: LabelCandidate) {
     const chars = [...c.text];
-    const advances = chars.map(ch => opts.advance(ch, c.kind));
+    const advances = chars.map(ch => this.opts.advance(ch, c.kind));
     return { chars, advances, textW: advances.reduce((a, b) => a + b, 0) };
-  };
-  for (const c of order) {
+  }
+
+  private place(c: LabelCandidate): void {
+    const opts = this.opts, { width: W, height: H, zoom } = opts, pad = this.pad, grid = this.grid, out = this.out;
     const size = opts.fontSize(c.kind, zoom);
     if (c.at) {
       // Project before measuring: most candidates in the gathered cells are off screen.
       const p = opts.project(c.at);
-      if (p.depth <= 0 || (opts.maxDepth && p.depth > opts.maxDepth) || p.x < -50 || p.x > W + 50 || p.y < 0 || p.y > H) continue;
-      if (tooClose(c.text, p.x, p.y)) continue;
-      const { textW } = measure(c);
+      if (p.depth <= 0 || (opts.maxDepth && p.depth > opts.maxDepth) || p.x < -50 || p.x > W + 50 || p.y < 0 || p.y > H) return;
+      if (this.tooClose(c.text, p.x, p.y)) return;
+      const { textW } = this.measure(c);
       const box: Box = [p.x - textW / 2 - pad, p.y - size / 2 - pad, p.x + textW / 2 + pad, p.y + size / 2 + pad];
-      if (!inside(box, W, H) || grid.hits(box)) continue;
-      grid.insert(box); remember(c.text, p.x, p.y);
+      if (!inside(box, W, H) || grid.hits(box)) return;
+      grid.insert(box); this.remember(c.text, p.x, p.y);
       out.push({ id: c.id, text: c.text, kind: c.kind, size, x: p.x, y: p.y });
-      continue;
+      return;
     }
-    if (!c.path || c.path.length < 2) continue;
+    if (!c.path || c.path.length < 2) return;
     // Project; cut where the line goes behind the eye or past the horizon depth.
     const runs: Array<Array<{ x: number; y: number; q: Vec2 }>> = [[]];
     for (const q of c.path) {
@@ -150,7 +187,7 @@ export function placeLabels(candidates: readonly LabelCandidate[], opts: PlaceOp
       if (ok) runs[runs.length - 1].push({ x: p.x, y: p.y, q });
       else if (runs[runs.length - 1].length) runs.push([]);
     }
-    let metrics: ReturnType<typeof measure> | null = null;
+    let metrics: ReturnType<LabelPlacement['measure']> | null = null;
     for (const run0 of runs) {
       if (run0.length < 2) continue;
       // Cheap rejections before any glyph is measured: off screen, or too short for the name.
@@ -158,7 +195,7 @@ export function placeLabels(candidates: readonly LabelCandidate[], opts: PlaceOp
       for (const p of run0) { rx0 = Math.min(rx0, p.x); rx1 = Math.max(rx1, p.x); ry0 = Math.min(ry0, p.y); ry1 = Math.max(ry1, p.y); }
       if (rx1 < 0 || ry1 < 0 || rx0 > W || ry0 > H) continue;
       if (Math.hypot(rx1 - rx0, ry1 - ry0) < c.text.length * size * 0.45) continue;
-      metrics ??= measure(c);
+      metrics ??= this.measure(c);
       const { chars, advances, textW } = metrics;
       // Upright: read left to right.
       const run = run0[run0.length - 1].x < run0[0].x ? run0.slice().reverse() : run0;
@@ -176,22 +213,23 @@ export function placeLabels(candidates: readonly LabelCandidate[], opts: PlaceOp
         for (let i = 1; i < glyphs.length && !bent; i++) {
           let d = glyphs[i].angle - glyphs[i - 1].angle;
           d = Math.atan2(Math.sin(d), Math.cos(d));
-          if (Math.abs(d) > maxTurn) bent = true;
+          if (Math.abs(d) > this.maxTurn) bent = true;
         }
         // Still upside down after the reversal (a line that runs mostly vertically and curls back).
         if (bent || glyphs.some(g => Math.cos(g.angle) < -0.2)) continue;
         const boxes: Box[] = glyphs.map(g => [g.x - size * 0.55 - pad, g.y - size * 0.55 - pad, g.x + size * 0.55 + pad, g.y + size * 0.55 + pad]);
         const mid = glyphs[glyphs.length >> 1];
-        if (boxes.some(b => !inside(b, W, H) || grid.hits(b)) || tooClose(c.text, mid.x, mid.y)) continue;
+        if (boxes.some(b => !inside(b, W, H) || grid.hits(b)) || this.tooClose(c.text, mid.x, mid.y)) continue;
         for (const b of boxes) grid.insert(b);
-        remember(c.text, mid.x, mid.y);
+        this.remember(c.text, mid.x, mid.y);
         out.push({ id: c.id, text: c.text, kind: c.kind, size, glyphs, anchors: [centre - textW / 2, centre, centre + textW / 2].map(a => localAlong(run, cum, a)) });
         break;
       }
     }
   }
-  return out;
 }
+/** Candidates placed between two deadline checks (a candidate is ~10-40 us). */
+export const LABEL_STEP_CHECK = 8;
 
 export interface LabelPaint { font: (size: number) => string; fill: string; halo: string; haloWidth: number }
 
