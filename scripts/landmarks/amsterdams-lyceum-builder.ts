@@ -207,16 +207,21 @@ function towers(acc: Acc, b: BuildingTools) {
     roof(b, shape(R(l.a0, l.a1, -3.6, 2.2)), l.h, 'slate');
   }
 }
-/** The wings' long fronts (w04, w07): basement lights, two storeys of four wide white windows, the frieze and cornice. */
+/**
+ * The wings' long fronts (w04, w07, fitted to the 3DBAG 13.3-13.5 m eaves): basement lights, two storeys of four
+ * white-framed windows between proud ribbed piers, a brick band between the storeys, the stepped cornice right above
+ * the upper windows.
+ */
 function wingFace(acc: Acc, f: Face, top: number, n: number) {
-  const ops: Op[] = [], bw = f.L / n;
+  const ops: Op[] = [], bw = f.L / n, w = Math.min(1.85, bw - 0.9);
   for (let i = 0; i < n; i++) {
-    const tc = (i + 0.5) * bw, w = Math.min(2.3, bw - 0.9);
-    ops.push(win(tc - w / 2, tc + w / 2, 0.35, 1.25, 0.18), win(tc - w / 2, tc + w / 2, 2.9, 5.7), win(tc - w / 2, tc + w / 2, 6.9, 9.5));
+    const tc = (i + 0.5) * bw;
+    ops.push(win(tc - w / 2, tc + w / 2, 0.3, 1.2, 0.18), win(tc - w / 2, tc + w / 2, 3.2, 6.2), win(tc - w / 2, tc + w / 2, 8.2, 11.2));
   }
   wall(acc, f, 0, top, 'brick', ops);
-  windowRow(acc, f, ops, 3, 3);
-  bar(acc, 'greyBrick', f, 0, f.L, 10.2, 10.5, 0, 0.08);   // the frieze
+  windowRow(acc, f, ops, 4, 3);
+  for (let i = 0; i <= n; i++) { const t = Math.min(f.L - 0.4, Math.max(0.4, i * bw)); bar(acc, 'brick', f, t - 0.4, t + 0.4, 2.9, top - 2.1, 0, 0.16); }
+  bar(acc, 'greyBrick', f, 0, f.L, 6.75, 7.0, 0, 0.1);   // the band between the storeys
   cornice(acc, f, top);
 }
 function wingsAndEnds(acc: Acc, b: BuildingTools) {
