@@ -3,6 +3,18 @@
   "notes": [
     {
       "date": "2026-11-07",
+      "title": "Tall buildings seen edge-on shimmer less",
+      "text": "Window grids on tall buildings seen edge-on shimmer less while you ride on desktop. The slab's grazing wall was sampled too sharply for its distance; the facade sampler now settles for a little less anisotropy, which calms the moving stripes by about a quarter without softening the quay houses up close. Add ?texAniso=16 to the ride link to compare.",
+      "images": [
+        {
+          "src": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/engine/2026-11-07-r3e/r3e-s3-user-dpr2.jpg",
+          "alt": "The slab at the rider's pose: the user's shot, main, the proposed sampler setting and two rejected alternatives, with four-times crops of the slab's street wall",
+          "caption": "The slab at the rider's pose (desktop, Retina): main beside the shipped setting and two rejected alternatives; the crops show the wall the stripes crawl across."
+        }
+      ]
+    },
+    {
+      "date": "2026-11-07",
       "title": "Landmarks seen from the air draw as one piece",
       "text": "Landmarks seen from the air draw as one piece: beyond about 500 m from the view centre, or when a model is smaller than 12 px, each modelled landmark switches to a light stand-in (around 2 % of its triangles, towers and spires kept), and all of them draw in one or two calls instead of hundreds. Up close nothing changes. Add ?landmarkLod2=0 to the ride link to compare.",
       "images": [
