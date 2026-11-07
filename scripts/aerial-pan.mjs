@@ -226,6 +226,48 @@ const drawKinds = () => page.evaluate(() => {
   return D.last;
 });
 
+/**
+ * The landmark owner's draws in one rendered frame by model kind (lane R4-C #245): street chunks, ordinary one-off
+ * buildings, catalogue landmarks, the lod2 batch; main pass and shadow pass apart. Also resident models per kind and
+ * level. Forces two repaints and counts the second frame.
+ */
+const landmarkDraws = () => page.evaluate(async () => {
+  const vm = canalRecallGame.vectorMap, renderer = vm.host?.renderer, sig = vm._signatureLandmarks;
+  if (!renderer || !sig?._entries) return null;
+  const models = {};
+  for (const e of sig._entries) {
+    const kind = e.spec.chunkPands ? 'chunk' : e.spec.assetKind === 'ordinary-building' ? 'ordinary' : 'catalogue';
+    e.holder.userData.lmKind = kind;
+    const m = models[kind] ??= { resident: 0, visible: 0, levels: {} };
+    m.resident++; if (e.holder.visible) { m.visible++; m.levels[e.level] = (m.levels[e.level] ?? 0) + 1; }
+  }
+  // One frame's draws: a persistent hook buckets them per animation frame (as drawKinds); the last whole frame is read.
+  const D = window.__landmarkDrawKinds ??= (() => {
+    const st = { frame: 0, at: -1, cur: {}, last: {} };
+    const tick = () => { st.frame++; requestAnimationFrame(tick); }; requestAnimationFrame(tick);
+    const rbd = renderer.renderBufferDirect.bind(renderer);
+    renderer.renderBufferDirect = (camera, scene, geometry, material, object, group) => {
+      if (st.at !== st.frame) { st.last = st.cur; st.cur = {}; st.at = st.frame; }
+      let kind = null;
+      for (let p = object; p; p = p.parent) {
+        if (p.userData?.lmKind) { kind = p.userData.lmKind; break; }
+        if (typeof p.name === 'string' && p.name.startsWith('landmark-batch')) { kind = 'batch'; break; }
+        if (typeof p.name === 'string' && p.name.startsWith('shared-frame/')) break;
+      }
+      if (kind) {
+        const shadow = material?.isMeshDepthMaterial || material?.isMeshDistanceMaterial;
+        const k = shadow ? `${kind} (shadow)` : kind; st.cur[k] = (st.cur[k] ?? 0) + 1;
+      }
+      return rbd(camera, scene, geometry, material, object, group);
+    };
+    return st;
+  })();
+  for (let i = 0; i < 4; i++) await new Promise(r => { (vm.map ?? vm.cameraMap)?.triggerRepaint?.(); requestAnimationFrame(r); });
+  const count = { ...D.last };
+  const main = Object.entries(count).filter(([k]) => !k.endsWith('(shadow)')).reduce((a, [, v]) => a + v, 0);
+  return { main, byKind: count, models, batch: sig._batch?.stats?.() ?? null };
+});
+
 /** Resident counts by owner, read off the world view (names from the modules; `null` when an owner is absent). */
 const residents = census => page.evaluate(census => {
   const g = canalRecallGame, vm = g.vectorMap, tb = vm._threeBuildings, city = vm._completeCity, ground = vm._ownGround;
@@ -299,7 +341,19 @@ if (argv.includes('--spots')) {
   // The user's two label shots (2026-11-07): retail names over the Jacob van Lennepkanaal looking north to the
   // Chassébuurt (CHASSÉBUURT placed twice), and the "bouncing labels" over the Amstelkanaal looking north.
   const USER = { chassebuurt: { name: 'chassebuurt-north', at: [4.8665, 52.3625], ...POSES.s4, bearing: 0 }, amstelkanaal: { name: 'amstelkanaal-north', at: [4.8930, 52.3480], ...POSES.s4, bearing: 0 } };
-  const spots = process.env.SPOT_SET === 'identity'
+  // SPOT_SET=parked (lane R4-C #245): R4-B's parked landmark spots from the air at the S1 pose (Westerkerk, Rijksmuseum,
+  // the Amstel churches) plus S1 and S4; each row carries `landmarkDraws` (the landmark owner's draws by model kind).
+  const PARKED = [{ name: 's1-hoftuin', at: [4.9065, 52.3655], ...POSES.s1 }, { name: 's4-zuidas', at: [4.8775, 52.3385], ...POSES.s4 },
+    { name: 'westerkerk', at: [4.8839, 52.3745], ...POSES.s1 }, { name: 'rijksmuseum', at: [4.8852, 52.3600], ...POSES.s1 },
+    { name: 'amstel', at: [4.9030, 52.3600], ...POSES.s1 },
+    // Wide variants (R4-B's Westerkerk strip looked west over the Jordaan to Van Galenbuurt, the chunk rows in view).
+    { name: 'westerkerk-wide-west', at: [4.8839, 52.3745], ...POSES.s4, bearing: 270 }, { name: 'rijksmuseum-wide-south', at: [4.8852, 52.3600], ...POSES.s4, bearing: 180 },
+    { name: 'rijksmuseum-wide-west', at: [4.8852, 52.3600], ...POSES.s4, bearing: 270 }];
+  // SPOT_SET=chunkstreet (lane R4-C #245): chase poses in front of two installed street chunks (Transvaalstraat 42-48,
+  // Pretoriusstraat 71-95), for the street-level pixel identity of the chunk merge; both sides of each street.
+  const CHUNK_STREET = [['transvaal-42-48', [4.925689639209945, 52.3551321520268], 318], ['pretorius-71-95', [4.921325184261987, 52.35453393870728], 153]]
+    .flatMap(([name, target, b]) => [0, 180].map(flip => ({ name: `${name}-street-${(b + flip) % 360}`, street: { target, bearing: (b + flip) % 360, distM: 45 } })));
+  const spots = process.env.SPOT_SET === 'chunkstreet' ? CHUNK_STREET : process.env.SPOT_SET === 'parked' ? PARKED : process.env.SPOT_SET === 'identity'
     // SPOT_SET=identity (lane R4-A #243): S1, the user's two aerial shots, and one street pose (look-consistency's
     // Westerkerk, as a chase pose).
     ? [{ name: 's1-hoftuin', at: [4.9065, 52.3655], ...POSES.s1 }, USER.amstelkanaal, USER.chassebuurt,
@@ -330,16 +384,17 @@ if (argv.includes('--spots')) {
     await page.evaluate(async () => { const cam = canalRecallGame.vectorMap.camera; await Promise.race([cam?.whenIdle?.() ?? Promise.resolve(), new Promise(r => setTimeout(r, 60_000))]); });
     await page.waitForTimeout(Number(process.env.SPOT_SETTLE_MS ?? 4000)); // SPOT_SETTLE_MS: longer, for identity pairs
     const file = path.join(shotsDir || 'artifacts/perf/aerial-spots', `${device}-spot-${spot.name}.png`);
-    if (process.env.SPOT_SET === 'identity') await page.evaluate(() => {
+    if (['identity', 'chunkstreet', 'parked'].includes(process.env.SPOT_SET)) await page.evaluate(() => {
       // Only the 3D frame is compared: no labels, HUD or minimap (as look-consistency's quiet()).
       const vm = canalRecallGame.vectorMap, canvas = (vm.map ?? vm.cameraMap).getCanvas();
       vm.setLabelsVisible?.(false);
       for (const e of document.body.querySelectorAll('*')) if (e !== canvas && !e.contains(canvas)) e.style.visibility = 'hidden';
     });
-    if (process.env.SPOT_SET === 'identity') await page.waitForTimeout(1500);
+    if (['identity', 'chunkstreet', 'parked'].includes(process.env.SPOT_SET)) await page.waitForTimeout(1500);
     await page.screenshot({ path: file });
     const overlap = await page.evaluate(() => { const vm = canalRecallGame.vectorMap, tb = vm._threeBuildings; const coarse = new Set([...(tb?.chunks?.keys?.() ?? [])].filter(k => k.startsWith('coarse:')).map(k => k.slice(7))); const near = [...(tb?.chunks?.keys?.() ?? [])].filter(k => k.startsWith('near:')).length; const shown = vm._farShells?.shownTiles?.() ?? []; const bc = vm._bakedCoarse; let farShownOverBaked = 0; for (const [key, r] of vm._farShells?.residents ?? []) if (bc?.drawn?.(key)) farShownOverBaked += r.parts.filter(p => !p.hidden).length; return { coarseTiles: coarse.size, nearChunks: near, farShown: shown.length, farShownOverCoarse: shown.filter(t => coarse.has(t)), farShownOverBaked, coarseSample: [...coarse].slice(0, 5) }; });
-    rows.push({ spot: spot.name, file, overlap, ...(await residents(false)) });
+    rows.push({ spot: spot.name, file, overlap, ...(await residents(false)), landmarkDraws: await landmarkDraws() });
+    if (rows.at(-1).landmarkDraws) console.log(`${device} spot ${spot.name} landmark draws ${JSON.stringify(rows.at(-1).landmarkDraws)}`);
     console.log(`${device} spot ${spot.name} overlap ${JSON.stringify(overlap)}`);
     console.log(`${device} spot ${spot.name}: z${rows.at(-1).zoom} p${rows.at(-1).pitch} labels ${JSON.stringify(rows.at(-1).labelsByKind)} aerial ${rows.at(-1).labelAerial}; ${file} lm ${rows.at(-1).landmarks} geo ${rows.at(-1).geometries} gl ${rows.at(-1).gl?.residentMB} MB draws ${rows.at(-1).draws} fs ${rows.at(-1).farShells?.cells ?? '-'}/${rows.at(-1).farShells?.partsShown ?? '-'} r${rows.at(-1).farRadiusM}`);
   }
