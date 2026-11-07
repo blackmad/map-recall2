@@ -2,7 +2,7 @@ import assert from 'node:assert/strict';
 import { test } from 'node:test';
 import * as THREE from 'three';
 
-import { LandmarkBatch, grownCapacity } from './landmarkBatch';
+import { LandmarkBatch, batchingAware, batchingMaterial, grownCapacity, mergeLevelByLook, mergeLevelByMaterial, usedVertices } from './landmarkBatch';
 
 /** A lod2-shaped geometry: indexed, position + normal + colour, `n` triangles. */
 function lod2Geometry(n: number): THREE.BufferGeometry {
@@ -169,4 +169,95 @@ test('mergeLevelByLook: one mesh per look, colours moved into vertex colours, po
   assert.equal((walls.material as THREE.MeshLambertMaterial).color.getHex(), 0xffffff);
   walls.geometry.computeBoundingBox();
   assert.ok(Math.abs(walls.geometry.boundingBox!.max.x - 10.5) < 1e-6, 'nested mesh placed through its parents');
+});
+
+/** Two primitives over one shared vertex stream, as a v3 lod2 loads: each mesh indexes part of it. */
+function sharedStreamScene(material: (i: number) => THREE.Material) {
+  const position = new THREE.BufferAttribute(new Float32Array([0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0, 0, 6, 0, 0, 5, 1, 0]), 3);
+  const normal = new THREE.BufferAttribute(new Float32Array(18).fill(0).map((_, i) => (i % 3 === 2 ? 1 : 0)), 3);
+  const root = new THREE.Group(), node = new THREE.Group();
+  node.scale.setScalar(2);
+  root.add(node);
+  [[0, 1, 2], [3, 4, 5]].forEach((tri, i) => {
+    const g = new THREE.BufferGeometry();
+    g.setAttribute('position', position); g.setAttribute('normal', normal); g.setIndex(tri);
+    g.setAttribute('layer', new THREE.BufferAttribute(new Uint8Array(6).fill(3 + i), 1));
+    g.setAttribute('tint', new THREE.BufferAttribute(new Uint8Array(24).fill(200 + i), 4, true));
+    node.add(new THREE.Mesh(g, material(i)));
+  });
+  return root;
+}
+
+test('usedVertices: only the vertices the triangles use, renumbered in first-use order', () => {
+  const g = new THREE.BufferGeometry();
+  g.setAttribute('position', new THREE.BufferAttribute(new Float32Array(30), 3));
+  g.setIndex([7, 3, 9, 3, 9, 4]);
+  assert.deepEqual(usedVertices(g), { vertices: [7, 3, 9, 4], index: [0, 1, 2, 1, 2, 3] });
+});
+
+test('mergeLevelByMaterial: meshes sharing a material merge, keep their slot attributes, copy only used vertices', () => {
+  const shared = new THREE.MeshLambertMaterial();
+  shared.userData = { cityLook: true, recipeLookShared: true };
+  const root = sharedStreamScene(() => shared);
+  assert.deepEqual(mergeLevelByMaterial(THREE, root), { before: 2, after: 1 });
+  const meshes: THREE.Mesh[] = [];
+  root.traverse((o: any) => { if (o.isMesh) meshes.push(o); });
+  assert.equal(meshes.length, 1);
+  const g = meshes[0].geometry;
+  assert.equal(meshes[0].material, shared, 'the shared city material is kept, not cloned');
+  assert.equal(g.getAttribute('position').count, 6);
+  assert.deepEqual(Array.from(g.getIndex()!.array), [0, 1, 2, 3, 4, 5]);
+  assert.deepEqual(Array.from(g.getAttribute('layer').array), [3, 3, 3, 4, 4, 4]);
+  assert.equal(g.getAttribute('tint').normalized, true);
+  // Positions in root space: the node's scale of 2 is baked in.
+  assert.equal(g.getAttribute('position').getX(3), 10);
+});
+
+test('mergeLevelByMaterial: different materials stay apart (one batch key each)', () => {
+  const a = new THREE.MeshLambertMaterial(), b = new THREE.MeshLambertMaterial();
+  const root = sharedStreamScene(i => (i ? b : a));
+  mergeLevelByMaterial(THREE, root);
+  const meshes: THREE.Mesh[] = [];
+  root.traverse((o: any) => { if (o.isMesh) meshes.push(o); });
+  assert.equal(meshes.length, 2);
+  // Each compacted onto its own three vertices.
+  for (const m of meshes) assert.equal(m.geometry.getAttribute('position').count, 3);
+});
+
+test('mergeLevelByLook single: a lone plain mesh becomes vertex-coloured (batchable)', () => {
+  const root = new THREE.Group();
+  root.add(new THREE.Mesh(lod2Geometry(2).deleteAttribute('color'), new THREE.MeshLambertMaterial({ color: 0x336699 })));
+  assert.deepEqual(mergeLevelByLook(THREE, root), { before: 1, after: 1 });
+  assert.equal((root.children[0] as THREE.Mesh).geometry.getAttribute('color'), undefined, 'default: left alone');
+  mergeLevelByLook(THREE, root, { single: true });
+  const mesh = root.children.find((o: any) => o.isMesh) as THREE.Mesh;
+  assert.ok(mesh.geometry.getAttribute('color'));
+  assert.equal((mesh.material as THREE.MeshLambertMaterial).vertexColors, true);
+});
+
+test('batchingAware: the city look\'s model-matrix terms take the batching matrix', () => {
+  const src = '#include <begin_vertex>\nvec3 q = position * length(modelMatrix[0].xyz);\nvFacDist = length((modelViewMatrix * vec4(position, 1.0)).xyz);';
+  const out = batchingAware(src);
+  assert.match(out, /cityBatchScale = length\(\(modelMatrix \* batchingMatrix\)\[0\]\.xyz\)/);
+  assert.match(out, /position \* cityBatchScale/);
+  assert.match(out, /cityBatchModelView \* vec4\(position, 1\.0\)/);
+  assert.ok(out.indexOf('cityBatchScale =') < out.indexOf('position * cityBatchScale'), 'declared before use');
+});
+
+test('batchingMaterial: same hook and uniforms, its own program key', () => {
+  const source = new THREE.MeshLambertMaterial({ side: THREE.DoubleSide });
+  let hooked = 0;
+  source.onBeforeCompile = (shader: any) => { hooked++; shader.vertexShader = shader.vertexShader.replace('#include <begin_vertex>', '#include <begin_vertex>\nfloat s = length(modelMatrix[0].xyz);'); };
+  source.customProgramCacheKey = () => 'city-key';
+  (source as any).uniforms = { cells: { value: null } };
+  source.userData = { cityLook: true, cityVariant: { kind: 'slot' } };
+  const m = batchingMaterial(THREE, source);
+  assert.notEqual(m, source);
+  assert.equal(m.side, THREE.DoubleSide);
+  assert.equal(m.uniforms, (source as any).uniforms);
+  assert.equal(m.customProgramCacheKey(), 'city-key|landmark-batch');
+  const shader = { vertexShader: '#include <begin_vertex>', fragmentShader: '', uniforms: {} };
+  m.onBeforeCompile(shader, null);
+  assert.equal(hooked, 1);
+  assert.match(shader.vertexShader, /float s = cityBatchScale;/);
 });

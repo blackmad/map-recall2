@@ -32,7 +32,7 @@ import { canSkipWalk, outsideSlack } from '../../../src/canalRecall/engine/viewS
 import { applyMeshHighlight, highlightRecipe, LANDMARK_WORLD_UP } from '../../../src/canalRecall/look/highlight.ts';
 // Landmarks from the air (lane R4-B #244): lod2 stand-ins and one batched draw for them.
 import { chooseLandmarkLevel, initialLandmarkLevel, lod2IsCurrent, lod2Url } from '../../../src/canalRecall/landmarks/landmarkLod.ts';
-import { LandmarkBatch, mergeLevelByLook } from '../../../src/canalRecall/landmarks/landmarkBatch.ts';
+import { LandmarkBatch, batchingMaterial, mergeLevelByLook, mergeLevelByMaterial } from '../../../src/canalRecall/landmarks/landmarkBatch.ts';
 import { isAerialView } from '../../../src/canalRecall/rendererShared/aerialView.ts';
 import { DEPTH_FADE_OPT_OUT } from '../../../src/canalRecall/look/depthFade.ts';
 const { THREE, GLTFLoader, MeshoptDecoder } = window.CanalRecallThree;
@@ -264,7 +264,7 @@ export class SignatureLandmarks {
     const dropped = (this._entries || []).filter(entry => ids.has(entry.spec.id));
     if (!dropped.length) return;
     this._entries = this._entries.filter(entry => !ids.has(entry.spec.id));
-    for (const entry of dropped) { this.shown.delete(entry.spec.id); this._batch?.remove(entry.spec.id); entry.holder?.parent?.remove(entry.holder); this._disposeModel(entry.group, entry.spec, entry.url); this._disposeSpare(entry); }
+    for (const entry of dropped) { this.shown.delete(entry.spec.id); this._unbatch(entry); entry.holder?.parent?.remove(entry.holder); this._disposeModel(entry.group, entry.spec, entry.url); this._disposeSpare(entry); }
     this._applySuppression();
     this.map.triggerRepaint();
   }
@@ -293,7 +293,7 @@ export class SignatureLandmarks {
         for (const entry of this._entries) {
           const show = this._nearby(entry.spec, entry.placement.anchor, ctx.bounds()) && this.canShowModel(entry.spec);
           entry.holder.visible = show;
-          if (entry.batched) this._batch.setVisible(entry.spec.id, show);
+          if (entry.batched) for (const id of entry.batchIds) this._batch.setVisible(id, show);
           // Picking: world-space ray, against matrixWorld (which now includes the frame).
           entry.pickProjection = show ? ctx.clipFromWorld : null;
           if (show) any = true;
@@ -386,9 +386,9 @@ export class SignatureLandmarks {
       // BVH once one is built; the first pick that reaches a model queues its build for idle time.
       const unbuilt = { count: 0 };
       // A batched lod2 model's own mesh is hidden (the batch draws it); it is what is on screen, so it is picked.
-      if (entry.batched) entry.batched.visible = true;
+      if (entry.batched) for (const mesh of entry.batched) mesh.visible = true;
       let hit;
-      try { hit = nearestVisibleHit(entry.group, ray, unbuilt); } finally { if (entry.batched) entry.batched.visible = false; }
+      try { hit = nearestVisibleHit(entry.group, ray, unbuilt); } finally { if (entry.batched) for (const mesh of entry.batched) mesh.visible = false; }
       if (unbuilt.count) this._queuePickBvh(entry);
       if (!hit) continue;
       const depth = hit.point.clone().applyMatrix4(entry.pickProjection).z;
@@ -782,7 +782,6 @@ export class SignatureLandmarks {
       const level = spec.sceneFactory ? 'full' : this._startLevel(spec);
       const url = spec.sceneFactory ? spec.id : levelUrl(spec, level), loader = this._loader;
       const onLoaded = gltf => {
-        if (level === 'lod2' && gltf.scene) gltf.scene.userData.landmarkLod2 = true;
         if (level === 'lod1' && gltf.scene) this._mergeLevel(gltf.scene);
         if (this._removed || generation !== this._generation) {
           this._disposeModel(gltf.scene, spec, url);
@@ -808,6 +807,7 @@ export class SignatureLandmarks {
         // Compile its programs before it joins the scene (off the frame where the driver allows): a landmark
         // that streams in mid-ride no longer links its shaders inside a draw.
         this._fadeOptOut(spec, gltf.scene);
+        if (level === 'lod2' && gltf.scene) this._prepareLod2(gltf.scene);
         this._precompile(gltf.scene).then(() => {
           if (this._removed || generation !== this._generation) { this._disposeModel(gltf.scene, spec, url); return; }
           if (!this.models.includes(spec)) { this._disposeModel(gltf.scene, spec, url); finish(); return; }
@@ -972,7 +972,7 @@ export class SignatureLandmarks {
     entry.groundBase = base;
     entry.holder.matrix.makeTranslation(0, 0, base * entry.units).multiply(entry.transform);
     entry.holder.matrixWorldNeedsUpdate = true;
-    if (entry.batched) this._batch.setMatrix(entry.spec.id, this._batchMatrix(entry, entry.batched));
+    if (entry.batched) entry.batched.forEach((mesh, i) => this._batch.setMatrix(entry.batchIds[i], this._batchMatrix(entry, mesh)));
     return true;
   }
 
@@ -1178,11 +1178,11 @@ export class SignatureLandmarks {
 
   /**
    * lod2 in play (lane R4-B #244; `?landmarkLod2=0` restores the lod1/full choice): the shared frame only, landmark
-   * GLBs only (not shared meshes, building types or street chunks), not under the city look (its colours are not the
-   * GLB's), and only a lod2 built from the GLB deployed now.
+   * GLBs only (not shared meshes, building types or street chunks), and only a lod2 built from the GLB deployed now.
+   * Under the city look a lod2 keeps its source materials' slots (one primitive per material), so the look dresses it.
    */
   _lod2On() {
-    if (this._lod2Flag === undefined) this._lod2Flag = !!this.sharedFrame && flagOn('landmarkLod2') && !cityLookEnabled();
+    if (this._lod2Flag === undefined) this._lod2Flag = !!this.sharedFrame && flagOn('landmarkLod2');
     return this._lod2Flag;
   }
 
@@ -1274,12 +1274,23 @@ export class SignatureLandmarks {
     if (this._mergeLod1Flag && !scene.userData.recipeLook) mergeLevelByLook(THREE, scene);
   }
 
-  /** The drawn lod2's one mesh (null at other levels). */
-  _lod2Mesh(entry) {
-    if (entry.level !== 'lod2') return null;
-    let mesh = null;
-    entry.imported.traverse(child => { if (!mesh && child.isMesh && child.geometry && !Array.isArray(child.material)) mesh = child; });
-    return mesh;
+  /**
+   * A lod2 after the look, shading and fade opt-out: its per-material meshes merged into one mesh per drawn material
+   * (city look: per shared city material, mergeLevelByMaterial; GLB look: one vertex-coloured Lambert, mergeLevelByLook).
+   */
+  _prepareLod2(scene) {
+    scene.userData.landmarkLod2 = true;
+    // Materials the look left alone (a translucent pane, a sign) are plain Lambert: those merge by look, vertex-coloured.
+    mergeLevelByLook(THREE, scene, { single: true });
+    if (scene.userData.recipeLook) mergeLevelByMaterial(THREE, scene);
+  }
+
+  /** The drawn lod2's meshes (one per material; empty at other levels). */
+  _lod2Meshes(entry) {
+    if (entry.level !== 'lod2') return [];
+    const meshes = [];
+    entry.imported.traverse(child => { if (child.isMesh && child.geometry && !Array.isArray(child.material)) meshes.push(child); });
+    return meshes;
   }
 
   /** `mesh`'s matrix in the landmark root's (Mercator) space, composed from the frozen local matrices, in float64. */
@@ -1287,6 +1298,20 @@ export class SignatureLandmarks {
     const m = new THREE.Matrix4();
     for (let object = mesh; object && object !== this._sharedRoot; object = object.parent) m.premultiply(object.matrix);
     return m;
+  }
+
+  /**
+   * The batch key of a lod2 mesh's material: a shared city-look material is its own key (the batch draws a
+   * batching-aware copy of it); a GLB-look lod2 is vertex-coloured Lambert, with or without the depth fade.
+   */
+  _batchKey(material) {
+    if (material.userData?.cityLook) {
+      const key = `city ${material.name}`;
+      (this._batchSources ||= new Map()).set(key, material);
+      return key;
+    }
+    if (!material.vertexColors || material.type !== 'MeshLambertMaterial' || material.map) return null;
+    return material.fog === false ? 'noFade' : 'fade';
   }
 
   _landmarkBatch(entry) {
@@ -1301,7 +1326,9 @@ export class SignatureLandmarks {
       origin: [t[12], t[13], t[14]],
       initialInstances: cap, initialVertices: Math.ceil(mean * 1.6 * cap), initialIndices: Math.ceil(mean * 3 * cap),
       material: key => {
-        // The per-model path's material after _shade and _fadeOptOut: Lambert, double-sided GLB faces, colour per vertex.
+        const source = this._batchSources?.get(key);
+        if (source) return batchingMaterial(THREE, source);
+        // The per-model path's material after _shade, _fadeOptOut and the merge: Lambert, double-sided GLB faces, colour per vertex.
         const material = new THREE.MeshLambertMaterial({ vertexColors: true, side: THREE.DoubleSide });
         material.name = `landmark-batch ${key}`;
         if (key === 'noFade') { material.fog = false; material.userData[DEPTH_FADE_OPT_OUT] = true; }
@@ -1317,24 +1344,37 @@ export class SignatureLandmarks {
   }
 
   /**
-   * Puts a model drawn at lod2 into the batch (its own mesh is hidden; inspectAtScreen picks it all the same), or takes it out: another level, a lit landmark, a mirrored placement, or `?landmarkBatch=0`.
+   * Puts a model drawn at lod2 into the batch, a batch entry per mesh (its own meshes are hidden; inspectAtScreen
+   * picks them all the same), or takes it out: another level, a lit landmark, a mirrored placement, or `?landmarkBatch=0`.
    */
   _syncBatch(entry) {
-    const mesh = this._lod2Mesh(entry);
-    // A dimmed neighbour (`?highlight=c`) keeps its level but draws its own dimmed mesh.
-    const want = !!mesh && this._batchOn() && !this._isLit(entry) && (!entry.highlightState || entry.highlightState === 'plain') && !entry.placement.mirror;
+    const meshes = this._lod2Meshes(entry);
+    // A dimmed neighbour (`?highlight=c`) keeps its level but draws its own dimmed meshes.
+    const want = meshes.length > 0 && this._batchOn() && !this._isLit(entry) && (!entry.highlightState || entry.highlightState === 'plain') && !entry.placement.mirror;
     if (want) {
-      const key = mesh.material.fog === false ? 'noFade' : 'fade';
-      if (this._landmarkBatch(entry).add(entry.spec.id, key, mesh.geometry, this._batchMatrix(entry, mesh))) {
-        if (entry.batched && entry.batched !== mesh) entry.batched.visible = true;
-        mesh.visible = false;
-        entry.batched = mesh;
-        this._batch.setVisible(entry.spec.id, entry.holder.visible);
-        return;
+      const keys = meshes.map(mesh => this._batchKey(mesh.material));
+      if (keys.every(Boolean)) {
+        const batch = this._landmarkBatch(entry), ids = meshes.map((_, i) => `${entry.spec.id}#${i}`);
+        const added = meshes.every((mesh, i) => batch.add(ids[i], keys[i], mesh.geometry, this._batchMatrix(entry, mesh)));
+        if (added) {
+          for (const id of entry.batchIds || []) if (!ids.includes(id)) batch.remove(id);
+          for (const mesh of entry.batched || []) if (!meshes.includes(mesh)) mesh.visible = true;
+          for (const mesh of meshes) mesh.visible = false;
+          entry.batched = meshes; entry.batchIds = ids;
+          for (const id of ids) batch.setVisible(id, entry.holder.visible);
+          return;
+        }
+        for (const id of ids) batch.remove(id);
       }
     }
-    if (entry.batched) { entry.batched.visible = true; entry.batched = null; }
-    this._batch?.remove(entry.spec.id);
+    this._unbatch(entry);
+  }
+
+  /** Out of the batch: its own meshes draw again. */
+  _unbatch(entry) {
+    for (const mesh of entry.batched || []) mesh.visible = true;
+    for (const id of entry.batchIds || []) this._batch?.remove(id);
+    entry.batched = null; entry.batchIds = null;
   }
 
   _loadLevel(entry, level) {
@@ -1345,9 +1385,9 @@ export class SignatureLandmarks {
     this._loader.load(url, gltf => {
       if (this._removed || generation !== this._generation || !this._entries.includes(entry)) { this._disposeResources(gltf.scene); done(); return; }
       const scene = this._shade(this._dressLevel(gltf, spec)).scene;
-      if (level === 'lod2') scene.userData.landmarkLod2 = true;
       if (level === 'lod1') this._mergeLevel(scene);
       this._fadeOptOut(spec, scene);
+      if (level === 'lod2') this._prepareLod2(scene);
       // As for a first load: its programs compile before the swap, not inside the frame that shows it.
       this._precompile(scene).then(() => {
         if (this._removed || generation !== this._generation || !this._entries.includes(entry)) { this._disposeResources(scene); done(); return; }

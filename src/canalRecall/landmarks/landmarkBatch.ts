@@ -236,9 +236,9 @@ function lookKey(THREE: any, material: any): string | null {
  * Merge every plain Lambert mesh of a level into one mesh per look (same material apart from colour), the colour
  * moved into a `color` attribute: identical shading by construction (Lambert multiplies the material colour, now
  * white, by the vertex colour), one draw per look (one, or two with glass's sky tint). Positions and normals come out
- * float32 in the root's space. Returns meshes before and after.
+ * float32 in the root's space; only the vertices a mesh's triangles use are copied. Returns meshes before and after.
  */
-export function mergeLevelByLook(THREE: any, root: any): { before: number; after: number } {
+export function mergeLevelByLook(THREE: any, root: any, options: { single?: boolean } = {}): { before: number; after: number } {
   const groups = new Map<string, any[]>();
   let before = 0;
   root.updateMatrixWorld(true);
@@ -257,26 +257,27 @@ export function mergeLevelByLook(THREE: any, root: any): { before: number; after
   });
   let after = before;
   for (const meshes of groups.values()) {
-    if (meshes.length < 2) continue;
+    // `single` (a lod2 for the batch): a lone mesh is rewritten too, so every plain look ends vertex-coloured.
+    if (meshes.length < (options.single ? 1 : 2)) continue;
+    const used = meshes.map(m => usedVertices(m.geometry));
     let vertices = 0, indices = 0;
-    for (const m of meshes) { const g = m.geometry; vertices += g.attributes.position.count; indices += g.index ? g.index.count : g.attributes.position.count; }
+    for (const u of used) { vertices += u.vertices.length; indices += u.index.length; }
     const position = new Float32Array(vertices * 3), normal = new Float32Array(vertices * 3), color = new Float32Array(vertices * 3);
     const index = vertices > 65535 ? new Uint32Array(indices) : new Uint16Array(indices);
     const v = new THREE.Vector3(), matrix = new THREE.Matrix4(), normalMatrix = new THREE.Matrix3();
     let vo = 0, io = 0;
-    for (const m of meshes) {
-      const g = m.geometry, p = g.attributes.position, n = g.attributes.normal, c = m.material.color;
+    meshes.forEach((m, k) => {
+      const g = m.geometry, p = g.attributes.position, n = g.attributes.normal, c = m.material.color, u = used[k];
       matrix.multiplyMatrices(rootInverse, m.matrixWorld);
       normalMatrix.getNormalMatrix(matrix);
-      for (let i = 0; i < p.count; i++) {
-        v.fromBufferAttribute(p, i).applyMatrix4(matrix); v.toArray(position, (vo + i) * 3);
-        v.fromBufferAttribute(n, i).applyMatrix3(normalMatrix).normalize(); v.toArray(normal, (vo + i) * 3);
+      u.vertices.forEach((src, i) => {
+        v.fromBufferAttribute(p, src).applyMatrix4(matrix); v.toArray(position, (vo + i) * 3);
+        v.fromBufferAttribute(n, src).applyMatrix3(normalMatrix).normalize(); v.toArray(normal, (vo + i) * 3);
         color[(vo + i) * 3] = c.r; color[(vo + i) * 3 + 1] = c.g; color[(vo + i) * 3 + 2] = c.b;
-      }
-      if (g.index) for (let i = 0; i < g.index.count; i++) index[io + i] = vo + g.index.getX(i);
-      else for (let i = 0; i < p.count; i++) index[io + i] = vo + i;
-      io += g.index ? g.index.count : p.count; vo += p.count;
-    }
+      });
+      for (let i = 0; i < u.index.length; i++) index[io + i] = vo + u.index[i];
+      io += u.index.length; vo += u.vertices.length;
+    });
     const geometry = new THREE.BufferGeometry();
     geometry.setAttribute('position', new THREE.BufferAttribute(position, 3));
     geometry.setAttribute('normal', new THREE.BufferAttribute(normal, 3));
@@ -298,4 +299,138 @@ export function mergeLevelByLook(THREE: any, root: any): { before: number; after
     after -= meshes.length - 1;
   }
   return { before, after };
+}
+
+/**
+ * The vertices a geometry's triangles use, in first-use order, and its index list renumbered onto them. A lod2's
+ * primitives share one vertex stream (build-landmark-lods.ts shareVertexStreams), so each mesh draws only part of it.
+ */
+export function usedVertices(geometry: any): { vertices: number[]; index: number[] } {
+  const count = geometry.getAttribute('position').count, idx = geometry.getIndex();
+  const map = new Int32Array(count).fill(-1), vertices: number[] = [], index: number[] = [];
+  const n = idx ? idx.count : count;
+  for (let i = 0; i < n; i++) {
+    const src = idx ? idx.getX(i) : i;
+    if (map[src] < 0) { map[src] = vertices.length; vertices.push(src); }
+    index.push(map[src]);
+  }
+  return { vertices, index };
+}
+
+/** Attribute layouts two geometries must agree on to be concatenated (names, item sizes, array types, normalisation). */
+function layoutOf(geometry: any): string {
+  return Object.keys(geometry.attributes).sort().map(name => {
+    const a = geometry.getAttribute(name);
+    return name === 'position' || name === 'normal' ? `${name}:${a.itemSize}` : `${name}:${a.itemSize}:${a.normalized}:${a.isInterleavedBufferAttribute ? 'i' : a.array.constructor.name}`;
+  }).join(',');
+}
+
+/**
+ * A lod2 under the city look (lane R4-B #244): the look (look/cityLook.ts) gave each of its per-material meshes a
+ * shared city material and `layer`/`tint` attributes. Merge the meshes that share a material object into one mesh
+ * (position and normal moved into `root`'s frame as float32, the other attributes copied), so a lod2 is one mesh per
+ * city material (one or two) and joins the batch as such. Materials are kept (they are shared), geometries freed.
+ */
+export function mergeLevelByMaterial(THREE: any, root: any): { before: number; after: number } {
+  const groups = new Map<any, any[]>();
+  let before = 0;
+  root.updateMatrixWorld(true);
+  const rootInverse = new THREE.Matrix4().copy(root.matrixWorld).invert();
+  root.traverse((child: any) => {
+    if (!child.isMesh) return;
+    before++;
+    if (child.isInstancedMesh || child.isSkinnedMesh || child.isBatchedMesh || Array.isArray(child.material) || !child.material) return;
+    const g = child.geometry;
+    if (!g?.attributes?.position || !g.attributes.normal || g.morphAttributes?.position?.length) return;
+    let list = groups.get(child.material);
+    if (!list) groups.set(child.material, list = []);
+    list.push(child);
+  });
+  let after = before;
+  for (const [material, all] of groups) {
+    // One layout per merged mesh; a stray layout keeps its own mesh.
+    const layout = layoutOf(all[0].geometry), meshes = all.filter(m => layoutOf(m.geometry) === layout);
+    if (meshes.length < 2 && !meshes[0].geometry.getIndex()) continue;
+    const used = meshes.map(m => usedVertices(m.geometry));
+    let vertices = 0, indices = 0;
+    for (const u of used) { vertices += u.vertices.length; indices += u.index.length; }
+    if (meshes.length < 2 && vertices === meshes[0].geometry.getAttribute('position').count) continue;
+    const first = meshes[0].geometry, names = Object.keys(first.attributes);
+    const out: Record<string, any> = {};
+    for (const name of names) {
+      const a = first.getAttribute(name);
+      out[name] = name === 'position' || name === 'normal' ? new Float32Array(vertices * 3) : new a.array.constructor(vertices * a.itemSize);
+    }
+    const index = vertices > 65535 ? new Uint32Array(indices) : new Uint16Array(indices);
+    const v = new THREE.Vector3(), matrix = new THREE.Matrix4(), normalMatrix = new THREE.Matrix3();
+    let vo = 0, io = 0;
+    meshes.forEach((m, k) => {
+      const g = m.geometry, u = used[k];
+      matrix.multiplyMatrices(rootInverse, m.matrixWorld);
+      normalMatrix.getNormalMatrix(matrix);
+      for (const name of names) {
+        const a = g.getAttribute(name), dst = out[name];
+        if (name === 'position') u.vertices.forEach((src, i) => { v.fromBufferAttribute(a, src).applyMatrix4(matrix); v.toArray(dst, (vo + i) * 3); });
+        else if (name === 'normal') u.vertices.forEach((src, i) => { v.fromBufferAttribute(a, src).applyMatrix3(normalMatrix).normalize(); v.toArray(dst, (vo + i) * 3); });
+        else {
+          const size = a.itemSize;
+          u.vertices.forEach((src, i) => { for (let c = 0; c < size; c++) dst[(vo + i) * size + c] = a.isInterleavedBufferAttribute ? a.data.array[src * a.data.stride + a.offset + c] : a.array[src * size + c]; });
+        }
+      }
+      for (let i = 0; i < u.index.length; i++) index[io + i] = vo + u.index[i];
+      io += u.index.length; vo += u.vertices.length;
+    });
+    const geometry = new THREE.BufferGeometry();
+    for (const name of names) {
+      const a = first.getAttribute(name);
+      geometry.setAttribute(name, name === 'position' || name === 'normal' ? new THREE.BufferAttribute(out[name], 3) : new THREE.BufferAttribute(out[name], a.itemSize, a.normalized));
+    }
+    geometry.setIndex(new THREE.BufferAttribute(index, 1));
+    const merged = new THREE.Mesh(geometry, material);
+    merged.name = `merged ${meshes.length}`;
+    merged.castShadow = meshes.some(m => m.castShadow); merged.receiveShadow = meshes.some(m => m.receiveShadow);
+    merged.userData = { ...meshes[0].userData };
+    root.add(merged);
+    const freed = new Set<any>();
+    for (const m of meshes) { m.parent?.remove(m); freed.add(m.geometry); }
+    for (const g of freed) g.dispose();
+    after -= meshes.length - 1;
+  }
+  return { before, after };
+}
+
+/**
+ * A material for a batch of meshes that drew with `source`: the same program inputs (defines, shared uniforms, hooks)
+ * with the city look's own model-matrix terms made batching-aware. three.js applies `batchingMatrix` in its own
+ * chunks; the city look's box UV scale (`length(modelMatrix[0].xyz)`) and fade distance (`modelViewMatrix *
+ * position`) read the model matrix directly, which in a BatchedMesh is the batch's, not the instance's.
+ */
+export function batchingMaterial(THREE: any, source: any): any {
+  const material = source.clone();
+  material.defines = { ...(source.defines ?? {}) };
+  if ((source as any).uniforms) (material as any).uniforms = (source as any).uniforms;
+  if (source.defaultAttributeValues) material.defaultAttributeValues = { ...source.defaultAttributeValues };
+  material.userData = { ...source.userData, landmarkBatch: true };
+  const hook = source.onBeforeCompile, key = source.customProgramCacheKey?.bind(source);
+  material.onBeforeCompile = (shader: any, renderer: any) => {
+    hook.call(source, shader, renderer);
+    shader.vertexShader = batchingAware(shader.vertexShader);
+  };
+  material.customProgramCacheKey = () => `${key ? key() : ''}|landmark-batch`;
+  return material;
+}
+
+/** The city look's direct model-matrix terms, rewritten to include the instance's batching matrix. */
+export function batchingAware(vertexShader: string): string {
+  return vertexShader
+    .replace(/length\(modelMatrix\[0\]\.xyz\)/g, 'cityBatchScale')
+    .replace(/modelViewMatrix \* vec4\(position, 1\.0\)/g, 'cityBatchModelView * vec4(position, 1.0)')
+    .replace('#include <begin_vertex>', `#ifdef USE_BATCHING
+  float cityBatchScale = length((modelMatrix * batchingMatrix)[0].xyz);
+  mat4 cityBatchModelView = modelViewMatrix * batchingMatrix;
+#else
+  float cityBatchScale = length(modelMatrix[0].xyz);
+  mat4 cityBatchModelView = modelViewMatrix;
+#endif
+#include <begin_vertex>`);
 }

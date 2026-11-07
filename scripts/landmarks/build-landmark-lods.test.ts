@@ -4,7 +4,7 @@ import { test } from 'node:test';
 import { Document } from '@gltf-transform/core';
 
 import { lod2IsCurrent, LOD2_BUILD_VERSION, type LandmarkLodEntry } from '../../src/canalRecall/landmarks/landmarkLod';
-import { hasRecipeSlots, lodTable, mergeForLod2, pointTriangleDistanceSq, recolourFaces } from './build-landmark-lods';
+import { hasRecipeSlots, lodTable, mergeForLod2, pointTriangleDistanceSq, recolourFaces, shareVertexStreams, trimMaterials } from './build-landmark-lods';
 
 test('lodTable: lod1 fields stay at the top level, lod2 beside them, lod2-only models get a row, and it round-trips', () => {
   const lod1 = { sourceHash: 'a', buildVersion: 2, bytes: 10, triangles: 5 };
@@ -84,4 +84,29 @@ test('recolourFaces: a simplified face takes the colour of the source face under
   const result = recolourFaces({ positions, indices, colours }, out);
   assert.deepEqual([...result.subarray(0, 3)], [1, 0, 0], 'wall stays red');
   assert.deepEqual([...result.subarray(3, 6)], [0, 0, 1], 'roof stays blue');
+});
+
+test('shareVertexStreams: per-material primitives draw from one position/normal stream; trimMaterials keeps the slot extras', () => {
+  const doc = new Document(), buffer = doc.createBuffer();
+  const mesh = doc.createMesh();
+  for (let k = 0; k < 2; k++) {
+    const p = doc.createAccessor().setType('VEC3').setArray(new Float32Array([k, 0, 0, k + 1, 0, 0, k, 1, 0])).setBuffer(buffer);
+    const n = doc.createAccessor().setType('VEC3').setArray(new Float32Array([0, 0, 1, 0, 0, 1, 0, 0, 1])).setBuffer(buffer);
+    const material = doc.createMaterial(`m${k}`).setBaseColorFactor([0.123456, 0.5, 0.5, 1]).setRoughnessFactor(0.9).setExtras({ materialSlot: 'brick', tint: '#aa0000', materialSlotSource: 'inferred' });
+    mesh.addPrimitive(doc.createPrimitive().setAttribute('POSITION', p).setAttribute('NORMAL', n)
+      .setIndices(doc.createAccessor().setType('SCALAR').setArray(new Uint16Array([0, 1, 2])).setBuffer(buffer)).setMaterial(material));
+  }
+  shareVertexStreams(doc, mesh);
+  const [a, b] = mesh.listPrimitives();
+  assert.equal(a.getAttribute('POSITION'), b.getAttribute('POSITION'));
+  assert.equal(a.getAttribute('NORMAL'), b.getAttribute('NORMAL'));
+  assert.equal(a.getAttribute('POSITION')!.getCount(), 6);
+  assert.deepEqual(Array.from(b.getIndices()!.getArray()!), [3, 4, 5]);
+  assert.deepEqual(Array.from(b.getAttribute('POSITION')!.getElement(3, [])), [1, 0, 0]);
+  trimMaterials(doc);
+  const m = a.getMaterial()!;
+  assert.equal(m.getName(), '');
+  assert.equal(m.getRoughnessFactor(), 1);
+  assert.equal(m.getBaseColorFactor()[0], 0.1235);
+  assert.deepEqual(m.getExtras(), { materialSlot: 'brick', tint: '#aa0000', materialSlotSource: 'inferred' });
 });

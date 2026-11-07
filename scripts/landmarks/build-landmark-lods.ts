@@ -19,7 +19,7 @@ import crypto from 'node:crypto';
 import fs from 'node:fs';
 import path from 'node:path';
 
-import { Document, NodeIO } from '@gltf-transform/core';
+import { Document, NodeIO, type Material } from '@gltf-transform/core';
 import { ALL_EXTENSIONS } from '@gltf-transform/extensions';
 import { meshopt, normals, prune, simplify, textureCompress, unweld, weld } from '@gltf-transform/functions';
 import { MeshoptDecoder, MeshoptEncoder, MeshoptSimplifier } from 'meshoptimizer';
@@ -66,13 +66,15 @@ export function hasRecipeSlots(document: Document): boolean {
   });
 }
 
+export type Faces = { positions: number[]; colours: number[]; indices: number[]; faceMaterials: (Material | null)[] };
+
 /**
- * One primitive for the whole model: positions in the scene's space, the material's base colour (glTF factors are
- * linear, as three's vertex colours are) per vertex, triangles only. Faint glass (BLEND below LOD2_MIN_ALPHA) is left
+ * Every triangle of the model in the scene's space, with its material's base colour per vertex (glTF factors are
+ * linear, as three's vertex colours are) and its material per face. Faint glass (BLEND below LOD2_MIN_ALPHA) is left
  * out: from the air it reads as the hall behind it.
  */
-export function mergeForLod2(source: Document): Document | null {
-  const positions: number[] = [], colours: number[] = [], indices: number[] = [];
+export function collectFaces(source: Document): Faces {
+  const positions: number[] = [], colours: number[] = [], indices: number[] = [], faceMaterials: (Material | null)[] = [];
   const tmp = new Float32Array(3), p: number[] = [0, 0, 0];
   for (const node of source.getRoot().listNodes()) {
     const mesh = node.getMesh();
@@ -95,8 +97,15 @@ export function mergeForLod2(source: Document): Document | null {
       const index = primitive.getIndices();
       const count = index ? index.getCount() : position.getCount();
       for (let i = 0; i < count; i++) indices.push(base + (index ? index.getScalar(i) : i));
+      for (let t = 0; t < count / 3; t++) faceMaterials.push(material);
     }
   }
+  return { positions, colours, indices, faceMaterials };
+}
+
+/** One primitive for the whole model, colours per vertex (see collectFaces). */
+export function mergeForLod2(source: Document): Document | null {
+  const { positions, colours, indices } = collectFaces(source);
   if (!indices.length) return null;
   const out = new Document();
   const buffer = out.createBuffer();
@@ -149,6 +158,17 @@ function unitNormal(p: ArrayLike<number>, i0: number, i1: number, i2: number): [
  */
 export function recolourFaces(source: { positions: ArrayLike<number>; indices: ArrayLike<number>; colours: ArrayLike<number> },
   out: { positions: ArrayLike<number>; indices: ArrayLike<number> }): Float32Array {
+  const nearest = nearestSourceFaces(source, out), colours = new Float32Array(nearest.length * 3);
+  for (let f = 0; f < nearest.length; f++) {
+    const i = source.indices[nearest[f] * 3] * 3;
+    colours[f * 3] = source.colours[i]; colours[f * 3 + 1] = source.colours[i + 1]; colours[f * 3 + 2] = source.colours[i + 2];
+  }
+  return colours;
+}
+
+/** For each simplified face, the source face under it (see recolourFaces). */
+export function nearestSourceFaces(source: { positions: ArrayLike<number>; indices: ArrayLike<number> },
+  out: { positions: ArrayLike<number>; indices: ArrayLike<number> }): Int32Array {
   const sp = source.positions, si = source.indices, triangles = si.length / 3;
   let min = [Infinity, Infinity, Infinity], max = [-Infinity, -Infinity, -Infinity];
   for (let i = 0; i < sp.length; i += 3) for (let k = 0; k < 3; k++) { min[k] = Math.min(min[k], sp[i + k]); max[k] = Math.max(max[k], sp[i + k]); }
@@ -169,7 +189,7 @@ export function recolourFaces(source: { positions: ArrayLike<number>; indices: A
     }
   }
   const vertex = (t: number, j: number) => { const i = si[t * 3 + j] * 3; return [sp[i], sp[i + 1], sp[i + 2]]; };
-  const op = out.positions, oi = out.indices, faces = oi.length / 3, colours = new Float32Array(faces * 3);
+  const op = out.positions, oi = out.indices, faces = oi.length / 3, result = new Int32Array(faces);
   const seen = new Int32Array(triangles).fill(-1);
   for (let f = 0; f < faces; f++) {
     const a = oi[f * 3], b = oi[f * 3 + 1], c = oi[f * 3 + 2];
@@ -196,10 +216,9 @@ export function recolourFaces(source: { positions: ArrayLike<number>; indices: A
       if (bestAligned < 0 && bestAny >= 0 && ring >= 2 && bestAnyD <= reach * reach) break;
     }
     const t = bestAligned >= 0 && bestAlignedD <= Math.max(bestAnyD, (2 * cell) ** 2) ? bestAligned : bestAny;
-    const i = si[Math.max(0, t) * 3] * 3;
-    colours[f * 3] = source.colours[i]; colours[f * 3 + 1] = source.colours[i + 1]; colours[f * 3 + 2] = source.colours[i + 2];
+    result[f] = Math.max(0, t);
   }
-  return colours;
+  return result;
 }
 
 function extentOf(document: Document): number {
@@ -209,24 +228,65 @@ function extentOf(document: Document): number {
 }
 
 /** Bakes one lod2 to `output`; returns its triangle count and bytes, or null when the model has nothing to merge. */
+/**
+ * Cuts the per-material JSON a lod2 carries: the colour rounded to 1e-4, roughness at its default (a speck at
+ * 500 m), no name. The slot, tint and slot-source extras the city look reads stay as they are.
+ */
+export function trimMaterials(document: Document): void {
+  for (const material of document.getRoot().listMaterials()) {
+    const c = material.getBaseColorFactor();
+    material.setName('').setRoughnessFactor(1)
+      .setBaseColorFactor(c.map(v => Math.round(v * 1e4) / 1e4) as [number, number, number, number]);
+  }
+}
+
+/** Rewrites a mesh's primitives to share one POSITION and one NORMAL accessor, each keeping its own indices. */
+export function shareVertexStreams(document: Document, mesh: ReturnType<Document['createMesh']>): void {
+  const prims = mesh.listPrimitives();
+  if (prims.length < 2) return;
+  const first = { p: prims[0].getAttribute('POSITION')!, n: prims[0].getAttribute('NORMAL')! };
+  const same = (a: typeof first.p, b: typeof first.p) => a.getComponentType() === b.getComponentType() && a.getNormalized() === b.getNormalized() && a.getElementSize() === b.getElementSize();
+  if (!prims.every(prim => same(prim.getAttribute('POSITION')!, first.p) && same(prim.getAttribute('NORMAL')!, first.n))) return;
+  const pos: number[] = [], nor: number[] = [], lists: number[][] = [];
+  const ps = first.p.getElementSize(), ns = first.n.getElementSize();
+  for (const prim of prims) {
+    const p = prim.getAttribute('POSITION')!.getArray()!, n = prim.getAttribute('NORMAL')!.getArray()!, base = pos.length / ps;
+    for (let i = 0; i < p.length; i++) pos.push(p[i]);
+    for (let i = 0; i < n.length; i++) nor.push(n[i]);
+    const idx = prim.getIndices();
+    lists.push(idx ? Array.from(idx.getArray()!, v => v + base) : Array.from({ length: p.length / ps }, (_, i) => base + i));
+  }
+  const buffer = document.getRoot().listBuffers()[0];
+  const typed = (a: typeof first.p, v: number[]) => new (a.getArray()!.constructor as Float32ArrayConstructor)(v);
+  const P = document.createAccessor().setType(first.p.getType()).setArray(typed(first.p, pos)).setNormalized(first.p.getNormalized()).setBuffer(buffer);
+  const N = document.createAccessor().setType(first.n.getType()).setArray(typed(first.n, nor)).setNormalized(first.n.getNormalized()).setBuffer(buffer);
+  const count = pos.length / ps;
+  prims.forEach((prim, i) => {
+    prim.setAttribute('POSITION', P).setAttribute('NORMAL', N)
+      .setIndices(document.createAccessor().setType('SCALAR').setArray(count > 65535 ? new Uint32Array(lists[i]) : new Uint16Array(lists[i])).setBuffer(buffer));
+  });
+}
+
 async function bakeLod2(io: Io, id: string, source: string, output: string, ratio?: number, errorM?: number, capTriangles = LOD2_MAX_TRIANGLES): Promise<{ sourceTriangles: number; triangles: number; bytes: number } | 'recipe' | null> {
   const document = await io.read(source);
   if (hasRecipeSlots(document)) return 'recipe';
   const sourceTriangles = triangles(document);
-  let merged = mergeForLod2(document);
-  if (!merged) return null;
-  const extent = extentOf(merged);
-  const primitive = merged.getRoot().listMeshes()[0].listPrimitives()[0];
-  const source_ = {
-    positions: primitive.getAttribute('POSITION')!.getArray()!.slice(),
-    indices: primitive.getIndices()!.getArray()!.slice(),
-    colours: primitive.getAttribute('COLOR_0')!.getArray()!.slice(),
-  };
-  // Simplify on positions alone (welded), then give each kept face the colour of the source face under it.
-  primitive.setAttribute('COLOR_0', null);
-  await merged.transform(weld());
-  const welded = merged.getRoot().listMeshes()[0].listPrimitives()[0];
+  const faces = collectFaces(document);
+  if (!faces.indices.length) return null;
+  // Simplify the whole model on positions alone (welded across materials: colour and material edges would be seams
+  // the simplifier may not cross, which kept ~20 % of the triangles).
+  const work = new Document();
+  const wbuf = work.createBuffer();
+  const wprim = work.createPrimitive()
+    .setAttribute('POSITION', work.createAccessor().setType('VEC3').setArray(new Float32Array(faces.positions)).setBuffer(wbuf))
+    .setIndices(work.createAccessor().setType('SCALAR').setArray(new Uint32Array(faces.indices)).setBuffer(wbuf));
+  work.createScene().addChild(work.createNode().setMesh(work.createMesh().addPrimitive(wprim)));
+  await work.transform(weld());
+  const welded = work.getRoot().listMeshes()[0].listPrimitives()[0];
   const weldedPositions = welded.getAttribute('POSITION')!.getArray() as Float32Array;
+  let min = [Infinity, Infinity, Infinity], max = [-Infinity, -Infinity, -Infinity];
+  for (let i = 0; i < weldedPositions.length; i += 3) for (let k = 0; k < 3; k++) { min[k] = Math.min(min[k], weldedPositions[i + k]); max[k] = Math.max(max[k], weldedPositions[i + k]); }
+  const extent = Math.max(max[0] - min[0], max[1] - min[1], max[2] - min[2]);
   let kept = Uint32Array.from(welded.getIndices()!.getArray()!);
   const options = lod2SimplifyOptions(id, extent, ratio, errorM);
   [kept] = MeshoptSimplifier.simplify(kept, weldedPositions, 3, Math.floor(kept.length * options.ratio / 3) * 3, options.error);
@@ -237,25 +297,37 @@ async function bakeLod2(io: Io, id: string, source: string, output: string, rati
     [kept] = MeshoptSimplifier.simplify(kept, weldedPositions, 3, cap, error, ['Prune']);
     if (kept.length > cap) [kept] = MeshoptSimplifier.simplifySloppy(kept, weldedPositions, 3, null, cap, error);
   }
-  welded.setIndices(merged.createAccessor().setType('SCALAR').setArray(kept).setBuffer(merged.getRoot().listBuffers()[0]));
-  await merged.transform(unweld());
-  const flat = merged.getRoot().listMeshes()[0].listPrimitives()[0];
-  const positions = flat.getAttribute('POSITION')!.getArray()!;
-  const count = positions.length / 3;
-  const faceColours = recolourFaces(source_, { positions, indices: Uint32Array.from({ length: count }, (_, i) => i) });
-  const colours = new Float32Array(count * 3);
-  for (let v = 0; v < count; v++) colours.set(faceColours.subarray(Math.floor(v / 3) * 3, Math.floor(v / 3) * 3 + 3), v * 3);
-  flat.setAttribute('COLOR_0', merged.createAccessor().setType('VEC3').setArray(colours).setBuffer(merged.getRoot().listBuffers()[0]));
-  // Flat normals as the full models have, weld what then matches, and compress.
-  await merged.transform(
-    normals({ overwrite: true }),
-    weld(),
-    prune(),
-    // 12-bit colour: 8-bit linear bands the dark bricks (0.05 is 13 steps).
-    meshopt({ encoder: MeshoptEncoder, quantizeColor: 12 }),
-  );
-  await io.write(output, merged);
-  return { sourceTriangles, triangles: triangles(merged), bytes: fs.statSync(output).size };
+  // Unwelded faces, each given the material of the source face under it, one primitive per material: the runtime
+  // dresses them as it dresses the full model (city look slots, Lambert), then merges them into one mesh.
+  const facePositions = new Float32Array(kept.length * 3);
+  for (let i = 0; i < kept.length; i++) facePositions.set(weldedPositions.subarray(kept[i] * 3, kept[i] * 3 + 3), i * 3);
+  const nearest = nearestSourceFaces(faces, { positions: facePositions, indices: Uint32Array.from({ length: kept.length }, (_, i) => i) });
+  const byMaterial = new Map<Material | null, number[]>();
+  for (let f = 0; f < nearest.length; f++) {
+    const m = faces.faceMaterials[nearest[f]];
+    let list = byMaterial.get(m); if (!list) byMaterial.set(m, list = []); list.push(f);
+  }
+  const root = document.getRoot(), buffer = root.listBuffers()[0] ?? document.createBuffer();
+  for (const scene of root.listScenes()) for (const child of scene.listChildren()) scene.removeChild(child);
+  const mesh = document.createMesh('lod2');
+  for (const [material, list] of byMaterial) {
+    const p = new Float32Array(list.length * 9);
+    list.forEach((f, j) => p.set(facePositions.subarray(f * 9, f * 9 + 9), j * 9));
+    const prim = document.createPrimitive().setAttribute('POSITION', document.createAccessor().setType('VEC3').setArray(p).setBuffer(buffer));
+    if (material) prim.setMaterial(material);
+    mesh.addPrimitive(prim);
+  }
+  const scene = root.getDefaultScene() ?? root.listScenes()[0] ?? document.createScene();
+  scene.addChild(document.createNode('lod2').setMesh(mesh));
+  // Flat normals as the full models have, weld what then matches.
+  await document.transform(prune(), normals({ overwrite: true }), weld(), prune(), meshopt({ encoder: MeshoptEncoder }));
+  // One position and one normal stream for all the primitives (only the index lists differ): less JSON and fewer
+  // buffer views per model than a stream set per material. Quantisation is per mesh, so the streams agree.
+  shareVertexStreams(document, mesh);
+  await document.transform(prune());
+  trimMaterials(document);
+  await io.write(output, document);
+  return { sourceTriangles, triangles: triangles(document), bytes: fs.statSync(output).size };
 }
 
 async function buildLod1(io: Io, manifest: Manifest, force: boolean, only: string[] | undefined): Promise<void> {
