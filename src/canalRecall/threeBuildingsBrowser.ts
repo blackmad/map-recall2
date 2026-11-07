@@ -297,7 +297,7 @@ export type FarShellHostView = { THREE: any; scene: any; material: any; look: st
  */
 export interface BakedCoarseGate { plan(cells: ReadonlySet<string>): void; covers(cell: string): boolean; drawn(cell: string): boolean; /** The GL context was lost: the meshes' CPU arrays are gone, fetch again. */ contextLost?(): void }
 /** What the baked coarse tier reads off the facade layer (ThreeBuildings.bakedCoarseHost). */
-export type BakedCoarseHostView = { THREE: any; scene: any; material: any; look: string; layerHash: string; fadeMaterial(value: number): any | null; swapSlots(): boolean; attach(entry: BakedEntry & { applied?: Map<string, number> }): void; detach(entry: BakedEntry): void; groundBase(id: string): number | null | undefined; regroup(): void; setGate(gate: BakedCoarseGate | null): void };
+export type BakedCoarseHostView = { THREE: any; scene: any; material: any; look: string; layerHash: string; fadeMaterial(value: number): any | null; swapSlots(): boolean; attach(entry: BakedEntry & { applied?: Map<string, number> }): void; detach(entry: BakedEntry): void; groundBase(id: string): number | null | undefined; regroup(): void; setGate(gate: BakedCoarseGate | null): void; /** Per drawn frame (the dissolves), from the render, not the game's sync. */ setFrame(fn: (() => void) | null): void };
 const BOAT_PREFIX = 'boats:';
 /** What setFeatures groups a feature by, memoised per feature object (ThreeBuildings.groupOf). */
 interface FeatureGroupInfo { geometry: unknown; id: string; kit: boolean; tile: string | null; coarse: string | null; near: string; nearKey: string; extrasKey: string; /** world-v1 cell (first vertex), for the baked coarse gate. */ cell: string | null }
@@ -1064,8 +1064,11 @@ export class ThreeBuildings {
       },
       regroup: () => this.setFeatures(this.lastFeatures),
       setGate: gate => { if (gate === this.bakedGate) return; this.bakedGate = gate; this.setFeatures(this.lastFeatures); },
+      setFrame: fn => { this.bakedFrame = fn; },
     };
   }
+  /** The baked tier's per-frame step (its dissolves), run with this layer's own fades in prepareFrame. */
+  private bakedFrame: (() => void) | null = null;
   /** Resident feature by id (the baked tier's ground lift), indexed lazily per resident list. */
   private featureIndex: { list: readonly Feature[]; byId: Map<string, Feature> } | null = null;
   private featureById(id: string): Feature | undefined {
@@ -2307,7 +2310,8 @@ export class ThreeBuildings {
   /** Per-frame state shared by both paths; false when nothing should draw. */
   private prepareFrame(): boolean {
     this.refreshSurveyedRoofOwnership();
-    if (!this.visible || !this.ready || !this.scene || !this.chunks.size || this.view.zoom() < MIN_ZOOM) return false;
+    // A view all drawn by baked cells (lane R4-A #243) may have no chunk of its own and still has to draw.
+    if (!this.visible || !this.ready || !this.scene || (!this.chunks.size && !this.bakedEntries.size) || this.view.zoom() < MIN_ZOOM) return false;
     // One curve with the own ground and the shadows (overviewTransition/blend.ts); `?transition=0` keeps the old linear ramp.
     const zoom = this.view.zoom();
     // With the transition the buildings are present early (a short dither while they are still the footprint's
@@ -2319,6 +2323,10 @@ export class ThreeBuildings {
       if (material.uniforms.cityTone) material.uniforms.cityTone.value = b;
     }
     this.tickFades(fade);
+    // Lane R4-A (#243): the baked cells' dissolves advance with the drawn frame. Stepped only from the game's sync,
+    // they stalled whenever the sync did (a held camera, a paused game): every cell stayed at the start of its
+    // dissolve, invisible, while its buildings were already out of the runtime coarse chunks (da-costakade-user).
+    this.bakedFrame?.();
     return true;
   }
 

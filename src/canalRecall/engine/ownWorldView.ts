@@ -732,6 +732,7 @@ export class OwnWorldView implements WorldViewOracles {
       }, { touch: coarse() });
       this._bakedCoarse = baked;
       host.setGate({ plan: (cells: ReadonlySet<string>) => baked.plan(cells), covers: (cell: string) => baked.covers(cell), drawn: (cell: string) => baked.drawn(cell), contextLost: () => baked.contextLost() });
+      host.setFrame(() => baked.frame());
     }
     const baked = this._bakedCoarse;
     const photo = this.drawnLook() === 'photo';
