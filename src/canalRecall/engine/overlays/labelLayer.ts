@@ -337,7 +337,8 @@ export class LabelLayer {
     lap('rebuild');
     const rev = shows ? this.rev : -2;
     // A still camera and unchanged inputs: the canvas already holds this frame.
-    if (!resized && pose && this.drawnPose && rev === this.drawnRev && samePose(pose, this.drawnPose)) { this.stats.skipped++; return; }
+    // (A budgeted full placement still under way is finished first, still camera or not.)
+    if (!resized && pose && this.drawnPose && rev === this.drawnRev && samePose(pose, this.drawnPose) && !this.pendingFull) { this.stats.skipped++; return; }
     const priorPose = this.drawnPose;
     this.drawnRev = rev;
     this.drawnPose = pose ?? null;

@@ -168,3 +168,16 @@ test('from the air a neighbourhood with two anchors (Chassébuurt, a split polyg
   assert.deepEqual(run(false).sort(), ['h0', 'h1']);
   assert.deepEqual(run(true), ['h1'], 'the anchor nearest the view centre');
 });
+
+test('a budgeted full placement cut at its budget finishes while the camera holds still', () => {
+  const l = layer(1e-6);
+  const pose: LabelPose = [0, 0, 16, 0, 0];
+  for (let k = 0; k < 200 && !l.stats.full; k++) l.draw(frame, view, 16, 1, project, pose);
+  assert.equal(l.stats.full, 1, 'the same pose every frame does not strand the placement');
+  const plain = layer(null);
+  plain.draw(frame, view, 16, 1, project, pose);
+  assert.deepEqual(ids(l), ids(plain));
+  const skipped = l.stats.skipped;
+  l.draw(frame, view, 16, 1, project, pose);
+  assert.equal(l.stats.skipped, skipped + 1, 'done: a still camera skips again');
+});
