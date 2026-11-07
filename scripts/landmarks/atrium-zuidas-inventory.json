@@ -1,0 +1,374 @@
+{
+  "schemaVersion": 1,
+  "id": "atrium-zuidas",
+  "pand": "0363100012244160",
+  "brief": "scripts/landmarks/atrium-zuidas-brief.md",
+  "signature": [
+    "zuid-bronze-slabs",
+    "zuid-curved-glass",
+    "atrium-letters",
+    "nmb-grid",
+    "core-arched-windows",
+    "ne-bronze-slabs",
+    "deck-canopy"
+  ],
+  "walls": [
+    {
+      "tag": "w01-357",
+      "bearing": 357,
+      "lengthM": 104.8,
+      "centre": [
+        4.8698895,
+        52.340565
+      ],
+      "evidence": "photo",
+      "panoId": "TMX7316060226-000009_pano_0000_001640",
+      "capturedAt": "2016-07-29",
+      "checked": true,
+      "items": [
+        {
+          "id": "ne-bronze-slabs",
+          "kind": "other",
+          "where": "north-east block, every floor: bronze slabs round rounded corners, some stopping short of the corner",
+          "approxSizeM": [
+            50,
+            0.45
+          ],
+          "plan": "modelled",
+          "seenIn": "TMX7316010203-002125_pano_0000_003332 (2021, w01 alt)",
+          "how": "slabBandPlan.slabBandOutline per floor on the 246549 ring, partial bands where the photo shows the glass corner"
+        },
+        {
+          "id": "nmb-grid",
+          "kind": "window-shape",
+          "where": "NMB block upper storeys: light aluminium grid, tall vision row and short spandrel row per storey, wide-wide-narrow bays",
+          "approxSizeM": [
+            45,
+            30
+          ],
+          "plan": "modelled",
+          "seenIn": "TMX7316010203-002125_pano_0000_003332",
+          "how": "bandedCurtain on the 074056 grid walls: storeyBands + explicit mullion lines in a 2.6/2.6/1.0 m rhythm"
+        },
+        {
+          "id": "nmb-cantilever",
+          "kind": "other",
+          "where": "NMB block: the grid storeys cantilever over a lower glazed band with a dark recess line between",
+          "approxSizeM": [
+            45,
+            1.2
+          ],
+          "plan": "simplified",
+          "seenIn": "TMX7316010203-002125_pano_0000_003332",
+          "how": "a dark band 0.55 m tall, 0.22 m proud at the 18.8 m break on the exposed grid walls; the recessed lower band itself is not set back"
+        },
+        {
+          "id": "nmb-glass-bay",
+          "kind": "window-shape",
+          "where": "NMB block north front, centre: a projecting full-height glazed bay (stair) splitting the grid",
+          "approxSizeM": [
+            3.5,
+            30
+          ],
+          "plan": "simplified",
+          "seenIn": "TMX7316010203-002125_pano_0000_003332",
+          "how": "a glazed box 3.5 m wide, 0.9 m proud from the break to the roof edge on the longest north grid face, four mullions and a transom per storey"
+        },
+        {
+          "id": "deck-canopy",
+          "kind": "canopy",
+          "where": "along the Strawinskylaan deck in front of the NMB block and the ATRIUM tower: a long thin canopy on columns",
+          "approxSizeM": [
+            80,
+            0.5
+          ],
+          "plan": "modelled",
+          "seenIn": "TMX7316010203-002125_pano_0000_003332",
+          "how": "a white slab 1.8 m proud and 0.8 m deep at the deck edge (8.2 m) along every exposed north-facing deck edge of 6 m or more; no columns"
+        },
+        {
+          "id": "address-lettering",
+          "kind": "lettering",
+          "where": "NE block entrance: Strawinskylaan 3001-4129 on the glass",
+          "approxSizeM": [
+            1.5,
+            0.3
+          ],
+          "plan": "skipped",
+          "seenIn": "TMX7316010203-002125_pano_0000_003332",
+          "skip": {
+            "reason": "too-small",
+            "note": "house-number lettering under 0.3 m high on the entrance glass"
+          }
+        }
+      ],
+      "note": "Strawinskylaan front, rectified 2016 (construction) and 2021 (alt). East to west: the north-east banded block (246549) with its bronze floor slabs, the 1974 NMB grid-glass block with its cantilevered upper storeys and projecting glazed bay, the granite cores, the canopy along the deck; the glazed entrance lobby with the ATRIUM letters on the canopy at the west end (w04); the banded tower seen above it is the Zuidtoren behind."
+    },
+    {
+      "tag": "w02-267",
+      "bearing": 267,
+      "lengthM": 97.8,
+      "centre": [
+        4.8687265,
+        52.3400705
+      ],
+      "evidence": "photo",
+      "panoId": "recording_2024-09-03_05-15-44_00043",
+      "capturedAt": "2024-09-03",
+      "checked": true,
+      "items": [
+        {
+          "id": "zuid-bronze-slabs",
+          "kind": "other",
+          "where": "Zuidtoren, all 16 floors: bronze slab edges round the rounded corners; on alternate groups of floors the slab stops short of a corner so the curved glass shows",
+          "approxSizeM": [
+            37,
+            0.45
+          ],
+          "plan": "modelled",
+          "seenIn": "recording_2024-09-03_05-15-44_00043",
+          "how": "slabBandPlan.slabBandOutline per floor on the tower ring; the short floors read off this panorama and Commons Strawinsky 02/11"
+        },
+        {
+          "id": "zuid-curved-glass",
+          "kind": "window-shape",
+          "where": "Zuidtoren corners: curved glass corners behind the slabs, mullions about 1.5 m on the straight faces",
+          "approxSizeM": [
+            4,
+            60
+          ],
+          "plan": "modelled",
+          "seenIn": "recording_2024-09-03_05-15-44_00043",
+          "how": "glass shell on the rounded ring, dark mullion fins from slabBandPlan.mullionStations on straight faces only"
+        },
+        {
+          "id": "core-logo-panel",
+          "kind": "relief",
+          "where": "granite core facing Parnassusweg, top: the NMB/ING emblem panel (a stylised T in a circle) and a small arched window lower down",
+          "approxSizeM": [
+            2.5,
+            2.5
+          ],
+          "plan": "simplified",
+          "seenIn": "recording_2024-09-03_05-15-44_00043",
+          "how": "a pale ring and bar relief panel 0.08 m proud on the core"
+        },
+        {
+          "id": "zuid-glazed-base",
+          "kind": "window-shape",
+          "where": "Zuidtoren ground storey: double-height glazed base under the first slab",
+          "approxSizeM": [
+            37,
+            7
+          ],
+          "plan": "modelled",
+          "seenIn": "recording_2024-09-03_05-15-44_00043",
+          "how": "glass shell with mullion fins; the first slab at 6.6 m"
+        }
+      ],
+      "note": "Parnassusweg front (2024): the Zuidtoren (bronze slabs, curved glass corners), the granite core with the NMB logo panel and a small arched window, the NMB grid block behind it, the glazed ground storey along the plinth."
+    },
+    {
+      "tag": "w03-177",
+      "bearing": 177,
+      "lengthM": 48.3,
+      "centre": [
+        4.8695255,
+        52.3404235
+      ],
+      "evidence": "photo",
+      "panoId": "commons:File:Zuidas Strawinsky 04.jpg",
+      "capturedAt": "2021-05-12",
+      "checked": true,
+      "items": [
+        {
+          "id": "core-arched-windows",
+          "kind": "window-shape",
+          "where": "granite cores, top storeys on the south and east: large segmental-arched glazed windows in the granite",
+          "approxSizeM": [
+            5,
+            4
+          ],
+          "plan": "modelled",
+          "seenIn": "Commons File:Zuidas Strawinsky 04.jpg (CC BY-SA 4.0, 2021-05-12)",
+          "how": "arch-headed glass panels set 0.06 m proud on the core faces (archSlab)"
+        },
+        {
+          "id": "cms-sign",
+          "kind": "sign",
+          "where": "Zuidtoren west face, top storey: CMS tenant lettering",
+          "approxSizeM": [
+            2,
+            1
+          ],
+          "plan": "skipped",
+          "seenIn": "Commons File:Zuidas Strawinsky 02.jpg (CC BY-SA 4.0, 2021-05-12)",
+          "skip": {
+            "reason": "temporary",
+            "note": "tenant sign, changes with the tenant; under 2 m"
+          }
+        },
+        {
+          "id": "zuid-short-slabs-south",
+          "kind": "other",
+          "where": "Zuidtoren south face: slabs short of the east corner on two groups of storeys, short of the west corner on others",
+          "approxSizeM": [
+            37,
+            0.45
+          ],
+          "plan": "modelled",
+          "seenIn": "Commons File:Zuidas Strawinsky 02.jpg (CC BY-SA 4.0, 2021-05-12)",
+          "how": "partial slabBandOutline ranges per floor"
+        }
+      ],
+      "note": "No panorama; the south side is seen from Clara Schumannstraat in Commons Zuidas Strawinsky 02 and 04 (2021): the Zuidtoren south face with short slabs (CMS sign on the west face), the granite cores with large arched glazed windows at the top, the grid-glass lower block."
+    },
+    {
+      "tag": "w04-357",
+      "bearing": 357,
+      "lengthM": 30,
+      "centre": [
+        4.868903,
+        52.340517
+      ],
+      "evidence": "photo",
+      "panoId": "recording_2024-09-02_09-15-33_01297",
+      "capturedAt": "2024-09-02",
+      "checked": true,
+      "items": [
+        {
+          "id": "atrium-letters",
+          "kind": "lettering",
+          "where": "lobby entrance on Strawinskylaan: ATRIUM in dark capitals standing on the canopy over the deck edge",
+          "approxSizeM": [
+            7,
+            0.9
+          ],
+          "plan": "modelled",
+          "seenIn": "recording_2024-09-02_09-15-33_01297",
+          "how": "letters() 0.14 m deep in dark, 7 x 0.9 m (camera-matched on the w04 review overlay), standing on the canopy top over x = -47 (the lobby entrance)"
+        },
+        {
+          "id": "north-canopy",
+          "kind": "canopy",
+          "where": "lobby entrance: the canopy slab along the deck edge over the glazed lobby",
+          "approxSizeM": [
+            22,
+            0.7
+          ],
+          "plan": "modelled",
+          "seenIn": "recording_2024-09-02_09-15-33_01297",
+          "how": "the deck-canopy slab (white, 1.8 m proud, 0.8 m deep) runs on over the lobby; the lobby is its 3DBAG prism in glass with slim mullions every 1.5 m and a transom at 4.3 m"
+        },
+        {
+          "id": "stone-joint",
+          "kind": "other",
+          "where": "between the NMB grid block and the Zuidtoren: the granite-clad shaft",
+          "approxSizeM": [
+            4,
+            40
+          ],
+          "plan": "simplified",
+          "seenIn": "recording_2024-09-02_09-15-33_01297",
+          "how": "the 3DBAG shaft prism (roof above 40 m west of x = -26) in granite, emblem panel and small arched window on its west face"
+        }
+      ],
+      "note": "Strawinskylaan at Parnassusweg (2024-09-02): ATRIUM letters standing on the canopy over the two-storey glazed entrance lobby (pand 246582, 3DBAG 8.6 m); the banded tower above it is the Zuidtoren behind (its angular size fits the 32 m north face 80-100 m off, and the 2024 Parnassusweg panorama shows no tower on 246582); the NMB grid block on the left with its cantilever."
+    },
+    {
+      "tag": "w05-86",
+      "bearing": 86,
+      "lengthM": 22.4,
+      "centre": [
+        4.870669,
+        52.3404935
+      ],
+      "evidence": "photo",
+      "panoId": "TMX7316010203-002918_pano_0013_000635",
+      "capturedAt": "2023-01-05",
+      "checked": true,
+      "items": [
+        {
+          "id": "ne-east-slabs",
+          "kind": "other",
+          "where": "north-east block east end: the bronze slabs return round the rounded corner",
+          "approxSizeM": [
+            22,
+            0.45
+          ],
+          "plan": "modelled",
+          "seenIn": "TMX7316010203-002918_pano_0013_000635",
+          "how": "the same full and partial slab bands on the 246549 ring"
+        },
+        {
+          "id": "service-enclosure",
+          "kind": "other",
+          "where": "street level by the east end: a temporary grey enclosure",
+          "approxSizeM": [
+            12,
+            3
+          ],
+          "plan": "skipped",
+          "seenIn": "TMX7316010203-002918_pano_0013_000635",
+          "skip": {
+            "reason": "temporary",
+            "note": "site/service enclosure"
+          }
+        }
+      ],
+      "note": "East end of the north-east block (2023): bronze slabs round the corner, glazed storeys, a service enclosure at street level."
+    },
+    {
+      "tag": "w06-267",
+      "bearing": 267,
+      "lengthM": 17.2,
+      "centre": [
+        4.8698865,
+        52.34036
+      ],
+      "evidence": "photo",
+      "panoId": "recording_2024-09-02_09-15-33_01053",
+      "capturedAt": "2024-09-02",
+      "checked": true,
+      "items": [],
+      "note": "West plinth behind trees (2024): glazed ground storey, nothing else visible."
+    },
+    {
+      "tag": "w07-177",
+      "bearing": 177,
+      "lengthM": 15.7,
+      "centre": [
+        4.870009,
+        52.3402875
+      ],
+      "evidence": "inferred",
+      "panoId": null,
+      "capturedAt": null,
+      "checked": true,
+      "items": [],
+      "note": "Inner south face of the garage behind the 1974 block, no photo: plain shell."
+    },
+    {
+      "tag": "w08-86",
+      "bearing": 86,
+      "lengthM": 9.9,
+      "centre": [
+        4.870689,
+        52.3403485
+      ],
+      "evidence": "inferred",
+      "panoId": null,
+      "capturedAt": null,
+      "checked": true,
+      "items": [],
+      "note": "Short east face of the garage at the courtyard, no photo: plain shell."
+    }
+  ],
+  "sources": [
+    {
+      "name": "Gemeente Amsterdam panoramas",
+      "url": "https://api.data.amsterdam.nl/panorama/",
+      "licence": "CC BY 4.0"
+    }
+  ]
+}

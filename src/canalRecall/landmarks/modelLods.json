@@ -1314,10 +1314,10 @@
   "triangles": 5470
  },
  "symphony": {
-  "sourceHash": "d3f9794a44b978f8",
+  "sourceHash": "29641e783661205c",
   "buildVersion": 2,
-  "bytes": 80372,
-  "triangles": 4226
+  "bytes": 85852,
+  "triangles": 4508
  },
  "ij-toren": {
   "sourceHash": "d48b974d8b575c11",
@@ -2404,5 +2404,23 @@
   "buildVersion": 2,
   "bytes": 93180,
   "triangles": 5756
+ },
+ "atrium-zuidas": {
+  "sourceHash": "7fc3bc7fd7679a8d",
+  "buildVersion": 2,
+  "bytes": 102844,
+  "triangles": 5288
+ },
+ "xavier-zuidas": {
+  "sourceHash": "31a5b4dee14b6083",
+  "buildVersion": 2,
+  "bytes": 100248,
+  "triangles": 5366
+ },
+ "sint-nicolaaslyceum": {
+  "sourceHash": "aa0f42f6838e1b25",
+  "buildVersion": 2,
+  "bytes": 38724,
+  "triangles": 1852
  }
 }

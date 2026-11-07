@@ -111,6 +111,13 @@ export type PunchedOptions = {
   glass: string; ground?: string;
   crenel?: string;            // merlons along a flat wall top
   margin?: number; minTop?: number;
+  /**
+   * Proud brick piers on every axis boundary, so the facade reads as deep vertical fins with the glazing set back
+   * between them (Symphony, Zuidas: Commons "Amsterdam Symphony Towers", 2021). `depth` is how far the pier face
+   * stands off the wall (it must clear the band and stripe, 0.16 / 0.22 m); `crenelH` lifts every pier that far above a
+   * flat wall top, the merlon row of the tower crowns. Omitted: nothing is added (byte-identical output).
+   */
+  pier?: {colour: string; depth: number; crenelH?: number; gap?: number};
 };
 
 /**
@@ -158,6 +165,18 @@ export function punchedFacade(b: BuildingTools, w: Wall, o: PunchedOptions) {
         }
         run = null;
       }
+    }
+  }
+  // proud piers between the glazed axes, from the top of the ground storey to the wall top (plus the merlon lift)
+  if (o.pier) {
+    const pw = pitch - o.winW - 2 * (o.pier.gap ?? 0.05), y0 = Math.max(w.base, o.y0);
+    const flat = Math.abs(top(1) - top(w.length - 1)) < 0.3;
+    for (let i = 0; i <= n; i++) {
+      const t = i === 0 ? m - pitch / 2 + pw / 2 : i === n ? w.length - m + pitch / 2 - pw / 2 : m + pitch * i;
+      // end piers stop 6 cm short of the wall ends: flush, their sunk sides would lie in the next face's wall plane
+      const tt = Math.max(pw / 2 + 0.06, Math.min(w.length - pw / 2 - 0.06, t)), yTop = top(tt);
+      if (yTop - y0 < 2) continue;
+      slab(b, f, tt, y0, pw, yTop - y0 + (flat ? o.pier.crenelH ?? 0 : 0), o.pier.depth, o.pier.colour);
     }
   }
   // crenellated parapet along a flat top

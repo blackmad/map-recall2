@@ -1,0 +1,18 @@
+{
+ "id": "sint-nicolaaslyceum",
+ "countedBy": "fork lane b of #237 (opus) from the city panorama recording_2025-09-29_14-53-32_01103 (CC BY 4.0; brief crop artifacts/landmark-briefs/sint-nicolaaslyceum/w02-357.jpg) before comparing to the model.",
+ "facades": [
+  {
+   "name": "north front, west run (west of the atrium)",
+   "bearing": 0,
+   "photo": "artifacts/landmark-briefs/sint-nicolaaslyceum/w02-357.jpg",
+   "span": [-2.0, 12.0],
+   "heightM": [0, 21.5],
+   "frontDepth": 18.8,
+   "depthBand": 2,
+   "rows": [1, 1, 1, 1, 1, 1],
+   "openings": ["glass"],
+   "note": "the tall glazed ground storey and five ribbon-window storeys between the concrete bands; each ribbon runs unbroken behind slim pale frames (one opening per storey)"
+  }
+ ]
+}

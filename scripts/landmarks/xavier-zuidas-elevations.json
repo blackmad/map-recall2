@@ -1,0 +1,121 @@
+{
+ "id": "xavier-zuidas",
+ "countedBy": "fork lane b of #237 (opus) from Wikimedia Commons File:Zuidas_Mahler_08.jpg (MrAronymous, 2021-05-12, CC BY-SA 4.0; north and west faces) and city panorama 2025-09-29 (CC BY 4.0, east face from the north-east, /tmp crop xav-2025-09-29-b71-d100) before comparing to the model. Tier 1 only (storeys 1-7 above the podium slab), where the photos resolve every axis.",
+ "facades": [
+  {
+   "name": "north face tier 1, east window run (Gustav Mahlerlaan)",
+   "bearing": 0,
+   "photo": "artifacts/landmark-briefs/xavier-zuidas/commons-Zuidas_Mahler_08.jpg",
+   "heightM": [
+    8.0,
+    30.3
+   ],
+   "depthBand": 3,
+   "openings": [
+    "glass"
+   ],
+   "span": [
+    -11.9,
+    -2.5
+   ],
+   "rows": [
+    3,
+    3,
+    3,
+    3,
+    3,
+    3,
+    3
+   ],
+   "columns": 3,
+   "note": "the three window axes east of the loggias"
+  },
+  {
+   "name": "north face tier 1, west window run (Gustav Mahlerlaan)",
+   "bearing": 0,
+   "photo": "artifacts/landmark-briefs/xavier-zuidas/commons-Zuidas_Mahler_08.jpg",
+   "heightM": [
+    8.0,
+    30.3
+   ],
+   "depthBand": 3,
+   "openings": [
+    "glass"
+   ],
+   "span": [
+    7.2,
+    29.2
+   ],
+   "rows": [
+    7,
+    7,
+    7,
+    7,
+    7,
+    7,
+    7
+   ],
+   "columns": 7,
+   "note": "the seven window axes west of the loggias"
+  },
+  {
+   "name": "west face tier 1, south window run",
+   "bearing": 270,
+   "photo": "artifacts/landmark-briefs/xavier-zuidas/commons-Zuidas_Mahler_08.jpg",
+   "heightM": [
+    8.0,
+    30.3
+   ],
+   "depthBand": 2,
+   "openings": [
+    "glass"
+   ],
+   "frontDepth": 29.4,
+   "span": [
+    -9.6,
+    -2.35
+   ],
+   "rows": [
+    3,
+    3,
+    3,
+    3,
+    3,
+    3,
+    3
+   ],
+   "columns": 3,
+   "note": "the three window axes south of the balcony stack (Mahler 08)"
+  },
+  {
+   "name": "east face tier 1, south window run",
+   "bearing": 90,
+   "photo": "artifacts/landmark-briefs/xavier-zuidas/pano-2025-09-29-ne.jpg",
+   "heightM": [
+    8.0,
+    30.3
+   ],
+   "depthBand": 2,
+   "openings": [
+    "glass"
+   ],
+   "frontDepth": 12.1,
+   "span": [
+    2.45,
+    8.85
+   ],
+   "rows": [
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2
+   ],
+   "columns": 2,
+   "note": "the two window axes south of the balcony stack (panorama 2025-09-29 from the north-east)"
+  }
+ ],
+ "note": "Each facade is one run of equal windows: the loggias (north) and the balcony doors (east, west) are a different opening class that the rhythm audit would read as off-size; they are checked in the inventory (n-loggias, w-/e-balcony-stack). Counted on the photos: north 3 + 3 loggias + 7, west 1 + stack + 3, east 2 + stack + 1."
+}

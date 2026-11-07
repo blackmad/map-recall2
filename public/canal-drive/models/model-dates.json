@@ -311,6 +311,16 @@
       "version": "14d55379962ee840",
       "dateSource": "asset-update"
     },
+    "atrium-zuidas": {
+      "updatedAt": "2026-11-06T23:50:14.035Z",
+      "version": "7fc3bc7fd7679a8d",
+      "dateSource": "asset-update"
+    },
+    "atrium-zuidas.lod1": {
+      "updatedAt": "2026-11-06T23:50:40.634Z",
+      "version": "d005f242d22242da",
+      "dateSource": "asset-update"
+    },
     "auschwitz-monument": {
       "updatedAt": "2026-10-13T22:52:13.729Z",
       "version": "e0f0358e0880e8ba",
@@ -3501,6 +3511,16 @@
       "version": "178ee7e1bc47fce0",
       "dateSource": "asset-update"
     },
+    "sint-nicolaaslyceum": {
+      "updatedAt": "2026-11-06T23:50:16.580Z",
+      "version": "aa0f42f6838e1b25",
+      "dateSource": "asset-update"
+    },
+    "sint-nicolaaslyceum.lod1": {
+      "updatedAt": "2026-11-07T02:26:03.561Z",
+      "version": "e9da88f0b5a9e442",
+      "dateSource": "asset-update"
+    },
     "sint-olofskapel": {
       "updatedAt": "2026-10-19T19:27:00.480Z",
       "version": "99b0b0daaa02c5f0",
@@ -3627,13 +3647,13 @@
       "dateSource": "asset-update"
     },
     "symphony": {
-      "updatedAt": "2026-10-20T10:37:08.157Z",
-      "version": "d3f9794a44b978f8",
+      "updatedAt": "2026-11-06T23:48:02.543Z",
+      "version": "29641e783661205c",
       "dateSource": "asset-update"
     },
     "symphony.lod1": {
-      "updatedAt": "2026-10-23T20:23:30.725Z",
-      "version": "5fd58cb6a35b9551",
+      "updatedAt": "2026-11-06T23:48:56.734Z",
+      "version": "6d14a654190f37d7",
       "dateSource": "asset-update"
     },
     "telefooncentrale-spuistraat": {
@@ -4224,6 +4244,16 @@
     "wtc-amsterdam.lod1": {
       "updatedAt": "2026-11-02T01:45:02.433Z",
       "version": "7e3afa42855fff29",
+      "dateSource": "asset-update"
+    },
+    "xavier-zuidas": {
+      "updatedAt": "2026-11-06T23:26:54.262Z",
+      "version": "31a5b4dee14b6083",
+      "dateSource": "asset-update"
+    },
+    "xavier-zuidas.lod1": {
+      "updatedAt": "2026-11-06T23:27:28.866Z",
+      "version": "80198c7c1377636b",
       "dateSource": "asset-update"
     },
     "y-helling": {
