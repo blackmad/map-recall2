@@ -70,9 +70,14 @@ function cornice(acc: Acc, f: Face, top: number) {
   [[top - 2.1, top - 1.85, 0.09], [top - 1.5, top - 1.25, 0.18], [top - 0.95, top - 0.7, 0.27], [top - 0.4, top, 0.36]].forEach(([y0, y1, o]) => bar(acc, 'brick', f, -0.02, f.L + 0.02, y0, y1, 0, o));
 }
 /** White-framed multi-pane windows: openings with white reveals, a grid of white bars, a stone sill. */
-function windowRow(acc: Acc, f: Face, ops: Op[], cols: number, rows: number) {
+function windowRow(acc: Acc, f: Face, ops: Op[], cols: number, rows: number, frame = true) {
   for (const o of ops) {
     glazing(acc, f, o, 'white', cols, rows);
+    // the bold white frame round every opening (the sheet's w01 row: thin bars alone read as dark holes)
+    const w = 0.1, d = -0.08, front = 0.05;
+    if (frame) bar(acc, 'white', f, o.t0, o.t0 + w, o.y0, o.y1, d, front, true);
+    if (frame) bar(acc, 'white', f, o.t1 - w, o.t1, o.y0, o.y1, d, front, true);
+    if (frame) bar(acc, 'white', f, o.t0 + w, o.t1 - w, o.y1 - w, o.y1, d, front, true);
     bar(acc, 'greyBrick', f, o.t0 - 0.08, o.t1 + 0.08, o.y0 - 0.16, o.y0, 0, 0.1);
   }
 }
@@ -237,12 +242,12 @@ function wingsAndEnds(acc: Acc, b: BuildingTools) {
     for (const [cc, out] of [[e.c1, N], [e.c0, NEG(N)]] as [number, PlanPoint][]) {
       const f = F(e.a0, cc, e.a1, cc, out), ops: Op[] = [];
       for (const [y0, y1] of [[0.35, 1.25], [2.9, 5.7], [6.9, 9.5], [10.8, 12.9]] as [number, number][]) for (const d of [-1.6, 1.6]) ops.push(win(f.L / 2 + d - 1.0, f.L / 2 + d + 1.0, y0, y1, y0 < 1 ? 0.18 : 0.22));
-      wall(acc, f, 0, e.h, 'brick', ops); windowRow(acc, f, ops, 3, 3); cornice(acc, f, e.h);
+      wall(acc, f, 0, e.h, 'brick', ops); windowRow(acc, f, ops, 3, 3, false); cornice(acc, f, e.h);
     }
     // the street end (w12): five windows a storey
     { const f = F(x, e.c0, x, e.c1, outA), ops: Op[] = [], n = 5, bw = f.L / n;
       for (let k = 0; k < n; k++) for (const [y0, y1] of [[0.35, 1.25], [2.9, 5.7], [6.9, 9.5], [10.8, 12.9]] as [number, number][]) ops.push(win((k + 0.5) * bw - 0.95, (k + 0.5) * bw + 0.95, y0, y1, y0 < 1 ? 0.18 : 0.22));
-      wall(acc, f, 0, e.h, 'brick', ops); windowRow(acc, f, ops, 3, 3); cornice(acc, f, e.h); }
+      wall(acc, f, 0, e.h, 'brick', ops); windowRow(acc, f, ops, 3, 3, false); cornice(acc, f, e.h); }
     // the inner end: blank where the wing stands against it, brick above and beside it
     const fi = (c0: number, c1: number) => F(inner, c0, inner, c1, NEG(outA));
     wall(acc, fi(w.c0, w.c1), w.h, e.h, 'brick', []);
