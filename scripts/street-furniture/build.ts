@@ -40,10 +40,14 @@ export function buildRecords(): { records: FurnitureRecord[]; rejected: Record<s
     if (c.status === 2) { reject('container: planned (status 2)'); continue; }
     if (c.geometrie?.type !== 'Point') { reject('container: no geometry'); continue; }
     const t = types.get(c.typeId);
-    if (t?.containertypeContainerType !== 'UNDERGROUND') { reject(`container: ${t?.containertypeContainerType ?? 'unknown type'} (not an underground container top)`); continue; }
+    // Above ground: only the Engels BG boxes ("… BG 2100*1470*1778 (Engels)", "… BG", "Engels, upperground"); garden
+    // baskets (Tuinkorf) and Weesp GFT bins have no model.
+    const above = t?.containertypeContainerType === 'ABOVE_GROUND' && /\bBG\b|upperground/i.test(t?.naam ?? '');
+    if (t?.containertypeContainerType !== 'UNDERGROUND' && !above) { reject(`container: ${t?.containertypeContainerType ?? 'unknown type'} (not an underground top or a BG box)`); continue; }
     const [lng, lat] = proj4(RD, 'EPSG:4326', c.geometrie.coordinates).map(r7);
     if (!insideBox(lng, lat)) { reject('container: outside the city box'); continue; }
     const r: FurnitureRecord = { id: `afval-${c.id}`, kind: 'container', subtype: containerSubtype(c.fractieOmschrijving), lng, lat, cluster: c.clusterId ?? `loc-${c.locatieId}`, fraction: c.fractieOmschrijving ?? null, volume: Number.isFinite(t.volumeM3) ? t.volumeM3 : null };
+    if (above) r.form = 'above';
     orient(r); out.push(r);
   }
   // Row direction: a cluster of two or more lies along its own principal axis (the measured positions), not the street's.

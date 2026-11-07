@@ -11,7 +11,7 @@ import type { FurnitureRecord } from './extract.ts';
 /** Triangle counts per model: a change here is a deliberate geometry change (update with the reason). */
 // container 114 -> 150 (2026-11-07: full width, corner strips, door, pictogram, crosses); 52 -> 114 (#212): the hexagonal hood, the recess between cheeks with the rest drum (glass: round hole 104,
 // paper: slot and flap 102), lip, top sticker, two-disc mushroom.
-const TRIANGLES: Record<string, number> = { container: 150, 'container-rest': 136, 'container-glas': 140, 'container-papier': 133, 'lamp-lantern': 74, 'lamp-pole': 92, bin: 94, 'bike-rack': 40, abri: 86, 'ad-column': 90 };
+const TRIANGLES: Record<string, number> = { container: 150, 'container-rest': 136, 'container-bg': 154, 'container-glas': 140, 'container-papier': 133, 'lamp-lantern': 74, 'lamp-pole': 92, bin: 94, 'bike-rack': 40, abri: 86, 'ad-column': 90 };
 
 test('every model stays within the per-kind triangle cap and its recorded count', () => {
   for (const id of FURNITURE_MODEL_IDS) {
@@ -62,6 +62,10 @@ test('rest columns take the drum or the flap per cluster, at the measured share'
   assert.ok(Math.abs(drum / 2000 - CONTAINER_DRUM_SHARE) < 0.04, `drum share ${drum / 2000}`);
   assert.equal(containerModelId('gft', 'c1'), 'container');
   assert.equal(containerModelId('glas', 'c1'), 'container-glas');
+  // Above-ground (BG) boxes keep their own model whatever the fraction (189468 / 203765, Nassaukade / Da Costakade).
+  for (const f of ['rest', 'papier', 'glas', 'textiel']) assert.equal(containerModelId(f, 'c1', 'above'), 'container-bg');
+  const bg = FURNITURE_MODELS['container-bg']();
+  assert.ok(Math.abs(bg.heightM - (DIMENSIONS.containerBg.height + DIMENSIONS.container.handleH)) < 0.01, `bg height ${bg.heightM}`);
   assert.equal(instancesOf(rec({ subtype: 'papier' }))[0].model, 'container-papier');
   for (const subtype of ['rest', 'gft', 'textiel', 'unknown']) assert.equal(instancesOf(rec({ subtype }))[0].model, 'container', subtype);
 });
@@ -127,6 +131,14 @@ test('container clusters stand in one straight row, plates apart, fronts one way
     { id: 'b', kind: 'container', subtype: 'rest', lng: 4.9, lat: 52.37 + 3 / 110540, cluster: 'x', heading: 90, facing: 0 },
   ]);
   assert.ok(Math.abs((two[1].lat - two[0].lat) * 110540 - 3) < 0.01);
+  // Two above-ground boxes registered 0.5 m apart stand a box length apart (ROW_PITCH_ABOVE_M), not overlapping.
+  const { ROW_PITCH_ABOVE_M } = await import('./placement.ts');
+  const kx52 = 111320 * Math.cos(52.37 * Math.PI / 180);
+  const bgRow = alignContainerRows([
+    { id: 'afval-189468', kind: 'container', subtype: 'rest', lng: 4.9, lat: 52.37, cluster: 'bg', heading: 90, facing: 0, form: 'above' },
+    { id: 'afval-203765', kind: 'container', subtype: 'rest', lng: 4.9 + 0.5 / kx52, lat: 52.37, cluster: 'bg', heading: 90, facing: 0, form: 'above' },
+  ]);
+  assert.ok(Math.abs((bgRow[1].lng - bgRow[0].lng) * kx52) >= ROW_PITCH_ABOVE_M - 1e-6);
 });
 
 test('furniture stands on the pavement planes, not under them (user 2026-11-07: plates "still sunk a bit")', async () => {

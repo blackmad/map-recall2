@@ -3,8 +3,8 @@
  "category": "street-furniture",
  "generator": "scripts/street-furniture/export-models.ts",
  "extract": "public/data/extracts/amsterdam/street-furniture",
- "extractRetrievedAt": "2026-11-01T20:10:17.348Z",
- "instances": 135140,
+ "extractRetrievedAt": "2026-11-07T19:13:24.888Z",
+ "instances": 135987,
  "models": [
   {
    "id": "container",
@@ -15,7 +15,7 @@
    "modelUrl": "./models/street-furniture/container.glb",
    "triangles": 150,
    "glbBytes": 17100,
-   "instances": 3130,
+   "instances": 3122,
    "source": "Gemeente Amsterdam huishoudelijkafval register (active, UNDERGROUND) + BGT bak/afvalbak; the Amsterdam Standaard column (#212)",
    "measured": [
     "column 1.19 m (1.16-1.22 m, four panoramas)",
@@ -49,7 +49,7 @@
    "modelUrl": "./models/street-furniture/container-rest.glb",
    "triangles": 136,
    "glbBytes": 15604,
-   "instances": 5989,
+   "instances": 5994,
    "source": "Gemeente Amsterdam huishoudelijkafval register: fractieOmschrijving Rest; drum or flap is not in the register (2026-11-07)",
    "measured": [
     "the same column with a plain throw-in flap over the whole slope, a pull bar across its lower third",
@@ -68,6 +68,27 @@
    }
   },
   {
+   "id": "container-bg",
+   "name": "Above-ground container (BG box)",
+   "kind": "container",
+   "category": "street-furniture",
+   "subtypes": "rest, papier, glas, textiel (register ABOVE_GROUND \"BG\" types, Engels)",
+   "modelUrl": "./models/street-furniture/container-bg.glb",
+   "triangles": 154,
+   "glbBytes": 17544,
+   "instances": 895,
+   "source": "Gemeente Amsterdam huishoudelijkafval register: containertype \"3,5m3 KHC … BG 2100*1470*1778 (Engels)\" and \"… BG\" (2026-11-07)",
+   "measured": [
+    "2.10 x 1.47 x 1.78 m from the register type name",
+    "galvanised base frame and corner posts, top chamfered all round, hatch high on the long face left of centre, pictogram under it and on the end (189468 / 203765 at Nassaukade and Da Costakade, the user's photo; 216117 panorama)"
+   ],
+   "prior": [
+    "hatch 0.58 x 0.30 m",
+    "chamfer 0.16 m"
+   ],
+   "photo": null
+  },
+  {
    "id": "container-glas",
    "name": "Underground container top (glass)",
    "kind": "container",
@@ -76,7 +97,7 @@
    "modelUrl": "./models/street-furniture/container-glas.glb",
    "triangles": 140,
    "glbBytes": 16036,
-   "instances": 1474,
+   "instances": 1475,
    "source": "Gemeente Amsterdam huishoudelijkafval register: fractieOmschrijving Glas (#212)",
    "measured": [
     "the same column with one round throw-in hole (~0.20 m) in the slope under the yellow band",
@@ -101,7 +122,7 @@
    "modelUrl": "./models/street-furniture/container-papier.glb",
    "triangles": 133,
    "glbBytes": 15288,
-   "instances": 2666,
+   "instances": 2665,
    "source": "Gemeente Amsterdam huishoudelijkafval register: fractieOmschrijving Papier (#212)",
    "measured": [
     "the same column: wide dark slot on the slope under the blue band, light flap below",
@@ -157,7 +178,7 @@
    "modelUrl": "./models/street-furniture/lamp-pole.glb",
    "triangles": 92,
    "glbBytes": 10836,
-   "instances": 113661,
+   "instances": 113616,
    "source": "BGT paal/lichtmast",
    "measured": [
     "7.6 m to the curl on a residential Pijp street",

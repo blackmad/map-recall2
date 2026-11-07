@@ -9,4 +9,6 @@ export const SPOTS = [
   { name: 'pijp-lamps', stand: { lng: 4.895686, lat: 52.354935, bearing: 22 }, object: [4.8956506, 52.3549939], pano: 'recording_2025-07-15_09-44-59_01996' },
   // Nassaukade tram stop: the abri measured for the model.
   { name: 'nassaukade-abri', stand: { lng: 4.871059, lat: 52.381369, bearing: 88 }, object: [4.8711731, 52.3813721], pano: '2025_10_02_06_52_49_00943' },
+  // Nassaukade at the Da Costakade end (user photo 2026-11-07): two above-ground BG boxes, afval-189468 and afval-203765.
+  { name: 'nassaukade-bg-boxes', stand: { lng: 4.874144, lat: 52.372973, bearing: 68 }, object: [4.874238, 52.372997], pano: 'b_20241211_0838_Track65_Sphere_00006' },
 ] as const;
