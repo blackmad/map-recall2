@@ -61,7 +61,7 @@ export interface LandmarkLodRecord {
 export type LandmarkLodEntry = Partial<LandmarkLodRecord> & { lod2?: LandmarkLodRecord };
 
 /** Bump to force every lod2 to rebuild after the lod2 build parameters change. */
-export const LOD2_BUILD_VERSION = 4;
+export const LOD2_BUILD_VERSION = 5;
 /** Target share of the source triangles; the error bound below stops the simplifier first on detailed models. */
 export const LOD2_TRIANGLE_RATIO = 0.02;
 /**
@@ -84,6 +84,8 @@ export const LOD2_CAP_ERROR_M = 3;
  */
 export const LOD2_MAX_ERROR_M_BY_ID: Readonly<Record<string, number>> = {
   'centraal-station': 0.5, westerkerk: 0.5, rijksmuseum: 0.5,
+  // The open lantern is thin columns: at 0.75 m (the guard's bound) the shaft squares off and the lantern goes.
+  'munttoren-amsterdam': 0.2,
 };
 /**
  * Silhouette guard (build-landmark-lods.ts lostSurfaceShare): when more than LOD2_GUARD_SHARE of the sampled source
