@@ -237,11 +237,11 @@
       },
       "reportOnly": true,
       "measured": {
-        "desktop": 124.8,
+        "desktop": 118.3,
         "iphone": 100.1
       },
       "unit": "ms frame p99, worst 5 s window of the aerial pan (median window: 100 desktop / 51 iPhone)",
-      "note": "RED on desktop (124.8 worst window, median window 83.3; frames > 100: 38), iPhone 100.1 against the 80 target (median window 50.3, frames > 100: 15); recorded report-only, NOT a passing gate. R3-F (#241) removed the CPU owners: building bases absent while aerial, game frame sum over the worst frames 831 -> 191 ms desktop / 697 -> 154 iPhone, labels worst 88 -> 53 / 15 -> 4 ms. The residual is GPU/compositor-bound: LoAF records 0-4 main-thread frames > 100 ms per run against 31-49 rAF intervals; long windows track draw count (1,035-1,313 vs ~650), landmarks own 1,327 of 1,654 draws at the desktop peak (80 %), own-ground owns the iPhone draws (388-510). Next levers: landmark aerial LOD / batching (proposed R4-B), R4-A coarse tier for the facade share.",
+      "note": "RED on desktop (124.8 worst window, median window 83.3; frames > 100: 38), iPhone 100.1 against the 80 target (median window 50.3, frames > 100: 15); recorded report-only, NOT a passing gate. R3-F (#241) removed the CPU owners: building bases absent while aerial, game frame sum over the worst frames 831 -> 191 ms desktop / 697 -> 154 iPhone, labels worst 88 -> 53 / 15 -> 4 ms. The residual is GPU/compositor-bound: LoAF records 0-4 main-thread frames > 100 ms per run against 31-49 rAF intervals; long windows track draw count (1,035-1,313 vs ~650), landmarks own 1,327 of 1,654 draws at the desktop peak (80 %), own-ground owns the iPhone draws (388-510). Next levers: landmark aerial LOD / batching (proposed R4-B), R4-A coarse tier for the facade share. 2026-11-07 night, quiet machine, baked tier + R4-C on: worst window 118.3 and 175.0 ms in two runs (median windows 74.7 / 66.7), frames > 100: 21 / 52; flags off 183.3 / 149.9, 55 / 81.",
       "source": "lane R3-F 2026-11-07 (#241) at 79ed122ed, harness scripts/aerial-pan.mjs (npm run perf:aerial) headed installed Chrome on Metal, 3-min pan --every 5, lane defaults (groundBasesAerial, labelBudget 4 ms, labelClipTries, aerial POI thinning, sticky winners); run-to-run noise: desktop frames > 100 ranged 29-49 across eight runs of the same bundles",
       "date": "2026-11-07"
     },
@@ -286,12 +286,13 @@
       "value": 400,
       "reportOnly": true,
       "measured": {
-        "desktop": 2008,
+        "desktop": 529,
         "iphone": 1524
       },
       "unit": "max draw calls in a sampled frame of the aerial pan",
-      "note": "RED TODAY, report-only: the resident tier alone drew 1,166-2,147 before any far shell (far shells add about 150 at most); the lever is merging coarse chunks per cell in the resident tier, not the far tier.",
-      "source": "lane R2-B 2026-11-06 (#229) at 6a72b6283, scripts/aerial-pan.mjs 180 s pan, real Chrome, exclusive lock, staged world with far/ (format 6)"
+      "note": "RED TODAY, report-only: the resident tier alone drew 1,166-2,147 before any far shell (far shells add about 150 at most); the lever is merging coarse chunks per cell in the resident tier, not the far tier. 2026-11-07 night after R4-B + R4-C (chunk merge + lod2) on a quiet machine: 529 / 490 desktop against 1,371 / 1,900 with the R4-C flags off; iPhone not re-measured.",
+      "source": "lane R2-B 2026-11-06 (#229) at 6a72b6283, scripts/aerial-pan.mjs 180 s pan, real Chrome, exclusive lock, staged world with far/ (format 6)",
+      "date": "2026-11-07"
     },
     "aerialGameFrameWorstSumMs": {
       "value": {
