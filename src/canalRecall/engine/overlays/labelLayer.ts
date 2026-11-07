@@ -11,7 +11,7 @@
 
 import { framePhases } from '../framePhases';
 import { LABEL_ROOT_CLASS } from '../../labels/labelStyle';
-import { placeLabels, drawPlacedLabels, type LabelCandidate, type LabelKind, type LabelPaint, type PlacedLabel } from '../../ownMap/labels';
+import { placeLabels, drawPlacedLabels, LabelPlacement, type LabelCandidate, type LabelKind, type LabelPaint, type PlacedLabel } from '../../ownMap/labels';
 import { neighbourhoodLabelVisible, poiLabelVisible, streetLabelVisible, type LabelContext } from '../../ownMap/labelPolicy';
 import { interpolateStops, STREET_STYLE } from '../../ownMap/style';
 import { toLocal, type Vec2 } from '../../ownMap/frame';
@@ -36,6 +36,8 @@ export interface PointLabel {
   id: string; text: string; kind: LabelKind; lngLat: readonly [number, number]; priority: number; minZoom?: number;
   /** Other names of the same place (the Dutch name behind an English one): screened like `text`. */
   aliases?: readonly string[];
+  /** Still named from the air (`aerialPoisOnly`): a signature landmark, not a shop or a café. */
+  aerial?: boolean;
 }
 
 export class LabelLayer {
@@ -78,7 +80,7 @@ export class LabelLayer {
   private winners = new Set<string>();
   private fullRev = -1;
   /** Full placements (all candidates) vs re-placements of the last winners; read by the perf probe. */
-  readonly stats = { full: 0, winnersOnly: 0, skipped: 0, fullMs: 0, lastFullMs: 0, occluded: 0, betweenMs: 0, betweenSightlines: 0, candidates: 0 };
+  readonly stats = { full: 0, winnersOnly: 0, skipped: 0, fullMs: 0, lastFullMs: 0, occluded: 0, betweenMs: 0, betweenSightlines: 0, candidates: 0, slicedFrames: 0, churn: 0, lastChurn: 0 };
   /** POI labels hidden behind nearer buildings (engine/labelOcclusion.ts); null tests nothing. */
   private occludedTest: ((c: LabelCandidate) => boolean) | null = null;
   /**
@@ -88,6 +90,55 @@ export class LabelLayer {
    * at most `count` of them by priority (the game's own points first) enter a full placement.
    */
   aerialCap: { count: number } | null = null;
+  /**
+   * The full placement's per-frame budget (lane R3-F #241, `?labelBudget=0` off; null = unbudgeted): a full placement
+   * that runs past it stops with the winners so far and continues next frame (candidates in priority order, so the
+   * set it settles on is the one an unbudgeted placement picks, a frame or two later); meanwhile the last winners are
+   * re-placed as between full placements. Only without occlusion (the aerial view, `?labelOcclusion=0`): occlusion's
+   * re-placement rounds stay in one frame.
+   */
+  placeBudgetMs: number | null = null;
+  /**
+   * From the air (lane R3-F #241, the user 2026-11-07 above Sarphatipark: "way fewer labels at this zoom, maybe almost
+   * none"): map POIs are candidates only when marked `aerial` (signature landmarks); neighbourhood, water and street
+   * names and the game's own points are unaffected. The world view sets it while isAerialView holds
+   * (`?labelAerialPois=all` keeps every POI).
+   */
+  get aerialPoisOnly(): boolean { return this._aerialPoisOnly; }
+  /**
+   * From the air a neighbourhood name is placed once (lane R3-F #241): the overview gives Chassébuurt two anchors
+   * ~560 m apart (a split polygon), and both landed in the user's frame. Of the anchors in view the last winner stays,
+   * else the one nearest the view centre. Set with `aerialPoisOnly` (`?labelAerialPois=all` off).
+   */
+  hoodsOnce = false;
+  /**
+   * From the air at most this many map POIs compete (lane R3-F #241 follow-up, the user above Sarphatipark: "way fewer
+   * labels at this zoom, maybe almost none"; the signature-landmark set alone still put 34 names in the far centre
+   * band). Ranked by priority less AERIAL_POI_PER_M per metre from the view centre, so the landmarks near the
+   * camera you would tap win over a far one with a higher score (the extract's prominence puts Boom Chicago at 344
+   * over the Rijksmuseum at 309 and the Sarphatimonument at 231); the last winners rank AERIAL_POI_STICKY higher
+   * when `sticky`. Neighbourhood, water and street names and the game's points are not capped. `null`: no cap.
+   * The world view sets it while aerial (`?labelAerialPois=N` sets N, `?labelAerialPois=all` keeps every POI).
+   */
+  get aerialPoiMax(): number | null { return this._aerialPoiMax; }
+  set aerialPoiMax(n: number | null) { if (n !== this._aerialPoiMax) { this._aerialPoiMax = n; this.rev++; } }
+  private _aerialPoiMax: number | null = null;
+  set aerialPoisOnly(on: boolean) { if (on !== this._aerialPoisOnly) { this._aerialPoisOnly = on; this.rev++; } }
+  private _aerialPoisOnly = false;
+  private aerialPoiIds = new Set<string>();
+  /**
+   * Sticky winners from the air (lane R3-F #241, the user 2026-11-07 over the Amstelkanaal: "the bouncing labels at
+   * this zoom make it feel jankier"): at a full placement the last winners compete with STICKY_PRIORITY more, so a
+   * label still on screen and still admitted keeps its place unless a challenger outranks it by that margin, and new
+   * names fill the free room. Set by the world view while aerial (`?labelSticky=0` off).
+   */
+  sticky = false;
+  /** Line labels try only centres that can land on screen (ownMap/labels.ts; `?labelClipTries=0` off, lane R3-F #241). */
+  clipTries = true;
+  /** From the air while the camera moves (world view, with the budget): full placements at most this often, ms. */
+  movingCadenceMs: number | null = null;
+  /** A budgeted full placement still walking its candidates, with what it started from. */
+  private pendingFull: { placement: LabelPlacement; candidates: LabelCandidate[]; rev: number; startedAt: number; frames: number } | null = null;
   /** Between full placements: sightlines per frame, and whether street and water names are re-tested (A/B knobs). */
   readonly between = { budget: OCCLUSION_PER_FRAME, lines: true };
   /** Copies of street and water names (instanceKeys) found hidden since the last full placement. */
@@ -156,6 +207,7 @@ export class LabelLayer {
   }
   setPois(pois: PointLabel[]): void {
     this.pois = pois; this.poiById = new Map(pois.map(q => [q.id, q])); this.ctxKey = ''; this.rev++;
+    this.aerialPoiIds = new Set(pois.filter(q => q.aerial).map(q => q.id));
     if (this.lazyPolicy) { this.poiBuckets.clear(); drain(this.entries(null, 'pois', this.poiBuckets)); }
   }
   /** One idle slice of the overview's structure (~4 ms), then the next. */
@@ -261,6 +313,12 @@ export class LabelLayer {
     return w;
   }
 
+  /** Sticky winners: the last full placement's winners compete with STICKY_PRIORITY more (game points excepted). */
+  private stickied(list: LabelCandidate[]): LabelCandidate[] {
+    if (!this.sticky || !this.winners.size) return list;
+    return list.map(c => (this.winners.has(c.id) && c.priority < 1e6 ? { ...c, priority: c.priority + STICKY_PRIORITY } : c));
+  }
+
   /**
    * Draw for this frame. `frame` is the camera in own-map local metres (cameraFrame of the local centre), `bounds`
    * the visible local box, `ratio` the canvas pixel ratio.
@@ -291,7 +349,9 @@ export class LabelLayer {
     lap('rebuild');
     const rev = shows ? this.rev : -2;
     // A still camera and unchanged inputs: the canvas already holds this frame.
-    if (!resized && pose && this.drawnPose && rev === this.drawnRev && samePose(pose, this.drawnPose)) { this.stats.skipped++; return; }
+    // (A budgeted full placement still under way is finished first, still camera or not.)
+    if (!resized && pose && this.drawnPose && rev === this.drawnRev && samePose(pose, this.drawnPose) && !this.pendingFull) { this.stats.skipped++; return; }
+    const priorPose = this.drawnPose;
     this.drawnRev = rev;
     this.drawnPose = pose ?? null;
     this.ctx.setTransform(1, 0, 0, 1, 0, 0);
@@ -301,7 +361,9 @@ export class LabelLayer {
     // Which labels win only changes when the camera has moved enough (or every 400 ms while it creeps); in between
     // the last winners are re-placed at the new projection (cheap: a handful of labels, not every candidate).
     const now = performance.now();
-    const full = !pose || !this.fullPose || rev !== this.fullRev || movedEnough(pose, this.fullPose) || now - this.fullAt > 400;
+    // From the air at pan speed (`movingCadenceMs`): every 800 ms instead of every ~24 px of travel.
+    const panning = this.movingCadenceMs !== null && !!pose && !!priorPose && !samePose(pose, priorPose);
+    let full = !pose || !this.fullPose || rev !== this.fullRev || (panning ? now - this.fullAt > this.movingCadenceMs! : movedEnough(pose, this.fullPose) || now - this.fullAt > 400);
     this.zoom = zoom;
     const seen = new Set<LabelCandidate>();
     // Lazy policy: a draw before the idle slices finished the overview's structure finishes it now.
@@ -315,23 +377,66 @@ export class LabelLayer {
         for (const map of [this.buckets, this.poiBuckets]) for (const e of map.get(`${x},${y}`) ?? []) {
           const c = e.c;
           if (!((c.minZoom ?? 0) <= zoom && zoom < (c.maxZoom ?? 99))) continue;
+          if (this._aerialPoisOnly && c.kind === 'poi' && !this.aerialPoiIds.has(c.id)) continue;
           if (e.test) { if (e.rev !== this.policyRev) { e.rev = this.policyRev; e.vis = e.test(this.policyCtx!); } if (!e.vis) continue; }
           seen.add(c);
         }
+    if (this.hoodsOnce && pose) {
+      const keep = new Map<string, LabelCandidate>();
+      const d = (c: LabelCandidate) => (c.at ? Math.hypot(c.at[0] - pose[0], c.at[1] - pose[1]) : Infinity);
+      for (const c of seen) {
+        if (c.kind !== 'hood') continue;
+        const k = keep.get(c.text);
+        if (!k || (this.winners.has(c.id) && !this.winners.has(k.id)) || (this.winners.has(c.id) === this.winners.has(k.id) && d(c) < d(k))) keep.set(c.text, c);
+      }
+      for (const c of [...seen]) if (c.kind === 'hood' && keep.get(c.text) !== c) seen.delete(c);
+    }
+    if (this._aerialPoiMax !== null && pose) {
+      const pois = [...seen].filter(c => c.kind === 'poi');
+      if (pois.length > this._aerialPoiMax) {
+        for (const c of rankAerialPois(pois, pose, this.sticky ? this.winners : null).slice(this._aerialPoiMax)) seen.delete(c);
+      }
+    }
     // Game point labels always compete first (priority above every map label).
     for (const points of this.extra.values()) for (const p of points) seen.add({ id: p.id, text: p.text, kind: p.kind, priority: 1e6 + p.priority, at: toLocal(p.lngLat[0], p.lngLat[1]), minZoom: p.minZoom ?? 0 });
     const options = {
       project, width: vp.width, height: vp.height, zoom,
-      advance: (ch: string, kind: LabelCandidate['kind']) => this.advance(ch, kind), fontSize, maxDepth: frame.distance * 4, repeatDistance: 260,
+      advance: (ch: string, kind: LabelCandidate['kind']) => this.advance(ch, kind), fontSize, maxDepth: frame.distance * 4, repeatDistance: 260, clipTries: this.clipTries,
     };
-    let candidates = full ? [...seen] : [...seen].filter(c => this.winners.has(c.id));
-    this.stats.candidates = candidates.length;
-    if (cap && full && candidates.length > cap.count) candidates = candidates.sort((a, b) => b.priority - a.priority).slice(0, cap.count);
+    // Budgeted (no occlusion): a full placement is started, or a pending one continued, in slices of `placeBudgetMs`.
+    const budgeted = this.placeBudgetMs !== null && !this.occludedTest && !!pose;
+    if (!budgeted || (this.pendingFull && this.pendingFull.rev !== rev)) this.pendingFull = null;
+    let sliced: { placement: LabelPlacement; candidates: LabelCandidate[]; startedAt: number; frames: number } | null = null;
+    if (budgeted && (full || this.pendingFull)) {
+      if (!this.pendingFull) {
+        let all = this.stickied([...seen]);
+        this.stats.candidates = all.length;
+        if (cap && all.length > cap.count) all = all.sort((a, b) => b.priority - a.priority).slice(0, cap.count);
+        this.pendingFull = { placement: new LabelPlacement(all, options), candidates: all, rev, startedAt: now, frames: 0 };
+      }
+      const pf = this.pendingFull;
+      pf.frames++;
+      lap('collect (full)');
+      if (pf.placement.step(now + this.placeBudgetMs!)) { this.pendingFull = null; sliced = pf; full = true; }
+      else { full = false; this.stats.slicedFrames++; }
+      lap(full ? 'place (full)' : 'place (sliced)');
+    }
+    let candidates = full && !sliced ? this.stickied([...seen]) : sliced ? sliced.candidates : [...seen].filter(c => this.winners.has(c.id));
+    if (!sliced && !(budgeted && !full && this.pendingFull)) this.stats.candidates = candidates.length;
+    if (cap && full && !sliced && candidates.length > cap.count) candidates = candidates.sort((a, b) => b.priority - a.priority).slice(0, cap.count);
     const original = new Map(candidates.map(c => [c.id, c] as const));
     const shifted = (list: LabelCandidate[]) => list.map(c => { const at = this.drawAt.get(c.id); return at && c.at ? { ...c, at } : c; });
-    lap(full ? 'collect (full)' : 'collect');
-    this.placed = placeLabels(this.occludedTest ? shifted(candidates) : candidates, options);
-    lap(full ? 'place (full)' : 'place');
+    if (!sliced) lap(full ? 'collect (full)' : 'collect');
+    if (sliced) {
+      // Finished in its first frame: exactly the unbudgeted result. Over several frames: its winners, placed at this
+      // frame's camera (the walk projected each slice at its own frame's camera).
+      if (sliced.frames === 1) this.placed = sliced.placement.out;
+      else { const won = new Set(sliced.placement.out.map(l => l.id)); this.placed = placeLabels(candidates.filter(c => won.has(c.id)), options); }
+      lap('place (full, sliced)');
+    } else {
+      this.placed = placeLabels(this.occludedTest ? shifted(candidates) : candidates, options);
+      lap(full ? 'place (full)' : 'place');
+    }
     // Occlusion (full placements only): test the POIs that won, drop the hidden ones and place again, so the tests
     // cost a few dozen sightlines, not every candidate in view. Only POI points from the map are tested: the
     // game's own points (priority >= 1e6: the answered street, ferry landings, the destination) and the draped
@@ -400,8 +505,14 @@ export class LabelLayer {
     if (full) {
       const ms = performance.now() - now;
       this.stats.fullMs += ms; this.stats.lastFullMs = ms; this.stats.occluded = occluded;
-      this.fullPose = pose ?? null; this.fullAt = now; this.fullRev = rev;
-      this.winners = new Set(this.placed.map(l => l.id));
+      this.fullPose = pose ?? null; this.fullAt = sliced ? sliced.startedAt : now; this.fullRev = rev;
+      const next = new Set(this.placed.map(l => l.id));
+      // Churn: names that came or went between consecutive full placements (the "bouncing" the user saw from the air).
+      let churn = 0;
+      for (const id of next) if (!this.winners.has(id)) churn++;
+      for (const id of this.winners) if (!next.has(id)) churn++;
+      this.stats.churn += churn; this.stats.lastChurn = churn;
+      this.winners = next;
       this.stats.full++;
     } else this.stats.winnersOnly++;
     this.ctx.setTransform(ratio, 0, 0, ratio, 0, 0);
@@ -418,6 +529,24 @@ interface BucketEntry { readonly c: LabelCandidate; readonly test: PolicyTest | 
 /** The camera in own-map local metres: centre x, y, zoom, bearing and pitch (degrees). */
 export type LabelPose = readonly [number, number, number, number, number];
 
+/**
+ * The margin a challenger needs to take a sticky winner's place: more than a street's length term (0-999), less than
+ * a class step between a minor street and a neighbourhood name (streets 1,000-8,999, water 8,000+, hoods 9,000).
+ */
+export const STICKY_PRIORITY = 1500;
+/** Map POIs from the air (labelLayer aerialPoiMax): the most that compete, lane R3-F #241 follow-up. */
+export const AERIAL_POI_MAX = 10;
+/** Priority a POI loses per metre from the view centre in the aerial cap's ranking (1 km = 100 prominence points). */
+export const AERIAL_POI_PER_M = 0.1;
+/** The last winners' head start in the aerial cap's ranking (as if 500 m nearer), so the capped set does not flicker. */
+export const AERIAL_POI_STICKY = 50;
+
+/** The aerial cap's ranking (labelLayer aerialPoiMax): priority less distance, winners ahead by AERIAL_POI_STICKY. */
+export function rankAerialPois(pois: LabelCandidate[], pose: readonly number[], winners: ReadonlySet<string> | null): LabelCandidate[] {
+  const score = new Map(pois.map(c => [c, c.priority - (c.at ? Math.hypot(c.at[0] - pose[0], c.at[1] - pose[1]) : Infinity) * AERIAL_POI_PER_M
+    + (winners?.has(c.id) ? AERIAL_POI_STICKY : 0)] as const));
+  return [...pois].sort((a, b) => score.get(b)! - score.get(a)! || (a.id < b.id ? -1 : a.id > b.id ? 1 : 0));
+}
 /** Re-placements after dropping occluded winners; newcomers hidden after the last one are dropped, not replaced. */
 const OCCLUSION_ROUNDS = 3;
 /** Sightlines spent per frame re-testing drawn winners between full placements (a sightline is ~10-30 us). */

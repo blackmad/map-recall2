@@ -125,3 +125,38 @@ test('resident GPU bytes follow binds, reallocations and deletes', () => {
   assert.equal(gl.bufferData(), 'bufferData');
   assert.equal(chainBytes(4, 4, 1, 3), (16 + 4 + 1) * 4);
 });
+
+test('resident bytes by owner: tagged at first allocation, named at report, dropped on delete (lane R3-F #241)', () => {
+  const gl: Record<string, any> = {};
+  for (const fn of ['bindBuffer', 'bufferData', 'deleteBuffer', 'activeTexture', 'bindTexture', 'texImage2D', 'deleteTexture']) gl[fn] = () => fn;
+  const r = new GlResident();
+  let who = 'facades';
+  r.tagWith(kind => `${kind}:${who}`, () => token => String(token).toUpperCase());
+  r.install(gl);
+  const a = {}, b = {}, t = {};
+  gl.bindBuffer(0x8892, a); gl.bufferData(0x8892, 1 << 20, 0x88e4);
+  who = 'own-ground';
+  gl.bindBuffer(0x8892, b); gl.bufferData(0x8892, 2 << 20, 0x88e4);
+  gl.bindBuffer(0x8892, a); gl.bufferData(0x8892, 3 << 20, 0x88e4); // a keeps its first owner
+  gl.bindTexture(0x0de1, t); gl.texImage2D(0x0de1, 0, 0x8058, 0x1908, 0x1401, { width: 512, height: 512 });
+  assert.deepEqual(r.report().byOwner, [
+    { owner: 'buffer BUFFER:FACADES', MB: 3, objects: 1 },
+    { owner: 'buffer BUFFER:OWN-GROUND', MB: 2, objects: 1 },
+    { owner: 'texture TEXTURE:OWN-GROUND', MB: 1, objects: 1 },
+  ]);
+  gl.deleteBuffer(a);
+  assert.deepEqual(r.report().byOwner?.map(o => o.owner), ['buffer BUFFER:OWN-GROUND', 'texture TEXTURE:OWN-GROUND']);
+  assert.equal(new GlResident().report().byOwner, undefined);
+});
+
+test('draws by owner in the last closed frame', () => {
+  let who = 'facades coarse';
+  const c = new GlCounters({ drawOwner: () => who });
+  c.draw(10); c.draw(10); who = 'landmarks'; c.draw(5);
+  c.endFrame();
+  assert.deepEqual(c.report().lastFrameByOwner, { 'facades coarse': 2, landmarks: 1 });
+  c.draw(1);
+  assert.deepEqual(c.report().lastFrameByOwner, { 'facades coarse': 2, landmarks: 1 });
+  c.endFrame();
+  assert.deepEqual(c.report().lastFrameByOwner, { landmarks: 1 });
+});

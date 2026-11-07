@@ -16,6 +16,8 @@ const withGlobal = <T>(key: string, value: unknown, fn: () => T): T => {
 
 test('flags: analytic windows follow the tier defaults unless asked; ?windowSdf=0 off, =1 on; cellDebug off by default', () => {
   assert.equal(windowSdfEnabled(false), WINDOW_SDF_DESKTOP_DEFAULT);
+  assert.equal(WINDOW_SDF_DESKTOP_DEFAULT, true, 'desktop default flipped on 2026-11-07 after the quiet GPU read (#231)');
+  assert.equal(WINDOW_SDF_TOUCH_DEFAULT, false, 'touch waits for a measurement on the user\'s iPhone');
   assert.equal(windowSdfEnabled(true), WINDOW_SDF_TOUCH_DEFAULT);
   assert.equal(withGlobal('__canalRecallWindowSdf', false, () => windowSdfEnabled(false)), false);
   assert.equal(withGlobal('__canalRecallWindowSdf', true, () => windowSdfEnabled(true)), true);

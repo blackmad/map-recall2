@@ -57,11 +57,12 @@ import { boundingSphereOf } from './geometryBounds.js';
 import { cutMesh, disposeTiles, growTileSpheres } from './rendererShared/tiledGeometry.js';
 import { finishTiles, type PlannedTile } from './ownGround/cellTiles.js';
 import { MotionEstimate, aheadRank, lookAheadEnabled } from './streamingLookAhead.js';
-import { DETAIL_LEAD_M, DETAIL_LEAD_M_TOUCH, DETAIL_MAX_TILES, DETAIL_MAX_TILES_TOUCH, detailBlock, detailLingerEnabled, type DetailBlock } from './detailRing.js';
+import { DETAIL_LEAD_M, DETAIL_LEAD_M_TOUCH, DETAIL_MAX_TILES, DETAIL_MAX_TILES_TOUCH, detailBlock, detailBlockFrozen, detailFreezeAerialEnabled, detailLingerEnabled, type DetailBlock } from './detailRing.js';
 import { ROUTE_AHEAD_M, ROUTE_AHEAD_MAX_TILES, headingAheadTiles, routeAheadEnabled, routeAheadTiles, withAhead } from './engine/routeAhead.js';
 import { worldCameraOf } from './engine/worldCameraOf.js';
 import type { WorldCamera } from './engine/worldViewApi.js';
 import { packMask } from './look/maskPacking.js';
+import { BaseRefreshSlicer, lngLatDistanceM, type SliceItem } from './rendererShared/baseRefreshBudget.js';
 import { cellDebugMode, windowSdfBandEnabled, windowSdfEnabled, WINDOW_SDF_LOD_BIAS } from './look/windowSdf.js';
 import { arrayMips, arrayRolloffMips, cellLodBiasFlag, cellTierBandFlag, cellTierFromBand, cellMipOptions, cellMipsEnabled, cellRolloffEnabled, cellRolloffOptions, debugLevels, layerDigitRgb, LEVEL_DEBUG_RGB, type CellRolloffOptions, type RolloffArrayLevels } from './look/cellMips.js';
 import { uploadArrayMips, type ArrayMipUploadResult } from './look/arrayMipUpload.js';
@@ -360,6 +361,17 @@ function releaseTextureData(texture: { image: { data: unknown } }): void { textu
 export type GroundBaseFn = (feature: Feature) => number | null | undefined;
 /** Per chunk: what each building was lifted by, and which still wait for their relief. */
 type GroundLift = { applied: Map<string, number>; pending: Set<string>; features: Map<string, Feature> };
+/** The sliced re-base's per-call budget (refreshGroundBases); `done` is written back. */
+export type GroundBaseBudget = { ms: number; centre: readonly [number, number]; restart?: boolean; done?: boolean };
+/** A chunk's place for the sliced re-base order: its first building's first vertex ([lng, lat]). */
+function chunkAnchor(lift: GroundLift): [number, number] | null {
+  for (const feature of lift.features.values()) {
+    const g: any = feature?.geometry;
+    const p = g?.type === 'Polygon' ? g.coordinates?.[0]?.[0] : g?.type === 'MultiPolygon' ? g.coordinates?.[0]?.[0]?.[0] : null;
+    if (p && Number.isFinite(p[0]) && Number.isFinite(p[1])) return [p[0], p[1]];
+  }
+  return null;
+}
 
 /**
  * Main-thread work per display frame for staging worker-built chunks (ground lift) before they
@@ -1249,11 +1261,14 @@ export class ThreeBuildings {
   /**
    * Detail follows the rider; touch devices use a smaller z17 neighbourhood.
    * Cheap to call every frame; regroups only when that block changes.
+   * `aerial` (rendererShared/aerialView.ts, passed by the own engine): the block keeps its last plan from the air
+   * (detailRing.ts detailBlockFrozen, lane R3-G #242; `?detailFreezeAerial=0` follows the subject as before).
    */
-  setDetailCentre(lng: number, lat: number): void {
+  setDetailCentre(lng: number, lat: number, aerial = false): void {
     const on = this.lookAheadOn ??= lookAheadEnabled();
     this.rider = [lng, lat];
     if (on) this.motion.update(lng, lat, performance.now());
+    if (detailBlockFrozen(this.detailBlockState, aerial, this.detailFreezeOn ??= detailFreezeAerialEnabled())) return;
     // Look-ahead (default): the block leads the rider, flips sides with hysteresis and lets tiles it leaves linger
     // (detailRing.ts); `?lookAhead=0` is the old rider-centred block with a hard midline.
     const touch = this.detailZoom >= 17 && (this.detailLingerOn ??= detailLingerEnabled());
@@ -1270,9 +1285,12 @@ export class ThreeBuildings {
     this.setFeatures(this.lastFeatures);
   }
   private rider: [number, number] | null = null;
+  /** Detail (`near:`) chunks installed so far, for the aerial pan harness (scripts/aerial-pan.mjs `detailInstalls`). */
+  detailInstalls = 0;
   private readonly motion = new MotionEstimate();
   private routeAheadOn: boolean | undefined;
   private detailLingerOn: boolean | undefined;
+  private detailFreezeOn: boolean | undefined;
   /** The planned route (lng/lat), for the route-ahead prefetch; null in Free Ride. */
   private route: [number, number][] | null = null;
   private readonly routeCursor = { index: -1 };
@@ -1541,9 +1559,17 @@ export class ThreeBuildings {
     this.refreshGroundBases();
   }
 
-  /** Apply bases that became known since install (or since the last refresh). Returns buildings lifted. */
-  refreshGroundBases(): number {
-    if (!this.groundBase) return 0;
+  /**
+   * Apply bases that became known since install (or since the last refresh). Returns buildings lifted.
+   *
+   * With a `budget` (lane R3-F #241, the catch-up after an aerial view held the re-base): the chunks with pending
+   * pands are worked nearest `budget.centre` first, `budget.ms` per call (rendererShared/baseRefreshBudget.ts); a
+   * chunk cut at the deadline resumes on the next call, `budget.restart` starts again from the nearest, and
+   * `budget.done` says whether the pass finished. Without one, every chunk at once, as before.
+   */
+  refreshGroundBases(budget?: GroundBaseBudget): number {
+    if (!this.groundBase) { if (budget) budget.done = true; return 0; }
+    if (budget) return this.refreshGroundBasesSliced(budget);
     let lifted = 0;
     for (const entry of this.chunks.values()) {
       const lift = entry.lift, attribute = entry.mesh?.geometry?.getAttribute('position');
@@ -1551,16 +1577,62 @@ export class ThreeBuildings {
       const n = this.applyGroundLift(attribute.array as Float32Array, entry.ranges, lift);
       if (!n) continue;
       lifted += n;
-      attribute.needsUpdate = true;
-      entry.mesh.geometry.computeBoundingSphere();
-      // Tiles were measured at install: grow them by the largest lift since (a few metres; conservative, never short).
-      const range = this.liftRange(lift.applied);
-      growTileSpheres(entry.mesh, Math.max(Math.abs(range.min), Math.abs(range.max)));
-      // Settled: let the CPU copy go after the next upload.
-      if (!lift.pending.size) attribute.onUpload(function (this: any) { this.array = null; });
+      this.settleGroundLift(entry, attribute, lift);
     }
     if (lifted) { this.hiddenRevision++; this.map.triggerRepaint(); }
     return lifted;
+  }
+
+  /** A chunk's positions changed: upload, re-measure, grow its tiles; free the CPU copy once nothing is pending. */
+  private settleGroundLift(entry: { mesh: any }, attribute: any, lift: GroundLift): void {
+    attribute.needsUpdate = true;
+    entry.mesh.geometry.computeBoundingSphere();
+    // Tiles were measured at install: grow them by the largest lift since (a few metres; conservative, never short).
+    const range = this.liftRange(lift.applied);
+    growTileSpheres(entry.mesh, Math.max(Math.abs(range.min), Math.abs(range.max)));
+    // Settled: let the CPU copy go after the next upload.
+    if (!lift.pending.size) attribute.onUpload(function (this: any) { this.array = null; });
+  }
+
+  private readonly baseSlicer = new BaseRefreshSlicer<string>();
+  /** Per chunk in the sliced pass: the pands still to sample and how many were lifted so far (settled at the end). */
+  private readonly baseSliceState = new Map<string, { todo: string[]; lifted: number }>();
+  private refreshGroundBasesSliced(budget: GroundBaseBudget): number {
+    if (budget.restart || !this.baseSlicer.active) {
+      this.settlePartialLifts();
+      const items: SliceItem<string>[] = [];
+      for (const [key, entry] of this.chunks) {
+        const lift = entry.lift;
+        if (!lift || !lift.pending.size || !entry.mesh?.geometry?.getAttribute('position')?.array) continue;
+        items.push({ key, distance: lngLatDistanceM(budget.centre, chunkAnchor(lift) ?? [Infinity, Infinity]) });
+      }
+      this.baseSlicer.start(items);
+    }
+    let lifted = 0;
+    budget.done = this.baseSlicer.run(budget.ms, (key, deadline) => {
+      const entry = this.chunks.get(key), lift = entry?.lift, attribute = entry?.mesh?.geometry?.getAttribute('position');
+      if (!entry || !lift || !attribute?.array) { this.baseSliceState.delete(key); return true; }
+      let state = this.baseSliceState.get(key);
+      if (!state) { state = { todo: [...lift.pending], lifted: 0 }; this.baseSliceState.set(key, state); }
+      // applyGroundLift walks `todo` in slices and drops it when the list is done.
+      const walk: GroundLift & { todo?: string[] } = { applied: lift.applied, pending: lift.pending, features: lift.features, todo: state.todo };
+      const n = state.todo.length ? this.applyGroundLift(attribute.array as Float32Array, entry.ranges, walk, deadline) : 0;
+      state.lifted += n; lifted += n;
+      if (walk.todo) return false;
+      this.baseSliceState.delete(key);
+      if (state.lifted) this.settleGroundLift(entry, attribute, lift);
+      return true;
+    });
+    if (lifted) { this.hiddenRevision++; this.map.triggerRepaint(); }
+    return lifted;
+  }
+  /** A restart abandons chunks cut mid-walk: upload what they lifted so far. */
+  private settlePartialLifts(): void {
+    for (const [key, state] of this.baseSliceState) {
+      const entry = this.chunks.get(key), lift = entry?.lift, attribute = entry?.mesh?.geometry?.getAttribute('position');
+      if (state.lifted && entry && lift && attribute?.array) this.settleGroundLift(entry, attribute, lift);
+    }
+    this.baseSliceState.clear();
   }
 
   /** Diagnostics for the own ground: buildings lifted, still waiting, base range, CPU copies kept. */
@@ -1659,6 +1731,7 @@ export class ThreeBuildings {
       this.chunks.delete(key);
     }
     this.dropChunk(key, false, crossFade);
+    if (key.startsWith('near:')) this.detailInstalls++;
     if (!chunk.vertexCount) { this.dropOutgoing(key); this.chunks.set(key, { source, mesh: null, info: infoOf(chunk), ranges: new Map() }); if (key.startsWith('near:')) this.refreshDetailOwnership(); return; }
     const THREE = this.THREE;
     const geometry = new THREE.BufferGeometry();
