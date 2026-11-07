@@ -201,6 +201,8 @@ async function sample(label) {
 }
 
 const start = await sample('start');
+// --gl: the ride is the after-warm-up window (uploads, uploads of at least 1 MiB with owners; P4 counters gate #129).
+if (glOn) await page.evaluate(() => window.__canalPerf?.gl?.markWarm?.());
 // Ride: the autopilot (motion-stutter.mjs's lookahead steer) along the planned route.
 await page.evaluate(() => {
   const g = canalRecallGame, p = g.player; p.update = window.__heldUpdate; g._quizFreezesRide = () => false;
@@ -332,7 +334,15 @@ if (hideS > 0) {
 }
 const rideFrames = frameStats(await frameWindow(rideT0));
 const end = await sample('end');
-const result = { device, qs, throttle, rideS, every, chrome: useChrome, rail, settleMs, bundles: process.env.BUNDLES_DIR ?? null, world: process.env.WORLD_DIR ?? null, start, timeline, rideRows, hiddenRows, end, rideFrames, errors };
+const glRide = glOn ? await page.evaluate(() => {
+  const r = window.__canalPerf?.gl?.report?.(); if (!r) return null;
+  const owners = {};
+  for (const e of r.largeUploads) { const o = owners[e.owner] ??= { n: 0, MB: 0 }; o.n++; o.MB = +(o.MB + e.bytes / 1048576).toFixed(1); }
+  return { uploads: r.sinceWarm.uploads, uploadMB: +(r.sinceWarm.uploadBytes / 1048576).toFixed(1), uploadsOver1MBAfterWarmup: r.largeUploads.length,
+    over1MBMB: +(r.largeUploads.reduce((a, e) => a + e.bytes, 0) / 1048576).toFixed(1), over1MBOwners: owners };
+}) : null;
+if (glRide) console.log(`  gl over the ride: ${glRide.uploads} uploads ${glRide.uploadMB} MB, uploadsOver1MBAfterWarmup ${glRide.uploadsOver1MBAfterWarmup} (${glRide.over1MBMB} MB)`);
+const result = { device, qs, throttle, rideS, every, chrome: useChrome, rail, settleMs, bundles: process.env.BUNDLES_DIR ?? null, world: process.env.WORLD_DIR ?? null, start, timeline, rideRows, hiddenRows, end, rideFrames, glRide, errors };
 fs.mkdirSync(path.dirname(out), { recursive: true });
 fs.writeFileSync(out, JSON.stringify(result, null, 1));
 await browser.close();

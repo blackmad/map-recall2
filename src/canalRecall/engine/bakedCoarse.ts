@@ -47,7 +47,7 @@ export function bakedCoarseEnabled(touch: boolean, search: string = typeof locat
 
 /** The resident budget: cells and triangles (a touch device holds fewer). */
 export function bakedCoarseBudget(touch: boolean): { cells: number; triangles: number } {
-  return touch ? { cells: 24, triangles: 2_000_000 } : { cells: 48, triangles: 5_000_000 };
+  return touch ? { cells: 24, triangles: 2_000_000 } : { cells: 96, triangles: 4_000_000 };
 }
 export const BAKED_INFLIGHT = 4;
 /** The arrival dissolve (the coarse chunks' CHUNK_FADE_MS). */

@@ -261,14 +261,17 @@ if (argv.includes('--spots')) {
     : [{ name: 's1-hoftuin', at: [4.9065, 52.3655], ...POSES.s1 }, { name: 's4-zuidas', at: [4.8775, 52.3385], ...POSES.s4 }, { name: 'west-bos-en-lommer', at: [4.8530, 52.3780], ...POSES.s4, bearing: 270 }];
   fs.mkdirSync(shotsDir || 'artifacts/perf/aerial-spots', { recursive: true });
   const rows = [];
-  await page.evaluate(() => { window.__aerialPause = true; });
+  await page.evaluate(() => { window.__aerialPause = true; const g = canalRecallGame; window.__aerialRideCam = { zoom: g.camera.zoom, tilt: g.vectorMap._cameraTilt }; });
   for (const spot of spots) {
     if (spot.street) await page.evaluate(v => {
-      // A fixed street camera (the look-consistency pose): the game stops driving the camera from here on.
-      const g = canalRecallGame, vm = g.vectorMap, map = vm.map ?? vm.cameraMap, r = v.bearing * Math.PI / 180;
+      // A street chase pose: the rider stands at the eye facing the target, the chase camera at its ride zoom and tilt
+      // (recorded before the first spot), so the world view keeps updating as on a ride.
+      const g = canalRecallGame, l = g.osmLoader, ppm = (0, eval)('PIXELS_PER_METER'), cam = g.camera, p = g.player, r = v.bearing * Math.PI / 180;
+      const px = ([lng, lat]) => [l._lastOffsetX + (lng - l._lastCenterLng) * 111320 * Math.cos(l._lastCenterLat * Math.PI / 180) * ppm, l._lastOffsetY - (lat - l._lastCenterLat) * 111320 * ppm];
       const eye = [v.target[0] + Math.sin(r) * v.distM / (111320 * Math.cos(v.target[1] * Math.PI / 180)), v.target[1] + Math.cos(r) * v.distM / 111320];
-      vm.sync = () => {}; map.stop?.(); map.setMaxPitch?.(85); map.setVerticalFieldOfView?.(50); map.setPadding?.({ top: 0, bottom: 0, left: 0, right: 0 });
-      map.jumpTo(map.calculateCameraOptionsFromTo({ lng: eye[0], lat: eye[1] }, v.altM, { lng: v.target[0], lat: v.target[1] }, v.targetAltM));
+      const [ex, ey] = px(eye), [tx, ty] = px(v.target), ride = window.__aerialRideCam;
+      p.x = ex; p.y = ey; p.angle = Math.atan2(ty - ey, tx - ex);
+      cam.detached = false; cam.zoom = ride.zoom; g.vectorMap.setCameraTilt?.(ride.tilt); g.vectorMap._cameraTilt = ride.tilt;
     }, spot.street);
     else await page.evaluate(sp => {
       const g = canalRecallGame, l = g.osmLoader, ppm = (0, eval)('PIXELS_PER_METER'), cam = g.camera;
