@@ -4,6 +4,7 @@ import sharp from 'sharp';
 import { useEngine } from './helpers';
 import { SWAP_SPOTS } from '../../scripts/world/abSpots';
 import { CELL_DEBUG_CLASSES, CELL_DEBUG_FACADE_CLASSES, cellDebugClass } from '../../src/canalRecall/look/windowSdf';
+import { debugLevelOf } from '../../src/canalRecall/look/cellMips';
 
 // The swap z-fight pin (lane R1-A, #223): the user's S3 shot (map-recall2-screenshots engine/2026-11-06-user-shots,
 // the 1962 slab on Weesperstraat, ~150 m) showed moving stripes over the window grid while the camera moved. Here the
@@ -97,6 +98,9 @@ test('swap z-fight: no moving stripes on the Weesperstraat slab while its detail
   await page.evaluate(() => { const g = (window as any).canalRecallGame; g.state = 4; g._quizFreezesRide = () => false; g.player.handleInput = () => {}; g.player.update = function () { this.speed = 0; this.vx = 0; this.vy = 0; }; });
   await expect.poll(() => page.evaluate(() => { const vm = (window as any).canalRecallGame.vectorMap; return vm.engine === 'own' && !!vm._threeBuildings?.ready; }), { timeout: 180_000 }).toBe(true);
   await settle(page);
+  // The roll-off chain (lane R3-E #240) is built after the first upload: measure only once it is in the storage.
+  await expect.poll(() => page.evaluate(() => !(window as any).canalRecallGame.vectorMap._threeBuildings.cellRolloffPending), { timeout: 60_000 }).toBe(true);
+  console.log('swap-zfight rolloff', JSON.stringify(await page.evaluate(() => { const i = (window as any).canalRecallGame.vectorMap._threeBuildings.cellRolloffInfo; return i ? { buildMs: i.buildMs, upload: i.upload, maskUpload: i.maskUpload, rolled: i.rolled, options: i.options } : null; })));
   // Hold the world camera at the spot's pose (the game no longer drives it), with the player's vehicle off every layer.
   const pose = await page.evaluate((spot) => {
     const vm = (window as any).canalRecallGame.vectorMap, cm = vm.cameraMap, g = vm._ownGround;
@@ -176,6 +180,27 @@ test('swap z-fight: no moving stripes on the Weesperstraat slab while its detail
   if (SPOT.minMaskShare) expect(maskShare, 'the slab fills its share of the user\'s frame').toBeGreaterThan(SPOT.minMaskShare);
   // ZFIGHT_HIST=1 (lane R3-D #233): with `?cellDebug=rho|under` in ZFIGHT_QS, the debug classes inside the slab mask
   // (look/windowSdf.ts cellDebugHistogram's classes) and the frame, then stop: the facade tier's footprint at the pose.
+  // ZFIGHT_LEVELS=1 (lane R3-E #240): every level of the colour array painted one flat colour (look/cellMips.ts
+  // LEVEL_DEBUG_RGB, tint off), then the fractional mip level the sampler reads inside the slab mask, and stop.
+  if (process.env.ZFIGHT_LEVELS) {
+    const mode = await page.evaluate(() => (window as any).canalRecallGame.vectorMap._threeBuildings.setCellMipDebug());
+    await page.waitForTimeout(600);
+    const shot = await rgba(await grab());
+    const bins = new Array(14).fill(0); let sum = 0, n = 0, dark = 0;
+    for (let i = 0; i < inner.length; i++) {
+      if (!inner[i]) continue;
+      const p = i * 4, l = debugLevelOf(shot.data[p], shot.data[p + 1], shot.data[p + 2]);
+      if (l == null) { dark++; continue; }
+      bins[Math.min(13, Math.floor(l * 2))]++; sum += l; n++;
+    }
+    const levels = { mode, maskPx, dark, mean: n ? +(sum / n).toFixed(2) : null, halfLevelShares: bins.map(b => +(b / Math.max(1, n)).toFixed(4)) };
+    console.log('swap-zfight levels', JSON.stringify(levels));
+    mkdirSync(OUT, { recursive: true });
+    writeFileSync(`${OUT}/${info.project.name}${LABEL}-levels.json`, JSON.stringify({ when: new Date().toISOString(), spot: SPOT.name, qs: QS, ...levels }, null, 1));
+    await sharp(shot.data, { raw: { width: shot.width, height: shot.height, channels: 4 } }).png().toFile(`${OUT}/${info.project.name}${LABEL}-levels.png`);
+    expect(errors, 'page errors').toEqual([]);
+    return;
+  }
   if (process.env.ZFIGHT_HIST) {
     const counts = CELL_DEBUG_CLASSES.map(() => 0);
     for (let i = 0; i < inner.length; i++) { if (!inner[i]) continue; const p = i * 4, k = cellDebugClass(shown.data[p], shown.data[p + 1], shown.data[p + 2]); if (k >= 0) counts[k]++; }
@@ -307,6 +332,14 @@ test('swap z-fight: no moving stripes on the Weesperstraat slab while its detail
     if ('mipLinear' in set) mo.linear = !!set.mipLinear;
     if ('mipLobes' in set) mo.lobes = set.mipLobes as number;
     if (Object.keys(mo).length) await page.evaluate((mo) => (window as any).canalRecallGame.vectorMap._threeBuildings.setCellMipOptions(mo), mo);
+    // `rolloffPitch:4|rolloffLinear:0|1|rolloffMask:0|1` (lane R3-E #240): rebuild the kept roll-off chain with those
+    // options (?cellRolloff=1&cellMipsKeep=1); `cellTierBand:24,45` sets the facade tier band at DPR 2 (0: the constants).
+    const ro: Record<string, number | boolean> = {};
+    if ('rolloffPitch' in set) ro.pitch = set.rolloffPitch as number;
+    if ('rolloffLinear' in set) ro.linear = !!set.rolloffLinear;
+    if ('rolloffMask' in set) ro.mask = !!set.rolloffMask;
+    if (Object.keys(ro).length) console.log('swap-zfight rolloff rebuild ms', await page.evaluate((ro) => (window as any).canalRecallGame.vectorMap._threeBuildings.setCellRolloffOptions(ro), ro));
+    if ('cellTierBand' in set) console.log('swap-zfight cellTier', JSON.stringify(await page.evaluate((b) => (window as any).canalRecallGame.vectorMap._threeBuildings.setCellTierBand(Array.isArray(b) ? b : null), set.cellTierBand)));
     return page.evaluate((set) => {
     const tb = (window as any).canalRecallGame.vectorMap._threeBuildings;
     for (const m of new Set([tb.material, ...tb.materials.values()])) for (const [k, v] of Object.entries(set)) if (m?.uniforms?.[k]) m.uniforms[k].value = v;

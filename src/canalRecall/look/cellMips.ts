@@ -197,3 +197,303 @@ export async function arrayMips(colour: Uint8Array, size: number, layers: number
   }
   return { size, levels };
 }
+
+// ---------------------------------------------------------------------------------------------------------------
+// The roll-off chain (lane R3-E #240, the S3 slab moiré). Three lanes measured the owner at the user's S3 pose
+// (`s3-slab-user`, the 1962 slab on Weesperstraat, DPR 2): 92 % of the moving pixels are the facade texture on the
+// slab's long street wall (#230), seen at 16-32 texels per device pixel (#233), where a window grid whose pitch nears
+// two texels at the level read is drawn one texel per pixel and beats against the pixels. GL's 2x2 box chain keeps
+// ~71 % of such a grid's contrast per level; R3-B's sharper Lanczos chain made it worse (#231). This chain is the
+// converse: levels 1..N from a 2x2 box cascade (GL's own, on the sRGB bytes unless `linear`), and at each level L, per
+// layer and per axis, where the layer's window pitch at that level (`pitch / 2^L`) is under `ROLLOFF_PITCH_TEXELS`,
+// a wrapped Gaussian (in the cascade's space) whose sigma takes the grid's contrast toward the layer mean: sigma =
+// pitch_L / 2 at pitch_L <= 2 (contrast ~1 %), falling to 0 at the threshold (untouched). The cascade continues from the
+// rolled-off level, so a grid that has gone stays gone. The last level is the exact level-0 mean (the facade tier's
+// textureLod 12 read). Layers whose windows are far apart at the levels the quay houses read (S2: levels 3-4, pitch
+// 5-10 texels there) keep GL's levels. The tint mask array (its R is the wall weight, so the window grid is in it too)
+// takes the same per-layer blur unless `mask` is off. `?cellRolloff=0` keeps GL's chain for both arrays.
+
+/** Window pitch below which a level is rolled off, in that level's texels (swept 3, 4, 6; see the lane's hand-back). */
+export const ROLLOFF_PITCH_TEXELS = 4;
+/** Unasked, the page builds the roll-off chain when this is true (both tiers; set from the measured A/B). */
+export const CELL_ROLLOFF_DEFAULT = false;
+
+export type CellRolloffOptions = {
+  /** ROLLOFF_PITCH_TEXELS: the pitch (level texels) under which the level is blurred. */
+  pitch: number;
+  /**
+   * Cascade and blur in linear light (true, as look/cellMips' Lanczos chain) or on the sRGB bytes like GL's
+   * generateMipmap (false): the facade shader decodes after sampling, so GL's levels, trilinear blending and the tier's
+   * mean all average the bytes, and an untouched level is then GL's to a byte.
+   */
+  linear: boolean;
+  /** Roll the tint mask array off too. */
+  mask: boolean;
+};
+export const CELL_ROLLOFF_DEFAULTS: CellRolloffOptions = { pitch: ROLLOFF_PITCH_TEXELS, linear: false, mask: true };
+
+/** `?cellRolloff=1|0` (or `window.__canalRecallCellRolloff`); unasked CELL_ROLLOFF_DEFAULT. Off while `cellMips` is on. */
+export function cellRolloffEnabled(): boolean {
+  if (cellMipsEnabled()) return false;
+  const asked = (globalThis as Record<string, unknown>).__canalRecallCellRolloff ?? pageParam('cellRolloff');
+  if (asked === false || asked === '0' || asked === 'false' || asked === 'off') return false;
+  if (asked === true || asked === '1' || asked === 'true' || asked === 'on') return true;
+  return CELL_ROLLOFF_DEFAULT;
+}
+
+/** `?cellRolloffPitch=6`, `?cellRolloffLinear=1`, `?cellRolloffMask=0` (A/B knobs). */
+export function cellRolloffOptions(): CellRolloffOptions {
+  const p = Number(pageParam('cellRolloffPitch')), lin = pageParam('cellRolloffLinear'), mask = pageParam('cellRolloffMask');
+  return {
+    pitch: pageParam('cellRolloffPitch') != null && Number.isFinite(p) && p > 0 ? p : CELL_ROLLOFF_DEFAULTS.pitch,
+    linear: lin == null ? CELL_ROLLOFF_DEFAULTS.linear : lin !== '0',
+    mask: mask == null ? CELL_ROLLOFF_DEFAULTS.mask : mask !== '0',
+  };
+}
+
+/** A layer's dominant window pitch in level-0 texels per axis; Infinity where it has no window grid on that axis. */
+export type WindowPitch = { x: number; y: number };
+/** A window opening in cell uv (0..1 on both axes). */
+export type UvRect = { x0: number; x1: number; y0: number; y1: number };
+
+const median = (v: number[]) => { if (!v.length) return Infinity; const s = [...v].sort((a, b) => a - b), m = s.length >> 1; return s.length & 1 ? s[m] : 0.5 * (s[m - 1] + s[m]); };
+
+/**
+ * The periods of the window runs along one wrapped line of `n` texels (`at(i)` the mask R byte, < `cut` = window):
+ * the centre-to-centre distances of successive runs at least `minRun` long, wrapping (one run per line: period n).
+ * A line with no window run, or no wall texel, has none.
+ */
+export function runPeriods(at: (i: number) => number, n: number, cut = 128, minRun = 2): number[] {
+  let wall = -1;
+  for (let i = 0; i < n; i++) if (at(i) >= cut) { wall = i; break; }
+  if (wall < 0) return [];
+  const centres: number[] = [];
+  let start = -1;
+  for (let k = 1; k <= n; k++) {
+    const i = wall + k, win = at(i % n) < cut;
+    if (win && start < 0) start = i;
+    if (!win && start >= 0) { if (i - start >= minRun) centres.push(0.5 * (start + i - 1)); start = -1; }
+  }
+  if (!centres.length) return [];
+  if (centres.length === 1) return [n];
+  const out: number[] = [];
+  for (let k = 0; k < centres.length; k++) out.push(k + 1 < centres.length ? centres[k + 1] - centres[k] : centres[0] + n - centres[k]);
+  return out;
+}
+
+/**
+ * A layer's window pitch from its tint mask (R: 0 on windows, frames, doors and shutters; 255 on wall), `size` square,
+ * `channels` bytes per texel with R first: the median run period along every `stride`-th row (x) and column (y).
+ */
+export function maskWindowPitch(mask: Uint8Array, offset: number, size: number, channels: 1 | 2 = 1, stride = Math.max(1, size >> 5)): WindowPitch {
+  const xs: number[] = [], ys: number[] = [];
+  for (let r = stride >> 1; r < size; r += stride) {
+    xs.push(...runPeriods(i => mask[offset + (r * size + i) * channels], size));
+    ys.push(...runPeriods(i => mask[offset + (i * size + r) * channels], size));
+  }
+  return { x: median(xs), y: median(ys) };
+}
+
+/** A layer's window pitch from its window table rects (look/windowTable.ts, uv): wrapped centre spacing per axis. */
+export function rectWindowPitch(rects: readonly UvRect[], size: number): WindowPitch {
+  if (!rects.length) return { x: Infinity, y: Infinity };
+  const axis = (centres: number[]) => {
+    const u = [...centres].map(c => ((c % 1) + 1) % 1).sort((a, b) => a - b);
+    const merged: number[] = [];
+    for (const c of u) if (!merged.length || c - merged[merged.length - 1] > 1 / size) merged.push(c);
+    if (merged.length > 1 && merged[0] + 1 - merged[merged.length - 1] <= 1 / size) merged.pop();
+    if (merged.length === 1) return size;
+    const d: number[] = [];
+    for (let k = 0; k < merged.length; k++) d.push(((k + 1 < merged.length ? merged[k + 1] : merged[0] + 1) - merged[k]) * size);
+    return median(d);
+  };
+  return { x: axis(rects.map(r => 0.5 * (r.x0 + r.x1))), y: axis(rects.map(r => 0.5 * (r.y0 + r.y1))) };
+}
+
+/**
+ * The roll-off blur at a level whose window pitch is `pitchL` of its own texels: 0 at and above `threshold`, rising
+ * linearly to pitch_L / 2 at pitch_L = 2 (a Gaussian of sigma P / 2 leaves exp(-pi^2 / 2) < 1 % of a period-P grid),
+ * and 1 texel below 2 (that level cannot hold the grid; what is left of it is the cascade's residue).
+ */
+export function rolloffSigma(pitchL: number, threshold = ROLLOFF_PITCH_TEXELS): number {
+  if (!(pitchL < threshold) || !Number.isFinite(pitchL)) return 0;
+  if (pitchL <= 2) return 1;
+  const w = threshold > 2 ? Math.min(1, Math.max(0, (threshold - pitchL) / (threshold - 2))) : 1;
+  return w * pitchL / 2;
+}
+
+/** Normalised Gaussian taps for `sigma` (radius ceil(3 sigma)); [1] for sigma 0. */
+export function gaussianTaps(sigma: number): Float32Array {
+  if (!(sigma > 0)) return Float32Array.of(1);
+  const r = Math.max(1, Math.ceil(3 * sigma)), w = new Float32Array(2 * r + 1);
+  let sum = 0;
+  for (let k = -r; k <= r; k++) { w[k + r] = Math.exp(-(k * k) / (2 * sigma * sigma)); sum += w[k + r]; }
+  for (let k = 0; k < w.length; k++) w[k] /= sum;
+  return w;
+}
+
+/** In place: a separable wrapped Gaussian of sigma `sx` along x and `sy` along y on a square plane. */
+export function blurWrapped(v: Float32Array, size: number, sx: number, sy: number): void {
+  const mask = size - 1, tmp = new Float32Array(size);
+  if (sx > 0) {
+    const w = gaussianTaps(sx), r = (w.length - 1) >> 1;
+    for (let y = 0; y < size; y++) {
+      const row = y * size;
+      for (let x = 0; x < size; x++) { let a = 0; for (let k = -r; k <= r; k++) a += w[k + r] * v[row + ((x + k) & mask)]; tmp[x] = a; }
+      v.set(tmp, row);
+    }
+  }
+  if (sy > 0) {
+    const w = gaussianTaps(sy), r = (w.length - 1) >> 1;
+    for (let x = 0; x < size; x++) {
+      for (let y = 0; y < size; y++) { let a = 0; for (let k = -r; k <= r; k++) a += w[k + r] * v[((y + k) & mask) * size + x]; tmp[y] = a; }
+      for (let y = 0; y < size; y++) v[y * size + x] = tmp[y];
+    }
+  }
+}
+
+export type RolloffLayerLevels = { colour: Uint8Array[]; mask: Uint8Array[] | null; /** Per level (1..N): [sigma x, sigma y]. */ sigmas: [number, number][] };
+
+/**
+ * Levels 1..N of one layer: `colour` RGBA bytes at `offset`; `mask` (optional) its tint-mask bytes at `maskOffset`,
+ * `maskChannels` per texel, which get the same blur. `pitch` from maskWindowPitch / rectWindowPitch.
+ */
+export function layerRolloffMips(colour: Uint8Array, offset: number, size: number, pitch: WindowPitch, options: CellRolloffOptions, mask: Uint8Array | null = null, maskOffset = 0, maskChannels: 1 | 2 = 1): RolloffLayerLevels {
+  const n = size * size, lin = options.linear;
+  // RGB in the cascade's space (linear light, or sRGB 0..1 as GL's box sees the bytes); alpha (the packed accent) linear.
+  let planes: Float32Array[] = [0, 1, 2, 3].map(c => {
+    const p = new Float32Array(n);
+    for (let i = 0; i < n; i++) { const b = colour[offset + i * 4 + c]; p[i] = c < 3 && lin ? TO_LINEAR[b] : b / 255; }
+    return p;
+  });
+  let mplanes: Float32Array[] | null = mask ? Array.from({ length: maskChannels }, (_, c) => {
+    const p = new Float32Array(n);
+    for (let i = 0; i < n; i++) p[i] = mask[maskOffset + i * maskChannels + c] / 255;
+    return p;
+  }) : null;
+  const mean = [0, 0, 0, 0], mmean = [0, 0];
+  for (let i = 0; i < n; i++) for (let c = 0; c < 4; c++) mean[c] += colour[offset + i * 4 + c];
+  if (mask) for (let i = 0; i < n; i++) for (let c = 0; c < maskChannels; c++) mmean[c] += mask[maskOffset + i * maskChannels + c];
+  const out: RolloffLayerLevels = { colour: [], mask: mask ? [] : null, sigmas: [] };
+  let s = size, level = 0;
+  while (s > 1) {
+    planes = planes.map(p => box2x(p, s));
+    if (mplanes) mplanes = mplanes.map(p => box2x(p, s));
+    s >>= 1; level++;
+    const k = 2 ** level, sx = s > 1 ? rolloffSigma(pitch.x / k, options.pitch) : 0, sy = s > 1 ? rolloffSigma(pitch.y / k, options.pitch) : 0;
+    out.sigmas.push([+sx.toFixed(3), +sy.toFixed(3)]);
+    if (sx > 0 || sy > 0) {
+      // The blur in the cascade's own space: a rolled-off grid then has the tone GL's neighbouring levels and the
+      // tier's mean give it (a linear-light blur of dark glass and pale wall comes out ~40 levels brighter than the
+      // byte box beside it, a tone step with distance).
+      for (const p of planes) blurWrapped(p, s, Math.min(sx, s / 2), Math.min(sy, s / 2));
+      if (mplanes) for (const p of mplanes) blurWrapped(p, s, Math.min(sx, s / 2), Math.min(sy, s / 2));
+    }
+    const bytes = new Uint8Array(s * s * 4);
+    if (s === 1) for (let c = 0; c < 4; c++) bytes[c] = Math.round(mean[c] / n);
+    else for (let i = 0; i < s * s; i++) {
+      for (let c = 0; c < 3; c++) bytes[i * 4 + c] = lin ? encode(planes[c][i]) : Math.round(Math.min(1, Math.max(0, planes[c][i])) * 255);
+      bytes[i * 4 + 3] = Math.round(Math.min(1, Math.max(0, planes[3][i])) * 255);
+    }
+    out.colour.push(bytes);
+    if (mplanes && out.mask) {
+      const m = new Uint8Array(s * s * maskChannels);
+      if (s === 1) for (let c = 0; c < maskChannels; c++) m[c] = Math.round(mmean[c] / n);
+      else for (let i = 0; i < s * s; i++) for (let c = 0; c < maskChannels; c++) m[i * maskChannels + c] = Math.round(Math.min(1, Math.max(0, mplanes[c][i])) * 255);
+      out.mask.push(m);
+    }
+  }
+  return out;
+}
+
+export type RolloffArrayLevels = {
+  size: number;
+  colour: Uint8Array[];
+  mask: Uint8Array[] | null;
+  maskChannels: 1 | 2;
+  /** Per layer: the pitch used and the first level (1..N) it was rolled off at (0: never). */
+  layers: { pitch: WindowPitch; from: number; source: 'table' | 'mask' | 'none' }[];
+};
+
+/**
+ * Levels 1..N of the whole colour array (and, when given, the tint mask array) with the roll-off, each level one
+ * buffer of all layers in layer order. `pitchMask` / `pitchMaskChannels`: the mask bytes the pitch is read from (R
+ * first); `rects(layer)` the window table's openings where a layer has them (else the mask decides). Async: yields
+ * every `sliceMs` of work.
+ */
+export async function arrayRolloffMips(colour: Uint8Array, size: number, layers: number, opts: {
+  options?: CellRolloffOptions;
+  pitchMask: Uint8Array | null; pitchMaskChannels: 1 | 2;
+  mask?: Uint8Array | null; maskChannels?: 1 | 2;
+  rects?: (layer: number) => readonly UvRect[] | null;
+  sliceMs?: number; yieldFn?: () => Promise<void>;
+}): Promise<RolloffArrayLevels> {
+  const options = opts.options ?? cellRolloffOptions(), sliceMs = opts.sliceMs ?? 8, yieldFn = opts.yieldFn ?? (() => new Promise<void>(r => setTimeout(r, 0)));
+  const mask = options.mask ? opts.mask ?? null : null, maskChannels = opts.maskChannels ?? 1;
+  const count = mipLevelCount(size), n = size * size;
+  const colourLevels: Uint8Array[] = [], maskLevels: Uint8Array[] | null = mask ? [] : null;
+  for (let l = 1; l <= count; l++) { const s = size >> l; colourLevels.push(new Uint8Array(s * s * 4 * layers)); maskLevels?.push(new Uint8Array(s * s * maskChannels * layers)); }
+  const info: RolloffArrayLevels['layers'] = [];
+  let started = performance.now();
+  for (let layer = 0; layer < layers; layer++) {
+    const rects = opts.rects?.(layer);
+    let pitch: WindowPitch = { x: Infinity, y: Infinity }, source: 'table' | 'mask' | 'none' = 'none';
+    if (rects && rects.length) { pitch = rectWindowPitch(rects, size); source = 'table'; }
+    else if (opts.pitchMask) { pitch = maskWindowPitch(opts.pitchMask, layer * n * opts.pitchMaskChannels, size, opts.pitchMaskChannels); source = 'mask'; }
+    const got = layerRolloffMips(colour, layer * n * 4, size, pitch, options, mask, layer * n * maskChannels, maskChannels);
+    for (let l = 0; l < count; l++) {
+      const s = size >> (l + 1);
+      colourLevels[l].set(got.colour[l], layer * s * s * 4);
+      if (maskLevels && got.mask) maskLevels[l].set(got.mask[l], layer * s * s * maskChannels);
+    }
+    const first = got.sigmas.findIndex(([x, y]) => x > 0 || y > 0);
+    info.push({ pitch, from: first < 0 ? 0 : first + 1, source });
+    if (sliceMs > 0 && performance.now() - started > sliceMs) { await yieldFn(); started = performance.now(); }
+  }
+  return { size, colour: colourLevels, mask: maskLevels, maskChannels, layers: info };
+}
+
+/**
+ * Diagnosis (`setCellMipDebug`): levels 0..N of an array where every texel of level L is LEVEL_DEBUG_RGB[L], so a
+ * frame shows which level the sampler reads (trilinear blends neighbours: the hue between two). Level 0 red through
+ * level 5 magenta around the hue circle, 6 and beyond white.
+ */
+export const LEVEL_DEBUG_RGB: readonly (readonly [number, number, number])[] = [[255, 0, 0], [255, 255, 0], [0, 255, 0], [0, 255, 255], [0, 0, 255], [255, 0, 255], [255, 255, 255], [255, 255, 255], [255, 255, 255], [255, 255, 255]];
+export function debugLevels(size: number, layers: number, channels: 1 | 2 | 4, fill: (level: number) => readonly number[]): Uint8Array[] {
+  const out: Uint8Array[] = [];
+  for (let l = 0, s = size; s >= 1; l++, s >>= 1) {
+    const v = fill(l), b = new Uint8Array(s * s * channels * layers);
+    for (let i = 0; i < b.length; i += channels) for (let c = 0; c < channels; c++) b[i + c] = v[c] ?? 255;
+    out.push(b);
+  }
+  return out;
+}
+
+/** The fractional level a debug-coloured pixel shows: hue / 60 degrees on saturated pixels, >= 5.5 on pale ones; null on dark ones. */
+export function debugLevelOf(r: number, g: number, b: number): number | null {
+  const mx = Math.max(r, g, b), mn = Math.min(r, g, b);
+  if (mx < 24) return null;
+  const sat = (mx - mn) / mx;
+  if (sat < 0.25) return 6;
+  let h: number;
+  if (mx === r) h = ((g - b) / (mx - mn) + 6) % 6; else if (mx === g) h = (b - r) / (mx - mn) + 2; else h = (r - g) / (mx - mn) + 4;
+  // Magenta (5) wraps to red (0) on the hue circle; level 0 never borders level 5, so hue > 5.5 is level 5 paling toward 6.
+  return h > 5.5 ? 5.5 + (1 - sat) : h;
+}
+
+/**
+ * `?cellTierBand=24,45` (measurement only, lane R3-E #240): the facade tier's flatten band (roofTier.ts
+ * FACADE_TIER_FROM/TO_TEXELS) given as texels per device pixel at DPR 2, i.e. the constants x 2; it scales with the
+ * ratio and the texture policy's tierScale exactly as they do. null unless asked (the constants decide).
+ */
+export function cellTierBandFlag(): [number, number] | null {
+  const asked = (globalThis as Record<string, unknown>).__canalRecallCellTierBand ?? pageParam('cellTierBand');
+  if (asked == null || asked === '') return null;
+  const v = (Array.isArray(asked) ? asked : String(asked).split(',')).map(Number);
+  return v.length === 2 && v.every(Number.isFinite) && v[0] > 0 && v[1] > v[0] ? [v[0], v[1]] : null;
+}
+/** The tier uniform for a band given at DPR 2 (cellTierBandFlag), at `pixelRatio` and `tierScale`. */
+export function cellTierFromBand(band: readonly [number, number], pixelRatio = 1, tierScale = 1): [number, number] {
+  const k = (Number.isFinite(pixelRatio) && pixelRatio > 1 ? pixelRatio : 1) * (Number.isFinite(tierScale) && tierScale > 0 ? tierScale : 1) / 2;
+  return [band[0] * k, band[1] * k];
+}

@@ -63,14 +63,14 @@ import { worldCameraOf } from './engine/worldCameraOf.js';
 import type { WorldCamera } from './engine/worldViewApi.js';
 import { packMask } from './look/maskPacking.js';
 import { cellDebugMode, windowSdfBandEnabled, windowSdfEnabled, WINDOW_SDF_LOD_BIAS } from './look/windowSdf.js';
-import { arrayMips, cellLodBiasFlag, cellMipOptions, cellMipsEnabled } from './look/cellMips.js';
+import { arrayMips, arrayRolloffMips, cellLodBiasFlag, cellTierBandFlag, cellTierFromBand, cellMipOptions, cellMipsEnabled, cellRolloffEnabled, cellRolloffOptions, debugLevels, LEVEL_DEBUG_RGB, type CellRolloffOptions, type RolloffArrayLevels } from './look/cellMips.js';
 import { uploadArrayMips, type ArrayMipUploadResult } from './look/arrayMipUpload.js';
 
 /** A query flag's raw value, or null (tolerates a page without URLSearchParams). */
 function pageFlag(name: string): string | null {
   try { return typeof URLSearchParams === 'function' ? new URLSearchParams(globalThis.location?.search ?? '').get(name) : null; } catch { return null; }
 }
-import { createWindowTableTexture, windowTableData } from './look/windowTable.js';
+import { createWindowTableTexture, layerWindowRects, windowTableData } from './look/windowTable.js';
 
 type BuildOptions = { surveyedEnvelopeData: EnvelopeTransport["envelopes"]; surveyedEnvelopeRevision: string; look: BuildingLook; streets?: Float32Array; profiles: readonly StreetAppearanceProfile[]; contextFeatures?: readonly Feature[]; appearanceRevision: string; hostOpenings: readonly ChunkHostOpeningConfig[]; hostOpeningRevision: string };
 
@@ -325,6 +325,14 @@ export async function buildLookTextures(THREE: any, look: 'procedural' | Look, m
 }
 
 /** Texture arrays over painted (or pre-painted, look/lookAtlas.ts) atlas bytes; the CPU copy goes after upload. */
+/** The roll-off chain in numbers: layers rolled off and from which level, by pitch source. */
+function rolloffSummary(got: RolloffArrayLevels): { rolled: number; byLevel: Record<string, number>; bySource: Record<string, number> } {
+  const byLevel: Record<string, number> = {}, bySource: Record<string, number> = {};
+  let rolled = 0;
+  for (const l of got.layers) { bySource[l.source] = (bySource[l.source] ?? 0) + 1; if (!l.from) continue; rolled++; byLevel[l.from] = (byLevel[l.from] ?? 0) + 1; }
+  return { rolled, byLevel, bySource };
+}
+
 export function lookTexturesOf(THREE: any, atlas: LookAtlasArrays, maxAnisotropy: number): { colour: any; mask: any; slotBase: number } {
   const { size, total } = atlas;
   const array = (data: Uint8Array, format: any) => {
@@ -678,15 +686,15 @@ export class ThreeBuildings {
     // extract, instead of ~200 canvas cells painted on the main thread. Anything short of exact bytes paints as before.
     const { layers, total } = lookAtlasLayers(look, slots), started = performance.now(), stamp = lookAtlasStamp(BUNDLE_SRC);
     const cached = await readCachedLookAtlas(stamp, look, size, slots, layers, total);
-    if (cached) { this.atlasSource = { reason: 'cache', ms: Math.round(performance.now() - started), file: '' }; return this.withColourMips(lookTexturesOf(this.THREE, cached, anisotropy), cached, sliceMs); }
+    if (cached) { this.atlasSource = { reason: 'cache', ms: Math.round(performance.now() - started), file: '' }; return this.withColourMips(lookTexturesOf(this.THREE, cached, anisotropy), cached, sliceMs, look); }
     const load = await loadLookAtlas(new URL('../data/extracts/amsterdam', document.baseURI).href, look, size, slots, layers, total);
     this.atlasSource = { reason: load.reason, ms: Math.round(load.ms), file: load.file };
-    if (load.atlas) return this.withColourMips(lookTexturesOf(this.THREE, load.atlas, anisotropy), load.atlas, sliceMs);
+    if (load.atlas) return this.withColourMips(lookTexturesOf(this.THREE, load.atlas, anisotropy), load.atlas, sliceMs, look);
     const paintStarted = performance.now();
     const painted = await paintLookArrays(look, size, { slotLayers: slots, sliceMs: () => this.atlasSliceMs ?? sliceMs ?? TEXTURE_SLICE_MS });
     this.atlasSource.paintMs = Math.round(performance.now() - paintStarted);
     storeCachedLookAtlas(stamp, painted, look, slots);
-    return this.withColourMips(lookTexturesOf(this.THREE, painted, anisotropy), painted, sliceMs);
+    return this.withColourMips(lookTexturesOf(this.THREE, painted, anisotropy), painted, sliceMs, look);
   }
 
   /**
@@ -695,8 +703,9 @@ export class ThreeBuildings {
    * the 222-layer desktop atlas) and then replace levels 1..N in the same storage (look/arrayMipUpload.ts), so the
    * facades sharpen a moment after they appear. `?cellMips=0` keeps GL's mips. `cellMipsInfo` records the cost.
    */
-  private withColourMips<T extends { colour: any }>(set: T, atlas: LookAtlasArrays, sliceMs?: number): T {
-    if (!cellMipsEnabled() || (atlas.size & (atlas.size - 1))) return set;
+  private withColourMips<T extends { colour: any; mask?: any }>(set: T, atlas: LookAtlasArrays, sliceMs?: number, look?: 'procedural' | Look): T {
+    if (atlas.size & (atlas.size - 1)) return set;
+    if (!cellMipsEnabled()) return cellRolloffEnabled() ? this.withRolloffMips(set, atlas, sliceMs, look) : set;
     const texture = set.colour, colour = atlas.colour, mask = atlas.mask, { size, total } = atlas;
     const options = cellMipOptions(), keep = pageFlag('cellMipsKeep') === '1';
     void (async () => {
@@ -715,7 +724,83 @@ export class ThreeBuildings {
     })();
     return set;
   }
-  private cellMipsKept: { texture: any; levels: Uint8Array[]; size: number; depth: number; colour: Uint8Array; mask: Uint8Array } | null = null;
+  private cellMipsKept: { texture: any; levels: Uint8Array[]; size: number; depth: number; colour: Uint8Array; mask: Uint8Array; rolloff?: { maskTexture: any; maskLevels: Uint8Array[] | null; maskChannels: 1 | 2; maskBytes: Uint8Array | null; rects: ((layer: number) => readonly { x0: number; x1: number; y0: number; y1: number }[] | null) | undefined } } | null = null;
+
+  /**
+   * The roll-off chain (look/cellMips.ts arrayRolloffMips, lane R3-E #240): as withColourMips, after the first upload
+   * and in frame-sized slices, levels 1..N of the colour array and of the tint mask array are replaced by GL's box
+   * cascade with each layer's window grid blurred away at the levels where its pitch nears two texels. `?cellRolloff=0`
+   * keeps GL's chain; `cellRolloffInfo` records the cost; `?cellMipsKeep=1` keeps the CPU levels for in-page A/B.
+   */
+  private withRolloffMips<T extends { colour: any; mask?: any }>(set: T, atlas: LookAtlasArrays, sliceMs?: number, look?: 'procedural' | Look): T {
+    const texture = set.colour, maskTexture = set.mask ?? null, colour = atlas.colour, { size, total } = atlas;
+    // The packed mask's bytes (R8, or RG with ?maskFormat=rg) before three's first upload releases them.
+    const maskBytes: Uint8Array | null = maskTexture?.image?.data ?? null;
+    const maskChannels: 1 | 2 = maskTexture?.format === this.THREE?.RGFormat ? 2 : 1;
+    const keep = pageFlag('cellMipsKeep') === '1';
+    let rects: ((layer: number) => readonly { x0: number; x1: number; y0: number; y1: number }[] | null) | undefined;
+    try { const table = look ? layerWindowRects(look) : []; rects = (layer: number) => table[layer] ?? null; } catch { rects = undefined; }
+    this.cellRolloffPending = true;
+    void (async () => {
+      const started = performance.now();
+      const got = await arrayRolloffMips(colour, size, total, { options: cellRolloffOptions(), pitchMask: atlas.mask, pitchMaskChannels: 2, mask: maskBytes, maskChannels, rects, sliceMs: this.atlasSliceMs ?? sliceMs ?? TEXTURE_SLICE_MS });
+      const info: NonNullable<ThreeBuildings['cellRolloffInfo']> = { buildMs: Math.round(performance.now() - started), options: cellRolloffOptions(), size, layers: total, levels: got.colour.length, upload: null, maskUpload: null, rolled: rolloffSummary(got) };
+      this.cellRolloffInfo = info;
+      for (let i = 0; i < 600 && !this.renderer?.properties?.get?.(texture)?.__webglTexture; i++) await new Promise(r => requestAnimationFrame(r));
+      if (!this.renderer?.getContext?.()) return;
+      info.upload = uploadArrayMips(this.renderer, texture, got.colour, size, total);
+      if (got.mask && maskTexture) {
+        for (let i = 0; i < 600 && !this.renderer?.properties?.get?.(maskTexture)?.__webglTexture; i++) await new Promise(r => requestAnimationFrame(r));
+        info.maskUpload = uploadArrayMips(this.renderer, maskTexture, got.mask, size, total, got.maskChannels);
+      }
+      if (keep) this.cellMipsKept = { texture, levels: got.colour, size, depth: total, colour, mask: atlas.mask, rolloff: { maskTexture, maskLevels: got.mask, maskChannels, maskBytes, rects } };
+      this.map.triggerRepaint();
+    })().finally(() => { this.cellRolloffPending = false; });
+    return set;
+  }
+  /** True while the roll-off chain is being built or waits for its upload (probes wait for it). */
+  cellRolloffPending = false;
+  /** What the roll-off chain cost and did (null: not built). */
+  cellRolloffInfo: { buildMs: number; options: CellRolloffOptions; size: number; layers: number; levels: number; upload: ArrayMipUploadResult | null; maskUpload: ArrayMipUploadResult | null; rolled: ReturnType<typeof rolloffSummary> } | null = null;
+
+  /** Probe hook (lane R3-E): rebuild the kept roll-off levels with other options (`?cellMipsKeep=1`) and upload them; ms taken. */
+  async setCellRolloffOptions(options: Partial<CellRolloffOptions>): Promise<number> {
+    const kept = this.cellMipsKept;
+    if (!kept?.rolloff) return -1;
+    const started = performance.now(), r = kept.rolloff;
+    const got = await arrayRolloffMips(kept.colour, kept.size, kept.depth, { options: { ...cellRolloffOptions(), ...options }, pitchMask: kept.mask, pitchMaskChannels: 2, mask: r.maskBytes, maskChannels: r.maskChannels, rects: r.rects, sliceMs: 0 });
+    kept.levels = got.colour;
+    uploadArrayMips(this.renderer, kept.texture, got.colour, kept.size, kept.depth);
+    // Mask off: GL's chain for the mask array; on: the rolled-off levels.
+    r.maskLevels = got.mask;
+    this.setMaskMips(got.mask ? 'custom' : 'gl');
+    if (this.cellRolloffInfo) this.cellRolloffInfo.rolled = rolloffSummary(got);
+    this.map.triggerRepaint();
+    return Math.round(performance.now() - started);
+  }
+
+  private setMaskMips(mode: 'custom' | 'gl'): void {
+    const r = this.cellMipsKept?.rolloff, gl = this.renderer?.getContext?.(), t = r?.maskTexture, handle = t && this.renderer?.properties?.get?.(t)?.__webglTexture;
+    if (!gl || !handle) return;
+    if (mode === 'custom' && r?.maskLevels) { uploadArrayMips(this.renderer, t, r.maskLevels, this.cellMipsKept!.size, this.cellMipsKept!.depth, r.maskChannels); return; }
+    this.renderer.state.bindTexture(gl.TEXTURE_2D_ARRAY, handle);
+    gl.generateMipmap(gl.TEXTURE_2D_ARRAY);
+  }
+
+  /**
+   * Diagnosis (lane R3-E #240): replace every level of the live colour array with a flat colour per level
+   * (look/cellMips.ts LEVEL_DEBUG_RGB) and the tint mask with 0 (no tint), so a frame shows which mip level the
+   * sampler reads. One way: reload the page to get the facades back.
+   */
+  setCellMipDebug(): string {
+    const t = this.material?.uniforms?.cells?.value, m = this.material?.uniforms?.masks?.value;
+    const depth = t?.image?.depth, size = t?.image?.width;
+    if (!t || !depth || !size) return 'none';
+    const r = uploadArrayMips(this.renderer, t, debugLevels(size, depth, 4, l => [...(LEVEL_DEBUG_RGB[l] ?? [255, 255, 255]), 255]), size, depth, 4, 0);
+    if (m) uploadArrayMips(this.renderer, m, debugLevels(size, depth, m.format === this.THREE?.RGFormat ? 2 : 1, () => [0, 0]), size, depth, m.format === this.THREE?.RGFormat ? 2 : 1, 0);
+    this.map.triggerRepaint();
+    return r.mode;
+  }
 
   /** Probe hook: rebuild the kept custom levels with other options (look/cellMips.ts) and upload them; ms taken. */
   async setCellMipOptions(options: Partial<ReturnType<typeof cellMipOptions>>): Promise<number> {
@@ -746,6 +831,7 @@ export class ThreeBuildings {
       const r = uploadArrayMips(this.renderer, t, kept.levels, kept.size, kept.depth);
       if (r.mode !== 'custom') return 'gl';
     }
+    if (this.cellMipsKept?.rolloff) this.setMaskMips(mode);
     this.map.triggerRepaint();
     return mode;
   }
@@ -1888,7 +1974,26 @@ export class ThreeBuildings {
   private texturePolicyCache: TextureParams | null = null;
   /** Set by `setCellTierPixelRatio`; null: the map's own ratio. */
   private cellTierRatio: number | null = null;
-  private cellTierValue(): [number, number] { return facadeTierUniform(this.pixelRatio(), this.texturePolicy().tierScale); }
+  private cellTierValue(): [number, number] {
+    const band = this.cellTierBand ?? cellTierBandFlag();
+    return band ? cellTierFromBand(band, this.pixelRatio(), this.texturePolicy().tierScale) : facadeTierUniform(this.pixelRatio(), this.texturePolicy().tierScale);
+  }
+  /** Probe override of the tier band (lane R3-E, `?cellTierBand=` in page): set by setCellTierBand. */
+  private cellTierBand: [number, number] | null = null;
+  /**
+   * Probe hook (lane R3-E #240, the tier-band A/B in one page): the band at DPR 2 (null: back to the constants or the
+   * page's `?cellTierBand=`), applied to every live material at the current ratio. Returns the uniform now set.
+   */
+  setCellTierBand(band: [number, number] | null): [number, number] {
+    this.cellTierBand = band && band.length === 2 && band[1] > band[0] && band[0] > 0 ? [band[0], band[1]] : null;
+    const value = this.cellTierValue();
+    for (const material of new Set([this.material, ...this.materials.values()])) {
+      const u = material?.uniforms?.cellTier;
+      if (u && Array.isArray(u.value) && u.value[0] >= 0) u.value = value;
+    }
+    this.map.triggerRepaint();
+    return value;
+  }
 
   /**
    * The facade tier follows the canvas pixel ratio (lane R1-B #224): the governor steps it down (renderGovernor.ts) and

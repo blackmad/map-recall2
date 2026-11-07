@@ -114,6 +114,8 @@ async function shot(page: Page, spot: typeof CRISP_SPOTS[number]): Promise<Buffe
   await settle(page, `${spot.name} ground re-planned`);
   await jump();
   await settle(page, `${spot.name} second jump`);
+  // The roll-off chain (lane R3-E #240) lands after the first upload: frames only once it is in the storage.
+  await expect.poll(() => page.evaluate(() => !(window as any).canalRecallGame.vectorMap._threeBuildings?.cellRolloffPending), { timeout: 60_000 }).toBe(true);
   await page.evaluate(() => { const f = (window as any).canalRecallGame.vectorMap._sharedFrame; if (f) { f.anchor = null; f.invalidateShadows?.(); } });
   await page.waitForTimeout(Number(process.env.CRISP_HOLD_MS ?? 4000));
   await settle(page, `${spot.name} hold`);
@@ -150,6 +152,14 @@ for (const variant of VARIANTS) {
         if ('mipLinear' in mix.set) mo.linear = !!mix.set.mipLinear;
         if ('mipLobes' in mix.set) mo.lobes = mix.set.mipLobes as number;
         if (Object.keys(mo).length) await page.evaluate((mo) => (window as any).canalRecallGame.vectorMap._threeBuildings.setCellMipOptions(mo), mo);
+        // Lane R3-E (#240): `rolloffPitch=4|rolloffMask=0|1|rolloffLinear=0|1` rebuild the kept roll-off chain
+        // (?cellRolloff=1&cellMipsKeep=1); `cellTierBand=24,45` sets the facade tier band at DPR 2 (0: the constants).
+        const ro: Record<string, number | boolean> = {};
+        if ('rolloffPitch' in mix.set) ro.pitch = mix.set.rolloffPitch as number;
+        if ('rolloffLinear' in mix.set) ro.linear = !!mix.set.rolloffLinear;
+        if ('rolloffMask' in mix.set) ro.mask = !!mix.set.rolloffMask;
+        if (Object.keys(ro).length) await page.evaluate((ro) => (window as any).canalRecallGame.vectorMap._threeBuildings.setCellRolloffOptions(ro), ro);
+        if ('cellTierBand' in mix.set) await page.evaluate((b) => (window as any).canalRecallGame.vectorMap._threeBuildings.setCellTierBand(Array.isArray(b) ? b : null), mix.set.cellTierBand);
         await page.evaluate(([v, set]) => {
           const tb = (window as any).canalRecallGame.vectorMap._threeBuildings;
           for (const m of new Set([tb.material, ...tb.materials.values()])) {
@@ -174,7 +184,7 @@ for (const variant of VARIANTS) {
         const ground = gs ? { ready: gs.ready, visible: gs.visible, blend: gs.blend, basemapHidden: gs.basemapHidden, radiusM: gs.radiusM, cells: Object.keys(gs.cells ?? {}).length, far: gs.far, errors: gs.errors } : null;
         const gl = vm.host?.renderer?.getContext?.(), glErrors: number[] = [];
         for (let k = 0; gl && k < 8; k++) { const e = gl.getError(); if (!e) break; glErrors.push(e); }
-        return { glErrors, ground, tier: perf.tier ?? null, pixelRatio: vm.host?.getPixelRatio?.(), facadeTextureMB: +(t?.stats?.().textureMB ?? 0).toFixed(1), atlas: t?.atlasSource ?? null, textures: i?.memory?.textures ?? null, geometries: i?.memory?.geometries ?? null, cellTier: t?.material?.uniforms?.cellTier?.value ?? null, cellMips: t?.cellMipsInfo ? { buildMs: t.cellMipsInfo.buildMs, upload: t.cellMipsInfo.upload } : null };
+        return { glErrors, ground, tier: perf.tier ?? null, pixelRatio: vm.host?.getPixelRatio?.(), facadeTextureMB: +(t?.stats?.().textureMB ?? 0).toFixed(1), atlas: t?.atlasSource ?? null, textures: i?.memory?.textures ?? null, geometries: i?.memory?.geometries ?? null, cellTier: t?.material?.uniforms?.cellTier?.value ?? null, cellMips: t?.cellMipsInfo ? { buildMs: t.cellMipsInfo.buildMs, upload: t.cellMipsInfo.upload } : null, cellRolloff: t?.cellRolloffInfo ? { buildMs: t.cellRolloffInfo.buildMs, upload: t.cellRolloffInfo.upload, maskUpload: t.cellRolloffInfo.maskUpload, rolled: t.cellRolloffInfo.rolled, options: t.cellRolloffInfo.options } : null };
       });
       const ms = await frameMs(page);
       (results[spot.name] ??= {})[label] = { errors: [...errors.filter(e => /Shader Error|ERROR: /.test(e)).slice(0, 2), ...errors.slice(-3)], query, size: [img.width, img.height], sharpness: { laplacianVar: +s.laplacianVar.toFixed(1), edge: +s.edge.toFixed(2), acutance: +s.acutance.toFixed(1) }, ...state, ...(mix ? { windowSdfMix: mix.value, ...mix.set } : {}), ...ms };
