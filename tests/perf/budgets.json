@@ -185,12 +185,12 @@
         "iphone": 130
       },
       "measured": {
-        "desktop": 250,
-        "iphone": 118
+        "desktop": 272,
+        "iphone": 126
       },
       "unit": "landmark models resident at any sample of the aerial pan",
-      "source": "lane R1-C 2026-11-06 (#225) at 8d9a22a6f, harness scripts/aerial-pan.mjs (npm run perf:aerial): 3-min Free Ride aerial sweep Centrum -> S1 Hoftuin -> S4 Zuidas -> West -> Oost -> Dam at 300 m/s, sampled every 5 s after forced GC; installed Chrome on Metal, headed, desktop 1512x982 DPR 2 and iPhone 13 profile; before ?landmarkReach: 627 desktop (budget 72) / 465 iPhone (budget 24)",
-      "date": "2026-11-06"
+      "source": "lane R3-F 2026-11-07 (#241) at 79ed122ed, harness scripts/aerial-pan.mjs (npm run perf:aerial) headed installed Chrome on Metal, 3-min pan --every 5, lane defaults (groundBasesAerial, labelBudget 4 ms, labelClipTries, aerial POI thinning, sticky winners); run-to-run noise: desktop frames > 100 ranged 29-49 across eight runs of the same bundles",
+      "date": "2026-11-07"
     },
     "aerialGlMaxMB": {
       "value": {
@@ -198,12 +198,12 @@
         "iphone": 400
       },
       "measured": {
-        "desktop": 635,
-        "iphone": 371
+        "desktop": 714.2,
+        "iphone": 368.3
       },
       "unit": "MB GPU resident (glCounters GlResident totalMB) max over the aerial pan",
-      "source": "lane R1-C 2026-11-06 (#225) at 8d9a22a6f, harness scripts/aerial-pan.mjs (npm run perf:aerial): 3-min Free Ride aerial sweep Centrum -> S1 Hoftuin -> S4 Zuidas -> West -> Oost -> Dam at 300 m/s, sampled every 5 s after forced GC; installed Chrome on Metal, headed, desktop 1512x982 DPR 2 and iPhone 13 profile; before: 957 desktop / 577 iPhone",
-      "date": "2026-11-06"
+      "source": "lane R3-F 2026-11-07 (#241) at 79ed122ed, harness scripts/aerial-pan.mjs (npm run perf:aerial) headed installed Chrome on Metal, 3-min pan --every 5, lane defaults (groundBasesAerial, labelBudget 4 ms, labelClipTries, aerial POI thinning, sticky winners); run-to-run noise: desktop frames > 100 ranged 29-49 across eight runs of the same bundles",
+      "date": "2026-11-07"
     },
     "aerialGeometriesMax": {
       "value": {
@@ -237,25 +237,25 @@
       },
       "reportOnly": true,
       "measured": {
-        "desktop": 167,
-        "iphone": 117
+        "desktop": 124.8,
+        "iphone": 100.1
       },
       "unit": "ms frame p99, worst 5 s window of the aerial pan (median window: 100 desktop / 51 iPhone)",
-      "note": "RED TODAY on both profiles; recorded report-only, NOT a passing gate. Owners: GPU fill + shadow map from the air (governor steps DPR 2 -> 0.75), labels occlusion/place, city follow; lever is R2-B baked shells and a label cap at aerial zoom. R2-B (#229) after far shells + label cap: worst window 166.7 / 116.6 ms, median window 83 / 67 ms, frames > 100 ms 36 -> 26 desktop, 15 -> 11 iPhone; windows with a label phase over 10 ms 19 -> 4 on desktop.",
-      "source": "lane R1-C 2026-11-06 (#225) at 8d9a22a6f, harness scripts/aerial-pan.mjs (npm run perf:aerial): 3-min Free Ride aerial sweep Centrum -> S1 Hoftuin -> S4 Zuidas -> West -> Oost -> Dam at 300 m/s, sampled every 5 s after forced GC; installed Chrome on Metal, headed, desktop 1512x982 DPR 2 and iPhone 13 profile; before: 158 / 93 ms desktop, 116 / 75 ms iPhone (worst / median window)",
-      "date": "2026-11-06"
+      "note": "RED on desktop (124.8 worst window, median window 83.3; frames > 100: 38), iPhone 100.1 against the 80 target (median window 50.3, frames > 100: 15); recorded report-only, NOT a passing gate. R3-F (#241) removed the CPU owners: building bases absent while aerial, game frame sum over the worst frames 831 -> 191 ms desktop / 697 -> 154 iPhone, labels worst 88 -> 53 / 15 -> 4 ms. The residual is GPU/compositor-bound: LoAF records 0-4 main-thread frames > 100 ms per run against 31-49 rAF intervals; long windows track draw count (1,035-1,313 vs ~650), landmarks own 1,327 of 1,654 draws at the desktop peak (80 %), own-ground owns the iPhone draws (388-510). Next levers: landmark aerial LOD / batching (proposed R4-B), R4-A coarse tier for the facade share.",
+      "source": "lane R3-F 2026-11-07 (#241) at 79ed122ed, harness scripts/aerial-pan.mjs (npm run perf:aerial) headed installed Chrome on Metal, 3-min pan --every 5, lane defaults (groundBasesAerial, labelBudget 4 ms, labelClipTries, aerial POI thinning, sticky winners); run-to-run noise: desktop frames > 100 ranged 29-49 across eight runs of the same bundles",
+      "date": "2026-11-07"
     },
     "aerialFramesOver250Ms": {
       "value": 0,
       "reportOnly": true,
       "measured": {
-        "desktop": 1,
-        "iphone": 1
+        "desktop": 0,
+        "iphone": 0
       },
       "unit": "frames over 250 ms during the 3-min aerial pan",
-      "note": "RED TODAY (1 / 1: single label-occlusion / city-follow frames, 309 ms desktop, 258 ms iPhone); recorded report-only, NOT a passing gate.",
-      "source": "lane R1-C 2026-11-06 (#225) at 8d9a22a6f, harness scripts/aerial-pan.mjs (npm run perf:aerial): 3-min Free Ride aerial sweep Centrum -> S1 Hoftuin -> S4 Zuidas -> West -> Oost -> Dam at 300 m/s, sampled every 5 s after forced GC; installed Chrome on Metal, headed, desktop 1512x982 DPR 2 and iPhone 13 profile; before: 0 / 0; frames > 100 ms 104 desktop / 34 iPhone after (78 / 17 before)",
-      "date": "2026-11-06"
+      "note": "GREEN after R3-F (#241): 0 / 0 over the 3-min pan with lane defaults (1 iPhone frame of 317 ms with every flag off); recorded report-only.",
+      "source": "lane R3-F 2026-11-07 (#241) at 79ed122ed, harness scripts/aerial-pan.mjs (npm run perf:aerial) headed installed Chrome on Metal, 3-min pan --every 5, lane defaults (groundBasesAerial, labelBudget 4 ms, labelClipTries, aerial POI thinning, sticky winners); run-to-run noise: desktop frames > 100 ranged 29-49 across eight runs of the same bundles",
+      "date": "2026-11-07"
     },
     "farShellCellsMax": {
       "value": {
@@ -292,6 +292,36 @@
       "unit": "max draw calls in a sampled frame of the aerial pan",
       "note": "RED TODAY, report-only: the resident tier alone drew 1,166-2,147 before any far shell (far shells add about 150 at most); the lever is merging coarse chunks per cell in the resident tier, not the far tier.",
       "source": "lane R2-B 2026-11-06 (#229) at 6a72b6283, scripts/aerial-pan.mjs 180 s pan, real Chrome, exclusive lock, staged world with far/ (format 6)"
+    },
+    "aerialGameFrameWorstSumMs": {
+      "value": {
+        "desktop": 250,
+        "iphone": 250
+      },
+      "reportOnly": true,
+      "measured": {
+        "desktop": 191,
+        "iphone": 154
+      },
+      "unit": "ms, sum of the `game frame` phase over the worst frames of the 3-min aerial pan (framePhases=1); main-thread work the game itself owns, before three render main",
+      "note": "R3-F (#241): 831 -> 191 desktop, 697 -> 154 iPhone once building bases are held off aerial frames and time-sliced on catch-up (?groundBasesAerial=0 restores). Report-only row proposed by the lane; the value is a provisional ceiling, tighten after R3-G/R4-A.",
+      "source": "lane R3-F 2026-11-07 (#241) at 79ed122ed, harness scripts/aerial-pan.mjs (npm run perf:aerial) headed installed Chrome on Metal, 3-min pan --every 5, lane defaults (groundBasesAerial, labelBudget 4 ms, labelClipTries, aerial POI thinning, sticky winners); run-to-run noise: desktop frames > 100 ranged 29-49 across eight runs of the same bundles",
+      "date": "2026-11-07"
+    },
+    "aerialLabelChurnPerSec": {
+      "value": {
+        "desktop": 25,
+        "iphone": 12
+      },
+      "reportOnly": true,
+      "measured": {
+        "desktop": 16.7,
+        "iphone": 7.9
+      },
+      "unit": "label entries + exits per second over the 3-min aerial pan (labelStats.churn per full placement x placements per second)",
+      "note": "R3-F (#241): 102.8 -> 16.7 desktop, 45.4 -> 7.9 iPhone with sticky winners (?labelSticky=0), the 800 ms aerial cadence and aerial POI thinning (?labelAerialPois=1 restores). The user's 'bouncing labels' from the air. Report-only row proposed by the lane.",
+      "source": "lane R3-F 2026-11-07 (#241) at 79ed122ed, harness scripts/aerial-pan.mjs (npm run perf:aerial) headed installed Chrome on Metal, 3-min pan --every 5, lane defaults (groundBasesAerial, labelBudget 4 ms, labelClipTries, aerial POI thinning, sticky winners); run-to-run noise: desktop frames > 100 ranged 29-49 across eight runs of the same bundles",
+      "date": "2026-11-07"
     }
   },
   "_desktopPerfViewport": {
