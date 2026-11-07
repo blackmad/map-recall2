@@ -3,6 +3,53 @@
   "notes": [
     {
       "date": "2026-11-07",
+      "title": "Panning across the city from the air is smoother",
+      "text": "Panning across the city from the air is smoother: the building bases that used to be re-fitted to the ground on every aerial frame now wait until you come back down, and are then fitted in small slices. Label placement is budgeted per frame as well. The remaining long frames from the air are GPU-bound (landmark draws), which the next engine lane takes on.",
+      "images": [
+        {
+          "src": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/engine/2026-11-07-r3f/aerial-desktop-t60-s1-hoftuin.jpg",
+          "alt": "Aerial pan frame over the Hoftuin, main build beside the lane build: the look is unchanged",
+          "caption": "Aerial pan over the Hoftuin, main beside the lane: same look, fewer long frames."
+        }
+      ]
+    },
+    {
+      "date": "2026-11-07",
+      "title": "From the air, the map shows places, not every shop",
+      "text": "From the air, the map shows neighbourhood and water names instead of every shop and café, and labels no longer jump around while you pan. Museums, churches, stations, parks and your route's own markers stay; each neighbourhood name is placed once.",
+      "images": [
+        {
+          "src": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/engine/2026-11-07-r3f/r3f-labels-desktop-sarphatipark-north.jpg",
+          "alt": "Overview above Sarphatipark looking north: before with every shop and café labelled, after with neighbourhood names and landmarks only",
+          "caption": "Above Sarphatipark looking north, desktop: before (every shop and café) above after (neighbourhoods, water and landmarks)."
+        },
+        {
+          "src": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/engine/2026-11-07-r3f/r3f-labels-desktop-chassebuurt-north.jpg",
+          "alt": "Overview above Chassébuurt: before with retail labels, after with the neighbourhood name placed once",
+          "caption": "Above Chassébuurt: the retail labels go and CHASSÉBUURT is placed once."
+        }
+      ]
+    },
+    {
+      "date": "2026-11-07",
+      "title": "The turn-pad hint sits centred in its bar",
+      "text": "On phones, the one-line hint above the turn pad (\"tap to ride — ◀ ▶ turn at the next corner, ↺ turns round\") is now vertically centred in its rounded bar instead of sitting a little low."
+    },
+    {
+      "date": "2026-11-07",
+      "title": "Waste containers stand in a row, on their plates",
+      "text": "Underground waste containers now line up along the kerb the way they do on the street, evenly spaced and all facing the same way. Each one stands on its steel base plate, which used to vanish under the pavement.",
+      "where": [
+        4.89719,
+        52.357005
+      ],
+      "images": [
+        "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/whats-new/2026-11-07-container-rows-pijp-before.png",
+        "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/whats-new/2026-11-07-container-rows-pijp.png"
+      ]
+    },
+    {
+      "date": "2026-11-07",
       "title": "Underground containers at their true width",
       "text": "The underground waste containers on the street corners are now as wide as the real ones. Each has angled corner strips, access doors on the sides and the three Amsterdam crosses. A dark front panel carries a light bag, bottle or sheet. Glass has its round hole in the slope and paper its slot, each under a yellow or blue band across the top. The rest container's stainless drum sits in the slope above the lip.",
       "where": [

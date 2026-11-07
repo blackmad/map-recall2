@@ -153,7 +153,7 @@ export class CityExtras {
     // the ride's first frame; lane E2 #215): staged, one consumer per call (per frame). `?stagedGroundHook=0`: all at once.
     const steps = [
       () => this.trees?.setGroundBase?.((lngLat: [number, number]) => ground.pointBase(lngLat)),
-      () => this.furniture?.setGroundBase?.((lngLat: [number, number]) => ground.pointBase(lngLat)),
+      () => this.furniture?.setGroundBase?.((lngLat: [number, number]) => ground.surfaceBase?.(lngLat) ?? ground.pointBase(lngLat)),
       () => this.signature?.setGroundBase?.((anchor: [number, number], halfM: number) => ground.pointBase(anchor, halfM)),
     ];
     do steps[this.hookStep++](); while (!staged && this.hookStep < steps.length);

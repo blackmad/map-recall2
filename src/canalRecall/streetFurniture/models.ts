@@ -312,6 +312,27 @@ export function columnModel(): FurnitureMesh {
   return b.done('ad-column');
 }
 
+/**
+ * The ride's base lift over the bare relief (user 2026-11-07, "still sunk a bit?"): the pavement planes are drawn at
+ * roadSurfaces SIDEWALK_TOP (LIFT.raisedBase 0.03 + kerb 0.11 = 0.14 m) and drape up to DRAPE_TOL float 0.03 m over
+ * hollows, so furniture placed on the relief lost its plate and lowest 0.14-0.17 m under the paving. 0.15 m puts the
+ * 0.04 m plate's top at 0.19 m, over the highest pavement plane. Pinned against SIDEWALK_TOP in streetFurniture.test.ts.
+ */
+export const RIDE_BASE_LIFT_M = 0.15;
+/** Container plates in the ride carry a skirt this far below their base, so a plate on a lower carriageway-level spot (a parking strip at 0.03 m) shows a plinth edge, not a gap. */
+export const RIDE_PLATE_SKIRT_M = 0.2;
+
+/** The ride's mesh: the gallery model, plus the plate skirt on containers. */
+export function rideModel(id: FurnitureModelId): FurnitureMesh {
+  const m = FURNITURE_MODELS[id]();
+  if (!id.startsWith('container')) return m;
+  const D = DIMENSIONS.container, b = new Builder(), h = D.plate / 2;
+  b.box(-h, -h, -RIDE_PLATE_SKIRT_M, h, h, 0, T.containerPlateEdge, false, false);
+  const positions = new Float32Array(m.positions.length + b.p.length), colours = new Float32Array(m.colours.length + b.c.length);
+  positions.set(m.positions); positions.set(b.p, m.positions.length); colours.set(m.colours); colours.set(b.c, m.colours.length);
+  return { ...m, positions, colours, triangles: positions.length / 9 };
+}
+
 export const FURNITURE_MODELS: Readonly<Record<FurnitureModelId, () => FurnitureMesh>> = {
   container: () => containerModel('container'), 'container-glas': () => containerModel('container-glas'), 'container-papier': () => containerModel('container-papier'), 'lamp-lantern': lanternModel, 'lamp-pole': poleModel, bin: binModel, 'bike-rack': hoopModel, abri: abriModel, 'ad-column': columnModel,
 };
