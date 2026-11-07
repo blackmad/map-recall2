@@ -8,6 +8,8 @@
  *    bell gable keeps its silhouette in front of a side-sloped roof.
  */
 import * as T from 'three';
+import {canalhouseOpeningRecess} from '../canalhouseOpeningRecess.ts';
+import {cutNativeFacadeAperture} from '../canalhouseNativeAperture.ts';
 import {compileCanalHouseRecipe, type CanalHouseRecipe} from '../canalhouseRecipes.ts';
 import type {BuildingFacts} from './facts.ts';
 import {fitIntent, ROOF_COLOURS, type FitReport} from './fit.ts';
@@ -185,6 +187,17 @@ export function backJogs(group: T.Group, recipe: CanalHouseRecipe, fit: FitRepor
     const mesh = new T.Mesh(g, (shell?.material as T.Material) ?? new T.MeshStandardMaterial({color: recipe.palette.value.wall}));
     mesh.name = `shell/jog-backing-${f.id}`; mesh.userData = {component: 'shell', surface: 'wall', pandId: recipe.house.pandId};
     group.add(mesh); filled++;
+    // A door reveal on this front (doorReveal.ts, #239): the backing stands across the cavity's mouth; cut the cavity out of
+    // it (every face inside the cavity's box), or it hides the recessed leaf. Loggias and other recesses keep their backing.
+    const facade = group.getObjectByName(`elevation/${f.id}`), openings = recipe.elevations.find(e => e.id === f.id)?.openings.value ?? [];
+    for (const o of facade ? openings : []) {
+      const rr = o.recessReturns;
+      if (o.recessM === undefined || (rr?.sillSurface === undefined && rr?.omit === undefined)) continue;
+      const recess = canalhouseOpeningRecess(o)!;
+      group.updateMatrixWorld(true);
+      const cut = cutNativeFacadeAperture(mesh.geometry, facade!.matrixWorld.clone().invert().multiply(mesh.matrixWorld), {leftM: o.leftM, bottomM: o.bottomM, widthM: o.widthM, heightM: recess.arch ? recess.arch.cutTopM - o.bottomM : o.heightM, depthM: recess.cutDepthM}, true, true);
+      if (cut.geometry !== mesh.geometry) { mesh.geometry.dispose(); mesh.geometry = cut.geometry; }
+    }
   }
   return filled;
 }

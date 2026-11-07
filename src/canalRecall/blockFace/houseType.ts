@@ -293,6 +293,13 @@ export function resolvePlacement(t: HouseTypeIntent, place: HousePlacement, stre
     if (perHouse && Object.keys(perHouse).length) { if ('shopfront' in perHouse) delete f.groundFront; if ('groundFront' in perHouse) { delete f.shopfront; f.basement = 'none'; } f = {...f, ...perHouse}; }
     const door = m.doorBay !== undefined ? m.doorBay : place.doorBay;
     if (door !== undefined) f.doorBay = door;
+    // A house's own ground (a shop with a residential door) keeps the type's measured door reveal (its default ground's
+    // `doorReveal`, #239) on the door it still has; `doorReveal: null` in the house's ground drops it.
+    if (perHouse && Object.keys(perHouse).length) {
+      const typeReveal = t.grounds && Object.keys(t.grounds).length ? Object.values(t.grounds)[0].doorReveal : undefined;
+      if ((f as {doorReveal?: unknown}).doorReveal === null) delete f.doorReveal;
+      else if (typeReveal && !('doorReveal' in perHouse) && !f.groundFront && !f.doorArch && (f.shopfront ? !!f.shopfront.residentialDoor : f.doorBay !== null)) f.doorReveal = typeReveal;
+    }
     return f;
   });
   const paletteName = place.palette ?? Object.keys(t.palettes)[0], named = t.palettes[paletteName];

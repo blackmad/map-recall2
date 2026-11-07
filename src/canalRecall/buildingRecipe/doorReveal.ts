@@ -12,7 +12,13 @@
  *
  * `FrontIntent.doorReveal` is a ground field (a type's ground variant). It reuses the canal-house recess path
  * (canalhouseOpeningRecess.ts) as the loggia does (frontLoggia.ts): two stacked recessed openings that share one cavity.
- * Absent = byte-identical. An arched door (`doorArch`) cannot be recessed yet (the recess path is rectangular).
+ * Absent = byte-identical.
+ *
+ * Round 2 (#239): the cavity's jambs and soffit are shaded toward the leaf (`DOOR_REVEAL.shade`, measured with
+ * scripts/block-face/door-shade.ts on the lit brick jamb of three reveals: Burgerstraat 0.45 m and Eerste Helmersstraat
+ * 0.25 m, luma relative to the mouth band 1 / 0.80 / 0.78 in thirds of the depth), and an arched door (`doorArch`) cuts
+ * an arched cavity: the leaf at the back keeps its round head, an intrados lining follows the arch, and the wall around
+ * the arch stays on the face.
  */
 import type {CanalhouseOpening} from '../canalhouseRecipes.ts';
 
@@ -42,7 +48,9 @@ const KEYS = ['form', 'deep', 'steps', 'riser', 'jamb', 'span', 'sideDoors', 'le
 const num = (v: unknown, lo: number, hi: number) => typeof v === 'number' && Number.isFinite(v) && v >= lo && v <= hi;
 /** The cavity's 4 cm linings stand inside the opening, over the frame's outer edge: the frames are drawn 4 cm wider so
  * the white frame keeps the 8 cm (door) and 6 cm (fanlight) the flush door shows. */
-export const DOOR_REVEAL = {riser: 0.17, sideDoorM: 0.9, sideDoorH: 2.3, doorTrim: 0.12, fanTrim: 0.1} as const;
+export const DOOR_REVEAL = {riser: 0.17, sideDoorM: 0.9, sideDoorH: 2.3, doorTrim: 0.12, fanTrim: 0.1,
+  /** Lining colour per third of the depth, mouth to leaf (door-shade.ts medians, see the module note). */
+  shade: [1, 0.8, 0.78] as readonly number[]} as const;
 
 /** Problems with `doorReveal` on one front (`door`: the front has a door it can recess). */
 export function doorRevealProblems(d: unknown, front: {doorBay: number | null; doorArch?: unknown; groundFront?: unknown; shopfront?: {residentialDoor?: unknown}}, at: string): string[] {
@@ -58,7 +66,6 @@ export function doorRevealProblems(d: unknown, front: {doorBay: number | null; d
   if (o.span !== undefined && !num(o.span, 0.9, 2.6)) p.push(`${a}.span: 0.9..2.6 m`);
   if (o.sideDoors !== undefined && (typeof o.sideDoors !== 'boolean' || (o.sideDoors && (o.form !== 'portiek' || !num(o.deep, 0.9, 1.5))))) p.push(`${a}.sideDoors: a portiek at least 0.9 m deep`);
   if (o.leaf !== undefined && o.leaf !== 'door' && o.leaf !== 'glazed') p.push(`${a}.leaf: door | glazed`);
-  if (front.doorArch !== undefined) p.push(`${a}: an arched door (doorArch) cannot be recessed yet`);
   if (front.groundFront !== undefined) p.push(`${a}: a groundFront draws its own doors`);
   if (front.doorBay === null && !front.shopfront?.residentialDoor) p.push(`${a}: needs a door (doorBay or a shop's residentialDoor)`);
   return p;
@@ -70,15 +77,16 @@ const r3 = (v: number) => Math.round(v * 1000) / 1000;
  * The door (and fanlight, when `transomH` > 0) of a front with a reveal: the same leaf and fanlight as the flush door,
  * the fanlight moved down onto the door's head so the two cut one cavity (top unchanged), both `deep` behind the wall.
  */
-export function doorRevealOpenings(d: DoorRevealIntent, left: number, bottom: number, width: number, doorH: number, transomH: number): CanalhouseOpening[] {
+export function doorRevealOpenings(d: DoorRevealIntent, left: number, bottom: number, width: number, doorH: number, transomH: number, arch?: {rise: number; segments: number}): CanalhouseOpening[] {
   const jambSurface = d.jamb === 'stone' || d.jamb === 'plaster' ? 'stone' as const : 'wall' as const;
-  const fan = transomH > 0.2, steps = d.steps ?? 0, riseM = d.riser ?? DOOR_REVEAL.riser;
+  const fan = !arch && transomH > 0.2, steps = d.steps ?? 0, riseM = d.riser ?? DOOR_REVEAL.riser;
   const landing = steps * riseM;
-  const sideDoors = d.sideDoors ? {widthM: r3(Math.min(DOOR_REVEAL.sideDoorM, d.deep - 0.3)), heightM: r3(Math.min(DOOR_REVEAL.sideDoorH, doorH - landing - 0.05))} : undefined;
-  const door: CanalhouseOpening = {id: 'door', kind: 'door', leftM: left, bottomM: bottom, widthM: width, heightM: doorH, trimWidthM: DOOR_REVEAL.doorTrim, verticalBars: [.5],
+  const sideDoors = d.sideDoors ? {widthM: r3(Math.min(DOOR_REVEAL.sideDoorM, d.deep - 0.3)), heightM: r3(Math.min(DOOR_REVEAL.sideDoorH, doorH - (arch?.rise ?? 0) - landing - 0.05))} : undefined;
+  const shade = [...DOOR_REVEAL.shade];
+  const door: CanalhouseOpening = {id: 'door', kind: 'door', leftM: left, bottomM: bottom, widthM: width, heightM: doorH, ...(arch ? {head: 'segmental' as const, headRiseM: arch.rise, headSegments: arch.segments} : {}), trimWidthM: DOOR_REVEAL.doorTrim, ...(arch ? {} : {verticalBars: [.5]}),
     paneSurface: d.leaf === 'glazed' ? 'glass' : 'door', frameSurface: 'trim', barSurface: 'trim', recessM: d.deep,
-    recessReturns: {glazedSides: [], ...(fan ? {omit: ['soffit' as const]} : {}), jambSurface, sillSurface: 'stone', ...(steps ? {steps: {count: steps, riseM}} : {}), ...(sideDoors ? {sideDoors} : {})}};
+    recessReturns: {glazedSides: [], ...(fan ? {omit: ['soffit' as const]} : {}), jambSurface, sillSurface: 'stone', ...(steps ? {steps: {count: steps, riseM}} : {}), ...(sideDoors ? {sideDoors} : {}), shade, ...(fan ? {jambsM: r3(doorH + transomH + 0.06)} : {})}};
   if (!fan) return [door];
   return [door, {id: 'door-transom', kind: 'window', leftM: left, bottomM: r3(bottom + doorH), widthM: width, heightM: r3(transomH + 0.06), trimWidthM: DOOR_REVEAL.fanTrim, frameSurface: 'trim', barSurface: 'trim',
-    recessM: d.deep, recessReturns: {glazedSides: [], omit: ['sill'], jambSurface}}];
+    recessM: d.deep, recessReturns: {glazedSides: [], omit: ['sill', 'jambs'], jambSurface, shade}}];
 }

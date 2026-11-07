@@ -48,13 +48,26 @@ export interface CanalhouseOpening {
   recessReturns?:{glazedSides:('left'|'right')[];soffitSurface?:'wall'|'door'|'trim';
     /** Door reveal (buildingRecipe/doorReveal.ts): linings two stacked openings share, the cavity's jamb/sill finish,
      * the steps on its floor and a portiek's side-wall doors. Absent = byte-identical (canalhouseOpeningRecess.ts). */
-    omit?:('sill'|'soffit')[];jambSurface?:'wall'|'stone'|'trim';sillSurface?:'wall'|'stone';steps?:{count:number;riseM:number};sideDoors?:{widthM:number;heightM:number}};
+    omit?:('sill'|'soffit'|'jambs')[];jambSurface?:'wall'|'stone'|'trim';sillSurface?:'wall'|'stone';steps?:{count:number;riseM:number};sideDoors?:{widthM:number;heightM:number};
+    /** Lining colour per depth band, mouth to back (2..4 factors, 0.3..1, non-increasing; #239, canalhouseOpeningRecess.ts). */
+    shade?:number[];
+    /** Jamb height (m from the opening's bottom) when a door's jambs run on through the fanlight over it (#239). */
+    jambsM?:number};
   /** Source-selected narrow sash bars can differ from the outer jamb width. */
   mullionWidthM?: number;
   /** Explicit observed grille segments in opening-relative coordinates. */
   diagonalBars?: [CanalhousePoint, CanalhousePoint][];
   /** Source-selected door-leaf layout only; absent/empty never invents panels. */
   panels?: CanalhouseDoorPanel[];
+}
+/**
+ * Points of a segmental/round head's arc, right springing to left (the sampling of the opening frame's outline), `inset`
+ * inside it: a head `rise` high over the springing line `ys`, spanning `x`..`x + w`. Used by arched recesses (#239).
+ */
+export function archPoints(x:number,w:number,ys:number,rise:number,inset:number,segments:number):[number,number][]{
+  const radius=w*w/(8*rise)+rise/2,cy=ys+rise-radius,r=radius-inset,half=w/2-inset,out:[number,number][]=[];
+  for(let i=0;i<=segments;i++){const u=half-2*half*i/segments;out.push([x+w/2+u,cy+Math.sqrt(Math.max(0,r*r-u*u))]);}
+  return out;
 }
 /** Strips of an arched dormer roof (`CanalhouseDormer.roofProfile: 'arch'`). */
 export const ARCH_SEGMENTS = 8;
@@ -353,6 +366,13 @@ export function compileCanalHouseRecipe(recipe: CanalHouseRecipe): CompiledCanal
   const add = (geometry:T.BufferGeometry,surface:keyof typeof palette,name:string,parent:T.Group=group) => {
     const mesh=new T.Mesh(geometry,(facadeMaterials.get(parent)??materials)[surface]); mesh.name=name; mesh.userData={component:name.split('/')[0],surface,pandId:recipe.house.pandId}; parent.add(mesh); return mesh;
   };
+  // Shaded recess linings (#239): the lining's material at `f` of its sRGB colour, one per material and factor.
+  const shaded=new Map<string,T.MeshStandardMaterial>();
+  const shadedMaterial=(m:T.MeshStandardMaterial,f:number)=>{
+    const key=`${m.uuid}|${f}`;let s=shaded.get(key);
+    if(!s){s=m.clone();const c=m.color.clone().convertLinearToSRGB();s.color.setRGB(c.r*f,c.g*f,c.b*f,T.SRGBColorSpace);s.userData={...m.userData};shaded.set(key,s);}
+    return s;
+  };
   for(const [i,p] of polygons.entries()) add(openTopPrism(shape(p),shellBase,shellTop),'wall',`shell/${i}`);
   const roofs=read(recipe.roof,'roof'); if(!roofs.length) throw new Error('Missing explicit roof planes');
   const netArea=(p:CanalhousePolygon)=>Math.abs(area(p.outer))-p.holes.reduce((sum,h)=>sum+Math.abs(area(h)),0);
@@ -450,7 +470,7 @@ export function compileCanalHouseRecipe(recipe: CanalHouseRecipe): CompiledCanal
     }
   }
   const elevationIds=new Set<string>(), openingIds=new Set<string>();
-  const recessed:{facade:T.Group;opening:CanalhouseOpening;depthM:number}[]=[];
+  const recessed:{facade:T.Group;opening:CanalhouseOpening;depthM:number;heightM?:number}[]=[];
   for(const elevation of recipe.elevations){
     const eaves=elevation.bodyEavesM?read(elevation.bodyEavesM,`${elevation.id}/bodyEavesM`):recipe.house.eavesHeightM.value;
     positive(eaves);if(shellTop>eaves+EPS)throw new Error('Shell top exceeds observed frontage body');
@@ -485,7 +505,14 @@ export function compileCanalHouseRecipe(recipe: CanalHouseRecipe): CompiledCanal
     }
     facade.matrix.set(ux,0,nx,a[0]+nx*outward, 0,1,0,0, uz,0,nz,a[1]+nz*outward, 0,0,0,1);facade.matrixAutoUpdate=false;group.add(facade);
     const box=(x:number,y:number,w:number,h:number,d:number,depth:number,s:keyof typeof palette,name:string)=>{
-      positive(w,h,d);finite(x,y,depth);const g=new T.BoxGeometry(w,h,d);g.translate(x+w/2,y+h/2,depth);add(g,s,name,facade);
+      positive(w,h,d);finite(x,y,depth);const g=new T.BoxGeometry(w,h,d);g.translate(x+w/2,y+h/2,depth);return add(g,s,name,facade);
+    };
+    // An arched opening's intrados lining: the band between the head's arc (the frame's outer arc) and the arc `rim` inside it.
+    const archLining=(r:{x:number;y:number;w:number;surface:string;z?:number;d?:number;arch?:{rise:number}},o:CanalhouseOpening,depth:number,label:string)=>{
+      const rim=Math.min(.04,o.trimWidthM/2),n=o.headSegments??16,outer=archPoints(r.x,r.w,r.y,r.arch!.rise,0,n),inner=archPoints(r.x,r.w,r.y,r.arch!.rise,rim,n);
+      const band=new T.Shape();band.moveTo(outer[0][0],outer[0][1]);for(const p of outer.slice(1))band.lineTo(p[0],p[1]);for(const p of [...inner].reverse())band.lineTo(p[0],p[1]);band.closePath();
+      const d=r.d??depth,g=new T.ExtrudeGeometry(band,{depth:d,bevelEnabled:false,curveSegments:1});g.translate(0,0,(r.z??-depth/2)-d/2);
+      return add(g,r.surface as keyof typeof palette,label,facade);
     };
     if(elevation.hoists){
       const seen=new Set<string>();
@@ -657,14 +684,28 @@ export function compileCanalHouseRecipe(recipe: CanalHouseRecipe): CompiledCanal
       if(recess){
         for(const child of facade.children.slice(firstOpeningChild))if(child instanceof T.Mesh)child.geometry.translate(0,0,-recess.depthM);
         for(const r of recess.returns){
-          box(r.x,r.y,r.w,r.h,r.d??recess.depthM,r.z??-recess.depthM/2,r.surface,`${name}/recess/${r.id}`);
+          const lining=r.arch?archLining(r,o,recess.depthM,`${name}/recess/${r.id}`):box(r.x,r.y,r.w,r.h,r.d??recess.depthM,r.z??-recess.depthM/2,r.surface,`${name}/recess/${r.id}`);
+          if(r.shade!==undefined){
+            lining.material=shadedMaterial(lining.material as T.MeshStandardMaterial,r.shade);
+            // Bands meet inside the cavity: drop their end faces there (a row of them read as a wall plane to the GLB audit).
+            const front=(r.z??0)+(r.d??0)/2,back=(r.z??0)-(r.d??0)/2,g=lining.geometry.index?lining.geometry.toNonIndexed():lining.geometry,pos=g.getAttribute('position'),nor=g.getAttribute('normal'),keep:number[]=[];
+            for(let i=0;i<pos.count;i+=3){const nz=nor.getZ(i),z=pos.getZ(i);if(Math.abs(nz)>.99&&((nz>0&&front<-1e-6&&Math.abs(z-front)<1e-6)||(nz<0&&back>-recess.depthM+1e-6&&Math.abs(z-back)<1e-6)))continue;for(let k=0;k<3;k++)keep.push(i+k);}
+            if(keep.length<pos.count){const out=new T.BufferGeometry();for(const name of Object.keys(g.attributes)){const at=g.getAttribute(name),arr:number[]=[];for(const i of keep)for(let c=0;c<at.itemSize;c++)arr.push(at.getComponent(i,c));out.setAttribute(name,new T.Float32BufferAttribute(arr,at.itemSize));}lining.geometry.dispose();lining.geometry=out;}
+          }
           if(r.surface==='glass'){
             const f=Math.min(o.trimWidthM,.07),d=recess.depthM;
             for(const y of [r.y,r.y+r.h-f])box(r.x,y,r.w,f,d,-d/2,frameSurface,`${name}/recess/${r.id}/horizontal-frame`);
             for(const z of [-d+f/2,-f/2])box(r.x,r.y+f,r.w,r.h-2*f,f,z,frameSurface,`${name}/recess/${r.id}/vertical-frame`);
           }
         }
-        recessed.push({facade,opening:o,depthM:recess.cutDepthM});
+        if(recess.arch){
+          // The wall between the cut's rectangle (to 3 cm over the apex) and the arch, on the wall face: an arch ring stays on the wall.
+          const sp=new T.Shape(),ys=o.bottomM+o.heightM-recess.arch.rise;
+          sp.moveTo(o.leftM,ys);sp.lineTo(o.leftM,recess.arch.cutTopM);sp.lineTo(o.leftM+o.widthM,recess.arch.cutTopM);sp.lineTo(o.leftM+o.widthM,ys);
+          for(const [px,py] of archPoints(o.leftM,o.widthM,ys,recess.arch.rise,0,o.headSegments??16).slice(1,-1))sp.lineTo(px,py);
+          sp.closePath();const g=new T.ShapeGeometry(sp);g.translate(0,0,-outward);add(g,'wall',`${name}/recess/spandrel`,facade);
+        }
+        recessed.push({facade,opening:o,depthM:recess.cutDepthM,...(recess.arch?{heightM:recess.arch.cutTopM-o.bottomM}:{})});
       }
     }
     if(elevation.glazedBays){
@@ -1182,14 +1223,16 @@ export function compileCanalHouseRecipe(recipe: CanalHouseRecipe): CompiledCanal
   // wall hosts once they all exist; roofs, neighbors, ornaments and returns stay.
   if(recessed.length){
     group.updateMatrixWorld(true);
-    for(const {facade,opening:o,depthM} of recessed){
+    for(const {facade,opening:o,depthM,heightM} of recessed){
       const inverse=facade.matrixWorld.clone().invert();let removed=0;
       group.traverse(child=>{
         if(!(child instanceof T.Mesh))return;
         const native=child.parent===group&&child.userData.surface==='wall'&&(child.name.startsWith('shell/')||child.name.startsWith('roof/step-wall'));
         const crown=child.parent===facade&&child.name===`crown/${recipe.house.gable.value}`;
         if(!native&&!crown)return;
-        const cut=cutNativeFacadeAperture(child.geometry,inverse.clone().multiply(child.matrixWorld),{leftM:o.leftM,bottomM:o.bottomM,widthM:o.widthM,heightM:o.heightM,depthM},o.recessReturns?.sillSurface!==undefined||o.recessReturns?.omit!==undefined);
+        // Door reveals (tidy): native step faces of a jogged front inside the cavity are cut too (#239, the slivers).
+        const tidy=o.recessReturns?.sillSurface!==undefined||o.recessReturns?.omit!==undefined;
+        const cut=cutNativeFacadeAperture(child.geometry,inverse.clone().multiply(child.matrixWorld),{leftM:o.leftM,bottomM:o.bottomM,widthM:o.widthM,heightM:heightM??o.heightM,depthM},tidy,tidy&&native);
         if(cut.geometry!==child.geometry){child.geometry.dispose();child.geometry=cut.geometry;}removed+=cut.removedAreaM2;
       });
       if(removed<.001)throw Error('Declared opening recess has no matching native host wall');

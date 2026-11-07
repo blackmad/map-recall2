@@ -2,10 +2,13 @@ import * as T from 'three';
 /** An explicit aperture in native vertical walls; roofs and other planes remain intact. */
 export interface NativeFacadeAperture {leftM:number;bottomM:number;widthM:number;heightM:number;depthM:number}
 type Vertex={local:T.Vector3;attributes:Record<string,number[]>};
-/** `tidy` (door reveals, buildingRecipe/doorReveal.ts): triangles wholly outside the aperture's box pass through
+/** `allFaces` (#239): every vertical face inside the aperture's box is cut (a native jog's step face crossing a door
+ * reveal's cavity drew a full-height sliver through it), not only those facing the street (a jog backing, a
+ * solid prism standing across a door reveal's mouth). Absent = facade-facing faces only, byte-identical.
+ * `tidy` (door reveals, buildingRecipe/doorReveal.ts): triangles wholly outside the aperture's box pass through
  * unsplit, and clipped pieces with a sub-millimetre edge are dropped, so the cut leaves no degenerate slivers for the
  * GLB audit. Absent = the original clipping, byte-identical. */
-export function cutNativeFacadeAperture(geometry:T.BufferGeometry,nativeToFacade:T.Matrix4,a:NativeFacadeAperture,tidy=false):{geometry:T.BufferGeometry;removedAreaM2:number}{
+export function cutNativeFacadeAperture(geometry:T.BufferGeometry,nativeToFacade:T.Matrix4,a:NativeFacadeAperture,tidy=false,allFaces=false):{geometry:T.BufferGeometry;removedAreaM2:number}{
  if(!Object.values(a).every(Number.isFinite)||a.widthM<=0||a.heightM<=0||a.depthM<=0||a.depthM>2)throw Error('Invalid native facade aperture');
  const position=geometry.getAttribute('position'),names=Object.keys(geometry.attributes),out:Record<string,number[]>={},index=geometry.index;
  for(const name of names)out[name]=[];
@@ -25,7 +28,7 @@ export function cutNativeFacadeAperture(geometry:T.BufferGeometry,nativeToFacade
  let removedAreaM2=0;
  for(let i=0;i<(index?.count??position.count);i+=3){
   const triangle=[0,1,2].map(j=>vertex(index?index.getX(i+j):i+j)),normal=triangle[1].local.clone().sub(triangle[0].local).cross(triangle[2].local.clone().sub(triangle[0].local)).normalize();
-  if(Math.abs(normal.z)<.98){emit(triangle);continue;}
+  if(allFaces?Math.abs(normal.y)>.5:Math.abs(normal.z)<.98){emit(triangle);continue;}
   if(tidy){
    const lo=(k:'x'|'y'|'z')=>Math.min(...triangle.map(v=>v.local[k])),hi=(k:'x'|'y'|'z')=>Math.max(...triangle.map(v=>v.local[k]));
    if(hi('x')<=a.leftM||lo('x')>=a.leftM+a.widthM||hi('y')<=a.bottomM||lo('y')>=a.bottomM+a.heightM||hi('z')<=-a.depthM||lo('z')>=.05){for(const v of triangle)for(const name of names)out[name].push(...v.attributes[name]);continue;}

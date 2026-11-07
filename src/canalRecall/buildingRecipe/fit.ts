@@ -349,6 +349,8 @@ function layoutFront(f: FrontIntent, width: number, heightTop: number): Layout {
         if (f.doorArch) {
           // Round-arched portiek: a semicircular head (rise = half the span) whose crown stands at `apex`, no transom.
           const rise = Math.floor(doorWidth / 2 * 1000) / 1000, apex = Math.min(f.doorArch.apex, h - 0.15);
+          // With a `doorReveal` the arched opening is cut as an arched cavity, the leaf at its back (doorReveal.ts, #239).
+          if (f.doorReveal) { openings.push(...doorRevealOpenings(f.doorReveal, doorLeft, y, doorWidth, round(apex), 0, {rise, segments: 12})); continue; }
           openings.push({id: 'door', kind: 'door', leftM: doorLeft, bottomM: y, widthM: doorWidth, heightM: round(apex), head: 'segmental', headRiseM: rise, headSegments: 12, trimWidthM: 0.08, paneSurface: 'door', frameSurface: 'trim', barSurface: 'trim'});
           continue;
         }
