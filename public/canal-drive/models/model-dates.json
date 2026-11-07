@@ -327,13 +327,13 @@
       "dateSource": "asset-update"
     },
     "barlaeus-gymnasium": {
-      "updatedAt": "2026-11-06T23:44:51.511Z",
-      "version": "e38753c555670b61",
+      "updatedAt": "2026-11-07T00:22:24.446Z",
+      "version": "d7d51ae641ae54b1",
       "dateSource": "asset-update"
     },
     "barlaeus-gymnasium.lod1": {
-      "updatedAt": "2026-11-06T23:45:50.224Z",
-      "version": "432102bef960f924",
+      "updatedAt": "2026-11-07T00:24:21.012Z",
+      "version": "d71a96ffb2ae803f",
       "dateSource": "asset-update"
     },
     "beest-boulders": {
@@ -504,6 +504,11 @@
     "brand-bij-ca": {
       "updatedAt": "2026-11-06T23:55:13.786Z",
       "version": "56a468177685e8e9",
+      "dateSource": "asset-update"
+    },
+    "brand-bij-ca.lod1": {
+      "updatedAt": "2026-11-06T23:55:55.823Z",
+      "version": "4b19707a1528f6a4",
       "dateSource": "asset-update"
     },
     "breitner-tower": {
@@ -1024,6 +1029,16 @@
     "dorus-theus-brug.lod1": {
       "updatedAt": "2026-10-23T20:23:30.347Z",
       "version": "c851a015af5af978",
+      "dateSource": "asset-update"
+    },
+    "doubletree-centraal": {
+      "updatedAt": "2026-11-07T00:25:36.998Z",
+      "version": "cf781ef4dbfe81e5",
+      "dateSource": "asset-update"
+    },
+    "doubletree-centraal.lod1": {
+      "updatedAt": "2026-11-07T00:24:21.064Z",
+      "version": "dd48b8d93d3afaf9",
       "dateSource": "asset-update"
     },
     "droogbak": {

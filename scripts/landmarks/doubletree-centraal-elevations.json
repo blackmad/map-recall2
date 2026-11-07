@@ -1,0 +1,29 @@
+{
+ "id": "doubletree-centraal",
+ "countedBy": "lane #235 (opus) from the rectified panorama crop w07-251 of landmark-brief.ts (artifacts/landmark-briefs/doubletree-centraal/); ribbon convention (a continuous window band per storey counts as one); span pins the west front over the Starbucks corner. Not a blind count; the integrator may re-count.",
+ "facades": [
+  {
+   "name": "West front over the Starbucks corner: hotel ribbons",
+   "bearing": 251,
+   "photo": "artifacts/landmark-briefs/doubletree-centraal/w07-251.jpg",
+   "span": [
+    -41.91,
+    -32.11
+   ],
+   "frontDepth": 41.3,
+   "depthBand": 0.8,
+   "heightM": [
+    10.6,
+    21.4
+   ],
+   "rows": [
+    1,
+    1,
+    1
+   ],
+   "columns": 1,
+   "symmetric": false,
+   "note": "Panorama TMX7316010203-002532_pano_0000_001646 (2022-04-21). Three ribbon windows of the hotel storeys within the 21.5 m crop (sills at about 11.0, 13.9 and 16.8 m on the photo against 12.4, 15.5 and 18.6 m in the model, which uses the w17-210 storey grid on every face); the two-storey glazed ground floor and the canopy are under heightM."
+  }
+ ]
+}

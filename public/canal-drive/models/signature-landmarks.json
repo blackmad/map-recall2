@@ -85428,7 +85428,7 @@
       "materialOverrides": {
         "stone": "#7a7466",
         "brick": "#73605b",
-        "greyBrick": "#5e4e44",
+        "greyBrick": "#7b6a5c",
         "white": "#e4e2da",
         "slate": "#4f5558",
         "concrete": "#6a6a66",
@@ -85476,10 +85476,10 @@
         "depthCoverage": 1.0305695186387624
       },
       "triangles": 11743,
-      "bytes": 165412,
+      "bytes": 165408,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "lod1": {
-        "sourceHash": "e38753c555670b61",
+        "sourceHash": "d7d51ae641ae54b1",
         "buildVersion": 2,
         "bytes": 55708,
         "triangles": 3017
@@ -85571,6 +85571,114 @@
         "buildVersion": 2,
         "bytes": 76316,
         "triangles": 4738
+      }
+    },
+    "doubletree-centraal": {
+      "id": "doubletree-centraal",
+      "name": "DoubleTree by Hilton Amsterdam Centraal Station",
+      "modelUrl": "./models/doubletree-centraal.glb",
+      "suppressOsmIds": [
+        "NL.IMBAG.Pand.0363100012237484",
+        "w1486076092",
+        "w1486076093",
+        "w1486076095",
+        "w1486076096",
+        "w1486076097",
+        "w1486076098",
+        "w1486076099",
+        "w1486076100",
+        "w1486076101",
+        "w1486076103",
+        "w1486076104",
+        "w1486076105",
+        "w1486076106",
+        "w1486076107",
+        "w1486076108",
+        "w1512730512",
+        "w1512730513",
+        "w1512730514",
+        "w1512730515",
+        "w1512730516",
+        "w1512730517"
+      ],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.90510367,
+          52.37666465
+        ],
+        "headingDegrees": 0,
+        "lengthMetres": 113,
+        "widthMetres": 88.3
+      },
+      "surveyed": {
+        "anchor": [
+          4.90510367,
+          52.37666465
+        ],
+        "northOffsetDegrees": 0,
+        "source": "Vertex average of the BAG 0363100012237484 ring (RD, PDOK BAG WFS, CC0) in native east/south metres above the 3DBAG ground 1.033 m NAP (scripts/landmarks/doubletree-centraal-footprints.json, written by sarphati-plaza-prepare.ts --id=doubletree-centraal --pand=0363100012237484). Massing from the 3DBAG LoD2.2 roof pieces (CC BY 4.0); every exposed wall band carries the storey grid read on Gemeente Amsterdam panorama crops (CC BY 4.0) listed per wall in scripts/landmarks/doubletree-centraal-inventory.json."
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 0,
+      "heightMetres": 43.7,
+      "bagYear": 2011,
+      "materialOverrides": {
+        "greyBrick": "#4b4a48",
+        "gold": "#e8e9e6",
+        "white": "#eeeeea",
+        "slate": "#7a7d7e",
+        "concrete": "#8c8b86",
+        "bronze": "#3a3a38",
+        "glass": "#5f6c72",
+        "dark": "#2a2c2b",
+        "frame": "#eeeeea"
+      },
+      "attribution": {
+        "title": "DoubleTree by Hilton Amsterdam Centraal Station, Oosterdoksstraat 4, Amsterdam (2011)",
+        "author": "Map Recall",
+        "sourceUrl": "https://bag.basisregistraties.overheid.nl/bag/id/pand/0363100012237484",
+        "licence": "CC BY 4.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "modifications": "Original texture-free flat-colour geometry on the BAG footprint (CC0) with 3DBAG LoD2.2 heights (CC BY 4.0): the stepped dark grey brick hotel block with ribbon windows under grey bands, the two-storey glazed ground floor between brick piers with the terrace canopy on the Oosterdok, and the white panel cladding of the entrance volume; read from Gemeente Amsterdam panoramas (CC BY 4.0)."
+      },
+      "buildingCategory": "landmark",
+      "bounds": {
+        "min": [
+          -64.68141174316406,
+          0,
+          -59.11188507080078
+        ],
+        "max": [
+          49.3067741394043,
+          43.88999938964844,
+          31.57111930847168
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.90510367,
+          52.37666465
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 90,
+        "facadeBearingDegrees": 0,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 113.98818588256836,
+        "heightMetres": 43.88999938964844,
+        "depthMetres": 90.68300437927246,
+        "depthCoverage": 1.0269875920642408
+      },
+      "triangles": 34933,
+      "bytes": 482676,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
+      "lod1": {
+        "sourceHash": "cf781ef4dbfe81e5",
+        "buildVersion": 2,
+        "bytes": 196684,
+        "triangles": 14329
       }
     }
   }
