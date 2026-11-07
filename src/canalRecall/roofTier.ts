@@ -88,6 +88,109 @@ vec3 roofTierColour(vec3 fine, vec2 uv, float layer, float dist) {
 }`;
 
 /**
+ * The footprint prefilter of the facade cell sample (lane R4-D #246, `?cellTaps=1`, off by default: CELL_TAPS_DEFAULT).
+ *
+ * At the user's S3 pose (`s3-slab-user`) the slab's long street wall is plain minification at 16-32 texels per device
+ * pixel (R3-D #233): the sampler reads mip 4-5 of the 256 px cell, where the window pitch is near the texel pitch, and
+ * GL's box chain keeps ~71 % of that contrast per level (R3-E #240). One trilinear tap of a near-Nyquist grid is the
+ * moire. Where rho (texels per framebuffer pixel, the tier's own measure) passes `threshold`, the sample becomes `taps`
+ * samples spread over the pixel footprint (dFdx / dFdy of the cell uv), each read with its gradient scaled by `grad`
+ * (0.5: one level finer than the pixel), and averaged with tent weights before the tier mix. That is a supersample of
+ * the pixel in the shader: the same filter the 2x supersampled alias reference applies. Below the threshold one tap,
+ * exactly as before; the weight ramps over [threshold, 1.25 x threshold] so no seam is drawn where it starts.
+ *
+ * `cellTaps` uniform: (threshold texels/px, taps 2 | 4 | 9, spread px between taps, grad scale). `cellTapsSdf` widens the
+ * analytic windows' edge filter by that factor where the taps are on, so the glazing bars are filtered with the wall
+ * (look/windowSdf.ts reads `cellTapW`).
+ */
+export const CELL_TAPS_DEFAULT = false;
+/** Default knobs: threshold in texels per framebuffer pixel (scaled by the policy's tierScale, like the tier). */
+export const CELL_TAPS = { threshold: 16, taps: 4, spread: 0.5, grad: 0.5, sdf: 1 } as const;
+export type CellTapsOptions = { threshold: number; taps: number; spread: number; grad: number; sdf: number };
+
+const CELL_TAPS_GLSL = /* glsl */ `
+uniform vec4 cellTaps;
+uniform float cellTapsSdf;
+float cellTapW = 0.0;
+float cellTapsWeight(float rho) { return cellTaps.y > 1.5 && cellTaps.x >= 0.0 ? smoothstep(cellTaps.x, max(1.25 * cellTaps.x, cellTaps.x + 1e-3), rho) : 0.0; }
+void cellTapsSample(vec3 p, vec2 dx, vec2 dy, out vec4 cc, out vec2 mm) {
+  cc = vec4(0.0); mm = vec2(0.0);
+  float s = cellTaps.z;
+  if (cellTaps.y > 6.5) {
+    // 3 x 3 at -s, 0, s on both screen axes, tent weights 1/4 1/2 1/4.
+    vec2 gx = dx * cellTaps.w, gy = dy * cellTaps.w;
+    for (int j = -1; j <= 1; j++) for (int i = -1; i <= 1; i++) {
+      float w = (i == 0 ? 0.5 : 0.25) * (j == 0 ? 0.5 : 0.25);
+      vec3 q = vec3(p.xy + (float(i) * s) * dx + (float(j) * s) * dy, p.z);
+      cc += w * textureGrad(cells, q, gx, gy); mm += w * textureGrad(masks, q, gx, gy).rg;
+    }
+  } else if (cellTaps.y > 3.5) {
+    // 2 x 2 at +-s/2 on both screen axes, equal weights (the tent of a two-tap row).
+    vec2 gx = dx * cellTaps.w, gy = dy * cellTaps.w;
+    for (int j = 0; j < 2; j++) for (int i = 0; i < 2; i++) {
+      vec3 q = vec3(p.xy + ((float(i) - 0.5) * s) * dx + ((float(j) - 0.5) * s) * dy, p.z);
+      cc += 0.25 * textureGrad(cells, q, gx, gy); mm += 0.25 * textureGrad(masks, q, gx, gy).rg;
+    }
+  } else {
+    // 2 taps at +-s/2 along the longer screen derivative; only that axis's gradient is scaled.
+    bool alongX = dot(dx, dx) >= dot(dy, dy);
+    vec2 ax = alongX ? dx : dy;
+    vec2 gx = alongX ? dx * cellTaps.w : dx, gy = alongX ? dy : dy * cellTaps.w;
+    for (int i = 0; i < 2; i++) {
+      vec3 q = vec3(p.xy + ((float(i) - 0.5) * s) * ax, p.z);
+      cc += 0.5 * textureGrad(cells, q, gx, gy); mm += 0.5 * textureGrad(masks, q, gx, gy).rg;
+    }
+  }
+}`;
+
+/** The tap weight on the CPU (the shader's `cellTapsWeight`): 0 at or below the threshold, 1 from 1.25 x threshold. */
+export function cellTapsWeight(rho: number, threshold: number, taps = 4): number {
+  if (!(taps > 1.5) || !(threshold >= 0)) return 0;
+  return smoothstep(threshold, Math.max(1.25 * threshold, threshold + 1e-3), rho);
+}
+
+/** The tap pattern on the CPU (the shader's `cellTapsSample`): offsets in screen pixels (x along dFdx, y along dFdy) and weights. */
+export function cellTapPattern(taps: number, spread: number): { x: number; y: number; w: number }[] {
+  if (taps > 6.5) {
+    const out: { x: number; y: number; w: number }[] = [];
+    for (let j = -1; j <= 1; j++) for (let i = -1; i <= 1; i++) out.push({ x: i * spread, y: j * spread, w: (i === 0 ? 0.5 : 0.25) * (j === 0 ? 0.5 : 0.25) });
+    return out;
+  }
+  if (taps > 3.5) return [[0, 0], [1, 0], [0, 1], [1, 1]].map(([i, j]) => ({ x: (i - 0.5) * spread, y: (j - 0.5) * spread, w: 0.25 }));
+  return [0, 1].map(i => ({ x: (i - 0.5) * spread, y: 0, w: 0.5 }));
+}
+
+const tapsParam = (name: string): string | null => {
+  try { return typeof URLSearchParams === 'function' ? new URLSearchParams(((globalThis as Record<string, unknown>).location as { search?: string } | undefined)?.search ?? '').get(name) : null; } catch { return null; }
+};
+
+/** `?cellTaps=1` / `=0` (or `window.__canalRecallCellTaps`); unasked, CELL_TAPS_DEFAULT. Off: no define, no uniform. */
+export function cellTapsEnabled(): boolean {
+  const asked = (globalThis as Record<string, unknown>).__canalRecallCellTaps ?? tapsParam('cellTaps');
+  if (asked === false || asked === '0' || asked === 'false' || asked === 'off') return false;
+  if (asked === true || asked === '1' || asked === 'true' || asked === 'on') return true;
+  return CELL_TAPS_DEFAULT;
+}
+
+/** The knobs for this page: `?cellTapsAt=` (threshold), `?cellTapsN=` (2, 4, 9), `?cellTapsSpread=`, `?cellTapsGrad=`, `?cellTapsSdf=`. */
+export function cellTapsOptions(): CellTapsOptions {
+  const num = (name: string, fallback: number, ok: (v: number) => boolean) => { const raw = tapsParam(name); const v = raw == null ? NaN : Number(raw); return Number.isFinite(v) && ok(v) ? v : fallback; };
+  return {
+    threshold: num('cellTapsAt', CELL_TAPS.threshold, v => v >= 0),
+    taps: num('cellTapsN', CELL_TAPS.taps, v => v === 2 || v === 4 || v === 9),
+    spread: num('cellTapsSpread', CELL_TAPS.spread, v => v >= 0),
+    grad: num('cellTapsGrad', CELL_TAPS.grad, v => v > 0),
+    sdf: num('cellTapsSdf', CELL_TAPS.sdf, v => v >= 1),
+  };
+}
+
+/** Uniform values: `cellTaps` = (threshold x tierScale, taps, spread, grad), `cellTapsSdf`. */
+export function cellTapsUniform(options: CellTapsOptions = CELL_TAPS, tierScale = 1): { cellTaps: [number, number, number, number]; cellTapsSdf: number } {
+  const k = Number.isFinite(tierScale) && tierScale > 0 ? tierScale : 1;
+  return { cellTaps: [options.threshold * k, options.taps, options.spread, options.grad], cellTapsSdf: options.sdf };
+}
+
+/**
  * GLSL: `cellTierSample(p, dist, c, m)` replaces `texture(cells, p)` / `texture(masks, p)` for facade cells. Needs
  * both samplers above it. `dist` (eye metres) drives the depth fade's detail blend when the scene fades
  * (USE_FOG, look/depthFade.ts). Within the near tier it is
@@ -113,6 +216,9 @@ float cellRhoEff = 0.0; float cellUnder = 0.0; float cellFarFlat = 0.0; float ce
 #ifdef CELL_LOD_BIAS
 // ?cellLodBias=<b> (lane R3-B #231, look/cellMips.ts): a mip bias on the facade cell sample, the cheap sharpness A/B.
 uniform float cellLodBias;
+#endif
+#ifdef CELL_TAPS
+${CELL_TAPS_GLSL}
 #endif
 void cellTierSample(vec3 p, float dist, out vec3 c, out vec2 m) {
 #ifdef CELL_LOD_BIAS
@@ -166,6 +272,18 @@ void cellTierSample(vec3 p, float dist, out vec3 c, out vec2 m) {
 #endif
 #ifdef CELL_TIER_PROBE
   cellFar = far;
+#endif
+#ifdef CELL_TAPS
+  // The footprint prefilter (lane R4-D #246): above the threshold the one sample becomes several over the pixel (skipped
+  // where the tier or the depth fade has made the texel wholly the mean colour).
+  if (far < 1.0) {
+    vec2 tdx = dFdx(p.xy), tdy = dFdy(p.xy);
+    cellTapW = cellTapsWeight(max(length(tdx), length(tdy)) * float(textureSize(cells, 0).x));
+    if (cellTapW > 0.0) {
+      vec4 tc; vec2 tm; cellTapsSample(p, tdx, tdy, tc, tm);
+      c = mix(c, tc.rgb, cellTapW); m = mix(m, vec2(tm.r, ${accentGlsl('tm', 'tc')}), cellTapW);
+    }
+  }
 #endif
   if (far <= 0.0) return;
   vec4 fc = textureLod(cells, p, ${CELL_MEAN_LOD_GLSL}); vec2 fm = textureLod(masks, p, ${CELL_MEAN_LOD_GLSL}).rg;
