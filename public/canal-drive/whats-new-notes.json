@@ -3,6 +3,23 @@
   "notes": [
     {
       "date": "2026-11-07",
+      "title": "Landmarks seen from the air draw as one piece",
+      "text": "Landmarks seen from the air draw as one piece: beyond about 500 m from the view centre, or when a model is smaller than 12 px, each modelled landmark switches to a light stand-in (around 2 % of its triangles, towers and spires kept), and all of them draw in one or two calls instead of hundreds. Up close nothing changes. Add ?landmarkLod2=0 to the ride link to compare.",
+      "images": [
+        {
+          "src": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/engine/2026-11-07-r4b/r4b-s1-hoftuin.jpg",
+          "alt": "Aerial view over the Hoftuin: main build, light stand-ins, and stand-ins batched into one draw; the three panels look the same",
+          "caption": "Over the Hoftuin from the air: main, stand-ins, stand-ins batched. The skyline reads the same."
+        },
+        {
+          "src": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/engine/2026-11-07-r4b/r4b-crop-westerkerk.jpg",
+          "alt": "Four-times crop of the Westerkerk tower: full model beside its stand-in",
+          "caption": "Westerkerk at four times magnification: the stand-in keeps the tower and spire; its windows coarsen to dark triangles, which is on the board."
+        }
+      ]
+    },
+    {
+      "date": "2026-11-07",
       "title": "Panning across the city from the air is smoother",
       "text": "Panning across the city from the air is smoother: the building bases that used to be re-fitted to the ground on every aerial frame now wait until you come back down, and are then fitted in small slices. Label placement is budgeted per frame as well. The remaining long frames from the air are GPU-bound (landmark draws), which the next engine lane takes on.",
       "images": [
