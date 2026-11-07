@@ -102,15 +102,27 @@ export class LabelLayer {
    * From the air (lane R3-F #241, the user 2026-11-07 above Sarphatipark: "way fewer labels at this zoom, maybe almost
    * none"): map POIs are candidates only when marked `aerial` (signature landmarks); neighbourhood, water and street
    * names and the game's own points are unaffected. The world view sets it while isAerialView holds
-   * (`?labelAerialPois=1` keeps every POI).
+   * (`?labelAerialPois=all` keeps every POI).
    */
   get aerialPoisOnly(): boolean { return this._aerialPoisOnly; }
   /**
    * From the air a neighbourhood name is placed once (lane R3-F #241): the overview gives Chassébuurt two anchors
    * ~560 m apart (a split polygon), and both landed in the user's frame. Of the anchors in view the last winner stays,
-   * else the one nearest the view centre. Set with `aerialPoisOnly` (`?labelAerialPois=1` off).
+   * else the one nearest the view centre. Set with `aerialPoisOnly` (`?labelAerialPois=all` off).
    */
   hoodsOnce = false;
+  /**
+   * From the air at most this many map POIs compete (lane R3-F #241 follow-up, the user above Sarphatipark: "way fewer
+   * labels at this zoom, maybe almost none"; the signature-landmark set alone still put 34 names in the far centre
+   * band). Ranked by priority less AERIAL_POI_PER_M per metre from the view centre, so the landmarks near the
+   * camera you would tap win over a far one with a higher score (the extract's prominence puts Boom Chicago at 344
+   * over the Rijksmuseum at 309 and the Sarphatimonument at 231); the last winners rank AERIAL_POI_STICKY higher
+   * when `sticky`. Neighbourhood, water and street names and the game's points are not capped. `null`: no cap.
+   * The world view sets it while aerial (`?labelAerialPois=N` sets N, `?labelAerialPois=all` keeps every POI).
+   */
+  get aerialPoiMax(): number | null { return this._aerialPoiMax; }
+  set aerialPoiMax(n: number | null) { if (n !== this._aerialPoiMax) { this._aerialPoiMax = n; this.rev++; } }
+  private _aerialPoiMax: number | null = null;
   set aerialPoisOnly(on: boolean) { if (on !== this._aerialPoisOnly) { this._aerialPoisOnly = on; this.rev++; } }
   private _aerialPoisOnly = false;
   private aerialPoiIds = new Set<string>();
@@ -379,6 +391,12 @@ export class LabelLayer {
       }
       for (const c of [...seen]) if (c.kind === 'hood' && keep.get(c.text) !== c) seen.delete(c);
     }
+    if (this._aerialPoiMax !== null && pose) {
+      const pois = [...seen].filter(c => c.kind === 'poi');
+      if (pois.length > this._aerialPoiMax) {
+        for (const c of rankAerialPois(pois, pose, this.sticky ? this.winners : null).slice(this._aerialPoiMax)) seen.delete(c);
+      }
+    }
     // Game point labels always compete first (priority above every map label).
     for (const points of this.extra.values()) for (const p of points) seen.add({ id: p.id, text: p.text, kind: p.kind, priority: 1e6 + p.priority, at: toLocal(p.lngLat[0], p.lngLat[1]), minZoom: p.minZoom ?? 0 });
     const options = {
@@ -516,6 +534,19 @@ export type LabelPose = readonly [number, number, number, number, number];
  * a class step between a minor street and a neighbourhood name (streets 1,000-8,999, water 8,000+, hoods 9,000).
  */
 export const STICKY_PRIORITY = 1500;
+/** Map POIs from the air (labelLayer aerialPoiMax): the most that compete, lane R3-F #241 follow-up. */
+export const AERIAL_POI_MAX = 10;
+/** Priority a POI loses per metre from the view centre in the aerial cap's ranking (1 km = 100 prominence points). */
+export const AERIAL_POI_PER_M = 0.1;
+/** The last winners' head start in the aerial cap's ranking (as if 500 m nearer), so the capped set does not flicker. */
+export const AERIAL_POI_STICKY = 50;
+
+/** The aerial cap's ranking (labelLayer aerialPoiMax): priority less distance, winners ahead by AERIAL_POI_STICKY. */
+export function rankAerialPois(pois: LabelCandidate[], pose: readonly number[], winners: ReadonlySet<string> | null): LabelCandidate[] {
+  const score = new Map(pois.map(c => [c, c.priority - (c.at ? Math.hypot(c.at[0] - pose[0], c.at[1] - pose[1]) : Infinity) * AERIAL_POI_PER_M
+    + (winners?.has(c.id) ? AERIAL_POI_STICKY : 0)] as const));
+  return [...pois].sort((a, b) => score.get(b)! - score.get(a)! || (a.id < b.id ? -1 : a.id > b.id ? 1 : 0));
+}
 /** Re-placements after dropping occluded winners; newcomers hidden after the last one are dropped, not replaced. */
 const OCCLUSION_ROUNDS = 3;
 /** Sightlines spent per frame re-testing drawn winners between full placements (a sightline is ~10-30 us). */
