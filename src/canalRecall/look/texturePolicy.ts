@@ -6,8 +6,8 @@
 // drawn detail was thrown away on the way into the array, and the ground canvases filtered at anisotropy 4 at the
 // chase camera's grazing angle (rails and kerbs smeared along the view).
 //
-// Desktop `high` tier: HIGH_CELL_PX facade cells (pinned 256 at integration; `?cellPx=` up to 512 for A/B) and anisotropy
-// min(gpuMax, 16) on every array and ground canvas. `mid`, `low`, touch and any page without a tier (the legacy
+// Desktop `high` tier: HIGH_CELL_PX facade cells (pinned 256 at integration; `?cellPx=` up to 512 for A/B), anisotropy
+// min(gpuMax, 16) on the slot array and ground canvases and HIGH_FACADE_ANISOTROPY (4, lane R3-E #240) on the facade arrays. `mid`, `low`, touch and any page without a tier (the legacy
 // MapLibre layer, galleries) keep exactly the values they had: 256 px (128 on touch) cells at 16 (4 on touch), ground 4.
 // `?texturePolicy=0` (or `window.__canalRecallTexturePolicy = false`) restores those values everywhere, byte for byte.
 //
@@ -30,6 +30,8 @@ export interface TexturePolicyInput {
   enabled: boolean;
   /** `?cellPx=384` (desktop high only, A/B of the memory cost): another cell side in 257..512. */
   cellPx?: number | null;
+  /** `?texAniso=16` (desktop high only): the facade arrays' anisotropy instead of HIGH_FACADE_ANISOTROPY. */
+  facadeAnisotropy?: number | null;
 }
 
 export interface TextureParams {
@@ -54,6 +56,16 @@ export const HIGH_CELL_PX = 256;
 /** The largest side `?cellPx=` may ask for on desktop high (A/B only). */
 export const MAX_CELL_PX = 512;
 export const HIGH_ANISOTROPY = 16;
+/**
+ * Desktop `high`: the facade colour and tint-mask arrays' sampler anisotropy (lane R3-E #240). The user's S3 shimmer
+ * (the 1962 slab on Weesperstraat, `s3-slab-user`) is the window texture on a wall seen edge-on: 16x anisotropic
+ * filtering draws it from mip 2.5-3.5 (measured with level-coloured mips) with a one-pixel box along the wall, over
+ * windows 1-2 px wide and 4-8 px apart. Capping the filter at 4x reads it a level coarser along the wall: aliasPx with
+ * the analytic windows (the desktop look) 39,321 -> 30,049 (-24 %), while the Da Costakade quay houses (S2, frontal,
+ * anisotropy under 4:1) keep their sharpness (lapVar -0.4 / -0.4 / -1.0 % at user / chase / near). 2x reached the
+ * gate at the slab (21,616) but cost S2 -9 to -11 %. Touch already ran at 4. `?texAniso=16` restores the old value.
+ */
+export const HIGH_FACADE_ANISOTROPY = 4;
 /** What the ground canvases always used (gameGround.ts canvasTexture). */
 export const LEGACY_GROUND_ANISOTROPY = 4;
 /** What the city look's own slot-only array used without an option (look/cityLook.ts createCityLook). */
@@ -69,13 +81,24 @@ export function legacyTextureParams(kind: TextureKind, input: Pick<TexturePolicy
   return { ...base, cellPx, anisotropy, tierScale: 1 };
 }
 
-/** The policy: desktop `high` gets HIGH_CELL_PX cells (or `?cellPx=`) and 16x anisotropy everywhere; everything else is `legacyTextureParams`. */
+/** The policy: desktop `high` gets HIGH_CELL_PX cells (or `?cellPx=`), HIGH_FACADE_ANISOTROPY on the facade arrays (or `?texAniso=`) and 16x on the rest; everything else is `legacyTextureParams`. */
 export function texturePolicy(kind: TextureKind, input: TexturePolicyInput): TextureParams {
   if (!input.enabled || input.coarse || input.tier !== 'high') return legacyTextureParams(kind, input);
   const gpu = Number.isFinite(input.gpuMaxAnisotropy) && input.gpuMaxAnisotropy >= 1 ? input.gpuMaxAnisotropy : 1;
   const asked = Number(input.cellPx);
   const cellPx = Number.isInteger(asked) && asked > BASE_CELL_PX && asked <= MAX_CELL_PX && asked % 32 === 0 ? asked : HIGH_CELL_PX;
-  return { ...base, cellPx, anisotropy: Math.min(gpu, HIGH_ANISOTROPY), tierScale: cellPx / BASE_CELL_PX };
+  const askedAniso = Number(input.facadeAnisotropy);
+  const want = kind === 'facadeCells' ? (Number.isFinite(askedAniso) && askedAniso >= 1 ? Math.min(askedAniso, HIGH_ANISOTROPY) : HIGH_FACADE_ANISOTROPY) : HIGH_ANISOTROPY;
+  return { ...base, cellPx, anisotropy: Math.min(gpu, want), tierScale: cellPx / BASE_CELL_PX };
+}
+
+/** `?texAniso=16` (or `window.__canalRecallTexAniso`): the desktop-high facade arrays' anisotropy; null: HIGH_FACADE_ANISOTROPY. */
+export function pageTexAniso(): number | null {
+  try {
+    const g = globalThis as { __canalRecallTexAniso?: number | string; location?: { search?: string } };
+    const n = Number(g.__canalRecallTexAniso ?? (typeof URLSearchParams === 'function' ? new URLSearchParams(g.location?.search ?? '').get('texAniso') : null) ?? NaN);
+    return Number.isFinite(n) && n >= 1 ? n : null;
+  } catch { return null; }
 }
 
 /** `?texturePolicy=0` / `window.__canalRecallTexturePolicy = false`: off. On by default. */
@@ -108,7 +131,7 @@ export function pageCoarsePointer(): boolean {
 
 /** The policy for this page: its tier, pointer and flag, and the renderer's anisotropy ceiling. */
 export function pageTextureParams(kind: TextureKind, gpuMaxAnisotropy: number): TextureParams {
-  return texturePolicy(kind, { tier: pageTextureTier(), coarse: pageCoarsePointer(), gpuMaxAnisotropy, enabled: texturePolicyFlag(), cellPx: pageCellPx() });
+  return texturePolicy(kind, { tier: pageTextureTier(), coarse: pageCoarsePointer(), gpuMaxAnisotropy, enabled: texturePolicyFlag(), cellPx: pageCellPx(), facadeAnisotropy: pageTexAniso() });
 }
 
 /** Bytes a mipmapped 2D array texture holds on the GPU (full chain), for the texture budget rows. */

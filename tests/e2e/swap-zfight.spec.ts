@@ -100,7 +100,7 @@ test('swap z-fight: no moving stripes on the Weesperstraat slab while its detail
   await settle(page);
   // The roll-off chain (lane R3-E #240) is built after the first upload: measure only once it is in the storage.
   await expect.poll(() => page.evaluate(() => !(window as any).canalRecallGame.vectorMap._threeBuildings.cellRolloffPending), { timeout: 60_000 }).toBe(true);
-  console.log('swap-zfight rolloff', JSON.stringify(await page.evaluate(() => { const i = (window as any).canalRecallGame.vectorMap._threeBuildings.cellRolloffInfo; return i ? { buildMs: i.buildMs, upload: i.upload, maskUpload: i.maskUpload, rolled: i.rolled, options: i.options } : null; })));
+  console.log('swap-zfight rolloff', JSON.stringify(await page.evaluate(() => { const tb = (window as any).canalRecallGame.vectorMap._threeBuildings, i = tb.cellRolloffInfo; return { tier: (window as any).__canalPerf?.tier ?? null, texAniso: tb.material?.uniforms?.cells?.value?.anisotropy ?? null, rolloff: i ? { buildMs: i.buildMs, upload: i.upload, maskUpload: i.maskUpload, rolled: i.rolled, options: i.options } : null }; })));
   // Hold the world camera at the spot's pose (the game no longer drives it), with the player's vehicle off every layer.
   const pose = await page.evaluate((spot) => {
     const vm = (window as any).canalRecallGame.vectorMap, cm = vm.cameraMap, g = vm._ownGround;
