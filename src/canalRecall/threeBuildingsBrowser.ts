@@ -1527,9 +1527,21 @@ export class ThreeBuildings {
    * its relief; call `refreshGroundBases()` when more relief is resident.
    */
   setGroundBase(fn: GroundBaseFn | null): void {
+    const had = !!this.groundBase;
     this.groundBase = fn;
+    // Lane R4-A (#243): a chunk installed before the ground was known has no lift and no CPU positions left, so it
+    // would stay at z 0 under lifted neighbours for good (the swap-zfight excess at s1-hoftuin: the slab's extras sat
+    // 0.6 m off its detail chunk once the baked shells let the city start before the ground). Rebuild those once.
+    if (fn && !had) {
+      let queued = 0;
+      for (const [key, entry] of this.chunks) if (entry.mesh && !entry.lift && key !== KIT_KEY && !key.startsWith(BOAT_PREFIX)) { this.pending.push(key, () => this.rebuild(key, entry.source)); queued++; }
+      this.groundLateRebuilds += queued;
+      if (queued) this.pump();
+    }
     this.refreshGroundBases();
   }
+  /** Chunks rebuilt because they were installed before the ground base was set (specs read it). */
+  groundLateRebuilds = 0;
 
   /**
    * Apply bases that became known since install (or since the last refresh). Returns buildings lifted.
