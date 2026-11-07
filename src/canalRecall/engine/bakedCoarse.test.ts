@@ -251,3 +251,33 @@ test('BakedCoarse: at street level a near cell keeps its positions and lifts bui
   const last = h3.added.at(-1)!;
   assert.ok(last.geometry.getAttribute('position').array instanceof Float32Array);
 });
+
+test('BakedCoarse paceInstalls (?arrivalPace, lane R4-E #248): fetched cells wait and install one a frame, nearest first; a cell planned away while waiting never installs and is not fetched twice', async () => {
+  const h = harness(['0_0', '1_0', '2_0', '3_0']);
+  const baked = new BakedCoarse(h.host, { budget: { cells: 10, triangles: 1e6 }, paceInstalls: true });
+  baked.update(centre[0], centre[1], false);
+  baked.plan(new Set(['0_0', '1_0', '2_0', '3_0']));
+  await settle(); await settle();
+  assert.equal(h.fetched.length, 4, 'every fetch went out (BAKED_INFLIGHT 4)');
+  assert.equal(h.added.length, 0, 'nothing installs on the fetch');
+  assert.equal(baked.stats().pending, 4);
+  const t = performance.now() + 1000;
+  baked.frame(t); baked.frame(t + 1);
+  assert.deepEqual(h.added.map(m => m.name), ['baked-coarse/0_0'], 'one install in one frame (two calls 1 ms apart), the nearest');
+  baked.frame(t + 16);
+  assert.deepEqual(h.added.map(m => m.name), ['baked-coarse/0_0', 'baked-coarse/1_0']);
+  // 3_0 is planned away while it waits: it is dropped, and a re-plan does not fetch the waiting 2_0 again.
+  baked.plan(new Set(['0_0', '1_0', '2_0']));
+  await settle();
+  assert.equal(h.fetched.length, 4, 'the waiting cell is not fetched again');
+  baked.frame(t + 32); baked.frame(t + 48);
+  assert.deepEqual(h.added.map(m => m.name).sort(), ['baked-coarse/0_0', 'baked-coarse/1_0', 'baked-coarse/2_0']);
+  assert.equal(baked.stats().pending, 0);
+  // Unpaced (the default): installs on the fetch, as before.
+  const h2 = harness(['0_0', '1_0']);
+  const b2 = new BakedCoarse(h2.host, { budget: { cells: 10, triangles: 1e6 } });
+  b2.update(centre[0], centre[1], false);
+  b2.plan(new Set(['0_0', '1_0']));
+  await settle(); await settle();
+  assert.equal(h2.added.length, 2);
+});

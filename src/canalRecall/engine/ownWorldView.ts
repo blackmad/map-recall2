@@ -40,6 +40,7 @@ import { BUILDING_LOOK_IDS, urlBuildingLook } from './worldViewApi';
 import { FlatLines, type LngLatLine } from './overlays/flatLines';
 import { FarShells, farCellOrigin, farShellsEnabled } from './farShells';
 import { BakedCoarse, bakedCoarseEnabled } from './bakedCoarse';
+import { arrivalPaceOption } from './arrivalPace';
 import { isAerialView } from '../rendererShared/aerialView';
 import { BASE_REFRESH_BUDGET_MS } from '../rendererShared/baseRefreshBudget';
 import { ToonPost, toonLookFlag } from './toonLook';
@@ -729,7 +730,7 @@ export class OwnWorldView implements WorldViewOracles {
         coverageChanged: () => tb.bakedCoarseHost()?.regroup(),
         groundBase: (id: string) => tb.bakedCoarseHost()?.groundBase(id),
         repaint: () => this.host.triggerRepaint(),
-      }, { touch: coarse() });
+      }, { touch: coarse(), paceInstalls: !!arrivalPaceOption()?.baked });
       this._bakedCoarse = baked;
       host.setGate({ plan: (cells: ReadonlySet<string>) => baked.plan(cells), covers: (cell: string) => baked.covers(cell), drawn: (cell: string) => baked.drawn(cell), contextLost: () => baked.contextLost() });
       host.setFrame(() => baked.frame());

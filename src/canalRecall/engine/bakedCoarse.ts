@@ -27,6 +27,7 @@ import { CELL_GRID, cellBounds, parseCellKey } from '../world/cellGrid.js';
 import { shellOrigin } from '../world/shellMesh.js';
 import type { BakedRange } from '../world/bakedCellArrays.js';
 import { orderByDistance } from '../rendererShared/baseRefreshBudget.js';
+import { FrameAdmit } from './arrivalPace.js';
 
 /** A cell's SW corner in chunk metres (the baked meshes' position). */
 export function bakedCellOrigin(key: string): [number, number] { const [i, j] = parseCellKey(key); return shellOrigin(i, j); }
@@ -196,8 +197,15 @@ export class BakedCoarse {
   private fetchedBytes = 0;
   private uploads = 0;
   private readonly budget: { cells: number; triangles: number };
-  constructor(private readonly host: BakedCoarseHost, options: { touch?: boolean; budget?: { cells: number; triangles: number } } = {}) {
+  /**
+   * `?arrivalPace=1|baked` (engine/arrivalPace.ts, lane R4-E #248): fetched cells wait in `ready` and `frame` installs
+   * at most one a frame, nearest first. Null: a cell installs when its fetch resolves, as before.
+   */
+  private readonly admit: FrameAdmit | null;
+  private ready: { data: BakedCellData; relift: boolean }[] = [];
+  constructor(private readonly host: BakedCoarseHost, options: { touch?: boolean; budget?: { cells: number; triangles: number }; paceInstalls?: boolean } = {}) {
     this.budget = options.budget ?? bakedCoarseBudget(!!options.touch);
+    this.admit = options.paceInstalls ? new FrameAdmit() : null;
   }
 
   get isEnabled(): boolean { return this.enabled; }
@@ -271,10 +279,11 @@ export class BakedCoarse {
   }
 
   private pump(want?: string[]): void {
-    if (want) this.queue = want.filter(k => !this.residents.has(k) && !this.failed.has(k));
+    const waiting = (k: string) => this.ready.length > 0 && this.ready.some(r => r.data.key === k);
+    if (want) this.queue = want.filter(k => !this.residents.has(k) && !this.failed.has(k) && !waiting(k));
     while (this.inflight.size < BAKED_INFLIGHT && this.queue.length) {
       const key = this.queue.shift()!;
-      if (this.residents.has(key) || this.inflight.has(key)) continue;
+      if (this.residents.has(key) || this.inflight.has(key) || waiting(key)) continue;
       this.request(key, false);
     }
   }
@@ -287,7 +296,9 @@ export class BakedCoarse {
     this.host.fetchShell(key, controller.signal, exact).then(data => {
       if (this.inflight.get(key) !== controller) return;
       this.inflight.delete(key);
-      if (this.enabled && this.covered.has(key)) this.install(data, relift);
+      if (this.enabled && this.covered.has(key)) {
+        if (this.admit) { this.ready.push({ data, relift }); this.host.repaint(); } else this.install(data, relift);
+      }
       this.pump();
     }, error => {
       if (this.inflight.get(key) !== controller) return;
@@ -411,9 +422,16 @@ export class BakedCoarse {
     attribute.needsUpdate = true;
   }
 
-  /** Per frame: the dissolves. */
+  /** Per frame: a paced install (`?arrivalPace`), then the dissolves. */
   frame(now = performance.now()): void {
     let repaint = false;
+    if (this.admit && this.ready.length) {
+      // Nearest the anchor first; a cell no longer covered (re-planned away while it waited) is dropped unread.
+      this.ready = this.ready.filter(r => this.enabled && this.covered.has(r.data.key));
+      if (this.at) { const at = this.at; this.ready.sort((a, b) => cellDistanceM(a.data.key, at[0], at[1]) - cellDistanceM(b.data.key, at[0], at[1])); }
+      while (this.ready.length && this.admit.admit(now)) { const r = this.ready.shift()!; this.install(r.data, r.relift); }
+      if (this.ready.length) repaint = true;
+    }
     const material = this.host.material();
     for (const r of this.residents.values()) {
       if (r.fade) {
@@ -438,7 +456,7 @@ export class BakedCoarse {
   clear(): void {
     for (const key of [...this.residents.keys()]) this.drop(key);
     for (const c of this.inflight.values()) c.abort();
-    this.inflight.clear(); this.queue = [];
+    this.inflight.clear(); this.queue = []; this.ready = [];
     this.at = null; this.planAt = null;
   }
 
@@ -451,7 +469,7 @@ export class BakedCoarse {
   stats(): { enabled: boolean; wanted: number; cells: number; drawn: number; fading: number; fadeIns: number; covered: number; triangles: number; gpuMB: number; fetchedMB: number; uploadedMB: number; pending: number; failed: number; liftPending: number; cpuMB: number } {
     let triangles = 0, bytes = 0, drawn = 0, liftPending = 0, cpu = 0, fading = 0;
     for (const r of this.residents.values()) { triangles += r.triangles; bytes += r.bytes; if (r.drawn) drawn++; if (r.fade) fading++; if (r.lift) { liftPending += r.lift.pending.length; cpu += r.lift.positions.byteLength; } }
-    return { enabled: this.enabled, wanted: this.wanted.size, cells: this.residents.size, drawn, fading, fadeIns: this.fadeIns, covered: this.covered.size, triangles, gpuMB: +(bytes / 1048576).toFixed(1), fetchedMB: +(this.fetchedBytes / 1048576).toFixed(2), uploadedMB: +(this.uploads / 1048576).toFixed(1), pending: this.inflight.size + this.queue.length, failed: this.failed.size, liftPending, cpuMB: +(cpu / 1048576).toFixed(1) };
+    return { enabled: this.enabled, wanted: this.wanted.size, cells: this.residents.size, drawn, fading, fadeIns: this.fadeIns, covered: this.covered.size, triangles, gpuMB: +(bytes / 1048576).toFixed(1), fetchedMB: +(this.fetchedBytes / 1048576).toFixed(2), uploadedMB: +(this.uploads / 1048576).toFixed(1), pending: this.inflight.size + this.queue.length + this.ready.length, failed: this.failed.size, liftPending, cpuMB: +(cpu / 1048576).toFixed(1) };
   }
 
   dispose(): void { this.clear(); }
