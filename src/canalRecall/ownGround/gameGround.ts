@@ -35,8 +35,9 @@
 // (repaint, hiding the basemap's own ground). THREE is injected.
 
 import { HIGH_ANISOTROPY, pageTextureParams } from '../look/texturePolicy.js';
-import { farRailFlag, installRailStripes, railMinPxFlag, railStripesFlag } from './railStripes.js';
+import { farRailDrapeFlag, farRailFlag, installRailStripes, railMinPxFlag, railStripesFlag } from './railStripes.js';
 import { GroundStore, httpFetchBytes, toLocal, WATER_Z, type ReliefTileLoader, type Rect } from './groundStore.js';
+import { BuildRetries, groundRequeueFlag, railRetryFlag } from './groundResidency.js';
 import { readGroundTile } from './heightField.js';
 import { poolReliefLoader } from './reliefDecode.js';
 import { poolWorkerUrl, sharedWorkerPool } from '../engine/workerPool.js';
@@ -371,7 +372,16 @@ export class OwnGround {
   /** When each pending build was asked for (cell load latency: request → installed). */
   private readonly requestedAt = new Map<string, number>();
   /** The last build's stats per cell key (cost per park cell: triangles per layer, build ms). */
-  private readonly cellBuilds = new Map<string, BuiltCell['stats'] & { lod: 0 | 1; detail: CellDetail }>();
+  private readonly cellBuilds = new Map<string, BuiltCell['stats'] & { lod: 0 | 1; detail: CellDetail; railFetch?: string }>();
+  /** The worker store's rail manifest size (its `ready` message): main and worker each load cells.json. */
+  private workerRailCells: number | null = null;
+  /** Builds the main thread asked for and then threw away (install no longer wanted, a stale reply), by reason (#232). */
+  private readonly discards = { install: 0, stale: 0, unwanted: 0, error: 0, requeued: 0 };
+  /** `?groundRequeue=0` off (groundResidency.ts): a discarded install or a failed build asks again on the next frame. */
+  private readonly requeueOn = groundRequeueFlag();
+  /** `?railRetry=0` off (groundResidency.ts): rail fetches retried, the worker handed this store's rail manifest. */
+  private readonly railRetryOn = railRetryFlag();
+  private readonly retries = new BuildRetries();
   /** Far ring radius now (0: the resident ring reaches what the camera sees). */
   private farRadius = 0;
   private farHorizon: boolean | undefined;
@@ -407,7 +417,7 @@ export class OwnGround {
   /** Load the extract indexes (absolute extract root URL) and start the worker. */
   async load(root: string): Promise<void> {
     this.dispose(false);
-    this.store = new GroundStore(httpFetchBytes(root), { parks: this.opts.parks, rails: this.opts.rails, roads: this.opts.roads, reliefTile: this.reliefLoader(root), prepareOnly: true, ...(bridgeGapsFlag() ? {} : { bridgeGaps: false }), ...(dryWayDecksFlag() ? { dryWayDecks: true } : {}) });
+    this.store = new GroundStore(httpFetchBytes(root), { parks: this.opts.parks, rails: this.opts.rails, roads: this.opts.roads, reliefTile: this.reliefLoader(root), prepareOnly: true, ...(this.railRetryOn ? {} : { railRetry: false }), ...(bridgeGapsFlag() ? {} : { bridgeGaps: false }), ...(dryWayDecksFlag() ? { dryWayDecks: true } : {}) });
     this.ready = false;
     if (!/\/amsterdam\/?$/.test(root)) return;
     await this.store.init();
@@ -416,7 +426,7 @@ export class OwnGround {
       this.worker.onmessage = event => this.onWorker(event.data);
       this.worker.onerror = event => { this.stats.errors.push(`worker: ${event.message}`); };
       // Compact meshes: the same geometry in ~half the bytes (compactMesh.ts).
-      this.worker.postMessage({ type: 'init', root, parks: this.opts.parks, rails: this.opts.rails, farRails: farRailFlag(), roads: this.opts.roads, bridgeGaps: bridgeGapsFlag(), dryWayDecks: dryWayDecksFlag(), groundLook: this.opts.groundLook, compact: compactFlag(), detail: this.opts.detail, roadLook: roadLookFlag(), tiles: this.opts.tiles, nearTiles: this.opts.nearTiles, tileMin: TILE_MIN_TRIANGLES });
+      this.worker.postMessage({ type: 'init', root, parks: this.opts.parks, rails: this.opts.rails, railRetry: this.railRetryOn, ...(this.railRetryOn && this.opts.rails ? { railManifest: [...this.store.railCells] } : {}), farRails: farRailFlag(), farRailDrape: farRailDrapeFlag(), roads: this.opts.roads, bridgeGaps: bridgeGapsFlag(), dryWayDecks: dryWayDecksFlag(), groundLook: this.opts.groundLook, compact: compactFlag(), detail: this.opts.detail, roadLook: roadLookFlag(), tiles: this.opts.tiles, nearTiles: this.opts.nearTiles, tileMin: TILE_MIN_TRIANGLES });
     } catch (error) {
       this.stats.errors.push(`worker unavailable: ${String(error)}`);
     }
@@ -509,6 +519,7 @@ export class OwnGround {
     const far = this.opts.far ? farRadiusM((this.farHorizon ??= farHorizonEnabled()) ? horizonReachM(reach, zoom, pitchDeg, lngLat[1]) : reach, radius) : 0;
     if (far !== this.farRadius) { this.farRadius = far; this.residencyAt = null; }
     if (!this.ready) return;
+    if (this.requeueOn && this.retries.size && this.retries.due(performance.now())) this.residencyAt = null;
     if (!this.residencyAt || Math.hypot(this.centre[0] - this.residencyAt[0], this.centre[1] - this.residencyAt[1]) >= RESIDENCY_STEP_M) this.updateResidency();
   }
 
@@ -635,7 +646,7 @@ export class OwnGround {
     const keep = new Set(wanted.map(w => w.key));
     this.wantedKeys = keep;
     for (const key of [...this.resident.keys()]) if (!keep.has(key)) this.drop(key);
-    for (const key of [...this.pending.keys()]) if (!keep.has(key)) this.pending.delete(key);
+    for (const key of [...this.pending.keys()]) if (!keep.has(key)) { this.pending.delete(key); this.discards.unwanted++; this.retries.forget(key); }
     for (let i = this.installQueue.length - 1; i >= 0; i--) if (!keep.has(this.installQueue[i].key)) this.installQueue.splice(i, 1);
     for (const w of wanted) {
       // Main-thread surface for poses, bases and overlays: relief + decks of every wanted cell.
@@ -737,22 +748,23 @@ export class OwnGround {
   }
 
   private onWorker(msg: any): void {
-    if (msg.type === 'ready') { this.workerReady = true; return; }
+    if (msg.type === 'ready') { this.workerReady = true; this.workerRailCells = typeof msg.railCells === 'number' ? msg.railCells : null; return; }
     if (msg.type === 'error' && msg.far) { this.stats.errors.push(`far ${msg.far}: ${msg.message}`.slice(0, 400)); this.farPending.delete(msg.far); return; }
     if (msg.type === 'far') {
       if (msg.gen !== this.gen || !this.farPending.delete(msg.key)) return;
       if (msg.far) this.installFar(msg.far as BuiltFar); else this.farEmpty.add(msg.key);
       return;
     }
-    if (msg.type === 'error') { this.stats.errors.push(`${msg.key ?? ''}: ${msg.message}`.slice(0, 400)); if (msg.key) this.pending.delete(msg.key); return; }
+    if (msg.type === 'error') { this.stats.errors.push(`${msg.key ?? ''}: ${msg.message}`.slice(0, 400)); if (msg.key) { this.pending.delete(msg.key); this.discards.error++; if (this.requeueOn) this.retries.fail(msg.key, performance.now()); } return; }
     if (msg.type !== 'cell' || msg.gen !== this.gen) return;
     const cell = msg.cell as BuiltCell;
-    if (this.pending.get(cell.key) !== levelOf(cell.lod, cell.detail)) return;
+    if (this.pending.get(cell.key) !== levelOf(cell.lod, cell.detail)) { this.discards.stale++; return; }
     this.pending.delete(cell.key);
+    this.retries.forget(cell.key);
     this.stats.cellsBuilt++;
     this.stats.buildMs.push(cell.stats.buildMs);
     this.stats.lastBuild = { key: cell.key, lod: cell.lod, detail: cell.detail, ...cell.stats };
-    this.cellBuilds.set(cell.key, { ...cell.stats, lod: cell.lod, detail: cell.detail });
+    this.cellBuilds.set(cell.key, { ...cell.stats, lod: cell.lod, detail: cell.detail, ...(typeof msg.railFetch === 'string' ? { railFetch: msg.railFetch } : {}) });
     this.installQueue.push(cell);
     this.host.repaint();
   }
@@ -1098,7 +1110,13 @@ export class OwnGround {
   }
 
   private install(cell: BuiltCell): void {
-    if (!this.wantedCells().some(w => w.key === cell.key && w.lod === cell.lod && w.detail === cell.detail)) return;
+    if (!this.wantedCells().some(w => w.key === cell.key && w.lod === cell.lod && w.detail === cell.detail)) {
+      this.discards.install++;
+      // The ring changed between request and install (a cell crossed NEAR_M, the radius stepped): ask for what it wants
+      // now on the next frame, not after the next 60 m move (a stationary rider kept the old LOD or no cell, #232).
+      if (this.requeueOn) { this.residencyAt = null; this.discards.requeued++; this.host.repaint(); }
+      return;
+    }
     const t0 = performance.now();
     const THREE = this.THREE;
     // A cell swapping its LOD or its detail keeps the picture (same colours): only a cell new to the ring fades in.
@@ -1369,7 +1387,7 @@ export class OwnGround {
   cellStats(key: string): Record<string, unknown> | null {
     const b = this.cellBuilds.get(key);
     if (!b) return null;
-    return { lod: b.lod, detail: b.detail, triangles: b.triangles, byLayer: b.byLayer, buildMs: b.buildMs, bytes: b.bytes, parks: b.parks, hasParks: this.store.parkCells.has(key), roads: b.roads ?? null, hasRoads: this.store.roadCells.has(key), flatBridges: b.bridges.flat };
+    return { lod: b.lod, detail: b.detail, triangles: b.triangles, byLayer: b.byLayer, buildMs: b.buildMs, bytes: b.bytes, parks: b.parks, hasParks: this.store.parkCells.has(key), roads: b.roads ?? null, hasRoads: this.store.roadCells.has(key), flatBridges: b.bridges.flat, hasRails: this.store.railCells.has(key), railFetch: b.railFetch ?? null, rails: b.rails ?? null };
   }
 
   status(): Record<string, unknown> {
@@ -1391,6 +1409,8 @@ export class OwnGround {
         triangles: [...this.far.values()].reduce((n, f) => n + f.triangles, 0), geometryMB: +([...this.far.values()].reduce((n, f) => n + f.bytes, 0) / 1048576).toFixed(1),
       },
       errors: this.stats.errors.slice(-5),
+      // Lane R3-C #232: both rail manifests (main, worker) and the builds thrown away, by reason.
+      rail: { manifest: this.store.railCells.size, workerManifest: this.workerRailCells, discards: { ...this.discards }, retrying: this.retries.size, loadErrors: this.store.loadErrors.slice(-5) },
     };
   }
 }

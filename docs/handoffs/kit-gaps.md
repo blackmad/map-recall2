@@ -134,3 +134,18 @@ Kit: `walls[].wallFamily` (`paint` flat measured colour, `metal` ribbed sheet wi
 | Second blank clad wall not proposed (the photo class is punched by a few dark panels) | 1 | 124847 walls[4] |
 | Signage bands and murals on clad halls | 1 | 124847 walls[0] (Praxis sign boards) |
 | Open parking decks on a pand whose BAG use is not parking (open-deck rule misses it) | 1 | 241496 walls[0] |
+
+## Landmark factory 2026-11-06 (#234): the buildable list is exhausted
+
+Full triage (`triage.ts --limit=0`, 317 candidates, 928 crops): buildable 21, kit-gap 124, no-evidence 94, not-in-tiles 45, covered 22, bespoke 11. All 21 buildable rows were already reviewed (20 held in r2/r3/selftest/#146, 1 no-evidence), so no factory batch ran. What blocks the unreviewed rows, by ride visibility (sum of `rideVisibility.score`):
+
+| Gap | Unreviewed pands | Ride visibility | Examples |
+|---|---|---|---|
+| Storey-1 ribbon (shopfront strip, balcony band) under punched upper storeys: triage reads punched with a ribbon on storey 1, and the kit draws windows under it. The largest single gap in the band class | 28 | 6.06 M | 079326 (Papaverweg), 247342 (Mary van der Sluisstraat), 092384, 233471, 086968 (Papaverweg), 167466 |
+| Other band fronts (balcony bands, ribbon parapets) | 28 | 3.34 M | 145366 (IJdoornlaan), 111255 (Hoofdweg), 084650 |
+| Painted or clad, dark unresolved family | 44 | 4.59 M | 252557, 133211, 233471 |
+| Curtain without floor bands | 10 | 1.36 M | 244160 Atrium Parkeergarage (Strawinskylaan) |
+| Tower over the crop cap or triangle budget | 15 | 1.02 M | 252557 |
+| Tower triangle budget 12k (#125, needs-david): held with both street fronts PASS | 1 | - | 123762 Anadolubank (13.1k) |
+
+No-evidence (84 rows still at `crops`) is mostly photo quality, not the kit: foliage 20, washed out 19, a single judgeable street wall 10, no crop 7, obliquity 6. The two most visible are 098925 (Kramatweg, washed out 33 %) and 186093 (Plantage Lepellaan, crop 2021 predates the 2022 building); a second panorama capture would unlock them.

@@ -41,6 +41,7 @@ import { FlatLines, type LngLatLine } from './overlays/flatLines';
 import { FarShells, farCellOrigin, farShellsEnabled } from './farShells';
 import { isAerialView } from '../rendererShared/aerialView';
 import { ToonPost, toonLookFlag } from './toonLook';
+import { SmaaPost, smaaFlag } from './postAA';
 import { COVER_POLL_MS, isCoveredState } from '../labels/coveredState';
 import { LabelLayer, type PointLabel } from './overlays/labelLayer';
 import { gameLabelContext, type LabelContext } from '../ownMap/labelPolicy';
@@ -54,6 +55,7 @@ import { gameTileEnricher } from '../gameTileEnricher';
 import { LandmarkHighlight } from './landmarkHighlight';
 import { LabelOcclusion } from './labelOcclusion';
 import { SpoilerSources } from './spoilerSources';
+import { groundCentre, groundViewFlag } from '../ownGround/groundResidency';
 
 declare const CANVAS_W: number;
 declare const CANVAS_H: number;
@@ -138,6 +140,8 @@ export class OwnWorldView implements WorldViewOracles {
   /** The far tier (engine/farShells.ts, lane R2-B #229; `?farShells=0`): baked SHL1 prisms out to the far ring. */
   _farShells: FarShells | null = null;
   private farShellsOn = farShellsEnabled();
+  /** `?groundView=0`: the own ground follows the rider also while the camera is panned off it (groundResidency.ts). */
+  private readonly groundView = groundViewFlag();
   /** Landmark models, trees, detailed buildings, pyramidal roofs, ARTIS (cityExtras.ts). */
   readonly extras: CityExtras;
   get _signatureLandmarks(): any { return this.extras.signature; }
@@ -192,6 +196,8 @@ export class OwnWorldView implements WorldViewOracles {
   private buildingLookNow: BuildingLookId = 'photo';
   /** The toon look's palette pass (`?look=toon`, #161); null otherwise. */
   private toonPost: ToonPost | null = null;
+  /** `?smaa=1` (lane R3-A #230): SMAA 1x over the resolved frame, before the toon remap. */
+  private smaaPost: SmaaPost | null = null;
   private buildingLookLocked = false;
   /** Overlays (engine/overlays): flat lines over the ground, labels on a 2D canvas, the landmark marker. */
   readonly _lines: Record<'cycle' | 'transit' | 'hoods', FlatLines>;
@@ -274,6 +280,7 @@ export class OwnWorldView implements WorldViewOracles {
     // MSAA unless the device reports ≤ 3 GB (vector-map.js canalRecallAntialias); phones cap at 1.25× (PHONE_PIXEL_RATIO).
     const memory = Number(W().navigator?.deviceMemory);
     const antialias = flag('msaa', '__canalRecallMsaa', !(Number.isFinite(memory) && memory > 0 && memory <= 3));
+    const smaa = smaaFlag();
     const dpr = W().devicePixelRatio || 1;
     let cap = coarse() ? 1.25 : dpr;
     const askedDpr = Number(new URLSearchParams(W().location?.search ?? '').get('dpr'));
@@ -284,7 +291,10 @@ export class OwnWorldView implements WorldViewOracles {
       render: () => this.renderFrame(),
       // The game's loading screen (GameState.LOADING, presentationRuntime.ts) paints over the world opaquely.
       coveredFrameMs: () => (W().canalRecallGame?.state === LOADING_STATE ? COVERED_FRAME_MS : null),
-      ...(toon ? { post: (renderer: any, width: number, height: number) => (this.toonPost ??= new ToonPost(THREE)).apply(renderer, width, height) } : {}),
+      ...(toon || smaa ? { post: (renderer: any, width: number, height: number) => {
+        if (smaa) (this.smaaPost ??= new SmaaPost(THREE)).apply(renderer, width, height);
+        if (toon) (this.toonPost ??= new ToonPost(THREE)).apply(renderer, width, height);
+      } } : {}),
     }, { antialias, pixelRatio: Math.min(dpr, cap), clearColor: clear, renderOnChange: flag('renderOnChange', '__canalRecallRenderOnChange', true), clearGuard: flag('skyClear', '__canalRecallSkyClear', true) });
     // GL work counters (engine/glCounters.ts, the P4 counters gate): opt-in, on window.__canalPerf.gl.
     if (flag('glCounters', '__canalRecallGlCounters', false)) {
@@ -457,7 +467,7 @@ export class OwnWorldView implements WorldViewOracles {
       const data = await decodeOverviewBytes(bytes);
       const prebuilt = await pooled;
       this.status.overviewBuilt = prebuilt ? 'pool' : 'main';
-      this._overview = new OverviewLayer(data, { center: () => this.camera.center(), zoom: () => this.camera.zoom(), rider: () => this.lastSubject, ground: () => (this._ownGround?.ready && this._ownGround.coversRect ? this._ownGround : null), repaint: () => this.host.triggerRepaint() }, prebuilt);
+      this._overview = new OverviewLayer(data, { center: () => this.camera.center(), zoom: () => this.camera.zoom(), rider: () => this.lastSubject, ground: () => (this._ownGround?.ready && this._ownGround.coversRect ? this._ownGround : null), repaint: () => this.host.triggerRepaint(), viewport: () => this.host.viewport() }, prebuilt);
       // First in the main pass, under every 3D participant.
       this._sharedFrame.register('engine-overview', this._overview, { order: -100 });
       this.status.overview = { water: data.water.length, parks: data.parks.length, streets: data.streets.length };
@@ -871,7 +881,9 @@ export class OwnWorldView implements WorldViewOracles {
     if (view.introFlat > 0) this.extras.setSuspended(true);
     if (view.introFlat === 0) this.introLanding = false;
     if (this._ownGround) {
-      this._ownGround.update(view.subject, view.introFlat > 0 ? 0 : view.zoom, pitch);
+      // Panned off the rider (RE-CENTER showing), the ground's ring follows the view, not the rider (#232: the user's
+      // S4 corridor 2.8 km from the rider drew from the far ring, no ballast beds); `?groundView=0` follows the rider.
+      this._ownGround.update(groundCentre(view, this.groundView), view.introFlat > 0 ? 0 : view.zoom, pitch);
       lap('ground update: own ground');
       this.syncGroundConsumers(phases ? lap : undefined);
     }

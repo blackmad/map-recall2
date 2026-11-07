@@ -2,7 +2,8 @@
 // thread (all ground modules are DOM-free). Bundled as
 // public/canal-drive/js/own-ground-worker.bundle.js (scripts/build-3d-bundles.mjs).
 //
-// Messages in:  { type: 'init', root, parks, roads, groundLook, compact, detail }  extract root URL (absolute); parks: load parks-v1; roads: load roads-v1; far-ring palette;
+// Messages in:  { type: 'init', root, parks, roads, groundLook, compact, detail, railRetry, railManifest }  extract root URL (absolute); parks: load parks-v1; roads: load roads-v1; far-ring palette;
+//                                                           railManifest: the main thread's rail cells.json keys (#232);
 //                                                           compact: send compact meshes (compactMesh.ts, phones);
 //                                                           detail: 'touch' on a touch device, the device's far-cell level (gameGround.ts)
 //                                                           tiles, tileMin: cut each layer into tiles×tiles culled tiles here (cellTiles.ts layerTiles)
@@ -12,8 +13,8 @@
 //               { type: 'order', keys: string[] }  wanted cells, best first: queued cells build in this order and
 //                                                  cells not in it are dropped unbuilt (buildQueue.ts)
 // Relief tiles for the game's main-thread store decode in the page's worker pool (reliefDecode.ts), not here.
-// Messages out: { type: 'ready', cells: string[] }
-//               { type: 'cell', gen, cell: BuiltCell }   (arrays transferred)
+// Messages out: { type: 'ready', cells: string[], railCells: number }   (railCells: the worker's rail manifest size)
+//               { type: 'cell', gen, cell: BuiltCell, railFetch }   (arrays transferred; railFetch: GroundStore.railOutcomes of the key)
 //               { type: 'far', gen, key, far: BuiltFar | null }   (arrays transferred; null: nothing there)
 //               { type: 'error', key?, gen?, message }
 
@@ -27,7 +28,7 @@ import { cellTileGrid, layerTiles, tileTransferables } from './cellTiles.js';
 import { cellGpuTransferables, compactCell, compactFar, farGpuTransferables } from './compactMesh.js';
 
 type In =
-  | { type: 'init'; root: string; parks?: boolean; rails?: boolean; /** false: no far rail corridors (`?farRail=0`). */ farRails?: boolean; roads?: boolean; /** false: the pre-fix bridge decks (gameGround bridgeGapsFlag, issue #178). */ bridgeGaps?: boolean; /** true: bridgeGaps step 3, dry way decks (gameGround dryWayDecksFlag). */ dryWayDecks?: boolean; groundLook?: GroundLook; compact?: boolean; detail?: CellDetail; tiles?: number; /** Tiles per side for a LOD 0, full-detail cell (cellTiles.ts cellTileGrid). */ nearTiles?: number; tileMin?: number; /** The road look under review (gameGround roadLookFlag), for the kerb shadows' ramp ends. */ roadLook?: string | null }
+  | { type: 'init'; root: string; parks?: boolean; rails?: boolean; /** false: `?railRetry=0` (groundResidency.ts). */ railRetry?: boolean; /** The main thread's rail manifest keys (one source of truth, #232). */ railManifest?: string[]; /** false: no far rail corridors (`?farRail=0`). */ farRails?: boolean; /** false: far rail bands at their bends only (`?farRailDrape=0`, #232). */ farRailDrape?: boolean; roads?: boolean; /** false: the pre-fix bridge decks (gameGround bridgeGapsFlag, issue #178). */ bridgeGaps?: boolean; /** true: bridgeGaps step 3, dry way decks (gameGround dryWayDecksFlag). */ dryWayDecks?: boolean; groundLook?: GroundLook; compact?: boolean; detail?: CellDetail; tiles?: number; /** Tiles per side for a LOD 0, full-detail cell (cellTiles.ts cellTileGrid). */ nearTiles?: number; tileMin?: number; /** The road look under review (gameGround roadLookFlag), for the kerb shadows' ramp ends. */ roadLook?: string | null }
   | { type: 'build'; key: string; lod: 0 | 1; gen: number; detail?: CellDetail }
   | { type: 'far'; key: string; gen: number }
   | { type: 'evict'; x: number; y: number; keepM: number; keep: string[] }
@@ -62,7 +63,7 @@ async function pump(s: GroundStore): Promise<void> {
           const built = buildCell(input), cell = compact ? compactCell(built) : built;
           // The tiles of the meshes exactly as sent (compact or not): the main thread's install only wraps them.
           if (tiles > 1) cell.tiles = layerTiles(cell.layers, cellTileGrid(tiles, nearTiles, cell.lod, cell.detail), tileMin);
-          ctx.postMessage({ type: 'cell', gen: job.gen, cell }, [...(compact ? cellGpuTransferables(cell) : cellTransferables(cell)), ...tileTransferables(cell.tiles)]);
+          ctx.postMessage({ type: 'cell', gen: job.gen, cell, railFetch: s.railOutcomes.get(job.key) ?? 'unasked' }, [...(compact ? cellGpuTransferables(cell) : cellTransferables(cell)), ...tileTransferables(cell.tiles)]);
         } catch (error) {
           ctx.postMessage({ type: 'error', key: job.key, gen: job.gen, message: String((error as Error)?.stack ?? error) });
         }
@@ -84,14 +85,14 @@ async function pump(s: GroundStore): Promise<void> {
 ctx.onmessage = event => {
   const msg = event.data;
   if (msg.type === 'init') {
-    store = new GroundStore(httpFetchBytes(msg.root), { parks: msg.parks !== false, roads: msg.roads === true, rails: msg.rails !== false, ...(msg.farRails === false ? { farRails: false } : {}), ...(msg.bridgeGaps === false ? { bridgeGaps: false } : {}), ...(msg.dryWayDecks === true ? { dryWayDecks: true } : {}) });
+    store = new GroundStore(httpFetchBytes(msg.root), { parks: msg.parks !== false, roads: msg.roads === true, rails: msg.rails !== false, ...(msg.railRetry === false ? { railRetry: false } : {}), ...(Array.isArray(msg.railManifest) ? { railManifest: msg.railManifest } : {}), ...(msg.farRails === false ? { farRails: false } : {}), ...(msg.farRailDrape === false ? { farRailDrape: false } : {}), ...(msg.bridgeGaps === false ? { bridgeGaps: false } : {}), ...(msg.dryWayDecks === true ? { dryWayDecks: true } : {}) });
     compact = msg.compact === true;
     detail = msg.detail === 'touch' ? 'touch' : 'full';
     tiles = Math.max(0, Math.floor(msg.tiles ?? 0)); nearTiles = Math.max(0, Math.floor(msg.nearTiles ?? 0)); tileMin = Math.max(0, msg.tileMin ?? 0);
     const look = isRoadLookId(msg.roadLook) ? msg.roadLook : null;
     setKerbShadowRoadLook(look);
     colours = farColours(groundPalette(msg.groundLook || 'default'), look);
-    ready = store.init().then(() => ctx.postMessage({ type: 'ready', cells: [...store!.osmCells] }))
+    ready = store.init().then(() => ctx.postMessage({ type: 'ready', cells: [...store!.osmCells], railCells: store!.railCells.size }))
       .catch(error => ctx.postMessage({ type: 'error', message: `init: ${String(error?.message ?? error)}` }));
     return;
   }

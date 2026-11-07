@@ -8,7 +8,7 @@ import type { WallLayout } from './facadeLayout.js';
 import type { Openings } from './facadeOpenings.js';
 
 export type V3 = [number, number, number];
-export type FlatTri = { p: V3[]; hex: string; n: V3; texture?: 'glass-block'; uv?: [number, number][] };
+export type FlatTri = { p: V3[]; hex: string; n: V3; texture?: 'glass-block'; uv?: [number, number][]; /** The primitive that drew it (look/thinFade.ts owner classes); absent for wall quads, slopes and profiles. */ prim?: 'box' | 'strip' };
 /** Wall frame: origin at the wall's start (ground of this building), x along, y outward. */
 export type WallFrame = { x0: number; y0: number; ux: number; uy: number; nx: number; ny: number; len: number };
 export type ExtraContext = {
@@ -85,12 +85,12 @@ export class ExtraSink {
     this.boxes++;
     const P = (a: number, o: number, z: number): V3 => [f.x0 + f.ux * a + f.nx * o, f.y0 + f.uy * a + f.ny * o, z];
     const N = (a: number, o: number, z: number): V3 => [f.ux * a + f.nx * o, f.uy * a + f.ny * o, z];
-    this.face([P(a0, o1, z0), P(a1, o1, z0), P(a1, o1, z1), P(a0, o1, z1)], N(0, 1, 0), hex);
-    this.face([P(a0, o0, z0), P(a0, o1, z0), P(a0, o1, z1), P(a0, o0, z1)], N(-1, 0, 0), hex);
-    this.face([P(a1, o0, z0), P(a1, o1, z0), P(a1, o1, z1), P(a1, o0, z1)], N(1, 0, 0), hex);
-    this.face([P(a0, o0, z1), P(a1, o0, z1), P(a1, o1, z1), P(a0, o1, z1)], [0, 0, 1], hex);
-    if (bottom) this.face([P(a0, o0, z0), P(a1, o0, z0), P(a1, o1, z0), P(a0, o1, z0)], [0, 0, -1], hex);
-    if (back) this.face([P(a0, o0, z0), P(a1, o0, z0), P(a1, o0, z1), P(a0, o0, z1)], N(0, -1, 0), hex);
+    this.face([P(a0, o1, z0), P(a1, o1, z0), P(a1, o1, z1), P(a0, o1, z1)], N(0, 1, 0), hex, 'box');
+    this.face([P(a0, o0, z0), P(a0, o1, z0), P(a0, o1, z1), P(a0, o0, z1)], N(-1, 0, 0), hex, 'box');
+    this.face([P(a1, o0, z0), P(a1, o1, z0), P(a1, o1, z1), P(a1, o0, z1)], N(1, 0, 0), hex, 'box');
+    this.face([P(a0, o0, z1), P(a1, o0, z1), P(a1, o1, z1), P(a0, o1, z1)], [0, 0, 1], hex, 'box');
+    if (bottom) this.face([P(a0, o0, z0), P(a1, o0, z0), P(a1, o1, z0), P(a0, o1, z0)], [0, 0, -1], hex, 'box');
+    if (back) this.face([P(a0, o0, z0), P(a1, o0, z0), P(a1, o0, z1), P(a0, o0, z1)], N(0, -1, 0), hex, 'box');
     return true;
   }
   /**
@@ -103,9 +103,9 @@ export class ExtraSink {
     if (this.mark?.failed || !this.fits(4)) return false;
     this.boxes++;
     const P = (a: number, o: number, z: number): V3 => [f.x0 + f.ux * a + f.nx * o, f.y0 + f.uy * a + f.ny * o, z];
-    this.face([P(a0, out, z0), P(a1, out, z0), P(a1, out, z1), P(a0, out, z1)], [f.nx, f.ny, 0], hex);
+    this.face([P(a0, out, z0), P(a1, out, z0), P(a1, out, z1), P(a0, out, z1)], [f.nx, f.ny, 0], hex, 'strip');
     const back = Math.max(0, out - depth);
-    this.face([P(a0, back, z1), P(a1, back, z1), P(a1, out, z1), P(a0, out, z1)], [0, 0, 1], hex);
+    this.face([P(a0, back, z1), P(a1, back, z1), P(a1, out, z1), P(a0, out, z1)], [0, 0, 1], hex, 'strip');
     return true;
   }
   /** A flat wall ornament with a shaped outline, such as an open triangular pediment. */
@@ -156,13 +156,13 @@ export class ExtraSink {
     }
     return true;
   }
-  private face(q: V3[], n: V3, hex: string) {
+  private face(q: V3[], n: V3, hex: string, prim?: 'box' | 'strip') {
     const [A, B, C, D] = q;
     const e1 = [B[0] - A[0], B[1] - A[1], B[2] - A[2]], e2 = [C[0] - A[0], C[1] - A[1], C[2] - A[2]];
     const c = [e1[1] * e2[2] - e1[2] * e2[1], e1[2] * e2[0] - e1[0] * e2[2], e1[0] * e2[1] - e1[1] * e2[0]];
     const flip = c[0] * n[0] + c[1] * n[1] + c[2] * n[2] < 0, l = Math.hypot(...n) || 1, nn: V3 = [n[0] / l, n[1] / l, n[2] / l];
-    this.tris.push({ p: flip ? [A, C, B] : [A, B, C], hex, n: nn });
-    if(D)this.tris.push({ p: flip ? [A, D, C] : [A, C, D], hex, n: nn });
+    this.tris.push(prim ? { p: flip ? [A, C, B] : [A, B, C], hex, n: nn, prim } : { p: flip ? [A, C, B] : [A, B, C], hex, n: nn });
+    if(D)this.tris.push(prim ? { p: flip ? [A, D, C] : [A, C, D], hex, n: nn, prim } : { p: flip ? [A, D, C] : [A, C, D], hex, n: nn });
   }
 }
 

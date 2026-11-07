@@ -42,6 +42,7 @@ export type FacadeUniforms = {
 
 import { HIGHLIGHT_GLSL, highlightDefines } from '../look/highlight.js';
 import { WINDOW_SDF_GLSL, windowSdfBandUniforms } from '../look/windowSdf.js';
+import { installThinFade } from '../look/thinFade.js';
 
 export const HIGHLIGHT_LINEAR = [1.0, 0.637, 0.0137] as const; // #ffd21f in linear
 
@@ -161,7 +162,8 @@ if (HL_PAINT(vHighlight)) totalEmissiveRadiance += vec3(${HIGHLIGHT_LINEAR.join(
   // The facade layer reads and writes these like a ShaderMaterial's uniforms.
   material.uniforms = options.windowTable || lodBias || aniso ? { ...shared, ...(options.windowTable ? { windowSdfMix, ...band } : {}), ...(lodBias ?? {}), ...(aniso ?? {}) } : shared;
   material.userData.litFacade = true;
-  return material;
+  // Thin-element fade and the owner view (look/thinFade.ts, lane R3-A #230; `?thinFade=0`).
+  return installThinFade(material, true);
 }
 
 /** Shadow-pass material that honours `hidden` (suppressed walls cast nothing). */

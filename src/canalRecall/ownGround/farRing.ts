@@ -71,7 +71,23 @@ const STREET_TIERS: readonly (readonly string[])[] = [
 ];
 
 export interface FarSubCell { key: string; rect: Rect; water: WaterGeometry | null; osm: OsmGroundExtract | null; /** rail-v1 ways through the cell (absent: no far rails, `?farRail=0`). */ rails?: readonly RailWay[] }
-export interface FarBlockInput { key: string; rect: Rect; cells: readonly FarSubCell[]; ground: HeightFn | null; project: (lngLat: [number, number]) => Vec2 }
+export interface FarBlockInput { key: string; rect: Rect; cells: readonly FarSubCell[]; ground: HeightFn | null; project: (lngLat: [number, number]) => Vec2; /** false (`?farRailDrape=0`): rail bands sampled at their vertices only, as R1-B built them (#232). */ railDrape?: boolean }
+
+/** Far rail bands take a vertex this often, metres (half the land grid), lane R3-C #232. */
+export const FAR_RAIL_STEP_M = FAR_GRID_M / 2;
+
+/**
+ * The far land's surface at (x, y) as its mesh draws it: the relief at the FAR_GRID_M nodes of the sub-cell `rect`,
+ * linear over the two triangles (a, b, e) and (a, e, d) of each grid square (buildFarBlock's land).
+ */
+export function farLandAt(height: HeightFn, rect: Rect, x: number, y: number): number {
+  const [x0, y0, x1, y1] = rect, g = FAR_GRID_M;
+  const k = Math.max(0, Math.min(Math.floor((x - x0) / g), Math.ceil((x1 - x0) / g) - 1)), j = Math.max(0, Math.min(Math.floor((y - y0) / g), Math.ceil((y1 - y0) / g) - 1));
+  const ax = x0 + k * g, ay = y0 + j * g, bx = Math.min(x1, ax + g), by = Math.min(y1, ay + g);
+  const u = Math.max(0, Math.min(1, (x - ax) / (bx - ax || 1))), v = Math.max(0, Math.min(1, (y - ay) / (by - ay || 1)));
+  const ha = height(ax, ay) + FAR_LIFT.land, hb = height(bx, ay) + FAR_LIFT.land, he = height(bx, by) + FAR_LIFT.land, hd = height(ax, by) + FAR_LIFT.land;
+  return u >= v ? ha + (hb - ha) * u + (he - hb) * v : ha + (hd - ha) * v + (he - hd) * u;
+}
 export interface BuiltFar {
   key: string;
   rect: Rect;
@@ -191,9 +207,16 @@ export function buildFarBlock(input: FarBlockInput, FAR: FarColours = FAR_COLOUR
       const m = meshes[i], n = m.indices.length, pts = simplify(w.points, FAR_SIMPLIFY_M);
       // A bridge rides at least the lower of its ends (the water under it is not the deck).
       const ends = Math.min(height(...pts[0]), height(...pts[pts.length - 1]));
-      const h: HeightFn = w.bridge ? (x, y) => Math.max(height(x, y), ends) : height;
-      ribbon(m, pts, 0, FAR_RAIL.bedM, h, FAR_LIFT.rail, { step: 1e9, colour: FAR_RAIL.bed });
-      ribbon(m, pts, 0, FAR_RAIL.trackM, h, FAR_LIFT.railTrack, { step: 1e9, colour: FAR_RAIL.track });
+      // Draped (#232): a vertex every FAR_RAIL_STEP_M, never under the land mesh there. With vertices only at the
+      // simplified bends, long chords cut under the 50 m land grid over embankments (10 % of the Zuidas block's track
+      // under the land, 6 % by more than 0.5 m): the bands drew as broken dark stubs from the air.
+      const drape = input.railDrape !== false;
+      const landAt = (x: number, y: number) => { const c = input.cells.find(q => inRect(q.rect, x, y)) ?? input.cells[i]; return farLandAt(height, c.rect, x, y); };
+      const ground: HeightFn = drape ? (x, y) => Math.max(height(x, y), landAt(x, y)) : height;
+      const h: HeightFn = w.bridge ? (x, y) => Math.max(ground(x, y), ends) : ground;
+      const step = drape ? FAR_RAIL_STEP_M : 1e9;
+      ribbon(m, pts, 0, FAR_RAIL.bedM, h, FAR_LIFT.rail, { step, colour: FAR_RAIL.bed });
+      ribbon(m, pts, 0, FAR_RAIL.trackM, h, FAR_LIFT.railTrack, { step, colour: FAR_RAIL.track });
       byLayer.rail = (byLayer.rail ?? 0) + (m.indices.length - n) / 3;
     }
     // Streets, by the sub-cell of their midpoint.

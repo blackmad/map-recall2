@@ -10,11 +10,12 @@
 
 import * as THREE from 'three';
 import { decodeOverview, STREET_CLASSES, type OverviewData, type OverviewFile, type StreetClass } from '../ownMap/overviewFormat';
-import { fillMaterial, lineMaterial, handover } from '../ownMap/layers';
+import { fillMaterial, lineMaterial, handover, railLineMaterial, railViewport } from '../ownMap/layers';
 import { overviewRecipes, railGroups, type BuiltOverviewGeometry, type GeometryArrays } from '../ownMap/overviewArrays';
 import { overviewText } from '../ownMap/overviewPool';
 import type { CellTile } from '../ownGround/cellTiles';
-import { interpolateStops, LANDUSE_STYLE, MIN_LINE_PX, PALETTE, PIER_STYLE, RAIL_STYLE, RAIL_TUNNEL_STYLE, STREET_STYLE, type Stops } from '../ownMap/style';
+import { interpolateStops, LANDUSE_STYLE, MIN_LINE_PX, overviewRailFlag, PALETTE, PIER_STYLE, RAIL_LINE_STYLE, RAIL_STYLE, RAIL_TUNNEL_STYLE, railLinePx, STREET_STYLE, type Stops } from '../ownMap/style';
+import type { RailKind } from '../ownMap/overviewFormat';
 import { LANDUSE_CLASSES } from '../ownMap/overviewFormat';
 import { overviewColours } from './themePalette';
 import { overviewGroundColours } from '../ownGround/basemapPalette';
@@ -74,12 +75,17 @@ export const OVERVIEW_Z = -3;
 type Lines = { cls: StreetClass; fill: THREE.Mesh; casing: THREE.Mesh | null };
 /** v2 overview lines with their own width stops (rail by kind, pier walkways). */
 type ExtraLine = { mesh: THREE.Mesh; width: Stops; scale: number; opacity: number; kind: 'pier' | 'rail'; base: string };
+/** A rail line with contrast (style.ts RAIL_LINE_STYLE, #232): its core or halo mesh, floored on screen by the shader. */
+type RailLine = { mesh: THREE.Mesh; kind: RailKind; service: boolean; part: 'core' | 'halo'; base: string };
 
 export class OverviewLayer implements FrameParticipant {
   readonly root = new THREE.Group();
   readonly water: WaterIndex;
   private readonly lines: Lines[] = [];
   private readonly extraLines: ExtraLine[] = [];
+  private readonly railLines: RailLine[] = [];
+  /** `?overviewRail=0`: rail lines as before #232 (one RAIL_STYLE line, no halo, no screen floor). */
+  private readonly railContrast = overviewRailFlag();
   private readonly land: THREE.Mesh;
   private readonly parks: THREE.Mesh;
   private readonly waterMesh: THREE.Mesh;
@@ -134,6 +140,8 @@ export class OverviewLayer implements FrameParticipant {
     ground?(): { coversRect(x0: number, y0: number, x1: number, y1: number): boolean; coverRevision?: number } | null;
     /** Ask the host for a frame (a cover check due later than this frame). */
     repaint?(): void;
+    /** The canvas in CSS px: the rail lines' screen floor (#232). */
+    viewport?(): { width: number; height: number };
   }, prebuilt?: readonly BuiltOverviewGeometry[] | null) {
     this.root.name = 'engine-overview';
     // First of every transparent draw. three takes a draw's group order from its innermost Group, so this root (not
@@ -226,6 +234,14 @@ export class OverviewLayer implements FrameParticipant {
     }
     for (const g of railGroups(data)) {
       const st = RAIL_STYLE[g.kind as keyof typeof RAIL_STYLE];
+      if (this.railContrast && !g.tunnel) {
+        // Surface track (#232): a ballast halo under a dark core, both over the street fills, both floored on screen.
+        const kind = g.kind as RailKind, geo = this.built(`rail:${g.key}`);
+        if (RAIL_LINE_STYLE.haloed[kind]) this.railLines.push({ mesh: add(new THREE.Mesh(geo, railLineMaterial(RAIL_LINE_STYLE.halo, OVERVIEW_Z)), 29), kind, service: g.service, part: 'halo', base: RAIL_LINE_STYLE.halo });
+        const core = RAIL_LINE_STYLE.haloed[kind] ? RAIL_LINE_STYLE.core : RAIL_LINE_STYLE.tram;
+        this.railLines.push({ mesh: add(new THREE.Mesh(geo, railLineMaterial(core, OVERVIEW_Z)), 30), kind, service: g.service, part: 'core', base: core });
+        continue;
+      }
       // Tunnels under the streets, faint; surface track over the street fills.
       const mesh = add(new THREE.Mesh(this.built(`rail:${g.key}`), lineMaterial(st.fill, OVERVIEW_Z)), g.tunnel ? 9 : 30);
       this.extraLines.push({ mesh, width: st.width, scale: g.service ? 0.6 : 1, opacity: g.tunnel ? RAIL_TUNNEL_STYLE.opacity : 1, kind: 'rail', base: st.fill });
@@ -254,6 +270,9 @@ export class OverviewLayer implements FrameParticipant {
       set(f.mesh, g ? (f.kind === 'pier' ? g.pier : g.landuse[f.kind] ?? g.land) : base);
     }
     for (const e of this.extraLines) set(e.mesh, g ? (e.kind === 'pier' ? g.pier : g.rail) : e.base);
+    // Rail lines with contrast keep their tones in every theme: they are the own ground's (and far ring's) rail tones
+    // already, and a theme's pale rail was the problem (#232). `?overviewRail=0` keeps the clean recolour above.
+    for (const r of this.railLines) set(r.mesh, r.base);
   }
 
   isWater(lng: number, lat: number): boolean { return this.water.isWater(lng, lat); }
@@ -301,6 +320,19 @@ export class OverviewLayer implements FrameParticipant {
       const m = l.mesh.material as THREE.ShaderMaterial;
       m.uniforms.uHalf.value = px / 2 * mpp;
       m.uniforms.uOpacity.value = l.opacity * Math.min(1, px / 0.9);
+    }
+    if (this.railLines.length) {
+      const vp = this.view.viewport?.();
+      if (vp) railViewport.uViewport.value.set(vp.width, vp.height);
+      for (const r of this.railLines) {
+        const w = railLinePx(r.kind, zoom, r.service), px = r.part === 'halo' ? w.halo ?? 0 : w.core, min = r.part === 'halo' ? w.minHalo ?? 0 : w.minCore;
+        // Always drawn (the floor keeps it a line); faded in only where even the floor is under a hair.
+        r.mesh.visible = Math.max(px, min) >= MIN_LINE_PX;
+        const m = r.mesh.material as THREE.ShaderMaterial;
+        m.uniforms.uHalf.value = px / 2 * mpp;
+        m.uniforms.uMinHalfPx.value = min / 2;
+        m.uniforms.uOpacity.value = 1;
+      }
     }
     // The spans' spheres were built round the stored (z = 0, centreline) vertices: grow them by the draw depth and,
     // for lines, the corner extrusion (uHalf × √2) of the widest mesh drawing that geometry.
