@@ -41,7 +41,7 @@ export type FurnitureMesh = { id: FurnitureModelId; positions: Float32Array; col
 
 export const DIMENSIONS = {
   /** Above-ground box, register containertype "3,5m3 KHC … BG 2100*1470*1778 (Engels)": width × depth × height. */
-  containerBg: { width: 2.10, depth: 1.47, height: 1.78, baseH: 0.10, baseOut: 0.03, chamferH: 0.16, chamferIn: 0.14, post: 0.08, openW: 0.58, openH: 0.30, openX: 0.42, openTop: 0.06, openSet: 0.10, frame: 0.04 },
+  containerBg: { width: 2.10, depth: 1.47, height: 1.78, baseH: 0.10, baseOut: 0.03, chamferH: 0.16, chamferIn: 0.14, post: 0.08, openW: 0.58, openH: 0.30, openX: 0, openTop: 0.06, openSet: 0.10, frame: 0.04 },
   container: {
     plate: 1.55, plateH: 0.04, colW: 0.86, frontW: 0.50, cornerRun: 0.13, colD: 0.80, colH: 1.19, colBack: 0.15,
     chamferZ: 0.80, chamferRun: 0.30, backChamferH: 0.18, backChamferRun: 0.12,
@@ -253,7 +253,7 @@ export function containerModel(id: ContainerModelId = 'container'): FurnitureMes
  * where there is no room underground): photos of 189468 and 203765 at Nassaukade / Da Costakade (the user's photo,
  * 2026-11-07) and 216117 (graffitied, pano 2025). A graphite box 2.10 x 1.47 x 1.78 m on a galvanised base frame,
  * galvanised posts at the four corners, the top chamfered all round, the lift mushroom on top. The throw-in hatch is a
- * dark recess high on the long face, left of centre, framed in the fraction colour (SLOT); a sticker and the
+ * dark recess high in the middle of the long face, framed in the fraction colour (SLOT); a sticker and the
  * fraction's pictogram under it, the pictogram again on the end to the right of the hatch.
  */
 export function containerBgModel(): FurnitureMesh {
