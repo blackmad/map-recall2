@@ -50,7 +50,8 @@ const net = async <T>(what: string, f: () => Promise<T>): Promise<T | null> => {
   if (flag('offline')) return null;
   try { return await f(); } catch (e) { console.log(`  ${what}: ${String(e).split('\n')[0]}`); return null; }
 };
-const bearingOf = (w: Wall) => Math.round((Math.atan2(w.nx, w.ny) * 180 / Math.PI + 360) % 360);
+// rounded before the wrap: 359.6 deg used to come out as 360, which the inventory schema rejects (Andreas Ensemble w01, #236)
+const bearingOf = (w: Wall) => Math.round((Math.atan2(w.nx, w.ny) * 180 / Math.PI + 360) % 360) % 360;
 const compass = (b: number) => ['N', 'NE', 'E', 'SE', 'S', 'SW', 'W', 'NW'][Math.round(b / 45) % 8];
 
 // ---- geometry and walls ---------------------------------------------------------------------------------------------

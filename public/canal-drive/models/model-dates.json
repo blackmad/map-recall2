@@ -191,6 +191,16 @@
       "version": "48f17e8cdd38ee10",
       "dateSource": "asset-update"
     },
+    "andreas-ensemble": {
+      "updatedAt": "2026-11-07T00:23:04.296Z",
+      "version": "4d4ab5ecb561821a",
+      "dateSource": "asset-update"
+    },
+    "andreas-ensemble.lod1": {
+      "updatedAt": "2026-11-07T00:23:14.070Z",
+      "version": "8996357428ae8131",
+      "dateSource": "asset-update"
+    },
     "anne-frank-house": {
       "updatedAt": "2026-10-20T10:11:50.561Z",
       "version": "d626cc976cdc33bc",
@@ -4069,6 +4079,11 @@
     "winkelcentrum-plein-40-45": {
       "updatedAt": "2026-11-06T23:53:15.507Z",
       "version": "9c35e2f056b20ba3",
+      "dateSource": "asset-update"
+    },
+    "winkelcentrum-plein-40-45.lod1": {
+      "updatedAt": "2026-11-06T23:53:35.828Z",
+      "version": "bdba36e0513e33f3",
       "dateSource": "asset-update"
     },
     "winkler-prins-monument": {

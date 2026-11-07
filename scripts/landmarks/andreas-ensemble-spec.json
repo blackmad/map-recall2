@@ -1,0 +1,31 @@
+{
+ "id": "andreas-ensemble",
+ "pand": "0363100012111082",
+ "replaces": "the OSM building ways w274869328 (18 m), w1148325404, w1148325665 and w1148325666 (9 m) drawn as plain masses (no BAG-tile, ordinary or recipe model for this pand)",
+ "identity": {
+  "addresses": "Titus van Rijnstraat 201-300, Andreasplein 47-88, Hendrikje Stoffelsstraat 1-2: 140 verblijfsobjecten (136 woon, 1 logies: the WestCord Fashion Hotel, 3 overig)",
+  "bouwjaar": 2009,
+  "architect": "urban plan Geurst & Schulze (nl.wikipedia Andreas Ensemble); the architects of this block's buildings not confirmed from open sources",
+  "correctionsToBrief": "The brief's 'Andreas Ensemble (Andreas Bonnstraat / Lelylaan)' names the 2006-2011 redevelopment of the Andreas hospital site, not one building; this pand is its western perimeter block on the Cornelis Lelylaan, with the WestCord Fashion Hotel ('WestCord FASHION HOTEL' lettering on the 2020-2025 panoramas) in the north-west tower. There is no Andreas Bonnstraat; the streets are the Cornelis Lelylaan, the Titus van Rijnstraat and the Hendrikje Stoffelsstraat. The brief's 18 m is the OSM height; the 3DBAG roofs reach 29-36 m on the bar and 41-43 m on the hotel.",
+  "sources": [
+   "https://api.data.amsterdam.nl/v1/bag/panden/0363100012111082",
+   "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/?adresseertVerblijfsobject.ligtInPanden.identificatie=0363100012111082",
+   "https://nl.wikipedia.org/wiki/Andreas_Ensemble"
+  ]
+ },
+ "frame": {
+  "axes": "u along the Cornelis Lelylaan (north) front from the north-east corner (67.747, -43.515) westwards, v into the block (south); U = (-0.99997, 0.00802), V = (0.00802, 0.99997)"
+ },
+ "partyWallBearings": [],
+ "streetNAP": -0.655,
+ "levels": {
+  "northBarSteps": "u 0-32.9: 32.9 m (7 storeys over the plinth); 32.9-43.6: 34.9 (8); 43.6-65.5: 35.8 (8); 65.5-76.1: 28.6 (6); 76.1-97.3: 30.0 (6)",
+  "northPlinth": 7.59,
+  "northStorey": 3.39,
+  "hotel": "ground 4.4, ten floors of 3.19, a finned crown to 41.0",
+  "westWing": "27.6; stone bands at 9.93, 12.96, 16.0, 19.03, 22.07; loggias 22.4-24.75 and 25.05-27.0",
+  "pavilions": "17.2, ground 3.93, floors of 3.19; set-back top storey to 20.9",
+  "deck": 1.5
+ },
+ "scaleNote": "Rectified panorama heights disagree with the 3DBAG roofs by a steady factor per front (north crops x1.15, hotel x1.1, west crop x0.893, pavilions x1.062); each front's measured heights are scaled by it, so storey counts and proportions are the photo's and the roofs the 3DBAG's."
+}

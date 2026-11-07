@@ -69509,5 +69509,222 @@
     ]
    ]
   }
+ },
+ {
+  "id": "andreas-ensemble",
+  "name": "Andreas Ensemble block with the WestCord Fashion Hotel (2009)",
+  "modelUrl": "./models/andreas-ensemble.glb",
+  "suppressOsmIds": [
+   "w274869328",
+   "w1148325404",
+   "w1148325665",
+   "w1148325666"
+  ],
+  "spatialSuppression": false,
+  "footprint": {
+   "centre": [
+    4.84521378,
+    52.35733708
+   ],
+   "headingDegrees": 0,
+   "lengthMetres": 131.1,
+   "widthMetres": 68.7
+  },
+  "surveyed": {
+   "anchor": [
+    4.84521378,
+    52.35733708
+   ],
+   "northOffsetDegrees": 0,
+   "source": "Vertex average of the BAG 0363100012111082 ring (RD, PDOK BAG WFS, CC0) in native east/south metres above the 3DBAG ground -0.65 m NAP (scripts/landmarks/andreas-ensemble-footprints.json, written by sarphati-plaza-prepare.ts --id=andreas-ensemble --pand=0363100012111082). The north bar's five steps, the hotel tower, the west wing, the two pavilions and the deck from the 3DBAG LoD2.2 roof parts of all three building parts (CC BY 4.0). Windows, plinth bays, bands, loggias, balconies and lettering measured on rectified Gemeente Amsterdam panorama crops (CC BY 4.0), per wall in scripts/landmarks/andreas-ensemble-inventory.json, heights scaled per front to the 3DBAG roofs. The court faces over the deck are inferred."
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 0,
+  "heightMetres": 41,
+  "bagYear": 2009,
+  "materialOverrides": {
+   "brick": "#8c7b66",
+   "greyBrick": "#7a7974",
+   "stone": "#a39d8a",
+   "glass": "#4f5b62",
+   "frame": "#33363a",
+   "ochre": "#a39c8c",
+   "bronze": "#4a4038",
+   "concrete": "#8e8b86",
+   "slate": "#5d6064",
+   "green": "#4a5e3c",
+   "pink": "#ecebe6",
+   "white": "#d9d7cf",
+   "blue": "#2e6466",
+   "dark": "#24272a",
+   "canopyGlass": "#a9b6b8"
+  },
+  "attribution": {
+   "title": "Andreas Ensemble, Nieuw-West (housing block with the WestCord Fashion Hotel, 2009)",
+   "author": "Map Recall",
+   "sourceUrl": "https://api.data.amsterdam.nl/v1/bag/panden/0363100012111082",
+   "licence": "CC BY 4.0",
+   "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+   "modifications": "Original texture-free flat-colour geometry on the BAG footprint (CC0) with 3DBAG LoD2.2 heights (CC BY 4.0): the stepped buff-brick bar on the Cornelis Lelylaan over its two-storey stone plinth of shops, glass-block bays and entrances, its French windows and stone ledges; the hotel tower with stone bands, bay windows, finned crown and its WestCord Fashion Hotel lettering; the west wing with its glazed hotel storey, stone bands and loggias; the two grey-brick pavilions with khaki-framed windows, corner balconies and set-back top storeys; the garden deck between them; read for proportion and tone from Gemeente Amsterdam panoramas (CC BY 4.0). No pixels or meshes imported."
+  },
+  "buildingFootprint": {
+   "type": "Polygon",
+   "coordinates": [
+    [
+     [
+      4.84620736,
+      52.35757994
+     ],
+     [
+      4.84620344,
+      52.3577327
+     ],
+     [
+      4.84611288,
+      52.35773183
+     ],
+     [
+      4.84604492,
+      52.35773112
+     ],
+     [
+      4.84563757,
+      52.35772726
+     ],
+     [
+      4.84556968,
+      52.35772672
+     ],
+     [
+      4.8449243,
+      52.35772053
+     ],
+     [
+      4.84485636,
+      52.35771984
+     ],
+     [
+      4.8445629,
+      52.3577171
+     ],
+     [
+      4.84446353,
+      52.35771617
+     ],
+     [
+      4.84428693,
+      52.35771452
+     ],
+     [
+      4.84428773,
+      52.3576812
+     ],
+     [
+      4.84430103,
+      52.35712547
+     ],
+     [
+      4.84430148,
+      52.35710684
+     ],
+     [
+      4.84447683,
+      52.35710855
+     ],
+     [
+      4.8444764,
+      52.35712719
+     ],
+     [
+      4.84455017,
+      52.35712792
+     ],
+     [
+      4.84457697,
+      52.35712818
+     ],
+     [
+      4.84457462,
+      52.35723151
+     ],
+     [
+      4.84501626,
+      52.35723569
+     ],
+     [
+      4.84501637,
+      52.35723155
+     ],
+     [
+      4.84501879,
+      52.35713318
+     ],
+     [
+      4.84501882,
+      52.35713212
+     ],
+     [
+      4.84511231,
+      52.35713299
+     ],
+     [
+      4.84517372,
+      52.35713357
+     ],
+     [
+      4.8451948,
+      52.35713377
+     ],
+     [
+      4.8453291,
+      52.35713502
+     ],
+     [
+      4.84535002,
+      52.35713521
+     ],
+     [
+      4.84541149,
+      52.35713578
+     ],
+     [
+      4.84550476,
+      52.35713665
+     ],
+     [
+      4.84550241,
+      52.35724028
+     ],
+     [
+      4.84572957,
+      52.35724242
+     ],
+     [
+      4.84573233,
+      52.35713857
+     ],
+     [
+      4.84590856,
+      52.35714021
+     ],
+     [
+      4.84604263,
+      52.35714146
+     ],
+     [
+      4.84621823,
+      52.3571431
+     ],
+     [
+      4.84621463,
+      52.35729555
+     ],
+     [
+      4.84620736,
+      52.35757994
+     ]
+    ]
+   ]
+  }
  }
 ]

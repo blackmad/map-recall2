@@ -414,6 +414,7 @@ import {buildKinkerstraat89} from './kinkerstraat-89-builder';
 import {buildPolitiebureauPostjesweg} from './politiebureau-postjesweg-builder';
 import {buildQuarterPlaza} from './ibis-city-west-builder';
 import {buildWinkelcentrumPlein4045} from './winkelcentrum-plein-40-45-builder';
+import {buildAndreasEnsemble} from './andreas-ensemble-builder';
 import {buildWesterdok748} from './westerdok-748-builder';
 import {buildDaCostakade146} from './da-costakade-146-builder';
 import {buildBloemenmarktStalls} from './bloemenmarkt-stalls-builder';
@@ -1023,6 +1024,7 @@ for(const spec of MANUAL_LANDMARKS.filter(model => !selectedIds.length || select
     else if(id==='politiebureau-postjesweg')buildPolitiebureauPostjesweg(w,d,helpers);
     else if(id==='ibis-city-west')buildQuarterPlaza(w,d,helpers);
     else if(id==='winkelcentrum-plein-40-45')buildWinkelcentrumPlein4045(w,d,helpers);
+    else if(id==='andreas-ensemble')buildAndreasEnsemble(w,d,helpers);
     else if(id==='westerdok-748')buildWesterdok748(w,d,helpers);
     else if(id==='da-costakade-146')buildDaCostakade146(w,d,helpers);
     else if(id==='bloemenmarkt-stalls')buildBloemenmarktStalls(w,d,helpers);

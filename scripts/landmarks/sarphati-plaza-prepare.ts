@@ -35,8 +35,13 @@ const a = d.feature.CityObjects[`NL.IMBAG.Pand.${PAND}`].attributes;
 const ground = STREET !== undefined ? Number(STREET) : a.b3_h_maaiveld as number;
 const tr = d.metadata.transform;
 const verts = (d.feature.vertices as number[][]).map(v => { const q = v.map((n, i) => n * tr.scale[i] + tr.translate[i]); return [r3(q[0] - ax), r3(q[2] - ground), r3(-(q[1] - ay))]; });
-const g = d.feature.CityObjects[`NL.IMBAG.Pand.${PAND}-0`].geometry.find((x: {lod: string}) => x.lod === '2.2');
-const roofs = (g.boundaries[0] as number[][][]).flatMap((s, i) => g.semantics.surfaces[g.semantics.values[0][i]].type === 'RoofSurface' ? [s.map(r => r.map(kk => verts[kk]))] : []);
+// Every BuildingPart, not only -0: a large pand such as the Andreas Ensemble block (0363100012111082) splits into three
+// parts and -0 alone held one of its nine buildings. A single-part pand gives the same roofs as before.
+const parts = Object.keys(d.feature.CityObjects).filter(k => k.startsWith(`NL.IMBAG.Pand.${PAND}-`)).sort();
+const roofs = parts.flatMap(k => {
+  const g = d.feature.CityObjects[k].geometry.find((x: {lod: string}) => x.lod === '2.2');
+  return (g.boundaries[0] as number[][][]).flatMap((s, i) => g.semantics.surfaces[g.semantics.values[0][i]].type === 'RoofSurface' ? [s.map(r => r.map(kk => verts[kk]))] : []);
+});
 
 const out: Record<string, unknown> = {
   id: ID, bagId: PAND, anchorRD: [r3(ax), r3(ay)], anchor: rdToLngLat(ax, ay).map(v => +v.toFixed(8)), groundNAP: ground, threeDBagGroundNAP: a.b3_h_maaiveld,
