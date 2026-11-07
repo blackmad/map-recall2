@@ -69,6 +69,8 @@ const HIGHLIGHT_COLOUR = 0xffd21f;
 const GROUND_BASE_SLICE_MS = 4;
 
 /** A URL flag: `?name=0` (or `window.__canalRecall<Name>` false) turns a default-on feature off. */
+/** Concurrent level loads when the level wanted is lod2 (the others keep two). */
+const LOD2_LOADS = 8;
 const flagOn = (name, fallback = true) => {
   const global = window[`__canalRecall${name[0].toUpperCase()}${name.slice(1)}`];
   if (typeof global === 'boolean') return global;
@@ -1258,7 +1260,9 @@ export class SignatureLandmarks {
         : lodApi().chooseLevel(entry.level, this._radiusPixels(entry.radiusMetres, entry.placement.anchor));
       if (wanted === entry.level) continue;
       if (entry.spare && entry.spareLevel === wanted) { this._swapLevel(entry, entry.spare, wanted); continue; }
-      if (this._lodLoads >= 2) continue;
+      // A lod2 is ~10 kB: from the air the pan outruns two loads at a time and models it left behind stay at full
+      // (measured: the west leg peaked at 1,059 landmark draws). lod2 downgrades take their own, wider limit.
+      if (wanted === 'lod2' ? this._lodLoads >= LOD2_LOADS : this._lodLoads >= 2) continue;
       this._loadLevel(entry, wanted);
     }
   }
