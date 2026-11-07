@@ -214,6 +214,8 @@ export class OwnWorldView implements WorldViewOracles {
   private _labelOcclusionOn = flag('labelOcclusion', '__canalRecallLabelOcclusion', true);
   /** From the air (rendererShared/aerialView.ts): no occlusion rounds, candidates capped (lane R2-B #229; `?labelAerialCap=0`). */
   private labelAerialCapOn = flag('labelAerialCap', '__canalRecallLabelAerialCap', true);
+  /** `?labelSticky=0` off: from the air the last winners keep their places across full placements (labelLayer sticky). */
+  private readonly labelStickyOn = flag('labelSticky', '__canalRecallLabelSticky', true);
   /** `?labelAerialPois=1`: every POI from the air too (the A/B of lane R3-F's aerial POI thinning, #241). */
   private readonly labelAerialPoisAll = flag('labelAerialPois', '__canalRecallLabelAerialPois', false);
   /** `?labelClipTries=0` off: line labels try every centre along a run, also the ones projected far off screen. */
@@ -811,6 +813,7 @@ export class OwnWorldView implements WorldViewOracles {
     this._labels.clipTries = this.labelClipTriesOn;
     // From the air only signature-landmark POIs keep their names (`?labelAerialPois=1`: every POI, as before).
     this._labels.aerialPoisOnly = aerial && !this.labelAerialPoisAll;
+    this._labels.sticky = aerial && this.labelStickyOn;
     this._labels.movingCadenceMs = aerial && this.labelBudgetMs !== null ? AERIAL_LABEL_CADENCE_MS : null;
     if (this.labelOcclusionOn && !aerial && city?.residentFeatures) {
       const eye = cam.eye();

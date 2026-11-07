@@ -80,7 +80,7 @@ export class LabelLayer {
   private winners = new Set<string>();
   private fullRev = -1;
   /** Full placements (all candidates) vs re-placements of the last winners; read by the perf probe. */
-  readonly stats = { full: 0, winnersOnly: 0, skipped: 0, fullMs: 0, lastFullMs: 0, occluded: 0, betweenMs: 0, betweenSightlines: 0, candidates: 0, slicedFrames: 0 };
+  readonly stats = { full: 0, winnersOnly: 0, skipped: 0, fullMs: 0, lastFullMs: 0, occluded: 0, betweenMs: 0, betweenSightlines: 0, candidates: 0, slicedFrames: 0, churn: 0, lastChurn: 0 };
   /** POI labels hidden behind nearer buildings (engine/labelOcclusion.ts); null tests nothing. */
   private occludedTest: ((c: LabelCandidate) => boolean) | null = null;
   /**
@@ -108,6 +108,13 @@ export class LabelLayer {
   set aerialPoisOnly(on: boolean) { if (on !== this._aerialPoisOnly) { this._aerialPoisOnly = on; this.rev++; } }
   private _aerialPoisOnly = false;
   private aerialPoiIds = new Set<string>();
+  /**
+   * Sticky winners from the air (lane R3-F #241, the user 2026-11-07 over the Amstelkanaal: "the bouncing labels at
+   * this zoom make it feel jankier"): at a full placement the last winners compete with STICKY_PRIORITY more, so a
+   * label still on screen and still admitted keeps its place unless a challenger outranks it by that margin, and new
+   * names fill the free room. Set by the world view while aerial (`?labelSticky=0` off).
+   */
+  sticky = false;
   /** Line labels try only centres that can land on screen (ownMap/labels.ts; `?labelClipTries=0` off, lane R3-F #241). */
   clipTries = true;
   /** From the air while the camera moves (world view, with the budget): full placements at most this often, ms. */
@@ -288,6 +295,12 @@ export class LabelLayer {
     return w;
   }
 
+  /** Sticky winners: the last full placement's winners compete with STICKY_PRIORITY more (game points excepted). */
+  private stickied(list: LabelCandidate[]): LabelCandidate[] {
+    if (!this.sticky || !this.winners.size) return list;
+    return list.map(c => (this.winners.has(c.id) && c.priority < 1e6 ? { ...c, priority: c.priority + STICKY_PRIORITY } : c));
+  }
+
   /**
    * Draw for this frame. `frame` is the camera in own-map local metres (cameraFrame of the local centre), `bounds`
    * the visible local box, `ratio` the canvas pixel ratio.
@@ -361,7 +374,7 @@ export class LabelLayer {
     let sliced: { placement: LabelPlacement; candidates: LabelCandidate[]; startedAt: number; frames: number } | null = null;
     if (budgeted && (full || this.pendingFull)) {
       if (!this.pendingFull) {
-        let all = [...seen];
+        let all = this.stickied([...seen]);
         this.stats.candidates = all.length;
         if (cap && all.length > cap.count) all = all.sort((a, b) => b.priority - a.priority).slice(0, cap.count);
         this.pendingFull = { placement: new LabelPlacement(all, options), candidates: all, rev, startedAt: now, frames: 0 };
@@ -373,7 +386,7 @@ export class LabelLayer {
       else { full = false; this.stats.slicedFrames++; }
       lap(full ? 'place (full)' : 'place (sliced)');
     }
-    let candidates = full && !sliced ? [...seen] : sliced ? sliced.candidates : [...seen].filter(c => this.winners.has(c.id));
+    let candidates = full && !sliced ? this.stickied([...seen]) : sliced ? sliced.candidates : [...seen].filter(c => this.winners.has(c.id));
     if (!sliced && !(budgeted && !full && this.pendingFull)) this.stats.candidates = candidates.length;
     if (cap && full && !sliced && candidates.length > cap.count) candidates = candidates.sort((a, b) => b.priority - a.priority).slice(0, cap.count);
     const original = new Map(candidates.map(c => [c.id, c] as const));
@@ -458,7 +471,13 @@ export class LabelLayer {
       const ms = performance.now() - now;
       this.stats.fullMs += ms; this.stats.lastFullMs = ms; this.stats.occluded = occluded;
       this.fullPose = pose ?? null; this.fullAt = sliced ? sliced.startedAt : now; this.fullRev = rev;
-      this.winners = new Set(this.placed.map(l => l.id));
+      const next = new Set(this.placed.map(l => l.id));
+      // Churn: names that came or went between consecutive full placements (the "bouncing" the user saw from the air).
+      let churn = 0;
+      for (const id of next) if (!this.winners.has(id)) churn++;
+      for (const id of this.winners) if (!next.has(id)) churn++;
+      this.stats.churn += churn; this.stats.lastChurn = churn;
+      this.winners = next;
       this.stats.full++;
     } else this.stats.winnersOnly++;
     this.ctx.setTransform(ratio, 0, 0, ratio, 0, 0);
@@ -475,6 +494,11 @@ interface BucketEntry { readonly c: LabelCandidate; readonly test: PolicyTest | 
 /** The camera in own-map local metres: centre x, y, zoom, bearing and pitch (degrees). */
 export type LabelPose = readonly [number, number, number, number, number];
 
+/**
+ * The margin a challenger needs to take a sticky winner's place: more than a street's length term (0-999), less than
+ * a class step between a minor street and a neighbourhood name (streets 1,000-8,999, water 8,000+, hoods 9,000).
+ */
+export const STICKY_PRIORITY = 1500;
 /** Re-placements after dropping occluded winners; newcomers hidden after the last one are dropped, not replaced. */
 const OCCLUSION_ROUNDS = 3;
 /** Sightlines spent per frame re-testing drawn winners between full placements (a sightline is ~10-30 us). */

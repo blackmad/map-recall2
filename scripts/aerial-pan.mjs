@@ -197,7 +197,7 @@ const residents = census => page.evaluate(census => {
     // tagging; absent on older bundles), the held/sliced ground re-base and the budgeted label placements.
     ...(() => { const rep = window.__canalPerf?.gl?.report?.(); return { drawsByOwner: rep?.lastFrameByOwner ?? null, glOwners: rep?.resident?.byOwner?.slice(0, 40) ?? null }; })(),
     groundBases: vm.groundBaseStats ? { ...vm.groundBaseStats } : null,
-    labelStats: vm._labels?.stats ? { full: vm._labels.stats.full, slicedFrames: vm._labels.stats.slicedFrames ?? null, lastFullMs: Math.round(vm._labels.stats.lastFullMs) } : null,
+    labelStats: vm._labels?.stats ? { full: vm._labels.stats.full, slicedFrames: vm._labels.stats.slicedFrames ?? null, lastFullMs: Math.round(vm._labels.stats.lastFullMs), churn: vm._labels.stats.churn ?? null } : null,
     workers: (pool?.live ?? 0) + (ground?.worker ? 1 : 0),
   };
   if (census) {

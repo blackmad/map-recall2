@@ -4,7 +4,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { LabelPlacement, placeLabels, type LabelCandidate, type PlaceOptions } from '../ownMap/labels';
-import { LabelLayer, type LabelPose } from './overlays/labelLayer';
+import { LabelLayer, STICKY_PRIORITY, type LabelPose } from './overlays/labelLayer';
 import type { LabelContext } from '../ownMap/labelPolicy';
 import type { OverviewData } from '../ownMap/overviewFormat';
 import type { CameraFrame } from '../ownMap/mapCamera';
@@ -133,4 +133,26 @@ test('from the air only signature-landmark POIs keep their names; streets, hoods
   assert.ok(air.poi?.includes('dest'), 'the game point stays');
   assert.deepEqual(air.street?.length, all.street?.length);
   assert.deepEqual(air.hood, all.hood);
+});
+
+test('sticky winners from the air: a placed name keeps its place unless a challenger outranks it by the margin; churn counted', () => {
+  const run = (sticky: boolean, challenger: number) => {
+    const l = layer(null);
+    l.sticky = sticky;
+    const at = (dx: number) => [4.902 + dx, 52.3705] as [number, number];
+    // Two names a few px apart: only one fits.
+    l.setPois([{ id: 'a', text: 'Alpha Hall', kind: 'poi', priority: 300, lngLat: at(0) }, { id: 'b', text: 'Beta Hall', kind: 'poi', priority: 200, lngLat: at(0.00005) }]);
+    l.draw(frame, view, 17, 1, project, [0, 0, 17, 0, 0]);
+    const first = l.placed.filter(p => p.kind === 'poi').map(p => p.id);
+    l.setPois([{ id: 'a', text: 'Alpha Hall', kind: 'poi', priority: 300, lngLat: at(0) }, { id: 'b', text: 'Beta Hall', kind: 'poi', priority: challenger, lngLat: at(0.00005) }]);
+    l.draw(frame, view, 17, 1, project, [0, 0.02, 17, 0, 0]);
+    return { first, second: l.placed.filter(p => p.kind === 'poi').map(p => p.id), churn: l.stats.lastChurn };
+  };
+  assert.deepEqual(run(false, 1000).first, ['a']);
+  assert.deepEqual(run(false, 1000).second, ['b'], 'without stickiness the new top name takes the place');
+  const kept = run(true, 1000);
+  assert.deepEqual(kept.second, ['a'], 'sticky: a challenger within the margin does not');
+  assert.equal(kept.churn, 0);
+  assert.deepEqual(run(true, 300 + STICKY_PRIORITY + 1).second, ['b'], 'a challenger past the margin does');
+  assert.equal(run(false, 1000).churn, 2);
 });
