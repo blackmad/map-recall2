@@ -86186,7 +86186,7 @@
       "materialOverrides": {
         "brick": "#3b3f46",
         "blue": "#24282c",
-        "white": "#e4e4df",
+        "white": "#a7abab",
         "glass": "#404b55",
         "dark": "#2a2e33",
         "stone": "#7d7c78",
@@ -86388,7 +86388,7 @@
       "bytes": 199556,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "lod1": {
-        "sourceHash": "dfe1d4eed9e4e14c",
+        "sourceHash": "c665322a6749494c",
         "buildVersion": 2,
         "bytes": 96828,
         "triangles": 5989
