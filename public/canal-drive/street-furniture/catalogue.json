@@ -13,14 +13,14 @@
    "category": "street-furniture",
    "subtypes": "rest, gft, textiel; BGT afvalbak columns as unknown",
    "modelUrl": "./models/street-furniture/container.glb",
-   "triangles": 114,
-   "glbBytes": 13216,
+   "triangles": 150,
+   "glbBytes": 17100,
    "instances": 9119,
    "source": "Gemeente Amsterdam huishoudelijkafval register (active, UNDERGROUND) + BGT bak/afvalbak; the Amsterdam Standaard column (#212)",
    "measured": [
     "column 1.19 m (1.16-1.22 m, four panoramas)",
-    "front 0.63 m, depth 0.72 m",
-    "stainless drum 0.46 m in the front slope between 0.07 m cheeks",
+    "0.86 m wide with a 0.50 m flat front panel between angled corner strips, 0.80 m deep (face-on panoramas, 2026-11-07)",
+    "stainless drum in the front slope between the corner strips",
     "fraction band 0.15 m on the slope; lift shaft in the fraction colour",
     "lift mushroom 0.35 m",
     "floor plate 1.56 m",
@@ -47,17 +47,15 @@
    "category": "street-furniture",
    "subtypes": "glas",
    "modelUrl": "./models/street-furniture/container-glas.glb",
-   "triangles": 104,
-   "glbBytes": 12148,
+   "triangles": 140,
+   "glbBytes": 16036,
    "instances": 1474,
    "source": "Gemeente Amsterdam huishoudelijkafval register: fractieOmschrijving Glas (#212)",
    "measured": [
-    "the rest column with a recessed panel and one round throw-in hole (~0.17 m) under the yellow band",
+    "the same column with one round throw-in hole (~0.20 m) in the slope under the yellow band",
     "yellow band and lift shaft"
    ],
-   "prior": [
-    "hole height 0.84 m"
-   ],
+   "prior": [],
    "photo": {
     "panoId": "recording_2025-09-29_09-14-27_01854",
     "heading": 280,
@@ -74,16 +72,16 @@
    "category": "street-furniture",
    "subtypes": "papier",
    "modelUrl": "./models/street-furniture/container-papier.glb",
-   "triangles": 102,
-   "glbBytes": 11940,
+   "triangles": 133,
+   "glbBytes": 15288,
    "instances": 2666,
    "source": "Gemeente Amsterdam huishoudelijkafval register: fractieOmschrijving Papier (#212)",
    "measured": [
-    "the rest column with a recessed panel: wide letterbox slot under the blue band, light flap below",
+    "the same column: wide dark slot on the slope under the blue band, light flap below",
     "blue band 0.15 m (57671)"
    ],
    "prior": [
-    "slot 0.38 x 0.06 m, flap 0.14 m"
+    "slot 0.38 m wide"
    ],
    "photo": {
     "panoId": "recording_2025-07-31_07-49-05_00984",

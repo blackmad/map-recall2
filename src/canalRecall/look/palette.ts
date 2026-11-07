@@ -439,8 +439,9 @@ export const GARDEN_ROOM_TONES = {
  *   - underground container column (#212 re-sample, 2026-11-05; staging/street-furniture/container-measurements.md): the
  *     register's NCS 7000 (S 7000-N, 12,037 of 12,892 active containers). Raw lit faces #515b5e (102570), #444e55 /
  *     #536066 (57671), #45535b / #4d5c62 (Prinsengracht 00568 / 00566), #4a606c (191647), #444846 (121395): median luma
- *     88, neutralised per crop against the body (the cyan cast varies by mission) -> body #56595b (was #6c7173), the
- *     sky-lit flat top a step lighter #5f6264; stainless drum #c1c5c3 (raw #becfc2, #aacbdf), lip #a7aba9 (raw #a3aea7),
+ *     88, neutralised per crop against the body (the cyan cast varies by mission) -> body #56595b (was #6c7173); lifted
+ *     2026-11-07 to #74787a / top #858889 after the user's two photos (lit #888991, shade #6e7575) read lighter, with
+ *     the darker pictogram panel #585c60, doors #6a6e70, recess walls #4a4d4f, glass/paper insert #63676a, crosses #aab0ae; stainless drum #c1c5c3 (raw #becfc2, #aacbdf), lip #a7aba9 (raw #a3aea7),
  *     galvanised plate #8f9495 (raw #7a9caa, plinth #677d82) with a darker edge #5c6061, mouth #1d1f20, top sticker #d5d8d2; fraction
  *     bands glass yellow #d6b44e (raw #b3b966, neutralised R x1.16 G x0.96 B x0.88), paper blue #2a5f94 (raw #206aa0,
  *     #5473a6), rest the lighter label grey #73777a; GFT green and textile red stay priors;
@@ -451,8 +452,13 @@ export const GARDEN_ROOM_TONES = {
  *   - bike hoop galvanised #9fa4a3; litter bin grey #6f7476 (abri photo).
  */
 export const STREET_FURNITURE_TONES = {
-  containerBody: '#56595b',
-  containerTop: '#5f6264',
+  containerBody: '#74787a',
+  containerTop: '#858889',
+  containerPanel: '#585c60',
+  containerDoor: '#6a6e70',
+  containerRecess: '#4a4d4f',
+  containerInsert: '#63676a',
+  containerCross: '#aab0ae',
   containerDrum: '#c1c5c3',
   containerLip: '#a7aba9',
   containerHandle: '#9a9e9e',
