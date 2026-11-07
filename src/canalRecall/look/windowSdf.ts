@@ -115,9 +115,10 @@ export function cellDebugMode(): CellDebug {
 
 /**
  * `?windowSdf=1` / `?windowSdf=0` (or `window.__canalRecallWindowSdf = true | false`). Unasked, desktop follows
- * WINDOW_SDF_DESKTOP_DEFAULT and touch WINDOW_SDF_TOUCH_DEFAULT. Both off at hand-back (#228): the S2 frames gain
- * 3-5 % sharpness, but the S3 slab's still pan flickers more at DPR 2 and on the phone than with the painted cell
- * (aliasPx against a supersampled reference, swap-zfight ZFIGHT_SS), so the integrator flips them after review.
+ * WINDOW_SDF_DESKTOP_DEFAULT and touch WINDOW_SDF_TOUCH_DEFAULT. Desktop flipped on 2026-11-07 after a quiet
+ * GPU-timer read on cf0f9d02e (6 alternating runs, DPR 2: dam painted 4.98 ms vs sdf 3.98, westerkerk 4.64 vs 4.43,
+ * cost under the noise floor; lapVar +13 % at the user's S2 pose). Touch stays off until the user's iPhone has been
+ * measured (the emulated profile read +1.6 ms at Dam); `?windowSdf=1` is the phone try-URL.
  */
 export function windowSdfEnabled(touch = false): boolean {
   const g = globalThis as Record<string, unknown>;
@@ -126,7 +127,7 @@ export function windowSdfEnabled(touch = false): boolean {
   if (asked === true || asked === '1' || asked === 'true' || asked === 'on') return true;
   return touch ? WINDOW_SDF_TOUCH_DEFAULT : WINDOW_SDF_DESKTOP_DEFAULT;
 }
-export const WINDOW_SDF_DESKTOP_DEFAULT = false;
+export const WINDOW_SDF_DESKTOP_DEFAULT = true;
 /** Touch tier default (the brief: on only if the iPhone GPU cost holds; the emulated profile is not the phone's GPU). */
 export const WINDOW_SDF_TOUCH_DEFAULT = false;
 
