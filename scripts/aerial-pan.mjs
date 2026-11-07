@@ -254,6 +254,15 @@ const residents = census => page.evaluate(census => {
     farRadiusM: ground?.farRadius ?? null, farShells: vm._farShells?.stats?.() ?? null,
     bakedCoarse: vm._bakedCoarse?.stats?.() ?? null, bakedCoarseOff: vm.bakedCoarseOff ?? null,
     coarseChunks: tb?.chunks ? [...tb.chunks.keys()].filter(k => k.startsWith('coarse:')).length : null,
+    // Lane R4-A (#243), the coarse rebuild wave: coarse meshes dissolving in now (runtime `coarse:` chunks in the facade
+    // layer's fades, plus baked cells), and every coarse dissolve so far (the facade layer's fade map is counted from the
+    // first sample on; baked cells count their own).
+    coarseFading: (tb?.fading ? [...tb.fading.keys()].filter(k => String(k).startsWith('coarse:')).length : 0) + (vm._bakedCoarse?.stats?.()?.fading ?? 0),
+    coarseFadeInsTotal: (() => {
+      const f = tb?.fading;
+      if (f && !f.__coarseCount) { const set = f.set.bind(f); f.__coarseCount = { n: 0 }; f.set = (k, v) => { if (String(k).startsWith('coarse:') && !f.has(k)) f.__coarseCount.n++; return set(k, v); }; }
+      return (f?.__coarseCount?.n ?? 0) + (vm._bakedCoarse?.stats?.()?.fadeIns ?? 0);
+    })(),
     // Lane R3-F (#241): the last frame's draws by owner (facade chunks by kind), resident GPU MB by owner (glCounters
     // tagging; absent on older bundles), the held/sliced ground re-base and the budgeted label placements.
     ...(() => { const rep = window.__canalPerf?.gl?.report?.(); return { drawsByOwner: rep?.lastFrameByOwner ?? null, glOwners: rep?.resident?.byOwner?.slice(0, 40) ?? null }; })(),
@@ -430,10 +439,11 @@ for (let t = every; t <= panS; t += every) {
   last = b + 50;
   // Per-sample deltas: detail chunks installed and MB uploaded to the GPU since the previous sample.
   res.detailInstalls = res.detailInstallsTotal == null ? null : res.detailInstallsTotal - (timeline.at(-1)?.detailInstallsTotal ?? baseInstalls ?? 0);
+  res.coarseFadeIns = res.coarseFadeInsTotal - (timeline.at(-1)?.coarseFadeInsTotal ?? res.coarseFadeInsTotal);
   res.uploadMBDelta = res.gl?.uploadMB == null ? null : res.gl.uploadMB - (timeline.at(-1)?.gl?.uploadMB ?? 0);
   const row = { t, ...aerial, heapMB: heap.main.usedMB, bufMB: heap.main.backingMB, workersMB: heap.workersUsedMB, ...rss, ...res, frames, worst, loaf };
   timeline.push(row);
-  console.log(`${device} t${t} ${aerial.leg ?? '-'} z${res.zoom} p${res.pitch}: heap ${heap.main.usedMB}+${heap.main.backingMB ?? '?'} MB, wk ${heap.workersUsedMB} MB, rss ${rss.rendererRssMB}/${rss.gpuRssMB}, geo ${res.geometries} tex ${res.textures} gl ${res.gl?.residentMB} MB (+${res.gl?.uploadMB} MB up), chunks ${res.chunks} tiles ${res.cityTiles} feats ${res.cityFeatures} ctxCh ${res.contextChanges} lm ${res.landmarks} trees ${res.trees} ground ${res.groundCells} far ${res.farRing} r${res.farRadiusM} fs ${res.farShells?.cells ?? '-'}/${res.farShells?.partsShown ?? '-'} draws ${res.draws} bc ${res.bakedCoarse ? `${res.bakedCoarse.drawn}/${res.bakedCoarse.cells}` : '-'} cc ${res.coarseChunks} labels ${res.labelsPlaced} wkrs ${res.workers} detail +${res.detailInstalls} (${res.detailTiles} tiles, ${res.detailMB} MB) fading ${res.fading} up +${res.uploadMBDelta} MB; p99 ${frames.p99} >100 ${frames.over100} >250 ${frames.over250} max ${frames.longestMs}${worst?.[0] ? ` worst ${JSON.stringify(worst[0].phases)}` : ''}`);
+  console.log(`${device} t${t} ${aerial.leg ?? '-'} z${res.zoom} p${res.pitch}: heap ${heap.main.usedMB}+${heap.main.backingMB ?? '?'} MB, wk ${heap.workersUsedMB} MB, rss ${rss.rendererRssMB}/${rss.gpuRssMB}, geo ${res.geometries} tex ${res.textures} gl ${res.gl?.residentMB} MB (+${res.gl?.uploadMB} MB up), chunks ${res.chunks} tiles ${res.cityTiles} feats ${res.cityFeatures} ctxCh ${res.contextChanges} lm ${res.landmarks} trees ${res.trees} ground ${res.groundCells} far ${res.farRing} r${res.farRadiusM} fs ${res.farShells?.cells ?? '-'}/${res.farShells?.partsShown ?? '-'} draws ${res.draws} bc ${res.bakedCoarse ? `${res.bakedCoarse.drawn}/${res.bakedCoarse.cells}` : '-'} cc ${res.coarseChunks} labels ${res.labelsPlaced} wkrs ${res.workers} detail +${res.detailInstalls} (${res.detailTiles} tiles, ${res.detailMB} MB) fading ${res.fading} coarse fading ${res.coarseFading} (+${res.coarseFadeIns}) up +${res.uploadMBDelta} MB; p99 ${frames.p99} >100 ${frames.over100} >250 ${frames.over250} max ${frames.longestMs}${worst?.[0] ? ` worst ${JSON.stringify(worst[0].phases)}` : ''}`);
 }
 
 // Gates: minute 1 is the reference (the sweep has reached every district once by then at the default speed).
@@ -454,6 +464,10 @@ const summary = {
   aerialTexturesGrowthPct: growth(first(r => r.textures), final(r => r.textures)),
   aerialGlMBGrowthPct: growth(first(r => r.gl?.residentMB), final(r => r.gl?.residentMB)),
   aerialLandmarksMax: Math.max(...timeline.map(r => r.landmarks ?? 0)),
+  // Lane R4-A (#243): the coarse rebuild wave over the pan (coarse dissolves after the first sample; most at once).
+  coarseFadeIns: (m3.coarseFadeInsTotal ?? 0) - (timeline[0]?.coarseFadeInsTotal ?? 0),
+  coarseFadingMax: Math.max(...timeline.map(r => r.coarseFading ?? 0)),
+  coarseFadingSamples: timeline.filter(r => r.coarseFading > 0).length,
   aerialUploadGB: Math.round((m3.gl?.uploadMB ?? 0) / 102.4) / 10,
   aerialGeometriesMax: Math.max(...timeline.map(r => r.geometries ?? 0)),
   aerialTexturesMax: Math.max(...timeline.map(r => r.textures ?? 0)),
