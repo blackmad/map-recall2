@@ -4,7 +4,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { LabelPlacement, placeLabels, type LabelCandidate, type PlaceOptions } from '../ownMap/labels';
-import { LabelLayer, STICKY_PRIORITY, type LabelPose } from './overlays/labelLayer';
+import { AERIAL_POI_PER_M, AERIAL_POI_STICKY, LabelLayer, rankAerialPois, STICKY_PRIORITY, type LabelPose } from './overlays/labelLayer';
 import type { LabelContext } from '../ownMap/labelPolicy';
 import type { OverviewData } from '../ownMap/overviewFormat';
 import type { CameraFrame } from '../ownMap/mapCamera';
@@ -180,4 +180,41 @@ test('a budgeted full placement cut at its budget finishes while the camera hold
   const skipped = l.stats.skipped;
   l.draw(frame, view, 16, 1, project, pose);
   assert.equal(l.stats.skipped, skipped + 1, 'done: a still camera skips again');
+});
+
+test('from the air at most aerialPoiMax map POIs compete, nearest and most prominent first; hoods, streets and game points uncapped', () => {
+  // 24 signature landmarks on a 6 x 4 grid over the view, every one far enough from the others to fit.
+  const pois = Array.from({ length: 24 }, (_, i) => ({ id: `lm${i}`, text: `Hall ${i}`, kind: 'poi' as const, priority: 5200 + (i * 7) % 23, aerial: true,
+    lngLat: [4.9 + ((i % 6) - 2.5) * 0.0016, 52.37 + (Math.floor(i / 6) - 1.5) * 0.0012] as [number, number] }));
+  const make = (max: number | null) => {
+    const l = layer(null);
+    l.setPois(pois);
+    l.setPoints('game', [{ id: 'dest', text: 'Destination', kind: 'poi', priority: 1, lngLat: [4.9, 52.37] }]);
+    l.aerialPoisOnly = true;
+    l.aerialPoiMax = max;
+    l.draw(frame, view, 17, 1, project, [0, 0, 17, 0, 0]);
+    return l.placed.reduce((o: Record<string, string[]>, p) => { (o[p.kind] ??= []).push(p.id); return o; }, {});
+  };
+  const all = make(null), capped = make(5), none = make(0);
+  const map = (o: Record<string, string[]>) => (o.poi ?? []).filter(id => id.startsWith('lm'));
+  assert.ok(map(all).length > 10, `uncapped ${map(all).length}`);
+  assert.ok(map(capped).length <= 5 && map(capped).length >= 3, JSON.stringify(capped));
+  assert.deepEqual(map(none), []);
+  for (const o of [capped, none]) {
+    assert.ok(o.poi?.includes('dest'), 'the game point stays');
+    assert.ok((o.street?.length ?? 0) >= (all.street?.length ?? 0), 'streets keep their places (more fit once POIs make room)');
+    assert.deepEqual(o.hood, all.hood);
+  }
+});
+
+test('the aerial cap ranks priority less distance, so a near landmark beats a far one that scores higher; winners hold', () => {
+  const near = { id: 'near', text: 'Sarphatimonument', kind: 'poi' as const, priority: 5231, at: [150, 0] as [number, number] };
+  const far = { id: 'far', text: 'Boom Chicago', kind: 'poi' as const, priority: 5344, at: [2500, 0] as [number, number] };
+  const mid = { id: 'mid', text: 'Rijksmuseum', kind: 'poi' as const, priority: 5309, at: [1200, 0] as [number, number] };
+  assert.deepEqual(rankAerialPois([far, mid, near], [0, 0], null).map(c => c.id), ['near', 'mid', 'far']);
+  // Equal prominence: the nearer first; a winner AERIAL_POI_STICKY / AERIAL_POI_PER_M metres further still ranks ahead.
+  const a = { ...near, id: 'a', priority: 5000, at: [100, 0] as [number, number] };
+  const b = { ...near, id: 'b', priority: 5000, at: [100 + AERIAL_POI_STICKY / AERIAL_POI_PER_M - 10, 0] as [number, number] };
+  assert.deepEqual(rankAerialPois([b, a], [0, 0], null).map(c => c.id), ['a', 'b']);
+  assert.deepEqual(rankAerialPois([a, b], [0, 0], new Set(['b'])).map(c => c.id), ['b', 'a']);
 });
