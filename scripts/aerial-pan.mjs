@@ -240,8 +240,8 @@ if (argv.includes('--spots')) {
   process.exit(0);
 }
 
-// --land (lane R3-G #242): pan from the air for --pan s, park at the S1 pose over Hoftuin for 6 s, then drop to the
-// settled chase pose there (the detached camera's zoom and tilt; the subject stays at Hoftuin) and time the detail
+// --land (lane R3-G #242): pan from the air for --pan s, park at the S1 pose over Hoftuin with the rider moved there
+// for 6 s, then drop to the settled chase pose (camera reattached, chase zoom and tilt) and time the detail
 // block: `detailInstalls` and the resident `near:` chunks every 100 ms until 3 s pass with no install and nothing
 // fading (or 30 s). SHOTS gets the landing frame at +0, +1, +2 s.
 if (argv.includes('--land')) {
@@ -254,12 +254,16 @@ if (argv.includes('--land')) {
     const x = l._lastOffsetX + (sp.at[0] - l._lastCenterLng) * 111320 * Math.cos(l._lastCenterLat * Math.PI / 180) * ppm, y = l._lastOffsetY - (sp.at[1] - l._lastCenterLat) * 111320 * ppm;
     cam.detached = true; cam.anchorX = x; cam.anchorY = y; cam.zoom = sp.zoom; cam.rotation = sp.bearing * Math.PI / 180;
     g.vectorMap.setCameraTilt?.(sp.tilt); g.vectorMap._cameraTilt = sp.tilt;
+    // The detail block follows the vehicle (view.subject is camera.targetX/Y), so the rider moves under the aerial
+    // camera: a ride that rode on (or was moved) while the view was up. Landing then reattaches the camera to it.
+    g.player.x = x; g.player.y = y;
   }, { at: hoftuin.at, ...POSES.s1 });
   const airStart = await snap();
   await page.waitForTimeout(6000);
   const airEnd = await snap();
   if (shotsDir) { fs.mkdirSync(shotsDir, { recursive: true }); await page.screenshot({ path: path.join(shotsDir, `${device}-land-air.png`) }); }
-  const l0 = await page.evaluate(() => { const g = canalRecallGame, p = window.__chasePose; g.camera.zoom = p.zoom; g.camera.rotation = p.rotation; if (p.tilt != null) { g.vectorMap.setCameraTilt?.(p.tilt); g.vectorMap._cameraTilt = p.tilt; } return performance.now(); });
+  await page.evaluate(() => { const rec = window.__canalRecallFramePhaseRecorder; if (rec) rec.worst.length = 0; });
+  const l0 = await page.evaluate(() => { const g = canalRecallGame, p = window.__chasePose; g.camera.detached = false; g.camera.zoom = p.zoom; g.camera.rotation = p.rotation; if (p.tilt != null) { g.vectorMap.setCameraTilt?.(p.tilt); g.vectorMap._cameraTilt = p.tilt; } return performance.now(); });
   const samples = [];
   let lastInstallAt = l0, lastInstalls = null, shot = 0;
   for (;;) {
@@ -273,7 +277,8 @@ if (argv.includes('--land')) {
     await page.waitForTimeout(100);
   }
   const frames = frameStats(await frameWindow(l0));
-  const land = { airInstalls: airEnd.installs - airStart.installs, landInstalls: samples.at(-1).installs - airEnd.installs, detailResidentMs: Math.round(lastInstallAt - l0), settledAtMs: samples.at(-1).ms, nearAtEnd: samples.at(-1).near, frames, airStart, airEnd };
+  const worst = await page.evaluate(() => { const rec = window.__canalRecallFramePhaseRecorder; return rec ? rec.worst.slice(0, 3).map(x => ({ ms: Math.round(x.ms), phases: Object.fromEntries(Object.entries(x.phases).sort((a, b) => b[1] - a[1]).slice(0, 6).map(([k, v]) => [k, Math.round(v)])) })) : null; });
+  const land = { worst, airInstalls: airEnd.installs - airStart.installs, landInstalls: samples.at(-1).installs - airEnd.installs, detailResidentMs: Math.round(lastInstallAt - l0), settledAtMs: samples.at(-1).ms, nearAtEnd: samples.at(-1).near, frames, airStart, airEnd };
   console.log(`${device} land ${JSON.stringify(land)}`);
   fs.mkdirSync(path.dirname(out), { recursive: true });
   fs.writeFileSync(out, JSON.stringify({ device, qs, panS, land, samples, errors }, null, 1));
