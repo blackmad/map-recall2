@@ -90,7 +90,9 @@ test('?detailFreezeAerial=0 is today: the block follows the subject from the air
     assert.deepEqual(off, today);
   }
   const g = globalThis as { __canalRecallDetailFreezeAerial?: boolean };
-  assert.equal(detailFreezeAerialEnabled(), true);
+  assert.equal(detailFreezeAerialEnabled(), false, 'off by default at integration: the pan premise was wrong (#242)');
+  g.__canalRecallDetailFreezeAerial = true;
+  try { assert.equal(detailFreezeAerialEnabled(), true); } finally { delete g.__canalRecallDetailFreezeAerial; }
   g.__canalRecallDetailFreezeAerial = false;
   try { assert.equal(detailFreezeAerialEnabled(), false); } finally { delete g.__canalRecallDetailFreezeAerial; }
 });

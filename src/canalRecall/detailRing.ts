@@ -100,15 +100,19 @@ export function detailBlock(rider: LngLat, direction: readonly [number, number] 
 }
 
 /**
- * `?detailFreezeAerial=0` (or `window.__canalRecallDetailFreezeAerial = false`): the detail block follows the camera
- * subject from the air as it did before lane R3-G (#242).
+ * `?detailFreezeAerial=1` (or `window.__canalRecallDetailFreezeAerial = true`) freezes the detail block from the air.
+ * Off by default at integration (2026-11-07): the lane measured that in a pan the camera subject is the parked rider,
+ * so the block never moves and the freeze changes nothing (uploads 105 % of baseline, detail is ~1 % of them), while
+ * riding on from the air it only delays the landing re-plan (0.9 → 1.0–2.0 s to detail resident). The rule, its tests
+ * and the harness stats stay for the lane that pins the block's source features while aerial.
  */
 export function detailFreezeAerialEnabled(): boolean {
   try {
     const g = globalThis as { __canalRecallDetailFreezeAerial?: boolean; location?: { search?: string } };
+    if (g.__canalRecallDetailFreezeAerial === true) return true;
     if (g.__canalRecallDetailFreezeAerial === false) return false;
-    return new URLSearchParams(g.location?.search ?? '').get('detailFreezeAerial') !== '0';
-  } catch { return true; }
+    return new URLSearchParams(g.location?.search ?? '').get('detailFreezeAerial') === '1';
+  } catch { return false; }
 }
 
 /**
