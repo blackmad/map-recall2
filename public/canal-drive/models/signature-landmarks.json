@@ -86393,6 +86393,414 @@
         "bytes": 96828,
         "triangles": 5989
       }
+    },
+    "amsterdams-lyceum": {
+      "id": "amsterdams-lyceum",
+      "name": "Het Amsterdams Lyceum, Valeriusplein 15",
+      "modelUrl": "./models/amsterdams-lyceum.glb",
+      "suppressOsmIds": [
+        "NL.IMBAG.Pand.0363100012149878",
+        "passage:NL.IMBAG.Pand.0363100012149878:0",
+        "passage:NL.IMBAG.Pand.0363100012149878:1",
+        "passage:NL.IMBAG.Pand.0363100012149878:2"
+      ],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.86499401,
+          52.35112393
+        ],
+        "headingDegrees": 0,
+        "lengthMetres": 47.8,
+        "widthMetres": 77.5
+      },
+      "surveyed": {
+        "anchor": [
+          4.86499401,
+          52.35112393
+        ],
+        "northOffsetDegrees": 0,
+        "source": "Laid out in the building's own frame on the BAG 0363100012149878 ring (RD, PDOK BAG WFS, CC0), native east/south metres from its vertex average above the 3DBAG ground +0.46 m NAP (scripts/landmarks/amsterdams-lyceum-footprints.json, written by sarphati-plaza-prepare.ts --id=amsterdams-lyceum --pand=0363100012149878); heights from the 3DBAG LoD2.2 parts (CC BY 4.0); the arches, footways, buttresses, reliefs, legend, window axes, tower windows, clock and cornice measured on the rectified Gemeente Amsterdam panoramas recording_2025-07-29_12-06-07_02111, TMX7316010203-000259_pano_0008_000142, TMX7316010203-001160_pano_0000_001143, TMX7316060226-000012_pano_0000_006548 (CC BY 4.0). Identity and the relief texts: Rijksmonumentenregister 504650 (CC0), H.A.J. and J. Baanders, 1918-1920."
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 0,
+      "heightMetres": 19.3,
+      "bagYear": 1920,
+      "materialOverrides": {
+        "brick": "#5d4a3f",
+        "greyBrick": "#66625b",
+        "white": "#e6e4dc",
+        "glass": "#3a4148",
+        "dark": "#24221f",
+        "stone": "#d8cfb5",
+        "gold": "#c9b27a",
+        "slate": "#55595d"
+      },
+      "attribution": {
+        "title": "Het Amsterdams Lyceum (H.A.J. and J. Baanders, 1918-1920), Valeriusplein 15, rijksmonument 504650",
+        "author": "Map Recall",
+        "sourceUrl": "https://monumentenregister.cultureelerfgoed.nl/monumenten/504650",
+        "licence": "CC BY 4.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "modifications": "Original texture-free flat-colour geometry on the BAG footprint (CC0) with 3DBAG LoD2.2 heights (CC BY 4.0): the city-gate middle with its two round-arched carriage passages and two footways cut through, the stepped buttresses and arch rings, the HET AMSTERDAMS LYCEUM legends and the four relief panels on each side (POTIUS DEFICERE QUAM DESPERARE, IN HET EERSTE VREDESJAAR), six window axes over two storeys between pilasters, the ribbed cornice; the four towers with their eight-pane and coupled windows and the 1920 clock; the wings and corner pavilions; the brick lattice garden walls; read for proportion and tone from Gemeente Amsterdam panoramas (CC BY 4.0). No pixels or meshes imported."
+      },
+      "buildingFootprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.86541888,
+              52.35114531
+            ],
+            [
+              4.86542011,
+              52.35114357
+            ],
+            [
+              4.86542293,
+              52.35114432
+            ],
+            [
+              4.86543086,
+              52.3511331
+            ],
+            [
+              4.86556783,
+              52.35116929
+            ],
+            [
+              4.86554575,
+              52.35120061
+            ],
+            [
+              4.86554872,
+              52.3512014
+            ],
+            [
+              4.86554254,
+              52.35121015
+            ],
+            [
+              4.86547758,
+              52.35130211
+            ],
+            [
+              4.86547461,
+              52.35130132
+            ],
+            [
+              4.86545252,
+              52.35133258
+            ],
+            [
+              4.86531561,
+              52.35129633
+            ],
+            [
+              4.86532354,
+              52.35128511
+            ],
+            [
+              4.86532072,
+              52.35128437
+            ],
+            [
+              4.86532194,
+              52.35128264
+            ],
+            [
+              4.86516302,
+              52.35124055
+            ],
+            [
+              4.8651618,
+              52.35124228
+            ],
+            [
+              4.86515896,
+              52.35124153
+            ],
+            [
+              4.86515104,
+              52.35125275
+            ],
+            [
+              4.8651416,
+              52.35125024
+            ],
+            [
+              4.86512697,
+              52.35124637
+            ],
+            [
+              4.86509957,
+              52.35123912
+            ],
+            [
+              4.86507859,
+              52.35123355
+            ],
+            [
+              4.86508241,
+              52.35122817
+            ],
+            [
+              4.86508197,
+              52.35122742
+            ],
+            [
+              4.86508274,
+              52.35122143
+            ],
+            [
+              4.86507521,
+              52.35121945
+            ],
+            [
+              4.86505558,
+              52.35124702
+            ],
+            [
+              4.86480528,
+              52.35118021
+            ],
+            [
+              4.86482431,
+              52.35115348
+            ],
+            [
+              4.86481294,
+              52.35115049
+            ],
+            [
+              4.86480573,
+              52.35116073
+            ],
+            [
+              4.86478339,
+              52.35115503
+            ],
+            [
+              4.86477915,
+              52.35116126
+            ],
+            [
+              4.86475165,
+              52.35115424
+            ],
+            [
+              4.86475588,
+              52.35114801
+            ],
+            [
+              4.8647414,
+              52.35114433
+            ],
+            [
+              4.86473425,
+              52.35114251
+            ],
+            [
+              4.86473355,
+              52.35114232
+            ],
+            [
+              4.86473395,
+              52.35114172
+            ],
+            [
+              4.86474164,
+              52.35113019
+            ],
+            [
+              4.8647396,
+              52.35112943
+            ],
+            [
+              4.86474071,
+              52.35112753
+            ],
+            [
+              4.864581,
+              52.35108549
+            ],
+            [
+              4.86457965,
+              52.35108738
+            ],
+            [
+              4.86457645,
+              52.35108669
+            ],
+            [
+              4.86456813,
+              52.35109751
+            ],
+            [
+              4.86443099,
+              52.35106245
+            ],
+            [
+              4.86447784,
+              52.35099601
+            ],
+            [
+              4.8644752,
+              52.35099523
+            ],
+            [
+              4.86449666,
+              52.35096452
+            ],
+            [
+              4.86449944,
+              52.35096519
+            ],
+            [
+              4.86454578,
+              52.3508992
+            ],
+            [
+              4.86468275,
+              52.35093521
+            ],
+            [
+              4.8646751,
+              52.35094668
+            ],
+            [
+              4.86467811,
+              52.35094759
+            ],
+            [
+              4.86467714,
+              52.35094921
+            ],
+            [
+              4.86483612,
+              52.35099103
+            ],
+            [
+              4.86483723,
+              52.35098945
+            ],
+            [
+              4.86484031,
+              52.35099023
+            ],
+            [
+              4.86484824,
+              52.35097863
+            ],
+            [
+              4.86492037,
+              52.35099765
+            ],
+            [
+              4.86491644,
+              52.35100345
+            ],
+            [
+              4.86491835,
+              52.35100395
+            ],
+            [
+              4.86491765,
+              52.35100937
+            ],
+            [
+              4.86492431,
+              52.35101113
+            ],
+            [
+              4.8649434,
+              52.35098417
+            ],
+            [
+              4.86519399,
+              52.35105071
+            ],
+            [
+              4.8651749,
+              52.35107767
+            ],
+            [
+              4.86518139,
+              52.35107939
+            ],
+            [
+              4.86518729,
+              52.35107514
+            ],
+            [
+              4.86519056,
+              52.35107468
+            ],
+            [
+              4.86519368,
+              52.35107022
+            ],
+            [
+              4.86526567,
+              52.35108923
+            ],
+            [
+              4.86525774,
+              52.35110045
+            ],
+            [
+              4.86526058,
+              52.35110121
+            ],
+            [
+              4.86525935,
+              52.35110295
+            ],
+            [
+              4.86541888,
+              52.35114531
+            ]
+          ]
+        ]
+      },
+      "buildingCategory": "landmark",
+      "bounds": {
+        "min": [
+          -39.14871597290039,
+          0,
+          -26.940900802612305
+        ],
+        "max": [
+          39.79905700683594,
+          19.299999237060547,
+          25.32369613647461
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.86499401,
+          52.35112393
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 90,
+        "facadeBearingDegrees": 0,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 78.94777297973633,
+        "heightMetres": 19.299999237060547,
+        "depthMetres": 52.264596939086914,
+        "depthCoverage": 0.6743818959882183
+      },
+      "triangles": 27228,
+      "bytes": 351968,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
+      "lod1": {
+        "sourceHash": "d3d72d47b63ffcec",
+        "buildVersion": 2,
+        "bytes": 92516,
+        "triangles": 5708
+      }
     }
   }
 }

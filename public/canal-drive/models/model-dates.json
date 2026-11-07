@@ -181,6 +181,16 @@
       "version": "53873ee53bed2715",
       "dateSource": "asset-update"
     },
+    "amsterdams-lyceum": {
+      "updatedAt": "2026-11-07T00:06:26.352Z",
+      "version": "d3d72d47b63ffcec",
+      "dateSource": "asset-update"
+    },
+    "amsterdams-lyceum.lod1": {
+      "updatedAt": "2026-11-07T00:04:25.422Z",
+      "version": "564dd589be462722",
+      "dateSource": "asset-update"
+    },
     "andaz-prinsengracht": {
       "updatedAt": "2026-11-02T01:00:21.581Z",
       "version": "a2128c7efc5f9712",
@@ -974,6 +984,11 @@
     "de-valerius": {
       "updatedAt": "2026-11-06T23:44:50.677Z",
       "version": "dfe1d4eed9e4e14c",
+      "dateSource": "asset-update"
+    },
+    "de-valerius.lod1": {
+      "updatedAt": "2026-11-06T23:46:07.359Z",
+      "version": "90f2a4d19a8d3d6c",
       "dateSource": "asset-update"
     },
     "de-wester": {

@@ -410,6 +410,7 @@ import {buildBelastingdienstAmsterdam} from './belastingdienst-amsterdam-builder
 import {buildDominicusSaviusSchool} from './dominicus-savius-school-builder';
 import {buildForumOffice} from './forum-office-builder';
 import {buildDeValerius} from './de-valerius-builder';
+import {buildAmsterdamsLyceum} from './amsterdams-lyceum-builder';
 import {buildStedelijkMuseum} from './stedelijk-museum-builder';
 import {buildAlbertHeijnMuseumplein} from './albert-heijn-museumplein-builder';
 import {buildBinnengasthuisKloveniersburgwal} from './binnengasthuis-kloveniersburgwal-builder';
@@ -1028,6 +1029,7 @@ for(const spec of MANUAL_LANDMARKS.filter(model => !selectedIds.length || select
     else if(id==='dominicus-savius-school')buildDominicusSaviusSchool(w,d,helpers);
     else if(id==='forum-office')buildForumOffice(w,d,helpers);
     else if(id==='de-valerius')buildDeValerius(w,d,helpers);
+    else if(id==='amsterdams-lyceum')buildAmsterdamsLyceum(w,d,helpers);
     else buildCulturalLandmark(id,w,d,helpers);
   }
   }catch(e){

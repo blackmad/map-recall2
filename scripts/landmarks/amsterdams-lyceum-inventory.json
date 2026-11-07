@@ -2,73 +2,119 @@
  "schemaVersion": 1,
  "id": "amsterdams-lyceum",
  "pand": "0363100012149878",
+ "brief": "scripts/landmarks/amsterdams-lyceum-brief.md",
  "signature": [
   "carriage-arches",
   "legend",
-  "window-columns"
+  "relief-vredesjaar",
+  "relief-potius",
+  "tower-clock",
+  "window-columns",
+  "stepped-cornice",
+  "canal-tower-windows-w14"
  ],
  "walls": [
   {
    "tag": "w01-157",
    "bearing": 157,
-   "lengthM": 20.6,
+   "lengthM": 18.6,
+   "centre": [
+    4.8650687,
+    52.3510174
+   ],
    "evidence": "photo",
-   "panoId": "b_20241106_1111_Track04_Sphere_00012",
-   "capturedAt": "2024-11-06",
+   "panoId": "recording_2025-07-29_12-06-07_02111",
+   "capturedAt": "2025-07-29",
    "checked": true,
    "items": [
     {
      "id": "carriage-arches",
      "kind": "other",
-     "where": "two round arches through the ground storey on a stout central pier, brick buttresses at the ends",
+     "where": "two round-arched carriage passages through the ground storey on a stout central pier, a footway at each end",
      "approxSizeM": [
       14,
-      6
+      5.1
      ],
      "plan": "modelled",
-     "how": "gateways bays [1,2] of 4, round (dark openings; the passage is not drawn through)",
-     "seenIn": "b_20241106_1111_Track04_Sphere_00012"
+     "how": "arched holes cut through the front, barrel vaults and side walls drawn through the block (the register's cross vaults simplified); footways as rectangular passages",
+     "seenIn": "recording_2025-07-29_12-06-07_02111"
+    },
+    {
+     "id": "buttresses",
+     "kind": "other",
+     "where": "three stepped brick buttresses at the arches' piers, about 4.7 m high",
+     "approxSizeM": [
+      1.7,
+      4.7
+     ],
+     "plan": "modelled",
+     "how": "three-step proud piers with backs",
+     "seenIn": "recording_2025-07-29_12-06-07_02111"
+    },
+    {
+     "id": "arch-rings",
+     "kind": "other",
+     "where": "brick arch rings round the carriage arches",
+     "approxSizeM": [
+      5.4,
+      0.45
+     ],
+     "plan": "modelled",
+     "how": "a grey-brick band outline 2.5 cm proud",
+     "seenIn": "recording_2025-07-29_12-06-07_02111"
     },
     {
      "id": "legend",
      "kind": "lettering",
      "where": "HET AMSTERDAMS LYCEUM in light Amsterdam School capitals above the arches",
      "approxSizeM": [
-      9,
-      0.5
+      7.4,
+      0.4
+     ],
+     "plan": "modelled",
+     "how": "kit sign in light stone capitals (the kit face, not the Amsterdam School letterforms)",
+     "seenIn": "recording_2025-07-29_12-06-07_02111"
+    },
+    {
+     "id": "relief-vredesjaar",
+     "kind": "relief",
+     "where": "four brick relief plaques IN HET / EERSTE / VREDES / JAAR over the arches",
+     "approxSizeM": [
+      7.6,
+      0.6
      ],
      "plan": "simplified",
-     "how": "signage mount wall in the kit capitals",
-     "seenIn": "b_20241106_1111_Track04_Sphere_00012"
+     "how": "four proud grey-brick panels with the words as kit lettering; the high-relief letterforms are not carved",
+     "seenIn": "recording_2025-07-29_12-06-07_02111"
     },
     {
      "id": "window-columns",
      "kind": "window-shape",
-     "where": "two storeys of six white-framed window columns between brick piers over brick panels",
+     "where": "two storeys of six white-framed window axes (4x2 small panes over a wide lower light) between ribbed brick pilasters over brick panels",
      "approxSizeM": [
       19,
-      10
+      8
      ],
-     "plan": "simplified",
-     "how": "brick-bay-grid 4 bays x 3 storeys, wide windows, piers; four wide windows instead of six single columns",
-     "seenIn": "b_20241106_1111_Track04_Sphere_00012"
+     "plan": "modelled",
+     "how": "six recessed openings per storey with white reveals and a 4x3 white bar grid, proud pilasters with bases, a sill band",
+     "seenIn": "recording_2025-07-29_12-06-07_02111"
     },
     {
      "id": "stepped-cornice",
      "kind": "other",
-     "where": "deep stepped brick cornice with raised end blocks",
+     "where": "deep ribbed brick cornice of four stepped courses",
      "approxSizeM": [
       20,
-      2
+      2.1
      ],
-     "plan": "simplified",
-     "how": "end blocks from the 3DBAG massing; the stepping is not drawn",
-     "seenIn": "b_20241106_1111_Track04_Sphere_00012"
+     "plan": "modelled",
+     "how": "four proud brick courses stepping out 6-20 cm",
+     "seenIn": "recording_2025-07-29_12-06-07_02111"
     },
     {
      "id": "traffic-signs",
      "kind": "sign",
-     "where": "cycle and speed signs on the piers",
+     "where": "cycle, weight and speed signs at the piers",
      "approxSizeM": [
       0.6,
       0.6
@@ -78,14 +124,18 @@
       "reason": "temporary",
       "note": "street furniture"
      },
-     "seenIn": "b_20241106_1111_Track04_Sphere_00012"
+     "seenIn": "recording_2025-07-29_12-06-07_02111"
     }
    ]
   },
   {
    "tag": "w02-337",
    "bearing": 337,
-   "lengthM": 18.8,
+   "lengthM": 18.6,
+   "centre": [
+    4.8649304,
+    52.3512136
+   ],
    "evidence": "photo",
    "panoId": "TMX7316010203-000259_pano_0008_000142",
    "capturedAt": "2017-04-13",
@@ -94,35 +144,541 @@
     {
      "id": "nw-arches",
      "kind": "other",
-     "where": "the same two arches on the north-west front",
+     "where": "the same two arches and footways on the Valeriusplein front",
      "approxSizeM": [
       14,
-      6
+      5.1
      ],
      "plan": "modelled",
-     "how": "gateways bays [1,2] of 4, round",
+     "how": "as on the canal side",
      "seenIn": "TMX7316010203-000259_pano_0008_000142"
     },
     {
      "id": "nw-legend",
      "kind": "lettering",
-     "where": "HET AMSTERDAMS LYCEUM plus a bell emblem over the central pier",
+     "where": "HET AMSTERDAMS LYCEUM over the central pier",
      "approxSizeM": [
-      9,
-      0.5
+      7.4,
+      0.4
+     ],
+     "plan": "modelled",
+     "how": "kit sign",
+     "seenIn": "TMX7316010203-000259_pano_0008_000142"
+    },
+    {
+     "id": "relief-potius",
+     "kind": "relief",
+     "where": "four relief plaques POTIUS / DEFICERE / QUAM / DESPERARE (register)",
+     "approxSizeM": [
+      7.6,
+      0.6
      ],
      "plan": "simplified",
-     "how": "lettering only; the bell emblem (a temporary blue neon outline) skipped",
+     "how": "four proud panels with the words as kit lettering",
      "seenIn": "TMX7316010203-000259_pano_0008_000142"
+    },
+    {
+     "id": "tower-clock",
+     "kind": "clock",
+     "where": "a clock face with the year 1920 in the west tower's top storey on the Valeriusplein side (register; the 2017 view shows the disc high on the right-hand tower)",
+     "approxSizeM": [
+      1.3,
+      1.3
+     ],
+     "plan": "modelled",
+     "how": "gold disc in a brick ring with two hands and 1920 lettering",
+     "seenIn": "TMX7316010203-000259_pano_0008_000142"
+    },
+    {
+     "id": "bell-emblem",
+     "kind": "other",
+     "where": "a bell outline in blue neon over the central pier",
+     "approxSizeM": [
+      1.5,
+      1.5
+     ],
+     "plan": "skipped",
+     "skip": {
+      "reason": "temporary",
+      "note": "neon light installation, not in the 2025 canal-side view either"
+     },
+     "seenIn": "TMX7316010203-000259_pano_0008_000142"
+    },
+    {
+     "id": "plein-tower-windows",
+     "kind": "window-shape",
+     "where": "one eight-pane window per storey in the towers' Valeriusplein fronts",
+     "approxSizeM": [
+      1.2,
+      2.3
+     ],
+     "plan": "modelled",
+     "how": "one recessed white-framed opening per storey",
+     "seenIn": "TMX7316010203-000259_pano_0008_000142"
+    }
+   ]
+  },
+  {
+   "tag": "w03-67",
+   "bearing": 67,
+   "lengthM": 12.2,
+   "centre": [
+    4.8655132,
+    52.3512518
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002943_pano_0000_000079",
+   "capturedAt": "2023-01-20",
+   "checked": true,
+   "items": [
+    {
+     "id": "east-side-windows",
+     "kind": "window-shape",
+     "where": "the east pavilion's street end: storeys of white windows",
+     "approxSizeM": [
+      12,
+      13
+     ],
+     "plan": "modelled",
+     "how": "five windows a storey over three storeys plus basement lights",
+     "seenIn": "TMX7316010203-002943_pano_0000_000079"
+    },
+    {
+     "id": "east-garden-wall",
+     "kind": "other",
+     "where": "brick lattice garden wall and gate in front",
+     "approxSizeM": [
+      8,
+      2.5
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-002943_pano_0000_000079",
+     "how": "a 2.4 m brick screen with piers every ~3 m and panels of dark lattice slots, about 3 m in front of the towers (from the panoramas; declared detached in the spec); the east end wall and gate on w03 not drawn"
+    }
+   ]
+  },
+  {
+   "tag": "w04-157",
+   "bearing": 157,
+   "lengthM": 11.8,
+   "centre": [
+    4.8653391,
+    52.3511241
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316060226-000012_pano_0000_006548",
+   "capturedAt": "2016-08-03",
+   "checked": true,
+   "items": [
+    {
+     "id": "wing-windows-w04",
+     "kind": "window-shape",
+     "where": "the wing: basement lights, two storeys of four wide white-framed windows, a brick frieze and the stepped cornice",
+     "approxSizeM": [
+      11.8,
+      13
+     ],
+     "plan": "modelled",
+     "how": "four bays of three stacked openings with white reveals and bar grids, frieze band, four-course cornice",
+     "seenIn": "TMX7316060226-000012_pano_0000_006548"
+    }
+   ]
+  },
+  {
+   "tag": "w05-337",
+   "bearing": 337,
+   "lengthM": 11.8,
+   "centre": [
+    4.8646609,
+    52.3511065
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-07-30_07-40-42_01138",
+   "capturedAt": "2025-07-30",
+   "checked": true,
+   "items": [
+    {
+     "id": "wing-windows-w05",
+     "kind": "window-shape",
+     "where": "the wing's Valeriusplein side: two storeys of four windows behind the garden",
+     "approxSizeM": [
+      11.8,
+      13
+     ],
+     "plan": "modelled",
+     "how": "as the canal side",
+     "seenIn": "recording_2025-07-30_07-40-42_01138"
+    },
+    {
+     "id": "lattice-wall-w05",
+     "kind": "other",
+     "where": "brick lattice garden wall in front of the wing",
+     "approxSizeM": [
+      11,
+      2.5
+     ],
+     "plan": "simplified",
+     "seenIn": "recording_2025-07-30_07-40-42_01138",
+     "how": "a 2.4 m brick screen with piers every ~3 m and panels of dark lattice slots, about 3 m in front of the towers (placed from the panoramas, declared detached in the spec); the arched gate is not drawn"
+    }
+   ]
+  },
+  {
+   "tag": "w06-337",
+   "bearing": 337,
+   "lengthM": 11.8,
+   "centre": [
+    4.8652425,
+    52.3512616
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316060226-000013_pano_0000_000466",
+   "capturedAt": "2016-08-04",
+   "checked": true,
+   "items": [
+    {
+     "id": "wing-windows-w06",
+     "kind": "window-shape",
+     "where": "the wing's Valeriusplein side: two storeys of four windows behind the garden",
+     "approxSizeM": [
+      11.8,
+      13
+     ],
+     "plan": "modelled",
+     "how": "as the canal side",
+     "seenIn": "TMX7316060226-000013_pano_0000_000466"
+    },
+    {
+     "id": "lattice-wall-w06",
+     "kind": "other",
+     "where": "brick lattice garden wall in front of the wing",
+     "approxSizeM": [
+      11,
+      2.5
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316060226-000013_pano_0000_000466",
+     "how": "a 2.4 m brick screen with piers every ~3 m and panels of dark lattice slots, about 3 m in front of the towers (placed from the panoramas, declared detached in the spec); the arched gate is not drawn"
+    }
+   ]
+  },
+  {
+   "tag": "w07-157",
+   "bearing": 157,
+   "lengthM": 11.8,
+   "centre": [
+    4.8647566,
+    52.3509701
+   ],
+   "evidence": "photo",
+   "panoId": "b_20241106_1111_Track22_Sphere_00022",
+   "capturedAt": "2024-11-06",
+   "checked": true,
+   "items": [
+    {
+     "id": "wing-windows-w07",
+     "kind": "window-shape",
+     "where": "the wing: basement lights, two storeys of four wide white-framed windows, a brick frieze and the stepped cornice",
+     "approxSizeM": [
+      11.8,
+      13
+     ],
+     "plan": "modelled",
+     "how": "four bays of three stacked openings with white reveals and bar grids, frieze band, four-course cornice",
+     "seenIn": "b_20241106_1111_Track22_Sphere_00022"
+    }
+   ]
+  },
+  {
+   "tag": "w08-157",
+   "bearing": 157,
+   "lengthM": 10.2,
+   "centre": [
+    4.8654993,
+    52.3511512
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-07-29_12-06-07_02118",
+   "capturedAt": "2025-07-29",
+   "checked": true,
+   "items": [
+    {
+     "id": "pavilion-windows-w08",
+     "kind": "window-shape",
+     "where": "the corner pavilion: two coupled white windows per storey over three storeys and basement lights",
+     "approxSizeM": [
+      10.2,
+      15
+     ],
+     "plan": "modelled",
+     "how": "two wide openings per storey with white bar grids",
+     "seenIn": "recording_2025-07-29_12-06-07_02118"
+    },
+    {
+     "id": "rounded-corner-w08",
+     "kind": "other",
+     "where": "the pavilion's outer corner is rounded on a large radius",
+     "approxSizeM": [
+      3,
+      15
+     ],
+     "plan": "simplified",
+     "how": "drawn square",
+     "seenIn": "recording_2025-07-29_12-06-07_02118"
+    }
+   ]
+  },
+  {
+   "tag": "w09-337",
+   "bearing": 337,
+   "lengthM": 10.2,
+   "centre": [
+    4.8653841,
+    52.3513145
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316060226-000013_pano_0000_000465",
+   "capturedAt": "2016-08-04",
+   "checked": true,
+   "items": [
+    {
+     "id": "pavilion-windows-w09",
+     "kind": "window-shape",
+     "where": "the corner pavilion's Valeriusplein side behind the lattice wall",
+     "approxSizeM": [
+      10.2,
+      15
+     ],
+     "plan": "modelled",
+     "how": "two coupled windows per storey",
+     "seenIn": "TMX7316060226-000013_pano_0000_000465"
+    },
+    {
+     "id": "lattice-wall-w09",
+     "kind": "other",
+     "where": "brick lattice garden wall with an arched gate",
+     "approxSizeM": [
+      10,
+      2.5
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316060226-000013_pano_0000_000465",
+     "how": "a 2.4 m brick screen with piers every ~3 m and panels of dark lattice slots, about 3 m in front of the towers (placed from the panoramas, declared detached in the spec); the arched gate is not drawn"
+    }
+   ]
+  },
+  {
+   "tag": "w10-157",
+   "bearing": 157,
+   "lengthM": 10.2,
+   "centre": [
+    4.8646143,
+    52.3509172
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316060226-000012_pano_0000_006537",
+   "capturedAt": "2016-08-03",
+   "checked": true,
+   "items": [
+    {
+     "id": "pavilion-windows-w10",
+     "kind": "window-shape",
+     "where": "the corner pavilion: two coupled white windows per storey over three storeys and basement lights",
+     "approxSizeM": [
+      10.2,
+      15
+     ],
+     "plan": "modelled",
+     "how": "two wide openings per storey with white bar grids",
+     "seenIn": "TMX7316060226-000012_pano_0000_006537"
+    },
+    {
+     "id": "rounded-corner-w10",
+     "kind": "other",
+     "where": "the pavilion's outer corner is rounded on a large radius",
+     "approxSizeM": [
+      3,
+      15
+     ],
+     "plan": "simplified",
+     "how": "drawn square",
+     "seenIn": "TMX7316060226-000012_pano_0000_006537"
+    }
+   ]
+  },
+  {
+   "tag": "w11-338",
+   "bearing": 338,
+   "lengthM": 10.1,
+   "centre": [
+    4.8644996,
+    52.35108
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-07-30_07-40-42_01139",
+   "capturedAt": "2025-07-30",
+   "checked": true,
+   "items": [
+    {
+     "id": "pavilion-windows-w11",
+     "kind": "window-shape",
+     "where": "the corner pavilion's Valeriusplein side behind the lattice wall",
+     "approxSizeM": [
+      10.2,
+      15
+     ],
+     "plan": "modelled",
+     "how": "two coupled windows per storey",
+     "seenIn": "recording_2025-07-30_07-40-42_01139"
+    },
+    {
+     "id": "lattice-wall-w11",
+     "kind": "other",
+     "where": "brick lattice garden wall with an arched gate",
+     "approxSizeM": [
+      10,
+      2.5
+     ],
+     "plan": "simplified",
+     "seenIn": "recording_2025-07-30_07-40-42_01139",
+     "how": "a 2.4 m brick screen with piers every ~3 m and panels of dark lattice slots, about 3 m in front of the towers (placed from the panoramas, declared detached in the spec); the arched gate is not drawn"
+    }
+   ]
+  },
+  {
+   "tag": "w12-247",
+   "bearing": 247,
+   "lengthM": 8,
+   "centre": [
+    4.8645226,
+    52.3509322
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002118_pano_0000_008423",
+   "capturedAt": "2021-04-26",
+   "checked": true,
+   "items": [
+    {
+     "id": "west-end-windows",
+     "kind": "window-shape",
+     "where": "the west end: storeys of white windows in groups",
+     "approxSizeM": [
+      8,
+      15
+     ],
+     "plan": "modelled",
+     "how": "five windows a storey over three storeys plus basement lights",
+     "seenIn": "TMX7316010203-002118_pano_0000_008423"
+    },
+    {
+     "id": "tent",
+     "kind": "other",
+     "where": "a white marquee tent at the entrance",
+     "approxSizeM": [
+      6,
+      3
+     ],
+     "plan": "skipped",
+     "skip": {
+      "reason": "temporary",
+      "note": "event tent"
+     },
+     "seenIn": "TMX7316010203-002118_pano_0000_008423"
+    }
+   ]
+  },
+  {
+   "tag": "w13-337",
+   "bearing": 337,
+   "lengthM": 5.4,
+   "centre": [
+    4.8651148,
+    52.3512431
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316060226-000013_pano_0000_000465",
+   "capturedAt": "2016-08-04",
+   "checked": true,
+   "items": [
+    {
+     "id": "nw-tower-side",
+     "kind": "window-shape",
+     "where": "the Valeriusplein tower beside the arches: one window a storey",
+     "approxSizeM": [
+      5.4,
+      19
+     ],
+     "plan": "modelled",
+     "how": "one white-framed opening per storey",
+     "seenIn": "TMX7316060226-000013_pano_0000_000465"
+    }
+   ]
+  },
+  {
+   "tag": "w14-157",
+   "bearing": 157,
+   "lengthM": 5.4,
+   "centre": [
+    4.8648843,
+    52.3509881
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001160_pano_0000_001143",
+   "capturedAt": "2019-05-03",
+   "checked": true,
+   "items": [
+    {
+     "id": "canal-tower-windows-w14",
+     "kind": "window-shape",
+     "where": "the canal-side tower: three coupled tall windows on every storey, three small ones at the top and bottom",
+     "approxSizeM": [
+      5.4,
+      19
+     ],
+     "plan": "modelled",
+     "how": "three coupled recessed openings per storey over five rows, white grids",
+     "seenIn": "TMX7316010203-001160_pano_0000_001143"
+    }
+   ]
+  },
+  {
+   "tag": "w15-157",
+   "bearing": 157,
+   "lengthM": 5.3,
+   "centre": [
+    4.8652297,
+    52.3510797
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001160_pano_0000_002080",
+   "capturedAt": "2019-05-03",
+   "checked": true,
+   "items": [
+    {
+     "id": "canal-tower-windows-w15",
+     "kind": "window-shape",
+     "where": "the canal-side tower: three coupled tall windows on every storey, three small ones at the top and bottom",
+     "approxSizeM": [
+      5.4,
+      19
+     ],
+     "plan": "modelled",
+     "how": "three coupled recessed openings per storey over five rows, white grids",
+     "seenIn": "TMX7316010203-001160_pano_0000_002080"
     }
    ]
   }
  ],
  "sources": [
   {
-   "name": "Gemeente Amsterdam panorama",
-   "url": "https://api.data.amsterdam.nl/panorama/panoramas/b_20241106_1111_Track04_Sphere_00012/",
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/",
    "licence": "CC BY 4.0"
+  },
+  {
+   "name": "Rijksmonumentenregister 504650",
+   "url": "https://monumentenregister.cultureelerfgoed.nl/monumenten/504650",
+   "licence": "CC0"
   }
  ]
 }

@@ -2338,5 +2338,11 @@
   "buildVersion": 2,
   "bytes": 96828,
   "triangles": 5989
+ },
+ "amsterdams-lyceum": {
+  "sourceHash": "d3d72d47b63ffcec",
+  "buildVersion": 2,
+  "bytes": 92516,
+  "triangles": 5708
  }
 }
