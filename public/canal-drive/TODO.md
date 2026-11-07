@@ -15,6 +15,25 @@ here. Their design notes stay in `BUILDING_*.md`, `FACADE_*.md`, `LOD.md`, and
 
 ---
 
+## City coverage programme (2026-11-07) — T0 whole city, T1 ride ring, T2 landmarks
+
+Plan `docs/plans/city-coverage-20261107.md` (Fable, user-approved 2026-11-07; explainer
+artifact linked there). "Nearly 100 %" is defined in tiers: **T0** every generic pand
+carries a measured buurt/era look (profiles for 518/518 buurten + per-pand measured
+colour, scripts only); **T1** the ride ring's repeated rows drawn from measured types,
+placed by script; **T2** the census (≈600 → ~700). Model routing moved: `LANE-RULES.md`
+§Models now allows sonnet for bounded authoring from existing numbers; lanes ≤ 60 turns;
+content lanes stop at 75 % of the weekly cap, the rest is the fix reserve.
+Week 1 briefs, not yet spawned: `lane-census-refresh-20261107.md` (haiku: coverage-v1,
+census, queue, ride-ring buurt ranking), `lane-chunks-meshopt-20261107.md` (haiku: the
+143 uncompressed chunk GLBs + 177 per-house GLBs), `lane-profiles-citywide-20261107.md`
+(haiku + 1 opus turn: 518/518 buurten, new grammar knobs), `lane-palette-level-20261107.md`
+(haiku + 1 opus turn: level rendered saturation/lightness to the 3,649 measured fronts,
+user strip). Decisions still open: #125 (tower triangle budget), #112 (inferred
+installs). Weeks 2–4 (vision-measure spike, auto-drafted types, buurt lanes, recipe
+tiles on, kit gaps, bespoke round 6, SHEL step 3, slot layers, windowSdf flip) are in
+the plan §C2–C4 and get briefs when week 1 hands back.
+
 ## Programme (2026-10-23) — 1000 reviewed buildings, per-buurt looks, switches, roads
 
 **If the integrating session dies, resume like this.** The programme runs
