@@ -69316,13 +69316,14 @@
   "heightMetres": 30.1,
   "bagYear": 2001,
   "materialOverrides": {
-   "ochre": "#a48b5c",
+   "ochre": "#94875f",
    "bronze": "#2c3134",
    "glass": "#3e4c58",
    "dark": "#36423f",
    "pink": "#6f8a76",
    "concrete": "#9a9893",
-   "slate": "#5f6366"
+   "slate": "#5f6366",
+   "canopyGlass": "#6a8c9b"
   },
   "attribution": {
    "title": "EDGE Stadium, the former Forum office building (Atelier PRO: Hans Kalkhoven, Leon Thier, 1996-2001; serre 2022), Fred. Roeskestraat 100",

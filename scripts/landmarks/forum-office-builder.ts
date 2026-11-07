@@ -88,7 +88,8 @@ function serreFront(acc: Acc, f: Face, top: number) {
   const rows: [number, number][] = [[0.05, 4.7]];
   const st = (top - 1.5 - 4.85) / 6;
   for (let k = 0; k < 6; k++) rows.push([4.85 + k * st + 0.12, 4.85 + (k + 1) * st - 0.12]);
-  for (const [y0, y1] of rows) for (let i = 0; i < bays; i++) ops.push({t0: i * bw + 0.2, t1: (i + 1) * bw - 0.2, y0, y1, depth: 0.45, back: 'glass', rev: 'bronze'});
+  // the serre glass reflects the sky (w04: #6b96a5 sampled) where the long sides read dark: its own slot, canopyGlass
+  for (const [y0, y1] of rows) for (let i = 0; i < bays; i++) ops.push({t0: i * bw + 0.2, t1: (i + 1) * bw - 0.2, y0, y1, depth: 0.45, back: 'canopyGlass', rev: 'bronze'});
   wall(acc, f, 0, top, 'bronze', ops);
   for (const o of ops) glazing(acc, f, o, 'bronze', 2, 1);
   for (let k = 1; k < rows.length; k++) bar(acc, 'bronze', f, 0, f.L, rows[k][0] - 0.3, rows[k][0] - 0.12, 0, 0.18);   // the deep floor-edge sills
