@@ -288,6 +288,10 @@ void windowSdf(vec2 uv, float layer, float weight, inout vec3 c, inout vec2 m) {
   // The pixel's footprint from the continuous uv (fract jumps at the cell seam), in canvas px per framebuffer px.
   vec2 fpx = max(fwidth(uv * cell), vec2(1e-3));
   vec2 fw = fpx * (band ? windowSdfBand.y : ${WINDOW_SDF_FOOTPRINT.toFixed(2)});
+#ifdef CELL_TAPS
+  // The footprint prefilter's taps (roofTier.ts, lane R4-D #246) widen the edge box with the wall under the windows.
+  fw *= mix(1.0, cellTapsSdf, cellTapW);
+#endif
   vec2 fade = band ? windowSdfBand.zw : vec2(${WINDOW_SDF_FADE_PX[0].toFixed(1)}, ${WINDOW_SDF_FADE_PX[1].toFixed(1)});
   for (int i = 0; i < ${WINDOW_MAX_GLSL}; i++) {
     if (i >= count) break;

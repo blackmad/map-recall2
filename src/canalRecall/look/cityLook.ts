@@ -43,7 +43,7 @@ import { inferMaterialSlot, isMaterialSlot, isWhiteWord, INFERRED_SLOT_SOURCE } 
 import { paintBrick20Canvas, paintBrickCanvas, paintDoorCanvas, paintGlassCanvas, paintGlassTintCanvas, paintStoneCanvas, paintStuccoCanvas, paintWhiteCanvas, paintWhiteStuccoCanvas, roofCanvas } from './slotCells.ts';
 import { HIGHLIGHT_GLSL, highlightDefines } from './highlight.ts';
 import { HIGH_ANISOTROPY, pageTextureParams } from './texturePolicy.ts';
-import { FACADE_TIER_GLSL, FACADE_TIER_OFF, ROOF_LAYERS_OFF, ROOF_TIER_GLSL, facadeTierAnisoUniform, roofTierUniform } from '../roofTier.ts';
+import { FACADE_TIER_GLSL, FACADE_TIER_OFF, ROOF_LAYERS_OFF, ROOF_TIER_GLSL, cellTapsUniform, facadeTierAnisoUniform, roofTierUniform } from '../roofTier.ts';
 import { BAKED_SHADE_GLSL } from '../rendererShared/lightRig.ts';
 import { sceneLookFrom, sceneSlotHex, type SceneLook } from './sunny.ts';
 import { photoMatchedWallTint, type WallExposure } from './chunkWallExposure.ts';
@@ -365,9 +365,11 @@ export type CityVariant = {
   lodBias?: boolean;
   /** Facade chunks: the anisotropy-aware facade tier (roofTier.ts CELL_TIER_ANISO, `?cellTierAniso=0`, lane R3-D #233). */
   aniso?: boolean;
+  /** Facade chunks: the footprint prefilter of the cell sample (roofTier.ts CELL_TAPS, `?cellTaps=1`, lane R4-D #246). */
+  taps?: boolean;
 };
 
-export const variantKey = (v: CityVariant) => `${v.lit ? 'lit' : 'unlit'}|${v.kind}|${v.kind === 'slot' ? v.uv ?? 'uv' : '-'}|${v.highlight ? 'hl' : v.dim ? 'dim' : '-'}|${v.side ?? 0}${v.noFade ? '|nofade' : ''}${v.swap ? '|swap' : ''}${v.cellDebug ? `|dbg-${v.cellDebug}` : ''}${v.windows ? '|wsdf2' : ''}${v.lodBias ? '|lodb' : ''}${v.aniso ? '|aniso' : ''}`;
+export const variantKey = (v: CityVariant) => `${v.lit ? 'lit' : 'unlit'}|${v.kind}|${v.kind === 'slot' ? v.uv ?? 'uv' : '-'}|${v.highlight ? 'hl' : v.dim ? 'dim' : '-'}|${v.side ?? 0}${v.noFade ? '|nofade' : ''}${v.swap ? '|swap' : ''}${v.cellDebug ? `|dbg-${v.cellDebug}` : ''}${v.windows ? '|wsdf2' : ''}${v.lodBias ? '|lodb' : ''}${v.aniso ? '|aniso' : ''}${v.taps ? '|taps' : ''}`;
 
 /** Shader defines for a variant (also what the program cache key is built from). */
 export function variantDefines(v: CityVariant): Record<string, string> {
@@ -378,6 +380,7 @@ export function variantDefines(v: CityVariant): Record<string, string> {
   if (v.windows && v.kind === 'chunk') { d.CELL_TIER_PROBE = ''; d.CITY_WINDOW_SDF = ''; }
   if (v.lodBias && v.kind === 'chunk') d.CELL_LOD_BIAS = '';
   if (v.aniso && v.kind === 'chunk') d.CELL_TIER_ANISO = '';
+  if (v.taps && v.kind === 'chunk') d.CELL_TAPS = '';
   if (v.lit) {
     // Lit (the shared frame's look): box UVs and the highlight/dim state are per-material uniforms (cityVariantUniforms),
     // so the uv/box and plain/highlight/dim variants of a kind share one program (#129 P4 registry).
@@ -396,7 +399,7 @@ export function cityVariantUniforms(v: CityVariant): { cityForce: { value: numbe
 }
 
 /** The program key of a variant: lit variants differ only in uniforms beyond their kind; side is a material parameter. */
-export const cityProgramKey = (v: CityVariant) => (v.lit ? `city-look-v4|lit|${v.kind}${v.swap ? '|swap' : ''}${v.cellDebug ? `|dbg-${v.cellDebug}` : ''}${v.windows ? '|wsdf2' : ''}${v.lodBias ? '|lodb' : ''}${v.aniso ? '|aniso' : ''}` : `city-look-v3|${variantKey({ ...v, side: 0 })}`);
+export const cityProgramKey = (v: CityVariant) => (v.lit ? `city-look-v4|lit|${v.kind}${v.swap ? '|swap' : ''}${v.cellDebug ? `|dbg-${v.cellDebug}` : ''}${v.windows ? '|wsdf2' : ''}${v.lodBias ? '|lodb' : ''}${v.aniso ? '|aniso' : ''}${v.taps ? '|taps' : ''}` : `city-look-v3|${variantKey({ ...v, side: 0 })}`);
 
 const HIGHLIGHT_SRGB = 'vec3(1.0, 0.824, 0.122)';
 const HIGHLIGHT_LINEAR = 'vec3(1.0, 0.637, 0.0137)';
@@ -655,6 +658,10 @@ export type CityLookUniforms = {
   cellAniso: { value: number };
   /** CELL_TIER_ANISO: (flatten on the effective footprint, fade where the filter undersamples, fade band from, to). */
   cellAnisoRule: { value: number[] };
+  /** CELL_TAPS: (threshold texels/px, taps, spread px, grad scale), roofTier.ts. */
+  cellTaps: { value: number[] };
+  /** CELL_TAPS: the analytic windows' edge filter widening where the taps are on. */
+  cellTapsSdf: { value: number };
 };
 
 export function createCityUniforms(THREE: any, init: Partial<CityLookUniforms> = {}): CityLookUniforms {
@@ -678,6 +685,8 @@ export function createCityUniforms(THREE: any, init: Partial<CityLookUniforms> =
     cellLodBias: init.cellLodBias ?? { value: 0 },
     cellAniso: init.cellAniso ?? { value: facadeTierAnisoUniform(HIGH_ANISOTROPY).cellAniso },
     cellAnisoRule: init.cellAnisoRule ?? { value: facadeTierAnisoUniform(HIGH_ANISOTROPY).cellAnisoRule },
+    cellTaps: init.cellTaps ?? { value: cellTapsUniform().cellTaps },
+    cellTapsSdf: init.cellTapsSdf ?? { value: cellTapsUniform().cellTapsSdf },
     ...windowSdfBandUniforms(),
     ...(init.windowSdfBand ? { windowSdfBand: init.windowSdfBand } : {}),
     ...(init.windowSdfShape ? { windowSdfShape: init.windowSdfShape } : {}),
