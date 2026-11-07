@@ -44,7 +44,12 @@ function glassGrid(acc: Acc, f: Face, y0: number, top: number, ground: boolean) 
   for (let k = 0; k < 6; k++) {
     const yb = GROUND + k * STOREY;
     if (yb < y0 - 0.01 || yb + STOREY > top) continue;
-    for (let i = 0; i < bays; i++) ops.push({t0: i * bw + 0.09, t1: (i + 1) * bw - 0.09, y0: yb + 0.12, y1: yb + STOREY - 0.12, depth: 0.12, back: (i + k) % 2 ? 'dark' : 'glass', rev: 'bronze'});
+    // every bay a climate window over a tinted-glass spandrel panel: the long sides read as dark horizontal bands
+    // (w02, w07, w08; the earlier glass/panel checkerboard was not in the photos)
+    for (let i = 0; i < bays; i++) {
+      ops.push({t0: i * bw + 0.09, t1: (i + 1) * bw - 0.09, y0: yb + 0.12, y1: yb + 1.0, depth: 0.08, back: 'dark', rev: 'bronze'});
+      ops.push({t0: i * bw + 0.09, t1: (i + 1) * bw - 0.09, y0: yb + 1.12, y1: yb + STOREY - 0.12, depth: 0.14, back: 'glass', rev: 'bronze'});
+    }
   }
   wall(acc, f, y0, top, 'bronze', ops);
 }

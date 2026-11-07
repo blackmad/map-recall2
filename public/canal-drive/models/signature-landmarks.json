@@ -86144,14 +86144,14 @@
         "depthMetres": 65.54999923706055,
         "depthCoverage": 0.9992377932478743
       },
-      "triangles": 11703,
-      "bytes": 158216,
+      "triangles": 20223,
+      "bytes": 258552,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "lod1": {
-        "sourceHash": "d10c87f25f8ea833",
+        "sourceHash": "228dd9f1eddee707",
         "buildVersion": 2,
-        "bytes": 133256,
-        "triangles": 8859
+        "bytes": 204232,
+        "triangles": 14517
       }
     },
     "de-valerius": {
