@@ -29,12 +29,16 @@ import { orderByDistance } from '../rendererShared/baseRefreshBudget.js';
 /** A cell's SW corner in chunk metres (the baked meshes' position). */
 export function bakedCellOrigin(key: string): [number, number] { const [i, j] = parseCellKey(key); return shellOrigin(i, j); }
 
-/** Which profiles draw the baked tier by default: desktop and touch (lane R4-A measured both; see bakedCoarseEnabled). */
-export const BAKED_COARSE_TOUCH_DEFAULT = true;
+/**
+ * Touch devices keep their runtime `shell` chunks by default (lane R4-A measured both, iPhone pan headed 2026-11-07:
+ * baked GL max 419 MB against 356 and 23 frames over 100 ms against 13, a whole cell uploading on one frame; facade
+ * draws 22 against 48 median). `?bakedCoarse=1` turns it on there.
+ */
+export const BAKED_COARSE_TOUCH_DEFAULT = false;
 
 /**
  * `?bakedCoarse=0` (or `window.__canalRecallBakedCoarse = false`): the runtime coarse shells, as before. `?bakedCoarse=1`
- * forces it on, `?bakedCoarse=desktop` keeps touch devices on their runtime `shell` chunks.
+ * forces it on (touch included), `?bakedCoarse=desktop` is the default (touch devices on their runtime `shell` chunks).
  */
 export function bakedCoarseEnabled(touch: boolean, search: string = typeof location !== 'undefined' ? location.search : '', w: any = typeof window !== 'undefined' ? window : {}): boolean {
   let v: string | null = null;
