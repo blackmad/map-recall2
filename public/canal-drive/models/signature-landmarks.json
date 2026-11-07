@@ -85694,13 +85694,13 @@
         "depthCoverage": 0.9993333527536103
       },
       "triangles": 28174,
-      "bytes": 325368,
+      "bytes": 322908,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "lod1": {
-        "sourceHash": "20f873537cfee9ee",
+        "sourceHash": "1f3cd85962958a6a",
         "buildVersion": 2,
-        "bytes": 234000,
-        "triangles": 17600
+        "bytes": 231976,
+        "triangles": 17737
       }
     },
     "dominicus-savius-school": {

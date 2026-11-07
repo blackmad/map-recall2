@@ -334,9 +334,10 @@ function low(acc: Acc, b: BuildingTools) {
 // ---- the south slab and its links ---------------------------------------------------------------------------------------
 function slabFace(acc: Acc, f: Face, y0: number, top: number, ground?: {cols: number[]}, winFrom = 7.2, hidden?: (p: V3, y: number) => boolean) {
   const ops: Op[] = [];
-  // w11 (2024): a close grid of tall windows between light piers, one per 1.8 m panel, about 2.2 m of every 3.6 m storey
+  // w11 (2024) and the 2016 Commons views: a close grid of wide, low windows between light piers, one per 1.8 m panel,
+  // about 1.3 m of every 3.6 m storey (the in-game check showed 2.2 m windows reading as a punched grid)
   const bays = Math.max(1, Math.round(f.L / 1.8)), bw = f.L / bays;
-  for (let y = Math.max(y0, winFrom) + 0.7; y + 2.2 < top - 1.6; y += 3.6) for (let i = 0; i < bays; i++) if (bw > 1.2 && !(hidden && hidden(f.P((i + 0.5) * bw, 0, 0), y))) ops.push({t0: i * bw + 0.22, t1: (i + 1) * bw - 0.22, y0: y, y1: y + 2.2, depth: 0.18, back: 'glass', rev: 'ochre'});
+  for (let y = Math.max(y0, winFrom) + 1.1; y + 1.3 < top - 1.6; y += 3.6) for (let i = 0; i < bays; i++) if (bw > 1.2 && !(hidden && hidden(f.P((i + 0.5) * bw, 0, 0), y))) ops.push({t0: i * bw + 0.14, t1: (i + 1) * bw - 0.14, y0: y, y1: y + 1.3, depth: 0.18, back: 'glass', rev: 'ochre'});
   if (ground) ops.push({t0: 0.3, t1: f.L - 0.3, y0: 0, y1: 6.8, depth: 3.0, back: 'canopyGlass', rev: 'ochre'});
   else if (y0 === 0 && winFrom < 7.5 && f.L > 4) ops.push({t0: 0.5, t1: f.L - 0.5, y0: 0.4, y1: 5.6, depth: 0.3, back: 'canopyGlass', rev: 'frame'});
   wall(acc, f, y0, top, 'ochre', ops);
