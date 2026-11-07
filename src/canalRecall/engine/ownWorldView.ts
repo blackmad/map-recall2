@@ -893,7 +893,9 @@ export class OwnWorldView implements WorldViewOracles {
     this.cameraMap.jumpTo({ center: view.lngLat, zoom: view.zoom, bearing: view.bearing, pitch, elevation });
     lap('jumpTo and move listeners');
     this.lastSubject = view.subject;
-    this._threeBuildings?.setDetailCentre?.(view.subject[0], view.subject[1]);
+    // From the air the detail block keeps its last plan (detailRing.ts detailBlockFrozen, lane R3-G #242): panning at
+    // ~150 m no longer builds and dissolves detail tiles at every z16 edge the subject crosses. Not during the intro.
+    this._threeBuildings?.setDetailCentre?.(view.subject[0], view.subject[1], view.introFlat === 0 && isAerialView(view.zoom, pitch, view.lngLat[1]));
     lap('building detail centre');
     this.extras.tick();
     lap('extras tick');
