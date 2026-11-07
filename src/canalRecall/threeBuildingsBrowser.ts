@@ -513,7 +513,9 @@ export class ThreeBuildings {
       if (!grid || grid.entries !== index) this.pickGrid.set(memo, grid = buildPrismGrid(index));
       toLocal.copy(chunk.mesh.matrixWorld).invert();
       const o = near.clone().applyMatrix4(toLocal), d = far.clone().applyMatrix4(toLocal).sub(o);
-      if (chunk.offset) { o.x += chunk.offset.x; o.y += chunk.offset.y; o.z += chunk.offset.z; }
+      // A baked cell's mesh may be scaled to its Int16 grid (the unit): pick in metres from the cell origin.
+      const unit = chunk.offset ? chunk.mesh.scale.x || 1 : 1;
+      if (chunk.offset) { o.multiplyScalar(unit); d.multiplyScalar(unit); o.x += chunk.offset.x; o.y += chunk.offset.y; o.z += chunk.offset.z; }
       const hiddenAttribute = chunk.mesh.geometry.getAttribute('hidden');
       const lift = chunk.lift?.applied;
       const bounds = this.liftRange(lift);
@@ -527,7 +529,7 @@ export class ThreeBuildings {
       const hit = pickPrismGrid(grid, [o.x, o.y, o.z], [d.x, d.y, d.z], liftOf, skip, bounds.min, bounds.max);
       if (!hit) continue;
       const point = o.clone().addScaledVector(d, hit.t);
-      if (chunk.offset) { point.x -= chunk.offset.x; point.y -= chunk.offset.y; point.z -= chunk.offset.z; }
+      if (chunk.offset) { point.x -= chunk.offset.x; point.y -= chunk.offset.y; point.z -= chunk.offset.z; point.multiplyScalar(1 / unit); }
       point.applyMatrix4(chunk.mesh.matrixWorld);
       const depth = point.applyMatrix4(projection).z;
       if (depth < -1 || depth > 1 || result && depth >= result.depth) continue;

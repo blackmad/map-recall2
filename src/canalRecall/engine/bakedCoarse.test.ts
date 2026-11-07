@@ -40,7 +40,7 @@ test('planBakedCells: wanted cells with a shell, nearest first, capped by cells 
   const h = planBakedCells(centre[0], centre[1], ['0_0', '1_0'], avail(grid), { cells: 99, triangles: 1e9 }, () => 1, ['2_0', '4_4'], 1200);
   assert.deepEqual(h.want, ['0_0', '1_0']);
   assert.ok(h.keep.has('2_0') && !h.keep.has('4_4'));
-  // ...but only up to a quarter over the cell budget (4 wanted -> 5 kept), nearest residents first.
+  // ...but only up to a tenth over the cell budget (4 wanted -> ceil(4.4) = 5 kept), nearest residents first.
   const c = planBakedCells(centre[0], centre[1], ['0_0', '1_0', '0_1', '1_1'], avail(grid), { cells: 4, triangles: 1e9 }, () => 1, ['2_0', '2_1', '0_2'], 5000);
   assert.equal(c.keep.size, 5);
   // Nothing wanted keeps nothing.
@@ -75,6 +75,15 @@ test('bakedCellArrays: every building one contiguous range in first-use order, n
   for (const r of out.ranges) for (let v = r.start; v < r.start + r.count; v++) assert.equal(m.bids[[...m.bids.keys()].find(k => out.positions[v * 3] === m.positions[k * 3])!], r.id === 'c' ? 2 : r.id === 'a' ? 0 : NO_BID);
   // The facade layer's view: '' (allotment gardens) is never named.
   assert.deepEqual([...rangeMap(out.ranges).keys()], ['c', 'a']);
+  assert.equal(out.positionUnit, 1);
+  // Quantised (the worker's form): the same vertices as Int16 SHEL grid steps of 0.1 m, the mesh scaled by the unit.
+  const q = bakedCellArrays(m, ['a', 'b', 'c'], true);
+  assert.ok(q.positions instanceof Int16Array);
+  assert.equal(q.positionUnit, 0.1);
+  for (let k = 0; k < q.positions.length; k++) assert.ok(Math.abs(q.positions[k] * 0.1 - out.positions[k]) < 0.05 + 1e-6);
+  // A coordinate off the Int16 grid keeps Float32.
+  const wide = shel(); wide.positions[0] = 5000;
+  assert.equal(bakedCellArrays(wide, ['a', 'b', 'c'], true).positionUnit, 1);
 });
 
 test('liftRanges: known bases move their range by the change, unknown ones wait, null stands on 0, the deadline stops a pass', () => {
@@ -91,6 +100,15 @@ test('liftRanges: known bases move their range by the change, unknown ones wait,
   liftRanges(positions, ranges, again, applied, id => base[id]);
   assert.deepEqual([positions[2], positions[8]], [2.5, 0.5]);
   assert.equal(again.length, 0);
+  // On the Int16 grid (unit 0.1 m) a lift moves whole grid steps from base to base, never drifting.
+  const grid = new Int16Array(2 * 3), gridApplied = new Map<string, number>();
+  const gridRanges = new Map([['a', { start: 0, count: 2 }]]);
+  liftRanges(grid, gridRanges, ['a'], gridApplied, () => 1.26, Infinity, undefined, 0.1);
+  assert.deepEqual([grid[2], grid[5]], [13, 13]);
+  liftRanges(grid, gridRanges, ['a'], gridApplied, () => 1.34, Infinity, undefined, 0.1);
+  assert.deepEqual([grid[2], grid[5]], [13, 13]);
+  liftRanges(grid, gridRanges, ['a'], gridApplied, () => -0.2, Infinity, undefined, 0.1);
+  assert.deepEqual([grid[2], grid[5]], [-2, -2]);
   // A deadline already past stops after the first 31 (checked every 32 buildings).
   const many = Array.from({ length: 100 }, (_, k) => `x${k}`);
   liftRanges(new Float32Array(3), new Map(), many, new Map(), () => 0, 0, () => 1);

@@ -107,6 +107,18 @@ const settleMs = await page.evaluate(async () => {
 });
 await page.waitForTimeout(2000);
 await page.evaluate(() => window.__canalPerf?.gl?.markWarm?.());
+// Every upload's bytes by owner (the counters keep only the last 200 large events): uploads of 64 KiB and more are
+// named (glCounters ownerNow, a stack walk), smaller ones are summed by GL call.
+await page.evaluate(() => {
+  const gl = window.__canalPerf?.gl; if (!gl?.upload || gl.__byOwner) return;
+  const by = gl.__byOwner = {}, base = gl.upload.bind(gl);
+  gl.upload = (fn, bytes) => {
+    let owner = `small ${fn}`;
+    if (bytes >= 65536) { try { owner = gl.ownerNow().replace(/^.*?\) @ /, ''); } catch { owner = `? ${fn}`; } }
+    const o = by[owner] ??= { n: 0, MB: 0 }; o.n++; o.MB += bytes / 1048576;
+    return base(fn, bytes);
+  };
+});
 
 
 // The pan driver: a rAF loop that moves the detached camera's anchor along the waypoints at `speed` m/s and eases the
@@ -374,6 +386,7 @@ const summary = {
   km: m3.km,
 };
 // Who uploaded: the large uploads (glCounters.ts, >= its largeBytes) since warm-up, MB by owner.
+summary.uploadBytesByOwnerMB = await page.evaluate(() => Object.fromEntries(Object.entries(window.__canalPerf?.gl?.__byOwner ?? {}).map(([k, v]) => [k.slice(0, 90), { n: v.n, MB: Math.round(v.MB) }]).sort((a, b) => b[1].MB - a[1].MB).slice(0, 25)));
 summary.uploadOwnersMB = await page.evaluate(() => {
   const rep = window.__canalPerf?.gl?.report?.(); if (!rep) return null;
   const by = {};

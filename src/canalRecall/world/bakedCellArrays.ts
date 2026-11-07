@@ -5,17 +5,21 @@
  * and swap-marks a building by filling its range, exactly as threeBuildingsBrowser applyHidden does for a coarse chunk.
  * Pure: the world worker runs it after decodeShel.
  */
-import { NO_BID, type ShellMesh } from './shellMesh.js';
+import { NO_BID, SHEL_UNIT_M, type ShellMesh } from './shellMesh.js';
 
 export type BakedRange = { id: string; start: number; count: number };
-/** Positions are metres from the cell origin (shellOrigin), z up from 0 (the layer lifts buildings onto the ground). */
+/**
+ * Positions are from the cell origin (shellOrigin), z up from 0 (the layer lifts buildings onto the ground), in
+ * `positionUnit` metres: 1 (Float32), or SHEL_UNIT_M (Int16, the SHEL grid itself; `quantised`, 6 bytes a vertex less
+ * on the GPU; the mesh is scaled by the unit).
+ */
 export type BakedCellArrays = {
-  positions: Float32Array; uvs: Float32Array; layers: Uint8Array; tints: Uint8Array; accents: Uint8Array;
+  positions: Float32Array | Int16Array; positionUnit: number; uvs: Float32Array; layers: Uint8Array; tints: Uint8Array; accents: Uint8Array;
   indices: Uint16Array | Uint32Array; ranges: BakedRange[]; triangles: number;
 };
 
 /** `ids[bid]`: the cell's building ids in FOOT order. Vertices of NO_BID (allotment gardens) form one range with id ''. */
-export function bakedCellArrays(shel: ShellMesh, ids: readonly string[]): BakedCellArrays {
+export function bakedCellArrays(shel: ShellMesh, ids: readonly string[], quantised = false): BakedCellArrays {
   const n = shel.layers.length;
   // Per bid: its order of first use, then a counting sort of the vertices by that order (stable).
   const rank = new Map<number, number>(), order: number[] = [], counts: number[] = [];
@@ -41,5 +45,17 @@ export function bakedCellArrays(shel: ShellMesh, ids: readonly string[]): BakedC
   const indices = n <= 65536 ? new Uint16Array(shel.indices.length) : new Uint32Array(shel.indices.length);
   for (let k = 0; k < shel.indices.length; k++) indices[k] = remap[shel.indices[k]];
   const ranges: BakedRange[] = order.map((b, r) => ({ id: b === NO_BID ? '' : ids[b] ?? '', start: starts[r], count: counts[r] }));
-  return { positions, uvs, layers, tints, accents, indices, ranges, triangles: shel.indices.length / 3 };
+  const q = quantised ? toGrid(positions) : null;
+  return { positions: q ?? positions, positionUnit: q ? SHEL_UNIT_M : 1, uvs, layers, tints, accents, indices, ranges, triangles: shel.indices.length / 3 };
+}
+
+/** Metres on the SHEL grid as Int16 grid steps; null when a coordinate does not fit (it then stays Float32). */
+function toGrid(positions: Float32Array): Int16Array | null {
+  const out = new Int16Array(positions.length);
+  for (let k = 0; k < positions.length; k++) {
+    const v = Math.round(positions[k] / SHEL_UNIT_M);
+    if (v > 32767 || v < -32768) return null;
+    out[k] = v;
+  }
+  return out;
 }

@@ -122,7 +122,7 @@ export class WorldCellReader {
     const decoded = decodeShellCell(await inflateCell(bytes), `world shell ${key}`);
     if (!decoded.shel) throw Error(`world shell ${key}: no SHEL stream`);
     const cell = await (this.cells.get(key) ?? this.cellUncached(key, signal));
-    return { key, gzBytes: bytes.length, ...bakedCellArrays(decoded.shel, cell.buildings.map(b => b.id)) };
+    return { key, gzBytes: bytes.length, ...bakedCellArrays(decoded.shel, cell.buildings.map(b => b.id), true) };
   }
   private async cellUncached(key: string, signal?: AbortSignal): Promise<Cell> {
     const response = await this.fetcher(`${this.baseUrl.replace(/\/$/, '')}/world-v1/cells/${key}.bin`, { signal });

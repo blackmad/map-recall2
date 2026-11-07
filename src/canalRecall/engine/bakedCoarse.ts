@@ -47,7 +47,7 @@ export function bakedCoarseEnabled(touch: boolean, search: string = typeof locat
 
 /** The resident budget: cells and triangles (a touch device holds fewer). */
 export function bakedCoarseBudget(touch: boolean): { cells: number; triangles: number } {
-  return touch ? { cells: 24, triangles: 2_000_000 } : { cells: 96, triangles: 4_000_000 };
+  return touch ? { cells: 24, triangles: 2_000_000 } : { cells: 96, triangles: 3_500_000 };
 }
 export const BAKED_INFLIGHT = 4;
 /** The arrival dissolve (the coarse chunks' CHUNK_FADE_MS). */
@@ -72,7 +72,7 @@ export function cellDistanceM(key: string, lng: number, lat: number): number {
  * estimate) and keeps (the wanted ones, plus residents within the wanted radius + `keepM`). Pure.
  */
 /** Residents kept past the wanted set may take the budget this far over (cells and triangles). */
-export const BAKED_KEEP_OVER = 1.25;
+export const BAKED_KEEP_OVER = 1.1;
 
 export function planBakedCells(lng: number, lat: number, wanted: Iterable<string>, available: ReadonlyMap<string, number>, budget: { cells: number; triangles: number }, triangles: (key: string) => number, residents: Iterable<string> = [], keepM = BAKED_KEEP_M): { want: string[]; keep: Set<string> } {
   const near: { key: string; d: number }[] = [];
@@ -86,7 +86,7 @@ export function planBakedCells(lng: number, lat: number, wanted: Iterable<string
     if (tris + t > budget.triangles && want.length) break;
     tris += t; want.push(key); keep.add(key); radius = Math.max(radius, d);
   }
-  // Hysteresis: residents just outside the wanted radius stay, nearest first, up to a quarter over the budget (a long
+  // Hysteresis: residents just outside the wanted radius stay, nearest first, up to a tenth over the budget (a long
   // jump must not keep the old view's cells on top of the new one's).
   const extra: { key: string; d: number }[] = [];
   for (const key of residents) if (!keep.has(key) && available.has(key) && want.length) { const d = cellDistanceM(key, lng, lat); if (d <= radius + keepM) extra.push({ key, d }); }
@@ -112,14 +112,15 @@ export function rangeMap(ranges: readonly BakedRange[]): Map<string, { start: nu
  * 0), move its range's z by the change since the last lift. Returns the ids lifted; stops at `deadline` (checked every
  * 32 buildings). `pending` is consumed from the front. Pure over the arrays.
  */
-export function liftRanges(positions: Float32Array, ranges: ReadonlyMap<string, { start: number; count: number }>, pending: string[], applied: Map<string, number>, base: (id: string) => number | null | undefined, deadline = Infinity, now: () => number = () => performance.now()): { lifted: number; done: number; min: number; max: number } {
+export function liftRanges(positions: Float32Array | Int16Array, ranges: ReadonlyMap<string, { start: number; count: number }>, pending: string[], applied: Map<string, number>, base: (id: string) => number | null | undefined, deadline = Infinity, now: () => number = () => performance.now(), unit = 1): { lifted: number; done: number; min: number; max: number } {
   let lifted = 0, k = 0, min = 0, max = 0;
   const waiting: string[] = [];
   for (; k < pending.length; k++) {
     if ((k & 31) === 31 && now() > deadline) break;
     const id = pending[k], b = base(id);
     if (b === undefined) { waiting.push(id); continue; }
-    const z = b ?? 0, delta = z - (applied.get(id) ?? 0), range = ranges.get(id);
+    // On a grid (`unit` < 1, Int16 positions) the change is between the two bases' grid steps, so lifts never drift.
+    const z = b ?? 0, prev = applied.get(id) ?? 0, delta = unit === 1 ? z - prev : Math.round(z / unit) - Math.round(prev / unit), range = ranges.get(id);
     applied.set(id, z);
     if (!range || !delta) continue;
     for (let v = range.start; v < range.start + range.count; v++) positions[v * 3 + 2] += delta;
@@ -131,7 +132,7 @@ export function liftRanges(positions: Float32Array, ranges: ReadonlyMap<string, 
 }
 
 /** A decoded, regrouped cell (world/worldCells.ts ShellCellData). */
-export type BakedCellData = { key: string; positions: Float32Array; uvs: Float32Array; layers: Uint8Array; tints: Uint8Array; accents: Uint8Array; indices: Uint16Array | Uint32Array; ranges: BakedRange[]; triangles: number; gzBytes: number };
+export type BakedCellData = { key: string; positions: Float32Array | Int16Array; positionUnit?: number; uvs: Float32Array; layers: Uint8Array; tints: Uint8Array; accents: Uint8Array; indices: Uint16Array | Uint32Array; ranges: BakedRange[]; triangles: number; gzBytes: number };
 
 /** One drawn cell as the facade layer sees it (ThreeBuildings applyHidden / paintShells read `mesh` and `ranges`). */
 export type BakedEntry = { key: string; mesh: any; ranges: Map<string, { start: number; count: number }> };
@@ -159,7 +160,7 @@ export interface BakedCoarseHost {
 
 type Resident = BakedEntry & { triangles: number; bytes: number; gzBytes: number; fade?: { start: number; clone: any; source: any }; drawn: boolean;
   /** Street-level lift: the CPU positions kept while buildings wait for their base. */
-  lift?: { positions: Float32Array; pending: string[]; applied: Map<string, number> }; lifted: boolean; liftable: boolean };
+  lift?: { positions: Float32Array | Int16Array; unit: number; pending: string[]; applied: Map<string, number> }; lifted: boolean; liftable: boolean };
 
 export class BakedCoarse {
   private readonly residents = new Map<string, Resident>();
@@ -297,12 +298,14 @@ export class BakedCoarse {
     if (this.host.swapSlots()) g.setAttribute('swapSlot', new THREE.BufferAttribute(new Uint8Array(n), 1, false));
     g.setIndex(release(new THREE.BufferAttribute(data.indices, 1)));
     g.computeBoundingSphere();
-    if (keepPositions && g.boundingSphere) g.boundingSphere.radius += 5; // lifts are a few metres either way
+    const unit = data.positionUnit ?? 1;
+    if (keepPositions && g.boundingSphere) g.boundingSphere.radius += 5 / unit; // lifts are a few metres either way
     const old = this.residents.get(data.key);
     const clone = relift && old ? null : this.host.fadeMaterial(0);
     const mesh = new THREE.Mesh(g, clone ?? material);
     mesh.name = `baked-coarse/${data.key}`;
     mesh.position.set(ox, oy, 0);
+    if (unit !== 1) mesh.scale.setScalar(unit);
     mesh.castShadow = false;
     mesh.frustumCulled = true;
     mesh.userData.coarse = true;
@@ -312,7 +315,7 @@ export class BakedCoarse {
       bytes: data.positions.byteLength + data.uvs.byteLength + data.layers.byteLength + data.tints.byteLength + data.accents.byteLength + data.indices.byteLength + n * 2,
       lifted: keepPositions, liftable: keepPositions,
       ...(clone ? { fade: { start: performance.now(), clone, source: material } } : {}),
-      ...(keepPositions ? { lift: { positions: data.positions, pending: [...ranges.keys()], applied: new Map<string, number>() } } : {}) };
+      ...(keepPositions ? { lift: { positions: data.positions, unit, pending: [...ranges.keys()], applied: new Map<string, number>() } } : {}) };
     if (old) this.drop(data.key);
     this.host.attach(r);
     scene.add(mesh);
@@ -346,7 +349,7 @@ export class BakedCoarse {
       const attribute = r.mesh.geometry.getAttribute('position');
       if (this.at && cellDistanceM(r.key, this.at[0], this.at[1]) > BAKED_LIFT_RADIUS_M + BAKED_KEEP_M) { this.settle(r, attribute); continue; }
       if (!lift.pending.length) continue;
-      const out = liftRanges(lift.positions, r.ranges, lift.pending, lift.applied, id => this.host.groundBase(id), deadline);
+      const out = liftRanges(lift.positions, r.ranges, lift.pending, lift.applied, id => this.host.groundBase(id), deadline, undefined, lift.unit);
       if (out.lifted) { attribute.needsUpdate = true; lifted += out.lifted; }
       if (performance.now() > deadline) break;
     }
