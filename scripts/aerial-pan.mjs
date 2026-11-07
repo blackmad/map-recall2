@@ -227,7 +227,11 @@ if (argv.includes('--spots')) {
   // West: Bos en Lommer looking west to the horizon (the far side of the pan; lane R2-B #229).
   // Sarphatipark looking north (lane R3-F #241): the user's pitched overview with ~90 shop and café names (2026-11-07).
   const spots = [{ name: 's1-hoftuin', at: [4.9065, 52.3655], ...POSES.s1 }, { name: 's4-zuidas', at: [4.8775, 52.3385], ...POSES.s4 }, { name: 'west-bos-en-lommer', at: [4.8530, 52.3780], ...POSES.s4, bearing: 270 },
-    { name: 'sarphatipark-north', at: [4.8960, 52.3545], zoom: 0.18, tilt: 14, bearing: 0 }];
+    { name: 'sarphatipark-north', at: [4.8960, 52.3545], zoom: 0.18, tilt: 14, bearing: 0 },
+    // The user's two label shots (2026-11-07): retail names over the Jacob van Lennepkanaal looking north to the
+    // Chassébuurt (CHASSÉBUURT placed twice), and the "bouncing labels" over the Amstelkanaal looking north.
+    { name: 'chassebuurt-north', at: [4.8665, 52.3625], ...POSES.s4, bearing: 0 },
+    { name: 'amstelkanaal-north', at: [4.8930, 52.3480], ...POSES.s4, bearing: 0 }];
   fs.mkdirSync(shotsDir || 'artifacts/perf/aerial-spots', { recursive: true });
   const rows = [];
   await page.evaluate(() => { window.__aerialPause = true; });

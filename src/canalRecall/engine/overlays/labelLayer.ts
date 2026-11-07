@@ -105,6 +105,12 @@ export class LabelLayer {
    * (`?labelAerialPois=1` keeps every POI).
    */
   get aerialPoisOnly(): boolean { return this._aerialPoisOnly; }
+  /**
+   * From the air a neighbourhood name is placed once (lane R3-F #241): the overview gives Chassébuurt two anchors
+   * ~560 m apart (a split polygon), and both landed in the user's frame. Of the anchors in view the last winner stays,
+   * else the one nearest the view centre. Set with `aerialPoisOnly` (`?labelAerialPois=1` off).
+   */
+  hoodsOnce = false;
   set aerialPoisOnly(on: boolean) { if (on !== this._aerialPoisOnly) { this._aerialPoisOnly = on; this.rev++; } }
   private _aerialPoisOnly = false;
   private aerialPoiIds = new Set<string>();
@@ -362,6 +368,16 @@ export class LabelLayer {
           if (e.test) { if (e.rev !== this.policyRev) { e.rev = this.policyRev; e.vis = e.test(this.policyCtx!); } if (!e.vis) continue; }
           seen.add(c);
         }
+    if (this.hoodsOnce && pose) {
+      const keep = new Map<string, LabelCandidate>();
+      const d = (c: LabelCandidate) => (c.at ? Math.hypot(c.at[0] - pose[0], c.at[1] - pose[1]) : Infinity);
+      for (const c of seen) {
+        if (c.kind !== 'hood') continue;
+        const k = keep.get(c.text);
+        if (!k || (this.winners.has(c.id) && !this.winners.has(k.id)) || (this.winners.has(c.id) === this.winners.has(k.id) && d(c) < d(k))) keep.set(c.text, c);
+      }
+      for (const c of [...seen]) if (c.kind === 'hood' && keep.get(c.text) !== c) seen.delete(c);
+    }
     // Game point labels always compete first (priority above every map label).
     for (const points of this.extra.values()) for (const p of points) seen.add({ id: p.id, text: p.text, kind: p.kind, priority: 1e6 + p.priority, at: toLocal(p.lngLat[0], p.lngLat[1]), minZoom: p.minZoom ?? 0 });
     const options = {

@@ -812,7 +812,7 @@ export class OwnWorldView implements WorldViewOracles {
     this._labels.placeBudgetMs = aerial ? this.labelBudgetMs : null;
     this._labels.clipTries = this.labelClipTriesOn;
     // From the air only signature-landmark POIs keep their names (`?labelAerialPois=1`: every POI, as before).
-    this._labels.aerialPoisOnly = aerial && !this.labelAerialPoisAll;
+    this._labels.aerialPoisOnly = this._labels.hoodsOnce = aerial && !this.labelAerialPoisAll;
     this._labels.sticky = aerial && this.labelStickyOn;
     this._labels.movingCadenceMs = aerial && this.labelBudgetMs !== null ? AERIAL_LABEL_CADENCE_MS : null;
     if (this.labelOcclusionOn && !aerial && city?.residentFeatures) {

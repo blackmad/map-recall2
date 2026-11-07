@@ -156,3 +156,15 @@ test('sticky winners from the air: a placed name keeps its place unless a challe
   assert.deepEqual(run(true, 300 + STICKY_PRIORITY + 1).second, ['b'], 'a challenger past the margin does');
   assert.equal(run(false, 1000).churn, 2);
 });
+
+test('from the air a neighbourhood with two anchors (Chassébuurt, a split polygon) is named once', () => {
+  const run = (once: boolean) => {
+    const l = new LabelLayer(fakeContainer(), () => policy, { lazyPolicy: true });
+    l.setOverview({ ...overview(), streets: [], hoods: [{ name: 'Chassébuurt', at: [-300, 100] }, { name: 'Chassébuurt', at: [250, -100] }] } as unknown as OverviewData);
+    l.hoodsOnce = once;
+    l.draw(frame, view, 16, 1, project, [200, -50, 16, 0, 0]);
+    return l.placed.filter(p => p.kind === 'hood').map(p => p.id);
+  };
+  assert.deepEqual(run(false).sort(), ['h0', 'h1']);
+  assert.deepEqual(run(true), ['h1'], 'the anchor nearest the view centre');
+});
