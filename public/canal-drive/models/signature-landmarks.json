@@ -87014,6 +87014,387 @@
         "bytes": 100248,
         "triangles": 5366
       }
+    },
+    "sint-nicolaaslyceum": {
+      "id": "sint-nicolaaslyceum",
+      "name": "Sint-Nicolaaslyceum",
+      "modelUrl": "./models/sint-nicolaaslyceum.glb",
+      "suppressOsmIds": [
+        "NL.IMBAG.Pand.0363100012239853"
+      ],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.87764489,
+          52.34145581
+        ],
+        "headingDegrees": 0,
+        "lengthMetres": 62.9,
+        "widthMetres": 63.1
+      },
+      "surveyed": {
+        "anchor": [
+          4.87764489,
+          52.34145581
+        ],
+        "northOffsetDegrees": 0,
+        "source": "Vertex average of the BAG 0363100012239853 footprint (PDOK BAG WFS, CC0); plan, the diagonal south edge, the roof storeys, the sports-hall wing and the deck from the BAG outline and the 3DBAG LoD2.2 roof planes (CC BY 4.0) (scripts/landmarks/sint-nicolaaslyceum-footprints.json, sint-nicolaaslyceum-prepare.ts), native east/south metres. Storey bands, fins, cantilever, soffit, atrium, cage and lettering read from Gemeente Amsterdam panoramas (scripts/landmarks/sint-nicolaaslyceum-inventory.json)."
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 0,
+      "heightMetres": 25.8,
+      "bagYear": 2013,
+      "materialOverrides": {
+        "concrete": "#858a84",
+        "glass": "#4f5c63",
+        "sandstone": "#c9cbbd",
+        "stone": "#343a3e",
+        "red": "#a0473b",
+        "canopyGlass": "#6f8796"
+      },
+      "attribution": {
+        "title": "Sint-Nicolaaslyceum (DP6 architectenbureau, 2012)",
+        "author": "Map Recall",
+        "sourceUrl": "https://nl.wikipedia.org/wiki/Sint-Nicolaaslyceum",
+        "licence": "CC BY 4.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "modifications": "Original texture-free flat-colour geometry: banded storeys, sun fins, cantilever, atrium, sports-hall wing, deck and lettering from Gemeente Amsterdam panoramas (CC BY 4.0), read for proportion and colour only; outline from BAG (CC0), heights from 3DBAG (CC BY 4.0). No pixels or meshes imported."
+      },
+      "buildingFootprint": {
+        "type": "MultiPolygon",
+        "coordinates": [
+          [
+            [
+              [
+                4.878076007,
+                52.341639012
+              ],
+              [
+                4.877432532,
+                52.341614438
+              ],
+              [
+                4.877397754,
+                52.341613182
+              ],
+              [
+                4.877394103,
+                52.341612933
+              ],
+              [
+                4.877390498,
+                52.341612513
+              ],
+              [
+                4.877386954,
+                52.341611905
+              ],
+              [
+                4.8773835,
+                52.341611126
+              ],
+              [
+                4.87738018,
+                52.341610168
+              ],
+              [
+                4.877376979,
+                52.341609057
+              ],
+              [
+                4.877373956,
+                52.341607786
+              ],
+              [
+                4.877371096,
+                52.341606372
+              ],
+              [
+                4.877368443,
+                52.341604814
+              ],
+              [
+                4.877365997,
+                52.341603132
+              ],
+              [
+                4.877363802,
+                52.341601325
+              ],
+              [
+                4.877361843,
+                52.34159942
+              ],
+              [
+                4.877360134,
+                52.341597427
+              ],
+              [
+                4.877358705,
+                52.341595353
+              ],
+              [
+                4.877357571,
+                52.341593218
+              ],
+              [
+                4.877356715,
+                52.341591022
+              ],
+              [
+                4.877356154,
+                52.341588799
+              ],
+              [
+                4.877355886,
+                52.341586551
+              ],
+              [
+                4.877355927,
+                52.341584304
+              ],
+              [
+                4.877362607,
+                52.341525221
+              ],
+              [
+                4.877371818,
+                52.341429783
+              ],
+              [
+                4.877374289,
+                52.341402426
+              ],
+              [
+                4.877388536,
+                52.34127602
+              ],
+              [
+                4.877388855,
+                52.341273811
+              ],
+              [
+                4.877389467,
+                52.34127162
+              ],
+              [
+                4.877390372,
+                52.341269476
+              ],
+              [
+                4.877391571,
+                52.341267378
+              ],
+              [
+                4.877393046,
+                52.341265353
+              ],
+              [
+                4.877394786,
+                52.341263401
+              ],
+              [
+                4.877396773,
+                52.34126155
+              ],
+              [
+                4.877399009,
+                52.341259807
+              ],
+              [
+                4.877401478,
+                52.341258181
+              ],
+              [
+                4.877404152,
+                52.341256683
+              ],
+              [
+                4.877407029,
+                52.341255329
+              ],
+              [
+                4.877410065,
+                52.34125412
+              ],
+              [
+                4.877413262,
+                52.341253073
+              ],
+              [
+                4.877416588,
+                52.341252198
+              ],
+              [
+                4.877420015,
+                52.341251484
+              ],
+              [
+                4.877423543,
+                52.341250942
+              ],
+              [
+                4.877427113,
+                52.341250589
+              ],
+              [
+                4.877430725,
+                52.341250416
+              ],
+              [
+                4.877409697,
+                52.341183978
+              ],
+              [
+                4.877398456,
+                52.341185314
+              ],
+              [
+                4.877402334,
+                52.341142764
+              ],
+              [
+                4.878003966,
+                52.34107134
+              ],
+              [
+                4.878045358,
+                52.34107292
+              ],
+              [
+                4.87807572,
+                52.341168833
+              ],
+              [
+                4.878282826,
+                52.341198557
+              ],
+              [
+                4.878238785,
+                52.341312773
+              ],
+              [
+                4.878237777,
+                52.341316265
+              ],
+              [
+                4.878211381,
+                52.341383847
+              ],
+              [
+                4.878120588,
+                52.341618469
+              ],
+              [
+                4.878119624,
+                52.341620568
+              ],
+              [
+                4.878118368,
+                52.341622603
+              ],
+              [
+                4.878116864,
+                52.341624574
+              ],
+              [
+                4.878115096,
+                52.341626472
+              ],
+              [
+                4.878113079,
+                52.34162826
+              ],
+              [
+                4.878110844,
+                52.341629958
+              ],
+              [
+                4.87810839,
+                52.34163153
+              ],
+              [
+                4.878105718,
+                52.341632974
+              ],
+              [
+                4.878102885,
+                52.341634283
+              ],
+              [
+                4.878099878,
+                52.341635448
+              ],
+              [
+                4.878096726,
+                52.341636459
+              ],
+              [
+                4.878093459,
+                52.341637308
+              ],
+              [
+                4.878090076,
+                52.341637994
+              ],
+              [
+                4.878086622,
+                52.34163851
+              ],
+              [
+                4.878083111,
+                52.341638854
+              ],
+              [
+                4.878079558,
+                52.341639018
+              ],
+              [
+                4.878076007,
+                52.341639012
+              ]
+            ]
+          ]
+        ]
+      },
+      "buildingCategory": "landmark",
+      "bounds": {
+        "min": [
+          -19.637126922607422,
+          -4.7683716530855236e-8,
+          -20.200000762939453
+        ],
+        "max": [
+          43.29999923706055,
+          25.799999237060547,
+          41.79999923706055
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.87764489,
+          52.34145581
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 90,
+        "facadeBearingDegrees": 0,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 62.93712615966797,
+        "heightMetres": 25.799999284744263,
+        "depthMetres": 62,
+        "depthCoverage": 0.98256735340729
+      },
+      "triangles": 12300,
+      "bytes": 151740,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
+      "lod1": {
+        "sourceHash": "aa0f42f6838e1b25",
+        "buildVersion": 2,
+        "bytes": 38724,
+        "triangles": 1852
+      }
     }
   }
 }

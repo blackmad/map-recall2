@@ -2320,5 +2320,11 @@
   "buildVersion": 2,
   "bytes": 100248,
   "triangles": 5366
+ },
+ "sint-nicolaaslyceum": {
+  "sourceHash": "aa0f42f6838e1b25",
+  "buildVersion": 2,
+  "bytes": 38724,
+  "triangles": 1852
  }
 }

@@ -1,0 +1,359 @@
+{
+ "schemaVersion": 1,
+ "id": "sint-nicolaaslyceum",
+ "pand": "0363100012239853",
+ "brief": "scripts/landmarks/sint-nicolaaslyceum-brief.md",
+ "signature": [
+  "storey-bands",
+  "sun-fins",
+  "cantilever-soffit",
+  "w-lettering",
+  "deck-cage",
+  "atrium"
+ ],
+ "walls": [
+  {
+   "tag": "w01-77",
+   "bearing": 77,
+   "lengthM": 48.7,
+   "centre": [
+    4.8782025,
+    52.341414
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002471_pano_0000_001575",
+   "capturedAt": "2022-03-23",
+   "checked": true,
+   "items": [
+    {
+     "id": "storey-bands",
+     "kind": "other",
+     "where": "every storey on all fronts: rough pale grey-green precast parapet bands, rounded at the corners",
+     "approxSizeM": [
+      48,
+      1.85
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002471_pano_0000_001575",
+     "how": "solid concrete prisms of the storey plan, 1.85 m tall on a 3.47 m pitch from 3.05 m, corners rounded to 3.5 m; ribbon glass set 0.5 m back between them"
+    },
+    {
+     "id": "sun-fins",
+     "kind": "other",
+     "where": "east, south and west fronts: cream vertical fins standing at an angle between the bands, in pairs",
+     "approxSizeM": [
+      0.6,
+      1.6
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002471_pano_0000_001575",
+     "how": "0.06 m plates 0.4 m deep turned 29 degrees off the facade normal, alternating 1.3 / 2.6 m along every straight edge of every glazing zone"
+    },
+    {
+     "id": "hall-cantilever",
+     "kind": "tower",
+     "where": "south-east sports-hall wing: three bands with a rounded end cantilevered over two columns and recessed curved ground-floor glazing",
+     "approxSizeM": [
+      25,
+      15
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002471_pano_0000_001575",
+     "how": "wing to 15.3 m on the 3DBAG 14.9 m roof outline, ground-floor glass 2 m back on its free sides, two 0.6 m columns"
+    },
+    {
+     "id": "e-gf-stone",
+     "kind": "other",
+     "where": "east front ground storey: two dark stone-clad piers between the glazed bays",
+     "approxSizeM": [
+      3.3,
+      3.1
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002471_pano_0000_001575",
+     "how": "dark stone blocks 0.1 m proud of the band line from the ground to the first band"
+    },
+    {
+     "id": "e-roof-storey",
+     "kind": "tower",
+     "where": "north-east part: one more banded storey to 25.5 m flush with the east and north fronts",
+     "approxSizeM": [
+      27,
+      3.2
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002471_pano_0000_001575",
+     "how": "glazing and band storey on the 3DBAG 25.5 m roof outline"
+    }
+   ],
+   "note": "East front: the main block's banded storeys with fins, rounded at the south-east, the lower hall wing cantilevered at the south, dark stone piers in the glazed ground storey."
+  },
+  {
+   "tag": "w02-357",
+   "bearing": 357,
+   "lengthM": 46.4,
+   "centre": [
+    4.8777395,
+    52.341628
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-09-29_14-53-32_01103",
+   "capturedAt": "2025-09-29",
+   "checked": true,
+   "items": [
+    {
+     "id": "atrium",
+     "kind": "window-shape",
+     "where": "north front middle: a full-height glass atrium over the top three storeys whose roof rises eastwards",
+     "approxSizeM": [
+      11.5,
+      9
+     ],
+     "plan": "simplified",
+     "seenIn": "recording_2025-09-29_14-53-32_01103",
+     "how": "glass prism 15 cm proud of the band line from 13.3 m to a top sloping from 22.6 m (west) to 25.8 m (east), the 3DBAG sloped roof planes; its mullions are not drawn"
+    },
+    {
+     "id": "n-mullions",
+     "kind": "window-shape",
+     "where": "north front: ribbon windows with slim pale frames about 2 m apart, no sun fins",
+     "approxSizeM": [
+      44,
+      1.6
+     ],
+     "plan": "simplified",
+     "seenIn": "recording_2025-09-29_14-53-32_01103",
+     "how": "pale 0.12 m mullions on a 2.0 m pitch in front of the glass (frames between them not drawn)"
+    }
+   ],
+   "note": "North front on the Prinses Irenestraat side: banded storeys with plain ribbon glazing and the glass atrium; no fins."
+  },
+  {
+   "tag": "w03-191",
+   "bearing": 191,
+   "lengthM": 41.8,
+   "centre": [
+    4.877706,
+    52.341109
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000259_pano_0000_001071",
+   "capturedAt": "2017-04-13",
+   "checked": true,
+   "items": [
+    {
+     "id": "cantilever-soffit",
+     "kind": "other",
+     "where": "south over the schoolyard deck: the upper storeys cantilever on a sloping soffit (the aula tribune) and slim columns",
+     "approxSizeM": [
+      30,
+      7
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-000259_pano_0000_001071",
+     "how": "the three lower storeys stop 12 m north of the diagonal south edge; a concrete wedge between them and the upper storeys with its underside sloping from 6.5 m up to 13.4 m, five 0.6 m columns on the deck"
+    },
+    {
+     "id": "deck-cage",
+     "kind": "balcony-ironwork",
+     "where": "raised schoolyard deck: white tube cage round the basketball court, low white railing elsewhere",
+     "approxSizeM": [
+      44,
+      4
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-000259_pano_0000_001071",
+     "how": "0.09 m posts every 3 m with two rails, 4 m tall on the south and south-east edges and 1.1 m elsewhere; the mesh is not drawn"
+    },
+    {
+     "id": "deck-wall",
+     "kind": "other",
+     "where": "the deck walls in dark stone cladding, 3.4 m",
+     "approxSizeM": [
+      44,
+      3.4
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-000259_pano_0000_001071",
+     "how": "dark stone prism on the 3DBAG 3.4 m deck outline"
+    }
+   ],
+   "note": "South: the deck with its cage and the cantilevered upper block on the sloping soffit."
+  },
+  {
+   "tag": "w04-267",
+   "bearing": 267,
+   "lengthM": 34.6,
+   "centre": [
+    4.877375,
+    52.341431
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-07-29_10-56-07_00422",
+   "capturedAt": "2025-07-29",
+   "checked": true,
+   "items": [
+    {
+     "id": "w-lettering",
+     "kind": "lettering",
+     "where": "west front, fourth band, north end: ST. NICOLAASLYCEUM in red block letters",
+     "approxSizeM": [
+      11,
+      1.3
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-07-29_10-56-07_00422",
+     "how": "pixel-font block letters 1.3 m tall, 11 m long, 0.1 m deep on the band"
+    },
+    {
+     "id": "w-stone-block",
+     "kind": "other",
+     "where": "west front north part: a dark stone-clad block from the ground to the second band",
+     "approxSizeM": [
+      10,
+      6.5
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-07-29_10-56-07_00422",
+     "how": "dark stone prism 0.12 m proud of the front, 10.2 m long, to 6.5 m"
+    },
+    {
+     "id": "w-columns",
+     "kind": "other",
+     "where": "west end of the cantilever: two slim columns from the street",
+     "approxSizeM": [
+      0.6,
+      13
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-07-29_10-56-07_00422",
+     "how": "two 0.6 m concrete columns 1 m inside the front"
+    },
+    {
+     "id": "roof-boxes",
+     "kind": "tower",
+     "where": "roof: a pale plant-room box at the north-west and the raised east storey either side of the sloping atrium roof",
+     "approxSizeM": [
+      12,
+      3
+     ],
+     "plan": "simplified",
+     "seenIn": "recording_2025-07-29_10-56-07_00422",
+     "how": "pale flat-roofed box to 25.3 m with rounded corners on the 3DBAG 25.3 m outline"
+    }
+   ],
+   "note": "West front: banded storeys with fins, the red school name, the dark stone block, the lower storeys ending round at the setback and the cantilever over two columns."
+  },
+  {
+   "tag": "w05-167",
+   "bearing": 167,
+   "lengthM": 14.5,
+   "centre": [
+    4.8781815,
+    52.341186
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000259_pano_0000_001078",
+   "capturedAt": "2017-04-13",
+   "checked": true,
+   "items": [
+    {
+     "id": "tribune-steps",
+     "kind": "other",
+     "where": "south-east corner: wide seating steps up to the deck",
+     "approxSizeM": [
+      12,
+      3.4
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-000259_pano_0000_001078",
+     "how": "six concrete steps 0.57 m high rising west to the deck in the corner the 3DBAG leaves without a roof"
+    }
+   ],
+   "note": "South-east: the steps up to the schoolyard deck beside the hall wing."
+  },
+  {
+   "tag": "w06-101",
+   "bearing": 101,
+   "lengthM": 10.9,
+   "centre": [
+    4.878063,
+    52.341123
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002471_pano_0000_001583",
+   "capturedAt": "2022-03-23",
+   "checked": true,
+   "items": [
+    {
+     "id": "deck-lettering",
+     "kind": "lettering",
+     "where": "east wall of the deck: ST. NICOLAASLYCEUM in red letters",
+     "approxSizeM": [
+      6.5,
+      0.8
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002471_pano_0000_001583",
+     "how": "pixel-font block letters 0.8 m tall on the dark deck wall"
+    }
+   ],
+   "note": "East side of the deck with the red lettering and the cage."
+  },
+  {
+   "tag": "w07-281",
+   "bearing": 281,
+   "lengthM": 7.5,
+   "centre": [
+    4.8774225,
+    52.341219
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-07-29_10-56-07_00418",
+   "capturedAt": "2025-07-29",
+   "checked": true,
+   "items": [
+    {
+     "id": "bike-store-glazing",
+     "kind": "window-shape",
+     "where": "west wall of the deck: a glazed strip of the bicycle store under the deck",
+     "approxSizeM": [
+      7,
+      2.2
+     ],
+     "plan": "simplified",
+     "seenIn": "recording_2025-07-29_10-56-07_00418",
+     "how": "glass band 5 cm proud of the deck wall from 0.4 to 2.6 m"
+    }
+   ],
+   "note": "West end of the deck: glazed bicycle store under the deck, cage railing above."
+  },
+  {
+   "tag": "w08-267",
+   "bearing": 267,
+   "lengthM": 4.7,
+   "centre": [
+    4.877403,
+    52.341166
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-07-29_10-56-07_00944",
+   "capturedAt": "2025-07-29",
+   "checked": true,
+   "items": [],
+   "note": "West end of the deck: dark stone wall with the low railing (deck-wall, deck-cage); nothing else."
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas TMX7316010203-000259_pano_0000_001071, TMX7316010203-000259_pano_0000_001078, TMX7316010203-002471_pano_0000_001575, TMX7316010203-002471_pano_0000_001583, recording_2025-07-29_10-56-07_00418, recording_2025-07-29_10-56-07_00422, recording_2025-07-29_10-56-07_00944, recording_2025-09-29_14-53-32_01103",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/",
+   "licence": "CC BY 4.0"
+  },
+  {
+   "name": "nl.wikipedia Sint-Nicolaaslyceum",
+   "url": "https://nl.wikipedia.org/wiki/Sint-Nicolaaslyceum",
+   "licence": "CC BY-SA 4.0"
+  }
+ ]
+}
