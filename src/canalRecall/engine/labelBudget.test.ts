@@ -115,3 +115,22 @@ test('clipped tries (default) place exactly what every try along the run places,
   assert.ok(placed > 40, `placed ${placed}`);
   assert.deepEqual(placeLabels(candidates(), options), placeLabels(candidates(), { ...options, clipTries: false }));
 });
+
+test('from the air only signature-landmark POIs keep their names; streets, hoods and game points stay (aerialPoisOnly)', () => {
+  const pois = Array.from({ length: 12 }, (_, i) => ({ id: `poi${i}`, text: `Cafe ${i}`, kind: 'poi' as const, priority: i < 2 ? 5200 : 300, lngLat: [0, 0] as [number, number], aerial: i < 2 }));
+  // Spread the POIs over the view (local metres = px under `project`): lngLat is unused once `at` is set by setPois.
+  const make = (only: boolean) => {
+    const l = layer(null);
+    l.setPois(pois.map((p, i) => ({ ...p, lngLat: [4.9 + (i % 4) * 0.002 - 0.003, 52.37 + Math.floor(i / 4) * 0.0015 - 0.0015] as [number, number] })));
+    l.setPoints('game', [{ id: 'dest', text: 'Destination', kind: 'poi', priority: 1, lngLat: [4.9, 52.37] }]);
+    l.aerialPoisOnly = only;
+    l.draw(frame, view, 17, 1, project, [0, 0, 17, 0, 0]);
+    return l.placed.reduce((o: Record<string, string[]>, p) => { (o[p.kind] ??= []).push(p.id); return o; }, {});
+  };
+  const all = make(false), air = make(true);
+  assert.ok((all.poi ?? []).filter(id => id.startsWith('poi')).length > 4, JSON.stringify(all));
+  assert.deepEqual((air.poi ?? []).filter(id => id.startsWith('poi')).sort(), (all.poi ?? []).filter(id => id === 'poi0' || id === 'poi1').sort());
+  assert.ok(air.poi?.includes('dest'), 'the game point stays');
+  assert.deepEqual(air.street?.length, all.street?.length);
+  assert.deepEqual(air.hood, all.hood);
+});

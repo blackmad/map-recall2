@@ -214,6 +214,8 @@ export class OwnWorldView implements WorldViewOracles {
   private _labelOcclusionOn = flag('labelOcclusion', '__canalRecallLabelOcclusion', true);
   /** From the air (rendererShared/aerialView.ts): no occlusion rounds, candidates capped (lane R2-B #229; `?labelAerialCap=0`). */
   private labelAerialCapOn = flag('labelAerialCap', '__canalRecallLabelAerialCap', true);
+  /** `?labelAerialPois=1`: every POI from the air too (the A/B of lane R3-F's aerial POI thinning, #241). */
+  private readonly labelAerialPoisAll = flag('labelAerialPois', '__canalRecallLabelAerialPois', false);
   /** `?labelClipTries=0` off: line labels try every centre along a run, also the ones projected far off screen. */
   private readonly labelClipTriesOn = flag('labelClipTries', '__canalRecallLabelClipTries', true);
   /** `?labelBudget=0` off, `?labelBudget=N` N ms: the aerial full placement's per-frame budget (labelLayer placeBudgetMs). */
@@ -807,6 +809,8 @@ export class OwnWorldView implements WorldViewOracles {
     // From the air only (no occlusion there): full placements in slices, and at most every 800 ms while panning.
     this._labels.placeBudgetMs = aerial ? this.labelBudgetMs : null;
     this._labels.clipTries = this.labelClipTriesOn;
+    // From the air only signature-landmark POIs keep their names (`?labelAerialPois=1`: every POI, as before).
+    this._labels.aerialPoisOnly = aerial && !this.labelAerialPoisAll;
     this._labels.movingCadenceMs = aerial && this.labelBudgetMs !== null ? AERIAL_LABEL_CADENCE_MS : null;
     if (this.labelOcclusionOn && !aerial && city?.residentFeatures) {
       const eye = cam.eye();
@@ -1272,7 +1276,7 @@ export class OwnWorldView implements WorldViewOracles {
   /** Prominent extract landmarks as POI labels, and the neighbourhood boundaries as lines (vector-map.js setPlaces). */
   setPlaces(landmarks: any[], boundaries: any[]): void {
     this.placePois = (landmarks || []).filter(item => item.center && (item.manualPoi || item.nativeKitPoi || (item.prominenceScore || 0) >= 220))
-      .map(item => ({ id: String(item.id), text: item.name, aliases: placeAliases(item), kind: 'poi' as const, priority: 5000 + (item.prominenceScore || 0), lngLat: [item.center[1], item.center[0]] as [number, number], minZoom: 15 }));
+      .map(item => ({ id: String(item.id), text: item.name, aliases: placeAliases(item), kind: 'poi' as const, priority: 5000 + (item.prominenceScore || 0), lngLat: [item.center[1], item.center[0]] as [number, number], minZoom: 15, aerial: true }));
     this.pushPois();
     const lines: LngLatLine[] = [];
     for (const b of (boundaries || []).filter(item => item.kind === 'neighbourhood' && item.geometry)) {

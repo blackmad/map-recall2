@@ -36,6 +36,8 @@ export interface PointLabel {
   id: string; text: string; kind: LabelKind; lngLat: readonly [number, number]; priority: number; minZoom?: number;
   /** Other names of the same place (the Dutch name behind an English one): screened like `text`. */
   aliases?: readonly string[];
+  /** Still named from the air (`aerialPoisOnly`): a signature landmark, not a shop or a café. */
+  aerial?: boolean;
 }
 
 export class LabelLayer {
@@ -96,6 +98,16 @@ export class LabelLayer {
    * re-placement rounds stay in one frame.
    */
   placeBudgetMs: number | null = null;
+  /**
+   * From the air (lane R3-F #241, the user 2026-11-07 above Sarphatipark: "way fewer labels at this zoom, maybe almost
+   * none"): map POIs are candidates only when marked `aerial` (signature landmarks); neighbourhood, water and street
+   * names and the game's own points are unaffected. The world view sets it while isAerialView holds
+   * (`?labelAerialPois=1` keeps every POI).
+   */
+  get aerialPoisOnly(): boolean { return this._aerialPoisOnly; }
+  set aerialPoisOnly(on: boolean) { if (on !== this._aerialPoisOnly) { this._aerialPoisOnly = on; this.rev++; } }
+  private _aerialPoisOnly = false;
+  private aerialPoiIds = new Set<string>();
   /** Line labels try only centres that can land on screen (ownMap/labels.ts; `?labelClipTries=0` off, lane R3-F #241). */
   clipTries = true;
   /** From the air while the camera moves (world view, with the budget): full placements at most this often, ms. */
@@ -170,6 +182,7 @@ export class LabelLayer {
   }
   setPois(pois: PointLabel[]): void {
     this.pois = pois; this.poiById = new Map(pois.map(q => [q.id, q])); this.ctxKey = ''; this.rev++;
+    this.aerialPoiIds = new Set(pois.filter(q => q.aerial).map(q => q.id));
     if (this.lazyPolicy) { this.poiBuckets.clear(); drain(this.entries(null, 'pois', this.poiBuckets)); }
   }
   /** One idle slice of the overview's structure (~4 ms), then the next. */
@@ -332,6 +345,7 @@ export class LabelLayer {
         for (const map of [this.buckets, this.poiBuckets]) for (const e of map.get(`${x},${y}`) ?? []) {
           const c = e.c;
           if (!((c.minZoom ?? 0) <= zoom && zoom < (c.maxZoom ?? 99))) continue;
+          if (this._aerialPoisOnly && c.kind === 'poi' && !this.aerialPoiIds.has(c.id)) continue;
           if (e.test) { if (e.rev !== this.policyRev) { e.rev = this.policyRev; e.vis = e.test(this.policyCtx!); } if (!e.vis) continue; }
           seen.add(c);
         }
