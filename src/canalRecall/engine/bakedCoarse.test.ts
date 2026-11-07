@@ -172,9 +172,12 @@ test('BakedCoarse: covers the planned cells at once, installs one mesh per cell 
   assert.equal(baked.drawn('0_0'), true);
   assert.equal(m.material, h.material);
   assert.ok(h.clones[0].disposed);
-  // From the air: positions were released after upload (no CPU copy), nothing lifted.
-  assert.ok(m.geometry.getAttribute('position').uploaded);
-  assert.equal(baked.refreshBases(4), 0);
+  // From the air: the subject's own cell keeps its positions and lifts (the detail tier swaps in there, the shell must
+  // stand where the detail does); a cell 500 m off released its positions after upload and lifts nothing.
+  const far = h.added.find(x => x.name === 'baked-coarse/1_0')!;
+  assert.ok(far.geometry.getAttribute('position').uploaded);
+  assert.equal(m.geometry.getAttribute('position').uploaded, null);
+  assert.equal(baked.refreshBases(4), 1, "'a' stands on its base in the subject's cell");
   assert.equal(baked.stats().cells, 2);
   // Moving far away (over the 200 m step) re-plans: nothing wanted near there any more is kept, the coverage changes.
   const before = h.regroups();

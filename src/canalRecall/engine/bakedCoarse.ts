@@ -17,9 +17,11 @@
  *   detail installed over it, ghosted, highlighted, dimmed, the swap's complementary dissolve.
  * - Arrivals dissolve in over BAKED_FADE_MS on a clone of the material (one program). The far tier hides its part of a
  *   cell once the cell draws here (FarShellHost.coarseDrawn(tile, cell)).
- * - Ground: from the air nothing is lifted. At street level each building is lifted onto the own ground's footprint
- *   base (the coarse chunks' rule), in time-sliced passes (`refreshBases(ms)`); a cell is kept on the CPU for that only
- *   while it is within BAKED_LIFT_RADIUS_M, and one installed from the air is fetched again when the rider comes down.
+ * - Ground: each building is lifted onto the own ground's footprint base (the coarse chunks' rule), in time-sliced
+ *   passes (`refreshShellBases`); a cell is kept on the CPU for that only while it is within BAKED_LIFT_RADIUS_M at
+ *   street level, BAKED_AIR_LIFT_RADIUS_M from the air (only where the detail tier swaps in: a shell left at z 0 under
+ *   a lifted detail chunk stripes through the complementary dissolve, swap-zfight at s1-hoftuin). A cell installed
+ *   without its CPU copy is fetched again when it comes within that radius.
  */
 import { CELL_GRID, cellBounds, parseCellKey } from '../world/cellGrid.js';
 import { shellOrigin } from '../world/shellMesh.js';
@@ -61,6 +63,8 @@ export const BAKED_FADE_MS = 700;
 export const BAKED_KEEP_M = 600;
 /** Street level: cells whose nearest edge is within this of the rider keep their positions on the CPU to be lifted. */
 export const BAKED_LIFT_RADIUS_M = 1500;
+/** From the air: the lift radius (nearest cell edge), the detail tier's neighbourhood only. */
+export const BAKED_AIR_LIFT_RADIUS_M = 300;
 /** Triangles per gzip byte of SHEL, the plan's estimate before a cell is seen (604 staged cells: 10.2 M over 49.6 MB). */
 export const TRIS_PER_GZ_BYTE = 0.2;
 
@@ -227,8 +231,10 @@ export class BakedCoarse {
     if (!moved) return;
     this.at = [lng, lat];
     if (this.wanted.size && this.replan()) this.host.coverageChanged();
-    if (street) this.reliftNear();
+    this.reliftNear();
   }
+
+  private liftRadius(): number { return this.liftOn ? BAKED_LIFT_RADIUS_M : BAKED_AIR_LIFT_RADIUS_M; }
 
   /** Re-plan from `wanted` and the anchor; true when the covered set changed. */
   private replan(): boolean {
@@ -287,8 +293,7 @@ export class BakedCoarse {
     this.knownTriangles.set(data.key, data.triangles);
     if (!scene || !material || !data.indices.length) return;
     const n = data.layers.length, [ox, oy] = bakedCellOrigin(data.key);
-    const near = this.at ? cellDistanceM(data.key, this.at[0], this.at[1]) <= BAKED_LIFT_RADIUS_M : false;
-    const keepPositions = this.liftOn && near;
+    const keepPositions = this.at ? cellDistanceM(data.key, this.at[0], this.at[1]) <= this.liftRadius() : false;
     const g = new THREE.BufferGeometry();
     const release = (a: any) => { a.onUpload(function (this: any) { this.array = null; }); return a; };
     const position = new THREE.BufferAttribute(data.positions, 3);
@@ -327,12 +332,12 @@ export class BakedCoarse {
     this.host.repaint();
   }
 
-  /** Street level: cells near the rider installed without their CPU positions (from the air) are fetched again to be lifted. */
+  /** Cells within the lift radius installed without their CPU positions are fetched again to be lifted. */
   private reliftNear(): void {
     if (!this.at) return;
     for (const r of this.residents.values()) {
       if (r.liftable || this.inflight.has(r.key) || this.inflight.size >= BAKED_INFLIGHT) continue;
-      if (cellDistanceM(r.key, this.at[0], this.at[1]) > BAKED_LIFT_RADIUS_M) continue;
+      if (cellDistanceM(r.key, this.at[0], this.at[1]) > this.liftRadius()) continue;
       r.liftable = true; // one refetch per cell
       this.request(r.key, true);
     }
@@ -349,14 +354,14 @@ export class BakedCoarse {
    * as it re-bases the facade chunks. `done` is false while work remains. Returns the buildings moved.
    */
   refreshShellBases(budget: { ms: number; restart?: boolean; done?: boolean }): number {
-    if (!this.liftOn || !this.enabled) { budget.done = true; return 0; }
+    if (!this.enabled) { budget.done = true; return 0; }
     const deadline = performance.now() + budget.ms;
     let lifted = 0, remaining = false;
     const order = orderByDistance([...this.residents.values()].filter(r => r.lift).map(r => ({ key: r, distance: this.at ? cellDistanceM(r.key, this.at[0], this.at[1]) : 0 })));
     for (const r of order) {
       const lift = r.lift!;
       const attribute = r.mesh.geometry.getAttribute('position');
-      if (this.at && cellDistanceM(r.key, this.at[0], this.at[1]) > BAKED_LIFT_RADIUS_M + BAKED_KEEP_M) { this.settle(r, attribute); continue; }
+      if (this.at && cellDistanceM(r.key, this.at[0], this.at[1]) > this.liftRadius() + BAKED_KEEP_M) { this.settle(r, attribute); continue; }
       if (budget.restart) lift.pending = [...r.ranges.keys()];
       if (!lift.pending.length) continue;
       if (performance.now() > deadline) { remaining = true; continue; }

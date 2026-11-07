@@ -679,9 +679,9 @@ export class OwnWorldView implements WorldViewOracles {
   /**
    * The baked coarse tier (lane R4-A #243): created with the far tier once the facades and a compiled world with SHEL
    * are up, refused when the compile's layer table is not this build's (shellLayers.ts), off for a look other than the
-   * baked one. Fed the camera subject; from the air nothing is lifted, at street level a slice per frame lifts buildings
-   * onto the own ground with the facade re-base's budget (BASE_REFRESH_BUDGET_MS, R3-F #241), restarted from the
-   * nearest cell on each new ground revision.
+   * baked one. Fed the camera subject; a slice per frame lifts buildings onto the own ground with the facade re-base's
+   * budget (BASE_REFRESH_BUDGET_MS, R3-F #241), restarted from the nearest cell on each new ground revision; from the
+   * air only the cells where the detail tier swaps in.
    */
   private updateBakedCoarse(subject: [number, number]): void {
     if (!this.bakedCoarseOn) { this.bakedCoarseOff ??= 'flag'; return; }
@@ -720,12 +720,11 @@ export class OwnWorldView implements WorldViewOracles {
     const cam = this.cameraMap.camera;
     const street = !isAerialView(cam.zoom, cam.pitch, cam.lat);
     baked.update(subject[0], subject[1], street);
-    if (street) {
-      const revision = this._ownGround?.surfaceRevision;
-      const restart = revision !== undefined && revision !== this.bakedGroundRevision;
-      this.bakedGroundRevision = revision;
-      baked.refreshShellBases({ ms: BASE_REFRESH_BUDGET_MS, restart });
-    }
+    // Street level: cells within BAKED_LIFT_RADIUS_M; from the air only the detail tier's neighbourhood (bakedCoarse.ts).
+    const revision = this._ownGround?.surfaceRevision;
+    const restart = revision !== undefined && revision !== this.bakedGroundRevision;
+    this.bakedGroundRevision = revision;
+    baked.refreshShellBases({ ms: BASE_REFRESH_BUDGET_MS, restart });
     baked.frame();
   }
 
