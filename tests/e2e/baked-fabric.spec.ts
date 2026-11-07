@@ -1,36 +1,21 @@
 import { test, expect, type Page } from '@playwright/test';
 import { mkdirSync, writeFileSync } from 'node:fs';
 import sharp from 'sharp';
-import { openRoute } from './helpers';
+import { openRoute, settleWorld } from './helpers';
 import { frameSharpness, type Rect } from '../../src/canalRecall/look/sharpness';
 import { CRISP_SPOTS } from '../../scripts/look/crispSpots';
 
 // The baked coarse fabric pin (lane R4-A follow-up, #243): at the user's Da Costakade pose (zoom 17.8, pitch 75) with
-// the game's sync held, as the crisp and look specs hold it, the baked tier drew no house at all. Its cells' dissolves
-// were stepped only from the sync, so every cell stayed at the start of its dissolve, invisible, while its buildings
-// were already out of the runtime coarse chunks. Here the same pose is framed with the tier on and off: every baked
-// cell must finish its dissolve, and the facade band's sharpness (look/sharpness.ts) must match the flag-off frame.
+// the game's sync held, as the crisp spec held it, the baked tier drew no house at all. Its cells' dissolves were
+// stepped only from the sync, so every cell stayed at the start of its dissolve, invisible, while its buildings were
+// already out of the runtime coarse chunks (a live ride at the pose was fine). The facade layer now steps them with
+// the drawn frame, and held-camera specs settle with settleWorld. Here the pose is framed with the tier on and off,
+// after a 3 s hold with no settle ticks: every baked cell must be drawn, and the facade band's sharpness
+// (look/sharpness.ts) must be within 10 % of the flag-off frame.
 //   PW_PORT=4663 BUNDLES_DIR=<scratch> /tmp/canal-pw.sh npx playwright test baked-fabric --project=desktop --workers=1
 const SPOT = CRISP_SPOTS.find(s => s.name === 'da-costakade-user')!;
 const OUT = 'artifacts/baked-fabric';
 test.use({ viewport: { width: SPOT.viewport![0], height: SPOT.viewport![1] } });
-
-async function settle(page: Page): Promise<void> {
-  let previous = '', stable = 0;
-  const start = Date.now();
-  while (Date.now() - start < 90_000) {
-    const now = await page.evaluate(() => {
-      const vm = (window as any).canalRecallGame.vectorMap, s = vm._completeCity?.status?.(), t = vm._threeBuildings, b = vm._bakedCoarse?.stats?.();
-      vm.host?.triggerRepaint?.();
-      return { inFlight: s?.inFlight ?? 0, queued: s?.queued ?? 0, pending: t?.pending?.length ?? 0, chunks: t?.chunks?.size, baked: b ? [b.cells, b.pending] : null };
-    });
-    const key = JSON.stringify(now);
-    stable = !now.inFlight && !now.queued && !now.pending && (!now.baked || !now.baked[1]) && key === previous ? stable + 1 : 0;
-    previous = key;
-    if (stable >= 2) return;
-    await page.waitForTimeout(1000);
-  }
-}
 
 async function frame(page: Page, baked: boolean) {
   await openRoute(page, { travelMode: 'car', viewMode: 'chase', enterRacing: true, query: `?tier=high&governor=0&bakedCoarse=${baked ? 1 : 0}` });
@@ -40,7 +25,7 @@ async function frame(page: Page, baked: boolean) {
     const g = vm._ownGround;
     vm.jumpToLngLat({ ...pose, elevation: g?.ready ? g.heightAt(pose.center) : 0 });
   }, { center: SPOT.center, zoom: SPOT.zoom, bearing: SPOT.bearing, pitch: SPOT.pitch });
-  await jump(); await settle(page); await jump(); await settle(page);
+  await jump(); await settleWorld(page, 'baked-fabric first jump'); await jump(); await settleWorld(page, 'baked-fabric second jump');
   await page.waitForTimeout(3000);
   const state = await page.evaluate(() => (window as any).canalRecallGame.vectorMap._bakedCoarse?.stats?.() ?? null);
   const url: string = await page.evaluate(() => (window as any).canalRecallGame.vectorMap.captureFrame().then((c: HTMLCanvasElement | null) => c?.toDataURL('image/png') ?? ''));
