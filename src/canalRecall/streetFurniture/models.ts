@@ -15,8 +15,10 @@
  *     recording_2025-06-18_08-56-14_01425 6.74 m; 1.17 papier 57671 recording_2025-07-31_07-49-05_00984 7.96 m; 1.16
  *     papier 121395 recording_2025-06-18_08-56-14_00581 6.46 m; 1.19 glas 191647 recording_2025-06-16_06-42-40_00170
  *     6.03 m), front 0.63 m (0.61 / 0.67 / back 0.66 215814 recording_2025-06-16_06-42-40_01252 6.16 m / back 0.55),
- *     depth 0.72 m (ground-plane footprint, 102570), plain front 0.55 m to the drum, drum 0.46 m (102570: 0.58-1.04 m),
- *     front chamfer from 0.83 m, lip 0.07 m, fraction band 0.15 m (57671 papier), back chamfer 0.16-0.21 m (191647,
+ *     2026-11-07 correction: those "front" reads are the flat panel between the angled corner strips (0.50 m); the
+ *     whole width is 0.86 m and the depth 0.80 m (width/height 0.72-0.78, side view 0.69; staging/street-furniture/
+ *     faceon-*: papier 72443, glas 262754, rest 131173, rest 78788 side-on; the user's two photos). Plain front 0.55 m
+ *     to the drum, drum 0.44 m, front chamfer from 0.80 m, lip 0.07 m, fraction band 0.15 m (57671 papier), back chamfer 0.16-0.21 m (191647,
  *     215814), lift mushroom 0.24-0.45 m (four reads; 0.35 m), floor plate 1.56 m edge (102570 ground plane);
  *   canal lantern 4.09 m to the finial, lantern 0.70 x 0.45 m, its bottom at 3.16 m, shaft 0.11 m (332362);
  *   hooked pole 7.6 m to the curl (residential, Pijp 3976ec), arm reach 1.0 m, bowl 0.36 m;
@@ -24,14 +26,14 @@
  *   litter bin by that abri 1.11 x 0.57 m;
  *   reclamezuil 4.6-4.8 m to the finial, body 1.9-2.0 m across (6f6d95, 36dae2; cornice band 0.87 m with the roof).
  * Priors (no measurement): abri depth 1.4 m; bike hoop 0.75 x 0.70 m, five hoops 0.9 m apart per BGT rack point;
- * container column 0.15 m behind the plate centre, cheeks 0.07 m, chamfer run 0.30 m (side-view slope ~50 deg).
+ * container column 0.15 m behind the plate centre, chamfer run 0.30 m (side-view slope ~50 deg).
  */
 import { STREET_FURNITURE_TONES as T, hexToRgb } from '../look/palette.js';
 
 export type FurnitureModelId = 'container' | 'container-glas' | 'container-papier' | 'lamp-lantern' | 'lamp-pole' | 'bin' | 'bike-rack' | 'abri' | 'ad-column';
 export const FURNITURE_MODEL_IDS: readonly FurnitureModelId[] = ['container', 'container-glas', 'container-papier', 'lamp-lantern', 'lamp-pole', 'bin', 'bike-rack', 'abri', 'ad-column'];
 /** Per-model triangle cap (the brief's budget). */
-export const FURNITURE_TRI_CAP = 120;
+export const FURNITURE_TRI_CAP = 160;
 /** Faces in this colour take the instance colour. */
 export const SLOT = '#ff00ff';
 
@@ -39,11 +41,11 @@ export type FurnitureMesh = { id: FurnitureModelId; positions: Float32Array; col
 
 export const DIMENSIONS = {
   container: {
-    plate: 1.55, plateH: 0.04, colW: 0.63, colD: 0.72, colH: 1.19, colBack: 0.15,
-    chamferZ: 0.83, chamferRun: 0.30, backChamferH: 0.18, backChamferRun: 0.12,
-    cheek: 0.07, drumD: 0.46, drumBottom: 0.58, drumSet: 0.23, lipH: 0.07, lipProud: 0.03,
-    panelSet: 0.08, holeD: 0.17, holeZ: 0.84, slotW: 0.38, slotH: 0.06, flapH: 0.14, labelW: 0.26, labelD: 0.16,
-    handleH: 0.35, handleShaftR: 0.035, handleDiscR: 0.09,
+    plate: 1.55, plateH: 0.04, colW: 0.86, frontW: 0.50, cornerRun: 0.13, colD: 0.80, colH: 1.19, colBack: 0.15,
+    chamferZ: 0.80, chamferRun: 0.30, backChamferH: 0.18, backChamferRun: 0.12,
+    drumD: 0.58, drumBottom: 0.55, lipH: 0.07, lipProud: 0.03,
+    panelSet: 0.07, bandRun: 0.13, lidDrop: 0.05, holeD: 0.20, slotW: 0.38, labelW: 0.13, labelD: 0.09,
+    handleH: 0.36, handleShaftR: 0.03, handleDiscR: 0.09,
   },
   lantern: { height: 4.09, baseR: 0.13, baseH: 0.55, shaftR: 0.055, lanternBottom: 3.16, lanternH: 0.45, lanternBot: 0.30, lanternTop: 0.42, roofW: 0.50, roofH: 0.18, finialH: 0.10 },
   pole: { height: 7.6, baseR: 0.11, topR: 0.06, reach: 1.0, bowlR: 0.18, bowlH: 0.16 },
@@ -107,88 +109,128 @@ class Builder {
 }
 
 /**
- * Underground container top (#212 re-model): the Amsterdam inwerpzuil (the Kinshofer "Amsterdam Standaard" column on
- * 11,450 of the 12,892 active register containers). Side profile a long hexagon: vertical front carrying the pictogram,
- * a steep front chamfer, short flat top with the lift mushroom, a small back chamfer, vertical back. The stainless drum
- * (trommel) lies across the front between two cheeks, convex, its top in the chamfer; under it a light lip over the
- * dark mouth; above it the fraction band on the slope (SLOT, the instance colour). Grey galvanised floor plate with a
- * darker edge. Numbers: the module header and staging/street-furniture/container-measurements.md.
+ * Underground container top (#212, re-shaped 2026-11-07 against the user's two photos and face-on panoramas): the
+ * Amsterdam inwerpzuil. Plan: a flat front panel between two angled corner strips, then straight sides. Side profile a
+ * long hexagon: vertical front, a steep slope, short flat top with the lift post, a small back chamfer. Between the
+ * strips the slope is recessed: rest has the convex stainless drum over a light lip and a lid above it, glass a round
+ * hole in the slope, paper a dark slot over a light flap. The fraction band (SLOT, the instance colour) runs the recess
+ * width at the top of the slope. Below: the darker pictogram panel (bag, sheet, bottle), side doors, the XXX on the
+ * left strip. Grey galvanised floor plate with a darker edge.
  */
 export type ContainerInsert = 'drum' | 'hole' | 'slot';
-/** The insert behind the fraction band: rest's drum, glass's round hole, paper's wide slot over a flap (193394, 57671). */
+/** The insert under the fraction band: rest's drum, glass's round hole, paper's wide slot over a flap (193394, 57671). */
 export const CONTAINER_INSERT: Readonly<Record<'container' | 'container-glas' | 'container-papier', ContainerInsert>> = { container: 'drum', 'container-glas': 'hole', 'container-papier': 'slot' };
 
+/** Pictogram outlines on the front panel, unit box (x -1..1, z 0..1), convex pieces fanned from their first point. */
+const PICTOGRAM: Readonly<Record<ContainerInsert, readonly (readonly (readonly [number, number])[])[]>> = {
+  drum: [[[-0.85, 0], [0.85, 0], [1, 0.3], [0.45, 0.72], [-0.45, 0.72], [-1, 0.3]], [[-0.3, 0.72], [0.3, 0.72], [0.55, 1], [-0.55, 1]]],
+  hole: [[[-0.45, 0], [0.45, 0], [0.45, 0.55], [0.15, 0.72], [-0.15, 0.72], [-0.45, 0.55]], [[-0.15, 0.72], [0.15, 0.72], [0.15, 1], [-0.15, 1]]],
+  slot: [[[-0.7, 0], [0.7, 0], [0.7, 0.72], [0.35, 1], [-0.7, 1]]],
+};
+
 export function containerModel(id: 'container' | 'container-glas' | 'container-papier' = 'container'): FurnitureMesh {
-  const D = DIMENSIONS.container, b = new Builder(), insert = CONTAINER_INSERT[id];
+  const D = DIMENSIONS.container, b = new Builder(), insert = CONTAINER_INSERT[id], body = T.containerBody;
   const h = D.plate / 2, pz = D.plateH;
   // Floor plate: lighter steel top, darker visible edge.
   b.quad([-h, -h, pz], [h, -h, pz], [h, h, pz], [-h, h, pz], T.containerPlate);
   b.box(-h, -h, 0, h, h, pz, T.containerPlateEdge, false, false);
-  const x0 = -D.colW / 2, x1 = D.colW / 2, xi0 = x0 + D.cheek, xi1 = x1 - D.cheek;
-  const yb = -D.colD / 2 - D.colBack, yf = D.colD / 2 - D.colBack;
+  const W = D.colW / 2, Wf = D.frontW / 2;
+  const yb = -D.colD / 2 - D.colBack, yf = D.colD / 2 - D.colBack, yc = yf - D.cornerRun;
   const top = pz + D.colH, zc = pz + D.chamferZ, yt = yf - D.chamferRun, zbk = top - D.backChamferH, ybt = yb + D.backChamferRun;
-  const body = T.containerBody;
-  // Side profile (y, z), counter-clockwise seen from +x: back-bottom, front-bottom, chamfer start, top-front, top-back, back chamfer.
-  const prof: [number, number][] = [[yb, pz], [yf, pz], [yf, zc], [yt, top], [ybt, top], [yb, zbk]];
-  for (const [x, flip] of [[x0, true], [x1, false]] as const) {
-    const pts = prof.map(([y, z]): V => [x, y, z]);
-    // Counter-clockwise in (y, z) faces +x: the -x side takes the reverse winding (front faces only in the ride).
-    for (let i = 1; i < pts.length - 1; i++) flip ? b.tri(pts[0], pts[i + 1], pts[i], body) : b.tri(pts[0], pts[i], pts[i + 1], body);
-  }
-  // The recess between the cheeks: the drum (rest) or a flat insert panel set back from the front (glass, paper).
-  const zm = pz + D.drumBottom, r = D.drumD / 2, za = zm + r, zTop = za + r;
-  const ya = insert === 'drum' ? yf - D.drumSet : yf - D.panelSet;
   const slopeZ = (y: number) => zc + (yf - y) * (top - zc) / (yf - yt);
-  // Front: full width up to the lip, then the two cheeks up to the chamfer and up the slope to the top edge.
-  b.quad([x1, yf, pz], [x0, yf, pz], [x0, yf, zm], [x1, yf, zm], body);
-  for (const [a, c] of [[x0, xi0], [xi1, x1]] as const) {
-    b.quad([c, yf, zm], [a, yf, zm], [a, yf, zc], [c, yf, zc], body);
-    b.quad([c, yf, zc], [a, yf, zc], [a, yt, top], [c, yt, top], body);
+  const zs = slopeZ(yc);
+  // Sides, the door on each, the angled corner strips and the cheeks of the slope, mirrored. Winding flips with the side.
+  for (const sx of [-1, 1] as const) {
+    const q = (p: V, r: V, t: V, u: V, hex: string) => sx < 0 ? b.quad(p, r, t, u, hex) : b.quad(u, t, r, p, hex);
+    const P = (x: number, y: number, z: number): V => [sx * x, y, z];
+    const side: [number, number][] = [[yb, pz], [yc, pz], [yc, zs], [yt, top], [ybt, top], [yb, zbk]];
+    const pts = side.map(([y, z]) => P(W, y, z));
+    for (let i = 1; i < pts.length - 1; i++) sx > 0 ? b.tri(pts[0], pts[i], pts[i + 1], body) : b.tri(pts[0], pts[i + 1], pts[i], body);
+    // The access door: a darker panel with its top-front corner cut along the slope.
+    const dy0 = yb + 0.13, dy1 = yc - 0.07, dz0 = pz + 0.16, dz1 = top - 0.19, dzf = slopeZ(dy1) - 0.14;
+    const door = ([[dy0, dz0], [dy1, dz0], [dy1, dzf], [dy1 - (dz1 - dzf) * (yf - yt) / (top - zc), dz1], [dy0, dz1]] as const).map(([y, z]) => P(W + 0.003, y, z));
+    for (let i = 1; i < door.length - 1; i++) sx > 0 ? b.tri(door[0], door[i], door[i + 1], T.containerDoor) : b.tri(door[0], door[i + 1], door[i], T.containerDoor);
+    q(P(Wf, yf, pz), P(W, yc, pz), P(W, yc, zs), P(Wf, yf, zc), body); // corner strip
+    q(P(Wf, yf, zc), P(W, yc, zs), P(W, yt, top), P(Wf, yt, top), body); // cheek on the slope
   }
-  // Cheek inner faces bounding the recess (y from the recess back to the front).
-  const ziA = slopeZ(ya);
-  b.quad([xi0, ya, zm], [xi0, yf, zm], [xi0, yf, zc], [xi0, ya, ziA], body);
-  b.quad([xi1, yf, zm], [xi1, ya, zm], [xi1, ya, ziA], [xi1, yf, zc], body);
-  if (insert === 'drum') {
-    // Lip: the light bar over the drum's mouth, proud of the front; the dark mouth floor behind it.
+  // The recess between the cheeks and its floor at the bottom of the insert.
+  // The drum shows only its upper part: it leaves the lip at -35 deg, so no dark mouth opens under it (the user's photo).
+  const xi = Wf, drum = insert === 'drum', zm = drum ? pz + D.drumBottom : zc, r = D.drumD / 2, a0 = -35 * Math.PI / 180;
+  const ya = drum ? yf - 0.02 - r * Math.cos(a0) : yf - D.panelSet, za = zm - r * Math.sin(a0), zTop = za + r;
+  const yBand = drum ? yt : yt + D.bandRun, zBand = drum ? top : top - D.lidDrop;
+  // Vertical front up to the recess, the darker pictogram panel on it.
+  b.quad([xi, yf, pz], [-xi, yf, pz], [-xi, yf, zm], [xi, yf, zm], body);
+  const m = 0.035, panelTop = zm - (drum ? D.lipH + 0.02 : 0.04), panelBottom = pz + 0.07, e = yf + 0.003;
+  b.quad([xi - m, e, panelBottom], [-xi + m, e, panelBottom], [-xi + m, e, panelTop], [xi - m, e, panelTop], T.containerPanel);
+  const ph = (panelTop - panelBottom) * 0.46, pw = ph * 0.42, pc = panelBottom + (panelTop - panelBottom) * 0.27, e2 = e + 0.002;
+  for (const piece of PICTOGRAM[insert]) {
+    const ring = piece.map(([x, z]): V => [-x * pw, e2, pc + z * ph]);
+    for (let i = 1; i < ring.length - 1; i++) b.tri(ring[0], ring[i], ring[i + 1], T.containerLabel);
+  }
+  // The recess floor and cheek walls, from the slope back to the insert.
+  const sill = drum ? (T.containerSlot) : T.containerLip;
+  b.quad([xi, yf, zm], [-xi, yf, zm], [-xi, ya, zm], [xi, ya, zm], sill);
+  b.quad([-xi, ya, zm], [-xi, yf, zm], [-xi, yf, zc], [-xi, ya, slopeZ(ya)], T.containerRecess);
+  b.quad([xi, yf, zm], [xi, ya, zm], [xi, ya, slopeZ(ya)], [xi, yf, zc], T.containerRecess);
+  if (drum) {
+    // Lip: the light bar under the drum, proud of the front.
     const lz0 = zm - D.lipH, ly = yf + D.lipProud;
-    b.quad([xi1, ly, lz0], [xi0, ly, lz0], [xi0, ly, zm], [xi1, ly, zm], T.containerLip);
-    b.quad([xi1, ly, zm], [xi0, ly, zm], [xi0, yf, zm], [xi1, yf, zm], T.containerLip);
-    b.quad([xi1, yf, lz0], [xi0, yf, lz0], [xi0, ly, lz0], [xi1, ly, lz0], T.containerLip);
-    b.quad([xi1, yf, zm], [xi0, yf, zm], [xi0, ya, zm], [xi1, ya, zm], T.containerSlot);
-  } else b.quad([xi1, yf, zm], [xi0, yf, zm], [xi0, ya, zm], [xi1, ya, zm], body); // the recess sill
-  if (insert === 'drum') {
-    // The drum: 6 facets from the bottom (-90 deg) over the front to the top (+90 deg).
-    const n = 6, arc = Array.from({ length: n + 1 }, (_, i) => { const t = -Math.PI / 2 + Math.PI * i / n; return [ya + r * Math.cos(t), za + r * Math.sin(t)] as const; });
-    for (let i = 0; i < n; i++) { const [y0, z0] = arc[i], [y1, z1] = arc[i + 1]; b.quad([xi0, y0, z0], [xi0, y1, z1], [xi1, y1, z1], [xi1, y0, z0], T.containerDrum); }
+    b.quad([xi, ly, lz0], [-xi, ly, lz0], [-xi, ly, zm], [xi, ly, zm], T.containerLip);
+    b.quad([xi, ly, zm], [-xi, ly, zm], [-xi, yf, zm], [xi, yf, zm], T.containerLip);
+    b.quad([xi, yf, lz0], [-xi, yf, lz0], [-xi, ly, lz0], [xi, ly, lz0], T.containerLip);
+    // The drum: 6 facets from the lip over the front to its crown.
+    const n = 6, arc = Array.from({ length: n + 1 }, (_, i) => { const t = a0 + (Math.PI / 2 - a0) * i / n; return [ya + r * Math.cos(t), za + r * Math.sin(t)] as const; });
+    for (let i = 0; i < n; i++) { const [y0, z0] = arc[i], [y1, z1] = arc[i + 1]; b.quad([-xi, y0, z0], [-xi, y1, z1], [xi, y1, z1], [xi, y0, z0], T.containerDrum); }
+    // Lid from the drum's crown back to the band, with the cheek walls down to it.
+    b.quad([-xi, ya, zTop], [-xi, yBand, zBand], [xi, yBand, zBand], [xi, ya, zTop], T.containerTop);
   } else {
-    // Insert panel in the body colour, vertical, from the mouth to the band.
-    b.quad([xi1, ya, zm], [xi0, ya, zm], [xi0, ya, zTop], [xi1, ya, zTop], body);
-    const e = ya + 0.004;
+    // The insert slope: a plane set in from the cheeks, carrying the throw-in, up to the band.
+    const yi = (t: number) => ya + (yBand - ya) * t, zi = (t: number) => zm + (zBand - zm) * t;
+    b.quad([-xi, ya, zm], [-xi, yBand, zBand], [xi, yBand, zBand], [xi, ya, zm], T.containerInsert);
+    const nrm = Math.hypot(ya - yBand, zBand - zm), ny = 0.004 * (zBand - zm) / nrm, nz = 0.004 * (ya - yBand) / nrm;
+    const on = (x: number, t: number): V => [x, yi(t) + ny, zi(t) + nz];
     if (insert === 'hole') {
-      // Glass: one round throw-in hole (octagon), dark.
-      const cz = pz + D.holeZ, hr = D.holeD / 2, ring = Array.from({ length: 8 }, (_, i): V => [hr * Math.cos((i + 0.5) * Math.PI / 4), e, cz + hr * Math.sin((i + 0.5) * Math.PI / 4)]);
-      for (let i = 1; i < 7; i++) b.tri(ring[0], ring[i + 1], ring[i], T.containerSlot);
+      // Glass: one round throw-in hole on the slope, dark.
+      const tc = 0.5, len = Math.hypot(yBand - ya, zBand - zm), hr = D.holeD / 2;
+      const ring = Array.from({ length: 10 }, (_, i) => { const a = (i + 0.5) * 2 * Math.PI / 10; return on(hr * Math.cos(a), tc + hr * Math.sin(a) / len); });
+      for (let i = 1; i < 9; i++) b.tri(ring[0], ring[i + 1], ring[i], T.containerSlot);
     } else {
-      // Paper: the wide letterbox slot under the band, the light flap below it.
-      const sw = D.slotW / 2, s1 = zTop - 0.03, s0 = s1 - D.slotH, f0 = s0 - 0.02 - D.flapH;
-      b.quad([sw, e, s0], [-sw, e, s0], [-sw, e, s1], [sw, e, s1], T.containerSlot);
-      b.quad([sw, e, f0], [-sw, e, f0], [-sw, e, s0 - 0.02], [sw, e, s0 - 0.02], T.containerLip);
+      // Paper: the wide letterbox slot high on the slope, the light flap below it.
+      const sw = D.slotW / 2;
+      b.quad(on(-sw, 0.62), on(-sw, 0.84), on(sw, 0.84), on(sw, 0.62), T.containerSlot);
+      b.quad(on(-sw, 0.14), on(-sw, 0.56), on(sw, 0.56), on(sw, 0.14), T.containerLip);
     }
   }
-  // Fraction band on the slope: from the insert top to the top edge (SLOT, the instance colour).
-  b.quad([xi0, ya, zTop], [xi0, yt, top], [xi1, yt, top], [xi1, ya, zTop], SLOT);
+  // Cheek walls above the insert, then the fraction band up to the top edge (SLOT, the instance colour).
+  const wallY = ya;
+  b.tri([-xi, wallY, drum ? zTop : zm], [-xi, wallY, slopeZ(wallY)], [-xi, yBand, zBand], T.containerRecess);
+  b.tri([-xi, wallY, slopeZ(wallY)], [-xi, yt, top], [-xi, yBand, zBand], T.containerRecess);
+  b.tri([xi, wallY, drum ? zTop : zm], [xi, yBand, zBand], [xi, wallY, slopeZ(wallY)], T.containerRecess);
+  b.tri([xi, wallY, slopeZ(wallY)], [xi, yBand, zBand], [xi, yt, top], T.containerRecess);
+  // Rest's band lies on the flat top behind the lid; glass and paper's closes the slope.
+  if (drum) b.quad([-xi, yt, top + 0.002], [-xi, yt - D.bandRun, top + 0.002], [xi, yt - D.bandRun, top + 0.002], [xi, yt, top + 0.002], SLOT);
+  else b.quad([-xi, yBand, zBand], [-xi, yt, top], [xi, yt, top], [xi, yBand, zBand], SLOT);
   // Flat top, back chamfer, back.
-  b.quad([x0, yt, top], [x0, ybt, top], [x1, ybt, top], [x1, yt, top], T.containerTop);
-  // The white instruction sticker on the flat top, toward the front (every panorama column carries one).
-  b.quad([x0 + 0.06, yt - 0.03, top + 0.003], [x0 + 0.06, yt - 0.03 - D.labelD, top + 0.003], [x0 + 0.06 + D.labelW, yt - 0.03 - D.labelD, top + 0.003], [x0 + 0.06 + D.labelW, yt - 0.03, top + 0.003], T.containerLabel);
-  b.quad([x0, ybt, top], [x0, yb, zbk], [x1, yb, zbk], [x1, ybt, top], body);
-  b.quad([x0, yb, pz], [x1, yb, pz], [x1, yb, zbk], [x0, yb, zbk], body);
-  // Lift mushroom: galvanised discs on a shaft in the fraction colour (yellow glass shafts 47128 / 215814, blue paper
-  // 57671, dark rest 102570), so the shaft is SLOT too.
-  const hy = (yt + ybt) / 2, H = D.handleH;
-  b.prism(0, hy, top, top + H - 0.03, D.handleShaftR, D.handleShaftR, 6, SLOT, false);
-  for (const z of [top + H * 0.55, top + H - 0.04]) b.prism(0, hy, z, z + 0.04, D.handleDiscR, D.handleDiscR, 6, T.containerHandle, true, true);
+  b.quad([-W, yt, top], [-W, ybt, top], [W, ybt, top], [W, yt, top], T.containerTop);
+  // The small instruction sticker on the flat top, inside its front left corner.
+  const lx = -W + 0.02, ly = yt - 0.05;
+  b.quad([lx, ly, top + 0.003], [lx, ly - D.labelD, top + 0.003], [lx + D.labelW, ly - D.labelD, top + 0.003], [lx + D.labelW, ly, top + 0.003], T.containerLabel);
+  b.quad([-W, ybt, top], [-W, yb, zbk], [W, yb, zbk], [W, ybt, top], body);
+  b.quad([-W, yb, pz], [W, yb, pz], [W, yb, zbk], [-W, yb, zbk], body);
+  // The three Amsterdam crosses, stacked on the left corner strip.
+  const sy = (t: number) => yf + (yc - yf) * t, sxx = (t: number) => -(Wf + (W - Wf) * t), o = 0.004;
+  const sn = Math.hypot(W - Wf, D.cornerRun), onx = -o * D.cornerRun / sn, ony = o * (W - Wf) / sn;
+  for (let i = 0; i < 3; i++) {
+    const zc0 = zc - 0.13 - i * 0.10, s = 0.035, w = 0.012, c = 0.5, dt = s / sn;
+    const pt = (t: number, z: number): V => [sxx(t) + onx, sy(t) + ony, z];
+    b.quad(pt(c - dt, zc0 - s + w), pt(c - dt, zc0 - s - w), pt(c + dt, zc0 + s - w), pt(c + dt, zc0 + s + w), T.containerCross);
+    b.quad(pt(c + dt, zc0 - s + w), pt(c - dt, zc0 + s + w), pt(c - dt, zc0 + s - w), pt(c + dt, zc0 - s - w), T.containerCross);
+  }
+  // Lift post: galvanised discs on a shaft in the fraction colour (yellow glass shafts 47128 / 215814, blue paper
+  // 57671, grey rest), so the shaft is SLOT too. Back third of the flat top (the user's photos).
+  const hy = (yt + ybt) / 2 - 0.04, H = D.handleH;
+  b.prism(0, hy, top, top + H - 0.02, D.handleShaftR, D.handleShaftR, 6, SLOT, false);
+  for (const z of [top + H * 0.5, top + H - 0.03]) b.prism(0, hy, z, z + 0.03, D.handleDiscR, D.handleDiscR, 8, T.containerHandle, true, false);
   return b.done(id);
 }
 
