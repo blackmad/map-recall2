@@ -1224,9 +1224,9 @@ export class OwnGround {
   }
 
   /**
-   * A street-furniture base: the riding surface (pavement and kerb rise included), not the bare relief. On the raised
-   * pavement the relief lies below the drawn paving, which buried the container plates and the lowest ~0.25 m of every
-   * piece (TODO P1 (a), user 2026-11-07). Never below the relief.
+   * A street-furniture base: the riding surface (a measured deck's top, a tunnel cut's floor), never below the relief.
+   * The pavement planes' own lift over it (roadSurfaces SIDEWALK_TOP) is added by the furniture adapter
+   * (streetFurniture/models.ts RIDE_BASE_LIFT_M, user 2026-11-07).
    */
   surfaceBase(lngLat: LngLat): number | undefined {
     if (!this.ready) return undefined;

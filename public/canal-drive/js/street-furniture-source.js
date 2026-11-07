@@ -8,7 +8,7 @@ import {ViewResidency} from '../../../src/canalRecall/viewResidency.ts';
 import {worldCameraOf} from '../../../src/canalRecall/engine/worldCameraOf.ts';
 import {InstanceCull} from '../../../src/canalRecall/rendererShared/instanceCull.ts';
 import {RebuildCoalescer,extrasRebuildSync} from '../../../src/canalRecall/rendererShared/rebuildCoalescer.ts';
-import {FURNITURE_MODELS} from '../../../src/canalRecall/streetFurniture/models.ts';
+import {RIDE_BASE_LIFT_M,rideModel} from '../../../src/canalRecall/streetFurniture/models.ts';
 import {alignContainerRows,instancesOf} from '../../../src/canalRecall/streetFurniture/placement.ts';
 const {THREE} = window.CanalRecallThree;
 
@@ -38,7 +38,7 @@ export function furnitureMaterial() {
 }
 
 export function furnitureGeometry(id) {
-  const m=FURNITURE_MODELS[id](),g=new THREE.BufferGeometry();
+  const m=rideModel(id),g=new THREE.BufferGeometry();
   g.setAttribute('position',new THREE.BufferAttribute(m.positions,3));
   g.setAttribute('color',new THREE.BufferAttribute(m.colours,3));
   g.computeVertexNormals();g.computeBoundingSphere();
@@ -160,7 +160,8 @@ export class StreetFurniture {
       items.forEach((v,j)=>{
         const p=this.maplibregl.MercatorCoordinate.fromLngLat([v.lng,v.lat],0);
         const x=(p.x-this.origin.x)/this.scale,north=-(p.y-this.origin.y)/this.scale;
-        const z0=this.groundBase?(this.groundBase([v.lng,v.lat])??0):0;
+        // Own ground only: its pavement planes stand RIDE_BASE_LIFT_M over the relief; the flat MapLibre floor has none.
+        const z0=this.groundBase?(this.groundBase([v.lng,v.lat])??0)+RIDE_BASE_LIFT_M:0;
         pos.set(x,north,z0);q.setFromAxisAngle(z,v.yaw);scl.set(v.scale,v.scale,v.scale);
         m4.compose(pos,q,scl);mesh.setMatrixAt(j,m4);
         mesh.setColorAt(j,v.slotHex?col.set(v.slotHex):white);

@@ -750,6 +750,9 @@ class HUD {
     ctx.save();
     ctx.font = `500 12px ${theme.fontUi}`;
     ctx.textAlign = 'center';
+    // Middle baseline on the bar's centre line: an alphabetic baseline at a
+    // fixed offset sat the text low in the bar (user, 2026-11-07).
+    ctx.textBaseline = 'middle';
     const width = Math.min(ctx.measureText(text).width + 22, CANVAS_W - 16);
     // Clamped on screen: in landscape the zone sits at the left edge, and a
     // hint centred on it started at x = -62.
@@ -757,7 +760,7 @@ class HUD {
     const rect = { x, y: pad.bounds.y - 30, width, height: 22 };
     this.paperCard(ctx, rect, { radius: 9 });
     ctx.fillStyle = theme.inkMuted;
-    ctx.fillText(text, x + width / 2, rect.y + 15);
+    ctx.fillText(text, x + width / 2, rect.y + rect.height / 2);
     ctx.restore();
   }
 
