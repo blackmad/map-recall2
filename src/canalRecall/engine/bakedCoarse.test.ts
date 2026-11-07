@@ -130,6 +130,7 @@ function harness(cellsWithShell: string[]) {
   const data = (key: string): BakedCellData => ({ key, ...bakedCellArrays(shel(), ['a', 'b', 'c']), gzBytes: 100 });
   const fetched: string[] = [];
   let regroups = 0;
+  const bases: Record<string, number | null | undefined> = { a: 2, b: null, c: undefined };
   const host: BakedCoarseHost = {
     THREE, scene: () => scene, material: () => material,
     fadeMaterial: v => { const c = { uniforms: { cityFade: { value: v } }, disposed: false, dispose() { this.disposed = true; } }; clones.push(c); return c; },
@@ -139,10 +140,10 @@ function harness(cellsWithShell: string[]) {
     fetchShell: async key => { fetched.push(key); return data(key); },
     available: () => avail(cellsWithShell),
     coverageChanged: () => { regroups++; },
-    groundBase: id => (id === 'a' ? 2 : id === 'c' ? undefined : null),
+    groundBase: id => bases[id],
     repaint: () => {},
   };
-  return { host, added, attached, fetched, clones, material, regroups: () => regroups };
+  return { host, added, attached, fetched, clones, material, bases, regroups: () => regroups };
 }
 
 test('BakedCoarse: covers the planned cells at once, installs one mesh per cell at its origin, attaches it, dissolves in, then counts as drawn', async () => {
@@ -215,4 +216,10 @@ test('BakedCoarse: at street level a near cell keeps its positions and lifts bui
   assert.equal(pos.array[3 * 3 + 2], z0 + 2, "building 'a' (vertices 3..5) stood on its 2 m base");
   assert.equal(pos.needsUpdate, true);
   assert.equal(baked.stats().liftPending, 1, "'c' waits for its relief");
+  // A new ground revision (the facade re-base's budget interface): every building is queued again and moved by the change.
+  h.bases.a = 3;
+  const budget: { ms: number; restart: boolean; done?: boolean } = { ms: 4, restart: true };
+  baked.refreshShellBases(budget);
+  assert.equal(pos.array[3 * 3 + 2], z0 + 3, "'a' follows its new 3 m base");
+  assert.equal(budget.done, false, "'c' still waits");
 });

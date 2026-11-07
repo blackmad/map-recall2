@@ -24,6 +24,7 @@
 import { CELL_GRID, cellBounds, parseCellKey } from '../world/cellGrid.js';
 import { shellOrigin } from '../world/shellMesh.js';
 import type { BakedRange } from '../world/bakedCellArrays.js';
+import { orderByDistance } from '../rendererShared/baseRefreshBudget.js';
 
 /** A cell's SW corner in chunk metres (the baked meshes' position). */
 export function bakedCellOrigin(key: string): [number, number] { const [i, j] = parseCellKey(key); return shellOrigin(i, j); }
@@ -56,8 +57,6 @@ export const BAKED_FADE_MS = 700;
 export const BAKED_KEEP_M = 600;
 /** Street level: cells whose nearest edge is within this of the rider keep their positions on the CPU to be lifted. */
 export const BAKED_LIFT_RADIUS_M = 1500;
-/** Street-level lift work per frame (ms), until R3-F's shared frame budget schedules it. */
-export const BAKED_LIFT_SLICE_MS = 4;
 /** Triangles per gzip byte of SHEL, the plan's estimate before a cell is seen (604 staged cells: 10.2 M over 49.6 MB). */
 export const TRIS_PER_GZ_BYTE = 0.2;
 
@@ -339,23 +338,34 @@ export class BakedCoarse {
    * Lift pending buildings onto the ground within `budgetMs` (street level only); returns buildings lifted. Cells
    * beyond BAKED_LIFT_RADIUS_M + BAKED_KEEP_M stop waiting and let their CPU copy go.
    */
-  refreshBases(budgetMs: number): number {
-    if (!this.liftOn || !this.enabled) return 0;
-    const deadline = performance.now() + budgetMs;
-    let lifted = 0;
-    for (const r of this.residents.values()) {
-      const lift = r.lift;
-      if (!lift) continue;
+  /**
+   * Street level: lift the baked buildings onto the own ground in a time slice, with the facade layer's budget
+   * interface (rendererShared/baseRefreshBudget.ts, R3-F #241): `ms` per frame, nearest cell first; `restart` (a new
+   * ground revision) queues every building of the lifted cells again, so a relief tile that arrives later re-bases them
+   * as it re-bases the facade chunks. `done` is false while work remains. Returns the buildings moved.
+   */
+  refreshShellBases(budget: { ms: number; restart?: boolean; done?: boolean }): number {
+    if (!this.liftOn || !this.enabled) { budget.done = true; return 0; }
+    const deadline = performance.now() + budget.ms;
+    let lifted = 0, remaining = false;
+    const order = orderByDistance([...this.residents.values()].filter(r => r.lift).map(r => ({ key: r, distance: this.at ? cellDistanceM(r.key, this.at[0], this.at[1]) : 0 })));
+    for (const r of order) {
+      const lift = r.lift!;
       const attribute = r.mesh.geometry.getAttribute('position');
       if (this.at && cellDistanceM(r.key, this.at[0], this.at[1]) > BAKED_LIFT_RADIUS_M + BAKED_KEEP_M) { this.settle(r, attribute); continue; }
+      if (budget.restart) lift.pending = [...r.ranges.keys()];
       if (!lift.pending.length) continue;
+      if (performance.now() > deadline) { remaining = true; continue; }
       const out = liftRanges(lift.positions, r.ranges, lift.pending, lift.applied, id => this.host.groundBase(id), deadline, undefined, lift.unit);
       if (out.lifted) { attribute.needsUpdate = true; lifted += out.lifted; }
-      if (performance.now() > deadline) break;
+      if (lift.pending.length) remaining = true;
     }
+    budget.done = !remaining;
     if (lifted) this.host.repaint();
     return lifted;
   }
+  /** `refreshShellBases` with a plain per-frame budget (tests, older call sites). */
+  refreshBases(budgetMs: number): number { return this.refreshShellBases({ ms: budgetMs }); }
   private settle(r: Resident, attribute: any): void {
     if (!r.lift) return;
     delete r.lift;
