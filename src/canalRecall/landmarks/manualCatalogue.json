@@ -69543,7 +69543,8 @@
   "heightMetres": 41,
   "bagYear": 2009,
   "materialOverrides": {
-   "brick": "#8c7b66",
+   "brick": "#ae896d",
+   "sandstone": "#cfb283",
    "greyBrick": "#7a7974",
    "stone": "#a39d8a",
    "glass": "#4f5b62",

@@ -135,10 +135,10 @@ function northBar(b: BuildingTools) {
 const HU0 = 97.3, HU1 = 130.6, HV = 16.9, HW = 13.3, HN = 126.6; // the tower is 13.3 m deep on the west front (w02), 16.9 behind it
 const KH = 1.1, HG = 4.0 * KH, SH = 2.9 * KH, HROWS = 10, HCROWN = HG + HROWS * SH, HTOP = 41.0;
 function hotel(b: BuildingTools) {
-  prism(b, [[HU0, 0], [HU1, 0], [HU1, HW], [HN, HW], [HN, HV], [HU0, HV]], 0, HTOP, 'brick', 'slate', [0, 1, 4]);
+  prism(b, [[HU0, 0], [HU1, 0], [HU1, HW], [HN, HW], [HN, HV], [HU0, HV]], 0, HTOP, 'sandstone', 'slate', [0, 1, 4]);
   const N = fr([HU0, 0], [HU1, 0]), UC = 117.6 - HU0, UH = 6.8 * KH;
   // stone ground storey and brick above, east of the corner undercroft; the brick over the undercroft in one face
-  const NL = face(sub(N, 0, UC), 0, HG - 0.35, 'stone'), NF = face(sub(N, 0, UC), HG - 0.35, HTOP, 'brick'), NU = face(sub(N, UC, HU1 - HU0 - UC), 0, HTOP, 'brick');
+  const NL = face(sub(N, 0, UC), 0, HG - 0.35, 'stone'), NF = face(sub(N, 0, UC), HG - 0.35, HTOP, 'sandstone'), NU = face(sub(N, UC, HU1 - HU0 - UC), 0, HTOP, 'sandstone');
   // the corner undercroft to the hotel entrance (w01 2025, right): a lower glazed front 4.5 m in
   NU.holes.push({t0: 0.3, t1: NU.len - 0.3, y0: 0, y1: UH, depth: 4.5, back: 'glass'});
   slab(b, N.f, UC + NU.len / 2, UH - 0.5, NU.len, 0.5, 0.1, 'stone');
@@ -172,7 +172,7 @@ function hotel(b: BuildingTools) {
   lettering(b, N, 'HOTEL', sx + 0.1, 12.4, 0.23, 'pink', 0.1);
   for (const [w, h] of [[1.0, 2.0], [1.6, 1.6], [2.0, 1.0]] as const) slab(b, N.f, 125.3 - HU0, 23.4 - h / 2, w, h, 0.12, 'blue', 0.05);
   // west side (w02, left): the glazed two-storey lobby, windows on the hotel's floors, the sign high up
-  const W = fr([HU1, 0], [HU1, HW]), WF = face(W, HG - 0.35, HTOP, 'brick'), WL = face(W, 0, HG - 0.35, 'stone');
+  const W = fr([HU1, 0], [HU1, HW]), WF = face(W, HG - 0.35, HTOP, 'sandstone'), WL = face(W, 0, HG - 0.35, 'stone');
   opening(b, WF, 5.95, 7.3, 11.5, 6.5, {depth: 0.2, cols: 8, rows: 2, frame: 'bronze', sill: false});
   for (const t of [2.0, 6.2]) opening(b, WL, t, 0.05, 3.2, 2.75, {depth: 0.2, cols: 2, frame: 'frame', sill: false});
   // bands on every floor; the two over the lobby glass stop at its edge
@@ -192,7 +192,7 @@ function hotel(b: BuildingTools) {
   lettering(b, W, 'FASHION', 2.9, 37.7, 0.11, 'pink', 0.1);
   lettering(b, W, 'HOTEL', 2.9, 35.7, 0.25, 'pink', 0.1);
   // court side (INFERRED): the same windows over the low wing roof
-  const S = fr([HU1, HV], [HU0, HV]), SF = face(S, 0, HTOP, 'brick');
+  const S = fr([HU1, HV], [HU0, HV]), SF = face(S, 0, HTOP, 'sandstone');
   for (let j = 0; j < HROWS; j++) for (const t of range(1.5, 31.5, 3.95)) {
     const y = HG + j * SH + 0.4;
     if (y > 28.4 || t > 18.6) opening(b, SF, t, y, 1.37, 2.25, {depth: 0.2, edge: 0, sill: false});
