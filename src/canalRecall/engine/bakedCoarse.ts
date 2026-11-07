@@ -294,9 +294,13 @@ export class BakedCoarse {
     if (!scene || !material || !data.indices.length) return;
     const n = data.layers.length, [ox, oy] = bakedCellOrigin(data.key);
     const keepPositions = this.at ? cellDistanceM(data.key, this.at[0], this.at[1]) <= this.liftRadius() : false;
+    // A cell to be lifted goes back to Float32 metres: a base rounded to the 0.1 m grid leaves the shell's window rows
+    // a few centimetres off the lifted detail chunk's, which flickers through the swap's complementary dissolve.
+    let positions = data.positions, unit = data.positionUnit ?? 1;
+    if (keepPositions && unit !== 1) { const f = new Float32Array(positions.length); for (let k = 0; k < f.length; k++) f[k] = positions[k] * unit; positions = f; unit = 1; }
     const g = new THREE.BufferGeometry();
     const release = (a: any) => { a.onUpload(function (this: any) { this.array = null; }); return a; };
-    const position = new THREE.BufferAttribute(data.positions, 3);
+    const position = new THREE.BufferAttribute(positions, 3);
     g.setAttribute('position', keepPositions ? position : release(position));
     g.setAttribute('uv', release(new THREE.BufferAttribute(data.uvs, 2)));
     g.setAttribute('layer', release(new THREE.BufferAttribute(data.layers, 1, false)));
@@ -306,7 +310,6 @@ export class BakedCoarse {
     if (this.host.swapSlots()) g.setAttribute('swapSlot', new THREE.BufferAttribute(new Uint8Array(n), 1, false));
     g.setIndex(release(new THREE.BufferAttribute(data.indices, 1)));
     g.computeBoundingSphere();
-    const unit = data.positionUnit ?? 1;
     if (keepPositions && g.boundingSphere) g.boundingSphere.radius += 5 / unit; // lifts are a few metres either way
     const old = this.residents.get(data.key);
     const clone = relift && old ? null : this.host.fadeMaterial(0);
@@ -320,10 +323,10 @@ export class BakedCoarse {
     mesh.userData.bakedCoarse = data.key;
     const ranges = rangeMap(data.ranges);
     const r: Resident = { key: data.key, mesh, ranges, triangles: data.triangles, gzBytes: data.gzBytes, drawn: !clone,
-      bytes: data.positions.byteLength + data.uvs.byteLength + data.layers.byteLength + data.tints.byteLength + data.accents.byteLength + data.indices.byteLength + n * 2,
+      bytes: positions.byteLength + data.uvs.byteLength + data.layers.byteLength + data.tints.byteLength + data.accents.byteLength + data.indices.byteLength + n * 2,
       lifted: keepPositions, liftable: keepPositions,
       ...(clone ? { fade: { start: performance.now(), clone, source: material } } : {}),
-      ...(keepPositions ? { lift: { positions: data.positions, unit, pending: [...ranges.keys()], applied: new Map<string, number>() } } : {}) };
+      ...(keepPositions ? { lift: { positions, unit, pending: [...ranges.keys()], applied: new Map<string, number>() } } : {}) };
     if (old) this.drop(data.key);
     this.host.attach(r);
     scene.add(mesh);
