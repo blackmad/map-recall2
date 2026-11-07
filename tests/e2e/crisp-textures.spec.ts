@@ -1,7 +1,7 @@
 import { test, expect, type Page } from '@playwright/test';
 import { mkdirSync, writeFileSync, existsSync, readFileSync } from 'node:fs';
 import sharp from 'sharp';
-import { openRoute } from './helpers';
+import { openRoute, settleWorld } from './helpers';
 import { frameSharpness, type Rect } from '../../src/canalRecall/look/sharpness';
 import { CRISP_SPOTS } from '../../scripts/look/crispSpots';
 
@@ -43,25 +43,7 @@ if (/^\d+x\d+$/.test(process.env.CRISP_VIEWPORT ?? '')) { const [width, height] 
 
 let DEFAULT_VIEWPORT: { width: number; height: number } | null = null;
 
-async function settle(page: Page, where: string): Promise<void> {
-  let previous = '', stable = 0;
-  const start = Date.now();
-  while (Date.now() - start < 90_000) {
-    const now = await page.evaluate(() => {
-      const vm = (window as any).canalRecallGame.vectorMap, g = vm._ownGround, s = vm._completeCity?.status?.(), t = vm._threeBuildings?.stats?.();
-      const fading = g ? [...(g.resident?.values?.() ?? [])].filter((r: any) => r.fade).length : 0;
-      vm.host?.triggerRepaint?.();
-      return { ground: g ? !!g.ready && (g.loadingCells ?? 0) === 0 && fading === 0 : true, inFlight: s?.inFlight ?? 0, queued: s?.queued ?? 0, styling: !!s?.styling, chunks: t?.chunks, vertices: t?.vertices, pending: vm._threeBuildings?.pending?.length ?? 0 };
-    });
-    const key = JSON.stringify(now);
-    const ok = now.ground && !now.inFlight && !now.queued && !now.styling && !now.pending;
-    stable = ok && key === previous ? stable + 1 : 0;
-    previous = key;
-    if (stable >= 2) return;
-    await page.waitForTimeout(1000);
-  }
-  console.warn(`${where}: not settled after 90 s: ${previous}`);
-}
+async function settle(page: Page, where: string): Promise<void> { await settleWorld(page, where); }
 
 /** GPU ms of forced frames (EXT_disjoint_timer_query_webgl2 around the host's render), or wall ms with a finish. */
 async function frameMs(page: Page, frames = 24): Promise<{ gpuMs: number | null; wallMs: number }> {
