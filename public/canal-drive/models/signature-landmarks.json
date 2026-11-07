@@ -11077,7 +11077,7 @@
       "bounds": {
         "min": [
           -13.674473762512207,
-          -0.0000015258789289873675,
+          -1.5258789289873675e-6,
           -57.618064880371094
         ],
         "max": [
@@ -28744,7 +28744,7 @@
       "bounds": {
         "min": [
           -46.45899963378906,
-          -0.0000015258789289873675,
+          -1.5258789289873675e-6,
           -94.0999984741211
         ],
         "max": [
@@ -33638,7 +33638,7 @@
       "bounds": {
         "min": [
           -63.781795501708984,
-          -0.000003051757857974735,
+          -3.051757857974735e-6,
           -32.63179397583008
         ],
         "max": [
@@ -56726,7 +56726,7 @@
       "bounds": {
         "min": [
           -2.6284806728363037,
-          -0.000032692314562154934,
+          -3.2692314562154934e-5,
           -2.3708391189575195
         ],
         "max": [
@@ -86532,6 +86532,471 @@
         "buildVersion": 2,
         "bytes": 165916,
         "triangles": 12171
+      }
+    },
+    "oude-turfmarkt-139": {
+      "id": "oude-turfmarkt-139",
+      "name": "Oude Turfmarkt 127-149: Allard Pierson (former Nederlandsche Bank), University front, St. Bernardus and five canal houses",
+      "modelUrl": "./models/oude-turfmarkt-139.glb",
+      "suppressOsmIds": [
+        "NL.IMBAG.Pand.0363100012168172"
+      ],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.89341787,
+          52.36856306
+        ],
+        "headingDegrees": 0,
+        "lengthMetres": 117.5,
+        "widthMetres": 100.1
+      },
+      "surveyed": {
+        "anchor": [
+          4.89341787,
+          52.36856306
+        ],
+        "northOffsetDegrees": 0,
+        "source": "Vertex average of the BAG 0363100012168172 ring (RD, PDOK BAG WFS, CC0) in native east/south metres above the 3DBAG ground 0.392 m NAP (scripts/landmarks/oude-turfmarkt-139-footprints.json, written by sarphati-plaza-prepare.ts --id=oude-turfmarkt-139 --pand=0363100012168172). Rear wings and courtyard from the 3DBAG LoD2.2 roof pieces (CC BY 4.0), capped under the measured fronts. Oude Turfmarkt fronts measured on rectified Gemeente Amsterdam panorama crops (CC BY 4.0, 50 px/m): TMX7316010203-000354_pano_0001_000246/000244 (2017-07-06), TMX7316010203-001975_pano_0000_001309/001319/001324 (2021-01-22), TMX7316010203-001174_pano_0000_002533..002554 (2019-05-10), TMX7316010203-002543_pano_0000_000123 (2022-04-25); per wall in scripts/landmarks/oude-turfmarkt-139-inventory.json."
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 0,
+      "heightMetres": 21.8,
+      "bagYear": 1643,
+      "materialOverrides": {
+        "stone": "#a39886",
+        "brick": "#8a5f4d",
+        "red": "#8e5446",
+        "greyBrick": "#66544b",
+        "ochre": "#6f5a4c",
+        "pink": "#7a4a3f",
+        "white": "#e3dfd2",
+        "gold": "#e6e2d6",
+        "concrete": "#e2ddd0",
+        "slate": "#5b6064",
+        "copper": "#3f8f8f",
+        "green": "#4f5e4f",
+        "frame": "#e2ded0",
+        "bronze": "#3a2f2a",
+        "glass": "#56707e",
+        "dark": "#2c2e31"
+      },
+      "attribution": {
+        "title": "Oude Turfmarkt 127-149, Amsterdam: the former De Nederlandsche Bank (Allard Pierson), the University front, the former Gesticht St. Bernardus and five canal houses",
+        "author": "Map Recall",
+        "sourceUrl": "https://monumentenregister.cultureelerfgoed.nl/monumenten/5780",
+        "licence": "CC BY 4.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "modifications": "Original texture-free flat-colour geometry on the BAG footprint (CC0) with 3DBAG LoD2.2 heights (CC BY 4.0): W.A. Froger's 1865-69 bank front with its pavilions, wings and pedimented centre; three 1642 Vingboons houses under one cornice; P.F. Laarman's 1882-84 banded St. Bernardus front with the 1732 gasthuis gate; the warehouse bell gable, two neck gables, the 1884 stepped gable and the corniced house of rijksmonumenten 5783-5787; measured from Gemeente Amsterdam panoramas (CC BY 4.0)."
+      },
+      "buildingCategory": "landmark",
+      "bounds": {
+        "min": [
+          -37.20706558227539,
+          -4.7683716530855236e-8,
+          -36.459075927734375
+        ],
+        "max": [
+          63.827999114990234,
+          22.19300079345703,
+          81.87752532958984
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.89341787,
+          52.36856306
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 90,
+        "facadeBearingDegrees": 0,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 118.33660125732422,
+        "heightMetres": 22.193000841140748,
+        "depthMetres": 101.03506469726562,
+        "depthCoverage": 1.0093413056669893
+      },
+      "triangles": 27859,
+      "bytes": 388660,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
+      "lod1": {
+        "sourceHash": "1074d49be4b71118",
+        "buildVersion": 2,
+        "bytes": 122780,
+        "triangles": 6973
+      }
+    },
+    "weteringschans-corner-office": {
+      "id": "weteringschans-corner-office",
+      "name": "Het Noortse Bosch (AFM office), Vijzelgracht 46-58",
+      "modelUrl": "./models/weteringschans-corner-office.glb",
+      "suppressOsmIds": [
+        "NL.IMBAG.Pand.0363100012184747"
+      ],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.88991434,
+          52.36044365
+        ],
+        "headingDegrees": 0,
+        "lengthMetres": 117.5,
+        "widthMetres": 70.5
+      },
+      "surveyed": {
+        "anchor": [
+          4.88991434,
+          52.36044365
+        ],
+        "northOffsetDegrees": 0,
+        "source": "Vertex average of the BAG 0363100012184747 ring (RD, PDOK BAG WFS, CC0) in native east/south metres above the 3DBAG ground 0.773 m NAP (scripts/landmarks/weteringschans-corner-office-footprints.json, written by sarphati-plaza-prepare.ts --id=weteringschans-corner-office --pand=0363100012184747). Massing from the 3DBAG LoD2.2 roof pieces (CC BY 4.0); every exposed wall band carries the storey grid measured on rectified Gemeente Amsterdam panorama crops (CC BY 4.0, 50 px/m): TMX7316010203-001681_pano_0000_004518 (2020-04-29), TMX7316010203-000355_pano_0000_000290..000308 (2017-07-07), TMX7316010203-002857_pano_0004_000022 (2022-12-14), TMX7316010203-001552_pano_0001_000054 (2020-01-10); per wall in scripts/landmarks/weteringschans-corner-office-inventory.json."
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 0,
+      "heightMetres": 26.8,
+      "bagYear": 1981,
+      "materialOverrides": {
+        "brick": "#574c48",
+        "white": "#e6eaea",
+        "slate": "#56585b",
+        "concrete": "#92908a",
+        "copper": "#6f8c86",
+        "glass": "#7d8a8e",
+        "dark": "#2a2c2b",
+        "frame": "#e6eaea"
+      },
+      "attribution": {
+        "title": "Het Noortse Bosch, Vijzelgracht 46-58, Amsterdam (Cornelis Wegener Sleeswijk, 1981)",
+        "author": "Map Recall",
+        "sourceUrl": "https://nl.wikipedia.org/wiki/Lijst_van_gebouwen_aan_de_Vijzelgracht",
+        "licence": "CC BY 4.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "modifications": "Original texture-free flat-colour geometry on the BAG footprint (CC0) with 3DBAG LoD2.2 heights (CC BY 4.0): the stepped dark-brick office block with its white-framed window grid and grey lintels, the glazed ground storey under the concrete edge band, the glazed hall on the Lijnbaansgracht and the copper roof caps; measured from Gemeente Amsterdam panoramas (CC BY 4.0)."
+      },
+      "buildingCategory": "landmark",
+      "bounds": {
+        "min": [
+          -55.856300354003906,
+          0,
+          -33.16862487792969
+        ],
+        "max": [
+          62.25111389160156,
+          27.621000289916992,
+          38.177024841308594
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.88991434,
+          52.36044365
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 90,
+        "facadeBearingDegrees": 0,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 118.10741424560547,
+        "heightMetres": 27.621000289916992,
+        "depthMetres": 71.34564971923828,
+        "depthCoverage": 1.011995031478557
+      },
+      "triangles": 27914,
+      "bytes": 369120,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
+      "lod1": {
+        "sourceHash": "f610c7dd12f32de1",
+        "buildVersion": 2,
+        "bytes": 145396,
+        "triangles": 9532
+      }
+    },
+    "barlaeus-gymnasium": {
+      "id": "barlaeus-gymnasium",
+      "name": "Barlaeus Gymnasium (1885), Weteringschans 29",
+      "modelUrl": "./models/barlaeus-gymnasium.glb",
+      "suppressOsmIds": [
+        "NL.IMBAG.Pand.0363100012169565"
+      ],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.88443943,
+          52.36246639
+        ],
+        "headingDegrees": 0,
+        "lengthMetres": 50.1,
+        "widthMetres": 45.3
+      },
+      "surveyed": {
+        "anchor": [
+          4.88443943,
+          52.36246639
+        ],
+        "northOffsetDegrees": 0,
+        "source": "Vertex average of the BAG 0363100012169565 ring (RD, PDOK BAG WFS, CC0) in native east/south metres above the 3DBAG ground 0.385 m NAP (scripts/landmarks/barlaeus-gymnasium-footprints.json, written by sarphati-plaza-prepare.ts --id=barlaeus-gymnasium --pand=0363100012169565). Massing from the 3DBAG LoD2.2 roof pieces (CC BY 4.0), capped under the measured fronts. Weteringschans and Lijnbaansgracht fronts measured on rectified Gemeente Amsterdam panorama crops (CC BY 4.0, 50 px/m): recording_2025-07-14_05-25-22_02118/02122 (2025-07-14), TMX7316010203-002306_pano_0000_000427 (2021-09-09), TMX7316010203-002985_pano_0003_000409 (2023-02-27), TMX7316010203-000355_pano_0000_000247..000251 (2017-07-07); per wall in scripts/landmarks/barlaeus-gymnasium-inventory.json."
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 0,
+      "heightMetres": 21.6,
+      "bagYear": 1885,
+      "materialOverrides": {
+        "stone": "#7a7466",
+        "brick": "#73605b",
+        "greyBrick": "#7b6a5c",
+        "white": "#e4e2da",
+        "slate": "#4f5558",
+        "concrete": "#6a6a66",
+        "gold": "#c9b77a",
+        "bronze": "#3a2f2a",
+        "glass": "#5c6f7c",
+        "dark": "#4a2a26",
+        "frame": "#e4e2da"
+      },
+      "attribution": {
+        "title": "Barlaeus Gymnasium, Weteringschans 29, Amsterdam (1885)",
+        "author": "Map Recall",
+        "sourceUrl": "https://nl.wikipedia.org/wiki/Barlaeus_Gymnasium",
+        "licence": "CC BY 4.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "modifications": "Original texture-free flat-colour geometry on the BAG footprint (CC0) with 3DBAG LoD2.2 heights (CC BY 4.0): the 1885 sandstone Weteringschans front with its two pedimented pavilions, brick-and-stone wings and the entrance risaliet with the GYMNASIUM attic and sculpture group, and the banded brick Lijnbaansgracht side; measured from Gemeente Amsterdam panoramas (CC BY 4.0)."
+      },
+      "buildingCategory": "landmark",
+      "bounds": {
+        "min": [
+          -26.158462524414062,
+          -1.1920929132713809e-8,
+          -25.01187515258789
+        ],
+        "max": [
+          24.93000030517578,
+          25.19700050354004,
+          21.672924041748047
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.88443943,
+          52.36246639
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 90,
+        "facadeBearingDegrees": 0,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 51.088462829589844,
+        "heightMetres": 25.197000515460967,
+        "depthMetres": 46.68479919433594,
+        "depthCoverage": 1.0305695186387624
+      },
+      "triangles": 11743,
+      "bytes": 165408,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
+      "lod1": {
+        "sourceHash": "d7d51ae641ae54b1",
+        "buildVersion": 2,
+        "bytes": 55708,
+        "triangles": 3017
+      }
+    },
+    "brand-bij-ca": {
+      "id": "brand-bij-ca",
+      "name": "Damrak 70-79 and the Beurspassage (former C&A)",
+      "modelUrl": "./models/brand-bij-ca.glb",
+      "suppressOsmIds": [
+        "NL.IMBAG.Pand.0363100012165746"
+      ],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.89416472,
+          52.37452558
+        ],
+        "headingDegrees": 0,
+        "lengthMetres": 82.2,
+        "widthMetres": 65.4
+      },
+      "surveyed": {
+        "anchor": [
+          4.89416472,
+          52.37452558
+        ],
+        "northOffsetDegrees": 0,
+        "source": "Vertex average of the BAG 0363100012165746 ring (RD, PDOK BAG WFS, CC0) in native east/south metres above the 3DBAG ground 1.268 m NAP (scripts/landmarks/brand-bij-ca-footprints.json, written by sarphati-plaza-prepare.ts --id=brand-bij-ca --pand=0363100012165746). Massing from the 3DBAG LoD2.2 roof pieces (CC BY 4.0). Damrak and Nieuwendijk fronts measured on rectified Gemeente Amsterdam panorama crops (CC BY 4.0): TMX7316010203-001658_pano_0000_001927 (2020-04-21), recording_2025-06-16_06-42-40_01855/01858 (2025-06-16), b_20250108_1349_Track19_Sphere_00303 (2025-01-08), TMX7316010203-000716_pano_0000_001536..001540 (2018-05-14); per wall in scripts/landmarks/brand-bij-ca-inventory.json."
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 0,
+      "heightMetres": 36.8,
+      "bagYear": 1893,
+      "materialOverrides": {
+        "brick": "#7e4a3e",
+        "gold": "#e8e6df",
+        "white": "#eeeeea",
+        "slate": "#4f5558",
+        "concrete": "#6a6a66",
+        "ochre": "#8a7a4e",
+        "bronze": "#4a4236",
+        "glass": "#5d6e78",
+        "dark": "#2a2c2b",
+        "frame": "#eeeeea"
+      },
+      "attribution": {
+        "title": "Damrak 70-79 and the Beurspassage, Amsterdam (fronts 2016, Robert A.M. Stern Architects with Rijnboutt)",
+        "author": "Map Recall",
+        "sourceUrl": "https://nl.wikipedia.org/wiki/Beurspassage",
+        "licence": "CC BY 4.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "modifications": "Original texture-free flat-colour geometry on the BAG footprint (CC0) with 3DBAG LoD2.2 heights (CC BY 4.0): the red-brick Damrak front with its white speklagen, double-height shopfronts and paired white stone oriels, the Beurspassage arch and corner tower, and the banded Nieuwendijk bays; measured from Gemeente Amsterdam panoramas (CC BY 4.0)."
+      },
+      "buildingCategory": "landmark",
+      "bounds": {
+        "min": [
+          -33.70000076293945,
+          0,
+          -40.08700180053711
+        ],
+        "max": [
+          46.30424880981445,
+          38.875999450683594,
+          25.358999252319336
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.89416472,
+          52.37452558
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 90,
+        "facadeBearingDegrees": 0,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 80.0042495727539,
+        "heightMetres": 38.875999450683594,
+        "depthMetres": 65.44600105285645,
+        "depthCoverage": 1.0007033800130953
+      },
+      "triangles": 13047,
+      "bytes": 189480,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
+      "lod1": {
+        "sourceHash": "56a468177685e8e9",
+        "buildVersion": 2,
+        "bytes": 76316,
+        "triangles": 4738
+      }
+    },
+    "doubletree-centraal": {
+      "id": "doubletree-centraal",
+      "name": "DoubleTree by Hilton Amsterdam Centraal Station",
+      "modelUrl": "./models/doubletree-centraal.glb",
+      "suppressOsmIds": [
+        "NL.IMBAG.Pand.0363100012237484",
+        "w1486076092",
+        "w1486076093",
+        "w1486076095",
+        "w1486076096",
+        "w1486076097",
+        "w1486076098",
+        "w1486076099",
+        "w1486076100",
+        "w1486076101",
+        "w1486076103",
+        "w1486076104",
+        "w1486076105",
+        "w1486076106",
+        "w1486076107",
+        "w1486076108",
+        "w1512730512",
+        "w1512730513",
+        "w1512730514",
+        "w1512730515",
+        "w1512730516",
+        "w1512730517"
+      ],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.90510367,
+          52.37666465
+        ],
+        "headingDegrees": 0,
+        "lengthMetres": 113,
+        "widthMetres": 88.3
+      },
+      "surveyed": {
+        "anchor": [
+          4.90510367,
+          52.37666465
+        ],
+        "northOffsetDegrees": 0,
+        "source": "Vertex average of the BAG 0363100012237484 ring (RD, PDOK BAG WFS, CC0) in native east/south metres above the 3DBAG ground 1.033 m NAP (scripts/landmarks/doubletree-centraal-footprints.json, written by sarphati-plaza-prepare.ts --id=doubletree-centraal --pand=0363100012237484). Massing from the 3DBAG LoD2.2 roof pieces (CC BY 4.0); every exposed wall band carries the storey grid read on Gemeente Amsterdam panorama crops (CC BY 4.0) listed per wall in scripts/landmarks/doubletree-centraal-inventory.json."
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 0,
+      "heightMetres": 43.7,
+      "bagYear": 2011,
+      "materialOverrides": {
+        "greyBrick": "#4b4a48",
+        "gold": "#e8e9e6",
+        "white": "#eeeeea",
+        "slate": "#7a7d7e",
+        "concrete": "#8c8b86",
+        "bronze": "#3a3a38",
+        "glass": "#5f6c72",
+        "dark": "#2a2c2b",
+        "frame": "#eeeeea"
+      },
+      "attribution": {
+        "title": "DoubleTree by Hilton Amsterdam Centraal Station, Oosterdoksstraat 4, Amsterdam (2011)",
+        "author": "Map Recall",
+        "sourceUrl": "https://bag.basisregistraties.overheid.nl/bag/id/pand/0363100012237484",
+        "licence": "CC BY 4.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "modifications": "Original texture-free flat-colour geometry on the BAG footprint (CC0) with 3DBAG LoD2.2 heights (CC BY 4.0): the stepped dark grey brick hotel block with ribbon windows under grey bands, the two-storey glazed ground floor between brick piers with the terrace canopy on the Oosterdok, and the white panel cladding of the entrance volume; read from Gemeente Amsterdam panoramas (CC BY 4.0)."
+      },
+      "buildingCategory": "landmark",
+      "bounds": {
+        "min": [
+          -64.68141174316406,
+          0,
+          -59.11188507080078
+        ],
+        "max": [
+          50.79877853393555,
+          43.88999938964844,
+          31.57111930847168
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.90510367,
+          52.37666465
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 90,
+        "facadeBearingDegrees": 0,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 115.48019027709961,
+        "heightMetres": 43.88999938964844,
+        "depthMetres": 90.68300437927246,
+        "depthCoverage": 1.0269875920642408
+      },
+      "triangles": 35317,
+      "bytes": 486588,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
+      "lod1": {
+        "sourceHash": "82b1b6a4c52e223e",
+        "buildVersion": 2,
+        "bytes": 192964,
+        "triangles": 14326
       }
     }
   }

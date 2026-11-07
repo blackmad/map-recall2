@@ -1,0 +1,31 @@
+{
+ "id": "weteringschans-corner-office",
+ "countedBy": "lane #235 (opus) from the rectified panorama crops of landmark-brief.ts (artifacts/landmark-briefs/weteringschans-corner-office/); ribbon convention; span pins the counted front (a 3DBAG wall band) so set-back storeys behind it do not count. Not a blind count; the integrator may re-count.",
+ "facades": [
+  {
+   "name": "Vijzelgracht: the tall block up to the copper stair strip",
+   "bearing": 102,
+   "photo": "artifacts/landmark-briefs/weteringschans-corner-office/w04-102.jpg",
+   "span": [
+    -9.9,
+    15.26
+   ],
+   "frontDepth": 58.53,
+   "depthBand": 0.8,
+   "heightM": [
+    5,
+    21.5
+   ],
+   "rows": [
+    12,
+    12,
+    12,
+    12,
+    12
+   ],
+   "columns": 12,
+   "symmetric": false,
+   "note": "Panorama TMX7316010203-001681_pano_0000_004518 (2020-04-29). Twelve axes of narrow white-framed windows with grey lintels, five storeys over the glazed ground storey and its concrete band; the ground storey is outside heightM."
+  }
+ ]
+}

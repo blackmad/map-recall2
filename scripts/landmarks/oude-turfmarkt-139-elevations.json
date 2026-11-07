@@ -1,0 +1,144 @@
+{
+ "id": "oude-turfmarkt-139",
+ "countedBy": "lane #235 (opus) from the rectified panorama crops of landmark-brief.ts (artifacts/landmark-briefs/oude-turfmarkt-139/); ribbon convention; a door counts; alongM is metres from the front's viewer-left (north-west) end; heightM bands leave out the cellar lights and attic lights where noted. Not a blind count; the integrator may re-count.",
+ "facades": [
+  {
+   "name": "DNB north wing (Froger 1869)",
+   "bearing": 248,
+   "photo": "artifacts/landmark-briefs/oude-turfmarkt-139/w14-248.jpg",
+   "depthBand": 0.8,
+   "heightM": [
+    3.5,
+    13.2
+   ],
+   "rows": [
+    4,
+    4
+   ],
+   "columns": 4,
+   "symmetric": true,
+   "note": "Panorama TMX7316010203-001174_pano_0000_002533 (2019) and -001975_pano_0000_001320 (2021). Four axes of tall windows on two storeys; the paired barred cellar lights and the frieze attic lights are outside the band. alongM crops the 0.2 m at the risaliet end where the centre return stands forward inside the depth band.",
+   "span": [
+    -34.28,
+    -22.39
+   ],
+   "frontDepth": 21.84,
+   "alongM": [
+    0.0,
+    11.4
+   ]
+  },
+  {
+   "name": "DNB centre risaliet",
+   "bearing": 243,
+   "photo": "artifacts/landmark-briefs/oude-turfmarkt-139/w12-243.jpg",
+   "depthBand": 0.8,
+   "heightM": [
+    3.5,
+    13.2
+   ],
+   "rows": [
+    3,
+    3
+   ],
+   "columns": 3,
+   "symmetric": true,
+   "note": "Panorama TMX7316010203-001975_pano_0000_001309 (2021). Three axes between the fluted pilasters, balustrades under the upper windows, pediment with the relief group above.",
+   "span": [
+    -23.86,
+    -11.9
+   ],
+   "frontDepth": 20.82
+  },
+  {
+   "name": "DNB south wing",
+   "bearing": 238,
+   "photo": "artifacts/landmark-briefs/oude-turfmarkt-139/w13-238.jpg",
+   "depthBand": 0.8,
+   "heightM": [
+    3.5,
+    13.2
+   ],
+   "rows": [
+    4,
+    4
+   ],
+   "columns": 4,
+   "symmetric": true,
+   "note": "Panorama TMX7316010203-001174_pano_0000_002538 (2019). Same order as the north wing.",
+   "span": [
+    -13.26,
+    -1.33
+   ],
+   "frontDepth": 18.65
+  },
+  {
+   "name": "DNB south pavilion",
+   "bearing": 238,
+   "photo": "artifacts/landmark-briefs/oude-turfmarkt-139/w19-238.jpg",
+   "depthBand": 0.8,
+   "heightM": [
+    1.2,
+    13.2
+   ],
+   "rows": [
+    2,
+    1,
+    1
+   ],
+   "columns": 3,
+   "symmetric": true,
+   "note": "Panorama TMX7316010203-001975_pano_0000_001324 (2021). Painted lower storeys: two windows over one; the upper aedicule window between blind panels.",
+   "span": [
+    -0.62,
+    6.76
+   ],
+   "frontDepth": 19.12
+  },
+  {
+   "name": "UvA: three Vingboons houses under one cornice",
+   "bearing": 235,
+   "photo": "artifacts/landmark-briefs/oude-turfmarkt-139/w05-235.jpg",
+   "depthBand": 0.8,
+   "heightM": [
+    2.2,
+    15
+   ],
+   "rows": [
+    9,
+    9,
+    9,
+    9
+   ],
+   "columns": 9,
+   "symmetric": false,
+   "note": "Panorama TMX7316010203-000354_pano_0001_000246 (2017) and -001975_pano_0000_001326 (2021). Nine axes, four window storeys over the white plinth with paired arched cellar lights.",
+   "span": [
+    6.5,
+    27.88
+   ],
+   "frontDepth": 19.15
+  },
+  {
+   "name": "St. Bernardus (Laarman 1884), main front",
+   "bearing": 233,
+   "photo": "artifacts/landmark-briefs/oude-turfmarkt-139/w07-233.jpg",
+   "depthBand": 0.8,
+   "heightM": [
+    5.9,
+    8.6
+   ],
+   "rows": [
+    10
+   ],
+   "columns": 10,
+   "symmetric": false,
+   "note": "Panorama TMX7316010203-002543_pano_0000_000123 (2022) and -000354_pano_0001_000240 (2017). Ten axes on the first floor; the ground floor has the door and the carriage gate in the run, the top floor paired round-headed lights under blind arches.",
+   "span": [
+    30.72,
+    54.83
+   ],
+   "frontDepth": 20.32
+  }
+ ]
+}

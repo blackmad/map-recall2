@@ -1,0 +1,25 @@
+{
+ "id": "barlaeus-gymnasium",
+ "pand": "0363100012169565",
+ "identity": {
+  "addresses": "Weteringschans 29 (BAG verblijfsobject, onderwijsfunctie)",
+  "bouwjaar": 1885,
+  "what": "the 1885 building of the Stedelijk Gymnasium, now the Barlaeus Gymnasium: a sandstone Weteringschans front of two pedimented pavilions, two wings and the entrance risaliet with the ANNO | GYMNASIUM | 1885 attic and a sculpture group, and a banded brick back on the Lijnbaansgracht",
+  "notThis": "the 1866 building north-west of it (pand 0363100012169564) is the installed ordinary large recipe 'barlaeus'; this model covers none of it",
+  "sources": [
+   "https://api.data.amsterdam.nl/v1/bag/panden/0363100012169565",
+   "https://nl.wikipedia.org/wiki/Barlaeus_Gymnasium"
+  ]
+ },
+ "frame": "native metres of barlaeus-gymnasium-footprints.json (x east, z south, y up from the 0.39 m NAP street); chords PAV_W (-25.174,-10.001)->(-17.154,-3.578), WING_W (-16.215,-4.749)->(-8.254,1.628), CENTRE (-9.192,2.799)->(-3.105,7.675), WING_E (-2.167,6.504)->(5.794,12.88), PAV_E (4.856,14.051)->(12.875,20.479), five Lijnbaansgracht chords in the builder",
+ "partyWallBearings": [
+  309,
+  128
+ ],
+ "partyWallEvidence": "North-west (309): the whole side adjoins the 1866 school building, pand 0363100012169564 (22.6 m). South-east (128): adjoins pand 0363100012174383 (22.0 m); neither side has a panorama.",
+ "fronts": {
+  "weteringschans": "rusticated ground to 4.9 (windows 1.3-4.3), first floor 6.4-9.4, storey band 9.9, second floor 11.5-14.4, frieze 14.7-15.6, dentil course and cornice to 17.6; pavilions: three axes, balustrades, half columns, corner reliefs, pediment to 21.6; risaliet: portico and arched door, paired windows, attic to 19.6 with the lettering, sculpture group to ~23",
+  "lijnbaansgracht": "brick with stone bands every 0.9 m between the windows, four window rows at 1.2, 5.6, 10.0 and 14.0, coping 17.6"
+ },
+ "heightsFrom": "rectified panorama crops (50 px/m) checked against the 3DBAG LoD2.2 pieces (pediment apex 21.6 m)"
+}

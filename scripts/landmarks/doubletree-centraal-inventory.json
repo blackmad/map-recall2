@@ -1,0 +1,880 @@
+{
+ "schemaVersion": 1,
+ "id": "doubletree-centraal",
+ "pand": "0363100012237484",
+ "brief": "scripts/landmarks/doubletree-centraal-brief.md",
+ "signature": [
+  "ribbon-louvres",
+  "terrace-glazing",
+  "louvre-canopy",
+  "white-entrance-drum"
+ ],
+ "walls": [
+  {
+   "tag": "w01-21",
+   "bearing": 21,
+   "lengthM": 80.9,
+   "centre": [
+    4.9047108,
+    52.3770623
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": false,
+   "items": []
+  },
+  {
+   "tag": "w02-21",
+   "bearing": 21,
+   "lengthM": 23.6,
+   "centre": [
+    4.905563,
+    52.3767644
+   ],
+   "evidence": "photo",
+   "panoId": "b_20241211_1256_Track06_Sphere_00007",
+   "capturedAt": "2024-12-11",
+   "checked": true,
+   "items": [
+    {
+     "id": "white-entrance-drum",
+     "kind": "other",
+     "where": "curved white panel volume over the DoubleTree entrance, ribbon windows in it",
+     "approxSizeM": [
+      24,
+      40
+     ],
+     "plan": "simplified",
+     "seenIn": "b_20241211_1256_Track06_Sphere_00007",
+     "how": "white panel cladding on the 3DBAG facets of the drum with the ribbon-window grid; the curve follows the polygon facets"
+    },
+    {
+     "id": "entrance-glazing",
+     "kind": "window-shape",
+     "where": "two-storey curtain wall of the hotel entrance with the revolving doors",
+     "approxSizeM": [
+      18,
+      7
+     ],
+     "plan": "modelled",
+     "seenIn": "b_20241211_1256_Track06_Sphere_00007"
+    },
+    {
+     "id": "doubletree-lettering",
+     "kind": "lettering",
+     "where": "DoubleTree logo etched on the entrance glazing",
+     "approxSizeM": [
+      3,
+      1.5
+     ],
+     "plan": "skipped",
+     "seenIn": "b_20241211_1256_Track06_Sphere_00007",
+     "skip": {
+      "reason": "too-small",
+      "note": "etched on the glass, under 0.5 m stroke height at ride distance"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "w03-72",
+   "bearing": 72,
+   "lengthM": 20.4,
+   "centre": [
+    4.905774,
+    52.3766409
+   ],
+   "evidence": "photo",
+   "panoId": "b_20241211_1256_Track05_Sphere_00035",
+   "capturedAt": "2024-12-11",
+   "checked": true,
+   "items": [
+    {
+     "id": "entrance-tie-canopy",
+     "kind": "canopy",
+     "where": "glass canopy on steel ties over the entrance curtain wall",
+     "approxSizeM": [
+      20,
+      2
+     ],
+     "plan": "simplified",
+     "seenIn": "b_20241211_1256_Track05_Sphere_00035",
+     "how": "a thin glass slab 1.8 m deep at 10.3 m over the glazed ground storey of the east fronts; the steel ties are left out"
+    }
+   ]
+  },
+  {
+   "tag": "w04-72",
+   "bearing": 72,
+   "lengthM": 19.5,
+   "centre": [
+    4.9053146,
+    52.3768536
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001051_pano_0002_000540",
+   "capturedAt": "2019-01-14",
+   "checked": true,
+   "items": [
+    {
+     "id": "oosterdoksstraat-overhang",
+     "kind": "other",
+     "where": "hotel storeys cantilevered over the street to the station, curved soffit",
+     "approxSizeM": [
+      20,
+      8
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-001051_pano_0002_000540",
+     "how": "the 3DBAG roof pieces are drawn as prisms down to the ground; the void under the cantilever is not cut"
+    }
+   ]
+  },
+  {
+   "tag": "w05-201",
+   "bearing": 201,
+   "lengthM": 12.3,
+   "centre": [
+    4.9056392,
+    52.3765973
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002532_pano_0000_001667",
+   "capturedAt": "2022-04-21",
+   "checked": true,
+   "items": [
+    {
+     "id": "grey-brick-wall",
+     "kind": "window-shape",
+     "where": "dark grey brick wall with a lighter brick pattern, few openings",
+     "approxSizeM": [
+      12,
+      20
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-002532_pano_0000_001667",
+     "how": "dark grey brick wall with the hotel ribbon grid; the brick pattern is flat colour"
+    }
+   ]
+  },
+  {
+   "tag": "w06-72",
+   "bearing": 72,
+   "lengthM": 10.5,
+   "centre": [
+    4.9055299,
+    52.3764614
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002032_pano_0000_000475",
+   "capturedAt": "2021-03-08",
+   "checked": true,
+   "items": [
+    {
+     "id": "starbucks-corner-glazing",
+     "kind": "window-shape",
+     "where": "two-storey glazed corner between brick piers, white panel bay to its right",
+     "approxSizeM": [
+      10,
+      7
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002032_pano_0000_000475"
+    }
+   ]
+  },
+  {
+   "tag": "w07-251",
+   "bearing": 251,
+   "lengthM": 10.4,
+   "centre": [
+    4.9043552,
+    52.3768562
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002532_pano_0000_001646",
+   "capturedAt": "2022-04-21",
+   "checked": true,
+   "items": [
+    {
+     "id": "ribbon-louvres",
+     "kind": "window-shape",
+     "where": "hotel storeys: continuous ribbon windows with grey louvre bands, on every face",
+     "approxSizeM": [
+      60,
+      30
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002532_pano_0000_001646"
+    },
+    {
+     "id": "starbucks-sign",
+     "kind": "sign",
+     "where": "STARBUCKS COFFEE lettering over the corner glazing",
+     "approxSizeM": [
+      4,
+      0.4
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7316010203-002532_pano_0000_001646",
+     "skip": {
+      "reason": "too-small",
+      "note": "0.4 m letters"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "w08-210",
+   "bearing": 210,
+   "lengthM": 8.8,
+   "centre": [
+    4.9051271,
+    52.3765451
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002632_pano_0000_000362",
+   "capturedAt": "2022-06-27",
+   "checked": true,
+   "items": [
+    {
+     "id": "umbrellas-w08",
+     "kind": "other",
+     "where": "terrace umbrellas and furniture",
+     "approxSizeM": [
+      4,
+      3
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7316010203-002632_pano_0000_000362",
+     "skip": {
+      "reason": "temporary",
+      "note": "terrace furniture"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "w09-210",
+   "bearing": 210,
+   "lengthM": 7.5,
+   "centre": [
+    4.9044283,
+    52.3767807
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002632_pano_0000_000373",
+   "capturedAt": "2022-06-27",
+   "checked": true,
+   "items": [
+    {
+     "id": "umbrellas-w09",
+     "kind": "other",
+     "where": "terrace umbrellas and furniture",
+     "approxSizeM": [
+      4,
+      3
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7316010203-002632_pano_0000_000373",
+     "skip": {
+      "reason": "temporary",
+      "note": "terrace furniture"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "w10-201",
+   "bearing": 201,
+   "lengthM": 7.3,
+   "centre": [
+    4.9043004,
+    52.3770023
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-06-17_09-10-34_00877",
+   "capturedAt": "2025-06-17",
+   "checked": true,
+   "items": [
+    {
+     "id": "tree-columns",
+     "kind": "other",
+     "where": "branching steel tree columns under the cantilevered corner",
+     "approxSizeM": [
+      6,
+      7
+     ],
+     "plan": "simplified",
+     "seenIn": "recording_2025-06-17_09-10-34_00877",
+     "how": "the cantilevered corner piece is drawn as a prism down to the ground, the columns are inside it"
+    }
+   ]
+  },
+  {
+   "tag": "w11-72",
+   "bearing": 72,
+   "lengthM": 7.2,
+   "centre": [
+    4.9054903,
+    52.376537
+   ],
+   "evidence": "photo",
+   "panoId": "b_20241211_1256_Track05_Sphere_00027",
+   "capturedAt": "2024-12-11",
+   "checked": true,
+   "items": [
+    {
+     "id": "white-panels-east",
+     "kind": "other",
+     "where": "white panel cladding with ribbon glazing at the east entrance",
+     "approxSizeM": [
+      7,
+      10
+     ],
+     "plan": "modelled",
+     "seenIn": "b_20241211_1256_Track05_Sphere_00027"
+    }
+   ]
+  },
+  {
+   "tag": "w12-201",
+   "bearing": 201,
+   "lengthM": 7.1,
+   "centre": [
+    4.9057734,
+    52.3765652
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002032_pano_0000_000478",
+   "capturedAt": "2021-03-08",
+   "checked": true,
+   "items": [
+    {
+     "id": "white-panel-volume",
+     "kind": "other",
+     "where": "white panel volume rising beside the glazed tower face on the station side",
+     "approxSizeM": [
+      7,
+      20
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002032_pano_0000_000478"
+    }
+   ]
+  },
+  {
+   "tag": "w13-72",
+   "bearing": 72,
+   "lengthM": 6.4,
+   "centre": [
+    4.905456,
+    52.3765943
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002032_pano_0000_000472",
+   "capturedAt": "2021-03-08",
+   "checked": true,
+   "items": [
+    {
+     "id": "white-drum-panels",
+     "kind": "other",
+     "where": "white panel wall of the entrance drum",
+     "approxSizeM": [
+      6,
+      8
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002032_pano_0000_000472"
+    }
+   ]
+  },
+  {
+   "tag": "w14-252",
+   "bearing": 252,
+   "lengthM": 6,
+   "centre": [
+    4.9043071,
+    52.376929
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001669_pano_0000_000647",
+   "capturedAt": "2020-04-22",
+   "checked": true,
+   "items": [
+    {
+     "id": "west-glazing",
+     "kind": "window-shape",
+     "where": "tall glazed bay beside dark brick piers at the west end",
+     "approxSizeM": [
+      6,
+      12
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001669_pano_0000_000647"
+    }
+   ]
+  },
+  {
+   "tag": "w15-30",
+   "bearing": 30,
+   "lengthM": 6,
+   "centre": [
+    4.9043571,
+    52.3769303
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001669_pano_0000_000378",
+   "capturedAt": "2020-04-22",
+   "checked": true,
+   "items": [
+    {
+     "id": "white-panels-west",
+     "kind": "other",
+     "where": "white panel cladding on the west corner",
+     "approxSizeM": [
+      6,
+      10
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001669_pano_0000_000378"
+    }
+   ]
+  },
+  {
+   "tag": "w16-210",
+   "bearing": 210,
+   "lengthM": 5.6,
+   "centre": [
+    4.9050209,
+    52.3765816
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002632_pano_0000_000363",
+   "capturedAt": "2022-06-27",
+   "checked": true,
+   "items": [
+    {
+     "id": "terrace-glazing",
+     "kind": "window-shape",
+     "where": "two-storey glazing between dark brick piers on a 5.6 m bay along the Oosterdok terraces",
+     "approxSizeM": [
+      66,
+      7
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002632_pano_0000_000363"
+    },
+    {
+     "id": "louvre-canopy",
+     "kind": "canopy",
+     "where": "louvred glass canopy on steel tie rods at about 6.6 m over the terraces",
+     "approxSizeM": [
+      66,
+      2.2
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-002632_pano_0000_000363",
+     "how": "a grey slab 1.8 m deep at 10.3 m along the Oosterdok fronts (height from the w17-210 crop; depth read from the oblique views); the tie rods and the louvre slats are left out"
+    },
+    {
+     "id": "umbrellas-w16",
+     "kind": "other",
+     "where": "terrace umbrellas and furniture",
+     "approxSizeM": [
+      4,
+      3
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7316010203-002632_pano_0000_000363",
+     "skip": {
+      "reason": "temporary",
+      "note": "terrace furniture"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "w17-210",
+   "bearing": 210,
+   "lengthM": 5.6,
+   "centre": [
+    4.904679,
+    52.3766995
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002632_pano_0000_000368",
+   "capturedAt": "2022-06-27",
+   "checked": true,
+   "items": [
+    {
+     "id": "umbrellas-w17",
+     "kind": "other",
+     "where": "terrace umbrellas and furniture",
+     "approxSizeM": [
+      4,
+      3
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7316010203-002632_pano_0000_000368",
+     "skip": {
+      "reason": "temporary",
+      "note": "terrace furniture"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "w18-210",
+   "bearing": 210,
+   "lengthM": 5.6,
+   "centre": [
+    4.9048499,
+    52.3766406
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002632_pano_0000_000365",
+   "capturedAt": "2022-06-27",
+   "checked": true,
+   "items": [
+    {
+     "id": "umbrellas-w18",
+     "kind": "other",
+     "where": "terrace umbrellas and furniture",
+     "approxSizeM": [
+      4,
+      3
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7316010203-002632_pano_0000_000365",
+     "skip": {
+      "reason": "temporary",
+      "note": "terrace furniture"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "w19-210",
+   "bearing": 210,
+   "lengthM": 5.6,
+   "centre": [
+    4.9047645,
+    52.3766699
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002632_pano_0000_000368",
+   "capturedAt": "2022-06-27",
+   "checked": true,
+   "items": [
+    {
+     "id": "umbrellas-w19",
+     "kind": "other",
+     "where": "terrace umbrellas and furniture",
+     "approxSizeM": [
+      4,
+      3
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7316010203-002632_pano_0000_000368",
+     "skip": {
+      "reason": "temporary",
+      "note": "terrace furniture"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "w20-210",
+   "bearing": 210,
+   "lengthM": 5.6,
+   "centre": [
+    4.9049355,
+    52.376611
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001982_pano_0000_000111",
+   "capturedAt": "2021-01-26",
+   "checked": true,
+   "items": [
+    {
+     "id": "quay-wall",
+     "kind": "other",
+     "where": "rough stone quay wall under the terrace",
+     "approxSizeM": [
+      6,
+      2
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7316010203-001982_pano_0000_000111",
+     "skip": {
+      "reason": "not-visible",
+      "note": "below the quay edge, part of the quay, not of the building"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "w21-207",
+   "bearing": 207,
+   "lengthM": 5.6,
+   "centre": [
+    4.905402,
+    52.3764564
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002632_pano_0000_000357",
+   "capturedAt": "2022-06-27",
+   "checked": true,
+   "items": [
+    {
+     "id": "umbrellas-w21",
+     "kind": "other",
+     "where": "terrace umbrellas and furniture",
+     "approxSizeM": [
+      4,
+      3
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7316010203-002632_pano_0000_000357",
+     "skip": {
+      "reason": "temporary",
+      "note": "terrace furniture"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "w22-210",
+   "bearing": 210,
+   "lengthM": 5.6,
+   "centre": [
+    4.9045937,
+    52.3767288
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002632_pano_0000_000369",
+   "capturedAt": "2022-06-27",
+   "checked": true,
+   "items": [
+    {
+     "id": "umbrellas-w22",
+     "kind": "other",
+     "where": "terrace umbrellas and furniture",
+     "approxSizeM": [
+      4,
+      3
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7316010203-002632_pano_0000_000369",
+     "skip": {
+      "reason": "temporary",
+      "note": "terrace furniture"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "w23-210",
+   "bearing": 210,
+   "lengthM": 5.6,
+   "centre": [
+    4.9045082,
+    52.3767582
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002632_pano_0000_000372",
+   "capturedAt": "2022-06-27",
+   "checked": true,
+   "items": [
+    {
+     "id": "umbrellas-w23",
+     "kind": "other",
+     "where": "terrace umbrellas and furniture",
+     "approxSizeM": [
+      4,
+      3
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7316010203-002632_pano_0000_000372",
+     "skip": {
+      "reason": "temporary",
+      "note": "terrace furniture"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "w24-207",
+   "bearing": 207,
+   "lengthM": 5.5,
+   "centre": [
+    4.9054883,
+    52.3764292
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002632_pano_0000_000357",
+   "capturedAt": "2022-06-27",
+   "checked": true,
+   "items": [
+    {
+     "id": "umbrellas-w24",
+     "kind": "other",
+     "where": "terrace umbrellas and furniture",
+     "approxSizeM": [
+      4,
+      3
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7316010203-002632_pano_0000_000357",
+     "skip": {
+      "reason": "temporary",
+      "note": "terrace furniture"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "w25-208",
+   "bearing": 208,
+   "lengthM": 5.4,
+   "centre": [
+    4.9053159,
+    52.3764836
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002632_pano_0000_000358",
+   "capturedAt": "2022-06-27",
+   "checked": true,
+   "items": [
+    {
+     "id": "umbrellas-w25",
+     "kind": "other",
+     "where": "terrace umbrellas and furniture",
+     "approxSizeM": [
+      4,
+      3
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7316010203-002632_pano_0000_000358",
+     "skip": {
+      "reason": "temporary",
+      "note": "terrace furniture"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "w26-251",
+   "bearing": 251,
+   "lengthM": 5.3,
+   "centre": [
+    4.905413,
+    52.3767785
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-06-17_09-10-34_00400",
+   "capturedAt": "2025-06-17",
+   "checked": true,
+   "items": [
+    {
+     "id": "tower-glazing",
+     "kind": "window-shape",
+     "where": "glazed tower face with white panel return at the station end",
+     "approxSizeM": [
+      5,
+      30
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-06-17_09-10-34_00400"
+    }
+   ]
+  },
+  {
+   "tag": "w27-252",
+   "bearing": 252,
+   "lengthM": 4.9,
+   "centre": [
+    4.9052559,
+    52.3765147
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002532_pano_0000_001661",
+   "capturedAt": "2022-04-21",
+   "checked": true,
+   "items": [
+    {
+     "id": "west-brick-pier",
+     "kind": "window-shape",
+     "where": "dark brick pier and glazing at the west terrace end",
+     "approxSizeM": [
+      5,
+      7
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002532_pano_0000_001661"
+    }
+   ]
+  },
+  {
+   "tag": "w28-21",
+   "bearing": 21,
+   "lengthM": 4.7,
+   "centre": [
+    4.9053933,
+    52.3767632
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001051_pano_0002_000540",
+   "capturedAt": "2019-01-14",
+   "checked": true,
+   "items": [
+    {
+     "id": "white-entrance-pier",
+     "kind": "other",
+     "where": "white panel piers either side of the side entrance",
+     "approxSizeM": [
+      5,
+      8
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001051_pano_0002_000540"
+    }
+   ]
+  },
+  {
+   "tag": "w29-200",
+   "bearing": 200,
+   "lengthM": 4.7,
+   "centre": [
+    4.9054597,
+    52.3766434
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-06-17_09-10-34_00859",
+   "capturedAt": "2025-06-17",
+   "checked": true,
+   "items": [
+    {
+     "id": "brick-pier-29",
+     "kind": "window-shape",
+     "where": "dark brick pier between floor-height glazing",
+     "approxSizeM": [
+      5,
+      7
+     ],
+     "plan": "modelled",
+     "seenIn": "recording_2025-06-17_09-10-34_00859"
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  }
+ ]
+}

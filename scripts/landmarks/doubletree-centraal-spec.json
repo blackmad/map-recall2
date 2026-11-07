@@ -1,0 +1,23 @@
+{
+ "id": "doubletree-centraal",
+ "pand": "0363100012237484",
+ "identity": {
+  "addresses": "Oosterdoksstraat 4 (BAG logies verblijfsobject 0363010002005568, nevenadres); 5 verblijfsobjecten in the pand",
+  "bouwjaar": 2011,
+  "what": "the DoubleTree by Hilton Amsterdam Centraal Station on the Oosterdokseiland between the railway and the Oosterdok: the hotel block with its top storeys (the skybar storey on the 44 m piece), the Starbucks corner and the restaurant terraces on the Oosterdok; DoubleTree signage on the entrance glazing in the w02-21 crop, the hotel named on en.wikipedia (Oosterdokseiland)",
+  "notThis": "the OBA Oosterdok (separate pand, already modelled) is not drawn; the OSM building parts the brief listed (w1487606275 ... w453809679, 'college' w779659694) do not lie on this pand: they are the blocks further east on the island. The hotel's own OSM parts are w1486076092-108 and w1512730512-517, all inside the BAG ring and suppressed. No architect is named in the open sources checked (nl/en Wikipedia, BAG); none is claimed.",
+  "sources": [
+   "https://api.data.amsterdam.nl/v1/bag/panden/0363100012237484",
+   "https://en.wikipedia.org/wiki/Oosterdokseiland"
+  ]
+ },
+ "frame": "native metres of doubletree-centraal-footprints.json (x east, z south, y up from the 1.03 m NAP street); every exposed 3DBAG wall band gets a front 0.3 m out (ring-height-runs.ts pieceFacadeBands)",
+ "partyWallBearings": [],
+ "partyWallEvidence": "Free-standing: no neighbouring pand in the footprints file; every side is street, quay or the station passage.",
+ "fronts": {
+  "ground": "two-storey glazing to 9.35 m with a transom at 4.7 m between dark grey brick piers on a 5.6 m bay, brick lintel to 10.1 m; on the Oosterdok fronts (207-210) a louvred pergola slab at 10.3 m, 1.8 m deep",
+  "upper": "hotel windows 2.2 m tall on a 3.1 m storey from a 12.4 m sill under a 0.8 m grey band; on the Oosterdok fronts one 3.5 m window per 5.6 m bay between brick piers, elsewhere ribbons with 1.65 m mullions",
+  "white": "white panel cladding (gold slot) on the bands nearest the photographed white walls: the entrance tower over the doors (w02-21, w28-21), the east drum (w11-72, w13-72), the station-side volume (w12-201) and the west corner (w15-30)"
+ },
+ "heightsFrom": "w17-210 rectified crop (50 px/m) checked against w07-251 and the 3DBAG LoD2.2 pieces (11-44 m)"
+}

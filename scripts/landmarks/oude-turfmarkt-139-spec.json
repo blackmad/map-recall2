@@ -1,0 +1,32 @@
+{
+ "id": "oude-turfmarkt-139",
+ "pand": "0363100012168172",
+ "identity": {
+  "addresses": "Oude Turfmarkt 127, 129, 139-149 and Binnengasthuisstraat 46 (BAG verblijfsobjecten of the pand)",
+  "bouwjaar": 1643,
+  "what": "the Oude Turfmarkt block of the University of Amsterdam between the Allard Pierson and the Grimburgwal: north to south the stone front of the former De Nederlandsche Bank (rijksmonument 5780, W.A. Froger 1865-69, Allard Pierson museum since 1976), three Vingboons houses under one cornice (rm 5781, University of Amsterdam front), the former St. Bernardus gasthuis wing (rm 5782, J.L. Laarman 1882-84) with the 'T GASTHVISHOF gate, and the five canal houses at the Grimburgwal corner (rm 5783-5787)",
+  "notThis": "the installed allard-pierson model stands on pand 0363100012165686 (Oude Turfmarkt 125 / Turfdraagsterpad), not on this pand; this model covers none of it. The ordinary large recipe for this pand (ordinary-0363100012168172) is shadowed by this model.",
+  "sources": [
+   "https://api.data.amsterdam.nl/v1/bag/panden/0363100012168172",
+   "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/?ligtInPanden.identificatie=0363100012168172",
+   "https://monumentenregister.cultureelerfgoed.nl/monumenten/5780",
+   "https://monumentenregister.cultureelerfgoed.nl/monumenten/5781",
+   "https://monumentenregister.cultureelerfgoed.nl/monumenten/5782",
+   "https://nl.wikipedia.org/wiki/Allard_Pierson_(museum)",
+   "https://nl.wikipedia.org/wiki/Oude_Turfmarkt"
+  ]
+ },
+ "frame": "native metres of oude-turfmarkt-139-footprints.json (x east, z south, y up from the 0.39 m NAP street); chords PAV_N (-36.273,-31.254)->(-33.442,-24.068), WING_N (-32.861,-23.858)->(-28.303,-12.553), CENTRE (-29.182,-12.076)->(-23.525,-1.202), WING_S (-22.628,-1.669)->(-16.183,8.726), PAV_S (-16.356,9.311)->(-12.303,15.835), UVA (-11.699,15.942)->(0.636,33.777), BERN (0.635,33.86)->(17.095,55.958), HOUSES (17.455,56.65)->(36.598,81.397) in the builder; COURT, NORTH, NORTH2, TEAL are the inferred courtyard and party sides",
+ "partyWallBearings": [
+  1,
+  2
+ ],
+ "partyWallEvidence": "North (1-2): the north side adjoins the Allard Pierson pand 0363100012165686 (21.6 m) and the ranges behind it; no street sees it. NE 54 and E 102 face the enclosed Binnengasthuis courtyard: no panorama within 35 m, modelled as plain inferred walls.",
+ "fronts": {
+  "dnb": "Oude Turfmarkt, bearing 238-248: pavilion N (door, painted lower storeys, aedicule), wing N (four axes), centre risaliet (three axes, fluted pilasters, balustrades, pediment with relief), wing S (four axes), pavilion S; rustication to 3.1, string course 3.1, upper band 8.2, architrave 13.6, cornice 17.3-18.2, slate slope to 19.6",
+  "uva": "Oude Turfmarkt, bearing 235: white plinth 0-2.15 with paired arched cellar lights, nine axes of four window storeys, white entablature 15.3-17.6, slate slope",
+  "bernardus": "Oude Turfmarkt, bearing 233: gate bay 0-3.2 ('T GASTHVISHOF portal, tablet, pedimented window), ten axes 3.2-27.6, door at 18.9, carriage gate at 24.9, white speklagen every 0.6 m, bands 5.1 and 9.5, paired round-headed top lights under blind arches, cornice 13.8, slate to 17.1",
+  "houses": "Grimburgwal corner, bearing 232: warehouse bell gable, two neck gables, the banded 1884 step gable with fans, the corniced house with balconettes; eaves 13.4-15.2"
+ },
+ "heightsFrom": "rectified panorama crops of landmark-brief.ts scaled to the 3DBAG LoD2.2 roof pieces (DNB cornice 18.2, UvA 17.6, Bernardus 13.8, houses 15.0-15.2)"
+}

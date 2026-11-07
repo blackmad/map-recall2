@@ -1,5 +1,5 @@
 {
-  "toolchain": "966a5fcec2b9c6b624aef236daa78583af5e559d650ce907b290b6b948a65dc8",
+  "toolchain": "3b11913f230dcabb6697e035ba4fa8794a6afb5408a90c3de24936be85be42a4",
   "models": {
     "abn-amro-hoofdkantoor": "90ff65a2d9f94e99b2ab33438567f147959a43f017d3d9cf9d2ae68b6dae7cbf",
     "academie-theater-dans": "503b3e8d59937cbf7ac8776eb644c11fd10b567e5ac1113e0caa55c83cb68cde",
@@ -440,6 +440,11 @@
     "zonnehuis": "c324cc93e88978c9e758a0f84f75f86a82ea7e3613402601725ffa4275137534",
     "zuiderbad": "bf9721951bce64c61440a6909bd217051ed1f24b173dc8b8913b1134f580b74c",
     "zuiderkerk": "05ce9ba70a0887900179aded16c45a587e935b933191365ade06777d30d284de",
-    "zuiveringshal-west": "be465eaaeac61fa477e74c4c46b515997c99dc5f2e06ad8e8460c60b19669ede"
+    "zuiveringshal-west": "be465eaaeac61fa477e74c4c46b515997c99dc5f2e06ad8e8460c60b19669ede",
+    "barlaeus-gymnasium": "ab88612b4c0b3762795e022da847762dd8b71f2b6d2854f42d48684a9db4cfb2",
+    "brand-bij-ca": "b8682a00bd145aead75f2f5928f127e6606c44f92253dff5516fa828774dffe2",
+    "doubletree-centraal": "2cc657ed24e134b288fd5fc45be3fb9203f4804046a729f0f6b6cf1bdb062594",
+    "oude-turfmarkt-139": "2288df79a96c4a37153d8f9bcfc2255206a294d7abadbd20a8647d90846a2e18",
+    "weteringschans-corner-office": "fb08ab5de9e9f4415dbcb04400cb741b7217e18bd75761cde90e921a248c0ce5"
   }
 }

@@ -2344,5 +2344,35 @@
   "buildVersion": 2,
   "bytes": 165916,
   "triangles": 12171
+ },
+ "oude-turfmarkt-139": {
+  "sourceHash": "1074d49be4b71118",
+  "buildVersion": 2,
+  "bytes": 122780,
+  "triangles": 6973
+ },
+ "weteringschans-corner-office": {
+  "sourceHash": "f610c7dd12f32de1",
+  "buildVersion": 2,
+  "bytes": 145396,
+  "triangles": 9532
+ },
+ "barlaeus-gymnasium": {
+  "sourceHash": "d7d51ae641ae54b1",
+  "buildVersion": 2,
+  "bytes": 55708,
+  "triangles": 3017
+ },
+ "brand-bij-ca": {
+  "sourceHash": "56a468177685e8e9",
+  "buildVersion": 2,
+  "bytes": 76316,
+  "triangles": 4738
+ },
+ "doubletree-centraal": {
+  "sourceHash": "82b1b6a4c52e223e",
+  "buildVersion": 2,
+  "bytes": 192964,
+  "triangles": 14326
  }
 }
