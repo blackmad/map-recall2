@@ -5,8 +5,12 @@
 // User shots (map-recall2-screenshots engine/2026-11-06-user-shots/): S2 Da Costakade "windows and trim look fuzzy",
 // S3 the 1962 Weesperstraat slab "moving stripes over its window grid while the camera moves".
 
-/** `?cellDebug=rho`: paint the facade tier's texels-per-pixel (and its far blend) as flat classes, for the histogram. */
-export type CellDebug = 'rho' | null;
+/**
+ * `?cellDebug=rho`: paint the facade tier's texels-per-pixel (and its far blend) as flat classes, for the histogram.
+ * `?cellDebug=under` (lane R3-D #233, needs the anisotropy-aware tier): the same colours binned by `under`, the footprint
+ * along the wall over what the anisotropic filter covers (roofTier.ts), see CELL_UNDER_CLASS_NAMES.
+ */
+export type CellDebug = 'rho' | 'under' | null;
 
 /**
  * The classes the rho view paints (sRGB bytes), in the order the histogram reports them. `rho` is texels per
@@ -21,8 +25,13 @@ export const CELL_DEBUG_CLASSES = [
   { name: 'rho 16-tier', rgb: [255, 128, 0] },
   { name: 'tier far > 0', rgb: [255, 0, 255] },
   { name: 'depth-fade far > 0 (tier 0)', rgb: [255, 255, 255] },
+  // Lane R3-D (#233): with the anisotropy-aware tier, 'tier far' is the flatten on the effective footprint and this the
+  // fade where the filter undersamples along the wall.
+  { name: 'under fade > 0', rgb: [128, 0, 255] },
   { name: 'roof layer', rgb: [128, 128, 128] },
 ] as const;
+/** `?cellDebug=under`: what each class colour means there (same colours, binned by `under` instead of `rho`). */
+export const CELL_UNDER_CLASS_NAMES = ['under < 0.5', 'under 0.5-0.75', 'under 0.75-1', 'under 1-1.5', 'under 1.5-2', 'under >= 2', 'tier flatten > 0', 'depth-fade far > 0 (tier 0)', 'under fade > 0 (unused)', 'roof layer'] as const;
 /** Classes that are facade pixels (the histogram's denominator): all but the roof. */
 export const CELL_DEBUG_FACADE_CLASSES = CELL_DEBUG_CLASSES.length - 1;
 
@@ -40,8 +49,23 @@ const v3 = (rgb: readonly number[]) => `vec3(${rgb.map(c => (c / 255).toFixed(4)
 export const CELL_DEBUG_GLSL = /* glsl */ `
 #ifdef CELL_DEBUG_RHO
 vec3 cellDebugColour(float layer) {
-  if (roofLayers.x >= 0.0 && layer > roofLayers.x - 0.5 && layer < roofLayers.y - 0.5) return ${v3(CELL_DEBUG_CLASSES[8].rgb)};
+  if (roofLayers.x >= 0.0 && layer > roofLayers.x - 0.5 && layer < roofLayers.y - 0.5) return ${v3(CELL_DEBUG_CLASSES[9].rgb)};
+#if defined(CELL_TIER_ANISO) && defined(CELL_DEBUG_UNDER)
+  if (cellFarFlat > 0.001) return ${v3(CELL_DEBUG_CLASSES[6].rgb)};
+  if (cellFarTier <= 0.001 && cellFar > 0.001) return ${v3(CELL_DEBUG_CLASSES[7].rgb)};
+  if (cellUnder < 0.5) return ${v3(CELL_DEBUG_CLASSES[0].rgb)};
+  if (cellUnder < 0.75) return ${v3(CELL_DEBUG_CLASSES[1].rgb)};
+  if (cellUnder < 1.0) return ${v3(CELL_DEBUG_CLASSES[2].rgb)};
+  if (cellUnder < 1.5) return ${v3(CELL_DEBUG_CLASSES[3].rgb)};
+  if (cellUnder < 2.0) return ${v3(CELL_DEBUG_CLASSES[4].rgb)};
+  return ${v3(CELL_DEBUG_CLASSES[5].rgb)};
+#else
+#ifdef CELL_TIER_ANISO
+  if (cellFarFlat > 0.001) return ${v3(CELL_DEBUG_CLASSES[6].rgb)};
+  if (cellFarUnder > 0.001) return ${v3(CELL_DEBUG_CLASSES[8].rgb)};
+#else
   if (cellFarTier > 0.001) return ${v3(CELL_DEBUG_CLASSES[6].rgb)};
+#endif
   if (cellFar > 0.001) return ${v3(CELL_DEBUG_CLASSES[7].rgb)};
   if (cellRho < 1.0) return ${v3(CELL_DEBUG_CLASSES[0].rgb)};
   if (cellRho < 2.0) return ${v3(CELL_DEBUG_CLASSES[1].rgb)};
@@ -49,6 +73,7 @@ vec3 cellDebugColour(float layer) {
   if (cellRho < 8.0) return ${v3(CELL_DEBUG_CLASSES[3].rgb)};
   if (cellRho < 16.0) return ${v3(CELL_DEBUG_CLASSES[4].rgb)};
   return ${v3(CELL_DEBUG_CLASSES[5].rgb)};
+#endif
 }
 #endif`;
 
@@ -85,7 +110,7 @@ function pageParam(param: string): string | null {
 export function cellDebugMode(): CellDebug {
   const g = globalThis as Record<string, unknown>;
   const asked = g.__canalRecallCellDebug ?? pageParam('cellDebug');
-  return asked === 'rho' ? 'rho' : null;
+  return asked === 'rho' || asked === 'under' ? asked : null;
 }
 
 /**

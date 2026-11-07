@@ -22,7 +22,7 @@ import {buildTransportedEnvelopeChunk,diagnosticEnvelopeTransport,EMPTY_ENVELOPE
 
 import { CELL_LAYER_COUNT, CELL_PX, STYLE_DIMS, cellLayer, CELL_KINDS, CELL_VARIANTS, paintCell, paintFatihMasonryCell } from './facadeCells.js';
 import { ROOF_CELL_M, paintRoofLayers } from './roofCells.js';
-import { FACADE_TIER_GLSL, ROOF_LAYERS_OFF, ROOF_TIER_GLSL, facadeTierUniform, roofTierUniform } from './roofTier.js';
+import { FACADE_TIER_GLSL, ROOF_LAYERS_OFF, ROOF_TIER_GLSL, facadeTierAnisoEnabled, facadeTierAnisoUniform, facadeTierUniform, roofTierUniform } from './roofTier.js';
 import { pageTextureParams, type TextureParams } from './look/texturePolicy.js';
 import { withMonumentGable } from './monumentGables.js';
 import { decorateRoof, exceptLandmarks as exceptLandmarksOf, fitRect, localOuterRing, planRoof, type RoofPlan } from './roofMesh.js';
@@ -1929,6 +1929,11 @@ export class ThreeBuildings {
   private lodBiasFor(windows: boolean): number | null {
     return cellLodBiasFlag() ?? (windows && windowSdfBandEnabled() ? WINDOW_SDF_LOD_BIAS : null);
   }
+  /**
+   * The anisotropy-aware facade tier (roofTier.ts, lane R3-D #233): the anisotropy the cells texture got from the policy
+   * (16 desktop, 4 coarse or low GPUs) with `?cellTierAniso=1`; null by default (no define, no uniform: the major-axis rule).
+   */
+  private anisoFor(): number | null { return facadeTierAnisoEnabled() ? this.texturePolicy().anisotropy : null; }
 
   private newMaterial(): any {
     const THREE = this.THREE;
@@ -1942,9 +1947,11 @@ export class ThreeBuildings {
       // Analytic windows (look/windowSdf.ts, lane R2-A #228): only for a look whose table has windows; the define,
       // the program key suffix and the table upload are all absent with `?windowSdf=0`.
       const windowTable = this.windowTableFor(cellSetOf(this.look));
-      const lodBias = this.lodBiasFor(!!windowTable);
-      return createCityLookMaterial(THREE, { lit: this.lit, kind: 'chunk', side: THREE.FrontSide, ...(SWAP_COMPLEMENT ? { swap: true } : {}), ...(cellDebug ? { cellDebug } : {}), ...(windowTable ? { windows: true } : {}), ...(lodBias != null ? { lodBias: true } : {}) }, createCityUniforms(THREE, {
+      const lodBias = this.lodBiasFor(!!windowTable), aniso = this.anisoFor();
+      const anisoUniform = aniso != null ? facadeTierAnisoUniform(aniso) : null;
+      return createCityLookMaterial(THREE, { lit: this.lit, kind: 'chunk', side: THREE.FrontSide, ...(SWAP_COMPLEMENT ? { swap: true } : {}), ...(cellDebug ? { cellDebug } : {}), ...(windowTable ? { windows: true } : {}), ...(lodBias != null ? { lodBias: true } : {}), ...(anisoUniform ? { aniso: true } : {}) }, createCityUniforms(THREE, {
         ...(SWAP_COMPLEMENT ? { citySwapUnder: this.swapUnder } : {}),
+        ...(anisoUniform ? { cellAniso: { value: anisoUniform.cellAniso }, cellAnisoRule: { value: anisoUniform.cellAnisoRule } } : {}),
         ...(windowTable ? { windowTable: { value: windowTable } } : {}),
         ...(lodBias != null ? { cellLodBias: { value: lodBias } } : {}),
         bands: { value: variant.shadeBands }, flatColour: { value: variant.flatColour ? 1 : 0 }, wallGain: { value: litFacadeWallGain(variant.litWallGain) },
@@ -1953,15 +1960,16 @@ export class ThreeBuildings {
     }
     if (this.lit) {
       const windowTable = this.windowTableFor(cellSetOf(this.look));
-      const material = createLitFacadeMaterial(THREE, { cityFlat: { value: CITY_FLAT }, roofLayers: { value: roofLayers }, roofTier: { value: roofTierUniform() }, cellTier: { value: this.cellTierValue() } }, { ...(windowTable ? { windowTable } : {}), lodBias: this.lodBiasFor(!!windowTable) });
+      const material = createLitFacadeMaterial(THREE, { cityFlat: { value: CITY_FLAT }, roofLayers: { value: roofLayers }, roofTier: { value: roofTierUniform() }, cellTier: { value: this.cellTierValue() } }, { ...(windowTable ? { windowTable } : {}), lodBias: this.lodBiasFor(!!windowTable), aniso: this.anisoFor() });
       material.uniforms.bands.value = LOOK_VARIANTS[this.look].shadeBands;
       material.uniforms.flatColour.value = LOOK_VARIANTS[this.look].flatColour ? 1 : 0;
       if (material.uniforms.wallGain) material.uniforms.wallGain.value = litFacadeWallGain(LOOK_VARIANTS[this.look].litWallGain);
       return material;
     }
+    const aniso = this.anisoFor(), anisoUniform = aniso != null ? facadeTierAnisoUniform(aniso) : null;
     return new THREE.RawShaderMaterial({
-      glslVersion: THREE.GLSL3, vertexShader: VERTEX, fragmentShader: FRAGMENT, defines: highlightDefines(),
-      uniforms: { cells: { value: null }, masks: { value: null }, bands: { value: LOOK_VARIANTS[this.look].shadeBands }, flatColour: { value: LOOK_VARIANTS[this.look].flatColour ? 1 : 0 }, cityFade: { value: 1 }, cityTone: { value: 1 }, cityFlat: { value: CITY_FLAT }, roofLayers: { value: roofLayers }, roofTier: { value: roofTierUniform() }, cellTier: { value: this.cellTierValue() } }, side: THREE.FrontSide,
+      glslVersion: THREE.GLSL3, vertexShader: VERTEX, fragmentShader: FRAGMENT, defines: { ...highlightDefines(), ...(anisoUniform ? { CELL_TIER_ANISO: '' } : {}) },
+      uniforms: { cells: { value: null }, masks: { value: null }, bands: { value: LOOK_VARIANTS[this.look].shadeBands }, flatColour: { value: LOOK_VARIANTS[this.look].flatColour ? 1 : 0 }, cityFade: { value: 1 }, cityTone: { value: 1 }, cityFlat: { value: CITY_FLAT }, roofLayers: { value: roofLayers }, roofTier: { value: roofTierUniform() }, cellTier: { value: this.cellTierValue() }, ...(anisoUniform ? { cellAniso: { value: anisoUniform.cellAniso }, cellAnisoRule: { value: anisoUniform.cellAnisoRule } } : {}) }, side: THREE.FrontSide,
     });
   }
 
