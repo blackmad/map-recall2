@@ -161,6 +161,8 @@ function front(c: Ctx, e: PieceEdge, bd: Band) {
     }
     // the louvred pergola on steel ties over the terrace glazing (depth not measurable on the panoramas: 1.8 m, read from the oblique w08/w16 views)
     if (oosterdok(e.bearing)) slab(b, K.faceFrame(G), (s0 + s1) / 2, CANOPY_Y, w - 0.1, 0.12, 1.8, 'slate');
+    // the glass canopy on steel ties over the east entrance curtain wall (w03-72)
+    else if (e.bearing > 60 && e.bearing < 85) slab(b, K.faceFrame(G), (s0 + s1) / 2, CANOPY_Y, w - 0.1, 0.1, 1.8, 'glass');
     U = K.sec(e.chord, s0, s1, GROUND_TOP, y1, wall);
     windows(K, U, b, s0, s1, GROUND_TOP, y1, bd.piece, oosterdok(e.bearing));
   } else {
