@@ -110,6 +110,8 @@ export const CELL_TAPS_DEFAULT = false;
  * `s3-slab-user` aliasPx sdf 29,997 -> 21,322 (gate 22,822), painted 49,918 -> 24,462 (gate 23,500, missed); S2 lapVar
  * -1.5 / -2.9 / -2.4 % (sdf), GPU +0.10 ms at the pose. Threshold 16 or lower reaches the quay walls of S2 (chase -4 %,
  * threshold 8: -19 %); 2 x 2 taps at half gradient made the slab worse (they read a sharper level each).
+ * Touch (iPhone profile, painted, 128 px cells, tierScale 1): no threshold meets both ends; s3-slab-user aliasPx 14,937 ->
+ * 13,512 / 8,187 / 3,825 at 20 / 16 / 14, da-costakade-chase lapVar -4 / -16 / -20 %. Leave touch off.
  */
 export const CELL_TAPS = { threshold: 20, taps: 9, spread: 1, grad: 0.85, sdf: 1 } as const;
 export type CellTapsOptions = { threshold: number; taps: number; spread: number; grad: number; sdf: number };
