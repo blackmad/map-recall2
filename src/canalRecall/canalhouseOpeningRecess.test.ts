@@ -54,9 +54,11 @@ test('window variants and apertures across shell/crown closures remain unburied'
 });
 test('left/right limits preserve ends and unsupported cavity geometry is rejected',()=>{
  for(const leftM of [0,4.6]){const r=fixture();Object.assign(r.elevations[0].openings.value[0],{leftM,recessM:.35});assert.equal(cast(compileCanalHouseRecipe(r).group,leftM+.3,1)[0].object.name,'opening/entry/pane');}
- for(const patch of [{leftM:-.1},{leftM:4.7},{recessM:NaN},{recessM:0},{recessM:-.1},{recessM:1.6},{recessM:.1},{projectionM:.1},{head:'oval'},{head:'segmental',headRiseM:.1}]){
+ for(const patch of [{leftM:-.1},{leftM:4.7},{recessM:NaN},{recessM:0},{recessM:-.1},{recessM:1.6},{recessM:.1},{projectionM:.1},{head:'oval'},{head:'segmental'},{headRiseM:.1},{head:'segmental',headRiseM:5}]){
   const r=fixture();Object.assign(r.elevations[0].openings.value[0],{recessM:.4,...patch});assert.throws(()=>compileCanalHouseRecipe(r));
  }
+ // A segmental head with a rise (#239, arched reveal) is a supported cavity: it compiles and the pane stays exposed.
+ {const r=fixture();Object.assign(r.elevations[0].openings.value[0],{recessM:.4,head:'segmental',headRiseM:.1});assert.equal(cast(compileCanalHouseRecipe(r).group,r.elevations[0].openings.value[0].leftM+.3,1)[0].object.name,'opening/entry/pane');}
  const narrow=fixture();narrow.footprint.value[0].outer=[[0,0],[6,0],[6,.3],[0,.3]];narrow.footprint.value[0].holes=[];narrow.elevations[0].openings.value[0].recessM=.4;assert.throws(()=>compileCanalHouseRecipe(narrow),/footprint|courtyard/);
  const court=fixture();court.footprint.value[0].holes=[[[1.5,.2],[1.7,.2],[1.7,.3],[1.5,.3]]];court.elevations[0].openings.value[0].recessM=.4;assert.throws(()=>compileCanalHouseRecipe(court),/footprint|courtyard/);
  assert.equal(canalhouseOpeningTemplate({template:'plain-frame',overrides:{recessM:.4}}).recessM,.4);
