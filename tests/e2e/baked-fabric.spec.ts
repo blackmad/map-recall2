@@ -18,7 +18,9 @@ const OUT = 'artifacts/baked-fabric';
 test.use({ viewport: { width: SPOT.viewport![0], height: SPOT.viewport![1] } });
 
 async function frame(page: Page, baked: boolean) {
-  await openRoute(page, { travelMode: 'car', viewMode: 'chase', enterRacing: true, query: `?tier=high&governor=0&bakedCoarse=${baked ? 1 : 0}` });
+  await openRoute(page, { travelMode: 'car', viewMode: 'chase', enterRacing: true, query: `?engine=own&tier=high&governor=0&bakedCoarse=${baked ? 1 : 0}` });
+  // The pin runs the engine world view by its own query flag, not the ENGINE=own environment the lane set by hand.
+  expect(await page.evaluate(() => (window as any).canalRecallGame.vectorMap.engine), 'the engine world view is in charge').toBe('own');
   const jump = () => page.evaluate((pose) => {
     const vm = (window as any).canalRecallGame.vectorMap;
     vm.sync = () => {}; vm.aimAtWorld = () => {};
@@ -28,11 +30,13 @@ async function frame(page: Page, baked: boolean) {
   await jump(); await settleWorld(page, 'baked-fabric first jump'); await jump(); await settleWorld(page, 'baked-fabric second jump');
   await page.waitForTimeout(3000);
   const state = await page.evaluate(() => (window as any).canalRecallGame.vectorMap._bakedCoarse?.stats?.() ?? null);
+  // Why the tier is off, when it is (ownWorldView.bakedCoarseOff: flag, no-shel, layer-table, look), for the failure log.
+  const off = await page.evaluate(() => { const vm = (window as any).canalRecallGame.vectorMap; return { on: vm.bakedCoarseOn ?? null, off: vm.bakedCoarseOff ?? null, world: vm.worldSettled?.() ?? null }; });
   const url: string = await page.evaluate(() => (window as any).canalRecallGame.vectorMap.captureFrame().then((c: HTMLCanvasElement | null) => c?.toDataURL('image/png') ?? ''));
   const png = Buffer.from(url.split(',')[1], 'base64');
   writeFileSync(`${OUT}/${baked ? 'baked' : 'off'}.png`, png);
   const { data, info } = await sharp(png).raw().toBuffer({ resolveWithObject: true });
-  return { state, sharpness: frameSharpness(data, info.width, info.height, info.channels, SPOT.band as Rect) };
+  return { state, off, sharpness: frameSharpness(data, info.width, info.height, info.channels, SPOT.band as Rect) };
 }
 
 test('baked fabric: the houses at da-costakade-user draw with the baked tier on (sync held)', async ({ page }, info) => {
@@ -42,7 +46,7 @@ test('baked fabric: the houses at da-costakade-user draw with the baked tier on 
   const on = await frame(page, true), off = await frame(page, false);
   const ratio = on.sharpness.laplacianVar / off.sharpness.laplacianVar;
   writeFileSync(`${OUT}/result.json`, JSON.stringify({ on, off, ratio }, null, 1));
-  console.log('baked-fabric', JSON.stringify({ on: on.sharpness, off: off.sharpness, ratio: +ratio.toFixed(3), baked: on.state }));
+  console.log('baked-fabric', JSON.stringify({ on: on.sharpness, off: off.sharpness, ratio: +ratio.toFixed(3), baked: on.state, why: on.off }));
   expect(on.state, 'the baked tier ran').not.toBeNull();
   expect(on.state.cells, 'baked cells resident').toBeGreaterThan(0);
   expect(on.state.fading, 'no baked cell stuck in its dissolve').toBe(0);

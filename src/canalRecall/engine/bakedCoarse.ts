@@ -39,12 +39,14 @@ export function bakedCellOrigin(key: string): [number, number] { const [i, j] = 
 export const BAKED_COARSE_TOUCH_DEFAULT = false;
 
 /**
- * Desktop default OFF again since 2026-11-07 evening (integrator, #243 follow-up): at the user's Da Costakade chase poses
- * (zoom 17.8, pitch 75) the baked layer covered the cells but drew no houses, and neither did the runtime coarse or detail
- * tiers, so the canal-house fabric was missing (crisp-textures lapVar 415 vs 1006 with `?bakedCoarse=0`; the zoom 17.1
- * pose was fine). `?bakedCoarse=1` opts in until the cause is fixed; then this goes back to true.
+ * Desktop default ON (lane R4-A #243, 2026-11-07). It was turned off for a few hours the same evening when a held-camera
+ * spec (crisp-textures with `sync` stubbed) showed no houses at the user's Da Costakade chase poses: the baked dissolves
+ * only advanced from `OwnWorldView.sync`, so the held spec left every covered cell at fade 0 while their buildings were
+ * already out of the runtime coarse chunks. Real play never lost them (parked rider, 13 of 13 cells drawn). The dissolve
+ * now steps in the facade layer's `prepareFrame` (`BakedCoarseHostView.setFrame`) and `tests/e2e/baked-fabric.spec.ts`
+ * pins the pose with the tier on and off.
  */
-export const BAKED_COARSE_DESKTOP_DEFAULT = false;
+export const BAKED_COARSE_DESKTOP_DEFAULT = true;
 
 /**
  * `?bakedCoarse=0` (or `window.__canalRecallBakedCoarse = false`): the runtime coarse shells, as before. `?bakedCoarse=1`

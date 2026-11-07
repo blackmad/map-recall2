@@ -334,7 +334,7 @@
         "iphone": 629
       },
       "unit": "coarse-tier chunk fade-ins over the 3-min aerial pan (aerial-pan summary coarseFadeIns; coarseFadingMax and coarseFadingSamples beside it)",
-      "note": "R4-A (#243): baked coarse tier desktop on 650 vs off 894 (median new fades per 5 s sample 1 vs 25, samples with >= 20 new 10 vs 24 of 36); iPhone measured with ?bakedCoarse=1 forced (629 vs off 725, 5 vs 18, 13 vs 15), touch default is off. The fades left sit at the pan teleports to a new district. Desktop default turned off again 2026-11-07 evening (Da Costakade house gap, #243 follow-up): the measured 650 is with ?bakedCoarse=1; the default desktop pan is the 894 row until the fix.",
+      "note": "R4-A (#243): baked coarse tier desktop on 650 vs off 894 (median new fades per 5 s sample 1 vs 25, samples with >= 20 new 10 vs 24 of 36); iPhone measured with ?bakedCoarse=1 forced (629 vs off 725, 5 vs 18, 13 vs 15), touch default is off. The fades left sit at the pan teleports to a new district. Desktop default off for a few hours on 2026-11-07 evening (a held-sync spec artefact, #243 follow-up), back on the same night; fix bundles measured 648 on.",
       "source": "lane R4-A 2026-11-07 (#243) at a2f15b692, scripts/aerial-pan.mjs --pan 180 --every 5, headed installed Chrome on Metal, bundles rebuilt from the merged branch",
       "date": "2026-11-07"
     }

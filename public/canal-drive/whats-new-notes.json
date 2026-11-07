@@ -3,8 +3,8 @@
   "notes": [
     {
       "date": "2026-11-07",
-      "title": "The baked city from the air is off again for now",
-      "text": "Earlier today the city from the air arrived as one baked piece per cell. At some chase heights it left the canal houses out entirely, so it is off again until that is fixed. Add ?bakedCoarse=1 to the ride link to try it; the aerial pan work from earlier today stays.",
+      "title": "The baked city from the air is back on",
+      "text": "Earlier this evening the baked city from the air was switched off for a few hours after a test showed the canal houses missing at some chase heights. That turned out to be the test holding the camera still, not the ride: with the game running, the houses were always there. It is on again on desktop, and the fade that brings each baked block in no longer depends on the camera moving. Add ?bakedCoarse=0 to the ride link to compare.",
       "images": []
     },
     {
