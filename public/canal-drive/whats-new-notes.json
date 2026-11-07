@@ -3,6 +3,23 @@
   "notes": [
     {
       "date": "2026-11-07",
+      "title": "Sharper windows on big screens",
+      "text": "On desktop, window frames, glass and glazing bars are now drawn crisply, and the brick and trim around them are sharper too. Window grids no longer shimmer when you pan. Phones keep the previous look for now (try ?windowSdf=1 on a phone to preview it).",
+      "images": [
+        {
+          "src": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/engine/2026-11-06-r3/r3b-user-pose-desktop-dpr2.jpg",
+          "alt": "Da Costakade at the rider's pose on a Retina desktop: painted windows beside the new analytic windows",
+          "caption": "Da Costakade, desktop at DPR 2: painted windows (before) beside the analytic windows now on by default (after)."
+        },
+        {
+          "src": "https://raw.githubusercontent.com/blackmad/map-recall2-screenshots/main/engine/2026-11-06-r3/r3b-near-glazing-bars.jpg",
+          "alt": "Close-up of sash windows: glazing bars stay drawn at every distance",
+          "caption": "Near quay walls: glazing bars keep their true width instead of blurring into the glass."
+        }
+      ]
+    },
+    {
+      "date": "2026-11-07",
       "title": "The Atrium on the Zuidas",
       "text": "Riding along Strawinskylaan or Parnassusweg, you now pass the Atrium as it stands. The 1974 NMB headquarters has its light aluminium grid and granite shafts, with the T-shaped window high on the Parnassusweg shaft. The round-cornered Zuidtoren and north-east block are banded with bronze floor slabs that pull back from the corners, and the ATRIUM letters stand on the canopy over the entrance.",
       "images": [
