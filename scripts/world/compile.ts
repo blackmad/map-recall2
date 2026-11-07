@@ -43,7 +43,8 @@ import { KIT_HIDE_IDS } from '../../src/canalRecall/landmarkKits.js';
 import { BuildingContextIndex } from '../../src/canalRecall/buildingContextIndex.js';
 import { asPolygons } from '../../src/canalRecall/threeBuildingFeatures.js';
 import { encodeCell, decodeCell, sameValue, rawFeature, styledFeature, chooseGlobalStrings, encodeGlobalStrings, GLOBAL_STRINGS_FILE, type GlobalStrings, HIDE_KIT, HIDE_COVER_OSM, HIDE_COVER_PAND, BUILDING_FORMAT_VERSION, encodeShellCell, decodeShellCell, type Cell, type CellBuilding, type HideEntry, type Geometry } from '../../src/canalRecall/world/cellFormat.js';
-import { bakeCellShell, SHELL_LOOK } from './shellBake.js';
+import { bakeCellShell, bakeGroupChunk, subsetShellChunk, SHELL_LOOK } from './shellBake.js';
+import type { ShellChunk } from '../../src/canalRecall/world/shellMesh.js';
 import { CELL_GRID, cellBounds, parseCellKey } from '../../src/canalRecall/world/cellGrid.js';
 import { applyPolicy, emptyPolicyReport, summarisePolicy, policyOptionsOf, policyOptionsFromArgs, POLICY_VERSION, type PolicyOptions } from '../../src/canalRecall/world/cellPolicy.js';
 import { readGlobalStrings } from './cellFiles.js';
@@ -52,7 +53,7 @@ import { shellLayerHash } from '../../src/canalRecall/world/shellLayers.js';
 // world-compiler-2 (2026-11-06, lane R2-B #229): --shell bakes the format-6 shell files; the cells are unchanged.
 export const COMPILER_VERSION = 'world-compiler-2';
 /** What a cell's shells are baked from beyond the cell itself (the mesher and its tables): a change rebakes every shell. */
-const SHELL_CODE = ['src/canalRecall/threeBuildingFeatures.ts', 'src/canalRecall/threeBuildingMesh.ts', 'src/canalRecall/world/shellMesh.ts', 'src/canalRecall/world/shellLayers.ts', 'scripts/world/shellBake.ts', 'public/data/street-appearance/profiles.json'].map(f => path.join(ROOT, f));
+const SHELL_CODE = ['src/canalRecall/threeBuildingFeatures.ts', 'src/canalRecall/threeBuildingMesh.ts', 'src/canalRecall/world/shellMesh.ts', 'src/canalRecall/world/shellLayers.ts', 'scripts/world/shellBake.ts', 'public/data/street-appearance/profiles.json', 'src/canalRecall/streetFronts.ts', 'src/canalRecall/routing/roadExtract.ts', 'src/canalRecall/routing/bikeAccess.ts', 'public/data/extracts/amsterdam/roads-v2/streets-routing.bin.gz'].map(f => path.join(ROOT, f));
 const WORLD_FORMAT_VERSION = BUILDING_FORMAT_VERSION;
 const args = process.argv.slice(2);
 const flag = (name: string) => args.find(a => a === `--${name}` || a.startsWith(`--${name}=`));
@@ -65,6 +66,10 @@ const ONLY_TILES = value('tiles')?.split(',').filter(Boolean);
 const NO_POLICY = !!flag('no-policy');
 const POLICY_OPTIONS: PolicyOptions = policyOptionsFromArgs(process.argv.slice(2));
 const SHELL = flag('shell') ? (value('shell') === 'far' ? 'far' : 'all') : null;
+// --shell-reach-km (lane R4-A #243, default 5): no SHEL for a cell farther than this from every roads-v1 cell. The
+// baked coarse tier holds the ~96 cells nearest the camera (desktop; ~5.5 km in the outskirts), and the camera stays
+// over the ridable city, so those cells never draw baked; the far ring (SHL1) still covers them. 0 keeps every cell.
+const SHELL_REACH_KM = Number(value('shell-reach-km') ?? 5);
 const AGAINST = value('against') === 'none' ? null : path.resolve(value('against') ?? path.join(EXTRACT, 'world-v1'));
 
 const sha = (b: Uint8Array | string) => crypto.createHash('sha256').update(b).digest('hex');
@@ -243,26 +248,59 @@ async function main() {
 
   // 5. Shells (--shell): from the decoded cells (what the runtime reads), each cell's buildings with their party-wall
   // neighbours in other cells as context, through the runtime coarse build (shellBake.ts).
-  const shellReport = SHELL ? { look: SHELL_LOOK, cells: 0, coarseTriangles: 0, farPrisms: 0, bakeMs: 0, farMs: 0, shelGz: [] as number[], farGz: [] as number[] } : null;
+  const shellReport = SHELL ? { look: SHELL_LOOK, cells: 0, beyondReach: 0, reachKm: SHELL_REACH_KM, coarseTriangles: 0, farPrisms: 0, bakeMs: 0, farMs: 0, shelGz: [] as number[], farGz: [] as number[] } : null;
   // The mesher's sources and (lane R4-A #243) the facade atlas layer table the SHEL `layers` bytes index.
-  const layerHash = shellLayerHash(), shellHash = sha(`${inputHash(SHELL_CODE)}:${layerHash}`);
+  const layerHash = shellLayerHash(), shellHash = sha(`${inputHash(SHELL_CODE)}:${layerHash}:reach${SHELL_REACH_KM}`);
   if (SHELL && previous?.shells && previous.shells.hash !== shellHash && rebuild) throw Error('--shell --changed: the shell code changed since the last run; run --shell without --changed');
   if (SHELL) {
     const byId = new Map<string, any>();
     for (const c of decoded.values()) for (const b of c.buildings) byId.set(b.id, styledFeature(b, rawFeature(b)));
     for (const sub of SHELL === 'all' ? ['shells', 'far'] : ['far']) fs.mkdirSync(path.join(OUT, sub), { recursive: true });
+    const roadKeys = Object.entries<any>(cellsOut).filter(([, c]) => c.inRoadsV1).map(([k]) => k.split('_').map(Number));
+    // Lane R4-A (#243): the runtime's coarse chunk is a z14 group tile, and its composition sets window layers, so the
+    // bake builds each group tile's chunk as the runtime does (shellBake.ts bakeGroupChunk) and gives every cell its
+    // own buildings' ranges. Members in (source tile, ordinal) order, as the tile streamer delivers them; context by
+    // the runtime rule (contextFor: neighbours not in the group, not kit-hidden). A chunk is kept until its last cell.
+    const groupMembers = new Map<string, { f: Feature; tile: string; ordinal: number }[]>(), groupUses = new Map<string, number>();
+    for (const cell of decoded.values()) {
+      const seenGroups = new Set<string>();
+      for (const b of cell.buildings) {
+        const g = b.group ?? b.tile;
+        if (!kitHide.has(b.id)) { let list = groupMembers.get(g); if (!list) groupMembers.set(g, list = []); list.push({ f: byId.get(b.id), tile: b.tile, ordinal: b.ordinal }); }
+        seenGroups.add(g);
+      }
+      for (const g of seenGroups) groupUses.set(g, (groupUses.get(g) ?? 0) + 1);
+    }
+    for (const list of groupMembers.values()) list.sort((a, b) => a.tile < b.tile ? -1 : a.tile > b.tile ? 1 : a.ordinal - b.ordinal);
+    const shellCtx = new BuildingContextIndex([...byId.values()], bounds), groupChunks = new Map<string, ShellChunk>();
+    const groupChunk = (g: string): ShellChunk | null => {
+      let chunk = groupChunks.get(g);
+      if (!chunk) {
+        const source = (groupMembers.get(g) ?? []).map(m => m.f);
+        if (!source.length) return null;
+        const ids = new Set(source.map(f => String(f.properties.id)));
+        const context = shellCtx.neighbors(source, f => ids.has(String(f.properties.id)) || kitHide.has(String(f.properties.id)));
+        groupChunks.set(g, chunk = bakeGroupChunk(source, context, ROOT));
+      }
+      return chunk;
+    };
     for (const [key, cell] of decoded) {
       const features = cell.buildings.map(b => byId.get(b.id));
       const context: any[] = [], seen = new Set<string>();
       for (const b of cell.buildings) for (const n of b.neighbours ?? []) if (typeof n === 'string' && !seen.has(n)) { seen.add(n); const f = byId.get(n); if (f) context.push(f); }
       // The far level leaves out what an installed model or kit replaces (HIDE): the model draws there, and a prism
       // the size of the footprint covered it (S4 Zuidas towers, lane R2-B #229).
-      const bake = bakeCellShell(cell.i, cell.j, features, context, ROOT, cell.buildings.map(b => b.group ?? b.tile), new Set(cell.hide.map(h => h.id)));
+      const own = new Set(cell.buildings.map(b => b.id)), parts: ShellChunk[] = [], cellGroups = [...new Set(cell.buildings.map(b => b.group ?? b.tile))];
+      for (const g of cellGroups) { const chunk = groupChunk(g); if (chunk) parts.push(subsetShellChunk(chunk, id => own.has(id))); }
+      for (const g of cellGroups) { const left = (groupUses.get(g) ?? 1) - 1; groupUses.set(g, left); if (left <= 0) groupChunks.delete(g); }
+      const bake = bakeCellShell(cell.i, cell.j, features, context, ROOT, cell.buildings.map(b => b.group ?? b.tile), new Set(cell.hide.map(h => h.id)), parts);
       const entry = cellsOut[key];
       delete entry.shell; delete entry.far;
       if (!bake) continue;
       shellReport!.cells++; shellReport!.coarseTriangles += bake.coarseTriangles; shellReport!.farPrisms += bake.far.length; shellReport!.bakeMs += bake.ms; shellReport!.farMs += bake.farMs;
-      const files: ['shell' | 'far', string, any][] = SHELL === 'all' ? [['shell', 'shells', { shel: bake.shel }], ['far', 'far', { far: bake.far }]] : [['far', 'far', { far: bake.far }]];
+      const reach = SHELL === 'all' && SHELL_REACH_KM > 0 ? roadKeys.reduce((d, [a, b]) => Math.min(d, Math.hypot(cell.i - a, cell.j - b)), Infinity) : 0;
+      if (reach > SHELL_REACH_KM) { shellReport!.beyondReach++; fs.rmSync(path.join(OUT, 'shells', `${key}.bin`), { force: true }); }
+      const files: ['shell' | 'far', string, any][] = SHELL === 'all' && reach <= SHELL_REACH_KM ? [['shell', 'shells', { shel: bake.shel }], ['far', 'far', { far: bake.far }]] : [['far', 'far', { far: bake.far }]];
       for (const [field, sub, part] of files) {
         const enc = encodeShellCell({ i: cell.i, j: cell.j, ...part }), back = decodeShellCell(enc.bytes, `${sub} ${key}`);
         if (!sameValue(back, { i: cell.i, j: cell.j, ...part })) throw Error(`${sub} ${key}: the shell does not round-trip`);

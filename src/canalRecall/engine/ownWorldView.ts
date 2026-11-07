@@ -724,7 +724,7 @@ export class OwnWorldView implements WorldViewOracles {
         attach: entry => tb.bakedCoarseHost()?.attach(entry),
         detach: entry => tb.bakedCoarseHost()?.detach(entry),
         swapSlots: () => !!tb.bakedCoarseHost()?.swapSlots(),
-        fetchShell: (key: string, signal: AbortSignal) => world.shell(key, signal, base),
+        fetchShell: (key: string, signal: AbortSignal, exact?: boolean) => world.shell(key, signal, base, exact),
         available: () => available,
         coverageChanged: () => tb.bakedCoarseHost()?.regroup(),
         groundBase: (id: string) => tb.bakedCoarseHost()?.groundBase(id),

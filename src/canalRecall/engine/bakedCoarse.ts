@@ -139,7 +139,7 @@ export function liftRanges(positions: Float32Array | Int16Array, ranges: Readonl
 }
 
 /** A decoded, regrouped cell (world/worldCells.ts ShellCellData). */
-export type BakedCellData = { key: string; positions: Float32Array | Int16Array; positionUnit?: number; uvs: Float32Array; layers: Uint8Array; tints: Uint8Array; accents: Uint8Array; indices: Uint16Array | Uint32Array; ranges: BakedRange[]; triangles: number; gzBytes: number };
+export type BakedCellData = { key: string; positions: Float32Array | Int16Array; positionUnit?: number; uvs: Float32Array; layers: Uint8Array; tints: Uint8Array; accents: Uint8Array; indices: Uint16Array | Uint32Array; ranges: BakedRange[]; triangles: number; gzBytes: number; /** look/thinFade.ts pairs, 2 per vertex (SHEL level 2). */ thin?: Uint8Array };
 
 /** One drawn cell as the facade layer sees it (ThreeBuildings applyHidden / paintShells read `mesh` and `ranges`). */
 export type BakedEntry = { key: string; mesh: any; ranges: Map<string, { start: number; count: number }> };
@@ -155,7 +155,8 @@ export interface BakedCoarseHost {
   detach(entry: BakedEntry): void;
   /** Whether meshes need the `swapSlot` byte (the complementary dissolve is on). */
   swapSlots(): boolean;
-  fetchShell(key: string, signal: AbortSignal): Promise<BakedCellData>;
+  /** `exact`: Float32 metres at the SHEL's own unit (a cell within the lift radius), else Int16 decimetres. */
+  fetchShell(key: string, signal: AbortSignal, exact?: boolean): Promise<BakedCellData>;
   /** Cells with a SHEL (tiles.json `shell`): gzip bytes. */
   available(): ReadonlyMap<string, number>;
   /** The coverage changed outside a plan call (a fetch failed, the tier turned off): regroup the coarse chunks. */
@@ -271,7 +272,9 @@ export class BakedCoarse {
   private request(key: string, relift: boolean): void {
     const controller = new AbortController();
     this.inflight.set(key, controller);
-    this.host.fetchShell(key, controller.signal).then(data => {
+    // Within the lift radius the cell is fetched exact: the detail tier swaps over it (bakedCellArrays BAKED_GRID_M).
+    const exact = !!this.at && cellDistanceM(key, this.at[0], this.at[1]) <= this.liftRadius();
+    this.host.fetchShell(key, controller.signal, exact).then(data => {
       if (this.inflight.get(key) !== controller) return;
       this.inflight.delete(key);
       if (this.enabled && this.covered.has(key)) this.install(data, relift);
@@ -294,10 +297,17 @@ export class BakedCoarse {
     if (!scene || !material || !data.indices.length) return;
     const n = data.layers.length, [ox, oy] = bakedCellOrigin(data.key);
     const keepPositions = this.at ? cellDistanceM(data.key, this.at[0], this.at[1]) <= this.liftRadius() : false;
-    // A cell to be lifted goes back to Float32 metres: a base rounded to the 0.1 m grid leaves the shell's window rows
-    // a few centimetres off the lifted detail chunk's, which flickers through the swap's complementary dissolve.
+    // A cell to be lifted is in Float32 metres (fetched exact: the SHEL's own unit). One that came within the radius
+    // after its request went out arrives on the decimetre grid and is widened here (a base rounded to that grid left
+    // the shell's window rows a few centimetres off the lifted detail chunk's, which flickers through the swap's
+    // complementary dissolve).
     let positions = data.positions, unit = data.positionUnit ?? 1;
     if (keepPositions && unit !== 1) { const f = new Float32Array(positions.length); for (let k = 0; k < f.length; k++) f[k] = positions[k] * unit; positions = f; unit = 1; }
+    // A kept cell is drawn in absolute metres from ORIGIN at the mesh origin, as the runtime chunks are: the same
+    // Float32 values through the same matrices rasterise the same silhouette, where a cell-local mesh offset by the
+    // cell origin rounded its edges differently (s3-slab-user's slab edge through the swap dissolve).
+    const absolute = keepPositions;
+    if (absolute) { if (positions === data.positions) positions = Float32Array.from(positions); for (let k = 0; k < positions.length; k += 3) { positions[k] += ox; positions[k + 1] += oy; } }
     const g = new THREE.BufferGeometry();
     const release = (a: any) => { a.onUpload(function (this: any) { this.array = null; }); return a; };
     const position = new THREE.BufferAttribute(positions, 3);
@@ -306,6 +316,9 @@ export class BakedCoarse {
     g.setAttribute('layer', release(new THREE.BufferAttribute(data.layers, 1, false)));
     g.setAttribute('tint', release(new THREE.BufferAttribute(data.tints, 4, true)));
     g.setAttribute('accent', release(new THREE.BufferAttribute(data.accents, 4, true)));
+    // The runtime coarse chunk's `thin` (look/thinFade.ts): without it the eaves and cornice strips the chunk fades out
+    // under a pixel stayed solid on the baked shell, which differed from the detail chunk there (swap-zfight).
+    if (data.thin && data.thin.length === n * 2) g.setAttribute('thin', release(new THREE.BufferAttribute(data.thin, 2, false)));
     g.setAttribute('hidden', new THREE.BufferAttribute(new Uint8Array(n), 1, false));
     if (this.host.swapSlots()) g.setAttribute('swapSlot', new THREE.BufferAttribute(new Uint8Array(n), 1, false));
     g.setIndex(release(new THREE.BufferAttribute(data.indices, 1)));
@@ -313,9 +326,10 @@ export class BakedCoarse {
     if (keepPositions && g.boundingSphere) g.boundingSphere.radius += 5 / unit; // lifts are a few metres either way
     const old = this.residents.get(data.key);
     const clone = relift && old ? null : this.host.fadeMaterial(0);
+    if (clone) this.fadeIns++;
     const mesh = new THREE.Mesh(g, clone ?? material);
     mesh.name = `baked-coarse/${data.key}`;
-    mesh.position.set(ox, oy, 0);
+    if (!absolute) mesh.position.set(ox, oy, 0);
     if (unit !== 1) mesh.scale.setScalar(unit);
     mesh.castShadow = false;
     mesh.frustumCulled = true;
@@ -323,8 +337,9 @@ export class BakedCoarse {
     mesh.userData.bakedCoarse = data.key;
     const ranges = rangeMap(data.ranges);
     const r: Resident = { key: data.key, mesh, ranges, triangles: data.triangles, gzBytes: data.gzBytes, drawn: !clone,
-      bytes: positions.byteLength + data.uvs.byteLength + data.layers.byteLength + data.tints.byteLength + data.accents.byteLength + data.indices.byteLength + n * 2,
-      lifted: keepPositions, liftable: keepPositions,
+      bytes: positions.byteLength + data.uvs.byteLength + data.layers.byteLength + data.tints.byteLength + data.accents.byteLength + data.indices.byteLength + (data.thin?.byteLength ?? 0) + n * 2,
+      // A cell widened from the decimetre grid is drawn and lifted now, and fetched again exact (reliftNear).
+      lifted: keepPositions, liftable: keepPositions && (data.positionUnit ?? 1) === 1,
       ...(clone ? { fade: { start: performance.now(), clone, source: material } } : {}),
       ...(keepPositions ? { lift: { positions, unit, pending: [...ranges.keys()], applied: new Map<string, number>() } } : {}) };
     if (old) this.drop(data.key);
@@ -333,6 +348,7 @@ export class BakedCoarse {
     this.fetchedBytes += data.gzBytes; this.uploads += r.bytes;
     this.residents.set(data.key, r);
     this.host.repaint();
+    if (keepPositions && !r.liftable) this.reliftNear();
   }
 
   /** Cells within the lift radius installed without their CPU positions are fetched again to be lifted. */
@@ -419,10 +435,13 @@ export class BakedCoarse {
   /** The cells drawn now (diagnostics). */
   drawnCells(): string[] { return [...this.residents.values()].filter(r => r.drawn).map(r => r.key); }
 
-  stats(): { enabled: boolean; wanted: number; cells: number; drawn: number; covered: number; triangles: number; gpuMB: number; fetchedMB: number; uploadedMB: number; pending: number; failed: number; liftPending: number; cpuMB: number } {
-    let triangles = 0, bytes = 0, drawn = 0, liftPending = 0, cpu = 0;
-    for (const r of this.residents.values()) { triangles += r.triangles; bytes += r.bytes; if (r.drawn) drawn++; if (r.lift) { liftPending += r.lift.pending.length; cpu += r.lift.positions.byteLength; } }
-    return { enabled: this.enabled, wanted: this.wanted.size, cells: this.residents.size, drawn, covered: this.covered.size, triangles, gpuMB: +(bytes / 1048576).toFixed(1), fetchedMB: +(this.fetchedBytes / 1048576).toFixed(2), uploadedMB: +(this.uploads / 1048576).toFixed(1), pending: this.inflight.size + this.queue.length, failed: this.failed.size, liftPending, cpuMB: +(cpu / 1048576).toFixed(1) };
+  /** Cells installed with a dissolve in (aerial-pan's coarse rebuild-wave count, against the runtime coarse fades). */
+  private fadeIns = 0;
+
+  stats(): { enabled: boolean; wanted: number; cells: number; drawn: number; fading: number; fadeIns: number; covered: number; triangles: number; gpuMB: number; fetchedMB: number; uploadedMB: number; pending: number; failed: number; liftPending: number; cpuMB: number } {
+    let triangles = 0, bytes = 0, drawn = 0, liftPending = 0, cpu = 0, fading = 0;
+    for (const r of this.residents.values()) { triangles += r.triangles; bytes += r.bytes; if (r.drawn) drawn++; if (r.fade) fading++; if (r.lift) { liftPending += r.lift.pending.length; cpu += r.lift.positions.byteLength; } }
+    return { enabled: this.enabled, wanted: this.wanted.size, cells: this.residents.size, drawn, fading, fadeIns: this.fadeIns, covered: this.covered.size, triangles, gpuMB: +(bytes / 1048576).toFixed(1), fetchedMB: +(this.fetchedBytes / 1048576).toFixed(2), uploadedMB: +(this.uploads / 1048576).toFixed(1), pending: this.inflight.size + this.queue.length, failed: this.failed.size, liftPending, cpuMB: +(cpu / 1048576).toFixed(1) };
   }
 
   dispose(): void { this.clear(); }

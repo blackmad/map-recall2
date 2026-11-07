@@ -25,12 +25,15 @@ const quadChunk = () => {
   return { positions, uvs, layers, tints, accents, indices, ranges: [{ id: 'a', start: 0, count: 4 }, { id: 'b', start: 4, count: 4 }, { id: 'allotment-garden:x', start: 8, count: 3 }] };
 };
 
-test('SHEL: positions to 0.1 m from the cell origin, first-use order, bids from ranges, exact round trip', () => {
+test('SHEL: positions to SHEL_UNIT_M from the cell origin, first-use order, bids from ranges, exact round trip', () => {
   const chunk = quadChunk(), origin: [number, number] = [1000, 2000];
   const m = shellFromChunk(chunk, origin, id => ({ a: 4, b: 9 } as Record<string, number>)[id] ?? -1);
   assert.deepEqual([...m.bids], [4, 4, 4, 4, 9, 9, 9, 9, NO_BID, NO_BID, NO_BID]);
-  assert.ok(Math.abs(m.positions[0] - 0) < 1e-6 && Math.abs(m.positions[1] - 0.1) < 1e-6, 'rounded to the decimetre');
-  assert.ok(Math.abs(m.positions[8] - 10) < 1e-5);
+  assert.equal(SHEL_UNIT_M, 2 ** -17);
+  // Finer than a Float32 step this far from ORIGIN: the cell origin plus the decoded value is the chunk's own Float32.
+  const order = [0, 1, 2, 3];
+  for (const k of order) for (let c = 0; c < 2; c++) assert.equal(Math.fround(origin[c] + m.positions[k * 3 + c]), chunk.positions[k * 3 + c]);
+  assert.ok(Math.abs(m.positions[8] - chunk.positions[8]) <= SHEL_UNIT_M / 2, "z within half a unit (below 128 m a Float32 step is finer)");
   for (const v of m.positions) assert.ok(Math.abs(v / SHEL_UNIT_M - Math.round(v / SHEL_UNIT_M)) < 1e-3);
   const bytes = encodeShel(m), back = decodeShel(new Reader(bytes));
   assert.deepEqual(back, m);
@@ -38,7 +41,11 @@ test('SHEL: positions to 0.1 m from the cell origin, first-use order, bids from 
   assert.deepEqual(encodeShel(back), bytes);
   // Damaged: a truncated payload and an index ahead of the high-water mark throw.
   assert.throws(() => decodeShel(new Reader(bytes.subarray(0, bytes.length - 2))));
-  assert.throws(() => encodeShel({ ...m, indices: Uint32Array.from([1, 0, 2]) }), /skips ahead/);
+  assert.throws(() => encodeShel({ ...m, indices: Uint32Array.from([1, 0, 2]) }), /skips ahead/);  // The chunk's thin pairs follow their vertices (first-use order is the identity here); none gives zeros.
+  assert.deepEqual([...m.thin!], new Array(22).fill(0));
+  const thin = Uint8Array.from({ length: 22 }, (_, k) => k + 1), t = shellFromChunk({ ...chunk, thin }, origin, id => ({ a: 4, b: 9 } as Record<string, number>)[id] ?? -1);
+  assert.deepEqual([...t.thin!], [...thin]);
+  assert.deepEqual(decodeShel(new Reader(encodeShel(t))), t);
 });
 
 test('firstUseOrder renumbers by first use and drops unused vertices', () => {
@@ -138,22 +145,33 @@ const wallsAndRoof = () => {
   return { positions: Float32Array.from(P), uvs: Float32Array.from(UV), layers: Uint8Array.from(L), tints: Uint8Array.from(T), accents: Uint8Array.from(A), bids: Uint16Array.from(B), indices: Uint32Array.from(I) };
 };
 const quantised = () => { const m = wallsAndRoof(); return decodeShel(new Reader(encodeShelLevel0(m))); };
+/** A mesh's positions on the level 2 grid (as shellFromChunk leaves them): what a level 2 round trip gives back exactly. */
+const onGrid = <T extends { positions: Float32Array }>(m: T): T => ({ ...m, positions: m.positions.map(v => Math.round(v / SHEL_UNIT_M) * SHEL_UNIT_M) });
 
-test('SHEL level 1: quads, duplicate corners and plain triangles round-trip exactly, and decode as level 0 does', () => {
-  const m = quantised(), bytes = encodeShel(m);
-  assert.equal(bytes[0], 1, 'level 1');
+test('SHEL level 2: quads, duplicate corners, plain triangles and the thin pairs round-trip exactly; level 0 still decodes', () => {
+  // Thin pairs (look/thinFade.ts): a cornice strip on the second wall quad, a trim on one roof triangle's corners.
+  const level0 = quantised(), base = onGrid(level0), thin = new Uint8Array(base.layers.length * 2);
+  for (let k = 4; k < 8; k++) { thin[k * 2] = 18; thin[k * 2 + 1] = 5; }
+  for (const k of [12, 13, 14]) { thin[k * 2] = 7; thin[k * 2 + 1] = 4; }
+  const m = { ...base, thin }, bytes = encodeShel(m);
+  assert.equal(bytes[0], 2, 'level 2');
   const back = decodeShel(new Reader(bytes));
   assert.deepEqual(back, m);
   assert.deepEqual(encodeShel(back), bytes);
-  // Level 0 bytes still decode (staged before lane R4-A).
-  assert.deepEqual(decodeShel(new Reader(encodeShelLevel0(m))), m);
+  // Without thin pairs the encoder writes zeros (not a thin element): what a mesh from a chunk without them gets.
+  assert.deepEqual(decodeShel(new Reader(encodeShel(base))), { ...base, thin: new Uint8Array(base.layers.length * 2) });
+  // A quad whose corners disagree on thin is coded as triangles and still round-trips.
+  const odd = new Uint8Array(thin); odd[1 * 2] = 9;
+  assert.deepEqual(decodeShel(new Reader(encodeShel({ ...base, thin: odd }))), { ...base, thin: odd });
+  // Level 0 bytes still decode (staged before lane R4-A), without thin.
+  assert.deepEqual(decodeShel(new Reader(encodeShelLevel0(level0))), level0);
   assert.ok(DUP_WINDOW >= 3);
   // Damage: every truncation throws, and an index ahead of the high-water mark is refused at encode.
   for (let n = 0; n < bytes.length; n++) assert.throws(() => decodeShel(new Reader(bytes.subarray(0, n))), /./, `prefix ${n}`);
   assert.throws(() => encodeShel({ ...m, indices: Uint32Array.from([0, 2, 1, ...m.indices.subarray(3)]) }), /skips ahead/);
 });
 
-test('SHEL level 1: smaller than level 0 on a wall-heavy mesh', () => {
+test('SHEL level 2: smaller than level 0 on a wall-heavy mesh', () => {
   const big = quantised();
   // Many copies of the mesh side by side (a street): the quad and record codes pay off.
   const reps = 50, n = big.layers.length, ni = big.indices.length;
@@ -165,6 +183,24 @@ test('SHEL level 1: smaller than level 0 on a wall-heavy mesh', () => {
   }
   const q = decodeShel(new Reader(encodeShelLevel0(m)));
   const l1 = encodeShel(q), l0 = encodeShelLevel0(q);
-  assert.deepEqual(decodeShel(new Reader(l1)), q);
+  assert.deepEqual(decodeShel(new Reader(l1)), { ...onGrid(q), thin: new Uint8Array(q.layers.length * 2) });
   assert.ok(l1.length < l0.length * 0.8, `${l1.length} vs ${l0.length}`);
+});
+
+// Lane R4-A (#243): the bake builds a group tile's chunk as the runtime does and gives each cell its own ranges.
+test('shell bake: a cell takes its own ranges of a group chunk (allotment by its garden id), and parts merge in order', async () => {
+  const { subsetShellChunk, mergeShellChunks } = await import('../../../scripts/world/shellBake.js');
+  const chunk = { ...quadChunk(), thin: new Uint8Array(22).map((_, k) => k) };
+  const a = subsetShellChunk(chunk, id => id === 'a' || id === 'x'), b = subsetShellChunk(chunk, id => id === 'b');
+  assert.deepEqual(a.ranges, [{ id: 'a', start: 0, count: 4 }, { id: 'allotment-garden:x', start: 4, count: 3 }]);
+  assert.deepEqual([...a.indices], [0, 1, 2, 0, 2, 3, 4, 5, 6]);
+  assert.deepEqual([...a.positions.subarray(12, 15)], [...chunk.positions.subarray(24, 27)]);
+  assert.deepEqual([...a.layers], [3, 3, 3, 3, 1, 1, 1]);
+  assert.deepEqual([...a.thin!.subarray(8, 10)], [16, 17]);
+  assert.deepEqual([...b.indices], [0, 1, 2, 0, 2, 3]);
+  const m = mergeShellChunks([b, a]);
+  assert.deepEqual(m.ranges.map(r => [r.id, r.start, r.count]), [['b', 0, 4], ['a', 4, 4], ['allotment-garden:x', 8, 3]]);
+  assert.deepEqual([...m.indices], [0, 1, 2, 0, 2, 3, 4, 5, 6, 4, 6, 7, 8, 9, 10]);
+  assert.deepEqual([...m.positions.subarray(0, 3)], [...chunk.positions.subarray(12, 15)]);
+  assert.equal(mergeShellChunks([a]), a);
 });

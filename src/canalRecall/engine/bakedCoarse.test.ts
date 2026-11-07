@@ -85,6 +85,10 @@ test('bakedCellArrays: every building one contiguous range in first-use order, n
   // A coordinate off the Int16 grid keeps Float32.
   const wide = shel(); wide.positions[0] = 5000;
   assert.equal(bakedCellArrays(wide, ['a', 'b', 'c'], true).positionUnit, 1);
+  // Thin pairs (SHEL level 2) move with their vertex; a mesh without them gives none.
+  assert.equal(out.thin, undefined);
+  const withThin = { ...m, thin: Uint8Array.from({ length: m.layers.length * 2 }, (_, k) => k) }, t = bakedCellArrays(withThin, ['a', 'b', 'c']);
+  for (let k = 0; k < m.indices.length; k++) { const a: number = m.indices[k], b: number = t.indices[k]; assert.deepEqual([...t.thin!.subarray(b * 2, b * 2 + 2)], [a * 2, a * 2 + 1]); }
 });
 
 test('liftRanges: known bases move their range by the change, unknown ones wait, null stands on 0, the deadline stops a pass', () => {
@@ -225,5 +229,25 @@ test('BakedCoarse: at street level a near cell keeps its positions and lifts bui
   const budget: { ms: number; restart: boolean; done?: boolean } = { ms: 4, restart: true };
   baked.refreshShellBases(budget);
   assert.equal(pos.array[3 * 3 + 2], z0 + 3, "'a' follows its new 3 m base");
-  assert.equal(budget.done, false, "'c' still waits");
+  assert.equal(budget.done, false, "'c' still waits");  // Within the lift radius the cell was fetched exact (the SHEL's own unit, Float32), not on the decimetre grid.
+  const asked: [string, boolean | undefined][] = [];
+  const h2 = harness(['0_0', '5_5']);
+  const fetch = h2.host.fetchShell;
+  h2.host.fetchShell = (key, signal, exact) => { asked.push([key, exact]); return fetch(key, signal, exact); };
+  const b2 = new BakedCoarse(h2.host, { budget: { cells: 10, triangles: 1e6 } });
+  b2.update(centre[0], centre[1], true);
+  b2.plan(new Set(['0_0', '5_5']));
+  await settle(); await settle();
+  assert.deepEqual(asked.sort(), [['0_0', true], ['5_5', false]]);  // Asked before the rider was known (on the decimetre grid), installed within the radius: drawn widened to Float32
+  // at once, and fetched again exact.
+  const asked3: [string, boolean | undefined][] = [];
+  const h3 = harness(['0_0']);
+  h3.host.fetchShell = async (key, _signal, exact) => { asked3.push([key, exact]); return { key, ...bakedCellArrays(shel(), ['a', 'b', 'c'], !exact), gzBytes: 100 }; };
+  const b3 = new BakedCoarse(h3.host, { budget: { cells: 10, triangles: 1e6 } });
+  b3.plan(new Set(['0_0']));
+  b3.update(centre[0], centre[1], true);
+  await settle(); await settle(); await settle(); await settle();
+  assert.deepEqual(asked3, [['0_0', false], ['0_0', true]]);
+  const last = h3.added.at(-1)!;
+  assert.ok(last.geometry.getAttribute('position').array instanceof Float32Array);
 });

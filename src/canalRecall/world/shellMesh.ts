@@ -2,7 +2,7 @@
  * Baked building shells (lane R2-B, #229): the SHEL and SHL1 streams of world-v1 format 6.
  *
  * SHEL is the cell's buildings as the runtime coarse chunk (threeBuildingFeatures.buildFeatureChunk(…, 'coarse',
- * {shellRoofs: true})) builds them, merged into one mesh and quantised: positions to 0.1 m from the cell origin, the
+ * {shellRoofs: true})) builds them, merged into one mesh and quantised: positions to 2^-17 m (level 2, SHEL_UNIT_M; 0.1 m in levels 0, 1) from the cell origin, the
  * chunk's façade UVs (1/4096 of a repeat), layer, tint (RGB + the baked shade in alpha) and accent, and a per-vertex
  * `bid` (the vertex's building, an index into the cell's building list) so a resident ring can hide one building.
  *
@@ -17,7 +17,7 @@
  *
  * Pure and DOM-free: the compiler encodes, the world worker decodes. Layouts (LEB128 varints, signed zigzag; byte
  * planes raw so gzip sees runs):
- *   SHEL  u8 level (0)  uvar vertices  uvar indices  uvar runs { zz(bid delta) uvar vertexCount }*
+ *   SHEL  u8 level (0; levels 1 and 2 below)  uvar vertices  uvar indices  uvar runs { zz(bid delta) uvar vertexCount }*
  *         XY: per vertex uvar k (k > 0: the k-th most recent distinct XY, moved to front; 0: zz dx zz dy from the
  *         last literal, 0.1 m)  Z column (zz deltas, 0.1 m)  U, V columns (zz deltas, 1/UV_UNITS)
  *         layer bytes  tint R, G, B, A planes  accent R, G, B planes  indices (high-water-mark code)
@@ -30,8 +30,16 @@ import earcut from 'earcut';
 import { Reader, Writer } from './cellFormat.js';
 import { BAKED_LID_SHADE, bakedFaceShade, bakedWallShade } from '../rendererShared/lightRig.js';
 
-/** SHEL position unit, metres (int16 range: ±3,276 m from the cell origin). */
-export const SHEL_UNIT_M = 0.1;
+/**
+ * SHEL position unit, metres, of level 2 (lane R4-A #243): 2^-17 m, finer than a Float32 step at 128 m from ORIGIN,
+ * so `Math.fround(cellOrigin + decoded)` is the runtime chunk's own Float32 value there. The swap's complementary
+ * dissolve shows any difference between the baked shell and the detail chunk: the decimetre of levels 0 and 1 gave
+ * 13 px at s1-hoftuin; at s3-slab-user (coplanar party walls) a centimetre gave 37 px, a millimetre 9, 2^-17 m 0.
+ * Costs ~21 % of SHEL bytes over the centimetre (48.5 MB against 40.0 MB for the city).
+ */
+export const SHEL_UNIT_M = 2 ** -17;
+/** The position unit of SHEL levels 0 and 1 (still decoded). */
+export const SHEL_LEGACY_UNIT_M = 0.1;
 /** SHL1 footprint grid, metres. */
 export const SHL1_UNIT_M = 0.5;
 /** SHL1 footprint simplification (Douglas–Peucker), metres: a pixel at 1.5 km on a 1,512 px wide 60° view is ~1.1 m. */
@@ -49,6 +57,12 @@ export type ShellMesh = {
   positions: Float32Array; uvs: Float32Array; layers: Uint8Array; tints: Uint8Array; accents: Uint8Array;
   /** Per vertex, the building's index in the cell (uint16; a cell holds at most a few thousand buildings). */
   bids: Uint16Array; indices: Uint32Array;
+  /**
+   * Per vertex the chunk's `thin` pair (look/thinFade.ts: cross-section cm, owner class), SHEL level 2 (lane R4-A #243):
+   * without it a baked shell drew the eaves/cornice strips the runtime coarse chunk fades out under a pixel (the
+   * swap-zfight excess at s1-hoftuin). Absent from level 0/1 files.
+   */
+  thin?: Uint8Array;
 };
 /** One building of SHL1: rings (outer first, then holes; open, metres from the cell origin), eaves and roof top (m), wall and roof (r, g, b, layer). */
 export type FarPrism = { rings: number[][][]; eavesM: number; topM: number; wall: [number, number, number, number]; roof: [number, number, number, number]; /** The building's coarse group tile (`x/y`, CellBuilding.group): the far tier hides it while that tile's resident shell draws. */ tile: string };
@@ -138,8 +152,8 @@ export function encodeShelLevel0(mesh: ShellMesh): Uint8Array {
   for (let k = 0; k < n; k++) { const b = mesh.bids[k]; if (runs.length && runs[runs.length - 1][0] === b) runs[runs.length - 1][1]++; else runs.push([b, 1]); }
   w.uvar(runs.length); let prev = 0;
   for (const [b, c] of runs) { w.zvar(b - prev); w.uvar(c); prev = b; }
-  writeXY(w, mesh.positions, n, SHEL_UNIT_M);
-  writeColumn(w, mesh.positions, 3, 2, n, SHEL_UNIT_M);
+  writeXY(w, mesh.positions, n, SHEL_LEGACY_UNIT_M);
+  writeColumn(w, mesh.positions, 3, 2, n, SHEL_LEGACY_UNIT_M);
   for (let a = 0; a < 2; a++) writeColumn(w, mesh.uvs, 2, a, n, 1 / UV_UNITS);
   w.bytes(mesh.layers);
   writePlanes(w, mesh.tints, 4, 4, n);
@@ -159,21 +173,24 @@ export function encodeShelLevel0(mesh: ShellMesh): Uint8Array {
  *   level (1)  uvar vertices  uvar indices  uvar streams { uvar bytes }*  then the streams, in SHEL1_STREAMS order
  */
 const SHEL1_STREAMS = ['kind', 'index', 'dup', 'xyCode', 'dx', 'dy', 'quadZ', 'quadH', 'quadU', 'quadDu', 'quadV', 'quadDv', 'z', 'u', 'v', 'layer', 'shade', 'colourSame', 'colour', 'bids'] as const;
-type Shel1Stream = (typeof SHEL1_STREAMS)[number];
+/** Level 2 (lane R4-A #243): level 1 plus the record's `thin` pair (cross-section cm, owner class), two streams. */
+const SHEL2_STREAMS = [...SHEL1_STREAMS, 'thinCm', 'thinClass'] as const;
+type Shel1Stream = (typeof SHEL2_STREAMS)[number];
 /** How far back a fresh triangle vertex may refer to an identical one. */
 export const DUP_WINDOW = 8;
-const SHEL_LEVEL = 1;
+const SHEL_LEVEL = 2;
 
 /** Integer fields of a vertex (positions in SHEL_UNIT_M, UVs in 1/UV_UNITS) and its record bytes, as the codes see them. */
-function shelInts(m: ShellMesh) {
+function shelInts(m: ShellMesh, unit: number) {
   const n = m.layers.length, X = new Int32Array(n), Y = new Int32Array(n), Z = new Int32Array(n), U = new Int32Array(n), V = new Int32Array(n);
   for (let k = 0; k < n; k++) {
-    X[k] = q(m.positions[k * 3], SHEL_UNIT_M); Y[k] = q(m.positions[k * 3 + 1], SHEL_UNIT_M); Z[k] = q(m.positions[k * 3 + 2], SHEL_UNIT_M);
+    X[k] = q(m.positions[k * 3], unit); Y[k] = q(m.positions[k * 3 + 1], unit); Z[k] = q(m.positions[k * 3 + 2], unit);
     U[k] = q(m.uvs[k * 2], 1 / UV_UNITS); V[k] = q(m.uvs[k * 2 + 1], 1 / UV_UNITS);
   }
   return { X, Y, Z, U, V };
 }
-const sameRecord = (m: ShellMesh, a: number, b: number) => m.layers[a] === m.layers[b] && m.tints[a * 4] === m.tints[b * 4] && m.tints[a * 4 + 1] === m.tints[b * 4 + 1] && m.tints[a * 4 + 2] === m.tints[b * 4 + 2] && m.tints[a * 4 + 3] === m.tints[b * 4 + 3]
+const sameThin = (m: ShellMesh, a: number, b: number) => !m.thin || (m.thin[a * 2] === m.thin[b * 2] && m.thin[a * 2 + 1] === m.thin[b * 2 + 1]);
+const sameRecord = (m: ShellMesh, a: number, b: number) => sameThin(m, a, b) && m.layers[a] === m.layers[b] && m.tints[a * 4] === m.tints[b * 4] && m.tints[a * 4 + 1] === m.tints[b * 4 + 1] && m.tints[a * 4 + 2] === m.tints[b * 4 + 2] && m.tints[a * 4 + 3] === m.tints[b * 4 + 3]
   && m.accents[a * 4] === m.accents[b * 4] && m.accents[a * 4 + 1] === m.accents[b * 4 + 1] && m.accents[a * 4 + 2] === m.accents[b * 4 + 2];
 const sameColour = (m: ShellMesh, a: number, b: number) => m.tints[a * 4] === m.tints[b * 4] && m.tints[a * 4 + 1] === m.tints[b * 4 + 1] && m.tints[a * 4 + 2] === m.tints[b * 4 + 2]
   && m.accents[a * 4] === m.accents[b * 4] && m.accents[a * 4 + 1] === m.accents[b * 4 + 1] && m.accents[a * 4 + 2] === m.accents[b * 4 + 2];
@@ -190,8 +207,8 @@ class RecentXY {
 
 /** Encode a SHEL payload (level 1). Positions are metres from the cell origin; vertices in first-use order (`shellFromChunk`). */
 export function encodeShel(mesh: ShellMesh): Uint8Array {
-  const m = mesh, n = m.layers.length, I = m.indices, { X, Y, Z, U, V } = shelInts(m);
-  const w = Object.fromEntries(SHEL1_STREAMS.map(k => [k, new Writer()])) as Record<Shel1Stream, Writer>;
+  const m = mesh, n = m.layers.length, I = m.indices, { X, Y, Z, U, V } = shelInts(m, SHEL_UNIT_M);
+  const w = Object.fromEntries(SHEL2_STREAMS.map(k => [k, new Writer()])) as Record<Shel1Stream, Writer>;
   const recent = new RecentXY();
   let px = 0, py = 0;
   const xy = (x: number, y: number) => {
@@ -203,6 +220,7 @@ export function encodeShel(mesh: ShellMesh): Uint8Array {
   const colour: number[][] = [[], [], [], [], [], []];
   const record = (k: number) => {
     w.layer.byte(m.layers[k]); w.shade.byte(m.tints[k * 4 + 3]);
+    w.thinCm.byte(m.thin ? m.thin[k * 2] : 0); w.thinClass.byte(m.thin ? m.thin[k * 2 + 1] : 0);
     const same = last >= 0 && sameColour(m, k, last);
     w.colourSame.byte(same ? 1 : 0);
     if (!same) { colour[0].push(m.tints[k * 4]); colour[1].push(m.tints[k * 4 + 1]); colour[2].push(m.tints[k * 4 + 2]); colour[3].push(m.accents[k * 4]); colour[4].push(m.accents[k * 4 + 1]); colour[5].push(m.accents[k * 4 + 2]); }
@@ -246,20 +264,22 @@ export function encodeShel(mesh: ShellMesh): Uint8Array {
   for (let k = 0; k < n; k++) { const b = m.bids[k]; if (runs.length && runs[runs.length - 1][0] === b) runs[runs.length - 1][1]++; else runs.push([b, 1]); }
   w.bids.uvar(runs.length); let prev = 0;
   for (const [b, c] of runs) { w.bids.zvar(b - prev); w.bids.uvar(c); prev = b; }
-  const out = new Writer(), streams = SHEL1_STREAMS.map(k => w[k].done());
+  const out = new Writer(), streams = SHEL2_STREAMS.map(k => w[k].done());
   out.byte(SHEL_LEVEL); out.uvar(n); out.uvar(I.length); out.uvar(streams.length);
   for (const b of streams) out.uvar(b.length);
   for (const b of streams) out.bytes(b);
   return out.done();
 }
 
-function decodeShel1(r: Reader): ShellMesh {
+function decodeShel1(r: Reader, level: number): ShellMesh {
+  const names: readonly Shel1Stream[] = level >= 2 ? SHEL2_STREAMS : SHEL1_STREAMS, unit = level >= 2 ? SHEL_UNIT_M : SHEL_LEGACY_UNIT_M;
   const n = r.count(MAX_VERTICES, 'shell vertices'), ni = r.count(MAX_VERTICES * 3, 'shell indices');
   if (ni % 3) r.fail(`${ni} shell indices`);
   const count = r.count(64, 'SHEL streams');
-  if (count !== SHEL1_STREAMS.length) r.fail(`${count} SHEL streams, expected ${SHEL1_STREAMS.length}`);
+  if (count !== names.length) r.fail(`${count} SHEL streams, expected ${names.length}`);
   const lengths: number[] = []; for (let k = 0; k < count; k++) lengths.push(r.count(r.buf.length, 'SHEL stream length'));
-  const s = Object.fromEntries(SHEL1_STREAMS.map((k, i) => [k, new Reader(r.take(lengths[i]), `${r.what} SHEL ${k}`)])) as Record<Shel1Stream, Reader>;
+  const s = Object.fromEntries(names.map((k, i) => [k, new Reader(r.take(lengths[i]), `${r.what} SHEL ${k}`)])) as Record<Shel1Stream, Reader>;
+  const thin = level >= 2 ? new Uint8Array(n * 2) : undefined;
   r.end();
   const positions = new Float32Array(n * 3), uvs = new Float32Array(n * 2), layers = new Uint8Array(n), tints = new Uint8Array(n * 4), accents = new Uint8Array(n * 4).fill(255), bids = new Uint16Array(n), indices = new Uint32Array(ni);
   const recent = new RecentXY();
@@ -270,12 +290,16 @@ function decodeShel1(r: Reader): ShellMesh {
     px += s.dx.zvar(); py += s.dy.zvar(); recent.push(px, py); return [px, py];
   };
   // A record's colour is an index into the colour planes, read once every record is known (the planes follow each other).
-  type Rec = { layer: number; shade: number; colour: number };
+  type Rec = { layer: number; shade: number; colour: number; thinCm: number; thinClass: number };
   let colourIndex = -1;
-  const record = (): Rec => { const layer = s.layer.byte(), shade = s.shade.byte(), same = s.colourSame.byte(); if (same > 1) s.colourSame.fail(`flag ${same}`); if (!same) colourIndex++; else if (colourIndex < 0) s.colourSame.fail('no colour yet'); return { layer, shade, colour: colourIndex }; };
+  const record = (): Rec => {
+    const layer = s.layer.byte(), shade = s.shade.byte(), thinCm = thin ? s.thinCm.byte() : 0, thinClass = thin ? s.thinClass.byte() : 0, same = s.colourSame.byte();
+    if (same > 1) s.colourSame.fail(`flag ${same}`); if (!same) colourIndex++; else if (colourIndex < 0) s.colourSame.fail('no colour yet');
+    return { layer, shade, colour: colourIndex, thinCm, thinClass };
+  };
   const recOf: Rec[] = new Array(n);
   const put = (k: number, x: number, y: number, z: number, u: number, v: number, rec: Rec) => {
-    positions[k * 3] = x * SHEL_UNIT_M; positions[k * 3 + 1] = y * SHEL_UNIT_M; positions[k * 3 + 2] = z * SHEL_UNIT_M;
+    positions[k * 3] = x * unit; positions[k * 3 + 1] = y * unit; positions[k * 3 + 2] = z * unit;
     uvs[k * 2] = u / UV_UNITS; uvs[k * 2 + 1] = v / UV_UNITS; recOf[k] = rec;
   };
   let qz = 0, qu = 0, qv = 0, gz = 0, gu = 0, gv = 0, hw = 0, t = 0;
@@ -321,6 +345,7 @@ function decodeShel1(r: Reader): ShellMesh {
   for (let k = 0; k < n; k++) {
     const rec = recOf[k], c = rec.colour;
     layers[k] = rec.layer; tints[k * 4 + 3] = rec.shade;
+    if (thin) { thin[k * 2] = rec.thinCm; thin[k * 2 + 1] = rec.thinClass; }
     tints[k * 4] = planes[0][c]; tints[k * 4 + 1] = planes[1][c]; tints[k * 4 + 2] = planes[2][c];
     accents[k * 4] = planes[3][c]; accents[k * 4 + 1] = planes[4][c]; accents[k * 4 + 2] = planes[5][c];
   }
@@ -328,13 +353,13 @@ function decodeShel1(r: Reader): ShellMesh {
   let at = 0, b = 0;
   for (let k = 0; k < runs; k++) { b += s.bids.zvar(); const c = s.bids.count(n - at, 'bid run'); if (b < 0 || b > 65535) s.bids.fail(`bid ${b}`); bids.fill(b, at, at + c); at += c; }
   if (at !== n) s.bids.fail(`bid runs cover ${at} of ${n} vertices`);
-  for (const k of SHEL1_STREAMS) s[k].end();
-  return { positions, uvs, layers, tints, accents, bids, indices };
+  for (const k of names) s[k].end();
+  return { positions, uvs, layers, tints, accents, bids, indices, ...(thin ? { thin } : {}) };
 }
 
 export function decodeShel(r: Reader): ShellMesh {
   const level = r.byte();
-  if (level === SHEL_LEVEL) return decodeShel1(r);
+  if (level === 1 || level === SHEL_LEVEL) return decodeShel1(r, level);
   if (level !== 0) r.fail(`SHEL level ${level}`);
   const n = r.count(MAX_VERTICES, 'shell vertices'), ni = r.count(MAX_VERTICES * 3, 'shell indices');
   if (ni % 3) r.fail(`${ni} shell indices`);
@@ -343,8 +368,8 @@ export function decodeShel(r: Reader): ShellMesh {
   for (let k = 0; k < runs; k++) { b += r.zvar(); const c = r.count(n - at, 'bid run'); if (b < 0 || b > 65535) r.fail(`bid ${b}`); bids.fill(b, at, at + c); at += c; }
   if (at !== n) r.fail(`bid runs cover ${at} of ${n} vertices`);
   const positions = new Float32Array(n * 3), uvs = new Float32Array(n * 2), layers = new Uint8Array(n), tints = new Uint8Array(n * 4), accents = new Uint8Array(n * 4).fill(255);
-  readXY(r, positions, n, SHEL_UNIT_M);
-  readColumn(r, positions, 3, 2, n, SHEL_UNIT_M);
+  readXY(r, positions, n, SHEL_LEGACY_UNIT_M);
+  readColumn(r, positions, 3, 2, n, SHEL_LEGACY_UNIT_M);
   for (let a = 0; a < 2; a++) readColumn(r, uvs, 2, a, n, 1 / UV_UNITS);
   layers.set(r.take(n));
   readPlanes(r, tints, 4, 4, n);
@@ -355,7 +380,7 @@ export function decodeShel(r: Reader): ShellMesh {
 }
 
 /** The chunk arrays a shell is baked from (threeBuildingMesh Chunk, the fields read here). */
-export type ShellChunk = { positions: Float32Array; uvs: Float32Array; layers: Uint8Array; tints: Uint8Array; accents: Uint8Array; indices: Uint32Array; ranges: readonly { id: string; start: number; count: number }[] };
+export type ShellChunk = { positions: Float32Array; uvs: Float32Array; layers: Uint8Array; tints: Uint8Array; accents: Uint8Array; indices: Uint32Array; ranges: readonly { id: string; start: number; count: number }[]; /** look/thinFade.ts pairs, 2 per vertex. */ thin?: Uint8Array };
 
 /**
  * A coarse chunk as a SHEL mesh: positions moved to the cell origin, vertices in first-use order, each vertex's
@@ -368,8 +393,10 @@ export function shellFromChunk(chunk: ShellChunk, origin: readonly [number, numb
   for (const r of chunk.ranges) { const b = bidOf(r.id); if (!(b >= 0 && b < NO_BID)) { vertexBid.fill(NO_BID, r.start, r.start + r.count); continue; } vertexBid.fill(b, r.start, r.start + r.count); }
   const { order, indices } = firstUseOrder(chunk.indices, chunk.layers.length), n = order.length;
   const positions = new Float32Array(n * 3), uvs = new Float32Array(n * 2), layers = new Uint8Array(n), tints = new Uint8Array(n * 4), accents = new Uint8Array(n * 4), bids = new Uint16Array(n);
+  const src = chunk.thin && chunk.thin.length === chunk.layers.length * 2 ? chunk.thin : null, thin = new Uint8Array(n * 2);
   for (let k = 0; k < n; k++) {
     const o = order[k];
+    if (src) { thin[k * 2] = src[o * 2]; thin[k * 2 + 1] = src[o * 2 + 1]; }
     positions[k * 3] = q(chunk.positions[o * 3] - origin[0], SHEL_UNIT_M) * SHEL_UNIT_M;
     positions[k * 3 + 1] = q(chunk.positions[o * 3 + 1] - origin[1], SHEL_UNIT_M) * SHEL_UNIT_M;
     positions[k * 3 + 2] = q(chunk.positions[o * 3 + 2], SHEL_UNIT_M) * SHEL_UNIT_M;
@@ -381,7 +408,7 @@ export function shellFromChunk(chunk: ShellChunk, origin: readonly [number, numb
     if (vertexBid[o] < 0) throw Error(`shell vertex ${o} belongs to no building range`);
     bids[k] = vertexBid[o];
   }
-  return { positions, uvs, layers, tints, accents, bids, indices };
+  return { positions, uvs, layers, tints, accents, bids, indices, thin };
 }
 
 // --- SHL1: far prisms ------------------------------------------------------------------------------------------
